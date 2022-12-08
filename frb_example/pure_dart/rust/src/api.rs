@@ -13,8 +13,7 @@ use anyhow::{anyhow, Result};
 use flutter_rust_bridge::*;
 use lazy_static::lazy_static;
 
-pub use crate::data::FrbOpaqueReturn;
-pub use crate::data::HideData;
+pub use crate::data::{FrbOpaqueReturn, HideData, NonSendHideData};
 use crate::data::{MyEnum, MyStruct};
 use crate::new_module_system::{use_new_module_system, NewSimpleStruct};
 use crate::old_module_system::{use_old_module_system, OldSimpleStruct};
@@ -1003,9 +1002,9 @@ pub fn panic_unwrap_dart_opaque(opaque: DartOpaque) {
     let handle = opaque.try_unwrap().unwrap();
 }
 
-/// RustOpaque types
-pub trait DartDebug: DartSafe + Debug {}
-impl<T: DartSafe + Debug> DartDebug for T {}
+/// Opaque types
+pub trait DartDebug: DartSafe + Debug + Send + Sync {}
+impl<T: DartSafe + Debug + Send + Sync> DartDebug for T {}
 
 pub enum EnumOpaque {
     Struct(RustOpaque<HideData>),
@@ -1015,11 +1014,20 @@ pub enum EnumOpaque {
     RwLock(RustOpaque<RwLock<HideData>>),
 }
 
-/// [`HideData`] has private fields.
+pub enum EnumDartOpaque {
+    Primitive(i32),
+    Opaque(DartOpaque),
+}
 
+/// [`HideData`] has private fields.
 pub struct OpaqueNested {
     pub first: RustOpaque<HideData>,
     pub second: RustOpaque<HideData>,
+}
+
+pub struct DartOpaqueNested {
+    pub first: DartOpaque,
+    pub second: DartOpaque,
 }
 
 pub fn create_opaque() -> RustOpaque<HideData> {
@@ -1028,6 +1036,10 @@ pub fn create_opaque() -> RustOpaque<HideData> {
 
 pub fn create_option_opaque(opaque: Option<RustOpaque<HideData>>) -> Option<RustOpaque<HideData>> {
     opaque
+}
+
+pub fn sync_create_opaque() -> SyncReturn<RustOpaque<HideData>> {
+    SyncReturn(RustOpaque::new(HideData::new()))
 }
 
 pub fn create_array_opaque_enum() -> [EnumOpaque; 5] {
@@ -1070,6 +1082,24 @@ pub fn opaque_array() -> [RustOpaque<HideData>; 2] {
     ]
 }
 
+pub fn create_sync_opaque() -> RustOpaque<NonSendHideData> {
+    RustOpaque::new(NonSendHideData::new())
+}
+
+pub fn sync_create_sync_opaque() -> SyncReturn<RustOpaque<NonSendHideData>> {
+    SyncReturn(RustOpaque::new(NonSendHideData::new()))
+}
+
+// OpaqueSyncStruct does not implement Send trait.
+//
+// pub fn run_opaque(opaque: Opaque<OpaqueSyncStruct>) -> String {
+//     data.0.hide_data()
+// }
+
+pub fn sync_run_opaque(opaque: RustOpaque<NonSendHideData>) -> SyncReturn<String> {
+    SyncReturn(opaque.hide_data())
+}
+
 pub fn opaque_array_run(data: [RustOpaque<HideData>; 2]) {
     for i in data {
         i.hide_data();
@@ -1096,19 +1126,37 @@ pub fn create_nested_opaque() -> OpaqueNested {
     }
 }
 
+pub fn sync_loopback(opaque: DartOpaque) -> SyncReturn<DartOpaque> {
+    SyncReturn(opaque)
+}
+
+pub fn sync_option_loopback(opaque: Option<DartOpaque>) -> SyncReturn<Option<DartOpaque>> {
+    SyncReturn(opaque)
+}
+
+pub fn sync_option() -> Result<SyncReturn<Option<String>>> {
+    Ok(SyncReturn(Some("42".to_owned())))
+}
+
+pub fn sync_option_null() -> Result<SyncReturn<Option<String>>> {
+    Ok(SyncReturn(None))
+}
+
+pub fn sync_option_rust_opaque() -> Result<SyncReturn<Option<RustOpaque<HideData>>>> {
+    Ok(SyncReturn(Some(RustOpaque::new(HideData::new()))))
+}
+
+pub fn sync_option_dart_opaque(opaque: DartOpaque) -> Result<SyncReturn<Option<DartOpaque>>> {
+    Ok(SyncReturn(Some(opaque)))
+}
+
+pub fn sync_void() -> SyncReturn<()> {
+    SyncReturn(())
+}
+
 pub fn run_nested_opaque(opaque: OpaqueNested) {
     opaque.first.hide_data();
     opaque.second.hide_data();
-}
-
-pub struct DartOpaqueNested {
-    pub first: DartOpaque,
-    pub second: DartOpaque,
-}
-
-pub enum EnumDartOpaque {
-    Primitive(i32),
-    Opaque(DartOpaque),
 }
 
 pub fn create_nested_dart_opaque(opaque1: DartOpaque, opaque2: DartOpaque) -> DartOpaqueNested {
@@ -1143,6 +1191,11 @@ pub fn unwrap_rust_opaque(opaque: RustOpaque<HideData>) -> Result<String> {
         .try_unwrap()
         .map_err(|_| anyhow::anyhow!("opaque type is shared"))?;
     Ok(data.hide_data())
+}
+
+pub fn return_non_dropable_dart_opaque(opaque: DartOpaque) -> SyncReturn<DartOpaque> {
+    let raw = opaque.try_unwrap().unwrap();
+    SyncReturn(unsafe { DartOpaque::new_non_droppable(raw.into()) })
 }
 
 /// Function to check the code generator.

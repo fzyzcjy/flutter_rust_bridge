@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:html';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:tuple/tuple.dart';
 export 'package:js/js.dart';
 export 'package:js/js_util.dart' show promiseToFuture, getProperty;
 
@@ -113,11 +114,24 @@ abstract class FlutterRustBridgeWireBase {
   }
 }
 
+const int _webPointerLength = 4;
 typedef WireSyncReturnStruct = List<dynamic>;
 
 extension WireSyncReturnStructExt on WireSyncReturnStruct {
-  Uint8List get buffer => this[0];
+  Uint8List? get buffer => this[0];
   bool get isSuccess => this[1];
+}
+
+int getPlatformUsize(Uint8List data) {
+  return ByteData.view(data.buffer).getUint32(_webPointerLength);
+}
+
+Tuple2<int, int> parseOpaquePtrAndSizeFrom(Uint8List data) {
+  return Tuple2(
+    ByteData.view(data.buffer).getUint32(_webPointerLength),
+    ByteData.view(data.buffer)
+        .getUint32(_webPointerLength + syncReturnPointerLength),
+  );
 }
 
 class FlutterRustBridgeWasmWireBase<T extends WasmModule>

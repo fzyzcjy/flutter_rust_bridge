@@ -3,7 +3,8 @@
 
 ## Restrictions
 
-A `RustOpaque type` can be created from any Rust structure that implements `Send` and `Sync`. Such restrictions due to async dart api `flutter_rust_bridge` allowing sharing a `RustOpaque type` by multiple `flutter_rust_bridge executor` threads.
+A `RustOpaque type` can be created from any Rust structure. 
+The `flutter_rust_bridge` async dart api requires the Rust type to be `Send` and `Sync`, due to the possible sharing of `RustOpaque type` by multiple `flutter_rust_bridge` executor threads.
 
 
 ## Ownership and GC

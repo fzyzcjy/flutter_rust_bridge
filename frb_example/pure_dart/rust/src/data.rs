@@ -1,4 +1,6 @@
 #![allow(dead_code)]
+
+use std::rc::Rc;
 pub struct MyStruct {
     pub content: bool,
 }
@@ -14,6 +16,34 @@ struct PrivateData {
     primitive: usize,
     array: [isize; 10],
     lifetime: &'static str,
+}
+
+#[derive(Debug)]
+pub struct NonSendHideData {
+    content: String,
+    box_content: Option<Rc<PrivateData>>,
+}
+
+impl NonSendHideData {
+    pub fn new() -> Self {
+        Self {
+            content: "content".to_owned(),
+            box_content: Some(Rc::new(PrivateData {
+                content: "content nested".to_owned(),
+                primitive: 424242,
+                array: [451; 10],
+                lifetime: "static str",
+            })),
+        }
+    }
+
+    pub fn hide_data(&self) -> String {
+        format!("{} - {:?}", self.content, self.box_content)
+    }
+
+    pub fn change_data(&mut self) {
+        self.content = "MUT SELF".to_owned();
+    }
 }
 
 #[derive(Debug)]
@@ -37,6 +67,10 @@ impl HideData {
 
     pub fn hide_data(&self) -> String {
         format!("{} - {:?}", self.content, self.box_content)
+    }
+
+    pub fn change_data(&mut self) {
+        self.content = "MUT SELF".to_owned();
     }
 }
 

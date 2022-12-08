@@ -80,6 +80,12 @@ impl DartHandleWrap {
     }
 }
 
+impl From<DartHandleWrap> for Dart_PersistentHandle {
+    fn from(warp: DartHandleWrap) -> Self {
+        warp.into_raw()
+    }
+}
+
 impl Drop for DartHandleWrap {
     fn drop(&mut self) {
         if let Some(inner) = self.0 {
@@ -95,10 +101,10 @@ pub struct DartOpaqueBase {
 }
 
 impl DartOpaqueBase {
-    pub fn new(handle: Dart_PersistentHandle, port: MessagePort) -> Self {
+    pub fn new(handle: Dart_PersistentHandle, drop_port: Option<MessagePort>) -> Self {
         Self {
             inner: DartHandleWrap::from_raw(handle),
-            drop_port: Some(port),
+            drop_port,
         }
     }
 
@@ -110,7 +116,7 @@ impl DartOpaqueBase {
         self.inner
     }
 
-    pub fn channel(&self) -> Channel {
-        Channel::new(self.drop_port.unwrap())
+    pub fn channel(&self) -> Option<Channel> {
+        Some(Channel::new(self.drop_port?))
     }
 }

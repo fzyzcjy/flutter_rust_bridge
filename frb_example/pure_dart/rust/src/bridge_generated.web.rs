@@ -494,6 +494,11 @@ pub fn wire_create_option_opaque(port_: MessagePort, opaque: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_sync_create_opaque() -> support::WireSyncReturnStruct {
+    wire_sync_create_opaque_impl()
+}
+
+#[wasm_bindgen]
 pub fn wire_create_array_opaque_enum(port_: MessagePort) {
     wire_create_array_opaque_enum_impl(port_)
 }
@@ -519,6 +524,21 @@ pub fn wire_opaque_array(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_create_sync_opaque(port_: MessagePort) {
+    wire_create_sync_opaque_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_sync_create_sync_opaque() -> support::WireSyncReturnStruct {
+    wire_sync_create_sync_opaque_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_sync_run_opaque(opaque: JsValue) -> support::WireSyncReturnStruct {
+    wire_sync_run_opaque_impl(opaque)
+}
+
+#[wasm_bindgen]
 pub fn wire_opaque_array_run(port_: MessagePort, data: JsValue) {
     wire_opaque_array_run_impl(port_, data)
 }
@@ -536,6 +556,41 @@ pub fn wire_opaque_vec_run(port_: MessagePort, data: JsValue) {
 #[wasm_bindgen]
 pub fn wire_create_nested_opaque(port_: MessagePort) {
     wire_create_nested_opaque_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_sync_loopback(opaque: JsValue) -> support::WireSyncReturnStruct {
+    wire_sync_loopback_impl(opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_sync_option_loopback(opaque: JsValue) -> support::WireSyncReturnStruct {
+    wire_sync_option_loopback_impl(opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_sync_option() -> support::WireSyncReturnStruct {
+    wire_sync_option_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_sync_option_null() -> support::WireSyncReturnStruct {
+    wire_sync_option_null_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_sync_option_rust_opaque() -> support::WireSyncReturnStruct {
+    wire_sync_option_rust_opaque_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_sync_option_dart_opaque(opaque: JsValue) -> support::WireSyncReturnStruct {
+    wire_sync_option_dart_opaque_impl(opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_sync_void() -> support::WireSyncReturnStruct {
+    wire_sync_void_impl()
 }
 
 #[wasm_bindgen]
@@ -576,6 +631,11 @@ pub fn wire_drop_static_dart_opaque(port_: MessagePort) {
 #[wasm_bindgen]
 pub fn wire_unwrap_rust_opaque(port_: MessagePort, opaque: JsValue) {
     wire_unwrap_rust_opaque_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
+pub fn wire_return_non_dropable_dart_opaque(opaque: JsValue) -> support::WireSyncReturnStruct {
+    wire_return_non_dropable_dart_opaque_impl(opaque)
 }
 
 #[wasm_bindgen]
@@ -776,6 +836,21 @@ pub fn share_opaque_MutexHideData(ptr: *const c_void) -> *const c_void {
 }
 
 #[wasm_bindgen]
+pub fn drop_opaque_NonSendHideData(ptr: *const c_void) {
+    unsafe {
+        Arc::<NonSendHideData>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_NonSendHideData(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<NonSendHideData>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
 pub fn drop_opaque_RwLockHideData(ptr: *const c_void) {
     unsafe {
         Arc::<RwLock<HideData>>::decrement_strong_count(ptr as _);
@@ -824,7 +899,7 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
 impl Wire2Api<DartOpaque> for JsValue {
     fn wire2api(self) -> DartOpaque {
         let arr = self.dyn_into::<JsArray>().unwrap();
-        DartOpaque::new(arr.get(0), arr.get(1))
+        unsafe { DartOpaque::new(arr.get(0), arr.get(1)) }
     }
 }
 
@@ -1560,6 +1635,16 @@ impl Wire2Api<RustOpaque<i32>> for JsValue {
 }
 impl Wire2Api<RustOpaque<Mutex<HideData>>> for JsValue {
     fn wire2api(self) -> RustOpaque<Mutex<HideData>> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+
+        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl Wire2Api<RustOpaque<NonSendHideData>> for JsValue {
+    fn wire2api(self) -> RustOpaque<NonSendHideData> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");

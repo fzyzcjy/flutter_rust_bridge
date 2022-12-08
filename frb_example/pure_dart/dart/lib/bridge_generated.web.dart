@@ -72,6 +72,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  Object api2wire_NonSendHideData(NonSendHideData raw) {
+    return raw.shareOrMove();
+  }
+
+  @protected
   List<dynamic> api2wire_Object_array_1(ObjectArray1 raw) {
     return api2wire_list_DartOpaque(raw);
   }
@@ -824,6 +829,9 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   late final Finalizer<PlatformPointer> _MutexHideDataFinalizer =
       Finalizer<PlatformPointer>(inner.drop_opaque_MutexHideData);
   Finalizer<PlatformPointer> get MutexHideDataFinalizer => _MutexHideDataFinalizer;
+  late final Finalizer<PlatformPointer> _NonSendHideDataFinalizer =
+      Finalizer<PlatformPointer>(inner.drop_opaque_NonSendHideData);
+  Finalizer<PlatformPointer> get NonSendHideDataFinalizer => _NonSendHideDataFinalizer;
   late final Finalizer<PlatformPointer> _RwLockHideDataFinalizer =
       Finalizer<PlatformPointer>(inner.drop_opaque_RwLockHideData);
   Finalizer<PlatformPointer> get RwLockHideDataFinalizer => _RwLockHideDataFinalizer;
@@ -1037,6 +1045,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_create_option_opaque(NativePortType port_, Object? opaque);
 
+  external dynamic /* Object */ wire_sync_create_opaque();
+
   external void wire_create_array_opaque_enum(NativePortType port_);
 
   external void wire_run_enum_opaque(NativePortType port_, List<dynamic> opaque);
@@ -1047,6 +1057,12 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_opaque_array(NativePortType port_);
 
+  external void wire_create_sync_opaque(NativePortType port_);
+
+  external dynamic /* Object */ wire_sync_create_sync_opaque();
+
+  external dynamic /* String */ wire_sync_run_opaque(Object opaque);
+
   external void wire_opaque_array_run(NativePortType port_, List<dynamic> data);
 
   external void wire_opaque_vec(NativePortType port_);
@@ -1054,6 +1070,20 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external void wire_opaque_vec_run(NativePortType port_, List<dynamic> data);
 
   external void wire_create_nested_opaque(NativePortType port_);
+
+  external dynamic /* Object */ wire_sync_loopback(Object opaque);
+
+  external dynamic /* Object? */ wire_sync_option_loopback(Object? opaque);
+
+  external dynamic /* String? */ wire_sync_option();
+
+  external dynamic /* String? */ wire_sync_option_null();
+
+  external dynamic /* Object? */ wire_sync_option_rust_opaque();
+
+  external dynamic /* Object? */ wire_sync_option_dart_opaque(Object opaque);
+
+  external dynamic /* dynamic */ wire_sync_void();
 
   external void wire_run_nested_opaque(NativePortType port_, List<dynamic> opaque);
 
@@ -1070,6 +1100,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external void wire_drop_static_dart_opaque(NativePortType port_);
 
   external void wire_unwrap_rust_opaque(NativePortType port_, Object opaque);
+
+  external dynamic /* Object */ wire_return_non_dropable_dart_opaque(Object opaque);
 
   external void wire_frb_generator_test(NativePortType port_);
 
@@ -1132,6 +1164,10 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external dynamic /*  */ drop_opaque_MutexHideData(ptr);
 
   external int /* *const c_void */ share_opaque_MutexHideData(ptr);
+
+  external dynamic /*  */ drop_opaque_NonSendHideData(ptr);
+
+  external int /* *const c_void */ share_opaque_NonSendHideData(ptr);
 
   external dynamic /*  */ drop_opaque_RwLockHideData(ptr);
 
@@ -1374,6 +1410,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_create_option_opaque(NativePortType port_, Object? opaque) =>
       wasmModule.wire_create_option_opaque(port_, opaque);
 
+  dynamic /* Object */ wire_sync_create_opaque() => wasmModule.wire_sync_create_opaque();
+
   void wire_create_array_opaque_enum(NativePortType port_) => wasmModule.wire_create_array_opaque_enum(port_);
 
   void wire_run_enum_opaque(NativePortType port_, List<dynamic> opaque) =>
@@ -1386,6 +1424,12 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_opaque_array(NativePortType port_) => wasmModule.wire_opaque_array(port_);
 
+  void wire_create_sync_opaque(NativePortType port_) => wasmModule.wire_create_sync_opaque(port_);
+
+  dynamic /* Object */ wire_sync_create_sync_opaque() => wasmModule.wire_sync_create_sync_opaque();
+
+  dynamic /* String */ wire_sync_run_opaque(Object opaque) => wasmModule.wire_sync_run_opaque(opaque);
+
   void wire_opaque_array_run(NativePortType port_, List<dynamic> data) => wasmModule.wire_opaque_array_run(port_, data);
 
   void wire_opaque_vec(NativePortType port_) => wasmModule.wire_opaque_vec(port_);
@@ -1393,6 +1437,20 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_opaque_vec_run(NativePortType port_, List<dynamic> data) => wasmModule.wire_opaque_vec_run(port_, data);
 
   void wire_create_nested_opaque(NativePortType port_) => wasmModule.wire_create_nested_opaque(port_);
+
+  dynamic /* Object */ wire_sync_loopback(Object opaque) => wasmModule.wire_sync_loopback(opaque);
+
+  dynamic /* Object? */ wire_sync_option_loopback(Object? opaque) => wasmModule.wire_sync_option_loopback(opaque);
+
+  dynamic /* String? */ wire_sync_option() => wasmModule.wire_sync_option();
+
+  dynamic /* String? */ wire_sync_option_null() => wasmModule.wire_sync_option_null();
+
+  dynamic /* Object? */ wire_sync_option_rust_opaque() => wasmModule.wire_sync_option_rust_opaque();
+
+  dynamic /* Object? */ wire_sync_option_dart_opaque(Object opaque) => wasmModule.wire_sync_option_dart_opaque(opaque);
+
+  dynamic /* dynamic */ wire_sync_void() => wasmModule.wire_sync_void();
 
   void wire_run_nested_opaque(NativePortType port_, List<dynamic> opaque) =>
       wasmModule.wire_run_nested_opaque(port_, opaque);
@@ -1416,6 +1474,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_unwrap_rust_opaque(NativePortType port_, Object opaque) =>
       wasmModule.wire_unwrap_rust_opaque(port_, opaque);
+
+  dynamic /* Object */ wire_return_non_dropable_dart_opaque(Object opaque) =>
+      wasmModule.wire_return_non_dropable_dart_opaque(opaque);
 
   void wire_frb_generator_test(NativePortType port_) => wasmModule.wire_frb_generator_test(port_);
 
@@ -1485,6 +1546,10 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   dynamic /*  */ drop_opaque_MutexHideData(ptr) => wasmModule.drop_opaque_MutexHideData(ptr);
 
   int /* *const c_void */ share_opaque_MutexHideData(ptr) => wasmModule.share_opaque_MutexHideData(ptr);
+
+  dynamic /*  */ drop_opaque_NonSendHideData(ptr) => wasmModule.drop_opaque_NonSendHideData(ptr);
+
+  int /* *const c_void */ share_opaque_NonSendHideData(ptr) => wasmModule.share_opaque_NonSendHideData(ptr);
 
   dynamic /*  */ drop_opaque_RwLockHideData(ptr) => wasmModule.drop_opaque_RwLockHideData(ptr);
 

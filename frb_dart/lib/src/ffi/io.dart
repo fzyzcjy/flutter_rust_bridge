@@ -3,6 +3,7 @@ import 'dart:ffi';
 export 'dart:ffi' show NativePort, DynamicLibrary;
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:tuple/tuple.dart';
 
 export 'stub.dart'
     show castInt, castNativeBigInt, FlutterRustBridgeWireBase, WasmModule;
@@ -12,6 +13,20 @@ typedef NativePortType = int;
 typedef ExternalLibrary = ffi.DynamicLibrary;
 typedef DartPostCObject = ffi.Pointer<
     ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>;
+
+int getPlatformUsize(Uint8List data) {
+  assert(data.length == syncReturnPointerLength);
+  // Rust SyncReturn<usize> type is forced cast to u64.
+  return ByteData.view(data.buffer).getUint64(0);
+}
+
+Tuple2<int, int> parseOpaquePtrAndSizeFrom(Uint8List data) {
+  assert(data.length == 2 * syncReturnPointerLength);
+  return Tuple2(
+    ByteData.view(data.buffer).getUint64(0),
+    ByteData.view(data.buffer).getUint64(syncReturnPointerLength),
+  );
+}
 
 extension StoreDartPostCObjectExt on FlutterRustBridgeWireBase {
   void storeDartPostCObject() {
@@ -46,7 +61,13 @@ class WireSyncReturnStruct extends ffi.Struct {
   @ffi.Uint8()
   external int success;
 
-  Uint8List get buffer => Uint8List.fromList(ptr.asTypedList(len));
+  Uint8List? get buffer {
+    if (ptr.address == 0) {
+      return null;
+    }
+    return Uint8List.fromList(ptr.asTypedList(len));
+  }
+
   bool get isSuccess => success > 0;
 }
 

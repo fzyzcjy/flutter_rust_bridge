@@ -1555,6 +1555,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["opaque"],
       );
 
+  HideData syncCreateOpaque({dynamic hint}) {
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_create_opaque(),
+      parseSuccessData: _wire2api_SyncReturn_HideData,
+      constMeta: kSyncCreateOpaqueConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncCreateOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_create_opaque",
+        argNames: [],
+      );
+
   Future<EnumOpaqueArray5> createArrayOpaqueEnum({dynamic hint}) {
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_create_array_opaque_enum(port_),
@@ -1633,6 +1648,52 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<NonSendHideData> createSyncOpaque({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_create_sync_opaque(port_),
+      parseSuccessData: _wire2api_NonSendHideData,
+      constMeta: kCreateSyncOpaqueConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kCreateSyncOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "create_sync_opaque",
+        argNames: [],
+      );
+
+  NonSendHideData syncCreateSyncOpaque({dynamic hint}) {
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_create_sync_opaque(),
+      parseSuccessData: _wire2api_SyncReturn_NonSendHideData,
+      constMeta: kSyncCreateSyncOpaqueConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncCreateSyncOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_create_sync_opaque",
+        argNames: [],
+      );
+
+  String syncRunOpaque({required NonSendHideData opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_NonSendHideData(opaque);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_run_opaque(arg0),
+      parseSuccessData: _wire2api_SyncReturn_String,
+      constMeta: kSyncRunOpaqueConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncRunOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_run_opaque",
+        argNames: ["opaque"],
+      );
+
   Future<void> opaqueArrayRun({required HideDataArray2 data, dynamic hint}) {
     var arg0 = _platform.api2wire_HideData_array_2(data);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -1692,6 +1753,114 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   FlutterRustBridgeTaskConstMeta get kCreateNestedOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "create_nested_opaque",
+        argNames: [],
+      );
+
+  Object syncLoopback({required Object opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_DartOpaque(opaque);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_loopback(arg0),
+      parseSuccessData: _wire2api_SyncReturn_Object,
+      constMeta: kSyncLoopbackConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncLoopbackConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_loopback",
+        argNames: ["opaque"],
+      );
+
+  Object? syncOptionLoopback({Object? opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_opt_box_autoadd_DartOpaque(opaque);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_option_loopback(arg0),
+      parseSuccessData: _wire2api_SyncReturn_Option_Object,
+      constMeta: kSyncOptionLoopbackConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncOptionLoopbackConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_option_loopback",
+        argNames: ["opaque"],
+      );
+
+  String? syncOption({dynamic hint}) {
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_option(),
+      parseSuccessData: _wire2api_SyncReturn_Option_String,
+      constMeta: kSyncOptionConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncOptionConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_option",
+        argNames: [],
+      );
+
+  String? syncOptionNull({dynamic hint}) {
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_option_null(),
+      parseSuccessData: _wire2api_SyncReturn_Option_String,
+      constMeta: kSyncOptionNullConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncOptionNullConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_option_null",
+        argNames: [],
+      );
+
+  HideData? syncOptionRustOpaque({dynamic hint}) {
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_option_rust_opaque(),
+      parseSuccessData: _wire2api_SyncReturn_Option_HideData,
+      constMeta: kSyncOptionRustOpaqueConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncOptionRustOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_option_rust_opaque",
+        argNames: [],
+      );
+
+  Object? syncOptionDartOpaque({required Object opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_DartOpaque(opaque);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_option_dart_opaque(arg0),
+      parseSuccessData: _wire2api_SyncReturn_Option_Object,
+      constMeta: kSyncOptionDartOpaqueConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncOptionDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_option_dart_opaque",
+        argNames: ["opaque"],
+      );
+
+  void syncVoid({dynamic hint}) {
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_void(),
+      parseSuccessData: _wire2api_SyncReturn_unit,
+      constMeta: kSyncVoidConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncVoidConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_void",
         argNames: [],
       );
 
@@ -1820,6 +1989,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   FlutterRustBridgeTaskConstMeta get kUnwrapRustOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "unwrap_rust_opaque",
+        argNames: ["opaque"],
+      );
+
+  Object returnNonDropableDartOpaque({required Object opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_DartOpaque(opaque);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_return_non_dropable_dart_opaque(arg0),
+      parseSuccessData: _wire2api_SyncReturn_Object,
+      constMeta: kReturnNonDropableDartOpaqueConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kReturnNonDropableDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_non_dropable_dart_opaque",
         argNames: ["opaque"],
       );
 
@@ -2002,6 +2187,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   ShareFnType get shareOpaqueMutexHideData => _platform.inner.share_opaque_MutexHideData;
   OpaqueTypeFinalizer get MutexHideDataFinalizer => _platform.MutexHideDataFinalizer;
 
+  DropFnType get dropOpaqueNonSendHideData => _platform.inner.drop_opaque_NonSendHideData;
+  ShareFnType get shareOpaqueNonSendHideData => _platform.inner.share_opaque_NonSendHideData;
+  OpaqueTypeFinalizer get NonSendHideDataFinalizer => _platform.NonSendHideDataFinalizer;
+
   DropFnType get dropOpaqueRwLockHideData => _platform.inner.drop_opaque_RwLockHideData;
   ShareFnType get shareOpaqueRwLockHideData => _platform.inner.share_opaque_RwLockHideData;
   OpaqueTypeFinalizer get RwLockHideDataFinalizer => _platform.RwLockHideDataFinalizer;
@@ -2059,6 +2248,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return MutexHideData.fromRaw(raw[0], raw[1], this);
   }
 
+  NonSendHideData _wire2api_NonSendHideData(dynamic raw) {
+    return NonSendHideData.fromRaw(raw[0], raw[1], this);
+  }
+
   ObjectArray1 _wire2api_Object_array_1(dynamic raw) {
     return ObjectArray1((raw as List<dynamic>).map(_wire2api_DartOpaque).toList());
   }
@@ -2083,66 +2276,106 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return SumWithArray3((raw as List<dynamic>).map(_wire2api_sum_with).toList());
   }
 
-  String _wire2api_SyncReturn_String(Uint8List raw) {
+  HideData _wire2api_SyncReturn_HideData(dynamic raw) {
+    var data = parseOpaquePtrAndSizeFrom(raw);
+    return HideData.fromRaw(data.item1, data.item2, this);
+  }
+
+  NonSendHideData _wire2api_SyncReturn_NonSendHideData(dynamic raw) {
+    var data = parseOpaquePtrAndSizeFrom(raw);
+    return NonSendHideData.fromRaw(data.item1, data.item2, this);
+  }
+
+  Object _wire2api_SyncReturn_Object(dynamic raw) {
+    return _platform.inner.get_dart_object(getPlatformUsize(raw));
+  }
+
+  HideData? _wire2api_SyncReturn_Option_HideData(dynamic raw) {
+    if (raw == null) {
+      return null;
+    }
+    var data = parseOpaquePtrAndSizeFrom(raw);
+    return HideData.fromRaw(data.item1, data.item2, this);
+  }
+
+  Object? _wire2api_SyncReturn_Option_Object(dynamic raw) {
+    if (raw == null) {
+      return null;
+    }
+    return _platform.inner.get_dart_object(getPlatformUsize(raw));
+  }
+
+  String? _wire2api_SyncReturn_Option_String(dynamic raw) {
+    if (raw == null) {
+      return null;
+    }
     return utf8.decode(raw);
   }
 
-  Uint8List _wire2api_SyncReturn_Uint8List(Uint8List raw) {
+  String _wire2api_SyncReturn_String(dynamic raw) {
+    return utf8.decode(raw);
+  }
+
+  Uint8List _wire2api_SyncReturn_Uint8List(dynamic raw) {
     return raw;
   }
 
-  bool _wire2api_SyncReturn_bool(Uint8List raw) {
+  bool _wire2api_SyncReturn_bool(dynamic raw) {
     return uint8ListToBool(raw);
   }
 
-  double _wire2api_SyncReturn_f32(Uint8List raw) {
+  double _wire2api_SyncReturn_f32(dynamic raw) {
     final dataView = ByteData.view(raw.buffer);
     return dataView.getFloat32(0);
   }
 
-  double _wire2api_SyncReturn_f64(Uint8List raw) {
+  double _wire2api_SyncReturn_f64(dynamic raw) {
     final dataView = ByteData.view(raw.buffer);
     return dataView.getFloat64(0);
   }
 
-  int _wire2api_SyncReturn_i16(Uint8List raw) {
+  int _wire2api_SyncReturn_i16(dynamic raw) {
     final dataView = ByteData.view(raw.buffer);
     return dataView.getInt16(0);
   }
 
-  int _wire2api_SyncReturn_i32(Uint8List raw) {
+  int _wire2api_SyncReturn_i32(dynamic raw) {
     final dataView = ByteData.view(raw.buffer);
     return dataView.getInt32(0);
   }
 
-  int _wire2api_SyncReturn_i64(Uint8List raw) {
+  int _wire2api_SyncReturn_i64(dynamic raw) {
     final dataView = ByteData.view(raw.buffer);
     return dataView.getInt64(0);
   }
 
-  int _wire2api_SyncReturn_i8(Uint8List raw) {
+  int _wire2api_SyncReturn_i8(dynamic raw) {
     final dataView = ByteData.view(raw.buffer);
     return dataView.getInt8(0);
   }
 
-  int _wire2api_SyncReturn_u16(Uint8List raw) {
+  int _wire2api_SyncReturn_u16(dynamic raw) {
     final dataView = ByteData.view(raw.buffer);
     return dataView.getUint16(0);
   }
 
-  int _wire2api_SyncReturn_u32(Uint8List raw) {
+  int _wire2api_SyncReturn_u32(dynamic raw) {
     final dataView = ByteData.view(raw.buffer);
     return dataView.getUint32(0);
   }
 
-  int _wire2api_SyncReturn_u64(Uint8List raw) {
+  int _wire2api_SyncReturn_u64(dynamic raw) {
     final dataView = ByteData.view(raw.buffer);
     return dataView.getUint64(0);
   }
 
-  int _wire2api_SyncReturn_u8(Uint8List raw) {
+  int _wire2api_SyncReturn_u8(dynamic raw) {
     final dataView = ByteData.view(raw.buffer);
     return dataView.getUint8(0);
+  }
+
+  void _wire2api_SyncReturn_unit(dynamic raw) {
+    return;
   }
 
   TestIdArray2 _wire2api_TestId_array_2(dynamic raw) {
@@ -2714,6 +2947,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
       first: _wire2api_HideData(arr[0]),
       second: _wire2api_HideData(arr[1]),
     );
+  }
+
+  Object? _wire2api_opt_DartOpaque(dynamic raw) {
+    return raw == null ? null : _wire2api_DartOpaque(raw);
+  }
+
+  HideData? _wire2api_opt_HideData(dynamic raw) {
+    return raw == null ? null : _wire2api_HideData(raw);
   }
 
   String? _wire2api_opt_String(dynamic raw) {

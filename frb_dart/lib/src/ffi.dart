@@ -8,6 +8,9 @@ export 'ffi/stub.dart'
 typedef DropFnType = void Function(PlatformPointer);
 typedef ShareFnType = PlatformPointer Function(PlatformPointer);
 
+/// Rust SyncReturn<usize> type is forced cast to u64.
+const syncReturnPointerLength = 8;
+
 /// An opaque pointer to a native C or Rust type.
 /// Recipients of this type should call [dispose] at least once during runtime.
 /// If passed to a native function after being [dispose]d, an exception will be thrown.

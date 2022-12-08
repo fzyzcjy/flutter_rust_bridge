@@ -412,6 +412,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kCreateOptionOpaqueConstMeta;
 
+  HideData syncCreateOpaque({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSyncCreateOpaqueConstMeta;
+
   Future<EnumOpaqueArray5> createArrayOpaqueEnum({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kCreateArrayOpaqueEnumConstMeta;
@@ -432,6 +436,18 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kOpaqueArrayConstMeta;
 
+  Future<NonSendHideData> createSyncOpaque({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kCreateSyncOpaqueConstMeta;
+
+  NonSendHideData syncCreateSyncOpaque({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSyncCreateSyncOpaqueConstMeta;
+
+  String syncRunOpaque({required NonSendHideData opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSyncRunOpaqueConstMeta;
+
   Future<void> opaqueArrayRun({required HideDataArray2 data, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kOpaqueArrayRunConstMeta;
@@ -447,6 +463,34 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   Future<OpaqueNested> createNestedOpaque({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kCreateNestedOpaqueConstMeta;
+
+  Object syncLoopback({required Object opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSyncLoopbackConstMeta;
+
+  Object? syncOptionLoopback({Object? opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSyncOptionLoopbackConstMeta;
+
+  String? syncOption({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSyncOptionConstMeta;
+
+  String? syncOptionNull({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSyncOptionNullConstMeta;
+
+  HideData? syncOptionRustOpaque({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSyncOptionRustOpaqueConstMeta;
+
+  Object? syncOptionDartOpaque({required Object opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSyncOptionDartOpaqueConstMeta;
+
+  void syncVoid({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSyncVoidConstMeta;
 
   Future<void> runNestedOpaque({required OpaqueNested opaque, dynamic hint});
 
@@ -479,6 +523,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   Future<String> unwrapRustOpaque({required HideData opaque, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kUnwrapRustOpaqueConstMeta;
+
+  Object returnNonDropableDartOpaque({required Object opaque, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kReturnNonDropableDartOpaqueConstMeta;
 
   /// Function to check the code generator.
   /// FrbOpaqueReturn must be only return type.
@@ -540,6 +588,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   DropFnType get dropOpaqueMutexHideData;
   ShareFnType get shareOpaqueMutexHideData;
   OpaqueTypeFinalizer get MutexHideDataFinalizer;
+
+  DropFnType get dropOpaqueNonSendHideData;
+  ShareFnType get shareOpaqueNonSendHideData;
+  OpaqueTypeFinalizer get NonSendHideDataFinalizer;
 
   DropFnType get dropOpaqueRwLockHideData;
   ShareFnType get shareOpaqueRwLockHideData;
@@ -632,6 +684,20 @@ class MutexHideData extends FrbOpaque {
 
   @override
   OpaqueTypeFinalizer get staticFinalizer => bridge.MutexHideDataFinalizer;
+}
+
+@sealed
+class NonSendHideData extends FrbOpaque {
+  final FlutterRustBridgeExampleSingleBlockTest bridge;
+  NonSendHideData.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
+  @override
+  DropFnType get dropFn => bridge.dropOpaqueNonSendHideData;
+
+  @override
+  ShareFnType get shareFn => bridge.shareOpaqueNonSendHideData;
+
+  @override
+  OpaqueTypeFinalizer get staticFinalizer => bridge.NonSendHideDataFinalizer;
 }
 
 class ObjectArray1 extends NonGrowableListView<Object> {

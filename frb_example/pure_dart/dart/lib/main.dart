@@ -697,12 +697,13 @@ void main(List<String> args) async {
     String f() => 'Test_String';
 
     test('loopback', () async {
-      // ignore: unused_local_variable
       await api.loopBackArrayGet(opaque: await api.loopBackArray(opaque: f));
-      // ignore: unused_local_variable
       await api.loopBackVecGet(opaque: await api.loopBackVec(opaque: f));
-      // ignore: unused_local_variable
       await api.loopBackOptionGet(opaque: await api.loopBackOption(opaque: f));
+
+      var syncBack = api.syncLoopback(opaque: f);
+      expect(identical(api.syncOptionLoopback(opaque: syncBack), f), isTrue);
+      expect(api.syncOptionLoopback(opaque: null), isNull);
 
       var back1 = await api.loopBack(opaque: f) as String Function();
       expect(back1(), 'Test_String');
@@ -720,6 +721,16 @@ void main(List<String> args) async {
       expect(api.unwrapDartOpaque(opaque: createLargeList(mb: 200)), 'Test');
       await expectLater(
           () => api.panicUnwrapDartOpaque(opaque: createLargeList(mb: 200)), throwsA(isA<FfiException>()));
+    });
+
+    test('nested', () async {
+      var str = await api.createNestedDartOpaque(opaque1: f, opaque2: f);
+      await api.getNestedDartOpaque(opaque: str);
+    });
+
+    test('enum', () async {
+      var en = await api.createEnumDartOpaque(opaque: f);
+      await api.getEnumDartOpaque(opaque: en);
     });
 
     test('nested', () async {
@@ -964,6 +975,73 @@ void main(List<String> args) async {
       var data2 = await api.createOpaque();
       await expectLater(() => api.unwrapRustOpaque(opaque: data2), throwsA(isA<FfiException>()));
       expect(data2.isStale(), isFalse);
+    });
+  });
+
+  group('extended sync', () {
+    test('create', () {
+      var data = api.syncCreateOpaque();
+      data.dispose();
+    });
+
+    test('double call', () {
+      var data = api.syncCreateSyncOpaque();
+      expect(
+          api.syncRunOpaque(opaque: data),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      expect(
+          api.syncRunOpaque(opaque: data),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      data.dispose();
+    });
+
+    test('call after drop', () {
+      var data = api.syncCreateSyncOpaque();
+      expect(
+          api.syncRunOpaque(opaque: data),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      data.dispose();
+      expect(() => api.syncRunOpaque(opaque: data), throwsA(isA<FfiException>()));
+    });
+
+    test('option', () async {
+      var data = api.syncOption();
+      var data2 = api.syncOptionNull();
+      var data3 = api.syncOptionRustOpaque();
+      var data4 = api.syncOptionDartOpaque(opaque: () => () => 'magic');
+      expect(data, isNotNull);
+      expect(data2, isNull);
+      expect(data3, isNotNull);
+      expect(data4, isNotNull);
+      data3!.dispose();
+    });
+
+    test('void', () async {
+      api.syncVoid();
+    });
+
+    test('unwrapped dart opaque', () async {
+      String f() => "magic";
+      var res = api.returnNonDropableDartOpaque(opaque: f);
+      expect(identical(res, f), isTrue);
     });
   });
 }

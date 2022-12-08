@@ -434,10 +434,10 @@ pub struct DartOpaqueBase {
 }
 
 impl DartOpaqueBase {
-    pub fn new(handle: JsValue, port: JsValue) -> Self {
+    pub fn new(handle: JsValue, port: Option<JsValue>) -> Self {
         Self {
             inner: Box::new(handle),
-            drop_port: Some(port.dyn_ref::<BroadcastChannel>().unwrap().name()),
+            drop_port: port.map(|p| p.dyn_ref::<BroadcastChannel>().unwrap().name()),
         }
     }
 
@@ -449,7 +449,7 @@ impl DartOpaqueBase {
         Box::into_raw(self.inner)
     }
 
-    pub fn channel(&self) -> Channel {
-        Channel::new(PortLike::broadcast(self.drop_port.as_ref().unwrap()))
+    pub fn channel(&self) -> Option<Channel> {
+        Some(Channel::new(PortLike::broadcast(self.drop_port.as_ref()?)))
     }
 }

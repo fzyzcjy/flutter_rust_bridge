@@ -78,11 +78,27 @@ pub struct WireSyncReturnStruct {
 pub type WireSyncReturnStruct = wasm_bindgen::JsValue;
 
 /// Safe version of [`WireSyncReturnStruct`].
-pub struct WireSyncReturnData(pub(crate) Vec<u8>);
+pub struct WireSyncReturnData(pub(crate) Option<Vec<u8>>);
+
+impl From<()> for WireSyncReturnData {
+    fn from(_: ()) -> Self {
+        WireSyncReturnData(Some(vec![]))
+    }
+}
 
 impl From<Vec<u8>> for WireSyncReturnData {
     fn from(data: Vec<u8>) -> Self {
-        WireSyncReturnData(data)
+        WireSyncReturnData(Some(data))
+    }
+}
+
+impl<T: Into<WireSyncReturnData>> From<Option<T>> for WireSyncReturnData {
+    fn from(data: Option<T>) -> Self {
+        if let Some(data) = data {
+            data.into()
+        } else {
+            WireSyncReturnData(None)
+        }
     }
 }
 
@@ -113,4 +129,4 @@ macro_rules! primitive_to_sync_return {
 }
 
 // For simple types, use macro to implement [`From`] trait.
-primitive_to_sync_return!(u8, i8, u16, i16, u32, i32, u64, i64, f32, f64);
+primitive_to_sync_return!(u8, i8, u16, i16, u32, i32, u64, i64, f32, f64, usize);

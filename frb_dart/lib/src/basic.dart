@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/platform_independent.dart';
 import 'package:flutter_rust_bridge/src/utils.dart';
@@ -81,12 +80,14 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
     } catch (err, st) {
       throw FfiException('EXECUTE_SYNC_ABORT', '$err', st);
     }
+
+    var buffer = raw.buffer;
     if (raw.isSuccess) {
-      final result = task.parseSuccessData(raw.buffer);
+      final result = task.parseSuccessData(buffer);
       inner.free_WireSyncReturnStruct(raw);
       return result;
     } else {
-      final errMessage = utf8.decode(raw.buffer);
+      final errMessage = utf8.decode(buffer!);
       inner.free_WireSyncReturnStruct(raw);
       throw FfiException('EXECUTE_SYNC', errMessage, null);
     }
@@ -169,7 +170,7 @@ class FlutterRustBridgeSyncTask<S> extends FlutterRustBridgeBaseTask {
   final WireSyncReturnStruct Function() callFfi;
 
   /// Parse the returned data from the underlying function
-  final S Function(Uint8List) parseSuccessData;
+  final S Function(dynamic) parseSuccessData;
 
   const FlutterRustBridgeSyncTask({
     required this.callFfi,

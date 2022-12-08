@@ -81,6 +81,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  wire_NonSendHideData api2wire_NonSendHideData(NonSendHideData raw) {
+    final ptr = inner.new_NonSendHideData();
+    _api_fill_to_wire_NonSendHideData(raw, ptr);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_list_DartOpaque> api2wire_Object_array_1(ObjectArray1 raw) {
     return api2wire_list_DartOpaque(raw);
   }
@@ -713,6 +720,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   OpaqueTypeFinalizer get I32Finalizer => _I32Finalizer;
   late final OpaqueTypeFinalizer _MutexHideDataFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_MutexHideDataPtr);
   OpaqueTypeFinalizer get MutexHideDataFinalizer => _MutexHideDataFinalizer;
+  late final OpaqueTypeFinalizer _NonSendHideDataFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_NonSendHideDataPtr);
+  OpaqueTypeFinalizer get NonSendHideDataFinalizer => _NonSendHideDataFinalizer;
   late final OpaqueTypeFinalizer _RwLockHideDataFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_RwLockHideDataPtr);
   OpaqueTypeFinalizer get RwLockHideDataFinalizer => _RwLockHideDataFinalizer;
 // Section: api_fill_to_wire
@@ -735,6 +744,10 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   void _api_fill_to_wire_MutexHideData(MutexHideData apiObj, wire_MutexHideData wireObj) {
+    wireObj.ptr = apiObj.shareOrMove();
+  }
+
+  void _api_fill_to_wire_NonSendHideData(NonSendHideData apiObj, wire_NonSendHideData wireObj) {
     wireObj.ptr = apiObj.shareOrMove();
   }
 
@@ -2644,6 +2657,14 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_create_option_opaque =
       _wire_create_option_opaquePtr.asFunction<void Function(int, ffi.Pointer<wire_HideData>)>();
 
+  WireSyncReturnStruct wire_sync_create_opaque() {
+    return _wire_sync_create_opaque();
+  }
+
+  late final _wire_sync_create_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function()>>('wire_sync_create_opaque');
+  late final _wire_sync_create_opaque = _wire_sync_create_opaquePtr.asFunction<WireSyncReturnStruct Function()>();
+
   void wire_create_array_opaque_enum(
     int port_,
   ) {
@@ -2711,6 +2732,40 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_opaque_arrayPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_opaque_array');
   late final _wire_opaque_array = _wire_opaque_arrayPtr.asFunction<void Function(int)>();
 
+  void wire_create_sync_opaque(
+    int port_,
+  ) {
+    return _wire_create_sync_opaque(
+      port_,
+    );
+  }
+
+  late final _wire_create_sync_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_create_sync_opaque');
+  late final _wire_create_sync_opaque = _wire_create_sync_opaquePtr.asFunction<void Function(int)>();
+
+  WireSyncReturnStruct wire_sync_create_sync_opaque() {
+    return _wire_sync_create_sync_opaque();
+  }
+
+  late final _wire_sync_create_sync_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function()>>('wire_sync_create_sync_opaque');
+  late final _wire_sync_create_sync_opaque =
+      _wire_sync_create_sync_opaquePtr.asFunction<WireSyncReturnStruct Function()>();
+
+  WireSyncReturnStruct wire_sync_run_opaque(
+    wire_NonSendHideData opaque,
+  ) {
+    return _wire_sync_run_opaque(
+      opaque,
+    );
+  }
+
+  late final _wire_sync_run_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(wire_NonSendHideData)>>('wire_sync_run_opaque');
+  late final _wire_sync_run_opaque =
+      _wire_sync_run_opaquePtr.asFunction<WireSyncReturnStruct Function(wire_NonSendHideData)>();
+
   void wire_opaque_array_run(
     int port_,
     ffi.Pointer<wire_list_HideData> data,
@@ -2764,6 +2819,76 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_create_nested_opaquePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_create_nested_opaque');
   late final _wire_create_nested_opaque = _wire_create_nested_opaquePtr.asFunction<void Function(int)>();
+
+  WireSyncReturnStruct wire_sync_loopback(
+    wire_DartOpaque opaque,
+  ) {
+    return _wire_sync_loopback(
+      opaque,
+    );
+  }
+
+  late final _wire_sync_loopbackPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(wire_DartOpaque)>>('wire_sync_loopback');
+  late final _wire_sync_loopback = _wire_sync_loopbackPtr.asFunction<WireSyncReturnStruct Function(wire_DartOpaque)>();
+
+  WireSyncReturnStruct wire_sync_option_loopback(
+    ffi.Pointer<wire_DartOpaque> opaque,
+  ) {
+    return _wire_sync_option_loopback(
+      opaque,
+    );
+  }
+
+  late final _wire_sync_option_loopbackPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_DartOpaque>)>>(
+          'wire_sync_option_loopback');
+  late final _wire_sync_option_loopback =
+      _wire_sync_option_loopbackPtr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_DartOpaque>)>();
+
+  WireSyncReturnStruct wire_sync_option() {
+    return _wire_sync_option();
+  }
+
+  late final _wire_sync_optionPtr = _lookup<ffi.NativeFunction<WireSyncReturnStruct Function()>>('wire_sync_option');
+  late final _wire_sync_option = _wire_sync_optionPtr.asFunction<WireSyncReturnStruct Function()>();
+
+  WireSyncReturnStruct wire_sync_option_null() {
+    return _wire_sync_option_null();
+  }
+
+  late final _wire_sync_option_nullPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function()>>('wire_sync_option_null');
+  late final _wire_sync_option_null = _wire_sync_option_nullPtr.asFunction<WireSyncReturnStruct Function()>();
+
+  WireSyncReturnStruct wire_sync_option_rust_opaque() {
+    return _wire_sync_option_rust_opaque();
+  }
+
+  late final _wire_sync_option_rust_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function()>>('wire_sync_option_rust_opaque');
+  late final _wire_sync_option_rust_opaque =
+      _wire_sync_option_rust_opaquePtr.asFunction<WireSyncReturnStruct Function()>();
+
+  WireSyncReturnStruct wire_sync_option_dart_opaque(
+    wire_DartOpaque opaque,
+  ) {
+    return _wire_sync_option_dart_opaque(
+      opaque,
+    );
+  }
+
+  late final _wire_sync_option_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(wire_DartOpaque)>>('wire_sync_option_dart_opaque');
+  late final _wire_sync_option_dart_opaque =
+      _wire_sync_option_dart_opaquePtr.asFunction<WireSyncReturnStruct Function(wire_DartOpaque)>();
+
+  WireSyncReturnStruct wire_sync_void() {
+    return _wire_sync_void();
+  }
+
+  late final _wire_sync_voidPtr = _lookup<ffi.NativeFunction<WireSyncReturnStruct Function()>>('wire_sync_void');
+  late final _wire_sync_void = _wire_sync_voidPtr.asFunction<WireSyncReturnStruct Function()>();
 
   void wire_run_nested_opaque(
     int port_,
@@ -2886,6 +3011,20 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_unwrap_rust_opaquePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_HideData)>>('wire_unwrap_rust_opaque');
   late final _wire_unwrap_rust_opaque = _wire_unwrap_rust_opaquePtr.asFunction<void Function(int, wire_HideData)>();
+
+  WireSyncReturnStruct wire_return_non_dropable_dart_opaque(
+    wire_DartOpaque opaque,
+  ) {
+    return _wire_return_non_dropable_dart_opaque(
+      opaque,
+    );
+  }
+
+  late final _wire_return_non_dropable_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(wire_DartOpaque)>>(
+          'wire_return_non_dropable_dart_opaque');
+  late final _wire_return_non_dropable_dart_opaque =
+      _wire_return_non_dropable_dart_opaquePtr.asFunction<WireSyncReturnStruct Function(wire_DartOpaque)>();
 
   void wire_frb_generator_test(
     int port_,
@@ -3080,6 +3219,14 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
 
   late final _new_MutexHideDataPtr = _lookup<ffi.NativeFunction<wire_MutexHideData Function()>>('new_MutexHideData');
   late final _new_MutexHideData = _new_MutexHideDataPtr.asFunction<wire_MutexHideData Function()>();
+
+  wire_NonSendHideData new_NonSendHideData() {
+    return _new_NonSendHideData();
+  }
+
+  late final _new_NonSendHideDataPtr =
+      _lookup<ffi.NativeFunction<wire_NonSendHideData Function()>>('new_NonSendHideData');
+  late final _new_NonSendHideData = _new_NonSendHideDataPtr.asFunction<wire_NonSendHideData Function()>();
 
   wire_RwLockHideData new_RwLockHideData() {
     return _new_RwLockHideData();
@@ -3823,6 +3970,33 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _share_opaque_MutexHideData =
       _share_opaque_MutexHideDataPtr.asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
 
+  void drop_opaque_NonSendHideData(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _drop_opaque_NonSendHideData(
+      ptr,
+    );
+  }
+
+  late final _drop_opaque_NonSendHideDataPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>('drop_opaque_NonSendHideData');
+  late final _drop_opaque_NonSendHideData =
+      _drop_opaque_NonSendHideDataPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> share_opaque_NonSendHideData(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _share_opaque_NonSendHideData(
+      ptr,
+    );
+  }
+
+  late final _share_opaque_NonSendHideDataPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
+          'share_opaque_NonSendHideData');
+  late final _share_opaque_NonSendHideData =
+      _share_opaque_NonSendHideDataPtr.asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
+
   void drop_opaque_RwLockHideData(
     ffi.Pointer<ffi.Void> ptr,
   ) {
@@ -4429,6 +4603,10 @@ class wire_EnumOpaque extends ffi.Struct {
   external int tag;
 
   external ffi.Pointer<EnumOpaqueKind> kind;
+}
+
+class wire_NonSendHideData extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> ptr;
 }
 
 class wire_list_HideData extends ffi.Struct {

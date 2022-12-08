@@ -47,7 +47,7 @@ pub use dart_api::*;
 #[cfg(not(wasm))]
 pub use io::*;
 
-use crate::DartSafe;
+use crate::{support::WireSyncReturnData, DartSafe};
 
 /// see [uuid::Bytes](https://docs.rs/uuid/1.1.2/uuid/type.Bytes.html)
 #[cfg(feature = "uuid")]
@@ -79,7 +79,7 @@ pub fn wire2api_uuids(ids: Vec<u8>) -> Vec<uuid::Uuid> {
 
 /// A wrapper to transfer ownership of T to Dart.
 ///
-/// This type is equivalent to an [`Arc<T>`]. The inner pointer may
+/// This type is equivalent to an [`Option<Arc<T>>`]. The inner pointer may
 /// be None if a nullptr is received from Dart, signifying that this pointer
 /// has been disposed.
 ///
@@ -171,6 +171,19 @@ impl<T: DartSafe> RustOpaque<T> {
     }
 }
 
+impl<T: DartSafe> From<RustOpaque<T>> for WireSyncReturnData {
+    fn from(data: RustOpaque<T>) -> Self {
+        let ptr = if let Some(ptr) = data.ptr {
+            Arc::into_raw(ptr)
+        } else {
+            std::ptr::null()
+        } as u64;
+
+        let size = mem::size_of::<T>() as u64;
+        WireSyncReturnData(Some([ptr.to_be_bytes(), size.to_be_bytes()].concat()))
+    }
+}
+
 impl<T: DartSafe> From<RustOpaque<T>> for DartAbi {
     fn from(value: RustOpaque<T>) -> Self {
         let ptr = if let Some(ptr) = value.ptr {
@@ -202,9 +215,28 @@ unsafe impl Sync for DartOpaque {}
 
 impl DartOpaque {
     /// Creates a new [DartOpaque].
-    pub fn new(handle: DartObject, port: OpaqueMessagePort) -> Self {
+    ///
+    /// # Safety
+    ///
+    /// The [DartObject] must be created on the current thread.
+    pub unsafe fn new(handle: DartObject, port: OpaqueMessagePort) -> Self {
         Self {
-            handle: Some(DartOpaqueBase::new(handle, port)),
+            handle: Some(DartOpaqueBase::new(handle, Some(port))),
+            thread_id: std::thread::current().id(),
+        }
+    }
+
+    /// Creates a [DartOpaque] for sending to dart.
+    ///
+    /// # Safety
+    ///
+    /// The [DartObject] must be created on the current thread.
+    ///
+    /// The [DartOpaque] created by this method must not be dropped
+    /// on a non-parent [DartObject] thread.
+    pub unsafe fn new_non_droppable(handle: DartObject) -> Self {
+        Self {
+            handle: Some(DartOpaqueBase::new(handle, None)),
             thread_id: std::thread::current().id(),
         }
     }
@@ -226,16 +258,29 @@ impl From<DartOpaque> for DartAbi {
     }
 }
 
+impl From<DartOpaque> for WireSyncReturnData {
+    fn from(mut data: DartOpaque) -> Self {
+        WireSyncReturnData(Some(
+            (data.handle.take().unwrap().into_raw() as u64)
+                .to_be_bytes()
+                .to_vec(),
+        ))
+    }
+}
+
 impl Drop for DartOpaque {
     fn drop(&mut self) {
         if let Some(inner) = self.handle.take() {
             if std::thread::current().id() != self.thread_id {
-                let channel = inner.channel();
-                let ptr = inner.into_raw();
+                if let Some(channel) = inner.channel() {
+                    let ptr = inner.into_raw();
 
-                if !channel.post(ptr) {
-                    warn!("Drop DartOpaque after closing the port.");
-                };
+                    if !channel.post(ptr) {
+                        warn!("Drop DartOpaque after closing the port.");
+                    };
+                } else {
+                    warn!("Drop non dropable DartOpaque.");
+                }
             }
         }
     }
