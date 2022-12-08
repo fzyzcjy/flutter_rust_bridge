@@ -15,11 +15,13 @@ typedef DartPostCObject = ffi.Pointer<
     ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>;
 
 int getPlatformUsize(Uint8List data) {
+  assert(data.length == pointerLength);
   // Rust SyncReturn<usize> type is forced cast to u64.
   return ByteData.view(data.buffer).getUint64(0);
 }
 
 Tuple2<int, int> parseOpaquePtrAndSizeFrom(Uint8List data) {
+  assert(data.length == 2 * pointerLength);
   return Tuple2(
     ByteData.view(data.buffer).getUint64(0),
     ByteData.view(data.buffer).getUint64(syncReturnPointerLength),
