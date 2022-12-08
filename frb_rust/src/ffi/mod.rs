@@ -177,9 +177,9 @@ impl<T: DartSafe> From<RustOpaque<T>> for WireSyncReturnData {
             Arc::into_raw(ptr)
         } else {
             std::ptr::null()
-        } as usize;
+        } as u64;
 
-        let size = mem::size_of::<T>();
+        let size = mem::size_of::<T>() as u64;
         WireSyncReturnData(Some([ptr.to_be_bytes(), size.to_be_bytes()].concat()))
     }
 }
@@ -261,7 +261,7 @@ impl From<DartOpaque> for DartAbi {
 impl From<DartOpaque> for WireSyncReturnData {
     fn from(mut data: DartOpaque) -> Self {
         WireSyncReturnData(Some(
-            (data.handle.take().unwrap().into_raw() as usize)
+            (data.handle.take().unwrap().into_raw() as u64)
                 .to_be_bytes()
                 .to_vec(),
         ))

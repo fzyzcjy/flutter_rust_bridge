@@ -9,21 +9,15 @@ export 'ffi/stub.dart'
 
 typedef DropFnType = void Function(PlatformPointer);
 typedef ShareFnType = PlatformPointer Function(PlatformPointer);
-
-late int _pointerByteLength;
-// ignore: unnecessary_late
-late final _getPlatformUsize = _pointerByteLength == 8
-    ? (Uint8List data) => ByteData.view(data.buffer).getUint64(0)
-    : (Uint8List data) => ByteData.view(data.buffer).getUint32(0);
+/// Rust SyncReturn<usize> type is forced cast to u64.
+const pointerLength = 8;
 
 int getPlatformUsize(Uint8List data) {
-  _pointerByteLength = data.length;
-  return _getPlatformUsize(data);
+  // Rust SyncReturn<usize> type is forced cast to u64.
+  return ByteData.view(data.buffer).getUint64(0);
 }
 
 Tuple2<int, int> parseOpaquePtrAndSizeFrom(Uint8List data) {
-  var pointerLength = data.length ~/ 2;
-
   var ptrList = List.filled(pointerLength, 0);
   List.copyRange(ptrList, 0, data, 0, pointerLength);
 
