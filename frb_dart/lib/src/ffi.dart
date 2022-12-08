@@ -9,7 +9,7 @@ typedef DropFnType = void Function(PlatformPointer);
 typedef ShareFnType = PlatformPointer Function(PlatformPointer);
 
 /// Rust SyncReturn<usize> type is forced cast to u64.
-const pointerLength = 8;
+const syncReturnPointerLength = 8;
 
 /// An opaque pointer to a native C or Rust type.
 /// Recipients of this type should call [dispose] at least once during runtime.

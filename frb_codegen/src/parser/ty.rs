@@ -205,19 +205,9 @@ impl<'a> TypeParser<'a> {
                             Boxed(inner)
                                 if inner.inner.is_rust_opaque() || inner.inner.is_dart_opaque() =>
                             {
-                                match *inner.inner {
-                                    RustOpaque(opaque) => {
-                                        Some(SyncReturn(IrTypeSyncReturn::Option(Box::new(
-                                            IrTypeSyncReturn::RustOpaque(opaque),
-                                        ))))
-                                    }
-                                    DartOpaque(opaque) => {
-                                        Some(SyncReturn(IrTypeSyncReturn::Option(Box::new(
-                                            IrTypeSyncReturn::DartOpaque(opaque),
-                                        ))))
-                                    }
-                                    _ => None,
-                                }
+                                Some(SyncReturn(IrTypeSyncReturn::Option(Box::new(non_option(
+                                    Some(*inner.inner),
+                                )?))))
                             }
                             _ => None,
                         },

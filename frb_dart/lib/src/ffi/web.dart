@@ -114,6 +114,7 @@ abstract class FlutterRustBridgeWireBase {
   }
 }
 
+const int _webPointerLength = 4;
 typedef WireSyncReturnStruct = List<dynamic>;
 
 extension WireSyncReturnStructExt on WireSyncReturnStruct {
@@ -122,13 +123,14 @@ extension WireSyncReturnStructExt on WireSyncReturnStruct {
 }
 
 int getPlatformUsize(Uint8List data) {
-  return ByteData.view(data.buffer).getUint32(4);
+  return ByteData.view(data.buffer).getUint32(_webPointerLength);
 }
 
 Tuple2<int, int> parseOpaquePtrAndSizeFrom(Uint8List data) {
   return Tuple2(
-    ByteData.view(data.buffer).getUint32(4),
-    ByteData.view(data.buffer).getUint32(4 + pointerLength),
+    ByteData.view(data.buffer).getUint32(_webPointerLength),
+    ByteData.view(data.buffer)
+        .getUint32(_webPointerLength + syncReturnPointerLength),
   );
 }
 
