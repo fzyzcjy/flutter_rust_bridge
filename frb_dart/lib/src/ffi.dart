@@ -1,7 +1,5 @@
-import 'dart:typed_data';
 import 'package:meta/meta.dart';
 import 'ffi/io.dart' if (dart.library.html) 'ffi/web.dart';
-import 'package:tuple/tuple.dart';
 
 export 'ffi/stub.dart'
     if (dart.library.io) 'ffi/io.dart'
@@ -11,22 +9,6 @@ typedef DropFnType = void Function(PlatformPointer);
 typedef ShareFnType = PlatformPointer Function(PlatformPointer);
 /// Rust SyncReturn<usize> type is forced cast to u64.
 const pointerLength = 8;
-
-int getPlatformUsize(Uint8List data) {
-  // Rust SyncReturn<usize> type is forced cast to u64.
-  return ByteData.view(data.buffer).getUint64(0);
-}
-
-Tuple2<int, int> parseOpaquePtrAndSizeFrom(Uint8List data) {
-  var ptrList = List.filled(pointerLength, 0);
-  List.copyRange(ptrList, 0, data, 0, pointerLength);
-
-  var sizeList = List.filled(pointerLength, 0);
-  List.copyRange(sizeList, 0, data, pointerLength, pointerLength * 2);
-
-  return Tuple2(getPlatformUsize(Uint8List.fromList(ptrList)),
-      getPlatformUsize(Uint8List.fromList(sizeList)));
-}
 
 /// An opaque pointer to a native C or Rust type.
 /// Recipients of this type should call [dispose] at least once during runtime.

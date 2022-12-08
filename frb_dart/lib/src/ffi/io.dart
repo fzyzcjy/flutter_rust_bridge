@@ -3,6 +3,7 @@ import 'dart:ffi';
 export 'dart:ffi' show NativePort, DynamicLibrary;
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:tuple/tuple.dart';
 
 export 'stub.dart'
     show castInt, castNativeBigInt, FlutterRustBridgeWireBase, WasmModule;
@@ -12,6 +13,16 @@ typedef NativePortType = int;
 typedef ExternalLibrary = ffi.DynamicLibrary;
 typedef DartPostCObject = ffi.Pointer<
     ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>;
+
+int getPlatformUsize(Uint8List data) {
+  // Rust SyncReturn<usize> type is forced cast to u64.
+  return ByteData.view(data.buffer).getUint64(0);
+}
+
+Tuple2<int, int> parseOpaquePtrAndSizeFrom(Uint8List data) {
+  return Tuple2(ByteData.view(data.buffer).getUint64(0),
+      ByteData.view(data.buffer).getUint64(pointerLength),);
+}
 
 extension StoreDartPostCObjectExt on FlutterRustBridgeWireBase {
   void storeDartPostCObject() {
