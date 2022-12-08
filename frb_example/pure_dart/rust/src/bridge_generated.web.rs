@@ -876,7 +876,8 @@ impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
     fn wire2api(self) -> chrono::DateTime<chrono::Local> {
         let Timestamp { s, ns } = wire2api_timestamp(self);
         chrono::DateTime::<chrono::Local>::from(chrono::DateTime::<chrono::Utc>::from_utc(
-            chrono::NaiveDateTime::from_timestamp(s, ns),
+            chrono::NaiveDateTime::from_timestamp_opt(s, ns)
+                .expect("naive date time should not be empty"),
             chrono::Utc,
         ))
     }
@@ -884,14 +885,16 @@ impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
 impl Wire2Api<chrono::NaiveDateTime> for i64 {
     fn wire2api(self) -> chrono::NaiveDateTime {
         let Timestamp { s, ns } = wire2api_timestamp(self);
-        chrono::NaiveDateTime::from_timestamp(s, ns)
+        chrono::NaiveDateTime::from_timestamp_opt(s, ns)
+            .expect("naive date time should not be empty")
     }
 }
 impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
     fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
         let Timestamp { s, ns } = wire2api_timestamp(self);
         chrono::DateTime::<chrono::Utc>::from_utc(
-            chrono::NaiveDateTime::from_timestamp(s, ns),
+            chrono::NaiveDateTime::from_timestamp_opt(s, ns)
+                .expect("naive date time should not be empty"),
             chrono::Utc,
         )
     }
