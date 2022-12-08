@@ -1,3 +1,7 @@
+## 1.54.0
+
+* Extend `SyncReturn` to support `RustOpaque`, `DartOpaque`, `Option` and so on #876 (thanks @rogurotus)
+
 ## 1.53.0
 
 * Add Dart opaque types, allowing to use any Dart objects in Rust code #853 (thanks @rogurotus)
