@@ -21,6 +21,7 @@ int getPlatformUsize(Uint8List data) {
 }
 
 Tuple2<int, int> parseOpaquePtrAndSizeFrom(Uint8List data) {
+  assert(data.length == 2 * pointerLength);
   return Tuple2(
     ByteData.view(data.buffer).getUint64(0),
     ByteData.view(data.buffer).getUint64(pointerLength),
