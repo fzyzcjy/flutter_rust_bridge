@@ -49,6 +49,14 @@ pub trait TypeRustGeneratorTrait {
         Acc::default()
     }
 
+    fn related_funcs(
+        &self,
+        _collector: &mut ExternFuncCollector,
+        _block_index: BlockIndex,
+    ) -> Acc<Option<String>> {
+        Acc::default()
+    }
+
     fn impl_intodart(&self) -> String {
         "".to_string()
     }
@@ -91,6 +99,8 @@ pub enum TypeRustGenerator<'a> {
     Boxed(TypeBoxedGenerator<'a>),
     EnumRef(TypeEnumRefGenerator<'a>),
     SyncReturn(TypeSyncReturnGenerator<'a>),
+    DartOpaque(TypeDartOpaqueGenerator<'a>),
+    RustOpaque(TypeRustOpaqueGenerator<'a>),
 }
 
 impl<'a> TypeRustGenerator<'a> {
@@ -106,6 +116,8 @@ impl<'a> TypeRustGenerator<'a> {
             Boxed(ir) => TypeBoxedGenerator { ir, context }.into(),
             EnumRef(ir) => TypeEnumRefGenerator { ir, context }.into(),
             SyncReturn(ir) => TypeSyncReturnGenerator { ir, context }.into(),
+            DartOpaque(ir) => TypeDartOpaqueGenerator { ir, context }.into(),
+            RustOpaque(ir) => TypeRustOpaqueGenerator { ir, context }.into(),
         }
     }
 }

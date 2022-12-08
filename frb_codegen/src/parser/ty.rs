@@ -52,6 +52,8 @@ pub enum SupportedInnerType {
     Path(SupportedPathType),
     /// Array type
     Array(Box<Self>, usize),
+    /// Unparsed type, only useful for Opaque.
+    Verbatim(Box<syn::Type>),
     /// The unit type `()`.
     Unit,
 }
@@ -61,6 +63,7 @@ impl std::fmt::Display for SupportedInnerType {
         match self {
             Self::Path(p) => write!(f, "{}", p),
             Self::Array(u, len) => write!(f, "[{}; {}]", u, len),
+            Self::Verbatim(ver) => write!(f, "{}", quote::quote!(#ver)),
             Self::Unit => write!(f, "()"),
         }
     }
@@ -109,7 +112,7 @@ impl SupportedInnerType {
                             generic,
                         }))
                     }
-                    _ => None,
+                    _ => Some(SupportedInnerType::Verbatim(Box::new(ty.clone()))),
                 }
             }
             syn::Type::Array(syn::TypeArray { elem, len, .. }) => {
@@ -128,7 +131,7 @@ impl SupportedInnerType {
             syn::Type::Tuple(syn::TypeTuple { elems, .. }) if elems.is_empty() => {
                 Some(SupportedInnerType::Unit)
             }
-            _ => None,
+            _ => Some(SupportedInnerType::Verbatim(Box::new(ty.clone()))),
         }
     }
 }
@@ -148,6 +151,7 @@ impl<'a> TypeParser<'a> {
             SupportedInnerType::Path(p) => self.convert_path_to_ir_type(p),
             SupportedInnerType::Array(p, len) => self.convert_array_to_ir_type(*p, len),
             SupportedInnerType::Unit => Some(IrType::Primitive(IrTypePrimitive::Unit)),
+            SupportedInnerType::Verbatim(_) => None,
         }
     }
 
@@ -177,19 +181,39 @@ impl<'a> TypeParser<'a> {
         let ident_string = &p.ident.to_string();
         if let Some(generic) = p.generic {
             match ident_string.as_str() {
-                "SyncReturn" => match self.convert_to_ir_type(*generic) {
-                    Some(Primitive(primitive)) => {
-                        Some(SyncReturn(IrTypeSyncReturn::Primitive(primitive)))
-                    }
-                    Some(Delegate(IrTypeDelegate::String)) => {
-                        Some(SyncReturn(IrTypeSyncReturn::String))
-                    }
-                    Some(PrimitiveList(primitive)) => match primitive.primitive {
-                        IrTypePrimitive::U8 => Some(SyncReturn(IrTypeSyncReturn::VecU8)),
+                "SyncReturn" => {
+                    let ir_type = self.convert_to_ir_type(*generic);
+                    let non_option = |ir_type: Option<IrType>| match ir_type {
+                        Some(Primitive(primitive)) => Some(IrTypeSyncReturn::Primitive(primitive)),
+                        Some(Delegate(IrTypeDelegate::String)) => Some(IrTypeSyncReturn::String),
+                        Some(PrimitiveList(primitive)) => match primitive.primitive {
+                            IrTypePrimitive::U8 => Some(IrTypeSyncReturn::VecU8),
+                            _ => None,
+                        },
+                        Some(RustOpaque(opaque)) => Some(IrTypeSyncReturn::RustOpaque(opaque)),
+                        Some(DartOpaque(opaque)) => Some(IrTypeSyncReturn::DartOpaque(opaque)),
                         _ => None,
-                    },
-                    _ => None,
-                },
+                    };
+
+                    match ir_type {
+                        Some(Optional(option)) => match *option.inner {
+                            Primitive(_) | Delegate(_) | PrimitiveList(_) => {
+                                Some(SyncReturn(IrTypeSyncReturn::Option(Box::new(non_option(
+                                    Some(*option.inner),
+                                )?))))
+                            }
+                            Boxed(inner)
+                                if inner.inner.is_rust_opaque() || inner.inner.is_dart_opaque() =>
+                            {
+                                Some(SyncReturn(IrTypeSyncReturn::Option(Box::new(non_option(
+                                    Some(*inner.inner),
+                                )?))))
+                            }
+                            _ => None,
+                        },
+                        ty => Some(SyncReturn(non_option(ty)?)),
+                    }
+                }
                 "Vec" => match *generic {
                     // Special-case Vec<String> as StringList
                     SupportedInnerType::Path(SupportedPathType { ref ident, .. })
@@ -221,6 +245,18 @@ impl<'a> TypeParser<'a> {
                         None
                     }
                 }
+                "RustOpaque" => match *generic {
+                    SupportedInnerType::Array(p, len) => self.convert_array_to_ir_type(*p, len),
+                    SupportedInnerType::Verbatim(ver) => {
+                        Some(IrType::RustOpaque(IrTypeRustOpaque::from(ver.as_ref())))
+                    }
+                    SupportedInnerType::Path(path) => {
+                        Some(IrType::RustOpaque(IrTypeRustOpaque::from(path.to_string())))
+                    }
+                    SupportedInnerType::Unit => {
+                        Some(IrType::RustOpaque(IrTypeRustOpaque::new_unit()))
+                    }
+                },
                 "Box" => self.convert_to_ir_type(*generic).map(|inner| {
                     Boxed(IrTypeBoxed {
                         exist_in_real_api: true,
@@ -241,6 +277,18 @@ impl<'a> TypeParser<'a> {
                         st @ StructRef(_) => {
                             IrType::Optional(IrTypeOptional::new(Boxed(IrTypeBoxed {
                                 inner: Box::new(st),
+                                exist_in_real_api: false,
+                            })))
+                        }
+                        op @ RustOpaque(_) => {
+                            IrType::Optional(IrTypeOptional::new(Boxed(IrTypeBoxed {
+                                inner: Box::new(op),
+                                exist_in_real_api: false,
+                            })))
+                        }
+                        dop @ DartOpaque(_) => {
+                            IrType::Optional(IrTypeOptional::new(Boxed(IrTypeBoxed {
+                                inner: Box::new(dop),
                                 exist_in_real_api: false,
                             })))
                         }
@@ -271,6 +319,10 @@ impl<'a> TypeParser<'a> {
             if ident_string.as_str() == "Uuid" {
                 return Some(Delegate(IrTypeDelegate::Uuid));
             }
+            if ident_string.as_str() == "DartOpaque" {
+                return Some(DartOpaque(IrTypeDartOpaque {}));
+            }
+
             IrTypePrimitive::try_from_rust_str(ident_string)
                 .map(Primitive)
                 .or_else(|| {

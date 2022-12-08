@@ -64,7 +64,7 @@ pub struct RawOpts {
     pub verbose: bool,
     /// Enable WASM module generation.
     /// Requires: --dart-decl-output
-    #[clap(long, requires = "dart-decl-output")]
+    #[clap(long)]
     pub wasm: bool,
     /// Inline declaration of Rust bridge modules
     #[clap(long)]

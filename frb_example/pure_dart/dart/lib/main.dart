@@ -18,6 +18,7 @@ void main(List<String> args) async {
   print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
   print('construct api');
   final api = initializeExternalLibrary(dylibPath);
+  tearDownAll(() => api.dispose());
 
   test('dart call simpleAdder', () async {
     expect(await api.simpleAdder(a: 42, b: 100), 142);
@@ -689,6 +690,358 @@ void main(List<String> args) async {
       expect(nestedId[1].field0[1], 40);
     });
   });
+
+  group('dart opaque type', () {
+    String f() => 'Test_String';
+
+    test('loopback', () async {
+      await api.loopBackArrayGet(opaque: await api.loopBackArray(opaque: f));
+      await api.loopBackVecGet(opaque: await api.loopBackVec(opaque: f));
+      await api.loopBackOptionGet(opaque: await api.loopBackOption(opaque: f));
+
+      var syncBack = api.syncLoopback(opaque: f);
+      expect(identical(api.syncOptionLoopback(opaque: syncBack), f), isTrue);
+      expect(api.syncOptionLoopback(opaque: null), isNull);
+
+      var back1 = await api.loopBack(opaque: f) as String Function();
+      expect(back1(), 'Test_String');
+      var back2 = await api.loopBack(opaque: back1) as String Function();
+      expect(back2(), 'Test_String');
+      expect(identical(back2, f), isTrue);
+    });
+
+    test('drop', () async {
+      expect(await api.asyncAcceptDartOpaque(opaque: createLargeList(mb: 200)), 'async test');
+      expect(api.syncAcceptDartOpaque(opaque: createLargeList(mb: 200)), 'test');
+    });
+
+    test('unwrap', () async {
+      expect(api.unwrapDartOpaque(opaque: createLargeList(mb: 200)), 'Test');
+      await expectLater(
+          () => api.panicUnwrapDartOpaque(opaque: createLargeList(mb: 200)), throwsA(isA<FfiException>()));
+    });
+
+    test('nested', () async {
+      var str = await api.createNestedDartOpaque(opaque1: f, opaque2: f);
+      await api.getNestedDartOpaque(opaque: str);
+    });
+
+    test('enum', () async {
+      var en = await api.createEnumDartOpaque(opaque: f);
+      await api.getEnumDartOpaque(opaque: en);
+    });
+
+    test('nested', () async {
+      var str = await api.createNestedDartOpaque(opaque1: f, opaque2: f);
+      await api.getNestedDartOpaque(opaque: str);
+    });
+
+    test('enum', () async {
+      var en = await api.createEnumDartOpaque(opaque: f);
+      await api.getEnumDartOpaque(opaque: en);
+    });
+  });
+
+  group('rust opaque type', () {
+    test('create and dispose', () async {
+      var futureData = api.createOpaque();
+      var data = await api.createOpaque();
+      data.dispose();
+      (await futureData).dispose();
+    });
+
+    test('simple call', () async {
+      var opaque = await api.createOpaque();
+      var hideData = await api.runOpaque(opaque: opaque);
+
+      expect(
+          hideData,
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      opaque.dispose();
+    });
+
+    test('double Call', () async {
+      var data = await api.createOpaque();
+      expect(
+          await api.runOpaque(opaque: data),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      expect(
+          await api.runOpaque(opaque: data),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      data.dispose();
+    });
+
+    test('call after dispose', () async {
+      var data = await api.createOpaque();
+      expect(
+          await api.runOpaque(opaque: data),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      data.dispose();
+      await expectLater(() => api.runOpaque(opaque: data), throwsA(isA<FfiException>()));
+    });
+
+    test('dispose before complete', () async {
+      var data = await api.createOpaque();
+      var task = api.runOpaqueWithDelay(opaque: data);
+      data.dispose();
+      expect(
+          await task,
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      await expectLater(() => api.runOpaque(opaque: data), throwsA(isA<FfiException>()));
+    });
+
+    test('create array of opaque type', () async {
+      var data = await api.opaqueArray();
+      for (var v in data) {
+        expect(
+            await api.runOpaque(opaque: v),
+            "content - Some(PrivateData "
+            "{"
+            " content: \"content nested\", "
+            "primitive: 424242, "
+            "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+            "lifetime: \"static str\" "
+            "})");
+        v.dispose();
+        await expectLater(() => api.runOpaque(opaque: v), throwsA(isA<FfiException>()));
+      }
+    });
+
+    test('create enums of opaque type', () async {
+      var data = await api.createArrayOpaqueEnum();
+
+      expect(
+          await api.runEnumOpaque(opaque: data[0]),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      (data[0] as EnumOpaque_Struct).field0.dispose();
+
+      expect(await api.runEnumOpaque(opaque: data[1]), "42");
+      (data[1] as EnumOpaque_Primitive).field0.dispose();
+
+      expect(await api.runEnumOpaque(opaque: data[2]), "\"String\"");
+      (data[2] as EnumOpaque_TraitObj).field0.dispose();
+
+      expect(
+          await api.runEnumOpaque(opaque: data[3]),
+          "\"content - Some(PrivateData "
+          "{"
+          " content: \\\"content nested\\\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \\\"static str\\\" "
+          "})\"");
+      (data[3] as EnumOpaque_Mutex).field0.dispose();
+
+      expect(
+          await api.runEnumOpaque(opaque: data[4]),
+          "\"content - Some(PrivateData "
+          "{"
+          " content: \\\"content nested\\\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \\\"static str\\\" "
+          "})\"");
+      (data[4] as EnumOpaque_RwLock).field0.dispose();
+      await expectLater(() => api.runEnumOpaque(opaque: data[4]), throwsA(isA<FfiException>()));
+    });
+
+    test('opaque field', () async {
+      var data = await api.createNestedOpaque();
+      await api.runNestedOpaque(opaque: data);
+
+      expect(
+          await api.runOpaque(opaque: data.first),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      expect(
+          await api.runOpaque(opaque: data.second),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      data.first.dispose();
+      await expectLater(() => api.runOpaque(opaque: data.first), throwsA(isA<FfiException>()));
+      await expectLater(() => api.runNestedOpaque(opaque: data), throwsA(isA<FfiException>()));
+      expect(
+          await api.runOpaque(opaque: data.second),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      data.second.dispose();
+    });
+
+    test('array', () async {
+      var data = await api.opaqueArray();
+      await api.opaqueArrayRun(data: data);
+      data[0].dispose();
+
+      expect(
+          await api.runOpaque(opaque: data[1]),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+
+      await expectLater(() => api.opaqueArrayRun(data: data), throwsA(isA<FfiException>()));
+      data[1].dispose();
+    });
+
+    test('vec', () async {
+      var data = await api.opaqueVec();
+      await api.opaqueVecRun(data: data);
+      data[0].dispose();
+
+      expect(
+          await api.runOpaque(opaque: data[1]),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+
+      await expectLater(() => api.opaqueVecRun(data: data), throwsA(isA<FfiException>()));
+      data[1].dispose();
+    });
+
+    test('unwrap', () async {
+      var data = await api.createOpaque();
+      data.move = true;
+      expect(
+          await api.unwrapRustOpaque(opaque: data),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      expect(data.isStale(), isTrue);
+
+      var data2 = await api.createOpaque();
+      await expectLater(() => api.unwrapRustOpaque(opaque: data2), throwsA(isA<FfiException>()));
+      expect(data2.isStale(), isFalse);
+    });
+  });
+
+  group('extended sync', () {
+    test('create', () {
+      var data = api.syncCreateOpaque();
+      data.dispose();
+    });
+
+    test('double call', () {
+      var data = api.syncCreateSyncOpaque();
+      expect(
+          api.syncRunOpaque(opaque: data),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      expect(
+          api.syncRunOpaque(opaque: data),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      data.dispose();
+    });
+
+    test('call after drop', () {
+      var data = api.syncCreateSyncOpaque();
+      expect(
+          api.syncRunOpaque(opaque: data),
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      data.dispose();
+      expect(() => api.syncRunOpaque(opaque: data), throwsA(isA<FfiException>()));
+    });
+
+    test('option', () async {
+      var data = api.syncOption();
+      var data2 = api.syncOptionNull();
+      var data3 = api.syncOptionRustOpaque();
+      var data4 = api.syncOptionDartOpaque(opaque: () => () => 'magic');
+      expect(data, isNotNull);
+      expect(data2, isNull);
+      expect(data3, isNotNull);
+      expect(data4, isNotNull);
+      data3!.dispose();
+    });
+
+    test('void', () async {
+      api.syncVoid();
+    });
+
+    test('unwrapped dart opaque', () async {
+      String f() => "magic";
+      var res = api.returnNonDropableDartOpaque(opaque: f);
+      expect(identical(res, f), isTrue);
+    });
+  });
 }
 
 int _createGarbage() {
@@ -741,5 +1094,7 @@ class MatchBigInt extends CustomMatcher {
     return actual;
   }
 }
+
+Uint8List createLargeList({required int mb}) => Uint8List(1000000 * mb);
 
 // vim:expandtab:ts=2:sw=2

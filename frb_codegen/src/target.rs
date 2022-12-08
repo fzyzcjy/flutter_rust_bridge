@@ -49,6 +49,14 @@ impl<T> std::ops::AddAssign for Acc<Vec<T>> {
     }
 }
 
+impl<T> Extend<Acc<T>> for Acc<Vec<T>> {
+    fn extend<A: IntoIterator<Item = Acc<T>>>(&mut self, iter: A) {
+        for i in iter {
+            self.push_acc(i)
+        }
+    }
+}
+
 impl<T> FromIterator<Acc<T>> for Acc<Vec<T>> {
     fn from_iter<A: IntoIterator<Item = Acc<T>>>(iter: A) -> Self {
         iter.into_iter()

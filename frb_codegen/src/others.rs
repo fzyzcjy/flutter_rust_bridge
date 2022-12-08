@@ -18,6 +18,10 @@ pub const DUMMY_WIRE_CODE_FOR_BINDGEN: &str = r#"
     pub type DartPort = i64;
     pub type DartPostCObjectFnType = unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool;
     #[no_mangle] pub unsafe extern "C" fn store_dart_post_cobject(ptr: DartPostCObjectFnType) { panic!("dummy code") }
+    #[no_mangle] pub unsafe extern "C" fn get_dart_object(ptr: usize) -> Dart_Handle { panic!("dummy code") }
+    #[no_mangle] pub unsafe extern "C" fn drop_dart_object(ptr: usize) { panic!("dummy code") }
+    #[no_mangle] pub unsafe extern "C" fn new_dart_opaque(handle: Dart_Handle) -> usize { panic!("dummy code") }
+    #[no_mangle] pub unsafe extern "C" fn init_frb_dart_api_dl(obj: *mut c_void) -> isize { panic!("dummy code") }
 
     // copied from: frb_rust::support.rs
     #[repr(C)]
@@ -31,8 +35,12 @@ pub const DUMMY_WIRE_CODE_FOR_BINDGEN: &str = r#"
     "#;
 
 lazy_static! {
-    pub static ref EXTRA_EXTERN_FUNC_NAMES: Vec<String> =
-        vec!["store_dart_post_cobject".to_string()];
+    pub static ref EXTRA_EXTERN_FUNC_NAMES: Vec<String> = vec![
+        "store_dart_post_cobject".to_owned(),
+        "get_dart_object".to_owned(),
+        "drop_dart_object".to_owned(),
+        "new_dart_opaque".to_owned()
+    ];
 }
 
 pub fn code_header() -> String {
@@ -47,7 +55,9 @@ pub fn modify_dart_wire_content(content_raw: &str, dart_wire_class_name: &str) -
     let content = content_raw.replace(
         &format!("class {} {{", dart_wire_class_name),
         &format!(
-            "class {} implements FlutterRustBridgeWireBase {{",
+            "class {} implements FlutterRustBridgeWireBase {{
+            @internal
+            late final dartApi = DartApiDl(init_frb_dart_api_dl);",
             dart_wire_class_name
         ),
     );

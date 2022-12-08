@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/platform_independent.dart';
 import 'package:flutter_rust_bridge/src/utils.dart';
@@ -13,6 +12,14 @@ export 'isolate.dart';
 final _instances = <Type>{};
 final _streamSinkNameIndex = <String, int>{};
 
+class _DropIdPortGenerator {
+  static final instance = _DropIdPortGenerator._();
+  _DropIdPortGenerator._();
+
+  int nextPort = 0;
+  String create() => '__frb_dart_opaque_drop_${nextPort++}';
+}
+
 /// Base class for generated bindings of Flutter Rust Bridge.
 /// Normally, users do not extend this class manually. Instead,
 /// users should directly use the generated class.
@@ -24,6 +31,21 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 
   @protected
   final T inner;
+
+  late final _dropPort = _initDropPort();
+  NativePortType get dropPort => _dropPort.sendPort.nativePort;
+
+  ReceivePort _initDropPort() {
+    var port = broadcastPort(_DropIdPortGenerator.instance.create());
+    port.listen((message) {
+      inner.drop_dart_object(message);
+    });
+    return port;
+  }
+
+  void dispose() {
+    _dropPort.close();
+  }
 
   void _sanityCheckSingleton() {
     if (_instances.contains(runtimeType)) {
@@ -58,12 +80,14 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
     } catch (err, st) {
       throw FfiException('EXECUTE_SYNC_ABORT', '$err', st);
     }
+
+    var buffer = raw.buffer;
     if (raw.isSuccess) {
-      final result = task.parseSuccessData(raw.buffer);
+      final result = task.parseSuccessData(buffer);
       inner.free_WireSyncReturnStruct(raw);
       return result;
     } else {
-      final errMessage = utf8.decode(raw.buffer);
+      final errMessage = utf8.decode(buffer!);
       inner.free_WireSyncReturnStruct(raw);
       throw FfiException('EXECUTE_SYNC', errMessage, null);
     }
@@ -146,7 +170,7 @@ class FlutterRustBridgeSyncTask<S> extends FlutterRustBridgeBaseTask {
   final WireSyncReturnStruct Function() callFfi;
 
   /// Parse the returned data from the underlying function
-  final S Function(Uint8List) parseSuccessData;
+  final S Function(dynamic) parseSuccessData;
 
   const FlutterRustBridgeSyncTask({
     required this.callFfi,

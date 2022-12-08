@@ -23,35 +23,41 @@ pub(crate) fn generate_api_func(
             )
         })
         .collect::<Vec<_>>();
-    let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();
+    let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_owned()]].concat();
+
+    let prepare_args = func
+        .inputs
+        .iter()
+        .enumerate()
+        .map(|(index, input)| {
+            // edge case: ffigen performs its own bool-to-int conversions
+            if let Primitive(IrTypePrimitive::Bool) = input.ty {
+                format!("var arg{index} = {};", input.name.dart_style())
+            } else {
+                let func = format!("api2wire_{}", input.ty.safe_ident());
+                format!(
+                    "var arg{index} = {}{}({});",
+                    if common_api2wire_body.contains(&func) {
+                        ""
+                    } else {
+                        "_platform."
+                    },
+                    func,
+                    &input.name.dart_style()
+                )
+            }
+        })
+        .collect::<Vec<_>>();
 
     let wire_param_list = [
         if func.mode.has_port_argument() {
-            vec!["port_".to_string()]
+            vec!["port_".to_owned()]
         } else {
             vec![]
         },
-        func.inputs
-            .iter()
-            .map(|input| {
-                // edge case: ffigen performs its own bool-to-int conversions
-                if let Primitive(IrTypePrimitive::Bool) = input.ty {
-                    input.name.dart_style()
-                } else {
-                    let func = format!("api2wire_{}", input.ty.safe_ident());
-                    format!(
-                        "{}{}({})",
-                        if common_api2wire_body.contains(&func) {
-                            ""
-                        } else {
-                            "_platform."
-                        },
-                        func,
-                        &input.name.dart_style()
-                    )
-                }
-            })
-            .collect::<Vec<_>>(),
+        (0..prepare_args.len())
+            .map(|index| format!("arg{index}"))
+            .collect_vec(),
     ]
     .concat();
 
@@ -105,7 +111,7 @@ pub(crate) fn generate_api_func(
             if let IrType::StructRef(IrTypeStructRef { name, freezed: _ }) = &func.output {
                 name.clone()
             } else {
-                "".to_string()
+                String::new()
             }
         })
         // If struct has a method with first element `input0`
@@ -121,12 +127,15 @@ pub(crate) fn generate_api_func(
 
     let is_sync = matches!(func.mode, IrFuncMode::Sync);
     let implementation = format!(
-        "{} => {}({task}(
+        "{} {{
+            {}
+            return {}({task}(
             callFfi: ({args}) => _platform.inner.{}({}),
             parseSuccessData: {},
             {}
-        ));",
+        ));}}",
         func_expr,
+        prepare_args.join("\n"),
         execute_func_name,
         func.wire_func_name(),
         wire_param_list.join(", "),
@@ -167,5 +176,33 @@ pub(crate) fn generate_api_func(
         comments,
         companion_field_signature,
         companion_field_implementation,
+    }
+}
+
+pub(crate) fn generate_opaque_getters(ty: &IrType) -> GeneratedApiFunc {
+    let signature = format!(
+        "
+    DropFnType get dropOpaque{0};
+    ShareFnType get shareOpaque{0};
+    OpaqueTypeFinalizer get {0}Finalizer;
+    ",
+        ty.dart_api_type(),
+    );
+
+    let implementation = format!(
+        "
+        DropFnType get dropOpaque{0} => _platform.inner.drop_opaque_{0};
+        ShareFnType get shareOpaque{0} => _platform.inner.share_opaque_{0};
+        OpaqueTypeFinalizer get {0}Finalizer => _platform.{0}Finalizer;
+        ",
+        ty.dart_api_type()
+    );
+
+    GeneratedApiFunc {
+        signature,
+        implementation,
+        comments: String::new(),
+        companion_field_signature: String::new(),
+        companion_field_implementation: String::new(),
     }
 }

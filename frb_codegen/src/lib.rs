@@ -1,6 +1,5 @@
 //! Main documentation is in https://github.com/fzyzcjy/flutter_rust_bridge
 #![allow(clippy::vec_init_then_push)]
-#![deny(clippy::too_many_lines)]
 // #![warn(clippy::wildcard_enum_match_arm)]
 
 use std::ffi::OsStr;
@@ -141,6 +140,22 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
             generated_dart_decl_all,
             &generated_dart_impl_io_wire,
         )?;
+    } else if config.wasm_enabled {
+        fs::write(
+            &config.dart_output_path,
+            (&generated_dart.file_prelude
+                + generated_dart_decl_all
+                + &generated_dart.impl_code.common)
+                .to_text(),
+        )?;
+        fs::write(
+            &config.dart_io_output_path(),
+            (&generated_dart.file_prelude + &generated_dart_impl_io_wire).to_text(),
+        )?;
+        fs::write(
+            config.dart_wasm_output_path(),
+            (&generated_dart.file_prelude + &generated_dart.impl_code.wasm).to_text(),
+        )?;
     } else {
         let mut out = generated_dart.file_prelude
             + generated_dart_decl_all
@@ -200,9 +215,31 @@ fn write_dart_decls(
         ),
         ..Default::default()
     };
+
+    let common_import = DartBasicCode {
+        import: if config.wasm_enabled {
+            format!(
+                "import '{}' if (dart.library.html) '{}';",
+                config
+                    .dart_io_output_path()
+                    .file_name()
+                    .and_then(OsStr::to_str)
+                    .unwrap(),
+                config
+                    .dart_wasm_output_path()
+                    .file_name()
+                    .and_then(OsStr::to_str)
+                    .unwrap(),
+            )
+        } else {
+            "".into()
+        },
+        ..Default::default()
+    };
+
     fs::write(
         dart_decl_output_path,
-        (&generated_dart.file_prelude + generated_dart_decl_all).to_text(),
+        (&generated_dart.file_prelude + &common_import + generated_dart_decl_all).to_text(),
     )?;
     if config.wasm_enabled {
         fs::write(

@@ -123,6 +123,8 @@ pub fn wire_dummy(port_: MessagePort, unit: i32) {
 
 // Section: allocate functions
 
+// Section: related functions
+
 // Section: impl Wire2Api
 
 impl Wire2Api<String> for String {

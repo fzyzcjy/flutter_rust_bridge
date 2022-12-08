@@ -8,16 +8,18 @@ type_dart_generator_struct!(TypeGeneralListGenerator, IrTypeGeneralList);
 impl TypeDartGeneratorTrait for TypeGeneralListGenerator<'_> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         // NOTE the memory strategy is same as PrimitiveList, see comments there.
+        let ident = self.ir.safe_ident();
+        let context = self.context.config.block_index;
+        let inner = self.ir.inner.safe_ident();
+
         Acc {
             io: Some(format!(
-                "final ans = inner.new_{}_{}(raw.length);
+                "final ans = inner.new_{ident}_{context}(raw.length);
                 for (var i = 0; i < raw.length; ++i) {{
-                    _api_fill_to_wire_{}(raw[i], ans.ref.ptr[i]);
+                    _api_fill_to_wire_{inner}(raw[i], ans.ref.ptr[i]);
                 }}
-                return ans;",
-                self.ir.safe_ident(),
-                self.context.config.block_index,
-                self.ir.inner.safe_ident()
+                return ans;
+                "
             )),
             wasm: self.context.config.wasm_enabled.then(|| {
                 format!(

@@ -350,6 +350,26 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "rogurotus",
+      "name": "rogurotus",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61418195?v=4",
+      "profile": "https://github.com/rogurotus",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "huang12zheng",
+      "name": "huang12zheng",
+      "avatar_url": "https://avatars.githubusercontent.com/u/28038074?v=4",
+      "profile": "https://github.com/huang12zheng",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,

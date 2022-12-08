@@ -1,7 +1,10 @@
 import 'dart:ffi' as ffi;
+import 'dart:ffi';
 export 'dart:ffi' show NativePort, DynamicLibrary;
-import 'dart:typed_data';
-import 'stub.dart' show FlutterRustBridgeWireBase;
+
+import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:tuple/tuple.dart';
+
 export 'stub.dart'
     show castInt, castNativeBigInt, FlutterRustBridgeWireBase, WasmModule;
 
@@ -11,9 +14,36 @@ typedef ExternalLibrary = ffi.DynamicLibrary;
 typedef DartPostCObject = ffi.Pointer<
     ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>;
 
+int getPlatformUsize(Uint8List data) {
+  assert(data.length == syncReturnPointerLength);
+  // Rust SyncReturn<usize> type is forced cast to u64.
+  return ByteData.view(data.buffer).getUint64(0);
+}
+
+Tuple2<int, int> parseOpaquePtrAndSizeFrom(Uint8List data) {
+  assert(data.length == 2 * syncReturnPointerLength);
+  return Tuple2(
+    ByteData.view(data.buffer).getUint64(0),
+    ByteData.view(data.buffer).getUint64(syncReturnPointerLength),
+  );
+}
+
 extension StoreDartPostCObjectExt on FlutterRustBridgeWireBase {
   void storeDartPostCObject() {
     store_dart_post_cobject(ffi.NativeApi.postCObject.cast());
+  }
+}
+
+class DartApiDl {
+  static int? _initCode;
+  final int Function(ffi.Pointer<ffi.Void>) _initFn;
+  DartApiDl(this._initFn);
+
+  void initApi() {
+    _initCode ??= _initFn(ffi.NativeApi.initializeApiDLData);
+    if (_initCode != 0) {
+      throw 'Failed to initialize Dart API. Code: $_initCode';
+    }
   }
 }
 
@@ -31,6 +61,27 @@ class WireSyncReturnStruct extends ffi.Struct {
   @ffi.Uint8()
   external int success;
 
-  Uint8List get buffer => Uint8List.fromList(ptr.asTypedList(len));
+  Uint8List? get buffer {
+    if (ptr.address == 0) {
+      return null;
+    }
+    return Uint8List.fromList(ptr.asTypedList(len));
+  }
+
   bool get isSuccess => success > 0;
+}
+
+typedef PlatformPointer = ffi.Pointer<ffi.Void>;
+typedef OpaqueTypeFinalizer = NativeFinalizer;
+
+/// An opaque pointer to a native C or Rust type.
+/// Recipients of this type should call [dispose] at least once during runtime.
+/// If passed to a native function after being [dispose]d, an exception will be thrown.
+class FrbOpaqueBase implements Finalizable {
+  static PlatformPointer initPtr(int ptr) => ffi.Pointer.fromAddress(ptr);
+  static PlatformPointer nullPtr() => ffi.Pointer.fromAddress(0);
+  static bool isStalePtr(PlatformPointer ptr) => ptr.address == 0;
+  static void finalizerAttach(FrbOpaqueBase opaque, PlatformPointer ptr,
+          int size, OpaqueTypeFinalizer finalizer) =>
+      finalizer.attach(opaque, ptr, detach: opaque, externalSize: size);
 }

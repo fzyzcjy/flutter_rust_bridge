@@ -3,9 +3,12 @@ use crate::{ir::*, target::Target};
 /// Types that have synchronized return
 /// NOTE for maintainer: Please make sure all the types here
 /// can be parsed by `executeSync` function in basic.dart.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq)]
 pub enum IrTypeSyncReturn {
+    Option(Box<IrTypeSyncReturn>),
     Primitive(IrTypePrimitive),
+    RustOpaque(IrTypeRustOpaque),
+    DartOpaque(IrTypeDartOpaque),
     String,
     VecU8,
 }
@@ -21,6 +24,13 @@ impl IrTypeTrait for IrTypeSyncReturn {
                 // We use Rust API type here because some primitive types in Dart share the same API type.
                 "SyncReturn_".to_owned() + &self.get_inner().rust_api_type()
             }
+            IrTypeSyncReturn::Option(_) => {
+                let dart_api_type = self.get_inner().dart_api_type();
+                format!(
+                    "SyncReturn_Option_{}",
+                    dart_api_type.strip_suffix('?').unwrap()
+                )
+            }
             _ => "SyncReturn_".to_owned() + &self.get_inner().dart_api_type(),
         }
     }
@@ -30,7 +40,11 @@ impl IrTypeTrait for IrTypeSyncReturn {
     }
 
     fn dart_wire_type(&self, target: Target) -> String {
-        self.get_inner().dart_wire_type(target)
+        if target.is_wasm() && self.get_inner().dart_wire_type(target) == "void" {
+            "dynamic".to_owned()
+        } else {
+            self.get_inner().dart_wire_type(target)
+        }
     }
 
     fn rust_api_type(&self) -> String {
@@ -44,10 +58,6 @@ impl IrTypeTrait for IrTypeSyncReturn {
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
         self.get_inner().rust_wire_is_pointer(target)
     }
-
-    fn dart_param_type(&self) -> &'static str {
-        "Uint8List"
-    }
 }
 
 impl IrTypeSyncReturn {
@@ -57,6 +67,11 @@ impl IrTypeSyncReturn {
             IrTypeSyncReturn::String => IrType::Delegate(IrTypeDelegate::String),
             IrTypeSyncReturn::VecU8 => IrType::PrimitiveList(IrTypePrimitiveList {
                 primitive: IrTypePrimitive::U8,
+            }),
+            IrTypeSyncReturn::RustOpaque(data) => IrType::RustOpaque(data.clone()),
+            IrTypeSyncReturn::DartOpaque(data) => IrType::DartOpaque(data.clone()),
+            IrTypeSyncReturn::Option(o) => IrType::Optional(IrTypeOptional {
+                inner: Box::new(o.get_inner()),
             }),
         }
     }

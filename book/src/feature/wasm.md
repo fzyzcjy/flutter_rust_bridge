@@ -1,22 +1,17 @@
 # WASM
 
 `flutter_rust_bridge_codegen` can also generate code to run in browsers using
-`wasm_bindgen`. To generate WASM-specifc files, pass in these two options to your
-invocation:
+`wasm_bindgen`. To generate a WASM-specifc file, pass this option to your invocation:
 
 ```shell
-flutter_rust_bridge_codegen .. --wasm --dart-decl-output <DECL>
+flutter_rust_bridge_codegen .. --wasm
 ```
-
-where `DECL` is the path to the common class/function declarations file.
-For example, if you emit your Dart bridge to `lib/bridge_generated.dart`,
-you can put the declarations file at `lib/bridge_definitions.dart`
 
 By default this will create several new files:
 
 ```
 ├── lib
-│   ├── bridge_definitions.dart
+│   ├── ...
 │   ├── bridge_generated.io.dart
 │   └── bridge_generated.web.dart
 └── native/src
@@ -30,3 +25,5 @@ flag as well.
 
 Check out [Integrating with Web](../integrate/web.md) for instructions
 on how to consume the web bridge.
+
+have a look at [issue 860](https://github.com/fzyzcjy/flutter_rust_bridge/issues/860)
