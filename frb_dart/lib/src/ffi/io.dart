@@ -20,8 +20,10 @@ int getPlatformUsize(Uint8List data) {
 }
 
 Tuple2<int, int> parseOpaquePtrAndSizeFrom(Uint8List data) {
-  return Tuple2(ByteData.view(data.buffer).getUint64(0),
-      ByteData.view(data.buffer).getUint64(pointerLength),);
+  return Tuple2(
+    ByteData.view(data.buffer).getUint64(0),
+    ByteData.view(data.buffer).getUint64(pointerLength),
+  );
 }
 
 extension StoreDartPostCObjectExt on FlutterRustBridgeWireBase {

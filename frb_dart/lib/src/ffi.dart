@@ -7,6 +7,7 @@ export 'ffi/stub.dart'
 
 typedef DropFnType = void Function(PlatformPointer);
 typedef ShareFnType = PlatformPointer Function(PlatformPointer);
+
 /// Rust SyncReturn<usize> type is forced cast to u64.
 const pointerLength = 8;
 

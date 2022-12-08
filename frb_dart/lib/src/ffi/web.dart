@@ -126,8 +126,10 @@ int getPlatformUsize(Uint8List data) {
 }
 
 Tuple2<int, int> parseOpaquePtrAndSizeFrom(Uint8List data) {
-  return Tuple2(ByteData.view(data.buffer).getUint32(4),
-      ByteData.view(data.buffer).getUint32(4 + pointerLength),);
+  return Tuple2(
+    ByteData.view(data.buffer).getUint32(4),
+    ByteData.view(data.buffer).getUint32(4 + pointerLength),
+  );
 }
 
 class FlutterRustBridgeWasmWireBase<T extends WasmModule>
