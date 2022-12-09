@@ -4,8 +4,6 @@ import 'io.dart' if (dart.library.html) 'web.dart'
     show DartPostCObject, NativePortType, WireSyncReturnStruct;
 export 'io.dart' if (dart.library.html) 'web.dart'
     show
-        getPlatformUsize,
-        parseOpaquePtrAndSizeFrom,
         ExternalLibrary,
         WireSyncReturnStruct,
         FrbOpaqueBase,

@@ -1,6 +1,8 @@
 /// These bindings directly map Rust's allo_isolate::ffi
 /// Note that allo_isolate itself reverse-engineered Dart's Dart_CObject,
 /// but Dart's sdk doesn't expose its contents.
+// ignore_for_file: non_constant_identifier_names, unused_field
+
 import 'dart:ffi' as ffi;
 
 class DartNativeSendPort extends ffi.Struct {
