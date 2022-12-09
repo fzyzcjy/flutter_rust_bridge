@@ -1083,7 +1083,7 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* Object? */ wire_sync_option_dart_opaque(Object opaque);
 
-  external dynamic /* dynamic */ wire_sync_void();
+  external void wire_sync_void();
 
   external void wire_run_nested_opaque(NativePortType port_, List<dynamic> opaque);
 
@@ -1450,7 +1450,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   dynamic /* Object? */ wire_sync_option_dart_opaque(Object opaque) => wasmModule.wire_sync_option_dart_opaque(opaque);
 
-  dynamic /* dynamic */ wire_sync_void() => wasmModule.wire_sync_void();
+  void wire_sync_void() => wasmModule.wire_sync_void();
 
   void wire_run_nested_opaque(NativePortType port_, List<dynamic> opaque) =>
       wasmModule.wire_run_nested_opaque(port_, opaque);

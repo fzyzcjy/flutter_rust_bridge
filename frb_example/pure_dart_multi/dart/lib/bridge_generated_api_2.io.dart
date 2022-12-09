@@ -5,6 +5,7 @@
 import 'dart:convert';
 import 'dart:async';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:uuid/uuid.dart';
 import 'bridge_generated_api_2.dart';
 export 'bridge_generated_api_2.dart';
 import 'package:meta/meta.dart';
