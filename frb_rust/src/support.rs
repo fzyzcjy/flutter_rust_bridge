@@ -77,9 +77,6 @@ pub struct WireSyncReturnStruct {
     pub ptr: *mut ManuallyDrop<DartCObject>,
 }
 
-#[repr(C)]
-pub struct WireSyncReturnRootData {}
-
 #[cfg(not(wasm))]
 impl WireSyncReturnStruct {
     pub fn new<T: IntoDart>(value: T, success: bool) -> WireSyncReturnStruct {
