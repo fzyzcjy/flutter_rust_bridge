@@ -1,3 +1,27 @@
+## 1.54.0
+
+* Extend `SyncReturn` to support `RustOpaque`, `DartOpaque`, `Option` and so on #876 (thanks @rogurotus)
+
+## 1.53.0
+
+* Add Dart opaque types, allowing to use any Dart objects in Rust code #853 (thanks @rogurotus)
+
+## 1.52.0
+
+* Move semantics of opaque rust for Dart #869 (thanks @rogurotus)
+
+## 1.51.1
+
+* Fix function generation related to opaque rust #867 (thanks @rogurotus)
+
+## 1.51.0
+
+* support wasm with no decl set #861 (thanks @huang12zheng)
+
+## 1.50.0
+
+* Implement opaque types, enabling arbitrary Rust structs to be used as opaque Dart objects, by generating wrappers and raw Arc pointers #795 (thanks @rogurotus)
+
 ## 1.49.2
 
 * Fix parsing of packages in pubspec.yaml that have no explicit version specification #846 (thanks @banool)

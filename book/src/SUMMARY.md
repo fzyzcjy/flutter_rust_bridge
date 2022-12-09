@@ -17,6 +17,8 @@
     - [Methods](feature/lang_methods.md)
     - [Return types](feature/lang_return_types.md)
     - [Dynamic](feature/lang_dynamic.md)
+    - [Arbitrary Rust types (opaque)](feature/lang_rust_opaque.md)
+    - [Arbitrary Dart types (opaque)](feature/lang_dart_opaque.md)
   - [Zero copy](feature/zero_copy.md)
   - [Stream / Iterator](feature/stream.md)
   - [Async in Dart](feature/async_dart.md)
@@ -73,6 +75,9 @@
 
 - [Overview](contributing/overview.md)
 - [Overall design](contributing/design.md)
+- [Submodule implementations](contributing/submodule.md)
+  - [Rust opaque type safety](contributing/rust_opaque_type_safety.md)
+  - [Dart opaque type safety](contributing/dart_opaque_type_safety.md)
 - [Appendix](contributing/appendix.md)
 
 # Part IV: More Doc

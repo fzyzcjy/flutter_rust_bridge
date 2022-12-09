@@ -1,21 +1,25 @@
 mod ty;
 mod ty_boxed;
+mod ty_dart_opaque;
 mod ty_delegate;
 mod ty_enum;
 mod ty_general_list;
 mod ty_optional;
 mod ty_primitive;
 mod ty_primitive_list;
+mod ty_rust_opaque;
 mod ty_struct;
 
 pub use ty::*;
 pub use ty_boxed::*;
+pub use ty_dart_opaque::*;
 pub use ty_delegate::*;
 pub use ty_enum::*;
 pub use ty_general_list::*;
 pub use ty_optional::*;
 pub use ty_primitive::*;
 pub use ty_primitive_list::*;
+pub use ty_rust_opaque::*;
 pub use ty_struct::*;
 
 use std::collections::HashSet;
@@ -84,8 +88,10 @@ impl<'a> Generator<'a> {
 
         lines.push(String::new());
         lines.push(format!("use crate::{}::*;", rust_wire_mod));
-        lines.push("use flutter_rust_bridge::*;".to_string());
+        lines.push("use flutter_rust_bridge::*;".to_owned());
         lines.push("use core::panic::UnwindSafe;".to_owned());
+        lines.push("use std::sync::Arc;".to_owned());
+        lines.push("use std::ffi::c_void;".to_owned());
         lines.push(String::new());
 
         lines.push(self.section_header_comment("imports"));
@@ -125,6 +131,12 @@ impl<'a> Generator<'a> {
         lines += distinct_input_types
             .iter()
             .map(|f| self.generate_allocate_funcs(f, ir_file))
+            .collect();
+
+        lines.push_all(self.section_header_comment("related functions"));
+        lines += distinct_output_types
+            .iter()
+            .map(|f| self.generate_related_funcs(f, ir_file))
             .collect();
 
         lines.push_all(self.section_header_comment("impl Wire2Api"));
@@ -418,6 +430,12 @@ impl<'a> Generator<'a> {
     fn generate_allocate_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
         TypeRustGenerator::new(ty.clone(), ir_file, self.config)
             .allocate_funcs(&mut self.extern_func_collector, self.config.block_index)
+            .map(|func, _| func.unwrap_or_default())
+    }
+
+    fn generate_related_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
+        TypeRustGenerator::new(ty.clone(), ir_file, self.config)
+            .related_funcs(&mut self.extern_func_collector, self.config.block_index)
             .map(|func, _| func.unwrap_or_default())
     }
 

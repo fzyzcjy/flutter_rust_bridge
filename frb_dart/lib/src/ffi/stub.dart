@@ -1,9 +1,18 @@
 import 'dart:async';
 
 import 'io.dart' if (dart.library.html) 'web.dart'
-    show DartPostCObject, WireSyncReturnStruct, NativePortType;
+    show DartPostCObject, NativePortType, WireSyncReturnStruct;
 export 'io.dart' if (dart.library.html) 'web.dart'
-    show ExternalLibrary, WireSyncReturnStruct, NativePortType;
+    show
+        getPlatformUsize,
+        parseOpaquePtrAndSizeFrom,
+        ExternalLibrary,
+        WireSyncReturnStruct,
+        FrbOpaqueBase,
+        DartApiDl,
+        NativePortType,
+        PlatformPointer,
+        OpaqueTypeFinalizer;
 import '../isolate.dart' show SendPort;
 
 /// This class, together with its subclasses, are only for internal usage.
@@ -11,11 +20,30 @@ import '../isolate.dart' show SendPort;
 abstract class FlutterRustBridgeWireBase {
   /// Not to be used by normal users, but has to be public for generated code
   // ignore: non_constant_identifier_names
-  void store_dart_post_cobject(DartPostCObject ptr) {}
+  void store_dart_post_cobject(DartPostCObject ptr) {
+    throw UnimplementedError();
+  }
+
+  // ignore: non_constant_identifier_names
+  Object get_dart_object(int ptr) {
+    throw UnimplementedError();
+  }
+
+  // ignore: non_constant_identifier_names
+  void drop_dart_object(int ptr) {
+    throw UnimplementedError();
+  }
+
+  // ignore: non_constant_identifier_names
+  int new_dart_opaque(Object obj) {
+    throw UnimplementedError();
+  }
 
   /// Not to be used by normal users, but has to be public for generated code
   // ignore: non_constant_identifier_names
-  void free_WireSyncReturnStruct(WireSyncReturnStruct val) {}
+  void free_WireSyncReturnStruct(WireSyncReturnStruct val) {
+    throw UnimplementedError();
+  }
 }
 
 extension NativeType on SendPort {

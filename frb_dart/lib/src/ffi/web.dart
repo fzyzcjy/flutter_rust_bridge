@@ -83,10 +83,34 @@ external WasmModule? get _noModules;
 
 dynamic eval(String script) => _Function(script)();
 
+abstract class DartApiDl {}
+
+@JS("wasm_bindgen.get_dart_object")
+// ignore: non_constant_identifier_names
+external Object getDartObject(int ptr);
+@JS("wasm_bindgen.drop_dart_object")
+// ignore: non_constant_identifier_names
+external void dropDartObject(int ptr);
+
 abstract class FlutterRustBridgeWireBase {
   void storeDartPostCObject() {}
   // ignore: non_constant_identifier_names
   void free_WireSyncReturnStruct(WireSyncReturnStruct raw) {}
+
+  // ignore: non_constant_identifier_names
+  Object get_dart_object(int ptr) {
+    return getDartObject(ptr);
+  }
+
+  // ignore: non_constant_identifier_names
+  void drop_dart_object(int ptr) {
+    dropDartObject(ptr);
+  }
+
+  // ignore: non_constant_identifier_names
+  int new_dart_opaque(Object obj, NativePortType port) {
+    throw UnimplementedError();
+  }
 }
 
 typedef WireSyncReturnStruct = List<dynamic>;
@@ -102,4 +126,19 @@ class FlutterRustBridgeWasmWireBase<T extends WasmModule>
 
   FlutterRustBridgeWasmWireBase(FutureOr<T> module)
       : init = Future.value(module).then((module) => promiseToFuture(module()));
+}
+
+typedef PlatformPointer = int;
+typedef OpaqueTypeFinalizer = Finalizer<PlatformPointer>;
+
+/// An opaque pointer to a Rust type.
+/// Recipients of this type should call [dispose] at least once during runtime.
+/// If passed to a native function after being [dispose]d, an exception will be thrown.
+class FrbOpaqueBase {
+  static PlatformPointer initPtr(int ptr) => ptr;
+  static PlatformPointer nullPtr() => 0;
+  static bool isStalePtr(PlatformPointer ptr) => ptr == 0;
+  static void finalizerAttach(FrbOpaqueBase opaque, PlatformPointer ptr, int _,
+          OpaqueTypeFinalizer finalizer) =>
+      finalizer.attach(opaque, ptr, detach: opaque);
 }

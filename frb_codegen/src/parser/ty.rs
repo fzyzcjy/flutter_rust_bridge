@@ -52,6 +52,8 @@ pub enum SupportedInnerType {
     Path(SupportedPathType),
     /// Array type
     Array(Box<Self>, usize),
+    /// Unparsed type, only useful for Opaque.
+    Verbatim(Box<syn::Type>),
     /// The unit type `()`.
     Unit,
 }
@@ -61,6 +63,7 @@ impl std::fmt::Display for SupportedInnerType {
         match self {
             Self::Path(p) => write!(f, "{}", p),
             Self::Array(u, len) => write!(f, "[{}; {}]", u, len),
+            Self::Verbatim(ver) => write!(f, "{}", quote::quote!(#ver)),
             Self::Unit => write!(f, "()"),
         }
     }
@@ -109,7 +112,7 @@ impl SupportedInnerType {
                             generic,
                         }))
                     }
-                    _ => None,
+                    _ => Some(SupportedInnerType::Verbatim(Box::new(ty.clone()))),
                 }
             }
             syn::Type::Array(syn::TypeArray { elem, len, .. }) => {
@@ -128,7 +131,7 @@ impl SupportedInnerType {
             syn::Type::Tuple(syn::TypeTuple { elems, .. }) if elems.is_empty() => {
                 Some(SupportedInnerType::Unit)
             }
-            _ => None,
+            _ => Some(SupportedInnerType::Verbatim(Box::new(ty.clone()))),
         }
     }
 }
@@ -148,6 +151,7 @@ impl<'a> TypeParser<'a> {
             SupportedInnerType::Path(p) => self.convert_path_to_ir_type(p),
             SupportedInnerType::Array(p, len) => self.convert_array_to_ir_type(*p, len),
             SupportedInnerType::Unit => Some(IrType::Primitive(IrTypePrimitive::Unit)),
+            SupportedInnerType::Verbatim(_) => None,
         }
     }
 
@@ -211,6 +215,18 @@ impl<'a> TypeParser<'a> {
                         None
                     }
                 }
+                "RustOpaque" => match *generic {
+                    SupportedInnerType::Array(p, len) => self.convert_array_to_ir_type(*p, len),
+                    SupportedInnerType::Verbatim(ver) => {
+                        Some(IrType::RustOpaque(IrTypeRustOpaque::from(ver.as_ref())))
+                    }
+                    SupportedInnerType::Path(path) => {
+                        Some(IrType::RustOpaque(IrTypeRustOpaque::from(path.to_string())))
+                    }
+                    SupportedInnerType::Unit => {
+                        Some(IrType::RustOpaque(IrTypeRustOpaque::new_unit()))
+                    }
+                },
                 "Box" => self.convert_to_ir_type(*generic).map(|inner| {
                     Boxed(IrTypeBoxed {
                         exist_in_real_api: true,
@@ -231,6 +247,18 @@ impl<'a> TypeParser<'a> {
                         st @ StructRef(_) => {
                             IrType::Optional(IrTypeOptional::new(Boxed(IrTypeBoxed {
                                 inner: Box::new(st),
+                                exist_in_real_api: false,
+                            })))
+                        }
+                        op @ RustOpaque(_) => {
+                            IrType::Optional(IrTypeOptional::new(Boxed(IrTypeBoxed {
+                                inner: Box::new(op),
+                                exist_in_real_api: false,
+                            })))
+                        }
+                        dop @ DartOpaque(_) => {
+                            IrType::Optional(IrTypeOptional::new(Boxed(IrTypeBoxed {
+                                inner: Box::new(dop),
                                 exist_in_real_api: false,
                             })))
                         }
@@ -261,6 +289,10 @@ impl<'a> TypeParser<'a> {
             if ident_string.as_str() == "Uuid" {
                 return Some(Delegate(IrTypeDelegate::Uuid));
             }
+            if ident_string.as_str() == "DartOpaque" {
+                return Some(DartOpaque(IrTypeDartOpaque {}));
+            }
+
             IrTypePrimitive::try_from_rust_str(ident_string)
                 .map(Primitive)
                 .or_else(|| {

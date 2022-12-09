@@ -11,6 +11,14 @@ export 'isolate.dart';
 final _instances = <Type>{};
 final _streamSinkNameIndex = <String, int>{};
 
+class _DropIdPortGenerator {
+  static final instance = _DropIdPortGenerator._();
+  _DropIdPortGenerator._();
+
+  int nextPort = 0;
+  String create() => '__frb_dart_opaque_drop_${nextPort++}';
+}
+
 /// Base class for generated bindings of Flutter Rust Bridge.
 /// Normally, users do not extend this class manually. Instead,
 /// users should directly use the generated class.
@@ -22,6 +30,21 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 
   @protected
   final T inner;
+
+  late final _dropPort = _initDropPort();
+  NativePortType get dropPort => _dropPort.sendPort.nativePort;
+
+  ReceivePort _initDropPort() {
+    var port = broadcastPort(_DropIdPortGenerator.instance.create());
+    port.listen((message) {
+      inner.drop_dart_object(message);
+    });
+    return port;
+  }
+
+  void dispose() {
+    _dropPort.close();
+  }
 
   void _sanityCheckSingleton() {
     if (_instances.contains(runtimeType)) {
