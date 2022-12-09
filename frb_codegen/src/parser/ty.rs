@@ -181,9 +181,18 @@ impl<'a> TypeParser<'a> {
         let ident_string = &p.ident.to_string();
         if let Some(generic) = p.generic {
             match ident_string.as_str() {
-                "SyncReturn" => self
-                    .convert_to_ir_type(*generic)
-                    .map(|ir| SyncReturn(IrTypeSyncReturn::new(ir))),
+                "SyncReturn" => {
+                    // Disallow nested SyncReturn
+                    if matches!(*generic, SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "SyncReturn")
+                    {
+                        panic!(
+                            "Nested SyncReturn is invalid. (SyncReturn<SyncReturn<{}>>)",
+                            p_as_str
+                        );
+                    }
+                    self.convert_to_ir_type(*generic)
+                        .map(|ir| SyncReturn(IrTypeSyncReturn::new(ir)))
+                }
                 "Vec" => match *generic {
                     // Special-case Vec<String> as StringList
                     SupportedInnerType::Path(SupportedPathType { ref ident, .. })
