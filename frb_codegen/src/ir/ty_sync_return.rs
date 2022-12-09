@@ -1,6 +1,6 @@
 use crate::{ir::*, target::Target};
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq)]
 pub struct IrTypeSyncReturn(Box<IrType>);
 
 impl IrTypeSyncReturn {

@@ -47,7 +47,7 @@ pub use dart_api::*;
 #[cfg(not(wasm))]
 pub use io::*;
 
-use crate::{support::WireSyncReturnData, DartSafe};
+use crate::DartSafe;
 
 /// see [uuid::Bytes](https://docs.rs/uuid/1.1.2/uuid/type.Bytes.html)
 #[cfg(feature = "uuid")]
@@ -171,19 +171,6 @@ impl<T: DartSafe> RustOpaque<T> {
     }
 }
 
-impl<T: DartSafe> From<RustOpaque<T>> for WireSyncReturnData {
-    fn from(data: RustOpaque<T>) -> Self {
-        let ptr = if let Some(ptr) = data.ptr {
-            Arc::into_raw(ptr)
-        } else {
-            std::ptr::null()
-        } as u64;
-
-        let size = mem::size_of::<T>() as u64;
-        WireSyncReturnData(Some([ptr.to_be_bytes(), size.to_be_bytes()].concat()))
-    }
-}
-
 impl<T: DartSafe> From<RustOpaque<T>> for DartAbi {
     fn from(value: RustOpaque<T>) -> Self {
         let ptr = if let Some(ptr) = value.ptr {
@@ -255,16 +242,6 @@ impl DartOpaque {
 impl From<DartOpaque> for DartAbi {
     fn from(mut data: DartOpaque) -> Self {
         data.handle.take().unwrap().into_raw().into_dart()
-    }
-}
-
-impl From<DartOpaque> for WireSyncReturnData {
-    fn from(mut data: DartOpaque) -> Self {
-        WireSyncReturnData(Some(
-            (data.handle.take().unwrap().into_raw() as u64)
-                .to_be_bytes()
-                .to_vec(),
-        ))
     }
 }
 
