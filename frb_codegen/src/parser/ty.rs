@@ -253,21 +253,9 @@ impl<'a> TypeParser<'a> {
                     }
                     self.convert_to_ir_type(*generic).map(|inner| match inner {
                         Primitive(prim) => IrType::Optional(IrTypeOptional::new_primitive(prim)),
-                        st @ StructRef(_) => {
+                        inner @ (StructRef(_) | RustOpaque(_) | DartOpaque(_)) => {
                             IrType::Optional(IrTypeOptional::new(Boxed(IrTypeBoxed {
-                                inner: Box::new(st),
-                                exist_in_real_api: false,
-                            })))
-                        }
-                        op @ RustOpaque(_) => {
-                            IrType::Optional(IrTypeOptional::new(Boxed(IrTypeBoxed {
-                                inner: Box::new(op),
-                                exist_in_real_api: false,
-                            })))
-                        }
-                        dop @ DartOpaque(_) => {
-                            IrType::Optional(IrTypeOptional::new(Boxed(IrTypeBoxed {
-                                inner: Box::new(dop),
+                                inner: Box::new(inner),
                                 exist_in_real_api: false,
                             })))
                         }
