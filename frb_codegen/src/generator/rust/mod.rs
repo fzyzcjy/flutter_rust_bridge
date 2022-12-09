@@ -7,7 +7,6 @@ mod ty_optional;
 mod ty_primitive;
 mod ty_primitive_list;
 mod ty_struct;
-mod ty_sync_return;
 
 pub use ty::*;
 pub use ty_boxed::*;
@@ -18,7 +17,6 @@ pub use ty_optional::*;
 pub use ty_primitive::*;
 pub use ty_primitive_list::*;
 pub use ty_struct::*;
-pub use ty_sync_return::*;
 
 use std::collections::HashSet;
 use std::fmt::Display;
@@ -243,7 +241,7 @@ impl<'a> Generator<'a> {
             "free_WireSyncReturnStruct",
             [("val: support::WireSyncReturnStruct", "")],
             None,
-            "unsafe { let _ = support::vec_from_leak_ptr(val.ptr, val.len); }",
+            "val.free();",
             Io,
         )
     }

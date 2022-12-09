@@ -8,7 +8,7 @@ use crate::ffi::{IntoDart, MessagePort};
 use anyhow::Result;
 
 use crate::rust2dart::{Rust2Dart, TaskCallback};
-use crate::support::{WireSyncReturnData, WireSyncReturnStruct};
+use crate::support::WireSyncReturnStruct;
 use crate::{spawn, SyncReturn};
 
 /// The types of return values for a particular Rust function.
@@ -58,8 +58,8 @@ pub trait Handler {
         sync_task: SyncTaskFn,
     ) -> WireSyncReturnStruct
     where
-        WireSyncReturnData: From<TaskRet>,
-        SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>> + UnwindSafe;
+        SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>> + UnwindSafe,
+        TaskRet: IntoDart;
 }
 
 /// The simple handler uses a simple thread pool to execute tasks.
@@ -124,7 +124,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         sync_task: SyncTaskFn,
     ) -> WireSyncReturnStruct
     where
-        WireSyncReturnData: From<TaskRet>,
+        TaskRet: IntoDart,
         SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>> + UnwindSafe,
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
@@ -132,7 +132,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         panic::catch_unwind(move || {
             let catch_unwind_result = panic::catch_unwind(move || {
                 match self.executor.execute_sync(wrap_info, sync_task) {
-                    Ok(data) => wire_sync_from_data(WireSyncReturnData::from(data.0), true),
+                    Ok(data) => wire_sync_from_data(data.0, true),
                     Err(err) => self
                         .error_handler
                         .handle_error_sync(Error::ResultError(err)),
@@ -143,15 +143,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         })
         .unwrap_or_else(|_| {
             #[cfg(not(wasm))]
-            return WireSyncReturnStruct {
-                // return the simplest thing possible. Normally the inner [catch_unwind] should catch
-                // panic. If no, here is our *LAST* chance before encountering undefined behavior.
-                // We just return this data that does not have much sense, but at least much better
-                // than let panic happen across FFI boundary - which is undefined behavior.
-                ptr: core::mem::ManuallyDrop::new(Vec::<u8>::new()).as_mut_ptr(),
-                len: 0,
-                success: false,
-            };
+            return WireSyncReturnStruct::new(None::<()>, false);
 
             #[cfg(wasm)]
             return vec![wasm_bindgen::JsValue::null(), false.into_dart()].into_dart();
@@ -178,8 +170,8 @@ pub trait Executor: RefUnwindSafe {
         sync_task: SyncTaskFn,
     ) -> Result<SyncReturn<TaskRet>>
     where
-        WireSyncReturnData: From<TaskRet>,
-        SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>> + UnwindSafe;
+        SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>> + UnwindSafe,
+        TaskRet: IntoDart;
 }
 
 /// The default executor used.
@@ -248,8 +240,8 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
         sync_task: SyncTaskFn,
     ) -> Result<SyncReturn<TaskRet>>
     where
-        WireSyncReturnData: From<TaskRet>,
         SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>> + UnwindSafe,
+        TaskRet: IntoDart,
     {
         sync_task()
     }
@@ -312,18 +304,14 @@ impl ErrorHandler for ReportDartErrorHandler {
     }
 
     fn handle_error_sync(&self, error: Error) -> WireSyncReturnStruct {
-        wire_sync_from_data(
-            WireSyncReturnData::from(format!("{}: {}", error.code(), error.message()).into_bytes()),
-            false,
-        )
+        wire_sync_from_data(format!("{}: {}", error.code(), error.message()), false)
     }
 }
 
-fn wire_sync_from_data(data: WireSyncReturnData, success: bool) -> WireSyncReturnStruct {
+fn wire_sync_from_data<T: IntoDart>(data: T, success: bool) -> WireSyncReturnStruct {
     #[cfg(not(wasm))]
     {
-        let (ptr, len) = crate::support::into_leak_vec_ptr(data.0);
-        WireSyncReturnStruct { ptr, len, success }
+        WireSyncReturnStruct::new(data, success)
     }
 
     #[cfg(wasm)]

@@ -204,7 +204,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   Uint8List handleSyncReturn({required String mode, dynamic hint}) => _platform.executeSync(FlutterRustBridgeSyncTask(
         callFfi: () => _platform.inner.wire_handle_sync_return(_platform.api2wire_String(mode)),
-        parseSuccessData: _wire2api_SyncReturn_Uint8List,
+        parseSuccessData: _wire2api_uint_8_list,
         constMeta: kHandleSyncReturnConstMeta,
         argValues: [mode],
         hint: hint,
@@ -217,7 +217,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   bool handleSyncBool({required bool input, dynamic hint}) => _platform.executeSync(FlutterRustBridgeSyncTask(
         callFfi: () => _platform.inner.wire_handle_sync_bool(input),
-        parseSuccessData: _wire2api_SyncReturn_bool,
+        parseSuccessData: _wire2api_bool,
         constMeta: kHandleSyncBoolConstMeta,
         argValues: [input],
         hint: hint,
@@ -230,7 +230,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   int handleSyncU8({required int input, dynamic hint}) => _platform.executeSync(FlutterRustBridgeSyncTask(
         callFfi: () => _platform.inner.wire_handle_sync_u8(api2wire_u8(input)),
-        parseSuccessData: _wire2api_SyncReturn_u8,
+        parseSuccessData: _wire2api_u8,
         constMeta: kHandleSyncU8ConstMeta,
         argValues: [input],
         hint: hint,
@@ -243,7 +243,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   int handleSyncU16({required int input, dynamic hint}) => _platform.executeSync(FlutterRustBridgeSyncTask(
         callFfi: () => _platform.inner.wire_handle_sync_u16(api2wire_u16(input)),
-        parseSuccessData: _wire2api_SyncReturn_u16,
+        parseSuccessData: _wire2api_u16,
         constMeta: kHandleSyncU16ConstMeta,
         argValues: [input],
         hint: hint,
@@ -256,7 +256,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   int handleSyncU32({required int input, dynamic hint}) => _platform.executeSync(FlutterRustBridgeSyncTask(
         callFfi: () => _platform.inner.wire_handle_sync_u32(api2wire_u32(input)),
-        parseSuccessData: _wire2api_SyncReturn_u32,
+        parseSuccessData: _wire2api_u32,
         constMeta: kHandleSyncU32ConstMeta,
         argValues: [input],
         hint: hint,
@@ -269,7 +269,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   int handleSyncU64({required int input, dynamic hint}) => _platform.executeSync(FlutterRustBridgeSyncTask(
         callFfi: () => _platform.inner.wire_handle_sync_u64(_platform.api2wire_u64(input)),
-        parseSuccessData: _wire2api_SyncReturn_u64,
+        parseSuccessData: _wire2api_u64,
         constMeta: kHandleSyncU64ConstMeta,
         argValues: [input],
         hint: hint,
@@ -282,7 +282,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   int handleSyncI8({required int input, dynamic hint}) => _platform.executeSync(FlutterRustBridgeSyncTask(
         callFfi: () => _platform.inner.wire_handle_sync_i8(api2wire_i8(input)),
-        parseSuccessData: _wire2api_SyncReturn_i8,
+        parseSuccessData: _wire2api_i8,
         constMeta: kHandleSyncI8ConstMeta,
         argValues: [input],
         hint: hint,
@@ -295,7 +295,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   int handleSyncI16({required int input, dynamic hint}) => _platform.executeSync(FlutterRustBridgeSyncTask(
         callFfi: () => _platform.inner.wire_handle_sync_i16(api2wire_i16(input)),
-        parseSuccessData: _wire2api_SyncReturn_i16,
+        parseSuccessData: _wire2api_i16,
         constMeta: kHandleSyncI16ConstMeta,
         argValues: [input],
         hint: hint,
@@ -308,7 +308,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   int handleSyncI32({required int input, dynamic hint}) => _platform.executeSync(FlutterRustBridgeSyncTask(
         callFfi: () => _platform.inner.wire_handle_sync_i32(api2wire_i32(input)),
-        parseSuccessData: _wire2api_SyncReturn_i32,
+        parseSuccessData: _wire2api_i32,
         constMeta: kHandleSyncI32ConstMeta,
         argValues: [input],
         hint: hint,
@@ -321,7 +321,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   int handleSyncI64({required int input, dynamic hint}) => _platform.executeSync(FlutterRustBridgeSyncTask(
         callFfi: () => _platform.inner.wire_handle_sync_i64(_platform.api2wire_i64(input)),
-        parseSuccessData: _wire2api_SyncReturn_i64,
+        parseSuccessData: _wire2api_i64,
         constMeta: kHandleSyncI64ConstMeta,
         argValues: [input],
         hint: hint,
@@ -334,7 +334,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   double handleSyncF32({required double input, dynamic hint}) => _platform.executeSync(FlutterRustBridgeSyncTask(
         callFfi: () => _platform.inner.wire_handle_sync_f32(api2wire_f32(input)),
-        parseSuccessData: _wire2api_SyncReturn_f32,
+        parseSuccessData: _wire2api_f32,
         constMeta: kHandleSyncF32ConstMeta,
         argValues: [input],
         hint: hint,
@@ -347,7 +347,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   double handleSyncF64({required double input, dynamic hint}) => _platform.executeSync(FlutterRustBridgeSyncTask(
         callFfi: () => _platform.inner.wire_handle_sync_f64(api2wire_f64(input)),
-        parseSuccessData: _wire2api_SyncReturn_f64,
+        parseSuccessData: _wire2api_f64,
         constMeta: kHandleSyncF64ConstMeta,
         argValues: [input],
         hint: hint,
@@ -360,7 +360,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   String handleSyncString({required String input, dynamic hint}) => _platform.executeSync(FlutterRustBridgeSyncTask(
         callFfi: () => _platform.inner.wire_handle_sync_string(_platform.api2wire_String(input)),
-        parseSuccessData: _wire2api_SyncReturn_String,
+        parseSuccessData: _wire2api_String,
         constMeta: kHandleSyncStringConstMeta,
         argValues: [input],
         hint: hint,
@@ -1311,68 +1311,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   SumWithArray3 _wire2api_SumWith_array_3(dynamic raw) {
     return SumWithArray3((raw as List<dynamic>).map(_wire2api_sum_with).toList());
-  }
-
-  String _wire2api_SyncReturn_String(Uint8List raw) {
-    return utf8.decode(raw);
-  }
-
-  Uint8List _wire2api_SyncReturn_Uint8List(Uint8List raw) {
-    return raw;
-  }
-
-  bool _wire2api_SyncReturn_bool(Uint8List raw) {
-    return uint8ListToBool(raw);
-  }
-
-  double _wire2api_SyncReturn_f32(Uint8List raw) {
-    final dataView = ByteData.view(raw.buffer);
-    return dataView.getFloat32(0);
-  }
-
-  double _wire2api_SyncReturn_f64(Uint8List raw) {
-    final dataView = ByteData.view(raw.buffer);
-    return dataView.getFloat64(0);
-  }
-
-  int _wire2api_SyncReturn_i16(Uint8List raw) {
-    final dataView = ByteData.view(raw.buffer);
-    return dataView.getInt16(0);
-  }
-
-  int _wire2api_SyncReturn_i32(Uint8List raw) {
-    final dataView = ByteData.view(raw.buffer);
-    return dataView.getInt32(0);
-  }
-
-  int _wire2api_SyncReturn_i64(Uint8List raw) {
-    final dataView = ByteData.view(raw.buffer);
-    return dataView.getInt64(0);
-  }
-
-  int _wire2api_SyncReturn_i8(Uint8List raw) {
-    final dataView = ByteData.view(raw.buffer);
-    return dataView.getInt8(0);
-  }
-
-  int _wire2api_SyncReturn_u16(Uint8List raw) {
-    final dataView = ByteData.view(raw.buffer);
-    return dataView.getUint16(0);
-  }
-
-  int _wire2api_SyncReturn_u32(Uint8List raw) {
-    final dataView = ByteData.view(raw.buffer);
-    return dataView.getUint32(0);
-  }
-
-  int _wire2api_SyncReturn_u64(Uint8List raw) {
-    final dataView = ByteData.view(raw.buffer);
-    return dataView.getUint64(0);
-  }
-
-  int _wire2api_SyncReturn_u8(Uint8List raw) {
-    final dataView = ByteData.view(raw.buffer);
-    return dataView.getUint8(0);
   }
 
   TestIdArray2 _wire2api_TestId_array_2(dynamic raw) {

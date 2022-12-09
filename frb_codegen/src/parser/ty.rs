@@ -177,19 +177,9 @@ impl<'a> TypeParser<'a> {
         let ident_string = &p.ident.to_string();
         if let Some(generic) = p.generic {
             match ident_string.as_str() {
-                "SyncReturn" => match self.convert_to_ir_type(*generic) {
-                    Some(Primitive(primitive)) => {
-                        Some(SyncReturn(IrTypeSyncReturn::Primitive(primitive)))
-                    }
-                    Some(Delegate(IrTypeDelegate::String)) => {
-                        Some(SyncReturn(IrTypeSyncReturn::String))
-                    }
-                    Some(PrimitiveList(primitive)) => match primitive.primitive {
-                        IrTypePrimitive::U8 => Some(SyncReturn(IrTypeSyncReturn::VecU8)),
-                        _ => None,
-                    },
-                    _ => None,
-                },
+                "SyncReturn" => self
+                    .convert_to_ir_type(*generic)
+                    .map(|ir| SyncReturn(IrTypeSyncReturn::new(ir))),
                 "Vec" => match *generic {
                     // Special-case Vec<String> as StringList
                     SupportedInnerType::Path(SupportedPathType { ref ident, .. })

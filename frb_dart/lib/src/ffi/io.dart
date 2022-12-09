@@ -1,6 +1,8 @@
+import 'dart:convert';
 import 'dart:ffi' as ffi;
 export 'dart:ffi' show NativePort, DynamicLibrary;
 import 'dart:typed_data';
+import 'io_dartcobject.dart';
 import 'stub.dart' show FlutterRustBridgeWireBase;
 export 'stub.dart'
     show castInt, castNativeBigInt, FlutterRustBridgeWireBase, WasmModule;
@@ -21,16 +23,129 @@ extension StoreDartPostCObjectExt on FlutterRustBridgeWireBase {
 /// This class is only for internal usage.
 class WireSyncReturnStruct extends ffi.Struct {
   /// Not to be used by normal users, but has to be public for generated code
-  external ffi.Pointer<ffi.Uint8> ptr;
+  external DartCObject data;
 
-  /// Not to be used by normal users, but has to be public for generated code
-  @ffi.Int32()
-  external int len;
+  @ffi.Bool()
+  external bool isSuccess;
 
-  /// Not to be used by normal users, but has to be public for generated code
-  @ffi.Uint8()
-  external int success;
+  external ffi.Pointer<ffi.Void> ptr;
 
-  Uint8List get buffer => Uint8List.fromList(ptr.asTypedList(len));
-  bool get isSuccess => success > 0;
+  dynamic intoDart() => data.intoDart();
+}
+
+extension DartCObjectWireSyncReturn on DartCObject {
+  dynamic intoDart() {
+    switch (ty) {
+      case 0: // DartNull
+        return null;
+      case 1: // DartBool
+        return value.as_bool;
+      case 2: // DartInt32
+        return value.as_int32;
+      case 3: // DartInt64
+        return value.as_int64;
+      case 4: // DartDouble
+        return value.as_double;
+
+      case 5: // DartString
+        int len = 0;
+        while (value.as_string.elementAt(len).value != 0) {
+          len++;
+        }
+        return utf8.decode(value.as_string.cast<ffi.Uint8>().asTypedList(len));
+
+      case 6: // DartArray
+        return List.generate(value.as_array.length,
+            (i) => value.as_array.values.elementAt(i).value.ref.intoDart());
+
+      case 7: // DartTypedData
+        return _typedDataIntoDart(
+          value.as_typed_data.ty,
+          value.as_typed_data.values,
+          value.as_typed_data.length,
+          copy: true,
+        );
+
+      case 8: // DartExternalTypedData
+        final externalTypedData = _typedDataIntoDart(
+          value.as_external_typed_data.ty,
+          value.as_external_typed_data.data,
+          value.as_external_typed_data.length,
+          copy: false,
+        );
+        _externalTypedDataFinalizer.attach(
+            externalTypedData, value.as_external_typed_data);
+        return externalTypedData;
+
+      case 9: // DartSendPort
+      case 10: // DartCapability
+      case 11: // DartNativePointer
+      case 12: // DartUnsupported
+      case 13: // DartNumberOfTypes
+      default:
+        throw "Can't read invalid data type $ty";
+    }
+  }
+
+  static dynamic _typedDataIntoDart(
+    int ty,
+    ffi.Pointer<ffi.Void> typedValues,
+    int nValues, {
+    required bool copy,
+  }) {
+    switch (ty) {
+      case 0: // ByteData
+        final view = typedValues.cast<ffi.Uint8>().asTypedList(nValues);
+        final bytes = copy ? view : Uint8List.fromList(view);
+        return ByteData.view(bytes.buffer);
+      case 1: // Int8
+        final view = typedValues.cast<ffi.Int8>().asTypedList(nValues);
+        return copy ? Int8List.fromList(view) : view;
+      case 2: // Uint8
+        final view = typedValues.cast<ffi.Uint8>().asTypedList(nValues);
+        return copy ? Uint8List.fromList(view) : view;
+      case 4: // Int16
+        final view = typedValues.cast<ffi.Int16>().asTypedList(nValues);
+        return copy ? Int16List.fromList(view) : view;
+      case 5: // Uint16
+        final view = typedValues.cast<ffi.Uint16>().asTypedList(nValues);
+        return copy ? Uint16List.fromList(view) : view;
+      case 6: // Int32
+        final view = typedValues.cast<ffi.Int32>().asTypedList(nValues);
+        return copy ? Int32List.fromList(view) : view;
+      case 7: // Uint32
+        final view = typedValues.cast<ffi.Uint32>().asTypedList(nValues);
+        return copy ? Uint32List.fromList(view) : view;
+      case 8: // Int64
+        final view = typedValues.cast<ffi.Int64>().asTypedList(nValues);
+        return copy ? Int64List.fromList(view) : view;
+      case 9: // Uint64
+        final view = typedValues.cast<ffi.Uint64>().asTypedList(nValues);
+        return copy ? Uint64List.fromList(view) : view;
+      case 10: // Float32
+        final view = typedValues.cast<ffi.Float>().asTypedList(nValues);
+        return copy ? Float32List.fromList(view) : view;
+      case 11: // Float64
+        final view = typedValues.cast<ffi.Double>().asTypedList(nValues);
+        return copy ? Float64List.fromList(view) : view;
+
+      case 3: // Uint8Clamped
+      case 12: // Float32x4
+      case 13: // Invalid
+      default:
+        throw "Can't read invalid typed data type $ty";
+    }
+  }
+
+  static final _externalTypedDataFinalizer =
+      Finalizer<DartNativeExternalTypedData>((externalTypedData) {
+    final handleFinalizer = externalTypedData.callback
+        .cast<
+            ffi.NativeFunction<
+                ffi.Void Function(
+                    ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>()
+        .asFunction<
+            void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+    handleFinalizer(externalTypedData.data, externalTypedData.peer);
+  });
 }

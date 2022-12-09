@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/platform_independent.dart';
 import 'package:flutter_rust_bridge/src/utils.dart';
@@ -52,20 +50,24 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   /// Similar to [executeNormal], except that this will return synchronously
   @protected
   S executeSync<S>(FlutterRustBridgeSyncTask task) {
-    final WireSyncReturnStruct raw;
+    final WireSyncReturnStruct syncReturn;
     try {
-      raw = task.callFfi();
+      syncReturn = task.callFfi();
     } catch (err, st) {
       throw FfiException('EXECUTE_SYNC_ABORT', '$err', st);
     }
-    if (raw.isSuccess) {
-      final result = task.parseSuccessData(raw.buffer);
-      inner.free_WireSyncReturnStruct(raw);
-      return result;
-    } else {
-      final errMessage = utf8.decode(raw.buffer);
-      inner.free_WireSyncReturnStruct(raw);
-      throw FfiException('EXECUTE_SYNC', errMessage, null);
+    try {
+      final raw = syncReturn.intoDart();
+      if (syncReturn.isSuccess) {
+        return task.parseSuccessData(raw);
+      } else {
+        throw FfiException('EXECUTE_SYNC', raw as String, null);
+      }
+    } catch (err, st) {
+      if (err is FfiException) rethrow;
+      throw FfiException('EXECUTE_SYNC_ABORT', '$err', st);
+    } finally {
+      inner.free_WireSyncReturnStruct(syncReturn);
     }
   }
 
@@ -146,7 +148,7 @@ class FlutterRustBridgeSyncTask<S> extends FlutterRustBridgeBaseTask {
   final WireSyncReturnStruct Function() callFfi;
 
   /// Parse the returned data from the underlying function
-  final S Function(Uint8List) parseSuccessData;
+  final S Function(dynamic) parseSuccessData;
 
   const FlutterRustBridgeSyncTask({
     required this.callFfi,

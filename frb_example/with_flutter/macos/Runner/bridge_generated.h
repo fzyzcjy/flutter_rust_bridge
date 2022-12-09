@@ -37,9 +37,7 @@ typedef struct wire_list_size {
 } wire_list_size;
 
 typedef struct WireSyncReturnStruct {
-  uint8_t *ptr;
-  int32_t len;
-  bool success;
+  uint8_t _opaque[0];
 } WireSyncReturnStruct;
 
 void store_dart_post_cobject(DartPostCObjectFnType ptr);

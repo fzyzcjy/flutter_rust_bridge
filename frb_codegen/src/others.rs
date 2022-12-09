@@ -19,12 +19,9 @@ pub const DUMMY_WIRE_CODE_FOR_BINDGEN: &str = r#"
     pub type DartPostCObjectFnType = unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool;
     #[no_mangle] pub unsafe extern "C" fn store_dart_post_cobject(ptr: DartPostCObjectFnType) { panic!("dummy code") }
 
-    // copied from: frb_rust::support.rs
     #[repr(C)]
     pub struct WireSyncReturnStruct {
-        pub ptr: *mut u8,
-        pub len: i32,
-        pub success: bool,
+        _opaque: [u8; 0],
     }
 
     // ---------------------------------------------
