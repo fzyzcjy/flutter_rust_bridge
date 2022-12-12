@@ -1026,11 +1026,13 @@ you need to manually create four text files to redirect calls from libgcc to lib
 <p>The three other folders end with <code>aarch64</code>, <code>arm</code>,    <code>i386</code> instead of <code>x86_64</code>.</p>
 </li>
 <li>
-<p>Create 4 text files named <code>libgcc.a</code> in the four folders mentioned above with this contents</p>
+<p>Create 4 text files named <code>libgcc.a</code> in the four folders mentioned above with these contents</p>
 <pre><code>INPUT(-lunwind)
 </code></pre>
 </li>
 </ol>
+<h2 id="more-details-on-ndk-with-flutter_rust_bridge"><a class="header" href="#more-details-on-ndk-with-flutter_rust_bridge">More details on NDK with flutter_rust_bridge</a></h2>
+<p>For more details on how NDK works with <code>flutter_rust_bridge</code>, have a look at this <a href="template/../integrate/android_tasks.html">article</a> please.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ios-setup"><a class="header" href="#ios-setup">iOS setup</a></h1>
 <p>iOS requires some additional Rust targets for cross-compilation:</p>
 <pre><code class="language-bash"># 64 bit targets (real device &amp; simulator):
@@ -1399,9 +1401,10 @@ The most reliable way is to create a file at <code>~/.gradle/gradle.properties</
 and fill it with this:</p>
 <pre><code>ANDROID_NDK=(path to NDK)
 </code></pre>
+<p>Note the ABIs <code>x86_64</code> and <code>x86</code> in <code>ndk_command</code> are usually used for Android simulators. Feel free to remove them as needed.</p>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
 <pre><code>This excerpt might be outdated, please check out
-the source file at the template repository.
+the [source file](https://github.com/Desdaemon/flutter_rust_bridge_template/blob/main/android/app/build.gradle) at the [template repository](https://github.com/Desdaemon/flutter_rust_bridge_template).
 </code></pre>
 </div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="cmake-with-gradle"><a class="header" href="#cmake-with-gradle">CMake with Gradle</a></h1>
