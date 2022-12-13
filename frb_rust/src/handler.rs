@@ -316,6 +316,6 @@ fn wire_sync_from_data<T: IntoDart>(data: T, success: bool) -> WireSyncReturnStr
 
     #[cfg(wasm)]
     {
-        vec![data.0.into_dart(), success.into_dart()].into_dart()
+        vec![data.into_dart(), success.into_dart()].into_dart()
     }
 }
