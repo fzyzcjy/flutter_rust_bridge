@@ -31,7 +31,7 @@ external ApiClass1WasmModule get wasmModule;
 class ApiClass1WasmModule implements WasmModule {
   external Object /* Promise */ call([String? moduleName]);
   external ApiClass1WasmModule bind(dynamic thisArg, String moduleName);
-  external void wire_simple_adder_1(NativePortType port_, int a, int b);
+  external dynamic /* void */ wire_simple_adder_1(NativePortType port_, int a, int b);
 }
 
 // Section: WASM wire connector
