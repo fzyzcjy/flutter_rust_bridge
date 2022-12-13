@@ -214,6 +214,89 @@ pub fn handle_sync_f64(input: f64) -> SyncReturn<f64> {
 pub fn handle_sync_string(input: String) -> SyncReturn<String> {
     SyncReturn(input)
 }
+pub fn handle_sync_unit() -> SyncReturn<()> {
+    SyncReturn(())
+}
+pub fn handle_sync_typed_i8(input: Vec<i8>) -> SyncReturn<Vec<i8>> {
+    SyncReturn(input)
+}
+pub fn handle_sync_typed_u8(input: Vec<u8>) -> SyncReturn<Vec<u8>> {
+    SyncReturn(input)
+}
+pub fn handle_sync_typed_i16(input: Vec<i16>) -> SyncReturn<Vec<i16>> {
+    SyncReturn(input)
+}
+pub fn handle_sync_typed_u16(input: Vec<u16>) -> SyncReturn<Vec<u16>> {
+    SyncReturn(input)
+}
+pub fn handle_sync_typed_i32(input: Vec<i32>) -> SyncReturn<Vec<i32>> {
+    SyncReturn(input)
+}
+pub fn handle_sync_typed_u32(input: Vec<u32>) -> SyncReturn<Vec<u32>> {
+    SyncReturn(input)
+}
+pub fn handle_sync_typed_i64(input: Vec<i64>) -> SyncReturn<Vec<i64>> {
+    SyncReturn(input)
+}
+pub fn handle_sync_typed_u64(input: Vec<u64>) -> SyncReturn<Vec<u64>> {
+    SyncReturn(input)
+}
+pub fn handle_sync_typed_f32(input: Vec<f32>) -> SyncReturn<Vec<f32>> {
+    SyncReturn(input)
+}
+pub fn handle_sync_typed_f64(input: Vec<f64>) -> SyncReturn<Vec<f64>> {
+    SyncReturn(input)
+}
+pub fn handle_sync_typed_i8_zero_copy(
+    input: ZeroCopyBuffer<Vec<i8>>,
+) -> SyncReturn<ZeroCopyBuffer<Vec<i8>>> {
+    SyncReturn(input)
+}
+pub fn handle_sync_typed_u8_zero_copy(
+    input: ZeroCopyBuffer<Vec<u8>>,
+) -> SyncReturn<ZeroCopyBuffer<Vec<u8>>> {
+    SyncReturn(input)
+}
+pub fn handle_sync_typed_i16_zero_copy(
+    input: ZeroCopyBuffer<Vec<i16>>,
+) -> SyncReturn<ZeroCopyBuffer<Vec<i16>>> {
+    SyncReturn(input)
+}
+pub fn handle_sync_typed_u16_zero_copy(
+    input: ZeroCopyBuffer<Vec<u16>>,
+) -> SyncReturn<ZeroCopyBuffer<Vec<u16>>> {
+    SyncReturn(input)
+}
+pub fn handle_sync_typed_i32_zero_copy(
+    input: ZeroCopyBuffer<Vec<i32>>,
+) -> SyncReturn<ZeroCopyBuffer<Vec<i32>>> {
+    SyncReturn(input)
+}
+pub fn handle_sync_typed_u32_zero_copy(
+    input: ZeroCopyBuffer<Vec<u32>>,
+) -> SyncReturn<ZeroCopyBuffer<Vec<u32>>> {
+    SyncReturn(input)
+}
+pub fn handle_sync_typed_i64_zero_copy(
+    input: ZeroCopyBuffer<Vec<i64>>,
+) -> SyncReturn<ZeroCopyBuffer<Vec<i64>>> {
+    SyncReturn(input)
+}
+pub fn handle_sync_typed_u64_zero_copy(
+    input: ZeroCopyBuffer<Vec<u64>>,
+) -> SyncReturn<ZeroCopyBuffer<Vec<u64>>> {
+    SyncReturn(input)
+}
+pub fn handle_sync_typed_f32_zero_copy(
+    input: ZeroCopyBuffer<Vec<f32>>,
+) -> SyncReturn<ZeroCopyBuffer<Vec<f32>>> {
+    SyncReturn(input)
+}
+pub fn handle_sync_typed_f64_zero_copy(
+    input: ZeroCopyBuffer<Vec<f64>>,
+) -> SyncReturn<ZeroCopyBuffer<Vec<f64>>> {
+    SyncReturn(input)
+}
 
 pub fn handle_stream(sink: StreamSink<String>, arg: String) {
     println!("handle_stream arg={}", arg);

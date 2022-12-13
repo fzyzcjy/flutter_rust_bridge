@@ -112,6 +112,51 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  Float32List api2wire_ZeroCopyBuffer_Float32List(Float32List raw) {
+    return api2wire_float_32_list(raw);
+  }
+
+  @protected
+  Float64List api2wire_ZeroCopyBuffer_Float64List(Float64List raw) {
+    return api2wire_float_64_list(raw);
+  }
+
+  @protected
+  Int16List api2wire_ZeroCopyBuffer_Int16List(Int16List raw) {
+    return api2wire_int_16_list(raw);
+  }
+
+  @protected
+  Int32List api2wire_ZeroCopyBuffer_Int32List(Int32List raw) {
+    return api2wire_int_32_list(raw);
+  }
+
+  @protected
+  Int64List api2wire_ZeroCopyBuffer_Int64List(Int64List raw) {
+    return api2wire_int_64_list(raw);
+  }
+
+  @protected
+  Int8List api2wire_ZeroCopyBuffer_Int8List(Int8List raw) {
+    return api2wire_int_8_list(raw);
+  }
+
+  @protected
+  Uint16List api2wire_ZeroCopyBuffer_Uint16List(Uint16List raw) {
+    return api2wire_uint_16_list(raw);
+  }
+
+  @protected
+  Uint32List api2wire_ZeroCopyBuffer_Uint32List(Uint32List raw) {
+    return api2wire_uint_32_list(raw);
+  }
+
+  @protected
+  Uint64List api2wire_ZeroCopyBuffer_Uint64List(Uint64List raw) {
+    return api2wire_uint_64_list(raw);
+  }
+
+  @protected
   Uint8List api2wire_ZeroCopyBuffer_Uint8List(Uint8List raw) {
     return api2wire_uint_8_list(raw);
   }
@@ -502,7 +547,17 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  Int16List api2wire_int_16_list(Int16List raw) {
+    return raw;
+  }
+
+  @protected
   Int32List api2wire_int_32_list(Int32List raw) {
+    return raw;
+  }
+
+  @protected
+  Int64List api2wire_int_64_list(Int64List raw) {
     return raw;
   }
 
@@ -805,6 +860,21 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  Uint16List api2wire_uint_16_list(Uint16List raw) {
+    return raw;
+  }
+
+  @protected
+  Uint32List api2wire_uint_32_list(Uint32List raw) {
+    return raw;
+  }
+
+  @protected
+  Uint64List api2wire_uint_64_list(Uint64List raw) {
+    return raw;
+  }
+
+  @protected
   Uint8List api2wire_uint_8_list(Uint8List raw) {
     return raw;
   }
@@ -898,6 +968,48 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external dynamic /* double */ wire_handle_sync_f64(double input);
 
   external dynamic /* String */ wire_handle_sync_string(String input);
+
+  external void wire_handle_sync_unit();
+
+  external dynamic /* Int8List */ wire_handle_sync_typed_i8(Int8List input);
+
+  external dynamic /* Uint8List */ wire_handle_sync_typed_u8(Uint8List input);
+
+  external dynamic /* Int16List */ wire_handle_sync_typed_i16(Int16List input);
+
+  external dynamic /* Uint16List */ wire_handle_sync_typed_u16(Uint16List input);
+
+  external dynamic /* Int32List */ wire_handle_sync_typed_i32(Int32List input);
+
+  external dynamic /* Uint32List */ wire_handle_sync_typed_u32(Uint32List input);
+
+  external dynamic /* Int64List */ wire_handle_sync_typed_i64(Int64List input);
+
+  external dynamic /* Uint64List */ wire_handle_sync_typed_u64(Uint64List input);
+
+  external dynamic /* Float32List */ wire_handle_sync_typed_f32(Float32List input);
+
+  external dynamic /* Float64List */ wire_handle_sync_typed_f64(Float64List input);
+
+  external dynamic /* Int8List */ wire_handle_sync_typed_i8_zero_copy(Int8List input);
+
+  external dynamic /* Uint8List */ wire_handle_sync_typed_u8_zero_copy(Uint8List input);
+
+  external dynamic /* Int16List */ wire_handle_sync_typed_i16_zero_copy(Int16List input);
+
+  external dynamic /* Uint16List */ wire_handle_sync_typed_u16_zero_copy(Uint16List input);
+
+  external dynamic /* Int32List */ wire_handle_sync_typed_i32_zero_copy(Int32List input);
+
+  external dynamic /* Uint32List */ wire_handle_sync_typed_u32_zero_copy(Uint32List input);
+
+  external dynamic /* Int64List */ wire_handle_sync_typed_i64_zero_copy(Int64List input);
+
+  external dynamic /* Uint64List */ wire_handle_sync_typed_u64_zero_copy(Uint64List input);
+
+  external dynamic /* Float32List */ wire_handle_sync_typed_f32_zero_copy(Float32List input);
+
+  external dynamic /* Float64List */ wire_handle_sync_typed_f64_zero_copy(Float64List input);
 
   external void wire_handle_stream(NativePortType port_, String arg);
 
@@ -1238,6 +1350,60 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   dynamic /* double */ wire_handle_sync_f64(double input) => wasmModule.wire_handle_sync_f64(input);
 
   dynamic /* String */ wire_handle_sync_string(String input) => wasmModule.wire_handle_sync_string(input);
+
+  void wire_handle_sync_unit() => wasmModule.wire_handle_sync_unit();
+
+  dynamic /* Int8List */ wire_handle_sync_typed_i8(Int8List input) => wasmModule.wire_handle_sync_typed_i8(input);
+
+  dynamic /* Uint8List */ wire_handle_sync_typed_u8(Uint8List input) => wasmModule.wire_handle_sync_typed_u8(input);
+
+  dynamic /* Int16List */ wire_handle_sync_typed_i16(Int16List input) => wasmModule.wire_handle_sync_typed_i16(input);
+
+  dynamic /* Uint16List */ wire_handle_sync_typed_u16(Uint16List input) => wasmModule.wire_handle_sync_typed_u16(input);
+
+  dynamic /* Int32List */ wire_handle_sync_typed_i32(Int32List input) => wasmModule.wire_handle_sync_typed_i32(input);
+
+  dynamic /* Uint32List */ wire_handle_sync_typed_u32(Uint32List input) => wasmModule.wire_handle_sync_typed_u32(input);
+
+  dynamic /* Int64List */ wire_handle_sync_typed_i64(Int64List input) => wasmModule.wire_handle_sync_typed_i64(input);
+
+  dynamic /* Uint64List */ wire_handle_sync_typed_u64(Uint64List input) => wasmModule.wire_handle_sync_typed_u64(input);
+
+  dynamic /* Float32List */ wire_handle_sync_typed_f32(Float32List input) =>
+      wasmModule.wire_handle_sync_typed_f32(input);
+
+  dynamic /* Float64List */ wire_handle_sync_typed_f64(Float64List input) =>
+      wasmModule.wire_handle_sync_typed_f64(input);
+
+  dynamic /* Int8List */ wire_handle_sync_typed_i8_zero_copy(Int8List input) =>
+      wasmModule.wire_handle_sync_typed_i8_zero_copy(input);
+
+  dynamic /* Uint8List */ wire_handle_sync_typed_u8_zero_copy(Uint8List input) =>
+      wasmModule.wire_handle_sync_typed_u8_zero_copy(input);
+
+  dynamic /* Int16List */ wire_handle_sync_typed_i16_zero_copy(Int16List input) =>
+      wasmModule.wire_handle_sync_typed_i16_zero_copy(input);
+
+  dynamic /* Uint16List */ wire_handle_sync_typed_u16_zero_copy(Uint16List input) =>
+      wasmModule.wire_handle_sync_typed_u16_zero_copy(input);
+
+  dynamic /* Int32List */ wire_handle_sync_typed_i32_zero_copy(Int32List input) =>
+      wasmModule.wire_handle_sync_typed_i32_zero_copy(input);
+
+  dynamic /* Uint32List */ wire_handle_sync_typed_u32_zero_copy(Uint32List input) =>
+      wasmModule.wire_handle_sync_typed_u32_zero_copy(input);
+
+  dynamic /* Int64List */ wire_handle_sync_typed_i64_zero_copy(Int64List input) =>
+      wasmModule.wire_handle_sync_typed_i64_zero_copy(input);
+
+  dynamic /* Uint64List */ wire_handle_sync_typed_u64_zero_copy(Uint64List input) =>
+      wasmModule.wire_handle_sync_typed_u64_zero_copy(input);
+
+  dynamic /* Float32List */ wire_handle_sync_typed_f32_zero_copy(Float32List input) =>
+      wasmModule.wire_handle_sync_typed_f32_zero_copy(input);
+
+  dynamic /* Float64List */ wire_handle_sync_typed_f64_zero_copy(Float64List input) =>
+      wasmModule.wire_handle_sync_typed_f64_zero_copy(input);
 
   void wire_handle_stream(NativePortType port_, String arg) => wasmModule.wire_handle_stream(port_, arg);
 

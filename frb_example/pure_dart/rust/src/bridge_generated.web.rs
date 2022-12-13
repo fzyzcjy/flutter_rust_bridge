@@ -138,6 +138,111 @@ pub fn wire_handle_sync_string(input: String) -> support::WireSyncReturnStruct {
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_sync_unit() -> support::WireSyncReturnStruct {
+    wire_handle_sync_unit_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_typed_i8(input: Box<[i8]>) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_i8_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_typed_u8(input: Box<[u8]>) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_u8_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_typed_i16(input: Box<[i16]>) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_i16_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_typed_u16(input: Box<[u16]>) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_u16_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_typed_i32(input: Box<[i32]>) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_i32_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_typed_u32(input: Box<[u32]>) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_u32_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_typed_i64(input: Box<[i64]>) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_i64_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_typed_u64(input: Box<[u64]>) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_u64_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_typed_f32(input: Box<[f32]>) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_f32_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_typed_f64(input: Box<[f64]>) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_f64_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_typed_i8_zero_copy(input: Box<[i8]>) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_i8_zero_copy_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_typed_u8_zero_copy(input: Box<[u8]>) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_u8_zero_copy_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_typed_i16_zero_copy(input: Box<[i16]>) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_i16_zero_copy_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_typed_u16_zero_copy(input: Box<[u16]>) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_u16_zero_copy_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_typed_i32_zero_copy(input: Box<[i32]>) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_i32_zero_copy_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_typed_u32_zero_copy(input: Box<[u32]>) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_u32_zero_copy_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_typed_i64_zero_copy(input: Box<[i64]>) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_i64_zero_copy_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_typed_u64_zero_copy(input: Box<[u64]>) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_u64_zero_copy_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_typed_f32_zero_copy(input: Box<[f32]>) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_f32_zero_copy_impl(input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_sync_typed_f64_zero_copy(input: Box<[f64]>) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_f64_zero_copy_impl(input)
+}
+
+#[wasm_bindgen]
 pub fn wire_handle_stream(port_: MessagePort, arg: String) {
     wire_handle_stream_impl(port_, arg)
 }
@@ -930,6 +1035,51 @@ impl Wire2Api<Vec<uuid::Uuid>> for Box<[u8]> {
         wire2api_uuids(multiple)
     }
 }
+impl Wire2Api<ZeroCopyBuffer<Vec<f32>>> for Box<[f32]> {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<f32>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<f64>>> for Box<[f64]> {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<f64>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<i16>>> for Box<[i16]> {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<i16>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<i32>>> for Box<[i32]> {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<i32>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<i64>>> for Box<[i64]> {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<i64>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<i8>>> for Box<[i8]> {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<i8>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<u16>>> for Box<[u16]> {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<u16>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<u32>>> for Box<[u32]> {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<u32>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<u64>>> for Box<[u64]> {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<u64>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
 impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for Box<[u8]> {
     fn wire2api(self) -> ZeroCopyBuffer<Vec<u8>> {
         ZeroCopyBuffer(self.wire2api())
@@ -1186,8 +1336,18 @@ impl Wire2Api<[i32; 2]> for Box<[i32]> {
     }
 }
 
+impl Wire2Api<Vec<i16>> for Box<[i16]> {
+    fn wire2api(self) -> Vec<i16> {
+        self.into_vec()
+    }
+}
 impl Wire2Api<Vec<i32>> for Box<[i32]> {
     fn wire2api(self) -> Vec<i32> {
+        self.into_vec()
+    }
+}
+impl Wire2Api<Vec<i64>> for Box<[i64]> {
+    fn wire2api(self) -> Vec<i64> {
         self.into_vec()
     }
 }
@@ -1555,6 +1715,21 @@ impl Wire2Api<[u8; 8]> for Box<[u8]> {
         support::from_vec_to_array(vec)
     }
 }
+impl Wire2Api<Vec<u16>> for Box<[u16]> {
+    fn wire2api(self) -> Vec<u16> {
+        self.into_vec()
+    }
+}
+impl Wire2Api<Vec<u32>> for Box<[u32]> {
+    fn wire2api(self) -> Vec<u32> {
+        self.into_vec()
+    }
+}
+impl Wire2Api<Vec<u64>> for Box<[u64]> {
+    fn wire2api(self) -> Vec<u64> {
+        self.into_vec()
+    }
+}
 impl Wire2Api<Vec<u8>> for Box<[u8]> {
     fn wire2api(self) -> Vec<u8> {
         self.into_vec()
@@ -1694,6 +1869,51 @@ impl Wire2Api<Vec<uuid::Uuid>> for JsValue {
             .to_vec()
             .into_boxed_slice()
             .wire2api()
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<f32>>> for JsValue {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<f32>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<f64>>> for JsValue {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<f64>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<i16>>> for JsValue {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<i16>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<i32>>> for JsValue {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<i32>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<i64>>> for JsValue {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<i64>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<i8>>> for JsValue {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<i8>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<u16>>> for JsValue {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<u16>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<u32>>> for JsValue {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<u32>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<u64>>> for JsValue {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<u64>> {
+        ZeroCopyBuffer(self.wire2api())
     }
 }
 impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for JsValue {
@@ -1843,9 +2063,21 @@ impl Wire2Api<i8> for JsValue {
         self.unchecked_into_f64() as _
     }
 }
+impl Wire2Api<Vec<i16>> for JsValue {
+    fn wire2api(self) -> Vec<i16> {
+        self.unchecked_into::<js_sys::Int16Array>().to_vec().into()
+    }
+}
 impl Wire2Api<Vec<i32>> for JsValue {
     fn wire2api(self) -> Vec<i32> {
         self.unchecked_into::<js_sys::Int32Array>().to_vec().into()
+    }
+}
+impl Wire2Api<Vec<i64>> for JsValue {
+    fn wire2api(self) -> Vec<i64> {
+        let buf = self.dyn_into::<js_sys::BigInt64Array>().unwrap();
+        let buf = js_sys::Uint8Array::new(&buf.buffer());
+        support::slice_from_byte_buffer(buf.to_vec()).into()
     }
 }
 impl Wire2Api<Vec<i8>> for JsValue {
@@ -1979,6 +2211,23 @@ impl Wire2Api<[u8; 8]> for JsValue {
     fn wire2api(self) -> [u8; 8] {
         let vec: Vec<u8> = self.wire2api();
         support::from_vec_to_array(vec)
+    }
+}
+impl Wire2Api<Vec<u16>> for JsValue {
+    fn wire2api(self) -> Vec<u16> {
+        self.unchecked_into::<js_sys::Uint16Array>().to_vec().into()
+    }
+}
+impl Wire2Api<Vec<u32>> for JsValue {
+    fn wire2api(self) -> Vec<u32> {
+        self.unchecked_into::<js_sys::Uint32Array>().to_vec().into()
+    }
+}
+impl Wire2Api<Vec<u64>> for JsValue {
+    fn wire2api(self) -> Vec<u64> {
+        let buf = self.dyn_into::<js_sys::BigUint64Array>().unwrap();
+        let buf = js_sys::Uint8Array::new(&buf.buffer());
+        support::slice_from_byte_buffer(buf.to_vec()).into()
     }
 }
 impl Wire2Api<Vec<u8>> for JsValue {

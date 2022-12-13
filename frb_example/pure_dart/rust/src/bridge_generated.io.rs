@@ -142,6 +142,151 @@ pub extern "C" fn wire_handle_sync_string(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_sync_unit() -> support::WireSyncReturnStruct {
+    wire_handle_sync_unit_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_typed_i8(
+    input: *mut wire_int_8_list,
+) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_i8_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_typed_u8(
+    input: *mut wire_uint_8_list,
+) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_u8_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_typed_i16(
+    input: *mut wire_int_16_list,
+) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_i16_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_typed_u16(
+    input: *mut wire_uint_16_list,
+) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_u16_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_typed_i32(
+    input: *mut wire_int_32_list,
+) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_i32_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_typed_u32(
+    input: *mut wire_uint_32_list,
+) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_u32_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_typed_i64(
+    input: *mut wire_int_64_list,
+) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_i64_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_typed_u64(
+    input: *mut wire_uint_64_list,
+) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_u64_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_typed_f32(
+    input: *mut wire_float_32_list,
+) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_f32_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_typed_f64(
+    input: *mut wire_float_64_list,
+) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_f64_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_typed_i8_zero_copy(
+    input: *mut wire_int_8_list,
+) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_i8_zero_copy_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_typed_u8_zero_copy(
+    input: *mut wire_uint_8_list,
+) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_u8_zero_copy_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_typed_i16_zero_copy(
+    input: *mut wire_int_16_list,
+) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_i16_zero_copy_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_typed_u16_zero_copy(
+    input: *mut wire_uint_16_list,
+) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_u16_zero_copy_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_typed_i32_zero_copy(
+    input: *mut wire_int_32_list,
+) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_i32_zero_copy_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_typed_u32_zero_copy(
+    input: *mut wire_uint_32_list,
+) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_u32_zero_copy_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_typed_i64_zero_copy(
+    input: *mut wire_int_64_list,
+) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_i64_zero_copy_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_typed_u64_zero_copy(
+    input: *mut wire_uint_64_list,
+) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_u64_zero_copy_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_typed_f32_zero_copy(
+    input: *mut wire_float_32_list,
+) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_f32_zero_copy_impl(input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_sync_typed_f64_zero_copy(
+    input: *mut wire_float_64_list,
+) -> support::WireSyncReturnStruct {
+    wire_handle_sync_typed_f64_zero_copy_impl(input)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_handle_stream(port_: i64, arg: *mut wire_uint_8_list) {
     wire_handle_stream_impl(port_, arg)
 }
@@ -1019,8 +1164,26 @@ pub extern "C" fn new_float_64_list_0(len: i32) -> *mut wire_float_64_list {
 }
 
 #[no_mangle]
+pub extern "C" fn new_int_16_list_0(len: i32) -> *mut wire_int_16_list {
+    let ans = wire_int_16_list {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
 pub extern "C" fn new_int_32_list_0(len: i32) -> *mut wire_int_32_list {
     let ans = wire_int_32_list {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_int_64_list_0(len: i32) -> *mut wire_int_64_list {
+    let ans = wire_int_64_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
     };
@@ -1108,6 +1271,33 @@ pub extern "C" fn new_list_test_id_0(len: i32) -> *mut wire_list_test_id {
         len,
     };
     support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_uint_16_list_0(len: i32) -> *mut wire_uint_16_list {
+    let ans = wire_uint_16_list {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_uint_32_list_0(len: i32) -> *mut wire_uint_32_list {
+    let ans = wire_uint_32_list {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_uint_64_list_0(len: i32) -> *mut wire_uint_64_list {
+    let ans = wire_uint_64_list {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
 }
 
 #[no_mangle]
@@ -1335,6 +1525,51 @@ impl Wire2Api<Vec<uuid::Uuid>> for *mut wire_uint_8_list {
     fn wire2api(self) -> Vec<uuid::Uuid> {
         let multiple: Vec<u8> = self.wire2api();
         wire2api_uuids(multiple)
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<f32>>> for *mut wire_float_32_list {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<f32>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<f64>>> for *mut wire_float_64_list {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<f64>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<i16>>> for *mut wire_int_16_list {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<i16>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<i32>>> for *mut wire_int_32_list {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<i32>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<i64>>> for *mut wire_int_64_list {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<i64>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<i8>>> for *mut wire_int_8_list {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<i8>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<u16>>> for *mut wire_uint_16_list {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<u16>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<u32>>> for *mut wire_uint_32_list {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<u32>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<u64>>> for *mut wire_uint_64_list {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<u64>> {
+        ZeroCopyBuffer(self.wire2api())
     }
 }
 impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut wire_uint_8_list {
@@ -1759,8 +1994,24 @@ impl Wire2Api<[i32; 2]> for *mut wire_int_32_list {
     }
 }
 
+impl Wire2Api<Vec<i16>> for *mut wire_int_16_list {
+    fn wire2api(self) -> Vec<i16> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
 impl Wire2Api<Vec<i32>> for *mut wire_int_32_list {
     fn wire2api(self) -> Vec<i32> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+impl Wire2Api<Vec<i64>> for *mut wire_int_64_list {
+    fn wire2api(self) -> Vec<i64> {
         unsafe {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -2008,6 +2259,30 @@ impl Wire2Api<[u8; 8]> for *mut wire_uint_8_list {
         support::from_vec_to_array(vec)
     }
 }
+impl Wire2Api<Vec<u16>> for *mut wire_uint_16_list {
+    fn wire2api(self) -> Vec<u16> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+impl Wire2Api<Vec<u32>> for *mut wire_uint_32_list {
+    fn wire2api(self) -> Vec<u32> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+impl Wire2Api<Vec<u64>> for *mut wire_uint_64_list {
+    fn wire2api(self) -> Vec<u64> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
 impl Wire2Api<Vec<u8>> for *mut wire_uint_8_list {
     fn wire2api(self) -> Vec<u8> {
         unsafe {
@@ -2188,8 +2463,22 @@ pub struct wire_float_64_list {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_int_16_list {
+    ptr: *mut i16,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_int_32_list {
     ptr: *mut i32,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_int_64_list {
+    ptr: *mut i64,
     len: i32,
 }
 
@@ -2326,6 +2615,27 @@ pub struct wire_SumWith {
 #[derive(Clone)]
 pub struct wire_TestId {
     field0: *mut wire_int_32_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_uint_16_list {
+    ptr: *mut u16,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_uint_32_list {
+    ptr: *mut u32,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_uint_64_list {
+    ptr: *mut u64,
+    len: i32,
 }
 
 #[repr(C)]

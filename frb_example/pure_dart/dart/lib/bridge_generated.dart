@@ -441,6 +441,341 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["input"],
       );
 
+  void handleSyncUnit({dynamic hint}) {
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_sync_unit(),
+      parseSuccessData: _wire2api_unit,
+      constMeta: kHandleSyncUnitConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncUnitConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_sync_unit",
+        argNames: [],
+      );
+
+  Int8List handleSyncTypedI8({required Int8List input, dynamic hint}) {
+    var arg0 = _platform.api2wire_int_8_list(input);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_sync_typed_i8(arg0),
+      parseSuccessData: _wire2api_int_8_list,
+      constMeta: kHandleSyncTypedI8ConstMeta,
+      argValues: [input],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedI8ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_sync_typed_i8",
+        argNames: ["input"],
+      );
+
+  Uint8List handleSyncTypedU8({required Uint8List input, dynamic hint}) {
+    var arg0 = _platform.api2wire_uint_8_list(input);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_sync_typed_u8(arg0),
+      parseSuccessData: _wire2api_uint_8_list,
+      constMeta: kHandleSyncTypedU8ConstMeta,
+      argValues: [input],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedU8ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_sync_typed_u8",
+        argNames: ["input"],
+      );
+
+  Int16List handleSyncTypedI16({required Int16List input, dynamic hint}) {
+    var arg0 = _platform.api2wire_int_16_list(input);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_sync_typed_i16(arg0),
+      parseSuccessData: _wire2api_int_16_list,
+      constMeta: kHandleSyncTypedI16ConstMeta,
+      argValues: [input],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedI16ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_sync_typed_i16",
+        argNames: ["input"],
+      );
+
+  Uint16List handleSyncTypedU16({required Uint16List input, dynamic hint}) {
+    var arg0 = _platform.api2wire_uint_16_list(input);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_sync_typed_u16(arg0),
+      parseSuccessData: _wire2api_uint_16_list,
+      constMeta: kHandleSyncTypedU16ConstMeta,
+      argValues: [input],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedU16ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_sync_typed_u16",
+        argNames: ["input"],
+      );
+
+  Int32List handleSyncTypedI32({required Int32List input, dynamic hint}) {
+    var arg0 = _platform.api2wire_int_32_list(input);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_sync_typed_i32(arg0),
+      parseSuccessData: _wire2api_int_32_list,
+      constMeta: kHandleSyncTypedI32ConstMeta,
+      argValues: [input],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedI32ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_sync_typed_i32",
+        argNames: ["input"],
+      );
+
+  Uint32List handleSyncTypedU32({required Uint32List input, dynamic hint}) {
+    var arg0 = _platform.api2wire_uint_32_list(input);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_sync_typed_u32(arg0),
+      parseSuccessData: _wire2api_uint_32_list,
+      constMeta: kHandleSyncTypedU32ConstMeta,
+      argValues: [input],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedU32ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_sync_typed_u32",
+        argNames: ["input"],
+      );
+
+  Int64List handleSyncTypedI64({required Int64List input, dynamic hint}) {
+    var arg0 = _platform.api2wire_int_64_list(input);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_sync_typed_i64(arg0),
+      parseSuccessData: _wire2api_int_64_list,
+      constMeta: kHandleSyncTypedI64ConstMeta,
+      argValues: [input],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedI64ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_sync_typed_i64",
+        argNames: ["input"],
+      );
+
+  Uint64List handleSyncTypedU64({required Uint64List input, dynamic hint}) {
+    var arg0 = _platform.api2wire_uint_64_list(input);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_sync_typed_u64(arg0),
+      parseSuccessData: _wire2api_uint_64_list,
+      constMeta: kHandleSyncTypedU64ConstMeta,
+      argValues: [input],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedU64ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_sync_typed_u64",
+        argNames: ["input"],
+      );
+
+  Float32List handleSyncTypedF32({required Float32List input, dynamic hint}) {
+    var arg0 = _platform.api2wire_float_32_list(input);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_sync_typed_f32(arg0),
+      parseSuccessData: _wire2api_float_32_list,
+      constMeta: kHandleSyncTypedF32ConstMeta,
+      argValues: [input],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedF32ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_sync_typed_f32",
+        argNames: ["input"],
+      );
+
+  Float64List handleSyncTypedF64({required Float64List input, dynamic hint}) {
+    var arg0 = _platform.api2wire_float_64_list(input);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_sync_typed_f64(arg0),
+      parseSuccessData: _wire2api_float_64_list,
+      constMeta: kHandleSyncTypedF64ConstMeta,
+      argValues: [input],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedF64ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_sync_typed_f64",
+        argNames: ["input"],
+      );
+
+  Int8List handleSyncTypedI8ZeroCopy({required Int8List input, dynamic hint}) {
+    var arg0 = _platform.api2wire_ZeroCopyBuffer_Int8List(input);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_sync_typed_i8_zero_copy(arg0),
+      parseSuccessData: _wire2api_ZeroCopyBuffer_Int8List,
+      constMeta: kHandleSyncTypedI8ZeroCopyConstMeta,
+      argValues: [input],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedI8ZeroCopyConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_sync_typed_i8_zero_copy",
+        argNames: ["input"],
+      );
+
+  Uint8List handleSyncTypedU8ZeroCopy({required Uint8List input, dynamic hint}) {
+    var arg0 = _platform.api2wire_ZeroCopyBuffer_Uint8List(input);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_sync_typed_u8_zero_copy(arg0),
+      parseSuccessData: _wire2api_ZeroCopyBuffer_Uint8List,
+      constMeta: kHandleSyncTypedU8ZeroCopyConstMeta,
+      argValues: [input],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedU8ZeroCopyConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_sync_typed_u8_zero_copy",
+        argNames: ["input"],
+      );
+
+  Int16List handleSyncTypedI16ZeroCopy({required Int16List input, dynamic hint}) {
+    var arg0 = _platform.api2wire_ZeroCopyBuffer_Int16List(input);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_sync_typed_i16_zero_copy(arg0),
+      parseSuccessData: _wire2api_ZeroCopyBuffer_Int16List,
+      constMeta: kHandleSyncTypedI16ZeroCopyConstMeta,
+      argValues: [input],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedI16ZeroCopyConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_sync_typed_i16_zero_copy",
+        argNames: ["input"],
+      );
+
+  Uint16List handleSyncTypedU16ZeroCopy({required Uint16List input, dynamic hint}) {
+    var arg0 = _platform.api2wire_ZeroCopyBuffer_Uint16List(input);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_sync_typed_u16_zero_copy(arg0),
+      parseSuccessData: _wire2api_ZeroCopyBuffer_Uint16List,
+      constMeta: kHandleSyncTypedU16ZeroCopyConstMeta,
+      argValues: [input],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedU16ZeroCopyConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_sync_typed_u16_zero_copy",
+        argNames: ["input"],
+      );
+
+  Int32List handleSyncTypedI32ZeroCopy({required Int32List input, dynamic hint}) {
+    var arg0 = _platform.api2wire_ZeroCopyBuffer_Int32List(input);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_sync_typed_i32_zero_copy(arg0),
+      parseSuccessData: _wire2api_ZeroCopyBuffer_Int32List,
+      constMeta: kHandleSyncTypedI32ZeroCopyConstMeta,
+      argValues: [input],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedI32ZeroCopyConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_sync_typed_i32_zero_copy",
+        argNames: ["input"],
+      );
+
+  Uint32List handleSyncTypedU32ZeroCopy({required Uint32List input, dynamic hint}) {
+    var arg0 = _platform.api2wire_ZeroCopyBuffer_Uint32List(input);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_sync_typed_u32_zero_copy(arg0),
+      parseSuccessData: _wire2api_ZeroCopyBuffer_Uint32List,
+      constMeta: kHandleSyncTypedU32ZeroCopyConstMeta,
+      argValues: [input],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedU32ZeroCopyConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_sync_typed_u32_zero_copy",
+        argNames: ["input"],
+      );
+
+  Int64List handleSyncTypedI64ZeroCopy({required Int64List input, dynamic hint}) {
+    var arg0 = _platform.api2wire_ZeroCopyBuffer_Int64List(input);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_sync_typed_i64_zero_copy(arg0),
+      parseSuccessData: _wire2api_ZeroCopyBuffer_Int64List,
+      constMeta: kHandleSyncTypedI64ZeroCopyConstMeta,
+      argValues: [input],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedI64ZeroCopyConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_sync_typed_i64_zero_copy",
+        argNames: ["input"],
+      );
+
+  Uint64List handleSyncTypedU64ZeroCopy({required Uint64List input, dynamic hint}) {
+    var arg0 = _platform.api2wire_ZeroCopyBuffer_Uint64List(input);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_sync_typed_u64_zero_copy(arg0),
+      parseSuccessData: _wire2api_ZeroCopyBuffer_Uint64List,
+      constMeta: kHandleSyncTypedU64ZeroCopyConstMeta,
+      argValues: [input],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedU64ZeroCopyConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_sync_typed_u64_zero_copy",
+        argNames: ["input"],
+      );
+
+  Float32List handleSyncTypedF32ZeroCopy({required Float32List input, dynamic hint}) {
+    var arg0 = _platform.api2wire_ZeroCopyBuffer_Float32List(input);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_sync_typed_f32_zero_copy(arg0),
+      parseSuccessData: _wire2api_ZeroCopyBuffer_Float32List,
+      constMeta: kHandleSyncTypedF32ZeroCopyConstMeta,
+      argValues: [input],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedF32ZeroCopyConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_sync_typed_f32_zero_copy",
+        argNames: ["input"],
+      );
+
+  Float64List handleSyncTypedF64ZeroCopy({required Float64List input, dynamic hint}) {
+    var arg0 = _platform.api2wire_ZeroCopyBuffer_Float64List(input);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_sync_typed_f64_zero_copy(arg0),
+      parseSuccessData: _wire2api_ZeroCopyBuffer_Float64List,
+      constMeta: kHandleSyncTypedF64ZeroCopyConstMeta,
+      argValues: [input],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedF64ZeroCopyConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_sync_typed_f64_zero_copy",
+        argNames: ["input"],
+      );
+
   Stream<String> handleStream({required String arg, dynamic hint}) {
     var arg0 = _platform.api2wire_String(arg);
     return _platform.executeStream(FlutterRustBridgeTask(

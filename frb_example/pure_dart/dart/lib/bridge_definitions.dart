@@ -125,6 +125,90 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleSyncStringConstMeta;
 
+  void handleSyncUnit({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncUnitConstMeta;
+
+  Int8List handleSyncTypedI8({required Int8List input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedI8ConstMeta;
+
+  Uint8List handleSyncTypedU8({required Uint8List input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedU8ConstMeta;
+
+  Int16List handleSyncTypedI16({required Int16List input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedI16ConstMeta;
+
+  Uint16List handleSyncTypedU16({required Uint16List input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedU16ConstMeta;
+
+  Int32List handleSyncTypedI32({required Int32List input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedI32ConstMeta;
+
+  Uint32List handleSyncTypedU32({required Uint32List input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedU32ConstMeta;
+
+  Int64List handleSyncTypedI64({required Int64List input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedI64ConstMeta;
+
+  Uint64List handleSyncTypedU64({required Uint64List input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedU64ConstMeta;
+
+  Float32List handleSyncTypedF32({required Float32List input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedF32ConstMeta;
+
+  Float64List handleSyncTypedF64({required Float64List input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedF64ConstMeta;
+
+  Int8List handleSyncTypedI8ZeroCopy({required Int8List input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedI8ZeroCopyConstMeta;
+
+  Uint8List handleSyncTypedU8ZeroCopy({required Uint8List input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedU8ZeroCopyConstMeta;
+
+  Int16List handleSyncTypedI16ZeroCopy({required Int16List input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedI16ZeroCopyConstMeta;
+
+  Uint16List handleSyncTypedU16ZeroCopy({required Uint16List input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedU16ZeroCopyConstMeta;
+
+  Int32List handleSyncTypedI32ZeroCopy({required Int32List input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedI32ZeroCopyConstMeta;
+
+  Uint32List handleSyncTypedU32ZeroCopy({required Uint32List input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedU32ZeroCopyConstMeta;
+
+  Int64List handleSyncTypedI64ZeroCopy({required Int64List input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedI64ZeroCopyConstMeta;
+
+  Uint64List handleSyncTypedU64ZeroCopy({required Uint64List input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedU64ZeroCopyConstMeta;
+
+  Float32List handleSyncTypedF32ZeroCopy({required Float32List input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedF32ZeroCopyConstMeta;
+
+  Float64List handleSyncTypedF64ZeroCopy({required Float64List input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedF64ZeroCopyConstMeta;
+
   Stream<String> handleStream({required String arg, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleStreamConstMeta;

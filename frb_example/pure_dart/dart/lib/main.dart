@@ -160,6 +160,105 @@ void main(List<String> args) async {
   test('dart call handle_sync_string', () async {
     expect(api.handleSyncString(input: "Hello Rust!"), "Hello Rust!");
   });
+  test('dart call handle_sync_unit', () async {
+    api.handleSyncUnit();
+  });
+  test('dart call handle_sync_i8', () async {
+    expect(api.handleSyncTypedI8(input: Int8List.fromList([10, 20, 30])), Int8List.fromList([10, 20, 30]));
+  });
+  test('dart call handle_sync_u8', () async {
+    expect(api.handleSyncTypedU8(input: Uint8List.fromList([10, 20, 30])), Uint8List.fromList([10, 20, 30]));
+  });
+  test('dart call handle_sync_i16', () async {
+    expect(api.handleSyncTypedI16(input: Int16List.fromList([10, 20, 30])), Int16List.fromList([10, 20, 30]));
+  });
+  test('dart call handle_sync_u16', () async {
+    expect(api.handleSyncTypedU16(input: Uint16List.fromList([10, 20, 30])), Uint16List.fromList([10, 20, 30]));
+  });
+  test('dart call handle_sync_i32', () async {
+    expect(api.handleSyncTypedI32(input: Int32List.fromList([10, 20, 30])), Int32List.fromList([10, 20, 30]));
+  });
+  test('dart call handle_sync_u32', () async {
+    expect(api.handleSyncTypedU32(input: Uint32List.fromList([10, 20, 30])), Uint32List.fromList([10, 20, 30]));
+  });
+  test('dart call handle_sync_i64', () async {
+    expect(api.handleSyncTypedI64(input: Int64List.fromList([10, 20, 30])), Int64List.fromList([10, 20, 30]));
+  });
+  test('dart call handle_sync_u64', () async {
+    expect(api.handleSyncTypedU64(input: Uint64List.fromList([10, 20, 30])), Uint64List.fromList([10, 20, 30]));
+  });
+  test('dart call handle_sync_f32', () async {
+    expect(api.handleSyncTypedF32(input: Float32List.fromList([10.1, 20.2, 30.3])),
+        Float32List.fromList([10.1, 20.2, 30.3]));
+  });
+  test('dart call handle_sync_f64', () async {
+    expect(api.handleSyncTypedF64(input: Float64List.fromList([10.1, 20.2, 30.3])),
+        Float64List.fromList([10.1, 20.2, 30.3]));
+  });
+  test('dart call handle_sync_i8', () async {
+    expect(api.handleSyncTypedI8(input: Int8List.fromList([10, 20, 30])), Int8List.fromList([10, 20, 30]));
+  });
+  test('dart call handle_sync_u8', () async {
+    expect(api.handleSyncTypedU8(input: Uint8List.fromList([10, 20, 30])), Uint8List.fromList([10, 20, 30]));
+  });
+  test('dart call handle_sync_i16', () async {
+    expect(api.handleSyncTypedI16(input: Int16List.fromList([10, 20, 30])), Int16List.fromList([10, 20, 30]));
+  });
+  test('dart call handle_sync_u16', () async {
+    expect(api.handleSyncTypedU16(input: Uint16List.fromList([10, 20, 30])), Uint16List.fromList([10, 20, 30]));
+  });
+  test('dart call handle_sync_i32', () async {
+    expect(api.handleSyncTypedI32(input: Int32List.fromList([10, 20, 30])), Int32List.fromList([10, 20, 30]));
+  });
+  test('dart call handle_sync_u32', () async {
+    expect(api.handleSyncTypedU32(input: Uint32List.fromList([10, 20, 30])), Uint32List.fromList([10, 20, 30]));
+  });
+  test('dart call handle_sync_i64', () async {
+    expect(api.handleSyncTypedI64(input: Int64List.fromList([10, 20, 30])), Int64List.fromList([10, 20, 30]));
+  });
+  test('dart call handle_sync_u64', () async {
+    expect(api.handleSyncTypedU64(input: Uint64List.fromList([10, 20, 30])), Uint64List.fromList([10, 20, 30]));
+  });
+  test('dart call handle_sync_f32', () async {
+    expect(api.handleSyncTypedF32(input: Float32List.fromList([10.1, 20.2, 30.3])),
+        Float32List.fromList([10.1, 20.2, 30.3]));
+  });
+  test('dart call handle_sync_f64', () async {
+    expect(api.handleSyncTypedF64(input: Float64List.fromList([10.1, 20.2, 30.3])),
+        Float64List.fromList([10.1, 20.2, 30.3]));
+  });
+  test('dart call handle_sync_i8_zero_copy', () async {
+    expect(api.handleSyncTypedI8ZeroCopy(input: Int8List.fromList([10, 20, 30])), Int8List.fromList([10, 20, 30]));
+  });
+  test('dart call handle_sync_u8_zero_copy', () async {
+    expect(api.handleSyncTypedU8ZeroCopy(input: Uint8List.fromList([10, 20, 30])), Uint8List.fromList([10, 20, 30]));
+  });
+  test('dart call handle_sync_i16_zero_copy', () async {
+    expect(api.handleSyncTypedI16ZeroCopy(input: Int16List.fromList([10, 20, 30])), Int16List.fromList([10, 20, 30]));
+  });
+  test('dart call handle_sync_u16_zero_copy', () async {
+    expect(api.handleSyncTypedU16ZeroCopy(input: Uint16List.fromList([10, 20, 30])), Uint16List.fromList([10, 20, 30]));
+  });
+  test('dart call handle_sync_i32_zero_copy', () async {
+    expect(api.handleSyncTypedI32ZeroCopy(input: Int32List.fromList([10, 20, 30])), Int32List.fromList([10, 20, 30]));
+  });
+  test('dart call handle_sync_u32_zero_copy', () async {
+    expect(api.handleSyncTypedU32ZeroCopy(input: Uint32List.fromList([10, 20, 30])), Uint32List.fromList([10, 20, 30]));
+  });
+  test('dart call handle_sync_i64_zero_copy', () async {
+    expect(api.handleSyncTypedI64ZeroCopy(input: Int64List.fromList([10, 20, 30])), Int64List.fromList([10, 20, 30]));
+  });
+  test('dart call handle_sync_u64_zero_copy', () async {
+    expect(api.handleSyncTypedU64ZeroCopy(input: Uint64List.fromList([10, 20, 30])), Uint64List.fromList([10, 20, 30]));
+  });
+  test('dart call handle_sync_f32_zero_copy', () async {
+    expect(api.handleSyncTypedF32ZeroCopy(input: Float32List.fromList([10.1, 20.2, 30.3])),
+        Float32List.fromList([10.1, 20.2, 30.3]));
+  });
+  test('dart call handle_sync_f64_zero_copy', () async {
+    expect(api.handleSyncTypedF64ZeroCopy(input: Float64List.fromList([10.1, 20.2, 30.3])),
+        Float64List.fromList([10.1, 20.2, 30.3]));
+  });
 
   test('dart call handle_stream', () async {
     final stream = api.handleStream(arg: 'hello');

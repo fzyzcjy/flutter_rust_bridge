@@ -129,6 +129,51 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_float_32_list> api2wire_ZeroCopyBuffer_Float32List(Float32List raw) {
+    return api2wire_float_32_list(raw);
+  }
+
+  @protected
+  ffi.Pointer<wire_float_64_list> api2wire_ZeroCopyBuffer_Float64List(Float64List raw) {
+    return api2wire_float_64_list(raw);
+  }
+
+  @protected
+  ffi.Pointer<wire_int_16_list> api2wire_ZeroCopyBuffer_Int16List(Int16List raw) {
+    return api2wire_int_16_list(raw);
+  }
+
+  @protected
+  ffi.Pointer<wire_int_32_list> api2wire_ZeroCopyBuffer_Int32List(Int32List raw) {
+    return api2wire_int_32_list(raw);
+  }
+
+  @protected
+  ffi.Pointer<wire_int_64_list> api2wire_ZeroCopyBuffer_Int64List(Int64List raw) {
+    return api2wire_int_64_list(raw);
+  }
+
+  @protected
+  ffi.Pointer<wire_int_8_list> api2wire_ZeroCopyBuffer_Int8List(Int8List raw) {
+    return api2wire_int_8_list(raw);
+  }
+
+  @protected
+  ffi.Pointer<wire_uint_16_list> api2wire_ZeroCopyBuffer_Uint16List(Uint16List raw) {
+    return api2wire_uint_16_list(raw);
+  }
+
+  @protected
+  ffi.Pointer<wire_uint_32_list> api2wire_ZeroCopyBuffer_Uint32List(Uint32List raw) {
+    return api2wire_uint_32_list(raw);
+  }
+
+  @protected
+  ffi.Pointer<wire_uint_64_list> api2wire_ZeroCopyBuffer_Uint64List(Uint64List raw) {
+    return api2wire_uint_64_list(raw);
+  }
+
+  @protected
   ffi.Pointer<wire_uint_8_list> api2wire_ZeroCopyBuffer_Uint8List(Uint8List raw) {
     return api2wire_uint_8_list(raw);
   }
@@ -465,9 +510,23 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_int_16_list> api2wire_int_16_list(Int16List raw) {
+    final ans = inner.new_int_16_list_0(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+    return ans;
+  }
+
+  @protected
   ffi.Pointer<wire_int_32_list> api2wire_int_32_list(Int32List raw) {
     final ans = inner.new_int_32_list_0(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_int_64_list> api2wire_int_64_list(Int64List raw) {
+    final ans = inner.new_int_64_list_0(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw.inner);
     return ans;
   }
 
@@ -698,6 +757,27 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   ffi.Pointer<wire_uint_8_list> api2wire_u8_array_8(U8Array8 raw) {
     final ans = inner.new_uint_8_list_0(8);
     ans.ref.ptr.asTypedList(8).setAll(0, raw);
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_uint_16_list> api2wire_uint_16_list(Uint16List raw) {
+    final ans = inner.new_uint_16_list_0(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_uint_32_list> api2wire_uint_32_list(Uint32List raw) {
+    final ans = inner.new_uint_32_list_0(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_uint_64_list> api2wire_uint_64_list(Uint64List raw) {
+    final ans = inner.new_uint_64_list_0(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw.inner);
     return ans;
   }
 
@@ -1642,6 +1722,294 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
           'wire_handle_sync_string');
   late final _wire_handle_sync_string =
       _wire_handle_sync_stringPtr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_8_list>)>();
+
+  WireSyncReturnStruct wire_handle_sync_unit() {
+    return _wire_handle_sync_unit();
+  }
+
+  late final _wire_handle_sync_unitPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function()>>('wire_handle_sync_unit');
+  late final _wire_handle_sync_unit = _wire_handle_sync_unitPtr.asFunction<WireSyncReturnStruct Function()>();
+
+  WireSyncReturnStruct wire_handle_sync_typed_i8(
+    ffi.Pointer<wire_int_8_list> input,
+  ) {
+    return _wire_handle_sync_typed_i8(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_typed_i8Ptr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_int_8_list>)>>(
+          'wire_handle_sync_typed_i8');
+  late final _wire_handle_sync_typed_i8 =
+      _wire_handle_sync_typed_i8Ptr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_int_8_list>)>();
+
+  WireSyncReturnStruct wire_handle_sync_typed_u8(
+    ffi.Pointer<wire_uint_8_list> input,
+  ) {
+    return _wire_handle_sync_typed_u8(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_typed_u8Ptr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_handle_sync_typed_u8');
+  late final _wire_handle_sync_typed_u8 =
+      _wire_handle_sync_typed_u8Ptr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_8_list>)>();
+
+  WireSyncReturnStruct wire_handle_sync_typed_i16(
+    ffi.Pointer<wire_int_16_list> input,
+  ) {
+    return _wire_handle_sync_typed_i16(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_typed_i16Ptr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_int_16_list>)>>(
+          'wire_handle_sync_typed_i16');
+  late final _wire_handle_sync_typed_i16 =
+      _wire_handle_sync_typed_i16Ptr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_int_16_list>)>();
+
+  WireSyncReturnStruct wire_handle_sync_typed_u16(
+    ffi.Pointer<wire_uint_16_list> input,
+  ) {
+    return _wire_handle_sync_typed_u16(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_typed_u16Ptr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_16_list>)>>(
+          'wire_handle_sync_typed_u16');
+  late final _wire_handle_sync_typed_u16 =
+      _wire_handle_sync_typed_u16Ptr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_16_list>)>();
+
+  WireSyncReturnStruct wire_handle_sync_typed_i32(
+    ffi.Pointer<wire_int_32_list> input,
+  ) {
+    return _wire_handle_sync_typed_i32(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_typed_i32Ptr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_int_32_list>)>>(
+          'wire_handle_sync_typed_i32');
+  late final _wire_handle_sync_typed_i32 =
+      _wire_handle_sync_typed_i32Ptr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_int_32_list>)>();
+
+  WireSyncReturnStruct wire_handle_sync_typed_u32(
+    ffi.Pointer<wire_uint_32_list> input,
+  ) {
+    return _wire_handle_sync_typed_u32(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_typed_u32Ptr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_32_list>)>>(
+          'wire_handle_sync_typed_u32');
+  late final _wire_handle_sync_typed_u32 =
+      _wire_handle_sync_typed_u32Ptr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_32_list>)>();
+
+  WireSyncReturnStruct wire_handle_sync_typed_i64(
+    ffi.Pointer<wire_int_64_list> input,
+  ) {
+    return _wire_handle_sync_typed_i64(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_typed_i64Ptr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_int_64_list>)>>(
+          'wire_handle_sync_typed_i64');
+  late final _wire_handle_sync_typed_i64 =
+      _wire_handle_sync_typed_i64Ptr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_int_64_list>)>();
+
+  WireSyncReturnStruct wire_handle_sync_typed_u64(
+    ffi.Pointer<wire_uint_64_list> input,
+  ) {
+    return _wire_handle_sync_typed_u64(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_typed_u64Ptr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_64_list>)>>(
+          'wire_handle_sync_typed_u64');
+  late final _wire_handle_sync_typed_u64 =
+      _wire_handle_sync_typed_u64Ptr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_64_list>)>();
+
+  WireSyncReturnStruct wire_handle_sync_typed_f32(
+    ffi.Pointer<wire_float_32_list> input,
+  ) {
+    return _wire_handle_sync_typed_f32(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_typed_f32Ptr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_float_32_list>)>>(
+          'wire_handle_sync_typed_f32');
+  late final _wire_handle_sync_typed_f32 =
+      _wire_handle_sync_typed_f32Ptr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_float_32_list>)>();
+
+  WireSyncReturnStruct wire_handle_sync_typed_f64(
+    ffi.Pointer<wire_float_64_list> input,
+  ) {
+    return _wire_handle_sync_typed_f64(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_typed_f64Ptr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_float_64_list>)>>(
+          'wire_handle_sync_typed_f64');
+  late final _wire_handle_sync_typed_f64 =
+      _wire_handle_sync_typed_f64Ptr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_float_64_list>)>();
+
+  WireSyncReturnStruct wire_handle_sync_typed_i8_zero_copy(
+    ffi.Pointer<wire_int_8_list> input,
+  ) {
+    return _wire_handle_sync_typed_i8_zero_copy(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_typed_i8_zero_copyPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_int_8_list>)>>(
+          'wire_handle_sync_typed_i8_zero_copy');
+  late final _wire_handle_sync_typed_i8_zero_copy =
+      _wire_handle_sync_typed_i8_zero_copyPtr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_int_8_list>)>();
+
+  WireSyncReturnStruct wire_handle_sync_typed_u8_zero_copy(
+    ffi.Pointer<wire_uint_8_list> input,
+  ) {
+    return _wire_handle_sync_typed_u8_zero_copy(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_typed_u8_zero_copyPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_handle_sync_typed_u8_zero_copy');
+  late final _wire_handle_sync_typed_u8_zero_copy = _wire_handle_sync_typed_u8_zero_copyPtr
+      .asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_8_list>)>();
+
+  WireSyncReturnStruct wire_handle_sync_typed_i16_zero_copy(
+    ffi.Pointer<wire_int_16_list> input,
+  ) {
+    return _wire_handle_sync_typed_i16_zero_copy(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_typed_i16_zero_copyPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_int_16_list>)>>(
+          'wire_handle_sync_typed_i16_zero_copy');
+  late final _wire_handle_sync_typed_i16_zero_copy = _wire_handle_sync_typed_i16_zero_copyPtr
+      .asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_int_16_list>)>();
+
+  WireSyncReturnStruct wire_handle_sync_typed_u16_zero_copy(
+    ffi.Pointer<wire_uint_16_list> input,
+  ) {
+    return _wire_handle_sync_typed_u16_zero_copy(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_typed_u16_zero_copyPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_16_list>)>>(
+          'wire_handle_sync_typed_u16_zero_copy');
+  late final _wire_handle_sync_typed_u16_zero_copy = _wire_handle_sync_typed_u16_zero_copyPtr
+      .asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_16_list>)>();
+
+  WireSyncReturnStruct wire_handle_sync_typed_i32_zero_copy(
+    ffi.Pointer<wire_int_32_list> input,
+  ) {
+    return _wire_handle_sync_typed_i32_zero_copy(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_typed_i32_zero_copyPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_int_32_list>)>>(
+          'wire_handle_sync_typed_i32_zero_copy');
+  late final _wire_handle_sync_typed_i32_zero_copy = _wire_handle_sync_typed_i32_zero_copyPtr
+      .asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_int_32_list>)>();
+
+  WireSyncReturnStruct wire_handle_sync_typed_u32_zero_copy(
+    ffi.Pointer<wire_uint_32_list> input,
+  ) {
+    return _wire_handle_sync_typed_u32_zero_copy(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_typed_u32_zero_copyPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_32_list>)>>(
+          'wire_handle_sync_typed_u32_zero_copy');
+  late final _wire_handle_sync_typed_u32_zero_copy = _wire_handle_sync_typed_u32_zero_copyPtr
+      .asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_32_list>)>();
+
+  WireSyncReturnStruct wire_handle_sync_typed_i64_zero_copy(
+    ffi.Pointer<wire_int_64_list> input,
+  ) {
+    return _wire_handle_sync_typed_i64_zero_copy(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_typed_i64_zero_copyPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_int_64_list>)>>(
+          'wire_handle_sync_typed_i64_zero_copy');
+  late final _wire_handle_sync_typed_i64_zero_copy = _wire_handle_sync_typed_i64_zero_copyPtr
+      .asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_int_64_list>)>();
+
+  WireSyncReturnStruct wire_handle_sync_typed_u64_zero_copy(
+    ffi.Pointer<wire_uint_64_list> input,
+  ) {
+    return _wire_handle_sync_typed_u64_zero_copy(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_typed_u64_zero_copyPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_64_list>)>>(
+          'wire_handle_sync_typed_u64_zero_copy');
+  late final _wire_handle_sync_typed_u64_zero_copy = _wire_handle_sync_typed_u64_zero_copyPtr
+      .asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_64_list>)>();
+
+  WireSyncReturnStruct wire_handle_sync_typed_f32_zero_copy(
+    ffi.Pointer<wire_float_32_list> input,
+  ) {
+    return _wire_handle_sync_typed_f32_zero_copy(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_typed_f32_zero_copyPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_float_32_list>)>>(
+          'wire_handle_sync_typed_f32_zero_copy');
+  late final _wire_handle_sync_typed_f32_zero_copy = _wire_handle_sync_typed_f32_zero_copyPtr
+      .asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_float_32_list>)>();
+
+  WireSyncReturnStruct wire_handle_sync_typed_f64_zero_copy(
+    ffi.Pointer<wire_float_64_list> input,
+  ) {
+    return _wire_handle_sync_typed_f64_zero_copy(
+      input,
+    );
+  }
+
+  late final _wire_handle_sync_typed_f64_zero_copyPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_float_64_list>)>>(
+          'wire_handle_sync_typed_f64_zero_copy');
+  late final _wire_handle_sync_typed_f64_zero_copy = _wire_handle_sync_typed_f64_zero_copyPtr
+      .asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_float_64_list>)>();
 
   void wire_handle_stream(
     int port_,
@@ -3702,6 +4070,18 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_float_64_list> Function(ffi.Int32)>>('new_float_64_list_0');
   late final _new_float_64_list_0 = _new_float_64_list_0Ptr.asFunction<ffi.Pointer<wire_float_64_list> Function(int)>();
 
+  ffi.Pointer<wire_int_16_list> new_int_16_list_0(
+    int len,
+  ) {
+    return _new_int_16_list_0(
+      len,
+    );
+  }
+
+  late final _new_int_16_list_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_int_16_list> Function(ffi.Int32)>>('new_int_16_list_0');
+  late final _new_int_16_list_0 = _new_int_16_list_0Ptr.asFunction<ffi.Pointer<wire_int_16_list> Function(int)>();
+
   ffi.Pointer<wire_int_32_list> new_int_32_list_0(
     int len,
   ) {
@@ -3713,6 +4093,18 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_int_32_list_0Ptr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_int_32_list> Function(ffi.Int32)>>('new_int_32_list_0');
   late final _new_int_32_list_0 = _new_int_32_list_0Ptr.asFunction<ffi.Pointer<wire_int_32_list> Function(int)>();
+
+  ffi.Pointer<wire_int_64_list> new_int_64_list_0(
+    int len,
+  ) {
+    return _new_int_64_list_0(
+      len,
+    );
+  }
+
+  late final _new_int_64_list_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_int_64_list> Function(ffi.Int32)>>('new_int_64_list_0');
+  late final _new_int_64_list_0 = _new_int_64_list_0Ptr.asFunction<ffi.Pointer<wire_int_64_list> Function(int)>();
 
   ffi.Pointer<wire_int_8_list> new_int_8_list_0(
     int len,
@@ -3828,6 +4220,42 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_list_test_id_0Ptr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_test_id> Function(ffi.Int32)>>('new_list_test_id_0');
   late final _new_list_test_id_0 = _new_list_test_id_0Ptr.asFunction<ffi.Pointer<wire_list_test_id> Function(int)>();
+
+  ffi.Pointer<wire_uint_16_list> new_uint_16_list_0(
+    int len,
+  ) {
+    return _new_uint_16_list_0(
+      len,
+    );
+  }
+
+  late final _new_uint_16_list_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_16_list> Function(ffi.Int32)>>('new_uint_16_list_0');
+  late final _new_uint_16_list_0 = _new_uint_16_list_0Ptr.asFunction<ffi.Pointer<wire_uint_16_list> Function(int)>();
+
+  ffi.Pointer<wire_uint_32_list> new_uint_32_list_0(
+    int len,
+  ) {
+    return _new_uint_32_list_0(
+      len,
+    );
+  }
+
+  late final _new_uint_32_list_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_32_list> Function(ffi.Int32)>>('new_uint_32_list_0');
+  late final _new_uint_32_list_0 = _new_uint_32_list_0Ptr.asFunction<ffi.Pointer<wire_uint_32_list> Function(int)>();
+
+  ffi.Pointer<wire_uint_64_list> new_uint_64_list_0(
+    int len,
+  ) {
+    return _new_uint_64_list_0(
+      len,
+    );
+  }
+
+  late final _new_uint_64_list_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_64_list> Function(ffi.Int32)>>('new_uint_64_list_0');
+  late final _new_uint_64_list_0 = _new_uint_64_list_0Ptr.asFunction<ffi.Pointer<wire_uint_64_list> Function(int)>();
 
   ffi.Pointer<wire_uint_8_list> new_uint_8_list_0(
     int len,
@@ -4239,8 +4667,43 @@ class wire_int_8_list extends ffi.Struct {
   external int len;
 }
 
+class wire_int_16_list extends ffi.Struct {
+  external ffi.Pointer<ffi.Int16> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class wire_uint_16_list extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint16> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
 class wire_int_32_list extends ffi.Struct {
   external ffi.Pointer<ffi.Int32> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class wire_uint_32_list extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint32> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class wire_int_64_list extends ffi.Struct {
+  external ffi.Pointer<ffi.Int64> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class wire_uint_64_list extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint64> ptr;
 
   @ffi.Int32()
   external int len;
