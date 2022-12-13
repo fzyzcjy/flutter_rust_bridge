@@ -154,15 +154,16 @@ extension DartCObjectWireSyncReturn on DartCObject {
   static final _externalTypedDataFinalizer =
       Finalizer<DartNativeExternalTypedData>((externalTypedData) {
     final handleFinalizer = externalTypedData.callback
-        .cast<
-            ffi.NativeFunction<
-                ffi.Void Function(
-                    ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>()
-        .asFunction<
-            void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>();
+        .cast<ffi.NativeFunction<NativeExternalTypedDataFinalizer>>()
+        .asFunction<DartExternalTypedDataFinalizer>();
     handleFinalizer(externalTypedData.data, externalTypedData.peer);
   });
 }
+
+typedef NativeExternalTypedDataFinalizer = ffi.Void Function(
+    ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>);
+typedef DartExternalTypedDataFinalizer = void Function(
+    ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>);
 
 typedef PlatformPointer = ffi.Pointer<ffi.Void>;
 typedef OpaqueTypeFinalizer = NativeFinalizer;
