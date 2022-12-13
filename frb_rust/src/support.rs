@@ -2,10 +2,9 @@
 //! These functions are *not* meant to be used by humans directly.
 #![doc(hidden)]
 
-use std::mem::{self, ManuallyDrop};
+use std::mem;
 
 pub use crate::ffi::*;
-use allo_isolate::ffi::{DartCObject, DartCObjectType, DartCObjectValue};
 pub use lazy_static::lazy_static;
 
 pub use crate::handler::DefaultHandler;
@@ -66,8 +65,13 @@ pub fn slice_from_byte_buffer<T: bytemuck::Pod>(buffer: Vec<u8>) -> Box<[T]> {
     }
 }
 
-/// NOTE for maintainer: Please keep this struct in sync with `DUMMY_WIRE_CODE_FOR_BINDGEN`
-/// in the code generator
+#[cfg(not(wasm))]
+use allo_isolate::ffi::{DartCObject, DartCObjectType, DartCObjectValue};
+#[cfg(not(wasm))]
+use std::mem::ManuallyDrop;
+
+/// NOTE for maintainer: This struct is declared as opaque in `DUMMY_WIRE_CODE_FOR_BINDGEN`
+/// and its name is used in the code generator. Renaming would break the generated bindings.
 #[repr(C)]
 #[cfg(not(wasm))]
 pub struct WireSyncReturnStruct {
