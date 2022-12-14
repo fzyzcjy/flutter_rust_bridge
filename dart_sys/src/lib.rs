@@ -200,14 +200,12 @@ pub const DART_INITIALIZE_PARAMS_CURRENT_VERSION: u32 = 4;
 pub const DART_KERNEL_ISOLATE_NAME: &[u8; 15usize] = b"kernel-service\0";
 pub const DART_VM_SERVICE_ISOLATE_NAME: &[u8; 11usize] = b"vm-service\0";
 pub const kVmSnapshotDataCSymbol: &[u8; 21usize] = b"_kDartVmSnapshotData\0";
-pub const kVmSnapshotInstructionsCSymbol: &[u8; 29usize] =
-    b"_kDartVmSnapshotInstructions\0";
+pub const kVmSnapshotInstructionsCSymbol: &[u8; 29usize] = b"_kDartVmSnapshotInstructions\0";
 pub const kIsolateSnapshotDataCSymbol: &[u8; 26usize] = b"_kDartIsolateSnapshotData\0";
 pub const kIsolateSnapshotInstructionsCSymbol: &[u8; 34usize] =
     b"_kDartIsolateSnapshotInstructions\0";
 pub const kVmSnapshotDataAsmSymbol: &[u8; 21usize] = b"_kDartVmSnapshotData\0";
-pub const kVmSnapshotInstructionsAsmSymbol: &[u8; 29usize] =
-    b"_kDartVmSnapshotInstructions\0";
+pub const kVmSnapshotInstructionsAsmSymbol: &[u8; 29usize] = b"_kDartVmSnapshotInstructions\0";
 pub const kIsolateSnapshotDataAsmSymbol: &[u8; 26usize] = b"_kDartIsolateSnapshotData\0";
 pub const kIsolateSnapshotInstructionsAsmSymbol: &[u8; 34usize] =
     b"_kDartIsolateSnapshotInstructions\0";
