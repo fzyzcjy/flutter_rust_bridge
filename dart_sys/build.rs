@@ -1,10 +1,7 @@
 use std::cfg;
-#[cfg(windows)]
 use std::env;
-#[cfg(windows)]
 use std::path::PathBuf;
 
-#[cfg(all(not(feature = "docs-only"), windows))]
 fn find_dart_sdk() -> Option<PathBuf> {
     if let Ok(path) = env::var("dart_sdk") {
         // Check for the dart SDK in the dart_sdk environment variable
