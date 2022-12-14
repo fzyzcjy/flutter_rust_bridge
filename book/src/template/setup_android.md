@@ -26,10 +26,10 @@ Android Studio depends on the `javax` library being present in the Java runtime,
 The [Android NDK], or Native Development Kit, enables code written in other
 languages to be run on the JVM via the [Java Native Interface], or JNI for short. In this case, we would like to pass the dynamic libraries created by Cargo to be included in the bundle when we run or build the project.
 
-After following the instructions above, the NDK should be installed in your `$ANDROID_SDK_HOME/ndk` folder, where ANDROID_SDK_HOME usually is:
+After following the instructions above, the NDK should be installed in your `$ANDROID_HOME/ndk` folder, where `ANDROID_HOME` usually is:
 - on Windows: `%APPDATA%\Local\Android\sdk`
 - on MacOS: `~/Library/Android/sdk`
-- on Linux: set via the environment variable ANDROID_SDK_HOME, or `~/Android/sdk`
+- on Linux: set via the environment variable `ANDROID_HOME`, or `~/Android/sdk`
 
 [An issue] regarding building Rust's `core` library against the latest NDK means that as of writing only NDK versions 22 and older can be used.
 
