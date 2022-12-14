@@ -236,7 +236,7 @@
 <li><a href="https://github.com/surban">surban</a>: Support unit return type. Skip unresolvable modules. Ignore prefer_const_constructors. Non-final Dart fields.</li>
 <li><a href="https://github.com/Roms1383">Roms1383</a>: Fix build_runner calling bug. Remove global <code>ffigen</code> dependency. Improve version check. Fix enum name-variant conflicts. Support Chrono date time and UUID types. Migrate to Rust 1.64 workspace. Update and refactor CI. Update header comments. Code cleanup.</li>
 <li><a href="https://github.com/trobanga">trobanga</a>: Add support for <code>[T;N]</code> structs. Add <code>usize</code> support. Add a cmd argument. Separate dart tests.</li>
-<li><a href="https://github.com/dbsxdbsx">dbsxdbsx</a>: Allow generating multiple Rust and Dart files.</li>
+<li><a href="https://github.com/dbsxdbsx">dbsxdbsx</a>: Allow generating multiple Rust and Dart files. Update doc.</li>
 <li><a href="https://github.com/SoLongAndThanksForAllThePizza">SoLongAndThanksForAllThePizza</a>: Refactor and enhance SyncReturn to support more types.</li>
 <li><a href="https://github.com/hsfzxjy">hsfzxjy</a>: Fix SyncReturn use-after-free bug.</li>
 <li><a href="https://github.com/Cupnfish">Cupnfish</a>: Support arrays as function paramters. Allow multi mirror.</li>
@@ -757,7 +757,8 @@ impl MyExecutor {
 <div style="break-before: page; page-break-before: always;"></div><h1 id="initialization"><a class="header" href="#initialization">Initialization</a></h1>
 <p>If you want that feature, have a look at <code>FlutterRustBridgeSetupMixin</code> in the Dart side. (More documentaions to be added; you can create an issue if you have questions now.)</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="async-in-rust"><a class="header" href="#async-in-rust">Async in Rust</a></h1>
-<p>To use async/await or return a Future type from your Rust functions, please refer to <a href="feature/../article/async_in_rust.html">this documentation</a>. If you have interest in more integrated generator, please create and issue.</p>
+<p>Currently, this feature has not been supported yet. <a href="feature/../article/async_in_rust.html">This article</a> describes some workarounds, which can be useful before the function is implemented.</p>
+<p>However, it is implementable and the flutter_rust_bridge barely has assumption that user Rust functions should be sync. Therefore, feel free to PR or create an issue asking for more details if you want it.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="multiple-files"><a class="header" href="#multiple-files">Multiple files</a></h1>
 <p>When having a large project, it is often insufficient to put everything in a single <code>api.rs</code>, but instead we may want to separate it into <code>api_of_one_module.rs</code>, <code>api_of_another_module.rs</code>, etc. That is why we have this feature.</p>
 <p>Basically, just specify all input Rust files and all output locations and we are done. Here is an example:</p>
