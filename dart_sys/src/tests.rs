@@ -15,7 +15,10 @@ fn bindgen_test_layout_Dart_EmbedderInformation() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_EmbedderInformation>())).version as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_EmbedderInformation>())).version as *const _ as usize
+            }
         },
         0usize,
         concat!(
@@ -26,7 +29,12 @@ fn bindgen_test_layout_Dart_EmbedderInformation() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_EmbedderInformation>())).name as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_EmbedderInformation>())).name as *const _ as usize
+            }
+        },
         8usize,
         concat!(
             "Offset of field: ",
@@ -37,7 +45,11 @@ fn bindgen_test_layout_Dart_EmbedderInformation() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_EmbedderInformation>())).current_rss as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_EmbedderInformation>())).current_rss as *const _
+                    as usize
+            }
         },
         16usize,
         concat!(
@@ -49,7 +61,10 @@ fn bindgen_test_layout_Dart_EmbedderInformation() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_EmbedderInformation>())).max_rss as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_EmbedderInformation>())).max_rss as *const _ as usize
+            }
         },
         24usize,
         concat!(
@@ -74,7 +89,12 @@ fn bindgen_test_layout_Dart_CObject() {
         concat!("Alignment of ", stringify!(Dart_CObject))
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_CObject>())).type_ as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_CObject>())).type_ as *const _ as usize
+            }
+        },
         0usize,
         concat!(
             "Offset of field: ",
@@ -84,7 +104,12 @@ fn bindgen_test_layout_Dart_CObject() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_CObject>())).value as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_CObject>())).value as *const _ as usize
+            }
+        },
         8usize,
         concat!(
             "Offset of field: ",
@@ -108,7 +133,12 @@ fn bindgen_test_layout_Dart_CObjectValue() {
         concat!("Alignment of ", stringify!(Dart_CObjectValue))
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_CObjectValue>())).as_bool as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_CObjectValue>())).as_bool as *const _ as usize
+            }
+        },
         0usize,
         concat!(
             "Offset of field: ",
@@ -118,7 +148,12 @@ fn bindgen_test_layout_Dart_CObjectValue() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_CObjectValue>())).as_int32 as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_CObjectValue>())).as_int32 as *const _ as usize
+            }
+        },
         0usize,
         concat!(
             "Offset of field: ",
@@ -128,7 +163,12 @@ fn bindgen_test_layout_Dart_CObjectValue() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_CObjectValue>())).as_int64 as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_CObjectValue>())).as_int64 as *const _ as usize
+            }
+        },
         0usize,
         concat!(
             "Offset of field: ",
@@ -138,7 +178,12 @@ fn bindgen_test_layout_Dart_CObjectValue() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_CObjectValue>())).as_double as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_CObjectValue>())).as_double as *const _ as usize
+            }
+        },
         0usize,
         concat!(
             "Offset of field: ",
@@ -148,7 +193,12 @@ fn bindgen_test_layout_Dart_CObjectValue() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_CObjectValue>())).as_string as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_CObjectValue>())).as_string as *const _ as usize
+            }
+        },
         0usize,
         concat!(
             "Offset of field: ",
@@ -158,7 +208,12 @@ fn bindgen_test_layout_Dart_CObjectValue() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_CObjectValue>())).as_send_port as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_CObjectValue>())).as_send_port as *const _ as usize
+            }
+        },
         0usize,
         concat!(
             "Offset of field: ",
@@ -168,7 +223,12 @@ fn bindgen_test_layout_Dart_CObjectValue() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_CObjectValue>())).as_capability as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_CObjectValue>())).as_capability as *const _ as usize
+            }
+        },
         0usize,
         concat!(
             "Offset of field: ",
@@ -178,7 +238,12 @@ fn bindgen_test_layout_Dart_CObjectValue() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_CObjectValue>())).as_array as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_CObjectValue>())).as_array as *const _ as usize
+            }
+        },
         0usize,
         concat!(
             "Offset of field: ",
@@ -188,7 +253,12 @@ fn bindgen_test_layout_Dart_CObjectValue() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_CObjectValue>())).as_typed_data as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_CObjectValue>())).as_typed_data as *const _ as usize
+            }
+        },
         0usize,
         concat!(
             "Offset of field: ",
@@ -199,8 +269,11 @@ fn bindgen_test_layout_Dart_CObjectValue() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_CObjectValue>())).as_external_typed_data as *const _
-                as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_CObjectValue>())).as_external_typed_data as *const _
+                    as usize
+            }
         },
         0usize,
         concat!(
@@ -225,7 +298,12 @@ fn bindgen_test_layout_Dart_ExternalTypedData() {
         concat!("Alignment of ", stringify!(Dart_ExternalTypedData))
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_ExternalTypedData>())).type_ as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_ExternalTypedData>())).type_ as *const _ as usize
+            }
+        },
         0usize,
         concat!(
             "Offset of field: ",
@@ -235,7 +313,12 @@ fn bindgen_test_layout_Dart_ExternalTypedData() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_ExternalTypedData>())).length as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_ExternalTypedData>())).length as *const _ as usize
+            }
+        },
         8usize,
         concat!(
             "Offset of field: ",
@@ -245,7 +328,12 @@ fn bindgen_test_layout_Dart_ExternalTypedData() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_ExternalTypedData>())).data as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_ExternalTypedData>())).data as *const _ as usize
+            }
+        },
         16usize,
         concat!(
             "Offset of field: ",
@@ -255,7 +343,12 @@ fn bindgen_test_layout_Dart_ExternalTypedData() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_ExternalTypedData>())).peer as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_ExternalTypedData>())).peer as *const _ as usize
+            }
+        },
         24usize,
         concat!(
             "Offset of field: ",
@@ -265,7 +358,12 @@ fn bindgen_test_layout_Dart_ExternalTypedData() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_ExternalTypedData>())).callback as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_ExternalTypedData>())).callback as *const _ as usize
+            }
+        },
         32usize,
         concat!(
             "Offset of field: ",
@@ -289,7 +387,12 @@ fn bindgen_test_layout_Dart_TypedData() {
         concat!("Alignment of ", stringify!(Dart_TypedData))
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_TypedData>())).type_ as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_TypedData>())).type_ as *const _ as usize
+            }
+        },
         0usize,
         concat!(
             "Offset of field: ",
@@ -299,7 +402,12 @@ fn bindgen_test_layout_Dart_TypedData() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_TypedData>())).length as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_TypedData>())).length as *const _ as usize
+            }
+        },
         8usize,
         concat!(
             "Offset of field: ",
@@ -309,7 +417,12 @@ fn bindgen_test_layout_Dart_TypedData() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_TypedData>())).values as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_TypedData>())).values as *const _ as usize
+            }
+        },
         16usize,
         concat!(
             "Offset of field: ",
@@ -333,7 +446,12 @@ fn bindgen_test_layout_Dart_Array() {
         concat!("Alignment of ", stringify!(Dart_Array))
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_Array>())).length as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_Array>())).length as *const _ as usize
+            }
+        },
         0usize,
         concat!(
             "Offset of field: ",
@@ -343,7 +461,12 @@ fn bindgen_test_layout_Dart_Array() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_Array>())).values as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_Array>())).values as *const _ as usize
+            }
+        },
         8usize,
         concat!(
             "Offset of field: ",
@@ -367,7 +490,12 @@ fn bindgen_test_layout_Dart_Capability() {
         concat!("Alignment of ", stringify!(Dart_Capability))
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_Capability>())).id as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_Capability>())).id as *const _ as usize
+            }
+        },
         0usize,
         concat!(
             "Offset of field: ",
@@ -391,7 +519,12 @@ fn bindgen_test_layout_Dart_SendPort() {
         concat!("Alignment of ", stringify!(Dart_SendPort))
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_SendPort>())).id as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_SendPort>())).id as *const _ as usize
+            }
+        },
         0usize,
         concat!(
             "Offset of field: ",
@@ -401,7 +534,12 @@ fn bindgen_test_layout_Dart_SendPort() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_SendPort>())).origin_id as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_SendPort>())).origin_id as *const _ as usize
+            }
+        },
         8usize,
         concat!(
             "Offset of field: ",
@@ -425,7 +563,12 @@ fn bindgen_test_layout_Dart_SourceFile() {
         concat!("Alignment of ", stringify!(Dart_SourceFile))
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_SourceFile>())).uri as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_SourceFile>())).uri as *const _ as usize
+            }
+        },
         0usize,
         concat!(
             "Offset of field: ",
@@ -435,7 +578,12 @@ fn bindgen_test_layout_Dart_SourceFile() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_SourceFile>())).source as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_SourceFile>())).source as *const _ as usize
+            }
+        },
         8usize,
         concat!(
             "Offset of field: ",
@@ -460,7 +608,10 @@ fn bindgen_test_layout_Dart_KernelCompilationResult() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_KernelCompilationResult>())).status as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_KernelCompilationResult>())).status as *const _ as usize
+            }
         },
         0usize,
         concat!(
@@ -472,7 +623,10 @@ fn bindgen_test_layout_Dart_KernelCompilationResult() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_KernelCompilationResult>())).error as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_KernelCompilationResult>())).error as *const _ as usize
+            }
         },
         8usize,
         concat!(
@@ -484,7 +638,10 @@ fn bindgen_test_layout_Dart_KernelCompilationResult() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_KernelCompilationResult>())).kernel as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_KernelCompilationResult>())).kernel as *const _ as usize
+            }
         },
         16usize,
         concat!(
@@ -496,8 +653,11 @@ fn bindgen_test_layout_Dart_KernelCompilationResult() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_KernelCompilationResult>())).kernel_size as *const _
-                as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_KernelCompilationResult>())).kernel_size as *const _
+                    as usize
+            }
         },
         24usize,
         concat!(
@@ -523,7 +683,10 @@ fn bindgen_test_layout_Dart_NativeArgument_Value() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_NativeArgument_Value>())).as_bool as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_NativeArgument_Value>())).as_bool as *const _ as usize
+            }
         },
         0usize,
         concat!(
@@ -535,7 +698,10 @@ fn bindgen_test_layout_Dart_NativeArgument_Value() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_NativeArgument_Value>())).as_int32 as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_NativeArgument_Value>())).as_int32 as *const _ as usize
+            }
         },
         0usize,
         concat!(
@@ -547,7 +713,10 @@ fn bindgen_test_layout_Dart_NativeArgument_Value() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_NativeArgument_Value>())).as_uint32 as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_NativeArgument_Value>())).as_uint32 as *const _ as usize
+            }
         },
         0usize,
         concat!(
@@ -559,7 +728,10 @@ fn bindgen_test_layout_Dart_NativeArgument_Value() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_NativeArgument_Value>())).as_int64 as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_NativeArgument_Value>())).as_int64 as *const _ as usize
+            }
         },
         0usize,
         concat!(
@@ -571,7 +743,10 @@ fn bindgen_test_layout_Dart_NativeArgument_Value() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_NativeArgument_Value>())).as_uint64 as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_NativeArgument_Value>())).as_uint64 as *const _ as usize
+            }
         },
         0usize,
         concat!(
@@ -583,7 +758,10 @@ fn bindgen_test_layout_Dart_NativeArgument_Value() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_NativeArgument_Value>())).as_double as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_NativeArgument_Value>())).as_double as *const _ as usize
+            }
         },
         0usize,
         concat!(
@@ -595,7 +773,10 @@ fn bindgen_test_layout_Dart_NativeArgument_Value() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_NativeArgument_Value>())).as_string as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_NativeArgument_Value>())).as_string as *const _ as usize
+            }
         },
         0usize,
         concat!(
@@ -607,8 +788,11 @@ fn bindgen_test_layout_Dart_NativeArgument_Value() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_NativeArgument_Value>())).as_native_fields as *const _
-                as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_NativeArgument_Value>())).as_native_fields as *const _
+                    as usize
+            }
         },
         0usize,
         concat!(
@@ -620,7 +804,11 @@ fn bindgen_test_layout_Dart_NativeArgument_Value() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_NativeArgument_Value>())).as_instance as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_NativeArgument_Value>())).as_instance as *const _
+                    as usize
+            }
         },
         0usize,
         concat!(
@@ -645,7 +833,12 @@ fn bindgen_test_layout_Dart_NativeFields() {
         concat!("Alignment of ", stringify!(Dart_NativeFields))
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_NativeFields>())).num_fields as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_NativeFields>())).num_fields as *const _ as usize
+            }
+        },
         0usize,
         concat!(
             "Offset of field: ",
@@ -655,7 +848,12 @@ fn bindgen_test_layout_Dart_NativeFields() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_NativeFields>())).values as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_NativeFields>())).values as *const _ as usize
+            }
+        },
         8usize,
         concat!(
             "Offset of field: ",
@@ -679,7 +877,12 @@ fn bindgen_test_layout_Dart_NativeString() {
         concat!("Alignment of ", stringify!(Dart_NativeString))
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_NativeString>())).dart_str as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_NativeString>())).dart_str as *const _ as usize
+            }
+        },
         0usize,
         concat!(
             "Offset of field: ",
@@ -689,7 +892,12 @@ fn bindgen_test_layout_Dart_NativeString() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_NativeString>())).peer as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_NativeString>())).peer as *const _ as usize
+            }
+        },
         8usize,
         concat!(
             "Offset of field: ",
@@ -714,7 +922,11 @@ fn bindgen_test_layout__Dart_NativeArgument_Descriptor() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<_Dart_NativeArgument_Descriptor>())).type_ as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<_Dart_NativeArgument_Descriptor>())).type_ as *const _
+                    as usize
+            }
         },
         0usize,
         concat!(
@@ -726,7 +938,11 @@ fn bindgen_test_layout__Dart_NativeArgument_Descriptor() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<_Dart_NativeArgument_Descriptor>())).index as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<_Dart_NativeArgument_Descriptor>())).index as *const _
+                    as usize
+            }
         },
         1usize,
         concat!(
@@ -751,7 +967,12 @@ fn bindgen_test_layout_Dart_InitializeParams() {
         concat!("Alignment of ", stringify!(Dart_InitializeParams))
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_InitializeParams>())).version as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_InitializeParams>())).version as *const _ as usize
+            }
+        },
         0usize,
         concat!(
             "Offset of field: ",
@@ -762,7 +983,11 @@ fn bindgen_test_layout_Dart_InitializeParams() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_InitializeParams>())).vm_snapshot_data as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_InitializeParams>())).vm_snapshot_data as *const _
+                    as usize
+            }
         },
         8usize,
         concat!(
@@ -774,8 +999,11 @@ fn bindgen_test_layout_Dart_InitializeParams() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_InitializeParams>())).vm_snapshot_instructions as *const _
-                as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_InitializeParams>())).vm_snapshot_instructions
+                    as *const _ as usize
+            }
         },
         16usize,
         concat!(
@@ -787,7 +1015,10 @@ fn bindgen_test_layout_Dart_InitializeParams() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_InitializeParams>())).create_group as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_InitializeParams>())).create_group as *const _ as usize
+            }
         },
         24usize,
         concat!(
@@ -799,8 +1030,11 @@ fn bindgen_test_layout_Dart_InitializeParams() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_InitializeParams>())).initialize_isolate as *const _
-                as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_InitializeParams>())).initialize_isolate as *const _
+                    as usize
+            }
         },
         32usize,
         concat!(
@@ -812,7 +1046,11 @@ fn bindgen_test_layout_Dart_InitializeParams() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_InitializeParams>())).shutdown_isolate as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_InitializeParams>())).shutdown_isolate as *const _
+                    as usize
+            }
         },
         40usize,
         concat!(
@@ -824,7 +1062,11 @@ fn bindgen_test_layout_Dart_InitializeParams() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_InitializeParams>())).cleanup_isolate as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_InitializeParams>())).cleanup_isolate as *const _
+                    as usize
+            }
         },
         48usize,
         concat!(
@@ -836,7 +1078,10 @@ fn bindgen_test_layout_Dart_InitializeParams() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_InitializeParams>())).cleanup_group as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_InitializeParams>())).cleanup_group as *const _ as usize
+            }
         },
         56usize,
         concat!(
@@ -848,7 +1093,10 @@ fn bindgen_test_layout_Dart_InitializeParams() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_InitializeParams>())).thread_exit as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_InitializeParams>())).thread_exit as *const _ as usize
+            }
         },
         64usize,
         concat!(
@@ -859,7 +1107,12 @@ fn bindgen_test_layout_Dart_InitializeParams() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_InitializeParams>())).file_open as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_InitializeParams>())).file_open as *const _ as usize
+            }
+        },
         72usize,
         concat!(
             "Offset of field: ",
@@ -869,7 +1122,12 @@ fn bindgen_test_layout_Dart_InitializeParams() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_InitializeParams>())).file_read as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_InitializeParams>())).file_read as *const _ as usize
+            }
+        },
         80usize,
         concat!(
             "Offset of field: ",
@@ -880,7 +1138,10 @@ fn bindgen_test_layout_Dart_InitializeParams() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_InitializeParams>())).file_write as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_InitializeParams>())).file_write as *const _ as usize
+            }
         },
         88usize,
         concat!(
@@ -892,7 +1153,10 @@ fn bindgen_test_layout_Dart_InitializeParams() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_InitializeParams>())).file_close as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_InitializeParams>())).file_close as *const _ as usize
+            }
         },
         96usize,
         concat!(
@@ -904,7 +1168,11 @@ fn bindgen_test_layout_Dart_InitializeParams() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_InitializeParams>())).entropy_source as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_InitializeParams>())).entropy_source as *const _
+                    as usize
+            }
         },
         104usize,
         concat!(
@@ -916,8 +1184,11 @@ fn bindgen_test_layout_Dart_InitializeParams() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_InitializeParams>())).get_service_assets as *const _
-                as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_InitializeParams>())).get_service_assets as *const _
+                    as usize
+            }
         },
         112usize,
         concat!(
@@ -929,8 +1200,11 @@ fn bindgen_test_layout_Dart_InitializeParams() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_InitializeParams>())).start_kernel_isolate as *const _
-                as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_InitializeParams>())).start_kernel_isolate as *const _
+                    as usize
+            }
         },
         120usize,
         concat!(
@@ -942,7 +1216,10 @@ fn bindgen_test_layout_Dart_InitializeParams() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_InitializeParams>())).code_observer as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_InitializeParams>())).code_observer as *const _ as usize
+            }
         },
         128usize,
         concat!(
@@ -967,7 +1244,12 @@ fn bindgen_test_layout_Dart_CodeObserver() {
         concat!("Alignment of ", stringify!(Dart_CodeObserver))
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_CodeObserver>())).data as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_CodeObserver>())).data as *const _ as usize
+            }
+        },
         0usize,
         concat!(
             "Offset of field: ",
@@ -977,7 +1259,12 @@ fn bindgen_test_layout_Dart_CodeObserver() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_CodeObserver>())).on_new_code as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_CodeObserver>())).on_new_code as *const _ as usize
+            }
+        },
         8usize,
         concat!(
             "Offset of field: ",
@@ -1001,7 +1288,12 @@ fn bindgen_test_layout_Dart_IsolateFlags() {
         concat!("Alignment of ", stringify!(Dart_IsolateFlags))
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_IsolateFlags>())).version as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_IsolateFlags>())).version as *const _ as usize
+            }
+        },
         0usize,
         concat!(
             "Offset of field: ",
@@ -1012,7 +1304,10 @@ fn bindgen_test_layout_Dart_IsolateFlags() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_IsolateFlags>())).enable_asserts as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_IsolateFlags>())).enable_asserts as *const _ as usize
+            }
         },
         4usize,
         concat!(
@@ -1024,7 +1319,10 @@ fn bindgen_test_layout_Dart_IsolateFlags() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_IsolateFlags>())).use_field_guards as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_IsolateFlags>())).use_field_guards as *const _ as usize
+            }
         },
         5usize,
         concat!(
@@ -1035,7 +1333,12 @@ fn bindgen_test_layout_Dart_IsolateFlags() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_IsolateFlags>())).use_osr as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_IsolateFlags>())).use_osr as *const _ as usize
+            }
+        },
         6usize,
         concat!(
             "Offset of field: ",
@@ -1045,7 +1348,12 @@ fn bindgen_test_layout_Dart_IsolateFlags() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_IsolateFlags>())).obfuscate as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_IsolateFlags>())).obfuscate as *const _ as usize
+            }
+        },
         7usize,
         concat!(
             "Offset of field: ",
@@ -1055,7 +1363,12 @@ fn bindgen_test_layout_Dart_IsolateFlags() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<Dart_IsolateFlags>())).entry_points as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_IsolateFlags>())).entry_points as *const _ as usize
+            }
+        },
         8usize,
         concat!(
             "Offset of field: ",
@@ -1066,8 +1379,11 @@ fn bindgen_test_layout_Dart_IsolateFlags() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_IsolateFlags>())).load_vmservice_library as *const _
-                as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_IsolateFlags>())).load_vmservice_library as *const _
+                    as usize
+            }
         },
         16usize,
         concat!(
@@ -1079,8 +1395,11 @@ fn bindgen_test_layout_Dart_IsolateFlags() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_IsolateFlags>())).unsafe_trust_strong_mode_types as *const _
-                as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_IsolateFlags>())).unsafe_trust_strong_mode_types
+                    as *const _ as usize
+            }
         },
         17usize,
         concat!(
@@ -1092,7 +1411,10 @@ fn bindgen_test_layout_Dart_IsolateFlags() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_IsolateFlags>())).copy_parent_code as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_IsolateFlags>())).copy_parent_code as *const _ as usize
+            }
         },
         18usize,
         concat!(
@@ -1118,7 +1440,11 @@ fn bindgen_test_layout_Dart_QualifiedFunctionName() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_QualifiedFunctionName>())).library_uri as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_QualifiedFunctionName>())).library_uri as *const _
+                    as usize
+            }
         },
         0usize,
         concat!(
@@ -1130,7 +1456,11 @@ fn bindgen_test_layout_Dart_QualifiedFunctionName() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_QualifiedFunctionName>())).class_name as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_QualifiedFunctionName>())).class_name as *const _
+                    as usize
+            }
         },
         8usize,
         concat!(
@@ -1142,8 +1472,11 @@ fn bindgen_test_layout_Dart_QualifiedFunctionName() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<Dart_QualifiedFunctionName>())).function_name as *const _
-                as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<Dart_QualifiedFunctionName>())).function_name as *const _
+                    as usize
+            }
         },
         16usize,
         concat!(
@@ -1168,7 +1501,12 @@ fn bindgen_test_layout__Lldiv_t() {
         concat!("Alignment of ", stringify!(_Lldiv_t))
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_Lldiv_t>())).quot as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<_Lldiv_t>())).quot as *const _ as usize
+            }
+        },
         0usize,
         concat!(
             "Offset of field: ",
@@ -1178,7 +1516,12 @@ fn bindgen_test_layout__Lldiv_t() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_Lldiv_t>())).rem as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<_Lldiv_t>())).rem as *const _ as usize
+            }
+        },
         8usize,
         concat!(
             "Offset of field: ",
@@ -1202,7 +1545,12 @@ fn bindgen_test_layout__Mbstatet() {
         concat!("Alignment of ", stringify!(_Mbstatet))
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_Mbstatet>()))._Wchar as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<_Mbstatet>()))._Wchar as *const _ as usize
+            }
+        },
         0usize,
         concat!(
             "Offset of field: ",
@@ -1212,7 +1560,12 @@ fn bindgen_test_layout__Mbstatet() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_Mbstatet>()))._Byte as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<_Mbstatet>()))._Byte as *const _ as usize
+            }
+        },
         4usize,
         concat!(
             "Offset of field: ",
@@ -1222,7 +1575,12 @@ fn bindgen_test_layout__Mbstatet() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<_Mbstatet>()))._State as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<_Mbstatet>()))._State as *const _ as usize
+            }
+        },
         6usize,
         concat!(
             "Offset of field: ",
@@ -1246,7 +1604,12 @@ fn bindgen_test_layout___crt_locale_pointers() {
         concat!("Alignment of ", stringify!(__crt_locale_pointers))
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<__crt_locale_pointers>())).locinfo as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<__crt_locale_pointers>())).locinfo as *const _ as usize
+            }
+        },
         0usize,
         concat!(
             "Offset of field: ",
@@ -1256,7 +1619,12 @@ fn bindgen_test_layout___crt_locale_pointers() {
         )
     );
     assert_eq!(
-        unsafe { &(*(::std::ptr::null::<__crt_locale_pointers>())).mbcinfo as *const _ as usize },
+        unsafe {
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<__crt_locale_pointers>())).mbcinfo as *const _ as usize
+            }
+        },
         8usize,
         concat!(
             "Offset of field: ",
@@ -1281,7 +1649,11 @@ fn bindgen_test_layout___crt_locale_data_public() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<__crt_locale_data_public>()))._locale_pctype as *const _ as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<__crt_locale_data_public>()))._locale_pctype as *const _
+                    as usize
+            }
         },
         0usize,
         concat!(
@@ -1293,8 +1665,11 @@ fn bindgen_test_layout___crt_locale_data_public() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<__crt_locale_data_public>()))._locale_mb_cur_max as *const _
-                as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<__crt_locale_data_public>()))._locale_mb_cur_max as *const _
+                    as usize
+            }
         },
         8usize,
         concat!(
@@ -1306,8 +1681,11 @@ fn bindgen_test_layout___crt_locale_data_public() {
     );
     assert_eq!(
         unsafe {
-            &(*(::std::ptr::null::<__crt_locale_data_public>()))._locale_lc_codepage as *const _
-                as usize
+            #[allow(deref_nullptr)]
+            {
+                &(*(::std::ptr::null::<__crt_locale_data_public>()))._locale_lc_codepage as *const _
+                    as usize
+            }
         },
         12usize,
         concat!(
