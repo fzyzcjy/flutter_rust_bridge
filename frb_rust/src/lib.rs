@@ -22,12 +22,6 @@ mod wasm_bindgen_src;
 /// the function should return synchronously. Otherwise, it is by default asynchronously.
 pub struct SyncReturn<T: IntoDart>(pub T);
 
-impl From<()> for SyncReturn<()> {
-    fn from(_: ()) -> Self {
-        SyncReturn(())
-    }
-}
-
 /// Marker trait for types that are safe to share with Dart and can be dropped
 /// safely in case of a panic.
 pub trait DartSafe: UnwindSafe + RefUnwindSafe {}
