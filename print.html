@@ -972,11 +972,11 @@ targets which can easily be added:</p>
 </blockquote>
 <p>The <a href="https://developer.android.com/ndk">Android NDK</a>, or Native Development Kit, enables code written in other
 languages to be run on the JVM via the <a href="https://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/jniTOC.html">Java Native Interface</a>, or JNI for short. In this case, we would like to pass the dynamic libraries created by Cargo to be included in the bundle when we run or build the project.</p>
-<p>After following the instructions above, the NDK should be installed in your <code>$ANDROID_SDK_HOME/ndk</code> folder, where ANDROID_SDK_HOME usually is:</p>
+<p>After following the instructions above, the NDK should be installed in your <code>$ANDROID_HOME/ndk</code> folder, where <code>ANDROID_HOME</code> usually is:</p>
 <ul>
 <li>on Windows: <code>%APPDATA%\Local\Android\sdk</code></li>
 <li>on MacOS: <code>~/Library/Android/sdk</code></li>
-<li>on Linux: set via the environment variable ANDROID_SDK_HOME, or <code>~/Android/sdk</code></li>
+<li>on Linux: set via the environment variable <code>ANDROID_HOME</code>, or <code>~/Android/sdk</code></li>
 </ul>
 <p><a href="https://github.com/rust-lang/rust/pull/85806">An issue</a> regarding building Rust's <code>core</code> library against the latest NDK means that as of writing only NDK versions 22 and older can be used.</p>
 <h2 id="android_ndk-gradle-property"><a class="header" href="#android_ndk-gradle-property"><code>ANDROID_NDK</code> Gradle property</a></h2>
