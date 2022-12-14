@@ -38,178 +38,178 @@ pub const WCHAR_MIN: u32 = 0;
 pub const WCHAR_MAX: u32 = 65535;
 pub const WINT_MIN: u32 = 0;
 pub const WINT_MAX: u32 = 65535;
-pub const PRId8: &'static [u8; 4usize] = b"hhd\0";
-pub const PRId16: &'static [u8; 3usize] = b"hd\0";
-pub const PRId32: &'static [u8; 2usize] = b"d\0";
-pub const PRId64: &'static [u8; 4usize] = b"lld\0";
-pub const PRIdLEAST8: &'static [u8; 4usize] = b"hhd\0";
-pub const PRIdLEAST16: &'static [u8; 3usize] = b"hd\0";
-pub const PRIdLEAST32: &'static [u8; 2usize] = b"d\0";
-pub const PRIdLEAST64: &'static [u8; 4usize] = b"lld\0";
-pub const PRIdFAST8: &'static [u8; 4usize] = b"hhd\0";
-pub const PRIdFAST16: &'static [u8; 2usize] = b"d\0";
-pub const PRIdFAST32: &'static [u8; 2usize] = b"d\0";
-pub const PRIdFAST64: &'static [u8; 4usize] = b"lld\0";
-pub const PRIdMAX: &'static [u8; 4usize] = b"lld\0";
-pub const PRIdPTR: &'static [u8; 4usize] = b"lld\0";
-pub const PRIi8: &'static [u8; 4usize] = b"hhi\0";
-pub const PRIi16: &'static [u8; 3usize] = b"hi\0";
-pub const PRIi32: &'static [u8; 2usize] = b"i\0";
-pub const PRIi64: &'static [u8; 4usize] = b"lli\0";
-pub const PRIiLEAST8: &'static [u8; 4usize] = b"hhi\0";
-pub const PRIiLEAST16: &'static [u8; 3usize] = b"hi\0";
-pub const PRIiLEAST32: &'static [u8; 2usize] = b"i\0";
-pub const PRIiLEAST64: &'static [u8; 4usize] = b"lli\0";
-pub const PRIiFAST8: &'static [u8; 4usize] = b"hhi\0";
-pub const PRIiFAST16: &'static [u8; 2usize] = b"i\0";
-pub const PRIiFAST32: &'static [u8; 2usize] = b"i\0";
-pub const PRIiFAST64: &'static [u8; 4usize] = b"lli\0";
-pub const PRIiMAX: &'static [u8; 4usize] = b"lli\0";
-pub const PRIiPTR: &'static [u8; 4usize] = b"lli\0";
-pub const PRIo8: &'static [u8; 4usize] = b"hho\0";
-pub const PRIo16: &'static [u8; 3usize] = b"ho\0";
-pub const PRIo32: &'static [u8; 2usize] = b"o\0";
-pub const PRIo64: &'static [u8; 4usize] = b"llo\0";
-pub const PRIoLEAST8: &'static [u8; 4usize] = b"hho\0";
-pub const PRIoLEAST16: &'static [u8; 3usize] = b"ho\0";
-pub const PRIoLEAST32: &'static [u8; 2usize] = b"o\0";
-pub const PRIoLEAST64: &'static [u8; 4usize] = b"llo\0";
-pub const PRIoFAST8: &'static [u8; 4usize] = b"hho\0";
-pub const PRIoFAST16: &'static [u8; 2usize] = b"o\0";
-pub const PRIoFAST32: &'static [u8; 2usize] = b"o\0";
-pub const PRIoFAST64: &'static [u8; 4usize] = b"llo\0";
-pub const PRIoMAX: &'static [u8; 4usize] = b"llo\0";
-pub const PRIoPTR: &'static [u8; 4usize] = b"llo\0";
-pub const PRIu8: &'static [u8; 4usize] = b"hhu\0";
-pub const PRIu16: &'static [u8; 3usize] = b"hu\0";
-pub const PRIu32: &'static [u8; 2usize] = b"u\0";
-pub const PRIu64: &'static [u8; 4usize] = b"llu\0";
-pub const PRIuLEAST8: &'static [u8; 4usize] = b"hhu\0";
-pub const PRIuLEAST16: &'static [u8; 3usize] = b"hu\0";
-pub const PRIuLEAST32: &'static [u8; 2usize] = b"u\0";
-pub const PRIuLEAST64: &'static [u8; 4usize] = b"llu\0";
-pub const PRIuFAST8: &'static [u8; 4usize] = b"hhu\0";
-pub const PRIuFAST16: &'static [u8; 2usize] = b"u\0";
-pub const PRIuFAST32: &'static [u8; 2usize] = b"u\0";
-pub const PRIuFAST64: &'static [u8; 4usize] = b"llu\0";
-pub const PRIuMAX: &'static [u8; 4usize] = b"llu\0";
-pub const PRIuPTR: &'static [u8; 4usize] = b"llu\0";
-pub const PRIx8: &'static [u8; 4usize] = b"hhx\0";
-pub const PRIx16: &'static [u8; 3usize] = b"hx\0";
-pub const PRIx32: &'static [u8; 2usize] = b"x\0";
-pub const PRIx64: &'static [u8; 4usize] = b"llx\0";
-pub const PRIxLEAST8: &'static [u8; 4usize] = b"hhx\0";
-pub const PRIxLEAST16: &'static [u8; 3usize] = b"hx\0";
-pub const PRIxLEAST32: &'static [u8; 2usize] = b"x\0";
-pub const PRIxLEAST64: &'static [u8; 4usize] = b"llx\0";
-pub const PRIxFAST8: &'static [u8; 4usize] = b"hhx\0";
-pub const PRIxFAST16: &'static [u8; 2usize] = b"x\0";
-pub const PRIxFAST32: &'static [u8; 2usize] = b"x\0";
-pub const PRIxFAST64: &'static [u8; 4usize] = b"llx\0";
-pub const PRIxMAX: &'static [u8; 4usize] = b"llx\0";
-pub const PRIxPTR: &'static [u8; 4usize] = b"llx\0";
-pub const PRIX8: &'static [u8; 4usize] = b"hhX\0";
-pub const PRIX16: &'static [u8; 3usize] = b"hX\0";
-pub const PRIX32: &'static [u8; 2usize] = b"X\0";
-pub const PRIX64: &'static [u8; 4usize] = b"llX\0";
-pub const PRIXLEAST8: &'static [u8; 4usize] = b"hhX\0";
-pub const PRIXLEAST16: &'static [u8; 3usize] = b"hX\0";
-pub const PRIXLEAST32: &'static [u8; 2usize] = b"X\0";
-pub const PRIXLEAST64: &'static [u8; 4usize] = b"llX\0";
-pub const PRIXFAST8: &'static [u8; 4usize] = b"hhX\0";
-pub const PRIXFAST16: &'static [u8; 2usize] = b"X\0";
-pub const PRIXFAST32: &'static [u8; 2usize] = b"X\0";
-pub const PRIXFAST64: &'static [u8; 4usize] = b"llX\0";
-pub const PRIXMAX: &'static [u8; 4usize] = b"llX\0";
-pub const PRIXPTR: &'static [u8; 4usize] = b"llX\0";
-pub const SCNd8: &'static [u8; 4usize] = b"hhd\0";
-pub const SCNd16: &'static [u8; 3usize] = b"hd\0";
-pub const SCNd32: &'static [u8; 2usize] = b"d\0";
-pub const SCNd64: &'static [u8; 4usize] = b"lld\0";
-pub const SCNdLEAST8: &'static [u8; 4usize] = b"hhd\0";
-pub const SCNdLEAST16: &'static [u8; 3usize] = b"hd\0";
-pub const SCNdLEAST32: &'static [u8; 2usize] = b"d\0";
-pub const SCNdLEAST64: &'static [u8; 4usize] = b"lld\0";
-pub const SCNdFAST8: &'static [u8; 4usize] = b"hhd\0";
-pub const SCNdFAST16: &'static [u8; 2usize] = b"d\0";
-pub const SCNdFAST32: &'static [u8; 2usize] = b"d\0";
-pub const SCNdFAST64: &'static [u8; 4usize] = b"lld\0";
-pub const SCNdMAX: &'static [u8; 4usize] = b"lld\0";
-pub const SCNdPTR: &'static [u8; 4usize] = b"lld\0";
-pub const SCNi8: &'static [u8; 4usize] = b"hhi\0";
-pub const SCNi16: &'static [u8; 3usize] = b"hi\0";
-pub const SCNi32: &'static [u8; 2usize] = b"i\0";
-pub const SCNi64: &'static [u8; 4usize] = b"lli\0";
-pub const SCNiLEAST8: &'static [u8; 4usize] = b"hhi\0";
-pub const SCNiLEAST16: &'static [u8; 3usize] = b"hi\0";
-pub const SCNiLEAST32: &'static [u8; 2usize] = b"i\0";
-pub const SCNiLEAST64: &'static [u8; 4usize] = b"lli\0";
-pub const SCNiFAST8: &'static [u8; 4usize] = b"hhi\0";
-pub const SCNiFAST16: &'static [u8; 2usize] = b"i\0";
-pub const SCNiFAST32: &'static [u8; 2usize] = b"i\0";
-pub const SCNiFAST64: &'static [u8; 4usize] = b"lli\0";
-pub const SCNiMAX: &'static [u8; 4usize] = b"lli\0";
-pub const SCNiPTR: &'static [u8; 4usize] = b"lli\0";
-pub const SCNo8: &'static [u8; 4usize] = b"hho\0";
-pub const SCNo16: &'static [u8; 3usize] = b"ho\0";
-pub const SCNo32: &'static [u8; 2usize] = b"o\0";
-pub const SCNo64: &'static [u8; 4usize] = b"llo\0";
-pub const SCNoLEAST8: &'static [u8; 4usize] = b"hho\0";
-pub const SCNoLEAST16: &'static [u8; 3usize] = b"ho\0";
-pub const SCNoLEAST32: &'static [u8; 2usize] = b"o\0";
-pub const SCNoLEAST64: &'static [u8; 4usize] = b"llo\0";
-pub const SCNoFAST8: &'static [u8; 4usize] = b"hho\0";
-pub const SCNoFAST16: &'static [u8; 2usize] = b"o\0";
-pub const SCNoFAST32: &'static [u8; 2usize] = b"o\0";
-pub const SCNoFAST64: &'static [u8; 4usize] = b"llo\0";
-pub const SCNoMAX: &'static [u8; 4usize] = b"llo\0";
-pub const SCNoPTR: &'static [u8; 4usize] = b"llo\0";
-pub const SCNu8: &'static [u8; 4usize] = b"hhu\0";
-pub const SCNu16: &'static [u8; 3usize] = b"hu\0";
-pub const SCNu32: &'static [u8; 2usize] = b"u\0";
-pub const SCNu64: &'static [u8; 4usize] = b"llu\0";
-pub const SCNuLEAST8: &'static [u8; 4usize] = b"hhu\0";
-pub const SCNuLEAST16: &'static [u8; 3usize] = b"hu\0";
-pub const SCNuLEAST32: &'static [u8; 2usize] = b"u\0";
-pub const SCNuLEAST64: &'static [u8; 4usize] = b"llu\0";
-pub const SCNuFAST8: &'static [u8; 4usize] = b"hhu\0";
-pub const SCNuFAST16: &'static [u8; 2usize] = b"u\0";
-pub const SCNuFAST32: &'static [u8; 2usize] = b"u\0";
-pub const SCNuFAST64: &'static [u8; 4usize] = b"llu\0";
-pub const SCNuMAX: &'static [u8; 4usize] = b"llu\0";
-pub const SCNuPTR: &'static [u8; 4usize] = b"llu\0";
-pub const SCNx8: &'static [u8; 4usize] = b"hhx\0";
-pub const SCNx16: &'static [u8; 3usize] = b"hx\0";
-pub const SCNx32: &'static [u8; 2usize] = b"x\0";
-pub const SCNx64: &'static [u8; 4usize] = b"llx\0";
-pub const SCNxLEAST8: &'static [u8; 4usize] = b"hhx\0";
-pub const SCNxLEAST16: &'static [u8; 3usize] = b"hx\0";
-pub const SCNxLEAST32: &'static [u8; 2usize] = b"x\0";
-pub const SCNxLEAST64: &'static [u8; 4usize] = b"llx\0";
-pub const SCNxFAST8: &'static [u8; 4usize] = b"hhx\0";
-pub const SCNxFAST16: &'static [u8; 2usize] = b"x\0";
-pub const SCNxFAST32: &'static [u8; 2usize] = b"x\0";
-pub const SCNxFAST64: &'static [u8; 4usize] = b"llx\0";
-pub const SCNxMAX: &'static [u8; 4usize] = b"llx\0";
-pub const SCNxPTR: &'static [u8; 4usize] = b"llx\0";
+pub const PRId8: &[u8; 4usize] = b"hhd\0";
+pub const PRId16: &[u8; 3usize] = b"hd\0";
+pub const PRId32: &[u8; 2usize] = b"d\0";
+pub const PRId64: &[u8; 4usize] = b"lld\0";
+pub const PRIdLEAST8: &[u8; 4usize] = b"hhd\0";
+pub const PRIdLEAST16: &[u8; 3usize] = b"hd\0";
+pub const PRIdLEAST32: &[u8; 2usize] = b"d\0";
+pub const PRIdLEAST64: &[u8; 4usize] = b"lld\0";
+pub const PRIdFAST8: &[u8; 4usize] = b"hhd\0";
+pub const PRIdFAST16: &[u8; 2usize] = b"d\0";
+pub const PRIdFAST32: &[u8; 2usize] = b"d\0";
+pub const PRIdFAST64: &[u8; 4usize] = b"lld\0";
+pub const PRIdMAX: &[u8; 4usize] = b"lld\0";
+pub const PRIdPTR: &[u8; 4usize] = b"lld\0";
+pub const PRIi8: &[u8; 4usize] = b"hhi\0";
+pub const PRIi16: &[u8; 3usize] = b"hi\0";
+pub const PRIi32: &[u8; 2usize] = b"i\0";
+pub const PRIi64: &[u8; 4usize] = b"lli\0";
+pub const PRIiLEAST8: &[u8; 4usize] = b"hhi\0";
+pub const PRIiLEAST16: &[u8; 3usize] = b"hi\0";
+pub const PRIiLEAST32: &[u8; 2usize] = b"i\0";
+pub const PRIiLEAST64: &[u8; 4usize] = b"lli\0";
+pub const PRIiFAST8: &[u8; 4usize] = b"hhi\0";
+pub const PRIiFAST16: &[u8; 2usize] = b"i\0";
+pub const PRIiFAST32: &[u8; 2usize] = b"i\0";
+pub const PRIiFAST64: &[u8; 4usize] = b"lli\0";
+pub const PRIiMAX: &[u8; 4usize] = b"lli\0";
+pub const PRIiPTR: &[u8; 4usize] = b"lli\0";
+pub const PRIo8: &[u8; 4usize] = b"hho\0";
+pub const PRIo16: &[u8; 3usize] = b"ho\0";
+pub const PRIo32: &[u8; 2usize] = b"o\0";
+pub const PRIo64: &[u8; 4usize] = b"llo\0";
+pub const PRIoLEAST8: &[u8; 4usize] = b"hho\0";
+pub const PRIoLEAST16: &[u8; 3usize] = b"ho\0";
+pub const PRIoLEAST32: &[u8; 2usize] = b"o\0";
+pub const PRIoLEAST64: &[u8; 4usize] = b"llo\0";
+pub const PRIoFAST8: &[u8; 4usize] = b"hho\0";
+pub const PRIoFAST16: &[u8; 2usize] = b"o\0";
+pub const PRIoFAST32: &[u8; 2usize] = b"o\0";
+pub const PRIoFAST64: &[u8; 4usize] = b"llo\0";
+pub const PRIoMAX: &[u8; 4usize] = b"llo\0";
+pub const PRIoPTR: &[u8; 4usize] = b"llo\0";
+pub const PRIu8: &[u8; 4usize] = b"hhu\0";
+pub const PRIu16: &[u8; 3usize] = b"hu\0";
+pub const PRIu32: &[u8; 2usize] = b"u\0";
+pub const PRIu64: &[u8; 4usize] = b"llu\0";
+pub const PRIuLEAST8: &[u8; 4usize] = b"hhu\0";
+pub const PRIuLEAST16: &[u8; 3usize] = b"hu\0";
+pub const PRIuLEAST32: &[u8; 2usize] = b"u\0";
+pub const PRIuLEAST64: &[u8; 4usize] = b"llu\0";
+pub const PRIuFAST8: &[u8; 4usize] = b"hhu\0";
+pub const PRIuFAST16: &[u8; 2usize] = b"u\0";
+pub const PRIuFAST32: &[u8; 2usize] = b"u\0";
+pub const PRIuFAST64: &[u8; 4usize] = b"llu\0";
+pub const PRIuMAX: &[u8; 4usize] = b"llu\0";
+pub const PRIuPTR: &[u8; 4usize] = b"llu\0";
+pub const PRIx8: &[u8; 4usize] = b"hhx\0";
+pub const PRIx16: &[u8; 3usize] = b"hx\0";
+pub const PRIx32: &[u8; 2usize] = b"x\0";
+pub const PRIx64: &[u8; 4usize] = b"llx\0";
+pub const PRIxLEAST8: &[u8; 4usize] = b"hhx\0";
+pub const PRIxLEAST16: &[u8; 3usize] = b"hx\0";
+pub const PRIxLEAST32: &[u8; 2usize] = b"x\0";
+pub const PRIxLEAST64: &[u8; 4usize] = b"llx\0";
+pub const PRIxFAST8: &[u8; 4usize] = b"hhx\0";
+pub const PRIxFAST16: &[u8; 2usize] = b"x\0";
+pub const PRIxFAST32: &[u8; 2usize] = b"x\0";
+pub const PRIxFAST64: &[u8; 4usize] = b"llx\0";
+pub const PRIxMAX: &[u8; 4usize] = b"llx\0";
+pub const PRIxPTR: &[u8; 4usize] = b"llx\0";
+pub const PRIX8: &[u8; 4usize] = b"hhX\0";
+pub const PRIX16: &[u8; 3usize] = b"hX\0";
+pub const PRIX32: &[u8; 2usize] = b"X\0";
+pub const PRIX64: &[u8; 4usize] = b"llX\0";
+pub const PRIXLEAST8: &[u8; 4usize] = b"hhX\0";
+pub const PRIXLEAST16: &[u8; 3usize] = b"hX\0";
+pub const PRIXLEAST32: &[u8; 2usize] = b"X\0";
+pub const PRIXLEAST64: &[u8; 4usize] = b"llX\0";
+pub const PRIXFAST8: &[u8; 4usize] = b"hhX\0";
+pub const PRIXFAST16: &[u8; 2usize] = b"X\0";
+pub const PRIXFAST32: &[u8; 2usize] = b"X\0";
+pub const PRIXFAST64: &[u8; 4usize] = b"llX\0";
+pub const PRIXMAX: &[u8; 4usize] = b"llX\0";
+pub const PRIXPTR: &[u8; 4usize] = b"llX\0";
+pub const SCNd8: &[u8; 4usize] = b"hhd\0";
+pub const SCNd16: &[u8; 3usize] = b"hd\0";
+pub const SCNd32: &[u8; 2usize] = b"d\0";
+pub const SCNd64: &[u8; 4usize] = b"lld\0";
+pub const SCNdLEAST8: &[u8; 4usize] = b"hhd\0";
+pub const SCNdLEAST16: &[u8; 3usize] = b"hd\0";
+pub const SCNdLEAST32: &[u8; 2usize] = b"d\0";
+pub const SCNdLEAST64: &[u8; 4usize] = b"lld\0";
+pub const SCNdFAST8: &[u8; 4usize] = b"hhd\0";
+pub const SCNdFAST16: &[u8; 2usize] = b"d\0";
+pub const SCNdFAST32: &[u8; 2usize] = b"d\0";
+pub const SCNdFAST64: &[u8; 4usize] = b"lld\0";
+pub const SCNdMAX: &[u8; 4usize] = b"lld\0";
+pub const SCNdPTR: &[u8; 4usize] = b"lld\0";
+pub const SCNi8: &[u8; 4usize] = b"hhi\0";
+pub const SCNi16: &[u8; 3usize] = b"hi\0";
+pub const SCNi32: &[u8; 2usize] = b"i\0";
+pub const SCNi64: &[u8; 4usize] = b"lli\0";
+pub const SCNiLEAST8: &[u8; 4usize] = b"hhi\0";
+pub const SCNiLEAST16: &[u8; 3usize] = b"hi\0";
+pub const SCNiLEAST32: &[u8; 2usize] = b"i\0";
+pub const SCNiLEAST64: &[u8; 4usize] = b"lli\0";
+pub const SCNiFAST8: &[u8; 4usize] = b"hhi\0";
+pub const SCNiFAST16: &[u8; 2usize] = b"i\0";
+pub const SCNiFAST32: &[u8; 2usize] = b"i\0";
+pub const SCNiFAST64: &[u8; 4usize] = b"lli\0";
+pub const SCNiMAX: &[u8; 4usize] = b"lli\0";
+pub const SCNiPTR: &[u8; 4usize] = b"lli\0";
+pub const SCNo8: &[u8; 4usize] = b"hho\0";
+pub const SCNo16: &[u8; 3usize] = b"ho\0";
+pub const SCNo32: &[u8; 2usize] = b"o\0";
+pub const SCNo64: &[u8; 4usize] = b"llo\0";
+pub const SCNoLEAST8: &[u8; 4usize] = b"hho\0";
+pub const SCNoLEAST16: &[u8; 3usize] = b"ho\0";
+pub const SCNoLEAST32: &[u8; 2usize] = b"o\0";
+pub const SCNoLEAST64: &[u8; 4usize] = b"llo\0";
+pub const SCNoFAST8: &[u8; 4usize] = b"hho\0";
+pub const SCNoFAST16: &[u8; 2usize] = b"o\0";
+pub const SCNoFAST32: &[u8; 2usize] = b"o\0";
+pub const SCNoFAST64: &[u8; 4usize] = b"llo\0";
+pub const SCNoMAX: &[u8; 4usize] = b"llo\0";
+pub const SCNoPTR: &[u8; 4usize] = b"llo\0";
+pub const SCNu8: &[u8; 4usize] = b"hhu\0";
+pub const SCNu16: &[u8; 3usize] = b"hu\0";
+pub const SCNu32: &[u8; 2usize] = b"u\0";
+pub const SCNu64: &[u8; 4usize] = b"llu\0";
+pub const SCNuLEAST8: &[u8; 4usize] = b"hhu\0";
+pub const SCNuLEAST16: &[u8; 3usize] = b"hu\0";
+pub const SCNuLEAST32: &[u8; 2usize] = b"u\0";
+pub const SCNuLEAST64: &[u8; 4usize] = b"llu\0";
+pub const SCNuFAST8: &[u8; 4usize] = b"hhu\0";
+pub const SCNuFAST16: &[u8; 2usize] = b"u\0";
+pub const SCNuFAST32: &[u8; 2usize] = b"u\0";
+pub const SCNuFAST64: &[u8; 4usize] = b"llu\0";
+pub const SCNuMAX: &[u8; 4usize] = b"llu\0";
+pub const SCNuPTR: &[u8; 4usize] = b"llu\0";
+pub const SCNx8: &[u8; 4usize] = b"hhx\0";
+pub const SCNx16: &[u8; 3usize] = b"hx\0";
+pub const SCNx32: &[u8; 2usize] = b"x\0";
+pub const SCNx64: &[u8; 4usize] = b"llx\0";
+pub const SCNxLEAST8: &[u8; 4usize] = b"hhx\0";
+pub const SCNxLEAST16: &[u8; 3usize] = b"hx\0";
+pub const SCNxLEAST32: &[u8; 2usize] = b"x\0";
+pub const SCNxLEAST64: &[u8; 4usize] = b"llx\0";
+pub const SCNxFAST8: &[u8; 4usize] = b"hhx\0";
+pub const SCNxFAST16: &[u8; 2usize] = b"x\0";
+pub const SCNxFAST32: &[u8; 2usize] = b"x\0";
+pub const SCNxFAST64: &[u8; 4usize] = b"llx\0";
+pub const SCNxMAX: &[u8; 4usize] = b"llx\0";
+pub const SCNxPTR: &[u8; 4usize] = b"llx\0";
 pub const true_: u32 = 1;
 pub const false_: u32 = 0;
 pub const __bool_true_false_are_defined: u32 = 1;
 pub const DART_FLAGS_CURRENT_VERSION: u32 = 11;
 pub const DART_INITIALIZE_PARAMS_CURRENT_VERSION: u32 = 4;
-pub const DART_KERNEL_ISOLATE_NAME: &'static [u8; 15usize] = b"kernel-service\0";
-pub const DART_VM_SERVICE_ISOLATE_NAME: &'static [u8; 11usize] = b"vm-service\0";
-pub const kVmSnapshotDataCSymbol: &'static [u8; 21usize] = b"_kDartVmSnapshotData\0";
-pub const kVmSnapshotInstructionsCSymbol: &'static [u8; 29usize] =
+pub const DART_KERNEL_ISOLATE_NAME: &[u8; 15usize] = b"kernel-service\0";
+pub const DART_VM_SERVICE_ISOLATE_NAME: &[u8; 11usize] = b"vm-service\0";
+pub const kVmSnapshotDataCSymbol: &[u8; 21usize] = b"_kDartVmSnapshotData\0";
+pub const kVmSnapshotInstructionsCSymbol: &[u8; 29usize] =
     b"_kDartVmSnapshotInstructions\0";
-pub const kIsolateSnapshotDataCSymbol: &'static [u8; 26usize] = b"_kDartIsolateSnapshotData\0";
-pub const kIsolateSnapshotInstructionsCSymbol: &'static [u8; 34usize] =
+pub const kIsolateSnapshotDataCSymbol: &[u8; 26usize] = b"_kDartIsolateSnapshotData\0";
+pub const kIsolateSnapshotInstructionsCSymbol: &[u8; 34usize] =
     b"_kDartIsolateSnapshotInstructions\0";
-pub const kVmSnapshotDataAsmSymbol: &'static [u8; 21usize] = b"_kDartVmSnapshotData\0";
-pub const kVmSnapshotInstructionsAsmSymbol: &'static [u8; 29usize] =
+pub const kVmSnapshotDataAsmSymbol: &[u8; 21usize] = b"_kDartVmSnapshotData\0";
+pub const kVmSnapshotInstructionsAsmSymbol: &[u8; 29usize] =
     b"_kDartVmSnapshotInstructions\0";
-pub const kIsolateSnapshotDataAsmSymbol: &'static [u8; 26usize] = b"_kDartIsolateSnapshotData\0";
-pub const kIsolateSnapshotInstructionsAsmSymbol: &'static [u8; 34usize] =
+pub const kIsolateSnapshotDataAsmSymbol: &[u8; 26usize] = b"_kDartIsolateSnapshotData\0";
+pub const kIsolateSnapshotInstructionsAsmSymbol: &[u8; 34usize] =
     b"_kDartIsolateSnapshotInstructions\0";
 pub const DART_EMBEDDER_INFORMATION_CURRENT_VERSION: u32 = 1;
 pub const DART_TIMELINE_STREAM_API: u32 = 1;
@@ -2357,7 +2357,7 @@ extern "C" {
 }
 
 #[repr(i32)]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Dart_CoreType_Id {
     Dynamic = 0,
     Int = 1,
@@ -2509,7 +2509,7 @@ extern "C" {
 }
 
 #[repr(i32)]
-#[derive(Copy, Clone, PartialEq, Debug)]
+#[derive(Copy, Clone, PartialEq, Eq, Debug)]
 pub enum Dart_TypedData_Type {
     ByteData = 0,
     Int8 = 1,
@@ -2914,7 +2914,7 @@ extern "C" {
 }
 
 #[repr(u8)]
-#[derive(Copy, Clone, Debug, PartialEq)]
+#[derive(Copy, Clone, Debug, PartialEq, Eq)]
 pub enum Dart_NativeArgument_Type {
     Bool = 0,
     Int32 = 1,
@@ -3224,7 +3224,7 @@ extern "C" {
 }
 
 #[repr(i32)]
-#[derive(Copy, Clone, Debug, PartialEq)]
+#[derive(Copy, Clone, Debug, PartialEq, Eq)]
 pub enum Dart_LibraryTag {
     CanonicalizeUrl = 0,
     ImportTag = 1,
@@ -3834,7 +3834,7 @@ extern "C" {
 #[doc = " Dart_WeakPersistentHandleFinalizer callback; a non-NULL callback must be"]
 #[doc = " provided."]
 #[repr(i32)]
-#[derive(Copy, Clone, PartialEq)]
+#[derive(Copy, Clone, PartialEq, Eq)]
 pub enum Dart_CObject_Type {
     Null = 0,
     Bool = 1,
@@ -4264,7 +4264,7 @@ extern "C" {
 }
 
 #[repr(i32)]
-#[derive(Clone, Copy, PartialEq)]
+#[derive(Clone, Copy, PartialEq, Eq)]
 pub enum Dart_Timeline_Event_Type {
     Begin = 0,
     End = 1,

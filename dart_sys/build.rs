@@ -8,12 +8,9 @@ fn find_dart_sdk() -> Option<PathBuf> {
         Some(path.into())
     } else {
         // Check for the dart SDK in the PATH variable
-        let paths: Vec<PathBuf> = env::split_paths(
-            &std::env::var("PATH")
-                .ok()
-                .expect("Could not find $PATH variable."),
-        )
-        .collect();
+        let paths: Vec<PathBuf> =
+            env::split_paths(&std::env::var("PATH").expect("Could not find $PATH variable."))
+                .collect();
 
         for i in &paths {
             if i.components().any(|x| x.as_os_str() == "dart-sdk") {
@@ -54,7 +51,7 @@ fn emit_compiler_flags() {
                 },
                 None => panic!("Could not find a dart SDK.\nPlease install the Dart SDK or set the dart_sdk environment variable to the path of the Dart SDK.\nIf you have Flutter installed, the dart SDK will be found automatically."),
             };
-            let dart_path = PathBuf::from(dart_path);
+            let dart_path = dart_path;
             println!(
                 r#"cargo:rustc-link-search=native={}"#,
                 dart_path.join("bin").to_str().unwrap()
