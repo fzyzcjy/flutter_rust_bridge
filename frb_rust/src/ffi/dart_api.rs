@@ -4,7 +4,16 @@
 
 use std::ffi::c_void;
 
-use dart_sys::{Dart_Handle, Dart_PersistentHandle};
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct _Dart_Handle {
+    _unused: [u8; 0],
+}
+
+#[allow(non_camel_case_types)]
+pub type Dart_Handle = *mut _Dart_Handle;
+#[allow(non_camel_case_types)]
+pub type Dart_PersistentHandle = Dart_Handle;
 
 #[link(name = "trampoline")]
 extern "C" {
