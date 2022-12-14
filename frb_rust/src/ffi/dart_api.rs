@@ -5,7 +5,6 @@
 use std::ffi::c_void;
 
 #[repr(C)]
-#[derive(Debug, Copy, Clone)]
 pub struct _Dart_Handle {
     _unused: [u8; 0],
 }
