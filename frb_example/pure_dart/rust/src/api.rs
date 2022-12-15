@@ -190,7 +190,7 @@ pub fn handle_sync_u16(input: u16) -> SyncReturn<u16> {
 pub fn handle_sync_u32(input: u32) -> SyncReturn<u32> {
     SyncReturn(input)
 }
-pub fn handle_sync_u64(input: Id) -> SyncReturn<Id> {
+pub fn handle_sync_u64(input: u64) -> SyncReturn<u64> {
     SyncReturn(input)
 }
 pub fn handle_sync_i8(input: i8) -> SyncReturn<i8> {
@@ -1203,4 +1203,19 @@ pub fn return_non_dropable_dart_opaque(opaque: DartOpaque) -> SyncReturn<DartOpa
 /// FrbOpaqueReturn must not be used as an argument.
 pub fn frb_generator_test() -> RustOpaque<FrbOpaqueReturn> {
     panic!("dummy code");
+}
+
+pub fn handle_type_alias_id(input: Id) -> Id {
+    input
+}
+pub struct TestModel {
+    pub id: Id,
+    pub name: String,
+}
+
+pub fn handle_type_alias_model(input: Id) -> TestModel {
+    TestModel {
+        id: input,
+        name: "TestModel".to_owned(),
+    }
 }
