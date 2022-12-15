@@ -2,6 +2,7 @@ use std::{fs, path::Path, process::Command};
 
 fn main() -> std::io::Result<()> {
     let frb_dart_dirname = "../frb_dart";
+    // tempfile won't work because ffigen relies on the file having .h extension
     let header_filename = "io_dartcobject.h";
     let header_path = format!("{}/{}", frb_dart_dirname, header_filename);
     let _ = fs::remove_file(&header_path);
@@ -17,7 +18,8 @@ fn main() -> std::io::Result<()> {
         }
     }
 
-    // Config must be generat
+    // Config must be placed in its dart project in order for the paths it defines
+    // to be actually relative to the dart project.
     let mut config_file = tempfile::NamedTempFile::new_in(frb_dart_dirname)?;
     let config = format!(
         "
