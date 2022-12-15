@@ -57,14 +57,14 @@ void main(List<String> args) async {
     expect(await api.handleString(s: "Hello, world!"), "Hello, world!Hello, world!");
   });
   test('dart call handleString with nul-containing string', () async {
-    expect(await api.handleString(s: "Hello\u0000world!"), "");
+    expect(await api.handleString(s: "Hello\u0000world!"), isWeb ? "Hello\u0000world!Hello\u0000world!" : "");
   });
 
   test('dart call handleStringSync', () {
     expect(api.handleStringSync(s: "Hello, world!"), "Hello, world!Hello, world!");
   });
   test('dart call handleStringSync with nul-containing string', () {
-    expect(api.handleStringSync(s: "Hello\u0000world!"), "");
+    expect(api.handleStringSync(s: "Hello\u0000world!"), isWeb ? "Hello\u0000world!Hello\u0000world!" : "");
   });
 
   test('dart call handleVecU8', () async {
