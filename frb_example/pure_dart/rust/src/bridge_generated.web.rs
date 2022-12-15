@@ -7,6 +7,11 @@ pub fn wire_simple_adder(port_: MessagePort, a: i32, b: i32) {
 }
 
 #[wasm_bindgen]
+pub fn wire_simple_adder_sync(a: i32, b: i32) -> support::WireSyncReturnStruct {
+    wire_simple_adder_sync_impl(a, b)
+}
+
+#[wasm_bindgen]
 pub fn wire_primitive_types(
     port_: MessagePort,
     my_i32: i32,
@@ -18,8 +23,23 @@ pub fn wire_primitive_types(
 }
 
 #[wasm_bindgen]
+pub fn wire_primitive_types_sync(
+    my_i32: i32,
+    my_i64: i64,
+    my_f64: f64,
+    my_bool: bool,
+) -> support::WireSyncReturnStruct {
+    wire_primitive_types_sync_impl(my_i32, my_i64, my_f64, my_bool)
+}
+
+#[wasm_bindgen]
 pub fn wire_primitive_u32(port_: MessagePort, my_u32: u32) {
     wire_primitive_u32_impl(port_, my_u32)
+}
+
+#[wasm_bindgen]
+pub fn wire_primitive_u32_sync(my_u32: u32) -> support::WireSyncReturnStruct {
+    wire_primitive_u32_sync_impl(my_u32)
 }
 
 #[wasm_bindgen]
@@ -28,8 +48,18 @@ pub fn wire_handle_string(port_: MessagePort, s: String) {
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_string_sync(s: String) -> support::WireSyncReturnStruct {
+    wire_handle_string_sync_impl(s)
+}
+
+#[wasm_bindgen]
 pub fn wire_handle_return_unit(port_: MessagePort) {
     wire_handle_return_unit_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_return_unit_sync() -> support::WireSyncReturnStruct {
+    wire_handle_return_unit_sync_impl()
 }
 
 #[wasm_bindgen]
@@ -38,8 +68,18 @@ pub fn wire_handle_vec_u8(port_: MessagePort, v: Box<[u8]>) {
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_vec_u8_sync(v: Box<[u8]>) -> support::WireSyncReturnStruct {
+    wire_handle_vec_u8_sync_impl(v)
+}
+
+#[wasm_bindgen]
 pub fn wire_handle_vec_of_primitive(port_: MessagePort, n: i32) {
     wire_handle_vec_of_primitive_impl(port_, n)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_vec_of_primitive_sync(n: i32) -> support::WireSyncReturnStruct {
+    wire_handle_vec_of_primitive_sync_impl(n)
 }
 
 #[wasm_bindgen]
@@ -48,8 +88,18 @@ pub fn wire_handle_zero_copy_vec_of_primitive(port_: MessagePort, n: i32) {
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_zero_copy_vec_of_primitive_sync(n: i32) -> support::WireSyncReturnStruct {
+    wire_handle_zero_copy_vec_of_primitive_sync_impl(n)
+}
+
+#[wasm_bindgen]
 pub fn wire_handle_struct(port_: MessagePort, arg: JsValue, boxed: JsValue) {
     wire_handle_struct_impl(port_, arg, boxed)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_struct_sync(arg: JsValue, boxed: JsValue) -> support::WireSyncReturnStruct {
+    wire_handle_struct_sync_impl(arg, boxed)
 }
 
 #[wasm_bindgen]
@@ -58,8 +108,18 @@ pub fn wire_handle_newtype(port_: MessagePort, arg: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_newtype_sync(arg: JsValue) -> support::WireSyncReturnStruct {
+    wire_handle_newtype_sync_impl(arg)
+}
+
+#[wasm_bindgen]
 pub fn wire_handle_list_of_struct(port_: MessagePort, l: JsValue) {
     wire_handle_list_of_struct_impl(port_, l)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_list_of_struct_sync(l: JsValue) -> support::WireSyncReturnStruct {
+    wire_handle_list_of_struct_sync_impl(l)
 }
 
 #[wasm_bindgen]
@@ -68,178 +128,23 @@ pub fn wire_handle_string_list(port_: MessagePort, names: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_string_list_sync(names: JsValue) -> support::WireSyncReturnStruct {
+    wire_handle_string_list_sync_impl(names)
+}
+
+#[wasm_bindgen]
 pub fn wire_handle_complex_struct(port_: MessagePort, s: JsValue) {
     wire_handle_complex_struct_impl(port_, s)
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_complex_struct_sync(s: JsValue) -> support::WireSyncReturnStruct {
+    wire_handle_complex_struct_sync_impl(s)
+}
+
+#[wasm_bindgen]
 pub fn wire_handle_sync_return(mode: String) -> support::WireSyncReturnStruct {
     wire_handle_sync_return_impl(mode)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_bool(input: bool) -> support::WireSyncReturnStruct {
-    wire_handle_sync_bool_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_u8(input: u8) -> support::WireSyncReturnStruct {
-    wire_handle_sync_u8_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_u16(input: u16) -> support::WireSyncReturnStruct {
-    wire_handle_sync_u16_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_u32(input: u32) -> support::WireSyncReturnStruct {
-    wire_handle_sync_u32_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_u64(input: u64) -> support::WireSyncReturnStruct {
-    wire_handle_sync_u64_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_i8(input: i8) -> support::WireSyncReturnStruct {
-    wire_handle_sync_i8_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_i16(input: i16) -> support::WireSyncReturnStruct {
-    wire_handle_sync_i16_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_i32(input: i32) -> support::WireSyncReturnStruct {
-    wire_handle_sync_i32_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_i64(input: i64) -> support::WireSyncReturnStruct {
-    wire_handle_sync_i64_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_f32(input: f32) -> support::WireSyncReturnStruct {
-    wire_handle_sync_f32_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_f64(input: f64) -> support::WireSyncReturnStruct {
-    wire_handle_sync_f64_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_string(input: String) -> support::WireSyncReturnStruct {
-    wire_handle_sync_string_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_unit() -> support::WireSyncReturnStruct {
-    wire_handle_sync_unit_impl()
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_typed_i8(input: Box<[i8]>) -> support::WireSyncReturnStruct {
-    wire_handle_sync_typed_i8_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_typed_u8(input: Box<[u8]>) -> support::WireSyncReturnStruct {
-    wire_handle_sync_typed_u8_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_typed_i16(input: Box<[i16]>) -> support::WireSyncReturnStruct {
-    wire_handle_sync_typed_i16_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_typed_u16(input: Box<[u16]>) -> support::WireSyncReturnStruct {
-    wire_handle_sync_typed_u16_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_typed_i32(input: Box<[i32]>) -> support::WireSyncReturnStruct {
-    wire_handle_sync_typed_i32_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_typed_u32(input: Box<[u32]>) -> support::WireSyncReturnStruct {
-    wire_handle_sync_typed_u32_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_typed_i64(input: Box<[i64]>) -> support::WireSyncReturnStruct {
-    wire_handle_sync_typed_i64_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_typed_u64(input: Box<[u64]>) -> support::WireSyncReturnStruct {
-    wire_handle_sync_typed_u64_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_typed_f32(input: Box<[f32]>) -> support::WireSyncReturnStruct {
-    wire_handle_sync_typed_f32_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_typed_f64(input: Box<[f64]>) -> support::WireSyncReturnStruct {
-    wire_handle_sync_typed_f64_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_typed_i8_zero_copy(input: Box<[i8]>) -> support::WireSyncReturnStruct {
-    wire_handle_sync_typed_i8_zero_copy_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_typed_u8_zero_copy(input: Box<[u8]>) -> support::WireSyncReturnStruct {
-    wire_handle_sync_typed_u8_zero_copy_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_typed_i16_zero_copy(input: Box<[i16]>) -> support::WireSyncReturnStruct {
-    wire_handle_sync_typed_i16_zero_copy_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_typed_u16_zero_copy(input: Box<[u16]>) -> support::WireSyncReturnStruct {
-    wire_handle_sync_typed_u16_zero_copy_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_typed_i32_zero_copy(input: Box<[i32]>) -> support::WireSyncReturnStruct {
-    wire_handle_sync_typed_i32_zero_copy_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_typed_u32_zero_copy(input: Box<[u32]>) -> support::WireSyncReturnStruct {
-    wire_handle_sync_typed_u32_zero_copy_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_typed_i64_zero_copy(input: Box<[i64]>) -> support::WireSyncReturnStruct {
-    wire_handle_sync_typed_i64_zero_copy_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_typed_u64_zero_copy(input: Box<[u64]>) -> support::WireSyncReturnStruct {
-    wire_handle_sync_typed_u64_zero_copy_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_typed_f32_zero_copy(input: Box<[f32]>) -> support::WireSyncReturnStruct {
-    wire_handle_sync_typed_f32_zero_copy_impl(input)
-}
-
-#[wasm_bindgen]
-pub fn wire_handle_sync_typed_f64_zero_copy(input: Box<[f64]>) -> support::WireSyncReturnStruct {
-    wire_handle_sync_typed_f64_zero_copy_impl(input)
 }
 
 #[wasm_bindgen]
@@ -1035,51 +940,6 @@ impl Wire2Api<Vec<uuid::Uuid>> for Box<[u8]> {
         wire2api_uuids(multiple)
     }
 }
-impl Wire2Api<ZeroCopyBuffer<Vec<f32>>> for Box<[f32]> {
-    fn wire2api(self) -> ZeroCopyBuffer<Vec<f32>> {
-        ZeroCopyBuffer(self.wire2api())
-    }
-}
-impl Wire2Api<ZeroCopyBuffer<Vec<f64>>> for Box<[f64]> {
-    fn wire2api(self) -> ZeroCopyBuffer<Vec<f64>> {
-        ZeroCopyBuffer(self.wire2api())
-    }
-}
-impl Wire2Api<ZeroCopyBuffer<Vec<i16>>> for Box<[i16]> {
-    fn wire2api(self) -> ZeroCopyBuffer<Vec<i16>> {
-        ZeroCopyBuffer(self.wire2api())
-    }
-}
-impl Wire2Api<ZeroCopyBuffer<Vec<i32>>> for Box<[i32]> {
-    fn wire2api(self) -> ZeroCopyBuffer<Vec<i32>> {
-        ZeroCopyBuffer(self.wire2api())
-    }
-}
-impl Wire2Api<ZeroCopyBuffer<Vec<i64>>> for Box<[i64]> {
-    fn wire2api(self) -> ZeroCopyBuffer<Vec<i64>> {
-        ZeroCopyBuffer(self.wire2api())
-    }
-}
-impl Wire2Api<ZeroCopyBuffer<Vec<i8>>> for Box<[i8]> {
-    fn wire2api(self) -> ZeroCopyBuffer<Vec<i8>> {
-        ZeroCopyBuffer(self.wire2api())
-    }
-}
-impl Wire2Api<ZeroCopyBuffer<Vec<u16>>> for Box<[u16]> {
-    fn wire2api(self) -> ZeroCopyBuffer<Vec<u16>> {
-        ZeroCopyBuffer(self.wire2api())
-    }
-}
-impl Wire2Api<ZeroCopyBuffer<Vec<u32>>> for Box<[u32]> {
-    fn wire2api(self) -> ZeroCopyBuffer<Vec<u32>> {
-        ZeroCopyBuffer(self.wire2api())
-    }
-}
-impl Wire2Api<ZeroCopyBuffer<Vec<u64>>> for Box<[u64]> {
-    fn wire2api(self) -> ZeroCopyBuffer<Vec<u64>> {
-        ZeroCopyBuffer(self.wire2api())
-    }
-}
 impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for Box<[u8]> {
     fn wire2api(self) -> ZeroCopyBuffer<Vec<u8>> {
         ZeroCopyBuffer(self.wire2api())
@@ -1336,18 +1196,8 @@ impl Wire2Api<[i32; 2]> for Box<[i32]> {
     }
 }
 
-impl Wire2Api<Vec<i16>> for Box<[i16]> {
-    fn wire2api(self) -> Vec<i16> {
-        self.into_vec()
-    }
-}
 impl Wire2Api<Vec<i32>> for Box<[i32]> {
     fn wire2api(self) -> Vec<i32> {
-        self.into_vec()
-    }
-}
-impl Wire2Api<Vec<i64>> for Box<[i64]> {
-    fn wire2api(self) -> Vec<i64> {
         self.into_vec()
     }
 }
@@ -1715,21 +1565,6 @@ impl Wire2Api<[u8; 8]> for Box<[u8]> {
         support::from_vec_to_array(vec)
     }
 }
-impl Wire2Api<Vec<u16>> for Box<[u16]> {
-    fn wire2api(self) -> Vec<u16> {
-        self.into_vec()
-    }
-}
-impl Wire2Api<Vec<u32>> for Box<[u32]> {
-    fn wire2api(self) -> Vec<u32> {
-        self.into_vec()
-    }
-}
-impl Wire2Api<Vec<u64>> for Box<[u64]> {
-    fn wire2api(self) -> Vec<u64> {
-        self.into_vec()
-    }
-}
 impl Wire2Api<Vec<u8>> for Box<[u8]> {
     fn wire2api(self) -> Vec<u8> {
         self.into_vec()
@@ -1871,51 +1706,6 @@ impl Wire2Api<Vec<uuid::Uuid>> for JsValue {
             .wire2api()
     }
 }
-impl Wire2Api<ZeroCopyBuffer<Vec<f32>>> for JsValue {
-    fn wire2api(self) -> ZeroCopyBuffer<Vec<f32>> {
-        ZeroCopyBuffer(self.wire2api())
-    }
-}
-impl Wire2Api<ZeroCopyBuffer<Vec<f64>>> for JsValue {
-    fn wire2api(self) -> ZeroCopyBuffer<Vec<f64>> {
-        ZeroCopyBuffer(self.wire2api())
-    }
-}
-impl Wire2Api<ZeroCopyBuffer<Vec<i16>>> for JsValue {
-    fn wire2api(self) -> ZeroCopyBuffer<Vec<i16>> {
-        ZeroCopyBuffer(self.wire2api())
-    }
-}
-impl Wire2Api<ZeroCopyBuffer<Vec<i32>>> for JsValue {
-    fn wire2api(self) -> ZeroCopyBuffer<Vec<i32>> {
-        ZeroCopyBuffer(self.wire2api())
-    }
-}
-impl Wire2Api<ZeroCopyBuffer<Vec<i64>>> for JsValue {
-    fn wire2api(self) -> ZeroCopyBuffer<Vec<i64>> {
-        ZeroCopyBuffer(self.wire2api())
-    }
-}
-impl Wire2Api<ZeroCopyBuffer<Vec<i8>>> for JsValue {
-    fn wire2api(self) -> ZeroCopyBuffer<Vec<i8>> {
-        ZeroCopyBuffer(self.wire2api())
-    }
-}
-impl Wire2Api<ZeroCopyBuffer<Vec<u16>>> for JsValue {
-    fn wire2api(self) -> ZeroCopyBuffer<Vec<u16>> {
-        ZeroCopyBuffer(self.wire2api())
-    }
-}
-impl Wire2Api<ZeroCopyBuffer<Vec<u32>>> for JsValue {
-    fn wire2api(self) -> ZeroCopyBuffer<Vec<u32>> {
-        ZeroCopyBuffer(self.wire2api())
-    }
-}
-impl Wire2Api<ZeroCopyBuffer<Vec<u64>>> for JsValue {
-    fn wire2api(self) -> ZeroCopyBuffer<Vec<u64>> {
-        ZeroCopyBuffer(self.wire2api())
-    }
-}
 impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for JsValue {
     fn wire2api(self) -> ZeroCopyBuffer<Vec<u8>> {
         ZeroCopyBuffer(self.wire2api())
@@ -2037,11 +1827,6 @@ impl Wire2Api<Vec<f64>> for JsValue {
             .into()
     }
 }
-impl Wire2Api<i16> for JsValue {
-    fn wire2api(self) -> i16 {
-        self.unchecked_into_f64() as _
-    }
-}
 impl Wire2Api<i32> for JsValue {
     fn wire2api(self) -> i32 {
         self.unchecked_into_f64() as _
@@ -2063,21 +1848,9 @@ impl Wire2Api<i8> for JsValue {
         self.unchecked_into_f64() as _
     }
 }
-impl Wire2Api<Vec<i16>> for JsValue {
-    fn wire2api(self) -> Vec<i16> {
-        self.unchecked_into::<js_sys::Int16Array>().to_vec().into()
-    }
-}
 impl Wire2Api<Vec<i32>> for JsValue {
     fn wire2api(self) -> Vec<i32> {
         self.unchecked_into::<js_sys::Int32Array>().to_vec().into()
-    }
-}
-impl Wire2Api<Vec<i64>> for JsValue {
-    fn wire2api(self) -> Vec<i64> {
-        let buf = self.dyn_into::<js_sys::BigInt64Array>().unwrap();
-        let buf = js_sys::Uint8Array::new(&buf.buffer());
-        support::slice_from_byte_buffer(buf.to_vec()).into()
     }
 }
 impl Wire2Api<Vec<i8>> for JsValue {
@@ -2175,19 +1948,9 @@ impl Wire2Api<Option<Vec<u8>>> for JsValue {
         (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
     }
 }
-impl Wire2Api<u16> for JsValue {
-    fn wire2api(self) -> u16 {
-        self.unchecked_into_f64() as _
-    }
-}
 impl Wire2Api<u32> for JsValue {
     fn wire2api(self) -> u32 {
         self.unchecked_into_f64() as _
-    }
-}
-impl Wire2Api<u64> for JsValue {
-    fn wire2api(self) -> u64 {
-        ::std::convert::TryInto::try_into(self.dyn_into::<js_sys::BigInt>().unwrap()).unwrap()
     }
 }
 impl Wire2Api<u8> for JsValue {
@@ -2211,23 +1974,6 @@ impl Wire2Api<[u8; 8]> for JsValue {
     fn wire2api(self) -> [u8; 8] {
         let vec: Vec<u8> = self.wire2api();
         support::from_vec_to_array(vec)
-    }
-}
-impl Wire2Api<Vec<u16>> for JsValue {
-    fn wire2api(self) -> Vec<u16> {
-        self.unchecked_into::<js_sys::Uint16Array>().to_vec().into()
-    }
-}
-impl Wire2Api<Vec<u32>> for JsValue {
-    fn wire2api(self) -> Vec<u32> {
-        self.unchecked_into::<js_sys::Uint32Array>().to_vec().into()
-    }
-}
-impl Wire2Api<Vec<u64>> for JsValue {
-    fn wire2api(self) -> Vec<u64> {
-        let buf = self.dyn_into::<js_sys::BigUint64Array>().unwrap();
-        let buf = js_sys::Uint8Array::new(&buf.buffer());
-        support::slice_from_byte_buffer(buf.to_vec()).into()
     }
 }
 impl Wire2Api<Vec<u8>> for JsValue {

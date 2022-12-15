@@ -37,6 +37,23 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["a", "b"],
       );
 
+  int simpleAdderSync({required int a, required int b, dynamic hint}) {
+    var arg0 = api2wire_i32(a);
+    var arg1 = api2wire_i32(b);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_simple_adder_sync(arg0, arg1),
+      parseSuccessData: _wire2api_i32,
+      constMeta: kSimpleAdderSyncConstMeta,
+      argValues: [a, b],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSimpleAdderSyncConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "simple_adder_sync",
+        argNames: ["a", "b"],
+      );
+
   Future<int> primitiveTypes(
       {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint}) {
     var arg0 = api2wire_i32(myI32);
@@ -57,6 +74,26 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["myI32", "myI64", "myF64", "myBool"],
       );
 
+  int primitiveTypesSync(
+      {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint}) {
+    var arg0 = api2wire_i32(myI32);
+    var arg1 = _platform.api2wire_i64(myI64);
+    var arg2 = api2wire_f64(myF64);
+    var arg3 = myBool;
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_primitive_types_sync(arg0, arg1, arg2, arg3),
+      parseSuccessData: _wire2api_i32,
+      constMeta: kPrimitiveTypesSyncConstMeta,
+      argValues: [myI32, myI64, myF64, myBool],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kPrimitiveTypesSyncConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "primitive_types_sync",
+        argNames: ["myI32", "myI64", "myF64", "myBool"],
+      );
+
   Future<int> primitiveU32({required int myU32, dynamic hint}) {
     var arg0 = api2wire_u32(myU32);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -70,6 +107,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   FlutterRustBridgeTaskConstMeta get kPrimitiveU32ConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "primitive_u32",
+        argNames: ["myU32"],
+      );
+
+  int primitiveU32Sync({required int myU32, dynamic hint}) {
+    var arg0 = api2wire_u32(myU32);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_primitive_u32_sync(arg0),
+      parseSuccessData: _wire2api_u32,
+      constMeta: kPrimitiveU32SyncConstMeta,
+      argValues: [myU32],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kPrimitiveU32SyncConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "primitive_u32_sync",
         argNames: ["myU32"],
       );
 
@@ -89,6 +142,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["s"],
       );
 
+  String handleStringSync({required String s, dynamic hint}) {
+    var arg0 = _platform.api2wire_String(s);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_string_sync(arg0),
+      parseSuccessData: _wire2api_String,
+      constMeta: kHandleStringSyncConstMeta,
+      argValues: [s],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleStringSyncConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_string_sync",
+        argNames: ["s"],
+      );
+
   Future<void> handleReturnUnit({dynamic hint}) {
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_return_unit(port_),
@@ -101,6 +170,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   FlutterRustBridgeTaskConstMeta get kHandleReturnUnitConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_return_unit",
+        argNames: [],
+      );
+
+  void handleReturnUnitSync({dynamic hint}) {
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_return_unit_sync(),
+      parseSuccessData: _wire2api_unit,
+      constMeta: kHandleReturnUnitSyncConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleReturnUnitSyncConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_return_unit_sync",
         argNames: [],
       );
 
@@ -120,6 +204,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["v"],
       );
 
+  Uint8List handleVecU8Sync({required Uint8List v, dynamic hint}) {
+    var arg0 = _platform.api2wire_uint_8_list(v);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_vec_u8_sync(arg0),
+      parseSuccessData: _wire2api_uint_8_list,
+      constMeta: kHandleVecU8SyncConstMeta,
+      argValues: [v],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleVecU8SyncConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_vec_u8_sync",
+        argNames: ["v"],
+      );
+
   Future<VecOfPrimitivePack> handleVecOfPrimitive({required int n, dynamic hint}) {
     var arg0 = api2wire_i32(n);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -136,6 +236,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["n"],
       );
 
+  VecOfPrimitivePack handleVecOfPrimitiveSync({required int n, dynamic hint}) {
+    var arg0 = api2wire_i32(n);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_vec_of_primitive_sync(arg0),
+      parseSuccessData: _wire2api_vec_of_primitive_pack,
+      constMeta: kHandleVecOfPrimitiveSyncConstMeta,
+      argValues: [n],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleVecOfPrimitiveSyncConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_vec_of_primitive_sync",
+        argNames: ["n"],
+      );
+
   Future<ZeroCopyVecOfPrimitivePack> handleZeroCopyVecOfPrimitive({required int n, dynamic hint}) {
     var arg0 = api2wire_i32(n);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -149,6 +265,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   FlutterRustBridgeTaskConstMeta get kHandleZeroCopyVecOfPrimitiveConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_zero_copy_vec_of_primitive",
+        argNames: ["n"],
+      );
+
+  ZeroCopyVecOfPrimitivePack handleZeroCopyVecOfPrimitiveSync({required int n, dynamic hint}) {
+    var arg0 = api2wire_i32(n);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_zero_copy_vec_of_primitive_sync(arg0),
+      parseSuccessData: _wire2api_zero_copy_vec_of_primitive_pack,
+      constMeta: kHandleZeroCopyVecOfPrimitiveSyncConstMeta,
+      argValues: [n],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleZeroCopyVecOfPrimitiveSyncConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_zero_copy_vec_of_primitive_sync",
         argNames: ["n"],
       );
 
@@ -169,6 +301,23 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["arg", "boxed"],
       );
 
+  MySize handleStructSync({required MySize arg, required MySize boxed, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_my_size(arg);
+    var arg1 = _platform.api2wire_box_my_size(boxed);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_struct_sync(arg0, arg1),
+      parseSuccessData: _wire2api_my_size,
+      constMeta: kHandleStructSyncConstMeta,
+      argValues: [arg, boxed],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleStructSyncConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_struct_sync",
+        argNames: ["arg", "boxed"],
+      );
+
   Future<NewTypeInt> handleNewtype({required NewTypeInt arg, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_new_type_int(arg);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -182,6 +331,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   FlutterRustBridgeTaskConstMeta get kHandleNewtypeConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_newtype",
+        argNames: ["arg"],
+      );
+
+  NewTypeInt handleNewtypeSync({required NewTypeInt arg, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_new_type_int(arg);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_newtype_sync(arg0),
+      parseSuccessData: _wire2api_new_type_int,
+      constMeta: kHandleNewtypeSyncConstMeta,
+      argValues: [arg],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleNewtypeSyncConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_newtype_sync",
         argNames: ["arg"],
       );
 
@@ -201,6 +366,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["l"],
       );
 
+  List<MySize> handleListOfStructSync({required List<MySize> l, dynamic hint}) {
+    var arg0 = _platform.api2wire_list_my_size(l);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_list_of_struct_sync(arg0),
+      parseSuccessData: _wire2api_list_my_size,
+      constMeta: kHandleListOfStructSyncConstMeta,
+      argValues: [l],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleListOfStructSyncConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_list_of_struct_sync",
+        argNames: ["l"],
+      );
+
   Future<List<String>> handleStringList({required List<String> names, dynamic hint}) {
     var arg0 = _platform.api2wire_StringList(names);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -214,6 +395,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   FlutterRustBridgeTaskConstMeta get kHandleStringListConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_string_list",
+        argNames: ["names"],
+      );
+
+  List<String> handleStringListSync({required List<String> names, dynamic hint}) {
+    var arg0 = _platform.api2wire_StringList(names);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_string_list_sync(arg0),
+      parseSuccessData: _wire2api_StringList,
+      constMeta: kHandleStringListSyncConstMeta,
+      argValues: [names],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleStringListSyncConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_string_list_sync",
         argNames: ["names"],
       );
 
@@ -233,6 +430,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["s"],
       );
 
+  MyTreeNode handleComplexStructSync({required MyTreeNode s, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_my_tree_node(s);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_complex_struct_sync(arg0),
+      parseSuccessData: _wire2api_my_tree_node,
+      constMeta: kHandleComplexStructSyncConstMeta,
+      argValues: [s],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleComplexStructSyncConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_complex_struct_sync",
+        argNames: ["s"],
+      );
+
   Uint8List handleSyncReturn({required String mode, dynamic hint}) {
     var arg0 = _platform.api2wire_String(mode);
     return _platform.executeSync(FlutterRustBridgeSyncTask(
@@ -247,533 +460,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   FlutterRustBridgeTaskConstMeta get kHandleSyncReturnConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_sync_return",
         argNames: ["mode"],
-      );
-
-  bool handleSyncBool({required bool input, dynamic hint}) {
-    var arg0 = input;
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_bool(arg0),
-      parseSuccessData: _wire2api_bool,
-      constMeta: kHandleSyncBoolConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncBoolConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_bool",
-        argNames: ["input"],
-      );
-
-  int handleSyncU8({required int input, dynamic hint}) {
-    var arg0 = api2wire_u8(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_u8(arg0),
-      parseSuccessData: _wire2api_u8,
-      constMeta: kHandleSyncU8ConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncU8ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_u8",
-        argNames: ["input"],
-      );
-
-  int handleSyncU16({required int input, dynamic hint}) {
-    var arg0 = api2wire_u16(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_u16(arg0),
-      parseSuccessData: _wire2api_u16,
-      constMeta: kHandleSyncU16ConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncU16ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_u16",
-        argNames: ["input"],
-      );
-
-  int handleSyncU32({required int input, dynamic hint}) {
-    var arg0 = api2wire_u32(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_u32(arg0),
-      parseSuccessData: _wire2api_u32,
-      constMeta: kHandleSyncU32ConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncU32ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_u32",
-        argNames: ["input"],
-      );
-
-  int handleSyncU64({required int input, dynamic hint}) {
-    var arg0 = _platform.api2wire_u64(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_u64(arg0),
-      parseSuccessData: _wire2api_u64,
-      constMeta: kHandleSyncU64ConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncU64ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_u64",
-        argNames: ["input"],
-      );
-
-  int handleSyncI8({required int input, dynamic hint}) {
-    var arg0 = api2wire_i8(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_i8(arg0),
-      parseSuccessData: _wire2api_i8,
-      constMeta: kHandleSyncI8ConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncI8ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_i8",
-        argNames: ["input"],
-      );
-
-  int handleSyncI16({required int input, dynamic hint}) {
-    var arg0 = api2wire_i16(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_i16(arg0),
-      parseSuccessData: _wire2api_i16,
-      constMeta: kHandleSyncI16ConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncI16ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_i16",
-        argNames: ["input"],
-      );
-
-  int handleSyncI32({required int input, dynamic hint}) {
-    var arg0 = api2wire_i32(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_i32(arg0),
-      parseSuccessData: _wire2api_i32,
-      constMeta: kHandleSyncI32ConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncI32ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_i32",
-        argNames: ["input"],
-      );
-
-  int handleSyncI64({required int input, dynamic hint}) {
-    var arg0 = _platform.api2wire_i64(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_i64(arg0),
-      parseSuccessData: _wire2api_i64,
-      constMeta: kHandleSyncI64ConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncI64ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_i64",
-        argNames: ["input"],
-      );
-
-  double handleSyncF32({required double input, dynamic hint}) {
-    var arg0 = api2wire_f32(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_f32(arg0),
-      parseSuccessData: _wire2api_f32,
-      constMeta: kHandleSyncF32ConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncF32ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_f32",
-        argNames: ["input"],
-      );
-
-  double handleSyncF64({required double input, dynamic hint}) {
-    var arg0 = api2wire_f64(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_f64(arg0),
-      parseSuccessData: _wire2api_f64,
-      constMeta: kHandleSyncF64ConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncF64ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_f64",
-        argNames: ["input"],
-      );
-
-  String handleSyncString({required String input, dynamic hint}) {
-    var arg0 = _platform.api2wire_String(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_string(arg0),
-      parseSuccessData: _wire2api_String,
-      constMeta: kHandleSyncStringConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncStringConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_string",
-        argNames: ["input"],
-      );
-
-  void handleSyncUnit({dynamic hint}) {
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_unit(),
-      parseSuccessData: _wire2api_unit,
-      constMeta: kHandleSyncUnitConstMeta,
-      argValues: [],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncUnitConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_unit",
-        argNames: [],
-      );
-
-  Int8List handleSyncTypedI8({required Int8List input, dynamic hint}) {
-    var arg0 = _platform.api2wire_int_8_list(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_typed_i8(arg0),
-      parseSuccessData: _wire2api_int_8_list,
-      constMeta: kHandleSyncTypedI8ConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedI8ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_typed_i8",
-        argNames: ["input"],
-      );
-
-  Uint8List handleSyncTypedU8({required Uint8List input, dynamic hint}) {
-    var arg0 = _platform.api2wire_uint_8_list(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_typed_u8(arg0),
-      parseSuccessData: _wire2api_uint_8_list,
-      constMeta: kHandleSyncTypedU8ConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedU8ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_typed_u8",
-        argNames: ["input"],
-      );
-
-  Int16List handleSyncTypedI16({required Int16List input, dynamic hint}) {
-    var arg0 = _platform.api2wire_int_16_list(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_typed_i16(arg0),
-      parseSuccessData: _wire2api_int_16_list,
-      constMeta: kHandleSyncTypedI16ConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedI16ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_typed_i16",
-        argNames: ["input"],
-      );
-
-  Uint16List handleSyncTypedU16({required Uint16List input, dynamic hint}) {
-    var arg0 = _platform.api2wire_uint_16_list(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_typed_u16(arg0),
-      parseSuccessData: _wire2api_uint_16_list,
-      constMeta: kHandleSyncTypedU16ConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedU16ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_typed_u16",
-        argNames: ["input"],
-      );
-
-  Int32List handleSyncTypedI32({required Int32List input, dynamic hint}) {
-    var arg0 = _platform.api2wire_int_32_list(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_typed_i32(arg0),
-      parseSuccessData: _wire2api_int_32_list,
-      constMeta: kHandleSyncTypedI32ConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedI32ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_typed_i32",
-        argNames: ["input"],
-      );
-
-  Uint32List handleSyncTypedU32({required Uint32List input, dynamic hint}) {
-    var arg0 = _platform.api2wire_uint_32_list(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_typed_u32(arg0),
-      parseSuccessData: _wire2api_uint_32_list,
-      constMeta: kHandleSyncTypedU32ConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedU32ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_typed_u32",
-        argNames: ["input"],
-      );
-
-  Int64List handleSyncTypedI64({required Int64List input, dynamic hint}) {
-    var arg0 = _platform.api2wire_int_64_list(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_typed_i64(arg0),
-      parseSuccessData: _wire2api_int_64_list,
-      constMeta: kHandleSyncTypedI64ConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedI64ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_typed_i64",
-        argNames: ["input"],
-      );
-
-  Uint64List handleSyncTypedU64({required Uint64List input, dynamic hint}) {
-    var arg0 = _platform.api2wire_uint_64_list(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_typed_u64(arg0),
-      parseSuccessData: _wire2api_uint_64_list,
-      constMeta: kHandleSyncTypedU64ConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedU64ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_typed_u64",
-        argNames: ["input"],
-      );
-
-  Float32List handleSyncTypedF32({required Float32List input, dynamic hint}) {
-    var arg0 = _platform.api2wire_float_32_list(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_typed_f32(arg0),
-      parseSuccessData: _wire2api_float_32_list,
-      constMeta: kHandleSyncTypedF32ConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedF32ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_typed_f32",
-        argNames: ["input"],
-      );
-
-  Float64List handleSyncTypedF64({required Float64List input, dynamic hint}) {
-    var arg0 = _platform.api2wire_float_64_list(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_typed_f64(arg0),
-      parseSuccessData: _wire2api_float_64_list,
-      constMeta: kHandleSyncTypedF64ConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedF64ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_typed_f64",
-        argNames: ["input"],
-      );
-
-  Int8List handleSyncTypedI8ZeroCopy({required Int8List input, dynamic hint}) {
-    var arg0 = _platform.api2wire_ZeroCopyBuffer_Int8List(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_typed_i8_zero_copy(arg0),
-      parseSuccessData: _wire2api_ZeroCopyBuffer_Int8List,
-      constMeta: kHandleSyncTypedI8ZeroCopyConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedI8ZeroCopyConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_typed_i8_zero_copy",
-        argNames: ["input"],
-      );
-
-  Uint8List handleSyncTypedU8ZeroCopy({required Uint8List input, dynamic hint}) {
-    var arg0 = _platform.api2wire_ZeroCopyBuffer_Uint8List(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_typed_u8_zero_copy(arg0),
-      parseSuccessData: _wire2api_ZeroCopyBuffer_Uint8List,
-      constMeta: kHandleSyncTypedU8ZeroCopyConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedU8ZeroCopyConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_typed_u8_zero_copy",
-        argNames: ["input"],
-      );
-
-  Int16List handleSyncTypedI16ZeroCopy({required Int16List input, dynamic hint}) {
-    var arg0 = _platform.api2wire_ZeroCopyBuffer_Int16List(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_typed_i16_zero_copy(arg0),
-      parseSuccessData: _wire2api_ZeroCopyBuffer_Int16List,
-      constMeta: kHandleSyncTypedI16ZeroCopyConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedI16ZeroCopyConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_typed_i16_zero_copy",
-        argNames: ["input"],
-      );
-
-  Uint16List handleSyncTypedU16ZeroCopy({required Uint16List input, dynamic hint}) {
-    var arg0 = _platform.api2wire_ZeroCopyBuffer_Uint16List(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_typed_u16_zero_copy(arg0),
-      parseSuccessData: _wire2api_ZeroCopyBuffer_Uint16List,
-      constMeta: kHandleSyncTypedU16ZeroCopyConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedU16ZeroCopyConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_typed_u16_zero_copy",
-        argNames: ["input"],
-      );
-
-  Int32List handleSyncTypedI32ZeroCopy({required Int32List input, dynamic hint}) {
-    var arg0 = _platform.api2wire_ZeroCopyBuffer_Int32List(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_typed_i32_zero_copy(arg0),
-      parseSuccessData: _wire2api_ZeroCopyBuffer_Int32List,
-      constMeta: kHandleSyncTypedI32ZeroCopyConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedI32ZeroCopyConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_typed_i32_zero_copy",
-        argNames: ["input"],
-      );
-
-  Uint32List handleSyncTypedU32ZeroCopy({required Uint32List input, dynamic hint}) {
-    var arg0 = _platform.api2wire_ZeroCopyBuffer_Uint32List(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_typed_u32_zero_copy(arg0),
-      parseSuccessData: _wire2api_ZeroCopyBuffer_Uint32List,
-      constMeta: kHandleSyncTypedU32ZeroCopyConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedU32ZeroCopyConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_typed_u32_zero_copy",
-        argNames: ["input"],
-      );
-
-  Int64List handleSyncTypedI64ZeroCopy({required Int64List input, dynamic hint}) {
-    var arg0 = _platform.api2wire_ZeroCopyBuffer_Int64List(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_typed_i64_zero_copy(arg0),
-      parseSuccessData: _wire2api_ZeroCopyBuffer_Int64List,
-      constMeta: kHandleSyncTypedI64ZeroCopyConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedI64ZeroCopyConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_typed_i64_zero_copy",
-        argNames: ["input"],
-      );
-
-  Uint64List handleSyncTypedU64ZeroCopy({required Uint64List input, dynamic hint}) {
-    var arg0 = _platform.api2wire_ZeroCopyBuffer_Uint64List(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_typed_u64_zero_copy(arg0),
-      parseSuccessData: _wire2api_ZeroCopyBuffer_Uint64List,
-      constMeta: kHandleSyncTypedU64ZeroCopyConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedU64ZeroCopyConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_typed_u64_zero_copy",
-        argNames: ["input"],
-      );
-
-  Float32List handleSyncTypedF32ZeroCopy({required Float32List input, dynamic hint}) {
-    var arg0 = _platform.api2wire_ZeroCopyBuffer_Float32List(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_typed_f32_zero_copy(arg0),
-      parseSuccessData: _wire2api_ZeroCopyBuffer_Float32List,
-      constMeta: kHandleSyncTypedF32ZeroCopyConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedF32ZeroCopyConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_typed_f32_zero_copy",
-        argNames: ["input"],
-      );
-
-  Float64List handleSyncTypedF64ZeroCopy({required Float64List input, dynamic hint}) {
-    var arg0 = _platform.api2wire_ZeroCopyBuffer_Float64List(input);
-    return _platform.executeSync(FlutterRustBridgeSyncTask(
-      callFfi: () => _platform.inner.wire_handle_sync_typed_f64_zero_copy(arg0),
-      parseSuccessData: _wire2api_ZeroCopyBuffer_Float64List,
-      constMeta: kHandleSyncTypedF64ZeroCopyConstMeta,
-      argValues: [input],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kHandleSyncTypedF64ZeroCopyConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "handle_sync_typed_f64_zero_copy",
-        argNames: ["input"],
       );
 
   Stream<String> handleStream({required String arg, dynamic hint}) {
@@ -3443,11 +3129,6 @@ double api2wire_f64(double raw) {
 }
 
 @protected
-int api2wire_i16(int raw) {
-  return raw;
-}
-
-@protected
 int api2wire_i32(int raw) {
   return raw;
 }
@@ -3460,11 +3141,6 @@ int api2wire_i8(int raw) {
 @protected
 int api2wire_my_enum(MyEnum raw) {
   return api2wire_i32(raw.index);
-}
-
-@protected
-int api2wire_u16(int raw) {
-  return raw;
 }
 
 @protected

@@ -26,21 +26,45 @@ void main(List<String> args) async {
     expect(await api.simpleAdder(a: 42, b: 100), 142);
   });
 
+  test('dart call simpleAdderSync', () {
+    expect(api.simpleAdderSync(a: 42, b: 100), 142);
+  });
+
   test('dart call primitiveTypes', () async {
     expect(
         await api.primitiveTypes(myI32: 123, myI64: 10000000000000, myF64: 12345678901234567890.123, myBool: true), 42);
+  });
+  test('dart call primitiveTypesSync', () {
+    expect(
+        api.primitiveTypesSync(myI32: 123, myI64: 10000000000000, myF64: 12345678901234567890.123, myBool: true), 42);
   });
 
   test('dart call primitiveU32', () async {
     expect(await api.primitiveU32(myU32: 0xff112233), 0xfe112233);
   });
+  test('dart call primitiveU32Sync', () {
+    expect(api.primitiveU32Sync(myU32: 0xff112233), 0xfe112233);
+  });
 
   test('dart call handleReturnUnit', () async {
     await api.handleReturnUnit();
   });
+  test('dart call handleReturnUnitSync', () {
+    api.handleReturnUnit();
+  });
 
   test('dart call handleString', () async {
     expect(await api.handleString(s: "Hello, world!"), "Hello, world!Hello, world!");
+  });
+  test('dart call handleString with nul-containing string', () async {
+    expect(await api.handleString(s: "Hello\u0000world!"), "");
+  });
+
+  test('dart call handleStringSync', () {
+    expect(api.handleStringSync(s: "Hello, world!"), "Hello, world!Hello, world!");
+  });
+  test('dart call handleStringSync with nul-containing string', () {
+    expect(api.handleStringSync(s: "Hello\u0000world!"), "");
   });
 
   test('dart call handleVecU8', () async {
@@ -48,10 +72,29 @@ void main(List<String> args) async {
     expect(await api.handleVecU8(v: Uint8List.fromList(List.filled(len, 127))),
         Uint8List.fromList(List.filled(len * 2, 127)));
   });
+  test('dart call handleVecU8Sync', () {
+    final len = 100000;
+    expect(api.handleVecU8Sync(v: Uint8List.fromList(List.filled(len, 127))),
+        Uint8List.fromList(List.filled(len * 2, 127)));
+  });
 
   test('dart call handleVecOfPrimitive', () async {
     final n = 10000;
     final resp = await api.handleVecOfPrimitive(n: n);
+    expect(resp.uint8List, Uint8List.fromList(List.filled(n, 42)));
+    expect(resp.int8List, Int8List.fromList(List.filled(n, 42)));
+    expect(resp.uint16List, Uint16List.fromList(List.filled(n, 42)));
+    expect(resp.int16List, Int16List.fromList(List.filled(n, 42)));
+    expect(resp.uint32List, Uint32List.fromList(List.filled(n, 42)));
+    expect(resp.int32List, Int32List.fromList(List.filled(n, 42)));
+    expect(resp.float32List, Float32List.fromList(List.filled(n, 42)));
+    expect(resp.float64List, Float64List.fromList(List.filled(n, 42)));
+    expect(resp.uint64List, Uint64List.fromList(List.filled(n, 42)));
+    expect(resp.int64List, Int64List.fromList(List.filled(n, 42)));
+  });
+  test('dart call handleVecOfPrimitiveSync', () {
+    final n = 10000;
+    final resp = api.handleVecOfPrimitiveSync(n: n);
     expect(resp.uint8List, Uint8List.fromList(List.filled(n, 42)));
     expect(resp.int8List, Int8List.fromList(List.filled(n, 42)));
     expect(resp.uint16List, Uint16List.fromList(List.filled(n, 42)));
@@ -78,6 +121,20 @@ void main(List<String> args) async {
     expect(resp.uint64List, Uint64List.fromList(List.filled(n, 42)));
     expect(resp.int64List, Int64List.fromList(List.filled(n, 42)));
   });
+  test('dart call handleZeroCopyVecOfPrimitiveSync', () {
+    final n = 10000;
+    final resp = api.handleZeroCopyVecOfPrimitiveSync(n: n);
+    expect(resp.uint8List, Uint8List.fromList(List.filled(n, 42)));
+    expect(resp.int8List, Int8List.fromList(List.filled(n, 42)));
+    expect(resp.uint16List, Uint16List.fromList(List.filled(n, 42)));
+    expect(resp.int16List, Int16List.fromList(List.filled(n, 42)));
+    expect(resp.uint32List, Uint32List.fromList(List.filled(n, 42)));
+    expect(resp.int32List, Int32List.fromList(List.filled(n, 42)));
+    expect(resp.float32List, Float32List.fromList(List.filled(n, 42)));
+    expect(resp.float64List, Float64List.fromList(List.filled(n, 42)));
+    expect(resp.uint64List, Uint64List.fromList(List.filled(n, 42)));
+    expect(resp.int64List, Int64List.fromList(List.filled(n, 42)));
+  });
 
   test('dart call handleStruct', () async {
     final structResp =
@@ -85,9 +142,19 @@ void main(List<String> args) async {
     expect(structResp.width, 42 + 1000);
     expect(structResp.height, 100 + 10000);
   });
+  test('dart call handleStructSync', () {
+    final structResp =
+        api.handleStructSync(arg: MySize(width: 42, height: 100), boxed: MySize(width: 1000, height: 10000));
+    expect(structResp.width, 42 + 1000);
+    expect(structResp.height, 100 + 10000);
+  });
 
   test('dart call handleNewtype', () async {
     final newtypeResp = await api.handleNewtype(arg: NewTypeInt(field0: 42));
+    expect(newtypeResp.field0, 84);
+  });
+  test('dart call handleNewtypeSync', () {
+    final newtypeResp = api.handleNewtypeSync(arg: NewTypeInt(field0: 42));
     expect(newtypeResp.field0, 84);
   });
 
@@ -100,15 +167,37 @@ void main(List<String> args) async {
     expect(listOfStructResp[2].width, 42);
     expect(listOfStructResp[3].width, 420);
   });
+  test('dart call handleListOfStructSync', () {
+    final listOfStructResp =
+        api.handleListOfStructSync(l: [MySize(width: 42, height: 100), MySize(width: 420, height: 1000)]);
+    expect(listOfStructResp.length, 4);
+    expect(listOfStructResp[0].width, 42);
+    expect(listOfStructResp[1].width, 420);
+    expect(listOfStructResp[2].width, 42);
+    expect(listOfStructResp[3].width, 420);
+  });
 
   test('dart call handleStringList', () async {
     final names = await api.handleStringList(names: ['Steve', 'Bob', 'Alex']);
+    expect(names, ['Steve', 'Bob', 'Alex']);
+  });
+  test('dart call handleStringListSync', () {
+    final names = api.handleStringListSync(names: ['Steve', 'Bob', 'Alex']);
     expect(names, ['Steve', 'Bob', 'Alex']);
   });
 
   test('dart call handleComplexStruct', () async {
     final arrLen = 5;
     final complexStructResp = await api.handleComplexStruct(s: _createMyTreeNode(arrLen: arrLen));
+    expect(complexStructResp.valueI32, 100);
+    expect(complexStructResp.valueVecU8, List.filled(arrLen, 100));
+    expect(complexStructResp.children[0].valueVecU8, List.filled(arrLen, 110));
+    expect(complexStructResp.children[0].children[0].valueVecU8, List.filled(arrLen, 111));
+    expect(complexStructResp.children[1].valueVecU8, List.filled(arrLen, 120));
+  });
+  test('dart call handleComplexStructSync', () {
+    final arrLen = 5;
+    final complexStructResp = api.handleComplexStructSync(s: _createMyTreeNode(arrLen: arrLen));
     expect(complexStructResp.valueI32, 100);
     expect(complexStructResp.valueVecU8, List.filled(arrLen, 100));
     expect(complexStructResp.children[0].valueVecU8, List.filled(arrLen, 110));
@@ -128,104 +217,6 @@ void main(List<String> args) async {
         print('dart catch e: $e');
       }
     }
-  });
-  // Test other sync return types.
-  test('dart call handle_sync_bool', () async {
-    expect(api.handleSyncBool(input: true), true);
-  });
-  test('dart call handle_sync_u8', () async {
-    expect(api.handleSyncU8(input: 42), 42);
-  });
-  test('dart call handle_sync_u16', () async {
-    expect(api.handleSyncU16(input: 42), 42);
-  });
-  test('dart call handle_sync_u32', () async {
-    expect(api.handleSyncU32(input: 42), 42);
-  });
-  test('dart call handle_sync_u64', () async {
-    expect(api.handleSyncU64(input: 42), 42);
-  }, skip: skipWeb('Not supported by dart2js'));
-  test('dart call handle_sync_i8', () async {
-    expect(api.handleSyncI8(input: 42), 42);
-  });
-  test('dart call handle_sync_i16', () async {
-    expect(api.handleSyncI16(input: 42), 42);
-  });
-  test('dart call handle_sync_i32', () async {
-    expect(api.handleSyncI32(input: 42), 42);
-  });
-  test('dart call handle_sync_i64', () async {
-    expect(api.handleSyncI64(input: 42), 42);
-  }, skip: skipWeb('Not supported by dart2js'));
-  test('dart call handle_sync_string', () async {
-    expect(api.handleSyncString(input: "Hello Rust!"), "Hello Rust!");
-  });
-  test('dart call handle_sync_unit', () async {
-    api.handleSyncUnit();
-  });
-  test('dart call handle_sync_typed_i8', () async {
-    expect(api.handleSyncTypedI8(input: Int8List.fromList([10, 20, 30])), Int8List.fromList([10, 20, 30]));
-  });
-  test('dart call handle_sync_typed_u8', () async {
-    expect(api.handleSyncTypedU8(input: Uint8List.fromList([10, 20, 30])), Uint8List.fromList([10, 20, 30]));
-  });
-  test('dart call handle_sync_typed_i16', () async {
-    expect(api.handleSyncTypedI16(input: Int16List.fromList([10, 20, 30])), Int16List.fromList([10, 20, 30]));
-  });
-  test('dart call handle_sync_typed_u16', () async {
-    expect(api.handleSyncTypedU16(input: Uint16List.fromList([10, 20, 30])), Uint16List.fromList([10, 20, 30]));
-  });
-  test('dart call handle_sync_typed_i32', () async {
-    expect(api.handleSyncTypedI32(input: Int32List.fromList([10, 20, 30])), Int32List.fromList([10, 20, 30]));
-  });
-  test('dart call handle_sync_typed_u32', () async {
-    expect(api.handleSyncTypedU32(input: Uint32List.fromList([10, 20, 30])), Uint32List.fromList([10, 20, 30]));
-  });
-  test('dart call handle_sync_typed_i64', () async {
-    expect(api.handleSyncTypedI64(input: Int64List.fromList([10, 20, 30])), Int64List.fromList([10, 20, 30]));
-  }, skip: skipWeb('Not supported by dart2js'));
-  test('dart call handle_sync_typed_u64', () async {
-    expect(api.handleSyncTypedU64(input: Uint64List.fromList([10, 20, 30])), Uint64List.fromList([10, 20, 30]));
-  }, skip: skipWeb('Not supported by dart2js'));
-  test('dart call handle_sync_typed_f32', () async {
-    expect(api.handleSyncTypedF32(input: Float32List.fromList([10.1, 20.2, 30.3])),
-        Float32List.fromList([10.1, 20.2, 30.3]));
-  });
-  test('dart call handle_sync_typed_f64', () async {
-    expect(api.handleSyncTypedF64(input: Float64List.fromList([10.1, 20.2, 30.3])),
-        Float64List.fromList([10.1, 20.2, 30.3]));
-  });
-  test('dart call handle_sync_typed_i8_zero_copy', () async {
-    expect(api.handleSyncTypedI8ZeroCopy(input: Int8List.fromList([10, 20, 30])), Int8List.fromList([10, 20, 30]));
-  });
-  test('dart call handle_sync_typed_u8_zero_copy', () async {
-    expect(api.handleSyncTypedU8ZeroCopy(input: Uint8List.fromList([10, 20, 30])), Uint8List.fromList([10, 20, 30]));
-  });
-  test('dart call handle_sync_typed_i16_zero_copy', () async {
-    expect(api.handleSyncTypedI16ZeroCopy(input: Int16List.fromList([10, 20, 30])), Int16List.fromList([10, 20, 30]));
-  });
-  test('dart call handle_sync_typed_u16_zero_copy', () async {
-    expect(api.handleSyncTypedU16ZeroCopy(input: Uint16List.fromList([10, 20, 30])), Uint16List.fromList([10, 20, 30]));
-  });
-  test('dart call handle_sync_typed_i32_zero_copy', () async {
-    expect(api.handleSyncTypedI32ZeroCopy(input: Int32List.fromList([10, 20, 30])), Int32List.fromList([10, 20, 30]));
-  });
-  test('dart call handle_sync_typed_u32_zero_copy', () async {
-    expect(api.handleSyncTypedU32ZeroCopy(input: Uint32List.fromList([10, 20, 30])), Uint32List.fromList([10, 20, 30]));
-  });
-  test('dart call handle_sync_typed_i64_zero_copy', () async {
-    expect(api.handleSyncTypedI64ZeroCopy(input: Int64List.fromList([10, 20, 30])), Int64List.fromList([10, 20, 30]));
-  }, skip: skipWeb('Not supported by dart2js'));
-  test('dart call handle_sync_typed_u64_zero_copy', () async {
-    expect(api.handleSyncTypedU64ZeroCopy(input: Uint64List.fromList([10, 20, 30])), Uint64List.fromList([10, 20, 30]));
-  }, skip: skipWeb('Not supported by dart2js'));
-  test('dart call handle_sync_typed_f32_zero_copy', () async {
-    expect(api.handleSyncTypedF32ZeroCopy(input: Float32List.fromList([10.1, 20.2, 30.3])),
-        Float32List.fromList([10.1, 20.2, 30.3]));
-  });
-  test('dart call handle_sync_typed_f64_zero_copy', () async {
-    expect(api.handleSyncTypedF64ZeroCopy(input: Float64List.fromList([10.1, 20.2, 30.3])),
-        Float64List.fromList([10.1, 20.2, 30.3]));
   });
 
   test('dart call handle_stream', () async {
