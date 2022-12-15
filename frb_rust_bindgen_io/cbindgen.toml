@@ -1,4 +1,10 @@
 language = "C"
+sys_includes = [
+    "stdbool.h",
+    "stdint.h",
+    "stdlib.h",
+]
+no_includes = true
 
 [export]
 include = ["DartCObject"]

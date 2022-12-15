@@ -106,7 +106,7 @@ extension DartCObjectWireSyncReturn on DartCObject {
 
   static dynamic _typedDataIntoDart(
     int ty,
-    ffi.Pointer<ffi.Int> typedValues,
+    ffi.Pointer<ffi.Uint8> typedValues,
     int nValues, {
     required bool copy,
   }) {
@@ -164,9 +164,9 @@ extension DartCObjectWireSyncReturn on DartCObject {
 }
 
 typedef NativeExternalTypedDataFinalizer = ffi.Void Function(
-    ffi.Pointer<ffi.Int>, ffi.Pointer<ffi.Void>);
+    ffi.Pointer<ffi.Uint8>, ffi.Pointer<ffi.Void>);
 typedef DartExternalTypedDataFinalizer = void Function(
-    ffi.Pointer<ffi.Int>, ffi.Pointer<ffi.Void>);
+    ffi.Pointer<ffi.Uint8>, ffi.Pointer<ffi.Void>);
 
 typedef PlatformPointer = ffi.Pointer<ffi.Void>;
 typedef OpaqueTypeFinalizer = NativeFinalizer;

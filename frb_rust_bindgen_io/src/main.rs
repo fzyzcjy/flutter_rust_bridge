@@ -29,7 +29,12 @@ fn main() -> std::io::Result<()> {
         headers:
           entry-points:
             - '{}'
+          include-directives:
+            - '{}'
+        preamble: |
+          // ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names, unused_field
         ",
+        header_filename,
         header_filename
     );
     std::io::Write::write_all(&mut config_file, config.as_bytes())?;
