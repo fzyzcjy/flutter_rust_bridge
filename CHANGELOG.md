@@ -1,3 +1,7 @@
+## 1.54.1
+
+* Delete dart_sys #890 (thanks @rogurotus)
+
 ## 1.54.0
 
 * Extend `SyncReturn` to support `RustOpaque`, `DartOpaque`, `Option` and so on #876 (thanks @rogurotus)
