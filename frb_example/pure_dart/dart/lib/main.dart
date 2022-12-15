@@ -1096,7 +1096,8 @@ void main(List<String> args) async {
     });
 
     test('dart call handle_type_Id', () async {
-      expect(api.handleTypeAliasId(input: 42), 42);
+      final id = await api.handleTypeAliasId(input: 42);
+      expect(id, 42);
     });
     test('dart call handle_type_model', () async {
       final testModel = await api.handleTypeAliasModel(input: 42);
