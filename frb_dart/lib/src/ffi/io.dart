@@ -62,6 +62,9 @@ extension DartCObjectWireSyncReturn on DartCObject {
         return value.as_double;
 
       case 5: // DartString
+        // `DartCObject` strings being encoded with std::ffi::CString assert us nul-termination.
+        // See [allo-isolate's String::into_dart](https://github.com/sunshine-protocol/allo-isolate/blob/71b9760993d64ef46794176ca276d1cc637b2599/src/into_dart.rs#L106)
+        // and [std::ffi::CString](https://doc.rust-lang.org/nightly/std/ffi/struct.CString.html)
         int len = 0;
         while (value.as_string.elementAt(len).value != 0) {
           len++;
