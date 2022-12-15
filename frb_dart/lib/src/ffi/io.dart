@@ -5,14 +5,12 @@ export 'dart:ffi' show NativePort, DynamicLibrary;
 import 'dart:typed_data';
 import 'io_dartcobject.dart';
 import 'stub.dart' show FlutterRustBridgeWireBase;
-export 'stub.dart'
-    show castInt, castNativeBigInt, FlutterRustBridgeWireBase, WasmModule;
+export 'stub.dart' show castInt, castNativeBigInt, FlutterRustBridgeWireBase, WasmModule;
 
 /// Abstraction over a Dart SendPort and a JS MessagePort.
 typedef NativePortType = int;
 typedef ExternalLibrary = ffi.DynamicLibrary;
-typedef DartPostCObject = ffi.Pointer<
-    ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>;
+typedef DartPostCObject = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>;
 
 extension StoreDartPostCObjectExt on FlutterRustBridgeWireBase {
   void storeDartPostCObject() {
@@ -72,8 +70,7 @@ extension DartCObjectWireSyncReturn on DartCObject {
         return utf8.decode(value.as_string.cast<ffi.Uint8>().asTypedList(len));
 
       case 6: // DartArray
-        return List.generate(value.as_array.length,
-            (i) => value.as_array.values.elementAt(i).value.ref.intoDart());
+        return List.generate(value.as_array.length, (i) => value.as_array.values.elementAt(i).value.ref.intoDart());
 
       case 7: // DartTypedData
         return _typedDataIntoDart(
@@ -90,8 +87,7 @@ extension DartCObjectWireSyncReturn on DartCObject {
           value.as_external_typed_data.length,
           copy: false,
         );
-        _externalTypedDataFinalizer.attach(
-            externalTypedData, value.as_external_typed_data);
+        _externalTypedDataFinalizer.attach(externalTypedData, value.as_external_typed_data);
         return externalTypedData;
 
       case 9: // DartSendPort
@@ -154,8 +150,7 @@ extension DartCObjectWireSyncReturn on DartCObject {
     }
   }
 
-  static final _externalTypedDataFinalizer =
-      Finalizer<DartNativeExternalTypedData>((externalTypedData) {
+  static final _externalTypedDataFinalizer = Finalizer<DartNativeExternalTypedData>((externalTypedData) {
     final handleFinalizer = externalTypedData.callback
         .cast<ffi.NativeFunction<NativeExternalTypedDataFinalizer>>()
         .asFunction<DartExternalTypedDataFinalizer>();
@@ -163,10 +158,8 @@ extension DartCObjectWireSyncReturn on DartCObject {
   });
 }
 
-typedef NativeExternalTypedDataFinalizer = ffi.Void Function(
-    ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>);
-typedef DartExternalTypedDataFinalizer = void Function(
-    ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>);
+typedef NativeExternalTypedDataFinalizer = ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>);
+typedef DartExternalTypedDataFinalizer = void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>);
 
 typedef PlatformPointer = ffi.Pointer<ffi.Void>;
 typedef OpaqueTypeFinalizer = NativeFinalizer;
@@ -178,7 +171,6 @@ class FrbOpaqueBase implements Finalizable {
   static PlatformPointer initPtr(int ptr) => ffi.Pointer.fromAddress(ptr);
   static PlatformPointer nullPtr() => ffi.Pointer.fromAddress(0);
   static bool isStalePtr(PlatformPointer ptr) => ptr.address == 0;
-  static void finalizerAttach(FrbOpaqueBase opaque, PlatformPointer ptr,
-          int size, OpaqueTypeFinalizer finalizer) =>
+  static void finalizerAttach(FrbOpaqueBase opaque, PlatformPointer ptr, int size, OpaqueTypeFinalizer finalizer) =>
       finalizer.attach(opaque, ptr, detach: opaque, externalSize: size);
 }
