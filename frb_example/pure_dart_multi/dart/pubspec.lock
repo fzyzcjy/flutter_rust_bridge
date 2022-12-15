@@ -182,7 +182,7 @@ packages:
       name: ffigen
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "7.2.2"
+    version: "7.2.3"
   file:
     dependency: transitive
     description:
@@ -203,7 +203,7 @@ packages:
       path: "../../../frb_dart"
       relative: true
     source: path
-    version: "1.54.0"
+    version: "1.54.1"
   freezed:
     dependency: "direct dev"
     description:
@@ -301,7 +301,7 @@ packages:
       name: matcher
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.12.13"
+    version: "0.12.14"
   meta:
     dependency: "direct main"
     description:
@@ -378,7 +378,7 @@ packages:
       name: puppeteer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.18.0"
+    version: "2.19.0"
   quiver:
     dependency: transitive
     description:
@@ -483,21 +483,21 @@ packages:
       name: test
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.22.0"
+    version: "1.22.1"
   test_api:
     dependency: transitive
     description:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.16"
+    version: "0.4.17"
   test_core:
     dependency: transitive
     description:
       name: test_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.20"
+    version: "0.4.21"
   timing:
     dependency: transitive
     description:
