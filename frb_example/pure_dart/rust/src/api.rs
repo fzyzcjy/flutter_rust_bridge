@@ -62,7 +62,7 @@ pub fn primitive_u32(my_u32: u32) -> u32 {
 }
 
 pub fn primitive_u32_sync(my_u32: u32) -> SyncReturn<u32> {
-    println!("primitive_u32({})", my_u32);
+    println!("primitive_u32_sync({})", my_u32);
     assert_eq!(my_u32, 0xff112233);
     let ret = 0xfe112233;
     println!("returning {}", ret);
@@ -76,6 +76,7 @@ pub fn handle_string(s: String) -> String {
 }
 
 pub fn handle_string_sync(s: String) -> SyncReturn<String> {
+    println!("handle_string_sync({})", &s);
     let s2 = s.clone();
     SyncReturn(s + &s2)
 }
@@ -86,7 +87,7 @@ pub fn handle_return_unit() -> () {
 }
 
 pub fn handle_return_unit_sync() -> SyncReturn<()> {
-    println!("handle_return_unit()");
+    println!("handle_return_unit_sync()");
     SyncReturn(())
 }
 
@@ -97,6 +98,7 @@ pub fn handle_vec_u8(v: Vec<u8>) -> Vec<u8> {
 }
 
 pub fn handle_vec_u8_sync(v: Vec<u8>) -> SyncReturn<Vec<u8>> {
+    println!("handle_vec_u8_sync(first few elements: {:?})", &v[..5]);
     SyncReturn(v.repeat(2))
 }
 
