@@ -1043,6 +1043,13 @@ void main(List<String> args) async {
       var res = api.returnNonDropableDartOpaque(opaque: f);
       expect(identical(res, f), isTrue);
     });
+
+    test('dart call handle_type_Id', () async {
+      expect(api.handleTypeAliasId(input: 42), 42);
+    });
+    test('dart call handle_type_model', () async {
+      expect(api.handleTypeAliasModel(input: 42), TestModel(id: 42, name: "TestModel"));
+    });
   });
 }
 

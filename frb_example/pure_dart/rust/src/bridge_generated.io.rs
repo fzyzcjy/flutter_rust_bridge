@@ -668,6 +668,16 @@ pub extern "C" fn wire_frb_generator_test(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_type_alias_id(port_: i64, input: u64) {
+    wire_handle_type_alias_id_impl(port_, input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_type_alias_model(port_: i64, input: u64) {
+    wire_handle_type_alias_model_impl(port_, input)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }

@@ -2023,6 +2023,38 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<int> handleTypeAliasId({required int input, dynamic hint}) {
+    var arg0 = _platform.api2wire_u64(input);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_handle_type_alias_id(port_, arg0),
+      parseSuccessData: _wire2api_u64,
+      constMeta: kHandleTypeAliasIdConstMeta,
+      argValues: [input],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleTypeAliasIdConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_type_alias_id",
+        argNames: ["input"],
+      );
+
+  Future<TestModel> handleTypeAliasModel({required int input, dynamic hint}) {
+    var arg0 = _platform.api2wire_u64(input);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_handle_type_alias_model(port_, arg0),
+      parseSuccessData: _wire2api_test_model,
+      constMeta: kHandleTypeAliasModelConstMeta,
+      argValues: [input],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleTypeAliasModelConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_type_alias_model",
+        argNames: ["input"],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_sum_with(that);
     var arg1 = api2wire_u32(y);
@@ -3089,6 +3121,15 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return TestId(
       field0: _wire2api_i32_array_2(arr[0]),
+    );
+  }
+
+  TestModel _wire2api_test_model(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return TestModel(
+      id: _wire2api_u64(arr[0]),
+      name: _wire2api_String(arr[1]),
     );
   }
 

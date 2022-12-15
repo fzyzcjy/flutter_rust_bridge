@@ -63,7 +63,7 @@ impl<'a> Parser<'a> {
     pub fn try_parse_fn_output_type(&mut self, ty: &syn::Type) -> Option<IrFuncOutput> {
         let ty_alias = self.type_parser.get_alias_type(ty);
         let ty = if let Some(ty_alias) = ty_alias.as_ref() {
-            &ty_alias
+            ty_alias
         } else {
             ty
         };

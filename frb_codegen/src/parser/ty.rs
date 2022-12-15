@@ -8,7 +8,7 @@ use crate::ir::*;
 
 use crate::markers;
 
-use crate::source_graph::{Enum, Struct, TypeAlias};
+use crate::source_graph::{Enum, Struct};
 
 use crate::parser::{extract_comments, extract_metadata, type_to_string};
 
@@ -158,7 +158,7 @@ impl<'a> TypeParser<'a> {
     pub fn parse_type(&mut self, ty: &syn::Type) -> IrType {
         let ty_alias = self.get_alias_type(ty);
         let ty = if let Some(ty_alias) = ty_alias.as_ref() {
-            &ty_alias
+            ty_alias
         } else {
             ty
         };

@@ -535,6 +535,14 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kFrbGeneratorTestConstMeta;
 
+  Future<int> handleTypeAliasId({required int input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleTypeAliasIdConstMeta;
+
+  Future<TestModel> handleTypeAliasModel({required int input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleTypeAliasModelConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
@@ -1257,6 +1265,16 @@ class TestId {
 
   TestId({
     required this.field0,
+  });
+}
+
+class TestModel {
+  final int id;
+  final String name;
+
+  TestModel({
+    required this.id,
+    required this.name,
   });
 }
 

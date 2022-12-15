@@ -644,6 +644,16 @@ pub fn wire_frb_generator_test(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_type_alias_id(port_: MessagePort, input: u64) {
+    wire_handle_type_alias_id_impl(port_, input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_type_alias_model(port_: MessagePort, input: u64) {
+    wire_handle_type_alias_model_impl(port_, input)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }

@@ -1810,6 +1810,32 @@ fn wire_frb_generator_test_impl(port_: MessagePort) {
         move || move |task_callback| Ok(frb_generator_test()),
     )
 }
+fn wire_handle_type_alias_id_impl(port_: MessagePort, input: impl Wire2Api<u64> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_type_alias_id",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_input = input.wire2api();
+            move |task_callback| Ok(handle_type_alias_id(api_input))
+        },
+    )
+}
+fn wire_handle_type_alias_model_impl(port_: MessagePort, input: impl Wire2Api<u64> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_type_alias_model",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_input = input.wire2api();
+            move |task_callback| Ok(handle_type_alias_model(api_input))
+        },
+    )
+}
 fn wire_sum__method__SumWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<SumWith> + UnwindSafe,
@@ -2552,6 +2578,13 @@ impl support::IntoDart for TestId {
     }
 }
 impl support::IntoDartExceptPrimitive for TestId {}
+
+impl support::IntoDart for TestModel {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.id.into_dart(), self.name.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for TestModel {}
 
 impl support::IntoDart for UserId {
     fn into_dart(self) -> support::DartAbi {
