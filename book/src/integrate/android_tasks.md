@@ -52,6 +52,8 @@ and fill it with this:
 ANDROID_NDK=(path to NDK)
 ```
 
+Note the ABIs `x86_64` and `x86` in `ndk_command` are usually used for Android simulators. Feel free to remove them as needed.
+
 [^1]:
     This excerpt might be outdated, please check out
-    the source file at the template repository.
+    the [source file](https://github.com/Desdaemon/flutter_rust_bridge_template/blob/main/android/app/build.gradle) at the [template repository](https://github.com/Desdaemon/flutter_rust_bridge_template).

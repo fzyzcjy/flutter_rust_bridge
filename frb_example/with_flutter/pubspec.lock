@@ -203,7 +203,7 @@ packages:
       name: ffigen
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "7.2.2"
+    version: "7.2.3"
   file:
     dependency: transitive
     description:
@@ -241,7 +241,7 @@ packages:
       path: "../../frb_dart"
       relative: true
     source: path
-    version: "1.54.0"
+    version: "1.54.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -438,7 +438,7 @@ packages:
       name: puppeteer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.18.0"
+    version: "2.19.0"
   quiver:
     dependency: transitive
     description:
