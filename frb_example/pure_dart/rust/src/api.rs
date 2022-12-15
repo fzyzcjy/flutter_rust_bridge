@@ -14,7 +14,7 @@ use flutter_rust_bridge::*;
 use lazy_static::lazy_static;
 
 pub use crate::data::HideData;
-use crate::data::{MyEnum, MyStruct};
+use crate::data::{Id, MyEnum, MyStruct};
 use crate::new_module_system::{use_new_module_system, NewSimpleStruct};
 use crate::old_module_system::{use_old_module_system, OldSimpleStruct};
 
@@ -190,7 +190,7 @@ pub fn handle_sync_u16(input: u16) -> SyncReturn<u16> {
 pub fn handle_sync_u32(input: u32) -> SyncReturn<u32> {
     SyncReturn(input)
 }
-pub fn handle_sync_u64(input: u64) -> SyncReturn<u64> {
+pub fn handle_sync_u64(input: Id) -> SyncReturn<Id> {
     SyncReturn(input)
 }
 pub fn handle_sync_i8(input: i8) -> SyncReturn<i8> {

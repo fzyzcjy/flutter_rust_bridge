@@ -39,3 +39,5 @@ impl HideData {
         format!("{} - {:?}", self.content, self.box_content)
     }
 }
+
+pub type Id = u64;

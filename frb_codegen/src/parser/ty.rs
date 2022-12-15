@@ -8,13 +8,14 @@ use crate::ir::*;
 
 use crate::markers;
 
-use crate::source_graph::{Enum, Struct};
+use crate::source_graph::{Enum, Struct, TypeAlias};
 
 use crate::parser::{extract_comments, extract_metadata, type_to_string};
 
 pub struct TypeParser<'a> {
     src_structs: HashMap<String, &'a Struct>,
     src_enums: HashMap<String, &'a Enum>,
+    src_type: HashMap<String, Type>,
 
     parsing_or_parsed_struct_names: HashSet<String>,
     struct_pool: IrStructPool,
@@ -27,10 +28,12 @@ impl<'a> TypeParser<'a> {
     pub fn new(
         src_structs: HashMap<String, &'a Struct>,
         src_enums: HashMap<String, &'a Enum>,
+        src_type: HashMap<String, Type>,
     ) -> Self {
         TypeParser {
             src_structs,
             src_enums,
+            src_type,
             struct_pool: HashMap::new(),
             enum_pool: HashMap::new(),
             parsing_or_parsed_struct_names: HashSet::new(),
@@ -137,7 +140,28 @@ impl SupportedInnerType {
 }
 
 impl<'a> TypeParser<'a> {
+    pub fn get_alias_type(&self, ty: &syn::Type) -> Option<Type> {
+        if let Type::Path(TypePath { qself: _, path }) = ty {
+            if let Some(PathSegment {
+                ident,
+                arguments: _,
+            }) = path.segments.first()
+            {
+                let key = &ident.to_string();
+                if self.src_type.contains_key(key) {
+                    return Some(self.src_type[key].clone());
+                }
+            }
+        }
+        None
+    }
     pub fn parse_type(&mut self, ty: &syn::Type) -> IrType {
+        let ty_alias = self.get_alias_type(ty);
+        let ty = if let Some(ty_alias) = ty_alias.as_ref() {
+            &ty_alias
+        } else {
+            ty
+        };
         let supported_type = SupportedInnerType::try_from_syn_type(ty)
             .unwrap_or_else(|| panic!("Unsupported type `{}`", type_to_string(ty)));
 
