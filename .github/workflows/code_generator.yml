@@ -67,6 +67,12 @@ jobs:
           git diff --exit-code
         shell: bash
 
+      - name: Run codegen to frb_dart
+        working-directory: ./frb_rust_bindgen_io
+        run: cargo run
+        env:
+          RUST_LOG: debug
+
       # NOTE in windows, need "\\" instead of "/"
       - name: Run codegen to pure_dart example (non-windows)
         if: ${{ inputs.family != 'windows' }}

@@ -1,0 +1,8 @@
+language = "C"
+
+[export]
+include = ["DartCObject"]
+
+[parse]
+parse_deps = true
+include = ["allo-isolate"]

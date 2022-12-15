@@ -1,0 +1,13 @@
+[package]
+name = "flutter_rust_bridge_bindgen_io"
+version.workspace = true
+edition.workspace = true
+description.workspace = true
+license.workspace = true
+repository.workspace = true
+keywords.workspace = true
+categories.workspace = true
+
+[dependencies]
+allo-isolate = { workspace = true }
+tempfile = "3.2.0"

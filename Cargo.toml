@@ -2,6 +2,7 @@
 members = [
   "frb_codegen",
   "frb_rust",
+  "frb_rust_bindgen_io",
   "frb_macros",
   "frb_example/pure_dart/rust",
   "frb_example/pure_dart_multi/rust",
@@ -18,6 +19,7 @@ keywords = ["flutter", "dart", "ffi", "code-generation", "bindings"]
 categories = ["development-tools::ffi"]
 
 [workspace.dependencies]
+allo-isolate = { version = "0.1.14-beta.3", features = ["anyhow"] }
 anyhow = "1.0.64"
 chrono = "0.4.20"
 lazy_static = "1.4.0"
