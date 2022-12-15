@@ -1,0 +1,2 @@
+# Platform Setup
+  - ffiPlugin: true
