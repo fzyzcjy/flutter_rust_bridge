@@ -44,9 +44,14 @@ fn main() -> std::io::Result<()> {
                 "run",
                 "ffigen",
                 "--config",
-                config_file.path().canonicalize()?.to_str().unwrap(),
+                config_file
+                    .path()
+                    .canonicalize()?
+                    .as_os_str()
+                    .to_str()
+                    .unwrap(),
             ])
-            .current_dir(Path::new(frb_dart_dirname).canonicalize()?)
+            .current_dir(Path::new(frb_dart_dirname).canonicalize()?.as_os_str())
             .spawn()?
             .wait()?;
         if !status.success() {
