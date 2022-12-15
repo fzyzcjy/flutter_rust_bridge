@@ -78,3 +78,4 @@ impl HideData {
 /// FrbOpaqueReturn must be only return type.
 /// FrbOpaqueReturn must not be used as an argument.
 pub struct FrbOpaqueReturn;
+pub type Id = u64;
