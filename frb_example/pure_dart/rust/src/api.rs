@@ -13,13 +13,8 @@ use anyhow::{anyhow, Result};
 use flutter_rust_bridge::*;
 use lazy_static::lazy_static;
 
-<<<<<<< HEAD
-pub use crate::data::{FrbOpaqueReturn, HideData, NonSendHideData};
-use crate::data::{MyEnum, MyStruct};
-=======
 pub use crate::data::{FrbOpaqueReturn, HideData, NonSendHideData};
 use crate::data::{Id, MyEnum, MyStruct};
->>>>>>> type_alias
 use crate::new_module_system::{use_new_module_system, NewSimpleStruct};
 use crate::old_module_system::{use_old_module_system, OldSimpleStruct};
 
