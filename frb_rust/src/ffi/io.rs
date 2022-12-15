@@ -1,4 +1,6 @@
 use crate::Channel;
+pub use crate::Dart_Handle;
+pub use crate::Dart_PersistentHandle;
 
 pub use super::DartAbi;
 pub use super::MessagePort;
@@ -6,8 +8,6 @@ use crate::Dart_DeletePersistentHandle_DL_Trampolined;
 use crate::Dart_HandleFromPersistent_DL_Trampolined;
 use crate::Dart_NewPersistentHandle_DL_Trampolined;
 pub use allo_isolate::*;
-pub use dart_sys::Dart_Handle;
-pub use dart_sys::Dart_PersistentHandle;
 
 #[cfg(feature = "chrono")]
 #[inline]
