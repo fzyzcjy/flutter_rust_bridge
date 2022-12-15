@@ -10,6 +10,7 @@ mod ty_primitive;
 mod ty_primitive_list;
 mod ty_rust_opaque;
 mod ty_struct;
+mod ty_sync_return;
 mod wasm;
 
 use func::*;
@@ -31,6 +32,7 @@ pub use ty_primitive::*;
 pub use ty_primitive_list::*;
 pub use ty_rust_opaque::*;
 pub use ty_struct::*;
+pub use ty_sync_return::*;
 
 use convert_case::{Case, Casing};
 use log::debug;

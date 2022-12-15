@@ -46,6 +46,7 @@ pub enum TypeDartGenerator<'a> {
     StructRef(TypeStructRefGenerator<'a>),
     Boxed(TypeBoxedGenerator<'a>),
     EnumRef(TypeEnumRefGenerator<'a>),
+    SyncReturn(TypeSyncReturnGenerator<'a>),
     DartOpaque(TypeDartOpaqueGenerator<'a>),
     RustOpaque(TypeRustOpaqueGenerator<'a>),
 }
@@ -62,7 +63,7 @@ impl<'a> TypeDartGenerator<'a> {
             StructRef(ir) => TypeStructRefGenerator { ir, context }.into(),
             Boxed(ir) => TypeBoxedGenerator { ir, context }.into(),
             EnumRef(ir) => TypeEnumRefGenerator { ir, context }.into(),
-            SyncReturn(ir) => TypeDartGenerator::new(ir.into_inner(), ir_file, config),
+            SyncReturn(ir) => TypeSyncReturnGenerator::new(ir, context).into(),
             DartOpaque(ir) => TypeDartOpaqueGenerator { ir, context }.into(),
             RustOpaque(ir) => TypeRustOpaqueGenerator { ir, context }.into(),
         }
