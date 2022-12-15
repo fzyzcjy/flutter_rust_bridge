@@ -4537,7 +4537,7 @@ class wire_DartOpaque extends ffi.Struct {
   external int handle;
 }
 
-typedef uintptr_t = ffi.UnsignedLong;
+typedef uintptr_t = ffi.UnsignedLongLong;
 
 class wire_list_DartOpaque extends ffi.Struct {
   external ffi.Pointer<wire_DartOpaque> ptr;

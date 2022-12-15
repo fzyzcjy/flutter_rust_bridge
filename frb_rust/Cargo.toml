@@ -24,6 +24,7 @@ allo-isolate = { version = "0.1.14-beta.3", features = ["anyhow"] }
 libc = "0.2"
 parking_lot = { version = "0.12.1" }
 threadpool = { version = "1.8.1" }
+dart_sys = { path = "../dart_sys" }
 
 [target.'cfg(target_family = "wasm")'.dependencies]
 console_error_panic_hook = { version = "0.1.7" }
