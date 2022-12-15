@@ -7,7 +7,7 @@ const base = 'flutter_rust_bridge_example';
 final path = Platform.isWindows ? '$base.dll' : 'lib$base.so';
 late final dylib = Platform.isIOS
     ? DynamicLibrary.process()
-    : Platform.isMacOS
+    : Platform.isMacOS && Abi.current() == Abi.macosX64
         ? DynamicLibrary.executable()
         : DynamicLibrary.open(path);
 late final api = FlutterRustBridgeExampleImpl(dylib);

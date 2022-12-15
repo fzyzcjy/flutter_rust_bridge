@@ -5,6 +5,8 @@ import 'bridge_generated.dart';
 
 FlutterRustBridgeExampleSingleBlockTestImpl initializeExternalLibrary(String path) {
   return FlutterRustBridgeExampleSingleBlockTestImpl(
-    Platform.isMacOS || Platform.isIOS ? DynamicLibrary.executable() : DynamicLibrary.open(path),
+    (Platform.isMacOS || Platform.isIOS) && [Abi.iosX64, Abi.macosX64].contains(Abi.current())
+        ? DynamicLibrary.executable()
+        : DynamicLibrary.open(path),
   );
 }
