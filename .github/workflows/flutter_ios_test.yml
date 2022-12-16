@@ -12,7 +12,9 @@ on:
       device:
         required: true
         type: string
-
+concurrency:
+  group: ${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
 jobs:
   flutter_ios_test:
     runs-on: macos-latest

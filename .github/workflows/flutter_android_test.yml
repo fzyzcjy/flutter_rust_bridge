@@ -16,7 +16,9 @@ on:
         required: false
         type: number
         default: 20
-
+concurrency:
+  group: ${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
 jobs:
   flutter_android_test:
     runs-on: macos-latest
