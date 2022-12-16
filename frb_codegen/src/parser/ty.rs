@@ -156,7 +156,8 @@ impl<'a> TypeParser<'a> {
         None
     }
     pub fn parse_type(&mut self, ty: &syn::Type) -> IrType {
-        let ty = self.get_alias_type(ty).as_ref().unwrap_or(ty);
+        let ty_alias = self.get_alias_type(ty);
+        let ty = ty_alias.as_ref().unwrap_or(ty);
         let supported_type = SupportedInnerType::try_from_syn_type(ty)
             .unwrap_or_else(|| panic!("Unsupported type `{}`", type_to_string(ty)));
 
