@@ -67,8 +67,8 @@ jobs:
           git diff --exit-code
         shell: bash
 
-      - name: Run codegen to frb_dart
-        working-directory: ./frb_rust_bindgen_io
+      - name: Run frb_dart bindgen
+        working-directory: ./frb_dart/bindgen
         run: cargo run
         env:
           RUST_LOG: debug

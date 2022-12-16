@@ -1,8 +1,8 @@
 [workspace]
 members = [
   "frb_codegen",
+  "frb_dart/bindgen",
   "frb_rust",
-  "frb_rust_bindgen_io",
   "frb_macros",
   "frb_example/pure_dart/rust",
   "frb_example/pure_dart_multi/rust",

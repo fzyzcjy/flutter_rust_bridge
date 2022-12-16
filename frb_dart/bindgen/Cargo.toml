@@ -1,5 +1,5 @@
 [package]
-name = "flutter_rust_bridge_bindgen_io"
+name = "frb_dart_bindgen"
 publish = false
 version.workspace = true
 edition.workspace = true
@@ -12,4 +12,3 @@ categories.workspace = true
 [dependencies]
 allo-isolate = { workspace = true }
 dunce = "1.0.3"
-tempfile = "3.2.0"

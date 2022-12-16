@@ -475,15 +475,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "flutter_rust_bridge_bindgen_io"
-version = "1.54.1"
-dependencies = [
- "allo-isolate",
- "dunce",
- "tempfile",
-]
-
-[[package]]
 name = "flutter_rust_bridge_codegen"
 version = "1.54.1"
 dependencies = [
@@ -553,6 +544,14 @@ dependencies = [
 [[package]]
 name = "flutter_rust_bridge_macros"
 version = "1.54.1"
+
+[[package]]
+name = "frb_dart_bindgen"
+version = "1.54.1"
+dependencies = [
+ "allo-isolate",
+ "dunce",
+]
 
 [[package]]
 name = "futures-core"
