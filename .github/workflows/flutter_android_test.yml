@@ -17,7 +17,7 @@ on:
         type: number
         default: 20
 concurrency:
-  group: ${{ github.head_ref || github.run_id }}
+  group: ${{ github.head_ref }}
   cancel-in-progress: true
 jobs:
   flutter_android_test:
