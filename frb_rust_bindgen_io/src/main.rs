@@ -34,6 +34,7 @@ fn main() -> std::io::Result<()> {
           include-directives:
             - '{}'
         preamble: |
+          // flutter_rust_bridge auto-generated this file with frb_dart/bindgen 
           // ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names, unused_field
         ",
         header_filename,
