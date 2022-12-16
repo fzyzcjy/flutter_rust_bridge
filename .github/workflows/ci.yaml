@@ -13,7 +13,7 @@ on:
 env:
   CARGO_TERM_COLOR: always
 concurrency:
-  group: build-${{ github.event.pull_request.number || github.ref }}-${{ github.job || github.ref}}
+  group: build-${{ github.event.pull_request.number || github.ref }}-${{ github.job }}
   cancel-in-progress: true
 jobs:
   # -------------------------- test --------------------------
@@ -67,7 +67,7 @@ jobs:
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   flutter_ios_test:
-    name: Flutter (iOS) integration test
+    name: Flutter (iOS) integration test-${{ matrix.device }}
     strategy:
       matrix:
         device:
@@ -80,7 +80,7 @@ jobs:
 
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
   flutter_android_test:
-    name: Flutter (Android) integration test
+    name: Flutter (Android) integration test-${{ matrix.device }}
     strategy:
       matrix:
         device:
@@ -413,7 +413,7 @@ jobs:
 
   # -------------------------- codegen --------------------------
   codegen:
-    name: Run codegen
+    name: Run codegen-${{ matrix.os.image }}-${{ matrix.os.family }}
     strategy:
       fail-fast: false
       matrix:
