@@ -1,5 +1,6 @@
 [package]
 name = "flutter_rust_bridge_bindgen_io"
+publish = false
 version.workspace = true
 edition.workspace = true
 description.workspace = true
