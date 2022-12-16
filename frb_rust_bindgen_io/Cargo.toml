@@ -10,4 +10,5 @@ categories.workspace = true
 
 [dependencies]
 allo-isolate = { workspace = true }
+dunce = "1.0.3"
 tempfile = "3.2.0"

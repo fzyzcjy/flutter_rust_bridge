@@ -1,5 +1,7 @@
 use std::{fs, path::Path, process::Command};
 
+use dunce::canonicalize;
+
 fn main() -> std::io::Result<()> {
     let frb_dart_dirname = "../frb_dart";
     // tempfile won't work because ffigen relies on the file having .h extension
@@ -44,9 +46,9 @@ fn main() -> std::io::Result<()> {
                 "run",
                 "ffigen",
                 "--config",
-                config_file.path().canonicalize()?.to_str().unwrap(),
+                canonicalize(config_file.path())?.to_str().unwrap(),
             ])
-            .current_dir(Path::new(frb_dart_dirname).canonicalize()?)
+            .current_dir(canonicalize(Path::new(frb_dart_dirname))?)
             .spawn()?
             .wait()?;
         if !status.success() {
