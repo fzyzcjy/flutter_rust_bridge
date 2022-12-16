@@ -29,7 +29,7 @@ class DartApiDl {
   void initApi() {
     _initCode ??= _initFn(ffi.NativeApi.initializeApiDLData);
     if (_initCode != 0) {
-      throw 'Failed to initialize Dart API. Code: $_initCode';
+      throw Exception('Failed to initialize Dart API. Code: $_initCode');
     }
   }
 }
@@ -97,7 +97,7 @@ extension DartCObjectExt on DartCObject {
       case DartCObjectType.DartUnsupported:
       case DartCObjectType.DartNumberOfTypes:
       default:
-        throw "Can't read invalid data type $ty";
+        throw Exception("Can't read invalid data type $ty");
     }
   }
 
@@ -147,7 +147,7 @@ extension DartCObjectExt on DartCObject {
       case DartTypedDataType.Float32x4:
       case DartTypedDataType.Invalid:
       default:
-        throw "Can't read invalid typed data type $ty";
+        throw Exception("Can't read invalid typed data type $ty");
     }
   }
 
