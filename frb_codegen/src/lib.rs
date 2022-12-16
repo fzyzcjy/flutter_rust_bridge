@@ -149,7 +149,7 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
                 .to_text(),
         )?;
         fs::write(
-            &config.dart_io_output_path(),
+            config.dart_io_output_path(),
             (&generated_dart.file_prelude + &generated_dart_impl_io_wire).to_text(),
         )?;
         fs::write(
@@ -248,7 +248,7 @@ fn write_dart_decls(
                 .to_text(),
         )?;
         fs::write(
-            &config.dart_io_output_path(),
+            config.dart_io_output_path(),
             (&generated_dart.file_prelude + &impl_import_decl + generated_dart_impl_io_wire)
                 .to_text(),
         )?;
@@ -316,12 +316,12 @@ pub use web::*;",
     fs::write(&config.rust_output_path, common)?;
     if !config.inline_rust {
         fs::write(
-            &config.rust_io_output_path(),
+            config.rust_io_output_path(),
             format!("use super::*;\n{}", io),
         )?;
         if config.wasm_enabled {
             fs::write(
-                &config.rust_wasm_output_path(),
+                config.rust_wasm_output_path(),
                 format!("use super::*;\n{}", wasm),
             )?;
         }
