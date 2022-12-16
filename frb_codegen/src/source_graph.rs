@@ -272,7 +272,7 @@ impl Module {
         let mut scope_modules = Vec::new();
         let mut scope_structs = Vec::new();
         let mut scope_enums = Vec::new();
-        let mut scope_type = Vec::new();
+        let mut scope_types = Vec::new();
 
         let items = match self.source.as_ref().unwrap() {
             ModuleSource::File(file) => &file.items,
@@ -321,7 +321,7 @@ impl Module {
                     if item_type.generics.where_clause.is_none()
                         && item_type.generics.lt_token.is_none()
                     {
-                        scope_type.push(TypeAlias {
+                        scope_types.push(TypeAlias {
                             ident: item_type.ident.to_string(),
                             target: *item_type.ty.clone(),
                         });
@@ -400,7 +400,7 @@ impl Module {
             enums: scope_enums,
             structs: scope_structs,
             imports: vec![], // Will be filled in by resolve_imports()
-            type_alias: scope_type,
+            type_alias: scope_types,
         });
     }
 
