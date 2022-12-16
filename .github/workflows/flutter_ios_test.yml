@@ -13,7 +13,7 @@ on:
         required: true
         type: string
 concurrency:
-  group: build-${{ github.event.pull_request.number || github.ref }}-${{ github.job || github.ref}}
+  group: build-${{ github.event.pull_request.number || github.ref }}-${{ github.job}}-${{matrix}}
   cancel-in-progress: true
 jobs:
   flutter_ios_test:
