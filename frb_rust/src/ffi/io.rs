@@ -12,7 +12,7 @@ pub use allo_isolate::*;
 #[cfg(feature = "chrono")]
 #[inline]
 pub fn wire2api_timestamp(ts: i64) -> Timestamp {
-    let s = (ts / 1_000_000) as i64;
+    let s = ts / 1_000_000;
     let ns = (ts.rem_euclid(1_000_000) * 1_000) as u32;
     Timestamp { s, ns }
 }
