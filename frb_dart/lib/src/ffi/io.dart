@@ -72,16 +72,14 @@ extension DartCObjectExt on DartCObject {
           value.as_typed_data.ty,
           value.as_typed_data.values,
           value.as_typed_data.length,
-          copy: true,
-        );
+        ).clone();
 
       case DartCObjectType.DartExternalTypedData:
         final externalTypedData = _typedDataIntoDart(
           value.as_external_typed_data.ty,
           value.as_external_typed_data.data,
           value.as_external_typed_data.length,
-          copy: false,
-        );
+        ).view;
         _externalTypedDataFinalizer.attach(
           externalTypedData,
           // Copy the cleanup info into a finalization token:
@@ -101,47 +99,51 @@ extension DartCObjectExt on DartCObject {
     }
   }
 
-  static dynamic _typedDataIntoDart(
+  static _TypedData _typedDataIntoDart(
     int ty,
     ffi.Pointer<ffi.Uint8> typedValues,
-    int nValues, {
-    required bool copy,
-  }) {
+    int nValues,
+  ) {
     switch (ty) {
       case DartTypedDataType.ByteData:
-        final view = typedValues.cast<ffi.Uint8>().asTypedList(nValues);
-        final bytes = copy ? view : Uint8List.fromList(view);
-        return ByteData.view(bytes.buffer);
+        return _TypedData<ByteData>(
+          ByteData.view(
+            typedValues.cast<ffi.Uint8>().asTypedList(nValues).buffer,
+          ),
+          (view) => ByteData.view(
+            Uint8List.fromList(view.buffer.asUint8List()).buffer,
+          ),
+        );
       case DartTypedDataType.Int8:
         final view = typedValues.cast<ffi.Int8>().asTypedList(nValues);
-        return copy ? Int8List.fromList(view) : view;
+        return _TypedData<Int8List>(view, Int8List.fromList);
       case DartTypedDataType.Uint8:
         final view = typedValues.cast<ffi.Uint8>().asTypedList(nValues);
-        return copy ? Uint8List.fromList(view) : view;
+        return _TypedData<Uint8List>(view, Uint8List.fromList);
       case DartTypedDataType.Int16:
         final view = typedValues.cast<ffi.Int16>().asTypedList(nValues);
-        return copy ? Int16List.fromList(view) : view;
+        return _TypedData<Int16List>(view, Int16List.fromList);
       case DartTypedDataType.Uint16:
         final view = typedValues.cast<ffi.Uint16>().asTypedList(nValues);
-        return copy ? Uint16List.fromList(view) : view;
+        return _TypedData<Uint16List>(view, Uint16List.fromList);
       case DartTypedDataType.Int32:
         final view = typedValues.cast<ffi.Int32>().asTypedList(nValues);
-        return copy ? Int32List.fromList(view) : view;
+        return _TypedData<Int32List>(view, Int32List.fromList);
       case DartTypedDataType.Uint32:
         final view = typedValues.cast<ffi.Uint32>().asTypedList(nValues);
-        return copy ? Uint32List.fromList(view) : view;
+        return _TypedData<Uint32List>(view, Uint32List.fromList);
       case DartTypedDataType.Int64:
         final view = typedValues.cast<ffi.Int64>().asTypedList(nValues);
-        return copy ? Int64List.fromList(view) : view;
+        return _TypedData<Int64List>(view, Int64List.fromList);
       case DartTypedDataType.Uint64:
         final view = typedValues.cast<ffi.Uint64>().asTypedList(nValues);
-        return copy ? Uint64List.fromList(view) : view;
+        return _TypedData<Uint64List>(view, Uint64List.fromList);
       case DartTypedDataType.Float32:
         final view = typedValues.cast<ffi.Float>().asTypedList(nValues);
-        return copy ? Float32List.fromList(view) : view;
+        return _TypedData<Float32List>(view, Float32List.fromList);
       case DartTypedDataType.Float64:
         final view = typedValues.cast<ffi.Double>().asTypedList(nValues);
-        return copy ? Float64List.fromList(view) : view;
+        return _TypedData<Float64List>(view, Float64List.fromList);
 
       case DartTypedDataType.Uint8Clamped:
       case DartTypedDataType.Float32x4:
@@ -163,6 +165,14 @@ extension DartCObjectExt on DartCObject {
       }
     }
   });
+}
+
+class _TypedData<T> {
+  final T view;
+  final T Function(T) _cloneView;
+  _TypedData(this.view, this._cloneView);
+
+  T clone() => _cloneView(view);
 }
 
 class _ExternalTypedDataFinalizerArgs {
