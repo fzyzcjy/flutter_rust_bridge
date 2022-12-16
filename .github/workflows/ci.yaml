@@ -181,6 +181,8 @@ jobs:
           dart run --enable-vm-service \
             ./frb_example/pure_dart/dart/lib/main_with_vm_service.dart \
             ./target/debug/libflutter_rust_bridge_example.so
+        env:
+          FRB_TEST: 1
 
 
   # -------------------------- linter --------------------------

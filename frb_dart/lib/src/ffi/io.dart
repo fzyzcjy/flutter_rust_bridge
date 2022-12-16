@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:ffi' as ffi;
 import 'dart:ffi';
+import 'dart:io';
 export 'dart:ffi' show NativePort, DynamicLibrary;
 import 'dart:typed_data';
 import 'io_dartcobject.dart';
@@ -82,7 +83,12 @@ extension DartCObjectExt on DartCObject {
           copy: false,
         );
         _externalTypedDataFinalizer.attach(
-            externalTypedData, value.as_external_typed_data);
+          externalTypedData,
+          // Copy the cleanup info into a finalization token:
+          // `value`'s underlying memory will probably be freed
+          // before the zero-copy finalizer is called.
+          _ExternalTypedDataFinalizerArgs(value.as_external_typed_data),
+        );
         return externalTypedData;
 
       case DartCObjectType.DartSendPort:
@@ -146,18 +152,43 @@ extension DartCObjectExt on DartCObject {
   }
 
   static final _externalTypedDataFinalizer =
-      Finalizer<DartNativeExternalTypedData>((externalTypedData) {
-    final handleFinalizer = externalTypedData.callback
-        .cast<ffi.NativeFunction<NativeExternalTypedDataFinalizer>>()
-        .asFunction<DartExternalTypedDataFinalizer>();
-    handleFinalizer(externalTypedData.data, externalTypedData.peer);
+      Finalizer<_ExternalTypedDataFinalizerArgs>((externalTypedData) {
+    final handleFinalizer =
+        externalTypedData.callback.asFunction<DartExternalTypedDataFinalizer>();
+    handleFinalizer(externalTypedData.length, externalTypedData.peer);
+
+    if (Platform.environment.containsKey('FRB_TEST')) {
+      for (var handler in ioTestTool!.onExternalTypedDataFinalizer) {
+        handler(externalTypedData.length);
+      }
+    }
   });
 }
 
+class _ExternalTypedDataFinalizerArgs {
+  final int length;
+  final ffi.Pointer<ffi.Void> peer;
+  final ffi.Pointer<ffi.NativeFunction<NativeExternalTypedDataFinalizer>>
+      callback;
+
+  _ExternalTypedDataFinalizerArgs(DartNativeExternalTypedData typedData)
+      : length = typedData.length,
+        peer = typedData.peer,
+        callback = typedData.callback
+            .cast<ffi.NativeFunction<NativeExternalTypedDataFinalizer>>();
+}
+
 typedef NativeExternalTypedDataFinalizer = ffi.Void Function(
-    ffi.Pointer<ffi.Uint8>, ffi.Pointer<ffi.Void>);
+    ffi.IntPtr, ffi.Pointer<ffi.Void>);
 typedef DartExternalTypedDataFinalizer = void Function(
-    ffi.Pointer<ffi.Uint8>, ffi.Pointer<ffi.Void>);
+    int, ffi.Pointer<ffi.Void>);
+
+class _TestTool {
+  final Set<void Function(int)> onExternalTypedDataFinalizer = {};
+}
+
+final ioTestTool =
+    Platform.environment.containsKey('FRB_TEST') ? _TestTool() : null;
 
 typedef PlatformPointer = ffi.Pointer<ffi.Void>;
 typedef OpaqueTypeFinalizer = NativeFinalizer;

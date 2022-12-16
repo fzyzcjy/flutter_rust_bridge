@@ -115,18 +115,17 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>('wire_simple_adder_1');
   late final _wire_simple_adder_1 = _wire_simple_adder_1Ptr.asFunction<void Function(int, int, int)>();
 
-  void free_WireSyncReturnStruct(
-    WireSyncReturnStruct val,
+  void free_WireSyncReturn(
+    WireSyncReturn ptr,
   ) {
-    return _free_WireSyncReturnStruct(
-      val,
+    return _free_WireSyncReturn(
+      ptr,
     );
   }
 
-  late final _free_WireSyncReturnStructPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturnStruct)>>('free_WireSyncReturnStruct');
-  late final _free_WireSyncReturnStruct =
-      _free_WireSyncReturnStructPtr.asFunction<void Function(WireSyncReturnStruct)>();
+  late final _free_WireSyncReturnPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturn)>>('free_WireSyncReturn');
+  late final _free_WireSyncReturn = _free_WireSyncReturnPtr.asFunction<void Function(WireSyncReturn)>();
 }
 
 class _Dart_Handle extends ffi.Opaque {}

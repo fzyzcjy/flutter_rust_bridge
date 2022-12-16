@@ -1,4 +1,7 @@
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+// ignore: implementation_imports
+import 'package:flutter_rust_bridge/src/ffi/io.dart' as frb_io;
+import 'package:flutter_rust_bridge_example/bridge_definitions.dart';
 import 'package:test/test.dart';
 import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
 import 'main.dart';
@@ -17,6 +20,31 @@ void main(List<String> args) async {
   tearDownAll(() {
     api.dispose();
     vmService.dispose();
+  });
+
+  group('sync return', () {
+    test('allocate a lot of zero copy data to check that it is properly freed', () async {
+      const n = 10000;
+      int calls = 0;
+      frb_io.ioTestTool!.onExternalTypedDataFinalizer.add(expectAsync1(
+        (length) {
+          expect(length, n);
+          calls++;
+        },
+        count: 10,
+        reason: "Finalizer must be called once for each returned packed primitive list",
+      ));
+
+      ZeroCopyVecOfPrimitivePack? primitivePack = api.handleZeroCopyVecOfPrimitiveSync(n: n);
+      await vmService.gc();
+      await Future<void>.delayed(const Duration(milliseconds: 10));
+      expect(primitivePack, isNotNull);
+      expect(calls, 0);
+
+      primitivePack = null;
+      await vmService.gc();
+      await Future<void>.delayed(const Duration(milliseconds: 10));
+    });
   });
 
   group('dart opaque type', () {
