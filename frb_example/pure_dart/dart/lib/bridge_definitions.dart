@@ -1271,10 +1271,14 @@ class TestId {
 class TestModel {
   final int id;
   final String name;
+  final MyEnum aliasEnum;
+  final MyStruct aliasStruct;
 
   TestModel({
     required this.id,
     required this.name,
+    required this.aliasEnum,
+    required this.aliasStruct,
   });
 }
 

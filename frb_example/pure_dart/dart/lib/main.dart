@@ -1052,6 +1052,8 @@ void main(List<String> args) async {
       final testModel = await api.handleTypeAliasModel(input: 42);
       expect(testModel.id, 42);
       expect(testModel.name, "TestModel");
+      expect(testModel.aliasEnum, MyEnum.False);
+      expect(testModel.aliasStruct.content, true);
     });
   });
 }

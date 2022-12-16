@@ -79,3 +79,5 @@ impl HideData {
 /// FrbOpaqueReturn must not be used as an argument.
 pub struct FrbOpaqueReturn;
 pub type Id = u64;
+pub type EnumAlias = MyEnum;
+pub type StructAlias = MyStruct;

@@ -21,4 +21,9 @@ pub fn handle_type_alias_model(input: Id) -> TestModel {
 ```
 
 You can use the Id, or you can use the Id in the Model.
-But ItemType in Generic is not supported yet.(like `SyncReturn<Id>`)
+
+What’s more, you can also use an 'ItemType' like follow
+`type Sth = MyFancyStruct` or `type Sth = MyFancyEnum`
+
+But, `ItemType` in Generic is not supported yet.(like `SyncReturn<Id>`)
+The Nest ItemType may also be not supported

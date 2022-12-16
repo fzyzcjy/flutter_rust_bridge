@@ -2479,6 +2479,15 @@ impl support::IntoDart for MessageId {
 }
 impl support::IntoDartExceptPrimitive for MessageId {}
 
+impl support::IntoDart for MyEnum {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::False => 0,
+            Self::True => 1,
+        }
+        .into_dart()
+    }
+}
 impl support::IntoDart for MySize {
     fn into_dart(self) -> support::DartAbi {
         vec![self.width.into_dart(), self.height.into_dart()].into_dart()
@@ -2492,6 +2501,13 @@ impl support::IntoDart for MyStreamEntry {
     }
 }
 impl support::IntoDartExceptPrimitive for MyStreamEntry {}
+
+impl support::IntoDart for MyStruct {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.content.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for MyStruct {}
 
 impl support::IntoDart for MyTreeNode {
     fn into_dart(self) -> support::DartAbi {
@@ -2581,7 +2597,13 @@ impl support::IntoDartExceptPrimitive for TestId {}
 
 impl support::IntoDart for TestModel {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.id.into_dart(), self.name.into_dart()].into_dart()
+        vec![
+            self.id.into_dart(),
+            self.name.into_dart(),
+            self.alias_enum.into_dart(),
+            self.alias_struct.into_dart(),
+        ]
+        .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for TestModel {}
