@@ -1,3 +1,7 @@
+## 1.54.2
+
+* Bump chrono #905 (thanks @Roms1383)
+
 ## 1.54.1
 
 * Delete dart_sys #890 (thanks @rogurotus)
