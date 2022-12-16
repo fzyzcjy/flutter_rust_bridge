@@ -66,37 +66,10 @@ pub fn slice_from_byte_buffer<T: bytemuck::Pod>(buffer: Vec<u8>) -> Box<[T]> {
 }
 
 #[cfg(not(wasm))]
-use allo_isolate::ffi::{DartCObject, DartCObjectType, DartCObjectValue};
-#[cfg(not(wasm))]
-use std::mem::ManuallyDrop;
-
-/// NOTE for maintainer: This struct is declared as opaque in `DUMMY_WIRE_CODE_FOR_BINDGEN`
-/// and its name is used in the code generator. Renaming would break the generated bindings.
-#[repr(C)]
-#[cfg(not(wasm))]
-pub struct WireSyncReturnStruct {
-    pub ty: DartCObjectType,
-    pub value: DartCObjectValue,
-    pub success: bool,
-    pub ptr: *mut ManuallyDrop<DartCObject>,
-}
+use allo_isolate::ffi::DartCObject;
 
 #[cfg(not(wasm))]
-impl WireSyncReturnStruct {
-    pub fn new<T: IntoDart>(value: T, success: bool) -> WireSyncReturnStruct {
-        let data = ManuallyDrop::new(value.into_dart());
-        WireSyncReturnStruct {
-            ty: data.ty,
-            value: data.value,
-            success,
-            ptr: Box::into_raw(Box::new(data)),
-        }
-    }
-
-    pub fn free(self) {
-        let _ = std::mem::ManuallyDrop::into_inner(*unsafe { Box::from_raw(self.ptr) });
-    }
-}
+pub type WireSyncReturn = *mut DartCObject;
 
 #[cfg(wasm)]
-pub type WireSyncReturnStruct = wasm_bindgen::JsValue;
+pub type WireSyncReturn = wasm_bindgen::JsValue;

@@ -33,21 +33,12 @@ class DartApiDl {
   }
 }
 
-// NOTE for maintainer: Please manually keep in sync with [WireSyncReturnStruct] in Rust
-/// This class is only for internal usage.
-class WireSyncReturnStruct extends ffi.Struct {
-  /// Not to be used by normal users, but has to be public for generated code
-  external DartCObject data;
+typedef WireSyncReturn = ffi.Pointer<DartCObject>;
 
-  @ffi.Bool()
-  external bool isSuccess;
+dynamic wireSyncReturnIntoDart(WireSyncReturn syncReturn) =>
+    syncReturn.ref.intoDart();
 
-  external ffi.Pointer<ffi.Void> ptr;
-
-  dynamic intoDart() => data.intoDart();
-}
-
-extension DartCObjectWireSyncReturn on DartCObject {
+extension DartCObjectExt on DartCObject {
   dynamic intoDart() {
     switch (ty) {
       case DartCObjectType.DartNull:

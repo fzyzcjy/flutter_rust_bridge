@@ -47,7 +47,7 @@ fn wire_simple_adder_impl(
 fn wire_simple_adder_sync_impl(
     a: impl Wire2Api<i32> + UnwindSafe,
     b: impl Wire2Api<i32> + UnwindSafe,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "simple_adder_sync",
@@ -95,7 +95,7 @@ fn wire_primitive_types_sync_impl(
     my_i64: impl Wire2Api<i64> + UnwindSafe,
     my_f64: impl Wire2Api<f64> + UnwindSafe,
     my_bool: impl Wire2Api<bool> + UnwindSafe,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "primitive_types_sync",
@@ -131,7 +131,7 @@ fn wire_primitive_u32_impl(port_: MessagePort, my_u32: impl Wire2Api<u32> + Unwi
 }
 fn wire_primitive_u32_sync_impl(
     my_u32: impl Wire2Api<u32> + UnwindSafe,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "primitive_u32_sync",
@@ -157,9 +157,7 @@ fn wire_handle_string_impl(port_: MessagePort, s: impl Wire2Api<String> + Unwind
         },
     )
 }
-fn wire_handle_string_sync_impl(
-    s: impl Wire2Api<String> + UnwindSafe,
-) -> support::WireSyncReturnStruct {
+fn wire_handle_string_sync_impl(s: impl Wire2Api<String> + UnwindSafe) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "handle_string_sync",
@@ -182,7 +180,7 @@ fn wire_handle_return_unit_impl(port_: MessagePort) {
         move || move |task_callback| Ok(handle_return_unit()),
     )
 }
-fn wire_handle_return_unit_sync_impl() -> support::WireSyncReturnStruct {
+fn wire_handle_return_unit_sync_impl() -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "handle_return_unit_sync",
@@ -205,9 +203,7 @@ fn wire_handle_vec_u8_impl(port_: MessagePort, v: impl Wire2Api<Vec<u8>> + Unwin
         },
     )
 }
-fn wire_handle_vec_u8_sync_impl(
-    v: impl Wire2Api<Vec<u8>> + UnwindSafe,
-) -> support::WireSyncReturnStruct {
+fn wire_handle_vec_u8_sync_impl(v: impl Wire2Api<Vec<u8>> + UnwindSafe) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "handle_vec_u8_sync",
@@ -235,7 +231,7 @@ fn wire_handle_vec_of_primitive_impl(port_: MessagePort, n: impl Wire2Api<i32> +
 }
 fn wire_handle_vec_of_primitive_sync_impl(
     n: impl Wire2Api<i32> + UnwindSafe,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "handle_vec_of_primitive_sync",
@@ -266,7 +262,7 @@ fn wire_handle_zero_copy_vec_of_primitive_impl(
 }
 fn wire_handle_zero_copy_vec_of_primitive_sync_impl(
     n: impl Wire2Api<i32> + UnwindSafe,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "handle_zero_copy_vec_of_primitive_sync",
@@ -300,7 +296,7 @@ fn wire_handle_struct_impl(
 fn wire_handle_struct_sync_impl(
     arg: impl Wire2Api<MySize> + UnwindSafe,
     boxed: impl Wire2Api<Box<MySize>> + UnwindSafe,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "handle_struct_sync",
@@ -329,7 +325,7 @@ fn wire_handle_newtype_impl(port_: MessagePort, arg: impl Wire2Api<NewTypeInt> +
 }
 fn wire_handle_newtype_sync_impl(
     arg: impl Wire2Api<NewTypeInt> + UnwindSafe,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "handle_newtype_sync",
@@ -357,7 +353,7 @@ fn wire_handle_list_of_struct_impl(port_: MessagePort, l: impl Wire2Api<Vec<MySi
 }
 fn wire_handle_list_of_struct_sync_impl(
     l: impl Wire2Api<Vec<MySize>> + UnwindSafe,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "handle_list_of_struct_sync",
@@ -388,7 +384,7 @@ fn wire_handle_string_list_impl(
 }
 fn wire_handle_string_list_sync_impl(
     names: impl Wire2Api<Vec<String>> + UnwindSafe,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "handle_string_list_sync",
@@ -416,7 +412,7 @@ fn wire_handle_complex_struct_impl(port_: MessagePort, s: impl Wire2Api<MyTreeNo
 }
 fn wire_handle_complex_struct_sync_impl(
     s: impl Wire2Api<MyTreeNode> + UnwindSafe,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "handle_complex_struct_sync",
@@ -431,7 +427,7 @@ fn wire_handle_complex_struct_sync_impl(
 }
 fn wire_handle_sync_return_impl(
     mode: impl Wire2Api<String> + UnwindSafe,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "handle_sync_return",
@@ -1253,7 +1249,7 @@ fn wire_nested_id_impl(port_: MessagePort, id: impl Wire2Api<[TestId; 4]> + Unwi
 }
 fn wire_sync_accept_dart_opaque_impl(
     opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "sync_accept_dart_opaque",
@@ -1384,7 +1380,7 @@ fn wire_loop_back_vec_get_impl(
 }
 fn wire_unwrap_dart_opaque_impl(
     opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "unwrap_dart_opaque",
@@ -1439,7 +1435,7 @@ fn wire_create_option_opaque_impl(
         },
     )
 }
-fn wire_sync_create_opaque_impl() -> support::WireSyncReturnStruct {
+fn wire_sync_create_opaque_impl() -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "sync_create_opaque",
@@ -1524,7 +1520,7 @@ fn wire_create_sync_opaque_impl(port_: MessagePort) {
         move || move |task_callback| Ok(create_sync_opaque()),
     )
 }
-fn wire_sync_create_sync_opaque_impl() -> support::WireSyncReturnStruct {
+fn wire_sync_create_sync_opaque_impl() -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "sync_create_sync_opaque",
@@ -1536,7 +1532,7 @@ fn wire_sync_create_sync_opaque_impl() -> support::WireSyncReturnStruct {
 }
 fn wire_sync_run_opaque_impl(
     opaque: impl Wire2Api<RustOpaque<NonSendHideData>> + UnwindSafe,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "sync_run_opaque",
@@ -1603,7 +1599,7 @@ fn wire_create_nested_opaque_impl(port_: MessagePort) {
 }
 fn wire_sync_loopback_impl(
     opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "sync_loopback",
@@ -1618,7 +1614,7 @@ fn wire_sync_loopback_impl(
 }
 fn wire_sync_option_loopback_impl(
     opaque: impl Wire2Api<Option<DartOpaque>> + UnwindSafe,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "sync_option_loopback",
@@ -1631,7 +1627,7 @@ fn wire_sync_option_loopback_impl(
         },
     )
 }
-fn wire_sync_option_impl() -> support::WireSyncReturnStruct {
+fn wire_sync_option_impl() -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "sync_option",
@@ -1641,7 +1637,7 @@ fn wire_sync_option_impl() -> support::WireSyncReturnStruct {
         move || sync_option(),
     )
 }
-fn wire_sync_option_null_impl() -> support::WireSyncReturnStruct {
+fn wire_sync_option_null_impl() -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "sync_option_null",
@@ -1651,7 +1647,7 @@ fn wire_sync_option_null_impl() -> support::WireSyncReturnStruct {
         move || sync_option_null(),
     )
 }
-fn wire_sync_option_rust_opaque_impl() -> support::WireSyncReturnStruct {
+fn wire_sync_option_rust_opaque_impl() -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "sync_option_rust_opaque",
@@ -1663,7 +1659,7 @@ fn wire_sync_option_rust_opaque_impl() -> support::WireSyncReturnStruct {
 }
 fn wire_sync_option_dart_opaque_impl(
     opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "sync_option_dart_opaque",
@@ -1676,7 +1672,7 @@ fn wire_sync_option_dart_opaque_impl(
         },
     )
 }
-fn wire_sync_void_impl() -> support::WireSyncReturnStruct {
+fn wire_sync_void_impl() -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "sync_void",
@@ -1812,7 +1808,7 @@ fn wire_unwrap_rust_opaque_impl(
 }
 fn wire_return_non_dropable_dart_opaque_impl(
     opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "return_non_dropable_dart_opaque",

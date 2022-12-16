@@ -1291,7 +1291,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>('wire_simple_adder');
   late final _wire_simple_adder = _wire_simple_adderPtr.asFunction<void Function(int, int, int)>();
 
-  WireSyncReturnStruct wire_simple_adder_sync(
+  WireSyncReturn wire_simple_adder_sync(
     int a,
     int b,
   ) {
@@ -1302,8 +1302,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_simple_adder_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Int32, ffi.Int32)>>('wire_simple_adder_sync');
-  late final _wire_simple_adder_sync = _wire_simple_adder_syncPtr.asFunction<WireSyncReturnStruct Function(int, int)>();
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int32, ffi.Int32)>>('wire_simple_adder_sync');
+  late final _wire_simple_adder_sync = _wire_simple_adder_syncPtr.asFunction<WireSyncReturn Function(int, int)>();
 
   void wire_primitive_types(
     int port_,
@@ -1326,7 +1326,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
           'wire_primitive_types');
   late final _wire_primitive_types = _wire_primitive_typesPtr.asFunction<void Function(int, int, int, double, bool)>();
 
-  WireSyncReturnStruct wire_primitive_types_sync(
+  WireSyncReturn wire_primitive_types_sync(
     int my_i32,
     int my_i64,
     double my_f64,
@@ -1341,10 +1341,10 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_primitive_types_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Int32, ffi.Int64, ffi.Double, ffi.Bool)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int32, ffi.Int64, ffi.Double, ffi.Bool)>>(
           'wire_primitive_types_sync');
   late final _wire_primitive_types_sync =
-      _wire_primitive_types_syncPtr.asFunction<WireSyncReturnStruct Function(int, int, double, bool)>();
+      _wire_primitive_types_syncPtr.asFunction<WireSyncReturn Function(int, int, double, bool)>();
 
   void wire_primitive_u32(
     int port_,
@@ -1360,7 +1360,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>('wire_primitive_u32');
   late final _wire_primitive_u32 = _wire_primitive_u32Ptr.asFunction<void Function(int, int)>();
 
-  WireSyncReturnStruct wire_primitive_u32_sync(
+  WireSyncReturn wire_primitive_u32_sync(
     int my_u32,
   ) {
     return _wire_primitive_u32_sync(
@@ -1369,8 +1369,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_primitive_u32_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Uint32)>>('wire_primitive_u32_sync');
-  late final _wire_primitive_u32_sync = _wire_primitive_u32_syncPtr.asFunction<WireSyncReturnStruct Function(int)>();
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Uint32)>>('wire_primitive_u32_sync');
+  late final _wire_primitive_u32_sync = _wire_primitive_u32_syncPtr.asFunction<WireSyncReturn Function(int)>();
 
   void wire_handle_string(
     int port_,
@@ -1387,7 +1387,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_handle_string =
       _wire_handle_stringPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
-  WireSyncReturnStruct wire_handle_string_sync(
+  WireSyncReturn wire_handle_string_sync(
     ffi.Pointer<wire_uint_8_list> s,
   ) {
     return _wire_handle_string_sync(
@@ -1396,10 +1396,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_handle_string_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_8_list>)>>(
-          'wire_handle_string_sync');
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>)>>('wire_handle_string_sync');
   late final _wire_handle_string_sync =
-      _wire_handle_string_syncPtr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_8_list>)>();
+      _wire_handle_string_syncPtr.asFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_handle_return_unit(
     int port_,
@@ -1413,14 +1412,13 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_handle_return_unit');
   late final _wire_handle_return_unit = _wire_handle_return_unitPtr.asFunction<void Function(int)>();
 
-  WireSyncReturnStruct wire_handle_return_unit_sync() {
+  WireSyncReturn wire_handle_return_unit_sync() {
     return _wire_handle_return_unit_sync();
   }
 
   late final _wire_handle_return_unit_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function()>>('wire_handle_return_unit_sync');
-  late final _wire_handle_return_unit_sync =
-      _wire_handle_return_unit_syncPtr.asFunction<WireSyncReturnStruct Function()>();
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('wire_handle_return_unit_sync');
+  late final _wire_handle_return_unit_sync = _wire_handle_return_unit_syncPtr.asFunction<WireSyncReturn Function()>();
 
   void wire_handle_vec_u8(
     int port_,
@@ -1437,7 +1435,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_handle_vec_u8 =
       _wire_handle_vec_u8Ptr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
-  WireSyncReturnStruct wire_handle_vec_u8_sync(
+  WireSyncReturn wire_handle_vec_u8_sync(
     ffi.Pointer<wire_uint_8_list> v,
   ) {
     return _wire_handle_vec_u8_sync(
@@ -1446,10 +1444,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_handle_vec_u8_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_8_list>)>>(
-          'wire_handle_vec_u8_sync');
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>)>>('wire_handle_vec_u8_sync');
   late final _wire_handle_vec_u8_sync =
-      _wire_handle_vec_u8_syncPtr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_8_list>)>();
+      _wire_handle_vec_u8_syncPtr.asFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_handle_vec_of_primitive(
     int port_,
@@ -1465,7 +1462,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_handle_vec_of_primitive');
   late final _wire_handle_vec_of_primitive = _wire_handle_vec_of_primitivePtr.asFunction<void Function(int, int)>();
 
-  WireSyncReturnStruct wire_handle_vec_of_primitive_sync(
+  WireSyncReturn wire_handle_vec_of_primitive_sync(
     int n,
   ) {
     return _wire_handle_vec_of_primitive_sync(
@@ -1474,9 +1471,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_handle_vec_of_primitive_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Int32)>>('wire_handle_vec_of_primitive_sync');
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int32)>>('wire_handle_vec_of_primitive_sync');
   late final _wire_handle_vec_of_primitive_sync =
-      _wire_handle_vec_of_primitive_syncPtr.asFunction<WireSyncReturnStruct Function(int)>();
+      _wire_handle_vec_of_primitive_syncPtr.asFunction<WireSyncReturn Function(int)>();
 
   void wire_handle_zero_copy_vec_of_primitive(
     int port_,
@@ -1493,7 +1490,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_handle_zero_copy_vec_of_primitive =
       _wire_handle_zero_copy_vec_of_primitivePtr.asFunction<void Function(int, int)>();
 
-  WireSyncReturnStruct wire_handle_zero_copy_vec_of_primitive_sync(
+  WireSyncReturn wire_handle_zero_copy_vec_of_primitive_sync(
     int n,
   ) {
     return _wire_handle_zero_copy_vec_of_primitive_sync(
@@ -1502,10 +1499,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_handle_zero_copy_vec_of_primitive_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Int32)>>(
-          'wire_handle_zero_copy_vec_of_primitive_sync');
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int32)>>('wire_handle_zero_copy_vec_of_primitive_sync');
   late final _wire_handle_zero_copy_vec_of_primitive_sync =
-      _wire_handle_zero_copy_vec_of_primitive_syncPtr.asFunction<WireSyncReturnStruct Function(int)>();
+      _wire_handle_zero_copy_vec_of_primitive_syncPtr.asFunction<WireSyncReturn Function(int)>();
 
   void wire_handle_struct(
     int port_,
@@ -1525,7 +1521,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_handle_struct =
       _wire_handle_structPtr.asFunction<void Function(int, ffi.Pointer<wire_MySize>, ffi.Pointer<wire_MySize>)>();
 
-  WireSyncReturnStruct wire_handle_struct_sync(
+  WireSyncReturn wire_handle_struct_sync(
     ffi.Pointer<wire_MySize> arg,
     ffi.Pointer<wire_MySize> boxed,
   ) {
@@ -1536,10 +1532,10 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_handle_struct_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_MySize>, ffi.Pointer<wire_MySize>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_MySize>, ffi.Pointer<wire_MySize>)>>(
           'wire_handle_struct_sync');
   late final _wire_handle_struct_sync = _wire_handle_struct_syncPtr
-      .asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_MySize>, ffi.Pointer<wire_MySize>)>();
+      .asFunction<WireSyncReturn Function(ffi.Pointer<wire_MySize>, ffi.Pointer<wire_MySize>)>();
 
   void wire_handle_newtype(
     int port_,
@@ -1556,7 +1552,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_handle_newtype =
       _wire_handle_newtypePtr.asFunction<void Function(int, ffi.Pointer<wire_NewTypeInt>)>();
 
-  WireSyncReturnStruct wire_handle_newtype_sync(
+  WireSyncReturn wire_handle_newtype_sync(
     ffi.Pointer<wire_NewTypeInt> arg,
   ) {
     return _wire_handle_newtype_sync(
@@ -1565,10 +1561,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_handle_newtype_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_NewTypeInt>)>>(
-          'wire_handle_newtype_sync');
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_NewTypeInt>)>>('wire_handle_newtype_sync');
   late final _wire_handle_newtype_sync =
-      _wire_handle_newtype_syncPtr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_NewTypeInt>)>();
+      _wire_handle_newtype_syncPtr.asFunction<WireSyncReturn Function(ffi.Pointer<wire_NewTypeInt>)>();
 
   void wire_handle_list_of_struct(
     int port_,
@@ -1586,7 +1581,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_handle_list_of_struct =
       _wire_handle_list_of_structPtr.asFunction<void Function(int, ffi.Pointer<wire_list_my_size>)>();
 
-  WireSyncReturnStruct wire_handle_list_of_struct_sync(
+  WireSyncReturn wire_handle_list_of_struct_sync(
     ffi.Pointer<wire_list_my_size> l,
   ) {
     return _wire_handle_list_of_struct_sync(
@@ -1595,10 +1590,10 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_handle_list_of_struct_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_list_my_size>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_list_my_size>)>>(
           'wire_handle_list_of_struct_sync');
   late final _wire_handle_list_of_struct_sync =
-      _wire_handle_list_of_struct_syncPtr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_list_my_size>)>();
+      _wire_handle_list_of_struct_syncPtr.asFunction<WireSyncReturn Function(ffi.Pointer<wire_list_my_size>)>();
 
   void wire_handle_string_list(
     int port_,
@@ -1616,7 +1611,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_handle_string_list =
       _wire_handle_string_listPtr.asFunction<void Function(int, ffi.Pointer<wire_StringList>)>();
 
-  WireSyncReturnStruct wire_handle_string_list_sync(
+  WireSyncReturn wire_handle_string_list_sync(
     ffi.Pointer<wire_StringList> names,
   ) {
     return _wire_handle_string_list_sync(
@@ -1625,10 +1620,10 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_handle_string_list_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_StringList>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_StringList>)>>(
           'wire_handle_string_list_sync');
   late final _wire_handle_string_list_sync =
-      _wire_handle_string_list_syncPtr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_StringList>)>();
+      _wire_handle_string_list_syncPtr.asFunction<WireSyncReturn Function(ffi.Pointer<wire_StringList>)>();
 
   void wire_handle_complex_struct(
     int port_,
@@ -1646,7 +1641,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_handle_complex_struct =
       _wire_handle_complex_structPtr.asFunction<void Function(int, ffi.Pointer<wire_MyTreeNode>)>();
 
-  WireSyncReturnStruct wire_handle_complex_struct_sync(
+  WireSyncReturn wire_handle_complex_struct_sync(
     ffi.Pointer<wire_MyTreeNode> s,
   ) {
     return _wire_handle_complex_struct_sync(
@@ -1655,12 +1650,12 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_handle_complex_struct_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_MyTreeNode>)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_MyTreeNode>)>>(
           'wire_handle_complex_struct_sync');
   late final _wire_handle_complex_struct_sync =
-      _wire_handle_complex_struct_syncPtr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_MyTreeNode>)>();
+      _wire_handle_complex_struct_syncPtr.asFunction<WireSyncReturn Function(ffi.Pointer<wire_MyTreeNode>)>();
 
-  WireSyncReturnStruct wire_handle_sync_return(
+  WireSyncReturn wire_handle_sync_return(
     ffi.Pointer<wire_uint_8_list> mode,
   ) {
     return _wire_handle_sync_return(
@@ -1669,10 +1664,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_handle_sync_returnPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_8_list>)>>(
-          'wire_handle_sync_return');
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>)>>('wire_handle_sync_return');
   late final _wire_handle_sync_return =
-      _wire_handle_sync_returnPtr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_uint_8_list>)>();
+      _wire_handle_sync_returnPtr.asFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_handle_stream(
     int port_,
@@ -2501,7 +2495,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_test_id>)>>('wire_nested_id');
   late final _wire_nested_id = _wire_nested_idPtr.asFunction<void Function(int, ffi.Pointer<wire_list_test_id>)>();
 
-  WireSyncReturnStruct wire_sync_accept_dart_opaque(
+  WireSyncReturn wire_sync_accept_dart_opaque(
     wire_DartOpaque opaque,
   ) {
     return _wire_sync_accept_dart_opaque(
@@ -2510,9 +2504,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_sync_accept_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(wire_DartOpaque)>>('wire_sync_accept_dart_opaque');
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(wire_DartOpaque)>>('wire_sync_accept_dart_opaque');
   late final _wire_sync_accept_dart_opaque =
-      _wire_sync_accept_dart_opaquePtr.asFunction<WireSyncReturnStruct Function(wire_DartOpaque)>();
+      _wire_sync_accept_dart_opaquePtr.asFunction<WireSyncReturn Function(wire_DartOpaque)>();
 
   void wire_async_accept_dart_opaque(
     int port_,
@@ -2633,7 +2627,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_loop_back_vec_get =
       _wire_loop_back_vec_getPtr.asFunction<void Function(int, ffi.Pointer<wire_list_DartOpaque>)>();
 
-  WireSyncReturnStruct wire_unwrap_dart_opaque(
+  WireSyncReturn wire_unwrap_dart_opaque(
     wire_DartOpaque opaque,
   ) {
     return _wire_unwrap_dart_opaque(
@@ -2642,9 +2636,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_unwrap_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(wire_DartOpaque)>>('wire_unwrap_dart_opaque');
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(wire_DartOpaque)>>('wire_unwrap_dart_opaque');
   late final _wire_unwrap_dart_opaque =
-      _wire_unwrap_dart_opaquePtr.asFunction<WireSyncReturnStruct Function(wire_DartOpaque)>();
+      _wire_unwrap_dart_opaquePtr.asFunction<WireSyncReturn Function(wire_DartOpaque)>();
 
   void wire_panic_unwrap_dart_opaque(
     int port_,
@@ -2688,13 +2682,13 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_create_option_opaque =
       _wire_create_option_opaquePtr.asFunction<void Function(int, ffi.Pointer<wire_HideData>)>();
 
-  WireSyncReturnStruct wire_sync_create_opaque() {
+  WireSyncReturn wire_sync_create_opaque() {
     return _wire_sync_create_opaque();
   }
 
   late final _wire_sync_create_opaquePtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function()>>('wire_sync_create_opaque');
-  late final _wire_sync_create_opaque = _wire_sync_create_opaquePtr.asFunction<WireSyncReturnStruct Function()>();
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('wire_sync_create_opaque');
+  late final _wire_sync_create_opaque = _wire_sync_create_opaquePtr.asFunction<WireSyncReturn Function()>();
 
   void wire_create_array_opaque_enum(
     int port_,
@@ -2775,16 +2769,15 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_create_sync_opaque');
   late final _wire_create_sync_opaque = _wire_create_sync_opaquePtr.asFunction<void Function(int)>();
 
-  WireSyncReturnStruct wire_sync_create_sync_opaque() {
+  WireSyncReturn wire_sync_create_sync_opaque() {
     return _wire_sync_create_sync_opaque();
   }
 
   late final _wire_sync_create_sync_opaquePtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function()>>('wire_sync_create_sync_opaque');
-  late final _wire_sync_create_sync_opaque =
-      _wire_sync_create_sync_opaquePtr.asFunction<WireSyncReturnStruct Function()>();
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('wire_sync_create_sync_opaque');
+  late final _wire_sync_create_sync_opaque = _wire_sync_create_sync_opaquePtr.asFunction<WireSyncReturn Function()>();
 
-  WireSyncReturnStruct wire_sync_run_opaque(
+  WireSyncReturn wire_sync_run_opaque(
     wire_NonSendHideData opaque,
   ) {
     return _wire_sync_run_opaque(
@@ -2793,9 +2786,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_sync_run_opaquePtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(wire_NonSendHideData)>>('wire_sync_run_opaque');
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(wire_NonSendHideData)>>('wire_sync_run_opaque');
   late final _wire_sync_run_opaque =
-      _wire_sync_run_opaquePtr.asFunction<WireSyncReturnStruct Function(wire_NonSendHideData)>();
+      _wire_sync_run_opaquePtr.asFunction<WireSyncReturn Function(wire_NonSendHideData)>();
 
   void wire_opaque_array_run(
     int port_,
@@ -2851,7 +2844,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_create_nested_opaque');
   late final _wire_create_nested_opaque = _wire_create_nested_opaquePtr.asFunction<void Function(int)>();
 
-  WireSyncReturnStruct wire_sync_loopback(
+  WireSyncReturn wire_sync_loopback(
     wire_DartOpaque opaque,
   ) {
     return _wire_sync_loopback(
@@ -2860,10 +2853,10 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_sync_loopbackPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(wire_DartOpaque)>>('wire_sync_loopback');
-  late final _wire_sync_loopback = _wire_sync_loopbackPtr.asFunction<WireSyncReturnStruct Function(wire_DartOpaque)>();
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(wire_DartOpaque)>>('wire_sync_loopback');
+  late final _wire_sync_loopback = _wire_sync_loopbackPtr.asFunction<WireSyncReturn Function(wire_DartOpaque)>();
 
-  WireSyncReturnStruct wire_sync_option_loopback(
+  WireSyncReturn wire_sync_option_loopback(
     ffi.Pointer<wire_DartOpaque> opaque,
   ) {
     return _wire_sync_option_loopback(
@@ -2872,36 +2865,34 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_sync_option_loopbackPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_DartOpaque>)>>(
-          'wire_sync_option_loopback');
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_DartOpaque>)>>('wire_sync_option_loopback');
   late final _wire_sync_option_loopback =
-      _wire_sync_option_loopbackPtr.asFunction<WireSyncReturnStruct Function(ffi.Pointer<wire_DartOpaque>)>();
+      _wire_sync_option_loopbackPtr.asFunction<WireSyncReturn Function(ffi.Pointer<wire_DartOpaque>)>();
 
-  WireSyncReturnStruct wire_sync_option() {
+  WireSyncReturn wire_sync_option() {
     return _wire_sync_option();
   }
 
-  late final _wire_sync_optionPtr = _lookup<ffi.NativeFunction<WireSyncReturnStruct Function()>>('wire_sync_option');
-  late final _wire_sync_option = _wire_sync_optionPtr.asFunction<WireSyncReturnStruct Function()>();
+  late final _wire_sync_optionPtr = _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('wire_sync_option');
+  late final _wire_sync_option = _wire_sync_optionPtr.asFunction<WireSyncReturn Function()>();
 
-  WireSyncReturnStruct wire_sync_option_null() {
+  WireSyncReturn wire_sync_option_null() {
     return _wire_sync_option_null();
   }
 
   late final _wire_sync_option_nullPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function()>>('wire_sync_option_null');
-  late final _wire_sync_option_null = _wire_sync_option_nullPtr.asFunction<WireSyncReturnStruct Function()>();
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('wire_sync_option_null');
+  late final _wire_sync_option_null = _wire_sync_option_nullPtr.asFunction<WireSyncReturn Function()>();
 
-  WireSyncReturnStruct wire_sync_option_rust_opaque() {
+  WireSyncReturn wire_sync_option_rust_opaque() {
     return _wire_sync_option_rust_opaque();
   }
 
   late final _wire_sync_option_rust_opaquePtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function()>>('wire_sync_option_rust_opaque');
-  late final _wire_sync_option_rust_opaque =
-      _wire_sync_option_rust_opaquePtr.asFunction<WireSyncReturnStruct Function()>();
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('wire_sync_option_rust_opaque');
+  late final _wire_sync_option_rust_opaque = _wire_sync_option_rust_opaquePtr.asFunction<WireSyncReturn Function()>();
 
-  WireSyncReturnStruct wire_sync_option_dart_opaque(
+  WireSyncReturn wire_sync_option_dart_opaque(
     wire_DartOpaque opaque,
   ) {
     return _wire_sync_option_dart_opaque(
@@ -2910,16 +2901,16 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_sync_option_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(wire_DartOpaque)>>('wire_sync_option_dart_opaque');
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(wire_DartOpaque)>>('wire_sync_option_dart_opaque');
   late final _wire_sync_option_dart_opaque =
-      _wire_sync_option_dart_opaquePtr.asFunction<WireSyncReturnStruct Function(wire_DartOpaque)>();
+      _wire_sync_option_dart_opaquePtr.asFunction<WireSyncReturn Function(wire_DartOpaque)>();
 
-  WireSyncReturnStruct wire_sync_void() {
+  WireSyncReturn wire_sync_void() {
     return _wire_sync_void();
   }
 
-  late final _wire_sync_voidPtr = _lookup<ffi.NativeFunction<WireSyncReturnStruct Function()>>('wire_sync_void');
-  late final _wire_sync_void = _wire_sync_voidPtr.asFunction<WireSyncReturnStruct Function()>();
+  late final _wire_sync_voidPtr = _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('wire_sync_void');
+  late final _wire_sync_void = _wire_sync_voidPtr.asFunction<WireSyncReturn Function()>();
 
   void wire_run_nested_opaque(
     int port_,
@@ -3043,7 +3034,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_HideData)>>('wire_unwrap_rust_opaque');
   late final _wire_unwrap_rust_opaque = _wire_unwrap_rust_opaquePtr.asFunction<void Function(int, wire_HideData)>();
 
-  WireSyncReturnStruct wire_return_non_dropable_dart_opaque(
+  WireSyncReturn wire_return_non_dropable_dart_opaque(
     wire_DartOpaque opaque,
   ) {
     return _wire_return_non_dropable_dart_opaque(
@@ -3052,10 +3043,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_return_non_dropable_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<WireSyncReturnStruct Function(wire_DartOpaque)>>(
-          'wire_return_non_dropable_dart_opaque');
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(wire_DartOpaque)>>('wire_return_non_dropable_dart_opaque');
   late final _wire_return_non_dropable_dart_opaque =
-      _wire_return_non_dropable_dart_opaquePtr.asFunction<WireSyncReturnStruct Function(wire_DartOpaque)>();
+      _wire_return_non_dropable_dart_opaquePtr.asFunction<WireSyncReturn Function(wire_DartOpaque)>();
 
   void wire_frb_generator_test(
     int port_,
@@ -4194,18 +4184,17 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<SpeedKind> Function()>>('inflate_Speed_GPS');
   late final _inflate_Speed_GPS = _inflate_Speed_GPSPtr.asFunction<ffi.Pointer<SpeedKind> Function()>();
 
-  void free_WireSyncReturnStruct(
-    WireSyncReturnStruct val,
+  void free_WireSyncReturn(
+    WireSyncReturn ptr,
   ) {
-    return _free_WireSyncReturnStruct(
-      val,
+    return _free_WireSyncReturn(
+      ptr,
     );
   }
 
-  late final _free_WireSyncReturnStructPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturnStruct)>>('free_WireSyncReturnStruct');
-  late final _free_WireSyncReturnStruct =
-      _free_WireSyncReturnStructPtr.asFunction<void Function(WireSyncReturnStruct)>();
+  late final _free_WireSyncReturnPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturn)>>('free_WireSyncReturn');
+  late final _free_WireSyncReturn = _free_WireSyncReturnPtr.asFunction<void Function(WireSyncReturn)>();
 }
 
 class _Dart_Handle extends ffi.Opaque {}

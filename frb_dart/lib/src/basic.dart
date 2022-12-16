@@ -73,24 +73,26 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   /// Similar to [executeNormal], except that this will return synchronously
   @protected
   S executeSync<S>(FlutterRustBridgeSyncTask task) {
-    final WireSyncReturnStruct syncReturn;
+    final WireSyncReturn syncReturn;
     try {
       syncReturn = task.callFfi();
     } catch (err, st) {
       throw FfiException('EXECUTE_SYNC_ABORT', '$err', st);
     }
     try {
-      final raw = syncReturn.intoDart();
-      if (syncReturn.isSuccess) {
-        return task.parseSuccessData(raw);
+      final syncReturnAsDartObject = wireSyncReturnIntoDart(syncReturn);
+      final rawReturn = syncReturnAsDartObject[0];
+      final isSuccess = syncReturnAsDartObject[1];
+      if (isSuccess) {
+        return task.parseSuccessData(rawReturn);
       } else {
-        throw FfiException('EXECUTE_SYNC', raw as String, null);
+        throw FfiException('EXECUTE_SYNC', rawReturn as String, null);
       }
     } catch (err, st) {
       if (err is FfiException) rethrow;
       throw FfiException('EXECUTE_SYNC_ABORT', '$err', st);
     } finally {
-      inner.free_WireSyncReturnStruct(syncReturn);
+      inner.free_WireSyncReturn(syncReturn);
     }
   }
 
@@ -168,7 +170,7 @@ class FlutterRustBridgeTask<S> extends FlutterRustBridgeBaseTask {
 @immutable
 class FlutterRustBridgeSyncTask<S> extends FlutterRustBridgeBaseTask {
   /// The underlying function to call FFI function, usually the generated wire function
-  final WireSyncReturnStruct Function() callFfi;
+  final WireSyncReturn Function() callFfi;
 
   /// Parse the returned data from the underlying function
   final S Function(dynamic) parseSuccessData;

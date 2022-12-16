@@ -95,7 +95,7 @@ external void dropDartObject(int ptr);
 abstract class FlutterRustBridgeWireBase {
   void storeDartPostCObject() {}
   // ignore: non_constant_identifier_names
-  void free_WireSyncReturnStruct(WireSyncReturnStruct raw) {}
+  void free_WireSyncReturn(WireSyncReturn raw) {}
 
   // ignore: non_constant_identifier_names
   Object get_dart_object(int ptr) {
@@ -113,12 +113,9 @@ abstract class FlutterRustBridgeWireBase {
   }
 }
 
-typedef WireSyncReturnStruct = List<dynamic>;
+typedef WireSyncReturn = List<dynamic>;
 
-extension WireSyncReturnStructExt on WireSyncReturnStruct {
-  dynamic intoDart() => this[0];
-  bool get isSuccess => this[1];
-}
+dynamic wireSyncReturnIntoDart(WireSyncReturn syncReturn) => syncReturn;
 
 class FlutterRustBridgeWasmWireBase<T extends WasmModule>
     extends FlutterRustBridgeWireBase {

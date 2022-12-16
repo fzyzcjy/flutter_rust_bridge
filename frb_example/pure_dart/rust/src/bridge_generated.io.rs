@@ -7,7 +7,7 @@ pub extern "C" fn wire_simple_adder(port_: i64, a: i32, b: i32) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_simple_adder_sync(a: i32, b: i32) -> support::WireSyncReturnStruct {
+pub extern "C" fn wire_simple_adder_sync(a: i32, b: i32) -> support::WireSyncReturn {
     wire_simple_adder_sync_impl(a, b)
 }
 
@@ -28,7 +28,7 @@ pub extern "C" fn wire_primitive_types_sync(
     my_i64: i64,
     my_f64: f64,
     my_bool: bool,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     wire_primitive_types_sync_impl(my_i32, my_i64, my_f64, my_bool)
 }
 
@@ -38,7 +38,7 @@ pub extern "C" fn wire_primitive_u32(port_: i64, my_u32: u32) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_primitive_u32_sync(my_u32: u32) -> support::WireSyncReturnStruct {
+pub extern "C" fn wire_primitive_u32_sync(my_u32: u32) -> support::WireSyncReturn {
     wire_primitive_u32_sync_impl(my_u32)
 }
 
@@ -48,9 +48,7 @@ pub extern "C" fn wire_handle_string(port_: i64, s: *mut wire_uint_8_list) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_string_sync(
-    s: *mut wire_uint_8_list,
-) -> support::WireSyncReturnStruct {
+pub extern "C" fn wire_handle_string_sync(s: *mut wire_uint_8_list) -> support::WireSyncReturn {
     wire_handle_string_sync_impl(s)
 }
 
@@ -60,7 +58,7 @@ pub extern "C" fn wire_handle_return_unit(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_return_unit_sync() -> support::WireSyncReturnStruct {
+pub extern "C" fn wire_handle_return_unit_sync() -> support::WireSyncReturn {
     wire_handle_return_unit_sync_impl()
 }
 
@@ -70,9 +68,7 @@ pub extern "C" fn wire_handle_vec_u8(port_: i64, v: *mut wire_uint_8_list) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_vec_u8_sync(
-    v: *mut wire_uint_8_list,
-) -> support::WireSyncReturnStruct {
+pub extern "C" fn wire_handle_vec_u8_sync(v: *mut wire_uint_8_list) -> support::WireSyncReturn {
     wire_handle_vec_u8_sync_impl(v)
 }
 
@@ -82,7 +78,7 @@ pub extern "C" fn wire_handle_vec_of_primitive(port_: i64, n: i32) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_vec_of_primitive_sync(n: i32) -> support::WireSyncReturnStruct {
+pub extern "C" fn wire_handle_vec_of_primitive_sync(n: i32) -> support::WireSyncReturn {
     wire_handle_vec_of_primitive_sync_impl(n)
 }
 
@@ -92,9 +88,7 @@ pub extern "C" fn wire_handle_zero_copy_vec_of_primitive(port_: i64, n: i32) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_zero_copy_vec_of_primitive_sync(
-    n: i32,
-) -> support::WireSyncReturnStruct {
+pub extern "C" fn wire_handle_zero_copy_vec_of_primitive_sync(n: i32) -> support::WireSyncReturn {
     wire_handle_zero_copy_vec_of_primitive_sync_impl(n)
 }
 
@@ -107,7 +101,7 @@ pub extern "C" fn wire_handle_struct(port_: i64, arg: *mut wire_MySize, boxed: *
 pub extern "C" fn wire_handle_struct_sync(
     arg: *mut wire_MySize,
     boxed: *mut wire_MySize,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     wire_handle_struct_sync_impl(arg, boxed)
 }
 
@@ -117,9 +111,7 @@ pub extern "C" fn wire_handle_newtype(port_: i64, arg: *mut wire_NewTypeInt) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_newtype_sync(
-    arg: *mut wire_NewTypeInt,
-) -> support::WireSyncReturnStruct {
+pub extern "C" fn wire_handle_newtype_sync(arg: *mut wire_NewTypeInt) -> support::WireSyncReturn {
     wire_handle_newtype_sync_impl(arg)
 }
 
@@ -131,7 +123,7 @@ pub extern "C" fn wire_handle_list_of_struct(port_: i64, l: *mut wire_list_my_si
 #[no_mangle]
 pub extern "C" fn wire_handle_list_of_struct_sync(
     l: *mut wire_list_my_size,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     wire_handle_list_of_struct_sync_impl(l)
 }
 
@@ -143,7 +135,7 @@ pub extern "C" fn wire_handle_string_list(port_: i64, names: *mut wire_StringLis
 #[no_mangle]
 pub extern "C" fn wire_handle_string_list_sync(
     names: *mut wire_StringList,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     wire_handle_string_list_sync_impl(names)
 }
 
@@ -155,14 +147,12 @@ pub extern "C" fn wire_handle_complex_struct(port_: i64, s: *mut wire_MyTreeNode
 #[no_mangle]
 pub extern "C" fn wire_handle_complex_struct_sync(
     s: *mut wire_MyTreeNode,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     wire_handle_complex_struct_sync_impl(s)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_sync_return(
-    mode: *mut wire_uint_8_list,
-) -> support::WireSyncReturnStruct {
+pub extern "C" fn wire_handle_sync_return(mode: *mut wire_uint_8_list) -> support::WireSyncReturn {
     wire_handle_sync_return_impl(mode)
 }
 
@@ -462,9 +452,7 @@ pub extern "C" fn wire_nested_id(port_: i64, id: *mut wire_list_test_id) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_accept_dart_opaque(
-    opaque: wire_DartOpaque,
-) -> support::WireSyncReturnStruct {
+pub extern "C" fn wire_sync_accept_dart_opaque(opaque: wire_DartOpaque) -> support::WireSyncReturn {
     wire_sync_accept_dart_opaque_impl(opaque)
 }
 
@@ -509,9 +497,7 @@ pub extern "C" fn wire_loop_back_vec_get(port_: i64, opaque: *mut wire_list_Dart
 }
 
 #[no_mangle]
-pub extern "C" fn wire_unwrap_dart_opaque(
-    opaque: wire_DartOpaque,
-) -> support::WireSyncReturnStruct {
+pub extern "C" fn wire_unwrap_dart_opaque(opaque: wire_DartOpaque) -> support::WireSyncReturn {
     wire_unwrap_dart_opaque_impl(opaque)
 }
 
@@ -531,7 +517,7 @@ pub extern "C" fn wire_create_option_opaque(port_: i64, opaque: *mut wire_HideDa
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_create_opaque() -> support::WireSyncReturnStruct {
+pub extern "C" fn wire_sync_create_opaque() -> support::WireSyncReturn {
     wire_sync_create_opaque_impl()
 }
 
@@ -566,14 +552,12 @@ pub extern "C" fn wire_create_sync_opaque(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_create_sync_opaque() -> support::WireSyncReturnStruct {
+pub extern "C" fn wire_sync_create_sync_opaque() -> support::WireSyncReturn {
     wire_sync_create_sync_opaque_impl()
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_run_opaque(
-    opaque: wire_NonSendHideData,
-) -> support::WireSyncReturnStruct {
+pub extern "C" fn wire_sync_run_opaque(opaque: wire_NonSendHideData) -> support::WireSyncReturn {
     wire_sync_run_opaque_impl(opaque)
 }
 
@@ -598,41 +582,39 @@ pub extern "C" fn wire_create_nested_opaque(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_loopback(opaque: wire_DartOpaque) -> support::WireSyncReturnStruct {
+pub extern "C" fn wire_sync_loopback(opaque: wire_DartOpaque) -> support::WireSyncReturn {
     wire_sync_loopback_impl(opaque)
 }
 
 #[no_mangle]
 pub extern "C" fn wire_sync_option_loopback(
     opaque: *mut wire_DartOpaque,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     wire_sync_option_loopback_impl(opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_option() -> support::WireSyncReturnStruct {
+pub extern "C" fn wire_sync_option() -> support::WireSyncReturn {
     wire_sync_option_impl()
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_option_null() -> support::WireSyncReturnStruct {
+pub extern "C" fn wire_sync_option_null() -> support::WireSyncReturn {
     wire_sync_option_null_impl()
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_option_rust_opaque() -> support::WireSyncReturnStruct {
+pub extern "C" fn wire_sync_option_rust_opaque() -> support::WireSyncReturn {
     wire_sync_option_rust_opaque_impl()
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_option_dart_opaque(
-    opaque: wire_DartOpaque,
-) -> support::WireSyncReturnStruct {
+pub extern "C" fn wire_sync_option_dart_opaque(opaque: wire_DartOpaque) -> support::WireSyncReturn {
     wire_sync_option_dart_opaque_impl(opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_void() -> support::WireSyncReturnStruct {
+pub extern "C" fn wire_sync_void() -> support::WireSyncReturn {
     wire_sync_void_impl()
 }
 
@@ -683,7 +665,7 @@ pub extern "C" fn wire_unwrap_rust_opaque(port_: i64, opaque: wire_HideData) {
 #[no_mangle]
 pub extern "C" fn wire_return_non_dropable_dart_opaque(
     opaque: wire_DartOpaque,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     wire_return_non_dropable_dart_opaque_impl(opaque)
 }
 
@@ -3051,6 +3033,8 @@ impl NewWithNullPtr for wire_UserId {
 // Section: sync execution mode utility
 
 #[no_mangle]
-pub extern "C" fn free_WireSyncReturnStruct(val: support::WireSyncReturnStruct) {
-    val.free();
+pub extern "C" fn free_WireSyncReturn(ptr: support::WireSyncReturn) {
+    unsafe {
+        let _ = support::box_from_leak_ptr(ptr);
+    };
 }

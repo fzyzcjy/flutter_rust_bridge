@@ -7,7 +7,7 @@ pub fn wire_simple_adder(port_: MessagePort, a: i32, b: i32) {
 }
 
 #[wasm_bindgen]
-pub fn wire_simple_adder_sync(a: i32, b: i32) -> support::WireSyncReturnStruct {
+pub fn wire_simple_adder_sync(a: i32, b: i32) -> support::WireSyncReturn {
     wire_simple_adder_sync_impl(a, b)
 }
 
@@ -28,7 +28,7 @@ pub fn wire_primitive_types_sync(
     my_i64: i64,
     my_f64: f64,
     my_bool: bool,
-) -> support::WireSyncReturnStruct {
+) -> support::WireSyncReturn {
     wire_primitive_types_sync_impl(my_i32, my_i64, my_f64, my_bool)
 }
 
@@ -38,7 +38,7 @@ pub fn wire_primitive_u32(port_: MessagePort, my_u32: u32) {
 }
 
 #[wasm_bindgen]
-pub fn wire_primitive_u32_sync(my_u32: u32) -> support::WireSyncReturnStruct {
+pub fn wire_primitive_u32_sync(my_u32: u32) -> support::WireSyncReturn {
     wire_primitive_u32_sync_impl(my_u32)
 }
 
@@ -48,7 +48,7 @@ pub fn wire_handle_string(port_: MessagePort, s: String) {
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_string_sync(s: String) -> support::WireSyncReturnStruct {
+pub fn wire_handle_string_sync(s: String) -> support::WireSyncReturn {
     wire_handle_string_sync_impl(s)
 }
 
@@ -58,7 +58,7 @@ pub fn wire_handle_return_unit(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_return_unit_sync() -> support::WireSyncReturnStruct {
+pub fn wire_handle_return_unit_sync() -> support::WireSyncReturn {
     wire_handle_return_unit_sync_impl()
 }
 
@@ -68,7 +68,7 @@ pub fn wire_handle_vec_u8(port_: MessagePort, v: Box<[u8]>) {
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_vec_u8_sync(v: Box<[u8]>) -> support::WireSyncReturnStruct {
+pub fn wire_handle_vec_u8_sync(v: Box<[u8]>) -> support::WireSyncReturn {
     wire_handle_vec_u8_sync_impl(v)
 }
 
@@ -78,7 +78,7 @@ pub fn wire_handle_vec_of_primitive(port_: MessagePort, n: i32) {
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_vec_of_primitive_sync(n: i32) -> support::WireSyncReturnStruct {
+pub fn wire_handle_vec_of_primitive_sync(n: i32) -> support::WireSyncReturn {
     wire_handle_vec_of_primitive_sync_impl(n)
 }
 
@@ -88,7 +88,7 @@ pub fn wire_handle_zero_copy_vec_of_primitive(port_: MessagePort, n: i32) {
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_zero_copy_vec_of_primitive_sync(n: i32) -> support::WireSyncReturnStruct {
+pub fn wire_handle_zero_copy_vec_of_primitive_sync(n: i32) -> support::WireSyncReturn {
     wire_handle_zero_copy_vec_of_primitive_sync_impl(n)
 }
 
@@ -98,7 +98,7 @@ pub fn wire_handle_struct(port_: MessagePort, arg: JsValue, boxed: JsValue) {
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_struct_sync(arg: JsValue, boxed: JsValue) -> support::WireSyncReturnStruct {
+pub fn wire_handle_struct_sync(arg: JsValue, boxed: JsValue) -> support::WireSyncReturn {
     wire_handle_struct_sync_impl(arg, boxed)
 }
 
@@ -108,7 +108,7 @@ pub fn wire_handle_newtype(port_: MessagePort, arg: JsValue) {
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_newtype_sync(arg: JsValue) -> support::WireSyncReturnStruct {
+pub fn wire_handle_newtype_sync(arg: JsValue) -> support::WireSyncReturn {
     wire_handle_newtype_sync_impl(arg)
 }
 
@@ -118,7 +118,7 @@ pub fn wire_handle_list_of_struct(port_: MessagePort, l: JsValue) {
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_list_of_struct_sync(l: JsValue) -> support::WireSyncReturnStruct {
+pub fn wire_handle_list_of_struct_sync(l: JsValue) -> support::WireSyncReturn {
     wire_handle_list_of_struct_sync_impl(l)
 }
 
@@ -128,7 +128,7 @@ pub fn wire_handle_string_list(port_: MessagePort, names: JsValue) {
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_string_list_sync(names: JsValue) -> support::WireSyncReturnStruct {
+pub fn wire_handle_string_list_sync(names: JsValue) -> support::WireSyncReturn {
     wire_handle_string_list_sync_impl(names)
 }
 
@@ -138,12 +138,12 @@ pub fn wire_handle_complex_struct(port_: MessagePort, s: JsValue) {
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_complex_struct_sync(s: JsValue) -> support::WireSyncReturnStruct {
+pub fn wire_handle_complex_struct_sync(s: JsValue) -> support::WireSyncReturn {
     wire_handle_complex_struct_sync_impl(s)
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_sync_return(mode: String) -> support::WireSyncReturnStruct {
+pub fn wire_handle_sync_return(mode: String) -> support::WireSyncReturn {
     wire_handle_sync_return_impl(mode)
 }
 
@@ -439,7 +439,7 @@ pub fn wire_nested_id(port_: MessagePort, id: JsValue) {
 }
 
 #[wasm_bindgen]
-pub fn wire_sync_accept_dart_opaque(opaque: JsValue) -> support::WireSyncReturnStruct {
+pub fn wire_sync_accept_dart_opaque(opaque: JsValue) -> support::WireSyncReturn {
     wire_sync_accept_dart_opaque_impl(opaque)
 }
 
@@ -484,7 +484,7 @@ pub fn wire_loop_back_vec_get(port_: MessagePort, opaque: JsValue) {
 }
 
 #[wasm_bindgen]
-pub fn wire_unwrap_dart_opaque(opaque: JsValue) -> support::WireSyncReturnStruct {
+pub fn wire_unwrap_dart_opaque(opaque: JsValue) -> support::WireSyncReturn {
     wire_unwrap_dart_opaque_impl(opaque)
 }
 
@@ -504,7 +504,7 @@ pub fn wire_create_option_opaque(port_: MessagePort, opaque: JsValue) {
 }
 
 #[wasm_bindgen]
-pub fn wire_sync_create_opaque() -> support::WireSyncReturnStruct {
+pub fn wire_sync_create_opaque() -> support::WireSyncReturn {
     wire_sync_create_opaque_impl()
 }
 
@@ -539,12 +539,12 @@ pub fn wire_create_sync_opaque(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
-pub fn wire_sync_create_sync_opaque() -> support::WireSyncReturnStruct {
+pub fn wire_sync_create_sync_opaque() -> support::WireSyncReturn {
     wire_sync_create_sync_opaque_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_sync_run_opaque(opaque: JsValue) -> support::WireSyncReturnStruct {
+pub fn wire_sync_run_opaque(opaque: JsValue) -> support::WireSyncReturn {
     wire_sync_run_opaque_impl(opaque)
 }
 
@@ -569,37 +569,37 @@ pub fn wire_create_nested_opaque(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
-pub fn wire_sync_loopback(opaque: JsValue) -> support::WireSyncReturnStruct {
+pub fn wire_sync_loopback(opaque: JsValue) -> support::WireSyncReturn {
     wire_sync_loopback_impl(opaque)
 }
 
 #[wasm_bindgen]
-pub fn wire_sync_option_loopback(opaque: JsValue) -> support::WireSyncReturnStruct {
+pub fn wire_sync_option_loopback(opaque: JsValue) -> support::WireSyncReturn {
     wire_sync_option_loopback_impl(opaque)
 }
 
 #[wasm_bindgen]
-pub fn wire_sync_option() -> support::WireSyncReturnStruct {
+pub fn wire_sync_option() -> support::WireSyncReturn {
     wire_sync_option_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_sync_option_null() -> support::WireSyncReturnStruct {
+pub fn wire_sync_option_null() -> support::WireSyncReturn {
     wire_sync_option_null_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_sync_option_rust_opaque() -> support::WireSyncReturnStruct {
+pub fn wire_sync_option_rust_opaque() -> support::WireSyncReturn {
     wire_sync_option_rust_opaque_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_sync_option_dart_opaque(opaque: JsValue) -> support::WireSyncReturnStruct {
+pub fn wire_sync_option_dart_opaque(opaque: JsValue) -> support::WireSyncReturn {
     wire_sync_option_dart_opaque_impl(opaque)
 }
 
 #[wasm_bindgen]
-pub fn wire_sync_void() -> support::WireSyncReturnStruct {
+pub fn wire_sync_void() -> support::WireSyncReturn {
     wire_sync_void_impl()
 }
 
@@ -644,7 +644,7 @@ pub fn wire_unwrap_rust_opaque(port_: MessagePort, opaque: JsValue) {
 }
 
 #[wasm_bindgen]
-pub fn wire_return_non_dropable_dart_opaque(opaque: JsValue) -> support::WireSyncReturnStruct {
+pub fn wire_return_non_dropable_dart_opaque(opaque: JsValue) -> support::WireSyncReturn {
     wire_return_non_dropable_dart_opaque_impl(opaque)
 }
 

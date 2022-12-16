@@ -8,7 +8,7 @@ use crate::ffi::{IntoDart, MessagePort};
 use anyhow::Result;
 
 use crate::rust2dart::{Rust2Dart, TaskCallback};
-use crate::support::WireSyncReturnStruct;
+use crate::support::WireSyncReturn;
 use crate::{spawn, SyncReturn};
 
 /// The types of return values for a particular Rust function.
@@ -56,7 +56,7 @@ pub trait Handler {
         &self,
         wrap_info: WrapInfo,
         sync_task: SyncTaskFn,
-    ) -> WireSyncReturnStruct
+    ) -> WireSyncReturn
     where
         SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>> + UnwindSafe,
         TaskRet: IntoDart;
@@ -122,7 +122,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         &self,
         wrap_info: WrapInfo,
         sync_task: SyncTaskFn,
-    ) -> WireSyncReturnStruct
+    ) -> WireSyncReturn
     where
         TaskRet: IntoDart,
         SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>> + UnwindSafe,
@@ -141,13 +141,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
             catch_unwind_result
                 .unwrap_or_else(|error| self.error_handler.handle_error_sync(Error::Panic(error)))
         })
-        .unwrap_or_else(|_| {
-            #[cfg(not(wasm))]
-            return WireSyncReturnStruct::new(None::<()>, false);
-
-            #[cfg(wasm)]
-            return vec![wasm_bindgen::JsValue::null(), false.into_dart()].into_dart();
-        })
+        .unwrap_or_else(|_| wire_sync_from_data(None::<()>, false))
     }
 }
 
@@ -291,7 +285,7 @@ pub trait ErrorHandler: UnwindSafe + RefUnwindSafe + Copy + Send + 'static {
     fn handle_error(&self, port: MessagePort, error: Error);
 
     /// Special handler only used for synchronous code.
-    fn handle_error_sync(&self, error: Error) -> WireSyncReturnStruct;
+    fn handle_error_sync(&self, error: Error) -> WireSyncReturn;
 }
 
 /// The default error handler used by generated code.
@@ -303,19 +297,17 @@ impl ErrorHandler for ReportDartErrorHandler {
         Rust2Dart::new(port).error(error.code().to_string(), error.message());
     }
 
-    fn handle_error_sync(&self, error: Error) -> WireSyncReturnStruct {
+    fn handle_error_sync(&self, error: Error) -> WireSyncReturn {
         wire_sync_from_data(format!("{}: {}", error.code(), error.message()), false)
     }
 }
 
-fn wire_sync_from_data<T: IntoDart>(data: T, success: bool) -> WireSyncReturnStruct {
+fn wire_sync_from_data<T: IntoDart>(data: T, success: bool) -> WireSyncReturn {
+    let sync_return = vec![data.into_dart(), success.into_dart()].into_dart();
+
     #[cfg(not(wasm))]
-    {
-        WireSyncReturnStruct::new(data, success)
-    }
+    return crate::support::new_leak_box_ptr(sync_return);
 
     #[cfg(wasm)]
-    {
-        vec![data.into_dart(), success.into_dart()].into_dart()
-    }
+    return sync_return;
 }

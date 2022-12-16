@@ -1,11 +1,11 @@
 import 'dart:async';
 
 import 'io.dart' if (dart.library.html) 'web.dart'
-    show DartPostCObject, NativePortType, WireSyncReturnStruct;
+    show DartPostCObject, NativePortType, WireSyncReturn;
 export 'io.dart' if (dart.library.html) 'web.dart'
     show
         ExternalLibrary,
-        WireSyncReturnStruct,
+        WireSyncReturn,
         FrbOpaqueBase,
         DartApiDl,
         NativePortType,
@@ -39,7 +39,7 @@ abstract class FlutterRustBridgeWireBase {
 
   /// Not to be used by normal users, but has to be public for generated code
   // ignore: non_constant_identifier_names
-  void free_WireSyncReturnStruct(WireSyncReturnStruct val) {
+  void free_WireSyncReturn(WireSyncReturn val) {
     throw UnimplementedError();
   }
 }
@@ -51,6 +51,10 @@ extension NativeType on SendPort {
 extension StoreDartPostCObjectExt on FlutterRustBridgeWireBase {
   void storeDartPostCObject() => throw UnimplementedError();
 }
+
+/// Generates the dynamic Dart object from either an FFI struct or a JS value
+dynamic wireSyncReturnIntoDart(WireSyncReturn syncReturn) =>
+    throw UnimplementedError();
 
 /// Whether the web platform has been isolated by COOP and COEP headers,
 /// and is capable of sharing buffers between workers.
