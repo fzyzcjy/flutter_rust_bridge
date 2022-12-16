@@ -10,7 +10,7 @@ on:
         type: string
         default: '1.64.0'
 concurrency:
-  group: build-${{ github.event.pull_request.number || github.ref }}
+  group: build-${{ github.event.pull_request.number || github.ref }}-${{ github.job || github.ref}}
   cancel-in-progress: true
 jobs:
   flutter_macos_test:
