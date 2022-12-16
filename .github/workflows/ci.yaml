@@ -66,12 +66,21 @@ jobs:
 
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
-  flutter_ios_test:
-    name: Flutter (iOS) integration test-${{ matrix.device }}
+  flutter_ios_test-iPad7:
+    name: Flutter (iOS) integration test
     strategy:
       matrix:
         device:
           - "iPad (7th generation) Simulator (15.2)"
+      fail-fast: false
+    uses: ./.github/workflows/flutter_ios_test.yml
+    with:
+      device: ${{ matrix.device }}
+  flutter_ios_test-iPhone12:
+    name: Flutter (iOS) integration test
+    strategy:
+      matrix:
+        device:
           - "iPhone 12 Pro Max Simulator (15.2)"
       fail-fast: false
     uses: ./.github/workflows/flutter_ios_test.yml
@@ -79,12 +88,21 @@ jobs:
       device: ${{ matrix.device }}
 
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
-  flutter_android_test:
-    name: Flutter (Android) integration test-${{ matrix.device }}
+  flutter_android_test-pixel:
+    name: Flutter (Android) integration test
     strategy:
       matrix:
         device:
           - "pixel"
+      fail-fast: false
+    uses: ./.github/workflows/flutter_android_test.yml
+    with:
+      device: ${{ matrix.device }}
+  flutter_android_test-Nexus:
+    name: Flutter (Android) integration test
+    strategy:
+      matrix:
+        device:
           - "Nexus 6"
       fail-fast: false
     uses: ./.github/workflows/flutter_android_test.yml
@@ -412,19 +430,39 @@ jobs:
         run: pana --no-warning --line-length 80 --exit-code-threshold 0
 
   # -------------------------- codegen --------------------------
-  codegen:
-    name: Run codegen-${{ matrix.os.image }}-${{ matrix.os.family }}
+  codegen-macos:
+    name: Run codegen
     strategy:
       fail-fast: false
       matrix:
         os:
           - image: macos-11
             family: osx
+
+    uses: ./.github/workflows/code_generator.yml
+    with:
+      image: ${{ matrix.os.image }}
+      family: ${{ matrix.os.family }}
+  codegen-windows:
+    name: Run codegen
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
           - image: windows-2019
             family: windows
+    uses: ./.github/workflows/code_generator.yml
+    with:
+      image: ${{ matrix.os.image }}
+      family: ${{ matrix.os.family }}
+  codegen-ubuntu:
+    name: Run codegen
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
           - image: ubuntu-20.04
             family: linux
-
     uses: ./.github/workflows/code_generator.yml
     with:
       image: ${{ matrix.os.image }}
