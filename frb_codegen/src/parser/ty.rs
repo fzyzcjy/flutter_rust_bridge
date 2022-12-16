@@ -15,7 +15,7 @@ use crate::parser::{extract_comments, extract_metadata, type_to_string};
 pub struct TypeParser<'a> {
     src_structs: HashMap<String, &'a Struct>,
     src_enums: HashMap<String, &'a Enum>,
-    src_type: HashMap<String, Type>,
+    src_types: HashMap<String, Type>,
 
     parsing_or_parsed_struct_names: HashSet<String>,
     struct_pool: IrStructPool,
@@ -28,12 +28,12 @@ impl<'a> TypeParser<'a> {
     pub fn new(
         src_structs: HashMap<String, &'a Struct>,
         src_enums: HashMap<String, &'a Enum>,
-        src_type: HashMap<String, Type>,
+        src_types: HashMap<String, Type>,
     ) -> Self {
         TypeParser {
             src_structs,
             src_enums,
-            src_type,
+            src_types,
             struct_pool: HashMap::new(),
             enum_pool: HashMap::new(),
             parsing_or_parsed_struct_names: HashSet::new(),
@@ -148,20 +148,15 @@ impl<'a> TypeParser<'a> {
             }) = path.segments.first()
             {
                 let key = &ident.to_string();
-                if self.src_type.contains_key(key) {
-                    return Some(self.src_type[key].clone());
+                if self.src_types.contains_key(key) {
+                    return Some(self.src_types[key].clone());
                 }
             }
         }
         None
     }
     pub fn parse_type(&mut self, ty: &syn::Type) -> IrType {
-        let ty_alias = self.get_alias_type(ty);
-        let ty = if let Some(ty_alias) = ty_alias.as_ref() {
-            ty_alias
-        } else {
-            ty
-        };
+        let ty = self.get_alias_type(ty).as_ref().unwrap_or(ty);
         let supported_type = SupportedInnerType::try_from_syn_type(ty)
             .unwrap_or_else(|| panic!("Unsupported type `{}`", type_to_string(ty)));
 
