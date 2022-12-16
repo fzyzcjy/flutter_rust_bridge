@@ -10,7 +10,7 @@ on:
         type: string
         default: '1.64.0'
 concurrency:
-  group: ${{ github.head_ref }}
+  group: build-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 jobs:
   flutter_windows_test:

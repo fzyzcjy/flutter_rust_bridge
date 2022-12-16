@@ -17,7 +17,7 @@ on:
         type: number
         default: 20
 concurrency:
-  group: ${{ github.head_ref }}
+  group: build-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 jobs:
   flutter_android_test:
