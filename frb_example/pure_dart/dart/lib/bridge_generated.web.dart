@@ -941,6 +941,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external void wire_get_app_settings(NativePortType port_);
 
+  external void wire_get_fallible_app_settings(NativePortType port_);
+
   external void wire_is_app_embedded(NativePortType port_, List<dynamic> app_settings);
 
   external void wire_get_message(NativePortType port_);
@@ -1293,6 +1295,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_use_imported_enum(NativePortType port_, int my_enum) => wasmModule.wire_use_imported_enum(port_, my_enum);
 
   void wire_get_app_settings(NativePortType port_) => wasmModule.wire_get_app_settings(port_);
+
+  void wire_get_fallible_app_settings(NativePortType port_) => wasmModule.wire_get_fallible_app_settings(port_);
 
   void wire_is_app_embedded(NativePortType port_, List<dynamic> app_settings) =>
       wasmModule.wire_is_app_embedded(port_, app_settings);

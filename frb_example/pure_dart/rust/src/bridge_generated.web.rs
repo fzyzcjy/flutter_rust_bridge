@@ -234,6 +234,11 @@ pub fn wire_get_app_settings(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_get_fallible_app_settings(port_: MessagePort) {
+    wire_get_fallible_app_settings_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_is_app_embedded(port_: MessagePort, app_settings: JsValue) {
     wire_is_app_embedded_impl(port_, app_settings)
 }

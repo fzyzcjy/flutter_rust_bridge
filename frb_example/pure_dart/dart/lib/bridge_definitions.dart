@@ -201,6 +201,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kGetAppSettingsConstMeta;
 
+  Future<ApplicationSettings> getFallibleAppSettings({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kGetFallibleAppSettingsConstMeta;
+
   Future<bool> isAppEmbedded({required ApplicationSettings appSettings, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kIsAppEmbeddedConstMeta;

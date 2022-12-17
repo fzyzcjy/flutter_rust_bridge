@@ -207,8 +207,8 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
         delegate_enum!(self, wrapper_struct(), None)
     }
 
-    fn wrap_obj(&self, obj: String) -> String {
-        delegate_enum!(self, wrap_obj(obj), obj)
+    fn wrap_obj(&self, obj: String, wired_fallible_func: bool) -> String {
+        delegate_enum!(self, wrap_obj(obj, wired_fallible_func), obj)
     }
 
     fn self_access(&self, obj: String) -> String {

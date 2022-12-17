@@ -725,6 +725,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<ApplicationSettings> getFallibleAppSettings({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_get_fallible_app_settings(port_),
+      parseSuccessData: _wire2api_application_settings,
+      constMeta: kGetFallibleAppSettingsConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kGetFallibleAppSettingsConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "get_fallible_app_settings",
+        argNames: [],
+      );
+
   Future<bool> isAppEmbedded({required ApplicationSettings appSettings, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_application_settings(appSettings);
     return _platform.executeNormal(FlutterRustBridgeTask(

@@ -1911,6 +1911,18 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_app_settings');
   late final _wire_get_app_settings = _wire_get_app_settingsPtr.asFunction<void Function(int)>();
 
+  void wire_get_fallible_app_settings(
+    int port_,
+  ) {
+    return _wire_get_fallible_app_settings(
+      port_,
+    );
+  }
+
+  late final _wire_get_fallible_app_settingsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_fallible_app_settings');
+  late final _wire_get_fallible_app_settings = _wire_get_fallible_app_settingsPtr.asFunction<void Function(int)>();
+
   void wire_is_app_embedded(
     int port_,
     ffi.Pointer<wire_ApplicationSettings> app_settings,

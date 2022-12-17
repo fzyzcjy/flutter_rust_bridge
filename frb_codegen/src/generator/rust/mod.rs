@@ -332,18 +332,20 @@ impl<'a> Generator<'a> {
             } else {
                 panic!("{} is not a method, nor a static method.", func.name)
             };
-            TypeRustGenerator::new(func.output.clone(), ir_file, self.config).wrap_obj(format!(
-                r"{}::{}({})",
-                struct_name.unwrap(),
-                method_name,
-                inner_func_params.join(", ")
-            ))
+            TypeRustGenerator::new(func.output.clone(), ir_file, self.config).wrap_obj(
+                format!(
+                    r"{}::{}({})",
+                    struct_name.unwrap(),
+                    method_name,
+                    inner_func_params.join(", ")
+                ),
+                func.fallible,
+            )
         } else {
-            TypeRustGenerator::new(func.output.clone(), ir_file, self.config).wrap_obj(format!(
-                "{}({})",
-                func.name,
-                inner_func_params.join(", ")
-            ))
+            TypeRustGenerator::new(func.output.clone(), ir_file, self.config).wrap_obj(
+                format!("{}({})", func.name, inner_func_params.join(", ")),
+                func.fallible,
+            )
         };
         let code_call_inner_func_result = if func.fallible {
             code_call_inner_func

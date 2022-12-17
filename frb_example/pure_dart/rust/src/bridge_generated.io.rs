@@ -238,6 +238,11 @@ pub extern "C" fn wire_get_app_settings(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_get_fallible_app_settings(port_: i64) {
+    wire_get_fallible_app_settings_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_is_app_embedded(port_: i64, app_settings: *mut wire_ApplicationSettings) {
     wire_is_app_embedded_impl(port_, app_settings)
 }
