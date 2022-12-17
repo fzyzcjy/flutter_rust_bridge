@@ -133,6 +133,7 @@ More specifically, thanks for all these contributions:
 * [bus710](https://github.com/bus710): Add a case in troubleshooting.
 * [Syndim](https://github.com/Syndim): Add a bracket to box.
 * [TENX-S](https://github.com/TENX-S): Improve doc. Reproduce a bug.
+* [ngasull](https://github.com/ngasull): Bump sdk.
 * [vincent-herlemont](https://github.com/vincent-herlemont): Loosen version.
 * [CicadaCinema](https://github.com/CicadaCinema): Bump version.
 * [raphaelrobert](https://github.com/raphaelrobert): Remove oudated doc.
