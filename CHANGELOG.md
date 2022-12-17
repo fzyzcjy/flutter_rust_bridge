@@ -1,3 +1,7 @@
+## Unreleased
+
+* Bump Dart SDK to 2.15 #906 (thanks @ngasull)
+
 ## 1.55.0
 
 * Bump chrono #905 (thanks @Roms1383)
