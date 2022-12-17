@@ -146,8 +146,8 @@ impl SupportedInnerType {
 // }
 
 impl<'a> TypeParser<'a> {
-    pub fn resolve_alias<'b: 'a>(&self, ty: &'b Type) -> Cow<Type> {
-        Cow::Borrowed(self.get_alias_type(ty).unwrap_or(ty))
+    pub fn resolve_alias<'b: 'a>(&self, ty: &'b Type) -> &Type {
+        self.get_alias_type(ty).unwrap_or(ty)
     }
     pub fn get_alias_type(&self, ty: &syn::Type) -> Option<&Type> {
         if let Type::Path(TypePath { qself: _, path }) = ty {
@@ -165,7 +165,7 @@ impl<'a> TypeParser<'a> {
         None
     }
     pub fn parse_type(&mut self, ty: &syn::Type) -> IrType {
-        let resolve_ty = &self.resolve_alias(ty);
+        let resolve_ty = self.resolve_alias(ty);
         let supported_type = SupportedInnerType::try_from_syn_type(resolve_ty)
             .unwrap_or_else(|| panic!("Unsupported type `{}`", type_to_string(ty)));
 
