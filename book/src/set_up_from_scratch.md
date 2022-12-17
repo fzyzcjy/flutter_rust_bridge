@@ -10,7 +10,7 @@ However, I can sketch the outline of what to do if you want to set up a new Flut
 
 ## Step 1
 
-Create a new Flutter project (or use an existing one). The Dart SDK should be `>=2.14.0` if you want to use the latest `ffigen` tool.
+Create a new Flutter project (or use an existing one). The Dart SDK should be `>=2.17.0` if you want to use the latest `ffigen` tool.
 
 ## Step 2
 

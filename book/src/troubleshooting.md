@@ -35,7 +35,7 @@ Related: https://github.com/fzyzcjy/flutter_rust_bridge/issues/330
 
 ## `Can't create typedef from non-function type.`
 
-Ensure min sdk version of Flutter `pubspec.yaml` is at least 2.13.0 to let `ffigen` happy.
+Ensure min sdk version of Flutter `pubspec.yaml` is at least 2.17.0 to let `ffigen` happy.
 
 https://github.com/fzyzcjy/flutter_rust_bridge/issues/334
 
@@ -53,9 +53,9 @@ Select the scheme (eg: `Product > Scheme > native-staticlib`) and go to *Build S
 
 Indeed all generated code are necessary (if you find something that can be simplified, file an issue). Moreover, other code generation tools also generate long code - for example, when using Google protobuf, a very popular serialization library, I see >10k lines of Java code generated for a quite simple source proto file.
 
-## Why need Dart `2.14.0`
+## Why need Dart `2.17.0`
 
-Dart SDK `>=2.14.0` is needed not by this library, but by the latest version of the `ffigen` tool. Therefore, write `sdk: ">=2.14.0 <3.0.0"` in the `environment` section of `pubspec.yaml`. If you do not want that, consider installing a older version of the `ffigen` tool.
+Dart SDK `>=2.15.0` is supported by this library, but by the latest version of the `ffigen` tool requires `>=2.17.0`. Therefore, write `sdk: ">=2.17.0 <3.0.0"` in the `environment` section of `pubspec.yaml`. If you do not want that, consider installing a older version of the `ffigen` tool.
 
 ## Issues on Web?
 
