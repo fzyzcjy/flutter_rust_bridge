@@ -2023,6 +2023,38 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<int> handleTypeAliasId({required int input, dynamic hint}) {
+    var arg0 = _platform.api2wire_u64(input);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_handle_type_alias_id(port_, arg0),
+      parseSuccessData: _wire2api_u64,
+      constMeta: kHandleTypeAliasIdConstMeta,
+      argValues: [input],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleTypeAliasIdConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_type_alias_id",
+        argNames: ["input"],
+      );
+
+  Future<TestModel> handleTypeAliasModel({required int input, dynamic hint}) {
+    var arg0 = _platform.api2wire_u64(input);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_handle_type_alias_model(port_, arg0),
+      parseSuccessData: _wire2api_test_model,
+      constMeta: kHandleTypeAliasModelConstMeta,
+      argValues: [input],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleTypeAliasModelConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_type_alias_model",
+        argNames: ["input"],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_sum_with(that);
     var arg1 = api2wire_u32(y);
@@ -2880,6 +2912,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     );
   }
 
+  MyEnum _wire2api_my_enum(dynamic raw) {
+    return MyEnum.values[raw];
+  }
+
   MySize _wire2api_my_size(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
@@ -2894,6 +2930,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return MyStreamEntry(
       hello: _wire2api_String(arr[0]),
+    );
+  }
+
+  MyStruct _wire2api_my_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return MyStruct(
+      content: _wire2api_bool(arr[0]),
     );
   }
 
@@ -3089,6 +3133,17 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return TestId(
       field0: _wire2api_i32_array_2(arr[0]),
+    );
+  }
+
+  TestModel _wire2api_test_model(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return TestModel(
+      id: _wire2api_u64(arr[0]),
+      name: _wire2api_String(arr[1]),
+      aliasEnum: _wire2api_my_enum(arr[2]),
+      aliasStruct: _wire2api_my_struct(arr[3]),
     );
   }
 

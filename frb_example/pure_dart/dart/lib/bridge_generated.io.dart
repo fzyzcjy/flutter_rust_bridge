@@ -3038,6 +3038,34 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_frb_generator_test');
   late final _wire_frb_generator_test = _wire_frb_generator_testPtr.asFunction<void Function(int)>();
 
+  void wire_handle_type_alias_id(
+    int port_,
+    int input,
+  ) {
+    return _wire_handle_type_alias_id(
+      port_,
+      input,
+    );
+  }
+
+  late final _wire_handle_type_alias_idPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint64)>>('wire_handle_type_alias_id');
+  late final _wire_handle_type_alias_id = _wire_handle_type_alias_idPtr.asFunction<void Function(int, int)>();
+
+  void wire_handle_type_alias_model(
+    int port_,
+    int input,
+  ) {
+    return _wire_handle_type_alias_model(
+      port_,
+      input,
+    );
+  }
+
+  late final _wire_handle_type_alias_modelPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint64)>>('wire_handle_type_alias_model');
+  late final _wire_handle_type_alias_model = _wire_handle_type_alias_modelPtr.asFunction<void Function(int, int)>();
+
   void wire_sum__method__SumWith(
     int port_,
     ffi.Pointer<wire_SumWith> that,
