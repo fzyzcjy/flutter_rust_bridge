@@ -806,6 +806,11 @@ pub extern "C" fn new_box_autoadd_HideData_0() -> *mut wire_HideData {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_application_env_0() -> *mut wire_ApplicationEnv {
+    support::new_leak_box_ptr(wire_ApplicationEnv::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_application_settings_0() -> *mut wire_ApplicationSettings {
     support::new_leak_box_ptr(wire_ApplicationSettings::new_with_null_ptr())
 }
@@ -1379,6 +1384,7 @@ impl Wire2Api<ApplicationSettings> for wire_ApplicationSettings {
             version: self.version.wire2api(),
             mode: self.mode.wire2api(),
             env: self.env.wire2api(),
+            env_optional: self.env_optional.wire2api(),
         }
     }
 }
@@ -1412,6 +1418,12 @@ impl Wire2Api<RustOpaque<HideData>> for *mut wire_HideData {
     fn wire2api(self) -> RustOpaque<HideData> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<RustOpaque<HideData>>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<ApplicationEnv> for *mut wire_ApplicationEnv {
+    fn wire2api(self) -> ApplicationEnv {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<ApplicationEnv>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<ApplicationSettings> for *mut wire_ApplicationSettings {
@@ -2113,6 +2125,7 @@ pub struct wire_ApplicationSettings {
     version: *mut wire_uint_8_list,
     mode: i32,
     env: *mut wire_ApplicationEnv,
+    env_optional: *mut wire_ApplicationEnv,
 }
 
 #[repr(C)]
@@ -2640,6 +2653,7 @@ impl NewWithNullPtr for wire_ApplicationSettings {
             version: core::ptr::null_mut(),
             mode: Default::default(),
             env: core::ptr::null_mut(),
+            env_optional: core::ptr::null_mut(),
         }
     }
 }

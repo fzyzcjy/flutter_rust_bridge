@@ -2063,6 +2063,7 @@ const _: fn() = || {
         let _: String = ApplicationSettings.version;
         let _: ApplicationMode = ApplicationSettings.mode;
         let _: Box<ApplicationEnv> = ApplicationSettings.env;
+        let _: Option<ApplicationEnv> = ApplicationSettings.env_optional;
     }
     {
         let Numbers_ = None::<Numbers>.unwrap();
@@ -2299,6 +2300,10 @@ impl support::IntoDart for mirror_ApplicationSettings {
             self.0.version.into_dart(),
             mirror_ApplicationMode(self.0.mode).into_dart(),
             mirror_ApplicationEnv((*self.0.env)).into_dart(),
+            self.0
+                .env_optional
+                .map(|v| mirror_ApplicationEnv(v))
+                .into_dart(),
         ]
         .into_dart()
     }

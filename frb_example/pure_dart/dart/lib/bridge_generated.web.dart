@@ -132,7 +132,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       api2wire_String(raw.name),
       api2wire_String(raw.version),
       api2wire_application_mode(raw.mode),
-      api2wire_box_application_env(raw.env)
+      api2wire_box_application_env(raw.env),
+      api2wire_opt_box_autoadd_application_env(raw.envOptional)
     ];
   }
 
@@ -159,6 +160,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   Object api2wire_box_autoadd_HideData(HideData raw) {
     return api2wire_HideData(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_application_env(ApplicationEnv raw) {
+    return api2wire_application_env(raw);
   }
 
   @protected
@@ -650,6 +656,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   Object? api2wire_opt_box_autoadd_HideData(HideData? raw) {
     return raw == null ? null : api2wire_box_autoadd_HideData(raw);
+  }
+
+  @protected
+  List<dynamic>? api2wire_opt_box_autoadd_application_env(ApplicationEnv? raw) {
+    return raw == null ? null : api2wire_box_autoadd_application_env(raw);
   }
 
   @protected

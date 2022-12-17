@@ -155,6 +155,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_ApplicationEnv> api2wire_box_autoadd_application_env(ApplicationEnv raw) {
+    final ptr = inner.new_box_autoadd_application_env_0();
+    _api_fill_to_wire_application_env(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_ApplicationSettings> api2wire_box_autoadd_application_settings(ApplicationSettings raw) {
     final ptr = inner.new_box_autoadd_application_settings_0();
     _api_fill_to_wire_application_settings(raw, ptr.ref);
@@ -571,6 +578,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_ApplicationEnv> api2wire_opt_box_autoadd_application_env(ApplicationEnv? raw) {
+    return raw == null ? ffi.nullptr : api2wire_box_autoadd_application_env(raw);
+  }
+
+  @protected
   ffi.Pointer<wire_Attribute> api2wire_opt_box_autoadd_attribute(Attribute? raw) {
     return raw == null ? ffi.nullptr : api2wire_box_autoadd_attribute(raw);
   }
@@ -769,6 +781,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     wireObj.version = api2wire_String(apiObj.version);
     wireObj.mode = api2wire_application_mode(apiObj.mode);
     wireObj.env = api2wire_box_application_env(apiObj.env);
+    wireObj.env_optional = api2wire_opt_box_autoadd_application_env(apiObj.envOptional);
   }
 
   void _api_fill_to_wire_attribute(Attribute apiObj, wire_Attribute wireObj) {
@@ -790,6 +803,10 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   void _api_fill_to_wire_box_autoadd_HideData(HideData apiObj, ffi.Pointer<wire_HideData> wireObj) {
     _api_fill_to_wire_HideData(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_application_env(ApplicationEnv apiObj, ffi.Pointer<wire_ApplicationEnv> wireObj) {
+    _api_fill_to_wire_application_env(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_application_settings(
@@ -1151,6 +1168,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   void _api_fill_to_wire_opt_box_autoadd_HideData(HideData? apiObj, ffi.Pointer<wire_HideData> wireObj) {
     if (apiObj != null) _api_fill_to_wire_box_autoadd_HideData(apiObj, wireObj);
+  }
+
+  void _api_fill_to_wire_opt_box_autoadd_application_env(
+      ApplicationEnv? apiObj, ffi.Pointer<wire_ApplicationEnv> wireObj) {
+    if (apiObj != null) _api_fill_to_wire_box_autoadd_application_env(apiObj, wireObj);
   }
 
   void _api_fill_to_wire_opt_box_autoadd_attribute(Attribute? apiObj, ffi.Pointer<wire_Attribute> wireObj) {
@@ -3314,6 +3336,15 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_box_autoadd_HideData_0 =
       _new_box_autoadd_HideData_0Ptr.asFunction<ffi.Pointer<wire_HideData> Function()>();
 
+  ffi.Pointer<wire_ApplicationEnv> new_box_autoadd_application_env_0() {
+    return _new_box_autoadd_application_env_0();
+  }
+
+  late final _new_box_autoadd_application_env_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_ApplicationEnv> Function()>>('new_box_autoadd_application_env_0');
+  late final _new_box_autoadd_application_env_0 =
+      _new_box_autoadd_application_env_0Ptr.asFunction<ffi.Pointer<wire_ApplicationEnv> Function()>();
+
   ffi.Pointer<wire_ApplicationSettings> new_box_autoadd_application_settings_0() {
     return _new_box_autoadd_application_settings_0();
   }
@@ -4450,6 +4481,8 @@ class wire_ApplicationSettings extends ffi.Struct {
   external int mode;
 
   external ffi.Pointer<wire_ApplicationEnv> env;
+
+  external ffi.Pointer<wire_ApplicationEnv> env_optional;
 }
 
 class wire_Numbers extends ffi.Struct {

@@ -811,12 +811,14 @@ class ApplicationSettings {
   final String version;
   final ApplicationMode mode;
   final ApplicationEnv env;
+  final ApplicationEnv? envOptional;
 
   ApplicationSettings({
     required this.name,
     required this.version,
     required this.mode,
     required this.env,
+    this.envOptional,
   });
 }
 

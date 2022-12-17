@@ -535,6 +535,7 @@ pub struct _ApplicationSettings {
     pub version: String,
     pub mode: ApplicationMode,
     pub env: Box<ApplicationEnv>,
+    pub env_optional: Option<ApplicationEnv>,
 }
 
 #[frb(mirror(ApplicationMode))]
