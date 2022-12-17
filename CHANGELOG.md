@@ -1,7 +1,7 @@
 ## 1.55.0
 
 * Bump chrono #905 (thanks @Roms1383)
-* Support code like `pub type Id = u64` #900 (thanks @huang12zheng)
+* Support type aliases #900 (thanks @huang12zheng)
 
 ## 1.54.1
 
