@@ -10,7 +10,7 @@ members = [
 ]
 
 [workspace.package]
-version = "1.54.1"
+version = "1.55.0"
 edition = "2018"
 license = "MIT"
 description = "High-level memory-safe binding generator for Flutter/Dart <-> Rust"
@@ -21,7 +21,7 @@ categories = ["development-tools::ffi"]
 [workspace.dependencies]
 allo-isolate = { version = "0.1.14-beta.3", features = ["anyhow"] }
 anyhow = "1.0.64"
-chrono = "0.4.20"
+chrono = "0.4.23"
 lazy_static = "1.4.0"
 uuid = "1.1.2"
 

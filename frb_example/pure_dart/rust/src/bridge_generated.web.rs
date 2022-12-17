@@ -654,6 +654,16 @@ pub fn wire_frb_generator_test(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_type_alias_id(port_: MessagePort, input: u64) {
+    wire_handle_type_alias_id_impl(port_, input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_type_alias_model(port_: MessagePort, input: u64) {
+    wire_handle_type_alias_model_impl(port_, input)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -886,7 +896,8 @@ impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
     fn wire2api(self) -> chrono::DateTime<chrono::Local> {
         let Timestamp { s, ns } = wire2api_timestamp(self);
         chrono::DateTime::<chrono::Local>::from(chrono::DateTime::<chrono::Utc>::from_utc(
-            chrono::NaiveDateTime::from_timestamp(s, ns),
+            chrono::NaiveDateTime::from_timestamp_opt(s, ns)
+                .expect("invalid or out-of-range datetime"),
             chrono::Utc,
         ))
     }
@@ -894,14 +905,15 @@ impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
 impl Wire2Api<chrono::NaiveDateTime> for i64 {
     fn wire2api(self) -> chrono::NaiveDateTime {
         let Timestamp { s, ns } = wire2api_timestamp(self);
-        chrono::NaiveDateTime::from_timestamp(s, ns)
+        chrono::NaiveDateTime::from_timestamp_opt(s, ns).expect("invalid or out-of-range datetime")
     }
 }
 impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
     fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
         let Timestamp { s, ns } = wire2api_timestamp(self);
         chrono::DateTime::<chrono::Utc>::from_utc(
-            chrono::NaiveDateTime::from_timestamp(s, ns),
+            chrono::NaiveDateTime::from_timestamp_opt(s, ns)
+                .expect("invalid or out-of-range datetime"),
             chrono::Utc,
         )
     }
@@ -1951,6 +1963,11 @@ impl Wire2Api<Option<Vec<u8>>> for JsValue {
 impl Wire2Api<u32> for JsValue {
     fn wire2api(self) -> u32 {
         self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<u64> for JsValue {
+    fn wire2api(self) -> u64 {
+        ::std::convert::TryInto::try_into(self.dyn_into::<js_sys::BigInt>().unwrap()).unwrap()
     }
 }
 impl Wire2Api<u8> for JsValue {

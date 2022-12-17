@@ -1,3 +1,8 @@
+## 1.55.0
+
+* Bump chrono #905 (thanks @Roms1383)
+* Support type aliases #900 (thanks @huang12zheng)
+
 ## 1.54.1
 
 * Delete dart_sys #890 (thanks @rogurotus)

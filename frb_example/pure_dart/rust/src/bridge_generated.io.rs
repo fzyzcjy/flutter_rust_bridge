@@ -675,6 +675,16 @@ pub extern "C" fn wire_frb_generator_test(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_type_alias_id(port_: i64, input: u64) {
+    wire_handle_type_alias_id_impl(port_, input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_type_alias_model(port_: i64, input: u64) {
+    wire_handle_type_alias_model_impl(port_, input)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -1249,7 +1259,8 @@ impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
     fn wire2api(self) -> chrono::DateTime<chrono::Local> {
         let Timestamp { s, ns } = wire2api_timestamp(self);
         chrono::DateTime::<chrono::Local>::from(chrono::DateTime::<chrono::Utc>::from_utc(
-            chrono::NaiveDateTime::from_timestamp(s, ns),
+            chrono::NaiveDateTime::from_timestamp_opt(s, ns)
+                .expect("invalid or out-of-range datetime"),
             chrono::Utc,
         ))
     }
@@ -1257,14 +1268,15 @@ impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
 impl Wire2Api<chrono::NaiveDateTime> for i64 {
     fn wire2api(self) -> chrono::NaiveDateTime {
         let Timestamp { s, ns } = wire2api_timestamp(self);
-        chrono::NaiveDateTime::from_timestamp(s, ns)
+        chrono::NaiveDateTime::from_timestamp_opt(s, ns).expect("invalid or out-of-range datetime")
     }
 }
 impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
     fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
         let Timestamp { s, ns } = wire2api_timestamp(self);
         chrono::DateTime::<chrono::Utc>::from_utc(
-            chrono::NaiveDateTime::from_timestamp(s, ns),
+            chrono::NaiveDateTime::from_timestamp_opt(s, ns)
+                .expect("invalid or out-of-range datetime"),
             chrono::Utc,
         )
     }

@@ -1101,6 +1101,18 @@ void main(List<String> args) async {
       var res = api.returnNonDropableDartOpaque(opaque: f);
       expect(identical(res, f), isTrue);
     });
+
+    test('dart call handle_type_Id', () async {
+      final id = await api.handleTypeAliasId(input: 42);
+      expect(id, 42);
+    });
+    test('dart call handle_type_model', () async {
+      final testModel = await api.handleTypeAliasModel(input: 42);
+      expect(testModel.id, 42);
+      expect(testModel.name, "TestModel");
+      expect(testModel.aliasEnum, MyEnum.False);
+      expect(testModel.aliasStruct.content, true);
+    });
   });
 }
 
