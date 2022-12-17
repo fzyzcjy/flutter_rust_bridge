@@ -61,8 +61,7 @@ impl<'a> Parser<'a> {
     /// Attempts to parse the type from the return part of a function signature. There is a special
     /// case for top-level `Result` types.
     pub fn try_parse_fn_output_type(&mut self, ty: &syn::Type) -> Option<IrFuncOutput> {
-        let ty_alias = self.type_parser.get_alias_type(ty);
-        let ty = ty_alias.as_ref().unwrap_or(ty);
+        let ty = &self.type_parser.resolve_alias(ty);
         let inner = ty::SupportedInnerType::try_from_syn_type(ty)?;
         match inner {
             ty::SupportedInnerType::Path(ty::SupportedPathType {

@@ -1,3 +1,4 @@
+use std::borrow::Cow;
 use std::collections::{HashMap, HashSet};
 use std::string::String;
 
@@ -139,8 +140,16 @@ impl SupportedInnerType {
     }
 }
 
+// pub fn resolve_alias(&self, ty: &syn::Type) -> Cow<Type> {
+//     Cow::Borrowed(self.get_alias_type(ty).unwrap_or(ty))
+//     // self.get_alias_type(ty).unwrap_or(ty).clone()
+// }
+
 impl<'a> TypeParser<'a> {
-    pub fn get_alias_type(&self, ty: &syn::Type) -> Option<Type> {
+    pub fn resolve_alias<'b: 'a>(&self, ty: &'b Type) -> Cow<Type> {
+        Cow::Borrowed(self.get_alias_type(ty).unwrap_or(ty))
+    }
+    pub fn get_alias_type(&self, ty: &syn::Type) -> Option<&Type> {
         if let Type::Path(TypePath { qself: _, path }) = ty {
             if let Some(PathSegment {
                 ident,
@@ -149,16 +158,15 @@ impl<'a> TypeParser<'a> {
             {
                 let key = &ident.to_string();
                 if self.src_types.contains_key(key) {
-                    return Some(self.src_types[key].clone());
+                    return self.src_types.get(key);
                 }
             }
         }
         None
     }
     pub fn parse_type(&mut self, ty: &syn::Type) -> IrType {
-        let ty_alias = self.get_alias_type(ty);
-        let ty = ty_alias.as_ref().unwrap_or(ty);
-        let supported_type = SupportedInnerType::try_from_syn_type(ty)
+        let resolve_ty = &self.resolve_alias(ty);
+        let supported_type = SupportedInnerType::try_from_syn_type(resolve_ty)
             .unwrap_or_else(|| panic!("Unsupported type `{}`", type_to_string(ty)));
 
         self.convert_to_ir_type(supported_type)
