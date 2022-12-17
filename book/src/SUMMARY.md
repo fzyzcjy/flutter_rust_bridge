@@ -78,7 +78,6 @@
     - [Windows & Linux](library/platform_setup/windows_and_linux.md)
     - [iOS & macOS](library/platform_setup/ios_and_macos.md)
     - [Android](library/platform_setup/android.md)
-  - [Platform specific build](library/platform_build.md)
   - [Continuous Integration & Deployment (CI/CD)](library/ci.md)
 
 # Part III: Contributor Guide
