@@ -105,7 +105,7 @@ There exists a few differences between the Linux and Windows `CMakeLists.txt`s:
 2. At the time of writing, Windows CMake does not yet have a builtin `FLUTTER_TARGET_PLATFORM` variable; thus, we need to define a dummy version of the variable. See [here](https://github.com/flutter/flutter/issues/116196) for updates on this issue
 3. On linux, dynamic library names follow the form of `liblibrary_name.so` and on Windows, dynamic library names follow the form of `library_name.dll`
 
-### `.gitignore`
+## `.gitignore`
 If you choose to have a .gitignore in your `linux/` and `windows/` directories, here is what the author of this page uses:
 ```gitignore
 # Set up as allowlist
