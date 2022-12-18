@@ -130,6 +130,7 @@ More specifically, thanks for all these contributions:
 * [valeth](https://github.com/valeth): Rename callFfi's port.
 * [sccheruku](https://github.com/sccheruku): Prevent double-generating utility.
 * [w-ensink](https://github.com/w-ensink): Improve doc. Fix CI. Refactor. Add tests.
+* [codercengiz](https://github.com/codercengiz): Fix mirroring bug.
 * [Michael-F-Bryan](https://github.com/Michael-F-Bryan): Detect broken bindings.
 * [bus710](https://github.com/bus710): Add a case in troubleshooting.
 * [Syndim](https://github.com/Syndim): Add a bracket to box.
