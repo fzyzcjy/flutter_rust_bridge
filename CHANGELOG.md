@@ -1,5 +1,6 @@
-## Unreleased
+## 1.55.1
 
+* Fix mirroring to support `Result` return type and `Option<T>` field #907 (thanks @codercengiz)
 * Bump Dart SDK to 2.15 #906 (thanks @ngasull)
 
 ## 1.55.0
