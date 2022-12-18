@@ -201,6 +201,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kGetAppSettingsConstMeta;
 
+  Future<ApplicationSettings> getFallibleAppSettings({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kGetFallibleAppSettingsConstMeta;
+
   Future<bool> isAppEmbedded({required ApplicationSettings appSettings, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kIsAppEmbeddedConstMeta;
@@ -807,12 +811,14 @@ class ApplicationSettings {
   final String version;
   final ApplicationMode mode;
   final ApplicationEnv env;
+  final ApplicationEnv? envOptional;
 
   ApplicationSettings({
     required this.name,
     required this.version,
     required this.mode,
     required this.env,
+    this.envOptional,
   });
 }
 

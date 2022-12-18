@@ -725,6 +725,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<ApplicationSettings> getFallibleAppSettings({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_get_fallible_app_settings(port_),
+      parseSuccessData: _wire2api_application_settings,
+      constMeta: kGetFallibleAppSettingsConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kGetFallibleAppSettingsConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "get_fallible_app_settings",
+        argNames: [],
+      );
+
   Future<bool> isAppEmbedded({required ApplicationSettings appSettings, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_application_settings(appSettings);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -2504,12 +2519,13 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   ApplicationSettings _wire2api_application_settings(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    if (arr.length != 5) throw Exception('unexpected arr length: expect 5 but see ${arr.length}');
     return ApplicationSettings(
       name: _wire2api_String(arr[0]),
       version: _wire2api_String(arr[1]),
       mode: _wire2api_application_mode(arr[2]),
       env: _wire2api_box_application_env(arr[3]),
+      envOptional: _wire2api_opt_box_autoadd_application_env(arr[4]),
     );
   }
 
@@ -2553,6 +2569,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   HideData _wire2api_box_autoadd_HideData(dynamic raw) {
     return raw as HideData;
+  }
+
+  ApplicationEnv _wire2api_box_autoadd_application_env(dynamic raw) {
+    return _wire2api_application_env(raw);
   }
 
   Attribute _wire2api_box_autoadd_attribute(dynamic raw) {
@@ -3015,6 +3035,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   HideData? _wire2api_opt_box_autoadd_HideData(dynamic raw) {
     return raw == null ? null : _wire2api_box_autoadd_HideData(raw);
+  }
+
+  ApplicationEnv? _wire2api_opt_box_autoadd_application_env(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_application_env(raw);
   }
 
   Attribute? _wire2api_opt_box_autoadd_attribute(dynamic raw) {

@@ -132,7 +132,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       api2wire_String(raw.name),
       api2wire_String(raw.version),
       api2wire_application_mode(raw.mode),
-      api2wire_box_application_env(raw.env)
+      api2wire_box_application_env(raw.env),
+      api2wire_opt_box_autoadd_application_env(raw.envOptional)
     ];
   }
 
@@ -159,6 +160,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   Object api2wire_box_autoadd_HideData(HideData raw) {
     return api2wire_HideData(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_application_env(ApplicationEnv raw) {
+    return api2wire_application_env(raw);
   }
 
   @protected
@@ -653,6 +659,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic>? api2wire_opt_box_autoadd_application_env(ApplicationEnv? raw) {
+    return raw == null ? null : api2wire_box_autoadd_application_env(raw);
+  }
+
+  @protected
   List<dynamic>? api2wire_opt_box_autoadd_attribute(Attribute? raw) {
     return raw == null ? null : api2wire_box_autoadd_attribute(raw);
   }
@@ -940,6 +951,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external void wire_use_imported_enum(NativePortType port_, int my_enum);
 
   external void wire_get_app_settings(NativePortType port_);
+
+  external void wire_get_fallible_app_settings(NativePortType port_);
 
   external void wire_is_app_embedded(NativePortType port_, List<dynamic> app_settings);
 
@@ -1293,6 +1306,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_use_imported_enum(NativePortType port_, int my_enum) => wasmModule.wire_use_imported_enum(port_, my_enum);
 
   void wire_get_app_settings(NativePortType port_) => wasmModule.wire_get_app_settings(port_);
+
+  void wire_get_fallible_app_settings(NativePortType port_) => wasmModule.wire_get_fallible_app_settings(port_);
 
   void wire_is_app_embedded(NativePortType port_, List<dynamic> app_settings) =>
       wasmModule.wire_is_app_embedded(port_, app_settings);

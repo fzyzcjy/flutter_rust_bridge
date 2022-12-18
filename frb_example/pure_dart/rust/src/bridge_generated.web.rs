@@ -234,6 +234,11 @@ pub fn wire_get_app_settings(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_get_fallible_app_settings(port_: MessagePort) {
+    wire_get_fallible_app_settings_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_is_app_embedded(port_: MessagePort, app_settings: JsValue) {
     wire_is_app_embedded_impl(port_, app_settings)
 }
@@ -979,8 +984,8 @@ impl Wire2Api<ApplicationSettings> for JsValue {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
-            4,
-            "Expected 4 elements, got {}",
+            5,
+            "Expected 5 elements, got {}",
             self_.length()
         );
         ApplicationSettings {
@@ -988,6 +993,7 @@ impl Wire2Api<ApplicationSettings> for JsValue {
             version: self_.get(1).wire2api(),
             mode: self_.get(2).wire2api(),
             env: self_.get(3).wire2api(),
+            env_optional: self_.get(4).wire2api(),
         }
     }
 }
@@ -1438,6 +1444,11 @@ impl Wire2Api<Option<DartOpaque>> for JsValue {
 }
 impl Wire2Api<Option<RustOpaque<HideData>>> for JsValue {
     fn wire2api(self) -> Option<RustOpaque<HideData>> {
+        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+    }
+}
+impl Wire2Api<Option<ApplicationEnv>> for JsValue {
+    fn wire2api(self) -> Option<ApplicationEnv> {
         (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
     }
 }

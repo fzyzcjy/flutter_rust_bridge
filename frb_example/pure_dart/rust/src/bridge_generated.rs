@@ -676,6 +676,16 @@ fn wire_get_app_settings_impl(port_: MessagePort) {
         move || move |task_callback| Ok(mirror_ApplicationSettings(get_app_settings())),
     )
 }
+fn wire_get_fallible_app_settings_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "get_fallible_app_settings",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(mirror_ApplicationSettings(get_fallible_app_settings()?)),
+    )
+}
 fn wire_is_app_embedded_impl(
     port_: MessagePort,
     app_settings: impl Wire2Api<ApplicationSettings> + UnwindSafe,
@@ -2053,6 +2063,7 @@ const _: fn() = || {
         let _: String = ApplicationSettings.version;
         let _: ApplicationMode = ApplicationSettings.mode;
         let _: Box<ApplicationEnv> = ApplicationSettings.env;
+        let _: Option<ApplicationEnv> = ApplicationSettings.env_optional;
     }
     {
         let Numbers_ = None::<Numbers>.unwrap();
@@ -2289,6 +2300,10 @@ impl support::IntoDart for mirror_ApplicationSettings {
             self.0.version.into_dart(),
             mirror_ApplicationMode(self.0.mode).into_dart(),
             mirror_ApplicationEnv((*self.0.env)).into_dart(),
+            self.0
+                .env_optional
+                .map(|v| mirror_ApplicationEnv(v))
+                .into_dart(),
         ]
         .into_dart()
     }

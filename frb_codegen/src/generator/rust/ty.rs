@@ -29,7 +29,7 @@ pub trait TypeRustGeneratorTrait {
         obj
     }
 
-    fn wrap_obj(&self, obj: String) -> String {
+    fn wrap_obj(&self, obj: String, _wired_fallible_func: bool) -> String {
         obj
     }
 
