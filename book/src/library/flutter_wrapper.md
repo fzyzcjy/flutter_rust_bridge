@@ -18,3 +18,5 @@ flutter create --template=plugin_ffi -platforms=android,ios,macos,linux,windows 
 - example?
 - integration test?
 - other files from setup.md
+- ffi imports
+- re-export
