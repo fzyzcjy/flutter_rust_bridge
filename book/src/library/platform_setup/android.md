@@ -1,7 +1,7 @@
 # Android
 There are a few different ways to integrate with our Android binaries when building for Android. None are particularly outstanding:
 - An "Ivy Repository"
-  - Works great, but impossible to test on an emulator locally or in CI :(
+  - Works great, but impossible to test changes on an emulator locally or in CI :(
 - Raw Groovy & Gradle
   - Works in theory, but tedious to have to write all needed logic in Groovy/Gradle
 - Starting an OS Shell
