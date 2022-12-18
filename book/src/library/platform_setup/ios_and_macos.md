@@ -17,15 +17,10 @@ We will need to create several files for both iOS and macOS to:
 - Prevent our Rust symbols from being accidentally stripped
 - Bundle our "XCFramework" with our Flutter library
 
-### `ios/Classes/binding.h` and `macos/Classes/binding.h`
-```
-void enforce_binding();
-```
-
-### `ios/Classes/EnforceBinding.swift` and `macos/Classes/EnforceBinding.swift`
+### `ios/Classes/EnforceBundling.swift` and `macos/Classes/EnforceBundling.swift`
 ```swift
 public func dummyMethodToEnforceBundling() {
-    enforce_binding() // disable tree shaking
+    dummy_method_to_enforce_bundling()
 }
 ```
 
