@@ -53,7 +53,32 @@ execute_process(
 Replace all instances of `library_name` above with your library name.
 Also, replace other variables (i.e. `YourGitHubAccount` and `repo_name`) as needed.
 
-## TODO OTHER ANDROID FILES
+## `build.gradle` Changes
+Replace the `android {...}` section at the bottom of `build.gradle` with the following:
+```gradle
+android {
+    compileSdkVersion 31
+
+    defaultConfig {
+        minSdkVersion 16
+    }
+
+    // Trigger the binary download/update over in CMakeLists.txt
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+}
+```
+
+## `.gitignore`
+Add the following to `android/.gitignore`
+```gitignore
+# Ignore Rust binaries
+src/main/jniLibs/
+*.tar.gz
+```
 
 ## Build Script (`/scripts/build-android.sh`)
 ```bash
