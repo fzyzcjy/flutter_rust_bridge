@@ -51,7 +51,7 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
     let dart_output_dir = Path::new(&config.dart_output_path).parent().unwrap();
 
     info!("Phase: Parse source code to AST, then to IR");
-    let raw_ir_file = config.get_ir_file();
+    let raw_ir_file = config.get_ir_file()?;
 
     info!("Phase: Transform IR");
     let ir_file = transformer::transform(raw_ir_file);

@@ -1,3 +1,7 @@
+## 1.56.0
+
+* Return error when rust input file cannot be read #912 (thanks @w1th0utnam3)
+
 ## 1.55.1
 
 * Fix mirroring to support `Result` return type and `Option<T>` field #907 (thanks @codercengiz)

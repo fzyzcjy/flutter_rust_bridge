@@ -33,7 +33,7 @@ Here is my another open-source library :) https://github.com/fzyzcjy/flutter_smo
 ## ✨ Contributors
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-42-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-43-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key) following [all-contributors](https://github.com/all-contributors/all-contributors) specification):
@@ -97,6 +97,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center"><a href="https://github.com/ngasull"><img src="https://avatars.githubusercontent.com/u/912991?v=4?s=100" width="100px;" alt="Nicolas Gasull"/><br /><sub><b>Nicolas Gasull</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=ngasull" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/codercengiz"><img src="https://avatars.githubusercontent.com/u/45819755?v=4?s=100" width="100px;" alt="codercengiz"/><br /><sub><b>codercengiz</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=codercengiz" title="Code">💻</a></td>
     </tr>
+    <tr>
+      <td align="center"><a href="https://www.floeschner.de/"><img src="https://avatars.githubusercontent.com/u/12967904?v=4?s=100" width="100px;" alt="Fabian Löschner"/><br /><sub><b>Fabian Löschner</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=w1th0utnam3" title="Code">💻</a></td>
+    </tr>
   </tbody>
 </table>
 
@@ -135,6 +138,7 @@ More specifically, thanks for all these contributions:
 * [bus710](https://github.com/bus710): Add a case in troubleshooting.
 * [Syndim](https://github.com/Syndim): Add a bracket to box.
 * [TENX-S](https://github.com/TENX-S): Improve doc. Reproduce a bug.
+* [w1th0utnam3](https://github.com/w1th0utnam3): Improve message.
 * [ngasull](https://github.com/ngasull): Bump sdk.
 * [vincent-herlemont](https://github.com/vincent-herlemont): Loosen version.
 * [CicadaCinema](https://github.com/CicadaCinema): Bump version.
