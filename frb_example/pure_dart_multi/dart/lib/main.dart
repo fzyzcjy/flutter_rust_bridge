@@ -1,4 +1,5 @@
-import 'dart:ffi';
+// ignore: implementation_imports
+import 'package:flutter_rust_bridge/src/utils.io.dart';
 
 import 'bridge_generated_api_1.dart';
 import 'bridge_generated_api_2.dart';
@@ -10,7 +11,7 @@ void main(List<String> args) {
   String dylibPath = args[0];
   print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
   print('construct api');
-  final dylib = DynamicLibrary.open(dylibPath);
+  final dylib = loadDylib(dylibPath);
   final api1 = ApiClass1Impl(dylib);
   test('dart call simpleAdder', () async {
     expect(await api1.simpleAdder1(a: 42, b: 100), 142);
