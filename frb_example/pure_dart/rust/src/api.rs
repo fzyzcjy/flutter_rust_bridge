@@ -13,8 +13,8 @@ use anyhow::{anyhow, Result};
 use flutter_rust_bridge::*;
 use lazy_static::lazy_static;
 
+use crate::data::{EnumAlias, Id, MyEnum, MyStruct, StructAlias};
 pub use crate::data::{FrbOpaqueReturn, HideData, NonSendHideData};
-use crate::data::{MyEnum, MyStruct};
 use crate::new_module_system::{use_new_module_system, NewSimpleStruct};
 use crate::old_module_system::{use_old_module_system, OldSimpleStruct};
 
@@ -535,6 +535,7 @@ pub struct _ApplicationSettings {
     pub version: String,
     pub mode: ApplicationMode,
     pub env: Box<ApplicationEnv>,
+    pub env_optional: Option<ApplicationEnv>,
 }
 
 #[frb(mirror(ApplicationMode))]
@@ -554,6 +555,11 @@ pub struct _ApplicationEnv {
 // This function can directly return an object of the external type ApplicationSettings because it has a mirror
 pub fn get_app_settings() -> ApplicationSettings {
     external_lib::get_app_settings()
+}
+
+// This function can return a Result, that includes an object of the external type ApplicationSettings because it has a mirror
+pub fn get_fallible_app_settings() -> anyhow::Result<ApplicationSettings> {
+    Ok(external_lib::get_app_settings())
 }
 
 // Similarly, receiving an object from Dart works. Please note that the mirror definition must match entirely and the original struct must have all its fields public.
@@ -1203,4 +1209,23 @@ pub fn return_non_dropable_dart_opaque(opaque: DartOpaque) -> SyncReturn<DartOpa
 /// FrbOpaqueReturn must not be used as an argument.
 pub fn frb_generator_test() -> RustOpaque<FrbOpaqueReturn> {
     panic!("dummy code");
+}
+
+pub fn handle_type_alias_id(input: Id) -> Id {
+    input
+}
+pub struct TestModel {
+    pub id: Id,
+    pub name: String,
+    pub alias_enum: EnumAlias,
+    pub alias_struct: MyStruct,
+}
+
+pub fn handle_type_alias_model(input: Id) -> TestModel {
+    TestModel {
+        id: input,
+        name: "TestModel".to_owned(),
+        alias_enum: EnumAlias::False,
+        alias_struct: StructAlias { content: true },
+    }
 }

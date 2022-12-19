@@ -379,6 +379,24 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "ngasull",
+      "name": "Nicolas Gasull",
+      "avatar_url": "https://avatars.githubusercontent.com/u/912991?v=4",
+      "profile": "https://github.com/ngasull",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "codercengiz",
+      "name": "codercengiz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45819755?v=4",
+      "profile": "https://github.com/codercengiz",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

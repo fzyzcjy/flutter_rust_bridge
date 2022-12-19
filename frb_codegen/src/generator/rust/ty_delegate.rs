@@ -75,7 +75,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 };
               }
               let codegen_timestamp = "let Timestamp { s, ns } = wire2api_timestamp(self);";
-              let codegen_naive = "chrono::NaiveDateTime::from_timestamp(s, ns)".to_string();
+              let codegen_naive = "chrono::NaiveDateTime::from_timestamp_opt(s, ns).expect(\"invalid or out-of-range datetime\")".to_string();
               let codegen_utc = format!("chrono::DateTime::<chrono::Utc>::from_utc({codegen_naive}, chrono::Utc)");
               let codegen_local = format!("chrono::DateTime::<chrono::Local>::from({codegen_utc})");
               let codegen_conversion = match ir {
@@ -207,8 +207,8 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
         delegate_enum!(self, wrapper_struct(), None)
     }
 
-    fn wrap_obj(&self, obj: String) -> String {
-        delegate_enum!(self, wrap_obj(obj), obj)
+    fn wrap_obj(&self, obj: String, wired_fallible_func: bool) -> String {
+        delegate_enum!(self, wrap_obj(obj, wired_fallible_func), obj)
     }
 
     fn self_access(&self, obj: String) -> String {

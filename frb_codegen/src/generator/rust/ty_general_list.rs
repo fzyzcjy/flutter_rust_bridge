@@ -38,7 +38,7 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
         ])
     }
 
-    fn wrap_obj(&self, obj: String) -> String {
+    fn wrap_obj(&self, obj: String, _wired_fallible_func: bool) -> String {
         let inner = TypeRustGenerator::new(
             *self.ir.inner.clone(),
             self.context.ir_file,

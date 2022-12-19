@@ -214,7 +214,7 @@ fn generate_api_method(
     dart_api_class_name: String,
 ) -> GeneratedApiMethod {
     let f = FunctionName::deserialize(&func.name);
-    let skip_count = if f.is_static_method() { 0 } else { 1 };
+    let skip_count = usize::from(!f.is_static_method());
     let mut raw_func_param_list = func
         .inputs
         .iter()

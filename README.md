@@ -33,7 +33,7 @@ Here is my another open-source library :) https://github.com/fzyzcjy/flutter_smo
 ## ✨ Contributors
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-40-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-42-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key) following [all-contributors](https://github.com/all-contributors/all-contributors) specification):
@@ -94,6 +94,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center"><a href="https://github.com/rogurotus"><img src="https://avatars.githubusercontent.com/u/61418195?v=4?s=100" width="100px;" alt="rogurotus"/><br /><sub><b>rogurotus</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=rogurotus" title="Code">💻</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=rogurotus" title="Documentation">📖</a></td>
       <td align="center"><a href="https://github.com/huang12zheng"><img src="https://avatars.githubusercontent.com/u/28038074?v=4?s=100" width="100px;" alt="huang12zheng"/><br /><sub><b>huang12zheng</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=huang12zheng" title="Code">💻</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=huang12zheng" title="Documentation">📖</a></td>
       <td align="center"><a href="https://svenstaro.org"><img src="https://avatars.githubusercontent.com/u/1664?v=4?s=100" width="100px;" alt="Sven-Hendrik Haase"/><br /><sub><b>Sven-Hendrik Haase</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=svenstaro" title="Documentation">📖</a></td>
+      <td align="center"><a href="https://github.com/ngasull"><img src="https://avatars.githubusercontent.com/u/912991?v=4?s=100" width="100px;" alt="Nicolas Gasull"/><br /><sub><b>Nicolas Gasull</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=ngasull" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/codercengiz"><img src="https://avatars.githubusercontent.com/u/45819755?v=4?s=100" width="100px;" alt="codercengiz"/><br /><sub><b>codercengiz</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=codercengiz" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
@@ -118,20 +120,22 @@ More specifically, thanks for all these contributions:
 * [dbsxdbsx](https://github.com/dbsxdbsx): Allow generating multiple Rust and Dart files. Update doc.
 * [SoLongAndThanksForAllThePizza](https://github.com/SoLongAndThanksForAllThePizza): Refactor and enhance SyncReturn to support more types.
 * [hsfzxjy](https://github.com/hsfzxjy): Fix SyncReturn use-after-free bug.
+* [huang12zheng](https://github.com/huang12zheng): Support type aliases. Tweak code generation.
 * [Cupnfish](https://github.com/Cupnfish): Support arrays as function paramters. Allow multi mirror.
 * [alanlzhang](https://github.com/alanlzhang): Add generation for Dart metadata. Enhance module parser.
 * [Zaitam](https://github.com/Zaitam): Fix when method return struct.
 * [AlienKevin](https://github.com/AlienKevin): Add flutter example for macOS. Add doc for Android NDK bug.
-* [huang12zheng](https://github.com/huang12zheng): Tweak code generation.
 * [banool](https://github.com/banool): Fix pubspec parsing. Fix symbol-stripping doc.
 * [efc-mw](https://github.com/efc-mw): Improve Windows encoding handling.
 * [valeth](https://github.com/valeth): Rename callFfi's port.
 * [sccheruku](https://github.com/sccheruku): Prevent double-generating utility.
 * [w-ensink](https://github.com/w-ensink): Improve doc. Fix CI. Refactor. Add tests.
+* [codercengiz](https://github.com/codercengiz): Fix mirroring bug.
 * [Michael-F-Bryan](https://github.com/Michael-F-Bryan): Detect broken bindings.
 * [bus710](https://github.com/bus710): Add a case in troubleshooting.
 * [Syndim](https://github.com/Syndim): Add a bracket to box.
 * [TENX-S](https://github.com/TENX-S): Improve doc. Reproduce a bug.
+* [ngasull](https://github.com/ngasull): Bump sdk.
 * [vincent-herlemont](https://github.com/vincent-herlemont): Loosen version.
 * [CicadaCinema](https://github.com/CicadaCinema): Bump version.
 * [raphaelrobert](https://github.com/raphaelrobert): Remove oudated doc.

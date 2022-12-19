@@ -108,9 +108,16 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
         src.wrapper_name.as_ref().cloned()
     }
 
-    fn wrap_obj(&self, obj: String) -> String {
+    fn wrap_obj(&self, obj: String, wired_fallible_func: bool) -> String {
         match self.wrapper_struct() {
-            Some(wrapper) => format!("{}({})", wrapper, obj),
+            Some(wrapper) => {
+                if wired_fallible_func {
+                    format!("Ok({}({}?))", wrapper, obj)
+                } else {
+                    format!("{}({})", wrapper, obj)
+                }
+            }
+
             None => obj,
         }
     }
@@ -137,7 +144,8 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                     self.context.ir_file,
                     self.context.config,
                 );
-                gen.convert_to_dart(gen.wrap_obj(format!("self{}.{}", unwrap, field_ref)))
+                // wired_fallible is always false here, this parameter is only used for generate_wire_func
+                gen.convert_to_dart(gen.wrap_obj(format!("self{}.{}", unwrap, field_ref), false))
             })
             .collect::<Vec<_>>()
             .join(",\n");

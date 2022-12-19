@@ -238,6 +238,11 @@ pub extern "C" fn wire_get_app_settings(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_get_fallible_app_settings(port_: i64) {
+    wire_get_fallible_app_settings_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_is_app_embedded(port_: i64, app_settings: *mut wire_ApplicationSettings) {
     wire_is_app_embedded_impl(port_, app_settings)
 }
@@ -668,6 +673,16 @@ pub extern "C" fn wire_frb_generator_test(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_type_alias_id(port_: i64, input: u64) {
+    wire_handle_type_alias_id_impl(port_, input)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_type_alias_model(port_: i64, input: u64) {
+    wire_handle_type_alias_model_impl(port_, input)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -788,6 +803,11 @@ pub extern "C" fn new_box_autoadd_DartOpaque_0() -> *mut wire_DartOpaque {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_HideData_0() -> *mut wire_HideData {
     support::new_leak_box_ptr(wire_HideData::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_application_env_0() -> *mut wire_ApplicationEnv {
+    support::new_leak_box_ptr(wire_ApplicationEnv::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1242,7 +1262,8 @@ impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
     fn wire2api(self) -> chrono::DateTime<chrono::Local> {
         let Timestamp { s, ns } = wire2api_timestamp(self);
         chrono::DateTime::<chrono::Local>::from(chrono::DateTime::<chrono::Utc>::from_utc(
-            chrono::NaiveDateTime::from_timestamp(s, ns),
+            chrono::NaiveDateTime::from_timestamp_opt(s, ns)
+                .expect("invalid or out-of-range datetime"),
             chrono::Utc,
         ))
     }
@@ -1250,14 +1271,15 @@ impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
 impl Wire2Api<chrono::NaiveDateTime> for i64 {
     fn wire2api(self) -> chrono::NaiveDateTime {
         let Timestamp { s, ns } = wire2api_timestamp(self);
-        chrono::NaiveDateTime::from_timestamp(s, ns)
+        chrono::NaiveDateTime::from_timestamp_opt(s, ns).expect("invalid or out-of-range datetime")
     }
 }
 impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
     fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
         let Timestamp { s, ns } = wire2api_timestamp(self);
         chrono::DateTime::<chrono::Utc>::from_utc(
-            chrono::NaiveDateTime::from_timestamp(s, ns),
+            chrono::NaiveDateTime::from_timestamp_opt(s, ns)
+                .expect("invalid or out-of-range datetime"),
             chrono::Utc,
         )
     }
@@ -1362,6 +1384,7 @@ impl Wire2Api<ApplicationSettings> for wire_ApplicationSettings {
             version: self.version.wire2api(),
             mode: self.mode.wire2api(),
             env: self.env.wire2api(),
+            env_optional: self.env_optional.wire2api(),
         }
     }
 }
@@ -1395,6 +1418,12 @@ impl Wire2Api<RustOpaque<HideData>> for *mut wire_HideData {
     fn wire2api(self) -> RustOpaque<HideData> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<RustOpaque<HideData>>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<ApplicationEnv> for *mut wire_ApplicationEnv {
+    fn wire2api(self) -> ApplicationEnv {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<ApplicationEnv>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<ApplicationSettings> for *mut wire_ApplicationSettings {
@@ -2096,6 +2125,7 @@ pub struct wire_ApplicationSettings {
     version: *mut wire_uint_8_list,
     mode: i32,
     env: *mut wire_ApplicationEnv,
+    env_optional: *mut wire_ApplicationEnv,
 }
 
 #[repr(C)]
@@ -2623,6 +2653,7 @@ impl NewWithNullPtr for wire_ApplicationSettings {
             version: core::ptr::null_mut(),
             mode: Default::default(),
             env: core::ptr::null_mut(),
+            env_optional: core::ptr::null_mut(),
         }
     }
 }

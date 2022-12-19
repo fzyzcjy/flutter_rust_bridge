@@ -234,6 +234,11 @@ pub fn wire_get_app_settings(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_get_fallible_app_settings(port_: MessagePort) {
+    wire_get_fallible_app_settings_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_is_app_embedded(port_: MessagePort, app_settings: JsValue) {
     wire_is_app_embedded_impl(port_, app_settings)
 }
@@ -644,6 +649,16 @@ pub fn wire_frb_generator_test(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_type_alias_id(port_: MessagePort, input: u64) {
+    wire_handle_type_alias_id_impl(port_, input)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_type_alias_model(port_: MessagePort, input: u64) {
+    wire_handle_type_alias_model_impl(port_, input)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -876,7 +891,8 @@ impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
     fn wire2api(self) -> chrono::DateTime<chrono::Local> {
         let Timestamp { s, ns } = wire2api_timestamp(self);
         chrono::DateTime::<chrono::Local>::from(chrono::DateTime::<chrono::Utc>::from_utc(
-            chrono::NaiveDateTime::from_timestamp(s, ns),
+            chrono::NaiveDateTime::from_timestamp_opt(s, ns)
+                .expect("invalid or out-of-range datetime"),
             chrono::Utc,
         ))
     }
@@ -884,14 +900,15 @@ impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
 impl Wire2Api<chrono::NaiveDateTime> for i64 {
     fn wire2api(self) -> chrono::NaiveDateTime {
         let Timestamp { s, ns } = wire2api_timestamp(self);
-        chrono::NaiveDateTime::from_timestamp(s, ns)
+        chrono::NaiveDateTime::from_timestamp_opt(s, ns).expect("invalid or out-of-range datetime")
     }
 }
 impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
     fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
         let Timestamp { s, ns } = wire2api_timestamp(self);
         chrono::DateTime::<chrono::Utc>::from_utc(
-            chrono::NaiveDateTime::from_timestamp(s, ns),
+            chrono::NaiveDateTime::from_timestamp_opt(s, ns)
+                .expect("invalid or out-of-range datetime"),
             chrono::Utc,
         )
     }
@@ -967,8 +984,8 @@ impl Wire2Api<ApplicationSettings> for JsValue {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
-            4,
-            "Expected 4 elements, got {}",
+            5,
+            "Expected 5 elements, got {}",
             self_.length()
         );
         ApplicationSettings {
@@ -976,6 +993,7 @@ impl Wire2Api<ApplicationSettings> for JsValue {
             version: self_.get(1).wire2api(),
             mode: self_.get(2).wire2api(),
             env: self_.get(3).wire2api(),
+            env_optional: self_.get(4).wire2api(),
         }
     }
 }
@@ -1426,6 +1444,11 @@ impl Wire2Api<Option<DartOpaque>> for JsValue {
 }
 impl Wire2Api<Option<RustOpaque<HideData>>> for JsValue {
     fn wire2api(self) -> Option<RustOpaque<HideData>> {
+        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+    }
+}
+impl Wire2Api<Option<ApplicationEnv>> for JsValue {
+    fn wire2api(self) -> Option<ApplicationEnv> {
         (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
     }
 }

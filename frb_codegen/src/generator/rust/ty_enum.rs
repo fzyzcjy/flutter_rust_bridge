@@ -198,7 +198,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
         }
     }
 
-    fn wrap_obj(&self, obj: String) -> String {
+    fn wrap_obj(&self, obj: String, _wired_fallible_func: bool) -> String {
         match self.wrapper_struct() {
             Some(wrapper) => format!("{}({})", wrapper, obj),
             None => obj,

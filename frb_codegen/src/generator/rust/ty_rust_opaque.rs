@@ -55,7 +55,7 @@ impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
         obj
     }
 
-    fn wrap_obj(&self, obj: String) -> String {
+    fn wrap_obj(&self, obj: String, _wired_fallible_func: bool) -> String {
         obj
     }
 

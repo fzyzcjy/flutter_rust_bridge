@@ -1,3 +1,13 @@
+## 1.55.1
+
+* Fix mirroring to support `Result` return type and `Option<T>` field #907 (thanks @codercengiz)
+* Bump Dart SDK to 2.15 #906 (thanks @ngasull)
+
+## 1.55.0
+
+* Bump chrono #905 (thanks @Roms1383)
+* Support type aliases #900 (thanks @huang12zheng)
+
 ## 1.54.1
 
 * Delete dart_sys #890 (thanks @rogurotus)
