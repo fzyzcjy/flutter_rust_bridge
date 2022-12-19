@@ -1,3 +1,7 @@
+## Unreleased
+
+* Fix lookup symbol store dart post cobject #898 (thanks @Roms1383)
+
 ## 1.56.0
 
 * Return error when rust input file cannot be read #912 (thanks @w1th0utnam3)
