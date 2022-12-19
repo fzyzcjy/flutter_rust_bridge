@@ -6,7 +6,7 @@ use std::path::Path;
 use std::path::PathBuf;
 use std::str::FromStr;
 
-use anyhow::{anyhow, Result};
+use anyhow::{anyhow, Context, Result};
 use clap::IntoApp;
 use clap::Parser;
 use convert_case::{Case, Casing};
@@ -398,15 +398,23 @@ fn path_to_string(path: PathBuf) -> Result<String, OsString> {
 }
 
 impl Opts {
-    pub fn get_ir_file(&self) -> IrFile {
+    pub fn get_ir_file(&self) -> Result<IrFile> {
         // info!("Phase: Parse source code to AST");
-        let source_rust_content = fs::read_to_string(&self.rust_input_path)
-            .unwrap_or_else(|_| panic!("panic with file: {}", &self.rust_input_path));
+        let source_rust_content = fs::read_to_string(&self.rust_input_path).with_context(|| {
+            format!(
+                "Failed to read rust input file \"{}\"",
+                self.rust_input_path
+            )
+        })?;
         let file_ast = syn::parse_file(&source_rust_content).unwrap();
 
         // info!("Phase: Parse AST to IR");
 
-        parser::parse(&source_rust_content, file_ast, &self.manifest_path)
+        Ok(parser::parse(
+            &source_rust_content,
+            file_ast,
+            &self.manifest_path,
+        ))
     }
 
     pub fn dart_api_class_name(&self) -> String {

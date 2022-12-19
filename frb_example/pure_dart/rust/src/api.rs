@@ -601,6 +601,7 @@ pub struct _ApplicationSettings {
     pub version: String,
     pub mode: ApplicationMode,
     pub env: Box<ApplicationEnv>,
+    pub env_optional: Option<ApplicationEnv>,
 }
 
 #[frb(mirror(ApplicationMode))]
@@ -620,6 +621,11 @@ pub struct _ApplicationEnv {
 // This function can directly return an object of the external type ApplicationSettings because it has a mirror
 pub fn get_app_settings() -> ApplicationSettings {
     external_lib::get_app_settings()
+}
+
+// This function can return a Result, that includes an object of the external type ApplicationSettings because it has a mirror
+pub fn get_fallible_app_settings() -> anyhow::Result<ApplicationSettings> {
+    Ok(external_lib::get_app_settings())
 }
 
 // Similarly, receiving an object from Dart works. Please note that the mirror definition must match entirely and the original struct must have all its fields public.

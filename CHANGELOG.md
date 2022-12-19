@@ -1,3 +1,12 @@
+## 1.56.0
+
+* Return error when rust input file cannot be read #912 (thanks @w1th0utnam3)
+
+## 1.55.1
+
+* Fix mirroring to support `Result` return type and `Option<T>` field #907 (thanks @codercengiz)
+* Bump Dart SDK to 2.15 #906 (thanks @ngasull)
+
 ## 1.55.0
 
 * Bump chrono #905 (thanks @Roms1383)

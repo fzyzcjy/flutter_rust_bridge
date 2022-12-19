@@ -522,7 +522,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge"
-version = "1.55.0"
+version = "1.56.0"
 dependencies = [
  "allo-isolate",
  "anyhow",
@@ -546,7 +546,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_codegen"
-version = "1.55.0"
+version = "1.56.0"
 dependencies = [
  "anyhow",
  "cargo_metadata",
@@ -613,11 +613,11 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_macros"
-version = "1.55.0"
+version = "1.56.0"
 
 [[package]]
 name = "frb_dart_bindgen"
-version = "1.55.0"
+version = "1.56.0"
 dependencies = [
  "allo-isolate",
  "dunce",

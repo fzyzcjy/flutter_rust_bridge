@@ -34,7 +34,7 @@ impl<'a> TypeRustGeneratorTrait for TypeSyncReturnGenerator<'a> {
             fn static_checks(&self) -> Option<String>;
             fn wrapper_struct(&self) -> Option<String>;
             fn self_access(&self, obj: String) -> String;
-            fn wrap_obj(&self, obj: String) -> String;
+            fn wrap_obj(&self, obj: String, _wired_fallible_func: bool) -> String;
             fn convert_to_dart(&self, obj: String) -> String;
             fn structs(&self) -> String;
             fn allocate_funcs(

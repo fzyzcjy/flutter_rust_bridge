@@ -6,6 +6,7 @@ pub struct ApplicationSettings {
     pub version: String,
     pub mode: ApplicationMode,
     pub env: Box<ApplicationEnv>,
+    pub env_optional: Option<ApplicationEnv>,
 }
 
 #[derive(Debug, Clone)]
@@ -52,6 +53,7 @@ impl ApplicationSettings {
                     .map(|(k, v)| ApplicationEnvVar(k.into(), v))
                     .collect(),
             }),
+            env_optional: None,
         }
     }
 }
