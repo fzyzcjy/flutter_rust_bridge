@@ -1,6 +1,6 @@
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 // ignore: implementation_imports
-import 'package:flutter_rust_bridge/src/ffi/io.dart' as frb_io;
+import 'package:flutter_rust_bridge/src/ffi/dart_cobject.dart' as dart_cobject;
 import 'package:flutter_rust_bridge_example/bridge_definitions.dart';
 import 'package:test/test.dart';
 import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
@@ -26,7 +26,7 @@ void main(List<String> args) async {
     test('allocate a lot of zero copy data to check that it is properly freed', () async {
       const n = 10000;
       int calls = 0;
-      frb_io.ioTestTool!.onExternalTypedDataFinalizer.add(expectAsync1(
+      dart_cobject.testTool!.onExternalTypedDataFinalizer.add(expectAsync1(
         (length) {
           expect(length, n);
           calls++;

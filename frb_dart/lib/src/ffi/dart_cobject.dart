@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:ffi' as ffi;
 import 'dart:ffi';
-import 'dart:io';
 export 'dart:ffi' show NativePort, DynamicLibrary;
 import 'dart:typed_data';
 import 'dart_native_api.dart';
@@ -132,8 +131,8 @@ extension DartCObjectExt on Dart_CObject {
         externalTypedData.callback.asFunction<DartExternalTypedDataFinalizer>();
     handleFinalizer(externalTypedData.length, externalTypedData.peer);
 
-    if (Platform.environment.containsKey('FRB_TEST')) {
-      for (var handler in ioTestTool!.onExternalTypedDataFinalizer) {
+    if (bool.fromEnvironment("FRB_TEST")) {
+      for (var handler in testTool!.onExternalTypedDataFinalizer) {
         handler(externalTypedData.length);
       }
     }
@@ -170,5 +169,5 @@ class _TestTool {
   final Set<void Function(int)> onExternalTypedDataFinalizer = {};
 }
 
-final ioTestTool =
-    Platform.environment.containsKey('FRB_TEST') ? _TestTool() : null;
+final testTool =
+    bool.fromEnvironment("ENABLE_FRB_FFI_TEST_TOOL") ? _TestTool() : null;
