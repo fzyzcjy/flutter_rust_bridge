@@ -167,7 +167,8 @@ typedef DartExternalTypedDataFinalizer = void Function(
 
 class TestTool {
   final Set<void Function(int)> onExternalTypedDataFinalizer = {};
+  TestTool._();
 }
 
 final testTool =
-    bool.fromEnvironment("ENABLE_FRB_FFI_TEST_TOOL") ? TestTool() : null;
+    bool.fromEnvironment("ENABLE_FRB_FFI_TEST_TOOL") ? TestTool._() : null;
