@@ -100,8 +100,25 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
     fn bail(err: clap::ErrorKind, message: Cow<str>) {
         RawOpts::command().error(err, message).exit()
     }
+
+    fn path_exists_or_bail(path: Cow<str>, message: Cow<str>) {
+        if !Path::new(path.as_ref()).exists() {
+            bail(
+                clap::ErrorKind::ValueValidation,
+                format!("{} \"{}\" does not exist", message, path).into(),
+            )
+        }
+    }
+
     // rust input path(s)
     let rust_input_paths = get_valid_canon_paths(&raw.rust_input);
+    // ensure that all input paths exist
+    rust_input_paths.iter().for_each(|p| {
+        path_exists_or_bail(
+            p.into(),
+            "rust input file (argument --rust-input-file)".into(),
+        )
+    });
 
     // dart output path(s)
     let dart_output_paths = get_valid_canon_paths(&raw.dart_output);
@@ -118,7 +135,8 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
             .iter()
             .map(|each_rust_input_path| {
                 fallback_rust_crate_dir(each_rust_input_path)
-                    .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("rust_crate_dir")))
+                    .with_context(|| format!("{}", format_fail_to_guess_error("rust_crate_dir")))
+                    .expect("error")
             })
             .collect::<Vec<_>>()
     });
@@ -133,6 +151,14 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
         );
     }
 
+    // ensure that rust crate dirs exist
+    rust_crate_dirs.iter().for_each(|p| {
+        path_exists_or_bail(
+            p.into(),
+            "rust crate dir (argument --rust-crate-dir)".into(),
+        )
+    });
+
     // manifest path(s)
     let manifest_paths = rust_crate_dirs
         .iter()
@@ -142,6 +168,11 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
             path_to_string(path).unwrap()
         })
         .collect::<Vec<_>>();
+
+    // ensure that manifest paths exist
+    manifest_paths
+        .iter()
+        .for_each(|p| path_exists_or_bail(p.into(), "rust crate manifest file".into()));
 
     // rust output path(s)
     let rust_output_paths = get_outputs_for_flag_requires_full_data(
@@ -251,7 +282,8 @@ fn get_outputs_for_flag_requires_full_data(
     strings.clone().unwrap_or_else(|| -> Vec<String> {
         if fallback_paths.len() == 1 {
             vec![fallback_func(&fallback_paths[0])
-                .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error(field_str)))]
+                    .with_context(|| format!("{} {:?}", format_fail_to_guess_error(field_str), fallback_paths))
+                    .expect("error")]
         } else {
             let strs = field_str.split('_').collect::<Vec<_>>();
             let raw_str = strs.join(" ");
@@ -367,14 +399,25 @@ fn fallback_dart_root(dart_output_path: &str) -> Result<String> {
 
 fn fallback_class_name(rust_crate_dir: &str) -> Result<String> {
     let cargo_toml_path = Path::new(rust_crate_dir).join("Cargo.toml");
-    let cargo_toml_content = fs::read_to_string(cargo_toml_path)?;
+    let cargo_toml_content = fs::read_to_string(&cargo_toml_path)
+        .with_context(|| format!("could not read file \"{}\"", cargo_toml_path.display()))?;
 
     let cargo_toml_value = cargo_toml_content.parse::<Value>()?;
     let package_name = cargo_toml_value
         .get("package")
-        .ok_or_else(|| anyhow!("no `package` in Cargo.toml"))?
+        .ok_or_else(|| {
+            anyhow!(
+                "no `package` in Cargo.toml (\"{}\")",
+                cargo_toml_path.display()
+            )
+        })?
         .get("name")
-        .ok_or_else(|| anyhow!("no `name` in Cargo.toml"))?
+        .ok_or_else(|| {
+            anyhow!(
+                "no `name` in Cargo.toml (\"{}\")",
+                cargo_toml_path.display()
+            )
+        })?
         .as_str()
         .ok_or_else(|| anyhow!(""))?;
 
