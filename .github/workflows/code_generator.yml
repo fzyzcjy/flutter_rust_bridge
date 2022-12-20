@@ -63,15 +63,14 @@ jobs:
           git sparse-checkout set runtime/include
           cd ..
           cp -rf ./sdk/runtime/include/* ./frb_rust/src/dart_api_dl/
+          cp -rf ./sdk/runtime/include/* ./frb_dart/dart_api_dl/
           rm -r sdk
           git diff --exit-code
         shell: bash
 
-      - name: Run frb_dart bindgen
-        working-directory: ./frb_dart/bindgen
-        run: cargo run
-        env:
-          RUST_LOG: debug
+      - name: Run frb_dart ffigen 
+        working-directory: ./frb_dart
+        run: dart run ffigen
 
       # NOTE in windows, need "\\" instead of "/"
       - name: Run codegen to pure_dart example (non-windows)

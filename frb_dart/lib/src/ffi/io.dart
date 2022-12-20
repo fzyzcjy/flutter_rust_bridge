@@ -4,7 +4,7 @@ import 'dart:ffi';
 import 'dart:io';
 export 'dart:ffi' show NativePort, DynamicLibrary;
 import 'dart:typed_data';
-import 'io_dartcobject.dart';
+import 'dart_native_api.dart';
 import 'stub.dart' show FlutterRustBridgeWireBase;
 export 'stub.dart'
     show castInt, castNativeBigInt, FlutterRustBridgeWireBase, WasmModule;
@@ -34,26 +34,26 @@ class DartApiDl {
   }
 }
 
-typedef WireSyncReturn = ffi.Pointer<DartCObject>;
+typedef WireSyncReturn = ffi.Pointer<Dart_CObject>;
 
 dynamic wireSyncReturnIntoDart(WireSyncReturn syncReturn) =>
     syncReturn.ref.intoDart();
 
-extension DartCObjectExt on DartCObject {
+extension DartCObjectExt on Dart_CObject {
   dynamic intoDart() {
-    switch (ty) {
-      case DartCObjectType.DartNull:
+    switch (type) {
+      case Dart_CObject_Type.Dart_CObject_kNull:
         return null;
-      case DartCObjectType.DartBool:
+      case Dart_CObject_Type.Dart_CObject_kBool:
         return value.as_bool;
-      case DartCObjectType.DartInt32:
+      case Dart_CObject_Type.Dart_CObject_kInt32:
         return value.as_int32;
-      case DartCObjectType.DartInt64:
+      case Dart_CObject_Type.Dart_CObject_kInt64:
         return value.as_int64;
-      case DartCObjectType.DartDouble:
+      case Dart_CObject_Type.Dart_CObject_kDouble:
         return value.as_double;
 
-      case DartCObjectType.DartString:
+      case Dart_CObject_Type.Dart_CObject_kString:
         // `DartCObject` strings being encoded with std::ffi::CString assert us nul-termination.
         // See [allo-isolate's String::into_dart](https://github.com/sunshine-protocol/allo-isolate/blob/71b9760993d64ef46794176ca276d1cc637b2599/src/into_dart.rs#L106)
         // and [std::ffi::CString](https://doc.rust-lang.org/nightly/std/ffi/struct.CString.html)
@@ -63,20 +63,20 @@ extension DartCObjectExt on DartCObject {
         }
         return utf8.decode(value.as_string.cast<ffi.Uint8>().asTypedList(len));
 
-      case DartCObjectType.DartArray:
+      case Dart_CObject_Type.Dart_CObject_kArray:
         return List.generate(value.as_array.length,
             (i) => value.as_array.values.elementAt(i).value.ref.intoDart());
 
-      case DartCObjectType.DartTypedData:
+      case Dart_CObject_Type.Dart_CObject_kTypedData:
         return _typedDataIntoDart(
-          value.as_typed_data.ty,
+          value.as_typed_data.type,
           value.as_typed_data.values,
           value.as_typed_data.length,
         ).clone();
 
-      case DartCObjectType.DartExternalTypedData:
+      case Dart_CObject_Type.Dart_CObject_kExternalTypedData:
         final externalTypedData = _typedDataIntoDart(
-          value.as_external_typed_data.ty,
+          value.as_external_typed_data.type,
           value.as_external_typed_data.data,
           value.as_external_typed_data.length,
         ).view;
@@ -85,17 +85,22 @@ extension DartCObjectExt on DartCObject {
           // Copy the cleanup info into a finalization token:
           // `value`'s underlying memory will probably be freed
           // before the zero-copy finalizer is called.
-          _ExternalTypedDataFinalizerArgs(value.as_external_typed_data),
+          _ExternalTypedDataFinalizerArgs(
+            length: value.as_external_typed_data.length,
+            peer: value.as_external_typed_data.peer,
+            callback: value.as_external_typed_data.callback
+                .cast<ffi.NativeFunction<NativeExternalTypedDataFinalizer>>(),
+          ),
         );
         return externalTypedData;
 
-      case DartCObjectType.DartSendPort:
-      case DartCObjectType.DartCapability:
-      case DartCObjectType.DartNativePointer:
-      case DartCObjectType.DartUnsupported:
-      case DartCObjectType.DartNumberOfTypes:
+      case Dart_CObject_Type.Dart_CObject_kSendPort:
+      case Dart_CObject_Type.Dart_CObject_kCapability:
+      case Dart_CObject_Type.Dart_CObject_kNativePointer:
+      case Dart_CObject_Type.Dart_CObject_kUnsupported:
+      case Dart_CObject_Type.Dart_CObject_kNumberOfTypes:
       default:
-        throw Exception("Can't read invalid data type $ty");
+        throw Exception("Can't read invalid data type $type");
     }
   }
 
@@ -105,7 +110,7 @@ extension DartCObjectExt on DartCObject {
     int nValues,
   ) {
     switch (ty) {
-      case DartTypedDataType.ByteData:
+      case Dart_TypedData_Type.Dart_TypedData_kByteData:
         return _TypedData<ByteData>(
           ByteData.view(
             typedValues.cast<ffi.Uint8>().asTypedList(nValues).buffer,
@@ -114,40 +119,40 @@ extension DartCObjectExt on DartCObject {
             Uint8List.fromList(view.buffer.asUint8List()).buffer,
           ),
         );
-      case DartTypedDataType.Int8:
+      case Dart_TypedData_Type.Dart_TypedData_kInt8:
         final view = typedValues.cast<ffi.Int8>().asTypedList(nValues);
         return _TypedData<Int8List>(view, Int8List.fromList);
-      case DartTypedDataType.Uint8:
+      case Dart_TypedData_Type.Dart_TypedData_kUint8:
         final view = typedValues.cast<ffi.Uint8>().asTypedList(nValues);
         return _TypedData<Uint8List>(view, Uint8List.fromList);
-      case DartTypedDataType.Int16:
+      case Dart_TypedData_Type.Dart_TypedData_kInt16:
         final view = typedValues.cast<ffi.Int16>().asTypedList(nValues);
         return _TypedData<Int16List>(view, Int16List.fromList);
-      case DartTypedDataType.Uint16:
+      case Dart_TypedData_Type.Dart_TypedData_kUint16:
         final view = typedValues.cast<ffi.Uint16>().asTypedList(nValues);
         return _TypedData<Uint16List>(view, Uint16List.fromList);
-      case DartTypedDataType.Int32:
+      case Dart_TypedData_Type.Dart_TypedData_kInt32:
         final view = typedValues.cast<ffi.Int32>().asTypedList(nValues);
         return _TypedData<Int32List>(view, Int32List.fromList);
-      case DartTypedDataType.Uint32:
+      case Dart_TypedData_Type.Dart_TypedData_kUint32:
         final view = typedValues.cast<ffi.Uint32>().asTypedList(nValues);
         return _TypedData<Uint32List>(view, Uint32List.fromList);
-      case DartTypedDataType.Int64:
+      case Dart_TypedData_Type.Dart_TypedData_kInt64:
         final view = typedValues.cast<ffi.Int64>().asTypedList(nValues);
         return _TypedData<Int64List>(view, Int64List.fromList);
-      case DartTypedDataType.Uint64:
+      case Dart_TypedData_Type.Dart_TypedData_kUint64:
         final view = typedValues.cast<ffi.Uint64>().asTypedList(nValues);
         return _TypedData<Uint64List>(view, Uint64List.fromList);
-      case DartTypedDataType.Float32:
+      case Dart_TypedData_Type.Dart_TypedData_kFloat32:
         final view = typedValues.cast<ffi.Float>().asTypedList(nValues);
         return _TypedData<Float32List>(view, Float32List.fromList);
-      case DartTypedDataType.Float64:
+      case Dart_TypedData_Type.Dart_TypedData_kFloat64:
         final view = typedValues.cast<ffi.Double>().asTypedList(nValues);
         return _TypedData<Float64List>(view, Float64List.fromList);
 
-      case DartTypedDataType.Uint8Clamped:
-      case DartTypedDataType.Float32x4:
-      case DartTypedDataType.Invalid:
+      case Dart_TypedData_Type.Dart_TypedData_kUint8Clamped:
+      case Dart_TypedData_Type.Dart_TypedData_kFloat32x4:
+      case Dart_TypedData_Type.Dart_TypedData_kInvalid:
       default:
         throw Exception("Can't read invalid typed data type $ty");
     }
@@ -181,11 +186,11 @@ class _ExternalTypedDataFinalizerArgs {
   final ffi.Pointer<ffi.NativeFunction<NativeExternalTypedDataFinalizer>>
       callback;
 
-  _ExternalTypedDataFinalizerArgs(DartNativeExternalTypedData typedData)
-      : length = typedData.length,
-        peer = typedData.peer,
-        callback = typedData.callback
-            .cast<ffi.NativeFunction<NativeExternalTypedDataFinalizer>>();
+  _ExternalTypedDataFinalizerArgs({
+    required this.length,
+    required this.peer,
+    required this.callback,
+  });
 }
 
 typedef NativeExternalTypedDataFinalizer = ffi.Void Function(
