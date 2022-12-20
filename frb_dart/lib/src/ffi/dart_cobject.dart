@@ -131,7 +131,7 @@ extension DartCObjectExt on Dart_CObject {
         externalTypedData.callback.asFunction<DartExternalTypedDataFinalizer>();
     handleFinalizer(externalTypedData.length, externalTypedData.peer);
 
-    if (bool.fromEnvironment("FRB_TEST")) {
+    if (bool.fromEnvironment("ENABLE_FRB_FFI_TEST_TOOL")) {
       for (var handler in testTool!.onExternalTypedDataFinalizer) {
         handler(externalTypedData.length);
       }
