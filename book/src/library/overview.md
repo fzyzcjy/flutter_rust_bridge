@@ -34,3 +34,5 @@ It incorporates all functionality present in this guide and some more.
 Please note, this entire section will be outdated & need to be overhauled once
 ["Native Assets"](https://github.com/dart-lang/sdk/issues/50565) are added into Dart.
 A lot of the techniques described here are merely workarounds until Dart supports Native Assets.
+
+Also, this guide does not currently cover web support. Feel free to PR to add web support!
