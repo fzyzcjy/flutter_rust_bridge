@@ -34,7 +34,7 @@ class DartApiDl {
 
 typedef WireSyncReturn = ffi.Pointer<Dart_CObject>;
 
-dynamic wireSyncReturnIntoDart(WireSyncReturn syncReturn) =>
+List<dynamic> wireSyncReturnIntoDart(WireSyncReturn syncReturn) =>
     syncReturn.ref.intoDart();
 
 typedef PlatformPointer = ffi.Pointer<ffi.Void>;

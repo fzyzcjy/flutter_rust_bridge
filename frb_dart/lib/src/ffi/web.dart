@@ -115,7 +115,7 @@ abstract class FlutterRustBridgeWireBase {
 
 typedef WireSyncReturn = List<dynamic>;
 
-dynamic wireSyncReturnIntoDart(WireSyncReturn syncReturn) => syncReturn;
+List<dynamic> wireSyncReturnIntoDart(WireSyncReturn syncReturn) => syncReturn;
 
 class FlutterRustBridgeWasmWireBase<T extends WasmModule>
     extends FlutterRustBridgeWireBase {

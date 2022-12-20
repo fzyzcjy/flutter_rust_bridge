@@ -81,6 +81,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
     }
     try {
       final syncReturnAsDartObject = wireSyncReturnIntoDart(syncReturn);
+      assert(syncReturnAsDartObject.length == 2);
       final rawReturn = syncReturnAsDartObject[0];
       final isSuccess = syncReturnAsDartObject[1];
       if (isSuccess) {

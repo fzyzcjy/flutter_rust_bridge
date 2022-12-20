@@ -53,7 +53,7 @@ extension StoreDartPostCObjectExt on FlutterRustBridgeWireBase {
 }
 
 /// Generates the dynamic Dart object from either an FFI struct or a JS value
-dynamic wireSyncReturnIntoDart(WireSyncReturn syncReturn) =>
+List<dynamic> wireSyncReturnIntoDart(WireSyncReturn syncReturn) =>
     throw UnimplementedError();
 
 /// Whether the web platform has been isolated by COOP and COEP headers,
