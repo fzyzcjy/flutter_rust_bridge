@@ -1,4 +1,5 @@
 // flutter_rust_bridge auto-generated this file with frb_dart
+// ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names, unused_field, library_private_types_in_public_api
 
 // AUTO GENERATED FILE, DO NOT EDIT.
 //
