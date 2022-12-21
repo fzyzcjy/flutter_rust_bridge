@@ -1,4 +1,4 @@
-## Unreleased
+## 1.56.1
 
 * Fix lookup symbol store dart post cobject #898 (thanks @Roms1383)
 
