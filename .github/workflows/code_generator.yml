@@ -63,7 +63,6 @@ jobs:
           git sparse-checkout set runtime/include
           cd ..
           cp -rf ./sdk/runtime/include/* ./frb_rust/src/dart_api_dl/
-          cp -rf ./sdk/runtime/include/* ./frb_dart/dart_api_dl/
           rm -r sdk
           git diff --exit-code
         shell: bash
