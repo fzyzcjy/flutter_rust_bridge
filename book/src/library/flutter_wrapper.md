@@ -58,7 +58,7 @@ DynamicLibrary createLibraryImpl() {
 ```
 ```dart
 // lib/src/ffi/web.dart
-import 'package:mimir/mimir.dart';
+import 'package:library_name/library_name.dart';
 
 WasmModule createLibraryImpl() {
   // TODO add web support. See:

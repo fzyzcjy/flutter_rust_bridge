@@ -98,7 +98,7 @@ Replace all instances of `library_name` below with your library name.
 ```bash
 #!/bin/bash
 
-CURR_VERSION=mimir-v`awk '/^version: /{print $2}' packages/library_name/pubspec.yaml`
+CURR_VERSION=library_name-v`awk '/^version: /{print $2}' packages/library_name/pubspec.yaml`
 
 # iOS & macOS
 APPLE_HEADER="release_tag_name = '$CURR_VERSION' # generated; do not edit"
