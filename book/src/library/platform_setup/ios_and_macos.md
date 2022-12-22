@@ -42,7 +42,7 @@ Frameworks/*
 !Frameworks/.gitkeep
 ```
 
-### `ios/library_name.podspec` and `macos/library_name.podspec` (for Cocoapods)
+### `ios/flutter_library_name.podspec` and `macos/flutter_library_name.podspec` (for Cocoapods)
 We cannot use the CMake approach taken on other platforms with Cocoapods,
 so we do something a bit different here. `.podspec` files are actually just ruby files;
 due to this observation, we can access the system shell to make arbitrary changes.
@@ -52,7 +52,7 @@ it is much more straightforward to simply use bash/zsh.
 Replace all instances of `library_name` and `LibraryName` below with your library name.
 Also, replace other variables (i.e. `YourGitHubAccount` and `repo_name`) as needed.
 
-Note: the same exact `library_name.podspec` is used for both iOS and macOS;
+Note: the same exact `flutter_library_name.podspec` is used for both iOS and macOS;
 you can thank the `XCFramework` for this simplicity.
 ```ruby
 release_tag_name = 'library_name-v0.0.0' # generated; do not edit
