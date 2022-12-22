@@ -13,15 +13,15 @@ The rest of this guide assumes you have the following tools installed on any dev
 ### Optional
 If you would like to build your binaries (for Flutter devices) locally in addition to CI 
 (say, to test on a real device or emulator), you will additionally need the following:
-- Compile to macOS/iOS targets
+- To compile to macOS/iOS targets
   - macOS
-- Cross-compile to Android targets
+- To cross-compile to Android targets
   - [Android NDK](https://developer.android.com/ndk/downloads)
     - Most NDK versions should work nowadays due to fixes in `cargo-ndk`
       - Previously, NDK version 21 (`r21e`) was the only one that could be used easily
         - You might see reference to this elsewhere, but that is largely out of date
-      - API level 25 (`r25b`) was working at the time of writing this documentation
-- Cross-compile to Windows/Linux targets
+      - NDK version 25 (`r25b`) was working at the time of writing this documentation
+- To cross-compile to Windows/Linux targets
   - [Zig](https://ziglang.org/learn/getting-started/#installing-zig)
   - llvm (with `clang-cl`!)
     - Need to run `brew install llvm` on macOS since Apple's llvm doesn't have it

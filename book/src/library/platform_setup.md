@@ -11,7 +11,7 @@ Unfortunately, at the time of writing, pub.dev has a hard 100 MB upload limit an
 discourages distributing platform-specific binaries through pub.dev directly.
 In the future, hopefully with Native Assets, there will be a way to distribute
 our Rust binaries through pub.dev, or something similar, which will make
-distribution as a library author much more convenient.
+distribution as a library author *much* more convenient.
 
 In the meantime, however, we will need to work around these limitations. There are
 many ways to distribute the binaries ourselves, outside of pub.dev, but in this
@@ -51,13 +51,13 @@ based on the target platform.
 Example: on iOS/macOS, this bundle is an XCFramework, on Windows/Linux, it is a `.tar.gz`.
 2. These binaries are uploaded to somewhere online; as mentioned previously, we will use
 GitHub releases in this guide (which is [automated in ci](ci.md)).
-2. When the Dart tooling builds our library (such as when an application consuming
+3. When the Dart tooling builds our library (such as when an application consuming
 our library is built), it invokes the platform specific build process.
 We hijack this build process by downloading a copy of the binaries for the needed platform,
 *if not already present on the filesystem*. This last part is the key; it allows us to run
 integration tests locally and in CI by providing our own copy of the binaries instead of
 forcing our build process to always fetch the binaries from GitHub releases.
-3. After the binaries are stored locally (either by being copied to the proper folder(s)
+4. After the binaries are stored locally (either by being copied to the proper folder(s)
 or by fetching them from online), we extract them and place them in the needed locations.
 
 Here are the relevant directories per platform.

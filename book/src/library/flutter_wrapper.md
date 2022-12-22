@@ -76,6 +76,7 @@ import 'ffi/stub.dart'
 LibraryName createLib() => 
     createWrapper(createLibraryImpl());
 ```
+5. Run `melos bs`
 
 Now, inside your Flutter library, you can call `createLib()` to get an instance of the FRB-generated Dart class!
 However, it won't work just yet; we will wire up our Flutter package to use our Rust binaries in the next subsection.
