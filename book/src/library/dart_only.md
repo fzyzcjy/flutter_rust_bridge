@@ -195,6 +195,7 @@ rm $DART_BASE/analysis_options.yaml # we provide our own in repo root
 ( # ffi setup
 cd $DART_BASE
 mkdir -p lib/src/ffi
+
 cat << EOF >> lib/src/ffi/stub.dart
 import 'package:$LIBNAME/src/bridge_generated.dart';
 
@@ -206,6 +207,7 @@ typedef ExternalLibrary = Object;
 $DART_CLASS_NAME createWrapperImpl(ExternalLibrary lib) =>
     throw UnimplementedError();
 EOF
+
 cat << EOF >> lib/src/ffi/io.dart
 import 'dart:ffi';
 
@@ -216,6 +218,7 @@ typedef ExternalLibrary = DynamicLibrary;
 $DART_CLASS_NAME createWrapperImpl(ExternalLibrary dylib) =>
     ${DART_CLASS_NAME}Impl(dylib);
 EOF
+
 cat << EOF >> lib/src/ffi/web.dart
 import 'package:$LIBNAME/src/bridge_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
@@ -225,6 +228,22 @@ typedef ExternalLibrary = WasmModule;
 $DART_CLASS_NAME createWrapperImpl(ExternalLibrary module) =>
     ${DART_CLASS_NAME}Impl.wasm(module);
 EOF
+
+cat << EOF >> lib/src/ffi.dart
+import 'bridge_generated.dart';
+import 'ffi/stub.dart'
+    if (dart.library.io) 'ffi/io.dart'
+    if (dart.library.html) 'ffi/web.dart';
+
+$DART_CLASS_NAME? _wrapper;
+
+$DART_CLASS_NAME createWrapper(ExternalLibrary lib) {
+  _wrapper ??= createWrapperImpl(lib);
+  return _wrapper!;
+}
+EOF
+
+echo "export 'src/ffi.dart';" >> lib/$LIBNAME.dart
 )
 
 # Rust setup
