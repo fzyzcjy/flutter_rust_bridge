@@ -12,7 +12,10 @@ You can just use your library internally in a monorepo,
 
 ## High Level Design
 We will build out our library from scratch, piece by piece, allowing you to include
-only what you want in your library. Here are the components:
+only what you want in your library.
+It is intended that whenever a code snippet/file is shown, you read and understand the 
+content of the snippet so that you can work with your library more easily in the future.
+Anyways, here are the components we will create:
 - Dart-only library
 - Flutter library wrapping the Dart-only library
 - CI/CD with GitHub Actions
@@ -35,4 +38,7 @@ Please note, this entire section will be outdated & need to be overhauled once
 ["Native Assets"](https://github.com/dart-lang/sdk/issues/50565) are added into Dart.
 A lot of the techniques described here are merely workarounds until Dart supports Native Assets.
 
-Also, this guide does not currently cover web support. Feel free to PR to add web support!
+Also, this guide does not currently cover web support, but provides the necessary ground work
+to support web in the future.
+It *may* be worth waiting for Native Assets before trying to come up with a custom solution for WASM.
+Feel free to PR to add web support to this guide!
