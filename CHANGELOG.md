@@ -2,9 +2,6 @@
 
 * Make sync mode support whatever types that classical async mode supports #882 (thanks @ngasull)
 * docs: add Dart/Flutter library setup documentation #899 (thanks @GregoryConrad)
-
-## 1.56.1
-
 * Fix lookup symbol store dart post cobject #898 (thanks @Roms1383)
 
 ## 1.56.0
