@@ -15,7 +15,7 @@ We will build out our library from scratch, piece by piece, allowing you to incl
 only what you want in your library.
 It is intended that whenever a code snippet/file is shown, you read and understand the 
 content of the snippet so that you can work with your library more easily in the future.
-Anyways, here are the components we will create:
+We will create the following components:
 - Dart-only library
 - Flutter library wrapping the Dart-only library
 - CI/CD with GitHub Actions
@@ -35,7 +35,7 @@ It incorporates all functionality present in this guide and some more.
 
 ## Warning!
 Please note, this entire section will be outdated & need to be overhauled once
-["Native Assets"](https://github.com/dart-lang/sdk/issues/50565) are added into Dart.
+["Native Assets"](https://github.com/dart-lang/sdk/issues/50565) are added to Dart.
 A lot of the techniques described here are merely workarounds until Dart supports Native Assets.
 
 Also, this guide does not currently cover web support, but provides the necessary ground work
