@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:flutter_rust_bridge/src/platform_independent.dart';
 import 'package:flutter_rust_bridge/src/utils.dart';
@@ -74,22 +73,27 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   /// Similar to [executeNormal], except that this will return synchronously
   @protected
   S executeSync<S>(FlutterRustBridgeSyncTask task) {
-    final WireSyncReturnStruct raw;
+    final WireSyncReturn syncReturn;
     try {
-      raw = task.callFfi();
+      syncReturn = task.callFfi();
     } catch (err, st) {
       throw FfiException('EXECUTE_SYNC_ABORT', '$err', st);
     }
-
-    var buffer = raw.buffer;
-    if (raw.isSuccess) {
-      final result = task.parseSuccessData(buffer);
-      inner.free_WireSyncReturnStruct(raw);
-      return result;
-    } else {
-      final errMessage = utf8.decode(buffer!);
-      inner.free_WireSyncReturnStruct(raw);
-      throw FfiException('EXECUTE_SYNC', errMessage, null);
+    try {
+      final syncReturnAsDartObject = wireSyncReturnIntoDart(syncReturn);
+      assert(syncReturnAsDartObject.length == 2);
+      final rawReturn = syncReturnAsDartObject[0];
+      final isSuccess = syncReturnAsDartObject[1];
+      if (isSuccess) {
+        return task.parseSuccessData(rawReturn);
+      } else {
+        throw FfiException('EXECUTE_SYNC', rawReturn as String, null);
+      }
+    } catch (err, st) {
+      if (err is FfiException) rethrow;
+      throw FfiException('EXECUTE_SYNC_ABORT', '$err', st);
+    } finally {
+      inner.free_WireSyncReturn(syncReturn);
     }
   }
 
@@ -167,7 +171,7 @@ class FlutterRustBridgeTask<S> extends FlutterRustBridgeBaseTask {
 @immutable
 class FlutterRustBridgeSyncTask<S> extends FlutterRustBridgeBaseTask {
   /// The underlying function to call FFI function, usually the generated wire function
-  final WireSyncReturnStruct Function() callFfi;
+  final WireSyncReturn Function() callFfi;
 
   /// Parse the returned data from the underlying function
   final S Function(dynamic) parseSuccessData;

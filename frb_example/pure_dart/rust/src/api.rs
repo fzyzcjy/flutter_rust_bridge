@@ -23,6 +23,10 @@ pub fn simple_adder(a: i32, b: i32) -> i32 {
     a + b
 }
 
+pub fn simple_adder_sync(a: i32, b: i32) -> SyncReturn<i32> {
+    SyncReturn(a + b)
+}
+
 /**
  Multiline comments are fine,
  but they are not preferred in Rust nor in Dart.
@@ -36,6 +40,19 @@ pub fn primitive_types(my_i32: i32, my_i64: i64, my_f64: f64, my_bool: bool) -> 
     42
 }
 
+pub fn primitive_types_sync(
+    my_i32: i32,
+    my_i64: i64,
+    my_f64: f64,
+    my_bool: bool,
+) -> SyncReturn<i32> {
+    println!(
+        "primitive_types_sync({}, {}, {}, {})",
+        my_i32, my_i64, my_f64, my_bool
+    );
+    SyncReturn(42)
+}
+
 pub fn primitive_u32(my_u32: u32) -> u32 {
     println!("primitive_u32({})", my_u32);
     assert_eq!(my_u32, 0xff112233);
@@ -44,10 +61,24 @@ pub fn primitive_u32(my_u32: u32) -> u32 {
     ret
 }
 
+pub fn primitive_u32_sync(my_u32: u32) -> SyncReturn<u32> {
+    println!("primitive_u32_sync({})", my_u32);
+    assert_eq!(my_u32, 0xff112233);
+    let ret = 0xfe112233;
+    println!("returning {}", ret);
+    SyncReturn(ret)
+}
+
 pub fn handle_string(s: String) -> String {
     println!("handle_string({})", &s);
     let s2 = s.clone();
     s + &s2
+}
+
+pub fn handle_string_sync(s: String) -> SyncReturn<String> {
+    println!("handle_string_sync({})", &s);
+    let s2 = s.clone();
+    SyncReturn(s + &s2)
 }
 
 #[allow(clippy::unused_unit)]
@@ -55,10 +86,20 @@ pub fn handle_return_unit() -> () {
     println!("handle_return_unit()");
 }
 
+pub fn handle_return_unit_sync() -> SyncReturn<()> {
+    println!("handle_return_unit_sync()");
+    SyncReturn(())
+}
+
 // to check that `Vec<u8>` can be used as return type
 pub fn handle_vec_u8(v: Vec<u8>) -> Vec<u8> {
     println!("handle_vec_u8(first few elements: {:?})", &v[..5]);
     v.repeat(2)
+}
+
+pub fn handle_vec_u8_sync(v: Vec<u8>) -> SyncReturn<Vec<u8>> {
+    println!("handle_vec_u8_sync(first few elements: {:?})", &v[..5]);
+    SyncReturn(v.repeat(2))
 }
 
 pub struct VecOfPrimitivePack {
@@ -89,6 +130,21 @@ pub fn handle_vec_of_primitive(n: i32) -> VecOfPrimitivePack {
     }
 }
 
+pub fn handle_vec_of_primitive_sync(n: i32) -> SyncReturn<VecOfPrimitivePack> {
+    SyncReturn(VecOfPrimitivePack {
+        int8list: vec![42i8; n as usize],
+        uint8list: vec![42u8; n as usize],
+        int16list: vec![42i16; n as usize],
+        uint16list: vec![42u16; n as usize],
+        int32list: vec![42i32; n as usize],
+        uint32list: vec![42u32; n as usize],
+        int64list: vec![42i64; n as usize],
+        uint64list: vec![42u64; n as usize],
+        float32list: vec![42.0f32; n as usize],
+        float64list: vec![42.0f64; n as usize],
+    })
+}
+
 pub struct ZeroCopyVecOfPrimitivePack {
     pub int8list: ZeroCopyBuffer<Vec<i8>>,
     pub uint8list: ZeroCopyBuffer<Vec<u8>>,
@@ -117,6 +173,21 @@ pub fn handle_zero_copy_vec_of_primitive(n: i32) -> ZeroCopyVecOfPrimitivePack {
     }
 }
 
+pub fn handle_zero_copy_vec_of_primitive_sync(n: i32) -> SyncReturn<ZeroCopyVecOfPrimitivePack> {
+    SyncReturn(ZeroCopyVecOfPrimitivePack {
+        int8list: ZeroCopyBuffer(vec![42i8; n as usize]),
+        uint8list: ZeroCopyBuffer(vec![42u8; n as usize]),
+        int16list: ZeroCopyBuffer(vec![42i16; n as usize]),
+        uint16list: ZeroCopyBuffer(vec![42u16; n as usize]),
+        int32list: ZeroCopyBuffer(vec![42i32; n as usize]),
+        uint32list: ZeroCopyBuffer(vec![42u32; n as usize]),
+        int64list: ZeroCopyBuffer(vec![42i64; n as usize]),
+        uint64list: ZeroCopyBuffer(vec![42u64; n as usize]),
+        float32list: ZeroCopyBuffer(vec![42.0f32; n as usize]),
+        float64list: ZeroCopyBuffer(vec![42.0f64; n as usize]),
+    })
+}
+
 #[derive(Debug, Clone)]
 pub struct MySize {
     pub width: i32,
@@ -131,12 +202,25 @@ pub fn handle_struct(arg: MySize, boxed: Box<MySize>) -> MySize {
     }
 }
 
+pub fn handle_struct_sync(arg: MySize, boxed: Box<MySize>) -> SyncReturn<MySize> {
+    println!("handle_struct_sync({:?}, {:?})", &arg, &boxed);
+    SyncReturn(MySize {
+        width: arg.width + boxed.width,
+        height: arg.height + boxed.height,
+    })
+}
+
 #[derive(Debug)]
 pub struct NewTypeInt(pub i64);
 
 pub fn handle_newtype(arg: NewTypeInt) -> NewTypeInt {
     println!("handle_newtype({:?})", &arg);
     NewTypeInt(arg.0 * 2)
+}
+
+pub fn handle_newtype_sync(arg: NewTypeInt) -> SyncReturn<NewTypeInt> {
+    println!("handle_newtype_sync({:?})", &arg);
+    SyncReturn(NewTypeInt(arg.0 * 2))
 }
 
 pub fn handle_list_of_struct(mut l: Vec<MySize>) -> Vec<MySize> {
@@ -146,11 +230,25 @@ pub fn handle_list_of_struct(mut l: Vec<MySize>) -> Vec<MySize> {
     ans
 }
 
+pub fn handle_list_of_struct_sync(mut l: Vec<MySize>) -> SyncReturn<Vec<MySize>> {
+    println!("handle_list_of_struct_sync({:?})", &l);
+    let mut ans = l.clone();
+    ans.append(&mut l);
+    SyncReturn(ans)
+}
+
 pub fn handle_string_list(names: Vec<String>) -> Vec<String> {
     for name in &names {
         println!("Hello, {}", name);
     }
     names
+}
+
+pub fn handle_string_list_sync(names: Vec<String>) -> SyncReturn<Vec<String>> {
+    for name in &names {
+        println!("Hello, {}", name);
+    }
+    SyncReturn(names)
 }
 
 #[derive(Debug, Clone)]
@@ -167,6 +265,12 @@ pub fn handle_complex_struct(s: MyTreeNode) -> MyTreeNode {
     s
 }
 
+pub fn handle_complex_struct_sync(s: MyTreeNode) -> SyncReturn<MyTreeNode> {
+    println!("handle_complex_struct_sync({:?})", &s);
+    let s_cloned = s.clone();
+    SyncReturn(s)
+}
+
 // Test if sync return is working as expected by using Vec<u8> as return value.
 pub fn handle_sync_return(mode: String) -> Result<SyncReturn<Vec<u8>>> {
     match &mode[..] {
@@ -175,44 +279,6 @@ pub fn handle_sync_return(mode: String) -> Result<SyncReturn<Vec<u8>>> {
         "PANIC" => panic!("deliberate panic in handle_sync_return_panic"),
         _ => panic!("unknown mode"),
     }
-}
-
-// Test other sync return types except for Vec<u8> since it's being tested in handle_sync_return.
-pub fn handle_sync_bool(input: bool) -> SyncReturn<bool> {
-    SyncReturn(input)
-}
-pub fn handle_sync_u8(input: u8) -> SyncReturn<u8> {
-    SyncReturn(input)
-}
-pub fn handle_sync_u16(input: u16) -> SyncReturn<u16> {
-    SyncReturn(input)
-}
-pub fn handle_sync_u32(input: u32) -> SyncReturn<u32> {
-    SyncReturn(input)
-}
-pub fn handle_sync_u64(input: u64) -> SyncReturn<u64> {
-    SyncReturn(input)
-}
-pub fn handle_sync_i8(input: i8) -> SyncReturn<i8> {
-    SyncReturn(input)
-}
-pub fn handle_sync_i16(input: i16) -> SyncReturn<i16> {
-    SyncReturn(input)
-}
-pub fn handle_sync_i32(input: i32) -> SyncReturn<i32> {
-    SyncReturn(input)
-}
-pub fn handle_sync_i64(input: i64) -> SyncReturn<i64> {
-    SyncReturn(input)
-}
-pub fn handle_sync_f32(input: f32) -> SyncReturn<f32> {
-    SyncReturn(input)
-}
-pub fn handle_sync_f64(input: f64) -> SyncReturn<f64> {
-    SyncReturn(input)
-}
-pub fn handle_sync_string(input: String) -> SyncReturn<String> {
-    SyncReturn(input)
 }
 
 pub fn handle_stream(sink: StreamSink<String>, arg: String) {

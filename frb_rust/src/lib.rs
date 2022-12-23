@@ -3,7 +3,6 @@ use std::panic::{RefUnwindSafe, UnwindSafe};
 pub use flutter_rust_bridge_macros::frb;
 pub use handler::{FfiCallMode, Handler, WrapInfo};
 pub use rust2dart::StreamSink;
-use support::WireSyncReturnData;
 
 pub mod ffi;
 pub use ffi::*;
@@ -21,9 +20,7 @@ mod wasm_bindgen_src;
 
 /// Use this struct in return type of your function, in order to tell the code generator
 /// the function should return synchronously. Otherwise, it is by default asynchronously.
-pub struct SyncReturn<T>(pub T)
-where
-    WireSyncReturnData: From<T>;
+pub struct SyncReturn<T: IntoDart>(pub T);
 
 /// Marker trait for types that are safe to share with Dart and can be dropped
 /// safely in case of a panic.

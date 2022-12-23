@@ -178,7 +178,7 @@ jobs:
         run: cargo build --verbose
       - name: Run tests for pure_dart with vm service
         run: |
-          dart run --enable-vm-service \
+          dart run --enable-vm-service --define=ENABLE_FRB_FFI_TEST_TOOL=true \
             ./frb_example/pure_dart/dart/lib/main_with_vm_service.dart \
             ./target/debug/libflutter_rust_bridge_example.so
 

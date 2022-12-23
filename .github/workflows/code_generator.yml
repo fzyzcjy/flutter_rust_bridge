@@ -67,6 +67,10 @@ jobs:
           git diff --exit-code
         shell: bash
 
+      - name: Run frb_dart ffigen 
+        working-directory: ./frb_dart
+        run: dart run ffigen
+
       # NOTE in windows, need "\\" instead of "/"
       - name: Run codegen to pure_dart example (non-windows)
         if: ${{ inputs.family != 'windows' }}

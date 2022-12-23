@@ -63,7 +63,7 @@ impl<'a> TypeDartGenerator<'a> {
             StructRef(ir) => TypeStructRefGenerator { ir, context }.into(),
             Boxed(ir) => TypeBoxedGenerator { ir, context }.into(),
             EnumRef(ir) => TypeEnumRefGenerator { ir, context }.into(),
-            SyncReturn(ir) => TypeSyncReturnGenerator { ir, context }.into(),
+            SyncReturn(ir) => TypeSyncReturnGenerator::new(ir, context).into(),
             DartOpaque(ir) => TypeDartOpaqueGenerator { ir, context }.into(),
             RustOpaque(ir) => TypeRustOpaqueGenerator { ir, context }.into(),
         }

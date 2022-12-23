@@ -1,10 +1,9 @@
 import 'dart:ffi' as ffi;
 import 'dart:ffi';
 export 'dart:ffi' show NativePort, DynamicLibrary;
+import 'package:flutter_rust_bridge/src/ffi/dart_cobject.dart';
 
-import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
-import 'package:tuple/tuple.dart';
-
+import 'stub.dart' show FlutterRustBridgeWireBase;
 export 'stub.dart'
     show castInt, castNativeBigInt, FlutterRustBridgeWireBase, WasmModule;
 
@@ -13,20 +12,6 @@ typedef NativePortType = int;
 typedef ExternalLibrary = ffi.DynamicLibrary;
 typedef DartPostCObject = ffi.Pointer<
     ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>;
-
-int getPlatformUsize(Uint8List data) {
-  assert(data.length == syncReturnPointerLength);
-  // Rust SyncReturn<usize> type is forced cast to u64.
-  return ByteData.view(data.buffer).getUint64(0);
-}
-
-Tuple2<int, int> parseOpaquePtrAndSizeFrom(Uint8List data) {
-  assert(data.length == 2 * syncReturnPointerLength);
-  return Tuple2(
-    ByteData.view(data.buffer).getUint64(0),
-    ByteData.view(data.buffer).getUint64(syncReturnPointerLength),
-  );
-}
 
 extension StoreDartPostCObjectExt on FlutterRustBridgeWireBase {
   void storeDartPostCObject() {
@@ -42,34 +27,15 @@ class DartApiDl {
   void initApi() {
     _initCode ??= _initFn(ffi.NativeApi.initializeApiDLData);
     if (_initCode != 0) {
-      throw 'Failed to initialize Dart API. Code: $_initCode';
+      throw Exception('Failed to initialize Dart API. Code: $_initCode');
     }
   }
 }
 
-// NOTE for maintainer: Please manually keep in sync with [WireSyncReturnStruct] in Rust
-/// This class is only for internal usage.
-class WireSyncReturnStruct extends ffi.Struct {
-  /// Not to be used by normal users, but has to be public for generated code
-  external ffi.Pointer<ffi.Uint8> ptr;
+typedef WireSyncReturn = ffi.Pointer<Dart_CObject>;
 
-  /// Not to be used by normal users, but has to be public for generated code
-  @ffi.Int32()
-  external int len;
-
-  /// Not to be used by normal users, but has to be public for generated code
-  @ffi.Uint8()
-  external int success;
-
-  Uint8List? get buffer {
-    if (ptr.address == 0) {
-      return null;
-    }
-    return Uint8List.fromList(ptr.asTypedList(len));
-  }
-
-  bool get isSuccess => success > 0;
-}
+List<dynamic> wireSyncReturnIntoDart(WireSyncReturn syncReturn) =>
+    syncReturn.ref.intoDart();
 
 typedef PlatformPointer = ffi.Pointer<ffi.Void>;
 typedef OpaqueTypeFinalizer = NativeFinalizer;

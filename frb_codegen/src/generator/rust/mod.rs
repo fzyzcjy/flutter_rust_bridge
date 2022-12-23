@@ -252,10 +252,10 @@ impl<'a> Generator<'a> {
 
     fn generate_sync_execution_mode_utility(&mut self) -> String {
         self.extern_func_collector.generate(
-            "free_WireSyncReturnStruct",
-            [("val: support::WireSyncReturnStruct", "")],
+            "free_WireSyncReturn",
+            [("ptr: support::WireSyncReturn", "")],
             None,
-            "unsafe { let _ = support::vec_from_leak_ptr(val.ptr, val.len); }",
+            "unsafe { let _ = support::box_from_leak_ptr(ptr); };",
             Io,
         )
     }
@@ -356,7 +356,7 @@ impl<'a> Generator<'a> {
         let (handler_func_name, return_type, code_closure) = match func.mode {
             IrFuncMode::Sync => (
                 "wrap_sync",
-                Some("support::WireSyncReturnStruct"),
+                Some("support::WireSyncReturn"),
                 format!(
                     "{}
                     {}",

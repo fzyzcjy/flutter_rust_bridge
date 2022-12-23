@@ -82,30 +82,31 @@ external FlutterRustBridgeExampleWasmModule get wasmModule;
 class FlutterRustBridgeExampleWasmModule implements WasmModule {
   external Object /* Promise */ call([String? moduleName]);
   external FlutterRustBridgeExampleWasmModule bind(dynamic thisArg, String moduleName);
-  external void wire_draw_mandelbrot(
+  external dynamic /* void */ wire_draw_mandelbrot(
       NativePortType port_, List<dynamic> image_size, List<dynamic> zoom_point, double scale, int num_threads);
 
-  external void wire_passing_complex_structs(NativePortType port_, List<dynamic> root);
+  external dynamic /* void */ wire_passing_complex_structs(NativePortType port_, List<dynamic> root);
 
-  external void wire_returning_structs_with_boxed_fields(NativePortType port_);
+  external dynamic /* void */ wire_returning_structs_with_boxed_fields(NativePortType port_);
 
-  external void wire_off_topic_memory_test_input_array(NativePortType port_, Uint8List input);
+  external dynamic /* void */ wire_off_topic_memory_test_input_array(NativePortType port_, Uint8List input);
 
-  external void wire_off_topic_memory_test_output_zero_copy_buffer(NativePortType port_, int len);
+  external dynamic /* void */ wire_off_topic_memory_test_output_zero_copy_buffer(NativePortType port_, int len);
 
-  external void wire_off_topic_memory_test_output_vec_u8(NativePortType port_, int len);
+  external dynamic /* void */ wire_off_topic_memory_test_output_vec_u8(NativePortType port_, int len);
 
-  external void wire_off_topic_memory_test_input_vec_of_object(NativePortType port_, List<dynamic> input);
+  external dynamic /* void */ wire_off_topic_memory_test_input_vec_of_object(NativePortType port_, List<dynamic> input);
 
-  external void wire_off_topic_memory_test_output_vec_of_object(NativePortType port_, int len);
+  external dynamic /* void */ wire_off_topic_memory_test_output_vec_of_object(NativePortType port_, int len);
 
-  external void wire_off_topic_memory_test_input_complex_struct(NativePortType port_, List<dynamic> input);
+  external dynamic /* void */ wire_off_topic_memory_test_input_complex_struct(
+      NativePortType port_, List<dynamic> input);
 
-  external void wire_off_topic_memory_test_output_complex_struct(NativePortType port_, int len);
+  external dynamic /* void */ wire_off_topic_memory_test_output_complex_struct(NativePortType port_, int len);
 
-  external void wire_off_topic_deliberately_return_error(NativePortType port_);
+  external dynamic /* void */ wire_off_topic_deliberately_return_error(NativePortType port_);
 
-  external void wire_off_topic_deliberately_panic(NativePortType port_);
+  external dynamic /* void */ wire_off_topic_deliberately_panic(NativePortType port_);
 }
 
 // Section: WASM wire connector

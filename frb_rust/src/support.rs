@@ -2,9 +2,10 @@
 //! These functions are *not* meant to be used by humans directly.
 #![doc(hidden)]
 
+use std::mem;
+
 pub use crate::ffi::*;
 pub use lazy_static::lazy_static;
-use std::mem;
 
 pub use crate::handler::DefaultHandler;
 
@@ -64,69 +65,11 @@ pub fn slice_from_byte_buffer<T: bytemuck::Pod>(buffer: Vec<u8>) -> Box<[T]> {
     }
 }
 
-/// NOTE for maintainer: Please keep this struct in sync with `DUMMY_WIRE_CODE_FOR_BINDGEN`
-/// in the code generator
-#[repr(C)]
 #[cfg(not(wasm))]
-pub struct WireSyncReturnStruct {
-    pub ptr: *mut u8,
-    pub len: i32,
-    pub success: bool,
-}
+use allo_isolate::ffi::DartCObject;
+
+#[cfg(not(wasm))]
+pub type WireSyncReturn = *mut DartCObject;
 
 #[cfg(wasm)]
-pub type WireSyncReturnStruct = wasm_bindgen::JsValue;
-
-/// Safe version of [`WireSyncReturnStruct`].
-pub struct WireSyncReturnData(pub(crate) Option<Vec<u8>>);
-
-impl From<()> for WireSyncReturnData {
-    fn from(_: ()) -> Self {
-        WireSyncReturnData(Some(vec![]))
-    }
-}
-
-impl From<Vec<u8>> for WireSyncReturnData {
-    fn from(data: Vec<u8>) -> Self {
-        WireSyncReturnData(Some(data))
-    }
-}
-
-impl<T: Into<WireSyncReturnData>> From<Option<T>> for WireSyncReturnData {
-    fn from(data: Option<T>) -> Self {
-        if let Some(data) = data {
-            data.into()
-        } else {
-            WireSyncReturnData(None)
-        }
-    }
-}
-
-/// Bool will be converted to u8 where 0 stands for false and 1 stands for true.
-impl From<bool> for WireSyncReturnData {
-    fn from(data: bool) -> Self {
-        u8::from(data).into()
-    }
-}
-
-/// String will be converted to UTF-8 bytes.
-impl From<String> for WireSyncReturnData {
-    fn from(data: String) -> Self {
-        data.as_bytes().to_vec().into()
-    }
-}
-
-/// Macro for implementing [`From<Primitive>`] for [`WireSyncReturnData`].
-/// This conversion won't fail.
-macro_rules! primitive_to_sync_return {
-    ($($t:ty),+) => {
-        $(impl From<$t> for WireSyncReturnData {
-            fn from(data: $t) -> Self {
-                data.to_be_bytes().to_vec().into()
-            }
-        })*
-    }
-}
-
-// For simple types, use macro to implement [`From`] trait.
-primitive_to_sync_return!(u8, i8, u16, i16, u32, i32, u64, i64, f32, f64, usize);
+pub type WireSyncReturn = wasm_bindgen::JsValue;

@@ -858,75 +858,78 @@ external FlutterRustBridgeExampleSingleBlockTestWasmModule get wasmModule;
 class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external Object /* Promise */ call([String? moduleName]);
   external FlutterRustBridgeExampleSingleBlockTestWasmModule bind(dynamic thisArg, String moduleName);
-  external void wire_simple_adder(NativePortType port_, int a, int b);
+  external dynamic /* void */ wire_simple_adder(NativePortType port_, int a, int b);
 
-  external void wire_primitive_types(NativePortType port_, int my_i32, Object my_i64, double my_f64, bool my_bool);
+  external dynamic /* int */ wire_simple_adder_sync(int a, int b);
 
-  external void wire_primitive_u32(NativePortType port_, int my_u32);
+  external dynamic /* void */ wire_primitive_types(
+      NativePortType port_, int my_i32, Object my_i64, double my_f64, bool my_bool);
 
-  external void wire_handle_string(NativePortType port_, String s);
+  external dynamic /* int */ wire_primitive_types_sync(int my_i32, Object my_i64, double my_f64, bool my_bool);
 
-  external void wire_handle_return_unit(NativePortType port_);
+  external dynamic /* void */ wire_primitive_u32(NativePortType port_, int my_u32);
 
-  external void wire_handle_vec_u8(NativePortType port_, Uint8List v);
+  external dynamic /* int */ wire_primitive_u32_sync(int my_u32);
 
-  external void wire_handle_vec_of_primitive(NativePortType port_, int n);
+  external dynamic /* void */ wire_handle_string(NativePortType port_, String s);
 
-  external void wire_handle_zero_copy_vec_of_primitive(NativePortType port_, int n);
+  external dynamic /* String */ wire_handle_string_sync(String s);
 
-  external void wire_handle_struct(NativePortType port_, List<dynamic> arg, List<dynamic> boxed);
+  external dynamic /* void */ wire_handle_return_unit(NativePortType port_);
 
-  external void wire_handle_newtype(NativePortType port_, List<dynamic> arg);
+  external dynamic /* void */ wire_handle_return_unit_sync();
 
-  external void wire_handle_list_of_struct(NativePortType port_, List<dynamic> l);
+  external dynamic /* void */ wire_handle_vec_u8(NativePortType port_, Uint8List v);
 
-  external void wire_handle_string_list(NativePortType port_, List<String> names);
+  external dynamic /* Uint8List */ wire_handle_vec_u8_sync(Uint8List v);
 
-  external void wire_handle_complex_struct(NativePortType port_, List<dynamic> s);
+  external dynamic /* void */ wire_handle_vec_of_primitive(NativePortType port_, int n);
+
+  external dynamic /* List<dynamic> */ wire_handle_vec_of_primitive_sync(int n);
+
+  external dynamic /* void */ wire_handle_zero_copy_vec_of_primitive(NativePortType port_, int n);
+
+  external dynamic /* List<dynamic> */ wire_handle_zero_copy_vec_of_primitive_sync(int n);
+
+  external dynamic /* void */ wire_handle_struct(NativePortType port_, List<dynamic> arg, List<dynamic> boxed);
+
+  external dynamic /* List<dynamic> */ wire_handle_struct_sync(List<dynamic> arg, List<dynamic> boxed);
+
+  external dynamic /* void */ wire_handle_newtype(NativePortType port_, List<dynamic> arg);
+
+  external dynamic /* List<dynamic> */ wire_handle_newtype_sync(List<dynamic> arg);
+
+  external dynamic /* void */ wire_handle_list_of_struct(NativePortType port_, List<dynamic> l);
+
+  external dynamic /* List<dynamic> */ wire_handle_list_of_struct_sync(List<dynamic> l);
+
+  external dynamic /* void */ wire_handle_string_list(NativePortType port_, List<String> names);
+
+  external dynamic /* List<String> */ wire_handle_string_list_sync(List<String> names);
+
+  external dynamic /* void */ wire_handle_complex_struct(NativePortType port_, List<dynamic> s);
+
+  external dynamic /* List<dynamic> */ wire_handle_complex_struct_sync(List<dynamic> s);
 
   external dynamic /* Uint8List */ wire_handle_sync_return(String mode);
 
-  external dynamic /* bool */ wire_handle_sync_bool(bool input);
+  external dynamic /* void */ wire_handle_stream(NativePortType port_, String arg);
 
-  external dynamic /* int */ wire_handle_sync_u8(int input);
+  external dynamic /* void */ wire_handle_stream_of_struct(NativePortType port_);
 
-  external dynamic /* int */ wire_handle_sync_u16(int input);
+  external dynamic /* void */ wire_return_err(NativePortType port_);
 
-  external dynamic /* int */ wire_handle_sync_u32(int input);
+  external dynamic /* void */ wire_return_panic(NativePortType port_);
 
-  external dynamic /* Object */ wire_handle_sync_u64(Object input);
+  external dynamic /* void */ wire_handle_optional_return(NativePortType port_, double left, double right);
 
-  external dynamic /* int */ wire_handle_sync_i8(int input);
+  external dynamic /* void */ wire_handle_optional_struct(NativePortType port_, String? document);
 
-  external dynamic /* int */ wire_handle_sync_i16(int input);
+  external dynamic /* void */ wire_handle_optional_increment(NativePortType port_, List<dynamic>? opt);
 
-  external dynamic /* int */ wire_handle_sync_i32(int input);
+  external dynamic /* void */ wire_handle_increment_boxed_optional(NativePortType port_, int /* *f64 */ ? opt);
 
-  external dynamic /* Object */ wire_handle_sync_i64(Object input);
-
-  external dynamic /* double */ wire_handle_sync_f32(double input);
-
-  external dynamic /* double */ wire_handle_sync_f64(double input);
-
-  external dynamic /* String */ wire_handle_sync_string(String input);
-
-  external void wire_handle_stream(NativePortType port_, String arg);
-
-  external void wire_handle_stream_of_struct(NativePortType port_);
-
-  external void wire_return_err(NativePortType port_);
-
-  external void wire_return_panic(NativePortType port_);
-
-  external void wire_handle_optional_return(NativePortType port_, double left, double right);
-
-  external void wire_handle_optional_struct(NativePortType port_, String? document);
-
-  external void wire_handle_optional_increment(NativePortType port_, List<dynamic>? opt);
-
-  external void wire_handle_increment_boxed_optional(NativePortType port_, int /* *f64 */ ? opt);
-
-  external void wire_handle_option_box_arguments(
+  external dynamic /* void */ wire_handle_option_box_arguments(
       NativePortType port_,
       int /* *i8 */ ? i8box,
       int /* *u8 */ ? u8box,
@@ -936,153 +939,153 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
       int /* *bool */ ? boolbox,
       List<dynamic>? structbox);
 
-  external void wire_print_note(NativePortType port_, List<dynamic> note);
+  external dynamic /* void */ wire_print_note(NativePortType port_, List<dynamic> note);
 
-  external void wire_handle_return_enum(NativePortType port_, String input);
+  external dynamic /* void */ wire_handle_return_enum(NativePortType port_, String input);
 
-  external void wire_handle_enum_parameter(NativePortType port_, int weekday);
+  external dynamic /* void */ wire_handle_enum_parameter(NativePortType port_, int weekday);
 
-  external void wire_handle_customized_struct(NativePortType port_, List<dynamic> val);
+  external dynamic /* void */ wire_handle_customized_struct(NativePortType port_, List<dynamic> val);
 
-  external void wire_handle_enum_struct(NativePortType port_, List<dynamic> val);
+  external dynamic /* void */ wire_handle_enum_struct(NativePortType port_, List<dynamic> val);
 
-  external void wire_use_imported_struct(NativePortType port_, List<dynamic> my_struct);
+  external dynamic /* void */ wire_use_imported_struct(NativePortType port_, List<dynamic> my_struct);
 
-  external void wire_use_imported_enum(NativePortType port_, int my_enum);
+  external dynamic /* void */ wire_use_imported_enum(NativePortType port_, int my_enum);
 
-  external void wire_get_app_settings(NativePortType port_);
+  external dynamic /* void */ wire_get_app_settings(NativePortType port_);
 
-  external void wire_get_fallible_app_settings(NativePortType port_);
+  external dynamic /* void */ wire_get_fallible_app_settings(NativePortType port_);
 
-  external void wire_is_app_embedded(NativePortType port_, List<dynamic> app_settings);
+  external dynamic /* void */ wire_is_app_embedded(NativePortType port_, List<dynamic> app_settings);
 
-  external void wire_get_message(NativePortType port_);
+  external dynamic /* void */ wire_get_message(NativePortType port_);
 
-  external void wire_repeat_number(NativePortType port_, int num, int times);
+  external dynamic /* void */ wire_repeat_number(NativePortType port_, int num, int times);
 
-  external void wire_repeat_sequence(NativePortType port_, int seq, int times);
+  external dynamic /* void */ wire_repeat_sequence(NativePortType port_, int seq, int times);
 
-  external void wire_first_number(NativePortType port_, List<dynamic> nums);
+  external dynamic /* void */ wire_first_number(NativePortType port_, List<dynamic> nums);
 
-  external void wire_first_sequence(NativePortType port_, List<dynamic> seqs);
+  external dynamic /* void */ wire_first_sequence(NativePortType port_, List<dynamic> seqs);
 
-  external void wire_get_array(NativePortType port_);
+  external dynamic /* void */ wire_get_array(NativePortType port_);
 
-  external void wire_get_complex_array(NativePortType port_);
+  external dynamic /* void */ wire_get_complex_array(NativePortType port_);
 
-  external void wire_get_usize(NativePortType port_, int u);
+  external dynamic /* void */ wire_get_usize(NativePortType port_, int u);
 
-  external void wire_next_user_id(NativePortType port_, List<dynamic> user_id);
+  external dynamic /* void */ wire_next_user_id(NativePortType port_, List<dynamic> user_id);
 
-  external void wire_register_event_listener(NativePortType port_);
+  external dynamic /* void */ wire_register_event_listener(NativePortType port_);
 
-  external void wire_close_event_listener(NativePortType port_);
+  external dynamic /* void */ wire_close_event_listener(NativePortType port_);
 
-  external void wire_create_event(NativePortType port_, String address, String payload);
+  external dynamic /* void */ wire_create_event(NativePortType port_, String address, String payload);
 
-  external void wire_handle_stream_sink_at_1(NativePortType port_, int key, int max);
+  external dynamic /* void */ wire_handle_stream_sink_at_1(NativePortType port_, int key, int max);
 
-  external void wire_handle_stream_sink_at_2(NativePortType port_, int key, int max);
+  external dynamic /* void */ wire_handle_stream_sink_at_2(NativePortType port_, int key, int max);
 
-  external void wire_handle_stream_sink_at_3(NativePortType port_, int key, int max);
+  external dynamic /* void */ wire_handle_stream_sink_at_3(NativePortType port_, int key, int max);
 
-  external void wire_get_sum_struct(NativePortType port_);
+  external dynamic /* void */ wire_get_sum_struct(NativePortType port_);
 
-  external void wire_get_sum_array(NativePortType port_, int a, int b, int c);
+  external dynamic /* void */ wire_get_sum_array(NativePortType port_, int a, int b, int c);
 
-  external void wire_multiply_by_ten(NativePortType port_, List<dynamic> measure);
+  external dynamic /* void */ wire_multiply_by_ten(NativePortType port_, List<dynamic> measure);
 
-  external void wire_call_old_module_system(NativePortType port_);
+  external dynamic /* void */ wire_call_old_module_system(NativePortType port_);
 
-  external void wire_call_new_module_system(NativePortType port_);
+  external dynamic /* void */ wire_call_new_module_system(NativePortType port_);
 
-  external void wire_handle_big_buffers(NativePortType port_);
+  external dynamic /* void */ wire_handle_big_buffers(NativePortType port_);
 
-  external void wire_datetime_utc(NativePortType port_, Object d);
+  external dynamic /* void */ wire_datetime_utc(NativePortType port_, Object d);
 
-  external void wire_datetime_local(NativePortType port_, Object d);
+  external dynamic /* void */ wire_datetime_local(NativePortType port_, Object d);
 
-  external void wire_naivedatetime(NativePortType port_, Object d);
+  external dynamic /* void */ wire_naivedatetime(NativePortType port_, Object d);
 
-  external void wire_duration(NativePortType port_, Object d);
+  external dynamic /* void */ wire_duration(NativePortType port_, Object d);
 
-  external void wire_how_long_does_it_take(NativePortType port_, List<dynamic> mine);
+  external dynamic /* void */ wire_how_long_does_it_take(NativePortType port_, List<dynamic> mine);
 
-  external void wire_handle_uuid(NativePortType port_, Uint8List id);
+  external dynamic /* void */ wire_handle_uuid(NativePortType port_, Uint8List id);
 
-  external void wire_handle_uuids(NativePortType port_, Uint8List ids);
+  external dynamic /* void */ wire_handle_uuids(NativePortType port_, Uint8List ids);
 
-  external void wire_handle_nested_uuids(NativePortType port_, List<dynamic> ids);
+  external dynamic /* void */ wire_handle_nested_uuids(NativePortType port_, List<dynamic> ids);
 
-  external void wire_new_msgid(NativePortType port_, Uint8List id);
+  external dynamic /* void */ wire_new_msgid(NativePortType port_, Uint8List id);
 
-  external void wire_use_msgid(NativePortType port_, List<dynamic> id);
+  external dynamic /* void */ wire_use_msgid(NativePortType port_, List<dynamic> id);
 
-  external void wire_boxed_blob(NativePortType port_, Uint8List blob);
+  external dynamic /* void */ wire_boxed_blob(NativePortType port_, Uint8List blob);
 
-  external void wire_use_boxed_blob(NativePortType port_, List<dynamic> blob);
+  external dynamic /* void */ wire_use_boxed_blob(NativePortType port_, List<dynamic> blob);
 
-  external void wire_return_boxed_feed_id(NativePortType port_, Uint8List id);
+  external dynamic /* void */ wire_return_boxed_feed_id(NativePortType port_, Uint8List id);
 
-  external void wire_return_boxed_raw_feed_id(NativePortType port_, List<dynamic> id);
+  external dynamic /* void */ wire_return_boxed_raw_feed_id(NativePortType port_, List<dynamic> id);
 
-  external void wire_test_id(NativePortType port_, List<dynamic> id);
+  external dynamic /* void */ wire_test_id(NativePortType port_, List<dynamic> id);
 
-  external void wire_last_number(NativePortType port_, Float64List array);
+  external dynamic /* void */ wire_last_number(NativePortType port_, Float64List array);
 
-  external void wire_nested_id(NativePortType port_, List<dynamic> id);
+  external dynamic /* void */ wire_nested_id(NativePortType port_, List<dynamic> id);
 
   external dynamic /* String */ wire_sync_accept_dart_opaque(Object opaque);
 
-  external void wire_async_accept_dart_opaque(NativePortType port_, Object opaque);
+  external dynamic /* void */ wire_async_accept_dart_opaque(NativePortType port_, Object opaque);
 
-  external void wire_loop_back(NativePortType port_, Object opaque);
+  external dynamic /* void */ wire_loop_back(NativePortType port_, Object opaque);
 
-  external void wire_loop_back_option(NativePortType port_, Object opaque);
+  external dynamic /* void */ wire_loop_back_option(NativePortType port_, Object opaque);
 
-  external void wire_loop_back_array(NativePortType port_, Object opaque);
+  external dynamic /* void */ wire_loop_back_array(NativePortType port_, Object opaque);
 
-  external void wire_loop_back_vec(NativePortType port_, Object opaque);
+  external dynamic /* void */ wire_loop_back_vec(NativePortType port_, Object opaque);
 
-  external void wire_loop_back_option_get(NativePortType port_, Object? opaque);
+  external dynamic /* void */ wire_loop_back_option_get(NativePortType port_, Object? opaque);
 
-  external void wire_loop_back_array_get(NativePortType port_, List<dynamic> opaque);
+  external dynamic /* void */ wire_loop_back_array_get(NativePortType port_, List<dynamic> opaque);
 
-  external void wire_loop_back_vec_get(NativePortType port_, List<dynamic> opaque);
+  external dynamic /* void */ wire_loop_back_vec_get(NativePortType port_, List<dynamic> opaque);
 
   external dynamic /* String */ wire_unwrap_dart_opaque(Object opaque);
 
-  external void wire_panic_unwrap_dart_opaque(NativePortType port_, Object opaque);
+  external dynamic /* void */ wire_panic_unwrap_dart_opaque(NativePortType port_, Object opaque);
 
-  external void wire_create_opaque(NativePortType port_);
+  external dynamic /* void */ wire_create_opaque(NativePortType port_);
 
-  external void wire_create_option_opaque(NativePortType port_, Object? opaque);
+  external dynamic /* void */ wire_create_option_opaque(NativePortType port_, Object? opaque);
 
   external dynamic /* Object */ wire_sync_create_opaque();
 
-  external void wire_create_array_opaque_enum(NativePortType port_);
+  external dynamic /* void */ wire_create_array_opaque_enum(NativePortType port_);
 
-  external void wire_run_enum_opaque(NativePortType port_, List<dynamic> opaque);
+  external dynamic /* void */ wire_run_enum_opaque(NativePortType port_, List<dynamic> opaque);
 
-  external void wire_run_opaque(NativePortType port_, Object opaque);
+  external dynamic /* void */ wire_run_opaque(NativePortType port_, Object opaque);
 
-  external void wire_run_opaque_with_delay(NativePortType port_, Object opaque);
+  external dynamic /* void */ wire_run_opaque_with_delay(NativePortType port_, Object opaque);
 
-  external void wire_opaque_array(NativePortType port_);
+  external dynamic /* void */ wire_opaque_array(NativePortType port_);
 
-  external void wire_create_sync_opaque(NativePortType port_);
+  external dynamic /* void */ wire_create_sync_opaque(NativePortType port_);
 
   external dynamic /* Object */ wire_sync_create_sync_opaque();
 
   external dynamic /* String */ wire_sync_run_opaque(Object opaque);
 
-  external void wire_opaque_array_run(NativePortType port_, List<dynamic> data);
+  external dynamic /* void */ wire_opaque_array_run(NativePortType port_, List<dynamic> data);
 
-  external void wire_opaque_vec(NativePortType port_);
+  external dynamic /* void */ wire_opaque_vec(NativePortType port_);
 
-  external void wire_opaque_vec_run(NativePortType port_, List<dynamic> data);
+  external dynamic /* void */ wire_opaque_vec_run(NativePortType port_, List<dynamic> data);
 
-  external void wire_create_nested_opaque(NativePortType port_);
+  external dynamic /* void */ wire_create_nested_opaque(NativePortType port_);
 
   external dynamic /* Object */ wire_sync_loopback(Object opaque);
 
@@ -1096,49 +1099,53 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* Object? */ wire_sync_option_dart_opaque(Object opaque);
 
-  external dynamic /* dynamic */ wire_sync_void();
+  external dynamic /* void */ wire_sync_void();
 
-  external void wire_run_nested_opaque(NativePortType port_, List<dynamic> opaque);
+  external dynamic /* void */ wire_run_nested_opaque(NativePortType port_, List<dynamic> opaque);
 
-  external void wire_create_nested_dart_opaque(NativePortType port_, Object opaque1, Object opaque2);
+  external dynamic /* void */ wire_create_nested_dart_opaque(NativePortType port_, Object opaque1, Object opaque2);
 
-  external void wire_get_nested_dart_opaque(NativePortType port_, List<dynamic> opaque);
+  external dynamic /* void */ wire_get_nested_dart_opaque(NativePortType port_, List<dynamic> opaque);
 
-  external void wire_create_enum_dart_opaque(NativePortType port_, Object opaque);
+  external dynamic /* void */ wire_create_enum_dart_opaque(NativePortType port_, Object opaque);
 
-  external void wire_get_enum_dart_opaque(NativePortType port_, List<dynamic> opaque);
+  external dynamic /* void */ wire_get_enum_dart_opaque(NativePortType port_, List<dynamic> opaque);
 
-  external void wire_set_static_dart_opaque(NativePortType port_, Object opaque);
+  external dynamic /* void */ wire_set_static_dart_opaque(NativePortType port_, Object opaque);
 
-  external void wire_drop_static_dart_opaque(NativePortType port_);
+  external dynamic /* void */ wire_drop_static_dart_opaque(NativePortType port_);
 
-  external void wire_unwrap_rust_opaque(NativePortType port_, Object opaque);
+  external dynamic /* void */ wire_unwrap_rust_opaque(NativePortType port_, Object opaque);
 
   external dynamic /* Object */ wire_return_non_dropable_dart_opaque(Object opaque);
 
-  external void wire_frb_generator_test(NativePortType port_);
+  external dynamic /* void */ wire_frb_generator_test(NativePortType port_);
 
-  external void wire_handle_type_alias_id(NativePortType port_, Object input);
+  external dynamic /* void */ wire_handle_type_alias_id(NativePortType port_, Object input);
 
-  external void wire_handle_type_alias_model(NativePortType port_, Object input);
+  external dynamic /* void */ wire_handle_type_alias_model(NativePortType port_, Object input);
 
-  external void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
+  external dynamic /* void */ wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
 
-  external void wire_new__static_method__ConcatenateWith(NativePortType port_, String a);
+  external dynamic /* void */ wire_new__static_method__ConcatenateWith(NativePortType port_, String a);
 
-  external void wire_concatenate__method__ConcatenateWith(NativePortType port_, List<dynamic> that, String b);
+  external dynamic /* void */ wire_concatenate__method__ConcatenateWith(
+      NativePortType port_, List<dynamic> that, String b);
 
-  external void wire_concatenate_static__static_method__ConcatenateWith(NativePortType port_, String a, String b);
+  external dynamic /* void */ wire_concatenate_static__static_method__ConcatenateWith(
+      NativePortType port_, String a, String b);
 
-  external void wire_handle_some_stream_sink__method__ConcatenateWith(
+  external dynamic /* void */ wire_handle_some_stream_sink__method__ConcatenateWith(
       NativePortType port_, List<dynamic> that, int key, int max);
 
-  external void wire_handle_some_stream_sink_at_1__method__ConcatenateWith(NativePortType port_, List<dynamic> that);
+  external dynamic /* void */ wire_handle_some_stream_sink_at_1__method__ConcatenateWith(
+      NativePortType port_, List<dynamic> that);
 
-  external void wire_handle_some_static_stream_sink__static_method__ConcatenateWith(
+  external dynamic /* void */ wire_handle_some_static_stream_sink__static_method__ConcatenateWith(
       NativePortType port_, int key, int max);
 
-  external void wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(NativePortType port_);
+  external dynamic /* void */ wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(
+      NativePortType port_);
 
   external int /* *mut bool */ new_box_autoadd_bool_0(bool value);
 
@@ -1200,61 +1207,70 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_simple_adder(NativePortType port_, int a, int b) => wasmModule.wire_simple_adder(port_, a, b);
 
+  dynamic /* int */ wire_simple_adder_sync(int a, int b) => wasmModule.wire_simple_adder_sync(a, b);
+
   void wire_primitive_types(NativePortType port_, int my_i32, Object my_i64, double my_f64, bool my_bool) =>
       wasmModule.wire_primitive_types(port_, my_i32, my_i64, my_f64, my_bool);
 
+  dynamic /* int */ wire_primitive_types_sync(int my_i32, Object my_i64, double my_f64, bool my_bool) =>
+      wasmModule.wire_primitive_types_sync(my_i32, my_i64, my_f64, my_bool);
+
   void wire_primitive_u32(NativePortType port_, int my_u32) => wasmModule.wire_primitive_u32(port_, my_u32);
+
+  dynamic /* int */ wire_primitive_u32_sync(int my_u32) => wasmModule.wire_primitive_u32_sync(my_u32);
 
   void wire_handle_string(NativePortType port_, String s) => wasmModule.wire_handle_string(port_, s);
 
+  dynamic /* String */ wire_handle_string_sync(String s) => wasmModule.wire_handle_string_sync(s);
+
   void wire_handle_return_unit(NativePortType port_) => wasmModule.wire_handle_return_unit(port_);
+
+  dynamic /* void */ wire_handle_return_unit_sync() => wasmModule.wire_handle_return_unit_sync();
 
   void wire_handle_vec_u8(NativePortType port_, Uint8List v) => wasmModule.wire_handle_vec_u8(port_, v);
 
+  dynamic /* Uint8List */ wire_handle_vec_u8_sync(Uint8List v) => wasmModule.wire_handle_vec_u8_sync(v);
+
   void wire_handle_vec_of_primitive(NativePortType port_, int n) => wasmModule.wire_handle_vec_of_primitive(port_, n);
+
+  dynamic /* List<dynamic> */ wire_handle_vec_of_primitive_sync(int n) =>
+      wasmModule.wire_handle_vec_of_primitive_sync(n);
 
   void wire_handle_zero_copy_vec_of_primitive(NativePortType port_, int n) =>
       wasmModule.wire_handle_zero_copy_vec_of_primitive(port_, n);
 
+  dynamic /* List<dynamic> */ wire_handle_zero_copy_vec_of_primitive_sync(int n) =>
+      wasmModule.wire_handle_zero_copy_vec_of_primitive_sync(n);
+
   void wire_handle_struct(NativePortType port_, List<dynamic> arg, List<dynamic> boxed) =>
       wasmModule.wire_handle_struct(port_, arg, boxed);
 
+  dynamic /* List<dynamic> */ wire_handle_struct_sync(List<dynamic> arg, List<dynamic> boxed) =>
+      wasmModule.wire_handle_struct_sync(arg, boxed);
+
   void wire_handle_newtype(NativePortType port_, List<dynamic> arg) => wasmModule.wire_handle_newtype(port_, arg);
+
+  dynamic /* List<dynamic> */ wire_handle_newtype_sync(List<dynamic> arg) => wasmModule.wire_handle_newtype_sync(arg);
 
   void wire_handle_list_of_struct(NativePortType port_, List<dynamic> l) =>
       wasmModule.wire_handle_list_of_struct(port_, l);
 
+  dynamic /* List<dynamic> */ wire_handle_list_of_struct_sync(List<dynamic> l) =>
+      wasmModule.wire_handle_list_of_struct_sync(l);
+
   void wire_handle_string_list(NativePortType port_, List<String> names) =>
       wasmModule.wire_handle_string_list(port_, names);
+
+  dynamic /* List<String> */ wire_handle_string_list_sync(List<String> names) =>
+      wasmModule.wire_handle_string_list_sync(names);
 
   void wire_handle_complex_struct(NativePortType port_, List<dynamic> s) =>
       wasmModule.wire_handle_complex_struct(port_, s);
 
+  dynamic /* List<dynamic> */ wire_handle_complex_struct_sync(List<dynamic> s) =>
+      wasmModule.wire_handle_complex_struct_sync(s);
+
   dynamic /* Uint8List */ wire_handle_sync_return(String mode) => wasmModule.wire_handle_sync_return(mode);
-
-  dynamic /* bool */ wire_handle_sync_bool(bool input) => wasmModule.wire_handle_sync_bool(input);
-
-  dynamic /* int */ wire_handle_sync_u8(int input) => wasmModule.wire_handle_sync_u8(input);
-
-  dynamic /* int */ wire_handle_sync_u16(int input) => wasmModule.wire_handle_sync_u16(input);
-
-  dynamic /* int */ wire_handle_sync_u32(int input) => wasmModule.wire_handle_sync_u32(input);
-
-  dynamic /* Object */ wire_handle_sync_u64(Object input) => wasmModule.wire_handle_sync_u64(input);
-
-  dynamic /* int */ wire_handle_sync_i8(int input) => wasmModule.wire_handle_sync_i8(input);
-
-  dynamic /* int */ wire_handle_sync_i16(int input) => wasmModule.wire_handle_sync_i16(input);
-
-  dynamic /* int */ wire_handle_sync_i32(int input) => wasmModule.wire_handle_sync_i32(input);
-
-  dynamic /* Object */ wire_handle_sync_i64(Object input) => wasmModule.wire_handle_sync_i64(input);
-
-  dynamic /* double */ wire_handle_sync_f32(double input) => wasmModule.wire_handle_sync_f32(input);
-
-  dynamic /* double */ wire_handle_sync_f64(double input) => wasmModule.wire_handle_sync_f64(input);
-
-  dynamic /* String */ wire_handle_sync_string(String input) => wasmModule.wire_handle_sync_string(input);
 
   void wire_handle_stream(NativePortType port_, String arg) => wasmModule.wire_handle_stream(port_, arg);
 
@@ -1469,7 +1485,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   dynamic /* Object? */ wire_sync_option_dart_opaque(Object opaque) => wasmModule.wire_sync_option_dart_opaque(opaque);
 
-  dynamic /* dynamic */ wire_sync_void() => wasmModule.wire_sync_void();
+  dynamic /* void */ wire_sync_void() => wasmModule.wire_sync_void();
 
   void wire_run_nested_opaque(NativePortType port_, List<dynamic> opaque) =>
       wasmModule.wire_run_nested_opaque(port_, opaque);

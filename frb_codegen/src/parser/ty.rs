@@ -209,37 +209,16 @@ impl<'a> TypeParser<'a> {
         if let Some(generic) = p.generic {
             match ident_string.as_str() {
                 "SyncReturn" => {
-                    let ir_type = self.convert_to_ir_type(*generic);
-                    let non_option = |ir_type: Option<IrType>| match ir_type {
-                        Some(Primitive(primitive)) => Some(IrTypeSyncReturn::Primitive(primitive)),
-                        Some(Delegate(IrTypeDelegate::String)) => Some(IrTypeSyncReturn::String),
-                        Some(PrimitiveList(primitive)) => match primitive.primitive {
-                            IrTypePrimitive::U8 => Some(IrTypeSyncReturn::VecU8),
-                            _ => None,
-                        },
-                        Some(RustOpaque(opaque)) => Some(IrTypeSyncReturn::RustOpaque(opaque)),
-                        Some(DartOpaque(opaque)) => Some(IrTypeSyncReturn::DartOpaque(opaque)),
-                        _ => None,
-                    };
-
-                    match ir_type {
-                        Some(Optional(option)) => match *option.inner {
-                            Primitive(_) | Delegate(_) | PrimitiveList(_) => {
-                                Some(SyncReturn(IrTypeSyncReturn::Option(Box::new(non_option(
-                                    Some(*option.inner),
-                                )?))))
-                            }
-                            Boxed(inner)
-                                if inner.inner.is_rust_opaque() || inner.inner.is_dart_opaque() =>
-                            {
-                                Some(SyncReturn(IrTypeSyncReturn::Option(Box::new(non_option(
-                                    Some(*inner.inner),
-                                )?))))
-                            }
-                            _ => None,
-                        },
-                        ty => Some(SyncReturn(non_option(ty)?)),
+                    // Disallow nested SyncReturn
+                    if matches!(*generic, SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "SyncReturn")
+                    {
+                        panic!(
+                            "Nested SyncReturn is invalid. (SyncReturn<SyncReturn<{}>>)",
+                            p_as_str
+                        );
                     }
+                    self.convert_to_ir_type(*generic)
+                        .map(|ir| SyncReturn(IrTypeSyncReturn::new(ir)))
                 }
                 "Vec" => match *generic {
                     // Special-case Vec<String> as StringList
@@ -301,21 +280,9 @@ impl<'a> TypeParser<'a> {
                     }
                     self.convert_to_ir_type(*generic).map(|inner| match inner {
                         Primitive(prim) => IrType::Optional(IrTypeOptional::new_primitive(prim)),
-                        st @ StructRef(_) => {
+                        inner @ (StructRef(_) | RustOpaque(_) | DartOpaque(_)) => {
                             IrType::Optional(IrTypeOptional::new(Boxed(IrTypeBoxed {
-                                inner: Box::new(st),
-                                exist_in_real_api: false,
-                            })))
-                        }
-                        op @ RustOpaque(_) => {
-                            IrType::Optional(IrTypeOptional::new(Boxed(IrTypeBoxed {
-                                inner: Box::new(op),
-                                exist_in_real_api: false,
-                            })))
-                        }
-                        dop @ DartOpaque(_) => {
-                            IrType::Optional(IrTypeOptional::new(Boxed(IrTypeBoxed {
-                                inner: Box::new(dop),
+                                inner: Box::new(inner),
                                 exist_in_real_api: false,
                             })))
                         }
