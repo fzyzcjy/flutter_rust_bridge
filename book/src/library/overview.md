@@ -30,7 +30,7 @@ Anyways, here are the components we will create:
   - Can cross-compile to all other Flutter platforms, no matter your dev device
 
 For a full working example (that this guide was created based on!),
-take a look at [mimir](https://github.com/GregoryConrad/mimir).
+take a look at [mimir](https://github.com/GregoryConrad/mimir) (which is created by the author of this chapter of document).
 It incorporates all functionality present in this guide and some more.
 
 ## Warning!

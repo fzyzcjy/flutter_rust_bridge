@@ -90,7 +90,7 @@ Melos creates new versions via the simple command, `melos version`.
 `melos version` creates and manages git tags, in addition to automatically incrementing the version numbers appropriately.
 
 Since we are distributing our binaries separately from the Dart/Flutter packages on pub.dev, we take advantage of
-a special "melos script" defined in the configuration file, named "version."
+a special "melos script" defined in the configuration file, named "version".
 In this versioning script, we change the version numbers for our Flutter build process so that consumers of our library
 will always get the binaries associated with their version.
 
