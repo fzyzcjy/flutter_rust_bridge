@@ -71,6 +71,18 @@
   - [Integrating with Web](integrate/web.md)
   - [Using the dynamic library](integrate/usage.md)
   - [Wrapping up](integrate/finish.md)
+- [Creating a Dart/Flutter library](library.md)
+  - [Overview](library/overview.md)
+    - [Setup](library/setup.md)
+    - [Monorepo with Melos](library/melos.md)
+  - [Creating the libraries](library/creating_libraries.md)
+    - [Dart-only base](library/dart_only.md)
+    - [Flutter wrapper](library/flutter_wrapper.md)
+  - [Platform specific setup](library/platform_setup.md)
+    - [Windows & Linux](library/platform_setup/windows_and_linux.md)
+    - [iOS & macOS](library/platform_setup/ios_and_macos.md)
+    - [Android](library/platform_setup/android.md)
+  - [Continuous Integration & Deployment (CI/CD)](library/ci.md)
 
 # Part III: Contributor Guide
 
