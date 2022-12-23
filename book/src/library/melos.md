@@ -20,10 +20,6 @@ name: library_name
 
 repository: https://github.com/YourGitHubAccount/library_name
 
-command:
-  bootstrap:
-    usePubspecOverrides: true
-
 packages:
   - packages/**
 
