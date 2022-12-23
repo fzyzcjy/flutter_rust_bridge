@@ -155,7 +155,7 @@
 <ul>
 <li><strong>Memory-safe</strong>: Never need to think about malloc/free.</li>
 <li><strong>Feature-rich</strong>: <code>enum</code>s with values, platform-optimized <code>Vec</code>, possibly recursive <code>struct</code>, zero-copy big arrays, opaque types on arbitrary structs/classes, <code>Stream</code> (iterator) abstraction, error (<code>Result</code>) handling, cancellable tasks, concurrency control, and more. See full features <a href="https://fzyzcjy.github.io/flutter_rust_bridge/feature.html">here</a>. </li>
-<li><strong>Async programming</strong>: Rust code will never block the Flutter. Call Rust naturally from Flutter's main isolate (thread); sync mode also supported.</li>
+<li><strong>Async programming</strong>: Rust code will never block the Flutter. Call Rust naturally from Flutter's main isolate (thread); sync mode also equally supported.</li>
 <li><strong>Lightweight</strong>: This is not a huge framework that includes everything, so you are free to use your favorite Flutter and Rust libraries. <sub>For example, state-management with Flutter library (e.g. MobX) can be elegant and simple (contrary to implementing in Rust); implementing a photo manipulation algorithm in Rust will be fast and safe (countrary to implementing in Flutter).</sub></li>
 <li><strong>Cross-platform</strong>: Android, iOS, Windows, Linux, MacOS, and Web.</li>
 <li><strong>Easy to code-review &amp; convince yourself</strong>: This package simply simulates how humans  write boilerplate code. If you want to convince yourself (or your team) that it is safe, there is not much code to look at. No magic at all! (<a href="https://fzyzcjy.github.io/flutter_rust_bridge/safety.html">More about</a> safety concerns.)</li>
@@ -1661,7 +1661,7 @@ You can just use your library internally in a monorepo,
 only what you want in your library.
 It is intended that whenever a code snippet/file is shown, you read and understand the 
 content of the snippet so that you can work with your library more easily in the future.
-Anyways, here are the components we will create:</p>
+We will create the following components:</p>
 <ul>
 <li>Dart-only library</li>
 <li>Flutter library wrapping the Dart-only library</li>
@@ -1696,7 +1696,7 @@ take a look at <a href="https://github.com/GregoryConrad/mimir">mimir</a> (which
 It incorporates all functionality present in this guide and some more.</p>
 <h2 id="warning"><a class="header" href="#warning">Warning!</a></h2>
 <p>Please note, this entire section will be outdated &amp; need to be overhauled once
-<a href="https://github.com/dart-lang/sdk/issues/50565">&quot;Native Assets&quot;</a> are added into Dart.
+<a href="https://github.com/dart-lang/sdk/issues/50565">&quot;Native Assets&quot;</a> are added to Dart.
 A lot of the techniques described here are merely workarounds until Dart supports Native Assets.</p>
 <p>Also, this guide does not currently cover web support, but provides the necessary ground work
 to support web in the future.
@@ -1706,11 +1706,11 @@ Feel free to PR to add web support to this guide!</p>
 <h2 id="dependencies"><a class="header" href="#dependencies">Dependencies</a></h2>
 <p>To start developing your Dart/Flutter library, you will need to download some dependencies locally.</p>
 <h3 id="required"><a class="header" href="#required">Required</a></h3>
-<p>The rest of this guide assumes you have the following tools installed on any development machines.</p>
+<p>The rest of this guide assumes you have the following tools installed on any development machines:</p>
 <ul>
 <li><a href="https://docs.flutter.dev/get-started/install">Flutter</a></li>
 <li><a href="https://rustup.rs">rustup</a></li>
-<li><a href="https://melos.invertase.dev">Melos</a> (needed for our monorepo, see <a href="library/library/melos.html">here</a>)
+<li><a href="https://melos.invertase.dev">Melos</a> (needed for our monorepo, see <a href="library/melos.html">here</a>)
 <ul>
 <li><code>dart pub global activate melos</code> to install once Dart/Flutter are installed</li>
 </ul>
