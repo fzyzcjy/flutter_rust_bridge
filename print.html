@@ -254,6 +254,7 @@
 <li><a href="https://github.com/dbsxdbsx">dbsxdbsx</a>: Allow generating multiple Rust and Dart files. Update doc.</li>
 <li><a href="https://github.com/SoLongAndThanksForAllThePizza">SoLongAndThanksForAllThePizza</a>: Refactor and enhance SyncReturn to support more types.</li>
 <li><a href="https://github.com/hsfzxjy">hsfzxjy</a>: Fix SyncReturn use-after-free bug.</li>
+<li><a href="https://github.com/GregoryConrad">GregoryConrad</a>: Add doc to setup as a Dart/Flutter library.</li>
 <li><a href="https://github.com/huang12zheng">huang12zheng</a>: Support type aliases. Tweak code generation.</li>
 <li><a href="https://github.com/Cupnfish">Cupnfish</a>: Support arrays as function paramters. Allow multi mirror.</li>
 <li><a href="https://github.com/alanlzhang">alanlzhang</a>: Add generation for Dart metadata. Enhance module parser.</li>
@@ -728,18 +729,8 @@ pub fn f(input: Id) -&gt; TestModel {...}</code></pre>
 <p>Indeed async and <code>Future</code>s is almost everywhere in Flutter/Dart, and it has very good built-in support. So no worries about it ;)</p>
 <p>Remark: A common mistake is to call Rust code in <em>another</em> Dart isolate (i.e. &quot;thread&quot;) instead of the main isolate. That is completely not needed, and will only make your life harder. As is described above, even if your Rust code computes for 100ms, the async call will only take, say, 0.1ms, and will not block your UI.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="synchronous-in-dart"><a class="header" href="#synchronous-in-dart">Synchronous in Dart</a></h1>
-<p>If you need to generate synchronous functions in Dart, you can use <code>SyncReturn&lt;T&gt;</code> as the return type.</p>
+<p>If you need to generate synchronous functions in Dart, you can use <code>SyncReturn&lt;T&gt;</code> as the return type. It supports whatever types that we have described in other places, i.e. whatever types that async mode supports.</p>
 <p>We suggest only do this for very quick Rust functions, or the Dart UI will be blocked.</p>
-<p>Currently, <code>SyncReturn</code> supports:</p>
-<ul>
-<li><code>String</code></li>
-<li><code>Vec&lt;u8&gt;</code></li>
-<li><code>RustOpaque</code></li>
-<li><code>DartOpaque</code></li>
-<li>primitive types (<code>bool</code>, <code>u8</code>, <code>u16</code>, <code>u32</code>, <code>u64</code>, <code>i8</code>, <code>i16</code>, <code>i32</code>, <code>i64</code>, <code>f32</code>, <code>f64</code>, <code>usize</code>)</li>
-<li><code>Option</code> of the above</li>
-</ul>
-<p>Please open an issue if you need other types.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="concurrency"><a class="header" href="#concurrency">Concurrency</a></h1>
 <p>Multiple Rust functions can be running at the same time, and they will be running concurrently. This is because by default we use a thread pool to execute the Rust functions. However, you can fully customize this behavior (and even throw away the thread pool).</p>
 <h2 id="example-10"><a class="header" href="#example-10">Example</a></h2>

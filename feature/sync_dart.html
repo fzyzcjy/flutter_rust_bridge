@@ -142,18 +142,8 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="synchronous-in-dart"><a class="header" href="#synchronous-in-dart">Synchronous in Dart</a></h1>
-<p>If you need to generate synchronous functions in Dart, you can use <code>SyncReturn&lt;T&gt;</code> as the return type.</p>
+<p>If you need to generate synchronous functions in Dart, you can use <code>SyncReturn&lt;T&gt;</code> as the return type. It supports whatever types that we have described in other places, i.e. whatever types that async mode supports.</p>
 <p>We suggest only do this for very quick Rust functions, or the Dart UI will be blocked.</p>
-<p>Currently, <code>SyncReturn</code> supports:</p>
-<ul>
-<li><code>String</code></li>
-<li><code>Vec&lt;u8&gt;</code></li>
-<li><code>RustOpaque</code></li>
-<li><code>DartOpaque</code></li>
-<li>primitive types (<code>bool</code>, <code>u8</code>, <code>u16</code>, <code>u32</code>, <code>u64</code>, <code>i8</code>, <code>i16</code>, <code>i32</code>, <code>i64</code>, <code>f32</code>, <code>f64</code>, <code>usize</code>)</li>
-<li><code>Option</code> of the above</li>
-</ul>
-<p>Please open an issue if you need other types.</p>
 
                     </main>
 
