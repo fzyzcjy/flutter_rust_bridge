@@ -26,8 +26,9 @@ pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> IrFi
     src_fns.extend(extract_methods_from_file(&file));
     let src_structs = crate_map.root_module.collect_structs_to_vec();
     let src_enums = crate_map.root_module.collect_enums_to_vec();
+    let src_types = crate_map.root_module.collect_types_to_pool();
 
-    let parser = Parser::new(TypeParser::new(src_structs, src_enums));
+    let parser = Parser::new(TypeParser::new(src_structs, src_enums, src_types));
     parser.parse(source_rust_content, src_fns)
 }
 
@@ -60,8 +61,8 @@ impl<'a> Parser<'a> {
     /// Attempts to parse the type from the return part of a function signature. There is a special
     /// case for top-level `Result` types.
     pub fn try_parse_fn_output_type(&mut self, ty: &syn::Type) -> Option<IrFuncOutput> {
+        let ty = &self.type_parser.resolve_alias(ty);
         let inner = ty::SupportedInnerType::try_from_syn_type(ty)?;
-
         match inner {
             ty::SupportedInnerType::Path(ty::SupportedPathType {
                 ident,

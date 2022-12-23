@@ -1,11 +1,8 @@
-import 'dart:ffi';
-import 'dart:io';
+import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 
-import 'bridge_generated.io.dart';
-export 'bridge_generated.io.dart';
+import 'bridge_generated.dart';
 
-FlutterRustBridgeExampleSingleBlockTestImpl initializeExternalLibrary(String path) {
-  return FlutterRustBridgeExampleSingleBlockTestImpl(
-    Platform.isMacOS || Platform.isIOS ? DynamicLibrary.executable() : DynamicLibrary.open(path),
-  );
-}
+FlutterRustBridgeExampleSingleBlockTestImpl initializeExternalLibrary(String path) =>
+    FlutterRustBridgeExampleSingleBlockTestImpl(
+      loadDylib(path),
+    );

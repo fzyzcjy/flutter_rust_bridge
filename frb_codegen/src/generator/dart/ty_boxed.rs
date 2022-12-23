@@ -1,6 +1,6 @@
 use crate::generator::dart::gen_wire2api_simple_type_cast;
 use crate::generator::dart::ty::*;
-use crate::ir::IrType::{Delegate, EnumRef, Primitive, StructRef};
+use crate::ir::IrType::{DartOpaque, Delegate, EnumRef, Primitive, RustOpaque, StructRef};
 use crate::ir::*;
 use crate::target::Acc;
 use crate::type_dart_generator_struct;
@@ -17,18 +17,20 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
                 self.ir.inner.safe_ident(),
             )
         });
+
+        let ident = self.ir.safe_ident();
+        let context = self.context.config.block_index;
+        let inner = self.ir.inner.safe_ident();
+
         Acc {
             io: Some(as_primitive.clone().unwrap_or_else(|| {
                 if self.ir.inner.is_array() {
-                    format!("return api2wire_{}(raw);", self.ir.inner.safe_ident(),)
+                    format!("return api2wire_{inner}(raw);")
                 } else {
                     format!(
-                        "final ptr = inner.new_{}_{}();
-                        _api_fill_to_wire_{}(raw, ptr.ref);
+                        "final ptr = inner.new_{ident}_{context}();
+                        _api_fill_to_wire_{inner}(raw, ptr.ref);
                         return ptr;",
-                        self.ir.safe_ident(),
-                        self.context.config.block_index,
-                        self.ir.inner.safe_ident(),
                     )
                 }
             })),
@@ -57,6 +59,8 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
     fn wire2api_body(&self) -> String {
         match &*self.ir.inner {
             StructRef(_)
+            | DartOpaque(_)
+            | RustOpaque(_)
             | EnumRef(_)
             | Primitive(IrTypePrimitive::I64 | IrTypePrimitive::U64 | IrTypePrimitive::Usize)
             | Delegate(IrTypeDelegate::Array(_)) => {

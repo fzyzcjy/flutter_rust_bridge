@@ -133,11 +133,6 @@ class UnmodifiableTypedListException implements Exception {
   String toString() => _message;
 }
 
-bool uint8ListToBool(Uint8List raw) {
-  final dataView = ByteData.view(raw.buffer);
-  return dataView.getUint8(0) != 0;
-}
-
 DateTime wire2apiTimestamp({required int ts, required bool isUtc}) {
   if (kIsWeb) {
     return DateTime.fromMillisecondsSinceEpoch(ts, isUtc: isUtc);

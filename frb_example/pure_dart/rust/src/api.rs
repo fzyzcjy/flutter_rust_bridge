@@ -1,7 +1,10 @@
 #![allow(unused_variables)]
 
+use std::fmt::Debug;
+use std::ops::Deref;
 use std::sync::atomic::{AtomicI32, Ordering};
-use std::sync::{Arc, Mutex};
+use std::sync::Arc;
+pub use std::sync::{Mutex, RwLock};
 use std::thread::sleep;
 use std::time::Duration;
 
@@ -10,7 +13,8 @@ use anyhow::{anyhow, Result};
 use flutter_rust_bridge::*;
 use lazy_static::lazy_static;
 
-use crate::data::{MyEnum, MyStruct};
+use crate::data::{EnumAlias, Id, MyEnum, MyStruct, StructAlias};
+pub use crate::data::{FrbOpaqueReturn, HideData, NonSendHideData};
 use crate::new_module_system::{use_new_module_system, NewSimpleStruct};
 use crate::old_module_system::{use_old_module_system, OldSimpleStruct};
 
@@ -19,10 +23,13 @@ pub fn simple_adder(a: i32, b: i32) -> i32 {
     a + b
 }
 
+pub fn simple_adder_sync(a: i32, b: i32) -> SyncReturn<i32> {
+    SyncReturn(a + b)
+}
+
 /**
  Multiline comments are fine,
  but they are not preferred in Rust nor in Dart.
-
  Newlines are preserved.
 */
 pub fn primitive_types(my_i32: i32, my_i64: i64, my_f64: f64, my_bool: bool) -> i32 {
@@ -33,6 +40,19 @@ pub fn primitive_types(my_i32: i32, my_i64: i64, my_f64: f64, my_bool: bool) -> 
     42
 }
 
+pub fn primitive_types_sync(
+    my_i32: i32,
+    my_i64: i64,
+    my_f64: f64,
+    my_bool: bool,
+) -> SyncReturn<i32> {
+    println!(
+        "primitive_types_sync({}, {}, {}, {})",
+        my_i32, my_i64, my_f64, my_bool
+    );
+    SyncReturn(42)
+}
+
 pub fn primitive_u32(my_u32: u32) -> u32 {
     println!("primitive_u32({})", my_u32);
     assert_eq!(my_u32, 0xff112233);
@@ -41,10 +61,24 @@ pub fn primitive_u32(my_u32: u32) -> u32 {
     ret
 }
 
+pub fn primitive_u32_sync(my_u32: u32) -> SyncReturn<u32> {
+    println!("primitive_u32_sync({})", my_u32);
+    assert_eq!(my_u32, 0xff112233);
+    let ret = 0xfe112233;
+    println!("returning {}", ret);
+    SyncReturn(ret)
+}
+
 pub fn handle_string(s: String) -> String {
     println!("handle_string({})", &s);
     let s2 = s.clone();
     s + &s2
+}
+
+pub fn handle_string_sync(s: String) -> SyncReturn<String> {
+    println!("handle_string_sync({})", &s);
+    let s2 = s.clone();
+    SyncReturn(s + &s2)
 }
 
 #[allow(clippy::unused_unit)]
@@ -52,10 +86,20 @@ pub fn handle_return_unit() -> () {
     println!("handle_return_unit()");
 }
 
+pub fn handle_return_unit_sync() -> SyncReturn<()> {
+    println!("handle_return_unit_sync()");
+    SyncReturn(())
+}
+
 // to check that `Vec<u8>` can be used as return type
 pub fn handle_vec_u8(v: Vec<u8>) -> Vec<u8> {
     println!("handle_vec_u8(first few elements: {:?})", &v[..5]);
     v.repeat(2)
+}
+
+pub fn handle_vec_u8_sync(v: Vec<u8>) -> SyncReturn<Vec<u8>> {
+    println!("handle_vec_u8_sync(first few elements: {:?})", &v[..5]);
+    SyncReturn(v.repeat(2))
 }
 
 pub struct VecOfPrimitivePack {
@@ -86,6 +130,21 @@ pub fn handle_vec_of_primitive(n: i32) -> VecOfPrimitivePack {
     }
 }
 
+pub fn handle_vec_of_primitive_sync(n: i32) -> SyncReturn<VecOfPrimitivePack> {
+    SyncReturn(VecOfPrimitivePack {
+        int8list: vec![42i8; n as usize],
+        uint8list: vec![42u8; n as usize],
+        int16list: vec![42i16; n as usize],
+        uint16list: vec![42u16; n as usize],
+        int32list: vec![42i32; n as usize],
+        uint32list: vec![42u32; n as usize],
+        int64list: vec![42i64; n as usize],
+        uint64list: vec![42u64; n as usize],
+        float32list: vec![42.0f32; n as usize],
+        float64list: vec![42.0f64; n as usize],
+    })
+}
+
 pub struct ZeroCopyVecOfPrimitivePack {
     pub int8list: ZeroCopyBuffer<Vec<i8>>,
     pub uint8list: ZeroCopyBuffer<Vec<u8>>,
@@ -114,6 +173,21 @@ pub fn handle_zero_copy_vec_of_primitive(n: i32) -> ZeroCopyVecOfPrimitivePack {
     }
 }
 
+pub fn handle_zero_copy_vec_of_primitive_sync(n: i32) -> SyncReturn<ZeroCopyVecOfPrimitivePack> {
+    SyncReturn(ZeroCopyVecOfPrimitivePack {
+        int8list: ZeroCopyBuffer(vec![42i8; n as usize]),
+        uint8list: ZeroCopyBuffer(vec![42u8; n as usize]),
+        int16list: ZeroCopyBuffer(vec![42i16; n as usize]),
+        uint16list: ZeroCopyBuffer(vec![42u16; n as usize]),
+        int32list: ZeroCopyBuffer(vec![42i32; n as usize]),
+        uint32list: ZeroCopyBuffer(vec![42u32; n as usize]),
+        int64list: ZeroCopyBuffer(vec![42i64; n as usize]),
+        uint64list: ZeroCopyBuffer(vec![42u64; n as usize]),
+        float32list: ZeroCopyBuffer(vec![42.0f32; n as usize]),
+        float64list: ZeroCopyBuffer(vec![42.0f64; n as usize]),
+    })
+}
+
 #[derive(Debug, Clone)]
 pub struct MySize {
     pub width: i32,
@@ -128,12 +202,25 @@ pub fn handle_struct(arg: MySize, boxed: Box<MySize>) -> MySize {
     }
 }
 
+pub fn handle_struct_sync(arg: MySize, boxed: Box<MySize>) -> SyncReturn<MySize> {
+    println!("handle_struct_sync({:?}, {:?})", &arg, &boxed);
+    SyncReturn(MySize {
+        width: arg.width + boxed.width,
+        height: arg.height + boxed.height,
+    })
+}
+
 #[derive(Debug)]
 pub struct NewTypeInt(pub i64);
 
 pub fn handle_newtype(arg: NewTypeInt) -> NewTypeInt {
     println!("handle_newtype({:?})", &arg);
     NewTypeInt(arg.0 * 2)
+}
+
+pub fn handle_newtype_sync(arg: NewTypeInt) -> SyncReturn<NewTypeInt> {
+    println!("handle_newtype_sync({:?})", &arg);
+    SyncReturn(NewTypeInt(arg.0 * 2))
 }
 
 pub fn handle_list_of_struct(mut l: Vec<MySize>) -> Vec<MySize> {
@@ -143,11 +230,25 @@ pub fn handle_list_of_struct(mut l: Vec<MySize>) -> Vec<MySize> {
     ans
 }
 
+pub fn handle_list_of_struct_sync(mut l: Vec<MySize>) -> SyncReturn<Vec<MySize>> {
+    println!("handle_list_of_struct_sync({:?})", &l);
+    let mut ans = l.clone();
+    ans.append(&mut l);
+    SyncReturn(ans)
+}
+
 pub fn handle_string_list(names: Vec<String>) -> Vec<String> {
     for name in &names {
         println!("Hello, {}", name);
     }
     names
+}
+
+pub fn handle_string_list_sync(names: Vec<String>) -> SyncReturn<Vec<String>> {
+    for name in &names {
+        println!("Hello, {}", name);
+    }
+    SyncReturn(names)
 }
 
 #[derive(Debug, Clone)]
@@ -164,6 +265,12 @@ pub fn handle_complex_struct(s: MyTreeNode) -> MyTreeNode {
     s
 }
 
+pub fn handle_complex_struct_sync(s: MyTreeNode) -> SyncReturn<MyTreeNode> {
+    println!("handle_complex_struct_sync({:?})", &s);
+    let s_cloned = s.clone();
+    SyncReturn(s)
+}
+
 // Test if sync return is working as expected by using Vec<u8> as return value.
 pub fn handle_sync_return(mode: String) -> Result<SyncReturn<Vec<u8>>> {
     match &mode[..] {
@@ -172,44 +279,6 @@ pub fn handle_sync_return(mode: String) -> Result<SyncReturn<Vec<u8>>> {
         "PANIC" => panic!("deliberate panic in handle_sync_return_panic"),
         _ => panic!("unknown mode"),
     }
-}
-
-// Test other sync return types except for Vec<u8> since it's being tested in handle_sync_return.
-pub fn handle_sync_bool(input: bool) -> SyncReturn<bool> {
-    SyncReturn(input)
-}
-pub fn handle_sync_u8(input: u8) -> SyncReturn<u8> {
-    SyncReturn(input)
-}
-pub fn handle_sync_u16(input: u16) -> SyncReturn<u16> {
-    SyncReturn(input)
-}
-pub fn handle_sync_u32(input: u32) -> SyncReturn<u32> {
-    SyncReturn(input)
-}
-pub fn handle_sync_u64(input: u64) -> SyncReturn<u64> {
-    SyncReturn(input)
-}
-pub fn handle_sync_i8(input: i8) -> SyncReturn<i8> {
-    SyncReturn(input)
-}
-pub fn handle_sync_i16(input: i16) -> SyncReturn<i16> {
-    SyncReturn(input)
-}
-pub fn handle_sync_i32(input: i32) -> SyncReturn<i32> {
-    SyncReturn(input)
-}
-pub fn handle_sync_i64(input: i64) -> SyncReturn<i64> {
-    SyncReturn(input)
-}
-pub fn handle_sync_f32(input: f32) -> SyncReturn<f32> {
-    SyncReturn(input)
-}
-pub fn handle_sync_f64(input: f64) -> SyncReturn<f64> {
-    SyncReturn(input)
-}
-pub fn handle_sync_string(input: String) -> SyncReturn<String> {
-    SyncReturn(input)
 }
 
 pub fn handle_stream(sink: StreamSink<String>, arg: String) {
@@ -532,6 +601,7 @@ pub struct _ApplicationSettings {
     pub version: String,
     pub mode: ApplicationMode,
     pub env: Box<ApplicationEnv>,
+    pub env_optional: Option<ApplicationEnv>,
 }
 
 #[frb(mirror(ApplicationMode))]
@@ -551,6 +621,11 @@ pub struct _ApplicationEnv {
 // This function can directly return an object of the external type ApplicationSettings because it has a mirror
 pub fn get_app_settings() -> ApplicationSettings {
     external_lib::get_app_settings()
+}
+
+// This function can return a Result, that includes an object of the external type ApplicationSettings because it has a mirror
+pub fn get_fallible_app_settings() -> anyhow::Result<ApplicationSettings> {
+    Ok(external_lib::get_app_settings())
 }
 
 // Similarly, receiving an object from Dart works. Please note that the mirror definition must match entirely and the original struct must have all its fields public.
@@ -952,5 +1027,271 @@ pub fn last_number(array: [f64; 16]) -> f64 {
 pub fn nested_id(id: [TestId; 4]) -> [TestId; 2] {
     match id {
         [first, .., last] => [first, last],
+    }
+}
+
+pub fn sync_accept_dart_opaque(opaque: DartOpaque) -> SyncReturn<String> {
+    drop(opaque);
+    SyncReturn("test".to_owned())
+}
+
+pub fn async_accept_dart_opaque(opaque: DartOpaque) -> String {
+    drop(opaque);
+    "async test".to_owned()
+}
+
+pub fn loop_back(opaque: DartOpaque) -> DartOpaque {
+    opaque
+}
+
+pub fn loop_back_option(opaque: DartOpaque) -> Option<DartOpaque> {
+    Some(opaque)
+}
+
+pub fn loop_back_array(opaque: DartOpaque) -> [DartOpaque; 1] {
+    [opaque]
+}
+
+pub fn loop_back_vec(opaque: DartOpaque) -> Vec<DartOpaque> {
+    vec![opaque]
+}
+
+pub fn loop_back_option_get(opaque: Option<DartOpaque>) {}
+
+pub fn loop_back_array_get(opaque: [DartOpaque; 1]) {}
+
+pub fn loop_back_vec_get(opaque: Vec<DartOpaque>) {}
+
+/// [DartWrapObject] can be safely retrieved on a dart thread.
+pub fn unwrap_dart_opaque(opaque: DartOpaque) -> SyncReturn<String> {
+    let handle = opaque.try_unwrap().unwrap();
+    SyncReturn("Test".to_owned())
+}
+
+/// [DartWrapObject] cannot be obtained
+/// on a thread other than the thread it was created on.
+pub fn panic_unwrap_dart_opaque(opaque: DartOpaque) {
+    let handle = opaque.try_unwrap().unwrap();
+}
+
+/// Opaque types
+pub trait DartDebug: DartSafe + Debug + Send + Sync {}
+impl<T: DartSafe + Debug + Send + Sync> DartDebug for T {}
+
+pub enum EnumOpaque {
+    Struct(RustOpaque<HideData>),
+    Primitive(RustOpaque<i32>),
+    TraitObj(RustOpaque<Box<dyn DartDebug>>),
+    Mutex(RustOpaque<Mutex<HideData>>),
+    RwLock(RustOpaque<RwLock<HideData>>),
+}
+
+pub enum EnumDartOpaque {
+    Primitive(i32),
+    Opaque(DartOpaque),
+}
+
+/// [`HideData`] has private fields.
+pub struct OpaqueNested {
+    pub first: RustOpaque<HideData>,
+    pub second: RustOpaque<HideData>,
+}
+
+pub struct DartOpaqueNested {
+    pub first: DartOpaque,
+    pub second: DartOpaque,
+}
+
+pub fn create_opaque() -> RustOpaque<HideData> {
+    RustOpaque::new(HideData::new())
+}
+
+pub fn create_option_opaque(opaque: Option<RustOpaque<HideData>>) -> Option<RustOpaque<HideData>> {
+    opaque
+}
+
+pub fn sync_create_opaque() -> SyncReturn<RustOpaque<HideData>> {
+    SyncReturn(RustOpaque::new(HideData::new()))
+}
+
+pub fn create_array_opaque_enum() -> [EnumOpaque; 5] {
+    [
+        EnumOpaque::Struct(RustOpaque::new(HideData::new())),
+        EnumOpaque::Primitive(RustOpaque::new(42)),
+        EnumOpaque::TraitObj(opaque_dyn!("String")),
+        EnumOpaque::Mutex(RustOpaque::new(Mutex::new(HideData::new()))),
+        EnumOpaque::RwLock(RustOpaque::new(RwLock::new(HideData::new()))),
+    ]
+}
+
+pub fn run_enum_opaque(opaque: EnumOpaque) -> String {
+    match opaque {
+        EnumOpaque::Struct(s) => run_opaque(s),
+        EnumOpaque::Primitive(p) => format!("{:?}", p.deref()),
+        EnumOpaque::TraitObj(t) => format!("{:?}", t.deref()),
+        EnumOpaque::Mutex(m) => {
+            format!("{:?}", m.lock().unwrap().hide_data())
+        }
+        EnumOpaque::RwLock(r) => {
+            format!("{:?}", r.read().unwrap().hide_data())
+        }
+    }
+}
+
+pub fn run_opaque(opaque: RustOpaque<HideData>) -> String {
+    opaque.hide_data()
+}
+
+pub fn run_opaque_with_delay(opaque: RustOpaque<HideData>) -> String {
+    sleep(Duration::from_millis(1000));
+    opaque.hide_data()
+}
+
+pub fn opaque_array() -> [RustOpaque<HideData>; 2] {
+    [
+        RustOpaque::new(HideData::new()),
+        RustOpaque::new(HideData::new()),
+    ]
+}
+
+pub fn create_sync_opaque() -> RustOpaque<NonSendHideData> {
+    RustOpaque::new(NonSendHideData::new())
+}
+
+pub fn sync_create_sync_opaque() -> SyncReturn<RustOpaque<NonSendHideData>> {
+    SyncReturn(RustOpaque::new(NonSendHideData::new()))
+}
+
+// OpaqueSyncStruct does not implement Send trait.
+//
+// pub fn run_opaque(opaque: Opaque<OpaqueSyncStruct>) -> String {
+//     data.0.hide_data()
+// }
+
+pub fn sync_run_opaque(opaque: RustOpaque<NonSendHideData>) -> SyncReturn<String> {
+    SyncReturn(opaque.hide_data())
+}
+
+pub fn opaque_array_run(data: [RustOpaque<HideData>; 2]) {
+    for i in data {
+        i.hide_data();
+    }
+}
+
+pub fn opaque_vec() -> Vec<RustOpaque<HideData>> {
+    vec![
+        RustOpaque::new(HideData::new()),
+        RustOpaque::new(HideData::new()),
+    ]
+}
+
+pub fn opaque_vec_run(data: Vec<RustOpaque<HideData>>) {
+    for i in data {
+        i.hide_data();
+    }
+}
+
+pub fn create_nested_opaque() -> OpaqueNested {
+    OpaqueNested {
+        first: RustOpaque::new(HideData::new()),
+        second: RustOpaque::new(HideData::new()),
+    }
+}
+
+pub fn sync_loopback(opaque: DartOpaque) -> SyncReturn<DartOpaque> {
+    SyncReturn(opaque)
+}
+
+pub fn sync_option_loopback(opaque: Option<DartOpaque>) -> SyncReturn<Option<DartOpaque>> {
+    SyncReturn(opaque)
+}
+
+pub fn sync_option() -> Result<SyncReturn<Option<String>>> {
+    Ok(SyncReturn(Some("42".to_owned())))
+}
+
+pub fn sync_option_null() -> Result<SyncReturn<Option<String>>> {
+    Ok(SyncReturn(None))
+}
+
+pub fn sync_option_rust_opaque() -> Result<SyncReturn<Option<RustOpaque<HideData>>>> {
+    Ok(SyncReturn(Some(RustOpaque::new(HideData::new()))))
+}
+
+pub fn sync_option_dart_opaque(opaque: DartOpaque) -> Result<SyncReturn<Option<DartOpaque>>> {
+    Ok(SyncReturn(Some(opaque)))
+}
+
+pub fn sync_void() -> SyncReturn<()> {
+    SyncReturn(())
+}
+
+pub fn run_nested_opaque(opaque: OpaqueNested) {
+    opaque.first.hide_data();
+    opaque.second.hide_data();
+}
+
+pub fn create_nested_dart_opaque(opaque1: DartOpaque, opaque2: DartOpaque) -> DartOpaqueNested {
+    DartOpaqueNested {
+        first: opaque1,
+        second: opaque2,
+    }
+}
+
+pub fn get_nested_dart_opaque(opaque: DartOpaqueNested) {}
+
+pub fn create_enum_dart_opaque(opaque: DartOpaque) -> EnumDartOpaque {
+    EnumDartOpaque::Opaque(opaque)
+}
+
+pub fn get_enum_dart_opaque(opaque: EnumDartOpaque) {}
+
+lazy_static! {
+    static ref DART_OPAQUE: Mutex<Option<DartOpaque>> = Default::default();
+}
+
+pub fn set_static_dart_opaque(opaque: DartOpaque) {
+    *DART_OPAQUE.lock().unwrap() = Some(opaque);
+}
+
+pub fn drop_static_dart_opaque() {
+    drop(DART_OPAQUE.lock().unwrap().take());
+}
+
+pub fn unwrap_rust_opaque(opaque: RustOpaque<HideData>) -> Result<String> {
+    let data: HideData = opaque
+        .try_unwrap()
+        .map_err(|_| anyhow::anyhow!("opaque type is shared"))?;
+    Ok(data.hide_data())
+}
+
+pub fn return_non_dropable_dart_opaque(opaque: DartOpaque) -> SyncReturn<DartOpaque> {
+    let raw = opaque.try_unwrap().unwrap();
+    SyncReturn(unsafe { DartOpaque::new_non_droppable(raw.into()) })
+}
+
+/// Function to check the code generator.
+/// FrbOpaqueReturn must be only return type.
+/// FrbOpaqueReturn must not be used as an argument.
+pub fn frb_generator_test() -> RustOpaque<FrbOpaqueReturn> {
+    panic!("dummy code");
+}
+
+pub fn handle_type_alias_id(input: Id) -> Id {
+    input
+}
+pub struct TestModel {
+    pub id: Id,
+    pub name: String,
+    pub alias_enum: EnumAlias,
+    pub alias_struct: MyStruct,
+}
+
+pub fn handle_type_alias_model(input: Id) -> TestModel {
+    TestModel {
+        id: input,
+        name: "TestModel".to_owned(),
+        alias_enum: EnumAlias::False,
+        alias_struct: StructAlias { content: true },
     }
 }

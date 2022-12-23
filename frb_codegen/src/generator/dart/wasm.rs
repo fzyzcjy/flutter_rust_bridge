@@ -1,5 +1,3 @@
-use crate::consts::VOID;
-
 use super::*;
 
 pub fn generate_wasm_wire<'a>(
@@ -67,9 +65,6 @@ pub fn reconstruct_dart_wire_from_raw_repr(ty: &str) -> Cow<str> {
     let ty = ty.trim();
     if is_rust_pointer(ty) {
         return format!("int /* {} */", ty).into();
-    }
-    if matches!(ty, VOID) {
-        return ty.into();
     }
     format!("dynamic /* {} */", ty).into()
 }

@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/platform_independent.dart';
 import 'package:flutter_rust_bridge/src/utils.dart';
@@ -13,6 +11,14 @@ export 'isolate.dart';
 final _instances = <Type>{};
 final _streamSinkNameIndex = <String, int>{};
 
+class _DropIdPortGenerator {
+  static final instance = _DropIdPortGenerator._();
+  _DropIdPortGenerator._();
+
+  int nextPort = 0;
+  String create() => '__frb_dart_opaque_drop_${nextPort++}';
+}
+
 /// Base class for generated bindings of Flutter Rust Bridge.
 /// Normally, users do not extend this class manually. Instead,
 /// users should directly use the generated class.
@@ -24,6 +30,21 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 
   @protected
   final T inner;
+
+  late final _dropPort = _initDropPort();
+  NativePortType get dropPort => _dropPort.sendPort.nativePort;
+
+  ReceivePort _initDropPort() {
+    var port = broadcastPort(_DropIdPortGenerator.instance.create());
+    port.listen((message) {
+      inner.drop_dart_object(message);
+    });
+    return port;
+  }
+
+  void dispose() {
+    _dropPort.close();
+  }
 
   void _sanityCheckSingleton() {
     if (_instances.contains(runtimeType)) {
@@ -52,20 +73,27 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   /// Similar to [executeNormal], except that this will return synchronously
   @protected
   S executeSync<S>(FlutterRustBridgeSyncTask task) {
-    final WireSyncReturnStruct raw;
+    final WireSyncReturn syncReturn;
     try {
-      raw = task.callFfi();
+      syncReturn = task.callFfi();
     } catch (err, st) {
       throw FfiException('EXECUTE_SYNC_ABORT', '$err', st);
     }
-    if (raw.isSuccess) {
-      final result = task.parseSuccessData(raw.buffer);
-      inner.free_WireSyncReturnStruct(raw);
-      return result;
-    } else {
-      final errMessage = utf8.decode(raw.buffer);
-      inner.free_WireSyncReturnStruct(raw);
-      throw FfiException('EXECUTE_SYNC', errMessage, null);
+    try {
+      final syncReturnAsDartObject = wireSyncReturnIntoDart(syncReturn);
+      assert(syncReturnAsDartObject.length == 2);
+      final rawReturn = syncReturnAsDartObject[0];
+      final isSuccess = syncReturnAsDartObject[1];
+      if (isSuccess) {
+        return task.parseSuccessData(rawReturn);
+      } else {
+        throw FfiException('EXECUTE_SYNC', rawReturn as String, null);
+      }
+    } catch (err, st) {
+      if (err is FfiException) rethrow;
+      throw FfiException('EXECUTE_SYNC_ABORT', '$err', st);
+    } finally {
+      inner.free_WireSyncReturn(syncReturn);
     }
   }
 
@@ -143,10 +171,10 @@ class FlutterRustBridgeTask<S> extends FlutterRustBridgeBaseTask {
 @immutable
 class FlutterRustBridgeSyncTask<S> extends FlutterRustBridgeBaseTask {
   /// The underlying function to call FFI function, usually the generated wire function
-  final WireSyncReturnStruct Function() callFfi;
+  final WireSyncReturn Function() callFfi;
 
   /// Parse the returned data from the underlying function
-  final S Function(Uint8List) parseSuccessData;
+  final S Function(dynamic) parseSuccessData;
 
   const FlutterRustBridgeSyncTask({
     required this.callFfi,

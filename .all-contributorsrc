@@ -351,6 +351,72 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "rogurotus",
+      "name": "rogurotus",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61418195?v=4",
+      "profile": "https://github.com/rogurotus",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "huang12zheng",
+      "name": "huang12zheng",
+      "avatar_url": "https://avatars.githubusercontent.com/u/28038074?v=4",
+      "profile": "https://github.com/huang12zheng",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "svenstaro",
+      "name": "Sven-Hendrik Haase",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1664?v=4",
+      "profile": "https://svenstaro.org",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "ngasull",
+      "name": "Nicolas Gasull",
+      "avatar_url": "https://avatars.githubusercontent.com/u/912991?v=4",
+      "profile": "https://github.com/ngasull",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "codercengiz",
+      "name": "codercengiz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45819755?v=4",
+      "profile": "https://github.com/codercengiz",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "w1th0utnam3",
+      "name": "Fabian Löschner",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12967904?v=4",
+      "profile": "https://www.floeschner.de/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "GregoryConrad",
+      "name": "Gregory Conrad",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15874617?v=4",
+      "profile": "http://gsconrad.com",
+      "contributions": [
+        "doc",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

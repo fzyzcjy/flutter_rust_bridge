@@ -3,7 +3,7 @@ use crate::ir::*;
 use crate::target::Target;
 use convert_case::{Case, Casing};
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq)]
 pub struct IrTypeEnumRef {
     pub name: String,
 }

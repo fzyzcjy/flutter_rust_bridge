@@ -21,8 +21,8 @@ impl TypeGeneralListGenerator<'_> {
 impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
         Acc {
-            wasm: Some(TypeGeneralListGenerator::WIRE2API_BODY_WASM.into()),
-            io: Some(TypeGeneralListGenerator::WIRE2API_BODY_IO.into()),
+            wasm: Some(TypeGeneralListGenerator::WIRE2API_BODY_WASM.to_owned()),
+            io: Some(TypeGeneralListGenerator::WIRE2API_BODY_IO.to_owned()),
             ..Default::default()
         }
     }
@@ -38,7 +38,7 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
         ])
     }
 
-    fn wrap_obj(&self, obj: String) -> String {
+    fn wrap_obj(&self, obj: String, _wired_fallible_func: bool) -> String {
         let inner = TypeRustGenerator::new(
             *self.ir.inner.clone(),
             self.context.ir_file,

@@ -57,7 +57,7 @@ impl PubspecLockDependency {
     }
 }
 
-#[derive(Debug, Clone, Deserialize)]
+#[derive(Debug, Clone, Deserialize, PartialEq, Eq)]
 #[serde(transparent)]
 pub struct DartDependencyVersion(String);
 
@@ -96,7 +96,7 @@ impl From<&DartDependencyVersion> for CargoDependencyVersion {
 /// freezed:
 ///   version: ^2.0.1
 /// ```
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, PartialEq, Eq)]
 #[serde(untagged)]
 pub enum PackageVersion {
     Inline(DartDependencyVersion),
@@ -126,8 +126,8 @@ pub enum PackageManager {
 /// used to deserialize `dependencies` and `dev_dependencies` from pubspec.yaml
 #[derive(Debug, Deserialize)]
 struct Pubspec {
-    pub dependencies: Option<HashMap<String, PackageVersion>>,
-    pub dev_dependencies: Option<HashMap<String, PackageVersion>>,
+    pub dependencies: Option<HashMap<String, Option<PackageVersion>>>,
+    pub dev_dependencies: Option<HashMap<String, Option<PackageVersion>>>,
 }
 
 #[inline]
@@ -139,8 +139,9 @@ fn read_file(at: &str, filename: &str) -> anyhow::Result<String> {
             filename, at
         )));
     }
-    let content = std::fs::read_to_string(file)
-        .map_err(|_| anyhow::Error::msg(format!("unable to read {} in {}", filename, at)))?;
+    let content = std::fs::read_to_string(file).map_err(|e| {
+        anyhow::Error::msg(format!("unable to read {} in {}: {:#}", filename, at, e))
+    })?;
     Ok(content)
 }
 
@@ -191,8 +192,9 @@ impl FromStr for DartRepository {
         debug!("Guessing toolchain the runner is run into");
         let filename = DartToolchain::lock_filename();
         let lock_file = read_file(s, filename)?;
-        let lock_file: PubspecLock = serde_yaml::from_str(&lock_file)
-            .map_err(|_| anyhow::Error::msg(format!("unable to parse {} in {}", filename, s)))?;
+        let lock_file: PubspecLock = serde_yaml::from_str(&lock_file).map_err(|e| {
+            anyhow::Error::msg(format!("unable to parse {} in {}: {:#}", filename, s, e))
+        })?;
         if lock_file
             .packages
             .contains_key(&DartToolchain::Flutter.to_string())
@@ -224,11 +226,12 @@ impl DartRepository {
         let at = self.at.to_str().unwrap();
         debug!("Checking presence of {} in {} at {}", package, manager, at);
         let manifest_file = read_file(at, DartToolchain::manifest_filename())?;
-        let manifest_file: Pubspec = serde_yaml::from_str(&manifest_file).map_err(|_| {
+        let manifest_file: Pubspec = serde_yaml::from_str(&manifest_file).map_err(|e| {
             anyhow::Error::msg(format!(
-                "unable to parse {} in {}",
+                "unable to parse {} in {}: {:#}",
                 DartToolchain::manifest_filename(),
-                at
+                at,
+                e
             ))
         })?;
         let deps = match manager {
@@ -253,11 +256,12 @@ impl DartRepository {
         let at = self.at.to_str().unwrap();
         debug!("Checking presence of {} in {} at {}", package, manager, at);
         let lock_file = read_file(at, DartToolchain::lock_filename())?;
-        let lock_file: PubspecLock = serde_yaml::from_str(&lock_file).map_err(|_| {
+        let lock_file: PubspecLock = serde_yaml::from_str(&lock_file).map_err(|e| {
             anyhow::Error::msg(format!(
-                "unable to parse {} in {}",
+                "unable to parse {} in {}: {:#}",
                 DartToolchain::lock_filename(),
-                at
+                at,
+                e
             ))
         })?;
         let dependency = lock_file.packages.get(package);
@@ -271,11 +275,12 @@ impl DartRepository {
                         requirement: requirement.to_string(),
                     }));
                 }
-                PackageVersionKind::try_from(dependency).map_err(|_| {
+                PackageVersionKind::try_from(dependency).map_err(|e| {
                     anyhow::Error::msg(format!(
-                        "unable to parse {} version in {}",
+                        "unable to parse {} version in {}: {:#}",
                         package,
                         DartToolchain::lock_filename(),
+                        e
                     ))
                 })?
             }
@@ -374,12 +379,12 @@ impl std::fmt::Display for PackageManager {
 #[cfg(test)]
 mod tests {
     use std::{
+        collections::HashMap,
         path::{Path, PathBuf},
         str::FromStr,
     };
 
-    use super::DartRepository;
-    use super::DartToolchain;
+    use super::{DartDependencyVersion, DartRepository, DartToolchain, PackageVersion, Pubspec};
     use cargo_metadata::VersionReq;
     use lazy_static::lazy_static;
     use semver::Op;
@@ -439,5 +444,32 @@ mod tests {
             VersionReq::parse("0.2.1").unwrap(),
             VersionReq::parse(">=0.2.1, <0.3.0").unwrap()
         );
+    }
+
+    #[test]
+    fn can_parse_pubspec_deps() {
+        let yaml = "
+            dependencies:
+                this_package: ^1.0.1
+                that_package: 1.0.1
+                other_package:
+        ";
+        let pubspec: Pubspec = serde_yaml::from_str(yaml).expect("Failed to parse pubspec.yaml");
+        let mut expected = HashMap::new();
+        expected.insert(
+            "this_package".to_string(),
+            Some(PackageVersion::Inline(DartDependencyVersion(
+                "^1.0.1".to_string(),
+            ))),
+        );
+        expected.insert(
+            "that_package".to_string(),
+            Some(PackageVersion::Inline(DartDependencyVersion(
+                "1.0.1".to_string(),
+            ))),
+        );
+        expected.insert("other_package".to_string(), None);
+
+        assert_eq!(pubspec.dependencies, Some(expected));
     }
 }

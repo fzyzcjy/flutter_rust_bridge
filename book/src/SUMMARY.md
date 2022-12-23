@@ -17,6 +17,9 @@
     - [Methods](feature/lang_methods.md)
     - [Return types](feature/lang_return_types.md)
     - [Dynamic](feature/lang_dynamic.md)
+    - [Arbitrary Rust types (opaque)](feature/lang_rust_opaque.md)
+    - [Arbitrary Dart types (opaque)](feature/lang_dart_opaque.md)
+    - [Type alias](feature/lang_type_alias.md)
   - [Zero copy](feature/zero_copy.md)
   - [Stream / Iterator](feature/stream.md)
   - [Async in Dart](feature/async_dart.md)
@@ -68,11 +71,26 @@
   - [Integrating with Web](integrate/web.md)
   - [Using the dynamic library](integrate/usage.md)
   - [Wrapping up](integrate/finish.md)
+- [Creating a Dart/Flutter library](library.md)
+  - [Overview](library/overview.md)
+    - [Setup](library/setup.md)
+    - [Monorepo with Melos](library/melos.md)
+  - [Creating the libraries](library/creating_libraries.md)
+    - [Dart-only base](library/dart_only.md)
+    - [Flutter wrapper](library/flutter_wrapper.md)
+  - [Platform specific setup](library/platform_setup.md)
+    - [Windows & Linux](library/platform_setup/windows_and_linux.md)
+    - [iOS & macOS](library/platform_setup/ios_and_macos.md)
+    - [Android](library/platform_setup/android.md)
+  - [Continuous Integration & Deployment (CI/CD)](library/ci.md)
 
 # Part III: Contributor Guide
 
 - [Overview](contributing/overview.md)
 - [Overall design](contributing/design.md)
+- [Submodule implementations](contributing/submodule.md)
+  - [Rust opaque type safety](contributing/rust_opaque_type_safety.md)
+  - [Dart opaque type safety](contributing/dart_opaque_type_safety.md)
 - [Appendix](contributing/appendix.md)
 
 # Part IV: More Doc

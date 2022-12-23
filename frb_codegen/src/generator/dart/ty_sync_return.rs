@@ -1,47 +1,34 @@
-use crate::generator::dart::ty::*;
-use crate::ir::*;
+use delegate::delegate;
+
+use crate::generator::dart::*;
 use crate::target::Acc;
-use crate::type_dart_generator_struct;
 
-type_dart_generator_struct!(TypeSyncReturnGenerator, IrTypeSyncReturn);
+use super::TypeDartGeneratorTrait;
 
-impl TypeDartGeneratorTrait for TypeSyncReturnGenerator<'_> {
-    fn api2wire_body(&self) -> Acc<Option<String>> {
-        unimplemented!("SyncReturn generator for Dart: api2wire_body is not supported")
+#[derive(Debug, Clone)]
+pub struct TypeSyncReturnGenerator<'a> {
+    inner: Box<TypeDartGenerator<'a>>,
+}
+
+impl<'a> TypeSyncReturnGenerator<'a> {
+    pub fn new(ir: IrTypeSyncReturn, context: TypeGeneratorContext<'a>) -> Self {
+        TypeSyncReturnGenerator {
+            inner: Box::new(TypeDartGenerator::new(
+                ir.into_inner(),
+                context.ir_file,
+                context.config,
+            )),
+        }
     }
+}
 
-    fn wire2api_body(&self) -> String {
-        match self.ir {
-            IrTypeSyncReturn::Primitive(ref primitive) => match primitive {
-                IrTypePrimitive::Bool => "return uint8ListToBool(raw);".into(),
-                primitive => {
-                    let primitive_name = match primitive {
-                        IrTypePrimitive::U8 => "Uint8",
-                        IrTypePrimitive::U16 => "Uint16",
-                        IrTypePrimitive::U32 => "Uint32",
-                        IrTypePrimitive::U64 => "Uint64",
-                        IrTypePrimitive::I8 => "Int8",
-                        IrTypePrimitive::I16 => "Int16",
-                        IrTypePrimitive::I32 => "Int32",
-                        IrTypePrimitive::I64 => "Int64",
-                        IrTypePrimitive::F32 => "Float32",
-                        IrTypePrimitive::F64 => "Float64",
-                        _ => panic!(
-                            "SyncReturn generator for Dart: type {} is not supported",
-                            primitive.rust_api_type()
-                        ),
-                    };
-                    format!(
-                        r#"
-                        final dataView = ByteData.view(raw.buffer);
-                        return dataView.get{primitive_name}(0);
-                        "#,
-                        primitive_name = primitive_name
-                    )
-                }
-            },
-            IrTypeSyncReturn::String => "return utf8.decode(raw);".into(),
-            IrTypeSyncReturn::VecU8 => "return raw;".into(),
+impl<'a> TypeDartGeneratorTrait for TypeSyncReturnGenerator<'a> {
+    delegate! {
+        to self.inner {
+            fn api2wire_body(&self) -> Acc<Option<String>>;
+            fn api_fill_to_wire_body(&self) -> Option<String>;
+            fn wire2api_body(&self) -> String;
+            fn structs(&self) -> String;
         }
     }
 }

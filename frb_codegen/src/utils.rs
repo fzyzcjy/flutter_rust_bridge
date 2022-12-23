@@ -23,12 +23,12 @@ pub fn with_changed_file<F: FnOnce() -> anyhow::Result<()>>(
     append_content: &str,
     f: F,
 ) -> anyhow::Result<()> {
-    let content_original = fs::read_to_string(&path)?;
-    fs::write(&path, content_original.clone() + append_content)?;
+    let content_original = fs::read_to_string(path)?;
+    fs::write(path, content_original.clone() + append_content)?;
 
     f()?;
 
-    Ok(fs::write(&path, content_original)?)
+    Ok(fs::write(path, content_original)?)
 }
 
 pub fn find_all_duplicates<T>(iter: &[T]) -> Vec<T>
@@ -48,7 +48,7 @@ pub fn get_symbols_if_no_duplicates(configs: &[crate::Opts]) -> Result<Vec<Strin
     let mut explicit_raw_symbols = Vec::new();
     let mut all_symbols = Vec::new();
     for config in configs {
-        let raw_ir_file = config.get_ir_file();
+        let raw_ir_file = config.get_ir_file()?;
 
         // for checking explicit api duplication
         explicit_raw_symbols.extend(raw_ir_file.funcs.iter().map(|f| f.name.clone()));

@@ -1,3 +1,60 @@
+## 1.57.0
+
+* Make sync mode support whatever types that classical async mode supports #882 (thanks @ngasull)
+* docs: add Dart/Flutter library setup documentation #899 (thanks @GregoryConrad)
+* Fix lookup symbol store dart post cobject #898 (thanks @Roms1383)
+
+## 1.56.0
+
+* Return error when rust input file cannot be read #912 (thanks @w1th0utnam3)
+
+## 1.55.1
+
+* Fix mirroring to support `Result` return type and `Option<T>` field #907 (thanks @codercengiz)
+* Bump Dart SDK to 2.15 #906 (thanks @ngasull)
+
+## 1.55.0
+
+* Bump chrono #905 (thanks @Roms1383)
+* Support type aliases #900 (thanks @huang12zheng)
+
+## 1.54.1
+
+* Delete dart_sys #890 (thanks @rogurotus)
+
+## 1.54.0
+
+* Extend `SyncReturn` to support `RustOpaque`, `DartOpaque`, `Option` and so on #876 (thanks @rogurotus)
+
+## 1.53.0
+
+* Add Dart opaque types, allowing to use any Dart objects in Rust code #853 (thanks @rogurotus)
+
+## 1.52.0
+
+* Move semantics of opaque rust for Dart #869 (thanks @rogurotus)
+
+## 1.51.1
+
+* Fix function generation related to opaque rust #867 (thanks @rogurotus)
+
+## 1.51.0
+
+* support wasm with no decl set #861 (thanks @huang12zheng)
+
+## 1.50.0
+
+* Implement opaque types, enabling arbitrary Rust structs to be used as opaque Dart objects, by generating wrappers and raw Arc pointers #795 (thanks @rogurotus)
+
+## 1.49.2
+
+* Fix parsing of packages in pubspec.yaml that have no explicit version specification #846 (thanks @banool)
+
+## 1.49.1
+
+* Bump constraint on ffigen #823 (thanks @CicadaCinema)
+* Set default version strategy requirement for chrono #821 (thanks @vincent-herlemont)
+
 ## 1.49.0
 
 * Fix return for struct with methods #764 (thanks @Zaitam)

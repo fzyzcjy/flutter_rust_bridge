@@ -29,6 +29,11 @@ pub unsafe fn vec_from_leak_ptr<T>(ptr: *mut T, len: i32) -> Vec<T> {
     Vec::from_raw_parts(ptr, len as usize, len as usize)
 }
 
+/// Convert [Vec<T>] to array length `N`.
+///
+/// # Panics
+///
+/// Panics if length of [Vec<T>] != `N`.
 pub fn from_vec_to_array<T, const N: usize>(v: Vec<T>) -> [T; N] {
     core::convert::TryInto::try_into(v)
         .unwrap_or_else(|v: Vec<T>| panic!("Expected a Vec of length {} but it was {}", N, v.len()))
@@ -60,53 +65,11 @@ pub fn slice_from_byte_buffer<T: bytemuck::Pod>(buffer: Vec<u8>) -> Box<[T]> {
     }
 }
 
-/// NOTE for maintainer: Please keep this struct in sync with `DUMMY_WIRE_CODE_FOR_BINDGEN`
-/// in the code generator
-#[repr(C)]
 #[cfg(not(wasm))]
-pub struct WireSyncReturnStruct {
-    pub ptr: *mut u8,
-    pub len: i32,
-    pub success: bool,
-}
+use allo_isolate::ffi::DartCObject;
+
+#[cfg(not(wasm))]
+pub type WireSyncReturn = *mut DartCObject;
 
 #[cfg(wasm)]
-pub type WireSyncReturnStruct = wasm_bindgen::JsValue;
-
-/// Safe version of [`WireSyncReturnStruct`].
-pub struct WireSyncReturnData(pub(crate) Vec<u8>);
-
-impl From<Vec<u8>> for WireSyncReturnData {
-    fn from(data: Vec<u8>) -> Self {
-        WireSyncReturnData(data)
-    }
-}
-
-/// Bool will be converted to u8 where 0 stands for false and 1 stands for true.
-impl From<bool> for WireSyncReturnData {
-    fn from(data: bool) -> Self {
-        if data { 1_u8 } else { 0_u8 }.into()
-    }
-}
-
-/// String will be converted to UTF-8 bytes.
-impl From<String> for WireSyncReturnData {
-    fn from(data: String) -> Self {
-        data.as_bytes().to_vec().into()
-    }
-}
-
-/// Macro for implementing [`From<Primitive>`] for [`WireSyncReturnData`].
-/// This conversion won't fail.
-macro_rules! primitive_to_sync_return {
-    ($($t:ty),+) => {
-        $(impl From<$t> for WireSyncReturnData {
-            fn from(data: $t) -> Self {
-                data.to_be_bytes().to_vec().into()
-            }
-        })*
-    }
-}
-
-// For simple types, use macro to implement [`From`] trait.
-primitive_to_sync_return!(u8, i8, u16, i16, u32, i32, u64, i64, f32, f64);
+pub type WireSyncReturn = wasm_bindgen::JsValue;

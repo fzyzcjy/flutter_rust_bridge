@@ -98,7 +98,7 @@ impl IrFile {
         generated_rust
             .extern_func_names
             .into_iter()
-            .filter(|s| *s != "free_WireSyncReturnStruct")
+            .filter(|s| *s != "free_WireSyncReturn")
             .collect::<Vec<_>>()
     }
 }

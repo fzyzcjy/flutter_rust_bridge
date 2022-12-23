@@ -1,22 +1,26 @@
 mod ty;
 mod ty_boxed;
+mod ty_dart_opaque;
 mod ty_delegate;
 mod ty_enum;
 mod ty_general_list;
 mod ty_optional;
 mod ty_primitive;
 mod ty_primitive_list;
+mod ty_rust_opaque;
 mod ty_struct;
 mod ty_sync_return;
 
 pub use ty::*;
 pub use ty_boxed::*;
+pub use ty_dart_opaque::*;
 pub use ty_delegate::*;
 pub use ty_enum::*;
 pub use ty_general_list::*;
 pub use ty_optional::*;
 pub use ty_primitive::*;
 pub use ty_primitive_list::*;
+pub use ty_rust_opaque::*;
 pub use ty_struct::*;
 pub use ty_sync_return::*;
 
@@ -86,8 +90,10 @@ impl<'a> Generator<'a> {
 
         lines.push(String::new());
         lines.push(format!("use crate::{}::*;", rust_wire_mod));
-        lines.push("use flutter_rust_bridge::*;".to_string());
+        lines.push("use flutter_rust_bridge::*;".to_owned());
         lines.push("use core::panic::UnwindSafe;".to_owned());
+        lines.push("use std::sync::Arc;".to_owned());
+        lines.push("use std::ffi::c_void;".to_owned());
         lines.push(String::new());
 
         lines.push(self.section_header_comment("imports"));
@@ -127,6 +133,12 @@ impl<'a> Generator<'a> {
         lines += distinct_input_types
             .iter()
             .map(|f| self.generate_allocate_funcs(f, ir_file))
+            .collect();
+
+        lines.push_all(self.section_header_comment("related functions"));
+        lines += distinct_output_types
+            .iter()
+            .map(|f| self.generate_related_funcs(f, ir_file))
             .collect();
 
         lines.push_all(self.section_header_comment("impl Wire2Api"));
@@ -240,10 +252,10 @@ impl<'a> Generator<'a> {
 
     fn generate_sync_execution_mode_utility(&mut self) -> String {
         self.extern_func_collector.generate(
-            "free_WireSyncReturnStruct",
-            [("val: support::WireSyncReturnStruct", "")],
+            "free_WireSyncReturn",
+            [("ptr: support::WireSyncReturn", "")],
             None,
-            "unsafe { let _ = support::vec_from_leak_ptr(val.ptr, val.len); }",
+            "unsafe { let _ = support::box_from_leak_ptr(ptr); };",
             Io,
         )
     }
@@ -320,18 +332,20 @@ impl<'a> Generator<'a> {
             } else {
                 panic!("{} is not a method, nor a static method.", func.name)
             };
-            TypeRustGenerator::new(func.output.clone(), ir_file, self.config).wrap_obj(format!(
-                r"{}::{}({})",
-                struct_name.unwrap(),
-                method_name,
-                inner_func_params.join(", ")
-            ))
+            TypeRustGenerator::new(func.output.clone(), ir_file, self.config).wrap_obj(
+                format!(
+                    r"{}::{}({})",
+                    struct_name.unwrap(),
+                    method_name,
+                    inner_func_params.join(", ")
+                ),
+                func.fallible,
+            )
         } else {
-            TypeRustGenerator::new(func.output.clone(), ir_file, self.config).wrap_obj(format!(
-                "{}({})",
-                func.name,
-                inner_func_params.join(", ")
-            ))
+            TypeRustGenerator::new(func.output.clone(), ir_file, self.config).wrap_obj(
+                format!("{}({})", func.name, inner_func_params.join(", ")),
+                func.fallible,
+            )
         };
         let code_call_inner_func_result = if func.fallible {
             code_call_inner_func
@@ -342,7 +356,7 @@ impl<'a> Generator<'a> {
         let (handler_func_name, return_type, code_closure) = match func.mode {
             IrFuncMode::Sync => (
                 "wrap_sync",
-                Some("support::WireSyncReturnStruct"),
+                Some("support::WireSyncReturn"),
                 format!(
                     "{}
                     {}",
@@ -420,6 +434,12 @@ impl<'a> Generator<'a> {
     fn generate_allocate_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
         TypeRustGenerator::new(ty.clone(), ir_file, self.config)
             .allocate_funcs(&mut self.extern_func_collector, self.config.block_index)
+            .map(|func, _| func.unwrap_or_default())
+    }
+
+    fn generate_related_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
+        TypeRustGenerator::new(ty.clone(), ir_file, self.config)
+            .related_funcs(&mut self.extern_func_collector, self.config.block_index)
             .map(|func, _| func.unwrap_or_default())
     }
 

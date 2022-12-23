@@ -1,10 +1,12 @@
+use std::collections::HashSet;
+
 use crate::{ir::*, target::Target};
 use enum_dispatch::enum_dispatch;
 use IrType::*;
 
 /// Remark: "Ty" instead of "Type", since "type" is a reserved word in Rust.
 #[enum_dispatch(IrTypeTrait)]
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq)]
 pub enum IrType {
     Primitive(IrTypePrimitive),
     Delegate(IrTypeDelegate),
@@ -15,6 +17,8 @@ pub enum IrType {
     Boxed(IrTypeBoxed),
     EnumRef(IrTypeEnumRef),
     SyncReturn(IrTypeSyncReturn),
+    DartOpaque(IrTypeDartOpaque),
+    RustOpaque(IrTypeRustOpaque),
 }
 
 impl IrType {
@@ -24,6 +28,25 @@ impl IrType {
         }
 
         self.visit_children_types(f, ir_file);
+    }
+
+    pub fn distinct_types(&self, ir_file: &IrFile) -> Vec<IrType> {
+        let mut seen_idents = HashSet::new();
+        let mut ans = Vec::new();
+        self.visit_types(
+            &mut |ty| {
+                let ident = ty.safe_ident();
+                let contains = seen_idents.contains(&ident);
+                if !contains {
+                    seen_idents.insert(ident);
+                    ans.push(ty.clone());
+                }
+                contains
+            },
+            ir_file,
+        );
+
+        ans
     }
 
     #[inline]
@@ -66,6 +89,16 @@ impl IrType {
         matches!(self, StructRef(_) | EnumRef(_))
     }
 
+    #[inline]
+    pub fn is_rust_opaque(&self) -> bool {
+        matches!(self, RustOpaque(_))
+    }
+
+    #[inline]
+    pub fn is_dart_opaque(&self) -> bool {
+        matches!(self, DartOpaque(_))
+    }
+
     /// In WASM, these types belong to the JS scope-local heap, **NOT** the Rust heap
     /// and therefore do not implement [Send].
     #[inline]
@@ -74,6 +107,8 @@ impl IrType {
             Self::GeneralList(_)
             | Self::StructRef(_)
             | Self::EnumRef(_)
+            | Self::RustOpaque(_)
+            | Self::DartOpaque(_)
             | Self::Delegate(IrTypeDelegate::PrimitiveEnum { .. }) => true,
             Self::Boxed(IrTypeBoxed { inner, .. }) => inner.is_js_value(),
             _ => false,

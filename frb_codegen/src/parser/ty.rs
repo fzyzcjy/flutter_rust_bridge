@@ -15,6 +15,7 @@ use crate::parser::{extract_comments, extract_metadata, type_to_string};
 pub struct TypeParser<'a> {
     src_structs: HashMap<String, &'a Struct>,
     src_enums: HashMap<String, &'a Enum>,
+    src_types: HashMap<String, Type>,
 
     parsing_or_parsed_struct_names: HashSet<String>,
     struct_pool: IrStructPool,
@@ -27,10 +28,12 @@ impl<'a> TypeParser<'a> {
     pub fn new(
         src_structs: HashMap<String, &'a Struct>,
         src_enums: HashMap<String, &'a Enum>,
+        src_types: HashMap<String, Type>,
     ) -> Self {
         TypeParser {
             src_structs,
             src_enums,
+            src_types,
             struct_pool: HashMap::new(),
             enum_pool: HashMap::new(),
             parsing_or_parsed_struct_names: HashSet::new(),
@@ -52,6 +55,8 @@ pub enum SupportedInnerType {
     Path(SupportedPathType),
     /// Array type
     Array(Box<Self>, usize),
+    /// Unparsed type, only useful for Opaque.
+    Verbatim(Box<syn::Type>),
     /// The unit type `()`.
     Unit,
 }
@@ -61,6 +66,7 @@ impl std::fmt::Display for SupportedInnerType {
         match self {
             Self::Path(p) => write!(f, "{}", p),
             Self::Array(u, len) => write!(f, "[{}; {}]", u, len),
+            Self::Verbatim(ver) => write!(f, "{}", quote::quote!(#ver)),
             Self::Unit => write!(f, "()"),
         }
     }
@@ -109,7 +115,7 @@ impl SupportedInnerType {
                             generic,
                         }))
                     }
-                    _ => None,
+                    _ => Some(SupportedInnerType::Verbatim(Box::new(ty.clone()))),
                 }
             }
             syn::Type::Array(syn::TypeArray { elem, len, .. }) => {
@@ -128,14 +134,38 @@ impl SupportedInnerType {
             syn::Type::Tuple(syn::TypeTuple { elems, .. }) if elems.is_empty() => {
                 Some(SupportedInnerType::Unit)
             }
-            _ => None,
+            _ => Some(SupportedInnerType::Verbatim(Box::new(ty.clone()))),
         }
     }
 }
 
+// pub fn resolve_alias(&self, ty: &syn::Type) -> Cow<Type> {
+//     Cow::Borrowed(self.get_alias_type(ty).unwrap_or(ty))
+//     // self.get_alias_type(ty).unwrap_or(ty).clone()
+// }
+
 impl<'a> TypeParser<'a> {
+    pub fn resolve_alias<'b: 'a>(&self, ty: &'b Type) -> &Type {
+        self.get_alias_type(ty).unwrap_or(ty)
+    }
+    pub fn get_alias_type(&self, ty: &syn::Type) -> Option<&Type> {
+        if let Type::Path(TypePath { qself: _, path }) = ty {
+            if let Some(PathSegment {
+                ident,
+                arguments: _,
+            }) = path.segments.first()
+            {
+                let key = &ident.to_string();
+                if self.src_types.contains_key(key) {
+                    return self.src_types.get(key);
+                }
+            }
+        }
+        None
+    }
     pub fn parse_type(&mut self, ty: &syn::Type) -> IrType {
-        let supported_type = SupportedInnerType::try_from_syn_type(ty)
+        let resolve_ty = self.resolve_alias(ty);
+        let supported_type = SupportedInnerType::try_from_syn_type(resolve_ty)
             .unwrap_or_else(|| panic!("Unsupported type `{}`", type_to_string(ty)));
 
         self.convert_to_ir_type(supported_type)
@@ -148,6 +178,7 @@ impl<'a> TypeParser<'a> {
             SupportedInnerType::Path(p) => self.convert_path_to_ir_type(p),
             SupportedInnerType::Array(p, len) => self.convert_array_to_ir_type(*p, len),
             SupportedInnerType::Unit => Some(IrType::Primitive(IrTypePrimitive::Unit)),
+            SupportedInnerType::Verbatim(_) => None,
         }
     }
 
@@ -177,19 +208,18 @@ impl<'a> TypeParser<'a> {
         let ident_string = &p.ident.to_string();
         if let Some(generic) = p.generic {
             match ident_string.as_str() {
-                "SyncReturn" => match self.convert_to_ir_type(*generic) {
-                    Some(Primitive(primitive)) => {
-                        Some(SyncReturn(IrTypeSyncReturn::Primitive(primitive)))
+                "SyncReturn" => {
+                    // Disallow nested SyncReturn
+                    if matches!(*generic, SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "SyncReturn")
+                    {
+                        panic!(
+                            "Nested SyncReturn is invalid. (SyncReturn<SyncReturn<{}>>)",
+                            p_as_str
+                        );
                     }
-                    Some(Delegate(IrTypeDelegate::String)) => {
-                        Some(SyncReturn(IrTypeSyncReturn::String))
-                    }
-                    Some(PrimitiveList(primitive)) => match primitive.primitive {
-                        IrTypePrimitive::U8 => Some(SyncReturn(IrTypeSyncReturn::VecU8)),
-                        _ => None,
-                    },
-                    _ => None,
-                },
+                    self.convert_to_ir_type(*generic)
+                        .map(|ir| SyncReturn(IrTypeSyncReturn::new(ir)))
+                }
                 "Vec" => match *generic {
                     // Special-case Vec<String> as StringList
                     SupportedInnerType::Path(SupportedPathType { ref ident, .. })
@@ -221,6 +251,18 @@ impl<'a> TypeParser<'a> {
                         None
                     }
                 }
+                "RustOpaque" => match *generic {
+                    SupportedInnerType::Array(p, len) => self.convert_array_to_ir_type(*p, len),
+                    SupportedInnerType::Verbatim(ver) => {
+                        Some(IrType::RustOpaque(IrTypeRustOpaque::from(ver.as_ref())))
+                    }
+                    SupportedInnerType::Path(path) => {
+                        Some(IrType::RustOpaque(IrTypeRustOpaque::from(path.to_string())))
+                    }
+                    SupportedInnerType::Unit => {
+                        Some(IrType::RustOpaque(IrTypeRustOpaque::new_unit()))
+                    }
+                },
                 "Box" => self.convert_to_ir_type(*generic).map(|inner| {
                     Boxed(IrTypeBoxed {
                         exist_in_real_api: true,
@@ -238,9 +280,9 @@ impl<'a> TypeParser<'a> {
                     }
                     self.convert_to_ir_type(*generic).map(|inner| match inner {
                         Primitive(prim) => IrType::Optional(IrTypeOptional::new_primitive(prim)),
-                        st @ StructRef(_) => {
+                        inner @ (StructRef(_) | RustOpaque(_) | DartOpaque(_)) => {
                             IrType::Optional(IrTypeOptional::new(Boxed(IrTypeBoxed {
-                                inner: Box::new(st),
+                                inner: Box::new(inner),
                                 exist_in_real_api: false,
                             })))
                         }
@@ -271,6 +313,10 @@ impl<'a> TypeParser<'a> {
             if ident_string.as_str() == "Uuid" {
                 return Some(Delegate(IrTypeDelegate::Uuid));
             }
+            if ident_string.as_str() == "DartOpaque" {
+                return Some(DartOpaque(IrTypeDartOpaque {}));
+            }
+
             IrTypePrimitive::try_from_rust_str(ident_string)
                 .map(Primitive)
                 .or_else(|| {

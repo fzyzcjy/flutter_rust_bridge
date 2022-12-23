@@ -4,3 +4,4 @@
 target
 launch.json
 .local-chromium
+Makefile
