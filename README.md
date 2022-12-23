@@ -113,6 +113,7 @@ More specifically, thanks for all these contributions:
 
 * [Desdaemon](https://github.com/Desdaemon): Support not only simple enums but also enums with fields which gets translated to native enum or freezed class in Dart. Support the Option type as nullable types in Dart. Support Vec of Strings type. Support comments in code. Add marker attributes for future usage. Add Linux and Windows support for with-flutter example, and make CI works for that. Avoid parameter collision. Overhaul the documentation and add several chapters to demonstrate configuring a Flutter+Rust project in all five platforms. Refactor command module. Precompiled binary CI workflow. Fix bugs. Add support for the Web platform, parallel to the existing mobile/desktop platforms, via WASM and JavaScript as intermediate values. GitHub retry actions. Implement draft of opaque types.
 * [rogurotus](https://github.com/rogurotus): Add Rust opaque types, enabling arbitrary Rust structs to be used as opaque Dart objects by generating wrappers and raw Arc pointers, as well as Dart opaque types, allowing to use any Dart objects in Rust code. Extend `SyncReturn` for more types. Fix generation bug.
+* [ngasull](https://github.com/ngasull): Make sync mode support whatever types that classical async mode supports. Bump sdk.
 * [SecondFlight](https://github.com/SecondFlight): Allow structs and enums to be imported from other files within the crate by creating source graph. Auto-create relavent dir. Fix `store_dart_post_cobject` error with ffigen 6.0.
 * [Unoqwy](https://github.com/Unoqwy): Add struct mirrors, such that types in the external crates can be imported and used without redefining and copying.
 * [antonok-edm](https://github.com/antonok-edm): Avoid converting syn types to strings before parsing to improve code and be more robust.
@@ -120,11 +121,11 @@ More specifically, thanks for all these contributions:
 * [sagudev](https://github.com/sagudev): Make code generator a `lib`. Add error types. Depend on `cbindgen`. Fix LLVM paths. Update deps. Fix CI errors.
 * [surban](https://github.com/surban): Support unit return type. Skip unresolvable modules. Ignore prefer_const_constructors. Non-final Dart fields.
 * [Roms1383](https://github.com/Roms1383): Fix build_runner calling bug. Remove global `ffigen` dependency. Improve version check. Fix enum name-variant conflicts. Support Chrono date time and UUID types. Migrate to Rust 1.64 workspace. Update and refactor CI. Update header comments. Code cleanup.
+* [GregoryConrad](https://github.com/GregoryConrad): Add doc to setup frb inside a Dart/Flutter library.
 * [trobanga](https://github.com/trobanga): Add support for `[T;N]` structs. Add `usize` support. Add a cmd argument. Separate dart tests.
 * [dbsxdbsx](https://github.com/dbsxdbsx): Allow generating multiple Rust and Dart files. Update doc.
 * [SoLongAndThanksForAllThePizza](https://github.com/SoLongAndThanksForAllThePizza): Refactor and enhance SyncReturn to support more types.
 * [hsfzxjy](https://github.com/hsfzxjy): Fix SyncReturn use-after-free bug.
-* [GregoryConrad](https://github.com/GregoryConrad): Add doc to setup as a Dart/Flutter library.
 * [huang12zheng](https://github.com/huang12zheng): Support type aliases. Tweak code generation.
 * [Cupnfish](https://github.com/Cupnfish): Support arrays as function paramters. Allow multi mirror.
 * [alanlzhang](https://github.com/alanlzhang): Add generation for Dart metadata. Enhance module parser.
@@ -141,7 +142,6 @@ More specifically, thanks for all these contributions:
 * [Syndim](https://github.com/Syndim): Add a bracket to box.
 * [TENX-S](https://github.com/TENX-S): Improve doc. Reproduce a bug.
 * [w1th0utnam3](https://github.com/w1th0utnam3): Improve message.
-* [ngasull](https://github.com/ngasull): Bump sdk.
 * [vincent-herlemont](https://github.com/vincent-herlemont): Loosen version.
 * [CicadaCinema](https://github.com/CicadaCinema): Bump version.
 * [raphaelrobert](https://github.com/raphaelrobert): Remove oudated doc.
