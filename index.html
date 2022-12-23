@@ -242,6 +242,7 @@
 <ul>
 <li><a href="https://github.com/Desdaemon">Desdaemon</a>: Support not only simple enums but also enums with fields which gets translated to native enum or freezed class in Dart. Support the Option type as nullable types in Dart. Support Vec of Strings type. Support comments in code. Add marker attributes for future usage. Add Linux and Windows support for with-flutter example, and make CI works for that. Avoid parameter collision. Overhaul the documentation and add several chapters to demonstrate configuring a Flutter+Rust project in all five platforms. Refactor command module. Precompiled binary CI workflow. Fix bugs. Add support for the Web platform, parallel to the existing mobile/desktop platforms, via WASM and JavaScript as intermediate values. GitHub retry actions. Implement draft of opaque types.</li>
 <li><a href="https://github.com/rogurotus">rogurotus</a>: Add Rust opaque types, enabling arbitrary Rust structs to be used as opaque Dart objects by generating wrappers and raw Arc pointers, as well as Dart opaque types, allowing to use any Dart objects in Rust code. Extend <code>SyncReturn</code> for more types. Fix generation bug.</li>
+<li><a href="https://github.com/ngasull">ngasull</a>: Make sync mode support whatever types that classical async mode supports. Bump sdk.</li>
 <li><a href="https://github.com/SecondFlight">SecondFlight</a>: Allow structs and enums to be imported from other files within the crate by creating source graph. Auto-create relavent dir. Fix <code>store_dart_post_cobject</code> error with ffigen 6.0.</li>
 <li><a href="https://github.com/Unoqwy">Unoqwy</a>: Add struct mirrors, such that types in the external crates can be imported and used without redefining and copying.</li>
 <li><a href="https://github.com/antonok-edm">antonok-edm</a>: Avoid converting syn types to strings before parsing to improve code and be more robust.</li>
@@ -249,11 +250,11 @@
 <li><a href="https://github.com/sagudev">sagudev</a>: Make code generator a <code>lib</code>. Add error types. Depend on <code>cbindgen</code>. Fix LLVM paths. Update deps. Fix CI errors.</li>
 <li><a href="https://github.com/surban">surban</a>: Support unit return type. Skip unresolvable modules. Ignore prefer_const_constructors. Non-final Dart fields.</li>
 <li><a href="https://github.com/Roms1383">Roms1383</a>: Fix build_runner calling bug. Remove global <code>ffigen</code> dependency. Improve version check. Fix enum name-variant conflicts. Support Chrono date time and UUID types. Migrate to Rust 1.64 workspace. Update and refactor CI. Update header comments. Code cleanup.</li>
+<li><a href="https://github.com/GregoryConrad">GregoryConrad</a>: Add doc to setup frb inside a Dart/Flutter library.</li>
 <li><a href="https://github.com/trobanga">trobanga</a>: Add support for <code>[T;N]</code> structs. Add <code>usize</code> support. Add a cmd argument. Separate dart tests.</li>
 <li><a href="https://github.com/dbsxdbsx">dbsxdbsx</a>: Allow generating multiple Rust and Dart files. Update doc.</li>
 <li><a href="https://github.com/SoLongAndThanksForAllThePizza">SoLongAndThanksForAllThePizza</a>: Refactor and enhance SyncReturn to support more types.</li>
 <li><a href="https://github.com/hsfzxjy">hsfzxjy</a>: Fix SyncReturn use-after-free bug.</li>
-<li><a href="https://github.com/GregoryConrad">GregoryConrad</a>: Add doc to setup as a Dart/Flutter library.</li>
 <li><a href="https://github.com/huang12zheng">huang12zheng</a>: Support type aliases. Tweak code generation.</li>
 <li><a href="https://github.com/Cupnfish">Cupnfish</a>: Support arrays as function paramters. Allow multi mirror.</li>
 <li><a href="https://github.com/alanlzhang">alanlzhang</a>: Add generation for Dart metadata. Enhance module parser.</li>
@@ -270,7 +271,6 @@
 <li><a href="https://github.com/Syndim">Syndim</a>: Add a bracket to box.</li>
 <li><a href="https://github.com/TENX-S">TENX-S</a>: Improve doc. Reproduce a bug.</li>
 <li><a href="https://github.com/w1th0utnam3">w1th0utnam3</a>: Improve message.</li>
-<li><a href="https://github.com/ngasull">ngasull</a>: Bump sdk.</li>
 <li><a href="https://github.com/vincent-herlemont">vincent-herlemont</a>: Loosen version.</li>
 <li><a href="https://github.com/CicadaCinema">CicadaCinema</a>: Bump version.</li>
 <li><a href="https://github.com/raphaelrobert">raphaelrobert</a>: Remove oudated doc.</li>
