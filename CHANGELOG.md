@@ -1,5 +1,6 @@
-## Unreleased
+## 1.57.0
 
+* Make sync mode support whatever types that classical async mode supports #882 (thanks @ngasull)
 * docs: add Dart/Flutter library setup documentation #899 (thanks @GregoryConrad)
 
 ## 1.56.1
