@@ -124,6 +124,7 @@ More specifically, thanks for all these contributions:
 * [dbsxdbsx](https://github.com/dbsxdbsx): Allow generating multiple Rust and Dart files. Update doc.
 * [SoLongAndThanksForAllThePizza](https://github.com/SoLongAndThanksForAllThePizza): Refactor and enhance SyncReturn to support more types.
 * [hsfzxjy](https://github.com/hsfzxjy): Fix SyncReturn use-after-free bug.
+* [GregoryConrad](https://github.com/GregoryConrad): Add doc to setup as a Dart/Flutter library.
 * [huang12zheng](https://github.com/huang12zheng): Support type aliases. Tweak code generation.
 * [Cupnfish](https://github.com/Cupnfish): Support arrays as function paramters. Allow multi mirror.
 * [alanlzhang](https://github.com/alanlzhang): Add generation for Dart metadata. Enhance module parser.
