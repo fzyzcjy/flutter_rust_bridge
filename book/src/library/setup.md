@@ -4,10 +4,10 @@
 To start developing your Dart/Flutter library, you will need to download some dependencies locally.
 
 ### Required
-The rest of this guide assumes you have the following tools installed on any development machines.
+The rest of this guide assumes you have the following tools installed on any development machines:
 - [Flutter](https://docs.flutter.dev/get-started/install)
 - [rustup](https://rustup.rs)
-- [Melos](https://melos.invertase.dev) (needed for our monorepo, see [here](library/melos.md))
+- [Melos](https://melos.invertase.dev) (needed for our monorepo, see [here](melos.md))
   - `dart pub global activate melos` to install once Dart/Flutter are installed
 
 ### Optional
