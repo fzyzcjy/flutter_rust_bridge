@@ -19,9 +19,10 @@ We will need to create several files for both iOS and macOS to:
 
 ### `ios/Classes/EnforceBundling.swift` and `macos/Classes/EnforceBundling.swift`
 ```swift
-public func dummyMethodToEnforceBundling() {
-    dummy_method_to_enforce_bundling()
+public func dummyMethodToEnforceBundling() -> Int64 {
+  return dummy_method_to_enforce_bundling()
 }
+let dummyVar = dummyMethodToEnforceBundling();
 ```
 
 ### `ios/Frameworks/.gitkeep` and `macos/Frameworks/.gitkeep`
