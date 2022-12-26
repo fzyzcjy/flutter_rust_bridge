@@ -1854,6 +1854,19 @@ fn wire_handle_type_alias_id_impl(port_: MessagePort, input: impl Wire2Api<u64> 
         },
     )
 }
+fn wire_handle_type_nest_alias_id_impl(port_: MessagePort, input: impl Wire2Api<u64> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_type_nest_alias_id",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_input = input.wire2api();
+            move |task_callback| Ok(handle_type_nest_alias_id(api_input))
+        },
+    )
+}
 fn wire_handle_type_alias_model_impl(port_: MessagePort, input: impl Wire2Api<u64> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
