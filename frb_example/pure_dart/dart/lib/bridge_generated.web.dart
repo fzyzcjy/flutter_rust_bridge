@@ -1123,6 +1123,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_handle_type_alias_id(NativePortType port_, Object input);
 
+  external dynamic /* void */ wire_handle_type_nest_alias_id(NativePortType port_, Object input);
+
   external dynamic /* void */ wire_handle_type_alias_model(NativePortType port_, Object input);
 
   external dynamic /* void */ wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
@@ -1517,6 +1519,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_handle_type_alias_id(NativePortType port_, Object input) =>
       wasmModule.wire_handle_type_alias_id(port_, input);
+
+  void wire_handle_type_nest_alias_id(NativePortType port_, Object input) =>
+      wasmModule.wire_handle_type_nest_alias_id(port_, input);
 
   void wire_handle_type_alias_model(NativePortType port_, Object input) =>
       wasmModule.wire_handle_type_alias_model(port_, input);

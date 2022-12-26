@@ -685,6 +685,11 @@ pub extern "C" fn wire_handle_type_alias_id(port_: i64, input: u64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_type_nest_alias_id(port_: i64, input: u64) {
+    wire_handle_type_nest_alias_id_impl(port_, input)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_handle_type_alias_model(port_: i64, input: u64) {
     wire_handle_type_alias_model_impl(port_, input)
 }

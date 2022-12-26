@@ -548,6 +548,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleTypeAliasIdConstMeta;
 
+  Future<int> handleTypeNestAliasId({required int input, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleTypeNestAliasIdConstMeta;
+
   Future<TestModel> handleTypeAliasModel({required int input, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleTypeAliasModelConstMeta;

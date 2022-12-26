@@ -664,6 +664,11 @@ pub fn wire_handle_type_alias_id(port_: MessagePort, input: u64) {
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_type_nest_alias_id(port_: MessagePort, input: u64) {
+    wire_handle_type_nest_alias_id_impl(port_, input)
+}
+
+#[wasm_bindgen]
 pub fn wire_handle_type_alias_model(port_: MessagePort, input: u64) {
     wire_handle_type_alias_model_impl(port_, input)
 }

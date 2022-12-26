@@ -2075,6 +2075,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["input"],
       );
 
+  Future<int> handleTypeNestAliasId({required int input, dynamic hint}) {
+    var arg0 = _platform.api2wire_u64(input);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_handle_type_nest_alias_id(port_, arg0),
+      parseSuccessData: _wire2api_u64,
+      constMeta: kHandleTypeNestAliasIdConstMeta,
+      argValues: [input],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleTypeNestAliasIdConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_type_nest_alias_id",
+        argNames: ["input"],
+      );
+
   Future<TestModel> handleTypeAliasModel({required int input, dynamic hint}) {
     var arg0 = _platform.api2wire_u64(input);
     return _platform.executeNormal(FlutterRustBridgeTask(
