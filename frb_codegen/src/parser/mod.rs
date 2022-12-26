@@ -570,49 +570,46 @@ mod tests {
     use crate::parser::topo_resolve;
 
     #[test]
-    fn test_topo_resolve1() {
-        let mut input = HashMap::new();
-        let mut expect = HashMap::new();
-        input.insert("id".to_string(), parse_str::<Type>("i32").unwrap());
-        input.insert("UserId".to_string(), parse_str::<Type>("id").unwrap());
-        let input = input;
-        expect.insert("id".to_string(), parse_str::<Type>("i32").unwrap());
-        expect.insert("UserId".to_string(), parse_str::<Type>("i32").unwrap());
+    fn test_topo_resolve_primary_type_with_nest() {
+        let input = HashMap::from([
+            ("id".to_string(), parse_str::<Type>("i32").unwrap()),
+            ("UserId".to_string(), parse_str::<Type>("id").unwrap()),
+        ]);
+        let expect = HashMap::from([
+            ("id".to_string(), parse_str::<Type>("i32").unwrap()),
+            ("UserId".to_string(), parse_str::<Type>("i32").unwrap()),
+        ]);
         let output = topo_resolve(input);
         assert_eq!(output, expect);
     }
     #[test]
-    fn test_topo_resolve2() {
-        let mut input = HashMap::new();
-        let mut expect = HashMap::new();
-        input.insert("id".to_string(), parse_str::<Type>("i32").unwrap());
-        let input = input;
-        expect.insert("id".to_string(), parse_str::<Type>("i32").unwrap());
+    fn test_topo_resolve_primary_type() {
+        let input = HashMap::from([("id".to_string(), parse_str::<Type>("i32").unwrap())]);
+        let expect = HashMap::from([("id".to_string(), parse_str::<Type>("i32").unwrap())]);
+
         let output = topo_resolve(input);
         assert_eq!(output, expect);
     }
     #[test]
-    fn test_topo_resolve3() {
-        let mut input = HashMap::new();
-        let mut expect = HashMap::new();
-        input.insert("DartPostCObjectFnType".to_string(), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap());
-        let input = input;
-        expect.insert("DartPostCObjectFnType".to_string(), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap());
+    fn test_topo_resolve3_unhandle_case() {
+        let input = HashMap::from([("DartPostCObjectFnType".to_string(), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap())]);
+        let expect = HashMap::from([("DartPostCObjectFnType".to_string(), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap())]);
         let output = topo_resolve(input);
         assert_eq!(output, expect);
     }
     #[test]
-    fn test_topo_resolve4() {
-        let mut input = HashMap::new();
-        let mut expect = HashMap::new();
-        input.insert("DartPostCObjectFnType".to_string(), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap());
-        input.insert(
-            "DartPostCObjectFnTypeAlias".to_string(),
-            parse_str::<Type>("DartPostCObjectFnType").unwrap(),
-        );
-        let input = input;
-        expect.insert("DartPostCObjectFnType".to_string(), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap());
-        expect.insert("DartPostCObjectFnTypeAlias".to_string(), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap());
+    fn test_topo_resolve_unhandle_case_with_nest() {
+        let input = HashMap::from([
+            ("DartPostCObjectFnType".to_string(), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap()),
+            (
+                "DartPostCObjectFnTypeAlias".to_string(),
+                parse_str::<Type>("DartPostCObjectFnType").unwrap(),
+            )
+        ]);
+        let expect = HashMap::from([
+            ("DartPostCObjectFnType".to_string(), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap()),
+            ("DartPostCObjectFnTypeAlias".to_string(), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap()),
+            ]);
         let output = topo_resolve(input);
         assert_eq!(&output, &expect);
     }
