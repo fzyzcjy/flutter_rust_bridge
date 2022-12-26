@@ -125,8 +125,8 @@ More specifically, thanks for all these contributions:
 * [trobanga](https://github.com/trobanga): Add support for `[T;N]` structs. Add `usize` support. Add a cmd argument. Separate dart tests.
 * [dbsxdbsx](https://github.com/dbsxdbsx): Allow generating multiple Rust and Dart files. Fix lint. Update doc.
 * [SoLongAndThanksForAllThePizza](https://github.com/SoLongAndThanksForAllThePizza): Refactor and enhance SyncReturn to support more types.
+* [huang12zheng](https://github.com/huang12zheng): Support type aliases and nested ones. Tweak code generation.
 * [hsfzxjy](https://github.com/hsfzxjy): Fix SyncReturn use-after-free bug.
-* [huang12zheng](https://github.com/huang12zheng): Support type aliases. Tweak code generation.
 * [Cupnfish](https://github.com/Cupnfish): Support arrays as function paramters. Allow multi mirror.
 * [alanlzhang](https://github.com/alanlzhang): Add generation for Dart metadata. Enhance module parser.
 * [Zaitam](https://github.com/Zaitam): Fix when method return struct.
