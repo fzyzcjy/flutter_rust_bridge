@@ -23,7 +23,7 @@ use self::ty::convert_ident_str;
 const STREAM_SINK_IDENT: &str = "StreamSink";
 const RESULT_IDENT: &str = "Result";
 
-pub(crate) fn get_toposort(src: HashMap<String, Type>) -> HashMap<String, Type> {
+pub(crate) fn topo_resolve(src: HashMap<String, Type>) -> HashMap<String, Type> {
     // Some types that cannot be Handled.
     // Filter something like `BareFn( TypeBareFn...`
     // Filter something like `Ptr( TypePtr { star_token: Star,`
@@ -38,7 +38,7 @@ pub(crate) fn get_toposort(src: HashMap<String, Type>) -> HashMap<String, Type> 
     let string_src = src
         .iter()
         // Filter some types that cannot be Handled.
-        .filter_map(|(k, v)| convert_ident_str(v).map(|v| (k.to_owned(), v)));
+        .filter_map(|(k, v)| convert_ident_str(v).map(|v| (k, v)));
 
     let mut ts = TopologicalSort::<String>::new();
 
@@ -51,12 +51,16 @@ pub(crate) fn get_toposort(src: HashMap<String, Type>) -> HashMap<String, Type> 
     // You might worry about the type, which cannot be handled and isn't in ts.
     // Case:
     // ```
-    // type Id = unsafe{};
-    // type UserId = Id;
+    // type UnsafeAlias = unsafe{};
+    // type NestAlias = UnsafeAlias;
     // ```
-    // 1. pop_base: ret = [{Id, unsafe}]
-    // 2. init_condition: pop Id, and then handle UserId.
-    //    src.get("UserId") => Id,
+    // 1. pop_base: ret = [{UnsafeAlias, unsafe}]
+    // 2. init_condition:
+    //    2.1. ("UnsafeAlias","NestAlias") in ts,
+    //    2.2. do pop_all, pop UnsafeAlias, only "NestAlias" in ts.
+    //    2.3. do pop, and then handle NestAlias.
+    //    src.get("NestAlias") => UnsafeAlias,
+    //    ret.insert("NestAlias") = ret.get("UnsafeAlias")
     ts.pop_all();
     // build init_condition
     ts.pop_all().into_iter().for_each(|k| {
@@ -66,6 +70,7 @@ pub(crate) fn get_toposort(src: HashMap<String, Type>) -> HashMap<String, Type> 
         ret.insert(
             k,
             if ret.contains_key(&v_str) {
+                // only happen if v_src cannot handle
                 ret.get(&v_str).unwrap().clone()
             } else {
                 v_src
@@ -93,7 +98,7 @@ pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> IrFi
     let src_structs = crate_map.root_module.collect_structs_to_vec();
     let src_enums = crate_map.root_module.collect_enums_to_vec();
     let src_types = crate_map.root_module.collect_types_to_pool();
-    let src_types = get_toposort(src_types);
+    let src_types = topo_resolve(src_types);
 
     let parser = Parser::new(TypeParser::new(src_structs, src_enums, src_types));
     parser.parse(source_rust_content, src_fns)
@@ -554,4 +559,61 @@ fn extract_metadata(attrs: &[Attribute]) -> Vec<IrDartAnnotation> {
 /// syn -> string https://github.com/dtolnay/syn/issues/294
 fn type_to_string(ty: &Type) -> String {
     quote!(#ty).to_string().replace(' ', "")
+}
+
+#[cfg(test)]
+mod tests {
+    use std::collections::HashMap;
+
+    use syn::{parse_str, Type};
+
+    use crate::parser::topo_resolve;
+
+    #[test]
+    fn test_topo_resolve1() {
+        let mut input = HashMap::new();
+        let mut expect = HashMap::new();
+        input.insert("id".to_string(), parse_str::<Type>("i32").unwrap());
+        input.insert("UserId".to_string(), parse_str::<Type>("id").unwrap());
+        let input = input;
+        expect.insert("id".to_string(), parse_str::<Type>("i32").unwrap());
+        expect.insert("UserId".to_string(), parse_str::<Type>("i32").unwrap());
+        let output = topo_resolve(input);
+        assert_eq!(output, expect);
+    }
+    #[test]
+    fn test_topo_resolve2() {
+        let mut input = HashMap::new();
+        let mut expect = HashMap::new();
+        input.insert("id".to_string(), parse_str::<Type>("i32").unwrap());
+        let input = input;
+        expect.insert("id".to_string(), parse_str::<Type>("i32").unwrap());
+        let output = topo_resolve(input);
+        assert_eq!(output, expect);
+    }
+    #[test]
+    fn test_topo_resolve3() {
+        let mut input = HashMap::new();
+        let mut expect = HashMap::new();
+        input.insert("DartPostCObjectFnType".to_string(), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap());
+        let input = input;
+        expect.insert("DartPostCObjectFnType".to_string(), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap());
+        let output = topo_resolve(input);
+        assert_eq!(output, expect);
+    }
+    #[test]
+    fn test_topo_resolve4() {
+        let mut input = HashMap::new();
+        let mut expect = HashMap::new();
+        input.insert("DartPostCObjectFnType".to_string(), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap());
+        input.insert(
+            "DartPostCObjectFnTypeAlias".to_string(),
+            parse_str::<Type>("DartPostCObjectFnType").unwrap(),
+        );
+        let input = input;
+        expect.insert("DartPostCObjectFnType".to_string(), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap());
+        expect.insert("DartPostCObjectFnTypeAlias".to_string(), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap());
+        let output = topo_resolve(input);
+        assert_eq!(&output, &expect);
+    }
 }
