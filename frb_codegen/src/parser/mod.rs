@@ -1,5 +1,6 @@
 pub(crate) mod ty;
 
+use std::collections::HashMap;
 use std::string::String;
 
 use log::debug;
@@ -8,6 +9,7 @@ use syn::parse::{Parse, ParseStream};
 use syn::punctuated::Punctuated;
 use syn::token::Colon;
 use syn::*;
+use topological_sort::TopologicalSort;
 
 use crate::ir::*;
 
@@ -16,8 +18,72 @@ use crate::method_utils::FunctionName;
 use crate::parser::ty::TypeParser;
 use crate::source_graph::Crate;
 
+use self::ty::convert_ident_str;
+
 const STREAM_SINK_IDENT: &str = "StreamSink";
 const RESULT_IDENT: &str = "Result";
+
+pub(crate) fn get_toposort(src: HashMap<String, Type>) -> HashMap<String, Type> {
+    // Some types that cannot be Handled.
+    // Filter something like `BareFn( TypeBareFn...`
+    // Filter something like `Ptr( TypePtr { star_token: Star,`
+    let mut ret: HashMap<String, Type> = src
+        .iter()
+        .filter_map(|(k, v)| match convert_ident_str(v) {
+            Some(_) => None,
+            None => Some((k.to_owned(), v.to_owned())),
+        })
+        .collect();
+
+    let string_src = src
+        .iter()
+        // Filter some types that cannot be Handled.
+        .filter_map(|(k, v)| convert_ident_str(v).map(|v| (k.to_owned(), v)));
+
+    let mut ts = TopologicalSort::<String>::new();
+
+    string_src.for_each(|(k, v)| {
+        // k and v switch orders here
+        ts.add_dependency(v, k);
+    });
+
+    // remove base type, like i32 in `type Id = i32`.
+    // You might worry about the type, which cannot be handled and isn't in ts.
+    // Case:
+    // ```
+    // type Id = unsafe{};
+    // type UserId = Id;
+    // ```
+    // 1. pop_base: ret = [{Id, unsafe}]
+    // 2. init_condition: pop Id, and then handle UserId.
+    //    src.get("UserId") => Id,
+    ts.pop_all();
+    // build init_condition
+    ts.pop_all().into_iter().for_each(|k| {
+        let v_src = src.get(&k).unwrap().to_owned();
+        let v_str = convert_ident_str(&v_src).unwrap();
+
+        ret.insert(
+            k,
+            if ret.contains_key(&v_str) {
+                ret.get(&v_str).unwrap().clone()
+            } else {
+                v_src
+            },
+        );
+    });
+
+    while let Some(k) = ts.pop() {
+        let v_src = src.get(&k).unwrap().to_owned();
+        let v_str = convert_ident_str(&v_src).unwrap();
+        let v_ret = ret
+            .get(&v_str)
+            .unwrap_or_else(|| panic!("{:?},\n{:?},\n{:?},\n{}", src, ts, ret, k))
+            .to_owned();
+        ret.insert(k, v_ret);
+    }
+    ret
+}
 
 pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> IrFile {
     let crate_map = Crate::new(manifest_path);
@@ -27,6 +93,7 @@ pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> IrFi
     let src_structs = crate_map.root_module.collect_structs_to_vec();
     let src_enums = crate_map.root_module.collect_enums_to_vec();
     let src_types = crate_map.root_module.collect_types_to_pool();
+    let src_types = get_toposort(src_types);
 
     let parser = Parser::new(TypeParser::new(src_structs, src_enums, src_types));
     parser.parse(source_rust_content, src_fns)
