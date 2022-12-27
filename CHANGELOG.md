@@ -1,3 +1,7 @@
+## 1.58.2
+
+* Fix `SyncReturn<RustOpaque<T>>` #934 (thanks @rogurotus)
+
 ## 1.58.1
 
 * fix SyncReturn restrictions and update CI #936 (thanks @rogurotus)
