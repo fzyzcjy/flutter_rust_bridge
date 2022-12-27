@@ -153,7 +153,7 @@
 <h2 id="-advantages"><a class="header" href="#-advantages">🚀 Advantages</a></h2>
 <ul>
 <li><strong>Memory-safe</strong>: Never need to think about malloc/free.</li>
-<li><strong>Feature-rich</strong>: <code>enum</code>s with values, platform-optimized <code>Vec</code>, possibly recursive <code>struct</code>, zero-copy big arrays, opaque types on arbitrary structs/classes, <code>Stream</code> (iterator) abstraction, error (<code>Result</code>) handling, cancellable tasks, concurrency control, and more. See full features <a href="https://fzyzcjy.github.io/flutter_rust_bridge/feature.html">here</a>. </li>
+<li><strong>Feature-rich</strong>: <code>enum</code>s with values, platform-optimized <code>Vec</code>, possibly recursive <code>struct</code>, zero-copy big arrays, opaque types on arbitrary structs/classes, <code>Stream</code> (iterator) abstraction, error (<code>Result</code>) handling, cancellable tasks, concurrency control, and more. See full features <a href="https://fzyzcjy.github.io/flutter_rust_bridge/feature.html">here</a>.</li>
 <li><strong>Async programming</strong>: Rust code will never block the Flutter. Call Rust naturally from Flutter's main isolate (thread); sync mode also equally supported.</li>
 <li><strong>Lightweight</strong>: This is not a huge framework that includes everything, so you are free to use your favorite Flutter and Rust libraries. <sub>For example, state-management with Flutter library (e.g. MobX) can be elegant and simple (contrary to implementing in Rust); implementing a photo manipulation algorithm in Rust will be fast and safe (countrary to implementing in Flutter).</sub></li>
 <li><strong>Cross-platform</strong>: Android, iOS, Windows, Linux, MacOS, and Web.</li>
@@ -231,7 +231,7 @@
     </tr>
     <tr>
       <td align="center"><a href="https://www.floeschner.de/"><img src="https://avatars.githubusercontent.com/u/12967904?v=4?s=100" width="100px;" alt="Fabian Löschner"/><br /><sub><b>Fabian Löschner</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=w1th0utnam3" title="Code">💻</a></td>
-      <td align="center"><a href="http://gsconrad.com"><img src="https://avatars.githubusercontent.com/u/15874617?v=4?s=100" width="100px;" alt="Gregory Conrad"/><br /><sub><b>Gregory Conrad</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=GregoryConrad" title="Documentation">📖</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=GregoryConrad" title="Code">💻</a></td>
+      <td align="center"><a href="https://gsconrad.com"><img src="https://avatars.githubusercontent.com/u/15874617?v=4?s=100" width="100px;" alt="Gregory Conrad"/><br /><sub><b>Gregory Conrad</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=GregoryConrad" title="Documentation">📖</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=GregoryConrad" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
@@ -252,10 +252,10 @@
 <li><a href="https://github.com/Roms1383">Roms1383</a>: Fix build_runner calling bug. Remove global <code>ffigen</code> dependency. Improve version check. Fix enum name-variant conflicts. Support Chrono date time and UUID types. Migrate to Rust 1.64 workspace. Update and refactor CI. Update header comments. Code cleanup.</li>
 <li><a href="https://github.com/GregoryConrad">GregoryConrad</a>: Add doc to setup frb inside a Dart/Flutter library.</li>
 <li><a href="https://github.com/trobanga">trobanga</a>: Add support for <code>[T;N]</code> structs. Add <code>usize</code> support. Add a cmd argument. Separate dart tests.</li>
-<li><a href="https://github.com/dbsxdbsx">dbsxdbsx</a>: Allow generating multiple Rust and Dart files. Update doc.</li>
+<li><a href="https://github.com/dbsxdbsx">dbsxdbsx</a>: Allow generating multiple Rust and Dart files. Fix lint. Update doc.</li>
 <li><a href="https://github.com/SoLongAndThanksForAllThePizza">SoLongAndThanksForAllThePizza</a>: Refactor and enhance SyncReturn to support more types.</li>
+<li><a href="https://github.com/huang12zheng">huang12zheng</a>: Support type aliases and nested ones. Tweak code generation.</li>
 <li><a href="https://github.com/hsfzxjy">hsfzxjy</a>: Fix SyncReturn use-after-free bug.</li>
-<li><a href="https://github.com/huang12zheng">huang12zheng</a>: Support type aliases. Tweak code generation.</li>
 <li><a href="https://github.com/Cupnfish">Cupnfish</a>: Support arrays as function paramters. Allow multi mirror.</li>
 <li><a href="https://github.com/alanlzhang">alanlzhang</a>: Add generation for Dart metadata. Enhance module parser.</li>
 <li><a href="https://github.com/Zaitam">Zaitam</a>: Fix when method return struct.</li>
