@@ -54,7 +54,7 @@ jobs:
         run: chmod +x ./run.sh ./valgrind_util.py && ./run.sh
         env:
           CARGO_TARGET_DIR: /home/runner # NOTE here, must be an absolute path, since in my script uses it in multiple different directories
-          
+
       - name: Run valgrind script (multi blocks)
         working-directory: ./frb_example/pure_dart_multi/dart
         run: chmod +x ./run.sh && ./run.sh
@@ -100,11 +100,11 @@ jobs:
   flutter_linux_test:
     name: Flutter (Linux) integration test
     uses: ./.github/workflows/flutter_linux_test.yml
-  
+
   dart_web_test:
     name: Dart (Web) unit tests
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v2
       - uses: dart-lang/setup-dart@v1
@@ -238,6 +238,20 @@ jobs:
       - name: Run tests for pure_dart_multi example
         working-directory: ./frb_example/pure_dart_multi/rust
         run: cargo test --verbose
+
+      - name: Build pure_dart_multi example (with c-output flag)
+        working-directory: ./frb_example/pure_dart_multi/rust
+        run: cargo build --features c-output --verbose
+      - name: Run tests for pure_dart_multi example (with c-output flag)
+        working-directory: ./frb_example/pure_dart_multi/rust
+        run: cargo test --features c-output --verbose
+
+      - name: Build pure_dart_multi example (with c-output, extra-c-output-path flag)
+        working-directory: ./frb_example/pure_dart_multi/rust
+        run: cargo build --features c-output,extra-c-output-path --verbose
+      - name: Run tests for pure_dart_multi example (with c-output, extra-c-output-path flag)
+        working-directory: ./frb_example/pure_dart_multi/rust
+        run: cargo test --features c-output,extra-c-output-path --verbose
 
       - name: Build with_flutter example
         working-directory: ./frb_example/with_flutter/rust
