@@ -139,29 +139,25 @@ impl SupportedInnerType {
     }
 }
 
-// pub fn resolve_alias(&self, ty: &syn::Type) -> Cow<Type> {
-//     Cow::Borrowed(self.get_alias_type(ty).unwrap_or(ty))
-//     // self.get_alias_type(ty).unwrap_or(ty).clone()
-// }
-
+pub fn convert_ident_str(ty: &Type) -> Option<String> {
+    if let Type::Path(TypePath { qself: _, path }) = ty {
+        if let Some(PathSegment {
+            ident,
+            arguments: _,
+        }) = path.segments.first()
+        {
+            return Some(ident.to_string());
+        }
+    }
+    // Unhandled case, return None
+    None
+}
 impl<'a> TypeParser<'a> {
     pub fn resolve_alias<'b: 'a>(&self, ty: &'b Type) -> &Type {
         self.get_alias_type(ty).unwrap_or(ty)
     }
     pub fn get_alias_type(&self, ty: &syn::Type) -> Option<&Type> {
-        if let Type::Path(TypePath { qself: _, path }) = ty {
-            if let Some(PathSegment {
-                ident,
-                arguments: _,
-            }) = path.segments.first()
-            {
-                let key = &ident.to_string();
-                if self.src_types.contains_key(key) {
-                    return self.src_types.get(key);
-                }
-            }
-        }
-        None
+        convert_ident_str(ty).and_then(|key| self.src_types.get(&key))
     }
     pub fn parse_type(&mut self, ty: &syn::Type) -> IrType {
         let resolve_ty = self.resolve_alias(ty);

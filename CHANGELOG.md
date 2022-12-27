@@ -1,3 +1,7 @@
+## 1.58.0
+
+* Support nest type alias with topology sort #929 (thanks @huang12zheng)
+
 ## 1.57.0
 
 * Make sync mode support whatever types that classical async mode supports #882 (thanks @ngasull)

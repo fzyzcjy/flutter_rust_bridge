@@ -1102,8 +1102,12 @@ void main(List<String> args) async {
       expect(identical(res, f), isTrue);
     });
 
-    test('dart call handle_type_Id', () async {
+    test('dart call handle_type_id', () async {
       final id = await api.handleTypeAliasId(input: 42);
+      expect(id, 42);
+    });
+    test('dart call handle_type_nest_alias_id', () async {
+      final id = await api.handleTypeNestAliasId(input: 42);
       expect(id, 42);
     });
     test('dart call handle_type_model', () async {
