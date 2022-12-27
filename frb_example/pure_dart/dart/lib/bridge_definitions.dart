@@ -546,7 +546,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   /// Structure for testing the SyncReturn<RustOpaque> code generator.
   /// FrbOpaqueSyncReturn must be only return type.
-  /// FrbOpaqueSyncReturn must should be without wrapper like Option<> Vec<> etc.
+  /// FrbOpaqueSyncReturn must be without wrapper like Option<> Vec<> etc.
   FrbOpaqueSyncReturn frbSyncGeneratorTest({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kFrbSyncGeneratorTestConstMeta;

@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
-import 'package:js/js_util.dart';
 import 'package:test/test.dart';
 import 'package:uuid/uuid.dart';
 import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
@@ -1039,7 +1038,7 @@ void main(List<String> args) async {
 
   group('extended sync', () {
     test('check generator', () {
-      expect(instanceof(api.frbSyncGeneratorTest(), FrbOpaqueSyncReturn), isTrue);
+      expect(api.frbSyncGeneratorTest().runtimeType == FrbOpaqueSyncReturn, isTrue);
     });
 
     test('create', () {

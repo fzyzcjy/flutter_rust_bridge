@@ -1281,7 +1281,7 @@ pub fn frb_generator_test() -> RustOpaque<FrbOpaqueReturn> {
 /// FrbOpaqueSyncReturn must be only return type.
 /// FrbOpaqueSyncReturn must be without wrapper like Option<> Vec<> etc.
 pub fn frb_sync_generator_test() -> SyncReturn<RustOpaque<FrbOpaqueSyncReturn>> {
-    panic!("dummy code");
+    SyncReturn(RustOpaque::new(FrbOpaqueSyncReturn))
 }
 
 pub fn handle_type_alias_id(input: Id) -> Id {
