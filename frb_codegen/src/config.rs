@@ -29,9 +29,12 @@ pub struct RawOpts {
     /// If provided, generated Dart declaration code to this separate file
     #[clap(long)]
     pub dart_decl_output: Option<String>,
-    /// Output path of generated C header
+    /// Output path (including file name) of generated C header, each field corresponding to that of `rust-input`
     #[clap(short, long)]
     pub c_output: Option<Vec<String>>,
+    /// Extra output path (excluding file name) of generated C header
+    #[clap(short, long)]
+    pub extra_c_output_path: Option<Vec<String>>,
     /// Crate directory for your Rust project
     #[clap(long, multiple_values = true)]
     pub rust_crate_dir: Option<Vec<String>>,
@@ -177,7 +180,8 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
 
     let skip_deps_check = raw.skip_deps_check;
 
-    // c output path(s) (only 1 list is needed, nothing to do with number of rust_input_paths)
+    //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ c output path(s) ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+    // 1.c path with file name from flag rawOpt.c_output
     let c_output_paths = raw
         .c_output
         .map(|outputs| {
@@ -187,9 +191,56 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
                 .collect::<Vec<_>>()
         })
         .unwrap_or_else(|| {
-            vec![fallback_c_output_path()
-                .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("c_output")))]
+            (0..rust_input_paths.len())
+                .map(|_| {
+                    fallback_c_output_path()
+                        .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("c_output")))
+                })
+                .collect()
         });
+
+    if c_output_paths.len() != rust_input_paths.len() {
+        bail(
+            clap::ErrorKind::WrongNumberOfValues,
+            "--c-output's inputs should match --rust-input's length".into(),
+        );
+    }
+    // 2.extra c path from flag rawOpt.extra_c_output_path
+    let extra_c_output_paths = raw
+        .extra_c_output_path
+        .unwrap_or_default()
+        .iter()
+        .flat_map(|extra_path| {
+            c_output_paths.iter().map(move |c| {
+                let path = Path::new(c);
+                let file_name = String::from(path.file_name().unwrap().to_str().unwrap());
+                Path::join(extra_path.as_ref(), file_name)
+                    .into_os_string()
+                    .into_string()
+                    .unwrap()
+            })
+        })
+        .collect::<Vec<_>>();
+
+    // 3.integrate c output path(s) for each rust input API block
+    let refined_c_outputs = c_output_paths
+        .iter()
+        .enumerate()
+        .map(|(i, each_a)| {
+            let mut first = vec![each_a.clone()];
+            if !extra_c_output_paths.is_empty() {
+                let iter = extra_c_output_paths[i..]
+                    .iter()
+                    .step_by(c_output_paths.len())
+                    .map(|s| s.to_owned())
+                    .collect::<Vec<_>>();
+                first.extend(iter);
+            }
+
+            first
+        })
+        .collect::<Vec<_>>();
+    //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ c output path(s) ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
     // dart root(s)
     let dart_roots: Vec<_> = match raw.dart_root {
@@ -222,7 +273,7 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
                 rust_input_path: rust_input_paths[i].clone(),
                 dart_output_path: dart_output_paths[i].clone(),
                 dart_decl_output_path: dart_decl_output_path.clone(),
-                c_output_path: c_output_paths.clone(), //same for all rust api blocks
+                c_output_path: refined_c_outputs[i].clone(),
                 rust_crate_dir: rust_crate_dirs[i].clone(),
                 rust_output_path: rust_output_paths[i].clone(),
                 class_name: class_names[i].clone(),

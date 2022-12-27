@@ -15,12 +15,24 @@ const RUST_OUTPUT_2: &str = "src/generated_api_2.rs";
 const CLASS_NAME_1: &str = "ApiClass1";
 const CLASS_NAME_2: &str = "ApiClass2";
 
+fn use_c_output_flag() -> bool {
+    #[cfg(feature = "c-output")]
+    return true;
+    false
+}
+
+fn use_extra_c_output_path_flag() -> bool {
+    #[cfg(feature = "extra-c-output-path")]
+    return true;
+    false
+}
+
 fn main() {
     // Tell Cargo that if the input Rust code changes, to rerun this build script.
     println!("cargo:rerun-if-changed={}", RUST_INPUT_1);
     println!("cargo:rerun-if-changed={}", RUST_INPUT_2);
     // Options for frb_codegen
-    let raw_opts = RawOpts {
+    let mut raw_opts = RawOpts {
         // Path of input Rust code
         rust_input: vec![RUST_INPUT_1.to_string(), RUST_INPUT_2.to_string()],
         // Path of output generated Dart code
@@ -34,6 +46,23 @@ fn main() {
         // for other options use defaults
         ..Default::default()
     };
+
+    if use_c_output_flag() {
+        raw_opts.c_output = Some(vec![
+            // each field should contain head file name
+            "./c_output_path/c_output_1.h".into(),
+            "./c_output_path/c_output_2.h".into(),
+        ]);
+    }
+
+    if use_extra_c_output_path_flag() {
+        raw_opts.extra_c_output_path = Some(vec![
+            // For test, the below 2 paths format are made a little different
+            "./extra_c_output_path_1/".into(),
+            "extra_c_output_path_2".into(),
+        ]);
+    }
+
     // get opts from raw opts
     let configs = config_parse(raw_opts);
 
