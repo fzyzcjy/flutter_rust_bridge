@@ -33,6 +33,8 @@ gen-bridge: build
                 --dart-format-line-length {{line_length}} --wasm
     cd {{frb_pure}}/rust && cargo clean -p flutter_rust_bridge_example_single_block_test && cargo build
     cd {{frb_pure_multi}}/rust && cargo clean -p flutter_rust_bridge_example_multi_blocks_test && cargo build
+    cd {{frb_pure_multi}}/rust && cargo clean -p flutter_rust_bridge_example_multi_blocks_test && cargo build --features c-output
+    cd {{frb_pure_multi}}/rust && cargo clean -p flutter_rust_bridge_example_multi_blocks_test && cargo build --features c-output,extra-c-output-path
 
 alias l := lint
 lint *args="":
