@@ -20,7 +20,7 @@ mod wasm_bindgen_src;
 
 /// Use this struct in return type of your function, in order to tell the code generator
 /// the function should return synchronously. Otherwise, it is by default asynchronously.
-pub struct SyncReturn<T: IntoDart>(pub T);
+pub struct SyncReturn<T>(pub T);
 
 /// Marker trait for types that are safe to share with Dart and can be dropped
 /// safely in case of a panic.
