@@ -680,6 +680,11 @@ pub extern "C" fn wire_frb_generator_test(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_frb_sync_generator_test() -> support::WireSyncReturn {
+    wire_frb_sync_generator_test_impl()
+}
+
+#[no_mangle]
 pub extern "C" fn wire_handle_type_alias_id(port_: i64, input: u64) {
     wire_handle_type_alias_id_impl(port_, input)
 }
@@ -1179,6 +1184,21 @@ pub extern "C" fn drop_opaque_FrbOpaqueReturn(ptr: *const c_void) {
 pub extern "C" fn share_opaque_FrbOpaqueReturn(ptr: *const c_void) -> *const c_void {
     unsafe {
         Arc::<FrbOpaqueReturn>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn drop_opaque_FrbOpaqueSyncReturn(ptr: *const c_void) {
+    unsafe {
+        Arc::<FrbOpaqueSyncReturn>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn share_opaque_FrbOpaqueSyncReturn(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<FrbOpaqueSyncReturn>::increment_strong_count(ptr as _);
         ptr
     }
 }

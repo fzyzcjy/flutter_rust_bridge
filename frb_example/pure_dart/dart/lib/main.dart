@@ -1037,6 +1037,10 @@ void main(List<String> args) async {
   });
 
   group('extended sync', () {
+    test('check generator', () {
+      expect(api.frbSyncGeneratorTest().runtimeType == FrbOpaqueSyncReturn, isTrue);
+    });
+
     test('create', () {
       var data = api.syncCreateOpaque();
       data.dispose();

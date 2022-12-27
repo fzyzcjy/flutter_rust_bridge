@@ -1841,6 +1841,16 @@ fn wire_frb_generator_test_impl(port_: MessagePort) {
         move || move |task_callback| Ok(frb_generator_test()),
     )
 }
+fn wire_frb_sync_generator_test_impl() -> support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "frb_sync_generator_test",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || Ok(frb_sync_generator_test()),
+    )
+}
 fn wire_handle_type_alias_id_impl(port_: MessagePort, input: impl Wire2Api<u64> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {

@@ -833,6 +833,9 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   late final Finalizer<PlatformPointer> _FrbOpaqueReturnFinalizer =
       Finalizer<PlatformPointer>(inner.drop_opaque_FrbOpaqueReturn);
   Finalizer<PlatformPointer> get FrbOpaqueReturnFinalizer => _FrbOpaqueReturnFinalizer;
+  late final Finalizer<PlatformPointer> _FrbOpaqueSyncReturnFinalizer =
+      Finalizer<PlatformPointer>(inner.drop_opaque_FrbOpaqueSyncReturn);
+  Finalizer<PlatformPointer> get FrbOpaqueSyncReturnFinalizer => _FrbOpaqueSyncReturnFinalizer;
   late final Finalizer<PlatformPointer> _HideDataFinalizer = Finalizer<PlatformPointer>(inner.drop_opaque_HideData);
   Finalizer<PlatformPointer> get HideDataFinalizer => _HideDataFinalizer;
   late final Finalizer<PlatformPointer> _I32Finalizer = Finalizer<PlatformPointer>(inner.drop_opaque_I32);
@@ -1121,6 +1124,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_frb_generator_test(NativePortType port_);
 
+  external dynamic /* Object */ wire_frb_sync_generator_test();
+
   external dynamic /* void */ wire_handle_type_alias_id(NativePortType port_, Object input);
 
   external dynamic /* void */ wire_handle_type_nest_alias_id(NativePortType port_, Object input);
@@ -1178,6 +1183,10 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external dynamic /*  */ drop_opaque_FrbOpaqueReturn(ptr);
 
   external int /* *const c_void */ share_opaque_FrbOpaqueReturn(ptr);
+
+  external dynamic /*  */ drop_opaque_FrbOpaqueSyncReturn(ptr);
+
+  external int /* *const c_void */ share_opaque_FrbOpaqueSyncReturn(ptr);
 
   external dynamic /*  */ drop_opaque_HideData(ptr);
 
@@ -1517,6 +1526,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_frb_generator_test(NativePortType port_) => wasmModule.wire_frb_generator_test(port_);
 
+  dynamic /* Object */ wire_frb_sync_generator_test() => wasmModule.wire_frb_sync_generator_test();
+
   void wire_handle_type_alias_id(NativePortType port_, Object input) =>
       wasmModule.wire_handle_type_alias_id(port_, input);
 
@@ -1580,6 +1591,10 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   dynamic /*  */ drop_opaque_FrbOpaqueReturn(ptr) => wasmModule.drop_opaque_FrbOpaqueReturn(ptr);
 
   int /* *const c_void */ share_opaque_FrbOpaqueReturn(ptr) => wasmModule.share_opaque_FrbOpaqueReturn(ptr);
+
+  dynamic /*  */ drop_opaque_FrbOpaqueSyncReturn(ptr) => wasmModule.drop_opaque_FrbOpaqueSyncReturn(ptr);
+
+  int /* *const c_void */ share_opaque_FrbOpaqueSyncReturn(ptr) => wasmModule.share_opaque_FrbOpaqueSyncReturn(ptr);
 
   dynamic /*  */ drop_opaque_HideData(ptr) => wasmModule.drop_opaque_HideData(ptr);
 

@@ -544,6 +544,13 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kFrbGeneratorTestConstMeta;
 
+  /// Structure for testing the SyncReturn<RustOpaque> code generator.
+  /// FrbOpaqueSyncReturn must be only return type.
+  /// FrbOpaqueSyncReturn must be without wrapper like Option<> Vec<> etc.
+  FrbOpaqueSyncReturn frbSyncGeneratorTest({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kFrbSyncGeneratorTestConstMeta;
+
   Future<int> handleTypeAliasId({required int input, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleTypeAliasIdConstMeta;
@@ -597,6 +604,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   DropFnType get dropOpaqueFrbOpaqueReturn;
   ShareFnType get shareOpaqueFrbOpaqueReturn;
   OpaqueTypeFinalizer get FrbOpaqueReturnFinalizer;
+
+  DropFnType get dropOpaqueFrbOpaqueSyncReturn;
+  ShareFnType get shareOpaqueFrbOpaqueSyncReturn;
+  OpaqueTypeFinalizer get FrbOpaqueSyncReturnFinalizer;
 
   DropFnType get dropOpaqueHideData;
   ShareFnType get shareOpaqueHideData;
@@ -654,6 +665,20 @@ class FrbOpaqueReturn extends FrbOpaque {
 
   @override
   OpaqueTypeFinalizer get staticFinalizer => bridge.FrbOpaqueReturnFinalizer;
+}
+
+@sealed
+class FrbOpaqueSyncReturn extends FrbOpaque {
+  final FlutterRustBridgeExampleSingleBlockTest bridge;
+  FrbOpaqueSyncReturn.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
+  @override
+  DropFnType get dropFn => bridge.dropOpaqueFrbOpaqueSyncReturn;
+
+  @override
+  ShareFnType get shareFn => bridge.shareOpaqueFrbOpaqueSyncReturn;
+
+  @override
+  OpaqueTypeFinalizer get staticFinalizer => bridge.FrbOpaqueSyncReturnFinalizer;
 }
 
 @sealed

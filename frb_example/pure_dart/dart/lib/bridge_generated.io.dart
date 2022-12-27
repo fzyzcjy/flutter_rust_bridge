@@ -726,6 +726,9 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   OpaqueTypeFinalizer get BoxDartDebugFinalizer => _BoxDartDebugFinalizer;
   late final OpaqueTypeFinalizer _FrbOpaqueReturnFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_FrbOpaqueReturnPtr);
   OpaqueTypeFinalizer get FrbOpaqueReturnFinalizer => _FrbOpaqueReturnFinalizer;
+  late final OpaqueTypeFinalizer _FrbOpaqueSyncReturnFinalizer =
+      OpaqueTypeFinalizer(inner._drop_opaque_FrbOpaqueSyncReturnPtr);
+  OpaqueTypeFinalizer get FrbOpaqueSyncReturnFinalizer => _FrbOpaqueSyncReturnFinalizer;
   late final OpaqueTypeFinalizer _HideDataFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_HideDataPtr);
   OpaqueTypeFinalizer get HideDataFinalizer => _HideDataFinalizer;
   late final OpaqueTypeFinalizer _I32Finalizer = OpaqueTypeFinalizer(inner._drop_opaque_I32Ptr);
@@ -3098,6 +3101,14 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_frb_generator_test');
   late final _wire_frb_generator_test = _wire_frb_generator_testPtr.asFunction<void Function(int)>();
 
+  WireSyncReturn wire_frb_sync_generator_test() {
+    return _wire_frb_sync_generator_test();
+  }
+
+  late final _wire_frb_sync_generator_testPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('wire_frb_sync_generator_test');
+  late final _wire_frb_sync_generator_test = _wire_frb_sync_generator_testPtr.asFunction<WireSyncReturn Function()>();
+
   void wire_handle_type_alias_id(
     int port_,
     int input,
@@ -4004,6 +4015,33 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
           'share_opaque_FrbOpaqueReturn');
   late final _share_opaque_FrbOpaqueReturn =
       _share_opaque_FrbOpaqueReturnPtr.asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
+
+  void drop_opaque_FrbOpaqueSyncReturn(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _drop_opaque_FrbOpaqueSyncReturn(
+      ptr,
+    );
+  }
+
+  late final _drop_opaque_FrbOpaqueSyncReturnPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>('drop_opaque_FrbOpaqueSyncReturn');
+  late final _drop_opaque_FrbOpaqueSyncReturn =
+      _drop_opaque_FrbOpaqueSyncReturnPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> share_opaque_FrbOpaqueSyncReturn(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _share_opaque_FrbOpaqueSyncReturn(
+      ptr,
+    );
+  }
+
+  late final _share_opaque_FrbOpaqueSyncReturnPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
+          'share_opaque_FrbOpaqueSyncReturn');
+  late final _share_opaque_FrbOpaqueSyncReturn =
+      _share_opaque_FrbOpaqueSyncReturnPtr.asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
 
   void drop_opaque_HideData(
     ffi.Pointer<ffi.Void> ptr,

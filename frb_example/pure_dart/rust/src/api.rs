@@ -14,7 +14,7 @@ use flutter_rust_bridge::*;
 use lazy_static::lazy_static;
 
 use crate::data::{EnumAlias, Id, MyEnum, MyStruct, StructAlias, UserIdAlias};
-pub use crate::data::{FrbOpaqueReturn, HideData, NonSendHideData};
+pub use crate::data::{FrbOpaqueReturn, FrbOpaqueSyncReturn, HideData, NonSendHideData};
 use crate::new_module_system::{use_new_module_system, NewSimpleStruct};
 use crate::old_module_system::{use_old_module_system, OldSimpleStruct};
 
@@ -1275,6 +1275,13 @@ pub fn return_non_dropable_dart_opaque(opaque: DartOpaque) -> SyncReturn<DartOpa
 /// FrbOpaqueReturn must not be used as an argument.
 pub fn frb_generator_test() -> RustOpaque<FrbOpaqueReturn> {
     panic!("dummy code");
+}
+
+/// Structure for testing the SyncReturn<RustOpaque> code generator.
+/// FrbOpaqueSyncReturn must be only return type.
+/// FrbOpaqueSyncReturn must be without wrapper like Option<> Vec<> etc.
+pub fn frb_sync_generator_test() -> SyncReturn<RustOpaque<FrbOpaqueSyncReturn>> {
+    SyncReturn(RustOpaque::new(FrbOpaqueSyncReturn))
 }
 
 pub fn handle_type_alias_id(input: Id) -> Id {
