@@ -1,3 +1,7 @@
+## 1.58.1
+
+* fix SyncReturn restrictions and update CI #936 (thanks @rogurotus)
+
 ## 1.58.0
 
 * Support nest type alias with topology sort #929 (thanks @huang12zheng)
