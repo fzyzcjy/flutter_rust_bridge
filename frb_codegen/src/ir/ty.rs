@@ -95,6 +95,14 @@ impl IrType {
     }
 
     #[inline]
+    pub fn is_sync_rust_opaque(&self) -> bool {
+        match self {
+            SyncReturn(sync) => sync.clone().into_inner().is_rust_opaque(),
+            _ => false
+        }
+    }
+
+    #[inline]
     pub fn is_dart_opaque(&self) -> bool {
         matches!(self, DartOpaque(_))
     }

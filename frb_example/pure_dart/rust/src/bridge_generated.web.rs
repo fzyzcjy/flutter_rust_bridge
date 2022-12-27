@@ -659,6 +659,11 @@ pub fn wire_frb_generator_test(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_frb_sync_generator_test() -> support::WireSyncReturn {
+    wire_frb_sync_generator_test_impl()
+}
+
+#[wasm_bindgen]
 pub fn wire_handle_type_alias_id(port_: MessagePort, input: u64) {
     wire_handle_type_alias_id_impl(port_, input)
 }
@@ -811,6 +816,21 @@ pub fn drop_opaque_FrbOpaqueReturn(ptr: *const c_void) {
 pub fn share_opaque_FrbOpaqueReturn(ptr: *const c_void) -> *const c_void {
     unsafe {
         Arc::<FrbOpaqueReturn>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_opaque_FrbOpaqueSyncReturn(ptr: *const c_void) {
+    unsafe {
+        Arc::<FrbOpaqueSyncReturn>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_FrbOpaqueSyncReturn(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<FrbOpaqueSyncReturn>::increment_strong_count(ptr as _);
         ptr
     }
 }
