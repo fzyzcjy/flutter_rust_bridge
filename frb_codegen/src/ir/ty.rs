@@ -98,7 +98,7 @@ impl IrType {
     pub fn is_sync_rust_opaque(&self) -> bool {
         match self {
             SyncReturn(sync) => sync.clone().into_inner().is_rust_opaque(),
-            _ => false
+            _ => false,
         }
     }
 
