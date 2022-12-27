@@ -147,15 +147,6 @@ jobs:
         env:
           RUST_LOG: debug
 
-      # #467
-      - name: "Modify cross-platform code (windows) (single block)"
-        if: ${{ inputs.family == 'windows' }}
-        run: |
-          sed -i -e 's/^typedef uintptr_t =.*$/typedef uintptr_t = ffi.UnsignedLong;/g' frb_example/pure_dart/dart/lib/bridge_generated.io.dart
-          sed -i -e 's/^typedef uintptr_t =.*$/typedef uintptr_t = ffi.UnsignedLong;/g' frb_example/pure_dart_multi/dart/lib/bridge_generated_api_1.io.dart
-          sed -i -e 's/^typedef uintptr_t =.*$/typedef uintptr_t = ffi.UnsignedLong;/g' frb_example/pure_dart_multi/dart/lib/bridge_generated_api_2.io.dart
-          sed -i -e 's/^typedef uintptr_t =.*$/typedef uintptr_t = ffi.UnsignedLong;/g' frb_example/with_flutter/lib/bridge_generated.io.dart
-
       - name: Generate codegen help
         working-directory: ./frb_codegen
         # The file extension is different on Windows.
