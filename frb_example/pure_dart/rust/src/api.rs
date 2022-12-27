@@ -1279,7 +1279,7 @@ pub fn frb_generator_test() -> RustOpaque<FrbOpaqueReturn> {
 
 /// Structure for testing the SyncReturn<RustOpaque> code generator.
 /// FrbOpaqueSyncReturn must be only return type.
-/// FrbOpaqueSyncReturn must should be without wrapper like Option<> Vec<> etc.
+/// FrbOpaqueSyncReturn must be without wrapper like Option<> Vec<> etc.
 pub fn frb_sync_generator_test() -> SyncReturn<RustOpaque<FrbOpaqueSyncReturn>> {
     panic!("dummy code");
 }
