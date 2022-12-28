@@ -18,7 +18,11 @@ use crate::parser;
 use crate::utils::BlockIndex;
 
 #[derive(Parser, Debug, PartialEq, Eq, Deserialize, Default)]
-#[clap(version, setting(clap::AppSettings::DeriveDisplayOrder))]
+#[clap(
+    bin_name = "flutter_rust_bridge_codegen",
+    version,
+    setting(clap::AppSettings::DeriveDisplayOrder)
+)]
 pub struct RawOpts {
     /// Path of input Rust code
     #[clap(short, long, required = true, multiple_values = true)]
