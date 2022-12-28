@@ -11,7 +11,7 @@ fn main() {
     // Tell Cargo that if the input Rust code changes, to rerun this build script.
     println!("cargo:rerun-if-changed={}", RUST_INPUT);
     // Options for frb_codegen
-    let raw_opts = RawOpts {
+    let mut raw_opts = RawOpts {
         // Path of input Rust code
         rust_input: vec![RUST_INPUT.to_string()],
         // Path of output generated Dart code
@@ -22,6 +22,18 @@ fn main() {
         // for other options use defaults
         ..Default::default()
     };
+
+    if cfg!(feature = "c-output") {
+        raw_opts.c_output = Some(vec!["./c_output_path/c_output.h".into()]);
+    }
+
+    if cfg!(feature = "extra-c-output-path") {
+        raw_opts.extra_c_output_path = Some(vec![
+            // For test, the below 2 paths format are made a little different
+            "./extra_c_output_path_1/".into(),
+            "extra_c_output_path_2".into(),
+        ]);
+    }
     // get opts from raw opts
     let configs = config_parse(raw_opts);
 
