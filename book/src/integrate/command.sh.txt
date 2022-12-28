@@ -2,4 +2,4 @@ flutter_rust_bridge_codegen \
     -r $crate/src/api.rs \
     -d lib/bridge_generated.dart \
     -c ios/Runner/bridge_generated.h \
-    -c macos/Runner/bridge_generated.h   # if building for MacOS
+    -e macos/Runner/   # if building for MacOS, extra path is essential
