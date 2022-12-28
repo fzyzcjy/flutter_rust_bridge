@@ -99,10 +99,11 @@ pub struct Opts {
     pub inline_rust: bool,
 }
 
+fn bail(err: clap::ErrorKind, message: Cow<str>) {
+    RawOpts::command().error(err, message).exit()
+}
+
 pub fn parse(raw: RawOpts) -> Vec<Opts> {
-    fn bail(err: clap::ErrorKind, message: Cow<str>) {
-        RawOpts::command().error(err, message).exit()
-    }
     // rust input path(s)
     let rust_input_paths = get_valid_canon_paths(&raw.rust_input);
 
@@ -240,9 +241,6 @@ fn get_refined_c_output(
     extra_c_output_path: &Option<Vec<String>>,
     rust_input_paths: &Vec<String>,
 ) -> Vec<Vec<String>> {
-    fn bail(err: clap::ErrorKind, message: Cow<str>) {
-        RawOpts::command().error(err, message).exit()
-    }
     // 1.c path with file name from flag rawOpt.c_output
     let c_output_paths = c_output
         .as_ref()
