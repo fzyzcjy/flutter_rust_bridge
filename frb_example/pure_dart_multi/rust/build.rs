@@ -15,18 +15,6 @@ const RUST_OUTPUT_2: &str = "src/generated_api_2.rs";
 const CLASS_NAME_1: &str = "ApiClass1";
 const CLASS_NAME_2: &str = "ApiClass2";
 
-fn use_c_output_flag() -> bool {
-    #[cfg(feature = "c-output")]
-    return true;
-    false
-}
-
-fn use_extra_c_output_path_flag() -> bool {
-    #[cfg(feature = "extra-c-output-path")]
-    return true;
-    false
-}
-
 fn main() {
     // Tell Cargo that if the input Rust code changes, to rerun this build script.
     println!("cargo:rerun-if-changed={}", RUST_INPUT_1);
@@ -47,7 +35,7 @@ fn main() {
         ..Default::default()
     };
 
-    if use_c_output_flag() {
+    if cfg!(feature = "c-output") {
         raw_opts.c_output = Some(vec![
             // each field should contain head file name
             "./c_output_path/c_output_1.h".into(),
@@ -55,7 +43,7 @@ fn main() {
         ]);
     }
 
-    if use_extra_c_output_path_flag() {
+    if cfg!(feature = "extra-c-output-path") {
         raw_opts.extra_c_output_path = Some(vec![
             // For test, the below 2 paths format are made a little different
             "./extra_c_output_path_1/".into(),
