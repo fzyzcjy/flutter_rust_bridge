@@ -231,20 +231,6 @@ jobs:
       - name: Run tests for pure_dart example
         working-directory: ./frb_example/pure_dart/rust
         run: cargo test --verbose
-        
-      - name: Build pure_dart example (with c-output flag)
-        working-directory: ./frb_example/pure_dart/rust
-        run: cargo build --features c-output --verbose
-      - name: Run tests for pure_dart example (with c-output flag)
-        working-directory: ./frb_example/pure_dart/rust
-        run: cargo test --features c-output --verbose
-
-      - name: Build pure_dart example (with c-output, extra-c-output-path flag)
-        working-directory: ./frb_example/pure_dart/rust
-        run: cargo build --features c-output,extra-c-output-path --verbose
-      - name: Run tests for pure_dart example (with c-output, extra-c-output-path flag)
-        working-directory: ./frb_example/pure_dart/rust
-        run: cargo test --features c-output,extra-c-output-path --verbose
 
       - name: Build pure_dart_multi example
         working-directory: ./frb_example/pure_dart_multi/rust

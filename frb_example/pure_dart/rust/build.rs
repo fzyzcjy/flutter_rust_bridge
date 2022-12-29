@@ -23,17 +23,6 @@ fn main() {
         ..Default::default()
     };
 
-    if cfg!(feature = "c-output") {
-        raw_opts.c_output = Some(vec!["./c_output_path/c_output.h".into()]);
-    }
-
-    if cfg!(feature = "extra-c-output-path") {
-        raw_opts.extra_c_output_path = Some(vec![
-            // For test, the below 2 paths format are made a little different
-            "./extra_c_output_path_1/".into(),
-            "extra_c_output_path_2".into(),
-        ]);
-    }
     // get opts from raw opts
     let configs = config_parse(raw_opts);
 
