@@ -553,14 +553,16 @@ impl Opts {
 mod test {
     use super::*;
 
-    fn get_file_name(path: &str) -> String {
+    fn get_dir_and_file_str(path: &str) -> (String, String) {
         let path = PathBuf::from(path);
-        path.file_name().unwrap().to_owned().into_string().unwrap()
+        let directory = path.parent().unwrap().display().to_string();
+        let file_name = path.file_name().unwrap().to_owned().into_string().unwrap();
+        (directory, file_name)
     }
 
     #[test]
     #[should_panic]
-    fn test_coutput_with_no_input_block_api() {
+    fn test_coutput_with_no_input_block() {
         let rust_input = vec![];
         let c_output = None::<Vec<String>>;
         let extra_c_output_path = None::<Vec<String>>;
@@ -568,6 +570,7 @@ mod test {
     }
 
     // #[test]
+    // TODO: how to catch panic from clap error?
     // #[should_panic]
     // fn test_coutput_with_inconsistent_number_of_input_block_api() {
     //     let c_output = Some(vec!["pathA/api_1.rs".into(),"pathA/api_2.rs".into()]);
@@ -578,83 +581,149 @@ mod test {
     // }
 
     #[test]
-    fn test_coutput_with_single_input_block_api() {
+    fn test_single_block_with_no_c_output_with_no_extra_paths() {
         let rust_input = vec!["api_1.rs".into()];
-        let c_output = Some(vec!["./pathA/c_output.h".into()]);
-        let extra_c_output_path_choice = vec![
-            None::<Vec<String>>,
-            Some(vec!["exta_path/".into()]),
-            Some(vec!["exta_path_1/".into(), "./exta_path_2".into()]),
-        ];
-        extra_c_output_path_choice
-            .iter()
-            .for_each(|extra_c_output_path| {
-                let refined_c_outputs =
-                    get_refined_c_output(&c_output, &extra_c_output_path, &rust_input);
+        let c_output = None;
+        let extra_c_output_path = None;
+        let result = get_refined_c_output(&c_output, &extra_c_output_path, &rust_input);
 
-                // check number of output api-block
-                let in_block_len = rust_input.len();
-                let out_block_len = refined_c_outputs.len();
-                assert_eq!(in_block_len, out_block_len);
-                // check output path number within each output api-block
-                let extra_output_path_len =
-                    extra_c_output_path.as_deref().unwrap_or_default().len();
-                for each_output in refined_c_outputs.iter() {
-                    let each_output_len = each_output.len();
-                    let correct_out_len = 1 + extra_output_path_len;
-                    assert_eq!(each_output_len, correct_out_len);
-                }
-
-                // check output file name
-                for each_output in refined_c_outputs.iter() {
-                    let corrrect_file_name = get_file_name(&each_output[0]);
-                    let result = each_output[1..]
-                        .iter()
-                        .all(|x| get_file_name(x) == corrrect_file_name);
-                    assert_eq!(result, true);
-                }
-            });
+        assert_eq!(result.len(), 1);
+        assert_eq!(result[0].len(), 1);
     }
 
     #[test]
-    fn test_coutput_with_multi_input_block_api() {
+    fn test_single_block_with_c_output_with_extra_paths() {
+        let rust_input = vec!["api_1.rs".into()];
+        let c_output = Some(vec!["./c_output.h".into()]);
+        let extra_c_output_path = Some(vec!["./extra_path_1/".into(), "./extra_path_2/".into()]);
+        let result = get_refined_c_output(&c_output, &extra_c_output_path, &rust_input);
+
+        assert_eq!(result.len(), 1);
+        assert_eq!(result[0].len(), 3);
+
+        // check 1st path
+        let (dir, file) = get_dir_and_file_str(&result[0][0]);
+        assert_eq!(dir, env::current_dir().unwrap().display().to_string());
+        assert_eq!(&file, "c_output.h");
+        // check 2ed path
+        assert_eq!(&result[0][1], "./extra_path_1/c_output.h");
+        // check 3ed path
+        assert_eq!(&result[0][2], "./extra_path_2/c_output.h");
+    }
+
+    #[test]
+    fn test_single_block_with_c_output_with_no_extra_paths() {
+        let rust_input = vec!["api_1.rs".into()];
+        let c_output = Some(vec!["./c_output.h".into()]);
+        let extra_c_output_path = None;
+        let result = get_refined_c_output(&c_output, &extra_c_output_path, &rust_input);
+
+        assert_eq!(result.len(), 1);
+        assert_eq!(result[0].len(), 1);
+
+        // check path
+        let (dir, file) = get_dir_and_file_str(&result[0][0]);
+        assert_eq!(dir, env::current_dir().unwrap().display().to_string());
+        assert_eq!(&file, "c_output.h");
+    }
+
+    #[test]
+    fn test_single_block_with_no_c_output_with_extra_paths() {
+        let rust_input = vec!["api_1.rs".into()];
+        let c_output = None;
+        let extra_c_output_path = Some(vec!["./extra_path_1/".into(), "./extra_path_2/".into()]);
+        let result = get_refined_c_output(&c_output, &extra_c_output_path, &rust_input);
+
+        assert_eq!(result.len(), 1);
+        assert_eq!(result[0].len(), 3);
+
+        // get essential info from 1st path which has an arbitrary name
+        let (_, file) = get_dir_and_file_str(&result[0][0]);
+        // check 2ed path
+        assert_eq!(&result[0][1], &format!("./extra_path_1/{}", file));
+        // check 3ed path
+        assert_eq!(&result[0][2], &format!("./extra_path_2/{}", file));
+    }
+
+    #[test]
+    fn test_multi_blocks_with_no_c_output_with_no_extra_paths() {
         let rust_input = vec!["api_1.rs".into(), "api_2.rs".into()];
-        let c_output = Some(vec![
-            "./pathA/c_output_for_block_1.h".into(),
-            "./pathA/c_output_for_block_2.h".into(),
-        ]);
-        let extra_c_output_path_choice = vec![
-            None::<Vec<String>>,
-            Some(vec!["exta_path/".into()]),
-            Some(vec!["exta_path_1/".into(), "./exta_path_2".into()]),
-        ];
-        extra_c_output_path_choice
-            .iter()
-            .for_each(|extra_c_output_path| {
-                let refined_c_outputs =
-                    get_refined_c_output(&c_output, &extra_c_output_path, &rust_input);
+        let c_output = None;
+        let extra_c_output_path = None;
+        let result = get_refined_c_output(&c_output, &extra_c_output_path, &rust_input);
 
-                // check number of output api-block
-                let in_block_len = rust_input.len();
-                let out_block_len = refined_c_outputs.len();
-                assert_eq!(in_block_len, out_block_len);
-                // check output path number within each output api-block
-                let extra_output_path_len =
-                    extra_c_output_path.as_deref().unwrap_or_default().len();
-                for each_output in refined_c_outputs.iter() {
-                    let each_output_len = each_output.len();
-                    let correct_out_len = 1 + extra_output_path_len;
-                    assert_eq!(each_output_len, correct_out_len);
-                }
+        assert_eq!(result.len(), 2);
+        assert_eq!(result[0].len(), 1);
+    }
+    #[test]
+    fn test_multi_blocks_with_c_output_with_extra_paths() {
+        let rust_input = vec!["api_1.rs".into(), "api_2.rs".into()];
+        let c_output = Some(vec!["./c_output_1.h".into(), "./c_output_2.h".into()]);
+        let extra_c_output_path = Some(vec!["./extra_path_1/".into(), "./extra_path_2/".into()]);
+        let result = get_refined_c_output(&c_output, &extra_c_output_path, &rust_input);
 
-                // check output file name
-                for each_output in refined_c_outputs.iter() {
-                    let corrrect_file_name = get_file_name(&each_output[0]);
-                    let result = each_output[1..]
-                        .iter()
-                        .all(|x| get_file_name(x) == corrrect_file_name);
-                    assert_eq!(result, true);
-                }
-            });
+        assert_eq!(result.len(), 2);
+        result.iter().for_each(|each_block| {
+            assert_eq!(each_block.len(), 3);
+        });
+
+        result.iter().enumerate().for_each(|(i, each_block)| {
+            // check 1st path
+            let (dir, file) = get_dir_and_file_str(&each_block[0]);
+            assert_eq!(dir, env::current_dir().unwrap().display().to_string());
+            assert_eq!(&file, &format!("c_output_{}.h", i + 1));
+            // check 2ed path
+            assert_eq!(
+                &each_block[1],
+                &format!("./extra_path_1/c_output_{}.h", i + 1)
+            );
+            // check 3ed path
+            assert_eq!(
+                &each_block[2],
+                &format!("./extra_path_2/c_output_{}.h", i + 1)
+            );
+        });
+    }
+
+    #[test]
+    fn test_multi_blocks_with_c_output_with_no_extra_paths() {
+        let rust_input = vec!["api_1.rs".into(), "api_2.rs".into()];
+        let c_output = Some(vec!["./c_output_1.h".into(), "./c_output_2.h".into()]);
+        let extra_c_output_path = None;
+        let result = get_refined_c_output(&c_output, &extra_c_output_path, &rust_input);
+
+        assert_eq!(result.len(), 2);
+        result.iter().for_each(|each_block| {
+            assert_eq!(each_block.len(), 1);
+        });
+
+        // check path
+        result.iter().enumerate().for_each(|(i, each_block)| {
+            let (dir, file) = get_dir_and_file_str(&each_block[0]);
+            assert_eq!(dir, env::current_dir().unwrap().display().to_string());
+            assert_eq!(&file, &format!("c_output_{}.h", i + 1));
+        });
+    }
+
+    #[test]
+    fn test_multi_blocks_with_no_c_output_with_extra_paths() {
+        let rust_input = vec!["api_1.rs".into(), "api_2.rs".into()];
+        let c_output = None;
+        let extra_c_output_path = Some(vec!["./extra_path_1/".into(), "./extra_path_2/".into()]);
+        let result = get_refined_c_output(&c_output, &extra_c_output_path, &rust_input);
+
+        assert_eq!(result.len(), 2);
+        result.iter().for_each(|each_block| {
+            assert_eq!(each_block.len(), 3);
+        });
+
+        result.iter().enumerate().for_each(|(i, each_block)| {
+            // get essential info from 1st path which has an arbitrary name
+            let (_, file) = get_dir_and_file_str(&each_block[0]);
+            // check 2ed path
+            assert_eq!(&each_block[1], &format!("./extra_path_1/{}", file));
+            // check 3ed path
+            assert_eq!(&each_block[2], &format!("./extra_path_2/{}", file));
+        });
     }
 }
