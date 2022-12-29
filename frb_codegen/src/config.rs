@@ -245,6 +245,8 @@ fn get_refined_c_output(
     extra_c_output_path: &Option<Vec<String>>,
     rust_input_paths: &Vec<String>,
 ) -> Vec<Vec<String>> {
+    assert!(!rust_input_paths.is_empty());
+
     // 1.c path with file name from flag rawOpt.c_output
     let c_output_paths = c_output
         .as_ref()
@@ -544,5 +546,115 @@ impl Opts {
                 .unwrap_or(&self.dart_output_path),
         )
         .with_extension("freezed.dart")
+    }
+}
+
+#[cfg(test)]
+mod test {
+    use super::*;
+
+    fn get_file_name(path: &str) -> String {
+        let path = PathBuf::from(path);
+        path.file_name().unwrap().to_owned().into_string().unwrap()
+    }
+
+    #[test]
+    #[should_panic]
+    fn test_coutput_with_no_input_block_api() {
+        let rust_input = vec![];
+        let c_output = None::<Vec<String>>;
+        let extra_c_output_path = None::<Vec<String>>;
+        let _ = get_refined_c_output(&c_output, &extra_c_output_path, &rust_input);
+    }
+
+    // #[test]
+    // #[should_panic]
+    // fn test_coutput_with_inconsistent_number_of_input_block_api() {
+    //     let c_output = Some(vec!["pathA/api_1.rs".into(),"pathA/api_2.rs".into()]);
+    //     let rust_input = vec!["api_1.rs".into()];
+    //     let extra_c_output_path = None::<Vec<String>>;
+    //     let _ = get_refined_c_output(&c_output, &extra_c_output_path, &rust_input);
+    //     unreachable !()
+    // }
+
+    #[test]
+    fn test_coutput_with_single_input_block_api() {
+        let rust_input = vec!["api_1.rs".into()];
+        let c_output = Some(vec!["./pathA/c_output.h".into()]);
+        let extra_c_output_path_choice = vec![
+            None::<Vec<String>>,
+            Some(vec!["exta_path/".into()]),
+            Some(vec!["exta_path_1/".into(), "./exta_path_2".into()]),
+        ];
+        extra_c_output_path_choice
+            .iter()
+            .for_each(|extra_c_output_path| {
+                let refined_c_outputs =
+                    get_refined_c_output(&c_output, &extra_c_output_path, &rust_input);
+
+                // check number of output api-block
+                let in_block_len = rust_input.len();
+                let out_block_len = refined_c_outputs.len();
+                assert_eq!(in_block_len, out_block_len);
+                // check output path number within each output api-block
+                let extra_output_path_len =
+                    extra_c_output_path.as_deref().unwrap_or_default().len();
+                for each_output in refined_c_outputs.iter() {
+                    let each_output_len = each_output.len();
+                    let correct_out_len = 1 + extra_output_path_len;
+                    assert_eq!(each_output_len, correct_out_len);
+                }
+
+                // check output file name
+                for each_output in refined_c_outputs.iter() {
+                    let corrrect_file_name = get_file_name(&each_output[0]);
+                    let result = each_output[1..]
+                        .iter()
+                        .all(|x| get_file_name(x) == corrrect_file_name);
+                    assert_eq!(result, true);
+                }
+            });
+    }
+
+    #[test]
+    fn test_coutput_with_multi_input_block_api() {
+        let rust_input = vec!["api_1.rs".into(), "api_2.rs".into()];
+        let c_output = Some(vec![
+            "./pathA/c_output_for_block_1.h".into(),
+            "./pathA/c_output_for_block_2.h".into(),
+        ]);
+        let extra_c_output_path_choice = vec![
+            None::<Vec<String>>,
+            Some(vec!["exta_path/".into()]),
+            Some(vec!["exta_path_1/".into(), "./exta_path_2".into()]),
+        ];
+        extra_c_output_path_choice
+            .iter()
+            .for_each(|extra_c_output_path| {
+                let refined_c_outputs =
+                    get_refined_c_output(&c_output, &extra_c_output_path, &rust_input);
+
+                // check number of output api-block
+                let in_block_len = rust_input.len();
+                let out_block_len = refined_c_outputs.len();
+                assert_eq!(in_block_len, out_block_len);
+                // check output path number within each output api-block
+                let extra_output_path_len =
+                    extra_c_output_path.as_deref().unwrap_or_default().len();
+                for each_output in refined_c_outputs.iter() {
+                    let each_output_len = each_output.len();
+                    let correct_out_len = 1 + extra_output_path_len;
+                    assert_eq!(each_output_len, correct_out_len);
+                }
+
+                // check output file name
+                for each_output in refined_c_outputs.iter() {
+                    let corrrect_file_name = get_file_name(&each_output[0]);
+                    let result = each_output[1..]
+                        .iter()
+                        .all(|x| get_file_name(x) == corrrect_file_name);
+                    assert_eq!(result, true);
+                }
+            });
     }
 }
