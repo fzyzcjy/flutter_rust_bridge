@@ -1,3 +1,7 @@
+## 1.59.0
+
+* Fix unexpected content in c output header #937 (thanks @dbsxdbsx)
+
 ## 1.58.2
 
 * Fix `SyncReturn<RustOpaque<T>>` #934 (thanks @rogurotus)
