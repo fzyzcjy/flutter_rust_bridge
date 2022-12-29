@@ -151,7 +151,7 @@ before you run <code>flutter run</code>:</p>
     -r $crate/src/api.rs \
     -d lib/bridge_generated.dart \
     -c ios/Runner/bridge_generated.h \
-    -c macos/Runner/bridge_generated.h   # if building for MacOS
+    -e macos/Runner/   # if building for MacOS, extra path is essential
 </code></pre>
 <h2 id="renaming-the-rust-bridge-module"><a class="header" href="#renaming-the-rust-bridge-module">Renaming the Rust bridge module</a></h2>
 <p>If you would like to use the <code>--rust-output</code> flag of <code>flutter_rust_bridge_codegen</code>,

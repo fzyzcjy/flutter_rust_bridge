@@ -160,7 +160,11 @@ OPTIONS:
             If provided, generated Dart declaration code to this separate file
 
     -c, --c-output &lt;C_OUTPUT&gt;
-            Output path of generated C header
+            Output path (including file name) of generated C header, each field corresponding to
+            that of `rust-input`
+
+    -e, --extra-c-output-path &lt;EXTRA_C_OUTPUT_PATH&gt;
+            Extra output path (excluding file name) of generated C header
 
         --rust-crate-dir &lt;RUST_CRATE_DIR&gt;...
             Crate directory for your Rust project

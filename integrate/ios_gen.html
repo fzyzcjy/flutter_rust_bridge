@@ -159,7 +159,7 @@ From the root of the app, run these commands:</p>
     -r $crate/src/api.rs \
     -d lib/bridge_generated.dart \
     -c ios/Runner/bridge_generated.h \
-    -c macos/Runner/bridge_generated.h   # if building for MacOS
+    -e macos/Runner/   # if building for MacOS, extra path is essential
 </code></pre>
 <blockquote>
 <p><strong>Note:</strong> These will be the same commands to use whenever you modify your Rust library code.</p>
