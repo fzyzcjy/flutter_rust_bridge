@@ -111,11 +111,13 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
         EXTRA_EXTERN_FUNC_NAMES.to_vec(),
     ]
     .concat();
+
     let c_dummy_code = generator::c::generate_dummy(&effective_func_names);
-    for output in &config.c_output_path {
-        fs::create_dir_all(Path::new(output).parent().unwrap())?;
+    for each_path in config.c_output_path.iter() {
+        println!("the path is {:?}", each_path);
+        fs::create_dir_all(Path::new(each_path).parent().unwrap())?;
         fs::write(
-            output,
+            each_path,
             fs::read_to_string(&temp_bindgen_c_output_file)? + "\n" + &c_dummy_code,
         )?;
     }
@@ -302,7 +304,7 @@ pub use io::*;
             format!(
                 "
 /// cbindgen:ignore
-#[cfg(target_family = \"wasm\")] 
+#[cfg(target_family = \"wasm\")]
 {}
 #[cfg(target_family = \"wasm\")]
 pub use web::*;",

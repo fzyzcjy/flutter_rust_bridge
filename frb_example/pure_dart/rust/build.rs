@@ -22,6 +22,7 @@ fn main() {
         // for other options use defaults
         ..Default::default()
     };
+
     // get opts from raw opts
     let configs = config_parse(raw_opts);
 
