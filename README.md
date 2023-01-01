@@ -145,6 +145,7 @@ More specifically, thanks for all these contributions:
 * [CicadaCinema](https://github.com/CicadaCinema): Bump version. Improve doc.
 * [w1th0utnam3](https://github.com/w1th0utnam3): Improve message.
 * [vincent-herlemont](https://github.com/vincent-herlemont): Loosen version.
+* [zaynetro](https://github.com/zaynetro): Improve doc.
 * [raphaelrobert](https://github.com/raphaelrobert): Remove oudated doc.
 * [alexthe2](https://github.com/alexthe2): Improve doc.
 * [tmpfs](https://github.com/tmpfs): Improve doc.
