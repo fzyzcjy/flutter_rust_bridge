@@ -417,6 +417,15 @@
         "doc",
         "code"
       ]
+    },
+    {
+      "login": "zaynetro",
+      "name": "Roman Zaynetdinov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/627197?v=4",
+      "profile": "https://www.zaynetro.com/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
