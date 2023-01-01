@@ -165,6 +165,13 @@ to the <strong>Copy Bundle Resources</strong> phase, if it isn't already present
  }
 </code></pre>
 <p>It is important that you use the result of <code>dummy_method_to_enforce_bundling()</code> (like in the example above), otherwise the symbols might still get stripped.</p>
+<h3 id="stripping-ios-symbols"><a class="header" href="#stripping-ios-symbols">Stripping iOS symbols</a></h3>
+<p>If you release your app through App Store, the steps above might not be sufficient. In that case you need to modify how Xcode strips the symbols:</p>
+<ol>
+<li>In Xcode, go to Target Runner &gt; Build Settings &gt; Strip Style.</li>
+<li>Change from <strong>All Symbols</strong> to <strong>Non-Global Symbols</strong>.</li>
+</ol>
+<p>Ref: https://docs.flutter.dev/development/platform-integration/ios/c-interop#stripping-ios-symbols</p>
 <h2 id="macos"><a class="header" href="#macos">MacOS</a></h2>
 <p>Flutter on MacOS does not use headers by default, so let's go ahead
 and add one ourselves. In the <strong>Build Settings</strong> tab, set the
