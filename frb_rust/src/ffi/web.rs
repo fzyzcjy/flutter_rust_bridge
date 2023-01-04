@@ -38,9 +38,7 @@ impl IntoDart for () {
 impl<Tz: chrono::TimeZone> IntoDart for chrono::DateTime<Tz> {
     #[inline]
     fn into_dart(self) -> DartAbi {
-        chrono::DateTime::<Tz>::from(self)
-            .timestamp_millis()
-            .into_dart()
+        self.timestamp_millis().into_dart()
     }
 }
 #[cfg(feature = "chrono")]
@@ -60,19 +58,28 @@ impl IntoDart for chrono::Duration {
 #[cfg(feature = "chrono")]
 impl<Tz: chrono::TimeZone> IntoDart for Vec<chrono::DateTime<Tz>> {
     fn into_dart(self) -> DartAbi {
-        self.into_iter().map(IntoDart::into_dart).collect::<Vec<_>>().into_dart()
+        self.into_iter()
+            .map(IntoDart::into_dart)
+            .collect::<Vec<_>>()
+            .into_dart()
     }
 }
 #[cfg(feature = "chrono")]
 impl IntoDart for Vec<chrono::NaiveDateTime> {
     fn into_dart(self) -> DartAbi {
-        self.into_iter().map(IntoDart::into_dart).collect::<Vec<_>>().into_dart()
+        self.into_iter()
+            .map(IntoDart::into_dart)
+            .collect::<Vec<_>>()
+            .into_dart()
     }
 }
 #[cfg(feature = "chrono")]
 impl IntoDart for Vec<chrono::Duration> {
     fn into_dart(self) -> DartAbi {
-        self.into_iter().map(IntoDart::into_dart).collect::<Vec<_>>().into_dart()
+        self.into_iter()
+            .map(IntoDart::into_dart)
+            .collect::<Vec<_>>()
+            .into_dart()
     }
 }
 
