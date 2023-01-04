@@ -13,21 +13,22 @@ impl IrTypeOptional {
             inner: Box::new(ptr),
         }
     }
-    pub fn new_primitive(prim: IrTypePrimitive) -> Self {
+
+    pub fn new_boxed(inner: IrType) -> Self {
         Self {
             inner: Box::new(Boxed(IrTypeBoxed {
                 exist_in_real_api: false,
-                inner: Box::new(Primitive(prim)),
+                inner: Box::new(inner),
             })),
         }
     }
 
     pub fn is_primitive(&self) -> bool {
-        matches!(&*self.inner, Boxed(boxed) if !boxed.exist_in_real_api && matches!(*boxed.inner, IrType::Primitive(_)))
+        matches!(&*self.inner, Boxed(boxed) if ! boxed.exist_in_real_api && boxed.inner.is_primitive())
     }
 
     pub fn is_boxed_primitive(&self) -> bool {
-        matches!(&*self.inner, Boxed(boxed) if boxed.exist_in_real_api && matches!(*boxed.inner, IrType::Primitive(_)))
+        matches!(&*self.inner, Boxed(boxed) if boxed.exist_in_real_api && boxed.inner.is_primitive())
     }
 
     pub fn is_list(&self) -> bool {
@@ -47,8 +48,11 @@ impl IrTypeTrait for IrTypeOptional {
     fn safe_ident(&self) -> String {
         format!("opt_{}", self.inner.safe_ident())
     }
+
     fn rust_wire_type(&self, target: Target) -> String {
-        if self.inner.rust_wire_is_pointer(target) || (target.is_wasm() && self.inner.is_js_value())
+        if self.inner.rust_wire_is_pointer(target)
+            || target.is_wasm()
+                && (self.inner.is_js_value() || self.is_primitive() || self.is_boxed_primitive())
         {
             self.inner.rust_wire_type(target)
         } else {

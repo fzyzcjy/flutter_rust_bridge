@@ -7,7 +7,6 @@ use crate::type_rust_generator_struct;
 use crate::utils::BlockIndex;
 
 use super::NO_PARAMS;
-
 type_rust_generator_struct!(TypeBoxedGenerator, IrTypeBoxed);
 
 impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
@@ -15,7 +14,7 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
         let box_inner = self.ir.inner.as_ref();
         let exist_in_real_api = self.ir.exist_in_real_api;
         Acc::new(|target| match (target, self.ir.inner.as_ref()) {
-            (Common, IrType::Primitive(_)) => Some(
+            (Io, IrType::Primitive(_)) => Some(
                 if exist_in_real_api {
                     "unsafe { support::box_from_leak_ptr(self) }"
                 } else {
@@ -23,7 +22,6 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
                 }
                 .into(),
             ),
-            (_, IrType::Primitive(_)) => None,
             (Io | Wasm, ir) if ir.is_array() => Some(format!(
                 "Wire2Api::<{}>::wire2api(self).into()",
                 box_inner.rust_api_type()
@@ -39,9 +37,9 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
 
     fn wire2api_jsvalue(&self) -> Option<std::borrow::Cow<str>> {
         (self.ir.exist_in_real_api).then(|| match &*self.ir.inner {
-            IrType::Primitive(_) => format!(
-                "(self.unchecked_into_f64() as usize as *mut {}).wire2api()",
-                self.ir.inner.rust_wire_type(Wasm),
+            IrType::Delegate(IrTypeDelegate::PrimitiveEnum { repr, .. }) => format!(
+                "let ptr: Box<{}> = self.wire2api(); Box::new(ptr.wire2api())",
+                repr.rust_api_type()
             )
             .into(),
             IrType::Delegate(IrTypeDelegate::Array(array)) => format!(
@@ -80,23 +78,24 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
         collector: &mut ExternFuncCollector,
         block_index: BlockIndex,
     ) -> Acc<Option<String>> {
+        if self.ir.inner.is_array() {
+            return Acc::default();
+        }
         let func_name = format!("new_{}_{}", self.ir.safe_ident(), block_index);
         if self.ir.inner.is_primitive() {
-            Acc::new(|target| match target {
-                Io | Wasm => Some(collector.generate(
+            Acc {
+                io: Some(collector.generate(
                     &func_name,
                     [(
-                        format!("value: {}", self.ir.inner.rust_wire_type(target)),
-                        self.ir.inner.dart_wire_type(target),
+                        format!("value: {}", self.ir.inner.rust_wire_type(Io)),
+                        self.ir.inner.dart_wire_type(Io),
                     )],
-                    Some(&format!("*mut {}", self.ir.inner.rust_wire_type(target))),
+                    Some(&format!("*mut {}", self.ir.inner.rust_wire_type(Io))),
                     "support::new_leak_box_ptr(value)",
-                    target,
+                    Io,
                 )),
-                _ => None,
-            })
-        } else if self.ir.inner.is_array() {
-            Acc::default()
+                ..Default::default()
+            }
         } else {
             Acc {
                 io: Some(collector.generate(

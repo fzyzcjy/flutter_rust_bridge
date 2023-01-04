@@ -11,11 +11,7 @@ impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
             Target::Io | Target::Wasm => Some(format!(
                 "return raw == null ? {} : api2wire_{}(raw);",
                 if target.is_wasm() {
-                    if self.ir.is_primitive() || self.ir.is_boxed_primitive() {
-                        "0"
-                    } else {
-                        "null"
-                    }
+                    "null"
                 } else {
                     "ffi.nullptr"
                 },

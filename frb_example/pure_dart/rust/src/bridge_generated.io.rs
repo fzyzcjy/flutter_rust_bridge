@@ -1290,32 +1290,7 @@ impl Wire2Api<chrono::Duration> for i64 {
         chrono::Duration::microseconds(self)
     }
 }
-impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
-    fn wire2api(self) -> chrono::DateTime<chrono::Local> {
-        let Timestamp { s, ns } = wire2api_timestamp(self);
-        chrono::DateTime::<chrono::Local>::from(chrono::DateTime::<chrono::Utc>::from_utc(
-            chrono::NaiveDateTime::from_timestamp_opt(s, ns)
-                .expect("invalid or out-of-range datetime"),
-            chrono::Utc,
-        ))
-    }
-}
-impl Wire2Api<chrono::NaiveDateTime> for i64 {
-    fn wire2api(self) -> chrono::NaiveDateTime {
-        let Timestamp { s, ns } = wire2api_timestamp(self);
-        chrono::NaiveDateTime::from_timestamp_opt(s, ns).expect("invalid or out-of-range datetime")
-    }
-}
-impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
-    fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
-        let Timestamp { s, ns } = wire2api_timestamp(self);
-        chrono::DateTime::<chrono::Utc>::from_utc(
-            chrono::NaiveDateTime::from_timestamp_opt(s, ns)
-                .expect("invalid or out-of-range datetime"),
-            chrono::Utc,
-        )
-    }
-}
+
 impl Wire2Api<DartOpaque> for wire_DartOpaque {
     fn wire2api(self) -> DartOpaque {
         unsafe { DartOpaque::new(self.handle as _, self.port) }
@@ -1470,7 +1445,11 @@ impl Wire2Api<Attribute> for *mut wire_Attribute {
         Wire2Api::<Attribute>::wire2api(*wrap).into()
     }
 }
-
+impl Wire2Api<bool> for *mut bool {
+    fn wire2api(self) -> bool {
+        unsafe { *support::box_from_leak_ptr(self) }
+    }
+}
 impl Wire2Api<ConcatenateWith> for *mut wire_ConcatenateWith {
     fn wire2api(self) -> ConcatenateWith {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1507,7 +1486,11 @@ impl Wire2Api<ExoticOptionals> for *mut wire_ExoticOptionals {
         Wire2Api::<ExoticOptionals>::wire2api(*wrap).into()
     }
 }
-
+impl Wire2Api<f64> for *mut f64 {
+    fn wire2api(self) -> f64 {
+        unsafe { *support::box_from_leak_ptr(self) }
+    }
+}
 impl Wire2Api<FeatureChrono> for *mut wire_FeatureChrono {
     fn wire2api(self) -> FeatureChrono {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1526,7 +1509,16 @@ impl Wire2Api<FeedId> for *mut wire_FeedId {
         Wire2Api::<FeedId>::wire2api(*wrap).into()
     }
 }
-
+impl Wire2Api<i32> for *mut i32 {
+    fn wire2api(self) -> i32 {
+        unsafe { *support::box_from_leak_ptr(self) }
+    }
+}
+impl Wire2Api<i64> for *mut i64 {
+    fn wire2api(self) -> i64 {
+        unsafe { *support::box_from_leak_ptr(self) }
+    }
+}
 impl Wire2Api<KitchenSink> for *mut wire_KitchenSink {
     fn wire2api(self) -> KitchenSink {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1617,7 +1609,11 @@ impl Wire2Api<Box<Blob>> for *mut wire_Blob {
         Wire2Api::<Blob>::wire2api(*wrap).into()
     }
 }
-
+impl Wire2Api<Box<bool>> for *mut bool {
+    fn wire2api(self) -> Box<bool> {
+        unsafe { support::box_from_leak_ptr(self) }
+    }
+}
 impl Wire2Api<Box<Distance>> for *mut wire_Distance {
     fn wire2api(self) -> Box<Distance> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1630,7 +1626,26 @@ impl Wire2Api<Box<ExoticOptionals>> for *mut wire_ExoticOptionals {
         Wire2Api::<ExoticOptionals>::wire2api(*wrap).into()
     }
 }
-
+impl Wire2Api<Box<f64>> for *mut f64 {
+    fn wire2api(self) -> Box<f64> {
+        unsafe { support::box_from_leak_ptr(self) }
+    }
+}
+impl Wire2Api<Box<i32>> for *mut i32 {
+    fn wire2api(self) -> Box<i32> {
+        unsafe { support::box_from_leak_ptr(self) }
+    }
+}
+impl Wire2Api<Box<i64>> for *mut i64 {
+    fn wire2api(self) -> Box<i64> {
+        unsafe { support::box_from_leak_ptr(self) }
+    }
+}
+impl Wire2Api<Box<i8>> for *mut i8 {
+    fn wire2api(self) -> Box<i8> {
+        unsafe { support::box_from_leak_ptr(self) }
+    }
+}
 impl Wire2Api<Box<KitchenSink>> for *mut wire_KitchenSink {
     fn wire2api(self) -> Box<KitchenSink> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1649,7 +1664,11 @@ impl Wire2Api<Box<Speed>> for *mut wire_Speed {
         Wire2Api::<Speed>::wire2api(*wrap).into()
     }
 }
-
+impl Wire2Api<Box<u8>> for *mut u8 {
+    fn wire2api(self) -> Box<u8> {
+        unsafe { support::box_from_leak_ptr(self) }
+    }
+}
 impl Wire2Api<Box<[u8; 1600]>> for *mut wire_uint_8_list {
     fn wire2api(self) -> Box<[u8; 1600]> {
         Wire2Api::<[u8; 1600]>::wire2api(self).into()
