@@ -1011,8 +1011,7 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
       double? my_f64,
       bool? my_bool);
 
-  external dynamic /* int */ wire_primitive_types_sync(
-      int my_i32, Object my_i64, double my_f64, bool my_bool);
+  external dynamic /* int */ wire_primitive_types_sync(int my_i32, Object my_i64, double my_f64, bool my_bool);
 
   external dynamic /* void */ wire_primitive_u32(
       
@@ -1530,11 +1529,9 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external dynamic /* void */ wire_empty_struct(
       NativePortType port_, List<dynamic> empty);
 
-  external dynamic /* void */ wire_sum__method__SumWith(
-      NativePortType port_, List<dynamic> that, int y, int z);
+  external dynamic /* void */ wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
 
-  external dynamic /* void */ wire_new__static_method__ConcatenateWith(
-      NativePortType port_, String a);
+  external dynamic /* void */ wire_new__static_method__ConcatenateWith(NativePortType port_, String a);
 
   external dynamic /* void */ wire_concatenate__method__ConcatenateWith(
       NativePortType port_, List<dynamic> that, String b);
@@ -1736,20 +1733,15 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   dynamic /* Uint8List */ wire_handle_sync_return(String mode) =>
       wasmModule.wire_handle_sync_return(mode);
 
-  void wire_handle_stream(NativePortType port_, String arg) =>
-      wasmModule.wire_handle_stream(port_, arg);
+  void wire_handle_stream(NativePortType port_, String arg) => wasmModule.wire_handle_stream(port_, arg);
 
-  void wire_handle_stream_of_struct(NativePortType port_) =>
-      wasmModule.wire_handle_stream_of_struct(port_);
+  void wire_handle_stream_of_struct(NativePortType port_) => wasmModule.wire_handle_stream_of_struct(port_);
 
-  void wire_return_err(NativePortType port_) =>
-      wasmModule.wire_return_err(port_);
+  void wire_return_err(NativePortType port_) => wasmModule.wire_return_err(port_);
 
-  void wire_return_panic(NativePortType port_) =>
-      wasmModule.wire_return_panic(port_);
+  void wire_return_panic(NativePortType port_) => wasmModule.wire_return_panic(port_);
 
-  void wire_handle_optional_return(
-          NativePortType port_, double left, double right) =>
+  void wire_handle_optional_return(NativePortType port_, double left, double right) =>
       wasmModule.wire_handle_optional_return(port_, left, right);
 
   void wire_handle_optional_struct(NativePortType port_, String? document) =>
@@ -1944,8 +1936,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_optional_empty_datetime_utc(NativePortType port_, Object? d) =>
       wasmModule.wire_optional_empty_datetime_utc(port_, d);
 
-  void wire_duration(NativePortType port_, Object d) =>
-      wasmModule.wire_duration(port_, d);
+  void wire_duration(NativePortType port_, Object d) => wasmModule.wire_duration(port_, d);
 
   void wire_test_chrono(NativePortType port_) =>
       wasmModule.wire_test_chrono(port_);
