@@ -231,6 +231,9 @@ impl<'a> TypeParser<'a> {
                     }
                     _ => self.convert_to_ir_type(*generic).map(|inner| match inner {
                         Primitive(primitive) => PrimitiveList(IrTypePrimitiveList { primitive }),
+                        Delegate(IrTypeDelegate::Time(time)) => {
+                            Delegate(IrTypeDelegate::TimeList(time))
+                        }
                         others => GeneralList(IrTypeGeneralList {
                             inner: Box::new(others),
                         }),

@@ -8,7 +8,7 @@ type_dart_generator_struct!(TypeDelegateGenerator, IrTypeDelegate);
 
 impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
-        match self.ir {
+        match &self.ir {
             IrTypeDelegate::Array(ref array) => match array {
                 IrTypeDelegateArray::GeneralArray { .. } => Acc::distribute(Some(format!(
                     "return api2wire_{}(raw);",
@@ -17,8 +17,8 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                 IrTypeDelegateArray::PrimitiveArray { length, .. } => Acc {
                     io: Some(format!(
                         "final ans = inner.new_{}_{}({length});
-                                    ans.ref.ptr.asTypedList({length}).setAll(0, raw);
-                                    return ans;",
+                        ans.ref.ptr.asTypedList({length}).setAll(0, raw);
+                        return ans;",
                         array.get_delegate().safe_ident(),
                         self.context.config.block_index,
                     )),
@@ -60,7 +60,7 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                 format!("return api2wire_{}(raw.index);", repr.safe_ident()).into()
             }
             #[cfg(feature = "chrono")]
-            IrTypeDelegate::Time(ref ir) => match ir {
+            IrTypeDelegate::Time(ir) => match ir {
                 IrTypeTime::Utc | IrTypeTime::Local | IrTypeTime::Naive => Acc {
                     io: Some("return api2wire_i64(raw.microsecondsSinceEpoch);".into()),
                     wasm: Some("return api2wire_i64(raw.millisecondsSinceEpoch);".into()),
@@ -72,6 +72,13 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                     ..Default::default()
                 },
             },
+            #[cfg(feature = "chrono")]
+            IrTypeDelegate::TimeList(ir) => Acc::distribute(Some(format!(
+                "final ans = Int64List(raw.length);
+                for (var i=0; i < raw.length; ++i) ans[i] = api2wire_Chrono_{}(raw[i]);
+                return api2wire_int_64_list(ans);",
+                ir.safe_ident()
+            ))),
             #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuid => {
                 Acc::distribute(Some("return api2wire_uint_8_list(raw.toBytes());".into()))
@@ -116,13 +123,23 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                 format!("return {}.values[raw];", ir.dart_api_type())
             }
             #[cfg(feature = "chrono")]
-            IrTypeDelegate::Time(ir) => match ir {
-                IrTypeTime::Local | IrTypeTime::Naive | IrTypeTime::Utc => {
-                    let is_utc = ir == &IrTypeTime::Naive || ir == &IrTypeTime::Utc;
-                    format!("return wire2apiTimestamp(ts: _wire2api_i64(raw), isUtc: {is_utc});")
+            IrTypeDelegate::Time(ir) => {
+                if !ir.is_duration() {
+                    format!(
+                        "return wire2apiTimestamp(ts: _wire2api_i64(raw), isUtc: {});",
+                        ir.is_utc()
+                    )
+                } else {
+                    "return wire2apiDuration(_wire2api_i64(raw));".to_owned()
                 }
-                IrTypeTime::Duration => "return wire2apiDuration(_wire2api_i64(raw));".to_owned(),
-            },
+            }
+            #[cfg(feature = "chrono")]
+            IrTypeDelegate::TimeList(ir) => {
+                format!(
+                    "return (raw as List<dynamic>).map(_wire2api_Chrono_{}).toList();",
+                    ir.safe_ident()
+                )
+            }
             #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuid => {
                 "return UuidValue.fromByteList(_wire2api_uint_8_list(raw));".to_owned()

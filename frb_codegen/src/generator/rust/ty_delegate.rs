@@ -102,6 +102,14 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                     ..Default::default()
                 }
             },
+            #[cfg(feature = "chrono")]
+            IrTypeDelegate::TimeList(_) => {
+                Acc::distribute(
+                    Some(
+                        "let vec: Vec<i64> = self.wire2api(); vec.into_iter().map(Wire2Api::wire2api).collect()".into()
+                    )
+                )
+            }
             #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuid => Acc::distribute(
                 Some(
