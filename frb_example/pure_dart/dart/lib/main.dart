@@ -8,7 +8,8 @@ import 'bridge_definitions.dart';
 
 const isWeb = bool.fromEnvironment('dart.library.html');
 
-String? skipWeb([String reason = 'unspecified']) => isWeb ? 'Skipped on web (reason: $reason)' : null;
+String? skipWeb([String reason = 'unspecified']) =>
+    isWeb ? 'Skipped on web (reason: $reason)' : null;
 
 void main(List<String> args) async {
   String dylibPath = args[0];
@@ -32,18 +33,37 @@ void main(List<String> args) async {
 
   test('dart call primitiveTypes', () async {
     expect(
-        await api.primitiveTypes(myI32: 123, myI64: 10000000000000, myF64: 12345678901234567890.123, myBool: true), 42);
+        await api.primitiveTypes(
+            myI32: 123,
+            myI64: 10000000000000,
+            myF64: 12345678901234567890.123,
+            myBool: true),
+        42);
   });
 
   test('dart call optional primitiveTypes', () async {
-    expect(await api.primitiveOptionalTypes(myI32: null, myI64: null, myF64: null, myBool: null), 0);
-    expect(await api.primitiveOptionalTypes(myI32: 0, myI64: 0, myF64: 0, myBool: false), 4);
-    expect(await api.primitiveOptionalTypes(myI32: 123, myI64: 123, myF64: 123, myBool: true), 4);
+    expect(
+        await api.primitiveOptionalTypes(
+            myI32: null, myI64: null, myF64: null, myBool: null),
+        0);
+    expect(
+        await api.primitiveOptionalTypes(
+            myI32: 0, myI64: 0, myF64: 0, myBool: false),
+        4);
+    expect(
+        await api.primitiveOptionalTypes(
+            myI32: 123, myI64: 123, myF64: 123, myBool: true),
+        4);
   });
 
   test('dart call primitiveTypesSync', () {
     expect(
-        api.primitiveTypesSync(myI32: 123, myI64: 10000000000000, myF64: 12345678901234567890.123, myBool: true), 42);
+        api.primitiveTypesSync(
+            myI32: 123,
+            myI64: 10000000000000,
+            myF64: 12345678901234567890.123,
+            myBool: true),
+        42);
   });
 
   test('dart call primitiveU32', () async {
@@ -61,17 +81,21 @@ void main(List<String> args) async {
   });
 
   test('dart call handleString', () async {
-    expect(await api.handleString(s: "Hello, world!"), "Hello, world!Hello, world!");
+    expect(await api.handleString(s: "Hello, world!"),
+        "Hello, world!Hello, world!");
   });
   test('dart call handleString with nul-containing string', () async {
-    expect(await api.handleString(s: "Hello\u0000world!"), isWeb ? "Hello\u0000world!Hello\u0000world!" : "");
+    expect(await api.handleString(s: "Hello\u0000world!"),
+        isWeb ? "Hello\u0000world!Hello\u0000world!" : "");
   });
 
   test('dart call handleStringSync', () {
-    expect(api.handleStringSync(s: "Hello, world!"), "Hello, world!Hello, world!");
+    expect(
+        api.handleStringSync(s: "Hello, world!"), "Hello, world!Hello, world!");
   });
   test('dart call handleStringSync with nul-containing string', () {
-    expect(api.handleStringSync(s: "Hello\u0000world!"), isWeb ? "Hello\u0000world!Hello\u0000world!" : "");
+    expect(api.handleStringSync(s: "Hello\u0000world!"),
+        isWeb ? "Hello\u0000world!Hello\u0000world!" : "");
   });
 
   test('dart call handleVecU8', () async {
@@ -144,14 +168,16 @@ void main(List<String> args) async {
   });
 
   test('dart call handleStruct', () async {
-    final structResp =
-        await api.handleStruct(arg: MySize(width: 42, height: 100), boxed: MySize(width: 1000, height: 10000));
+    final structResp = await api.handleStruct(
+        arg: MySize(width: 42, height: 100),
+        boxed: MySize(width: 1000, height: 10000));
     expect(structResp.width, 42 + 1000);
     expect(structResp.height, 100 + 10000);
   });
   test('dart call handleStructSync', () {
-    final structResp =
-        api.handleStructSync(arg: MySize(width: 42, height: 100), boxed: MySize(width: 1000, height: 10000));
+    final structResp = api.handleStructSync(
+        arg: MySize(width: 42, height: 100),
+        boxed: MySize(width: 1000, height: 10000));
     expect(structResp.width, 42 + 1000);
     expect(structResp.height, 100 + 10000);
   });
@@ -166,8 +192,8 @@ void main(List<String> args) async {
   });
 
   test('dart call handleListOfStruct', () async {
-    final listOfStructResp =
-        await api.handleListOfStruct(l: [MySize(width: 42, height: 100), MySize(width: 420, height: 1000)]);
+    final listOfStructResp = await api.handleListOfStruct(
+        l: [MySize(width: 42, height: 100), MySize(width: 420, height: 1000)]);
     expect(listOfStructResp.length, 4);
     expect(listOfStructResp[0].width, 42);
     expect(listOfStructResp[1].width, 420);
@@ -175,8 +201,8 @@ void main(List<String> args) async {
     expect(listOfStructResp[3].width, 420);
   });
   test('dart call handleListOfStructSync', () {
-    final listOfStructResp =
-        api.handleListOfStructSync(l: [MySize(width: 42, height: 100), MySize(width: 420, height: 1000)]);
+    final listOfStructResp = api.handleListOfStructSync(
+        l: [MySize(width: 42, height: 100), MySize(width: 420, height: 1000)]);
     expect(listOfStructResp.length, 4);
     expect(listOfStructResp[0].width, 42);
     expect(listOfStructResp[1].width, 420);
@@ -197,13 +223,15 @@ void main(List<String> args) async {
     expect(complexStructResp.valueI32, 100);
     expect(complexStructResp.valueVecU8, List.filled(arrLen, 100));
     expect(complexStructResp.children[0].valueVecU8, List.filled(arrLen, 110));
-    expect(complexStructResp.children[0].children[0].valueVecU8, List.filled(arrLen, 111));
+    expect(complexStructResp.children[0].children[0].valueVecU8,
+        List.filled(arrLen, 111));
     expect(complexStructResp.children[1].valueVecU8, List.filled(arrLen, 120));
   }
 
   test('dart call handleComplexStruct', () async {
     final arrLen = 5;
-    final complexStructResp = await api.handleComplexStruct(s: _createMyTreeNode(arrLen: arrLen));
+    final complexStructResp =
+        await api.handleComplexStruct(s: _createMyTreeNode(arrLen: arrLen));
     testComplexStruct(complexStructResp, arrLen: arrLen);
   });
 
@@ -215,11 +243,13 @@ void main(List<String> args) async {
 
   test('dart call handleComplexStructSync', () {
     final arrLen = 5;
-    final complexStructResp = api.handleComplexStructSync(s: _createMyTreeNode(arrLen: arrLen));
+    final complexStructResp =
+        api.handleComplexStructSync(s: _createMyTreeNode(arrLen: arrLen));
     expect(complexStructResp.valueI32, 100);
     expect(complexStructResp.valueVecU8, List.filled(arrLen, 100));
     expect(complexStructResp.children[0].valueVecU8, List.filled(arrLen, 110));
-    expect(complexStructResp.children[0].children[0].valueVecU8, List.filled(arrLen, 111));
+    expect(complexStructResp.children[0].children[0].valueVecU8,
+        List.filled(arrLen, 111));
     expect(complexStructResp.children[1].valueVecU8, List.filled(arrLen, 120));
   });
 
@@ -248,7 +278,8 @@ void main(List<String> args) async {
   });
 
   Future<void> testHandleStream(
-      Stream<Log> Function({dynamic hint, required int key, required int max}) handleStreamFunction) async {
+      Stream<Log> Function({dynamic hint, required int key, required int max})
+          handleStreamFunction) async {
     final max = 5;
     final key = 8;
     final stream = handleStreamFunction(key: key, max: max);
@@ -323,7 +354,8 @@ void main(List<String> args) async {
   test('dart call handleOptionalIncrement', () async {
     expect(await api.handleOptionalIncrement(), null);
     {
-      var ret = await api.handleOptionalIncrement(opt: ExoticOptionals(attributesNullable: []));
+      var ret = await api.handleOptionalIncrement(
+          opt: ExoticOptionals(attributesNullable: []));
       if (ret == null) fail('increment returned null for non-null params');
       final loopFor = 20;
       for (var i = 1; i < loopFor; i++) {
@@ -364,7 +396,8 @@ void main(List<String> args) async {
     {
       final optional10 = await api.handleOptionBoxArguments(
         boolbox: true,
-        structbox: await api.handleOptionalIncrement(opt: ExoticOptionals(attributesNullable: [])),
+        structbox: await api.handleOptionalIncrement(
+            opt: ExoticOptionals(attributesNullable: [])),
       );
       print(optional10);
     }
@@ -376,11 +409,13 @@ void main(List<String> args) async {
   });
 
   test('dart call handleEnumParameter', () async {
-    expect(await api.handleEnumParameter(weekday: Weekdays.Saturday), Weekdays.Saturday);
+    expect(await api.handleEnumParameter(weekday: Weekdays.Saturday),
+        Weekdays.Saturday);
   });
 
   test('dart call handleEnumStruct', () async {
-    expect(await api.handleEnumStruct(val: KitchenSink_Empty()), KitchenSink_Empty());
+    expect(await api.handleEnumStruct(val: KitchenSink_Empty()),
+        KitchenSink_Empty());
     expect(
       await api.handleEnumStruct(
         val: KitchenSink_Primitives(int32: 0, float64: 1, boolean: false),
@@ -392,7 +427,8 @@ void main(List<String> args) async {
       KitchenSink_Optional(null, 1),
     );
     expect(
-      await api.handleEnumStruct(val: KitchenSink_Buffer(Uint8List.fromList([]))),
+      await api.handleEnumStruct(
+          val: KitchenSink_Buffer(Uint8List.fromList([]))),
       KitchenSink_Buffer(Uint8List.fromList([1])),
     );
     expect(
@@ -400,7 +436,8 @@ void main(List<String> args) async {
       KitchenSink_Enums(Weekdays.Tuesday),
     );
     expect(
-      await api.handleEnumStruct(val: KitchenSink_Nested(KitchenSink_Empty(), 0)),
+      await api.handleEnumStruct(
+          val: KitchenSink_Nested(KitchenSink_Empty(), 0)),
       KitchenSink_Nested(KitchenSink_Empty(), 1),
     );
   });
@@ -441,7 +478,9 @@ void main(List<String> args) async {
                 name: "from dart",
                 version: "XX",
                 mode: ApplicationMode.Embedded,
-                env: ApplicationEnv(vars: [ApplicationEnvVar(field0: "sendback", field1: true)]))),
+                env: ApplicationEnv(vars: [
+                  ApplicationEnvVar(field0: "sendback", field1: true)
+                ]))),
         true);
   });
 
@@ -460,12 +499,14 @@ void main(List<String> args) async {
 
   test('dart call repeatNumber()', () async {
     var numbers = await api.repeatNumber(num: 1, times: 10);
-    expect(numbers.field0.toList(), Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
+    expect(numbers.field0.toList(),
+        Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
   });
 
   test('dart call repeatSequence()', () async {
     var sequences = await api.repeatSequence(seq: 1, times: 10);
-    expect(sequences.field0.toList(), Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
+    expect(sequences.field0.toList(),
+        Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
   });
 
   test('dart call firstNumber()', () async {
@@ -504,7 +545,8 @@ void main(List<String> args) async {
   });
 
   test('dart check that non-final field is modifiable', () {
-    var customized = Customized(finalField: "finalField", nonFinalField: "nonFinalField");
+    var customized =
+        Customized(finalField: "finalField", nonFinalField: "nonFinalField");
     expect(customized.nonFinalField, "nonFinalField");
     customized.nonFinalField = "changed";
     expect(customized.nonFinalField, "changed");
@@ -516,22 +558,27 @@ void main(List<String> args) async {
   });
 
   test('dart register event listener & create event with delay', () async {
-    expectLater(api.registerEventListener(), emits(Event(address: 'foo', payload: 'bar')));
+    expectLater(api.registerEventListener(),
+        emits(Event(address: 'foo', payload: 'bar')));
     await Future.delayed(const Duration(milliseconds: 20));
     await api.createEvent(address: 'foo', payload: 'bar');
     await api.closeEventListener();
   });
 
   test('ConcatenateWith test', () async {
-    final ConcatenateWith concatenateWith = ConcatenateWith(a: "hello ", bridge: api);
+    final ConcatenateWith concatenateWith =
+        ConcatenateWith(a: "hello ", bridge: api);
     final String concatenated = await concatenateWith.concatenate(b: "world");
     expect(concatenated, equals("hello world"));
 
-    final staticConcatenated = await ConcatenateWith.concatenateStatic(bridge: api, a: "hello ", b: "world");
+    final staticConcatenated = await ConcatenateWith.concatenateStatic(
+        bridge: api, a: "hello ", b: "world");
     expect(staticConcatenated, equals("hello world"));
 
-    final concatenatedConstructor = await ConcatenateWith.newConcatenateWith(bridge: api, a: "hello ");
-    final String concatenated2 = await concatenatedConstructor.concatenate(b: "world");
+    final concatenatedConstructor =
+        await ConcatenateWith.newConcatenateWith(bridge: api, a: "hello ");
+    final String concatenated2 =
+        await concatenatedConstructor.concatenate(b: "world");
     expect(concatenated2, equals("hello world"));
   });
 
@@ -548,14 +595,16 @@ void main(List<String> args) async {
   });
 
   test('return SumWith array test', () async {
-    final List<SumWith> sumWithList = await api.getSumArray(a: 12, b: 23, c: 67);
+    final List<SumWith> sumWithList =
+        await api.getSumArray(a: 12, b: 23, c: 67);
     expect(await sumWithList[0].sum(y: 23, z: 67), 12 + 23 + 67);
     expect(await sumWithList[1].sum(y: 12, z: 67), 12 + 23 + 67);
     expect(await sumWithList[2].sum(y: 12, z: 23), 12 + 23 + 67);
   });
 
   test('ConcatenateWith stream sink test', () async {
-    final ConcatenateWith concatenateWith = ConcatenateWith(a: "hello ", bridge: api);
+    final ConcatenateWith concatenateWith =
+        ConcatenateWith(a: "hello ", bridge: api);
     final int key = 10;
     final int max = 5;
     final stream = concatenateWith.handleSomeStreamSink(key: key, max: max);
@@ -571,7 +620,8 @@ void main(List<String> args) async {
   test('ConcatenateWith static stream sink test', () async {
     final int key = 10;
     final int max = 5;
-    final stream = ConcatenateWith.handleSomeStaticStreamSink(bridge: api, key: key, max: max);
+    final stream = ConcatenateWith.handleSomeStaticStreamSink(
+        bridge: api, key: key, max: max);
     int cnt = 0;
     await for (final value in stream) {
       print("output from ConcatenateWith's static stream: $value");
@@ -582,7 +632,8 @@ void main(List<String> args) async {
   });
 
   test('ConcatenateWith static stream sink at 1 test', () async {
-    final stream = ConcatenateWith.handleSomeStaticStreamSinkSingleArg(bridge: api);
+    final stream =
+        ConcatenateWith.handleSomeStaticStreamSinkSingleArg(bridge: api);
     expect(stream.toList(), completion([0, 1, 2, 3, 4]));
   });
 
@@ -595,10 +646,12 @@ void main(List<String> args) async {
       await api.multiplyByTen(measure: Measure.speed(Speed_Unknown())),
       null,
     );
-    final skipMinified = releaseMode ? skipWeb('Minified names cannot be compared.') : null;
+    final skipMinified =
+        releaseMode ? skipWeb('Minified names cannot be compared.') : null;
     expect((Speed_Unknown).toString(), 'Speed_Unknown', skip: skipMinified);
     expect((Speed_GPS).toString(), 'Speed_GPS', skip: skipMinified);
-    expect((Distance_Unknown).toString(), 'Distance_Unknown', skip: skipMinified);
+    expect((Distance_Unknown).toString(), 'Distance_Unknown',
+        skip: skipMinified);
     expect((Distance_Map).toString(), 'Distance_Map', skip: skipMinified);
   });
 
@@ -638,7 +691,8 @@ void main(List<String> args) async {
       final list = await api.handleBigBuffers();
       expect(list.int64[0], BigInt.parse('-9223372036854775808'));
       expect(list.int64[1], BigInt.parse('9223372036854775807'));
-      expect(list.uint64[0], BigInt.parse('0xFFFFFFFFFFFFFFFF'), reason: 'uint64');
+      expect(list.uint64[0], BigInt.parse('0xFFFFFFFFFFFFFFFF'),
+          reason: 'uint64');
     });
   });
 
@@ -655,6 +709,7 @@ void main(List<String> args) async {
       expect(resp.millisecondsSinceEpoch, date.millisecondsSinceEpoch);
       expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
     });
+
     test('DateTime<Local>', () async {
       final date = DateTime(2022, 09, 10, 20, 48, 53, 123, 456);
       final resp = await api.datetimeLocal(d: date);
@@ -667,6 +722,7 @@ void main(List<String> args) async {
       expect(resp.millisecondsSinceEpoch, date.millisecondsSinceEpoch);
       expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
     });
+
     test('NaiveDateTime', () async {
       final date = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
       final resp = await api.naivedatetime(d: date);
@@ -683,10 +739,40 @@ void main(List<String> args) async {
       final resp = await api.optionalEmptyDatetimeUtc(d: null);
       expect(resp, null);
     });
+
     test('Duration', () async {
       final duration = Duration(hours: 4);
       final resp = await api.duration(d: duration);
       expect(resp.inHours, duration.inHours);
+    });
+
+    test('List<Duration>', () {
+      final expected = [
+        Duration(days: 1),
+        Duration(days: 10),
+        Duration(days: 100),
+        Duration(milliseconds: 333),
+        if (!kIsWeb) Duration(microseconds: 333)
+      ];
+      final now = DateTime.now();
+      final durations = api.handleTimestamps(
+        timestamps: expected.map(now.subtract).toList(),
+        epoch: now,
+      );
+      expect(durations, completion(expected));
+    });
+
+    test('List<DateTime>', () {
+      final expected = [
+        Duration(days: 3),
+        Duration(hours: 2),
+        Duration(seconds: 1),
+        Duration(milliseconds: 500),
+        if (!kIsWeb) Duration(microseconds: 400)
+      ];
+      final now = DateTime.now();
+      final result = api.handleDurations(durations: expected, since: now);
+      expect(result, completion(expected.map(now.subtract)));
     });
 
     test('Combined Chrono types', () async {
@@ -703,8 +789,10 @@ void main(List<String> args) async {
 
       final result = await api.testPreciseChrono();
 
-      expect(result.dt!.millisecondsSinceEpoch, datetime_1.millisecondsSinceEpoch);
-      expect(result.dt2!.millisecondsSinceEpoch, datetime_2.millisecondsSinceEpoch);
+      expect(
+          result.dt!.millisecondsSinceEpoch, datetime_1.millisecondsSinceEpoch);
+      expect(result.dt2!.millisecondsSinceEpoch,
+          datetime_2.millisecondsSinceEpoch);
       expect(result.du!.inHours, duration.inHours);
     });
 
@@ -713,8 +801,9 @@ void main(List<String> args) async {
       final naive = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
       final local = DateTime.now();
       final utc = DateTime.now().toUtc();
-      final difference =
-          await api.howLongDoesItTake(mine: FeatureChrono(utc: utc, local: local, duration: duration, naive: naive));
+      final difference = await api.howLongDoesItTake(
+          mine: FeatureChrono(
+              utc: utc, local: local, duration: duration, naive: naive));
       log('$difference');
     });
   });
@@ -728,14 +817,16 @@ void main(List<String> args) async {
     });
     test('Vec<Uuid>', () async {
       final uuid = Uuid();
-      final ids = List<UuidValue>.from([uuid.v4obj(), uuid.v1obj(), uuid.v4obj()]);
+      final ids =
+          List<UuidValue>.from([uuid.v4obj(), uuid.v1obj(), uuid.v4obj()]);
       final outputs = await api.handleUuids(ids: ids);
       expect(ids, outputs);
     });
     test('nested uuid types', () async {
       final uuid = Uuid();
       final id = uuid.v4obj();
-      final ids = List<UuidValue>.from([uuid.v4obj(), uuid.v1obj(), uuid.v4obj()]);
+      final ids =
+          List<UuidValue>.from([uuid.v4obj(), uuid.v1obj(), uuid.v4obj()]);
       final wrapper = FeatureUuid(one: id, many: ids);
       final outputs = await api.handleNestedUuids(ids: wrapper);
       expect(wrapper.one, outputs.one);
@@ -793,7 +884,8 @@ void main(List<String> args) async {
       id2.field0[1] = 30;
       final id3 = TestId(field0: I32Array2.init());
       id3.field0[1] = 40;
-      final nestedId = await api.nestedId(id: TestIdArray4([id0, id1, id2, id3]));
+      final nestedId =
+          await api.nestedId(id: TestIdArray4([id0, id1, id2, id3]));
       expect(nestedId[0].field0[1], 10);
       expect(nestedId[1].field0[1], 40);
     });
@@ -819,14 +911,17 @@ void main(List<String> args) async {
     });
 
     test('drop', () async {
-      expect(await api.asyncAcceptDartOpaque(opaque: createLargeList(mb: 200)), 'async test');
-      expect(api.syncAcceptDartOpaque(opaque: createLargeList(mb: 200)), 'test');
+      expect(await api.asyncAcceptDartOpaque(opaque: createLargeList(mb: 200)),
+          'async test');
+      expect(
+          api.syncAcceptDartOpaque(opaque: createLargeList(mb: 200)), 'test');
     });
 
     test('unwrap', () async {
       expect(api.unwrapDartOpaque(opaque: createLargeList(mb: 200)), 'Test');
       await expectLater(
-          () => api.panicUnwrapDartOpaque(opaque: createLargeList(mb: 200)), throwsA(isA<FfiException>()));
+          () => api.panicUnwrapDartOpaque(opaque: createLargeList(mb: 200)),
+          throwsA(isA<FfiException>()));
     });
 
     test('nested', () async {
@@ -909,7 +1004,8 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
       data.dispose();
-      await expectLater(() => api.runOpaque(opaque: data), throwsA(isA<FfiException>()));
+      await expectLater(
+          () => api.runOpaque(opaque: data), throwsA(isA<FfiException>()));
     });
 
     test('dispose before complete', () async {
@@ -925,7 +1021,8 @@ void main(List<String> args) async {
           "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
           "lifetime: \"static str\" "
           "})");
-      await expectLater(() => api.runOpaque(opaque: data), throwsA(isA<FfiException>()));
+      await expectLater(
+          () => api.runOpaque(opaque: data), throwsA(isA<FfiException>()));
     });
 
     test('create array of opaque type', () async {
@@ -941,7 +1038,8 @@ void main(List<String> args) async {
             "lifetime: \"static str\" "
             "})");
         v.dispose();
-        await expectLater(() => api.runOpaque(opaque: v), throwsA(isA<FfiException>()));
+        await expectLater(
+            () => api.runOpaque(opaque: v), throwsA(isA<FfiException>()));
       }
     });
 
@@ -986,7 +1084,8 @@ void main(List<String> args) async {
           "lifetime: \\\"static str\\\" "
           "})\"");
       (data[4] as EnumOpaque_RwLock).field0.dispose();
-      await expectLater(() => api.runEnumOpaque(opaque: data[4]), throwsA(isA<FfiException>()));
+      await expectLater(() => api.runEnumOpaque(opaque: data[4]),
+          throwsA(isA<FfiException>()));
     });
 
     test('opaque field', () async {
@@ -1012,8 +1111,10 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
       data.first.dispose();
-      await expectLater(() => api.runOpaque(opaque: data.first), throwsA(isA<FfiException>()));
-      await expectLater(() => api.runNestedOpaque(opaque: data), throwsA(isA<FfiException>()));
+      await expectLater(() => api.runOpaque(opaque: data.first),
+          throwsA(isA<FfiException>()));
+      await expectLater(() => api.runNestedOpaque(opaque: data),
+          throwsA(isA<FfiException>()));
       expect(
           await api.runOpaque(opaque: data.second),
           "content - Some(PrivateData "
@@ -1041,7 +1142,8 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
 
-      await expectLater(() => api.opaqueArrayRun(data: data), throwsA(isA<FfiException>()));
+      await expectLater(
+          () => api.opaqueArrayRun(data: data), throwsA(isA<FfiException>()));
       data[1].dispose();
     });
 
@@ -1060,7 +1162,8 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
 
-      await expectLater(() => api.opaqueVecRun(data: data), throwsA(isA<FfiException>()));
+      await expectLater(
+          () => api.opaqueVecRun(data: data), throwsA(isA<FfiException>()));
       data[1].dispose();
     });
 
@@ -1079,14 +1182,16 @@ void main(List<String> args) async {
       expect(data.isStale(), isTrue);
 
       var data2 = await api.createOpaque();
-      await expectLater(() => api.unwrapRustOpaque(opaque: data2), throwsA(isA<FfiException>()));
+      await expectLater(() => api.unwrapRustOpaque(opaque: data2),
+          throwsA(isA<FfiException>()));
       expect(data2.isStale(), isFalse);
     });
   });
 
   group('extended sync', () {
     test('check generator', () {
-      expect(api.frbSyncGeneratorTest().runtimeType == FrbOpaqueSyncReturn, isTrue);
+      expect(api.frbSyncGeneratorTest().runtimeType == FrbOpaqueSyncReturn,
+          isTrue);
     });
 
     test('create', () {
@@ -1129,7 +1234,8 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
       data.dispose();
-      expect(() => api.syncRunOpaque(opaque: data), throwsA(isA<FfiException>()));
+      expect(
+          () => api.syncRunOpaque(opaque: data), throwsA(isA<FfiException>()));
     });
 
     test('option', () async {
@@ -1212,11 +1318,13 @@ MyTreeNode _createMyTreeNode({required int arrLen}) {
 }
 
 MyNestedStruct _createMyNestedStruct() {
-  return MyNestedStruct(treeNode: _createMyTreeNode(arrLen: 5), weekday: Weekdays.Friday);
+  return MyNestedStruct(
+      treeNode: _createMyTreeNode(arrLen: 5), weekday: Weekdays.Friday);
 }
 
 class MatchBigInt extends CustomMatcher {
-  MatchBigInt(matcher) : super("is a numeric", "value", _featureValueOf(matcher));
+  MatchBigInt(matcher)
+      : super("is a numeric", "value", _featureValueOf(matcher));
   @override
   Object? featureValueOf(actual) => _featureValueOf(actual);
 

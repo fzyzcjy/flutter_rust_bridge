@@ -413,6 +413,20 @@ pub extern "C" fn wire_duration(port_: i64, d: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_timestamps(
+    port_: i64,
+    timestamps: *mut wire_int_64_list,
+    epoch: i64,
+) {
+    wire_handle_timestamps_impl(port_, timestamps, epoch)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_durations(port_: i64, durations: *mut wire_int_64_list, since: i64) {
+    wire_handle_durations_impl(port_, durations, since)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_test_chrono(port_: i64) {
     wire_test_chrono_impl(port_)
 }
@@ -1116,6 +1130,15 @@ pub extern "C" fn new_int_32_list_0(len: i32) -> *mut wire_int_32_list {
 }
 
 #[no_mangle]
+pub extern "C" fn new_int_64_list_0(len: i32) -> *mut wire_int_64_list {
+    let ans = wire_int_64_list {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
 pub extern "C" fn new_int_8_list_0(len: i32) -> *mut wire_int_8_list {
     let ans = wire_int_8_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
@@ -1339,6 +1362,19 @@ impl Wire2Api<RustOpaque<Box<dyn DartDebug>>> for wire_BoxDartDebug {
 impl Wire2Api<chrono::Duration> for i64 {
     fn wire2api(self) -> chrono::Duration {
         chrono::Duration::microseconds(self)
+    }
+}
+impl Wire2Api<Vec<chrono::Duration>> for *mut wire_int_64_list {
+    fn wire2api(self) -> Vec<chrono::Duration> {
+        let vec: Vec<i64> = self.wire2api();
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+
+impl Wire2Api<Vec<chrono::NaiveDateTime>> for *mut wire_int_64_list {
+    fn wire2api(self) -> Vec<chrono::NaiveDateTime> {
+        let vec: Vec<i64> = self.wire2api();
+        vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
 
@@ -1921,6 +1957,14 @@ impl Wire2Api<Vec<i32>> for *mut wire_int_32_list {
         }
     }
 }
+impl Wire2Api<Vec<i64>> for *mut wire_int_64_list {
+    fn wire2api(self) -> Vec<i64> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
 impl Wire2Api<Vec<i8>> for *mut wire_int_8_list {
     fn wire2api(self) -> Vec<i8> {
         unsafe {
@@ -2357,6 +2401,13 @@ pub struct wire_float_64_list {
 #[derive(Clone)]
 pub struct wire_int_32_list {
     ptr: *mut i32,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_int_64_list {
+    ptr: *mut i64,
     len: i32,
 }
 
