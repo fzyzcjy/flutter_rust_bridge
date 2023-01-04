@@ -120,7 +120,14 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
 
         let methods_string = methods
             .iter()
-            .map(|g| format!("{}=>{};\n\n", g.signature.clone(), g.implementation.clone()))
+            .map(|g| {
+                format!(
+                    "{}{}=>{};\n\n",
+                    g.comments,
+                    g.signature.clone(),
+                    g.implementation.clone()
+                )
+            })
             .collect::<Vec<_>>()
             .concat();
         let extra_argument = "required this.bridge,".to_string();
@@ -260,6 +267,7 @@ fn generate_api_method(
     let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();
 
     let static_function_name = f.method_name();
+    let comments = dart_comments(&func.comments);
 
     let partial = format!(
         "{} {} {}({{ {} }})",
@@ -307,5 +315,6 @@ fn generate_api_method(
     GeneratedApiMethod {
         signature,
         implementation,
+        comments,
     }
 }

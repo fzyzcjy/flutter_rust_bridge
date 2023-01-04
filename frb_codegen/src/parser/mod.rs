@@ -352,7 +352,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
         };
 
         Some(ItemFn {
-            attrs: vec![],
+            attrs: item_method.attrs.clone(),
             vis: item_method.vis.clone(),
             sig: Signature {
                 constness: None,
