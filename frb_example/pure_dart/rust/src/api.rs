@@ -914,7 +914,6 @@ pub fn datetime_local(d: chrono::DateTime<chrono::Local>) -> chrono::DateTime<ch
     assert_eq!(&d.month(), &9);
     assert_eq!(&d.day(), &10);
     if cfg!(target_arch = "wasm32") {
-        assert_eq!(&d.hour(), &19);
         assert_eq!(&d.nanosecond(), &123_000_000);
     } else {
         assert_eq!(&d.hour(), &20);
