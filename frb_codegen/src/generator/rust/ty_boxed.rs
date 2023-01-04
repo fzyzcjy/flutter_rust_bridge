@@ -1,3 +1,4 @@
+use super::NO_PARAMS;
 use crate::generator::rust::ty::*;
 use crate::generator::rust::{generate_import, ExternFuncCollector};
 use crate::ir::*;
@@ -6,7 +7,6 @@ use crate::target::Target::*;
 use crate::type_rust_generator_struct;
 use crate::utils::BlockIndex;
 
-use super::NO_PARAMS;
 type_rust_generator_struct!(TypeBoxedGenerator, IrTypeBoxed);
 
 impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
@@ -44,7 +44,7 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
             .into(),
             IrType::Delegate(IrTypeDelegate::Array(array)) => format!(
                 "let vec: Vec<{}> = self.wire2api(); Box::new(support::from_vec_to_array(vec))",
-                array.inner_rust_api_type(),
+                array.inner_rust_api_type()
             )
             .into(),
             _ => "Box::new(self.wire2api())".into(),
