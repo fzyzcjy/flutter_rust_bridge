@@ -34,8 +34,13 @@ impl IrTypeTrait for IrTypePrimitiveList {
     }
 
     fn dart_wire_type(&self, target: Target) -> String {
-        if let Target::Wasm = target {
-            self.dart_api_type()
+        if target.is_wasm() {
+            match self.primitive {
+                IrTypePrimitive::I64 | IrTypePrimitive::U64 => {
+                    "Object /* BigInt64Array */".to_owned()
+                }
+                _ => self.dart_api_type(),
+            }
         } else {
             format!("ffi.Pointer<wire_{}>", self.safe_ident())
         }

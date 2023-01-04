@@ -6,6 +6,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 
 abstract class _TypedList<T> extends ListMixin<T> {
   List<int> get inner;
+
   @override
   _TypedList<T> operator +(Object other);
 
@@ -25,7 +26,7 @@ abstract class _TypedList<T> extends ListMixin<T> {
   set length(int newLength) => throw const UnmodifiableTypedListException();
 }
 
-/// A strict version of [$data.Int64List] which always returns an [Int64].
+/// A strict version of [$data.Int64List] which always returns a [BigInt].
 class Int64List extends _TypedList<BigInt> {
   @override
   final $data.Int64List inner;
@@ -59,7 +60,7 @@ class Int64List extends _TypedList<BigInt> {
   }
 }
 
-/// A strict version of [$data.Uint64List] which always returns an [Int64].
+/// A strict version of [$data.Uint64List] which always returns a [BigInt].
 class Uint64List extends _TypedList<BigInt> {
   @override
   final $data.Uint64List inner;
