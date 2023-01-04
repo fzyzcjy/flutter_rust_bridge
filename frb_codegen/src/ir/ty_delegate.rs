@@ -4,7 +4,7 @@ use crate::ir::*;
 use crate::target::Target;
 
 #[cfg(feature = "chrono")]
-#[derive(Debug, Clone, Hash, Eq, PartialEq)]
+#[derive(Debug, Clone, Copy, Hash, Eq, PartialEq)]
 pub enum IrTypeTime {
     Local,
     Utc,
@@ -196,6 +196,11 @@ impl IrTypeDelegate {
 impl IrTypeTrait for IrTypeDelegate {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile) {
         self.get_delegate().visit_types(f, ir_file);
+
+        // extras
+        if let Self::TimeList(ir) = self {
+            IrType::Delegate(IrTypeDelegate::Time(*ir)).visit_types(f, ir_file);
+        }
     }
 
     fn safe_ident(&self) -> String {
