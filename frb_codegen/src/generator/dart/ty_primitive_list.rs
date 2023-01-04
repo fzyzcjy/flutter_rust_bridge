@@ -20,16 +20,22 @@ impl TypeDartGeneratorTrait for TypePrimitiveListGenerator<'_> {
             // undefined behavior.
             io: Some(format!(
                 "final ans = inner.new_{}_{}(raw.length);
-                    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw{});
-                    return ans;",
+                ans.ref.ptr.asTypedList(raw.length).setAll(0, {});
+                return ans;",
                 self.ir.safe_ident(),
                 self.context.config.block_index,
-                match &self.ir.primitive {
-                    IrTypePrimitive::I64 | IrTypePrimitive::U64 => ".inner",
-                    _ => "",
+                match self.ir.primitive {
+                    IrTypePrimitive::I64 | IrTypePrimitive::U64 => "raw.inner",
+                    _ => "raw",
                 }
             )),
-            wasm: Some("return raw;".into()),
+            wasm: Some(
+                match self.ir.primitive {
+                    IrTypePrimitive::I64 | IrTypePrimitive::U64 => "return raw.inner;",
+                    _ => "return raw;",
+                }
+                .into(),
+            ),
             ..Default::default()
         }
     }
