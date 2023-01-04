@@ -26,7 +26,7 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
                 "return inner.new_{}_{}(api2wire_{}(raw));",
                 self.ir.safe_ident(),
                 self.context.config.block_index,
-                self.ir.inner.safe_ident(),
+                self.ir.inner.safe_ident()
             )
         });
         let ident = self.ir.safe_ident();
@@ -46,7 +46,7 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
                     format!(
                         "final ptr = inner.new_{ident}_{context}();
                         _api_fill_to_wire_{inner}(raw, ptr.ref);
-                        return ptr;",
+                        return ptr;"
                     )
                 }
             })),

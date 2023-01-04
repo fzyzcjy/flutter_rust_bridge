@@ -29,9 +29,11 @@ impl IrTypeTrait for IrTypeEnumRef {
     fn safe_ident(&self) -> String {
         self.dart_api_type().to_case(Case::Snake)
     }
+
     fn dart_api_type(&self) -> String {
         self.name.to_string()
     }
+
     fn dart_wire_type(&self, target: Target) -> String {
         if let Target::Wasm = target {
             "List<dynamic>".into()
@@ -39,9 +41,11 @@ impl IrTypeTrait for IrTypeEnumRef {
             self.rust_wire_type(target)
         }
     }
+
     fn rust_api_type(&self) -> String {
         self.name.to_string()
     }
+
     fn rust_wire_type(&self, target: Target) -> String {
         if let Target::Wasm = target {
             "JsValue".into()

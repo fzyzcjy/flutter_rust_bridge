@@ -1,25 +1,18 @@
-use std::collections::{HashMap, HashSet};
-use std::string::String;
-
-use syn::*;
-
 use crate::ir::IrType::*;
 use crate::ir::*;
-
 use crate::markers;
-
-use crate::source_graph::{Enum, Struct};
-
 use crate::parser::{extract_comments, extract_metadata, type_to_string};
+use crate::source_graph::{Enum, Struct};
+use std::collections::{HashMap, HashSet};
+use std::string::String;
+use syn::*;
 
 pub struct TypeParser<'a> {
     src_structs: HashMap<String, &'a Struct>,
     src_enums: HashMap<String, &'a Enum>,
     src_types: HashMap<String, Type>,
-
     parsing_or_parsed_struct_names: HashSet<String>,
     struct_pool: IrStructPool,
-
     parsed_enums: HashSet<String>,
     enum_pool: IrEnumPool,
 }
@@ -46,11 +39,12 @@ impl<'a> TypeParser<'a> {
     }
 }
 
-/// Generic intermediate representation of a type that can appear inside a function signature.
+/// Generic intermediate representation of a type that can appear inside a function
+/// signature.
 #[derive(Debug)]
 pub enum SupportedInnerType {
-    /// Path types with up to 1 generic type argument on the final segment. All segments before
-    /// the last segment are ignored. The generic type argument must also be a valid
+    /// Path types with up to 1 generic type argument on the final segment. All segments
+    /// before the last segment are ignored. The generic type argument must also be a valid
     /// `SupportedInnerType`.
     Path(SupportedPathType),
     /// Array type
@@ -91,8 +85,8 @@ impl std::fmt::Display for SupportedPathType {
 }
 
 impl SupportedInnerType {
-    /// Given a `syn::Type`, returns a simplified representation of the type if it's supported,
-    /// or `None` otherwise.
+    /// Given a `syn::Type`, returns a simplified representation of the type if it's
+    /// supported, or `None` otherwise.
     pub fn try_from_syn_type(ty: &syn::Type) -> Option<Self> {
         match ty {
             syn::Type::Path(syn::TypePath { path, .. }) => {
@@ -109,7 +103,6 @@ impl SupportedInnerType {
                             }
                             _ => None,
                         };
-
                         Some(SupportedInnerType::Path(SupportedPathType {
                             ident: last_segment.ident,
                             generic,
@@ -149,21 +142,24 @@ pub fn convert_ident_str(ty: &Type) -> Option<String> {
             return Some(ident.to_string());
         }
     }
+
     // Unhandled case, return None
     None
 }
+
 impl<'a> TypeParser<'a> {
     pub fn resolve_alias<'b: 'a>(&self, ty: &'b Type) -> &Type {
         self.get_alias_type(ty).unwrap_or(ty)
     }
+
     pub fn get_alias_type(&self, ty: &syn::Type) -> Option<&Type> {
         convert_ident_str(ty).and_then(|key| self.src_types.get(&key))
     }
+
     pub fn parse_type(&mut self, ty: &syn::Type) -> IrType {
         let resolve_ty = self.resolve_alias(ty);
         let supported_type = SupportedInnerType::try_from_syn_type(resolve_ty)
             .unwrap_or_else(|| panic!("Unsupported type `{}`", type_to_string(ty)));
-
         self.convert_to_ir_type(supported_type)
             .unwrap_or_else(|| panic!("parse_type failed for ty={}", type_to_string(ty)))
     }
@@ -323,7 +319,6 @@ impl<'a> TypeParser<'a> {
             if ident_string.as_str() == "DartOpaque" {
                 return Some(DartOpaque(IrTypeDartOpaque {}));
             }
-
             IrTypePrimitive::try_from_rust_str(ident_string)
                 .map(Primitive)
                 .or_else(|| {
@@ -336,7 +331,6 @@ impl<'a> TypeParser<'a> {
                             let api_struct = self.parse_struct_core(&p.ident);
                             self.struct_pool.insert(ident_string.to_owned(), api_struct);
                         }
-
                         Some(StructRef(IrTypeStructRef {
                             name: ident_string.to_owned(),
                             freezed: self
@@ -355,7 +349,6 @@ impl<'a> TypeParser<'a> {
                             let enu = self.parse_enum_core(&p.ident);
                             self.enum_pool.insert(ident_string.to_owned(), enu);
                         }
-
                         let enum_ref = IrTypeEnumRef {
                             name: ident_string.to_owned(),
                         };
@@ -440,13 +433,11 @@ impl<'a> TypeParser<'a> {
     fn parse_struct_core(&mut self, ident: &syn::Ident) -> IrStruct {
         let src_struct = self.src_structs[&ident.to_string()];
         let mut fields = Vec::new();
-
         let (is_fields_named, struct_fields) = match &src_struct.src.fields {
             Fields::Named(FieldsNamed { named, .. }) => (true, named),
             Fields::Unnamed(FieldsUnnamed { unnamed, .. }) => (false, unnamed),
             _ => panic!("unsupported type: {:?}", src_struct.src.fields),
         };
-
         for (idx, field) in struct_fields.iter().enumerate() {
             let field_name = field
                 .ident
@@ -460,7 +451,6 @@ impl<'a> TypeParser<'a> {
                 comments: extract_comments(&field.attrs),
             });
         }
-
         let name = src_struct.ident.to_string();
         let wrapper_name = if src_struct.mirror {
             Some(format!("mirror_{name}"))

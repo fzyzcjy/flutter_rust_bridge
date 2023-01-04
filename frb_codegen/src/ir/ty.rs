@@ -1,7 +1,6 @@
-use std::collections::HashSet;
-
 use crate::{ir::*, target::Target};
 use enum_dispatch::enum_dispatch;
+use std::collections::HashSet;
 use IrType::*;
 
 /// Remark: "Ty" instead of "Type", since "type" is a reserved word in Rust.
@@ -26,7 +25,6 @@ impl IrType {
         if f(self) {
             return;
         }
-
         self.visit_children_types(f, ir_file);
     }
 
@@ -45,7 +43,6 @@ impl IrType {
             },
             ir_file,
         );
-
         ans
     }
 
@@ -83,7 +80,7 @@ impl IrType {
 
     #[inline]
     pub fn is_array(&self) -> bool {
-        matches!(self, IrType::Delegate(IrTypeDelegate::Array(_),))
+        matches!(self, IrType::Delegate(IrTypeDelegate::Array(_)))
     }
 
     #[inline]
@@ -109,8 +106,8 @@ impl IrType {
         matches!(self, DartOpaque(_))
     }
 
-    /// In WASM, these types belong to the JS scope-local heap, **NOT** the Rust heap
-    /// and therefore do not implement [Send].
+    /// In WASM, these types belong to the JS scope-local heap, **NOT** the Rust heap and
+    /// therefore do not implement [Send].
     #[inline]
     pub fn is_js_value(&self) -> bool {
         match self {
@@ -128,15 +125,10 @@ impl IrType {
 #[enum_dispatch]
 pub trait IrTypeTrait {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile);
-
     fn safe_ident(&self) -> String;
-
     fn dart_api_type(&self) -> String;
-
     fn dart_wire_type(&self, target: Target) -> String;
-
     fn rust_api_type(&self) -> String;
-
     fn rust_wire_type(&self, target: Target) -> String;
 
     fn rust_wire_modifier(&self, target: Target) -> String {
