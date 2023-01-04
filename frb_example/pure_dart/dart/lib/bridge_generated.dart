@@ -1176,6 +1176,40 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["d"],
       );
 
+  Future<List<Duration>> handleTimestamps({required List<DateTime> timestamps, required DateTime epoch, dynamic hint}) {
+    var arg0 = _platform.api2wire_Chrono_NaiveList(timestamps);
+    var arg1 = _platform.api2wire_Chrono_Naive(epoch);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_handle_timestamps(port_, arg0, arg1),
+      parseSuccessData: _wire2api_Chrono_DurationList,
+      constMeta: kHandleTimestampsConstMeta,
+      argValues: [timestamps, epoch],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleTimestampsConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_timestamps",
+        argNames: ["timestamps", "epoch"],
+      );
+
+  Future<List<DateTime>> handleDurations({required List<Duration> durations, required DateTime since, dynamic hint}) {
+    var arg0 = _platform.api2wire_Chrono_DurationList(durations);
+    var arg1 = _platform.api2wire_Chrono_Local(since);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_handle_durations(port_, arg0, arg1),
+      parseSuccessData: _wire2api_Chrono_LocalList,
+      constMeta: kHandleDurationsConstMeta,
+      argValues: [durations, since],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleDurationsConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_durations",
+        argNames: ["durations", "since"],
+      );
+
   Future<Duration> howLongDoesItTake({required FeatureChrono mine, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_feature_chrono(mine);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -2311,8 +2345,16 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return wire2apiDuration(_wire2api_i64(raw));
   }
 
+  List<Duration> _wire2api_Chrono_DurationList(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_Chrono_Duration).toList();
+  }
+
   DateTime _wire2api_Chrono_Local(dynamic raw) {
     return wire2apiTimestamp(ts: _wire2api_i64(raw), isUtc: false);
+  }
+
+  List<DateTime> _wire2api_Chrono_LocalList(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_Chrono_Local).toList();
   }
 
   DateTime _wire2api_Chrono_Naive(dynamic raw) {

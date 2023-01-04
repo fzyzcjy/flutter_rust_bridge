@@ -717,7 +717,7 @@ mod test {
             assert_eq!(each_block.len(), 3);
         });
 
-        result.iter().enumerate().for_each(|(i, each_block)| {
+        result.iter().enumerate().for_each(|(_, each_block)| {
             // get essential info from 1st path which has an arbitrary name
             let (_, file) = get_dir_and_file_str(&each_block[0]);
             // check 2ed path

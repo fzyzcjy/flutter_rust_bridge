@@ -379,6 +379,16 @@ pub fn wire_duration(port_: MessagePort, d: i64) {
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_timestamps(port_: MessagePort, timestamps: Box<[i64]>, epoch: i64) {
+    wire_handle_timestamps_impl(port_, timestamps, epoch)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_durations(port_: MessagePort, durations: Box<[i64]>, since: i64) {
+    wire_handle_durations_impl(port_, durations, since)
+}
+
+#[wasm_bindgen]
 pub fn wire_how_long_does_it_take(port_: MessagePort, mine: JsValue) {
     wire_how_long_does_it_take_impl(port_, mine)
 }
@@ -867,6 +877,19 @@ impl Wire2Api<chrono::Duration> for i64 {
         chrono::Duration::milliseconds(self)
     }
 }
+impl Wire2Api<Vec<chrono::Duration>> for Box<[i64]> {
+    fn wire2api(self) -> Vec<chrono::Duration> {
+        let vec: Vec<i64> = self.wire2api();
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+
+impl Wire2Api<Vec<chrono::NaiveDateTime>> for Box<[i64]> {
+    fn wire2api(self) -> Vec<chrono::NaiveDateTime> {
+        let vec: Vec<i64> = self.wire2api();
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
 
 impl Wire2Api<DartOpaque> for JsValue {
     fn wire2api(self) -> DartOpaque {
@@ -1161,6 +1184,11 @@ impl Wire2Api<[i32; 2]> for Box<[i32]> {
 
 impl Wire2Api<Vec<i32>> for Box<[i32]> {
     fn wire2api(self) -> Vec<i32> {
+        self.into_vec()
+    }
+}
+impl Wire2Api<Vec<i64>> for Box<[i64]> {
+    fn wire2api(self) -> Vec<i64> {
         self.into_vec()
     }
 }
@@ -1820,6 +1848,13 @@ impl Wire2Api<i8> for JsValue {
 impl Wire2Api<Vec<i32>> for JsValue {
     fn wire2api(self) -> Vec<i32> {
         self.unchecked_into::<js_sys::Int32Array>().to_vec().into()
+    }
+}
+impl Wire2Api<Vec<i64>> for JsValue {
+    fn wire2api(self) -> Vec<i64> {
+        let buf = self.dyn_into::<js_sys::BigInt64Array>().unwrap();
+        let buf = js_sys::Uint8Array::new(&buf.buffer());
+        support::slice_from_byte_buffer(buf.to_vec()).into()
     }
 }
 impl Wire2Api<Vec<i8>> for JsValue {

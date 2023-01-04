@@ -314,6 +314,14 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kDurationConstMeta;
 
+  Future<List<Duration>> handleTimestamps({required List<DateTime> timestamps, required DateTime epoch, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleTimestampsConstMeta;
+
+  Future<List<DateTime>> handleDurations({required List<Duration> durations, required DateTime since, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleDurationsConstMeta;
+
   Future<Duration> howLongDoesItTake({required FeatureChrono mine, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHowLongDoesItTakeConstMeta;
