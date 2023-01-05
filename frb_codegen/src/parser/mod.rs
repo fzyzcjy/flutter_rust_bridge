@@ -1,8 +1,10 @@
 pub(crate) mod ty;
 
+use std::borrow::Cow;
 use std::collections::HashMap;
 use std::string::String;
 
+use itertools::Itertools;
 use log::debug;
 use quote::quote;
 use syn::parse::{Parse, ParseStream};
@@ -352,7 +354,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
         };
 
         Some(ItemFn {
-            attrs: vec![],
+            attrs: item_method.attrs.clone(),
             vis: item_method.vis.clone(),
             sig: Signature {
                 constness: None,
