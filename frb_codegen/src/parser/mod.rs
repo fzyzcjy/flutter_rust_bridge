@@ -219,6 +219,7 @@ impl<'a> Parser<'a> {
                             ty,
                             is_final: true,
                             comments: extract_comments(&pat_type.attrs),
+                            default: DefaultValues::extract(&pat_type.attrs),
                         });
                     }
                 }
@@ -523,6 +524,7 @@ enum FrbOption {
     Mirror(MirrorOption),
     NonFinal,
     Metadata(NamedOption<frb_keyword::dart_metadata, MetadataAnnotations>),
+    Default(DefaultValues),
 }
 
 impl Parse for FrbOption {
@@ -536,6 +538,10 @@ impl Parse for FrbOption {
                 .map(|_| FrbOption::NonFinal)
         } else if lookahead.peek(frb_keyword::dart_metadata) {
             input.parse().map(FrbOption::Metadata)
+        } else if lookahead.peek(Token![default]) {
+            input.parse::<Token![default]>()?;
+            input.parse::<Token![=]>()?;
+            input.parse().map(FrbOption::Default)
         } else {
             Err(lookahead.error())
         }
@@ -554,6 +560,70 @@ fn extract_metadata(attrs: &[Attribute]) -> Vec<IrDartAnnotation> {
             _ => vec![],
         })
         .collect()
+}
+
+#[derive(Debug, Clone)]
+pub enum DefaultValues {
+    Str(syn::LitStr),
+    Bool(syn::LitBool),
+    Int(syn::LitInt),
+    Float(syn::LitFloat),
+    Vec(Punctuated<DefaultValues, Token![,]>),
+}
+
+impl DefaultValues {
+    pub(crate) fn extract(attrs: &[Attribute]) -> Option<Self> {
+        let defaults = attrs
+            .iter()
+            .filter(|attr| attr.path.is_ident("frb"))
+            .map(|attr| attr.parse_args::<FrbOption>())
+            .filter_map(|attr| {
+                if let Ok(FrbOption::Default(default)) = attr {
+                    Some(default)
+                } else {
+                    None
+                }
+            })
+            .collect::<Vec<_>>();
+        match &defaults[..] {
+            [] => None,
+            [single] => Some(single.clone()),
+            [.., last] => {
+                log::warn!("Only one `default = ..` attribute is expected; taking the last one");
+                Some(last.clone())
+            }
+        }
+    }
+    pub(crate) fn to_dart(&self) -> Cow<str> {
+        match self {
+            Self::Bool(lit) => if lit.value { "true" } else { "false" }.into(),
+            Self::Str(lit) => format!("r\"{}\"", lit.value()).into(),
+            Self::Int(lit) => lit.base10_digits().into(),
+            Self::Float(lit) => lit.base10_digits().into(),
+            Self::Vec(lit) => format!("const [{}]", lit.iter().map(Self::to_dart).join(",")).into(),
+        }
+    }
+}
+
+impl Parse for DefaultValues {
+    fn parse(input: ParseStream) -> Result<Self> {
+        let lh = input.lookahead1();
+        if lh.peek(token::Bracket) {
+            let inner;
+            bracketed!(inner in input);
+            Punctuated::parse_terminated(&inner).map(Self::Vec)
+        } else if lh.peek(syn::LitStr) {
+            input.parse().map(Self::Str)
+        } else if lh.peek(syn::LitBool) {
+            input.parse().map(Self::Bool)
+        } else if lh.peek(syn::LitFloat) {
+            input.parse().map(Self::Float)
+        } else if lh.peek(syn::LitInt) {
+            input.parse().map(Self::Int)
+        } else {
+            Err(lh.error())
+        }
+    }
 }
 
 /// syn -> string https://github.com/dtolnay/syn/issues/294

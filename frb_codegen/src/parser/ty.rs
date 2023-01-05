@@ -7,6 +7,8 @@ use std::collections::{HashMap, HashSet};
 use std::string::String;
 use syn::*;
 
+use super::DefaultValues;
+
 pub struct TypeParser<'a> {
     src_structs: HashMap<String, &'a Struct>,
     src_enums: HashMap<String, &'a Enum>,
@@ -423,6 +425,7 @@ impl<'a> TypeParser<'a> {
                                     ty: self.parse_type(&field.ty),
                                     is_final: true,
                                     comments: extract_comments(&field.attrs),
+                                    default: DefaultValues::extract(&field.attrs),
                                 })
                                 .collect(),
                         })
@@ -452,6 +455,7 @@ impl<'a> TypeParser<'a> {
                 ty: field_type,
                 is_final: !markers::has_non_final(&field.attrs),
                 comments: extract_comments(&field.attrs),
+                default: DefaultValues::extract(&field.attrs),
             });
         }
         let name = src_struct.ident.to_string();

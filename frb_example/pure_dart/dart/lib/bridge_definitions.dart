@@ -1252,7 +1252,7 @@ class Note {
   final Weekdays day;
   final String body;
   Note({
-    required this.day,
+    this.day = Weekdays.Sunday,
     required this.body,
   });
 }

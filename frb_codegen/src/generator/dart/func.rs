@@ -17,10 +17,11 @@ pub(crate) fn generate_api_func(
         .iter()
         .map(|input| {
             format!(
-                "{}{} {}",
-                input.ty.dart_required_modifier(),
+                "{required}{} {} {default}",
                 input.ty.dart_api_type(),
-                input.name.dart_style()
+                input.name.dart_style(),
+                required = input.required_modifier(),
+                default = input.field_default(),
             )
         })
         .collect::<Vec<_>>();

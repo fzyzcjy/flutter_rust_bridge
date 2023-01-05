@@ -518,8 +518,10 @@ pub enum Weekdays {
     Sunday,
 }
 
+#[frb]
 #[derive(Debug)]
 pub struct Note {
+    #[frb(default = "Weekdays.Sunday")]
     pub day: Box<Weekdays>,
     pub body: String,
 }

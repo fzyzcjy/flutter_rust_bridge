@@ -192,9 +192,10 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 .iter()
                 .map(|f| {
                     format!(
-                        "{}this.{},",
-                        f.ty.dart_required_modifier(),
-                        f.name.dart_style()
+                        "{required}this.{} {default},",
+                        f.name.dart_style(),
+                        required = f.required_modifier(),
+                        default = f.field_default()
                     )
                 })
                 .collect::<Vec<_>>();
@@ -252,10 +253,11 @@ fn generate_api_method(
         .skip(skip_count) //skip the first as it's the method 'self'
         .map(|input| {
             format!(
-                "{}{} {}",
-                input.ty.dart_required_modifier(),
+                "{required}{} {} {default}",
                 input.ty.dart_api_type(),
-                input.name.dart_style()
+                input.name.dart_style(),
+                required = input.required_modifier(),
+                default = input.field_default()
             )
         })
         .collect::<Vec<_>>();
