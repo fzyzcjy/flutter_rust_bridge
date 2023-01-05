@@ -17,10 +17,11 @@ pub(crate) fn generate_api_func(
         .iter()
         .map(|input| {
             format!(
-                "{}{} {}",
-                input.ty.dart_required_modifier(),
+                "{required}{} {} {default}",
                 input.ty.dart_api_type(),
-                input.name.dart_style()
+                input.name.dart_style(),
+                required = input.required_modifier(),
+                default = input.field_default(),
             )
         })
         .collect::<Vec<_>>();
@@ -109,7 +110,7 @@ pub(crate) fn generate_api_func(
     };
     let parse_success_data = if (f.is_static_method()
         && f.struct_name().unwrap() == {
-            if let IrType::StructRef(IrTypeStructRef { name, freezed: _ }) = &func.output {
+            if let IrType::StructRef(IrTypeStructRef { name, .. }) = &func.output {
                 name.clone()
             } else {
                 String::new()
