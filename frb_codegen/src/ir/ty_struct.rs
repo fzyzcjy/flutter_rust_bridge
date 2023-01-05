@@ -71,4 +71,8 @@ impl IrStruct {
     pub fn using_freezed(&self) -> bool {
         self.dart_metadata.iter().any(|it| it.content == "freezed")
     }
+
+    pub fn const_capable(&self) -> bool {
+        self.fields.iter().all(|field| field.is_final)
+    }
 }
