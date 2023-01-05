@@ -88,7 +88,7 @@ impl IrTypePrimitive {
             IrTypePrimitive::I32 => "ffi.Int32",
             IrTypePrimitive::U64 => "ffi.Uint64",
             IrTypePrimitive::I64 => "ffi.Int64",
-            IrTypePrimitive::Usize => "ffi.Usize",
+            IrTypePrimitive::Usize => "ffi.UintPtr",
             IrTypePrimitive::F32 => "ffi.Float",
             IrTypePrimitive::F64 => "ffi.Double",
             IrTypePrimitive::Bool => "ffi.Bool",
