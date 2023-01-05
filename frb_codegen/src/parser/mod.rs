@@ -1,5 +1,6 @@
 pub(crate) mod ty;
 
+use std::borrow::Cow;
 use std::collections::HashMap;
 use std::string::String;
 
@@ -600,7 +601,11 @@ impl DefaultValues {
             Self::Str(lit) => format!("r\"{}\"", lit.value()).into(),
             Self::Int(lit) => lit.base10_digits().into(),
             Self::Float(lit) => lit.base10_digits().into(),
-            Self::Vec(lit) => format!("const [{}]", lit.iter().map(Self::to_dart).join(",")).into(),
+            Self::Vec(lit) => format!(
+                "const [{}]",
+                lit.iter().map(Self::to_dart).collect::<Vec<_>>().join(",")
+            )
+            .into(),
         }
     }
 }
