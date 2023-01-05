@@ -69,8 +69,11 @@ void main() {
           tester,
           () async => expect(
               await app.api.offTopicMemoryTestInputComplexStruct(
-                  input: TreeNode(
-                      name: 'root', children: [for (var i = 0; i < 2000; ++i) TreeNode(name: 'child', children: [])])),
+                  input: TreeNode(name: 'root', children: [
+                for (var i = 0; i < 2000; ++i)
+                  // ignore: prefer_const_constructors
+                  TreeNode(name: 'child', children: [])
+              ])),
               2000));
     });
     testWidgets('repeat call to offTopicMemoryTestOutputComplexStruct', (WidgetTester tester) async {
@@ -82,8 +85,9 @@ void main() {
       await _testMemoryProblemForSingleTypeOfMethod(
           tester,
           () async => expect(
-              await app.api
-                  .offTopicMemoryTestInputVecOfObject(input: List.filled(100000, Size(width: 42, height: 100))),
+              await app.api.offTopicMemoryTestInputVecOfObject(
+                  // ignore: prefer_const_constructors
+                  input: List.filled(100000, Size(width: 42, height: 100))),
               100000));
     });
     testWidgets('repeat call to offTopicMemoryTestOutputVecOfObject', (WidgetTester tester) async {
