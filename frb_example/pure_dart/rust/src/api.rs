@@ -32,7 +32,13 @@ pub fn simple_adder_sync(a: i32, b: i32) -> SyncReturn<i32> {
  but they are not preferred in Rust nor in Dart.
  Newlines are preserved.
 */
-pub fn primitive_types(my_i32: i32, my_i64: i64, my_f64: f64, my_bool: bool) -> i32 {
+#[frb]
+pub fn primitive_types(
+    my_i32: i32,
+    my_i64: i64,
+    my_f64: f64,
+    #[frb(default = true)] my_bool: bool,
+) -> i32 {
     println!(
         "primitive_types({}, {}, {}, {})",
         my_i32, my_i64, my_f64, my_bool
@@ -213,7 +219,8 @@ pub fn handle_struct_sync(arg: MySize, boxed: Box<MySize>) -> SyncReturn<MySize>
 #[derive(Debug)]
 pub struct NewTypeInt(pub i64);
 
-pub fn handle_newtype(arg: NewTypeInt) -> NewTypeInt {
+#[frb]
+pub fn handle_newtype(#[frb(default = "NewTypeInt(field0: 0)")] arg: NewTypeInt) -> NewTypeInt {
     println!("handle_newtype({:?})", &arg);
     NewTypeInt(arg.0 * 2)
 }
@@ -237,7 +244,8 @@ pub fn handle_list_of_struct_sync(mut l: Vec<MySize>) -> SyncReturn<Vec<MySize>>
     SyncReturn(ans)
 }
 
-pub fn handle_string_list(names: Vec<String>) -> Vec<String> {
+#[frb]
+pub fn handle_string_list(#[frb(default = ["John", "Jim"])] names: Vec<String>) -> Vec<String> {
     for name in &names {
         println!("Hello, {}", name);
     }
@@ -272,7 +280,8 @@ pub fn handle_complex_struct_sync(s: MyTreeNode) -> SyncReturn<MyTreeNode> {
 }
 
 // Test if sync return is working as expected by using Vec<u8> as return value.
-pub fn handle_sync_return(mode: String) -> Result<SyncReturn<Vec<u8>>> {
+#[frb]
+pub fn handle_sync_return(#[frb(default = "NORMAL")] mode: String) -> Result<SyncReturn<Vec<u8>>> {
     match &mode[..] {
         "NORMAL" => Ok(SyncReturn(vec![42u8; 100])),
         "RESULT_ERR" => Err(anyhow!("deliberate error in handle_sync_return_err")),
@@ -669,7 +678,9 @@ pub fn get_array() -> [u8; 5] {
     [1, 2, 3, 4, 5]
 }
 
+#[frb]
 pub struct Point {
+    #[frb(default = -1)]
     pub x: f32,
     pub y: f32,
 }
@@ -784,9 +795,11 @@ pub struct Log2 {
 }
 
 impl ConcatenateWith {
+    /// Documentation on a static method.
     pub fn new(a: String) -> ConcatenateWith {
         ConcatenateWith { a }
     }
+    /// Documentation on a method.
     pub fn concatenate(&self, b: String) -> String {
         format!("{}{}", self.a, b)
     }

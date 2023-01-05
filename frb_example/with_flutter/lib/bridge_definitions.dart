@@ -65,7 +65,7 @@ abstract class FlutterRustBridgeExample {
 class BoxedPoint {
   final Point point;
 
-  BoxedPoint({
+  const BoxedPoint({
     required this.point,
   });
 }
@@ -74,7 +74,7 @@ class Point {
   final double x;
   final double y;
 
-  Point({
+  const Point({
     required this.x,
     required this.y,
   });
@@ -84,7 +84,7 @@ class Size {
   final int width;
   final int height;
 
-  Size({
+  const Size({
     required this.width,
     required this.height,
   });
@@ -94,7 +94,7 @@ class TreeNode {
   final String name;
   final List<TreeNode> children;
 
-  TreeNode({
+  const TreeNode({
     required this.name,
     required this.children,
   });

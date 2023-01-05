@@ -55,7 +55,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
       );
 
   Future<int> primitiveTypes(
-      {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint}) {
+      {required int myI32, required int myI64, required double myF64, bool myBool = true, dynamic hint}) {
     var arg0 = api2wire_i32(myI32);
     var arg1 = _platform.api2wire_i64(myI64);
     var arg2 = api2wire_f64(myF64);
@@ -318,7 +318,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["arg", "boxed"],
       );
 
-  Future<NewTypeInt> handleNewtype({required NewTypeInt arg, dynamic hint}) {
+  Future<NewTypeInt> handleNewtype({NewTypeInt arg = const NewTypeInt(field0: 0), dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_new_type_int(arg);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_newtype(port_, arg0),
@@ -382,7 +382,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["l"],
       );
 
-  Future<List<String>> handleStringList({required List<String> names, dynamic hint}) {
+  Future<List<String>> handleStringList({List<String> names = const [r"John", r"Jim"], dynamic hint}) {
     var arg0 = _platform.api2wire_StringList(names);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_string_list(port_, arg0),
@@ -446,7 +446,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["s"],
       );
 
-  Uint8List handleSyncReturn({required String mode, dynamic hint}) {
+  Uint8List handleSyncReturn({String mode = r"NORMAL", dynamic hint}) {
     var arg0 = _platform.api2wire_String(mode);
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_handle_sync_return(arg0),

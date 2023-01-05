@@ -29,7 +29,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   /// Newlines are preserved.
   ///
   Future<int> primitiveTypes(
-      {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint});
+      {required int myI32, required int myI64, required double myF64, bool myBool = true, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kPrimitiveTypesConstMeta;
 
@@ -94,7 +94,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleStructSyncConstMeta;
 
-  Future<NewTypeInt> handleNewtype({required NewTypeInt arg, dynamic hint});
+  Future<NewTypeInt> handleNewtype({NewTypeInt arg = const NewTypeInt(field0: 0), dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleNewtypeConstMeta;
 
@@ -110,7 +110,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleListOfStructSyncConstMeta;
 
-  Future<List<String>> handleStringList({required List<String> names, dynamic hint});
+  Future<List<String>> handleStringList({List<String> names = const [r"John", r"Jim"], dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleStringListConstMeta;
 
@@ -126,7 +126,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleComplexStructSyncConstMeta;
 
-  Uint8List handleSyncReturn({required String mode, dynamic hint});
+  Uint8List handleSyncReturn({String mode = r"NORMAL", dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleSyncReturnConstMeta;
 
@@ -575,10 +575,12 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
 
+  /// Documentation on a static method.
   Future<ConcatenateWith> newStaticMethodConcatenateWith({required String a, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kNewStaticMethodConcatenateWithConstMeta;
 
+  /// Documentation on a method.
   Future<String> concatenateMethodConcatenateWith({required ConcatenateWith that, required String b, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kConcatenateMethodConcatenateWithConstMeta;
@@ -816,7 +818,7 @@ class TestIdArray4 extends NonGrowableListView<TestId> {
 class ApplicationEnv {
   final List<ApplicationEnvVar> vars;
 
-  ApplicationEnv({
+  const ApplicationEnv({
     required this.vars,
   });
 }
@@ -825,7 +827,7 @@ class ApplicationEnvVar {
   final String field0;
   final bool field1;
 
-  ApplicationEnvVar({
+  const ApplicationEnvVar({
     required this.field0,
     required this.field1,
   });
@@ -855,7 +857,7 @@ class ApplicationSettings {
   final ApplicationEnv env;
   final ApplicationEnv? envOptional;
 
-  ApplicationSettings({
+  const ApplicationSettings({
     required this.name,
     required this.version,
     required this.mode,
@@ -868,7 +870,7 @@ class Attribute {
   final String key;
   final String value;
 
-  Attribute({
+  const Attribute({
     required this.key,
     required this.value,
   });
@@ -878,7 +880,7 @@ class BigBuffers {
   final Int64List int64;
   final Uint64List uint64;
 
-  BigBuffers({
+  const BigBuffers({
     required this.int64,
     required this.uint64,
   });
@@ -887,7 +889,7 @@ class BigBuffers {
 class Blob {
   final U8Array1600 field0;
 
-  Blob({
+  const Blob({
     required this.field0,
   });
 }
@@ -896,15 +898,17 @@ class ConcatenateWith {
   final FlutterRustBridgeExampleSingleBlockTest bridge;
   final String a;
 
-  ConcatenateWith({
+  const ConcatenateWith({
     required this.bridge,
     required this.a,
   });
 
+  /// Documentation on a static method.
   static Future<ConcatenateWith> newConcatenateWith(
           {required FlutterRustBridgeExampleSingleBlockTest bridge, required String a, dynamic hint}) =>
       bridge.newStaticMethodConcatenateWith(a: a, hint: hint);
 
+  /// Documentation on a method.
   Future<String> concatenate({required String b, dynamic hint}) => bridge.concatenateMethodConcatenateWith(
         that: this,
         b: b,
@@ -954,7 +958,7 @@ class DartOpaqueNested {
   final Object first;
   final Object second;
 
-  DartOpaqueNested({
+  const DartOpaqueNested({
     required this.first,
     required this.second,
   });
@@ -974,7 +978,7 @@ class Element {
   final List<Attribute>? attributes;
   final List<Element>? children;
 
-  Element({
+  const Element({
     this.tag,
     this.text,
     this.attributes,
@@ -1035,7 +1039,7 @@ class ExoticOptionals {
   final List<Attribute?>? nullableAttributes;
   final NewTypeInt? newtypeint;
 
-  ExoticOptionals({
+  const ExoticOptionals({
     this.int32,
     this.int64,
     this.float64,
@@ -1068,7 +1072,7 @@ class FeatureChrono {
   final Duration duration;
   final DateTime naive;
 
-  FeatureChrono({
+  const FeatureChrono({
     required this.utc,
     required this.local,
     required this.duration,
@@ -1080,7 +1084,7 @@ class FeatureUuid {
   final UuidValue one;
   final List<UuidValue> many;
 
-  FeatureUuid({
+  const FeatureUuid({
     required this.one,
     required this.many,
   });
@@ -1089,7 +1093,7 @@ class FeatureUuid {
 class FeedId {
   final U8Array8 field0;
 
-  FeedId({
+  const FeedId({
     required this.field0,
   });
 }
@@ -1134,7 +1138,7 @@ class Log {
   final int key;
   final int value;
 
-  Log({
+  const Log({
     required this.key,
     required this.value,
   });
@@ -1144,7 +1148,7 @@ class Log2 {
   final int key;
   final String value;
 
-  Log2({
+  const Log2({
     required this.key,
     required this.value,
   });
@@ -1163,7 +1167,7 @@ class Measure with _$Measure {
 class MessageId {
   final U8Array32 field0;
 
-  MessageId({
+  const MessageId({
     required this.field0,
   });
 }
@@ -1177,7 +1181,7 @@ class MySize {
   final int width;
   final int height;
 
-  MySize({
+  const MySize({
     required this.width,
     required this.height,
   });
@@ -1186,7 +1190,7 @@ class MySize {
 class MyStreamEntry {
   final String hello;
 
-  MyStreamEntry({
+  const MyStreamEntry({
     required this.hello,
   });
 }
@@ -1194,7 +1198,7 @@ class MyStreamEntry {
 class MyStruct {
   final bool content;
 
-  MyStruct({
+  const MyStruct({
     required this.content,
   });
 }
@@ -1205,7 +1209,7 @@ class MyTreeNode {
   final bool valueBoolean;
   final List<MyTreeNode> children;
 
-  MyTreeNode({
+  const MyTreeNode({
     required this.valueI32,
     required this.valueVecU8,
     required this.valueBoolean,
@@ -1216,7 +1220,7 @@ class MyTreeNode {
 class NewSimpleStruct {
   final int field;
 
-  NewSimpleStruct({
+  const NewSimpleStruct({
     required this.field,
   });
 }
@@ -1224,7 +1228,7 @@ class NewSimpleStruct {
 class NewTypeInt {
   final int field0;
 
-  NewTypeInt({
+  const NewTypeInt({
     required this.field0,
   });
 }
@@ -1233,7 +1237,7 @@ class Note {
   final Weekdays day;
   final String body;
 
-  Note({
+  const Note({
     required this.day,
     required this.body,
   });
@@ -1242,7 +1246,7 @@ class Note {
 class Numbers {
   final Int32List field0;
 
-  Numbers({
+  const Numbers({
     required this.field0,
   });
 }
@@ -1250,7 +1254,7 @@ class Numbers {
 class OldSimpleStruct {
   final int field;
 
-  OldSimpleStruct({
+  const OldSimpleStruct({
     required this.field,
   });
 }
@@ -1260,7 +1264,7 @@ class OpaqueNested {
   final HideData first;
   final HideData second;
 
-  OpaqueNested({
+  const OpaqueNested({
     required this.first,
     required this.second,
   });
@@ -1270,8 +1274,8 @@ class Point {
   final double x;
   final double y;
 
-  Point({
-    required this.x,
+  const Point({
+    this.x = -1,
     required this.y,
   });
 }
@@ -1279,7 +1283,7 @@ class Point {
 class Sequences {
   final Int32List field0;
 
-  Sequences({
+  const Sequences({
     required this.field0,
   });
 }
@@ -1296,7 +1300,7 @@ class SumWith {
   final FlutterRustBridgeExampleSingleBlockTest bridge;
   final int x;
 
-  SumWith({
+  const SumWith({
     required this.bridge,
     required this.x,
   });
@@ -1311,7 +1315,7 @@ class SumWith {
 class TestId {
   final I32Array2 field0;
 
-  TestId({
+  const TestId({
     required this.field0,
   });
 }
@@ -1322,7 +1326,7 @@ class TestModel {
   final MyEnum aliasEnum;
   final MyStruct aliasStruct;
 
-  TestModel({
+  const TestModel({
     required this.id,
     required this.name,
     required this.aliasEnum,
@@ -1387,7 +1391,7 @@ class VecOfPrimitivePack {
   final Float32List float32List;
   final Float64List float64List;
 
-  VecOfPrimitivePack({
+  const VecOfPrimitivePack({
     required this.int8List,
     required this.uint8List,
     required this.int16List,
@@ -1426,7 +1430,7 @@ class ZeroCopyVecOfPrimitivePack {
   final Float32List float32List;
   final Float64List float64List;
 
-  ZeroCopyVecOfPrimitivePack({
+  const ZeroCopyVecOfPrimitivePack({
     required this.int8List,
     required this.uint8List,
     required this.int16List,
