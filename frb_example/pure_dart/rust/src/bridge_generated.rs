@@ -2020,6 +2020,16 @@ fn wire_empty_struct_impl(port_: MessagePort, empty: impl Wire2Api<Empty> + Unwi
         },
     )
 }
+fn wire_return_dart_dynamic_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "return_dart_dynamic",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(return_dart_dynamic()),
+    )
+}
 fn wire_sum__method__SumWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<SumWith> + UnwindSafe,

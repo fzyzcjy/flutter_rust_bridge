@@ -750,6 +750,11 @@ pub extern "C" fn wire_empty_struct(port_: i64, empty: *mut wire_Empty) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_return_dart_dynamic(port_: i64) {
+    wire_return_dart_dynamic_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
