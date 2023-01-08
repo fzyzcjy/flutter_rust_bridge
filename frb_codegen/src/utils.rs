@@ -42,6 +42,72 @@ where
         .collect::<Vec<_>>()
 }
 
+const DART_KEYWORDS: [&str; 63] = [
+    "abstract",
+    "else",
+    "import",
+    "show",
+    "as",
+    "enum",
+    "in",
+    "static",
+    "assert",
+    "export",
+    "interface",
+    "super",
+    "async",
+    "extends",
+    "is",
+    "switch",
+    "await",
+    "extension",
+    "late",
+    "sync",
+    "break",
+    "external",
+    "library",
+    "this",
+    "case",
+    "factory",
+    "mixin",
+    "throw",
+    "catch",
+    "false",
+    "new",
+    "true",
+    "class",
+    "final",
+    "null",
+    "try",
+    "const",
+    "finally",
+    "on",
+    "typedef",
+    "continue",
+    "for",
+    "operator",
+    "var",
+    "covariant",
+    "Function",
+    "part",
+    "void",
+    "default",
+    "get",
+    "required",
+    "while",
+    "deferred",
+    "hide",
+    "rethrow",
+    "with",
+    "do",
+    "if",
+    "return",
+    "yield",
+    "dynamic",
+    "implements",
+    "set",
+];
+
 /// check api defined by users, if no duplicates, then generate all symbols (api function name),
 /// including those generated implicitily by frb
 pub fn get_symbols_if_no_duplicates(configs: &[crate::Opts]) -> Result<Vec<String>, anyhow::Error> {
@@ -72,6 +138,13 @@ pub fn get_symbols_if_no_duplicates(configs: &[crate::Opts]) -> Result<Vec<Strin
             verb_str
         ));
     }
+
+    if explicit_raw_symbols
+        .iter()
+        .any(|s| DART_KEYWORDS.contains(&s.as_str()))
+    {
+        return Err(anyhow!("api name cannot be a dart keyword"));
+    };
 
     Ok(all_symbols)
 }
