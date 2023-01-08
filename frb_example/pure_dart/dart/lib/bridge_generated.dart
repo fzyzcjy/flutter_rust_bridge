@@ -639,7 +639,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     var arg0 = _platform.api2wire_String(input);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_return_enum(port_, arg0),
-      parseSuccessData: _wire2api_opt_weekdays,
+      parseSuccessData: _wire2api_opt_box_autoadd_weekdays,
       constMeta: kHandleReturnEnumConstMeta,
       argValues: [input],
       hint: hint,
@@ -1055,7 +1055,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     var arg0 = _platform.api2wire_box_autoadd_measure(measure);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_multiply_by_ten(port_, arg0),
-      parseSuccessData: _wire2api_opt_measure,
+      parseSuccessData: _wire2api_opt_box_autoadd_measure,
       constMeta: kMultiplyByTenConstMeta,
       argValues: [measure],
       hint: hint,
@@ -2561,8 +2561,16 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _wire2api_i64(raw);
   }
 
+  Measure _wire2api_box_autoadd_measure(dynamic raw) {
+    return _wire2api_measure(raw);
+  }
+
   NewTypeInt _wire2api_box_autoadd_new_type_int(dynamic raw) {
     return _wire2api_new_type_int(raw);
+  }
+
+  Weekdays _wire2api_box_autoadd_weekdays(dynamic raw) {
+    return _wire2api_weekdays(raw);
   }
 
   Distance _wire2api_box_distance(dynamic raw) {
@@ -3019,8 +3027,16 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return raw == null ? null : _wire2api_box_autoadd_i64(raw);
   }
 
+  Measure? _wire2api_opt_box_autoadd_measure(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_measure(raw);
+  }
+
   NewTypeInt? _wire2api_opt_box_autoadd_new_type_int(dynamic raw) {
     return raw == null ? null : _wire2api_box_autoadd_new_type_int(raw);
+  }
+
+  Weekdays? _wire2api_opt_box_autoadd_weekdays(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_weekdays(raw);
   }
 
   Float32List? _wire2api_opt_float_32_list(dynamic raw) {
@@ -3051,16 +3067,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return raw == null ? null : _wire2api_list_opt_box_autoadd_attribute(raw);
   }
 
-  Measure? _wire2api_opt_measure(dynamic raw) {
-    return raw == null ? null : _wire2api_measure(raw);
-  }
-
   Uint8List? _wire2api_opt_uint_8_list(dynamic raw) {
     return raw == null ? null : _wire2api_uint_8_list(raw);
-  }
-
-  Weekdays? _wire2api_opt_weekdays(dynamic raw) {
-    return raw == null ? null : _wire2api_weekdays(raw);
   }
 
   Point _wire2api_point(dynamic raw) {

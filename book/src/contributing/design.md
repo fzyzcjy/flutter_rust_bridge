@@ -84,11 +84,11 @@ Does not include delegated types.
 | `String`         | `wire_uint_8_list`       | `wire_uint_8_list`       | `String`          | `String`           | `String`          |
 | `Vec<String>`    | `wire_StringList`        | `wire_StringList`        | `Box<[String]>`   | `List`             | `List<String>`    |
 | `Vec<T>`         | `wire_list_t`            | `wire_list_t`            | `Box<[JsValue]>`  | `List`             | `List<T>`         |
-| `Box<T>`         | `*mut T`                 | `ffi.Pointer<T>`         | `*mut T`          | `int`              | `T`               |
+| `Box<T>`         | `*mut T`                 | `ffi.Pointer<T>`         | `T`               | `T`                | `T`               |
 | `Option<T>`      | `*mut T`                 | `ffi.Pointer<T>`         | `Option<T>`       | `T?`               | `T?`              |
-| `Option<Box<T>>` | `*mut T`                 | `ffi.Pointer<T>`         | `*mut T`          | `T?`               | `T?`              |
+| `Option<Box<T>>` | `*mut T`                 | `ffi.Pointer<T>`         | `Option<T>`       | `T?`               | `T?`              |
 | enum/struct `T`  | `*mut wire_t`            | `ffi.Pointer<T>`         | `Array`           | `List`             | class `T`         |
-| enum `T`[^3]     | `int`                    | `int`[^1]                | `i32`             | `int`              | enum `T`          |
+| enum `T`[^3]     | `i32`[^5]                | `int`[^1]                | `i32`[^5]         | `int`              | enum `T`          |
 
 ## Memory safety
 
@@ -193,6 +193,7 @@ What do you want to know? Feel free to create an issue in GitHub, and I will tel
 
 [^3]: Refers to C-style enums only (no fields).
 [^4]: This is currently implemented as a monotonically-increasing index.
+[^5]: Enums may also specify a `#[repr]`, which is planned to be implemented.
 
 [`bigint`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
 [`bigint64array`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt64Array

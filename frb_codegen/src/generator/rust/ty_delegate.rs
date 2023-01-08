@@ -27,9 +27,18 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
         match &self.ir {
             IrTypeDelegate::Array(array) => {
-                let acc = Some(format!("let vec: Vec<{}>= self.wire2api(); support::from_vec_to_array(vec)",array.inner_rust_api_type()));
+                let acc =
+                    Some(
+                        format!(
+                            "let vec: Vec<{}> = self.wire2api(); support::from_vec_to_array(vec)",
+                            array.inner_rust_api_type()
+                        ),
+                    );
                 if array.inner_is_js_value() {
-                    return Acc{io: acc,..Default::default()};
+                    return Acc {
+                        io: acc,
+                        ..Default::default()
+                    };
                 }
                 Acc::distribute(acc)
             },
@@ -42,68 +51,65 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
             }
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 Acc::distribute(Some("ZeroCopyBuffer(self.wire2api())".into()))
-            }
-            IrTypeDelegate::StringList => Acc{
+            },
+            IrTypeDelegate::StringList => Acc {
                 io: Some(TypeGeneralListGenerator::WIRE2API_BODY_IO.to_owned()),
                 wasm: Some(TypeGeneralListGenerator::WIRE2API_BODY_WASM.to_owned()),
                 ..Default::default()
             },
             IrTypeDelegate::PrimitiveEnum { ir, .. } => {
                 let enu = ir.get(self.context.ir_file);
-                let variants = (enu
-                    .variants()
-                    .iter()
-                    .enumerate())
-                    .map(|(idx, variant)| format!("{} => {}::{},", idx, enu.name, variant.name))
-                    .collect::<Vec<_>>()
-                    .join("\n");
+                let variants =
+                    (enu.variants().iter().enumerate())
+                        .map(|(idx, variant)| format!("{} => {}::{},", idx, enu.name, variant.name))
+                        .collect::<Vec<_>>()
+                        .join("\n");
                 format!(
                     "match self {{
                         {}
                         _ => unreachable!(\"Invalid variant for {}: {{}}\", self),
                     }}",
-                    variants, enu.name
+                    variants,
+                    enu.name
                 ).into()
             },
             #[cfg(feature = "chrono")]
             IrTypeDelegate::Time(ir) => {
-              if ir == &IrTypeTime::Duration {
-                return Acc {
-                  io: Some("chrono::Duration::microseconds(self)".into()),
-                  wasm: Some("chrono::Duration::milliseconds(self)".into()),
-                  ..Default::default()
+                if ir == &IrTypeTime::Duration {
+                    return Acc {
+                        io: Some("chrono::Duration::microseconds(self)".into()),
+                        wasm: Some("chrono::Duration::milliseconds(self)".into()),
+                        ..Default::default()
+                    };
+                }
+                let codegen_timestamp = "let Timestamp { s, ns } = wire2api_timestamp(self);";
+                let codegen_naive =
+                    "chrono::NaiveDateTime::from_timestamp_opt(s, ns).expect(\"invalid or out-of-range datetime\")";
+                let codegen_utc = format!("chrono::DateTime::<chrono::Utc>::from_utc({codegen_naive}, chrono::Utc)");
+                let codegen_local = format!("chrono::DateTime::<chrono::Local>::from({codegen_utc})");
+                let codegen_conversion = match ir {
+                    IrTypeTime::Naive => codegen_naive,
+                    IrTypeTime::Utc => codegen_utc.as_str(),
+                    IrTypeTime::Local => codegen_local.as_str(),
+                    IrTypeTime::Duration => unreachable!(),
                 };
-              }
-              let codegen_timestamp = "let Timestamp { s, ns } = wire2api_timestamp(self);";
-              let codegen_naive = "chrono::NaiveDateTime::from_timestamp_opt(s, ns).expect(\"invalid or out-of-range datetime\")".to_string();
-              let codegen_utc = format!("chrono::DateTime::<chrono::Utc>::from_utc({codegen_naive}, chrono::Utc)");
-              let codegen_local = format!("chrono::DateTime::<chrono::Local>::from({codegen_utc})");
-              let codegen_conversion = match ir {
-                IrTypeTime::Naive => codegen_naive.as_str(),
-                IrTypeTime::Utc => codegen_utc.as_str(),
-                IrTypeTime::Local => codegen_local.as_str(),
-                IrTypeTime::Duration => unreachable!(),
-              };
-              Acc {
-                io: Some(format!("
-                {codegen_timestamp}
-                {codegen_conversion}
-                ")),
-                wasm: Some(format!("
-                {codegen_timestamp}
-                {codegen_conversion}
-                ")),
-                ..Default::default()
-              }
+                Acc {
+                    common: Some(format!("{codegen_timestamp}{codegen_conversion}")),
+                    ..Default::default()
+                }
             },
             #[cfg(feature = "uuid")]
-            IrTypeDelegate::Uuid => Acc::distribute(Some("
-            let single: Vec<u8> = self.wire2api();
-            wire2api_uuid_ref(single.as_slice())".into())),
+            IrTypeDelegate::Uuid => Acc::distribute(
+                Some(
+                    "let single: Vec<u8> = self.wire2api(); wire2api_uuid_ref(single.as_slice())".into(),
+                ),
+            ),
             #[cfg(feature = "uuid")]
-            IrTypeDelegate::Uuids => Acc::distribute(Some("
-            let multiple: Vec<u8> = self.wire2api();
-            wire2api_uuids(multiple)".into())),
+            IrTypeDelegate::Uuids => Acc::distribute(
+                Some(
+                    "let multiple: Vec<u8> = self.wire2api(); wire2api_uuids(multiple)".into(),
+                ),
+            ),
         }
     }
 
@@ -166,7 +172,6 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 name, self_ref, variants
             );
         }
-
         "".into()
     }
 

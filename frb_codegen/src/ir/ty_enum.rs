@@ -1,4 +1,3 @@
-use crate::ir::IrType::{EnumRef, StructRef};
 use crate::ir::*;
 use crate::target::Target;
 use convert_case::{Case, Casing};
@@ -9,6 +8,7 @@ pub struct IrTypeEnumRef {
 }
 
 impl IrTypeEnumRef {
+    #[inline]
     pub fn get<'a>(&self, file: &'a IrFile) -> &'a IrEnum {
         &file.enum_pool[&self.name]
     }
@@ -57,8 +57,8 @@ pub struct IrEnum {
     pub wrapper_name: Option<String>,
     pub path: Vec<String>,
     pub comments: Vec<IrComment>,
-    _variants: Vec<IrVariant>,
-    _is_struct: bool,
+    variants: Vec<IrVariant>,
+    is_struct: bool,
 }
 
 impl IrEnum {
@@ -69,56 +69,43 @@ impl IrEnum {
         comments: Vec<IrComment>,
         mut variants: Vec<IrVariant>,
     ) -> Self {
-        fn wrap_box(ty: IrType) -> IrType {
-            match ty {
-                StructRef(_) | EnumRef(IrTypeEnumRef { .. }) => IrType::Boxed(IrTypeBoxed {
+        fn wrap_box(ty: &mut IrType) {
+            if ty.is_struct() {
+                *ty = IrType::Boxed(IrTypeBoxed {
                     exist_in_real_api: false,
-                    inner: Box::new(ty),
-                }),
-                _ => ty,
+                    inner: Box::new(ty.clone()),
+                });
             }
         }
-        let _is_struct = variants
+
+        let is_struct = variants
             .iter()
             .any(|variant| !matches!(variant.kind, IrVariantKind::Value));
-        if _is_struct {
-            variants = variants
-                .into_iter()
-                .map(|variant| IrVariant {
-                    kind: match variant.kind {
-                        IrVariantKind::Struct(st) => IrVariantKind::Struct(IrStruct {
-                            fields: st
-                                .fields
-                                .into_iter()
-                                .map(|field| IrField {
-                                    ty: wrap_box(field.ty),
-                                    ..field
-                                })
-                                .collect(),
-                            ..st
-                        }),
-                        _ => variant.kind,
-                    },
-                    ..variant
-                })
-                .collect::<Vec<_>>();
+        if is_struct {
+            for variant in &mut variants {
+                if let IrVariantKind::Struct(st) = &mut variant.kind {
+                    for field in &mut st.fields {
+                        wrap_box(&mut field.ty);
+                    }
+                }
+            }
         }
         Self {
             name,
             wrapper_name,
             path,
             comments,
-            _variants: variants,
-            _is_struct,
+            variants,
+            is_struct,
         }
     }
 
     pub fn variants(&self) -> &[IrVariant] {
-        &self._variants
+        &self.variants
     }
 
     pub fn is_struct(&self) -> bool {
-        self._is_struct
+        self.is_struct
     }
 }
 
