@@ -220,11 +220,11 @@ Does not include delegated types.</p>
 <tr><td><code>String</code></td><td><code>wire_uint_8_list</code></td><td><code>wire_uint_8_list</code></td><td><code>String</code></td><td><code>String</code></td><td><code>String</code></td></tr>
 <tr><td><code>Vec&lt;String&gt;</code></td><td><code>wire_StringList</code></td><td><code>wire_StringList</code></td><td><code>Box&lt;[String]&gt;</code></td><td><code>List</code></td><td><code>List&lt;String&gt;</code></td></tr>
 <tr><td><code>Vec&lt;T&gt;</code></td><td><code>wire_list_t</code></td><td><code>wire_list_t</code></td><td><code>Box&lt;[JsValue]&gt;</code></td><td><code>List</code></td><td><code>List&lt;T&gt;</code></td></tr>
-<tr><td><code>Box&lt;T&gt;</code></td><td><code>*mut T</code></td><td><code>ffi.Pointer&lt;T&gt;</code></td><td><code>*mut T</code></td><td><code>int</code></td><td><code>T</code></td></tr>
+<tr><td><code>Box&lt;T&gt;</code></td><td><code>*mut T</code></td><td><code>ffi.Pointer&lt;T&gt;</code></td><td><code>T</code></td><td><code>T</code></td><td><code>T</code></td></tr>
 <tr><td><code>Option&lt;T&gt;</code></td><td><code>*mut T</code></td><td><code>ffi.Pointer&lt;T&gt;</code></td><td><code>Option&lt;T&gt;</code></td><td><code>T?</code></td><td><code>T?</code></td></tr>
-<tr><td><code>Option&lt;Box&lt;T&gt;&gt;</code></td><td><code>*mut T</code></td><td><code>ffi.Pointer&lt;T&gt;</code></td><td><code>*mut T</code></td><td><code>T?</code></td><td><code>T?</code></td></tr>
+<tr><td><code>Option&lt;Box&lt;T&gt;&gt;</code></td><td><code>*mut T</code></td><td><code>ffi.Pointer&lt;T&gt;</code></td><td><code>Option&lt;T&gt;</code></td><td><code>T?</code></td><td><code>T?</code></td></tr>
 <tr><td>enum/struct <code>T</code></td><td><code>*mut wire_t</code></td><td><code>ffi.Pointer&lt;T&gt;</code></td><td><code>Array</code></td><td><code>List</code></td><td>class <code>T</code></td></tr>
-<tr><td>enum <code>T</code><sup class="footnote-reference"><a href="#3">3</a></sup></td><td><code>int</code></td><td><code>int</code><sup class="footnote-reference"><a href="#1">1</a></sup></td><td><code>i32</code></td><td><code>int</code></td><td>enum <code>T</code></td></tr>
+<tr><td>enum <code>T</code><sup class="footnote-reference"><a href="#3">3</a></sup></td><td><code>i32</code><sup class="footnote-reference"><a href="#5">4</a></sup></td><td><code>int</code><sup class="footnote-reference"><a href="#1">1</a></sup></td><td><code>i32</code><sup class="footnote-reference"><a href="#5">4</a></sup></td><td><code>int</code></td><td>enum <code>T</code></td></tr>
 </tbody></table>
 </div>
 <h2 id="memory-safety"><a class="header" href="#memory-safety">Memory safety</a></h2>
@@ -286,7 +286,7 @@ keeps the ports in a JS-local scope that cannot be shared with other threads. A 
 is created by Dart, then passed to the main Rust thread. Rust then transfers its name to the workers.
 When other workers refer to a <code>StreamSink</code> from another worker, e.g. if the sink was put in a static variable,
 a new <code>BroadcastChannel</code> will be created from its name.</p>
-<p><code>BroadcastChannel</code>s are guaranteed to be unique for each invocation.<sup class="footnote-reference"><a href="#4">4</a></sup></p>
+<p><code>BroadcastChannel</code>s are guaranteed to be unique for each invocation.<sup class="footnote-reference"><a href="#4">5</a></sup></p>
 <pre class="mermaid">sequenceDiagram
 Dart -&gt;&gt; Rust: channel
 Rust -&gt;&gt; Rust Worker 1: channel.name
@@ -306,7 +306,8 @@ If you wish to use these types, replace all <code>dart:typed_list</code> imports
 </div>
 <div class="footnote-definition" id="3"><sup class="footnote-definition-label">3</sup>
 <p>Refers to C-style enums only (no fields).
-<sup class="footnote-reference"><a href="#4">4</a></sup>: This is currently implemented as a monotonically-increasing index.</p>
+<sup class="footnote-reference"><a href="#4">5</a></sup>: This is currently implemented as a monotonically-increasing index.
+<sup class="footnote-reference"><a href="#5">4</a></sup>: Enums may also specify a <code>#[repr]</code>, which is planned to be implemented.</p>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script>
