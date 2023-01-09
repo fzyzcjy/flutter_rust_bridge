@@ -218,6 +218,7 @@ impl PoolState {
     }
 }
 
+#[cfg(feature = "wasm-start")]
 #[wasm_bindgen(start)]
 pub fn run_hooks() {
     console_error_panic_hook::set_once();
