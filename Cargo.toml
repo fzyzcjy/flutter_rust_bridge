@@ -25,7 +25,7 @@ lazy_static = "1.4.0"
 uuid = "1.1.2"
 
 flutter_rust_bridge_macros = { path = "frb_macros", version = "1" }
-flutter_rust_bridge = { path = "frb_rust", version = "1" }
+flutter_rust_bridge = { path = "frb_rust", version = "1", default-features = false }
 flutter_rust_bridge_codegen = { path = "frb_codegen", version = "1" }
 
 [profile.release]
