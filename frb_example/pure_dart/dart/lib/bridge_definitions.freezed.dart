@@ -2519,6 +2519,7 @@ abstract class EnumOpaque_RwLock implements EnumOpaque {
 
 /// @nodoc
 mixin _$Event {
+  FlutterRustBridgeExampleSingleBlockTest get bridge => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
   String get payload => throw _privateConstructorUsedError;
 
@@ -2530,7 +2531,7 @@ mixin _$Event {
 abstract class $EventCopyWith<$Res> {
   factory $EventCopyWith(Event value, $Res Function(Event) then) = _$EventCopyWithImpl<$Res, Event>;
   @useResult
-  $Res call({String address, String payload});
+  $Res call({FlutterRustBridgeExampleSingleBlockTest bridge, String address, String payload});
 }
 
 /// @nodoc
@@ -2545,10 +2546,15 @@ class _$EventCopyWithImpl<$Res, $Val extends Event> implements $EventCopyWith<$R
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? bridge = null,
     Object? address = null,
     Object? payload = null,
   }) {
     return _then(_value.copyWith(
+      bridge: null == bridge
+          ? _value.bridge
+          : bridge // ignore: cast_nullable_to_non_nullable
+              as FlutterRustBridgeExampleSingleBlockTest,
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -2566,7 +2572,7 @@ abstract class _$$_EventCopyWith<$Res> implements $EventCopyWith<$Res> {
   factory _$$_EventCopyWith(_$_Event value, $Res Function(_$_Event) then) = __$$_EventCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String address, String payload});
+  $Res call({FlutterRustBridgeExampleSingleBlockTest bridge, String address, String payload});
 }
 
 /// @nodoc
@@ -2576,10 +2582,15 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event> i
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? bridge = null,
     Object? address = null,
     Object? payload = null,
   }) {
     return _then(_$_Event(
+      bridge: null == bridge
+          ? _value.bridge
+          : bridge // ignore: cast_nullable_to_non_nullable
+              as FlutterRustBridgeExampleSingleBlockTest,
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -2595,8 +2606,10 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event> i
 /// @nodoc
 
 class _$_Event implements _Event {
-  const _$_Event({required this.address, required this.payload});
+  const _$_Event({required this.bridge, required this.address, required this.payload});
 
+  @override
+  final FlutterRustBridgeExampleSingleBlockTest bridge;
   @override
   final String address;
   @override
@@ -2604,7 +2617,7 @@ class _$_Event implements _Event {
 
   @override
   String toString() {
-    return 'Event(address: $address, payload: $payload)';
+    return 'Event(bridge: $bridge, address: $address, payload: $payload)';
   }
 
   @override
@@ -2612,12 +2625,13 @@ class _$_Event implements _Event {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Event &&
+            (identical(other.bridge, bridge) || other.bridge == bridge) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.payload, payload) || other.payload == payload));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, address, payload);
+  int get hashCode => Object.hash(runtimeType, bridge, address, payload);
 
   @JsonKey(ignore: true)
   @override
@@ -2626,8 +2640,13 @@ class _$_Event implements _Event {
 }
 
 abstract class _Event implements Event {
-  const factory _Event({required final String address, required final String payload}) = _$_Event;
+  const factory _Event(
+      {required final FlutterRustBridgeExampleSingleBlockTest bridge,
+      required final String address,
+      required final String payload}) = _$_Event;
 
+  @override
+  FlutterRustBridgeExampleSingleBlockTest get bridge;
   @override
   String get address;
   @override
