@@ -183,19 +183,19 @@ pub fn wire_handle_optional_increment(port_: MessagePort, opt: JsValue) {
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_increment_boxed_optional(port_: MessagePort, opt: *mut f64) {
+pub fn wire_handle_increment_boxed_optional(port_: MessagePort, opt: JsValue) {
     wire_handle_increment_boxed_optional_impl(port_, opt)
 }
 
 #[wasm_bindgen]
 pub fn wire_handle_option_box_arguments(
     port_: MessagePort,
-    i8box: *mut i8,
-    u8box: *mut u8,
-    i32box: *mut i32,
-    i64box: *mut i64,
-    f64box: *mut f64,
-    boolbox: *mut bool,
+    i8box: JsValue,
+    u8box: JsValue,
+    i32box: JsValue,
+    i64box: JsValue,
+    f64box: JsValue,
+    boolbox: JsValue,
     structbox: JsValue,
 ) {
     wire_handle_option_box_arguments_impl(
@@ -738,61 +738,6 @@ pub fn wire_handle_some_static_stream_sink_single_arg__static_method__Concatenat
 
 // Section: allocate functions
 
-#[wasm_bindgen]
-pub fn new_box_autoadd_bool_0(value: bool) -> *mut bool {
-    support::new_leak_box_ptr(value)
-}
-
-#[wasm_bindgen]
-pub fn new_box_autoadd_f64_0(value: f64) -> *mut f64 {
-    support::new_leak_box_ptr(value)
-}
-
-#[wasm_bindgen]
-pub fn new_box_autoadd_i32_0(value: i32) -> *mut i32 {
-    support::new_leak_box_ptr(value)
-}
-
-#[wasm_bindgen]
-pub fn new_box_autoadd_i64_0(value: i64) -> *mut i64 {
-    support::new_leak_box_ptr(value)
-}
-
-#[wasm_bindgen]
-pub fn new_box_bool_0(value: bool) -> *mut bool {
-    support::new_leak_box_ptr(value)
-}
-
-#[wasm_bindgen]
-pub fn new_box_f64_0(value: f64) -> *mut f64 {
-    support::new_leak_box_ptr(value)
-}
-
-#[wasm_bindgen]
-pub fn new_box_i32_0(value: i32) -> *mut i32 {
-    support::new_leak_box_ptr(value)
-}
-
-#[wasm_bindgen]
-pub fn new_box_i64_0(value: i64) -> *mut i64 {
-    support::new_leak_box_ptr(value)
-}
-
-#[wasm_bindgen]
-pub fn new_box_i8_0(value: i8) -> *mut i8 {
-    support::new_leak_box_ptr(value)
-}
-
-#[wasm_bindgen]
-pub fn new_box_u8_0(value: u8) -> *mut u8 {
-    support::new_leak_box_ptr(value)
-}
-
-#[wasm_bindgen]
-pub fn new_box_weekdays_0(value: i32) -> *mut i32 {
-    support::new_leak_box_ptr(value)
-}
-
 // Section: related functions
 
 #[wasm_bindgen]
@@ -922,32 +867,7 @@ impl Wire2Api<chrono::Duration> for i64 {
         chrono::Duration::milliseconds(self)
     }
 }
-impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
-    fn wire2api(self) -> chrono::DateTime<chrono::Local> {
-        let Timestamp { s, ns } = wire2api_timestamp(self);
-        chrono::DateTime::<chrono::Local>::from(chrono::DateTime::<chrono::Utc>::from_utc(
-            chrono::NaiveDateTime::from_timestamp_opt(s, ns)
-                .expect("invalid or out-of-range datetime"),
-            chrono::Utc,
-        ))
-    }
-}
-impl Wire2Api<chrono::NaiveDateTime> for i64 {
-    fn wire2api(self) -> chrono::NaiveDateTime {
-        let Timestamp { s, ns } = wire2api_timestamp(self);
-        chrono::NaiveDateTime::from_timestamp_opt(s, ns).expect("invalid or out-of-range datetime")
-    }
-}
-impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
-    fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
-        let Timestamp { s, ns } = wire2api_timestamp(self);
-        chrono::DateTime::<chrono::Utc>::from_utc(
-            chrono::NaiveDateTime::from_timestamp_opt(s, ns)
-                .expect("invalid or out-of-range datetime"),
-            chrono::Utc,
-        )
-    }
-}
+
 impl Wire2Api<DartOpaque> for JsValue {
     fn wire2api(self) -> DartOpaque {
         let arr = self.dyn_into::<JsArray>().unwrap();
@@ -1781,7 +1701,7 @@ impl Wire2Api<Box<Blob>> for JsValue {
 }
 impl Wire2Api<Box<bool>> for JsValue {
     fn wire2api(self) -> Box<bool> {
-        (self.unchecked_into_f64() as usize as *mut bool).wire2api()
+        Box::new(self.wire2api())
     }
 }
 impl Wire2Api<Box<Distance>> for JsValue {
@@ -1796,22 +1716,22 @@ impl Wire2Api<Box<ExoticOptionals>> for JsValue {
 }
 impl Wire2Api<Box<f64>> for JsValue {
     fn wire2api(self) -> Box<f64> {
-        (self.unchecked_into_f64() as usize as *mut f64).wire2api()
+        Box::new(self.wire2api())
     }
 }
 impl Wire2Api<Box<i32>> for JsValue {
     fn wire2api(self) -> Box<i32> {
-        (self.unchecked_into_f64() as usize as *mut i32).wire2api()
+        Box::new(self.wire2api())
     }
 }
 impl Wire2Api<Box<i64>> for JsValue {
     fn wire2api(self) -> Box<i64> {
-        (self.unchecked_into_f64() as usize as *mut i64).wire2api()
+        Box::new(self.wire2api())
     }
 }
 impl Wire2Api<Box<i8>> for JsValue {
     fn wire2api(self) -> Box<i8> {
-        (self.unchecked_into_f64() as usize as *mut i8).wire2api()
+        Box::new(self.wire2api())
     }
 }
 impl Wire2Api<Box<KitchenSink>> for JsValue {
@@ -1831,7 +1751,7 @@ impl Wire2Api<Box<Speed>> for JsValue {
 }
 impl Wire2Api<Box<u8>> for JsValue {
     fn wire2api(self) -> Box<u8> {
-        (self.unchecked_into_f64() as usize as *mut u8).wire2api()
+        Box::new(self.wire2api())
     }
 }
 impl Wire2Api<Box<[u8; 1600]>> for JsValue {
@@ -1842,7 +1762,8 @@ impl Wire2Api<Box<[u8; 1600]>> for JsValue {
 }
 impl Wire2Api<Box<Weekdays>> for JsValue {
     fn wire2api(self) -> Box<Weekdays> {
-        Box::new(self.wire2api())
+        let ptr: Box<i32> = self.wire2api();
+        Box::new(ptr.wire2api())
     }
 }
 impl Wire2Api<f32> for JsValue {
@@ -1923,22 +1844,22 @@ impl Wire2Api<Option<ZeroCopyBuffer<Vec<u8>>>> for JsValue {
 }
 impl Wire2Api<Option<bool>> for JsValue {
     fn wire2api(self) -> Option<bool> {
-        (self != 0).then(|| *Wire2Api::<Box<bool>>::wire2api(self))
+        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
     }
 }
 impl Wire2Api<Option<f64>> for JsValue {
     fn wire2api(self) -> Option<f64> {
-        (self != 0).then(|| *Wire2Api::<Box<f64>>::wire2api(self))
+        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
     }
 }
 impl Wire2Api<Option<i32>> for JsValue {
     fn wire2api(self) -> Option<i32> {
-        (self != 0).then(|| *Wire2Api::<Box<i32>>::wire2api(self))
+        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
     }
 }
 impl Wire2Api<Option<i64>> for JsValue {
     fn wire2api(self) -> Option<i64> {
-        (self != 0).then(|| *Wire2Api::<Box<i64>>::wire2api(self))
+        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
     }
 }
 impl Wire2Api<Option<Box<bool>>> for JsValue {

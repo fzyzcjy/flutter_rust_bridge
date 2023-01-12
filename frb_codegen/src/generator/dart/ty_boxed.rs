@@ -17,13 +17,11 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
                 self.ir.inner.safe_ident(),
             )
         });
-
         let ident = self.ir.safe_ident();
         let context = self.context.config.block_index;
         let inner = self.ir.inner.safe_ident();
-
         Acc {
-            io: Some(as_primitive.clone().unwrap_or_else(|| {
+            io: Some(as_primitive.unwrap_or_else(|| {
                 if self.ir.inner.is_array() {
                     format!("return api2wire_{inner}(raw);")
                 } else {
@@ -34,9 +32,10 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
                     )
                 }
             })),
-            wasm: Some(as_primitive.unwrap_or_else(|| {
-                format!("return api2wire_{}(raw);", self.ir.inner.safe_ident())
-            })),
+            wasm: Some(format!(
+                "return api2wire_{}(raw);",
+                self.ir.inner.safe_ident()
+            )),
             ..Default::default()
         }
     }
@@ -63,7 +62,7 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
             | RustOpaque(_)
             | EnumRef(_)
             | Primitive(IrTypePrimitive::I64 | IrTypePrimitive::U64 | IrTypePrimitive::Usize)
-            | Delegate(IrTypeDelegate::Array(_)) => {
+            | Delegate(IrTypeDelegate::Array(_) | IrTypeDelegate::PrimitiveEnum { .. }) => {
                 format!("return _wire2api_{}(raw);", self.ir.inner.safe_ident())
             }
             _ => gen_wire2api_simple_type_cast(&self.ir.dart_api_type()),

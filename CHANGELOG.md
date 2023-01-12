@@ -1,3 +1,7 @@
+## 1.60.0
+
+* Refactors for `Boxed` and `Option` (Refactors `EnumRef` to make `Option<FieldlessEnum>` work; `Box<primitive>` and `Option<Box<primitive>>` on WASM no longer allocates a Box, but receives a (nullable) value directly from Dart) #949 thanks @Desdaemon
+
 ## 1.59.0
 
 * Fix unexpected content in c output header #937 (thanks @dbsxdbsx)

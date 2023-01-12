@@ -32,7 +32,7 @@ impl IrTypeTrait for IrTypeBoxed {
     fn dart_wire_type(&self, target: Target) -> String {
         match target {
             Target::Wasm => {
-                if self.inner.is_js_value() || self.inner.is_array() {
+                if self.inner.is_js_value() || self.inner.is_array() || self.inner.is_primitive() {
                     self.inner.dart_wire_type(target)
                 } else {
                     format!("int /* *{} */", self.inner.rust_wire_type(target))
@@ -62,10 +62,15 @@ impl IrTypeTrait for IrTypeBoxed {
     }
 
     fn rust_wire_type(&self, target: Target) -> String {
-        self.inner.rust_wire_type(target)
+        if target.is_wasm() && self.inner.is_primitive() {
+            "JsValue".into()
+        } else {
+            self.inner.rust_wire_type(target)
+        }
     }
 
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
-        !target.is_wasm() || (!self.inner.is_js_value() && !self.inner.is_array())
+        !target.is_wasm()
+            || !self.inner.is_js_value() && !self.inner.is_array() && !self.inner.is_primitive()
     }
 }

@@ -206,7 +206,10 @@ impl<'a> TypeParser<'a> {
             match ident_string.as_str() {
                 "SyncReturn" => {
                     // Disallow nested SyncReturn
-                    if matches!(*generic, SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "SyncReturn")
+                    if matches!(*generic, SupportedInnerType:: Path(SupportedPathType {
+                        ref ident,
+                        ..
+                    }) if ident == "SyncReturn")
                     {
                         panic!(
                             "Nested SyncReturn is invalid. (SyncReturn<SyncReturn<{}>>)",
@@ -267,23 +270,27 @@ impl<'a> TypeParser<'a> {
                 }),
                 "Option" => {
                     // Disallow nested Option
-                    if matches!(*generic, SupportedInnerType::Path(SupportedPathType { ref ident, .. }) if ident == "Option")
+                    if matches!(generic.as_ref(), SupportedInnerType:: Path(SupportedPathType { ident, .. }) if ident == "Option")
                     {
                         panic!(
                             "Nested optionals without indirection are not supported. (Option<Option<{}>>)",
                             p_as_str
                         );
                     }
-                    self.convert_to_ir_type(*generic).map(|inner| match inner {
-                        Primitive(prim) => IrType::Optional(IrTypeOptional::new_primitive(prim)),
-                        inner @ (StructRef(_) | RustOpaque(_) | DartOpaque(_)) => {
-                            IrType::Optional(IrTypeOptional::new(Boxed(IrTypeBoxed {
-                                inner: Box::new(inner),
-                                exist_in_real_api: false,
-                            })))
-                        }
-                        other => IrType::Optional(IrTypeOptional::new(other)),
-                    })
+                    Some(IrType::Optional(
+                        // TODO(Desdaemon): Encapsulate this logic
+                        match self.convert_to_ir_type(*generic)? {
+                            inner @ (StructRef(..)
+                            | EnumRef(..)
+                            | RustOpaque(..)
+                            | DartOpaque(..)
+                            | Primitive(..)
+                            | Delegate(IrTypeDelegate::PrimitiveEnum { .. })) => {
+                                IrTypeOptional::new_boxed(inner)
+                            }
+                            inner => IrTypeOptional::new(inner),
+                        },
+                    ))
                 }
                 #[cfg(feature = "chrono")]
                 "DateTime" => match *generic {

@@ -21,17 +21,8 @@ impl TypeRustGeneratorTrait for TypeOptionalGenerator<'_> {
     }
 
     fn wire2api_jsvalue(&self) -> Option<std::borrow::Cow<str>> {
-        (!self.ir.inner.is_js_value()).then(|| {
-            if self.ir.is_primitive() {
-                format!(
-                    "(self != 0).then(|| *Wire2Api::<Box<{}>>::wire2api(self))",
-                    self.ir.inner.rust_api_type(),
-                )
-                .into()
-            } else {
-                "(!self.is_undefined() && !self.is_null()).then(|| self.wire2api())".into()
-            }
-        })
+        (!self.ir.inner.is_js_value())
+            .then(|| "(!self.is_undefined() && !self.is_null()).then(|| self.wire2api())".into())
     }
 
     fn convert_to_dart(&self, obj: String) -> String {
