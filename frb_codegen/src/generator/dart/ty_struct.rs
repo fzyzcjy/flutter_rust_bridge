@@ -138,11 +138,6 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             })
             .collect::<Vec<_>>()
             .concat();
-        let extra_argument = "required this.bridge,".to_string();
-        let field_bridge = format!(
-            "final {} bridge;",
-            self.context.config.dart_api_class_name(),
-        );
         if src.using_freezed() {
             let mut constructor_params = src
                 .fields
@@ -158,7 +153,13 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 })
                 .collect::<Vec<_>>();
             if has_methods {
-                constructor_params.insert(0, extra_argument);
+                constructor_params.insert(
+                    0,
+                    format!(
+                        "required {} bridge,",
+                        self.context.config.dart_api_class_name()
+                    ),
+                );
             }
             let constructor_params = constructor_params.join("");
 
@@ -195,7 +196,13 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 })
                 .collect::<Vec<_>>();
             if has_methods {
-                field_declarations.insert(0, field_bridge);
+                field_declarations.insert(
+                    0,
+                    format!(
+                        "final {} bridge;",
+                        self.context.config.dart_api_class_name(),
+                    ),
+                );
             }
             let field_declarations = field_declarations.join("\n");
 
@@ -212,7 +219,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 })
                 .collect::<Vec<_>>();
             if has_methods {
-                constructor_params.insert(0, extra_argument);
+                constructor_params.insert(0, "required this.bridge,".to_string());
             }
 
             let (left, right) = if constructor_params.is_empty() {
