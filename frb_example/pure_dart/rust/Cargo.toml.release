@@ -7,6 +7,9 @@ edition = "2018"
 name = "flutter_rust_bridge_example"
 crate-type = ["cdylib"]
 
+[features]
+wasm-start = ["flutter_rust_bridge/wasm-start"]
+
 [build-dependencies]
 flutter_rust_bridge_codegen = { workspace = true, features = [
   "chrono",

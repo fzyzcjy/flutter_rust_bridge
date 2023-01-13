@@ -141,6 +141,15 @@ class Opts {
   late bool help;
   @CliOption(help: 'Whether to build the library.', defaultsTo: true)
   late bool build;
+  @CliOption(
+    help: 'A comma-separated list of features to pass to `cargo build`.',
+  )
+  late String? features;
+  @CliOption(
+    help: 'Whether to disable all features, useful with --features',
+    negatable: false,
+  )
+  late bool noDefaultFeatures;
 
   static List<String> rest(List<String> args) =>
       _$parserForOpts.parse(args).rest;
@@ -212,8 +221,13 @@ OPTIONS:""");
   // --- Checks end ---
 
   if (config.build) {
-    await build(config,
-        crateDir: crateDir, wasmOutput: wasmOutput, root: root, args: args);
+    await build(
+      config,
+      crateDir: crateDir,
+      wasmOutput: wasmOutput,
+      root: root,
+      args: args,
+    );
   }
   await runServer(config, root: root);
 }
@@ -239,7 +253,9 @@ Future<void> build(
     '--out-name', crateName,
     if (!config.release) '--dev', crateDir,
     '--', // cargo build args
-    '-Z', 'build-std=std,panic_abort'
+    '-Z', 'build-std=std,panic_abort',
+    if (config.noDefaultFeatures) '--no-default-features',
+    if (config.features != null) '--features=${config.features}'
   ], env: {
     'RUSTUP_TOOLCHAIN': 'nightly',
     'RUSTFLAGS': '-C target-feature=+atomics,+bulk-memory,+mutable-globals',
