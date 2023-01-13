@@ -105,6 +105,12 @@ jobs:
     name: Dart (Web) unit tests
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        include:
+          - features: []
+          - features: [wasm-start]
+
     steps:
       - uses: actions/checkout@v2
       - uses: dart-lang/setup-dart@v1
@@ -150,6 +156,7 @@ jobs:
           command:
             dart run ../../../frb_dart/bin/serve.dart
             -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests
+            --features=${{ join(matrix.features, ',') }}
           current_path: frb_example/pure_dart/dart
 
   dart_vm_service_test:
