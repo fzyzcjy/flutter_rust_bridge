@@ -841,6 +841,14 @@ you can put the declarations file at <code>lib/bridge_definitions.dart</code></p
 │   ├── bridge_definitions.dart
 </code></pre>
 <p>More information: <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/298">#298</a>.</p>
+<h2 id="injecting-wasm-initialization-code"><a class="header" href="#injecting-wasm-initialization-code">Injecting WASM initialization code</a></h2>
+<p>By default, this library injects its own initialization code to facilitate panic information recovery
+using <a href="https://lib.rs/crates/console_error_panic_hook"><code>console_error_panic_hook</code></a>.
+If you would like to run some initialization code for WASM, e.g. to set up logging libraries,
+specify <code>default-features = false</code> in Cargo.toml:</p>
+<pre><code class="language-toml">flutter_rust_bridge = { version = &quot;..&quot;, default-features = false, features = [..] }
+</code></pre>
+<p>The <code>wasm-start</code> feature governs this behavior and is enabled by default.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="logging"><a class="header" href="#logging">Logging</a></h1>
 <p>Since I have seen some questions asking how logging can be implemented with a Flutter + Rust application, here are some examples.</p>
 <h2 id="logger-in-production"><a class="header" href="#logger-in-production">Logger in production</a></h2>
@@ -3868,6 +3876,8 @@ OPTIONS:
 -h, --help                    Print this help message
     --[no-]build              Whether to build the library.
                               (defaults to on)
+    --features                A comma-separated list of features to pass to `cargo build`.
+    --no-default-features     Whether to disable all features, useful with --features
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="set-up-flutterdartrust-support-from-scratch"><a class="header" href="#set-up-flutterdartrust-support-from-scratch">Set up Flutter/Dart+Rust support from scratch</a></h1>
 <blockquote>

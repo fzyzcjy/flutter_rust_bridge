@@ -27,3 +27,5 @@ OPTIONS:
 -h, --help                    Print this help message
     --[no-]build              Whether to build the library.
                               (defaults to on)
+    --features                A comma-separated list of features to pass to `cargo build`.
+    --no-default-features     Whether to disable all features, useful with --features

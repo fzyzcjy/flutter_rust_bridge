@@ -155,6 +155,14 @@ you can put the declarations file at <code>lib/bridge_definitions.dart</code></p
 │   ├── bridge_definitions.dart
 </code></pre>
 <p>More information: <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/298">#298</a>.</p>
+<h2 id="injecting-wasm-initialization-code"><a class="header" href="#injecting-wasm-initialization-code">Injecting WASM initialization code</a></h2>
+<p>By default, this library injects its own initialization code to facilitate panic information recovery
+using <a href="https://lib.rs/crates/console_error_panic_hook"><code>console_error_panic_hook</code></a>.
+If you would like to run some initialization code for WASM, e.g. to set up logging libraries,
+specify <code>default-features = false</code> in Cargo.toml:</p>
+<pre><code class="language-toml">flutter_rust_bridge = { version = &quot;..&quot;, default-features = false, features = [..] }
+</code></pre>
+<p>The <code>wasm-start</code> feature governs this behavior and is enabled by default.</p>
 
                     </main>
 
