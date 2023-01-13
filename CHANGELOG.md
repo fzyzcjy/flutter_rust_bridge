@@ -1,3 +1,7 @@
+## 1.61.0
+
+* Allow opt-out of WASM initializer #963 (thanks @Desdaemon)
+
 ## 1.60.0
 
 * Refactors for `Boxed` and `Option` (Refactors `EnumRef` to make `Option<FieldlessEnum>` work; `Box<primitive>` and `Option<Box<primitive>>` on WASM no longer allocates a Box, but receives a (nullable) value directly from Dart) #949 thanks @Desdaemon
