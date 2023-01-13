@@ -154,7 +154,7 @@ packages:
       name: coverage
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.6.1"
+    version: "1.6.2"
   crypto:
     dependency: transitive
     description:
@@ -483,21 +483,21 @@ packages:
       name: test
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.22.1"
+    version: "1.22.2"
   test_api:
     dependency: transitive
     description:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.17"
+    version: "0.4.18"
   test_core:
     dependency: "direct main"
     description:
       name: test_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.21"
+    version: "0.4.22"
   timing:
     dependency: transitive
     description:
@@ -532,7 +532,7 @@ packages:
       name: vm_service
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "9.4.0"
+    version: "10.0.0"
   watcher:
     dependency: transitive
     description:
