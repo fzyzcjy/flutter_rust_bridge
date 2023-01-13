@@ -37,7 +37,7 @@ gen-bridge: build
     cd {{frb_pure_multi}}/rust && cargo clean -p flutter_rust_bridge_example_multi_blocks_test && cargo build --features c-output,extra-c-output-path
 
 alias l := lint
-lint *args="":
+lint *args:
     dart format --fix . {{args}}
     dart format --fix -l {{line_length}} {{frb_pure}} {{args}}
     dart format --fix -l {{line_length}} {{frb_pure_multi}} {{args}}
@@ -59,9 +59,9 @@ test-pure-asan $RUSTFLAGS="-Zsanitizer=address":
         {{frb_tools}}/dartsdk/x64/dart pub get && \
         {{frb_tools}}/dartsdk/x64/dart lib/main.dart  ../../../{{frb_linux_so}}
 
-test-pure-web *args="":
+test-pure-web *args:
     cd {{frb_pure}}/dart && just serve --dart-input lib/main.web.dart --root web/ -c ../rust --port 8081 {{args}}
-test-flutter-web *args="":
+test-flutter-web *args:
     cd {{frb_flutter}} && just serve -c rust {{args}}
 test-integration:
     cd {{frb_flutter}} && flutter test integration_test/main.dart
@@ -90,7 +90,7 @@ check:
     cd frb_rust && cargo clippy -- -D warnings
     cd frb_rust && cargo clippy --target wasm32-unknown-unknown -- -D warnings
 
-serve *args="":
+serve *args:
     cd {{invocation_directory()}} && dart run {{justfile_directory()}}/frb_dart/bin/serve.dart {{args}}
 
 refresh_all:

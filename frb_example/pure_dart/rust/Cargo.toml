@@ -7,6 +7,9 @@ edition.workspace = true
 name = "flutter_rust_bridge_example"
 crate-type = ["cdylib"]
 
+[features]
+wasm-start = ["flutter_rust_bridge/wasm-start"]
+
 [build-dependencies]
 flutter_rust_bridge_codegen = { workspace = true, features = [
   "chrono",
@@ -19,7 +22,15 @@ lazy_static = { workspace = true }
 chrono = { workspace = true }
 flutter_rust_bridge = { workspace = true, features = ["chrono", "uuid"] }
 uuid = { workspace = true }
-# wasm_thread = "0.2.0"
+log = "0.4"
+
+[target.'cfg(target_family = "wasm")'.dependencies]
+console_log = { version = "0.2", features = ["color"] }
+console_error_panic_hook = "0.1"
+
+[target.'cfg(not(target_family = "wasm"))'.dependencies]
+env_logger = "0.10.0"
+static_init = "1.0.3"
 
 [dependencies.external-lib] # used for demo of external types mirroring
 path = "./external"

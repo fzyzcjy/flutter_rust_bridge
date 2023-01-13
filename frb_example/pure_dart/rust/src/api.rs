@@ -17,6 +17,19 @@ use crate::data::{EnumAlias, Id, MyEnum, MyStruct, StructAlias, UserIdAlias};
 pub use crate::data::{FrbOpaqueReturn, FrbOpaqueSyncReturn, HideData, NonSendHideData};
 use crate::new_module_system::{use_new_module_system, NewSimpleStruct};
 use crate::old_module_system::{use_old_module_system, OldSimpleStruct};
+use log::info;
+
+#[cfg(target_family = "wasm")]
+mod helpers;
+
+/// Some initialization code to run when the library is first loaded.
+#[cfg(not(target_family = "wasm"))]
+#[static_init::constructor]
+extern "C" fn on_dylib_start() {
+    _ = env_logger::Builder::from_env(env_logger::Env::default().default_filter_or("info"))
+        .format_timestamp(None)
+        .try_init();
+}
 
 /// Documentation on a simple adder function.
 pub fn simple_adder(a: i32, b: i32) -> i32 {
@@ -33,7 +46,7 @@ pub fn simple_adder_sync(a: i32, b: i32) -> SyncReturn<i32> {
  Newlines are preserved.
 */
 pub fn primitive_types(my_i32: i32, my_i64: i64, my_f64: f64, my_bool: bool) -> i32 {
-    println!(
+    info!(
         "primitive_types({}, {}, {}, {})",
         my_i32, my_i64, my_f64, my_bool
     );
@@ -46,7 +59,7 @@ pub fn primitive_types_sync(
     my_f64: f64,
     my_bool: bool,
 ) -> SyncReturn<i32> {
-    println!(
+    info!(
         "primitive_types_sync({}, {}, {}, {})",
         my_i32, my_i64, my_f64, my_bool
     );
@@ -54,51 +67,51 @@ pub fn primitive_types_sync(
 }
 
 pub fn primitive_u32(my_u32: u32) -> u32 {
-    println!("primitive_u32({})", my_u32);
+    info!("primitive_u32({})", my_u32);
     assert_eq!(my_u32, 0xff112233);
     let ret = 0xfe112233;
-    println!("returning {}", ret);
+    info!("returning {}", ret);
     ret
 }
 
 pub fn primitive_u32_sync(my_u32: u32) -> SyncReturn<u32> {
-    println!("primitive_u32_sync({})", my_u32);
+    info!("primitive_u32_sync({})", my_u32);
     assert_eq!(my_u32, 0xff112233);
     let ret = 0xfe112233;
-    println!("returning {}", ret);
+    info!("returning {}", ret);
     SyncReturn(ret)
 }
 
 pub fn handle_string(s: String) -> String {
-    println!("handle_string({})", &s);
+    info!("handle_string({})", &s);
     let s2 = s.clone();
     s + &s2
 }
 
 pub fn handle_string_sync(s: String) -> SyncReturn<String> {
-    println!("handle_string_sync({})", &s);
+    info!("handle_string_sync({})", &s);
     let s2 = s.clone();
     SyncReturn(s + &s2)
 }
 
 #[allow(clippy::unused_unit)]
 pub fn handle_return_unit() -> () {
-    println!("handle_return_unit()");
+    info!("handle_return_unit()");
 }
 
 pub fn handle_return_unit_sync() -> SyncReturn<()> {
-    println!("handle_return_unit_sync()");
+    info!("handle_return_unit_sync()");
     SyncReturn(())
 }
 
 // to check that `Vec<u8>` can be used as return type
 pub fn handle_vec_u8(v: Vec<u8>) -> Vec<u8> {
-    println!("handle_vec_u8(first few elements: {:?})", &v[..5]);
+    info!("handle_vec_u8(first few elements: {:?})", &v[..5]);
     v.repeat(2)
 }
 
 pub fn handle_vec_u8_sync(v: Vec<u8>) -> SyncReturn<Vec<u8>> {
-    println!("handle_vec_u8_sync(first few elements: {:?})", &v[..5]);
+    info!("handle_vec_u8_sync(first few elements: {:?})", &v[..5]);
     SyncReturn(v.repeat(2))
 }
 
@@ -195,7 +208,7 @@ pub struct MySize {
 }
 
 pub fn handle_struct(arg: MySize, boxed: Box<MySize>) -> MySize {
-    println!("handle_struct({:?}, {:?})", &arg, &boxed);
+    info!("handle_struct({:?}, {:?})", &arg, &boxed);
     MySize {
         width: arg.width + boxed.width,
         height: arg.height + boxed.height,
@@ -203,7 +216,7 @@ pub fn handle_struct(arg: MySize, boxed: Box<MySize>) -> MySize {
 }
 
 pub fn handle_struct_sync(arg: MySize, boxed: Box<MySize>) -> SyncReturn<MySize> {
-    println!("handle_struct_sync({:?}, {:?})", &arg, &boxed);
+    info!("handle_struct_sync({:?}, {:?})", &arg, &boxed);
     SyncReturn(MySize {
         width: arg.width + boxed.width,
         height: arg.height + boxed.height,
@@ -214,24 +227,24 @@ pub fn handle_struct_sync(arg: MySize, boxed: Box<MySize>) -> SyncReturn<MySize>
 pub struct NewTypeInt(pub i64);
 
 pub fn handle_newtype(arg: NewTypeInt) -> NewTypeInt {
-    println!("handle_newtype({:?})", &arg);
+    info!("handle_newtype({:?})", &arg);
     NewTypeInt(arg.0 * 2)
 }
 
 pub fn handle_newtype_sync(arg: NewTypeInt) -> SyncReturn<NewTypeInt> {
-    println!("handle_newtype_sync({:?})", &arg);
+    info!("handle_newtype_sync({:?})", &arg);
     SyncReturn(NewTypeInt(arg.0 * 2))
 }
 
 pub fn handle_list_of_struct(mut l: Vec<MySize>) -> Vec<MySize> {
-    println!("handle_list_of_struct({:?})", &l);
+    info!("handle_list_of_struct({:?})", &l);
     let mut ans = l.clone();
     ans.append(&mut l);
     ans
 }
 
 pub fn handle_list_of_struct_sync(mut l: Vec<MySize>) -> SyncReturn<Vec<MySize>> {
-    println!("handle_list_of_struct_sync({:?})", &l);
+    info!("handle_list_of_struct_sync({:?})", &l);
     let mut ans = l.clone();
     ans.append(&mut l);
     SyncReturn(ans)
@@ -239,14 +252,14 @@ pub fn handle_list_of_struct_sync(mut l: Vec<MySize>) -> SyncReturn<Vec<MySize>>
 
 pub fn handle_string_list(names: Vec<String>) -> Vec<String> {
     for name in &names {
-        println!("Hello, {}", name);
+        info!("Hello, {}", name);
     }
     names
 }
 
 pub fn handle_string_list_sync(names: Vec<String>) -> SyncReturn<Vec<String>> {
     for name in &names {
-        println!("Hello, {}", name);
+        info!("Hello, {}", name);
     }
     SyncReturn(names)
 }
@@ -260,13 +273,13 @@ pub struct MyTreeNode {
 }
 
 pub fn handle_complex_struct(s: MyTreeNode) -> MyTreeNode {
-    println!("handle_complex_struct({:?})", &s);
+    info!("handle_complex_struct({:?})", &s);
     let s_cloned = s.clone();
     s
 }
 
 pub fn handle_complex_struct_sync(s: MyTreeNode) -> SyncReturn<MyTreeNode> {
-    println!("handle_complex_struct_sync({:?})", &s);
+    info!("handle_complex_struct_sync({:?})", &s);
     let s_cloned = s.clone();
     SyncReturn(s)
 }
@@ -282,7 +295,7 @@ pub fn handle_sync_return(mode: String) -> Result<SyncReturn<Vec<u8>>> {
 }
 
 pub fn handle_stream(sink: StreamSink<String>, arg: String) {
-    println!("handle_stream arg={}", arg);
+    info!("handle_stream arg={}", arg);
 
     let cnt = Arc::new(AtomicI32::new(0));
 
@@ -479,7 +492,7 @@ pub struct Note {
 }
 
 pub fn print_note(note: Note) -> ZeroCopyBuffer<Vec<u8>> {
-    println!("{:#?}", note);
+    info!("{:#?}", note);
     ZeroCopyBuffer(vec![1, 2, 3])
 }
 
@@ -497,7 +510,7 @@ pub fn handle_return_enum(input: String) -> Option<Weekdays> {
 }
 
 pub fn handle_enum_parameter(weekday: Weekdays) -> Weekdays {
-    println!("The weekday is {:?}", weekday);
+    info!("The weekday is {:?}", weekday);
     weekday
 }
 
@@ -510,7 +523,7 @@ pub struct Customized {
 }
 
 pub fn handle_customized_struct(val: Customized) {
-    println!("{:#?}", val);
+    info!("{:#?}", val);
 }
 
 #[frb]
@@ -630,7 +643,7 @@ pub fn get_fallible_app_settings() -> anyhow::Result<ApplicationSettings> {
 
 // Similarly, receiving an object from Dart works. Please note that the mirror definition must match entirely and the original struct must have all its fields public.
 pub fn is_app_embedded(app_settings: ApplicationSettings) -> bool {
-    // println!("env: {:?}", app_settings.env.vars);
+    // info!("env: {:?}", app_settings.env.vars);
     matches!(app_settings.mode, ApplicationMode::Embedded)
 }
 

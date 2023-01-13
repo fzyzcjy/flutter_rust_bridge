@@ -26,7 +26,7 @@ parking_lot = { version = "0.12.1" }
 threadpool = { version = "1.8.1" }
 
 [target.'cfg(target_family = "wasm")'.dependencies]
-console_error_panic_hook = { version = "0.1.7" }
+console_error_panic_hook = { version = "0.1.7", optional = true }
 wasm-bindgen = { version = "0.2.81" }
 js-sys = { version = "0.3.60" }
 web-sys = { version = "0.3.58", features = [
@@ -49,6 +49,7 @@ build-target = "0.4.0"
 wasm-bindgen-test = "0.3.32"
 
 [features]
-default = ["chrono"]
+default = ["chrono", "wasm-start"]
 uuid = ["dep:uuid", "allo-isolate/uuid"]
 chrono = ["dep:chrono", "allo-isolate/chrono"]
+wasm-start = ["console_error_panic_hook"]

@@ -35,7 +35,9 @@ Opts _$parseOptsResult(ArgResults result) => Opts()
   ..weakRefs = result['weak-refs'] as bool
   ..referenceTypes = result['reference-types'] as bool
   ..help = result['help'] as bool
-  ..build = result['build'] as bool;
+  ..build = result['build'] as bool
+  ..features = result['features'] as String?
+  ..noDefaultFeatures = result['no-default-features'] as bool;
 
 ArgParser _$populateOptsParser(ArgParser parser) => parser
   ..addOption(
@@ -113,6 +115,15 @@ ArgParser _$populateOptsParser(ArgParser parser) => parser
     'build',
     help: 'Whether to build the library.',
     defaultsTo: true,
+  )
+  ..addOption(
+    'features',
+    help: 'A comma-separated list of features to pass to `cargo build`.',
+  )
+  ..addFlag(
+    'no-default-features',
+    help: 'Whether to disable all features, useful with --features',
+    negatable: false,
   );
 
 final _$parserForOpts = _$populateOptsParser(ArgParser());
