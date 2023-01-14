@@ -143,7 +143,8 @@
                     <main>
                         <h1 id="arbitrary-dart-types-opaque"><a class="header" href="#arbitrary-dart-types-opaque">Arbitrary Dart types (opaque)</a></h1>
 <p>Any Dart type can be passed to Rust. This is done by wrapping it with <code>DartOpaque</code>.</p>
-<p><code>flutter_rust_bridge</code> ensures that any Dart objects are always removed on the parent Dart thread.</p>
+<p>This library ensures that any Dart objects are always removed on the parent Dart thread.</p>
+<p>Different from non-opaque types, opaque types are not copied/moved/reconstructed at all. For example, if you pass around a Dart object <code>MyObject</code> in arguments and return values, you will get the exact <em>same</em> object.</p>
 <h2 id="example-dartopaque"><a class="header" href="#example-dartopaque">Example <code>DartOpaque</code></a></h2>
 <p>Rust:</p>
 <pre><code class="language-rust noplayground">pub fn get_dart_opaque(a: DartOpaque) { ... }

@@ -144,6 +144,7 @@
                         <h1 id="arbitrary-rust-types-opaque"><a class="header" href="#arbitrary-rust-types-opaque">Arbitrary Rust types (opaque)</a></h1>
 <p>On one hand, any Rust type, even if it is not supported using features of this library, can be used in Dart. This is done by wrapping it with <code>RustOpaque</code>.</p>
 <p>The Rust opaque objects in Dart should be disposed <em>manually</em>, though it will also be disposed when it is GCed, that is discouraged, due to <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/775#issuecomment-1274635037">suggestions by Dart team</a>. Think of it just like a lot of Flutter objects that we are familiar with, such as <code>ui.Image</code> - we have to manually dispose them as well.</p>
+<p>Different from non-opaque types, opaque types are not copied/moved/reconstructed at all. For example, if you pass around <code>RwLock&lt;Mutex&lt;ArbitraryData&gt;</code> in arguments and return values, you will get the exact <em>same</em> <code>RwLock&lt;ArbitraryData&gt;</code> object.</p>
 <h2 id="example-rustopaque"><a class="header" href="#example-rustopaque">Example <code>RustOpaque</code></a></h2>
 <p>Rust:</p>
 <pre><code class="language-rust noplayground">struct ArbitraryData { ... }
