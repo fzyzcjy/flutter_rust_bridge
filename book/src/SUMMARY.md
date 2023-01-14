@@ -20,6 +20,7 @@
     - [Arbitrary Rust types (opaque)](feature/lang_rust_opaque.md)
     - [Arbitrary Dart types (opaque)](feature/lang_dart_opaque.md)
     - [Type alias](feature/lang_type_alias.md)
+    - [Exceptions](feature/lang_exceptions.md)
   - [Zero copy](feature/zero_copy.md)
   - [Stream / Iterator](feature/stream.md)
   - [Async in Dart](feature/async_dart.md)
