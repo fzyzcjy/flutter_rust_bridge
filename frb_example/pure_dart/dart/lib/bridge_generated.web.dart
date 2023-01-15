@@ -5,11 +5,11 @@
 import "bridge_definitions.dart";
 import 'dart:convert';
 import 'dart:async';
+import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 import 'bridge_generated.dart';
 export 'bridge_generated.dart';
-import 'package:meta/meta.dart';
 
 class FlutterRustBridgeExampleSingleBlockTestPlatform
     extends FlutterRustBridgeBase<FlutterRustBridgeExampleSingleBlockTestWire> with FlutterRustBridgeSetupMixin {

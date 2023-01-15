@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 import 'dart:async';
+import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'bridge_generated_api_1.dart';
 export 'bridge_generated_api_1.dart';
-import 'package:meta/meta.dart';
 import 'dart:ffi' as ffi;
 
 class ApiClass1Platform extends FlutterRustBridgeBase<ApiClass1Wire> {

@@ -240,6 +240,7 @@ fn generate_common_header() -> DartBasicCode {
             "{}{}",
             "import 'dart:convert';
             import 'dart:async';
+            import 'package:meta/meta.dart';
             import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';",
             if cfg!(feature = "uuid") {
                 "\nimport 'package:uuid/uuid.dart';"
@@ -384,44 +385,37 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
     }
 
     let Acc { common, io, wasm } = lines.join("\n");
-    let impl_import = format!(
-        "{} import 'package:meta/meta.dart';",
-        if config.wasm_enabled {
-            format!(
-                "import '{}'; export '{0}';",
-                Path::new(&config.dart_output_path)
-                    .file_name()
-                    .and_then(OsStr::to_str)
-                    .unwrap()
-            )
-        } else {
-            "".into()
-        }
-    );
-    let common_import = format!(
-        "{}
-        
-        import 'package:meta/meta.dart';",
-        // If WASM is not enabled, the common and IO branches are
-        // combined into one, making this import statement invalid.
-        if config.wasm_enabled {
-            format!(
-                "import '{}' if (dart.library.html) '{}';",
-                config
-                    .dart_io_output_path()
-                    .file_name()
-                    .and_then(OsStr::to_str)
-                    .unwrap(),
-                config
-                    .dart_wasm_output_path()
-                    .file_name()
-                    .and_then(OsStr::to_str)
-                    .unwrap(),
-            )
-        } else {
-            "".into()
-        }
-    );
+    let impl_import = if config.wasm_enabled {
+        format!(
+            "import '{}'; export '{0}';",
+            Path::new(&config.dart_output_path)
+                .file_name()
+                .and_then(OsStr::to_str)
+                .unwrap()
+        )
+    } else {
+        "".into()
+    };
+
+    // If WASM is not enabled, the common and IO branches are
+    // combined into one, making this import statement invalid.
+    let common_import = if config.wasm_enabled {
+        format!(
+            "import '{}' if (dart.library.html) '{}';",
+            config
+                .dart_io_output_path()
+                .file_name()
+                .and_then(OsStr::to_str)
+                .unwrap(),
+            config
+                .dart_wasm_output_path()
+                .file_name()
+                .and_then(OsStr::to_str)
+                .unwrap(),
+        )
+    } else {
+        "".into()
+    };
     Acc {
         common: DartBasicCode {
             body: common,

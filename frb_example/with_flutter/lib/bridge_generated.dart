@@ -5,10 +5,9 @@
 import "bridge_definitions.dart";
 import 'dart:convert';
 import 'dart:async';
+import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'bridge_generated.io.dart' if (dart.library.html) 'bridge_generated.web.dart';
-
-import 'package:meta/meta.dart';
 
 class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
   final FlutterRustBridgeExamplePlatform _platform;

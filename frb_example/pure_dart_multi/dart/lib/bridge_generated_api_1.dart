@@ -4,14 +4,14 @@
 
 import 'dart:convert';
 import 'dart:async';
+import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 
 import 'dart:convert';
 import 'dart:async';
+import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'bridge_generated_api_1.io.dart' if (dart.library.html) 'bridge_generated_api_1.web.dart';
-
-import 'package:meta/meta.dart';
 
 abstract class ApiClass1 {
   /// Documentation on a simple adder function.
