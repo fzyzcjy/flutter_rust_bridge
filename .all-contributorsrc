@@ -426,6 +426,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "jsonmona",
+      "name": "jsonmona",
+      "avatar_url": "https://avatars.githubusercontent.com/u/105187344?v=4",
+      "profile": "https://github.com/jsonmona",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
