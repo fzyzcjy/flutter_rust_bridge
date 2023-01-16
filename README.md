@@ -137,6 +137,7 @@ More specifically, thanks for all these contributions:
 * [efc-mw](https://github.com/efc-mw): Improve Windows encoding handling.
 * [valeth](https://github.com/valeth): Rename callFfi's port.
 * [sccheruku](https://github.com/sccheruku): Prevent double-generating utility.
+* [jsonmona](https://github.com/jsonmona): Add import.
 * [w-ensink](https://github.com/w-ensink): Improve doc. Fix CI. Refactor. Add tests.
 * [codercengiz](https://github.com/codercengiz): Fix mirroring bug.
 * [Michael-F-Bryan](https://github.com/Michael-F-Bryan): Detect broken bindings.
