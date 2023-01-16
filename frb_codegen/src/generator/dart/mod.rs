@@ -240,6 +240,7 @@ fn generate_common_header() -> DartBasicCode {
             "{}{}",
             "import 'dart:convert';
             import 'dart:async';
+            import 'package:meta/meta.dart';
             import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';",
             if cfg!(feature = "uuid") {
                 "\nimport 'package:uuid/uuid.dart';"
@@ -384,44 +385,37 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
     }
 
     let Acc { common, io, wasm } = lines.join("\n");
-    let impl_import = format!(
-        "{} import 'package:meta/meta.dart';",
-        if config.wasm_enabled {
-            format!(
-                "import '{}'; export '{0}';",
-                Path::new(&config.dart_output_path)
-                    .file_name()
-                    .and_then(OsStr::to_str)
-                    .unwrap()
-            )
-        } else {
-            "".into()
-        }
-    );
-    let common_import = format!(
-        "{}
-        
-        import 'package:meta/meta.dart';",
-        // If WASM is not enabled, the common and IO branches are
-        // combined into one, making this import statement invalid.
-        if config.wasm_enabled {
-            format!(
-                "import '{}' if (dart.library.html) '{}';",
-                config
-                    .dart_io_output_path()
-                    .file_name()
-                    .and_then(OsStr::to_str)
-                    .unwrap(),
-                config
-                    .dart_wasm_output_path()
-                    .file_name()
-                    .and_then(OsStr::to_str)
-                    .unwrap(),
-            )
-        } else {
-            "".into()
-        }
-    );
+    let impl_import = if config.wasm_enabled {
+        format!(
+            "import '{}'; export '{0}';",
+            Path::new(&config.dart_output_path)
+                .file_name()
+                .and_then(OsStr::to_str)
+                .unwrap()
+        )
+    } else {
+        "".into()
+    };
+
+    // If WASM is not enabled, the common and IO branches are
+    // combined into one, making this import statement invalid.
+    let common_import = if config.wasm_enabled {
+        format!(
+            "import '{}' if (dart.library.html) '{}';",
+            config
+                .dart_io_output_path()
+                .file_name()
+                .and_then(OsStr::to_str)
+                .unwrap(),
+            config
+                .dart_wasm_output_path()
+                .file_name()
+                .and_then(OsStr::to_str)
+                .unwrap(),
+        )
+    } else {
+        "".into()
+    };
     Acc {
         common: DartBasicCode {
             body: common,
@@ -467,7 +461,7 @@ fn generate_dart_implementation_code(
 fn generate_file_prelude() -> DartBasicCode {
     DartBasicCode {
         import: format!("{}
-            // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas, slash_for_doc_comments, prefer_const_literals_to_create_immutables, implicit_dynamic_list_literal, duplicate_import, unused_import, prefer_single_quotes, prefer_const_constructors, use_super_parameters, always_use_package_imports, annotate_overrides, invalid_use_of_protected_member, constant_identifier_names, invalid_use_of_internal_member
+            // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas, slash_for_doc_comments, prefer_const_literals_to_create_immutables, implicit_dynamic_list_literal, duplicate_import, unused_import, unnecessary_import, prefer_single_quotes, prefer_const_constructors, use_super_parameters, always_use_package_imports, annotate_overrides, invalid_use_of_protected_member, constant_identifier_names, invalid_use_of_internal_member
             ",
             code_header()
         ),
