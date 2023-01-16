@@ -1,3 +1,7 @@
+## 1.61.1
+
+* Add import package:meta/meta.dart to all generated files #980 (thanks @jsonmona)
+
 ## 1.61.0
 
 * Allow opt-out of WASM initializer #963 (thanks @Desdaemon)
