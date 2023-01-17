@@ -128,6 +128,9 @@ impl<T: DartSafe> RustOpaque<T> {
             panic!("Use after free.")
         }
     }
+    pub fn as_inner(&self) -> Option<Arc<T>> {
+        self.ptr.clone()
+    }
 }
 
 /// # Safety
