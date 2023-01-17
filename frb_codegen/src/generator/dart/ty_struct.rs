@@ -164,11 +164,17 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
 
             format!(
                 "{comments}{meta}class {Name} with _${Name} {{
+                    {private_constructor}
                     const factory {Name}({{{}}}) = _{Name};
                     {}
                 }}",
                 constructor_params,
                 methods_string,
+                private_constructor = if has_methods {
+                    format!("const {}._();", self.ir.name)
+                } else {
+                    "".to_owned()
+                },
                 comments = comments,
                 meta = metadata,
                 Name = self.ir.name
