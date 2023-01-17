@@ -570,6 +570,11 @@ pub fn wire_run_opaque(port_: MessagePort, opaque: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_run_opaque_inner(port_: MessagePort, opaque: JsValue) {
+    wire_run_opaque_inner_impl(port_, opaque)
+}
+
+#[wasm_bindgen]
 pub fn wire_run_opaque_with_delay(port_: MessagePort, opaque: JsValue) {
     wire_run_opaque_with_delay_impl(port_, opaque)
 }

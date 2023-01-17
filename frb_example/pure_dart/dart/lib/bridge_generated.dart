@@ -1767,6 +1767,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["opaque"],
       );
 
+  Future<String> runOpaqueInner({required HideData opaque, dynamic hint}) {
+    var arg0 = _platform.api2wire_HideData(opaque);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_run_opaque_inner(port_, arg0),
+      parseSuccessData: _wire2api_String,
+      constMeta: kRunOpaqueInnerConstMeta,
+      argValues: [opaque],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kRunOpaqueInnerConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "run_opaque_inner",
+        argNames: ["opaque"],
+      );
+
   Future<String> runOpaqueWithDelay({required HideData opaque, dynamic hint}) {
     var arg0 = _platform.api2wire_HideData(opaque);
     return _platform.executeNormal(FlutterRustBridgeTask(

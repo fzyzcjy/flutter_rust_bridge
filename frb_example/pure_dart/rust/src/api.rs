@@ -1251,6 +1251,10 @@ pub fn run_opaque(opaque: RustOpaque<HideData>) -> String {
     opaque.hide_data()
 }
 
+pub fn run_opaque_inner(opaque: RustOpaque<HideData>) -> String {
+    opaque.as_inner().hide_data()
+}
+
 pub fn run_opaque_with_delay(opaque: RustOpaque<HideData>) -> String {
     sleep(Duration::from_millis(1000));
     opaque.hide_data()

@@ -587,6 +587,11 @@ pub extern "C" fn wire_run_opaque(port_: i64, opaque: wire_HideData) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_run_opaque_inner(port_: i64, opaque: wire_HideData) {
+    wire_run_opaque_inner_impl(port_, opaque)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_run_opaque_with_delay(port_: i64, opaque: wire_HideData) {
     wire_run_opaque_with_delay_impl(port_, opaque)
 }

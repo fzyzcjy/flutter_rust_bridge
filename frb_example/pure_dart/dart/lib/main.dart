@@ -983,6 +983,22 @@ void main(List<String> args) async {
       opaque.dispose();
     });
 
+    test('inner call', () async {
+      var opaque = await api.createOpaque();
+      var hideData = await api.runOpaqueInner(opaque: opaque);
+
+      expect(
+          hideData,
+          "content - Some(PrivateData "
+          "{"
+          " content: \"content nested\", "
+          "primitive: 424242, "
+          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+          "lifetime: \"static str\" "
+          "})");
+      opaque.dispose();
+    });
+
     test('double Call', () async {
       var data = await api.createOpaque();
       expect(

@@ -1611,6 +1611,22 @@ fn wire_run_opaque_impl(
         },
     )
 }
+fn wire_run_opaque_inner_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<RustOpaque<HideData>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "run_opaque_inner",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opaque = opaque.wire2api();
+            move |task_callback| Ok(run_opaque_inner(api_opaque))
+        },
+    )
+}
 fn wire_run_opaque_with_delay_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<RustOpaque<HideData>> + UnwindSafe,
