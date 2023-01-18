@@ -76,7 +76,7 @@ impl IrType {
             _ => {
                 debug!("Not a primitive: {:?}", self);
                 None
-            },
+            }
         }
     }
 

@@ -968,17 +968,18 @@ pub fn naivedatetime(d: chrono::NaiveDateTime) -> chrono::NaiveDateTime {
     d
 }
 
-
-pub fn optional_empty_datetime_utc(d: Option<chrono::DateTime<chrono::Utc>>) -> Option<chrono::DateTime<chrono::Utc>> {
+pub fn optional_empty_datetime_utc(
+    d: Option<chrono::DateTime<chrono::Utc>>,
+) -> Option<chrono::DateTime<chrono::Utc>> {
     assert_eq!(&d, &None);
     d
 }
 
-
-pub fn boxed_empty_datetime_utc(d: Box<chrono::DateTime<chrono::Utc>>) -> Box<chrono::DateTime<chrono::Utc>> {
+pub fn boxed_empty_datetime_utc(
+    d: Box<chrono::DateTime<chrono::Utc>>,
+) -> Box<chrono::DateTime<chrono::Utc>> {
     d
 }
-
 
 pub fn duration(d: chrono::Duration) -> chrono::Duration {
     assert_eq!(&d.num_hours(), &4);

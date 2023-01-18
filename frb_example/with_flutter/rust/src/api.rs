@@ -7,7 +7,6 @@ use flutter_rust_bridge::ZeroCopyBuffer;
 // to see more types that this code generator can generate.
 //
 
-
 pub fn draw_mandelbrot(
     image_size: Size,
     zoom_point: Point,
