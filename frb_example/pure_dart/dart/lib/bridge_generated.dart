@@ -2032,7 +2032,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_return_non_droppable_dart_opaque(arg0),
       parseSuccessData: _wire2api_DartOpaque,
-      constMeta: kReturnNondroppableDartOpaqueConstMeta,
+      constMeta: kReturnNonDroppableDartOpaqueConstMeta,
       argValues: [opaque],
       hint: hint,
     ));
