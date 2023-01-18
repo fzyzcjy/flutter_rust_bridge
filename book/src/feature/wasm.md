@@ -1,7 +1,7 @@
 # WASM
 
 `flutter_rust_bridge_codegen` can also generate code to run in browsers using
-`wasm_bindgen`. To generate a WASM-specifc file, pass this option to your invocation:
+`wasm_bindgen`. To generate a WASM-specific file, pass this option to your invocation:
 
 ```shell
 flutter_rust_bridge_codegen .. --wasm

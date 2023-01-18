@@ -116,7 +116,7 @@ More specifically, thanks for all these contributions:
 * [Desdaemon](https://github.com/Desdaemon): Support not only simple enums but also enums with fields which gets translated to native enum or freezed class in Dart. Support the Option type as nullable types in Dart. Support Vec of Strings type. Support comments in code. Add marker attributes for future usage. Add Linux and Windows support for with-flutter example, and make CI works for that. Avoid parameter collision. Overhaul the documentation and add several chapters to demonstrate configuring a Flutter+Rust project in all five platforms. Refactor command module. Precompiled binary CI workflow. Fix bugs. Add support for the Web platform, parallel to the existing mobile/desktop platforms, via WASM and JavaScript as intermediate values. GitHub retry actions. Implement draft of opaque types. Refactor Boxed and Option.
 * [rogurotus](https://github.com/rogurotus): Add Rust opaque types, enabling arbitrary Rust structs to be used as opaque Dart objects by generating wrappers and raw Arc pointers, as well as Dart opaque types, allowing to use any Dart objects in Rust code. Extend `SyncReturn` for more types. Fix generation bug. Fix SyncReturn. Update CI.
 * [ngasull](https://github.com/ngasull): Make sync mode support whatever types that classical async mode supports. Bump sdk.
-* [SecondFlight](https://github.com/SecondFlight): Allow structs and enums to be imported from other files within the crate by creating source graph. Auto-create relavent dir. Fix `store_dart_post_cobject` error with ffigen 6.0.
+* [SecondFlight](https://github.com/SecondFlight): Allow structs and enums to be imported from other files within the crate by creating source graph. Auto-create relevant dir. Fix `store_dart_post_cobject` error with ffigen 6.0.
 * [Unoqwy](https://github.com/Unoqwy): Add struct mirrors, such that types in the external crates can be imported and used without redefining and copying.
 * [antonok-edm](https://github.com/antonok-edm): Avoid converting syn types to strings before parsing to improve code and be more robust.
 * [lattice0](https://github.com/lattice0): Support methods, such that Rust struct impls can be converted to Dart class methods. StreamSink at any argument.
@@ -129,7 +129,7 @@ More specifically, thanks for all these contributions:
 * [SoLongAndThanksForAllThePizza](https://github.com/SoLongAndThanksForAllThePizza): Refactor and enhance SyncReturn to support more types.
 * [huang12zheng](https://github.com/huang12zheng): Support type aliases and nested ones. Tweak code generation.
 * [hsfzxjy](https://github.com/hsfzxjy): Fix SyncReturn use-after-free bug.
-* [Cupnfish](https://github.com/Cupnfish): Support arrays as function paramters. Allow multi mirror.
+* [Cupnfish](https://github.com/Cupnfish): Support arrays as function parameters. Allow multi mirror.
 * [alanlzhang](https://github.com/alanlzhang): Add generation for Dart metadata. Enhance module parser.
 * [Zaitam](https://github.com/Zaitam): Fix when method return struct.
 * [AlienKevin](https://github.com/AlienKevin): Add flutter example for macOS. Add doc for Android NDK bug.

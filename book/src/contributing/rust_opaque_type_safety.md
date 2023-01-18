@@ -13,7 +13,7 @@ From the moment an opaque type is passed to Dart, it has full ownership of it.
 Dart implements a finalizer for opaque types, but the memory usage of opaque types is not monitored by Dart and can accumulate, so in order to prevent memory leaks, opaque pointers must be `dispose`d.
 
 
-## Rust opaque type like funtion args
+## Rust opaque type like function args
 
 When calling a function with an opaque type argument, the Dart thread safely shares ownership of the opaque type with Rust. This is safe because `RustOpaque<T>` requires that T be `Send` and `Sync`, furthermore Rust's `RustOpaque<T>` hand out immutable references through `Deref` or get an internal property if only Rust owns the opaque type. If dispose is called on the Dart side before the function call completes, Rust takes full ownership.
 

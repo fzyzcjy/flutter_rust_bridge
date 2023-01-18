@@ -28,7 +28,7 @@ git clone https://github.com/fzyzcjy/flutter_rust_bridge && cd flutter_rust_brid
 
 This step is optional, since I have generated the source code already (in quickstart). Even if you do it, you should not see anything changed.
 
-As soon as you make any modification to `api.rs`, you need to run codegen again. More informations about requirements for code generation can be seen in the [Installing dependencies](integrate/deps.md) section.
+As soon as you make any modification to `api.rs`, you need to run codegen again. More information about requirements for code generation can be seen in the [Installing dependencies](integrate/deps.md) section.
 
 ## Run app
 

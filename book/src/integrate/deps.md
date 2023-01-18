@@ -4,7 +4,7 @@ Next, we need to install a few build-time and runtime dependencies.
 
 ## Build-time dependencies
 
-These depdencies are required only in build-time:
+These dependencies are required only in build-time:
 
 - [`flutter_rust_bridge_codegen`](https://lib.rs/crates/flutter_rust_bridge_codegen), the core codegen for Rust-Dart glue code
 - [`ffigen`](https://pub.dev/packages/ffigen), to generate Dart code from C headers
