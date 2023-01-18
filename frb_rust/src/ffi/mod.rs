@@ -256,7 +256,7 @@ impl Drop for DartOpaque {
                         warn!("Drop DartOpaque after closing the port.");
                     };
                 } else {
-                    warn!("Drop non dropable DartOpaque.");
+                    warn!("Drop non droppable DartOpaque.");
                 }
             }
         }

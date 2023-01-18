@@ -534,9 +534,9 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kUnwrapRustOpaqueConstMeta;
 
-  Object returnNonDropableDartOpaque({required Object opaque, dynamic hint});
+  Object returnNondroppableDartOpaque({required Object opaque, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kReturnNonDropableDartOpaqueConstMeta;
+  FlutterRustBridgeTaskConstMeta get kReturnNondroppableDartOpaqueConstMeta;
 
   /// Function to check the code generator.
   /// FrbOpaqueReturn must be only return type.

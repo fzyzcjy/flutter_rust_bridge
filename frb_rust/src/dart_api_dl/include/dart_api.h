@@ -1302,7 +1302,7 @@ DART_EXPORT void Dart_DisableHeapSampling();
  *   Dart_DeleteWeakPersistentHandle once the embedder no longer needs it.
  *
  * - The provided callback must not call into the VM and should do as little
- *   work as possible to avoid performance penalities.
+ *   work as possible to avoid performance penalties.
  */
 DART_EXPORT void Dart_RegisterHeapSamplingCallback(
     Dart_HeapSamplingCallback callback);
@@ -1374,7 +1374,7 @@ DART_EXPORT void Dart_StartProfiling(void);
 /**
  * Stops the CPU sampling profiler.
  *
- * Note that some profile samples might still be taken after this fucntion
+ * Note that some profile samples might still be taken after this function
  * returns due to the asynchronous nature of the implementation on some
  * platforms.
  */
@@ -1709,8 +1709,8 @@ DART_EXPORT DART_WARN_UNUSED_RESULT Dart_Handle Dart_RunLoop(void);
  * \param error A non-NULL pointer which will hold an error message if the call
  *   fails. The error has to be free()ed by the caller.
  *
- * \return If successful the VM takes owernship of the isolate and takes care
- *   of its message loop. If not successful the caller retains owernship of the
+ * \return If successful the VM takes ownership of the isolate and takes care
+ *   of its message loop. If not successful the caller retains ownership of the
  *   isolate.
  */
 DART_EXPORT DART_WARN_UNUSED_RESULT bool Dart_RunLoopAsync(
@@ -1970,7 +1970,7 @@ DART_EXPORT Dart_Handle Dart_FunctionName(Dart_Handle function);
 DART_EXPORT Dart_Handle Dart_FunctionOwner(Dart_Handle function);
 
 /**
- * Determines whether a function handle referes to a static function
+ * Determines whether a function handle refers to a static function
  * of method.
  *
  * For the purposes of the embedding API, a top-level function is
