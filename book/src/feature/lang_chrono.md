@@ -9,6 +9,8 @@ Codegen optionally support [chrono crate](https://docs.rs/chrono) with feature `
 | `NaiveDateTime`   | `DateTime` *utc assumed*      |
 | `Duration`        | `Duration`                    |
 
+You can also uses optionals through `Option`, for example: `Option<NaiveDateTime>`.
+
 :warning: Please note that:
 
 - on native platforms, *microseconds* unit is used.
