@@ -74,6 +74,25 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["myI32", "myI64", "myF64", "myBool"],
       );
 
+  Future<int?> primitiveOptionalTypes({int? myI32, int? myI64, double? myF64, bool? myBool, dynamic hint}) {
+    var arg0 = _platform.api2wire_opt_box_autoadd_i32(myI32);
+    var arg1 = _platform.api2wire_opt_box_autoadd_i64(myI64);
+    var arg2 = _platform.api2wire_opt_box_autoadd_f64(myF64);
+    var arg3 = _platform.api2wire_opt_box_autoadd_bool(myBool);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_primitive_optional_types(port_, arg0, arg1, arg2, arg3),
+      parseSuccessData: _wire2api_opt_box_autoadd_i32,
+      constMeta: kPrimitiveOptionalTypesConstMeta,
+      argValues: [myI32, myI64, myF64, myBool],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kPrimitiveOptionalTypesConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "primitive_optional_types",
+        argNames: ["myI32", "myI64", "myF64", "myBool"],
+      );
+
   int primitiveTypesSync(
       {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint}) {
     var arg0 = api2wire_i32(myI32);
@@ -1157,6 +1176,38 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   FlutterRustBridgeTaskConstMeta get kNaivedatetimeConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "naivedatetime",
+        argNames: ["d"],
+      );
+
+  Future<DateTime?> optionalEmptyDatetimeUtc({DateTime? d, dynamic hint}) {
+    var arg0 = _platform.api2wire_opt_box_autoadd_Chrono_Utc(d);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_optional_empty_datetime_utc(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_Chrono_Utc,
+      constMeta: kOptionalEmptyDatetimeUtcConstMeta,
+      argValues: [d],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kOptionalEmptyDatetimeUtcConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "optional_empty_datetime_utc",
+        argNames: ["d"],
+      );
+
+  Future<DateTime> boxedEmptyDatetimeUtc({required DateTime d, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_Chrono_Utc(d);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_boxed_empty_datetime_utc(port_, arg0),
+      parseSuccessData: _wire2api_box_Chrono_Utc,
+      constMeta: kBoxedEmptyDatetimeUtcConstMeta,
+      argValues: [d],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kBoxedEmptyDatetimeUtcConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "boxed_empty_datetime_utc",
         argNames: ["d"],
       );
 
@@ -2517,8 +2568,16 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return raw as bool;
   }
 
+  DateTime _wire2api_box_Chrono_Utc(dynamic raw) {
+    return raw as DateTime;
+  }
+
   ApplicationEnv _wire2api_box_application_env(dynamic raw) {
     return _wire2api_application_env(raw);
+  }
+
+  DateTime _wire2api_box_autoadd_Chrono_Utc(dynamic raw) {
+    return raw as DateTime;
   }
 
   Object _wire2api_box_autoadd_DartOpaque(dynamic raw) {
@@ -2985,6 +3044,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   Uint8List? _wire2api_opt_ZeroCopyBuffer_Uint8List(dynamic raw) {
     return raw == null ? null : _wire2api_ZeroCopyBuffer_Uint8List(raw);
+  }
+
+  DateTime? _wire2api_opt_box_autoadd_Chrono_Utc(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_Chrono_Utc(raw);
   }
 
   Object? _wire2api_opt_box_autoadd_DartOpaque(dynamic raw) {

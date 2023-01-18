@@ -18,7 +18,6 @@ class ApiClass1Platform extends FlutterRustBridgeBase<ApiClass1Wire> with Flutte
 // Section: api2wire
 
 // Section: finalizer
-
 }
 
 // Section: WASM wire module

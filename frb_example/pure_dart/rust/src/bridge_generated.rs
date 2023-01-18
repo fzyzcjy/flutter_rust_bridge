@@ -90,6 +90,35 @@ fn wire_primitive_types_impl(
         },
     )
 }
+fn wire_primitive_optional_types_impl(
+    port_: MessagePort,
+    my_i32: impl Wire2Api<Option<i32>> + UnwindSafe,
+    my_i64: impl Wire2Api<Option<i64>> + UnwindSafe,
+    my_f64: impl Wire2Api<Option<f64>> + UnwindSafe,
+    my_bool: impl Wire2Api<Option<bool>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "primitive_optional_types",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_my_i32 = my_i32.wire2api();
+            let api_my_i64 = my_i64.wire2api();
+            let api_my_f64 = my_f64.wire2api();
+            let api_my_bool = my_bool.wire2api();
+            move |task_callback| {
+                Ok(primitive_optional_types(
+                    api_my_i32,
+                    api_my_i64,
+                    api_my_f64,
+                    api_my_bool,
+                ))
+            }
+        },
+    )
+}
 fn wire_primitive_types_sync_impl(
     my_i32: impl Wire2Api<i32> + UnwindSafe,
     my_i64: impl Wire2Api<i64> + UnwindSafe,
@@ -1069,6 +1098,38 @@ fn wire_naivedatetime_impl(
         move || {
             let api_d = d.wire2api();
             move |task_callback| Ok(naivedatetime(api_d))
+        },
+    )
+}
+fn wire_optional_empty_datetime_utc_impl(
+    port_: MessagePort,
+    d: impl Wire2Api<Option<chrono::DateTime<chrono::Utc>>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "optional_empty_datetime_utc",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_d = d.wire2api();
+            move |task_callback| Ok(optional_empty_datetime_utc(api_d))
+        },
+    )
+}
+fn wire_boxed_empty_datetime_utc_impl(
+    port_: MessagePort,
+    d: impl Wire2Api<Box<chrono::DateTime<chrono::Utc>>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "boxed_empty_datetime_utc",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_d = d.wire2api();
+            move |task_callback| Ok((*boxed_empty_datetime_utc(api_d)))
         },
     )
 }
