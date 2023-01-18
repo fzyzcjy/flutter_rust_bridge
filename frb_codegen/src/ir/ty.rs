@@ -2,7 +2,6 @@ use std::collections::HashSet;
 
 use crate::{ir::*, target::Target};
 use enum_dispatch::enum_dispatch;
-use log::debug;
 use IrType::*;
 
 /// Remark: "Ty" instead of "Type", since "type" is a reserved word in Rust.
@@ -73,10 +72,7 @@ impl IrType {
             Primitive(repr) | Delegate(IrTypeDelegate::PrimitiveEnum { repr, .. }) => Some(repr),
             #[cfg(feature = "chrono")]
             Delegate(IrTypeDelegate::Time(_)) => Some(&IrTypePrimitive::I64),
-            _ => {
-                debug!("Not a primitive: {:?}", self);
-                None
-            }
+            _ => None,
         }
     }
 
