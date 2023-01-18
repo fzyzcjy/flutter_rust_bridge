@@ -2027,7 +2027,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["opaque"],
       );
 
-  Object returnNondroppableDartOpaque({required Object opaque, dynamic hint}) {
+  Object returnNonDroppableDartOpaque({required Object opaque, dynamic hint}) {
     var arg0 = _platform.api2wire_DartOpaque(opaque);
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_return_non_droppable_dart_opaque(arg0),
@@ -2038,7 +2038,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kReturnNondroppableDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
+  FlutterRustBridgeTaskConstMeta get kReturnNonDroppableDartOpaqueConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "return_non_droppable_dart_opaque",
         argNames: ["opaque"],
       );
