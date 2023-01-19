@@ -86,7 +86,7 @@
 ## 1.49.0
 
 * Fix return for struct with methods #764 (thanks @Zaitam)
-* Suport array as parameter types #623 (thanks @Cupnfish)
+* Support array as parameter types #623 (thanks @Cupnfish)
 
 ## 1.48.1
 

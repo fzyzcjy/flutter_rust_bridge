@@ -1113,7 +1113,7 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_unwrap_rust_opaque(NativePortType port_, Object opaque);
 
-  external dynamic /* Object */ wire_return_non_dropable_dart_opaque(Object opaque);
+  external dynamic /* Object */ wire_return_non_droppable_dart_opaque(Object opaque);
 
   external dynamic /* void */ wire_frb_generator_test(NativePortType port_);
 
@@ -1485,8 +1485,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_unwrap_rust_opaque(NativePortType port_, Object opaque) =>
       wasmModule.wire_unwrap_rust_opaque(port_, opaque);
 
-  dynamic /* Object */ wire_return_non_dropable_dart_opaque(Object opaque) =>
-      wasmModule.wire_return_non_dropable_dart_opaque(opaque);
+  dynamic /* Object */ wire_return_non_droppable_dart_opaque(Object opaque) =>
+      wasmModule.wire_return_non_droppable_dart_opaque(opaque);
 
   void wire_frb_generator_test(NativePortType port_) => wasmModule.wire_frb_generator_test(port_);
 

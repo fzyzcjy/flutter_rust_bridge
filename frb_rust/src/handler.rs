@@ -22,7 +22,7 @@ pub enum FfiCallMode {
     Stream,
 }
 
-/// Supporting information to idenfity a function's operating mode.
+/// Supporting information to identify a function's operating mode.
 #[derive(Clone)]
 pub struct WrapInfo {
     /// A Dart `SendPort`. [None] if the mode is [FfiCallMode::Sync].

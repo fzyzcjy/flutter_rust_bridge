@@ -2,7 +2,7 @@
 //!
 //! please note that in the future this can probably be greatly simplified,
 //! and beware that Cargo and Dart interpret semantic versioning differently :
-//! see this [discussion](https://github.com/fzyzcjy/flutter_rust_bridge/pull/605#discussion_r935180160) for more informations.
+//! see this [discussion](https://github.com/fzyzcjy/flutter_rust_bridge/pull/605#discussion_r935180160) for more information.
 
 use std::{collections::HashMap, convert::TryFrom, path::PathBuf, str::FromStr};
 
@@ -69,7 +69,7 @@ impl From<&DartDependencyVersion> for CargoDependencyVersion {
     ///
     /// be careful because this is where you can shoot yourself in the foot :)
     ///
-    /// see module level comments for more informations.
+    /// see module level comments for more information.
     fn from(v: &DartDependencyVersion) -> Self {
         if v.0.starts_with('^') {
             let version = Version::parse(v.0.split_at(1).1).unwrap();

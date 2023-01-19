@@ -20,7 +20,7 @@ You can add dart metadata annotations using `dart_metadata` parameter in `frb` m
 * If importing is needed, then add importing part behind the annotation string. Currently two forms of importing supported:
   * `import 'somepackage'`
   * `import 'somepackage' as somename`, where `somename` will be the prefix of the annotation
-* Multiple annotations are seperated by comma `,`.
+* Multiple annotations are separated by comma `,`.
 
 See below for an example.
 

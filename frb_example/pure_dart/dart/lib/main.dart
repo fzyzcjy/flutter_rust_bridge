@@ -1102,7 +1102,7 @@ void main(List<String> args) async {
 
     test('unwrapped dart opaque', () async {
       String f() => "magic";
-      var res = api.returnNonDropableDartOpaque(opaque: f);
+      var res = api.returnNonDroppableDartOpaque(opaque: f);
       expect(identical(res, f), isTrue);
     });
 
