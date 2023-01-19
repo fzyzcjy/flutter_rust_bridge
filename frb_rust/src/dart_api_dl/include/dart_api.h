@@ -1302,7 +1302,7 @@ DART_EXPORT void Dart_DisableHeapSampling();
  *   Dart_DeleteWeakPersistentHandle once the embedder no longer needs it.
  *
  * - The provided callback must not call into the VM and should do as little
- *   work as possible to avoid performance penalties.
+ *   work as possible to avoid performance penalities.
  */
 DART_EXPORT void Dart_RegisterHeapSamplingCallback(
     Dart_HeapSamplingCallback callback);
