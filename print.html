@@ -232,7 +232,7 @@
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://www.floeschner.de/"><img src="https://avatars.githubusercontent.com/u/12967904?v=4?s=100" width="100px;" alt="Fabian Löschner"/><br /><sub><b>Fabian Löschner</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=w1th0utnam3" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="http://gsconrad.com"><img src="https://avatars.githubusercontent.com/u/15874617?v=4?s=100" width="100px;" alt="Gregory Conrad"/><br /><sub><b>Gregory Conrad</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=GregoryConrad" title="Documentation">📖</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=GregoryConrad" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://gsconrad.com"><img src="https://avatars.githubusercontent.com/u/15874617?v=4?s=100" width="100px;" alt="Gregory Conrad"/><br /><sub><b>Gregory Conrad</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=GregoryConrad" title="Documentation">📖</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=GregoryConrad" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://www.zaynetro.com/"><img src="https://avatars.githubusercontent.com/u/627197?v=4?s=100" width="100px;" alt="Roman Zaynetdinov"/><br /><sub><b>Roman Zaynetdinov</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=zaynetro" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/jsonmona"><img src="https://avatars.githubusercontent.com/u/105187344?v=4?s=100" width="100px;" alt="jsonmona"/><br /><sub><b>jsonmona</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=jsonmona" title="Code">💻</a></td>
     </tr>
@@ -246,7 +246,7 @@
 <li><a href="https://github.com/Desdaemon">Desdaemon</a>: Support not only simple enums but also enums with fields which gets translated to native enum or freezed class in Dart. Support the Option type as nullable types in Dart. Support Vec of Strings type. Support comments in code. Add marker attributes for future usage. Add Linux and Windows support for with-flutter example, and make CI works for that. Avoid parameter collision. Overhaul the documentation and add several chapters to demonstrate configuring a Flutter+Rust project in all five platforms. Refactor command module. Precompiled binary CI workflow. Fix bugs. Add support for the Web platform, parallel to the existing mobile/desktop platforms, via WASM and JavaScript as intermediate values. GitHub retry actions. Implement draft of opaque types. Refactor Boxed and Option.</li>
 <li><a href="https://github.com/rogurotus">rogurotus</a>: Add Rust opaque types, enabling arbitrary Rust structs to be used as opaque Dart objects by generating wrappers and raw Arc pointers, as well as Dart opaque types, allowing to use any Dart objects in Rust code. Extend <code>SyncReturn</code> for more types. Fix generation bug. Fix SyncReturn. Update CI.</li>
 <li><a href="https://github.com/ngasull">ngasull</a>: Make sync mode support whatever types that classical async mode supports. Bump sdk.</li>
-<li><a href="https://github.com/SecondFlight">SecondFlight</a>: Allow structs and enums to be imported from other files within the crate by creating source graph. Auto-create relavent dir. Fix <code>store_dart_post_cobject</code> error with ffigen 6.0.</li>
+<li><a href="https://github.com/SecondFlight">SecondFlight</a>: Allow structs and enums to be imported from other files within the crate by creating source graph. Auto-create relevant dir. Fix <code>store_dart_post_cobject</code> error with ffigen 6.0.</li>
 <li><a href="https://github.com/Unoqwy">Unoqwy</a>: Add struct mirrors, such that types in the external crates can be imported and used without redefining and copying.</li>
 <li><a href="https://github.com/antonok-edm">antonok-edm</a>: Avoid converting syn types to strings before parsing to improve code and be more robust.</li>
 <li><a href="https://github.com/lattice0">lattice0</a>: Support methods, such that Rust struct impls can be converted to Dart class methods. StreamSink at any argument.</li>
@@ -259,7 +259,7 @@
 <li><a href="https://github.com/SoLongAndThanksForAllThePizza">SoLongAndThanksForAllThePizza</a>: Refactor and enhance SyncReturn to support more types.</li>
 <li><a href="https://github.com/huang12zheng">huang12zheng</a>: Support type aliases and nested ones. Tweak code generation.</li>
 <li><a href="https://github.com/hsfzxjy">hsfzxjy</a>: Fix SyncReturn use-after-free bug.</li>
-<li><a href="https://github.com/Cupnfish">Cupnfish</a>: Support arrays as function paramters. Allow multi mirror.</li>
+<li><a href="https://github.com/Cupnfish">Cupnfish</a>: Support arrays as function parameters. Allow multi mirror.</li>
 <li><a href="https://github.com/alanlzhang">alanlzhang</a>: Add generation for Dart metadata. Enhance module parser.</li>
 <li><a href="https://github.com/Zaitam">Zaitam</a>: Fix when method return struct.</li>
 <li><a href="https://github.com/AlienKevin">AlienKevin</a>: Add flutter example for macOS. Add doc for Android NDK bug.</li>
@@ -333,7 +333,7 @@ brew install desdaemon/repo/flutter_rust_bridge_codegen
 </code></pre>
 <h2 id="optional-run-generator"><a class="header" href="#optional-run-generator">Optional: Run generator</a></h2>
 <p>This step is optional, since I have generated the source code already (in quickstart). Even if you do it, you should not see anything changed.</p>
-<p>As soon as you make any modification to <code>api.rs</code>, you need to run codegen again. More informations about requirements for code generation can be seen in the <a href="integrate/deps.html">Installing dependencies</a> section.</p>
+<p>As soon as you make any modification to <code>api.rs</code>, you need to run codegen again. More information about requirements for code generation can be seen in the <a href="integrate/deps.html">Installing dependencies</a> section.</p>
 <h2 id="run-app"><a class="header" href="#run-app">Run app</a></h2>
 <h3 id="prelogue-command-details"><a class="header" href="#prelogue-command-details">Prelogue: Command details</a></h3>
 <p>The <a href="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/ci.yaml">CI workflow</a> is useful if you want details of each command. The <code>flutter_android_test</code>, <code>flutter_ios_test</code>, <code>flutter_windows_test</code>, <code>flutter_macos_test</code> and <code>flutter_linux_test</code> demonstrates the exact commands needed to run this tutorial codebase from a brand new machine.</p>
@@ -419,7 +419,7 @@ Types from <code>uuid</code> crate are supported as a feature, see <a href="feat
 <li><code>import 'somepackage' as somename</code>, where <code>somename</code> will be the prefix of the annotation</li>
 </ul>
 </li>
-<li>Multiple annotations are seperated by comma <code>,</code>.</li>
+<li>Multiple annotations are separated by comma <code>,</code>.</li>
 </ul>
 <p>See below for an example.</p>
 <h2 id="freezed-dart-classes"><a class="header" href="#freezed-dart-classes"><code>freezed</code> Dart classes</a></h2>
@@ -517,7 +517,7 @@ Future&lt;void&gt; useImportedThings({required MyStruct myStruct, required MyEnu
 <p>Remark: If you are curious about <code>Future</code>, have a look at <a href="feature/async_dart.html">this</a>.</p>
 <h2 id="types-in-other-crates"><a class="header" href="#types-in-other-crates">Types in other crates</a></h2>
 <p>The feature is called &quot;mirroring&quot;. In short, you need to define the type again mirroring the external type that you want to use. That definition is only used at code-generation time to tell <code>flutter_rust_bridge</code> type information. To see exact grammar, have a look at the example below.</p>
-<p>No need to worry whether this breaks the DRY principle, or what happens when you accidentially write down a wrong field. This is because <em>compile errors will happen</em> if your mirrored type is not exactly same as the original type.</p>
+<p>No need to worry whether this breaks the DRY principle, or what happens when you accidentally write down a wrong field. This is because <em>compile errors will happen</em> if your mirrored type is not exactly same as the original type.</p>
 <p>More information: <a href="https://github.com/fzyzcjy/flutter_rust_bridge/pull/352">#352</a></p>
 <p>When multiple structs have the same fields, you can mirror them <em>once</em> using grammar like <code>#[frb(mirror(FirstStruct, SecondStruct, ThirdStruct))]</code>. (<a href="https://github.com/fzyzcjy/flutter_rust_bridge/pull/619">#619</a>)</p>
 <h3 id="example-4"><a class="header" href="#example-4">Example</a></h3>
@@ -824,7 +824,7 @@ impl MyExecutor {
 <p>Installation: Same as <a href="feature/cancelable_task.html">cancelable tasks</a>, please see doc there.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="wasm"><a class="header" href="#wasm">WASM</a></h1>
 <p><code>flutter_rust_bridge_codegen</code> can also generate code to run in browsers using
-<code>wasm_bindgen</code>. To generate a WASM-specifc file, pass this option to your invocation:</p>
+<code>wasm_bindgen</code>. To generate a WASM-specific file, pass this option to your invocation:</p>
 <pre><code class="language-shell">flutter_rust_bridge_codegen .. --wasm
 </code></pre>
 <p>By default this will create several new files:</p>
@@ -1118,7 +1118,7 @@ flutter_rust_bridge_serve
 <h2 id="limitations-of-wasm"><a class="header" href="#limitations-of-wasm">Limitations of WASM</a></h2>
 <p>Running code on the Web entails several restrictions on the kinds of code that
 can be executed. Please refer to <a href="template/../wasm_limitations.html">Limitations of WASM</a>
-to see if your code is compatiable with WASM.</p>
+to see if your code is compatible with WASM.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="windows-and-linux"><a class="header" href="#windows-and-linux">Windows and Linux</a></h1>
 <p>Windows and Linux share the same build system (CMake), making setup for these two
 platforms the easiest even from scratch. The template uses <a href="https://github.com/corrosion-rs/corrosion">Corrosion</a> to expedite the process, which has to clone and initialize the builder first. If you are running builds continuously, it might be a good idea to follow <a href="https://github.com/corrosion-rs/corrosion#installation">this guide</a> to learn how to install <a href="https://github.com/corrosion-rs/corrosion">Corrosion</a> permanently onto your system. Once that's done, go ahead and modify <code>rust.cmake</code> in <code>windows</code> and <code>linux</code>:</p>
@@ -1207,7 +1207,7 @@ to compile its applications.</p>
 <p>This section assumes you followed the instructions in <a href="template/template.html">Creating a new project</a>, and has successfully <code>flutter run</code> on your target device.</p>
 <p>Up until now, all the code necessary for executing the program has been supplied for you, so there was no need to install anything. We will now look at how to create new Rust code, generate the necessary glue code and use them in Dart.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="installing-codegen"><a class="header" href="#installing-codegen">Installing codegen</a></h1>
-<p>More informations in the <a href="template/../integrate/deps.html">Installing dependencies</a> section.</p>
+<p>More information in the <a href="template/../integrate/deps.html">Installing dependencies</a> section.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="adding-new-code"><a class="header" href="#adding-new-code">Adding new code</a></h1>
 <p>Let's say we need to change <code>Platform</code> such that we don't really care about whether it
 is running on Intel or Apple Silicon, but we would like to keep this information so
@@ -1354,7 +1354,7 @@ as well.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="installing-dependencies"><a class="header" href="#installing-dependencies">Installing dependencies</a></h1>
 <p>Next, we need to install a few build-time and runtime dependencies.</p>
 <h2 id="build-time-dependencies"><a class="header" href="#build-time-dependencies">Build-time dependencies</a></h2>
-<p>These depdencies are required only in build-time:</p>
+<p>These dependencies are required only in build-time:</p>
 <ul>
 <li><a href="https://lib.rs/crates/flutter_rust_bridge_codegen"><code>flutter_rust_bridge_codegen</code></a>, the core codegen for Rust-Dart glue code</li>
 <li><a href="https://pub.dev/packages/ffigen"><code>ffigen</code></a>, to generate Dart code from C headers</li>
@@ -2261,7 +2261,7 @@ cargo build
 We start with the plugin_ffi Flutter template since it is somewhat similar to what we need,
 but we will need to modify it significantly in the coming steps.
 Configuring the build processes for each supported platform is also a bit involved,
-so those are covered indivdually in the coming pages.</p>
+so those are covered individually in the coming pages.</p>
 <p>Run <code>flutter create --help</code> to see all the available options; you may want to set some (like <code>--org</code>).</p>
 <p>Finally, in the <code>packages</code> folder, run the following, adding any other options you choose
 and replacing <code>library_name</code> with your library name:</p>
@@ -3265,7 +3265,7 @@ src/ir -- src/generator --&gt; rd[Rust &amp; Dart]
 <p>Suppose a user calls a (generated) Dart function <code>func({required String str})</code>. Then, the following happens:</p>
 <ol>
 <li>The generated Dart function, <code>func({required String str})</code>, convert &quot;<em>Dart api data</em>&quot; (i.e. the data that user really provides) into &quot;<em>Dart wire data</em>&quot; (i.e. the data that will really pass between Dart and Rust). More specifically, it calls <code>_api2wire_String(str)</code> and get a <code>ffi.Pointer&lt;wire_uint_8_list&gt;</code> (because <code>String</code>s use <code>pub struct wire_uint_8_list { ptr: *mut u8, len: i32 }</code> under the hood).</li>
-<li>Now we call the Dart version of <code>wire_func</code>, with low-level data like <code>wire_uint_8_list</code>. We have used our codegen to create a Rust <code>wire_func</code> function, and use <code>cbindgen</code> to generate the corresponding C function, and use <code>ffigen</code> to get the cooresponding Dart function. Here, we call the Dart version of <code>wire_func</code>. Since Dart FFI and Rust FFI is C-compatible, it seamlessly calls the Rust version of <code>wire_func</code>. Notice that, since we are utilizing C-compatible functions (and it is the only feasible way), we can only pass around low-level things like pointers, instead of high-level and safe things.</li>
+<li>Now we call the Dart version of <code>wire_func</code>, with low-level data like <code>wire_uint_8_list</code>. We have used our codegen to create a Rust <code>wire_func</code> function, and use <code>cbindgen</code> to generate the corresponding C function, and use <code>ffigen</code> to get the corresponding Dart function. Here, we call the Dart version of <code>wire_func</code>. Since Dart FFI and Rust FFI is C-compatible, it seamlessly calls the Rust version of <code>wire_func</code>. Notice that, since we are utilizing C-compatible functions (and it is the only feasible way), we can only pass around low-level things like pointers, instead of high-level and safe things.</li>
 <li>Surely, the Rust <code>wire_func</code> is called. The function uses <code>.wire2api()</code> to convert &quot;<em>Rust wire data</em>&quot; (<code>wire_uint_8_list</code> here) into &quot;<em>Rust api data</em>&quot; (<code>String</code> here, i.e. data that users really use).</li>
 <li>The <code>FLUTTER_RUST_BRIDGE_HANDLER</code> is called with &quot;<em>Rust api data</em>&quot;. That handler is user-customizable, so users may provide their own implementation other than the default thread-pool, etc. By default, we use a thread pool, and we call the user-written <code>func</code> Rust function in <code>api.rs</code>.</li>
 <li>The user-written <code>fn func(str: String) -&gt; String { ... }</code> is called, and we get a return value.</li>
@@ -3396,7 +3396,7 @@ The <code>flutter_rust_bridge</code> async dart api requires the Rust type to be
 <h2 id="ownership-and-gc"><a class="header" href="#ownership-and-gc">Ownership and GC</a></h2>
 <p>From the moment an opaque type is passed to Dart, it has full ownership of it.
 Dart implements a finalizer for opaque types, but the memory usage of opaque types is not monitored by Dart and can accumulate, so in order to prevent memory leaks, opaque pointers must be <code>dispose</code>d.</p>
-<h2 id="rust-opaque-type-like-funtion-args"><a class="header" href="#rust-opaque-type-like-funtion-args">Rust opaque type like funtion args</a></h2>
+<h2 id="rust-opaque-type-like-function-args"><a class="header" href="#rust-opaque-type-like-function-args">Rust opaque type like function args</a></h2>
 <p>When calling a function with an opaque type argument, the Dart thread safely shares ownership of the opaque type with Rust. This is safe because <code>RustOpaque&lt;T&gt;</code> requires that T be <code>Send</code> and <code>Sync</code>, furthermore Rust's <code>RustOpaque&lt;T&gt;</code> hand out immutable references through <code>Deref</code> or get an internal property if only Rust owns the opaque type. If dispose is called on the Dart side before the function call completes, Rust takes full ownership.</p>
 <h2 id="example-12"><a class="header" href="#example-12">Example</a></h2>
 <h3 id="case-1-simple-call"><a class="header" href="#case-1-simple-call">Case 1: Simple call.</a></h3>

@@ -148,7 +148,7 @@ The <code>flutter_rust_bridge</code> async dart api requires the Rust type to be
 <h2 id="ownership-and-gc"><a class="header" href="#ownership-and-gc">Ownership and GC</a></h2>
 <p>From the moment an opaque type is passed to Dart, it has full ownership of it.
 Dart implements a finalizer for opaque types, but the memory usage of opaque types is not monitored by Dart and can accumulate, so in order to prevent memory leaks, opaque pointers must be <code>dispose</code>d.</p>
-<h2 id="rust-opaque-type-like-funtion-args"><a class="header" href="#rust-opaque-type-like-funtion-args">Rust opaque type like funtion args</a></h2>
+<h2 id="rust-opaque-type-like-function-args"><a class="header" href="#rust-opaque-type-like-function-args">Rust opaque type like function args</a></h2>
 <p>When calling a function with an opaque type argument, the Dart thread safely shares ownership of the opaque type with Rust. This is safe because <code>RustOpaque&lt;T&gt;</code> requires that T be <code>Send</code> and <code>Sync</code>, furthermore Rust's <code>RustOpaque&lt;T&gt;</code> hand out immutable references through <code>Deref</code> or get an internal property if only Rust owns the opaque type. If dispose is called on the Dart side before the function call completes, Rust takes full ownership.</p>
 <h2 id="example"><a class="header" href="#example">Example</a></h2>
 <h3 id="case-1-simple-call"><a class="header" href="#case-1-simple-call">Case 1: Simple call.</a></h3>

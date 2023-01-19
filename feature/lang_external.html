@@ -155,7 +155,7 @@ Future&lt;void&gt; useImportedThings({required MyStruct myStruct, required MyEnu
 <p>Remark: If you are curious about <code>Future</code>, have a look at <a href="async_dart.html">this</a>.</p>
 <h2 id="types-in-other-crates"><a class="header" href="#types-in-other-crates">Types in other crates</a></h2>
 <p>The feature is called &quot;mirroring&quot;. In short, you need to define the type again mirroring the external type that you want to use. That definition is only used at code-generation time to tell <code>flutter_rust_bridge</code> type information. To see exact grammar, have a look at the example below.</p>
-<p>No need to worry whether this breaks the DRY principle, or what happens when you accidentially write down a wrong field. This is because <em>compile errors will happen</em> if your mirrored type is not exactly same as the original type.</p>
+<p>No need to worry whether this breaks the DRY principle, or what happens when you accidentally write down a wrong field. This is because <em>compile errors will happen</em> if your mirrored type is not exactly same as the original type.</p>
 <p>More information: <a href="https://github.com/fzyzcjy/flutter_rust_bridge/pull/352">#352</a></p>
 <p>When multiple structs have the same fields, you can mirror them <em>once</em> using grammar like <code>#[frb(mirror(FirstStruct, SecondStruct, ThirdStruct))]</code>. (<a href="https://github.com/fzyzcjy/flutter_rust_bridge/pull/619">#619</a>)</p>
 <h3 id="example-1"><a class="header" href="#example-1">Example</a></h3>
