@@ -670,8 +670,8 @@ pub fn wire_unwrap_rust_opaque(port_: MessagePort, opaque: JsValue) {
 }
 
 #[wasm_bindgen]
-pub fn wire_return_non_dropable_dart_opaque(opaque: JsValue) -> support::WireSyncReturn {
-    wire_return_non_dropable_dart_opaque_impl(opaque)
+pub fn wire_return_non_droppable_dart_opaque(opaque: JsValue) -> support::WireSyncReturn {
+    wire_return_non_droppable_dart_opaque_impl(opaque)
 }
 
 #[wasm_bindgen]

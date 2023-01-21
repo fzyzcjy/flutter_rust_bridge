@@ -1308,7 +1308,7 @@ pub fn unwrap_rust_opaque(opaque: RustOpaque<HideData>) -> Result<String> {
     Ok(data.hide_data())
 }
 
-pub fn return_non_dropable_dart_opaque(opaque: DartOpaque) -> SyncReturn<DartOpaque> {
+pub fn return_non_droppable_dart_opaque(opaque: DartOpaque) -> SyncReturn<DartOpaque> {
     let raw = opaque.try_unwrap().unwrap();
     SyncReturn(unsafe { DartOpaque::new_non_droppable(raw.into()) })
 }

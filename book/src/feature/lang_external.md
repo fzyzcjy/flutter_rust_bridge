@@ -25,7 +25,7 @@ Remark: If you are curious about `Future`, have a look at [this](async_dart.md).
 
 The feature is called "mirroring". In short, you need to define the type again mirroring the external type that you want to use. That definition is only used at code-generation time to tell `flutter_rust_bridge` type information. To see exact grammar, have a look at the example below.
 
-No need to worry whether this breaks the DRY principle, or what happens when you accidentially write down a wrong field. This is because *compile errors will happen* if your mirrored type is not exactly same as the original type.
+No need to worry whether this breaks the DRY principle, or what happens when you accidentally write down a wrong field. This is because *compile errors will happen* if your mirrored type is not exactly same as the original type.
 
 More information: [#352](https://github.com/fzyzcjy/flutter_rust_bridge/pull/352)
 

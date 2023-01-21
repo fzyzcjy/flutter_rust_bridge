@@ -1877,18 +1877,18 @@ fn wire_unwrap_rust_opaque_impl(
         },
     )
 }
-fn wire_return_non_dropable_dart_opaque_impl(
+fn wire_return_non_droppable_dart_opaque_impl(
     opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
-            debug_name: "return_non_dropable_dart_opaque",
+            debug_name: "return_non_droppable_dart_opaque",
             port: None,
             mode: FfiCallMode::Sync,
         },
         move || {
             let api_opaque = opaque.wire2api();
-            Ok(return_non_dropable_dart_opaque(api_opaque))
+            Ok(return_non_droppable_dart_opaque(api_opaque))
         },
     )
 }

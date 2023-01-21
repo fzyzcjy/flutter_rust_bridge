@@ -43,7 +43,7 @@ where
 }
 
 /// check api defined by users, if no duplicates, then generate all symbols (api function name),
-/// including those generated implicitily by frb
+/// including those generated implicitly by frb
 pub fn get_symbols_if_no_duplicates(configs: &[crate::Opts]) -> Result<Vec<String>, anyhow::Error> {
     let mut explicit_raw_symbols = Vec::new();
     let mut all_symbols = Vec::new();

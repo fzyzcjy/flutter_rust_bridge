@@ -14,8 +14,8 @@ pub fn extract_mirror_marker(attrs: &[Attribute]) -> Vec<Path> {
                 })) if path.is_ident("mirror") && !mirror.is_empty() => Some(
                     mirror
                         .into_iter()
-                        .filter_map(|lable| {
-                            if let NestedMeta::Meta(Meta::Path(path)) = lable {
+                        .filter_map(|label| {
+                            if let NestedMeta::Meta(Meta::Path(path)) = label {
                                 Some(path)
                             } else {
                                 None
