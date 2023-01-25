@@ -273,7 +273,7 @@ packages:
       name: js
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.5"
+    version: "0.6.6"
   json_annotation:
     dependency: transitive
     description:
@@ -569,4 +569,4 @@ packages:
     source: hosted
     version: "2.0.3"
 sdks:
-  dart: ">=2.18.0 <3.0.0"
+  dart: ">=2.19.0-345.0.dev <3.0.0"
