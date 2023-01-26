@@ -74,6 +74,14 @@ jobs:
         working-directory: ./frb_example/with_flutter
         run: flutter pub get
 
+      - name: Update clang
+        run: |
+          brew update
+          brew upgrade llvm 
+      - name: configure
+        run: |
+          export CXX="/usr/local/opt/llvm/bin/clang++"
+
       - name: Build Rust lib
         working-directory: ./frb_example/with_flutter/rust
         # NOTE since run on simulator, need -t to be x86_64. For real devices, of course arm-like ones.
