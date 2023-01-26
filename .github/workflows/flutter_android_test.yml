@@ -74,8 +74,8 @@ jobs:
         working-directory: ./frb_example/with_flutter
         run: flutter pub get
 
-      - name: CPATH
-        run: export CPATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include
+      - name: TODO
+        run: brew install libiomp
 
       - name: Build Rust lib
         working-directory: ./frb_example/with_flutter/rust
