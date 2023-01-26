@@ -435,6 +435,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "utilForever",
+      "name": "Chris Ohk",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5622661?v=4",
+      "profile": "https://github.com/utilForever",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,

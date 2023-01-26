@@ -668,10 +668,10 @@ pub extern "C" fn wire_unwrap_rust_opaque(port_: i64, opaque: wire_HideData) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_return_non_dropable_dart_opaque(
+pub extern "C" fn wire_return_non_droppable_dart_opaque(
     opaque: wire_DartOpaque,
 ) -> support::WireSyncReturn {
-    wire_return_non_dropable_dart_opaque_impl(opaque)
+    wire_return_non_droppable_dart_opaque_impl(opaque)
 }
 
 #[no_mangle]

@@ -3,7 +3,7 @@ On this page, we will start creating the Flutter wrapper around our Dart-only li
 We start with the plugin_ffi Flutter template since it is somewhat similar to what we need,
 but we will need to modify it significantly in the coming steps.
 Configuring the build processes for each supported platform is also a bit involved,
-so those are covered indivdually in the coming pages.
+so those are covered individually in the coming pages.
 
 Run `flutter create --help` to see all the available options; you may want to set some (like `--org`).
 
