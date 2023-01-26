@@ -58,7 +58,7 @@ jobs:
 
       - name: Check DartApi
         run: |
-          git clone --depth 1 --filter=blob:none --sparse https://github.com/dart-lang/sdk.git
+          git clone --depth 1 --filter=blob:none --sparse --branch stable https://github.com/dart-lang/sdk.git
           cd sdk
           git sparse-checkout set runtime/include
           cd ..
