@@ -18,12 +18,14 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - name: Start iOS simulator
-        id: simulator
-        uses: futureware-tech/simulator-action@v2
-        with:
-          os_version: '>=13.0'
-          os: iOS
+      - name: "List all simulators"
+        run: "xcrun xctrace list devices"
+      - name: "Start Simulator"
+        run: |
+          # the extra "(" is to avoid matching things like "iPhone 12 Pro Max Simulator (16.2) + Apple Watch Series 5 - 44mm (8.0)"
+          UDID=$(xcrun xctrace list devices | grep '${{ inputs.device }} (' | awk '{print $NF}' | tr -d '()')
+          echo UDID=$UDID
+          xcrun simctl boot "${UDID:?No Simulator with this name found}"
 
       - uses: subosito/flutter-action@v2
         with:
