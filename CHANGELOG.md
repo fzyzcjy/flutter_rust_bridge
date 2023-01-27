@@ -1,4 +1,4 @@
-## 1.61.2
+## 1.62.0
 
 * Migration to dart-sys #998 (thanks @rogurotus)
 
