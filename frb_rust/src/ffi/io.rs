@@ -1,13 +1,15 @@
 use crate::Channel;
-pub use crate::Dart_Handle;
-pub use crate::Dart_PersistentHandle;
 
 pub use super::DartAbi;
 pub use super::MessagePort;
-use crate::Dart_DeletePersistentHandle_DL_Trampolined;
-use crate::Dart_HandleFromPersistent_DL_Trampolined;
-use crate::Dart_NewPersistentHandle_DL_Trampolined;
 pub use allo_isolate::*;
+use dart_sys::Dart_DeletePersistentHandle_DL;
+use dart_sys::Dart_Handle;
+use dart_sys::Dart_HandleFromPersistent_DL;
+use dart_sys::Dart_InitializeApiDL;
+use dart_sys::Dart_NewPersistentHandle_DL;
+use dart_sys::Dart_PersistentHandle;
+use libc::c_void;
 
 #[cfg(feature = "chrono")]
 #[inline]
@@ -44,7 +46,7 @@ mod tests {
 /// This function should never be called manually.
 #[no_mangle]
 pub unsafe extern "C" fn new_dart_opaque(handle: Dart_Handle) -> usize {
-    Dart_NewPersistentHandle_DL_Trampolined(handle) as _
+    Dart_NewPersistentHandle_DL.expect("dart_api_dl has not been initialized")(handle) as _
 }
 
 /// # Safety
@@ -53,8 +55,8 @@ pub unsafe extern "C" fn new_dart_opaque(handle: Dart_Handle) -> usize {
 #[no_mangle]
 pub unsafe extern "C" fn get_dart_object(ptr: usize) -> Dart_Handle {
     let handle = ptr as _;
-    let res = Dart_HandleFromPersistent_DL_Trampolined(handle);
-    Dart_DeletePersistentHandle_DL_Trampolined(handle);
+    let res = Dart_HandleFromPersistent_DL.expect("dart_api_dl has not been initialized")(handle);
+    Dart_DeletePersistentHandle_DL.expect("dart_api_dl has not been initialized")(handle);
     res
 }
 
@@ -63,7 +65,15 @@ pub unsafe extern "C" fn get_dart_object(ptr: usize) -> Dart_Handle {
 /// This function should never be called manually.
 #[no_mangle]
 pub unsafe extern "C" fn drop_dart_object(ptr: usize) {
-    Dart_DeletePersistentHandle_DL_Trampolined(ptr as _);
+    Dart_DeletePersistentHandle_DL.expect("dart_api_dl has not been initialized")(ptr as _);
+}
+
+/// # Safety
+///
+/// This function should never be called manually.
+#[no_mangle]
+pub unsafe extern "C" fn init_frb_dart_api_dl(data: *mut c_void) -> isize {
+    Dart_InitializeApiDL(data)
 }
 
 #[derive(Debug)]
@@ -89,7 +99,9 @@ impl From<DartHandleWrap> for Dart_PersistentHandle {
 impl Drop for DartHandleWrap {
     fn drop(&mut self) {
         if let Some(inner) = self.0 {
-            unsafe { Dart_DeletePersistentHandle_DL_Trampolined(inner) }
+            unsafe {
+                Dart_DeletePersistentHandle_DL.expect("dart_api_dl has not been initialized")(inner)
+            }
         }
     }
 }

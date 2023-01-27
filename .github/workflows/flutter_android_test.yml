@@ -77,7 +77,7 @@ jobs:
       - name: Build Rust lib
         working-directory: ./frb_example/with_flutter/rust
         # NOTE since run on simulator, need -t to be x86_64. For real devices, of course arm-like ones.
-        run: cargo ndk -t x86_64 -o ../android/app/src/main/jniLibs build
+        run: cargo ndk --bindgen -t x86_64 -o ../android/app/src/main/jniLibs build
 
       - name: Run Flutter integration tests
         continue-on-error: true

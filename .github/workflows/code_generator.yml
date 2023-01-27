@@ -58,11 +58,11 @@ jobs:
 
       - name: Check DartApi
         run: |
-          git clone --depth 1 --filter=blob:none --sparse https://github.com/dart-lang/sdk.git
+          git clone --depth 1 --filter=blob:none --sparse --branch stable https://github.com/dart-lang/sdk.git
           cd sdk
           git sparse-checkout set runtime/include
           cd ..
-          cp -rf ./sdk/runtime/include/* ./frb_rust/src/dart_api_dl/
+          cp -rf ./sdk/runtime/include/* ./frb_rust/src/dart_api/
           rm -r sdk
           git diff --exit-code
         shell: bash
