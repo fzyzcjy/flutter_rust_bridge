@@ -582,7 +582,8 @@ dependencies = [
 [[package]]
 name = "dart-sys"
 version = "3.1.12"
-source = "git+https://github.com/rogurotus/dart-sys.git?branch=whatif#919b71768001aef2136c8abc6e0d47b07c141a4c"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bd477cc1b7050183dfccd7154064e79c43680ecb2a7aa049c4ca8d248f93da8d"
 dependencies = [
  "bindgen",
  "cc",
