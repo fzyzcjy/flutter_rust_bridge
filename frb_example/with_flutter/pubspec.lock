@@ -241,7 +241,7 @@ packages:
       path: "../../frb_dart"
       relative: true
     source: path
-    version: "1.61.1"
+    version: "1.62.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -347,7 +347,7 @@ packages:
       name: logging
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.0"
+    version: "1.1.1"
   matcher:
     dependency: transitive
     description:
