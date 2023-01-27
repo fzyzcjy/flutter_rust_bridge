@@ -1,3 +1,7 @@
+## 1.61.2
+
+* Migration to dart-sys #998 (thanks @rogurotus)
+
 ## 1.61.1
 
 * Add import package:meta/meta.dart to all generated files #980 (thanks @jsonmona)
