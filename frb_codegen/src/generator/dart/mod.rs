@@ -317,8 +317,8 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
                 factory {implement}(ExternalLibrary dylib) => {implement}.raw({plat}(dylib));
 
                 /// Only valid on web/WASM platforms.
-                factory {implement}.wasm(FutureOr<WasmModule> module) =>
-                    {implement}(module as ExternalLibrary);
+                factory {implement}.wasm(ExternalLibrary module) =>
+                    {implement}(module);
                 {implement}.raw(this._platform);"
             )
         },

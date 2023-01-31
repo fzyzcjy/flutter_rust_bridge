@@ -27,7 +27,7 @@ class ApiClass2Impl implements ApiClass2 {
   factory ApiClass2Impl(ExternalLibrary dylib) => ApiClass2Impl.raw(ApiClass2Platform(dylib));
 
   /// Only valid on web/WASM platforms.
-  factory ApiClass2Impl.wasm(FutureOr<WasmModule> module) => ApiClass2Impl(module as ExternalLibrary);
+  factory ApiClass2Impl.wasm(ExternalLibrary module) => ApiClass2Impl(module);
   ApiClass2Impl.raw(this._platform);
   Future<int> simpleAdder2({required int a, required int b, dynamic hint}) {
     var arg0 = api2wire_i32(a);

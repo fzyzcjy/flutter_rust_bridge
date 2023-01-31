@@ -86,18 +86,18 @@ dynamic eval(String script) => throw UnimplementedError();
 /// for an example of a Dart web server that accomplishes this task.
 @JS()
 abstract class WasmModule {
-  Object call([String? moduleName]);
+  Object call(Object? this_, [String? moduleName]);
 
   /// Create a new WASM module initializer that is bound to the specified binary.
-  WasmModule bind(dynamic thisArg, String moduleName);
+  Object bind(dynamic thisArg, String moduleName);
 
   static Future<T> cast<T extends WasmModule>(FutureOr<WasmModule> module) {
     return Future.value(module).then((module) => module as T);
   }
 
   /// Initialize a [WasmModule] with the specified kind of [Modules].
-  static FutureOr<WasmModule> initialize(
-          {required Modules kind, WasmModule Function()? module}) =>
+  static FutureOr<T> initialize<T extends WasmModule>(
+          {required Modules kind, T Function()? module}) =>
       throw UnimplementedError();
 }
 
@@ -118,7 +118,7 @@ abstract class Modules {
   /// How a WASM module is brought into Dart's scope and initialized.
   ///
   /// Override this method to define custom initialization processes.
-  FutureOr<WasmModule> initializeModule(WasmModule Function()? module);
+  FutureOr<T> initializeModule<T extends WasmModule>(T Function()? module);
 }
 
 class _WasmBindgenNoModules extends Modules {
@@ -126,6 +126,6 @@ class _WasmBindgenNoModules extends Modules {
   const _WasmBindgenNoModules({required this.root});
 
   @override
-  FutureOr<WasmModule> initializeModule(WasmModule Function()? module) =>
+  FutureOr<T> initializeModule<T extends WasmModule>(T Function()? module) =>
       throw UnimplementedError();
 }

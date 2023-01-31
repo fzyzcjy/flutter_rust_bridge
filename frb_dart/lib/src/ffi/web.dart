@@ -6,17 +6,17 @@ export 'package:js/js.dart';
 export 'package:js/js_util.dart' show promiseToFuture, getProperty;
 
 abstract class WasmModule {
-  Object call([String? moduleName]);
+  Object call(Object? this_, [String? moduleName]);
 
   /// Create a new WASM module initializer that is bound to the specified binary.
-  WasmModule bind(dynamic thisArg, String moduleName);
+  Object bind(dynamic thisArg, String moduleName);
 
   static Future<T> cast<T extends WasmModule>(FutureOr<WasmModule> module) {
     return Future.value(module).then((module) => module as T);
   }
 
-  static FutureOr<WasmModule> initialize(
-          {required Modules kind, WasmModule Function()? module}) =>
+  static FutureOr<T> initialize<T extends WasmModule>(
+          {required Modules kind, T Function()? module}) =>
       kind.initializeModule(module);
 }
 
@@ -26,7 +26,7 @@ abstract class Modules {
   const factory Modules.noModules({required String root}) =
       _WasmBindgenNoModules;
 
-  FutureOr<WasmModule> initializeModule(WasmModule Function()? module);
+  FutureOr<T> initializeModule<T extends WasmModule>(T Function()? module);
 
   void _ensureCrossOriginIsolated() {
     switch (crossOriginIsolated) {
@@ -46,15 +46,15 @@ class _WasmBindgenNoModules extends Modules {
   const _WasmBindgenNoModules({required this.root});
 
   @override
-  FutureOr<WasmModule> initializeModule(WasmModule Function()? module) {
+  FutureOr<T> initializeModule<T extends WasmModule>(
+      T Function()? module) async {
     _ensureCrossOriginIsolated();
     final script = ScriptElement()..src = '$root.js';
     document.head!.append(script);
-    return script.onLoad.first.then((_) {
-      eval('window.wasm_bindgen = wasm_bindgen');
-      final module_ = module?.call() ?? _noModules!;
-      return module_.bind(null, '${root}_bg.wasm');
-    });
+    await script.onLoad.first;
+    eval('window.wasm_bindgen = wasm_bindgen');
+    final module_ = module?.call() ?? _noModules!;
+    return await promiseToFuture<T>(module_(null, '${root}_bg.wasm'));
   }
 }
 
@@ -123,7 +123,8 @@ class FlutterRustBridgeWasmWireBase<T extends WasmModule>
   final Future<T> init;
 
   FlutterRustBridgeWasmWireBase(FutureOr<T> module)
-      : init = Future.value(module).then((module) => promiseToFuture(module()));
+      : init = Future.value(module)
+            .then((module) => promiseToFuture(module(null)));
 }
 
 typedef PlatformPointer = int;

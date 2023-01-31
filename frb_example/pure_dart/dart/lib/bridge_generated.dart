@@ -16,8 +16,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
       FlutterRustBridgeExampleSingleBlockTestImpl.raw(FlutterRustBridgeExampleSingleBlockTestPlatform(dylib));
 
   /// Only valid on web/WASM platforms.
-  factory FlutterRustBridgeExampleSingleBlockTestImpl.wasm(FutureOr<WasmModule> module) =>
-      FlutterRustBridgeExampleSingleBlockTestImpl(module as ExternalLibrary);
+  factory FlutterRustBridgeExampleSingleBlockTestImpl.wasm(ExternalLibrary module) =>
+      FlutterRustBridgeExampleSingleBlockTestImpl(module);
   FlutterRustBridgeExampleSingleBlockTestImpl.raw(this._platform);
   Future<int> simpleAdder({required int a, required int b, dynamic hint}) {
     var arg0 = api2wire_i32(a);
