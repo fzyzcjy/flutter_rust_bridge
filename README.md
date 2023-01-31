@@ -144,6 +144,7 @@ More specifically, thanks for all these contributions:
 * [codercengiz](https://github.com/codercengiz): Fix mirroring bug.
 * [Michael-F-Bryan](https://github.com/Michael-F-Bryan): Detect broken bindings.
 * [bus710](https://github.com/bus710): Add a case in troubleshooting.
+* [Demezy](https://github.com/Demezy): Mention troubleshooting.
 * [Syndim](https://github.com/Syndim): Add a bracket to box.
 * [TENX-S](https://github.com/TENX-S): Improve doc. Reproduce a bug.
 * [CicadaCinema](https://github.com/CicadaCinema): Bump version. Improve doc.
