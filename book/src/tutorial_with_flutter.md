@@ -24,21 +24,6 @@ Please [install Flutter](https://flutter.dev/docs/get-started/install) (optional
 git clone https://github.com/fzyzcjy/flutter_rust_bridge && cd flutter_rust_bridge/frb_example/with_flutter
 ```
 
-## Setup dependencies
-
-For non-debian based distributions a few tricks required.
-Ensure that packages are up to date (or install by demand).
-
-- clang
-- llvm-libs
-- glibc
-
-Set environment variable in your shell profile (`.bashrc`, `.zshrc`, etc).
-
-```bash
-export CPATH="$(clang -v 2>&1 | grep "Selected GCC installation" | rev | cut -d' ' -f1 | rev)/include"
-```
-
 ## Optional: Run generator
 
 This step is optional, since I have generated the source code already (in quickstart). Even if you do it, you should not see anything changed.
