@@ -195,17 +195,16 @@ flutter pub add freezed_annotation
 +flutter_rust_bridge = &quot;1&quot;
 </code></pre>
 <h2 id="system-dependencies"><a class="header" href="#system-dependencies">System dependencies</a></h2>
-<p>For non-debian based Linux distributions, there are a few prerequisites:
-Ensure that packages are up to date (or install by demand).</p>
+<h3 id="non-debian-linux"><a class="header" href="#non-debian-linux">Non-Debian Linux</a></h3>
+<p>For non-debian based Linux distributions, there are a few prerequisites:</p>
+<p>Firstly, ensure that packages are up to date (or install by demand).</p>
 <ul>
 <li>clang</li>
 <li>llvm-libs</li>
 <li>glibc</li>
 </ul>
-<blockquote>
-<p>restart may be required</p>
-</blockquote>
-<p>Set environment variable in your shell profile (<code>.bashrc</code>, <code>.zshrc</code>, etc).</p>
+<p>Restarting system may be required.</p>
+<p>Secondly, set the environment variable in your shell profile (<code>.bashrc</code>, <code>.zshrc</code>, etc):</p>
 <pre><code class="language-bash">export CPATH=&quot;$(clang -v 2&gt;&amp;1 | grep &quot;Selected GCC installation&quot; | rev | cut -d' ' -f1 | rev)/include&quot;
 </code></pre>
 
