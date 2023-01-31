@@ -336,6 +336,7 @@ brew install desdaemon/repo/flutter_rust_bridge_codegen
 <h2 id="optional-run-generator"><a class="header" href="#optional-run-generator">Optional: Run generator</a></h2>
 <p>This step is optional, since I have generated the source code already (in quickstart). Even if you do it, you should not see anything changed.</p>
 <p>As soon as you make any modification to <code>api.rs</code>, you need to run codegen again. More information about requirements for code generation can be seen in the <a href="integrate/deps.html">Installing dependencies</a> section.</p>
+<p>At this step you may need to <a href="./integrate/deps.html">setup dependencies</a>.</p>
 <h2 id="run-app"><a class="header" href="#run-app">Run app</a></h2>
 <h3 id="prelogue-command-details"><a class="header" href="#prelogue-command-details">Prelogue: Command details</a></h3>
 <p>The <a href="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/ci.yaml">CI workflow</a> is useful if you want details of each command. The <code>flutter_android_test</code>, <code>flutter_ios_test</code>, <code>flutter_windows_test</code>, <code>flutter_macos_test</code> and <code>flutter_linux_test</code> demonstrates the exact commands needed to run this tutorial codebase from a brand new machine.</p>
@@ -1409,6 +1410,20 @@ flutter pub add freezed_annotation
 <p>Add these lines to <code>Cargo.toml</code>:</p>
 <pre><code class="language-diff">+[dependencies]
 +flutter_rust_bridge = &quot;1&quot;
+</code></pre>
+<h2 id="system-dependencies"><a class="header" href="#system-dependencies">System dependencies</a></h2>
+<p>For non-debian based Linux distributions, there are a few prerequisites:
+Ensure that packages are up to date (or install by demand).</p>
+<ul>
+<li>clang</li>
+<li>llvm-libs</li>
+<li>glibc</li>
+</ul>
+<blockquote>
+<p>restart may be required</p>
+</blockquote>
+<p>Set environment variable in your shell profile (<code>.bashrc</code>, <code>.zshrc</code>, etc).</p>
+<pre><code class="language-bash">export CPATH=&quot;$(clang -v 2&gt;&amp;1 | grep &quot;Selected GCC installation&quot; | rev | cut -d' ' -f1 | rev)/include&quot;
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="integrating-with-android"><a class="header" href="#integrating-with-android">Integrating with Android</a></h1>
 <p>The setup process is identical to <a href="integrate/../template/setup_android.html">Android setup</a>,
