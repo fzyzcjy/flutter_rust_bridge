@@ -26,7 +26,7 @@ git clone https://github.com/fzyzcjy/flutter_rust_bridge && cd flutter_rust_brid
 
 ## Setup dependencies
 
-For non-debian based distributions a few tricks required.
+For non-debian based distributions, there are a few prerequisites:
 Ensure that packages are up to date (or install by demand).
 
 - clang
