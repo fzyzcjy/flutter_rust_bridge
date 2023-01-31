@@ -67,18 +67,20 @@ Add these lines to `Cargo.toml`:
 
 ## System dependencies
 
+### Non-Debian Linux
+
 For non-debian based Linux distributions, there are a few prerequisites:
-Ensure that packages are up to date (or install by demand).
+
+Firstly, ensure that packages are up to date (or install by demand).
 
 - clang
 - llvm-libs
 - glibc
 
-> restart may be required
+Restarting system may be required.
 
-Set environment variable in your shell profile (`.bashrc`, `.zshrc`, etc).
+Secondly, set the environment variable in your shell profile (`.bashrc`, `.zshrc`, etc):
 
 ```bash
 export CPATH="$(clang -v 2>&1 | grep "Selected GCC installation" | rev | cut -d' ' -f1 | rev)/include"
 ```
-
