@@ -8,12 +8,13 @@ import 'dart:async';
 import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
+import 'package:js/js.dart';
 import 'bridge_generated.dart';
 export 'bridge_generated.dart';
 
 class FlutterRustBridgeExampleSingleBlockTestPlatform
     extends FlutterRustBridgeBase<FlutterRustBridgeExampleSingleBlockTestWire> with FlutterRustBridgeSetupMixin {
-  FlutterRustBridgeExampleSingleBlockTestPlatform(FutureOr<WasmModule> dylib)
+  FlutterRustBridgeExampleSingleBlockTestPlatform(FutureOr<FlutterRustBridgeExampleSingleBlockTestWasmModule> dylib)
       : super(FlutterRustBridgeExampleSingleBlockTestWire(dylib)) {
     setupMixinConstructor();
   }
@@ -1547,8 +1548,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
 class FlutterRustBridgeExampleSingleBlockTestWire
     extends FlutterRustBridgeWasmWireBase<FlutterRustBridgeExampleSingleBlockTestWasmModule> {
-  FlutterRustBridgeExampleSingleBlockTestWire(FutureOr<WasmModule> module)
-      : super(WasmModule.cast<FlutterRustBridgeExampleSingleBlockTestWasmModule>(module));
+  FlutterRustBridgeExampleSingleBlockTestWire(FutureOr<FlutterRustBridgeExampleSingleBlockTestWasmModule> module)
+      : super(module);
 
   void wire_simple_adder(NativePortType port_, int a, int b) => wasmModule.wire_simple_adder(port_, a, b);
 

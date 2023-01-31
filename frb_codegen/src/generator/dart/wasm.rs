@@ -7,8 +7,8 @@ pub fn generate_wasm_wire<'a>(
 ) -> String {
     format!(
         "class {cls} extends FlutterRustBridgeWasmWireBase<{wasm}> {{
-            {cls}(FutureOr<WasmModule> module) : super(WasmModule.cast<{wasm}>(module));
-            
+            {cls}(FutureOr<{wasm}> module) : super(module);
+
             {}
         }}
         ",

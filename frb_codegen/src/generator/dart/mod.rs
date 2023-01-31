@@ -331,14 +331,15 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
             )
         },
         wasm: {
-            let plat = &dart_platform_class_name;
-            let wire = &dart_wire_class_name;
             format!(
             "class {plat} extends FlutterRustBridgeBase<{wire}> with FlutterRustBridgeSetupMixin {{
-                {plat}(FutureOr<WasmModule> dylib) : super({wire}(dylib)) {{
+                {plat}(FutureOr<{module}> dylib) : super({wire}(dylib)) {{
                     setupMixinConstructor();
                 }}
                 Future<void> setup() => inner.init;",
+            plat = dart_platform_class_name,
+            wire = dart_wire_class_name,
+            module = config.dart_wasm_module(),
         )
         },
     });
@@ -386,7 +387,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
     let Acc { common, io, wasm } = lines.join("\n");
     let impl_import = if config.wasm_enabled {
         format!(
-            "import '{}'; export '{0}';",
+            "import 'package:js/js.dart';\nimport '{}'; export '{0}';",
             Path::new(&config.dart_output_path)
                 .file_name()
                 .and_then(OsStr::to_str)

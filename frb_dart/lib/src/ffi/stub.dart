@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:js/js.dart';
 import 'io.dart' if (dart.library.html) 'web.dart'
     show DartPostCObject, NativePortType, WireSyncReturn;
 export 'io.dart' if (dart.library.html) 'web.dart'
@@ -73,16 +74,6 @@ abstract class FlutterRustBridgeWasmWireBase<T extends WasmModule>
   FlutterRustBridgeWasmWireBase([FutureOr<T>? module]);
 }
 
-class JS {
-  const JS([String? name]);
-}
-
-class _Anonymous {
-  const _Anonymous();
-}
-
-const anonymous = _Anonymous();
-
 dynamic eval(String script) => throw UnimplementedError();
 
 /// A JS function that returns a Promise to a WASM module.
@@ -93,6 +84,7 @@ dynamic eval(String script) => throw UnimplementedError();
 /// Rust WASM modules do not work without cross-origin isolation.
 /// Please refer to [Setting up the web server](http://cjycode.com/flutter_rust_bridge/build_wasm.html#setting-up-the-web-server)
 /// for an example of a Dart web server that accomplishes this task.
+@JS()
 abstract class WasmModule {
   Object call([String? moduleName]);
 

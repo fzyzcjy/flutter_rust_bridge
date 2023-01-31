@@ -7,11 +7,12 @@ import 'dart:async';
 import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
+import 'package:js/js.dart';
 import 'bridge_generated_api_1.dart';
 export 'bridge_generated_api_1.dart';
 
 class ApiClass1Platform extends FlutterRustBridgeBase<ApiClass1Wire> with FlutterRustBridgeSetupMixin {
-  ApiClass1Platform(FutureOr<WasmModule> dylib) : super(ApiClass1Wire(dylib)) {
+  ApiClass1Platform(FutureOr<ApiClass1WasmModule> dylib) : super(ApiClass1Wire(dylib)) {
     setupMixinConstructor();
   }
   Future<void> setup() => inner.init;
@@ -37,7 +38,7 @@ class ApiClass1WasmModule implements WasmModule {
 // Section: WASM wire connector
 
 class ApiClass1Wire extends FlutterRustBridgeWasmWireBase<ApiClass1WasmModule> {
-  ApiClass1Wire(FutureOr<WasmModule> module) : super(WasmModule.cast<ApiClass1WasmModule>(module));
+  ApiClass1Wire(FutureOr<ApiClass1WasmModule> module) : super(module);
 
   void wire_simple_adder_1(NativePortType port_, int a, int b) => wasmModule.wire_simple_adder_1(port_, a, b);
 }

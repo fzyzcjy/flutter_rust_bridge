@@ -58,7 +58,7 @@ class _WasmBindgenNoModules extends Modules {
   }
 }
 
-typedef ExternalLibrary = FutureOr<WasmModule>;
+typedef ExternalLibrary = dynamic;
 typedef DartPostCObject = void;
 
 @JS()
