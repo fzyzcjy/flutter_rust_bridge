@@ -5,7 +5,7 @@ publish_to: none
 environment:
   sdk: '>=2.15.0 <3.0.0'
 dependencies:
-  meta: ^1.8.0
+  meta: ^1.9.0
   lints: ^2.0.1
   flutter_rust_bridge:
     path: ../../../frb_dart
