@@ -115,7 +115,7 @@ pub fn wire2api_uuids(ids: Vec<u8>) -> Vec<uuid::Uuid> {
 /// pub struct DebugWrapper2(pub RustOpaque<Box<dyn Debug + Send + Sync + UnwindSafe + RefUnwindSafe>>);
 /// ```
 #[repr(transparent)]
-#[derive(Debug, Clone)]
+#[derive(Debug)]
 pub struct RustOpaque<T: ?Sized + DartSafe> {
     ptr: Option<Arc<T>>,
 }
@@ -128,8 +128,13 @@ impl<T: DartSafe> RustOpaque<T> {
             panic!("Use after free.")
         }
     }
-    pub fn as_inner(&self) -> Option<Arc<T>> {
-        self.ptr.clone()
+}
+
+impl<T: ?Sized + DartSafe> Clone for RustOpaque<T> {
+    fn clone(&self) -> Self {
+        Self {
+            ptr: self.ptr.clone(),
+        }
     }
 }
 
