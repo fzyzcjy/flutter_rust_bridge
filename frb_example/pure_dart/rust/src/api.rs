@@ -1251,7 +1251,7 @@ pub fn run_opaque(opaque: RustOpaque<HideData>) -> String {
     opaque.hide_data()
 }
 
-#[allow(clippy::redundant-clone)]
+#[allow(clippy::redundant_clone)]
 pub fn run_opaque_inner(opaque: RustOpaque<HideData>) -> String {
     // Tests whether `.clone()` works even without the generic type wrapped by it
     // implementing Clone.
