@@ -7,6 +7,8 @@ use std::fs;
 use std::path::Path;
 
 use itertools::Itertools;
+mod logs;
+pub use crate::logs::init_logger;
 use log::info;
 use pathdiff::diff_paths;
 
