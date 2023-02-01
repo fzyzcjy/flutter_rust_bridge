@@ -4,7 +4,8 @@
 ///
 /// # Examples
 /// ```
-/// init_logger(&"./logs/").expect("failed to initial log");
+/// use lib_flutter_rust_bridge_codegen::init_logger;
+/// init_logger("./logs/").expect("failed to initial log");
 /// ```
 pub fn init_logger(path: &str) -> Result<(), fern::InitError> {
     std::fs::create_dir_all(path).unwrap();
