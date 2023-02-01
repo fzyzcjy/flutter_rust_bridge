@@ -1251,6 +1251,7 @@ pub fn run_opaque(opaque: RustOpaque<HideData>) -> String {
     opaque.hide_data()
 }
 
+#[allow(clippy::redundant-clone)]
 pub fn run_opaque_inner(opaque: RustOpaque<HideData>) -> String {
     opaque.clone().hide_data()
 }
