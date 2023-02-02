@@ -387,7 +387,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
     let Acc { common, io, wasm } = lines.join("\n");
     let impl_import = if config.wasm_enabled {
         format!(
-            "import 'package:js/js.dart';\nimport '{}'; export '{0}';",
+            "import '{}'; export '{0}';",
             Path::new(&config.dart_output_path)
                 .file_name()
                 .and_then(OsStr::to_str)
@@ -422,14 +422,14 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
             import: common_import,
             ..Default::default()
         },
-        io: DartBasicCode {
-            import: impl_import.clone(),
-            body: io,
+        wasm: DartBasicCode {
+            import: format!("import 'package:js/js.dart';\n{impl_import}"),
+            body: wasm,
             ..Default::default()
         },
-        wasm: DartBasicCode {
+        io: DartBasicCode {
             import: impl_import,
-            body: wasm,
+            body: io,
             ..Default::default()
         },
     }
