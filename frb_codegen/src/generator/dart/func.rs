@@ -76,7 +76,7 @@ pub(crate) fn generate_api_func(
 
     let const_meta_field_name = format!("k{}ConstMeta", func.name.to_case(Case::Pascal));
 
-    let signature = format!("{};", func_expr);
+    let signature = format!("{func_expr};");
 
     let comments = dart_comments(&func.comments);
 
@@ -149,19 +149,16 @@ pub(crate) fn generate_api_func(
         args = if is_sync { "" } else { "port_" },
     );
 
-    let companion_field_signature = format!(
-        "FlutterRustBridgeTaskConstMeta get {};",
-        const_meta_field_name,
-    );
+    let companion_field_signature =
+        format!("FlutterRustBridgeTaskConstMeta get {const_meta_field_name};");
 
     let companion_field_implementation = format!(
         "
-        FlutterRustBridgeTaskConstMeta get {} => const FlutterRustBridgeTaskConstMeta(
+        FlutterRustBridgeTaskConstMeta get {const_meta_field_name} => const FlutterRustBridgeTaskConstMeta(
             debugName: \"{}\",
             argNames: [{}],
         );
         ",
-        const_meta_field_name,
         func.name,
         func.inputs
             .iter()

@@ -162,14 +162,13 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 .collect::<Vec<_>>()
                 .join("\n");
             return format!(
-                "impl support::IntoDart for {} {{
+                "impl support::IntoDart for {name} {{
                     fn into_dart(self) -> support::DartAbi {{
-                        match {} {{
-                            {}
+                        match {self_ref} {{
+                            {variants}
                         }}.into_dart()
                     }}
-                }}",
-                name, self_ref, variants
+                }}"
             );
         }
         "".into()

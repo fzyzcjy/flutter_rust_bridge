@@ -89,7 +89,7 @@ impl<'a> Generator<'a> {
         lines.push(code_header());
 
         lines.push(String::new());
-        lines.push(format!("use crate::{}::*;", rust_wire_mod));
+        lines.push(format!("use crate::{rust_wire_mod}::*;"));
         lines.push("use flutter_rust_bridge::*;".to_owned());
         lines.push("use core::panic::UnwindSafe;".to_owned());
         lines.push("use std::sync::Arc;".to_owned());
@@ -209,7 +209,7 @@ impl<'a> Generator<'a> {
     }
 
     fn section_header_comment(&self, section_name: &str) -> String {
-        format!("// Section: {}\n", section_name)
+        format!("// Section: {section_name}\n")
     }
 
     fn generate_imports(
@@ -231,7 +231,7 @@ impl<'a> Generator<'a> {
             // Filter out `None` and unwrap
             .flatten()
             // Don't include imports from the API file
-            .filter(|import| !import.starts_with(&format!("use crate::{}::", rust_wire_mod)))
+            .filter(|import| !import.starts_with(&format!("use crate::{rust_wire_mod}::")))
             // de-duplicate
             .collect::<HashSet<String>>()
             .into_iter()
@@ -243,9 +243,8 @@ impl<'a> Generator<'a> {
         } else {
             format!(
                 "support::lazy_static! {{
-                    pub static ref {}: support::DefaultHandler = Default::default();
-                }}",
-                HANDLER_NAME
+                    pub static ref {HANDLER_NAME}: support::DefaultHandler = Default::default();
+                }}"
             )
         }
     }
@@ -350,7 +349,7 @@ impl<'a> Generator<'a> {
         let code_call_inner_func_result = if func.fallible {
             code_call_inner_func
         } else {
-            format!("Ok({})", code_call_inner_func)
+            format!("Ok({code_call_inner_func})")
         };
 
         let (handler_func_name, return_type, code_closure) = match func.mode {
@@ -358,24 +357,19 @@ impl<'a> Generator<'a> {
                 "wrap_sync",
                 Some("support::WireSyncReturn"),
                 format!(
-                    "{}
-                    {}",
-                    code_wire2api, code_call_inner_func_result,
+                    "{code_wire2api}
+                    {code_call_inner_func_result}"
                 ),
             ),
             IrFuncMode::Normal | IrFuncMode::Stream { .. } => (
                 "wrap",
                 None,
-                format!(
-                    "{} move |task_callback| {}",
-                    code_wire2api, code_call_inner_func_result,
-                ),
+                format!("{code_wire2api} move |task_callback| {code_call_inner_func_result}"),
             ),
         };
 
         let body = format!(
-            "{}.{}({}, move || {{ {} }})",
-            HANDLER_NAME, handler_func_name, wrap_info_obj, code_closure,
+            "{HANDLER_NAME}.{handler_func_name}({wrap_info_obj}, move || {{ {code_closure} }})"
         );
         let redirect_body = format!(
             "{}_impl({})",
@@ -405,7 +399,7 @@ impl<'a> Generator<'a> {
                 "fn {}_impl({}) {} {{ {} }}",
                 func.wire_func_name(),
                 params.common.join(","),
-                return_type.map(|t| format!("-> {}", t)).unwrap_or_default(),
+                return_type.map(|t| format!("-> {t}")).unwrap_or_default(),
                 body,
             ),
         })
@@ -557,7 +551,7 @@ pub fn generate_list_allocate_func(
 ) -> String {
     // let wasm = false;
     collector.generate(
-        &format!("new_{}_{}", safe_ident, block_index),
+        &format!("new_{safe_ident}_{block_index}"),
         [("len: i32", "int")],
         Some(&[
             list.rust_wire_modifier(Target::Io).as_str(),
@@ -608,11 +602,11 @@ impl ExternFuncCollector {
                 inputs: params
                     .iter()
                     .map(|(verbatim, dart)| {
-                        let verbatim = format!("{}", verbatim);
+                        let verbatim = format!("{verbatim}");
                         let (key, _) = verbatim.split_once(':').expect("Missing middle colon");
                         IrParam {
                             name: key.to_owned(),
-                            ty: format!("{}", dart),
+                            ty: format!("{dart}"),
                         }
                     })
                     .collect(),
@@ -630,7 +624,7 @@ impl ExternFuncCollector {
             "#,
             func_name,
             params.into_iter().map(|param| param.0).join(","),
-            return_type.map_or("".to_string(), |r| format!("-> {}", r)),
+            return_type.map_or("".to_string(), |r| format!("-> {r}")),
             body,
             attr = target.extern_func_attr(),
             call_conv = target.call_convention(),

@@ -19,8 +19,8 @@ fn main() {
     init_logger("./logs/", true).unwrap();
 
     // Tell Cargo that if the input Rust code changes, to rerun this build script.
-    println!("cargo:rerun-if-changed={}", RUST_INPUT_1);
-    println!("cargo:rerun-if-changed={}", RUST_INPUT_2);
+    println!("cargo:rerun-if-changed={RUST_INPUT_1}");
+    println!("cargo:rerun-if-changed={RUST_INPUT_2}");
     // Options for frb_codegen
     let mut raw_opts = RawOpts {
         // Path of input Rust code

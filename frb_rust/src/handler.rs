@@ -262,7 +262,7 @@ impl Error {
     /// The message of the error.
     pub fn message(&self) -> String {
         match self {
-            Error::ResultError(e) => format!("{:?}", e),
+            Error::ResultError(e) => format!("{e:?}"),
             Error::Panic(panic_err) => match panic_err.downcast_ref::<&'static str>() {
                 Some(s) => *s,
                 None => match panic_err.downcast_ref::<String>() {

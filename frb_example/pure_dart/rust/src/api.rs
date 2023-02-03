@@ -306,8 +306,8 @@ pub fn handle_stream(sink: StreamSink<String>, arg: String) {
     spawn!(|| {
         for i in 0..5 {
             let old_cnt = cnt2.fetch_add(1, Ordering::Relaxed);
-            let msg = format!("(thread=child, i={}, old_cnt={})", i, old_cnt);
-            format!("send data to sink msg={}", msg);
+            let msg = format!("(thread=child, i={i}, old_cnt={old_cnt})");
+            format!("send data to sink msg={msg}");
             let _ = sink2.add(msg);
             sleep(Duration::from_millis(100));
         }
@@ -316,8 +316,8 @@ pub fn handle_stream(sink: StreamSink<String>, arg: String) {
 
     for i in 0..5 {
         let old_cnt = cnt.fetch_add(1, Ordering::Relaxed);
-        let msg = format!("(thread=normal, i={}, old_cnt={})", i, old_cnt);
-        format!("send data to sink msg={}", msg);
+        let msg = format!("(thread=normal, i={i}, old_cnt={old_cnt})");
+        format!("send data to sink msg={msg}");
         let _ = sink.add(msg);
         sleep(Duration::from_millis(50));
     }
@@ -801,10 +801,10 @@ impl ConcatenateWith {
         ConcatenateWith { a }
     }
     pub fn concatenate(&self, b: String) -> String {
-        format!("{}{}", self.a, b)
+        format!("{}{b}", self.a)
     }
     pub fn concatenate_static(a: String, b: String) -> String {
-        format!("{}{}", a, b)
+        format!("{a}{b}")
     }
 
     pub fn handle_some_stream_sink(&self, key: u32, max: u32, sink: StreamSink<Log2>) {
@@ -813,7 +813,7 @@ impl ConcatenateWith {
             for i in 0..max {
                 sink.add(Log2 {
                     key,
-                    value: format!("{}{}", a, i),
+                    value: format!("{a}{i}"),
                 });
             }
             sink.close();

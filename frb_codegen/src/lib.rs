@@ -116,7 +116,7 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
 
     let c_dummy_code = generator::c::generate_dummy(&effective_func_names);
     for each_path in config.c_output_path.iter() {
-        println!("the path is {:?}", each_path);
+        println!("the path is {each_path:?}");
         fs::create_dir_all(Path::new(each_path).parent().unwrap())?;
         fs::write(
             each_path,
@@ -281,7 +281,7 @@ fn write_rust_modules(
     let Acc { common, io, wasm } = &generated_rust.code;
     fn emit_platform_module(name: &str, body: &str, config: &Opts, target: Target) -> String {
         if config.inline_rust {
-            format!("mod {} {{ use super::*;\n {} }}", name, body)
+            format!("mod {name} {{ use super::*;\n {body} }}")
         } else {
             let path = match target {
                 Target::Io => config.rust_io_output_path(),
@@ -289,7 +289,7 @@ fn write_rust_modules(
                 _ => panic!("unsupported target: {:?}", target),
             };
             let path = path.file_name().and_then(OsStr::to_str).unwrap();
-            format!("#[path = \"{}\"] mod {};", path, name)
+            format!("#[path = \"{path}\"] mod {name};")
         }
     }
     let common = format!(
@@ -319,14 +319,11 @@ pub use web::*;",
     );
     fs::write(&config.rust_output_path, common)?;
     if !config.inline_rust {
-        fs::write(
-            config.rust_io_output_path(),
-            format!("use super::*;\n{}", io),
-        )?;
+        fs::write(config.rust_io_output_path(), format!("use super::*;\n{io}"))?;
         if config.wasm_enabled {
             fs::write(
                 config.rust_wasm_output_path(),
-                format!("use super::*;\n{}", wasm),
+                format!("use super::*;\n{wasm}"),
             )?;
         }
     }

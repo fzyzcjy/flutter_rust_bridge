@@ -39,10 +39,10 @@ impl TypeRustGeneratorTrait for TypeOptionalGenerator<'_> {
             // For now, removed the parameter inner.self_access("v".to_owned())
             // and then added a bit of a hacky method here (not used self_access function),
             // as it only covers mirrored optional fields.
-            Some(wrapper) => format!("{}.map(|v| {}(v))", obj, wrapper,),
+            Some(wrapper) => format!("{obj}.map(|v| {wrapper}(v))"),
             None => obj,
         };
-        format!("{}.into_dart()", obj)
+        format!("{obj}.into_dart()")
     }
 
     fn imports(&self) -> Option<String> {

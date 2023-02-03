@@ -15,12 +15,12 @@ impl From<&str> for IrComment {
             let formatted = input
                 .split('\n')
                 .into_iter()
-                .map(|e| format!("///{}", e))
+                .map(|e| format!("///{e}"))
                 .collect::<Vec<_>>()
                 .join("\n");
             Self(formatted)
         } else {
-            Self(format!("///{}", input))
+            Self(format!("///{input}"))
         }
     }
 }

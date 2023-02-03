@@ -4,7 +4,7 @@ on:
       flutter_version:
         required: false
         type: string
-        default: '3.3.1'
+        default: '3.7.0'
       rust_version:
         required: false
         type: string
