@@ -1,3 +1,7 @@
+## Unreleased
+
+* Add logging to disk for frb_codegen #1019 (thanks @dbsxdbsx)
+
 ## 1.62.0
 
 * Migration to dart-sys #998 (thanks @rogurotus)
