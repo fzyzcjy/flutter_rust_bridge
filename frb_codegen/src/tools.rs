@@ -134,14 +134,10 @@ struct Pubspec {
 fn read_file(at: &str, filename: &str) -> anyhow::Result<String> {
     let file = PathBuf::from(at).join(filename);
     if !file.exists() {
-        return Err(anyhow::Error::msg(format!(
-            "missing {} in {}",
-            filename, at
-        )));
+        return Err(anyhow::Error::msg(format!("missing {filename} in {at}")));
     }
-    let content = std::fs::read_to_string(file).map_err(|e| {
-        anyhow::Error::msg(format!("unable to read {} in {}: {:#}", filename, at, e))
-    })?;
+    let content = std::fs::read_to_string(file)
+        .map_err(|e| anyhow::Error::msg(format!("unable to read {filename} in {at}: {e:#}")))?;
     Ok(content)
 }
 
@@ -192,9 +188,8 @@ impl FromStr for DartRepository {
         debug!("Guessing toolchain the runner is run into");
         let filename = DartToolchain::lock_filename();
         let lock_file = read_file(s, filename)?;
-        let lock_file: PubspecLock = serde_yaml::from_str(&lock_file).map_err(|e| {
-            anyhow::Error::msg(format!("unable to parse {} in {}: {:#}", filename, s, e))
-        })?;
+        let lock_file: PubspecLock = serde_yaml::from_str(&lock_file)
+            .map_err(|e| anyhow::Error::msg(format!("unable to parse {filename} in {s}: {e:#}")))?;
         if lock_file
             .packages
             .contains_key(&DartToolchain::Flutter.to_string())

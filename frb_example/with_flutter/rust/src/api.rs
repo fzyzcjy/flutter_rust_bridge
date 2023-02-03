@@ -19,10 +19,7 @@ pub fn draw_mandelbrot(
 }
 
 pub fn passing_complex_structs(root: TreeNode) -> String {
-    format!(
-        "Hi this string is from Rust. I received a complex struct: {:?}",
-        root
-    )
+    format!("Hi this string is from Rust. I received a complex struct: {root:?}")
 }
 
 pub fn returning_structs_with_boxed_fields() -> BoxedPoint {

@@ -47,12 +47,11 @@ pub fn code_header() -> String {
 
 pub fn modify_dart_wire_content(content_raw: &str, dart_wire_class_name: &str) -> String {
     let content = content_raw.replace(
-        &format!("class {} {{", dart_wire_class_name),
+        &format!("class {dart_wire_class_name} {{",),
         &format!(
-            "class {} implements FlutterRustBridgeWireBase {{
+            "class {dart_wire_class_name} implements FlutterRustBridgeWireBase {{
             @internal
             late final dartApi = DartApiDl(init_frb_dart_api_dl);",
-            dart_wire_class_name
         ),
     );
 
@@ -154,7 +153,7 @@ pub fn auto_add_mod_to_lib_core(rust_crate_dir: &str, rust_output_path: &str) ->
         .ok_or_else(|| anyhow!(""))?
         .to_string()
         .replace('/', "::");
-    let expect_code = format!("mod {};", mod_name);
+    let expect_code = format!("mod {mod_name};");
 
     let path_lib_rs = path_src_folder.join("lib.rs");
 
@@ -163,8 +162,7 @@ pub fn auto_add_mod_to_lib_core(rust_crate_dir: &str, rust_output_path: &str) ->
         info!("Inject `{}` into {:?}", &expect_code, &path_lib_rs);
 
         let comments = " /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */";
-        let modified_content_lib_rs =
-            format!("{}{}\n{}", expect_code, comments, raw_content_lib_rs);
+        let modified_content_lib_rs = format!("{expect_code}{comments}\n{raw_content_lib_rs}");
 
         fs::write(&path_lib_rs, modified_content_lib_rs).unwrap();
     }

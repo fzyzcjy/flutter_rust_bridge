@@ -230,7 +230,7 @@ fn generate_api_method(
         .collect::<Vec<_>>();
 
     if f.is_static_method() {
-        raw_func_param_list.insert(0, format!("required {} bridge", dart_api_class_name));
+        raw_func_param_list.insert(0, format!("required {dart_api_class_name} bridge"));
     }
 
     let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();

@@ -87,9 +87,9 @@ impl IrFuncMode {
     #[inline]
     pub fn dart_return_type(&self, inner: &str) -> String {
         match self {
-            Self::Normal => format!("Future<{}>", inner),
+            Self::Normal => format!("Future<{inner}>"),
             Self::Sync => inner.to_string(),
-            Self::Stream { .. } => format!("Stream<{}>", inner),
+            Self::Stream { .. } => format!("Stream<{inner}>"),
         }
     }
 

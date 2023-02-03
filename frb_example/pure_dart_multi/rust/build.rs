@@ -17,8 +17,8 @@ const CLASS_NAME_2: &str = "ApiClass2";
 
 fn main() {
     // Tell Cargo that if the input Rust code changes, to rerun this build script.
-    println!("cargo:rerun-if-changed={}", RUST_INPUT_1);
-    println!("cargo:rerun-if-changed={}", RUST_INPUT_2);
+    println!("cargo:rerun-if-changed={RUST_INPUT_1}");
+    println!("cargo:rerun-if-changed={RUST_INPUT_2}");
     // Options for frb_codegen
     let mut raw_opts = RawOpts {
         // Path of input Rust code

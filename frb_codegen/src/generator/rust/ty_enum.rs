@@ -193,14 +193,14 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
     fn self_access(&self, obj: String) -> String {
         let src = self.ir.get(self.context.ir_file);
         match &src.wrapper_name {
-            Some(_) => format!("{}.0", obj),
+            Some(_) => format!("{obj}.0"),
             None => obj,
         }
     }
 
     fn wrap_obj(&self, obj: String, _wired_fallible_func: bool) -> String {
         match self.wrapper_struct() {
-            Some(wrapper) => format!("{}({})", wrapper, obj),
+            Some(wrapper) => format!("{wrapper}({obj})"),
             None => obj,
         }
     }
@@ -218,10 +218,10 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
             .iter()
             .enumerate()
             .map(|(idx, variant)| {
-                let tag = format!("{}.into_dart()", idx);
+                let tag = format!("{idx}.into_dart()");
                 match &variant.kind {
                     IrVariantKind::Value => {
-                        format!("{}::{} => vec![{}],", self_path, variant.name, tag)
+                        format!("{self_path}::{} => vec![{tag}],", variant.name)
                     }
                     IrVariantKind::Struct(st) => {
                         let fields = Some(tag)
@@ -296,7 +296,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                     return None;
                 };
                 Some(collector.generate(
-                    &format!("inflate_{}", typ),
+                    &format!("inflate_{typ}"),
                     NO_PARAMS,
                     Some(&format!("*mut {}Kind", self.ir.name)),
                     &format!(
@@ -307,7 +307,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                         }})",
                         self.ir.name,
                         variant.name.rust_style(),
-                        format_args!("wire_{}", typ),
+                        format_args!("wire_{typ}"),
                         body.join(",")
                     ),
                     Io,

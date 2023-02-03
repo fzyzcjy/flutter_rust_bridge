@@ -326,8 +326,7 @@ fn get_outputs_for_flag_requires_full_data(
                 .error(
                     clap::ErrorKind::ValueValidation,
                     format!(
-                        "for more than 1 rust blocks, please specify each {} clearly with flag \"{}\"",
-                        raw_str, flag_str
+                        "for more than 1 rust blocks, please specify each {raw_str} clearly with flag \"{flag_str}\""
                     ),
                 )
                 .exit()
@@ -364,10 +363,7 @@ fn get_valid_canon_paths(paths: &[String]) -> Vec<String> {
 }
 
 fn format_fail_to_guess_error(name: &str) -> String {
-    format!(
-        "fail to guess {}, please specify it manually in command line arguments",
-        name
-    )
+    format!("fail to guess {name}, please specify it manually in command line arguments")
 }
 
 fn fallback_rust_crate_dir(rust_input_path: &str) -> Result<String> {
@@ -717,7 +713,7 @@ mod test {
             assert_eq!(each_block.len(), 3);
         });
 
-        result.iter().enumerate().for_each(|(i, each_block)| {
+        result.iter().for_each(|each_block| {
             // get essential info from 1st path which has an arbitrary name
             let (_, file) = get_dir_and_file_str(&each_block[0]);
             // check 2ed path
