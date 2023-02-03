@@ -2,7 +2,7 @@ use fern::colors::{Color, ColoredLevelConfig};
 use log::LevelFilter;
 
 /// Initializes logging to file and standard output.
-/// All logs with level `debug`(`verbose`=true or `RUST_LOG`="debug") or above
+/// All logs with level `debug`(with parameter `verbose`=true or system variable `RUST_LOG`="debug") or above
 /// will be recorded in `./logs/<date>.log`.
 /// Logs with level `info` and above will be output to standard output, with colored tag.
 ///
@@ -40,23 +40,25 @@ pub fn init_logger(path: &str, verbose: bool) -> Result<(), fern::InitError> {
         out.finish(format_args!("{}", format))
     });
 
-    let log_level = match std::env::var("RUST_LOG") {
-        Ok(val) => val,
-        Err(_) => if verbose { "debug" } else { "info" }.to_owned(),
-    };
-    if log_level == "debug" {
+    match std::env::var("RUST_LOG")
+        .unwrap_or_else(|_| if verbose { "debug" } else { "info" }.to_owned())
+        .as_str()
+    {
         // #[cfg(debug_assertions)]
-        std::fs::create_dir_all(path).unwrap();
-        d.level(LevelFilter::Debug)
-            .chain(fern::DateBased::new(path, "%Y-%m-%d.log"))
-            .chain(std::io::stdout())
-            .apply()?;
-    } else {
+        "debug" => {
+            std::fs::create_dir_all(path).unwrap();
+            d.level(LevelFilter::Debug)
+                .chain(fern::DateBased::new(path, "%Y-%m-%d.log"))
+                .chain(std::io::stdout())
+                .apply()?
+        }
         // #[cfg(not(debug_assertions))]
-        d.level(LevelFilter::Info)
+        "info" => d
+            .level(LevelFilter::Info)
             .level_for("cbindgen", LevelFilter::Error)
             .chain(std::io::stdout())
-            .apply()?;
+            .apply()?,
+        _ => panic!("only allow \"debug\" and \"info\""),
     }
 
     Ok(())
