@@ -21,7 +21,6 @@ jobs:
           profile: minimal
           toolchain: ${{ inputs.rust_version }}
           override: true
-          components: rustfmt, clippy
 
       - name: Install LLVM and Clang
         uses: KyleMayes/install-llvm-action@v1
