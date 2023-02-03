@@ -22,8 +22,8 @@ body:
     id: codegen-logs
     attributes:
       label: Codegen logs with `RUST_LOG=debug` environment variable
-      description: Run code generator with `RUST_LOG` environment variable set to `debug`. For example, `RUST_LOG=debug flutter_rust_bridge_codegen your_args`.Alternatively, add `--verbose` to command `flutter_rust_bridge_codegen` would get the same output.
-      placeholder: Run code generator with `RUST_LOG` environment variable set to `debug`. For example, `RUST_LOG=debug flutter_rust_bridge_codegen your_args`.Alternatively, add `--verbose` to command `flutter_rust_bridge_codegen` would get the same output.
+      description: Run code generator with `RUST_LOG` environment variable set to `debug`. For example, `RUST_LOG=debug flutter_rust_bridge_codegen your_args`. Alternatively, add `--verbose` to command `flutter_rust_bridge_codegen` would get the same output.
+      placeholder: Run code generator with `RUST_LOG` environment variable set to `debug`. For example, `RUST_LOG=debug flutter_rust_bridge_codegen your_args`. Alternatively, add `--verbose` to command `flutter_rust_bridge_codegen` would get the same output.
       render: shell
     validations:
       required: true
