@@ -8,7 +8,7 @@ const RUST_INPUT: &str = "src/api.rs";
 const DART_OUTPUT: &str = "../dart/lib/bridge_generated.dart";
 
 fn main() {
-    init_logger("./logs/").unwrap();
+    init_logger("./logs/", true).unwrap();
 
     // Tell Cargo that if the input Rust code changes, to rerun this build script.
     println!("cargo:rerun-if-changed={}", RUST_INPUT);
