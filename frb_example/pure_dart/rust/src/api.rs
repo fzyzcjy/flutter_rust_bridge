@@ -13,7 +13,7 @@ use anyhow::{anyhow, Result};
 use flutter_rust_bridge::*;
 use lazy_static::lazy_static;
 
-use crate::data::{EnumAlias, Id, MyEnum, MyStruct, StructAlias, UserIdAlias};
+use crate::data::{EnumAlias, Id, MyEnum, MyStruct, NonCloneData, StructAlias, UserIdAlias};
 pub use crate::data::{FrbOpaqueReturn, FrbOpaqueSyncReturn, HideData, NonSendHideData};
 use crate::new_module_system::{use_new_module_system, NewSimpleStruct};
 use crate::old_module_system::{use_old_module_system, OldSimpleStruct};
@@ -1251,13 +1251,6 @@ pub fn run_opaque(opaque: RustOpaque<HideData>) -> String {
     opaque.hide_data()
 }
 
-#[allow(clippy::redundant_clone)]
-pub fn run_opaque_inner(opaque: RustOpaque<HideData>) -> String {
-    // Tests whether `.clone()` works even without the generic type wrapped by it
-    // implementing Clone.
-    opaque.clone().hide_data()
-}
-
 pub fn run_opaque_with_delay(opaque: RustOpaque<HideData>) -> String {
     sleep(Duration::from_millis(1000));
     opaque.hide_data()
@@ -1268,6 +1261,17 @@ pub fn opaque_array() -> [RustOpaque<HideData>; 2] {
         RustOpaque::new(HideData::new()),
         RustOpaque::new(HideData::new()),
     ]
+}
+
+pub fn sync_create_non_clone() -> SyncReturn<RustOpaque<NonCloneData>> {
+    SyncReturn(RustOpaque::new(NonCloneData::new()))
+}
+
+#[allow(clippy::redundant_clone)]
+pub fn run_non_clone(clone: RustOpaque<NonCloneData>) -> String {
+    // Tests whether `.clone()` works even without the generic type wrapped by it
+    // implementing Clone.
+    clone.clone().hide_data()
 }
 
 pub fn create_sync_opaque() -> RustOpaque<NonSendHideData> {

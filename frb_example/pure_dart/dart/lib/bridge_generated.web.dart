@@ -86,6 +86,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  Object api2wire_NonCloneData(NonCloneData raw) {
+    return raw.shareOrMove();
+  }
+
+  @protected
   Object api2wire_NonSendHideData(NonSendHideData raw) {
     return raw.shareOrMove();
   }
@@ -950,6 +955,9 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   late final Finalizer<PlatformPointer> _MutexHideDataFinalizer =
       Finalizer<PlatformPointer>(inner.drop_opaque_MutexHideData);
   Finalizer<PlatformPointer> get MutexHideDataFinalizer => _MutexHideDataFinalizer;
+  late final Finalizer<PlatformPointer> _NonCloneDataFinalizer =
+      Finalizer<PlatformPointer>(inner.drop_opaque_NonCloneData);
+  Finalizer<PlatformPointer> get NonCloneDataFinalizer => _NonCloneDataFinalizer;
   late final Finalizer<PlatformPointer> _NonSendHideDataFinalizer =
       Finalizer<PlatformPointer>(inner.drop_opaque_NonSendHideData);
   Finalizer<PlatformPointer> get NonSendHideDataFinalizer => _NonSendHideDataFinalizer;
@@ -1189,11 +1197,13 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_run_opaque(NativePortType port_, Object opaque);
 
-  external dynamic /* void */ wire_run_opaque_inner(NativePortType port_, Object opaque);
-
   external dynamic /* void */ wire_run_opaque_with_delay(NativePortType port_, Object opaque);
 
   external dynamic /* void */ wire_opaque_array(NativePortType port_);
+
+  external dynamic /* Object */ wire_sync_create_non_clone();
+
+  external dynamic /* void */ wire_run_non_clone(NativePortType port_, Object clone);
 
   external dynamic /* void */ wire_create_sync_opaque(NativePortType port_);
 
@@ -1320,6 +1330,10 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external dynamic /*  */ drop_opaque_MutexHideData(ptr);
 
   external int /* *const c_void */ share_opaque_MutexHideData(ptr);
+
+  external dynamic /*  */ drop_opaque_NonCloneData(ptr);
+
+  external int /* *const c_void */ share_opaque_NonCloneData(ptr);
 
   external dynamic /*  */ drop_opaque_NonSendHideData(ptr);
 
@@ -1599,12 +1613,14 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_run_opaque(NativePortType port_, Object opaque) => wasmModule.wire_run_opaque(port_, opaque);
 
-  void wire_run_opaque_inner(NativePortType port_, Object opaque) => wasmModule.wire_run_opaque_inner(port_, opaque);
-
   void wire_run_opaque_with_delay(NativePortType port_, Object opaque) =>
       wasmModule.wire_run_opaque_with_delay(port_, opaque);
 
   void wire_opaque_array(NativePortType port_) => wasmModule.wire_opaque_array(port_);
+
+  dynamic /* Object */ wire_sync_create_non_clone() => wasmModule.wire_sync_create_non_clone();
+
+  void wire_run_non_clone(NativePortType port_, Object clone) => wasmModule.wire_run_non_clone(port_, clone);
 
   void wire_create_sync_opaque(NativePortType port_) => wasmModule.wire_create_sync_opaque(port_);
 
@@ -1752,6 +1768,10 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   dynamic /*  */ drop_opaque_MutexHideData(ptr) => wasmModule.drop_opaque_MutexHideData(ptr);
 
   int /* *const c_void */ share_opaque_MutexHideData(ptr) => wasmModule.share_opaque_MutexHideData(ptr);
+
+  dynamic /*  */ drop_opaque_NonCloneData(ptr) => wasmModule.drop_opaque_NonCloneData(ptr);
+
+  int /* *const c_void */ share_opaque_NonCloneData(ptr) => wasmModule.share_opaque_NonCloneData(ptr);
 
   dynamic /*  */ drop_opaque_NonSendHideData(ptr) => wasmModule.drop_opaque_NonSendHideData(ptr);
 

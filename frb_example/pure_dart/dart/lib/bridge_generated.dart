@@ -1767,22 +1767,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["opaque"],
       );
 
-  Future<String> runOpaqueInner({required HideData opaque, dynamic hint}) {
-    var arg0 = _platform.api2wire_HideData(opaque);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_run_opaque_inner(port_, arg0),
-      parseSuccessData: _wire2api_String,
-      constMeta: kRunOpaqueInnerConstMeta,
-      argValues: [opaque],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kRunOpaqueInnerConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "run_opaque_inner",
-        argNames: ["opaque"],
-      );
-
   Future<String> runOpaqueWithDelay({required HideData opaque, dynamic hint}) {
     var arg0 = _platform.api2wire_HideData(opaque);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -1812,6 +1796,37 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   FlutterRustBridgeTaskConstMeta get kOpaqueArrayConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "opaque_array",
         argNames: [],
+      );
+
+  NonCloneData syncCreateNonClone({dynamic hint}) {
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_create_non_clone(),
+      parseSuccessData: _wire2api_NonCloneData,
+      constMeta: kSyncCreateNonCloneConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncCreateNonCloneConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_create_non_clone",
+        argNames: [],
+      );
+
+  Future<String> runNonClone({required NonCloneData clone, dynamic hint}) {
+    var arg0 = _platform.api2wire_NonCloneData(clone);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_run_non_clone(port_, arg0),
+      parseSuccessData: _wire2api_String,
+      constMeta: kRunNonCloneConstMeta,
+      argValues: [clone],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kRunNonCloneConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "run_non_clone",
+        argNames: ["clone"],
       );
 
   Future<NonSendHideData> createSyncOpaque({dynamic hint}) {
@@ -2606,6 +2621,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   ShareFnType get shareOpaqueMutexHideData => _platform.inner.share_opaque_MutexHideData;
   OpaqueTypeFinalizer get MutexHideDataFinalizer => _platform.MutexHideDataFinalizer;
 
+  DropFnType get dropOpaqueNonCloneData => _platform.inner.drop_opaque_NonCloneData;
+  ShareFnType get shareOpaqueNonCloneData => _platform.inner.share_opaque_NonCloneData;
+  OpaqueTypeFinalizer get NonCloneDataFinalizer => _platform.NonCloneDataFinalizer;
+
   DropFnType get dropOpaqueNonSendHideData => _platform.inner.drop_opaque_NonSendHideData;
   ShareFnType get shareOpaqueNonSendHideData => _platform.inner.share_opaque_NonSendHideData;
   OpaqueTypeFinalizer get NonSendHideDataFinalizer => _platform.NonSendHideDataFinalizer;
@@ -2677,6 +2696,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   MutexHideData _wire2api_MutexHideData(dynamic raw) {
     return MutexHideData.fromRaw(raw[0], raw[1], this);
+  }
+
+  NonCloneData _wire2api_NonCloneData(dynamic raw) {
+    return NonCloneData.fromRaw(raw[0], raw[1], this);
   }
 
   NonSendHideData _wire2api_NonSendHideData(dynamic raw) {

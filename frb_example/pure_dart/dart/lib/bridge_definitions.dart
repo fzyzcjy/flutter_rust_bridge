@@ -466,10 +466,6 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kRunOpaqueConstMeta;
 
-  Future<String> runOpaqueInner({required HideData opaque, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kRunOpaqueInnerConstMeta;
-
   Future<String> runOpaqueWithDelay({required HideData opaque, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kRunOpaqueWithDelayConstMeta;
@@ -477,6 +473,14 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   Future<HideDataArray2> opaqueArray({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kOpaqueArrayConstMeta;
+
+  NonCloneData syncCreateNonClone({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSyncCreateNonCloneConstMeta;
+
+  Future<String> runNonClone({required NonCloneData clone, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kRunNonCloneConstMeta;
 
   Future<NonSendHideData> createSyncOpaque({dynamic hint});
 
@@ -704,6 +708,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   ShareFnType get shareOpaqueMutexHideData;
   OpaqueTypeFinalizer get MutexHideDataFinalizer;
 
+  DropFnType get dropOpaqueNonCloneData;
+  ShareFnType get shareOpaqueNonCloneData;
+  OpaqueTypeFinalizer get NonCloneDataFinalizer;
+
   DropFnType get dropOpaqueNonSendHideData;
   ShareFnType get shareOpaqueNonSendHideData;
   OpaqueTypeFinalizer get NonSendHideDataFinalizer;
@@ -813,6 +821,20 @@ class MutexHideData extends FrbOpaque {
 
   @override
   OpaqueTypeFinalizer get staticFinalizer => bridge.MutexHideDataFinalizer;
+}
+
+@sealed
+class NonCloneData extends FrbOpaque {
+  final FlutterRustBridgeExampleSingleBlockTest bridge;
+  NonCloneData.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
+  @override
+  DropFnType get dropFn => bridge.dropOpaqueNonCloneData;
+
+  @override
+  ShareFnType get shareFn => bridge.shareOpaqueNonCloneData;
+
+  @override
+  OpaqueTypeFinalizer get staticFinalizer => bridge.NonCloneDataFinalizer;
 }
 
 @sealed

@@ -1611,22 +1611,6 @@ fn wire_run_opaque_impl(
         },
     )
 }
-fn wire_run_opaque_inner_impl(
-    port_: MessagePort,
-    opaque: impl Wire2Api<RustOpaque<HideData>> + UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
-        WrapInfo {
-            debug_name: "run_opaque_inner",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_opaque = opaque.wire2api();
-            move |task_callback| Ok(run_opaque_inner(api_opaque))
-        },
-    )
-}
 fn wire_run_opaque_with_delay_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<RustOpaque<HideData>> + UnwindSafe,
@@ -1651,6 +1635,32 @@ fn wire_opaque_array_impl(port_: MessagePort) {
             mode: FfiCallMode::Normal,
         },
         move || move |task_callback| Ok(opaque_array()),
+    )
+}
+fn wire_sync_create_non_clone_impl() -> support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "sync_create_non_clone",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || Ok(sync_create_non_clone()),
+    )
+}
+fn wire_run_non_clone_impl(
+    port_: MessagePort,
+    clone: impl Wire2Api<RustOpaque<NonCloneData>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "run_non_clone",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_clone = clone.wire2api();
+            move |task_callback| Ok(run_non_clone(api_clone))
+        },
     )
 }
 fn wire_create_sync_opaque_impl(port_: MessagePort) {

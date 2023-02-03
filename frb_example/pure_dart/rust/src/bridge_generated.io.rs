@@ -587,11 +587,6 @@ pub extern "C" fn wire_run_opaque(port_: i64, opaque: wire_HideData) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_run_opaque_inner(port_: i64, opaque: wire_HideData) {
-    wire_run_opaque_inner_impl(port_, opaque)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_run_opaque_with_delay(port_: i64, opaque: wire_HideData) {
     wire_run_opaque_with_delay_impl(port_, opaque)
 }
@@ -599,6 +594,16 @@ pub extern "C" fn wire_run_opaque_with_delay(port_: i64, opaque: wire_HideData) 
 #[no_mangle]
 pub extern "C" fn wire_opaque_array(port_: i64) {
     wire_opaque_array_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_sync_create_non_clone() -> support::WireSyncReturn {
+    wire_sync_create_non_clone_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn wire_run_non_clone(port_: i64, clone: wire_NonCloneData) {
+    wire_run_non_clone_impl(port_, clone)
 }
 
 #[no_mangle]
@@ -896,6 +901,11 @@ pub extern "C" fn new_I32() -> wire_I32 {
 #[no_mangle]
 pub extern "C" fn new_MutexHideData() -> wire_MutexHideData {
     wire_MutexHideData::new_with_null_ptr()
+}
+
+#[no_mangle]
+pub extern "C" fn new_NonCloneData() -> wire_NonCloneData {
+    wire_NonCloneData::new_with_null_ptr()
 }
 
 #[no_mangle]
@@ -1412,6 +1422,21 @@ pub extern "C" fn share_opaque_MutexHideData(ptr: *const c_void) -> *const c_voi
 }
 
 #[no_mangle]
+pub extern "C" fn drop_opaque_NonCloneData(ptr: *const c_void) {
+    unsafe {
+        Arc::<NonCloneData>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn share_opaque_NonCloneData(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<NonCloneData>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[no_mangle]
 pub extern "C" fn drop_opaque_NonSendHideData(ptr: *const c_void) {
     unsafe {
         Arc::<NonSendHideData>::decrement_strong_count(ptr as _);
@@ -1490,6 +1515,11 @@ impl Wire2Api<RustOpaque<i32>> for wire_I32 {
 }
 impl Wire2Api<RustOpaque<Mutex<HideData>>> for wire_MutexHideData {
     fn wire2api(self) -> RustOpaque<Mutex<HideData>> {
+        unsafe { support::opaque_from_dart(self.ptr as _) }
+    }
+}
+impl Wire2Api<RustOpaque<NonCloneData>> for wire_NonCloneData {
+    fn wire2api(self) -> RustOpaque<NonCloneData> {
         unsafe { support::opaque_from_dart(self.ptr as _) }
     }
 }
@@ -2435,6 +2465,12 @@ pub struct wire_MutexHideData {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_NonCloneData {
+    ptr: *const core::ffi::c_void,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_NonSendHideData {
     ptr: *const core::ffi::c_void,
 }
@@ -3037,6 +3073,13 @@ impl NewWithNullPtr for wire_I32 {
     }
 }
 impl NewWithNullPtr for wire_MutexHideData {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            ptr: core::ptr::null(),
+        }
+    }
+}
+impl NewWithNullPtr for wire_NonCloneData {
     fn new_with_null_ptr() -> Self {
         Self {
             ptr: core::ptr::null(),

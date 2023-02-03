@@ -570,11 +570,6 @@ pub fn wire_run_opaque(port_: MessagePort, opaque: JsValue) {
 }
 
 #[wasm_bindgen]
-pub fn wire_run_opaque_inner(port_: MessagePort, opaque: JsValue) {
-    wire_run_opaque_inner_impl(port_, opaque)
-}
-
-#[wasm_bindgen]
 pub fn wire_run_opaque_with_delay(port_: MessagePort, opaque: JsValue) {
     wire_run_opaque_with_delay_impl(port_, opaque)
 }
@@ -582,6 +577,16 @@ pub fn wire_run_opaque_with_delay(port_: MessagePort, opaque: JsValue) {
 #[wasm_bindgen]
 pub fn wire_opaque_array(port_: MessagePort) {
     wire_opaque_array_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_sync_create_non_clone() -> support::WireSyncReturn {
+    wire_sync_create_non_clone_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_run_non_clone(port_: MessagePort, clone: JsValue) {
+    wire_run_non_clone_impl(port_, clone)
 }
 
 #[wasm_bindgen]
@@ -932,6 +937,21 @@ pub fn drop_opaque_MutexHideData(ptr: *const c_void) {
 pub fn share_opaque_MutexHideData(ptr: *const c_void) -> *const c_void {
     unsafe {
         Arc::<Mutex<HideData>>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_opaque_NonCloneData(ptr: *const c_void) {
+    unsafe {
+        Arc::<NonCloneData>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_NonCloneData(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<NonCloneData>::increment_strong_count(ptr as _);
         ptr
     }
 }
@@ -1846,6 +1866,16 @@ impl Wire2Api<RustOpaque<i32>> for JsValue {
 }
 impl Wire2Api<RustOpaque<Mutex<HideData>>> for JsValue {
     fn wire2api(self) -> RustOpaque<Mutex<HideData>> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+
+        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl Wire2Api<RustOpaque<NonCloneData>> for JsValue {
+    fn wire2api(self) -> RustOpaque<NonCloneData> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");
