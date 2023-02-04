@@ -47,7 +47,7 @@ impl IrTypeTrait for IrTypeBoxed {
                     .as_primitive()
                     .map(|prim| prim.dart_native_type().to_owned())
                     .unwrap_or_else(|| self.inner.dart_wire_type(target));
-                format!("ffi.Pointer<{}>", wire_type)
+                format!("ffi.Pointer<{wire_type}>")
             }
             Target::Common => "".into(),
         }

@@ -12,7 +12,7 @@ pub fn generate_dummy(func_names: &[String], api_block_name: &str) -> String {
         },
         content = func_names
             .iter()
-            .map(|func_name| { format!("    dummy_var ^= ((int64_t) (void*) {});", func_name) })
+            .map(|func_name| { format!("    dummy_var ^= ((int64_t) (void*) {func_name});") })
             .collect::<Vec<_>>()
             .join("\n"),
     )

@@ -37,11 +37,11 @@ impl MethodNamingUtil {
     }
 
     fn mark_as_static_method(s: &str, struct_name: &str) -> String {
-        format!("{}{}{}", s, STATIC_METHOD_MARKER, struct_name)
+        format!("{s}{STATIC_METHOD_MARKER}{struct_name}")
     }
 
     fn mark_as_non_static_method(s: &str, struct_name: &str) -> String {
-        format!("{}{}{}", s, METHOD_MARKER, struct_name)
+        format!("{s}{METHOD_MARKER}{struct_name}")
     }
 
     //Does `ir_file` has any methods directed for `struct_name`?

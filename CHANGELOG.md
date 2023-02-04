@@ -1,3 +1,8 @@
+## Unreleased
+
+* Add logging to disk for frb_codegen #1019 (thanks @dbsxdbsx)
+* Upgrade dart sys, upgrade ci version, and fix linters #1023 (thanks @rogurotus)
+
 ## 1.62.0
 
 * Migration to dart-sys #998 (thanks @rogurotus)
