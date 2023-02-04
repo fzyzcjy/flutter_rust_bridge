@@ -532,7 +532,7 @@ packages:
       name: vm_service
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "9.4.0"
+    version: "10.1.2"
   watcher:
     dependency: transitive
     description:
