@@ -246,7 +246,7 @@
 <p>More specifically, thanks for all these contributions:</p>
 <ul>
 <li><a href="https://github.com/Desdaemon">Desdaemon</a>: Support not only simple enums but also enums with fields which gets translated to native enum or freezed class in Dart. Support the Option type as nullable types in Dart. Support Vec of Strings type. Support comments in code. Add marker attributes for future usage. Add Linux and Windows support for with-flutter example, and make CI works for that. Avoid parameter collision. Overhaul the documentation and add several chapters to demonstrate configuring a Flutter+Rust project in all five platforms. Refactor command module. Precompiled binary CI workflow. Fix bugs. Add support for the Web platform, parallel to the existing mobile/desktop platforms, via WASM and JavaScript as intermediate values. GitHub retry actions. Implement draft of opaque types. Refactor Boxed and Option.</li>
-<li><a href="https://github.com/rogurotus">rogurotus</a>: Add Rust opaque types, enabling arbitrary Rust structs to be used as opaque Dart objects by generating wrappers and raw Arc pointers, as well as Dart opaque types, allowing to use any Dart objects in Rust code. Extend <code>SyncReturn</code> for more types. Fix generation bug. Fix SyncReturn. Migrate to dart-sys. Update CI.</li>
+<li><a href="https://github.com/rogurotus">rogurotus</a>: Add Rust opaque types, enabling arbitrary Rust structs to be used as opaque Dart objects by generating wrappers and raw Arc pointers, as well as Dart opaque types, allowing to use any Dart objects in Rust code. Extend <code>SyncReturn</code> for more types. Fix generation bug. Fix SyncReturn. Migrate to dart-sys. Update CI. Fix linters.</li>
 <li><a href="https://github.com/ngasull">ngasull</a>: Make sync mode support whatever types that classical async mode supports. Bump sdk.</li>
 <li><a href="https://github.com/SecondFlight">SecondFlight</a>: Allow structs and enums to be imported from other files within the crate by creating source graph. Auto-create relevant dir. Fix <code>store_dart_post_cobject</code> error with ffigen 6.0.</li>
 <li><a href="https://github.com/Unoqwy">Unoqwy</a>: Add struct mirrors, such that types in the external crates can be imported and used without redefining and copying.</li>
@@ -257,7 +257,7 @@
 <li><a href="https://github.com/Roms1383">Roms1383</a>: Fix build_runner calling bug. Remove global <code>ffigen</code> dependency. Improve version check. Fix enum name-variant conflicts. Support Chrono date time and UUID types. Migrate to Rust 1.64 workspace. Update and refactor CI. Update header comments. Code cleanup.</li>
 <li><a href="https://github.com/GregoryConrad">GregoryConrad</a>: Add doc to setup frb inside a Dart/Flutter library.</li>
 <li><a href="https://github.com/trobanga">trobanga</a>: Add support for <code>[T;N]</code> structs. Add <code>usize</code> support. Add a cmd argument. Separate dart tests.</li>
-<li><a href="https://github.com/dbsxdbsx">dbsxdbsx</a>: Allow generating multiple Rust and Dart files. Fix lint. Update doc.</li>
+<li><a href="https://github.com/dbsxdbsx">dbsxdbsx</a>: Allow generating multiple Rust and Dart files. Fix lint. Update doc. Add logging.</li>
 <li><a href="https://github.com/SoLongAndThanksForAllThePizza">SoLongAndThanksForAllThePizza</a>: Refactor and enhance SyncReturn to support more types.</li>
 <li><a href="https://github.com/huang12zheng">huang12zheng</a>: Support type aliases and nested ones. Tweak code generation.</li>
 <li><a href="https://github.com/hsfzxjy">hsfzxjy</a>: Fix SyncReturn use-after-free bug.</li>
@@ -3825,7 +3825,7 @@ to adapt existing code to WASM.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="command-line-arguments"><a class="header" href="#command-line-arguments">Command line arguments</a></h1>
 <p>Simply add <code>--help</code> to see full documentation. The following is a snapshot when running the command with <code>--help</code>:</p>
 <pre><code class="language-shell">$ flutter_rust_bridge_codegen --help
-flutter_rust_bridge_codegen 1.62.0
+flutter_rust_bridge_codegen 1.62.1
 
 USAGE:
     flutter_rust_bridge_codegen [OPTIONS] --rust-input &lt;RUST_INPUT&gt;... --dart-output &lt;DART_OUTPUT&gt;...
@@ -3894,7 +3894,7 @@ OPTIONS:
 </code></pre>
 <h2 id="flutter_rust_bridge_serve"><a class="header" href="#flutter_rust_bridge_serve"><code>flutter_rust_bridge_serve</code></a></h2>
 <pre><code class="language-shell">$ dart run flutter_rust_bridge_serve --help
-flutter_rust_bridge_serve 1.62.0
+flutter_rust_bridge_serve 1.62.1
 Develop Rust WASM modules with cross-origin isolation.
 
 USAGE:
