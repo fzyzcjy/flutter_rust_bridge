@@ -40,7 +40,7 @@ The `wasm-start` feature governs this behavior and is enabled by default.
 
 For developers who want to contribute to this project, here is the feature logging that needs to mention.
 
-When the code in `frb_codegen` is modified, usually developers want to build and run it locally for testing. Now with the `./logs.rs/init_logger` from `frb_codegen`, it is easy to do so.  Take `frb_example/pure_dart` as an example, in `./rust/build.rs`, with:
+When the code in `frb_codegen` is modified, usually developers want to build and run it locally for testing. Now with the `init_logger` in `logs.rs` from `frb_codegen`, it is easy to do so.  Take `frb_example/pure_dart` as an example, in `./rust/build.rs`, with:
 
 ```rust
 use lib_flutter_rust_bridge_codegen::init_logger;
