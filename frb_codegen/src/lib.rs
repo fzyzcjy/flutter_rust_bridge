@@ -114,7 +114,7 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
     ]
     .concat();
 
-    let c_dummy_code = generator::c::generate_dummy(&effective_func_names);
+    let c_dummy_code = generator::c::generate_dummy(&effective_func_names, &config.class_name);
     for each_path in config.c_output_path.iter() {
         println!("the path is {:?}", each_path);
         fs::create_dir_all(Path::new(each_path).parent().unwrap())?;

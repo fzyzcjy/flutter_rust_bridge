@@ -15,7 +15,7 @@ use toml::Value;
 
 use crate::ir::IrFile;
 use crate::parser;
-use crate::utils::BlockIndex;
+use crate::utils::{find_all_duplicates, BlockIndex};
 
 #[derive(Parser, Debug, PartialEq, Eq, Deserialize, Default)]
 #[clap(
@@ -104,7 +104,9 @@ pub struct Opts {
 }
 
 fn bail(err: clap::ErrorKind, message: Cow<str>) {
-    RawOpts::command().error(err, message).exit()
+    log::error!("<{}> {}", err, message);
+    std::process::exit(1);
+    // RawOpts::command().error(err, "").exit()
 }
 
 pub fn parse(raw: RawOpts) -> Vec<Opts> {
@@ -176,6 +178,12 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
         &fallback_class_name,
         "class_name",
     );
+    if !find_all_duplicates(&class_names).is_empty() {
+        bail(
+            clap::ErrorKind::TooManyOccurrences,
+            "there should be no duplication in --class-name's inputs".into(),
+        );
+    };
     if class_names.len() != rust_input_paths.len() {
         bail(
             clap::ErrorKind::WrongNumberOfValues,
