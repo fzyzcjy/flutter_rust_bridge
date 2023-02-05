@@ -203,7 +203,7 @@ fn generate_freezed_header(dart_output_file_root: &str, needs_freezed: bool) -> 
         DartBasicCode {
             import: "import 'package:freezed_annotation/freezed_annotation.dart' hide protected;"
                 .to_string(),
-            part: format!("part '{}.freezed.dart';", dart_output_file_root),
+            part: format!("part '{dart_output_file_root}.freezed.dart';"),
             body: "".to_string(),
         }
     } else {
@@ -288,7 +288,7 @@ fn generate_dart_declaration_body(
 }
 
 fn section_header(header: &str) -> String {
-    format!("// Section: {}\n", header)
+    format!("// Section: {header}\n")
 }
 
 /// A Dart bridge module consists of several members:
@@ -314,34 +314,39 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         ..
     } = spec;
     lines.push_acc(Acc {
-        common: format!(
-            "class {impl} implements {} {{
+        common: {
+            let implement = &dart_api_impl_class_name;
+            let plat = &dart_platform_class_name;
+            format!(
+                "class {implement} implements {dart_api_class_name} {{
                 final {plat} _platform;
-                factory {impl}(ExternalLibrary dylib) => {impl}.raw({plat}(dylib));
+                factory {implement}(ExternalLibrary dylib) => {implement}.raw({plat}(dylib));
 
                 /// Only valid on web/WASM platforms.
-                factory {impl}.wasm(FutureOr<WasmModule> module) =>
-                    {impl}(module as ExternalLibrary);
-                {impl}.raw(this._platform);",
-            dart_api_class_name,
-            impl = dart_api_impl_class_name,
-            plat = dart_platform_class_name,
-        ),
-        io: format!(
-            "class {plat} extends FlutterRustBridgeBase<{wire}> {{
-                {plat}(ffi.DynamicLibrary dylib) : super({wire}(dylib));",
-            plat = dart_platform_class_name,
-            wire = dart_wire_class_name,
-        ),
-        wasm: format!(
+                factory {implement}.wasm(FutureOr<WasmModule> module) =>
+                    {implement}(module as ExternalLibrary);
+                {implement}.raw(this._platform);"
+            )
+        },
+        io: {
+            let plat = &dart_platform_class_name;
+            let wire = &dart_wire_class_name;
+            format!(
+                "class {plat} extends FlutterRustBridgeBase<{wire}> {{
+                {plat}(ffi.DynamicLibrary dylib) : super({wire}(dylib));"
+            )
+        },
+        wasm: {
+            let plat = &dart_platform_class_name;
+            let wire = &dart_wire_class_name;
+            format!(
             "class {plat} extends FlutterRustBridgeBase<{wire}> with FlutterRustBridgeSetupMixin {{
                 {plat}(FutureOr<WasmModule> dylib) : super({wire}(dylib)) {{
                     setupMixinConstructor();
                 }}
                 Future<void> setup() => inner.init;",
-            plat = dart_platform_class_name,
-            wire = dart_wire_class_name,
-        ),
+        )
+        },
     });
 
     lines.extend(dart_funcs.iter().map(|func| {
@@ -562,7 +567,7 @@ fn generate_opaque_func(ty: &IrType) -> Acc<String> {
 }
 
 fn gen_wire2api_simple_type_cast(s: &str) -> String {
-    format!("return raw as {};", s)
+    format!("return raw as {s};")
 }
 
 /// A trailing newline is included if comments is not empty.

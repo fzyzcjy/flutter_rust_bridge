@@ -31,14 +31,12 @@ pub fn push_wasm_module(
     let dart_wasm_module_name = config.dart_wasm_module();
     lines.wasm.push(section_header("WASM wire module"));
     lines.wasm.push(format!(
-        "@JS('wasm_bindgen') external {} get wasmModule;",
-        dart_wasm_module_name,
+        "@JS('wasm_bindgen') external {dart_wasm_module_name} get wasmModule;"
     ));
     lines.wasm.push(format!(
-        "@JS() @anonymous class {wasm} implements WasmModule {{
+        "@JS() @anonymous class {dart_wasm_module_name} implements WasmModule {{
             external Object /* Promise */ call([String? moduleName]);
-            external {wasm} bind(dynamic thisArg, String moduleName);",
-        wasm = dart_wasm_module_name,
+            external {dart_wasm_module_name} bind(dynamic thisArg, String moduleName);",
     ));
     lines.wasm.push(dart_wasm_funcs.join("\n\n"));
     lines.wasm.push("}\n".into());
@@ -64,9 +62,9 @@ fn is_rust_pointer(ty: &str) -> bool {
 pub fn reconstruct_dart_wire_from_raw_repr(ty: &str) -> Cow<str> {
     let ty = ty.trim();
     if is_rust_pointer(ty) {
-        return format!("int /* {} */", ty).into();
+        return format!("int /* {ty} */").into();
     }
-    format!("dynamic /* {} */", ty).into()
+    format!("dynamic /* {ty} */").into()
 }
 
 pub fn generate_wasm_wire_func_decl(func: &IrFuncDisplay) -> String {

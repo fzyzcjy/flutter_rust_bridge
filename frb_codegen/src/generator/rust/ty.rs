@@ -34,7 +34,7 @@ pub trait TypeRustGeneratorTrait {
     }
 
     fn convert_to_dart(&self, obj: String) -> String {
-        format!("{}.into_dart()", obj)
+        format!("{obj}.into_dart()")
     }
 
     fn structs(&self) -> String {

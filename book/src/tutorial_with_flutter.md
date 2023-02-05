@@ -30,6 +30,8 @@ This step is optional, since I have generated the source code already (in quicks
 
 As soon as you make any modification to `api.rs`, you need to run codegen again. More information about requirements for code generation can be seen in the [Installing dependencies](integrate/deps.md) section.
 
+At this step you may need to [setup dependencies](./integrate/deps.md).
+
 ## Run app
 
 ### Prelogue: Command details

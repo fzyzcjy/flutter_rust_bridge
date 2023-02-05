@@ -64,8 +64,8 @@ pub enum SupportedInnerType {
 impl std::fmt::Display for SupportedInnerType {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
-            Self::Path(p) => write!(f, "{}", p),
-            Self::Array(u, len) => write!(f, "[{}; {}]", u, len),
+            Self::Path(p) => write!(f, "{p}"),
+            Self::Array(u, len) => write!(f, "[{u}; {len}]"),
             Self::Verbatim(ver) => write!(f, "{}", quote::quote!(#ver)),
             Self::Unit => write!(f, "()"),
         }
@@ -83,9 +83,9 @@ impl std::fmt::Display for SupportedPathType {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         let ident = self.ident.to_string();
         if let Some(generic) = &self.generic {
-            write!(f, "{}<{}>", ident, generic)
+            write!(f, "{ident}<{generic}>")
         } else {
-            write!(f, "{}", ident)
+            write!(f, "{ident}")
         }
     }
 }
@@ -378,7 +378,7 @@ impl<'a> TypeParser<'a> {
         let src_enum = self.src_enums[&ident.to_string()];
         let name = src_enum.ident.to_string();
         let wrapper_name = if src_enum.mirror {
-            Some(format!("mirror_{}", name))
+            Some(format!("mirror_{name}"))
         } else {
             None
         };
@@ -417,7 +417,7 @@ impl<'a> TypeParser<'a> {
                                             .ident
                                             .as_ref()
                                             .map(ToString::to_string)
-                                            .unwrap_or_else(|| format!("field{}", idx)),
+                                            .unwrap_or_else(|| format!("field{idx}")),
                                     ),
                                     ty: self.parse_type(&field.ty),
                                     is_final: true,
@@ -446,7 +446,7 @@ impl<'a> TypeParser<'a> {
             let field_name = field
                 .ident
                 .as_ref()
-                .map_or(format!("field{}", idx), ToString::to_string);
+                .map_or(format!("field{idx}"), ToString::to_string);
             let field_type = self.parse_type(&field.ty);
             fields.push(IrField {
                 name: IrIdent::new(field_name),
@@ -458,7 +458,7 @@ impl<'a> TypeParser<'a> {
 
         let name = src_struct.ident.to_string();
         let wrapper_name = if src_struct.mirror {
-            Some(format!("mirror_{}", name))
+            Some(format!("mirror_{name}"))
         } else {
             None
         };

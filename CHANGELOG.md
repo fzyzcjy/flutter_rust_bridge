@@ -1,3 +1,12 @@
+## 1.62.1
+
+* Add logging to disk for frb_codegen #1019 (thanks @dbsxdbsx)
+* Upgrade dart sys, upgrade ci version, and fix linters #1023 (thanks @rogurotus)
+
+## 1.62.0
+
+* Migration to dart-sys #998 (thanks @rogurotus)
+
 ## 1.61.1
 
 * Add import package:meta/meta.dart to all generated files #980 (thanks @jsonmona)

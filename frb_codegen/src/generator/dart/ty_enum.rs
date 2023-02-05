@@ -41,10 +41,9 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
 
         Acc {
             wasm: Some(format!(
-                "{}
+                "{variants}
 
-                throw Exception('unreachable');",
-                variants,
+                throw Exception('unreachable');"
             )),
             ..Default::default()
         }

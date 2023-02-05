@@ -412,7 +412,7 @@
       "login": "GregoryConrad",
       "name": "Gregory Conrad",
       "avatar_url": "https://avatars.githubusercontent.com/u/15874617?v=4",
-      "profile": "http://gsconrad.com",
+      "profile": "https://gsconrad.com",
       "contributions": [
         "doc",
         "code"
@@ -441,6 +441,15 @@
       "name": "Chris Ohk",
       "avatar_url": "https://avatars.githubusercontent.com/u/5622661?v=4",
       "profile": "https://github.com/utilForever",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "Demezy",
+      "name": "._.",
+      "avatar_url": "https://avatars.githubusercontent.com/u/38487319?v=4",
+      "profile": "https://github.com/Demezy",
       "contributions": [
         "doc"
       ]

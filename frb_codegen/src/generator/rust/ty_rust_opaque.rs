@@ -60,7 +60,7 @@ impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
     }
 
     fn convert_to_dart(&self, obj: String) -> String {
-        format!("{}.into_dart()", obj)
+        format!("{obj}.into_dart()")
     }
 
     fn structs(&self) -> String {
@@ -79,11 +79,10 @@ impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
                 &format!("new_{}", self.ir.safe_ident()),
                 NO_PARAMS,
                 Some(&format!(
-                    "{}{}",
+                    "{}{rust_wire}",
                     self.ir.rust_wire_modifier(crate::target::Target::Io),
-                    rust_wire
                 )),
-                &format!("{}::new_with_null_ptr()", rust_wire,),
+                &format!("{rust_wire}::new_with_null_ptr()"),
                 crate::target::Target::Io,
             )),
             ..Default::default()

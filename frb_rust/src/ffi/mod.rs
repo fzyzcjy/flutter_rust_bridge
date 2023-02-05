@@ -2,6 +2,8 @@
 pub type DartAbi = wasm_bindgen::JsValue;
 #[cfg(not(wasm))]
 pub type DartAbi = allo_isolate::ffi::DartCObject;
+#[cfg(not(wasm))]
+use dart_sys::Dart_PersistentHandle;
 
 use log::warn;
 use std::{mem, ops, sync::Arc, thread::ThreadId};
@@ -38,12 +40,8 @@ pub use web::*;
 pub type Channel = allo_isolate::Isolate;
 
 #[cfg(not(wasm))]
-pub mod dart_api;
-#[cfg(not(wasm))]
 pub mod io;
 
-#[cfg(not(wasm))]
-pub use dart_api::*;
 #[cfg(not(wasm))]
 pub use io::*;
 

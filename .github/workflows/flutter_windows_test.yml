@@ -4,7 +4,7 @@ on:
       flutter_version:
         required: false
         type: string
-        default: '3.3.1'
+        default: '3.7.0'
       rust_version:
         required: false
         type: string
@@ -22,6 +22,12 @@ jobs:
           toolchain: ${{ inputs.rust_version }}
           override: true
 
+      - name: Install LLVM and Clang
+        uses: KyleMayes/install-llvm-action@v1
+        with:
+          version: "10.0"
+          directory: ${{ runner.temp }}/llvm
+        
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
