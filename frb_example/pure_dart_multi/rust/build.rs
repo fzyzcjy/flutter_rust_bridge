@@ -58,7 +58,7 @@ fn main() {
 
     // generation of rust api for ffi
     let all_symbols = get_symbols_if_no_duplicates(&configs).unwrap();
-    for config in configs.iter() {
-        frb_codegen(config, &all_symbols).unwrap();
+    for (i, _) in configs.iter().enumerate() {
+        frb_codegen(&configs, i, &all_symbols).unwrap();
     }
 }

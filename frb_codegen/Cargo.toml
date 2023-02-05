@@ -24,7 +24,6 @@ clap = {version = "3.2.14", features = ["derive"]}
 convert_case = "0.5.0"
 delegate = "0.8.0"
 enum_dispatch = "0.3.8"
-extend = "1.1.2"
 itertools = "0.10.3"
 lazy_static = {workspace = true}
 log = "0.4"

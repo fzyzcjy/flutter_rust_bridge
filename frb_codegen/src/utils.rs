@@ -1,5 +1,5 @@
 use std::collections::HashSet;
-use std::ffi::OsStr;
+
 use std::fmt::Display;
 use std::fs;
 use std::hash::Hash;
@@ -89,10 +89,58 @@ impl Display for BlockIndex {
     }
 }
 
-#[extend::ext]
-impl std::path::Path {
+pub trait PathExt {
+    fn file_name_str(&self) -> Option<&str>;
+    fn directory_name_str(&self) -> Option<&str>;
+}
+
+impl PathExt for std::path::Path {
     #[inline]
     fn file_name_str(&self) -> Option<&str> {
-        self.file_name().and_then(OsStr::to_str)
+        self.file_name().and_then(std::ffi::OsStr::to_str)
     }
+    #[inline]
+    fn directory_name_str(&self) -> Option<&str> {
+        self.parent().and_then(|p| p.to_str())
+    }
+}
+
+/// given 2 paths, output the relative path from the 1st one to the 2ed one.
+/// # Examples
+/// ```
+/// let output_1 = relative_path("./a/b/c", "./a/d/e");
+/// assert_eq!(std::path::PathBuf ::from(output_1), std::path::PathBuf ::from("../../d/e"));
+/// let output_2 = relative_path("./a/d/e", "./a/b/c");
+/// assert_eq!(std::path::PathBuf ::from(output_2), std::path::PathBuf ::from("../../b/c"));
+/// let output_3 = relative_path("./a/b/c", "./a/b/c/d");
+/// assert_eq!(std::path::PathBuf ::from(output_3), std::path::PathBuf ::from("d"));
+/// let output_4 = relative_path("./a/b/c", "./a/b/c/");
+/// assert_eq!(std::path::PathBuf::from(output_4),std::path::PathBuf::from(""));
+/// ```
+pub fn relative_path(from: &str, to: &str) -> String {
+    let from = std::path::Path::new(from);
+    let to = std::path::Path::new(to);
+
+    let mut from_components = from.components().collect::<Vec<_>>();
+    let mut to_components = to.components().collect::<Vec<_>>();
+
+    while !from_components.is_empty()
+        && !to_components.is_empty()
+        && from_components[0] == to_components[0]
+    {
+        from_components.remove(0);
+        to_components.remove(0);
+    }
+
+    let relative_path = vec![".."; from_components.len()]
+        .into_iter()
+        .chain(
+            to_components
+                .iter()
+                .map(|c| c.as_os_str().to_str().unwrap()),
+        )
+        .collect::<Vec<&str>>()
+        .iter()
+        .collect::<std::path::PathBuf>();
+    relative_path.to_str().unwrap().to_owned()
 }

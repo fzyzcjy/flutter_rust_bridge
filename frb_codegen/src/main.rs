@@ -16,8 +16,8 @@ fn main() -> anyhow::Result<()> {
 
     // generation of rust api for ffi
     let all_symbols = get_symbols_if_no_duplicates(&configs)?;
-    for config in configs.iter() {
-        if let Err(err) = frb_codegen(config, &all_symbols) {
+    for (i, _) in configs.iter().enumerate() {
+        if let Err(err) = frb_codegen(&configs, i, &all_symbols) {
             error!("fatal: {}", err);
             exit(1);
         }

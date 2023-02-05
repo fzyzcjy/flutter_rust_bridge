@@ -43,7 +43,16 @@ mod transformer;
 mod utils;
 use error::*;
 
-pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Result<()> {
+pub fn frb_codegen(
+    configs: &[config::Opts],
+    index: usize,
+    all_symbols: &[String],
+) -> anyhow::Result<()> {
+    let config = configs
+        .iter()
+        .find(|each| each.block_index == BlockIndex(index))
+        .unwrap();
+
     let dart_root = config.dart_root_or_default();
     ensure_tools_available(&dart_root, config.skip_deps_check)?;
 
@@ -114,8 +123,8 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
     ]
     .concat();
 
-    let c_dummy_code = generator::c::generate_dummy(&effective_func_names, &config.class_name);
-    for each_path in config.c_output_path.iter() {
+    for (i, each_path) in config.c_output_path.iter().enumerate() {
+        let c_dummy_code = generator::c::generate_dummy(config, configs, &effective_func_names, i);
         println!("the path is {each_path:?}");
         fs::create_dir_all(Path::new(each_path).parent().unwrap())?;
         fs::write(
