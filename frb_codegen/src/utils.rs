@@ -108,6 +108,7 @@ impl PathExt for std::path::Path {
 /// given 2 paths, output the relative path from the 1st one to the 2ed one.
 /// # Examples
 /// ```
+/// use lib_flutter_rust_bridge_codegen::utils::relative_path;
 /// let output_1 = relative_path("./a/b/c", "./a/d/e");
 /// assert_eq!(std::path::PathBuf ::from(output_1), std::path::PathBuf ::from("../../d/e"));
 /// let output_2 = relative_path("./a/d/e", "./a/b/c");

@@ -40,7 +40,7 @@ mod parser;
 mod source_graph;
 mod target;
 mod transformer;
-mod utils;
+pub mod utils;
 use error::*;
 
 pub fn frb_codegen(
