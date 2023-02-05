@@ -29,11 +29,11 @@ scripts:
     description: Analyze a specific package in this project.
 
   check-format:
-    exec: flutter format --set-exit-if-changed .
+    exec: dart format --set-exit-if-changed .
     description: Check the format of a specific package in this project.
 
   format:
-    exec: flutter format .
+    exec: dart format .
     description: Format a specific package in this project.
 
   version:
