@@ -483,7 +483,7 @@ packages:
       name: test
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.22.2"
+    version: "1.23.0"
   test_api:
     dependency: transitive
     description:
@@ -497,7 +497,7 @@ packages:
       name: test_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.22"
+    version: "0.4.23"
   timing:
     dependency: transitive
     description:
