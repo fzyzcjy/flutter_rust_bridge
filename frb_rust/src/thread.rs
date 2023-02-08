@@ -1,19 +1,3 @@
-#[cfg(not(wasm))]
-fn get_thread_count() -> usize {
-    #[allow(unused_mut, unused_assignments)]
-    let mut thread_count: usize = 4;
-    #[cfg(feature = "thread-count-single")]
-    {
-        worker_count = 1;
-    }
-    #[cfg(feature = "thread-count-max")]
-    {
-        thread_count = std::thread::available_parallelism().unwrap().get();
-    }
-    thread_count
-}
-
-#[cfg(wasm)]
 fn get_worker_count() -> usize {
     #[allow(unused_mut, unused_assignments)]
     let mut worker_count: usize = 4;
@@ -23,7 +7,7 @@ fn get_worker_count() -> usize {
     }
     #[cfg(feature = "worker-count-max")]
     {
-        worker_count = 16;
+        worker_count = std::thread::available_parallelism().unwrap().get();
     }
     worker_count
 }
@@ -38,7 +22,7 @@ mod io {
     lazy_static! {
         pub static ref THREAD_POOL: Mutex<ThreadPool> = Mutex::new(ThreadPool::with_name(
             "frb_workerpool".into(),
-            get_thread_count()
+            get_worker_count()
         ));
     }
 }

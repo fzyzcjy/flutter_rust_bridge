@@ -8,14 +8,12 @@ However, if you think that this number of 4 is inappropriate for your project, y
 // Cargo.toml
 
 [dependencies]
-flutter_rust_bridge = { workspace = true, features = ["thread-count-max"] }
+flutter_rust_bridge = { workspace = true, features = ["worker-count-max"] }
 ```
 
 Currently available options related to worker pool are:
 
-- `thread-count-single`: Uses 1 thread in non-WASM configuration.
-- `thread-count-max`: Uses all available logical cores in non-WASM configuration.
-- `worker-count-single`: Uses 1 worker in WASM configuration.
-- `worker-count-max`: Uses 16 workers in WASM configuration.
+- `worker-count-single`: Uses 1 worker in the pool.
+- `worker-count-max`: Uses all available logical cores.
 
 Note that threadpool in non-WASM configuration provides true multithreaded parallelism while workerpool in WASM configuration is actually a singlethreaded JavaScript object.
