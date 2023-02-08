@@ -1,15 +1,20 @@
 fn get_worker_count() -> usize {
-    #[allow(unused_mut, unused_assignments)]
-    let mut worker_count: usize = 4;
-    #[cfg(feature = "worker-count-single")]
+    #[cfg(all(feature = "worker-max", feature = "worker-single"))]
     {
-        worker_count = 1;
+        compile_error!(r#"Cannot use "worker-max" and "worker-single" features together"#);
     }
-    #[cfg(feature = "worker-count-max")]
+    #[cfg(not(any(feature = "worker-max", feature = "worker-single")))]
     {
-        worker_count = std::thread::available_parallelism().unwrap().get();
+        4 // Default
     }
-    worker_count
+    #[cfg(feature = "worker-single")]
+    {
+        1 // One
+    }
+    #[cfg(feature = "worker-max")]
+    {
+        std::thread::available_parallelism().unwrap().get() // All logical cores
+    }
 }
 
 #[cfg(not(wasm))]
