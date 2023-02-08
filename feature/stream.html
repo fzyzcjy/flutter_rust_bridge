@@ -150,6 +150,8 @@
 <p>The <code>StreamSink</code> can be placed at any location. For example, <code>fn f(a: i32, b: StreamSink&lt;String&gt;)</code> and <code>fn f(a: StreamSink&lt;String&gt;, b: i32)</code> are both valid.</p>
 <h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
 <p>See <a href="logging.html">logging examples</a> which uses streams extensively.</p>
+<h2 id="what-about-streaming-from-dartflutter-to-rust"><a class="header" href="#what-about-streaming-from-dartflutter-to-rust">What about streaming from Dart/Flutter to Rust?</a></h2>
+<p>This is not currently supported. As a workaround, consider iterating through your Dart stream and calling a normal Rust function for each item.</p>
 
                     </main>
 
