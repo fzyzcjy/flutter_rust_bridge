@@ -153,6 +153,7 @@ More specifically, thanks for all these contributions:
 * [vincent-herlemont](https://github.com/vincent-herlemont): Loosen version.
 * [zaynetro](https://github.com/zaynetro): Improve doc.
 * [raphaelrobert](https://github.com/raphaelrobert): Remove oudated doc.
+* [elliotsayes](https://github.com/elliotsayes): Improve doc.
 * [alexthe2](https://github.com/alexthe2): Improve doc.
 * [tmpfs](https://github.com/tmpfs): Improve doc.
 * [thomas725](https://github.com/thomas725): Improve doc.
