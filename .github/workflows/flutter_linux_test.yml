@@ -4,11 +4,11 @@ on:
       flutter_version:
         required: false
         type: string
-        default: '3.7.0'
+        default: "3.7.1"
       rust_version:
         required: false
         type: string
-        default: '1.64.0'
+        default: "1.64.0"
 
 jobs:
   flutter_linux_test:

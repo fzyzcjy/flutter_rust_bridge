@@ -4,11 +4,11 @@ on:
       flutter_version:
         required: false
         type: string
-        default: '3.7.0'
+        default: "3.7.1"
       rust_version:
         required: false
         type: string
-        default: '1.64.0'
+        default: "1.64.0"
       device:
         required: true
         type: string
@@ -27,12 +27,12 @@ jobs:
       # #499, https://github.com/actions/virtual-environments/issues/5595
       - name: Configure ndk
         run: |
-            ANDROID_HOME=$HOME/Library/Android/sdk
-            SDKMANAGER=$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager
+          ANDROID_HOME=$HOME/Library/Android/sdk
+          SDKMANAGER=$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager
 
-            echo y | $SDKMANAGER "ndk;21.4.7075529"
+          echo y | $SDKMANAGER "ndk;21.4.7075529"
 
-            ln -sfn $ANDROID_HOME/ndk/21.4.7075529 $ANDROID_HOME/ndk-bundle
+          ln -sfn $ANDROID_HOME/ndk/21.4.7075529 $ANDROID_HOME/ndk-bundle
 
       - name: Install Rust toolchain
         id: checkout

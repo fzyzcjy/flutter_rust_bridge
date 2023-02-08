@@ -4,12 +4,12 @@ on:
       flutter_version:
         required: false
         type: string
-        # TODO should be 3.7.0 but has a weird bug currently https://github.com/fzyzcjy/flutter_rust_bridge/pull/1023#issuecomment-1415852845
-        default: '3.3.10'
+        # TODO should be 3.7.1 but has a weird bug currently https://github.com/fzyzcjy/flutter_rust_bridge/pull/1023#issuecomment-1415852845
+        default: "3.3.10"
       rust_version:
         required: false
         type: string
-        default: '1.64.0'
+        default: "1.64.0"
 
 jobs:
   flutter_macos_test:
