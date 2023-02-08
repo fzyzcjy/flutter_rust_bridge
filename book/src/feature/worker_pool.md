@@ -1,6 +1,8 @@
 # Worker pool
 
-When you call a Rust function with generated code from Dart side, it is executed inside a separate worker pool handled by flutter_rust_bridge. Flutter_rust_bridge internally creates a pool of 4 threads in non-WASM configuration and 4 workers in WASM configuration. Thanks to the pool, type of the return values in Dart is async `Future` which means heavy calculation in Rust does not block the user interface from responding.
+When you call a Rust function with generated code from Dart side, it is executed inside a separate worker pool handled by flutter_rust_bridge. Thanks to the pool, type of the return values in Dart is async `Future` which means heavy calculation in Rust does not block the user interface from responding.
+
+In non-WASM configuration, flutter_rust_bridge internally creates a pool of 4 threads. In WASM configuration, a pool with 4 web workers is used.
 
 However, if you think that this number of 4 is inappropriate for your project, you can choose a different option. By specifying features in `Cargo.toml`, you can optimize the number of threads or workers in the pool. Just include `features` key when adding flutter_rust_bridge as a dependency.
 
@@ -16,4 +18,4 @@ Currently available options related to worker pool are:
 - `worker-single`: Uses 1 worker in the pool.
 - `worker-max`: Uses all available logical cores.
 
-Note that threadpool in non-WASM configuration provides true multithreaded parallelism while workerpool in WASM configuration is actually a singlethreaded JavaScript object.
+Note that both non-WASM and WASM configurations provide true multithreaded parallelism. They both utilize actual threads in logical cores. However, you do need to be aware of the limitations of WASM, such as inability to use shared memory, etc.
