@@ -14,7 +14,7 @@ dependencies:
   ffi: ^2.0.1
   js: ^0.6.5
   test_core: ^0.4.16
-  test: ^1.21.4
+  test: ^1.23.0
   uuid: ^3.0.6
   collection: ^1.16.0 
 dev_dependencies:
