@@ -7,7 +7,7 @@ name: Post-release
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: '0,30 * * * *'
+    - cron: "0,30 * * * *"
 
 env:
   CARGO_TERM_COLOR: always
@@ -29,21 +29,20 @@ jobs:
           cp ./frb_example/with_flutter/rust/Cargo.toml.release ./frb_example/with_flutter/rust/Cargo.toml
 
       - name: Install toolchain
-        uses: actions-rs/toolchain@v1
+        uses: dtolnay/rust-toolchain@stable
         with:
-          profile: minimal
           toolchain: stable
 
       - uses: actions/setup-python@v2
         with:
-          python-version: '3.x'
+          python-version: "3.x"
 
       - name: Install valgrind and llvm
         run: sudo apt update && sudo apt install -y valgrind libclang-dev
 
       - uses: dart-lang/setup-dart@v1
         with:
-          sdk: '2.17.6' # TODO upgrade later #655
+          sdk: "2.17.6" # TODO upgrade later #655
 
       - name: Install dart dependencies (single block)
         working-directory: ./frb_example/pure_dart/dart
@@ -73,12 +72,12 @@ jobs:
       # #499, https://github.com/actions/virtual-environments/issues/5595
       - name: Configure ndk
         run: |
-           ANDROID_HOME=$HOME/Library/Android/sdk
-           SDKMANAGER=$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager
-           
-           echo y | $SDKMANAGER "ndk;21.4.7075529"
-           
-           ln -sfn $ANDROID_HOME/ndk/21.4.7075529 $ANDROID_HOME/ndk-bundle
+          ANDROID_HOME=$HOME/Library/Android/sdk
+          SDKMANAGER=$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager
+
+          echo y | $SDKMANAGER "ndk;21.4.7075529"
+
+          ln -sfn $ANDROID_HOME/ndk/21.4.7075529 $ANDROID_HOME/ndk-bundle
 
       - name: Use released version of flutter_rust_bridge instead of master version
         run: |
@@ -88,20 +87,19 @@ jobs:
           cp ./frb_example/with_flutter/rust/Cargo.toml.release ./frb_example/with_flutter/rust/Cargo.toml
 
       - name: Install Rust toolchain
-        uses: actions-rs/toolchain@v1
+        uses: dtolnay/rust-toolchain@stable
         with:
-          profile: minimal
           toolchain: 1.64.0
 
       - uses: subosito/flutter-action@v2
         with:
-          channel: 'stable'
-          flutter-version: '3.7.0'
+          channel: "stable"
+          flutter-version: "3.7.0"
           architecture: x64
 
       - uses: actions/setup-java@v1
         with:
-          java-version: '8.x' # "betterprogramming.pub" says must be java "8"
+          java-version: "8.x" # "betterprogramming.pub" says must be java "8"
 
       - name: Install cargo ndk
         run: cargo install cargo-ndk && rustup target add aarch64-linux-android armv7-linux-androideabi x86_64-linux-android i686-linux-android
@@ -175,9 +173,9 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
-          flutter-version: '3.7.0'
+          flutter-version: "3.7.0"
           architecture: x64
-      
+
       - uses: actions/checkout@v2
 
       - name: Install released version of codegen
@@ -219,5 +217,5 @@ jobs:
         env:
           RUST_LOG: debug
 
-      - name: 'Check no code change (If fail: Please ensure you have run codegen on examples and commit those changes!)'
+      - name: "Check no code change (If fail: Please ensure you have run codegen on examples and commit those changes!)"
         run: git diff --exit-code
