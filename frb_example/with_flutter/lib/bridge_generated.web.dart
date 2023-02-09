@@ -69,7 +69,6 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
     return raw;
   }
 // Section: finalizer
-
 }
 
 // Section: WASM wire module
@@ -91,7 +90,8 @@ class FlutterRustBridgeExampleWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_off_topic_memory_test_input_array(NativePortType port_, Uint8List input);
 
-  external dynamic /* void */ wire_off_topic_memory_test_output_zero_copy_buffer(NativePortType port_, int len);
+  external dynamic /* void */
+      wire_off_topic_memory_test_output_zero_copy_buffer(NativePortType port_, int len);
 
   external dynamic /* void */ wire_off_topic_memory_test_output_vec_u8(NativePortType port_, int len);
 

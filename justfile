@@ -108,10 +108,6 @@ refresh_all:
 
     just lint
 
-    sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart/dart/pubspec.lock
-    sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart_multi/dart/pubspec.lock
-    sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/with_flutter/pubspec.lock
-
 publish_all:
     (cd frb_codegen && cargo publish)
     (cd frb_rust && cargo publish)

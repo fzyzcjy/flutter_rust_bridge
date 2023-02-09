@@ -39,7 +39,7 @@ jobs:
 
       - uses: dart-lang/setup-dart@v1
         with:
-          sdk: '2.17.6' # TODO upgrade later #655
+          sdk: "2.17.6" # TODO upgrade later #655
 
       - name: Install dart dependencies (single block)
         working-directory: ./frb_example/pure_dart/dart
@@ -60,8 +60,6 @@ jobs:
         run: chmod +x ./run.sh && ./run.sh
         env:
           CARGO_TARGET_DIR: /home/runner # NOTE here, must be an absolute path, since in my script uses it in multiple different directories
-
-
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   flutter_ios_test:
@@ -145,16 +143,14 @@ jobs:
         working-directory: frb_dart
       - name: Run library unit tests
         working-directory: ./frb_dart
-        run:
-          dart pub get &&
+        run: dart pub get &&
           dart test test/*.dart &&
           dart test -p chrome test/*.dart
       - name: Run tests
         timeout-minutes: 20
         uses: Wandalen/wretry.action@v1.0.25
         with:
-          command:
-            dart run ../../../frb_dart/bin/serve.dart
+          command: dart run ../../../frb_dart/bin/serve.dart
             -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests
             --features=${{ join(matrix.features, ',') }}
           current_path: frb_example/pure_dart/dart
@@ -176,7 +172,7 @@ jobs:
 
       - uses: dart-lang/setup-dart@v1
         with:
-          sdk: '2.17.6' # TODO upgrade later #655
+          sdk: "2.17.6" # TODO upgrade later #655
       - name: Install llvm dependency (Linux)
         run: sudo apt update && sudo apt-get install -y libclang-dev
 
@@ -188,7 +184,6 @@ jobs:
           dart run --enable-vm-service --define=ENABLE_FRB_FFI_TEST_TOOL=true \
             ./frb_example/pure_dart/dart/lib/main_with_vm_service.dart \
             ./target/debug/libflutter_rust_bridge_example.so
-
 
   # -------------------------- linter --------------------------
   rust_build_and_test:
@@ -208,7 +203,7 @@ jobs:
 
       - uses: dart-lang/setup-dart@v1
         with:
-          sdk: '2.17.6' # TODO upgrade later #655
+          sdk: "2.17.6" # TODO upgrade later #655
       - name: Install llvm dependency (Linux)
         run: sudo apt update && sudo apt-get install -y libclang-dev
       - name: Build codegen
@@ -290,7 +285,7 @@ jobs:
 
       - uses: dart-lang/setup-dart@v1
         with:
-          sdk: '2.17.6' # TODO upgrade later #655
+          sdk: "2.17.6" # TODO upgrade later #655
       - name: Install llvm dependency (Linux)
         run: sudo apt update && sudo apt-get install -y libclang-dev
 
@@ -374,7 +369,7 @@ jobs:
       # - uses: dart-lang/setup-dart@v1
       - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
         with:
-          sdk: '2.17.6' # TODO upgrade later #655
+          sdk: "2.17.6" # TODO upgrade later #655
 
       - name: Install dependencies for dart runtime
         working-directory: ./frb_dart
@@ -410,7 +405,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
-          flutter-version: '3.7.0'
+          flutter-version: "3.7.0"
           # architecture: x64
 
       - name: Install dependencies for with_flutter example
@@ -418,7 +413,7 @@ jobs:
         run: flutter pub get
       - name: Verify formatting for with_flutter example
         working-directory: ./frb_example/with_flutter
-        run: flutter format --output=none --set-exit-if-changed --line-length 120 .
+        run: dart format --output=none --set-exit-if-changed --line-length 120 .
       - name: Analyze project source for with_flutter example
         working-directory: ./frb_example/with_flutter
         run: flutter analyze --fatal-infos

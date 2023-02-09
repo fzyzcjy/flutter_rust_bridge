@@ -892,7 +892,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_handle_zero_copy_vec_of_primitive(NativePortType port_, int n);
 
-  external dynamic /* List<dynamic> */ wire_handle_zero_copy_vec_of_primitive_sync(int n);
+  external dynamic /* List<dynamic> */
+      wire_handle_zero_copy_vec_of_primitive_sync(int n);
 
   external dynamic /* void */ wire_handle_struct(NativePortType port_, List<dynamic> arg, List<dynamic> boxed);
 
@@ -1132,20 +1133,20 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external dynamic /* void */ wire_concatenate__method__ConcatenateWith(
       NativePortType port_, List<dynamic> that, String b);
 
-  external dynamic /* void */ wire_concatenate_static__static_method__ConcatenateWith(
-      NativePortType port_, String a, String b);
+  external dynamic /* void */
+      wire_concatenate_static__static_method__ConcatenateWith(NativePortType port_, String a, String b);
 
-  external dynamic /* void */ wire_handle_some_stream_sink__method__ConcatenateWith(
-      NativePortType port_, List<dynamic> that, int key, int max);
+  external dynamic /* void */
+      wire_handle_some_stream_sink__method__ConcatenateWith(NativePortType port_, List<dynamic> that, int key, int max);
 
-  external dynamic /* void */ wire_handle_some_stream_sink_at_1__method__ConcatenateWith(
-      NativePortType port_, List<dynamic> that);
+  external dynamic /* void */
+      wire_handle_some_stream_sink_at_1__method__ConcatenateWith(NativePortType port_, List<dynamic> that);
 
-  external dynamic /* void */ wire_handle_some_static_stream_sink__static_method__ConcatenateWith(
-      NativePortType port_, int key, int max);
+  external dynamic /* void */
+      wire_handle_some_static_stream_sink__static_method__ConcatenateWith(NativePortType port_, int key, int max);
 
-  external dynamic /* void */ wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(
-      NativePortType port_);
+  external dynamic /* void */
+      wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(NativePortType port_);
 
   external dynamic /*  */ drop_opaque_BoxDartDebug(ptr);
 
