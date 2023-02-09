@@ -2,7 +2,7 @@
 #
 # Ensure README.md's steps can work correctly, where users use the released versions
 # instead of the code in master branch
-name: Post-release
+name: Post-Release
 
 on:
   workflow_dispatch: {}
