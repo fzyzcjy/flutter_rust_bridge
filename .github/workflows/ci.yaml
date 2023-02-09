@@ -72,11 +72,7 @@ jobs:
           - "iPad (9th generation) Simulator (16.2)"
           - "iPhone 12 Pro Max Simulator (16.2)"
       fail-fast: false
-<<<<<<< Updated upstream
-    uses: ./.github/workflows/flutter_ios_test.yml.hidden
-=======
     uses: ./.github/workflows/hidden/flutter_ios_test.yml
->>>>>>> Stashed changes
     with:
       device: ${{ matrix.device }}
 
@@ -89,27 +85,12 @@ jobs:
           - "pixel"
           - "Nexus 6"
       fail-fast: false
-<<<<<<< Updated upstream
-    uses: ./.github/workflows/flutter_android_test.yml.hidden
-=======
     uses: ./.github/workflows/hidden/flutter_android_test.yml
->>>>>>> Stashed changes
     with:
       device: ${{ matrix.device }}
 
   flutter_windows_test:
     name: Flutter (Windows) integration test
-<<<<<<< Updated upstream
-    uses: ./.github/workflows/flutter_windows_test.yml.hidden
-
-  flutter_macos_test:
-    name: Flutter (macOS) integration test
-    uses: ./.github/workflows/flutter_macos_test.yml.hidden
-
-  flutter_linux_test:
-    name: Flutter (Linux) integration test
-    uses: ./.github/workflows/flutter_linux_test.yml.hidden
-=======
     uses: ./.github/workflows/hidden/flutter_windows_test.yml
 
   flutter_macos_test:
@@ -119,7 +100,6 @@ jobs:
   flutter_linux_test:
     name: Flutter (Linux) integration test
     uses: ./.github/workflows/hidden/flutter_linux_test.yml
->>>>>>> Stashed changes
 
   dart_web_test:
     name: Dart (Web) unit tests
@@ -454,11 +434,7 @@ jobs:
           - image: ubuntu-20.04
             family: linux
 
-<<<<<<< Updated upstream
-    uses: ./.github/workflows/code_generator.yml.hidden
-=======
     uses: ./.github/workflows/hidden/code_generator.yml
->>>>>>> Stashed changes
     with:
       image: ${{ matrix.os.image }}
       family: ${{ matrix.os.family }}
