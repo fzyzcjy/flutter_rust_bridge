@@ -104,6 +104,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/jsonmona"><img src="https://avatars.githubusercontent.com/u/105187344?v=4?s=100" width="100px;" alt="jsonmona"/><br /><sub><b>jsonmona</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=jsonmona" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/utilForever"><img src="https://avatars.githubusercontent.com/u/5622661?v=4?s=100" width="100px;" alt="Chris Ohk"/><br /><sub><b>Chris Ohk</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=utilForever" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Demezy"><img src="https://avatars.githubusercontent.com/u/38487319?v=4?s=100" width="100px;" alt="._."/><br /><sub><b>._.</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Demezy" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/elliotsayes"><img src="https://avatars.githubusercontent.com/u/7699058?v=4?s=100" width="100px;" alt="elliotsayes"/><br /><sub><b>elliotsayes</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=elliotsayes" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
