@@ -5,3 +5,4 @@ In order to build and run this example, please visit [the pure-dart tutorial sec
 For a Flutter example with UI, please see the `with_flutter` example which is a neighbor of this example.
 
 For full documentation, please see README.md for the [main repository](https://github.com/fzyzcjy/flutter_rust_bridge).
+

@@ -3,7 +3,6 @@
 > Author: @AlienKevin
 
 This library does not yet support returning a Future type from Rust and this has to do with the difficulty of uniting the various approaches to async in Rust. The [Rust Book](https://rust-lang.github.io/async-book/01_getting_started/03_state_of_async_rust.html#language-and-library-support) summarized the current state of async support succinctly:
-
 > The most fundamental traits, types and functions, such as the Future trait are provided by the standard library. The async/await syntax is supported directly by the Rust compiler.
 
 > Many utility types, macros and functions are provided by the futures crate. They can be used in any async Rust application.
@@ -25,7 +24,6 @@ async fn get() -> anyhow::Result<String> {
 When you try to generate bindings for the `get` function, the generated code will contain errors because this library does not support returning Future from Rust.
 
 ## Mismatched runtime
-
 The next logic thing to try would be to convert the asynchronous code to synchronous by directly blocking the current thread and execute the code. For our first attempt, we wrap `futures::executor::block_on` around an async block containing reqwest calls.
 
 ```rust,ignore
@@ -44,7 +42,6 @@ fn get() -> anyhow::Result<String> {
 Since Reqwest uses the Tokio runtime instead of the futures runtime, our code panicked with the error "there is no reactor running, must be called from the context of a Tokio 1.x runtime". To fix this error, we have two ways to execute async codes using the Tokio runtime. Approach 1 is the simplest and uses the convenient [`tokio::main`](https://docs.rs/tokio/1.14.0/tokio/attr.main.html) macro to turn an async function to a synchronous one. Approach 2 requires you to explicitly create a new Tokio runtime and use its block_on function to run the future to completion.
 
 ## Approach 1 (macro)
-
 ```rust,ignore
 use anyhow;
 
@@ -55,9 +52,7 @@ async fn get() -> anyhow::Result<String> {
     Ok(data)
 }
 ```
-
 It has the following dependencies:
-
 ```toml
 [dependencies]
 futures = "0.3"
@@ -67,7 +62,6 @@ anyhow = { version = "1.0.49" }
 ```
 
 ## Approach 2 (runtime)
-
 ```rust,ignore
 use anyhow;
 use tokio::runtime::Runtime;
@@ -81,9 +75,7 @@ fn get() -> anyhow::Result<String> {
     })
 }
 ```
-
 It has the following dependencies:
-
 ```toml
 [dependencies]
 futures = "0.3"
@@ -93,7 +85,6 @@ anyhow = { version = "1.0.49" }
 ```
 
 ## Plain futures
-
 If you are using the plain futures crate without runtimes like Tokio, you should be safe to wrap the asynchronous code in an async block and use the [`futures::executor::block_on`](https://docs.rs/futures/0.3.18/futures/executor/fn.block_on.html) to run the future to completion:
 
 ```rust,ignore
@@ -115,7 +106,6 @@ fn main() {
 ```
 
 ## Avoid async
-
 Lastly, you can avoid async code all together by using synchronously/blocking version of the functions if they are available. In Reqwest, there's a module called `reqwest::blocking` designed specifically for this purpose. So you can achieve the same thing above without using async.
 
 ```rust,ignore
@@ -128,12 +118,11 @@ fn get() -> anyhow::Result<String> {
     Ok(data)
 }
 ```
-
 It has the following dependencies:
-
 ```toml
 [dependencies]
 futures = "0.3"
 reqwest = { version = "0.11.6", features = ["blocking"] }
 anyhow = { version = "1.0.49" }
 ```
+

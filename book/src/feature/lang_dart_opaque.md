@@ -4,9 +4,10 @@ Any Dart type can be passed to Rust. This is done by wrapping it with `DartOpaqu
 
 This library ensures that any Dart objects are always removed on the parent Dart thread.
 
-Different from non-opaque types, opaque types are not copied/moved/reconstructed at all. For example, if you pass around a Dart object `MyObject` in arguments and return values, you will get the exact _same_ object.
+Different from non-opaque types, opaque types are not copied/moved/reconstructed at all. For example, if you pass around a Dart object `MyObject` in arguments and return values, you will get the exact *same* object.
 
-## Example `DartOpaque`
+
+## Example `DartOpaque` 
 
 Rust:
 

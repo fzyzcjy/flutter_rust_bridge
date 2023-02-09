@@ -57,3 +57,4 @@ class KitchenSink with _$KitchenSink {
 And they are powered with [all functionalities](https://pub.dev/packages/freezed) of `freezed`.
 
 Remark: If you are curious about `Future`, have a look at [this](async_dart.md).
+

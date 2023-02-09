@@ -1,7 +1,7 @@
 # Integrating with iOS/MacOS
 
-_Credit to [brotskydotcom/rust-on-ios](https://github.com/brotskydotcom/rust-on-ios)
-for the inspiration of this method._
+*Credit to [brotskydotcom/rust-on-ios](https://github.com/brotskydotcom/rust-on-ios)
+for the inspiration of this method.*
 
 Setting up `flutter run` for iOS and MacOS is slightly more complicated than other platforms,
 due to its reliance on the Xcode user interface. This guide assumes you are running

@@ -20,3 +20,4 @@ pub fn f(input: Id) -> TestModel {...}
 ## Limitation
 
 The `ItemType` inside Generic is not supported yet, such as `SyncReturn<Id>`. The nested `ItemType` may also not be supported.
+

@@ -1,5 +1,4 @@
 # iOS & macOS
-
 Flutter libraries targeting iOS and macOS use cocoapods for dependencies,
 so this page will walk you through setting that up with FRB.
 
@@ -14,14 +13,11 @@ to compile your Rust library for all Apple platforms. Note: unlike all of the ot
 presented in this guide (which we can run on any host OS), `build-apple.sh` must be run on macOS.
 
 ## Directory Tree
-
 We will need to create several files for both iOS and macOS to:
-
 - Prevent our Rust symbols from being accidentally stripped
 - Bundle our "XCFramework" with our Flutter library
 
 ### `ios/Classes/EnforceBundling.swift` and `macos/Classes/EnforceBundling.swift`
-
 ```swift
 public func dummyMethodToEnforceBundling() -> Int64 {
   return dummy_method_to_enforce_bundling()
@@ -30,11 +26,9 @@ let dummyVar = dummyMethodToEnforceBundling();
 ```
 
 ### `ios/Frameworks/.gitkeep` and `macos/Frameworks/.gitkeep`
-
 No file contents here; simply add a blank file (i.e., `touch .gitkeep` in `bash`).
 
 ### `ios/.gitignore`
-
 ```gitignore
 Flutter/
 Runner/
@@ -43,7 +37,6 @@ Frameworks/*
 ```
 
 ### `macos/.gitignore`
-
 ```gitignore
 Flutter/
 Frameworks/*
@@ -51,7 +44,6 @@ Frameworks/*
 ```
 
 ### `ios/flutter_library_name.podspec` and `macos/flutter_library_name.podspec` (for Cocoapods)
-
 We cannot use the CMake approach taken on other platforms with Cocoapods,
 so we do something a bit different here. `.podspec` files are actually just ruby files;
 due to this observation, we can access the system shell to make arbitrary changes.
@@ -63,7 +55,6 @@ Also, replace other variables (i.e. `YourGitHubAccount` and `repo_name`) as need
 
 Note: the same exact `flutter_library_name.podspec` is used for both iOS and macOS;
 you can thank the `XCFramework` for this simplicity.
-
 ```ruby
 release_tag_name = 'library_name-v0.0.0' # generated; do not edit
 
@@ -105,9 +96,7 @@ end
 ```
 
 ## Build Script (`/scripts/build-apple.sh`)
-
 Replace `library_name` and `LibraryName` below as needed.
-
 ```bash
 #!/bin/bash
 

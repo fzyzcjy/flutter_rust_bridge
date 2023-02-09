@@ -13,3 +13,4 @@ flutter_rust_bridge_codegen \
 ```
 
 For more details, have a look at [this article](../article/generate_multiple_files.md).
+

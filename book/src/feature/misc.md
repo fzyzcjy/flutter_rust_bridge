@@ -40,7 +40,7 @@ The `wasm-start` feature governs this behavior and is enabled by default.
 
 For developers who want to contribute to this project, here is the feature logging that needs to mention.
 
-When the code in `frb_codegen` is modified, usually developers want to build and run it locally for testing. Now with the `init_logger` in `logs.rs` from `frb_codegen`, it is easy to do so. Take `frb_example/pure_dart` as an example, in `./rust/build.rs`, with:
+When the code in `frb_codegen` is modified, usually developers want to build and run it locally for testing. Now with the `init_logger` in `logs.rs` from `frb_codegen`, it is easy to do so.  Take `frb_example/pure_dart` as an example, in `./rust/build.rs`, with:
 
 ```rust
 use lib_flutter_rust_bridge_codegen::init_logger;
@@ -50,6 +50,6 @@ fn main() {
 }
 ```
 
-Then, all information from standard panic, `log::info!()`,` log::debug()!`... of `frb_codegen` would be recorded to `./logs/` with a file name of date, like `2023-02-01.log` in `frb_example/pure_dart/rust` as long as the example is built through `build.rs`. Note, the data from the same day would be appended to the same file.
+Then, all information from standard panic, `log::info!()`,` log::debug()!`...  of `frb_codegen` would be recorded to  `./logs/` with a file name of date, like `2023-02-01.log` in `frb_example/pure_dart/rust` as long as the example is built through `build.rs`. Note, the data from the same day would be appended to the same file.
 
 Moreover, if rust-analyzer is used, then whenever `frb_codegen` is modified, all examples with `build.rs` would be automatically triggered to rebuild. Then the log would be updated automatically to disk, which makes the whole developing routine easier.

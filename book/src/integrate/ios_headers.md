@@ -43,6 +43,7 @@ If you release your app through App Store, the steps above might not be sufficie
 
 Ref: https://docs.flutter.dev/development/platform-integration/ios/c-interop#stripping-ios-symbols
 
+
 ## MacOS
 
 Flutter on MacOS does not use headers by default, so let's go ahead

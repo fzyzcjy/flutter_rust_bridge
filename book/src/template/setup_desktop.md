@@ -37,5 +37,5 @@ A workaround is to ignore `rust.cmake` and manually configure CMake to build and
 [this comment](https://github.com/fzyzcjy/flutter_rust_bridge/issues/318#issuecomment-1038751426)
 in the case of Flutter on ARM Linux.
 
-[corrosion]: https://github.com/corrosion-rs/corrosion
+[Corrosion]: https://github.com/corrosion-rs/corrosion
 [this guide]: https://github.com/corrosion-rs/corrosion#installation

@@ -14,7 +14,6 @@ crate-type = ["lib", "staticlib", "cdylib"]
 ```
 
 where
-
 - `lib` is required for non-library targets, such as tests and benchmarks
 - `staticlib` is required for iOS
 - `cdylib` for all other platforms

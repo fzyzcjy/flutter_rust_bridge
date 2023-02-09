@@ -22,7 +22,7 @@ Just copied from [CI codegen.yml](https://github.com/fzyzcjy/flutter_rust_bridge
 
 ```
 (cd frb_codegen && cargo fmt --all); (cd frb_rust && cargo fmt --all); (cd frb_macros && cargo fmt --all); (cd frb_example/pure_dart/rust && cargo fmt --all); (cd frb_example/with_flutter/rust && cargo fmt --all);
-(cd frb_codegen && cargo clippy); (cd frb_rust && cargo clippy); (cd frb_macros && cargo clippy); (cd frb_example/pure_dart/rust && cargo clippy); (cd frb_example/with_flutter/rust && cargo clippy);
+(cd frb_codegen && cargo clippy); (cd frb_rust && cargo clippy); (cd frb_macros && cargo clippy); (cd frb_example/pure_dart/rust && cargo clippy); (cd frb_example/with_flutter/rust && cargo clippy);                                                                                                                                          
 (cd frb_dart && dart format . --line-length 80); (cd frb_example/pure_dart/dart && dart format . --line-length 120); (cd frb_example/with_flutter && dart format . --line-length 120);
 (cd frb_dart && dart analyze --fatal-infos); (cd frb_example/pure_dart/dart && dart analyze --fatal-infos); (cd frb_example/with_flutter && dart analyze --fatal-infos);
 ```
@@ -33,3 +33,4 @@ Just copied from [CI codegen.yml](https://github.com/fzyzcjy/flutter_rust_bridge
 flutter pub upgrade flutter_rust_bridge
 cargo update -p flutter_rust_bridge
 ```
+

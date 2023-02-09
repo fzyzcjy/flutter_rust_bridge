@@ -16,11 +16,11 @@ By adding `#[frb(non_final)]` to a field of struct, the corresponding field in D
 
 You can add dart metadata annotations using `dart_metadata` parameter in `frb` macro.
 
-- For annotations that are prelude by dart (e.g. `@deprecated`), just put annotation as a Rust literal.
-- If importing is needed, then add importing part behind the annotation string. Currently two forms of importing supported:
-  - `import 'somepackage'`
-  - `import 'somepackage' as somename`, where `somename` will be the prefix of the annotation
-- Multiple annotations are separated by comma `,`.
+* For annotations that are prelude by dart (e.g. `@deprecated`), just put annotation as a Rust literal.
+* If importing is needed, then add importing part behind the annotation string. Currently two forms of importing supported:
+  * `import 'somepackage'`
+  * `import 'somepackage' as somename`, where `somename` will be the prefix of the annotation
+* Multiple annotations are separated by comma `,`.
 
 See below for an example.
 

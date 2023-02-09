@@ -102,7 +102,6 @@ gen:
 That is, flutter_rust_bridge asks you to manually define the generated rust file names, feel free to choose any name you like.
 
 ## Some issues with separate commands
-
 Based on the last commands we come up with, everything seems to be fine --- the code generated, you can use them in Dart, and the whole project is compilable. And you would also notice some changes in `lib.rs`:
 
 ```rust,noplayground
