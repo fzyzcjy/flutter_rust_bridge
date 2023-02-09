@@ -83,13 +83,10 @@ check:
     cd frb_rust && cargo clippy -- -D warnings
     cd frb_rust && cargo clippy --target wasm32-unknown-unknown -- -D warnings
     cd frb_codegen && cargo clippy -- -D warnings
-    cd {{frb_pure}}/dart && dart pub get
     cd {{frb_pure}}/dart && dart pub get && dart analyze
     cd {{frb_pure}}/rust && cargo clippy
-    cd {{frb_pure_multi}}/dart && dart pub get
     cd {{frb_pure_multi}}/dart && dart pub get && dart analyze
     cd {{frb_pure_multi}}/rust && cargo clippy
-    cd {{frb_flutter}} && flutter pub get
     cd {{frb_flutter}} && flutter pub get && flutter analyze
     cd {{frb_flutter}}/rust && cargo clippy
 
