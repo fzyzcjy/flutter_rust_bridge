@@ -159,9 +159,5 @@ jobs:
         working-directory: ./frb_dart
         run: dart pub get && dart run bin/serve.dart --help > ../book/src/help.serve.txt
 
-      - name: "Check no code change
-          (If fail: Please ensure you have run codegen on examples and commit those changes!
-          On Windows, see https://github.com/fzyzcjy/flutter_rust_bridge/pull/536#issuecomment-1170259918
-          for additional instructions.)
-          If you have installed `just`, use `just precommit`."
+      - name: Check code format (Use `just precommit` if error occured)
         run: git diff --exit-code

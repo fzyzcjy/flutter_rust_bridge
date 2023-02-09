@@ -6,7 +6,7 @@ _Please list issues fixed by this PR here, using format "Fixes #the-issue-number
 
 - [ ] An issue to be fixed by this PR is listed above.
 - [ ] New tests are added to ensure new features are working. End-to-end tests are usually in the `./frb_example/pure_dart` example, more specifically, `rust/src/api.rs` and `dart/lib/main.dart`.
-- [ ] The code generator is run and the code is formatted (e.g. via `just refresh_all`).
+- [ ] The code generator is run and the code is formatted (via `just precommit`).
 - [ ] If this PR adds/changes features, documentations (in the `./book` folder) are updated.
 - [ ] CI is passing.
 
