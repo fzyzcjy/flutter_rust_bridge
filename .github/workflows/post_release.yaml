@@ -42,7 +42,7 @@ jobs:
 
       - uses: dart-lang/setup-dart@v1
         with:
-          sdk: "2.17.6" # TODO upgrade later #655
+          sdk: "2.19.2"
 
       - name: Install dart dependencies (single block)
         working-directory: ./frb_example/pure_dart/dart
