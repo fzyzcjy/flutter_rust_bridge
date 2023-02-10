@@ -33,6 +33,7 @@
 
     </head>
     <body>
+    <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "";
@@ -283,6 +284,7 @@
 <li><a href="https://github.com/vincent-herlemont">vincent-herlemont</a>: Loosen version.</li>
 <li><a href="https://github.com/zaynetro">zaynetro</a>: Improve doc.</li>
 <li><a href="https://github.com/raphaelrobert">raphaelrobert</a>: Remove oudated doc.</li>
+<li><a href="https://github.com/elliotsayes">elliotsayes</a>: Improve doc.</li>
 <li><a href="https://github.com/alexthe2">alexthe2</a>: Improve doc.</li>
 <li><a href="https://github.com/tmpfs">tmpfs</a>: Improve doc.</li>
 <li><a href="https://github.com/thomas725">thomas725</a>: Improve doc.</li>
@@ -1883,11 +1885,11 @@ scripts:
     description: Analyze a specific package in this project.
 
   check-format:
-    exec: flutter format --set-exit-if-changed .
+    exec: dart format --set-exit-if-changed .
     description: Check the format of a specific package in this project.
 
   format:
-    exec: flutter format .
+    exec: dart format .
     description: Format a specific package in this project.
 
   version:
@@ -2940,7 +2942,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
       - uses: bluefireteam/melos-action@v2
-      - uses: actions-rs/toolchain@v1
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
           components: rustfmt, clippy
@@ -2971,7 +2973,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
       - uses: bluefireteam/melos-action@v2
-      - uses: actions-rs/toolchain@v1
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
 
@@ -2998,7 +3000,7 @@ jobs:
       - uses: KyleMayes/install-llvm-action@v1
         with:
           version: &quot;15&quot;
-      - uses: actions-rs/toolchain@v1
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
 
@@ -3029,7 +3031,7 @@ jobs:
       - uses: KyleMayes/install-llvm-action@v1
         with:
           version: &quot;15&quot;
-      - uses: actions-rs/toolchain@v1
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
 
@@ -3052,7 +3054,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
       - uses: bluefireteam/melos-action@v2
-      - uses: actions-rs/toolchain@v1
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
 
@@ -3081,7 +3083,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
       - uses: bluefireteam/melos-action@v2
-      - uses: actions-rs/toolchain@v1
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
       - uses: nttld/setup-ndk@v1
@@ -3139,12 +3141,12 @@ on:
       version_parameters:
         description: 'Parameters to pass to &quot;melos version&quot;'
         required: true
-        default: ' '
+        default: &quot; &quot;
         type: choice
         options:
-          - '--'
-          - '--prerelease'
-          - '--graduate'
+          - &quot;--&quot;
+          - &quot;--prerelease&quot;
+          - &quot;--graduate&quot;
 
 jobs:
   create_release:
@@ -3205,7 +3207,7 @@ jobs:
       - uses: KyleMayes/install-llvm-action@v1
         with:
           version: &quot;15&quot;
-      - uses: actions-rs/toolchain@v1
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
       - uses: nttld/setup-ndk@v1
@@ -4326,5 +4328,6 @@ pub extern &quot;C&quot; fn new_uint_8_list(len: i32) -&gt; *mut wire_uint_8_lis
         });
         </script>
 
+    </div>
     </body>
 </html>

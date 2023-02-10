@@ -32,6 +32,7 @@
 
     </head>
     <body>
+    <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "../";
@@ -167,11 +168,11 @@ scripts:
     description: Analyze a specific package in this project.
 
   check-format:
-    exec: flutter format --set-exit-if-changed .
+    exec: dart format --set-exit-if-changed .
     description: Check the format of a specific package in this project.
 
   format:
-    exec: flutter format .
+    exec: dart format .
     description: Format a specific package in this project.
 
   version:
@@ -299,5 +300,6 @@ Simply read up on conventional commits in the <a href="https://melos.invertase.d
         <!-- Custom JS scripts -->
 
 
+    </div>
     </body>
 </html>
