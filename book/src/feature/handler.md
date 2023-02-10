@@ -50,14 +50,17 @@ impl MyExecutor {
 ```rust,noplayground
 // api.rs
 
-use flutter_rust_bridge::handler::ReportDartErrorHandler as RDEH;
-use flutter_rust_bridge::handler::SimpleHandler as SH;
-use flutter_rust_bridge::handler::ThreadPoolExecutor as TPE;
+use flutter_rust_bridge::handler::ReportDartErrorHandler;
+use flutter_rust_bridge::handler::SimpleHandler;
+use flutter_rust_bridge::handler::ThreadPoolExecutor;
 use lazy_static::lazy_static;
 
 lazy_static! {
-    static ref FLUTTER_RUST_BRIDGE_HANDLER: SH<TPE<RDEH>, RDEH> = SH::new(
-        TPE::new(RDEH), RDEH {}
-    );
+    static ref FLUTTER_RUST_BRIDGE_HANDLER:
+    SimpleHandler<ThreadPoolExecutor<ReportDartErrorHandler>, ReportDartErrorHandler> =
+        SimpleHandler::new(
+            ThreadPoolExecutor::new(ReportDartErrorHandler),
+            ReportDartErrorHandler {}
+        );
 }
 ```
