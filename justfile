@@ -4,7 +4,7 @@ frb_codegen_bin := "cargo run --manifest-path frb_codegen/Cargo.toml --"
 dir_example_pure_dart := "frb_example/pure_dart"
 dir_example_pure_dart_multi := "frb_example/pure_dart_multi"
 dir_example_with_flutter := "frb_example/with_flutter"
-line_length := "120"
+default_line_length := "120"
 dylib := if os() == "windows" {
     "flutter_rust_bridge_example.dll"
 } else if os() == "macos" {
@@ -22,6 +22,23 @@ rust_linter:
     cargo fmt
     cargo clippy -- -D warnings
     cd frb_rust && cargo clippy --target wasm32-unknown-unknown -- -D warnings
+
+dart_linter:
+    just dart_linter_single frb_dart dart 80
+    just dart_linter_single {{dir_example_pure_dart}} dart {{default_line_length}}
+    just dart_linter_single {{dir_example_pure_dart_multi}} dart {{default_line_length}}
+    just dart_linter_single {{dir_example_with_flutter}} dart {{default_line_length}}
+    just dart_linter_pana
+
+dart_linter_single directory executable line_length:
+    cd {{directory}} && {{executable}} pub get
+    # TODO `--fix` when non-CI
+    cd {{directory}} && dart format --output=none --set-exit-if-changed --line-length {{line_length}} .
+    cd {{directory}} && {{executable}} analyze --fatal-infos
+
+dart_linter_pana:
+    flutter pub global activate pana
+    cd frb_dart && pana --no-warning --line-length 80 --exit-code-threshold 0
 
 precommit:
     TODO rust_linter
@@ -44,17 +61,11 @@ gen-bridge: build
                 --dart-decl-output {{dir_example_with_flutter}}/lib/bridge_definitions.dart \
                 -c {{dir_example_with_flutter}}/ios/Runner/bridge_generated.h \
                 -e {{dir_example_with_flutter}}/macos/Runner/ \
-                --dart-format-line-length {{line_length}} --wasm
+                --dart-format-line-length {{default_line_length}} --wasm
     cd {{dir_example_pure_dart}}/rust && cargo clean -p flutter_rust_bridge_example_single_block_test && cargo build
     cd {{dir_example_pure_dart_multi}}/rust && cargo clean -p flutter_rust_bridge_example_multi_blocks_test && cargo build
     cd {{dir_example_pure_dart_multi}}/rust && cargo clean -p flutter_rust_bridge_example_multi_blocks_test && cargo build --features c-output
     cd {{dir_example_pure_dart_multi}}/rust && cargo clean -p flutter_rust_bridge_example_multi_blocks_test && cargo build --features c-output,extra-c-output-path
-
-lint *args:
-    dart format --fix . {{args}}
-    dart format --fix -l {{line_length}} {{dir_example_pure_dart}} {{args}}
-    dart format --fix -l {{line_length}} {{dir_example_pure_dart_multi}} {{args}}
-    dart format --fix -l {{line_length}} {{dir_example_with_flutter}} {{args}}
 
 test: test-support test-pure test-integration
 test-pure:
@@ -88,11 +99,6 @@ clean:
     cd {{dir_example_pure_dart_multi}}/rust && cargo clean
     cd {{dir_example_with_flutter}} && flutter clean
     cd {{dir_example_with_flutter}}/rust && cargo clean
-
-check:
-    cd {{dir_example_pure_dart}}/dart && dart pub get && dart analyze
-    cd {{dir_example_pure_dart_multi}}/dart && dart pub get && dart analyze
-    cd {{dir_example_with_flutter}} && flutter pub get && flutter analyze
 
 serve *args:
     cd {{invocation_directory()}} && dart run {{justfile_directory()}}/frb_dart/bin/serve.dart {{args}}

@@ -110,8 +110,8 @@ jobs:
     strategy:
       matrix:
         include:
-          - features: []
-          - features: [wasm-start]
+          - features: [ ]
+          - features: [ wasm-start ]
 
     steps:
       - uses: actions/checkout@v2
@@ -271,10 +271,8 @@ jobs:
           - 1.64.0
 
     steps:
-      - name: Checkout sources
-        uses: actions/checkout@v2
-      - name: Install toolchain
-        uses: dtolnay/rust-toolchain@stable
+      - uses: actions/checkout@v2
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: ${{ matrix.cargo_toolchain_version }}
           components: rustfmt, clippy
@@ -287,74 +285,21 @@ jobs:
       - run: just rust_linter
 
   dart_linter:
-    name: Dart linter using analyze and format
-
+    name: Dart linter
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-
-      # Note: This workflow uses the latest stable version of the Dart SDK.
-      # You can specify other versions if desired, see documentation here:
-      # https://github.com/dart-lang/setup-dart/blob/main/README.md
-      # - uses: dart-lang/setup-dart@v1
-      - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
+      - uses: dart-lang/setup-dart@v1
         with:
           sdk: "2.19.2"
-
-      - name: Install dependencies for dart runtime
-        working-directory: ./frb_dart
-        run: dart pub get
-      - name: Verify formatting for dart runtime
-        working-directory: ./frb_dart
-        # 80 instead of 120
-        run: dart format --output=none --set-exit-if-changed --line-length 80 .
-      - name: Analyze project source for dart runtime
-        working-directory: ./frb_dart
-        run: dart analyze --fatal-infos
-
-      - name: Install dependencies for pure_dart example
-        working-directory: ./frb_example/pure_dart/dart
-        run: dart pub get
-      - name: Verify formatting for pure_dart example
-        working-directory: ./frb_example/pure_dart/dart
-        run: dart format --output=none --set-exit-if-changed --line-length 120 .
-      - name: Analyze project source for pure_dart example
-        working-directory: ./frb_example/pure_dart/dart
-        run: dart analyze --fatal-infos
-
-      - name: Install dependencies for pure_dart_multi example
-        working-directory: ./frb_example/pure_dart_multi/dart
-        run: dart pub get
-      - name: Verify formatting for pure_dart_multi example
-        working-directory: ./frb_example/pure_dart_multi/dart
-        run: dart format --output=none --set-exit-if-changed --line-length 120 .
-      - name: Analyze project source for pure_dart_multi example
-        working-directory: ./frb_example/pure_dart_multi/dart
-        run: dart analyze --fatal-infos
-
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
           flutter-version: "3.7.2"
-          # architecture: x64
+      - uses: extractions/setup-just@v1
 
-      - name: Install dependencies for with_flutter example
-        working-directory: ./frb_example/with_flutter
-        run: flutter pub get
-      - name: Verify formatting for with_flutter example
-        working-directory: ./frb_example/with_flutter
-        run: dart format --output=none --set-exit-if-changed --line-length 120 .
-      - name: Analyze project source for with_flutter example
-        working-directory: ./frb_example/with_flutter
-        run: flutter analyze --fatal-infos
-
-      - name: Install pana
-        run: flutter pub global activate pana
-
-      - name: Analyze dart package using pana
-        working-directory: ./frb_dart
-        run: pana --no-warning --line-length 80 --exit-code-threshold 0
+      - run: just dart_linter
 
   # -------------------------- codegen --------------------------
   codegen:
