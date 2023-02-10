@@ -221,6 +221,7 @@ serve *args:
 # ============================ precommit ============================
 
 precommit:
+    just dart_pub_get
     just generate_all
     just rust_linter
     just dart_linter
