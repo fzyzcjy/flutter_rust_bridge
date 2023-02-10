@@ -19,8 +19,8 @@ concurrency:
 
 jobs:
   # -------------------------- test --------------------------
-  valgrind_test:
-    name: Valgrind test
+  dart_test_valgrind:
+    name: Dart test with Valgrind
     runs-on: ubuntu-latest
 
     steps:
@@ -46,7 +46,7 @@ jobs:
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   flutter_test_ios:
-    name: Flutter (iOS) integration test
+    name: Flutter integration test on iOS
     strategy:
       matrix:
         device:
@@ -59,7 +59,7 @@ jobs:
 
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
   flutter_test_android:
-    name: Flutter (Android) integration test
+    name: Flutter integration test on Android
     runs-on: macos-latest
     strategy:
       matrix:
@@ -133,7 +133,7 @@ jobs:
             script: cd frb_example/with_flutter && flutter test integration_test/main.dart --verbose
 
   flutter_test_windows:
-    name: Flutter (Windows) integration test
+    name: Flutter integration test on Windows
     runs-on: windows-2019
 
     steps:
@@ -163,7 +163,7 @@ jobs:
           just flutter_example_with_flutter_integration_test
 
   flutter_test_macos:
-    name: Flutter (macOS) integration test
+    name: Flutter integration test on MacOS
     runs-on: macos-11
 
     steps:
@@ -182,7 +182,7 @@ jobs:
       - run: just flutter_example_with_flutter_integration_test
 
   flutter_test_linux:
-    name: Flutter (Linux) integration test
+    name: Flutter integration test on Linux
     runs-on: ubuntu-latest
 
     steps:
@@ -210,8 +210,8 @@ jobs:
           mv linux/rust.require.cmake linux/rust.cmake
           just flutter_example_with_flutter_integration_test
 
-  dart_web_test:
-    name: Dart (Web) unit tests
+  dart_test_web:
+    name: Dart test on Web
     runs-on: ubuntu-latest
 
     strategy:
@@ -284,7 +284,7 @@ jobs:
       - run: just dart_test_vm_service
 
   rust_build_and_test:
-    name: Build and run Rust
+    name: Rust build and test
     runs-on: ubuntu-latest
 
     steps:
@@ -346,7 +346,7 @@ jobs:
 
   # -------------------------- codegen --------------------------
   codegen:
-    name: Run codegen
+    name: Codegen
     runs-on: ${{ matrix.image }}
 
     strategy:
