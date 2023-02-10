@@ -143,7 +143,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="handler"><a class="header" href="#handler">Handler</a></h1>
-<p>By default, the <code>DefaultHandler</code> is used. You can implement your own <code>Handler</code> doing whatever you want. In order to do this, create a variable named <code>FLUTTER_RUST_BRIDGE_HANDLER</code> in the Rust input file (probably using <code>lazy_static</code>). You may not need to create a brand new struct implementing <code>Handler</code>, but instead, use the <code>SimpleHandler</code> and customize its generic arguments such as its <code>Executor</code>.</p>
+<p>By default, the <code>DefaultHandler</code> is used for handling function calls. You can implement your own <code>Handler</code> with other custom behaviors you want. In order to do this, create a module variable named <code>FLUTTER_RUST_BRIDGE_HANDLER</code> in <code>api.rs</code>(probably using <code>lazy_static</code>) of your project. You may not need to create a brand new struct implementing <code>Handler</code>, but instead, use the <code>SimpleHandler</code> and customize its generic arguments such as its <code>Executor</code>.</p>
 <h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
 <h3 id="example-report-errors-to-your-backend-in-addition-to-telling-dart"><a class="header" href="#example-report-errors-to-your-backend-in-addition-to-telling-dart">Example: Report errors to your backend in addition to telling Dart</a></h3>
 <pre><code class="language-rust noplayground">pub struct MyErrorHandler(ReportDartErrorHandler);
@@ -153,7 +153,7 @@ impl ErrorHandler for MyErrorHandler {
         send_error_to_your_backend(&amp;error);
         self.0.handle_error(port, error)
     }
-    
+
     ...
 }</code></pre>
 <h3 id="example-log-when-execution-starts-and-ends"><a class="header" href="#example-log-when-execution-starts-and-ends">Example: Log when execution starts and ends</a></h3>
@@ -177,6 +177,22 @@ impl MyExecutor {
         debug!(&quot;(Rust) execute [{}] end delta_time={}ms&quot;, debug_name, start.elapsed().as_millis());
         ret
     }
+}</code></pre>
+<h3 id="example-use-a-simple-handler"><a class="header" href="#example-use-a-simple-handler">Example: Use a simple handler</a></h3>
+<pre><code class="language-rust noplayground">// api.rs
+
+use flutter_rust_bridge::handler::ReportDartErrorHandler;
+use flutter_rust_bridge::handler::SimpleHandler;
+use flutter_rust_bridge::handler::ThreadPoolExecutor;
+use lazy_static::lazy_static;
+
+lazy_static! {
+    static ref FLUTTER_RUST_BRIDGE_HANDLER:
+    SimpleHandler&lt;ThreadPoolExecutor&lt;ReportDartErrorHandler&gt;, ReportDartErrorHandler&gt; =
+        SimpleHandler::new(
+            ThreadPoolExecutor::new(ReportDartErrorHandler),
+            ReportDartErrorHandler {}
+        );
 }</code></pre>
 
                     </main>

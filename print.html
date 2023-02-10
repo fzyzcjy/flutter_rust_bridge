@@ -169,7 +169,7 @@
 <p>Here is my another open-source library :) https://github.com/fzyzcjy/flutter_smooth.</p>
 <h2 id="-contributors"><a class="header" href="#-contributors">✨ Contributors</a></h2>
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-<p><a href="index.html#contributors-"><img src="https://img.shields.io/badge/all_contributors-49-orange.svg?style=flat-square" alt="All Contributors" /></a></p>
+<p><a href="index.html#contributors-"><img src="https://img.shields.io/badge/all_contributors-50-orange.svg?style=flat-square" alt="All Contributors" /></a></p>
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p>Thanks goes to these wonderful people (<a href="https://allcontributors.org/docs/en/emoji-key">emoji key</a> following <a href="https://github.com/all-contributors/all-contributors">all-contributors</a> specification):</p>
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
@@ -240,6 +240,9 @@
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Demezy"><img src="https://avatars.githubusercontent.com/u/38487319?v=4?s=100" width="100px;" alt="._."/><br /><sub><b>._.</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Demezy" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/elliotsayes"><img src="https://avatars.githubusercontent.com/u/7699058?v=4?s=100" width="100px;" alt="elliotsayes"/><br /><sub><b>elliotsayes</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=elliotsayes" title="Documentation">📖</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/temeddix"><img src="https://avatars.githubusercontent.com/u/66480156?v=4?s=100" width="100px;" alt="Kim Dong-Hyun"/><br /><sub><b>Kim Dong-Hyun</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=temeddix" title="Code">💻</a></td>
+    </tr>
   </tbody>
 </table>
 <!-- markdownlint-restore -->
@@ -265,6 +268,7 @@
 <li><a href="https://github.com/hsfzxjy">hsfzxjy</a>: Fix SyncReturn use-after-free bug.</li>
 <li><a href="https://github.com/Cupnfish">Cupnfish</a>: Support arrays as function parameters. Allow multi mirror.</li>
 <li><a href="https://github.com/alanlzhang">alanlzhang</a>: Add generation for Dart metadata. Enhance module parser.</li>
+<li><a href="https://github.com/temeddix">temeddix</a>: Fix broken CI.</li>
 <li><a href="https://github.com/Zaitam">Zaitam</a>: Fix when method return struct.</li>
 <li><a href="https://github.com/AlienKevin">AlienKevin</a>: Add flutter example for macOS. Add doc for Android NDK bug.</li>
 <li><a href="https://github.com/banool">banool</a>: Fix pubspec parsing. Fix symbol-stripping doc.</li>
@@ -773,7 +777,7 @@ await Future.wait([a, b, c]); // You may need to learn `Future` and `async` in D
 </code></pre>
 <p>Then it will take 1 second instead of 3 seconds to complete the code, because multiple <code>compute</code> can run concurrently.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="handler"><a class="header" href="#handler">Handler</a></h1>
-<p>By default, the <code>DefaultHandler</code> is used. You can implement your own <code>Handler</code> doing whatever you want. In order to do this, create a variable named <code>FLUTTER_RUST_BRIDGE_HANDLER</code> in the Rust input file (probably using <code>lazy_static</code>). You may not need to create a brand new struct implementing <code>Handler</code>, but instead, use the <code>SimpleHandler</code> and customize its generic arguments such as its <code>Executor</code>.</p>
+<p>By default, the <code>DefaultHandler</code> is used for handling function calls. You can implement your own <code>Handler</code> with other custom behaviors you want. In order to do this, create a module variable named <code>FLUTTER_RUST_BRIDGE_HANDLER</code> in <code>api.rs</code>(probably using <code>lazy_static</code>) of your project. You may not need to create a brand new struct implementing <code>Handler</code>, but instead, use the <code>SimpleHandler</code> and customize its generic arguments such as its <code>Executor</code>.</p>
 <h2 id="examples-1"><a class="header" href="#examples-1">Examples</a></h2>
 <h3 id="example-report-errors-to-your-backend-in-addition-to-telling-dart"><a class="header" href="#example-report-errors-to-your-backend-in-addition-to-telling-dart">Example: Report errors to your backend in addition to telling Dart</a></h3>
 <pre><code class="language-rust noplayground">pub struct MyErrorHandler(ReportDartErrorHandler);
@@ -783,7 +787,7 @@ impl ErrorHandler for MyErrorHandler {
         send_error_to_your_backend(&amp;error);
         self.0.handle_error(port, error)
     }
-    
+
     ...
 }</code></pre>
 <h3 id="example-log-when-execution-starts-and-ends"><a class="header" href="#example-log-when-execution-starts-and-ends">Example: Log when execution starts and ends</a></h3>
@@ -807,6 +811,22 @@ impl MyExecutor {
         debug!(&quot;(Rust) execute [{}] end delta_time={}ms&quot;, debug_name, start.elapsed().as_millis());
         ret
     }
+}</code></pre>
+<h3 id="example-use-a-simple-handler"><a class="header" href="#example-use-a-simple-handler">Example: Use a simple handler</a></h3>
+<pre><code class="language-rust noplayground">// api.rs
+
+use flutter_rust_bridge::handler::ReportDartErrorHandler;
+use flutter_rust_bridge::handler::SimpleHandler;
+use flutter_rust_bridge::handler::ThreadPoolExecutor;
+use lazy_static::lazy_static;
+
+lazy_static! {
+    static ref FLUTTER_RUST_BRIDGE_HANDLER:
+    SimpleHandler&lt;ThreadPoolExecutor&lt;ReportDartErrorHandler&gt;, ReportDartErrorHandler&gt; =
+        SimpleHandler::new(
+            ThreadPoolExecutor::new(ReportDartErrorHandler),
+            ReportDartErrorHandler {}
+        );
 }</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="initialization"><a class="header" href="#initialization">Initialization</a></h1>
 <p>If you want that feature, have a look at <code>FlutterRustBridgeSetupMixin</code> in the Dart side. (More documentaions to be added; you can create an issue if you have questions now.)</p>
