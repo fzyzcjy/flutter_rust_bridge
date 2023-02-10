@@ -106,6 +106,11 @@ generate_ffigen:
 cargo_run_codegen := "cargo run --manifest-path frb_codegen/Cargo.toml --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --features 'chrono,uuid' -- "
 
 generate_bridge:
+    just _generate_bridge_pure_dart
+    just _generate_bridge_pure_dart_multi
+    just _generate_bridge_with_flutter
+
+_generate_bridge_pure_dart:
     {{cargo_run_codegen}} \
         --rust-input frb_example/pure_dart/rust/src/api.rs \
         --dart-output frb_example/pure_dart/dart/lib/bridge_generated.dart \
@@ -113,6 +118,7 @@ generate_bridge:
         --dart-format-line-length 120 \
         --wasm
 
+_generate_bridge_pure_dart_multi:
     {{cargo_run_codegen}} \
         --rust-input frb_example/pure_dart_multi/rust/src/api_1.rs frb_example/pure_dart_multi/rust/src/api_2.rs \
         --dart-output frb_example/pure_dart_multi/dart/lib/bridge_generated_api_1.dart frb_example/pure_dart_multi/dart/lib/bridge_generated_api_2.dart \
@@ -121,6 +127,7 @@ generate_bridge:
         --class-name ApiClass1 ApiClass2 \
         --wasm
 
+_generate_bridge_with_flutter:
     {{cargo_run_codegen}} \
         --rust-input frb_example/with_flutter/rust/src/api.rs \
         --dart-output frb_example/with_flutter/lib/bridge_generated.dart \
