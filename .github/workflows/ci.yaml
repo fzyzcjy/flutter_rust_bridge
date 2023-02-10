@@ -116,14 +116,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: dart-lang/setup-dart@v1
-      - name: Install Rust toolchain
-        uses: dtolnay/rust-toolchain@stable
+        with:
+          sdk: "2.19.2"
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: nightly
           target: wasm32-unknown-unknown
           components: rust-src,rustfmt
-      - name: Install ffigen
-        run: dart pub global activate ffigen
+      - uses: extractions/setup-just@v1
+
+      - run: just install_ffigen
+
       - name: Cache dependencies
         id: test-cache
         uses: actions/cache@v3
@@ -144,18 +147,15 @@ jobs:
       - name: Setup Dart dependencies
         run: dart pub get
         working-directory: frb_dart
-      - name: Run library unit tests
-        working-directory: ./frb_dart
-        run: dart pub get &&
-          dart test test/*.dart &&
-          dart test -p chrome test/*.dart
-      - name: Run tests
+
+      - name: Run unit tests
+        run: just dart_test_web_unit
+
+      - name: Run integration tests
         timeout-minutes: 20
         uses: Wandalen/wretry.action@v1.0.25
         with:
-          command: dart run ../../../frb_dart/bin/serve.dart
-            -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests
-            --features=${{ join(matrix.features, ',') }}
+          command: just dart_test_web_integration ${{ join(matrix.features, ',') }}
           current_path: frb_example/pure_dart/dart
 
   dart_vm_service_test:

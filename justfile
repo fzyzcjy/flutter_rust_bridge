@@ -20,6 +20,9 @@ dir_tools := justfile_directory() / "tools"
 install_llvm_linux:
     sudo apt update && sudo apt-get install -y libclang-dev
 
+install_ffigen:
+    dart pub global activate ffigen
+
 # ============================ build & test ============================
 
 rust_build_and_test:
@@ -35,6 +38,17 @@ rust_build_and_test:
 _rust_build_and_test_single directory *args:
     cd {{directory}} && cargo build {{args}}
     cd {{directory}} && cargo test {{args}}
+
+dart_test_web_unit:
+    cd {{dir_example_pure_dart}}/dart && dart pub get
+    cd {{dir_example_pure_dart}}/dart && dart test test/*.dart
+    cd {{dir_example_pure_dart}}/dart && dart test -p chrome test/*.dart
+
+dart_test_web_integration features:
+    cd {{dir_example_pure_dart}}/dart && dart run \
+      ../../../frb_dart/bin/serve.dart \
+      -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests \
+      --features={{features}}
 
 # ============================ linters ============================
 
