@@ -1,4 +1,4 @@
-# **flutter_rust_bridge**
+# flutter_rust_bridge
 
 High-level memory-safe binding generator for Flutter/Dart and Rust
 
