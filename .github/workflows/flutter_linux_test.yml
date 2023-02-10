@@ -6,7 +6,7 @@ on:
       flutter_version:
         required: false
         type: string
-        default: "3.7.2"
+        default: "3.7.3"
       rust_version:
         required: false
         type: string
