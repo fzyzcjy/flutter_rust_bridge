@@ -15,13 +15,17 @@ dylib := if os() == "windows" {
 path_relative_linux_so := "target/x86_64-unknown-linux-gnu/debug/libflutter_rust_bridge_example.so"
 dir_tools := justfile_directory() / "tools"
 
-# ============================ install utilities ============================
+# ============================ installation ============================
 
-install_llvm_linux:
-    sudo apt update && sudo apt-get install -y libclang-dev
+install_ffigen_dependency:
+    # needed by `ffigen`, see https://github.com/dart-lang/ffigen#installing-llvm
+    {{ if os() == "linux" { "sudo apt update && sudo apt-get install -y libclang-dev" } else { "" } }}
 
-install_ffigen:
-    dart pub global activate ffigen
+dart_pub_get:
+    cd frb_dart && dart pub get
+    cd {{dir_example_pure_dart}}/dart && dart pub get
+    cd {{dir_example_pure_dart_multi}}/dart && dart pub get
+    cd {{dir_example_with_flutter}} && flutter pub get
 
 # ============================ build & test ============================
 
@@ -62,10 +66,10 @@ dart_linter mode="default":
     just _dart_linter_single {{mode}} {{dir_example_pure_dart}}/dart dart {{default_line_length}}
     just _dart_linter_single {{mode}} {{dir_example_pure_dart_multi}}/dart dart {{default_line_length}}
     just _dart_linter_single {{mode}} {{dir_example_with_flutter}} dart {{default_line_length}}
+
     just dart_linter_pana
 
 _dart_linter_single mode directory executable line_length:
-    cd {{directory}} && {{executable}} pub get
     cd {{directory}} && dart format \
       --line-length {{line_length}} \
       {{ if mode == "fix" { "--fix" } else { "--output=none --set-exit-if-changed" } }} \
