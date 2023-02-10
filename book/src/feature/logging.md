@@ -6,7 +6,7 @@ Since I have seen some questions asking how logging can be implemented with a Fl
 
 In my own app in production, I use the following strategy for Rust logging: Use normal Rust logging methods, such as `info!` and `debug!` macros. The logs are consumed in two places: They are printed via platform-specific methods (like android Logcat and iOS NSLog), and also use a Stream to send them to the Dart side such that my Dart code and further process it using the same pipeline as normal Dart logs (e.g. save to a file, send to server, etc).
 
-The *full* code related to logging in my app can be seen here: [#486](https://github.com/fzyzcjy/flutter_rust_bridge/issues/486).
+The _full_ code related to logging in my app can be seen here: [#486](https://github.com/fzyzcjy/flutter_rust_bridge/issues/486).
 
 ## Simple logger
 
@@ -34,7 +34,6 @@ pub fn create_log_stream(s: StreamSink<LogEntry>) {
 
 Now Rust will probably complain at you because `IntoDart` is not implemented for `LogEntry`. This is expected, because `flutter_rust_bridge` will generate this trait implementation for you.
 To fix this error you should just rerun `flutter_rust_bridge_codegen`.
-
 
 Generated Dart code:
 

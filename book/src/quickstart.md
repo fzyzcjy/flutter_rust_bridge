@@ -40,4 +40,3 @@ With bindings automatically generated, use it seamlessly in Flutter/Dart:
 ```dart
 api.drawTree(TreeNode(value: "root", ...), Colorful(palette: "viridis"));
 ```
-

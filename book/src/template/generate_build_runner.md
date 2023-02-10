@@ -23,6 +23,7 @@ codegen library similar to those we've encountered thus far, but generates more 
 All such libraries perform their code generation upon invoking `build_runner`, i.e. when `flutter pub run build_runner build` is executed.
 
 Regardless, to make this code compile again, we need to make a few changes:
+
 - Run the following commands to add the latest version of [`freezed`]:
 
 ```shell
@@ -41,6 +42,6 @@ flutter pub add freezed_annotation
 +    flutter pub run build_runner build
 ```
 
-Now calling `just` will generate both the Rust bindings *and* the Dart library code.
+Now calling `just` will generate both the Rust bindings _and_ the Dart library code.
 
 [`freezed`]: https://pub.dev/packages/freezed

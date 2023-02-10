@@ -1,18 +1,23 @@
 # Setup
 
 ## Dependencies
+
 To start developing your Dart/Flutter library, you will need to download some dependencies locally.
 
 ### Required
+
 The rest of this guide assumes you have the following tools installed on any development machines:
+
 - [Flutter](https://docs.flutter.dev/get-started/install)
 - [rustup](https://rustup.rs)
 - [Melos](https://melos.invertase.dev) (needed for our monorepo, see [here](melos.md))
   - `dart pub global activate melos` to install once Dart/Flutter are installed
 
 ### Optional
-If you would like to build your binaries (for Flutter devices) locally in addition to CI 
+
+If you would like to build your binaries (for Flutter devices) locally in addition to CI
 (say, to test on a real device or emulator), you will additionally need the following:
+
 - To compile to macOS/iOS targets
   - macOS
 - To cross-compile to Android targets
@@ -27,7 +32,9 @@ If you would like to build your binaries (for Flutter devices) locally in additi
     - Need to run `brew install llvm` on macOS since Apple's llvm doesn't have it
 
 ## Repository Structure
+
 We will be using the following structure for our repository, assuming our library name is `library_name`:
+
 - `.github/` for CI/CD (with GitHub Actions) & dependabot
 - `packages/` where our Flutter/Dart packages will live
   - `library_name/` the Dart-only (library) package using flutter_rust_bridge (FRB)

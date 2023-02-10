@@ -60,28 +60,28 @@ repository:
 # Labels: define labels for Issues and Pull Requests
 labels:
   - name: bug
-    color: '#d73a4a'
+    color: "#d73a4a"
     description: "Something isn't working"
   - name: enhancement
-    color: '#a2eeef'
+    color: "#a2eeef"
     description: New feature or request
   - name: draft
-    color: '#7F4D62'
+    color: "#7F4D62"
     description: Just a draft
   - name: wontfix
-    color: '#ffffff'
+    color: "#ffffff"
     description: This will not be worked on
   - name: sync
-    color: '#ededed'
+    color: "#ededed"
     description: auto file sync
   - name: good first issue
-    color: '#7057ff'
+    color: "#7057ff"
     description: Good for newcomers
   - name: await response
-    color: '#bbdefb'
+    color: "#bbdefb"
     description: Waiting for responses
   - name: pass triage
-    color: '#c8e6c9'
+    color: "#c8e6c9"
     description: Pass the triage
 
 # Milestones: define milestones for Issues and Pull Requests
@@ -91,7 +91,7 @@ milestones: []
 # See https://docs.github.com/en/rest/reference/repos#add-a-repository-collaborator for available options
 collaborators:
   - username: fzyzcjy2
-  
+
   # Note: `permission` is only valid on organization-owned repositories.
   # The permission to grant the collaborator. Can be one of:
   # * `pull` - can pull, but not push to or administer this repository.

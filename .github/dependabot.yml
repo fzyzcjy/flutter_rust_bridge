@@ -1,38 +1,38 @@
 version: 2
 enable-beta-ecosystems: true
 updates:
-- package-ecosystem: cargo
-  directory: "/frb_codegen"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
-- package-ecosystem: cargo
-  directory: "/frb_rust"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
-- package-ecosystem: cargo
-  directory: "/frb_example/pure_dart/rust"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
-- package-ecosystem: cargo
-  directory: "/frb_example/with_flutter/rust"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
-- package-ecosystem: "pub"
-  directory: "/frb_dart"
-  schedule:
-    interval: "daily"
-  open-pull-requests-limit: 10
-- package-ecosystem: "pub"
-  directory: "/frb_example/pure_dart/dart"
-  schedule:
-    interval: "daily"
-  open-pull-requests-limit: 10
-- package-ecosystem: "pub"
-  directory: "/frb_example/with_flutter"
-  schedule:
-    interval: "daily"
-  open-pull-requests-limit: 10
+  - package-ecosystem: cargo
+    directory: "/frb_codegen"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+  - package-ecosystem: cargo
+    directory: "/frb_rust"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+  - package-ecosystem: cargo
+    directory: "/frb_example/pure_dart/rust"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+  - package-ecosystem: cargo
+    directory: "/frb_example/with_flutter/rust"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+  - package-ecosystem: "pub"
+    directory: "/frb_dart"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+  - package-ecosystem: "pub"
+    directory: "/frb_example/pure_dart/dart"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+  - package-ecosystem: "pub"
+    directory: "/frb_example/with_flutter"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10

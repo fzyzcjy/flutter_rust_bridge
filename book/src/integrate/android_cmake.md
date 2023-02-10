@@ -10,4 +10,4 @@ Refer to the [Add C and C++ code to your project](https://developer.android.com/
 page on the official Android docs, modify around C-specific parts and use a
 tool like [`Corrosion`](https://github.com/corrosion-rs/corrosion) to integrate
 with Cargo. The advantage of this setup is that you can reuse your C tools
-*and* benefit from various techniques such as caching builds.
+_and_ benefit from various techniques such as caching builds.

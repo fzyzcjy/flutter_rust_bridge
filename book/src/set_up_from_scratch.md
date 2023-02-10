@@ -30,6 +30,7 @@ name = "flutter_rust_bridge_example" # whatever you like
 ## Step 4
 
 Follow the standard steps of "how iOS uses static libraries".
+
 1. In XCode, edit `Strip Style` in `Build Settings` to `Debugging Symbols`.
 2. Add your `lib{crate}.a` to `Link Binary With Libraries` in `Build Phases`.
 3. Add `binding.h` to `Copy Bundle Resources`.

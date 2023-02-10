@@ -4,7 +4,7 @@ Congratulations! You have successfully added a Rust component to
 your Flutter app using `flutter_rust_bridge` and configured
 `flutter run` (more on web later) to build your Rust library and link it to the app.
 
-As a reminder, you need to run these commands every time your Rust code changes *and*
+As a reminder, you need to run these commands every time your Rust code changes _and_
 before you run `flutter run`:
 
 ```bash

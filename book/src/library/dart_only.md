@@ -1,8 +1,10 @@
 # Dart-only base
+
 This page details how to set up the initial structure of our monorepo,
 including the crucial Dart-only base package.
 
 ## Initialization script
+
 This script creates a new monorepo named `$LIBNAME` in the current working directory
 and initializes it with some needed files.
 The following script assumes a bash shell, which you should make sure to use to run it.
