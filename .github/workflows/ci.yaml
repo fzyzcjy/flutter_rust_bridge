@@ -328,7 +328,7 @@ jobs:
         timeout-minutes: 20
         uses: Wandalen/wretry.action@v1.0.25
         with:
-          command: just dart_test_web_integration ${{ join(matrix.features, ',') }}
+          command: just dart_test_web_integration "${{ join(matrix.features, ',') }}"
           current_path: frb_example/pure_dart/dart
 
   dart_test_vm_service:
@@ -361,6 +361,9 @@ jobs:
         with:
           toolchain: 1.64.0
           components: rustfmt
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: "2.19.2"
       - uses: extractions/setup-just@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
