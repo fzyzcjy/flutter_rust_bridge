@@ -69,7 +69,6 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
     return raw;
   }
 // Section: finalizer
-
 }
 
 // Section: WASM wire module

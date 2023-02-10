@@ -51,9 +51,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup Rust toolchain
-        uses: actions-rs/toolchain@v1
+        uses: dtolnay/rust-toolchain@stable
         with:
-          profile: minimal
           toolchain: stable
           target: ${{ matrix.target }}
       - name: Build

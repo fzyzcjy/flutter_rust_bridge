@@ -1,9 +1,10 @@
 # Monorepo with Melos
+
 This page covers the basics of how to setup and use [Melos](https://melos.invertase.dev),
 a Dart/Flutter focused monorepo tool, so you can use it to manage your own monorepo.
 
 While you can, in theory, go about this guide without using Melos,
-*using Melos will save you a lot of time and headache*.
+_using Melos will save you a lot of time and headache_.
 There is some slight upfront cost of configuring and learning how Melos works,
 but it pays off substantially in the long-term.
 
@@ -14,7 +15,9 @@ It is also highly recommended that you read the Melos documentation linked above
 page only covers the bare minimum and it is likely you will want to do more than listed here.
 
 ## `/melos.yaml`
+
 Here is a sample of Melos' configuration file to get you started:
+
 ```yaml
 name: library_name
 
@@ -29,11 +32,11 @@ scripts:
     description: Analyze a specific package in this project.
 
   check-format:
-    exec: flutter format --set-exit-if-changed .
+    exec: dart format --set-exit-if-changed .
     description: Check the format of a specific package in this project.
 
   format:
-    exec: flutter format .
+    exec: dart format .
     description: Format a specific package in this project.
 
   version:
@@ -81,6 +84,7 @@ Also, when you first setup your Melos repo, you will need to run `melos bootstra
 To clean your repo in the future, you can run `melos clean && melos bs`.
 
 ## `/scripts/version.sh`
+
 Every time you need to make a new release of your library, Melos will take care of the heavy lifting for you.
 Melos creates new versions via the simple command, `melos version`.
 `melos version` creates and manages git tags, in addition to automatically incrementing the version numbers appropriately.
@@ -91,6 +95,7 @@ In this versioning script, we change the version numbers for our Flutter build p
 will always get the binaries associated with their version.
 
 Replace all instances of `library_name` below with your library name.
+
 ```bash
 #!/bin/bash
 
@@ -114,6 +119,7 @@ git add packages/flutter_library_name/
 ```
 
 ## Conventional Commits
+
 For Melos versioning to work, which our monorepo relies on to distribute binaries properly,
 you need to use "conventional commits."
 If you are not familiar with conventional commits, that is ok.

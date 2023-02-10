@@ -1,14 +1,16 @@
+name: ❔
+
 on:
   workflow_call:
     inputs:
       flutter_version:
         required: false
         type: string
-        default: '3.7.0'
+        default: "3.7.2"
       rust_version:
         required: false
         type: string
-        default: '1.64.0'
+        default: "1.64.0"
       device:
         required: true
         type: string
@@ -37,11 +39,9 @@ jobs:
         id: checkout
 
       - name: Install Rust toolchain
-        uses: actions-rs/toolchain@v1
+        uses: dtolnay/rust-toolchain@stable
         with:
-          profile: minimal
           toolchain: ${{ inputs.rust_version }}
-          override: true
 
       - uses: actions/cache@v3
         id: cache-deps

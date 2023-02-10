@@ -1,14 +1,16 @@
+name: ❔
+
 on:
   workflow_call:
     inputs:
       flutter_version:
         required: false
         type: string
-        default: '3.7.0'
+        default: "3.7.2"
       rust_version:
         required: false
         type: string
-        default: '1.64.0'
+        default: "1.64.0"
 
 jobs:
   flutter_windows_test:
@@ -16,18 +18,16 @@ jobs:
 
     steps:
       - name: Install Rust toolchain
-        uses: actions-rs/toolchain@v1
+        uses: dtolnay/rust-toolchain@stable
         with:
-          profile: minimal
           toolchain: ${{ inputs.rust_version }}
-          override: true
 
       - name: Install LLVM and Clang
         uses: KyleMayes/install-llvm-action@v1
         with:
           version: "10.0"
           directory: ${{ runner.temp }}/llvm
-        
+
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
