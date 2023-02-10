@@ -462,6 +462,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "temeddix",
+      "name": "Kim Dong-Hyun",
+      "avatar_url": "https://avatars.githubusercontent.com/u/66480156?v=4",
+      "profile": "https://github.com/temeddix",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
