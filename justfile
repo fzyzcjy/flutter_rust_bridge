@@ -179,6 +179,13 @@ dart_check_included_source:
 
 # ============================ misc ============================
 
+clean:
+    cd frb_dart && flutter clean
+    cd {{dir_example_pure_dart}}/dart && flutter clean
+    cd {{dir_example_pure_dart_multi}}/dart && flutter clean
+    cd {{dir_example_with_flutter}} && flutter clean
+    cargo clean
+
 check_no_git_diff:
     # Check nothing has changed (Use `just precommit` if error occurred)
     git diff --exit-code
@@ -190,6 +197,8 @@ precommit:
     just check
     just lint
     just gen-help
+
+    # TODO
     # sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart/dart/pubspec.lock
     # sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart_multi/dart/pubspec.lock
     # sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/with_flutter/pubspec.lock
@@ -207,7 +216,6 @@ test-pure-asan $RUSTFLAGS="-Zsanitizer=address":
     cd {{dir_example_pure_dart}}/dart && \
         {{dir_tools}}/dartsdk/x64/dart pub get && \
         {{dir_tools}}/dartsdk/x64/dart lib/main.dart  ../../../{{path_relative_linux_so}}
-
 test-pure-web *args:
     cd {{dir_example_pure_dart}}/dart && just serve --dart-input lib/main.web.dart --root web/ -c ../rust --port 8081 {{args}}
 test-flutter-web *args:
@@ -219,16 +227,10 @@ test-support platform="chrome":
         dart test test/*.dart && \
         dart test -p {{platform}} test/*.dart
 
-clean:
-    cd {{dir_example_pure_dart}}/dart && flutter clean
-    cd {{dir_example_pure_dart}}/rust && cargo clean
-    cd {{dir_example_pure_dart_multi}}/dart && flutter clean
-    cd {{dir_example_pure_dart_multi}}/rust && cargo clean
-    cd {{dir_example_with_flutter}} && flutter clean
-    cd {{dir_example_with_flutter}}/rust && cargo clean
-
 serve *args:
     cd {{invocation_directory()}} && dart run {{justfile_directory()}}/frb_dart/bin/serve.dart {{args}}
+
+# ============================ releasing new versions ============================
 
 publish-all:
     (cd frb_codegen && cargo publish)
