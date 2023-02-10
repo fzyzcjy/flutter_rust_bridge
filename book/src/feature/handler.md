@@ -1,6 +1,6 @@
 # Handler
 
-By default, the `DefaultHandler` is used. You can implement your own `Handler` doing whatever you want. In order to do this, create a variable named `FLUTTER_RUST_BRIDGE_HANDLER` in the Rust input file (probably using `lazy_static`). You may not need to create a brand new struct implementing `Handler`, but instead, use the `SimpleHandler` and customize its generic arguments such as its `Executor`.
+By default, the `DefaultHandler` is used for handling function calls. You can implement your own `Handler` with other custom behaviors you want. In order to do this, create a module variable named `FLUTTER_RUST_BRIDGE_HANDLER` in `api.rs`(probably using `lazy_static`) of your project. You may not need to create a brand new struct implementing `Handler`, but instead, use the `SimpleHandler` and customize its generic arguments such as its `Executor`.
 
 ## Examples
 
@@ -14,7 +14,7 @@ impl ErrorHandler for MyErrorHandler {
         send_error_to_your_backend(&error);
         self.0.handle_error(port, error)
     }
-    
+
     ...
 }
 ```
@@ -45,3 +45,19 @@ impl MyExecutor {
 }
 ```
 
+### Example: Use a simple handler
+
+```rust,noplayground
+// api.rs
+
+use flutter_rust_bridge::handler::ReportDartErrorHandler as RDEH;
+use flutter_rust_bridge::handler::SimpleHandler as SH;
+use flutter_rust_bridge::handler::ThreadPoolExecutor as TPE;
+use lazy_static::lazy_static;
+
+lazy_static! {
+    static ref FLUTTER_RUST_BRIDGE_HANDLER: SH<TPE<RDEH>, RDEH> = SH::new(
+        TPE::new(RDEH), RDEH {}
+    );
+}
+```
