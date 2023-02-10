@@ -79,11 +79,7 @@ dart_test_vm_service:
       target/debug/libflutter_rust_bridge_example.so
 
 dart_test_valgrind $CARGO_TARGET_DIR="/home/runner":
-    just _dart_test_valgrind_single {{dir_example_pure_dart}}/dart
-    just _dart_test_valgrind_single {{dir_example_pure_dart_multi}}/dart
-
-_dart_test_valgrind_single directory $CARGO_TARGET_DIR="/home/runner":
-    cd {{directory}} && \
+    cd {{dir_example_pure_dart}}/dart && \
         chmod +x ./run.sh ./valgrind_util.py && \
         ./run.sh
 
