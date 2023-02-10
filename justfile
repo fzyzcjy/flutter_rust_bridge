@@ -20,6 +20,9 @@ install_ffigen_dependency:
     # needed by `ffigen`, see https://github.com/dart-lang/ffigen#installing-llvm
     {{ if os() == "linux" { "sudo apt update && sudo apt-get install -y libclang-dev" } else { "" } }}
 
+install_valgrind:
+    sudo apt install -y valgrind
+
 dart_pub_get:
     cd frb_dart && dart pub get
     cd {{dir_example_pure_dart}}/dart && dart pub get
@@ -52,6 +55,15 @@ dart_test_web_integration features:
       ../../../frb_dart/bin/serve.dart \
       -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests \
       --features={{features}}
+
+dart_test_valgrind $CARGO_TARGET_DIR="/home/runner":
+    just _dart_test_valgrind_single {{dir_example_pure_dart}}/dart
+    just _dart_test_valgrind_single {{dir_example_pure_dart_multi}}/dart
+
+_dart_test_valgrind_single directory $CARGO_TARGET_DIR="/home/runner":
+    cd {{directory}} && \
+        chmod +x ./run.sh ./valgrind_util.py && \
+        ./run.sh
 
 # ============================ code generators ============================
 

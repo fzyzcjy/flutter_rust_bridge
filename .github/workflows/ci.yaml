@@ -25,45 +25,24 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
       - name: Install toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: 1.64.0
           components: rustfmt
-
-      - uses: actions/setup-python@v2
-        with:
-          python-version: "3.x"
-
-      - name: Install valgrind and llvm
-        run: sudo apt update && sudo apt install -y valgrind libclang-dev
-
       - uses: dart-lang/setup-dart@v1
         with:
           # TODO should be 2.19.2 but has a weird bug currently
           # https://github.com/fzyzcjy/flutter_rust_bridge/pull/1039#issuecomment-1424292105
           sdk: "2.17.6"
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
 
-      - name: Install dart dependencies (single block)
-        working-directory: ./frb_example/pure_dart/dart
-        run: dart pub get
-
-      - name: Install dart dependencies (multi blocks)
-        working-directory: ./frb_example/pure_dart_multi/dart
-        run: dart pub get
-
-      - name: Run valgrind script (single block)
-        working-directory: ./frb_example/pure_dart/dart
-        run: chmod +x ./run.sh ./valgrind_util.py && ./run.sh
-        env:
-          CARGO_TARGET_DIR: /home/runner # NOTE here, must be an absolute path, since in my script uses it in multiple different directories
-
-      - name: Run valgrind script (multi blocks)
-        working-directory: ./frb_example/pure_dart_multi/dart
-        run: chmod +x ./run.sh && ./run.sh
-        env:
-          CARGO_TARGET_DIR: /home/runner # NOTE here, must be an absolute path, since in my script uses it in multiple different directories
+      - run: just install_ffigen_dependency
+      - run: just install_valgrind
+      - run: just dart_pub_get
+      - run: just dart_test_valgrind
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   flutter_ios_test:
@@ -164,13 +143,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
-      - name: Install toolchain
-        uses: dtolnay/rust-toolchain@stable
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: 1.64.0
           components: rustfmt
-
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: "2.19.2"
@@ -246,7 +222,6 @@ jobs:
       - run: just dart_pub_get
       - run: just dart_linter
 
-  # -------------------------- codegen --------------------------
   codegen:
     name: Run codegen
     runs-on: ${{ matrix.image }}
