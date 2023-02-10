@@ -262,7 +262,7 @@ jobs:
         run: cargo test --verbose
 
   rust_linter:
-    name: Rust linter using Clippy and rustfmt
+    name: Rust linter
     runs-on: ubuntu-latest
 
     strategy:
@@ -283,9 +283,7 @@ jobs:
           sdk: "2.19.2"
       - uses: extractions/setup-just@v1
 
-      - name: Install llvm dependency (Linux)
-        run: sudo apt update && sudo apt-get install -y libclang-dev
-
+      - run: just install_llvm_linux
       - run: just rust_linter
 
   dart_linter:

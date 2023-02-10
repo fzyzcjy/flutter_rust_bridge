@@ -15,6 +15,9 @@ dylib := if os() == "windows" {
 path_relative_linux_so := "target/x86_64-unknown-linux-gnu/debug/libflutter_rust_bridge_example.so"
 dir_tools := justfile_directory() / "tools"
 
+install_llvm_linux:
+    sudo apt update && sudo apt-get install -y libclang-dev
+
 rust_linter:
     cargo fmt
     cargo clippy -- -D warnings
