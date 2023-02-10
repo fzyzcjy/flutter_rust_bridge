@@ -25,8 +25,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Install toolchain
-        uses: dtolnay/rust-toolchain@stable
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: 1.64.0
           components: rustfmt
@@ -38,6 +37,7 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: "3.x"
+      - uses: extractions/setup-just@v1
 
       - run: just install_ffigen_dependency
       - run: just install_valgrind
@@ -61,7 +61,7 @@ jobs:
       - name: "Start Simulator"
         run: |
           # the extra "(" is to avoid matching things like "iPhone 12 Pro Max Simulator (16.2) + Apple Watch Series 5 - 44mm (8.0)"
-          UDID=$(xcrun xctrace list devices | grep '${{ inputs.device }} (' | awk '{print $NF}' | tr -d '()')
+          UDID=$(xcrun xctrace list devices | grep '${{ matrix.device }} (' | awk '{print $NF}' | tr -d '()')
           echo UDID=$UDID
           xcrun simctl boot "${UDID:?No Simulator with this name found}"
 
@@ -175,14 +175,14 @@ jobs:
 
       - name: Run Flutter integration tests
         continue-on-error: true
-        timeout-minutes: ${{ inputs.timeout_minutes }}
+        timeout-minutes: ${{ matrix.timeout_minutes }}
         uses: Wandalen/wretry.action@v1.0.25
         with:
           action: reactivecircus/android-emulator-runner@v2
           with: |
             api-level: 29
             arch: x86_64
-            profile: ${{ inputs.device }}
+            profile: ${{ matrix.device }}
             script: cd frb_example/with_flutter && flutter test integration_test/main.dart --verbose
 
   flutter_test_windows:
@@ -199,6 +199,7 @@ jobs:
           channel: "stable"
           flutter-version: 3.7.3
           architecture: x64
+      - uses: extractions/setup-just@v1
 
       - name: Install LLVM and Clang
         uses: KyleMayes/install-llvm-action@v1
@@ -231,6 +232,7 @@ jobs:
           # https://github.com/fzyzcjy/flutter_rust_bridge/pull/1023#issuecomment-1415852845
           flutter-version: 3.3.10
           architecture: x64
+      - uses: extractions/setup-just@v1
 
       - run: just flutter_example_with_flutter_integration_test
 
@@ -250,6 +252,7 @@ jobs:
           architecture: x64
       - name: Setup headless display
         uses: pyvista/setup-headless-display-action@v1
+      - uses: extractions/setup-just@v1
 
       - run: just install_prerequisite_for_integration_test_linux
 
