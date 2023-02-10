@@ -15,12 +15,28 @@ dylib := if os() == "windows" {
 path_relative_linux_so := "target/x86_64-unknown-linux-gnu/debug/libflutter_rust_bridge_example.so"
 dir_tools := justfile_directory() / "tools"
 
-# install utilities
+# ============================ install utilities ============================
 
 install_llvm_linux:
     sudo apt update && sudo apt-get install -y libclang-dev
 
-# linters
+# ============================ build & test ============================
+
+rust_build_and_test:
+    just _rust_build_and_test_single frb_codegen
+    just _rust_build_and_test_single frb_rust
+    just _rust_build_and_test_single frb_macros
+    just _rust_build_and_test_single {{dir_example_pure_dart}}/rust
+    just _rust_build_and_test_single {{dir_example_with_flutter}}/rust
+    just _rust_build_and_test_single {{dir_example_pure_dart_multi}}/rust
+    just _rust_build_and_test_single {{dir_example_pure_dart_multi}}/rust --features c-output
+    just _rust_build_and_test_single {{dir_example_pure_dart_multi}}/rust --features c-output,extra-c-output-path
+
+_rust_build_and_test_single directory *args:
+    cd {{directory}} && cargo build {{args}}
+    cd {{directory}} && cargo test {{args}}
+
+# ============================ linters ============================
 
 rust_linter:
     cargo fmt
@@ -45,22 +61,6 @@ _dart_linter_single mode directory executable line_length:
 dart_linter_pana:
     flutter pub global activate pana
     cd frb_dart && pana --no-warning --line-length 80 --exit-code-threshold 0
-
-# build & test
-
-rust_build_test:
-    just _rust_build_test_single frb_codegen
-    just _rust_build_test_single frb_rust
-    just _rust_build_test_single frb_macros
-    just _rust_build_test_single {{dir_example_pure_dart}}/rust
-    just _rust_build_test_single {{dir_example_with_flutter}}/rust
-    just _rust_build_test_single {{dir_example_pure_dart_multi}}/rust
-    just _rust_build_test_single {{dir_example_pure_dart_multi}}/rust --features c-output
-    just _rust_build_test_single {{dir_example_pure_dart_multi}}/rust --features c-output,extra-c-output-path
-
-_rust_build_test_single directory *args:
-    cd {{directory}} && cargo build {{args}}
-    cd {{directory}} && cargo test {{args}}
 
 precommit:
     TODO rust_linter

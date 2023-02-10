@@ -186,7 +186,6 @@ jobs:
             ./frb_example/pure_dart/dart/lib/main_with_vm_service.dart \
             ./target/debug/libflutter_rust_bridge_example.so
 
-  # -------------------------- linter --------------------------
   rust_build_and_test:
     name: Build and run Rust
     runs-on: ubuntu-latest
@@ -202,7 +201,7 @@ jobs:
           sdk: "2.19.2"
 
       - run: just install_llvm_linux
-      - run: just rust_build_test
+      - run: just rust_build_and_test
 
   rust_linter:
     name: Rust linter
