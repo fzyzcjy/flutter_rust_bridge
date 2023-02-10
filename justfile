@@ -3,16 +3,6 @@
 dir_example_pure_dart := "frb_example/pure_dart"
 dir_example_pure_dart_multi := "frb_example/pure_dart_multi"
 dir_example_with_flutter := "frb_example/with_flutter"
-default_line_length := "120"
-dylib := if os() == "windows" {
-    "flutter_rust_bridge_example.dll"
-} else if os() == "macos" {
-    "libflutter_rust_bridge_example.dylib"
-} else {
-    "libflutter_rust_bridge_example.so"
-}
-path_relative_linux_so := "target/x86_64-unknown-linux-gnu/debug/libflutter_rust_bridge_example.so"
-dir_tools := justfile_directory() / "tools"
 
 # ============================ installation ============================
 
@@ -148,6 +138,8 @@ rust_linter:
     cargo clippy -- -D warnings
     cd frb_rust && cargo clippy --target wasm32-unknown-unknown -- -D warnings
 
+default_line_length := "120"
+
 dart_linter mode="default":
     just dart_pub_get
 
@@ -202,13 +194,15 @@ normalize_pubspec_lock:
 _normalize_pubspec_lock_one path:
     sed -i "" -e 's/pub.flutter-io.cn/pub.dev/g' {{path}}
 
+serve *args:
+    cd {{invocation_directory()}} && dart run {{justfile_directory()}}/frb_dart/bin/serve.dart {{args}}
+
+# ============================ precommit ============================
+
 precommit:
     just generate_all
     just rust_linter
     just dart_linter
-
-serve *args:
-    cd {{invocation_directory()}} && dart run {{justfile_directory()}}/frb_dart/bin/serve.dart {{args}}
 
 # ============================ releasing new versions ============================
 
@@ -250,7 +244,18 @@ _release_publish_all:
     (cd frb_macros && cargo publish)
     (cd frb_dart && flutter pub publish --force --server=https://pub.dartlang.org)
 
+# ============================ to be migrated ============================
+
 # TODO - @Desdaemon
+#dylib := if os() == "windows" {
+#    "flutter_rust_bridge_example.dll"
+#} else if os() == "macos" {
+#    "libflutter_rust_bridge_example.dylib"
+#} else {
+#    "libflutter_rust_bridge_example.so"
+#}
+#path_relative_linux_so := "target/x86_64-unknown-linux-gnu/debug/libflutter_rust_bridge_example.so"
+#dir_tools := justfile_directory() / "tools"
 #test: test-support test-pure test-integration
 #test-pure:
 #    cd {{dir_example_pure_dart}}/rust && cargo b
