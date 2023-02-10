@@ -151,6 +151,15 @@ and initializes it with some needed files.
 The following script assumes a bash shell, which you should make sure to use to run it.
 Also, the script generates some ffi convenience files in your Dart <code>src/</code> which you should
 check out after the script completes.</p>
+<p>After the script runs, change the <code>flutter_rust_bridge</code> dependency in <code>/packages/library_name/pubspec.yaml</code> to the following:</p>
+<pre><code class="language-yaml">  flutter_rust_bridge: &quot;1.62.1&quot;
+</code></pre>
+<p>Note: If you so choose, you can update the <code>flutter_rust_bridge</code> versions in
+<code>/packages/library_name/native/Cargo.toml</code> and <code>/packages/library_name/pubspec.yaml</code>
+to the latest version available, but newer versions are not guaranteed to work
+with this section of the guide due to a lack of CI testing.
+Version 1.62.1 is known to work with this guide as-is.
+CI testing is planned once the Native Assets feature is released.</p>
 <p>Finally, change the variables at the top of the script to fit your needs.</p>
 <pre><code class="language-bash">LIBNAME=library_name # snake_case
 DART_CLASS_NAME=LibraryName # probably is PascalCase version of $LIBNAME
@@ -399,7 +408,7 @@ const RUST_INPUT: &amp;str = &quot;src/api.rs&quot;;
 const DART_OUTPUT: &amp;str = &quot;../lib/src/bridge_generated.dart&quot;;
 
 const IOS_C_OUTPUT: &amp;str = &quot;../../flutter_$LIBNAME/ios/Classes/frb.h&quot;;
-const MACOS_C_OUTPUT: &amp;str = &quot;../../flutter_$LIBNAME/macos/Classes/frb.h&quot;;
+const MACOS_C_OUTPUT_DIR: &amp;str = &quot;../../flutter_$LIBNAME/macos/Classes/&quot;;
 
 fn main() {
     // Tell Cargo that if the input Rust code changes, rerun this build script
@@ -409,7 +418,8 @@ fn main() {
     let raw_opts = RawOpts {
         rust_input: vec![RUST_INPUT.to_string()],
         dart_output: vec![DART_OUTPUT.to_string()],
-        c_output: Some(vec![IOS_C_OUTPUT.to_string(), MACOS_C_OUTPUT.to_string()]),
+        c_output: Some(vec![IOS_C_OUTPUT.to_string()]),
+        extra_c_output_path: Some(vec![MACOS_C_OUTPUT_DIR.to_string()]),
         inline_rust: true,
         wasm: true,
         ..Default::default()
@@ -446,10 +456,10 @@ edition = &quot;2018&quot;
 crate-type = [&quot;staticlib&quot;, &quot;cdylib&quot;]
 
 [build-dependencies]
-flutter_rust_bridge_codegen = &quot;1.56.*&quot;
+flutter_rust_bridge_codegen = &quot;1.62.*&quot;
 
 [dependencies]
-flutter_rust_bridge = &quot;1.56.*&quot;
+flutter_rust_bridge = &quot;1.62.*&quot;
 EOF
 
 touch $RUST_BASE/src/api.rs
