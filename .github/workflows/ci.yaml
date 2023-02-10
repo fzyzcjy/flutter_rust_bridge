@@ -91,16 +91,14 @@ jobs:
           version: "10.0"
           directory: ${{ runner.temp }}/llvm
 
-      - run: just flutter_test_windows
+      - run: just flutter_example_with_flutter_integration_test
 
-      - name: Install Corrosion
-        run: |
-
+      - run: just install_corrosion_windows
       - name: Run Flutter integration tests explicitly requiring Corrosion
         working-directory: ./frb_example/with_flutter
         run: |
           mv -Force windows/rust.require.cmake windows/rust.cmake
-          just flutter_test_windows
+          just flutter_example_with_flutter_integration_test
 
   flutter_test_macos:
     name: Flutter (macOS) integration test
@@ -119,7 +117,7 @@ jobs:
           flutter-version: 3.3.10
           architecture: x64
 
-      - run: just flutter_test_macos
+      - run: just flutter_example_with_flutter_integration_test
 
   flutter_test_linux:
     name: Flutter (Linux) integration test
@@ -138,14 +136,17 @@ jobs:
       - name: Setup headless display
         uses: pyvista/setup-headless-display-action@v1
 
-      - run: just flutter_test_linux
+      - run: just install_prerequisite_for_integration_test_linux
+
+      - run: just flutter_example_with_flutter_integration_test
+
       - run: just install_corrosion
       - name: Run Flutter integration tests explicitly requiring Corrosion
         working-directory: ./frb_example/with_flutter
         run: |
           set -euxo pipefail
           mv linux/rust.require.cmake linux/rust.cmake
-          just flutter_test_linux
+          just flutter_example_with_flutter_integration_test
 
   dart_web_test:
     name: Dart (Web) unit tests

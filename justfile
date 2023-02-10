@@ -33,6 +33,9 @@ install_corrosion_windows:
     cmake --install build --config Release
     echo "C:\Program Files (x86)\Corrosion" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
 
+install_prerequisite_for_integration_test_linux:
+    sudo apt update && sudo apt-get -y install clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev libglu1-mesa
+
 install_corrosion_linux:
     #!/usr/bin/env bash
     set -euxo pipefail
@@ -85,22 +88,10 @@ _dart_test_valgrind_single directory $CARGO_TARGET_DIR="/home/runner":
         chmod +x ./run.sh ./valgrind_util.py && \
         ./run.sh
 
-flutter_test_windows:
-    flutter config --enable-windows-desktop
+flutter_example_with_flutter_integration_test:
+    flutter config --enable-{{ os() }}-desktop
     cd {{dir_example_with_flutter}} && flutter pub get
-    cd {{dir_example_with_flutter}} && flutter test -d windows integration_test/main.dart --verbose
-
-flutter_test_macos:
-    flutter config --enable-macos-desktop
-    cd {{dir_example_with_flutter}} && flutter pub get
-    cd {{dir_example_with_flutter}} && flutter test -d macos integration_test/main.dart --verbose
-
-flutter_test_linux:
-    sudo apt update && sudo apt-get -y install clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev libglu1-mesa
-    flutter config --enable-linux-desktop
-    flutter doctor -v
-    cd {{dir_example_with_flutter}} && flutter pub get
-    cd {{dir_example_with_flutter}} && flutter test -d linux integration_test/main.dart --verbose
+    cd {{dir_example_with_flutter}} && flutter test -d {{ os() }} integration_test/main.dart --verbose
 
 # ============================ code generators ============================
 
