@@ -25,8 +25,8 @@ rust_linter:
 
 dart_linter mode="default":
     just dart_linter_single {{mode}} frb_dart dart 80
-    just dart_linter_single {{mode}} {{dir_example_pure_dart}} dart {{default_line_length}}
-    just dart_linter_single {{mode}} {{dir_example_pure_dart_multi}} dart {{default_line_length}}
+    just dart_linter_single {{mode}} {{dir_example_pure_dart}}/dart dart {{default_line_length}}
+    just dart_linter_single {{mode}} {{dir_example_pure_dart_multi}}/dart dart {{default_line_length}}
     just dart_linter_single {{mode}} {{dir_example_with_flutter}} dart {{default_line_length}}
     just dart_linter_pana
 
