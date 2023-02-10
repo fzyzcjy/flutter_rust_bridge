@@ -38,6 +38,8 @@ jobs:
         with:
           python-version: "3.x"
       - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: just install_ffigen_dependency
       - run: just install_valgrind
@@ -200,6 +202,8 @@ jobs:
           flutter-version: 3.7.3
           architecture: x64
       - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install LLVM and Clang
         uses: KyleMayes/install-llvm-action@v1
@@ -233,6 +237,8 @@ jobs:
           flutter-version: 3.3.10
           architecture: x64
       - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: just flutter_example_with_flutter_integration_test
 
@@ -253,6 +259,8 @@ jobs:
       - name: Setup headless display
         uses: pyvista/setup-headless-display-action@v1
       - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: just install_prerequisite_for_integration_test_linux
 
@@ -287,6 +295,8 @@ jobs:
           target: wasm32-unknown-unknown
           components: rust-src,rustfmt
       - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: just install_ffigen
 
@@ -335,6 +345,8 @@ jobs:
         with:
           sdk: "2.19.2"
       - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: just install_ffigen_dependency
       - run: just dart_test_vm_service
@@ -354,6 +366,8 @@ jobs:
           channel: "stable"
           flutter-version: "3.7.3"
       - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: just install_ffigen_dependency
       - run: just dart_pub_get
@@ -379,6 +393,8 @@ jobs:
         with:
           sdk: "2.19.2"
       - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: just install_ffigen_dependency
       - run: just rust_linter
@@ -397,6 +413,8 @@ jobs:
           channel: "stable"
           flutter-version: "3.7.3"
       - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: just dart_linter
 
@@ -428,5 +446,7 @@ jobs:
           flutter-version: "3.7.3"
           architecture: x64
       - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: just ci_codegen
