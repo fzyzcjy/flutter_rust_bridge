@@ -23,7 +23,17 @@ install_ffigen_dependency:
 install_valgrind:
     sudo apt install -y valgrind
 
-install_corrosion:
+install_corrosion_windows:
+    #!cmd.exe
+
+    cd ..
+    git clone https://github.com/corrosion-rs/corrosion.git
+    cmake -Scorrosion -Bbuild -DCMAKE_BUILD_TYPE=Release
+    cmake --build build --config Release
+    cmake --install build --config Release
+    echo "C:\Program Files (x86)\Corrosion" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
+install_corrosion_linux:
     #!/usr/bin/env bash
     set -euxo pipefail
 
@@ -74,6 +84,11 @@ _dart_test_valgrind_single directory $CARGO_TARGET_DIR="/home/runner":
     cd {{directory}} && \
         chmod +x ./run.sh ./valgrind_util.py && \
         ./run.sh
+
+flutter_test_windows:
+    flutter config --enable-windows-desktop
+    cd {{dir_example_with_flutter}} && flutter pub get
+    cd {{dir_example_with_flutter}} && flutter test -d windows integration_test/main.dart --verbose
 
 flutter_test_macos:
     flutter config --enable-macos-desktop

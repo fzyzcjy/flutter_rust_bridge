@@ -72,7 +72,35 @@ jobs:
 
   flutter_test_windows:
     name: Flutter (Windows) integration test
-    uses: ./.github/workflows/ci_flutter_windows_test.yml
+    runs-on: windows-2019
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.64.0
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          flutter-version: 3.7.2
+          architecture: x64
+
+      - name: Install LLVM and Clang
+        uses: KyleMayes/install-llvm-action@v1
+        with:
+          version: "10.0"
+          directory: ${{ runner.temp }}/llvm
+
+      - run: just flutter_test_windows
+
+      - name: Install Corrosion
+        run: |
+
+      - name: Run Flutter integration tests explicitly requiring Corrosion
+        working-directory: ./frb_example/with_flutter
+        run: |
+          mv -Force windows/rust.require.cmake windows/rust.cmake
+          just flutter_test_windows
 
   flutter_test_macos:
     name: Flutter (macOS) integration test
