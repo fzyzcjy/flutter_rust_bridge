@@ -136,8 +136,8 @@ More specifically, thanks for all these contributions:
 * [huang12zheng](https://github.com/huang12zheng): Support type aliases and nested ones. Tweak code generation.
 * [hsfzxjy](https://github.com/hsfzxjy): Fix SyncReturn use-after-free bug.
 * [Cupnfish](https://github.com/Cupnfish): Support arrays as function parameters. Allow multi mirror.
+* [temeddix](https://github.com/temeddix): Fix broken CI. Custom num workers. Update doc.
 * [alanlzhang](https://github.com/alanlzhang): Add generation for Dart metadata. Enhance module parser.
-* [temeddix](https://github.com/temeddix): Fix broken CI. Update doc.
 * [Zaitam](https://github.com/Zaitam): Fix when method return struct.
 * [AlienKevin](https://github.com/AlienKevin): Add flutter example for macOS. Add doc for Android NDK bug.
 * [banool](https://github.com/banool): Fix pubspec parsing. Fix symbol-stripping doc.
