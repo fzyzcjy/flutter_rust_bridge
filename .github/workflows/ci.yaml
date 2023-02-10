@@ -420,7 +420,8 @@ jobs:
         with:
           toolchain: 1.64.0
           components: rustfmt, clippy
-      - with:
+      - uses: subosito/flutter-action@v2
+        with:
           channel: "stable"
           flutter-version: "3.7.2"
           architecture: x64
