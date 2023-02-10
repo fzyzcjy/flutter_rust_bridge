@@ -265,8 +265,8 @@ jobs:
           command: just dart_test_web_integration ${{ join(matrix.features, ',') }}
           current_path: frb_example/pure_dart/dart
 
-  dart_vm_service_test:
-    name: Test with --enable-vm-service
+  dart_test_vm_service:
+    name: Dart test with vm service
     runs-on: ubuntu-latest
 
     steps:
@@ -278,17 +278,10 @@ jobs:
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: "2.19.2"
-      - name: Install llvm dependency (Linux)
-        run: sudo apt update && sudo apt-get install -y libclang-dev
+      - uses: extractions/setup-just@v1
 
-      - name: Build pure_dart example
-        working-directory: ./frb_example/pure_dart/rust
-        run: cargo build --verbose
-      - name: Run tests for pure_dart with vm service
-        run: |
-          dart run --enable-vm-service --define=ENABLE_FRB_FFI_TEST_TOOL=true \
-            ./frb_example/pure_dart/dart/lib/main_with_vm_service.dart \
-            ./target/debug/libflutter_rust_bridge_example.so
+      - run: just install_ffigen_dependency
+      - run: just dart_test_vm_service
 
   rust_build_and_test:
     name: Build and run Rust
