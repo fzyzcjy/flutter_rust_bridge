@@ -1,5 +1,7 @@
 # Android
+
 There are a few different ways to integrate with our Android binaries when building for Android. None are particularly outstanding:
+
 - An "Ivy Repository"
   - Works great, but impossible to test changes on an emulator locally or in CI :(
 - Raw Groovy & Gradle
@@ -14,10 +16,12 @@ There are a few different ways to integrate with our Android binaries when build
 Due to the above reasoning, we cover how to use CMake on this page. But do note, there are other possibilities out there.
 
 ## CMake (`/packages/flutter_library_name/android/CMakeLists.txt`)
+
 Unlike windows and linux CMakeLists.txt, the android equivalent does
 _not actually build anything_, which may come as a surprise.
 Instead, its sole purpose is to download & extract our Android binaries
 in a cross-platform friendly way. Here is our android `CMakeLists.txt`:
+
 ```cmake
 set(LibraryVersion "library_name-v0.0.0") # generated; do not edit
 
@@ -50,11 +54,14 @@ execute_process(
   WORKING_DIRECTORY ${LibRoot}
 )
 ```
+
 Replace all instances of `library_name` above with your library name.
 Also, replace other variables (i.e. `YourGitHubAccount` and `repo_name`) as needed.
 
 ## `build.gradle` Changes
+
 Replace the `android {...}` section at the bottom of `build.gradle` with the following:
+
 ```gradle
 android {
     compileSdkVersion 31
@@ -73,7 +80,9 @@ android {
 ```
 
 ## `.gitignore`
+
 Add the following to `android/.gitignore`
+
 ```gitignore
 # Ignore Rust binaries
 src/main/jniLibs/
@@ -81,6 +90,7 @@ src/main/jniLibs/
 ```
 
 ## Build Script (`/scripts/build-android.sh`)
+
 ```bash
 #!/bin/bash
 
@@ -108,7 +118,7 @@ cargo ndk -o $JNI_DIR \
         -t arm64-v8a \
         -t x86 \
         -t x86_64 \
-        build --release 
+        build --release
 
 # Archive the dynamic libs
 cd $JNI_DIR

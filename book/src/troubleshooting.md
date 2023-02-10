@@ -3,14 +3,17 @@
 ## The generated store_dart_post_cobject() has the wrong signature / `'stdarg.h' file not found` in Linux / `stdbool.h` / ...
 
 Try to run code generator with working directory at `/`, or set the environment variable:
+
 ```bash
 export CPATH="$(clang -v 2>&1 | grep "Selected GCC installation" | rev | cut -d' ' -f1 | rev)/include"
 ```
+
 as described in [ffigen #257](https://github.com/dart-lang/ffigen/issues/257), or add include path as is described in [#108](https://github.com/fzyzcjy/flutter_rust_bridge/issues/108). This is a problem with Rust's builtin `Command`. See also: [#472](https://github.com/fzyzcjy/flutter_rust_bridge/issues/472) & [#494](https://github.com/fzyzcjy/flutter_rust_bridge/issues/494).
 
 ## Issue with `store_dart_post_cobject`
 
 If calling rust function gives the error below, please consider running **cargo build** again. This can happen when the generated rs file is not included when building is being done.
+
 ```sh
 [ERROR:flutter/lib/ui/ui_dart_state.cc(209)] Unhandled Exception: Invalid argument(s): Failed to lookup symbol 'store_dart_post_cobject': target/debug/libadder.so: undefined symbol: store_dart_post_cobject
 ```
@@ -22,9 +25,11 @@ Downgrade Android NDK to version 22. This is an [ongoing issue](https://github.c
 ## Fail to run `flutter_rust_bridge_codegen` on MacOS, "Please supply one or more path/to/llvm..."
 
 If you are running macOS, you will need to specify a path to your llvm:
+
 ```shell
 flutter_rust_bridge_codegen --rust-input path/to/your/api.rs --dart-output path/to/file/being/bridge_generated.dart --llvm-path /usr/local/homebrew/opt/llvm/
 ```
+
 You can install llvm using `brew install llvm` and it will be installed at `/usr/local/homebrew/opt/llvm/` by default.
 
 ## Freezed file is sometimes not generated when it should be
@@ -47,7 +52,7 @@ If you use a Rust type with `Kind` in it's name it may conflict with some genera
 
 You may have an iOS app that works fine in Debug and Release modes locally but when deployed to TestFlight an error occurs trying to locate the `store_dart_post_cobject` - this is because the nested XCode project for the native bindings maybe be stripping symbols from the linked product.
 
-Select the scheme (eg: `Product > Scheme > native-staticlib`) and go to *Build Settings* then under the `Deployment` section change `Strip Linked Product` to `No`; you may also need to change `Strip Style` to `Debugging Symbols`.
+Select the scheme (eg: `Product > Scheme > native-staticlib`) and go to _Build Settings_ then under the `Deployment` section change `Strip Linked Product` to `No`; you may also need to change `Strip Style` to `Debugging Symbols`.
 
 ## Generated code is so long
 

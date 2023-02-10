@@ -5,4 +5,3 @@ In order to build and run this example, please visit [the tutorial section](http
 For a pure-Dart example without UI, please see the `pure_dart` example which is a neighbor of this example.
 
 For full documentation, please see README.md of the main repository.
-

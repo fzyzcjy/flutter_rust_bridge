@@ -11,4 +11,5 @@ newPRWelcomeComment: >
 # Comment to be posted to on pull requests merged by a first time user
 firstPRMergeComment: >
   Hi! Congrats on merging your first pull request! :tada:
+
 # It is recommended to include as many gifs and emojis as possible!

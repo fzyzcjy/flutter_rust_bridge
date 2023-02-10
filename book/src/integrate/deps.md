@@ -14,7 +14,7 @@ These dependencies are required only in build-time:
 An easy way to install most of these dependencies is to run:
 
 - dart project
-  
+
   ```bash
   cargo install flutter_rust_bridge_codegen
   dart pub add --dev ffigen && dart pub add ffi

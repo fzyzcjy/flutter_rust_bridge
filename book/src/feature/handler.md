@@ -14,7 +14,7 @@ impl ErrorHandler for MyErrorHandler {
         send_error_to_your_backend(&error);
         self.0.handle_error(port, error)
     }
-    
+
     ...
 }
 ```
@@ -44,4 +44,3 @@ impl MyExecutor {
     }
 }
 ```
-

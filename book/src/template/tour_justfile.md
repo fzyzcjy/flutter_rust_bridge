@@ -24,4 +24,3 @@ Runs the default clean commands for Flutter and Rust.
 Useful when you want to debug build-related issues.
 
 [just]: https://github.com/casey/just
-

@@ -1,4 +1,5 @@
 # Windows & Linux
+
 Windows and Linux both use CMake for their build system,
 so this page will walk you through setting up CMake for Windows/Linux.
 
@@ -6,6 +7,7 @@ Also, this page will introduce the windows & linux build script
 to compile your Rust library to these platforms.
 
 ## CMake
+
 CMake happens to be by far the easiest build process to set up
 of of all the Flutter supported platforms.
 
@@ -13,6 +15,7 @@ Replace all instances of `library_name` below with your library name.
 Also, replace other variables (i.e. `YourGitHubAccount` and `repo_name`) as needed.
 
 ### Linux CMakeLists.txt (`/packages/flutter_library_name/linux/CMakeLists.txt`)
+
 ```cmake
 set(LibraryVersion "library_name-v0.0.0") # generated; do not edit
 
@@ -54,6 +57,7 @@ set(flutter_library_name_bundled_libraries
 ```
 
 ### Windows CMakeLists.txt (`/packages/flutter_library_name/windows/CMakeLists.txt`)
+
 ```cmake
 set(LibraryVersion "library_name-v0.0.0") # generated; do not edit
 
@@ -100,13 +104,17 @@ set(flutter_library_name_bundled_libraries
 ```
 
 ### Platform-Specific Peculiarities
+
 There exists a few differences between the Linux and Windows `CMakeLists.txt`s:
+
 1. The minimum CMake version supported
 2. At the time of writing, Windows CMake does not yet have a builtin `FLUTTER_TARGET_PLATFORM` variable; thus, we need to define a dummy version of the variable. See [here](https://github.com/flutter/flutter/issues/116196) for updates on this issue
 3. On linux, dynamic library names follow the form of `liblibrary_name.so` and on Windows, dynamic library names follow the form of `library_name.dll`
 
 ## `.gitignore`
+
 If you choose to have a .gitignore in your `linux/` and `windows/` directories, here is what the author of this page uses:
+
 ```gitignore
 # Set up as allowlist
 *
@@ -117,7 +125,9 @@ If you choose to have a .gitignore in your `linux/` and `windows/` directories, 
 ```
 
 ## Build Script (`/scripts/build-other.sh`)
+
 Replace `library_name` below as needed.
+
 ```bash
 #!/bin/bash
 

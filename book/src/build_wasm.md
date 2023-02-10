@@ -20,6 +20,7 @@ Continue reading for more details.
 [wasm_bindgen raytracing example](https://github.com/rustwasm/wasm-bindgen/tree/main/examples/raytrace-parallel)
 and by extension consumes the [`wasm_bindgen`] library and its ecosystem.
 The requirements are:
+
 - The standard library being built with the `panic_abort` feature
 - The library and standard library being built with the target
   features `atomics`, `bulk_memory` and `mutable_globals`
@@ -38,6 +39,7 @@ If running Flutter, this is usually `web/pkg`.
 
 Once you have built your binary and are ready to deploy, you will also need
 to configure your web server to respond with these two headers:
+
 - [`Cross-Origin-Resource-Policy`] set to `same-origin`
 - [`Cross-Origin-Embedder-Policy`] set to `require-corp`[^1]
 
@@ -64,11 +66,12 @@ void main() async {
 }
 ```
 
-[^1]: When running Flutter Web, you may encounter issues with downloading Flutter
-      support scripts which have not been marked as `crossorigin="anonymous"` and
-      therefore cannot be loaded. For local testing, you can specify `credentialless`
-      instead.
+[^1]:
+    When running Flutter Web, you may encounter issues with downloading Flutter
+    support scripts which have not been marked as `crossorigin="anonymous"` and
+    therefore cannot be loaded. For local testing, you can specify `credentialless`
+    instead.
 
 [`wasm_bindgen`]: https://rustwasm.github.io/docs/wasm-bindgen
-[`Cross-Origin-Resource-Policy`]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cross-Origin_Resource_Policy_(CORP)
-[`Cross-Origin-Embedder-Policy`]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy
+[`cross-origin-resource-policy`]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cross-Origin_Resource_Policy_(CORP)
+[`cross-origin-embedder-policy`]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy

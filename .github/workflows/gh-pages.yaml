@@ -6,10 +6,10 @@ on:
     branches:
       - master
     paths:
-      - 'book/**'
+      - "book/**"
   pull_request:
     paths:
-      - 'book/**'
+      - "book/**"
 
 jobs:
   deploy:
@@ -23,8 +23,8 @@ jobs:
       - name: Setup mdBook
         uses: peaceiris/actions-mdbook@v1
         with:
-          mdbook-version: 'latest'
-      
+          mdbook-version: "latest"
+
       - name: Setup `mdbook-mermaid`
         run: cargo install mdbook-mermaid
 
