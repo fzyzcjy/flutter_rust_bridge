@@ -1,4 +1,4 @@
-# To use this file, install Just: cargo install just
+# To use this file, install Just: `cargo install just`
 
 frb_bin := "cargo run --manifest-path frb_codegen/Cargo.toml --"
 frb_pure := "frb_example/pure_dart"
@@ -15,8 +15,6 @@ dylib := if os() == "windows" {
 frb_linux_so := "target/x86_64-unknown-linux-gnu/debug/libflutter_rust_bridge_example.so"
 frb_tools := justfile_directory() / "tools"
 
-default: gen-bridge
-
 precommit:
     just gen-bridge
     just check
@@ -26,11 +24,9 @@ precommit:
     # sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart_multi/dart/pubspec.lock
     # sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/with_flutter/pubspec.lock
 
-alias b := build
 build:
     cd frb_codegen && cargo build
 
-alias g := gen-bridge
 gen-bridge: build
     (cd {{frb_flutter}} && flutter pub get)
     {{frb_bin}} -r {{frb_flutter}}/rust/src/api.rs \
@@ -44,7 +40,6 @@ gen-bridge: build
     cd {{frb_pure_multi}}/rust && cargo clean -p flutter_rust_bridge_example_multi_blocks_test && cargo build --features c-output
     cd {{frb_pure_multi}}/rust && cargo clean -p flutter_rust_bridge_example_multi_blocks_test && cargo build --features c-output,extra-c-output-path
 
-alias l := lint
 lint *args:
     dart format --fix . {{args}}
     dart format --fix -l {{line_length}} {{frb_pure}} {{args}}
@@ -52,7 +47,6 @@ lint *args:
     dart format --fix -l {{line_length}} {{frb_flutter}} {{args}}
     cargo fmt
 
-alias t := test
 test: test-support test-pure test-integration
 test-pure:
     cd {{frb_pure}}/rust && cargo b
@@ -78,7 +72,6 @@ test-support platform="chrome":
         dart test test/*.dart && \
         dart test -p {{platform}} test/*.dart
 
-alias c := clean
 clean:
     cd {{frb_pure}}/dart && flutter clean
     cd {{frb_pure}}/rust && cargo clean
