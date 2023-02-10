@@ -15,8 +15,12 @@ dylib := if os() == "windows" {
 path_relative_linux_so := "target/x86_64-unknown-linux-gnu/debug/libflutter_rust_bridge_example.so"
 dir_tools := justfile_directory() / "tools"
 
+# install utilities
+
 install_llvm_linux:
     sudo apt update && sudo apt-get install -y libclang-dev
+
+# linters
 
 rust_linter:
     cargo fmt
@@ -42,6 +46,16 @@ dart_linter_pana:
     flutter pub global activate pana
     cd frb_dart && pana --no-warning --line-length 80 --exit-code-threshold 0
 
+# build
+
+rust_build:
+    cd frb_codegen && cargo build
+    cd frb_rust && cargo build
+    cd frb_macros && cargo build
+    cd {{dir_example_pure_dart}}/rust && cargo build
+    cd {{dir_example_pure_dart_multi}}/rust && cargo build
+    cd {{dir_example_with_flutter}}/rust && cargo build
+
 precommit:
     TODO rust_linter
 
@@ -52,9 +66,6 @@ precommit:
     # sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart/dart/pubspec.lock
     # sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart_multi/dart/pubspec.lock
     # sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/with_flutter/pubspec.lock
-
-build:
-    cd frb_codegen && cargo build
 
 gen-bridge: build
     (cd {{dir_example_with_flutter}} && flutter pub get)

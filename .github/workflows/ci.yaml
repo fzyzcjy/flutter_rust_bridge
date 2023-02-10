@@ -193,49 +193,33 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
-      - name: Install toolchain
-        uses: dtolnay/rust-toolchain@stable
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: 1.64.0
           components: rustfmt
-
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: "2.19.2"
-      - name: Install llvm dependency (Linux)
-        run: sudo apt update && sudo apt-get install -y libclang-dev
-      - name: Build codegen
-        working-directory: ./frb_codegen
-        run: cargo build --verbose
+
+      - run: just install_llvm_linux
+      - run: just rust_build
+
       - name: Run tests for codegen
         working-directory: ./frb_codegen
         run: cargo test --verbose
 
-      - name: Build rust runtime
-        working-directory: ./frb_rust
-        run: cargo build --verbose
       - name: Run tests for rust runtime
         working-directory: ./frb_rust
         run: cargo test --verbose
 
-      - name: Build macros
-        working-directory: ./frb_macros
-        run: cargo build --verbose
       - name: Run tests for macros
         working-directory: ./frb_macros
         run: cargo test --verbose
 
-      - name: Build pure_dart example
-        working-directory: ./frb_example/pure_dart/rust
-        run: cargo build --verbose
       - name: Run tests for pure_dart example
         working-directory: ./frb_example/pure_dart/rust
         run: cargo test --verbose
 
-      - name: Build pure_dart_multi example
-        working-directory: ./frb_example/pure_dart_multi/rust
-        run: cargo build --verbose
       - name: Run tests for pure_dart_multi example
         working-directory: ./frb_example/pure_dart_multi/rust
         run: cargo test --verbose
@@ -254,9 +238,6 @@ jobs:
         working-directory: ./frb_example/pure_dart_multi/rust
         run: cargo test --features c-output,extra-c-output-path --verbose
 
-      - name: Build with_flutter example
-        working-directory: ./frb_example/with_flutter/rust
-        run: cargo build --verbose
       - name: Run tests for with_flutter example
         working-directory: ./frb_example/with_flutter/rust
         run: cargo test --verbose
