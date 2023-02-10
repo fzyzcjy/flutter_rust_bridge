@@ -1,6 +1,5 @@
 # To use this file, install Just: `cargo install just`
 
-frb_codegen_bin := "cargo run --manifest-path frb_codegen/Cargo.toml --"
 dir_example_pure_dart := "frb_example/pure_dart"
 dir_example_pure_dart_multi := "frb_example/pure_dart_multi"
 dir_example_with_flutter := "frb_example/with_flutter"
@@ -60,6 +59,40 @@ generate_book_help:
     cargo run --manifest-path frb_codegen/Cargo.toml -- --help > book/src/help.txt
     dart run frb_dart/bin/serve.dart --help > book/src/help.serve.txt
 
+generate_ffigen:
+    cd frb_dart && dart run ffigen
+
+cargo_run_codegen := "cargo run \
+        --manifest-path frb_codegen/Cargo.toml \
+        --package flutter_rust_bridge_codegen \
+        --bin flutter_rust_bridge_codegen \
+        --features 'chrono,uuid' \
+        -- "
+
+generate_bridge:
+    {{cargo_run_codegen}} \
+        --rust-input frb_example/pure_dart/rust/src/api.rs
+        --dart-output frb_example/pure_dart/dart/lib/bridge_generated.dart
+        --dart-decl-output frb_example/pure_dart/dart/lib/bridge_definitions.dart
+        --dart-format-line-length 120
+        --wasm
+
+    {{cargo_run_codegen}} \
+        --rust-input frb_example/pure_dart_multi/rust/src/api_1.rs frb_example/pure_dart_multi/rust/src/api_2.rs
+        --dart-output frb_example/pure_dart_multi/dart/lib/bridge_generated_api_1.dart frb_example/pure_dart_multi/dart/lib/bridge_generated_api_2.dart
+        --dart-format-line-length 120
+        --rust-output frb_example/pure_dart_multi/rust/src/generated_api_1.rs frb_example/pure_dart_multi/rust/src/generated_api_2.rs
+        --class-name ApiClass1 ApiClass2
+        --wasm
+
+    {{cargo_run_codegen}} \
+        --rust-input frb_example/with_flutter/rust/src/api.rs
+        --dart-output frb_example/with_flutter/lib/bridge_generated.dart
+        --c-output frb_example/with_flutter/ios/Runner/bridge_generated.h
+        --dart-decl-output frb_example/with_flutter/lib/bridge_definitions.dart
+        --dart-format-line-length 120
+        --wasm
+
 # ============================ linters ============================
 
 rust_linter:
@@ -114,14 +147,6 @@ precommit:
     # sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart/dart/pubspec.lock
     # sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart_multi/dart/pubspec.lock
     # sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/with_flutter/pubspec.lock
-
-gen-bridge:
-    {{frb_codegen_bin}} -r {{dir_example_with_flutter}}/rust/src/api.rs \
-                -d {{dir_example_with_flutter}}/lib/bridge_generated.dart \
-                --dart-decl-output {{dir_example_with_flutter}}/lib/bridge_definitions.dart \
-                -c {{dir_example_with_flutter}}/ios/Runner/bridge_generated.h \
-                -e {{dir_example_with_flutter}}/macos/Runner/ \
-                --dart-format-line-length {{default_line_length}} --wasm
 
 test: test-support test-pure test-integration
 test-pure:
