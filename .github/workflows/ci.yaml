@@ -70,7 +70,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
-          flutter-version: 3.7.2
+          flutter-version: 3.7.3
           architecture: x64
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -130,7 +130,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
-          flutter-version: 3.7.2
+          flutter-version: 3.7.3
           architecture: x64
       - uses: actions/setup-java@v1
         with:
@@ -197,7 +197,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
-          flutter-version: 3.7.2
+          flutter-version: 3.7.3
           architecture: x64
 
       - name: Install LLVM and Clang
@@ -227,7 +227,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
-          # TODO should be 3.7.2 but has a weird bug currently
+          # TODO should be 3.7.3 but has a weird bug currently
           # https://github.com/fzyzcjy/flutter_rust_bridge/pull/1023#issuecomment-1415852845
           flutter-version: 3.3.10
           architecture: x64
@@ -246,7 +246,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
-          flutter-version: 3.7.2
+          flutter-version: 3.7.3
           architecture: x64
       - name: Setup headless display
         uses: pyvista/setup-headless-display-action@v1
@@ -391,7 +391,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
-          flutter-version: "3.7.2"
+          flutter-version: "3.7.3"
       - uses: extractions/setup-just@v1
 
       - run: just dart_linter
@@ -421,7 +421,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
-          flutter-version: "3.7.2"
+          flutter-version: "3.7.3"
           architecture: x64
       - uses: extractions/setup-just@v1
 
