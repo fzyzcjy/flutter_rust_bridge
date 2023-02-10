@@ -54,6 +54,12 @@ dart_test_web_integration features:
       -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests \
       --features={{features}}
 
+# ============================ code generators ============================
+
+generate_book_help:
+    cargo run --manifest-path frb_codegen/Cargo.toml -- --help > book/src/help.txt
+    dart run frb_dart/bin/serve.dart --help > book/src/help.serve.txt
+
 # ============================ linters ============================
 
 rust_linter:
@@ -93,6 +99,10 @@ dart_check_included_source:
     git diff --exit-code
 
 # ============================ misc ============================
+
+check_no_git_diff:
+    # Check nothing has changed (Use `just precommit` if error occurred)
+    git diff --exit-code
 
 precommit:
     TODO rust_linter
@@ -176,9 +186,5 @@ release old_version new_version:
     open https://github.com/fzyzcjy/flutter_rust_bridge/releases
 
     just publish-all
-
-gen-help:
-    cargo run --manifest-path frb_codegen/Cargo.toml -- --help > book/src/help.txt
-    dart run frb_dart/bin/serve.dart --help > book/src/help.serve.txt
 
 # vim:expandtab:ts=4:sw=4

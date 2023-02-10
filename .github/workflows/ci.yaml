@@ -364,15 +364,5 @@ jobs:
         env:
           RUST_LOG: debug
 
-      - name: Generate codegen help
-        working-directory: ./frb_codegen
-        # The file extension is different on Windows.
-        if: ${{ matrix.family != 'windows' }}
-        run: cargo run -- --help > ../book/src/help.txt
-
-      - name: Generate server help
-        working-directory: ./frb_dart
-        run: dart pub get && dart run bin/serve.dart --help > ../book/src/help.serve.txt
-
-      - name: Check code format (Use `just precommit` if error occured)
-        run: git diff --exit-code
+      - run: just generate_book_help
+      - run: just check_no_git_diff
