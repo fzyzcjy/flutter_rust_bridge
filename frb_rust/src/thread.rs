@@ -1,4 +1,21 @@
-pub const WORKERS_COUNT: usize = 4;
+fn get_worker_count() -> usize {
+    #[cfg(all(feature = "worker-max", feature = "worker-single"))]
+    {
+        compile_error!(r#"Cannot use "worker-max" and "worker-single" features together"#);
+    }
+    #[cfg(not(any(feature = "worker-max", feature = "worker-single")))]
+    {
+        4 // Default
+    }
+    #[cfg(feature = "worker-single")]
+    {
+        1 // One
+    }
+    #[cfg(feature = "worker-max")]
+    {
+        std::thread::available_parallelism().unwrap().get() // All logical cores
+    }
+}
 
 #[cfg(not(wasm))]
 mod io {
@@ -10,7 +27,7 @@ mod io {
     lazy_static! {
         pub static ref THREAD_POOL: Mutex<ThreadPool> = Mutex::new(ThreadPool::with_name(
             "frb_workerpool".into(),
-            WORKERS_COUNT
+            get_worker_count()
         ));
     }
 }
@@ -25,7 +42,8 @@ mod web {
     use super::*;
 
     thread_local! {
-        pub static WORKER_POOL: Option<WorkerPool> = WorkerPool::new(WORKERS_COUNT, script_path().unwrap())
+        pub static WORKER_POOL: Option<WorkerPool> = WorkerPool::new(
+            get_worker_count(), script_path().unwrap())
                 .map_err(|err| crate::console_error!("Failed to spawn worker: {:?}", err)).ok()
     }
 }

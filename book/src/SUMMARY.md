@@ -36,6 +36,7 @@
   - [WASM](feature/wasm.md)
   - [Miscellaneous](feature/misc.md)
   - [Logging](feature/logging.md)
+  - [Worker pool](feature/worker_pool.md)
 
 # Part II: User Guide
 
