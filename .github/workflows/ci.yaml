@@ -54,8 +54,6 @@ jobs:
           - "iPhone 12 Pro Max Simulator (16.2)"
       fail-fast: false
     runs-on: macos-latest
-    with:
-      device: ${{ matrix.device }}
 
     steps:
       - name: "List all simulators"
