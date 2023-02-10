@@ -80,6 +80,20 @@ dart_linter_pana:
     flutter pub global activate pana
     cd frb_dart && pana --no-warning --line-length 80 --exit-code-threshold 0
 
+dart_check_included_source:
+    #!/usr/bin/env bash
+    set -euxo pipefail
+
+    git clone --depth 1 --filter=blob:none --sparse --branch stable https://github.com/dart-lang/sdk.git
+    cd sdk
+    git sparse-checkout set runtime/include
+    cd ..
+    cp -rf ./sdk/runtime/include/* ./frb_rust/src/dart_api/
+    rm -r sdk
+    git diff --exit-code
+
+# ============================ misc ============================
+
 precommit:
     TODO rust_linter
 
