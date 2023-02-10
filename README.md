@@ -137,6 +137,7 @@ More specifically, thanks for all these contributions:
 * [hsfzxjy](https://github.com/hsfzxjy): Fix SyncReturn use-after-free bug.
 * [Cupnfish](https://github.com/Cupnfish): Support arrays as function parameters. Allow multi mirror.
 * [alanlzhang](https://github.com/alanlzhang): Add generation for Dart metadata. Enhance module parser.
+* [temeddix](https://github.com/temeddix): Fix broken CI.
 * [Zaitam](https://github.com/Zaitam): Fix when method return struct.
 * [AlienKevin](https://github.com/AlienKevin): Add flutter example for macOS. Add doc for Android NDK bug.
 * [banool](https://github.com/banool): Fix pubspec parsing. Fix symbol-stripping doc.
