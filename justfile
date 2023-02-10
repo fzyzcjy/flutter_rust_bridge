@@ -16,7 +16,15 @@ frb_linux_so := "target/x86_64-unknown-linux-gnu/debug/libflutter_rust_bridge_ex
 frb_tools := justfile_directory() / "tools"
 
 default: gen-bridge
-precommit: gen-bridge check lint gen-help
+
+precommit:
+    gen-bridge
+    check
+    lint
+    gen-help
+    # sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart/dart/pubspec.lock
+    # sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart_multi/dart/pubspec.lock
+    # sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/with_flutter/pubspec.lock
 
 alias b := build
 build:
@@ -80,37 +88,18 @@ clean:
     cd {{frb_flutter}}/rust && cargo clean
 
 check:
+    cd frb_rust && cargo clippy -- -D warnings
+    cd frb_rust && cargo clippy --target wasm32-unknown-unknown -- -D warnings
+    cd frb_codegen && cargo clippy -- -D warnings
     cd {{frb_pure}}/dart && dart pub get && dart analyze
     cd {{frb_pure}}/rust && cargo clippy
     cd {{frb_pure_multi}}/dart && dart pub get && dart analyze
     cd {{frb_pure_multi}}/rust && cargo clippy
     cd {{frb_flutter}} && flutter pub get && flutter analyze
     cd {{frb_flutter}}/rust && cargo clippy
-    cd frb_codegen && cargo clippy -- -D warnings
-    cd frb_rust && cargo clippy -- -D warnings
-    cd frb_rust && cargo clippy --target wasm32-unknown-unknown -- -D warnings
 
 serve *args:
     cd {{invocation_directory()}} && dart run {{justfile_directory()}}/frb_dart/bin/serve.dart {{args}}
-
-refresh_all:
-    just gen-help
-
-    just gen-bridge
-    (cd frb_rust && cargo clippy -- -D warnings)
-    (cd frb_macros && cargo clippy -- -D warnings)
-    (cd frb_example/pure_dart/rust && cargo clippy -- -D warnings)
-    (cd frb_example/pure_dart_multi/rust && cargo clippy -- -D warnings)
-    (cd frb_example/with_flutter/rust && cargo clippy -- -D warnings)
-    (cd frb_example/pure_dart/dart && dart pub get)
-    (cd frb_example/pure_dart_multi/dart && dart pub get)
-    (cd frb_example/with_flutter && flutter pub get)
-
-    just lint
-
-    sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart/dart/pubspec.lock
-    sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart_multi/dart/pubspec.lock
-    sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/with_flutter/pubspec.lock
 
 publish_all:
     (cd frb_codegen && cargo publish)
@@ -125,7 +114,7 @@ release old_version new_version:
     sed -i '' 's/version = "{{old_version}}"/version = "{{new_version}}"/g' Cargo.toml
     sed -i '' 's/version: {{old_version}}/version: {{new_version}}/g' frb_dart/pubspec.yaml
 
-    just refresh_all
+    just precommit
 
     cd frb_codegen && ./contrib/scoop.json.sh > ./contrib/flutter_rust_bridge_codegen.json
 

@@ -1,10 +1,12 @@
+name: ❔
+
 on:
   workflow_call:
     inputs:
       flutter_version:
         required: false
         type: string
-        default: "3.7.1"
+        default: "3.7.2"
       rust_version:
         required: false
         type: string
@@ -24,11 +26,9 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install Rust toolchain
-        uses: actions-rs/toolchain@v1
+        uses: dtolnay/rust-toolchain@stable
         with:
-          profile: minimal
           toolchain: ${{ inputs.rust_version }}
-          override: true
           components: rustfmt, clippy
 
       - uses: subosito/flutter-action@v2
@@ -161,9 +161,5 @@ jobs:
         working-directory: ./frb_dart
         run: dart pub get && dart run bin/serve.dart --help > ../book/src/help.serve.txt
 
-      - name: "Check no code change
-          (If fail: Please ensure you have run codegen on examples and commit those changes!
-          On Windows, see https://github.com/fzyzcjy/flutter_rust_bridge/pull/536#issuecomment-1170259918
-          for additional instructions.)
-          If you have installed `just`, use `just precommit`."
+      - name: Check code format (Use `just precommit` if error occured)
         run: git diff --exit-code

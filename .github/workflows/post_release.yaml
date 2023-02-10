@@ -2,7 +2,7 @@
 #
 # Ensure README.md's steps can work correctly, where users use the released versions
 # instead of the code in master branch
-name: Post-release
+name: Post-Release
 
 on:
   workflow_dispatch: {}
@@ -29,9 +29,8 @@ jobs:
           cp ./frb_example/with_flutter/rust/Cargo.toml.release ./frb_example/with_flutter/rust/Cargo.toml
 
       - name: Install toolchain
-        uses: actions-rs/toolchain@v1
+        uses: dtolnay/rust-toolchain@stable
         with:
-          profile: minimal
           toolchain: stable
 
       - uses: actions/setup-python@v2
@@ -43,7 +42,7 @@ jobs:
 
       - uses: dart-lang/setup-dart@v1
         with:
-          sdk: "2.17.6" # TODO upgrade later #655
+          sdk: "2.19.2"
 
       - name: Install dart dependencies (single block)
         working-directory: ./frb_example/pure_dart/dart
@@ -88,15 +87,14 @@ jobs:
           cp ./frb_example/with_flutter/rust/Cargo.toml.release ./frb_example/with_flutter/rust/Cargo.toml
 
       - name: Install Rust toolchain
-        uses: actions-rs/toolchain@v1
+        uses: dtolnay/rust-toolchain@stable
         with:
-          profile: minimal
           toolchain: 1.64.0
 
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
-          flutter-version: "3.7.1"
+          flutter-version: "3.7.2"
           architecture: x64
 
       - uses: actions/setup-java@v1
@@ -175,7 +173,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
-          flutter-version: "3.7.1"
+          flutter-version: "3.7.2"
           architecture: x64
 
       - uses: actions/checkout@v2
