@@ -202,45 +202,7 @@ jobs:
           sdk: "2.19.2"
 
       - run: just install_llvm_linux
-      - run: just rust_build
-
-      - name: Run tests for codegen
-        working-directory: ./frb_codegen
-        run: cargo test --verbose
-
-      - name: Run tests for rust runtime
-        working-directory: ./frb_rust
-        run: cargo test --verbose
-
-      - name: Run tests for macros
-        working-directory: ./frb_macros
-        run: cargo test --verbose
-
-      - name: Run tests for pure_dart example
-        working-directory: ./frb_example/pure_dart/rust
-        run: cargo test --verbose
-
-      - name: Run tests for pure_dart_multi example
-        working-directory: ./frb_example/pure_dart_multi/rust
-        run: cargo test --verbose
-
-      - name: Build pure_dart_multi example (with c-output flag)
-        working-directory: ./frb_example/pure_dart_multi/rust
-        run: cargo build --features c-output --verbose
-      - name: Run tests for pure_dart_multi example (with c-output flag)
-        working-directory: ./frb_example/pure_dart_multi/rust
-        run: cargo test --features c-output --verbose
-
-      - name: Build pure_dart_multi example (with c-output, extra-c-output-path flag)
-        working-directory: ./frb_example/pure_dart_multi/rust
-        run: cargo build --features c-output,extra-c-output-path --verbose
-      - name: Run tests for pure_dart_multi example (with c-output, extra-c-output-path flag)
-        working-directory: ./frb_example/pure_dart_multi/rust
-        run: cargo test --features c-output,extra-c-output-path --verbose
-
-      - name: Run tests for with_flutter example
-        working-directory: ./frb_example/with_flutter/rust
-        run: cargo test --verbose
+      - run: just rust_build_test
 
   rust_linter:
     name: Rust linter
