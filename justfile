@@ -15,7 +15,14 @@ dylib := if os() == "windows" {
 path_relative_linux_so := "target/x86_64-unknown-linux-gnu/debug/libflutter_rust_bridge_example.so"
 dir_tools := justfile_directory() / "tools"
 
+rust_linter:
+    cargo fmt
+    cargo clippy -- -D warnings
+    cd frb_rust && cargo clippy --target wasm32-unknown-unknown -- -D warnings
+
 precommit:
+    TODO rust_linter
+
     just gen-bridge
     just check
     just lint
@@ -45,7 +52,6 @@ lint *args:
     dart format --fix -l {{line_length}} {{dir_example_pure_dart}} {{args}}
     dart format --fix -l {{line_length}} {{dir_example_pure_dart_multi}} {{args}}
     dart format --fix -l {{line_length}} {{dir_example_with_flutter}} {{args}}
-    cargo fmt
 
 test: test-support test-pure test-integration
 test-pure:
@@ -81,15 +87,9 @@ clean:
     cd {{dir_example_with_flutter}}/rust && cargo clean
 
 check:
-    cd frb_rust && cargo clippy -- -D warnings
-    cd frb_rust && cargo clippy --target wasm32-unknown-unknown -- -D warnings
-    cd frb_codegen && cargo clippy -- -D warnings
     cd {{dir_example_pure_dart}}/dart && dart pub get && dart analyze
-    cd {{dir_example_pure_dart}}/rust && cargo clippy
     cd {{dir_example_pure_dart_multi}}/dart && dart pub get && dart analyze
-    cd {{dir_example_pure_dart_multi}}/rust && cargo clippy
     cd {{dir_example_with_flutter}} && flutter pub get && flutter analyze
-    cd {{dir_example_with_flutter}}/rust && cargo clippy
 
 serve *args:
     cd {{invocation_directory()}} && dart run {{justfile_directory()}}/frb_dart/bin/serve.dart {{args}}
