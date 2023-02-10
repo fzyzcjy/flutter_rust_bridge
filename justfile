@@ -10,6 +10,9 @@ install_ffigen_dependency:
     # needed by `ffigen`, see https://github.com/dart-lang/ffigen#installing-llvm
     {{ if os() == "linux" { "sudo apt update && sudo apt-get install -y libclang-dev" } else { "" } }}
 
+install_ffigen:
+    dart pub global activate ffigen
+
 install_valgrind:
     sudo apt install -y valgrind
 
@@ -100,12 +103,7 @@ generate_book_help:
 generate_ffigen:
     cd frb_dart && dart run ffigen
 
-cargo_run_codegen := "cargo run \
-        --manifest-path frb_codegen/Cargo.toml \
-        --package flutter_rust_bridge_codegen \
-        --bin flutter_rust_bridge_codegen \
-        --features 'chrono,uuid' \
-        -- "
+cargo_run_codegen := "cargo run --manifest-path frb_codegen/Cargo.toml --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --features 'chrono,uuid' -- "
 
 generate_bridge:
     {{cargo_run_codegen}} \
@@ -134,8 +132,15 @@ generate_bridge:
 # ============================ linters ============================
 
 rust_linter:
+    just _rust_linter_main
+    just _rust_linter_wasm
+
+_rust_linter_main:
     cargo fmt
     cargo clippy -- -D warnings
+
+_rust_linter_wasm:
+    rustup target add wasm32-unknown-unknown
     cd frb_rust && cargo clippy --target wasm32-unknown-unknown -- -D warnings
 
 default_line_length := "120"

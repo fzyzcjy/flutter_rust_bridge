@@ -258,7 +258,7 @@ jobs:
 
       - run: just flutter_example_with_flutter_integration_test
 
-      - run: just install_corrosion
+      - run: just install_corrosion_linux
       - name: Run Flutter integration tests explicitly requiring Corrosion
         working-directory: ./frb_example/with_flutter
         run: |
@@ -349,9 +349,10 @@ jobs:
         with:
           toolchain: 1.64.0
           components: rustfmt
-      - uses: dart-lang/setup-dart@v1
+      - uses: subosito/flutter-action@v2
         with:
-          sdk: "2.19.2"
+          channel: "stable"
+          flutter-version: "3.7.3"
       - uses: extractions/setup-just@v1
 
       - run: just install_ffigen_dependency
