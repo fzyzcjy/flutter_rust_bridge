@@ -267,8 +267,8 @@
 <li><a href="https://github.com/huang12zheng">huang12zheng</a>: Support type aliases and nested ones. Tweak code generation.</li>
 <li><a href="https://github.com/hsfzxjy">hsfzxjy</a>: Fix SyncReturn use-after-free bug.</li>
 <li><a href="https://github.com/Cupnfish">Cupnfish</a>: Support arrays as function parameters. Allow multi mirror.</li>
+<li><a href="https://github.com/temeddix">temeddix</a>: Fix broken CI. Custom num workers. Update doc.</li>
 <li><a href="https://github.com/alanlzhang">alanlzhang</a>: Add generation for Dart metadata. Enhance module parser.</li>
-<li><a href="https://github.com/temeddix">temeddix</a>: Fix broken CI. Update doc.</li>
 <li><a href="https://github.com/Zaitam">Zaitam</a>: Fix when method return struct.</li>
 <li><a href="https://github.com/AlienKevin">AlienKevin</a>: Add flutter example for macOS. Add doc for Android NDK bug.</li>
 <li><a href="https://github.com/banool">banool</a>: Fix pubspec parsing. Fix symbol-stripping doc.</li>
@@ -762,6 +762,7 @@ pub fn g() -&gt; i32 { panic!(&quot;oops I failed&quot;) }</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="synchronous-in-dart"><a class="header" href="#synchronous-in-dart">Synchronous in Dart</a></h1>
 <p>If you need to generate synchronous functions in Dart, you can use <code>SyncReturn&lt;T&gt;</code> as the return type. It supports whatever types that we have described in other places, i.e. whatever types that async mode supports.</p>
 <p>We suggest only do this for very quick Rust functions, or the Dart UI will be blocked.</p>
+<p>If you are using the default handler, the behavior about threading is different from normal Rust functions. Normal function calls are executed in the <a href="feature/worker_pool.html">worker pool</a>. However, Rust functions with return type of <code>SyncReturn&lt;T&gt;</code> are executed on the <em>main</em> thread. This means that if a <code>SyncReturn&lt;T&gt;</code> function takes time, Dart UI will not be able to respond.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="concurrency"><a class="header" href="#concurrency">Concurrency</a></h1>
 <p>Multiple Rust functions can be running at the same time, and they will be running concurrently. This is because by default we use a thread pool to execute the Rust functions. However, you can fully customize this behavior (and even throw away the thread pool).</p>
 <h2 id="example-11"><a class="header" href="#example-11">Example</a></h2>

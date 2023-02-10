@@ -145,6 +145,7 @@
                         <h1 id="synchronous-in-dart"><a class="header" href="#synchronous-in-dart">Synchronous in Dart</a></h1>
 <p>If you need to generate synchronous functions in Dart, you can use <code>SyncReturn&lt;T&gt;</code> as the return type. It supports whatever types that we have described in other places, i.e. whatever types that async mode supports.</p>
 <p>We suggest only do this for very quick Rust functions, or the Dart UI will be blocked.</p>
+<p>If you are using the default handler, the behavior about threading is different from normal Rust functions. Normal function calls are executed in the <a href="worker_pool.html">worker pool</a>. However, Rust functions with return type of <code>SyncReturn&lt;T&gt;</code> are executed on the <em>main</em> thread. This means that if a <code>SyncReturn&lt;T&gt;</code> function takes time, Dart UI will not be able to respond.</p>
 
                     </main>
 
