@@ -65,6 +65,11 @@ _dart_test_valgrind_single directory $CARGO_TARGET_DIR="/home/runner":
         chmod +x ./run.sh ./valgrind_util.py && \
         ./run.sh
 
+dart_test_macos:
+    flutter config --enable-macos-desktop
+    cd {{dir_example_with_flutter}} && flutter pub get
+    cd {{dir_example_with_flutter}} && flutter test -d macos integration_test/main.dart --verbose
+
 # ============================ code generators ============================
 
 generate_book_help:
