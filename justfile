@@ -221,8 +221,8 @@ release old_version new_version:
     just precommit
     just normalize_pubspec_lock
     just _release_update_scoop
-    just _release_update_git
-    just _release_update_github
+    just _release_update_git {{old_version}} {{new_version}}
+    just _release_update_github {{old_version}} {{new_version}}
     just _release_publish_all
 
 _release_sanity_check_version old_version new_version:
@@ -236,13 +236,13 @@ _release_update_version old_version new_version:
 _release_update_scoop:
     cd frb_codegen && ./contrib/scoop.json.sh > ./contrib/flutter_rust_bridge_codegen.json
 
-_release_update_git:
+_release_update_git old_version new_version:
     git add --all
     git status && git diff --staged | grep ''
     git commit -m "bump from {{old_version}} to {{new_version}}"
     git push
 
-_release_update_github:
+_release_update_github old_version new_version:
     awk '/## {{new_version}}/{flag=1; next} /## {{old_version}}/{flag=0} flag' CHANGELOG.md | gh release create v{{new_version}} --notes-file "-" --draft --title v{{new_version}}
     echo 'A *DRAFT* release has been created. Please go to the webpage and really release if you find it correct.'
     open https://github.com/fzyzcjy/flutter_rust_bridge/releases
