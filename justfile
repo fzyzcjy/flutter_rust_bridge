@@ -16,16 +16,6 @@ install_ffigen:
 install_valgrind:
     sudo apt install -y valgrind
 
-install_corrosion_windows:
-    #!cmd.exe
-
-    cd ..
-    git clone https://github.com/corrosion-rs/corrosion.git
-    cmake -Scorrosion -Bbuild -DCMAKE_BUILD_TYPE=Release
-    cmake --build build --config Release
-    cmake --install build --config Release
-    echo "C:\Program Files (x86)\Corrosion" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-
 install_prerequisite_for_integration_test_linux:
     sudo apt update && sudo apt-get -y install clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev libglu1-mesa
 
