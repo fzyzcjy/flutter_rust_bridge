@@ -173,6 +173,15 @@ dart_check_included_source:
     rm -r sdk
     git diff --exit-code
 
+# ============================ (some of) CI ============================
+
+ci_codegen:
+    just install_ffigen_dependency
+    just dart_pub_get
+    just dart_check_included_source
+    just generate_all
+    just check_no_git_diff
+
 # ============================ misc ============================
 
 clean:

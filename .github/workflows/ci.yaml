@@ -425,8 +425,4 @@ jobs:
           architecture: x64
       - uses: extractions/setup-just@v1
 
-      - run: just install_ffigen_dependency
-      - run: just dart_pub_get
-      - run: just dart_check_included_source
-      - run: just generate_all
-      - run: just check_no_git_diff
+      - run: just ci_codegen
