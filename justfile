@@ -198,7 +198,7 @@ check_no_git_diff:
 normalize_pubspec_lock:
     just _normalize_pubspec_lock_one frb_example/pure_dart/dart/pubspec.lock
     just _normalize_pubspec_lock_one frb_example/pure_dart_multi/dart/pubspec.lock
-    just _normalize_pubspec_lock_one frb_example/with_flutter/dart/pubspec.lock
+    just _normalize_pubspec_lock_one frb_example/with_flutter/pubspec.lock
 
 _normalize_pubspec_lock_one path:
     sed -i "" -e 's/pub.flutter-io.cn/pub.dev/g' {{path}}
