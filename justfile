@@ -18,10 +18,10 @@ frb_tools := justfile_directory() / "tools"
 default: gen-bridge
 
 precommit:
-    gen-bridge
-    check
-    lint
-    gen-help
+    just gen-bridge
+    just check
+    just lint
+    just gen-help
     # sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart/dart/pubspec.lock
     # sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart_multi/dart/pubspec.lock
     # sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/with_flutter/pubspec.lock
