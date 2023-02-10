@@ -1,6 +1,8 @@
 # Continuous Integration & Deployment (CI/CD)
+
 The CI/CD detailed here, using GitHub Actions, automates a lot of the busy work
 that you would otherwise need to maintain your library. These workflows include:
+
 - Automatic dependency updates with dependabot
 - Continuous Integration (CI)
   - Unit tests and code checks on pushes/PRs to `main`
@@ -11,10 +13,12 @@ that you would otherwise need to maintain your library. These workflows include:
   - Automated publishing of new versions to GitHub releases and pub.dev
 
 ## Dependabot (`/.github/dependabot.yaml`)
+
 It is highly recommended that you set up dependabot to automatically submit PRs when
 your dependencies fall out of date.
 
 Replace `library_name` below with your library name.
+
 ```yaml
 version: 2
 enable-beta-ecosystems: true
@@ -42,7 +46,9 @@ updates:
 ```
 
 ## Continuous Integration (`/.github/workflows/build.yml`)
+
 Replace `library_name` and `LibraryName` below with your library name.
+
 ```yaml
 name: Build & Test
 
@@ -65,7 +71,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
       - uses: bluefireteam/melos-action@v2
-      - uses: actions-rs/toolchain@v1
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
           components: rustfmt, clippy
@@ -96,7 +102,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
       - uses: bluefireteam/melos-action@v2
-      - uses: actions-rs/toolchain@v1
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
 
@@ -123,7 +129,7 @@ jobs:
       - uses: KyleMayes/install-llvm-action@v1
         with:
           version: "15"
-      - uses: actions-rs/toolchain@v1
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
 
@@ -154,7 +160,7 @@ jobs:
       - uses: KyleMayes/install-llvm-action@v1
         with:
           version: "15"
-      - uses: actions-rs/toolchain@v1
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
 
@@ -177,7 +183,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
       - uses: bluefireteam/melos-action@v2
-      - uses: actions-rs/toolchain@v1
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
 
@@ -206,7 +212,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
       - uses: bluefireteam/melos-action@v2
-      - uses: actions-rs/toolchain@v1
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
       - uses: nttld/setup-ndk@v1
@@ -240,14 +246,18 @@ jobs:
 ```
 
 ## Continuous Deployment
+
 There are two files you need for CD:
+
 1. Create new versions/releases with Melos
 2. Publish new releases to GitHub releases and pub.dev
 
 ### Create new versions with Melos (`/.github/workflows/create-release.yml`)
+
 You can create new releases of your library with this workflow by going to the
 "Actions" tab in your GitHub repo and manually starting this workflow with an
 appropriate option. The options are:
+
 - `--` -> call `melos version` with no additional parameters
 - `--prerelease` -> create a prerelease version instead of normal release (e.g., `1.0.0-dev.0`)
 - `--graduate` -> graduate a prerelease version to a normal release (e.g., `1.0.0-dev.0` becomes `1.0.0`)
@@ -256,6 +266,7 @@ You will need to set a repository secret of `BOT_ACCESS_TOKEN` to your GitHub pe
 to allow for pushes to main from this Action.
 
 Change `YourName` and `your-email@example.com` below as appropriate.
+
 ```yaml
 name: Create Release(s)
 
@@ -265,12 +276,12 @@ on:
       version_parameters:
         description: 'Parameters to pass to "melos version"'
         required: true
-        default: ' '
+        default: " "
         type: choice
         options:
-          - '--'
-          - '--prerelease'
-          - '--graduate'
+          - "--"
+          - "--prerelease"
+          - "--graduate"
 
 jobs:
   create_release:
@@ -298,17 +309,20 @@ jobs:
 ```
 
 ### Publish new releases to GitHub releases and pub.dev (`/.github/workflows/publish-release.yml`)
+
 In order for this workflow to execute correctly and publish packages to pub.dev,
 you need to have the contents of your pub credentials JSON file in a GitHub repo secret.
 
 After signing into pub locally:
+
 - On Linux, open the file at `~/.config/dart/pub-credentials.json`,
 - On macOS, open the file at `~/Library/Application Support/dart/pub-credentials.json`
 - Not sure where the `dart` config folder is on Windows, but you should be able to find it
   - Feel free to PR and fix this if you find it!
-And copy the contents of this `pub-credentials.json` file to a new GitHub repo secret named `PUB_CRED_JSON`.
+    And copy the contents of this `pub-credentials.json` file to a new GitHub repo secret named `PUB_CRED_JSON`.
 
 This workflow is set to execute whenever new version tags are pushed up to GitHub.
+
 ```yaml
 name: Publish Release(s)
 
@@ -330,7 +344,7 @@ jobs:
       - uses: KyleMayes/install-llvm-action@v1
         with:
           version: "15"
-      - uses: actions-rs/toolchain@v1
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
       - uses: nttld/setup-ndk@v1

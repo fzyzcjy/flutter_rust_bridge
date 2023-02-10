@@ -1,5 +1,5 @@
 # reference https://github.com/flutter/flutter/blob/4ad8c15f34b319cb3fef89918ed5b0be87df884f/.github/workflows/no-response.yaml
-name: No response
+name: No Response
 
 # Both `issue_comment` and `scheduled` event types are required for this Action
 # to work properly.
@@ -8,7 +8,7 @@ on:
     types: [created]
   schedule:
     # Schedule for five minutes after the hour, every hour
-    - cron: '5 * * * *'
+    - cron: "5 * * * *"
 
 # By specifying the access of one of the scopes, all of those that are not
 # specified are set to 'none'.
