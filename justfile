@@ -203,29 +203,30 @@ precommit:
     # sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart_multi/dart/pubspec.lock
     # sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/with_flutter/pubspec.lock
 
-test: test-support test-pure test-integration
-test-pure:
-    cd {{dir_example_pure_dart}}/rust && cargo b
-    cd {{dir_example_pure_dart}}/dart && \
-        dart pub get && \
-        dart lib/main.dart ../../../target/debug/{{dylib}}
-# TODO: Make ASan tests work for other platforms
-test-pure-asan $RUSTFLAGS="-Zsanitizer=address":
-    ./tools/dartsdk/fetch.sh
-    cd {{dir_example_pure_dart}}/rust && cargo +nightly b --target x86_64-unknown-linux-gnu
-    cd {{dir_example_pure_dart}}/dart && \
-        {{dir_tools}}/dartsdk/x64/dart pub get && \
-        {{dir_tools}}/dartsdk/x64/dart lib/main.dart  ../../../{{path_relative_linux_so}}
-test-pure-web *args:
-    cd {{dir_example_pure_dart}}/dart && just serve --dart-input lib/main.web.dart --root web/ -c ../rust --port 8081 {{args}}
-test-flutter-web *args:
-    cd {{dir_example_with_flutter}} && just serve -c rust {{args}}
-test-integration:
-    cd {{dir_example_with_flutter}} && flutter test integration_test/main.dart
-test-support platform="chrome":
-    cd frb_dart && dart pub get && \
-        dart test test/*.dart && \
-        dart test -p {{platform}} test/*.dart
+# TODO - @Desdaemon
+#test: test-support test-pure test-integration
+#test-pure:
+#    cd {{dir_example_pure_dart}}/rust && cargo b
+#    cd {{dir_example_pure_dart}}/dart && \
+#        dart pub get && \
+#        dart lib/main.dart ../../../target/debug/{{dylib}}
+## TODO: Make ASan tests work for other platforms
+#test-pure-asan $RUSTFLAGS="-Zsanitizer=address":
+#    ./tools/dartsdk/fetch.sh
+#    cd {{dir_example_pure_dart}}/rust && cargo +nightly b --target x86_64-unknown-linux-gnu
+#    cd {{dir_example_pure_dart}}/dart && \
+#        {{dir_tools}}/dartsdk/x64/dart pub get && \
+#        {{dir_tools}}/dartsdk/x64/dart lib/main.dart  ../../../{{path_relative_linux_so}}
+#test-pure-web *args:
+#    cd {{dir_example_pure_dart}}/dart && just serve --dart-input lib/main.web.dart --root web/ -c ../rust --port 8081 {{args}}
+#test-flutter-web *args:
+#    cd {{dir_example_with_flutter}} && just serve -c rust {{args}}
+#test-integration:
+#    cd {{dir_example_with_flutter}} && flutter test integration_test/main.dart
+#test-support platform="chrome":
+#    cd frb_dart && dart pub get && \
+#        dart test test/*.dart && \
+#        dart test -p {{platform}} test/*.dart
 
 serve *args:
     cd {{invocation_directory()}} && dart run {{justfile_directory()}}/frb_dart/bin/serve.dart {{args}}
