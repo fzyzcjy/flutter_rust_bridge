@@ -23,17 +23,19 @@ rust_linter:
     cargo clippy -- -D warnings
     cd frb_rust && cargo clippy --target wasm32-unknown-unknown -- -D warnings
 
-dart_linter:
-    just dart_linter_single frb_dart dart 80
-    just dart_linter_single {{dir_example_pure_dart}} dart {{default_line_length}}
-    just dart_linter_single {{dir_example_pure_dart_multi}} dart {{default_line_length}}
-    just dart_linter_single {{dir_example_with_flutter}} dart {{default_line_length}}
+dart_linter mode="default":
+    just dart_linter_single {{mode}} frb_dart dart 80
+    just dart_linter_single {{mode}} {{dir_example_pure_dart}} dart {{default_line_length}}
+    just dart_linter_single {{mode}} {{dir_example_pure_dart_multi}} dart {{default_line_length}}
+    just dart_linter_single {{mode}} {{dir_example_with_flutter}} dart {{default_line_length}}
     just dart_linter_pana
 
-dart_linter_single directory executable line_length:
+dart_linter_single mode directory executable line_length:
     cd {{directory}} && {{executable}} pub get
-    # TODO `--fix` when non-CI
-    cd {{directory}} && dart format --output=none --set-exit-if-changed --line-length {{line_length}} .
+    cd {{directory}} && dart format \
+      --line-length {{line_length}} \
+      {{ if mode == "fix" { "--fix" } else { "--output=none --set-exit-if-changed" } }} \
+      .
     cd {{directory}} && {{executable}} analyze --fatal-infos
 
 dart_linter_pana:
