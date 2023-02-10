@@ -43,7 +43,7 @@ dart_pub_get mode="default":
     cd frb_dart && dart pub get
     cd {{dir_example_pure_dart}}/dart && dart pub get
     cd {{dir_example_pure_dart_multi}}/dart && dart pub get
-    cd {{dir_example_with_flutter}} && {{ if mode == "dart_only" { "pwd" } else { "flutter pub get" }}
+    cd {{dir_example_with_flutter}} && {{ if mode == "dart_only" { "pwd" } else { "flutter pub get" } }}
 
 # ============================ build & test ============================
 
