@@ -13,6 +13,12 @@ After the script runs, change the `flutter_rust_bridge` dependency in `/packages
 ```yaml
   flutter_rust_bridge: "1.62.1"
 ```
+Note: If you so choose, you can update the `flutter_rust_bridge` versions in
+`/packages/library_name/native/Cargo.toml` and `/packages/library_name/pubspec.yaml`
+to the latest version available, but newer versions are not guaranteed to work
+with this section of the guide due to a lack of CI testing.
+Version 1.62.1 is known to work with this guide as-is.
+CI testing is planned once the Native Assets feature is released.
 
 Finally, change the variables at the top of the script to fit your needs.
 
