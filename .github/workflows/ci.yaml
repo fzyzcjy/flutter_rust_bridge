@@ -19,111 +19,295 @@ concurrency:
 
 jobs:
   # -------------------------- test --------------------------
-  valgrind_test:
-    name: Valgrind test
+  dart_test_valgrind:
+    name: Dart test with Valgrind
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-
-      - name: Install toolchain
-        uses: dtolnay/rust-toolchain@stable
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: 1.64.0
           components: rustfmt
-
-      - uses: actions/setup-python@v2
-        with:
-          python-version: "3.x"
-
-      - name: Install valgrind and llvm
-        run: sudo apt update && sudo apt install -y valgrind libclang-dev
-
       - uses: dart-lang/setup-dart@v1
         with:
           # TODO should be 2.19.2 but has a weird bug currently
           # https://github.com/fzyzcjy/flutter_rust_bridge/pull/1039#issuecomment-1424292105
           sdk: "2.17.6"
-
-      - name: Install dart dependencies (single block)
-        working-directory: ./frb_example/pure_dart/dart
-        run: dart pub get
-
-      - name: Install dart dependencies (multi blocks)
-        working-directory: ./frb_example/pure_dart_multi/dart
-        run: dart pub get
-
-      - name: Run valgrind script (single block)
-        working-directory: ./frb_example/pure_dart/dart
-        run: chmod +x ./run.sh ./valgrind_util.py && ./run.sh
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+      - uses: extractions/setup-just@v1
         env:
-          CARGO_TARGET_DIR: /home/runner # NOTE here, must be an absolute path, since in my script uses it in multiple different directories
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Run valgrind script (multi blocks)
-        working-directory: ./frb_example/pure_dart_multi/dart
-        run: chmod +x ./run.sh && ./run.sh
-        env:
-          CARGO_TARGET_DIR: /home/runner # NOTE here, must be an absolute path, since in my script uses it in multiple different directories
+      - run: just install_ffigen_dependency
+      - run: just install_valgrind
+      - run: just dart_pub_get dart_only
+      - run: just dart_test_valgrind
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
-  flutter_ios_test:
-    name: Flutter (iOS) integration test
+  flutter_test_ios:
+    name: Flutter integration test on iOS
     strategy:
       matrix:
         device:
           - "iPad (9th generation) Simulator (16.2)"
           - "iPhone 12 Pro Max Simulator (16.2)"
       fail-fast: false
-    uses: ./.github/workflows/flutter_ios_test.yml
-    with:
-      device: ${{ matrix.device }}
+    runs-on: macos-latest
+
+    steps:
+      - name: "List all simulators"
+        run: "xcrun xctrace list devices"
+      - name: "Start Simulator"
+        run: |
+          # the extra "(" is to avoid matching things like "iPhone 12 Pro Max Simulator (16.2) + Apple Watch Series 5 - 44mm (8.0)"
+          UDID=$(xcrun xctrace list devices | grep '${{ matrix.device }} (' | awk '{print $NF}' | tr -d '()')
+          echo UDID=$UDID
+          xcrun simctl boot "${UDID:?No Simulator with this name found}"
+
+      - uses: actions/checkout@v2
+        id: checkout
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          flutter-version: 3.7.3
+          architecture: x64
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.64.0
+
+      - uses: actions/cache@v3
+        id: cache-deps
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            ./frb_example/with_flutter/rust/target
+          key: ${{ runner.os }}-cargo-integrate-ios-${{ hashFiles('**/Cargo.lock') }}-${{ steps.checkout.outputs.rustc_hash }}
+
+      - name: Add Rust targets
+        run: rustup target add aarch64-apple-ios x86_64-apple-ios
+
+      - name: Install `cargo-lipo`
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: cargo install cargo-lipo --force
+
+      - name: Install Flutter dependencies
+        working-directory: ./frb_example/with_flutter
+        run: flutter pub get
+
+      - name: Build Rust lib
+        working-directory: ./frb_example/with_flutter/rust
+        # note the "-i '' -e" is a bug of sed specific to MacOS https://stackoverflow.com/questions/19456518
+        run: |
+          sed -i '' -e 's/"cdylib"/"staticlib"/g' Cargo.toml
+          cargo lipo
+          cp ../../../target/universal/debug/libflutter_rust_bridge_example.a ../ios/Runner
+
+      - name: Run Flutter integration tests
+        working-directory: ./frb_example/with_flutter
+        run: flutter test integration_test/main.dart --verbose
 
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
-  flutter_android_test:
-    name: Flutter (Android) integration test
+  flutter_test_android:
+    name: Flutter integration test on Android
+    runs-on: macos-latest
     strategy:
       matrix:
         device:
           - "pixel"
           - "Nexus 6"
       fail-fast: false
-    uses: ./.github/workflows/flutter_android_test.yml
-    with:
-      device: ${{ matrix.device }}
 
-  flutter_windows_test:
-    name: Flutter (Windows) integration test
-    uses: ./.github/workflows/flutter_windows_test.yml
+    steps:
+      - uses: actions/checkout@v2
+      - id: checkout
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.64.0
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          flutter-version: 3.7.3
+          architecture: x64
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "8.x" # "betterprogramming.pub" says must be java "8"
 
-  flutter_macos_test:
-    name: Flutter (macOS) integration test
-    uses: ./.github/workflows/flutter_macos_test.yml
+      # #499, https://github.com/actions/virtual-environments/issues/5595
+      - name: Configure ndk
+        run: |
+          ANDROID_HOME=$HOME/Library/Android/sdk
+          SDKMANAGER=$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager
 
-  flutter_linux_test:
-    name: Flutter (Linux) integration test
-    uses: ./.github/workflows/flutter_linux_test.yml
+          echo y | $SDKMANAGER "ndk;21.4.7075529"
 
-  dart_web_test:
-    name: Dart (Web) unit tests
+          ln -sfn $ANDROID_HOME/ndk/21.4.7075529 $ANDROID_HOME/ndk-bundle
+
+      - uses: actions/cache@v3
+        id: cache-deps
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            ./frb_example/with_flutter/rust/target
+          key: ${{ runner.os }}-cargo-integrate-android-${{ hashFiles('**/Cargo.lock') }}-${{ steps.checkout.outputs.rustc_hash }}
+
+      - name: Add Rust targets
+        run: rustup target add x86_64-linux-android
+
+      - name: Install `cargo-ndk`
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: cargo install cargo-ndk --force
+
+      - name: Install Flutter dependencies
+        working-directory: ./frb_example/with_flutter
+        run: flutter pub get
+
+      - name: Build Rust lib
+        working-directory: ./frb_example/with_flutter/rust
+        # NOTE since run on simulator, need -t to be x86_64. For real devices, of course arm-like ones.
+        run: cargo ndk --bindgen -t x86_64 -o ../android/app/src/main/jniLibs build
+
+      - name: Run Flutter integration tests
+        continue-on-error: true
+        timeout-minutes: ${{ matrix.timeout_minutes }}
+        uses: Wandalen/wretry.action@v1.0.25
+        with:
+          action: reactivecircus/android-emulator-runner@v2
+          with: |
+            api-level: 29
+            arch: x86_64
+            profile: ${{ matrix.device }}
+            script: cd frb_example/with_flutter && flutter test integration_test/main.dart --verbose
+
+  flutter_test_windows:
+    name: Flutter integration test on Windows
+    runs-on: windows-2019
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.64.0
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          flutter-version: 3.7.3
+          architecture: x64
+      - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install LLVM and Clang
+        uses: KyleMayes/install-llvm-action@v1
+        with:
+          version: "10.0"
+          directory: ${{ runner.temp }}/llvm
+
+      - run: just flutter_example_with_flutter_integration_test
+
+      - name: Install Corrosion
+        run: |
+          cd ..
+          git clone https://github.com/corrosion-rs/corrosion.git
+          cmake -Scorrosion -Bbuild -DCMAKE_BUILD_TYPE=Release
+          cmake --build build --config Release
+          cmake --install build --config Release
+          echo "C:\Program Files (x86)\Corrosion" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
+      - name: Run Flutter integration tests explicitly requiring Corrosion
+        working-directory: ./frb_example/with_flutter
+        run: |
+          mv -Force windows/rust.require.cmake windows/rust.cmake
+          just flutter_example_with_flutter_integration_test
+
+  flutter_test_macos:
+    name: Flutter integration test on MacOS
+    runs-on: macos-11
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.64.0
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          # TODO should be 3.7.3 but has a weird bug currently
+          # https://github.com/fzyzcjy/flutter_rust_bridge/pull/1023#issuecomment-1415852845
+          flutter-version: 3.3.10
+          architecture: x64
+      - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: just flutter_example_with_flutter_integration_test
+
+  flutter_test_linux:
+    name: Flutter integration test on Linux
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.64.0
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          flutter-version: 3.7.3
+          architecture: x64
+      - name: Setup headless display
+        uses: pyvista/setup-headless-display-action@v1
+      - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: just install_prerequisite_for_integration_test_linux
+
+      - run: just flutter_example_with_flutter_integration_test
+
+      - run: just install_corrosion_linux
+      - name: Run Flutter integration tests explicitly requiring Corrosion
+        working-directory: ./frb_example/with_flutter
+        run: |
+          set -euxo pipefail
+          mv linux/rust.require.cmake linux/rust.cmake
+          just flutter_example_with_flutter_integration_test
+
+  dart_test_web:
+    name: Dart test on Web
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         include:
-          - features: []
-          - features: [wasm-start]
+          - features: [ ]
+          - features: [ wasm-start ]
 
     steps:
       - uses: actions/checkout@v2
       - uses: dart-lang/setup-dart@v1
-      - name: Install Rust toolchain
-        uses: dtolnay/rust-toolchain@stable
+        with:
+          sdk: "2.19.2"
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: nightly
           target: wasm32-unknown-unknown
           components: rust-src,rustfmt
-      - name: Install ffigen
-        run: dart pub global activate ffigen
+      - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: just install_ffigen
+
       - name: Cache dependencies
         id: test-cache
         uses: actions/cache@v3
@@ -144,125 +328,61 @@ jobs:
       - name: Setup Dart dependencies
         run: dart pub get
         working-directory: frb_dart
-      - name: Run library unit tests
-        working-directory: ./frb_dart
-        run: dart pub get &&
-          dart test test/*.dart &&
-          dart test -p chrome test/*.dart
-      - name: Run tests
+
+      - name: Run unit tests
+        run: just dart_test_web_unit
+
+      - name: Run integration tests
         timeout-minutes: 20
         uses: Wandalen/wretry.action@v1.0.25
         with:
-          command: dart run ../../../frb_dart/bin/serve.dart
-            -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests
-            --features=${{ join(matrix.features, ',') }}
+          command: just dart_test_web_integration "${{ join(matrix.features, ',') }}"
           current_path: frb_example/pure_dart/dart
 
-  dart_vm_service_test:
-    name: Test with --enable-vm-service
+  dart_test_vm_service:
+    name: Dart test with vm service
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-
-      - name: Install toolchain
-        uses: dtolnay/rust-toolchain@stable
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: 1.64.0
           components: rustfmt
-
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: "2.19.2"
-      - name: Install llvm dependency (Linux)
-        run: sudo apt update && sudo apt-get install -y libclang-dev
+      - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build pure_dart example
-        working-directory: ./frb_example/pure_dart/rust
-        run: cargo build --verbose
-      - name: Run tests for pure_dart with vm service
-        run: |
-          dart run --enable-vm-service --define=ENABLE_FRB_FFI_TEST_TOOL=true \
-            ./frb_example/pure_dart/dart/lib/main_with_vm_service.dart \
-            ./target/debug/libflutter_rust_bridge_example.so
+      - run: just install_ffigen_dependency
+      - run: just dart_test_vm_service
+
+  rust_build_and_test:
+    name: Rust build and test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.64.0
+          components: rustfmt
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: "2.19.2"
+      - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: just install_ffigen_dependency
+      - run: just dart_pub_get dart_only
+      - run: just rust_build_and_test
 
   # -------------------------- linter --------------------------
-  rust_build_and_test:
-    name: Build and run Rust
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Install toolchain
-        uses: dtolnay/rust-toolchain@stable
-        with:
-          toolchain: 1.64.0
-          components: rustfmt
-
-      - uses: dart-lang/setup-dart@v1
-        with:
-          sdk: "2.19.2"
-      - name: Install llvm dependency (Linux)
-        run: sudo apt update && sudo apt-get install -y libclang-dev
-      - name: Build codegen
-        working-directory: ./frb_codegen
-        run: cargo build --verbose
-      - name: Run tests for codegen
-        working-directory: ./frb_codegen
-        run: cargo test --verbose
-
-      - name: Build rust runtime
-        working-directory: ./frb_rust
-        run: cargo build --verbose
-      - name: Run tests for rust runtime
-        working-directory: ./frb_rust
-        run: cargo test --verbose
-
-      - name: Build macros
-        working-directory: ./frb_macros
-        run: cargo build --verbose
-      - name: Run tests for macros
-        working-directory: ./frb_macros
-        run: cargo test --verbose
-
-      - name: Build pure_dart example
-        working-directory: ./frb_example/pure_dart/rust
-        run: cargo build --verbose
-      - name: Run tests for pure_dart example
-        working-directory: ./frb_example/pure_dart/rust
-        run: cargo test --verbose
-
-      - name: Build pure_dart_multi example
-        working-directory: ./frb_example/pure_dart_multi/rust
-        run: cargo build --verbose
-      - name: Run tests for pure_dart_multi example
-        working-directory: ./frb_example/pure_dart_multi/rust
-        run: cargo test --verbose
-
-      - name: Build pure_dart_multi example (with c-output flag)
-        working-directory: ./frb_example/pure_dart_multi/rust
-        run: cargo build --features c-output --verbose
-      - name: Run tests for pure_dart_multi example (with c-output flag)
-        working-directory: ./frb_example/pure_dart_multi/rust
-        run: cargo test --features c-output --verbose
-
-      - name: Build pure_dart_multi example (with c-output, extra-c-output-path flag)
-        working-directory: ./frb_example/pure_dart_multi/rust
-        run: cargo build --features c-output,extra-c-output-path --verbose
-      - name: Run tests for pure_dart_multi example (with c-output, extra-c-output-path flag)
-        working-directory: ./frb_example/pure_dart_multi/rust
-        run: cargo test --features c-output,extra-c-output-path --verbose
-
-      - name: Build with_flutter example
-        working-directory: ./frb_example/with_flutter/rust
-        run: cargo build --verbose
-      - name: Run tests for with_flutter example
-        working-directory: ./frb_example/with_flutter/rust
-        run: cargo test --verbose
-
   rust_linter:
-    name: Rust linter using Clippy and rustfmt
+    name: Rust linter
     runs-on: ubuntu-latest
 
     strategy:
@@ -271,160 +391,45 @@ jobs:
           - 1.64.0
 
     steps:
-      - name: Checkout sources
-        uses: actions/checkout@v2
-
-      - name: Install toolchain
-        uses: dtolnay/rust-toolchain@stable
+      - uses: actions/checkout@v2
+      - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: ${{ matrix.cargo_toolchain_version }}
           components: rustfmt, clippy
-
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: "2.19.2"
-      - name: Install llvm dependency (Linux)
-        run: sudo apt update && sudo apt-get install -y libclang-dev
+      - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Run fmt for codegen
-        uses: actions-rs/cargo@v1
-        with:
-          command: fmt
-          args: --manifest-path=./frb_codegen/Cargo.toml --all -- --check
-      - name: Run clippy for codegen
-        uses: actions-rs/cargo@v1
-        with:
-          command: clippy
-          args: --manifest-path=./frb_codegen/Cargo.toml -- -D warnings
-
-      - name: Run fmt for rust runtime
-        uses: actions-rs/cargo@v1
-        with:
-          command: fmt
-          args: --manifest-path=./frb_rust/Cargo.toml --all -- --check
-      - name: Run clippy for rust runtime
-        uses: actions-rs/cargo@v1
-        with:
-          command: clippy
-          args: --manifest-path=./frb_rust/Cargo.toml -- -D warnings
-
-      - name: Run fmt for rust macros
-        uses: actions-rs/cargo@v1
-        with:
-          command: fmt
-          args: --manifest-path=./frb_macros/Cargo.toml --all -- --check
-      - name: Run clippy for rust macros
-        uses: actions-rs/cargo@v1
-        with:
-          command: clippy
-          args: --manifest-path=./frb_macros/Cargo.toml -- -D warnings
-
-      - name: Run fmt for pure_dart example
-        uses: actions-rs/cargo@v1
-        with:
-          command: fmt
-          args: --manifest-path=./frb_example/pure_dart/rust/Cargo.toml --all -- --check
-      - name: Run clippy for pure_dart example
-        uses: actions-rs/cargo@v1
-        with:
-          command: clippy
-          args: --manifest-path=./frb_example/pure_dart/rust/Cargo.toml -- -D warnings
-
-      - name: Run fmt for pure_dart_multi example
-        uses: actions-rs/cargo@v1
-        with:
-          command: fmt
-          args: --manifest-path=./frb_example/pure_dart_multi/rust/Cargo.toml --all -- --check
-      - name: Run clippy for pure_dart_multi example
-        uses: actions-rs/cargo@v1
-        with:
-          command: clippy
-          args: --manifest-path=./frb_example/pure_dart_multi/rust/Cargo.toml -- -D warnings
-
-      - name: Run fmt for with_flutter example
-        uses: actions-rs/cargo@v1
-        with:
-          command: fmt
-          args: --manifest-path=./frb_example/with_flutter/rust/Cargo.toml --all -- --check
-      - name: Run clippy for with_flutter example
-        uses: actions-rs/cargo@v1
-        with:
-          command: clippy
-          args: --manifest-path=./frb_example/with_flutter/rust/Cargo.toml -- -D warnings
+      - run: just install_ffigen_dependency
+      - run: just rust_linter
 
   dart_linter:
-    name: Dart linter using analyze and format
-
+    name: Dart linter
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-
-      # Note: This workflow uses the latest stable version of the Dart SDK.
-      # You can specify other versions if desired, see documentation here:
-      # https://github.com/dart-lang/setup-dart/blob/main/README.md
-      # - uses: dart-lang/setup-dart@v1
-      - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
+      - uses: dart-lang/setup-dart@v1
         with:
           sdk: "2.19.2"
-
-      - name: Install dependencies for dart runtime
-        working-directory: ./frb_dart
-        run: dart pub get
-      - name: Verify formatting for dart runtime
-        working-directory: ./frb_dart
-        # 80 instead of 120
-        run: dart format --output=none --set-exit-if-changed --line-length 80 .
-      - name: Analyze project source for dart runtime
-        working-directory: ./frb_dart
-        run: dart analyze --fatal-infos
-
-      - name: Install dependencies for pure_dart example
-        working-directory: ./frb_example/pure_dart/dart
-        run: dart pub get
-      - name: Verify formatting for pure_dart example
-        working-directory: ./frb_example/pure_dart/dart
-        run: dart format --output=none --set-exit-if-changed --line-length 120 .
-      - name: Analyze project source for pure_dart example
-        working-directory: ./frb_example/pure_dart/dart
-        run: dart analyze --fatal-infos
-
-      - name: Install dependencies for pure_dart_multi example
-        working-directory: ./frb_example/pure_dart_multi/dart
-        run: dart pub get
-      - name: Verify formatting for pure_dart_multi example
-        working-directory: ./frb_example/pure_dart_multi/dart
-        run: dart format --output=none --set-exit-if-changed --line-length 120 .
-      - name: Analyze project source for pure_dart_multi example
-        working-directory: ./frb_example/pure_dart_multi/dart
-        run: dart analyze --fatal-infos
-
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
-          flutter-version: "3.7.2"
-          # architecture: x64
+          flutter-version: "3.7.3"
+      - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install dependencies for with_flutter example
-        working-directory: ./frb_example/with_flutter
-        run: flutter pub get
-      - name: Verify formatting for with_flutter example
-        working-directory: ./frb_example/with_flutter
-        run: dart format --output=none --set-exit-if-changed --line-length 120 .
-      - name: Analyze project source for with_flutter example
-        working-directory: ./frb_example/with_flutter
-        run: flutter analyze --fatal-infos
-
-      - name: Install pana
-        run: flutter pub global activate pana
-
-      - name: Analyze dart package using pana
-        working-directory: ./frb_dart
-        run: pana --no-warning --line-length 80 --exit-code-threshold 0
+      - run: just dart_linter
 
   # -------------------------- codegen --------------------------
   codegen:
-    name: Run codegen
+    name: Codegen
+    runs-on: ${{ matrix.image }}
+
     strategy:
       fail-fast: false
       matrix:
@@ -436,7 +441,19 @@ jobs:
           - image: ubuntu-20.04
             family: linux
 
-    uses: ./.github/workflows/code_generator.yml
-    with:
-      image: ${{ matrix.os.image }}
-      family: ${{ matrix.os.family }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.64.0
+          components: rustfmt, clippy
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          flutter-version: "3.7.3"
+          architecture: x64
+      - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: just ci_codegen
