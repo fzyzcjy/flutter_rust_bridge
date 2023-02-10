@@ -1,3 +1,7 @@
+## 1.63.0
+
+* Provide cargo features to change the number of pool workers #1026 (thanks @temeddix)
+
 ## 1.62.1
 
 * Add logging to disk for frb_codegen #1019 (thanks @dbsxdbsx)
