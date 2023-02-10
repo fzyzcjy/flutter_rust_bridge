@@ -219,5 +219,5 @@ jobs:
         env:
           RUST_LOG: debug
 
-      - name: "Check no code change (If fail: Please ensure you have run codegen on examples and commit those changes!)"
+      - name: "Check no code change (Use `just precommit` if error occured)"
         run: git diff --exit-code
