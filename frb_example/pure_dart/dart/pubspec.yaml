@@ -5,19 +5,19 @@ publish_to: none
 environment:
   sdk: '>=2.15.0 <3.0.0'
 dependencies:
-  meta: ^1.8.0
+  meta: ^1.9.0
   lints: ^2.0.1
   flutter_rust_bridge:
     path: ../../../frb_dart
-  vm_service: ^9.0.0
+  vm_service: ^11.0.1
   freezed_annotation: ^2.2.0
   ffi: ^2.0.1
-  js: ^0.6.5
-  test_core: ^0.4.16
-  test: ^1.21.4
-  uuid: ^3.0.6
-  collection: ^1.16.0 
+  js: ^0.6.7
+  test_core: ^0.4.24
+  test: ^1.23.1
+  uuid: ^3.0.7
+  collection: ^1.17.1 
 dev_dependencies:
-  build_runner: ^2.2.0
-  freezed: ^2.1.0+1
-  ffigen: ^7.0.0
+  build_runner: ^2.3.3
+  freezed: ^2.3.2
+  ffigen: ^7.2.5
