@@ -9,6 +9,17 @@ The following script assumes a bash shell, which you should make sure to use to 
 Also, the script generates some ffi convenience files in your Dart `src/` which you should
 check out after the script completes.
 
+After the script runs, change the `flutter_rust_bridge` dependency in `/packages/library_name/pubspec.yaml` to the following:
+```yaml
+  flutter_rust_bridge: "1.62.1"
+```
+Note: If you so choose, you can update the `flutter_rust_bridge` versions in
+`/packages/library_name/native/Cargo.toml` and `/packages/library_name/pubspec.yaml`
+to the latest version available, but newer versions are not guaranteed to work
+with this section of the guide due to a lack of CI testing.
+Version 1.62.1 is known to work with this guide as-is.
+CI testing is planned once the Native Assets feature is released.
+
 Finally, change the variables at the top of the script to fit your needs.
 
 ```bash
@@ -259,7 +270,7 @@ const RUST_INPUT: &str = "src/api.rs";
 const DART_OUTPUT: &str = "../lib/src/bridge_generated.dart";
 
 const IOS_C_OUTPUT: &str = "../../flutter_$LIBNAME/ios/Classes/frb.h";
-const MACOS_C_OUTPUT: &str = "../../flutter_$LIBNAME/macos/Classes/frb.h";
+const MACOS_C_OUTPUT_DIR: &str = "../../flutter_$LIBNAME/macos/Classes/";
 
 fn main() {
     // Tell Cargo that if the input Rust code changes, rerun this build script
@@ -269,7 +280,8 @@ fn main() {
     let raw_opts = RawOpts {
         rust_input: vec![RUST_INPUT.to_string()],
         dart_output: vec![DART_OUTPUT.to_string()],
-        c_output: Some(vec![IOS_C_OUTPUT.to_string(), MACOS_C_OUTPUT.to_string()]),
+        c_output: Some(vec![IOS_C_OUTPUT.to_string()]),
+        extra_c_output_path: Some(vec![MACOS_C_OUTPUT_DIR.to_string()]),
         inline_rust: true,
         wasm: true,
         ..Default::default()
@@ -306,10 +318,10 @@ edition = "2018"
 crate-type = ["staticlib", "cdylib"]
 
 [build-dependencies]
-flutter_rust_bridge_codegen = "1.56.*"
+flutter_rust_bridge_codegen = "1.62.*"
 
 [dependencies]
-flutter_rust_bridge = "1.56.*"
+flutter_rust_bridge = "1.62.*"
 EOF
 
 touch $RUST_BASE/src/api.rs
