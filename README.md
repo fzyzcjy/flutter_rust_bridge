@@ -107,7 +107,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/elliotsayes"><img src="https://avatars.githubusercontent.com/u/7699058?v=4?s=100" width="100px;" alt="elliotsayes"/><br /><sub><b>elliotsayes</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=elliotsayes" title="Documentation">📖</a></td>
     </tr>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/temeddix"><img src="https://avatars.githubusercontent.com/u/66480156?v=4?s=100" width="100px;" alt="Kim Dong-Hyun"/><br /><sub><b>Kim Dong-Hyun</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=temeddix" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/temeddix"><img src="https://avatars.githubusercontent.com/u/66480156?v=4?s=100" width="100px;" alt="Kim Dong-Hyun"/><br /><sub><b>Kim Dong-Hyun</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=temeddix" title="Code">💻</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=temeddix" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
@@ -136,8 +136,8 @@ More specifically, thanks for all these contributions:
 * [huang12zheng](https://github.com/huang12zheng): Support type aliases and nested ones. Tweak code generation.
 * [hsfzxjy](https://github.com/hsfzxjy): Fix SyncReturn use-after-free bug.
 * [Cupnfish](https://github.com/Cupnfish): Support arrays as function parameters. Allow multi mirror.
+* [temeddix](https://github.com/temeddix): Fix broken CI. Custom num workers. Update doc.
 * [alanlzhang](https://github.com/alanlzhang): Add generation for Dart metadata. Enhance module parser.
-* [temeddix](https://github.com/temeddix): Fix broken CI.
 * [Zaitam](https://github.com/Zaitam): Fix when method return struct.
 * [AlienKevin](https://github.com/AlienKevin): Add flutter example for macOS. Add doc for Android NDK bug.
 * [banool](https://github.com/banool): Fix pubspec parsing. Fix symbol-stripping doc.
