@@ -45,7 +45,7 @@ jobs:
       - run: just dart_test_valgrind
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
-  flutter_ios_test:
+  flutter_test_ios:
     name: Flutter (iOS) integration test
     strategy:
       matrix:
@@ -58,7 +58,7 @@ jobs:
       device: ${{ matrix.device }}
 
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
-  flutter_android_test:
+  flutter_test_android:
     name: Flutter (Android) integration test
     strategy:
       matrix:
@@ -70,11 +70,11 @@ jobs:
     with:
       device: ${{ matrix.device }}
 
-  flutter_windows_test:
+  flutter_test_windows:
     name: Flutter (Windows) integration test
     uses: ./.github/workflows/ci_flutter_windows_test.yml
 
-  flutter_macos_test:
+  flutter_test_macos:
     name: Flutter (macOS) integration test
     runs-on: macos-11
 
@@ -91,11 +91,33 @@ jobs:
           flutter-version: 3.3.10
           architecture: x64
 
-      - run: just dart_test_macos
+      - run: just flutter_test_macos
 
-  flutter_linux_test:
+  flutter_test_linux:
     name: Flutter (Linux) integration test
-    uses: ./.github/workflows/ci_flutter_linux_test.yml
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.64.0
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          flutter-version: 3.7.2
+          architecture: x64
+      - name: Setup headless display
+        uses: pyvista/setup-headless-display-action@v1
+
+      - run: just flutter_test_linux
+      - run: just install_corrosion
+      - name: Run Flutter integration tests explicitly requiring Corrosion
+        working-directory: ./frb_example/with_flutter
+        run: |
+          set -euxo pipefail
+          mv linux/rust.require.cmake linux/rust.cmake
+          just flutter_test_linux
 
   dart_web_test:
     name: Dart (Web) unit tests

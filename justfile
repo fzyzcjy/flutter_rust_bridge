@@ -23,6 +23,16 @@ install_ffigen_dependency:
 install_valgrind:
     sudo apt install -y valgrind
 
+install_corrosion:
+    #!/usr/bin/env bash
+    set -euxo pipefail
+
+    cd ..
+    git clone https://github.com/corrosion-rs/corrosion.git
+    cmake -Scorrosion -Bbuild -DCMAKE_BUILD_TYPE=Release
+    cmake --build build --config Release
+    sudo cmake --install build --config Release
+
 dart_pub_get:
     cd frb_dart && dart pub get
     cd {{dir_example_pure_dart}}/dart && dart pub get
@@ -65,10 +75,17 @@ _dart_test_valgrind_single directory $CARGO_TARGET_DIR="/home/runner":
         chmod +x ./run.sh ./valgrind_util.py && \
         ./run.sh
 
-dart_test_macos:
+flutter_test_macos:
     flutter config --enable-macos-desktop
     cd {{dir_example_with_flutter}} && flutter pub get
     cd {{dir_example_with_flutter}} && flutter test -d macos integration_test/main.dart --verbose
+
+flutter_test_linux:
+    sudo apt update && sudo apt-get -y install clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev libglu1-mesa
+    flutter config --enable-linux-desktop
+    flutter doctor -v
+    cd {{dir_example_with_flutter}} && flutter pub get
+    cd {{dir_example_with_flutter}} && flutter test -d linux integration_test/main.dart --verbose
 
 # ============================ code generators ============================
 
