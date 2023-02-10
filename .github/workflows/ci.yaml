@@ -43,7 +43,7 @@ jobs:
 
       - run: just install_ffigen_dependency
       - run: just install_valgrind
-      - run: just dart_pub_get
+      - run: just dart_pub_get dart_only
       - run: just dart_test_valgrind
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
@@ -361,16 +361,12 @@ jobs:
         with:
           toolchain: 1.64.0
           components: rustfmt
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: "stable"
-          flutter-version: "3.7.3"
       - uses: extractions/setup-just@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: just install_ffigen_dependency
-      - run: just dart_pub_get
+      - run: just dart_pub_get dart_only
       - run: just rust_build_and_test
 
   # -------------------------- linter --------------------------
