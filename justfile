@@ -109,26 +109,26 @@ cargo_run_codegen := "cargo run \
 
 generate_bridge:
     {{cargo_run_codegen}} \
-        --rust-input frb_example/pure_dart/rust/src/api.rs
-        --dart-output frb_example/pure_dart/dart/lib/bridge_generated.dart
-        --dart-decl-output frb_example/pure_dart/dart/lib/bridge_definitions.dart
-        --dart-format-line-length 120
+        --rust-input frb_example/pure_dart/rust/src/api.rs \
+        --dart-output frb_example/pure_dart/dart/lib/bridge_generated.dart \
+        --dart-decl-output frb_example/pure_dart/dart/lib/bridge_definitions.dart \
+        --dart-format-line-length 120 \
         --wasm
 
     {{cargo_run_codegen}} \
-        --rust-input frb_example/pure_dart_multi/rust/src/api_1.rs frb_example/pure_dart_multi/rust/src/api_2.rs
-        --dart-output frb_example/pure_dart_multi/dart/lib/bridge_generated_api_1.dart frb_example/pure_dart_multi/dart/lib/bridge_generated_api_2.dart
-        --dart-format-line-length 120
-        --rust-output frb_example/pure_dart_multi/rust/src/generated_api_1.rs frb_example/pure_dart_multi/rust/src/generated_api_2.rs
-        --class-name ApiClass1 ApiClass2
+        --rust-input frb_example/pure_dart_multi/rust/src/api_1.rs frb_example/pure_dart_multi/rust/src/api_2.rs \
+        --dart-output frb_example/pure_dart_multi/dart/lib/bridge_generated_api_1.dart frb_example/pure_dart_multi/dart/lib/bridge_generated_api_2.dart \
+        --dart-format-line-length 120 \
+        --rust-output frb_example/pure_dart_multi/rust/src/generated_api_1.rs frb_example/pure_dart_multi/rust/src/generated_api_2.rs \
+        --class-name ApiClass1 ApiClass2 \
         --wasm
 
     {{cargo_run_codegen}} \
-        --rust-input frb_example/with_flutter/rust/src/api.rs
-        --dart-output frb_example/with_flutter/lib/bridge_generated.dart
-        --c-output frb_example/with_flutter/ios/Runner/bridge_generated.h
-        --dart-decl-output frb_example/with_flutter/lib/bridge_definitions.dart
-        --dart-format-line-length 120
+        --rust-input frb_example/with_flutter/rust/src/api.rs \
+        --dart-output frb_example/with_flutter/lib/bridge_generated.dart \
+        --c-output frb_example/with_flutter/ios/Runner/bridge_generated.h \
+        --dart-decl-output frb_example/with_flutter/lib/bridge_definitions.dart \
+        --dart-format-line-length 120 \
         --wasm
 
 # ============================ linters ============================
