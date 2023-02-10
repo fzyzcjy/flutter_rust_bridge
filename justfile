@@ -101,6 +101,8 @@ flutter_example_with_flutter_integration_test:
 
 # ============================ code generators ============================
 
+generate_all: generate_ffigen generate_bridge generate_book_help
+
 generate_book_help:
     cargo run --manifest-path frb_codegen/Cargo.toml -- --help > book/src/help.txt
     dart run frb_dart/bin/serve.dart --help > book/src/help.serve.txt
@@ -147,6 +149,8 @@ rust_linter:
     cd frb_rust && cargo clippy --target wasm32-unknown-unknown -- -D warnings
 
 dart_linter mode="default":
+    just dart_pub_get
+
     just _dart_linter_single {{mode}} frb_dart dart 80
     just _dart_linter_single {{mode}} {{dir_example_pure_dart}}/dart dart {{default_line_length}}
     just _dart_linter_single {{mode}} {{dir_example_pure_dart_multi}}/dart dart {{default_line_length}}
@@ -190,18 +194,53 @@ check_no_git_diff:
     # Check nothing has changed (Use `just precommit` if error occurred)
     git diff --exit-code
 
+normalize_pubspec_lock:
+    just _normalize_pubspec_lock_one frb_example/pure_dart/dart/pubspec.lock
+    just _normalize_pubspec_lock_one frb_example/pure_dart_multi/dart/pubspec.lock
+    just _normalize_pubspec_lock_one frb_example/with_flutter/dart/pubspec.lock
+
+_normalize_pubspec_lock_one path:
+    sed -i "" -e 's/pub.flutter-io.cn/pub.dev/g' {{path}}
+
 precommit:
-    TODO rust_linter
+    just generate_all
+    just rust_linter
+    just dart_linter
 
-    just gen-bridge
-    just check
-    just lint
-    just gen-help
+serve *args:
+    cd {{invocation_directory()}} && dart run {{justfile_directory()}}/frb_dart/bin/serve.dart {{args}}
 
-    # TODO
-    # sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart/dart/pubspec.lock
-    # sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/pure_dart_multi/dart/pubspec.lock
-    # sed -i "" -e 's/pub.flutter-io.cn/pub.dartlang.org/g' frb_example/with_flutter/pubspec.lock
+# ============================ releasing new versions ============================
+
+publish-all:
+    (cd frb_codegen && cargo publish)
+    (cd frb_rust && cargo publish)
+    (cd frb_macros && cargo publish)
+    (cd frb_dart && flutter pub publish --force --server=https://pub.dartlang.org)
+
+release old_version new_version:
+    grep -q 'version = "{{old_version}}"' Cargo.toml
+    grep -q '{{new_version}}' CHANGELOG.md
+
+    sed -i '' 's/version = "{{old_version}}"/version = "{{new_version}}"/g' Cargo.toml
+    sed -i '' 's/version: {{old_version}}/version: {{new_version}}/g' frb_dart/pubspec.yaml
+
+    just precommit
+
+    just normalize_pubspec_lock
+
+    cd frb_codegen && ./contrib/scoop.json.sh > ./contrib/flutter_rust_bridge_codegen.json
+
+    git add --all
+    git status && git diff --staged | grep ''
+    git commit -m "bump from {{old_version}} to {{new_version}}"
+    git push
+
+    awk '/## {{new_version}}/{flag=1; next} /## {{old_version}}/{flag=0} flag' CHANGELOG.md | gh release create v{{new_version}} --notes-file "-" --draft --title v{{new_version}}
+    echo 'A *DRAFT* release has been created. Please go to the webpage and really release if you find it correct.'
+    open https://github.com/fzyzcjy/flutter_rust_bridge/releases
+
+    just publish-all
 
 # TODO - @Desdaemon
 #test: test-support test-pure test-integration
@@ -228,37 +267,3 @@ precommit:
 #        dart test test/*.dart && \
 #        dart test -p {{platform}} test/*.dart
 
-serve *args:
-    cd {{invocation_directory()}} && dart run {{justfile_directory()}}/frb_dart/bin/serve.dart {{args}}
-
-# ============================ releasing new versions ============================
-
-publish-all:
-    (cd frb_codegen && cargo publish)
-    (cd frb_rust && cargo publish)
-    (cd frb_macros && cargo publish)
-    (cd frb_dart && flutter pub publish --force --server=https://pub.dartlang.org)
-
-release old_version new_version:
-    grep -q 'version = "{{old_version}}"' Cargo.toml
-    grep -q '{{new_version}}' CHANGELOG.md
-
-    sed -i '' 's/version = "{{old_version}}"/version = "{{new_version}}"/g' Cargo.toml
-    sed -i '' 's/version: {{old_version}}/version: {{new_version}}/g' frb_dart/pubspec.yaml
-
-    just precommit
-
-    cd frb_codegen && ./contrib/scoop.json.sh > ./contrib/flutter_rust_bridge_codegen.json
-
-    git add --all
-    git status && git diff --staged | grep ''
-    git commit -m "bump from {{old_version}} to {{new_version}}"
-    git push
-
-    awk '/## {{new_version}}/{flag=1; next} /## {{old_version}}/{flag=0} flag' CHANGELOG.md | gh release create v{{new_version}} --notes-file "-" --draft --title v{{new_version}}
-    echo 'A *DRAFT* release has been created. Please go to the webpage and really release if you find it correct.'
-    open https://github.com/fzyzcjy/flutter_rust_bridge/releases
-
-    just publish-all
-
-# vim:expandtab:ts=4:sw=4

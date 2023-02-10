@@ -396,7 +396,6 @@ jobs:
           flutter-version: "3.7.2"
       - uses: extractions/setup-just@v1
 
-      - run: just dart_pub_get
       - run: just dart_linter
 
   # -------------------------- codegen --------------------------
@@ -430,7 +429,5 @@ jobs:
       - run: just install_ffigen_dependency
       - run: just dart_pub_get
       - run: just dart_check_included_source
-      - run: just generate_ffigen
-      - run: just generate_bridge
-      - run: just generate_book_help
+      - run: just generate_all
       - run: just check_no_git_diff
