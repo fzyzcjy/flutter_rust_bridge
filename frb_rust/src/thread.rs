@@ -1,5 +1,5 @@
 #[wasm_bindgen::prelude::wasm_bindgen]
-fn get_logical_core_count() {
+pub fn get_logical_core_count() {
     #[cfg(not(wasm))]
     {
         std::thread::available_parallelism().unwrap().get()
