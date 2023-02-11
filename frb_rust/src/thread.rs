@@ -6,9 +6,13 @@ pub fn get_logical_core_count() -> usize {
 #[cfg(wasm)]
 #[wasm_bindgen::prelude::wasm_bindgen]
 pub fn get_logical_core_count() -> usize {
-    let window = web_sys::window().expect("Global 'window' does not exist");
-    let navigator = window.navigator();
-    navigator.hardware_concurrency() as usize
+    let script = r#"
+        function get_logical_cores() {
+            return navigator.hardwareConcurrency || 4;
+        }
+    "#;
+    let js_value = js_sys::eval(script).unwrap();
+    js_value.as_f64().unwrap() as usize
 }
 
 fn get_worker_count() -> usize {
