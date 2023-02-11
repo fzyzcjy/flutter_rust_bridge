@@ -20,7 +20,7 @@ fn get_worker_count() -> usize {
         }
         #[cfg(wasm)]
         {
-            #[wasm_bindgen]
+            #[wasm_bindgen::prelude::wasm_bindgen]
             {
                 let script = r#"
                     function get_logical_cores() {
