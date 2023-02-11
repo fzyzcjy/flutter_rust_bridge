@@ -1,3 +1,21 @@
+#[wasm_bindgen::prelude::wasm_bindgen]
+fn get_logical_core_count() {
+    #[cfg(not(wasm))]
+    {
+        std::thread::available_parallelism().unwrap().get()
+    }
+    #[cfg(wasm)]
+    {
+        let script = r#"
+                function get_logical_cores() {
+                    return navigator.hardwareConcurrency || 4;
+                }
+            "#;
+        let js_value = js_sys::eval(script).unwrap();
+        js_value.as_f64().unwrap() as usize
+    }
+}
+
 fn get_worker_count() -> usize {
     #[cfg(all(feature = "worker-max", feature = "worker-single"))]
     {
@@ -13,24 +31,7 @@ fn get_worker_count() -> usize {
     }
     #[cfg(feature = "worker-max")]
     {
-        // Logical cores
-        #[cfg(not(wasm))]
-        {
-            std::thread::available_parallelism().unwrap().get()
-        }
-        #[cfg(wasm)]
-        {
-            #[wasm_bindgen::prelude::wasm_bindgen]
-            {
-                let script = r#"
-                    function get_logical_cores() {
-                        return navigator.hardwareConcurrency || 4;
-                    }
-                "#;
-                let js_value = js_sys::eval(script).unwrap();
-                js_value.as_f64().unwrap() as usize
-            }
-        }
+        get_logical_core_count() // Logical cores
     }
 }
 
