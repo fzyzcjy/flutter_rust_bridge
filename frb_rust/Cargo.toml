@@ -31,6 +31,8 @@ console_error_panic_hook = { version = "0.1.7", optional = true }
 wasm-bindgen = { version = "0.2.81" }
 js-sys = { version = "0.3.60" }
 web-sys = { version = "0.3.58", features = [
+  "Window",
+  "Navigator",
   "DedicatedWorkerGlobalScope",
   "MessageEvent",
   "MessagePort",

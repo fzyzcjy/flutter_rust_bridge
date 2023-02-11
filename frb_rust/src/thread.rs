@@ -1,17 +1,15 @@
-#[cfg(not(wasm))]
 fn get_logical_core_count() -> usize {
-    std::thread::available_parallelism().unwrap().get()
-}
-
-#[cfg(wasm)]
-fn get_logical_core_count() -> usize {
-    let script = r#"
-        function get_logical_cores() {
-            return navigator.hardwareConcurrency || 4;
-        }
-    "#;
-    let js_value = js_sys::eval(script).unwrap();
-    js_value.as_f64().unwrap() as usize
+    #[cfg(not(wasm))]
+    {
+        std::thread::available_parallelism().unwrap().get()
+    }
+    #[cfg(wasm)]
+    {
+        web_sys::window()
+            .unwrap()
+            .navigator()
+            .hardware_concurrency() as usize
+    }
 }
 
 fn get_worker_count() -> usize {
