@@ -9,7 +9,7 @@ fn get_worker_count() -> usize {
     }
     #[cfg(feature = "worker-single")]
     {
-        1 // One
+        1
     }
     #[cfg(feature = "worker-max")]
     {
