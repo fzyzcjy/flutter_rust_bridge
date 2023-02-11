@@ -13,7 +13,24 @@ fn get_worker_count() -> usize {
     }
     #[cfg(feature = "worker-max")]
     {
-        std::thread::available_parallelism().unwrap().get() // All logical cores
+        // All logical cores
+        #[cfg(not(wasm))]
+        {
+            std::thread::available_parallelism().unwrap().get()
+        }
+        #[cfg(wasm)]
+        {
+            #[wasm_bindgen]
+            {
+                let script = r#"
+                    function get_logical_cores() {
+                        return navigator.hardwareConcurrency || 4;
+                    }
+                "#;
+                let js_value = js_sys::eval(script).unwrap();
+                js_value.as_f64().unwrap() as usize
+            }
+        }
     }
 }
 

@@ -6,3 +6,4 @@ launch.json
 .local-chromium
 Makefile
 *.log
+.vscode
