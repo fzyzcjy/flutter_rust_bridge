@@ -1,11 +1,10 @@
 #[cfg(not(wasm))]
-pub fn get_logical_core_count() -> usize {
+fn get_logical_core_count() -> usize {
     std::thread::available_parallelism().unwrap().get()
 }
 
 #[cfg(wasm)]
-#[wasm_bindgen::prelude::wasm_bindgen]
-pub fn get_logical_core_count() -> usize {
+fn get_logical_core_count() -> usize {
     let script = r#"
         function get_logical_cores() {
             return navigator.hardwareConcurrency || 4;
