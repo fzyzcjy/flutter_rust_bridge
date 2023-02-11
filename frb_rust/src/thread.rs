@@ -1,17 +1,3 @@
-fn get_logical_core_count() -> usize {
-    #[cfg(not(wasm))]
-    {
-        std::thread::available_parallelism().unwrap().get()
-    }
-    #[cfg(wasm)]
-    {
-        web_sys::window()
-            .unwrap()
-            .navigator()
-            .hardware_concurrency() as usize
-    }
-}
-
 fn get_worker_count() -> usize {
     #[cfg(all(feature = "worker-max", feature = "worker-single"))]
     {
@@ -27,7 +13,17 @@ fn get_worker_count() -> usize {
     }
     #[cfg(feature = "worker-max")]
     {
-        get_logical_core_count() // Logical cores
+        #[cfg(not(wasm))]
+        {
+            std::thread::available_parallelism().unwrap().get()
+        }
+        #[cfg(wasm)]
+        {
+            web_sys::window()
+                .unwrap()
+                .navigator()
+                .hardware_concurrency() as usize
+        }
     }
 }
 
