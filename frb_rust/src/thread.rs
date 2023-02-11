@@ -13,7 +13,7 @@ fn get_worker_count() -> usize {
     }
     #[cfg(feature = "worker-max")]
     {
-        // All logical cores
+        // Logical cores
         #[cfg(not(wasm))]
         {
             std::thread::available_parallelism().unwrap().get()
