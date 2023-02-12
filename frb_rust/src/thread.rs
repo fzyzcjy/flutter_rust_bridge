@@ -9,11 +9,25 @@ fn get_worker_count() -> usize {
     }
     #[cfg(feature = "worker-single")]
     {
-        1 // One
+        1
     }
     #[cfg(feature = "worker-max")]
     {
-        std::thread::available_parallelism().unwrap().get() // All logical cores
+        #[cfg(not(wasm))]
+        {
+            std::thread::available_parallelism().unwrap().get()
+        }
+        #[cfg(wasm)]
+        {
+            let mut key;
+            let global_object = js_sys::global();
+            let global = global_object.as_ref();
+            key = wasm_bindgen::JsValue::from_str("navigator");
+            let navigator = js_sys::Reflect::get(&global, &key).unwrap();
+            key = wasm_bindgen::JsValue::from_str("hardwareConcurrency");
+            let hardware_concurrency = js_sys::Reflect::get(&navigator, &key).unwrap();
+            hardware_concurrency.as_f64().unwrap() as usize
+        }
     }
 }
 
@@ -37,9 +51,8 @@ pub use io::THREAD_POOL;
 
 #[cfg(wasm)]
 mod web {
-    use crate::{script_path, wasm_bindgen_src::pool::WorkerPool};
-
     use super::*;
+    use crate::{script_path, wasm_bindgen_src::pool::WorkerPool};
 
     thread_local! {
         pub static WORKER_POOL: Option<WorkerPool> = WorkerPool::new(
