@@ -29,10 +29,10 @@ packages:
     dependency: transitive
     description:
       name: args
-      sha256: "139d809800a412ebb26a3892da228b2d0ba36f0ef5d9a82166e5e52ec8d61611"
+      sha256: "4cab82a83ffef80b262ddedf47a0a8e56ee6fbf7fe21e6e768b02792034dd440"
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.2"
+    version: "2.4.0"
   async:
     dependency: transitive
     description:
@@ -273,7 +273,7 @@ packages:
       path: "../../frb_dart"
       relative: true
     source: path
-    version: "1.63.0"
+    version: "1.63.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
