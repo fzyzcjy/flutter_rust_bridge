@@ -19,10 +19,10 @@ fn get_worker_count() -> usize {
         }
         #[cfg(wasm)]
         {
-            web_sys::window()
-                .unwrap()
-                .navigator()
-                .hardware_concurrency() as usize
+            let window = web_sys::window().unwrap();
+            let result = window.navigator().hardware_concurrency();
+            window.close();
+            result as usize
         }
     }
 }
