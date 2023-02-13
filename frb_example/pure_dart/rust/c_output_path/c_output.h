@@ -900,7 +900,7 @@ union SpeedKind *inflate_Speed_GPS(void);
 
 void free_WireSyncReturn(WireSyncReturn ptr);
 
-inline int64_t dummy_method_to_enforce_bundling(void) {
+static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
     dummy_var ^= ((int64_t) (void*) wire_simple_adder);
     dummy_var ^= ((int64_t) (void*) wire_simple_adder_sync);
