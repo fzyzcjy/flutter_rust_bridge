@@ -26,7 +26,7 @@ fn main() {
             // each field should contain head file name
             "./c_output_path/c_output.h".into(),
         ]),
-        extra_c_output_path: Some(vec!["./c_output_path_bak/".into()]),
+        extra_c_output_path: Some(vec!["./c_output_path_extra/".into()]),
 
         // for other options use defaults
         ..Default::default()

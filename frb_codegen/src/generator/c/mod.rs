@@ -9,56 +9,55 @@ pub fn generate_dummy(
     func_names: &[String],
     c_path_index: usize,
 ) -> String {
-    match configs.len() > 1 {
-        true => {
-            let basic_dummy_func = get_dummy_func(&config.class_name, func_names);
-            if config.block_index == BlockIndex(0) {
-                let func_names = configs
-                    .iter()
-                    .map(|e| get_dummy_signature(&e.class_name))
-                    .collect::<Vec<_>>();
+    if configs.len() > 1 {
+        let basic_dummy_func = get_dummy_func(&config.class_name, func_names);
+        if config.block_index == BlockIndex(0) {
+            let func_names = configs
+                .iter()
+                .map(|e| get_dummy_signature(&e.class_name))
+                .collect::<Vec<_>>();
 
-                let other_headers = configs
-                    .iter()
-                    .skip(1)
-                    .map(|e| {
-                        // get directory only from paths
-                        let src_p = Path::new(&config.c_output_path[c_path_index]);
-                        let src_dir = src_p.directory_name_str().unwrap();
-                        let dst_p = Path::new(&e.c_output_path[c_path_index]);
-                        let dst_dir = dst_p.directory_name_str().unwrap();
-                        // get reletive path and head file name
-                        let relative_p = relative_path(src_dir, dst_dir);
-                        let head_file_name = dst_p.file_name_str().unwrap();
-                        // final string for importing
-                        format!(
-                            r#"#include "{}""#,
-                            Path::join(relative_p.as_ref(), head_file_name)
-                                .into_os_string()
-                                .into_string()
-                                .unwrap()
-                        )
-                    })
-                    .collect::<Vec<_>>()
-                    .join("\n");
+            let other_headers = configs
+                .iter()
+                .skip(1)
+                .map(|e| {
+                    // get directory only from paths
+                    let src_p = Path::new(&config.c_output_path[c_path_index]);
+                    let src_dir = src_p.directory_name_str().unwrap();
+                    let dst_p = Path::new(&e.c_output_path[c_path_index]);
+                    let dst_dir = dst_p.directory_name_str().unwrap();
+                    // get reletive path and header file name
+                    let relative_p = relative_path(src_dir, dst_dir);
+                    let header_file_name = dst_p.file_name_str().unwrap();
+                    // final string for importing
+                    format!(
+                        r#"#include "{}""#,
+                        Path::join(relative_p.as_ref(), header_file_name)
+                            .into_os_string()
+                            .into_string()
+                            .unwrap()
+                    )
+                })
+                .collect::<Vec<_>>()
+                .join("\n");
 
-                format!(
-                    "{}\n{}\n{}",
-                    basic_dummy_func,
-                    other_headers,
-                    get_dummy_func("", &func_names)
-                )
-            } else {
-                basic_dummy_func
-            }
+            format!(
+                "{}\n{}\n{}",
+                basic_dummy_func,
+                other_headers,
+                get_dummy_func("", &func_names)
+            )
+        } else {
+            basic_dummy_func
         }
-        false => get_dummy_func("", func_names),
+    } else {
+        get_dummy_func("", func_names)
     }
 }
 
 fn get_dummy_func(api_block_name: &str, func_names: &[String]) -> String {
     format!(
-        r#"static int64_t {signature}(void) {{
+        r#"inline int64_t {signature}(void) {{
     int64_t dummy_var = 0;
 {content}
     return dummy_var;
