@@ -157,7 +157,7 @@ targets which can easily be added:</p>
 <p>Android Studio depends on the <code>javax</code> library being present in the Java runtime, and the only reliable way to ensure this is to install an older version of Java. On Unix-like systems, you can use <a href="https://asdf-vm.com/">asdf</a> or similar tools to manage your Java versions, and the template defines a known working version of Java in the <code>.tool-versions</code> file.</p>
 <h2 id="android-ndk"><a class="header" href="#android-ndk">Android NDK</a></h2>
 <blockquote>
-<p>Android Studio &gt; SDK Manager &gt; SDK Tools &gt; uncheck Hide Obsolete Packages &gt; NDK (version 22)</p>
+<p>Android Studio &gt; SDK Manager &gt; SDK Tools &gt; Show Package Details &gt; NDK (Side by side) &gt; check the latest 22.x.x</p>
 </blockquote>
 <p>The <a href="https://developer.android.com/ndk">Android NDK</a>, or Native Development Kit, enables code written in other
 languages to be run on the JVM via the <a href="https://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/jniTOC.html">Java Native Interface</a>, or JNI for short. In this case, we would like to pass the dynamic libraries created by Cargo to be included in the bundle when we run or build the project.</p>
