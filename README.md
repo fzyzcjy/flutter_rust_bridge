@@ -163,6 +163,7 @@ More specifically, thanks for all these contributions:
 * [tmpfs](https://github.com/tmpfs): Improve doc.
 * [thomas725](https://github.com/thomas725): Improve doc.
 * [juzi5201314](https://github.com/juzi5201314): Improve doc.
+* [Voklen](https://github.com/Voklen): Improve doc.
 * [svenstaro](https://github.com/svenstaro): Improve doc.
 * [utilForever](https://github.com/utilForever): Fix typos.
 * [Stonks3141](https://github.com/Stonks3141): Fix doc credit.
