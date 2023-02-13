@@ -33,7 +33,7 @@ Here is my another open-source library :) https://github.com/fzyzcjy/flutter_smo
 ## ✨ Contributors
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-50-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-51-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key) following [all-contributors](https://github.com/all-contributors/all-contributors) specification):
@@ -108,6 +108,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/temeddix"><img src="https://avatars.githubusercontent.com/u/66480156?v=4?s=100" width="100px;" alt="Kim Dong-Hyun"/><br /><sub><b>Kim Dong-Hyun</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=temeddix" title="Code">💻</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=temeddix" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Voklen"><img src="https://avatars.githubusercontent.com/u/56766748?v=4?s=100" width="100px;" alt="Alex Gorichev"/><br /><sub><b>Alex Gorichev</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Voklen" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
@@ -162,6 +163,7 @@ More specifically, thanks for all these contributions:
 * [tmpfs](https://github.com/tmpfs): Improve doc.
 * [thomas725](https://github.com/thomas725): Improve doc.
 * [juzi5201314](https://github.com/juzi5201314): Improve doc.
+* [Voklen](https://github.com/Voklen): Improve doc.
 * [svenstaro](https://github.com/svenstaro): Improve doc.
 * [utilForever](https://github.com/utilForever): Fix typos.
 * [Stonks3141](https://github.com/Stonks3141): Fix doc credit.
