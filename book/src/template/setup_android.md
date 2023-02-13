@@ -21,7 +21,7 @@ Android Studio depends on the `javax` library being present in the Java runtime,
 
 ## Android NDK
 
-> Android Studio > SDK Manager > SDK Tools > uncheck Hide Obsolete Packages > NDK (version 22)
+> Android Studio > SDK Manager > SDK Tools > Show Package Details > NDK (Side by side) > check the latest 22.x.x
 
 The [Android NDK], or Native Development Kit, enables code written in other
 languages to be run on the JVM via the [Java Native Interface], or JNI for short. In this case, we would like to pass the dynamic libraries created by Cargo to be included in the bundle when we run or build the project.
