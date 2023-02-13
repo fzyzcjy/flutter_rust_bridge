@@ -1,3 +1,7 @@
+## 1.63.1
+
+* Fix the problem with using worker-max feature in WASM #1056 (thanks @temeddix)
+
 ## 1.63.0
 
 * Provide cargo features to change the number of pool workers #1026 (thanks @temeddix)
