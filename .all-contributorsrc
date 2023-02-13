@@ -472,6 +472,15 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "Voklen",
+      "name": "Alex Gorichev",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56766748?v=4",
+      "profile": "https://github.com/Voklen",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
