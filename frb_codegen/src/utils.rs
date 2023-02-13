@@ -6,6 +6,7 @@ use std::hash::Hash;
 use std::path::Path;
 
 use anyhow::anyhow;
+use pathdiff::diff_paths;
 
 pub fn mod_from_rust_path(code_path: &str, crate_path: &str) -> String {
     Path::new(code_path)
@@ -92,6 +93,10 @@ impl Display for BlockIndex {
 pub trait PathExt {
     fn file_name_str(&self) -> Option<&str>;
     fn directory_name_str(&self) -> Option<&str>;
+
+    fn get_relative_path_to<P>(&self, path: P, exclude_file: bool) -> String
+    where
+        P: AsRef<Path>;
 }
 
 impl PathExt for std::path::Path {
@@ -102,6 +107,18 @@ impl PathExt for std::path::Path {
     #[inline]
     fn directory_name_str(&self) -> Option<&str> {
         self.parent().and_then(|p| p.to_str())
+    }
+    #[inline]
+    fn get_relative_path_to<P>(&self, path: P, exclude_file: bool) -> String
+    where
+        P: AsRef<Path>,
+    {
+        if exclude_file {
+            let src = self.parent().and_then(|p| p.to_str()).unwrap();
+            diff_paths(path, src).unwrap().to_str().unwrap().to_owned()
+        } else {
+            diff_paths(path, self).unwrap().to_str().unwrap().to_owned()
+        }
     }
 }
 

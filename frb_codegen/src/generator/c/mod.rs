@@ -1,7 +1,7 @@
 use std::path::Path;
 
 use crate::config;
-use crate::utils::{relative_path, BlockIndex, PathExt};
+use crate::utils::{BlockIndex, PathExt};
 
 pub fn generate_dummy(
     config: &config::Opts,
@@ -23,11 +23,10 @@ pub fn generate_dummy(
                 .map(|e| {
                     // get directory only from paths
                     let src_p = Path::new(&config.c_output_path[c_path_index]);
-                    let src_dir = src_p.directory_name_str().unwrap();
                     let dst_p = Path::new(&e.c_output_path[c_path_index]);
-                    let dst_dir = dst_p.directory_name_str().unwrap();
                     // get reletive path and header file name
-                    let relative_p = relative_path(src_dir, dst_dir);
+                    let relative_p =
+                        src_p.get_relative_path_to(dst_p.directory_name_str().unwrap(), true);
                     let header_file_name = dst_p.file_name_str().unwrap();
                     // final string for importing
                     format!(
@@ -61,7 +60,8 @@ fn get_dummy_func(api_block_name: &str, func_names: &[String]) -> String {
     int64_t dummy_var = 0;
 {content}
     return dummy_var;
-}}"#,
+}}
+"#,
         signature = get_dummy_signature(api_block_name),
         content = get_dummy_var(func_names),
     )

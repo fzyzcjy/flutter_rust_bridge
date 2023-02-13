@@ -35,6 +35,7 @@ inline int64_t dummy_method_to_enforce_bundling_ApiClass1(void) {
     dummy_var ^= ((int64_t) (void*) new_dart_opaque);
     return dummy_var;
 }
+
 #include "c_output_2.h"
 inline int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
