@@ -177,7 +177,7 @@ jobs:
 
       - name: Run Flutter integration tests
         continue-on-error: true
-        timeout-minutes: ${{ matrix.timeout_minutes }}
+        timeout-minutes: 20
         uses: Wandalen/wretry.action@v1.0.25
         with:
           action: reactivecircus/android-emulator-runner@v2
