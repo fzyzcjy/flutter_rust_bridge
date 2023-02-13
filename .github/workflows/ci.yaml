@@ -433,13 +433,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os:
-          - image: macos-11
-            family: osx
-          - image: windows-2019
-            family: windows
-          - image: ubuntu-20.04
-            family: linux
+        image:
+          - macos-11
+          - windows-2019
+          - ubuntu-20.04
 
     steps:
       - uses: actions/checkout@v2
