@@ -7,7 +7,6 @@ pub struct IrTypeStructRef {
     pub name: String,
     pub freezed: bool,
 }
-
 impl IrTypeStructRef {
     pub fn get<'a>(&self, f: &'a IrFile) -> &'a IrStruct {
         &f.struct_pool[&self.name]

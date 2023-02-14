@@ -34,6 +34,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kPrimitiveTypesConstMeta;
 
+  Future<int?> primitiveOptionalTypes({int? myI32, int? myI64, double? myF64, bool? myBool, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kPrimitiveOptionalTypesConstMeta;
+
   int primitiveTypesSync(
       {required int myI32, required int myI64, required double myF64, required bool myBool, dynamic hint});
 
@@ -310,6 +314,14 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   Future<DateTime> naivedatetime({required DateTime d, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kNaivedatetimeConstMeta;
+
+  Future<DateTime?> optionalEmptyDatetimeUtc({DateTime? d, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kOptionalEmptyDatetimeUtcConstMeta;
+
+  Future<DateTime> boxedEmptyDatetimeUtc({required DateTime d, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kBoxedEmptyDatetimeUtcConstMeta;
 
   Future<Duration> duration({required Duration d, dynamic hint});
 

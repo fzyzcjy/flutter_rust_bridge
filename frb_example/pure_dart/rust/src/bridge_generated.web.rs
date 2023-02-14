@@ -23,6 +23,17 @@ pub fn wire_primitive_types(
 }
 
 #[wasm_bindgen]
+pub fn wire_primitive_optional_types(
+    port_: MessagePort,
+    my_i32: JsValue,
+    my_i64: JsValue,
+    my_f64: JsValue,
+    my_bool: JsValue,
+) {
+    wire_primitive_optional_types_impl(port_, my_i32, my_i64, my_f64, my_bool)
+}
+
+#[wasm_bindgen]
 pub fn wire_primitive_types_sync(
     my_i32: i32,
     my_i64: i64,
@@ -371,6 +382,16 @@ pub fn wire_datetime_local(port_: MessagePort, d: i64) {
 #[wasm_bindgen]
 pub fn wire_naivedatetime(port_: MessagePort, d: i64) {
     wire_naivedatetime_impl(port_, d)
+}
+
+#[wasm_bindgen]
+pub fn wire_optional_empty_datetime_utc(port_: MessagePort, d: JsValue) {
+    wire_optional_empty_datetime_utc_impl(port_, d)
+}
+
+#[wasm_bindgen]
+pub fn wire_boxed_empty_datetime_utc(port_: MessagePort, d: JsValue) {
+    wire_boxed_empty_datetime_utc_impl(port_, d)
 }
 
 #[wasm_bindgen]
@@ -1392,6 +1413,7 @@ impl Wire2Api<Option<ZeroCopyBuffer<Vec<u8>>>> for Option<Box<[u8]>> {
         self.map(Wire2Api::wire2api)
     }
 }
+
 impl Wire2Api<Option<DartOpaque>> for JsValue {
     fn wire2api(self) -> Option<DartOpaque> {
         (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
@@ -1689,6 +1711,11 @@ impl Wire2Api<bool> for JsValue {
         self.is_truthy()
     }
 }
+impl Wire2Api<Box<chrono::DateTime<chrono::Utc>>> for JsValue {
+    fn wire2api(self) -> Box<chrono::DateTime<chrono::Utc>> {
+        Box::new(self.wire2api())
+    }
+}
 impl Wire2Api<Box<ApplicationEnv>> for JsValue {
     fn wire2api(self) -> Box<ApplicationEnv> {
         Box::new(self.wire2api())
@@ -1839,6 +1866,11 @@ impl Wire2Api<Option<String>> for JsValue {
 }
 impl Wire2Api<Option<ZeroCopyBuffer<Vec<u8>>>> for JsValue {
     fn wire2api(self) -> Option<ZeroCopyBuffer<Vec<u8>>> {
+        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+    }
+}
+impl Wire2Api<Option<chrono::DateTime<chrono::Utc>>> for JsValue {
+    fn wire2api(self) -> Option<chrono::DateTime<chrono::Utc>> {
         (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
     }
 }

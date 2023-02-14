@@ -23,6 +23,17 @@ pub extern "C" fn wire_primitive_types(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_primitive_optional_types(
+    port_: i64,
+    my_i32: *mut i32,
+    my_i64: *mut i64,
+    my_f64: *mut f64,
+    my_bool: *mut bool,
+) {
+    wire_primitive_optional_types_impl(port_, my_i32, my_i64, my_f64, my_bool)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_primitive_types_sync(
     my_i32: i32,
     my_i64: i64,
@@ -384,6 +395,16 @@ pub extern "C" fn wire_datetime_local(port_: i64, d: i64) {
 #[no_mangle]
 pub extern "C" fn wire_naivedatetime(port_: i64, d: i64) {
     wire_naivedatetime_impl(port_, d)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_optional_empty_datetime_utc(port_: i64, d: *mut i64) {
+    wire_optional_empty_datetime_utc_impl(port_, d)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_boxed_empty_datetime_utc(port_: i64, d: *mut i64) {
+    wire_boxed_empty_datetime_utc_impl(port_, d)
 }
 
 #[no_mangle]
@@ -808,8 +829,18 @@ pub extern "C" fn new_StringList_0(len: i32) -> *mut wire_StringList {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_Chrono_Utc_0(value: i64) -> *mut i64 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_application_env_0() -> *mut wire_ApplicationEnv {
     support::new_leak_box_ptr(wire_ApplicationEnv::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_Chrono_Utc_0(value: i64) -> *mut i64 {
+    support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
@@ -1409,10 +1440,22 @@ impl Wire2Api<Blob> for wire_Blob {
     }
 }
 
+impl Wire2Api<Box<chrono::DateTime<chrono::Utc>>> for *mut i64 {
+    fn wire2api(self) -> Box<chrono::DateTime<chrono::Utc>> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<chrono::DateTime<chrono::Utc>>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<Box<ApplicationEnv>> for *mut wire_ApplicationEnv {
     fn wire2api(self) -> Box<ApplicationEnv> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<ApplicationEnv>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<chrono::DateTime<chrono::Utc>> for *mut i64 {
+    fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<chrono::DateTime<chrono::Utc>>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<DartOpaque> for *mut wire_DartOpaque {
