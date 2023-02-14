@@ -34,6 +34,11 @@ void main(List<String> args) async {
     expect(
         await api.primitiveTypes(myI32: 123, myI64: 10000000000000, myF64: 12345678901234567890.123, myBool: true), 42);
   });
+
+  test('dart call optional primitiveTypes', () async {
+    expect(await api.primitiveOptionalTypes(myI32: 123, myI64: null, myF64: null, myBool: null), 42);
+  });
+
   test('dart call primitiveTypesSync', () {
     expect(
         api.primitiveTypesSync(myI32: 123, myI64: 10000000000000, myF64: 12345678901234567890.123, myBool: true), 42);
@@ -654,6 +659,10 @@ void main(List<String> args) async {
       expect(resp.second, date.second);
       expect(resp.millisecondsSinceEpoch, date.millisecondsSinceEpoch);
       expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
+    });
+    test('Empty DateTime', () async {
+      final resp = await api.optionalEmptyDatetimeUtc(d: null);
+      expect(resp, null);
     });
     test('Duration', () async {
       final duration = Duration(hours: 4);

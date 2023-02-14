@@ -285,6 +285,7 @@ impl<'a> TypeParser<'a> {
                             | RustOpaque(..)
                             | DartOpaque(..)
                             | Primitive(..)
+                            | Delegate(IrTypeDelegate::Time(..))
                             | Delegate(IrTypeDelegate::PrimitiveEnum { .. })) => {
                                 IrTypeOptional::new_boxed(inner)
                             }
