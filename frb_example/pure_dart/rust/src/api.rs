@@ -975,7 +975,7 @@ pub fn optional_empty_datetime_utc(
     d
 }
 
-pub fn boxed_empty_datetime_utc(
+pub fn boxed_datetime_utc(
     d: Box<chrono::DateTime<chrono::Utc>>,
 ) -> Box<chrono::DateTime<chrono::Utc>> {
     d
