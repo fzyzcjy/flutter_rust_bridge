@@ -20,4 +20,4 @@ dependencies:
 dev_dependencies:
   build_runner: ^2.2.0
   freezed: ^2.1.0+1
-  ffigen: ^7.0.0
+  ffigen: ^7.2.6
