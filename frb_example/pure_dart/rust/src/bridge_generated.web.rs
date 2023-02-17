@@ -390,11 +390,6 @@ pub fn wire_optional_empty_datetime_utc(port_: MessagePort, d: JsValue) {
 }
 
 #[wasm_bindgen]
-pub fn wire_boxed_datetime_utc(port_: MessagePort, d: JsValue) {
-    wire_boxed_datetime_utc_impl(port_, d)
-}
-
-#[wasm_bindgen]
 pub fn wire_duration(port_: MessagePort, d: i64) {
     wire_duration_impl(port_, d)
 }
@@ -1709,11 +1704,6 @@ impl Wire2Api<ApplicationMode> for JsValue {
 impl Wire2Api<bool> for JsValue {
     fn wire2api(self) -> bool {
         self.is_truthy()
-    }
-}
-impl Wire2Api<Box<chrono::DateTime<chrono::Utc>>> for JsValue {
-    fn wire2api(self) -> Box<chrono::DateTime<chrono::Utc>> {
-        Box::new(self.wire2api())
     }
 }
 impl Wire2Api<Box<ApplicationEnv>> for JsValue {

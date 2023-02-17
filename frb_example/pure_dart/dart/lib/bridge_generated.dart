@@ -1194,22 +1194,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["d"],
       );
 
-  Future<DateTime> boxedDatetimeUtc({required DateTime d, dynamic hint}) {
-    var arg0 = _platform.api2wire_box_Chrono_Utc(d);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_boxed_datetime_utc(port_, arg0),
-      parseSuccessData: _wire2api_Chrono_Utc,
-      constMeta: kBoxedDatetimeUtcConstMeta,
-      argValues: [d],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kBoxedDatetimeUtcConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "boxed_datetime_utc",
-        argNames: ["d"],
-      );
-
   Future<Duration> duration({required Duration d, dynamic hint}) {
     var arg0 = _platform.api2wire_Chrono_Duration(d);
     return _platform.executeNormal(FlutterRustBridgeTask(

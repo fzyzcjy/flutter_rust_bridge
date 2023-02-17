@@ -975,12 +975,6 @@ pub fn optional_empty_datetime_utc(
     d
 }
 
-pub fn boxed_datetime_utc(
-    d: Box<chrono::DateTime<chrono::Utc>>,
-) -> chrono::DateTime<chrono::Utc> {
-    *d
-}
-
 pub fn duration(d: chrono::Duration) -> chrono::Duration {
     assert_eq!(&d.num_hours(), &4);
     d

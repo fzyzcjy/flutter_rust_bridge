@@ -403,11 +403,6 @@ pub extern "C" fn wire_optional_empty_datetime_utc(port_: i64, d: *mut i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_boxed_datetime_utc(port_: i64, d: *mut i64) {
-    wire_boxed_datetime_utc_impl(port_, d)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_duration(port_: i64, d: i64) {
     wire_duration_impl(port_, d)
 }
@@ -826,11 +821,6 @@ pub extern "C" fn new_StringList_0(len: i32) -> *mut wire_StringList {
         len,
     };
     support::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
-pub extern "C" fn new_box_Chrono_Utc_0(value: i64) -> *mut i64 {
-    support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
@@ -1440,12 +1430,6 @@ impl Wire2Api<Blob> for wire_Blob {
     }
 }
 
-impl Wire2Api<Box<chrono::DateTime<chrono::Utc>>> for *mut i64 {
-    fn wire2api(self) -> Box<chrono::DateTime<chrono::Utc>> {
-        let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<chrono::DateTime<chrono::Utc>>::wire2api(*wrap).into()
-    }
-}
 impl Wire2Api<Box<ApplicationEnv>> for *mut wire_ApplicationEnv {
     fn wire2api(self) -> Box<ApplicationEnv> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };

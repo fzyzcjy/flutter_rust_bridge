@@ -1117,22 +1117,6 @@ fn wire_optional_empty_datetime_utc_impl(
         },
     )
 }
-fn wire_boxed_datetime_utc_impl(
-    port_: MessagePort,
-    d: impl Wire2Api<Box<chrono::DateTime<chrono::Utc>>> + UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
-        WrapInfo {
-            debug_name: "boxed_datetime_utc",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_d = d.wire2api();
-            move |task_callback| Ok(boxed_datetime_utc(api_d))
-        },
-    )
-}
 fn wire_duration_impl(port_: MessagePort, d: impl Wire2Api<chrono::Duration> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {

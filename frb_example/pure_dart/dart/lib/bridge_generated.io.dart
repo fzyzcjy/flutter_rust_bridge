@@ -134,11 +134,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<ffi.Int64> api2wire_box_Chrono_Utc(DateTime raw) {
-    return inner.new_box_Chrono_Utc_0(api2wire_Chrono_Utc(raw));
-  }
-
-  @protected
   ffi.Pointer<wire_ApplicationEnv> api2wire_box_application_env(ApplicationEnv raw) {
     final ptr = inner.new_box_application_env_0();
     _api_fill_to_wire_application_env(raw, ptr.ref);
@@ -2389,21 +2384,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_optional_empty_datetime_utc =
       _wire_optional_empty_datetime_utcPtr.asFunction<void Function(int, ffi.Pointer<ffi.Int64>)>();
 
-  void wire_boxed_datetime_utc(
-    int port_,
-    ffi.Pointer<ffi.Int64> d,
-  ) {
-    return _wire_boxed_datetime_utc(
-      port_,
-      d,
-    );
-  }
-
-  late final _wire_boxed_datetime_utcPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Int64>)>>('wire_boxed_datetime_utc');
-  late final _wire_boxed_datetime_utc =
-      _wire_boxed_datetime_utcPtr.asFunction<void Function(int, ffi.Pointer<ffi.Int64>)>();
-
   void wire_duration(
     int port_,
     int d,
@@ -3429,18 +3409,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_StringList_0Ptr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_StringList> Function(ffi.Int32)>>('new_StringList_0');
   late final _new_StringList_0 = _new_StringList_0Ptr.asFunction<ffi.Pointer<wire_StringList> Function(int)>();
-
-  ffi.Pointer<ffi.Int64> new_box_Chrono_Utc_0(
-    int value,
-  ) {
-    return _new_box_Chrono_Utc_0(
-      value,
-    );
-  }
-
-  late final _new_box_Chrono_Utc_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int64> Function(ffi.Int64)>>('new_box_Chrono_Utc_0');
-  late final _new_box_Chrono_Utc_0 = _new_box_Chrono_Utc_0Ptr.asFunction<ffi.Pointer<ffi.Int64> Function(int)>();
 
   ffi.Pointer<wire_ApplicationEnv> new_box_application_env_0() {
     return _new_box_application_env_0();

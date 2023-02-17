@@ -148,11 +148,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  Object api2wire_box_Chrono_Utc(DateTime raw) {
-    return api2wire_Chrono_Utc(raw);
-  }
-
-  @protected
   List<dynamic> api2wire_box_application_env(ApplicationEnv raw) {
     return api2wire_application_env(raw);
   }
@@ -1023,8 +1018,6 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_optional_empty_datetime_utc(NativePortType port_, Object? d);
 
-  external dynamic /* void */ wire_boxed_datetime_utc(NativePortType port_, Object d);
-
   external dynamic /* void */ wire_duration(NativePortType port_, Object d);
 
   external dynamic /* void */ wire_how_long_does_it_take(NativePortType port_, List<dynamic> mine);
@@ -1385,8 +1378,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_optional_empty_datetime_utc(NativePortType port_, Object? d) =>
       wasmModule.wire_optional_empty_datetime_utc(port_, d);
-
-  void wire_boxed_datetime_utc(NativePortType port_, Object d) => wasmModule.wire_boxed_datetime_utc(port_, d);
 
   void wire_duration(NativePortType port_, Object d) => wasmModule.wire_duration(port_, d);
 
