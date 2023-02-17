@@ -668,7 +668,14 @@ void main(List<String> args) async {
     test('Boxed DateTime', () async {
       final date = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
       final resp = await api.boxedDatetimeUtc(d: date);
-      expect(resp, date);
+      expect(resp.year, date.year);
+      expect(resp.month, date.month);
+      expect(resp.day, date.day);
+      expect(resp.hour, date.hour);
+      expect(resp.minute, date.minute);
+      expect(resp.second, date.second);
+      expect(resp.millisecondsSinceEpoch, date.millisecondsSinceEpoch);
+      expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
     });
     test('Duration', () async {
       final duration = Duration(hours: 4);

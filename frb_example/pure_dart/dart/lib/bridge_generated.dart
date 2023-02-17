@@ -1198,7 +1198,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     var arg0 = _platform.api2wire_box_Chrono_Utc(d);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_boxed_datetime_utc(port_, arg0),
-      parseSuccessData: _wire2api_box_Chrono_Utc,
+      parseSuccessData: _wire2api_Chrono_Utc,
       constMeta: kBoxedDatetimeUtcConstMeta,
       argValues: [d],
       hint: hint,
@@ -2565,10 +2565,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   bool _wire2api_bool(dynamic raw) {
     return raw as bool;
-  }
-
-  DateTime _wire2api_box_Chrono_Utc(dynamic raw) {
-    return raw as DateTime;
   }
 
   ApplicationEnv _wire2api_box_application_env(dynamic raw) {

@@ -977,8 +977,8 @@ pub fn optional_empty_datetime_utc(
 
 pub fn boxed_datetime_utc(
     d: Box<chrono::DateTime<chrono::Utc>>,
-) -> Box<chrono::DateTime<chrono::Utc>> {
-    d
+) -> chrono::DateTime<chrono::Utc> {
+    *d
 }
 
 pub fn duration(d: chrono::Duration) -> chrono::Duration {

@@ -1129,7 +1129,7 @@ fn wire_boxed_datetime_utc_impl(
         },
         move || {
             let api_d = d.wire2api();
-            move |task_callback| Ok((*boxed_datetime_utc(api_d)))
+            move |task_callback| Ok(boxed_datetime_utc(api_d))
         },
     )
 }
