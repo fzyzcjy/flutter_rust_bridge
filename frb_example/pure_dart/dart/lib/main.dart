@@ -36,8 +36,9 @@ void main(List<String> args) async {
   });
 
   test('dart call optional primitiveTypes', () async {
-    expect(await api.primitiveOptionalTypes(myI32: null, myI64: null, myF64: null, myBool: null), 42);
-    expect(await api.primitiveOptionalTypes(myI32: 123, myI64: 123, myF64: 123, myBool: true), 42);
+    expect(await api.primitiveOptionalTypes(myI32: null, myI64: null, myF64: null, myBool: null), 0);
+    expect(await api.primitiveOptionalTypes(myI32: 0, myI64: 0, myF64: 0, myBool: false), 4); // to test zero-ish values are not null values
+    expect(await api.primitiveOptionalTypes(myI32: 123, myI64: 123, myF64: 123, myBool: true), 4);
   });
 
   test('dart call primitiveTypesSync', () {
