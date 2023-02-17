@@ -66,7 +66,7 @@ pub fn primitive_optional_types(
         my_f64.unwrap_or_default(),
         my_bool.unwrap_or_default()
     );
-    Some(42)
+    Some(my_i32.is_some() as i32 + my_i64.is_some() as i32 + my_f64.is_some() as i32 + my_bool.is_some() as i32)
 }
 
 pub fn primitive_types_sync(
