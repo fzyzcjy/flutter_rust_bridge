@@ -665,6 +665,11 @@ void main(List<String> args) async {
       final resp = await api.optionalEmptyDatetimeUtc(d: null);
       expect(resp, null);
     });
+    test('Boxed DateTime', () async {
+      final date = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
+      final resp = await api.boxedDatetimeUtc(d: date);
+      expect(resp, date);
+    });
     test('Duration', () async {
       final duration = Duration(hours: 4);
       final resp = await api.duration(d: duration);
