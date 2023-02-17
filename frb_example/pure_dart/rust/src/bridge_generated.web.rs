@@ -390,8 +390,8 @@ pub fn wire_optional_empty_datetime_utc(port_: MessagePort, d: JsValue) {
 }
 
 #[wasm_bindgen]
-pub fn wire_boxed_empty_datetime_utc(port_: MessagePort, d: JsValue) {
-    wire_boxed_empty_datetime_utc_impl(port_, d)
+pub fn wire_boxed_datetime_utc(port_: MessagePort, d: JsValue) {
+    wire_boxed_datetime_utc_impl(port_, d)
 }
 
 #[wasm_bindgen]

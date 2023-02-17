@@ -2389,21 +2389,20 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_optional_empty_datetime_utc =
       _wire_optional_empty_datetime_utcPtr.asFunction<void Function(int, ffi.Pointer<ffi.Int64>)>();
 
-  void wire_boxed_empty_datetime_utc(
+  void wire_boxed_datetime_utc(
     int port_,
     ffi.Pointer<ffi.Int64> d,
   ) {
-    return _wire_boxed_empty_datetime_utc(
+    return _wire_boxed_datetime_utc(
       port_,
       d,
     );
   }
 
-  late final _wire_boxed_empty_datetime_utcPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Int64>)>>(
-          'wire_boxed_empty_datetime_utc');
-  late final _wire_boxed_empty_datetime_utc =
-      _wire_boxed_empty_datetime_utcPtr.asFunction<void Function(int, ffi.Pointer<ffi.Int64>)>();
+  late final _wire_boxed_datetime_utcPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Int64>)>>('wire_boxed_datetime_utc');
+  late final _wire_boxed_datetime_utc =
+      _wire_boxed_datetime_utcPtr.asFunction<void Function(int, ffi.Pointer<ffi.Int64>)>();
 
   void wire_duration(
     int port_,

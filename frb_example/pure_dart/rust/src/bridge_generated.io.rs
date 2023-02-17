@@ -403,8 +403,8 @@ pub extern "C" fn wire_optional_empty_datetime_utc(port_: i64, d: *mut i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_boxed_empty_datetime_utc(port_: i64, d: *mut i64) {
-    wire_boxed_empty_datetime_utc_impl(port_, d)
+pub extern "C" fn wire_boxed_datetime_utc(port_: i64, d: *mut i64) {
+    wire_boxed_datetime_utc_impl(port_, d)
 }
 
 #[no_mangle]

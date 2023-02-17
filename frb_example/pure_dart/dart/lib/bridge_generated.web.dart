@@ -1023,7 +1023,7 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_optional_empty_datetime_utc(NativePortType port_, Object? d);
 
-  external dynamic /* void */ wire_boxed_empty_datetime_utc(NativePortType port_, Object d);
+  external dynamic /* void */ wire_boxed_datetime_utc(NativePortType port_, Object d);
 
   external dynamic /* void */ wire_duration(NativePortType port_, Object d);
 
@@ -1386,8 +1386,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_optional_empty_datetime_utc(NativePortType port_, Object? d) =>
       wasmModule.wire_optional_empty_datetime_utc(port_, d);
 
-  void wire_boxed_empty_datetime_utc(NativePortType port_, Object d) =>
-      wasmModule.wire_boxed_empty_datetime_utc(port_, d);
+  void wire_boxed_datetime_utc(NativePortType port_, Object d) => wasmModule.wire_boxed_datetime_utc(port_, d);
 
   void wire_duration(NativePortType port_, Object d) => wasmModule.wire_duration(port_, d);
 

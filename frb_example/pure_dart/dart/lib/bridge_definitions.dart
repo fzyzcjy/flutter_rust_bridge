@@ -319,9 +319,9 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kOptionalEmptyDatetimeUtcConstMeta;
 
-  Future<DateTime> boxedEmptyDatetimeUtc({required DateTime d, dynamic hint});
+  Future<DateTime> boxedDatetimeUtc({required DateTime d, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kBoxedEmptyDatetimeUtcConstMeta;
+  FlutterRustBridgeTaskConstMeta get kBoxedDatetimeUtcConstMeta;
 
   Future<Duration> duration({required Duration d, dynamic hint});
 
