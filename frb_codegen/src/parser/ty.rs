@@ -288,6 +288,10 @@ impl<'a> TypeParser<'a> {
                             | Delegate(IrTypeDelegate::PrimitiveEnum { .. })) => {
                                 IrTypeOptional::new_boxed(inner)
                             }
+                            #[cfg(feature = "chrono")]
+                            inner @ Delegate(IrTypeDelegate::Time(..)) => {
+                                IrTypeOptional::new_boxed(inner)
+                            }
                             inner => IrTypeOptional::new(inner),
                         },
                     ))

@@ -141,6 +141,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<ffi.Int64> api2wire_box_autoadd_Chrono_Utc(DateTime raw) {
+    return inner.new_box_autoadd_Chrono_Utc_0(api2wire_Chrono_Utc(raw));
+  }
+
+  @protected
   ffi.Pointer<wire_DartOpaque> api2wire_box_autoadd_DartOpaque(Object raw) {
     final ptr = inner.new_box_autoadd_DartOpaque_0();
     _api_fill_to_wire_DartOpaque(raw, ptr.ref);
@@ -565,6 +570,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   ffi.Pointer<wire_uint_8_list> api2wire_opt_ZeroCopyBuffer_Uint8List(Uint8List? raw) {
     return raw == null ? ffi.nullptr : api2wire_ZeroCopyBuffer_Uint8List(raw);
+  }
+
+  @protected
+  ffi.Pointer<ffi.Int64> api2wire_opt_box_autoadd_Chrono_Utc(DateTime? raw) {
+    return raw == null ? ffi.nullptr : api2wire_box_autoadd_Chrono_Utc(raw);
   }
 
   @protected
@@ -1355,6 +1365,30 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int64, ffi.Double, ffi.Bool)>>(
           'wire_primitive_types');
   late final _wire_primitive_types = _wire_primitive_typesPtr.asFunction<void Function(int, int, int, double, bool)>();
+
+  void wire_primitive_optional_types(
+    int port_,
+    ffi.Pointer<ffi.Int32> my_i32,
+    ffi.Pointer<ffi.Int64> my_i64,
+    ffi.Pointer<ffi.Double> my_f64,
+    ffi.Pointer<ffi.Bool> my_bool,
+  ) {
+    return _wire_primitive_optional_types(
+      port_,
+      my_i32,
+      my_i64,
+      my_f64,
+      my_bool,
+    );
+  }
+
+  late final _wire_primitive_optional_typesPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Int32>, ffi.Pointer<ffi.Int64>, ffi.Pointer<ffi.Double>,
+              ffi.Pointer<ffi.Bool>)>>('wire_primitive_optional_types');
+  late final _wire_primitive_optional_types = _wire_primitive_optional_typesPtr.asFunction<
+      void Function(
+          int, ffi.Pointer<ffi.Int32>, ffi.Pointer<ffi.Int64>, ffi.Pointer<ffi.Double>, ffi.Pointer<ffi.Bool>)>();
 
   WireSyncReturn wire_primitive_types_sync(
     int my_i32,
@@ -2333,6 +2367,22 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_naivedatetimePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>('wire_naivedatetime');
   late final _wire_naivedatetime = _wire_naivedatetimePtr.asFunction<void Function(int, int)>();
+
+  void wire_optional_empty_datetime_utc(
+    int port_,
+    ffi.Pointer<ffi.Int64> d,
+  ) {
+    return _wire_optional_empty_datetime_utc(
+      port_,
+      d,
+    );
+  }
+
+  late final _wire_optional_empty_datetime_utcPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Int64>)>>(
+          'wire_optional_empty_datetime_utc');
+  late final _wire_optional_empty_datetime_utc =
+      _wire_optional_empty_datetime_utcPtr.asFunction<void Function(int, ffi.Pointer<ffi.Int64>)>();
 
   void wire_duration(
     int port_,
@@ -3368,6 +3418,19 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_ApplicationEnv> Function()>>('new_box_application_env_0');
   late final _new_box_application_env_0 =
       _new_box_application_env_0Ptr.asFunction<ffi.Pointer<wire_ApplicationEnv> Function()>();
+
+  ffi.Pointer<ffi.Int64> new_box_autoadd_Chrono_Utc_0(
+    int value,
+  ) {
+    return _new_box_autoadd_Chrono_Utc_0(
+      value,
+    );
+  }
+
+  late final _new_box_autoadd_Chrono_Utc_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int64> Function(ffi.Int64)>>('new_box_autoadd_Chrono_Utc_0');
+  late final _new_box_autoadd_Chrono_Utc_0 =
+      _new_box_autoadd_Chrono_Utc_0Ptr.asFunction<ffi.Pointer<ffi.Int64> Function(int)>();
 
   ffi.Pointer<wire_DartOpaque> new_box_autoadd_DartOpaque_0() {
     return _new_box_autoadd_DartOpaque_0();

@@ -153,6 +153,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  Object api2wire_box_autoadd_Chrono_Utc(DateTime raw) {
+    return api2wire_Chrono_Utc(raw);
+  }
+
+  @protected
   Object api2wire_box_autoadd_DartOpaque(Object raw) {
     return api2wire_DartOpaque(raw);
   }
@@ -649,6 +654,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  Object? api2wire_opt_box_autoadd_Chrono_Utc(DateTime? raw) {
+    return raw == null ? null : api2wire_box_autoadd_Chrono_Utc(raw);
+  }
+
+  @protected
   Object? api2wire_opt_box_autoadd_DartOpaque(Object? raw) {
     return raw == null ? null : api2wire_box_autoadd_DartOpaque(raw);
   }
@@ -868,6 +878,9 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external dynamic /* void */ wire_primitive_types(
       NativePortType port_, int my_i32, Object my_i64, double my_f64, bool my_bool);
 
+  external dynamic /* void */ wire_primitive_optional_types(
+      NativePortType port_, int? my_i32, Object? my_i64, double? my_f64, bool? my_bool);
+
   external dynamic /* int */ wire_primitive_types_sync(int my_i32, Object my_i64, double my_f64, bool my_bool);
 
   external dynamic /* void */ wire_primitive_u32(NativePortType port_, int my_u32);
@@ -1002,6 +1015,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external dynamic /* void */ wire_datetime_local(NativePortType port_, Object d);
 
   external dynamic /* void */ wire_naivedatetime(NativePortType port_, Object d);
+
+  external dynamic /* void */ wire_optional_empty_datetime_utc(NativePortType port_, Object? d);
 
   external dynamic /* void */ wire_duration(NativePortType port_, Object d);
 
@@ -1194,6 +1209,10 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_primitive_types(NativePortType port_, int my_i32, Object my_i64, double my_f64, bool my_bool) =>
       wasmModule.wire_primitive_types(port_, my_i32, my_i64, my_f64, my_bool);
 
+  void wire_primitive_optional_types(
+          NativePortType port_, int? my_i32, Object? my_i64, double? my_f64, bool? my_bool) =>
+      wasmModule.wire_primitive_optional_types(port_, my_i32, my_i64, my_f64, my_bool);
+
   dynamic /* int */ wire_primitive_types_sync(int my_i32, Object my_i64, double my_f64, bool my_bool) =>
       wasmModule.wire_primitive_types_sync(my_i32, my_i64, my_f64, my_bool);
 
@@ -1356,6 +1375,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_datetime_local(NativePortType port_, Object d) => wasmModule.wire_datetime_local(port_, d);
 
   void wire_naivedatetime(NativePortType port_, Object d) => wasmModule.wire_naivedatetime(port_, d);
+
+  void wire_optional_empty_datetime_utc(NativePortType port_, Object? d) =>
+      wasmModule.wire_optional_empty_datetime_utc(port_, d);
 
   void wire_duration(NativePortType port_, Object d) => wasmModule.wire_duration(port_, d);
 
