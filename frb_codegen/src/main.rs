@@ -2,7 +2,7 @@ use std::process::exit;
 
 use clap::Parser;
 use lib_flutter_rust_bridge_codegen::{
-    config_parse, frb_codegen, get_symbols_if_no_duplicates, init_logger, RawOpts,
+    config_parse, frb_codegen_multi, get_symbols_if_no_duplicates, init_logger, RawOpts,
 };
 use log::{debug, error, info};
 
@@ -16,8 +16,8 @@ fn main() -> anyhow::Result<()> {
 
     // generation of rust api for ffi
     let all_symbols = get_symbols_if_no_duplicates(&configs)?;
-    for (i, _) in configs.iter().enumerate() {
-        if let Err(err) = frb_codegen(&configs, i, &all_symbols) {
+    for (i, config) in configs.iter().enumerate() {
+        if let Err(err) = frb_codegen_multi(config, &configs, i, &all_symbols) {
             error!("fatal: {}", err);
             exit(1);
         }

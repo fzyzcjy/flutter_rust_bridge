@@ -1,5 +1,5 @@
 use lib_flutter_rust_bridge_codegen::{
-    config_parse, frb_codegen, get_symbols_if_no_duplicates, init_logger, RawOpts,
+    config_parse, frb_codegen_multi, get_symbols_if_no_duplicates, init_logger, RawOpts,
 };
 
 /// Path of input Rust code
@@ -56,9 +56,9 @@ fn main() {
     // get opts from raw opts
     let configs = config_parse(raw_opts);
 
-    // generation of rust api for ffi
+    // generation of rust api for ffi (multi-blocks)
     let all_symbols = get_symbols_if_no_duplicates(&configs).unwrap();
-    for (i, _) in configs.iter().enumerate() {
-        frb_codegen(&configs, i, &all_symbols).unwrap();
+    for (i, config) in configs.iter().enumerate() {
+        frb_codegen_multi(config, &configs, i, &all_symbols).unwrap()
     }
 }
