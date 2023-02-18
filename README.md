@@ -147,6 +147,7 @@ More specifically, thanks for all these contributions:
 * [sccheruku](https://github.com/sccheruku): Prevent double-generating utility.
 * [jsonmona](https://github.com/jsonmona): Add import.
 * [w-ensink](https://github.com/w-ensink): Improve doc. Fix CI. Refactor. Add tests.
+* [alexthe2](https://github.com/alexthe2): Add Option Datetime. Improve doc.
 * [codercengiz](https://github.com/codercengiz): Fix mirroring bug.
 * [Michael-F-Bryan](https://github.com/Michael-F-Bryan): Detect broken bindings.
 * [bus710](https://github.com/bus710): Add a case in troubleshooting.
@@ -159,7 +160,6 @@ More specifically, thanks for all these contributions:
 * [zaynetro](https://github.com/zaynetro): Improve doc.
 * [raphaelrobert](https://github.com/raphaelrobert): Remove oudated doc.
 * [elliotsayes](https://github.com/elliotsayes): Improve doc.
-* [alexthe2](https://github.com/alexthe2): Improve doc.
 * [tmpfs](https://github.com/tmpfs): Improve doc.
 * [thomas725](https://github.com/thomas725): Improve doc.
 * [juzi5201314](https://github.com/juzi5201314): Improve doc.
