@@ -80,9 +80,9 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
 
         format!(
             "final arr = raw as List<dynamic>;
-                if (arr.length != {}) throw Exception('unexpected arr length: expect {} but see ${{arr.length}}');
+                if (arr.{}) throw Exception('unexpected arr length: expect {} but see ${{arr.length}}');
                 return {}({});",
-            s.fields.len(),
+            if s.fields.is_empty() { "isEmpty".to_string()} else { format!("length != {}", s.fields.len()) },
             s.fields.len(),
             s.name, inner,
         )

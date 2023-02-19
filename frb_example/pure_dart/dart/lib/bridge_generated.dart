@@ -2690,7 +2690,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   Empty _wire2api_empty(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 0) throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
+    if (arr.isEmpty) throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
     return Empty();
   }
 
