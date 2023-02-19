@@ -572,6 +572,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleTypeAliasModelConstMeta;
 
+  Future<Empty> emptyStruct({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kEmptyStructConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
@@ -981,6 +985,10 @@ class Element {
     this.attributes,
     this.children,
   });
+}
+
+class Empty {
+  Empty();
 }
 
 @freezed

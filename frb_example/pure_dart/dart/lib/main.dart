@@ -600,6 +600,11 @@ void main(List<String> args) async {
     expect(n.field, 1);
   });
 
+  test('test empty struct', () async {
+    final empty = await api.emptyStruct();
+    expect(empty, Empty());
+  });
+
   group('Platform-specific support', () {
     test('Int64List', () {
       final list = Int64List.fromList([-1, -2, -3, -4, -5]);

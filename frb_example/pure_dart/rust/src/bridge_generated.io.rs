@@ -716,6 +716,11 @@ pub extern "C" fn wire_handle_type_alias_model(port_: i64, input: u64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_empty_struct(port_: i64) {
+    wire_empty_struct_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }

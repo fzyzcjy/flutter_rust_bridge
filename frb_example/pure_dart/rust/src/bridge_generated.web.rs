@@ -695,6 +695,11 @@ pub fn wire_handle_type_alias_model(port_: MessagePort, input: u64) {
 }
 
 #[wasm_bindgen]
+pub fn wire_empty_struct(port_: MessagePort) {
+    wire_empty_struct_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }

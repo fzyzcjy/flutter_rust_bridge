@@ -154,6 +154,18 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
             Some(wrapper) => wrapper,
             None => &src.name,
         };
+        if body.is_empty() {
+            return format!(
+                "impl support::IntoDart for {name} {{
+                    fn into_dart(self) -> support::DartAbi {{
+                        Vec::<u8>::new().into_dart()
+                    }}
+                }}
+                impl support::IntoDartExceptPrimitive for {name} {{}}
+                "
+            );
+        }
+
         format!(
             "impl support::IntoDart for {name} {{
                 fn into_dart(self) -> support::DartAbi {{

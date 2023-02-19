@@ -3201,6 +3201,17 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint64)>>('wire_handle_type_alias_model');
   late final _wire_handle_type_alias_model = _wire_handle_type_alias_modelPtr.asFunction<void Function(int, int)>();
 
+  void wire_empty_struct(
+    int port_,
+  ) {
+    return _wire_empty_struct(
+      port_,
+    );
+  }
+
+  late final _wire_empty_structPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_empty_struct');
+  late final _wire_empty_struct = _wire_empty_structPtr.asFunction<void Function(int)>();
+
   void wire_sum__method__SumWith(
     int port_,
     ffi.Pointer<wire_SumWith> that,

@@ -2156,6 +2156,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["input"],
       );
 
+  Future<Empty> emptyStruct({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_empty_struct(port_),
+      parseSuccessData: _wire2api_empty,
+      constMeta: kEmptyStructConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kEmptyStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "empty_struct",
+        argNames: [],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_sum_with(that);
     var arg1 = api2wire_u32(y);
@@ -2671,6 +2686,12 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
       attributes: _wire2api_opt_list_attribute(arr[2]),
       children: _wire2api_opt_list_element(arr[3]),
     );
+  }
+
+  Empty _wire2api_empty(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 0) throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
+    return Empty();
   }
 
   EnumDartOpaque _wire2api_enum_dart_opaque(dynamic raw) {

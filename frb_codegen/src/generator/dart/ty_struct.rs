@@ -192,7 +192,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 "{}{}class {} {{
                 {}
 
-                {}({{{}}});
+                {}({}{}{});
 
                 {}
             }}",
@@ -201,7 +201,17 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 self.ir.name,
                 field_declarations,
                 self.ir.name,
+                if constructor_params.is_empty() {
+                    "".to_string()
+                } else {
+                    format!("{{")
+                },
                 constructor_params,
+                if constructor_params.is_empty() {
+                    "".to_string()
+                } else {
+                    format!("}}")
+                },
                 methods_string
             )
         }
