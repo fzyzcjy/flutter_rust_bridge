@@ -204,13 +204,13 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 if constructor_params.is_empty() {
                     "".to_string()
                 } else {
-                    format!("{{")
+                    "{".to_string()
                 },
                 constructor_params,
                 if constructor_params.is_empty() {
                     "".to_string()
                 } else {
-                    format!("}}")
+                    "}".to_string()
                 },
                 methods_string
             )

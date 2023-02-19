@@ -1349,9 +1349,7 @@ pub fn handle_type_alias_model(input: Id) -> TestModel {
     }
 }
 
-pub struct Empty {
-
-}
+pub struct Empty {}
 
 pub fn empty_struct() -> Empty {
     Empty {}
