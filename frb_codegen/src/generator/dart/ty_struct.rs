@@ -192,13 +192,18 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 "{}{}class {} {{
                 {}
 
-                {}({}{}{});
+                {}{}({}{}{});
 
                 {}
             }}",
                 comments,
                 metadata,
                 self.ir.name,
+                if constructor_params.is_empty() {
+                    "const ".to_string()
+                } else {
+                    "".to_string()
+                },
                 field_declarations,
                 self.ir.name,
                 if constructor_params.is_empty() {

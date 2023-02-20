@@ -820,7 +820,6 @@ class TestIdArray4 extends NonGrowableListView<TestId> {
 
 class ApplicationEnv {
   final List<ApplicationEnvVar> vars;
-
   ApplicationEnv({
     required this.vars,
   });
@@ -829,7 +828,6 @@ class ApplicationEnv {
 class ApplicationEnvVar {
   final String field0;
   final bool field1;
-
   ApplicationEnvVar({
     required this.field0,
     required this.field1,
@@ -859,7 +857,6 @@ class ApplicationSettings {
   final ApplicationMode mode;
   final ApplicationEnv env;
   final ApplicationEnv? envOptional;
-
   ApplicationSettings({
     required this.name,
     required this.version,
@@ -872,7 +869,6 @@ class ApplicationSettings {
 class Attribute {
   final String key;
   final String value;
-
   Attribute({
     required this.key,
     required this.value,
@@ -882,7 +878,6 @@ class Attribute {
 class BigBuffers {
   final Int64List int64;
   final Uint64List uint64;
-
   BigBuffers({
     required this.int64,
     required this.uint64,
@@ -891,7 +886,6 @@ class BigBuffers {
 
 class Blob {
   final U8Array1600 field0;
-
   Blob({
     required this.field0,
   });
@@ -900,7 +894,6 @@ class Blob {
 class ConcatenateWith {
   final FlutterRustBridgeExampleSingleBlockTest bridge;
   final String a;
-
   ConcatenateWith({
     required this.bridge,
     required this.a,
@@ -948,7 +941,6 @@ class ConcatenateWith {
 class Customized {
   final String finalField;
   String? nonFinalField;
-
   Customized({
     required this.finalField,
     this.nonFinalField,
@@ -958,7 +950,6 @@ class Customized {
 class DartOpaqueNested {
   final Object first;
   final Object second;
-
   DartOpaqueNested({
     required this.first,
     required this.second,
@@ -978,7 +969,6 @@ class Element {
   final String? text;
   final List<Attribute>? attributes;
   final List<Element>? children;
-
   Element({
     this.tag,
     this.text,
@@ -988,7 +978,7 @@ class Element {
 }
 
 class Empty {
-  Empty();
+  const Empty();
 }
 
 @freezed
@@ -1043,7 +1033,6 @@ class ExoticOptionals {
   final List<Attribute?> attributesNullable;
   final List<Attribute?>? nullableAttributes;
   final NewTypeInt? newtypeint;
-
   ExoticOptionals({
     this.int32,
     this.int64,
@@ -1076,7 +1065,6 @@ class FeatureChrono {
   final DateTime local;
   final Duration duration;
   final DateTime naive;
-
   FeatureChrono({
     required this.utc,
     required this.local,
@@ -1088,7 +1076,6 @@ class FeatureChrono {
 class FeatureUuid {
   final UuidValue one;
   final List<UuidValue> many;
-
   FeatureUuid({
     required this.one,
     required this.many,
@@ -1097,7 +1084,6 @@ class FeatureUuid {
 
 class FeedId {
   final U8Array8 field0;
-
   FeedId({
     required this.field0,
   });
@@ -1142,7 +1128,6 @@ class KitchenSink with _$KitchenSink {
 class Log {
   final int key;
   final int value;
-
   Log({
     required this.key,
     required this.value,
@@ -1152,7 +1137,6 @@ class Log {
 class Log2 {
   final int key;
   final String value;
-
   Log2({
     required this.key,
     required this.value,
@@ -1171,7 +1155,6 @@ class Measure with _$Measure {
 
 class MessageId {
   final U8Array32 field0;
-
   MessageId({
     required this.field0,
   });
@@ -1185,7 +1168,6 @@ enum MyEnum {
 class MySize {
   final int width;
   final int height;
-
   MySize({
     required this.width,
     required this.height,
@@ -1194,7 +1176,6 @@ class MySize {
 
 class MyStreamEntry {
   final String hello;
-
   MyStreamEntry({
     required this.hello,
   });
@@ -1202,7 +1183,6 @@ class MyStreamEntry {
 
 class MyStruct {
   final bool content;
-
   MyStruct({
     required this.content,
   });
@@ -1213,7 +1193,6 @@ class MyTreeNode {
   final Uint8List valueVecU8;
   final bool valueBoolean;
   final List<MyTreeNode> children;
-
   MyTreeNode({
     required this.valueI32,
     required this.valueVecU8,
@@ -1224,7 +1203,6 @@ class MyTreeNode {
 
 class NewSimpleStruct {
   final int field;
-
   NewSimpleStruct({
     required this.field,
   });
@@ -1232,7 +1210,6 @@ class NewSimpleStruct {
 
 class NewTypeInt {
   final int field0;
-
   NewTypeInt({
     required this.field0,
   });
@@ -1241,7 +1218,6 @@ class NewTypeInt {
 class Note {
   final Weekdays day;
   final String body;
-
   Note({
     required this.day,
     required this.body,
@@ -1250,7 +1226,6 @@ class Note {
 
 class Numbers {
   final Int32List field0;
-
   Numbers({
     required this.field0,
   });
@@ -1258,7 +1233,6 @@ class Numbers {
 
 class OldSimpleStruct {
   final int field;
-
   OldSimpleStruct({
     required this.field,
   });
@@ -1268,7 +1242,6 @@ class OldSimpleStruct {
 class OpaqueNested {
   final HideData first;
   final HideData second;
-
   OpaqueNested({
     required this.first,
     required this.second,
@@ -1278,7 +1251,6 @@ class OpaqueNested {
 class Point {
   final double x;
   final double y;
-
   Point({
     required this.x,
     required this.y,
@@ -1287,7 +1259,6 @@ class Point {
 
 class Sequences {
   final Int32List field0;
-
   Sequences({
     required this.field0,
   });
@@ -1304,7 +1275,6 @@ class Speed with _$Speed {
 class SumWith {
   final FlutterRustBridgeExampleSingleBlockTest bridge;
   final int x;
-
   SumWith({
     required this.bridge,
     required this.x,
@@ -1319,7 +1289,6 @@ class SumWith {
 
 class TestId {
   final I32Array2 field0;
-
   TestId({
     required this.field0,
   });
@@ -1330,7 +1299,6 @@ class TestModel {
   final String name;
   final MyEnum aliasEnum;
   final MyStruct aliasStruct;
-
   TestModel({
     required this.id,
     required this.name,
@@ -1395,7 +1363,6 @@ class VecOfPrimitivePack {
   final Int64List int64List;
   final Float32List float32List;
   final Float64List float64List;
-
   VecOfPrimitivePack({
     required this.int8List,
     required this.uint8List,
@@ -1434,7 +1401,6 @@ class ZeroCopyVecOfPrimitivePack {
   final Int64List int64List;
   final Float32List float32List;
   final Float64List float64List;
-
   ZeroCopyVecOfPrimitivePack({
     required this.int8List,
     required this.uint8List,
