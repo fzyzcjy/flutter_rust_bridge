@@ -207,6 +207,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_Empty> api2wire_box_autoadd_empty(Empty raw) {
+    final ptr = inner.new_box_autoadd_empty_0();
+    _api_fill_to_wire_empty(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_EnumDartOpaque> api2wire_box_autoadd_enum_dart_opaque(EnumDartOpaque raw) {
     final ptr = inner.new_box_autoadd_enum_dart_opaque_0();
     _api_fill_to_wire_enum_dart_opaque(raw, ptr.ref);
@@ -845,6 +852,10 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     _api_fill_to_wire_dart_opaque_nested(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_empty(Empty apiObj, ffi.Pointer<wire_Empty> wireObj) {
+    _api_fill_to_wire_empty(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_enum_dart_opaque(EnumDartOpaque apiObj, ffi.Pointer<wire_EnumDartOpaque> wireObj) {
     _api_fill_to_wire_enum_dart_opaque(apiObj, wireObj.ref);
   }
@@ -981,6 +992,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       return;
     }
   }
+
+  void _api_fill_to_wire_empty(Empty apiObj, wire_Empty wireObj) {}
 
   void _api_fill_to_wire_enum_dart_opaque(EnumDartOpaque apiObj, wire_EnumDartOpaque wireObj) {
     if (apiObj is EnumDartOpaque_Primitive) {
@@ -3203,14 +3216,17 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
 
   void wire_empty_struct(
     int port_,
+    ffi.Pointer<wire_Empty> empty,
   ) {
     return _wire_empty_struct(
       port_,
+      empty,
     );
   }
 
-  late final _wire_empty_structPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_empty_struct');
-  late final _wire_empty_struct = _wire_empty_structPtr.asFunction<void Function(int)>();
+  late final _wire_empty_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_Empty>)>>('wire_empty_struct');
+  late final _wire_empty_struct = _wire_empty_structPtr.asFunction<void Function(int, ffi.Pointer<wire_Empty>)>();
 
   void wire_sum__method__SumWith(
     int port_,
@@ -3528,6 +3544,14 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
           'new_box_autoadd_dart_opaque_nested_0');
   late final _new_box_autoadd_dart_opaque_nested_0 =
       _new_box_autoadd_dart_opaque_nested_0Ptr.asFunction<ffi.Pointer<wire_DartOpaqueNested> Function()>();
+
+  ffi.Pointer<wire_Empty> new_box_autoadd_empty_0() {
+    return _new_box_autoadd_empty_0();
+  }
+
+  late final _new_box_autoadd_empty_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Empty> Function()>>('new_box_autoadd_empty_0');
+  late final _new_box_autoadd_empty_0 = _new_box_autoadd_empty_0Ptr.asFunction<ffi.Pointer<wire_Empty> Function()>();
 
   ffi.Pointer<wire_EnumDartOpaque> new_box_autoadd_enum_dart_opaque_0() {
     return _new_box_autoadd_enum_dart_opaque_0();
@@ -4871,6 +4895,8 @@ class wire_EnumDartOpaque extends ffi.Struct {
 
   external ffi.Pointer<EnumDartOpaqueKind> kind;
 }
+
+class wire_Empty extends ffi.Opaque {}
 
 class wire_SumWith extends ffi.Struct {
   @ffi.Uint32()

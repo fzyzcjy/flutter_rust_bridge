@@ -2156,19 +2156,20 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["input"],
       );
 
-  Future<Empty> emptyStruct({dynamic hint}) {
+  Future<Empty> emptyStruct({required Empty empty, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_empty(empty);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_empty_struct(port_),
+      callFfi: (port_) => _platform.inner.wire_empty_struct(port_, arg0),
       parseSuccessData: _wire2api_empty,
       constMeta: kEmptyStructConstMeta,
-      argValues: [],
+      argValues: [empty],
       hint: hint,
     ));
   }
 
   FlutterRustBridgeTaskConstMeta get kEmptyStructConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "empty_struct",
-        argNames: [],
+        argNames: ["empty"],
       );
 
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) {
@@ -2690,7 +2691,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   Empty _wire2api_empty(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.isEmpty) throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
+    if (arr.isNotEmpty) throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
     return Empty();
   }
 

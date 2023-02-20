@@ -572,7 +572,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleTypeAliasModelConstMeta;
 
-  Future<Empty> emptyStruct({dynamic hint});
+  Future<Empty> emptyStruct({required Empty empty, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kEmptyStructConstMeta;
 

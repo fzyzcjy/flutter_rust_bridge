@@ -1935,14 +1935,17 @@ fn wire_handle_type_alias_model_impl(port_: MessagePort, input: impl Wire2Api<u6
         },
     )
 }
-fn wire_empty_struct_impl(port_: MessagePort) {
+fn wire_empty_struct_impl(port_: MessagePort, empty: impl Wire2Api<Empty> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "empty_struct",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(empty_struct()),
+        move || {
+            let api_empty = empty.wire2api();
+            move |task_callback| Ok(empty_struct(api_empty))
+        },
     )
 }
 fn wire_sum__method__SumWith_impl(
@@ -2430,7 +2433,8 @@ impl support::IntoDartExceptPrimitive for Element {}
 
 impl support::IntoDart for Empty {
     fn into_dart(self) -> support::DartAbi {
-        Vec::<u8>::new().into_dart()
+        //Vec::<u8>::new().into_dart()
+        vec![42.into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for Empty {}

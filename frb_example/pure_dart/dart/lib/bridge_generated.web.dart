@@ -203,6 +203,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_empty(Empty raw) {
+    return api2wire_empty(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_enum_dart_opaque(EnumDartOpaque raw) {
     return api2wire_enum_dart_opaque(raw);
   }
@@ -412,6 +417,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     }
 
     throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_empty(Empty raw) {
+    return [];
   }
 
   @protected
@@ -1140,7 +1150,7 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_handle_type_alias_model(NativePortType port_, Object input);
 
-  external dynamic /* void */ wire_empty_struct(NativePortType port_);
+  external dynamic /* void */ wire_empty_struct(NativePortType port_, List<dynamic> empty);
 
   external dynamic /* void */ wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
 
@@ -1525,7 +1535,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_handle_type_alias_model(NativePortType port_, Object input) =>
       wasmModule.wire_handle_type_alias_model(port_, input);
 
-  void wire_empty_struct(NativePortType port_) => wasmModule.wire_empty_struct(port_);
+  void wire_empty_struct(NativePortType port_, List<dynamic> empty) => wasmModule.wire_empty_struct(port_, empty);
 
   void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z) =>
       wasmModule.wire_sum__method__SumWith(port_, that, y, z);

@@ -716,8 +716,8 @@ pub extern "C" fn wire_handle_type_alias_model(port_: i64, input: u64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_empty_struct(port_: i64) {
-    wire_empty_struct_impl(port_)
+pub extern "C" fn wire_empty_struct(port_: i64, empty: *mut wire_Empty) {
+    wire_empty_struct_impl(port_, empty)
 }
 
 #[no_mangle]
@@ -881,6 +881,11 @@ pub extern "C" fn new_box_autoadd_customized_0() -> *mut wire_Customized {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_dart_opaque_nested_0() -> *mut wire_DartOpaqueNested {
     support::new_leak_box_ptr(wire_DartOpaqueNested::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_empty_0() -> *mut wire_Empty {
+    support::new_leak_box_ptr(wire_Empty::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1500,6 +1505,12 @@ impl Wire2Api<DartOpaqueNested> for *mut wire_DartOpaqueNested {
         Wire2Api::<DartOpaqueNested>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<Empty> for *mut wire_Empty {
+    fn wire2api(self) -> Empty {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Empty>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<EnumDartOpaque> for *mut wire_EnumDartOpaque {
     fn wire2api(self) -> EnumDartOpaque {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1746,6 +1757,11 @@ impl Wire2Api<Distance> for wire_Distance {
             },
             _ => unreachable!(),
         }
+    }
+}
+impl Wire2Api<Empty> for wire_Empty {
+    fn wire2api(self) -> Empty {
+        Empty {}
     }
 }
 impl Wire2Api<EnumDartOpaque> for wire_EnumDartOpaque {
@@ -2246,6 +2262,10 @@ pub struct wire_DartOpaqueNested {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_Empty {}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_ExoticOptionals {
     int32: *mut i32,
     int64: *mut i64,
@@ -2476,6 +2496,7 @@ pub struct wire_Distance_Unknown {}
 pub struct wire_Distance_Map {
     field0: f64,
 }
+
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumDartOpaque {
@@ -2800,6 +2821,12 @@ pub extern "C" fn inflate_Distance_Map() -> *mut DistanceKind {
             field0: Default::default(),
         }),
     })
+}
+
+impl NewWithNullPtr for wire_Empty {
+    fn new_with_null_ptr() -> Self {
+        Self {}
+    }
 }
 
 impl NewWithNullPtr for wire_EnumDartOpaque {

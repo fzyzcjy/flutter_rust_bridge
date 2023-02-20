@@ -1349,8 +1349,9 @@ pub fn handle_type_alias_model(input: Id) -> TestModel {
     }
 }
 
+#[derive(Debug, Clone)]
 pub struct Empty {}
 
-pub fn empty_struct() -> Empty {
-    Empty {}
+pub fn empty_struct(empty: Empty) -> Empty {
+    empty
 }
