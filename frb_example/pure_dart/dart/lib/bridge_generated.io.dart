@@ -209,7 +209,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   ffi.Pointer<wire_Empty> api2wire_box_autoadd_empty(Empty raw) {
     final ptr = inner.new_box_autoadd_empty_0();
-    _api_fill_to_wire_empty(raw, ptr.ref);
     return ptr;
   }
 
@@ -850,10 +849,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   void _api_fill_to_wire_box_autoadd_dart_opaque_nested(
       DartOpaqueNested apiObj, ffi.Pointer<wire_DartOpaqueNested> wireObj) {
     _api_fill_to_wire_dart_opaque_nested(apiObj, wireObj.ref);
-  }
-
-  void _api_fill_to_wire_box_autoadd_empty(Empty apiObj, ffi.Pointer<wire_Empty> wireObj) {
-    _api_fill_to_wire_empty(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_enum_dart_opaque(EnumDartOpaque apiObj, ffi.Pointer<wire_EnumDartOpaque> wireObj) {
