@@ -20,10 +20,23 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
         let ident = self.ir.safe_ident();
         let context = self.context.config.block_index;
         let inner = self.ir.inner.safe_ident();
+        let mut empty_struct = false;
+        if self.ir.inner.is_struct() {
+            if let StructRef(struct_ref) = *self.ir.inner {
+                if let IrTypeStructRef { empty, ..} = struct_ref {
+                    empty_struct = empty;
+                }
+            }
+        }
         Acc {
             io: Some(as_primitive.unwrap_or_else(|| {
                 if self.ir.inner.is_array() {
                     format!("return api2wire_{inner}(raw);")
+                } else if empty_struct {
+                    format!(
+                        "final ptr = inner.new_{ident}_{context}();
+                        return ptr;",
+                    )
                 } else {
                     format!(
                         "final ptr = inner.new_{ident}_{context}();

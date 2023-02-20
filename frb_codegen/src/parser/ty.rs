@@ -344,6 +344,11 @@ impl<'a> TypeParser<'a> {
                                 .get(ident_string)
                                 .map(IrStruct::using_freezed)
                                 .unwrap_or(false),
+                            empty: self
+                                .struct_pool
+                                .get(ident_string)
+                                .map(IrStruct::is_empty)
+                                .unwrap_or(false),
                         }))
                     } else if self.src_enums.contains_key(ident_string) {
                         if self.parsed_enums.insert(ident_string.to_owned()) {
@@ -424,6 +429,7 @@ impl<'a> TypeParser<'a> {
                                     comments: extract_comments(&field.attrs),
                                 })
                                 .collect(),
+                            is_empty: false,
                         })
                     }
                 },
@@ -465,6 +471,7 @@ impl<'a> TypeParser<'a> {
         let path = Some(src_struct.path.clone());
         let metadata = extract_metadata(&src_struct.src.attrs);
         let comments = extract_comments(&src_struct.src.attrs);
+        let is_empty = fields.is_empty();
         IrStruct {
             name,
             wrapper_name,
@@ -473,6 +480,7 @@ impl<'a> TypeParser<'a> {
             is_fields_named,
             dart_metadata: metadata,
             comments,
+            is_empty,
         }
     }
 }

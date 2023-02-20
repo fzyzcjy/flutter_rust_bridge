@@ -6,6 +6,7 @@ use convert_case::{Case, Casing};
 pub struct IrTypeStructRef {
     pub name: String,
     pub freezed: bool,
+    pub empty: bool,
 }
 impl IrTypeStructRef {
     pub fn get<'a>(&self, f: &'a IrFile) -> &'a IrStruct {
@@ -56,6 +57,7 @@ pub struct IrStruct {
     pub is_fields_named: bool,
     pub dart_metadata: Vec<IrDartAnnotation>,
     pub comments: Vec<IrComment>,
+    pub is_empty: bool,
 }
 
 impl IrStruct {

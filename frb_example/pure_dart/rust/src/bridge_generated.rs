@@ -2433,8 +2433,7 @@ impl support::IntoDartExceptPrimitive for Element {}
 
 impl support::IntoDart for Empty {
     fn into_dart(self) -> support::DartAbi {
-        //Vec::<u8>::new().into_dart()
-        vec![42.into_dart()].into_dart()
+        Vec::<u8>::new().into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for Empty {}
