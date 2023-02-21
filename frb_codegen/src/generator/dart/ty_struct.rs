@@ -199,24 +199,12 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 comments,
                 metadata,
                 self.ir.name,
-                if constructor_params.is_empty() {
-                    "const ".to_string()
-                } else {
-                    "".to_string()
-                },
+                if constructor_params.is_empty() { "const " } else { "" }.to_string(),
                 field_declarations,
                 self.ir.name,
-                if constructor_params.is_empty() {
-                    "".to_string()
-                } else {
-                    "{".to_string()
-                },
+                if constructor_params.is_empty() { "" } else { "{" }.to_string(),
                 constructor_params,
-                if constructor_params.is_empty() {
-                    "".to_string()
-                } else {
-                    "}".to_string()
-                },
+                if constructor_params.is_empty() { "" } else { "}" }.to_string(),
                 methods_string
             )
         }
