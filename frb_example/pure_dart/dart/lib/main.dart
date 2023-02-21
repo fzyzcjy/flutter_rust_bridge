@@ -602,7 +602,8 @@ void main(List<String> args) async {
 
   test('test empty struct', () async {
     final empty = Empty();
-    await api.emptyStruct(empty: empty);
+    final output = await api.emptyStruct(empty: empty);
+    expect(output, isA<Empty>());
   });
 
   group('Platform-specific support', () {

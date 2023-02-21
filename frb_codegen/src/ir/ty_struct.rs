@@ -57,7 +57,6 @@ pub struct IrStruct {
     pub is_fields_named: bool,
     pub dart_metadata: Vec<IrDartAnnotation>,
     pub comments: Vec<IrComment>,
-    pub is_empty: bool,
 }
 
 impl IrStruct {
@@ -74,6 +73,6 @@ impl IrStruct {
     }
 
     pub fn is_empty(&self) -> bool {
-        self.is_empty
+        self.fields.is_empty()
     }
 }

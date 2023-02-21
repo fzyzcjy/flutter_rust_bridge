@@ -429,7 +429,6 @@ impl<'a> TypeParser<'a> {
                                     comments: extract_comments(&field.attrs),
                                 })
                                 .collect(),
-                            is_empty: false,
                         })
                     }
                 },
@@ -471,7 +470,6 @@ impl<'a> TypeParser<'a> {
         let path = Some(src_struct.path.clone());
         let metadata = extract_metadata(&src_struct.src.attrs);
         let comments = extract_comments(&src_struct.src.attrs);
-        let is_empty = fields.is_empty();
         IrStruct {
             name,
             wrapper_name,
@@ -480,7 +478,6 @@ impl<'a> TypeParser<'a> {
             is_fields_named,
             dart_metadata: metadata,
             comments,
-            is_empty,
         }
     }
 }
