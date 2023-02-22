@@ -2,6 +2,7 @@ use std::collections::HashSet;
 
 use crate::{ir::*, target::Target};
 use enum_dispatch::enum_dispatch;
+use log::debug;
 use IrType::*;
 
 /// Remark: "Ty" instead of "Type", since "type" is a reserved word in Rust.
