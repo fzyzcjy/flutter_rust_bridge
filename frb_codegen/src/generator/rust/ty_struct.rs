@@ -154,12 +154,21 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
             Some(wrapper) => wrapper,
             None => &src.name,
         };
+
+        let vec = if src.is_empty() {
+            "Vec::<u8>::new()".to_string()
+        } else {
+            format!(
+                "vec![
+                    {body}
+                ]"
+            )
+        };
+
         format!(
             "impl support::IntoDart for {name} {{
                 fn into_dart(self) -> support::DartAbi {{
-                    vec![
-                        {body}
-                    ].into_dart()
+                    {vec}.into_dart()
                 }}
             }}
             impl support::IntoDartExceptPrimitive for {name} {{}}
