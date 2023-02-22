@@ -1210,6 +1210,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["d"],
       );
 
+  Future<TestChrono> testChrono({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_chrono(port_),
+      parseSuccessData: _wire2api_test_chrono,
+      constMeta: kTestChronoConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestChronoConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_chrono",
+        argNames: [],
+      );
+
   Future<Duration> howLongDoesItTake({required FeatureChrono mine, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_feature_chrono(mine);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -2555,8 +2570,16 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _wire2api_application_env(raw);
   }
 
+  Duration _wire2api_box_autoadd_Chrono_Duration(dynamic raw) {
+    return Duration(microseconds: raw);
+  }
+
+  DateTime _wire2api_box_autoadd_Chrono_Naive(dynamic raw) {
+    return DateTime.fromMicrosecondsSinceEpoch(raw, isUtc: false);
+  }
+
   DateTime _wire2api_box_autoadd_Chrono_Utc(dynamic raw) {
-    return raw as DateTime;
+    return DateTime.fromMicrosecondsSinceEpoch(raw, isUtc: true);
   }
 
   Object _wire2api_box_autoadd_DartOpaque(dynamic raw) {
@@ -3025,6 +3048,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return raw == null ? null : _wire2api_ZeroCopyBuffer_Uint8List(raw);
   }
 
+  Duration? _wire2api_opt_box_autoadd_Chrono_Duration(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_Chrono_Duration(raw);
+  }
+
+  DateTime? _wire2api_opt_box_autoadd_Chrono_Naive(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_Chrono_Naive(raw);
+  }
+
   DateTime? _wire2api_opt_box_autoadd_Chrono_Utc(dynamic raw) {
     return raw == null ? null : _wire2api_box_autoadd_Chrono_Utc(raw);
   }
@@ -3149,6 +3180,16 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return SumWith(
       bridge: this,
       x: _wire2api_u32(arr[0]),
+    );
+  }
+
+  TestChrono _wire2api_test_chrono(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3) throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return TestChrono(
+      dt: _wire2api_opt_box_autoadd_Chrono_Utc(arr[0]),
+      dt2: _wire2api_opt_box_autoadd_Chrono_Naive(arr[1]),
+      du: _wire2api_opt_box_autoadd_Chrono_Duration(arr[2]),
     );
   }
 

@@ -671,6 +671,14 @@ void main(List<String> args) async {
       final resp = await api.duration(d: duration);
       expect(resp.inHours, duration.inHours);
     });
+
+    test('Combined Chrono types', () async {
+      final test = await api.testChrono();
+      expect(test.dt, DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456));
+      expect(test.dt2, DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456));
+      expect(test.du, DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456));
+    });
+
     test('nested chrono types', () async {
       const duration = Duration(hours: 4);
       final naive = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);

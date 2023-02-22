@@ -2,6 +2,7 @@
 
 use std::fmt::Debug;
 use std::ops::Deref;
+use std::str::FromStr;
 use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::Arc;
 pub use std::sync::{Mutex, RwLock};
@@ -983,6 +984,20 @@ pub fn optional_empty_datetime_utc(
 pub fn duration(d: chrono::Duration) -> chrono::Duration {
     assert_eq!(&d.num_hours(), &4);
     d
+}
+
+pub struct TestChrono {
+    pub dt: Option<chrono::DateTime<chrono::Utc>>,
+    pub dt2: Option<chrono::NaiveDateTime>,
+    pub du: Option<chrono::Duration>,
+}
+
+pub fn test_chrono() -> TestChrono {
+    TestChrono {
+        dt: Some(chrono::DateTime::from_str("2022-09-10T20:48:53.123456Z").unwrap()),
+        dt2: Some(chrono::NaiveDateTime::from_str("2022-09-10T20:48:53.123456").unwrap()),
+        du: Some(chrono::Duration::hours(4)),
+    }
 }
 
 #[derive(Debug, Clone)]

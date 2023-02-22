@@ -2397,6 +2397,17 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_durationPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>('wire_duration');
   late final _wire_duration = _wire_durationPtr.asFunction<void Function(int, int)>();
 
+  void wire_test_chrono(
+    int port_,
+  ) {
+    return _wire_test_chrono(
+      port_,
+    );
+  }
+
+  late final _wire_test_chronoPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_test_chrono');
+  late final _wire_test_chrono = _wire_test_chronoPtr.asFunction<void Function(int)>();
+
   void wire_how_long_does_it_take(
     int port_,
     ffi.Pointer<wire_FeatureChrono> mine,
