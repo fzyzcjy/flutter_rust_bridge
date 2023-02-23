@@ -1365,3 +1365,10 @@ pub fn handle_type_alias_model(input: Id) -> TestModel {
         alias_struct: StructAlias { content: true },
     }
 }
+
+#[derive(Debug, Clone)]
+pub struct Empty {}
+
+pub fn empty_struct(empty: Empty) -> Empty {
+    empty
+}

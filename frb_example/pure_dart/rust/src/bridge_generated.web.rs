@@ -700,6 +700,11 @@ pub fn wire_handle_type_alias_model(port_: MessagePort, input: u64) {
 }
 
 #[wasm_bindgen]
+pub fn wire_empty_struct(port_: MessagePort, empty: JsValue) {
+    wire_empty_struct_impl(port_, empty)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -1059,6 +1064,18 @@ impl Wire2Api<Distance> for JsValue {
             1 => Distance::Map(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
+    }
+}
+impl Wire2Api<Empty> for JsValue {
+    fn wire2api(self) -> Empty {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            0,
+            "Expected 0 elements, got {}",
+            self_.length()
+        );
+        Empty {}
     }
 }
 impl Wire2Api<EnumDartOpaque> for JsValue {

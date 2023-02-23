@@ -108,7 +108,7 @@ pub(crate) fn generate_api_func(
     };
     let parse_success_data = if (f.is_static_method()
         && f.struct_name().unwrap() == {
-            if let IrType::StructRef(IrTypeStructRef { name, freezed: _ }) = &func.output {
+            if let IrType::StructRef(IrTypeStructRef { name, .. }) = &func.output {
                 name.clone()
             } else {
                 String::new()

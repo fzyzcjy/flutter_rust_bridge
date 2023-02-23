@@ -10,6 +10,15 @@ use super::gen_wire2api_chrono;
 
 type_dart_generator_struct!(TypeBoxedGenerator, IrTypeBoxed);
 
+fn is_empty_struct(ty: &TypeBoxedGenerator) -> bool {
+    if let StructRef(ref s) = ty.ir.inner.as_ref() {
+        let s = s.get(ty.context.ir_file);
+        s.fields.is_empty()
+    } else {
+        false
+    }
+}
+
 impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         let as_primitive = self.ir.inner.is_primitive().then(|| {
@@ -23,10 +32,16 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
         let ident = self.ir.safe_ident();
         let context = self.context.config.block_index;
         let inner = self.ir.inner.safe_ident();
+        let empty_struct = is_empty_struct(self);
         Acc {
             io: Some(as_primitive.unwrap_or_else(|| {
                 if self.ir.inner.is_array() {
                     format!("return api2wire_{inner}(raw);")
+                } else if empty_struct {
+                    format!(
+                        "final ptr = inner.new_{ident}_{context}();
+                        return ptr;",
+                    )
                 } else {
                     format!(
                         "final ptr = inner.new_{ident}_{context}();
@@ -50,7 +65,7 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
                 self.ir.inner.safe_ident()
             ));
         }
-        (!self.ir.inner.is_primitive()).then(|| {
+        (!self.ir.inner.is_primitive() && !is_empty_struct(self)).then(|| {
             format!(
                 "_api_fill_to_wire_{}(apiObj, wireObj.ref);",
                 self.ir.inner.safe_ident()
