@@ -1295,7 +1295,6 @@ class TestChrono {
   final DateTime? dt;
   final DateTime? dt2;
   final Duration? du;
-
   TestChrono({
     this.dt,
     this.dt2,
