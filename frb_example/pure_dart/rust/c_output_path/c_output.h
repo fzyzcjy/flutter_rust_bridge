@@ -376,6 +376,10 @@ typedef struct wire_EnumDartOpaque {
   union EnumDartOpaqueKind *kind;
 } wire_EnumDartOpaque;
 
+typedef struct wire_Empty {
+
+} wire_Empty;
+
 typedef struct wire_SumWith {
   uint32_t x;
 } wire_SumWith;
@@ -403,6 +407,12 @@ void wire_primitive_types(int64_t port_,
                           int64_t my_i64,
                           double my_f64,
                           bool my_bool);
+
+void wire_primitive_optional_types(int64_t port_,
+                                   int32_t *my_i32,
+                                   int64_t *my_i64,
+                                   double *my_f64,
+                                   bool *my_bool);
 
 WireSyncReturn wire_primitive_types_sync(int32_t my_i32,
                                          int64_t my_i64,
@@ -550,6 +560,8 @@ void wire_datetime_local(int64_t port_, int64_t d);
 
 void wire_naivedatetime(int64_t port_, int64_t d);
 
+void wire_optional_empty_datetime_utc(int64_t port_, int64_t *d);
+
 void wire_duration(int64_t port_, int64_t d);
 
 void wire_how_long_does_it_take(int64_t port_, struct wire_FeatureChrono *mine);
@@ -674,6 +686,8 @@ void wire_handle_type_nest_alias_id(int64_t port_, uint64_t input);
 
 void wire_handle_type_alias_model(int64_t port_, uint64_t input);
 
+void wire_empty_struct(int64_t port_, struct wire_Empty *empty);
+
 void wire_sum__method__SumWith(int64_t port_, struct wire_SumWith *that, uint32_t y, uint32_t z);
 
 void wire_new__static_method__ConcatenateWith(int64_t port_, struct wire_uint_8_list *a);
@@ -718,6 +732,8 @@ struct wire_StringList *new_StringList_0(int32_t len);
 
 struct wire_ApplicationEnv *new_box_application_env_0(void);
 
+int64_t *new_box_autoadd_Chrono_Utc_0(int64_t value);
+
 struct wire_DartOpaque *new_box_autoadd_DartOpaque_0(void);
 
 struct wire_HideData *new_box_autoadd_HideData_0(void);
@@ -735,6 +751,8 @@ struct wire_ConcatenateWith *new_box_autoadd_concatenate_with_0(void);
 struct wire_Customized *new_box_autoadd_customized_0(void);
 
 struct wire_DartOpaqueNested *new_box_autoadd_dart_opaque_nested_0(void);
+
+struct wire_Empty *new_box_autoadd_empty_0(void);
 
 struct wire_EnumDartOpaque *new_box_autoadd_enum_dart_opaque_0(void);
 
@@ -905,6 +923,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_simple_adder);
     dummy_var ^= ((int64_t) (void*) wire_simple_adder_sync);
     dummy_var ^= ((int64_t) (void*) wire_primitive_types);
+    dummy_var ^= ((int64_t) (void*) wire_primitive_optional_types);
     dummy_var ^= ((int64_t) (void*) wire_primitive_types_sync);
     dummy_var ^= ((int64_t) (void*) wire_primitive_u32);
     dummy_var ^= ((int64_t) (void*) wire_primitive_u32_sync);
@@ -972,6 +991,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_datetime_utc);
     dummy_var ^= ((int64_t) (void*) wire_datetime_local);
     dummy_var ^= ((int64_t) (void*) wire_naivedatetime);
+    dummy_var ^= ((int64_t) (void*) wire_optional_empty_datetime_utc);
     dummy_var ^= ((int64_t) (void*) wire_duration);
     dummy_var ^= ((int64_t) (void*) wire_how_long_does_it_take);
     dummy_var ^= ((int64_t) (void*) wire_handle_uuid);
@@ -1033,6 +1053,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_handle_type_alias_id);
     dummy_var ^= ((int64_t) (void*) wire_handle_type_nest_alias_id);
     dummy_var ^= ((int64_t) (void*) wire_handle_type_alias_model);
+    dummy_var ^= ((int64_t) (void*) wire_empty_struct);
     dummy_var ^= ((int64_t) (void*) wire_sum__method__SumWith);
     dummy_var ^= ((int64_t) (void*) wire_new__static_method__ConcatenateWith);
     dummy_var ^= ((int64_t) (void*) wire_concatenate__method__ConcatenateWith);
@@ -1050,6 +1071,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_RwLockHideData);
     dummy_var ^= ((int64_t) (void*) new_StringList_0);
     dummy_var ^= ((int64_t) (void*) new_box_application_env_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_Chrono_Utc_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_DartOpaque_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_HideData_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_application_env_0);
@@ -1059,6 +1081,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_concatenate_with_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_customized_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_dart_opaque_nested_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_empty_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_dart_opaque_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_opaque_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_exotic_optionals_0);

@@ -1,5 +1,11 @@
 # To use this file, install Just: `cargo install just`
 
+pana := if os() == "windows" {
+   "pana.bat"
+} else {
+   "pana"
+}
+
 dir_example_pure_dart := "frb_example/pure_dart"
 dir_example_pure_dart_multi := "frb_example/pure_dart_multi"
 dir_example_with_flutter := "frb_example/with_flutter"
@@ -157,7 +163,7 @@ _dart_linter_single mode directory executable line_length:
 
 dart_linter_pana:
     flutter pub global activate pana
-    cd frb_dart && pana --no-warning --line-length 80 --exit-code-threshold 0
+    cd frb_dart && {{pana}} --no-warning --line-length 80 --exit-code-threshold 0
 
 dart_check_included_source:
     #!/usr/bin/env bash
