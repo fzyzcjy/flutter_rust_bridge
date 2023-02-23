@@ -53,6 +53,27 @@ pub fn primitive_types(my_i32: i32, my_i64: i64, my_f64: f64, my_bool: bool) -> 
     42
 }
 
+pub fn primitive_optional_types(
+    my_i32: Option<i32>,
+    my_i64: Option<i64>,
+    my_f64: Option<f64>,
+    my_bool: Option<bool>,
+) -> Option<i32> {
+    info!(
+        "primitive_optional_types({}, {}, {}, {})",
+        my_i32.unwrap_or_default(),
+        my_i64.unwrap_or_default(),
+        my_f64.unwrap_or_default(),
+        my_bool.unwrap_or_default()
+    );
+    Some(
+        my_i32.is_some() as i32
+            + my_i64.is_some() as i32
+            + my_f64.is_some() as i32
+            + my_bool.is_some() as i32,
+    )
+}
+
 pub fn primitive_types_sync(
     my_i32: i32,
     my_i64: i64,
@@ -952,6 +973,13 @@ pub fn naivedatetime(d: chrono::NaiveDateTime) -> chrono::NaiveDateTime {
     d
 }
 
+pub fn optional_empty_datetime_utc(
+    d: Option<chrono::DateTime<chrono::Utc>>,
+) -> Option<chrono::DateTime<chrono::Utc>> {
+    assert_eq!(&d, &None);
+    d
+}
+
 pub fn duration(d: chrono::Duration) -> chrono::Duration {
     assert_eq!(&d.num_hours(), &4);
     d
@@ -1319,4 +1347,11 @@ pub fn handle_type_alias_model(input: Id) -> TestModel {
         alias_enum: EnumAlias::False,
         alias_struct: StructAlias { content: true },
     }
+}
+
+#[derive(Debug, Clone)]
+pub struct Empty {}
+
+pub fn empty_struct(empty: Empty) -> Empty {
+    empty
 }

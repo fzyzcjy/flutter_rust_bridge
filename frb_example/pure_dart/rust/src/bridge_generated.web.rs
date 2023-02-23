@@ -23,6 +23,17 @@ pub fn wire_primitive_types(
 }
 
 #[wasm_bindgen]
+pub fn wire_primitive_optional_types(
+    port_: MessagePort,
+    my_i32: JsValue,
+    my_i64: JsValue,
+    my_f64: JsValue,
+    my_bool: JsValue,
+) {
+    wire_primitive_optional_types_impl(port_, my_i32, my_i64, my_f64, my_bool)
+}
+
+#[wasm_bindgen]
 pub fn wire_primitive_types_sync(
     my_i32: i32,
     my_i64: i64,
@@ -374,6 +385,11 @@ pub fn wire_naivedatetime(port_: MessagePort, d: i64) {
 }
 
 #[wasm_bindgen]
+pub fn wire_optional_empty_datetime_utc(port_: MessagePort, d: JsValue) {
+    wire_optional_empty_datetime_utc_impl(port_, d)
+}
+
+#[wasm_bindgen]
 pub fn wire_duration(port_: MessagePort, d: i64) {
     wire_duration_impl(port_, d)
 }
@@ -676,6 +692,11 @@ pub fn wire_handle_type_nest_alias_id(port_: MessagePort, input: u64) {
 #[wasm_bindgen]
 pub fn wire_handle_type_alias_model(port_: MessagePort, input: u64) {
     wire_handle_type_alias_model_impl(port_, input)
+}
+
+#[wasm_bindgen]
+pub fn wire_empty_struct(port_: MessagePort, empty: JsValue) {
+    wire_empty_struct_impl(port_, empty)
 }
 
 #[wasm_bindgen]
@@ -1040,6 +1061,18 @@ impl Wire2Api<Distance> for JsValue {
         }
     }
 }
+impl Wire2Api<Empty> for JsValue {
+    fn wire2api(self) -> Empty {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            0,
+            "Expected 0 elements, got {}",
+            self_.length()
+        );
+        Empty {}
+    }
+}
 impl Wire2Api<EnumDartOpaque> for JsValue {
     fn wire2api(self) -> EnumDartOpaque {
         let self_ = self.unchecked_into::<JsArray>();
@@ -1392,6 +1425,7 @@ impl Wire2Api<Option<ZeroCopyBuffer<Vec<u8>>>> for Option<Box<[u8]>> {
         self.map(Wire2Api::wire2api)
     }
 }
+
 impl Wire2Api<Option<DartOpaque>> for JsValue {
     fn wire2api(self) -> Option<DartOpaque> {
         (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
@@ -1839,6 +1873,11 @@ impl Wire2Api<Option<String>> for JsValue {
 }
 impl Wire2Api<Option<ZeroCopyBuffer<Vec<u8>>>> for JsValue {
     fn wire2api(self) -> Option<ZeroCopyBuffer<Vec<u8>>> {
+        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+    }
+}
+impl Wire2Api<Option<chrono::DateTime<chrono::Utc>>> for JsValue {
+    fn wire2api(self) -> Option<chrono::DateTime<chrono::Utc>> {
         (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
     }
 }

@@ -1,3 +1,11 @@
+## 1.65.0
+
+* Support empty structs #1071 (thanks @alexthe2)
+
+## 1.64.0
+
+* Support Option<Datetime> #1066 (thanks @alexthe2)
+
 ## 1.63.1
 
 * Fix the problem with using worker-max feature in WASM #1056 (thanks @temeddix)

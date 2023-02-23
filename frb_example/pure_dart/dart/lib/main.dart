@@ -34,6 +34,13 @@ void main(List<String> args) async {
     expect(
         await api.primitiveTypes(myI32: 123, myI64: 10000000000000, myF64: 12345678901234567890.123, myBool: true), 42);
   });
+
+  test('dart call optional primitiveTypes', () async {
+    expect(await api.primitiveOptionalTypes(myI32: null, myI64: null, myF64: null, myBool: null), 0);
+    expect(await api.primitiveOptionalTypes(myI32: 0, myI64: 0, myF64: 0, myBool: false), 4);
+    expect(await api.primitiveOptionalTypes(myI32: 123, myI64: 123, myF64: 123, myBool: true), 4);
+  });
+
   test('dart call primitiveTypesSync', () {
     expect(
         api.primitiveTypesSync(myI32: 123, myI64: 10000000000000, myF64: 12345678901234567890.123, myBool: true), 42);
@@ -593,6 +600,12 @@ void main(List<String> args) async {
     expect(n.field, 1);
   });
 
+  test('test empty struct', () async {
+    final empty = Empty();
+    final output = await api.emptyStruct(empty: empty);
+    expect(output, isA<Empty>());
+  });
+
   group('Platform-specific support', () {
     test('Int64List', () {
       final list = Int64List.fromList([-1, -2, -3, -4, -5]);
@@ -654,6 +667,10 @@ void main(List<String> args) async {
       expect(resp.second, date.second);
       expect(resp.millisecondsSinceEpoch, date.millisecondsSinceEpoch);
       expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
+    });
+    test('Empty DateTime', () async {
+      final resp = await api.optionalEmptyDatetimeUtc(d: null);
+      expect(resp, null);
     });
     test('Duration', () async {
       final duration = Duration(hours: 4);

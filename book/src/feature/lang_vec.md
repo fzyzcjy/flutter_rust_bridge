@@ -8,6 +8,8 @@ In Dart, when you want to express a long byte array such as a big image or some 
 
 When you have normal `Vec<T>` for `T` types other than `u8`, `i8` etc, it will be converted to normal `List<T>`.
 
+Remark: `Vec<Box<T>>` is not supported yet though fixable ([#1072](https://github.com/fzyzcjy/flutter_rust_bridge/issues/1072)), but according to [clippy lints](https://rust-lang.github.io/rust-clippy/master/index.html#vec_box), it is usually better to use `Vec<T>` directly.
+
 ## `[T; N]`
 
 Since Dart does not have special treatment for static-sized arrays, it is converted to `List<T>` as well.

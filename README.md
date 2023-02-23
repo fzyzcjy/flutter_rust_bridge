@@ -141,6 +141,7 @@ More specifically, thanks for all these contributions:
 * [alanlzhang](https://github.com/alanlzhang): Add generation for Dart metadata. Enhance module parser.
 * [Zaitam](https://github.com/Zaitam): Fix when method return struct.
 * [AlienKevin](https://github.com/AlienKevin): Add flutter example for macOS. Add doc for Android NDK bug.
+* [alexthe2](https://github.com/alexthe2): Add Option Datetime. Add empty structs. Improve doc.
 * [banool](https://github.com/banool): Fix pubspec parsing. Fix symbol-stripping doc.
 * [efc-mw](https://github.com/efc-mw): Improve Windows encoding handling.
 * [valeth](https://github.com/valeth): Rename callFfi's port.
@@ -159,7 +160,6 @@ More specifically, thanks for all these contributions:
 * [zaynetro](https://github.com/zaynetro): Improve doc.
 * [raphaelrobert](https://github.com/raphaelrobert): Remove oudated doc.
 * [elliotsayes](https://github.com/elliotsayes): Improve doc.
-* [alexthe2](https://github.com/alexthe2): Improve doc.
 * [tmpfs](https://github.com/tmpfs): Improve doc.
 * [thomas725](https://github.com/thomas725): Improve doc.
 * [juzi5201314](https://github.com/juzi5201314): Improve doc.

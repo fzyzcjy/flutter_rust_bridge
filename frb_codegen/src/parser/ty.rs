@@ -288,6 +288,10 @@ impl<'a> TypeParser<'a> {
                             | Delegate(IrTypeDelegate::PrimitiveEnum { .. })) => {
                                 IrTypeOptional::new_boxed(inner)
                             }
+                            #[cfg(feature = "chrono")]
+                            inner @ Delegate(IrTypeDelegate::Time(..)) => {
+                                IrTypeOptional::new_boxed(inner)
+                            }
                             inner => IrTypeOptional::new(inner),
                         },
                     ))
@@ -339,6 +343,11 @@ impl<'a> TypeParser<'a> {
                                 .struct_pool
                                 .get(ident_string)
                                 .map(IrStruct::using_freezed)
+                                .unwrap_or(false),
+                            empty: self
+                                .struct_pool
+                                .get(ident_string)
+                                .map(IrStruct::is_empty)
                                 .unwrap_or(false),
                         }))
                     } else if self.src_enums.contains_key(ident_string) {

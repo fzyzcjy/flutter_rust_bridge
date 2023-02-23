@@ -23,6 +23,17 @@ pub extern "C" fn wire_primitive_types(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_primitive_optional_types(
+    port_: i64,
+    my_i32: *mut i32,
+    my_i64: *mut i64,
+    my_f64: *mut f64,
+    my_bool: *mut bool,
+) {
+    wire_primitive_optional_types_impl(port_, my_i32, my_i64, my_f64, my_bool)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_primitive_types_sync(
     my_i32: i32,
     my_i64: i64,
@@ -387,6 +398,11 @@ pub extern "C" fn wire_naivedatetime(port_: i64, d: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_optional_empty_datetime_utc(port_: i64, d: *mut i64) {
+    wire_optional_empty_datetime_utc_impl(port_, d)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_duration(port_: i64, d: i64) {
     wire_duration_impl(port_, d)
 }
@@ -700,6 +716,11 @@ pub extern "C" fn wire_handle_type_alias_model(port_: i64, input: u64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_empty_struct(port_: i64, empty: *mut wire_Empty) {
+    wire_empty_struct_impl(port_, empty)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -813,6 +834,11 @@ pub extern "C" fn new_box_application_env_0() -> *mut wire_ApplicationEnv {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_Chrono_Utc_0(value: i64) -> *mut i64 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_DartOpaque_0() -> *mut wire_DartOpaque {
     support::new_leak_box_ptr(wire_DartOpaque::new_with_null_ptr())
 }
@@ -855,6 +881,11 @@ pub extern "C" fn new_box_autoadd_customized_0() -> *mut wire_Customized {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_dart_opaque_nested_0() -> *mut wire_DartOpaqueNested {
     support::new_leak_box_ptr(wire_DartOpaqueNested::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_empty_0() -> *mut wire_Empty {
+    support::new_leak_box_ptr(wire_Empty::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1415,6 +1446,12 @@ impl Wire2Api<Box<ApplicationEnv>> for *mut wire_ApplicationEnv {
         Wire2Api::<ApplicationEnv>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<chrono::DateTime<chrono::Utc>> for *mut i64 {
+    fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<chrono::DateTime<chrono::Utc>>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<DartOpaque> for *mut wire_DartOpaque {
     fn wire2api(self) -> DartOpaque {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1466,6 +1503,12 @@ impl Wire2Api<DartOpaqueNested> for *mut wire_DartOpaqueNested {
     fn wire2api(self) -> DartOpaqueNested {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<DartOpaqueNested>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<Empty> for *mut wire_Empty {
+    fn wire2api(self) -> Empty {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Empty>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<EnumDartOpaque> for *mut wire_EnumDartOpaque {
@@ -1714,6 +1757,11 @@ impl Wire2Api<Distance> for wire_Distance {
             },
             _ => unreachable!(),
         }
+    }
+}
+impl Wire2Api<Empty> for wire_Empty {
+    fn wire2api(self) -> Empty {
+        Empty {}
     }
 }
 impl Wire2Api<EnumDartOpaque> for wire_EnumDartOpaque {
@@ -2214,6 +2262,10 @@ pub struct wire_DartOpaqueNested {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_Empty {}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_ExoticOptionals {
     int32: *mut i32,
     int64: *mut i64,
@@ -2444,6 +2496,7 @@ pub struct wire_Distance_Unknown {}
 pub struct wire_Distance_Map {
     field0: f64,
 }
+
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_EnumDartOpaque {
@@ -2768,6 +2821,12 @@ pub extern "C" fn inflate_Distance_Map() -> *mut DistanceKind {
             field0: Default::default(),
         }),
     })
+}
+
+impl NewWithNullPtr for wire_Empty {
+    fn new_with_null_ptr() -> Self {
+        Self {}
+    }
 }
 
 impl NewWithNullPtr for wire_EnumDartOpaque {

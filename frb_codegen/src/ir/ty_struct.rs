@@ -6,8 +6,8 @@ use convert_case::{Case, Casing};
 pub struct IrTypeStructRef {
     pub name: String,
     pub freezed: bool,
+    pub empty: bool,
 }
-
 impl IrTypeStructRef {
     pub fn get<'a>(&self, f: &'a IrFile) -> &'a IrStruct {
         &f.struct_pool[&self.name]
@@ -70,5 +70,9 @@ impl IrStruct {
 
     pub fn using_freezed(&self) -> bool {
         self.dart_metadata.iter().any(|it| it.content == "freezed")
+    }
+
+    pub fn is_empty(&self) -> bool {
+        self.fields.is_empty()
     }
 }
