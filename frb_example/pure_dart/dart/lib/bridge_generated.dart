@@ -2571,15 +2571,15 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   Duration _wire2api_box_autoadd_Chrono_Duration(dynamic raw) {
-    return Duration(microseconds: raw);
+    return _wire2api_Chrono_Duration(raw);
   }
 
   DateTime _wire2api_box_autoadd_Chrono_Naive(dynamic raw) {
-    return DateTime.fromMicrosecondsSinceEpoch(raw, isUtc: false);
+    return _wire2api_Chrono_Naive(raw);
   }
 
   DateTime _wire2api_box_autoadd_Chrono_Utc(dynamic raw) {
-    return DateTime.fromMicrosecondsSinceEpoch(raw, isUtc: true);
+    return _wire2api_Chrono_Utc(raw);
   }
 
   Object _wire2api_box_autoadd_DartOpaque(dynamic raw) {

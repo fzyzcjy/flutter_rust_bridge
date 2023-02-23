@@ -569,16 +569,10 @@ fn generate_opaque_func(ty: &IrType) -> Acc<String> {
 #[cfg(feature = "chrono")]
 fn gen_wire2api_chrono(chrono_type: &IrTypeTime) -> String {
     match chrono_type {
-        IrTypeTime::Local => {
-            "return DateTime.fromMicrosecondsSinceEpoch(raw, isUtc: false);".to_string()
-        }
-        IrTypeTime::Utc => {
-            "return DateTime.fromMicrosecondsSinceEpoch(raw, isUtc: true);".to_string()
-        }
-        IrTypeTime::Naive => {
-            "return DateTime.fromMicrosecondsSinceEpoch(raw, isUtc: false);".to_string()
-        }
-        IrTypeTime::Duration => "return Duration(microseconds: raw);".to_string(),
+        IrTypeTime::Local => "return _wire2api_Chrono_Local(raw);".to_string(),
+        IrTypeTime::Utc => "return _wire2api_Chrono_Utc(raw);".to_string(),
+        IrTypeTime::Naive => "return _wire2api_Chrono_Naive(raw);".to_string(),
+        IrTypeTime::Duration => "return _wire2api_Chrono_Duration(raw);".to_string(),
     }
 }
 

@@ -2,7 +2,6 @@
 
 use std::fmt::Debug;
 use std::ops::Deref;
-use std::str::FromStr;
 use std::sync::atomic::{AtomicI32, Ordering};
 use std::sync::Arc;
 pub use std::sync::{Mutex, RwLock};
@@ -994,8 +993,11 @@ pub struct TestChrono {
 
 pub fn test_chrono() -> TestChrono {
     TestChrono {
-        dt: Some(chrono::DateTime::from_str("2022-09-10T20:48:53.123456Z").unwrap()),
-        dt2: Some(chrono::NaiveDateTime::from_str("2022-09-10T20:48:53.123456").unwrap()),
+        dt: Some(chrono::DateTime::from_utc(
+            chrono::NaiveDateTime::from_timestamp_opt(1631297333, 0).unwrap(),
+            chrono::Utc,
+        )),
+        dt2: Some(chrono::NaiveDateTime::from_timestamp_opt(1631297333, 0).unwrap()),
         du: Some(chrono::Duration::hours(4)),
     }
 }

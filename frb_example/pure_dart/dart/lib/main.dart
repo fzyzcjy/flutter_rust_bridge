@@ -674,9 +674,9 @@ void main(List<String> args) async {
 
     test('Combined Chrono types', () async {
       final test = await api.testChrono();
-      expect(test.dt, DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456));
-      expect(test.dt2, DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456));
-      expect(test.du, DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456));
+      expect(castInt(test.dt!.millisecondsSinceEpoch), castInt(1631297333000));
+      expect(castInt(test.dt2!.millisecondsSinceEpoch), castInt(1631297333000));
+      expect(test.du, Duration(hours: 4));
     });
 
     test('nested chrono types', () async {
