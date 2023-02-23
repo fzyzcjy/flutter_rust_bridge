@@ -2,9 +2,10 @@ use convert_case::{Case, Casing};
 
 use crate::ir::*;
 use crate::target::Target;
+use strum_macros::Display;
 
 #[cfg(feature = "chrono")]
-#[derive(Debug, Clone, Hash, Eq, PartialEq)]
+#[derive(Debug, Clone, Hash, Eq, PartialEq, Display)]
 pub enum IrTypeTime {
     Local,
     Utc,
