@@ -1032,6 +1032,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_test_chrono(NativePortType port_);
 
+  external dynamic /* void */ wire_test_precise_chrono(NativePortType port_);
+
   external dynamic /* void */ wire_how_long_does_it_take(NativePortType port_, List<dynamic> mine);
 
   external dynamic /* void */ wire_handle_uuid(NativePortType port_, Uint8List id);
@@ -1396,6 +1398,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_duration(NativePortType port_, Object d) => wasmModule.wire_duration(port_, d);
 
   void wire_test_chrono(NativePortType port_) => wasmModule.wire_test_chrono(port_);
+
+  void wire_test_precise_chrono(NativePortType port_) => wasmModule.wire_test_precise_chrono(port_);
 
   void wire_how_long_does_it_take(NativePortType port_, List<dynamic> mine) =>
       wasmModule.wire_how_long_does_it_take(port_, mine);

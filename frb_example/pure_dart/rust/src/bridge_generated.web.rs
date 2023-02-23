@@ -400,6 +400,11 @@ pub fn wire_test_chrono(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_test_precise_chrono(port_: MessagePort) {
+    wire_test_precise_chrono_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_how_long_does_it_take(port_: MessagePort, mine: JsValue) {
     wire_how_long_does_it_take_impl(port_, mine)
 }

@@ -1225,6 +1225,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<TestChrono> testPreciseChrono({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_precise_chrono(port_),
+      parseSuccessData: _wire2api_test_chrono,
+      constMeta: kTestPreciseChronoConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestPreciseChronoConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_precise_chrono",
+        argNames: [],
+      );
+
   Future<Duration> howLongDoesItTake({required FeatureChrono mine, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_feature_chrono(mine);
     return _platform.executeNormal(FlutterRustBridgeTask(

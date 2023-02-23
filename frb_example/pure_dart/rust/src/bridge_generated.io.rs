@@ -413,6 +413,11 @@ pub extern "C" fn wire_test_chrono(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_test_precise_chrono(port_: i64) {
+    wire_test_precise_chrono_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_how_long_does_it_take(port_: i64, mine: *mut wire_FeatureChrono) {
     wire_how_long_does_it_take_impl(port_, mine)
 }

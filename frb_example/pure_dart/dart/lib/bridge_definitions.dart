@@ -327,6 +327,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kTestChronoConstMeta;
 
+  Future<TestChrono> testPreciseChrono({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestPreciseChronoConstMeta;
+
   Future<Duration> howLongDoesItTake({required FeatureChrono mine, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHowLongDoesItTakeConstMeta;
