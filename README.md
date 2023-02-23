@@ -2,7 +2,7 @@
     <b><a href="https://github.com/fzyzcjy/flutter_rust_bridge">flutter_rust_bridge</a></b>
 </h1>
 
-<h2 align="center">High-level memory-safe binding generator for Flutter/Dart <-> Rust</h2>
+<h3 align="center">High-level memory-safe binding generator for Flutter/Dart <-> Rust</h3>
 
 [![Rust Package](https://img.shields.io/crates/v/flutter_rust_bridge.svg)](https://crates.io/crates/flutter_rust_bridge)
 [![Flutter Package](https://img.shields.io/pub/v/flutter_rust_bridge.svg)](https://pub.dev/packages/flutter_rust_bridge)
