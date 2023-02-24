@@ -985,6 +985,34 @@ pub fn duration(d: chrono::Duration) -> chrono::Duration {
     d
 }
 
+pub struct TestChrono {
+    pub dt: Option<chrono::DateTime<chrono::Utc>>,
+    pub dt2: Option<chrono::NaiveDateTime>,
+    pub du: Option<chrono::Duration>,
+}
+
+pub fn test_chrono() -> TestChrono {
+    TestChrono {
+        dt: Some(chrono::DateTime::from_utc(
+            chrono::NaiveDateTime::from_timestamp_opt(1631297333, 0).unwrap(),
+            chrono::Utc,
+        )),
+        dt2: Some(chrono::NaiveDateTime::from_timestamp_opt(1631297333, 0).unwrap()),
+        du: Some(chrono::Duration::hours(4)),
+    }
+}
+
+pub fn test_precise_chrono() -> TestChrono {
+    TestChrono {
+        dt: Some(chrono::DateTime::from_utc(
+            chrono::NaiveDateTime::from_timestamp_opt(1014466435, 0).unwrap(),
+            chrono::Utc,
+        )),
+        dt2: Some(chrono::NaiveDateTime::from_timestamp_opt(-5362715015, 0).unwrap()),
+        du: Some(chrono::Duration::hours(4)),
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct FeatureChrono {
     pub utc: chrono::DateTime<chrono::Utc>,

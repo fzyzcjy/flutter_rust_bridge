@@ -323,6 +323,14 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kDurationConstMeta;
 
+  Future<TestChrono> testChrono({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestChronoConstMeta;
+
+  Future<TestChrono> testPreciseChrono({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestPreciseChronoConstMeta;
+
   Future<Duration> howLongDoesItTake({required FeatureChrono mine, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHowLongDoesItTakeConstMeta;
@@ -1285,6 +1293,17 @@ class SumWith {
         y: y,
         z: z,
       );
+}
+
+class TestChrono {
+  final DateTime? dt;
+  final DateTime? dt2;
+  final Duration? du;
+  TestChrono({
+    this.dt,
+    this.dt2,
+    this.du,
+  });
 }
 
 class TestId {

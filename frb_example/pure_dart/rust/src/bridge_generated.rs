@@ -1130,6 +1130,26 @@ fn wire_duration_impl(port_: MessagePort, d: impl Wire2Api<chrono::Duration> + U
         },
     )
 }
+fn wire_test_chrono_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_chrono",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(test_chrono()),
+    )
+}
+fn wire_test_precise_chrono_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_precise_chrono",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(test_precise_chrono()),
+    )
+}
 fn wire_how_long_does_it_take_impl(
     port_: MessagePort,
     mine: impl Wire2Api<FeatureChrono> + UnwindSafe,
@@ -2672,6 +2692,18 @@ impl support::IntoDart for SumWith {
     }
 }
 impl support::IntoDartExceptPrimitive for SumWith {}
+
+impl support::IntoDart for TestChrono {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.dt.into_dart(),
+            self.dt2.into_dart(),
+            self.du.into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for TestChrono {}
 
 impl support::IntoDart for TestId {
     fn into_dart(self) -> support::DartAbi {

@@ -5,6 +5,9 @@ use crate::ir::*;
 use crate::target::Acc;
 use crate::type_dart_generator_struct;
 
+#[cfg(feature = "chrono")]
+use super::gen_wire2api_chrono;
+
 type_dart_generator_struct!(TypeBoxedGenerator, IrTypeBoxed);
 
 fn is_empty_struct(ty: &TypeBoxedGenerator) -> bool {
@@ -80,6 +83,8 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
             | Delegate(IrTypeDelegate::Array(_) | IrTypeDelegate::PrimitiveEnum { .. }) => {
                 format!("return _wire2api_{}(raw);", self.ir.inner.safe_ident())
             }
+            #[cfg(feature = "chrono")]
+            Delegate(IrTypeDelegate::Time(time)) => gen_wire2api_chrono(time),
             _ => gen_wire2api_simple_type_cast(&self.ir.dart_api_type()),
         }
     }

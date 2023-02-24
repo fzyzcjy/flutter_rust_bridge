@@ -566,6 +566,11 @@ fn generate_opaque_func(ty: &IrType) -> Acc<String> {
     }
 }
 
+#[cfg(feature = "chrono")]
+fn gen_wire2api_chrono(chrono_type: &IrTypeTime) -> String {
+    format!("return _wire2api_Chrono_{}(raw);", chrono_type)
+}
+
 fn gen_wire2api_simple_type_cast(s: &str) -> String {
     format!("return raw as {s};")
 }

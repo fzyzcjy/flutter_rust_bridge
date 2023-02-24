@@ -677,6 +677,26 @@ void main(List<String> args) async {
       final resp = await api.duration(d: duration);
       expect(resp.inHours, duration.inHours);
     });
+
+    test('Combined Chrono types', () async {
+      final test = await api.testChrono();
+      expect(castInt(test.dt!.millisecondsSinceEpoch), castInt(1631297333000));
+      expect(castInt(test.dt2!.millisecondsSinceEpoch), castInt(1631297333000));
+      expect(test.du, Duration(hours: 4));
+    });
+
+    test('combined chrono types precise', () async {
+      final datetime_1 = DateTime.utc(2002, 02, 23, 12, 13, 55);
+      final datetime_2 = DateTime.utc(1800, 01, 23, 12, 56, 25);
+      final duration = Duration(hours: 4);
+
+      final result = await api.testPreciseChrono();
+
+      expect(result.dt!.millisecondsSinceEpoch, datetime_1.millisecondsSinceEpoch);
+      expect(result.dt2!.millisecondsSinceEpoch, datetime_2.millisecondsSinceEpoch);
+      expect(result.du!.inHours, duration.inHours);
+    });
+
     test('nested chrono types', () async {
       const duration = Duration(hours: 4);
       final naive = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
