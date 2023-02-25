@@ -39,10 +39,7 @@ At this step you may need to [setup dependencies](./integrate/deps.md).
 The [CI workflow](https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/ci.yaml) is useful if you want details of each command. The `flutter_android_test`, `flutter_ios_test`, `flutter_windows_test`, `flutter_macos_test` and `flutter_linux_test` demonstrates the exact commands needed to run this tutorial codebase from a brand new machine.
 
 ### Android app
-
-Append line `ANDROID_NDK=(path to NDK)` to `android/gradle.properties` and run `cargo ndk -o ../android/app/src/main/jniLibs build`. Then run the Flutter app normally such as `flutter run`.
-
-**Remark**: [This tutorial](https://stackoverflow.com/q/69515032/4619958) will help you automatically execute `cargo` builds when building Flutter app.
+See [Android setup](tutorial/setup_android.md)
 
 ### iOS app
 

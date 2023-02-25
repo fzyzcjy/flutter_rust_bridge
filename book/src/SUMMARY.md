@@ -6,6 +6,8 @@
 
 - [🧭 Quickstart](quickstart.md)
 - [📚 Tutorial: A Flutter+Rust app](tutorial_with_flutter.md)
+	- [Android setup](tutorial/setup_android.md)
+		- [Alternative NDK setup](tutorial/alternative_ndk.md)
 - [🎼 Features](feature.md)
   - [Language translations](feature/lang.md)
     - [Simple correspondence](feature/lang_simple.md)
