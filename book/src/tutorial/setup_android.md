@@ -40,7 +40,8 @@ cargo install cargo-ndk --version 2.6.0
 [cargo-ndk] is a Cargo plugin for compiling code suitable for plugging into
 the JNI without additional configuration. Run the above command to install.
 Version 2.7.0 of cargo-ndk introduced changes that broke support for NDK
-version 22 so 2.6.0 must be used for now.
+version 22 so 2.6.0 must be used for now. If you still want to use 2.7.0 with
+a workaround, see [this article](./alternative_ndk.md)
 
 Then run 
 ```shell
