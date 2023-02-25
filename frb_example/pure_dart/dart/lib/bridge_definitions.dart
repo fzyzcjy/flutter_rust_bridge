@@ -131,6 +131,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleComplexStructSyncConstMeta;
 
+  Future<MyNestedStruct> handleNestedStruct({required MyNestedStruct s, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleNestedStructConstMeta;
+
   Uint8List handleSyncReturn({required String mode, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleSyncReturnConstMeta;
@@ -1171,6 +1175,15 @@ class MessageId {
 enum MyEnum {
   False,
   True,
+}
+
+class MyNestedStruct {
+  final MyTreeNode treeNode;
+  final Weekdays weekday;
+  MyNestedStruct({
+    required this.treeNode,
+    required this.weekday,
+  });
 }
 
 class MySize {

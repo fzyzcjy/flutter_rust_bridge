@@ -262,6 +262,12 @@ impl NewWithNullPtr for wire_Point {
     }
 }
 
+impl Default for wire_Point {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
 impl NewWithNullPtr for wire_Size {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -271,12 +277,24 @@ impl NewWithNullPtr for wire_Size {
     }
 }
 
+impl Default for wire_Size {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
 impl NewWithNullPtr for wire_TreeNode {
     fn new_with_null_ptr() -> Self {
         Self {
             name: core::ptr::null_mut(),
             children: core::ptr::null_mut(),
         }
+    }
+}
+
+impl Default for wire_TreeNode {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
     }
 }
 

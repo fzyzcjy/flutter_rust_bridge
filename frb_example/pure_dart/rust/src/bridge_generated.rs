@@ -454,6 +454,22 @@ fn wire_handle_complex_struct_sync_impl(
         },
     )
 }
+fn wire_handle_nested_struct_impl(
+    port_: MessagePort,
+    s: impl Wire2Api<MyNestedStruct> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_nested_struct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_s = s.wire2api();
+            move |task_callback| Ok(handle_nested_struct(api_s))
+        },
+    )
+}
 fn wire_handle_sync_return_impl(
     mode: impl Wire2Api<String> + UnwindSafe,
 ) -> support::WireSyncReturn {
@@ -2593,6 +2609,13 @@ impl support::IntoDart for MyEnum {
         .into_dart()
     }
 }
+impl support::IntoDart for MyNestedStruct {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.tree_node.into_dart(), self.weekday.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for MyNestedStruct {}
+
 impl support::IntoDart for MySize {
     fn into_dart(self) -> support::DartAbi {
         vec![self.width.into_dart(), self.height.into_dart()].into_dart()

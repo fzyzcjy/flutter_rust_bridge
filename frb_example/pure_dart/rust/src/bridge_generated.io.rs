@@ -163,6 +163,11 @@ pub extern "C" fn wire_handle_complex_struct_sync(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_nested_struct(port_: i64, s: *mut wire_MyNestedStruct) {
+    wire_handle_nested_struct_impl(port_, s)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_handle_sync_return(mode: *mut wire_uint_8_list) -> support::WireSyncReturn {
     wire_handle_sync_return_impl(mode)
 }
@@ -959,6 +964,11 @@ pub extern "C" fn new_box_autoadd_message_id_0() -> *mut wire_MessageId {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_my_nested_struct_0() -> *mut wire_MyNestedStruct {
+    support::new_leak_box_ptr(wire_MyNestedStruct::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_my_size_0() -> *mut wire_MySize {
     support::new_leak_box_ptr(wire_MySize::new_with_null_ptr())
 }
@@ -1590,6 +1600,12 @@ impl Wire2Api<MessageId> for *mut wire_MessageId {
         Wire2Api::<MessageId>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<MyNestedStruct> for *mut wire_MyNestedStruct {
+    fn wire2api(self) -> MyNestedStruct {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<MyNestedStruct>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<MySize> for *mut wire_MySize {
     fn wire2api(self) -> MySize {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -2045,6 +2061,14 @@ impl Wire2Api<MessageId> for wire_MessageId {
     }
 }
 
+impl Wire2Api<MyNestedStruct> for wire_MyNestedStruct {
+    fn wire2api(self) -> MyNestedStruct {
+        MyNestedStruct {
+            tree_node: self.tree_node.wire2api(),
+            weekday: self.weekday.wire2api(),
+        }
+    }
+}
 impl Wire2Api<MySize> for wire_MySize {
     fn wire2api(self) -> MySize {
         MySize {
@@ -2407,6 +2431,13 @@ pub struct wire_MessageId {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_MyNestedStruct {
+    tree_node: wire_MyTreeNode,
+    weekday: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_MySize {
     width: i32,
     height: i32,
@@ -2751,12 +2782,24 @@ impl NewWithNullPtr for wire_ApplicationEnv {
     }
 }
 
+impl Default for wire_ApplicationEnv {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
 impl NewWithNullPtr for wire_ApplicationEnvVar {
     fn new_with_null_ptr() -> Self {
         Self {
             field0: core::ptr::null_mut(),
             field1: Default::default(),
         }
+    }
+}
+
+impl Default for wire_ApplicationEnvVar {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
     }
 }
 
@@ -2772,12 +2815,24 @@ impl NewWithNullPtr for wire_ApplicationSettings {
     }
 }
 
+impl Default for wire_ApplicationSettings {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
 impl NewWithNullPtr for wire_Attribute {
     fn new_with_null_ptr() -> Self {
         Self {
             key: core::ptr::null_mut(),
             value: core::ptr::null_mut(),
         }
+    }
+}
+
+impl Default for wire_Attribute {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
     }
 }
 
@@ -2789,11 +2844,23 @@ impl NewWithNullPtr for wire_Blob {
     }
 }
 
+impl Default for wire_Blob {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
 impl NewWithNullPtr for wire_ConcatenateWith {
     fn new_with_null_ptr() -> Self {
         Self {
             a: core::ptr::null_mut(),
         }
+    }
+}
+
+impl Default for wire_ConcatenateWith {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
     }
 }
 
@@ -2806,12 +2873,24 @@ impl NewWithNullPtr for wire_Customized {
     }
 }
 
+impl Default for wire_Customized {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
 impl NewWithNullPtr for wire_DartOpaqueNested {
     fn new_with_null_ptr() -> Self {
         Self {
             first: wire_DartOpaque::new_with_null_ptr(),
             second: wire_DartOpaque::new_with_null_ptr(),
         }
+    }
+}
+
+impl Default for wire_DartOpaqueNested {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
     }
 }
 
@@ -2836,6 +2915,12 @@ pub extern "C" fn inflate_Distance_Map() -> *mut DistanceKind {
 impl NewWithNullPtr for wire_Empty {
     fn new_with_null_ptr() -> Self {
         Self {}
+    }
+}
+
+impl Default for wire_Empty {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
     }
 }
 
@@ -2941,6 +3026,12 @@ impl NewWithNullPtr for wire_ExoticOptionals {
     }
 }
 
+impl Default for wire_ExoticOptionals {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
 impl NewWithNullPtr for wire_FeatureChrono {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -2949,6 +3040,12 @@ impl NewWithNullPtr for wire_FeatureChrono {
             duration: Default::default(),
             naive: Default::default(),
         }
+    }
+}
+
+impl Default for wire_FeatureChrono {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
     }
 }
 
@@ -2961,11 +3058,23 @@ impl NewWithNullPtr for wire_FeatureUuid {
     }
 }
 
+impl Default for wire_FeatureUuid {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
 impl NewWithNullPtr for wire_FeedId {
     fn new_with_null_ptr() -> Self {
         Self {
             field0: core::ptr::null_mut(),
         }
+    }
+}
+
+impl Default for wire_FeedId {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
     }
 }
 
@@ -3062,6 +3171,27 @@ impl NewWithNullPtr for wire_MessageId {
     }
 }
 
+impl Default for wire_MessageId {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
+impl NewWithNullPtr for wire_MyNestedStruct {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tree_node: Default::default(),
+            weekday: Default::default(),
+        }
+    }
+}
+
+impl Default for wire_MyNestedStruct {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
 impl NewWithNullPtr for wire_MySize {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -3071,11 +3201,23 @@ impl NewWithNullPtr for wire_MySize {
     }
 }
 
+impl Default for wire_MySize {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
 impl NewWithNullPtr for wire_MyStruct {
     fn new_with_null_ptr() -> Self {
         Self {
             content: Default::default(),
         }
+    }
+}
+
+impl Default for wire_MyStruct {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
     }
 }
 
@@ -3090,11 +3232,23 @@ impl NewWithNullPtr for wire_MyTreeNode {
     }
 }
 
+impl Default for wire_MyTreeNode {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
 impl NewWithNullPtr for wire_NewTypeInt {
     fn new_with_null_ptr() -> Self {
         Self {
             field0: Default::default(),
         }
+    }
+}
+
+impl Default for wire_NewTypeInt {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
     }
 }
 
@@ -3107,11 +3261,23 @@ impl NewWithNullPtr for wire_Note {
     }
 }
 
+impl Default for wire_Note {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
 impl NewWithNullPtr for wire_Numbers {
     fn new_with_null_ptr() -> Self {
         Self {
             field0: core::ptr::null_mut(),
         }
+    }
+}
+
+impl Default for wire_Numbers {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
     }
 }
 
@@ -3124,11 +3290,23 @@ impl NewWithNullPtr for wire_OpaqueNested {
     }
 }
 
+impl Default for wire_OpaqueNested {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
 impl NewWithNullPtr for wire_Sequences {
     fn new_with_null_ptr() -> Self {
         Self {
             field0: core::ptr::null_mut(),
         }
+    }
+}
+
+impl Default for wire_Sequences {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
     }
 }
 
@@ -3158,6 +3336,12 @@ impl NewWithNullPtr for wire_SumWith {
     }
 }
 
+impl Default for wire_SumWith {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
 impl NewWithNullPtr for wire_TestId {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -3166,11 +3350,23 @@ impl NewWithNullPtr for wire_TestId {
     }
 }
 
+impl Default for wire_TestId {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
 impl NewWithNullPtr for wire_UserId {
     fn new_with_null_ptr() -> Self {
         Self {
             value: Default::default(),
         }
+    }
+}
+
+impl Default for wire_UserId {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
     }
 }
 

@@ -291,6 +291,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_MyNestedStruct> api2wire_box_autoadd_my_nested_struct(MyNestedStruct raw) {
+    final ptr = inner.new_box_autoadd_my_nested_struct_0();
+    _api_fill_to_wire_my_nested_struct(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_MySize> api2wire_box_autoadd_my_size(MySize raw) {
     final ptr = inner.new_box_autoadd_my_size_0();
     _api_fill_to_wire_my_size(raw, ptr.ref);
@@ -888,6 +895,10 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     _api_fill_to_wire_message_id(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_my_nested_struct(MyNestedStruct apiObj, ffi.Pointer<wire_MyNestedStruct> wireObj) {
+    _api_fill_to_wire_my_nested_struct(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_my_size(MySize apiObj, ffi.Pointer<wire_MySize> wireObj) {
     _api_fill_to_wire_my_size(apiObj, wireObj.ref);
   }
@@ -1147,6 +1158,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   void _api_fill_to_wire_message_id(MessageId apiObj, wire_MessageId wireObj) {
     wireObj.field0 = api2wire_u8_array_32(apiObj.field0);
+  }
+
+  void _api_fill_to_wire_my_nested_struct(MyNestedStruct apiObj, wire_MyNestedStruct wireObj) {
+    _api_fill_to_wire_my_tree_node(apiObj.treeNode, wireObj.tree_node);
+    wireObj.weekday = api2wire_weekdays(apiObj.weekday);
   }
 
   void _api_fill_to_wire_my_size(MySize apiObj, wire_MySize wireObj) {
@@ -1726,6 +1742,22 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
           'wire_handle_complex_struct_sync');
   late final _wire_handle_complex_struct_sync =
       _wire_handle_complex_struct_syncPtr.asFunction<WireSyncReturn Function(ffi.Pointer<wire_MyTreeNode>)>();
+
+  void wire_handle_nested_struct(
+    int port_,
+    ffi.Pointer<wire_MyNestedStruct> s,
+  ) {
+    return _wire_handle_nested_struct(
+      port_,
+      s,
+    );
+  }
+
+  late final _wire_handle_nested_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_MyNestedStruct>)>>(
+          'wire_handle_nested_struct');
+  late final _wire_handle_nested_struct =
+      _wire_handle_nested_structPtr.asFunction<void Function(int, ffi.Pointer<wire_MyNestedStruct>)>();
 
   WireSyncReturn wire_handle_sync_return(
     ffi.Pointer<wire_uint_8_list> mode,
@@ -3688,6 +3720,15 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_box_autoadd_message_id_0 =
       _new_box_autoadd_message_id_0Ptr.asFunction<ffi.Pointer<wire_MessageId> Function()>();
 
+  ffi.Pointer<wire_MyNestedStruct> new_box_autoadd_my_nested_struct_0() {
+    return _new_box_autoadd_my_nested_struct_0();
+  }
+
+  late final _new_box_autoadd_my_nested_struct_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_MyNestedStruct> Function()>>('new_box_autoadd_my_nested_struct_0');
+  late final _new_box_autoadd_my_nested_struct_0 =
+      _new_box_autoadd_my_nested_struct_0Ptr.asFunction<ffi.Pointer<wire_MyNestedStruct> Function()>();
+
   ffi.Pointer<wire_MySize> new_box_autoadd_my_size_0() {
     return _new_box_autoadd_my_size_0();
   }
@@ -4494,6 +4535,13 @@ class wire_MyTreeNode extends ffi.Struct {
   external bool value_boolean;
 
   external ffi.Pointer<wire_list_my_tree_node> children;
+}
+
+class wire_MyNestedStruct extends ffi.Struct {
+  external wire_MyTreeNode tree_node;
+
+  @ffi.Int32()
+  external int weekday;
 }
 
 class wire_int_8_list extends ffi.Struct {

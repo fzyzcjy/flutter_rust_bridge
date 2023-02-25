@@ -193,15 +193,26 @@ void main(List<String> args) async {
     expect(names, ['Steve', 'Bob', 'Alex']);
   });
 
-  test('dart call handleComplexStruct', () async {
-    final arrLen = 5;
-    final complexStructResp = await api.handleComplexStruct(s: _createMyTreeNode(arrLen: arrLen));
+  testComplexStruct(MyTreeNode complexStructResp, {required int arrLen}) {
     expect(complexStructResp.valueI32, 100);
     expect(complexStructResp.valueVecU8, List.filled(arrLen, 100));
     expect(complexStructResp.children[0].valueVecU8, List.filled(arrLen, 110));
     expect(complexStructResp.children[0].children[0].valueVecU8, List.filled(arrLen, 111));
     expect(complexStructResp.children[1].valueVecU8, List.filled(arrLen, 120));
+  }
+
+  test('dart call handleComplexStruct', () async {
+    final arrLen = 5;
+    final complexStructResp = await api.handleComplexStruct(s: _createMyTreeNode(arrLen: arrLen));
+    testComplexStruct(complexStructResp, arrLen: arrLen);
   });
+
+  test('dart call handleNestedStruct', () async {
+    final r = await api.handleNestedStruct(s: _createMyNestedStruct());
+    testComplexStruct(r.treeNode, arrLen: 5);
+    expect(r.weekday, Weekdays.Friday);
+  });
+
   test('dart call handleComplexStructSync', () {
     final arrLen = 5;
     final complexStructResp = api.handleComplexStructSync(s: _createMyTreeNode(arrLen: arrLen));
@@ -1198,6 +1209,10 @@ MyTreeNode _createMyTreeNode({required int arrLen}) {
       ),
     ],
   );
+}
+
+MyNestedStruct _createMyNestedStruct() {
+  return MyNestedStruct(treeNode: _createMyTreeNode(arrLen: 5), weekday: Weekdays.Friday);
 }
 
 class MatchBigInt extends CustomMatcher {
