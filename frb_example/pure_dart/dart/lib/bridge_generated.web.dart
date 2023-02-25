@@ -268,6 +268,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_my_nested_struct(MyNestedStruct raw) {
+    return api2wire_my_nested_struct(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_my_size(MySize raw) {
     return api2wire_my_size(raw);
   }
@@ -614,6 +619,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_my_nested_struct(MyNestedStruct raw) {
+    return [api2wire_my_tree_node(raw.treeNode), api2wire_weekdays(raw.weekday)];
+  }
+
+  @protected
   List<dynamic> api2wire_my_size(MySize raw) {
     return [api2wire_i32(raw.width), api2wire_i32(raw.height)];
   }
@@ -936,6 +946,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external dynamic /* void */ wire_handle_complex_struct(NativePortType port_, List<dynamic> s);
 
   external dynamic /* List<dynamic> */ wire_handle_complex_struct_sync(List<dynamic> s);
+
+  external dynamic /* void */ wire_handle_nested_struct(NativePortType port_, List<dynamic> s);
 
   external dynamic /* Uint8List */ wire_handle_sync_return(String mode);
 
@@ -1286,6 +1298,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   dynamic /* List<dynamic> */ wire_handle_complex_struct_sync(List<dynamic> s) =>
       wasmModule.wire_handle_complex_struct_sync(s);
+
+  void wire_handle_nested_struct(NativePortType port_, List<dynamic> s) =>
+      wasmModule.wire_handle_nested_struct(port_, s);
 
   dynamic /* Uint8List */ wire_handle_sync_return(String mode) => wasmModule.wire_handle_sync_return(mode);
 

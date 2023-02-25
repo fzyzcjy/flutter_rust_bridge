@@ -305,6 +305,18 @@ pub fn handle_complex_struct_sync(s: MyTreeNode) -> SyncReturn<MyTreeNode> {
     SyncReturn(s)
 }
 
+#[derive(Debug, Clone)]
+pub struct MyNestedStruct {
+    pub tree_node: MyTreeNode,
+    pub weekday: Weekdays,
+}
+
+pub fn handle_nested_struct(s: MyNestedStruct) -> MyNestedStruct {
+    println!("handle_nested_struct({s:?})");
+    let s_cloned = s.clone();
+    s
+}
+
 // Test if sync return is working as expected by using Vec<u8> as return value.
 pub fn handle_sync_return(mode: String) -> Result<SyncReturn<Vec<u8>>> {
     match &mode[..] {
@@ -494,7 +506,7 @@ pub fn handle_option_box_arguments(
 }
 
 /// Simple enums.
-#[derive(Debug)]
+#[derive(Debug, Clone, Copy)]
 pub enum Weekdays {
     Monday,
     Tuesday,

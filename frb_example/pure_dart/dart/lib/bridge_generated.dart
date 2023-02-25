@@ -464,6 +464,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["s"],
       );
 
+  Future<MyNestedStruct> handleNestedStruct({required MyNestedStruct s, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_my_nested_struct(s);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_handle_nested_struct(port_, arg0),
+      parseSuccessData: _wire2api_my_nested_struct,
+      constMeta: kHandleNestedStructConstMeta,
+      argValues: [s],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleNestedStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_nested_struct",
+        argNames: ["s"],
+      );
+
   Uint8List handleSyncReturn({required String mode, dynamic hint}) {
     var arg0 = _platform.api2wire_String(mode);
     return _platform.executeSync(FlutterRustBridgeSyncTask(
@@ -2998,6 +3014,15 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   MyEnum _wire2api_my_enum(dynamic raw) {
     return MyEnum.values[raw];
+  }
+
+  MyNestedStruct _wire2api_my_nested_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return MyNestedStruct(
+      treeNode: _wire2api_my_tree_node(arr[0]),
+      weekday: _wire2api_weekdays(arr[1]),
+    );
   }
 
   MySize _wire2api_my_size(dynamic raw) {
