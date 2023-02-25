@@ -141,6 +141,7 @@ More specifically, thanks for all these contributions:
 * [temeddix](https://github.com/temeddix): Fix broken CI. Custom num workers. Update doc.
 * [alanlzhang](https://github.com/alanlzhang): Add generation for Dart metadata. Enhance module parser.
 * [Zaitam](https://github.com/Zaitam): Fix when method return struct.
+* [nitn3lav](https://github.com/nitn3lav): nested `struct`s without `Box`.
 * [AlienKevin](https://github.com/AlienKevin): Add flutter example for macOS. Add doc for Android NDK bug.
 * [alexthe2](https://github.com/alexthe2): Add Option Datetime. Add empty structs. Improve doc.
 * [banool](https://github.com/banool): Fix pubspec parsing. Fix symbol-stripping doc.
