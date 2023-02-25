@@ -3,14 +3,14 @@
 You can alternatively use the latest version of the Android NDK which is greater than 22.
 However, this requires a hack to prevent the [unable to find library -lgcc error].
 
-### Android NDK
+## Android NDK
 Install the latest NDK:
 
 > Android Studio > SDK Manager > SDK Tools > NDK (Side by side)
 
 Click on OK at the bottom right corner to start the installation.
 
-### [cargo-ndk]
+## [cargo-ndk]
 You should install `cargo-ndk` version 2.7.0 or above which works for
 Android NDK versions greater than 22.
 
@@ -42,9 +42,6 @@ you need to manually create four text files to redirect calls from libgcc to lib
 ## More details on NDK with flutter_rust_bridge
 For more details on how NDK works with `flutter_rust_bridge`, have a look at this [article](../integrate/android_tasks.md) please.
 
-[Android NDK]: https://developer.android.com/ndk
-[Java Native Interface]: https://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/jniTOC.html
-[An issue]: https://github.com/rust-lang/rust/pull/85806
 [cargo-ndk]: https://github.com/bbqsrc/cargo-ndk
 [unable to find library -lgcc error]:https://github.com/bbqsrc/cargo-ndk/issues/22
 [reference]: https://github.com/rust-lang/rust/pull/85806#issuecomment-1096266946

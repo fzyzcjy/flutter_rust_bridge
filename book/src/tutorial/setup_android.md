@@ -51,3 +51,7 @@ Then run the Flutter app normally with `flutter run`.
 
 **Remark**: [This tutorial](https://stackoverflow.com/q/69515032/4619958) will help you automatically execute `cargo` builds when building Flutter app.
 
+[Android NDK]: https://developer.android.com/ndk
+[Java Native Interface]: https://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/jniTOC.html
+[An issue]: https://github.com/rust-lang/rust/pull/85806
+[cargo-ndk]: https://github.com/bbqsrc/cargo-ndk
