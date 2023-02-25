@@ -419,7 +419,7 @@ Types from <code>uuid</code> crate are supported as a feature, see <a href="feat
 <p>Remark: If you are curious about <code>Future</code>, have a look at <a href="feature/async_dart.html">this</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="structs"><a class="header" href="#structs"><code>struct</code>s</a></h1>
 <p>Normal Rust structs are supported. You can even use recursive fields, such as <code>pub struct TreeNode { pub value: String, pub children: Vec&lt;MyTreeNode&gt;, pub parent: Box&lt;MyTreeNode&gt; }</code>.</p>
-<p>If a struct field has type being a struct or an enum, please add a <code>Box</code> on it, or it will lead to compile-time error. For example, <code>struct A {b: B}</code> should be <code>struct A {b: Box&lt;B&gt;}</code> instead.</p>
+<p>For versions older than v1.66.0 (no need for latest version), if a struct field has type being a struct or an enum, please add a <code>Box</code> on it, or it will lead to compile-time error. For example, <code>struct A {b: B}</code> should be <code>struct A {b: Box&lt;B&gt;}</code> instead.</p>
 <h2 id="tuple-structs"><a class="header" href="#tuple-structs">Tuple structs</a></h2>
 <p>Tuple structs <code>struct Foo(A, B)</code> are translated as <code>class Foo { A field0; B field1; }</code>, since Dart does not have anonymous fields.</p>
 <h2 id="non-final-fields"><a class="header" href="#non-final-fields">Non-final fields</a></h2>
