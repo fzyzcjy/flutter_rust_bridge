@@ -207,9 +207,16 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                         Self {{ {} }}
                     }}
                 }}
+
+                impl Default for {} {{
+                    fn default() -> Self {{
+                        Self::new_with_null_ptr()
+                    }}
+                }}
             "#,
             self.ir.rust_wire_type(Target::Io),
             body,
+            self.ir.rust_wire_type(Target::Io),
         )
     }
 

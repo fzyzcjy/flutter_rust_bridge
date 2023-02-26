@@ -154,6 +154,11 @@ pub fn wire_handle_complex_struct_sync(s: JsValue) -> support::WireSyncReturn {
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_nested_struct(port_: MessagePort, s: JsValue) {
+    wire_handle_nested_struct_impl(port_, s)
+}
+
+#[wasm_bindgen]
 pub fn wire_handle_sync_return(mode: String) -> support::WireSyncReturn {
     wire_handle_sync_return_impl(mode)
 }
@@ -392,6 +397,16 @@ pub fn wire_optional_empty_datetime_utc(port_: MessagePort, d: JsValue) {
 #[wasm_bindgen]
 pub fn wire_duration(port_: MessagePort, d: i64) {
     wire_duration_impl(port_, d)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_chrono(port_: MessagePort) {
+    wire_test_chrono_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_precise_chrono(port_: MessagePort) {
+    wire_test_precise_chrono_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -1315,6 +1330,21 @@ impl Wire2Api<MessageId> for JsValue {
     }
 }
 
+impl Wire2Api<MyNestedStruct> for JsValue {
+    fn wire2api(self) -> MyNestedStruct {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        MyNestedStruct {
+            tree_node: self_.get(0).wire2api(),
+            weekday: self_.get(1).wire2api(),
+        }
+    }
+}
 impl Wire2Api<MySize> for JsValue {
     fn wire2api(self) -> MySize {
         let self_ = self.dyn_into::<JsArray>().unwrap();

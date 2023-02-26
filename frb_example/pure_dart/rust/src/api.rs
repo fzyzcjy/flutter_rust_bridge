@@ -305,6 +305,18 @@ pub fn handle_complex_struct_sync(s: MyTreeNode) -> SyncReturn<MyTreeNode> {
     SyncReturn(s)
 }
 
+#[derive(Debug, Clone)]
+pub struct MyNestedStruct {
+    pub tree_node: MyTreeNode,
+    pub weekday: Weekdays,
+}
+
+pub fn handle_nested_struct(s: MyNestedStruct) -> MyNestedStruct {
+    println!("handle_nested_struct({s:?})");
+    let s_cloned = s.clone();
+    s
+}
+
 // Test if sync return is working as expected by using Vec<u8> as return value.
 pub fn handle_sync_return(mode: String) -> Result<SyncReturn<Vec<u8>>> {
     match &mode[..] {
@@ -494,7 +506,7 @@ pub fn handle_option_box_arguments(
 }
 
 /// Simple enums.
-#[derive(Debug)]
+#[derive(Debug, Clone, Copy)]
 pub enum Weekdays {
     Monday,
     Tuesday,
@@ -983,6 +995,34 @@ pub fn optional_empty_datetime_utc(
 pub fn duration(d: chrono::Duration) -> chrono::Duration {
     assert_eq!(&d.num_hours(), &4);
     d
+}
+
+pub struct TestChrono {
+    pub dt: Option<chrono::DateTime<chrono::Utc>>,
+    pub dt2: Option<chrono::NaiveDateTime>,
+    pub du: Option<chrono::Duration>,
+}
+
+pub fn test_chrono() -> TestChrono {
+    TestChrono {
+        dt: Some(chrono::DateTime::from_utc(
+            chrono::NaiveDateTime::from_timestamp_opt(1631297333, 0).unwrap(),
+            chrono::Utc,
+        )),
+        dt2: Some(chrono::NaiveDateTime::from_timestamp_opt(1631297333, 0).unwrap()),
+        du: Some(chrono::Duration::hours(4)),
+    }
+}
+
+pub fn test_precise_chrono() -> TestChrono {
+    TestChrono {
+        dt: Some(chrono::DateTime::from_utc(
+            chrono::NaiveDateTime::from_timestamp_opt(1014466435, 0).unwrap(),
+            chrono::Utc,
+        )),
+        dt2: Some(chrono::NaiveDateTime::from_timestamp_opt(-5362715015, 0).unwrap()),
+        du: Some(chrono::Duration::hours(4)),
+    }
 }
 
 #[derive(Debug, Clone)]
