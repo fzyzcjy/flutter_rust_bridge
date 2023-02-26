@@ -59,4 +59,4 @@ If there are [multi-blocks](https://cjycode.com/flutter_rust_bridge/feature/mult
 - for MacOS, just add the 1st generated block-header files as **Objective-C Bridging Header**.
 
 For all cases, the `AppDelegate.swift` should be the same as that in the single-block case.
-[related issue](https://github.com/fzyzcjy/)
+[related issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/1014)
