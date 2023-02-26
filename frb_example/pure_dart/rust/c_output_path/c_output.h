@@ -47,6 +47,11 @@ typedef struct wire_MyTreeNode {
   struct wire_list_my_tree_node *children;
 } wire_MyTreeNode;
 
+typedef struct wire_MyNestedStruct {
+  struct wire_MyTreeNode tree_node;
+  int32_t weekday;
+} wire_MyNestedStruct;
+
 typedef struct wire_int_8_list {
   int8_t *ptr;
   int32_t len;
@@ -463,6 +468,8 @@ void wire_handle_complex_struct(int64_t port_, struct wire_MyTreeNode *s);
 
 WireSyncReturn wire_handle_complex_struct_sync(struct wire_MyTreeNode *s);
 
+void wire_handle_nested_struct(int64_t port_, struct wire_MyNestedStruct *s);
+
 WireSyncReturn wire_handle_sync_return(struct wire_uint_8_list *mode);
 
 void wire_handle_stream(int64_t port_, struct wire_uint_8_list *arg);
@@ -563,6 +570,10 @@ void wire_naivedatetime(int64_t port_, int64_t d);
 void wire_optional_empty_datetime_utc(int64_t port_, int64_t *d);
 
 void wire_duration(int64_t port_, int64_t d);
+
+void wire_test_chrono(int64_t port_);
+
+void wire_test_precise_chrono(int64_t port_);
 
 void wire_how_long_does_it_take(int64_t port_, struct wire_FeatureChrono *mine);
 
@@ -778,6 +789,8 @@ struct wire_Measure *new_box_autoadd_measure_0(void);
 
 struct wire_MessageId *new_box_autoadd_message_id_0(void);
 
+struct wire_MyNestedStruct *new_box_autoadd_my_nested_struct_0(void);
+
 struct wire_MySize *new_box_autoadd_my_size_0(void);
 
 struct wire_MyStruct *new_box_autoadd_my_struct_0(void);
@@ -918,7 +931,7 @@ union SpeedKind *inflate_Speed_GPS(void);
 
 void free_WireSyncReturn(WireSyncReturn ptr);
 
-inline int64_t dummy_method_to_enforce_bundling(void) {
+static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
     dummy_var ^= ((int64_t) (void*) wire_simple_adder);
     dummy_var ^= ((int64_t) (void*) wire_simple_adder_sync);
@@ -947,6 +960,7 @@ inline int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_handle_string_list_sync);
     dummy_var ^= ((int64_t) (void*) wire_handle_complex_struct);
     dummy_var ^= ((int64_t) (void*) wire_handle_complex_struct_sync);
+    dummy_var ^= ((int64_t) (void*) wire_handle_nested_struct);
     dummy_var ^= ((int64_t) (void*) wire_handle_sync_return);
     dummy_var ^= ((int64_t) (void*) wire_handle_stream);
     dummy_var ^= ((int64_t) (void*) wire_handle_stream_of_struct);
@@ -993,6 +1007,8 @@ inline int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_naivedatetime);
     dummy_var ^= ((int64_t) (void*) wire_optional_empty_datetime_utc);
     dummy_var ^= ((int64_t) (void*) wire_duration);
+    dummy_var ^= ((int64_t) (void*) wire_test_chrono);
+    dummy_var ^= ((int64_t) (void*) wire_test_precise_chrono);
     dummy_var ^= ((int64_t) (void*) wire_how_long_does_it_take);
     dummy_var ^= ((int64_t) (void*) wire_handle_uuid);
     dummy_var ^= ((int64_t) (void*) wire_handle_uuids);
@@ -1094,6 +1110,7 @@ inline int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_kitchen_sink_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_measure_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_message_id_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_nested_struct_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_size_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_struct_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_tree_node_0);

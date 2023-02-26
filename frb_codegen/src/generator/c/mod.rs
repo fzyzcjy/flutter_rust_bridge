@@ -56,7 +56,7 @@ pub fn generate_dummy(
 
 fn get_dummy_func(api_block_name: &str, func_names: &[String]) -> String {
     format!(
-        r#"inline int64_t {signature}(void) {{
+        r#"static int64_t {signature}(void) {{
     int64_t dummy_var = 0;
 {content}
     return dummy_var;
