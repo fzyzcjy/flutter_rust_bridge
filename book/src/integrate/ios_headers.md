@@ -54,4 +54,9 @@ Finally, use `dummy_method_to_enforce_bundling` somewhere within
 `macos/Runner/AppDelegate.swift`, as long as Xcode does not consider it dead code.
 
 # For multi-blocks
-No matter for iOS or MacOS, if there are [multi-blocks](https://cjycode.com/flutter_rust_bridge/feature/multiple_files.html), please add ALL generated block-header files in `Runner-Bridging-Header.h`, with **the same** `AppDelegate.swift` as in the single-block case. [related issue](https://github.com/fzyzcjy/flutter_rust_bridge/issues/909)
+If there are [multi-blocks](https://cjycode.com/flutter_rust_bridge/feature/multiple_files.html):
+- for iOS, just add the 1st generated block-header files in `Runner-Bridging-Header.h`.
+- for MacOS, just add the 1st generated block-header files as **Objective-C Bridging Header**.
+
+For all cases, the `AppDelegate.swift` should be the same as that in the single-block case.
+[related issue](https://github.com/fzyzcjy/)
