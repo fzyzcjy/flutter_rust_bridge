@@ -1,3 +1,7 @@
+## 1.65.1
+
+* Fix the duplicated "dummy_method_to_enforce_bundling" in C header within multi-blocks #1024 (thanks @dbsxdbsx)
+
 ## 1.65.0
 
 * Support empty structs #1071 (thanks @alexthe2)
