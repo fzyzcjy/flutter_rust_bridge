@@ -47,7 +47,7 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
     frb_codegen_multi(config, &[config.clone()], 0, all_symbols)
 }
 
-/// the `all_configs` here is used only for multi-blocks
+/// the `all_configs` here is used only for multi-blocks, because the primary block needs information from all other blocks
 pub fn frb_codegen_multi(
     config: &config::Opts,
     all_configs: &[config::Opts],
