@@ -58,7 +58,7 @@ fn main() {
 
     // generation of rust api for ffi (multi-blocks)
     let all_symbols = get_symbols_if_no_duplicates(&configs).unwrap();
-    for (config_index, _) in configs.iter().enumerate() {
+    for config_index in 0..configs.len() {
         frb_codegen_multi(&configs, config_index, &all_symbols).unwrap()
     }
 }
