@@ -21,16 +21,22 @@ fn main() {
         wasm: true,
         dart_decl_output: Some("../dart/lib/bridge_definitions.dart".into()),
         dart_format_line_length: 120,
+        // (extra) c output path
+        c_output: Some(vec![
+            // each field should contain head file name
+            "./c_output_path/c_output.h".into(),
+        ]),
+        extra_c_output_path: Some(vec!["./c_output_path_extra/".into()]),
+
         // for other options use defaults
         ..Default::default()
     };
 
     // get opts from raw opts
-    let configs = config_parse(raw_opts);
+    let all_configs = config_parse(raw_opts);
 
-    // generation of rust api for ffi
-    let all_symbols = get_symbols_if_no_duplicates(&configs).unwrap();
-    for config in configs.iter() {
-        frb_codegen(config, &all_symbols).unwrap();
-    }
+    // generation of rust api for ffi (single block)
+    let all_symbols = get_symbols_if_no_duplicates(&all_configs).unwrap();
+    assert_eq!(all_configs.len(), 1);
+    frb_codegen(&all_configs[0], &all_symbols).unwrap();
 }

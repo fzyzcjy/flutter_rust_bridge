@@ -25,7 +25,7 @@ void wire_simple_adder_1(int64_t port_, int32_t a, int32_t b);
 
 void free_WireSyncReturn(WireSyncReturn ptr);
 
-static int64_t dummy_method_to_enforce_bundling(void) {
+static int64_t dummy_method_to_enforce_bundling_ApiClass1(void) {
     int64_t dummy_var = 0;
     dummy_var ^= ((int64_t) (void*) wire_simple_adder_1);
     dummy_var ^= ((int64_t) (void*) free_WireSyncReturn);
@@ -33,5 +33,13 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) get_dart_object);
     dummy_var ^= ((int64_t) (void*) drop_dart_object);
     dummy_var ^= ((int64_t) (void*) new_dart_opaque);
+    return dummy_var;
+}
+
+#include "c_output_2.h"
+static int64_t dummy_method_to_enforce_bundling(void) {
+    int64_t dummy_var = 0;
+    dummy_var ^= ((int64_t) (void*) dummy_method_to_enforce_bundling_ApiClass1);
+    dummy_var ^= ((int64_t) (void*) dummy_method_to_enforce_bundling_ApiClass2);
     return dummy_var;
 }
