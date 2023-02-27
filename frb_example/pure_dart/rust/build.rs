@@ -37,5 +37,6 @@ fn main() {
 
     // generation of rust api for ffi (single block)
     let all_symbols = get_symbols_if_no_duplicates(&all_configs).unwrap();
+    assert_eq!(all_configs.len(), 1);
     frb_codegen(&all_configs[0], &all_symbols).unwrap();
 }

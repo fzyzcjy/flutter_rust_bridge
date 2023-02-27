@@ -44,17 +44,21 @@ pub mod utils;
 use error::*;
 
 pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Result<()> {
-    frb_codegen_multi(config, &[config.clone()], 0, all_symbols)
+    frb_codegen_multi(&[config.clone()], 0, all_symbols)
 }
 
-/// the `all_configs` here is used only for multi-blocks, because the primary block needs information from all other blocks
+/// the `all_configs` here is used only for multi-blocks, because the current block needs information from all other blocks，
+/// and `index` refers to the index of current block to deal with.
 pub fn frb_codegen_multi(
-    config: &config::Opts,
     all_configs: &[config::Opts],
     index: usize,
     all_symbols: &[String],
 ) -> anyhow::Result<()> {
-    assert_eq!(config.block_index, BlockIndex(index));
+    assert!(all_configs
+        .iter()
+        .enumerate()
+        .all(|(index, config)| config.block_index == BlockIndex(index)));
+    let config = &all_configs[index];
 
     let dart_root = config.dart_root_or_default();
     ensure_tools_available(&dart_root, config.skip_deps_check)?;

@@ -5,19 +5,19 @@ use crate::utils::{BlockIndex, PathExt};
 
 pub fn generate_dummy(
     config: &config::Opts,
-    configs: &[config::Opts],
+    all_configs: &[config::Opts],
     func_names: &[String],
     c_path_index: usize,
 ) -> String {
-    if configs.len() > 1 {
+    if all_configs.len() > 1 {
         let basic_dummy_func = get_dummy_func(&config.class_name, func_names);
         if config.block_index == BlockIndex(0) {
-            let func_names = configs
+            let func_names = all_configs
                 .iter()
                 .map(|e| get_dummy_signature(&e.class_name))
                 .collect::<Vec<_>>();
 
-            let other_headers = configs
+            let other_headers = all_configs
                 .iter()
                 .skip(1)
                 .map(|e| {
