@@ -231,7 +231,7 @@ packages:
       path: "../../../frb_dart"
       relative: true
     source: path
-    version: "1.65.1"
+    version: "1.66.0"
   freezed:
     dependency: "direct dev"
     description:
@@ -428,10 +428,10 @@ packages:
     dependency: transitive
     description:
       name: puppeteer
-      sha256: "1304d8044054a8c89df648ef12352cf840ed2d34bbfbfa03d91537c72ae0f2c7"
+      sha256: c476381713f9c70b837438835bc1f417c3829de40c04b026f6b40446ad719148
       url: "https://pub.dev"
     source: hosted
-    version: "2.22.0"
+    version: "2.23.0"
   quiver:
     dependency: transitive
     description:
