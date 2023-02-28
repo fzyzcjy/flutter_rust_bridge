@@ -61,19 +61,13 @@ pub fn frb_codegen_multi(
     index: usize,
     all_symbols: &[String],
 ) -> anyhow::Result<()> {
+    info!("Phase: Check validation for configs(s)");
     assert!(all_configs
         .iter()
         .enumerate()
         .all(|(index, config)| config.block_index == BlockIndex(index)));
     let config = &all_configs[index];
-
-    let dart_root = config.dart_root_or_default();
-    ensure_tools_available(&dart_root, config.skip_deps_check)?;
-
     info!("Picked config: {:?}", config);
-
-    let rust_output_dir = Path::new(&config.rust_output_path).parent().unwrap();
-    let dart_output_dir = Path::new(&config.dart_output_path).parent().unwrap();
 
     info!("Phase: Parse source code to AST, then to IR");
     let raw_ir_file = config.get_ir_file()?;
@@ -82,12 +76,30 @@ pub fn frb_codegen_multi(
     let ir_file = transformer::transform(raw_ir_file);
 
     info!("Phase: Generate Rust code");
+    let generated_rust = generate_rust_code(config, &ir_file)?;
+
+    info!("Phase: Generate Dart code");
+    generate_dart_code(config, all_configs, &ir_file, generated_rust, all_symbols)?;
+
+    info!("Success!");
+    Ok(())
+}
+
+fn generate_rust_code(
+    config: &Opts,
+    ir_file: &ir::IrFile,
+) -> anyhow::Result<generator::rust::Output> {
+    let (output_path, _io_output_path, _wasm_output_path) = config.get_rust_output_paths();
+
+    let rust_output_dir = Path::new(&output_path).parent().unwrap();
     fs::create_dir_all(rust_output_dir)?;
+
     let generated_rust = ir_file.generate_rust(config);
     write_rust_modules(config, &generated_rust)?;
 
-    info!("Phase: Generate Dart code");
-    let generated_dart = ir_file.generate_dart(config, &generated_rust.wasm_exports);
+    if !config.skip_add_mod_to_lib {
+        others::try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);
+    }
 
     run!(
         commands::format_rust,
@@ -99,11 +111,21 @@ pub fn frb_codegen_multi(
         )
     )?;
 
-    if !config.skip_add_mod_to_lib {
-        others::try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);
-    }
+    Ok(generated_rust)
+}
+
+fn generate_dart_code(
+    config: &Opts,
+    all_configs: &[Opts],
+    ir_file: &ir::IrFile,
+    generated_rust: generator::rust::Output,
+    all_symbols: &[String],
+) -> anyhow::Result<()> {
+    let dart_root = config.dart_root_or_default();
+    ensure_tools_available(&dart_root, config.skip_deps_check)?;
 
     info!("Phase: Generating Dart bindings for Rust");
+    // phase-step1: generate temporary c file
     let temp_dart_wire_file = tempfile::NamedTempFile::new()?;
     let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile()?;
     let exclude_symbols = generated_rust.get_exclude_symbols(all_symbols);
@@ -148,17 +170,24 @@ pub fn frb_codegen_multi(
         )?;
     }
 
-    fs::create_dir_all(dart_output_dir)?;
+    // phase-step2: generate raw dart code instance from the c file
     let generated_dart_wire_code_raw = fs::read_to_string(temp_dart_wire_file)?;
     let generated_dart_wire = extract_dart_wire_content(&modify_dart_wire_content(
         &generated_dart_wire_code_raw,
         &config.dart_wire_class_name(),
     ));
-
     sanity_check(&generated_dart_wire.body, &config.dart_wire_class_name())?;
 
+    // phase-step3: compose dart codes and write to file
+    let generated_dart = ir_file.generate_dart(config, &generated_rust.wasm_exports);
     let generated_dart_decl_all = &generated_dart.decl_code;
     let generated_dart_impl_io_wire = &generated_dart.impl_code.io + &generated_dart_wire;
+
+    let (dart_output_path, dart_io_output_path, dart_wasm_output_path) =
+        config.get_dart_output_paths();
+    let dart_output_dir = Path::new(&dart_output_path).parent().unwrap();
+    fs::create_dir_all(dart_output_dir)?;
+
     if let Some(dart_decl_output_path) = &config.dart_decl_output_path {
         write_dart_decls(
             config,
@@ -170,18 +199,18 @@ pub fn frb_codegen_multi(
         )?;
     } else if config.wasm_enabled {
         fs::write(
-            &config.dart_output_path,
+            &dart_output_path,
             (&generated_dart.file_prelude
                 + generated_dart_decl_all
                 + &generated_dart.impl_code.common)
                 .to_text(),
         )?;
         fs::write(
-            config.dart_io_output_path(),
+            &dart_io_output_path,
             (&generated_dart.file_prelude + &generated_dart_impl_io_wire).to_text(),
         )?;
         fs::write(
-            config.dart_wasm_output_path(),
+            &dart_wasm_output_path,
             (&generated_dart.file_prelude + &generated_dart.impl_code.wasm).to_text(),
         )?;
     } else {
@@ -190,7 +219,7 @@ pub fn frb_codegen_multi(
             + &generated_dart.impl_code.common
             + &generated_dart_impl_io_wire;
         out.import = out.import.lines().unique().join("\n");
-        fs::write(&config.dart_output_path, out.to_text())?;
+        fs::write(&dart_output_path, out.to_text())?;
     }
 
     info!("Phase: Running build_runner");
@@ -208,12 +237,12 @@ pub fn frb_codegen_multi(
     info!("Phase: Formatting Dart code");
     run!(
         commands::format_dart[config.dart_format_line_length],
-        &config.dart_output_path,
+        &dart_output_path,
         ?config.dart_decl_output_path,
         (
             config.wasm_enabled,
-            config.dart_wasm_output_path(),
-            config.dart_io_output_path(),
+            dart_wasm_output_path,
+            dart_io_output_path,
         ),
         (
             generated_dart.needs_freezed && config.build_runner,
@@ -221,7 +250,6 @@ pub fn frb_codegen_multi(
         )
     )?;
 
-    info!("Success!");
     Ok(())
 }
 
@@ -269,25 +297,28 @@ fn write_dart_decls(
         dart_decl_output_path,
         (&generated_dart.file_prelude + &common_import + generated_dart_decl_all).to_text(),
     )?;
+
+    let (dart_output_path, dart_io_output_path, dart_wasm_output_path) =
+        config.get_dart_output_paths();
     if config.wasm_enabled {
         fs::write(
-            &config.dart_output_path,
+            &dart_output_path,
             (&generated_dart.file_prelude + &impl_import_decl + &generated_dart.impl_code.common)
                 .to_text(),
         )?;
         fs::write(
-            config.dart_io_output_path(),
+            dart_io_output_path,
             (&generated_dart.file_prelude + &impl_import_decl + generated_dart_impl_io_wire)
                 .to_text(),
         )?;
         fs::write(
-            config.dart_wasm_output_path(),
+            dart_wasm_output_path,
             (&generated_dart.file_prelude + &impl_import_decl + &generated_dart.impl_code.wasm)
                 .to_text(),
         )?;
     } else {
         fs::write(
-            &config.dart_output_path,
+            &dart_output_path,
             (&generated_dart.file_prelude
                 + &impl_import_decl
                 + &generated_dart.impl_code.common
