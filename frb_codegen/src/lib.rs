@@ -62,7 +62,7 @@ pub fn frb_codegen_multi(
     index: usize,
     all_symbols: &[String],
 ) -> anyhow::Result<()> {
-    info!("Phase: Check validation for configs(s)");
+    info!("Phase: Validate config(s)");
     assert!(all_configs
         .iter()
         .enumerate()
