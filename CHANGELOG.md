@@ -1,3 +1,7 @@
+## 1.66.0
+
+* Implement List<DateTime>, List<Duration> #972 (thanks @Desdaemon)
+
 ## 1.65.1
 
 * Fix the duplicated "dummy_method_to_enforce_bundling" in C header within multi-blocks #1024 (thanks @dbsxdbsx)
