@@ -52,9 +52,10 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
 }
 
 /// This function is used only for cases with multi-blocks when there are
-/// more than 1 API block. And because the current block to deal with needs information
-/// from all other blocks， so `all_configs` is used here,
-/// with `index` refers to the place of the current block to deal with.
+/// more than one API block. 
+/// In addition, because the current block to deal with needs information
+/// from all other blocks, `all_configs` is used here,
+/// with `index` referring to the place of the current block to deal with.
 /// For details on how to take advantage of multi-blocks, please refers to this article: https://cjycode.com/flutter_rust_bridge/feature/multiple_files.html
 pub fn frb_codegen_multi(
     all_configs: &[config::Opts],
