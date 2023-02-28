@@ -1,6 +1,7 @@
 ## Unreleased
 
 * Refractor and refine for frb_codegen #1093 (thanks @dbsxdbsx)
+* Translate Rust method comments #1094 (thanks @Desdaemon)
 
 ## 1.66.0
 
