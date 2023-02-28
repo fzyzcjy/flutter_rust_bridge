@@ -1,6 +1,6 @@
 ## 1.66.0
 
-* Implement List<DateTime>, List<Duration> #972 (thanks @Desdaemon)
+* Implement `List<DateTime>`, `List<Duration>` #972 (thanks @Desdaemon)
 
 ## 1.65.1
 
