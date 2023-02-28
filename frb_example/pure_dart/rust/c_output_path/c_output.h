@@ -248,6 +248,11 @@ typedef struct wire_Measure {
   union MeasureKind *kind;
 } wire_Measure;
 
+typedef struct wire_int_64_list {
+  int64_t *ptr;
+  int32_t len;
+} wire_int_64_list;
+
 typedef struct wire_FeatureChrono {
   int64_t utc;
   int64_t local;
@@ -571,6 +576,10 @@ void wire_optional_empty_datetime_utc(int64_t port_, int64_t *d);
 
 void wire_duration(int64_t port_, int64_t d);
 
+void wire_handle_timestamps(int64_t port_, struct wire_int_64_list *timestamps, int64_t epoch);
+
+void wire_handle_durations(int64_t port_, struct wire_int_64_list *durations, int64_t since);
+
 void wire_test_chrono(int64_t port_);
 
 void wire_test_precise_chrono(int64_t port_);
@@ -845,6 +854,8 @@ struct wire_float_64_list *new_float_64_list_0(int32_t len);
 
 struct wire_int_32_list *new_int_32_list_0(int32_t len);
 
+struct wire_int_64_list *new_int_64_list_0(int32_t len);
+
 struct wire_int_8_list *new_int_8_list_0(int32_t len);
 
 struct wire_list_DartOpaque *new_list_DartOpaque_0(int32_t len);
@@ -1007,6 +1018,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_naivedatetime);
     dummy_var ^= ((int64_t) (void*) wire_optional_empty_datetime_utc);
     dummy_var ^= ((int64_t) (void*) wire_duration);
+    dummy_var ^= ((int64_t) (void*) wire_handle_timestamps);
+    dummy_var ^= ((int64_t) (void*) wire_handle_durations);
     dummy_var ^= ((int64_t) (void*) wire_test_chrono);
     dummy_var ^= ((int64_t) (void*) wire_test_precise_chrono);
     dummy_var ^= ((int64_t) (void*) wire_how_long_does_it_take);
@@ -1138,6 +1151,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_float_32_list_0);
     dummy_var ^= ((int64_t) (void*) new_float_64_list_0);
     dummy_var ^= ((int64_t) (void*) new_int_32_list_0);
+    dummy_var ^= ((int64_t) (void*) new_int_64_list_0);
     dummy_var ^= ((int64_t) (void*) new_int_8_list_0);
     dummy_var ^= ((int64_t) (void*) new_list_DartOpaque_0);
     dummy_var ^= ((int64_t) (void*) new_list_HideData_0);
