@@ -5,7 +5,7 @@ use crate::target::Target;
 use strum_macros::Display;
 
 #[cfg(feature = "chrono")]
-#[derive(Debug, Clone, Hash, Eq, PartialEq, Display)]
+#[derive(Debug, Clone, Copy, Hash, Eq, PartialEq, Display)]
 pub enum IrTypeTime {
     Local,
     Utc,
@@ -15,13 +15,22 @@ pub enum IrTypeTime {
 
 #[cfg(feature = "chrono")]
 impl IrTypeTime {
-    fn safe_ident(&self) -> &str {
+    #[inline]
+    pub fn safe_ident(&self) -> &str {
         match self {
             IrTypeTime::Local => "Local",
             IrTypeTime::Utc => "Utc",
             IrTypeTime::Duration => "Duration",
             IrTypeTime::Naive => "Naive",
         }
+    }
+    #[inline]
+    pub fn is_duration(&self) -> bool {
+        matches!(self, Self::Duration)
+    }
+    #[inline]
+    pub fn is_utc(&self) -> bool {
+        matches!(self, Self::Naive | Self::Utc)
     }
 }
 
@@ -39,6 +48,8 @@ pub enum IrTypeDelegate {
     },
     #[cfg(feature = "chrono")]
     Time(IrTypeTime),
+    #[cfg(feature = "chrono")]
+    TimeList(IrTypeTime),
     #[cfg(feature = "uuid")]
     Uuid,
     #[cfg(feature = "uuid")]
@@ -167,6 +178,10 @@ impl IrTypeDelegate {
             IrTypeDelegate::PrimitiveEnum { repr, .. } => IrType::Primitive(repr.clone()),
             #[cfg(feature = "chrono")]
             IrTypeDelegate::Time(_) => IrType::Primitive(IrTypePrimitive::I64),
+            #[cfg(feature = "chrono")]
+            IrTypeDelegate::TimeList(_) => IrType::PrimitiveList(IrTypePrimitiveList {
+                primitive: IrTypePrimitive::I64,
+            }),
             #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuid => IrType::PrimitiveList(IrTypePrimitiveList {
                 primitive: IrTypePrimitive::U8,
@@ -182,6 +197,11 @@ impl IrTypeDelegate {
 impl IrTypeTrait for IrTypeDelegate {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile) {
         self.get_delegate().visit_types(f, ir_file);
+
+        // extras
+        if let Self::TimeList(ir) = self {
+            IrType::Delegate(IrTypeDelegate::Time(*ir)).visit_types(f, ir_file);
+        }
     }
 
     fn safe_ident(&self) -> String {
@@ -195,6 +215,8 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.safe_ident(),
             #[cfg(feature = "chrono")]
             IrTypeDelegate::Time(ir) => format!("Chrono_{}", ir.safe_ident()),
+            #[cfg(feature = "chrono")]
+            IrTypeDelegate::TimeList(ir) => format!("Chrono_{}List", ir.safe_ident()),
             #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuid => "Uuid".to_owned(),
             #[cfg(feature = "uuid")]
@@ -214,6 +236,12 @@ impl IrTypeTrait for IrTypeDelegate {
                 IrTypeTime::Local | IrTypeTime::Utc | IrTypeTime::Naive => "DateTime".to_string(),
                 IrTypeTime::Duration => "Duration".to_string(),
             },
+            #[cfg(feature = "chrono")]
+            IrTypeDelegate::TimeList(IrTypeTime::Local | IrTypeTime::Utc | IrTypeTime::Naive) => {
+                "List<DateTime>".to_string()
+            }
+            #[cfg(feature = "chrono")]
+            IrTypeDelegate::TimeList(IrTypeTime::Duration) => "List<Duration>".to_string(),
             #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuid => "UuidValue".to_owned(),
             #[cfg(feature = "uuid")]
@@ -243,11 +271,20 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.rust_api_type(),
             #[cfg(feature = "chrono")]
             IrTypeDelegate::Time(ir) => match ir {
-                IrTypeTime::Naive => "chrono::NaiveDateTime".to_owned(),
-                IrTypeTime::Local => "chrono::DateTime::<chrono::Local>".to_owned(),
-                IrTypeTime::Utc => "chrono::DateTime::<chrono::Utc>".to_owned(),
-                IrTypeTime::Duration => "chrono::Duration".to_owned(),
-            },
+                IrTypeTime::Naive => "chrono::NaiveDateTime",
+                IrTypeTime::Local => "chrono::DateTime::<chrono::Local>",
+                IrTypeTime::Utc => "chrono::DateTime::<chrono::Utc>",
+                IrTypeTime::Duration => "chrono::Duration",
+            }
+            .to_owned(),
+            #[cfg(feature = "chrono")]
+            IrTypeDelegate::TimeList(ir) => match ir {
+                IrTypeTime::Naive => "Vec<chrono::NaiveDateTime>",
+                IrTypeTime::Local => "Vec<chrono::DateTime::<chrono::Local>>",
+                IrTypeTime::Utc => "Vec<chrono::DateTime::<chrono::Utc>>",
+                IrTypeTime::Duration => "Vec<chrono::Duration>",
+            }
+            .to_owned(),
             #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuid => "uuid::Uuid".to_owned(),
             #[cfg(feature = "uuid")]

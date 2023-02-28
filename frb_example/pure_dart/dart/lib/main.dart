@@ -655,6 +655,7 @@ void main(List<String> args) async {
       expect(resp.millisecondsSinceEpoch, date.millisecondsSinceEpoch);
       expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
     });
+
     test('DateTime<Local>', () async {
       final date = DateTime(2022, 09, 10, 20, 48, 53, 123, 456);
       final resp = await api.datetimeLocal(d: date);
@@ -667,6 +668,7 @@ void main(List<String> args) async {
       expect(resp.millisecondsSinceEpoch, date.millisecondsSinceEpoch);
       expect(resp.microsecondsSinceEpoch, date.microsecondsSinceEpoch);
     });
+
     test('NaiveDateTime', () async {
       final date = DateTime.utc(2022, 09, 10, 20, 48, 53, 123, 456);
       final resp = await api.naivedatetime(d: date);
@@ -683,10 +685,40 @@ void main(List<String> args) async {
       final resp = await api.optionalEmptyDatetimeUtc(d: null);
       expect(resp, null);
     });
+
     test('Duration', () async {
       final duration = Duration(hours: 4);
       final resp = await api.duration(d: duration);
       expect(resp.inHours, duration.inHours);
+    });
+
+    test('List<Duration>', () {
+      final expected = [
+        Duration(days: 1),
+        Duration(days: 10),
+        Duration(days: 100),
+        Duration(milliseconds: 333),
+        if (!kIsWeb) Duration(microseconds: 333)
+      ];
+      final now = DateTime.now();
+      final durations = api.handleTimestamps(
+        timestamps: expected.map(now.subtract).toList(),
+        epoch: now,
+      );
+      expect(durations, completion(expected));
+    });
+
+    test('List<DateTime>', () {
+      final expected = [
+        Duration(days: 3),
+        Duration(hours: 2),
+        Duration(seconds: 1),
+        Duration(milliseconds: 500),
+        if (!kIsWeb) Duration(microseconds: 400)
+      ];
+      final now = DateTime.now();
+      final result = api.handleDurations(durations: expected, since: now);
+      expect(result, completion(expected.map(now.subtract)));
     });
 
     test('Combined Chrono types', () async {

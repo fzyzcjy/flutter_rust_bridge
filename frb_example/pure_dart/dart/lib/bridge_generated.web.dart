@@ -32,6 +32,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  Object /* BigInt64Array */ api2wire_Chrono_DurationList(List<Duration> raw) {
+    final ans = Int64List(raw.length);
+    for (var i = 0; i < raw.length; ++i) ans[i] = api2wire_Chrono_Duration(raw[i]);
+    return api2wire_int_64_list(ans);
+  }
+
+  @protected
   Object api2wire_Chrono_Local(DateTime raw) {
     return api2wire_i64(raw.millisecondsSinceEpoch);
   }
@@ -39,6 +46,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   Object api2wire_Chrono_Naive(DateTime raw) {
     return api2wire_i64(raw.millisecondsSinceEpoch);
+  }
+
+  @protected
+  Object /* BigInt64Array */ api2wire_Chrono_NaiveList(List<DateTime> raw) {
+    final ans = Int64List(raw.length);
+    for (var i = 0; i < raw.length; ++i) ans[i] = api2wire_Chrono_Naive(raw[i]);
+    return api2wire_int_64_list(ans);
   }
 
   @protected
@@ -530,6 +544,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   Int32List api2wire_int_32_list(Int32List raw) {
     return raw;
+  }
+
+  @protected
+  Object /* BigInt64Array */ api2wire_int_64_list(Int64List raw) {
+    return raw.inner;
   }
 
   @protected
@@ -1042,6 +1061,12 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_duration(NativePortType port_, Object d);
 
+  external dynamic /* void */ wire_handle_timestamps(
+      NativePortType port_, Object /* BigInt64Array */ timestamps, Object epoch);
+
+  external dynamic /* void */ wire_handle_durations(
+      NativePortType port_, Object /* BigInt64Array */ durations, Object since);
+
   external dynamic /* void */ wire_test_chrono(NativePortType port_);
 
   external dynamic /* void */ wire_test_precise_chrono(NativePortType port_);
@@ -1411,6 +1436,12 @@ class FlutterRustBridgeExampleSingleBlockTestWire
       wasmModule.wire_optional_empty_datetime_utc(port_, d);
 
   void wire_duration(NativePortType port_, Object d) => wasmModule.wire_duration(port_, d);
+
+  void wire_handle_timestamps(NativePortType port_, Object /* BigInt64Array */ timestamps, Object epoch) =>
+      wasmModule.wire_handle_timestamps(port_, timestamps, epoch);
+
+  void wire_handle_durations(NativePortType port_, Object /* BigInt64Array */ durations, Object since) =>
+      wasmModule.wire_handle_durations(port_, durations, since);
 
   void wire_test_chrono(NativePortType port_) => wasmModule.wire_test_chrono(port_);
 

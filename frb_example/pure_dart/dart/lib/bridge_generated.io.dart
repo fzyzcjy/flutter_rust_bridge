@@ -32,6 +32,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_int_64_list> api2wire_Chrono_DurationList(List<Duration> raw) {
+    final ans = Int64List(raw.length);
+    for (var i = 0; i < raw.length; ++i) ans[i] = api2wire_Chrono_Duration(raw[i]);
+    return api2wire_int_64_list(ans);
+  }
+
+  @protected
   int api2wire_Chrono_Local(DateTime raw) {
     return api2wire_i64(raw.microsecondsSinceEpoch);
   }
@@ -39,6 +46,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   int api2wire_Chrono_Naive(DateTime raw) {
     return api2wire_i64(raw.microsecondsSinceEpoch);
+  }
+
+  @protected
+  ffi.Pointer<wire_int_64_list> api2wire_Chrono_NaiveList(List<DateTime> raw) {
+    final ans = Int64List(raw.length);
+    for (var i = 0; i < raw.length; ++i) ans[i] = api2wire_Chrono_Naive(raw[i]);
+    return api2wire_int_64_list(ans);
   }
 
   @protected
@@ -493,6 +507,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   ffi.Pointer<wire_int_32_list> api2wire_int_32_list(Int32List raw) {
     final ans = inner.new_int_32_list_0(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_int_64_list> api2wire_int_64_list(Int64List raw) {
+    final ans = inner.new_int_64_list_0(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw.inner);
     return ans;
   }
 
@@ -2437,6 +2458,42 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_durationPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>('wire_duration');
   late final _wire_duration = _wire_durationPtr.asFunction<void Function(int, int)>();
 
+  void wire_handle_timestamps(
+    int port_,
+    ffi.Pointer<wire_int_64_list> timestamps,
+    int epoch,
+  ) {
+    return _wire_handle_timestamps(
+      port_,
+      timestamps,
+      epoch,
+    );
+  }
+
+  late final _wire_handle_timestampsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_int_64_list>, ffi.Int64)>>(
+          'wire_handle_timestamps');
+  late final _wire_handle_timestamps =
+      _wire_handle_timestampsPtr.asFunction<void Function(int, ffi.Pointer<wire_int_64_list>, int)>();
+
+  void wire_handle_durations(
+    int port_,
+    ffi.Pointer<wire_int_64_list> durations,
+    int since,
+  ) {
+    return _wire_handle_durations(
+      port_,
+      durations,
+      since,
+    );
+  }
+
+  late final _wire_handle_durationsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_int_64_list>, ffi.Int64)>>(
+          'wire_handle_durations');
+  late final _wire_handle_durations =
+      _wire_handle_durationsPtr.asFunction<void Function(int, ffi.Pointer<wire_int_64_list>, int)>();
+
   void wire_test_chrono(
     int port_,
   ) {
@@ -3993,6 +4050,18 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_int_32_list> Function(ffi.Int32)>>('new_int_32_list_0');
   late final _new_int_32_list_0 = _new_int_32_list_0Ptr.asFunction<ffi.Pointer<wire_int_32_list> Function(int)>();
 
+  ffi.Pointer<wire_int_64_list> new_int_64_list_0(
+    int len,
+  ) {
+    return _new_int_64_list_0(
+      len,
+    );
+  }
+
+  late final _new_int_64_list_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_int_64_list> Function(ffi.Int32)>>('new_int_64_list_0');
+  late final _new_int_64_list_0 = _new_int_64_list_0Ptr.asFunction<ffi.Pointer<wire_int_64_list> Function(int)>();
+
   ffi.Pointer<wire_int_8_list> new_int_8_list_0(
     int len,
   ) {
@@ -4798,6 +4867,13 @@ class wire_Measure extends ffi.Struct {
   external int tag;
 
   external ffi.Pointer<MeasureKind> kind;
+}
+
+class wire_int_64_list extends ffi.Struct {
+  external ffi.Pointer<ffi.Int64> ptr;
+
+  @ffi.Int32()
+  external int len;
 }
 
 class wire_FeatureChrono extends ffi.Struct {

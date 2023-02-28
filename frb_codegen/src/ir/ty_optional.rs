@@ -59,9 +59,11 @@ impl IrTypeTrait for IrTypeOptional {
             format!("Option<{}>", self.inner.rust_wire_type(target))
         }
     }
+
     fn rust_api_type(&self) -> String {
         format!("Option<{}>", self.inner.rust_api_type())
     }
+
     fn dart_wire_type(&self, target: Target) -> String {
         if target.is_wasm() {
             format!("{}?", self.inner.dart_wire_type(target))
@@ -69,9 +71,11 @@ impl IrTypeTrait for IrTypeOptional {
             self.inner.dart_wire_type(target)
         }
     }
+
     fn dart_api_type(&self) -> String {
         format!("{}?", self.inner.dart_api_type())
     }
+
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
         !target.is_wasm() || self.inner.rust_wire_is_pointer(target)
     }

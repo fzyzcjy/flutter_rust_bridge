@@ -1146,6 +1146,42 @@ fn wire_duration_impl(port_: MessagePort, d: impl Wire2Api<chrono::Duration> + U
         },
     )
 }
+fn wire_handle_timestamps_impl(
+    port_: MessagePort,
+    timestamps: impl Wire2Api<Vec<chrono::NaiveDateTime>> + UnwindSafe,
+    epoch: impl Wire2Api<chrono::NaiveDateTime> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_timestamps",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_timestamps = timestamps.wire2api();
+            let api_epoch = epoch.wire2api();
+            move |task_callback| Ok(handle_timestamps(api_timestamps, api_epoch))
+        },
+    )
+}
+fn wire_handle_durations_impl(
+    port_: MessagePort,
+    durations: impl Wire2Api<Vec<chrono::Duration>> + UnwindSafe,
+    since: impl Wire2Api<chrono::DateTime<chrono::Local>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "handle_durations",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_durations = durations.wire2api();
+            let api_since = since.wire2api();
+            move |task_callback| Ok(handle_durations(api_durations, api_since))
+        },
+    )
+}
 fn wire_test_chrono_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -2247,6 +2283,7 @@ impl Wire2Api<chrono::NaiveDateTime> for i64 {
         chrono::NaiveDateTime::from_timestamp_opt(s, ns).expect("invalid or out-of-range datetime")
     }
 }
+
 impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
     fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
         let Timestamp { s, ns } = wire2api_timestamp(self);

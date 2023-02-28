@@ -997,6 +997,23 @@ pub fn duration(d: chrono::Duration) -> chrono::Duration {
     d
 }
 
+pub fn handle_timestamps(
+    timestamps: Vec<chrono::NaiveDateTime>,
+    epoch: chrono::NaiveDateTime,
+) -> Vec<chrono::Duration> {
+    timestamps
+        .into_iter()
+        .map(|ts| epoch.signed_duration_since(ts))
+        .collect()
+}
+
+pub fn handle_durations(
+    durations: Vec<chrono::Duration>,
+    since: chrono::DateTime<chrono::Local>,
+) -> Vec<chrono::DateTime<chrono::Local>> {
+    durations.into_iter().map(|dur| since - dur).collect()
+}
+
 pub struct TestChrono {
     pub dt: Option<chrono::DateTime<chrono::Utc>>,
     pub dt2: Option<chrono::NaiveDateTime>,
