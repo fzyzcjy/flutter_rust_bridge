@@ -830,9 +830,11 @@ pub struct Log2 {
 }
 
 impl ConcatenateWith {
+    /// Documentation on a static method
     pub fn new(a: String) -> ConcatenateWith {
         ConcatenateWith { a }
     }
+    /// Documentation on an instance method
     pub fn concatenate(&self, b: String) -> String {
         format!("{}{b}", self.a)
     }

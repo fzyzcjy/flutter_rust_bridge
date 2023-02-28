@@ -2,6 +2,7 @@ use super::*;
 
 #[derive(Debug)]
 pub(crate) struct GeneratedApiMethod {
+    pub comments: String,
     pub signature: String,
     pub implementation: String,
 }

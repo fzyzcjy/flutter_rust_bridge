@@ -600,10 +600,12 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
 
+  /// Documentation on a static method
   Future<ConcatenateWith> newStaticMethodConcatenateWith({required String a, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kNewStaticMethodConcatenateWithConstMeta;
 
+  /// Documentation on an instance method
   Future<String> concatenateMethodConcatenateWith({required ConcatenateWith that, required String b, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kConcatenateMethodConcatenateWithConstMeta;
@@ -919,10 +921,12 @@ class ConcatenateWith {
     required this.a,
   });
 
+  /// Documentation on a static method
   static Future<ConcatenateWith> newConcatenateWith(
           {required FlutterRustBridgeExampleSingleBlockTest bridge, required String a, dynamic hint}) =>
       bridge.newStaticMethodConcatenateWith(a: a, hint: hint);
 
+  /// Documentation on an instance method
   Future<String> concatenate({required String b, dynamic hint}) => bridge.concatenateMethodConcatenateWith(
         that: this,
         b: b,
