@@ -176,10 +176,10 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                                     // If no split, default values are not valid.
                                     let default = split
                                         .is_some()
-                                        .then(|| field.field_default())
+                                        .then(|| field.field_default(true))
                                         .unwrap_or_default();
                                     format!(
-                                        "{comments}{} {} {default},",
+                                        "{comments} {default} {} {},",
                                         field.ty.dart_api_type(),
                                         field.name.dart_style(),
                                         comments = dart_comments(&field.comments),
@@ -201,12 +201,12 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                                 .iter()
                                 .map(|field| {
                                     format!(
-                                        "{comments}{required}{} {} {default},",
+                                        "{comments} {default} {required}{} {} ,",
                                         field.ty.dart_api_type(),
                                         field.name.dart_style(),
                                         required = field.required_modifier(),
                                         comments = dart_comments(&field.comments),
-                                        default = field.field_default(),
+                                        default = field.field_default(true),
                                     )
                                 })
                                 .collect::<Vec<_>>();

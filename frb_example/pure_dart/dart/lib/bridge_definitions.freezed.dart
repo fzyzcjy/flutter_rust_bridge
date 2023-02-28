@@ -2259,10 +2259,11 @@ class __$$KitchenSink_PrimitivesCopyWithImpl<$Res> extends _$KitchenSinkCopyWith
 /// @nodoc
 
 class _$KitchenSink_Primitives implements KitchenSink_Primitives {
-  const _$KitchenSink_Primitives({required this.int32, required this.float64, required this.boolean});
+  const _$KitchenSink_Primitives({this.int32 = -1, required this.float64, required this.boolean});
 
   /// Dart field comment
   @override
+  @JsonKey()
   final int int32;
   @override
   final double float64;
@@ -2381,10 +2382,8 @@ class _$KitchenSink_Primitives implements KitchenSink_Primitives {
 }
 
 abstract class KitchenSink_Primitives implements KitchenSink {
-  const factory KitchenSink_Primitives(
-      {required final int int32,
-      required final double float64,
-      required final bool boolean}) = _$KitchenSink_Primitives;
+  const factory KitchenSink_Primitives({final int int32, required final double float64, required final bool boolean}) =
+      _$KitchenSink_Primitives;
 
   /// Dart field comment
   int get int32;

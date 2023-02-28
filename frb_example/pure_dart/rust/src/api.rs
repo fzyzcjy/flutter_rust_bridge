@@ -568,8 +568,8 @@ pub enum KitchenSink {
     Empty,
     #[frb(unimpl_variant_attr)]
     Primitives {
-        #[frb(unimpl_field_attr)]
         /// Dart field comment
+        #[frb(default = -1)]
         int32: i32,
         #[frb(unimpl_deprecated)]
         float64: f64,

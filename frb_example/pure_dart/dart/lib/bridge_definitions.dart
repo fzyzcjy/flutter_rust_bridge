@@ -1142,7 +1142,7 @@ class KitchenSink with _$KitchenSink {
   const factory KitchenSink.empty() = KitchenSink_Empty;
   const factory KitchenSink.primitives({
     /// Dart field comment
-    required int int32,
+    @Default(-1) int int32,
     required double float64,
     required bool boolean,
   }) = KitchenSink_Primitives;
