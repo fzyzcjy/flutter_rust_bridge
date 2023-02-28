@@ -52,7 +52,7 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
 }
 
 /// This function is used only for cases with multi-blocks when there are
-/// more than one API block. 
+/// more than one API block.
 /// In addition, because the current block to deal with needs information
 /// from all other blocks, `all_configs` is used here,
 /// with `index` referring to the place of the current block to deal with.
@@ -90,9 +90,9 @@ fn generate_rust_code(
     config: &Opts,
     ir_file: &ir::IrFile,
 ) -> anyhow::Result<generator::rust::Output> {
-    let (output_path, _io_output_path, _wasm_output_path) = config.get_rust_output_paths();
+    let rust_output_paths = config.get_rust_output_paths();
 
-    let rust_output_dir = Path::new(&output_path).parent().unwrap();
+    let rust_output_dir = Path::new(&rust_output_paths.base_path).parent().unwrap();
     fs::create_dir_all(rust_output_dir)?;
 
     let generated_rust = ir_file.generate_rust(config);
@@ -184,9 +184,8 @@ fn generate_dart_code(
     let generated_dart_decl_all = &generated_dart.decl_code;
     let generated_dart_impl_io_wire = &generated_dart.impl_code.io + &generated_dart_wire;
 
-    let (dart_output_path, dart_io_output_path, dart_wasm_output_path) =
-        config.get_dart_output_paths();
-    let dart_output_dir = Path::new(&dart_output_path).parent().unwrap();
+    let dart_output_paths = config.get_dart_output_paths();
+    let dart_output_dir = Path::new(&dart_output_paths.base_path).parent().unwrap();
     fs::create_dir_all(dart_output_dir)?;
 
     if let Some(dart_decl_output_path) = &config.dart_decl_output_path {
@@ -200,18 +199,18 @@ fn generate_dart_code(
         )?;
     } else if config.wasm_enabled {
         fs::write(
-            &dart_output_path,
+            &dart_output_paths.base_path,
             (&generated_dart.file_prelude
                 + generated_dart_decl_all
                 + &generated_dart.impl_code.common)
                 .to_text(),
         )?;
         fs::write(
-            &dart_io_output_path,
+            &dart_output_paths.io_path,
             (&generated_dart.file_prelude + &generated_dart_impl_io_wire).to_text(),
         )?;
         fs::write(
-            &dart_wasm_output_path,
+            &dart_output_paths.wasm_path,
             (&generated_dart.file_prelude + &generated_dart.impl_code.wasm).to_text(),
         )?;
     } else {
@@ -220,7 +219,7 @@ fn generate_dart_code(
             + &generated_dart.impl_code.common
             + &generated_dart_impl_io_wire;
         out.import = out.import.lines().unique().join("\n");
-        fs::write(&dart_output_path, out.to_text())?;
+        fs::write(&dart_output_paths.base_path, out.to_text())?;
     }
 
     info!("Phase: Running build_runner");
@@ -238,12 +237,12 @@ fn generate_dart_code(
     info!("Phase: Formatting Dart code");
     run!(
         commands::format_dart[config.dart_format_line_length],
-        &dart_output_path,
+        &dart_output_paths.base_path,
         ?config.dart_decl_output_path,
         (
             config.wasm_enabled,
-            dart_wasm_output_path,
-            dart_io_output_path,
+            dart_output_paths.wasm_path,
+            dart_output_paths.io_path,
         ),
         (
             generated_dart.needs_freezed && config.build_runner,
@@ -299,27 +298,26 @@ fn write_dart_decls(
         (&generated_dart.file_prelude + &common_import + generated_dart_decl_all).to_text(),
     )?;
 
-    let (dart_output_path, dart_io_output_path, dart_wasm_output_path) =
-        config.get_dart_output_paths();
+    let dart_output_paths = config.get_dart_output_paths();
     if config.wasm_enabled {
         fs::write(
-            &dart_output_path,
+            &dart_output_paths.base_path,
             (&generated_dart.file_prelude + &impl_import_decl + &generated_dart.impl_code.common)
                 .to_text(),
         )?;
         fs::write(
-            dart_io_output_path,
+            dart_output_paths.io_path,
             (&generated_dart.file_prelude + &impl_import_decl + generated_dart_impl_io_wire)
                 .to_text(),
         )?;
         fs::write(
-            dart_wasm_output_path,
+            dart_output_paths.wasm_path,
             (&generated_dart.file_prelude + &impl_import_decl + &generated_dart.impl_code.wasm)
                 .to_text(),
         )?;
     } else {
         fs::write(
-            &dart_output_path,
+            &dart_output_paths.base_path,
             (&generated_dart.file_prelude
                 + &impl_import_decl
                 + &generated_dart.impl_code.common

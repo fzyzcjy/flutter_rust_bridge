@@ -552,21 +552,27 @@ impl Opts {
         .with_extension("freezed.dart")
     }
 
-    pub fn get_rust_output_paths(&self) -> (PathBuf, PathBuf, PathBuf) {
-        (
-            PathBuf::from(self.rust_output_path.clone()),
-            self.rust_io_output_path(),
-            self.rust_wasm_output_path(),
-        )
+    pub fn get_rust_output_paths(&self) -> PathForGeneration {
+        PathForGeneration {
+            base_path: PathBuf::from(self.rust_output_path.clone()),
+            io_path: self.rust_io_output_path(),
+            wasm_path: self.rust_wasm_output_path(),
+        }
     }
 
-    pub fn get_dart_output_paths(&self) -> (PathBuf, PathBuf, PathBuf) {
-        (
-            PathBuf::from(self.dart_output_path.clone()),
-            self.dart_io_output_path(),
-            self.dart_wasm_output_path(),
-        )
+    pub fn get_dart_output_paths(&self) -> PathForGeneration {
+        PathForGeneration {
+            base_path: PathBuf::from(self.dart_output_path.clone()),
+            io_path: self.dart_io_output_path(),
+            wasm_path: self.dart_wasm_output_path(),
+        }
     }
+}
+
+pub struct PathForGeneration {
+    pub base_path: PathBuf,
+    pub io_path: PathBuf,
+    pub wasm_path: PathBuf,
 }
 
 #[cfg(test)]
