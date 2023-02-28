@@ -1,3 +1,7 @@
+## Unreleased
+
+* Refractor and refine for frb_codegen #1093 (thanks @dbsxdbsx)
+
 ## 1.66.0
 
 * Implement `List<DateTime>`, `List<Duration>` #972 (thanks @Desdaemon)
