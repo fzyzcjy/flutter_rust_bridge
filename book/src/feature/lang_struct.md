@@ -12,6 +12,8 @@ Tuple structs `struct Foo(A, B)` are translated as `class Foo { A field0; B fiel
 
 By adding `#[frb(non_final)]` to a field of struct, the corresponding field in Dart will be non-final. By default, we make all generated fields final because of Rust's philosophy - immutable by default.
 
+Unless a field has been annotated with `#[frb(non_final)]`, generated classes will also be const-constructible.
+
 ## Dart metadata annotations
 
 You can add dart metadata annotations using `dart_metadata` parameter in `frb` macro.
