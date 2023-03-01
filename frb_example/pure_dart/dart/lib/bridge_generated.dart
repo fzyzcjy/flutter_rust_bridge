@@ -2944,8 +2944,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         );
       case 2:
         return KitchenSink_Nested(
-          _wire2api_box_kitchen_sink(raw[1]),
-          _wire2api_i32(raw[2]),
+          _wire2api_i32(raw[1]),
+          _wire2api_box_kitchen_sink(raw[2]),
         );
       case 3:
         return KitchenSink_Optional(

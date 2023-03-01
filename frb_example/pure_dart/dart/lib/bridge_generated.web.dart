@@ -565,7 +565,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       return [1, api2wire_i32(raw.int32), api2wire_f64(raw.float64), api2wire_bool(raw.boolean)];
     }
     if (raw is KitchenSink_Nested) {
-      return [2, api2wire_box_kitchen_sink(raw.field0), api2wire_i32(raw.field1)];
+      return [2, api2wire_i32(raw.field0), api2wire_box_kitchen_sink(raw.field1)];
     }
     if (raw is KitchenSink_Optional) {
       return [3, api2wire_opt_box_autoadd_i32(raw.field0), api2wire_opt_box_autoadd_i32(raw.field1)];

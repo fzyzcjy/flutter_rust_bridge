@@ -1147,20 +1147,20 @@ class KitchenSink with _$KitchenSink {
     required bool boolean,
   }) = KitchenSink_Primitives;
   const factory KitchenSink.nested(
-    KitchenSink field0,
-    int field1,
-  ) = KitchenSink_Nested;
+    int field0, [
+    @Default(const KitchenSink.empty()) KitchenSink field1,
+  ]) = KitchenSink_Nested;
   const factory KitchenSink.optional([
     /// Comment on anonymous field
-    int? field0,
+    @Default(-1) int? field0,
     int? field1,
   ]) = KitchenSink_Optional;
   const factory KitchenSink.buffer(
     Uint8List field0,
   ) = KitchenSink_Buffer;
-  const factory KitchenSink.enums(
-    Weekdays field0,
-  ) = KitchenSink_Enums;
+  const factory KitchenSink.enums([
+    @Default(Weekdays.Sunday) Weekdays field0,
+  ]) = KitchenSink_Enums;
 }
 
 class Log {

@@ -1127,8 +1127,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       return;
     }
     if (apiObj is KitchenSink_Nested) {
-      var pre_field0 = api2wire_box_kitchen_sink(apiObj.field0);
-      var pre_field1 = api2wire_i32(apiObj.field1);
+      var pre_field0 = api2wire_i32(apiObj.field0);
+      var pre_field1 = api2wire_box_kitchen_sink(apiObj.field1);
       wireObj.tag = 2;
       wireObj.kind = inner.inflate_KitchenSink_Nested();
       wireObj.kind.ref.Nested.ref.field0 = pre_field0;
@@ -4717,10 +4717,10 @@ class wire_KitchenSink_Primitives extends ffi.Struct {
 }
 
 class wire_KitchenSink_Nested extends ffi.Struct {
-  external ffi.Pointer<wire_KitchenSink> field0;
-
   @ffi.Int32()
-  external int field1;
+  external int field0;
+
+  external ffi.Pointer<wire_KitchenSink> field1;
 }
 
 class wire_KitchenSink extends ffi.Struct {

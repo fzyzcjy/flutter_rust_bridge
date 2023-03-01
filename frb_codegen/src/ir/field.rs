@@ -38,4 +38,9 @@ impl IrField {
             })
             .unwrap_or_default()
     }
+
+    #[inline]
+    pub fn is_optional(&self) -> bool {
+        matches!(&self.ty, IrType::Optional(_)) || self.default.is_some()
+    }
 }

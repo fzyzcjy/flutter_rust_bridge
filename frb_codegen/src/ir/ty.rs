@@ -148,15 +148,15 @@ pub trait IrTypeTrait {
     }
 }
 
-pub fn optional_boundary_index(types: &[&IrType]) -> Option<usize> {
-    types
+pub fn optional_boundary_index(fields: &[IrField]) -> Option<usize> {
+    fields
         .iter()
         .enumerate()
-        .find(|ty| matches!(ty.1, Optional(_)))
+        .find(|(_, field)| field.is_optional())
         .and_then(|(idx, _)| {
-            types[idx..]
+            fields[idx..]
                 .iter()
-                .all(|ty| matches!(ty, Optional(_)))
+                .all(|field| field.is_optional())
                 .then_some(idx)
         })
 }

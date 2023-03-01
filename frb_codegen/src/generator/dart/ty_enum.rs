@@ -168,8 +168,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                             fields,
                             ..
                         }) => {
-                            let types = fields.iter().map(|field| &field.ty).collect::<Vec<_>>();
-                            let split = optional_boundary_index(&types);
+                            let split = optional_boundary_index(fields);
                             let types = fields
                                 .iter()
                                 .map(|field| {

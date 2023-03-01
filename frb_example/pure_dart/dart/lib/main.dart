@@ -400,8 +400,8 @@ void main(List<String> args) async {
       KitchenSink_Enums(Weekdays.Tuesday),
     );
     expect(
-      await api.handleEnumStruct(val: KitchenSink_Nested(KitchenSink_Empty(), 0)),
-      KitchenSink_Nested(KitchenSink_Empty(), 1),
+      await api.handleEnumStruct(val: const KitchenSink.nested(0, KitchenSink.empty())),
+      const KitchenSink.nested(1, KitchenSink.empty()),
     );
   });
 
