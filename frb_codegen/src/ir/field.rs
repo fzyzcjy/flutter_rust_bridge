@@ -21,8 +21,8 @@ impl IrField {
     pub fn field_default(&self, freezed: bool) -> String {
         self.default
             .as_ref()
-            .map(|default| {
-                let default = match default {
+            .map(|r#default| {
+                let r#default = match r#default {
                     DefaultValues::Str(lit)
                         if !matches!(&self.ty, IrType::Delegate(IrTypeDelegate::String)) =>
                     {
