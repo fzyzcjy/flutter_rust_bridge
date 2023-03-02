@@ -157,6 +157,7 @@ More specifically, thanks for all these contributions:
 * [Demezy](https://github.com/Demezy): Mention troubleshooting.
 * [Syndim](https://github.com/Syndim): Add a bracket to box.
 * [TENX-S](https://github.com/TENX-S): Improve doc. Reproduce a bug.
+* [polypixeldev](https://github.com/polypixeldev): Improve doc.
 * [CicadaCinema](https://github.com/CicadaCinema): Bump version. Improve doc.
 * [w1th0utnam3](https://github.com/w1th0utnam3): Improve message.
 * [vincent-herlemont](https://github.com/vincent-herlemont): Loosen version.
