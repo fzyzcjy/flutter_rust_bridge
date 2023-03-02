@@ -2,6 +2,7 @@
 
 * Refractor and refine for frb_codegen #1093 (thanks @dbsxdbsx)
 * Translate Rust method comments #1094 (thanks @Desdaemon)
+* Add documentation for Rust versions 1.68 and above with the latest Android NDK #1096 (thanks @polypixeldev)
 
 ## 1.66.0
 
