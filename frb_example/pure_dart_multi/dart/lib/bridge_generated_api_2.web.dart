@@ -18,6 +18,45 @@ class ApiClass2Platform extends FlutterRustBridgeBase<ApiClass2Wire> with Flutte
 
 // Section: api2wire
 
+  @protected
+  String api2wire_String(String raw) {
+    return raw;
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_only_for_api_2_struct(OnlyForApi2Struct raw) {
+    return api2wire_only_for_api_2_struct(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_shared_struct(SharedStruct raw) {
+    return api2wire_shared_struct(raw);
+  }
+
+  @protected
+  Object api2wire_i64(int raw) {
+    return castNativeBigInt(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_only_for_api_2_struct(OnlyForApi2Struct raw) {
+    return [api2wire_i64(raw.id), api2wire_f64(raw.num), api2wire_String(raw.name)];
+  }
+
+  @protected
+  List<dynamic> api2wire_shared_struct(SharedStruct raw) {
+    return [api2wire_i32(raw.id), api2wire_f64(raw.num), api2wire_String(raw.name)];
+  }
+
+  @protected
+  Object api2wire_u64(int raw) {
+    return castNativeBigInt(raw);
+  }
+
+  @protected
+  Uint8List api2wire_uint_8_list(Uint8List raw) {
+    return raw;
+  }
 // Section: finalizer
 }
 
@@ -31,7 +70,15 @@ external ApiClass2WasmModule get wasmModule;
 class ApiClass2WasmModule implements WasmModule {
   external Object /* Promise */ call([String? moduleName]);
   external ApiClass2WasmModule bind(dynamic thisArg, String moduleName);
-  external dynamic /* void */ wire_simple_adder_2(NativePortType port_, int a, int b);
+  external dynamic /* void */ wire_test_inbuilt_type_2(NativePortType port_, int a, double b);
+
+  external dynamic /* void */ wire_test_string_2(NativePortType port_, String s, Object i);
+
+  external dynamic /* void */ wire_test_shared_struct_2(NativePortType port_, List<dynamic> custom, String s, int i);
+
+  external dynamic /* void */ wire_test_unique_struct_2(NativePortType port_, List<dynamic> custom, String s, Object i);
+
+  external dynamic /* void */ wire_test_cross_shared_struct_2(NativePortType port_, String name);
 }
 
 // Section: WASM wire connector
@@ -39,5 +86,17 @@ class ApiClass2WasmModule implements WasmModule {
 class ApiClass2Wire extends FlutterRustBridgeWasmWireBase<ApiClass2WasmModule> {
   ApiClass2Wire(FutureOr<WasmModule> module) : super(WasmModule.cast<ApiClass2WasmModule>(module));
 
-  void wire_simple_adder_2(NativePortType port_, int a, int b) => wasmModule.wire_simple_adder_2(port_, a, b);
+  void wire_test_inbuilt_type_2(NativePortType port_, int a, double b) =>
+      wasmModule.wire_test_inbuilt_type_2(port_, a, b);
+
+  void wire_test_string_2(NativePortType port_, String s, Object i) => wasmModule.wire_test_string_2(port_, s, i);
+
+  void wire_test_shared_struct_2(NativePortType port_, List<dynamic> custom, String s, int i) =>
+      wasmModule.wire_test_shared_struct_2(port_, custom, s, i);
+
+  void wire_test_unique_struct_2(NativePortType port_, List<dynamic> custom, String s, Object i) =>
+      wasmModule.wire_test_unique_struct_2(port_, custom, s, i);
+
+  void wire_test_cross_shared_struct_2(NativePortType port_, String name) =>
+      wasmModule.wire_test_cross_shared_struct_2(port_, name);
 }

@@ -16,10 +16,56 @@ import 'package:uuid/uuid.dart';
 import 'bridge_generated_api_1.io.dart' if (dart.library.html) 'bridge_generated_api_1.web.dart';
 
 abstract class ApiClass1 {
-  /// Documentation on a simple adder function.
-  Future<int> simpleAdder1({required int a, required int b, dynamic hint});
+  Future<double> testInbuiltType1({required int a, required double b, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kSimpleAdder1ConstMeta;
+  FlutterRustBridgeTaskConstMeta get kTestInbuiltType1ConstMeta;
+
+  Future<String> testString1({required String s, required int i, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestString1ConstMeta;
+
+  Future<SharedStruct> testSharedStruct1(
+      {required SharedStruct custom, required String s, required int i, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestSharedStruct1ConstMeta;
+
+  Future<OnlyForApi1Struct> testUniqueStruct1(
+      {required OnlyForApi1Struct custom, required String s, required int i, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestUniqueStruct1ConstMeta;
+
+  Future<String> testCrossSharedStruct1({required CrossSharedStruct custom, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestCrossSharedStruct1ConstMeta;
+}
+
+class CrossSharedStruct {
+  final String name;
+  CrossSharedStruct({
+    required this.name,
+  });
+}
+
+class OnlyForApi1Struct {
+  final int id;
+  final double num;
+  final String name;
+  OnlyForApi1Struct({
+    required this.id,
+    required this.num,
+    required this.name,
+  });
+}
+
+class SharedStruct {
+  final int id;
+  final double num;
+  final String name;
+  SharedStruct({
+    required this.id,
+    required this.num,
+    required this.name,
+  });
 }
 
 class ApiClass1Impl implements ApiClass1 {
@@ -29,21 +75,92 @@ class ApiClass1Impl implements ApiClass1 {
   /// Only valid on web/WASM platforms.
   factory ApiClass1Impl.wasm(FutureOr<WasmModule> module) => ApiClass1Impl(module as ExternalLibrary);
   ApiClass1Impl.raw(this._platform);
-  Future<int> simpleAdder1({required int a, required int b, dynamic hint}) {
+  Future<double> testInbuiltType1({required int a, required double b, dynamic hint}) {
     var arg0 = api2wire_i32(a);
-    var arg1 = api2wire_i32(b);
+    var arg1 = api2wire_f32(b);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_simple_adder_1(port_, arg0, arg1),
-      parseSuccessData: _wire2api_i32,
-      constMeta: kSimpleAdder1ConstMeta,
+      callFfi: (port_) => _platform.inner.wire_test_inbuilt_type_1(port_, arg0, arg1),
+      parseSuccessData: _wire2api_f32,
+      constMeta: kTestInbuiltType1ConstMeta,
       argValues: [a, b],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kSimpleAdder1ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "simple_adder_1",
+  FlutterRustBridgeTaskConstMeta get kTestInbuiltType1ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_inbuilt_type_1",
         argNames: ["a", "b"],
+      );
+
+  Future<String> testString1({required String s, required int i, dynamic hint}) {
+    var arg0 = _platform.api2wire_String(s);
+    var arg1 = _platform.api2wire_u64(i);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_string_1(port_, arg0, arg1),
+      parseSuccessData: _wire2api_String,
+      constMeta: kTestString1ConstMeta,
+      argValues: [s, i],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestString1ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_string_1",
+        argNames: ["s", "i"],
+      );
+
+  Future<SharedStruct> testSharedStruct1(
+      {required SharedStruct custom, required String s, required int i, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_shared_struct(custom);
+    var arg1 = _platform.api2wire_String(s);
+    var arg2 = api2wire_i32(i);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_shared_struct_1(port_, arg0, arg1, arg2),
+      parseSuccessData: _wire2api_shared_struct,
+      constMeta: kTestSharedStruct1ConstMeta,
+      argValues: [custom, s, i],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestSharedStruct1ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_shared_struct_1",
+        argNames: ["custom", "s", "i"],
+      );
+
+  Future<OnlyForApi1Struct> testUniqueStruct1(
+      {required OnlyForApi1Struct custom, required String s, required int i, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_only_for_api_1_struct(custom);
+    var arg1 = _platform.api2wire_String(s);
+    var arg2 = api2wire_i16(i);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_unique_struct_1(port_, arg0, arg1, arg2),
+      parseSuccessData: _wire2api_only_for_api_1_struct,
+      constMeta: kTestUniqueStruct1ConstMeta,
+      argValues: [custom, s, i],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestUniqueStruct1ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_unique_struct_1",
+        argNames: ["custom", "s", "i"],
+      );
+
+  Future<String> testCrossSharedStruct1({required CrossSharedStruct custom, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_cross_shared_struct(custom);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_cross_shared_struct_1(port_, arg0),
+      parseSuccessData: _wire2api_String,
+      constMeta: kTestCrossSharedStruct1ConstMeta,
+      argValues: [custom],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestCrossSharedStruct1ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_cross_shared_struct_1",
+        argNames: ["custom"],
       );
 
   void dispose() {
@@ -51,15 +168,80 @@ class ApiClass1Impl implements ApiClass1 {
   }
 // Section: wire2api
 
+  String _wire2api_String(dynamic raw) {
+    return raw as String;
+  }
+
+  double _wire2api_f32(dynamic raw) {
+    return raw as double;
+  }
+
+  double _wire2api_f64(dynamic raw) {
+    return raw as double;
+  }
+
+  int _wire2api_i16(dynamic raw) {
+    return raw as int;
+  }
+
   int _wire2api_i32(dynamic raw) {
     return raw as int;
+  }
+
+  OnlyForApi1Struct _wire2api_only_for_api_1_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3) throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return OnlyForApi1Struct(
+      id: _wire2api_i16(arr[0]),
+      num: _wire2api_f64(arr[1]),
+      name: _wire2api_String(arr[2]),
+    );
+  }
+
+  SharedStruct _wire2api_shared_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3) throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return SharedStruct(
+      id: _wire2api_i32(arr[0]),
+      num: _wire2api_f64(arr[1]),
+      name: _wire2api_String(arr[2]),
+    );
+  }
+
+  int _wire2api_u8(dynamic raw) {
+    return raw as int;
+  }
+
+  Uint8List _wire2api_uint_8_list(dynamic raw) {
+    return raw as Uint8List;
   }
 }
 
 // Section: api2wire
 
 @protected
+double api2wire_f32(double raw) {
+  return raw;
+}
+
+@protected
+double api2wire_f64(double raw) {
+  return raw;
+}
+
+@protected
+int api2wire_i16(int raw) {
+  return raw;
+}
+
+@protected
 int api2wire_i32(int raw) {
   return raw;
 }
+
+@protected
+int api2wire_u8(int raw) {
+  return raw;
+}
+
 // Section: finalizer
