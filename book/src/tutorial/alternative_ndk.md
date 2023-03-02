@@ -1,7 +1,7 @@
 # Alternative NDK setup
 
-You can alternatively use the latest version of the Android NDK which is greater than 22.
-However, this requires a hack to prevent the [unable to find library -lgcc error].
+This is only needed if you wish to use a version of the Android NDK higher than version 22 with versions of Rust that are lower than version 1.68.
+This guide details how to prevent the [unable to find library -lgcc error].
 
 ## Android NDK
 Install the latest NDK:
