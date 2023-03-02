@@ -146,8 +146,14 @@
 <h2 id="jdk-8"><a class="header" href="#jdk-8">JDK 8</a></h2>
 <p>Android Studio depends on the <code>javax</code> library being present in the Java runtime, and the only reliable way to ensure this is to install an older version of Java. On Unix-like systems, you can use <a href="https://asdf-vm.com/">asdf</a> or similar tools to manage your Java versions, and the template defines a known working version of Java in the <code>.tool-versions</code> file.</p>
 <h2 id="android-ndk"><a class="header" href="#android-ndk">Android NDK</a></h2>
+<p><a href="https://github.com/rust-lang/rust/pull/85806">An issue</a> regarding building Rust's <code>core</code> library against the latest NDK means that when using Rust 1.67 and lower, only NDK versions 22 and older can be used. The issue has been patched in Rust 1.68, which is not yet stable at the time of writing.</p>
+<p>Rust &lt; 1.68:</p>
 <blockquote>
 <p>Android Studio &gt; SDK Manager &gt; SDK Tools &gt; uncheck Hide Obsolete Packages &gt; NDK (version 22)</p>
+</blockquote>
+<p>Rust &gt;= 1.68:</p>
+<blockquote>
+<p>Android Studio &gt; SDK Manager &gt; SDK Tools &gt; NDK (side by side)</p>
 </blockquote>
 <p>The <a href="https://developer.android.com/ndk">Android NDK</a>, or Native Development Kit, enables code written in other
 languages to be run on the JVM via the <a href="https://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/jniTOC.html">Java Native Interface</a>, or JNI for short. In this case, we would like to pass the dynamic libraries created by Cargo to be included in the bundle when we run or build the project.</p>
@@ -157,7 +163,6 @@ languages to be run on the JVM via the <a href="https://docs.oracle.com/javase/7
 <li>on MacOS: <code>~/Library/Android/sdk</code></li>
 <li>on Linux: set via the environment variable <code>ANDROID_HOME</code>, or <code>~/Android/sdk</code></li>
 </ul>
-<p><a href="https://github.com/rust-lang/rust/pull/85806">An issue</a> regarding building Rust's <code>core</code> library against the latest NDK means that as of writing only NDK versions 22 and older can be used.</p>
 <h2 id="android_ndk-gradle-property"><a class="header" href="#android_ndk-gradle-property"><code>ANDROID_NDK</code> Gradle property</a></h2>
 <pre><code class="language-shell">echo &quot;ANDROID_NDK=(path to NDK)&quot; &gt;&gt; ~/.gradle/gradle.properties
 </code></pre>
@@ -166,14 +171,18 @@ languages to be run on the JVM via the <a href="https://docs.oracle.com/javase/7
 </code></pre>
 <p>or edit one of the <code>gradle.properties</code> that resides within the <code>android</code> folder.</p>
 <h2 id="cargo-ndk"><a class="header" href="#cargo-ndk"><a href="https://github.com/bbqsrc/cargo-ndk">cargo-ndk</a></a></h2>
+<p><a href="https://github.com/bbqsrc/cargo-ndk">cargo-ndk</a> is a Cargo plugin for compiling code suitable for plugging into
+the JNI without additional configuration.
+Version 2.7.0 of cargo-ndk introduced changes that broke support for NDK
+version 22, so 2.6.0 must be used if you are on a Rust version below 1.68. If you still want to use cargo-ndk 2.7.0 or above on Rust versions below 1.68 with
+a workaround, see <a href="./alternative_ndk.html">this article</a>.</p>
+<p>Rust &lt; 1.68:</p>
 <pre><code class="language-shell">cargo install cargo-ndk --version 2.6.0
 </code></pre>
-<p><a href="https://github.com/bbqsrc/cargo-ndk">cargo-ndk</a> is a Cargo plugin for compiling code suitable for plugging into
-the JNI without additional configuration. Run the above command to install.
-Version 2.7.0 of cargo-ndk introduced changes that broke support for NDK
-version 22 so 2.6.0 must be used for now. If you still want to use 2.7.0 with
-a workaround, see <a href="./alternative_ndk.html">this article</a></p>
-<p>Then run </p>
+<p>Rust &gt;= 1.68:</p>
+<pre><code class="language-shell">cargo install cargo-ndk
+</code></pre>
+<p>Then run (all Rust versions)</p>
 <pre><code class="language-shell">cargo ndk -o ../android/app/src/main/jniLibs build`
 </code></pre>
 <p>Then run the Flutter app normally with <code>flutter run</code>.</p>
