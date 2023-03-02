@@ -492,6 +492,15 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "polypixeldev",
+      "name": "polypixeldev",
+      "avatar_url": "https://avatars.githubusercontent.com/u/79737178?v=4",
+      "profile": "https://github.com/polypixeldev",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
