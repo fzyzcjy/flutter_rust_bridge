@@ -518,8 +518,10 @@ pub enum Weekdays {
     Sunday,
 }
 
+#[frb]
 #[derive(Debug)]
 pub struct Note {
+    #[frb(default = "Weekdays.Sunday")]
     pub day: Box<Weekdays>,
     pub body: String,
 }
@@ -566,21 +568,25 @@ pub enum KitchenSink {
     Empty,
     #[frb(unimpl_variant_attr)]
     Primitives {
-        #[frb(unimpl_field_attr)]
         /// Dart field comment
+        #[frb(default = -1)]
         int32: i32,
         #[frb(unimpl_deprecated)]
         float64: f64,
         boolean: bool,
     },
-    Nested(Box<KitchenSink>, i32),
+    Nested(
+        i32,
+        #[frb(default = "const KitchenSink.empty()")] Box<KitchenSink>,
+    ),
     Optional(
         /// Comment on anonymous field
+        #[frb(default = -1)]
         Option<i32>,
         Option<i32>,
     ),
     Buffer(ZeroCopyBuffer<Vec<u8>>),
-    Enums(Weekdays),
+    Enums(#[frb(default = "Weekdays.Sunday")] Weekdays),
 }
 
 #[frb(unimpl_fn_attr)]
@@ -598,7 +604,7 @@ pub fn handle_enum_struct(val: KitchenSink) -> KitchenSink {
             float64: float64 + 1.,
             boolean: !boolean,
         },
-        Nested(_, val) => Nested(Box::new(Empty), val + 1),
+        Nested(val, nested) => Nested(inc(val), Box::new(handle_enum_struct(*nested))),
         Optional(a, b) => Optional(a.map(inc), b.map(inc)),
         Buffer(ZeroCopyBuffer(mut buf)) => {
             buf.push(1);

@@ -168,16 +168,21 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                             fields,
                             ..
                         }) => {
-                            let types = fields.iter().map(|field| &field.ty).collect::<Vec<_>>();
-                            let split = optional_boundary_index(&types);
+                            let split = optional_boundary_index(fields);
                             let types = fields
                                 .iter()
                                 .map(|field| {
+                                    // If no split, default values are not valid.
+                                    let default = split
+                                        .is_some()
+                                        .then(|| field.field_default(true))
+                                        .unwrap_or_default();
                                     format!(
-                                        "{}{} {},",
-                                        dart_comments(&field.comments),
+                                        "{comments} {default} {} {},",
                                         field.ty.dart_api_type(),
-                                        field.name.dart_style()
+                                        field.name.dart_style(),
+                                        comments = dart_comments(&field.comments),
+                                        default = default
                                     )
                                 })
                                 .collect::<Vec<_>>();
@@ -195,11 +200,12 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                                 .iter()
                                 .map(|field| {
                                     format!(
-                                        "{}{}{} {},",
-                                        dart_comments(&field.comments),
-                                        field.ty.dart_required_modifier(),
+                                        "{comments} {default} {required}{} {} ,",
                                         field.ty.dart_api_type(),
-                                        field.name.dart_style()
+                                        field.name.dart_style(),
+                                        required = field.required_modifier(),
+                                        comments = dart_comments(&field.comments),
+                                        default = field.field_default(true),
                                     )
                                 })
                                 .collect::<Vec<_>>();
