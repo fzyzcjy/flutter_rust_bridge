@@ -89,8 +89,8 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
 
         format!(
             "final arr = raw as List<dynamic>;
-                if (arr.length != {}) throw Exception('unexpected arr length: expect {} but see ${{arr.length}}');
-                return {}({});",
+            if (arr.length != {}) throw Exception('unexpected arr length: expect {} but see ${{arr.length}}');
+            return {}({});",
             s.fields.len(),
             s.fields.len(),
             s.name, inner,
@@ -154,18 +154,15 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             let constructor_params = constructor_params.join("");
 
             format!(
-                "{}{}class {} with _${} {{
-                const factory {}({{{}}}) = _{};
-                {}
-            }}",
-                comments,
-                metadata,
-                self.ir.name,
-                self.ir.name,
-                self.ir.name,
+                "{comments}{meta}class {Name} with _${Name} {{
+                    const factory {Name}({{{}}}) = _{Name};
+                    {}
+                }}",
                 constructor_params,
-                self.ir.name,
-                methods_string
+                methods_string,
+                comments = comments,
+                meta = metadata,
+                Name = self.ir.name
             )
         } else {
             let mut field_declarations = src
@@ -192,9 +189,10 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 .iter()
                 .map(|f| {
                     format!(
-                        "{}this.{},",
-                        f.ty.dart_required_modifier(),
-                        f.name.dart_style()
+                        "{required}this.{} {default},",
+                        f.name.dart_style(),
+                        required = f.required_modifier(),
+                        default = f.field_default(false)
                     )
                 })
                 .collect::<Vec<_>>();
@@ -202,38 +200,31 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 constructor_params.insert(0, extra_argument);
             }
 
+            let (left, right) = if constructor_params.is_empty() {
+                ("", "")
+            } else {
+                ("{", "}")
+            };
             let constructor_params = constructor_params.join("");
+            let const_capable = if src.const_capable() { "const " } else { "" };
 
             format!(
-                "{}{}class {} {{
-                {}
+                "{comments}{meta}class {Name} {{
+                    {}
 
-                {}{}({}{}{});
+                    {const}{Name}({}{}{});
 
                 {}
             }}",
-                comments,
-                metadata,
-                self.ir.name,
-                if constructor_params.is_empty() {
-                    "const "
-                } else {
-                    ""
-                },
                 field_declarations,
-                self.ir.name,
-                if constructor_params.is_empty() {
-                    ""
-                } else {
-                    "{"
-                },
+                left,
                 constructor_params,
-                if constructor_params.is_empty() {
-                    ""
-                } else {
-                    "}"
-                },
-                methods_string
+                right,
+                methods_string,
+                comments = comments,
+                meta = metadata,
+                Name = self.ir.name,
+                const = const_capable
             )
         }
     }
@@ -252,10 +243,11 @@ fn generate_api_method(
         .skip(skip_count) //skip the first as it's the method 'self'
         .map(|input| {
             format!(
-                "{}{} {}",
-                input.ty.dart_required_modifier(),
+                "{required}{} {} {default}",
                 input.ty.dart_api_type(),
-                input.name.dart_style()
+                input.name.dart_style(),
+                required = input.required_modifier(),
+                default = input.field_default(false)
             )
         })
         .collect::<Vec<_>>();

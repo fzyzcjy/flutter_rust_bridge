@@ -1,8 +1,9 @@
-## Unreleased
+## 1.67.0
 
 * Refractor and refine for frb_codegen #1093 (thanks @dbsxdbsx)
 * Translate Rust method comments #1094 (thanks @Desdaemon)
 * Add documentation for Rust versions 1.68 and above with the latest Android NDK #1096 (thanks @polypixeldev)
+* Parameter defaults, make structs const-constructible #1095 (thanks @Desdaemon)
 
 ## 1.66.0
 

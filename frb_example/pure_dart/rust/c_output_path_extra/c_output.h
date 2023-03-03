@@ -125,8 +125,8 @@ typedef struct wire_KitchenSink_Primitives {
 } wire_KitchenSink_Primitives;
 
 typedef struct wire_KitchenSink_Nested {
-  struct wire_KitchenSink *field0;
-  int32_t field1;
+  int32_t field0;
+  struct wire_KitchenSink *field1;
 } wire_KitchenSink_Nested;
 
 typedef struct wire_KitchenSink_Optional {

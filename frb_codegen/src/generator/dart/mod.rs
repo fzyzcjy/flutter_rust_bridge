@@ -110,15 +110,7 @@ impl DartApiSpec {
 
         let dart_structs = distinct_types
             .iter()
-            .map(|ty| {
-                TypeDartGenerator::new(
-                    ty.clone(),
-                    ir_file,
-                    // Some(dart_api_class_name.to_string()),
-                    config,
-                )
-                .structs()
-            })
+            .map(|ty| TypeDartGenerator::new(ty.clone(), ir_file, config).structs())
             .collect::<Vec<_>>();
         let dart_api2wire_funcs = distinct_input_types
             .iter()
@@ -126,17 +118,17 @@ impl DartApiSpec {
             .collect::<Acc<_>>()
             .join("\n");
 
-        let mut dart_funcs = ir_file
+        let dart_funcs = (ir_file
             .funcs
             .iter()
-            .map(|f| generate_api_func(f, ir_file, &dart_api2wire_funcs.common))
-            .collect::<Vec<_>>();
-        dart_funcs.extend(
+            .map(|f| generate_api_func(f, ir_file, &dart_api2wire_funcs.common)))
+        .chain(
             distinct_output_types
                 .iter()
                 .filter(|ty| ty.is_rust_opaque() || ty.is_sync_rust_opaque())
                 .map(generate_opaque_getters),
-        );
+        )
+        .collect::<Vec<_>>();
 
         let dart_api_fill_to_wire_funcs = distinct_input_types
             .iter()
@@ -163,12 +155,11 @@ impl DartApiSpec {
                 .chain(extra_funcs.iter().cloned())
                 .collect::<Vec<_>>()
         });
-        let dart_wasm_funcs = if let Some(exports) = &ir_wasm_func_exports {
-            exports.iter().map(generate_wasm_wire_func_decl).collect()
-        } else {
-            Default::default()
-        };
-        let dart_wasm_module = (ir_wasm_func_exports.as_ref()).map(|exports| {
+        let dart_wasm_funcs = ir_wasm_func_exports
+            .as_ref()
+            .map(|exports| exports.iter().map(generate_wasm_wire_func_decl).collect())
+            .unwrap_or_default();
+        let dart_wasm_module = ir_wasm_func_exports.as_ref().map(|exports| {
             generate_wasm_wire(exports, &dart_wire_class_name, &config.dart_wasm_module())
         });
 
@@ -466,7 +457,7 @@ fn generate_dart_implementation_code(
 fn generate_file_prelude() -> DartBasicCode {
     DartBasicCode {
         import: format!("{}
-            // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas, slash_for_doc_comments, prefer_const_literals_to_create_immutables, implicit_dynamic_list_literal, duplicate_import, unused_import, unnecessary_import, prefer_single_quotes, prefer_const_constructors, use_super_parameters, always_use_package_imports, annotate_overrides, invalid_use_of_protected_member, constant_identifier_names, invalid_use_of_internal_member, prefer_is_empty
+            // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas, slash_for_doc_comments, prefer_const_literals_to_create_immutables, implicit_dynamic_list_literal, duplicate_import, unused_import, unnecessary_import, prefer_single_quotes, prefer_const_constructors, use_super_parameters, always_use_package_imports, annotate_overrides, invalid_use_of_protected_member, constant_identifier_names, invalid_use_of_internal_member, prefer_is_empty, unnecessary_const
             ",
             code_header()
         ),

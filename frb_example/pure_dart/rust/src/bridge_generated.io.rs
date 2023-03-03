@@ -2691,8 +2691,8 @@ pub struct wire_KitchenSink_Primitives {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_KitchenSink_Nested {
-    field0: *mut wire_KitchenSink,
-    field1: i32,
+    field0: i32,
+    field1: *mut wire_KitchenSink,
 }
 
 #[repr(C)]
@@ -3153,8 +3153,8 @@ pub extern "C" fn inflate_KitchenSink_Primitives() -> *mut KitchenSinkKind {
 pub extern "C" fn inflate_KitchenSink_Nested() -> *mut KitchenSinkKind {
     support::new_leak_box_ptr(KitchenSinkKind {
         Nested: support::new_leak_box_ptr(wire_KitchenSink_Nested {
-            field0: core::ptr::null_mut(),
-            field1: Default::default(),
+            field0: Default::default(),
+            field1: core::ptr::null_mut(),
         }),
     })
 }
