@@ -1,3 +1,8 @@
+# Stack Traces
+To pass Rust stack traces to flutter, you need to set `RUST_BACKTRACE` in the running application. For that simply add `env::set_var("RUST_BACKTRACE", "1");` before initialising the bridge.
+
+Note: `--dart-define` doesn't work, you **must** use `env::set_var`.
+
 # Logging
 
 Since I have seen some questions asking how logging can be implemented with a Flutter + Rust application, here are some examples.
