@@ -7,6 +7,11 @@ BridgeImpl initializeExternalLibrary(String path) =>
       loadDylib(path),
     );
 ```
+
+Note however, that you need to build the library for your IDE's Operating System. `cargo build` should normally handle that.
+
+**Do not change the target to your OS only**, as otherwise you will not be able to build for your target platform anymore.
+
 ## Example setup (verified on MacOS)
 ```
 project
@@ -51,4 +56,4 @@ Future<void> main() async {
 }
 ``` 
 
-Ensure that you have your IDE's system target set according to [Creating a new project](https://cjycode.com/flutter_rust_bridge/template/setup.html), then you should've a library in `rust/target/debug/`
+Ensure that you have your IDE's system target installed (`rustup`) according to [Creating a new project](https://cjycode.com/flutter_rust_bridge/template/setup.html), after running `cargo build`  you should've a library in `rust/target/debug/`
