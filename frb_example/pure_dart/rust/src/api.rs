@@ -577,7 +577,7 @@ pub enum KitchenSink {
     },
     Nested(
         i32,
-        #[frb(default = "const KitchenSink.empty()")] Box<KitchenSink>,
+        #[frb(default = "KitchenSink.empty()")] Box<KitchenSink>,
     ),
     Optional(
         /// Comment on anonymous field
@@ -738,6 +738,7 @@ pub fn get_usize(u: usize) -> usize {
 /// Example for @freezed and @meta.immutable
 #[frb(dart_metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]
 pub struct UserId {
+    #[frb(default = 0)]
     pub value: u32,
 }
 

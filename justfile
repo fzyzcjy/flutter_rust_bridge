@@ -212,7 +212,7 @@ serve *args:
 
 # ============================ precommit ============================
 
-precommit: dart_pub_get generate_all rust_linter (dart_linter "fix")
+precommit: dart_pub_get generate_all rust_linter dart_linter
 
 # ============================ releasing new versions ============================
 

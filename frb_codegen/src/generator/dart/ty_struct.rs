@@ -139,12 +139,13 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             let mut constructor_params = src
                 .fields
                 .iter()
-                .map(|f| {
+                .map(|field| {
+                    let r#default = field.field_default(true);
                     format!(
-                        "{} {} {},",
-                        f.ty.dart_required_modifier(),
-                        f.ty.dart_api_type(),
-                        f.name.dart_style()
+                        "{default} {} {} {},",
+                        field.required_modifier(),
+                        field.ty.dart_api_type(),
+                        field.name.dart_style()
                     )
                 })
                 .collect::<Vec<_>>();

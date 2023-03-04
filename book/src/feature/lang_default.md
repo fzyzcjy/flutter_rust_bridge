@@ -6,6 +6,8 @@ Dart allows default values for function and constructor parameters, and you can 
 - If the parameter is a class or an enum, `#[frb(default = "..")]` annotates the *Dart code* to initialize the parameter.
   Note that this is run in the *constant context*, so classes can only be constructed if they are preceded with `const`.
 
+This will be translated to either a default value annotation, or Freezed's `@Default` in the case of enum constructor parameters.
+
 ```rust,noplayground
 pub enum Answer { Yes, No }
 pub struct Point(pub f64, pub f64);
