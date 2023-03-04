@@ -3722,9 +3722,10 @@ class __$$_UserIdCopyWithImpl<$Res> extends _$UserIdCopyWithImpl<$Res, _$_UserId
 /// @nodoc
 
 class _$_UserId implements _UserId {
-  const _$_UserId({required this.value});
+  const _$_UserId({this.value = 0});
 
   @override
+  @JsonKey()
   final int value;
 
   @override
@@ -3750,7 +3751,7 @@ class _$_UserId implements _UserId {
 }
 
 abstract class _UserId implements UserId {
-  const factory _UserId({required final int value}) = _$_UserId;
+  const factory _UserId({final int value}) = _$_UserId;
 
   @override
   int get value;
