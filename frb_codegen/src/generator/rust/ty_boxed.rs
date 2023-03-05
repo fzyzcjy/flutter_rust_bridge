@@ -76,12 +76,11 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
     fn allocate_funcs(
         &self,
         collector: &mut ExternFuncCollector,
-        block_index: BlockIndex,
     ) -> Acc<Option<String>> {
         if self.ir.inner.is_array() {
             return Acc::default();
         }
-        let func_name = format!("new_{}_{}", self.ir.safe_ident(), block_index);
+        let func_name = format!("new_{}", self.ir.safe_ident());
         if self.ir.inner.is_primitive() {
             Acc {
                 io: Some(collector.generate(

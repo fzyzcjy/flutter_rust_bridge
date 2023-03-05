@@ -19,11 +19,10 @@ impl TypeDartGeneratorTrait for TypePrimitiveListGenerator<'_> {
             // by another dylib (e.g. my_rust_code.so), especially in Android platform. It can be
             // undefined behavior.
             io: Some(format!(
-                "final ans = inner.new_{}_{}(raw.length);
+                "final ans = inner.new_{}(raw.length);
                 ans.ref.ptr.asTypedList(raw.length).setAll(0, {});
                 return ans;",
                 self.ir.safe_ident(),
-                self.context.config.block_index,
                 match self.ir.primitive {
                     IrTypePrimitive::I64 | IrTypePrimitive::U64 => "raw.inner",
                     _ => "raw",

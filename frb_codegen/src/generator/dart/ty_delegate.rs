@@ -16,11 +16,10 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                 ))),
                 IrTypeDelegateArray::PrimitiveArray { length, .. } => Acc {
                     io: Some(format!(
-                        "final ans = inner.new_{}_{}({length});
+                        "final ans = inner.new_{}({length});
                         ans.ref.ptr.asTypedList({length}).setAll(0, raw);
                         return ans;",
                         array.get_delegate().safe_ident(),
-                        self.context.config.block_index,
                     )),
                     wasm: Some(format!(
                         "return {}.fromList(raw);",
@@ -46,12 +45,11 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             }
             IrTypeDelegate::StringList => Acc {
                 io: Some(format!(
-                    "final ans = inner.new_StringList_{}(raw.length);
+                    "final ans = inner.new_StringList(raw.length);
                     for (var i = 0; i < raw.length; i++){{
                         ans.ref.ptr[i] = api2wire_String(raw[i]);
                     }}
                     return ans;",
-                    self.context.config.block_index
                 )),
                 wasm: Some("return raw;".into()),
                 ..Default::default()

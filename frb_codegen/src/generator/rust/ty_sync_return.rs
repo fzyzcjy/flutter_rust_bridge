@@ -40,12 +40,10 @@ impl<'a> TypeRustGeneratorTrait for TypeSyncReturnGenerator<'a> {
             fn allocate_funcs(
                 &self,
                 _collector: &mut ExternFuncCollector,
-                _block_index: BlockIndex,
             ) -> Acc<Option<String>>;
             fn related_funcs(
                 &self,
                 _collector: &mut ExternFuncCollector,
-                _block_index: BlockIndex,
             ) -> Acc<Option<String>>;
             fn impl_intodart(&self) -> String;
             fn new_with_nullptr(&self, _collector: &mut ExternFuncCollector) -> String;

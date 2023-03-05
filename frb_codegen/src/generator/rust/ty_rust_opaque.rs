@@ -31,7 +31,7 @@ impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
             {
                 compile_error!("64-bit pointers are not supported.");
             }
-    
+
             unsafe {
                 support::opaque_from_dart((self.as_f64().unwrap() as usize) as _)
             }"##
@@ -70,7 +70,6 @@ impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
     fn allocate_funcs(
         &self,
         collector: &mut ExternFuncCollector,
-        _block_index: BlockIndex,
     ) -> Acc<Option<String>> {
         let rust_wire = self.ir.rust_wire_type(crate::target::Target::Io);
 
@@ -92,7 +91,6 @@ impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
     fn related_funcs(
         &self,
         collector: &mut ExternFuncCollector,
-        _block_index: BlockIndex,
     ) -> Acc<Option<String>> {
         let mut generate_impl = |target| {
             vec![

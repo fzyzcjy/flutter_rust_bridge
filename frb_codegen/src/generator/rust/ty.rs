@@ -44,7 +44,6 @@ pub trait TypeRustGeneratorTrait {
     fn allocate_funcs(
         &self,
         _collector: &mut ExternFuncCollector,
-        _block_index: BlockIndex,
     ) -> Acc<Option<String>> {
         Acc::default()
     }
@@ -52,7 +51,6 @@ pub trait TypeRustGeneratorTrait {
     fn related_funcs(
         &self,
         _collector: &mut ExternFuncCollector,
-        _block_index: BlockIndex,
     ) -> Acc<Option<String>> {
         Acc::default()
     }

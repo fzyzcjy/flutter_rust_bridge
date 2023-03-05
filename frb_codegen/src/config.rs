@@ -14,8 +14,8 @@ use serde::Deserialize;
 use toml::Value;
 
 use crate::ir::IrFile;
-use crate::parser;
 use crate::utils::{find_all_duplicates, BlockIndex};
+use crate::{get_symbols_if_no_duplicates, parser};
 
 #[derive(Parser, Debug, PartialEq, Eq, Deserialize, Default)]
 #[clap(
@@ -109,7 +109,7 @@ fn bail(err: clap::ErrorKind, message: Cow<str>) {
     // RawOpts::command().error(err, "").exit()
 }
 
-pub fn parse(raw: RawOpts) -> Vec<Opts> {
+pub fn parse(raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
     // rust input path(s)
     let rust_input_paths = get_valid_canon_paths(&raw.rust_input);
 
@@ -222,7 +222,7 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
     let wasm = raw.wasm;
     let inline_rust = raw.inline_rust;
 
-    (0..rust_input_paths.len())
+    let regular_configs = (0..rust_input_paths.len())
         .map(|i| {
             Opts {
                 rust_input_path: rust_input_paths[i].clone(),
@@ -245,7 +245,13 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
                 inline_rust,
             }
         })
-        .collect()
+        .collect::<Vec<_>>();
+
+    // if shared API-block(config) is essential, generate and add it
+    let (no_duplicated_symbols, shared_symbols) = get_symbols_if_no_duplicates(&regular_configs)?;
+    let all_configs = regular_configs.clone(); // TODO: fix
+
+    Ok((all_configs, no_duplicated_symbols))
 }
 
 fn get_refined_c_output(

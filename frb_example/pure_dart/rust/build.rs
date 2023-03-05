@@ -33,10 +33,9 @@ fn main() {
     };
 
     // get opts from raw opts
-    let all_configs = config_parse(raw_opts);
+    let (all_configs, all_symbols) = config_parse(raw_opts).unwrap();
+    assert_eq!(all_configs.len(), 1);
 
     // generation of rust api for ffi (single block)
-    let all_symbols = get_symbols_if_no_duplicates(&all_configs).unwrap();
-    assert_eq!(all_configs.len(), 1);
     frb_codegen(&all_configs[0], &all_symbols).unwrap();
 }

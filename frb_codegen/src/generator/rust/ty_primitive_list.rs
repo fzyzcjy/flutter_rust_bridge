@@ -55,11 +55,10 @@ impl TypeRustGeneratorTrait for TypePrimitiveListGenerator<'_> {
     fn allocate_funcs(
         &self,
         collector: &mut ExternFuncCollector,
-        block_index: BlockIndex,
     ) -> Acc<Option<String>> {
         Acc {
             io: Some(collector.generate(
-                &format!("new_{}_{}", self.ir.safe_ident(), block_index),
+                &format!("new_{}", self.ir.safe_ident()),
                 [("len: i32", "int")],
                 Some(&format!(
                     "{}{}",

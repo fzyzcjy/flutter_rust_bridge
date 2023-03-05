@@ -1148,7 +1148,7 @@ class KitchenSink with _$KitchenSink {
   }) = KitchenSink_Primitives;
   const factory KitchenSink.nested(
     int field0, [
-    @Default(KitchenSink.empty()) KitchenSink field1,
+    @Default(const KitchenSink.empty()) KitchenSink field1,
   ]) = KitchenSink_Nested;
   const factory KitchenSink.optional([
     /// Comment on anonymous field

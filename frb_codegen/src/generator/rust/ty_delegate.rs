@@ -5,7 +5,6 @@ use crate::generator::rust::{
 use crate::ir::*;
 use crate::target::{Acc, Target};
 use crate::type_rust_generator_struct;
-use crate::utils::BlockIndex;
 
 type_rust_generator_struct!(TypeDelegateGenerator, IrTypeDelegate);
 
@@ -141,7 +140,6 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
     fn allocate_funcs(
         &self,
         collector: &mut ExternFuncCollector,
-        _: BlockIndex,
     ) -> Acc<Option<String>> {
         match &self.ir {
             list @ IrTypeDelegate::StringList => Acc {
@@ -150,7 +148,6 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                     &self.ir.safe_ident(),
                     list,
                     &list.get_delegate(),
-                    self.context.config.block_index,
                 )),
                 ..Default::default()
             },

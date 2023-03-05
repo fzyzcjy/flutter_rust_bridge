@@ -60,7 +60,6 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
     fn allocate_funcs(
         &self,
         collector: &mut ExternFuncCollector,
-        _: BlockIndex,
     ) -> Acc<Option<String>> {
         Acc {
             io: Some(generate_list_allocate_func(
@@ -68,7 +67,6 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
                 &self.ir.safe_ident(),
                 &self.ir,
                 &self.ir.inner,
-                self.context.config.block_index,
             )),
             ..Default::default()
         }

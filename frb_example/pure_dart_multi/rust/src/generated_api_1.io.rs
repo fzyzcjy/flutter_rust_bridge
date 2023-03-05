@@ -39,22 +39,22 @@ pub extern "C" fn wire_test_cross_shared_struct_1(port_: i64, custom: *mut wire_
 // Section: allocate functions
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_cross_shared_struct_0() -> *mut wire_CrossSharedStruct {
+pub extern "C" fn new_box_autoadd_cross_shared_struct() -> *mut wire_CrossSharedStruct {
     support::new_leak_box_ptr(wire_CrossSharedStruct::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_only_for_api_1_struct_0() -> *mut wire_OnlyForApi1Struct {
+pub extern "C" fn new_box_autoadd_only_for_api_1_struct() -> *mut wire_OnlyForApi1Struct {
     support::new_leak_box_ptr(wire_OnlyForApi1Struct::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_shared_struct_0() -> *mut wire_SharedStruct {
+pub extern "C" fn new_box_autoadd_shared_struct() -> *mut wire_SharedStruct {
     support::new_leak_box_ptr(wire_SharedStruct::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut wire_uint_8_list {
+pub extern "C" fn new_uint_8_list(len: i32) -> *mut wire_uint_8_list {
     let ans = wire_uint_8_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,

@@ -129,7 +129,14 @@ fn generate_dart_code(
     // phase-step1: generate temporary c file
     let temp_dart_wire_file = tempfile::NamedTempFile::new()?;
     let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile()?;
+
+
+
     let exclude_symbols = generated_rust.get_exclude_symbols(all_symbols);
+    log::debug!("all_symbols:{:?}", all_symbols);
+    log::debug!("exclude_symbols:{:?}", exclude_symbols);
+    log::debug!("ir_file.get_c_struct_names:{:?}", ir_file.get_c_struct_names());
+
     with_changed_file(
         &config.rust_output_path,
         DUMMY_WIRE_CODE_FOR_BINDGEN,
@@ -154,6 +161,8 @@ fn generate_dart_code(
         },
     )?;
 
+    log::debug!("extern_func_names:{:?}", generated_rust.extern_func_names,);
+    // log::debug!("EXTRA_EXTERN_FUNC_NAMES:{:?}", EXTRA_EXTERN_FUNC_NAMES.to_vec(),);
     let effective_func_names = [
         generated_rust.extern_func_names,
         EXTRA_EXTERN_FUNC_NAMES.to_vec(),

@@ -54,11 +54,10 @@ fn main() {
     }
 
     // get opts from raw opts
-    let configs = config_parse(raw_opts);
+    let (all_configs, all_symbols) = config_parse(raw_opts).unwrap();
 
     // generation of rust api for ffi (multi-blocks)
-    let all_symbols = get_symbols_if_no_duplicates(&configs).unwrap();
-    for config_index in 0..configs.len() {
-        frb_codegen_multi(&configs, config_index, &all_symbols).unwrap()
+    for config_index in 0..all_configs.len() {
+        frb_codegen_multi(&all_configs, config_index, &all_symbols).unwrap()
     }
 }

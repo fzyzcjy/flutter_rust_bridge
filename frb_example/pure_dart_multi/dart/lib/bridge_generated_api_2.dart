@@ -41,7 +41,8 @@ abstract class ApiClass2 {
 
 class CrossSharedStruct {
   final String name;
-  CrossSharedStruct({
+
+  const CrossSharedStruct({
     required this.name,
   });
 }
@@ -50,7 +51,8 @@ class OnlyForApi2Struct {
   final int id;
   final double num;
   final String name;
-  OnlyForApi2Struct({
+
+  const OnlyForApi2Struct({
     required this.id,
     required this.num,
     required this.name,
@@ -61,7 +63,8 @@ class SharedStruct {
   final int id;
   final double num;
   final String name;
-  SharedStruct({
+
+  const SharedStruct({
     required this.id,
     required this.num,
     required this.name,

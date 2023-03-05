@@ -6,6 +6,7 @@ use std::hash::Hash;
 use std::path::Path;
 
 use anyhow::anyhow;
+use itertools::Itertools;
 use pathdiff::diff_paths;
 
 pub fn mod_from_rust_path(code_path: &str, crate_path: &str) -> String {
@@ -45,18 +46,26 @@ where
 
 /// check api defined by users, if no duplicates, then generate all symbols (api function name),
 /// including those generated implicitly by frb
-pub fn get_symbols_if_no_duplicates(configs: &[crate::Opts]) -> Result<Vec<String>, anyhow::Error> {
+pub fn get_symbols_if_no_duplicates(
+    configs: &[crate::Opts],
+) -> Result<(Vec<String>, Vec<String>), anyhow::Error> {
     let mut explicit_raw_symbols = Vec::new();
     let mut all_symbols = Vec::new();
     for config in configs {
         let raw_ir_file = config.get_ir_file()?;
 
-        // for checking explicit api duplication
-        explicit_raw_symbols.extend(raw_ir_file.funcs.iter().map(|f| f.name.clone()));
+        // for checking explicit API duplication
+        let iter = raw_ir_file.funcs.iter().map(|f| f.name.clone());
+        log::debug!(" raw_ir_file.funcs:{:?}", iter);
+        explicit_raw_symbols.extend(iter);
 
-        // for avoiding redundant generation in dart
-        all_symbols.extend(raw_ir_file.get_all_symbols(config));
+        // for checking implicit API duplication
+        let iter = raw_ir_file.get_all_symbols(config);
+        log::debug!("raw_ir_file.get_all_symbols:{:?}", iter);
+        all_symbols.extend(iter);
     }
+
+    // check duplication among explicitly defined API
     let duplicates = find_all_duplicates(&explicit_raw_symbols);
     if !duplicates.is_empty() {
         let duplicated_symbols = duplicates.join(",");
@@ -74,7 +83,13 @@ pub fn get_symbols_if_no_duplicates(configs: &[crate::Opts]) -> Result<Vec<Strin
         ));
     }
 
-    Ok(all_symbols)
+    // check duplication among implicitly defined API
+    // TODO: `free_WireSyncReturn` should not only existed in the 1st block.
+    let (regular_symbols, shared_symbols) = all_symbols.split_uniques_and_duplicates(true, true);
+    log::debug!("shared_symbols:{:?}", shared_symbols);
+    log::debug!("regular_symbols:{:?}", regular_symbols);
+
+    Ok((regular_symbols, shared_symbols))
 }
 
 #[derive(PartialEq, Eq, Debug, Clone, Copy)]
@@ -119,5 +134,69 @@ impl PathExt for std::path::Path {
         } else {
             diff_paths(path, self).unwrap().to_str().unwrap().to_owned()
         }
+    }
+}
+
+pub trait ExtraTraitForVec<T: Clone + Eq + std::hash::Hash> {
+    /// Splits the vector into two parts: unique items and duplicate items.
+    ///
+    /// # Arguments
+    ///
+    /// * `exclude_duplicates_in_uniques`: If set to `true`, exclude duplicated items from the unique items vector.
+    /// * `exclude_duplicates_in_duplicates`: If set to `true`, exclude repeated items from the duplicates vector.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use lib_flutter_rust_bridge_codegen::ExtraTraitForVec;
+    ///
+    /// let vec = vec![1, 2, 3, 2, 4, 5, 4, 6];
+    /// let (uniques, duplicates) = vec.split_uniques_and_duplicates(true, true);
+    /// assert_eq!(uniques, vec![1, 3, 5, 6]);
+    /// assert_eq!(duplicates, vec![2, 4]);
+    /// ```
+    fn split_uniques_and_duplicates(
+        &self,
+        exclude_duplicates_in_uniques: bool,
+        exclude_duplicates_in_duplicates: bool,
+    ) -> (Vec<T>, Vec<T>);
+}
+
+impl<T: Clone + Eq + std::hash::Hash> ExtraTraitForVec<T> for Vec<T> {
+    fn split_uniques_and_duplicates(
+        &self,
+        exclude_duplicates_in_uniques: bool,
+        exclude_duplicates_in_duplicates: bool,
+    ) -> (Vec<T>, Vec<T>) {
+        let mut uniques = Vec::new();
+        let mut duplicates = Vec::new();
+        let mut seen = HashSet::new();
+
+        for item in self {
+            if !seen.insert(item.clone()) {
+                duplicates.push(item.clone());
+            } else {
+                uniques.push(item.clone());
+            }
+        }
+
+        if exclude_duplicates_in_uniques {
+            uniques.retain(|item| !duplicates.contains(item));
+        }
+
+        if exclude_duplicates_in_duplicates {
+            let mut seen = HashSet::new();
+            duplicates = duplicates
+                .iter()
+                .filter_map(|x| {
+                    if seen.insert(x.clone()) {
+                        Some(x.clone())
+                    } else {
+                        None
+                    }
+                })
+                .collect();
+        }
+        (uniques, duplicates)
     }
 }

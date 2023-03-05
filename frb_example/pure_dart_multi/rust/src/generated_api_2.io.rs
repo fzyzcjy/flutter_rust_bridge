@@ -39,17 +39,17 @@ pub extern "C" fn wire_test_cross_shared_struct_2(port_: i64, name: *mut wire_ui
 // Section: allocate functions
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_only_for_api_2_struct_1() -> *mut wire_OnlyForApi2Struct {
+pub extern "C" fn new_box_autoadd_only_for_api_2_struct() -> *mut wire_OnlyForApi2Struct {
     support::new_leak_box_ptr(wire_OnlyForApi2Struct::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_shared_struct_1() -> *mut wire_SharedStruct {
+pub extern "C" fn new_box_autoadd_shared_struct() -> *mut wire_SharedStruct {
     support::new_leak_box_ptr(wire_SharedStruct::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_uint_8_list_1(len: i32) -> *mut wire_uint_8_list {
+pub extern "C" fn new_uint_8_list(len: i32) -> *mut wire_uint_8_list {
     let ans = wire_uint_8_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,

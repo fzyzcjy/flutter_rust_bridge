@@ -26,7 +26,6 @@ impl TypeRustGeneratorTrait for TypeDartOpaqueGenerator<'_> {
     fn allocate_funcs(
         &self,
         collector: &mut ExternFuncCollector,
-        _block_index: BlockIndex,
     ) -> Acc<Option<String>> {
         let rust_wire = self.ir.rust_wire_type(crate::target::Target::Io);
 

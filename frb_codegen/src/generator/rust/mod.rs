@@ -58,7 +58,6 @@ impl Output {
 pub fn generate(ir_file: &IrFile, rust_wire_mod: &str, config: &Opts) -> Output {
     let mut generator = Generator::new(config);
     let code = generator.generate(ir_file, rust_wire_mod);
-
     Output {
         code,
         extern_func_names: generator.extern_func_collector.names,
@@ -427,13 +426,13 @@ impl<'a> Generator<'a> {
 
     fn generate_allocate_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
         TypeRustGenerator::new(ty.clone(), ir_file, self.config)
-            .allocate_funcs(&mut self.extern_func_collector, self.config.block_index)
+            .allocate_funcs(&mut self.extern_func_collector)
             .map(|func, _| func.unwrap_or_default())
     }
 
     fn generate_related_funcs(&mut self, ty: &IrType, ir_file: &IrFile) -> Acc<String> {
         TypeRustGenerator::new(ty.clone(), ir_file, self.config)
-            .related_funcs(&mut self.extern_func_collector, self.config.block_index)
+            .related_funcs(&mut self.extern_func_collector)
             .map(|func, _| func.unwrap_or_default())
     }
 
@@ -547,11 +546,10 @@ pub fn generate_list_allocate_func(
     safe_ident: &str,
     list: &impl IrTypeTrait,
     inner: &IrType,
-    block_index: BlockIndex,
 ) -> String {
     // let wasm = false;
     collector.generate(
-        &format!("new_{safe_ident}_{block_index}"),
+        &format!("new_{safe_ident}"),
         [("len: i32", "int")],
         Some(&[
             list.rust_wire_modifier(Target::Io).as_str(),
