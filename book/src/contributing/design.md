@@ -89,6 +89,7 @@ Does not include delegated types.
 | `Option<Box<T>>` | `*mut T`                 | `ffi.Pointer<T>`         | `Option<T>`       | `T?`               | `T?`              |
 | enum/struct `T`  | `*mut wire_t`            | `ffi.Pointer<T>`         | `Array`           | `List`             | class `T`         |
 | enum `T`[^3]     | `i32`[^5]                | `int`[^1]                | `i32`[^5]         | `int`              | enum `T`          |
+| [`DartAbi`]      | [`DartCObject`]          | `dynamic`                | [`JsValue`]       | `dynamic`          | `dynamic`         |
 
 ## Memory safety
 
@@ -198,6 +199,9 @@ What do you want to know? Feel free to create an issue in GitHub, and I will tel
 [`bigint`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
 [`bigint64array`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt64Array
 [`biguint64array`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigUint64Array
+[`dartabi`]: https://docs.rs/flutter_rust_bridge/latest/flutter_rust_bridge/ffi/type.DartAbi.html
+[`dartcobject`]: https://docs.rs/flutter_rust_bridge/latest/flutter_rust_bridge/ffi/io/ffi/struct.DartCObject.html
+[`jsvalue`]: https://rustwasm.github.io/wasm-bindgen/reference/types/jsvalue.html
 
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script>

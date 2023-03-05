@@ -315,6 +315,7 @@ impl<'a> TypeParser<'a> {
             match ident_string.as_str() {
                 "Duration" => return Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Duration))),
                 "NaiveDateTime" => return Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Naive))),
+                "DartAbi" => return Some(Dynamic(IrTypeDynamic)),
                 _ => {}
             };
             #[cfg(feature = "uuid")]

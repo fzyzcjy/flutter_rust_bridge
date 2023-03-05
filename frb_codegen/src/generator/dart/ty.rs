@@ -30,7 +30,7 @@ macro_rules! type_dart_generator_struct {
         #[derive(Debug, Clone)]
         pub struct $cls<'a> {
             pub ir: $ir_cls,
-            pub context: TypeGeneratorContext<'a>,
+            pub context: $crate::generator::dart::ty::TypeGeneratorContext<'a>,
         }
     };
 }
@@ -49,6 +49,7 @@ pub enum TypeDartGenerator<'a> {
     SyncReturn(TypeSyncReturnGenerator<'a>),
     DartOpaque(TypeDartOpaqueGenerator<'a>),
     RustOpaque(TypeRustOpaqueGenerator<'a>),
+    Dynamic(TypeDynamicGenerator<'a>),
 }
 
 impl<'a> TypeDartGenerator<'a> {
@@ -66,6 +67,7 @@ impl<'a> TypeDartGenerator<'a> {
             SyncReturn(ir) => TypeSyncReturnGenerator::new(ir, context).into(),
             DartOpaque(ir) => TypeDartOpaqueGenerator { ir, context }.into(),
             RustOpaque(ir) => TypeRustOpaqueGenerator { ir, context }.into(),
+            Dynamic(ir) => TypeDynamicGenerator { ir, context }.into(),
         }
     }
 }
