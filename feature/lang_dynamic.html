@@ -143,10 +143,9 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="dynamic-types"><a class="header" href="#dynamic-types">Dynamic Types</a></h1>
-<p>Darts <code>dynamic</code> type is a special type that can hold any type of value. It is
-not per se supported by <code>flutter_rust_bridge</code>, but most use cases can likely be
-solved by using an <code>enum</code> instead that has a variant for each type you want to
-support.</p>
+<p>Dart's <code>dynamic</code> is a special type that can hold any type of value. Although it is possible
+to return a <code>dynamic</code> to Dart in the form of <a href="https://docs.rs/flutter_rust_bridge/latest/flutter_rust_bridge/ffi/type.DartAbi.html"><code>DartAbi</code></a>, it is preferable to
+return an <code>enum</code> instead that has a variant for each type you want to support.</p>
 <h2 id="example"><a class="header" href="#example">Example</a></h2>
 <p>Let's say you have a struct that can hold either a <code>u32</code> or a <code>String</code> and some
 other fields (in a significantly worse design):</p>
@@ -169,6 +168,27 @@ struct DataStruct {
     msg:  String,
     data: MyEnum,
 }</code></pre>
+<h2 id="returning-dynamics"><a class="header" href="#returning-dynamics">Returning <code>dynamic</code>s</a></h2>
+<p>Aside from <a href="./lang_dart_opaque.html"><code>DartOpaque</code></a>, you may also return a <code>dynamic</code> type to Dart by specifing the return type as <a href="https://docs.rs/flutter_rust_bridge/latest/flutter_rust_bridge/ffi/type.DartAbi.html"><code>DartAbi</code></a>.
+<a href="https://docs.rs/flutter_rust_bridge/latest/flutter_rust_bridge/ffi/type.DartAbi.html"><code>DartAbi</code></a> is the umbrella type for all <a href="https://docs.rs/flutter_rust_bridge/latest/flutter_rust_bridge/ffi/io/ffi/enum.DartCObjectType.html">C-representable</a>
+Dart values, which can be obtained from Rust types that implement
+<a href="https://docs.rs/flutter_rust_bridge/latest/flutter_rust_bridge/ffi/trait.IntoDart.html"><code>IntoDart</code></a>.</p>
+<pre><code class="language-rust noplayground">pub fn return_dynamic() -&gt; DartAbi {
+    vec![
+        ().into_dart(),
+        0i32.into_dart(),
+        format!(&quot;Hello there!&quot;).into_dart()
+    ].into_dart()
+}</code></pre>
+<pre><code class="language-dart">final dynamic values = await api.returnDynamic();
+assert(values is List&lt;dynamic&gt;);
+assert(values[0] == null);
+assert(values[1] == 0);
+assert(values[2] == &quot;Hello there!&quot;);
+</code></pre>
+<p><a href="https://docs.rs/flutter_rust_bridge/latest/flutter_rust_bridge/ffi/type.DartAbi.html"><code>DartAbi</code></a> is not supported as parameters, and structs that transitively include them may not be used in parameter positions either.
+If you only care about accepting or returning an opaque Dart object without interacting with it, consider <a href="./lang_dart_opaque.html"><code>DartOpaque</code></a>.</p>
+<p>This type is meant to be used only as an esacpe hatch, if your data cannot be expressed as either a fixed <a href="./lang_struct.html">struct</a> or <a href="./lang_enum.html">enum</a>.</p>
 
                     </main>
 
