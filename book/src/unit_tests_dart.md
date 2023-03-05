@@ -1,6 +1,7 @@
 # Unit tests in dart
 
-To run `flutter` or `dart test` with the bridge you need to load the library on your own development machine (Windows/MacOs/Linux/CI). For that use `loadDylib`, for example:
+To run `flutter` or `dart test` with the bridge you need to load the library on your own development machine (Windows/MacOS/Linux/CI). For that use `loadDylib`, for example:
+
 ```dart
 BridgeImpl initializeExternalLibrary(String path) =>
     BridgeImpl(
