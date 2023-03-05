@@ -1,5 +1,7 @@
-## Unreleased
+## 1.68.0
 
+* feat: return dynamic data as `DartAbi` #1102 (thanks @Desdaemon)
+* fix: incorrect ffi.Usize type #1102 (thanks @Desdaemon)
 * fix: default on freezed structs not applied #1101 (thanks @Desdaemon)
 
 ## 1.67.0
