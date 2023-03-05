@@ -2252,6 +2252,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["empty"],
       );
 
+  Future<dynamic> returnDartDynamic({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_return_dart_dynamic(port_),
+      parseSuccessData: _wire2api_dartabi,
+      constMeta: kReturnDartDynamicConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kReturnDartDynamicConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_dart_dynamic",
+        argNames: [],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_sum_with(that);
     var arg1 = api2wire_u32(y);
@@ -2759,6 +2774,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
       first: _wire2api_DartOpaque(arr[0]),
       second: _wire2api_DartOpaque(arr[1]),
     );
+  }
+
+  dynamic _wire2api_dartabi(dynamic raw) {
+    return raw;
   }
 
   Distance _wire2api_distance(dynamic raw) {

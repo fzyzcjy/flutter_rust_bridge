@@ -1202,6 +1202,11 @@ void main(List<String> args) async {
       expect(testModel.aliasStruct.content, true);
     });
   });
+
+  test('dart call return_dart_dynamic', () async {
+    final data = await api.returnDartDynamic();
+    expect(data, ['foo']);
+  });
 }
 
 int _createGarbage() {

@@ -3335,6 +3335,18 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_Empty>)>>('wire_empty_struct');
   late final _wire_empty_struct = _wire_empty_structPtr.asFunction<void Function(int, ffi.Pointer<wire_Empty>)>();
 
+  void wire_return_dart_dynamic(
+    int port_,
+  ) {
+    return _wire_return_dart_dynamic(
+      port_,
+    );
+  }
+
+  late final _wire_return_dart_dynamicPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_dart_dynamic');
+  late final _wire_return_dart_dynamic = _wire_return_dart_dynamicPtr.asFunction<void Function(int)>();
+
   void wire_sum__method__SumWith(
     int port_,
     ffi.Pointer<wire_SumWith> that,
