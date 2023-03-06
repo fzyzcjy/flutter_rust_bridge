@@ -40,13 +40,10 @@ mod tests {
     // VS Code runs in frb_codegen with "Run test" and flutter_rust_bridge with "Debug test" >_>
     #[allow(dead_code)]
     fn set_dir() {
-        match fs::metadata("frb_codegen") {
-            Ok(metadata) => {
-                if metadata.is_dir() {
-                    std::env::set_current_dir("frb_codegen").unwrap();
-                }
-            },
-            _ => {}
+        if let Ok(metadata) = fs::metadata("frb_codegen") {
+            if metadata.is_dir() {
+                std::env::set_current_dir("frb_codegen").unwrap();
+            }
         }
     }
 
