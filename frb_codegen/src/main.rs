@@ -28,11 +28,26 @@ fn main() -> anyhow::Result<()> {
 }
 
 mod tests {
+    use std::fs;
+
     use lazy_static::lazy_static;
     use lib_flutter_rust_bridge_codegen::init_logger;
 
     lazy_static! {
         static ref LOGGER: () = init_logger(".", true).unwrap();
+    }
+
+    // VS Code runs in frb_codegen with "Run test" and flutter_rust_bridge with "Debug test" >_>
+    #[allow(dead_code)]
+    fn set_dir() {
+        match fs::metadata("frb_codegen") {
+            Ok(metadata) => {
+                if metadata.is_dir() {
+                    std::env::set_current_dir("frb_codegen").unwrap();
+                }
+            },
+            _ => {}
+        }
     }
 
     #[test]
@@ -49,6 +64,8 @@ mod tests {
             config_parse, frb_codegen, get_symbols_if_no_duplicates, RawOpts,
         };
         use std::process::Command;
+
+        set_dir();
 
         /// Path of input Rust code
         const RUST_INPUT: &str = "../frb_example/pure_dart/rust/src/api.rs";
@@ -121,6 +138,8 @@ mod tests {
             config_parse, frb_codegen_multi, get_symbols_if_no_duplicates, RawOpts,
         };
         use std::process::Command;
+
+        set_dir();
 
         /// Path of input Rust code
         const RUST_INPUT_1: &str = "../frb_example/pure_dart_multi/rust/src/api_1.rs";
