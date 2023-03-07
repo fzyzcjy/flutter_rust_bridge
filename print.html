@@ -840,6 +840,7 @@ pub fn f(input: Id) -&gt; TestModel {...}</code></pre>
 <li>For <code>panic</code>s, it will also be automatically captured and converted to Dart exceptions.</li>
 <li><a href="https://github.com/fzyzcjy/flutter_rust_bridge/pull/582">#582</a> adds support for error hierarchy, or arbitrary error types. For example, you can create your own <code>CustomError</code> (such as using <code>thiserror</code>), and it will automatically be converted to a new Dart class. The PR is already almost completed (with the hard work done), and the missing piece is fixing the test errors. I have provided some guidance about how to fix it at the PR comments as well.</li>
 </ol>
+<p>If you want to see stack traces (backtraces), <a href="feature/stack_trace.html">this doc page</a> discusses how to configure it.</p>
 <h2 id="example-9"><a class="header" href="#example-9">Example</a></h2>
 <p>For example, the following code, when called by Dart code, will throw Dart exceptions.</p>
 <pre><code class="language-rust noplayground">pub fn f() -&gt; anyhow::Result&lt;i32&gt; { bail!(&quot;oops I failed&quot;) }
