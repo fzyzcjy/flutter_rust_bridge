@@ -38,7 +38,8 @@
   - [Object pools](feature/object_pool.md)
   - [WASM](feature/wasm.md)
   - [Miscellaneous](feature/misc.md)
-  - [Logging & Stack Traces](feature/logging.md)
+  - [Logging](feature/logging.md)
+  - [Stack Traces](feature/stack_trace.md)
   - [Worker pool](feature/worker_pool.md)
 
 # Part II: User Guide
