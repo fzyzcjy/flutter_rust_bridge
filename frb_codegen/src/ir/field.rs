@@ -28,11 +28,15 @@ impl IrField {
                     DefaultValues::Str(lit)
                         if !matches!(&self.ty, IrType::Delegate(IrTypeDelegate::String)) =>
                     {
-                        let value = lit.value();
-                        let mut split = value.split('.');
-                        let enum_name = split.next().unwrap();
-                        let variant_name = split.next().unwrap().to_case(convert_case::Case::Camel);
-                        format!("{enum_name}.{variant_name}").into()
+                        if cfg!(feature = "dart-style-enums") {
+                            let value = lit.value();
+                            let mut split = value.split('.');
+                            let enum_name = split.next().unwrap();
+                            let variant_name = split.next().unwrap().to_case(convert_case::Case::Camel);
+                            format!("{enum_name}.{variant_name}").into()
+                        } else {
+                            lit.value().into()
+                        }
                     }
                     _ => default.to_dart(),
                 };

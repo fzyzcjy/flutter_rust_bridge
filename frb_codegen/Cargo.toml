@@ -56,3 +56,4 @@ x86_64-pc-windows-msvc = {pkg-fmt = "zip"}
 chrono = []
 default = ["chrono"]
 uuid = []
+dart-style-enums = []

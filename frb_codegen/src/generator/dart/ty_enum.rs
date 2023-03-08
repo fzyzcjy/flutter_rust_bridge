@@ -235,10 +235,16 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                 .variants()
                 .iter()
                 .map(|variant| {
+                    let variant_name = if cfg!(feature = "dart-style-enums") {
+                        variant.name.dart_style()
+                    } else {
+                        variant.name.rust_style().to_string()
+                    };
+
                     format!(
                         "{}{},",
                         dart_comments(&variant.comments),
-                        variant.name.dart_style()
+                        variant_name
                     )
                 })
                 .collect::<Vec<_>>()
