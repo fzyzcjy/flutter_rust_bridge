@@ -140,7 +140,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 .fields
                 .iter()
                 .map(|field| {
-                    let r#default = field.field_default(true);
+                    let r#default = field.field_default(true, None);
                     format!(
                         "{default} {} {} {},",
                         field.required_modifier(),
@@ -193,7 +193,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                         "{required}this.{} {default},",
                         f.name.dart_style(),
                         required = f.required_modifier(),
-                        default = f.field_default(false)
+                        default = f.field_default(false, None)
                     )
                 })
                 .collect::<Vec<_>>();
@@ -248,7 +248,7 @@ fn generate_api_method(
                 input.ty.dart_api_type(),
                 input.name.dart_style(),
                 required = input.required_modifier(),
-                default = input.field_default(false)
+                default = input.field_default(false, None)
             )
         })
         .collect::<Vec<_>>();

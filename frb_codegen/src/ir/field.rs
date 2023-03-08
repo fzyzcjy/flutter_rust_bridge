@@ -1,6 +1,6 @@
 use convert_case::Casing;
 
-use crate::{ir::*, parser::DefaultValues};
+use crate::{ir::*, parser::DefaultValues, Opts};
 
 #[derive(Debug, Clone)]
 pub struct IrField {
@@ -20,7 +20,7 @@ impl IrField {
             self.ty.dart_required_modifier()
         }
     }
-    pub fn field_default(&self, freezed: bool) -> String {
+    pub fn field_default(&self, freezed: bool, config: Option<&Opts>) -> String {
         self.default
             .as_ref()
             .map(|r#default| {
@@ -28,7 +28,7 @@ impl IrField {
                     DefaultValues::Str(lit)
                         if !matches!(&self.ty, IrType::Delegate(IrTypeDelegate::String)) =>
                     {
-                        if cfg!(feature = "dart-style-enums") {
+                        if config.is_some() && config.unwrap().dart_enums_style {
                             let value = lit.value();
                             let mut split = value.split('.');
                             let enum_name = split.next().unwrap();
