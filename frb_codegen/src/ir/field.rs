@@ -1,3 +1,5 @@
+use convert_case::Casing;
+
 use crate::{ir::*, parser::DefaultValues};
 
 #[derive(Debug, Clone)]
@@ -26,7 +28,11 @@ impl IrField {
                     DefaultValues::Str(lit)
                         if !matches!(&self.ty, IrType::Delegate(IrTypeDelegate::String)) =>
                     {
-                        lit.value().into()
+                        let value = lit.value();
+                        let mut split = value.split('.');
+                        let enum_name = split.next().unwrap();
+                        let variant_name = split.next().unwrap().to_case(convert_case::Case::Camel);
+                        format!("{enum_name}.{variant_name}").into()
                     }
                     _ => default.to_dart(),
                 };
