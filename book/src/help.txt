@@ -31,6 +31,9 @@ OPTIONS:
 
         --dart-format-line-length <DART_FORMAT_LINE_LENGTH>
             Line length for Dart formatting [default: 80]
+        
+        --dart-enums-style
+            The generated Dart enums will have their variant names camelCased
 
         --skip-add-mod-to-lib
             Skip automatically adding `mod bridge_generated;` to `lib.rs`
