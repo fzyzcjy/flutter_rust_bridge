@@ -238,7 +238,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                     format!(
                         "{}{},",
                         dart_comments(&variant.comments),
-                        variant.name.rust_style()
+                        variant.name.dart_style()
                     )
                 })
                 .collect::<Vec<_>>()
