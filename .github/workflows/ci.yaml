@@ -42,7 +42,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # TODO: Remove before merging.
-      - run: cat frb_example/pure_dart/dart/lib/bridge_generated.dart
+      - run: cat frb_example/pure_dart/dart/lib/bridge_definitions.dart
 
       - run: just install_ffigen_dependency
       - run: just install_valgrind
