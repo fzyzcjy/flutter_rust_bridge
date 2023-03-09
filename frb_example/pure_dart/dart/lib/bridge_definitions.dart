@@ -875,8 +875,8 @@ class ApplicationMessage with _$ApplicationMessage {
 }
 
 enum ApplicationMode {
-  Standalone,
-  Embedded,
+  standalone,
+  embedded,
 }
 
 class ApplicationSettings {
@@ -1163,7 +1163,7 @@ class KitchenSink with _$KitchenSink {
     Uint8List field0,
   ) = KitchenSink_Buffer;
   const factory KitchenSink.enums([
-    @Default(Weekdays.Sunday) Weekdays field0,
+    @Default(Weekdays.sunday) Weekdays field0,
   ]) = KitchenSink_Enums;
 }
 
@@ -1281,7 +1281,7 @@ class Note {
   final String body;
 
   const Note({
-    this.day = Weekdays.Sunday,
+    this.day = Weekdays.sunday,
     required this.body,
   });
 }
@@ -1462,15 +1462,15 @@ class VecOfPrimitivePack {
 
 /// Simple enums.
 enum Weekdays {
-  Monday,
-  Tuesday,
-  Wednesday,
-  Thursday,
-  Friday,
+  monday,
+  tuesday,
+  wednesday,
+  thursday,
+  friday,
 
   /// Best day of the week.
-  Saturday,
-  Sunday,
+  saturday,
+  sunday,
 }
 
 class ZeroCopyVecOfPrimitivePack {

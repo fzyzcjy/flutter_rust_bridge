@@ -2915,7 +2915,7 @@ class __$$KitchenSink_EnumsCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<
 /// @nodoc
 
 class _$KitchenSink_Enums implements KitchenSink_Enums {
-  const _$KitchenSink_Enums([this.field0 = Weekdays.Sunday]);
+  const _$KitchenSink_Enums([this.field0 = Weekdays.sunday]);
 
   @override
   @JsonKey()
