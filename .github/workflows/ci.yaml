@@ -43,7 +43,6 @@ jobs:
 
       # TODO: Remove before merging.
       - run: cat frb_example/pure_dart/dart/lib/main.dart
-      - run: cat ./main.dart
 
       - run: just install_ffigen_dependency
       - run: just install_valgrind
@@ -362,7 +361,7 @@ jobs:
 
       # TODO: Remove before merging.
       - run: cat frb_example/pure_dart/dart/lib/main.dart
-      - run: cat ./main.dart
+      
       - run: just install_ffigen_dependency
       - run: just dart_test_vm_service
 
