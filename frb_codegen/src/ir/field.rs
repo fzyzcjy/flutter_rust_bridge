@@ -1,4 +1,4 @@
-use convert_case::Casing;
+use convert_case::{Casing, Case};
 
 use crate::{ir::*, parser::DefaultValues, Opts};
 
@@ -32,7 +32,14 @@ impl IrField {
                             let value = lit.value();
                             let mut split = value.split('.');
                             let enum_name = split.next().unwrap();
-                            let variant_name = split.next().unwrap().to_case(convert_case::Case::Camel);
+
+                            let variant_name = split.next().unwrap().to_string();
+                            let variant_name = if crate::utils::is_dart_keyword(&variant_name) {
+                                variant_name.to_case(Case::Pascal)
+                            } else {
+                                variant_name.to_case(Case::Camel)
+                            };
+
                             format!("{enum_name}.{variant_name}").into()
                         } else {
                             lit.value().into()
