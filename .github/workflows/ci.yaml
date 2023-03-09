@@ -41,13 +41,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      # TODO: Remove before merging.
+      - run: cat frb_example/pure_dart/dart/lib/main.dart
+      - run: cat ./main.dart
+
       - run: just install_ffigen_dependency
       - run: just install_valgrind
       - run: just dart_pub_get dart_only
       - run: just dart_test_valgrind
-      # TODO: Remove before merging.
-      - run: cat ./main.dart
-      - run: cat frb_example/pure_dart/dart/lib/main.dart
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   flutter_test_ios:
@@ -359,10 +360,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: just install_ffigen_dependency
-      - run: just dart_test_vm_service
       # TODO: Remove before merging.
       - run: cat frb_example/pure_dart/dart/lib/main.dart
+      - run: cat ./main.dart
+      - run: just install_ffigen_dependency
+      - run: just dart_test_vm_service
 
   rust_build_and_test:
     name: Rust build and test
