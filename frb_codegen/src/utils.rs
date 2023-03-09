@@ -82,17 +82,14 @@ pub fn get_symbols_if_no_duplicates(configs: &[crate::Opts]) -> Result<Vec<Strin
 /// when camelCased.
 pub fn is_dart_keyword<S: AsRef<str>>(input: S) -> bool {
     let input = input.as_ref().to_case(Case::Camel);
-    match input.as_str() {
-        "abstract" | "else" | "import" | "show" | "as" | "enum" | "static" | "assert"
+    matches!(input.as_str(), "abstract" | "else" | "import" | "show" | "as" | "enum" | "static" | "assert"
         | "export" | "interface" | "super" | "async" | "extends" | "is" | "switch" | "await"
         | "extension" | "late" | "sync" | "break" | "external" | "library" | "this" | "case"
         | "factory" | "mixin" | "throw" | "catch" | "false" | "new" | "true" | "class"
         | "final" | "null" | "try" | "const" | "finally" | "on" | "typedef" | "continue"
         | "for" | "operator" | "var" | "covariant" | "Function" | "part" | "void" | "default"
         | "get" | "required" | "while" | "deferred" | "hide" | "rethrow" | "with" | "do" | "if"
-        | "return" | "yield" | "dynamic" | "implements" | "set" => true,
-        _ => false,
-    }
+        | "return" | "yield" | "dynamic" | "implements" | "set")
 }
 
 #[derive(PartialEq, Eq, Debug, Clone, Copy)]
