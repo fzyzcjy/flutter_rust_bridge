@@ -28,6 +28,7 @@ impl IrField {
                     DefaultValues::Str(lit)
                         if !matches!(&self.ty, IrType::Delegate(IrTypeDelegate::String)) =>
                     {
+                        // Convert the default value to Dart style.
                         if config.is_some() && config.unwrap().dart_enums_style {
                             let value = lit.value();
                             let mut split = value.split('.');
