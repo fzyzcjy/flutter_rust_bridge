@@ -81,8 +81,8 @@ pub fn get_symbols_if_no_duplicates(configs: &[crate::Opts]) -> Result<Vec<Strin
 /// Returns `true` if the identifier is a Dart keyword
 /// when camelCased.
 pub fn is_dart_keyword<S: AsRef<str>>(input: S) -> bool {
-    let input = input.as_ref();
-    match input.to_case(Case::Camel).as_str() {
+    let input = input.as_ref().to_case(Case::Camel);
+    match input.as_str() {
         "abstract" | "else" | "import" | "show" | "as" | "enum" | "static" | "assert"
         | "export" | "interface" | "super" | "async" | "extends" | "is" | "switch" | "await"
         | "extension" | "late" | "sync" | "break" | "external" | "library" | "this" | "case"
