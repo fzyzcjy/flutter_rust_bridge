@@ -35,11 +35,12 @@ impl IrField {
                             let enum_name = split.next().unwrap();
 
                             let variant_name = split.next().unwrap().to_string();
-                            let variant_name = if crate::utils::check_for_keywords(&[variant_name.clone()]).is_err() {
-                                variant_name.to_case(Case::Pascal)
-                            } else {
-                                variant_name.to_case(Case::Camel)
-                            };
+                            let variant_name =
+                                if crate::utils::check_for_keywords(&[variant_name.to_case(Case::Camel)]).is_err() {
+                                    variant_name.to_case(Case::Pascal)
+                                } else {
+                                    variant_name.to_case(Case::Camel)
+                                };
 
                             format!("{enum_name}.{variant_name}").into()
                         } else {

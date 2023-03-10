@@ -6,7 +6,6 @@ use std::hash::Hash;
 use std::path::Path;
 
 use anyhow::anyhow;
-use convert_case::{Casing, Case};
 use pathdiff::diff_paths;
 
 pub fn mod_from_rust_path(code_path: &str, crate_path: &str) -> String {
@@ -112,10 +111,7 @@ const DART_KEYWORDS: [&str; 63] = [
 ];
 
 pub fn check_for_keywords(v: &[String]) -> anyhow::Result<()> {
-    if let Some(s) = v
-        .iter()
-        .find(|s| DART_KEYWORDS.contains(&s.to_case(Case::Camel).as_str()))
-    {
+    if let Some(s) = v.iter().find(|s| DART_KEYWORDS.contains(&s.as_str())) {
         return Err(anyhow!("Api name cannot be a dart keyword: {}", s));
     };
     Ok(())
