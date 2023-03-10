@@ -35,7 +35,7 @@ impl IrField {
                             let enum_name = split.next().unwrap();
 
                             let variant_name = split.next().unwrap().to_string();
-                            let variant_name = if crate::utils::is_dart_keyword(&variant_name) {
+                            let variant_name = if crate::utils::check_for_keywords(&[variant_name.clone()]).is_err() {
                                 variant_name.to_case(Case::Pascal)
                             } else {
                                 variant_name.to_case(Case::Camel)

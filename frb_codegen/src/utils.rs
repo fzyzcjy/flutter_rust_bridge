@@ -111,8 +111,11 @@ const DART_KEYWORDS: [&str; 63] = [
     "set",
 ];
 
-fn check_for_keywords(v: &[String]) -> anyhow::Result<()> {
-    if let Some(s) = v.iter().find(|s| DART_KEYWORDS.contains(&s.as_str())) {
+pub fn check_for_keywords(v: &[String]) -> anyhow::Result<()> {
+    if let Some(s) = v
+        .iter()
+        .find(|s| DART_KEYWORDS.contains(&s.to_case(Case::Camel).as_str()))
+    {
         return Err(anyhow!("Api name cannot be a dart keyword: {}", s));
     };
     Ok(())
@@ -152,20 +155,6 @@ pub fn get_symbols_if_no_duplicates(configs: &[crate::Opts]) -> Result<Vec<Strin
     check_for_keywords(&all_symbols)?;
 
     Ok(all_symbols)
-}
-
-/// Returns `true` if the identifier is a Dart keyword
-/// when camelCased.
-pub fn is_dart_keyword<S: AsRef<str>>(input: S) -> bool {
-    let input = input.as_ref().to_case(Case::Camel);
-    matches!(input.as_str(), "abstract" | "else" | "import" | "show" | "as" | "enum" | "static" | "assert"
-        | "export" | "interface" | "super" | "async" | "extends" | "is" | "switch" | "await"
-        | "extension" | "late" | "sync" | "break" | "external" | "library" | "this" | "case"
-        | "factory" | "mixin" | "throw" | "catch" | "false" | "new" | "true" | "class"
-        | "final" | "null" | "try" | "const" | "finally" | "on" | "typedef" | "continue"
-        | "for" | "operator" | "var" | "covariant" | "Function" | "part" | "void" | "default"
-        | "get" | "required" | "while" | "deferred" | "hide" | "rethrow" | "with" | "do" | "if"
-        | "return" | "yield" | "dynamic" | "implements" | "set")
 }
 
 #[derive(PartialEq, Eq, Debug, Clone, Copy)]

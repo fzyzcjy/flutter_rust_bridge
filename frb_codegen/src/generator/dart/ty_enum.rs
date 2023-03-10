@@ -237,7 +237,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                 .iter()
                 .map(|variant| {
                     let variant_name = if self.context.config.dart_enums_style {
-                        if crate::utils::is_dart_keyword(&variant.name.dart_style()) {
+                        if crate::utils::check_for_keywords(&[variant.name.dart_style()]).is_err() {
                             variant.name.dart_style().to_case(Case::Pascal)
                         } else {
                             variant.name.dart_style().to_case(Case::Camel)
