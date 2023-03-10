@@ -1,3 +1,7 @@
+## 1.69.0
+
+* Check for dart keywords #958 (thanks @anstadnik)
+
 ## 1.68.0
 
 * feat: return dynamic data as `DartAbi` #1102 (thanks @Desdaemon)

@@ -39,6 +39,7 @@
   - [WASM](feature/wasm.md)
   - [Miscellaneous](feature/misc.md)
   - [Logging](feature/logging.md)
+  - [Stack Traces](feature/stack_trace.md)
   - [Worker pool](feature/worker_pool.md)
 
 # Part II: User Guide
@@ -99,7 +100,7 @@
 - [Appendix](contributing/appendix.md)
 
 # Part IV: More Doc
-
+- [Unit testing in Flutter](unit_tests_dart.md)
 - [Tutorial: Pure Dart](tutorial_pure_dart.md)
 - [Safety concerns](safety.md)
 - [Troubleshooting](troubleshooting.md)
