@@ -156,6 +156,7 @@ More specifically, thanks for all these contributions:
 * [Michael-F-Bryan](https://github.com/Michael-F-Bryan): Detect broken bindings.
 * [bus710](https://github.com/bus710): Add a case in troubleshooting.
 * [Demezy](https://github.com/Demezy): Mention troubleshooting.
+* [anstadnik](https://github.com/anstadnik): Check keywords.
 * [Syndim](https://github.com/Syndim): Add a bracket to box.
 * [TENX-S](https://github.com/TENX-S): Improve doc. Reproduce a bug.
 * [polypixeldev](https://github.com/polypixeldev): Improve doc.
