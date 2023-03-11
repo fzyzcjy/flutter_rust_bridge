@@ -1,3 +1,7 @@
+## Unreleased
+
+* Add tests to gen, build, run pure_dart #1106 (thanks @coder0xff)
+
 ## 1.69.0
 
 * Check for dart keywords #958 (thanks @anstadnik)
