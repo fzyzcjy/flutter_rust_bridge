@@ -349,6 +349,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: "b0c518b"
       - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: 1.64.0
