@@ -278,6 +278,18 @@ class ApiClass2Wire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list');
   late final _new_uint_8_list = _new_uint_8_listPtr.asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
 
+  void free_WireSyncReturn(
+    WireSyncReturn ptr,
+  ) {
+    return _free_WireSyncReturn(
+      ptr,
+    );
+  }
+
+  late final _free_WireSyncReturnPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturn)>>('free_WireSyncReturn');
+  late final _free_WireSyncReturn = _free_WireSyncReturnPtr.asFunction<void Function(WireSyncReturn)>();
+
   ffi.Pointer<wire_CrossSharedStruct> new_box_autoadd_cross_shared_struct() {
     return _new_box_autoadd_cross_shared_struct();
   }

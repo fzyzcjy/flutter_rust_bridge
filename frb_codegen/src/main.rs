@@ -1,9 +1,7 @@
 use std::process::exit;
 
 use clap::Parser;
-use lib_flutter_rust_bridge_codegen::{
-    config_parse, frb_codegen_multi, get_symbols_if_no_duplicates, init_logger, RawOpts,
-};
+use lib_flutter_rust_bridge_codegen::{config_parse, frb_codegen_multi, init_logger, RawOpts};
 use log::{debug, error, info};
 
 fn main() -> anyhow::Result<()> {
@@ -11,7 +9,7 @@ fn main() -> anyhow::Result<()> {
     let raw_opts = RawOpts::parse();
     init_logger("./logs/", raw_opts.verbose).unwrap();
 
-    let (configs,all_symbols) = config_parse(raw_opts)?;
+    let (configs, all_symbols) = config_parse(raw_opts)?;
     debug!("configs={:?}", configs);
 
     // generation of rust api for ffi

@@ -1,6 +1,4 @@
-use lib_flutter_rust_bridge_codegen::{
-    config_parse, frb_codegen_multi, get_symbols_if_no_duplicates, init_logger, RawOpts,
-};
+use lib_flutter_rust_bridge_codegen::{config_parse, frb_codegen_multi, init_logger, RawOpts};
 
 /// Path of input Rust code
 const RUST_INPUT_1: &str = "src/api_1.rs";

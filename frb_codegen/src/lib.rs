@@ -130,12 +130,13 @@ fn generate_dart_code(
     let temp_dart_wire_file = tempfile::NamedTempFile::new()?;
     let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile()?;
 
-
-
     let exclude_symbols = generated_rust.get_exclude_symbols(all_symbols);
     log::debug!("all_symbols:{:?}", all_symbols);
     log::debug!("exclude_symbols:{:?}", exclude_symbols);
-    log::debug!("ir_file.get_c_struct_names:{:?}", ir_file.get_c_struct_names());
+    log::debug!(
+        "ir_file.get_c_struct_names:{:?}",
+        ir_file.get_c_struct_names()
+    );
 
     with_changed_file(
         &config.rust_output_path,
@@ -169,16 +170,28 @@ fn generate_dart_code(
     ]
     .concat();
 
+    log::debug!("here1:{:?}", config.c_output_path); //TODO: delete
+    let all_regular_configs = all_configs
+        .iter()
+        .filter(|each| !each.is_shared)
+        .map(|each| each.clone())
+        .collect::<Vec<_>>();
+
     for (i, each_path) in config.c_output_path.iter().enumerate() {
+        if config.is_shared {
+            continue;
+        }
         let c_dummy_code =
-            generator::c::generate_dummy(config, all_configs, &effective_func_names, i);
-        println!("the path is {each_path:?}");
+            generator::c::generate_dummy(config, &all_regular_configs, &effective_func_names, i);
+        log::info!("generated c dummy code");
         fs::create_dir_all(Path::new(each_path).parent().unwrap())?;
         fs::write(
             each_path,
             fs::read_to_string(&temp_bindgen_c_output_file)? + "\n" + &c_dummy_code,
         )?;
+        log::info!("written into {each_path:?}");
     }
+    log::debug!("here2");//TODO: delete
 
     // phase-step2: generate raw dart code instance from the c file
     let generated_dart_wire_code_raw = fs::read_to_string(temp_dart_wire_file)?;
@@ -187,6 +200,8 @@ fn generate_dart_code(
         &config.dart_wire_class_name(),
     ));
     sanity_check(&generated_dart_wire.body, &config.dart_wire_class_name())?;
+
+    log::debug!("here3");//TODO: delete
 
     // phase-step3: compose dart codes and write to file
     let generated_dart = ir_file.generate_dart(config, &generated_rust.wasm_exports);

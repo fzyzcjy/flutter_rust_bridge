@@ -14,7 +14,7 @@ use serde::Deserialize;
 use toml::Value;
 
 use crate::ir::IrFile;
-use crate::utils::{find_all_duplicates, BlockIndex};
+use crate::utils::{find_all_duplicates, BlockIndex, PathExt};
 use crate::{get_symbols_if_no_duplicates, parser};
 
 #[derive(Parser, Debug, PartialEq, Eq, Deserialize, Default)]
@@ -79,6 +79,12 @@ pub struct RawOpts {
     /// Skip dependencies check.
     #[clap(long)]
     pub skip_deps_check: bool,
+
+    // Output path of auto-generated rust file, which is used to store shared stuff among regular API blocks,
+    // it could be something like `src/my_shared.rs`, `"my_shared.rs"`...
+    // if it is none, the default path would be `./bridge_generated_shares.rs`
+    #[clap(short, long)]
+    pub shared_rust_output: Option<String>,
 }
 
 #[derive(Debug, Clone)]
@@ -101,6 +107,13 @@ pub struct Opts {
     pub skip_deps_check: bool,
     pub wasm_enabled: bool,
     pub inline_rust: bool,
+    pub is_shared: bool, // it is true if this Opts instance is for auto-generated shared API block. Otherwise, it is false,
+    // for the below 2 fields:
+    // whatever the Opts is for regular or auto-generated shared API block,
+    // and whatever there is or no shared stuff,
+    // these fields should always contain (default) shared paths.
+    pub shared_rust_output_path: String,
+    pub shared_dart_output_path: String,
 }
 
 fn bail(err: clap::ErrorKind, message: Cow<str>) {
@@ -170,6 +183,31 @@ pub fn parse(raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
             "--rust-output's inputs should match --rust-input's length".into(),
         );
     }
+
+    // rust/dart shared output path, used for multi API blocks
+    let cloned_rust_output = raw.rust_output.clone();
+    let shared_path = raw.shared_rust_output.unwrap_or_else(|| {
+        let p = cloned_rust_output
+            .map(|vec| vec.get(0).cloned().unwrap_or_default())
+            .unwrap_or_default();
+        let guessed_relative_parent_dir = Path::new(&p).parent().unwrap_or(Path::new(""));
+        Path::join(guessed_relative_parent_dir, "./bridge_generated_shares.rs")
+            .into_os_string()
+            .into_string()
+            .unwrap()
+    });
+    let shared_rust_output_path = get_valid_canon_paths(&[shared_path])[0].clone();
+    log::debug!("shared_rust_output_path:{:?}", shared_rust_output_path);
+    let shared_dart_output_path = Path::join(
+        Path::new(&dart_output_paths[0]).parent().unwrap(),
+        format!(
+            "{}.dart",
+            Path::new(&shared_rust_output_path).file_name_str().unwrap()
+        ),
+    )
+    .into_os_string()
+    .into_string()
+    .unwrap();
 
     // class name(s)
     let class_names = get_outputs_for_flag_requires_full_data(
@@ -243,13 +281,46 @@ pub fn parse(raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
                 skip_deps_check,
                 wasm_enabled: wasm,
                 inline_rust,
+                is_shared: false,
+                shared_rust_output_path: shared_rust_output_path.clone(),
+                shared_dart_output_path: shared_dart_output_path.clone(),
             }
         })
         .collect::<Vec<_>>();
 
-    // if shared API-block(config) is essential, generate and add it
+    // if shared API-block(config) is essential, generate and add it to vec
     let (no_duplicated_symbols, shared_symbols) = get_symbols_if_no_duplicates(&regular_configs)?;
-    let all_configs = regular_configs.clone(); // TODO: fix
+    let all_configs = if shared_symbols.is_empty() {
+        regular_configs
+    } else {
+        let shared_config = Opts {
+            rust_input_path: "".into(), // this field is meangingless for shared block, so it's empty.
+            rust_output_path: shared_rust_output_path.clone(),
+            dart_output_path: shared_dart_output_path.clone(),
+            dart_decl_output_path: dart_decl_output_path.clone(),
+            rust_crate_dir: regular_configs[0].rust_crate_dir.clone(),
+            c_output_path: vec![], // no need to gnerated other c header files, even there is a shared block.
+            class_name: Path::new(&shared_dart_output_path)
+                .file_name_str()
+                .unwrap()
+                .to_case(Case::Pascal),
+            dart_format_line_length,
+            skip_add_mod_to_lib,
+            llvm_path: llvm_paths.clone(),
+            llvm_compiler_opts,
+            manifest_path: manifest_paths[0].clone(),
+            dart_root: dart_roots[0].clone(),
+            build_runner,
+            block_index: BlockIndex(regular_configs.len()),
+            skip_deps_check: true,
+            wasm_enabled: wasm,
+            inline_rust,
+            is_shared: true,
+            shared_rust_output_path,
+            shared_dart_output_path,
+        };
+        [regular_configs, vec![shared_config]].concat()
+    };
 
     Ok((all_configs, no_duplicated_symbols))
 }
@@ -475,17 +546,18 @@ fn path_to_string(path: PathBuf) -> Result<String, OsString> {
 
 impl Opts {
     pub fn get_ir_file(&self) -> Result<IrFile> {
-        // info!("Phase: Parse source code to AST");
+        log::debug!("Phase: Parse source code to AST");
         let source_rust_content = fs::read_to_string(&self.rust_input_path).with_context(|| {
-            format!(
+            let err_msg = format!(
                 "Failed to read rust input file \"{}\"",
                 self.rust_input_path
-            )
+            );
+            log::error!("{}", err_msg);
+            err_msg
         })?;
         let file_ast = syn::parse_file(&source_rust_content).unwrap();
 
-        // info!("Phase: Parse AST to IR");
-
+        log::debug!("Phase: Parse AST to IR");
         Ok(parser::parse(
             &source_rust_content,
             file_ast,

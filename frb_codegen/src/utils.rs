@@ -113,7 +113,9 @@ const DART_KEYWORDS: [&str; 63] = [
 
 fn check_for_keywords(v: &[String]) -> anyhow::Result<()> {
     if let Some(s) = v.iter().find(|s| DART_KEYWORDS.contains(&s.as_str())) {
-        return Err(anyhow!("Api name cannot be a dart keyword: {}", s));
+        let err_msg = format!("Api name cannot be a dart keyword: {}", s);
+        log::error!("{}", err_msg);
+        return Err(anyhow!(err_msg));
     };
     Ok(())
 }
@@ -156,10 +158,10 @@ pub fn get_symbols_if_no_duplicates(
             verb_str
         ));
     }
+    
+    check_for_keywords(&all_symbols)?;
 
     // check duplication among implicitly defined API
-    check_for_keywords(&all_symbols)?; //TODO: what is this used for?
-    // TODO: `free_WireSyncReturn` should not only existed in the 1st block.
     let (regular_symbols, shared_symbols) = all_symbols.split_uniques_and_duplicates(true, true);
     log::debug!("shared_symbols:{:?}", shared_symbols);
     log::debug!("regular_symbols:{:?}", regular_symbols);

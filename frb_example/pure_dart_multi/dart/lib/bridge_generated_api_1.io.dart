@@ -140,6 +140,18 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list');
   late final _new_uint_8_list = _new_uint_8_listPtr.asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
 
+  void free_WireSyncReturn(
+    WireSyncReturn ptr,
+  ) {
+    return _free_WireSyncReturn(
+      ptr,
+    );
+  }
+
+  late final _free_WireSyncReturnPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturn)>>('free_WireSyncReturn');
+  late final _free_WireSyncReturn = _free_WireSyncReturnPtr.asFunction<void Function(WireSyncReturn)>();
+
   void store_dart_post_cobject(
     DartPostCObjectFnType ptr,
   ) {
@@ -308,18 +320,6 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
           'new_box_autoadd_only_for_api_1_struct');
   late final _new_box_autoadd_only_for_api_1_struct =
       _new_box_autoadd_only_for_api_1_structPtr.asFunction<ffi.Pointer<wire_OnlyForApi1Struct> Function()>();
-
-  void free_WireSyncReturn(
-    WireSyncReturn ptr,
-  ) {
-    return _free_WireSyncReturn(
-      ptr,
-    );
-  }
-
-  late final _free_WireSyncReturnPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturn)>>('free_WireSyncReturn');
-  late final _free_WireSyncReturn = _free_WireSyncReturnPtr.asFunction<void Function(WireSyncReturn)>();
 }
 
 class _Dart_Handle extends ffi.Opaque {}
