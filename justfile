@@ -44,7 +44,7 @@ dart_pub_get mode="default":
 # ============================ build & test ============================
 
 rust_build_and_test:
-    just _rust_build_and_test_single frb_codegen
+    just _rust_build_and_test_single frb_codegen --features uuid --features chrono
     just _rust_build_and_test_single frb_rust
     just _rust_build_and_test_single frb_macros
     just _rust_build_and_test_single {{dir_example_pure_dart}}/rust
