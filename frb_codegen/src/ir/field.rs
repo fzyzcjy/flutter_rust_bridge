@@ -1,4 +1,7 @@
-use crate::{ir::*, parser::DefaultValues};
+use convert_case::{Casing, Case};
+use syn::LitStr;
+
+use crate::{ir::*, parser::DefaultValues, Opts};
 
 #[derive(Debug, Clone)]
 pub struct IrField {
@@ -18,7 +21,7 @@ impl IrField {
             self.ty.dart_required_modifier()
         }
     }
-    pub fn field_default(&self, freezed: bool) -> String {
+    pub fn field_default(&self, freezed: bool, config: Option<&Opts>) -> String {
         self.default
             .as_ref()
             .map(|r#default| {
@@ -26,7 +29,12 @@ impl IrField {
                     DefaultValues::Str(lit)
                         if !matches!(&self.ty, IrType::Delegate(IrTypeDelegate::String)) =>
                     {
-                        lit.value().into()
+                        // Convert the default value to Dart style.
+                        if config.is_some() && config.unwrap().dart_enums_style {
+                            Self::default_value_to_dart_style(lit).into()
+                        } else {
+                            lit.value().into()
+                        }
                     }
                     _ => default.to_dart(),
                 };
@@ -42,5 +50,17 @@ impl IrField {
     #[inline]
     pub fn is_optional(&self) -> bool {
         matches!(&self.ty, IrType::Optional(_)) || self.default.is_some()
+    }
+
+    fn default_value_to_dart_style(lit: &LitStr) -> String {
+        let value = lit.value();
+        let mut split = value.split('.');
+        let enum_name = split.next().unwrap();
+
+        let variant_name = split.next().unwrap().to_string();
+        let variant_name =
+            crate::utils::make_string_keyword_safe(variant_name.to_case(Case::Camel));
+
+        format!("{enum_name}.{variant_name}")
     }
 }

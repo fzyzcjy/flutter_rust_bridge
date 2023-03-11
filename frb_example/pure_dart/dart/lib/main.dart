@@ -210,7 +210,7 @@ void main(List<String> args) async {
   test('dart call handleNestedStruct', () async {
     final r = await api.handleNestedStruct(s: _createMyNestedStruct());
     testComplexStruct(r.treeNode, arrLen: 5);
-    expect(r.weekday, Weekdays.Friday);
+    expect(r.weekday, Weekdays.friday);
   });
 
   test('dart call handleComplexStructSync', () {
@@ -371,12 +371,12 @@ void main(List<String> args) async {
   });
 
   test('dart call handleReturnEnum', () async {
-    expect(await api.handleReturnEnum(input: "Tuesday"), Weekdays.Tuesday);
+    expect(await api.handleReturnEnum(input: "Tuesday"), Weekdays.tuesday);
     expect(await api.handleReturnEnum(input: "Foreverday"), null);
   });
 
   test('dart call handleEnumParameter', () async {
-    expect(await api.handleEnumParameter(weekday: Weekdays.Saturday), Weekdays.Saturday);
+    expect(await api.handleEnumParameter(weekday: Weekdays.saturday), Weekdays.saturday);
   });
 
   test('dart call handleEnumStruct', () async {
@@ -396,8 +396,8 @@ void main(List<String> args) async {
       KitchenSink_Buffer(Uint8List.fromList([1])),
     );
     expect(
-      await api.handleEnumStruct(val: KitchenSink_Enums(Weekdays.Monday)),
-      KitchenSink_Enums(Weekdays.Tuesday),
+      await api.handleEnumStruct(val: KitchenSink_Enums(Weekdays.monday)),
+      KitchenSink_Enums(Weekdays.tuesday),
     );
     expect(
       await api.handleEnumStruct(val: const KitchenSink.nested(0, KitchenSink.empty())),
@@ -430,7 +430,7 @@ void main(List<String> args) async {
   test('dart call getAppSettings()', () async {
     var settings = await api.getAppSettings();
     expect(settings.version, "1.0.0-rc.1");
-    expect(settings.mode, ApplicationMode.Standalone);
+    expect(settings.mode, ApplicationMode.standalone);
     expect(settings.env.vars[0].field0, "myenv");
   });
 
@@ -440,7 +440,7 @@ void main(List<String> args) async {
             appSettings: ApplicationSettings(
                 name: "from dart",
                 version: "XX",
-                mode: ApplicationMode.Embedded,
+                mode: ApplicationMode.embedded,
                 env: ApplicationEnv(vars: [ApplicationEnvVar(field0: "sendback", field1: true)]))),
         true);
   });
@@ -1249,7 +1249,7 @@ MyTreeNode _createMyTreeNode({required int arrLen}) {
 }
 
 MyNestedStruct _createMyNestedStruct() {
-  return MyNestedStruct(treeNode: _createMyTreeNode(arrLen: 5), weekday: Weekdays.Friday);
+  return MyNestedStruct(treeNode: _createMyTreeNode(arrLen: 5), weekday: Weekdays.friday);
 }
 
 class MatchBigInt extends CustomMatcher {

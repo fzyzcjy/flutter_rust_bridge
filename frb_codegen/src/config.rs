@@ -51,6 +51,9 @@ pub struct RawOpts {
     /// Line length for Dart formatting
     #[clap(long, default_value = "80")]
     pub dart_format_line_length: u32,
+    /// The generated Dart enums will have their variant names camelCased.
+    #[clap(long)]
+    pub dart_enums_style: bool,
     /// Skip automatically adding `mod bridge_generated;` to `lib.rs`
     #[clap(long)]
     pub skip_add_mod_to_lib: bool,
@@ -91,6 +94,7 @@ pub struct Opts {
     pub rust_output_path: String,
     pub class_name: String,
     pub dart_format_line_length: u32,
+    pub dart_enums_style: bool,
     pub skip_add_mod_to_lib: bool,
     pub llvm_path: Vec<String>,
     pub llvm_compiler_opts: String,
@@ -215,6 +219,7 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
         .as_ref()
         .map(|s| canon_path(s.as_str()));
     let dart_format_line_length = raw.dart_format_line_length;
+    let dart_enums_style = raw.dart_enums_style;
     let llvm_paths = get_llvm_paths(&raw.llvm_path);
     let llvm_compiler_opts = raw.llvm_compiler_opts.clone().unwrap_or_default();
     let skip_add_mod_to_lib = raw.skip_add_mod_to_lib;
@@ -233,6 +238,7 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
                 rust_output_path: rust_output_paths[i].clone(),
                 class_name: class_names[i].clone(),
                 dart_format_line_length,
+                dart_enums_style,
                 skip_add_mod_to_lib, //same for all rust api blocks
                 llvm_path: llvm_paths.clone(),
                 llvm_compiler_opts: llvm_compiler_opts.clone(),

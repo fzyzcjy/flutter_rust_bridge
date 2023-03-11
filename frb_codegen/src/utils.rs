@@ -6,6 +6,7 @@ use std::hash::Hash;
 use std::path::Path;
 
 use anyhow::anyhow;
+use convert_case::{Casing, Case};
 use pathdiff::diff_paths;
 
 pub fn mod_from_rust_path(code_path: &str, crate_path: &str) -> String {
@@ -151,6 +152,18 @@ pub fn get_symbols_if_no_duplicates(configs: &[crate::Opts]) -> Result<Vec<Strin
     check_for_keywords(&all_symbols)?;
 
     Ok(all_symbols)
+}
+
+/// If the given string is a Dart keyword, then
+/// convert it to PascalCase to avoid issues.
+/// If the string is not a keyword, then the original
+/// is returned.
+pub fn make_string_keyword_safe(input: String) -> String {
+    if check_for_keywords(&[input.clone()]).is_err() {
+        input.to_case(Case::Pascal)
+    } else {
+        input
+    }
 }
 
 #[derive(PartialEq, Eq, Debug, Clone, Copy)]
