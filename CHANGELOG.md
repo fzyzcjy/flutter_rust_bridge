@@ -1,6 +1,7 @@
 ## Unreleased
 
 * Add tests to gen, build, run pure_dart #1106 (thanks @coder0xff)
+* Generate Dart enum variants in camelCase #1112 (thanks @erikas-taroza)
 
 ## 1.69.0
 
