@@ -40,11 +40,6 @@ jobs:
       - uses: extractions/setup-just@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # TODO: Remove before merging.
-      - run: cat frb_example/pure_dart/dart/lib/bridge_definitions.dart
-      - run: dart pub cache clean
-
       - run: just install_ffigen_dependency
       - run: just install_valgrind
       - run: just dart_pub_get dart_only
@@ -359,11 +354,6 @@ jobs:
       - uses: extractions/setup-just@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # TODO: Remove before merging.
-      - run: cat frb_example/pure_dart/dart/lib/bridge_definitions.dart
-      - run: dart pub cache clean
-
       - run: just install_ffigen_dependency
       - run: just dart_test_vm_service
 

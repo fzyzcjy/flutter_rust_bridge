@@ -21,6 +21,7 @@ fn main() {
         wasm: true,
         dart_decl_output: Some("../dart/lib/bridge_definitions.dart".into()),
         dart_format_line_length: 120,
+        dart_enums_style: true,
         // (extra) c output path
         c_output: Some(vec![
             // each field should contain head file name
