@@ -152,6 +152,7 @@ More specifically, thanks for all these contributions:
 * [efc-mw](https://github.com/efc-mw): Improve Windows encoding handling.
 * [valeth](https://github.com/valeth): Rename callFfi's port.
 * [coder0xff](https://github.com/coder0xff): Extra codegen tester.
+* [erikas-taroza](https://github.com/erikas-taroza): Make enum camelCase.
 * [sccheruku](https://github.com/sccheruku): Prevent double-generating utility.
 * [jsonmona](https://github.com/jsonmona): Add import.
 * [w-ensink](https://github.com/w-ensink): Improve doc. Fix CI. Refactor. Add tests.
