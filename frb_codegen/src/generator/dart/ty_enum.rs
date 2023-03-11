@@ -1,4 +1,3 @@
-use convert_case::{Casing, Case};
 use itertools::Itertools;
 
 use crate::generator::dart::dart_comments;
@@ -237,11 +236,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                 .iter()
                 .map(|variant| {
                     let variant_name = if self.context.config.dart_enums_style {
-                        if crate::utils::check_for_keywords(&[variant.name.dart_style()]).is_err() {
-                            variant.name.dart_style().to_case(Case::Pascal)
-                        } else {
-                            variant.name.dart_style().to_case(Case::Camel)
-                        }
+                        crate::utils::make_string_keyword_safe(variant.name.dart_style())
                     } else {
                         variant.name.rust_style().to_string()
                     };

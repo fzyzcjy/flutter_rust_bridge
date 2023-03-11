@@ -1,4 +1,5 @@
 use convert_case::{Casing, Case};
+use syn::LitStr;
 
 use crate::{ir::*, parser::DefaultValues, Opts};
 
@@ -30,19 +31,7 @@ impl IrField {
                     {
                         // Convert the default value to Dart style.
                         if config.is_some() && config.unwrap().dart_enums_style {
-                            let value = lit.value();
-                            let mut split = value.split('.');
-                            let enum_name = split.next().unwrap();
-
-                            let variant_name = split.next().unwrap().to_string();
-                            let variant_name =
-                                if crate::utils::check_for_keywords(&[variant_name.to_case(Case::Camel)]).is_err() {
-                                    variant_name.to_case(Case::Pascal)
-                                } else {
-                                    variant_name.to_case(Case::Camel)
-                                };
-
-                            format!("{enum_name}.{variant_name}").into()
+                            Self::default_value_to_dart_style(lit).into()
                         } else {
                             lit.value().into()
                         }
@@ -61,5 +50,17 @@ impl IrField {
     #[inline]
     pub fn is_optional(&self) -> bool {
         matches!(&self.ty, IrType::Optional(_)) || self.default.is_some()
+    }
+
+    fn default_value_to_dart_style(lit: &LitStr) -> String {
+        let value = lit.value();
+        let mut split = value.split('.');
+        let enum_name = split.next().unwrap();
+
+        let variant_name = split.next().unwrap().to_string();
+        let variant_name =
+            crate::utils::make_string_keyword_safe(variant_name.to_case(Case::Camel));
+
+        format!("{enum_name}.{variant_name}")
     }
 }
