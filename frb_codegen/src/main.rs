@@ -47,10 +47,17 @@ mod tests {
         }
     }
 
-    /// `cargo build` can fail because frb_example/pure_dart makes testing a build step! *gasp*
-    /// If you want to get `cargo build` working again and investigate why pure_dart fails:
-    /// 1. mv ../frb_example/pure_dart/rust/build.rs ../frb_example/pure_dart/rust/_build.rs
-    /// 2. Run this test in the debugger - which is a copy of build.rs (but more complete)
+    /// When the `frb_example/pure_dart` fails to build, i.e. the `cargo build` there fails,
+    /// i.e. the frb_codegen fails to generate code in that repo, you may want to use this
+    /// test to examine the problems, because this one is a copy of `build.rs` in that
+    /// `frb_example/pure_dart`. For example, you may run this `fn pure_dart()` unit
+    /// test in the debugger.
+    /// 
+    /// In some scenarios, such as when using VSCode to execute this test, the `cargo build`
+    /// will be run before this `fn pure_dart()` test gets executed (see #1106 for details).
+    /// Therefore, you may even fail to execute *this* function. In that case, you may run: 
+    /// `mv ../frb_example/pure_dart/rust/build.rs ../frb_example/pure_dart/rust/_build.rs`
+    /// Then that `build.rs` is temporarily disabled and cargo build can run.
     #[test]
     fn pure_dart() {
         assert!(cfg!(feature = "chrono"));
