@@ -28,8 +28,6 @@ fn main() -> anyhow::Result<()> {
 }
 
 mod tests {
-    use std::fs;
-
     use lazy_static::lazy_static;
     use lib_flutter_rust_bridge_codegen::init_logger;
 
@@ -38,8 +36,10 @@ mod tests {
     }
 
     // VS Code runs in frb_codegen with "Run test" and flutter_rust_bridge with "Debug test" >_>
-    #[allow(dead_code)]
+    #[cfg(test)]
     fn set_dir() {
+        use std::fs;
+
         if let Ok(metadata) = fs::metadata("frb_codegen") {
             if metadata.is_dir() {
                 std::env::set_current_dir("frb_codegen").unwrap();
@@ -47,13 +47,12 @@ mod tests {
         }
     }
 
+    /// `cargo build` can fail because frb_example/pure_dart makes testing a build step! *gasp*
+    /// If you want to get `cargo build` working again and investigate why pure_dart fails:
+    /// 1. mv ../frb_example/pure_dart/rust/build.rs ../frb_example/pure_dart/rust/_build.rs
+    /// 2. Run this test in the debugger - which is a copy of build.rs (but more complete)
     #[test]
     fn pure_dart() {
-        // `cargo build` can fail because frb_example/pure_dart makes testing a build step! *gasp*
-        // If you want to get `cargo build` working again and investigate why pure_dart fails:
-        // 1. mv ../frb_example/pure_dart/rust/build.rs ../rb_example/pure_dart/rust/_build.rs
-        // 2. Run this test in the debugger - which is a copy of build.rs (but more complete)
-
         assert!(cfg!(feature = "chrono"));
         assert!(cfg!(feature = "uuid"));
 
@@ -71,8 +70,6 @@ mod tests {
 
         let _ = *LOGGER;
 
-        // Tell Cargo that if the input Rust code changes, to rerun this build script.
-        println!("cargo:rerun-if-changed={RUST_INPUT}");
         // Options for frb_codegen
         let raw_opts = RawOpts {
             // Path of input Rust code
@@ -124,13 +121,9 @@ mod tests {
         assert!(status.success(), "pure_dart failed");
     }
 
+    /// See the documentation for the `pure_dart` test
     #[test]
     fn pure_dart_multi() {
-        // `cargo build` can fail because frb_example/pure_dart makes testing a build step! *gasp*
-        // If you want to get `cargo build` working again and investigate why pure_dart fails:
-        // 1. mv ../frb_example/pure_dart_multi/rust/build.rs ../rb_example/pure_dart_multi/rust/_build.rs
-        // 2. Run this test in the debugger - which is a copy of build.rs (but more complete)
-
         use lib_flutter_rust_bridge_codegen::{
             config_parse, frb_codegen_multi, get_symbols_if_no_duplicates, RawOpts,
         };
@@ -155,9 +148,6 @@ mod tests {
 
         let _ = *LOGGER;
 
-        // Tell Cargo that if the input Rust code changes, to rerun this build script.
-        println!("cargo:rerun-if-changed={RUST_INPUT_1}");
-        println!("cargo:rerun-if-changed={RUST_INPUT_2}");
         // Options for frb_codegen
         let mut raw_opts = RawOpts {
             // Path of input Rust code
