@@ -53,11 +53,13 @@ pub fn init_logger(path: &str, verbose: bool) -> Result<(), fern::InitError> {
                 .apply()?
         }
         // #[cfg(not(debug_assertions))]
-        "info" => d
-            .level(LevelFilter::Info)
-            .level_for("cbindgen", LevelFilter::Error)
-            .chain(std::io::stdout())
-            .apply()?,
+        "info" => {
+            std::fs::create_dir_all(path).unwrap();
+            d.level(LevelFilter::Info)
+                .level_for("cbindgen", LevelFilter::Error)
+                .chain(std::io::stdout())
+                .apply()?
+        }
         _ => panic!("only allow \"debug\" and \"info\""),
     }
 
