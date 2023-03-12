@@ -13,3 +13,14 @@ $ flutter_rust_bridge_codegen --help
 $ dart run flutter_rust_bridge_serve --help
 {{#include help.serve.txt}}
 ```
+
+## Configuration files
+
+You can also run `flutter_rust_bridge_codegen` with no arguments, provided one of these files exist (in order of priority):
+
+- `.frb.yml`
+- `.frb.yaml`
+- `.frb.json`
+
+The codegen will try to read a configuration from any of these files. The same arguments from the CLI are accepted, but
+they will be in snake_case.
