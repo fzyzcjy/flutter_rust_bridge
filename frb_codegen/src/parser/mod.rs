@@ -563,13 +563,15 @@ fn extract_metadata(attrs: &[Attribute]) -> Vec<IrDartAnnotation> {
         .collect()
 }
 
-#[derive(Debug, Clone)]
+crate::ir! {
+#[no_serde]
 pub enum DefaultValues {
     Str(syn::LitStr),
     Bool(syn::LitBool),
     Int(syn::LitInt),
     Float(syn::LitFloat),
     Vec(Punctuated<DefaultValues, Token![,]>),
+}
 }
 
 impl DefaultValues {
@@ -627,6 +629,29 @@ impl Parse for DefaultValues {
             input.parse().map(Self::Int)
         } else {
             Err(lh.error())
+        }
+    }
+}
+
+#[cfg(feature = "serde")]
+impl serde::Serialize for DefaultValues {
+    fn serialize<S>(&self, s: S) -> std::result::Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        const NAME: &str = "DefaultValues";
+        match self {
+            Self::Str(value) => s.serialize_newtype_variant(NAME, 0, "Str", &value.value()),
+            Self::Bool(value) => s.serialize_newtype_variant(NAME, 1, "Bool", &value.value()),
+            Self::Int(value) => {
+                s.serialize_newtype_variant(NAME, 2, "Int", &value.base10_parse::<i64>().unwrap())
+            }
+            Self::Float(value) => {
+                s.serialize_newtype_variant(NAME, 3, "Float", &value.base10_parse::<f64>().unwrap())
+            }
+            Self::Vec(value) => {
+                s.serialize_newtype_variant(NAME, 4, "Vec", &value.into_iter().collect::<Vec<_>>())
+            }
         }
     }
 }

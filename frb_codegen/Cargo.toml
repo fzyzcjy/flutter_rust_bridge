@@ -41,6 +41,7 @@ tempfile = "3.2.0"
 thiserror = "1"
 toml = "0.5.8"
 topological-sort = "0.2.2"
+enum-iterator = "1.4.0"
 
 [dev-dependencies]
 semver = "1.0.12"
@@ -53,6 +54,7 @@ i686-pc-windows-msvc = {pkg-fmt = "zip"}
 x86_64-pc-windows-msvc = {pkg-fmt = "zip"}
 
 [features]
+default = ["chrono", "serde"]
+serde = []
 chrono = []
-default = ["chrono"]
 uuid = []

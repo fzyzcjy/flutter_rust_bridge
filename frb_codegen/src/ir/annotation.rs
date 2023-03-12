@@ -1,7 +1,8 @@
 use crate::ir::*;
 
-#[derive(Debug, Clone)]
+crate::ir! {
 pub struct IrDartAnnotation {
     pub content: String,
     pub library: Option<IrDartImport>,
+}
 }

@@ -233,6 +233,7 @@ impl<'a> TypeParser<'a> {
                     }
                     _ => self.convert_to_ir_type(*generic).map(|inner| match inner {
                         Primitive(primitive) => PrimitiveList(IrTypePrimitiveList { primitive }),
+                        #[cfg(feature = "chrono")]
                         Delegate(IrTypeDelegate::Time(time)) => {
                             Delegate(IrTypeDelegate::TimeList(time))
                         }

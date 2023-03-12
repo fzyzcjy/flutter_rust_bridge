@@ -1,6 +1,8 @@
 use std::process::exit;
 
 use clap::Parser;
+#[cfg(feature = "serde")]
+use lib_flutter_rust_bridge_codegen::dump;
 use lib_flutter_rust_bridge_codegen::{
     config_parse, frb_codegen_multi, get_symbols_if_no_duplicates, init_logger, RawOpts,
 };
@@ -10,12 +12,18 @@ fn main() -> anyhow::Result<()> {
     //  get valiable options from user input command
     let raw_opts = RawOpts::parse();
     init_logger("./logs/", raw_opts.verbose).unwrap();
+    #[cfg(feature = "serde")]
+    let dump_config = raw_opts.dump.clone();
 
     let configs = config_parse(raw_opts);
     debug!("configs={:?}", configs);
 
     // generation of rust api for ffi
     let all_symbols = get_symbols_if_no_duplicates(&configs)?;
+    #[cfg(feature = "serde")]
+    if let Some(dump) = dump_config {
+        return dump::dump_multi(&configs, dump);
+    }
     for config_index in 0..configs.len() {
         if let Err(err) = frb_codegen_multi(&configs, config_index, &all_symbols) {
             error!("fatal: {}", err);
@@ -52,10 +60,10 @@ mod tests {
     /// test to examine the problems, because this one is a copy of `build.rs` in that
     /// `frb_example/pure_dart`. For example, you may run this `fn pure_dart()` unit
     /// test in the debugger.
-    /// 
+    ///
     /// In some scenarios, such as when using VSCode to execute this test, the `cargo build`
     /// will be run before this `fn pure_dart()` test gets executed (see #1106 for details).
-    /// Therefore, you may even fail to execute *this* function. In that case, you may run: 
+    /// Therefore, you may even fail to execute *this* function. In that case, you may run:
     /// `mv ../frb_example/pure_dart/rust/build.rs ../frb_example/pure_dart/rust/_build.rs`
     /// Then that `build.rs` is temporarily disabled and cargo build can run.
     #[test]

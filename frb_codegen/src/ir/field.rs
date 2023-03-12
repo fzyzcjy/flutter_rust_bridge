@@ -1,15 +1,16 @@
-use convert_case::{Casing, Case};
+use convert_case::{Case, Casing};
 use syn::LitStr;
 
 use crate::{ir::*, parser::DefaultValues, Opts};
 
-#[derive(Debug, Clone)]
+crate::ir! {
 pub struct IrField {
     pub ty: IrType,
     pub name: IrIdent,
     pub is_final: bool,
     pub comments: Vec<IrComment>,
     pub default: Option<DefaultValues>,
+}
 }
 
 impl IrField {

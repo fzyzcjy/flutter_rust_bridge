@@ -2,15 +2,16 @@ use convert_case::{Case, Casing};
 
 use crate::ir::*;
 use crate::target::Target;
-use strum_macros::Display;
 
+crate::ir! {
 #[cfg(feature = "chrono")]
-#[derive(Debug, Clone, Copy, Hash, Eq, PartialEq, Display)]
+#[derive(Copy, strum_macros::Display)]
 pub enum IrTypeTime {
     Local,
     Utc,
     Naive,
     Duration,
+}
 }
 
 #[cfg(feature = "chrono")]
@@ -34,8 +35,8 @@ impl IrTypeTime {
     }
 }
 
+crate::ir! {
 /// types that delegate to another type
-#[derive(Debug, Clone, Hash, Eq, PartialEq)]
 pub enum IrTypeDelegate {
     Array(IrTypeDelegateArray),
     String,
@@ -55,7 +56,7 @@ pub enum IrTypeDelegate {
     #[cfg(feature = "uuid")]
     Uuids,
 }
-#[derive(Clone, Debug, Hash, Eq, PartialEq)]
+
 pub enum IrTypeDelegateArray {
     GeneralArray {
         length: usize,
@@ -65,6 +66,7 @@ pub enum IrTypeDelegateArray {
         length: usize,
         primitive: IrTypePrimitive,
     },
+}
 }
 
 impl IrTypeDelegateArray {
@@ -199,6 +201,7 @@ impl IrTypeTrait for IrTypeDelegate {
         self.get_delegate().visit_types(f, ir_file);
 
         // extras
+        #[cfg(feature = "chrono")]
         if let Self::TimeList(ir) = self {
             IrType::Delegate(IrTypeDelegate::Time(*ir)).visit_types(f, ir_file);
         }

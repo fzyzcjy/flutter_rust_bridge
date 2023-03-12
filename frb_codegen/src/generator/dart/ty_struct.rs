@@ -1,9 +1,9 @@
 use crate::generator::dart::ty::*;
 use crate::generator::dart::{dart_comments, dart_metadata, GeneratedApiMethod};
-use crate::{ir::*, Opts};
 use crate::method_utils::FunctionName;
 use crate::target::Acc;
 use crate::type_dart_generator_struct;
+use crate::{ir::*, Opts};
 use convert_case::{Case, Casing};
 
 type_dart_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
@@ -115,7 +115,14 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         let has_methods = !methods.is_empty();
         let methods = methods
             .iter()
-            .map(|func| generate_api_method(func, src, self.context.config.dart_api_class_name(), self.context.config))
+            .map(|func| {
+                generate_api_method(
+                    func,
+                    src,
+                    self.context.config.dart_api_class_name(),
+                    self.context.config,
+                )
+            })
             .collect::<Vec<_>>();
 
         let methods_string = methods
@@ -235,7 +242,7 @@ fn generate_api_method(
     func: &IrFunc,
     ir_struct: &IrStruct,
     dart_api_class_name: String,
-    config: &Opts
+    config: &Opts,
 ) -> GeneratedApiMethod {
     let f = FunctionName::deserialize(&func.name);
     let skip_count = usize::from(!f.is_static_method());

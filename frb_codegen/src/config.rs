@@ -9,6 +9,7 @@ use std::str::FromStr;
 use anyhow::{anyhow, Context, Result};
 use clap::IntoApp;
 use clap::Parser;
+use clap::ValueEnum;
 use convert_case::{Case, Casing};
 use serde::Deserialize;
 use toml::Value;
@@ -82,9 +83,15 @@ pub struct RawOpts {
     /// Skip dependencies check.
     #[clap(long)]
     pub skip_deps_check: bool,
+    /// A (comma-separated) list of data to be dumped.
+    ///
+    /// If specified without a value, defaults to all.
+    #[cfg(feature = "serde")]
+    #[clap(long, arg_enum, min_values(0))]
+    pub dump: Option<Vec<Dump>>,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, serde::Serialize)]
 pub struct Opts {
     pub rust_input_path: String,
     pub dart_output_path: String,
@@ -107,9 +114,15 @@ pub struct Opts {
     pub inline_rust: bool,
 }
 
-fn bail(err: clap::ErrorKind, message: Cow<str>) {
+#[derive(Debug, PartialEq, Eq, Clone, Copy, Deserialize, ValueEnum, enum_iterator::Sequence)]
+pub enum Dump {
+    Config,
+    Ir,
+}
+
+fn bail(err: clap::ErrorKind, message: Cow<str>) -> ! {
     log::error!("<{}> {}", err, message);
-    std::process::exit(1);
+    std::process::exit(1)
     // RawOpts::command().error(err, "").exit()
 }
 

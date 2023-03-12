@@ -6,7 +6,7 @@ use std::hash::Hash;
 use std::path::Path;
 
 use anyhow::anyhow;
-use convert_case::{Casing, Case};
+use convert_case::{Case, Casing};
 use pathdiff::diff_paths;
 
 pub fn mod_from_rust_path(code_path: &str, crate_path: &str) -> String {
@@ -166,7 +166,7 @@ pub fn make_string_keyword_safe(input: String) -> String {
     }
 }
 
-#[derive(PartialEq, Eq, Debug, Clone, Copy)]
+#[derive(PartialEq, Eq, Debug, Clone, Copy, serde::Serialize)]
 pub struct BlockIndex(pub usize);
 
 impl BlockIndex {
@@ -208,5 +208,45 @@ impl PathExt for std::path::Path {
         } else {
             diff_paths(path, self).unwrap().to_str().unwrap().to_owned()
         }
+    }
+}
+
+/// For structs that only has an `inner` serializable attribute that
+/// would be better (de)serialized as a newtype.
+#[macro_export]
+macro_rules! derive_serde_as_newtype {
+    ($($type:ident),*) => {$(
+        #[cfg(feature = "serde")]
+        impl ::serde::Serialize for $type {
+            fn serialize<S>(&self, s: S) -> Result<S::Ok, S::Error>
+            where
+                S: ::serde::Serializer,
+            {
+                s.serialize_newtype_struct(::std::stringify!($type), self.inner.as_ref())
+            }
+        }
+    )*};
+}
+
+/// Adds some default derives for IR types.
+///
+/// Valid forms:
+/// - `ir! { pub struct Foo { .. } .. }`
+/// - `ir! { #[no_serde] pub struct Bar { .. } .. }`
+#[macro_export]
+macro_rules! ir {
+    () => {};
+    (#[no_serde] $decl:item $($rest:tt)*) => {
+        #[derive(Debug, Clone, Hash, Eq, PartialEq)]
+        $decl
+
+        $crate::ir!($($rest)*);
+    };
+    ($decl:item $($rest:tt)*) => {
+        #[derive(Debug, Clone, Hash, Eq, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(::serde::Serialize))]
+        $decl
+
+        $crate::ir!($($rest)*);
     }
 }

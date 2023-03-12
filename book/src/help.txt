@@ -30,7 +30,9 @@ OPTIONS:
             Generated class name
 
         --dart-format-line-length <DART_FORMAT_LINE_LENGTH>
-            Line length for Dart formatting [default: 80]
+            Line length for Dart formatting
+            
+            [default: 80]
 
         --dart-enums-style
             The generated Dart enums will have their variant names camelCased
@@ -61,6 +63,13 @@ OPTIONS:
 
         --skip-deps-check
             Skip dependencies check
+
+        --dump [<DUMP>...]
+            A (comma-separated) list of data to be dumped.
+            
+            If specified without a value, defaults to all.
+            
+            [possible values: config, ir]
 
     -h, --help
             Print help information
