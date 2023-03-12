@@ -1,5 +1,6 @@
 use crate::{generator::dart::*, Opts};
 use enum_dispatch::enum_dispatch;
+use quote::ToTokens;
 
 #[enum_dispatch]
 pub trait TypeDartGeneratorTrait {
@@ -68,6 +69,12 @@ impl<'a> TypeDartGenerator<'a> {
             DartOpaque(ir) => TypeDartOpaqueGenerator { ir, context }.into(),
             RustOpaque(ir) => TypeRustOpaqueGenerator { ir, context }.into(),
             Dynamic(ir) => TypeDynamicGenerator { ir, context }.into(),
+            Unencodable(IrTypeUnencodable {
+                underlying_type, ..
+            }) => panic!(
+                "Cannot generate Dart code for {}",
+                underlying_type.to_token_stream()
+            ),
         }
     }
 }
