@@ -1,4 +1,4 @@
-use std::process::exit;
+use std::{fs::File, process::exit};
 
 use clap::Parser;
 #[cfg(feature = "serde")]
@@ -8,9 +8,26 @@ use lib_flutter_rust_bridge_codegen::{
 };
 use log::{debug, error, info};
 
+const CONFIG_LOCATIONS: [&str; 3] = [".frb.yml", ".frb.yaml", ".frb.json"];
+
 fn main() -> anyhow::Result<()> {
     //  get valiable options from user input command
-    let raw_opts = RawOpts::parse();
+    let has_args = std::env::args_os().len() > 1;
+    let raw_opts = match RawOpts::try_parse() {
+        Ok(opts) => opts,
+        Err(err) if has_args => err.exit(),
+        // Try to parse a command file, if exists
+        Err(err) => 'from_file: {
+            for location in CONFIG_LOCATIONS {
+                let Ok(file) = File::open(location) else {continue};
+                break 'from_file serde_yaml::from_reader(file)
+                    .map_err(|err| anyhow::anyhow!("Could not parse {location}: {err}"))?;
+            }
+            _ = err.print();
+            eprintln!("Hint: To call flutter_rust_bridge_codegen with no arguments, fill in .frb.yml with your config.");
+            std::process::exit(1)
+        }
+    };
     init_logger("./logs/", raw_opts.verbose).unwrap();
     #[cfg(feature = "serde")]
     let dump_config = raw_opts.dump.clone();
