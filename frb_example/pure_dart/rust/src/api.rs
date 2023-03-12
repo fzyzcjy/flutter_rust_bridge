@@ -13,7 +13,9 @@ use anyhow::{anyhow, Result};
 use flutter_rust_bridge::*;
 use lazy_static::lazy_static;
 
-use crate::data::{EnumAlias, Id, MyEnum, MyStruct, NonCloneData, StructAlias, UserIdAlias};
+use crate::data::{
+    EnumAlias, Id, MyEnum, MyStruct, NonCloneData, NonCloneData, StructAlias, UserIdAlias,
+};
 pub use crate::data::{FrbOpaqueReturn, FrbOpaqueSyncReturn, HideData, NonSendHideData};
 use crate::new_module_system::{use_new_module_system, NewSimpleStruct};
 use crate::old_module_system::{use_old_module_system, OldSimpleStruct};
