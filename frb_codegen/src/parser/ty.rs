@@ -1,8 +1,9 @@
 use crate::ir::IrType::*;
 use crate::ir::*;
 use crate::markers;
-use crate::parser::{extract_comments, extract_metadata, type_to_string};
+use crate::parser::{extract_comments, extract_metadata};
 use crate::source_graph::{Enum, Struct};
+use quote::ToTokens;
 use std::collections::{HashMap, HashSet};
 use std::string::String;
 use syn::*;
@@ -41,99 +42,6 @@ impl<'a> TypeParser<'a> {
     }
 }
 
-/// Generic intermediate representation of a type that can appear inside a function
-/// signature.
-#[derive(Debug)]
-pub enum SupportedInnerType {
-    /// Path types with up to 1 generic type argument on the final segment. All segments
-    /// before the last segment are ignored. The generic type argument must also be a valid
-    /// `SupportedInnerType`.
-    Path(SupportedPathType),
-    /// Array type
-    Array(Box<Self>, usize),
-    /// Unparsed type, only useful for Opaque.
-    Verbatim(Box<syn::Type>),
-    /// The unit type `()`.
-    Unit,
-}
-
-impl std::fmt::Display for SupportedInnerType {
-    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-        match self {
-            Self::Path(p) => write!(f, "{p}"),
-            Self::Array(u, len) => write!(f, "[{u}; {len}]"),
-            Self::Verbatim(ver) => write!(f, "{}", quote::quote!(#ver)),
-            Self::Unit => write!(f, "()"),
-        }
-    }
-}
-
-/// Represents a named type, with an optional path and up to 1 generic type argument.
-#[derive(Debug)]
-pub struct SupportedPathType {
-    pub ident: syn::Ident,
-    pub generic: Option<Box<SupportedInnerType>>,
-}
-
-impl std::fmt::Display for SupportedPathType {
-    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-        let ident = self.ident.to_string();
-        if let Some(generic) = &self.generic {
-            write!(f, "{ident}<{generic}>")
-        } else {
-            write!(f, "{ident}")
-        }
-    }
-}
-
-impl SupportedInnerType {
-    /// Given a `syn::Type`, returns a simplified representation of the type if it's
-    /// supported, or `None` otherwise.
-    pub fn try_from_syn_type(ty: &syn::Type) -> Option<Self> {
-        match ty {
-            syn::Type::Path(syn::TypePath { path, .. }) => {
-                let last_segment = path.segments.last().unwrap().clone();
-                match last_segment.arguments {
-                    syn::PathArguments::None => Some(SupportedInnerType::Path(SupportedPathType {
-                        ident: last_segment.ident,
-                        generic: None,
-                    })),
-                    syn::PathArguments::AngleBracketed(a) => {
-                        let generic = match a.args.into_iter().next() {
-                            Some(syn::GenericArgument::Type(t)) => {
-                                Some(Box::new(SupportedInnerType::try_from_syn_type(&t)?))
-                            }
-                            _ => None,
-                        };
-                        Some(SupportedInnerType::Path(SupportedPathType {
-                            ident: last_segment.ident,
-                            generic,
-                        }))
-                    }
-                    _ => Some(SupportedInnerType::Verbatim(Box::new(ty.clone()))),
-                }
-            }
-            syn::Type::Array(syn::TypeArray { elem, len, .. }) => {
-                let len: usize = match len {
-                    syn::Expr::Lit(lit) => match &lit.lit {
-                        syn::Lit::Int(x) => x.base10_parse().unwrap(),
-                        _ => panic!("Cannot parse array length"),
-                    },
-                    _ => panic!("Cannot parse array length"),
-                };
-                Some(SupportedInnerType::Array(
-                    Box::new(SupportedInnerType::try_from_syn_type(elem)?),
-                    len,
-                ))
-            }
-            syn::Type::Tuple(syn::TypeTuple { elems, .. }) if elems.is_empty() => {
-                Some(SupportedInnerType::Unit)
-            }
-            _ => Some(SupportedInnerType::Verbatim(Box::new(ty.clone()))),
-        }
-    }
-}
-
 pub fn convert_ident_str(ty: &Type) -> Option<String> {
     if let Type::Path(TypePath { qself: _, path }) = ty {
         if let Some(PathSegment {
@@ -149,6 +57,43 @@ pub fn convert_ident_str(ty: &Type) -> Option<String> {
     None
 }
 
+fn datetime_to_ir_type(args: &[IrType]) -> std::result::Result<IrType, String> {
+    if let [Unencodable(IrTypeUnencodable {
+        underlying_type, ..
+    })] = args
+    {
+        if let Type::Path(TypePath { qself: None, path }) = &**underlying_type {
+            return match &path.segments.last().unwrap().ident.to_string()[..] {
+                "Utc" => Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Utc))),
+                "Local" => Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Local))),
+                _ => Err("Invalid DateTime generic".to_string()),
+            };
+        }
+    }
+    Err("Invalid DateTime generic".to_string())
+}
+
+fn path_type_to_unencodable(
+    type_path: &TypePath,
+    flat_vector: Vec<(&str, Option<ArgsRefs>)>,
+) -> IrType {
+    Unencodable(IrTypeUnencodable {
+        underlying_type: Box::new(Type::Path(type_path.clone())),
+        segments: flat_vector
+            .iter()
+            .map(|(ident, option_args_refs)| {
+                (
+                    ident.to_string(),
+                    option_args_refs.as_ref().map(|args_refs| match args_refs {
+                        ArgsRefs::Generic(args_array) => Args::Generic(args_array.to_vec()),
+                        ArgsRefs::Signature(args_array) => Args::Signature(args_array.to_vec()),
+                    }),
+                )
+            })
+            .collect(),
+    })
+}
+
 impl<'a> TypeParser<'a> {
     pub fn resolve_alias<'b: 'a>(&self, ty: &'b Type) -> &Type {
         self.get_alias_type(ty).unwrap_or(ty)
@@ -159,227 +104,368 @@ impl<'a> TypeParser<'a> {
     }
 
     pub fn parse_type(&mut self, ty: &syn::Type) -> IrType {
-        let resolve_ty = self.resolve_alias(ty);
-        let supported_type = SupportedInnerType::try_from_syn_type(resolve_ty)
-            .unwrap_or_else(|| panic!("Unsupported type `{}`", type_to_string(ty)));
-        self.convert_to_ir_type(supported_type)
-            .unwrap_or_else(|| panic!("parse_type failed for ty={}", type_to_string(ty)))
-    }
+        let resolve_ty = self.resolve_alias(ty).clone();
 
-    /// Converts an inner type into an `IrType` if possible.
-    pub fn convert_to_ir_type(&mut self, ty: SupportedInnerType) -> Option<IrType> {
-        match ty {
-            SupportedInnerType::Path(p) => self.convert_path_to_ir_type(p),
-            SupportedInnerType::Array(p, len) => self.convert_array_to_ir_type(*p, len),
-            SupportedInnerType::Unit => Some(IrType::Primitive(IrTypePrimitive::Unit)),
-            SupportedInnerType::Verbatim(_) => None,
+        match resolve_ty.clone() {
+            syn::Type::Path(path) => self.convert_path_to_ir_type(&path).unwrap(),
+            syn::Type::Array(syn::TypeArray { elem, len, .. }) => {
+                let length: usize = match len {
+                    syn::Expr::Lit(lit) => match &lit.lit {
+                        syn::Lit::Int(x) => x.base10_parse().unwrap(),
+                        _ => panic!("Cannot parse array length"),
+                    },
+                    _ => panic!("Cannot parse array length"),
+                };
+                match self.parse_type(&elem) {
+                    Primitive(primitive) => {
+                        Delegate(IrTypeDelegate::Array(IrTypeDelegateArray::PrimitiveArray {
+                            length,
+                            primitive,
+                        }))
+                    }
+                    others => Delegate(IrTypeDelegate::Array(IrTypeDelegateArray::GeneralArray {
+                        length,
+                        general: Box::new(others),
+                    })),
+                }
+            }
+            syn::Type::Tuple(syn::TypeTuple { elems, .. }) if elems.is_empty() => {
+                IrType::Primitive(IrTypePrimitive::Unit)
+            }
+            _ => IrType::Unencodable(IrTypeUnencodable {
+                underlying_type: Box::new(resolve_ty),
+                segments: vec![],
+            }),
         }
     }
 
-    /// Converts an array type into an `IrType` if possible.
-    pub fn convert_array_to_ir_type(
+    fn angle_bracketed_generic_arguments_to_ir_types(
         &mut self,
-        generic: SupportedInnerType,
-        length: usize,
-    ) -> Option<IrType> {
-        self.convert_to_ir_type(generic).map(|inner| match inner {
-            Primitive(primitive) => {
-                Delegate(IrTypeDelegate::Array(IrTypeDelegateArray::PrimitiveArray {
-                    length,
-                    primitive,
-                }))
+        args: &AngleBracketedGenericArguments,
+    ) -> std::result::Result<Vec<IrType>, String> {
+        let AngleBracketedGenericArguments { args, .. } = args;
+        args.iter()
+            .filter_map(|arg| {
+                if let GenericArgument::Type(ty) = arg {
+                    Some(Ok(self.parse_type(ty)))
+                } else {
+                    None
+                }
+            })
+            .collect()
+    }
+
+    fn parenthesized_generic_arguments_to_ir_types(
+        &mut self,
+        args: &ParenthesizedGenericArguments,
+    ) -> Vec<IrType> {
+        let ParenthesizedGenericArguments { inputs, output, .. } = args;
+
+        let mut args = inputs
+            .iter()
+            .map(|ty| self.parse_type(ty))
+            .collect::<Vec<IrType>>();
+
+        match output {
+            syn::ReturnType::Default => {
+                args.insert(0, Primitive(IrTypePrimitive::Unit));
             }
-            others => Delegate(IrTypeDelegate::Array(IrTypeDelegateArray::GeneralArray {
-                length,
-                general: Box::new(others),
-            })),
-        })
+            syn::ReturnType::Type(_, ret_ty) => {
+                args.insert(0, self.parse_type(ret_ty));
+            }
+        };
+
+        args
+    }
+
+    fn path_data(
+        &mut self,
+        path: &Path,
+    ) -> std::result::Result<Vec<(String, Option<Args>)>, String> {
+        let Path { segments, .. } = path;
+
+        let data: std::result::Result<Vec<_>, String> = segments
+            .iter()
+            .map(|segment| {
+                let segment_ident = segment.ident.to_string();
+                match &segment.arguments {
+                    PathArguments::None => Ok((segment_ident, None)),
+                    PathArguments::AngleBracketed(args) => {
+                        match self.angle_bracketed_generic_arguments_to_ir_types(args) {
+                            Err(sub_err) => Err(format!(
+                                "\"{}\" of \"{}\" is not valid. {}",
+                                segment_ident,
+                                path.to_token_stream(),
+                                sub_err
+                            )),
+                            Ok(ir_types) => Ok((segment_ident, Some(Args::Generic(ir_types)))),
+                        }
+                    }
+                    PathArguments::Parenthesized(args) => Ok((
+                        segment_ident,
+                        Some(Args::Signature(
+                            self.parenthesized_generic_arguments_to_ir_types(args),
+                        )),
+                    )),
+                }
+            })
+            .collect();
+
+        let storage = data?;
+
+        Ok(storage)
     }
 
     /// Converts a path type into an `IrType` if possible.
-    pub fn convert_path_to_ir_type(&mut self, p: SupportedPathType) -> Option<IrType> {
-        let p_as_str = format!("{}", &p);
-        let ident_string = &p.ident.to_string();
-        if let Some(generic) = p.generic {
-            match ident_string.as_str() {
-                "SyncReturn" => {
-                    // Disallow nested SyncReturn
-                    if matches!(*generic, SupportedInnerType:: Path(SupportedPathType {
-                        ref ident,
-                        ..
-                    }) if ident == "SyncReturn")
+    pub fn convert_path_to_ir_type(
+        &mut self,
+        type_path: &TypePath,
+    ) -> std::result::Result<IrType, String> {
+        match &type_path {
+            TypePath { qself: None, path } => {
+                let segments: Vec<(String, Option<Args>)> = if cfg!(feature = "qualified_names") {
+                    self.path_data(path)?
+                } else {
+                    // Emulate old behavior by discarding any name qualifiers
+                    vec![self.path_data(path)?.pop().unwrap()]
+                };
+
+                use ArgsRefs::*;
+
+                let flat_vector = segments.unpack();
+                let flat_array = &flat_vector[..];
+                match flat_array {
+                    // Non generic types
+                    #[cfg(all(feature = "chrono", feature = "qualified_names"))]
+                    [("chrono", None), ("Duration", None)] => {
+                        Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Duration)))
+                    }
+
+                    #[cfg(all(feature = "chrono", not(feature = "qualified_names")))]
+                    [("Duration", None)] => {
+                        Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Duration)))
+                    }
+
+                    #[cfg(all(feature = "chrono", feature = "qualified_names"))]
+                    [("chrono", None), ("NaiveDateTime", None)] => {
+                        Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Naive)))
+                    }
+
+                    #[cfg(all(feature = "chrono", not(feature = "qualified_names")))]
+                    [("NaiveDateTime", None)] => {
+                        Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Naive)))
+                    }
+
+                    #[cfg(feature = "qualified_names")]
+                    [("flutter_rust_bridge", None), ("DartAbi", None)] => {
+                        Ok(Dynamic(IrTypeDynamic))
+                    }
+
+                    [("DartAbi", None)] => Ok(Dynamic(IrTypeDynamic)),
+
+                    #[cfg(all(feature = "uuid", feature = "qualified_names"))]
+                    [("uuid", None), ("Uuid", None)] => Ok(Delegate(IrTypeDelegate::Uuid)),
+
+                    #[cfg(all(feature = "uuid", not(feature = "qualified_names")))]
+                    [("Uuid", None)] => Ok(Delegate(IrTypeDelegate::Uuid)),
+
+                    #[cfg(feature = "qualified_names")]
+                    [("flutter_rust_bridge", None), ("DartOpaque", None)] => {
+                        Ok(DartOpaque(IrTypeDartOpaque {}))
+                    }
+
+                    [("DartOpaque", None)] => Ok(DartOpaque(IrTypeDartOpaque {})),
+
+                    [("String", None)] => Ok(Delegate(IrTypeDelegate::String)),
+
+                    // TODO: change to "if let guard" https://github.com/rust-lang/rust/issues/51114
+                    [(name, None)]
+                        if matches!(IrTypePrimitive::try_from_rust_str(name), Some(..)) =>
                     {
-                        panic!(
-                            "Nested SyncReturn is invalid. (SyncReturn<SyncReturn<{}>>)",
-                            p_as_str
-                        );
+                        Ok(Primitive(IrTypePrimitive::try_from_rust_str(name).unwrap()))
                     }
-                    self.convert_to_ir_type(*generic)
-                        .map(|ir| SyncReturn(IrTypeSyncReturn::new(ir)))
-                }
-                "Vec" => match *generic {
-                    // Special-case Vec<String> as StringList
-                    SupportedInnerType::Path(SupportedPathType { ref ident, .. })
-                        if ident == "String" =>
-                    {
-                        Some(IrType::Delegate(IrTypeDelegate::StringList))
-                    }
-                    // Special-case Vec<Uuid> as Vec<u8>
-                    #[cfg(feature = "uuid")]
-                    SupportedInnerType::Path(SupportedPathType { ref ident, .. })
-                        if ident == "Uuid" =>
-                    {
-                        Some(IrType::Delegate(IrTypeDelegate::Uuids))
-                    }
-                    _ => self.convert_to_ir_type(*generic).map(|inner| match inner {
-                        Primitive(primitive) => PrimitiveList(IrTypePrimitiveList { primitive }),
-                        Delegate(IrTypeDelegate::Time(time)) => {
-                            Delegate(IrTypeDelegate::TimeList(time))
-                        }
-                        others => GeneralList(IrTypeGeneralList {
-                            inner: Box::new(others),
-                        }),
-                    }),
-                },
-                "ZeroCopyBuffer" => {
-                    let inner = self.convert_to_ir_type(*generic);
-                    if let Some(IrType::PrimitiveList(IrTypePrimitiveList { primitive })) = inner {
-                        Some(IrType::Delegate(
-                            IrTypeDelegate::ZeroCopyBufferVecPrimitive(primitive),
-                        ))
-                    } else {
-                        None
-                    }
-                }
-                "RustOpaque" => match *generic {
-                    SupportedInnerType::Array(p, len) => self.convert_array_to_ir_type(*p, len),
-                    SupportedInnerType::Verbatim(ver) => {
-                        Some(IrType::RustOpaque(IrTypeRustOpaque::from(ver.as_ref())))
-                    }
-                    SupportedInnerType::Path(path) => {
-                        Some(IrType::RustOpaque(IrTypeRustOpaque::from(path.to_string())))
-                    }
-                    SupportedInnerType::Unit => {
-                        Some(IrType::RustOpaque(IrTypeRustOpaque::new_unit()))
-                    }
-                },
-                "Box" => self.convert_to_ir_type(*generic).map(|inner| {
-                    Boxed(IrTypeBoxed {
-                        exist_in_real_api: true,
-                        inner: Box::new(inner),
-                    })
-                }),
-                "Option" => {
-                    // Disallow nested Option
-                    if matches!(generic.as_ref(), SupportedInnerType:: Path(SupportedPathType { ident, .. }) if ident == "Option")
-                    {
-                        panic!(
-                            "Nested optionals without indirection are not supported. (Option<Option<{}>>)",
-                            p_as_str
-                        );
-                    }
-                    Some(IrType::Optional(
-                        // TODO(Desdaemon): Encapsulate this logic
-                        match self.convert_to_ir_type(*generic)? {
-                            inner @ (StructRef(..)
-                            | EnumRef(..)
-                            | RustOpaque(..)
-                            | DartOpaque(..)
-                            | Primitive(..)
-                            | Delegate(IrTypeDelegate::PrimitiveEnum { .. })) => {
-                                IrTypeOptional::new_boxed(inner)
-                            }
-                            #[cfg(feature = "chrono")]
-                            inner @ Delegate(IrTypeDelegate::Time(..)) => {
-                                IrTypeOptional::new_boxed(inner)
-                            }
-                            inner => IrTypeOptional::new(inner),
-                        },
-                    ))
-                }
-                #[cfg(feature = "chrono")]
-                "DateTime" => match *generic {
-                    SupportedInnerType::Path(SupportedPathType { ref ident, .. }) => {
-                        match ident.to_string().as_str() {
-                            "Utc" => Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Utc))),
-                            "Local" => Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Local))),
-                            _ => panic!("Unknown DateTime generic offset"),
-                        }
-                    }
-                    _ => panic!("Invalid DateTime generic"),
-                },
-                _ => None,
-            }
-        } else {
-            #[cfg(feature = "chrono")]
-            match ident_string.as_str() {
-                "Duration" => return Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Duration))),
-                "NaiveDateTime" => return Some(Delegate(IrTypeDelegate::Time(IrTypeTime::Naive))),
-                "DartAbi" => return Some(Dynamic(IrTypeDynamic)),
-                _ => {}
-            };
-            #[cfg(feature = "uuid")]
-            if ident_string.as_str() == "Uuid" {
-                return Some(Delegate(IrTypeDelegate::Uuid));
-            }
-            if ident_string.as_str() == "DartOpaque" {
-                return Some(DartOpaque(IrTypeDartOpaque {}));
-            }
-            IrTypePrimitive::try_from_rust_str(ident_string)
-                .map(Primitive)
-                .or_else(|| {
-                    if ident_string == "String" {
-                        Some(IrType::Delegate(IrTypeDelegate::String))
-                    } else if self.src_structs.contains_key(ident_string) {
-                        if !self.parsing_or_parsed_struct_names.contains(ident_string) {
+
+                    [(name, None)] if self.src_structs.contains_key(&name.to_string()) => {
+                        let ident_string = name.to_string();
+                        if !self.parsing_or_parsed_struct_names.contains(&ident_string) {
                             self.parsing_or_parsed_struct_names
                                 .insert(ident_string.to_owned());
-                            let api_struct = self.parse_struct_core(&p.ident);
+                            let api_struct = match self.parse_struct_core(&ident_string) {
+                                Some(ir_struct) => ir_struct,
+                                None => {
+                                    return Ok(path_type_to_unencodable(type_path, flat_vector))
+                                }
+                            };
                             self.struct_pool.insert(ident_string.to_owned(), api_struct);
                         }
-                        Some(StructRef(IrTypeStructRef {
+
+                        Ok(StructRef(IrTypeStructRef {
                             name: ident_string.to_owned(),
                             freezed: self
                                 .struct_pool
-                                .get(ident_string)
+                                .get(&ident_string)
                                 .map(IrStruct::using_freezed)
                                 .unwrap_or(false),
                             empty: self
                                 .struct_pool
-                                .get(ident_string)
+                                .get(&ident_string)
                                 .map(IrStruct::is_empty)
                                 .unwrap_or(false),
                         }))
-                    } else if self.src_enums.contains_key(ident_string) {
+                    }
+
+                    [(name, None)] if self.src_enums.contains_key(&name.to_string()) => {
+                        let ident_string = name.to_string();
                         if self.parsed_enums.insert(ident_string.to_owned()) {
-                            let enu = self.parse_enum_core(&p.ident);
+                            let enu = self.parse_enum_core(&ident_string);
                             self.enum_pool.insert(ident_string.to_owned(), enu);
                         }
+
                         let enum_ref = IrTypeEnumRef {
                             name: ident_string.to_owned(),
                         };
-                        let enu = self.enum_pool.get(ident_string);
+                        let enu = self.enum_pool.get(&ident_string);
                         let is_struct = enu.map(IrEnum::is_struct).unwrap_or(true);
                         if is_struct {
-                            Some(EnumRef(enum_ref))
+                            Ok(EnumRef(enum_ref))
                         } else {
-                            Some(Delegate(IrTypeDelegate::PrimitiveEnum {
+                            Ok(Delegate(IrTypeDelegate::PrimitiveEnum {
                                 ir: enum_ref,
                                 // TODO(Desdaemon): Parse #[repr] from enum
                                 repr: IrTypePrimitive::I32,
                             }))
                         }
-                    } else {
-                        None
                     }
-                })
+
+                    // Generic types
+                    #[cfg(feature = "qualified_names")]
+                    [("flutter_rust_bridge", None), ("SyncReturn", Some(Generic([element])))] => {
+                        Ok(SyncReturn(IrTypeSyncReturn::new(element.clone())))
+                    }
+
+                    [("SyncReturn", Some(Generic([element])))] => {
+                        Ok(SyncReturn(IrTypeSyncReturn::new(element.clone())))
+                    }
+
+                    [("Vec", Some(Generic([Delegate(IrTypeDelegate::String)])))] => {
+                        Ok(Delegate(IrTypeDelegate::StringList))
+                    }
+
+                    #[cfg(feature = "uuid")]
+                    [("Vec", Some(Generic([Delegate(IrTypeDelegate::Uuid)])))] => {
+                        Ok(Delegate(IrTypeDelegate::Uuids))
+                    }
+
+                    [("Vec", Some(Generic([Primitive(primitive)])))] => {
+                        Ok(PrimitiveList(IrTypePrimitiveList {
+                            primitive: primitive.clone(),
+                        }))
+                    }
+
+                    [("Vec", Some(Generic([Delegate(IrTypeDelegate::Time(time))])))] => {
+                        Ok(Delegate(IrTypeDelegate::TimeList(*time)))
+                    }
+
+                    [("Vec", Some(Generic([element])))] => Ok(GeneralList(IrTypeGeneralList {
+                        inner: Box::new(element.clone()),
+                    })),
+
+                    #[cfg(feature = "qualified_names")]
+                    [("flutter_rust_bridge", None), (
+                        "ZeroCopyBuffer",
+                        Some(Generic([PrimitiveList(IrTypePrimitiveList { primitive })])),
+                    )] => Ok(Delegate(IrTypeDelegate::ZeroCopyBufferVecPrimitive(
+                        primitive.clone(),
+                    ))),
+
+                    [(
+                        "ZeroCopyBuffer",
+                        Some(Generic([PrimitiveList(IrTypePrimitiveList { primitive })])),
+                    )] => Ok(Delegate(IrTypeDelegate::ZeroCopyBufferVecPrimitive(
+                        primitive.clone(),
+                    ))),
+
+                    #[cfg(feature = "qualified_names")]
+                    [("flutter_rust_bridge", None), (
+                        "RustOpaque",
+                        Some(Generic([Delegate(IrTypeDelegate::Array(array_delegate))])),
+                    )] => Ok(Delegate(IrTypeDelegate::Array(array_delegate.clone()))),
+
+                    [(
+                        "RustOpaque",
+                        Some(Generic([Delegate(IrTypeDelegate::Array(array_delegate))])),
+                    )] => Ok(Delegate(IrTypeDelegate::Array(array_delegate.clone()))),
+
+                    #[cfg(feature = "qualified_names")]
+                    [("flutter_rust_bridge", None), ("RustOpaque", Some(Generic([Primitive(IrTypePrimitive::Unit)])))] => {
+                        Ok(RustOpaque(IrTypeRustOpaque::new_unit()))
+                    }
+
+                    [("RustOpaque", Some(Generic([Primitive(IrTypePrimitive::Unit)])))] => {
+                        Ok(RustOpaque(IrTypeRustOpaque::new_unit()))
+                    }
+
+                    #[cfg(feature = "qualified_names")]
+                    [("flutter_rust_bridge", None), ("RustOpaque", Some(Generic([ty])))] => {
+                        Ok(RustOpaque(IrTypeRustOpaque::from(ty.rust_api_type())))
+                    }
+
+                    [("RustOpaque", Some(Generic([ty])))] => {
+                        Ok(RustOpaque(IrTypeRustOpaque::from(ty.rust_api_type())))
+                    }
+
+                    [("Box", Some(Generic([inner])))] => Ok(Boxed(IrTypeBoxed {
+                        exist_in_real_api: true,
+                        inner: Box::new(inner.clone()),
+                    })),
+
+                    [("Option", Some(Generic([Optional(_)])))] => Err(format!(
+                        "Nested optionals without indirection are not supported. {}",
+                        type_path.to_token_stream()
+                    )),
+
+                    [("Option", Some(Generic([inner])))] => Ok(Optional(match inner {
+                        StructRef(..)
+                        | EnumRef(..)
+                        | RustOpaque(..)
+                        | DartOpaque(..)
+                        | Primitive(..)
+                        | Delegate(IrTypeDelegate::PrimitiveEnum { .. }) => {
+                            IrTypeOptional::new_boxed(inner.clone())
+                        }
+
+                        #[cfg(feature = "chrono")]
+                        Delegate(IrTypeDelegate::Time(..)) => {
+                            IrTypeOptional::new_boxed(inner.clone())
+                        }
+
+                        _ => IrTypeOptional::new(inner.clone()),
+                    })),
+
+                    #[cfg(all(feature = "chrono", feature = "qualified_names"))]
+                    [("chrono", None), ("DateTime", Some(Generic(args)))] => {
+                        datetime_to_ir_type(args)
+                    }
+
+                    #[cfg(feature = "chrono")]
+                    [("DateTime", Some(Generic(args)))] => datetime_to_ir_type(args),
+
+                    _ => Ok(path_type_to_unencodable(type_path, flat_vector)),
+                }
+            }
+            TypePath {
+                qself: Some(QSelf { ty, .. }),
+                ..
+            } => Err(format!(
+                "qself \"<{}>\" in \"{}\", and all qself syntax, is unsupported",
+                ty.to_token_stream(),
+                type_path.to_token_stream()
+            )),
         }
     }
-}
 
-impl<'a> TypeParser<'a> {
-    fn parse_enum_core(&mut self, ident: &syn::Ident) -> IrEnum {
-        let src_enum = self.src_enums[&ident.to_string()];
+    fn parse_enum_core(&mut self, ident_string: &String) -> IrEnum {
+        let src_enum = self.src_enums[ident_string];
         let name = src_enum.ident.to_string();
         let wrapper_name = if src_enum.mirror {
             Some(format!("mirror_{name}"))
@@ -437,13 +523,13 @@ impl<'a> TypeParser<'a> {
         IrEnum::new(name, wrapper_name, path, comments, variants)
     }
 
-    fn parse_struct_core(&mut self, ident: &syn::Ident) -> IrStruct {
-        let src_struct = self.src_structs[&ident.to_string()];
+    fn parse_struct_core(&mut self, ident_string: &String) -> Option<IrStruct> {
+        let src_struct = self.src_structs[ident_string];
         let mut fields = Vec::new();
         let (is_fields_named, struct_fields) = match &src_struct.src.fields {
             Fields::Named(FieldsNamed { named, .. }) => (true, named),
             Fields::Unnamed(FieldsUnnamed { unnamed, .. }) => (false, unnamed),
-            _ => panic!("unsupported type: {:?}", src_struct.src.fields),
+            _ => return None,
         };
         for (idx, field) in struct_fields.iter().enumerate() {
             let field_name = field
@@ -468,7 +554,7 @@ impl<'a> TypeParser<'a> {
         let path = Some(src_struct.path.clone());
         let metadata = extract_metadata(&src_struct.src.attrs);
         let comments = extract_comments(&src_struct.src.attrs);
-        IrStruct {
+        Some(IrStruct {
             name,
             wrapper_name,
             path,
@@ -476,6 +562,6 @@ impl<'a> TypeParser<'a> {
             is_fields_named,
             dart_metadata: metadata,
             comments,
-        }
+        })
     }
 }

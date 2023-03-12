@@ -52,10 +52,10 @@ mod tests {
     /// test to examine the problems, because this one is a copy of `build.rs` in that
     /// `frb_example/pure_dart`. For example, you may run this `fn pure_dart()` unit
     /// test in the debugger.
-    /// 
+    ///
     /// In some scenarios, such as when using VSCode to execute this test, the `cargo build`
     /// will be run before this `fn pure_dart()` test gets executed (see #1106 for details).
-    /// Therefore, you may even fail to execute *this* function. In that case, you may run: 
+    /// Therefore, you may even fail to execute *this* function. In that case, you may run:
     /// `mv ../frb_example/pure_dart/rust/build.rs ../frb_example/pure_dart/rust/_build.rs`
     /// Then that `build.rs` is temporarily disabled and cargo build can run.
     #[test]
