@@ -7,7 +7,7 @@ use log::{debug, error, info};
 
 fn main() -> anyhow::Result<()> {
     //  get valiable options from user input command
-    let raw_opts = RawOpts::try_parse_args_or_file()?;
+    let raw_opts = RawOpts::try_parse_args_or_yaml()?;
     init_logger("./logs/", raw_opts.verbose)?;
 
     #[cfg(feature = "serde")]
@@ -78,34 +78,11 @@ mod tests {
 
         set_dir();
 
-        /// Path of input Rust code
-        const RUST_INPUT: &str = "../frb_example/pure_dart/rust/src/api.rs";
-        /// Path of output generated Dart code
-        const DART_OUTPUT: &str = "../frb_example/pure_dart//dart/lib/bridge_generated.dart";
-
         let _ = *LOGGER;
 
         // Options for frb_codegen
         let raw_opts = RawOpts {
-            // Path of input Rust code
-            rust_input: vec![RUST_INPUT.to_string()],
-            // Path of output generated Dart code
-            dart_output: vec![DART_OUTPUT.to_string()],
-            wasm: true,
-            dart_decl_output: Some(
-                "../frb_example/pure_dart/dart/lib/bridge_definitions.dart".into(),
-            ),
-            dart_format_line_length: 120,
-            // (extra) c output path
-            c_output: Some(vec![
-                // each field should contain head file name
-                "../frb_example/pure_dart/rust/c_output_path/c_output.h".into(),
-            ]),
-            extra_c_output_path: Some(vec![
-                "../frb_example/pure_dart/rust/c_output_path_extra/".into()
-            ]),
-
-            // for other options use defaults
+            config_file: Some("../frb_example/pure_dart/rust/.flutter_rust_bridge.yml".into()),
             ..Default::default()
         };
 

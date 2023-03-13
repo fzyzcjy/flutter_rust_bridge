@@ -2,6 +2,7 @@ use std::borrow::Cow;
 use std::env;
 use std::ffi::OsString;
 use std::fs;
+use std::fs::File;
 use std::path::Path;
 use std::path::PathBuf;
 use std::str::FromStr;
@@ -22,12 +23,18 @@ use crate::utils::{find_all_duplicates, BlockIndex};
 #[command(bin_name = "flutter_rust_bridge_codegen", version)]
 pub struct RawOpts {
     /// Path of input Rust code
-    #[clap(short, long, required = true, num_args(1..))]
+    #[arg(short, long, required_unless_present = "config_file", num_args = 1..)]
     pub rust_input: Vec<String>,
 
     /// Path of output generated Dart code
-    #[clap(short, long, required = true, num_args(1..))]
+    #[arg(short, long, required_unless_present = "config_file", num_args = 1..)]
     pub dart_output: Vec<String>,
+
+    /// Path to a YAML config file.
+    /// If present, other options and flags will be ignored.
+    /// Accepts the same options as the CLI, but uses snake_case keys.
+    #[serde(skip)]
+    pub config_file: Option<String>,
 
     /// If provided, generated Dart declaration code to this separate file
     #[arg(long)]
@@ -42,15 +49,15 @@ pub struct RawOpts {
     pub extra_c_output_path: Option<Vec<String>>,
 
     /// Crate directory for your Rust project
-    #[clap(long, num_args(1..))]
+    #[arg(long, num_args = 1..)]
     pub rust_crate_dir: Option<Vec<String>>,
 
     /// Output path of generated Rust code
-    #[clap(long, num_args(1..))]
+    #[arg(long, num_args = 1..)]
     pub rust_output: Option<Vec<String>>,
 
     /// Generated class name
-    #[clap(long, num_args(1..))]
+    #[arg(long, num_args = 1..)]
     pub class_name: Option<Vec<String>>,
 
     /// Line length for Dart formatting
@@ -68,7 +75,7 @@ pub struct RawOpts {
     pub skip_add_mod_to_lib: bool,
 
     /// Path to the installed LLVM
-    #[clap(long, num_args(1..))]
+    #[arg(long, num_args = 1..)]
     pub llvm_path: Option<Vec<String>>,
 
     /// LLVM compiler opts
@@ -76,7 +83,7 @@ pub struct RawOpts {
     pub llvm_compiler_opts: Option<String>,
 
     /// Path to root of Dart project, otherwise inferred from --dart-output
-    #[clap(long, num_args(1..))]
+    #[arg(long, num_args = 1..)]
     pub dart_root: Option<Vec<String>>,
 
     /// Skip running build_runner even when codegen-required code is detected
@@ -149,7 +156,7 @@ fn bail(err: clap::error::ErrorKind, message: Cow<str>) -> ! {
 impl RawOpts {
     /// Parses options from arguments, or from a config file if no arguments are given.
     /// Terminates the program if argument validation fails.
-    pub fn try_parse_args_or_file() -> anyhow::Result<Self> {
+    pub fn try_parse_args_or_yaml() -> anyhow::Result<Self> {
         const CONFIG_LOCATIONS: [&str; 3] = [
             ".flutter_rust_bridge.yml",
             ".flutter_rust_bridge.yaml",
@@ -163,6 +170,7 @@ impl RawOpts {
             Err(err) => 'from_file: {
                 for location in CONFIG_LOCATIONS {
                     let Ok(file) = fs::File::open(location) else {continue};
+                    log::info!("Found config file {location}");
                     break 'from_file serde_yaml::from_reader(file)
                         .map_err(|err| anyhow::anyhow!("Could not parse {location}: {err}"))?;
                 }
@@ -175,7 +183,11 @@ impl RawOpts {
     }
 }
 
-pub fn parse(raw: RawOpts) -> Vec<Opts> {
+pub fn parse(mut raw: RawOpts) -> Vec<Opts> {
+    if let Some(config) = raw.config_file {
+        raw = parse_yaml(&config);
+    }
+
     use clap::error::ErrorKind;
     // rust input path(s)
     let rust_input_paths = get_valid_canon_paths(&raw.rust_input);
@@ -315,6 +327,68 @@ pub fn parse(raw: RawOpts) -> Vec<Opts> {
             }
         })
         .collect()
+}
+
+/// Terminates the program if either the file doesn't exist, or is invalid.
+fn parse_yaml(path: &str) -> RawOpts {
+    use clap::error::ErrorKind;
+
+    let file = File::open(path)
+        .map_err(|err| {
+            bail(
+                ErrorKind::Io,
+                format!("Could not open {path}: {err}").into(),
+            )
+        })
+        .unwrap();
+    let config = serde_yaml::from_reader(file)
+        .map_err(|err| {
+            bail(
+                ErrorKind::InvalidValue,
+                format!("Could not parse config from {path}: {err}").into(),
+            )
+        })
+        .unwrap();
+    anchor_config(config, path)
+}
+
+fn anchor_config(config: RawOpts, config_path: &str) -> RawOpts {
+    let config_path = canon_pathbuf(config_path);
+    let cwd = config_path.parent().unwrap();
+    let anchor = |path: String| {
+        if Path::new(&path).is_absolute() {
+            path
+        } else {
+            cwd.join(&path).to_str().unwrap().to_owned()
+        }
+    };
+    let anchor_many = |paths: Vec<String>| paths.into_iter().map(anchor).collect();
+
+    // Don't collapse reassignments into a spread here, as future configs may need to be
+    // correctly re-anchored.
+    RawOpts {
+        rust_input: anchor_many(config.rust_input),
+        dart_output: anchor_many(config.dart_output),
+        rust_output: config.rust_output.map(anchor_many),
+        dart_decl_output: config.dart_decl_output.map(anchor),
+        c_output: config.c_output.map(anchor_many),
+        extra_c_output_path: config.extra_c_output_path.map(anchor_many),
+        rust_crate_dir: config.rust_crate_dir.map(anchor_many),
+        dart_root: config.dart_root.map(anchor_many),
+        config_file: config.config_file,
+        class_name: config.class_name,
+        dart_format_line_length: config.dart_format_line_length,
+        dart_enums_style: config.dart_enums_style,
+        skip_add_mod_to_lib: config.skip_add_mod_to_lib,
+        llvm_path: config.llvm_path,
+        llvm_compiler_opts: config.llvm_compiler_opts,
+        no_build_runner: config.no_build_runner,
+        verbose: config.verbose,
+        wasm: config.wasm,
+        inline_rust: config.inline_rust,
+        skip_deps_check: config.skip_deps_check,
+        dump: config.dump,
+    }
 }
 
 fn get_refined_c_output(

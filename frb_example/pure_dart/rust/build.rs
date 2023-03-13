@@ -12,7 +12,7 @@ fn main() {
     println!("cargo:rerun-if-changed={RUST_INPUT}");
 
     // Options for frb_codegen are read from the config file
-    let raw_opts = RawOpts::try_parse_args_or_file().unwrap();
+    let raw_opts = RawOpts::try_parse_args_or_yaml().unwrap();
 
     // get opts from raw opts
     let all_configs = config_parse(raw_opts);
