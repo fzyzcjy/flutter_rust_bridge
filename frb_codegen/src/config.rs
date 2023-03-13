@@ -24,68 +24,87 @@ pub struct RawOpts {
     /// Path of input Rust code
     #[clap(short, long, required = true, num_args(1..))]
     pub rust_input: Vec<String>,
+
     /// Path of output generated Dart code
     #[clap(short, long, required = true, num_args(1..))]
     pub dart_output: Vec<String>,
+
     /// If provided, generated Dart declaration code to this separate file
     #[arg(long)]
     pub dart_decl_output: Option<String>,
-    /// Output path (including file name) of generated C header, each field corresponding to that of `rust-input`
+
+    /// Output path (including file name) of generated C header, each field corresponding to that of --rust-input.
     #[arg(short, long)]
     pub c_output: Option<Vec<String>>,
+
     /// Extra output path (excluding file name) of generated C header
     #[arg(short, long)]
     pub extra_c_output_path: Option<Vec<String>>,
+
     /// Crate directory for your Rust project
     #[clap(long, num_args(1..))]
     pub rust_crate_dir: Option<Vec<String>>,
+
     /// Output path of generated Rust code
     #[clap(long, num_args(1..))]
     pub rust_output: Option<Vec<String>>,
+
     /// Generated class name
     #[clap(long, num_args(1..))]
     pub class_name: Option<Vec<String>>,
+
     /// Line length for Dart formatting
     #[arg(long, default_value = "80")]
     pub dart_format_line_length: u32,
+
     /// The generated Dart enums will have their variant names camelCased.
     #[arg(long)]
     #[serde(default)]
     pub dart_enums_style: bool,
+
     /// Skip automatically adding `mod bridge_generated;` to `lib.rs`
     #[arg(long)]
     #[serde(default)]
     pub skip_add_mod_to_lib: bool,
+
     /// Path to the installed LLVM
     #[clap(long, num_args(1..))]
     pub llvm_path: Option<Vec<String>>,
+
     /// LLVM compiler opts
     #[arg(long)]
     pub llvm_compiler_opts: Option<String>,
+
     /// Path to root of Dart project, otherwise inferred from --dart-output
     #[clap(long, num_args(1..))]
     pub dart_root: Option<Vec<String>>,
+
     /// Skip running build_runner even when codegen-required code is detected
     #[arg(long)]
     #[serde(default)]
     pub no_build_runner: bool,
+
     /// Show debug messages.
     #[arg(short, long)]
     #[serde(default)]
     pub verbose: bool,
+
     /// Enable WASM module generation.
     /// Requires: --dart-decl-output
     #[arg(long)]
     #[serde(default)]
     pub wasm: bool,
+
     /// Inline declaration of Rust bridge modules
     #[arg(long)]
     #[serde(default)]
     pub inline_rust: bool,
+
     /// Skip dependencies check.
     #[arg(long)]
     #[serde(default)]
     pub skip_deps_check: bool,
+
     /// A list of data to be dumped. If specified without a value, defaults to all.
     #[cfg(feature = "serde")]
     #[arg(long, value_enum, num_args(0..))]
@@ -125,6 +144,35 @@ pub enum Dump {
 #[inline(never)]
 fn bail(err: clap::error::ErrorKind, message: Cow<str>) -> ! {
     RawOpts::command().error(err, message).exit()
+}
+
+impl RawOpts {
+    /// Parses options from arguments, or from a config file if no arguments are given.
+    /// Terminates the program if argument validation fails.
+    pub fn try_parse_args_or_file() -> anyhow::Result<Self> {
+        const CONFIG_LOCATIONS: [&str; 3] = [
+            ".flutter_rust_bridge.yml",
+            ".flutter_rust_bridge.yaml",
+            ".flutter_rust_bridge.json",
+        ];
+        let has_args = std::env::args_os().len() > 1;
+        Ok(match Self::try_parse() {
+            Ok(opts) => opts,
+            Err(err) if has_args => err.exit(),
+            // Try to parse a command file, if exists
+            Err(err) => 'from_file: {
+                for location in CONFIG_LOCATIONS {
+                    let Ok(file) = fs::File::open(location) else {continue};
+                    break 'from_file serde_yaml::from_reader(file)
+                        .map_err(|err| anyhow::anyhow!("Could not parse {location}: {err}"))?;
+                }
+                _ = err.print();
+
+                eprintln!("Hint: To call flutter_rust_bridge_codegen with no arguments, fill in .flutter_rust_bridge.yml with your config.");
+                std::process::exit(1)
+            }
+        })
+    }
 }
 
 pub fn parse(raw: RawOpts) -> Vec<Opts> {

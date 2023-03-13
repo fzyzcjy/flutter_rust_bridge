@@ -8,7 +8,7 @@ Options:
       --dart-decl-output <DART_DECL_OUTPUT>
           If provided, generated Dart declaration code to this separate file
   -c, --c-output <C_OUTPUT>
-          Output path (including file name) of generated C header, each field corresponding to that of `rust-input`
+          Output path (including file name) of generated C header, each field corresponding to that of --rust-input
   -e, --extra-c-output-path <EXTRA_C_OUTPUT_PATH>
           Extra output path (excluding file name) of generated C header
       --rust-crate-dir <RUST_CRATE_DIR>...

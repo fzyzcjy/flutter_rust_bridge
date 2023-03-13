@@ -9,7 +9,7 @@ pub struct IrTypeOptional {
 }
 }
 
-crate::derive_serde_as_newtype!(IrTypeOptional);
+crate::derive_serde_inner_as_newtype!(IrTypeOptional);
 
 impl IrTypeOptional {
     pub fn new(ptr: IrType) -> Self {

@@ -211,10 +211,10 @@ impl PathExt for std::path::Path {
     }
 }
 
-/// For structs that only has an `inner` serializable attribute that
+/// For structs that only has an `inner` serializable property that
 /// would be better (de)serialized as a newtype.
 #[macro_export]
-macro_rules! derive_serde_as_newtype {
+macro_rules! derive_serde_inner_as_newtype {
     ($($type:ident),*) => {$(
         #[cfg(feature = "serde")]
         impl ::serde::Serialize for $type {
@@ -228,7 +228,7 @@ macro_rules! derive_serde_as_newtype {
     )*};
 }
 
-/// Adds some default derives for IR types.
+/// Adds some common derives for IR types.
 ///
 /// Valid forms:
 /// - `ir! { pub struct Foo { .. } .. }`

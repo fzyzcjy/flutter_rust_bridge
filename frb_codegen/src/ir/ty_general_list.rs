@@ -8,7 +8,7 @@ pub struct IrTypeGeneralList {
 }
 }
 
-crate::derive_serde_as_newtype!(IrTypeGeneralList);
+crate::derive_serde_inner_as_newtype!(IrTypeGeneralList);
 
 impl IrTypeTrait for IrTypeGeneralList {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile) {

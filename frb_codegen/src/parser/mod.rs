@@ -564,14 +564,47 @@ fn extract_metadata(attrs: &[Attribute]) -> Vec<IrDartAnnotation> {
 }
 
 crate::ir! {
-#[no_serde]
 pub enum DefaultValues {
+    #[cfg_attr(feature = "serde", serde(serialize_with = "serialize_litstr"))]
     Str(syn::LitStr),
+    #[cfg_attr(feature = "serde", serde(serialize_with = "serialize_litbool"))]
     Bool(syn::LitBool),
+    #[cfg_attr(feature = "serde", serde(serialize_with = "serialize_litint"))]
     Int(syn::LitInt),
+    #[cfg_attr(feature = "serde", serde(serialize_with = "serialize_litfloat"))]
     Float(syn::LitFloat),
+    #[cfg_attr(feature = "serde", serde(serialize_with = "serialize_punctuated"))]
     Vec(Punctuated<DefaultValues, Token![,]>),
 }
+}
+
+#[cfg(feature = "serde")]
+use _serde::*;
+#[cfg(feature = "serde")]
+mod _serde {
+    use serde::{Serialize, Serializer};
+    use syn::{punctuated::Punctuated, Token};
+
+    use super::DefaultValues;
+
+    pub fn serialize_litstr<S: Serializer>(lit: &syn::LitStr, s: S) -> Result<S::Ok, S::Error> {
+        lit.value().serialize(s)
+    }
+    pub fn serialize_litbool<S: Serializer>(lit: &syn::LitBool, s: S) -> Result<S::Ok, S::Error> {
+        lit.value().serialize(s)
+    }
+    pub fn serialize_litint<S: Serializer>(lit: &syn::LitInt, s: S) -> Result<S::Ok, S::Error> {
+        lit.base10_parse::<i64>().unwrap().serialize(s)
+    }
+    pub fn serialize_litfloat<S: Serializer>(lit: &syn::LitFloat, s: S) -> Result<S::Ok, S::Error> {
+        lit.base10_parse::<f64>().unwrap().serialize(s)
+    }
+    pub fn serialize_punctuated<S: Serializer>(
+        lit: &Punctuated<DefaultValues, Token![,]>,
+        s: S,
+    ) -> Result<S::Ok, S::Error> {
+        lit.into_iter().collect::<Vec<_>>().serialize(s)
+    }
 }
 
 impl DefaultValues {
@@ -629,29 +662,6 @@ impl Parse for DefaultValues {
             input.parse().map(Self::Int)
         } else {
             Err(lh.error())
-        }
-    }
-}
-
-#[cfg(feature = "serde")]
-impl serde::Serialize for DefaultValues {
-    fn serialize<S>(&self, s: S) -> std::result::Result<S::Ok, S::Error>
-    where
-        S: serde::Serializer,
-    {
-        const NAME: &str = "DefaultValues";
-        match self {
-            Self::Str(value) => s.serialize_newtype_variant(NAME, 0, "Str", &value.value()),
-            Self::Bool(value) => s.serialize_newtype_variant(NAME, 1, "Bool", &value.value()),
-            Self::Int(value) => {
-                s.serialize_newtype_variant(NAME, 2, "Int", &value.base10_parse::<i64>().unwrap())
-            }
-            Self::Float(value) => {
-                s.serialize_newtype_variant(NAME, 3, "Float", &value.base10_parse::<f64>().unwrap())
-            }
-            Self::Vec(value) => {
-                s.serialize_newtype_variant(NAME, 4, "Vec", &value.into_iter().collect::<Vec<_>>())
-            }
         }
     }
 }
