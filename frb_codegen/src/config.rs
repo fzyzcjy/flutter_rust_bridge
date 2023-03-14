@@ -194,11 +194,13 @@ impl RawOpts {
                         }
                         match serde_yaml::from_reader(pubspec) {
                             Ok(Needle { data: Some(data) }) => return Ok(data),
-                            Ok(_) => {
+                            Ok(Needle { data: None }) => {
                                 hint = format!("create an entry called 'flutter_rust_bridge' in {location} with your config.");
                             }
                             Err(err) => {
-                                eprintln!("The 'flutter_rust_bridge' entry in {location} could not be parsed:\n  {err}");
+                                return Err(anyhow::Error::new(err).context(format!(
+                                    "Could not parse the 'flutter_rust_bridge' entry in {location}"
+                                )));
                             }
                         }
                     }
