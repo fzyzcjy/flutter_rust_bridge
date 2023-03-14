@@ -1,7 +1,8 @@
-## Unreleased
+## 1.70.0
 
 * Add tests to gen, build, run pure_dart #1106 (thanks @coder0xff)
 * Generate Dart enum variants in camelCase #1112 (thanks @erikas-taroza)
+* General CLI improvements: dumping, upgrade clap, yaml config, serialize IR, bump versions, etc #1119 (thanks @Desdaemon)
 
 ## 1.69.0
 
