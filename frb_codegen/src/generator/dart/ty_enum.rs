@@ -175,7 +175,9 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                                     // If no split, default values are not valid.
                                     let default = split
                                         .is_some()
-                                        .then(|| field.field_default(true, Some(self.context.config)))
+                                        .then(|| {
+                                            field.field_default(true, Some(self.context.config))
+                                        })
                                         .unwrap_or_default();
                                     format!(
                                         "{comments} {default} {} {},",
@@ -205,7 +207,8 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                                         field.name.dart_style(),
                                         required = field.required_modifier(),
                                         comments = dart_comments(&field.comments),
-                                        default = field.field_default(true, Some(self.context.config)),
+                                        default =
+                                            field.field_default(true, Some(self.context.config)),
                                     )
                                 })
                                 .collect::<Vec<_>>();
@@ -241,11 +244,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                         variant.name.rust_style().to_string()
                     };
 
-                    format!(
-                        "{}{},",
-                        dart_comments(&variant.comments),
-                        variant_name
-                    )
+                    format!("{}{},", dart_comments(&variant.comments), variant_name)
                 })
                 .collect::<Vec<_>>()
                 .join("\n");

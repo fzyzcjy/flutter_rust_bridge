@@ -103,13 +103,7 @@ generate_bridge:
     just _generate_bridge_with_flutter
 
 _generate_bridge_pure_dart:
-    {{cargo_run_codegen}} \
-        --rust-input frb_example/pure_dart/rust/src/api.rs \
-        --dart-output frb_example/pure_dart/dart/lib/bridge_generated.dart \
-        --dart-decl-output frb_example/pure_dart/dart/lib/bridge_definitions.dart \
-        --dart-format-line-length 120 \
-        --dart-enums-style \
-        --wasm
+    {{cargo_run_codegen}} frb_example/pure_dart/rust/.flutter_rust_bridge.yml
 
 _generate_bridge_pure_dart_multi:
     {{cargo_run_codegen}} \

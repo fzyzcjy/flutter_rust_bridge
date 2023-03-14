@@ -1,10 +1,14 @@
 use crate::ir::*;
 use crate::target::Target;
 
-#[derive(Debug, Clone, Hash, Eq, PartialEq)]
+crate::ir! {
+#[no_serde]
 pub struct IrTypeGeneralList {
     pub inner: Box<IrType>,
 }
+}
+
+crate::derive_serde_inner_as_newtype!(IrTypeGeneralList);
 
 impl IrTypeTrait for IrTypeGeneralList {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile) {

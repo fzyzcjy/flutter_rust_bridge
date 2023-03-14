@@ -2,9 +2,10 @@ use crate::ir::*;
 use crate::target::Target;
 use convert_case::{Case, Casing};
 
-#[derive(Debug, Clone, Hash, Eq, PartialEq)]
+crate::ir! {
 pub struct IrTypeEnumRef {
     pub name: String,
+}
 }
 
 impl IrTypeEnumRef {
@@ -55,7 +56,7 @@ impl IrTypeTrait for IrTypeEnumRef {
     }
 }
 
-#[derive(Debug, Clone)]
+crate::ir! {
 pub struct IrEnum {
     pub name: String,
     pub wrapper_name: Option<String>,
@@ -63,6 +64,7 @@ pub struct IrEnum {
     pub comments: Vec<IrComment>,
     variants: Vec<IrVariant>,
     is_struct: bool,
+}
 }
 
 impl IrEnum {
@@ -113,7 +115,7 @@ impl IrEnum {
     }
 }
 
-#[derive(Debug, Clone)]
+crate::ir! {
 pub struct IrVariant {
     pub name: IrIdent,
     pub wrapper_name: IrIdent,
@@ -121,8 +123,8 @@ pub struct IrVariant {
     pub kind: IrVariantKind,
 }
 
-#[derive(Debug, Clone)]
 pub enum IrVariantKind {
     Value,
     Struct(IrStruct),
+}
 }

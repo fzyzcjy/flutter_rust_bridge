@@ -1,6 +1,5 @@
-use std::process::exit;
-
-use clap::Parser;
+#[cfg(feature = "serde")]
+use lib_flutter_rust_bridge_codegen::dump;
 use lib_flutter_rust_bridge_codegen::{
     config_parse, frb_codegen_multi, get_symbols_if_no_duplicates, init_logger, RawOpts,
 };
@@ -8,18 +7,27 @@ use log::{debug, error, info};
 
 fn main() -> anyhow::Result<()> {
     //  get valiable options from user input command
-    let raw_opts = RawOpts::parse();
-    init_logger("./logs/", raw_opts.verbose).unwrap();
+    let raw_opts = RawOpts::try_parse_args_or_yaml()?;
+    init_logger("./logs/", raw_opts.verbose)?;
+
+    #[cfg(feature = "serde")]
+    let dump_config = raw_opts.dump.clone();
 
     let configs = config_parse(raw_opts);
     debug!("configs={:?}", configs);
 
     // generation of rust api for ffi
     let all_symbols = get_symbols_if_no_duplicates(&configs)?;
+
+    #[cfg(feature = "serde")]
+    if let Some(dump) = dump_config {
+        return dump::dump_multi(&configs, dump);
+    }
+
     for config_index in 0..configs.len() {
         if let Err(err) = frb_codegen_multi(&configs, config_index, &all_symbols) {
-            error!("fatal: {}", err);
-            exit(1);
+            error!("fatal: {err}");
+            std::process::exit(1);
         }
     }
 
@@ -27,6 +35,7 @@ fn main() -> anyhow::Result<()> {
     Ok(())
 }
 
+#[cfg(test)]
 mod tests {
     use lazy_static::lazy_static;
     use lib_flutter_rust_bridge_codegen::init_logger;
@@ -36,7 +45,6 @@ mod tests {
     }
 
     // VS Code runs in frb_codegen with "Run test" and flutter_rust_bridge with "Debug test" >_>
-    #[cfg(test)]
     fn set_dir() {
         use std::fs;
 
@@ -52,10 +60,10 @@ mod tests {
     /// test to examine the problems, because this one is a copy of `build.rs` in that
     /// `frb_example/pure_dart`. For example, you may run this `fn pure_dart()` unit
     /// test in the debugger.
-    /// 
+    ///
     /// In some scenarios, such as when using VSCode to execute this test, the `cargo build`
     /// will be run before this `fn pure_dart()` test gets executed (see #1106 for details).
-    /// Therefore, you may even fail to execute *this* function. In that case, you may run: 
+    /// Therefore, you may even fail to execute *this* function. In that case, you may run:
     /// `mv ../frb_example/pure_dart/rust/build.rs ../frb_example/pure_dart/rust/_build.rs`
     /// Then that `build.rs` is temporarily disabled and cargo build can run.
     #[test]
@@ -70,34 +78,11 @@ mod tests {
 
         set_dir();
 
-        /// Path of input Rust code
-        const RUST_INPUT: &str = "../frb_example/pure_dart/rust/src/api.rs";
-        /// Path of output generated Dart code
-        const DART_OUTPUT: &str = "../frb_example/pure_dart//dart/lib/bridge_generated.dart";
-
         let _ = *LOGGER;
 
         // Options for frb_codegen
         let raw_opts = RawOpts {
-            // Path of input Rust code
-            rust_input: vec![RUST_INPUT.to_string()],
-            // Path of output generated Dart code
-            dart_output: vec![DART_OUTPUT.to_string()],
-            wasm: true,
-            dart_decl_output: Some(
-                "../frb_example/pure_dart/dart/lib/bridge_definitions.dart".into(),
-            ),
-            dart_format_line_length: 120,
-            // (extra) c output path
-            c_output: Some(vec![
-                // each field should contain head file name
-                "../frb_example/pure_dart/rust/c_output_path/c_output.h".into(),
-            ]),
-            extra_c_output_path: Some(vec![
-                "../frb_example/pure_dart/rust/c_output_path_extra/".into()
-            ]),
-
-            // for other options use defaults
+            config_file: Some("../frb_example/pure_dart/rust/.flutter_rust_bridge.yml".into()),
             ..Default::default()
         };
 

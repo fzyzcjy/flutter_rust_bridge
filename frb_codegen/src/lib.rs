@@ -42,6 +42,7 @@ mod target;
 mod transformer;
 pub mod utils;
 use error::*;
+pub mod dump;
 
 /// When the API is only defined in 1 rust file(block), take this one for generation, where `config`
 /// is the instance containing all information to the API file(block), and `all_symbols` contains
