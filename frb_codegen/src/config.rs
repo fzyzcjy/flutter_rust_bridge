@@ -20,7 +20,11 @@ use crate::parser;
 use crate::utils::{find_all_duplicates, BlockIndex};
 
 #[derive(Parser, Debug, PartialEq, Eq, Deserialize, Default)]
-#[command(bin_name = "flutter_rust_bridge_codegen", version)]
+#[command(version)]
+#[command(override_usage(
+    "flutter_rust_bridge_codegen [OPTIONS] --rust-input <RUST_INPUT>... --dart-output <DART_OUTPUT>...
+       flutter_rust_bridge_codegen [CONFIG_FILE]"
+))]
 pub struct RawOpts {
     /// Path of input Rust code
     #[arg(short, long, required_unless_present = "config_file", num_args = 1..)]
@@ -31,6 +35,7 @@ pub struct RawOpts {
     pub dart_output: Vec<String>,
 
     /// Path to a YAML config file.
+    ///
     /// If present, other options and flags will be ignored.
     /// Accepts the same options as the CLI, but uses snake_case keys.
     #[serde(skip)]
