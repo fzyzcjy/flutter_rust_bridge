@@ -604,10 +604,6 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kListOfEnumsInFunctionConstMeta;
 
-  Future<List<KitchenSink>> test222({required List<KitchenSink> sinks, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTest222ConstMeta;
-
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;

@@ -760,11 +760,6 @@ pub extern "C" fn wire_list_of_enums_in_function(port_: i64, weekdays: *mut wire
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test222(port_: i64, sinks: *mut wire_list_kitchen_sink) {
-    wire_test222_impl(port_, sinks)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -1193,15 +1188,6 @@ pub extern "C" fn new_list_application_env_var_0(len: i32) -> *mut wire_list_app
 pub extern "C" fn new_list_attribute_0(len: i32) -> *mut wire_list_attribute {
     let wrap = wire_list_attribute {
         ptr: support::new_leak_vec_ptr(<wire_Attribute>::new_with_null_ptr(), len),
-        len,
-    };
-    support::new_leak_box_ptr(wrap)
-}
-
-#[no_mangle]
-pub extern "C" fn new_list_kitchen_sink_0(len: i32) -> *mut wire_list_kitchen_sink {
-    let wrap = wire_list_kitchen_sink {
-        ptr: support::new_leak_vec_ptr(<wire_KitchenSink>::new_with_null_ptr(), len),
         len,
     };
     support::new_leak_box_ptr(wrap)
@@ -2079,15 +2065,6 @@ impl Wire2Api<Vec<Attribute>> for *mut wire_list_attribute {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
-impl Wire2Api<Vec<KitchenSink>> for *mut wire_list_kitchen_sink {
-    fn wire2api(self) -> Vec<KitchenSink> {
-        let vec = unsafe {
-            let wrap = support::box_from_leak_ptr(self);
-            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-        };
-        vec.into_iter().map(Wire2Api::wire2api).collect()
-    }
-}
 impl Wire2Api<Vec<MySize>> for *mut wire_list_my_size {
     fn wire2api(self) -> Vec<MySize> {
         let vec = unsafe {
@@ -2494,13 +2471,6 @@ pub struct wire_list_application_env_var {
 #[derive(Clone)]
 pub struct wire_list_attribute {
     ptr: *mut wire_Attribute,
-    len: i32,
-}
-
-#[repr(C)]
-#[derive(Clone)]
-pub struct wire_list_kitchen_sink {
-    ptr: *mut wire_KitchenSink,
     len: i32,
 }
 

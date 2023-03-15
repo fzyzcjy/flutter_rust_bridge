@@ -735,11 +735,6 @@ pub fn wire_list_of_enums_in_function(port_: MessagePort, weekdays: JsValue) {
 }
 
 #[wasm_bindgen]
-pub fn wire_test222(port_: MessagePort, sinks: JsValue) {
-    wire_test222_impl(port_, sinks)
-}
-
-#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -1307,15 +1302,6 @@ impl Wire2Api<Vec<ApplicationEnvVar>> for JsValue {
 }
 impl Wire2Api<Vec<Attribute>> for JsValue {
     fn wire2api(self) -> Vec<Attribute> {
-        self.dyn_into::<JsArray>()
-            .unwrap()
-            .iter()
-            .map(Wire2Api::wire2api)
-            .collect()
-    }
-}
-impl Wire2Api<Vec<KitchenSink>> for JsValue {
-    fn wire2api(self) -> Vec<KitchenSink> {
         self.dyn_into::<JsArray>()
             .unwrap()
             .iter()

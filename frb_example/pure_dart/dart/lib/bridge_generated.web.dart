@@ -601,11 +601,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  List<dynamic> api2wire_list_kitchen_sink(List<KitchenSink> raw) {
-    return raw.map(api2wire_kitchen_sink).toList();
-  }
-
-  @protected
   List<dynamic> api2wire_list_my_size(List<MySize> raw) {
     return raw.map(api2wire_my_size).toList();
   }
@@ -1207,8 +1202,6 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_list_of_enums_in_function(NativePortType port_, List<dynamic> weekdays);
 
-  external dynamic /* void */ wire_test222(NativePortType port_, List<dynamic> sinks);
-
   external dynamic /* void */ wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
 
   external dynamic /* void */ wire_new__static_method__ConcatenateWith(NativePortType port_, String a);
@@ -1611,8 +1604,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_list_of_enums_in_function(NativePortType port_, List<dynamic> weekdays) =>
       wasmModule.wire_list_of_enums_in_function(port_, weekdays);
-
-  void wire_test222(NativePortType port_, List<dynamic> sinks) => wasmModule.wire_test222(port_, sinks);
 
   void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z) =>
       wasmModule.wire_sum__method__SumWith(port_, that, y, z);

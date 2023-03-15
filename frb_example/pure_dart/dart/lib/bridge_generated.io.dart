@@ -561,15 +561,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<wire_list_kitchen_sink> api2wire_list_kitchen_sink(List<KitchenSink> raw) {
-    final ans = inner.new_list_kitchen_sink_0(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      _api_fill_to_wire_kitchen_sink(raw[i], ans.ref.ptr[i]);
-    }
-    return ans;
-  }
-
-  @protected
   ffi.Pointer<wire_list_my_size> api2wire_list_my_size(List<MySize> raw) {
     final ans = inner.new_list_my_size_0(raw.length);
     for (var i = 0; i < raw.length; ++i) {
@@ -3381,20 +3372,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_list_of_enums_in_function =
       _wire_list_of_enums_in_functionPtr.asFunction<void Function(int, ffi.Pointer<wire_list_weekdays>)>();
 
-  void wire_test222(
-    int port_,
-    ffi.Pointer<wire_list_kitchen_sink> sinks,
-  ) {
-    return _wire_test222(
-      port_,
-      sinks,
-    );
-  }
-
-  late final _wire_test222Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_kitchen_sink>)>>('wire_test222');
-  late final _wire_test222 = _wire_test222Ptr.asFunction<void Function(int, ffi.Pointer<wire_list_kitchen_sink>)>();
-
   void wire_sum__method__SumWith(
     int port_,
     ffi.Pointer<wire_SumWith> that,
@@ -4185,19 +4162,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_attribute> Function(ffi.Int32)>>('new_list_attribute_0');
   late final _new_list_attribute_0 =
       _new_list_attribute_0Ptr.asFunction<ffi.Pointer<wire_list_attribute> Function(int)>();
-
-  ffi.Pointer<wire_list_kitchen_sink> new_list_kitchen_sink_0(
-    int len,
-  ) {
-    return _new_list_kitchen_sink_0(
-      len,
-    );
-  }
-
-  late final _new_list_kitchen_sink_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_kitchen_sink> Function(ffi.Int32)>>('new_list_kitchen_sink_0');
-  late final _new_list_kitchen_sink_0 =
-      _new_list_kitchen_sink_0Ptr.asFunction<ffi.Pointer<wire_list_kitchen_sink> Function(int)>();
 
   ffi.Pointer<wire_list_my_size> new_list_my_size_0(
     int len,
@@ -5127,13 +5091,6 @@ class wire_Empty extends ffi.Opaque {}
 
 class wire_list_weekdays extends ffi.Struct {
   external ffi.Pointer<ffi.Int32> ptr;
-
-  @ffi.Int32()
-  external int len;
-}
-
-class wire_list_kitchen_sink extends ffi.Struct {
-  external ffi.Pointer<wire_KitchenSink> ptr;
 
   @ffi.Int32()
   external int len;

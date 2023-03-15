@@ -2046,19 +2046,6 @@ fn wire_list_of_enums_in_function_impl(
         },
     )
 }
-fn wire_test222_impl(port_: MessagePort, sinks: impl Wire2Api<Vec<KitchenSink>> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
-        WrapInfo {
-            debug_name: "test222",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_sinks = sinks.wire2api();
-            move |task_callback| Ok(test222(api_sinks))
-        },
-    )
-}
 fn wire_sum__method__SumWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<SumWith> + UnwindSafe,

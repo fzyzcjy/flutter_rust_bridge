@@ -2283,22 +2283,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["weekdays"],
       );
 
-  Future<List<KitchenSink>> test222({required List<KitchenSink> sinks, dynamic hint}) {
-    var arg0 = _platform.api2wire_list_kitchen_sink(sinks);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test222(port_, arg0),
-      parseSuccessData: _wire2api_list_kitchen_sink,
-      constMeta: kTest222ConstMeta,
-      argValues: [sinks],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kTest222ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "test222",
-        argNames: ["sinks"],
-      );
-
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_sum_with(that);
     var arg1 = api2wire_u32(y);
@@ -3038,10 +3022,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   List<EnumOpaque> _wire2api_list_enum_opaque(dynamic raw) {
     return (raw as List<dynamic>).map(_wire2api_enum_opaque).toList();
-  }
-
-  List<KitchenSink> _wire2api_list_kitchen_sink(dynamic raw) {
-    return (raw as List<dynamic>).map(_wire2api_kitchen_sink).toList();
   }
 
   List<MySize> _wire2api_list_my_size(dynamic raw) {

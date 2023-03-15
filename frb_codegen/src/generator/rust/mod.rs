@@ -564,6 +564,8 @@ pub fn generate_list_allocate_func(
                 support::new_leak_box_ptr(wrap)",
             list.rust_wire_type(Target::Io),
             if inner.is_primitive() {
+                // A primitive enum list can use a default value since
+                // `<i32>::new_with_null_ptr()` isn't implemented.
                 "Default::default()".to_string()
             } else {
                 format!(
