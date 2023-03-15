@@ -3,6 +3,7 @@
 * Add tests to gen, build, run pure_dart #1106 (thanks @coder0xff)
 * Generate Dart enum variants in camelCase #1112 (thanks @erikas-taroza)
 * General CLI improvements: dumping, upgrade clap, yaml config, serialize IR, bump versions, etc #1119 (thanks @Desdaemon)
+* Fixes for serde-yml #1122 (thanks @Desdaemon)
 
 ## 1.69.0
 
