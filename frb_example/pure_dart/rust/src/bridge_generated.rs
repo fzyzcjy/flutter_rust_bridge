@@ -2030,19 +2030,19 @@ fn wire_return_dart_dynamic_impl(port_: MessagePort) {
         move || move |task_callback| Ok(return_dart_dynamic()),
     )
 }
-fn wire_list_of_enums_in_function_impl(
+fn wire_list_of_primitive_enums_impl(
     port_: MessagePort,
     weekdays: impl Wire2Api<Vec<Weekdays>> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "list_of_enums_in_function",
+            debug_name: "list_of_primitive_enums",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_weekdays = weekdays.wire2api();
-            move |task_callback| Ok(list_of_enums_in_function(api_weekdays))
+            move |task_callback| Ok(list_of_primitive_enums(api_weekdays))
         },
     )
 }

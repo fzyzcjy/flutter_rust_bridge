@@ -2267,19 +2267,19 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
-  Future<List<Weekdays>> listOfEnumsInFunction({required List<Weekdays> weekdays, dynamic hint}) {
+  Future<List<Weekdays>> listOfPrimitiveEnums({required List<Weekdays> weekdays, dynamic hint}) {
     var arg0 = _platform.api2wire_list_weekdays(weekdays);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_list_of_enums_in_function(port_, arg0),
+      callFfi: (port_) => _platform.inner.wire_list_of_primitive_enums(port_, arg0),
       parseSuccessData: _wire2api_list_weekdays,
-      constMeta: kListOfEnumsInFunctionConstMeta,
+      constMeta: kListOfPrimitiveEnumsConstMeta,
       argValues: [weekdays],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kListOfEnumsInFunctionConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "list_of_enums_in_function",
+  FlutterRustBridgeTaskConstMeta get kListOfPrimitiveEnumsConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "list_of_primitive_enums",
         argNames: ["weekdays"],
       );
 

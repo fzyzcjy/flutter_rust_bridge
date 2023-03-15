@@ -3356,21 +3356,21 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_dart_dynamic');
   late final _wire_return_dart_dynamic = _wire_return_dart_dynamicPtr.asFunction<void Function(int)>();
 
-  void wire_list_of_enums_in_function(
+  void wire_list_of_primitive_enums(
     int port_,
     ffi.Pointer<wire_list_weekdays> weekdays,
   ) {
-    return _wire_list_of_enums_in_function(
+    return _wire_list_of_primitive_enums(
       port_,
       weekdays,
     );
   }
 
-  late final _wire_list_of_enums_in_functionPtr =
+  late final _wire_list_of_primitive_enumsPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_weekdays>)>>(
-          'wire_list_of_enums_in_function');
-  late final _wire_list_of_enums_in_function =
-      _wire_list_of_enums_in_functionPtr.asFunction<void Function(int, ffi.Pointer<wire_list_weekdays>)>();
+          'wire_list_of_primitive_enums');
+  late final _wire_list_of_primitive_enums =
+      _wire_list_of_primitive_enumsPtr.asFunction<void Function(int, ffi.Pointer<wire_list_weekdays>)>();
 
   void wire_sum__method__SumWith(
     int port_,

@@ -1426,6 +1426,6 @@ pub fn return_dart_dynamic() -> DartAbi {
     vec!["foo".into_dart()].into_dart()
 }
 
-pub fn list_of_enums_in_function(weekdays: Vec<Weekdays>) -> Vec<Weekdays> {
+pub fn list_of_primitive_enums(weekdays: Vec<Weekdays>) -> Vec<Weekdays> {
     weekdays
 }

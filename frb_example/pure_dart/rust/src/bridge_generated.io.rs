@@ -755,8 +755,8 @@ pub extern "C" fn wire_return_dart_dynamic(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_list_of_enums_in_function(port_: i64, weekdays: *mut wire_list_weekdays) {
-    wire_list_of_enums_in_function_impl(port_, weekdays)
+pub extern "C" fn wire_list_of_primitive_enums(port_: i64, weekdays: *mut wire_list_weekdays) {
+    wire_list_of_primitive_enums_impl(port_, weekdays)
 }
 
 #[no_mangle]
