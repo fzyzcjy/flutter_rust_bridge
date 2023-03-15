@@ -1425,3 +1425,12 @@ pub fn empty_struct(empty: Empty) -> Empty {
 pub fn return_dart_dynamic() -> DartAbi {
     vec!["foo".into_dart()].into_dart()
 }
+
+pub fn list_of_enums_in_function(weekdays: Vec<Weekdays>) -> Vec<Weekdays> {
+    weekdays
+}
+
+// TODO: Remove this before merging.
+pub fn test222(sinks: Vec<KitchenSink>) -> Vec<KitchenSink> {
+    sinks
+}
