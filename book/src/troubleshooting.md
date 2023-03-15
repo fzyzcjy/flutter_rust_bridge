@@ -57,6 +57,11 @@ Indeed all generated code are necessary (if you find something that can be simpl
 
 Dart SDK `>=2.15.0` is supported by this library, but by the latest version of the `ffigen` tool requires `>=2.17.0`. Therefore, write `sdk: ">=2.17.0 <3.0.0"` in the `environment` section of `pubspec.yaml`. If you do not want that, consider installing a older version of the `ffigen` tool.
 
+## Why doesn't `flutter_rust_bridge_serve` work on Firefox?
+
+This is a known issue stemming from Firefox's stricter rules regarding cross-origin requests. Use Chromium for testing, and check out
+[this guide on enabling `crossOriginIsolated`](https://web.dev/cross-origin-isolation-guide/) for your production servers.
+
 ## Issues on Web?
 
 Check out [Limitations on WASM](./wasm_limitations.md) for some common problems and solutions
