@@ -180,7 +180,8 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                             {variants}
                         }}.into_dart()
                     }}
-                }}"
+                }}
+                impl support::IntoDartExceptPrimitive for {name} {{}}"
             );
         }
         "".into()

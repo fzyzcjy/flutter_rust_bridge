@@ -730,6 +730,16 @@ pub fn wire_return_dart_dynamic(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_list_of_enums_in_function(port_: MessagePort, weekdays: JsValue) {
+    wire_list_of_enums_in_function_impl(port_, weekdays)
+}
+
+#[wasm_bindgen]
+pub fn wire_test222(port_: MessagePort, sinks: JsValue) {
+    wire_test222_impl(port_, sinks)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -1304,6 +1314,15 @@ impl Wire2Api<Vec<Attribute>> for JsValue {
             .collect()
     }
 }
+impl Wire2Api<Vec<KitchenSink>> for JsValue {
+    fn wire2api(self) -> Vec<KitchenSink> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
 impl Wire2Api<Vec<MySize>> for JsValue {
     fn wire2api(self) -> Vec<MySize> {
         self.dyn_into::<JsArray>()
@@ -1333,6 +1352,15 @@ impl Wire2Api<Vec<Option<Attribute>>> for JsValue {
 }
 impl Wire2Api<Vec<TestId>> for JsValue {
     fn wire2api(self) -> Vec<TestId> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
+impl Wire2Api<Vec<Weekdays>> for JsValue {
+    fn wire2api(self) -> Vec<Weekdays> {
         self.dyn_into::<JsArray>()
             .unwrap()
             .iter()

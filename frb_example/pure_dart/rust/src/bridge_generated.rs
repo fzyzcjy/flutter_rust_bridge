@@ -2030,6 +2030,35 @@ fn wire_return_dart_dynamic_impl(port_: MessagePort) {
         move || move |task_callback| Ok(return_dart_dynamic()),
     )
 }
+fn wire_list_of_enums_in_function_impl(
+    port_: MessagePort,
+    weekdays: impl Wire2Api<Vec<Weekdays>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "list_of_enums_in_function",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_weekdays = weekdays.wire2api();
+            move |task_callback| Ok(list_of_enums_in_function(api_weekdays))
+        },
+    )
+}
+fn wire_test222_impl(port_: MessagePort, sinks: impl Wire2Api<Vec<KitchenSink>> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test222",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_sinks = sinks.wire2api();
+            move |task_callback| Ok(test222(api_sinks))
+        },
+    )
+}
 fn wire_sum__method__SumWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<SumWith> + UnwindSafe,
@@ -2439,6 +2468,7 @@ impl support::IntoDart for mirror_ApplicationMode {
         .into_dart()
     }
 }
+impl support::IntoDartExceptPrimitive for mirror_ApplicationMode {}
 impl support::IntoDart for mirror_ApplicationSettings {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -2656,6 +2686,7 @@ impl support::IntoDart for MyEnum {
         .into_dart()
     }
 }
+impl support::IntoDartExceptPrimitive for MyEnum {}
 impl support::IntoDart for MyNestedStruct {
     fn into_dart(self) -> support::DartAbi {
         vec![self.tree_node.into_dart(), self.weekday.into_dart()].into_dart()
@@ -2835,6 +2866,7 @@ impl support::IntoDart for Weekdays {
         .into_dart()
     }
 }
+impl support::IntoDartExceptPrimitive for Weekdays {}
 impl support::IntoDart for ZeroCopyVecOfPrimitivePack {
     fn into_dart(self) -> support::DartAbi {
         vec![

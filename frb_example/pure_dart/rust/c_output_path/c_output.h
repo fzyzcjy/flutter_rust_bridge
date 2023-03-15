@@ -390,6 +390,16 @@ typedef struct wire_Empty {
 
 } wire_Empty;
 
+typedef struct wire_list_weekdays {
+  int32_t *ptr;
+  int32_t len;
+} wire_list_weekdays;
+
+typedef struct wire_list_kitchen_sink {
+  struct wire_KitchenSink *ptr;
+  int32_t len;
+} wire_list_kitchen_sink;
+
 typedef struct wire_SumWith {
   uint32_t x;
 } wire_SumWith;
@@ -710,6 +720,10 @@ void wire_empty_struct(int64_t port_, struct wire_Empty *empty);
 
 void wire_return_dart_dynamic(int64_t port_);
 
+void wire_list_of_enums_in_function(int64_t port_, struct wire_list_weekdays *weekdays);
+
+void wire_test222(int64_t port_, struct wire_list_kitchen_sink *sinks);
+
 void wire_sum__method__SumWith(int64_t port_, struct wire_SumWith *that, uint32_t y, uint32_t z);
 
 void wire_new__static_method__ConcatenateWith(int64_t port_, struct wire_uint_8_list *a);
@@ -868,6 +882,8 @@ struct wire_list_application_env_var *new_list_application_env_var_0(int32_t len
 
 struct wire_list_attribute *new_list_attribute_0(int32_t len);
 
+struct wire_list_kitchen_sink *new_list_kitchen_sink_0(int32_t len);
+
 struct wire_list_my_size *new_list_my_size_0(int32_t len);
 
 struct wire_list_my_tree_node *new_list_my_tree_node_0(int32_t len);
@@ -875,6 +891,8 @@ struct wire_list_my_tree_node *new_list_my_tree_node_0(int32_t len);
 struct wire_list_opt_box_autoadd_attribute *new_list_opt_box_autoadd_attribute_0(int32_t len);
 
 struct wire_list_test_id *new_list_test_id_0(int32_t len);
+
+struct wire_list_weekdays *new_list_weekdays_0(int32_t len);
 
 struct wire_uint_8_list *new_uint_8_list_0(int32_t len);
 
@@ -1086,6 +1104,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_handle_type_alias_model);
     dummy_var ^= ((int64_t) (void*) wire_empty_struct);
     dummy_var ^= ((int64_t) (void*) wire_return_dart_dynamic);
+    dummy_var ^= ((int64_t) (void*) wire_list_of_enums_in_function);
+    dummy_var ^= ((int64_t) (void*) wire_test222);
     dummy_var ^= ((int64_t) (void*) wire_sum__method__SumWith);
     dummy_var ^= ((int64_t) (void*) wire_new__static_method__ConcatenateWith);
     dummy_var ^= ((int64_t) (void*) wire_concatenate__method__ConcatenateWith);
@@ -1160,10 +1180,12 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_list_HideData_0);
     dummy_var ^= ((int64_t) (void*) new_list_application_env_var_0);
     dummy_var ^= ((int64_t) (void*) new_list_attribute_0);
+    dummy_var ^= ((int64_t) (void*) new_list_kitchen_sink_0);
     dummy_var ^= ((int64_t) (void*) new_list_my_size_0);
     dummy_var ^= ((int64_t) (void*) new_list_my_tree_node_0);
     dummy_var ^= ((int64_t) (void*) new_list_opt_box_autoadd_attribute_0);
     dummy_var ^= ((int64_t) (void*) new_list_test_id_0);
+    dummy_var ^= ((int64_t) (void*) new_list_weekdays_0);
     dummy_var ^= ((int64_t) (void*) new_uint_8_list_0);
     dummy_var ^= ((int64_t) (void*) drop_opaque_BoxDartDebug);
     dummy_var ^= ((int64_t) (void*) share_opaque_BoxDartDebug);

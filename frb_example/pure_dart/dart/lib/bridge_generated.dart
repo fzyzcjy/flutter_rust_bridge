@@ -2267,6 +2267,38 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<List<Weekdays>> listOfEnumsInFunction({required List<Weekdays> weekdays, dynamic hint}) {
+    var arg0 = _platform.api2wire_list_weekdays(weekdays);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_list_of_enums_in_function(port_, arg0),
+      parseSuccessData: _wire2api_list_weekdays,
+      constMeta: kListOfEnumsInFunctionConstMeta,
+      argValues: [weekdays],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kListOfEnumsInFunctionConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "list_of_enums_in_function",
+        argNames: ["weekdays"],
+      );
+
+  Future<List<KitchenSink>> test222({required List<KitchenSink> sinks, dynamic hint}) {
+    var arg0 = _platform.api2wire_list_kitchen_sink(sinks);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test222(port_, arg0),
+      parseSuccessData: _wire2api_list_kitchen_sink,
+      constMeta: kTest222ConstMeta,
+      argValues: [sinks],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTest222ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test222",
+        argNames: ["sinks"],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_sum_with(that);
     var arg1 = api2wire_u32(y);
@@ -3008,6 +3040,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return (raw as List<dynamic>).map(_wire2api_enum_opaque).toList();
   }
 
+  List<KitchenSink> _wire2api_list_kitchen_sink(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_kitchen_sink).toList();
+  }
+
   List<MySize> _wire2api_list_my_size(dynamic raw) {
     return (raw as List<dynamic>).map(_wire2api_my_size).toList();
   }
@@ -3030,6 +3066,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   List<TestId> _wire2api_list_test_id(dynamic raw) {
     return (raw as List<dynamic>).map(_wire2api_test_id).toList();
+  }
+
+  List<Weekdays> _wire2api_list_weekdays(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_weekdays).toList();
   }
 
   Log _wire2api_log(dynamic raw) {
