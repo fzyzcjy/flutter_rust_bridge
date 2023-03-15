@@ -608,8 +608,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   ffi.Pointer<wire_list_weekdays> api2wire_list_weekdays(List<Weekdays> raw) {
     final ans = inner.new_list_weekdays_0(raw.length);
-    for (var i = 0; i < raw.length; ++i) {
-      _api_fill_to_wire_weekdays(raw[i], ans.ref.ptr[i]);
+    for (var i = 0; i < raw.length; i++) {
+      ans.ref.ptr[i] = api2wire_weekdays(raw[i]);
     }
     return ans;
   }
