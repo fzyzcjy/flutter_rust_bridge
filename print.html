@@ -258,7 +258,7 @@
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 <p>More specifically, thanks for all these contributions:</p>
 <ul>
-<li><a href="https://github.com/Desdaemon">Desdaemon</a>: Support not only simple enums but also enums with fields which gets translated to native enum or freezed class in Dart. Support the Option type as nullable types in Dart. Support Vec of Strings type. Support comments in code. Add marker attributes for future usage. Add Linux and Windows support for with-flutter example, and make CI works for that. Avoid parameter collision. Overhaul the documentation and add several chapters to demonstrate configuring a Flutter+Rust project in all five platforms. Refactor command module. Precompiled binary CI workflow. Fix bugs. Add support for the Web platform, parallel to the existing mobile/desktop platforms, via WASM and JavaScript as intermediate values. GitHub retry actions. Implement draft of opaque types. Refactor Boxed and Option. Impl list of dates. Parameter defaults.</li>
+<li><a href="https://github.com/Desdaemon">Desdaemon</a>: Support not only simple enums but also enums with fields which gets translated to native enum or freezed class in Dart. Support the Option type as nullable types in Dart. Support Vec of Strings type. Support comments in code. Add marker attributes for future usage. Add Linux and Windows support for with-flutter example, and make CI works for that. Avoid parameter collision. Overhaul the documentation and add several chapters to demonstrate configuring a Flutter+Rust project in all five platforms. Refactor command module. Precompiled binary CI workflow. Fix bugs. Add support for the Web platform, parallel to the existing mobile/desktop platforms, via WASM and JavaScript as intermediate values. GitHub retry actions. Implement draft of opaque types. Refactor Boxed and Option. Impl list of dates. Parameter defaults. Refactor CLI.</li>
 <li><a href="https://github.com/rogurotus">rogurotus</a>: Add Rust opaque types, enabling arbitrary Rust structs to be used as opaque Dart objects by generating wrappers and raw Arc pointers, as well as Dart opaque types, allowing to use any Dart objects in Rust code. Extend <code>SyncReturn</code> for more types. Fix generation bug. Fix SyncReturn. Migrate to dart-sys. Update CI. Fix linters.</li>
 <li><a href="https://github.com/ngasull">ngasull</a>: Make sync mode support whatever types that classical async mode supports. Bump sdk.</li>
 <li><a href="https://github.com/SecondFlight">SecondFlight</a>: Allow structs and enums to be imported from other files within the crate by creating source graph. Auto-create relevant dir. Fix <code>store_dart_post_cobject</code> error with ffigen 6.0.</li>
@@ -987,7 +987,7 @@ lazy_static! {
 <div style="break-before: page; page-break-before: always;"></div><h1 id="run-in-buildrs"><a class="header" href="#run-in-buildrs">Run in <code>build.rs</code></a></h1>
 <p>There are basically two approaches to execute the code generator. The first and most evident approach is to directly execute the <code>flutter_rust_bridge</code> in command line.</p>
 <p>The second approach is to integrate it into <code>build.rs</code> of your project. With this approach, the code generator is automatically triggered whenever you build your Rust project. For example configuration, have a look at this <a href="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/pure_dart/rust/build.rs">build.rs</a> file.</p>
-<p>If the <code>build.rs</code> in the example projects is making it difficult to modify and test flutter_rust_bridge_codegen, you can rename it to disable it, and instead use the pure_dart and pure_dart_multi tests to debug any issues. Please refer to <code>frb_codege/src/main.rs</code>'s tests for more details.</p>
+<p>If the <code>build.rs</code> in the example projects is making it difficult to modify and test flutter_rust_bridge_codegen, you can rename it to disable it, and instead use the pure_dart and pure_dart_multi tests to debug any issues. Please refer to <code>frb_codegen/src/main.rs</code>'s tests for more details.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="cancellable-tasks"><a class="header" href="#cancellable-tasks">Cancellable tasks</a></h1>
 <p>When the Rust code is computationally heavy, you may want to cancel it at the middle when, for example, the user does not need it anymore. Then the precious computation power can be saved.</p>
 <p>Installation: Currently, the feature is complete, and I have used it in my own app for a long time. (I have not merge this PR to the main repo just because I need to figure out how to put those code as if in <code>api.rs</code>.) Thus, visit <a href="https://github.com/fzyzcjy/flutter_rust_bridge/pull/333">#333</a> and copy the code directly to your project, and use it as normal.</p>
@@ -3998,6 +3998,9 @@ Future&lt;void&gt; main() async {
 <p>Indeed all generated code are necessary (if you find something that can be simplified, file an issue). Moreover, other code generation tools also generate long code - for example, when using Google protobuf, a very popular serialization library, I see &gt;10k lines of Java code generated for a quite simple source proto file.</p>
 <h2 id="why-need-dart-2170"><a class="header" href="#why-need-dart-2170">Why need Dart <code>2.17.0</code></a></h2>
 <p>Dart SDK <code>&gt;=2.15.0</code> is supported by this library, but by the latest version of the <code>ffigen</code> tool requires <code>&gt;=2.17.0</code>. Therefore, write <code>sdk: &quot;&gt;=2.17.0 &lt;3.0.0&quot;</code> in the <code>environment</code> section of <code>pubspec.yaml</code>. If you do not want that, consider installing a older version of the <code>ffigen</code> tool.</p>
+<h2 id="why-doesnt-flutter_rust_bridge_serve-work-on-firefox"><a class="header" href="#why-doesnt-flutter_rust_bridge_serve-work-on-firefox">Why doesn't <code>flutter_rust_bridge_serve</code> work on Firefox?</a></h2>
+<p>This is a known issue stemming from Firefox's stricter rules regarding cross-origin requests. Use Chromium for testing, and check out
+<a href="https://web.dev/cross-origin-isolation-guide/">this guide on enabling <code>crossOriginIsolated</code></a> for your production servers.</p>
 <h2 id="issues-on-web"><a class="header" href="#issues-on-web">Issues on Web?</a></h2>
 <p>Check out <a href="./wasm_limitations.html">Limitations on WASM</a> for some common problems and solutions
 to adapt existing code to WASM.</p>
@@ -4121,14 +4124,29 @@ OPTIONS:
     --no-default-features     Whether to disable all features, useful with --features
 </code></pre>
 <h2 id="configuration-files"><a class="header" href="#configuration-files">Configuration files</a></h2>
-<p>You can also run <code>flutter_rust_bridge_codegen</code> with no arguments, provided one of these files exist (in order of priority):</p>
+<p>You can run <code>flutter_rust_bridge_codegen</code> with no arguments, provided any of these files exists in the working directory (in order of priority):</p>
 <ul>
 <li><code>.flutter_rust_bridge.yml</code></li>
 <li><code>.flutter_rust_bridge.yaml</code></li>
 <li><code>.flutter_rust_bridge.json</code></li>
 </ul>
-<p>The codegen will try to read a configuration from any of these files. The same arguments from the CLI are accepted, but
-they will be in snake_case.</p>
+<p>The codegen will try to read a configuration from these files. Otherwise, you can pass to the CLI any YAML file that contains the config.
+The same arguments from the CLI are accepted, but they will be in snake_case.</p>
+<pre><code class="language-yaml"># in .flutter_rust_bridge.yml
+rust_input:
+  - path/to/api.rs
+dart_output:
+  - path/to/bridge_generated.dart
+</code></pre>
+<p>Similarly, if you're calling <code>flutter_rust_bridge_codegen</code> from the root of your Dart project, you can also fill in your config
+under the <code>flutter_rust_bridge</code> entry in <code>pubspec.yaml</code>:</p>
+<pre><code class="language-yaml"># put this somewhere in your pubspec.yaml
+flutter_rust_bridge:
+  rust_input:
+    - path/to/api.rs
+  dart_output:
+    - lib/src/bridge_generated.dart
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="set-up-flutterdartrust-support-from-scratch"><a class="header" href="#set-up-flutterdartrust-support-from-scratch">Set up Flutter/Dart+Rust support from scratch</a></h1>
 <blockquote>
 <p>This documentation is archived, though technically still correct. Have a look at <a href="integrate.html">integrating with existing projects</a> chapters for a more detailed demonstration.</p>

@@ -262,14 +262,29 @@ OPTIONS:
     --no-default-features     Whether to disable all features, useful with --features
 </code></pre>
 <h2 id="configuration-files"><a class="header" href="#configuration-files">Configuration files</a></h2>
-<p>You can also run <code>flutter_rust_bridge_codegen</code> with no arguments, provided one of these files exist (in order of priority):</p>
+<p>You can run <code>flutter_rust_bridge_codegen</code> with no arguments, provided any of these files exists in the working directory (in order of priority):</p>
 <ul>
 <li><code>.flutter_rust_bridge.yml</code></li>
 <li><code>.flutter_rust_bridge.yaml</code></li>
 <li><code>.flutter_rust_bridge.json</code></li>
 </ul>
-<p>The codegen will try to read a configuration from any of these files. The same arguments from the CLI are accepted, but
-they will be in snake_case.</p>
+<p>The codegen will try to read a configuration from these files. Otherwise, you can pass to the CLI any YAML file that contains the config.
+The same arguments from the CLI are accepted, but they will be in snake_case.</p>
+<pre><code class="language-yaml"># in .flutter_rust_bridge.yml
+rust_input:
+  - path/to/api.rs
+dart_output:
+  - path/to/bridge_generated.dart
+</code></pre>
+<p>Similarly, if you're calling <code>flutter_rust_bridge_codegen</code> from the root of your Dart project, you can also fill in your config
+under the <code>flutter_rust_bridge</code> entry in <code>pubspec.yaml</code>:</p>
+<pre><code class="language-yaml"># put this somewhere in your pubspec.yaml
+flutter_rust_bridge:
+  rust_input:
+    - path/to/api.rs
+  dart_output:
+    - lib/src/bridge_generated.dart
+</code></pre>
 
                     </main>
 

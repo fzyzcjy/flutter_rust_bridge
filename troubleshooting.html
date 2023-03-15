@@ -176,6 +176,9 @@
 <p>Indeed all generated code are necessary (if you find something that can be simplified, file an issue). Moreover, other code generation tools also generate long code - for example, when using Google protobuf, a very popular serialization library, I see &gt;10k lines of Java code generated for a quite simple source proto file.</p>
 <h2 id="why-need-dart-2170"><a class="header" href="#why-need-dart-2170">Why need Dart <code>2.17.0</code></a></h2>
 <p>Dart SDK <code>&gt;=2.15.0</code> is supported by this library, but by the latest version of the <code>ffigen</code> tool requires <code>&gt;=2.17.0</code>. Therefore, write <code>sdk: &quot;&gt;=2.17.0 &lt;3.0.0&quot;</code> in the <code>environment</code> section of <code>pubspec.yaml</code>. If you do not want that, consider installing a older version of the <code>ffigen</code> tool.</p>
+<h2 id="why-doesnt-flutter_rust_bridge_serve-work-on-firefox"><a class="header" href="#why-doesnt-flutter_rust_bridge_serve-work-on-firefox">Why doesn't <code>flutter_rust_bridge_serve</code> work on Firefox?</a></h2>
+<p>This is a known issue stemming from Firefox's stricter rules regarding cross-origin requests. Use Chromium for testing, and check out
+<a href="https://web.dev/cross-origin-isolation-guide/">this guide on enabling <code>crossOriginIsolated</code></a> for your production servers.</p>
 <h2 id="issues-on-web"><a class="header" href="#issues-on-web">Issues on Web?</a></h2>
 <p>Check out <a href="./wasm_limitations.html">Limitations on WASM</a> for some common problems and solutions
 to adapt existing code to WASM.</p>
