@@ -40,18 +40,17 @@ pub fn init_logger(path: &str, verbose: bool) -> Result<(), fern::InitError> {
         out.finish(format_args!("{}", format))
     });
 
+    std::fs::create_dir_all(path).unwrap();
     match std::env::var("RUST_LOG")
         .unwrap_or_else(|_| if verbose { "debug" } else { "info" }.to_owned())
         .as_str()
     {
         // #[cfg(debug_assertions)]
-        "debug" => {
-            std::fs::create_dir_all(path).unwrap();
-            d.level(LevelFilter::Debug)
-                .chain(fern::DateBased::new(path, "%Y-%m-%d.log"))
-                .chain(std::io::stdout())
-                .apply()?
-        }
+        "debug" => d
+            .level(LevelFilter::Debug)
+            .chain(fern::DateBased::new(path, "%Y-%m-%d.log"))
+            .chain(std::io::stdout())
+            .apply()?,
         // #[cfg(not(debug_assertions))]
         "info" => d
             .level(LevelFilter::Info)
@@ -60,6 +59,10 @@ pub fn init_logger(path: &str, verbose: bool) -> Result<(), fern::InitError> {
             .apply()?,
         _ => panic!("only allow \"debug\" and \"info\""),
     }
+
+    std::panic::set_hook(Box::new(|m| {
+        log::error!("{}", m);
+    }));
 
     Ok(())
 }

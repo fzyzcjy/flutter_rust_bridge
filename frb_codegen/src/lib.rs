@@ -64,10 +64,17 @@ pub fn frb_codegen_multi(
     all_symbols: &[String],
 ) -> anyhow::Result<()> {
     info!("Phase: Validate config(s)");
-    assert!(all_configs
-        .iter()
-        .enumerate()
-        .all(|(index, config)| config.block_index == BlockIndex(index)));
+    assert!(all_configs.iter().enumerate().all(|(i, config)| {
+        if config.block_index == BlockIndex(i) {
+            return true;
+        } else {
+            panic!(
+                "config index mismatch: order index({}) != block_index({})",
+                i, config.block_index
+            );
+        }
+    }));
+
     let config = &all_configs[index];
     info!("Picked config: {:?}", config);
 
