@@ -66,7 +66,7 @@ pub fn frb_codegen_multi(
     info!("Phase: Validate config(s)");
     assert!(all_configs.iter().enumerate().all(|(i, config)| {
         if config.block_index == BlockIndex(i) {
-            return true;
+            true
         } else {
             panic!(
                 "config index mismatch: order index({}) != block_index({})",
