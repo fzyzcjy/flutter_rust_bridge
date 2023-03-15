@@ -560,11 +560,18 @@ pub fn generate_list_allocate_func(
             list.rust_wire_type(Target::Io).as_str()
         ].concat()),
         &format!(
-            "let wrap = {} {{ ptr: support::new_leak_vec_ptr(<{}{}>::new_with_null_ptr(), len), len }};
+            "let wrap = {} {{ ptr: support::new_leak_vec_ptr({}, len), len }};
                 support::new_leak_box_ptr(wrap)",
             list.rust_wire_type(Target::Io),
-            inner.rust_ptr_modifier(),
-            inner.rust_wire_type(Target::Io)
+            if inner.is_primitive() {
+                "Default::default()".to_string()
+            } else {
+                format!(
+                    "<{}{}>::new_with_null_ptr()",
+                    inner.rust_ptr_modifier(),
+                    inner.rust_wire_type(Target::Io)
+                )
+            }
         ),
         Io,
     )
