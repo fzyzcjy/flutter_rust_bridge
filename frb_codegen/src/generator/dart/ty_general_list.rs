@@ -12,33 +12,23 @@ impl TypeDartGeneratorTrait for TypeGeneralListGenerator<'_> {
         let context = self.context.config.block_index;
         let inner = self.ir.inner.safe_ident();
 
-        let io = if self.ir.inner.is_primitive() {
-            // Handle primitive enums list.
-            // This is similar to `StringList` in
-            // `frb_codegen/src/generator/dart/ty_delegate.rs`
-            format!(
-                "final ans = inner.new_{}_{}(raw.length);
-                for (var i = 0; i < raw.length; i++){{
-                    ans.ref.ptr[i] = api2wire_{}(raw[i]);
-                }}
-                return ans;",
-                self.ir.safe_ident(),
-                self.context.config.block_index,
-                self.ir.inner.safe_ident()
-            )
-        } else {
-            format!(
+        Acc {
+            io: Some(format!(
                 "final ans = inner.new_{ident}_{context}(raw.length);
                 for (var i = 0; i < raw.length; ++i) {{
-                    _api_fill_to_wire_{inner}(raw[i], ans.ref.ptr[i]);
+                    {}
                 }}
                 return ans;
-                "
-            )
-        };
-
-        Acc {
-            io: Some(io),
+                ",
+                if self.ir.inner.is_primitive() {
+                    // Handle primitive enums list.
+                    // This is similar to `StringList` in
+                    // `frb_codegen/src/generator/dart/ty_delegate.rs`
+                    format!("ans.ref.ptr[i] = api2wire_{inner}(raw[i]);")
+                } else {
+                    format!("_api_fill_to_wire_{inner}(raw[i], ans.ref.ptr[i]);")
+                }
+            )),
             wasm: self.context.config.wasm_enabled.then(|| {
                 format!(
                     "return raw.map(api2wire_{}).toList();",
