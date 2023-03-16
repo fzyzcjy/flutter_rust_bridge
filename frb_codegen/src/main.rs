@@ -78,7 +78,7 @@ mod tests {
 
         set_dir();
 
-        let _ = *LOGGER;
+        *LOGGER;
 
         // Options for frb_codegen
         let raw_opts = RawOpts {
@@ -138,7 +138,7 @@ mod tests {
         const CLASS_NAME_1: &str = "ApiClass1";
         const CLASS_NAME_2: &str = "ApiClass2";
 
-        let _ = *LOGGER;
+        *LOGGER;
 
         // Options for frb_codegen
         let mut raw_opts = RawOpts {
