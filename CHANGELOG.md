@@ -1,3 +1,7 @@
+## 1.71.0
+
+* Support for list of primitive enums #1128 (thanks @erikas-taroza)
+
 ## 1.70.0
 
 * Add tests to gen, build, run pure_dart #1106 (thanks @coder0xff)
