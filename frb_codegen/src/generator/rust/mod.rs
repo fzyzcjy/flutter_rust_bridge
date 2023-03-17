@@ -555,10 +555,13 @@ pub fn generate_list_allocate_func(
     collector.generate(
         &format!("new_{safe_ident}_{block_index}"),
         [("len: i32", "int")],
-        Some(&[
-            list.rust_wire_modifier(Target::Io).as_str(),
-            list.rust_wire_type(Target::Io).as_str()
-        ].concat()),
+        Some(
+            &[
+                list.rust_wire_modifier(Target::Io).as_str(),
+                list.rust_wire_type(Target::Io).as_str(),
+            ]
+            .concat(),
+        ),
         &format!(
             "let wrap = {} {{ ptr: support::new_leak_vec_ptr({}, len), len }};
                 support::new_leak_box_ptr(wrap)",
