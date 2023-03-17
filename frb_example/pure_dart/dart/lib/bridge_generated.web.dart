@@ -621,6 +621,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_list_weekdays(List<Weekdays> raw) {
+    return raw.map(api2wire_weekdays).toList();
+  }
+
+  @protected
   List<dynamic> api2wire_measure(Measure raw) {
     if (raw is Measure_Speed) {
       return [0, api2wire_box_speed(raw.field0)];
@@ -1195,6 +1200,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_return_dart_dynamic(NativePortType port_);
 
+  external dynamic /* void */ wire_list_of_primitive_enums(NativePortType port_, List<dynamic> weekdays);
+
   external dynamic /* void */ wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
 
   external dynamic /* void */ wire_new__static_method__ConcatenateWith(NativePortType port_, String a);
@@ -1594,6 +1601,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_empty_struct(NativePortType port_, List<dynamic> empty) => wasmModule.wire_empty_struct(port_, empty);
 
   void wire_return_dart_dynamic(NativePortType port_) => wasmModule.wire_return_dart_dynamic(port_);
+
+  void wire_list_of_primitive_enums(NativePortType port_, List<dynamic> weekdays) =>
+      wasmModule.wire_list_of_primitive_enums(port_, weekdays);
 
   void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z) =>
       wasmModule.wire_sum__method__SumWith(port_, that, y, z);

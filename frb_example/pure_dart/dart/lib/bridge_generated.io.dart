@@ -597,6 +597,15 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_list_weekdays> api2wire_list_weekdays(List<Weekdays> raw) {
+    final ans = inner.new_list_weekdays_0(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      ans.ref.ptr[i] = api2wire_weekdays(raw[i]);
+    }
+    return ans;
+  }
+
+  @protected
   ffi.Pointer<wire_uint_8_list> api2wire_opt_String(String? raw) {
     return raw == null ? ffi.nullptr : api2wire_String(raw);
   }
@@ -3347,6 +3356,22 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_dart_dynamic');
   late final _wire_return_dart_dynamic = _wire_return_dart_dynamicPtr.asFunction<void Function(int)>();
 
+  void wire_list_of_primitive_enums(
+    int port_,
+    ffi.Pointer<wire_list_weekdays> weekdays,
+  ) {
+    return _wire_list_of_primitive_enums(
+      port_,
+      weekdays,
+    );
+  }
+
+  late final _wire_list_of_primitive_enumsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_weekdays>)>>(
+          'wire_list_of_primitive_enums');
+  late final _wire_list_of_primitive_enums =
+      _wire_list_of_primitive_enumsPtr.asFunction<void Function(int, ffi.Pointer<wire_list_weekdays>)>();
+
   void wire_sum__method__SumWith(
     int port_,
     ffi.Pointer<wire_SumWith> that,
@@ -4188,6 +4213,18 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_list_test_id_0Ptr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_test_id> Function(ffi.Int32)>>('new_list_test_id_0');
   late final _new_list_test_id_0 = _new_list_test_id_0Ptr.asFunction<ffi.Pointer<wire_list_test_id> Function(int)>();
+
+  ffi.Pointer<wire_list_weekdays> new_list_weekdays_0(
+    int len,
+  ) {
+    return _new_list_weekdays_0(
+      len,
+    );
+  }
+
+  late final _new_list_weekdays_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_weekdays> Function(ffi.Int32)>>('new_list_weekdays_0');
+  late final _new_list_weekdays_0 = _new_list_weekdays_0Ptr.asFunction<ffi.Pointer<wire_list_weekdays> Function(int)>();
 
   ffi.Pointer<wire_uint_8_list> new_uint_8_list_0(
     int len,
@@ -5051,6 +5088,13 @@ class wire_EnumDartOpaque extends ffi.Struct {
 }
 
 class wire_Empty extends ffi.Opaque {}
+
+class wire_list_weekdays extends ffi.Struct {
+  external ffi.Pointer<ffi.Int32> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
 
 class wire_SumWith extends ffi.Struct {
   @ffi.Uint32()

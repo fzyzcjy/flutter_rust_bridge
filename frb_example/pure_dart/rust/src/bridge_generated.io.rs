@@ -755,6 +755,11 @@ pub extern "C" fn wire_return_dart_dynamic(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_list_of_primitive_enums(port_: i64, weekdays: *mut wire_list_weekdays) {
+    wire_list_of_primitive_enums_impl(port_, weekdays)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -1221,6 +1226,15 @@ pub extern "C" fn new_list_opt_box_autoadd_attribute_0(
 pub extern "C" fn new_list_test_id_0(len: i32) -> *mut wire_list_test_id {
     let wrap = wire_list_test_id {
         ptr: support::new_leak_vec_ptr(<wire_TestId>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_weekdays_0(len: i32) -> *mut wire_list_weekdays {
+    let wrap = wire_list_weekdays {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
     };
     support::new_leak_box_ptr(wrap)
@@ -2087,6 +2101,15 @@ impl Wire2Api<Vec<TestId>> for *mut wire_list_test_id {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
+impl Wire2Api<Vec<Weekdays>> for *mut wire_list_weekdays {
+    fn wire2api(self) -> Vec<Weekdays> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
 impl Wire2Api<Measure> for wire_Measure {
     fn wire2api(self) -> Measure {
         match self.tag {
@@ -2476,6 +2499,13 @@ pub struct wire_list_opt_box_autoadd_attribute {
 #[derive(Clone)]
 pub struct wire_list_test_id {
     ptr: *mut wire_TestId,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_weekdays {
+    ptr: *mut i32,
     len: i32,
 }
 

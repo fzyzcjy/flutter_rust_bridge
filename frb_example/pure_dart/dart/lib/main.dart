@@ -1207,6 +1207,11 @@ void main(List<String> args) async {
     final data = await api.returnDartDynamic();
     expect(data, ['foo']);
   });
+
+  test("dart call list_of_primitive_enums", () async {
+    List<Weekdays> days = await api.listOfPrimitiveEnums(weekdays: Weekdays.values);
+    expect(days, Weekdays.values);
+  });
 }
 
 int _createGarbage() {
