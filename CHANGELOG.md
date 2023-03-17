@@ -1,3 +1,7 @@
+## 1.71.1
+
+* Fix log_initial for panic! and refine a panic! info #1124 (thanks @dbsxdbsx)
+
 ## 1.71.0
 
 * Support for list of primitive enums #1128 (thanks @erikas-taroza)
