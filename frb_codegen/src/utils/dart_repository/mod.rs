@@ -4,7 +4,7 @@
 //! and beware that Cargo and Dart interpret semantic versioning differently:
 //! see this [discussion](https://github.com/fzyzcjy/flutter_rust_bridge/pull/605#discussion_r935180160) for more information.
 
-pub(crate) mod dart_repository;
+pub(crate) mod dart_repo;
 pub(crate) mod dart_toolchain;
 pub(crate) mod pubspec;
 pub(crate) mod version_converter;
@@ -17,7 +17,7 @@ mod tests {
         str::FromStr,
     };
 
-    use super::dart_repository::DartRepository;
+    use super::dart_repo::DartRepository;
     use super::dart_toolchain::DartToolchain;
     use crate::utils::dart_repository::pubspec::{
         DartDependencyVersion, PubspecYaml, PubspecYamlDependencyVersion,

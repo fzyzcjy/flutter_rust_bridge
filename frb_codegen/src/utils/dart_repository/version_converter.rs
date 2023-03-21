@@ -1,6 +1,6 @@
 use std::convert::TryFrom;
 
-use crate::utils::dart_repository::dart_repository::*;
+use crate::utils::dart_repository::dart_repo::*;
 use crate::utils::dart_repository::pubspec::*;
 use cargo_metadata::{Version, VersionReq};
 

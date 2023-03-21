@@ -8,7 +8,7 @@ use std::str::FromStr;
 use crate::command_run;
 use crate::error::{Error, Result};
 use crate::utils::command_runner::{call_shell, execute_command};
-use crate::utils::dart_repository::dart_repository::{DartDependencyMode, DartRepository};
+use crate::utils::dart_repository::dart_repo::{DartDependencyMode, DartRepository};
 use log::{debug, info};
 
 lazy_static! {
