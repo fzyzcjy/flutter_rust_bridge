@@ -1,6 +1,7 @@
 use clap::{Parser, ValueEnum};
 use serde::Deserialize;
 
+/// Raw configs, which is mainly given by the user of flutter_rust_bridge
 #[derive(Parser, Debug, PartialEq, Eq, Deserialize, Default)]
 #[command(version)]
 #[command(override_usage(

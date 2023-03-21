@@ -5,6 +5,7 @@ use crate::ir::IrFile;
 use crate::parser;
 use crate::utils::misc::BlockIndex;
 
+/// Parsed configs, mainly used for internal logic
 #[derive(Debug, Clone, serde::Serialize)]
 pub struct Opts {
     pub rust_input_path: String,
