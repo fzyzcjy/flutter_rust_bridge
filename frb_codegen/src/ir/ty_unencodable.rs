@@ -7,14 +7,8 @@ pub enum ArgsRefs<'a> {
     Signature(&'a [IrType]),
 }
 
-pub trait ArgsUnpackable {
-    fn unpack(&self) -> Vec<(&str, Option<ArgsRefs>)>;
-}
-
-#[derive(Debug, Clone, Hash, Eq, PartialEq)]
-pub struct IrTypeUnencodable {
-    pub underlying_type: Box<syn::Type>,
-    pub segments: Vec<(String, Option<Args>)>,
+pub trait Splayable {
+    fn splay(&self) -> Vec<(&str, Option<ArgsRefs>)>;
 }
 
 #[derive(Debug, Clone, Hash, Eq, PartialEq)]
@@ -23,14 +17,28 @@ pub enum Args {
     Signature(Vec<IrType>),
 }
 
-impl ArgsUnpackable for Vec<(String, Option<Args>)> {
-    fn unpack(&self) -> Vec<(&str, Option<ArgsRefs>)> {
+/// A component of a fully qualified name and any type arguments for it
+#[derive(Debug, Clone, Hash, Eq, PartialEq)]
+pub struct NameComponent {
+    pub ident: String,
+    pub args: Option<Args>
+}
+
+#[derive(Debug, Clone, Hash, Eq, PartialEq)]
+pub struct IrTypeUnencodable {
+    pub underlying_type: Box<syn::Type>,
+    pub segments: Vec<NameComponent>,
+}
+
+impl Splayable for Vec<NameComponent> {
+    /// Spread and turn out the data of a fully qualified name for structural pattern matching.
+    fn splay(&self) -> Vec<(&str, Option<ArgsRefs>)> {
         return self
             .iter()
-            .map(|(ident, maybe_args)| {
+            .map(|NameComponent {ident, args}| {
                 (
                     &ident[..],
-                    maybe_args.as_ref().map(|args| match &args {
+                    args.as_ref().map(|args| match &args {
                         Args::Generic(types) => ArgsRefs::Generic(&types[..]),
                         Args::Signature(types) => ArgsRefs::Signature(&types[..]),
                     }),

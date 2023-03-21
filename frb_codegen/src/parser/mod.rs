@@ -139,10 +139,10 @@ impl<'a> Parser<'a> {
             match self.type_parser.convert_path_to_ir_type(type_path) {
                 Ok(IrType::Unencodable(IrTypeUnencodable { segments, .. })) => {
                     match if cfg!(feature = "qualified_names") {
-                        segments.unpack()
+                        segments.splay()
                     } else {
                         // Emulate old behavior by discarding any name qualifiers
-                        vec![segments.unpack().pop().unwrap()]
+                        vec![segments.splay().pop().unwrap()]
                     }[..]
                     {
                         #[cfg(feature = "qualified_names")]

@@ -82,13 +82,13 @@ fn path_type_to_unencodable(
         segments: flat_vector
             .iter()
             .map(|(ident, option_args_refs)| {
-                (
-                    ident.to_string(),
-                    option_args_refs.as_ref().map(|args_refs| match args_refs {
+                NameComponent {
+                    ident: ident.to_string(),
+                    args: option_args_refs.as_ref().map(|args_refs| match args_refs {
                         ArgsRefs::Generic(args_array) => Args::Generic(args_array.to_vec()),
                         ArgsRefs::Signature(args_array) => Args::Signature(args_array.to_vec()),
                     }),
-                )
+                }
             })
             .collect(),
     })
@@ -181,32 +181,32 @@ impl<'a> TypeParser<'a> {
     fn path_data(
         &mut self,
         path: &Path,
-    ) -> std::result::Result<Vec<(String, Option<Args>)>, String> {
+    ) -> std::result::Result<Vec<NameComponent>, String> {
         let Path { segments, .. } = path;
 
-        let data: std::result::Result<Vec<_>, String> = segments
+        let data: std::result::Result<Vec<NameComponent>, String> = segments
             .iter()
             .map(|segment| {
-                let segment_ident = segment.ident.to_string();
+                let ident = segment.ident.to_string();
                 match &segment.arguments {
-                    PathArguments::None => Ok((segment_ident, None)),
+                    PathArguments::None => Ok(NameComponent{ ident, args: None }),
                     PathArguments::AngleBracketed(args) => {
                         match self.angle_bracketed_generic_arguments_to_ir_types(args) {
                             Err(sub_err) => Err(format!(
                                 "\"{}\" of \"{}\" is not valid. {}",
-                                segment_ident,
+                                ident,
                                 path.to_token_stream(),
                                 sub_err
                             )),
-                            Ok(ir_types) => Ok((segment_ident, Some(Args::Generic(ir_types)))),
+                            Ok(ir_types) => Ok(NameComponent{ ident, args: Some(Args::Generic(ir_types)) }),
                         }
                     }
-                    PathArguments::Parenthesized(args) => Ok((
-                        segment_ident,
-                        Some(Args::Signature(
+                    PathArguments::Parenthesized(args) => Ok(NameComponent {
+                        ident,
+                        args: Some(Args::Signature(
                             self.parenthesized_generic_arguments_to_ir_types(args),
                         )),
-                    )),
+                    }),
                 }
             })
             .collect();
@@ -223,7 +223,7 @@ impl<'a> TypeParser<'a> {
     ) -> std::result::Result<IrType, String> {
         match &type_path {
             TypePath { qself: None, path } => {
-                let segments: Vec<(String, Option<Args>)> = if cfg!(feature = "qualified_names") {
+                let segments: Vec<NameComponent> = if cfg!(feature = "qualified_names") {
                     self.path_data(path)?
                 } else {
                     // Emulate old behavior by discarding any name qualifiers
@@ -232,7 +232,7 @@ impl<'a> TypeParser<'a> {
 
                 use ArgsRefs::*;
 
-                let flat_vector = segments.unpack();
+                let flat_vector = segments.splay();
                 let flat_array = &flat_vector[..];
                 match flat_array {
                     // Non generic types
