@@ -30,7 +30,6 @@ mod commands;
 mod error;
 mod generator;
 mod ir;
-mod markers;
 mod others;
 mod parser;
 mod target;

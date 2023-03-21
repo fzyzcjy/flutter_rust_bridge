@@ -18,7 +18,7 @@ use cargo_metadata::MetadataCommand;
 use log::{debug, warn};
 use syn::{Attribute, Ident, ItemEnum, ItemStruct, PathArguments, Type, UseTree};
 
-use crate::markers;
+use crate::parser::markers;
 
 /// Represents a crate, including a map of its modules, imports, structs and
 /// enums.

@@ -1,5 +1,6 @@
 pub(crate) mod ty;
 pub(crate) mod source_graph;
+pub(crate) mod markers;
 
 use std::borrow::Cow;
 use std::collections::HashMap;
