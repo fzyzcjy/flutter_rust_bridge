@@ -11,6 +11,7 @@ use itertools::Itertools;
 use toml::Value;
 use crate::config::opts::Opts;
 use crate::config::raw_opts::RawOpts;
+use crate::config::refine_c_output::get_refined_c_output;
 use crate::utils::misc::{BlockIndex, find_all_duplicates};
 
 pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
@@ -25,7 +26,7 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
     // dart output path(s)
     let dart_output_paths = get_valid_canon_paths(&raw.dart_output);
     if dart_output_paths.len() != rust_input_paths.len() {
-        bail(
+        raw_opts_bail(
             ErrorKind::WrongNumberOfValues,
             "--dart-output's inputs should match --rust-input's length".into(),
         )
@@ -46,7 +47,7 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
         .map(|each_path| canon_path(each_path))
         .collect::<Vec<_>>();
     if rust_crate_dirs.len() != rust_input_paths.len() {
-        bail(
+        raw_opts_bail(
             ErrorKind::WrongNumberOfValues,
             "--rust-crate-dir's inputs should match --rust-input's length".into(),
         );
@@ -56,7 +57,7 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
     let manifest_paths = rust_crate_dirs
         .iter()
         .map(|each| {
-            let mut path = std::path::PathBuf::from_str(each).unwrap();
+            let mut path = PathBuf::from_str(each).unwrap();
             path.push("Cargo.toml");
             path_to_string(path).unwrap()
         })
@@ -74,7 +75,7 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
         .map(|each_path| canon_path(each_path))
         .collect::<Vec<_>>();
     if rust_output_paths.len() != rust_input_paths.len() {
-        bail(
+        raw_opts_bail(
             ErrorKind::WrongNumberOfValues,
             "--rust-output's inputs should match --rust-input's length".into(),
         );
@@ -88,13 +89,13 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
         "class_name",
     );
     if !find_all_duplicates(&class_names).is_empty() {
-        bail(
+        raw_opts_bail(
             ErrorKind::ValueValidation,
             "there should be no duplication in --class-name's inputs".into(),
         );
     };
     if class_names.len() != rust_input_paths.len() {
-        bail(
+        raw_opts_bail(
             ErrorKind::WrongNumberOfValues,
             "--class-name's inputs should match --rust-input's length".into(),
         );
@@ -160,78 +161,8 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
 }
 
 #[inline(never)]
-fn bail(err: clap::error::ErrorKind, message: Cow<str>) -> ! {
+pub(crate) fn raw_opts_bail(err: clap::error::ErrorKind, message: Cow<str>) -> ! {
     RawOpts::command().error(err, message).exit()
-}
-
-fn get_refined_c_output(
-    c_output: &Option<Vec<String>>,
-    extra_c_output_path: &Option<Vec<String>>,
-    rust_input_paths: &Vec<String>,
-) -> Vec<Vec<String>> {
-    use clap::error::ErrorKind;
-
-    assert!(!rust_input_paths.is_empty());
-
-    // 1.c path with file name from flag rawOpt.c_output
-    let c_output_paths = c_output
-        .as_ref()
-        .map(|outputs| {
-            outputs
-                .iter()
-                .map(|output| canon_path(output))
-                .collect::<Vec<_>>()
-        })
-        .unwrap_or_else(|| {
-            (0..rust_input_paths.len())
-                .map(|_| {
-                    fallback_c_output_path()
-                        .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("c_output")))
-                })
-                .collect()
-        });
-    if c_output_paths.len() != rust_input_paths.len() {
-        bail(
-            ErrorKind::WrongNumberOfValues,
-            "--c-output's inputs should match --rust-input's length".into(),
-        );
-    }
-    // 2.extra c path from flag rawOpt.extra_c_output_path
-    let extra_c_output_paths = extra_c_output_path
-        .as_deref()
-        .unwrap_or_default()
-        .iter()
-        .flat_map(|extra_path| {
-            c_output_paths.iter().map(move |c| {
-                let path = Path::new(c);
-                let file_name = String::from(path.file_name().unwrap().to_str().unwrap());
-                Path::join(extra_path.as_ref(), file_name)
-                    .into_os_string()
-                    .into_string()
-                    .unwrap()
-            })
-        })
-        .collect::<Vec<_>>();
-    // 3.integrate c output path(s) for each rust input API block
-    let refined_c_outputs = c_output_paths
-        .iter()
-        .enumerate()
-        .map(|(i, each_a)| {
-            let mut first = vec![each_a.clone()];
-            if !extra_c_output_paths.is_empty() {
-                let iter = extra_c_output_paths[i..]
-                    .iter()
-                    .step_by(c_output_paths.len())
-                    .map(|s| s.to_owned())
-                    .collect::<Vec<_>>();
-                first.extend(iter);
-            }
-
-            first
-        })
-        .collect::<Vec<_>>();
-
-    refined_c_outputs
 }
 
 fn get_outputs_for_flag_requires_full_data(
@@ -248,7 +179,7 @@ fn get_outputs_for_flag_requires_full_data(
             let strs = field_str.split('_').collect::<Vec<_>>();
             let raw_str = strs.join(" ");
             let flag_str = strs.join("-");
-            bail(
+            raw_opts_bail(
                 clap::error::ErrorKind::ValueValidation,
                 format!("for more than 1 rust blocks, please specify each {raw_str} clearly with flag \"{flag_str}\"").into()
             )
@@ -282,7 +213,7 @@ fn parse_yaml(path: &str) -> RawOpts {
 
     let file = File::open(path)
         .map_err(|err| {
-            bail(
+            raw_opts_bail(
                 ErrorKind::Io,
                 format!("Could not open {path}: {err}").into(),
             )
@@ -290,7 +221,7 @@ fn parse_yaml(path: &str) -> RawOpts {
         .unwrap();
     let config = serde_yaml::from_reader(file)
         .map_err(|err| {
-            bail(
+            raw_opts_bail(
                 ErrorKind::InvalidValue,
                 format!("Could not parse config from {path}: {err}").into(),
             )
@@ -346,7 +277,7 @@ fn get_valid_canon_paths(paths: &[String]) -> Vec<String> {
         .collect::<Vec<_>>()
 }
 
-fn format_fail_to_guess_error(name: &str) -> String {
+pub(crate) fn format_fail_to_guess_error(name: &str) -> String {
     format!("fail to guess {name}, please specify it manually in command line arguments")
 }
 
@@ -375,15 +306,6 @@ fn fallback_rust_crate_dir(rust_input_path: &str) -> Result<String> {
     Err(anyhow!(
         "look at parent directories but none contains Cargo.toml"
     ))
-}
-
-fn fallback_c_output_path() -> Result<String> {
-    let named_temp_file = Box::leak(Box::new(tempfile::Builder::new().suffix(".h").tempfile()?));
-    Ok(named_temp_file
-        .path()
-        .to_str()
-        .ok_or_else(|| anyhow!(""))?
-        .to_string())
 }
 
 fn fallback_rust_output_path(rust_input_path: &str) -> Result<String> {
@@ -427,7 +349,7 @@ fn fallback_class_name(rust_crate_dir: &str) -> Result<String> {
     Ok(package_name.to_case(Case::Pascal))
 }
 
-fn canon_path(sub_path: &str) -> String {
+pub(crate) fn canon_path(sub_path: &str) -> String {
     let path = canon_pathbuf(sub_path);
     path_to_string(path).unwrap_or_else(|_| panic!("fail to parse path: {}", sub_path))
 }
@@ -441,185 +363,4 @@ fn canon_pathbuf(sub_path: &str) -> PathBuf {
 
 fn path_to_string(path: PathBuf) -> Result<String, OsString> {
     path.into_os_string().into_string()
-}
-
-#[cfg(test)]
-mod test {
-    use std::env;
-    use std::path::PathBuf;
-    use super::*;
-
-    fn get_dir_and_file_str(path: &str) -> (String, String) {
-        let path = PathBuf::from(path);
-        let directory = path.parent().unwrap().display().to_string();
-        let file_name = path.file_name().unwrap().to_owned().into_string().unwrap();
-        (directory, file_name)
-    }
-
-    #[test]
-    #[should_panic]
-    fn test_coutput_with_no_input_block() {
-        let rust_input = vec![];
-        let c_output = None::<Vec<String>>;
-        let extra_c_output_path = None::<Vec<String>>;
-        let _ = get_refined_c_output(&c_output, &extra_c_output_path, &rust_input);
-    }
-
-    // #[test]
-    // TODO: how to catch panic from clap error?
-    // #[should_panic]
-    // fn test_coutput_with_inconsistent_number_of_input_block_api() {
-    //     let c_output = Some(vec!["pathA/api_1.rs".into(),"pathA/api_2.rs".into()]);
-    //     let rust_input = vec!["api_1.rs".into()];
-    //     let extra_c_output_path = None::<Vec<String>>;
-    //     let _ = get_refined_c_output(&c_output, &extra_c_output_path, &rust_input);
-    //     unreachable !()
-    // }
-
-    #[test]
-    fn test_single_block_with_no_c_output_with_no_extra_paths() {
-        let rust_input = vec!["api_1.rs".into()];
-        let c_output = None;
-        let extra_c_output_path = None;
-        let result = get_refined_c_output(&c_output, &extra_c_output_path, &rust_input);
-
-        assert_eq!(result.len(), 1);
-        assert_eq!(result[0].len(), 1);
-    }
-
-    #[test]
-    fn test_single_block_with_c_output_with_extra_paths() {
-        let rust_input = vec!["api_1.rs".into()];
-        let c_output = Some(vec!["./c_output.h".into()]);
-        let extra_c_output_path = Some(vec!["./extra_path_1/".into(), "./extra_path_2/".into()]);
-        let result = get_refined_c_output(&c_output, &extra_c_output_path, &rust_input);
-
-        assert_eq!(result.len(), 1);
-        assert_eq!(result[0].len(), 3);
-
-        // check 1st path
-        let (dir, file) = get_dir_and_file_str(&result[0][0]);
-        assert_eq!(dir, env::current_dir().unwrap().display().to_string());
-        assert_eq!(&file, "c_output.h");
-        // check 2ed path
-        assert_eq!(&result[0][1], "./extra_path_1/c_output.h");
-        // check 3ed path
-        assert_eq!(&result[0][2], "./extra_path_2/c_output.h");
-    }
-
-    #[test]
-    fn test_single_block_with_c_output_with_no_extra_paths() {
-        let rust_input = vec!["api_1.rs".into()];
-        let c_output = Some(vec!["./c_output.h".into()]);
-        let extra_c_output_path = None;
-        let result = get_refined_c_output(&c_output, &extra_c_output_path, &rust_input);
-
-        assert_eq!(result.len(), 1);
-        assert_eq!(result[0].len(), 1);
-
-        // check path
-        let (dir, file) = get_dir_and_file_str(&result[0][0]);
-        assert_eq!(dir, env::current_dir().unwrap().display().to_string());
-        assert_eq!(&file, "c_output.h");
-    }
-
-    #[test]
-    fn test_single_block_with_no_c_output_with_extra_paths() {
-        let rust_input = vec!["api_1.rs".into()];
-        let c_output = None;
-        let extra_c_output_path = Some(vec!["./extra_path_1/".into(), "./extra_path_2/".into()]);
-        let result = get_refined_c_output(&c_output, &extra_c_output_path, &rust_input);
-
-        assert_eq!(result.len(), 1);
-        assert_eq!(result[0].len(), 3);
-
-        // get essential info from 1st path which has an arbitrary name
-        let (_, file) = get_dir_and_file_str(&result[0][0]);
-        // check 2ed path
-        assert_eq!(&result[0][1], &format!("./extra_path_1/{}", file));
-        // check 3ed path
-        assert_eq!(&result[0][2], &format!("./extra_path_2/{}", file));
-    }
-
-    #[test]
-    fn test_multi_blocks_with_no_c_output_with_no_extra_paths() {
-        let rust_input = vec!["api_1.rs".into(), "api_2.rs".into()];
-        let c_output = None;
-        let extra_c_output_path = None;
-        let result = get_refined_c_output(&c_output, &extra_c_output_path, &rust_input);
-
-        assert_eq!(result.len(), 2);
-        assert_eq!(result[0].len(), 1);
-    }
-    #[test]
-    fn test_multi_blocks_with_c_output_with_extra_paths() {
-        let rust_input = vec!["api_1.rs".into(), "api_2.rs".into()];
-        let c_output = Some(vec!["./c_output_1.h".into(), "./c_output_2.h".into()]);
-        let extra_c_output_path = Some(vec!["./extra_path_1/".into(), "./extra_path_2/".into()]);
-        let result = get_refined_c_output(&c_output, &extra_c_output_path, &rust_input);
-
-        assert_eq!(result.len(), 2);
-        result.iter().for_each(|each_block| {
-            assert_eq!(each_block.len(), 3);
-        });
-
-        result.iter().enumerate().for_each(|(i, each_block)| {
-            // check 1st path
-            let (dir, file) = get_dir_and_file_str(&each_block[0]);
-            assert_eq!(dir, env::current_dir().unwrap().display().to_string());
-            assert_eq!(&file, &format!("c_output_{}.h", i + 1));
-            // check 2ed path
-            assert_eq!(
-                &each_block[1],
-                &format!("./extra_path_1/c_output_{}.h", i + 1)
-            );
-            // check 3ed path
-            assert_eq!(
-                &each_block[2],
-                &format!("./extra_path_2/c_output_{}.h", i + 1)
-            );
-        });
-    }
-
-    #[test]
-    fn test_multi_blocks_with_c_output_with_no_extra_paths() {
-        let rust_input = vec!["api_1.rs".into(), "api_2.rs".into()];
-        let c_output = Some(vec!["./c_output_1.h".into(), "./c_output_2.h".into()]);
-        let extra_c_output_path = None;
-        let result = get_refined_c_output(&c_output, &extra_c_output_path, &rust_input);
-
-        assert_eq!(result.len(), 2);
-        result.iter().for_each(|each_block| {
-            assert_eq!(each_block.len(), 1);
-        });
-
-        // check path
-        result.iter().enumerate().for_each(|(i, each_block)| {
-            let (dir, file) = get_dir_and_file_str(&each_block[0]);
-            assert_eq!(dir, env::current_dir().unwrap().display().to_string());
-            assert_eq!(&file, &format!("c_output_{}.h", i + 1));
-        });
-    }
-
-    #[test]
-    fn test_multi_blocks_with_no_c_output_with_extra_paths() {
-        let rust_input = vec!["api_1.rs".into(), "api_2.rs".into()];
-        let c_output = None;
-        let extra_c_output_path = Some(vec!["./extra_path_1/".into(), "./extra_path_2/".into()]);
-        let result = get_refined_c_output(&c_output, &extra_c_output_path, &rust_input);
-
-        assert_eq!(result.len(), 2);
-        result.iter().for_each(|each_block| {
-            assert_eq!(each_block.len(), 3);
-        });
-
-        result.iter().for_each(|each_block| {
-            // get essential info from 1st path which has an arbitrary name
-            let (_, file) = get_dir_and_file_str(&each_block[0]);
-            // check 2ed path
-            assert_eq!(&each_block[1], &format!("./extra_path_1/{}", file));
-            // check 3ed path
-            assert_eq!(&each_block[2], &format!("./extra_path_2/{}", file));
-        });
-    }
 }
