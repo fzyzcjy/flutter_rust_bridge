@@ -36,12 +36,8 @@ pub enum Error {
 }
 
 impl Error {
-    pub fn str(msg: &str) -> Self {
-        Self::StringError(msg.to_owned())
-    }
-
-    pub fn string(msg: String) -> Self {
-        Self::StringError(msg)
+    pub fn string<T: Into<String>>(msg: T) -> Self {
+        Self::StringError(msg.into())
     }
 }
 

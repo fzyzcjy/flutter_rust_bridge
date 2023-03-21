@@ -233,7 +233,7 @@ fn generate_dart_code(
     let dart_root = &config.dart_root;
     if generated_dart.needs_freezed && config.build_runner {
         let dart_root = dart_root.as_ref().ok_or_else(|| {
-            Error::str(
+            Error::string(
                 "build_runner configured to run, but Dart root could not be inferred.
         Please specify --dart-root, or disable build_runner with --no-build-runner.",
             )

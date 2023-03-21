@@ -256,7 +256,7 @@ fn cbindgen(
     if cbindgen::generate_with_config(path, config)?.write_to_file(c_output_path) {
         Ok(())
     } else {
-        Err(Error::str("cbindgen failed writing file").into())
+        Err(Error::string("cbindgen failed writing file").into())
     }
 }
 
