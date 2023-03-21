@@ -1425,3 +1425,18 @@ pub fn empty_struct(empty: Empty) -> Empty {
 pub fn return_dart_dynamic() -> DartAbi {
     vec!["foo".into_dart()].into_dart()
 }
+
+pub struct IllegalDartNameStruct {
+    pub r#type: String,
+}
+
+pub fn test_illegal_dart_name_struct() -> IllegalDartNameStruct {
+    IllegalDartNameStruct {
+        r#type: "test".to_owned(),
+    }
+}
+
+//pub fn illegal_dart_name_struct(r#type: String) -> IllegalDartNameStruct {
+//    IllegalDartNameStruct { r#type }
+//}
+

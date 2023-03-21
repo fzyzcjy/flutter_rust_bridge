@@ -617,6 +617,11 @@ void main(List<String> args) async {
     expect(output, isA<Empty>());
   });
 
+  test('test dart illegal name', () async {
+    final output = await api.testIllegalDartNameStruct();
+    expect(output, isA<IllegalDartNameStruct>());
+  });
+
   group('Platform-specific support', () {
     test('Int64List', () {
       final list = Int64List.fromList([-1, -2, -3, -4, -5]);

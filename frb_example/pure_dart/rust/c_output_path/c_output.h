@@ -710,6 +710,8 @@ void wire_empty_struct(int64_t port_, struct wire_Empty *empty);
 
 void wire_return_dart_dynamic(int64_t port_);
 
+void wire_test_illegal_dart_name_struct(int64_t port_);
+
 void wire_sum__method__SumWith(int64_t port_, struct wire_SumWith *that, uint32_t y, uint32_t z);
 
 void wire_new__static_method__ConcatenateWith(int64_t port_, struct wire_uint_8_list *a);
@@ -1086,6 +1088,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_handle_type_alias_model);
     dummy_var ^= ((int64_t) (void*) wire_empty_struct);
     dummy_var ^= ((int64_t) (void*) wire_return_dart_dynamic);
+    dummy_var ^= ((int64_t) (void*) wire_test_illegal_dart_name_struct);
     dummy_var ^= ((int64_t) (void*) wire_sum__method__SumWith);
     dummy_var ^= ((int64_t) (void*) wire_new__static_method__ConcatenateWith);
     dummy_var ^= ((int64_t) (void*) wire_concatenate__method__ConcatenateWith);

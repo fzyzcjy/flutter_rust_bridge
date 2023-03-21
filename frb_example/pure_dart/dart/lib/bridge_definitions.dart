@@ -600,6 +600,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kReturnDartDynamicConstMeta;
 
+  Future<IllegalDartNameStruct> testIllegalDartNameStruct({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestIllegalDartNameStructConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
@@ -1138,6 +1142,14 @@ class I32Array2 extends NonGrowableListView<int> {
         super(inner);
   I32Array2.unchecked(Int32List inner) : super(inner);
   I32Array2.init() : super(Int32List(arraySize));
+}
+
+class IllegalDartNameStruct {
+  final String type;
+
+  const IllegalDartNameStruct({
+    required this.type,
+  });
 }
 
 @freezed

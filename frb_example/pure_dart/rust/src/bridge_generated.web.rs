@@ -730,6 +730,11 @@ pub fn wire_return_dart_dynamic(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_test_illegal_dart_name_struct(port_: MessagePort) {
+    wire_test_illegal_dart_name_struct_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }

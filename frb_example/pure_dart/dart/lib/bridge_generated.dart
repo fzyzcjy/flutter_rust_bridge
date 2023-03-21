@@ -2267,6 +2267,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<IllegalDartNameStruct> testIllegalDartNameStruct({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_illegal_dart_name_struct(port_),
+      parseSuccessData: _wire2api_illegal_dart_name_struct,
+      constMeta: kTestIllegalDartNameStructConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestIllegalDartNameStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_illegal_dart_name_struct",
+        argNames: [],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_sum_with(that);
     var arg1 = api2wire_u32(y);
@@ -2933,6 +2948,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   int _wire2api_i8(dynamic raw) {
     return raw as int;
+  }
+
+  IllegalDartNameStruct _wire2api_illegal_dart_name_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return IllegalDartNameStruct(
+      type: _wire2api_String(arr[0]),
+    );
   }
 
   Int16List _wire2api_int_16_list(dynamic raw) {

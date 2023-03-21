@@ -1195,6 +1195,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_return_dart_dynamic(NativePortType port_);
 
+  external dynamic /* void */ wire_test_illegal_dart_name_struct(NativePortType port_);
+
   external dynamic /* void */ wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
 
   external dynamic /* void */ wire_new__static_method__ConcatenateWith(NativePortType port_, String a);
@@ -1594,6 +1596,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_empty_struct(NativePortType port_, List<dynamic> empty) => wasmModule.wire_empty_struct(port_, empty);
 
   void wire_return_dart_dynamic(NativePortType port_) => wasmModule.wire_return_dart_dynamic(port_);
+
+  void wire_test_illegal_dart_name_struct(NativePortType port_) => wasmModule.wire_test_illegal_dart_name_struct(port_);
 
   void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z) =>
       wasmModule.wire_sum__method__SumWith(port_, that, y, z);

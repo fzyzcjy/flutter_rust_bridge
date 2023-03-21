@@ -5,6 +5,7 @@ use crate::method_utils::FunctionName;
 use crate::target::Acc;
 use crate::type_dart_generator_struct;
 use convert_case::{Case, Casing};
+use crate::others::rename_string_literal;
 
 type_dart_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
@@ -85,7 +86,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         if has_methods {
             inner.insert(0, "bridge: this,".to_string());
         }
-        let inner = inner.join("\n");
+        let inner = rename_string_literal(inner.join("\n").as_str());
 
         format!(
             "final arr = raw as List<dynamic>;

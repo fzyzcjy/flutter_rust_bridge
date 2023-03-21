@@ -3347,6 +3347,19 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_dart_dynamic');
   late final _wire_return_dart_dynamic = _wire_return_dart_dynamicPtr.asFunction<void Function(int)>();
 
+  void wire_test_illegal_dart_name_struct(
+    int port_,
+  ) {
+    return _wire_test_illegal_dart_name_struct(
+      port_,
+    );
+  }
+
+  late final _wire_test_illegal_dart_name_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_test_illegal_dart_name_struct');
+  late final _wire_test_illegal_dart_name_struct =
+      _wire_test_illegal_dart_name_structPtr.asFunction<void Function(int)>();
+
   void wire_sum__method__SumWith(
     int port_,
     ffi.Pointer<wire_SumWith> that,

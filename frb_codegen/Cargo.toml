@@ -54,5 +54,5 @@ x86_64-pc-windows-msvc = {pkg-fmt = "zip"}
 
 [features]
 chrono = []
-default = ["chrono"]
+default = ["chrono", "uuid"]
 uuid = []
