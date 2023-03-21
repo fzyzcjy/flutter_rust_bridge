@@ -8,13 +8,19 @@ use std::process::Command;
 use std::process::Output;
 use std::process::Stdio;
 use std::str::FromStr;
+use lazy_static::lazy_static;
+use cargo_metadata::VersionReq;
 
 use crate::error::{Error, Result};
-use crate::utils::tools::DartRepository;
-use crate::utils::tools::PackageManager;
-use crate::utils::tools::FFIGEN_REQUIREMENT;
-use crate::utils::tools::FFI_REQUIREMENT;
 use log::{debug, info, warn};
+use crate::utils::dart_repository::dart_repository::{DartDependencyMode, DartRepository};
+
+lazy_static! {
+    pub(crate) static ref FFI_REQUIREMENT: VersionReq =
+        VersionReq::parse(">= 2.0.1, < 3.0.0").unwrap();
+    pub(crate) static ref FFIGEN_REQUIREMENT: VersionReq =
+        VersionReq::parse(">= 6.0.1, < 8.0.0").unwrap();
+}
 
 /// - First argument is either a string of a command, or a function receiving a slice of [`PathBuf`].
 ///   - The command may be followed by `in <expr>` to specify the working directory.
@@ -96,17 +102,17 @@ pub fn ensure_tools_available(dart_root: &str, skip_deps_check: bool) -> Result 
     }
 
     if !skip_deps_check {
-        repo.has_specified("ffi", PackageManager::Dependencies, &FFI_REQUIREMENT)?;
-        repo.has_installed("ffi", PackageManager::Dependencies, &FFI_REQUIREMENT)?;
+        repo.has_specified("ffi", DartDependencyMode::Main, &FFI_REQUIREMENT)?;
+        repo.has_installed("ffi", DartDependencyMode::Main, &FFI_REQUIREMENT)?;
 
         repo.has_specified(
             "ffigen",
-            PackageManager::DevDependencies,
+            DartDependencyMode::Dev,
             &FFIGEN_REQUIREMENT,
         )?;
         repo.has_installed(
             "ffigen",
-            PackageManager::DevDependencies,
+            DartDependencyMode::Dev,
             &FFIGEN_REQUIREMENT,
         )?;
     }
@@ -148,7 +154,7 @@ pub(crate) fn bindgen_rust_to_dart(
 #[must_use = "Error path must be handled."]
 fn execute_command<'a>(
     bin: &str,
-    args: impl IntoIterator<Item = &'a std::path::PathBuf>,
+    args: impl IntoIterator<Item = &'a PathBuf>,
     current_dir: Option<&str>,
 ) -> Result<Output> {
     let args = args.into_iter().collect::<Vec<_>>();

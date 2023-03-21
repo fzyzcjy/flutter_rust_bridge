@@ -1,6 +1,5 @@
 use thiserror::Error;
-
-use crate::utils::tools::PackageManager;
+use crate::utils::dart_repository::dart_repository::DartDependencyMode;
 
 pub type Result<T = ()> = std::result::Result<T, Error>;
 
@@ -24,13 +23,13 @@ pub enum Error {
     #[error("please add {name} to your {manager}. (version {requirement})")]
     MissingDep {
         name: String,
-        manager: PackageManager,
+        manager: DartDependencyMode,
         requirement: String,
     },
     #[error("please update version of {name} in your {manager}. (version {requirement})")]
     InvalidDep {
         name: String,
-        manager: PackageManager,
+        manager: DartDependencyMode,
         requirement: String,
     },
 }
