@@ -81,7 +81,7 @@ impl Crate {
     }
 
     /// Create a map of the modules for this crate
-    pub fn resolve(&mut self) {
+    fn resolve(&mut self) {
         self.root_module.resolve();
     }
 }
