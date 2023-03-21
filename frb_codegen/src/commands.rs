@@ -10,10 +10,10 @@ use std::process::Stdio;
 use std::str::FromStr;
 
 use crate::error::{Error, Result};
-use crate::tools::DartRepository;
-use crate::tools::PackageManager;
-use crate::tools::FFIGEN_REQUIREMENT;
-use crate::tools::FFI_REQUIREMENT;
+use crate::utils::tools::DartRepository;
+use crate::utils::tools::PackageManager;
+use crate::utils::tools::FFIGEN_REQUIREMENT;
+use crate::utils::tools::FFI_REQUIREMENT;
 use log::{debug, info, warn};
 
 /// - First argument is either a string of a command, or a function receiving a slice of [`PathBuf`].

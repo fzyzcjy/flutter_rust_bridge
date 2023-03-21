@@ -1,4 +1,4 @@
-use crate::consts::*;
+use crate::utils::consts::*;
 use crate::{ir::*, target::Target};
 
 crate::ir! {
