@@ -1,6 +1,6 @@
 use crate::generator::dart::ty::*;
 use crate::generator::dart::{dart_comments, dart_metadata, GeneratedApiMethod};
-use crate::method_utils::FunctionName;
+use crate::utils::method::FunctionName;
 use crate::target::Acc;
 use crate::type_dart_generator_struct;
 use crate::{ir::*, Opts};

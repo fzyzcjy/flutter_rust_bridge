@@ -30,7 +30,7 @@ use std::collections::HashSet;
 use std::fmt::Display;
 
 use crate::ir::IrType::*;
-use crate::method_utils::FunctionName;
+use crate::utils::method::FunctionName;
 use crate::others::*;
 use crate::target::Acc;
 use crate::target::Target;
