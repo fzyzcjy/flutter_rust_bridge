@@ -1,9 +1,9 @@
-use anyhow::{Context, Result};
-use std::fs;
-use std::path::{Path, PathBuf};
 use crate::ir::IrFile;
 use crate::parser;
 use crate::utils::misc::BlockIndex;
+use anyhow::{Context, Result};
+use std::fs;
+use std::path::{Path, PathBuf};
 
 /// Parsed configs, mainly used for internal logic
 #[derive(Debug, Clone, serde::Serialize)]
@@ -75,8 +75,8 @@ impl Opts {
                 .as_ref()
                 .unwrap_or(&self.dart_output_path),
         )
-            .file_stem()?
-            .to_str()
+        .file_stem()?
+        .to_str()
     }
 
     pub fn dart_wasm_output_path(&self) -> PathBuf {
@@ -111,7 +111,7 @@ impl Opts {
                 .as_deref()
                 .unwrap_or(&self.dart_output_path),
         )
-            .with_extension("freezed.dart")
+        .with_extension("freezed.dart")
     }
 
     pub fn get_rust_output_paths(&self) -> PathForGeneration {

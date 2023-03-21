@@ -1,18 +1,18 @@
-use std::borrow::Cow;
-use std::{env, fs};
-use std::ffi::OsString;
-use std::fs::File;
-use std::path::{Path, PathBuf};
-use std::str::FromStr;
+use crate::config::opts::Opts;
+use crate::config::raw_opts::RawOpts;
+use crate::config::refine_c_output::get_refined_c_output;
+use crate::utils::misc::{find_all_duplicates, BlockIndex};
 use anyhow::*;
 use clap::CommandFactory;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
+use std::borrow::Cow;
+use std::ffi::OsString;
+use std::fs::File;
+use std::path::{Path, PathBuf};
+use std::str::FromStr;
+use std::{env, fs};
 use toml::Value;
-use crate::config::opts::Opts;
-use crate::config::raw_opts::RawOpts;
-use crate::config::refine_c_output::get_refined_c_output;
-use crate::utils::misc::{BlockIndex, find_all_duplicates};
 
 pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
     if let Some(config) = raw.config_file {

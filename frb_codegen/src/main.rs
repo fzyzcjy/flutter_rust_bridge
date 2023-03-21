@@ -1,7 +1,9 @@
 #[cfg(feature = "serde")]
 use lib_flutter_rust_bridge_codegen::dump;
+use lib_flutter_rust_bridge_codegen::{
+    config_parse, frb_codegen_multi, get_symbols_if_no_duplicates, init_logger, RawOpts,
+};
 use log::{debug, error, info};
-use lib_flutter_rust_bridge_codegen::{config_parse, frb_codegen_multi, get_symbols_if_no_duplicates, init_logger, RawOpts};
 
 fn main() -> anyhow::Result<()> {
     //  get valiable options from user input command
@@ -36,7 +38,10 @@ fn main() -> anyhow::Result<()> {
 #[cfg(test)]
 mod tests {
     use lazy_static::lazy_static;
-    use lib_flutter_rust_bridge_codegen::{config_parse, frb_codegen, frb_codegen_multi, get_symbols_if_no_duplicates, init_logger, RawOpts};
+    use lib_flutter_rust_bridge_codegen::{
+        config_parse, frb_codegen, frb_codegen_multi, get_symbols_if_no_duplicates, init_logger,
+        RawOpts,
+    };
 
     lazy_static! {
         static ref LOGGER: () = init_logger(".", true).unwrap();

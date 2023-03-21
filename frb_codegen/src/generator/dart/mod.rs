@@ -40,10 +40,10 @@ use convert_case::{Case, Casing};
 use log::debug;
 
 use crate::ir::IrType::*;
-use crate::utils::method::{FunctionName, MethodNamingUtil};
 use crate::others::*;
 use crate::target::Target::*;
 use crate::target::{Acc, Target};
+use crate::utils::method::{FunctionName, MethodNamingUtil};
 use crate::{ir::*, Opts};
 
 pub struct Output {

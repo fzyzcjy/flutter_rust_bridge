@@ -1,14 +1,17 @@
-use std::ffi::OsStr;
-use std::fs;
-use std::path::Path;
+use crate::commands::BindgenRustToDartArg;
+use crate::error::Error;
+use crate::others::{
+    extract_dart_wire_content, modify_dart_wire_content, sanity_check, DartBasicCode,
+    DUMMY_WIRE_CODE_FOR_BINDGEN, EXTRA_EXTERN_FUNC_NAMES,
+};
+use crate::utils::misc::with_changed_file;
+use crate::{command_run, commands, ensure_tools_available, generator, ir, Opts};
 use itertools::Itertools;
 use log::info;
 use pathdiff::diff_paths;
-use crate::{command_run, commands, ensure_tools_available, generator, ir, Opts};
-use crate::commands::BindgenRustToDartArg;
-use crate::error::Error;
-use crate::others::{DartBasicCode, DUMMY_WIRE_CODE_FOR_BINDGEN, EXTRA_EXTERN_FUNC_NAMES, extract_dart_wire_content, modify_dart_wire_content, sanity_check};
-use crate::utils::misc::with_changed_file;
+use std::ffi::OsStr;
+use std::fs;
+use std::path::Path;
 
 pub(crate) fn generate_dart_code(
     config: &Opts,
@@ -53,7 +56,7 @@ pub(crate) fn generate_dart_code(
         generated_rust.extern_func_names,
         EXTRA_EXTERN_FUNC_NAMES.to_vec(),
     ]
-        .concat();
+    .concat();
 
     for (i, each_path) in config.c_output_path.iter().enumerate() {
         let c_dummy_code =
@@ -222,4 +225,3 @@ fn write_dart_decls(
     }
     Ok(())
 }
-

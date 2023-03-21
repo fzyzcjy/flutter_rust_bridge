@@ -1,8 +1,8 @@
-use std::{ convert::TryFrom};
+use std::convert::TryFrom;
 
-use cargo_metadata::{Version, VersionReq};
 use crate::utils::dart_repository::dart_repository::*;
 use crate::utils::dart_repository::pubspec::*;
+use cargo_metadata::{Version, VersionReq};
 
 #[derive(Debug, Clone)]
 pub struct CargoDependencyVersion(String);

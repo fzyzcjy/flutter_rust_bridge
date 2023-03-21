@@ -1,8 +1,8 @@
 use crate::generator::dart::ty::*;
 use crate::generator::dart::{dart_comments, dart_metadata, GeneratedApiMethod};
-use crate::utils::method::FunctionName;
 use crate::target::Acc;
 use crate::type_dart_generator_struct;
+use crate::utils::method::FunctionName;
 use crate::{ir::*, Opts};
 use convert_case::{Case, Casing};
 

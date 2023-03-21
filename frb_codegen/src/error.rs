@@ -1,5 +1,5 @@
-use thiserror::Error;
 use crate::utils::dart_repository::dart_repository::DartDependencyMode;
+use thiserror::Error;
 
 pub type Result<T = ()> = std::result::Result<T, Error>;
 

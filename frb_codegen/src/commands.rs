@@ -1,15 +1,15 @@
+use cargo_metadata::VersionReq;
+use lazy_static::lazy_static;
 use std::fmt::Write;
 use std::path::Path;
 use std::path::PathBuf;
 use std::str::FromStr;
-use lazy_static::lazy_static;
-use cargo_metadata::VersionReq;
 
-use crate::error::{Error, Result};
-use log::{debug, info};
 use crate::command_run;
+use crate::error::{Error, Result};
 use crate::utils::command_runner::{call_shell, execute_command};
 use crate::utils::dart_repository::dart_repository::{DartDependencyMode, DartRepository};
+use log::{debug, info};
 
 lazy_static! {
     pub(crate) static ref FFI_REQUIREMENT: VersionReq =
@@ -29,16 +29,8 @@ pub fn ensure_tools_available(dart_root: &str, skip_deps_check: bool) -> Result 
         repo.has_specified("ffi", DartDependencyMode::Main, &FFI_REQUIREMENT)?;
         repo.has_installed("ffi", DartDependencyMode::Main, &FFI_REQUIREMENT)?;
 
-        repo.has_specified(
-            "ffigen",
-            DartDependencyMode::Dev,
-            &FFIGEN_REQUIREMENT,
-        )?;
-        repo.has_installed(
-            "ffigen",
-            DartDependencyMode::Dev,
-            &FFIGEN_REQUIREMENT,
-        )?;
+        repo.has_specified("ffigen", DartDependencyMode::Dev, &FFIGEN_REQUIREMENT)?;
+        repo.has_installed("ffigen", DartDependencyMode::Dev, &FFIGEN_REQUIREMENT)?;
     }
 
     Ok(())

@@ -1,7 +1,7 @@
-use std::fs;
+use crate::config::raw_opts::RawOpts;
 use anyhow::Context;
 use clap::Parser;
-use crate::config::raw_opts::RawOpts;
+use std::fs;
 
 impl RawOpts {
     /// Parses options from arguments, or from a config file if no arguments are given.
@@ -58,4 +58,3 @@ impl RawOpts {
         }
     }
 }
-

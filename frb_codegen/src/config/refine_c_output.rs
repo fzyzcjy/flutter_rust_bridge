@@ -1,6 +1,6 @@
+use crate::config::opts_parser::{canon_path, format_fail_to_guess_error, raw_opts_bail};
 use anyhow::{anyhow, Result};
 use std::path::Path;
-use crate::config::opts_parser::{canon_path, format_fail_to_guess_error, raw_opts_bail};
 
 pub(crate) fn get_refined_c_output(
     c_output: &Option<Vec<String>>,
@@ -74,9 +74,9 @@ pub(crate) fn get_refined_c_output(
 
 #[cfg(test)]
 mod test {
+    use super::*;
     use std::env;
     use std::path::PathBuf;
-    use super::*;
 
     fn get_dir_and_file_str(path: &str) -> (String, String) {
         let path = PathBuf::from(path);
@@ -261,4 +261,3 @@ fn fallback_c_output_path() -> Result<String> {
         .ok_or_else(|| anyhow!(""))?
         .to_string())
 }
-

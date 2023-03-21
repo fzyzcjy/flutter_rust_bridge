@@ -1,12 +1,12 @@
+use crate::error::Error;
+use crate::utils::dart_repository::dart_toolchain::DartToolchain;
+use crate::utils::dart_repository::pubspec::*;
+use cargo_metadata::{Version, VersionReq};
+use log::debug;
 use std::convert::TryFrom;
 use std::fmt::Display;
 use std::path::PathBuf;
 use std::str::FromStr;
-use log::debug;
-use cargo_metadata::{Version, VersionReq};
-use crate::error::Error;
-use crate::utils::dart_repository::dart_toolchain::DartToolchain;
-use crate::utils::dart_repository::pubspec::*;
 
 /// represents a dart / flutter repository
 #[derive(Debug)]
@@ -196,4 +196,3 @@ impl PubspecLockPackage {
         }
     }
 }
-

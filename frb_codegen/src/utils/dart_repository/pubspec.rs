@@ -1,5 +1,5 @@
-use std::collections::HashMap;
 use serde::Deserialize;
+use std::collections::HashMap;
 
 /// The `pubspec.yaml` in a Dart/Flutter repository
 #[derive(Debug, Deserialize)]

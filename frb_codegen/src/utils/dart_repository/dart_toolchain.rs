@@ -1,6 +1,6 @@
 use crate::utils::command_runner::call_shell;
-use std::path::PathBuf;
 use crate::{command_args, command_run};
+use std::path::PathBuf;
 
 /// represents dart or flutter toolchain
 #[derive(Debug, PartialEq, Eq)]
@@ -14,7 +14,8 @@ impl ToString for DartToolchain {
         match self {
             DartToolchain::Dart => "dart",
             DartToolchain::Flutter => "flutter",
-        }.to_string()
+        }
+        .to_string()
     }
 }
 
@@ -47,4 +48,3 @@ impl DartToolchain {
             .success()
     }
 }
-

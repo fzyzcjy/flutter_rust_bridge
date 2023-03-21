@@ -5,10 +5,10 @@ use std::fs;
 use std::hash::Hash;
 use std::path::Path;
 
+use crate::utils::consts::DART_KEYWORDS;
 use anyhow::anyhow;
 use convert_case::{Case, Casing};
 use pathdiff::diff_paths;
-use crate::utils::consts::DART_KEYWORDS;
 
 pub fn mod_from_rust_path(code_path: &str, crate_path: &str) -> String {
     Path::new(code_path)
@@ -35,8 +35,8 @@ pub fn with_changed_file<F: FnOnce() -> anyhow::Result<()>>(
 }
 
 pub fn find_all_duplicates<T>(iter: &[T]) -> Vec<T>
-    where
-        T: Eq + Hash + Clone,
+where
+    T: Eq + Hash + Clone,
 {
     let mut uniq = HashSet::new();
     iter.iter()
@@ -118,8 +118,8 @@ pub trait PathExt {
     fn directory_name_str(&self) -> Option<&str>;
 
     fn get_relative_path_to<P>(&self, path: P, exclude_file: bool) -> String
-        where
-            P: AsRef<Path>;
+    where
+        P: AsRef<Path>;
 }
 
 impl PathExt for std::path::Path {
@@ -133,8 +133,8 @@ impl PathExt for std::path::Path {
     }
     #[inline]
     fn get_relative_path_to<P>(&self, path: P, exclude_file: bool) -> String
-        where
-            P: AsRef<Path>,
+    where
+        P: AsRef<Path>,
     {
         if exclude_file {
             let src = self.parent().and_then(|p| p.to_str()).unwrap();

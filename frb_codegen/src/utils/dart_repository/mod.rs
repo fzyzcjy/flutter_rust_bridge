@@ -4,9 +4,9 @@
 //! and beware that Cargo and Dart interpret semantic versioning differently:
 //! see this [discussion](https://github.com/fzyzcjy/flutter_rust_bridge/pull/605#discussion_r935180160) for more information.
 
-pub(crate) mod pubspec;
 pub(crate) mod dart_repository;
 pub(crate) mod dart_toolchain;
+pub(crate) mod pubspec;
 pub(crate) mod version_converter;
 
 #[cfg(test)]
@@ -17,12 +17,14 @@ mod tests {
         str::FromStr,
     };
 
+    use super::dart_repository::DartRepository;
+    use super::dart_toolchain::DartToolchain;
+    use crate::utils::dart_repository::pubspec::{
+        DartDependencyVersion, PubspecYaml, PubspecYamlDependencyVersion,
+    };
     use cargo_metadata::VersionReq;
     use lazy_static::lazy_static;
     use semver::Op;
-    use super::dart_repository::DartRepository;
-    use super::dart_toolchain::DartToolchain;
-    use crate::utils::dart_repository::pubspec::{DartDependencyVersion, PubspecYaml, PubspecYamlDependencyVersion};
 
     lazy_static! {
         static ref FRB_EXAMPLES_FOLDER: PathBuf = {
@@ -89,7 +91,8 @@ mod tests {
                 that_package: 1.0.1
                 other_package:
         ";
-        let pubspec: PubspecYaml = serde_yaml::from_str(yaml).expect("Failed to parse pubspec.yaml");
+        let pubspec: PubspecYaml =
+            serde_yaml::from_str(yaml).expect("Failed to parse pubspec.yaml");
         let mut expected = HashMap::new();
         expected.insert(
             "this_package".to_string(),

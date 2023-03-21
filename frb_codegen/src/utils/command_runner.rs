@@ -1,11 +1,11 @@
-use std::path::PathBuf;
 use anyhow::anyhow;
+use anyhow::Result;
+use itertools::Itertools;
 use log::{debug, log_enabled, warn};
+use std::path::PathBuf;
 use std::process::Command;
 use std::process::Output;
 use std::process::Stdio;
-use anyhow::Result;
-use itertools::Itertools;
 
 /// - First argument is either a string of a command, or a function receiving a slice of [`PathBuf`].
 ///   - The command may be followed by `in <expr>` to specify the working directory.

@@ -1,16 +1,19 @@
 //! Main documentation is in https://github.com/fzyzcjy/flutter_rust_bridge
 #![allow(clippy::vec_init_then_push)]
 
-pub use crate::logs::init_logger;
 pub use crate::commands::ensure_tools_available;
-pub use crate::utils::misc::get_symbols_if_no_duplicates;
-pub use crate::config::raw_opts::RawOpts;
 pub use crate::config::opts::Opts;
 pub use crate::config::opts_parser::config_parse;
+pub use crate::config::raw_opts::RawOpts;
+pub use crate::logs::init_logger;
+pub use crate::utils::misc::get_symbols_if_no_duplicates;
 
 mod logs;
 #[macro_use]
 mod commands;
+pub mod config;
+pub mod dump;
+mod entrypoint;
 mod error;
 mod generator;
 mod ir;
@@ -19,14 +22,11 @@ mod parser;
 mod target;
 mod transformer;
 pub mod utils;
-pub mod dump;
-pub mod config;
-mod entrypoint;
 
-use log::info;
 use crate::entrypoint::dart::generate_dart_code;
 use crate::entrypoint::rust::generate_rust_code;
 use crate::utils::misc::BlockIndex;
+use log::info;
 
 /// When the API is only defined in 1 rust file(block), take this one for generation, where `config`
 /// is the instance containing all information to the API file(block), and `all_symbols` contains

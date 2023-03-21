@@ -1,9 +1,9 @@
+use crate::commands;
+use crate::target::{Acc, Target};
+use crate::{command_run, generator, ir, others, Opts};
 use std::ffi::OsStr;
 use std::fs;
 use std::path::Path;
-use crate::{command_run, generator, ir, Opts, others};
-use crate::target::{Acc, Target};
-use crate::commands;
 
 pub(crate) fn generate_rust_code(
     config: &Opts,
