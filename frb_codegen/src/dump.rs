@@ -2,8 +2,9 @@
 
 use std::collections::HashMap;
 
-use crate::{config::Dump, Opts};
+use crate::config::raw_opts::Dump;
 use enum_iterator::all;
+use crate::config::opts::Opts;
 
 pub fn dump_multi(configs: &[Opts], dump: Vec<Dump>) -> anyhow::Result<()> {
     let dump = if dump.is_empty() {

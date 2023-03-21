@@ -1,220 +1,19 @@
 use std::borrow::Cow;
-use std::env;
+use std::{env, fs};
 use std::ffi::OsString;
-use std::fs;
 use std::fs::File;
-use std::path::Path;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 use std::str::FromStr;
-
-use anyhow::{anyhow, Context, Result};
+use anyhow::*;
 use clap::CommandFactory;
-use clap::Parser;
-use clap::ValueEnum;
 use convert_case::{Case, Casing};
-use serde::Deserialize;
+use itertools::Itertools;
 use toml::Value;
+use crate::config::opts::Opts;
+use crate::config::raw_opts::RawOpts;
+use crate::utils::misc::{BlockIndex, find_all_duplicates};
 
-use crate::ir::IrFile;
-use crate::parser;
-use crate::utils::misc::{find_all_duplicates, BlockIndex};
-
-#[derive(Parser, Debug, PartialEq, Eq, Deserialize, Default)]
-#[command(version)]
-#[command(override_usage(
-    "flutter_rust_bridge_codegen [OPTIONS] --rust-input <RUST_INPUT>... --dart-output <DART_OUTPUT>...
-       flutter_rust_bridge_codegen [CONFIG_FILE]"
-))]
-pub struct RawOpts {
-    /// Path of input Rust code
-    #[arg(short, long, required_unless_present = "config_file", num_args = 1..)]
-    pub rust_input: Vec<String>,
-
-    /// Path of output generated Dart code
-    #[arg(short, long, required_unless_present = "config_file", num_args = 1..)]
-    pub dart_output: Vec<String>,
-
-    /// Path to a YAML config file.
-    ///
-    /// If present, other options and flags will be ignored.
-    /// Accepts the same options as the CLI, but uses snake_case keys.
-    #[serde(skip)]
-    pub config_file: Option<String>,
-
-    /// If provided, generated Dart declaration code to this separate file
-    #[arg(long)]
-    pub dart_decl_output: Option<String>,
-
-    /// Output path (including file name) of generated C header, each field corresponding to that of --rust-input.
-    #[arg(short, long)]
-    pub c_output: Option<Vec<String>>,
-
-    /// Extra output path (excluding file name) of generated C header
-    #[arg(short, long)]
-    pub extra_c_output_path: Option<Vec<String>>,
-
-    /// Crate directory for your Rust project
-    #[arg(long, num_args = 1..)]
-    pub rust_crate_dir: Option<Vec<String>>,
-
-    /// Output path of generated Rust code
-    #[arg(long, num_args = 1..)]
-    pub rust_output: Option<Vec<String>>,
-
-    /// Generated class name
-    #[arg(long, num_args = 1..)]
-    pub class_name: Option<Vec<String>>,
-
-    /// Line length for Dart formatting
-    #[arg(long, default_value = "80")]
-    pub dart_format_line_length: u32,
-
-    /// The generated Dart enums will have their variant names camelCased.
-    #[arg(long)]
-    #[serde(default)]
-    pub dart_enums_style: bool,
-
-    /// Skip automatically adding `mod bridge_generated;` to `lib.rs`
-    #[arg(long)]
-    #[serde(default)]
-    pub skip_add_mod_to_lib: bool,
-
-    /// Path to the installed LLVM
-    #[arg(long, num_args = 1..)]
-    pub llvm_path: Option<Vec<String>>,
-
-    /// LLVM compiler opts
-    #[arg(long)]
-    pub llvm_compiler_opts: Option<String>,
-
-    /// Path to root of Dart project, otherwise inferred from --dart-output
-    #[arg(long, num_args = 1..)]
-    pub dart_root: Option<Vec<String>>,
-
-    /// Skip running build_runner even when codegen-required code is detected
-    #[arg(long)]
-    #[serde(default)]
-    pub no_build_runner: bool,
-
-    /// Show debug messages.
-    #[arg(short, long)]
-    #[serde(default)]
-    pub verbose: bool,
-
-    /// Enable WASM module generation.
-    /// Requires: --dart-decl-output
-    #[arg(long)]
-    #[serde(default)]
-    pub wasm: bool,
-
-    /// Inline declaration of Rust bridge modules
-    #[arg(long)]
-    #[serde(default)]
-    pub inline_rust: bool,
-
-    /// Skip dependencies check.
-    #[arg(long)]
-    #[serde(default)]
-    pub skip_deps_check: bool,
-
-    /// A list of data to be dumped. If specified without a value, defaults to all.
-    #[cfg(feature = "serde")]
-    #[arg(long, value_enum, num_args(0..))]
-    pub dump: Option<Vec<Dump>>,
-}
-
-#[derive(Debug, Clone, serde::Serialize)]
-pub struct Opts {
-    pub rust_input_path: String,
-    pub dart_output_path: String,
-    pub dart_decl_output_path: Option<String>,
-    pub c_output_path: Vec<String>,
-    pub rust_crate_dir: String,
-    pub rust_output_path: String,
-    pub class_name: String,
-    pub dart_format_line_length: u32,
-    pub dart_enums_style: bool,
-    pub skip_add_mod_to_lib: bool,
-    pub llvm_path: Vec<String>,
-    pub llvm_compiler_opts: String,
-    pub manifest_path: String,
-    pub dart_root: Option<String>,
-    pub build_runner: bool,
-    pub block_index: BlockIndex,
-    pub skip_deps_check: bool,
-    pub wasm_enabled: bool,
-    pub inline_rust: bool,
-}
-
-#[derive(Debug, PartialEq, Eq, Clone, Copy, Deserialize, ValueEnum, enum_iterator::Sequence)]
-#[serde(rename_all = "snake_case")]
-pub enum Dump {
-    Config,
-    Ir,
-}
-
-#[inline(never)]
-fn bail(err: clap::error::ErrorKind, message: Cow<str>) -> ! {
-    RawOpts::command().error(err, message).exit()
-}
-
-impl RawOpts {
-    /// Parses options from arguments, or from a config file if no arguments are given.
-    /// Terminates the program if argument validation fails.
-    #[cfg(feature = "serde")]
-    pub fn try_parse_args_or_yaml() -> anyhow::Result<Self> {
-        const CONFIG_LOCATIONS: [&str; 3] = [
-            ".flutter_rust_bridge.yml",
-            ".flutter_rust_bridge.yaml",
-            ".flutter_rust_bridge.json",
-        ];
-        const PUBSPEC_LOCATIONS: [&str; 2] = ["pubspec.yaml", "pubspec.yml"];
-
-        let has_args = std::env::args_os().len() > 1;
-        match Self::try_parse() {
-            Ok(opts) => Ok(opts),
-            Err(err) if has_args => err.exit(),
-            // Try to parse a command file, if exists
-            Err(err) => {
-                for location in CONFIG_LOCATIONS {
-                    if let Ok(file) = fs::File::open(location) {
-                        eprintln!("Found config file {location}");
-                        return serde_yaml::from_reader(file)
-                            .with_context(|| format!("Could not parse {location}"));
-                    }
-                }
-
-                let mut hint = "fill in .flutter_rust_bridge.yml with your config.".to_owned();
-                for location in PUBSPEC_LOCATIONS {
-                    if let Ok(pubspec) = fs::File::open(location) {
-                        #[derive(serde::Deserialize)]
-                        struct Needle {
-                            #[serde(rename = "flutter_rust_bridge")]
-                            data: Option<RawOpts>,
-                        }
-                        match serde_yaml::from_reader(pubspec) {
-                            Ok(Needle { data: Some(data) }) => return Ok(data),
-                            Ok(Needle { data: None }) => {
-                                hint = format!("create an entry called 'flutter_rust_bridge' in {location} with your config.");
-                            }
-                            Err(err) => {
-                                return Err(anyhow::Error::new(err).context(format!(
-                                    "Could not parse the 'flutter_rust_bridge' entry in {location}"
-                                )));
-                            }
-                        }
-                    }
-                }
-
-                _ = err.print();
-                eprintln!("Hint: To call flutter_rust_bridge_codegen with no arguments, {hint}");
-                std::process::exit(1)
-            }
-        }
-    }
-}
-
-pub fn parse(mut raw: RawOpts) -> Vec<Opts> {
+pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
     if let Some(config) = raw.config_file {
         raw = parse_yaml(&config);
     }
@@ -360,66 +159,9 @@ pub fn parse(mut raw: RawOpts) -> Vec<Opts> {
         .collect()
 }
 
-/// Terminates the program if either the file doesn't exist, or is invalid.
-fn parse_yaml(path: &str) -> RawOpts {
-    use clap::error::ErrorKind;
-
-    let file = File::open(path)
-        .map_err(|err| {
-            bail(
-                ErrorKind::Io,
-                format!("Could not open {path}: {err}").into(),
-            )
-        })
-        .unwrap();
-    let config = serde_yaml::from_reader(file)
-        .map_err(|err| {
-            bail(
-                ErrorKind::InvalidValue,
-                format!("Could not parse config from {path}: {err}").into(),
-            )
-        })
-        .unwrap();
-    anchor_config(config, path)
-}
-
-fn anchor_config(config: RawOpts, config_path: &str) -> RawOpts {
-    let config_path = canon_pathbuf(config_path);
-    let cwd = config_path.parent().unwrap();
-    let anchor = |path: String| {
-        if Path::new(&path).is_absolute() {
-            path
-        } else {
-            cwd.join(&path).to_str().unwrap().to_owned()
-        }
-    };
-    let anchor_many = |paths: Vec<String>| paths.into_iter().map(anchor).collect();
-
-    // Don't collapse reassignments into a spread here, as future configs may need to be
-    // correctly re-anchored.
-    RawOpts {
-        rust_input: anchor_many(config.rust_input),
-        dart_output: anchor_many(config.dart_output),
-        rust_output: config.rust_output.map(anchor_many),
-        dart_decl_output: config.dart_decl_output.map(anchor),
-        c_output: config.c_output.map(anchor_many),
-        extra_c_output_path: config.extra_c_output_path.map(anchor_many),
-        rust_crate_dir: config.rust_crate_dir.map(anchor_many),
-        dart_root: config.dart_root.map(anchor_many),
-        config_file: config.config_file,
-        class_name: config.class_name,
-        dart_format_line_length: config.dart_format_line_length,
-        dart_enums_style: config.dart_enums_style,
-        skip_add_mod_to_lib: config.skip_add_mod_to_lib,
-        llvm_path: config.llvm_path,
-        llvm_compiler_opts: config.llvm_compiler_opts,
-        no_build_runner: config.no_build_runner,
-        verbose: config.verbose,
-        wasm: config.wasm,
-        inline_rust: config.inline_rust,
-        skip_deps_check: config.skip_deps_check,
-        dump: config.dump,
-    }
+#[inline(never)]
+fn bail(err: clap::error::ErrorKind, message: Cow<str>) -> ! {
+    RawOpts::command().error(err, message).exit()
 }
 
 fn get_refined_c_output(
@@ -534,6 +276,68 @@ fn get_llvm_paths(llvm_path: &Option<Vec<String>>) -> Vec<String> {
     })
 }
 
+/// Terminates the program if either the file doesn't exist, or is invalid.
+fn parse_yaml(path: &str) -> RawOpts {
+    use clap::error::ErrorKind;
+
+    let file = File::open(path)
+        .map_err(|err| {
+            bail(
+                ErrorKind::Io,
+                format!("Could not open {path}: {err}").into(),
+            )
+        })
+        .unwrap();
+    let config = serde_yaml::from_reader(file)
+        .map_err(|err| {
+            bail(
+                ErrorKind::InvalidValue,
+                format!("Could not parse config from {path}: {err}").into(),
+            )
+        })
+        .unwrap();
+    anchor_config(config, path)
+}
+
+fn anchor_config(config: RawOpts, config_path: &str) -> RawOpts {
+    let config_path = canon_pathbuf(config_path);
+    let cwd = config_path.parent().unwrap();
+    let anchor = |path: String| {
+        if Path::new(&path).is_absolute() {
+            path
+        } else {
+            cwd.join(&path).to_str().unwrap().to_owned()
+        }
+    };
+    let anchor_many = |paths: Vec<String>| paths.into_iter().map(anchor).collect_vec();
+
+    // Don't collapse reassignments into a spread here, as future configs may need to be
+    // correctly re-anchored.
+    RawOpts {
+        rust_input: anchor_many(config.rust_input),
+        dart_output: anchor_many(config.dart_output),
+        rust_output: config.rust_output.map(anchor_many),
+        dart_decl_output: config.dart_decl_output.map(anchor),
+        c_output: config.c_output.map(anchor_many),
+        extra_c_output_path: config.extra_c_output_path.map(anchor_many),
+        rust_crate_dir: config.rust_crate_dir.map(anchor_many),
+        dart_root: config.dart_root.map(anchor_many),
+        config_file: config.config_file,
+        class_name: config.class_name,
+        dart_format_line_length: config.dart_format_line_length,
+        dart_enums_style: config.dart_enums_style,
+        skip_add_mod_to_lib: config.skip_add_mod_to_lib,
+        llvm_path: config.llvm_path,
+        llvm_compiler_opts: config.llvm_compiler_opts,
+        no_build_runner: config.no_build_runner,
+        verbose: config.verbose,
+        wasm: config.wasm,
+        inline_rust: config.inline_rust,
+        skip_deps_check: config.skip_deps_check,
+        dump: config.dump,
+    }
+}
+
 fn get_valid_canon_paths(paths: &[String]) -> Vec<String> {
     paths
         .iter()
@@ -639,116 +443,10 @@ fn path_to_string(path: PathBuf) -> Result<String, OsString> {
     path.into_os_string().into_string()
 }
 
-impl Opts {
-    pub fn get_ir_file(&self) -> Result<IrFile> {
-        // info!("Phase: Parse source code to AST");
-        let source_rust_content = fs::read_to_string(&self.rust_input_path).with_context(|| {
-            format!(
-                "Failed to read rust input file \"{}\"",
-                self.rust_input_path
-            )
-        })?;
-        let file_ast = syn::parse_file(&source_rust_content).unwrap();
-
-        // info!("Phase: Parse AST to IR");
-
-        Ok(parser::parse(
-            &source_rust_content,
-            file_ast,
-            &self.manifest_path,
-        ))
-    }
-
-    pub fn dart_api_class_name(&self) -> String {
-        self.class_name.clone()
-    }
-
-    pub fn dart_api_impl_class_name(&self) -> String {
-        format!("{}Impl", self.class_name)
-    }
-
-    pub fn dart_wire_class_name(&self) -> String {
-        format!("{}Wire", self.class_name)
-    }
-
-    pub fn dart_platform_class_name(&self) -> String {
-        format!("{}Platform", self.class_name)
-    }
-
-    pub fn dart_wasm_module(&self) -> String {
-        format!("{}WasmModule", self.class_name)
-    }
-
-    pub(crate) fn dart_output_root(&self) -> Option<&str> {
-        Path::new(
-            self.dart_decl_output_path
-                .as_ref()
-                .unwrap_or(&self.dart_output_path),
-        )
-        .file_stem()?
-        .to_str()
-    }
-
-    pub fn dart_wasm_output_path(&self) -> PathBuf {
-        Path::new(&self.dart_output_path).with_extension("web.dart")
-    }
-
-    pub fn dart_io_output_path(&self) -> PathBuf {
-        Path::new(&self.dart_output_path).with_extension("io.dart")
-    }
-
-    pub fn dart_common_output_path(&self) -> PathBuf {
-        Path::new(&self.dart_output_path).with_extension("common.dart")
-    }
-
-    pub fn rust_wasm_output_path(&self) -> PathBuf {
-        Path::new(&self.rust_output_path).with_extension("web.rs")
-    }
-
-    pub fn rust_io_output_path(&self) -> PathBuf {
-        Path::new(&self.rust_output_path).with_extension("io.rs")
-    }
-
-    pub fn dart_root_or_default(&self) -> String {
-        self.dart_root
-            .clone()
-            .unwrap_or_else(|| env!("CARGO_MANIFEST_DIR").to_string())
-    }
-
-    pub fn dart_freezed_path(&self) -> PathBuf {
-        PathBuf::from(
-            self.dart_decl_output_path
-                .as_deref()
-                .unwrap_or(&self.dart_output_path),
-        )
-        .with_extension("freezed.dart")
-    }
-
-    pub fn get_rust_output_paths(&self) -> PathForGeneration {
-        PathForGeneration {
-            base_path: PathBuf::from(self.rust_output_path.clone()),
-            io_path: self.rust_io_output_path(),
-            wasm_path: self.rust_wasm_output_path(),
-        }
-    }
-
-    pub fn get_dart_output_paths(&self) -> PathForGeneration {
-        PathForGeneration {
-            base_path: PathBuf::from(self.dart_output_path.clone()),
-            io_path: self.dart_io_output_path(),
-            wasm_path: self.dart_wasm_output_path(),
-        }
-    }
-}
-
-pub struct PathForGeneration {
-    pub base_path: PathBuf,
-    pub io_path: PathBuf,
-    pub wasm_path: PathBuf,
-}
-
 #[cfg(test)]
 mod test {
+    use std::env;
+    use std::path::PathBuf;
     use super::*;
 
     fn get_dir_and_file_str(path: &str) -> (String, String) {

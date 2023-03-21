@@ -1,9 +1,7 @@
 #[cfg(feature = "serde")]
 use lib_flutter_rust_bridge_codegen::dump;
-use lib_flutter_rust_bridge_codegen::{
-    config_parse, frb_codegen_multi, get_symbols_if_no_duplicates, init_logger, RawOpts,
-};
 use log::{debug, error, info};
+use lib_flutter_rust_bridge_codegen::{config_parse, frb_codegen_multi, get_symbols_if_no_duplicates, init_logger, RawOpts};
 
 fn main() -> anyhow::Result<()> {
     //  get valiable options from user input command
@@ -38,7 +36,7 @@ fn main() -> anyhow::Result<()> {
 #[cfg(test)]
 mod tests {
     use lazy_static::lazy_static;
-    use lib_flutter_rust_bridge_codegen::init_logger;
+    use lib_flutter_rust_bridge_codegen::{config_parse, frb_codegen, frb_codegen_multi, get_symbols_if_no_duplicates, init_logger, RawOpts};
 
     lazy_static! {
         static ref LOGGER: () = init_logger(".", true).unwrap();
@@ -71,9 +69,6 @@ mod tests {
         assert!(cfg!(feature = "chrono"));
         assert!(cfg!(feature = "uuid"));
 
-        use lib_flutter_rust_bridge_codegen::{
-            config_parse, frb_codegen, get_symbols_if_no_duplicates, RawOpts,
-        };
         use std::process::Command;
 
         set_dir();
@@ -116,9 +111,6 @@ mod tests {
     /// See the documentation for the `pure_dart` test
     #[test]
     fn pure_dart_multi() {
-        use lib_flutter_rust_bridge_codegen::{
-            config_parse, frb_codegen_multi, get_symbols_if_no_duplicates, RawOpts,
-        };
         use std::process::Command;
 
         set_dir();

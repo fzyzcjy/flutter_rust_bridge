@@ -17,13 +17,12 @@ use crate::others::*;
 use crate::target::Acc;
 use crate::target::Target;
 
-mod config;
 
 pub use crate::commands::ensure_tools_available;
-pub use crate::config::parse as config_parse;
-pub use crate::config::Opts;
-pub use crate::config::RawOpts;
 pub use crate::utils::misc::get_symbols_if_no_duplicates;
+pub use crate::config::raw_opts::RawOpts;
+pub use crate::config::opts::Opts;
+pub use crate::config::opts_parser::config_parse;
 
 #[macro_use]
 mod commands;
@@ -39,12 +38,13 @@ use error::*;
 use crate::utils::misc::{BlockIndex, with_changed_file};
 
 pub mod dump;
+pub mod config;
 
 /// When the API is only defined in 1 rust file(block), take this one for generation, where `config`
 /// is the instance containing all information to the API file(block), and `all_symbols` contains
 /// all unique APIs defined in the file mentioned above.
 /// If APIs are defined in more than 1 rust file(block), use `frb_codegen_multi` instead.
-pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Result<()> {
+pub fn frb_codegen(config: &Opts, all_symbols: &[String]) -> anyhow::Result<()> {
     frb_codegen_multi(&[config.clone()], 0, all_symbols)
 }
 
@@ -55,7 +55,7 @@ pub fn frb_codegen(config: &config::Opts, all_symbols: &[String]) -> anyhow::Res
 /// with `index` referring to the place of the current block to deal with.
 /// For details on how to take advantage of multi-blocks, please refers to this article: https://cjycode.com/flutter_rust_bridge/feature/multiple_files.html
 pub fn frb_codegen_multi(
-    all_configs: &[config::Opts],
+    all_configs: &[Opts],
     index: usize,
     all_symbols: &[String],
 ) -> anyhow::Result<()> {
