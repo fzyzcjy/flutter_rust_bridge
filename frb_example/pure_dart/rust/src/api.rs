@@ -1440,3 +1440,6 @@ pub fn test_illegal_dart_name_struct() -> IllegalDartNameStruct {
 //    IllegalDartNameStruct { r#type }
 //}
 
+pub fn list_of_primitive_enums(weekdays: Vec<Weekdays>) -> Vec<Weekdays> {
+    weekdays
+}

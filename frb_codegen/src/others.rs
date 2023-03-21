@@ -115,7 +115,7 @@ pub fn sanity_check(
     dart_wire_class_name: &str,
 ) -> anyhow::Result<()> {
     if !generated_dart_wire_code.contains(dart_wire_class_name) {
-        return Err(crate::error::Error::str(
+        return Err(crate::error::Error::string(
             "Nothing is generated for dart wire class. \
             Maybe you forget to put code like `mod the_generated_bridge_code;` to your `lib.rs`?",
         )

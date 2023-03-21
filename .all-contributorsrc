@@ -501,6 +501,34 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "anstadnik",
+      "name": "Andrii Stadnik",
+      "avatar_url": "https://avatars.githubusercontent.com/u/40110937?v=4",
+      "profile": "https://github.com/anstadnik",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "coder0xff",
+      "name": "Brent Lewis",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2261949?v=4",
+      "profile": "https://github.com/coder0xff",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "erikas-taroza",
+      "name": "TypicalEgg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/68450090?v=4",
+      "profile": "https://github.com/erikas-taroza",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

@@ -44,7 +44,7 @@ dart_pub_get mode="default":
 # ============================ build & test ============================
 
 rust_build_and_test:
-    just _rust_build_and_test_single frb_codegen
+    just _rust_build_and_test_single frb_codegen --features uuid --features chrono
     just _rust_build_and_test_single frb_rust
     just _rust_build_and_test_single frb_macros
     just _rust_build_and_test_single {{dir_example_pure_dart}}/rust
@@ -103,18 +103,14 @@ generate_bridge:
     just _generate_bridge_with_flutter
 
 _generate_bridge_pure_dart:
-    {{cargo_run_codegen}} \
-        --rust-input frb_example/pure_dart/rust/src/api.rs \
-        --dart-output frb_example/pure_dart/dart/lib/bridge_generated.dart \
-        --dart-decl-output frb_example/pure_dart/dart/lib/bridge_definitions.dart \
-        --dart-format-line-length 120 \
-        --wasm
+    {{cargo_run_codegen}} frb_example/pure_dart/rust/.flutter_rust_bridge.yml
 
 _generate_bridge_pure_dart_multi:
     {{cargo_run_codegen}} \
         --rust-input frb_example/pure_dart_multi/rust/src/api_1.rs frb_example/pure_dart_multi/rust/src/api_2.rs \
         --dart-output frb_example/pure_dart_multi/dart/lib/bridge_generated_api_1.dart frb_example/pure_dart_multi/dart/lib/bridge_generated_api_2.dart \
         --dart-format-line-length 120 \
+        --dart-enums-style \
         --rust-output frb_example/pure_dart_multi/rust/src/generated_api_1.rs frb_example/pure_dart_multi/rust/src/generated_api_2.rs \
         --class-name ApiClass1 ApiClass2 \
         --wasm
@@ -126,6 +122,7 @@ _generate_bridge_with_flutter:
         --c-output frb_example/with_flutter/ios/Runner/bridge_generated.h \
         --dart-decl-output frb_example/with_flutter/lib/bridge_definitions.dart \
         --dart-format-line-length 120 \
+        --dart-enums-style \
         --wasm
 
 # ============================ linters ============================

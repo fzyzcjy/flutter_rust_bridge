@@ -141,10 +141,10 @@ packages:
     dependency: transitive
     description:
       name: cli_util
-      sha256: "66f86e916d285c1a93d3b79587d94bd71984a66aac4ff74e524cfa7877f1395c"
+      sha256: b8db3080e59b2503ca9e7922c3df2072cf13992354d5e944074ffa836fba43b7
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.5"
+    version: "0.4.0"
   clock:
     dependency: transitive
     description:
@@ -205,10 +205,10 @@ packages:
     dependency: transitive
     description:
       name: dart_style
-      sha256: "5be16bf1707658e4c03078d4a9b90208ded217fb02c163e207d334082412f2fb"
+      sha256: "6d691edde054969f0e0f26abb1b30834b5138b963793e56f69d3a9a4435e6352"
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.5"
+    version: "2.3.0"
   fake_async:
     dependency: transitive
     description:
@@ -229,10 +229,10 @@ packages:
     dependency: "direct dev"
     description:
       name: ffigen
-      sha256: "644232023241486ab39e257677f9a0045a5ae080a144cb5828fe9954565f9c22"
+      sha256: "53f0fefd81be07f5722b71d3e1588e8a7cb9bcfd03d758319ea28e1eedb27296"
       url: "https://pub.dev"
     source: hosted
-    version: "7.2.6"
+    version: "7.2.9"
   file:
     dependency: transitive
     description:
@@ -273,7 +273,7 @@ packages:
       path: "../../frb_dart"
       relative: true
     source: path
-    version: "1.68.0"
+    version: "1.71.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter

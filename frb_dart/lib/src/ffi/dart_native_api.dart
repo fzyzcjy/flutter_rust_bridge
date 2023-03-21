@@ -210,11 +210,11 @@ abstract class Dart_CObject_Type {
   static const int Dart_CObject_kArray = 6;
   static const int Dart_CObject_kTypedData = 7;
   static const int Dart_CObject_kExternalTypedData = 8;
-  static const int Dart_CObject_kUnmodifiableExternalTypedData = 9;
-  static const int Dart_CObject_kSendPort = 10;
-  static const int Dart_CObject_kCapability = 11;
-  static const int Dart_CObject_kNativePointer = 12;
-  static const int Dart_CObject_kUnsupported = 13;
+  static const int Dart_CObject_kSendPort = 9;
+  static const int Dart_CObject_kCapability = 10;
+  static const int Dart_CObject_kNativePointer = 11;
+  static const int Dart_CObject_kUnsupported = 12;
+  static const int Dart_CObject_kUnmodifiableExternalTypedData = 13;
   static const int Dart_CObject_kNumberOfTypes = 14;
 }
 

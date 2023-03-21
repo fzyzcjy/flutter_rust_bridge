@@ -1,3 +1,26 @@
+## Unreleased
+
+* Code refactor #1137
+
+## 1.71.1
+
+* Fix log_initial for panic! and refine a panic! info #1124 (thanks @dbsxdbsx)
+
+## 1.71.0
+
+* Support for list of primitive enums #1128 (thanks @erikas-taroza)
+
+## 1.70.0
+
+* Add tests to gen, build, run pure_dart #1106 (thanks @coder0xff)
+* Generate Dart enum variants in camelCase #1112 (thanks @erikas-taroza)
+* General CLI improvements: dumping, upgrade clap, yaml config, serialize IR, bump versions, etc #1119 (thanks @Desdaemon)
+* Fixes for serde-yml #1122 (thanks @Desdaemon)
+
+## 1.69.0
+
+* Check for dart keywords #958 (thanks @anstadnik)
+
 ## 1.68.0
 
 * feat: return dynamic data as `DartAbi` #1102 (thanks @Desdaemon)

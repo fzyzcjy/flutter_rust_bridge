@@ -5,7 +5,9 @@ use std::fs;
 use std::hash::Hash;
 use std::path::Path;
 
+use crate::utils::consts::DART_KEYWORDS;
 use anyhow::anyhow;
+use convert_case::{Case, Casing};
 use pathdiff::diff_paths;
 
 pub fn mod_from_rust_path(code_path: &str, crate_path: &str) -> String {
@@ -43,6 +45,13 @@ where
         .collect::<Vec<_>>()
 }
 
+fn check_for_keywords(v: &[String]) -> anyhow::Result<()> {
+    if let Some(s) = v.iter().find(|s| DART_KEYWORDS.contains(&s.as_str())) {
+        return Err(anyhow!("Api name cannot be a dart keyword: {}", s));
+    };
+    Ok(())
+}
+
 /// check api defined by users, if no duplicates, then generate all symbols (api function name),
 /// including those generated implicitly by frb
 pub fn get_symbols_if_no_duplicates(configs: &[crate::Opts]) -> Result<Vec<String>, anyhow::Error> {
@@ -74,10 +83,24 @@ pub fn get_symbols_if_no_duplicates(configs: &[crate::Opts]) -> Result<Vec<Strin
         ));
     }
 
+    check_for_keywords(&all_symbols)?;
+
     Ok(all_symbols)
 }
 
-#[derive(PartialEq, Eq, Debug, Clone, Copy)]
+/// If the given string is a Dart keyword, then
+/// convert it to PascalCase to avoid issues.
+/// If the string is not a keyword, then the original
+/// is returned.
+pub fn make_string_keyword_safe(input: String) -> String {
+    if check_for_keywords(&[input.clone()]).is_err() {
+        input.to_case(Case::Pascal)
+    } else {
+        input
+    }
+}
+
+#[derive(PartialEq, Eq, Debug, Clone, Copy, serde::Serialize)]
 pub struct BlockIndex(pub usize);
 
 impl BlockIndex {
@@ -119,5 +142,45 @@ impl PathExt for std::path::Path {
         } else {
             diff_paths(path, self).unwrap().to_str().unwrap().to_owned()
         }
+    }
+}
+
+/// For structs that only has an `inner` serializable property that
+/// would be better (de)serialized as a newtype.
+#[macro_export]
+macro_rules! derive_serde_inner_as_newtype {
+    ($($type:ident),*) => {$(
+        #[cfg(feature = "serde")]
+        impl ::serde::Serialize for $type {
+            fn serialize<S>(&self, s: S) -> Result<S::Ok, S::Error>
+            where
+                S: ::serde::Serializer,
+            {
+                s.serialize_newtype_struct(::std::stringify!($type), self.inner.as_ref())
+            }
+        }
+    )*};
+}
+
+/// Adds some common derives for IR types.
+///
+/// Valid forms:
+/// - `ir! { pub struct Foo { .. } .. }`
+/// - `ir! { #[no_serde] pub struct Bar { .. } .. }`
+#[macro_export]
+macro_rules! ir {
+    () => {};
+    (#[no_serde] $decl:item $($rest:tt)*) => {
+        #[derive(Debug, Clone, Hash, Eq, PartialEq)]
+        $decl
+
+        $crate::ir!($($rest)*);
+    };
+    ($decl:item $($rest:tt)*) => {
+        #[derive(Debug, Clone, Hash, Eq, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(::serde::Serialize))]
+        $decl
+
+        $crate::ir!($($rest)*);
     }
 }

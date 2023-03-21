@@ -1,8 +1,8 @@
 use crate::ir::IrType::*;
 use crate::ir::*;
-use crate::markers;
+use crate::parser::markers;
+use crate::parser::source_graph::{Enum, Struct};
 use crate::parser::{extract_comments, extract_metadata, type_to_string};
-use crate::source_graph::{Enum, Struct};
 use std::collections::{HashMap, HashSet};
 use std::string::String;
 use syn::*;
@@ -233,6 +233,7 @@ impl<'a> TypeParser<'a> {
                     }
                     _ => self.convert_to_ir_type(*generic).map(|inner| match inner {
                         Primitive(primitive) => PrimitiveList(IrTypePrimitiveList { primitive }),
+                        #[cfg(feature = "chrono")]
                         Delegate(IrTypeDelegate::Time(time)) => {
                             Delegate(IrTypeDelegate::TimeList(time))
                         }

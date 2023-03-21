@@ -5,10 +5,11 @@ use lazy_static::lazy_static;
 use quote::ToTokens;
 use regex::Regex;
 
-#[derive(Debug, Clone, Hash, Eq, PartialEq)]
+crate::ir! {
 pub struct IrTypeRustOpaque {
     pub inner_rust: String,
     pub inner_dart: String,
+}
 }
 
 fn char_not_alphanumeric(c: char) -> bool {
