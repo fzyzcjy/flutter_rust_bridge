@@ -30,12 +30,12 @@ use std::collections::HashSet;
 use std::fmt::Display;
 
 use crate::ir::IrType::*;
-use crate::method_utils::FunctionName;
 use crate::others::*;
 use crate::target::Acc;
 use crate::target::Target;
 use crate::target::Target::*;
-use crate::utils::BlockIndex;
+use crate::utils::method::FunctionName;
+use crate::utils::misc::BlockIndex;
 use crate::{ir::*, Opts};
 use itertools::Itertools;
 

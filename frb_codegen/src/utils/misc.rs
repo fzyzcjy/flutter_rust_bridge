@@ -5,6 +5,7 @@ use std::fs;
 use std::hash::Hash;
 use std::path::Path;
 
+use crate::utils::consts::DART_KEYWORDS;
 use anyhow::anyhow;
 use convert_case::{Case, Casing};
 use pathdiff::diff_paths;
@@ -43,73 +44,6 @@ where
         .cloned()
         .collect::<Vec<_>>()
 }
-
-// https://dart.dev/guides/language/language-tour#keywords
-const DART_KEYWORDS: [&str; 63] = [
-    "abstract",
-    "else",
-    "import",
-    "show",
-    "as",
-    "enum",
-    "in",
-    "static",
-    "assert",
-    "export",
-    "interface",
-    "super",
-    "async",
-    "extends",
-    "is",
-    "switch",
-    "await",
-    "extension",
-    "late",
-    "sync",
-    "break",
-    "external",
-    "library",
-    "this",
-    "case",
-    "factory",
-    "mixin",
-    "throw",
-    "catch",
-    "false",
-    "new",
-    "true",
-    "class",
-    "final",
-    "null",
-    "try",
-    "const",
-    "finally",
-    "on",
-    "typedef",
-    "continue",
-    "for",
-    "operator",
-    "var",
-    "covariant",
-    "Function",
-    "part",
-    "void",
-    "default",
-    "get",
-    "required",
-    "while",
-    "deferred",
-    "hide",
-    "rethrow",
-    "with",
-    "do",
-    "if",
-    "return",
-    "yield",
-    "dynamic",
-    "implements",
-    "set",
-];
 
 fn check_for_keywords(v: &[String]) -> anyhow::Result<()> {
     if let Some(s) = v.iter().find(|s| DART_KEYWORDS.contains(&s.as_str())) {

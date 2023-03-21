@@ -4,7 +4,7 @@ use crate::generator::rust::ty::*;
 use crate::ir::*;
 use crate::target::Acc;
 use crate::type_rust_generator_struct;
-use crate::utils::BlockIndex;
+use crate::utils::misc::BlockIndex;
 
 use super::{ExternFuncCollector, NO_PARAMS};
 

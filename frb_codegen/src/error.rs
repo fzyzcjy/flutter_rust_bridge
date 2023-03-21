@@ -1,6 +1,5 @@
+use crate::utils::dart_repository::dart_repo::DartDependencyMode;
 use thiserror::Error;
-
-use crate::tools::PackageManager;
 
 pub type Result<T = ()> = std::result::Result<T, Error>;
 
@@ -24,24 +23,20 @@ pub enum Error {
     #[error("please add {name} to your {manager}. (version {requirement})")]
     MissingDep {
         name: String,
-        manager: PackageManager,
+        manager: DartDependencyMode,
         requirement: String,
     },
     #[error("please update version of {name} in your {manager}. (version {requirement})")]
     InvalidDep {
         name: String,
-        manager: PackageManager,
+        manager: DartDependencyMode,
         requirement: String,
     },
 }
 
 impl Error {
-    pub fn str(msg: &str) -> Self {
-        Self::StringError(msg.to_owned())
-    }
-
-    pub fn string(msg: String) -> Self {
-        Self::StringError(msg)
+    pub fn string<T: Into<String>>(msg: T) -> Self {
+        Self::StringError(msg.into())
     }
 }
 

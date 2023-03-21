@@ -1,3 +1,5 @@
+pub(crate) mod markers;
+pub(crate) mod source_graph;
 pub(crate) mod ty;
 
 use std::borrow::Cow;
@@ -15,9 +17,9 @@ use topological_sort::TopologicalSort;
 use crate::ir::*;
 
 use crate::generator::rust::HANDLER_NAME;
-use crate::method_utils::FunctionName;
+use crate::parser::source_graph::Crate;
 use crate::parser::ty::TypeParser;
-use crate::source_graph::Crate;
+use crate::utils::method::FunctionName;
 
 use self::ty::convert_ident_str;
 
@@ -333,7 +335,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
             Ident::new(
                 &FunctionName::new(
                     &item_method.sig.ident.to_string(),
-                    crate::method_utils::MethodInfo::Static {
+                    crate::utils::method::MethodInfo::Static {
                         struct_name: self_type.unwrap(),
                     },
                 )
@@ -344,7 +346,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
             Ident::new(
                 &FunctionName::new(
                     &item_method.sig.ident.to_string(),
-                    crate::method_utils::MethodInfo::NonStatic {
+                    crate::utils::method::MethodInfo::NonStatic {
                         struct_name: struct_name.clone(),
                     },
                 )
