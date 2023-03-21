@@ -2,7 +2,7 @@ use crate::ir::IrType::*;
 use crate::ir::*;
 use crate::markers;
 use crate::parser::{extract_comments, extract_metadata, type_to_string};
-use crate::source_graph::{Enum, Struct};
+use crate::parser::source_graph::{Enum, Struct};
 use std::collections::{HashMap, HashSet};
 use std::string::String;
 use syn::*;

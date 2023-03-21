@@ -1,4 +1,5 @@
 pub(crate) mod ty;
+pub(crate) mod source_graph;
 
 use std::borrow::Cow;
 use std::collections::HashMap;
@@ -17,7 +18,7 @@ use crate::ir::*;
 use crate::generator::rust::HANDLER_NAME;
 use crate::method_utils::FunctionName;
 use crate::parser::ty::TypeParser;
-use crate::source_graph::Crate;
+use crate::parser::source_graph::Crate;
 
 use self::ty::convert_ident_str;
 
