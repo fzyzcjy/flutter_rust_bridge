@@ -17,7 +17,7 @@ use toml::Value;
 
 use crate::ir::IrFile;
 use crate::parser;
-use crate::utils::{find_all_duplicates, BlockIndex};
+use crate::utils::misc::{find_all_duplicates, BlockIndex};
 
 #[derive(Parser, Debug, PartialEq, Eq, Deserialize, Default)]
 #[command(version)]

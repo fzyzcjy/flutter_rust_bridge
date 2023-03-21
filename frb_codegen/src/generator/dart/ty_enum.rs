@@ -239,7 +239,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                 .iter()
                 .map(|variant| {
                     let variant_name = if self.context.config.dart_enums_style {
-                        crate::utils::make_string_keyword_safe(variant.name.dart_style())
+                        crate::utils::misc::make_string_keyword_safe(variant.name.dart_style())
                     } else {
                         variant.name.rust_style().to_string()
                     };

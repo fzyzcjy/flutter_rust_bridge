@@ -60,7 +60,7 @@ impl IrField {
 
         let variant_name = split.next().unwrap().to_string();
         let variant_name =
-            crate::utils::make_string_keyword_safe(variant_name.to_case(Case::Camel));
+            crate::utils::misc::make_string_keyword_safe(variant_name.to_case(Case::Camel));
 
         format!("{enum_name}.{variant_name}")
     }

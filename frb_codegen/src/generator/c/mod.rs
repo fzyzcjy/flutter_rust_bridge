@@ -1,7 +1,7 @@
 use std::path::Path;
 
 use crate::config;
-use crate::utils::{BlockIndex, PathExt};
+use crate::utils::misc::{BlockIndex, PathExt};
 
 pub fn generate_dummy(
     config: &config::Opts,

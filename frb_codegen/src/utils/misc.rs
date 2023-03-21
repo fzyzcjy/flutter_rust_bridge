@@ -8,6 +8,7 @@ use std::path::Path;
 use anyhow::anyhow;
 use convert_case::{Case, Casing};
 use pathdiff::diff_paths;
+use crate::utils::consts::DART_KEYWORDS;
 
 pub fn mod_from_rust_path(code_path: &str, crate_path: &str) -> String {
     Path::new(code_path)
@@ -34,8 +35,8 @@ pub fn with_changed_file<F: FnOnce() -> anyhow::Result<()>>(
 }
 
 pub fn find_all_duplicates<T>(iter: &[T]) -> Vec<T>
-where
-    T: Eq + Hash + Clone,
+    where
+        T: Eq + Hash + Clone,
 {
     let mut uniq = HashSet::new();
     iter.iter()
@@ -43,73 +44,6 @@ where
         .cloned()
         .collect::<Vec<_>>()
 }
-
-// https://dart.dev/guides/language/language-tour#keywords
-const DART_KEYWORDS: [&str; 63] = [
-    "abstract",
-    "else",
-    "import",
-    "show",
-    "as",
-    "enum",
-    "in",
-    "static",
-    "assert",
-    "export",
-    "interface",
-    "super",
-    "async",
-    "extends",
-    "is",
-    "switch",
-    "await",
-    "extension",
-    "late",
-    "sync",
-    "break",
-    "external",
-    "library",
-    "this",
-    "case",
-    "factory",
-    "mixin",
-    "throw",
-    "catch",
-    "false",
-    "new",
-    "true",
-    "class",
-    "final",
-    "null",
-    "try",
-    "const",
-    "finally",
-    "on",
-    "typedef",
-    "continue",
-    "for",
-    "operator",
-    "var",
-    "covariant",
-    "Function",
-    "part",
-    "void",
-    "default",
-    "get",
-    "required",
-    "while",
-    "deferred",
-    "hide",
-    "rethrow",
-    "with",
-    "do",
-    "if",
-    "return",
-    "yield",
-    "dynamic",
-    "implements",
-    "set",
-];
 
 fn check_for_keywords(v: &[String]) -> anyhow::Result<()> {
     if let Some(s) = v.iter().find(|s| DART_KEYWORDS.contains(&s.as_str())) {
@@ -184,8 +118,8 @@ pub trait PathExt {
     fn directory_name_str(&self) -> Option<&str>;
 
     fn get_relative_path_to<P>(&self, path: P, exclude_file: bool) -> String
-    where
-        P: AsRef<Path>;
+        where
+            P: AsRef<Path>;
 }
 
 impl PathExt for std::path::Path {
@@ -199,8 +133,8 @@ impl PathExt for std::path::Path {
     }
     #[inline]
     fn get_relative_path_to<P>(&self, path: P, exclude_file: bool) -> String
-    where
-        P: AsRef<Path>,
+        where
+            P: AsRef<Path>,
     {
         if exclude_file {
             let src = self.parent().and_then(|p| p.to_str()).unwrap();

@@ -25,11 +25,10 @@ pub use crate::commands::ensure_tools_available;
 pub use crate::config::parse as config_parse;
 pub use crate::config::Opts;
 pub use crate::config::RawOpts;
-pub use crate::utils::get_symbols_if_no_duplicates;
+pub use crate::utils::misc::get_symbols_if_no_duplicates;
 
 #[macro_use]
 mod commands;
-mod consts;
 mod error;
 mod generator;
 mod ir;
@@ -42,6 +41,8 @@ mod target;
 mod transformer;
 pub mod utils;
 use error::*;
+use crate::utils::misc::{BlockIndex, with_changed_file};
+
 pub mod dump;
 
 /// When the API is only defined in 1 rust file(block), take this one for generation, where `config`

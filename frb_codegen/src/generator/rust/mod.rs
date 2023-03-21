@@ -35,7 +35,7 @@ use crate::others::*;
 use crate::target::Acc;
 use crate::target::Target;
 use crate::target::Target::*;
-use crate::utils::BlockIndex;
+use crate::utils::misc::BlockIndex;
 use crate::{ir::*, Opts};
 use itertools::Itertools;
 

@@ -5,7 +5,7 @@ use crate::generator::rust::{
 use crate::ir::*;
 use crate::target::{Acc, Target};
 use crate::type_rust_generator_struct;
-use crate::utils::BlockIndex;
+use crate::utils::misc::BlockIndex;
 
 type_rust_generator_struct!(TypeDelegateGenerator, IrTypeDelegate);
 
