@@ -19,17 +19,17 @@ use itertools::Itertools;
 /// Returns [`Result<Output>`] if executing a command name, or the return value of the specified function.
 #[doc(hidden)]
 #[macro_export]
-macro_rules! run {
+macro_rules! command_run {
     ($binary:literal, $($rest:tt)*) => {{
-        let args = $crate::args!($($rest)*);
+        let args = $crate::command_args!($($rest)*);
         $crate::utils::command_runner::execute_command($binary, args.iter(), None)
     }};
     ($binary:literal in $pwd:expr, $($rest:tt)*) => {{
-        let args = $crate::args!($($rest)*);
+        let args = $crate::command_args!($($rest)*);
         $crate::utils::command_runner::execute_command($binary, args.iter(), $pwd)
     }};
     ($command:path $([ $($args:expr),* ])?, $($rest:tt)*) => {{
-        let args = $crate::args!($($rest)*);
+        let args = $crate::command_args!($($rest)*);
         $command(&args[..] $(, $($args),* )?)
     }};
 }
@@ -37,7 +37,7 @@ macro_rules! run {
 /// Formats a list of [`PathBuf`]s using the syntax detailed in [`run`].
 #[doc(hidden)]
 #[macro_export]
-macro_rules! args {
+macro_rules! command_args {
     (@args $args:ident $(,)?) => {};
     (@args $args:ident ($cond:expr, $($expr:expr),+ $(,)?), $($rest:tt)*) => {
         if $cond {
@@ -45,25 +45,25 @@ macro_rules! args {
                 $args.push(::std::path::PathBuf::from($expr));
             )+
         }
-        $crate::args!(@args $args $($rest)*);
+        $crate::command_args!(@args $args $($rest)*);
     };
     (@args $args:ident ?$src:expr, $($rest:tt)*) => {
         if let Some(it) = (&$src) {
             $args.push(::std::path::PathBuf::from(it));
         }
-        $crate::args!(@args $args $($rest)*);
+        $crate::command_args!(@args $args $($rest)*);
     };
     (@args $args:ident *$src:expr, $($rest:tt)*) => {
         $args.extend($src.iter().map(::std::path::PathBuf::from));
-        $crate::args!(@args $args $($rest)*);
+        $crate::command_args!(@args $args $($rest)*);
     };
     (@args $args:ident $expr:expr, $($rest:tt)*) => {
         $args.push(::std::path::PathBuf::from($expr));
-        $crate::args!(@args $args $($rest)*);
+        $crate::command_args!(@args $args $($rest)*);
     };
     ($($rest:tt)*) => {{
         let mut args = Vec::new();
-        $crate::args!(@args args $($rest)*,);
+        $crate::command_args!(@args args $($rest)*,);
         args
     }};
 }
@@ -72,11 +72,11 @@ pub(crate) fn call_shell(cmd: &[PathBuf], pwd: Option<&str>) -> Result<Output> {
     let cmd = cmd.iter().map(|section| format!("{section:?}")).join(" ");
     #[cfg(windows)]
     {
-        run!("powershell" in pwd, "-noprofile", "-command", format!("& {}", cmd))
+        command_run!("powershell" in pwd, "-noprofile", "-command", format!("& {}", cmd))
     }
 
     #[cfg(not(windows))]
-    run!("sh" in pwd, "-c", cmd)
+    command_run!("sh" in pwd, "-c", cmd)
 }
 
 #[must_use = "Error path must be handled."]

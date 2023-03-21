@@ -108,7 +108,7 @@ fn generate_rust_code(
         others::try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);
     }
 
-    run!(
+    command_run!(
         commands::format_rust,
         &config.rust_output_path,
         (
@@ -241,7 +241,7 @@ fn generate_dart_code(
     }
 
     info!("Phase: Formatting Dart code");
-    run!(
+    command_run!(
         commands::format_dart[config.dart_format_line_length],
         &dart_output_paths.base_path,
         ?config.dart_decl_output_path,

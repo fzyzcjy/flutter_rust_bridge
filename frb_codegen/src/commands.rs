@@ -7,7 +7,7 @@ use cargo_metadata::VersionReq;
 
 use crate::error::{Error, Result};
 use log::{debug, info};
-use crate::run;
+use crate::command_run;
 use crate::utils::command_runner::{call_shell, execute_command};
 use crate::utils::dart_repository::dart_repository::{DartDependencyMode, DartRepository};
 
@@ -179,7 +179,7 @@ fn ffigen(
     debug!("ffigen config_file: {:?}", config_file);
 
     let repo = DartRepository::from_str(dart_root).unwrap();
-    let res = run!(
+    let res = command_run!(
         call_shell[Some(dart_root)],
         *repo.toolchain.as_run_command(),
         "run",
@@ -215,7 +215,7 @@ pub fn format_dart(path: &[PathBuf], line_length: u32) -> Result {
         "execute format_dart path={:?} line_length={}",
         path, line_length
     );
-    let res = run!(
+    let res = command_run!(
         call_shell[None],
         "dart",
         "format",
@@ -235,7 +235,7 @@ pub fn format_dart(path: &[PathBuf], line_length: u32) -> Result {
 pub fn build_runner(dart_root: &str) -> Result {
     info!("Running build_runner at {}", dart_root);
     let repo = DartRepository::from_str(dart_root).unwrap();
-    let out = run!(
+    let out = command_run!(
         call_shell[Some(dart_root)],
         *repo.toolchain.as_run_command(),
         "run",

@@ -1,6 +1,6 @@
 use crate::utils::command_runner::call_shell;
 use std::path::PathBuf;
-use crate::{args, run};
+use crate::{command_args, command_run};
 
 /// represents dart or flutter toolchain
 #[derive(Debug, PartialEq, Eq)]
@@ -31,8 +31,8 @@ impl DartToolchain {
 
     pub(crate) fn as_run_command(&self) -> Vec<PathBuf> {
         match self {
-            DartToolchain::Dart => args!("dart"),
-            DartToolchain::Flutter => args!("flutter", "pub"),
+            DartToolchain::Dart => command_args!("dart"),
+            DartToolchain::Flutter => command_args!("flutter", "pub"),
         }
     }
 
@@ -41,7 +41,7 @@ impl DartToolchain {
             DartToolchain::Dart => "dart",
             DartToolchain::Flutter => "flutter",
         };
-        run!(call_shell[None], toolchain, "--version")
+        command_run!(call_shell[None], toolchain, "--version")
             .unwrap()
             .status
             .success()
