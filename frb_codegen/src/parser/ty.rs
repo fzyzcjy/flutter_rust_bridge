@@ -81,14 +81,12 @@ fn path_type_to_unencodable(
         underlying_type: Box::new(Type::Path(type_path.clone())),
         segments: flat_vector
             .iter()
-            .map(|(ident, option_args_refs)| {
-                NameComponent {
-                    ident: ident.to_string(),
-                    args: option_args_refs.as_ref().map(|args_refs| match args_refs {
-                        ArgsRefs::Generic(args_array) => Args::Generic(args_array.to_vec()),
-                        ArgsRefs::Signature(args_array) => Args::Signature(args_array.to_vec()),
-                    }),
-                }
+            .map(|(ident, option_args_refs)| NameComponent {
+                ident: ident.to_string(),
+                args: option_args_refs.as_ref().map(|args_refs| match args_refs {
+                    ArgsRefs::Generic(args_array) => Args::Generic(args_array.to_vec()),
+                    ArgsRefs::Signature(args_array) => Args::Signature(args_array.to_vec()),
+                }),
             })
             .collect(),
     })
@@ -178,10 +176,7 @@ impl<'a> TypeParser<'a> {
         args
     }
 
-    fn path_data(
-        &mut self,
-        path: &Path,
-    ) -> std::result::Result<Vec<NameComponent>, String> {
+    fn path_data(&mut self, path: &Path) -> std::result::Result<Vec<NameComponent>, String> {
         let Path { segments, .. } = path;
 
         let data: std::result::Result<Vec<NameComponent>, String> = segments
@@ -189,7 +184,7 @@ impl<'a> TypeParser<'a> {
             .map(|segment| {
                 let ident = segment.ident.to_string();
                 match &segment.arguments {
-                    PathArguments::None => Ok(NameComponent{ ident, args: None }),
+                    PathArguments::None => Ok(NameComponent { ident, args: None }),
                     PathArguments::AngleBracketed(args) => {
                         match self.angle_bracketed_generic_arguments_to_ir_types(args) {
                             Err(sub_err) => Err(format!(
@@ -198,7 +193,10 @@ impl<'a> TypeParser<'a> {
                                 path.to_token_stream(),
                                 sub_err
                             )),
-                            Ok(ir_types) => Ok(NameComponent{ ident, args: Some(Args::Generic(ir_types)) }),
+                            Ok(ir_types) => Ok(NameComponent {
+                                ident,
+                                args: Some(Args::Generic(ir_types)),
+                            }),
                         }
                     }
                     PathArguments::Parenthesized(args) => Ok(NameComponent {

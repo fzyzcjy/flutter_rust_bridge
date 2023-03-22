@@ -21,7 +21,7 @@ pub enum Args {
 #[derive(Debug, Clone, Hash, Eq, PartialEq)]
 pub struct NameComponent {
     pub ident: String,
-    pub args: Option<Args>
+    pub args: Option<Args>,
 }
 
 #[derive(Debug, Clone, Hash, Eq, PartialEq)]
@@ -35,7 +35,7 @@ impl Splayable for Vec<NameComponent> {
     fn splay(&self) -> Vec<(&str, Option<ArgsRefs>)> {
         return self
             .iter()
-            .map(|NameComponent {ident, args}| {
+            .map(|NameComponent { ident, args }| {
                 (
                     &ident[..],
                     args.as_ref().map(|args| match &args {
@@ -54,11 +54,17 @@ impl IrTypeTrait for IrTypeUnencodable {
     }
 
     fn safe_ident(&self) -> String {
-        todo!("generate code for type \"{}\"", self.underlying_type.to_token_stream());
+        todo!(
+            "generate code for type \"{}\"",
+            self.underlying_type.to_token_stream()
+        );
     }
 
     fn dart_api_type(&self) -> String {
-        todo!("generate code for type \"{}\"", self.underlying_type.to_token_stream());
+        todo!(
+            "generate code for type \"{}\"",
+            self.underlying_type.to_token_stream()
+        );
     }
 
     fn dart_wire_type(&self, target: crate::target::Target) -> String {
