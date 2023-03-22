@@ -81,4 +81,10 @@ impl IrStruct {
     pub fn const_capable(&self) -> bool {
         self.fields.iter().all(|field| field.is_final)
     }
+
+    pub fn remove_raw_prefix(&mut self) {
+        for field in &mut self.fields {
+            field.remove_raw_prefix();
+        }
+    }
 }

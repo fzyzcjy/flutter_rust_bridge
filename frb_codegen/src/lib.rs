@@ -66,10 +66,12 @@ pub fn frb_codegen_multi(
     let raw_ir_file = config.get_ir_file()?;
 
     info!("Phase: Transform IR");
-    let ir_file = transformer::transform(raw_ir_file);
+    let mut ir_file = transformer::transform(raw_ir_file);
 
     info!("Phase: Generate Rust code");
     let generated_rust = generate_rust_code(config, &ir_file)?;
+
+    ir_file.remove_raw_prefix();
 
     info!("Phase: Generate Dart code");
     generate_dart_code(config, all_configs, &ir_file, generated_rust, all_symbols)?;
