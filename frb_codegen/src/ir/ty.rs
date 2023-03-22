@@ -19,6 +19,7 @@ pub enum IrType {
     DartOpaque(IrTypeDartOpaque),
     RustOpaque(IrTypeRustOpaque),
     Dynamic(IrTypeDynamic),
+    Unencodable(IrTypeUnencodable),
 }
 }
 

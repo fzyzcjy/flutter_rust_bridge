@@ -18,6 +18,7 @@ mod ty_primitive_list;
 mod ty_rust_opaque;
 mod ty_struct;
 mod ty_sync_return;
+mod ty_unencodable;
 
 pub use annotation::*;
 pub use comment::*;
@@ -39,3 +40,4 @@ pub use ty_primitive_list::*;
 pub use ty_rust_opaque::*;
 pub use ty_struct::*;
 pub use ty_sync_return::*;
+pub use ty_unencodable::*;

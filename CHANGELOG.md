@@ -1,6 +1,7 @@
-## Unreleased
+## 1.71.2
 
 * Code refactor #1137
+* Remove SupportedInnerType #1117 (thanks @coder0xff)
 
 ## 1.71.1
 
