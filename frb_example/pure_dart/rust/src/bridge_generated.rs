@@ -2030,14 +2030,14 @@ fn wire_return_dart_dynamic_impl(port_: MessagePort) {
         move || move |task_callback| Ok(return_dart_dynamic()),
     )
 }
-fn wire_test_illegal_dart_name_struct_impl(port_: MessagePort) {
+fn wire_test_raw_string_item_struct_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "test_illegal_dart_name_struct",
+            debug_name: "test_raw_string_item_struct",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(test_illegal_dart_name_struct()),
+        move || move |task_callback| Ok(test_raw_string_item_struct()),
     )
 }
 fn wire_list_of_primitive_enums_impl(
@@ -2615,13 +2615,6 @@ impl support::IntoDart for FeedId {
 }
 impl support::IntoDartExceptPrimitive for FeedId {}
 
-impl support::IntoDart for IllegalDartNameStruct {
-    fn into_dart(self) -> support::DartAbi {
-        vec![self.r#type.into_dart()].into_dart()
-    }
-}
-impl support::IntoDartExceptPrimitive for IllegalDartNameStruct {}
-
 impl support::IntoDart for KitchenSink {
     fn into_dart(self) -> support::DartAbi {
         match self {
@@ -2773,6 +2766,13 @@ impl support::IntoDart for Point {
     }
 }
 impl support::IntoDartExceptPrimitive for Point {}
+
+impl support::IntoDart for RawStringItemStruct {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.r#type.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for RawStringItemStruct {}
 
 impl support::IntoDart for mirror_Sequences {
     fn into_dart(self) -> support::DartAbi {

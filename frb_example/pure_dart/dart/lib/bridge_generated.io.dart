@@ -3357,18 +3357,17 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_dart_dynamic');
   late final _wire_return_dart_dynamic = _wire_return_dart_dynamicPtr.asFunction<void Function(int)>();
 
-  void wire_test_illegal_dart_name_struct(
+  void wire_test_raw_string_item_struct(
     int port_,
   ) {
-    return _wire_test_illegal_dart_name_struct(
+    return _wire_test_raw_string_item_struct(
       port_,
     );
   }
 
-  late final _wire_test_illegal_dart_name_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_test_illegal_dart_name_struct');
-  late final _wire_test_illegal_dart_name_struct =
-      _wire_test_illegal_dart_name_structPtr.asFunction<void Function(int)>();
+  late final _wire_test_raw_string_item_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_test_raw_string_item_struct');
+  late final _wire_test_raw_string_item_struct = _wire_test_raw_string_item_structPtr.asFunction<void Function(int)>();
 
   void wire_list_of_primitive_enums(
     int port_,

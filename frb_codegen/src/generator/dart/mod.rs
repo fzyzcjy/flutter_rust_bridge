@@ -67,9 +67,7 @@ pub fn generate(ir_file: &IrFile, config: &Opts, wasm_funcs: &[IrFuncDisplay]) -
 
     let dart_structs = dart_structs
         .iter()
-        .map(|s| {
-            rename_string_literal(s)
-        })
+        .map(|s| remove_raw_prefix_string(s))
         .collect::<Vec<_>>();
 
     let decl_code = generate_dart_declaration_code(

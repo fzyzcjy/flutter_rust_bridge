@@ -600,9 +600,9 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kReturnDartDynamicConstMeta;
 
-  Future<IllegalDartNameStruct> testIllegalDartNameStruct({dynamic hint});
+  Future<RawStringItemStruct> testRawStringItemStruct({dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kTestIllegalDartNameStructConstMeta;
+  FlutterRustBridgeTaskConstMeta get kTestRawStringItemStructConstMeta;
 
   Future<List<Weekdays>> listOfPrimitiveEnums({required List<Weekdays> weekdays, dynamic hint});
 
@@ -1148,14 +1148,6 @@ class I32Array2 extends NonGrowableListView<int> {
   I32Array2.init() : super(Int32List(arraySize));
 }
 
-class IllegalDartNameStruct {
-  final String type;
-
-  const IllegalDartNameStruct({
-    required this.type,
-  });
-}
-
 @freezed
 class KitchenSink with _$KitchenSink {
   /// Comment on variant
@@ -1336,6 +1328,14 @@ class Point {
   const Point({
     required this.x,
     required this.y,
+  });
+}
+
+class RawStringItemStruct {
+  final String type;
+
+  const RawStringItemStruct({
+    required this.type,
   });
 }
 

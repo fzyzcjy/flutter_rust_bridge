@@ -125,7 +125,7 @@ pub fn sanity_check(
 }
 
 // Removes 'r#' from the string literal as fields in dart are not prefixed with 'r#'.
-pub fn rename_string_literal(s: &str) -> String {
+pub fn remove_raw_prefix_string(s: &str) -> String {
     s.replace("r#", "")
 }
 

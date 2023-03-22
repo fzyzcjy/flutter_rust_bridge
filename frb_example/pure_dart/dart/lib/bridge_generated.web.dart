@@ -1200,7 +1200,7 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_return_dart_dynamic(NativePortType port_);
 
-  external dynamic /* void */ wire_test_illegal_dart_name_struct(NativePortType port_);
+  external dynamic /* void */ wire_test_raw_string_item_struct(NativePortType port_);
 
   external dynamic /* void */ wire_list_of_primitive_enums(NativePortType port_, List<dynamic> weekdays);
 
@@ -1604,7 +1604,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_return_dart_dynamic(NativePortType port_) => wasmModule.wire_return_dart_dynamic(port_);
 
-  void wire_test_illegal_dart_name_struct(NativePortType port_) => wasmModule.wire_test_illegal_dart_name_struct(port_);
+  void wire_test_raw_string_item_struct(NativePortType port_) => wasmModule.wire_test_raw_string_item_struct(port_);
 
   void wire_list_of_primitive_enums(NativePortType port_, List<dynamic> weekdays) =>
       wasmModule.wire_list_of_primitive_enums(port_, weekdays);

@@ -755,8 +755,8 @@ pub extern "C" fn wire_return_dart_dynamic(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_illegal_dart_name_struct(port_: i64) {
-    wire_test_illegal_dart_name_struct_impl(port_)
+pub extern "C" fn wire_test_raw_string_item_struct(port_: i64) {
+    wire_test_raw_string_item_struct_impl(port_)
 }
 
 #[no_mangle]

@@ -618,8 +618,8 @@ void main(List<String> args) async {
   });
 
   test('test dart illegal name', () async {
-    final output = await api.testIllegalDartNameStruct();
-    expect(output, isA<IllegalDartNameStruct>());
+    final output = await api.testRawStringItemStruct();
+    expect(output, isA<RawStringItemStruct>());
   });
 
   group('Platform-specific support', () {

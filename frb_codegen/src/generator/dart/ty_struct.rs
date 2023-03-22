@@ -1,11 +1,11 @@
 use crate::generator::dart::ty::*;
 use crate::generator::dart::{dart_comments, dart_metadata, GeneratedApiMethod};
+use crate::others::remove_raw_prefix_string;
 use crate::target::Acc;
 use crate::type_dart_generator_struct;
 use crate::utils::method::FunctionName;
 use crate::{ir::*, Opts};
 use convert_case::{Case, Casing};
-use crate::others::rename_string_literal;
 
 type_dart_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
@@ -86,7 +86,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         if has_methods {
             inner.insert(0, "bridge: this,".to_string());
         }
-        let inner = rename_string_literal(inner.join("\n").as_str());
+        let inner = remove_raw_prefix_string(inner.join("\n").as_str());
 
         format!(
             "final arr = raw as List<dynamic>;
