@@ -150,9 +150,9 @@ More specifically, thanks for all these contributions:
 * [AlienKevin](https://github.com/AlienKevin): Add flutter example for macOS. Add doc for Android NDK bug.
 * [alexthe2](https://github.com/alexthe2): Add Option Datetime. Add empty structs. Improve doc.
 * [banool](https://github.com/banool): Fix pubspec parsing. Fix symbol-stripping doc.
+* [coder0xff](https://github.com/coder0xff): Refactor SupportedInnerType. Extra codegen tester.
 * [efc-mw](https://github.com/efc-mw): Improve Windows encoding handling.
 * [valeth](https://github.com/valeth): Rename callFfi's port.
-* [coder0xff](https://github.com/coder0xff): Extra codegen tester.
 * [sccheruku](https://github.com/sccheruku): Prevent double-generating utility.
 * [jsonmona](https://github.com/jsonmona): Add import.
 * [w-ensink](https://github.com/w-ensink): Improve doc. Fix CI. Refactor. Add tests.
