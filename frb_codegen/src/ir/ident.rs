@@ -38,8 +38,6 @@ impl IrIdent {
 
     // remove_raw_prefix removes the "r#" prefix from the identifier.
     pub fn remove_raw_prefix(&mut self) {
-        if self.raw.starts_with("r#") {
-            self.raw = self.raw[2..].to_string();
-        }
+        self.raw = self.raw.strip_prefix("r#");
     }
 }
