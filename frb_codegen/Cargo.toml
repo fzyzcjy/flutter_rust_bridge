@@ -58,3 +58,5 @@ default = ["chrono", "serde"]
 serde = []
 chrono = []
 uuid = []
+# When disabled, name qualifiers are discarded, e.g. my_library::SyncReturn == flutter_rust_bridge::SyncReturn
+qualified_names = []

@@ -24,7 +24,6 @@ use crate::utils::method::FunctionName;
 use self::ty::convert_ident_str;
 
 const STREAM_SINK_IDENT: &str = "StreamSink";
-const RESULT_IDENT: &str = "Result";
 
 pub(crate) fn topo_resolve(src: HashMap<String, Type>) -> HashMap<String, Type> {
     // Some types that cannot be Handled.
@@ -136,18 +135,34 @@ impl<'a> Parser<'a> {
     /// Attempts to parse the type from the return part of a function signature. There is a special
     /// case for top-level `Result` types.
     pub fn try_parse_fn_output_type(&mut self, ty: &syn::Type) -> Option<IrFuncOutput> {
-        let ty = &self.type_parser.resolve_alias(ty);
-        let inner = ty::SupportedInnerType::try_from_syn_type(ty)?;
-        match inner {
-            ty::SupportedInnerType::Path(ty::SupportedPathType {
-                ident,
-                generic: Some(generic),
-            }) if ident == RESULT_IDENT => Some(IrFuncOutput::ResultType(
-                self.type_parser.convert_to_ir_type(*generic)?,
-            )),
-            _ => Some(IrFuncOutput::Type(
-                self.type_parser.convert_to_ir_type(inner)?,
-            )),
+        let ty = &self.type_parser.resolve_alias(ty).clone();
+
+        if let Type::Path(type_path) = ty {
+            match self.type_parser.convert_path_to_ir_type(type_path) {
+                Ok(IrType::Unencodable(IrTypeUnencodable { segments, .. })) => {
+                    match if cfg!(feature = "qualified_names") {
+                        segments.splay()
+                    } else {
+                        // Emulate old behavior by discarding any name qualifiers
+                        vec![segments.splay().pop().unwrap()]
+                    }[..]
+                    {
+                        #[cfg(feature = "qualified_names")]
+                        [("anyhow", None), ("Result", Some(ArgsRefs::Generic([args])))] => {
+                            Some(IrFuncOutput::ResultType(args.clone()))
+                        }
+                        [("Result", Some(ArgsRefs::Generic([args])))] => {
+                            Some(IrFuncOutput::ResultType(args.clone()))
+                        }
+                        _ => None, // unencodable types not implemented
+                    }
+                }
+                Ok(result) => Some(IrFuncOutput::Type(result)),
+                Err(..) => None,
+            }
+        } else {
+            let ir_ty = self.type_parser.parse_type(ty);
+            Some(IrFuncOutput::Type(ir_ty))
         }
     }
 

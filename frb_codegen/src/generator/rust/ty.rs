@@ -120,6 +120,9 @@ impl<'a> TypeRustGenerator<'a> {
             DartOpaque(ir) => TypeDartOpaqueGenerator { ir, context }.into(),
             RustOpaque(ir) => TypeRustOpaqueGenerator { ir, context }.into(),
             Dynamic(ir) => TypeDynamicGenerator { ir, context }.into(),
+            Unencodable(IrTypeUnencodable { string, .. }) => {
+                panic!("Cannot generate Rust code for {}", string)
+            }
         }
     }
 }
