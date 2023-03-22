@@ -65,11 +65,6 @@ pub fn generate(ir_file: &IrFile, config: &Opts, wasm_funcs: &[IrFuncDisplay]) -
     let needs_freezed = spec.needs_freezed;
     let common_header = generate_common_header();
 
-    let dart_structs = dart_structs
-        .iter()
-        .map(|s| remove_raw_prefix_string(s))
-        .collect::<Vec<_>>();
-
     let decl_code = generate_dart_declaration_code(
         &common_header,
         generate_freezed_header(dart_output_file_root, needs_freezed),

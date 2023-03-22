@@ -124,11 +124,6 @@ pub fn sanity_check(
     Ok(())
 }
 
-// Removes 'r#' from the string literal as fields in dart are not prefixed with 'r#'.
-pub fn remove_raw_prefix_string(s: &str) -> String {
-    s.to_string()
-}
-
 pub fn try_add_mod_to_lib(rust_crate_dir: &str, rust_output_path: &str) {
     if let Err(e) = auto_add_mod_to_lib_core(rust_crate_dir, rust_output_path) {
         warn!(
