@@ -36,6 +36,7 @@ impl IrIdent {
         self.raw.to_case(Case::Camel)
     }
 
+    // remove_raw_prefix removes the "r#" prefix from the identifier.
     pub fn remove_raw_prefix(&mut self) {
         if self.raw.starts_with("r#") {
             self.raw = self.raw[2..].to_string();
