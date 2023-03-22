@@ -59,10 +59,7 @@ pub fn convert_ident_str(ty: &Type) -> Option<String> {
 
 #[cfg(all(feature = "chrono"))]
 fn datetime_to_ir_type(args: &[IrType]) -> std::result::Result<IrType, String> {
-    if let [Unencodable(IrTypeUnencodable {
-        segments, ..
-    })] = args
-    {
+    if let [Unencodable(IrTypeUnencodable { segments, .. })] = args {
         let mut segments = segments.clone();
         let segments: Vec<NameComponent> = if cfg!(feature = "qualified_names") {
             segments
@@ -71,20 +68,24 @@ fn datetime_to_ir_type(args: &[IrType]) -> std::result::Result<IrType, String> {
             vec![segments.pop().unwrap()]
         };
 
-        let splayed = segments.splay();        
+        let splayed = segments.splay();
         return match splayed[..] {
             #[cfg(feature = "qualified_names")]
-            [("DateTime", None), ("Utc", None)] => Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Utc))),
+            [("DateTime", None), ("Utc", None)] => {
+                Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Utc)))
+            }
 
             [("Utc", None)] => Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Utc))),
 
             #[cfg(feature = "qualified_names")]
-            [("DateTime", None), ("Local", None)] => Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Local))),
-            
+            [("DateTime", None), ("Local", None)] => {
+                Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Local)))
+            }
+
             [("Local", None)] => Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Local))),
-            
+
             _ => Err("Invalid DateTime generic".to_string()),
-        }
+        };
     }
     Err("Invalid DateTime generic".to_string())
 }

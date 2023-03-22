@@ -10,14 +10,14 @@ pub trait Splayable {
     fn splay(&self) -> Vec<(&str, Option<ArgsRefs>)>;
 }
 
-crate::ir!{
+crate::ir! {
 pub enum Args {
     Generic(Vec<IrType>),
     Signature(Vec<IrType>),
 }
 }
 
-crate::ir!{
+crate::ir! {
 /// A component of a fully qualified name and any type arguments for it
 pub struct NameComponent {
     pub ident: String,
@@ -56,17 +56,11 @@ impl IrTypeTrait for IrTypeUnencodable {
     }
 
     fn safe_ident(&self) -> String {
-        todo!(
-            "generate code for type \"{}\"",
-            self.string
-        );
+        todo!("generate code for type \"{}\"", self.string);
     }
 
     fn dart_api_type(&self) -> String {
-        todo!(
-            "generate code for type \"{}\"",
-            self.string
-        );
+        todo!("generate code for type \"{}\"", self.string);
     }
 
     fn dart_wire_type(&self, target: crate::target::Target) -> String {
