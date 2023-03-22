@@ -69,7 +69,7 @@ pub fn generate(ir_file: &IrFile, config: &Opts, wasm_funcs: &[IrFuncDisplay]) -
         &common_header,
         generate_freezed_header(dart_output_file_root, needs_freezed),
         generate_import_header(get_dart_imports(ir_file), spec.import_array.as_deref()),
-        generate_dart_declaration_body(dart_api_class_name, dart_funcs, dart_structs.as_slice()),
+        generate_dart_declaration_body(dart_api_class_name, dart_funcs, dart_structs),
     );
 
     let impl_code = generate_dart_implementation_code(
