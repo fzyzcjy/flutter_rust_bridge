@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: 1.64.0
+          toolchain: 1.68.0
           components: rustfmt
       - uses: dart-lang/setup-dart@v1
         with:
@@ -76,7 +76,7 @@ jobs:
           architecture: x64
       - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: 1.64.0
+          toolchain: 1.68.0
 
       - uses: actions/cache@v3
         id: cache-deps
@@ -128,7 +128,7 @@ jobs:
       - id: checkout
         uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: 1.64.0
+          toolchain: 1.68.0
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
@@ -195,7 +195,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: 1.64.0
+          toolchain: 1.68.0
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
@@ -236,7 +236,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: 1.64.0
+          toolchain: 1.68.0
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
@@ -258,7 +258,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: 1.64.0
+          toolchain: 1.68.0
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
@@ -347,7 +347,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: 1.64.0
+          toolchain: 1.68.0
           components: rustfmt
       - uses: dart-lang/setup-dart@v1
         with:
@@ -367,7 +367,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: 1.64.0
+          toolchain: 1.68.0
           components: rustfmt
       - uses: dart-lang/setup-dart@v1
         with:
@@ -388,7 +388,7 @@ jobs:
     strategy:
       matrix:
         cargo_toolchain_version:
-          - 1.64.0
+          - 1.68.0
 
     steps:
       - uses: actions/checkout@v2
@@ -442,7 +442,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: 1.64.0
+          toolchain: 1.68.0
           components: rustfmt, clippy
       - uses: subosito/flutter-action@v2
         with:

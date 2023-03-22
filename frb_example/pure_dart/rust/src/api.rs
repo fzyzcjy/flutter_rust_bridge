@@ -1425,3 +1425,7 @@ pub fn empty_struct(empty: Empty) -> Empty {
 pub fn return_dart_dynamic() -> DartAbi {
     vec!["foo".into_dart()].into_dart()
 }
+
+pub fn list_of_primitive_enums(weekdays: Vec<Weekdays>) -> Vec<Weekdays> {
+    weekdays
+}

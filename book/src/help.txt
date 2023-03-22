@@ -1,66 +1,79 @@
-flutter_rust_bridge_codegen 1.69.0
+Usage: flutter_rust_bridge_codegen [OPTIONS] --rust-input <RUST_INPUT>... --dart-output <DART_OUTPUT>...
+       flutter_rust_bridge_codegen [CONFIG_FILE]
 
-USAGE:
-    flutter_rust_bridge_codegen [OPTIONS] --rust-input <RUST_INPUT>... --dart-output <DART_OUTPUT>...
+Arguments:
+  [CONFIG_FILE]
+          Path to a YAML config file.
+          
+          If present, other options and flags will be ignored. Accepts the same options as the CLI, but uses snake_case keys.
 
-OPTIONS:
-    -r, --rust-input <RUST_INPUT>...
-            Path of input Rust code
+Options:
+  -r, --rust-input <RUST_INPUT>...
+          Path of input Rust code
 
-    -d, --dart-output <DART_OUTPUT>...
-            Path of output generated Dart code
+  -d, --dart-output <DART_OUTPUT>...
+          Path of output generated Dart code
 
-        --dart-decl-output <DART_DECL_OUTPUT>
-            If provided, generated Dart declaration code to this separate file
+      --dart-decl-output <DART_DECL_OUTPUT>
+          If provided, generated Dart declaration code to this separate file
 
-    -c, --c-output <C_OUTPUT>
-            Output path (including file name) of generated C header, each field corresponding to
-            that of `rust-input`
+  -c, --c-output <C_OUTPUT>
+          Output path (including file name) of generated C header, each field corresponding to that of --rust-input
 
-    -e, --extra-c-output-path <EXTRA_C_OUTPUT_PATH>
-            Extra output path (excluding file name) of generated C header
+  -e, --extra-c-output-path <EXTRA_C_OUTPUT_PATH>
+          Extra output path (excluding file name) of generated C header
 
-        --rust-crate-dir <RUST_CRATE_DIR>...
-            Crate directory for your Rust project
+      --rust-crate-dir <RUST_CRATE_DIR>...
+          Crate directory for your Rust project
 
-        --rust-output <RUST_OUTPUT>...
-            Output path of generated Rust code
+      --rust-output <RUST_OUTPUT>...
+          Output path of generated Rust code
 
-        --class-name <CLASS_NAME>...
-            Generated class name
+      --class-name <CLASS_NAME>...
+          Generated class name
 
-        --dart-format-line-length <DART_FORMAT_LINE_LENGTH>
-            Line length for Dart formatting [default: 80]
+      --dart-format-line-length <DART_FORMAT_LINE_LENGTH>
+          Line length for Dart formatting
+          
+          [default: 80]
 
-        --skip-add-mod-to-lib
-            Skip automatically adding `mod bridge_generated;` to `lib.rs`
+      --dart-enums-style
+          The generated Dart enums will have their variant names camelCased
 
-        --llvm-path <LLVM_PATH>...
-            Path to the installed LLVM
+      --skip-add-mod-to-lib
+          Skip automatically adding `mod bridge_generated;` to `lib.rs`
 
-        --llvm-compiler-opts <LLVM_COMPILER_OPTS>
-            LLVM compiler opts
+      --llvm-path <LLVM_PATH>...
+          Path to the installed LLVM
 
-        --dart-root <DART_ROOT>...
-            Path to root of Dart project, otherwise inferred from --dart-output
+      --llvm-compiler-opts <LLVM_COMPILER_OPTS>
+          LLVM compiler opts
 
-        --no-build-runner
-            Skip running build_runner even when codegen-required code is detected
+      --dart-root <DART_ROOT>...
+          Path to root of Dart project, otherwise inferred from --dart-output
 
-    -v, --verbose
-            Show debug messages
+      --no-build-runner
+          Skip running build_runner even when codegen-required code is detected
 
-        --wasm
-            Enable WASM module generation. Requires: --dart-decl-output
+  -v, --verbose
+          Show debug messages
 
-        --inline-rust
-            Inline declaration of Rust bridge modules
+      --wasm
+          Enable WASM module generation. Requires: --dart-decl-output
 
-        --skip-deps-check
-            Skip dependencies check
+      --inline-rust
+          Inline declaration of Rust bridge modules
 
-    -h, --help
-            Print help information
+      --skip-deps-check
+          Skip dependencies check
 
-    -V, --version
-            Print version information
+      --dump [<DUMP>...]
+          A list of data to be dumped. If specified without a value, defaults to all
+          
+          [possible values: config, ir]
+
+  -h, --help
+          Print help (see a summary with '-h')
+
+  -V, --version
+          Print version

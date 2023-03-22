@@ -1,11 +1,11 @@
 use std::path::Path;
 
-use crate::config;
-use crate::utils::{BlockIndex, PathExt};
+use crate::config::opts::Opts;
+use crate::utils::misc::{BlockIndex, PathExt};
 
 pub fn generate_dummy(
-    config: &config::Opts,
-    all_configs: &[config::Opts],
+    config: &Opts,
+    all_configs: &[Opts],
     func_names: &[String],
     c_path_index: usize,
 ) -> String {

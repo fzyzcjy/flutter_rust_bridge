@@ -730,6 +730,11 @@ pub fn wire_return_dart_dynamic(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_list_of_primitive_enums(port_: MessagePort, weekdays: JsValue) {
+    wire_list_of_primitive_enums_impl(port_, weekdays)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -1333,6 +1338,15 @@ impl Wire2Api<Vec<Option<Attribute>>> for JsValue {
 }
 impl Wire2Api<Vec<TestId>> for JsValue {
     fn wire2api(self) -> Vec<TestId> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
+impl Wire2Api<Vec<Weekdays>> for JsValue {
+    fn wire2api(self) -> Vec<Weekdays> {
         self.dyn_into::<JsArray>()
             .unwrap()
             .iter()

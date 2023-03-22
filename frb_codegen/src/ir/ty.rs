@@ -3,9 +3,9 @@ use enum_dispatch::enum_dispatch;
 use std::collections::HashSet;
 use IrType::*;
 
+crate::ir! {
 /// Remark: "Ty" instead of "Type", since "type" is a reserved word in Rust.
 #[enum_dispatch(IrTypeTrait)]
-#[derive(Debug, Clone, Hash, Eq, PartialEq)]
 pub enum IrType {
     Primitive(IrTypePrimitive),
     Delegate(IrTypeDelegate),
@@ -20,6 +20,7 @@ pub enum IrType {
     RustOpaque(IrTypeRustOpaque),
     Dynamic(IrTypeDynamic),
     Unencodable(IrTypeUnencodable),
+}
 }
 
 impl IrType {

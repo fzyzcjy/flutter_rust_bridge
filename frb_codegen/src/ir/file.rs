@@ -1,5 +1,5 @@
 use crate::target::Target;
-use crate::utils::mod_from_rust_path;
+use crate::utils::misc::mod_from_rust_path;
 use crate::{generator, ir::*, Opts};
 use std::collections::{HashMap, HashSet};
 
@@ -7,6 +7,7 @@ pub type IrStructPool = HashMap<String, IrStruct>;
 pub type IrEnumPool = HashMap<String, IrEnum>;
 
 #[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize))]
 pub struct IrFile {
     pub funcs: Vec<IrFunc>,
     pub struct_pool: IrStructPool,

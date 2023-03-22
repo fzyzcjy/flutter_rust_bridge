@@ -1,3 +1,5 @@
+pub(crate) mod markers;
+pub(crate) mod source_graph;
 pub(crate) mod ty;
 
 use std::borrow::Cow;
@@ -15,9 +17,9 @@ use topological_sort::TopologicalSort;
 use crate::ir::*;
 
 use crate::generator::rust::HANDLER_NAME;
-use crate::method_utils::FunctionName;
+use crate::parser::source_graph::Crate;
 use crate::parser::ty::TypeParser;
-use crate::source_graph::Crate;
+use crate::utils::method::FunctionName;
 
 use self::ty::convert_ident_str;
 
@@ -348,7 +350,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
             Ident::new(
                 &FunctionName::new(
                     &item_method.sig.ident.to_string(),
-                    crate::method_utils::MethodInfo::Static {
+                    crate::utils::method::MethodInfo::Static {
                         struct_name: self_type.unwrap(),
                     },
                 )
@@ -359,7 +361,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
             Ident::new(
                 &FunctionName::new(
                     &item_method.sig.ident.to_string(),
-                    crate::method_utils::MethodInfo::NonStatic {
+                    crate::utils::method::MethodInfo::NonStatic {
                         struct_name: struct_name.clone(),
                     },
                 )
@@ -578,13 +580,48 @@ fn extract_metadata(attrs: &[Attribute]) -> Vec<IrDartAnnotation> {
         .collect()
 }
 
-#[derive(Debug, Clone)]
+crate::ir! {
 pub enum DefaultValues {
+    #[cfg_attr(feature = "serde", serde(serialize_with = "serialize_litstr"))]
     Str(syn::LitStr),
+    #[cfg_attr(feature = "serde", serde(serialize_with = "serialize_litbool"))]
     Bool(syn::LitBool),
+    #[cfg_attr(feature = "serde", serde(serialize_with = "serialize_litint"))]
     Int(syn::LitInt),
+    #[cfg_attr(feature = "serde", serde(serialize_with = "serialize_litfloat"))]
     Float(syn::LitFloat),
+    #[cfg_attr(feature = "serde", serde(serialize_with = "serialize_punctuated"))]
     Vec(Punctuated<DefaultValues, Token![,]>),
+}
+}
+
+#[cfg(feature = "serde")]
+use _serde::*;
+#[cfg(feature = "serde")]
+mod _serde {
+    use serde::{Serialize, Serializer};
+    use syn::{punctuated::Punctuated, Token};
+
+    use super::DefaultValues;
+
+    pub fn serialize_litstr<S: Serializer>(lit: &syn::LitStr, s: S) -> Result<S::Ok, S::Error> {
+        lit.value().serialize(s)
+    }
+    pub fn serialize_litbool<S: Serializer>(lit: &syn::LitBool, s: S) -> Result<S::Ok, S::Error> {
+        lit.value().serialize(s)
+    }
+    pub fn serialize_litint<S: Serializer>(lit: &syn::LitInt, s: S) -> Result<S::Ok, S::Error> {
+        lit.base10_parse::<i64>().unwrap().serialize(s)
+    }
+    pub fn serialize_litfloat<S: Serializer>(lit: &syn::LitFloat, s: S) -> Result<S::Ok, S::Error> {
+        lit.base10_parse::<f64>().unwrap().serialize(s)
+    }
+    pub fn serialize_punctuated<S: Serializer>(
+        lit: &Punctuated<DefaultValues, Token![,]>,
+        s: S,
+    ) -> Result<S::Ok, S::Error> {
+        lit.into_iter().collect::<Vec<_>>().serialize(s)
+    }
 }
 
 impl DefaultValues {

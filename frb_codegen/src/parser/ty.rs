@@ -1,8 +1,8 @@
 use crate::ir::IrType::*;
 use crate::ir::*;
-use crate::markers;
+use crate::parser::markers;
+use crate::parser::source_graph::{Enum, Struct};
 use crate::parser::{extract_comments, extract_metadata};
-use crate::source_graph::{Enum, Struct};
 use quote::ToTokens;
 use std::collections::{HashMap, HashSet};
 use std::string::String;
@@ -360,6 +360,7 @@ impl<'a> TypeParser<'a> {
                         }))
                     }
 
+                    #[cfg(feature = "chrono")]
                     [("Vec", Some(Generic([Delegate(IrTypeDelegate::Time(time))])))] => {
                         Ok(Delegate(IrTypeDelegate::TimeList(*time)))
                     }
