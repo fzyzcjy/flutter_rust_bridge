@@ -3,7 +3,6 @@ use std::borrow::Cow;
 use crate::generator::rust::*;
 use crate::target::Acc;
 use enum_dispatch::enum_dispatch;
-use quote::ToTokens;
 
 #[enum_dispatch]
 pub trait TypeRustGeneratorTrait {
@@ -122,10 +121,10 @@ impl<'a> TypeRustGenerator<'a> {
             RustOpaque(ir) => TypeRustOpaqueGenerator { ir, context }.into(),
             Dynamic(ir) => TypeDynamicGenerator { ir, context }.into(),
             Unencodable(IrTypeUnencodable {
-                underlying_type, ..
+                string, ..
             }) => panic!(
                 "Cannot generate Rust code for {}",
-                underlying_type.to_token_stream()
+                string
             ),
         }
     }

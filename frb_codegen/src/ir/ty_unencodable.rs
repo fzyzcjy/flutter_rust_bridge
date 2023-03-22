@@ -1,5 +1,4 @@
 use crate::{ir::*, target::Target};
-use quote::ToTokens;
 
 #[derive(Debug, Clone, Hash, Eq, PartialEq)]
 pub enum ArgsRefs<'a> {
@@ -11,23 +10,26 @@ pub trait Splayable {
     fn splay(&self) -> Vec<(&str, Option<ArgsRefs>)>;
 }
 
-#[derive(Debug, Clone, Hash, Eq, PartialEq)]
+crate::ir!{
 pub enum Args {
     Generic(Vec<IrType>),
     Signature(Vec<IrType>),
 }
+}
 
+crate::ir!{
 /// A component of a fully qualified name and any type arguments for it
-#[derive(Debug, Clone, Hash, Eq, PartialEq)]
 pub struct NameComponent {
     pub ident: String,
     pub args: Option<Args>,
 }
+}
 
-#[derive(Debug, Clone, Hash, Eq, PartialEq)]
+crate::ir! {
 pub struct IrTypeUnencodable {
-    pub underlying_type: Box<syn::Type>,
+    pub string: String,
     pub segments: Vec<NameComponent>,
+}
 }
 
 impl Splayable for Vec<NameComponent> {
@@ -56,14 +58,14 @@ impl IrTypeTrait for IrTypeUnencodable {
     fn safe_ident(&self) -> String {
         todo!(
             "generate code for type \"{}\"",
-            self.underlying_type.to_token_stream()
+            self.string
         );
     }
 
     fn dart_api_type(&self) -> String {
         todo!(
             "generate code for type \"{}\"",
-            self.underlying_type.to_token_stream()
+            self.string
         );
     }
 
@@ -76,7 +78,7 @@ impl IrTypeTrait for IrTypeUnencodable {
     }
 
     fn rust_api_type(&self) -> String {
-        self.underlying_type.to_token_stream().to_string()
+        self.string.clone()
     }
 
     fn rust_wire_type(&self, target: crate::target::Target) -> String {
