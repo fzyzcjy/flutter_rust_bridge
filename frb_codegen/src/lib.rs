@@ -71,13 +71,10 @@ pub fn frb_codegen_multi(
     info!("Picked config: {:?}", config);
 
     info!("Phase: Parse source code to AST, then to IR");
-    let raw_ir_file = config.get_ir_file()?;
-
-    info!("Phase: Transform IR");
-    let ir_file = transformer::transform(raw_ir_file);
+    let ir_file = config.get_ir_file(Some(all_configs))?;
 
     info!("Phase: Generate Rust code");
-    let generated_rust = generate_rust_code(config, &ir_file)?;
+    let generated_rust = generate_rust_code(config, all_configs, &ir_file)?;
 
     info!("Phase: Generate Dart code");
     generate_dart_code(config, all_configs, &ir_file, generated_rust, all_symbols)?;
@@ -88,20 +85,28 @@ pub fn frb_codegen_multi(
 
 fn generate_rust_code(
     config: &Opts,
+    all_configs: &[Opts],
     ir_file: &ir::IrFile,
 ) -> anyhow::Result<generator::rust::Output> {
+    log::debug!("rust 1"); //TODO: delete
     let rust_output_paths = config.get_rust_output_paths();
 
+    log::debug!("rust 2"); //TODO: delete
     let rust_output_dir = Path::new(&rust_output_paths.base_path).parent().unwrap();
     fs::create_dir_all(rust_output_dir)?;
 
-    let generated_rust = ir_file.generate_rust(config);
+    log::debug!("rust 3"); //TODO: delete
+    let generated_rust = ir_file.generate_rust(config, all_configs);
+
+    log::debug!("rust 4"); //TODO: delete
     write_rust_modules(config, &generated_rust)?;
 
+    log::debug!("rust 5"); //TODO: delete
     if !config.skip_add_mod_to_lib {
         others::try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);
     }
 
+    log::debug!("rust 6"); //TODO: delete
     run!(
         commands::format_rust,
         &config.rust_output_path,
@@ -135,7 +140,7 @@ fn generate_dart_code(
     log::debug!("exclude_symbols:{:?}", exclude_symbols);
     log::debug!(
         "ir_file.get_c_struct_names:{:?}",
-        ir_file.get_c_struct_names()
+        ir_file.get_c_struct_names(all_configs)
     );
 
     with_changed_file(
@@ -152,7 +157,7 @@ fn generate_dart_code(
                         .unwrap(),
                     dart_output_path: temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
                     dart_class_name: &config.dart_wire_class_name(),
-                    c_struct_names: ir_file.get_c_struct_names(),
+                    c_struct_names: ir_file.get_c_struct_names(all_configs),
                     exclude_symbols,
                     llvm_install_path: &config.llvm_path[..],
                     llvm_compiler_opts: &config.llvm_compiler_opts,
@@ -173,12 +178,12 @@ fn generate_dart_code(
     log::debug!("here1:{:?}", config.c_output_path); //TODO: delete
     let all_regular_configs = all_configs
         .iter()
-        .filter(|each| !each.is_shared)
+        .filter(|each| !each.shared)
         .map(|each| each.clone())
         .collect::<Vec<_>>();
 
     for (i, each_path) in config.c_output_path.iter().enumerate() {
-        if config.is_shared {
+        if config.shared {
             continue;
         }
         let c_dummy_code =
@@ -191,7 +196,7 @@ fn generate_dart_code(
         )?;
         log::info!("written into {each_path:?}");
     }
-    log::debug!("here2");//TODO: delete
+    log::debug!("here2"); //TODO: delete
 
     // phase-step2: generate raw dart code instance from the c file
     let generated_dart_wire_code_raw = fs::read_to_string(temp_dart_wire_file)?;
@@ -201,10 +206,10 @@ fn generate_dart_code(
     ));
     sanity_check(&generated_dart_wire.body, &config.dart_wire_class_name())?;
 
-    log::debug!("here3");//TODO: delete
+    log::debug!("here3"); //TODO: delete
 
     // phase-step3: compose dart codes and write to file
-    let generated_dart = ir_file.generate_dart(config, &generated_rust.wasm_exports);
+    let generated_dart = ir_file.generate_dart(config, all_configs, &generated_rust.wasm_exports);
     let generated_dart_decl_all = &generated_dart.decl_code;
     let generated_dart_impl_io_wire = &generated_dart.impl_code.io + &generated_dart_wire;
 

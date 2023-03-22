@@ -18,6 +18,7 @@ use crate::generator::rust::HANDLER_NAME;
 use crate::method_utils::FunctionName;
 use crate::parser::ty::TypeParser;
 use crate::source_graph::Crate;
+use crate::utils::BlockIndex;
 
 use self::ty::convert_ident_str;
 
@@ -91,7 +92,13 @@ pub(crate) fn topo_resolve(src: HashMap<String, Type>) -> HashMap<String, Type> 
     ret
 }
 
-pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> IrFile {
+pub fn parse(
+    source_rust_content: &str,
+    file: File,
+    manifest_path: &str,
+    block_index: BlockIndex,
+    shared: bool,
+) -> IrFile {
     let crate_map = Crate::new(manifest_path);
 
     let mut src_fns = extract_fns_from_file(&file);
@@ -102,7 +109,7 @@ pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> IrFi
     let src_types = topo_resolve(src_types);
 
     let parser = Parser::new(TypeParser::new(src_structs, src_enums, src_types));
-    parser.parse(source_rust_content, src_fns)
+    parser.parse(source_rust_content, src_fns, block_index, shared)
 }
 
 struct Parser<'a> {
@@ -116,7 +123,13 @@ impl<'a> Parser<'a> {
 }
 
 impl<'a> Parser<'a> {
-    fn parse(mut self, source_rust_content: &str, src_fns: Vec<ItemFn>) -> IrFile {
+    fn parse(
+        mut self,
+        source_rust_content: &str,
+        src_fns: Vec<ItemFn>,
+        block_index: BlockIndex,
+        shared: bool,
+    ) -> IrFile {
         let funcs = src_fns.iter().map(|f| self.parse_function(f)).collect();
 
         let has_executor = source_rust_content.contains(HANDLER_NAME);
@@ -128,6 +141,8 @@ impl<'a> Parser<'a> {
             struct_pool,
             enum_pool,
             has_executor,
+            block_index,
+            shared,
         }
     }
 
@@ -563,7 +578,7 @@ fn extract_metadata(attrs: &[Attribute]) -> Vec<IrDartAnnotation> {
         .collect()
 }
 
-#[derive(Debug, Clone)]
+#[derive(Eq, PartialEq, Hash, Debug, Clone)]
 pub enum DefaultValues {
     Str(syn::LitStr),
     Bool(syn::LitBool),

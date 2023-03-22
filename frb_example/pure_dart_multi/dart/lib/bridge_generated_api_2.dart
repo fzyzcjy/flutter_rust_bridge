@@ -39,32 +39,12 @@ abstract class ApiClass2 {
   FlutterRustBridgeTaskConstMeta get kTestCrossSharedStruct2ConstMeta;
 }
 
-class CrossSharedStruct {
-  final String name;
-
-  const CrossSharedStruct({
-    required this.name,
-  });
-}
-
 class OnlyForApi2Struct {
   final int id;
   final double num;
   final String name;
 
   const OnlyForApi2Struct({
-    required this.id,
-    required this.num,
-    required this.name,
-  });
-}
-
-class SharedStruct {
-  final int id;
-  final double num;
-  final String name;
-
-  const SharedStruct({
     required this.id,
     required this.num,
     required this.name,
@@ -79,8 +59,8 @@ class ApiClass2Impl implements ApiClass2 {
   factory ApiClass2Impl.wasm(FutureOr<WasmModule> module) => ApiClass2Impl(module as ExternalLibrary);
   ApiClass2Impl.raw(this._platform);
   Future<double> testInbuiltType2({required int a, required double b, dynamic hint}) {
-    var arg0 = api2wire_i32(a);
-    var arg1 = api2wire_f32(b);
+    var arg0 = _platform.api2wire_i32(a);
+    var arg1 = _platform.api2wire_f32(b);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_inbuilt_type_2(port_, arg0, arg1),
       parseSuccessData: _wire2api_f32,
@@ -116,7 +96,7 @@ class ApiClass2Impl implements ApiClass2 {
       {required SharedStruct custom, required String s, required int i, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_shared_struct(custom);
     var arg1 = _platform.api2wire_String(s);
-    var arg2 = api2wire_i32(i);
+    var arg2 = _platform.api2wire_i32(i);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_shared_struct_2(port_, arg0, arg1, arg2),
       parseSuccessData: _wire2api_shared_struct,
@@ -171,30 +151,6 @@ class ApiClass2Impl implements ApiClass2 {
   }
 // Section: wire2api
 
-  String _wire2api_String(dynamic raw) {
-    return raw as String;
-  }
-
-  CrossSharedStruct _wire2api_cross_shared_struct(dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return CrossSharedStruct(
-      name: _wire2api_String(arr[0]),
-    );
-  }
-
-  double _wire2api_f32(dynamic raw) {
-    return raw as double;
-  }
-
-  double _wire2api_f64(dynamic raw) {
-    return raw as double;
-  }
-
-  int _wire2api_i32(dynamic raw) {
-    return raw as int;
-  }
-
   int _wire2api_i64(dynamic raw) {
     return castInt(raw);
   }
@@ -208,46 +164,8 @@ class ApiClass2Impl implements ApiClass2 {
       name: _wire2api_String(arr[2]),
     );
   }
-
-  SharedStruct _wire2api_shared_struct(dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 3) throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
-    return SharedStruct(
-      id: _wire2api_i32(arr[0]),
-      num: _wire2api_f64(arr[1]),
-      name: _wire2api_String(arr[2]),
-    );
-  }
-
-  int _wire2api_u8(dynamic raw) {
-    return raw as int;
-  }
-
-  Uint8List _wire2api_uint_8_list(dynamic raw) {
-    return raw as Uint8List;
-  }
 }
 
 // Section: api2wire
-
-@protected
-double api2wire_f32(double raw) {
-  return raw;
-}
-
-@protected
-double api2wire_f64(double raw) {
-  return raw;
-}
-
-@protected
-int api2wire_i32(int raw) {
-  return raw;
-}
-
-@protected
-int api2wire_u8(int raw) {
-  return raw;
-}
 
 // Section: finalizer

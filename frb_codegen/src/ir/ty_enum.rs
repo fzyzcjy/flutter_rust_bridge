@@ -55,7 +55,7 @@ impl IrTypeTrait for IrTypeEnumRef {
     }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Eq, PartialEq, Hash, Debug, Clone)]
 pub struct IrEnum {
     pub name: String,
     pub wrapper_name: Option<String>,
@@ -113,7 +113,7 @@ impl IrEnum {
     }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Eq, PartialEq, Hash, Debug, Clone)]
 pub struct IrVariant {
     pub name: IrIdent,
     pub wrapper_name: IrIdent,
@@ -121,7 +121,7 @@ pub struct IrVariant {
     pub kind: IrVariantKind,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Eq, PartialEq, Hash, Debug, Clone)]
 pub enum IrVariantKind {
     Value,
     Struct(IrStruct),

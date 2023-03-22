@@ -35,7 +35,6 @@ use crate::others::*;
 use crate::target::Acc;
 use crate::target::Target;
 use crate::target::Target::*;
-use crate::utils::BlockIndex;
 use crate::{ir::*, Opts};
 use itertools::Itertools;
 
@@ -57,9 +56,17 @@ impl Output {
     }
 }
 
-pub fn generate(ir_file: &IrFile, rust_wire_mod: &str, config: &Opts) -> Output {
+pub fn generate(
+    ir_file: &IrFile,
+    rust_wire_mod: &str,
+    shared_rust_wire_mod: Option<&str>,
+    config: &Opts,
+    all_configs: &[Opts],
+) -> Output {
+    log::debug!("rust generate 1"); //TODO: delete
     let mut generator = Generator::new(config);
-    let code = generator.generate(ir_file, rust_wire_mod);
+    log::debug!("rust generate 2"); //TODO: delete
+    let code = generator.generate(ir_file, rust_wire_mod, shared_rust_wire_mod, all_configs);
     Output {
         code,
         extern_func_names: generator.extern_func_collector.names,
@@ -80,27 +87,36 @@ impl<'a> Generator<'a> {
         }
     }
 
-    fn generate(&mut self, ir_file: &IrFile, rust_wire_mod: &str) -> Acc<String> {
+    fn generate(
+        &mut self,
+        ir_file: &IrFile,
+        rust_wire_mod: &str,
+        shared_rust_wire_mod: Option<&str>,
+        all_configs: &[Opts],
+    ) -> Acc<String> {
         let mut lines = Acc::<Vec<_>>::default();
 
-        let distinct_input_types = ir_file.distinct_types(true, false);
-        let distinct_output_types = ir_file.distinct_types(false, true);
+        log::debug!("rust before distinct_types"); //TODO: delete
+        let distinct_input_types = ir_file.distinct_types(true, false, all_configs);
+        let distinct_output_types = ir_file.distinct_types(false, true, all_configs);
 
         lines.push(r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion, clippy::unit_arg, clippy::double_parens, non_snake_case, clippy::too_many_arguments)]"#.to_string());
         lines.push(code_header());
 
         lines.push(String::new());
-        lines.push(format!("use crate::{rust_wire_mod}::*;"));
         lines.push("use flutter_rust_bridge::*;".to_owned());
-        lines.push("use core::panic::UnwindSafe;".to_owned());
-        lines.push("use std::sync::Arc;".to_owned());
-        lines.push("use std::ffi::c_void;".to_owned());
+        if !ir_file.shared {
+            lines.push(format!("use crate::{rust_wire_mod}::*;"));
+            lines.push("use core::panic::UnwindSafe;".to_owned());
+            lines.push("use std::sync::Arc;".to_owned());
+            lines.push("use std::ffi::c_void;".to_owned());
+        }
         lines.push(String::new());
-
         lines.push(self.section_header_comment("imports"));
         lines.extend(self.generate_imports(
             ir_file,
             rust_wire_mod,
+            shared_rust_wire_mod,
             &distinct_input_types,
             &distinct_output_types,
         ));
@@ -216,25 +232,56 @@ impl<'a> Generator<'a> {
         &self,
         ir_file: &IrFile,
         rust_wire_mod: &str,
+        shared_rust_wire_mod: Option<&str>,
         distinct_input_types: &[IrType],
         distinct_output_types: &[IrType],
     ) -> impl Iterator<Item = String> {
+        log::debug!("distinct_input_types len: {}", distinct_input_types.len()); //TODO: delete
+        log::debug!("distinct_output_types len: {}", distinct_output_types.len()); //TODO: delete
+
+        for each in distinct_input_types {
+            log::debug!("each 1: {:?}",each); //TODO: delete
+        }
+
+        for each in distinct_output_types {
+            log::debug!("each 2: {:?}",each); //TODO: delete
+        }
+
         let input_type_imports = distinct_input_types
             .iter()
-            .map(|api_type| generate_import(api_type, ir_file, self.config));
+            .map(|api_type| generate_import(api_type, ir_file, self.config))
+            .collect::<Vec<_>>();
+        log::debug!("1 import"); //TODO: delete
         let output_type_imports = distinct_output_types
             .iter()
-            .map(|api_type| generate_import(api_type, ir_file, self.config));
+            .map(|api_type| generate_import(api_type, ir_file, self.config))
+            .collect::<Vec<_>>();
+        log::debug!("2 import"); //TODO: delete
 
-        input_type_imports
-            .chain(output_type_imports)
+        //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓orig code↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+        let mut import_crates = input_type_imports
+            .into_iter()
+            .chain(output_type_imports.into_iter())
             // Filter out `None` and unwrap
             .flatten()
             // Don't include imports from the API file
             .filter(|import| !import.starts_with(&format!("use crate::{rust_wire_mod}::")))
             // de-duplicate
-            .collect::<HashSet<String>>()
-            .into_iter()
+            .collect::<HashSet<String>>();
+        //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑orig code↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+
+        // import shared-block module, if essential
+        if let Some(shared_rust_wire_mod) = shared_rust_wire_mod {
+            let shared_crate_str = format!("use crate::{shared_rust_wire_mod}");
+            import_crates.extend(vec![
+                format!("{shared_crate_str};"),
+                format!("{shared_crate_str}::*;"),
+            ])
+        }
+
+        log::debug!("tag rust4"); //TODO: delete
+
+        import_crates.into_iter()
     }
 
     fn generate_executor(&mut self, ir_file: &IrFile) -> String {

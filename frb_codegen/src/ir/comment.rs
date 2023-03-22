@@ -1,4 +1,4 @@
-#[derive(Debug, Clone)]
+#[derive(Eq, PartialEq, Hash, Debug, Clone)]
 pub struct IrComment(String);
 
 impl IrComment {

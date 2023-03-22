@@ -19,48 +19,13 @@ class ApiClass1Platform extends FlutterRustBridgeBase<ApiClass1Wire> with Flutte
 // Section: api2wire
 
   @protected
-  String api2wire_String(String raw) {
-    return raw;
-  }
-
-  @protected
-  List<dynamic> api2wire_box_autoadd_cross_shared_struct(CrossSharedStruct raw) {
-    return api2wire_cross_shared_struct(raw);
-  }
-
-  @protected
   List<dynamic> api2wire_box_autoadd_only_for_api_1_struct(OnlyForApi1Struct raw) {
     return api2wire_only_for_api_1_struct(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_shared_struct(SharedStruct raw) {
-    return api2wire_shared_struct(raw);
-  }
-
-  @protected
-  List<dynamic> api2wire_cross_shared_struct(CrossSharedStruct raw) {
-    return [api2wire_String(raw.name)];
-  }
-
-  @protected
   List<dynamic> api2wire_only_for_api_1_struct(OnlyForApi1Struct raw) {
     return [api2wire_i16(raw.id), api2wire_f64(raw.num), api2wire_String(raw.name)];
-  }
-
-  @protected
-  List<dynamic> api2wire_shared_struct(SharedStruct raw) {
-    return [api2wire_i32(raw.id), api2wire_f64(raw.num), api2wire_String(raw.name)];
-  }
-
-  @protected
-  Object api2wire_u64(int raw) {
-    return castNativeBigInt(raw);
-  }
-
-  @protected
-  Uint8List api2wire_uint_8_list(Uint8List raw) {
-    return raw;
   }
 // Section: finalizer
 }

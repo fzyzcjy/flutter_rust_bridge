@@ -30,13 +30,17 @@ fn transform_func_input_add_boxed(input: IrField) -> IrField {
             input
         );
         IrField {
-            ty: Boxed(IrTypeBoxed {
-                exist_in_real_api: false, // <--
-                inner: Box::new(input.ty.clone()),
-            }),
+            ty: tranform_input_type(&input.ty),
             ..input
         }
     } else {
         input
     }
+}
+
+pub fn tranform_input_type(input_type: &IrType) -> IrType {
+    Boxed(IrTypeBoxed {
+        exist_in_real_api: false, // <--
+        inner: Box::new(input_type.clone()),
+    })
 }

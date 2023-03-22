@@ -1,6 +1,6 @@
 use convert_case::{Case, Casing};
 
-#[derive(Debug, Clone)]
+#[derive(Eq, PartialEq, Hash, Debug, Clone)]
 pub struct IrIdent {
     pub raw: String,
 }

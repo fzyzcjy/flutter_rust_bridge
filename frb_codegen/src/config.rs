@@ -1,4 +1,5 @@
 use std::borrow::Cow;
+use std::collections::HashMap;
 use std::env;
 use std::ffi::OsString;
 use std::fs;
@@ -14,8 +15,8 @@ use serde::Deserialize;
 use toml::Value;
 
 use crate::ir::IrFile;
-use crate::utils::{find_all_duplicates, BlockIndex, PathExt};
-use crate::{get_symbols_if_no_duplicates, parser};
+use crate::utils::{BlockIndex, ExtraTraitForVec, PathExt};
+use crate::{get_symbols_if_no_duplicates, parser, transformer};
 
 #[derive(Parser, Debug, PartialEq, Eq, Deserialize, Default)]
 #[clap(
@@ -107,7 +108,7 @@ pub struct Opts {
     pub skip_deps_check: bool,
     pub wasm_enabled: bool,
     pub inline_rust: bool,
-    pub is_shared: bool, // it is true if this Opts instance is for auto-generated shared API block. Otherwise, it is false,
+    pub shared: bool, // it is true if this Opts instance is for auto-generated shared API block. Otherwise, it is false,
     // for the below 2 fields:
     // whatever the Opts is for regular or auto-generated shared API block,
     // and whatever there is or no shared stuff,
@@ -216,7 +217,7 @@ pub fn parse(raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
         &fallback_class_name,
         "class_name",
     );
-    if !find_all_duplicates(&class_names).is_empty() {
+    if !class_names.find_duplicates().is_empty() {
         bail(
             clap::ErrorKind::TooManyOccurrences,
             "there should be no duplication in --class-name's inputs".into(),
@@ -281,7 +282,7 @@ pub fn parse(raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
                 skip_deps_check,
                 wasm_enabled: wasm,
                 inline_rust,
-                is_shared: false,
+                shared: false,
                 shared_rust_output_path: shared_rust_output_path.clone(),
                 shared_dart_output_path: shared_dart_output_path.clone(),
             }
@@ -315,7 +316,7 @@ pub fn parse(raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
             skip_deps_check: true,
             wasm_enabled: wasm,
             inline_rust,
-            is_shared: true,
+            shared: true,
             shared_rust_output_path,
             shared_dart_output_path,
         };
@@ -545,7 +546,17 @@ fn path_to_string(path: PathBuf) -> Result<String, OsString> {
 }
 
 impl Opts {
-    pub fn get_ir_file(&self) -> Result<IrFile> {
+    pub fn get_ir_file(&self, all_configs: Option<&[Opts]>) -> Result<IrFile> {
+        let raw_ir_file = if !self.shared {
+            self.get_regular_ir_file()?
+        } else {
+            self.get_shared_ir_file(all_configs)?
+        };
+        log::debug!("Phase: Transform IR");
+        Ok(transformer::transform(raw_ir_file))
+    }
+
+    fn get_regular_ir_file(&self) -> Result<IrFile> {
         log::debug!("Phase: Parse source code to AST");
         let source_rust_content = fs::read_to_string(&self.rust_input_path).with_context(|| {
             let err_msg = format!(
@@ -562,7 +573,63 @@ impl Opts {
             &source_rust_content,
             file_ast,
             &self.manifest_path,
+            self.block_index,
+            self.shared,
         ))
+    }
+
+    fn get_shared_ir_file(&self, all_configs: Option<&[Opts]>) -> Result<IrFile> {
+        log::debug!("get_shared_ir_file 1"); //TODO: delete
+        let all_configs = all_configs.expect("to get shared ir_file, `all_configs` should not be none!");
+        let (regular_configs, shared_index) = if !all_configs.last().unwrap().shared {
+            (all_configs, all_configs.len())
+        } else {
+            let last_index = all_configs.len() - 1;
+            (&all_configs[0..last_index], last_index)
+        };
+
+        log::debug!("get_shared_ir_file 2"); //TODO: delete
+        log::debug!("configs len:{}", regular_configs.len()); //TODO: delete
+
+        assert!(regular_configs.len() > 1);
+        assert!(regular_configs.iter().all(|c| c.shared == false));
+
+        log::debug!("get_shared_ir_file 3"); //TODO: delete
+
+        // get regular ir_files
+        let mut funcs = Vec::new();
+        let mut structs = Vec::new();
+        let mut enums = Vec::new();
+        for config in regular_configs {
+            let ir_file = config.get_ir_file(None)?;
+
+            // funcs.extend(raw_ir_file.funcs);// TODO: only methods of shared structs needed
+            structs.extend(ir_file.struct_pool);
+            enums.extend(ir_file.enum_pool);
+        }
+        let shared_structs= structs.find_duplicates();
+        let shared_enums = enums.find_duplicates();
+
+        let struct_pool = shared_structs
+            .into_iter()
+            .map(|x| (x.0, x.1))
+            .collect::<HashMap<_, _>>();
+        let enum_pool = shared_enums
+            .into_iter()
+            .map(|x| (x.0, x.1))
+            .collect::<HashMap<_, _>>();
+
+        log::debug!("the shared struct_pool:{:?}", struct_pool); //TODO: delete
+        log::debug!("the shared enum_pool:{:?}", enum_pool); //TODO: delete
+
+        Ok(IrFile {
+            funcs: funcs, // this field would effect `IrFile.visit_types(...)` and others
+            struct_pool: struct_pool,
+            enum_pool: enum_pool, // TODO: check with customized enum struct
+            has_executor: true,   // set true, in case for the methods of a shared struct,
+            block_index: BlockIndex(shared_index),
+            shared: true,
+        })
     }
 
     pub fn dart_api_class_name(&self) -> String {

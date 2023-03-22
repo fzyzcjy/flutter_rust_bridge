@@ -19,9 +19,9 @@ use std::sync::Arc;
 
 // Section: imports
 
-use crate::custom::CrossSharedStruct;
+use crate::bridge_generated_shares;
+use crate::bridge_generated_shares::*;
 use crate::custom::OnlyForApi1Struct;
-use crate::custom::SharedStruct;
 
 // Section: wire functions
 
@@ -140,34 +140,8 @@ where
     }
 }
 
-impl Wire2Api<f32> for f32 {
-    fn wire2api(self) -> f32 {
-        self
-    }
-}
-impl Wire2Api<f64> for f64 {
-    fn wire2api(self) -> f64 {
-        self
-    }
-}
 impl Wire2Api<i16> for i16 {
     fn wire2api(self) -> i16 {
-        self
-    }
-}
-impl Wire2Api<i32> for i32 {
-    fn wire2api(self) -> i32 {
-        self
-    }
-}
-
-impl Wire2Api<u64> for u64 {
-    fn wire2api(self) -> u64 {
-        self
-    }
-}
-impl Wire2Api<u8> for u8 {
-    fn wire2api(self) -> u8 {
         self
     }
 }
@@ -185,18 +159,6 @@ impl support::IntoDart for OnlyForApi1Struct {
     }
 }
 impl support::IntoDartExceptPrimitive for OnlyForApi1Struct {}
-
-impl support::IntoDart for SharedStruct {
-    fn into_dart(self) -> support::DartAbi {
-        vec![
-            self.id.into_dart(),
-            self.num.into_dart(),
-            self.name.into_dart(),
-        ]
-        .into_dart()
-    }
-}
-impl support::IntoDartExceptPrimitive for SharedStruct {}
 
 // Section: executor
 

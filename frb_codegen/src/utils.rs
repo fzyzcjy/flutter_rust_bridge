@@ -9,15 +9,58 @@ use anyhow::anyhow;
 use itertools::Itertools;
 use pathdiff::diff_paths;
 
-pub fn mod_from_rust_path(code_path: &str, crate_path: &str) -> String {
-    Path::new(code_path)
-        .strip_prefix(Path::new(crate_path).join("src"))
-        .unwrap()
-        .with_extension("")
-        .into_os_string()
-        .into_string()
-        .unwrap()
-        .replace('/', "::")
+use crate::{transformer, Opts};
+
+/// get the raw/shared API module
+pub fn mod_from_rust_path(
+    config: &Opts,
+    all_configs: &[Opts],
+    get_shared_mod: bool,
+) -> Option<String> {
+    fn get_module_name(code_path: &str, crate_path: &str) -> String {
+        Path::new(code_path)
+            .strip_prefix(Path::new(crate_path).join("src"))
+            .unwrap()
+            .with_extension("")
+            .into_os_string()
+            .into_string()
+            .unwrap()
+            .replace('/', "::")
+    }
+
+    let output = match !config.shared {
+        true => {
+            if !get_shared_mod {
+                get_module_name(&config.rust_input_path, &config.rust_crate_dir)
+            } else {
+                // get the shared module in the regular block
+                if all_configs.len() > 1 {
+                    get_module_name(&config.shared_rust_output_path, &config.rust_crate_dir)
+                } else {
+                    "".into()
+                }
+            }
+        }
+        false => {
+            if !get_shared_mod {
+                // TODO: check
+                log::debug!(
+                    "config.shared_rust_output_path:{}",
+                    &config.shared_rust_output_path
+                ); //TODO: delete
+                get_module_name(&config.shared_rust_output_path, &config.rust_crate_dir)
+            } else {
+                // There is no extra shared module needed for a shared block
+                "".to_owned()
+            }
+        }
+    };
+
+    if output.is_empty() {
+        None
+    } else {
+        Some(output)
+    }
 }
 
 pub fn with_changed_file<F: FnOnce() -> anyhow::Result<()>>(
@@ -31,17 +74,6 @@ pub fn with_changed_file<F: FnOnce() -> anyhow::Result<()>>(
     f()?;
 
     Ok(fs::write(path, content_original)?)
-}
-
-pub fn find_all_duplicates<T>(iter: &[T]) -> Vec<T>
-where
-    T: Eq + Hash + Clone,
-{
-    let mut uniq = HashSet::new();
-    iter.iter()
-        .filter(|x| !uniq.insert(*x))
-        .cloned()
-        .collect::<Vec<_>>()
 }
 
 // https://dart.dev/guides/language/language-tour#keywords
@@ -120,29 +152,36 @@ fn check_for_keywords(v: &[String]) -> anyhow::Result<()> {
     Ok(())
 }
 
-/// check api defined by users, if no duplicates, then generate all symbols (api function name),
-/// including those generated implicitly by frb
+/// check duplication among regular defined API block(s), and return symbols in tuple of
+/// format `(all_no_shared_symbols, all_shared_symbols)`
+/// for `all_no_shared_symbols`: if there is duplication among EXPLICITLY defined APIs, it would panic;
+/// for `all_shared_symbols`: it would be extended if there is duplication among IMPLICITYLY defined API,
+/// which should not exist in `all_no_shared_symbols`; it also means
+/// there are at least one API is shared among regualr defined API blocks
 pub fn get_symbols_if_no_duplicates(
-    configs: &[crate::Opts],
+    regular_configs: &[crate::Opts],
 ) -> Result<(Vec<String>, Vec<String>), anyhow::Error> {
     let mut explicit_raw_symbols = Vec::new();
     let mut all_symbols = Vec::new();
-    for config in configs {
-        let raw_ir_file = config.get_ir_file()?;
-
+    for (i, config) in regular_configs.iter().enumerate() {
+        log::debug!("for {i}th config:\n"); //TODO: delete
+        let ir_file = config.get_ir_file(None)?;
         // for checking explicit API duplication
-        let iter = raw_ir_file.funcs.iter().map(|f| f.name.clone());
-        log::debug!(" raw_ir_file.funcs:{:?}", iter);
+        //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓TODO: delete test↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+        let iter = ir_file.funcs.iter().map(|f| f.name.clone());
+        log::debug!("the ir_file.funcs:{:?}", iter);
+
         explicit_raw_symbols.extend(iter);
 
         // for checking implicit API duplication
-        let iter = raw_ir_file.get_all_symbols(config);
+        let iter = ir_file.get_all_symbols(config, regular_configs);
         log::debug!("raw_ir_file.get_all_symbols:{:?}", iter);
+        //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑TODO: delete test↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
         all_symbols.extend(iter);
     }
 
     // check duplication among explicitly defined API
-    let duplicates = find_all_duplicates(&explicit_raw_symbols);
+    let duplicates = explicit_raw_symbols.find_duplicates();
     if !duplicates.is_empty() {
         let duplicated_symbols = duplicates.join(",");
 
@@ -158,13 +197,13 @@ pub fn get_symbols_if_no_duplicates(
             verb_str
         ));
     }
-    
+
     check_for_keywords(&all_symbols)?;
 
     // check duplication among implicitly defined API
-    let (regular_symbols, shared_symbols) = all_symbols.split_uniques_and_duplicates(true, true);
-    log::debug!("shared_symbols:{:?}", shared_symbols);
+    let (regular_symbols, shared_symbols) = all_symbols.find_uniques_and_duplicates(true, true);
     log::debug!("regular_symbols:{:?}", regular_symbols);
+    log::debug!("shared_symbols:{:?}", shared_symbols);
 
     Ok((regular_symbols, shared_symbols))
 }
@@ -219,28 +258,30 @@ pub trait ExtraTraitForVec<T: Clone + Eq + std::hash::Hash> {
     ///
     /// # Arguments
     ///
-    /// * `exclude_duplicates_in_uniques`: If set to `true`, exclude duplicated items from the unique items vector.
-    /// * `exclude_duplicates_in_duplicates`: If set to `true`, exclude repeated items from the duplicates vector.
+    /// * `exclude_duplicates_in_uniques`: If set to `true`, exclude duplicated items from the  returned unique items vector.
+    /// * `exclude_duplicates_in_duplicates`: If set to `true`, exclude repeated items from the returned duplicates vector.
     ///
     /// # Examples
     ///
     /// ```
-    /// use lib_flutter_rust_bridge_codegen::ExtraTraitForVec;
+    /// use crate::ExtraTraitForVec;
     ///
     /// let vec = vec![1, 2, 3, 2, 4, 5, 4, 6];
     /// let (uniques, duplicates) = vec.split_uniques_and_duplicates(true, true);
     /// assert_eq!(uniques, vec![1, 3, 5, 6]);
     /// assert_eq!(duplicates, vec![2, 4]);
     /// ```
-    fn split_uniques_and_duplicates(
+    fn find_uniques_and_duplicates(
         &self,
         exclude_duplicates_in_uniques: bool,
         exclude_duplicates_in_duplicates: bool,
     ) -> (Vec<T>, Vec<T>);
+
+    fn find_duplicates(&self) -> Vec<T>;
 }
 
 impl<T: Clone + Eq + std::hash::Hash> ExtraTraitForVec<T> for Vec<T> {
-    fn split_uniques_and_duplicates(
+    fn find_uniques_and_duplicates(
         &self,
         exclude_duplicates_in_uniques: bool,
         exclude_duplicates_in_duplicates: bool,
@@ -275,5 +316,10 @@ impl<T: Clone + Eq + std::hash::Hash> ExtraTraitForVec<T> for Vec<T> {
                 .collect();
         }
         (uniques, duplicates)
+    }
+
+    fn find_duplicates(&self) -> Vec<T> {
+        let (_, duplicates) = self.find_uniques_and_duplicates(true, true);
+        duplicates
     }
 }

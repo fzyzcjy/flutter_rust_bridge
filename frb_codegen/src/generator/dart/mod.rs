@@ -53,10 +53,16 @@ pub struct Output {
     pub needs_freezed: bool,
 }
 
-pub fn generate(ir_file: &IrFile, config: &Opts, wasm_funcs: &[IrFuncDisplay]) -> Output {
+pub fn generate(
+    ir_file: &IrFile,
+    config: &Opts,
+    all_configs: &[Opts],
+
+    wasm_funcs: &[IrFuncDisplay],
+) -> Output {
     let dart_api_class_name = &config.dart_api_class_name();
     let dart_output_file_root = config.dart_output_root().expect("Internal error");
-    let spec = DartApiSpec::from(ir_file, config, wasm_funcs);
+    let spec = DartApiSpec::from(ir_file, config, all_configs, wasm_funcs);
     let DartApiSpec {
         dart_funcs,
         dart_structs,
@@ -101,12 +107,17 @@ struct DartApiSpec {
 }
 
 impl DartApiSpec {
-    fn from(ir_file: &IrFile, config: &Opts, extra_funcs: &[IrFuncDisplay]) -> Self {
+    fn from(
+        ir_file: &IrFile,
+        config: &Opts,
+        all_configs: &[Opts],
+        extra_funcs: &[IrFuncDisplay],
+    ) -> Self {
         let dart_api_class_name = config.dart_api_class_name();
         let dart_wire_class_name = config.dart_wire_class_name();
-        let distinct_types = ir_file.distinct_types(true, true);
-        let distinct_input_types = ir_file.distinct_types(true, false);
-        let distinct_output_types = ir_file.distinct_types(false, true);
+        let distinct_types = ir_file.distinct_types(true, true, all_configs);
+        let distinct_input_types = ir_file.distinct_types(true, false, all_configs);
+        let distinct_output_types = ir_file.distinct_types(false, true, all_configs);
         debug!("distinct_input_types={:?}", distinct_input_types);
         debug!("distinct_output_types={:?}", distinct_output_types);
 
