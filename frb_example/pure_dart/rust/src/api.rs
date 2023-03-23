@@ -1426,6 +1426,21 @@ pub fn return_dart_dynamic() -> DartAbi {
     vec!["foo".into_dart()].into_dart()
 }
 
+pub struct RawStringItemStruct {
+    pub r#type: String,
+}
+
+pub fn test_raw_string_item_struct() -> RawStringItemStruct {
+    RawStringItemStruct {
+        r#type: "test".to_owned(),
+    }
+}
+
+// This seems to be a bug in the syn parser, for whoever tries to fix it, after each failed build you need to manually remove all rust generated files (bridge_*)
+// pub fn test_raw_string_item_struct_with_raw_string_in_func(r#type: String) -> RawStringItemStruct {
+//     RawStringItemStruct { r#type }
+// }
+
 pub fn list_of_primitive_enums(weekdays: Vec<Weekdays>) -> Vec<Weekdays> {
     weekdays
 }

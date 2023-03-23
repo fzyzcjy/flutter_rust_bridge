@@ -85,6 +85,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         if has_methods {
             inner.insert(0, "bridge: this,".to_string());
         }
+
         let inner = inner.join("\n");
 
         format!(

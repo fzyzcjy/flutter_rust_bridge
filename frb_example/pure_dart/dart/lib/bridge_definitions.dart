@@ -600,6 +600,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kReturnDartDynamicConstMeta;
 
+  Future<RawStringItemStruct> testRawStringItemStruct({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestRawStringItemStructConstMeta;
+
   Future<List<Weekdays>> listOfPrimitiveEnums({required List<Weekdays> weekdays, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kListOfPrimitiveEnumsConstMeta;
@@ -1324,6 +1328,14 @@ class Point {
   const Point({
     required this.x,
     required this.y,
+  });
+}
+
+class RawStringItemStruct {
+  final String type;
+
+  const RawStringItemStruct({
+    required this.type,
   });
 }
 

@@ -617,6 +617,17 @@ void main(List<String> args) async {
     expect(output, isA<Empty>());
   });
 
+  test('test dart raw string in struct', () async {
+    final output = await api.testRawStringItemStruct();
+    expect(output, isA<RawStringItemStruct>());
+    expect(output.type, "test");
+  });
+
+  // test('test dart raw string in struct with raw func', () async {
+  //   final output = await api.testRawStringItemStructWithRawStringInFunc("not a type ;')");
+  //   expect(output.type, "not a type ;')");
+  // });
+
   group('Platform-specific support', () {
     test('Int64List', () {
       final list = Int64List.fromList([-1, -2, -3, -4, -5]);

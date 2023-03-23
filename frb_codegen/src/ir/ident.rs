@@ -33,6 +33,10 @@ impl IrIdent {
     }
 
     pub fn dart_style(&self) -> String {
-        self.raw.to_case(Case::Camel)
+        self.raw
+            .strip_prefix("r#")
+            .unwrap_or(self.raw.as_str())
+            .to_string()
+            .to_case(Case::Camel)
     }
 }

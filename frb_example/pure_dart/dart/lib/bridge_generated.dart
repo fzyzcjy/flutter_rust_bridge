@@ -2267,6 +2267,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<RawStringItemStruct> testRawStringItemStruct({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_raw_string_item_struct(port_),
+      parseSuccessData: _wire2api_raw_string_item_struct,
+      constMeta: kTestRawStringItemStructConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestRawStringItemStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_raw_string_item_struct",
+        argNames: [],
+      );
+
   Future<List<Weekdays>> listOfPrimitiveEnums({required List<Weekdays> weekdays, dynamic hint}) {
     var arg0 = _platform.api2wire_list_weekdays(weekdays);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -3293,6 +3308,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return Point(
       x: _wire2api_f32(arr[0]),
       y: _wire2api_f32(arr[1]),
+    );
+  }
+
+  RawStringItemStruct _wire2api_raw_string_item_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return RawStringItemStruct(
+      type: _wire2api_String(arr[0]),
     );
   }
 
