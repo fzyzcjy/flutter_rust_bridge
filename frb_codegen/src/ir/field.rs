@@ -64,9 +64,4 @@ impl IrField {
 
         format!("{enum_name}.{variant_name}")
     }
-
-    // remove the raw prefix from the field name
-    pub fn remove_raw_prefix(&mut self) {
-        self.name.remove_raw_prefix();
-    }
 }

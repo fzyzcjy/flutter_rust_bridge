@@ -102,13 +102,4 @@ impl IrFile {
             .filter(|s| *s != "free_WireSyncReturn")
             .collect::<Vec<_>>()
     }
-
-    // removes the raw prefix from all struct fields
-    pub fn remove_raw_prefix(&mut self) {
-        for (_, s) in self.struct_pool.iter_mut() {
-            for f in s.fields.iter_mut() {
-                f.remove_raw_prefix();
-            }
-        }
-    }
 }

@@ -33,11 +33,10 @@ impl IrIdent {
     }
 
     pub fn dart_style(&self) -> String {
-        self.raw.to_case(Case::Camel)
-    }
-
-    // remove_raw_prefix removes the "r#" prefix from the identifier.
-    pub fn remove_raw_prefix(&mut self) {
-        self.raw = self.raw.strip_prefix("r#");
+        self.raw
+            .strip_prefix("r#")
+            .unwrap_or(self.raw.as_str())
+            .to_string()
+            .to_case(Case::Camel)
     }
 }

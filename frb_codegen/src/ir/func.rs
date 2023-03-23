@@ -58,12 +58,6 @@ impl IrFunc {
     pub fn wire_func_name(&self) -> String {
         format!("wire_{}", self.name)
     }
-
-    pub fn remove_raw_prefix(&mut self) {
-        for input in &mut self.inputs {
-            input.remove_raw_prefix();
-        }
-    }
 }
 
 /// Represents a function's output type
