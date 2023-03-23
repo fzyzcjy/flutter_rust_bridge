@@ -1,3 +1,7 @@
+## 1.72.0
+
+* Added support for raw strings #1139 (thanks @alexthe2)
+
 ## 1.71.2
 
 * Code refactor #1137
