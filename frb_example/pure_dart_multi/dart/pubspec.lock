@@ -5,18 +5,18 @@ packages:
     dependency: transitive
     description:
       name: _fe_analyzer_shared
-      sha256: "503361166f4a100e0d7eb7fb5a62c6f0322512f2bcb48d6922caf98f24b0ab90"
+      sha256: d74f051467a841ce893a50ebeb420b7a5695f985d2781e22b3927fbc849aea45
       url: "https://pub.dev"
     source: hosted
-    version: "56.0.0"
+    version: "57.0.0"
   analyzer:
     dependency: transitive
     description:
       name: analyzer
-      sha256: "93fcd81a6716e69864516750590cf1e699420615046bda19100238aa7b429785"
+      sha256: b665679cdccab0c754e65021f01087c6fab07a0b13659dd58827f765739b40f8
       url: "https://pub.dev"
     source: hosted
-    version: "5.8.0"
+    version: "5.9.0"
   archive:
     dependency: transitive
     description:
@@ -205,10 +205,10 @@ packages:
     dependency: "direct dev"
     description:
       name: ffigen
-      sha256: "80a7f9b5f8a07e7bebcdac9c8ba854482bf2189c515445eab8eee8adb946f077"
+      sha256: "53f0fefd81be07f5722b71d3e1588e8a7cb9bcfd03d758319ea28e1eedb27296"
       url: "https://pub.dev"
     source: hosted
-    version: "7.2.8"
+    version: "7.2.9"
   file:
     dependency: transitive
     description:
@@ -231,7 +231,7 @@ packages:
       path: "../../../frb_dart"
       relative: true
     source: path
-    version: "1.71.2"
+    version: "1.72.0"
   freezed:
     dependency: "direct dev"
     description:
@@ -396,10 +396,10 @@ packages:
     dependency: transitive
     description:
       name: pointycastle
-      sha256: "57b6b78df14175658f09c5dfcfc51a46ad9561a3504fe679913dab404d0cc0f2"
+      sha256: ae73e842cdd27a3467a71d70cefd9b198538aab4fc7dde1d0e8c78c96225abf0
       url: "https://pub.dev"
     source: hosted
-    version: "3.7.0"
+    version: "3.7.1"
   pool:
     dependency: transitive
     description:
