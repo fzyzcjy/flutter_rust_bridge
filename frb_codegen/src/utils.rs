@@ -70,9 +70,7 @@ pub fn with_changed_file<F: FnOnce() -> anyhow::Result<()>>(
 ) -> anyhow::Result<()> {
     let content_original = fs::read_to_string(path)?;
     fs::write(path, content_original.clone() + append_content)?;
-
     f()?;
-
     Ok(fs::write(path, content_original)?)
 }
 

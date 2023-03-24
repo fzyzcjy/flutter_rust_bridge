@@ -129,12 +129,26 @@ pub(crate) fn bindgen_rust_to_dart(
     arg: BindgenRustToDartArg,
     dart_root: &str,
 ) -> anyhow::Result<()> {
+    log::debug!("BEFORE CBINDGEN"); //TODO: delete
+    log::debug!(
+        "dart root:{}\n dart_output_path:{}\n dart_class_name:{}\n rust_crate_dir:{}\n c_output_path:{}\n c_struct_names:{:#?}\n exclude_symbols:{:?}",
+        dart_root,
+        arg.dart_output_path,
+        arg.dart_class_name,
+        arg.rust_crate_dir,
+        arg.c_output_path,
+        arg.c_struct_names,
+        arg.exclude_symbols,
+    ); //TODO: delete
+
     cbindgen(
         arg.rust_crate_dir,
         arg.c_output_path,
         arg.c_struct_names,
         arg.exclude_symbols,
     )?;
+    log::debug!("AFTER CBINDGEN"); //TODO: delete
+
     ffigen(
         arg.c_output_path,
         arg.dart_output_path,
@@ -311,8 +325,8 @@ fn ffigen(
     let mut config_file = tempfile::NamedTempFile::new()?;
     std::io::Write::write_all(&mut config_file, config.as_bytes())?;
     debug!("ffigen config_file: {:?}", config_file);
-
     let repo = DartRepository::from_str(dart_root).unwrap();
+    log::debug!("test1"); //TODO: delete
     let res = run!(
         call_shell[Some(dart_root)],
         *repo.toolchain.as_run_command(),
@@ -321,6 +335,8 @@ fn ffigen(
         "--config",
         config_file.path()
     )?;
+    log::debug!("test2"); //TODO: delete
+
     if !res.status.success() {
         let err = String::from_utf8_lossy(&res.stderr);
         let out = String::from_utf8_lossy(&res.stdout);
@@ -330,6 +346,8 @@ fn ffigen(
         }
         return Err(Error::string(format!("ffigen failed:\nstderr: {err}\nstdout: {out}")).into());
     }
+    log::debug!("test3"); //TODO: delete
+
     Ok(())
 }
 

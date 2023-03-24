@@ -143,6 +143,8 @@ fn generate_dart_code(
         ir_file.get_c_struct_names(all_configs)
     );
 
+    log::debug!("here0:{:?}", config.c_output_path); //TODO: delete
+
     with_changed_file(
         &config.rust_output_path,
         DUMMY_WIRE_CODE_FOR_BINDGEN,
@@ -174,27 +176,29 @@ fn generate_dart_code(
         EXTRA_EXTERN_FUNC_NAMES.to_vec(),
     ]
     .concat();
-
     log::debug!("here1:{:?}", config.c_output_path); //TODO: delete
-    let all_regular_configs = all_configs
-        .iter()
-        .filter(|each| !each.shared)
-        .map(|each| each.clone())
-        .collect::<Vec<_>>();
 
-    for (i, each_path) in config.c_output_path.iter().enumerate() {
-        if config.shared {
-            continue;
+    if !config.shared {
+        let all_regular_configs = all_configs
+            .iter()
+            .filter(|each| !each.shared)
+            .map(|each| each.clone())
+            .collect::<Vec<_>>();
+        for (i, each_path) in config.c_output_path.iter().enumerate() {
+            let c_dummy_code = generator::c::generate_dummy(
+                config,
+                &all_regular_configs,
+                &effective_func_names,
+                i,
+            );
+            log::info!("generated c dummy code");
+            fs::create_dir_all(Path::new(each_path).parent().unwrap())?;
+            fs::write(
+                each_path,
+                fs::read_to_string(&temp_bindgen_c_output_file)? + "\n" + &c_dummy_code,
+            )?;
+            log::info!("written into {each_path:?}");
         }
-        let c_dummy_code =
-            generator::c::generate_dummy(config, &all_regular_configs, &effective_func_names, i);
-        log::info!("generated c dummy code");
-        fs::create_dir_all(Path::new(each_path).parent().unwrap())?;
-        fs::write(
-            each_path,
-            fs::read_to_string(&temp_bindgen_c_output_file)? + "\n" + &c_dummy_code,
-        )?;
-        log::info!("written into {each_path:?}");
     }
     log::debug!("here2"); //TODO: delete
 

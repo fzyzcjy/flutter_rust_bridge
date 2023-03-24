@@ -304,6 +304,8 @@ pub fn parse(raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
             class_name: Path::new(&shared_dart_output_path)
                 .file_name_str()
                 .unwrap()
+                .replace(".rs", "")
+                .replace(".dart", "")
                 .to_case(Case::Pascal),
             dart_format_line_length,
             skip_add_mod_to_lib,
@@ -580,7 +582,8 @@ impl Opts {
 
     fn get_shared_ir_file(&self, all_configs: Option<&[Opts]>) -> Result<IrFile> {
         log::debug!("get_shared_ir_file 1"); //TODO: delete
-        let all_configs = all_configs.expect("to get shared ir_file, `all_configs` should not be none!");
+        let all_configs =
+            all_configs.expect("to get shared ir_file, `all_configs` should not be none!");
         let (regular_configs, shared_index) = if !all_configs.last().unwrap().shared {
             (all_configs, all_configs.len())
         } else {
@@ -607,7 +610,7 @@ impl Opts {
             structs.extend(ir_file.struct_pool);
             enums.extend(ir_file.enum_pool);
         }
-        let shared_structs= structs.find_duplicates();
+        let shared_structs = structs.find_duplicates();
         let shared_enums = enums.find_duplicates();
 
         let struct_pool = shared_structs
