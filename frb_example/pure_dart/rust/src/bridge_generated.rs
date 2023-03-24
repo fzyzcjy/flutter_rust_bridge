@@ -2040,6 +2040,16 @@ fn wire_test_raw_string_item_struct_impl(port_: MessagePort) {
         move || move |task_callback| Ok(test_raw_string_item_struct()),
     )
 }
+fn wire_test_more_than_just_one_raw_string_struct_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_more_than_just_one_raw_string_struct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(test_more_than_just_one_raw_string_struct()),
+    )
+}
 fn wire_list_of_primitive_enums_impl(
     port_: MessagePort,
     weekdays: impl Wire2Api<Vec<Weekdays>> + UnwindSafe,
@@ -2673,6 +2683,19 @@ impl support::IntoDart for MessageId {
     }
 }
 impl support::IntoDartExceptPrimitive for MessageId {}
+
+impl support::IntoDart for MoreThanJustOneRawStringStruct {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.regular.into_dart(),
+            self.r#type.into_dart(),
+            self.r#async.into_dart(),
+            self.another.into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for MoreThanJustOneRawStringStruct {}
 
 impl support::IntoDart for MyEnum {
     fn into_dart(self) -> support::DartAbi {

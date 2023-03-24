@@ -1436,6 +1436,22 @@ pub fn test_raw_string_item_struct() -> RawStringItemStruct {
     }
 }
 
+pub struct MoreThanJustOneRawStringStruct {
+    pub regular: String,
+    pub r#type: String,
+    pub r#async: bool,
+    pub another: String,
+}
+
+pub fn test_more_than_just_one_raw_string_struct() -> MoreThanJustOneRawStringStruct {
+    MoreThanJustOneRawStringStruct {
+        regular: "regular".to_owned(),
+        r#type: "type".to_owned(),
+        r#async: true,
+        another: "another".to_owned(),
+    }
+}
+
 // This seems to be a bug in the syn parser, for whoever tries to fix it, after each failed build you need to manually remove all rust generated files (bridge_*)
 // pub fn test_raw_string_item_struct_with_raw_string_in_func(r#type: String) -> RawStringItemStruct {
 //     RawStringItemStruct { r#type }

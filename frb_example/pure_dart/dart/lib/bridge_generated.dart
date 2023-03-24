@@ -2282,6 +2282,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<MoreThanJustOneRawStringStruct> testMoreThanJustOneRawStringStruct({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_more_than_just_one_raw_string_struct(port_),
+      parseSuccessData: _wire2api_more_than_just_one_raw_string_struct,
+      constMeta: kTestMoreThanJustOneRawStringStructConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestMoreThanJustOneRawStringStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_more_than_just_one_raw_string_struct",
+        argNames: [],
+      );
+
   Future<List<Weekdays>> listOfPrimitiveEnums({required List<Weekdays> weekdays, dynamic hint}) {
     var arg0 = _platform.api2wire_list_weekdays(weekdays);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -3105,6 +3121,17 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return MessageId(
       field0: _wire2api_u8_array_32(arr[0]),
+    );
+  }
+
+  MoreThanJustOneRawStringStruct _wire2api_more_than_just_one_raw_string_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MoreThanJustOneRawStringStruct(
+      regular: _wire2api_String(arr[0]),
+      type: _wire2api_String(arr[1]),
+      async: _wire2api_bool(arr[2]),
+      another: _wire2api_String(arr[3]),
     );
   }
 

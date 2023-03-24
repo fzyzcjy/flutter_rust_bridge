@@ -604,6 +604,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kTestRawStringItemStructConstMeta;
 
+  Future<MoreThanJustOneRawStringStruct> testMoreThanJustOneRawStringStruct({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMoreThanJustOneRawStringStructConstMeta;
+
   Future<List<Weekdays>> listOfPrimitiveEnums({required List<Weekdays> weekdays, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kListOfPrimitiveEnumsConstMeta;
@@ -1210,6 +1214,20 @@ class MessageId {
 
   const MessageId({
     required this.field0,
+  });
+}
+
+class MoreThanJustOneRawStringStruct {
+  final String regular;
+  final String type;
+  final bool async;
+  final String another;
+
+  const MoreThanJustOneRawStringStruct({
+    required this.regular,
+    required this.type,
+    required this.async,
+    required this.another,
   });
 }
 

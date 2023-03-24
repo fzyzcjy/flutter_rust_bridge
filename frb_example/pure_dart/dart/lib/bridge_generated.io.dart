@@ -3369,6 +3369,19 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_test_raw_string_item_struct');
   late final _wire_test_raw_string_item_struct = _wire_test_raw_string_item_structPtr.asFunction<void Function(int)>();
 
+  void wire_test_more_than_just_one_raw_string_struct(
+    int port_,
+  ) {
+    return _wire_test_more_than_just_one_raw_string_struct(
+      port_,
+    );
+  }
+
+  late final _wire_test_more_than_just_one_raw_string_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_test_more_than_just_one_raw_string_struct');
+  late final _wire_test_more_than_just_one_raw_string_struct =
+      _wire_test_more_than_just_one_raw_string_structPtr.asFunction<void Function(int)>();
+
   void wire_list_of_primitive_enums(
     int port_,
     ffi.Pointer<wire_list_weekdays> weekdays,

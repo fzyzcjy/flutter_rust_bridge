@@ -628,6 +628,15 @@ void main(List<String> args) async {
   //   expect(output.type, "not a type ;')");
   // });
 
+  test('test dart test more than jus ton eraw string struct', () async {
+    final output = await api.testMoreThanJustOneRawStringStruct();
+    expect(output, isA<MoreThanJustOneRawStringStruct>());
+    expect(output.regular, "regular");
+    expect(output.type, "type");
+    expect(output.async, true);
+    expect(output.another, "another");
+  });
+
   group('Platform-specific support', () {
     test('Int64List', () {
       final list = Int64List.fromList([-1, -2, -3, -4, -5]);

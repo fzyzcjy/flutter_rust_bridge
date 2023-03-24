@@ -717,6 +717,8 @@ void wire_return_dart_dynamic(int64_t port_);
 
 void wire_test_raw_string_item_struct(int64_t port_);
 
+void wire_test_more_than_just_one_raw_string_struct(int64_t port_);
+
 void wire_list_of_primitive_enums(int64_t port_, struct wire_list_weekdays *weekdays);
 
 void wire_sum__method__SumWith(int64_t port_, struct wire_SumWith *that, uint32_t y, uint32_t z);
@@ -1098,6 +1100,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_empty_struct);
     dummy_var ^= ((int64_t) (void*) wire_return_dart_dynamic);
     dummy_var ^= ((int64_t) (void*) wire_test_raw_string_item_struct);
+    dummy_var ^= ((int64_t) (void*) wire_test_more_than_just_one_raw_string_struct);
     dummy_var ^= ((int64_t) (void*) wire_list_of_primitive_enums);
     dummy_var ^= ((int64_t) (void*) wire_sum__method__SumWith);
     dummy_var ^= ((int64_t) (void*) wire_new__static_method__ConcatenateWith);
