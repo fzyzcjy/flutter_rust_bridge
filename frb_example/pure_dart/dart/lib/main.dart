@@ -637,6 +637,12 @@ void main(List<String> args) async {
     expect(output.another, "another");
   });
 
+  test('test mirrored raw structs', () async {
+    final output = await api.testRawStringMirrored();
+    expect(output, isA<RawStringMirrored>());
+    expect(output.type, "test");
+  });
+
   group('Platform-specific support', () {
     test('Int64List', () {
       final list = Int64List.fromList([-1, -2, -3, -4, -5]);

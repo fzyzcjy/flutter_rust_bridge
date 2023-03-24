@@ -1452,6 +1452,17 @@ pub fn test_more_than_just_one_raw_string_struct() -> MoreThanJustOneRawStringSt
     }
 }
 
+#[frb(RawStringMirrored)]
+pub struct _RawStringMirrored {
+    pub r#value: String,
+}
+
+pub fn test_raw_string_mirrored() -> RawStringMirrored {
+    RawStringMirrored {
+        r#value: "test".to_owned(),
+    }
+}
+
 // This seems to be a bug in the syn parser, for whoever tries to fix it, after each failed build you need to manually remove all rust generated files (bridge_*)
 // pub fn test_raw_string_item_struct_with_raw_string_in_func(r#type: String) -> RawStringItemStruct {
 //     RawStringItemStruct { r#type }

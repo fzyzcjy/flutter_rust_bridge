@@ -1,4 +1,10 @@
 //! Examples of types you'd want to mirror
+//! 
+ 
+#[derive(Debug, Clone)]
+pub struct RawStringMirrored {
+    pub r#value: String,
+}
 
 #[derive(Debug, Clone)]
 pub struct ApplicationSettings {
