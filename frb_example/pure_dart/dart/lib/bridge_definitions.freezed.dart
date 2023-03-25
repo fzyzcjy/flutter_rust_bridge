@@ -3376,6 +3376,333 @@ abstract class Measure_Distance implements Measure {
 }
 
 /// @nodoc
+mixin _$RawStringEnumMirrored {
+  Object get field0 => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(RawStringMirrored field0) raw,
+    required TResult Function(NestedRawStringMirrored field0) nested,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(RawStringMirrored field0)? raw,
+    TResult? Function(NestedRawStringMirrored field0)? nested,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(RawStringMirrored field0)? raw,
+    TResult Function(NestedRawStringMirrored field0)? nested,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RawStringEnumMirrored_Raw value) raw,
+    required TResult Function(RawStringEnumMirrored_Nested value) nested,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(RawStringEnumMirrored_Raw value)? raw,
+    TResult? Function(RawStringEnumMirrored_Nested value)? nested,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RawStringEnumMirrored_Raw value)? raw,
+    TResult Function(RawStringEnumMirrored_Nested value)? nested,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $RawStringEnumMirroredCopyWith<$Res> {
+  factory $RawStringEnumMirroredCopyWith(RawStringEnumMirrored value, $Res Function(RawStringEnumMirrored) then) =
+      _$RawStringEnumMirroredCopyWithImpl<$Res, RawStringEnumMirrored>;
+}
+
+/// @nodoc
+class _$RawStringEnumMirroredCopyWithImpl<$Res, $Val extends RawStringEnumMirrored>
+    implements $RawStringEnumMirroredCopyWith<$Res> {
+  _$RawStringEnumMirroredCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$RawStringEnumMirrored_RawCopyWith<$Res> {
+  factory _$$RawStringEnumMirrored_RawCopyWith(
+          _$RawStringEnumMirrored_Raw value, $Res Function(_$RawStringEnumMirrored_Raw) then) =
+      __$$RawStringEnumMirrored_RawCopyWithImpl<$Res>;
+  @useResult
+  $Res call({RawStringMirrored field0});
+}
+
+/// @nodoc
+class __$$RawStringEnumMirrored_RawCopyWithImpl<$Res>
+    extends _$RawStringEnumMirroredCopyWithImpl<$Res, _$RawStringEnumMirrored_Raw>
+    implements _$$RawStringEnumMirrored_RawCopyWith<$Res> {
+  __$$RawStringEnumMirrored_RawCopyWithImpl(
+      _$RawStringEnumMirrored_Raw _value, $Res Function(_$RawStringEnumMirrored_Raw) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$RawStringEnumMirrored_Raw(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as RawStringMirrored,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RawStringEnumMirrored_Raw implements RawStringEnumMirrored_Raw {
+  const _$RawStringEnumMirrored_Raw(this.field0);
+
+  @override
+  final RawStringMirrored field0;
+
+  @override
+  String toString() {
+    return 'RawStringEnumMirrored.raw(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RawStringEnumMirrored_Raw &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RawStringEnumMirrored_RawCopyWith<_$RawStringEnumMirrored_Raw> get copyWith =>
+      __$$RawStringEnumMirrored_RawCopyWithImpl<_$RawStringEnumMirrored_Raw>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(RawStringMirrored field0) raw,
+    required TResult Function(NestedRawStringMirrored field0) nested,
+  }) {
+    return raw(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(RawStringMirrored field0)? raw,
+    TResult? Function(NestedRawStringMirrored field0)? nested,
+  }) {
+    return raw?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(RawStringMirrored field0)? raw,
+    TResult Function(NestedRawStringMirrored field0)? nested,
+    required TResult orElse(),
+  }) {
+    if (raw != null) {
+      return raw(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RawStringEnumMirrored_Raw value) raw,
+    required TResult Function(RawStringEnumMirrored_Nested value) nested,
+  }) {
+    return raw(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(RawStringEnumMirrored_Raw value)? raw,
+    TResult? Function(RawStringEnumMirrored_Nested value)? nested,
+  }) {
+    return raw?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RawStringEnumMirrored_Raw value)? raw,
+    TResult Function(RawStringEnumMirrored_Nested value)? nested,
+    required TResult orElse(),
+  }) {
+    if (raw != null) {
+      return raw(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RawStringEnumMirrored_Raw implements RawStringEnumMirrored {
+  const factory RawStringEnumMirrored_Raw(final RawStringMirrored field0) = _$RawStringEnumMirrored_Raw;
+
+  @override
+  RawStringMirrored get field0;
+  @JsonKey(ignore: true)
+  _$$RawStringEnumMirrored_RawCopyWith<_$RawStringEnumMirrored_Raw> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RawStringEnumMirrored_NestedCopyWith<$Res> {
+  factory _$$RawStringEnumMirrored_NestedCopyWith(
+          _$RawStringEnumMirrored_Nested value, $Res Function(_$RawStringEnumMirrored_Nested) then) =
+      __$$RawStringEnumMirrored_NestedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({NestedRawStringMirrored field0});
+}
+
+/// @nodoc
+class __$$RawStringEnumMirrored_NestedCopyWithImpl<$Res>
+    extends _$RawStringEnumMirroredCopyWithImpl<$Res, _$RawStringEnumMirrored_Nested>
+    implements _$$RawStringEnumMirrored_NestedCopyWith<$Res> {
+  __$$RawStringEnumMirrored_NestedCopyWithImpl(
+      _$RawStringEnumMirrored_Nested _value, $Res Function(_$RawStringEnumMirrored_Nested) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$RawStringEnumMirrored_Nested(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as NestedRawStringMirrored,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RawStringEnumMirrored_Nested implements RawStringEnumMirrored_Nested {
+  const _$RawStringEnumMirrored_Nested(this.field0);
+
+  @override
+  final NestedRawStringMirrored field0;
+
+  @override
+  String toString() {
+    return 'RawStringEnumMirrored.nested(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RawStringEnumMirrored_Nested &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RawStringEnumMirrored_NestedCopyWith<_$RawStringEnumMirrored_Nested> get copyWith =>
+      __$$RawStringEnumMirrored_NestedCopyWithImpl<_$RawStringEnumMirrored_Nested>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(RawStringMirrored field0) raw,
+    required TResult Function(NestedRawStringMirrored field0) nested,
+  }) {
+    return nested(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(RawStringMirrored field0)? raw,
+    TResult? Function(NestedRawStringMirrored field0)? nested,
+  }) {
+    return nested?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(RawStringMirrored field0)? raw,
+    TResult Function(NestedRawStringMirrored field0)? nested,
+    required TResult orElse(),
+  }) {
+    if (nested != null) {
+      return nested(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RawStringEnumMirrored_Raw value) raw,
+    required TResult Function(RawStringEnumMirrored_Nested value) nested,
+  }) {
+    return nested(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(RawStringEnumMirrored_Raw value)? raw,
+    TResult? Function(RawStringEnumMirrored_Nested value)? nested,
+  }) {
+    return nested?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RawStringEnumMirrored_Raw value)? raw,
+    TResult Function(RawStringEnumMirrored_Nested value)? nested,
+    required TResult orElse(),
+  }) {
+    if (nested != null) {
+      return nested(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RawStringEnumMirrored_Nested implements RawStringEnumMirrored {
+  const factory RawStringEnumMirrored_Nested(final NestedRawStringMirrored field0) = _$RawStringEnumMirrored_Nested;
+
+  @override
+  NestedRawStringMirrored get field0;
+  @JsonKey(ignore: true)
+  _$$RawStringEnumMirrored_NestedCopyWith<_$RawStringEnumMirrored_Nested> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$Speed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({

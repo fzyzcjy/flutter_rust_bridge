@@ -3382,6 +3382,72 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_test_more_than_just_one_raw_string_struct =
       _wire_test_more_than_just_one_raw_string_structPtr.asFunction<void Function(int)>();
 
+  void wire_test_raw_string_mirrored(
+    int port_,
+  ) {
+    return _wire_test_raw_string_mirrored(
+      port_,
+    );
+  }
+
+  late final _wire_test_raw_string_mirroredPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_test_raw_string_mirrored');
+  late final _wire_test_raw_string_mirrored = _wire_test_raw_string_mirroredPtr.asFunction<void Function(int)>();
+
+  void wire_test_nested_raw_string_mirrored(
+    int port_,
+  ) {
+    return _wire_test_nested_raw_string_mirrored(
+      port_,
+    );
+  }
+
+  late final _wire_test_nested_raw_string_mirroredPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_test_nested_raw_string_mirrored');
+  late final _wire_test_nested_raw_string_mirrored =
+      _wire_test_nested_raw_string_mirroredPtr.asFunction<void Function(int)>();
+
+  void wire_test_raw_string_enum_mirrored(
+    int port_,
+    bool nested,
+  ) {
+    return _wire_test_raw_string_enum_mirrored(
+      port_,
+      nested,
+    );
+  }
+
+  late final _wire_test_raw_string_enum_mirroredPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Bool)>>('wire_test_raw_string_enum_mirrored');
+  late final _wire_test_raw_string_enum_mirrored =
+      _wire_test_raw_string_enum_mirroredPtr.asFunction<void Function(int, bool)>();
+
+  void wire_test_list_of_raw_nested_string_mirrored(
+    int port_,
+  ) {
+    return _wire_test_list_of_raw_nested_string_mirrored(
+      port_,
+    );
+  }
+
+  late final _wire_test_list_of_raw_nested_string_mirroredPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_test_list_of_raw_nested_string_mirrored');
+  late final _wire_test_list_of_raw_nested_string_mirrored =
+      _wire_test_list_of_raw_nested_string_mirroredPtr.asFunction<void Function(int)>();
+
+  void wire_test_list_of_nested_enums_mirrored(
+    int port_,
+  ) {
+    return _wire_test_list_of_nested_enums_mirrored(
+      port_,
+    );
+  }
+
+  late final _wire_test_list_of_nested_enums_mirroredPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_test_list_of_nested_enums_mirrored');
+  late final _wire_test_list_of_nested_enums_mirrored =
+      _wire_test_list_of_nested_enums_mirroredPtr.asFunction<void Function(int)>();
+
   void wire_list_of_primitive_enums(
     int port_,
     ffi.Pointer<wire_list_weekdays> weekdays,

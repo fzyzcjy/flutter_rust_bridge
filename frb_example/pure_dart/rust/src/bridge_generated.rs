@@ -2050,6 +2050,85 @@ fn wire_test_more_than_just_one_raw_string_struct_impl(port_: MessagePort) {
         move || move |task_callback| Ok(test_more_than_just_one_raw_string_struct()),
     )
 }
+fn wire_test_raw_string_mirrored_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_raw_string_mirrored",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(mirror_RawStringMirrored(test_raw_string_mirrored())),
+    )
+}
+fn wire_test_nested_raw_string_mirrored_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_nested_raw_string_mirrored",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            move |task_callback| {
+                Ok(mirror_NestedRawStringMirrored(
+                    test_nested_raw_string_mirrored(),
+                ))
+            }
+        },
+    )
+}
+fn wire_test_raw_string_enum_mirrored_impl(
+    port_: MessagePort,
+    nested: impl Wire2Api<bool> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_raw_string_enum_mirrored",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_nested = nested.wire2api();
+            move |task_callback| {
+                Ok(mirror_RawStringEnumMirrored(test_raw_string_enum_mirrored(
+                    api_nested,
+                )))
+            }
+        },
+    )
+}
+fn wire_test_list_of_raw_nested_string_mirrored_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_list_of_raw_nested_string_mirrored",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            move |task_callback| {
+                Ok(mirror_ListOfNestedRawStringMirrored(
+                    test_list_of_raw_nested_string_mirrored(),
+                ))
+            }
+        },
+    )
+}
+fn wire_test_list_of_nested_enums_mirrored_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_list_of_nested_enums_mirrored",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            move |task_callback| {
+                Ok(test_list_of_nested_enums_mirrored()
+                    .into_iter()
+                    .map(|v| mirror_RawStringEnumMirrored(v.0))
+                    .collect::<Vec<_>>())
+            }
+        },
+    )
+}
 fn wire_list_of_primitive_enums_impl(
     port_: MessagePort,
     weekdays: impl Wire2Api<Vec<Weekdays>> + UnwindSafe,
@@ -2246,7 +2325,19 @@ struct mirror_ApplicationMode(ApplicationMode);
 struct mirror_ApplicationSettings(ApplicationSettings);
 
 #[derive(Clone)]
+struct mirror_ListOfNestedRawStringMirrored(ListOfNestedRawStringMirrored);
+
+#[derive(Clone)]
+struct mirror_NestedRawStringMirrored(NestedRawStringMirrored);
+
+#[derive(Clone)]
 struct mirror_Numbers(Numbers);
+
+#[derive(Clone)]
+struct mirror_RawStringEnumMirrored(RawStringEnumMirrored);
+
+#[derive(Clone)]
+struct mirror_RawStringMirrored(RawStringMirrored);
 
 #[derive(Clone)]
 struct mirror_Sequences(Sequences);
@@ -2286,8 +2377,28 @@ const _: fn() = || {
         let _: Option<ApplicationEnv> = ApplicationSettings.env_optional;
     }
     {
+        let ListOfNestedRawStringMirrored = None::<ListOfNestedRawStringMirrored>.unwrap();
+        let _: Vec<NestedRawStringMirrored> = ListOfNestedRawStringMirrored.raw;
+    }
+    {
+        let NestedRawStringMirrored = None::<NestedRawStringMirrored>.unwrap();
+        let _: RawStringMirrored = NestedRawStringMirrored.raw;
+    }
+    {
         let Numbers_ = None::<Numbers>.unwrap();
         let _: Vec<i32> = Numbers_.0;
+    }
+    match None::<RawStringEnumMirrored>.unwrap() {
+        RawStringEnumMirrored::Raw(field0) => {
+            let _: RawStringMirrored = field0;
+        }
+        RawStringEnumMirrored::Nested(field0) => {
+            let _: NestedRawStringMirrored = field0;
+        }
+    }
+    {
+        let RawStringMirrored = None::<RawStringMirrored>.unwrap();
+        let _: String = RawStringMirrored.r#value;
     }
     {
         let Sequences_ = None::<Sequences>.unwrap();
@@ -2653,6 +2764,20 @@ impl support::IntoDart for KitchenSink {
 }
 impl support::IntoDartExceptPrimitive for KitchenSink {}
 
+impl support::IntoDart for mirror_ListOfNestedRawStringMirrored {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self
+            .0
+            .raw
+            .into_iter()
+            .map(|v| mirror_NestedRawStringMirrored(v))
+            .collect::<Vec<_>>()
+            .into_dart()]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_ListOfNestedRawStringMirrored {}
+
 impl support::IntoDart for Log {
     fn into_dart(self) -> support::DartAbi {
         vec![self.key.into_dart(), self.value.into_dart()].into_dart()
@@ -2748,6 +2873,13 @@ impl support::IntoDart for MyTreeNode {
 }
 impl support::IntoDartExceptPrimitive for MyTreeNode {}
 
+impl support::IntoDart for mirror_NestedRawStringMirrored {
+    fn into_dart(self) -> support::DartAbi {
+        vec![mirror_RawStringMirrored(self.0.raw).into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_NestedRawStringMirrored {}
+
 impl support::IntoDart for NewSimpleStruct {
     fn into_dart(self) -> support::DartAbi {
         vec![self.field.into_dart()].into_dart()
@@ -2790,12 +2922,29 @@ impl support::IntoDart for Point {
 }
 impl support::IntoDartExceptPrimitive for Point {}
 
+impl support::IntoDart for mirror_RawStringEnumMirrored {
+    fn into_dart(self) -> support::DartAbi {
+        match self.0 {
+            RawStringEnumMirrored::Raw(field0) => vec![0.into_dart(), field0.into_dart()],
+            RawStringEnumMirrored::Nested(field0) => vec![1.into_dart(), field0.into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_RawStringEnumMirrored {}
 impl support::IntoDart for RawStringItemStruct {
     fn into_dart(self) -> support::DartAbi {
         vec![self.r#type.into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for RawStringItemStruct {}
+
+impl support::IntoDart for mirror_RawStringMirrored {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.0.r#value.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_RawStringMirrored {}
 
 impl support::IntoDart for mirror_Sequences {
     fn into_dart(self) -> support::DartAbi {

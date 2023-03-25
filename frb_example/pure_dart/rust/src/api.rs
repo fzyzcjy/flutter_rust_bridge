@@ -643,7 +643,8 @@ pub fn use_imported_enum(my_enum: MyEnum) -> bool {
 // To use an external type with mirroring, it MUST be imported publicly (aka. re-export)
 pub use external_lib::{
     ApplicationEnv, ApplicationEnvVar, ApplicationMessage, ApplicationMode, ApplicationSettings,
-    Numbers, Sequences,
+    ListOfNestedRawStringMirrored, NestedRawStringMirrored, Numbers, RawStringEnumMirrored,
+    RawStringMirrored, Sequences,
 };
 
 // To mirror an external struct, you need to define a placeholder type with the same definition
@@ -1452,15 +1453,76 @@ pub fn test_more_than_just_one_raw_string_struct() -> MoreThanJustOneRawStringSt
     }
 }
 
-#[frb(RawStringMirrored)]
+#[frb(mirror(RawStringMirrored))]
 pub struct _RawStringMirrored {
     pub r#value: String,
+}
+
+#[frb(mirror(NestedRawStringMirrored))]
+pub struct _NestedRawStringMirrored {
+    pub raw: RawStringMirrored,
+}
+
+#[frb(mirror(RawStringEnumMirrored))]
+pub enum _RawStringEnumMirrored {
+    Raw(RawStringMirrored),
+    Nested(NestedRawStringMirrored),
+}
+
+#[frb(mirror(ListOfNestedRawStringMirrored))]
+pub struct _ListOfRawNestedStringMirrored {
+    pub raw: Vec<NestedRawStringMirrored>,
 }
 
 pub fn test_raw_string_mirrored() -> RawStringMirrored {
     RawStringMirrored {
         r#value: "test".to_owned(),
     }
+}
+
+pub fn test_nested_raw_string_mirrored() -> NestedRawStringMirrored {
+    NestedRawStringMirrored {
+        raw: RawStringMirrored {
+            r#value: "test".to_owned(),
+        },
+    }
+}
+
+pub fn test_raw_string_enum_mirrored(nested: bool) -> RawStringEnumMirrored {
+    if nested {
+        RawStringEnumMirrored::Nested(NestedRawStringMirrored {
+            raw: RawStringMirrored {
+                r#value: "test".to_owned(),
+            },
+        })
+    } else {
+        RawStringEnumMirrored::Raw(RawStringMirrored {
+            r#value: "test".to_owned(),
+        })
+    }
+}
+
+pub fn test_list_of_raw_nested_string_mirrored() -> ListOfNestedRawStringMirrored {
+    ListOfNestedRawStringMirrored {
+        raw: vec![NestedRawStringMirrored {
+            raw: RawStringMirrored {
+                r#value: "test".to_owned(),
+            },
+        }],
+    }
+}
+
+pub fn test_list_of_nested_enums_mirrored() -> Vec<RawStringEnumMirrored> {
+    vec![
+        RawStringEnumMirrored::Nested(NestedRawStringMirrored {
+            raw: RawStringMirrored {
+                r#value: "test".to_owned(),
+            },
+        }),
+        RawStringEnumMirrored::Raw(RawStringMirrored {
+            r#value: "test".to_owned(),
+        }),
+    ]
 }
 
 // This seems to be a bug in the syn parser, for whoever tries to fix it, after each failed build you need to manually remove all rust generated files (bridge_*)

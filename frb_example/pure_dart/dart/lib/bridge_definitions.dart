@@ -608,6 +608,26 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kTestMoreThanJustOneRawStringStructConstMeta;
 
+  Future<RawStringMirrored> testRawStringMirrored({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestRawStringMirroredConstMeta;
+
+  Future<NestedRawStringMirrored> testNestedRawStringMirrored({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestNestedRawStringMirroredConstMeta;
+
+  Future<RawStringEnumMirrored> testRawStringEnumMirrored({required bool nested, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestRawStringEnumMirroredConstMeta;
+
+  Future<ListOfNestedRawStringMirrored> testListOfRawNestedStringMirrored({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestListOfRawNestedStringMirroredConstMeta;
+
+  Future<List<RawStringEnumMirrored>> testListOfNestedEnumsMirrored({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestListOfNestedEnumsMirroredConstMeta;
+
   Future<List<Weekdays>> listOfPrimitiveEnums({required List<Weekdays> weekdays, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kListOfPrimitiveEnumsConstMeta;
@@ -1179,6 +1199,14 @@ class KitchenSink with _$KitchenSink {
   ]) = KitchenSink_Enums;
 }
 
+class ListOfNestedRawStringMirrored {
+  final List<NestedRawStringMirrored> raw;
+
+  const ListOfNestedRawStringMirrored({
+    required this.raw,
+  });
+}
+
 class Log {
   final int key;
   final int value;
@@ -1286,6 +1314,14 @@ class MyTreeNode {
   });
 }
 
+class NestedRawStringMirrored {
+  final RawStringMirrored raw;
+
+  const NestedRawStringMirrored({
+    required this.raw,
+  });
+}
+
 class NewSimpleStruct {
   final int field;
 
@@ -1349,11 +1385,29 @@ class Point {
   });
 }
 
+@freezed
+class RawStringEnumMirrored with _$RawStringEnumMirrored {
+  const factory RawStringEnumMirrored.raw(
+    RawStringMirrored field0,
+  ) = RawStringEnumMirrored_Raw;
+  const factory RawStringEnumMirrored.nested(
+    NestedRawStringMirrored field0,
+  ) = RawStringEnumMirrored_Nested;
+}
+
 class RawStringItemStruct {
   final String type;
 
   const RawStringItemStruct({
     required this.type,
+  });
+}
+
+class RawStringMirrored {
+  final String value;
+
+  const RawStringMirrored({
+    required this.value,
   });
 }
 

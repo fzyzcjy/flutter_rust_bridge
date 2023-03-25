@@ -740,6 +740,31 @@ pub fn wire_test_more_than_just_one_raw_string_struct(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_test_raw_string_mirrored(port_: MessagePort) {
+    wire_test_raw_string_mirrored_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_nested_raw_string_mirrored(port_: MessagePort) {
+    wire_test_nested_raw_string_mirrored_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_raw_string_enum_mirrored(port_: MessagePort, nested: bool) {
+    wire_test_raw_string_enum_mirrored_impl(port_, nested)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_list_of_raw_nested_string_mirrored(port_: MessagePort) {
+    wire_test_list_of_raw_nested_string_mirrored_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_list_of_nested_enums_mirrored(port_: MessagePort) {
+    wire_test_list_of_nested_enums_mirrored_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_list_of_primitive_enums(port_: MessagePort, weekdays: JsValue) {
     wire_list_of_primitive_enums_impl(port_, weekdays)
 }

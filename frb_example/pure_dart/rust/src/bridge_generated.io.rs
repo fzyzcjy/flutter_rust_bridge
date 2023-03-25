@@ -765,6 +765,31 @@ pub extern "C" fn wire_test_more_than_just_one_raw_string_struct(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_test_raw_string_mirrored(port_: i64) {
+    wire_test_raw_string_mirrored_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_nested_raw_string_mirrored(port_: i64) {
+    wire_test_nested_raw_string_mirrored_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_raw_string_enum_mirrored(port_: i64, nested: bool) {
+    wire_test_raw_string_enum_mirrored_impl(port_, nested)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_list_of_raw_nested_string_mirrored(port_: i64) {
+    wire_test_list_of_raw_nested_string_mirrored_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_list_of_nested_enums_mirrored(port_: i64) {
+    wire_test_list_of_nested_enums_mirrored_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_list_of_primitive_enums(port_: i64, weekdays: *mut wire_list_weekdays) {
     wire_list_of_primitive_enums_impl(port_, weekdays)
 }
