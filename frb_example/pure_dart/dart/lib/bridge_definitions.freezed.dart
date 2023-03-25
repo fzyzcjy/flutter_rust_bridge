@@ -15,466 +15,6 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ApplicationMessage {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String field0) displayMessage,
-    required TResult Function(int x, int y) renderPixel,
-    required TResult Function() exit,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String field0)? displayMessage,
-    TResult? Function(int x, int y)? renderPixel,
-    TResult? Function()? exit,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String field0)? displayMessage,
-    TResult Function(int x, int y)? renderPixel,
-    TResult Function()? exit,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ApplicationMessage_DisplayMessage value) displayMessage,
-    required TResult Function(ApplicationMessage_RenderPixel value) renderPixel,
-    required TResult Function(ApplicationMessage_Exit value) exit,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ApplicationMessage_DisplayMessage value)? displayMessage,
-    TResult? Function(ApplicationMessage_RenderPixel value)? renderPixel,
-    TResult? Function(ApplicationMessage_Exit value)? exit,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ApplicationMessage_DisplayMessage value)? displayMessage,
-    TResult Function(ApplicationMessage_RenderPixel value)? renderPixel,
-    TResult Function(ApplicationMessage_Exit value)? exit,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ApplicationMessageCopyWith<$Res> {
-  factory $ApplicationMessageCopyWith(ApplicationMessage value, $Res Function(ApplicationMessage) then) =
-      _$ApplicationMessageCopyWithImpl<$Res, ApplicationMessage>;
-}
-
-/// @nodoc
-class _$ApplicationMessageCopyWithImpl<$Res, $Val extends ApplicationMessage>
-    implements $ApplicationMessageCopyWith<$Res> {
-  _$ApplicationMessageCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$ApplicationMessage_DisplayMessageCopyWith<$Res> {
-  factory _$$ApplicationMessage_DisplayMessageCopyWith(
-          _$ApplicationMessage_DisplayMessage value, $Res Function(_$ApplicationMessage_DisplayMessage) then) =
-      __$$ApplicationMessage_DisplayMessageCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String field0});
-}
-
-/// @nodoc
-class __$$ApplicationMessage_DisplayMessageCopyWithImpl<$Res>
-    extends _$ApplicationMessageCopyWithImpl<$Res, _$ApplicationMessage_DisplayMessage>
-    implements _$$ApplicationMessage_DisplayMessageCopyWith<$Res> {
-  __$$ApplicationMessage_DisplayMessageCopyWithImpl(
-      _$ApplicationMessage_DisplayMessage _value, $Res Function(_$ApplicationMessage_DisplayMessage) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$ApplicationMessage_DisplayMessage(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ApplicationMessage_DisplayMessage implements ApplicationMessage_DisplayMessage {
-  const _$ApplicationMessage_DisplayMessage(this.field0);
-
-  @override
-  final String field0;
-
-  @override
-  String toString() {
-    return 'ApplicationMessage.displayMessage(field0: $field0)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ApplicationMessage_DisplayMessage &&
-            (identical(other.field0, field0) || other.field0 == field0));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, field0);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ApplicationMessage_DisplayMessageCopyWith<_$ApplicationMessage_DisplayMessage> get copyWith =>
-      __$$ApplicationMessage_DisplayMessageCopyWithImpl<_$ApplicationMessage_DisplayMessage>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String field0) displayMessage,
-    required TResult Function(int x, int y) renderPixel,
-    required TResult Function() exit,
-  }) {
-    return displayMessage(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String field0)? displayMessage,
-    TResult? Function(int x, int y)? renderPixel,
-    TResult? Function()? exit,
-  }) {
-    return displayMessage?.call(field0);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String field0)? displayMessage,
-    TResult Function(int x, int y)? renderPixel,
-    TResult Function()? exit,
-    required TResult orElse(),
-  }) {
-    if (displayMessage != null) {
-      return displayMessage(field0);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ApplicationMessage_DisplayMessage value) displayMessage,
-    required TResult Function(ApplicationMessage_RenderPixel value) renderPixel,
-    required TResult Function(ApplicationMessage_Exit value) exit,
-  }) {
-    return displayMessage(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ApplicationMessage_DisplayMessage value)? displayMessage,
-    TResult? Function(ApplicationMessage_RenderPixel value)? renderPixel,
-    TResult? Function(ApplicationMessage_Exit value)? exit,
-  }) {
-    return displayMessage?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ApplicationMessage_DisplayMessage value)? displayMessage,
-    TResult Function(ApplicationMessage_RenderPixel value)? renderPixel,
-    TResult Function(ApplicationMessage_Exit value)? exit,
-    required TResult orElse(),
-  }) {
-    if (displayMessage != null) {
-      return displayMessage(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ApplicationMessage_DisplayMessage implements ApplicationMessage {
-  const factory ApplicationMessage_DisplayMessage(final String field0) = _$ApplicationMessage_DisplayMessage;
-
-  String get field0;
-  @JsonKey(ignore: true)
-  _$$ApplicationMessage_DisplayMessageCopyWith<_$ApplicationMessage_DisplayMessage> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ApplicationMessage_RenderPixelCopyWith<$Res> {
-  factory _$$ApplicationMessage_RenderPixelCopyWith(
-          _$ApplicationMessage_RenderPixel value, $Res Function(_$ApplicationMessage_RenderPixel) then) =
-      __$$ApplicationMessage_RenderPixelCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int x, int y});
-}
-
-/// @nodoc
-class __$$ApplicationMessage_RenderPixelCopyWithImpl<$Res>
-    extends _$ApplicationMessageCopyWithImpl<$Res, _$ApplicationMessage_RenderPixel>
-    implements _$$ApplicationMessage_RenderPixelCopyWith<$Res> {
-  __$$ApplicationMessage_RenderPixelCopyWithImpl(
-      _$ApplicationMessage_RenderPixel _value, $Res Function(_$ApplicationMessage_RenderPixel) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? x = null,
-    Object? y = null,
-  }) {
-    return _then(_$ApplicationMessage_RenderPixel(
-      x: null == x
-          ? _value.x
-          : x // ignore: cast_nullable_to_non_nullable
-              as int,
-      y: null == y
-          ? _value.y
-          : y // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ApplicationMessage_RenderPixel implements ApplicationMessage_RenderPixel {
-  const _$ApplicationMessage_RenderPixel({required this.x, required this.y});
-
-  @override
-  final int x;
-  @override
-  final int y;
-
-  @override
-  String toString() {
-    return 'ApplicationMessage.renderPixel(x: $x, y: $y)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ApplicationMessage_RenderPixel &&
-            (identical(other.x, x) || other.x == x) &&
-            (identical(other.y, y) || other.y == y));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, x, y);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ApplicationMessage_RenderPixelCopyWith<_$ApplicationMessage_RenderPixel> get copyWith =>
-      __$$ApplicationMessage_RenderPixelCopyWithImpl<_$ApplicationMessage_RenderPixel>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String field0) displayMessage,
-    required TResult Function(int x, int y) renderPixel,
-    required TResult Function() exit,
-  }) {
-    return renderPixel(x, y);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String field0)? displayMessage,
-    TResult? Function(int x, int y)? renderPixel,
-    TResult? Function()? exit,
-  }) {
-    return renderPixel?.call(x, y);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String field0)? displayMessage,
-    TResult Function(int x, int y)? renderPixel,
-    TResult Function()? exit,
-    required TResult orElse(),
-  }) {
-    if (renderPixel != null) {
-      return renderPixel(x, y);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ApplicationMessage_DisplayMessage value) displayMessage,
-    required TResult Function(ApplicationMessage_RenderPixel value) renderPixel,
-    required TResult Function(ApplicationMessage_Exit value) exit,
-  }) {
-    return renderPixel(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ApplicationMessage_DisplayMessage value)? displayMessage,
-    TResult? Function(ApplicationMessage_RenderPixel value)? renderPixel,
-    TResult? Function(ApplicationMessage_Exit value)? exit,
-  }) {
-    return renderPixel?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ApplicationMessage_DisplayMessage value)? displayMessage,
-    TResult Function(ApplicationMessage_RenderPixel value)? renderPixel,
-    TResult Function(ApplicationMessage_Exit value)? exit,
-    required TResult orElse(),
-  }) {
-    if (renderPixel != null) {
-      return renderPixel(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ApplicationMessage_RenderPixel implements ApplicationMessage {
-  const factory ApplicationMessage_RenderPixel({required final int x, required final int y}) =
-      _$ApplicationMessage_RenderPixel;
-
-  int get x;
-  int get y;
-  @JsonKey(ignore: true)
-  _$$ApplicationMessage_RenderPixelCopyWith<_$ApplicationMessage_RenderPixel> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ApplicationMessage_ExitCopyWith<$Res> {
-  factory _$$ApplicationMessage_ExitCopyWith(
-          _$ApplicationMessage_Exit value, $Res Function(_$ApplicationMessage_Exit) then) =
-      __$$ApplicationMessage_ExitCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$ApplicationMessage_ExitCopyWithImpl<$Res>
-    extends _$ApplicationMessageCopyWithImpl<$Res, _$ApplicationMessage_Exit>
-    implements _$$ApplicationMessage_ExitCopyWith<$Res> {
-  __$$ApplicationMessage_ExitCopyWithImpl(
-      _$ApplicationMessage_Exit _value, $Res Function(_$ApplicationMessage_Exit) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$ApplicationMessage_Exit implements ApplicationMessage_Exit {
-  const _$ApplicationMessage_Exit();
-
-  @override
-  String toString() {
-    return 'ApplicationMessage.exit()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$ApplicationMessage_Exit);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String field0) displayMessage,
-    required TResult Function(int x, int y) renderPixel,
-    required TResult Function() exit,
-  }) {
-    return exit();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String field0)? displayMessage,
-    TResult? Function(int x, int y)? renderPixel,
-    TResult? Function()? exit,
-  }) {
-    return exit?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String field0)? displayMessage,
-    TResult Function(int x, int y)? renderPixel,
-    TResult Function()? exit,
-    required TResult orElse(),
-  }) {
-    if (exit != null) {
-      return exit();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ApplicationMessage_DisplayMessage value) displayMessage,
-    required TResult Function(ApplicationMessage_RenderPixel value) renderPixel,
-    required TResult Function(ApplicationMessage_Exit value) exit,
-  }) {
-    return exit(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ApplicationMessage_DisplayMessage value)? displayMessage,
-    TResult? Function(ApplicationMessage_RenderPixel value)? renderPixel,
-    TResult? Function(ApplicationMessage_Exit value)? exit,
-  }) {
-    return exit?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ApplicationMessage_DisplayMessage value)? displayMessage,
-    TResult Function(ApplicationMessage_RenderPixel value)? renderPixel,
-    TResult Function(ApplicationMessage_Exit value)? exit,
-    required TResult orElse(),
-  }) {
-    if (exit != null) {
-      return exit(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ApplicationMessage_Exit implements ApplicationMessage {
-  const factory ApplicationMessage_Exit() = _$ApplicationMessage_Exit;
-}
-
-/// @nodoc
 mixin _$Distance {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -3382,18 +2922,21 @@ mixin _$RawStringEnumMirrored {
   TResult when<TResult extends Object?>({
     required TResult Function(RawStringMirrored field0) raw,
     required TResult Function(NestedRawStringMirrored field0) nested,
+    required TResult Function(ListOfNestedRawStringMirrored field0) listOfNested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(RawStringMirrored field0)? raw,
     TResult? Function(NestedRawStringMirrored field0)? nested,
+    TResult? Function(ListOfNestedRawStringMirrored field0)? listOfNested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(RawStringMirrored field0)? raw,
     TResult Function(NestedRawStringMirrored field0)? nested,
+    TResult Function(ListOfNestedRawStringMirrored field0)? listOfNested,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -3401,18 +2944,21 @@ mixin _$RawStringEnumMirrored {
   TResult map<TResult extends Object?>({
     required TResult Function(RawStringEnumMirrored_Raw value) raw,
     required TResult Function(RawStringEnumMirrored_Nested value) nested,
+    required TResult Function(RawStringEnumMirrored_ListOfNested value) listOfNested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(RawStringEnumMirrored_Raw value)? raw,
     TResult? Function(RawStringEnumMirrored_Nested value)? nested,
+    TResult? Function(RawStringEnumMirrored_ListOfNested value)? listOfNested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(RawStringEnumMirrored_Raw value)? raw,
     TResult Function(RawStringEnumMirrored_Nested value)? nested,
+    TResult Function(RawStringEnumMirrored_ListOfNested value)? listOfNested,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -3501,6 +3047,7 @@ class _$RawStringEnumMirrored_Raw implements RawStringEnumMirrored_Raw {
   TResult when<TResult extends Object?>({
     required TResult Function(RawStringMirrored field0) raw,
     required TResult Function(NestedRawStringMirrored field0) nested,
+    required TResult Function(ListOfNestedRawStringMirrored field0) listOfNested,
   }) {
     return raw(field0);
   }
@@ -3510,6 +3057,7 @@ class _$RawStringEnumMirrored_Raw implements RawStringEnumMirrored_Raw {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(RawStringMirrored field0)? raw,
     TResult? Function(NestedRawStringMirrored field0)? nested,
+    TResult? Function(ListOfNestedRawStringMirrored field0)? listOfNested,
   }) {
     return raw?.call(field0);
   }
@@ -3519,6 +3067,7 @@ class _$RawStringEnumMirrored_Raw implements RawStringEnumMirrored_Raw {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(RawStringMirrored field0)? raw,
     TResult Function(NestedRawStringMirrored field0)? nested,
+    TResult Function(ListOfNestedRawStringMirrored field0)? listOfNested,
     required TResult orElse(),
   }) {
     if (raw != null) {
@@ -3532,6 +3081,7 @@ class _$RawStringEnumMirrored_Raw implements RawStringEnumMirrored_Raw {
   TResult map<TResult extends Object?>({
     required TResult Function(RawStringEnumMirrored_Raw value) raw,
     required TResult Function(RawStringEnumMirrored_Nested value) nested,
+    required TResult Function(RawStringEnumMirrored_ListOfNested value) listOfNested,
   }) {
     return raw(this);
   }
@@ -3541,6 +3091,7 @@ class _$RawStringEnumMirrored_Raw implements RawStringEnumMirrored_Raw {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(RawStringEnumMirrored_Raw value)? raw,
     TResult? Function(RawStringEnumMirrored_Nested value)? nested,
+    TResult? Function(RawStringEnumMirrored_ListOfNested value)? listOfNested,
   }) {
     return raw?.call(this);
   }
@@ -3550,6 +3101,7 @@ class _$RawStringEnumMirrored_Raw implements RawStringEnumMirrored_Raw {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(RawStringEnumMirrored_Raw value)? raw,
     TResult Function(RawStringEnumMirrored_Nested value)? nested,
+    TResult Function(RawStringEnumMirrored_ListOfNested value)? listOfNested,
     required TResult orElse(),
   }) {
     if (raw != null) {
@@ -3634,6 +3186,7 @@ class _$RawStringEnumMirrored_Nested implements RawStringEnumMirrored_Nested {
   TResult when<TResult extends Object?>({
     required TResult Function(RawStringMirrored field0) raw,
     required TResult Function(NestedRawStringMirrored field0) nested,
+    required TResult Function(ListOfNestedRawStringMirrored field0) listOfNested,
   }) {
     return nested(field0);
   }
@@ -3643,6 +3196,7 @@ class _$RawStringEnumMirrored_Nested implements RawStringEnumMirrored_Nested {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(RawStringMirrored field0)? raw,
     TResult? Function(NestedRawStringMirrored field0)? nested,
+    TResult? Function(ListOfNestedRawStringMirrored field0)? listOfNested,
   }) {
     return nested?.call(field0);
   }
@@ -3652,6 +3206,7 @@ class _$RawStringEnumMirrored_Nested implements RawStringEnumMirrored_Nested {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(RawStringMirrored field0)? raw,
     TResult Function(NestedRawStringMirrored field0)? nested,
+    TResult Function(ListOfNestedRawStringMirrored field0)? listOfNested,
     required TResult orElse(),
   }) {
     if (nested != null) {
@@ -3665,6 +3220,7 @@ class _$RawStringEnumMirrored_Nested implements RawStringEnumMirrored_Nested {
   TResult map<TResult extends Object?>({
     required TResult Function(RawStringEnumMirrored_Raw value) raw,
     required TResult Function(RawStringEnumMirrored_Nested value) nested,
+    required TResult Function(RawStringEnumMirrored_ListOfNested value) listOfNested,
   }) {
     return nested(this);
   }
@@ -3674,6 +3230,7 @@ class _$RawStringEnumMirrored_Nested implements RawStringEnumMirrored_Nested {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(RawStringEnumMirrored_Raw value)? raw,
     TResult? Function(RawStringEnumMirrored_Nested value)? nested,
+    TResult? Function(RawStringEnumMirrored_ListOfNested value)? listOfNested,
   }) {
     return nested?.call(this);
   }
@@ -3683,6 +3240,7 @@ class _$RawStringEnumMirrored_Nested implements RawStringEnumMirrored_Nested {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(RawStringEnumMirrored_Raw value)? raw,
     TResult Function(RawStringEnumMirrored_Nested value)? nested,
+    TResult Function(RawStringEnumMirrored_ListOfNested value)? listOfNested,
     required TResult orElse(),
   }) {
     if (nested != null) {
@@ -3699,6 +3257,147 @@ abstract class RawStringEnumMirrored_Nested implements RawStringEnumMirrored {
   NestedRawStringMirrored get field0;
   @JsonKey(ignore: true)
   _$$RawStringEnumMirrored_NestedCopyWith<_$RawStringEnumMirrored_Nested> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RawStringEnumMirrored_ListOfNestedCopyWith<$Res> {
+  factory _$$RawStringEnumMirrored_ListOfNestedCopyWith(
+          _$RawStringEnumMirrored_ListOfNested value, $Res Function(_$RawStringEnumMirrored_ListOfNested) then) =
+      __$$RawStringEnumMirrored_ListOfNestedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ListOfNestedRawStringMirrored field0});
+}
+
+/// @nodoc
+class __$$RawStringEnumMirrored_ListOfNestedCopyWithImpl<$Res>
+    extends _$RawStringEnumMirroredCopyWithImpl<$Res, _$RawStringEnumMirrored_ListOfNested>
+    implements _$$RawStringEnumMirrored_ListOfNestedCopyWith<$Res> {
+  __$$RawStringEnumMirrored_ListOfNestedCopyWithImpl(
+      _$RawStringEnumMirrored_ListOfNested _value, $Res Function(_$RawStringEnumMirrored_ListOfNested) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$RawStringEnumMirrored_ListOfNested(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as ListOfNestedRawStringMirrored,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RawStringEnumMirrored_ListOfNested implements RawStringEnumMirrored_ListOfNested {
+  const _$RawStringEnumMirrored_ListOfNested(this.field0);
+
+  @override
+  final ListOfNestedRawStringMirrored field0;
+
+  @override
+  String toString() {
+    return 'RawStringEnumMirrored.listOfNested(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RawStringEnumMirrored_ListOfNested &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RawStringEnumMirrored_ListOfNestedCopyWith<_$RawStringEnumMirrored_ListOfNested> get copyWith =>
+      __$$RawStringEnumMirrored_ListOfNestedCopyWithImpl<_$RawStringEnumMirrored_ListOfNested>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(RawStringMirrored field0) raw,
+    required TResult Function(NestedRawStringMirrored field0) nested,
+    required TResult Function(ListOfNestedRawStringMirrored field0) listOfNested,
+  }) {
+    return listOfNested(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(RawStringMirrored field0)? raw,
+    TResult? Function(NestedRawStringMirrored field0)? nested,
+    TResult? Function(ListOfNestedRawStringMirrored field0)? listOfNested,
+  }) {
+    return listOfNested?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(RawStringMirrored field0)? raw,
+    TResult Function(NestedRawStringMirrored field0)? nested,
+    TResult Function(ListOfNestedRawStringMirrored field0)? listOfNested,
+    required TResult orElse(),
+  }) {
+    if (listOfNested != null) {
+      return listOfNested(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RawStringEnumMirrored_Raw value) raw,
+    required TResult Function(RawStringEnumMirrored_Nested value) nested,
+    required TResult Function(RawStringEnumMirrored_ListOfNested value) listOfNested,
+  }) {
+    return listOfNested(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(RawStringEnumMirrored_Raw value)? raw,
+    TResult? Function(RawStringEnumMirrored_Nested value)? nested,
+    TResult? Function(RawStringEnumMirrored_ListOfNested value)? listOfNested,
+  }) {
+    return listOfNested?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RawStringEnumMirrored_Raw value)? raw,
+    TResult Function(RawStringEnumMirrored_Nested value)? nested,
+    TResult Function(RawStringEnumMirrored_ListOfNested value)? listOfNested,
+    required TResult orElse(),
+  }) {
+    if (listOfNested != null) {
+      return listOfNested(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RawStringEnumMirrored_ListOfNested implements RawStringEnumMirrored {
+  const factory RawStringEnumMirrored_ListOfNested(final ListOfNestedRawStringMirrored field0) =
+      _$RawStringEnumMirrored_ListOfNested;
+
+  @override
+  ListOfNestedRawStringMirrored get field0;
+  @JsonKey(ignore: true)
+  _$$RawStringEnumMirrored_ListOfNestedCopyWith<_$RawStringEnumMirrored_ListOfNested> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

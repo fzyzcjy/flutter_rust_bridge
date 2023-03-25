@@ -527,8 +527,6 @@ void wire_get_fallible_app_settings(int64_t port_);
 
 void wire_is_app_embedded(int64_t port_, struct wire_ApplicationSettings *app_settings);
 
-void wire_get_message(int64_t port_);
-
 void wire_repeat_number(int64_t port_, int32_t num, uintptr_t times);
 
 void wire_repeat_sequence(int64_t port_, int32_t seq, uintptr_t times);
@@ -726,8 +724,6 @@ void wire_test_nested_raw_string_mirrored(int64_t port_);
 void wire_test_raw_string_enum_mirrored(int64_t port_, bool nested);
 
 void wire_test_list_of_raw_nested_string_mirrored(int64_t port_);
-
-void wire_test_list_of_nested_enums_mirrored(int64_t port_);
 
 void wire_list_of_primitive_enums(int64_t port_, struct wire_list_weekdays *weekdays);
 
@@ -1017,7 +1013,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_get_app_settings);
     dummy_var ^= ((int64_t) (void*) wire_get_fallible_app_settings);
     dummy_var ^= ((int64_t) (void*) wire_is_app_embedded);
-    dummy_var ^= ((int64_t) (void*) wire_get_message);
     dummy_var ^= ((int64_t) (void*) wire_repeat_number);
     dummy_var ^= ((int64_t) (void*) wire_repeat_sequence);
     dummy_var ^= ((int64_t) (void*) wire_first_number);
@@ -1115,7 +1110,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_test_nested_raw_string_mirrored);
     dummy_var ^= ((int64_t) (void*) wire_test_raw_string_enum_mirrored);
     dummy_var ^= ((int64_t) (void*) wire_test_list_of_raw_nested_string_mirrored);
-    dummy_var ^= ((int64_t) (void*) wire_test_list_of_nested_enums_mirrored);
     dummy_var ^= ((int64_t) (void*) wire_list_of_primitive_enums);
     dummy_var ^= ((int64_t) (void*) wire_sum__method__SumWith);
     dummy_var ^= ((int64_t) (void*) wire_new__static_method__ConcatenateWith);

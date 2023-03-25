@@ -1014,8 +1014,6 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_is_app_embedded(NativePortType port_, List<dynamic> app_settings);
 
-  external dynamic /* void */ wire_get_message(NativePortType port_);
-
   external dynamic /* void */ wire_repeat_number(NativePortType port_, int num, int times);
 
   external dynamic /* void */ wire_repeat_sequence(NativePortType port_, int seq, int times);
@@ -1212,8 +1210,6 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_test_list_of_raw_nested_string_mirrored(NativePortType port_);
 
-  external dynamic /* void */ wire_test_list_of_nested_enums_mirrored(NativePortType port_);
-
   external dynamic /* void */ wire_list_of_primitive_enums(NativePortType port_, List<dynamic> weekdays);
 
   external dynamic /* void */ wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
@@ -1400,8 +1396,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_is_app_embedded(NativePortType port_, List<dynamic> app_settings) =>
       wasmModule.wire_is_app_embedded(port_, app_settings);
-
-  void wire_get_message(NativePortType port_) => wasmModule.wire_get_message(port_);
 
   void wire_repeat_number(NativePortType port_, int num, int times) => wasmModule.wire_repeat_number(port_, num, times);
 
@@ -1631,9 +1625,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_test_list_of_raw_nested_string_mirrored(NativePortType port_) =>
       wasmModule.wire_test_list_of_raw_nested_string_mirrored(port_);
-
-  void wire_test_list_of_nested_enums_mirrored(NativePortType port_) =>
-      wasmModule.wire_test_list_of_nested_enums_mirrored(port_);
 
   void wire_list_of_primitive_enums(NativePortType port_, List<dynamic> weekdays) =>
       wasmModule.wire_list_of_primitive_enums(port_, weekdays);

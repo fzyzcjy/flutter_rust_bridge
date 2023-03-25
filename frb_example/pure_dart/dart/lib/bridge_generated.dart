@@ -811,21 +811,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["appSettings"],
       );
 
-  Future<ApplicationMessage> getMessage({dynamic hint}) {
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_get_message(port_),
-      parseSuccessData: _wire2api_application_message,
-      constMeta: kGetMessageConstMeta,
-      argValues: [],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kGetMessageConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "get_message",
-        argNames: [],
-      );
-
   Future<Numbers> repeatNumber({required int num, required int times, dynamic hint}) {
     var arg0 = api2wire_i32(num);
     var arg1 = api2wire_usize(times);
@@ -2360,21 +2345,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
-  Future<List<RawStringEnumMirrored>> testListOfNestedEnumsMirrored({dynamic hint}) {
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_list_of_nested_enums_mirrored(port_),
-      parseSuccessData: _wire2api_list_raw_string_enum_mirrored,
-      constMeta: kTestListOfNestedEnumsMirroredConstMeta,
-      argValues: [],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kTestListOfNestedEnumsMirroredConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_list_of_nested_enums_mirrored",
-        argNames: [],
-      );
-
   Future<List<Weekdays>> listOfPrimitiveEnums({required List<Weekdays> weekdays, dynamic hint}) {
     var arg0 = _platform.api2wire_list_weekdays(weekdays);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -2730,24 +2700,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     );
   }
 
-  ApplicationMessage _wire2api_application_message(dynamic raw) {
-    switch (raw[0]) {
-      case 0:
-        return ApplicationMessage_DisplayMessage(
-          _wire2api_String(raw[1]),
-        );
-      case 1:
-        return ApplicationMessage_RenderPixel(
-          x: _wire2api_i32(raw[1]),
-          y: _wire2api_i32(raw[2]),
-        );
-      case 2:
-        return ApplicationMessage_Exit();
-      default:
-        throw Exception("unreachable");
-    }
-  }
-
   ApplicationMode _wire2api_application_mode(dynamic raw) {
     return ApplicationMode.values[raw];
   }
@@ -2848,6 +2800,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   int _wire2api_box_autoadd_i64(dynamic raw) {
     return _wire2api_i64(raw);
+  }
+
+  ListOfNestedRawStringMirrored _wire2api_box_autoadd_list_of_nested_raw_string_mirrored(dynamic raw) {
+    return _wire2api_list_of_nested_raw_string_mirrored(raw);
   }
 
   Measure _wire2api_box_autoadd_measure(dynamic raw) {
@@ -3168,10 +3124,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return (raw as List<dynamic>).map(_wire2api_point).toList();
   }
 
-  List<RawStringEnumMirrored> _wire2api_list_raw_string_enum_mirrored(dynamic raw) {
-    return (raw as List<dynamic>).map(_wire2api_raw_string_enum_mirrored).toList();
-  }
-
   List<SumWith> _wire2api_list_sum_with(dynamic raw) {
     return (raw as List<dynamic>).map(_wire2api_sum_with).toList();
   }
@@ -3456,6 +3408,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
       case 1:
         return RawStringEnumMirrored_Nested(
           _wire2api_box_autoadd_nested_raw_string_mirrored(raw[1]),
+        );
+      case 2:
+        return RawStringEnumMirrored_ListOfNested(
+          _wire2api_box_autoadd_list_of_nested_raw_string_mirrored(raw[1]),
         );
       default:
         throw Exception("unreachable");

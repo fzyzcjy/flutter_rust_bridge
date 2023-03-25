@@ -445,18 +445,18 @@ void main(List<String> args) async {
         true);
   });
 
-  test('dart call getMessage()', () async {
-    var message = await api.getMessage();
-    expect(message is ApplicationMessage_RenderPixel, true);
-    message as ApplicationMessage_RenderPixel;
-    expect(message.x, 5);
-    expect(message.y, 10);
+  // test('dart call getMessage()', () async {
+  //   var message = await api.getMessage();
+  //   expect(message is ApplicationMessage_RenderPixel, true);
+  //   message as ApplicationMessage_RenderPixel;
+  //   expect(message.x, 5);
+  //   expect(message.y, 10);
 
-    _createGarbage();
-    await Future.delayed(Duration(seconds: 1));
-    _createGarbage();
-    await Future.delayed(Duration(seconds: 1));
-  });
+  //   _createGarbage();
+  //   await Future.delayed(Duration(seconds: 1));
+  //   _createGarbage();
+  //   await Future.delayed(Duration(seconds: 1));
+  // });
 
   test('dart call repeatNumber()', () async {
     var numbers = await api.repeatNumber(num: 1, times: 10);
@@ -640,7 +640,30 @@ void main(List<String> args) async {
   test('test mirrored raw structs', () async {
     final output = await api.testRawStringMirrored();
     expect(output, isA<RawStringMirrored>());
-    expect(output.type, "test");
+    expect(output.value, "test");
+  });
+
+  test('test nested mirror raw', () async {
+    final output = await api.testNestedRawStringMirrored();
+    expect(output, isA<NestedRawStringMirrored>());
+    expect(output.raw, isA<RawStringMirrored>());
+    expect(output.raw.value, "test");
+  });
+
+  test('test raw string enum', () async {
+    final output1 = await api.testRawStringEnumMirrored(nested: true);
+    expect(output1 is RawStringEnumMirrored_Nested, true);
+    expect((output1 as RawStringEnumMirrored_Nested).field0.raw.value, "test");
+
+    final output2 = await api.testRawStringEnumMirrored(nested: false);
+    expect(output2 is RawStringEnumMirrored_Raw, true);
+    expect((output2 as RawStringEnumMirrored_Raw).field0.value, "test");
+  });
+
+  test('test list of raw nested strings', () async {
+    final output = await api.testListOfRawNestedStringMirrored();
+    expect(output.raw.length, 1);
+    expect(output.raw[0].raw.value, "test");
   });
 
   group('Platform-specific support', () {
@@ -1240,15 +1263,15 @@ void main(List<String> args) async {
   });
 }
 
-int _createGarbage() {
-  print('dart create garbage (thus make it more possible to GC)');
-  var cum = 0;
-  for (var i = 0; i < 1000; ++i) {
-    final l = List.filled(5000, 42);
-    cum += l[42];
-  }
-  return cum;
-}
+// int _createGarbage() {
+//   print('dart create garbage (thus make it more possible to GC)');
+//   var cum = 0;
+//   for (var i = 0; i < 1000; ++i) {
+//     final l = List.filled(5000, 42);
+//     cum += l[42];
+//   }
+//   return cum;
+// }
 
 MyTreeNode _createMyTreeNode({required int arrLen}) {
   return MyTreeNode(

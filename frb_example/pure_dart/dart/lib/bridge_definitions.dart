@@ -223,10 +223,6 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kIsAppEmbeddedConstMeta;
 
-  Future<ApplicationMessage> getMessage({dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kGetMessageConstMeta;
-
   Future<Numbers> repeatNumber({required int num, required int times, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kRepeatNumberConstMeta;
@@ -624,10 +620,6 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kTestListOfRawNestedStringMirroredConstMeta;
 
-  Future<List<RawStringEnumMirrored>> testListOfNestedEnumsMirrored({dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestListOfNestedEnumsMirroredConstMeta;
-
   Future<List<Weekdays>> listOfPrimitiveEnums({required List<Weekdays> weekdays, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kListOfPrimitiveEnumsConstMeta;
@@ -892,18 +884,6 @@ class ApplicationEnvVar {
     required this.field0,
     required this.field1,
   });
-}
-
-@freezed
-class ApplicationMessage with _$ApplicationMessage {
-  const factory ApplicationMessage.displayMessage(
-    String field0,
-  ) = ApplicationMessage_DisplayMessage;
-  const factory ApplicationMessage.renderPixel({
-    required int x,
-    required int y,
-  }) = ApplicationMessage_RenderPixel;
-  const factory ApplicationMessage.exit() = ApplicationMessage_Exit;
 }
 
 enum ApplicationMode {
@@ -1393,6 +1373,9 @@ class RawStringEnumMirrored with _$RawStringEnumMirrored {
   const factory RawStringEnumMirrored.nested(
     NestedRawStringMirrored field0,
   ) = RawStringEnumMirrored_Nested;
+  const factory RawStringEnumMirrored.listOfNested(
+    ListOfNestedRawStringMirrored field0,
+  ) = RawStringEnumMirrored_ListOfNested;
 }
 
 class RawStringItemStruct {

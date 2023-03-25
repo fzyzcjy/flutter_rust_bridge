@@ -2099,17 +2099,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_is_app_embedded =
       _wire_is_app_embeddedPtr.asFunction<void Function(int, ffi.Pointer<wire_ApplicationSettings>)>();
 
-  void wire_get_message(
-    int port_,
-  ) {
-    return _wire_get_message(
-      port_,
-    );
-  }
-
-  late final _wire_get_messagePtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_message');
-  late final _wire_get_message = _wire_get_messagePtr.asFunction<void Function(int)>();
-
   void wire_repeat_number(
     int port_,
     int num,
@@ -3434,19 +3423,6 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_test_list_of_raw_nested_string_mirrored');
   late final _wire_test_list_of_raw_nested_string_mirrored =
       _wire_test_list_of_raw_nested_string_mirroredPtr.asFunction<void Function(int)>();
-
-  void wire_test_list_of_nested_enums_mirrored(
-    int port_,
-  ) {
-    return _wire_test_list_of_nested_enums_mirrored(
-      port_,
-    );
-  }
-
-  late final _wire_test_list_of_nested_enums_mirroredPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_test_list_of_nested_enums_mirrored');
-  late final _wire_test_list_of_nested_enums_mirrored =
-      _wire_test_list_of_nested_enums_mirroredPtr.asFunction<void Function(int)>();
 
   void wire_list_of_primitive_enums(
     int port_,

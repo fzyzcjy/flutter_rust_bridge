@@ -270,11 +270,6 @@ pub fn wire_is_app_embedded(port_: MessagePort, app_settings: JsValue) {
 }
 
 #[wasm_bindgen]
-pub fn wire_get_message(port_: MessagePort) {
-    wire_get_message_impl(port_)
-}
-
-#[wasm_bindgen]
 pub fn wire_repeat_number(port_: MessagePort, num: i32, times: usize) {
     wire_repeat_number_impl(port_, num, times)
 }
@@ -757,11 +752,6 @@ pub fn wire_test_raw_string_enum_mirrored(port_: MessagePort, nested: bool) {
 #[wasm_bindgen]
 pub fn wire_test_list_of_raw_nested_string_mirrored(port_: MessagePort) {
     wire_test_list_of_raw_nested_string_mirrored_impl(port_)
-}
-
-#[wasm_bindgen]
-pub fn wire_test_list_of_nested_enums_mirrored(port_: MessagePort) {
-    wire_test_list_of_nested_enums_mirrored_impl(port_)
 }
 
 #[wasm_bindgen]

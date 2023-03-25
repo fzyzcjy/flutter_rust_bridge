@@ -768,16 +768,6 @@ fn wire_is_app_embedded_impl(
         },
     )
 }
-fn wire_get_message_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
-        WrapInfo {
-            debug_name: "get_message",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || move |task_callback| Ok(mirror_ApplicationMessage(get_message())),
-    )
-}
 fn wire_repeat_number_impl(
     port_: MessagePort,
     num: impl Wire2Api<i32> + UnwindSafe,
@@ -2112,23 +2102,6 @@ fn wire_test_list_of_raw_nested_string_mirrored_impl(port_: MessagePort) {
         },
     )
 }
-fn wire_test_list_of_nested_enums_mirrored_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
-        WrapInfo {
-            debug_name: "test_list_of_nested_enums_mirrored",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            move |task_callback| {
-                Ok(test_list_of_nested_enums_mirrored()
-                    .into_iter()
-                    .map(|v| mirror_RawStringEnumMirrored(v.0))
-                    .collect::<Vec<_>>())
-            }
-        },
-    )
-}
 fn wire_list_of_primitive_enums_impl(
     port_: MessagePort,
     weekdays: impl Wire2Api<Vec<Weekdays>> + UnwindSafe,
@@ -2316,9 +2289,6 @@ struct mirror_ApplicationEnv(ApplicationEnv);
 struct mirror_ApplicationEnvVar(ApplicationEnvVar);
 
 #[derive(Clone)]
-struct mirror_ApplicationMessage(ApplicationMessage);
-
-#[derive(Clone)]
 struct mirror_ApplicationMode(ApplicationMode);
 
 #[derive(Clone)]
@@ -2354,16 +2324,6 @@ const _: fn() = || {
         let _: String = ApplicationEnvVar_.0;
         let _: bool = ApplicationEnvVar_.1;
     }
-    match None::<ApplicationMessage>.unwrap() {
-        ApplicationMessage::DisplayMessage(field0) => {
-            let _: String = field0;
-        }
-        ApplicationMessage::RenderPixel { x, y } => {
-            let _: i32 = x;
-            let _: i32 = y;
-        }
-        ApplicationMessage::Exit => {}
-    }
     match None::<ApplicationMode>.unwrap() {
         ApplicationMode::Standalone => {}
         ApplicationMode::Embedded => {}
@@ -2394,6 +2354,9 @@ const _: fn() = || {
         }
         RawStringEnumMirrored::Nested(field0) => {
             let _: NestedRawStringMirrored = field0;
+        }
+        RawStringEnumMirrored::ListOfNested(field0) => {
+            let _: ListOfNestedRawStringMirrored = field0;
         }
     }
     {
@@ -2564,19 +2527,6 @@ impl support::IntoDart for mirror_ApplicationEnvVar {
 }
 impl support::IntoDartExceptPrimitive for mirror_ApplicationEnvVar {}
 
-impl support::IntoDart for mirror_ApplicationMessage {
-    fn into_dart(self) -> support::DartAbi {
-        match self.0 {
-            ApplicationMessage::DisplayMessage(field0) => vec![0.into_dart(), field0.into_dart()],
-            ApplicationMessage::RenderPixel { x, y } => {
-                vec![1.into_dart(), x.into_dart(), y.into_dart()]
-            }
-            ApplicationMessage::Exit => vec![2.into_dart()],
-        }
-        .into_dart()
-    }
-}
-impl support::IntoDartExceptPrimitive for mirror_ApplicationMessage {}
 impl support::IntoDart for mirror_ApplicationMode {
     fn into_dart(self) -> support::DartAbi {
         match self.0 {
@@ -2925,8 +2875,17 @@ impl support::IntoDartExceptPrimitive for Point {}
 impl support::IntoDart for mirror_RawStringEnumMirrored {
     fn into_dart(self) -> support::DartAbi {
         match self.0 {
-            RawStringEnumMirrored::Raw(field0) => vec![0.into_dart(), field0.into_dart()],
-            RawStringEnumMirrored::Nested(field0) => vec![1.into_dart(), field0.into_dart()],
+            RawStringEnumMirrored::Raw(field0) => {
+                vec![0.into_dart(), mirror_RawStringMirrored(field0).into_dart()]
+            }
+            RawStringEnumMirrored::Nested(field0) => vec![
+                1.into_dart(),
+                mirror_NestedRawStringMirrored(field0).into_dart(),
+            ],
+            RawStringEnumMirrored::ListOfNested(field0) => vec![
+                2.into_dart(),
+                mirror_ListOfNestedRawStringMirrored(field0).into_dart(),
+            ],
         }
         .into_dart()
     }

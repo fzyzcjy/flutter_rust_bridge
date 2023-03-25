@@ -238,6 +238,7 @@ impl<'a> Parser<'a> {
                             is_final: true,
                             comments: extract_comments(&pat_type.attrs),
                             default: DefaultValues::extract(&pat_type.attrs),
+                            wrapper_type: None,
                         });
                     }
                 }
