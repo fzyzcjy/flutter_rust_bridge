@@ -687,16 +687,16 @@ pub fn is_app_embedded(app_settings: ApplicationSettings) -> bool {
     matches!(app_settings.mode, ApplicationMode::Embedded)
 }
 
-// #[frb(mirror(ApplicationMessage))]
-// pub enum _ApplicationMessage {
-//     DisplayMessage(String),
-//     RenderPixel { x: i32, y: i32 },
-//     Exit,
-// }
+#[frb(mirror(ApplicationMessage))]
+pub enum _ApplicationMessage {
+    DisplayMessage(String),
+    RenderPixel { x: i32, y: i32 },
+    Exit,
+}
 
-// pub fn get_message() -> ApplicationMessage {
-//     external_lib::poll_messages()[1].clone()
-// }
+pub fn get_message() -> ApplicationMessage {
+    external_lib::poll_messages()[1].clone()
+}
 
 #[frb(mirror(Numbers, Sequences))]
 pub struct _Numbers(pub Vec<i32>);
@@ -1526,7 +1526,7 @@ pub fn test_list_of_raw_nested_string_mirrored() -> ListOfNestedRawStringMirrore
 //     ]
 // }
 
-// This seems to be a bug in the syn parser, for whoever tries to fix it, after each failed build you need to manually remove all rust generated files (bridge_*)
+//This seems to be a bug in the syn parser (v1), for whoever tries to fix it, after each failed build you need to manually remove all rust generated files (bridge_*)
 // pub fn test_raw_string_item_struct_with_raw_string_in_func(r#type: String) -> RawStringItemStruct {
 //     RawStringItemStruct { r#type }
 // }

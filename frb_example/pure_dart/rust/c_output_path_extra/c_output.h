@@ -527,6 +527,8 @@ void wire_get_fallible_app_settings(int64_t port_);
 
 void wire_is_app_embedded(int64_t port_, struct wire_ApplicationSettings *app_settings);
 
+void wire_get_message(int64_t port_);
+
 void wire_repeat_number(int64_t port_, int32_t num, uintptr_t times);
 
 void wire_repeat_sequence(int64_t port_, int32_t seq, uintptr_t times);
@@ -1013,6 +1015,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_get_app_settings);
     dummy_var ^= ((int64_t) (void*) wire_get_fallible_app_settings);
     dummy_var ^= ((int64_t) (void*) wire_is_app_embedded);
+    dummy_var ^= ((int64_t) (void*) wire_get_message);
     dummy_var ^= ((int64_t) (void*) wire_repeat_number);
     dummy_var ^= ((int64_t) (void*) wire_repeat_sequence);
     dummy_var ^= ((int64_t) (void*) wire_first_number);

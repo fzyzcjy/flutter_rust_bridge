@@ -811,6 +811,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["appSettings"],
       );
 
+  Future<ApplicationMessage> getMessage({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_get_message(port_),
+      parseSuccessData: _wire2api_application_message,
+      constMeta: kGetMessageConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kGetMessageConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "get_message",
+        argNames: [],
+      );
+
   Future<Numbers> repeatNumber({required int num, required int times, dynamic hint}) {
     var arg0 = api2wire_i32(num);
     var arg1 = api2wire_usize(times);
@@ -2698,6 +2713,24 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
       field0: _wire2api_String(arr[0]),
       field1: _wire2api_bool(arr[1]),
     );
+  }
+
+  ApplicationMessage _wire2api_application_message(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return ApplicationMessage_DisplayMessage(
+          _wire2api_String(raw[1]),
+        );
+      case 1:
+        return ApplicationMessage_RenderPixel(
+          x: _wire2api_i32(raw[1]),
+          y: _wire2api_i32(raw[2]),
+        );
+      case 2:
+        return ApplicationMessage_Exit();
+      default:
+        throw Exception("unreachable");
+    }
   }
 
   ApplicationMode _wire2api_application_mode(dynamic raw) {

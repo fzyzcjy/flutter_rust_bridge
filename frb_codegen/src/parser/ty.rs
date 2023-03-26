@@ -481,8 +481,8 @@ impl<'a> TypeParser<'a> {
     }
 
     fn extract_type(fields: &Fields) -> Option<String> {
-        match fields {
-            Fields::Named(n) => Some(n.to_token_stream()),
+        let f = match fields {
+            Fields::Named(_) => None,
             Fields::Unnamed(u) => Some(u.to_token_stream()),
             Fields::Unit => None,
         }
@@ -491,7 +491,16 @@ impl<'a> TypeParser<'a> {
                 .trim_start_matches('(')
                 .trim_end_matches(')')
                 .to_string()
-        })
+        });
+
+        if f.is_some()
+            && vec!["String", "bool", "i32", "i64", "f32", "f64"]
+                .contains(&f.as_ref().unwrap().as_str())
+        {
+            return None;
+        }
+
+        f
     }
 
     fn parse_enum_core(&mut self, ident_string: &String) -> IrEnum {

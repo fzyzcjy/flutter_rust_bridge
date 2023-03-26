@@ -279,6 +279,11 @@ pub extern "C" fn wire_is_app_embedded(port_: i64, app_settings: *mut wire_Appli
 }
 
 #[no_mangle]
+pub extern "C" fn wire_get_message(port_: i64) {
+    wire_get_message_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_repeat_number(port_: i64, num: i32, times: usize) {
     wire_repeat_number_impl(port_, num, times)
 }

@@ -223,6 +223,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kIsAppEmbeddedConstMeta;
 
+  Future<ApplicationMessage> getMessage({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kGetMessageConstMeta;
+
   Future<Numbers> repeatNumber({required int num, required int times, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kRepeatNumberConstMeta;
@@ -884,6 +888,18 @@ class ApplicationEnvVar {
     required this.field0,
     required this.field1,
   });
+}
+
+@freezed
+class ApplicationMessage with _$ApplicationMessage {
+  const factory ApplicationMessage.displayMessage(
+    String field0,
+  ) = ApplicationMessage_DisplayMessage;
+  const factory ApplicationMessage.renderPixel({
+    required int x,
+    required int y,
+  }) = ApplicationMessage_RenderPixel;
+  const factory ApplicationMessage.exit() = ApplicationMessage_Exit;
 }
 
 enum ApplicationMode {

@@ -270,6 +270,11 @@ pub fn wire_is_app_embedded(port_: MessagePort, app_settings: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_get_message(port_: MessagePort) {
+    wire_get_message_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_repeat_number(port_: MessagePort, num: i32, times: usize) {
     wire_repeat_number_impl(port_, num, times)
 }

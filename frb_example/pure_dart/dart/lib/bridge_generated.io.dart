@@ -2099,6 +2099,17 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_is_app_embedded =
       _wire_is_app_embeddedPtr.asFunction<void Function(int, ffi.Pointer<wire_ApplicationSettings>)>();
 
+  void wire_get_message(
+    int port_,
+  ) {
+    return _wire_get_message(
+      port_,
+    );
+  }
+
+  late final _wire_get_messagePtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_message');
+  late final _wire_get_message = _wire_get_messagePtr.asFunction<void Function(int)>();
+
   void wire_repeat_number(
     int port_,
     int num,
