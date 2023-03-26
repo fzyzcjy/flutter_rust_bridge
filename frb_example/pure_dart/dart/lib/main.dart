@@ -445,18 +445,18 @@ void main(List<String> args) async {
         true);
   });
 
-  // test('dart call getMessage()', () async {
-  //   var message = await api.getMessage();
-  //   expect(message is ApplicationMessage_RenderPixel, true);
-  //   message as ApplicationMessage_RenderPixel;
-  //   expect(message.x, 5);
-  //   expect(message.y, 10);
+  test('dart call getMessage()', () async {
+    var message = await api.getMessage();
+    expect(message is ApplicationMessage_RenderPixel, true);
+    message as ApplicationMessage_RenderPixel;
+    expect(message.x, 5);
+    expect(message.y, 10);
 
-  //   _createGarbage();
-  //   await Future.delayed(Duration(seconds: 1));
-  //   _createGarbage();
-  //   await Future.delayed(Duration(seconds: 1));
-  // });
+    _createGarbage();
+    await Future.delayed(Duration(seconds: 1));
+    _createGarbage();
+    await Future.delayed(Duration(seconds: 1));
+  });
 
   test('dart call repeatNumber()', () async {
     var numbers = await api.repeatNumber(num: 1, times: 10);
@@ -1263,15 +1263,15 @@ void main(List<String> args) async {
   });
 }
 
-// int _createGarbage() {
-//   print('dart create garbage (thus make it more possible to GC)');
-//   var cum = 0;
-//   for (var i = 0; i < 1000; ++i) {
-//     final l = List.filled(5000, 42);
-//     cum += l[42];
-//   }
-//   return cum;
-// }
+int _createGarbage() {
+  print('dart create garbage (thus make it more possible to GC)');
+  var cum = 0;
+  for (var i = 0; i < 1000; ++i) {
+    final l = List.filled(5000, 42);
+    cum += l[42];
+  }
+  return cum;
+}
 
 MyTreeNode _createMyTreeNode({required int arrLen}) {
   return MyTreeNode(

@@ -481,27 +481,19 @@ impl<'a> TypeParser<'a> {
     }
 
     fn extract_type(fields: &Fields) -> Option<String> {
-        let f = match fields {
-            Fields::Named(_) => None,
-            Fields::Unnamed(u) => Some(u.to_token_stream()),
-            Fields::Unit => None,
+        match fields {
+            Fields::Named(_) | Fields::Unit => None,
+            Fields::Unnamed(u) => {
+                let type_string = u.to_token_stream().to_string();
+                if ["String", "bool", "i32", "i64", "f32", "f64"].contains(&type_string.trim_matches(|c| c == '(' || c == ')')) {
+                    None
+                } else {
+                    Some(type_string)
+                }
+            }
         }
-        .map(|s| {
-            s.to_string()
-                .trim_start_matches('(')
-                .trim_end_matches(')')
-                .to_string()
-        });
-
-        if f.is_some()
-            && vec!["String", "bool", "i32", "i64", "f32", "f64"]
-                .contains(&f.as_ref().unwrap().as_str())
-        {
-            return None;
-        }
-
-        f
     }
+
 
     fn parse_enum_core(&mut self, ident_string: &String) -> IrEnum {
         let src_enum = self.src_enums[ident_string];
