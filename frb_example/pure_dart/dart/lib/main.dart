@@ -628,7 +628,7 @@ void main(List<String> args) async {
   //   expect(output.type, "not a type ;')");
   // });
 
-  test('test dart test more than jus ton eraw string struct', () async {
+  test('test dart test more than just one raw string struct', () async {
     final output = await api.testMoreThanJustOneRawStringStruct();
     expect(output, isA<MoreThanJustOneRawStringStruct>());
     expect(output.regular, "regular");
