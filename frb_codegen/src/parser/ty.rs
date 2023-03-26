@@ -484,8 +484,12 @@ impl<'a> TypeParser<'a> {
         match fields {
             Fields::Named(_) | Fields::Unit => None,
             Fields::Unnamed(u) => {
-                let type_string = u.to_token_stream().to_string();
-                if ["String", "bool", "i32", "i64", "f32", "f64"].contains(&type_string.trim_matches(|c| c == '(' || c == ')')) {
+                let type_string = u
+                    .to_token_stream()
+                    .to_string()
+                    .trim_matches(|c| c == '(' || c == ')')
+                    .to_string();
+                if ["String", "bool", "i32", "i64", "f32", "f64"].contains(&type_string.as_str()) {
                     None
                 } else {
                     Some(type_string)
@@ -493,7 +497,6 @@ impl<'a> TypeParser<'a> {
             }
         }
     }
-
 
     fn parse_enum_core(&mut self, ident_string: &String) -> IrEnum {
         let src_enum = self.src_enums[ident_string];
