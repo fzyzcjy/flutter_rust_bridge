@@ -232,12 +232,25 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                                     self.context.ir_file,
                                     self.context.config,
                                 );
-                                if let Some(wrapper) = field.wrapper_type.clone() {
+                                /*if let Some(wrapper) = field.wrapper_type.clone() {
                                     format!(
                                         "{}({}).into_dart()",
                                         wrapper,
                                         field.name.rust_style().to_owned()
                                     )
+                                } else {
+                                    gen.convert_to_dart(field.name.rust_style().to_owned())
+                                }*/
+                                if field.mirrored_enum {
+                                    if let Some(struct_name) = field.ty.mirrored_nested() {
+                                        format!(
+                                            "mirror_{}({}).into_dart()",
+                                            struct_name,
+                                            field.name.rust_style().to_owned()
+                                        )
+                                    } else {
+                                        gen.convert_to_dart(field.name.rust_style().to_owned())
+                                    }
                                 } else {
                                     gen.convert_to_dart(field.name.rust_style().to_owned())
                                 }

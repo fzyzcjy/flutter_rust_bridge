@@ -7,7 +7,7 @@ crate::ir! {
 pub struct IrField {
     pub ty: IrType,
     pub name: IrIdent,
-    pub wrapper_type: Option<String>,
+    pub mirrored_enum: bool,
     pub is_final: bool,
     pub comments: Vec<IrComment>,
     pub default: Option<DefaultValues>,

@@ -480,24 +480,6 @@ impl<'a> TypeParser<'a> {
         }
     }
 
-    fn extract_type(fields: &Fields) -> Option<String> {
-        match fields {
-            Fields::Named(_) | Fields::Unit => None,
-            Fields::Unnamed(u) => {
-                let type_string = u
-                    .to_token_stream()
-                    .to_string()
-                    .trim_matches(|c| c == '(' || c == ')')
-                    .to_string();
-                if ["String", "bool", "i32", "i64", "f32", "f64"].contains(&type_string.as_str()) {
-                    None
-                } else {
-                    Some(type_string)
-                }
-            }
-        }
-    }
-
     fn parse_enum_core(&mut self, ident_string: &String) -> IrEnum {
         let src_enum = self.src_enums[ident_string];
         let name = src_enum.ident.to_string();
@@ -544,12 +526,7 @@ impl<'a> TypeParser<'a> {
                                             .map(ToString::to_string)
                                             .unwrap_or_else(|| format!("field{idx}")),
                                     ),
-                                    wrapper_type: if src_enum.mirror {
-                                        Self::extract_type(&variant.fields)
-                                            .map(|s| format!("mirror_{}", s))
-                                    } else {
-                                        None
-                                    },
+                                    mirrored_enum: src_enum.mirror,
                                     ty: self.parse_type(&field.ty),
                                     is_final: true,
                                     comments: extract_comments(&field.attrs),
@@ -580,7 +557,7 @@ impl<'a> TypeParser<'a> {
             let field_type = self.parse_type(&field.ty);
             fields.push(IrField {
                 name: IrIdent::new(field_name),
-                wrapper_type: None,
+                mirrored_enum: false,
                 ty: field_type,
                 is_final: !markers::has_non_final(&field.attrs),
                 comments: extract_comments(&field.attrs),
