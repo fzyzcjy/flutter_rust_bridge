@@ -668,19 +668,16 @@ void main(List<String> args) async {
 
   test('test abc', () async {
     final output1 = await api.testAbcEnum(abc: Abc.a(A(a: "test")));
-    expect(output1.field0, isA<A>());
-    expect((output1.field0 as A).a, "test");
+    expect((output1 as Abc_A).field0.a, "test");
 
     final output2 = await api.testAbcEnum(abc: Abc.b(B(b: 1)));
-    expect(output2.field0, isA<B>());
-    expect((output2.field0 as B).b, 1);
+    expect((output2 as Abc_B).field0.b, 1);
 
     final output3 = await api.testAbcEnum(abc: Abc.c(C(c: false)));
-    expect(output3.field0, isA<C>());
-    expect((output3.field0 as C).c, false);
+    expect((output3 as Abc_C).field0.c, false);
 
     final output4 = await api.testAbcEnum(abc: Abc.justInt(1));
-    expect(output4.field0, 1);
+    expect((output4 as Abc_JustInt).field0, 1);
   });
 
   test('test contains mirrored sub struct', () async {
