@@ -15,6 +15,630 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
+mixin _$ABC {
+  Object get field0 => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(A field0) a,
+    required TResult Function(B field0) b,
+    required TResult Function(C field0) c,
+    required TResult Function(int field0) justInt,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(A field0)? a,
+    TResult? Function(B field0)? b,
+    TResult? Function(C field0)? c,
+    TResult? Function(int field0)? justInt,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(A field0)? a,
+    TResult Function(B field0)? b,
+    TResult Function(C field0)? c,
+    TResult Function(int field0)? justInt,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ABC_A value) a,
+    required TResult Function(ABC_B value) b,
+    required TResult Function(ABC_C value) c,
+    required TResult Function(ABC_JustInt value) justInt,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ABC_A value)? a,
+    TResult? Function(ABC_B value)? b,
+    TResult? Function(ABC_C value)? c,
+    TResult? Function(ABC_JustInt value)? justInt,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ABC_A value)? a,
+    TResult Function(ABC_B value)? b,
+    TResult Function(ABC_C value)? c,
+    TResult Function(ABC_JustInt value)? justInt,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ABCCopyWith<$Res> {
+  factory $ABCCopyWith(ABC value, $Res Function(ABC) then) = _$ABCCopyWithImpl<$Res, ABC>;
+}
+
+/// @nodoc
+class _$ABCCopyWithImpl<$Res, $Val extends ABC> implements $ABCCopyWith<$Res> {
+  _$ABCCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$ABC_ACopyWith<$Res> {
+  factory _$$ABC_ACopyWith(_$ABC_A value, $Res Function(_$ABC_A) then) = __$$ABC_ACopyWithImpl<$Res>;
+  @useResult
+  $Res call({A field0});
+}
+
+/// @nodoc
+class __$$ABC_ACopyWithImpl<$Res> extends _$ABCCopyWithImpl<$Res, _$ABC_A> implements _$$ABC_ACopyWith<$Res> {
+  __$$ABC_ACopyWithImpl(_$ABC_A _value, $Res Function(_$ABC_A) _then) : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$ABC_A(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as A,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ABC_A implements ABC_A {
+  const _$ABC_A(this.field0);
+
+  @override
+  final A field0;
+
+  @override
+  String toString() {
+    return 'ABC.a(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ABC_A &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ABC_ACopyWith<_$ABC_A> get copyWith => __$$ABC_ACopyWithImpl<_$ABC_A>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(A field0) a,
+    required TResult Function(B field0) b,
+    required TResult Function(C field0) c,
+    required TResult Function(int field0) justInt,
+  }) {
+    return a(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(A field0)? a,
+    TResult? Function(B field0)? b,
+    TResult? Function(C field0)? c,
+    TResult? Function(int field0)? justInt,
+  }) {
+    return a?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(A field0)? a,
+    TResult Function(B field0)? b,
+    TResult Function(C field0)? c,
+    TResult Function(int field0)? justInt,
+    required TResult orElse(),
+  }) {
+    if (a != null) {
+      return a(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ABC_A value) a,
+    required TResult Function(ABC_B value) b,
+    required TResult Function(ABC_C value) c,
+    required TResult Function(ABC_JustInt value) justInt,
+  }) {
+    return a(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ABC_A value)? a,
+    TResult? Function(ABC_B value)? b,
+    TResult? Function(ABC_C value)? c,
+    TResult? Function(ABC_JustInt value)? justInt,
+  }) {
+    return a?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ABC_A value)? a,
+    TResult Function(ABC_B value)? b,
+    TResult Function(ABC_C value)? c,
+    TResult Function(ABC_JustInt value)? justInt,
+    required TResult orElse(),
+  }) {
+    if (a != null) {
+      return a(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ABC_A implements ABC {
+  const factory ABC_A(final A field0) = _$ABC_A;
+
+  @override
+  A get field0;
+  @JsonKey(ignore: true)
+  _$$ABC_ACopyWith<_$ABC_A> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ABC_BCopyWith<$Res> {
+  factory _$$ABC_BCopyWith(_$ABC_B value, $Res Function(_$ABC_B) then) = __$$ABC_BCopyWithImpl<$Res>;
+  @useResult
+  $Res call({B field0});
+}
+
+/// @nodoc
+class __$$ABC_BCopyWithImpl<$Res> extends _$ABCCopyWithImpl<$Res, _$ABC_B> implements _$$ABC_BCopyWith<$Res> {
+  __$$ABC_BCopyWithImpl(_$ABC_B _value, $Res Function(_$ABC_B) _then) : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$ABC_B(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as B,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ABC_B implements ABC_B {
+  const _$ABC_B(this.field0);
+
+  @override
+  final B field0;
+
+  @override
+  String toString() {
+    return 'ABC.b(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ABC_B &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ABC_BCopyWith<_$ABC_B> get copyWith => __$$ABC_BCopyWithImpl<_$ABC_B>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(A field0) a,
+    required TResult Function(B field0) b,
+    required TResult Function(C field0) c,
+    required TResult Function(int field0) justInt,
+  }) {
+    return b(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(A field0)? a,
+    TResult? Function(B field0)? b,
+    TResult? Function(C field0)? c,
+    TResult? Function(int field0)? justInt,
+  }) {
+    return b?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(A field0)? a,
+    TResult Function(B field0)? b,
+    TResult Function(C field0)? c,
+    TResult Function(int field0)? justInt,
+    required TResult orElse(),
+  }) {
+    if (b != null) {
+      return b(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ABC_A value) a,
+    required TResult Function(ABC_B value) b,
+    required TResult Function(ABC_C value) c,
+    required TResult Function(ABC_JustInt value) justInt,
+  }) {
+    return b(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ABC_A value)? a,
+    TResult? Function(ABC_B value)? b,
+    TResult? Function(ABC_C value)? c,
+    TResult? Function(ABC_JustInt value)? justInt,
+  }) {
+    return b?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ABC_A value)? a,
+    TResult Function(ABC_B value)? b,
+    TResult Function(ABC_C value)? c,
+    TResult Function(ABC_JustInt value)? justInt,
+    required TResult orElse(),
+  }) {
+    if (b != null) {
+      return b(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ABC_B implements ABC {
+  const factory ABC_B(final B field0) = _$ABC_B;
+
+  @override
+  B get field0;
+  @JsonKey(ignore: true)
+  _$$ABC_BCopyWith<_$ABC_B> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ABC_CCopyWith<$Res> {
+  factory _$$ABC_CCopyWith(_$ABC_C value, $Res Function(_$ABC_C) then) = __$$ABC_CCopyWithImpl<$Res>;
+  @useResult
+  $Res call({C field0});
+}
+
+/// @nodoc
+class __$$ABC_CCopyWithImpl<$Res> extends _$ABCCopyWithImpl<$Res, _$ABC_C> implements _$$ABC_CCopyWith<$Res> {
+  __$$ABC_CCopyWithImpl(_$ABC_C _value, $Res Function(_$ABC_C) _then) : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$ABC_C(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as C,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ABC_C implements ABC_C {
+  const _$ABC_C(this.field0);
+
+  @override
+  final C field0;
+
+  @override
+  String toString() {
+    return 'ABC.c(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ABC_C &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ABC_CCopyWith<_$ABC_C> get copyWith => __$$ABC_CCopyWithImpl<_$ABC_C>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(A field0) a,
+    required TResult Function(B field0) b,
+    required TResult Function(C field0) c,
+    required TResult Function(int field0) justInt,
+  }) {
+    return c(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(A field0)? a,
+    TResult? Function(B field0)? b,
+    TResult? Function(C field0)? c,
+    TResult? Function(int field0)? justInt,
+  }) {
+    return c?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(A field0)? a,
+    TResult Function(B field0)? b,
+    TResult Function(C field0)? c,
+    TResult Function(int field0)? justInt,
+    required TResult orElse(),
+  }) {
+    if (c != null) {
+      return c(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ABC_A value) a,
+    required TResult Function(ABC_B value) b,
+    required TResult Function(ABC_C value) c,
+    required TResult Function(ABC_JustInt value) justInt,
+  }) {
+    return c(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ABC_A value)? a,
+    TResult? Function(ABC_B value)? b,
+    TResult? Function(ABC_C value)? c,
+    TResult? Function(ABC_JustInt value)? justInt,
+  }) {
+    return c?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ABC_A value)? a,
+    TResult Function(ABC_B value)? b,
+    TResult Function(ABC_C value)? c,
+    TResult Function(ABC_JustInt value)? justInt,
+    required TResult orElse(),
+  }) {
+    if (c != null) {
+      return c(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ABC_C implements ABC {
+  const factory ABC_C(final C field0) = _$ABC_C;
+
+  @override
+  C get field0;
+  @JsonKey(ignore: true)
+  _$$ABC_CCopyWith<_$ABC_C> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ABC_JustIntCopyWith<$Res> {
+  factory _$$ABC_JustIntCopyWith(_$ABC_JustInt value, $Res Function(_$ABC_JustInt) then) =
+      __$$ABC_JustIntCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int field0});
+}
+
+/// @nodoc
+class __$$ABC_JustIntCopyWithImpl<$Res> extends _$ABCCopyWithImpl<$Res, _$ABC_JustInt>
+    implements _$$ABC_JustIntCopyWith<$Res> {
+  __$$ABC_JustIntCopyWithImpl(_$ABC_JustInt _value, $Res Function(_$ABC_JustInt) _then) : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$ABC_JustInt(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ABC_JustInt implements ABC_JustInt {
+  const _$ABC_JustInt(this.field0);
+
+  @override
+  final int field0;
+
+  @override
+  String toString() {
+    return 'ABC.justInt(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ABC_JustInt &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ABC_JustIntCopyWith<_$ABC_JustInt> get copyWith => __$$ABC_JustIntCopyWithImpl<_$ABC_JustInt>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(A field0) a,
+    required TResult Function(B field0) b,
+    required TResult Function(C field0) c,
+    required TResult Function(int field0) justInt,
+  }) {
+    return justInt(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(A field0)? a,
+    TResult? Function(B field0)? b,
+    TResult? Function(C field0)? c,
+    TResult? Function(int field0)? justInt,
+  }) {
+    return justInt?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(A field0)? a,
+    TResult Function(B field0)? b,
+    TResult Function(C field0)? c,
+    TResult Function(int field0)? justInt,
+    required TResult orElse(),
+  }) {
+    if (justInt != null) {
+      return justInt(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ABC_A value) a,
+    required TResult Function(ABC_B value) b,
+    required TResult Function(ABC_C value) c,
+    required TResult Function(ABC_JustInt value) justInt,
+  }) {
+    return justInt(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ABC_A value)? a,
+    TResult? Function(ABC_B value)? b,
+    TResult? Function(ABC_C value)? c,
+    TResult? Function(ABC_JustInt value)? justInt,
+  }) {
+    return justInt?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ABC_A value)? a,
+    TResult Function(ABC_B value)? b,
+    TResult Function(ABC_C value)? c,
+    TResult Function(ABC_JustInt value)? justInt,
+    required TResult orElse(),
+  }) {
+    if (justInt != null) {
+      return justInt(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ABC_JustInt implements ABC {
+  const factory ABC_JustInt(final int field0) = _$ABC_JustInt;
+
+  @override
+  int get field0;
+  @JsonKey(ignore: true)
+  _$$ABC_JustIntCopyWith<_$ABC_JustInt> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ApplicationMessage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({

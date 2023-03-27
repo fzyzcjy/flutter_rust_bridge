@@ -790,6 +790,16 @@ pub extern "C" fn wire_list_of_primitive_enums(port_: i64, weekdays: *mut wire_l
 }
 
 #[no_mangle]
+pub extern "C" fn wire_test_abc_enum(port_: i64, abc: *mut wire_ABC) {
+    wire_test_abc_enum_impl(port_, abc)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_contains_mirrored_sub_struct(port_: i64) {
+    wire_test_contains_mirrored_sub_struct_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -918,6 +928,16 @@ pub extern "C" fn new_box_autoadd_HideData_0() -> *mut wire_HideData {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_a_0() -> *mut wire_A {
+    support::new_leak_box_ptr(wire_A::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_abc_0() -> *mut wire_ABC {
+    support::new_leak_box_ptr(wire_ABC::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_application_env_0() -> *mut wire_ApplicationEnv {
     support::new_leak_box_ptr(wire_ApplicationEnv::new_with_null_ptr())
 }
@@ -933,8 +953,18 @@ pub extern "C" fn new_box_autoadd_attribute_0() -> *mut wire_Attribute {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_b_0() -> *mut wire_B {
+    support::new_leak_box_ptr(wire_B::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_bool_0(value: bool) -> *mut bool {
     support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_c_0() -> *mut wire_C {
+    support::new_leak_box_ptr(wire_C::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1507,6 +1537,40 @@ impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut wire_uint_8_list {
         ZeroCopyBuffer(self.wire2api())
     }
 }
+impl Wire2Api<A> for wire_A {
+    fn wire2api(self) -> A {
+        A {
+            a: self.a.wire2api(),
+        }
+    }
+}
+impl Wire2Api<ABC> for wire_ABC {
+    fn wire2api(self) -> ABC {
+        match self.tag {
+            0 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.A);
+                ABC::A(ans.field0.wire2api())
+            },
+            1 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.B);
+                ABC::B(ans.field0.wire2api())
+            },
+            2 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.C);
+                ABC::C(ans.field0.wire2api())
+            },
+            3 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.JustInt);
+                ABC::JustInt(ans.field0.wire2api())
+            },
+            _ => unreachable!(),
+        }
+    }
+}
 impl Wire2Api<ApplicationEnv> for wire_ApplicationEnv {
     fn wire2api(self) -> ApplicationEnv {
         ApplicationEnv {
@@ -1536,6 +1600,13 @@ impl Wire2Api<Attribute> for wire_Attribute {
         Attribute {
             key: self.key.wire2api(),
             value: self.value.wire2api(),
+        }
+    }
+}
+impl Wire2Api<B> for wire_B {
+    fn wire2api(self) -> B {
+        B {
+            b: self.b.wire2api(),
         }
     }
 }
@@ -1569,6 +1640,18 @@ impl Wire2Api<RustOpaque<HideData>> for *mut wire_HideData {
         Wire2Api::<RustOpaque<HideData>>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<A> for *mut wire_A {
+    fn wire2api(self) -> A {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<A>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<ABC> for *mut wire_ABC {
+    fn wire2api(self) -> ABC {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<ABC>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<ApplicationEnv> for *mut wire_ApplicationEnv {
     fn wire2api(self) -> ApplicationEnv {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1587,9 +1670,21 @@ impl Wire2Api<Attribute> for *mut wire_Attribute {
         Wire2Api::<Attribute>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<B> for *mut wire_B {
+    fn wire2api(self) -> B {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<B>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<bool> for *mut bool {
     fn wire2api(self) -> bool {
         unsafe { *support::box_from_leak_ptr(self) }
+    }
+}
+impl Wire2Api<C> for *mut wire_C {
+    fn wire2api(self) -> C {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<C>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<ConcatenateWith> for *mut wire_ConcatenateWith {
@@ -1832,6 +1927,13 @@ impl Wire2Api<Box<Weekdays>> for *mut i32 {
     fn wire2api(self) -> Box<Weekdays> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<Weekdays>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<C> for wire_C {
+    fn wire2api(self) -> C {
+        C {
+            c: self.c.wire2api(),
+        }
     }
 }
 impl Wire2Api<ConcatenateWith> for wire_ConcatenateWith {
@@ -2342,6 +2444,12 @@ pub struct wire_StringList {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_A {
+    a: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_ApplicationEnv {
     vars: *mut wire_list_application_env_var,
 }
@@ -2372,8 +2480,20 @@ pub struct wire_Attribute {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_B {
+    b: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_Blob {
     field0: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_C {
+    c: bool,
 }
 
 #[repr(C)]
@@ -2629,6 +2749,45 @@ pub struct wire_uint_8_list {
 #[derive(Clone)]
 pub struct wire_UserId {
     value: u32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_ABC {
+    tag: i32,
+    kind: *mut ABCKind,
+}
+
+#[repr(C)]
+pub union ABCKind {
+    A: *mut wire_ABC_A,
+    B: *mut wire_ABC_B,
+    C: *mut wire_ABC_C,
+    JustInt: *mut wire_ABC_JustInt,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_ABC_A {
+    field0: *mut wire_A,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_ABC_B {
+    field0: *mut wire_B,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_ABC_C {
+    field0: *mut wire_C,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_ABC_JustInt {
+    field0: i32,
 }
 
 #[repr(C)]
@@ -2890,6 +3049,65 @@ impl NewWithNullPtr for wire_RwLockHideData {
     }
 }
 
+impl NewWithNullPtr for wire_A {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            a: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl Default for wire_A {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
+impl NewWithNullPtr for wire_ABC {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_ABC_A() -> *mut ABCKind {
+    support::new_leak_box_ptr(ABCKind {
+        A: support::new_leak_box_ptr(wire_ABC_A {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_ABC_B() -> *mut ABCKind {
+    support::new_leak_box_ptr(ABCKind {
+        B: support::new_leak_box_ptr(wire_ABC_B {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_ABC_C() -> *mut ABCKind {
+    support::new_leak_box_ptr(ABCKind {
+        C: support::new_leak_box_ptr(wire_ABC_C {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_ABC_JustInt() -> *mut ABCKind {
+    support::new_leak_box_ptr(ABCKind {
+        JustInt: support::new_leak_box_ptr(wire_ABC_JustInt {
+            field0: Default::default(),
+        }),
+    })
+}
+
 impl NewWithNullPtr for wire_ApplicationEnv {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -2952,6 +3170,20 @@ impl Default for wire_Attribute {
     }
 }
 
+impl NewWithNullPtr for wire_B {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            b: Default::default(),
+        }
+    }
+}
+
+impl Default for wire_B {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
 impl NewWithNullPtr for wire_Blob {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -2961,6 +3193,20 @@ impl NewWithNullPtr for wire_Blob {
 }
 
 impl Default for wire_Blob {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
+impl NewWithNullPtr for wire_C {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            c: Default::default(),
+        }
+    }
+}
+
+impl Default for wire_C {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }

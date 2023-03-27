@@ -2128,6 +2128,29 @@ fn wire_list_of_primitive_enums_impl(
         },
     )
 }
+fn wire_test_abc_enum_impl(port_: MessagePort, abc: impl Wire2Api<ABC> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_abc_enum",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_abc = abc.wire2api();
+            move |task_callback| Ok(test_abc_enum(api_abc))
+        },
+    )
+}
+fn wire_test_contains_mirrored_sub_struct_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_contains_mirrored_sub_struct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(test_contains_mirrored_sub_struct()),
+    )
+}
 fn wire_sum__method__SumWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<SumWith> + UnwindSafe,
@@ -2529,6 +2552,25 @@ impl Wire2Api<Weekdays> for i32 {
 }
 // Section: impl IntoDart
 
+impl support::IntoDart for A {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.a.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for A {}
+
+impl support::IntoDart for ABC {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::A(field0) => vec![0.into_dart(), field0.into_dart()],
+            Self::B(field0) => vec![1.into_dart(), field0.into_dart()],
+            Self::C(field0) => vec![2.into_dart(), field0.into_dart()],
+            Self::JustInt(field0) => vec![3.into_dart(), field0.into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for ABC {}
 impl support::IntoDart for mirror_ApplicationEnv {
     fn into_dart(self) -> support::DartAbi {
         vec![self
@@ -2597,6 +2639,13 @@ impl support::IntoDart for Attribute {
 }
 impl support::IntoDartExceptPrimitive for Attribute {}
 
+impl support::IntoDart for B {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.b.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for B {}
+
 impl support::IntoDart for BigBuffers {
     fn into_dart(self) -> support::DartAbi {
         vec![self.int64.into_dart(), self.uint64.into_dart()].into_dart()
@@ -2611,12 +2660,30 @@ impl support::IntoDart for Blob {
 }
 impl support::IntoDartExceptPrimitive for Blob {}
 
+impl support::IntoDart for C {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.c.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for C {}
+
 impl support::IntoDart for ConcatenateWith {
     fn into_dart(self) -> support::DartAbi {
         vec![self.a.into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for ConcatenateWith {}
+
+impl support::IntoDart for ContainsMirroredSubStruct {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            mirror_RawStringMirrored(self.test).into_dart(),
+            self.test2.into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for ContainsMirroredSubStruct {}
 
 impl support::IntoDart for DartOpaqueNested {
     fn into_dart(self) -> support::DartAbi {

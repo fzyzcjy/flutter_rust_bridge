@@ -526,11 +526,13 @@ impl<'a> TypeParser<'a> {
                                             .map(ToString::to_string)
                                             .unwrap_or_else(|| format!("field{idx}")),
                                     ),
-                                    mirrored_enum: src_enum.mirror,
                                     ty: self.parse_type(&field.ty),
                                     is_final: true,
                                     comments: extract_comments(&field.attrs),
                                     default: DefaultValues::extract(&field.attrs),
+                                    settings: IrFieldSettings {
+                                        is_in_mirrored_enum: src_enum.mirror,
+                                    },
                                 })
                                 .collect(),
                         })
@@ -557,11 +559,11 @@ impl<'a> TypeParser<'a> {
             let field_type = self.parse_type(&field.ty);
             fields.push(IrField {
                 name: IrIdent::new(field_name),
-                mirrored_enum: false,
                 ty: field_type,
                 is_final: !markers::has_non_final(&field.attrs),
                 comments: extract_comments(&field.attrs),
                 default: DefaultValues::extract(&field.attrs),
+                settings: IrFieldSettings::default(),
             });
         }
         let name = src_struct.ident.to_string();

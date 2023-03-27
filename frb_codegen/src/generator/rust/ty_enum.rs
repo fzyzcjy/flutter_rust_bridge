@@ -232,16 +232,10 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                                     self.context.ir_file,
                                     self.context.config,
                                 );
-                                let struct_name = field.ty.mirrored_nested();
-                                if field.mirrored_enum && struct_name.is_some() {
-                                    format!(
-                                        "mirror_{}({}).into_dart()",
-                                        struct_name.unwrap(),
-                                        field.name.rust_style().to_owned()
-                                    )
-                                } else {
-                                    gen.convert_to_dart(field.name.rust_style().to_owned())
-                                }
+
+                                gen.convert_to_dart(
+                                    field.try_name_mirror(field.name.rust_style().to_owned()),
+                                )
                             }))
                             .collect::<Vec<_>>();
                         let pattern = st

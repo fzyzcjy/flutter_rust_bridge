@@ -2376,6 +2376,37 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["weekdays"],
       );
 
+  Future<ABC> testAbcEnum({required ABC abc, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_abc(abc);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_abc_enum(port_, arg0),
+      parseSuccessData: _wire2api_abc,
+      constMeta: kTestAbcEnumConstMeta,
+      argValues: [abc],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestAbcEnumConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_abc_enum",
+        argNames: ["abc"],
+      );
+
+  Future<ContainsMirroredSubStruct> testContainsMirroredSubStruct({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_contains_mirrored_sub_struct(port_),
+      parseSuccessData: _wire2api_contains_mirrored_sub_struct,
+      constMeta: kTestContainsMirroredSubStructConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestContainsMirroredSubStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_contains_mirrored_sub_struct",
+        argNames: [],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_sum_with(that);
     var arg1 = api2wire_u32(y);
@@ -2698,6 +2729,37 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return raw as Uint8List;
   }
 
+  A _wire2api_a(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return A(
+      a: _wire2api_String(arr[0]),
+    );
+  }
+
+  ABC _wire2api_abc(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return ABC_A(
+          _wire2api_box_autoadd_a(raw[1]),
+        );
+      case 1:
+        return ABC_B(
+          _wire2api_box_autoadd_b(raw[1]),
+        );
+      case 2:
+        return ABC_C(
+          _wire2api_box_autoadd_c(raw[1]),
+        );
+      case 3:
+        return ABC_JustInt(
+          _wire2api_i32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
   ApplicationEnv _wire2api_application_env(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
@@ -2758,6 +2820,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     );
   }
 
+  B _wire2api_b(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return B(
+      b: _wire2api_i32(arr[0]),
+    );
+  }
+
   BigBuffers _wire2api_big_buffers(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
@@ -2803,6 +2873,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _wire2api_HideData(raw);
   }
 
+  A _wire2api_box_autoadd_a(dynamic raw) {
+    return _wire2api_a(raw);
+  }
+
   ApplicationEnv _wire2api_box_autoadd_application_env(dynamic raw) {
     return _wire2api_application_env(raw);
   }
@@ -2811,8 +2885,16 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _wire2api_attribute(raw);
   }
 
+  B _wire2api_box_autoadd_b(dynamic raw) {
+    return _wire2api_b(raw);
+  }
+
   bool _wire2api_box_autoadd_bool(dynamic raw) {
     return raw as bool;
+  }
+
+  C _wire2api_box_autoadd_c(dynamic raw) {
+    return _wire2api_c(raw);
   }
 
   Element _wire2api_box_autoadd_element(dynamic raw) {
@@ -2879,12 +2961,29 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _wire2api_u8_array_8(raw);
   }
 
+  C _wire2api_c(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return C(
+      c: _wire2api_bool(arr[0]),
+    );
+  }
+
   ConcatenateWith _wire2api_concatenate_with(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return ConcatenateWith(
       bridge: this,
       a: _wire2api_String(arr[0]),
+    );
+  }
+
+  ContainsMirroredSubStruct _wire2api_contains_mirrored_sub_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return ContainsMirroredSubStruct(
+      test: _wire2api_raw_string_mirrored(arr[0]),
+      test2: _wire2api_a(arr[1]),
     );
   }
 

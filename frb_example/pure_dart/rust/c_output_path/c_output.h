@@ -395,6 +395,46 @@ typedef struct wire_list_weekdays {
   int32_t len;
 } wire_list_weekdays;
 
+typedef struct wire_A {
+  struct wire_uint_8_list *a;
+} wire_A;
+
+typedef struct wire_ABC_A {
+  struct wire_A *field0;
+} wire_ABC_A;
+
+typedef struct wire_B {
+  int32_t b;
+} wire_B;
+
+typedef struct wire_ABC_B {
+  struct wire_B *field0;
+} wire_ABC_B;
+
+typedef struct wire_C {
+  bool c;
+} wire_C;
+
+typedef struct wire_ABC_C {
+  struct wire_C *field0;
+} wire_ABC_C;
+
+typedef struct wire_ABC_JustInt {
+  int32_t field0;
+} wire_ABC_JustInt;
+
+typedef union ABCKind {
+  struct wire_ABC_A *A;
+  struct wire_ABC_B *B;
+  struct wire_ABC_C *C;
+  struct wire_ABC_JustInt *JustInt;
+} ABCKind;
+
+typedef struct wire_ABC {
+  int32_t tag;
+  union ABCKind *kind;
+} wire_ABC;
+
 typedef struct wire_SumWith {
   uint32_t x;
 } wire_SumWith;
@@ -729,6 +769,10 @@ void wire_test_list_of_raw_nested_string_mirrored(int64_t port_);
 
 void wire_list_of_primitive_enums(int64_t port_, struct wire_list_weekdays *weekdays);
 
+void wire_test_abc_enum(int64_t port_, struct wire_ABC *abc);
+
+void wire_test_contains_mirrored_sub_struct(int64_t port_);
+
 void wire_sum__method__SumWith(int64_t port_, struct wire_SumWith *that, uint32_t y, uint32_t z);
 
 void wire_new__static_method__ConcatenateWith(int64_t port_, struct wire_uint_8_list *a);
@@ -779,13 +823,21 @@ struct wire_DartOpaque *new_box_autoadd_DartOpaque_0(void);
 
 struct wire_HideData *new_box_autoadd_HideData_0(void);
 
+struct wire_A *new_box_autoadd_a_0(void);
+
+struct wire_ABC *new_box_autoadd_abc_0(void);
+
 struct wire_ApplicationEnv *new_box_autoadd_application_env_0(void);
 
 struct wire_ApplicationSettings *new_box_autoadd_application_settings_0(void);
 
 struct wire_Attribute *new_box_autoadd_attribute_0(void);
 
+struct wire_B *new_box_autoadd_b_0(void);
+
 bool *new_box_autoadd_bool_0(bool value);
+
+struct wire_C *new_box_autoadd_c_0(void);
 
 struct wire_ConcatenateWith *new_box_autoadd_concatenate_with_0(void);
 
@@ -930,6 +982,14 @@ const void *share_opaque_NonSendHideData(const void *ptr);
 void drop_opaque_RwLockHideData(const void *ptr);
 
 const void *share_opaque_RwLockHideData(const void *ptr);
+
+union ABCKind *inflate_ABC_A(void);
+
+union ABCKind *inflate_ABC_B(void);
+
+union ABCKind *inflate_ABC_C(void);
+
+union ABCKind *inflate_ABC_JustInt(void);
 
 union DistanceKind *inflate_Distance_Map(void);
 
@@ -1114,6 +1174,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_test_raw_string_enum_mirrored);
     dummy_var ^= ((int64_t) (void*) wire_test_list_of_raw_nested_string_mirrored);
     dummy_var ^= ((int64_t) (void*) wire_list_of_primitive_enums);
+    dummy_var ^= ((int64_t) (void*) wire_test_abc_enum);
+    dummy_var ^= ((int64_t) (void*) wire_test_contains_mirrored_sub_struct);
     dummy_var ^= ((int64_t) (void*) wire_sum__method__SumWith);
     dummy_var ^= ((int64_t) (void*) wire_new__static_method__ConcatenateWith);
     dummy_var ^= ((int64_t) (void*) wire_concatenate__method__ConcatenateWith);
@@ -1134,10 +1196,14 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_Chrono_Utc_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_DartOpaque_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_HideData_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_a_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_abc_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_application_env_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_application_settings_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_attribute_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_b_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_bool_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_c_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_concatenate_with_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_customized_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_dart_opaque_nested_0);
@@ -1210,6 +1276,10 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) share_opaque_NonSendHideData);
     dummy_var ^= ((int64_t) (void*) drop_opaque_RwLockHideData);
     dummy_var ^= ((int64_t) (void*) share_opaque_RwLockHideData);
+    dummy_var ^= ((int64_t) (void*) inflate_ABC_A);
+    dummy_var ^= ((int64_t) (void*) inflate_ABC_B);
+    dummy_var ^= ((int64_t) (void*) inflate_ABC_C);
+    dummy_var ^= ((int64_t) (void*) inflate_ABC_JustInt);
     dummy_var ^= ((int64_t) (void*) inflate_Distance_Map);
     dummy_var ^= ((int64_t) (void*) inflate_EnumDartOpaque_Primitive);
     dummy_var ^= ((int64_t) (void*) inflate_EnumDartOpaque_Opaque);

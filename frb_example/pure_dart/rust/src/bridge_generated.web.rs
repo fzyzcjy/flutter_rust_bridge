@@ -765,6 +765,16 @@ pub fn wire_list_of_primitive_enums(port_: MessagePort, weekdays: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_test_abc_enum(port_: MessagePort, abc: JsValue) {
+    wire_test_abc_enum_impl(port_, abc)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_contains_mirrored_sub_struct(port_: MessagePort) {
+    wire_test_contains_mirrored_sub_struct_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -1006,6 +1016,32 @@ impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for Box<[u8]> {
         ZeroCopyBuffer(self.wire2api())
     }
 }
+impl Wire2Api<A> for JsValue {
+    fn wire2api(self) -> A {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        A {
+            a: self_.get(0).wire2api(),
+        }
+    }
+}
+impl Wire2Api<ABC> for JsValue {
+    fn wire2api(self) -> ABC {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => ABC::A(self_.get(1).wire2api()),
+            1 => ABC::B(self_.get(1).wire2api()),
+            2 => ABC::C(self_.get(1).wire2api()),
+            3 => ABC::JustInt(self_.get(1).wire2api()),
+            _ => unreachable!(),
+        }
+    }
+}
 impl Wire2Api<ApplicationEnv> for JsValue {
     fn wire2api(self) -> ApplicationEnv {
         let self_ = self.dyn_into::<JsArray>().unwrap();
@@ -1066,6 +1102,20 @@ impl Wire2Api<Attribute> for JsValue {
         }
     }
 }
+impl Wire2Api<B> for JsValue {
+    fn wire2api(self) -> B {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        B {
+            b: self_.get(0).wire2api(),
+        }
+    }
+}
 impl Wire2Api<Blob> for JsValue {
     fn wire2api(self) -> Blob {
         let self_ = self.dyn_into::<JsArray>().unwrap();
@@ -1085,6 +1135,20 @@ impl Wire2Api<Box<[u8; 1600]>> for Box<[u8]> {
     }
 }
 
+impl Wire2Api<C> for JsValue {
+    fn wire2api(self) -> C {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        C {
+            c: self_.get(0).wire2api(),
+        }
+    }
+}
 impl Wire2Api<ConcatenateWith> for JsValue {
     fn wire2api(self) -> ConcatenateWith {
         let self_ = self.dyn_into::<JsArray>().unwrap();

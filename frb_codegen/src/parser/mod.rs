@@ -4,6 +4,7 @@ pub(crate) mod ty;
 
 use std::borrow::Cow;
 use std::collections::HashMap;
+use std::default::Default as _;
 use std::string::String;
 
 use log::debug;
@@ -238,7 +239,7 @@ impl<'a> Parser<'a> {
                             is_final: true,
                             comments: extract_comments(&pat_type.attrs),
                             default: DefaultValues::extract(&pat_type.attrs),
-                            mirrored_enum: false,
+                            settings: IrFieldSettings::default(),
                         });
                     }
                 }
@@ -598,6 +599,7 @@ pub enum DefaultValues {
 
 #[cfg(feature = "serde")]
 use _serde::*;
+
 #[cfg(feature = "serde")]
 mod _serde {
     use serde::{Serialize, Serializer};

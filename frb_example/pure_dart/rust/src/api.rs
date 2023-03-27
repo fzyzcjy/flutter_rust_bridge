@@ -1534,3 +1534,42 @@ pub fn test_list_of_raw_nested_string_mirrored() -> ListOfNestedRawStringMirrore
 pub fn list_of_primitive_enums(weekdays: Vec<Weekdays>) -> Vec<Weekdays> {
     weekdays
 }
+
+pub struct A {
+    pub a: String,
+}
+
+pub struct B {
+    pub b: i32,
+}
+
+pub struct C {
+    pub c: bool,
+}
+
+pub enum ABC {
+    A(A),
+    B(B),
+    C(C),
+    JustInt(i32),
+}
+
+pub fn test_abc_enum(abc: ABC) -> ABC {
+    abc
+}
+
+pub struct ContainsMirroredSubStruct {
+    pub test: RawStringMirrored,
+    pub test2: A,
+}
+
+pub fn test_contains_mirrored_sub_struct() -> ContainsMirroredSubStruct {
+    ContainsMirroredSubStruct {
+        test: RawStringMirrored {
+            r#value: "test".to_owned(),
+        },
+        test2: A {
+            a: "test".to_owned(),
+        },
+    }
+}

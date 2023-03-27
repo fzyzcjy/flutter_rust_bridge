@@ -131,6 +131,29 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_a(A raw) {
+    return [api2wire_String(raw.a)];
+  }
+
+  @protected
+  List<dynamic> api2wire_abc(ABC raw) {
+    if (raw is ABC_A) {
+      return [0, api2wire_box_autoadd_a(raw.field0)];
+    }
+    if (raw is ABC_B) {
+      return [1, api2wire_box_autoadd_b(raw.field0)];
+    }
+    if (raw is ABC_C) {
+      return [2, api2wire_box_autoadd_c(raw.field0)];
+    }
+    if (raw is ABC_JustInt) {
+      return [3, api2wire_i32(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
   List<dynamic> api2wire_application_env(ApplicationEnv raw) {
     return [api2wire_list_application_env_var(raw.vars)];
   }
@@ -154,6 +177,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   List<dynamic> api2wire_attribute(Attribute raw) {
     return [api2wire_String(raw.key), api2wire_String(raw.value)];
+  }
+
+  @protected
+  List<dynamic> api2wire_b(B raw) {
+    return [api2wire_i32(raw.b)];
   }
 
   @protected
@@ -182,6 +210,16 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_a(A raw) {
+    return api2wire_a(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_abc(ABC raw) {
+    return api2wire_abc(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_application_env(ApplicationEnv raw) {
     return api2wire_application_env(raw);
   }
@@ -197,8 +235,18 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_b(B raw) {
+    return api2wire_b(raw);
+  }
+
+  @protected
   bool api2wire_box_autoadd_bool(bool raw) {
     return api2wire_bool(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_c(C raw) {
+    return api2wire_c(raw);
   }
 
   @protected
@@ -409,6 +457,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   int api2wire_box_weekdays(Weekdays raw) {
     return api2wire_weekdays(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_c(C raw) {
+    return [api2wire_bool(raw.c)];
   }
 
   @protected
@@ -1214,6 +1267,10 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_list_of_primitive_enums(NativePortType port_, List<dynamic> weekdays);
 
+  external dynamic /* void */ wire_test_abc_enum(NativePortType port_, List<dynamic> abc);
+
+  external dynamic /* void */ wire_test_contains_mirrored_sub_struct(NativePortType port_);
+
   external dynamic /* void */ wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
 
   external dynamic /* void */ wire_new__static_method__ConcatenateWith(NativePortType port_, String a);
@@ -1632,6 +1689,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_list_of_primitive_enums(NativePortType port_, List<dynamic> weekdays) =>
       wasmModule.wire_list_of_primitive_enums(port_, weekdays);
+
+  void wire_test_abc_enum(NativePortType port_, List<dynamic> abc) => wasmModule.wire_test_abc_enum(port_, abc);
+
+  void wire_test_contains_mirrored_sub_struct(NativePortType port_) =>
+      wasmModule.wire_test_contains_mirrored_sub_struct(port_);
 
   void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z) =>
       wasmModule.wire_sum__method__SumWith(port_, that, y, z);

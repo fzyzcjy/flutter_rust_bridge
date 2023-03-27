@@ -628,6 +628,14 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kListOfPrimitiveEnumsConstMeta;
 
+  Future<ABC> testAbcEnum({required ABC abc, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestAbcEnumConstMeta;
+
+  Future<ContainsMirroredSubStruct> testContainsMirroredSubStruct({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestContainsMirroredSubStructConstMeta;
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
@@ -872,6 +880,30 @@ class TestIdArray4 extends NonGrowableListView<TestId> {
   TestIdArray4.init(TestId fill) : super(List<TestId>.filled(arraySize, fill));
 }
 
+class A {
+  final String a;
+
+  const A({
+    required this.a,
+  });
+}
+
+@freezed
+class ABC with _$ABC {
+  const factory ABC.a(
+    A field0,
+  ) = ABC_A;
+  const factory ABC.b(
+    B field0,
+  ) = ABC_B;
+  const factory ABC.c(
+    C field0,
+  ) = ABC_C;
+  const factory ABC.justInt(
+    int field0,
+  ) = ABC_JustInt;
+}
+
 class ApplicationEnv {
   final List<ApplicationEnvVar> vars;
 
@@ -933,6 +965,14 @@ class Attribute {
   });
 }
 
+class B {
+  final int b;
+
+  const B({
+    required this.b,
+  });
+}
+
 class BigBuffers {
   final Int64List int64;
   final Uint64List uint64;
@@ -948,6 +988,14 @@ class Blob {
 
   const Blob({
     required this.field0,
+  });
+}
+
+class C {
+  final bool c;
+
+  const C({
+    required this.c,
   });
 }
 
@@ -999,6 +1047,16 @@ class ConcatenateWith {
   static Stream<int> handleSomeStaticStreamSinkSingleArg(
           {required FlutterRustBridgeExampleSingleBlockTest bridge, dynamic hint}) =>
       bridge.handleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWith(hint: hint);
+}
+
+class ContainsMirroredSubStruct {
+  final RawStringMirrored test;
+  final A test2;
+
+  const ContainsMirroredSubStruct({
+    required this.test,
+    required this.test2,
+  });
 }
 
 class Customized {
