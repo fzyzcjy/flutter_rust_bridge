@@ -1547,14 +1547,14 @@ pub struct C {
     pub c: bool,
 }
 
-pub enum ABC {
+pub enum Abc {
     A(A),
     B(B),
     C(C),
     JustInt(i32),
 }
 
-pub fn test_abc_enum(abc: ABC) -> ABC {
+pub fn test_abc_enum(abc: Abc) -> Abc {
     abc
 }
 

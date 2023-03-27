@@ -790,7 +790,7 @@ pub extern "C" fn wire_list_of_primitive_enums(port_: i64, weekdays: *mut wire_l
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_abc_enum(port_: i64, abc: *mut wire_ABC) {
+pub extern "C" fn wire_test_abc_enum(port_: i64, abc: *mut wire_Abc) {
     wire_test_abc_enum_impl(port_, abc)
 }
 
@@ -933,8 +933,8 @@ pub extern "C" fn new_box_autoadd_a_0() -> *mut wire_A {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_abc_0() -> *mut wire_ABC {
-    support::new_leak_box_ptr(wire_ABC::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_abc_0() -> *mut wire_Abc {
+    support::new_leak_box_ptr(wire_Abc::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1544,28 +1544,28 @@ impl Wire2Api<A> for wire_A {
         }
     }
 }
-impl Wire2Api<ABC> for wire_ABC {
-    fn wire2api(self) -> ABC {
+impl Wire2Api<Abc> for wire_Abc {
+    fn wire2api(self) -> Abc {
         match self.tag {
             0 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.A);
-                ABC::A(ans.field0.wire2api())
+                Abc::A(ans.field0.wire2api())
             },
             1 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.B);
-                ABC::B(ans.field0.wire2api())
+                Abc::B(ans.field0.wire2api())
             },
             2 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.C);
-                ABC::C(ans.field0.wire2api())
+                Abc::C(ans.field0.wire2api())
             },
             3 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.JustInt);
-                ABC::JustInt(ans.field0.wire2api())
+                Abc::JustInt(ans.field0.wire2api())
             },
             _ => unreachable!(),
         }
@@ -1646,10 +1646,10 @@ impl Wire2Api<A> for *mut wire_A {
         Wire2Api::<A>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<ABC> for *mut wire_ABC {
-    fn wire2api(self) -> ABC {
+impl Wire2Api<Abc> for *mut wire_Abc {
+    fn wire2api(self) -> Abc {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<ABC>::wire2api(*wrap).into()
+        Wire2Api::<Abc>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<ApplicationEnv> for *mut wire_ApplicationEnv {
@@ -2753,40 +2753,40 @@ pub struct wire_UserId {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_ABC {
+pub struct wire_Abc {
     tag: i32,
-    kind: *mut ABCKind,
+    kind: *mut AbcKind,
 }
 
 #[repr(C)]
-pub union ABCKind {
-    A: *mut wire_ABC_A,
-    B: *mut wire_ABC_B,
-    C: *mut wire_ABC_C,
-    JustInt: *mut wire_ABC_JustInt,
+pub union AbcKind {
+    A: *mut wire_Abc_A,
+    B: *mut wire_Abc_B,
+    C: *mut wire_Abc_C,
+    JustInt: *mut wire_Abc_JustInt,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_ABC_A {
+pub struct wire_Abc_A {
     field0: *mut wire_A,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_ABC_B {
+pub struct wire_Abc_B {
     field0: *mut wire_B,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_ABC_C {
+pub struct wire_Abc_C {
     field0: *mut wire_C,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_ABC_JustInt {
+pub struct wire_Abc_JustInt {
     field0: i32,
 }
 
@@ -3063,7 +3063,7 @@ impl Default for wire_A {
     }
 }
 
-impl NewWithNullPtr for wire_ABC {
+impl NewWithNullPtr for wire_Abc {
     fn new_with_null_ptr() -> Self {
         Self {
             tag: -1,
@@ -3073,36 +3073,36 @@ impl NewWithNullPtr for wire_ABC {
 }
 
 #[no_mangle]
-pub extern "C" fn inflate_ABC_A() -> *mut ABCKind {
-    support::new_leak_box_ptr(ABCKind {
-        A: support::new_leak_box_ptr(wire_ABC_A {
+pub extern "C" fn inflate_Abc_A() -> *mut AbcKind {
+    support::new_leak_box_ptr(AbcKind {
+        A: support::new_leak_box_ptr(wire_Abc_A {
             field0: core::ptr::null_mut(),
         }),
     })
 }
 
 #[no_mangle]
-pub extern "C" fn inflate_ABC_B() -> *mut ABCKind {
-    support::new_leak_box_ptr(ABCKind {
-        B: support::new_leak_box_ptr(wire_ABC_B {
+pub extern "C" fn inflate_Abc_B() -> *mut AbcKind {
+    support::new_leak_box_ptr(AbcKind {
+        B: support::new_leak_box_ptr(wire_Abc_B {
             field0: core::ptr::null_mut(),
         }),
     })
 }
 
 #[no_mangle]
-pub extern "C" fn inflate_ABC_C() -> *mut ABCKind {
-    support::new_leak_box_ptr(ABCKind {
-        C: support::new_leak_box_ptr(wire_ABC_C {
+pub extern "C" fn inflate_Abc_C() -> *mut AbcKind {
+    support::new_leak_box_ptr(AbcKind {
+        C: support::new_leak_box_ptr(wire_Abc_C {
             field0: core::ptr::null_mut(),
         }),
     })
 }
 
 #[no_mangle]
-pub extern "C" fn inflate_ABC_JustInt() -> *mut ABCKind {
-    support::new_leak_box_ptr(ABCKind {
-        JustInt: support::new_leak_box_ptr(wire_ABC_JustInt {
+pub extern "C" fn inflate_Abc_JustInt() -> *mut AbcKind {
+    support::new_leak_box_ptr(AbcKind {
+        JustInt: support::new_leak_box_ptr(wire_Abc_JustInt {
             field0: Default::default(),
         }),
     })

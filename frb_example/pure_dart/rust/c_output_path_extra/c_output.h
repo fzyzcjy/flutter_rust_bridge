@@ -399,41 +399,41 @@ typedef struct wire_A {
   struct wire_uint_8_list *a;
 } wire_A;
 
-typedef struct wire_ABC_A {
+typedef struct wire_Abc_A {
   struct wire_A *field0;
-} wire_ABC_A;
+} wire_Abc_A;
 
 typedef struct wire_B {
   int32_t b;
 } wire_B;
 
-typedef struct wire_ABC_B {
+typedef struct wire_Abc_B {
   struct wire_B *field0;
-} wire_ABC_B;
+} wire_Abc_B;
 
 typedef struct wire_C {
   bool c;
 } wire_C;
 
-typedef struct wire_ABC_C {
+typedef struct wire_Abc_C {
   struct wire_C *field0;
-} wire_ABC_C;
+} wire_Abc_C;
 
-typedef struct wire_ABC_JustInt {
+typedef struct wire_Abc_JustInt {
   int32_t field0;
-} wire_ABC_JustInt;
+} wire_Abc_JustInt;
 
-typedef union ABCKind {
-  struct wire_ABC_A *A;
-  struct wire_ABC_B *B;
-  struct wire_ABC_C *C;
-  struct wire_ABC_JustInt *JustInt;
-} ABCKind;
+typedef union AbcKind {
+  struct wire_Abc_A *A;
+  struct wire_Abc_B *B;
+  struct wire_Abc_C *C;
+  struct wire_Abc_JustInt *JustInt;
+} AbcKind;
 
-typedef struct wire_ABC {
+typedef struct wire_Abc {
   int32_t tag;
-  union ABCKind *kind;
-} wire_ABC;
+  union AbcKind *kind;
+} wire_Abc;
 
 typedef struct wire_SumWith {
   uint32_t x;
@@ -769,7 +769,7 @@ void wire_test_list_of_raw_nested_string_mirrored(int64_t port_);
 
 void wire_list_of_primitive_enums(int64_t port_, struct wire_list_weekdays *weekdays);
 
-void wire_test_abc_enum(int64_t port_, struct wire_ABC *abc);
+void wire_test_abc_enum(int64_t port_, struct wire_Abc *abc);
 
 void wire_test_contains_mirrored_sub_struct(int64_t port_);
 
@@ -825,7 +825,7 @@ struct wire_HideData *new_box_autoadd_HideData_0(void);
 
 struct wire_A *new_box_autoadd_a_0(void);
 
-struct wire_ABC *new_box_autoadd_abc_0(void);
+struct wire_Abc *new_box_autoadd_abc_0(void);
 
 struct wire_ApplicationEnv *new_box_autoadd_application_env_0(void);
 
@@ -983,13 +983,13 @@ void drop_opaque_RwLockHideData(const void *ptr);
 
 const void *share_opaque_RwLockHideData(const void *ptr);
 
-union ABCKind *inflate_ABC_A(void);
+union AbcKind *inflate_Abc_A(void);
 
-union ABCKind *inflate_ABC_B(void);
+union AbcKind *inflate_Abc_B(void);
 
-union ABCKind *inflate_ABC_C(void);
+union AbcKind *inflate_Abc_C(void);
 
-union ABCKind *inflate_ABC_JustInt(void);
+union AbcKind *inflate_Abc_JustInt(void);
 
 union DistanceKind *inflate_Distance_Map(void);
 
@@ -1276,10 +1276,10 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) share_opaque_NonSendHideData);
     dummy_var ^= ((int64_t) (void*) drop_opaque_RwLockHideData);
     dummy_var ^= ((int64_t) (void*) share_opaque_RwLockHideData);
-    dummy_var ^= ((int64_t) (void*) inflate_ABC_A);
-    dummy_var ^= ((int64_t) (void*) inflate_ABC_B);
-    dummy_var ^= ((int64_t) (void*) inflate_ABC_C);
-    dummy_var ^= ((int64_t) (void*) inflate_ABC_JustInt);
+    dummy_var ^= ((int64_t) (void*) inflate_Abc_A);
+    dummy_var ^= ((int64_t) (void*) inflate_Abc_B);
+    dummy_var ^= ((int64_t) (void*) inflate_Abc_C);
+    dummy_var ^= ((int64_t) (void*) inflate_Abc_JustInt);
     dummy_var ^= ((int64_t) (void*) inflate_Distance_Map);
     dummy_var ^= ((int64_t) (void*) inflate_EnumDartOpaque_Primitive);
     dummy_var ^= ((int64_t) (void*) inflate_EnumDartOpaque_Opaque);

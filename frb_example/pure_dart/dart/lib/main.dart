@@ -666,6 +666,31 @@ void main(List<String> args) async {
     expect(output.raw[0].raw.value, "test");
   });
 
+  test('test abc', () async {
+    final output1 = await api.testAbcEnum(abc: Abc.a(A(a: "test")));
+    expect(output1.field0, isA<A>());
+    expect((output1.field0 as A).a, "test");
+
+    final output2 = await api.testAbcEnum(abc: Abc.b(B(b: 1)));
+    expect(output2.field0, isA<B>());
+    expect((output2.field0 as B).b, 1);
+
+    final output3 = await api.testAbcEnum(abc: Abc.c(C(c: false)));
+    expect(output3.field0, isA<C>());
+    expect((output3.field0 as C).c, false);
+
+    final output4 = await api.testAbcEnum(abc: Abc.justInt(1));
+    expect(output4.field0, 1);
+  });
+
+  test('test contains mirrored sub struct', () async {
+    final output = await api.testContainsMirroredSubStruct();
+    expect(output, isA<ContainsMirroredSubStruct>());
+    expect(output.test, isA<RawStringMirrored>());
+    expect(output.test.value, "test");
+    expect(output.test2.a, "test");
+  });
+
   group('Platform-specific support', () {
     test('Int64List', () {
       final list = Int64List.fromList([-1, -2, -3, -4, -5]);

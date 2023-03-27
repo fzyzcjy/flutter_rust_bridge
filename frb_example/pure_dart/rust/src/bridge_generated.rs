@@ -2128,7 +2128,7 @@ fn wire_list_of_primitive_enums_impl(
         },
     )
 }
-fn wire_test_abc_enum_impl(port_: MessagePort, abc: impl Wire2Api<ABC> + UnwindSafe) {
+fn wire_test_abc_enum_impl(port_: MessagePort, abc: impl Wire2Api<Abc> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "test_abc_enum",
@@ -2559,7 +2559,7 @@ impl support::IntoDart for A {
 }
 impl support::IntoDartExceptPrimitive for A {}
 
-impl support::IntoDart for ABC {
+impl support::IntoDart for Abc {
     fn into_dart(self) -> support::DartAbi {
         match self {
             Self::A(field0) => vec![0.into_dart(), field0.into_dart()],
@@ -2570,7 +2570,7 @@ impl support::IntoDart for ABC {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for ABC {}
+impl support::IntoDartExceptPrimitive for Abc {}
 impl support::IntoDart for mirror_ApplicationEnv {
     fn into_dart(self) -> support::DartAbi {
         vec![self

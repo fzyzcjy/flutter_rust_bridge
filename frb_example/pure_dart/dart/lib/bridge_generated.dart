@@ -2376,7 +2376,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["weekdays"],
       );
 
-  Future<ABC> testAbcEnum({required ABC abc, dynamic hint}) {
+  Future<Abc> testAbcEnum({required Abc abc, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_abc(abc);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_abc_enum(port_, arg0),
@@ -2737,22 +2737,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     );
   }
 
-  ABC _wire2api_abc(dynamic raw) {
+  Abc _wire2api_abc(dynamic raw) {
     switch (raw[0]) {
       case 0:
-        return ABC_A(
+        return Abc_A(
           _wire2api_box_autoadd_a(raw[1]),
         );
       case 1:
-        return ABC_B(
+        return Abc_B(
           _wire2api_box_autoadd_b(raw[1]),
         );
       case 2:
-        return ABC_C(
+        return Abc_C(
           _wire2api_box_autoadd_c(raw[1]),
         );
       case 3:
-        return ABC_JustInt(
+        return Abc_JustInt(
           _wire2api_i32(raw[1]),
         );
       default:

@@ -181,7 +181,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<wire_ABC> api2wire_box_autoadd_abc(ABC raw) {
+  ffi.Pointer<wire_Abc> api2wire_box_autoadd_abc(Abc raw) {
     final ptr = inner.new_box_autoadd_abc_0();
     _api_fill_to_wire_abc(raw, ptr.ref);
     return ptr;
@@ -855,32 +855,32 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     wireObj.a = api2wire_String(apiObj.a);
   }
 
-  void _api_fill_to_wire_abc(ABC apiObj, wire_ABC wireObj) {
-    if (apiObj is ABC_A) {
+  void _api_fill_to_wire_abc(Abc apiObj, wire_Abc wireObj) {
+    if (apiObj is Abc_A) {
       var pre_field0 = api2wire_box_autoadd_a(apiObj.field0);
       wireObj.tag = 0;
-      wireObj.kind = inner.inflate_ABC_A();
+      wireObj.kind = inner.inflate_Abc_A();
       wireObj.kind.ref.A.ref.field0 = pre_field0;
       return;
     }
-    if (apiObj is ABC_B) {
+    if (apiObj is Abc_B) {
       var pre_field0 = api2wire_box_autoadd_b(apiObj.field0);
       wireObj.tag = 1;
-      wireObj.kind = inner.inflate_ABC_B();
+      wireObj.kind = inner.inflate_Abc_B();
       wireObj.kind.ref.B.ref.field0 = pre_field0;
       return;
     }
-    if (apiObj is ABC_C) {
+    if (apiObj is Abc_C) {
       var pre_field0 = api2wire_box_autoadd_c(apiObj.field0);
       wireObj.tag = 2;
-      wireObj.kind = inner.inflate_ABC_C();
+      wireObj.kind = inner.inflate_Abc_C();
       wireObj.kind.ref.C.ref.field0 = pre_field0;
       return;
     }
-    if (apiObj is ABC_JustInt) {
+    if (apiObj is Abc_JustInt) {
       var pre_field0 = api2wire_i32(apiObj.field0);
       wireObj.tag = 3;
-      wireObj.kind = inner.inflate_ABC_JustInt();
+      wireObj.kind = inner.inflate_Abc_JustInt();
       wireObj.kind.ref.JustInt.ref.field0 = pre_field0;
       return;
     }
@@ -932,7 +932,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     _api_fill_to_wire_a(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_abc(ABC apiObj, ffi.Pointer<wire_ABC> wireObj) {
+  void _api_fill_to_wire_box_autoadd_abc(Abc apiObj, ffi.Pointer<wire_Abc> wireObj) {
     _api_fill_to_wire_abc(apiObj, wireObj.ref);
   }
 
@@ -3540,7 +3540,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
 
   void wire_test_abc_enum(
     int port_,
-    ffi.Pointer<wire_ABC> abc,
+    ffi.Pointer<wire_Abc> abc,
   ) {
     return _wire_test_abc_enum(
       port_,
@@ -3549,8 +3549,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_test_abc_enumPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_ABC>)>>('wire_test_abc_enum');
-  late final _wire_test_abc_enum = _wire_test_abc_enumPtr.asFunction<void Function(int, ffi.Pointer<wire_ABC>)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_Abc>)>>('wire_test_abc_enum');
+  late final _wire_test_abc_enum = _wire_test_abc_enumPtr.asFunction<void Function(int, ffi.Pointer<wire_Abc>)>();
 
   void wire_test_contains_mirrored_sub_struct(
     int port_,
@@ -3822,13 +3822,13 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_A> Function()>>('new_box_autoadd_a_0');
   late final _new_box_autoadd_a_0 = _new_box_autoadd_a_0Ptr.asFunction<ffi.Pointer<wire_A> Function()>();
 
-  ffi.Pointer<wire_ABC> new_box_autoadd_abc_0() {
+  ffi.Pointer<wire_Abc> new_box_autoadd_abc_0() {
     return _new_box_autoadd_abc_0();
   }
 
   late final _new_box_autoadd_abc_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_ABC> Function()>>('new_box_autoadd_abc_0');
-  late final _new_box_autoadd_abc_0 = _new_box_autoadd_abc_0Ptr.asFunction<ffi.Pointer<wire_ABC> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Abc> Function()>>('new_box_autoadd_abc_0');
+  late final _new_box_autoadd_abc_0 = _new_box_autoadd_abc_0Ptr.asFunction<ffi.Pointer<wire_Abc> Function()>();
 
   ffi.Pointer<wire_ApplicationEnv> new_box_autoadd_application_env_0() {
     return _new_box_autoadd_application_env_0();
@@ -4672,34 +4672,34 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _share_opaque_RwLockHideData =
       _share_opaque_RwLockHideDataPtr.asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
 
-  ffi.Pointer<ABCKind> inflate_ABC_A() {
-    return _inflate_ABC_A();
+  ffi.Pointer<AbcKind> inflate_Abc_A() {
+    return _inflate_Abc_A();
   }
 
-  late final _inflate_ABC_APtr = _lookup<ffi.NativeFunction<ffi.Pointer<ABCKind> Function()>>('inflate_ABC_A');
-  late final _inflate_ABC_A = _inflate_ABC_APtr.asFunction<ffi.Pointer<ABCKind> Function()>();
+  late final _inflate_Abc_APtr = _lookup<ffi.NativeFunction<ffi.Pointer<AbcKind> Function()>>('inflate_Abc_A');
+  late final _inflate_Abc_A = _inflate_Abc_APtr.asFunction<ffi.Pointer<AbcKind> Function()>();
 
-  ffi.Pointer<ABCKind> inflate_ABC_B() {
-    return _inflate_ABC_B();
+  ffi.Pointer<AbcKind> inflate_Abc_B() {
+    return _inflate_Abc_B();
   }
 
-  late final _inflate_ABC_BPtr = _lookup<ffi.NativeFunction<ffi.Pointer<ABCKind> Function()>>('inflate_ABC_B');
-  late final _inflate_ABC_B = _inflate_ABC_BPtr.asFunction<ffi.Pointer<ABCKind> Function()>();
+  late final _inflate_Abc_BPtr = _lookup<ffi.NativeFunction<ffi.Pointer<AbcKind> Function()>>('inflate_Abc_B');
+  late final _inflate_Abc_B = _inflate_Abc_BPtr.asFunction<ffi.Pointer<AbcKind> Function()>();
 
-  ffi.Pointer<ABCKind> inflate_ABC_C() {
-    return _inflate_ABC_C();
+  ffi.Pointer<AbcKind> inflate_Abc_C() {
+    return _inflate_Abc_C();
   }
 
-  late final _inflate_ABC_CPtr = _lookup<ffi.NativeFunction<ffi.Pointer<ABCKind> Function()>>('inflate_ABC_C');
-  late final _inflate_ABC_C = _inflate_ABC_CPtr.asFunction<ffi.Pointer<ABCKind> Function()>();
+  late final _inflate_Abc_CPtr = _lookup<ffi.NativeFunction<ffi.Pointer<AbcKind> Function()>>('inflate_Abc_C');
+  late final _inflate_Abc_C = _inflate_Abc_CPtr.asFunction<ffi.Pointer<AbcKind> Function()>();
 
-  ffi.Pointer<ABCKind> inflate_ABC_JustInt() {
-    return _inflate_ABC_JustInt();
+  ffi.Pointer<AbcKind> inflate_Abc_JustInt() {
+    return _inflate_Abc_JustInt();
   }
 
-  late final _inflate_ABC_JustIntPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ABCKind> Function()>>('inflate_ABC_JustInt');
-  late final _inflate_ABC_JustInt = _inflate_ABC_JustIntPtr.asFunction<ffi.Pointer<ABCKind> Function()>();
+  late final _inflate_Abc_JustIntPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<AbcKind> Function()>>('inflate_Abc_JustInt');
+  late final _inflate_Abc_JustInt = _inflate_Abc_JustIntPtr.asFunction<ffi.Pointer<AbcKind> Function()>();
 
   ffi.Pointer<DistanceKind> inflate_Distance_Map() {
     return _inflate_Distance_Map();
@@ -5354,7 +5354,7 @@ class wire_A extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> a;
 }
 
-class wire_ABC_A extends ffi.Struct {
+class wire_Abc_A extends ffi.Struct {
   external ffi.Pointer<wire_A> field0;
 }
 
@@ -5363,7 +5363,7 @@ class wire_B extends ffi.Struct {
   external int b;
 }
 
-class wire_ABC_B extends ffi.Struct {
+class wire_Abc_B extends ffi.Struct {
   external ffi.Pointer<wire_B> field0;
 }
 
@@ -5372,30 +5372,30 @@ class wire_C extends ffi.Struct {
   external bool c;
 }
 
-class wire_ABC_C extends ffi.Struct {
+class wire_Abc_C extends ffi.Struct {
   external ffi.Pointer<wire_C> field0;
 }
 
-class wire_ABC_JustInt extends ffi.Struct {
+class wire_Abc_JustInt extends ffi.Struct {
   @ffi.Int32()
   external int field0;
 }
 
-class ABCKind extends ffi.Union {
-  external ffi.Pointer<wire_ABC_A> A;
+class AbcKind extends ffi.Union {
+  external ffi.Pointer<wire_Abc_A> A;
 
-  external ffi.Pointer<wire_ABC_B> B;
+  external ffi.Pointer<wire_Abc_B> B;
 
-  external ffi.Pointer<wire_ABC_C> C;
+  external ffi.Pointer<wire_Abc_C> C;
 
-  external ffi.Pointer<wire_ABC_JustInt> JustInt;
+  external ffi.Pointer<wire_Abc_JustInt> JustInt;
 }
 
-class wire_ABC extends ffi.Struct {
+class wire_Abc extends ffi.Struct {
   @ffi.Int32()
   external int tag;
 
-  external ffi.Pointer<ABCKind> kind;
+  external ffi.Pointer<AbcKind> kind;
 }
 
 class wire_SumWith extends ffi.Struct {

@@ -628,7 +628,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kListOfPrimitiveEnumsConstMeta;
 
-  Future<ABC> testAbcEnum({required ABC abc, dynamic hint});
+  Future<Abc> testAbcEnum({required Abc abc, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kTestAbcEnumConstMeta;
 
@@ -889,19 +889,19 @@ class A {
 }
 
 @freezed
-class ABC with _$ABC {
-  const factory ABC.a(
+class Abc with _$Abc {
+  const factory Abc.a(
     A field0,
-  ) = ABC_A;
-  const factory ABC.b(
+  ) = Abc_A;
+  const factory Abc.b(
     B field0,
-  ) = ABC_B;
-  const factory ABC.c(
+  ) = Abc_B;
+  const factory Abc.c(
     C field0,
-  ) = ABC_C;
-  const factory ABC.justInt(
+  ) = Abc_C;
+  const factory Abc.justInt(
     int field0,
-  ) = ABC_JustInt;
+  ) = Abc_JustInt;
 }
 
 class ApplicationEnv {

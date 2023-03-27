@@ -136,17 +136,17 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  List<dynamic> api2wire_abc(ABC raw) {
-    if (raw is ABC_A) {
+  List<dynamic> api2wire_abc(Abc raw) {
+    if (raw is Abc_A) {
       return [0, api2wire_box_autoadd_a(raw.field0)];
     }
-    if (raw is ABC_B) {
+    if (raw is Abc_B) {
       return [1, api2wire_box_autoadd_b(raw.field0)];
     }
-    if (raw is ABC_C) {
+    if (raw is Abc_C) {
       return [2, api2wire_box_autoadd_c(raw.field0)];
     }
-    if (raw is ABC_JustInt) {
+    if (raw is Abc_JustInt) {
       return [3, api2wire_i32(raw.field0)];
     }
 
@@ -215,7 +215,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_abc(ABC raw) {
+  List<dynamic> api2wire_box_autoadd_abc(Abc raw) {
     return api2wire_abc(raw);
   }
 

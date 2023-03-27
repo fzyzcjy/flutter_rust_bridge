@@ -1030,14 +1030,14 @@ impl Wire2Api<A> for JsValue {
         }
     }
 }
-impl Wire2Api<ABC> for JsValue {
-    fn wire2api(self) -> ABC {
+impl Wire2Api<Abc> for JsValue {
+    fn wire2api(self) -> Abc {
         let self_ = self.unchecked_into::<JsArray>();
         match self_.get(0).unchecked_into_f64() as _ {
-            0 => ABC::A(self_.get(1).wire2api()),
-            1 => ABC::B(self_.get(1).wire2api()),
-            2 => ABC::C(self_.get(1).wire2api()),
-            3 => ABC::JustInt(self_.get(1).wire2api()),
+            0 => Abc::A(self_.get(1).wire2api()),
+            1 => Abc::B(self_.get(1).wire2api()),
+            2 => Abc::C(self_.get(1).wire2api()),
+            3 => Abc::JustInt(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
     }
