@@ -604,9 +604,37 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kTestRawStringItemStructConstMeta;
 
+  Future<MoreThanJustOneRawStringStruct> testMoreThanJustOneRawStringStruct({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMoreThanJustOneRawStringStructConstMeta;
+
+  Future<RawStringMirrored> testRawStringMirrored({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestRawStringMirroredConstMeta;
+
+  Future<NestedRawStringMirrored> testNestedRawStringMirrored({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestNestedRawStringMirroredConstMeta;
+
+  Future<RawStringEnumMirrored> testRawStringEnumMirrored({required bool nested, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestRawStringEnumMirroredConstMeta;
+
+  Future<ListOfNestedRawStringMirrored> testListOfRawNestedStringMirrored({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestListOfRawNestedStringMirroredConstMeta;
+
   Future<List<Weekdays>> listOfPrimitiveEnums({required List<Weekdays> weekdays, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kListOfPrimitiveEnumsConstMeta;
+
+  Future<Abc> testAbcEnum({required Abc abc, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestAbcEnumConstMeta;
+
+  Future<ContainsMirroredSubStruct> testContainsMirroredSubStruct({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestContainsMirroredSubStructConstMeta;
 
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint});
 
@@ -852,6 +880,30 @@ class TestIdArray4 extends NonGrowableListView<TestId> {
   TestIdArray4.init(TestId fill) : super(List<TestId>.filled(arraySize, fill));
 }
 
+class A {
+  final String a;
+
+  const A({
+    required this.a,
+  });
+}
+
+@freezed
+class Abc with _$Abc {
+  const factory Abc.a(
+    A field0,
+  ) = Abc_A;
+  const factory Abc.b(
+    B field0,
+  ) = Abc_B;
+  const factory Abc.c(
+    C field0,
+  ) = Abc_C;
+  const factory Abc.justInt(
+    int field0,
+  ) = Abc_JustInt;
+}
+
 class ApplicationEnv {
   final List<ApplicationEnvVar> vars;
 
@@ -913,6 +965,14 @@ class Attribute {
   });
 }
 
+class B {
+  final int b;
+
+  const B({
+    required this.b,
+  });
+}
+
 class BigBuffers {
   final Int64List int64;
   final Uint64List uint64;
@@ -928,6 +988,14 @@ class Blob {
 
   const Blob({
     required this.field0,
+  });
+}
+
+class C {
+  final bool c;
+
+  const C({
+    required this.c,
   });
 }
 
@@ -979,6 +1047,16 @@ class ConcatenateWith {
   static Stream<int> handleSomeStaticStreamSinkSingleArg(
           {required FlutterRustBridgeExampleSingleBlockTest bridge, dynamic hint}) =>
       bridge.handleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWith(hint: hint);
+}
+
+class ContainsMirroredSubStruct {
+  final RawStringMirrored test;
+  final A test2;
+
+  const ContainsMirroredSubStruct({
+    required this.test,
+    required this.test2,
+  });
 }
 
 class Customized {
@@ -1175,6 +1253,14 @@ class KitchenSink with _$KitchenSink {
   ]) = KitchenSink_Enums;
 }
 
+class ListOfNestedRawStringMirrored {
+  final List<NestedRawStringMirrored> raw;
+
+  const ListOfNestedRawStringMirrored({
+    required this.raw,
+  });
+}
+
 class Log {
   final int key;
   final int value;
@@ -1210,6 +1296,20 @@ class MessageId {
 
   const MessageId({
     required this.field0,
+  });
+}
+
+class MoreThanJustOneRawStringStruct {
+  final String regular;
+  final String type;
+  final bool async;
+  final String another;
+
+  const MoreThanJustOneRawStringStruct({
+    required this.regular,
+    required this.type,
+    required this.async,
+    required this.another,
   });
 }
 
@@ -1265,6 +1365,14 @@ class MyTreeNode {
     required this.valueVecU8,
     required this.valueBoolean,
     required this.children,
+  });
+}
+
+class NestedRawStringMirrored {
+  final RawStringMirrored raw;
+
+  const NestedRawStringMirrored({
+    required this.raw,
   });
 }
 
@@ -1331,11 +1439,32 @@ class Point {
   });
 }
 
+@freezed
+class RawStringEnumMirrored with _$RawStringEnumMirrored {
+  const factory RawStringEnumMirrored.raw(
+    RawStringMirrored field0,
+  ) = RawStringEnumMirrored_Raw;
+  const factory RawStringEnumMirrored.nested(
+    NestedRawStringMirrored field0,
+  ) = RawStringEnumMirrored_Nested;
+  const factory RawStringEnumMirrored.listOfNested(
+    ListOfNestedRawStringMirrored field0,
+  ) = RawStringEnumMirrored_ListOfNested;
+}
+
 class RawStringItemStruct {
   final String type;
 
   const RawStringItemStruct({
     required this.type,
+  });
+}
+
+class RawStringMirrored {
+  final String value;
+
+  const RawStringMirrored({
+    required this.value,
   });
 }
 

@@ -643,7 +643,8 @@ pub fn use_imported_enum(my_enum: MyEnum) -> bool {
 // To use an external type with mirroring, it MUST be imported publicly (aka. re-export)
 pub use external_lib::{
     ApplicationEnv, ApplicationEnvVar, ApplicationMessage, ApplicationMode, ApplicationSettings,
-    Numbers, Sequences,
+    ListOfNestedRawStringMirrored, NestedRawStringMirrored, Numbers, RawStringEnumMirrored,
+    RawStringMirrored, Sequences,
 };
 
 // To mirror an external struct, you need to define a placeholder type with the same definition
@@ -1436,11 +1437,139 @@ pub fn test_raw_string_item_struct() -> RawStringItemStruct {
     }
 }
 
-// This seems to be a bug in the syn parser, for whoever tries to fix it, after each failed build you need to manually remove all rust generated files (bridge_*)
+pub struct MoreThanJustOneRawStringStruct {
+    pub regular: String,
+    pub r#type: String,
+    pub r#async: bool,
+    pub another: String,
+}
+
+pub fn test_more_than_just_one_raw_string_struct() -> MoreThanJustOneRawStringStruct {
+    MoreThanJustOneRawStringStruct {
+        regular: "regular".to_owned(),
+        r#type: "type".to_owned(),
+        r#async: true,
+        another: "another".to_owned(),
+    }
+}
+
+#[frb(mirror(RawStringMirrored))]
+pub struct _RawStringMirrored {
+    pub r#value: String,
+}
+
+#[frb(mirror(NestedRawStringMirrored))]
+pub struct _NestedRawStringMirrored {
+    pub raw: RawStringMirrored,
+}
+
+#[frb(mirror(RawStringEnumMirrored))]
+pub enum _RawStringEnumMirrored {
+    Raw(RawStringMirrored),
+    Nested(NestedRawStringMirrored),
+    ListOfNested(ListOfNestedRawStringMirrored),
+}
+
+#[frb(mirror(ListOfNestedRawStringMirrored))]
+pub struct _ListOfRawNestedStringMirrored {
+    pub raw: Vec<NestedRawStringMirrored>,
+}
+
+pub fn test_raw_string_mirrored() -> RawStringMirrored {
+    RawStringMirrored {
+        r#value: "test".to_owned(),
+    }
+}
+
+pub fn test_nested_raw_string_mirrored() -> NestedRawStringMirrored {
+    NestedRawStringMirrored {
+        raw: RawStringMirrored {
+            r#value: "test".to_owned(),
+        },
+    }
+}
+
+pub fn test_raw_string_enum_mirrored(nested: bool) -> RawStringEnumMirrored {
+    if nested {
+        RawStringEnumMirrored::Nested(NestedRawStringMirrored {
+            raw: RawStringMirrored {
+                r#value: "test".to_owned(),
+            },
+        })
+    } else {
+        RawStringEnumMirrored::Raw(RawStringMirrored {
+            r#value: "test".to_owned(),
+        })
+    }
+}
+
+pub fn test_list_of_raw_nested_string_mirrored() -> ListOfNestedRawStringMirrored {
+    ListOfNestedRawStringMirrored {
+        raw: vec![NestedRawStringMirrored {
+            raw: RawStringMirrored {
+                r#value: "test".to_owned(),
+            },
+        }],
+    }
+}
+
+// pub fn test_list_of_nested_enums_mirrored() -> Vec<RawStringEnumMirrored> {
+//     vec![
+//         RawStringEnumMirrored::Nested(NestedRawStringMirrored {
+//             raw: RawStringMirrored {
+//                 r#value: "test".to_owned(),
+//             },
+//         }),
+//         RawStringEnumMirrored::Raw(RawStringMirrored {
+//             r#value: "test".to_owned(),
+//         }),
+//     ]
+// }
+
+//This seems to be a bug in the syn parser (v1), for whoever tries to fix it, after each failed build you need to manually remove all rust generated files (bridge_*)
 // pub fn test_raw_string_item_struct_with_raw_string_in_func(r#type: String) -> RawStringItemStruct {
 //     RawStringItemStruct { r#type }
 // }
 
 pub fn list_of_primitive_enums(weekdays: Vec<Weekdays>) -> Vec<Weekdays> {
     weekdays
+}
+
+pub struct A {
+    pub a: String,
+}
+
+pub struct B {
+    pub b: i32,
+}
+
+pub struct C {
+    pub c: bool,
+}
+
+pub enum Abc {
+    A(A),
+    B(B),
+    C(C),
+    JustInt(i32),
+}
+
+pub fn test_abc_enum(abc: Abc) -> Abc {
+    abc
+}
+
+pub struct ContainsMirroredSubStruct {
+    pub test: RawStringMirrored,
+    pub test2: A,
+}
+
+pub fn test_contains_mirrored_sub_struct() -> ContainsMirroredSubStruct {
+    ContainsMirroredSubStruct {
+        test: RawStringMirrored {
+            r#value: "test".to_owned(),
+        },
+        test2: A {
+            a: "test".to_owned(),
+        },
+    }
 }

@@ -2282,6 +2282,84 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<MoreThanJustOneRawStringStruct> testMoreThanJustOneRawStringStruct({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_more_than_just_one_raw_string_struct(port_),
+      parseSuccessData: _wire2api_more_than_just_one_raw_string_struct,
+      constMeta: kTestMoreThanJustOneRawStringStructConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestMoreThanJustOneRawStringStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_more_than_just_one_raw_string_struct",
+        argNames: [],
+      );
+
+  Future<RawStringMirrored> testRawStringMirrored({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_raw_string_mirrored(port_),
+      parseSuccessData: _wire2api_raw_string_mirrored,
+      constMeta: kTestRawStringMirroredConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestRawStringMirroredConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_raw_string_mirrored",
+        argNames: [],
+      );
+
+  Future<NestedRawStringMirrored> testNestedRawStringMirrored({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_nested_raw_string_mirrored(port_),
+      parseSuccessData: _wire2api_nested_raw_string_mirrored,
+      constMeta: kTestNestedRawStringMirroredConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestNestedRawStringMirroredConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_nested_raw_string_mirrored",
+        argNames: [],
+      );
+
+  Future<RawStringEnumMirrored> testRawStringEnumMirrored({required bool nested, dynamic hint}) {
+    var arg0 = nested;
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_raw_string_enum_mirrored(port_, arg0),
+      parseSuccessData: _wire2api_raw_string_enum_mirrored,
+      constMeta: kTestRawStringEnumMirroredConstMeta,
+      argValues: [nested],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestRawStringEnumMirroredConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_raw_string_enum_mirrored",
+        argNames: ["nested"],
+      );
+
+  Future<ListOfNestedRawStringMirrored> testListOfRawNestedStringMirrored({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_list_of_raw_nested_string_mirrored(port_),
+      parseSuccessData: _wire2api_list_of_nested_raw_string_mirrored,
+      constMeta: kTestListOfRawNestedStringMirroredConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestListOfRawNestedStringMirroredConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_list_of_raw_nested_string_mirrored",
+        argNames: [],
+      );
+
   Future<List<Weekdays>> listOfPrimitiveEnums({required List<Weekdays> weekdays, dynamic hint}) {
     var arg0 = _platform.api2wire_list_weekdays(weekdays);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -2296,6 +2374,37 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   FlutterRustBridgeTaskConstMeta get kListOfPrimitiveEnumsConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "list_of_primitive_enums",
         argNames: ["weekdays"],
+      );
+
+  Future<Abc> testAbcEnum({required Abc abc, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_abc(abc);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_abc_enum(port_, arg0),
+      parseSuccessData: _wire2api_abc,
+      constMeta: kTestAbcEnumConstMeta,
+      argValues: [abc],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestAbcEnumConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_abc_enum",
+        argNames: ["abc"],
+      );
+
+  Future<ContainsMirroredSubStruct> testContainsMirroredSubStruct({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_contains_mirrored_sub_struct(port_),
+      parseSuccessData: _wire2api_contains_mirrored_sub_struct,
+      constMeta: kTestContainsMirroredSubStructConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestContainsMirroredSubStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_contains_mirrored_sub_struct",
+        argNames: [],
       );
 
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) {
@@ -2620,6 +2729,37 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return raw as Uint8List;
   }
 
+  A _wire2api_a(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return A(
+      a: _wire2api_String(arr[0]),
+    );
+  }
+
+  Abc _wire2api_abc(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return Abc_A(
+          _wire2api_box_autoadd_a(raw[1]),
+        );
+      case 1:
+        return Abc_B(
+          _wire2api_box_autoadd_b(raw[1]),
+        );
+      case 2:
+        return Abc_C(
+          _wire2api_box_autoadd_c(raw[1]),
+        );
+      case 3:
+        return Abc_JustInt(
+          _wire2api_i32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
   ApplicationEnv _wire2api_application_env(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
@@ -2680,6 +2820,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     );
   }
 
+  B _wire2api_b(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return B(
+      b: _wire2api_i32(arr[0]),
+    );
+  }
+
   BigBuffers _wire2api_big_buffers(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
@@ -2725,6 +2873,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _wire2api_HideData(raw);
   }
 
+  A _wire2api_box_autoadd_a(dynamic raw) {
+    return _wire2api_a(raw);
+  }
+
   ApplicationEnv _wire2api_box_autoadd_application_env(dynamic raw) {
     return _wire2api_application_env(raw);
   }
@@ -2733,8 +2885,16 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _wire2api_attribute(raw);
   }
 
+  B _wire2api_box_autoadd_b(dynamic raw) {
+    return _wire2api_b(raw);
+  }
+
   bool _wire2api_box_autoadd_bool(dynamic raw) {
     return raw as bool;
+  }
+
+  C _wire2api_box_autoadd_c(dynamic raw) {
+    return _wire2api_c(raw);
   }
 
   Element _wire2api_box_autoadd_element(dynamic raw) {
@@ -2757,12 +2917,24 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _wire2api_i64(raw);
   }
 
+  ListOfNestedRawStringMirrored _wire2api_box_autoadd_list_of_nested_raw_string_mirrored(dynamic raw) {
+    return _wire2api_list_of_nested_raw_string_mirrored(raw);
+  }
+
   Measure _wire2api_box_autoadd_measure(dynamic raw) {
     return _wire2api_measure(raw);
   }
 
+  NestedRawStringMirrored _wire2api_box_autoadd_nested_raw_string_mirrored(dynamic raw) {
+    return _wire2api_nested_raw_string_mirrored(raw);
+  }
+
   NewTypeInt _wire2api_box_autoadd_new_type_int(dynamic raw) {
     return _wire2api_new_type_int(raw);
+  }
+
+  RawStringMirrored _wire2api_box_autoadd_raw_string_mirrored(dynamic raw) {
+    return _wire2api_raw_string_mirrored(raw);
   }
 
   Weekdays _wire2api_box_autoadd_weekdays(dynamic raw) {
@@ -2789,12 +2961,29 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _wire2api_u8_array_8(raw);
   }
 
+  C _wire2api_c(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return C(
+      c: _wire2api_bool(arr[0]),
+    );
+  }
+
   ConcatenateWith _wire2api_concatenate_with(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return ConcatenateWith(
       bridge: this,
       a: _wire2api_String(arr[0]),
+    );
+  }
+
+  ContainsMirroredSubStruct _wire2api_contains_mirrored_sub_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return ContainsMirroredSubStruct(
+      test: _wire2api_raw_string_mirrored(arr[0]),
+      test2: _wire2api_a(arr[1]),
     );
   }
 
@@ -3047,6 +3236,18 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return (raw as List<dynamic>).map(_wire2api_my_tree_node).toList();
   }
 
+  List<NestedRawStringMirrored> _wire2api_list_nested_raw_string_mirrored(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_nested_raw_string_mirrored).toList();
+  }
+
+  ListOfNestedRawStringMirrored _wire2api_list_of_nested_raw_string_mirrored(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return ListOfNestedRawStringMirrored(
+      raw: _wire2api_list_nested_raw_string_mirrored(arr[0]),
+    );
+  }
+
   List<Attribute?> _wire2api_list_opt_box_autoadd_attribute(dynamic raw) {
     return (raw as List<dynamic>).map(_wire2api_opt_box_autoadd_attribute).toList();
   }
@@ -3108,6 +3309,17 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     );
   }
 
+  MoreThanJustOneRawStringStruct _wire2api_more_than_just_one_raw_string_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MoreThanJustOneRawStringStruct(
+      regular: _wire2api_String(arr[0]),
+      type: _wire2api_String(arr[1]),
+      async: _wire2api_bool(arr[2]),
+      another: _wire2api_String(arr[3]),
+    );
+  }
+
   MyEnum _wire2api_my_enum(dynamic raw) {
     return MyEnum.values[raw];
   }
@@ -3154,6 +3366,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
       valueVecU8: _wire2api_uint_8_list(arr[1]),
       valueBoolean: _wire2api_bool(arr[2]),
       children: _wire2api_list_my_tree_node(arr[3]),
+    );
+  }
+
+  NestedRawStringMirrored _wire2api_nested_raw_string_mirrored(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return NestedRawStringMirrored(
+      raw: _wire2api_raw_string_mirrored(arr[0]),
     );
   }
 
@@ -3311,11 +3531,38 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     );
   }
 
+  RawStringEnumMirrored _wire2api_raw_string_enum_mirrored(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return RawStringEnumMirrored_Raw(
+          _wire2api_box_autoadd_raw_string_mirrored(raw[1]),
+        );
+      case 1:
+        return RawStringEnumMirrored_Nested(
+          _wire2api_box_autoadd_nested_raw_string_mirrored(raw[1]),
+        );
+      case 2:
+        return RawStringEnumMirrored_ListOfNested(
+          _wire2api_box_autoadd_list_of_nested_raw_string_mirrored(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
   RawStringItemStruct _wire2api_raw_string_item_struct(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return RawStringItemStruct(
       type: _wire2api_String(arr[0]),
+    );
+  }
+
+  RawStringMirrored _wire2api_raw_string_mirrored(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return RawStringMirrored(
+      value: _wire2api_String(arr[0]),
     );
   }
 

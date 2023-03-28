@@ -628,6 +628,66 @@ void main(List<String> args) async {
   //   expect(output.type, "not a type ;')");
   // });
 
+  test('test dart test more than just one raw string struct', () async {
+    final output = await api.testMoreThanJustOneRawStringStruct();
+    expect(output, isA<MoreThanJustOneRawStringStruct>());
+    expect(output.regular, "regular");
+    expect(output.type, "type");
+    expect(output.async, true);
+    expect(output.another, "another");
+  });
+
+  test('test mirrored raw structs', () async {
+    final output = await api.testRawStringMirrored();
+    expect(output, isA<RawStringMirrored>());
+    expect(output.value, "test");
+  });
+
+  test('test nested mirror raw', () async {
+    final output = await api.testNestedRawStringMirrored();
+    expect(output, isA<NestedRawStringMirrored>());
+    expect(output.raw, isA<RawStringMirrored>());
+    expect(output.raw.value, "test");
+  });
+
+  test('test raw string enum', () async {
+    final output1 = await api.testRawStringEnumMirrored(nested: true);
+    expect(output1 is RawStringEnumMirrored_Nested, true);
+    expect((output1 as RawStringEnumMirrored_Nested).field0.raw.value, "test");
+
+    final output2 = await api.testRawStringEnumMirrored(nested: false);
+    expect(output2 is RawStringEnumMirrored_Raw, true);
+    expect((output2 as RawStringEnumMirrored_Raw).field0.value, "test");
+  });
+
+  test('test list of raw nested strings', () async {
+    final output = await api.testListOfRawNestedStringMirrored();
+    expect(output.raw.length, 1);
+    expect(output.raw[0].raw.value, "test");
+  });
+
+  test('test abc', () async {
+    final output1 = await api.testAbcEnum(abc: Abc.a(A(a: "test")));
+    expect((output1 as Abc_A).field0.a, "test");
+
+    final output2 = await api.testAbcEnum(abc: Abc.b(B(b: 1)));
+    expect((output2 as Abc_B).field0.b, 1);
+
+    final output3 = await api.testAbcEnum(abc: Abc.c(C(c: false)));
+    expect((output3 as Abc_C).field0.c, false);
+
+    final output4 = await api.testAbcEnum(abc: Abc.justInt(1));
+    expect((output4 as Abc_JustInt).field0, 1);
+  });
+
+  test('test contains mirrored sub struct', () async {
+    final output = await api.testContainsMirroredSubStruct();
+    expect(output, isA<ContainsMirroredSubStruct>());
+    expect(output.test, isA<RawStringMirrored>());
+    expect(output.test.value, "test");
+    expect(output.test2.a, "test");
+  });
+
   group('Platform-specific support', () {
     test('Int64List', () {
       final list = Int64List.fromList([-1, -2, -3, -4, -5]);
