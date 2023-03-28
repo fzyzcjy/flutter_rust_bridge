@@ -75,6 +75,7 @@ impl IrField {
 
     /// Takes the provided name and surrounds it with the `mirror_` prefix if the field is in a
     /// mirrored enum.
+    /// This may be improved in the future: https://github.com/fzyzcjy/flutter_rust_bridge/pull/1144#issuecomment-1486569869
     pub fn try_name_mirror(&self, name: String) -> String {
         let mirrored_name = self.ty.mirrored_nested();
         if self.settings.is_in_mirrored_enum && mirrored_name.is_some() {
