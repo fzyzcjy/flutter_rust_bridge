@@ -1,3 +1,7 @@
+## 1.72.1
+
+* Fix for enums that contain mirrored structs Enum1(MyStruct) and Unit Tests #1144 (thanks @alexthe2)
+
 ## 1.72.0
 
 * Added support for raw strings #1139 (thanks @alexthe2)
