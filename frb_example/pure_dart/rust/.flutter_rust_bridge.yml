@@ -7,4 +7,6 @@ dart_enums_style: true
 c_output: [c_output_path/c_output.h]
 extra_c_output_path:
   - c_output_path_extra/
+llvm-compiler-opts:
+  [-I/usr/lib/clang/15.0.7/include]
 # dump: []
