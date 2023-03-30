@@ -767,6 +767,8 @@ void wire_test_raw_string_enum_mirrored(int64_t port_, bool nested);
 
 void wire_test_list_of_raw_nested_string_mirrored(int64_t port_);
 
+void wire_test_fallible_of_raw_string_mirrored(int64_t port_);
+
 void wire_list_of_primitive_enums(int64_t port_, struct wire_list_weekdays *weekdays);
 
 void wire_test_abc_enum(int64_t port_, struct wire_Abc *abc);
@@ -1173,6 +1175,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_test_nested_raw_string_mirrored);
     dummy_var ^= ((int64_t) (void*) wire_test_raw_string_enum_mirrored);
     dummy_var ^= ((int64_t) (void*) wire_test_list_of_raw_nested_string_mirrored);
+    dummy_var ^= ((int64_t) (void*) wire_test_fallible_of_raw_string_mirrored);
     dummy_var ^= ((int64_t) (void*) wire_list_of_primitive_enums);
     dummy_var ^= ((int64_t) (void*) wire_test_abc_enum);
     dummy_var ^= ((int64_t) (void*) wire_test_contains_mirrored_sub_struct);
