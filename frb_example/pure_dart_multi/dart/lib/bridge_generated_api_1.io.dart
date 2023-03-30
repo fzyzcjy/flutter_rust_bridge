@@ -60,6 +60,39 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
   ApiClass1Wire.fromLookup(ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName) lookup)
       : _lookup = lookup;
 
+  ffi.Pointer<wire_SharedStruct> new_box_autoadd_shared_struct() {
+    return _new_box_autoadd_shared_struct();
+  }
+
+  late final _new_box_autoadd_shared_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_SharedStruct> Function()>>('new_box_autoadd_shared_struct');
+  late final _new_box_autoadd_shared_struct =
+      _new_box_autoadd_shared_structPtr.asFunction<ffi.Pointer<wire_SharedStruct> Function()>();
+
+  ffi.Pointer<wire_uint_8_list> new_uint_8_list(
+    int len,
+  ) {
+    return _new_uint_8_list(
+      len,
+    );
+  }
+
+  late final _new_uint_8_listPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list');
+  late final _new_uint_8_list = _new_uint_8_listPtr.asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
+
+  void free_WireSyncReturn(
+    WireSyncReturn ptr,
+  ) {
+    return _free_WireSyncReturn(
+      ptr,
+    );
+  }
+
+  late final _free_WireSyncReturnPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturn)>>('free_WireSyncReturn');
+  late final _free_WireSyncReturn = _free_WireSyncReturnPtr.asFunction<void Function(WireSyncReturn)>();
+
   void store_dart_post_cobject(
     DartPostCObjectFnType ptr,
   ) {
@@ -116,49 +149,6 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
   late final _init_frb_dart_api_dlPtr =
       _lookup<ffi.NativeFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>)>>('init_frb_dart_api_dl');
   late final _init_frb_dart_api_dl = _init_frb_dart_api_dlPtr.asFunction<int Function(ffi.Pointer<ffi.Void>)>();
-
-  ffi.Pointer<wire_CrossSharedStruct> new_box_autoadd_cross_shared_struct() {
-    return _new_box_autoadd_cross_shared_struct();
-  }
-
-  late final _new_box_autoadd_cross_shared_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_CrossSharedStruct> Function()>>(
-          'new_box_autoadd_cross_shared_struct');
-  late final _new_box_autoadd_cross_shared_struct =
-      _new_box_autoadd_cross_shared_structPtr.asFunction<ffi.Pointer<wire_CrossSharedStruct> Function()>();
-
-  ffi.Pointer<wire_SharedStruct> new_box_autoadd_shared_struct() {
-    return _new_box_autoadd_shared_struct();
-  }
-
-  late final _new_box_autoadd_shared_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_SharedStruct> Function()>>('new_box_autoadd_shared_struct');
-  late final _new_box_autoadd_shared_struct =
-      _new_box_autoadd_shared_structPtr.asFunction<ffi.Pointer<wire_SharedStruct> Function()>();
-
-  ffi.Pointer<wire_uint_8_list> new_uint_8_list(
-    int len,
-  ) {
-    return _new_uint_8_list(
-      len,
-    );
-  }
-
-  late final _new_uint_8_listPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list');
-  late final _new_uint_8_list = _new_uint_8_listPtr.asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
-
-  void free_WireSyncReturn(
-    WireSyncReturn ptr,
-  ) {
-    return _free_WireSyncReturn(
-      ptr,
-    );
-  }
-
-  late final _free_WireSyncReturnPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturn)>>('free_WireSyncReturn');
-  late final _free_WireSyncReturn = _free_WireSyncReturnPtr.asFunction<void Function(WireSyncReturn)>();
 
   void wire_test_inbuilt_type_1(
     int port_,
@@ -272,10 +262,6 @@ class wire_uint_8_list extends ffi.Struct {
   external int len;
 }
 
-class wire_CrossSharedStruct extends ffi.Struct {
-  external ffi.Pointer<wire_uint_8_list> name;
-}
-
 class wire_SharedStruct extends ffi.Struct {
   @ffi.Int32()
   external int id;
@@ -293,6 +279,10 @@ class wire_OnlyForApi1Struct extends ffi.Struct {
   @ffi.Double()
   external double num;
 
+  external ffi.Pointer<wire_uint_8_list> name;
+}
+
+class wire_CrossSharedStruct extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> name;
 }
 

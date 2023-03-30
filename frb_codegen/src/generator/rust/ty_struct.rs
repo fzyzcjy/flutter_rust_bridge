@@ -21,10 +21,19 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                 } else {
                     String::new()
                 };
-
+                let shared_mod_name = self.get_shared_mod_name_if_type_shared(&field.ty);
                 Acc {
                     wasm: format!("{field_} self_.get({idx}).wire2api()"),
-                    io: format!("{field_} self.{field_name}.wire2api()"),
+                    io: if !self.context.config.shared
+                        && shared_mod_name.is_some()
+                    {
+                        format!(
+                            "{field_} {}::Wire2Api::wire2api(self.{field_name})",
+                            shared_mod_name.unwrap()
+                        )
+                    } else {
+                        format!("{field_} self.{field_name}.wire2api()")
+                    },
                     ..Default::default()
                 }
             })
@@ -143,6 +152,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                     field.ty.clone(),
                     self.context.ir_file,
                     self.context.config,
+                    self.context.shared_mod_name,
                 );
                 // wired_fallible is always false here, this parameter is only used for generate_wire_func
                 gen.convert_to_dart(gen.wrap_obj(format!("self{unwrap}.{field_ref}"), false))
@@ -230,5 +240,9 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
         } else {
             None
         }
+    }
+
+    fn get_context(&self) -> &TypeGeneratorContext {
+        &self.context
     }
 }

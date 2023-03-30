@@ -217,7 +217,7 @@ pub fn parse(raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
         &fallback_class_name,
         "class_name",
     );
-    if !class_names.find_duplicates().is_empty() {
+    if !class_names.find_duplicates(true).is_empty() {
         bail(
             clap::ErrorKind::TooManyOccurrences,
             "there should be no duplication in --class-name's inputs".into(),
@@ -290,17 +290,21 @@ pub fn parse(raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
         .collect::<Vec<_>>();
 
     // if shared API-block(config) is essential, generate and add it to vec
-    let (no_duplicated_symbols, shared_symbols) = get_symbols_if_no_duplicates(&regular_configs)?;
-    let all_configs = if shared_symbols.is_empty() {
+    assert!(!regular_configs.is_empty());
+    let (distinct_symbols, _implicit_duplicated_symbols) =
+        get_symbols_if_no_duplicates(&regular_configs)?;
+    let all_configs = if regular_configs.len() == 1 {
         regular_configs
     } else {
+        // NOTE: since there would be at least 1 shared API called `free_WireSyncReturn` for multi-blocks,
+        // the extra shared config is essential, whatever `_implicit_duplicated_symbols` is empty or not.
         let shared_config = Opts {
             rust_input_path: "".into(), // this field is meangingless for shared block, so it's empty.
             rust_output_path: shared_rust_output_path.clone(),
             dart_output_path: shared_dart_output_path.clone(),
             dart_decl_output_path: dart_decl_output_path.clone(),
             rust_crate_dir: regular_configs[0].rust_crate_dir.clone(),
-            c_output_path: vec![], // no need to gnerated other c header files, even there is a shared block.
+            c_output_path: vec![], // no need to generate other c header files, even there is a shared block.
             class_name: Path::new(&shared_dart_output_path)
                 .file_name_str()
                 .unwrap()
@@ -325,7 +329,7 @@ pub fn parse(raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
         [regular_configs, vec![shared_config]].concat()
     };
 
-    Ok((all_configs, no_duplicated_symbols))
+    Ok((all_configs, distinct_symbols))
 }
 
 fn get_refined_c_output(
@@ -548,9 +552,13 @@ fn path_to_string(path: PathBuf) -> Result<String, OsString> {
 }
 
 impl Opts {
-    pub fn get_ir_file(&self, all_configs: Option<&[Opts]>) -> Result<IrFile> {
+    /// NOTE: for `Opts` for a regular API block, if `all_configs` is empty or with only 1 element,
+    /// it would return an `IrFile` with field of EMPTY `shared_types` for the regular block;
+    /// for `Opts` for an auto-generated shared API block, make sure `all_configs` has at least 2 items, each of which
+    /// is for the regular block. Otherwise, it would panic.
+    pub fn get_ir_file(&self, all_configs: &[Opts]) -> Result<IrFile> {
         let raw_ir_file = if !self.shared {
-            self.get_regular_ir_file()?
+            self.get_regular_ir_file(all_configs)?
         } else {
             self.get_shared_ir_file(all_configs)?
         };
@@ -558,7 +566,7 @@ impl Opts {
         Ok(transformer::transform(raw_ir_file))
     }
 
-    fn get_regular_ir_file(&self) -> Result<IrFile> {
+    fn get_regular_ir_file(&self, all_configs: &[Opts]) -> Result<IrFile> {
         log::debug!("Phase: Parse source code to AST");
         let source_rust_content = fs::read_to_string(&self.rust_input_path).with_context(|| {
             let err_msg = format!(
@@ -577,13 +585,15 @@ impl Opts {
             &self.manifest_path,
             self.block_index,
             self.shared,
+            all_configs,
         ))
     }
 
-    fn get_shared_ir_file(&self, all_configs: Option<&[Opts]>) -> Result<IrFile> {
+    fn get_shared_ir_file(&self, all_configs: &[Opts]) -> Result<IrFile> {
         log::debug!("get_shared_ir_file 1"); //TODO: delete
-        let all_configs =
-            all_configs.expect("to get shared ir_file, `all_configs` should not be none!");
+        if all_configs.len() <= 1 {
+            panic!("`get_shared_ir_file(..)` should not be called when all_configs.len()<=1")
+        }
         let (regular_configs, shared_index) = if !all_configs.last().unwrap().shared {
             (all_configs, all_configs.len())
         } else {
@@ -600,18 +610,17 @@ impl Opts {
         log::debug!("get_shared_ir_file 3"); //TODO: delete
 
         // get regular ir_files
-        let mut funcs = Vec::new();
+        let mut funcs = Vec::new();// TODO:
         let mut structs = Vec::new();
         let mut enums = Vec::new();
         for config in regular_configs {
-            let ir_file = config.get_ir_file(None)?;
-
+            let ir_file = config.get_ir_file(&[])?;
             // funcs.extend(raw_ir_file.funcs);// TODO: only methods of shared structs needed
             structs.extend(ir_file.struct_pool);
             enums.extend(ir_file.enum_pool);
         }
-        let shared_structs = structs.find_duplicates();
-        let shared_enums = enums.find_duplicates();
+        let shared_structs = structs.find_duplicates(true);
+        let shared_enums = enums.find_duplicates(true);
 
         let struct_pool = shared_structs
             .into_iter()
@@ -624,15 +633,15 @@ impl Opts {
 
         log::debug!("the shared struct_pool:{:?}", struct_pool); //TODO: delete
         log::debug!("the shared enum_pool:{:?}", enum_pool); //TODO: delete
-
-        Ok(IrFile {
-            funcs: funcs, // this field would effect `IrFile.visit_types(...)` and others
-            struct_pool: struct_pool,
-            enum_pool: enum_pool, // TODO: check with customized enum struct
-            has_executor: true,   // set true, in case for the methods of a shared struct,
-            block_index: BlockIndex(shared_index),
-            shared: true,
-        })
+        Ok(IrFile::new(
+            funcs, // this field would effect `IrFile.visit_types(...)` and others
+            struct_pool,
+            enum_pool,
+            true, // set true, in case for the methods of a shared struct,
+            BlockIndex(shared_index),
+            true,
+            all_configs,
+        ))
     }
 
     pub fn dart_api_class_name(&self) -> String {

@@ -142,4 +142,8 @@ impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
     fn imports(&self) -> Option<String> {
         None
     }
+
+    fn get_context(&self) -> &TypeGeneratorContext {
+        &self.context
+    }
 }

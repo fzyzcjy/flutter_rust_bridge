@@ -231,6 +231,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                                     field.ty.clone(),
                                     self.context.ir_file,
                                     self.context.config,
+                                    self.context.shared_mod_name
                                 );
                                 gen.convert_to_dart(field.name.rust_style().to_owned())
                             }))
@@ -332,5 +333,9 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
     fn imports(&self) -> Option<String> {
         let api_enum = self.ir.get(self.context.ir_file);
         Some(format!("use {};", api_enum.path.join("::")))
+    }
+
+    fn get_context(&self) -> &TypeGeneratorContext {
+        &self.context
     }
 }

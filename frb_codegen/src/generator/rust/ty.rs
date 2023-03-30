@@ -41,17 +41,11 @@ pub trait TypeRustGeneratorTrait {
         "".to_string()
     }
 
-    fn allocate_funcs(
-        &self,
-        _collector: &mut ExternFuncCollector,
-    ) -> Acc<Option<String>> {
+    fn allocate_funcs(&self, _collector: &mut ExternFuncCollector) -> Acc<Option<String>> {
         Acc::default()
     }
 
-    fn related_funcs(
-        &self,
-        _collector: &mut ExternFuncCollector,
-    ) -> Acc<Option<String>> {
+    fn related_funcs(&self, _collector: &mut ExternFuncCollector) -> Acc<Option<String>> {
         Acc::default()
     }
 
@@ -66,12 +60,37 @@ pub trait TypeRustGeneratorTrait {
     fn imports(&self) -> Option<String> {
         None
     }
+
+    fn get_context(&self) -> &TypeGeneratorContext;
+
+    fn get_shared_mod_name_if_type_shared(&self, ty: &IrType) -> Option<&str> {
+        if self.get_context().ir_file.is_type_shared(&ty) {
+            if let Some(shared_mod_name) = self.get_context().shared_mod_name {
+                if shared_mod_name.is_empty() {
+                    panic!(
+                        "type \"{}\" is shared, but the shared module name is empty",
+                        self.get_context().type_name
+                    );
+                }
+                return Some(shared_mod_name);
+            } else {
+                panic!(
+                    "type \"{}\" is shared, but the shared module name is None",
+                    self.get_context().type_name
+                );
+            }
+        }
+        None
+    }
 }
 
 #[derive(Debug, Clone)]
 pub struct TypeGeneratorContext<'a> {
+    pub type_name: String,
+    pub shared: bool, // if the type bonded to this instance is shared among different regular blocks, it should be true.
     pub ir_file: &'a IrFile,
     pub config: &'a Opts,
+    pub shared_mod_name: Option<&'a str>, // if there is only 1 API block, it should be None. Otherwise, it should not be None.
 }
 
 #[macro_export]
@@ -103,8 +122,19 @@ pub enum TypeRustGenerator<'a> {
 }
 
 impl<'a> TypeRustGenerator<'a> {
-    pub fn new(ty: IrType, ir_file: &'a IrFile, config: &'a Opts) -> Self {
-        let context = TypeGeneratorContext { ir_file, config };
+    pub fn new(
+        ty: IrType,
+        ir_file: &'a IrFile,
+        config: &'a Opts,
+        shared_mod_name: Option<&'a str>,
+    ) -> Self {
+        let context = TypeGeneratorContext {
+            type_name: format!("{ty:?}"),
+            shared: ir_file.is_type_shared(&ty),
+            ir_file,
+            config,
+            shared_mod_name,
+        };
         match ty {
             Primitive(ir) => TypePrimitiveGenerator { ir, context }.into(),
             Delegate(ir) => TypeDelegateGenerator { ir, context }.into(),

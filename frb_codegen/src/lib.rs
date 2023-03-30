@@ -9,6 +9,7 @@ use std::path::Path;
 use itertools::Itertools;
 mod logs;
 pub use crate::logs::init_logger;
+pub use log;
 use log::info;
 use pathdiff::diff_paths;
 
@@ -71,7 +72,7 @@ pub fn frb_codegen_multi(
     info!("Picked config: {:?}", config);
 
     info!("Phase: Parse source code to AST, then to IR");
-    let ir_file = config.get_ir_file(Some(all_configs))?;
+    let ir_file = config.get_ir_file(all_configs)?;
 
     info!("Phase: Generate Rust code");
     let generated_rust = generate_rust_code(config, all_configs, &ir_file)?;

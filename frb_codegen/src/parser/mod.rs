@@ -12,7 +12,7 @@ use syn::token::Colon;
 use syn::*;
 use topological_sort::TopologicalSort;
 
-use crate::ir::*;
+use crate::{ir::*, Opts};
 
 use crate::generator::rust::HANDLER_NAME;
 use crate::method_utils::FunctionName;
@@ -98,6 +98,7 @@ pub fn parse(
     manifest_path: &str,
     block_index: BlockIndex,
     shared: bool,
+    all_configs: &[Opts],
 ) -> IrFile {
     let crate_map = Crate::new(manifest_path);
 
@@ -109,7 +110,13 @@ pub fn parse(
     let src_types = topo_resolve(src_types);
 
     let parser = Parser::new(TypeParser::new(src_structs, src_enums, src_types));
-    parser.parse(source_rust_content, src_fns, block_index, shared)
+    parser.parse(
+        source_rust_content,
+        src_fns,
+        block_index,
+        shared,
+        all_configs,
+    )
 }
 
 struct Parser<'a> {
@@ -129,6 +136,7 @@ impl<'a> Parser<'a> {
         src_fns: Vec<ItemFn>,
         block_index: BlockIndex,
         shared: bool,
+        all_configs: &[Opts],
     ) -> IrFile {
         let funcs = src_fns.iter().map(|f| self.parse_function(f)).collect();
 
@@ -136,14 +144,15 @@ impl<'a> Parser<'a> {
 
         let (struct_pool, enum_pool) = self.type_parser.consume();
 
-        IrFile {
+        IrFile::new(
             funcs,
             struct_pool,
             enum_pool,
             has_executor,
             block_index,
             shared,
-        }
+            all_configs,
+        )
     }
 
     /// Attempts to parse the type from the return part of a function signature. There is a special

@@ -58,8 +58,8 @@ impl Wire2Api<OnlyForApi1Struct> for wire_OnlyForApi1Struct {
     fn wire2api(self) -> OnlyForApi1Struct {
         OnlyForApi1Struct {
             id: self.id.wire2api(),
-            num: self.num.wire2api(),
-            name: self.name.wire2api(),
+            num: bridge_generated_shares::Wire2Api::wire2api(self.num),
+            name: bridge_generated_shares::Wire2Api::wire2api(self.name),
         }
     }
 }
@@ -102,10 +102,3 @@ impl Default for wire_OnlyForApi1Struct {
 }
 
 // Section: sync execution mode utility
-
-#[no_mangle]
-pub extern "C" fn free_WireSyncReturn(ptr: support::WireSyncReturn) {
-    unsafe {
-        let _ = support::box_from_leak_ptr(ptr);
-    };
-}

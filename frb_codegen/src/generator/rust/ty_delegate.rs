@@ -234,4 +234,8 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
     fn static_checks(&self) -> Option<String> {
         delegate_enum!(self, static_checks(), None)
     }
+
+    fn get_context(&self) -> &TypeGeneratorContext {
+        &self.context
+    }
 }

@@ -15,8 +15,8 @@ use flutter_rust_bridge::*;
 
 // Section: imports
 
-use crate::custom::CrossSharedStruct;
-use crate::custom::SharedStruct;
+pub use crate::custom::CrossSharedStruct;
+pub use crate::custom::SharedStruct;
 
 // Section: wire functions
 
@@ -107,20 +107,3 @@ pub use web::*;
 mod io;
 #[cfg(not(target_family = "wasm"))]
 pub use io::*;
-
-    // ----------- DUMMY CODE FOR BINDGEN ----------
-
-    // copied from: allo-isolate
-    pub type DartPort = i64;
-    pub type DartPostCObjectFnType = unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool;
-    #[no_mangle] pub unsafe extern "C" fn store_dart_post_cobject(ptr: DartPostCObjectFnType) { panic!("dummy code") }
-    #[no_mangle] pub unsafe extern "C" fn get_dart_object(ptr: usize) -> Dart_Handle { panic!("dummy code") }
-    #[no_mangle] pub unsafe extern "C" fn drop_dart_object(ptr: usize) { panic!("dummy code") }
-    #[no_mangle] pub unsafe extern "C" fn new_dart_opaque(handle: Dart_Handle) -> usize { panic!("dummy code") }
-    #[no_mangle] pub unsafe extern "C" fn init_frb_dart_api_dl(obj: *mut c_void) -> isize { panic!("dummy code") }
-
-    pub struct DartCObject;
-    pub type WireSyncReturn = *mut DartCObject;
-
-    // ---------------------------------------------
-    

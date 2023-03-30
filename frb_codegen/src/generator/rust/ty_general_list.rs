@@ -43,6 +43,7 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
             *self.ir.inner.clone(),
             self.context.ir_file,
             self.context.config,
+            self.context.shared_mod_name
         );
         inner
             .wrapper_struct()
@@ -73,6 +74,10 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
     }
 
     fn imports(&self) -> Option<String> {
-        generate_import(&self.ir.inner, self.context.ir_file, self.context.config)
+        generate_import(&self.ir.inner, self.context.ir_file, self.context.config,self.context.shared_mod_name)
+    }
+
+    fn get_context(&self) -> &TypeGeneratorContext {
+        &self.context
     }
 }
