@@ -48,20 +48,18 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
         inner
             .wrapper_struct()
             .map(|wrapper| {
-                if wired_fallible_func {
-                    format!(
-                        "{}.map(|s| s.into_iter().map(|v| {}({})).collect::<Vec<_>>())",
-                        obj,
-                        wrapper,
-                        inner.self_access("v".to_owned())
-                    )
-                } else {
+                let infallible_part = |name| {
                     format!(
                         "{}.into_iter().map(|v| {}({})).collect::<Vec<_>>()",
-                        obj,
+                        name,
                         wrapper,
                         inner.self_access("v".to_owned())
                     )
+                };
+                if wired_fallible_func {
+                    format!("{}.map(|s| {})", obj, infallible_part("s"))
+                } else {
+                    infallible_part(&obj)
                 }
             })
             .unwrap_or(obj)
