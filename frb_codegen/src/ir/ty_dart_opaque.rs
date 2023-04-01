@@ -1,7 +1,8 @@
 use crate::ir::*;
 
-#[derive(Debug, Clone, Hash, Eq, PartialEq)]
+crate::ir! {
 pub struct IrTypeDartOpaque;
+}
 
 impl IrTypeTrait for IrTypeDartOpaque {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, _f: &mut F, _ir_file: &IrFile) {

@@ -231,9 +231,12 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                                     field.ty.clone(),
                                     self.context.ir_file,
                                     self.context.config,
-                                    self.context.shared_mod_name
+                                    self.context.shared_mod_name,
                                 );
-                                gen.convert_to_dart(field.name.rust_style().to_owned())
+
+                                gen.convert_to_dart(
+                                    field.try_name_mirror(field.name.rust_style().to_owned()),
+                                )
                             }))
                             .collect::<Vec<_>>();
                         let pattern = st

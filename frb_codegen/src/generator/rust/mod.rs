@@ -30,11 +30,12 @@ use std::collections::HashSet;
 use std::fmt::Display;
 
 use crate::ir::IrType::*;
-use crate::method_utils::FunctionName;
 use crate::others::*;
 use crate::target::Acc;
 use crate::target::Target;
 use crate::target::Target::*;
+use crate::utils::method::FunctionName;
+
 use crate::{ir::*, Opts};
 use itertools::Itertools;
 
@@ -715,16 +716,28 @@ pub fn generate_list_allocate_func(
     collector.generate(
         &format!("new_{safe_ident}"),
         [("len: i32", "int")],
-        Some(&[
-            list.rust_wire_modifier(Target::Io).as_str(),
-            list.rust_wire_type(Target::Io).as_str()
-        ].concat()),
+        Some(
+            &[
+                list.rust_wire_modifier(Target::Io).as_str(),
+                list.rust_wire_type(Target::Io).as_str(),
+            ]
+            .concat(),
+        ),
         &format!(
-            "let wrap = {} {{ ptr: support::new_leak_vec_ptr(<{}{}>::new_with_null_ptr(), len), len }};
+            "let wrap = {} {{ ptr: support::new_leak_vec_ptr({}, len), len }};
                 support::new_leak_box_ptr(wrap)",
             list.rust_wire_type(Target::Io),
-            inner.rust_ptr_modifier(),
-            inner.rust_wire_type(Target::Io)
+            if inner.is_primitive() {
+                // A primitive enum list can use a default value since
+                // `<i32>::new_with_null_ptr()` isn't implemented.
+                "Default::default()".to_string()
+            } else {
+                format!(
+                    "<{}{}>::new_with_null_ptr()",
+                    inner.rust_ptr_modifier(),
+                    inner.rust_wire_type(Target::Io)
+                )
+            }
         ),
         Io,
     )

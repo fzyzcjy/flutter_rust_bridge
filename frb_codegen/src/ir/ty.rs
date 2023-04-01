@@ -3,9 +3,9 @@ use enum_dispatch::enum_dispatch;
 use std::collections::HashSet;
 use IrType::*;
 
+crate::ir! {
 /// Remark: "Ty" instead of "Type", since "type" is a reserved word in Rust.
 #[enum_dispatch(IrTypeTrait)]
-#[derive(Debug, Clone, Hash, Eq, PartialEq)]
 pub enum IrType {
     Primitive(IrTypePrimitive),
     Delegate(IrTypeDelegate),
@@ -19,6 +19,8 @@ pub enum IrType {
     DartOpaque(IrTypeDartOpaque),
     RustOpaque(IrTypeRustOpaque),
     Dynamic(IrTypeDynamic),
+    Unencodable(IrTypeUnencodable),
+}
 }
 
 impl IrType {
@@ -120,6 +122,14 @@ impl IrType {
             | Self::DartOpaque(_) => true,
             Self::Boxed(IrTypeBoxed { inner, .. }) => inner.is_js_value(),
             _ => false,
+        }
+    }
+
+    pub fn mirrored_nested(&self) -> Option<String> {
+        match self {
+            Self::StructRef(struct_ref) => Some(struct_ref.name.clone()),
+            Self::Boxed(IrTypeBoxed { inner, .. }) => inner.mirrored_nested(),
+            _ => None,
         }
     }
 }

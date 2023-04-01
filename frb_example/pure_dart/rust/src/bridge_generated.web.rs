@@ -730,6 +730,51 @@ pub fn wire_return_dart_dynamic(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_test_raw_string_item_struct(port_: MessagePort) {
+    wire_test_raw_string_item_struct_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_more_than_just_one_raw_string_struct(port_: MessagePort) {
+    wire_test_more_than_just_one_raw_string_struct_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_raw_string_mirrored(port_: MessagePort) {
+    wire_test_raw_string_mirrored_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_nested_raw_string_mirrored(port_: MessagePort) {
+    wire_test_nested_raw_string_mirrored_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_raw_string_enum_mirrored(port_: MessagePort, nested: bool) {
+    wire_test_raw_string_enum_mirrored_impl(port_, nested)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_list_of_raw_nested_string_mirrored(port_: MessagePort) {
+    wire_test_list_of_raw_nested_string_mirrored_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_list_of_primitive_enums(port_: MessagePort, weekdays: JsValue) {
+    wire_list_of_primitive_enums_impl(port_, weekdays)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_abc_enum(port_: MessagePort, abc: JsValue) {
+    wire_test_abc_enum_impl(port_, abc)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_contains_mirrored_sub_struct(port_: MessagePort) {
+    wire_test_contains_mirrored_sub_struct_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -852,6 +897,21 @@ pub fn share_opaque_HideData(ptr: *const c_void) -> *const c_void {
 }
 
 #[wasm_bindgen]
+pub fn drop_opaque_HideData(ptr: *const c_void) {
+    unsafe {
+        Arc::<HideData>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_HideData(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<HideData>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
 pub fn drop_opaque_I32(ptr: *const c_void) {
     unsafe {
         Arc::<i32>::decrement_strong_count(ptr as _);
@@ -877,6 +937,21 @@ pub fn drop_opaque_MutexHideData(ptr: *const c_void) {
 pub fn share_opaque_MutexHideData(ptr: *const c_void) -> *const c_void {
     unsafe {
         Arc::<Mutex<HideData>>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_opaque_NonSendHideData(ptr: *const c_void) {
+    unsafe {
+        Arc::<NonSendHideData>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_NonSendHideData(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<NonSendHideData>::increment_strong_count(ptr as _);
         ptr
     }
 }
@@ -971,6 +1046,32 @@ impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for Box<[u8]> {
         ZeroCopyBuffer(self.wire2api())
     }
 }
+impl Wire2Api<A> for JsValue {
+    fn wire2api(self) -> A {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        A {
+            a: self_.get(0).wire2api(),
+        }
+    }
+}
+impl Wire2Api<Abc> for JsValue {
+    fn wire2api(self) -> Abc {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => Abc::A(self_.get(1).wire2api()),
+            1 => Abc::B(self_.get(1).wire2api()),
+            2 => Abc::C(self_.get(1).wire2api()),
+            3 => Abc::JustInt(self_.get(1).wire2api()),
+            _ => unreachable!(),
+        }
+    }
+}
 impl Wire2Api<ApplicationEnv> for JsValue {
     fn wire2api(self) -> ApplicationEnv {
         let self_ = self.dyn_into::<JsArray>().unwrap();
@@ -1031,6 +1132,20 @@ impl Wire2Api<Attribute> for JsValue {
         }
     }
 }
+impl Wire2Api<B> for JsValue {
+    fn wire2api(self) -> B {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        B {
+            b: self_.get(0).wire2api(),
+        }
+    }
+}
 impl Wire2Api<Blob> for JsValue {
     fn wire2api(self) -> Blob {
         let self_ = self.dyn_into::<JsArray>().unwrap();
@@ -1050,6 +1165,20 @@ impl Wire2Api<Box<[u8; 1600]>> for Box<[u8]> {
     }
 }
 
+impl Wire2Api<C> for JsValue {
+    fn wire2api(self) -> C {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        C {
+            c: self_.get(0).wire2api(),
+        }
+    }
+}
 impl Wire2Api<ConcatenateWith> for JsValue {
     fn wire2api(self) -> ConcatenateWith {
         let self_ = self.dyn_into::<JsArray>().unwrap();
@@ -1333,6 +1462,15 @@ impl Wire2Api<Vec<Option<Attribute>>> for JsValue {
 }
 impl Wire2Api<Vec<TestId>> for JsValue {
     fn wire2api(self) -> Vec<TestId> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
+impl Wire2Api<Vec<Weekdays>> for JsValue {
+    fn wire2api(self) -> Vec<Weekdays> {
         self.dyn_into::<JsArray>()
             .unwrap()
             .iter()

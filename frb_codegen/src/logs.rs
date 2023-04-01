@@ -60,8 +60,10 @@ pub fn init_logger(path: &str, verbose: bool) -> Result<(), fern::InitError> {
         _ => panic!("only allow \"debug\" and \"info\""),
     }
 
-    std::panic::set_hook(Box::new(|m| {
-        log::error!("{}", m);
+    let prev = std::panic::take_hook();
+    std::panic::set_hook(Box::new(move |info| {
+        log::error!("{}", info);
+        prev(info);
     }));
 
     Ok(())

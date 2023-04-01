@@ -1,7 +1,7 @@
 use crate::ir::*;
 use crate::target::Target;
 
-#[derive(Debug, Clone, Hash, Eq, PartialEq)]
+crate::ir! {
 pub enum IrTypePrimitive {
     U8,
     I8,
@@ -16,6 +16,8 @@ pub enum IrTypePrimitive {
     Bool,
     Unit,
     Usize,
+    Isize,
+}
 }
 
 impl IrTypeTrait for IrTypePrimitive {
@@ -35,7 +37,8 @@ impl IrTypeTrait for IrTypePrimitive {
             | IrTypePrimitive::I32
             | IrTypePrimitive::U64
             | IrTypePrimitive::I64
-            | IrTypePrimitive::Usize => "int",
+            | IrTypePrimitive::Usize
+            | IrTypePrimitive::Isize => "int",
             IrTypePrimitive::F32 | IrTypePrimitive::F64 => "double",
             IrTypePrimitive::Bool => "bool",
             IrTypePrimitive::Unit => "void",
@@ -65,6 +68,7 @@ impl IrTypeTrait for IrTypePrimitive {
             IrTypePrimitive::U64 => "u64",
             IrTypePrimitive::Unit => "unit",
             IrTypePrimitive::Usize => "usize",
+            IrTypePrimitive::Isize => "isize",
             IrTypePrimitive::I64 => "i64",
             IrTypePrimitive::F32 => "f32",
             IrTypePrimitive::F64 => "f64",
@@ -89,6 +93,7 @@ impl IrTypePrimitive {
             IrTypePrimitive::U64 => "ffi.Uint64",
             IrTypePrimitive::I64 => "ffi.Int64",
             IrTypePrimitive::Usize => "ffi.UintPtr",
+            IrTypePrimitive::Isize => "ffi.IntPtr",
             IrTypePrimitive::F32 => "ffi.Float",
             IrTypePrimitive::F64 => "ffi.Double",
             IrTypePrimitive::Bool => "ffi.Bool",
@@ -110,6 +115,7 @@ impl IrTypePrimitive {
             "bool" => Some(IrTypePrimitive::Bool),
             "()" => Some(IrTypePrimitive::Unit),
             "usize" => Some(IrTypePrimitive::Usize),
+            "isize" => Some(IrTypePrimitive::Isize),
             _ => None,
         }
     }

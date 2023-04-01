@@ -4,7 +4,6 @@ use crate::ir::*;
 use crate::target::Acc;
 use crate::target::Target;
 use crate::type_rust_generator_struct;
-use crate::utils::BlockIndex;
 
 type_rust_generator_struct!(TypePrimitiveListGenerator, IrTypePrimitiveList);
 
@@ -52,10 +51,7 @@ impl TypeRustGeneratorTrait for TypePrimitiveListGenerator<'_> {
         ])
     }
 
-    fn allocate_funcs(
-        &self,
-        collector: &mut ExternFuncCollector,
-    ) -> Acc<Option<String>> {
+    fn allocate_funcs(&self, collector: &mut ExternFuncCollector) -> Acc<Option<String>> {
         Acc {
             io: Some(collector.generate(
                 &format!("new_{}", self.ir.safe_ident()),

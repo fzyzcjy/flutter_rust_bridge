@@ -1,9 +1,9 @@
 use crate::generator::dart::ty::*;
 use crate::generator::dart::{dart_comments, dart_metadata, GeneratedApiMethod};
-use crate::ir::*;
-use crate::method_utils::FunctionName;
 use crate::target::Acc;
 use crate::type_dart_generator_struct;
+use crate::utils::method::FunctionName;
+use crate::{ir::*, Opts};
 use convert_case::{Case, Casing};
 
 type_dart_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
@@ -85,6 +85,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         if has_methods {
             inner.insert(0, "bridge: this,".to_string());
         }
+
         let inner = inner.join("\n");
 
         format!(
@@ -115,7 +116,14 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         let has_methods = !methods.is_empty();
         let methods = methods
             .iter()
-            .map(|func| generate_api_method(func, src, self.context.config.dart_api_class_name()))
+            .map(|func| {
+                generate_api_method(
+                    func,
+                    src,
+                    self.context.config.dart_api_class_name(),
+                    self.context.config,
+                )
+            })
             .collect::<Vec<_>>();
 
         let methods_string = methods
@@ -140,7 +148,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 .fields
                 .iter()
                 .map(|field| {
-                    let r#default = field.field_default(true);
+                    let r#default = field.field_default(true, Some(self.context.config));
                     format!(
                         "{default} {} {} {},",
                         field.required_modifier(),
@@ -193,7 +201,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                         "{required}this.{} {default},",
                         f.name.dart_style(),
                         required = f.required_modifier(),
-                        default = f.field_default(false)
+                        default = f.field_default(false, Some(self.context.config))
                     )
                 })
                 .collect::<Vec<_>>();
@@ -235,6 +243,7 @@ fn generate_api_method(
     func: &IrFunc,
     ir_struct: &IrStruct,
     dart_api_class_name: String,
+    config: &Opts,
 ) -> GeneratedApiMethod {
     let f = FunctionName::deserialize(&func.name);
     let skip_count = usize::from(!f.is_static_method());
@@ -248,7 +257,7 @@ fn generate_api_method(
                 input.ty.dart_api_type(),
                 input.name.dart_style(),
                 required = input.required_modifier(),
-                default = input.field_default(false)
+                default = input.field_default(false, Some(config))
             )
         })
         .collect::<Vec<_>>();

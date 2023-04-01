@@ -40,10 +40,10 @@ use convert_case::{Case, Casing};
 use log::debug;
 
 use crate::ir::IrType::*;
-use crate::method_utils::{FunctionName, MethodNamingUtil};
 use crate::others::*;
 use crate::target::Target::*;
 use crate::target::{Acc, Target};
+use crate::utils::method::{FunctionName, MethodNamingUtil};
 use crate::{ir::*, Opts};
 
 #[derive(Debug)]
@@ -218,12 +218,13 @@ fn generate_freezed_header(dart_output_file_root: &str, needs_freezed: bool) -> 
 fn generate_import_header(
     imports: HashSet<&IrDartImport>,
     import_array: Option<&str>,
+    // TODO: delete?
     // shared_mod: Option<&str>,
     // wasm_enabled: bool,
 ) -> DartBasicCode {
     log::debug!("dart imports:{:?}", imports); //TODO: delete
     log::debug!("dart import_array:{:?}", import_array); //TODO: delete
-    let mut code = if !imports.is_empty() || import_array.is_some() {
+    let code = if !imports.is_empty() || import_array.is_some() {
         DartBasicCode {
             import: imports
                 .iter()

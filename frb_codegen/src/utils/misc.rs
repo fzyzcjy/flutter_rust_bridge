@@ -2,19 +2,18 @@ use std::collections::HashSet;
 
 use std::fmt::Display;
 use std::fs;
-use std::hash::Hash;
+
 use std::path::Path;
 
+use crate::utils::consts::DART_KEYWORDS;
 use anyhow::anyhow;
-use itertools::Itertools;
+use convert_case::{Case, Casing};
 use pathdiff::diff_paths;
-
-use crate::{transformer, Opts};
 
 /// get the raw or shared API module name
 pub fn mod_from_rust_path(
-    config: &Opts,
-    all_configs: &[Opts],
+    config: &crate::Opts,
+    all_configs: &[crate::Opts],
     get_shared_mod: bool,
 ) -> Option<String> {
     fn get_module_name(code_path: &str, crate_path: &str) -> String {
@@ -69,73 +68,6 @@ pub fn with_changed_file<F: FnOnce() -> anyhow::Result<()>>(
     Ok(fs::write(path, content_original)?)
 }
 
-// https://dart.dev/guides/language/language-tour#keywords
-const DART_KEYWORDS: [&str; 63] = [
-    "abstract",
-    "else",
-    "import",
-    "show",
-    "as",
-    "enum",
-    "in",
-    "static",
-    "assert",
-    "export",
-    "interface",
-    "super",
-    "async",
-    "extends",
-    "is",
-    "switch",
-    "await",
-    "extension",
-    "late",
-    "sync",
-    "break",
-    "external",
-    "library",
-    "this",
-    "case",
-    "factory",
-    "mixin",
-    "throw",
-    "catch",
-    "false",
-    "new",
-    "true",
-    "class",
-    "final",
-    "null",
-    "try",
-    "const",
-    "finally",
-    "on",
-    "typedef",
-    "continue",
-    "for",
-    "operator",
-    "var",
-    "covariant",
-    "Function",
-    "part",
-    "void",
-    "default",
-    "get",
-    "required",
-    "while",
-    "deferred",
-    "hide",
-    "rethrow",
-    "with",
-    "do",
-    "if",
-    "return",
-    "yield",
-    "dynamic",
-    "implements",
-    "set",
-];
-
 fn check_for_keywords(v: &[String]) -> anyhow::Result<()> {
     if let Some(s) = v.iter().find(|s| DART_KEYWORDS.contains(&s.as_str())) {
         let err_msg = format!("Api name cannot be a dart keyword: {}", s);
@@ -156,7 +88,7 @@ pub fn get_symbols_if_no_duplicates(
 ) -> Result<(Vec<String>, Vec<String>), anyhow::Error> {
     let mut explicit_raw_symbols = Vec::new();
     let mut all_symbols = Vec::new();
-    for (i, config) in regular_configs.iter().enumerate() {
+    for (_i, config) in regular_configs.iter().enumerate() {
         let ir_file = config.get_ir_file(&[])?;
         // for checking explicit API duplication
         let iter = ir_file.funcs.iter().map(|f| f.name.clone());
@@ -195,7 +127,19 @@ pub fn get_symbols_if_no_duplicates(
     Ok((regular_symbols, shared_symbols))
 }
 
-#[derive(PartialEq, Eq, Debug, Clone, Copy)]
+/// If the given string is a Dart keyword, then
+/// convert it to PascalCase to avoid issues.
+/// If the string is not a keyword, then the original
+/// is returned.
+pub fn make_string_keyword_safe(input: String) -> String {
+    if check_for_keywords(&[input.clone()]).is_err() {
+        input.to_case(Case::Pascal)
+    } else {
+        input
+    }
+}
+
+#[derive(PartialEq, Eq, Debug, Clone, Copy, serde::Serialize)]
 pub struct BlockIndex(pub usize);
 
 impl BlockIndex {
@@ -308,5 +252,45 @@ impl<T: Clone + Eq + std::hash::Hash> ExtraTraitForVec<T> for Vec<T> {
     fn find_duplicates(&self, exclude_multi_duplicates: bool) -> Vec<T> {
         let (_, duplicates) = self.find_uniques_and_duplicates(true, exclude_multi_duplicates);
         duplicates
+    }
+}
+
+/// For structs that only has an `inner` serializable property that
+/// would be better (de)serialized as a newtype.
+#[macro_export]
+macro_rules! derive_serde_inner_as_newtype {
+    ($($type:ident),*) => {$(
+        #[cfg(feature = "serde")]
+        impl ::serde::Serialize for $type {
+            fn serialize<S>(&self, s: S) -> Result<S::Ok, S::Error>
+            where
+                S: ::serde::Serializer,
+            {
+                s.serialize_newtype_struct(::std::stringify!($type), self.inner.as_ref())
+            }
+        }
+    )*};
+}
+
+/// Adds some common derives for IR types.
+///
+/// Valid forms:
+/// - `ir! { pub struct Foo { .. } .. }`
+/// - `ir! { #[no_serde] pub struct Bar { .. } .. }`
+#[macro_export]
+macro_rules! ir {
+    () => {};
+    (#[no_serde] $decl:item $($rest:tt)*) => {
+        #[derive(Debug, Clone, Hash, Eq, PartialEq)]
+        $decl
+
+        $crate::ir!($($rest)*);
+    };
+    ($decl:item $($rest:tt)*) => {
+        #[derive(Debug, Clone, Hash, Eq, PartialEq)]
+        #[cfg_attr(feature = "serde", derive(::serde::Serialize))]
+        $decl
+
+        $crate::ir!($($rest)*);
     }
 }

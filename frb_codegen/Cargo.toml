@@ -19,8 +19,6 @@ path = "src/main.rs"
 [dependencies]
 anyhow = {workspace = true}
 cargo_metadata = "0.14.1"
-cbindgen = "0.24"
-clap = {version = "3.2.14", features = ["derive"]}
 convert_case = "0.5.0"
 delegate = "0.8.0"
 enum_dispatch = "0.3.8"
@@ -36,11 +34,14 @@ regex = "1.5.4"
 serde = {version = "1.0", features = ["derive"]}
 serde_yaml = "0.8"
 strum_macros = "0.24.3"
-syn = {version = "1.0.77", features = ["full", "extra-traits"]}
+syn = {version = "1.0.109", features = ["full", "extra-traits"]}
 tempfile = "3.2.0"
 thiserror = "1"
 toml = "0.5.8"
 topological-sort = "0.2.2"
+enum-iterator = "1.4.0"
+clap = { version = "4.1.8", features = ["derive"] }
+cbindgen = "0.24.3"
 
 [dev-dependencies]
 semver = "1.0.12"
@@ -53,6 +54,9 @@ i686-pc-windows-msvc = {pkg-fmt = "zip"}
 x86_64-pc-windows-msvc = {pkg-fmt = "zip"}
 
 [features]
+default = ["chrono", "serde", "uuid"]
+serde = []
 chrono = []
-default = ["chrono"]
 uuid = []
+# When disabled, name qualifiers are discarded, e.g. my_library::SyncReturn == flutter_rust_bridge::SyncReturn
+qualified_names = []

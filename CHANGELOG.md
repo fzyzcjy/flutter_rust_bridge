@@ -1,3 +1,31 @@
+## 1.72.1
+
+* Fix for enums that contain mirrored structs Enum1(MyStruct) and Unit Tests #1144 (thanks @alexthe2)
+
+## 1.72.0
+
+* Added support for raw strings #1139 (thanks @alexthe2)
+
+## 1.71.2
+
+* Code refactor #1137
+* Remove SupportedInnerType #1117 (thanks @coder0xff)
+
+## 1.71.1
+
+* Fix log_initial for panic! and refine a panic! info #1124 (thanks @dbsxdbsx)
+
+## 1.71.0
+
+* Support for list of primitive enums #1128 (thanks @erikas-taroza)
+
+## 1.70.0
+
+* Add tests to gen, build, run pure_dart #1106 (thanks @coder0xff)
+* Generate Dart enum variants in camelCase #1112 (thanks @erikas-taroza)
+* General CLI improvements: dumping, upgrade clap, yaml config, serialize IR, bump versions, etc #1119 (thanks @Desdaemon)
+* Fixes for serde-yml #1122 (thanks @Desdaemon)
+
 ## 1.69.0
 
 * Check for dart keywords #958 (thanks @anstadnik)

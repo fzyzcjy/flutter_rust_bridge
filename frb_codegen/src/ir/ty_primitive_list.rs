@@ -2,9 +2,10 @@ use crate::ir::*;
 use crate::target::Target;
 use convert_case::{Case, Casing};
 
-#[derive(Debug, Clone, Hash, Eq, PartialEq)]
+crate::ir! {
 pub struct IrTypePrimitiveList {
     pub primitive: IrTypePrimitive,
+}
 }
 
 impl IrTypeTrait for IrTypePrimitiveList {
@@ -74,7 +75,7 @@ impl IrTypePrimitiveList {
             IrTypePrimitive::U16 => "js_sys::Uint16Array",
             IrTypePrimitive::I16 => "js_sys::Int16Array",
             IrTypePrimitive::U32 | IrTypePrimitive::Usize => "js_sys::Uint32Array",
-            IrTypePrimitive::I32 => "js_sys::Int32Array",
+            IrTypePrimitive::I32 | IrTypePrimitive::Isize => "js_sys::Int32Array",
             IrTypePrimitive::U64 => "js_sys::BigUint64Array",
             IrTypePrimitive::I64 => "js_sys::BigInt64Array",
             IrTypePrimitive::F32 => "js_sys::Float32Array",

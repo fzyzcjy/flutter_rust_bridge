@@ -3,7 +3,6 @@ use crate::generator::rust::{generate_import, generate_list_allocate_func, Exter
 use crate::ir::*;
 use crate::target::{Acc, Target};
 use crate::type_rust_generator_struct;
-use crate::utils::BlockIndex;
 
 type_rust_generator_struct!(TypeGeneralListGenerator, IrTypeGeneralList);
 
@@ -43,7 +42,7 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
             *self.ir.inner.clone(),
             self.context.ir_file,
             self.context.config,
-            self.context.shared_mod_name
+            self.context.shared_mod_name,
         );
         inner
             .wrapper_struct()
@@ -58,10 +57,7 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
             .unwrap_or(obj)
     }
 
-    fn allocate_funcs(
-        &self,
-        collector: &mut ExternFuncCollector,
-    ) -> Acc<Option<String>> {
+    fn allocate_funcs(&self, collector: &mut ExternFuncCollector) -> Acc<Option<String>> {
         Acc {
             io: Some(generate_list_allocate_func(
                 collector,
@@ -74,7 +70,12 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
     }
 
     fn imports(&self) -> Option<String> {
-        generate_import(&self.ir.inner, self.context.ir_file, self.context.config,self.context.shared_mod_name)
+        generate_import(
+            &self.ir.inner,
+            self.context.ir_file,
+            self.context.config,
+            self.context.shared_mod_name,
+        )
     }
 
     fn get_context(&self) -> &TypeGeneratorContext {

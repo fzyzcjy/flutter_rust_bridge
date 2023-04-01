@@ -44,13 +44,14 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                 Acc::distribute(Some(body))
             }
             IrTypeDelegate::StringList => Acc {
-                io: Some(format!(
+                io: Some(
                     "final ans = inner.new_StringList(raw.length);
-                    for (var i = 0; i < raw.length; i++){{
+                    for (var i = 0; i < raw.length; i++){
                         ans.ref.ptr[i] = api2wire_String(raw[i]);
-                    }}
-                    return ans;",
-                )),
+                    }
+                    return ans;"
+                        .to_string(),
+                ),
                 wasm: Some("return raw;".into()),
                 ..Default::default()
             },

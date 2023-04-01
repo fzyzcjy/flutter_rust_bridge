@@ -210,7 +210,7 @@ void main(List<String> args) async {
   test('dart call handleNestedStruct', () async {
     final r = await api.handleNestedStruct(s: _createMyNestedStruct());
     testComplexStruct(r.treeNode, arrLen: 5);
-    expect(r.weekday, Weekdays.Friday);
+    expect(r.weekday, Weekdays.friday);
   });
 
   test('dart call handleComplexStructSync', () {
@@ -371,12 +371,12 @@ void main(List<String> args) async {
   });
 
   test('dart call handleReturnEnum', () async {
-    expect(await api.handleReturnEnum(input: "Tuesday"), Weekdays.Tuesday);
+    expect(await api.handleReturnEnum(input: "Tuesday"), Weekdays.tuesday);
     expect(await api.handleReturnEnum(input: "Foreverday"), null);
   });
 
   test('dart call handleEnumParameter', () async {
-    expect(await api.handleEnumParameter(weekday: Weekdays.Saturday), Weekdays.Saturday);
+    expect(await api.handleEnumParameter(weekday: Weekdays.saturday), Weekdays.saturday);
   });
 
   test('dart call handleEnumStruct', () async {
@@ -396,8 +396,8 @@ void main(List<String> args) async {
       KitchenSink_Buffer(Uint8List.fromList([1])),
     );
     expect(
-      await api.handleEnumStruct(val: KitchenSink_Enums(Weekdays.Monday)),
-      KitchenSink_Enums(Weekdays.Tuesday),
+      await api.handleEnumStruct(val: KitchenSink_Enums(Weekdays.monday)),
+      KitchenSink_Enums(Weekdays.tuesday),
     );
     expect(
       await api.handleEnumStruct(val: const KitchenSink.nested(0, KitchenSink.empty())),
@@ -430,7 +430,7 @@ void main(List<String> args) async {
   test('dart call getAppSettings()', () async {
     var settings = await api.getAppSettings();
     expect(settings.version, "1.0.0-rc.1");
-    expect(settings.mode, ApplicationMode.Standalone);
+    expect(settings.mode, ApplicationMode.standalone);
     expect(settings.env.vars[0].field0, "myenv");
   });
 
@@ -440,7 +440,7 @@ void main(List<String> args) async {
             appSettings: ApplicationSettings(
                 name: "from dart",
                 version: "XX",
-                mode: ApplicationMode.Embedded,
+                mode: ApplicationMode.embedded,
                 env: ApplicationEnv(vars: [ApplicationEnvVar(field0: "sendback", field1: true)]))),
         true);
   });
@@ -615,6 +615,77 @@ void main(List<String> args) async {
     final empty = Empty();
     final output = await api.emptyStruct(empty: empty);
     expect(output, isA<Empty>());
+  });
+
+  test('test dart raw string in struct', () async {
+    final output = await api.testRawStringItemStruct();
+    expect(output, isA<RawStringItemStruct>());
+    expect(output.type, "test");
+  });
+
+  // test('test dart raw string in struct with raw func', () async {
+  //   final output = await api.testRawStringItemStructWithRawStringInFunc("not a type ;')");
+  //   expect(output.type, "not a type ;')");
+  // });
+
+  test('test dart test more than just one raw string struct', () async {
+    final output = await api.testMoreThanJustOneRawStringStruct();
+    expect(output, isA<MoreThanJustOneRawStringStruct>());
+    expect(output.regular, "regular");
+    expect(output.type, "type");
+    expect(output.async, true);
+    expect(output.another, "another");
+  });
+
+  test('test mirrored raw structs', () async {
+    final output = await api.testRawStringMirrored();
+    expect(output, isA<RawStringMirrored>());
+    expect(output.value, "test");
+  });
+
+  test('test nested mirror raw', () async {
+    final output = await api.testNestedRawStringMirrored();
+    expect(output, isA<NestedRawStringMirrored>());
+    expect(output.raw, isA<RawStringMirrored>());
+    expect(output.raw.value, "test");
+  });
+
+  test('test raw string enum', () async {
+    final output1 = await api.testRawStringEnumMirrored(nested: true);
+    expect(output1 is RawStringEnumMirrored_Nested, true);
+    expect((output1 as RawStringEnumMirrored_Nested).field0.raw.value, "test");
+
+    final output2 = await api.testRawStringEnumMirrored(nested: false);
+    expect(output2 is RawStringEnumMirrored_Raw, true);
+    expect((output2 as RawStringEnumMirrored_Raw).field0.value, "test");
+  });
+
+  test('test list of raw nested strings', () async {
+    final output = await api.testListOfRawNestedStringMirrored();
+    expect(output.raw.length, 1);
+    expect(output.raw[0].raw.value, "test");
+  });
+
+  test('test abc', () async {
+    final output1 = await api.testAbcEnum(abc: Abc.a(A(a: "test")));
+    expect((output1 as Abc_A).field0.a, "test");
+
+    final output2 = await api.testAbcEnum(abc: Abc.b(B(b: 1)));
+    expect((output2 as Abc_B).field0.b, 1);
+
+    final output3 = await api.testAbcEnum(abc: Abc.c(C(c: false)));
+    expect((output3 as Abc_C).field0.c, false);
+
+    final output4 = await api.testAbcEnum(abc: Abc.justInt(1));
+    expect((output4 as Abc_JustInt).field0, 1);
+  });
+
+  test('test contains mirrored sub struct', () async {
+    final output = await api.testContainsMirroredSubStruct();
+    expect(output, isA<ContainsMirroredSubStruct>());
+    expect(output.test, isA<RawStringMirrored>());
+    expect(output.test.value, "test");
+    expect(output.test2.a, "test");
   });
 
   group('Platform-specific support', () {
@@ -1207,6 +1278,11 @@ void main(List<String> args) async {
     final data = await api.returnDartDynamic();
     expect(data, ['foo']);
   });
+
+  test("dart call list_of_primitive_enums", () async {
+    List<Weekdays> days = await api.listOfPrimitiveEnums(weekdays: Weekdays.values);
+    expect(days, Weekdays.values);
+  });
 }
 
 int _createGarbage() {
@@ -1249,7 +1325,7 @@ MyTreeNode _createMyTreeNode({required int arrLen}) {
 }
 
 MyNestedStruct _createMyNestedStruct() {
-  return MyNestedStruct(treeNode: _createMyTreeNode(arrLen: 5), weekday: Weekdays.Friday);
+  return MyNestedStruct(treeNode: _createMyTreeNode(arrLen: 5), weekday: Weekdays.friday);
 }
 
 class MatchBigInt extends CustomMatcher {

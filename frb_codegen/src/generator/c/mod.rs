@@ -1,11 +1,11 @@
 use std::path::Path;
 
-use crate::config;
-use crate::utils::{BlockIndex, PathExt};
+use crate::config::opts::Opts;
+use crate::utils::misc::{BlockIndex, PathExt};
 
 pub fn generate_dummy(
-    config: &config::Opts,
-    all_regular_configs: &[config::Opts],
+    config: &Opts,
+    all_regular_configs: &[Opts],
     func_names: &[String],
     c_path_index: usize,
 ) -> String {
@@ -20,6 +20,7 @@ pub fn generate_dummy(
             let other_headers = all_regular_configs
                 .iter()
                 .skip(1)
+                .filter(|e| !e.shared)
                 .map(|e| {
                     // get directory only from paths
                     let src_p = Path::new(&config.c_output_path[c_path_index]);

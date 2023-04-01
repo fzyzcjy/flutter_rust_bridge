@@ -1,12 +1,24 @@
-use crate::{ir::*, parser::DefaultValues};
+use convert_case::{Case, Casing};
+use serde::{Deserialize, Serialize};
+use syn::LitStr;
 
-#[derive(Eq, PartialEq, Hash, Debug, Clone)]
+use crate::{ir::*, parser::DefaultValues, Opts};
+
+#[derive(Debug, Clone, Serialize, Deserialize, Hash, PartialEq, Eq, Default)]
+pub struct IrFieldSettings {
+    pub is_in_mirrored_enum: bool,
+}
+
+crate::ir! {
 pub struct IrField {
     pub ty: IrType,
     pub name: IrIdent,
     pub is_final: bool,
     pub comments: Vec<IrComment>,
     pub default: Option<DefaultValues>,
+
+    pub settings: IrFieldSettings,
+}
 }
 
 impl IrField {
@@ -18,7 +30,7 @@ impl IrField {
             self.ty.dart_required_modifier()
         }
     }
-    pub fn field_default(&self, freezed: bool) -> String {
+    pub fn field_default(&self, freezed: bool, config: Option<&Opts>) -> String {
         self.default
             .as_ref()
             .map(|r#default| {
@@ -26,7 +38,12 @@ impl IrField {
                     DefaultValues::Str(lit)
                         if !matches!(&self.ty, IrType::Delegate(IrTypeDelegate::String)) =>
                     {
-                        lit.value().into()
+                        // Convert the default value to Dart style.
+                        if config.is_some() && config.unwrap().dart_enums_style {
+                            Self::default_value_to_dart_style(lit).into()
+                        } else {
+                            lit.value().into()
+                        }
                     }
                     _ => default.to_dart(),
                 };
@@ -42,5 +59,29 @@ impl IrField {
     #[inline]
     pub fn is_optional(&self) -> bool {
         matches!(&self.ty, IrType::Optional(_)) || self.default.is_some()
+    }
+
+    fn default_value_to_dart_style(lit: &LitStr) -> String {
+        let value = lit.value();
+        let mut split = value.split('.');
+        let enum_name = split.next().unwrap();
+
+        let variant_name = split.next().unwrap().to_string();
+        let variant_name =
+            crate::utils::misc::make_string_keyword_safe(variant_name.to_case(Case::Camel));
+
+        format!("{enum_name}.{variant_name}")
+    }
+
+    /// Takes the provided name and surrounds it with the `mirror_` prefix if the field is in a
+    /// mirrored enum.
+    /// This may be improved in the future: https://github.com/fzyzcjy/flutter_rust_bridge/pull/1144#issuecomment-1486569869
+    pub fn try_name_mirror(&self, name: String) -> String {
+        let mirrored_name = self.ty.mirrored_nested();
+        if self.settings.is_in_mirrored_enum && mirrored_name.is_some() {
+            format!("mirror_{}({})", mirrored_name.unwrap(), name)
+        } else {
+            name
+        }
     }
 }

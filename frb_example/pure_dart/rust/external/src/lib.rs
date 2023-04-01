@@ -1,4 +1,27 @@
 //! Examples of types you'd want to mirror
+//!
+
+#[derive(Debug, Clone)]
+pub struct RawStringMirrored {
+    pub r#value: String,
+}
+
+#[derive(Debug, Clone)]
+pub struct NestedRawStringMirrored {
+    pub raw: RawStringMirrored,
+}
+
+#[derive(Debug, Clone)]
+pub struct ListOfNestedRawStringMirrored {
+    pub raw: Vec<NestedRawStringMirrored>,
+}
+
+#[derive(Debug, Clone)]
+pub enum RawStringEnumMirrored {
+    Raw(RawStringMirrored),
+    Nested(NestedRawStringMirrored),
+    ListOfNested(ListOfNestedRawStringMirrored),
+}
 
 #[derive(Debug, Clone)]
 pub struct ApplicationSettings {

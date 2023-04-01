@@ -1,7 +1,7 @@
-use crate::consts::*;
+use crate::utils::consts::*;
 use crate::{ir::*, target::Target};
 
-#[derive(Debug, Clone)]
+crate::ir! {
 pub struct IrFunc {
     pub name: String,
     pub inputs: Vec<IrField>,
@@ -9,6 +9,7 @@ pub struct IrFunc {
     pub fallible: bool,
     pub mode: IrFuncMode,
     pub comments: Vec<IrComment>,
+}
 }
 
 /// A stand-in for [`IrFunc`] used for output only.
@@ -73,7 +74,7 @@ pub enum IrFuncArg {
     Type(IrType),
 }
 
-#[derive(Debug, Clone, PartialOrd, PartialEq, Eq)]
+crate::ir! {
 pub enum IrFuncMode {
     Normal,
     Sync,
@@ -81,6 +82,7 @@ pub enum IrFuncMode {
         // The index of StreamSink in the function arguments
         argument_index: usize,
     },
+}
 }
 
 impl IrFuncMode {

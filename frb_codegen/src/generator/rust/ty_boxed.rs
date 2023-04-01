@@ -5,7 +5,6 @@ use crate::ir::*;
 use crate::target::Acc;
 use crate::target::Target::*;
 use crate::type_rust_generator_struct;
-use crate::utils::BlockIndex;
 
 type_rust_generator_struct!(TypeBoxedGenerator, IrTypeBoxed);
 
@@ -56,7 +55,7 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
             *self.ir.inner.clone(),
             self.context.ir_file,
             self.context.config,
-            self.context.shared_mod_name
+            self.context.shared_mod_name,
         );
         src.wrapper_struct()
     }
@@ -70,15 +69,12 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
             *self.ir.inner.clone(),
             self.context.ir_file,
             self.context.config,
-            self.context.shared_mod_name
+            self.context.shared_mod_name,
         );
         src.wrap_obj(self.self_access(obj), wired_fallible_func)
     }
 
-    fn allocate_funcs(
-        &self,
-        collector: &mut ExternFuncCollector,
-    ) -> Acc<Option<String>> {
+    fn allocate_funcs(&self, collector: &mut ExternFuncCollector) -> Acc<Option<String>> {
         if self.ir.inner.is_array() {
             return Acc::default();
         }
@@ -115,7 +111,12 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
     }
 
     fn imports(&self) -> Option<String> {
-        generate_import(&self.ir.inner, self.context.ir_file, self.context.config,self.context.shared_mod_name)
+        generate_import(
+            &self.ir.inner,
+            self.context.ir_file,
+            self.context.config,
+            self.context.shared_mod_name,
+        )
     }
 
     fn get_context(&self) -> &TypeGeneratorContext {

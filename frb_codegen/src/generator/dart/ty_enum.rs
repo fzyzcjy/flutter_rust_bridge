@@ -175,7 +175,9 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                                     // If no split, default values are not valid.
                                     let default = split
                                         .is_some()
-                                        .then(|| field.field_default(true))
+                                        .then(|| {
+                                            field.field_default(true, Some(self.context.config))
+                                        })
                                         .unwrap_or_default();
                                     format!(
                                         "{comments} {default} {} {},",
@@ -205,7 +207,8 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                                         field.name.dart_style(),
                                         required = field.required_modifier(),
                                         comments = dart_comments(&field.comments),
-                                        default = field.field_default(true),
+                                        default =
+                                            field.field_default(true, Some(self.context.config)),
                                     )
                                 })
                                 .collect::<Vec<_>>();
@@ -235,11 +238,13 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                 .variants()
                 .iter()
                 .map(|variant| {
-                    format!(
-                        "{}{},",
-                        dart_comments(&variant.comments),
-                        variant.name.rust_style()
-                    )
+                    let variant_name = if self.context.config.dart_enums_style {
+                        crate::utils::misc::make_string_keyword_safe(variant.name.dart_style())
+                    } else {
+                        variant.name.rust_style().to_string()
+                    };
+
+                    format!("{}{},", dart_comments(&variant.comments), variant_name)
                 })
                 .collect::<Vec<_>>()
                 .join("\n");

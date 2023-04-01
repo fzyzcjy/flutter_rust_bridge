@@ -1,15 +1,16 @@
 use crate::target::Target;
 use crate::transformer::tranform_input_type;
-use crate::utils::{mod_from_rust_path, BlockIndex};
+use crate::utils::misc::{mod_from_rust_path, BlockIndex};
 use crate::{generator, ir::*, Opts};
 use std::collections::{HashMap, HashSet};
 
-use crate::ExtraTraitForVec;
+use crate::utils::misc::ExtraTraitForVec;
 
 pub type IrStructPool = HashMap<String, IrStruct>;
 pub type IrEnumPool = HashMap<String, IrEnum>;
 
 #[derive(Debug, Clone)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize))]
 pub struct IrFile {
     pub funcs: Vec<IrFunc>,
     pub struct_pool: IrStructPool,
@@ -121,7 +122,7 @@ impl IrFile {
         include_func_inputs: bool,
         include_func_output: bool,
     ) -> HashSet<IrType> {
-        assert_eq!(self.shared, false);
+        assert!(!self.shared);
         // let mut seen_idents = HashSet::new(); //TODO: delete
         let mut ans = HashSet::new();
         // let mut ans1 = Vec::new(); //TODO: delete
@@ -180,7 +181,7 @@ impl IrFile {
         } else {
             &all_configs[0..all_configs.len() - 1]
         };
-        assert!(regular_configs.iter().all(|c| c.shared == false));
+        assert!(regular_configs.iter().all(|c| !c.shared));
         let mut cur_block_uniques = HashSet::new();
         let mut all_regular_types = Vec::new();
         let mut regular_ir_files = Vec::new();
@@ -225,7 +226,7 @@ impl IrFile {
         // Thus, here comes an extra manipulation to pick it out.
         fn add_cross_shared_types(
             shares: &mut HashSet<IrType>,
-            regular_ir_files: &Vec<IrFile>,
+            regular_ir_files: &[IrFile],
             block_index: BlockIndex,
             include_func_inputs: bool,
             include_func_output: bool,
@@ -236,12 +237,12 @@ impl IrFile {
                 if ir_file.block_index != block_index {
                     let oppo_distinct_types = ir_file
                         .get_regular_distinct_types(!include_func_inputs, !include_func_output);
-                    if oppo_distinct_types.contains(&suspected_type) {
+                    if oppo_distinct_types.contains(suspected_type) {
                         shares.insert(suspected_type.clone());
                         // because the type is indeed different for input(parameter) and output(return value),
                         // That is, for a cross shared type, both the input and output ones for this specific type
                         // should be treated as shared types.
-                        shares.insert(tranform_input_type(&suspected_type));
+                        shares.insert(tranform_input_type(suspected_type));
                         break;
                     }
                 }

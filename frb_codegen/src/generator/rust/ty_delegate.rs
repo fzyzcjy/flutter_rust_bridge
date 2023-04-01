@@ -137,10 +137,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
         }
     }
 
-    fn allocate_funcs(
-        &self,
-        collector: &mut ExternFuncCollector,
-    ) -> Acc<Option<String>> {
+    fn allocate_funcs(&self, collector: &mut ExternFuncCollector) -> Acc<Option<String>> {
         match &self.ir {
             list @ IrTypeDelegate::StringList => Acc {
                 io: Some(generate_list_allocate_func(
@@ -177,7 +174,8 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                             {variants}
                         }}.into_dart()
                     }}
-                }}"
+                }}
+                impl support::IntoDartExceptPrimitive for {name} {{}}"
             );
         }
         "".into()

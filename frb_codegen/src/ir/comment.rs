@@ -1,5 +1,6 @@
-#[derive(Eq, PartialEq, Hash, Debug, Clone)]
+crate::ir! {
 pub struct IrComment(String);
+}
 
 impl IrComment {
     pub fn comment(&self) -> &str {
@@ -14,8 +15,7 @@ impl From<&str> for IrComment {
             // so we convert them ahead of time.
             let formatted = input
                 .split('\n')
-                .into_iter()
-                .map(|e| format!("///{e}"))
+                .map(|line| format!("///{line}"))
                 .collect::<Vec<_>>()
                 .join("\n");
             Self(formatted)

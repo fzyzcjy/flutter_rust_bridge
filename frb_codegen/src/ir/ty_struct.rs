@@ -2,15 +2,16 @@ use crate::ir::*;
 use crate::target::Target;
 use convert_case::{Case, Casing};
 
-#[derive(Debug, Clone, Hash, Eq, PartialEq)]
+crate::ir! {
 pub struct IrTypeStructRef {
     pub name: String,
     pub freezed: bool,
     pub empty: bool,
 }
+}
 impl IrTypeStructRef {
     pub fn get<'a>(&self, f: &'a IrFile) -> &'a IrStruct {
-        log::debug!("the struct pool len:{}",f.struct_pool.len()); //TODO: delete
+        log::debug!("the struct pool len:{}", f.struct_pool.len()); //TODO: delete
         &f.struct_pool[&self.name]
     }
 }
@@ -49,7 +50,7 @@ impl IrTypeTrait for IrTypeStructRef {
     }
 }
 
-#[derive(Eq, PartialEq, Hash, Debug, Clone)]
+crate::ir! {
 pub struct IrStruct {
     pub name: String,
     pub wrapper_name: Option<String>,
@@ -58,6 +59,7 @@ pub struct IrStruct {
     pub is_fields_named: bool,
     pub dart_metadata: Vec<IrDartAnnotation>,
     pub comments: Vec<IrComment>,
+}
 }
 
 impl IrStruct {

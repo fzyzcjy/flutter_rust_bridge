@@ -27,3 +27,5 @@ Here is a brief glance showing what the code generator can generate (non-exhaust
 
 Types from `chrono` crate are supported as a feature, see [here](lang_chrono.md).
 Types from `uuid` crate are supported as a feature, see [here](lang_uuid.md).
+
+Raw strings are supported for struct field names. For example, you can have `struct S { r#type: i32 }`. In dart, the `r#` prefix will be correctly removed. They are not yet supported for function arguments.
