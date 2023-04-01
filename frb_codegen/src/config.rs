@@ -198,17 +198,19 @@ pub fn parse(raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
             .unwrap()
     });
     let shared_rust_output_path = get_valid_canon_paths(&[shared_path])[0].clone();
-    log::debug!("shared_rust_output_path:{:?}", shared_rust_output_path);
+    log::debug!("shared_rust_output_path:{shared_rust_output_path}");
     let shared_dart_output_path = Path::join(
         Path::new(&dart_output_paths[0]).parent().unwrap(),
         format!(
             "{}.dart",
-            Path::new(&shared_rust_output_path).file_name_str().unwrap()
+            Path::new(&shared_rust_output_path).file_name_str().unwrap() .replace(".rs", "")
+            .replace(".dart", "")
         ),
     )
     .into_os_string()
     .into_string()
     .unwrap();
+    log::debug!("shared_dart_output_path:{shared_dart_output_path}");
 
     // class name(s)
     let class_names = get_outputs_for_flag_requires_full_data(

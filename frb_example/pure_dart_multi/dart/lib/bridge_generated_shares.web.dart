@@ -7,8 +7,8 @@ import 'dart:async';
 import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
-import 'bridge_generated_shares.rs.dart';
-export 'bridge_generated_shares.rs.dart';
+import 'bridge_generated_shares.dart';
+export 'bridge_generated_shares.dart';
 
 class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGeneratedSharesWire>
     with FlutterRustBridgeSetupMixin {

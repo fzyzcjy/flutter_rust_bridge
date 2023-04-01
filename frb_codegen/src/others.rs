@@ -60,7 +60,7 @@ pub fn modify_dart_wire_content(content_raw: &str, dart_wire_class_name: &str) -
         .replace("typedef WireSyncReturn = ffi.Pointer<DartCObject>;", "")
 }
 
-#[derive(Default)]
+#[derive(Default, Debug)]
 pub struct DartBasicCode {
     pub import: String,
     pub part: String,

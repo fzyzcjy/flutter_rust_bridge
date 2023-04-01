@@ -11,7 +11,7 @@ use pathdiff::diff_paths;
 
 use crate::{transformer, Opts};
 
-/// get the raw/shared API module name
+/// get the raw or shared API module name
 pub fn mod_from_rust_path(
     config: &Opts,
     all_configs: &[Opts],

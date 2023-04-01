@@ -46,6 +46,7 @@ use crate::target::Target::*;
 use crate::target::{Acc, Target};
 use crate::{ir::*, Opts};
 
+#[derive(Debug)]
 pub struct Output {
     pub file_prelude: DartBasicCode,
     pub decl_code: DartBasicCode,
@@ -57,7 +58,6 @@ pub fn generate(
     ir_file: &IrFile,
     config: &Opts,
     all_configs: &[Opts],
-
     wasm_funcs: &[IrFuncDisplay],
 ) -> Output {
     let dart_api_class_name = &config.dart_api_class_name();
@@ -88,7 +88,7 @@ pub fn generate(
     Output {
         file_prelude,
         decl_code,
-        impl_code,
+        impl_code, // TODO: impl_code.common contains "import codes", may put it into `decl_code` in future?
         needs_freezed,
     }
 }
@@ -218,8 +218,12 @@ fn generate_freezed_header(dart_output_file_root: &str, needs_freezed: bool) -> 
 fn generate_import_header(
     imports: HashSet<&IrDartImport>,
     import_array: Option<&str>,
+    // shared_mod: Option<&str>,
+    // wasm_enabled: bool,
 ) -> DartBasicCode {
-    if !imports.is_empty() || import_array.is_some() {
+    log::debug!("dart imports:{:?}", imports); //TODO: delete
+    log::debug!("dart import_array:{:?}", import_array); //TODO: delete
+    let mut code = if !imports.is_empty() || import_array.is_some() {
         DartBasicCode {
             import: imports
                 .iter()
@@ -235,7 +239,30 @@ fn generate_import_header(
         }
     } else {
         DartBasicCode::default()
-    }
+    };
+
+    // TODO: import shared module if essential
+    // if let Some(shared_mod) = shared_mod {
+    //     code.import += &format!("\nimport '{}';", shared_mod);
+    //     code.import += &format!("\nexport '{}';", shared_mod);
+    //     if config.wasm_enabled {
+    //         code.import += &format!(
+    //             "import '{}' if (dart.library.html) '{}';",
+    //             config
+    //                 .dart_io_output_path()
+    //                 .file_name()
+    //                 .and_then(OsStr::to_str)
+    //                 .unwrap(),
+    //             config
+    //                 .dart_wasm_output_path()
+    //                 .file_name()
+    //                 .and_then(OsStr::to_str)
+    //                 .unwrap(),
+    //         );
+    //     }
+    // }
+
+    code
 }
 
 fn generate_common_header() -> DartBasicCode {
@@ -450,6 +477,10 @@ fn generate_dart_declaration_code(
     import_header: DartBasicCode,
     declaration_body: String,
 ) -> DartBasicCode {
+    log::debug!("common_header:\n{:?}", common_header); //TODO: delete
+    log::debug!("freezed_header:\n{:?}", freezed_header); //TODO: delete
+    log::debug!("import_header:\n{:?}", import_header); //TODO: delete
+
     common_header
         + &freezed_header
         + &import_header

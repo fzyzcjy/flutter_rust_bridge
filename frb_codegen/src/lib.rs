@@ -222,6 +222,7 @@ fn generate_dart_code(
     let dart_output_dir = Path::new(&dart_output_paths.base_path).parent().unwrap();
     fs::create_dir_all(dart_output_dir)?;
 
+    log::debug!("generated_dart_decl_all is:\n{:?}", generated_dart_decl_all); //TODO: delete
     if let Some(dart_decl_output_path) = &config.dart_decl_output_path {
         write_dart_decls(
             config,
@@ -232,6 +233,10 @@ fn generate_dart_code(
             &generated_dart_impl_io_wire,
         )?;
     } else if config.wasm_enabled {
+        log::debug!(
+            "the inner generated_dart.impl_code.common:\n{:?}",
+            generated_dart.impl_code.common
+        ); //TODO: delete
         fs::write(
             &dart_output_paths.base_path,
             (&generated_dart.file_prelude
