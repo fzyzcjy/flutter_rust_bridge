@@ -760,6 +760,11 @@ pub fn wire_test_list_of_raw_nested_string_mirrored(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_test_fallible_of_raw_string_mirrored(port_: MessagePort) {
+    wire_test_fallible_of_raw_string_mirrored_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_list_of_primitive_enums(port_: MessagePort, weekdays: JsValue) {
     wire_list_of_primitive_enums_impl(port_, weekdays)
 }

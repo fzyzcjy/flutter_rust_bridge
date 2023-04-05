@@ -2112,6 +2112,24 @@ fn wire_test_list_of_raw_nested_string_mirrored_impl(port_: MessagePort) {
         },
     )
 }
+fn wire_test_fallible_of_raw_string_mirrored_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_fallible_of_raw_string_mirrored",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            move |task_callback| {
+                test_fallible_of_raw_string_mirrored().map(|s| {
+                    s.into_iter()
+                        .map(|v| mirror_RawStringMirrored(v))
+                        .collect::<Vec<_>>()
+                })
+            }
+        },
+    )
+}
 fn wire_list_of_primitive_enums_impl(
     port_: MessagePort,
     weekdays: impl Wire2Api<Vec<Weekdays>> + UnwindSafe,

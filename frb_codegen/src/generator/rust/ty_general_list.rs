@@ -37,22 +37,30 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
         ])
     }
 
-    fn wrap_obj(&self, obj: String, _wired_fallible_func: bool) -> String {
+    fn wrap_obj(&self, obj: String, wired_fallible_func: bool) -> String {
         let inner = TypeRustGenerator::new(
             *self.ir.inner.clone(),
             self.context.ir_file,
             self.context.config,
             self.context.shared_mod_name,
         );
+
         inner
             .wrapper_struct()
             .map(|wrapper| {
-                format!(
-                    "{}.into_iter().map(|v| {}({})).collect::<Vec<_>>()",
-                    obj,
-                    wrapper,
-                    inner.self_access("v".to_owned())
-                )
+                let infallible_part = |name| {
+                    format!(
+                        "{}.into_iter().map(|v| {}({})).collect::<Vec<_>>()",
+                        name,
+                        wrapper,
+                        inner.self_access("v".to_owned())
+                    )
+                };
+                if wired_fallible_func {
+                    format!("{}.map(|s| {})", obj, infallible_part("s"))
+                } else {
+                    infallible_part(&obj)
+                }
             })
             .unwrap_or(obj)
     }

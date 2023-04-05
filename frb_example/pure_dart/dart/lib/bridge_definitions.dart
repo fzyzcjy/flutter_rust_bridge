@@ -624,6 +624,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kTestListOfRawNestedStringMirroredConstMeta;
 
+  Future<List<RawStringMirrored>> testFallibleOfRawStringMirrored({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestFallibleOfRawStringMirroredConstMeta;
+
   Future<List<Weekdays>> listOfPrimitiveEnums({required List<Weekdays> weekdays, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kListOfPrimitiveEnumsConstMeta;
