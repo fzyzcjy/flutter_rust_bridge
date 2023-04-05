@@ -42,17 +42,9 @@ class SharedStruct {
 
 class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
   final BridgeGeneratedSharesPlatform _platform;
-  final BridgeGeneratedSharesPlatform _sharedPlatform;
-  final BridgeGeneratedSharesImpl _sharedImpl;
-
-  factory BridgeGeneratedSharesImpl(ExternalLibrary dylib) {
-    final platform = BridgeGeneratedSharesPlatform(dylib);
-    final sharedPlatform = BridgeGeneratedSharesPlatform(dylib);
-    final sharedImpl = BridgeGeneratedSharesImpl(dylib);
-    return BridgeGeneratedSharesImpl.raw(platform, sharedPlatform, sharedImpl);
-  }
-
-  BridgeGeneratedSharesImpl.raw(this._platform, this._sharedPlatform, this._sharedImpl);
+  factory BridgeGeneratedSharesImpl(ExternalLibrary dylib) =>
+      BridgeGeneratedSharesImpl.raw(BridgeGeneratedSharesPlatform(dylib));
+  BridgeGeneratedSharesImpl.raw(this._platform);
 
   /// Only valid on web/WASM platforms.
   factory BridgeGeneratedSharesImpl.wasm(FutureOr<WasmModule> module) =>
