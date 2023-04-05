@@ -9,7 +9,10 @@ use convert_case::{Case, Casing};
 type_dart_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
 impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
-    fn api2wire_body(&self) -> Acc<Option<String>> {
+    fn api2wire_body(
+        &self,
+        shared_dart_api2wire_funcs: &Option<Acc<String>>,
+    ) -> Acc<Option<String>> {
         Acc {
             wasm: self.context.config.wasm_enabled.then(|| {
                 format!(
@@ -19,9 +22,26 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                         .fields
                         .iter()
                         .map(|field| {
+                            let api2wire_func_name = format!("api2wire_{}", field.ty.safe_ident());
+                            let prefix = match !self.context.config.shared {
+                                true => {
+                                    if !self.is_type_shared(&field.ty) {
+                                        ""
+                                    } else {
+                                        let shared_acc =
+                                            shared_dart_api2wire_funcs.as_ref().unwrap();
+                                        // NOTE: search in `common`, not in `wasm`, even this method is in used for .web.dart
+                                        if (shared_acc.common).contains(&api2wire_func_name) {
+                                            ""
+                                        } else {
+                                            "_sharedPlatform."
+                                        }
+                                    }
+                                }
+                                false => "",
+                            };
                             format!(
-                                "api2wire_{}(raw.{})",
-                                field.ty.safe_ident(),
+                                "{prefix}{api2wire_func_name}(raw.{})",
                                 field.name.dart_style()
                             )
                         })
@@ -33,7 +53,10 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         }
     }
 
-    fn api_fill_to_wire_body(&self) -> Option<String> {
+    fn api_fill_to_wire_body(
+        &self,
+        shared_dart_api2wire_funcs: &Option<Acc<String>>,
+    ) -> Option<String> {
         let s = self.ir.get(self.context.ir_file);
         Some(
             s.fields
@@ -47,10 +70,27 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                             field.name.rust_style(),
                         )
                     } else {
+                        let api2wire_func_name = format!("api2wire_{}", field.ty.safe_ident());
+                        let prefix = match !self.context.ir_file.shared {
+                            true => {
+                                if !self.is_type_shared(&field.ty) {
+                                    ""
+                                } else {
+                                    // NOTE: search in `common`, not in `io`, even this method is in used for .io.dart
+                                    let shared_acc = shared_dart_api2wire_funcs.as_ref().unwrap();
+                                    if (shared_acc.common).contains(&api2wire_func_name) {
+                                        ""
+                                    } else {
+                                        "_sharedPlatform."
+                                    }
+                                }
+                            }
+                            false => "",
+                        };
+
                         format!(
-                            "wireObj.{} = api2wire_{}(apiObj.{});",
+                            "wireObj.{} = {prefix}{api2wire_func_name}(apiObj.{});",
                             field.name.rust_style(),
-                            field.ty.safe_ident(),
                             field.name.dart_style()
                         )
                     }
@@ -69,19 +109,40 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             f.is_method_for_struct(&src.name) || f.is_static_method_for_struct(&src.name)
         });
         let has_methods = methods.next().is_some();
-        let mut inner = s
-            .fields
-            .iter()
-            .enumerate()
-            .map(|(idx, field)| {
-                format!(
-                    "{}: _wire2api_{}(arr[{}]),",
-                    field.name.dart_style(),
-                    field.ty.safe_ident(),
-                    idx
-                )
-            })
-            .collect::<Vec<_>>();
+        // TODO: refactor into trait method?
+
+        let mut inner = if !self.context.config.shared {
+            s.fields
+                .iter()
+                .enumerate()
+                .map(|(idx, field)| {
+                    let prefix = if !self.is_type_shared(&field.ty) {
+                        "_"
+                    } else {
+                        "_sharedImpl."
+                    };
+                    format!(
+                        "{}: {prefix}wire2api_{}(arr[{}]),",
+                        field.name.dart_style(),
+                        field.ty.safe_ident(),
+                        idx
+                    )
+                })
+                .collect::<Vec<_>>()
+        } else {
+            s.fields
+                .iter()
+                .enumerate()
+                .map(|(idx, field)| {
+                    format!(
+                        "{}: wire2api_{}(arr[{}]),", //no prefix in shared block
+                        field.name.dart_style(),
+                        field.ty.safe_ident(),
+                        idx
+                    )
+                })
+                .collect::<Vec<_>>()
+        };
         if has_methods {
             inner.insert(0, "bridge: this,".to_string());
         }
@@ -236,6 +297,10 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 const = const_capable
             )
         }
+    }
+
+    fn get_context(&self) -> &TypeGeneratorContext {
+        &self.context
     }
 }
 

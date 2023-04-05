@@ -7,7 +7,10 @@ use crate::type_dart_generator_struct;
 type_dart_generator_struct!(TypePrimitiveGenerator, IrTypePrimitive);
 
 impl TypeDartGeneratorTrait for TypePrimitiveGenerator<'_> {
-    fn api2wire_body(&self) -> Acc<Option<String>> {
+    fn api2wire_body(
+        &self,
+        _shared_dart_api2wire_funcs: &Option<Acc<String>>,
+    ) -> Acc<Option<String>> {
         match self.ir {
             IrTypePrimitive::I64 | IrTypePrimitive::U64 => Acc {
                 io: Some("return raw;".into()),
@@ -26,5 +29,9 @@ impl TypeDartGeneratorTrait for TypePrimitiveGenerator<'_> {
             }
             _ => gen_wire2api_simple_type_cast(&self.ir.dart_api_type()),
         }
+    }
+
+    fn get_context(&self) -> &TypeGeneratorContext {
+        &self.context
     }
 }

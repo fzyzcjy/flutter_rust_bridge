@@ -33,7 +33,8 @@ pub fn mod_from_rust_path(
                 get_module_name(&config.rust_input_path, &config.rust_crate_dir)
             } else {
                 // get the shared module in the regular block
-                if all_configs.len() > 1 {
+                if all_configs.len() > 2 {
+                    assert!(all_configs.last().unwrap().shared);
                     get_module_name(&config.shared_rust_output_path, &config.rust_crate_dir)
                 } else {
                     "".into()
@@ -154,8 +155,9 @@ impl Display for BlockIndex {
 
 pub trait PathExt {
     fn file_name_str(&self) -> Option<&str>;
+    fn get_file_name(&self) -> &str;
     fn directory_name_str(&self) -> Option<&str>;
-
+    fn get_directory_name(&self) -> &str;
     fn get_relative_path_to<P>(&self, path: P, exclude_file: bool) -> String
     where
         P: AsRef<Path>;
@@ -167,8 +169,16 @@ impl PathExt for std::path::Path {
         self.file_name().and_then(std::ffi::OsStr::to_str)
     }
     #[inline]
+    fn get_file_name(&self) -> &str {
+        self.file_name_str().unwrap_or_default()
+    }
+    #[inline]
     fn directory_name_str(&self) -> Option<&str> {
         self.parent().and_then(|p| p.to_str())
+    }
+    #[inline]
+    fn get_directory_name(&self) -> &str {
+        self.directory_name_str().unwrap_or_default()
     }
     #[inline]
     fn get_relative_path_to<P>(&self, path: P, exclude_file: bool) -> String

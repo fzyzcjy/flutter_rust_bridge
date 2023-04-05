@@ -6,7 +6,10 @@ use crate::type_dart_generator_struct;
 type_dart_generator_struct!(TypeOptionalGenerator, IrTypeOptional);
 
 impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
-    fn api2wire_body(&self) -> Acc<Option<String>> {
+    fn api2wire_body(
+        &self,
+        _shared_dart_api2wire_funcs: &Option<Acc<String>>,
+    ) -> Acc<Option<String>> {
         Acc::new(|target| match target {
             Target::Io | Target::Wasm => Some(format!(
                 "return raw == null ? {} : api2wire_{}(raw);",
@@ -21,7 +24,10 @@ impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
         })
     }
 
-    fn api_fill_to_wire_body(&self) -> Option<String> {
+    fn api_fill_to_wire_body(
+        &self,
+        _shared_dart_api2wire_funcs: &Option<Acc<String>>,
+    ) -> Option<String> {
         if !self.ir.needs_initialization() || self.ir.is_list() || self.ir.is_boxed_primitive() {
             return None;
         }
@@ -36,5 +42,9 @@ impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
             "return raw == null ? null : _wire2api_{}(raw);",
             self.ir.inner.safe_ident()
         )
+    }
+
+    fn get_context(&self) -> &TypeGeneratorContext {
+        &self.context
     }
 }

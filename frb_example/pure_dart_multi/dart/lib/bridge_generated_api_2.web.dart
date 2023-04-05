@@ -9,9 +9,13 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 import 'bridge_generated_api_2.dart';
 export 'bridge_generated_api_2.dart';
+import 'bridge_generated_shares.web.dart';
 
 class ApiClass2Platform extends FlutterRustBridgeBase<ApiClass2Wire> with FlutterRustBridgeSetupMixin {
-  ApiClass2Platform(FutureOr<WasmModule> dylib) : super(ApiClass2Wire(dylib)) {
+  final BridgeGeneratedSharesPlatform _sharedPlatform;
+  ApiClass2Platform(FutureOr<WasmModule> dylib)
+      : _sharedPlatform = BridgeGeneratedSharesPlatform(dylib),
+        super(ApiClass2Wire(dylib)) {
     setupMixinConstructor();
   }
   Future<void> setup() => inner.init;
@@ -30,7 +34,7 @@ class ApiClass2Platform extends FlutterRustBridgeBase<ApiClass2Wire> with Flutte
 
   @protected
   List<dynamic> api2wire_only_for_api_2_struct(OnlyForApi2Struct raw) {
-    return [api2wire_i64(raw.id), api2wire_f64(raw.num), api2wire_String(raw.name)];
+    return [api2wire_i64(raw.id), api2wire_f64(raw.num), _sharedPlatform.api2wire_String(raw.name)];
   }
 // Section: finalizer
 }

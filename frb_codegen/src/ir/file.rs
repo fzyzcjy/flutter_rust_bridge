@@ -1,3 +1,5 @@
+use convert_case::{Case, Casing};
+
 use crate::target::Target;
 use crate::transformer::tranform_input_type;
 use crate::utils::misc::{mod_from_rust_path, BlockIndex};
@@ -41,10 +43,8 @@ impl IrFile {
             shared_types: HashSet::new(),
             shared,
         };
-        if all_configs.len() <= 1 {
-            log::debug!("the all_configs are <=1"); //TODO: delete
-        }
         ir_file.shared_types = ir_file.get_shared_distinct_types(true, true, all_configs);
+        log::debug!("the init shared types are:{:?}", ir_file.shared_types); //TODO: delete
         ir_file
     }
 
@@ -116,61 +116,38 @@ impl IrFile {
         types
     }
 
-    /// get dinstinct types only for a certain regular API block(the self instance)
+    /// get dinstinct types only for a certain regular API block(the current IrFile instance)
     fn get_regular_distinct_types(
         &self,
         include_func_inputs: bool,
         include_func_output: bool,
     ) -> HashSet<IrType> {
+        assert!(!(!include_func_inputs && !include_func_output));
         assert!(!self.shared);
-        // let mut seen_idents = HashSet::new(); //TODO: delete
         let mut ans = HashSet::new();
-        // let mut ans1 = Vec::new(); //TODO: delete
         self.visit_types(
-            &mut |ty| {
-                //TODO: should delete the original code?
-                //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓original↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-                // let ident = ty.safe_ident();
-                // let contains = seen_idents.contains(&ident);
-                // if !contains {
-                // log::debug!(
-                //     "because {}, for {}-{}, {:?} is pushed",
-                //     ident,
-                //     include_func_inputs,
-                //     include_func_output,
-                //     ty
-                // ); //TODO: delete
-                //    // seen_idents.insert(ident);
-                // ans.push(ty.clone());
-                // ans1.push(ty.clone());
-                // ans2.insert(ty.clone());
-                // }
-                // contains
-                //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑original↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
-                !ans.insert(ty.clone())
-            },
+            &mut |ty| !ans.insert(ty.clone()),
             include_func_inputs,
             include_func_output,
         );
-
-        // log::debug!("the vec ans len: {} is: {:?}", ans1.len(), ans1); //TODO: delete
         log::debug!("the set ans len: {} is: {:?}", ans.len(), ans); //TODO: delete
         ans
     }
 
-    /// Whatever this ir_file instance represents for, get shared types through `all_configs`, which
+    /// Whatever this IrFile instance represents for, get shared types through `all_configs`, which
     /// may or may not include the shared config at the last index.
     /// For single-block case, it should return empty.
     /// For multi-block case, it should return ALL shared types among ALL regular
-    /// blocks, which means that some of the shared may not be used in all regular blocks.
+    /// blocks, which means that some of the shared types may not be used in all regular blocks.
     /// Also note `include_func_inputs` and `include_func_output` are essential for getting
-    /// shared within different context.
+    /// shared types within different context.
     fn get_shared_distinct_types(
         &self,
         include_func_inputs: bool,
         include_func_output: bool,
         all_configs: &[Opts],
     ) -> HashSet<IrType> {
+        assert!(!(!include_func_inputs && !include_func_output));
         log::debug!("start get_shared_distinct_types"); //TODO: delete
         if all_configs.is_empty() || all_configs.len() == 1 {
             log::debug!("empty, return"); //TODO: delete
@@ -205,7 +182,7 @@ impl IrFile {
             }
         }
 
-        // pick out the shared types
+        // pick out the raw shared types
         let mut shares = all_regular_types
             .find_duplicates(true)
             .into_iter()
@@ -216,13 +193,14 @@ impl IrFile {
             shares
         ); //TODO: delete
 
+        //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓for cross shared types↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
         // NOTE: For a special kind of cross shared type,
         // which is shared as an input parameter ONLY ONCE in one block
         // and shared as an output value ONLY ONCE in ANOTHER block,
         // the current logic from `get_regular_distinct_types(..)` would not pick it out,
-        // if not both `include_func_inputs` and `include_func_output` are set true.
+        // even both `include_func_inputs` and `include_func_output` are set true.
         // But this special kind of cross shared type should be treated as a shared type in
-        // either input or output context, even it is not shared in all of regular API blocks.
+        // either in input or output context, even it is not shared in all of regular API blocks.
         // Thus, here comes an extra manipulation to pick it out.
         fn add_cross_shared_types(
             shares: &mut HashSet<IrType>,
@@ -280,6 +258,7 @@ impl IrFile {
                 }
             }
         }
+        //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑for cross shared types↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
         log::debug!(
             "the new shared for index:{} {include_func_inputs}-{include_func_output} is:{:?}",
@@ -322,6 +301,33 @@ impl IrFile {
     }
 
     pub fn is_type_shared(&self, ty: &IrType) -> bool {
-        self.shared_types.contains(ty)
+        if ty.safe_ident().contains("box_autoadd_") {
+            // though `self.shared_types` collects both input and output types,
+            // "cross" shared types are not distinguished from input and output yet.
+            // Therefore, here work around it by manually check `box_autoadd_`, which
+            // is used as an input type prefix.
+            // for more info, please take a look at `get_shared_distinct_types(...)`
+            log::debug!("now checking {}", ty.safe_ident()); //TODO: delete
+            for each in &self.shared_types {
+                if ty.safe_ident().contains(&each.safe_ident()) {
+                    log::debug!("{} is shared!", ty.safe_ident()); //TODO: delete
+                    return true;
+                }
+            }
+        } else {
+            return self.shared_types.contains(ty);
+        }
+        false
+    }
+
+    pub fn get_shared_type_names(&self) -> HashSet<String> {
+        self.shared_types
+            .iter()
+            .flat_map(|ty| {
+                let safe_ident = ty.safe_ident();
+                std::iter::once(safe_ident.clone())
+                    .chain(std::iter::once(safe_ident.to_case(Case::UpperCamel)))
+            })
+            .collect()
     }
 }

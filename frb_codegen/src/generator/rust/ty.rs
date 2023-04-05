@@ -87,7 +87,6 @@ pub trait TypeRustGeneratorTrait {
 #[derive(Debug, Clone)]
 pub struct TypeGeneratorContext<'a> {
     pub type_name: String,
-    pub shared: bool, // if the type bonded to this instance is shared among different regular blocks, it should be true.
     pub ir_file: &'a IrFile,
     pub config: &'a Opts,
     pub shared_mod_name: Option<&'a str>, // if there is only 1 API block, it should be None. Otherwise, it should not be None.
@@ -130,7 +129,6 @@ impl<'a> TypeRustGenerator<'a> {
     ) -> Self {
         let context = TypeGeneratorContext {
             type_name: format!("{ty:?}"),
-            shared: ir_file.is_type_shared(&ty),
             ir_file,
             config,
             shared_mod_name,

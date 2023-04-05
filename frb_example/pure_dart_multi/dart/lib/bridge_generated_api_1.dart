@@ -14,6 +14,9 @@ import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 import 'bridge_generated_api_1.io.dart' if (dart.library.html) 'bridge_generated_api_1.web.dart';
+import 'bridge_generated_shares.dart';
+export 'bridge_generated_shares.dart';
+import 'bridge_generated_shares.io.dart' if (dart.library.html) 'bridge_generated_shares.web.dart';
 
 abstract class ApiClass1 {
   Future<double> testInbuiltType1({required int a, required double b, dynamic hint});
@@ -53,17 +56,27 @@ class OnlyForApi1Struct {
 
 class ApiClass1Impl implements ApiClass1 {
   final ApiClass1Platform _platform;
-  factory ApiClass1Impl(ExternalLibrary dylib) => ApiClass1Impl.raw(ApiClass1Platform(dylib));
+  final BridgeGeneratedSharesPlatform _sharedPlatform;
+  final BridgeGeneratedSharesImpl _sharedImpl;
+
+  factory ApiClass1Impl(ExternalLibrary dylib) {
+    final platform = ApiClass1Platform(dylib);
+    final sharedPlatform = BridgeGeneratedSharesPlatform(dylib);
+    final sharedImpl = BridgeGeneratedSharesImpl(dylib);
+    return ApiClass1Impl.raw(platform, sharedPlatform, sharedImpl);
+  }
+
+  ApiClass1Impl.raw(this._platform, this._sharedPlatform, this._sharedImpl);
 
   /// Only valid on web/WASM platforms.
   factory ApiClass1Impl.wasm(FutureOr<WasmModule> module) => ApiClass1Impl(module as ExternalLibrary);
-  ApiClass1Impl.raw(this._platform);
+
   Future<double> testInbuiltType1({required int a, required double b, dynamic hint}) {
-    var arg0 = _platform.api2wire_i32(a);
-    var arg1 = _platform.api2wire_f32(b);
+    var arg0 = api2wire_i32(a);
+    var arg1 = api2wire_f32(b);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_inbuilt_type_1(port_, arg0, arg1),
-      parseSuccessData: _wire2api_f32,
+      parseSuccessData: _sharedImpl.wire2api_f32,
       constMeta: kTestInbuiltType1ConstMeta,
       argValues: [a, b],
       hint: hint,
@@ -76,11 +89,11 @@ class ApiClass1Impl implements ApiClass1 {
       );
 
   Future<String> testString1({required String s, required int i, dynamic hint}) {
-    var arg0 = _platform.api2wire_String(s);
-    var arg1 = _platform.api2wire_u64(i);
+    var arg0 = _sharedPlatform.api2wire_String(s);
+    var arg1 = _sharedPlatform.api2wire_u64(i);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_string_1(port_, arg0, arg1),
-      parseSuccessData: _wire2api_String,
+      parseSuccessData: _sharedImpl.wire2api_String,
       constMeta: kTestString1ConstMeta,
       argValues: [s, i],
       hint: hint,
@@ -94,12 +107,12 @@ class ApiClass1Impl implements ApiClass1 {
 
   Future<SharedStruct> testSharedStruct1(
       {required SharedStruct custom, required String s, required int i, dynamic hint}) {
-    var arg0 = _platform.api2wire_box_autoadd_shared_struct(custom);
-    var arg1 = _platform.api2wire_String(s);
-    var arg2 = _platform.api2wire_i32(i);
+    var arg0 = _sharedPlatform.api2wire_box_autoadd_shared_struct(custom);
+    var arg1 = _sharedPlatform.api2wire_String(s);
+    var arg2 = api2wire_i32(i);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_shared_struct_1(port_, arg0, arg1, arg2),
-      parseSuccessData: _wire2api_shared_struct,
+      parseSuccessData: _sharedImpl.wire2api_shared_struct,
       constMeta: kTestSharedStruct1ConstMeta,
       argValues: [custom, s, i],
       hint: hint,
@@ -114,7 +127,7 @@ class ApiClass1Impl implements ApiClass1 {
   Future<OnlyForApi1Struct> testUniqueStruct1(
       {required OnlyForApi1Struct custom, required String s, required int i, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_only_for_api_1_struct(custom);
-    var arg1 = _platform.api2wire_String(s);
+    var arg1 = _sharedPlatform.api2wire_String(s);
     var arg2 = api2wire_i16(i);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_unique_struct_1(port_, arg0, arg1, arg2),
@@ -131,10 +144,10 @@ class ApiClass1Impl implements ApiClass1 {
       );
 
   Future<String> testCrossSharedStruct1({required CrossSharedStruct custom, dynamic hint}) {
-    var arg0 = _platform.api2wire_box_autoadd_cross_shared_struct(custom);
+    var arg0 = _sharedPlatform.api2wire_box_autoadd_cross_shared_struct(custom);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_cross_shared_struct_1(port_, arg0),
-      parseSuccessData: _wire2api_String,
+      parseSuccessData: _sharedImpl.wire2api_String,
       constMeta: kTestCrossSharedStruct1ConstMeta,
       argValues: [custom],
       hint: hint,
@@ -160,8 +173,8 @@ class ApiClass1Impl implements ApiClass1 {
     if (arr.length != 3) throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return OnlyForApi1Struct(
       id: _wire2api_i16(arr[0]),
-      num: _wire2api_f64(arr[1]),
-      name: _wire2api_String(arr[2]),
+      num: _sharedImpl.wire2api_f64(arr[1]),
+      name: _sharedImpl.wire2api_String(arr[2]),
     );
   }
 }

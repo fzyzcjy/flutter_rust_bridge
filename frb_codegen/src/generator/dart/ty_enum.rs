@@ -9,7 +9,10 @@ use crate::type_dart_generator_struct;
 type_dart_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 
 impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
-    fn api2wire_body(&self) -> Acc<Option<String>> {
+    fn api2wire_body(
+        &self,
+        _shared_dart_api2wire_funcs: &Option<Acc<String>>,
+    ) -> Acc<Option<String>> {
         let variants = (self.ir.get(self.context.ir_file).variants())
             .iter()
             .enumerate()
@@ -49,7 +52,10 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
         }
     }
 
-    fn api_fill_to_wire_body(&self) -> Option<String> {
+    fn api_fill_to_wire_body(
+        &self,
+        _shared_dart_api2wire_funcs: &Option<Acc<String>>,
+    ) -> Option<String> {
         Some(
             self.ir
                 .get(self.context.ir_file)
@@ -255,5 +261,9 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                 comments, self.ir.name, variants
             )
         }
+    }
+
+    fn get_context(&self) -> &TypeGeneratorContext {
+        &self.context
     }
 }

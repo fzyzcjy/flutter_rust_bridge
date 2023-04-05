@@ -6,6 +6,9 @@ use anyhow::{anyhow, Result};
 use lazy_static::lazy_static;
 use log::{info, warn};
 use pathdiff::diff_paths;
+use regex::Regex;
+
+use crate::ir;
 
 // NOTE [DartPostCObjectFnType] was originally [*mut DartCObject] but I changed it to [*mut c_void]
 // because cannot automatically generate things related to [DartCObject]. Anyway this works fine.
@@ -45,8 +48,12 @@ pub fn code_header() -> String {
     )
 }
 
-pub fn modify_dart_wire_content(content_raw: &str, dart_wire_class_name: &str) -> String {
-    let content = content_raw.replace(
+pub fn modify_dart_wire_content(
+    content_raw: &str,
+    dart_wire_class_name: &str,
+    ir_file: &ir::IrFile,
+) -> String {
+    let mut content = content_raw.replace(
         &format!("class {dart_wire_class_name} {{",),
         &format!(
             "class {dart_wire_class_name} implements FlutterRustBridgeWireBase {{
@@ -55,9 +62,21 @@ pub fn modify_dart_wire_content(content_raw: &str, dart_wire_class_name: &str) -
         ),
     );
 
-    content
+    content = content
         .replace("class DartCObject extends ffi.Opaque {}", "")
-        .replace("typedef WireSyncReturn = ffi.Pointer<DartCObject>;", "")
+        .replace("typedef WireSyncReturn = ffi.Pointer<DartCObject>;", "");
+
+    // for ONLY regular configs: erase class block code which are shared .
+    if !ir_file.shared {
+        let v = ir_file.get_shared_type_names();
+        for class_name in v {
+            let my_r = &format!(r"class wire_{class_name} extends ffi\.Struct \{{(?s)(.*?)\}}");
+            let re = Regex::new(my_r).unwrap();
+            content = re.replace_all(&content, "").to_string();
+        }
+    }
+
+    content
 }
 
 #[derive(Default, Debug)]

@@ -3,9 +3,15 @@ use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
 pub trait TypeDartGeneratorTrait {
-    fn api2wire_body(&self) -> Acc<Option<String>>;
+    fn api2wire_body(
+        &self,
+        shared_dart_api2wire_funcs: &Option<Acc<String>>,
+    ) -> Acc<Option<String>>;
 
-    fn api_fill_to_wire_body(&self) -> Option<String> {
+    fn api_fill_to_wire_body(
+        &self,
+        _shared_dart_api2wire_funcs: &Option<Acc<String>>,
+    ) -> Option<String> {
         None
     }
 
@@ -15,6 +21,12 @@ pub trait TypeDartGeneratorTrait {
 
     fn structs(&self) -> String {
         "".to_string()
+    }
+
+    fn get_context(&self) -> &TypeGeneratorContext;
+
+    fn is_type_shared(&self, ty: &IrType) -> bool {
+        self.get_context().ir_file.is_type_shared(ty)
     }
 }
 

@@ -9,10 +9,14 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 import 'bridge_generated_api_1.dart';
 export 'bridge_generated_api_1.dart';
+import 'bridge_generated_shares.io.dart';
 import 'dart:ffi' as ffi;
 
 class ApiClass1Platform extends FlutterRustBridgeBase<ApiClass1Wire> {
-  ApiClass1Platform(ffi.DynamicLibrary dylib) : super(ApiClass1Wire(dylib));
+  final BridgeGeneratedSharesPlatform _sharedPlatform;
+  ApiClass1Platform(ffi.DynamicLibrary dylib)
+      : _sharedPlatform = BridgeGeneratedSharesPlatform(dylib),
+        super(ApiClass1Wire(dylib));
 
 // Section: api2wire
 
@@ -35,7 +39,7 @@ class ApiClass1Platform extends FlutterRustBridgeBase<ApiClass1Wire> {
   void _api_fill_to_wire_only_for_api_1_struct(OnlyForApi1Struct apiObj, wire_OnlyForApi1Struct wireObj) {
     wireObj.id = api2wire_i16(apiObj.id);
     wireObj.num = api2wire_f64(apiObj.num);
-    wireObj.name = api2wire_String(apiObj.name);
+    wireObj.name = _sharedPlatform.api2wire_String(apiObj.name);
   }
 }
 
@@ -256,23 +260,6 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
 
 class _Dart_Handle extends ffi.Opaque {}
 
-class wire_uint_8_list extends ffi.Struct {
-  external ffi.Pointer<ffi.Uint8> ptr;
-
-  @ffi.Int32()
-  external int len;
-}
-
-class wire_SharedStruct extends ffi.Struct {
-  @ffi.Int32()
-  external int id;
-
-  @ffi.Double()
-  external double num;
-
-  external ffi.Pointer<wire_uint_8_list> name;
-}
-
 class wire_OnlyForApi1Struct extends ffi.Struct {
   @ffi.Int16()
   external int id;
@@ -280,10 +267,6 @@ class wire_OnlyForApi1Struct extends ffi.Struct {
   @ffi.Double()
   external double num;
 
-  external ffi.Pointer<wire_uint_8_list> name;
-}
-
-class wire_CrossSharedStruct extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> name;
 }
 

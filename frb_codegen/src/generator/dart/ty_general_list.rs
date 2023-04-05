@@ -6,7 +6,10 @@ use crate::type_dart_generator_struct;
 type_dart_generator_struct!(TypeGeneralListGenerator, IrTypeGeneralList);
 
 impl TypeDartGeneratorTrait for TypeGeneralListGenerator<'_> {
-    fn api2wire_body(&self) -> Acc<Option<String>> {
+    fn api2wire_body(
+        &self,
+        _shared_dart_api2wire_funcs: &Option<Acc<String>>,
+    ) -> Acc<Option<String>> {
         // NOTE the memory strategy is same as PrimitiveList, see comments there.
         let ident = self.ir.safe_ident();
         let inner = self.ir.inner.safe_ident();
@@ -43,5 +46,9 @@ impl TypeDartGeneratorTrait for TypeGeneralListGenerator<'_> {
             "return (raw as List<dynamic>).map(_wire2api_{}).toList();",
             self.ir.inner.safe_ident()
         )
+    }
+
+    fn get_context(&self) -> &TypeGeneratorContext {
+        &self.context
     }
 }

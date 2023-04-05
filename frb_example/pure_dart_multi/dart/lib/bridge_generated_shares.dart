@@ -14,6 +14,9 @@ import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 import 'bridge_generated_shares.io.dart' if (dart.library.html) 'bridge_generated_shares.web.dart';
+import 'bridge_generated_shares.dart';
+export 'bridge_generated_shares.dart';
+import 'bridge_generated_shares.io.dart' if (dart.library.html) 'bridge_generated_shares.web.dart';
 
 abstract class BridgeGeneratedShares {}
 
@@ -39,61 +42,70 @@ class SharedStruct {
 
 class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
   final BridgeGeneratedSharesPlatform _platform;
-  factory BridgeGeneratedSharesImpl(ExternalLibrary dylib) =>
-      BridgeGeneratedSharesImpl.raw(BridgeGeneratedSharesPlatform(dylib));
+  final BridgeGeneratedSharesPlatform _sharedPlatform;
+  final BridgeGeneratedSharesImpl _sharedImpl;
+
+  factory BridgeGeneratedSharesImpl(ExternalLibrary dylib) {
+    final platform = BridgeGeneratedSharesPlatform(dylib);
+    final sharedPlatform = BridgeGeneratedSharesPlatform(dylib);
+    final sharedImpl = BridgeGeneratedSharesImpl(dylib);
+    return BridgeGeneratedSharesImpl.raw(platform, sharedPlatform, sharedImpl);
+  }
+
+  BridgeGeneratedSharesImpl.raw(this._platform, this._sharedPlatform, this._sharedImpl);
 
   /// Only valid on web/WASM platforms.
   factory BridgeGeneratedSharesImpl.wasm(FutureOr<WasmModule> module) =>
       BridgeGeneratedSharesImpl(module as ExternalLibrary);
-  BridgeGeneratedSharesImpl.raw(this._platform);
+
   void dispose() {
     _platform.dispose();
   }
 // Section: wire2api
 
-  String _wire2api_String(dynamic raw) {
+  String wire2api_String(dynamic raw) {
     return raw as String;
   }
 
-  CrossSharedStruct _wire2api_box_autoadd_cross_shared_struct(dynamic raw) {
-    return _wire2api_cross_shared_struct(raw);
+  CrossSharedStruct wire2api_box_autoadd_cross_shared_struct(dynamic raw) {
+    return wire2api_cross_shared_struct(raw);
   }
 
-  CrossSharedStruct _wire2api_cross_shared_struct(dynamic raw) {
+  CrossSharedStruct wire2api_cross_shared_struct(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return CrossSharedStruct(
-      name: _wire2api_String(arr[0]),
+      name: wire2api_String(arr[0]),
     );
   }
 
-  double _wire2api_f32(dynamic raw) {
+  double wire2api_f32(dynamic raw) {
     return raw as double;
   }
 
-  double _wire2api_f64(dynamic raw) {
+  double wire2api_f64(dynamic raw) {
     return raw as double;
   }
 
-  int _wire2api_i32(dynamic raw) {
+  int wire2api_i32(dynamic raw) {
     return raw as int;
   }
 
-  SharedStruct _wire2api_shared_struct(dynamic raw) {
+  SharedStruct wire2api_shared_struct(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 3) throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return SharedStruct(
-      id: _wire2api_i32(arr[0]),
-      num: _wire2api_f64(arr[1]),
-      name: _wire2api_String(arr[2]),
+      id: wire2api_i32(arr[0]),
+      num: wire2api_f64(arr[1]),
+      name: wire2api_String(arr[2]),
     );
   }
 
-  int _wire2api_u8(dynamic raw) {
+  int wire2api_u8(dynamic raw) {
     return raw as int;
   }
 
-  Uint8List _wire2api_uint_8_list(dynamic raw) {
+  Uint8List wire2api_uint_8_list(dynamic raw) {
     return raw as Uint8List;
   }
 }

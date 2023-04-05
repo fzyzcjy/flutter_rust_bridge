@@ -9,10 +9,14 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 import 'bridge_generated_shares.dart';
 export 'bridge_generated_shares.dart';
+import 'bridge_generated_shares.web.dart';
 
 class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGeneratedSharesWire>
     with FlutterRustBridgeSetupMixin {
-  BridgeGeneratedSharesPlatform(FutureOr<WasmModule> dylib) : super(BridgeGeneratedSharesWire(dylib)) {
+  final BridgeGeneratedSharesPlatform _sharedPlatform;
+  BridgeGeneratedSharesPlatform(FutureOr<WasmModule> dylib)
+      : _sharedPlatform = BridgeGeneratedSharesPlatform(dylib),
+        super(BridgeGeneratedSharesWire(dylib)) {
     setupMixinConstructor();
   }
   Future<void> setup() => inner.init;

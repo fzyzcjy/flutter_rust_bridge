@@ -20,7 +20,10 @@ fn is_empty_struct(ty: &TypeBoxedGenerator) -> bool {
 }
 
 impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
-    fn api2wire_body(&self) -> Acc<Option<String>> {
+    fn api2wire_body(
+        &self,
+        _shared_dart_api2wire_funcs: &Option<Acc<String>>,
+    ) -> Acc<Option<String>> {
         let as_primitive = self.ir.inner.is_primitive().then(|| {
             format!(
                 "return inner.new_{}(api2wire_{}(raw));",
@@ -56,7 +59,10 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
         }
     }
 
-    fn api_fill_to_wire_body(&self) -> Option<String> {
+    fn api_fill_to_wire_body(
+        &self,
+        _shared_dart_api2wire_funcs: &Option<Acc<String>>,
+    ) -> Option<String> {
         if self.ir.inner.is_array() {
             return Some(format!(
                 "wireObj = api2wire_{}(apiObj);",
@@ -79,11 +85,20 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
             | EnumRef(_)
             | Primitive(IrTypePrimitive::I64 | IrTypePrimitive::U64 | IrTypePrimitive::Usize)
             | Delegate(IrTypeDelegate::Array(_) | IrTypeDelegate::PrimitiveEnum { .. }) => {
-                format!("return _wire2api_{}(raw);", self.ir.inner.safe_ident())
+                // TODO: refactor into trait method?
+                let private_prefix = if !self.context.config.shared { "_" } else { "" };
+                format!(
+                    "return {private_prefix}wire2api_{}(raw);",
+                    self.ir.inner.safe_ident()
+                )
             }
             #[cfg(feature = "chrono")]
             Delegate(IrTypeDelegate::Time(time)) => gen_wire2api_chrono(time),
             _ => gen_wire2api_simple_type_cast(&self.ir.dart_api_type()),
         }
+    }
+
+    fn get_context(&self) -> &TypeGeneratorContext {
+        &self.context
     }
 }

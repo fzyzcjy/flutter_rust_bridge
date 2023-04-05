@@ -11,6 +11,7 @@ pub(crate) fn generate_api_func(
     func: &IrFunc,
     ir_file: &IrFile,
     common_api2wire_body: &str,
+    shared_dart_api2wire_funcs: &Option<Acc<String>>,
 ) -> GeneratedApiFunc {
     let raw_func_param_list = func
         .inputs
@@ -37,14 +38,43 @@ pub(crate) fn generate_api_func(
                 format!("var arg{index} = {};", input.name.dart_style())
             } else {
                 let func = format!("api2wire_{}", input.ty.safe_ident());
+                //
+                let prefix = match shared_dart_api2wire_funcs {
+                    Some(shared_dart_api2wire_funcs) => {
+                        log::debug!("the func to check:{func}"); //TODO: delete
+                        log::debug!("shared_dart_api2wire_funcs:{shared_dart_api2wire_funcs:?}"); //TODO: delete
+
+                        let shared_common_api2wire_body = &shared_dart_api2wire_funcs.common;
+                        match !ir_file.is_type_shared(&input.ty) {
+                            true => {
+                                let ident = input.ty.safe_ident();
+                                log::debug!("type {:?} is NOT shared, ident is:{ident}", input.ty); //TODO: delete
+                                if common_api2wire_body.contains(&func) {
+                                    ""
+                                } else {
+                                    "_platform."
+                                }
+                            }
+                            false => {
+                                if shared_common_api2wire_body.contains(&func) {
+                                    ""
+                                } else {
+                                    "_sharedPlatform."
+                                }
+                            }
+                        }
+                    }
+                    _ => {
+                        if common_api2wire_body.contains(&func) {
+                            ""
+                        } else {
+                            "_platform."
+                        }
+                    }
+                };
+
                 format!(
-                    "var arg{index} = {}{}({});",
-                    if common_api2wire_body.contains(&func) {
-                        ""
-                    } else {
-                        "_platform."
-                    },
-                    func,
+                    "var arg{index} = {prefix}{func}({});",
                     &input.name.dart_style()
                 )
             }
@@ -108,7 +138,7 @@ pub(crate) fn generate_api_func(
     } else {
         None
     };
-    let parse_success_data = if (f.is_static_method()
+    let mut parse_success_data = if (f.is_static_method()
         && f.struct_name().unwrap() == {
             if let IrType::StructRef(IrTypeStructRef { name, .. }) = &func.output {
                 name.clone()
@@ -126,6 +156,9 @@ pub(crate) fn generate_api_func(
     } else {
         format!("_wire2api_{}", func.output.safe_ident())
     };
+    if !ir_file.shared && ir_file.is_type_shared(&func.output) {
+        parse_success_data = parse_success_data.replace("_wire2api_", "_sharedImpl.wire2api_");
+    }
 
     let is_sync = matches!(func.mode, IrFuncMode::Sync);
     let implementation = format!(

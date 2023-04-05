@@ -25,10 +25,15 @@ impl<'a> TypeSyncReturnGenerator<'a> {
 impl<'a> TypeDartGeneratorTrait for TypeSyncReturnGenerator<'a> {
     delegate! {
         to self.inner {
-            fn api2wire_body(&self) -> Acc<Option<String>>;
-            fn api_fill_to_wire_body(&self) -> Option<String>;
+            fn api2wire_body(&self, shared_dart_api2wire_funcs: &Option<Acc<String>>) -> Acc<Option<String>>;
+            fn api_fill_to_wire_body(
+                &self,
+                shared_dart_api2wire_funcs: &Option<Acc<String>>,
+            ) -> Option<String>;
             fn wire2api_body(&self) -> String;
             fn structs(&self) -> String;
+            fn get_context(&self) -> &TypeGeneratorContext;
+
         }
     }
 }

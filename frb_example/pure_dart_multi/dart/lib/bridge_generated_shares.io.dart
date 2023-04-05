@@ -9,10 +9,14 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 import 'bridge_generated_shares.dart';
 export 'bridge_generated_shares.dart';
+import 'bridge_generated_shares.io.dart';
 import 'dart:ffi' as ffi;
 
 class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGeneratedSharesWire> {
-  BridgeGeneratedSharesPlatform(ffi.DynamicLibrary dylib) : super(BridgeGeneratedSharesWire(dylib));
+  final BridgeGeneratedSharesPlatform _sharedPlatform;
+  BridgeGeneratedSharesPlatform(ffi.DynamicLibrary dylib)
+      : _sharedPlatform = BridgeGeneratedSharesPlatform(dylib),
+        super(BridgeGeneratedSharesWire(dylib));
 
 // Section: api2wire
 

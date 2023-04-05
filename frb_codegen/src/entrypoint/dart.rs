@@ -74,6 +74,7 @@ pub(crate) fn generate_dart_code(
     let generated_dart_wire = extract_dart_wire_content(&modify_dart_wire_content(
         &generated_dart_wire_code_raw,
         &config.dart_wire_class_name(),
+        ir_file,
     ));
     sanity_check(&generated_dart_wire.body, &config.dart_wire_class_name())?;
 
