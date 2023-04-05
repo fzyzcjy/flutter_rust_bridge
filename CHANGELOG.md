@@ -1,3 +1,7 @@
+## 1.72.2
+
+* Fix: Handle fallible case for TypeGeneralListGenerator. #1149 (thanks @trobanga)
+
 ## 1.72.1
 
 * Fix for enums that contain mirrored structs Enum1(MyStruct) and Unit Tests #1144 (thanks @alexthe2)
