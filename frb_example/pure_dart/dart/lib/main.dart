@@ -666,6 +666,12 @@ void main(List<String> args) async {
     expect(output.raw[0].raw.value, "test");
   });
 
+  test('test fallible vec of raw string', () async {
+    final output = await api.testFallibleOfRawStringMirrored();
+    expect(output.length, 1);
+    expect(output.first.value, "test");
+  });
+
   test('test abc', () async {
     final output1 = await api.testAbcEnum(abc: Abc.a(A(a: "test")));
     expect((output1 as Abc_A).field0.a, "test");

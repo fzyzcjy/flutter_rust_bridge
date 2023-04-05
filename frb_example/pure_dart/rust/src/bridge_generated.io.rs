@@ -785,6 +785,11 @@ pub extern "C" fn wire_test_list_of_raw_nested_string_mirrored(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_test_fallible_of_raw_string_mirrored(port_: i64) {
+    wire_test_fallible_of_raw_string_mirrored_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_list_of_primitive_enums(port_: i64, weekdays: *mut wire_list_weekdays) {
     wire_list_of_primitive_enums_impl(port_, weekdays)
 }

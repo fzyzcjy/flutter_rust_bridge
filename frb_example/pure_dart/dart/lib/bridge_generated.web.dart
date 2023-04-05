@@ -1265,6 +1265,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_test_list_of_raw_nested_string_mirrored(NativePortType port_);
 
+  external dynamic /* void */ wire_test_fallible_of_raw_string_mirrored(NativePortType port_);
+
   external dynamic /* void */ wire_list_of_primitive_enums(NativePortType port_, List<dynamic> weekdays);
 
   external dynamic /* void */ wire_test_abc_enum(NativePortType port_, List<dynamic> abc);
@@ -1686,6 +1688,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_test_list_of_raw_nested_string_mirrored(NativePortType port_) =>
       wasmModule.wire_test_list_of_raw_nested_string_mirrored(port_);
+
+  void wire_test_fallible_of_raw_string_mirrored(NativePortType port_) =>
+      wasmModule.wire_test_fallible_of_raw_string_mirrored(port_);
 
   void wire_list_of_primitive_enums(NativePortType port_, List<dynamic> weekdays) =>
       wasmModule.wire_list_of_primitive_enums(port_, weekdays);

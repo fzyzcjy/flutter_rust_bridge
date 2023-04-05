@@ -3522,6 +3522,19 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_test_list_of_raw_nested_string_mirrored =
       _wire_test_list_of_raw_nested_string_mirroredPtr.asFunction<void Function(int)>();
 
+  void wire_test_fallible_of_raw_string_mirrored(
+    int port_,
+  ) {
+    return _wire_test_fallible_of_raw_string_mirrored(
+      port_,
+    );
+  }
+
+  late final _wire_test_fallible_of_raw_string_mirroredPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_test_fallible_of_raw_string_mirrored');
+  late final _wire_test_fallible_of_raw_string_mirrored =
+      _wire_test_fallible_of_raw_string_mirroredPtr.asFunction<void Function(int)>();
+
   void wire_list_of_primitive_enums(
     int port_,
     ffi.Pointer<wire_list_weekdays> weekdays,

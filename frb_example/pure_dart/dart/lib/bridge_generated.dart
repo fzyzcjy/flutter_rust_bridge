@@ -2360,6 +2360,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<List<RawStringMirrored>> testFallibleOfRawStringMirrored({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_fallible_of_raw_string_mirrored(port_),
+      parseSuccessData: _wire2api_list_raw_string_mirrored,
+      constMeta: kTestFallibleOfRawStringMirroredConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestFallibleOfRawStringMirroredConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_fallible_of_raw_string_mirrored",
+        argNames: [],
+      );
+
   Future<List<Weekdays>> listOfPrimitiveEnums({required List<Weekdays> weekdays, dynamic hint}) {
     var arg0 = _platform.api2wire_list_weekdays(weekdays);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -3254,6 +3269,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   List<Point> _wire2api_list_point(dynamic raw) {
     return (raw as List<dynamic>).map(_wire2api_point).toList();
+  }
+
+  List<RawStringMirrored> _wire2api_list_raw_string_mirrored(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_raw_string_mirrored).toList();
   }
 
   List<SumWith> _wire2api_list_sum_with(dynamic raw) {
