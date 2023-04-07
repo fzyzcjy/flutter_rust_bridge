@@ -33,7 +33,7 @@ Here is my another open-source library :) https://github.com/fzyzcjy/flutter_smo
 ## ✨ Contributors
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-56-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-57-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key) following [all-contributors](https://github.com/all-contributors/all-contributors) specification):
@@ -114,6 +114,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/anstadnik"><img src="https://avatars.githubusercontent.com/u/40110937?v=4?s=100" width="100px;" alt="Andrii Stadnik"/><br /><sub><b>Andrii Stadnik</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=anstadnik" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/coder0xff"><img src="https://avatars.githubusercontent.com/u/2261949?v=4?s=100" width="100px;" alt="Brent Lewis"/><br /><sub><b>Brent Lewis</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=coder0xff" title="Code">💻</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=coder0xff" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/erikas-taroza"><img src="https://avatars.githubusercontent.com/u/68450090?v=4?s=100" width="100px;" alt="TypicalEgg"/><br /><sub><b>TypicalEgg</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=erikas-taroza" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/escwxyz"><img src="https://avatars.githubusercontent.com/u/124119483?v=4?s=100" width="100px;" alt="J"/><br /><sub><b>J</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=escwxyz" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
