@@ -529,6 +529,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "escwxyz",
+      "name": "J",
+      "avatar_url": "https://avatars.githubusercontent.com/u/124119483?v=4",
+      "profile": "https://github.com/escwxyz",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
