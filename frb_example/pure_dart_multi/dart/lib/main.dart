@@ -2,7 +2,6 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 
 import 'bridge_generated_api_1.dart';
 import 'bridge_generated_api_2.dart';
-import 'bridge_generated_shares.dart';
 import 'package:test/test.dart';
 
 void main(List<String> args) {
