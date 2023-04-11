@@ -46,6 +46,7 @@ pub(crate) struct BindgenRustToDartArg<'a> {
     pub exclude_symbols: Vec<String>,
     pub llvm_install_path: &'a [String],
     pub llvm_compiler_opts: &'a str,
+    pub prefix: &'a String,
 }
 
 pub(crate) fn bindgen_rust_to_dart(
@@ -57,6 +58,7 @@ pub(crate) fn bindgen_rust_to_dart(
         arg.c_output_path,
         arg.c_struct_names,
         arg.exclude_symbols,
+        arg.prefix,
     )?;
     ffigen(
         arg.c_output_path,
@@ -73,13 +75,12 @@ fn cbindgen(
     c_output_path: &str,
     c_struct_names: Vec<String>,
     exclude_symbols: Vec<String>,
+    prefix: &String,
 ) -> anyhow::Result<()> {
     debug!(
         "execute cbindgen rust_crate_dir={} c_output_path={}",
         rust_crate_dir, c_output_path
     );
-
-    let prefix = "HelloWorld_".to_string();
 
     let config = cbindgen::Config {
         language: cbindgen::Language::C,
@@ -91,7 +92,7 @@ fn cbindgen(
         no_includes: true,
         // copied from: dart-sdk/dart_api.h
         // used to convert Dart_Handle to Object.
-        after_includes: Some(format!("typedef struct _Dart_Handle* {prefix}_Dart_Handle;")),
+        after_includes: Some(format!("typedef struct _Dart_Handle* {prefix}Dart_Handle;")),
         export: cbindgen::ExportConfig {
             include: c_struct_names
                 .iter()
@@ -122,7 +123,7 @@ fn cbindgen(
         // This regex matches anything that needs to be prefixed.
         let regex = Regex::new(r"([\d\w]+ \*?)([\d\w]+)(\([\d\w\s*,]*\);)")?;
         let prefixed = regex.replace_all(&generated, format!("${{1}}{prefix}${{2}}${{3}}"));
-        std::fs::write(c_output_path, prefixed.to_string())?;
+        std::fs::write(c_output_path, format!("// {prefix}\n{}", prefixed.to_string()))?;
 
         Ok(())
     } else {
