@@ -25,20 +25,14 @@ void main(List<String> args) {
 
   test('dart call testSharedStruct1', () async {
     expect(
-      await api1.testSharedStruct1(
-          custom: SharedStruct(name: "string", id: 1, num: 2.2),
-          s: "newString",
-          i: 2),
+      await api1.testSharedStruct1(custom: SharedStruct(name: "string", id: 1, num: 2.2), s: "newString", i: 2),
       SharedStruct(name: "newString", id: 2, num: 2.2),
     );
   });
 
   test('dart call testUniqueStruct1', () async {
     expect(
-      await api1.testUniqueStruct1(
-          custom: OnlyForApi1Struct(name: "string", id: 1, num: 2.2),
-          s: "newString",
-          i: 2),
+      await api1.testUniqueStruct1(custom: OnlyForApi1Struct(name: "string", id: 1, num: 2.2), s: "newString", i: 2),
       OnlyForApi1Struct(name: "newString", id: 2, num: 2.2),
     );
   });
@@ -65,20 +59,14 @@ void main(List<String> args) {
 
   test('dart call testSharedStruct2', () async {
     expect(
-      await api2.testSharedStruct2(
-          custom: SharedStruct(name: "string", id: 1, num: 2.2),
-          s: "newString",
-          i: 2),
+      await api2.testSharedStruct2(custom: SharedStruct(name: "string", id: 1, num: 2.2), s: "newString", i: 2),
       SharedStruct(name: "newString", id: 2, num: 2.2),
     );
   });
 
   test('dart call testUniqueStruct2', () async {
     expect(
-      await api2.testUniqueStruct2(
-          custom: OnlyForApi2Struct(name: "string", id: 1, num: 2.2),
-          s: "newString",
-          i: 2),
+      await api2.testUniqueStruct2(custom: OnlyForApi2Struct(name: "string", id: 1, num: 2.2), s: "newString", i: 2),
       OnlyForApi2Struct(name: "newString", id: 2, num: 2.2),
     );
   });

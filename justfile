@@ -141,7 +141,7 @@ _rust_linter_wasm:
 
 default_line_length := "120"
 
-dart_linter mode="default":
+dart_linter mode="fix":
     just dart_pub_get
 
     just _dart_linter_single {{mode}} frb_dart dart 80
@@ -154,8 +154,7 @@ dart_linter mode="default":
 _dart_linter_single mode directory executable line_length:
     cd {{directory}} && dart format \
       --line-length {{line_length}} \
-      {{ if mode == "fix" { "--fix" } else { "--output=none --set-exit-if-changed" } }} \
-      /.
+      {{ if mode == "fix" { "--fix" } else { "--output=none --set-exit-if-changed" } }} .
     cd {{directory}} && {{executable}} analyze --fatal-infos
 
 dart_linter_pana:
