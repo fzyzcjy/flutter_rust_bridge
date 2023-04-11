@@ -43,7 +43,7 @@ See [Android setup](tutorial/setup_android.md)
 
 ### iOS app
 
-Modify `Cargo.toml` to change `cdylib` to `staticlib`, then run `cargo lipo && cp target/universal/debug/libflutter_rust_bridge_example.a ../ios/Runner` to build Rust and copy the static library. Then run the Flutter app normally such as `flutter run`.
+Modify `Cargo.toml` to change `cdylib` to `staticlib`, then run `cargo lipo && cp target/universal/debug/libflutter_rust_bridge_example_pure_dart.a ../ios/Runner` to build Rust and copy the static library. Then run the Flutter app normally such as `flutter run`.
 
 **Remark**: [This tutorial](https://stackoverflow.com/q/69515032/4619958) will help you automatically execute `cargo` builds when building Flutter app.
 
