@@ -55,6 +55,9 @@ Options:
       --no-build-runner
           Skip running build_runner even when codegen-required code is detected
 
+      --no-use-bridge-in-method
+          No use bridge in Model
+
   -v, --verbose
           Show debug messages
 

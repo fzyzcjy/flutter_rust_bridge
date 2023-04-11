@@ -73,7 +73,27 @@ pub extern "C" fn wire_off_topic_deliberately_panic(port_: i64) {
     wire_off_topic_deliberately_panic_impl(port_)
 }
 
+#[no_mangle]
+pub extern "C" fn wire_test_method__method__BoxedPoint(port_: i64, that: *mut wire_BoxedPoint) {
+    wire_test_method__method__BoxedPoint_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32) {
+    wire_sum__method__SumWith_impl(port_, that, y)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_sum_static__static_method__SumWith(port_: i64, x: u32, y: u32) {
+    wire_sum_static__static_method__SumWith_impl(port_, x, y)
+}
+
 // Section: allocate functions
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_boxed_point_0() -> *mut wire_BoxedPoint {
+    support::new_leak_box_ptr(wire_BoxedPoint::new_with_null_ptr())
+}
 
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_point_0() -> *mut wire_Point {
@@ -86,8 +106,18 @@ pub extern "C" fn new_box_autoadd_size_0() -> *mut wire_Size {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_sum_with_0() -> *mut wire_SumWith {
+    support::new_leak_box_ptr(wire_SumWith::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_tree_node_0() -> *mut wire_TreeNode {
     support::new_leak_box_ptr(wire_TreeNode::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_point_0() -> *mut wire_Point {
+    support::new_leak_box_ptr(wire_Point::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -127,6 +157,12 @@ impl Wire2Api<String> for *mut wire_uint_8_list {
         String::from_utf8_lossy(&vec).into_owned()
     }
 }
+impl Wire2Api<BoxedPoint> for *mut wire_BoxedPoint {
+    fn wire2api(self) -> BoxedPoint {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<BoxedPoint>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<Point> for *mut wire_Point {
     fn wire2api(self) -> Point {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -139,10 +175,29 @@ impl Wire2Api<Size> for *mut wire_Size {
         Wire2Api::<Size>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<SumWith> for *mut wire_SumWith {
+    fn wire2api(self) -> SumWith {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<SumWith>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<TreeNode> for *mut wire_TreeNode {
     fn wire2api(self) -> TreeNode {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<TreeNode>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<Box<Point>> for *mut wire_Point {
+    fn wire2api(self) -> Box<Point> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Point>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<BoxedPoint> for wire_BoxedPoint {
+    fn wire2api(self) -> BoxedPoint {
+        BoxedPoint {
+            point: self.point.wire2api(),
+        }
     }
 }
 
@@ -180,6 +235,13 @@ impl Wire2Api<Size> for wire_Size {
         }
     }
 }
+impl Wire2Api<SumWith> for wire_SumWith {
+    fn wire2api(self) -> SumWith {
+        SumWith {
+            x: self.x.wire2api(),
+        }
+    }
+}
 impl Wire2Api<TreeNode> for wire_TreeNode {
     fn wire2api(self) -> TreeNode {
         TreeNode {
@@ -198,6 +260,12 @@ impl Wire2Api<Vec<u8>> for *mut wire_uint_8_list {
     }
 }
 // Section: wire structs
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_BoxedPoint {
+    point: *mut wire_Point,
+}
 
 #[repr(C)]
 #[derive(Clone)]
@@ -229,6 +297,12 @@ pub struct wire_Size {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_SumWith {
+    x: u32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_TreeNode {
     name: *mut wire_uint_8_list,
     children: *mut wire_list_tree_node,
@@ -250,6 +324,20 @@ pub trait NewWithNullPtr {
 impl<T> NewWithNullPtr for *mut T {
     fn new_with_null_ptr() -> Self {
         std::ptr::null_mut()
+    }
+}
+
+impl NewWithNullPtr for wire_BoxedPoint {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            point: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl Default for wire_BoxedPoint {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
     }
 }
 
@@ -278,6 +366,20 @@ impl NewWithNullPtr for wire_Size {
 }
 
 impl Default for wire_Size {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
+impl NewWithNullPtr for wire_SumWith {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            x: Default::default(),
+        }
+    }
+}
+
+impl Default for wire_SumWith {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }

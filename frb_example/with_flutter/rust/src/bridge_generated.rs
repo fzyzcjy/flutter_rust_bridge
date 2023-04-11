@@ -203,6 +203,58 @@ fn wire_off_topic_deliberately_panic_impl(port_: MessagePort) {
         move || move |task_callback| Ok(off_topic_deliberately_panic()),
     )
 }
+fn wire_test_method__method__BoxedPoint_impl(
+    port_: MessagePort,
+    that: impl Wire2Api<BoxedPoint> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_method__method__BoxedPoint",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_that = that.wire2api();
+            move |task_callback| Ok(BoxedPoint::test_method(&api_that))
+        },
+    )
+}
+fn wire_sum__method__SumWith_impl(
+    port_: MessagePort,
+    that: impl Wire2Api<SumWith> + UnwindSafe,
+    y: impl Wire2Api<u32> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "sum__method__SumWith",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_that = that.wire2api();
+            let api_y = y.wire2api();
+            move |task_callback| Ok(SumWith::sum(&api_that, api_y))
+        },
+    )
+}
+fn wire_sum_static__static_method__SumWith_impl(
+    port_: MessagePort,
+    x: impl Wire2Api<u32> + UnwindSafe,
+    y: impl Wire2Api<u32> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "sum_static__static_method__SumWith",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_x = x.wire2api();
+            let api_y = y.wire2api();
+            move |task_callback| Ok(SumWith::sum_static(api_x, api_y))
+        },
+    )
+}
 // Section: wrapper structs
 
 // Section: static checks
@@ -237,6 +289,11 @@ impl Wire2Api<i32> for i32 {
     }
 }
 
+impl Wire2Api<u32> for u32 {
+    fn wire2api(self) -> u32 {
+        self
+    }
+}
 impl Wire2Api<u8> for u8 {
     fn wire2api(self) -> u8 {
         self

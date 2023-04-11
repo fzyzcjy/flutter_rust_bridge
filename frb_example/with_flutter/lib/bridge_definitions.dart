@@ -8,6 +8,7 @@ import 'dart:async';
 import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
+import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
 
 abstract class FlutterRustBridgeExample {
   Future<Uint8List> drawMandelbrot(
@@ -62,6 +63,18 @@ abstract class FlutterRustBridgeExample {
   Future<int> offTopicDeliberatelyPanic({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kOffTopicDeliberatelyPanicConstMeta;
+
+  Future<void> testMethodMethodBoxedPoint({required BoxedPoint that, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodBoxedPointConstMeta;
+
+  Future<int> sumMethodSumWith({required SumWith that, required int y, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
+
+  Future<int> sumStaticStaticMethodSumWith({required int x, required int y, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSumStaticStaticMethodSumWithConstMeta;
 }
 
 class BoxedPoint {
@@ -70,6 +83,10 @@ class BoxedPoint {
   const BoxedPoint({
     required this.point,
   });
+
+  Future<void> testMethod({dynamic hint}) => api.testMethodMethodBoxedPoint(
+        that: this,
+      );
 }
 
 class Point {
@@ -90,6 +107,22 @@ class Size {
     required this.width,
     required this.height,
   });
+}
+
+class SumWith {
+  final int x;
+
+  const SumWith({
+    required this.x,
+  });
+
+  Future<int> sum({required int y, dynamic hint}) => api.sumMethodSumWith(
+        that: this,
+        y: y,
+      );
+
+  static Future<int> sumStatic({required int x, required int y, dynamic hint}) =>
+      api.sumStaticStaticMethodSumWith(x: x, y: y, hint: hint);
 }
 
 class TreeNode {

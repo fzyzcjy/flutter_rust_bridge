@@ -8,6 +8,7 @@ import 'dart:async';
 import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
+import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
 import 'bridge_generated.dart';
 export 'bridge_generated.dart';
 
@@ -26,6 +27,11 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_boxed_point(BoxedPoint raw) {
+    return api2wire_boxed_point(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_point(Point raw) {
     return api2wire_point(raw);
   }
@@ -36,8 +42,23 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_sum_with(SumWith raw) {
+    return api2wire_sum_with(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_tree_node(TreeNode raw) {
     return api2wire_tree_node(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_point(Point raw) {
+    return api2wire_point(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_boxed_point(BoxedPoint raw) {
+    return [api2wire_box_point(raw.point)];
   }
 
   @protected
@@ -58,6 +79,11 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   @protected
   List<dynamic> api2wire_size(Size raw) {
     return [api2wire_i32(raw.width), api2wire_i32(raw.height)];
+  }
+
+  @protected
+  List<dynamic> api2wire_sum_with(SumWith raw) {
+    return [api2wire_u32(raw.x)];
   }
 
   @protected
@@ -107,6 +133,12 @@ class FlutterRustBridgeExampleWasmModule implements WasmModule {
   external dynamic /* void */ wire_off_topic_deliberately_return_error(NativePortType port_);
 
   external dynamic /* void */ wire_off_topic_deliberately_panic(NativePortType port_);
+
+  external dynamic /* void */ wire_test_method__method__BoxedPoint(NativePortType port_, List<dynamic> that);
+
+  external dynamic /* void */ wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y);
+
+  external dynamic /* void */ wire_sum_static__static_method__SumWith(NativePortType port_, int x, int y);
 }
 
 // Section: WASM wire connector
@@ -150,4 +182,13 @@ class FlutterRustBridgeExampleWire extends FlutterRustBridgeWasmWireBase<Flutter
       wasmModule.wire_off_topic_deliberately_return_error(port_);
 
   void wire_off_topic_deliberately_panic(NativePortType port_) => wasmModule.wire_off_topic_deliberately_panic(port_);
+
+  void wire_test_method__method__BoxedPoint(NativePortType port_, List<dynamic> that) =>
+      wasmModule.wire_test_method__method__BoxedPoint(port_, that);
+
+  void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y) =>
+      wasmModule.wire_sum__method__SumWith(port_, that, y);
+
+  void wire_sum_static__static_method__SumWith(NativePortType port_, int x, int y) =>
+      wasmModule.wire_sum_static__static_method__SumWith(port_, x, y);
 }

@@ -8,6 +8,7 @@ import 'dart:async';
 import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
+import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
 import 'bridge_generated.dart';
 export 'bridge_generated.dart';
 import 'dart:ffi' as ffi;
@@ -20,6 +21,13 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   @protected
   ffi.Pointer<wire_uint_8_list> api2wire_String(String raw) {
     return api2wire_uint_8_list(utf8.encoder.convert(raw));
+  }
+
+  @protected
+  ffi.Pointer<wire_BoxedPoint> api2wire_box_autoadd_boxed_point(BoxedPoint raw) {
+    final ptr = inner.new_box_autoadd_boxed_point_0();
+    _api_fill_to_wire_boxed_point(raw, ptr.ref);
+    return ptr;
   }
 
   @protected
@@ -37,9 +45,23 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   }
 
   @protected
+  ffi.Pointer<wire_SumWith> api2wire_box_autoadd_sum_with(SumWith raw) {
+    final ptr = inner.new_box_autoadd_sum_with_0();
+    _api_fill_to_wire_sum_with(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_TreeNode> api2wire_box_autoadd_tree_node(TreeNode raw) {
     final ptr = inner.new_box_autoadd_tree_node_0();
     _api_fill_to_wire_tree_node(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_Point> api2wire_box_point(Point raw) {
+    final ptr = inner.new_box_point_0();
+    _api_fill_to_wire_point(raw, ptr.ref);
     return ptr;
   }
 
@@ -71,6 +93,10 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
 
 // Section: api_fill_to_wire
 
+  void _api_fill_to_wire_box_autoadd_boxed_point(BoxedPoint apiObj, ffi.Pointer<wire_BoxedPoint> wireObj) {
+    _api_fill_to_wire_boxed_point(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_point(Point apiObj, ffi.Pointer<wire_Point> wireObj) {
     _api_fill_to_wire_point(apiObj, wireObj.ref);
   }
@@ -79,8 +105,20 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
     _api_fill_to_wire_size(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_sum_with(SumWith apiObj, ffi.Pointer<wire_SumWith> wireObj) {
+    _api_fill_to_wire_sum_with(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_tree_node(TreeNode apiObj, ffi.Pointer<wire_TreeNode> wireObj) {
     _api_fill_to_wire_tree_node(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_point(Point apiObj, ffi.Pointer<wire_Point> wireObj) {
+    _api_fill_to_wire_point(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_boxed_point(BoxedPoint apiObj, wire_BoxedPoint wireObj) {
+    wireObj.point = api2wire_box_point(apiObj.point);
   }
 
   void _api_fill_to_wire_point(Point apiObj, wire_Point wireObj) {
@@ -91,6 +129,10 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   void _api_fill_to_wire_size(Size apiObj, wire_Size wireObj) {
     wireObj.width = api2wire_i32(apiObj.width);
     wireObj.height = api2wire_i32(apiObj.height);
+  }
+
+  void _api_fill_to_wire_sum_with(SumWith apiObj, wire_SumWith wireObj) {
+    wireObj.x = api2wire_u32(apiObj.x);
   }
 
   void _api_fill_to_wire_tree_node(TreeNode apiObj, wire_TreeNode wireObj) {
@@ -367,6 +409,67 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_off_topic_deliberately_panic =
       _wire_off_topic_deliberately_panicPtr.asFunction<void Function(int)>();
 
+  void wire_test_method__method__BoxedPoint(
+    int port_,
+    ffi.Pointer<wire_BoxedPoint> that,
+  ) {
+    return _wire_test_method__method__BoxedPoint(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_test_method__method__BoxedPointPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_BoxedPoint>)>>(
+          'wire_test_method__method__BoxedPoint');
+  late final _wire_test_method__method__BoxedPoint =
+      _wire_test_method__method__BoxedPointPtr.asFunction<void Function(int, ffi.Pointer<wire_BoxedPoint>)>();
+
+  void wire_sum__method__SumWith(
+    int port_,
+    ffi.Pointer<wire_SumWith> that,
+    int y,
+  ) {
+    return _wire_sum__method__SumWith(
+      port_,
+      that,
+      y,
+    );
+  }
+
+  late final _wire_sum__method__SumWithPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_SumWith>, ffi.Uint32)>>(
+          'wire_sum__method__SumWith');
+  late final _wire_sum__method__SumWith =
+      _wire_sum__method__SumWithPtr.asFunction<void Function(int, ffi.Pointer<wire_SumWith>, int)>();
+
+  void wire_sum_static__static_method__SumWith(
+    int port_,
+    int x,
+    int y,
+  ) {
+    return _wire_sum_static__static_method__SumWith(
+      port_,
+      x,
+      y,
+    );
+  }
+
+  late final _wire_sum_static__static_method__SumWithPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>(
+          'wire_sum_static__static_method__SumWith');
+  late final _wire_sum_static__static_method__SumWith =
+      _wire_sum_static__static_method__SumWithPtr.asFunction<void Function(int, int, int)>();
+
+  ffi.Pointer<wire_BoxedPoint> new_box_autoadd_boxed_point_0() {
+    return _new_box_autoadd_boxed_point_0();
+  }
+
+  late final _new_box_autoadd_boxed_point_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_BoxedPoint> Function()>>('new_box_autoadd_boxed_point_0');
+  late final _new_box_autoadd_boxed_point_0 =
+      _new_box_autoadd_boxed_point_0Ptr.asFunction<ffi.Pointer<wire_BoxedPoint> Function()>();
+
   ffi.Pointer<wire_Point> new_box_autoadd_point_0() {
     return _new_box_autoadd_point_0();
   }
@@ -383,6 +486,15 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_Size> Function()>>('new_box_autoadd_size_0');
   late final _new_box_autoadd_size_0 = _new_box_autoadd_size_0Ptr.asFunction<ffi.Pointer<wire_Size> Function()>();
 
+  ffi.Pointer<wire_SumWith> new_box_autoadd_sum_with_0() {
+    return _new_box_autoadd_sum_with_0();
+  }
+
+  late final _new_box_autoadd_sum_with_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_SumWith> Function()>>('new_box_autoadd_sum_with_0');
+  late final _new_box_autoadd_sum_with_0 =
+      _new_box_autoadd_sum_with_0Ptr.asFunction<ffi.Pointer<wire_SumWith> Function()>();
+
   ffi.Pointer<wire_TreeNode> new_box_autoadd_tree_node_0() {
     return _new_box_autoadd_tree_node_0();
   }
@@ -391,6 +503,13 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_TreeNode> Function()>>('new_box_autoadd_tree_node_0');
   late final _new_box_autoadd_tree_node_0 =
       _new_box_autoadd_tree_node_0Ptr.asFunction<ffi.Pointer<wire_TreeNode> Function()>();
+
+  ffi.Pointer<wire_Point> new_box_point_0() {
+    return _new_box_point_0();
+  }
+
+  late final _new_box_point_0Ptr = _lookup<ffi.NativeFunction<ffi.Pointer<wire_Point> Function()>>('new_box_point_0');
+  late final _new_box_point_0 = _new_box_point_0Ptr.asFunction<ffi.Pointer<wire_Point> Function()>();
 
   ffi.Pointer<wire_list_size> new_list_size_0(
     int len,
@@ -485,6 +604,15 @@ class wire_list_size extends ffi.Struct {
 
   @ffi.Int32()
   external int len;
+}
+
+class wire_BoxedPoint extends ffi.Struct {
+  external ffi.Pointer<wire_Point> point;
+}
+
+class wire_SumWith extends ffi.Struct {
+  @ffi.Uint32()
+  external int x;
 }
 
 typedef DartPostCObjectFnType

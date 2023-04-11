@@ -8,6 +8,7 @@ import 'dart:async';
 import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
+import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
 import 'bridge_generated.io.dart' if (dart.library.html) 'bridge_generated.web.dart';
 
 class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
@@ -62,7 +63,7 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
   Future<BoxedPoint> returningStructsWithBoxedFields({dynamic hint}) {
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_returning_structs_with_boxed_fields(port_),
-      parseSuccessData: _wire2api_boxed_point,
+      parseSuccessData: (d) => _wire2api_boxed_point(d),
       constMeta: kReturningStructsWithBoxedFieldsConstMeta,
       argValues: [],
       hint: hint,
@@ -221,6 +222,56 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
         argNames: [],
       );
 
+  Future<void> testMethodMethodBoxedPoint({required BoxedPoint that, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_boxed_point(that);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_method__method__BoxedPoint(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      constMeta: kTestMethodMethodBoxedPointConstMeta,
+      argValues: [that],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodBoxedPointConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_method__method__BoxedPoint",
+        argNames: ["that"],
+      );
+
+  Future<int> sumMethodSumWith({required SumWith that, required int y, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_sum_with(that);
+    var arg1 = api2wire_u32(y);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_sum__method__SumWith(port_, arg0, arg1),
+      parseSuccessData: _wire2api_u32,
+      constMeta: kSumMethodSumWithConstMeta,
+      argValues: [that, y],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sum__method__SumWith",
+        argNames: ["that", "y"],
+      );
+
+  Future<int> sumStaticStaticMethodSumWith({required int x, required int y, dynamic hint}) {
+    var arg0 = api2wire_u32(x);
+    var arg1 = api2wire_u32(y);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_sum_static__static_method__SumWith(port_, arg0, arg1),
+      parseSuccessData: _wire2api_u32,
+      constMeta: kSumStaticStaticMethodSumWithConstMeta,
+      argValues: [x, y],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSumStaticStaticMethodSumWithConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sum_static__static_method__SumWith",
+        argNames: ["x", "y"],
+      );
+
   void dispose() {
     _platform.dispose();
   }
@@ -289,12 +340,20 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
     );
   }
 
+  int _wire2api_u32(dynamic raw) {
+    return raw as int;
+  }
+
   int _wire2api_u8(dynamic raw) {
     return raw as int;
   }
 
   Uint8List _wire2api_uint_8_list(dynamic raw) {
     return raw as Uint8List;
+  }
+
+  void _wire2api_unit(dynamic raw) {
+    return;
   }
 }
 
@@ -307,6 +366,11 @@ double api2wire_f64(double raw) {
 
 @protected
 int api2wire_i32(int raw) {
+  return raw;
+}
+
+@protected
+int api2wire_u32(int raw) {
   return raw;
 }
 
