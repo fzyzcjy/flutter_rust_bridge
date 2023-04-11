@@ -27,6 +27,7 @@ pub struct Opts {
     pub skip_deps_check: bool,
     pub wasm_enabled: bool,
     pub inline_rust: bool,
+    pub make_c_output_unique: bool,
 }
 
 impl Opts {

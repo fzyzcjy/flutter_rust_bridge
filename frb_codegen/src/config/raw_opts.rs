@@ -104,6 +104,12 @@ pub struct RawOpts {
     #[cfg(feature = "serde")]
     #[arg(long, value_enum, num_args(0..))]
     pub dump: Option<Vec<Dump>>,
+
+    /// Make the C output files have unique symbols.
+    /// This prevents the generated symbols from conflicting with
+    /// other projects.
+    #[arg(long)]
+    pub make_c_output_unique: bool,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Copy, Deserialize, ValueEnum, enum_iterator::Sequence)]
