@@ -82,7 +82,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 )
             })
             .collect::<Vec<_>>();
-        if has_methods {
+        if has_methods && !self.context.config.no_use_bridge_in_method {
             inner.insert(0, "bridge: this,".to_string());
         }
 
@@ -138,11 +138,19 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             })
             .collect::<Vec<_>>()
             .concat();
-        let extra_argument = "required this.bridge,".to_string();
-        let field_bridge = format!(
-            "final {} bridge;",
-            self.context.config.dart_api_class_name(),
-        );
+        let extra_argument = if self.context.config.no_use_bridge_in_method {
+            "".to_string()
+        } else {
+            "required this.bridge,".to_string()
+        };
+        let field_bridge = if self.context.config.no_use_bridge_in_method {
+            String::new()
+        } else {
+            format!(
+                "final {} bridge;",
+                self.context.config.dart_api_class_name(),
+            )
+        };
         if src.using_freezed() {
             let mut constructor_params = src
                 .fields
@@ -262,7 +270,7 @@ fn generate_api_method(
         })
         .collect::<Vec<_>>();
 
-    if f.is_static_method() {
+    if f.is_static_method() && !config.no_use_bridge_in_method {
         raw_func_param_list.insert(0, format!("required {dart_api_class_name} bridge"));
     }
 
@@ -300,14 +308,16 @@ fn generate_api_method(
         arg_names.push("hint: hint".to_string());
         let arg_names = arg_names.concat();
         format!(
-            "bridge.{}({})",
+            "{}.{}({})",
+            config.get_dart_api_bridge_name(),
             func.name.clone().to_case(Case::Camel),
             arg_names
         )
     } else {
         let arg_names = arg_names.concat();
         format!(
-            "bridge.{}({}: this, {})",
+            "{}.{}({}: this, {})",
+            config.get_dart_api_bridge_name(),
             func.name.clone().to_case(Case::Camel),
             func.inputs[0].name.dart_style(),
             arg_names

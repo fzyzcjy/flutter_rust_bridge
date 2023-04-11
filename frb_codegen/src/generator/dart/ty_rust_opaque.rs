@@ -31,10 +31,14 @@ impl TypeDartGeneratorTrait for TypeRustOpaqueGenerator<'_> {
     }
 
     fn structs(&self) -> String {
-        let field_bridge = format!(
-            "final {} bridge;",
-            self.context.config.dart_api_class_name(),
-        );
+        let field_bridge = if self.context.config.no_use_bridge_in_method {
+            String::new()
+        } else {
+            format!(
+                "final {} bridge;",
+                self.context.config.dart_api_class_name(),
+            )
+        };
         format!(
             "@sealed class {0} extends FrbOpaque {{
                 {field_bridge}

@@ -79,6 +79,11 @@ pub struct RawOpts {
     #[serde(default)]
     pub no_build_runner: bool,
 
+    /// No use bridge in Model
+    #[arg(long)]
+    #[serde(default)]
+    pub no_use_bridge_in_method: bool,
+
     /// Show debug messages.
     #[arg(short, long)]
     #[serde(default)]

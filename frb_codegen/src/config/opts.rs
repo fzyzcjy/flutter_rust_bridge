@@ -2,6 +2,7 @@ use crate::ir::IrFile;
 use crate::parser;
 use crate::utils::misc::BlockIndex;
 use anyhow::{Context, Result};
+use convert_case::{Case, Casing};
 use std::fs;
 use std::path::{Path, PathBuf};
 
@@ -27,6 +28,7 @@ pub struct Opts {
     pub skip_deps_check: bool,
     pub wasm_enabled: bool,
     pub inline_rust: bool,
+    pub no_use_bridge_in_method: bool,
 }
 
 impl Opts {
@@ -127,6 +129,19 @@ impl Opts {
             base_path: PathBuf::from(self.dart_output_path.clone()),
             io_path: self.dart_io_output_path(),
             wasm_path: self.dart_wasm_output_path(),
+        }
+    }
+    pub fn get_dart_api_bridge_name(&self) -> String {
+        if self.no_use_bridge_in_method {
+            Path::new(&self.rust_input_path)
+                .file_stem()
+                .unwrap()
+                .to_str()
+                .unwrap()
+                .to_owned()
+                .to_case(Case::Camel)
+        } else {
+            "bridge".to_owned()
         }
     }
 }
