@@ -1,5 +1,6 @@
 use cargo_metadata::VersionReq;
 use lazy_static::lazy_static;
+use regex::Regex;
 use std::fmt::Write;
 use std::path::Path;
 use std::path::PathBuf;
@@ -77,6 +78,9 @@ fn cbindgen(
         "execute cbindgen rust_crate_dir={} c_output_path={}",
         rust_crate_dir, c_output_path
     );
+
+    let prefix = "HelloWorld_".to_string();
+
     let config = cbindgen::Config {
         language: cbindgen::Language::C,
         sys_includes: vec![
@@ -87,13 +91,15 @@ fn cbindgen(
         no_includes: true,
         // copied from: dart-sdk/dart_api.h
         // used to convert Dart_Handle to Object.
-        after_includes: Some("typedef struct _Dart_Handle* Dart_Handle;".to_owned()),
+        after_includes: Some(format!("typedef struct _Dart_Handle* {prefix}_Dart_Handle;")),
         export: cbindgen::ExportConfig {
             include: c_struct_names
                 .iter()
                 .map(|name| format!("\"{name}\""))
                 .collect(),
             exclude: exclude_symbols,
+            // This doesn't work for functions.
+            prefix: Some(prefix.clone()),
             ..Default::default()
         },
         ..Default::default()
@@ -112,6 +118,12 @@ fn cbindgen(
     }
 
     if cbindgen::generate_with_config(path, config)?.write_to_file(c_output_path) {
+        let generated = std::fs::read_to_string(c_output_path)?;
+        // This regex matches anything that needs to be prefixed.
+        let regex = Regex::new(r"([\d\w]+ \*?)([\d\w]+)(\([\d\w\s*,]*\);)")?;
+        let prefixed = regex.replace_all(&generated, format!("${{1}}{prefix}${{2}}${{3}}"));
+        std::fs::write(c_output_path, prefixed.to_string())?;
+
         Ok(())
     } else {
         Err(Error::string("cbindgen failed writing file").into())
