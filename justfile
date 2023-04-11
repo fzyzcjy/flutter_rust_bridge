@@ -141,7 +141,7 @@ _rust_linter_wasm:
 
 default_line_length := "120"
 
-dart_linter mode="fix":
+dart_linter mode="default":
     just dart_pub_get
 
     just _dart_linter_single {{mode}} frb_dart dart 80
@@ -208,7 +208,12 @@ serve *args:
 
 # ============================ precommit ============================
 
-precommit: dart_pub_get generate_all rust_linter dart_linter
+precommit:
+  just dart_pub_get
+  just generate_all
+  just rust_linter
+  just dart_linter mode=fix
+
 
 # ============================ releasing new versions ============================
 
