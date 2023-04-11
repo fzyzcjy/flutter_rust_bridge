@@ -105,7 +105,12 @@ mod tests {
 
         let status = Command::new("dart")
             .arg("../frb_example/pure_dart/dart/lib/main.dart")
-            .arg("../target/debug/libflutter_rust_bridge_example.so")
+            .arg(
+                #[cfg(target_os = "macos")]
+                "../target/debug/libflutter_rust_bridge_example_pure_dart.dylib",
+                #[cfg(target_os = "linux")]
+                "../target/debug/libflutter_rust_bridge_example_pure_dart.so",
+            )
             .spawn()
             .expect("failed to execute pure_dart")
             .wait()
@@ -113,7 +118,7 @@ mod tests {
         assert!(status.success(), "pure_dart failed");
     }
 
-    /// See the documentation for the `pure_dart` test
+    //// See the documentation for the `pure_dart` test
     #[test]
     fn pure_dart_multi() {
         use std::process::Command;
@@ -189,7 +194,12 @@ mod tests {
 
         let status = Command::new("dart")
             .arg("../frb_example/pure_dart_multi/dart/lib/main.dart")
-            .arg("../target/debug/libflutter_rust_bridge_example_multi.so")
+            .arg(
+                #[cfg(target_os = "macos")]
+                "../target/debug/libflutter_rust_bridge_example_multi.dylib",
+                #[cfg(target_os = "linux")]
+                "../target/debug/libflutter_rust_bridge_example_multi.so",
+            )
             .spawn()
             .expect("failed to execute pure_dart")
             .wait()
