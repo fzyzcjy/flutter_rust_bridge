@@ -124,14 +124,23 @@ impl IrFile {
     ) -> HashSet<IrType> {
         assert!(!(!include_func_inputs && !include_func_output));
         assert!(!self.shared);
-        let mut ans = HashSet::new();
+        let mut seen_idents = HashSet::new();
+        let mut ans = Vec::new();
         self.visit_types(
-            &mut |ty| !ans.insert(ty.clone()),
+            &mut |ty| {
+                let ident = ty.safe_ident();
+                let contains = seen_idents.contains(&ident);
+                if !contains {
+                    seen_idents.insert(ident);
+                    ans.push(ty.clone());
+                }
+                contains
+            },
             include_func_inputs,
             include_func_output,
         );
-        log::debug!("the set ans len: {} is: {:?}", ans.len(), ans); //TODO: delete
-        ans
+
+        ans.into_iter().collect::<HashSet<_>>()
     }
 
     /// Whatever this IrFile instance represents for, get shared types through `all_configs`, which

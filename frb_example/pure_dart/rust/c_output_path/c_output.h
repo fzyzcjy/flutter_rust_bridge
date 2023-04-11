@@ -969,10 +969,6 @@ void drop_opaque_HideData(const void *ptr);
 
 const void *share_opaque_HideData(const void *ptr);
 
-void drop_opaque_HideData(const void *ptr);
-
-const void *share_opaque_HideData(const void *ptr);
-
 void drop_opaque_I32(const void *ptr);
 
 const void *share_opaque_I32(const void *ptr);
@@ -980,10 +976,6 @@ const void *share_opaque_I32(const void *ptr);
 void drop_opaque_MutexHideData(const void *ptr);
 
 const void *share_opaque_MutexHideData(const void *ptr);
-
-void drop_opaque_NonSendHideData(const void *ptr);
-
-const void *share_opaque_NonSendHideData(const void *ptr);
 
 void drop_opaque_NonSendHideData(const void *ptr);
 
@@ -1279,14 +1271,10 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) share_opaque_FrbOpaqueSyncReturn);
     dummy_var ^= ((int64_t) (void*) drop_opaque_HideData);
     dummy_var ^= ((int64_t) (void*) share_opaque_HideData);
-    dummy_var ^= ((int64_t) (void*) drop_opaque_HideData);
-    dummy_var ^= ((int64_t) (void*) share_opaque_HideData);
     dummy_var ^= ((int64_t) (void*) drop_opaque_I32);
     dummy_var ^= ((int64_t) (void*) share_opaque_I32);
     dummy_var ^= ((int64_t) (void*) drop_opaque_MutexHideData);
     dummy_var ^= ((int64_t) (void*) share_opaque_MutexHideData);
-    dummy_var ^= ((int64_t) (void*) drop_opaque_NonSendHideData);
-    dummy_var ^= ((int64_t) (void*) share_opaque_NonSendHideData);
     dummy_var ^= ((int64_t) (void*) drop_opaque_NonSendHideData);
     dummy_var ^= ((int64_t) (void*) share_opaque_NonSendHideData);
     dummy_var ^= ((int64_t) (void*) drop_opaque_RwLockHideData);

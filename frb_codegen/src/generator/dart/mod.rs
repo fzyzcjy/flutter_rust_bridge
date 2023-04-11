@@ -387,32 +387,35 @@ fn generate_dart_implementation_body(
         common: {
             let implement = &dart_api_impl_class_name;
             let plat = &dart_platform_class_name;
-            let mut basic_code = if shared_config.is_none() || config.shared{
-                format!(
-                    "class {implement} implements {dart_api_class_name} {{
-                        final {plat} _platform;
-                        factory {implement}(ExternalLibrary dylib) => {implement}.raw({plat}(dylib));
-                        {implement}.raw(this._platform);"
-                )
-            }else{
-                let shared_config = shared_config.unwrap();
-                let shared_impl = shared_config.dart_api_impl_class_name();
-                let shared_plat = shared_config.dart_platform_class_name();
-                format!(
-                    "class {implement} implements {dart_api_class_name} {{
-                        final {plat} _platform;
-                        final {shared_plat} _sharedPlatform;
-                        final {shared_impl} _sharedImpl;
+            let mut basic_code = match shared_config.is_none() || config.shared {
+                true => {
+                    format!(
+                        "class {implement} implements {dart_api_class_name} {{
+                            final {plat} _platform;
+                            factory {implement}(ExternalLibrary dylib) => {implement}.raw({plat}(dylib));
+                            {implement}.raw(this._platform);"
+                    )
+                },
+                false => {
+                    let shared_config = shared_config.unwrap();
+                    let shared_impl = shared_config.dart_api_impl_class_name();
+                    let shared_plat = shared_config.dart_platform_class_name();
+                    format!(
+                        "class {implement} implements {dart_api_class_name} {{
+                            final {plat} _platform;
+                            final {shared_plat} _sharedPlatform;
+                            final {shared_impl} _sharedImpl;
 
-                        factory {implement}(ExternalLibrary dylib) {{
-                            final platform = {plat}(dylib);
-                            final sharedPlatform = {shared_plat}(dylib);
-                            final sharedImpl = {shared_impl}(dylib);
-                            return {implement}.raw(platform, sharedPlatform,sharedImpl);
-                        }}
+                            factory {implement}(ExternalLibrary dylib) {{
+                                final platform = {plat}(dylib);
+                                final sharedPlatform = {shared_plat}(dylib);
+                                final sharedImpl = {shared_impl}(dylib);
+                                return {implement}.raw(platform, sharedPlatform,sharedImpl);
+                            }}
 
-                     {implement}.raw(this._platform, this._sharedPlatform, this._sharedImpl);"
-                )
+                         {implement}.raw(this._platform, this._sharedPlatform, this._sharedImpl);"
+                    )
+                },
             };
             let wasm_factory_code = &format!("/// Only valid on web/WASM platforms.
                                                      factory {implement}.wasm(FutureOr<WasmModule> module) =>
@@ -423,11 +426,13 @@ fn generate_dart_implementation_body(
         io: {
             let plat = &dart_platform_class_name;
             let wire = &dart_wire_class_name;
-            let (shared_definition, shared_initialization) = if shared_config.is_none() || config.shared{
-                ("".to_string(), "".to_string())
-            }else{
-                let shared_plat = shared_config.unwrap().dart_platform_class_name();
-                (format!("final {} _sharedPlatform;", shared_plat), format!("_sharedPlatform = {}(dylib),", shared_plat))
+            let (shared_definition, shared_initialization) =
+            match shared_config.is_none() || config.shared{
+                true => ("".to_string(), "".to_string()),
+                false => {
+                    let shared_plat = shared_config.unwrap().dart_platform_class_name();
+                    (format!("final {} _sharedPlatform;", shared_plat), format!("_sharedPlatform = {}(dylib),", shared_plat))
+                },
             };
             format!(
                 "class {plat} extends FlutterRustBridgeBase<{wire}> {{
@@ -439,11 +444,12 @@ fn generate_dart_implementation_body(
             let plat = &dart_platform_class_name;
             let wire = &dart_wire_class_name;
             let (shared_definition, shared_initialization) =
-            if shared_config.is_none() || config.shared{
-                ("".to_string(), "".to_string())
-            }else{
-                let shared_plat = shared_config.unwrap().dart_platform_class_name();
-                (format!("final {} _sharedPlatform;", shared_plat), format!("_sharedPlatform = {}(dylib),", shared_plat))
+            match shared_config.is_none() || config.shared{
+                true => ("".to_string(), "".to_string()),
+                false => {
+                    let shared_plat = shared_config.unwrap().dart_platform_class_name();
+                    (format!("final {} _sharedPlatform;", shared_plat), format!("_sharedPlatform = {}(dylib),", shared_plat))
+                }
             };
 
             format!(

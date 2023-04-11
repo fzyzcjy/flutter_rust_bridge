@@ -2583,10 +2583,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   ShareFnType get shareOpaqueHideData => _platform.inner.share_opaque_HideData;
   OpaqueTypeFinalizer get HideDataFinalizer => _platform.HideDataFinalizer;
 
-  DropFnType get dropOpaqueHideData => _platform.inner.drop_opaque_HideData;
-  ShareFnType get shareOpaqueHideData => _platform.inner.share_opaque_HideData;
-  OpaqueTypeFinalizer get HideDataFinalizer => _platform.HideDataFinalizer;
-
   DropFnType get dropOpaqueI32 => _platform.inner.drop_opaque_I32;
   ShareFnType get shareOpaqueI32 => _platform.inner.share_opaque_I32;
   OpaqueTypeFinalizer get I32Finalizer => _platform.I32Finalizer;
@@ -2594,10 +2590,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   DropFnType get dropOpaqueMutexHideData => _platform.inner.drop_opaque_MutexHideData;
   ShareFnType get shareOpaqueMutexHideData => _platform.inner.share_opaque_MutexHideData;
   OpaqueTypeFinalizer get MutexHideDataFinalizer => _platform.MutexHideDataFinalizer;
-
-  DropFnType get dropOpaqueNonSendHideData => _platform.inner.drop_opaque_NonSendHideData;
-  ShareFnType get shareOpaqueNonSendHideData => _platform.inner.share_opaque_NonSendHideData;
-  OpaqueTypeFinalizer get NonSendHideDataFinalizer => _platform.NonSendHideDataFinalizer;
 
   DropFnType get dropOpaqueNonSendHideData => _platform.inner.drop_opaque_NonSendHideData;
   ShareFnType get shareOpaqueNonSendHideData => _platform.inner.share_opaque_NonSendHideData;
@@ -2644,10 +2636,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.inner.get_dart_object(raw);
   }
 
-  Object _wire2api_DartOpaque(dynamic raw) {
-    return _platform.inner.get_dart_object(raw);
-  }
-
   EnumOpaqueArray5 _wire2api_EnumOpaque_array_5(dynamic raw) {
     return EnumOpaqueArray5((raw as List<dynamic>).map(_wire2api_enum_opaque).toList());
   }
@@ -2658,10 +2646,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   FrbOpaqueSyncReturn _wire2api_FrbOpaqueSyncReturn(dynamic raw) {
     return FrbOpaqueSyncReturn.fromRaw(raw[0], raw[1], this);
-  }
-
-  HideData _wire2api_HideData(dynamic raw) {
-    return HideData.fromRaw(raw[0], raw[1], this);
   }
 
   HideData _wire2api_HideData(dynamic raw) {
@@ -2684,10 +2668,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return NonSendHideData.fromRaw(raw[0], raw[1], this);
   }
 
-  NonSendHideData _wire2api_NonSendHideData(dynamic raw) {
-    return NonSendHideData.fromRaw(raw[0], raw[1], this);
-  }
-
   ObjectArray1 _wire2api_Object_array_1(dynamic raw) {
     return ObjectArray1((raw as List<dynamic>).map(_wire2api_DartOpaque).toList());
   }
@@ -2702,14 +2682,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   String _wire2api_String(dynamic raw) {
     return raw as String;
-  }
-
-  String _wire2api_String(dynamic raw) {
-    return raw as String;
-  }
-
-  List<String> _wire2api_StringList(dynamic raw) {
-    return (raw as List<dynamic>).cast<String>();
   }
 
   List<String> _wire2api_StringList(dynamic raw) {
@@ -3187,10 +3159,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return raw as int;
   }
 
-  int _wire2api_i32(dynamic raw) {
-    return raw as int;
-  }
-
   I32Array2 _wire2api_i32_array_2(dynamic raw) {
     return I32Array2(_wire2api_int_32_list(raw));
   }
@@ -3274,10 +3242,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   List<EnumOpaque> _wire2api_list_enum_opaque(dynamic raw) {
     return (raw as List<dynamic>).map(_wire2api_enum_opaque).toList();
-  }
-
-  List<MySize> _wire2api_list_my_size(dynamic raw) {
-    return (raw as List<dynamic>).map(_wire2api_my_size).toList();
   }
 
   List<MySize> _wire2api_list_my_size(dynamic raw) {
@@ -3398,15 +3362,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     );
   }
 
-  MySize _wire2api_my_size(dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-    return MySize(
-      width: _wire2api_i32(arr[0]),
-      height: _wire2api_i32(arr[1]),
-    );
-  }
-
   MyStreamEntry _wire2api_my_stream_entry(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
@@ -3434,17 +3389,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     );
   }
 
-  MyTreeNode _wire2api_my_tree_node(dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
-    return MyTreeNode(
-      valueI32: _wire2api_i32(arr[0]),
-      valueVecU8: _wire2api_uint_8_list(arr[1]),
-      valueBoolean: _wire2api_bool(arr[2]),
-      children: _wire2api_list_my_tree_node(arr[3]),
-    );
-  }
-
   NestedRawStringMirrored _wire2api_nested_raw_string_mirrored(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
@@ -3458,14 +3402,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return NewSimpleStruct(
       field: _wire2api_i32(arr[0]),
-    );
-  }
-
-  NewTypeInt _wire2api_new_type_int(dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return NewTypeInt(
-      field0: _wire2api_i64(arr[0]),
     );
   }
 
@@ -3506,10 +3442,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return raw == null ? null : _wire2api_String(raw);
   }
 
-  String? _wire2api_opt_String(dynamic raw) {
-    return raw == null ? null : _wire2api_String(raw);
-  }
-
   Uint8List? _wire2api_opt_ZeroCopyBuffer_Uint8List(dynamic raw) {
     return raw == null ? null : _wire2api_ZeroCopyBuffer_Uint8List(raw);
   }
@@ -3528,14 +3460,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   Object? _wire2api_opt_box_autoadd_DartOpaque(dynamic raw) {
     return raw == null ? null : _wire2api_box_autoadd_DartOpaque(raw);
-  }
-
-  Object? _wire2api_opt_box_autoadd_DartOpaque(dynamic raw) {
-    return raw == null ? null : _wire2api_box_autoadd_DartOpaque(raw);
-  }
-
-  HideData? _wire2api_opt_box_autoadd_HideData(dynamic raw) {
-    return raw == null ? null : _wire2api_box_autoadd_HideData(raw);
   }
 
   HideData? _wire2api_opt_box_autoadd_HideData(dynamic raw) {
@@ -3729,10 +3653,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return raw as int;
   }
 
-  int _wire2api_u32(dynamic raw) {
-    return raw as int;
-  }
-
   int _wire2api_u64(dynamic raw) {
     return castInt(raw);
   }
@@ -3773,14 +3693,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return raw as Uint8List;
   }
 
-  Uint8List _wire2api_uint_8_list(dynamic raw) {
-    return raw as Uint8List;
-  }
-
-  void _wire2api_unit(dynamic raw) {
-    return;
-  }
-
   void _wire2api_unit(dynamic raw) {
     return;
   }
@@ -3814,42 +3726,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     );
   }
 
-  VecOfPrimitivePack _wire2api_vec_of_primitive_pack(dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 10) throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
-    return VecOfPrimitivePack(
-      int8List: _wire2api_int_8_list(arr[0]),
-      uint8List: _wire2api_uint_8_list(arr[1]),
-      int16List: _wire2api_int_16_list(arr[2]),
-      uint16List: _wire2api_uint_16_list(arr[3]),
-      uint32List: _wire2api_uint_32_list(arr[4]),
-      int32List: _wire2api_int_32_list(arr[5]),
-      uint64List: _wire2api_uint_64_list(arr[6]),
-      int64List: _wire2api_int_64_list(arr[7]),
-      float32List: _wire2api_float_32_list(arr[8]),
-      float64List: _wire2api_float_64_list(arr[9]),
-    );
-  }
-
   Weekdays _wire2api_weekdays(dynamic raw) {
     return Weekdays.values[raw];
-  }
-
-  ZeroCopyVecOfPrimitivePack _wire2api_zero_copy_vec_of_primitive_pack(dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 10) throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
-    return ZeroCopyVecOfPrimitivePack(
-      int8List: _wire2api_ZeroCopyBuffer_Int8List(arr[0]),
-      uint8List: _wire2api_ZeroCopyBuffer_Uint8List(arr[1]),
-      int16List: _wire2api_ZeroCopyBuffer_Int16List(arr[2]),
-      uint16List: _wire2api_ZeroCopyBuffer_Uint16List(arr[3]),
-      uint32List: _wire2api_ZeroCopyBuffer_Uint32List(arr[4]),
-      int32List: _wire2api_ZeroCopyBuffer_Int32List(arr[5]),
-      uint64List: _wire2api_ZeroCopyBuffer_Uint64List(arr[6]),
-      int64List: _wire2api_ZeroCopyBuffer_Int64List(arr[7]),
-      float32List: _wire2api_ZeroCopyBuffer_Float32List(arr[8]),
-      float64List: _wire2api_ZeroCopyBuffer_Float64List(arr[9]),
-    );
   }
 
   ZeroCopyVecOfPrimitivePack _wire2api_zero_copy_vec_of_primitive_pack(dynamic raw) {

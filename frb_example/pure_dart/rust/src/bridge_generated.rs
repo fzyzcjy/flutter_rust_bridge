@@ -2917,13 +2917,6 @@ impl support::IntoDart for MySize {
 }
 impl support::IntoDartExceptPrimitive for MySize {}
 
-impl support::IntoDart for MySize {
-    fn into_dart(self) -> support::DartAbi {
-        vec![self.width.into_dart(), self.height.into_dart()].into_dart()
-    }
-}
-impl support::IntoDartExceptPrimitive for MySize {}
-
 impl support::IntoDart for MyStreamEntry {
     fn into_dart(self) -> support::DartAbi {
         vec![self.hello.into_dart()].into_dart()
@@ -2951,19 +2944,6 @@ impl support::IntoDart for MyTreeNode {
 }
 impl support::IntoDartExceptPrimitive for MyTreeNode {}
 
-impl support::IntoDart for MyTreeNode {
-    fn into_dart(self) -> support::DartAbi {
-        vec![
-            self.value_i32.into_dart(),
-            self.value_vec_u8.into_dart(),
-            self.value_boolean.into_dart(),
-            self.children.into_dart(),
-        ]
-        .into_dart()
-    }
-}
-impl support::IntoDartExceptPrimitive for MyTreeNode {}
-
 impl support::IntoDart for mirror_NestedRawStringMirrored {
     fn into_dart(self) -> support::DartAbi {
         vec![mirror_RawStringMirrored(self.0.raw).into_dart()].into_dart()
@@ -2977,13 +2957,6 @@ impl support::IntoDart for NewSimpleStruct {
     }
 }
 impl support::IntoDartExceptPrimitive for NewSimpleStruct {}
-
-impl support::IntoDart for NewTypeInt {
-    fn into_dart(self) -> support::DartAbi {
-        vec![self.0.into_dart()].into_dart()
-    }
-}
-impl support::IntoDartExceptPrimitive for NewTypeInt {}
 
 impl support::IntoDart for NewTypeInt {
     fn into_dart(self) -> support::DartAbi {
@@ -3135,25 +3108,6 @@ impl support::IntoDart for VecOfPrimitivePack {
 }
 impl support::IntoDartExceptPrimitive for VecOfPrimitivePack {}
 
-impl support::IntoDart for VecOfPrimitivePack {
-    fn into_dart(self) -> support::DartAbi {
-        vec![
-            self.int8list.into_dart(),
-            self.uint8list.into_dart(),
-            self.int16list.into_dart(),
-            self.uint16list.into_dart(),
-            self.uint32list.into_dart(),
-            self.int32list.into_dart(),
-            self.uint64list.into_dart(),
-            self.int64list.into_dart(),
-            self.float32list.into_dart(),
-            self.float64list.into_dart(),
-        ]
-        .into_dart()
-    }
-}
-impl support::IntoDartExceptPrimitive for VecOfPrimitivePack {}
-
 impl support::IntoDart for Weekdays {
     fn into_dart(self) -> support::DartAbi {
         match self {
@@ -3169,25 +3123,6 @@ impl support::IntoDart for Weekdays {
     }
 }
 impl support::IntoDartExceptPrimitive for Weekdays {}
-impl support::IntoDart for ZeroCopyVecOfPrimitivePack {
-    fn into_dart(self) -> support::DartAbi {
-        vec![
-            self.int8list.into_dart(),
-            self.uint8list.into_dart(),
-            self.int16list.into_dart(),
-            self.uint16list.into_dart(),
-            self.uint32list.into_dart(),
-            self.int32list.into_dart(),
-            self.uint64list.into_dart(),
-            self.int64list.into_dart(),
-            self.float32list.into_dart(),
-            self.float64list.into_dart(),
-        ]
-        .into_dart()
-    }
-}
-impl support::IntoDartExceptPrimitive for ZeroCopyVecOfPrimitivePack {}
-
 impl support::IntoDart for ZeroCopyVecOfPrimitivePack {
     fn into_dart(self) -> support::DartAbi {
         vec![

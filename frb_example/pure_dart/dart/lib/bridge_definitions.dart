@@ -692,10 +692,6 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   ShareFnType get shareOpaqueHideData;
   OpaqueTypeFinalizer get HideDataFinalizer;
 
-  DropFnType get dropOpaqueHideData;
-  ShareFnType get shareOpaqueHideData;
-  OpaqueTypeFinalizer get HideDataFinalizer;
-
   DropFnType get dropOpaqueI32;
   ShareFnType get shareOpaqueI32;
   OpaqueTypeFinalizer get I32Finalizer;
@@ -703,10 +699,6 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   DropFnType get dropOpaqueMutexHideData;
   ShareFnType get shareOpaqueMutexHideData;
   OpaqueTypeFinalizer get MutexHideDataFinalizer;
-
-  DropFnType get dropOpaqueNonSendHideData;
-  ShareFnType get shareOpaqueNonSendHideData;
-  OpaqueTypeFinalizer get NonSendHideDataFinalizer;
 
   DropFnType get dropOpaqueNonSendHideData;
   ShareFnType get shareOpaqueNonSendHideData;
@@ -782,20 +774,6 @@ class HideData extends FrbOpaque {
   OpaqueTypeFinalizer get staticFinalizer => bridge.HideDataFinalizer;
 }
 
-@sealed
-class HideData extends FrbOpaque {
-  final FlutterRustBridgeExampleSingleBlockTest bridge;
-  HideData.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
-  @override
-  DropFnType get dropFn => bridge.dropOpaqueHideData;
-
-  @override
-  ShareFnType get shareFn => bridge.shareOpaqueHideData;
-
-  @override
-  OpaqueTypeFinalizer get staticFinalizer => bridge.HideDataFinalizer;
-}
-
 class HideDataArray2 extends NonGrowableListView<HideData> {
   static const arraySize = 2;
   HideDataArray2(List<HideData> inner)
@@ -831,20 +809,6 @@ class MutexHideData extends FrbOpaque {
 
   @override
   OpaqueTypeFinalizer get staticFinalizer => bridge.MutexHideDataFinalizer;
-}
-
-@sealed
-class NonSendHideData extends FrbOpaque {
-  final FlutterRustBridgeExampleSingleBlockTest bridge;
-  NonSendHideData.fromRaw(int ptr, int size, this.bridge) : super.unsafe(ptr, size);
-  @override
-  DropFnType get dropFn => bridge.dropOpaqueNonSendHideData;
-
-  @override
-  ShareFnType get shareFn => bridge.shareOpaqueNonSendHideData;
-
-  @override
-  OpaqueTypeFinalizer get staticFinalizer => bridge.NonSendHideDataFinalizer;
 }
 
 @sealed
@@ -1378,16 +1342,6 @@ class MySize {
   });
 }
 
-class MySize {
-  final int width;
-  final int height;
-
-  const MySize({
-    required this.width,
-    required this.height,
-  });
-}
-
 class MyStreamEntry {
   final String hello;
 
@@ -1418,20 +1372,6 @@ class MyTreeNode {
   });
 }
 
-class MyTreeNode {
-  final int valueI32;
-  final Uint8List valueVecU8;
-  final bool valueBoolean;
-  final List<MyTreeNode> children;
-
-  const MyTreeNode({
-    required this.valueI32,
-    required this.valueVecU8,
-    required this.valueBoolean,
-    required this.children,
-  });
-}
-
 class NestedRawStringMirrored {
   final RawStringMirrored raw;
 
@@ -1445,14 +1385,6 @@ class NewSimpleStruct {
 
   const NewSimpleStruct({
     required this.field,
-  });
-}
-
-class NewTypeInt {
-  final int field0;
-
-  const NewTypeInt({
-    required this.field0,
   });
 }
 
@@ -1677,32 +1609,6 @@ class VecOfPrimitivePack {
   });
 }
 
-class VecOfPrimitivePack {
-  final Int8List int8List;
-  final Uint8List uint8List;
-  final Int16List int16List;
-  final Uint16List uint16List;
-  final Uint32List uint32List;
-  final Int32List int32List;
-  final Uint64List uint64List;
-  final Int64List int64List;
-  final Float32List float32List;
-  final Float64List float64List;
-
-  const VecOfPrimitivePack({
-    required this.int8List,
-    required this.uint8List,
-    required this.int16List,
-    required this.uint16List,
-    required this.uint32List,
-    required this.int32List,
-    required this.uint64List,
-    required this.int64List,
-    required this.float32List,
-    required this.float64List,
-  });
-}
-
 /// Simple enums.
 enum Weekdays {
   monday,
@@ -1714,32 +1620,6 @@ enum Weekdays {
   /// Best day of the week.
   saturday,
   sunday,
-}
-
-class ZeroCopyVecOfPrimitivePack {
-  final Int8List int8List;
-  final Uint8List uint8List;
-  final Int16List int16List;
-  final Uint16List uint16List;
-  final Uint32List uint32List;
-  final Int32List int32List;
-  final Uint64List uint64List;
-  final Int64List int64List;
-  final Float32List float32List;
-  final Float64List float64List;
-
-  const ZeroCopyVecOfPrimitivePack({
-    required this.int8List,
-    required this.uint8List,
-    required this.int16List,
-    required this.uint16List,
-    required this.uint32List,
-    required this.int32List,
-    required this.uint64List,
-    required this.int64List,
-    required this.float32List,
-    required this.float64List,
-  });
 }
 
 class ZeroCopyVecOfPrimitivePack {

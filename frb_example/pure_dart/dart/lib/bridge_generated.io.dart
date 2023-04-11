@@ -812,14 +812,10 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   OpaqueTypeFinalizer get FrbOpaqueSyncReturnFinalizer => _FrbOpaqueSyncReturnFinalizer;
   late final OpaqueTypeFinalizer _HideDataFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_HideDataPtr);
   OpaqueTypeFinalizer get HideDataFinalizer => _HideDataFinalizer;
-  late final OpaqueTypeFinalizer _HideDataFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_HideDataPtr);
-  OpaqueTypeFinalizer get HideDataFinalizer => _HideDataFinalizer;
   late final OpaqueTypeFinalizer _I32Finalizer = OpaqueTypeFinalizer(inner._drop_opaque_I32Ptr);
   OpaqueTypeFinalizer get I32Finalizer => _I32Finalizer;
   late final OpaqueTypeFinalizer _MutexHideDataFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_MutexHideDataPtr);
   OpaqueTypeFinalizer get MutexHideDataFinalizer => _MutexHideDataFinalizer;
-  late final OpaqueTypeFinalizer _NonSendHideDataFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_NonSendHideDataPtr);
-  OpaqueTypeFinalizer get NonSendHideDataFinalizer => _NonSendHideDataFinalizer;
   late final OpaqueTypeFinalizer _NonSendHideDataFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_NonSendHideDataPtr);
   OpaqueTypeFinalizer get NonSendHideDataFinalizer => _NonSendHideDataFinalizer;
   late final OpaqueTypeFinalizer _RwLockHideDataFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_RwLockHideDataPtr);

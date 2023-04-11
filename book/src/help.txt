@@ -72,6 +72,9 @@ Options:
           
           [possible values: config, ir]
 
+  -s, --shared-rust-output <SHARED_RUST_OUTPUT>
+          
+
   -h, --help
           Print help (see a summary with '-h')
 

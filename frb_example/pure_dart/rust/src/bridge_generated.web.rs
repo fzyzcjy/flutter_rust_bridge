@@ -902,21 +902,6 @@ pub fn share_opaque_HideData(ptr: *const c_void) -> *const c_void {
 }
 
 #[wasm_bindgen]
-pub fn drop_opaque_HideData(ptr: *const c_void) {
-    unsafe {
-        Arc::<HideData>::decrement_strong_count(ptr as _);
-    }
-}
-
-#[wasm_bindgen]
-pub fn share_opaque_HideData(ptr: *const c_void) -> *const c_void {
-    unsafe {
-        Arc::<HideData>::increment_strong_count(ptr as _);
-        ptr
-    }
-}
-
-#[wasm_bindgen]
 pub fn drop_opaque_I32(ptr: *const c_void) {
     unsafe {
         Arc::<i32>::decrement_strong_count(ptr as _);
@@ -942,21 +927,6 @@ pub fn drop_opaque_MutexHideData(ptr: *const c_void) {
 pub fn share_opaque_MutexHideData(ptr: *const c_void) -> *const c_void {
     unsafe {
         Arc::<Mutex<HideData>>::increment_strong_count(ptr as _);
-        ptr
-    }
-}
-
-#[wasm_bindgen]
-pub fn drop_opaque_NonSendHideData(ptr: *const c_void) {
-    unsafe {
-        Arc::<NonSendHideData>::decrement_strong_count(ptr as _);
-    }
-}
-
-#[wasm_bindgen]
-pub fn share_opaque_NonSendHideData(ptr: *const c_void) -> *const c_void {
-    unsafe {
-        Arc::<NonSendHideData>::increment_strong_count(ptr as _);
         ptr
     }
 }
