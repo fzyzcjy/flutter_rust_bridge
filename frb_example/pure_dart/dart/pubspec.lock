@@ -205,10 +205,10 @@ packages:
     dependency: "direct dev"
     description:
       name: ffigen
-      sha256: "53f0fefd81be07f5722b71d3e1588e8a7cb9bcfd03d758319ea28e1eedb27296"
+      sha256: "94587f4c9699a4d0a25da95dc0b41903ddc69201d9bac3ca128ade8e67d56015"
       url: "https://pub.dev"
     source: hosted
-    version: "7.2.9"
+    version: "7.2.10"
   file:
     dependency: transitive
     description:
@@ -231,7 +231,7 @@ packages:
       path: "../../../frb_dart"
       relative: true
     source: path
-    version: "1.72.1"
+    version: "1.72.2"
   freezed:
     dependency: "direct dev"
     description:
