@@ -72,7 +72,7 @@ pub fn with_changed_file<F: FnOnce() -> anyhow::Result<()>>(
 fn check_for_keywords(v: &[String]) -> anyhow::Result<()> {
     if let Some(s) = v.iter().find(|s| DART_KEYWORDS.contains(&s.as_str())) {
         let err_msg = format!("Api name cannot be a dart keyword: {}", s);
-        log::error!("{}", err_msg);
+        log::warn!("{}", err_msg);
         return Err(anyhow!(err_msg));
     };
     Ok(())
@@ -134,7 +134,9 @@ pub fn get_symbols_if_no_duplicates(
 /// is returned.
 pub fn make_string_keyword_safe(input: String) -> String {
     if check_for_keywords(&[input.clone()]).is_err() {
-        input.to_case(Case::Pascal)
+        let new_name = input.to_case(Case::Pascal);
+        log::info!("convert `{input}` to Pascal style `{new_name}`"); //TODO: delete
+        new_name
     } else {
         input
     }
