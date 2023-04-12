@@ -2605,8 +2605,8 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event> i
 
 /// @nodoc
 
-class _$_Event implements _Event {
-  const _$_Event({required this.bridge, required this.address, required this.payload});
+class _$_Event extends _Event {
+  const _$_Event({required this.bridge, required this.address, required this.payload}) : super._();
 
   @override
   final FlutterRustBridgeExampleSingleBlockTest bridge;
@@ -2639,11 +2639,12 @@ class _$_Event implements _Event {
   _$$_EventCopyWith<_$_Event> get copyWith => __$$_EventCopyWithImpl<_$_Event>(this, _$identity);
 }
 
-abstract class _Event implements Event {
+abstract class _Event extends Event {
   const factory _Event(
       {required final FlutterRustBridgeExampleSingleBlockTest bridge,
       required final String address,
       required final String payload}) = _$_Event;
+  const _Event._() : super._();
 
   @override
   FlutterRustBridgeExampleSingleBlockTest get bridge;

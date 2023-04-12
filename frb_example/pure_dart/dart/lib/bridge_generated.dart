@@ -957,7 +957,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   Stream<Event> registerEventListener({dynamic hint}) {
     return _platform.executeStream(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_register_event_listener(port_),
-      parseSuccessData: _wire2api_event,
+      parseSuccessData: (d) => _wire2api_event(d),
       constMeta: kRegisterEventListenerConstMeta,
       argValues: [],
       hint: hint,
@@ -2422,6 +2422,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<String> asStringMethodEvent({required Event that, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_event(that);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_as_string__method__Event(port_, arg0),
+      parseSuccessData: _wire2api_String,
+      constMeta: kAsStringMethodEventConstMeta,
+      argValues: [that],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kAsStringMethodEventConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "as_string__method__Event",
+        argNames: ["that"],
+      );
+
   Future<int> sumMethodSumWith({required SumWith that, required int y, required int z, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_sum_with(that);
     var arg1 = api2wire_u32(y);
@@ -3091,6 +3107,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     final arr = raw as List<dynamic>;
     if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return Event(
+      bridge: this,
       address: _wire2api_String(arr[0]),
       payload: _wire2api_String(arr[1]),
     );
