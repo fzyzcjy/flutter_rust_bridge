@@ -11,6 +11,7 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
+  TEST_ON_RELEASE: true
 
 jobs:
   # -------------------------- test --------------------------
@@ -159,5 +160,8 @@ jobs:
       - uses: extractions/setup-just@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install released version of codegen
+        run: cargo install flutter_rust_bridge_codegen --features="chrono,uuid"
 
       - run: just ci_codegen

@@ -95,7 +95,11 @@ generate_book_help:
 generate_ffigen:
     cd frb_dart && dart run ffigen
 
-cargo_run_codegen := "cargo run --manifest-path frb_codegen/Cargo.toml --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --features 'chrono,uuid' -- "
+cargo_run_codegen := if env_var_or_default("TEST_ON_RELEASE", "false") == "true" {
+    "flutter_rust_bridge_codegen"
+} else {
+    "cargo run --manifest-path frb_codegen/Cargo.toml --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --features 'chrono,uuid' -- "
+}
 
 generate_bridge:
     just _generate_bridge_pure_dart
