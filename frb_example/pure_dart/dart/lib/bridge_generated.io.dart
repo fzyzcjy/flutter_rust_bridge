@@ -269,6 +269,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_Event> api2wire_box_autoadd_event(Event raw) {
+    final ptr = inner.new_box_autoadd_event_0();
+    _api_fill_to_wire_event(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_ExoticOptionals> api2wire_box_autoadd_exotic_optionals(ExoticOptionals raw) {
     final ptr = inner.new_box_autoadd_exotic_optionals_0();
     _api_fill_to_wire_exotic_optionals(raw, ptr.ref);
@@ -979,6 +986,10 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     _api_fill_to_wire_enum_opaque(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_event(Event apiObj, ffi.Pointer<wire_Event> wireObj) {
+    _api_fill_to_wire_event(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_exotic_optionals(
       ExoticOptionals apiObj, ffi.Pointer<wire_ExoticOptionals> wireObj) {
     _api_fill_to_wire_exotic_optionals(apiObj, wireObj.ref);
@@ -1171,6 +1182,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       wireObj.kind.ref.RwLock.ref.field0 = pre_field0;
       return;
     }
+  }
+
+  void _api_fill_to_wire_event(Event apiObj, wire_Event wireObj) {
+    wireObj.address = api2wire_String(apiObj.address);
+    wireObj.payload = api2wire_String(apiObj.payload);
   }
 
   void _api_fill_to_wire_exotic_optionals(ExoticOptionals apiObj, wire_ExoticOptionals wireObj) {
@@ -3578,6 +3594,22 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_test_contains_mirrored_sub_struct =
       _wire_test_contains_mirrored_sub_structPtr.asFunction<void Function(int)>();
 
+  void wire_as_string__method__Event(
+    int port_,
+    ffi.Pointer<wire_Event> that,
+  ) {
+    return _wire_as_string__method__Event(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_as_string__method__EventPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_Event>)>>(
+          'wire_as_string__method__Event');
+  late final _wire_as_string__method__Event =
+      _wire_as_string__method__EventPtr.asFunction<void Function(int, ffi.Pointer<wire_Event>)>();
+
   void wire_sum__method__SumWith(
     int port_,
     ffi.Pointer<wire_SumWith> that,
@@ -3952,6 +3984,14 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_EnumOpaque> Function()>>('new_box_autoadd_enum_opaque_0');
   late final _new_box_autoadd_enum_opaque_0 =
       _new_box_autoadd_enum_opaque_0Ptr.asFunction<ffi.Pointer<wire_EnumOpaque> Function()>();
+
+  ffi.Pointer<wire_Event> new_box_autoadd_event_0() {
+    return _new_box_autoadd_event_0();
+  }
+
+  late final _new_box_autoadd_event_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Event> Function()>>('new_box_autoadd_event_0');
+  late final _new_box_autoadd_event_0 = _new_box_autoadd_event_0Ptr.asFunction<ffi.Pointer<wire_Event> Function()>();
 
   ffi.Pointer<wire_ExoticOptionals> new_box_autoadd_exotic_optionals_0() {
     return _new_box_autoadd_exotic_optionals_0();
@@ -5409,6 +5449,12 @@ class wire_Abc extends ffi.Struct {
   external int tag;
 
   external ffi.Pointer<AbcKind> kind;
+}
+
+class wire_Event extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> address;
+
+  external ffi.Pointer<wire_uint_8_list> payload;
 }
 
 class wire_SumWith extends ffi.Struct {

@@ -780,6 +780,11 @@ pub fn wire_test_contains_mirrored_sub_struct(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_as_string__method__Event(port_: MessagePort, that: JsValue) {
+    wire_as_string__method__Event_impl(port_, that)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -1240,6 +1245,21 @@ impl Wire2Api<EnumOpaque> for JsValue {
             3 => EnumOpaque::Mutex(self_.get(1).wire2api()),
             4 => EnumOpaque::RwLock(self_.get(1).wire2api()),
             _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<Event> for JsValue {
+    fn wire2api(self) -> Event {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        Event {
+            address: self_.get(0).wire2api(),
+            payload: self_.get(1).wire2api(),
         }
     }
 }

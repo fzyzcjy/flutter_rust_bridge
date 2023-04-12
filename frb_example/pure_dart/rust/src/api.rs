@@ -762,6 +762,12 @@ pub struct Event {
     pub payload: String,
 }
 
+impl Event {
+    pub fn as_string(&self) -> String {
+        format!("{}: {}", self.address, self.payload)
+    }
+}
+
 pub fn register_event_listener(listener: StreamSink<Event>) -> Result<()> {
     match EVENTS.lock() {
         Ok(mut guard) => {

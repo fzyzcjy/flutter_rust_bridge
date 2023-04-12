@@ -2169,6 +2169,19 @@ fn wire_test_contains_mirrored_sub_struct_impl(port_: MessagePort) {
         move || move |task_callback| Ok(test_contains_mirrored_sub_struct()),
     )
 }
+fn wire_as_string__method__Event_impl(port_: MessagePort, that: impl Wire2Api<Event> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "as_string__method__Event",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_that = that.wire2api();
+            move |task_callback| Ok(Event::as_string(&api_that))
+        },
+    )
+}
 fn wire_sum__method__SumWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<SumWith> + UnwindSafe,

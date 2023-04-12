@@ -435,6 +435,11 @@ typedef struct wire_Abc {
   union AbcKind *kind;
 } wire_Abc;
 
+typedef struct wire_Event {
+  struct wire_uint_8_list *address;
+  struct wire_uint_8_list *payload;
+} wire_Event;
+
 typedef struct wire_SumWith {
   uint32_t x;
 } wire_SumWith;
@@ -775,6 +780,8 @@ void wire_test_abc_enum(int64_t port_, struct wire_Abc *abc);
 
 void wire_test_contains_mirrored_sub_struct(int64_t port_);
 
+void wire_as_string__method__Event(int64_t port_, struct wire_Event *that);
+
 void wire_sum__method__SumWith(int64_t port_, struct wire_SumWith *that, uint32_t y, uint32_t z);
 
 void wire_new__static_method__ConcatenateWith(int64_t port_, struct wire_uint_8_list *a);
@@ -852,6 +859,8 @@ struct wire_Empty *new_box_autoadd_empty_0(void);
 struct wire_EnumDartOpaque *new_box_autoadd_enum_dart_opaque_0(void);
 
 struct wire_EnumOpaque *new_box_autoadd_enum_opaque_0(void);
+
+struct wire_Event *new_box_autoadd_event_0(void);
 
 struct wire_ExoticOptionals *new_box_autoadd_exotic_optionals_0(void);
 
@@ -1179,6 +1188,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_list_of_primitive_enums);
     dummy_var ^= ((int64_t) (void*) wire_test_abc_enum);
     dummy_var ^= ((int64_t) (void*) wire_test_contains_mirrored_sub_struct);
+    dummy_var ^= ((int64_t) (void*) wire_as_string__method__Event);
     dummy_var ^= ((int64_t) (void*) wire_sum__method__SumWith);
     dummy_var ^= ((int64_t) (void*) wire_new__static_method__ConcatenateWith);
     dummy_var ^= ((int64_t) (void*) wire_concatenate__method__ConcatenateWith);
@@ -1213,6 +1223,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_empty_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_dart_opaque_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_opaque_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_event_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_exotic_optionals_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_f64_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_feature_chrono_0);
