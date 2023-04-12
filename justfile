@@ -95,7 +95,7 @@ generate_book_help:
 generate_ffigen:
     cd frb_dart && dart run ffigen
 
-cargo_run_codegen := if env_var_or_default("TEST_ON_RELEASE", "false") == "true" {
+cargo_run_codegen := if env_var_or_default("FRB_TEST_USE_RELEASE_VERSION", "false") == "true" {
     "flutter_rust_bridge_codegen"
 } else {
     "cargo run --manifest-path frb_codegen/Cargo.toml --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --features 'chrono,uuid' -- "
