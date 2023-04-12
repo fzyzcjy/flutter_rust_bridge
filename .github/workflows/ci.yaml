@@ -361,8 +361,14 @@ jobs:
 
   rust_build_and_test:
     name: Rust build and test
-    runs-on: ubuntu-latest
-
+    runs-on: ${{ matrix.image }}
+    strategy:
+      fail-fast: false
+      matrix:
+        image:
+          - macos-11
+          - windows-2019
+          - ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: dtolnay/rust-toolchain@stable

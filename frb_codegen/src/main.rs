@@ -110,6 +110,8 @@ mod tests {
                 "../target/debug/libflutter_rust_bridge_example_pure_dart.dylib",
                 #[cfg(target_os = "linux")]
                 "../target/debug/libflutter_rust_bridge_example_pure_dart.so",
+                #[cfg(target_os = "windows")]
+                "../target/debug/flutter_rust_bridge_example_pure_dart.dll",
             )
             .spawn()
             .expect("failed to execute pure_dart")
@@ -199,6 +201,8 @@ mod tests {
                 "../target/debug/libflutter_rust_bridge_example_multi.dylib",
                 #[cfg(target_os = "linux")]
                 "../target/debug/libflutter_rust_bridge_example_multi.so",
+                #[cfg(target_os = "windows")]
+                "../target/debug/flutter_rust_bridge_example_multi.dll",
             )
             .spawn()
             .expect("failed to execute pure_dart")
