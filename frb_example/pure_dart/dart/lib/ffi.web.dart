@@ -7,7 +7,8 @@ const root = 'pkg/flutter_rust_bridge_example_pure_dart';
 
 FlutterRustBridgeExampleSingleBlockTestImpl initializeExternalLibrary(void _) =>
     FlutterRustBridgeExampleSingleBlockTestImpl.wasm(
-      WasmModule.initialize(kind: const Modules.noModules(root: root)),
+      WasmModule.initialize(kind: const Modules.noModules(root: root))
+          as ExternalLibrary,
     );
 
 FlutterRustBridgeExampleSingleBlockTest? _api;
