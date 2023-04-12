@@ -95,6 +95,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  wire_NonCloneData api2wire_NonCloneData(NonCloneData raw) {
+    final ptr = inner.new_NonCloneData();
+    _api_fill_to_wire_NonCloneData(raw, ptr);
+    return ptr;
+  }
+
+  @protected
   wire_NonSendHideData api2wire_NonSendHideData(NonSendHideData raw) {
     final ptr = inner.new_NonSendHideData();
     _api_fill_to_wire_NonSendHideData(raw, ptr);
@@ -823,6 +830,8 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   OpaqueTypeFinalizer get I32Finalizer => _I32Finalizer;
   late final OpaqueTypeFinalizer _MutexHideDataFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_MutexHideDataPtr);
   OpaqueTypeFinalizer get MutexHideDataFinalizer => _MutexHideDataFinalizer;
+  late final OpaqueTypeFinalizer _NonCloneDataFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_NonCloneDataPtr);
+  OpaqueTypeFinalizer get NonCloneDataFinalizer => _NonCloneDataFinalizer;
   late final OpaqueTypeFinalizer _NonSendHideDataFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_NonSendHideDataPtr);
   OpaqueTypeFinalizer get NonSendHideDataFinalizer => _NonSendHideDataFinalizer;
   late final OpaqueTypeFinalizer _RwLockHideDataFinalizer = OpaqueTypeFinalizer(inner._drop_opaque_RwLockHideDataPtr);
@@ -847,6 +856,10 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   void _api_fill_to_wire_MutexHideData(MutexHideData apiObj, wire_MutexHideData wireObj) {
+    wireObj.ptr = apiObj.shareOrMove();
+  }
+
+  void _api_fill_to_wire_NonCloneData(NonCloneData apiObj, wire_NonCloneData wireObj) {
     wireObj.ptr = apiObj.shareOrMove();
   }
 
@@ -3082,6 +3095,28 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_opaque_arrayPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_opaque_array');
   late final _wire_opaque_array = _wire_opaque_arrayPtr.asFunction<void Function(int)>();
 
+  WireSyncReturn wire_sync_create_non_clone() {
+    return _wire_sync_create_non_clone();
+  }
+
+  late final _wire_sync_create_non_clonePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('wire_sync_create_non_clone');
+  late final _wire_sync_create_non_clone = _wire_sync_create_non_clonePtr.asFunction<WireSyncReturn Function()>();
+
+  void wire_run_non_clone(
+    int port_,
+    wire_NonCloneData clone,
+  ) {
+    return _wire_run_non_clone(
+      port_,
+      clone,
+    );
+  }
+
+  late final _wire_run_non_clonePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, wire_NonCloneData)>>('wire_run_non_clone');
+  late final _wire_run_non_clone = _wire_run_non_clonePtr.asFunction<void Function(int, wire_NonCloneData)>();
+
   void wire_create_sync_opaque(
     int port_,
   ) {
@@ -3791,6 +3826,13 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
 
   late final _new_MutexHideDataPtr = _lookup<ffi.NativeFunction<wire_MutexHideData Function()>>('new_MutexHideData');
   late final _new_MutexHideData = _new_MutexHideDataPtr.asFunction<wire_MutexHideData Function()>();
+
+  wire_NonCloneData new_NonCloneData() {
+    return _new_NonCloneData();
+  }
+
+  late final _new_NonCloneDataPtr = _lookup<ffi.NativeFunction<wire_NonCloneData Function()>>('new_NonCloneData');
+  late final _new_NonCloneData = _new_NonCloneDataPtr.asFunction<wire_NonCloneData Function()>();
 
   wire_NonSendHideData new_NonSendHideData() {
     return _new_NonSendHideData();
@@ -4672,6 +4714,32 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _share_opaque_MutexHideData =
       _share_opaque_MutexHideDataPtr.asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
 
+  void drop_opaque_NonCloneData(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _drop_opaque_NonCloneData(
+      ptr,
+    );
+  }
+
+  late final _drop_opaque_NonCloneDataPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>('drop_opaque_NonCloneData');
+  late final _drop_opaque_NonCloneData =
+      _drop_opaque_NonCloneDataPtr.asFunction<void Function(ffi.Pointer<ffi.Void>)>();
+
+  ffi.Pointer<ffi.Void> share_opaque_NonCloneData(
+    ffi.Pointer<ffi.Void> ptr,
+  ) {
+    return _share_opaque_NonCloneData(
+      ptr,
+    );
+  }
+
+  late final _share_opaque_NonCloneDataPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>('share_opaque_NonCloneData');
+  late final _share_opaque_NonCloneData =
+      _share_opaque_NonCloneDataPtr.asFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>();
+
   void drop_opaque_NonSendHideData(
     ffi.Pointer<ffi.Void> ptr,
   ) {
@@ -5347,6 +5415,10 @@ class wire_EnumOpaque extends ffi.Struct {
   external int tag;
 
   external ffi.Pointer<EnumOpaqueKind> kind;
+}
+
+class wire_NonCloneData extends ffi.Struct {
+  external ffi.Pointer<ffi.Void> ptr;
 }
 
 class wire_NonSendHideData extends ffi.Struct {

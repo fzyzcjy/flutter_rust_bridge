@@ -74,6 +74,22 @@ impl HideData {
     }
 }
 
+#[derive(Debug)]
+pub struct NonCloneData {
+    content: String,
+}
+
+impl NonCloneData {
+    pub fn new() -> Self {
+        Self {
+            content: "content".to_owned(),
+        }
+    }
+    pub fn hide_data(&self) -> String {
+        self.content.clone()
+    }
+}
+
 /// Structure for testing the RustOpaque code generator.
 /// FrbOpaqueReturn must be only return type.
 /// FrbOpaqueReturn must not be used as an argument.

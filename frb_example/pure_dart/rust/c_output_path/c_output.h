@@ -349,6 +349,10 @@ typedef struct wire_EnumOpaque {
   union EnumOpaqueKind *kind;
 } wire_EnumOpaque;
 
+typedef struct wire_NonCloneData {
+  const void *ptr;
+} wire_NonCloneData;
+
 typedef struct wire_NonSendHideData {
   const void *ptr;
 } wire_NonSendHideData;
@@ -698,6 +702,10 @@ void wire_run_opaque_with_delay(int64_t port_, struct wire_HideData opaque);
 
 void wire_opaque_array(int64_t port_);
 
+WireSyncReturn wire_sync_create_non_clone(void);
+
+void wire_run_non_clone(int64_t port_, struct wire_NonCloneData clone);
+
 void wire_create_sync_opaque(int64_t port_);
 
 WireSyncReturn wire_sync_create_sync_opaque(void);
@@ -817,6 +825,8 @@ struct wire_HideData new_HideData(void);
 struct wire_I32 new_I32(void);
 
 struct wire_MutexHideData new_MutexHideData(void);
+
+struct wire_NonCloneData new_NonCloneData(void);
 
 struct wire_NonSendHideData new_NonSendHideData(void);
 
@@ -986,6 +996,10 @@ void drop_opaque_MutexHideData(const void *ptr);
 
 const void *share_opaque_MutexHideData(const void *ptr);
 
+void drop_opaque_NonCloneData(const void *ptr);
+
+const void *share_opaque_NonCloneData(const void *ptr);
+
 void drop_opaque_NonSendHideData(const void *ptr);
 
 const void *share_opaque_NonSendHideData(const void *ptr);
@@ -1148,6 +1162,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_run_opaque);
     dummy_var ^= ((int64_t) (void*) wire_run_opaque_with_delay);
     dummy_var ^= ((int64_t) (void*) wire_opaque_array);
+    dummy_var ^= ((int64_t) (void*) wire_sync_create_non_clone);
+    dummy_var ^= ((int64_t) (void*) wire_run_non_clone);
     dummy_var ^= ((int64_t) (void*) wire_create_sync_opaque);
     dummy_var ^= ((int64_t) (void*) wire_sync_create_sync_opaque);
     dummy_var ^= ((int64_t) (void*) wire_sync_run_opaque);
@@ -1202,6 +1218,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_HideData);
     dummy_var ^= ((int64_t) (void*) new_I32);
     dummy_var ^= ((int64_t) (void*) new_MutexHideData);
+    dummy_var ^= ((int64_t) (void*) new_NonCloneData);
     dummy_var ^= ((int64_t) (void*) new_NonSendHideData);
     dummy_var ^= ((int64_t) (void*) new_RwLockHideData);
     dummy_var ^= ((int64_t) (void*) new_StringList_0);
@@ -1286,6 +1303,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) share_opaque_I32);
     dummy_var ^= ((int64_t) (void*) drop_opaque_MutexHideData);
     dummy_var ^= ((int64_t) (void*) share_opaque_MutexHideData);
+    dummy_var ^= ((int64_t) (void*) drop_opaque_NonCloneData);
+    dummy_var ^= ((int64_t) (void*) share_opaque_NonCloneData);
     dummy_var ^= ((int64_t) (void*) drop_opaque_NonSendHideData);
     dummy_var ^= ((int64_t) (void*) share_opaque_NonSendHideData);
     dummy_var ^= ((int64_t) (void*) drop_opaque_RwLockHideData);

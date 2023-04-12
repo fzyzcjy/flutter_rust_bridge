@@ -1253,6 +1253,13 @@ void main(List<String> args) async {
       data3!.dispose();
     });
 
+    test('nonclone', () async {
+      var data = api.syncCreateNonClone();
+      var data2 = await api.runNonClone(clone: data);
+      expect(data2, "content");
+      data.dispose();
+    });
+
     test('void', () async {
       api.syncVoid();
     });
