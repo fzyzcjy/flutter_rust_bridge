@@ -171,7 +171,7 @@
 <p>Here is my another open-source library :) https://github.com/fzyzcjy/flutter_smooth.</p>
 <h2 id="-contributors"><a class="header" href="#-contributors">✨ Contributors</a></h2>
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-<p><a href="index.html#contributors-"><img src="https://img.shields.io/badge/all_contributors-58-orange.svg?style=flat-square" alt="All Contributors" /></a></p>
+<p><a href="index.html#contributors-"><img src="https://img.shields.io/badge/all_contributors-59-orange.svg?style=flat-square" alt="All Contributors" /></a></p>
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p>Thanks goes to these wonderful people (<a href="https://allcontributors.org/docs/en/emoji-key">emoji key</a> following <a href="https://github.com/all-contributors/all-contributors">all-contributors</a> specification):</p>
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
@@ -253,7 +253,8 @@
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/escwxyz"><img src="https://avatars.githubusercontent.com/u/124119483?v=4?s=100" width="100px;" alt="J"/><br /><sub><b>J</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=escwxyz" title="Documentation">📖</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://monitzer.com"><img src="https://avatars.githubusercontent.com/u/644763?v=4?s=100" width="100px;" alt="Andreas Monitzer"/><br /><sub><b>Andreas Monitzer</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=anlumo" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://monitzer.com"><img src="https://avatars.githubusercontent.com/u/644763?v=4?s=100" width="100px;" alt="Andreas Monitzer"/><br /><sub><b>Andreas Monitzer</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=anlumo" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://satvikpendem.com"><img src="https://avatars.githubusercontent.com/u/42670561?v=4?s=100" width="100px;" alt="Satvik Pendem"/><br /><sub><b>Satvik Pendem</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=satvikpendem" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
@@ -301,6 +302,7 @@
 <li><a href="https://github.com/anstadnik">anstadnik</a>: Check keywords.</li>
 <li><a href="https://github.com/Syndim">Syndim</a>: Add a bracket to box.</li>
 <li><a href="https://github.com/TENX-S">TENX-S</a>: Improve doc. Reproduce a bug.</li>
+<li><a href="https://github.com/satvikpendem">satvikpendem</a>: Co-author #989.</li>
 <li><a href="https://github.com/polypixeldev">polypixeldev</a>: Improve doc.</li>
 <li><a href="https://github.com/CicadaCinema">CicadaCinema</a>: Bump version. Improve doc.</li>
 <li><a href="https://github.com/w1th0utnam3">w1th0utnam3</a>: Improve message.</li>
@@ -1167,7 +1169,7 @@ class _MyHomePageState extends State&lt;MyHomePage&gt; {
             StreamBuilder&lt;int&gt;(
               stream: ticks,
               builder: (context, snap) {
-                final style = Theme.of(context).textTheme.headline4;
+                final style = Theme.of(context).textTheme.headlineMedium;
                 final error = snap.error;
                 if (error != null)
                   return Tooltip(
@@ -3910,8 +3912,8 @@ await expectLater(() =&gt; api.panicUnwrapDartOpaque(opaque: () =&gt; 'Test_Stri
 cargo update -p flutter_rust_bridge
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="unit-tests-in-dart"><a class="header" href="#unit-tests-in-dart">Unit tests in dart</a></h1>
-<p>To run <code>flutter</code> or <code>dart test</code> with the bridge you need to load the library on your own development machine (Windows/MacOS/Linux/CI). For that use <code>loadDylib</code>, for example:</p>
-<pre><code class="language-dart">BridgeImpl initializeExternalLibrary(String path) =&gt; BridgeImpl(loadDylib(path));
+<p>To run <code>flutter</code> or <code>dart test</code> with the bridge you need to load the library on your own development machine (Windows/MacOS/Linux/CI). For that use <code>loadLibForFlutter</code> or <code>loadLibForDart</code>, for example:</p>
+<pre><code class="language-dart">BridgeImpl initializeExternalLibrary(String path) =&gt; BridgeImpl(loadLibForDart(path));
 </code></pre>
 <p>Note however, that you need to build the library for your IDE's Operating System. <code>cargo build</code> should normally handle that.</p>
 <p><strong>Do not change the target to your OS only</strong>, as otherwise you will not be able to build for your target platform anymore.</p>
@@ -3932,7 +3934,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 
 BridgeImpl initializeExternalLibrary(String path) {
   return BridgeImpl(
-    loadDylib(path)
+    loadLibForFlutter(path)
   );
 }
 </code></pre>
@@ -3965,7 +3967,7 @@ Future&lt;void&gt; main() async {
 <p>Run it: <code>flutter_rust_bridge_codegen --rust-input frb_example/pure_dart/rust/src/api.rs --dart-output frb_example/pure_dart/dart/lib/bridge_generated.dart</code> (See <a href="https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/.github/workflows/codegen.yml">CI workflow</a> as a reference.) (For Windows, you may need <code>\\</code> instead of <code>/</code> for paths.)</p>
 <h2 id="run-dartrust-app"><a class="header" href="#run-dartrust-app">Run &quot;Dart+Rust&quot; app</a></h2>
 <p>You may run <code>frb_example/pure_dart/dart/lib/main.dart</code> as a normal Dart program, except that you should provide the dynamic linked library of the Rust code (for simplicity, here I only demonstrate the approach for dynamic linked library, but you can for sure use other methods). The detailed steps are as follows.</p>
-<p>Run <code>cargo build</code> in <code>frb_example/pure_dart/rust</code> to build the Rust code into a <code>.so</code> file. Then run <code>dart frb_example/pure_dart/dart/lib/main.dart frb_example/pure_dart/rust/target/debug/libflutter_rust_bridge_example.so</code> to run the Dart program with Rust <code>.so</code> file. (If you have problems, see &quot;Troubleshooting&quot; section.)  (If on MacOS, Rust may indeed generate <code>.dylib</code>, so change the last command to use <code>...dylib</code> instead of <code>...so</code>,)</p>
+<p>Run <code>cargo build</code> in <code>frb_example/pure_dart/rust</code> to build the Rust code into a <code>.so</code> file. Then run <code>dart frb_example/pure_dart/dart/lib/main.dart frb_example/pure_dart/rust/target/debug/libflutter_rust_bridge_example_pure_dart.so</code> to run the Dart program with Rust <code>.so</code> file. (If you have problems, see &quot;Troubleshooting&quot; section.)  (If on MacOS, Rust may indeed generate <code>.dylib</code>, so change the last command to use <code>...dylib</code> instead of <code>...so</code>,)</p>
 <p>P.S. You will only see some tests passing - no fancy UI or functionality in this example.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="safety-concerns"><a class="header" href="#safety-concerns">Safety concerns</a></h1>
 <p>This library has CI that runs <a href="https://www.valgrind.org/">Valgrind</a> automatically on the setup that a Dart program calls a Rust program using this package, so memory problems should be found by Valgrind. <sub>(Notice that, even when running a simple hello-world Dart program, Valgrind will report hundreds of errors. See <a href="https://github.com/dart-lang/sdk/issues/47346">this Dart lang issue</a> for more details. Therefore, I both look at &quot;definitely lost&quot; in Valgrind, and manually search things related to this library - if all reported errors are unrelated to this library then we are safe.)</sub></p>

@@ -145,8 +145,8 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="unit-tests-in-dart"><a class="header" href="#unit-tests-in-dart">Unit tests in dart</a></h1>
-<p>To run <code>flutter</code> or <code>dart test</code> with the bridge you need to load the library on your own development machine (Windows/MacOS/Linux/CI). For that use <code>loadDylib</code>, for example:</p>
-<pre><code class="language-dart">BridgeImpl initializeExternalLibrary(String path) =&gt; BridgeImpl(loadDylib(path));
+<p>To run <code>flutter</code> or <code>dart test</code> with the bridge you need to load the library on your own development machine (Windows/MacOS/Linux/CI). For that use <code>loadLibForFlutter</code> or <code>loadLibForDart</code>, for example:</p>
+<pre><code class="language-dart">BridgeImpl initializeExternalLibrary(String path) =&gt; BridgeImpl(loadLibForDart(path));
 </code></pre>
 <p>Note however, that you need to build the library for your IDE's Operating System. <code>cargo build</code> should normally handle that.</p>
 <p><strong>Do not change the target to your OS only</strong>, as otherwise you will not be able to build for your target platform anymore.</p>
@@ -167,7 +167,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 
 BridgeImpl initializeExternalLibrary(String path) {
   return BridgeImpl(
-    loadDylib(path)
+    loadLibForFlutter(path)
   );
 }
 </code></pre>

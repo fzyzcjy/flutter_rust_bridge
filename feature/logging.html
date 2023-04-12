@@ -258,7 +258,7 @@ class _MyHomePageState extends State&lt;MyHomePage&gt; {
             StreamBuilder&lt;int&gt;(
               stream: ticks,
               builder: (context, snap) {
-                final style = Theme.of(context).textTheme.headline4;
+                final style = Theme.of(context).textTheme.headlineMedium;
                 final error = snap.error;
                 if (error != null)
                   return Tooltip(
