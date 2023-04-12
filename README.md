@@ -155,8 +155,8 @@ More specifically, thanks for all these contributions:
 * [AlienKevin](https://github.com/AlienKevin): Add flutter example for macOS. Add doc for Android NDK bug.
 * [banool](https://github.com/banool): Fix pubspec parsing. Fix symbol-stripping doc.
 * [coder0xff](https://github.com/coder0xff): Refactor SupportedInnerType. Extra codegen tester.
+* [anlumo](https://github.com/anlumo): Fix freezed + methods. Non-clone RustOpaque.
 * [efc-mw](https://github.com/efc-mw): Improve Windows encoding handling.
-* [anlumo](https://github.com/anlumo): Fix freezed + methods.
 * [valeth](https://github.com/valeth): Rename callFfi's port.
 * [sccheruku](https://github.com/sccheruku): Prevent double-generating utility.
 * [jsonmona](https://github.com/jsonmona): Add import.
