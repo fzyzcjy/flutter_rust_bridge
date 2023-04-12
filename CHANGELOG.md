@@ -1,3 +1,7 @@
+## 1.73.1
+
+* RustOpaque::Clone has Incorrect Bounds #989 (thanks @anlumo)
+
 ## 1.73.0
 
 * Support generating Dart structs with freezed + methods #970 (thanks @anlumo)
