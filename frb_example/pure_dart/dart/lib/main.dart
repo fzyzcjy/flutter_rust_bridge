@@ -516,8 +516,7 @@ void main(List<String> args) async {
   });
 
   test('dart register event listener & create event with delay', () async {
-    expectLater(api.registerEventListener(),
-        emits(Event(bridge: api, address: 'foo', payload: 'bar')));
+    expectLater(api.registerEventListener(), emits(Event(bridge: api, address: 'foo', payload: 'bar')));
     await Future.delayed(const Duration(milliseconds: 20));
     await api.createEvent(address: 'foo', payload: 'bar');
     await api.closeEventListener();
