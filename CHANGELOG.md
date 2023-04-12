@@ -1,6 +1,6 @@
-## 1.73.1
+## 1.74.0
 
-* RustOpaque::Clone has Incorrect Bounds #989 (thanks @anlumo)
+* Allow RustOpaque to be non-Clone #989 (thanks @anlumo)
 
 ## 1.73.0
 
