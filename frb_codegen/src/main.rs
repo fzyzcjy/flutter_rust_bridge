@@ -73,6 +73,8 @@ mod tests {
 
         set_dir();
 
+        let _ = *LOGGER;
+
         // Options for frb_codegen
         let raw_opts = RawOpts {
             config_file: Some("../frb_example/pure_dart/rust/.flutter_rust_bridge.yml".into()),
@@ -126,6 +128,8 @@ mod tests {
         /// Class name to use in dart, corresponding to each Rust block
         const CLASS_NAME_1: &str = "ApiClass1";
         const CLASS_NAME_2: &str = "ApiClass2";
+
+        let _ = *LOGGER;
 
         // Options for frb_codegen
         let mut raw_opts = RawOpts {
