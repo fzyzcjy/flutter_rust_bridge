@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.5
   freezed_annotation: ^2.1.0
   ffi: ^2.0.1
+  js: ^0.6.5
 
 dev_dependencies:
   flutter_test:
