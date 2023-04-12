@@ -41,10 +41,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: just install_ffigen_dependency
-      - run: just install_valgrind
-      - run: just dart_pub_get dart_only
-      - run: just dart_test_valgrind
+      - run: just ci_valgrind
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   flutter_test_ios:

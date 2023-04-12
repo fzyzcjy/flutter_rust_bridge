@@ -22,12 +22,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Use released version of flutter_rust_bridge instead of master version
-        run: |
-          cp ./frb_example/pure_dart/dart/pubspec.yaml.release ./frb_example/pure_dart/dart/pubspec.yaml
-          cp ./frb_example/pure_dart/rust/Cargo.toml.release ./frb_example/pure_dart/rust/Cargo.toml
-          cp ./frb_example/with_flutter/pubspec.yaml.release ./frb_example/with_flutter/pubspec.yaml
-          cp ./frb_example/with_flutter/rust/Cargo.toml.release ./frb_example/with_flutter/rust/Cargo.toml
+        run: just use_flutter_rust_bridge_release
 
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -41,14 +41,8 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: "3.x"
-      - uses: extractions/setup-just@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: just install_ffigen_dependency
-      - run: just install_valgrind
-      - run: just dart_pub_get dart_only
-      - run: just dart_test_valgrind
+      - run: just ci_valgrind
 
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
   flutter_test_android:
@@ -64,12 +58,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Use released version of flutter_rust_bridge instead of master version
-        run: |
-          cp ./frb_example/pure_dart/dart/pubspec.yaml.release ./frb_example/pure_dart/dart/pubspec.yaml
-          cp ./frb_example/pure_dart/rust/Cargo.toml.release ./frb_example/pure_dart/rust/Cargo.toml
-          cp ./frb_example/with_flutter/pubspec.yaml.release ./frb_example/with_flutter/pubspec.yaml
-          cp ./frb_example/with_flutter/rust/Cargo.toml.release ./frb_example/with_flutter/rust/Cargo.toml
+        run: use_flutter_rust_bridge_release
 
       - id: checkout
         uses: dtolnay/rust-toolchain@stable
