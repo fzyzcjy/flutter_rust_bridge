@@ -118,7 +118,7 @@ mod tests {
         assert!(status.success(), "pure_dart failed");
     }
 
-    //// See the documentation for the `pure_dart` test
+    /// See the documentation for the `pure_dart` test
     #[test]
     fn pure_dart_multi() {
         use std::process::Command;
