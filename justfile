@@ -291,7 +291,7 @@ install_lipo:
     PACKAGE_NAME=cargo-lipo
     just _install_crate $PACKAGE_NAME
 
-_install_crate: name="cargo-lipo"
+_install_crate name="cargo-lipo":
     PACKAGE_NAME={{name}}
 
     VERSION=$(cargo search $PACKAGE_NAME | grep $PACKAGE_NAME | cut -d '"' -f 2)
