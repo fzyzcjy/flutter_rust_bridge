@@ -112,7 +112,7 @@ jobs:
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
   flutter_test_android:
     name: Flutter integration test on Android
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         device:
@@ -133,7 +133,7 @@ jobs:
           architecture: x64
       - uses: actions/setup-java@v1
         with:
-          java-version: "8.x" # "betterprogramming.pub" says must be java "8"
+          java-version: "11.x" # "betterprogramming.pub" says must be java "8"
       - uses: extractions/setup-just@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
