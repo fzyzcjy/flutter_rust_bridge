@@ -284,6 +284,27 @@ _release_publish_all:
     (cd frb_macros && cargo publish)
     (cd frb_dart && flutter pub publish --force --server=https://pub.dartlang.org)
 
+install_ndk:
+    PACKAGE_NAME=cargo-ndk
+    just _install_crate $PACKAGE_NAME
+install_lipo:
+    PACKAGE_NAME=cargo-lipo
+    just _install_crate $PACKAGE_NAME
+
+_install_crate: name="cargo-lipo"
+    PACKAGE_NAME={{name}}
+
+    VERSION=$(cargo search $PACKAGE_NAME | grep $PACKAGE_NAME | cut -d '"' -f 2)
+
+    if ! [ -x "$(command -v $PACKAGE_NAME)" ]; then
+      echo "$PACKAGE_NAME not found. Installing version $VERSION ..."
+      cargo install $PACKAGE_NAME --version $VERSION
+    elif ! $PACKAGE_NAME --version | grep -q $VERSION; then
+      echo "Updating $PACKAGE_NAME to version $VERSION ..."
+      cargo install $PACKAGE_NAME --version $VERSION --force
+    else
+      echo "Already installed the correct version of $PACKAGE_NAME."
+    fi
 # ============================ to be migrated ============================
 
 # TODO - @Desdaemon
