@@ -287,20 +287,12 @@ _release_publish_all:
     (cd frb_dart && flutter pub publish --force --server=https://pub.dartlang.org)
 
 install_ndk:
-    #!/usr/bin/env sh
-    set -euxo pipefail
-
-    PACKAGE_NAME=cargo-ndk
-    just _install_crate $PACKAGE_NAME
+    just _install_crate cargo-ndk
 install_lipo:
-    #!/usr/bin/env sh
-    set -euxo pipefail
-
-    PACKAGE_NAME=cargo-lipo
-    just _install_crate $PACKAGE_NAME
+    just _install_crate cargo-lipo
 
 _install_crate name="cargo-lipo":
-    #!/usr/bin/env sh
+    #!/usr/bin/env bash
     set -euxo pipefail
 
     PACKAGE_NAME={{name}}
