@@ -21,7 +21,7 @@ runs:
           ~/.cargo/registry/index/
           ~/.cargo/registry/cache/
           ~/.cargo/git/db/
-          ./frb_example/with_flutter/rust/target
+          ./target
         key: ${{ runner.os }}-cargo-${{ inputs.cache-os }}-${{ hashFiles('**/Cargo.lock') }}-${{ inputs.cache-key }}
         restore-keys: |
             ${{ runner.os }}-cargo-${{ inputs.cache-os }}-${{ hashFiles('**/Cargo.lock') }}
