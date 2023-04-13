@@ -4,7 +4,7 @@ version = "1.0.0"
 edition.workspace = true
 
 [lib]
-name = "flutter_rust_bridge_example"
+name = "flutter_rust_bridge_example_pure_dart"
 crate-type = ["cdylib"]
 
 [features]

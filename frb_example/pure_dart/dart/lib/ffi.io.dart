@@ -4,5 +4,5 @@ import 'bridge_generated.dart';
 
 FlutterRustBridgeExampleSingleBlockTestImpl initializeExternalLibrary(String path) =>
     FlutterRustBridgeExampleSingleBlockTestImpl(
-      loadDylib(path),
+      loadLibForDart(path),
     );

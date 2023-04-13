@@ -33,6 +33,8 @@ fn main() -> anyhow::Result<()> {
 
 #[cfg(test)]
 mod tests {
+    use std::{fs, path::PathBuf};
+
     use lazy_static::lazy_static;
     use lib_flutter_rust_bridge_codegen::{
         config_parse, frb_codegen, frb_codegen_multi, init_logger, RawOpts,
@@ -44,8 +46,6 @@ mod tests {
 
     // VS Code runs in frb_codegen with "Run test" and flutter_rust_bridge with "Debug test" >_>
     fn set_dir() {
-        use std::fs;
-
         if let Ok(metadata) = fs::metadata("frb_codegen") {
             if metadata.is_dir() {
                 std::env::set_current_dir("frb_codegen").unwrap();
@@ -97,9 +97,26 @@ mod tests {
             .expect("failed to wait for cargo to finish");
         assert!(status.success(), "cargo build failed");
 
+        let output_path = PathBuf::from(
+            #[cfg(target_os = "macos")]
+            "../target/debug/libflutter_rust_bridge_example_pure_dart.dylib",
+            #[cfg(target_os = "linux")]
+            "../target/debug/libflutter_rust_bridge_example_pure_dart.so",
+            #[cfg(target_os = "windows")]
+            "../target/debug/flutter_rust_bridge_example_pure_dart.dll",
+        );
+        let absolute_path = fs::canonicalize(&output_path).expect("Failed to get absolute path");
+        println!("Absolute path to output: {:?}", absolute_path);
+
+        if absolute_path.exists() {
+            println!("Output file exists");
+        } else {
+            println!("Output file does not exist");
+        }
+
         let status = Command::new("dart")
             .arg("../frb_example/pure_dart/dart/lib/main.dart")
-            .arg("../target/debug/libflutter_rust_bridge_example.so")
+            .arg(absolute_path)
             .spawn()
             .expect("failed to execute pure_dart")
             .wait()
@@ -179,10 +196,26 @@ mod tests {
             .wait()
             .expect("failed to wait for cargo to finish");
         assert!(status.success(), "cargo build failed");
+        let output_path = PathBuf::from(
+            #[cfg(target_os = "macos")]
+            "../target/debug/libflutter_rust_bridge_example_multi.dylib",
+            #[cfg(target_os = "linux")]
+            "../target/debug/libflutter_rust_bridge_example_multi.so",
+            #[cfg(target_os = "windows")]
+            "../target/debug/flutter_rust_bridge_example_multi.dll",
+        );
+        let absolute_path = fs::canonicalize(&output_path).expect("Failed to get absolute path");
+        println!("Absolute path to output: {:?}", absolute_path);
+
+        if absolute_path.exists() {
+            println!("Output file exists");
+        } else {
+            println!("Output file does not exist");
+        }
 
         let status = Command::new("dart")
             .arg("../frb_example/pure_dart_multi/dart/lib/main.dart")
-            .arg("../target/debug/libflutter_rust_bridge_example_multi.so")
+            .arg(absolute_path)
             .spawn()
             .expect("failed to execute pure_dart")
             .wait()

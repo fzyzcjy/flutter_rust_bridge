@@ -11,7 +11,7 @@ void main(List<String> args) {
   print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
   print('construct api');
 
-  final dylib = loadDylib(dylibPath);
+  final dylib = loadLibForDart(dylibPath);
 
   //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓test api 1↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
   final api1 = ApiClass1Impl(dylib);
