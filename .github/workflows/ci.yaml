@@ -142,6 +142,7 @@ jobs:
         uses: ./.github/actions/setup
         with:
           cache-key: "steps.checkout.outputs.rustc_hash"
+          cache-os: "${{ matrix.device }}"
 
       - name: Add Rust targets
         run: rustup target add x86_64-linux-android
@@ -294,7 +295,6 @@ jobs:
 
       - run: just install_ffigen
 
-      # use action.yaml due to I don't know what was done with the `Install crates`
       - name: Cache dependencies
         id: test-cache
         uses: actions/cache@v3

@@ -1,8 +1,12 @@
-name: Setup Rust Builder
-description: 'Prepare Rust Build Environment'
+name: cargo_cache
+description: 'Prepare the Cache of Rust'
 inputs:
   cache-key:
     description: 'the rust cache key suffix'
+    required: false
+    default: ''
+  cache-os:
+    description: 'the os that rust run on'
     required: false
     default: ''
 
@@ -18,8 +22,8 @@ runs:
           ~/.cargo/registry/cache/
           ~/.cargo/git/db/
           ./frb_example/with_flutter/rust/target
-        key: ${{ runner.os }}-cargo-integrate-ios-${{ hashFiles('**/Cargo.lock') }}-${{ inputs.cache-key }}
+        key: ${{ runner.os }}-cargo-${{ inputs.cache-os }}-${{ hashFiles('**/Cargo.lock') }}-${{ inputs.cache-key }}
         restore-keys: |
-            ${{ runner.os }}-cargo-integrate-ios-${{ hashFiles('**/Cargo.lock') }}
-            ${{ runner.os }}-cargo-integrate-ios
+            ${{ runner.os }}-cargo-${{ inputs.cache-os }}-${{ hashFiles('**/Cargo.lock') }}
+            ${{ runner.os }}-cargo-${{ inputs.cache-os }}
             ${{ runner.os }}-cargo
