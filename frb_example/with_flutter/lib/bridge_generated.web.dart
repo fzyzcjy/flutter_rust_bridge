@@ -107,30 +107,6 @@ class FlutterRustBridgeExampleWasmModule implements WasmModule {
   external dynamic /* void */ wire_off_topic_deliberately_return_error(NativePortType port_);
 
   external dynamic /* void */ wire_off_topic_deliberately_panic(NativePortType port_);
-
-  external dynamic /*  */ P7C55DD6B_wire_draw_mandelbrot(port_, image_size, zoom_point, scale, num_threads);
-
-  external dynamic /*  */ P7C55DD6B_wire_passing_complex_structs(port_, root);
-
-  external dynamic /*  */ P7C55DD6B_wire_returning_structs_with_boxed_fields(port_);
-
-  external dynamic /*  */ P7C55DD6B_wire_off_topic_memory_test_input_array(port_, input);
-
-  external dynamic /*  */ P7C55DD6B_wire_off_topic_memory_test_output_zero_copy_buffer(port_, len);
-
-  external dynamic /*  */ P7C55DD6B_wire_off_topic_memory_test_output_vec_u8(port_, len);
-
-  external dynamic /*  */ P7C55DD6B_wire_off_topic_memory_test_input_vec_of_object(port_, input);
-
-  external dynamic /*  */ P7C55DD6B_wire_off_topic_memory_test_output_vec_of_object(port_, len);
-
-  external dynamic /*  */ P7C55DD6B_wire_off_topic_memory_test_input_complex_struct(port_, input);
-
-  external dynamic /*  */ P7C55DD6B_wire_off_topic_memory_test_output_complex_struct(port_, len);
-
-  external dynamic /*  */ P7C55DD6B_wire_off_topic_deliberately_return_error(port_);
-
-  external dynamic /*  */ P7C55DD6B_wire_off_topic_deliberately_panic(port_);
 }
 
 // Section: WASM wire connector
@@ -174,40 +150,4 @@ class FlutterRustBridgeExampleWire extends FlutterRustBridgeWasmWireBase<Flutter
       wasmModule.wire_off_topic_deliberately_return_error(port_);
 
   void wire_off_topic_deliberately_panic(NativePortType port_) => wasmModule.wire_off_topic_deliberately_panic(port_);
-
-  dynamic /*  */ P7C55DD6B_wire_draw_mandelbrot(port_, image_size, zoom_point, scale, num_threads) =>
-      wasmModule.P7C55DD6B_wire_draw_mandelbrot(port_, image_size, zoom_point, scale, num_threads);
-
-  dynamic /*  */ P7C55DD6B_wire_passing_complex_structs(port_, root) =>
-      wasmModule.P7C55DD6B_wire_passing_complex_structs(port_, root);
-
-  dynamic /*  */ P7C55DD6B_wire_returning_structs_with_boxed_fields(port_) =>
-      wasmModule.P7C55DD6B_wire_returning_structs_with_boxed_fields(port_);
-
-  dynamic /*  */ P7C55DD6B_wire_off_topic_memory_test_input_array(port_, input) =>
-      wasmModule.P7C55DD6B_wire_off_topic_memory_test_input_array(port_, input);
-
-  dynamic /*  */ P7C55DD6B_wire_off_topic_memory_test_output_zero_copy_buffer(port_, len) =>
-      wasmModule.P7C55DD6B_wire_off_topic_memory_test_output_zero_copy_buffer(port_, len);
-
-  dynamic /*  */ P7C55DD6B_wire_off_topic_memory_test_output_vec_u8(port_, len) =>
-      wasmModule.P7C55DD6B_wire_off_topic_memory_test_output_vec_u8(port_, len);
-
-  dynamic /*  */ P7C55DD6B_wire_off_topic_memory_test_input_vec_of_object(port_, input) =>
-      wasmModule.P7C55DD6B_wire_off_topic_memory_test_input_vec_of_object(port_, input);
-
-  dynamic /*  */ P7C55DD6B_wire_off_topic_memory_test_output_vec_of_object(port_, len) =>
-      wasmModule.P7C55DD6B_wire_off_topic_memory_test_output_vec_of_object(port_, len);
-
-  dynamic /*  */ P7C55DD6B_wire_off_topic_memory_test_input_complex_struct(port_, input) =>
-      wasmModule.P7C55DD6B_wire_off_topic_memory_test_input_complex_struct(port_, input);
-
-  dynamic /*  */ P7C55DD6B_wire_off_topic_memory_test_output_complex_struct(port_, len) =>
-      wasmModule.P7C55DD6B_wire_off_topic_memory_test_output_complex_struct(port_, len);
-
-  dynamic /*  */ P7C55DD6B_wire_off_topic_deliberately_return_error(port_) =>
-      wasmModule.P7C55DD6B_wire_off_topic_deliberately_return_error(port_);
-
-  dynamic /*  */ P7C55DD6B_wire_off_topic_deliberately_panic(port_) =>
-      wasmModule.P7C55DD6B_wire_off_topic_deliberately_panic(port_);
 }

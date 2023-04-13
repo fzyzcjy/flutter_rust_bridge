@@ -26,7 +26,7 @@ use crate::old_module_system::sub_module::OldSimpleStruct;
 
 // Section: wire functions
 
-fn wire_simple_adder_impl(
+fn P7C55DD6B_wire_simple_adder_impl(
     port_: MessagePort,
     a: impl Wire2Api<i32> + UnwindSafe,
     b: impl Wire2Api<i32> + UnwindSafe,
@@ -44,7 +44,7 @@ fn wire_simple_adder_impl(
         },
     )
 }
-fn wire_simple_adder_sync_impl(
+fn P7C55DD6B_wire_simple_adder_sync_impl(
     a: impl Wire2Api<i32> + UnwindSafe,
     b: impl Wire2Api<i32> + UnwindSafe,
 ) -> support::WireSyncReturn {
@@ -61,7 +61,7 @@ fn wire_simple_adder_sync_impl(
         },
     )
 }
-fn wire_primitive_types_impl(
+fn P7C55DD6B_wire_primitive_types_impl(
     port_: MessagePort,
     my_i32: impl Wire2Api<i32> + UnwindSafe,
     my_i64: impl Wire2Api<i64> + UnwindSafe,
@@ -90,7 +90,7 @@ fn wire_primitive_types_impl(
         },
     )
 }
-fn wire_primitive_optional_types_impl(
+fn P7C55DD6B_wire_primitive_optional_types_impl(
     port_: MessagePort,
     my_i32: impl Wire2Api<Option<i32>> + UnwindSafe,
     my_i64: impl Wire2Api<Option<i64>> + UnwindSafe,
@@ -119,7 +119,7 @@ fn wire_primitive_optional_types_impl(
         },
     )
 }
-fn wire_primitive_types_sync_impl(
+fn P7C55DD6B_wire_primitive_types_sync_impl(
     my_i32: impl Wire2Api<i32> + UnwindSafe,
     my_i64: impl Wire2Api<i64> + UnwindSafe,
     my_f64: impl Wire2Api<f64> + UnwindSafe,
@@ -145,7 +145,7 @@ fn wire_primitive_types_sync_impl(
         },
     )
 }
-fn wire_primitive_u32_impl(port_: MessagePort, my_u32: impl Wire2Api<u32> + UnwindSafe) {
+fn P7C55DD6B_wire_primitive_u32_impl(port_: MessagePort, my_u32: impl Wire2Api<u32> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "primitive_u32",
@@ -158,7 +158,7 @@ fn wire_primitive_u32_impl(port_: MessagePort, my_u32: impl Wire2Api<u32> + Unwi
         },
     )
 }
-fn wire_primitive_u32_sync_impl(
+fn P7C55DD6B_wire_primitive_u32_sync_impl(
     my_u32: impl Wire2Api<u32> + UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
@@ -173,7 +173,7 @@ fn wire_primitive_u32_sync_impl(
         },
     )
 }
-fn wire_handle_string_impl(port_: MessagePort, s: impl Wire2Api<String> + UnwindSafe) {
+fn P7C55DD6B_wire_handle_string_impl(port_: MessagePort, s: impl Wire2Api<String> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_string",
@@ -186,7 +186,9 @@ fn wire_handle_string_impl(port_: MessagePort, s: impl Wire2Api<String> + Unwind
         },
     )
 }
-fn wire_handle_string_sync_impl(s: impl Wire2Api<String> + UnwindSafe) -> support::WireSyncReturn {
+fn P7C55DD6B_wire_handle_string_sync_impl(
+    s: impl Wire2Api<String> + UnwindSafe,
+) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "handle_string_sync",
@@ -199,7 +201,7 @@ fn wire_handle_string_sync_impl(s: impl Wire2Api<String> + UnwindSafe) -> suppor
         },
     )
 }
-fn wire_handle_return_unit_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_handle_return_unit_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_return_unit",
@@ -209,7 +211,7 @@ fn wire_handle_return_unit_impl(port_: MessagePort) {
         move || move |task_callback| Ok(handle_return_unit()),
     )
 }
-fn wire_handle_return_unit_sync_impl() -> support::WireSyncReturn {
+fn P7C55DD6B_wire_handle_return_unit_sync_impl() -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "handle_return_unit_sync",
@@ -219,7 +221,7 @@ fn wire_handle_return_unit_sync_impl() -> support::WireSyncReturn {
         move || Ok(handle_return_unit_sync()),
     )
 }
-fn wire_handle_vec_u8_impl(port_: MessagePort, v: impl Wire2Api<Vec<u8>> + UnwindSafe) {
+fn P7C55DD6B_wire_handle_vec_u8_impl(port_: MessagePort, v: impl Wire2Api<Vec<u8>> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_vec_u8",
@@ -232,7 +234,9 @@ fn wire_handle_vec_u8_impl(port_: MessagePort, v: impl Wire2Api<Vec<u8>> + Unwin
         },
     )
 }
-fn wire_handle_vec_u8_sync_impl(v: impl Wire2Api<Vec<u8>> + UnwindSafe) -> support::WireSyncReturn {
+fn P7C55DD6B_wire_handle_vec_u8_sync_impl(
+    v: impl Wire2Api<Vec<u8>> + UnwindSafe,
+) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "handle_vec_u8_sync",
@@ -245,7 +249,10 @@ fn wire_handle_vec_u8_sync_impl(v: impl Wire2Api<Vec<u8>> + UnwindSafe) -> suppo
         },
     )
 }
-fn wire_handle_vec_of_primitive_impl(port_: MessagePort, n: impl Wire2Api<i32> + UnwindSafe) {
+fn P7C55DD6B_wire_handle_vec_of_primitive_impl(
+    port_: MessagePort,
+    n: impl Wire2Api<i32> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_vec_of_primitive",
@@ -258,7 +265,7 @@ fn wire_handle_vec_of_primitive_impl(port_: MessagePort, n: impl Wire2Api<i32> +
         },
     )
 }
-fn wire_handle_vec_of_primitive_sync_impl(
+fn P7C55DD6B_wire_handle_vec_of_primitive_sync_impl(
     n: impl Wire2Api<i32> + UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
@@ -273,7 +280,7 @@ fn wire_handle_vec_of_primitive_sync_impl(
         },
     )
 }
-fn wire_handle_zero_copy_vec_of_primitive_impl(
+fn P7C55DD6B_wire_handle_zero_copy_vec_of_primitive_impl(
     port_: MessagePort,
     n: impl Wire2Api<i32> + UnwindSafe,
 ) {
@@ -289,7 +296,7 @@ fn wire_handle_zero_copy_vec_of_primitive_impl(
         },
     )
 }
-fn wire_handle_zero_copy_vec_of_primitive_sync_impl(
+fn P7C55DD6B_wire_handle_zero_copy_vec_of_primitive_sync_impl(
     n: impl Wire2Api<i32> + UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
@@ -304,7 +311,7 @@ fn wire_handle_zero_copy_vec_of_primitive_sync_impl(
         },
     )
 }
-fn wire_handle_struct_impl(
+fn P7C55DD6B_wire_handle_struct_impl(
     port_: MessagePort,
     arg: impl Wire2Api<MySize> + UnwindSafe,
     boxed: impl Wire2Api<Box<MySize>> + UnwindSafe,
@@ -322,7 +329,7 @@ fn wire_handle_struct_impl(
         },
     )
 }
-fn wire_handle_struct_sync_impl(
+fn P7C55DD6B_wire_handle_struct_sync_impl(
     arg: impl Wire2Api<MySize> + UnwindSafe,
     boxed: impl Wire2Api<Box<MySize>> + UnwindSafe,
 ) -> support::WireSyncReturn {
@@ -339,7 +346,10 @@ fn wire_handle_struct_sync_impl(
         },
     )
 }
-fn wire_handle_newtype_impl(port_: MessagePort, arg: impl Wire2Api<NewTypeInt> + UnwindSafe) {
+fn P7C55DD6B_wire_handle_newtype_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<NewTypeInt> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_newtype",
@@ -352,7 +362,7 @@ fn wire_handle_newtype_impl(port_: MessagePort, arg: impl Wire2Api<NewTypeInt> +
         },
     )
 }
-fn wire_handle_newtype_sync_impl(
+fn P7C55DD6B_wire_handle_newtype_sync_impl(
     arg: impl Wire2Api<NewTypeInt> + UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
@@ -367,7 +377,10 @@ fn wire_handle_newtype_sync_impl(
         },
     )
 }
-fn wire_handle_list_of_struct_impl(port_: MessagePort, l: impl Wire2Api<Vec<MySize>> + UnwindSafe) {
+fn P7C55DD6B_wire_handle_list_of_struct_impl(
+    port_: MessagePort,
+    l: impl Wire2Api<Vec<MySize>> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_list_of_struct",
@@ -380,7 +393,7 @@ fn wire_handle_list_of_struct_impl(port_: MessagePort, l: impl Wire2Api<Vec<MySi
         },
     )
 }
-fn wire_handle_list_of_struct_sync_impl(
+fn P7C55DD6B_wire_handle_list_of_struct_sync_impl(
     l: impl Wire2Api<Vec<MySize>> + UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
@@ -395,7 +408,7 @@ fn wire_handle_list_of_struct_sync_impl(
         },
     )
 }
-fn wire_handle_string_list_impl(
+fn P7C55DD6B_wire_handle_string_list_impl(
     port_: MessagePort,
     names: impl Wire2Api<Vec<String>> + UnwindSafe,
 ) {
@@ -411,7 +424,7 @@ fn wire_handle_string_list_impl(
         },
     )
 }
-fn wire_handle_string_list_sync_impl(
+fn P7C55DD6B_wire_handle_string_list_sync_impl(
     names: impl Wire2Api<Vec<String>> + UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
@@ -426,7 +439,10 @@ fn wire_handle_string_list_sync_impl(
         },
     )
 }
-fn wire_handle_complex_struct_impl(port_: MessagePort, s: impl Wire2Api<MyTreeNode> + UnwindSafe) {
+fn P7C55DD6B_wire_handle_complex_struct_impl(
+    port_: MessagePort,
+    s: impl Wire2Api<MyTreeNode> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_complex_struct",
@@ -439,7 +455,7 @@ fn wire_handle_complex_struct_impl(port_: MessagePort, s: impl Wire2Api<MyTreeNo
         },
     )
 }
-fn wire_handle_complex_struct_sync_impl(
+fn P7C55DD6B_wire_handle_complex_struct_sync_impl(
     s: impl Wire2Api<MyTreeNode> + UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
@@ -454,7 +470,7 @@ fn wire_handle_complex_struct_sync_impl(
         },
     )
 }
-fn wire_handle_nested_struct_impl(
+fn P7C55DD6B_wire_handle_nested_struct_impl(
     port_: MessagePort,
     s: impl Wire2Api<MyNestedStruct> + UnwindSafe,
 ) {
@@ -470,7 +486,7 @@ fn wire_handle_nested_struct_impl(
         },
     )
 }
-fn wire_handle_sync_return_impl(
+fn P7C55DD6B_wire_handle_sync_return_impl(
     mode: impl Wire2Api<String> + UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
@@ -485,7 +501,7 @@ fn wire_handle_sync_return_impl(
         },
     )
 }
-fn wire_handle_stream_impl(port_: MessagePort, arg: impl Wire2Api<String> + UnwindSafe) {
+fn P7C55DD6B_wire_handle_stream_impl(port_: MessagePort, arg: impl Wire2Api<String> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_stream",
@@ -498,7 +514,7 @@ fn wire_handle_stream_impl(port_: MessagePort, arg: impl Wire2Api<String> + Unwi
         },
     )
 }
-fn wire_handle_stream_of_struct_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_handle_stream_of_struct_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_stream_of_struct",
@@ -508,7 +524,7 @@ fn wire_handle_stream_of_struct_impl(port_: MessagePort) {
         move || move |task_callback| Ok(handle_stream_of_struct(task_callback.stream_sink())),
     )
 }
-fn wire_return_err_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_return_err_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "return_err",
@@ -518,7 +534,7 @@ fn wire_return_err_impl(port_: MessagePort) {
         move || move |task_callback| return_err(),
     )
 }
-fn wire_return_panic_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_return_panic_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "return_panic",
@@ -528,7 +544,7 @@ fn wire_return_panic_impl(port_: MessagePort) {
         move || move |task_callback| Ok(return_panic()),
     )
 }
-fn wire_handle_optional_return_impl(
+fn P7C55DD6B_wire_handle_optional_return_impl(
     port_: MessagePort,
     left: impl Wire2Api<f64> + UnwindSafe,
     right: impl Wire2Api<f64> + UnwindSafe,
@@ -546,7 +562,7 @@ fn wire_handle_optional_return_impl(
         },
     )
 }
-fn wire_handle_optional_struct_impl(
+fn P7C55DD6B_wire_handle_optional_struct_impl(
     port_: MessagePort,
     document: impl Wire2Api<Option<String>> + UnwindSafe,
 ) {
@@ -562,7 +578,7 @@ fn wire_handle_optional_struct_impl(
         },
     )
 }
-fn wire_handle_optional_increment_impl(
+fn P7C55DD6B_wire_handle_optional_increment_impl(
     port_: MessagePort,
     opt: impl Wire2Api<Option<ExoticOptionals>> + UnwindSafe,
 ) {
@@ -578,7 +594,7 @@ fn wire_handle_optional_increment_impl(
         },
     )
 }
-fn wire_handle_increment_boxed_optional_impl(
+fn P7C55DD6B_wire_handle_increment_boxed_optional_impl(
     port_: MessagePort,
     opt: impl Wire2Api<Option<Box<f64>>> + UnwindSafe,
 ) {
@@ -594,7 +610,7 @@ fn wire_handle_increment_boxed_optional_impl(
         },
     )
 }
-fn wire_handle_option_box_arguments_impl(
+fn P7C55DD6B_wire_handle_option_box_arguments_impl(
     port_: MessagePort,
     i8box: impl Wire2Api<Option<Box<i8>>> + UnwindSafe,
     u8box: impl Wire2Api<Option<Box<u8>>> + UnwindSafe,
@@ -632,7 +648,7 @@ fn wire_handle_option_box_arguments_impl(
         },
     )
 }
-fn wire_print_note_impl(port_: MessagePort, note: impl Wire2Api<Note> + UnwindSafe) {
+fn P7C55DD6B_wire_print_note_impl(port_: MessagePort, note: impl Wire2Api<Note> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "print_note",
@@ -645,7 +661,10 @@ fn wire_print_note_impl(port_: MessagePort, note: impl Wire2Api<Note> + UnwindSa
         },
     )
 }
-fn wire_handle_return_enum_impl(port_: MessagePort, input: impl Wire2Api<String> + UnwindSafe) {
+fn P7C55DD6B_wire_handle_return_enum_impl(
+    port_: MessagePort,
+    input: impl Wire2Api<String> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_return_enum",
@@ -658,7 +677,7 @@ fn wire_handle_return_enum_impl(port_: MessagePort, input: impl Wire2Api<String>
         },
     )
 }
-fn wire_handle_enum_parameter_impl(
+fn P7C55DD6B_wire_handle_enum_parameter_impl(
     port_: MessagePort,
     weekday: impl Wire2Api<Weekdays> + UnwindSafe,
 ) {
@@ -674,7 +693,7 @@ fn wire_handle_enum_parameter_impl(
         },
     )
 }
-fn wire_handle_customized_struct_impl(
+fn P7C55DD6B_wire_handle_customized_struct_impl(
     port_: MessagePort,
     val: impl Wire2Api<Customized> + UnwindSafe,
 ) {
@@ -690,7 +709,10 @@ fn wire_handle_customized_struct_impl(
         },
     )
 }
-fn wire_handle_enum_struct_impl(port_: MessagePort, val: impl Wire2Api<KitchenSink> + UnwindSafe) {
+fn P7C55DD6B_wire_handle_enum_struct_impl(
+    port_: MessagePort,
+    val: impl Wire2Api<KitchenSink> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_enum_struct",
@@ -703,7 +725,7 @@ fn wire_handle_enum_struct_impl(port_: MessagePort, val: impl Wire2Api<KitchenSi
         },
     )
 }
-fn wire_use_imported_struct_impl(
+fn P7C55DD6B_wire_use_imported_struct_impl(
     port_: MessagePort,
     my_struct: impl Wire2Api<MyStruct> + UnwindSafe,
 ) {
@@ -719,7 +741,10 @@ fn wire_use_imported_struct_impl(
         },
     )
 }
-fn wire_use_imported_enum_impl(port_: MessagePort, my_enum: impl Wire2Api<MyEnum> + UnwindSafe) {
+fn P7C55DD6B_wire_use_imported_enum_impl(
+    port_: MessagePort,
+    my_enum: impl Wire2Api<MyEnum> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "use_imported_enum",
@@ -732,7 +757,7 @@ fn wire_use_imported_enum_impl(port_: MessagePort, my_enum: impl Wire2Api<MyEnum
         },
     )
 }
-fn wire_get_app_settings_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_get_app_settings_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "get_app_settings",
@@ -742,7 +767,7 @@ fn wire_get_app_settings_impl(port_: MessagePort) {
         move || move |task_callback| Ok(mirror_ApplicationSettings(get_app_settings())),
     )
 }
-fn wire_get_fallible_app_settings_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_get_fallible_app_settings_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "get_fallible_app_settings",
@@ -752,7 +777,7 @@ fn wire_get_fallible_app_settings_impl(port_: MessagePort) {
         move || move |task_callback| Ok(mirror_ApplicationSettings(get_fallible_app_settings()?)),
     )
 }
-fn wire_is_app_embedded_impl(
+fn P7C55DD6B_wire_is_app_embedded_impl(
     port_: MessagePort,
     app_settings: impl Wire2Api<ApplicationSettings> + UnwindSafe,
 ) {
@@ -768,7 +793,7 @@ fn wire_is_app_embedded_impl(
         },
     )
 }
-fn wire_get_message_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_get_message_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "get_message",
@@ -778,7 +803,7 @@ fn wire_get_message_impl(port_: MessagePort) {
         move || move |task_callback| Ok(mirror_ApplicationMessage(get_message())),
     )
 }
-fn wire_repeat_number_impl(
+fn P7C55DD6B_wire_repeat_number_impl(
     port_: MessagePort,
     number: impl Wire2Api<i32> + UnwindSafe,
     times: impl Wire2Api<usize> + UnwindSafe,
@@ -796,7 +821,7 @@ fn wire_repeat_number_impl(
         },
     )
 }
-fn wire_repeat_sequence_impl(
+fn P7C55DD6B_wire_repeat_sequence_impl(
     port_: MessagePort,
     seq: impl Wire2Api<i32> + UnwindSafe,
     times: impl Wire2Api<usize> + UnwindSafe,
@@ -814,7 +839,7 @@ fn wire_repeat_sequence_impl(
         },
     )
 }
-fn wire_first_number_impl(port_: MessagePort, nums: impl Wire2Api<Numbers> + UnwindSafe) {
+fn P7C55DD6B_wire_first_number_impl(port_: MessagePort, nums: impl Wire2Api<Numbers> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "first_number",
@@ -827,7 +852,10 @@ fn wire_first_number_impl(port_: MessagePort, nums: impl Wire2Api<Numbers> + Unw
         },
     )
 }
-fn wire_first_sequence_impl(port_: MessagePort, seqs: impl Wire2Api<Sequences> + UnwindSafe) {
+fn P7C55DD6B_wire_first_sequence_impl(
+    port_: MessagePort,
+    seqs: impl Wire2Api<Sequences> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "first_sequence",
@@ -840,7 +868,7 @@ fn wire_first_sequence_impl(port_: MessagePort, seqs: impl Wire2Api<Sequences> +
         },
     )
 }
-fn wire_get_array_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_get_array_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "get_array",
@@ -850,7 +878,7 @@ fn wire_get_array_impl(port_: MessagePort) {
         move || move |task_callback| Ok(get_array()),
     )
 }
-fn wire_get_complex_array_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_get_complex_array_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "get_complex_array",
@@ -860,7 +888,7 @@ fn wire_get_complex_array_impl(port_: MessagePort) {
         move || move |task_callback| Ok(get_complex_array()),
     )
 }
-fn wire_get_usize_impl(port_: MessagePort, u: impl Wire2Api<usize> + UnwindSafe) {
+fn P7C55DD6B_wire_get_usize_impl(port_: MessagePort, u: impl Wire2Api<usize> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "get_usize",
@@ -873,7 +901,10 @@ fn wire_get_usize_impl(port_: MessagePort, u: impl Wire2Api<usize> + UnwindSafe)
         },
     )
 }
-fn wire_next_user_id_impl(port_: MessagePort, user_id: impl Wire2Api<UserId> + UnwindSafe) {
+fn P7C55DD6B_wire_next_user_id_impl(
+    port_: MessagePort,
+    user_id: impl Wire2Api<UserId> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "next_user_id",
@@ -886,7 +917,7 @@ fn wire_next_user_id_impl(port_: MessagePort, user_id: impl Wire2Api<UserId> + U
         },
     )
 }
-fn wire_register_event_listener_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_register_event_listener_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "register_event_listener",
@@ -896,7 +927,7 @@ fn wire_register_event_listener_impl(port_: MessagePort) {
         move || move |task_callback| register_event_listener(task_callback.stream_sink()),
     )
 }
-fn wire_close_event_listener_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_close_event_listener_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "close_event_listener",
@@ -906,7 +937,7 @@ fn wire_close_event_listener_impl(port_: MessagePort) {
         move || move |task_callback| Ok(close_event_listener()),
     )
 }
-fn wire_create_event_impl(
+fn P7C55DD6B_wire_create_event_impl(
     port_: MessagePort,
     address: impl Wire2Api<String> + UnwindSafe,
     payload: impl Wire2Api<String> + UnwindSafe,
@@ -924,7 +955,7 @@ fn wire_create_event_impl(
         },
     )
 }
-fn wire_handle_stream_sink_at_1_impl(
+fn P7C55DD6B_wire_handle_stream_sink_at_1_impl(
     port_: MessagePort,
     key: impl Wire2Api<u32> + UnwindSafe,
     max: impl Wire2Api<u32> + UnwindSafe,
@@ -948,7 +979,7 @@ fn wire_handle_stream_sink_at_1_impl(
         },
     )
 }
-fn wire_handle_stream_sink_at_2_impl(
+fn P7C55DD6B_wire_handle_stream_sink_at_2_impl(
     port_: MessagePort,
     key: impl Wire2Api<u32> + UnwindSafe,
     max: impl Wire2Api<u32> + UnwindSafe,
@@ -972,7 +1003,7 @@ fn wire_handle_stream_sink_at_2_impl(
         },
     )
 }
-fn wire_handle_stream_sink_at_3_impl(
+fn P7C55DD6B_wire_handle_stream_sink_at_3_impl(
     port_: MessagePort,
     key: impl Wire2Api<u32> + UnwindSafe,
     max: impl Wire2Api<u32> + UnwindSafe,
@@ -996,7 +1027,7 @@ fn wire_handle_stream_sink_at_3_impl(
         },
     )
 }
-fn wire_get_sum_struct_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_get_sum_struct_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "get_sum_struct",
@@ -1006,7 +1037,7 @@ fn wire_get_sum_struct_impl(port_: MessagePort) {
         move || move |task_callback| Ok(get_sum_struct()),
     )
 }
-fn wire_get_sum_array_impl(
+fn P7C55DD6B_wire_get_sum_array_impl(
     port_: MessagePort,
     a: impl Wire2Api<u32> + UnwindSafe,
     b: impl Wire2Api<u32> + UnwindSafe,
@@ -1026,7 +1057,10 @@ fn wire_get_sum_array_impl(
         },
     )
 }
-fn wire_multiply_by_ten_impl(port_: MessagePort, measure: impl Wire2Api<Measure> + UnwindSafe) {
+fn P7C55DD6B_wire_multiply_by_ten_impl(
+    port_: MessagePort,
+    measure: impl Wire2Api<Measure> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "multiply_by_ten",
@@ -1039,7 +1073,7 @@ fn wire_multiply_by_ten_impl(port_: MessagePort, measure: impl Wire2Api<Measure>
         },
     )
 }
-fn wire_call_old_module_system_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_call_old_module_system_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "call_old_module_system",
@@ -1049,7 +1083,7 @@ fn wire_call_old_module_system_impl(port_: MessagePort) {
         move || move |task_callback| Ok(call_old_module_system()),
     )
 }
-fn wire_call_new_module_system_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_call_new_module_system_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "call_new_module_system",
@@ -1059,7 +1093,7 @@ fn wire_call_new_module_system_impl(port_: MessagePort) {
         move || move |task_callback| Ok(call_new_module_system()),
     )
 }
-fn wire_handle_big_buffers_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_handle_big_buffers_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_big_buffers",
@@ -1069,7 +1103,7 @@ fn wire_handle_big_buffers_impl(port_: MessagePort) {
         move || move |task_callback| Ok(handle_big_buffers()),
     )
 }
-fn wire_datetime_utc_impl(
+fn P7C55DD6B_wire_datetime_utc_impl(
     port_: MessagePort,
     d: impl Wire2Api<chrono::DateTime<chrono::Utc>> + UnwindSafe,
 ) {
@@ -1085,7 +1119,7 @@ fn wire_datetime_utc_impl(
         },
     )
 }
-fn wire_datetime_local_impl(
+fn P7C55DD6B_wire_datetime_local_impl(
     port_: MessagePort,
     d: impl Wire2Api<chrono::DateTime<chrono::Local>> + UnwindSafe,
 ) {
@@ -1101,7 +1135,7 @@ fn wire_datetime_local_impl(
         },
     )
 }
-fn wire_naivedatetime_impl(
+fn P7C55DD6B_wire_naivedatetime_impl(
     port_: MessagePort,
     d: impl Wire2Api<chrono::NaiveDateTime> + UnwindSafe,
 ) {
@@ -1117,7 +1151,7 @@ fn wire_naivedatetime_impl(
         },
     )
 }
-fn wire_optional_empty_datetime_utc_impl(
+fn P7C55DD6B_wire_optional_empty_datetime_utc_impl(
     port_: MessagePort,
     d: impl Wire2Api<Option<chrono::DateTime<chrono::Utc>>> + UnwindSafe,
 ) {
@@ -1133,7 +1167,10 @@ fn wire_optional_empty_datetime_utc_impl(
         },
     )
 }
-fn wire_duration_impl(port_: MessagePort, d: impl Wire2Api<chrono::Duration> + UnwindSafe) {
+fn P7C55DD6B_wire_duration_impl(
+    port_: MessagePort,
+    d: impl Wire2Api<chrono::Duration> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "duration",
@@ -1146,7 +1183,7 @@ fn wire_duration_impl(port_: MessagePort, d: impl Wire2Api<chrono::Duration> + U
         },
     )
 }
-fn wire_handle_timestamps_impl(
+fn P7C55DD6B_wire_handle_timestamps_impl(
     port_: MessagePort,
     timestamps: impl Wire2Api<Vec<chrono::NaiveDateTime>> + UnwindSafe,
     epoch: impl Wire2Api<chrono::NaiveDateTime> + UnwindSafe,
@@ -1164,7 +1201,7 @@ fn wire_handle_timestamps_impl(
         },
     )
 }
-fn wire_handle_durations_impl(
+fn P7C55DD6B_wire_handle_durations_impl(
     port_: MessagePort,
     durations: impl Wire2Api<Vec<chrono::Duration>> + UnwindSafe,
     since: impl Wire2Api<chrono::DateTime<chrono::Local>> + UnwindSafe,
@@ -1182,7 +1219,7 @@ fn wire_handle_durations_impl(
         },
     )
 }
-fn wire_test_chrono_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_test_chrono_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "test_chrono",
@@ -1192,7 +1229,7 @@ fn wire_test_chrono_impl(port_: MessagePort) {
         move || move |task_callback| Ok(test_chrono()),
     )
 }
-fn wire_test_precise_chrono_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_test_precise_chrono_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "test_precise_chrono",
@@ -1202,7 +1239,7 @@ fn wire_test_precise_chrono_impl(port_: MessagePort) {
         move || move |task_callback| Ok(test_precise_chrono()),
     )
 }
-fn wire_how_long_does_it_take_impl(
+fn P7C55DD6B_wire_how_long_does_it_take_impl(
     port_: MessagePort,
     mine: impl Wire2Api<FeatureChrono> + UnwindSafe,
 ) {
@@ -1218,7 +1255,7 @@ fn wire_how_long_does_it_take_impl(
         },
     )
 }
-fn wire_handle_uuid_impl(port_: MessagePort, id: impl Wire2Api<uuid::Uuid> + UnwindSafe) {
+fn P7C55DD6B_wire_handle_uuid_impl(port_: MessagePort, id: impl Wire2Api<uuid::Uuid> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_uuid",
@@ -1231,7 +1268,10 @@ fn wire_handle_uuid_impl(port_: MessagePort, id: impl Wire2Api<uuid::Uuid> + Unw
         },
     )
 }
-fn wire_handle_uuids_impl(port_: MessagePort, ids: impl Wire2Api<Vec<uuid::Uuid>> + UnwindSafe) {
+fn P7C55DD6B_wire_handle_uuids_impl(
+    port_: MessagePort,
+    ids: impl Wire2Api<Vec<uuid::Uuid>> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_uuids",
@@ -1244,7 +1284,10 @@ fn wire_handle_uuids_impl(port_: MessagePort, ids: impl Wire2Api<Vec<uuid::Uuid>
         },
     )
 }
-fn wire_handle_nested_uuids_impl(port_: MessagePort, ids: impl Wire2Api<FeatureUuid> + UnwindSafe) {
+fn P7C55DD6B_wire_handle_nested_uuids_impl(
+    port_: MessagePort,
+    ids: impl Wire2Api<FeatureUuid> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_nested_uuids",
@@ -1257,7 +1300,7 @@ fn wire_handle_nested_uuids_impl(port_: MessagePort, ids: impl Wire2Api<FeatureU
         },
     )
 }
-fn wire_new_msgid_impl(port_: MessagePort, id: impl Wire2Api<[u8; 32]> + UnwindSafe) {
+fn P7C55DD6B_wire_new_msgid_impl(port_: MessagePort, id: impl Wire2Api<[u8; 32]> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "new_msgid",
@@ -1270,7 +1313,7 @@ fn wire_new_msgid_impl(port_: MessagePort, id: impl Wire2Api<[u8; 32]> + UnwindS
         },
     )
 }
-fn wire_use_msgid_impl(port_: MessagePort, id: impl Wire2Api<MessageId> + UnwindSafe) {
+fn P7C55DD6B_wire_use_msgid_impl(port_: MessagePort, id: impl Wire2Api<MessageId> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "use_msgid",
@@ -1283,7 +1326,10 @@ fn wire_use_msgid_impl(port_: MessagePort, id: impl Wire2Api<MessageId> + Unwind
         },
     )
 }
-fn wire_boxed_blob_impl(port_: MessagePort, blob: impl Wire2Api<Box<[u8; 1600]>> + UnwindSafe) {
+fn P7C55DD6B_wire_boxed_blob_impl(
+    port_: MessagePort,
+    blob: impl Wire2Api<Box<[u8; 1600]>> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "boxed_blob",
@@ -1296,7 +1342,10 @@ fn wire_boxed_blob_impl(port_: MessagePort, blob: impl Wire2Api<Box<[u8; 1600]>>
         },
     )
 }
-fn wire_use_boxed_blob_impl(port_: MessagePort, blob: impl Wire2Api<Box<Blob>> + UnwindSafe) {
+fn P7C55DD6B_wire_use_boxed_blob_impl(
+    port_: MessagePort,
+    blob: impl Wire2Api<Box<Blob>> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "use_boxed_blob",
@@ -1309,7 +1358,10 @@ fn wire_use_boxed_blob_impl(port_: MessagePort, blob: impl Wire2Api<Box<Blob>> +
         },
     )
 }
-fn wire_return_boxed_feed_id_impl(port_: MessagePort, id: impl Wire2Api<[u8; 8]> + UnwindSafe) {
+fn P7C55DD6B_wire_return_boxed_feed_id_impl(
+    port_: MessagePort,
+    id: impl Wire2Api<[u8; 8]> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "return_boxed_feed_id",
@@ -1322,7 +1374,10 @@ fn wire_return_boxed_feed_id_impl(port_: MessagePort, id: impl Wire2Api<[u8; 8]>
         },
     )
 }
-fn wire_return_boxed_raw_feed_id_impl(port_: MessagePort, id: impl Wire2Api<FeedId> + UnwindSafe) {
+fn P7C55DD6B_wire_return_boxed_raw_feed_id_impl(
+    port_: MessagePort,
+    id: impl Wire2Api<FeedId> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "return_boxed_raw_feed_id",
@@ -1335,7 +1390,7 @@ fn wire_return_boxed_raw_feed_id_impl(port_: MessagePort, id: impl Wire2Api<Feed
         },
     )
 }
-fn wire_test_id_impl(port_: MessagePort, id: impl Wire2Api<TestId> + UnwindSafe) {
+fn P7C55DD6B_wire_test_id_impl(port_: MessagePort, id: impl Wire2Api<TestId> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "test_id",
@@ -1348,7 +1403,10 @@ fn wire_test_id_impl(port_: MessagePort, id: impl Wire2Api<TestId> + UnwindSafe)
         },
     )
 }
-fn wire_last_number_impl(port_: MessagePort, array: impl Wire2Api<[f64; 16]> + UnwindSafe) {
+fn P7C55DD6B_wire_last_number_impl(
+    port_: MessagePort,
+    array: impl Wire2Api<[f64; 16]> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "last_number",
@@ -1361,7 +1419,7 @@ fn wire_last_number_impl(port_: MessagePort, array: impl Wire2Api<[f64; 16]> + U
         },
     )
 }
-fn wire_nested_id_impl(port_: MessagePort, id: impl Wire2Api<[TestId; 4]> + UnwindSafe) {
+fn P7C55DD6B_wire_nested_id_impl(port_: MessagePort, id: impl Wire2Api<[TestId; 4]> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "nested_id",
@@ -1374,7 +1432,7 @@ fn wire_nested_id_impl(port_: MessagePort, id: impl Wire2Api<[TestId; 4]> + Unwi
         },
     )
 }
-fn wire_sync_accept_dart_opaque_impl(
+fn P7C55DD6B_wire_sync_accept_dart_opaque_impl(
     opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
@@ -1389,7 +1447,7 @@ fn wire_sync_accept_dart_opaque_impl(
         },
     )
 }
-fn wire_async_accept_dart_opaque_impl(
+fn P7C55DD6B_wire_async_accept_dart_opaque_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
 ) {
@@ -1405,7 +1463,10 @@ fn wire_async_accept_dart_opaque_impl(
         },
     )
 }
-fn wire_loop_back_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaque> + UnwindSafe) {
+fn P7C55DD6B_wire_loop_back_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "loop_back",
@@ -1418,7 +1479,10 @@ fn wire_loop_back_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaque> + U
         },
     )
 }
-fn wire_loop_back_option_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaque> + UnwindSafe) {
+fn P7C55DD6B_wire_loop_back_option_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "loop_back_option",
@@ -1431,7 +1495,10 @@ fn wire_loop_back_option_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaq
         },
     )
 }
-fn wire_loop_back_array_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaque> + UnwindSafe) {
+fn P7C55DD6B_wire_loop_back_array_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "loop_back_array",
@@ -1444,7 +1511,10 @@ fn wire_loop_back_array_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaqu
         },
     )
 }
-fn wire_loop_back_vec_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaque> + UnwindSafe) {
+fn P7C55DD6B_wire_loop_back_vec_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "loop_back_vec",
@@ -1457,7 +1527,7 @@ fn wire_loop_back_vec_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaque>
         },
     )
 }
-fn wire_loop_back_option_get_impl(
+fn P7C55DD6B_wire_loop_back_option_get_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<Option<DartOpaque>> + UnwindSafe,
 ) {
@@ -1473,7 +1543,7 @@ fn wire_loop_back_option_get_impl(
         },
     )
 }
-fn wire_loop_back_array_get_impl(
+fn P7C55DD6B_wire_loop_back_array_get_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<[DartOpaque; 1]> + UnwindSafe,
 ) {
@@ -1489,7 +1559,7 @@ fn wire_loop_back_array_get_impl(
         },
     )
 }
-fn wire_loop_back_vec_get_impl(
+fn P7C55DD6B_wire_loop_back_vec_get_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<Vec<DartOpaque>> + UnwindSafe,
 ) {
@@ -1505,7 +1575,7 @@ fn wire_loop_back_vec_get_impl(
         },
     )
 }
-fn wire_unwrap_dart_opaque_impl(
+fn P7C55DD6B_wire_unwrap_dart_opaque_impl(
     opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
@@ -1520,7 +1590,7 @@ fn wire_unwrap_dart_opaque_impl(
         },
     )
 }
-fn wire_panic_unwrap_dart_opaque_impl(
+fn P7C55DD6B_wire_panic_unwrap_dart_opaque_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
 ) {
@@ -1536,7 +1606,7 @@ fn wire_panic_unwrap_dart_opaque_impl(
         },
     )
 }
-fn wire_create_opaque_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_create_opaque_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "create_opaque",
@@ -1546,7 +1616,7 @@ fn wire_create_opaque_impl(port_: MessagePort) {
         move || move |task_callback| Ok(create_opaque()),
     )
 }
-fn wire_create_option_opaque_impl(
+fn P7C55DD6B_wire_create_option_opaque_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<Option<RustOpaque<HideData>>> + UnwindSafe,
 ) {
@@ -1562,7 +1632,7 @@ fn wire_create_option_opaque_impl(
         },
     )
 }
-fn wire_sync_create_opaque_impl() -> support::WireSyncReturn {
+fn P7C55DD6B_wire_sync_create_opaque_impl() -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "sync_create_opaque",
@@ -1572,7 +1642,7 @@ fn wire_sync_create_opaque_impl() -> support::WireSyncReturn {
         move || Ok(sync_create_opaque()),
     )
 }
-fn wire_create_array_opaque_enum_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_create_array_opaque_enum_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "create_array_opaque_enum",
@@ -1582,7 +1652,10 @@ fn wire_create_array_opaque_enum_impl(port_: MessagePort) {
         move || move |task_callback| Ok(create_array_opaque_enum()),
     )
 }
-fn wire_run_enum_opaque_impl(port_: MessagePort, opaque: impl Wire2Api<EnumOpaque> + UnwindSafe) {
+fn P7C55DD6B_wire_run_enum_opaque_impl(
+    port_: MessagePort,
+    opaque: impl Wire2Api<EnumOpaque> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "run_enum_opaque",
@@ -1595,7 +1668,7 @@ fn wire_run_enum_opaque_impl(port_: MessagePort, opaque: impl Wire2Api<EnumOpaqu
         },
     )
 }
-fn wire_run_opaque_impl(
+fn P7C55DD6B_wire_run_opaque_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<RustOpaque<HideData>> + UnwindSafe,
 ) {
@@ -1611,7 +1684,7 @@ fn wire_run_opaque_impl(
         },
     )
 }
-fn wire_run_opaque_with_delay_impl(
+fn P7C55DD6B_wire_run_opaque_with_delay_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<RustOpaque<HideData>> + UnwindSafe,
 ) {
@@ -1627,7 +1700,7 @@ fn wire_run_opaque_with_delay_impl(
         },
     )
 }
-fn wire_opaque_array_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_opaque_array_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "opaque_array",
@@ -1637,7 +1710,7 @@ fn wire_opaque_array_impl(port_: MessagePort) {
         move || move |task_callback| Ok(opaque_array()),
     )
 }
-fn wire_create_sync_opaque_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_create_sync_opaque_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "create_sync_opaque",
@@ -1647,7 +1720,7 @@ fn wire_create_sync_opaque_impl(port_: MessagePort) {
         move || move |task_callback| Ok(create_sync_opaque()),
     )
 }
-fn wire_sync_create_sync_opaque_impl() -> support::WireSyncReturn {
+fn P7C55DD6B_wire_sync_create_sync_opaque_impl() -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "sync_create_sync_opaque",
@@ -1657,7 +1730,7 @@ fn wire_sync_create_sync_opaque_impl() -> support::WireSyncReturn {
         move || Ok(sync_create_sync_opaque()),
     )
 }
-fn wire_sync_run_opaque_impl(
+fn P7C55DD6B_wire_sync_run_opaque_impl(
     opaque: impl Wire2Api<RustOpaque<NonSendHideData>> + UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
@@ -1672,7 +1745,7 @@ fn wire_sync_run_opaque_impl(
         },
     )
 }
-fn wire_opaque_array_run_impl(
+fn P7C55DD6B_wire_opaque_array_run_impl(
     port_: MessagePort,
     data: impl Wire2Api<[RustOpaque<HideData>; 2]> + UnwindSafe,
 ) {
@@ -1688,7 +1761,7 @@ fn wire_opaque_array_run_impl(
         },
     )
 }
-fn wire_opaque_vec_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_opaque_vec_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "opaque_vec",
@@ -1698,7 +1771,7 @@ fn wire_opaque_vec_impl(port_: MessagePort) {
         move || move |task_callback| Ok(opaque_vec()),
     )
 }
-fn wire_opaque_vec_run_impl(
+fn P7C55DD6B_wire_opaque_vec_run_impl(
     port_: MessagePort,
     data: impl Wire2Api<Vec<RustOpaque<HideData>>> + UnwindSafe,
 ) {
@@ -1714,7 +1787,7 @@ fn wire_opaque_vec_run_impl(
         },
     )
 }
-fn wire_create_nested_opaque_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_create_nested_opaque_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "create_nested_opaque",
@@ -1724,7 +1797,7 @@ fn wire_create_nested_opaque_impl(port_: MessagePort) {
         move || move |task_callback| Ok(create_nested_opaque()),
     )
 }
-fn wire_sync_loopback_impl(
+fn P7C55DD6B_wire_sync_loopback_impl(
     opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
@@ -1739,7 +1812,7 @@ fn wire_sync_loopback_impl(
         },
     )
 }
-fn wire_sync_option_loopback_impl(
+fn P7C55DD6B_wire_sync_option_loopback_impl(
     opaque: impl Wire2Api<Option<DartOpaque>> + UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
@@ -1754,7 +1827,7 @@ fn wire_sync_option_loopback_impl(
         },
     )
 }
-fn wire_sync_option_impl() -> support::WireSyncReturn {
+fn P7C55DD6B_wire_sync_option_impl() -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "sync_option",
@@ -1764,7 +1837,7 @@ fn wire_sync_option_impl() -> support::WireSyncReturn {
         move || sync_option(),
     )
 }
-fn wire_sync_option_null_impl() -> support::WireSyncReturn {
+fn P7C55DD6B_wire_sync_option_null_impl() -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "sync_option_null",
@@ -1774,7 +1847,7 @@ fn wire_sync_option_null_impl() -> support::WireSyncReturn {
         move || sync_option_null(),
     )
 }
-fn wire_sync_option_rust_opaque_impl() -> support::WireSyncReturn {
+fn P7C55DD6B_wire_sync_option_rust_opaque_impl() -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "sync_option_rust_opaque",
@@ -1784,7 +1857,7 @@ fn wire_sync_option_rust_opaque_impl() -> support::WireSyncReturn {
         move || sync_option_rust_opaque(),
     )
 }
-fn wire_sync_option_dart_opaque_impl(
+fn P7C55DD6B_wire_sync_option_dart_opaque_impl(
     opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
@@ -1799,7 +1872,7 @@ fn wire_sync_option_dart_opaque_impl(
         },
     )
 }
-fn wire_sync_void_impl() -> support::WireSyncReturn {
+fn P7C55DD6B_wire_sync_void_impl() -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "sync_void",
@@ -1809,7 +1882,7 @@ fn wire_sync_void_impl() -> support::WireSyncReturn {
         move || Ok(sync_void()),
     )
 }
-fn wire_run_nested_opaque_impl(
+fn P7C55DD6B_wire_run_nested_opaque_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<OpaqueNested> + UnwindSafe,
 ) {
@@ -1825,7 +1898,7 @@ fn wire_run_nested_opaque_impl(
         },
     )
 }
-fn wire_create_nested_dart_opaque_impl(
+fn P7C55DD6B_wire_create_nested_dart_opaque_impl(
     port_: MessagePort,
     opaque1: impl Wire2Api<DartOpaque> + UnwindSafe,
     opaque2: impl Wire2Api<DartOpaque> + UnwindSafe,
@@ -1843,7 +1916,7 @@ fn wire_create_nested_dart_opaque_impl(
         },
     )
 }
-fn wire_get_nested_dart_opaque_impl(
+fn P7C55DD6B_wire_get_nested_dart_opaque_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<DartOpaqueNested> + UnwindSafe,
 ) {
@@ -1859,7 +1932,7 @@ fn wire_get_nested_dart_opaque_impl(
         },
     )
 }
-fn wire_create_enum_dart_opaque_impl(
+fn P7C55DD6B_wire_create_enum_dart_opaque_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
 ) {
@@ -1875,7 +1948,7 @@ fn wire_create_enum_dart_opaque_impl(
         },
     )
 }
-fn wire_get_enum_dart_opaque_impl(
+fn P7C55DD6B_wire_get_enum_dart_opaque_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<EnumDartOpaque> + UnwindSafe,
 ) {
@@ -1891,7 +1964,7 @@ fn wire_get_enum_dart_opaque_impl(
         },
     )
 }
-fn wire_set_static_dart_opaque_impl(
+fn P7C55DD6B_wire_set_static_dart_opaque_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
 ) {
@@ -1907,7 +1980,7 @@ fn wire_set_static_dart_opaque_impl(
         },
     )
 }
-fn wire_drop_static_dart_opaque_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_drop_static_dart_opaque_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "drop_static_dart_opaque",
@@ -1917,7 +1990,7 @@ fn wire_drop_static_dart_opaque_impl(port_: MessagePort) {
         move || move |task_callback| Ok(drop_static_dart_opaque()),
     )
 }
-fn wire_unwrap_rust_opaque_impl(
+fn P7C55DD6B_wire_unwrap_rust_opaque_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<RustOpaque<HideData>> + UnwindSafe,
 ) {
@@ -1933,7 +2006,7 @@ fn wire_unwrap_rust_opaque_impl(
         },
     )
 }
-fn wire_return_non_droppable_dart_opaque_impl(
+fn P7C55DD6B_wire_return_non_droppable_dart_opaque_impl(
     opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
@@ -1948,7 +2021,7 @@ fn wire_return_non_droppable_dart_opaque_impl(
         },
     )
 }
-fn wire_frb_generator_test_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_frb_generator_test_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "frb_generator_test",
@@ -1958,7 +2031,7 @@ fn wire_frb_generator_test_impl(port_: MessagePort) {
         move || move |task_callback| Ok(frb_generator_test()),
     )
 }
-fn wire_frb_sync_generator_test_impl() -> support::WireSyncReturn {
+fn P7C55DD6B_wire_frb_sync_generator_test_impl() -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "frb_sync_generator_test",
@@ -1968,7 +2041,10 @@ fn wire_frb_sync_generator_test_impl() -> support::WireSyncReturn {
         move || Ok(frb_sync_generator_test()),
     )
 }
-fn wire_handle_type_alias_id_impl(port_: MessagePort, input: impl Wire2Api<u64> + UnwindSafe) {
+fn P7C55DD6B_wire_handle_type_alias_id_impl(
+    port_: MessagePort,
+    input: impl Wire2Api<u64> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_type_alias_id",
@@ -1981,7 +2057,10 @@ fn wire_handle_type_alias_id_impl(port_: MessagePort, input: impl Wire2Api<u64> 
         },
     )
 }
-fn wire_handle_type_nest_alias_id_impl(port_: MessagePort, input: impl Wire2Api<u64> + UnwindSafe) {
+fn P7C55DD6B_wire_handle_type_nest_alias_id_impl(
+    port_: MessagePort,
+    input: impl Wire2Api<u64> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_type_nest_alias_id",
@@ -1994,7 +2073,10 @@ fn wire_handle_type_nest_alias_id_impl(port_: MessagePort, input: impl Wire2Api<
         },
     )
 }
-fn wire_handle_type_alias_model_impl(port_: MessagePort, input: impl Wire2Api<u64> + UnwindSafe) {
+fn P7C55DD6B_wire_handle_type_alias_model_impl(
+    port_: MessagePort,
+    input: impl Wire2Api<u64> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "handle_type_alias_model",
@@ -2007,7 +2089,7 @@ fn wire_handle_type_alias_model_impl(port_: MessagePort, input: impl Wire2Api<u6
         },
     )
 }
-fn wire_empty_struct_impl(port_: MessagePort, empty: impl Wire2Api<Empty> + UnwindSafe) {
+fn P7C55DD6B_wire_empty_struct_impl(port_: MessagePort, empty: impl Wire2Api<Empty> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "empty_struct",
@@ -2020,7 +2102,7 @@ fn wire_empty_struct_impl(port_: MessagePort, empty: impl Wire2Api<Empty> + Unwi
         },
     )
 }
-fn wire_return_dart_dynamic_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_return_dart_dynamic_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "return_dart_dynamic",
@@ -2030,7 +2112,7 @@ fn wire_return_dart_dynamic_impl(port_: MessagePort) {
         move || move |task_callback| Ok(return_dart_dynamic()),
     )
 }
-fn wire_test_raw_string_item_struct_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_test_raw_string_item_struct_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "test_raw_string_item_struct",
@@ -2040,7 +2122,7 @@ fn wire_test_raw_string_item_struct_impl(port_: MessagePort) {
         move || move |task_callback| Ok(test_raw_string_item_struct()),
     )
 }
-fn wire_test_more_than_just_one_raw_string_struct_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_test_more_than_just_one_raw_string_struct_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "test_more_than_just_one_raw_string_struct",
@@ -2050,7 +2132,7 @@ fn wire_test_more_than_just_one_raw_string_struct_impl(port_: MessagePort) {
         move || move |task_callback| Ok(test_more_than_just_one_raw_string_struct()),
     )
 }
-fn wire_test_raw_string_mirrored_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_test_raw_string_mirrored_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "test_raw_string_mirrored",
@@ -2060,7 +2142,7 @@ fn wire_test_raw_string_mirrored_impl(port_: MessagePort) {
         move || move |task_callback| Ok(mirror_RawStringMirrored(test_raw_string_mirrored())),
     )
 }
-fn wire_test_nested_raw_string_mirrored_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_test_nested_raw_string_mirrored_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "test_nested_raw_string_mirrored",
@@ -2076,7 +2158,7 @@ fn wire_test_nested_raw_string_mirrored_impl(port_: MessagePort) {
         },
     )
 }
-fn wire_test_raw_string_enum_mirrored_impl(
+fn P7C55DD6B_wire_test_raw_string_enum_mirrored_impl(
     port_: MessagePort,
     nested: impl Wire2Api<bool> + UnwindSafe,
 ) {
@@ -2096,7 +2178,7 @@ fn wire_test_raw_string_enum_mirrored_impl(
         },
     )
 }
-fn wire_test_list_of_raw_nested_string_mirrored_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_test_list_of_raw_nested_string_mirrored_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "test_list_of_raw_nested_string_mirrored",
@@ -2112,7 +2194,7 @@ fn wire_test_list_of_raw_nested_string_mirrored_impl(port_: MessagePort) {
         },
     )
 }
-fn wire_test_fallible_of_raw_string_mirrored_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_test_fallible_of_raw_string_mirrored_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "test_fallible_of_raw_string_mirrored",
@@ -2130,7 +2212,7 @@ fn wire_test_fallible_of_raw_string_mirrored_impl(port_: MessagePort) {
         },
     )
 }
-fn wire_list_of_primitive_enums_impl(
+fn P7C55DD6B_wire_list_of_primitive_enums_impl(
     port_: MessagePort,
     weekdays: impl Wire2Api<Vec<Weekdays>> + UnwindSafe,
 ) {
@@ -2146,7 +2228,7 @@ fn wire_list_of_primitive_enums_impl(
         },
     )
 }
-fn wire_test_abc_enum_impl(port_: MessagePort, abc: impl Wire2Api<Abc> + UnwindSafe) {
+fn P7C55DD6B_wire_test_abc_enum_impl(port_: MessagePort, abc: impl Wire2Api<Abc> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "test_abc_enum",
@@ -2159,7 +2241,7 @@ fn wire_test_abc_enum_impl(port_: MessagePort, abc: impl Wire2Api<Abc> + UnwindS
         },
     )
 }
-fn wire_test_contains_mirrored_sub_struct_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_test_contains_mirrored_sub_struct_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "test_contains_mirrored_sub_struct",
@@ -2169,7 +2251,7 @@ fn wire_test_contains_mirrored_sub_struct_impl(port_: MessagePort) {
         move || move |task_callback| Ok(test_contains_mirrored_sub_struct()),
     )
 }
-fn wire_sum__method__SumWith_impl(
+fn P7C55DD6B_wire_sum__method__SumWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<SumWith> + UnwindSafe,
     y: impl Wire2Api<u32> + UnwindSafe,
@@ -2189,7 +2271,7 @@ fn wire_sum__method__SumWith_impl(
         },
     )
 }
-fn wire_new__static_method__ConcatenateWith_impl(
+fn P7C55DD6B_wire_new__static_method__ConcatenateWith_impl(
     port_: MessagePort,
     a: impl Wire2Api<String> + UnwindSafe,
 ) {
@@ -2205,7 +2287,7 @@ fn wire_new__static_method__ConcatenateWith_impl(
         },
     )
 }
-fn wire_concatenate__method__ConcatenateWith_impl(
+fn P7C55DD6B_wire_concatenate__method__ConcatenateWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<ConcatenateWith> + UnwindSafe,
     b: impl Wire2Api<String> + UnwindSafe,
@@ -2223,7 +2305,7 @@ fn wire_concatenate__method__ConcatenateWith_impl(
         },
     )
 }
-fn wire_concatenate_static__static_method__ConcatenateWith_impl(
+fn P7C55DD6B_wire_concatenate_static__static_method__ConcatenateWith_impl(
     port_: MessagePort,
     a: impl Wire2Api<String> + UnwindSafe,
     b: impl Wire2Api<String> + UnwindSafe,
@@ -2241,7 +2323,7 @@ fn wire_concatenate_static__static_method__ConcatenateWith_impl(
         },
     )
 }
-fn wire_handle_some_stream_sink__method__ConcatenateWith_impl(
+fn P7C55DD6B_wire_handle_some_stream_sink__method__ConcatenateWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<ConcatenateWith> + UnwindSafe,
     key: impl Wire2Api<u32> + UnwindSafe,
@@ -2268,7 +2350,7 @@ fn wire_handle_some_stream_sink__method__ConcatenateWith_impl(
         },
     )
 }
-fn wire_handle_some_stream_sink_at_1__method__ConcatenateWith_impl(
+fn P7C55DD6B_wire_handle_some_stream_sink_at_1__method__ConcatenateWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<ConcatenateWith> + UnwindSafe,
 ) {
@@ -2289,7 +2371,7 @@ fn wire_handle_some_stream_sink_at_1__method__ConcatenateWith_impl(
         },
     )
 }
-fn wire_handle_some_static_stream_sink__static_method__ConcatenateWith_impl(
+fn P7C55DD6B_wire_handle_some_static_stream_sink__static_method__ConcatenateWith_impl(
     port_: MessagePort,
     key: impl Wire2Api<u32> + UnwindSafe,
     max: impl Wire2Api<u32> + UnwindSafe,
@@ -2313,7 +2395,7 @@ fn wire_handle_some_static_stream_sink__static_method__ConcatenateWith_impl(
         },
     )
 }
-fn wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith_impl(
+fn P7C55DD6B_wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith_impl(
     port_: MessagePort,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(

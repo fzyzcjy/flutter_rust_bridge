@@ -18,33 +18,33 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
 // Section: api2wire
 
   @protected
-  ffi.Pointer<wire_uint_8_list> api2wire_String(String raw) {
+  ffi.Pointer<P7C55DD6B_wire_uint_8_list> api2wire_String(String raw) {
     return api2wire_uint_8_list(utf8.encoder.convert(raw));
   }
 
   @protected
-  ffi.Pointer<wire_Point> api2wire_box_autoadd_point(Point raw) {
+  ffi.Pointer<P7C55DD6B_wire_Point> api2wire_box_autoadd_point(Point raw) {
     final ptr = inner.new_box_autoadd_point_0();
     _api_fill_to_wire_point(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<wire_Size> api2wire_box_autoadd_size(Size raw) {
+  ffi.Pointer<P7C55DD6B_wire_Size> api2wire_box_autoadd_size(Size raw) {
     final ptr = inner.new_box_autoadd_size_0();
     _api_fill_to_wire_size(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<wire_TreeNode> api2wire_box_autoadd_tree_node(TreeNode raw) {
+  ffi.Pointer<P7C55DD6B_wire_TreeNode> api2wire_box_autoadd_tree_node(TreeNode raw) {
     final ptr = inner.new_box_autoadd_tree_node_0();
     _api_fill_to_wire_tree_node(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<wire_list_size> api2wire_list_size(List<Size> raw) {
+  ffi.Pointer<P7C55DD6B_wire_list_size> api2wire_list_size(List<Size> raw) {
     final ans = inner.new_list_size_0(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       _api_fill_to_wire_size(raw[i], ans.ref.ptr[i]);
@@ -53,7 +53,7 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   }
 
   @protected
-  ffi.Pointer<wire_list_tree_node> api2wire_list_tree_node(List<TreeNode> raw) {
+  ffi.Pointer<P7C55DD6B_wire_list_tree_node> api2wire_list_tree_node(List<TreeNode> raw) {
     final ans = inner.new_list_tree_node_0(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       _api_fill_to_wire_tree_node(raw[i], ans.ref.ptr[i]);
@@ -62,7 +62,7 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   }
 
   @protected
-  ffi.Pointer<wire_uint_8_list> api2wire_uint_8_list(Uint8List raw) {
+  ffi.Pointer<P7C55DD6B_wire_uint_8_list> api2wire_uint_8_list(Uint8List raw) {
     final ans = inner.new_uint_8_list_0(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
@@ -71,29 +71,29 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
 
 // Section: api_fill_to_wire
 
-  void _api_fill_to_wire_box_autoadd_point(Point apiObj, ffi.Pointer<wire_Point> wireObj) {
+  void _api_fill_to_wire_box_autoadd_point(Point apiObj, ffi.Pointer<P7C55DD6B_wire_Point> wireObj) {
     _api_fill_to_wire_point(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_size(Size apiObj, ffi.Pointer<wire_Size> wireObj) {
+  void _api_fill_to_wire_box_autoadd_size(Size apiObj, ffi.Pointer<P7C55DD6B_wire_Size> wireObj) {
     _api_fill_to_wire_size(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_tree_node(TreeNode apiObj, ffi.Pointer<wire_TreeNode> wireObj) {
+  void _api_fill_to_wire_box_autoadd_tree_node(TreeNode apiObj, ffi.Pointer<P7C55DD6B_wire_TreeNode> wireObj) {
     _api_fill_to_wire_tree_node(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_point(Point apiObj, wire_Point wireObj) {
+  void _api_fill_to_wire_point(Point apiObj, P7C55DD6B_wire_Point wireObj) {
     wireObj.x = api2wire_f64(apiObj.x);
     wireObj.y = api2wire_f64(apiObj.y);
   }
 
-  void _api_fill_to_wire_size(Size apiObj, wire_Size wireObj) {
+  void _api_fill_to_wire_size(Size apiObj, P7C55DD6B_wire_Size wireObj) {
     wireObj.width = api2wire_i32(apiObj.width);
     wireObj.height = api2wire_i32(apiObj.height);
   }
 
-  void _api_fill_to_wire_tree_node(TreeNode apiObj, wire_TreeNode wireObj) {
+  void _api_fill_to_wire_tree_node(TreeNode apiObj, P7C55DD6B_wire_TreeNode wireObj) {
     wireObj.name = api2wire_String(apiObj.name);
     wireObj.children = api2wire_list_tree_node(apiObj.children);
   }
@@ -180,8 +180,8 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
 
   void P7C55DD6B_wire_draw_mandelbrot(
     int port_,
-    ffi.Pointer<wire_Size> image_size,
-    ffi.Pointer<wire_Point> zoom_point,
+    ffi.Pointer<P7C55DD6B_wire_Size> image_size,
+    ffi.Pointer<P7C55DD6B_wire_Point> zoom_point,
     double scale,
     int num_threads,
   ) {
@@ -196,14 +196,14 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
 
   late final _P7C55DD6B_wire_draw_mandelbrotPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_Size>, ffi.Pointer<wire_Point>, ffi.Double,
+          ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_Size>, ffi.Pointer<P7C55DD6B_wire_Point>, ffi.Double,
               ffi.Int32)>>('P7C55DD6B_wire_draw_mandelbrot');
   late final _P7C55DD6B_wire_draw_mandelbrot = _P7C55DD6B_wire_draw_mandelbrotPtr.asFunction<
-      void Function(int, ffi.Pointer<wire_Size>, ffi.Pointer<wire_Point>, double, int)>();
+      void Function(int, ffi.Pointer<P7C55DD6B_wire_Size>, ffi.Pointer<P7C55DD6B_wire_Point>, double, int)>();
 
   void P7C55DD6B_wire_passing_complex_structs(
     int port_,
-    ffi.Pointer<wire_TreeNode> root,
+    ffi.Pointer<P7C55DD6B_wire_TreeNode> root,
   ) {
     return _P7C55DD6B_wire_passing_complex_structs(
       port_,
@@ -212,10 +212,10 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   }
 
   late final _P7C55DD6B_wire_passing_complex_structsPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_TreeNode>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_TreeNode>)>>(
           'P7C55DD6B_wire_passing_complex_structs');
   late final _P7C55DD6B_wire_passing_complex_structs =
-      _P7C55DD6B_wire_passing_complex_structsPtr.asFunction<void Function(int, ffi.Pointer<wire_TreeNode>)>();
+      _P7C55DD6B_wire_passing_complex_structsPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_TreeNode>)>();
 
   void P7C55DD6B_wire_returning_structs_with_boxed_fields(
     int port_,
@@ -232,7 +232,7 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
 
   void P7C55DD6B_wire_off_topic_memory_test_input_array(
     int port_,
-    ffi.Pointer<wire_uint_8_list> input,
+    ffi.Pointer<P7C55DD6B_wire_uint_8_list> input,
   ) {
     return _P7C55DD6B_wire_off_topic_memory_test_input_array(
       port_,
@@ -241,10 +241,10 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   }
 
   late final _P7C55DD6B_wire_off_topic_memory_test_input_arrayPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>>(
           'P7C55DD6B_wire_off_topic_memory_test_input_array');
   late final _P7C55DD6B_wire_off_topic_memory_test_input_array = _P7C55DD6B_wire_off_topic_memory_test_input_arrayPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+      .asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>();
 
   void P7C55DD6B_wire_off_topic_memory_test_output_zero_copy_buffer(
     int port_,
@@ -280,7 +280,7 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
 
   void P7C55DD6B_wire_off_topic_memory_test_input_vec_of_object(
     int port_,
-    ffi.Pointer<wire_list_size> input,
+    ffi.Pointer<P7C55DD6B_wire_list_size> input,
   ) {
     return _P7C55DD6B_wire_off_topic_memory_test_input_vec_of_object(
       port_,
@@ -289,11 +289,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   }
 
   late final _P7C55DD6B_wire_off_topic_memory_test_input_vec_of_objectPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_size>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_list_size>)>>(
           'P7C55DD6B_wire_off_topic_memory_test_input_vec_of_object');
   late final _P7C55DD6B_wire_off_topic_memory_test_input_vec_of_object =
       _P7C55DD6B_wire_off_topic_memory_test_input_vec_of_objectPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_list_size>)>();
+          void Function(int, ffi.Pointer<P7C55DD6B_wire_list_size>)>();
 
   void P7C55DD6B_wire_off_topic_memory_test_output_vec_of_object(
     int port_,
@@ -313,7 +313,7 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
 
   void P7C55DD6B_wire_off_topic_memory_test_input_complex_struct(
     int port_,
-    ffi.Pointer<wire_TreeNode> input,
+    ffi.Pointer<P7C55DD6B_wire_TreeNode> input,
   ) {
     return _P7C55DD6B_wire_off_topic_memory_test_input_complex_struct(
       port_,
@@ -322,11 +322,11 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   }
 
   late final _P7C55DD6B_wire_off_topic_memory_test_input_complex_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_TreeNode>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_TreeNode>)>>(
           'P7C55DD6B_wire_off_topic_memory_test_input_complex_struct');
   late final _P7C55DD6B_wire_off_topic_memory_test_input_complex_struct =
       _P7C55DD6B_wire_off_topic_memory_test_input_complex_structPtr.asFunction<
-          void Function(int, ffi.Pointer<wire_TreeNode>)>();
+          void Function(int, ffi.Pointer<P7C55DD6B_wire_TreeNode>)>();
 
   void P7C55DD6B_wire_off_topic_memory_test_output_complex_struct(
     int port_,
@@ -370,32 +370,34 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _P7C55DD6B_wire_off_topic_deliberately_panic =
       _P7C55DD6B_wire_off_topic_deliberately_panicPtr.asFunction<void Function(int)>();
 
-  ffi.Pointer<wire_Point> new_box_autoadd_point_0() {
+  ffi.Pointer<P7C55DD6B_wire_Point> new_box_autoadd_point_0() {
     return _new_box_autoadd_point_0();
   }
 
   late final _new_box_autoadd_point_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Point> Function()>>('new_box_autoadd_point_0');
-  late final _new_box_autoadd_point_0 = _new_box_autoadd_point_0Ptr.asFunction<ffi.Pointer<wire_Point> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_Point> Function()>>('new_box_autoadd_point_0');
+  late final _new_box_autoadd_point_0 =
+      _new_box_autoadd_point_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_Point> Function()>();
 
-  ffi.Pointer<wire_Size> new_box_autoadd_size_0() {
+  ffi.Pointer<P7C55DD6B_wire_Size> new_box_autoadd_size_0() {
     return _new_box_autoadd_size_0();
   }
 
   late final _new_box_autoadd_size_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_Size> Function()>>('new_box_autoadd_size_0');
-  late final _new_box_autoadd_size_0 = _new_box_autoadd_size_0Ptr.asFunction<ffi.Pointer<wire_Size> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_Size> Function()>>('new_box_autoadd_size_0');
+  late final _new_box_autoadd_size_0 =
+      _new_box_autoadd_size_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_Size> Function()>();
 
-  ffi.Pointer<wire_TreeNode> new_box_autoadd_tree_node_0() {
+  ffi.Pointer<P7C55DD6B_wire_TreeNode> new_box_autoadd_tree_node_0() {
     return _new_box_autoadd_tree_node_0();
   }
 
   late final _new_box_autoadd_tree_node_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_TreeNode> Function()>>('new_box_autoadd_tree_node_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_TreeNode> Function()>>('new_box_autoadd_tree_node_0');
   late final _new_box_autoadd_tree_node_0 =
-      _new_box_autoadd_tree_node_0Ptr.asFunction<ffi.Pointer<wire_TreeNode> Function()>();
+      _new_box_autoadd_tree_node_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_TreeNode> Function()>();
 
-  ffi.Pointer<wire_list_size> new_list_size_0(
+  ffi.Pointer<P7C55DD6B_wire_list_size> new_list_size_0(
     int len,
   ) {
     return _new_list_size_0(
@@ -404,10 +406,10 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   }
 
   late final _new_list_size_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_size> Function(ffi.Int32)>>('new_list_size_0');
-  late final _new_list_size_0 = _new_list_size_0Ptr.asFunction<ffi.Pointer<wire_list_size> Function(int)>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_list_size> Function(ffi.Int32)>>('new_list_size_0');
+  late final _new_list_size_0 = _new_list_size_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_list_size> Function(int)>();
 
-  ffi.Pointer<wire_list_tree_node> new_list_tree_node_0(
+  ffi.Pointer<P7C55DD6B_wire_list_tree_node> new_list_tree_node_0(
     int len,
   ) {
     return _new_list_tree_node_0(
@@ -416,11 +418,12 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   }
 
   late final _new_list_tree_node_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_tree_node> Function(ffi.Int32)>>('new_list_tree_node_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_list_tree_node> Function(ffi.Int32)>>(
+          'new_list_tree_node_0');
   late final _new_list_tree_node_0 =
-      _new_list_tree_node_0Ptr.asFunction<ffi.Pointer<wire_list_tree_node> Function(int)>();
+      _new_list_tree_node_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_list_tree_node> Function(int)>();
 
-  ffi.Pointer<wire_uint_8_list> new_uint_8_list_0(
+  ffi.Pointer<P7C55DD6B_wire_uint_8_list> new_uint_8_list_0(
     int len,
   ) {
     return _new_uint_8_list_0(
@@ -429,8 +432,9 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   }
 
   late final _new_uint_8_list_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list_0');
-  late final _new_uint_8_list_0 = _new_uint_8_list_0Ptr.asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list_0');
+  late final _new_uint_8_list_0 =
+      _new_uint_8_list_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_uint_8_list> Function(int)>();
 
   void free_WireSyncReturn(
     WireSyncReturn ptr,
@@ -447,7 +451,7 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
 
 class _Dart_Handle extends ffi.Opaque {}
 
-class wire_Size extends ffi.Struct {
+class P7C55DD6B_wire_Size extends ffi.Struct {
   @ffi.Int32()
   external int width;
 
@@ -455,7 +459,7 @@ class wire_Size extends ffi.Struct {
   external int height;
 }
 
-class wire_Point extends ffi.Struct {
+class P7C55DD6B_wire_Point extends ffi.Struct {
   @ffi.Double()
   external double x;
 
@@ -463,28 +467,28 @@ class wire_Point extends ffi.Struct {
   external double y;
 }
 
-class wire_uint_8_list extends ffi.Struct {
+class P7C55DD6B_wire_uint_8_list extends ffi.Struct {
   external ffi.Pointer<ffi.Uint8> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class wire_list_tree_node extends ffi.Struct {
-  external ffi.Pointer<wire_TreeNode> ptr;
+class P7C55DD6B_wire_list_tree_node extends ffi.Struct {
+  external ffi.Pointer<P7C55DD6B_wire_TreeNode> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class wire_TreeNode extends ffi.Struct {
-  external ffi.Pointer<wire_uint_8_list> name;
+class P7C55DD6B_wire_TreeNode extends ffi.Struct {
+  external ffi.Pointer<P7C55DD6B_wire_uint_8_list> name;
 
-  external ffi.Pointer<wire_list_tree_node> children;
+  external ffi.Pointer<P7C55DD6B_wire_list_tree_node> children;
 }
 
-class wire_list_size extends ffi.Struct {
-  external ffi.Pointer<wire_Size> ptr;
+class P7C55DD6B_wire_list_size extends ffi.Struct {
+  external ffi.Pointer<P7C55DD6B_wire_Size> ptr;
 
   @ffi.Int32()
   external int len;

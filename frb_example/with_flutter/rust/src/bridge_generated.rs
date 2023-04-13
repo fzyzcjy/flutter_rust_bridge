@@ -21,7 +21,7 @@ use std::sync::Arc;
 
 // Section: wire functions
 
-fn wire_draw_mandelbrot_impl(
+fn P7C55DD6B_wire_draw_mandelbrot_impl(
     port_: MessagePort,
     image_size: impl Wire2Api<Size> + UnwindSafe,
     zoom_point: impl Wire2Api<Point> + UnwindSafe,
@@ -45,7 +45,7 @@ fn wire_draw_mandelbrot_impl(
         },
     )
 }
-fn wire_passing_complex_structs_impl(
+fn P7C55DD6B_wire_passing_complex_structs_impl(
     port_: MessagePort,
     root: impl Wire2Api<TreeNode> + UnwindSafe,
 ) {
@@ -61,7 +61,7 @@ fn wire_passing_complex_structs_impl(
         },
     )
 }
-fn wire_returning_structs_with_boxed_fields_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_returning_structs_with_boxed_fields_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "returning_structs_with_boxed_fields",
@@ -71,7 +71,7 @@ fn wire_returning_structs_with_boxed_fields_impl(port_: MessagePort) {
         move || move |task_callback| Ok(returning_structs_with_boxed_fields()),
     )
 }
-fn wire_off_topic_memory_test_input_array_impl(
+fn P7C55DD6B_wire_off_topic_memory_test_input_array_impl(
     port_: MessagePort,
     input: impl Wire2Api<Vec<u8>> + UnwindSafe,
 ) {
@@ -87,7 +87,7 @@ fn wire_off_topic_memory_test_input_array_impl(
         },
     )
 }
-fn wire_off_topic_memory_test_output_zero_copy_buffer_impl(
+fn P7C55DD6B_wire_off_topic_memory_test_output_zero_copy_buffer_impl(
     port_: MessagePort,
     len: impl Wire2Api<i32> + UnwindSafe,
 ) {
@@ -103,7 +103,7 @@ fn wire_off_topic_memory_test_output_zero_copy_buffer_impl(
         },
     )
 }
-fn wire_off_topic_memory_test_output_vec_u8_impl(
+fn P7C55DD6B_wire_off_topic_memory_test_output_vec_u8_impl(
     port_: MessagePort,
     len: impl Wire2Api<i32> + UnwindSafe,
 ) {
@@ -119,7 +119,7 @@ fn wire_off_topic_memory_test_output_vec_u8_impl(
         },
     )
 }
-fn wire_off_topic_memory_test_input_vec_of_object_impl(
+fn P7C55DD6B_wire_off_topic_memory_test_input_vec_of_object_impl(
     port_: MessagePort,
     input: impl Wire2Api<Vec<Size>> + UnwindSafe,
 ) {
@@ -135,7 +135,7 @@ fn wire_off_topic_memory_test_input_vec_of_object_impl(
         },
     )
 }
-fn wire_off_topic_memory_test_output_vec_of_object_impl(
+fn P7C55DD6B_wire_off_topic_memory_test_output_vec_of_object_impl(
     port_: MessagePort,
     len: impl Wire2Api<i32> + UnwindSafe,
 ) {
@@ -151,7 +151,7 @@ fn wire_off_topic_memory_test_output_vec_of_object_impl(
         },
     )
 }
-fn wire_off_topic_memory_test_input_complex_struct_impl(
+fn P7C55DD6B_wire_off_topic_memory_test_input_complex_struct_impl(
     port_: MessagePort,
     input: impl Wire2Api<TreeNode> + UnwindSafe,
 ) {
@@ -167,7 +167,7 @@ fn wire_off_topic_memory_test_input_complex_struct_impl(
         },
     )
 }
-fn wire_off_topic_memory_test_output_complex_struct_impl(
+fn P7C55DD6B_wire_off_topic_memory_test_output_complex_struct_impl(
     port_: MessagePort,
     len: impl Wire2Api<i32> + UnwindSafe,
 ) {
@@ -183,7 +183,7 @@ fn wire_off_topic_memory_test_output_complex_struct_impl(
         },
     )
 }
-fn wire_off_topic_deliberately_return_error_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_off_topic_deliberately_return_error_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_deliberately_return_error",
@@ -193,7 +193,7 @@ fn wire_off_topic_deliberately_return_error_impl(port_: MessagePort) {
         move || move |task_callback| off_topic_deliberately_return_error(),
     )
 }
-fn wire_off_topic_deliberately_panic_impl(port_: MessagePort) {
+fn P7C55DD6B_wire_off_topic_deliberately_panic_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
             debug_name: "off_topic_deliberately_panic",

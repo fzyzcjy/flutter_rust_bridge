@@ -3,7 +3,7 @@ use super::*;
 
 #[no_mangle]
 pub extern "C" fn P7C55DD6B_wire_simple_adder_1(port_: i64, a: i32, b: i32) {
-    wire_simple_adder_1_impl(port_, a, b)
+    P7C55DD6B_wire_simple_adder_1_impl(port_, a, b)
 }
 
 // Section: allocate functions

@@ -80,7 +80,8 @@ pub fn generate(ir_file: &IrFile, config: &Opts, wasm_funcs: &[IrFuncDisplay]) -
 
     let regex = Regex::new(r"(<| )(wire_[\d\w]+)").unwrap();
     let curr = impl_code.io.body;
-    impl_code.io.body = regex.replace_all(&curr, format!("${{1}}{}${{2}}", config.get_unique_id()))
+    impl_code.io.body = regex
+        .replace_all(&curr, format!("${{1}}{}${{2}}", config.get_unique_id()))
         .to_string();
 
     let file_prelude = generate_file_prelude();

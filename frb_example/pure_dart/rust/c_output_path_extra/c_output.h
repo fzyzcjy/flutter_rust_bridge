@@ -11,437 +11,437 @@ typedef bool (*DartPostCObjectFnType)(DartPort port_id, void *message);
 
 typedef struct DartCObject *WireSyncReturn;
 
-typedef struct wire_uint_8_list {
+typedef struct P7C55DD6B_wire_uint_8_list {
   uint8_t *ptr;
   int32_t len;
-} wire_uint_8_list;
+} P7C55DD6B_wire_uint_8_list;
 
-typedef struct wire_MySize {
+typedef struct P7C55DD6B_wire_MySize {
   int32_t width;
   int32_t height;
-} wire_MySize;
+} P7C55DD6B_wire_MySize;
 
-typedef struct wire_NewTypeInt {
+typedef struct P7C55DD6B_wire_NewTypeInt {
   int64_t field0;
-} wire_NewTypeInt;
+} P7C55DD6B_wire_NewTypeInt;
 
-typedef struct wire_list_my_size {
-  struct wire_MySize *ptr;
+typedef struct P7C55DD6B_wire_list_my_size {
+  struct P7C55DD6B_wire_MySize *ptr;
   int32_t len;
-} wire_list_my_size;
+} P7C55DD6B_wire_list_my_size;
 
-typedef struct wire_StringList {
-  struct wire_uint_8_list **ptr;
+typedef struct P7C55DD6B_wire_StringList {
+  struct P7C55DD6B_wire_uint_8_list **ptr;
   int32_t len;
-} wire_StringList;
+} P7C55DD6B_wire_StringList;
 
-typedef struct wire_list_my_tree_node {
-  struct wire_MyTreeNode *ptr;
+typedef struct P7C55DD6B_wire_list_my_tree_node {
+  struct P7C55DD6B_wire_MyTreeNode *ptr;
   int32_t len;
-} wire_list_my_tree_node;
+} P7C55DD6B_wire_list_my_tree_node;
 
-typedef struct wire_MyTreeNode {
+typedef struct P7C55DD6B_wire_MyTreeNode {
   int32_t value_i32;
-  struct wire_uint_8_list *value_vec_u8;
+  struct P7C55DD6B_wire_uint_8_list *value_vec_u8;
   bool value_boolean;
-  struct wire_list_my_tree_node *children;
-} wire_MyTreeNode;
+  struct P7C55DD6B_wire_list_my_tree_node *children;
+} P7C55DD6B_wire_MyTreeNode;
 
-typedef struct wire_MyNestedStruct {
-  struct wire_MyTreeNode tree_node;
+typedef struct P7C55DD6B_wire_MyNestedStruct {
+  struct P7C55DD6B_wire_MyTreeNode tree_node;
   int32_t weekday;
-} wire_MyNestedStruct;
+} P7C55DD6B_wire_MyNestedStruct;
 
-typedef struct wire_int_8_list {
+typedef struct P7C55DD6B_wire_int_8_list {
   int8_t *ptr;
   int32_t len;
-} wire_int_8_list;
+} P7C55DD6B_wire_int_8_list;
 
-typedef struct wire_int_32_list {
+typedef struct P7C55DD6B_wire_int_32_list {
   int32_t *ptr;
   int32_t len;
-} wire_int_32_list;
+} P7C55DD6B_wire_int_32_list;
 
-typedef struct wire_float_32_list {
+typedef struct P7C55DD6B_wire_float_32_list {
   float *ptr;
   int32_t len;
-} wire_float_32_list;
+} P7C55DD6B_wire_float_32_list;
 
-typedef struct wire_float_64_list {
+typedef struct P7C55DD6B_wire_float_64_list {
   double *ptr;
   int32_t len;
-} wire_float_64_list;
+} P7C55DD6B_wire_float_64_list;
 
-typedef struct wire_Attribute {
-  struct wire_uint_8_list *key;
-  struct wire_uint_8_list *value;
-} wire_Attribute;
+typedef struct P7C55DD6B_wire_Attribute {
+  struct P7C55DD6B_wire_uint_8_list *key;
+  struct P7C55DD6B_wire_uint_8_list *value;
+} P7C55DD6B_wire_Attribute;
 
-typedef struct wire_list_attribute {
-  struct wire_Attribute *ptr;
+typedef struct P7C55DD6B_wire_list_attribute {
+  struct P7C55DD6B_wire_Attribute *ptr;
   int32_t len;
-} wire_list_attribute;
+} P7C55DD6B_wire_list_attribute;
 
-typedef struct wire_list_opt_box_autoadd_attribute {
-  struct wire_Attribute **ptr;
+typedef struct P7C55DD6B_wire_list_opt_box_autoadd_attribute {
+  struct P7C55DD6B_wire_Attribute **ptr;
   int32_t len;
-} wire_list_opt_box_autoadd_attribute;
+} P7C55DD6B_wire_list_opt_box_autoadd_attribute;
 
-typedef struct wire_ExoticOptionals {
+typedef struct P7C55DD6B_wire_ExoticOptionals {
   int32_t *int32;
   int64_t *int64;
   double *float64;
   bool *boolean;
-  struct wire_uint_8_list *zerocopy;
-  struct wire_int_8_list *int8list;
-  struct wire_uint_8_list *uint8list;
-  struct wire_int_32_list *int32list;
-  struct wire_float_32_list *float32list;
-  struct wire_float_64_list *float64list;
-  struct wire_list_attribute *attributes;
-  struct wire_list_opt_box_autoadd_attribute *attributes_nullable;
-  struct wire_list_opt_box_autoadd_attribute *nullable_attributes;
-  struct wire_NewTypeInt *newtypeint;
-} wire_ExoticOptionals;
+  struct P7C55DD6B_wire_uint_8_list *zerocopy;
+  struct P7C55DD6B_wire_int_8_list *int8list;
+  struct P7C55DD6B_wire_uint_8_list *uint8list;
+  struct P7C55DD6B_wire_int_32_list *int32list;
+  struct P7C55DD6B_wire_float_32_list *float32list;
+  struct P7C55DD6B_wire_float_64_list *float64list;
+  struct P7C55DD6B_wire_list_attribute *attributes;
+  struct P7C55DD6B_wire_list_opt_box_autoadd_attribute *attributes_nullable;
+  struct P7C55DD6B_wire_list_opt_box_autoadd_attribute *nullable_attributes;
+  struct P7C55DD6B_wire_NewTypeInt *newtypeint;
+} P7C55DD6B_wire_ExoticOptionals;
 
-typedef struct wire_Note {
+typedef struct P7C55DD6B_wire_Note {
   int32_t *day;
-  struct wire_uint_8_list *body;
-} wire_Note;
+  struct P7C55DD6B_wire_uint_8_list *body;
+} P7C55DD6B_wire_Note;
 
-typedef struct wire_Customized {
-  struct wire_uint_8_list *final_field;
-  struct wire_uint_8_list *non_final_field;
-} wire_Customized;
+typedef struct P7C55DD6B_wire_Customized {
+  struct P7C55DD6B_wire_uint_8_list *final_field;
+  struct P7C55DD6B_wire_uint_8_list *non_final_field;
+} P7C55DD6B_wire_Customized;
 
-typedef struct wire_KitchenSink_Empty {
+typedef struct P7C55DD6B_wire_KitchenSink_Empty {
 
-} wire_KitchenSink_Empty;
+} P7C55DD6B_wire_KitchenSink_Empty;
 
-typedef struct wire_KitchenSink_Primitives {
+typedef struct P7C55DD6B_wire_KitchenSink_Primitives {
   int32_t int32;
   double float64;
   bool boolean;
-} wire_KitchenSink_Primitives;
+} P7C55DD6B_wire_KitchenSink_Primitives;
 
-typedef struct wire_KitchenSink_Nested {
+typedef struct P7C55DD6B_wire_KitchenSink_Nested {
   int32_t field0;
-  struct wire_KitchenSink *field1;
-} wire_KitchenSink_Nested;
+  struct P7C55DD6B_wire_KitchenSink *field1;
+} P7C55DD6B_wire_KitchenSink_Nested;
 
-typedef struct wire_KitchenSink_Optional {
+typedef struct P7C55DD6B_wire_KitchenSink_Optional {
   int32_t *field0;
   int32_t *field1;
-} wire_KitchenSink_Optional;
+} P7C55DD6B_wire_KitchenSink_Optional;
 
-typedef struct wire_KitchenSink_Buffer {
-  struct wire_uint_8_list *field0;
-} wire_KitchenSink_Buffer;
+typedef struct P7C55DD6B_wire_KitchenSink_Buffer {
+  struct P7C55DD6B_wire_uint_8_list *field0;
+} P7C55DD6B_wire_KitchenSink_Buffer;
 
-typedef struct wire_KitchenSink_Enums {
+typedef struct P7C55DD6B_wire_KitchenSink_Enums {
   int32_t field0;
-} wire_KitchenSink_Enums;
+} P7C55DD6B_wire_KitchenSink_Enums;
 
 typedef union KitchenSinkKind {
-  struct wire_KitchenSink_Empty *Empty;
-  struct wire_KitchenSink_Primitives *Primitives;
-  struct wire_KitchenSink_Nested *Nested;
-  struct wire_KitchenSink_Optional *Optional;
-  struct wire_KitchenSink_Buffer *Buffer;
-  struct wire_KitchenSink_Enums *Enums;
+  struct P7C55DD6B_wire_KitchenSink_Empty *Empty;
+  struct P7C55DD6B_wire_KitchenSink_Primitives *Primitives;
+  struct P7C55DD6B_wire_KitchenSink_Nested *Nested;
+  struct P7C55DD6B_wire_KitchenSink_Optional *Optional;
+  struct P7C55DD6B_wire_KitchenSink_Buffer *Buffer;
+  struct P7C55DD6B_wire_KitchenSink_Enums *Enums;
 } KitchenSinkKind;
 
-typedef struct wire_KitchenSink {
+typedef struct P7C55DD6B_wire_KitchenSink {
   int32_t tag;
   union KitchenSinkKind *kind;
-} wire_KitchenSink;
+} P7C55DD6B_wire_KitchenSink;
 
-typedef struct wire_MyStruct {
+typedef struct P7C55DD6B_wire_MyStruct {
   bool content;
-} wire_MyStruct;
+} P7C55DD6B_wire_MyStruct;
 
-typedef struct wire_ApplicationEnvVar {
-  struct wire_uint_8_list *field0;
+typedef struct P7C55DD6B_wire_ApplicationEnvVar {
+  struct P7C55DD6B_wire_uint_8_list *field0;
   bool field1;
-} wire_ApplicationEnvVar;
+} P7C55DD6B_wire_ApplicationEnvVar;
 
-typedef struct wire_list_application_env_var {
-  struct wire_ApplicationEnvVar *ptr;
+typedef struct P7C55DD6B_wire_list_application_env_var {
+  struct P7C55DD6B_wire_ApplicationEnvVar *ptr;
   int32_t len;
-} wire_list_application_env_var;
+} P7C55DD6B_wire_list_application_env_var;
 
-typedef struct wire_ApplicationEnv {
-  struct wire_list_application_env_var *vars;
-} wire_ApplicationEnv;
+typedef struct P7C55DD6B_wire_ApplicationEnv {
+  struct P7C55DD6B_wire_list_application_env_var *vars;
+} P7C55DD6B_wire_ApplicationEnv;
 
-typedef struct wire_ApplicationSettings {
-  struct wire_uint_8_list *name;
-  struct wire_uint_8_list *version;
+typedef struct P7C55DD6B_wire_ApplicationSettings {
+  struct P7C55DD6B_wire_uint_8_list *name;
+  struct P7C55DD6B_wire_uint_8_list *version;
   int32_t mode;
-  struct wire_ApplicationEnv *env;
-  struct wire_ApplicationEnv *env_optional;
-} wire_ApplicationSettings;
+  struct P7C55DD6B_wire_ApplicationEnv *env;
+  struct P7C55DD6B_wire_ApplicationEnv *env_optional;
+} P7C55DD6B_wire_ApplicationSettings;
 
-typedef struct wire_Numbers {
-  struct wire_int_32_list *field0;
-} wire_Numbers;
+typedef struct P7C55DD6B_wire_Numbers {
+  struct P7C55DD6B_wire_int_32_list *field0;
+} P7C55DD6B_wire_Numbers;
 
-typedef struct wire_Sequences {
-  struct wire_int_32_list *field0;
-} wire_Sequences;
+typedef struct P7C55DD6B_wire_Sequences {
+  struct P7C55DD6B_wire_int_32_list *field0;
+} P7C55DD6B_wire_Sequences;
 
-typedef struct wire_UserId {
+typedef struct P7C55DD6B_wire_UserId {
   uint32_t value;
-} wire_UserId;
+} P7C55DD6B_wire_UserId;
 
-typedef struct wire_Speed_Unknown {
+typedef struct P7C55DD6B_wire_Speed_Unknown {
 
-} wire_Speed_Unknown;
+} P7C55DD6B_wire_Speed_Unknown;
 
-typedef struct wire_Speed_GPS {
+typedef struct P7C55DD6B_wire_Speed_GPS {
   double field0;
-} wire_Speed_GPS;
+} P7C55DD6B_wire_Speed_GPS;
 
 typedef union SpeedKind {
-  struct wire_Speed_Unknown *Unknown;
-  struct wire_Speed_GPS *GPS;
+  struct P7C55DD6B_wire_Speed_Unknown *Unknown;
+  struct P7C55DD6B_wire_Speed_GPS *GPS;
 } SpeedKind;
 
-typedef struct wire_Speed {
+typedef struct P7C55DD6B_wire_Speed {
   int32_t tag;
   union SpeedKind *kind;
-} wire_Speed;
+} P7C55DD6B_wire_Speed;
 
-typedef struct wire_Measure_Speed {
-  struct wire_Speed *field0;
-} wire_Measure_Speed;
+typedef struct P7C55DD6B_wire_Measure_Speed {
+  struct P7C55DD6B_wire_Speed *field0;
+} P7C55DD6B_wire_Measure_Speed;
 
-typedef struct wire_Distance_Unknown {
+typedef struct P7C55DD6B_wire_Distance_Unknown {
 
-} wire_Distance_Unknown;
+} P7C55DD6B_wire_Distance_Unknown;
 
-typedef struct wire_Distance_Map {
+typedef struct P7C55DD6B_wire_Distance_Map {
   double field0;
-} wire_Distance_Map;
+} P7C55DD6B_wire_Distance_Map;
 
 typedef union DistanceKind {
-  struct wire_Distance_Unknown *Unknown;
-  struct wire_Distance_Map *Map;
+  struct P7C55DD6B_wire_Distance_Unknown *Unknown;
+  struct P7C55DD6B_wire_Distance_Map *Map;
 } DistanceKind;
 
-typedef struct wire_Distance {
+typedef struct P7C55DD6B_wire_Distance {
   int32_t tag;
   union DistanceKind *kind;
-} wire_Distance;
+} P7C55DD6B_wire_Distance;
 
-typedef struct wire_Measure_Distance {
-  struct wire_Distance *field0;
-} wire_Measure_Distance;
+typedef struct P7C55DD6B_wire_Measure_Distance {
+  struct P7C55DD6B_wire_Distance *field0;
+} P7C55DD6B_wire_Measure_Distance;
 
 typedef union MeasureKind {
-  struct wire_Measure_Speed *Speed;
-  struct wire_Measure_Distance *Distance;
+  struct P7C55DD6B_wire_Measure_Speed *Speed;
+  struct P7C55DD6B_wire_Measure_Distance *Distance;
 } MeasureKind;
 
-typedef struct wire_Measure {
+typedef struct P7C55DD6B_wire_Measure {
   int32_t tag;
   union MeasureKind *kind;
-} wire_Measure;
+} P7C55DD6B_wire_Measure;
 
-typedef struct wire_int_64_list {
+typedef struct P7C55DD6B_wire_int_64_list {
   int64_t *ptr;
   int32_t len;
-} wire_int_64_list;
+} P7C55DD6B_wire_int_64_list;
 
-typedef struct wire_FeatureChrono {
+typedef struct P7C55DD6B_wire_FeatureChrono {
   int64_t utc;
   int64_t local;
   int64_t duration;
   int64_t naive;
-} wire_FeatureChrono;
+} P7C55DD6B_wire_FeatureChrono;
 
-typedef struct wire_FeatureUuid {
-  struct wire_uint_8_list *one;
-  struct wire_uint_8_list *many;
-} wire_FeatureUuid;
+typedef struct P7C55DD6B_wire_FeatureUuid {
+  struct P7C55DD6B_wire_uint_8_list *one;
+  struct P7C55DD6B_wire_uint_8_list *many;
+} P7C55DD6B_wire_FeatureUuid;
 
-typedef struct wire_MessageId {
-  struct wire_uint_8_list *field0;
-} wire_MessageId;
+typedef struct P7C55DD6B_wire_MessageId {
+  struct P7C55DD6B_wire_uint_8_list *field0;
+} P7C55DD6B_wire_MessageId;
 
-typedef struct wire_Blob {
-  struct wire_uint_8_list *field0;
-} wire_Blob;
+typedef struct P7C55DD6B_wire_Blob {
+  struct P7C55DD6B_wire_uint_8_list *field0;
+} P7C55DD6B_wire_Blob;
 
-typedef struct wire_FeedId {
-  struct wire_uint_8_list *field0;
-} wire_FeedId;
+typedef struct P7C55DD6B_wire_FeedId {
+  struct P7C55DD6B_wire_uint_8_list *field0;
+} P7C55DD6B_wire_FeedId;
 
-typedef struct wire_TestId {
-  struct wire_int_32_list *field0;
-} wire_TestId;
+typedef struct P7C55DD6B_wire_TestId {
+  struct P7C55DD6B_wire_int_32_list *field0;
+} P7C55DD6B_wire_TestId;
 
-typedef struct wire_list_test_id {
-  struct wire_TestId *ptr;
+typedef struct P7C55DD6B_wire_list_test_id {
+  struct P7C55DD6B_wire_TestId *ptr;
   int32_t len;
-} wire_list_test_id;
+} P7C55DD6B_wire_list_test_id;
 
-typedef struct wire_DartOpaque {
+typedef struct P7C55DD6B_wire_DartOpaque {
   int64_t port;
   uintptr_t handle;
-} wire_DartOpaque;
+} P7C55DD6B_wire_DartOpaque;
 
-typedef struct wire_list_DartOpaque {
-  struct wire_DartOpaque *ptr;
+typedef struct P7C55DD6B_wire_list_DartOpaque {
+  struct P7C55DD6B_wire_DartOpaque *ptr;
   int32_t len;
-} wire_list_DartOpaque;
+} P7C55DD6B_wire_list_DartOpaque;
 
-typedef struct wire_HideData {
+typedef struct P7C55DD6B_wire_HideData {
   const void *ptr;
-} wire_HideData;
+} P7C55DD6B_wire_HideData;
 
-typedef struct wire_EnumOpaque_Struct {
-  struct wire_HideData field0;
-} wire_EnumOpaque_Struct;
+typedef struct P7C55DD6B_wire_EnumOpaque_Struct {
+  struct P7C55DD6B_wire_HideData field0;
+} P7C55DD6B_wire_EnumOpaque_Struct;
 
-typedef struct wire_I32 {
+typedef struct P7C55DD6B_wire_I32 {
   const void *ptr;
-} wire_I32;
+} P7C55DD6B_wire_I32;
 
-typedef struct wire_EnumOpaque_Primitive {
-  struct wire_I32 field0;
-} wire_EnumOpaque_Primitive;
+typedef struct P7C55DD6B_wire_EnumOpaque_Primitive {
+  struct P7C55DD6B_wire_I32 field0;
+} P7C55DD6B_wire_EnumOpaque_Primitive;
 
-typedef struct wire_BoxDartDebug {
+typedef struct P7C55DD6B_wire_BoxDartDebug {
   const void *ptr;
-} wire_BoxDartDebug;
+} P7C55DD6B_wire_BoxDartDebug;
 
-typedef struct wire_EnumOpaque_TraitObj {
-  struct wire_BoxDartDebug field0;
-} wire_EnumOpaque_TraitObj;
+typedef struct P7C55DD6B_wire_EnumOpaque_TraitObj {
+  struct P7C55DD6B_wire_BoxDartDebug field0;
+} P7C55DD6B_wire_EnumOpaque_TraitObj;
 
-typedef struct wire_MutexHideData {
+typedef struct P7C55DD6B_wire_MutexHideData {
   const void *ptr;
-} wire_MutexHideData;
+} P7C55DD6B_wire_MutexHideData;
 
-typedef struct wire_EnumOpaque_Mutex {
-  struct wire_MutexHideData field0;
-} wire_EnumOpaque_Mutex;
+typedef struct P7C55DD6B_wire_EnumOpaque_Mutex {
+  struct P7C55DD6B_wire_MutexHideData field0;
+} P7C55DD6B_wire_EnumOpaque_Mutex;
 
-typedef struct wire_RwLockHideData {
+typedef struct P7C55DD6B_wire_RwLockHideData {
   const void *ptr;
-} wire_RwLockHideData;
+} P7C55DD6B_wire_RwLockHideData;
 
-typedef struct wire_EnumOpaque_RwLock {
-  struct wire_RwLockHideData field0;
-} wire_EnumOpaque_RwLock;
+typedef struct P7C55DD6B_wire_EnumOpaque_RwLock {
+  struct P7C55DD6B_wire_RwLockHideData field0;
+} P7C55DD6B_wire_EnumOpaque_RwLock;
 
 typedef union EnumOpaqueKind {
-  struct wire_EnumOpaque_Struct *Struct;
-  struct wire_EnumOpaque_Primitive *Primitive;
-  struct wire_EnumOpaque_TraitObj *TraitObj;
-  struct wire_EnumOpaque_Mutex *Mutex;
-  struct wire_EnumOpaque_RwLock *RwLock;
+  struct P7C55DD6B_wire_EnumOpaque_Struct *Struct;
+  struct P7C55DD6B_wire_EnumOpaque_Primitive *Primitive;
+  struct P7C55DD6B_wire_EnumOpaque_TraitObj *TraitObj;
+  struct P7C55DD6B_wire_EnumOpaque_Mutex *Mutex;
+  struct P7C55DD6B_wire_EnumOpaque_RwLock *RwLock;
 } EnumOpaqueKind;
 
-typedef struct wire_EnumOpaque {
+typedef struct P7C55DD6B_wire_EnumOpaque {
   int32_t tag;
   union EnumOpaqueKind *kind;
-} wire_EnumOpaque;
+} P7C55DD6B_wire_EnumOpaque;
 
-typedef struct wire_NonSendHideData {
+typedef struct P7C55DD6B_wire_NonSendHideData {
   const void *ptr;
-} wire_NonSendHideData;
+} P7C55DD6B_wire_NonSendHideData;
 
-typedef struct wire_list_HideData {
-  struct wire_HideData *ptr;
+typedef struct P7C55DD6B_wire_list_HideData {
+  struct P7C55DD6B_wire_HideData *ptr;
   int32_t len;
-} wire_list_HideData;
+} P7C55DD6B_wire_list_HideData;
 
-typedef struct wire_OpaqueNested {
-  struct wire_HideData first;
-  struct wire_HideData second;
-} wire_OpaqueNested;
+typedef struct P7C55DD6B_wire_OpaqueNested {
+  struct P7C55DD6B_wire_HideData first;
+  struct P7C55DD6B_wire_HideData second;
+} P7C55DD6B_wire_OpaqueNested;
 
-typedef struct wire_DartOpaqueNested {
-  struct wire_DartOpaque first;
-  struct wire_DartOpaque second;
-} wire_DartOpaqueNested;
+typedef struct P7C55DD6B_wire_DartOpaqueNested {
+  struct P7C55DD6B_wire_DartOpaque first;
+  struct P7C55DD6B_wire_DartOpaque second;
+} P7C55DD6B_wire_DartOpaqueNested;
 
-typedef struct wire_EnumDartOpaque_Primitive {
+typedef struct P7C55DD6B_wire_EnumDartOpaque_Primitive {
   int32_t field0;
-} wire_EnumDartOpaque_Primitive;
+} P7C55DD6B_wire_EnumDartOpaque_Primitive;
 
-typedef struct wire_EnumDartOpaque_Opaque {
-  struct wire_DartOpaque field0;
-} wire_EnumDartOpaque_Opaque;
+typedef struct P7C55DD6B_wire_EnumDartOpaque_Opaque {
+  struct P7C55DD6B_wire_DartOpaque field0;
+} P7C55DD6B_wire_EnumDartOpaque_Opaque;
 
 typedef union EnumDartOpaqueKind {
-  struct wire_EnumDartOpaque_Primitive *Primitive;
-  struct wire_EnumDartOpaque_Opaque *Opaque;
+  struct P7C55DD6B_wire_EnumDartOpaque_Primitive *Primitive;
+  struct P7C55DD6B_wire_EnumDartOpaque_Opaque *Opaque;
 } EnumDartOpaqueKind;
 
-typedef struct wire_EnumDartOpaque {
+typedef struct P7C55DD6B_wire_EnumDartOpaque {
   int32_t tag;
   union EnumDartOpaqueKind *kind;
-} wire_EnumDartOpaque;
+} P7C55DD6B_wire_EnumDartOpaque;
 
-typedef struct wire_Empty {
+typedef struct P7C55DD6B_wire_Empty {
 
-} wire_Empty;
+} P7C55DD6B_wire_Empty;
 
-typedef struct wire_list_weekdays {
+typedef struct P7C55DD6B_wire_list_weekdays {
   int32_t *ptr;
   int32_t len;
-} wire_list_weekdays;
+} P7C55DD6B_wire_list_weekdays;
 
-typedef struct wire_A {
-  struct wire_uint_8_list *a;
-} wire_A;
+typedef struct P7C55DD6B_wire_A {
+  struct P7C55DD6B_wire_uint_8_list *a;
+} P7C55DD6B_wire_A;
 
-typedef struct wire_Abc_A {
-  struct wire_A *field0;
-} wire_Abc_A;
+typedef struct P7C55DD6B_wire_Abc_A {
+  struct P7C55DD6B_wire_A *field0;
+} P7C55DD6B_wire_Abc_A;
 
-typedef struct wire_B {
+typedef struct P7C55DD6B_wire_B {
   int32_t b;
-} wire_B;
+} P7C55DD6B_wire_B;
 
-typedef struct wire_Abc_B {
-  struct wire_B *field0;
-} wire_Abc_B;
+typedef struct P7C55DD6B_wire_Abc_B {
+  struct P7C55DD6B_wire_B *field0;
+} P7C55DD6B_wire_Abc_B;
 
-typedef struct wire_C {
+typedef struct P7C55DD6B_wire_C {
   bool c;
-} wire_C;
+} P7C55DD6B_wire_C;
 
-typedef struct wire_Abc_C {
-  struct wire_C *field0;
-} wire_Abc_C;
+typedef struct P7C55DD6B_wire_Abc_C {
+  struct P7C55DD6B_wire_C *field0;
+} P7C55DD6B_wire_Abc_C;
 
-typedef struct wire_Abc_JustInt {
+typedef struct P7C55DD6B_wire_Abc_JustInt {
   int32_t field0;
-} wire_Abc_JustInt;
+} P7C55DD6B_wire_Abc_JustInt;
 
 typedef union AbcKind {
-  struct wire_Abc_A *A;
-  struct wire_Abc_B *B;
-  struct wire_Abc_C *C;
-  struct wire_Abc_JustInt *JustInt;
+  struct P7C55DD6B_wire_Abc_A *A;
+  struct P7C55DD6B_wire_Abc_B *B;
+  struct P7C55DD6B_wire_Abc_C *C;
+  struct P7C55DD6B_wire_Abc_JustInt *JustInt;
 } AbcKind;
 
-typedef struct wire_Abc {
+typedef struct P7C55DD6B_wire_Abc {
   int32_t tag;
   union AbcKind *kind;
-} wire_Abc;
+} P7C55DD6B_wire_Abc;
 
-typedef struct wire_SumWith {
+typedef struct P7C55DD6B_wire_SumWith {
   uint32_t x;
-} wire_SumWith;
+} P7C55DD6B_wire_SumWith;
 
-typedef struct wire_ConcatenateWith {
-  struct wire_uint_8_list *a;
-} wire_ConcatenateWith;
+typedef struct P7C55DD6B_wire_ConcatenateWith {
+  struct P7C55DD6B_wire_uint_8_list *a;
+} P7C55DD6B_wire_ConcatenateWith;
 
 void store_dart_post_cobject(DartPostCObjectFnType ptr);
 
@@ -478,17 +478,17 @@ void P7C55DD6B_wire_primitive_u32(int64_t port_, uint32_t my_u32);
 
 WireSyncReturn P7C55DD6B_wire_primitive_u32_sync(uint32_t my_u32);
 
-void P7C55DD6B_wire_handle_string(int64_t port_, struct wire_uint_8_list *s);
+void P7C55DD6B_wire_handle_string(int64_t port_, struct P7C55DD6B_wire_uint_8_list *s);
 
-WireSyncReturn P7C55DD6B_wire_handle_string_sync(struct wire_uint_8_list *s);
+WireSyncReturn P7C55DD6B_wire_handle_string_sync(struct P7C55DD6B_wire_uint_8_list *s);
 
 void P7C55DD6B_wire_handle_return_unit(int64_t port_);
 
 WireSyncReturn P7C55DD6B_wire_handle_return_unit_sync(void);
 
-void P7C55DD6B_wire_handle_vec_u8(int64_t port_, struct wire_uint_8_list *v);
+void P7C55DD6B_wire_handle_vec_u8(int64_t port_, struct P7C55DD6B_wire_uint_8_list *v);
 
-WireSyncReturn P7C55DD6B_wire_handle_vec_u8_sync(struct wire_uint_8_list *v);
+WireSyncReturn P7C55DD6B_wire_handle_vec_u8_sync(struct P7C55DD6B_wire_uint_8_list *v);
 
 void P7C55DD6B_wire_handle_vec_of_primitive(int64_t port_, int32_t n);
 
@@ -499,33 +499,33 @@ void P7C55DD6B_wire_handle_zero_copy_vec_of_primitive(int64_t port_, int32_t n);
 WireSyncReturn P7C55DD6B_wire_handle_zero_copy_vec_of_primitive_sync(int32_t n);
 
 void P7C55DD6B_wire_handle_struct(int64_t port_,
-                                  struct wire_MySize *arg,
-                                  struct wire_MySize *boxed);
+                                  struct P7C55DD6B_wire_MySize *arg,
+                                  struct P7C55DD6B_wire_MySize *boxed);
 
-WireSyncReturn P7C55DD6B_wire_handle_struct_sync(struct wire_MySize *arg,
-                                                 struct wire_MySize *boxed);
+WireSyncReturn P7C55DD6B_wire_handle_struct_sync(struct P7C55DD6B_wire_MySize *arg,
+                                                 struct P7C55DD6B_wire_MySize *boxed);
 
-void P7C55DD6B_wire_handle_newtype(int64_t port_, struct wire_NewTypeInt *arg);
+void P7C55DD6B_wire_handle_newtype(int64_t port_, struct P7C55DD6B_wire_NewTypeInt *arg);
 
-WireSyncReturn P7C55DD6B_wire_handle_newtype_sync(struct wire_NewTypeInt *arg);
+WireSyncReturn P7C55DD6B_wire_handle_newtype_sync(struct P7C55DD6B_wire_NewTypeInt *arg);
 
-void P7C55DD6B_wire_handle_list_of_struct(int64_t port_, struct wire_list_my_size *l);
+void P7C55DD6B_wire_handle_list_of_struct(int64_t port_, struct P7C55DD6B_wire_list_my_size *l);
 
-WireSyncReturn P7C55DD6B_wire_handle_list_of_struct_sync(struct wire_list_my_size *l);
+WireSyncReturn P7C55DD6B_wire_handle_list_of_struct_sync(struct P7C55DD6B_wire_list_my_size *l);
 
-void P7C55DD6B_wire_handle_string_list(int64_t port_, struct wire_StringList *names);
+void P7C55DD6B_wire_handle_string_list(int64_t port_, struct P7C55DD6B_wire_StringList *names);
 
-WireSyncReturn P7C55DD6B_wire_handle_string_list_sync(struct wire_StringList *names);
+WireSyncReturn P7C55DD6B_wire_handle_string_list_sync(struct P7C55DD6B_wire_StringList *names);
 
-void P7C55DD6B_wire_handle_complex_struct(int64_t port_, struct wire_MyTreeNode *s);
+void P7C55DD6B_wire_handle_complex_struct(int64_t port_, struct P7C55DD6B_wire_MyTreeNode *s);
 
-WireSyncReturn P7C55DD6B_wire_handle_complex_struct_sync(struct wire_MyTreeNode *s);
+WireSyncReturn P7C55DD6B_wire_handle_complex_struct_sync(struct P7C55DD6B_wire_MyTreeNode *s);
 
-void P7C55DD6B_wire_handle_nested_struct(int64_t port_, struct wire_MyNestedStruct *s);
+void P7C55DD6B_wire_handle_nested_struct(int64_t port_, struct P7C55DD6B_wire_MyNestedStruct *s);
 
-WireSyncReturn P7C55DD6B_wire_handle_sync_return(struct wire_uint_8_list *mode);
+WireSyncReturn P7C55DD6B_wire_handle_sync_return(struct P7C55DD6B_wire_uint_8_list *mode);
 
-void P7C55DD6B_wire_handle_stream(int64_t port_, struct wire_uint_8_list *arg);
+void P7C55DD6B_wire_handle_stream(int64_t port_, struct P7C55DD6B_wire_uint_8_list *arg);
 
 void P7C55DD6B_wire_handle_stream_of_struct(int64_t port_);
 
@@ -535,9 +535,11 @@ void P7C55DD6B_wire_return_panic(int64_t port_);
 
 void P7C55DD6B_wire_handle_optional_return(int64_t port_, double left, double right);
 
-void P7C55DD6B_wire_handle_optional_struct(int64_t port_, struct wire_uint_8_list *document);
+void P7C55DD6B_wire_handle_optional_struct(int64_t port_,
+                                           struct P7C55DD6B_wire_uint_8_list *document);
 
-void P7C55DD6B_wire_handle_optional_increment(int64_t port_, struct wire_ExoticOptionals *opt);
+void P7C55DD6B_wire_handle_optional_increment(int64_t port_,
+                                              struct P7C55DD6B_wire_ExoticOptionals *opt);
 
 void P7C55DD6B_wire_handle_increment_boxed_optional(int64_t port_, double *opt);
 
@@ -548,19 +550,19 @@ void P7C55DD6B_wire_handle_option_box_arguments(int64_t port_,
                                                 int64_t *i64box,
                                                 double *f64box,
                                                 bool *boolbox,
-                                                struct wire_ExoticOptionals *structbox);
+                                                struct P7C55DD6B_wire_ExoticOptionals *structbox);
 
-void P7C55DD6B_wire_print_note(int64_t port_, struct wire_Note *note);
+void P7C55DD6B_wire_print_note(int64_t port_, struct P7C55DD6B_wire_Note *note);
 
-void P7C55DD6B_wire_handle_return_enum(int64_t port_, struct wire_uint_8_list *input);
+void P7C55DD6B_wire_handle_return_enum(int64_t port_, struct P7C55DD6B_wire_uint_8_list *input);
 
 void P7C55DD6B_wire_handle_enum_parameter(int64_t port_, int32_t weekday);
 
-void P7C55DD6B_wire_handle_customized_struct(int64_t port_, struct wire_Customized *val);
+void P7C55DD6B_wire_handle_customized_struct(int64_t port_, struct P7C55DD6B_wire_Customized *val);
 
-void P7C55DD6B_wire_handle_enum_struct(int64_t port_, struct wire_KitchenSink *val);
+void P7C55DD6B_wire_handle_enum_struct(int64_t port_, struct P7C55DD6B_wire_KitchenSink *val);
 
-void P7C55DD6B_wire_use_imported_struct(int64_t port_, struct wire_MyStruct *my_struct);
+void P7C55DD6B_wire_use_imported_struct(int64_t port_, struct P7C55DD6B_wire_MyStruct *my_struct);
 
 void P7C55DD6B_wire_use_imported_enum(int64_t port_, int32_t my_enum);
 
@@ -568,7 +570,8 @@ void P7C55DD6B_wire_get_app_settings(int64_t port_);
 
 void P7C55DD6B_wire_get_fallible_app_settings(int64_t port_);
 
-void P7C55DD6B_wire_is_app_embedded(int64_t port_, struct wire_ApplicationSettings *app_settings);
+void P7C55DD6B_wire_is_app_embedded(int64_t port_,
+                                    struct P7C55DD6B_wire_ApplicationSettings *app_settings);
 
 void P7C55DD6B_wire_get_message(int64_t port_);
 
@@ -576,9 +579,9 @@ void P7C55DD6B_wire_repeat_number(int64_t port_, int32_t number, uintptr_t times
 
 void P7C55DD6B_wire_repeat_sequence(int64_t port_, int32_t seq, uintptr_t times);
 
-void P7C55DD6B_wire_first_number(int64_t port_, struct wire_Numbers *nums);
+void P7C55DD6B_wire_first_number(int64_t port_, struct P7C55DD6B_wire_Numbers *nums);
 
-void P7C55DD6B_wire_first_sequence(int64_t port_, struct wire_Sequences *seqs);
+void P7C55DD6B_wire_first_sequence(int64_t port_, struct P7C55DD6B_wire_Sequences *seqs);
 
 void P7C55DD6B_wire_get_array(int64_t port_);
 
@@ -586,15 +589,15 @@ void P7C55DD6B_wire_get_complex_array(int64_t port_);
 
 void P7C55DD6B_wire_get_usize(int64_t port_, uintptr_t u);
 
-void P7C55DD6B_wire_next_user_id(int64_t port_, struct wire_UserId *user_id);
+void P7C55DD6B_wire_next_user_id(int64_t port_, struct P7C55DD6B_wire_UserId *user_id);
 
 void P7C55DD6B_wire_register_event_listener(int64_t port_);
 
 void P7C55DD6B_wire_close_event_listener(int64_t port_);
 
 void P7C55DD6B_wire_create_event(int64_t port_,
-                                 struct wire_uint_8_list *address,
-                                 struct wire_uint_8_list *payload);
+                                 struct P7C55DD6B_wire_uint_8_list *address,
+                                 struct P7C55DD6B_wire_uint_8_list *payload);
 
 void P7C55DD6B_wire_handle_stream_sink_at_1(int64_t port_, uint32_t key, uint32_t max);
 
@@ -606,7 +609,7 @@ void P7C55DD6B_wire_get_sum_struct(int64_t port_);
 
 void P7C55DD6B_wire_get_sum_array(int64_t port_, uint32_t a, uint32_t b, uint32_t c);
 
-void P7C55DD6B_wire_multiply_by_ten(int64_t port_, struct wire_Measure *measure);
+void P7C55DD6B_wire_multiply_by_ten(int64_t port_, struct P7C55DD6B_wire_Measure *measure);
 
 void P7C55DD6B_wire_call_old_module_system(int64_t port_);
 
@@ -625,78 +628,81 @@ void P7C55DD6B_wire_optional_empty_datetime_utc(int64_t port_, int64_t *d);
 void P7C55DD6B_wire_duration(int64_t port_, int64_t d);
 
 void P7C55DD6B_wire_handle_timestamps(int64_t port_,
-                                      struct wire_int_64_list *timestamps,
+                                      struct P7C55DD6B_wire_int_64_list *timestamps,
                                       int64_t epoch);
 
 void P7C55DD6B_wire_handle_durations(int64_t port_,
-                                     struct wire_int_64_list *durations,
+                                     struct P7C55DD6B_wire_int_64_list *durations,
                                      int64_t since);
 
 void P7C55DD6B_wire_test_chrono(int64_t port_);
 
 void P7C55DD6B_wire_test_precise_chrono(int64_t port_);
 
-void P7C55DD6B_wire_how_long_does_it_take(int64_t port_, struct wire_FeatureChrono *mine);
+void P7C55DD6B_wire_how_long_does_it_take(int64_t port_, struct P7C55DD6B_wire_FeatureChrono *mine);
 
-void P7C55DD6B_wire_handle_uuid(int64_t port_, struct wire_uint_8_list *id);
+void P7C55DD6B_wire_handle_uuid(int64_t port_, struct P7C55DD6B_wire_uint_8_list *id);
 
-void P7C55DD6B_wire_handle_uuids(int64_t port_, struct wire_uint_8_list *ids);
+void P7C55DD6B_wire_handle_uuids(int64_t port_, struct P7C55DD6B_wire_uint_8_list *ids);
 
-void P7C55DD6B_wire_handle_nested_uuids(int64_t port_, struct wire_FeatureUuid *ids);
+void P7C55DD6B_wire_handle_nested_uuids(int64_t port_, struct P7C55DD6B_wire_FeatureUuid *ids);
 
-void P7C55DD6B_wire_new_msgid(int64_t port_, struct wire_uint_8_list *id);
+void P7C55DD6B_wire_new_msgid(int64_t port_, struct P7C55DD6B_wire_uint_8_list *id);
 
-void P7C55DD6B_wire_use_msgid(int64_t port_, struct wire_MessageId *id);
+void P7C55DD6B_wire_use_msgid(int64_t port_, struct P7C55DD6B_wire_MessageId *id);
 
-void P7C55DD6B_wire_boxed_blob(int64_t port_, struct wire_uint_8_list *blob);
+void P7C55DD6B_wire_boxed_blob(int64_t port_, struct P7C55DD6B_wire_uint_8_list *blob);
 
-void P7C55DD6B_wire_use_boxed_blob(int64_t port_, struct wire_Blob *blob);
+void P7C55DD6B_wire_use_boxed_blob(int64_t port_, struct P7C55DD6B_wire_Blob *blob);
 
-void P7C55DD6B_wire_return_boxed_feed_id(int64_t port_, struct wire_uint_8_list *id);
+void P7C55DD6B_wire_return_boxed_feed_id(int64_t port_, struct P7C55DD6B_wire_uint_8_list *id);
 
-void P7C55DD6B_wire_return_boxed_raw_feed_id(int64_t port_, struct wire_FeedId *id);
+void P7C55DD6B_wire_return_boxed_raw_feed_id(int64_t port_, struct P7C55DD6B_wire_FeedId *id);
 
-void P7C55DD6B_wire_test_id(int64_t port_, struct wire_TestId *id);
+void P7C55DD6B_wire_test_id(int64_t port_, struct P7C55DD6B_wire_TestId *id);
 
-void P7C55DD6B_wire_last_number(int64_t port_, struct wire_float_64_list *array);
+void P7C55DD6B_wire_last_number(int64_t port_, struct P7C55DD6B_wire_float_64_list *array);
 
-void P7C55DD6B_wire_nested_id(int64_t port_, struct wire_list_test_id *id);
+void P7C55DD6B_wire_nested_id(int64_t port_, struct P7C55DD6B_wire_list_test_id *id);
 
-WireSyncReturn P7C55DD6B_wire_sync_accept_dart_opaque(struct wire_DartOpaque opaque);
+WireSyncReturn P7C55DD6B_wire_sync_accept_dart_opaque(struct P7C55DD6B_wire_DartOpaque opaque);
 
-void P7C55DD6B_wire_async_accept_dart_opaque(int64_t port_, struct wire_DartOpaque opaque);
+void P7C55DD6B_wire_async_accept_dart_opaque(int64_t port_,
+                                             struct P7C55DD6B_wire_DartOpaque opaque);
 
-void P7C55DD6B_wire_loop_back(int64_t port_, struct wire_DartOpaque opaque);
+void P7C55DD6B_wire_loop_back(int64_t port_, struct P7C55DD6B_wire_DartOpaque opaque);
 
-void P7C55DD6B_wire_loop_back_option(int64_t port_, struct wire_DartOpaque opaque);
+void P7C55DD6B_wire_loop_back_option(int64_t port_, struct P7C55DD6B_wire_DartOpaque opaque);
 
-void P7C55DD6B_wire_loop_back_array(int64_t port_, struct wire_DartOpaque opaque);
+void P7C55DD6B_wire_loop_back_array(int64_t port_, struct P7C55DD6B_wire_DartOpaque opaque);
 
-void P7C55DD6B_wire_loop_back_vec(int64_t port_, struct wire_DartOpaque opaque);
+void P7C55DD6B_wire_loop_back_vec(int64_t port_, struct P7C55DD6B_wire_DartOpaque opaque);
 
-void P7C55DD6B_wire_loop_back_option_get(int64_t port_, struct wire_DartOpaque *opaque);
+void P7C55DD6B_wire_loop_back_option_get(int64_t port_, struct P7C55DD6B_wire_DartOpaque *opaque);
 
-void P7C55DD6B_wire_loop_back_array_get(int64_t port_, struct wire_list_DartOpaque *opaque);
+void P7C55DD6B_wire_loop_back_array_get(int64_t port_,
+                                        struct P7C55DD6B_wire_list_DartOpaque *opaque);
 
-void P7C55DD6B_wire_loop_back_vec_get(int64_t port_, struct wire_list_DartOpaque *opaque);
+void P7C55DD6B_wire_loop_back_vec_get(int64_t port_, struct P7C55DD6B_wire_list_DartOpaque *opaque);
 
-WireSyncReturn P7C55DD6B_wire_unwrap_dart_opaque(struct wire_DartOpaque opaque);
+WireSyncReturn P7C55DD6B_wire_unwrap_dart_opaque(struct P7C55DD6B_wire_DartOpaque opaque);
 
-void P7C55DD6B_wire_panic_unwrap_dart_opaque(int64_t port_, struct wire_DartOpaque opaque);
+void P7C55DD6B_wire_panic_unwrap_dart_opaque(int64_t port_,
+                                             struct P7C55DD6B_wire_DartOpaque opaque);
 
 void P7C55DD6B_wire_create_opaque(int64_t port_);
 
-void P7C55DD6B_wire_create_option_opaque(int64_t port_, struct wire_HideData *opaque);
+void P7C55DD6B_wire_create_option_opaque(int64_t port_, struct P7C55DD6B_wire_HideData *opaque);
 
 WireSyncReturn P7C55DD6B_wire_sync_create_opaque(void);
 
 void P7C55DD6B_wire_create_array_opaque_enum(int64_t port_);
 
-void P7C55DD6B_wire_run_enum_opaque(int64_t port_, struct wire_EnumOpaque *opaque);
+void P7C55DD6B_wire_run_enum_opaque(int64_t port_, struct P7C55DD6B_wire_EnumOpaque *opaque);
 
-void P7C55DD6B_wire_run_opaque(int64_t port_, struct wire_HideData opaque);
+void P7C55DD6B_wire_run_opaque(int64_t port_, struct P7C55DD6B_wire_HideData opaque);
 
-void P7C55DD6B_wire_run_opaque_with_delay(int64_t port_, struct wire_HideData opaque);
+void P7C55DD6B_wire_run_opaque_with_delay(int64_t port_, struct P7C55DD6B_wire_HideData opaque);
 
 void P7C55DD6B_wire_opaque_array(int64_t port_);
 
@@ -704,19 +710,19 @@ void P7C55DD6B_wire_create_sync_opaque(int64_t port_);
 
 WireSyncReturn P7C55DD6B_wire_sync_create_sync_opaque(void);
 
-WireSyncReturn P7C55DD6B_wire_sync_run_opaque(struct wire_NonSendHideData opaque);
+WireSyncReturn P7C55DD6B_wire_sync_run_opaque(struct P7C55DD6B_wire_NonSendHideData opaque);
 
-void P7C55DD6B_wire_opaque_array_run(int64_t port_, struct wire_list_HideData *data);
+void P7C55DD6B_wire_opaque_array_run(int64_t port_, struct P7C55DD6B_wire_list_HideData *data);
 
 void P7C55DD6B_wire_opaque_vec(int64_t port_);
 
-void P7C55DD6B_wire_opaque_vec_run(int64_t port_, struct wire_list_HideData *data);
+void P7C55DD6B_wire_opaque_vec_run(int64_t port_, struct P7C55DD6B_wire_list_HideData *data);
 
 void P7C55DD6B_wire_create_nested_opaque(int64_t port_);
 
-WireSyncReturn P7C55DD6B_wire_sync_loopback(struct wire_DartOpaque opaque);
+WireSyncReturn P7C55DD6B_wire_sync_loopback(struct P7C55DD6B_wire_DartOpaque opaque);
 
-WireSyncReturn P7C55DD6B_wire_sync_option_loopback(struct wire_DartOpaque *opaque);
+WireSyncReturn P7C55DD6B_wire_sync_option_loopback(struct P7C55DD6B_wire_DartOpaque *opaque);
 
 WireSyncReturn P7C55DD6B_wire_sync_option(void);
 
@@ -724,29 +730,31 @@ WireSyncReturn P7C55DD6B_wire_sync_option_null(void);
 
 WireSyncReturn P7C55DD6B_wire_sync_option_rust_opaque(void);
 
-WireSyncReturn P7C55DD6B_wire_sync_option_dart_opaque(struct wire_DartOpaque opaque);
+WireSyncReturn P7C55DD6B_wire_sync_option_dart_opaque(struct P7C55DD6B_wire_DartOpaque opaque);
 
 WireSyncReturn P7C55DD6B_wire_sync_void(void);
 
-void P7C55DD6B_wire_run_nested_opaque(int64_t port_, struct wire_OpaqueNested *opaque);
+void P7C55DD6B_wire_run_nested_opaque(int64_t port_, struct P7C55DD6B_wire_OpaqueNested *opaque);
 
 void P7C55DD6B_wire_create_nested_dart_opaque(int64_t port_,
-                                              struct wire_DartOpaque opaque1,
-                                              struct wire_DartOpaque opaque2);
+                                              struct P7C55DD6B_wire_DartOpaque opaque1,
+                                              struct P7C55DD6B_wire_DartOpaque opaque2);
 
-void P7C55DD6B_wire_get_nested_dart_opaque(int64_t port_, struct wire_DartOpaqueNested *opaque);
+void P7C55DD6B_wire_get_nested_dart_opaque(int64_t port_,
+                                           struct P7C55DD6B_wire_DartOpaqueNested *opaque);
 
-void P7C55DD6B_wire_create_enum_dart_opaque(int64_t port_, struct wire_DartOpaque opaque);
+void P7C55DD6B_wire_create_enum_dart_opaque(int64_t port_, struct P7C55DD6B_wire_DartOpaque opaque);
 
-void P7C55DD6B_wire_get_enum_dart_opaque(int64_t port_, struct wire_EnumDartOpaque *opaque);
+void P7C55DD6B_wire_get_enum_dart_opaque(int64_t port_,
+                                         struct P7C55DD6B_wire_EnumDartOpaque *opaque);
 
-void P7C55DD6B_wire_set_static_dart_opaque(int64_t port_, struct wire_DartOpaque opaque);
+void P7C55DD6B_wire_set_static_dart_opaque(int64_t port_, struct P7C55DD6B_wire_DartOpaque opaque);
 
 void P7C55DD6B_wire_drop_static_dart_opaque(int64_t port_);
 
-void P7C55DD6B_wire_unwrap_rust_opaque(int64_t port_, struct wire_HideData opaque);
+void P7C55DD6B_wire_unwrap_rust_opaque(int64_t port_, struct P7C55DD6B_wire_HideData opaque);
 
-WireSyncReturn P7C55DD6B_wire_return_non_droppable_dart_opaque(struct wire_DartOpaque opaque);
+WireSyncReturn P7C55DD6B_wire_return_non_droppable_dart_opaque(struct P7C55DD6B_wire_DartOpaque opaque);
 
 void P7C55DD6B_wire_frb_generator_test(int64_t port_);
 
@@ -758,7 +766,7 @@ void P7C55DD6B_wire_handle_type_nest_alias_id(int64_t port_, uint64_t input);
 
 void P7C55DD6B_wire_handle_type_alias_model(int64_t port_, uint64_t input);
 
-void P7C55DD6B_wire_empty_struct(int64_t port_, struct wire_Empty *empty);
+void P7C55DD6B_wire_empty_struct(int64_t port_, struct P7C55DD6B_wire_Empty *empty);
 
 void P7C55DD6B_wire_return_dart_dynamic(int64_t port_);
 
@@ -776,34 +784,36 @@ void P7C55DD6B_wire_test_list_of_raw_nested_string_mirrored(int64_t port_);
 
 void P7C55DD6B_wire_test_fallible_of_raw_string_mirrored(int64_t port_);
 
-void P7C55DD6B_wire_list_of_primitive_enums(int64_t port_, struct wire_list_weekdays *weekdays);
+void P7C55DD6B_wire_list_of_primitive_enums(int64_t port_,
+                                            struct P7C55DD6B_wire_list_weekdays *weekdays);
 
-void P7C55DD6B_wire_test_abc_enum(int64_t port_, struct wire_Abc *abc);
+void P7C55DD6B_wire_test_abc_enum(int64_t port_, struct P7C55DD6B_wire_Abc *abc);
 
 void P7C55DD6B_wire_test_contains_mirrored_sub_struct(int64_t port_);
 
 void P7C55DD6B_wire_sum__method__SumWith(int64_t port_,
-                                         struct wire_SumWith *that,
+                                         struct P7C55DD6B_wire_SumWith *that,
                                          uint32_t y,
                                          uint32_t z);
 
-void P7C55DD6B_wire_new__static_method__ConcatenateWith(int64_t port_, struct wire_uint_8_list *a);
+void P7C55DD6B_wire_new__static_method__ConcatenateWith(int64_t port_,
+                                                        struct P7C55DD6B_wire_uint_8_list *a);
 
 void P7C55DD6B_wire_concatenate__method__ConcatenateWith(int64_t port_,
-                                                         struct wire_ConcatenateWith *that,
-                                                         struct wire_uint_8_list *b);
+                                                         struct P7C55DD6B_wire_ConcatenateWith *that,
+                                                         struct P7C55DD6B_wire_uint_8_list *b);
 
 void P7C55DD6B_wire_concatenate_static__static_method__ConcatenateWith(int64_t port_,
-                                                                       struct wire_uint_8_list *a,
-                                                                       struct wire_uint_8_list *b);
+                                                                       struct P7C55DD6B_wire_uint_8_list *a,
+                                                                       struct P7C55DD6B_wire_uint_8_list *b);
 
 void P7C55DD6B_wire_handle_some_stream_sink__method__ConcatenateWith(int64_t port_,
-                                                                     struct wire_ConcatenateWith *that,
+                                                                     struct P7C55DD6B_wire_ConcatenateWith *that,
                                                                      uint32_t key,
                                                                      uint32_t max);
 
 void P7C55DD6B_wire_handle_some_stream_sink_at_1__method__ConcatenateWith(int64_t port_,
-                                                                          struct wire_ConcatenateWith *that);
+                                                                          struct P7C55DD6B_wire_ConcatenateWith *that);
 
 void P7C55DD6B_wire_handle_some_static_stream_sink__static_method__ConcatenateWith(int64_t port_,
                                                                                    uint32_t key,
@@ -811,109 +821,109 @@ void P7C55DD6B_wire_handle_some_static_stream_sink__static_method__ConcatenateWi
 
 void P7C55DD6B_wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(int64_t port_);
 
-struct wire_BoxDartDebug new_BoxDartDebug(void);
+struct P7C55DD6B_wire_BoxDartDebug new_BoxDartDebug(void);
 
-struct wire_DartOpaque new_DartOpaque(void);
+struct P7C55DD6B_wire_DartOpaque new_DartOpaque(void);
 
-struct wire_HideData new_HideData(void);
+struct P7C55DD6B_wire_HideData new_HideData(void);
 
-struct wire_I32 new_I32(void);
+struct P7C55DD6B_wire_I32 new_I32(void);
 
-struct wire_MutexHideData new_MutexHideData(void);
+struct P7C55DD6B_wire_MutexHideData new_MutexHideData(void);
 
-struct wire_NonSendHideData new_NonSendHideData(void);
+struct P7C55DD6B_wire_NonSendHideData new_NonSendHideData(void);
 
-struct wire_RwLockHideData new_RwLockHideData(void);
+struct P7C55DD6B_wire_RwLockHideData new_RwLockHideData(void);
 
-struct wire_StringList *new_StringList_0(int32_t len);
+struct P7C55DD6B_wire_StringList *new_StringList_0(int32_t len);
 
-struct wire_ApplicationEnv *new_box_application_env_0(void);
+struct P7C55DD6B_wire_ApplicationEnv *new_box_application_env_0(void);
 
 int64_t *new_box_autoadd_Chrono_Utc_0(int64_t value);
 
-struct wire_DartOpaque *new_box_autoadd_DartOpaque_0(void);
+struct P7C55DD6B_wire_DartOpaque *new_box_autoadd_DartOpaque_0(void);
 
-struct wire_HideData *new_box_autoadd_HideData_0(void);
+struct P7C55DD6B_wire_HideData *new_box_autoadd_HideData_0(void);
 
-struct wire_A *new_box_autoadd_a_0(void);
+struct P7C55DD6B_wire_A *new_box_autoadd_a_0(void);
 
-struct wire_Abc *new_box_autoadd_abc_0(void);
+struct P7C55DD6B_wire_Abc *new_box_autoadd_abc_0(void);
 
-struct wire_ApplicationEnv *new_box_autoadd_application_env_0(void);
+struct P7C55DD6B_wire_ApplicationEnv *new_box_autoadd_application_env_0(void);
 
-struct wire_ApplicationSettings *new_box_autoadd_application_settings_0(void);
+struct P7C55DD6B_wire_ApplicationSettings *new_box_autoadd_application_settings_0(void);
 
-struct wire_Attribute *new_box_autoadd_attribute_0(void);
+struct P7C55DD6B_wire_Attribute *new_box_autoadd_attribute_0(void);
 
-struct wire_B *new_box_autoadd_b_0(void);
+struct P7C55DD6B_wire_B *new_box_autoadd_b_0(void);
 
 bool *new_box_autoadd_bool_0(bool value);
 
-struct wire_C *new_box_autoadd_c_0(void);
+struct P7C55DD6B_wire_C *new_box_autoadd_c_0(void);
 
-struct wire_ConcatenateWith *new_box_autoadd_concatenate_with_0(void);
+struct P7C55DD6B_wire_ConcatenateWith *new_box_autoadd_concatenate_with_0(void);
 
-struct wire_Customized *new_box_autoadd_customized_0(void);
+struct P7C55DD6B_wire_Customized *new_box_autoadd_customized_0(void);
 
-struct wire_DartOpaqueNested *new_box_autoadd_dart_opaque_nested_0(void);
+struct P7C55DD6B_wire_DartOpaqueNested *new_box_autoadd_dart_opaque_nested_0(void);
 
-struct wire_Empty *new_box_autoadd_empty_0(void);
+struct P7C55DD6B_wire_Empty *new_box_autoadd_empty_0(void);
 
-struct wire_EnumDartOpaque *new_box_autoadd_enum_dart_opaque_0(void);
+struct P7C55DD6B_wire_EnumDartOpaque *new_box_autoadd_enum_dart_opaque_0(void);
 
-struct wire_EnumOpaque *new_box_autoadd_enum_opaque_0(void);
+struct P7C55DD6B_wire_EnumOpaque *new_box_autoadd_enum_opaque_0(void);
 
-struct wire_ExoticOptionals *new_box_autoadd_exotic_optionals_0(void);
+struct P7C55DD6B_wire_ExoticOptionals *new_box_autoadd_exotic_optionals_0(void);
 
 double *new_box_autoadd_f64_0(double value);
 
-struct wire_FeatureChrono *new_box_autoadd_feature_chrono_0(void);
+struct P7C55DD6B_wire_FeatureChrono *new_box_autoadd_feature_chrono_0(void);
 
-struct wire_FeatureUuid *new_box_autoadd_feature_uuid_0(void);
+struct P7C55DD6B_wire_FeatureUuid *new_box_autoadd_feature_uuid_0(void);
 
-struct wire_FeedId *new_box_autoadd_feed_id_0(void);
+struct P7C55DD6B_wire_FeedId *new_box_autoadd_feed_id_0(void);
 
 int32_t *new_box_autoadd_i32_0(int32_t value);
 
 int64_t *new_box_autoadd_i64_0(int64_t value);
 
-struct wire_KitchenSink *new_box_autoadd_kitchen_sink_0(void);
+struct P7C55DD6B_wire_KitchenSink *new_box_autoadd_kitchen_sink_0(void);
 
-struct wire_Measure *new_box_autoadd_measure_0(void);
+struct P7C55DD6B_wire_Measure *new_box_autoadd_measure_0(void);
 
-struct wire_MessageId *new_box_autoadd_message_id_0(void);
+struct P7C55DD6B_wire_MessageId *new_box_autoadd_message_id_0(void);
 
-struct wire_MyNestedStruct *new_box_autoadd_my_nested_struct_0(void);
+struct P7C55DD6B_wire_MyNestedStruct *new_box_autoadd_my_nested_struct_0(void);
 
-struct wire_MySize *new_box_autoadd_my_size_0(void);
+struct P7C55DD6B_wire_MySize *new_box_autoadd_my_size_0(void);
 
-struct wire_MyStruct *new_box_autoadd_my_struct_0(void);
+struct P7C55DD6B_wire_MyStruct *new_box_autoadd_my_struct_0(void);
 
-struct wire_MyTreeNode *new_box_autoadd_my_tree_node_0(void);
+struct P7C55DD6B_wire_MyTreeNode *new_box_autoadd_my_tree_node_0(void);
 
-struct wire_NewTypeInt *new_box_autoadd_new_type_int_0(void);
+struct P7C55DD6B_wire_NewTypeInt *new_box_autoadd_new_type_int_0(void);
 
-struct wire_Note *new_box_autoadd_note_0(void);
+struct P7C55DD6B_wire_Note *new_box_autoadd_note_0(void);
 
-struct wire_Numbers *new_box_autoadd_numbers_0(void);
+struct P7C55DD6B_wire_Numbers *new_box_autoadd_numbers_0(void);
 
-struct wire_OpaqueNested *new_box_autoadd_opaque_nested_0(void);
+struct P7C55DD6B_wire_OpaqueNested *new_box_autoadd_opaque_nested_0(void);
 
-struct wire_Sequences *new_box_autoadd_sequences_0(void);
+struct P7C55DD6B_wire_Sequences *new_box_autoadd_sequences_0(void);
 
-struct wire_SumWith *new_box_autoadd_sum_with_0(void);
+struct P7C55DD6B_wire_SumWith *new_box_autoadd_sum_with_0(void);
 
-struct wire_TestId *new_box_autoadd_test_id_0(void);
+struct P7C55DD6B_wire_TestId *new_box_autoadd_test_id_0(void);
 
-struct wire_UserId *new_box_autoadd_user_id_0(void);
+struct P7C55DD6B_wire_UserId *new_box_autoadd_user_id_0(void);
 
-struct wire_Blob *new_box_blob_0(void);
+struct P7C55DD6B_wire_Blob *new_box_blob_0(void);
 
 bool *new_box_bool_0(bool value);
 
-struct wire_Distance *new_box_distance_0(void);
+struct P7C55DD6B_wire_Distance *new_box_distance_0(void);
 
-struct wire_ExoticOptionals *new_box_exotic_optionals_0(void);
+struct P7C55DD6B_wire_ExoticOptionals *new_box_exotic_optionals_0(void);
 
 double *new_box_f64_0(double value);
 
@@ -923,45 +933,45 @@ int64_t *new_box_i64_0(int64_t value);
 
 int8_t *new_box_i8_0(int8_t value);
 
-struct wire_KitchenSink *new_box_kitchen_sink_0(void);
+struct P7C55DD6B_wire_KitchenSink *new_box_kitchen_sink_0(void);
 
-struct wire_MySize *new_box_my_size_0(void);
+struct P7C55DD6B_wire_MySize *new_box_my_size_0(void);
 
-struct wire_Speed *new_box_speed_0(void);
+struct P7C55DD6B_wire_Speed *new_box_speed_0(void);
 
 uint8_t *new_box_u8_0(uint8_t value);
 
 int32_t *new_box_weekdays_0(int32_t value);
 
-struct wire_float_32_list *new_float_32_list_0(int32_t len);
+struct P7C55DD6B_wire_float_32_list *new_float_32_list_0(int32_t len);
 
-struct wire_float_64_list *new_float_64_list_0(int32_t len);
+struct P7C55DD6B_wire_float_64_list *new_float_64_list_0(int32_t len);
 
-struct wire_int_32_list *new_int_32_list_0(int32_t len);
+struct P7C55DD6B_wire_int_32_list *new_int_32_list_0(int32_t len);
 
-struct wire_int_64_list *new_int_64_list_0(int32_t len);
+struct P7C55DD6B_wire_int_64_list *new_int_64_list_0(int32_t len);
 
-struct wire_int_8_list *new_int_8_list_0(int32_t len);
+struct P7C55DD6B_wire_int_8_list *new_int_8_list_0(int32_t len);
 
-struct wire_list_DartOpaque *new_list_DartOpaque_0(int32_t len);
+struct P7C55DD6B_wire_list_DartOpaque *new_list_DartOpaque_0(int32_t len);
 
-struct wire_list_HideData *new_list_HideData_0(int32_t len);
+struct P7C55DD6B_wire_list_HideData *new_list_HideData_0(int32_t len);
 
-struct wire_list_application_env_var *new_list_application_env_var_0(int32_t len);
+struct P7C55DD6B_wire_list_application_env_var *new_list_application_env_var_0(int32_t len);
 
-struct wire_list_attribute *new_list_attribute_0(int32_t len);
+struct P7C55DD6B_wire_list_attribute *new_list_attribute_0(int32_t len);
 
-struct wire_list_my_size *new_list_my_size_0(int32_t len);
+struct P7C55DD6B_wire_list_my_size *new_list_my_size_0(int32_t len);
 
-struct wire_list_my_tree_node *new_list_my_tree_node_0(int32_t len);
+struct P7C55DD6B_wire_list_my_tree_node *new_list_my_tree_node_0(int32_t len);
 
-struct wire_list_opt_box_autoadd_attribute *new_list_opt_box_autoadd_attribute_0(int32_t len);
+struct P7C55DD6B_wire_list_opt_box_autoadd_attribute *new_list_opt_box_autoadd_attribute_0(int32_t len);
 
-struct wire_list_test_id *new_list_test_id_0(int32_t len);
+struct P7C55DD6B_wire_list_test_id *new_list_test_id_0(int32_t len);
 
-struct wire_list_weekdays *new_list_weekdays_0(int32_t len);
+struct P7C55DD6B_wire_list_weekdays *new_list_weekdays_0(int32_t len);
 
-struct wire_uint_8_list *new_uint_8_list_0(int32_t len);
+struct P7C55DD6B_wire_uint_8_list *new_uint_8_list_0(int32_t len);
 
 void drop_opaque_BoxDartDebug(const void *ptr);
 

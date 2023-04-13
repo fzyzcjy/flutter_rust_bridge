@@ -65,7 +65,7 @@ pub(crate) fn generate_dart_code(
         .iter()
         .map(|e| {
             if wire_regex.is_match(e) {
-                return format!("{}{e}", config.get_unique_id())
+                return format!("{}{e}", config.get_unique_id());
             }
 
             e.to_string()
