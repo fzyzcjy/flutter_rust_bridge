@@ -366,7 +366,7 @@ jobs:
       fail-fast: false
       matrix:
         image:
-          - macos-11
+          - macos-latest
           - windows-2019
           - ubuntu-latest
     steps:
@@ -440,7 +440,7 @@ jobs:
       fail-fast: false
       matrix:
         image:
-          - macos-11
+          - macos-latest
           - windows-2019
           - ubuntu-20.04
 
