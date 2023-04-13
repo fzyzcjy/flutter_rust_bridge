@@ -288,6 +288,7 @@ _release_publish_all:
 
 install_ndk:
     just _install_crate cargo-ndk
+
 install_lipo:
     just _install_crate cargo-lipo
 
