@@ -223,6 +223,15 @@ use_flutter_rust_bridge_release:
     cp ./frb_example/with_flutter/pubspec.yaml.release ./frb_example/with_flutter/pubspec.yaml
     cp ./frb_example/with_flutter/rust/Cargo.toml.release ./frb_example/with_flutter/rust/Cargo.toml
 
+configure_ndk:
+    #!/usr/bin/env bash
+    ANDROID_HOME=$HOME/Library/Android/sdk
+    SDKMANAGER=$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager
+
+    echo y | $SDKMANAGER "ndk;21.4.7075529"
+
+    ln -sfn $ANDROID_HOME/ndk/21.4.7075529 $ANDROID_HOME/ndk-bundle
+
 # ============================ precommit ============================
 
 precommit: dart_pub_get generate_all rust_linter dart_linter
