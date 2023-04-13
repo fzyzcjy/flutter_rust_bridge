@@ -159,6 +159,8 @@ jobs:
         working-directory: ./frb_example/with_flutter/rust
         # NOTE since run on simulator, need -t to be x86_64. For real devices, of course arm-like ones.
         run: cargo ndk --bindgen -t x86_64 -o ../android/app/src/main/jniLibs build
+      - name: Gradle cache
+        uses: gradle/gradle-build-action@v2.3.0
       - name: AVD cache
         uses: actions/cache@v3
         id: avd-cache
