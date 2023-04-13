@@ -72,6 +72,9 @@ Options:
           
           [possible values: config, ir]
 
+      --make-c-output-unique
+          Make the C output files have unique symbols. This prevents the generated symbols from conflicting with other projects
+
   -h, --help
           Print help (see a summary with '-h')
 

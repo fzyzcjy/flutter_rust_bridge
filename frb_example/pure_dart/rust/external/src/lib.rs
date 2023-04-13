@@ -98,8 +98,8 @@ pub fn poll_messages() -> Vec<ApplicationMessage> {
     ]
 }
 
-pub fn repeat_number(num: i32, times: usize) -> Numbers {
-    Numbers(vec![num; times])
+pub fn repeat_number(number: i32, times: usize) -> Numbers {
+    Numbers(vec![number; times])
 }
 
 pub fn repeat_sequences(seq: i32, times: usize) -> Sequences {

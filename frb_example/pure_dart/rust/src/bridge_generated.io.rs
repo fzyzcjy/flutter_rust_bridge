@@ -2,17 +2,17 @@ use super::*;
 // Section: wire functions
 
 #[no_mangle]
-pub extern "C" fn wire_simple_adder(port_: i64, a: i32, b: i32) {
+pub extern "C" fn P7C55DD6B_wire_simple_adder(port_: i64, a: i32, b: i32) {
     wire_simple_adder_impl(port_, a, b)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_simple_adder_sync(a: i32, b: i32) -> support::WireSyncReturn {
+pub extern "C" fn P7C55DD6B_wire_simple_adder_sync(a: i32, b: i32) -> support::WireSyncReturn {
     wire_simple_adder_sync_impl(a, b)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_primitive_types(
+pub extern "C" fn P7C55DD6B_wire_primitive_types(
     port_: i64,
     my_i32: i32,
     my_i64: i64,
@@ -23,7 +23,7 @@ pub extern "C" fn wire_primitive_types(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_primitive_optional_types(
+pub extern "C" fn P7C55DD6B_wire_primitive_optional_types(
     port_: i64,
     my_i32: *mut i32,
     my_i64: *mut i64,
@@ -34,7 +34,7 @@ pub extern "C" fn wire_primitive_optional_types(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_primitive_types_sync(
+pub extern "C" fn P7C55DD6B_wire_primitive_types_sync(
     my_i32: i32,
     my_i64: i64,
     my_f64: f64,
@@ -44,72 +44,82 @@ pub extern "C" fn wire_primitive_types_sync(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_primitive_u32(port_: i64, my_u32: u32) {
+pub extern "C" fn P7C55DD6B_wire_primitive_u32(port_: i64, my_u32: u32) {
     wire_primitive_u32_impl(port_, my_u32)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_primitive_u32_sync(my_u32: u32) -> support::WireSyncReturn {
+pub extern "C" fn P7C55DD6B_wire_primitive_u32_sync(my_u32: u32) -> support::WireSyncReturn {
     wire_primitive_u32_sync_impl(my_u32)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_string(port_: i64, s: *mut wire_uint_8_list) {
+pub extern "C" fn P7C55DD6B_wire_handle_string(port_: i64, s: *mut wire_uint_8_list) {
     wire_handle_string_impl(port_, s)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_string_sync(s: *mut wire_uint_8_list) -> support::WireSyncReturn {
+pub extern "C" fn P7C55DD6B_wire_handle_string_sync(
+    s: *mut wire_uint_8_list,
+) -> support::WireSyncReturn {
     wire_handle_string_sync_impl(s)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_return_unit(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_handle_return_unit(port_: i64) {
     wire_handle_return_unit_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_return_unit_sync() -> support::WireSyncReturn {
+pub extern "C" fn P7C55DD6B_wire_handle_return_unit_sync() -> support::WireSyncReturn {
     wire_handle_return_unit_sync_impl()
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_vec_u8(port_: i64, v: *mut wire_uint_8_list) {
+pub extern "C" fn P7C55DD6B_wire_handle_vec_u8(port_: i64, v: *mut wire_uint_8_list) {
     wire_handle_vec_u8_impl(port_, v)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_vec_u8_sync(v: *mut wire_uint_8_list) -> support::WireSyncReturn {
+pub extern "C" fn P7C55DD6B_wire_handle_vec_u8_sync(
+    v: *mut wire_uint_8_list,
+) -> support::WireSyncReturn {
     wire_handle_vec_u8_sync_impl(v)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_vec_of_primitive(port_: i64, n: i32) {
+pub extern "C" fn P7C55DD6B_wire_handle_vec_of_primitive(port_: i64, n: i32) {
     wire_handle_vec_of_primitive_impl(port_, n)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_vec_of_primitive_sync(n: i32) -> support::WireSyncReturn {
+pub extern "C" fn P7C55DD6B_wire_handle_vec_of_primitive_sync(n: i32) -> support::WireSyncReturn {
     wire_handle_vec_of_primitive_sync_impl(n)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_zero_copy_vec_of_primitive(port_: i64, n: i32) {
+pub extern "C" fn P7C55DD6B_wire_handle_zero_copy_vec_of_primitive(port_: i64, n: i32) {
     wire_handle_zero_copy_vec_of_primitive_impl(port_, n)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_zero_copy_vec_of_primitive_sync(n: i32) -> support::WireSyncReturn {
+pub extern "C" fn P7C55DD6B_wire_handle_zero_copy_vec_of_primitive_sync(
+    n: i32,
+) -> support::WireSyncReturn {
     wire_handle_zero_copy_vec_of_primitive_sync_impl(n)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_struct(port_: i64, arg: *mut wire_MySize, boxed: *mut wire_MySize) {
+pub extern "C" fn P7C55DD6B_wire_handle_struct(
+    port_: i64,
+    arg: *mut wire_MySize,
+    boxed: *mut wire_MySize,
+) {
     wire_handle_struct_impl(port_, arg, boxed)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_struct_sync(
+pub extern "C" fn P7C55DD6B_wire_handle_struct_sync(
     arg: *mut wire_MySize,
     boxed: *mut wire_MySize,
 ) -> support::WireSyncReturn {
@@ -117,103 +127,113 @@ pub extern "C" fn wire_handle_struct_sync(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_newtype(port_: i64, arg: *mut wire_NewTypeInt) {
+pub extern "C" fn P7C55DD6B_wire_handle_newtype(port_: i64, arg: *mut wire_NewTypeInt) {
     wire_handle_newtype_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_newtype_sync(arg: *mut wire_NewTypeInt) -> support::WireSyncReturn {
+pub extern "C" fn P7C55DD6B_wire_handle_newtype_sync(
+    arg: *mut wire_NewTypeInt,
+) -> support::WireSyncReturn {
     wire_handle_newtype_sync_impl(arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_list_of_struct(port_: i64, l: *mut wire_list_my_size) {
+pub extern "C" fn P7C55DD6B_wire_handle_list_of_struct(port_: i64, l: *mut wire_list_my_size) {
     wire_handle_list_of_struct_impl(port_, l)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_list_of_struct_sync(
+pub extern "C" fn P7C55DD6B_wire_handle_list_of_struct_sync(
     l: *mut wire_list_my_size,
 ) -> support::WireSyncReturn {
     wire_handle_list_of_struct_sync_impl(l)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_string_list(port_: i64, names: *mut wire_StringList) {
+pub extern "C" fn P7C55DD6B_wire_handle_string_list(port_: i64, names: *mut wire_StringList) {
     wire_handle_string_list_impl(port_, names)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_string_list_sync(
+pub extern "C" fn P7C55DD6B_wire_handle_string_list_sync(
     names: *mut wire_StringList,
 ) -> support::WireSyncReturn {
     wire_handle_string_list_sync_impl(names)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_complex_struct(port_: i64, s: *mut wire_MyTreeNode) {
+pub extern "C" fn P7C55DD6B_wire_handle_complex_struct(port_: i64, s: *mut wire_MyTreeNode) {
     wire_handle_complex_struct_impl(port_, s)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_complex_struct_sync(
+pub extern "C" fn P7C55DD6B_wire_handle_complex_struct_sync(
     s: *mut wire_MyTreeNode,
 ) -> support::WireSyncReturn {
     wire_handle_complex_struct_sync_impl(s)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_nested_struct(port_: i64, s: *mut wire_MyNestedStruct) {
+pub extern "C" fn P7C55DD6B_wire_handle_nested_struct(port_: i64, s: *mut wire_MyNestedStruct) {
     wire_handle_nested_struct_impl(port_, s)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_sync_return(mode: *mut wire_uint_8_list) -> support::WireSyncReturn {
+pub extern "C" fn P7C55DD6B_wire_handle_sync_return(
+    mode: *mut wire_uint_8_list,
+) -> support::WireSyncReturn {
     wire_handle_sync_return_impl(mode)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_stream(port_: i64, arg: *mut wire_uint_8_list) {
+pub extern "C" fn P7C55DD6B_wire_handle_stream(port_: i64, arg: *mut wire_uint_8_list) {
     wire_handle_stream_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_stream_of_struct(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_handle_stream_of_struct(port_: i64) {
     wire_handle_stream_of_struct_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_return_err(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_return_err(port_: i64) {
     wire_return_err_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_return_panic(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_return_panic(port_: i64) {
     wire_return_panic_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_optional_return(port_: i64, left: f64, right: f64) {
+pub extern "C" fn P7C55DD6B_wire_handle_optional_return(port_: i64, left: f64, right: f64) {
     wire_handle_optional_return_impl(port_, left, right)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_optional_struct(port_: i64, document: *mut wire_uint_8_list) {
+pub extern "C" fn P7C55DD6B_wire_handle_optional_struct(
+    port_: i64,
+    document: *mut wire_uint_8_list,
+) {
     wire_handle_optional_struct_impl(port_, document)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_optional_increment(port_: i64, opt: *mut wire_ExoticOptionals) {
+pub extern "C" fn P7C55DD6B_wire_handle_optional_increment(
+    port_: i64,
+    opt: *mut wire_ExoticOptionals,
+) {
     wire_handle_optional_increment_impl(port_, opt)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_increment_boxed_optional(port_: i64, opt: *mut f64) {
+pub extern "C" fn P7C55DD6B_wire_handle_increment_boxed_optional(port_: i64, opt: *mut f64) {
     wire_handle_increment_boxed_optional_impl(port_, opt)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_option_box_arguments(
+pub extern "C" fn P7C55DD6B_wire_handle_option_box_arguments(
     port_: i64,
     i8box: *mut i8,
     u8box: *mut u8,
@@ -229,112 +249,115 @@ pub extern "C" fn wire_handle_option_box_arguments(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_print_note(port_: i64, note: *mut wire_Note) {
+pub extern "C" fn P7C55DD6B_wire_print_note(port_: i64, note: *mut wire_Note) {
     wire_print_note_impl(port_, note)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_return_enum(port_: i64, input: *mut wire_uint_8_list) {
+pub extern "C" fn P7C55DD6B_wire_handle_return_enum(port_: i64, input: *mut wire_uint_8_list) {
     wire_handle_return_enum_impl(port_, input)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_enum_parameter(port_: i64, weekday: i32) {
+pub extern "C" fn P7C55DD6B_wire_handle_enum_parameter(port_: i64, weekday: i32) {
     wire_handle_enum_parameter_impl(port_, weekday)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_customized_struct(port_: i64, val: *mut wire_Customized) {
+pub extern "C" fn P7C55DD6B_wire_handle_customized_struct(port_: i64, val: *mut wire_Customized) {
     wire_handle_customized_struct_impl(port_, val)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_enum_struct(port_: i64, val: *mut wire_KitchenSink) {
+pub extern "C" fn P7C55DD6B_wire_handle_enum_struct(port_: i64, val: *mut wire_KitchenSink) {
     wire_handle_enum_struct_impl(port_, val)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_use_imported_struct(port_: i64, my_struct: *mut wire_MyStruct) {
+pub extern "C" fn P7C55DD6B_wire_use_imported_struct(port_: i64, my_struct: *mut wire_MyStruct) {
     wire_use_imported_struct_impl(port_, my_struct)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_use_imported_enum(port_: i64, my_enum: i32) {
+pub extern "C" fn P7C55DD6B_wire_use_imported_enum(port_: i64, my_enum: i32) {
     wire_use_imported_enum_impl(port_, my_enum)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_get_app_settings(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_get_app_settings(port_: i64) {
     wire_get_app_settings_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_get_fallible_app_settings(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_get_fallible_app_settings(port_: i64) {
     wire_get_fallible_app_settings_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_is_app_embedded(port_: i64, app_settings: *mut wire_ApplicationSettings) {
+pub extern "C" fn P7C55DD6B_wire_is_app_embedded(
+    port_: i64,
+    app_settings: *mut wire_ApplicationSettings,
+) {
     wire_is_app_embedded_impl(port_, app_settings)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_get_message(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_get_message(port_: i64) {
     wire_get_message_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_repeat_number(port_: i64, num: i32, times: usize) {
-    wire_repeat_number_impl(port_, num, times)
+pub extern "C" fn P7C55DD6B_wire_repeat_number(port_: i64, number: i32, times: usize) {
+    wire_repeat_number_impl(port_, number, times)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_repeat_sequence(port_: i64, seq: i32, times: usize) {
+pub extern "C" fn P7C55DD6B_wire_repeat_sequence(port_: i64, seq: i32, times: usize) {
     wire_repeat_sequence_impl(port_, seq, times)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_first_number(port_: i64, nums: *mut wire_Numbers) {
+pub extern "C" fn P7C55DD6B_wire_first_number(port_: i64, nums: *mut wire_Numbers) {
     wire_first_number_impl(port_, nums)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_first_sequence(port_: i64, seqs: *mut wire_Sequences) {
+pub extern "C" fn P7C55DD6B_wire_first_sequence(port_: i64, seqs: *mut wire_Sequences) {
     wire_first_sequence_impl(port_, seqs)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_get_array(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_get_array(port_: i64) {
     wire_get_array_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_get_complex_array(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_get_complex_array(port_: i64) {
     wire_get_complex_array_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_get_usize(port_: i64, u: usize) {
+pub extern "C" fn P7C55DD6B_wire_get_usize(port_: i64, u: usize) {
     wire_get_usize_impl(port_, u)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_next_user_id(port_: i64, user_id: *mut wire_UserId) {
+pub extern "C" fn P7C55DD6B_wire_next_user_id(port_: i64, user_id: *mut wire_UserId) {
     wire_next_user_id_impl(port_, user_id)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_register_event_listener(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_register_event_listener(port_: i64) {
     wire_register_event_listener_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_close_event_listener(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_close_event_listener(port_: i64) {
     wire_close_event_listener_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_create_event(
+pub extern "C" fn P7C55DD6B_wire_create_event(
     port_: i64,
     address: *mut wire_uint_8_list,
     payload: *mut wire_uint_8_list,
@@ -343,77 +366,77 @@ pub extern "C" fn wire_create_event(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_stream_sink_at_1(port_: i64, key: u32, max: u32) {
+pub extern "C" fn P7C55DD6B_wire_handle_stream_sink_at_1(port_: i64, key: u32, max: u32) {
     wire_handle_stream_sink_at_1_impl(port_, key, max)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_stream_sink_at_2(port_: i64, key: u32, max: u32) {
+pub extern "C" fn P7C55DD6B_wire_handle_stream_sink_at_2(port_: i64, key: u32, max: u32) {
     wire_handle_stream_sink_at_2_impl(port_, key, max)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_stream_sink_at_3(port_: i64, key: u32, max: u32) {
+pub extern "C" fn P7C55DD6B_wire_handle_stream_sink_at_3(port_: i64, key: u32, max: u32) {
     wire_handle_stream_sink_at_3_impl(port_, key, max)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_get_sum_struct(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_get_sum_struct(port_: i64) {
     wire_get_sum_struct_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_get_sum_array(port_: i64, a: u32, b: u32, c: u32) {
+pub extern "C" fn P7C55DD6B_wire_get_sum_array(port_: i64, a: u32, b: u32, c: u32) {
     wire_get_sum_array_impl(port_, a, b, c)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_multiply_by_ten(port_: i64, measure: *mut wire_Measure) {
+pub extern "C" fn P7C55DD6B_wire_multiply_by_ten(port_: i64, measure: *mut wire_Measure) {
     wire_multiply_by_ten_impl(port_, measure)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_call_old_module_system(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_call_old_module_system(port_: i64) {
     wire_call_old_module_system_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_call_new_module_system(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_call_new_module_system(port_: i64) {
     wire_call_new_module_system_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_big_buffers(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_handle_big_buffers(port_: i64) {
     wire_handle_big_buffers_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_datetime_utc(port_: i64, d: i64) {
+pub extern "C" fn P7C55DD6B_wire_datetime_utc(port_: i64, d: i64) {
     wire_datetime_utc_impl(port_, d)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_datetime_local(port_: i64, d: i64) {
+pub extern "C" fn P7C55DD6B_wire_datetime_local(port_: i64, d: i64) {
     wire_datetime_local_impl(port_, d)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_naivedatetime(port_: i64, d: i64) {
+pub extern "C" fn P7C55DD6B_wire_naivedatetime(port_: i64, d: i64) {
     wire_naivedatetime_impl(port_, d)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_optional_empty_datetime_utc(port_: i64, d: *mut i64) {
+pub extern "C" fn P7C55DD6B_wire_optional_empty_datetime_utc(port_: i64, d: *mut i64) {
     wire_optional_empty_datetime_utc_impl(port_, d)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_duration(port_: i64, d: i64) {
+pub extern "C" fn P7C55DD6B_wire_duration(port_: i64, d: i64) {
     wire_duration_impl(port_, d)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_timestamps(
+pub extern "C" fn P7C55DD6B_wire_handle_timestamps(
     port_: i64,
     timestamps: *mut wire_int_64_list,
     epoch: i64,
@@ -422,259 +445,274 @@ pub extern "C" fn wire_handle_timestamps(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_durations(port_: i64, durations: *mut wire_int_64_list, since: i64) {
+pub extern "C" fn P7C55DD6B_wire_handle_durations(
+    port_: i64,
+    durations: *mut wire_int_64_list,
+    since: i64,
+) {
     wire_handle_durations_impl(port_, durations, since)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_chrono(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_test_chrono(port_: i64) {
     wire_test_chrono_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_precise_chrono(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_test_precise_chrono(port_: i64) {
     wire_test_precise_chrono_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_how_long_does_it_take(port_: i64, mine: *mut wire_FeatureChrono) {
+pub extern "C" fn P7C55DD6B_wire_how_long_does_it_take(port_: i64, mine: *mut wire_FeatureChrono) {
     wire_how_long_does_it_take_impl(port_, mine)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_uuid(port_: i64, id: *mut wire_uint_8_list) {
+pub extern "C" fn P7C55DD6B_wire_handle_uuid(port_: i64, id: *mut wire_uint_8_list) {
     wire_handle_uuid_impl(port_, id)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_uuids(port_: i64, ids: *mut wire_uint_8_list) {
+pub extern "C" fn P7C55DD6B_wire_handle_uuids(port_: i64, ids: *mut wire_uint_8_list) {
     wire_handle_uuids_impl(port_, ids)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_nested_uuids(port_: i64, ids: *mut wire_FeatureUuid) {
+pub extern "C" fn P7C55DD6B_wire_handle_nested_uuids(port_: i64, ids: *mut wire_FeatureUuid) {
     wire_handle_nested_uuids_impl(port_, ids)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_new_msgid(port_: i64, id: *mut wire_uint_8_list) {
+pub extern "C" fn P7C55DD6B_wire_new_msgid(port_: i64, id: *mut wire_uint_8_list) {
     wire_new_msgid_impl(port_, id)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_use_msgid(port_: i64, id: *mut wire_MessageId) {
+pub extern "C" fn P7C55DD6B_wire_use_msgid(port_: i64, id: *mut wire_MessageId) {
     wire_use_msgid_impl(port_, id)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_boxed_blob(port_: i64, blob: *mut wire_uint_8_list) {
+pub extern "C" fn P7C55DD6B_wire_boxed_blob(port_: i64, blob: *mut wire_uint_8_list) {
     wire_boxed_blob_impl(port_, blob)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_use_boxed_blob(port_: i64, blob: *mut wire_Blob) {
+pub extern "C" fn P7C55DD6B_wire_use_boxed_blob(port_: i64, blob: *mut wire_Blob) {
     wire_use_boxed_blob_impl(port_, blob)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_return_boxed_feed_id(port_: i64, id: *mut wire_uint_8_list) {
+pub extern "C" fn P7C55DD6B_wire_return_boxed_feed_id(port_: i64, id: *mut wire_uint_8_list) {
     wire_return_boxed_feed_id_impl(port_, id)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_return_boxed_raw_feed_id(port_: i64, id: *mut wire_FeedId) {
+pub extern "C" fn P7C55DD6B_wire_return_boxed_raw_feed_id(port_: i64, id: *mut wire_FeedId) {
     wire_return_boxed_raw_feed_id_impl(port_, id)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_id(port_: i64, id: *mut wire_TestId) {
+pub extern "C" fn P7C55DD6B_wire_test_id(port_: i64, id: *mut wire_TestId) {
     wire_test_id_impl(port_, id)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_last_number(port_: i64, array: *mut wire_float_64_list) {
+pub extern "C" fn P7C55DD6B_wire_last_number(port_: i64, array: *mut wire_float_64_list) {
     wire_last_number_impl(port_, array)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_nested_id(port_: i64, id: *mut wire_list_test_id) {
+pub extern "C" fn P7C55DD6B_wire_nested_id(port_: i64, id: *mut wire_list_test_id) {
     wire_nested_id_impl(port_, id)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_accept_dart_opaque(opaque: wire_DartOpaque) -> support::WireSyncReturn {
+pub extern "C" fn P7C55DD6B_wire_sync_accept_dart_opaque(
+    opaque: wire_DartOpaque,
+) -> support::WireSyncReturn {
     wire_sync_accept_dart_opaque_impl(opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_async_accept_dart_opaque(port_: i64, opaque: wire_DartOpaque) {
+pub extern "C" fn P7C55DD6B_wire_async_accept_dart_opaque(port_: i64, opaque: wire_DartOpaque) {
     wire_async_accept_dart_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_loop_back(port_: i64, opaque: wire_DartOpaque) {
+pub extern "C" fn P7C55DD6B_wire_loop_back(port_: i64, opaque: wire_DartOpaque) {
     wire_loop_back_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_loop_back_option(port_: i64, opaque: wire_DartOpaque) {
+pub extern "C" fn P7C55DD6B_wire_loop_back_option(port_: i64, opaque: wire_DartOpaque) {
     wire_loop_back_option_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_loop_back_array(port_: i64, opaque: wire_DartOpaque) {
+pub extern "C" fn P7C55DD6B_wire_loop_back_array(port_: i64, opaque: wire_DartOpaque) {
     wire_loop_back_array_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_loop_back_vec(port_: i64, opaque: wire_DartOpaque) {
+pub extern "C" fn P7C55DD6B_wire_loop_back_vec(port_: i64, opaque: wire_DartOpaque) {
     wire_loop_back_vec_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_loop_back_option_get(port_: i64, opaque: *mut wire_DartOpaque) {
+pub extern "C" fn P7C55DD6B_wire_loop_back_option_get(port_: i64, opaque: *mut wire_DartOpaque) {
     wire_loop_back_option_get_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_loop_back_array_get(port_: i64, opaque: *mut wire_list_DartOpaque) {
+pub extern "C" fn P7C55DD6B_wire_loop_back_array_get(
+    port_: i64,
+    opaque: *mut wire_list_DartOpaque,
+) {
     wire_loop_back_array_get_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_loop_back_vec_get(port_: i64, opaque: *mut wire_list_DartOpaque) {
+pub extern "C" fn P7C55DD6B_wire_loop_back_vec_get(port_: i64, opaque: *mut wire_list_DartOpaque) {
     wire_loop_back_vec_get_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_unwrap_dart_opaque(opaque: wire_DartOpaque) -> support::WireSyncReturn {
+pub extern "C" fn P7C55DD6B_wire_unwrap_dart_opaque(
+    opaque: wire_DartOpaque,
+) -> support::WireSyncReturn {
     wire_unwrap_dart_opaque_impl(opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_panic_unwrap_dart_opaque(port_: i64, opaque: wire_DartOpaque) {
+pub extern "C" fn P7C55DD6B_wire_panic_unwrap_dart_opaque(port_: i64, opaque: wire_DartOpaque) {
     wire_panic_unwrap_dart_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_create_opaque(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_create_opaque(port_: i64) {
     wire_create_opaque_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_create_option_opaque(port_: i64, opaque: *mut wire_HideData) {
+pub extern "C" fn P7C55DD6B_wire_create_option_opaque(port_: i64, opaque: *mut wire_HideData) {
     wire_create_option_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_create_opaque() -> support::WireSyncReturn {
+pub extern "C" fn P7C55DD6B_wire_sync_create_opaque() -> support::WireSyncReturn {
     wire_sync_create_opaque_impl()
 }
 
 #[no_mangle]
-pub extern "C" fn wire_create_array_opaque_enum(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_create_array_opaque_enum(port_: i64) {
     wire_create_array_opaque_enum_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_run_enum_opaque(port_: i64, opaque: *mut wire_EnumOpaque) {
+pub extern "C" fn P7C55DD6B_wire_run_enum_opaque(port_: i64, opaque: *mut wire_EnumOpaque) {
     wire_run_enum_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_run_opaque(port_: i64, opaque: wire_HideData) {
+pub extern "C" fn P7C55DD6B_wire_run_opaque(port_: i64, opaque: wire_HideData) {
     wire_run_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_run_opaque_with_delay(port_: i64, opaque: wire_HideData) {
+pub extern "C" fn P7C55DD6B_wire_run_opaque_with_delay(port_: i64, opaque: wire_HideData) {
     wire_run_opaque_with_delay_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_opaque_array(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_opaque_array(port_: i64) {
     wire_opaque_array_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_create_sync_opaque(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_create_sync_opaque(port_: i64) {
     wire_create_sync_opaque_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_create_sync_opaque() -> support::WireSyncReturn {
+pub extern "C" fn P7C55DD6B_wire_sync_create_sync_opaque() -> support::WireSyncReturn {
     wire_sync_create_sync_opaque_impl()
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_run_opaque(opaque: wire_NonSendHideData) -> support::WireSyncReturn {
+pub extern "C" fn P7C55DD6B_wire_sync_run_opaque(
+    opaque: wire_NonSendHideData,
+) -> support::WireSyncReturn {
     wire_sync_run_opaque_impl(opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_opaque_array_run(port_: i64, data: *mut wire_list_HideData) {
+pub extern "C" fn P7C55DD6B_wire_opaque_array_run(port_: i64, data: *mut wire_list_HideData) {
     wire_opaque_array_run_impl(port_, data)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_opaque_vec(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_opaque_vec(port_: i64) {
     wire_opaque_vec_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_opaque_vec_run(port_: i64, data: *mut wire_list_HideData) {
+pub extern "C" fn P7C55DD6B_wire_opaque_vec_run(port_: i64, data: *mut wire_list_HideData) {
     wire_opaque_vec_run_impl(port_, data)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_create_nested_opaque(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_create_nested_opaque(port_: i64) {
     wire_create_nested_opaque_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_loopback(opaque: wire_DartOpaque) -> support::WireSyncReturn {
+pub extern "C" fn P7C55DD6B_wire_sync_loopback(opaque: wire_DartOpaque) -> support::WireSyncReturn {
     wire_sync_loopback_impl(opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_option_loopback(
+pub extern "C" fn P7C55DD6B_wire_sync_option_loopback(
     opaque: *mut wire_DartOpaque,
 ) -> support::WireSyncReturn {
     wire_sync_option_loopback_impl(opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_option() -> support::WireSyncReturn {
+pub extern "C" fn P7C55DD6B_wire_sync_option() -> support::WireSyncReturn {
     wire_sync_option_impl()
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_option_null() -> support::WireSyncReturn {
+pub extern "C" fn P7C55DD6B_wire_sync_option_null() -> support::WireSyncReturn {
     wire_sync_option_null_impl()
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_option_rust_opaque() -> support::WireSyncReturn {
+pub extern "C" fn P7C55DD6B_wire_sync_option_rust_opaque() -> support::WireSyncReturn {
     wire_sync_option_rust_opaque_impl()
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_option_dart_opaque(opaque: wire_DartOpaque) -> support::WireSyncReturn {
+pub extern "C" fn P7C55DD6B_wire_sync_option_dart_opaque(
+    opaque: wire_DartOpaque,
+) -> support::WireSyncReturn {
     wire_sync_option_dart_opaque_impl(opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sync_void() -> support::WireSyncReturn {
+pub extern "C" fn P7C55DD6B_wire_sync_void() -> support::WireSyncReturn {
     wire_sync_void_impl()
 }
 
 #[no_mangle]
-pub extern "C" fn wire_run_nested_opaque(port_: i64, opaque: *mut wire_OpaqueNested) {
+pub extern "C" fn P7C55DD6B_wire_run_nested_opaque(port_: i64, opaque: *mut wire_OpaqueNested) {
     wire_run_nested_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_create_nested_dart_opaque(
+pub extern "C" fn P7C55DD6B_wire_create_nested_dart_opaque(
     port_: i64,
     opaque1: wire_DartOpaque,
     opaque2: wire_DartOpaque,
@@ -683,139 +721,156 @@ pub extern "C" fn wire_create_nested_dart_opaque(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_get_nested_dart_opaque(port_: i64, opaque: *mut wire_DartOpaqueNested) {
+pub extern "C" fn P7C55DD6B_wire_get_nested_dart_opaque(
+    port_: i64,
+    opaque: *mut wire_DartOpaqueNested,
+) {
     wire_get_nested_dart_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_create_enum_dart_opaque(port_: i64, opaque: wire_DartOpaque) {
+pub extern "C" fn P7C55DD6B_wire_create_enum_dart_opaque(port_: i64, opaque: wire_DartOpaque) {
     wire_create_enum_dart_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_get_enum_dart_opaque(port_: i64, opaque: *mut wire_EnumDartOpaque) {
+pub extern "C" fn P7C55DD6B_wire_get_enum_dart_opaque(
+    port_: i64,
+    opaque: *mut wire_EnumDartOpaque,
+) {
     wire_get_enum_dart_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_set_static_dart_opaque(port_: i64, opaque: wire_DartOpaque) {
+pub extern "C" fn P7C55DD6B_wire_set_static_dart_opaque(port_: i64, opaque: wire_DartOpaque) {
     wire_set_static_dart_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_drop_static_dart_opaque(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_drop_static_dart_opaque(port_: i64) {
     wire_drop_static_dart_opaque_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_unwrap_rust_opaque(port_: i64, opaque: wire_HideData) {
+pub extern "C" fn P7C55DD6B_wire_unwrap_rust_opaque(port_: i64, opaque: wire_HideData) {
     wire_unwrap_rust_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_return_non_droppable_dart_opaque(
+pub extern "C" fn P7C55DD6B_wire_return_non_droppable_dart_opaque(
     opaque: wire_DartOpaque,
 ) -> support::WireSyncReturn {
     wire_return_non_droppable_dart_opaque_impl(opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_frb_generator_test(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_frb_generator_test(port_: i64) {
     wire_frb_generator_test_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_frb_sync_generator_test() -> support::WireSyncReturn {
+pub extern "C" fn P7C55DD6B_wire_frb_sync_generator_test() -> support::WireSyncReturn {
     wire_frb_sync_generator_test_impl()
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_type_alias_id(port_: i64, input: u64) {
+pub extern "C" fn P7C55DD6B_wire_handle_type_alias_id(port_: i64, input: u64) {
     wire_handle_type_alias_id_impl(port_, input)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_type_nest_alias_id(port_: i64, input: u64) {
+pub extern "C" fn P7C55DD6B_wire_handle_type_nest_alias_id(port_: i64, input: u64) {
     wire_handle_type_nest_alias_id_impl(port_, input)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_type_alias_model(port_: i64, input: u64) {
+pub extern "C" fn P7C55DD6B_wire_handle_type_alias_model(port_: i64, input: u64) {
     wire_handle_type_alias_model_impl(port_, input)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_empty_struct(port_: i64, empty: *mut wire_Empty) {
+pub extern "C" fn P7C55DD6B_wire_empty_struct(port_: i64, empty: *mut wire_Empty) {
     wire_empty_struct_impl(port_, empty)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_return_dart_dynamic(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_return_dart_dynamic(port_: i64) {
     wire_return_dart_dynamic_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_raw_string_item_struct(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_test_raw_string_item_struct(port_: i64) {
     wire_test_raw_string_item_struct_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_more_than_just_one_raw_string_struct(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_test_more_than_just_one_raw_string_struct(port_: i64) {
     wire_test_more_than_just_one_raw_string_struct_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_raw_string_mirrored(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_test_raw_string_mirrored(port_: i64) {
     wire_test_raw_string_mirrored_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_nested_raw_string_mirrored(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_test_nested_raw_string_mirrored(port_: i64) {
     wire_test_nested_raw_string_mirrored_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_raw_string_enum_mirrored(port_: i64, nested: bool) {
+pub extern "C" fn P7C55DD6B_wire_test_raw_string_enum_mirrored(port_: i64, nested: bool) {
     wire_test_raw_string_enum_mirrored_impl(port_, nested)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_list_of_raw_nested_string_mirrored(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_test_list_of_raw_nested_string_mirrored(port_: i64) {
     wire_test_list_of_raw_nested_string_mirrored_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_fallible_of_raw_string_mirrored(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_test_fallible_of_raw_string_mirrored(port_: i64) {
     wire_test_fallible_of_raw_string_mirrored_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_list_of_primitive_enums(port_: i64, weekdays: *mut wire_list_weekdays) {
+pub extern "C" fn P7C55DD6B_wire_list_of_primitive_enums(
+    port_: i64,
+    weekdays: *mut wire_list_weekdays,
+) {
     wire_list_of_primitive_enums_impl(port_, weekdays)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_abc_enum(port_: i64, abc: *mut wire_Abc) {
+pub extern "C" fn P7C55DD6B_wire_test_abc_enum(port_: i64, abc: *mut wire_Abc) {
     wire_test_abc_enum_impl(port_, abc)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_contains_mirrored_sub_struct(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_test_contains_mirrored_sub_struct(port_: i64) {
     wire_test_contains_mirrored_sub_struct_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
+pub extern "C" fn P7C55DD6B_wire_sum__method__SumWith(
+    port_: i64,
+    that: *mut wire_SumWith,
+    y: u32,
+    z: u32,
+) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_new__static_method__ConcatenateWith(port_: i64, a: *mut wire_uint_8_list) {
+pub extern "C" fn P7C55DD6B_wire_new__static_method__ConcatenateWith(
+    port_: i64,
+    a: *mut wire_uint_8_list,
+) {
     wire_new__static_method__ConcatenateWith_impl(port_, a)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_concatenate__method__ConcatenateWith(
+pub extern "C" fn P7C55DD6B_wire_concatenate__method__ConcatenateWith(
     port_: i64,
     that: *mut wire_ConcatenateWith,
     b: *mut wire_uint_8_list,
@@ -824,7 +879,7 @@ pub extern "C" fn wire_concatenate__method__ConcatenateWith(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_concatenate_static__static_method__ConcatenateWith(
+pub extern "C" fn P7C55DD6B_wire_concatenate_static__static_method__ConcatenateWith(
     port_: i64,
     a: *mut wire_uint_8_list,
     b: *mut wire_uint_8_list,
@@ -833,7 +888,7 @@ pub extern "C" fn wire_concatenate_static__static_method__ConcatenateWith(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_some_stream_sink__method__ConcatenateWith(
+pub extern "C" fn P7C55DD6B_wire_handle_some_stream_sink__method__ConcatenateWith(
     port_: i64,
     that: *mut wire_ConcatenateWith,
     key: u32,
@@ -843,7 +898,7 @@ pub extern "C" fn wire_handle_some_stream_sink__method__ConcatenateWith(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_some_stream_sink_at_1__method__ConcatenateWith(
+pub extern "C" fn P7C55DD6B_wire_handle_some_stream_sink_at_1__method__ConcatenateWith(
     port_: i64,
     that: *mut wire_ConcatenateWith,
 ) {
@@ -851,7 +906,7 @@ pub extern "C" fn wire_handle_some_stream_sink_at_1__method__ConcatenateWith(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_some_static_stream_sink__static_method__ConcatenateWith(
+pub extern "C" fn P7C55DD6B_wire_handle_some_static_stream_sink__static_method__ConcatenateWith(
     port_: i64,
     key: u32,
     max: u32,
@@ -860,7 +915,7 @@ pub extern "C" fn wire_handle_some_static_stream_sink__static_method__Concatenat
 }
 
 #[no_mangle]
-pub extern "C" fn wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(
+pub extern "C" fn P7C55DD6B_wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(
     port_: i64,
 ) {
     wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith_impl(port_)

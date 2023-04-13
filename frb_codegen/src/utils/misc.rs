@@ -104,20 +104,12 @@ pub fn make_string_keyword_safe(input: String) -> String {
 
 /// Attempts to read a unique ID from the generated header
 /// file. If it doesn't exist, a new one is created.
-pub fn get_unique_id(c_output_path: &str) -> anyhow::Result<String>
-{
+pub fn get_unique_id(c_output_path: &str) -> anyhow::Result<String> {
     let generated = fs::read_to_string(c_output_path)?;
     let regex = Regex::new(r"^// ([\d\w]+)")?;
 
     match regex.captures(&generated) {
-        Some(capture) => {
-            Ok(capture
-                .get(1)
-                .unwrap()
-                .as_str()
-                .to_string()
-            )
-        },
+        Some(capture) => Ok(capture.get(1).unwrap().as_str().to_string()),
         None => {
             // https://stackoverflow.com/questions/3062746/special-simple-random-number-generator
             let seed = SystemTime::now()

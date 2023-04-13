@@ -701,8 +701,8 @@ pub fn get_message() -> ApplicationMessage {
 #[frb(mirror(Numbers, Sequences))]
 pub struct _Numbers(pub Vec<i32>);
 
-pub fn repeat_number(num: i32, times: usize) -> Numbers {
-    external_lib::repeat_number(num, times)
+pub fn repeat_number(number: i32, times: usize) -> Numbers {
+    external_lib::repeat_number(number, times)
 }
 
 pub fn repeat_sequence(seq: i32, times: usize) -> Sequences {

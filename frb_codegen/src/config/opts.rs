@@ -1,6 +1,6 @@
 use crate::ir::IrFile;
 use crate::parser;
-use crate::utils::misc::{BlockIndex, get_unique_id};
+use crate::utils::misc::{get_unique_id, BlockIndex};
 use anyhow::{Context, Result};
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -132,10 +132,9 @@ impl Opts {
     }
 
     pub fn get_unique_id(&self) -> String {
-        // get_unique_id(&self.c_output_path[0])
-        //     .unwrap()
+        get_unique_id(&self.c_output_path[0]).unwrap();
         //TODO: Persist this somehow.
-        return "P7C55DD6B_".to_string();
+        "P7C55DD6B_".to_string()
     }
 }
 

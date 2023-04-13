@@ -780,7 +780,7 @@ fn wire_get_message_impl(port_: MessagePort) {
 }
 fn wire_repeat_number_impl(
     port_: MessagePort,
-    num: impl Wire2Api<i32> + UnwindSafe,
+    number: impl Wire2Api<i32> + UnwindSafe,
     times: impl Wire2Api<usize> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
@@ -790,9 +790,9 @@ fn wire_repeat_number_impl(
             mode: FfiCallMode::Normal,
         },
         move || {
-            let api_num = num.wire2api();
+            let api_number = number.wire2api();
             let api_times = times.wire2api();
-            move |task_callback| Ok(mirror_Numbers(repeat_number(api_num, api_times)))
+            move |task_callback| Ok(mirror_Numbers(repeat_number(api_number, api_times)))
         },
     )
 }

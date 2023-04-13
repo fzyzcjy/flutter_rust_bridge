@@ -100,21 +100,22 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>)>>('init_frb_dart_api_dl');
   late final _init_frb_dart_api_dl = _init_frb_dart_api_dlPtr.asFunction<int Function(ffi.Pointer<ffi.Void>)>();
 
-  void wire_simple_adder_1(
+  void P7C55DD6B_wire_simple_adder_1(
     int port_,
     int a,
     int b,
   ) {
-    return _wire_simple_adder_1(
+    return _P7C55DD6B_wire_simple_adder_1(
       port_,
       a,
       b,
     );
   }
 
-  late final _wire_simple_adder_1Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>('wire_simple_adder_1');
-  late final _wire_simple_adder_1 = _wire_simple_adder_1Ptr.asFunction<void Function(int, int, int)>();
+  late final _P7C55DD6B_wire_simple_adder_1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>('P7C55DD6B_wire_simple_adder_1');
+  late final _P7C55DD6B_wire_simple_adder_1 =
+      _P7C55DD6B_wire_simple_adder_1Ptr.asFunction<void Function(int, int, int)>();
 
   void free_WireSyncReturn(
     WireSyncReturn ptr,

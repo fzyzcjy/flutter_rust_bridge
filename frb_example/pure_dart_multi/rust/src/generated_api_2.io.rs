@@ -2,7 +2,7 @@ use super::*;
 // Section: wire functions
 
 #[no_mangle]
-pub extern "C" fn wire_simple_adder_2(port_: i64, a: i32, b: i32) {
+pub extern "C" fn P7C55DD6B_wire_simple_adder_2(port_: i64, a: i32, b: i32) {
     wire_simple_adder_2_impl(port_, a, b)
 }
 

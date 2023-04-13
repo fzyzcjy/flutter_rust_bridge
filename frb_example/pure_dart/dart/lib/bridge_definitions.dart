@@ -227,7 +227,7 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kGetMessageConstMeta;
 
-  Future<Numbers> repeatNumber({required int num, required int times, dynamic hint});
+  Future<Numbers> repeatNumber({required int number, required int times, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kRepeatNumberConstMeta;
 

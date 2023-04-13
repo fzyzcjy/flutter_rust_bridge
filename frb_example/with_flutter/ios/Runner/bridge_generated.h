@@ -51,33 +51,36 @@ uintptr_t new_dart_opaque(Dart_Handle handle);
 
 intptr_t init_frb_dart_api_dl(void *obj);
 
-void wire_draw_mandelbrot(int64_t port_,
-                          struct wire_Size *image_size,
-                          struct wire_Point *zoom_point,
-                          double scale,
-                          int32_t num_threads);
+void P7C55DD6B_wire_draw_mandelbrot(int64_t port_,
+                                    struct wire_Size *image_size,
+                                    struct wire_Point *zoom_point,
+                                    double scale,
+                                    int32_t num_threads);
 
-void wire_passing_complex_structs(int64_t port_, struct wire_TreeNode *root);
+void P7C55DD6B_wire_passing_complex_structs(int64_t port_, struct wire_TreeNode *root);
 
-void wire_returning_structs_with_boxed_fields(int64_t port_);
+void P7C55DD6B_wire_returning_structs_with_boxed_fields(int64_t port_);
 
-void wire_off_topic_memory_test_input_array(int64_t port_, struct wire_uint_8_list *input);
+void P7C55DD6B_wire_off_topic_memory_test_input_array(int64_t port_,
+                                                      struct wire_uint_8_list *input);
 
-void wire_off_topic_memory_test_output_zero_copy_buffer(int64_t port_, int32_t len);
+void P7C55DD6B_wire_off_topic_memory_test_output_zero_copy_buffer(int64_t port_, int32_t len);
 
-void wire_off_topic_memory_test_output_vec_u8(int64_t port_, int32_t len);
+void P7C55DD6B_wire_off_topic_memory_test_output_vec_u8(int64_t port_, int32_t len);
 
-void wire_off_topic_memory_test_input_vec_of_object(int64_t port_, struct wire_list_size *input);
+void P7C55DD6B_wire_off_topic_memory_test_input_vec_of_object(int64_t port_,
+                                                              struct wire_list_size *input);
 
-void wire_off_topic_memory_test_output_vec_of_object(int64_t port_, int32_t len);
+void P7C55DD6B_wire_off_topic_memory_test_output_vec_of_object(int64_t port_, int32_t len);
 
-void wire_off_topic_memory_test_input_complex_struct(int64_t port_, struct wire_TreeNode *input);
+void P7C55DD6B_wire_off_topic_memory_test_input_complex_struct(int64_t port_,
+                                                               struct wire_TreeNode *input);
 
-void wire_off_topic_memory_test_output_complex_struct(int64_t port_, int32_t len);
+void P7C55DD6B_wire_off_topic_memory_test_output_complex_struct(int64_t port_, int32_t len);
 
-void wire_off_topic_deliberately_return_error(int64_t port_);
+void P7C55DD6B_wire_off_topic_deliberately_return_error(int64_t port_);
 
-void wire_off_topic_deliberately_panic(int64_t port_);
+void P7C55DD6B_wire_off_topic_deliberately_panic(int64_t port_);
 
 struct wire_Point *new_box_autoadd_point_0(void);
 
@@ -95,18 +98,18 @@ void free_WireSyncReturn(WireSyncReturn ptr);
 
 static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
-    dummy_var ^= ((int64_t) (void*) wire_draw_mandelbrot);
-    dummy_var ^= ((int64_t) (void*) wire_passing_complex_structs);
-    dummy_var ^= ((int64_t) (void*) wire_returning_structs_with_boxed_fields);
-    dummy_var ^= ((int64_t) (void*) wire_off_topic_memory_test_input_array);
-    dummy_var ^= ((int64_t) (void*) wire_off_topic_memory_test_output_zero_copy_buffer);
-    dummy_var ^= ((int64_t) (void*) wire_off_topic_memory_test_output_vec_u8);
-    dummy_var ^= ((int64_t) (void*) wire_off_topic_memory_test_input_vec_of_object);
-    dummy_var ^= ((int64_t) (void*) wire_off_topic_memory_test_output_vec_of_object);
-    dummy_var ^= ((int64_t) (void*) wire_off_topic_memory_test_input_complex_struct);
-    dummy_var ^= ((int64_t) (void*) wire_off_topic_memory_test_output_complex_struct);
-    dummy_var ^= ((int64_t) (void*) wire_off_topic_deliberately_return_error);
-    dummy_var ^= ((int64_t) (void*) wire_off_topic_deliberately_panic);
+    dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_draw_mandelbrot);
+    dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_passing_complex_structs);
+    dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_returning_structs_with_boxed_fields);
+    dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_off_topic_memory_test_input_array);
+    dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_off_topic_memory_test_output_zero_copy_buffer);
+    dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_off_topic_memory_test_output_vec_u8);
+    dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_off_topic_memory_test_input_vec_of_object);
+    dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_off_topic_memory_test_output_vec_of_object);
+    dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_off_topic_memory_test_input_complex_struct);
+    dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_off_topic_memory_test_output_complex_struct);
+    dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_off_topic_deliberately_return_error);
+    dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_off_topic_deliberately_panic);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_point_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_size_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_tree_node_0);

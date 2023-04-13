@@ -2,7 +2,7 @@ use super::*;
 // Section: wire functions
 
 #[wasm_bindgen]
-pub fn wire_simple_adder_1(port_: MessagePort, a: i32, b: i32) {
+pub fn P7C55DD6B_wire_simple_adder_1(port_: MessagePort, a: i32, b: i32) {
     wire_simple_adder_1_impl(port_, a, b)
 }
 

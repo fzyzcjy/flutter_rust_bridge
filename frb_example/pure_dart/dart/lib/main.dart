@@ -459,7 +459,7 @@ void main(List<String> args) async {
   });
 
   test('dart call repeatNumber()', () async {
-    var numbers = await api.repeatNumber(num: 1, times: 10);
+    var numbers = await api.repeatNumber(number: 1, times: 10);
     expect(numbers.field0.toList(), Int32List.fromList([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]));
   });
 

@@ -2,7 +2,7 @@ use super::*;
 // Section: wire functions
 
 #[no_mangle]
-pub extern "C" fn wire_draw_mandelbrot(
+pub extern "C" fn P7C55DD6B_wire_draw_mandelbrot(
     port_: i64,
     image_size: *mut wire_Size,
     zoom_point: *mut wire_Point,
@@ -13,32 +13,38 @@ pub extern "C" fn wire_draw_mandelbrot(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_passing_complex_structs(port_: i64, root: *mut wire_TreeNode) {
+pub extern "C" fn P7C55DD6B_wire_passing_complex_structs(port_: i64, root: *mut wire_TreeNode) {
     wire_passing_complex_structs_impl(port_, root)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_returning_structs_with_boxed_fields(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_returning_structs_with_boxed_fields(port_: i64) {
     wire_returning_structs_with_boxed_fields_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_off_topic_memory_test_input_array(port_: i64, input: *mut wire_uint_8_list) {
+pub extern "C" fn P7C55DD6B_wire_off_topic_memory_test_input_array(
+    port_: i64,
+    input: *mut wire_uint_8_list,
+) {
     wire_off_topic_memory_test_input_array_impl(port_, input)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_off_topic_memory_test_output_zero_copy_buffer(port_: i64, len: i32) {
+pub extern "C" fn P7C55DD6B_wire_off_topic_memory_test_output_zero_copy_buffer(
+    port_: i64,
+    len: i32,
+) {
     wire_off_topic_memory_test_output_zero_copy_buffer_impl(port_, len)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_off_topic_memory_test_output_vec_u8(port_: i64, len: i32) {
+pub extern "C" fn P7C55DD6B_wire_off_topic_memory_test_output_vec_u8(port_: i64, len: i32) {
     wire_off_topic_memory_test_output_vec_u8_impl(port_, len)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_off_topic_memory_test_input_vec_of_object(
+pub extern "C" fn P7C55DD6B_wire_off_topic_memory_test_input_vec_of_object(
     port_: i64,
     input: *mut wire_list_size,
 ) {
@@ -46,12 +52,12 @@ pub extern "C" fn wire_off_topic_memory_test_input_vec_of_object(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_off_topic_memory_test_output_vec_of_object(port_: i64, len: i32) {
+pub extern "C" fn P7C55DD6B_wire_off_topic_memory_test_output_vec_of_object(port_: i64, len: i32) {
     wire_off_topic_memory_test_output_vec_of_object_impl(port_, len)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_off_topic_memory_test_input_complex_struct(
+pub extern "C" fn P7C55DD6B_wire_off_topic_memory_test_input_complex_struct(
     port_: i64,
     input: *mut wire_TreeNode,
 ) {
@@ -59,17 +65,17 @@ pub extern "C" fn wire_off_topic_memory_test_input_complex_struct(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_off_topic_memory_test_output_complex_struct(port_: i64, len: i32) {
+pub extern "C" fn P7C55DD6B_wire_off_topic_memory_test_output_complex_struct(port_: i64, len: i32) {
     wire_off_topic_memory_test_output_complex_struct_impl(port_, len)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_off_topic_deliberately_return_error(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_off_topic_deliberately_return_error(port_: i64) {
     wire_off_topic_deliberately_return_error_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_off_topic_deliberately_panic(port_: i64) {
+pub extern "C" fn P7C55DD6B_wire_off_topic_deliberately_panic(port_: i64) {
     wire_off_topic_deliberately_panic_impl(port_)
 }
 

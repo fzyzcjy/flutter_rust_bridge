@@ -178,14 +178,14 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>)>>('init_frb_dart_api_dl');
   late final _init_frb_dart_api_dl = _init_frb_dart_api_dlPtr.asFunction<int Function(ffi.Pointer<ffi.Void>)>();
 
-  void wire_draw_mandelbrot(
+  void P7C55DD6B_wire_draw_mandelbrot(
     int port_,
     ffi.Pointer<wire_Size> image_size,
     ffi.Pointer<wire_Point> zoom_point,
     double scale,
     int num_threads,
   ) {
-    return _wire_draw_mandelbrot(
+    return _P7C55DD6B_wire_draw_mandelbrot(
       port_,
       image_size,
       zoom_point,
@@ -194,178 +194,181 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
     );
   }
 
-  late final _wire_draw_mandelbrotPtr = _lookup<
+  late final _P7C55DD6B_wire_draw_mandelbrotPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(ffi.Int64, ffi.Pointer<wire_Size>, ffi.Pointer<wire_Point>, ffi.Double,
-              ffi.Int32)>>('wire_draw_mandelbrot');
-  late final _wire_draw_mandelbrot = _wire_draw_mandelbrotPtr
-      .asFunction<void Function(int, ffi.Pointer<wire_Size>, ffi.Pointer<wire_Point>, double, int)>();
+              ffi.Int32)>>('P7C55DD6B_wire_draw_mandelbrot');
+  late final _P7C55DD6B_wire_draw_mandelbrot = _P7C55DD6B_wire_draw_mandelbrotPtr.asFunction<
+      void Function(int, ffi.Pointer<wire_Size>, ffi.Pointer<wire_Point>, double, int)>();
 
-  void wire_passing_complex_structs(
+  void P7C55DD6B_wire_passing_complex_structs(
     int port_,
     ffi.Pointer<wire_TreeNode> root,
   ) {
-    return _wire_passing_complex_structs(
+    return _P7C55DD6B_wire_passing_complex_structs(
       port_,
       root,
     );
   }
 
-  late final _wire_passing_complex_structsPtr =
+  late final _P7C55DD6B_wire_passing_complex_structsPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_TreeNode>)>>(
-          'wire_passing_complex_structs');
-  late final _wire_passing_complex_structs =
-      _wire_passing_complex_structsPtr.asFunction<void Function(int, ffi.Pointer<wire_TreeNode>)>();
+          'P7C55DD6B_wire_passing_complex_structs');
+  late final _P7C55DD6B_wire_passing_complex_structs =
+      _P7C55DD6B_wire_passing_complex_structsPtr.asFunction<void Function(int, ffi.Pointer<wire_TreeNode>)>();
 
-  void wire_returning_structs_with_boxed_fields(
+  void P7C55DD6B_wire_returning_structs_with_boxed_fields(
     int port_,
   ) {
-    return _wire_returning_structs_with_boxed_fields(
+    return _P7C55DD6B_wire_returning_structs_with_boxed_fields(
       port_,
     );
   }
 
-  late final _wire_returning_structs_with_boxed_fieldsPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_returning_structs_with_boxed_fields');
-  late final _wire_returning_structs_with_boxed_fields =
-      _wire_returning_structs_with_boxed_fieldsPtr.asFunction<void Function(int)>();
+  late final _P7C55DD6B_wire_returning_structs_with_boxed_fieldsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_returning_structs_with_boxed_fields');
+  late final _P7C55DD6B_wire_returning_structs_with_boxed_fields =
+      _P7C55DD6B_wire_returning_structs_with_boxed_fieldsPtr.asFunction<void Function(int)>();
 
-  void wire_off_topic_memory_test_input_array(
+  void P7C55DD6B_wire_off_topic_memory_test_input_array(
     int port_,
     ffi.Pointer<wire_uint_8_list> input,
   ) {
-    return _wire_off_topic_memory_test_input_array(
+    return _P7C55DD6B_wire_off_topic_memory_test_input_array(
       port_,
       input,
     );
   }
 
-  late final _wire_off_topic_memory_test_input_arrayPtr =
+  late final _P7C55DD6B_wire_off_topic_memory_test_input_arrayPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
-          'wire_off_topic_memory_test_input_array');
-  late final _wire_off_topic_memory_test_input_array =
-      _wire_off_topic_memory_test_input_arrayPtr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+          'P7C55DD6B_wire_off_topic_memory_test_input_array');
+  late final _P7C55DD6B_wire_off_topic_memory_test_input_array = _P7C55DD6B_wire_off_topic_memory_test_input_arrayPtr
+      .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
-  void wire_off_topic_memory_test_output_zero_copy_buffer(
+  void P7C55DD6B_wire_off_topic_memory_test_output_zero_copy_buffer(
     int port_,
     int len,
   ) {
-    return _wire_off_topic_memory_test_output_zero_copy_buffer(
+    return _P7C55DD6B_wire_off_topic_memory_test_output_zero_copy_buffer(
       port_,
       len,
     );
   }
 
-  late final _wire_off_topic_memory_test_output_zero_copy_bufferPtr =
+  late final _P7C55DD6B_wire_off_topic_memory_test_output_zero_copy_bufferPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
-          'wire_off_topic_memory_test_output_zero_copy_buffer');
-  late final _wire_off_topic_memory_test_output_zero_copy_buffer =
-      _wire_off_topic_memory_test_output_zero_copy_bufferPtr.asFunction<void Function(int, int)>();
+          'P7C55DD6B_wire_off_topic_memory_test_output_zero_copy_buffer');
+  late final _P7C55DD6B_wire_off_topic_memory_test_output_zero_copy_buffer =
+      _P7C55DD6B_wire_off_topic_memory_test_output_zero_copy_bufferPtr.asFunction<void Function(int, int)>();
 
-  void wire_off_topic_memory_test_output_vec_u8(
+  void P7C55DD6B_wire_off_topic_memory_test_output_vec_u8(
     int port_,
     int len,
   ) {
-    return _wire_off_topic_memory_test_output_vec_u8(
+    return _P7C55DD6B_wire_off_topic_memory_test_output_vec_u8(
       port_,
       len,
     );
   }
 
-  late final _wire_off_topic_memory_test_output_vec_u8Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_off_topic_memory_test_output_vec_u8');
-  late final _wire_off_topic_memory_test_output_vec_u8 =
-      _wire_off_topic_memory_test_output_vec_u8Ptr.asFunction<void Function(int, int)>();
+  late final _P7C55DD6B_wire_off_topic_memory_test_output_vec_u8Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'P7C55DD6B_wire_off_topic_memory_test_output_vec_u8');
+  late final _P7C55DD6B_wire_off_topic_memory_test_output_vec_u8 =
+      _P7C55DD6B_wire_off_topic_memory_test_output_vec_u8Ptr.asFunction<void Function(int, int)>();
 
-  void wire_off_topic_memory_test_input_vec_of_object(
+  void P7C55DD6B_wire_off_topic_memory_test_input_vec_of_object(
     int port_,
     ffi.Pointer<wire_list_size> input,
   ) {
-    return _wire_off_topic_memory_test_input_vec_of_object(
+    return _P7C55DD6B_wire_off_topic_memory_test_input_vec_of_object(
       port_,
       input,
     );
   }
 
-  late final _wire_off_topic_memory_test_input_vec_of_objectPtr =
+  late final _P7C55DD6B_wire_off_topic_memory_test_input_vec_of_objectPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_size>)>>(
-          'wire_off_topic_memory_test_input_vec_of_object');
-  late final _wire_off_topic_memory_test_input_vec_of_object =
-      _wire_off_topic_memory_test_input_vec_of_objectPtr.asFunction<void Function(int, ffi.Pointer<wire_list_size>)>();
+          'P7C55DD6B_wire_off_topic_memory_test_input_vec_of_object');
+  late final _P7C55DD6B_wire_off_topic_memory_test_input_vec_of_object =
+      _P7C55DD6B_wire_off_topic_memory_test_input_vec_of_objectPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_list_size>)>();
 
-  void wire_off_topic_memory_test_output_vec_of_object(
+  void P7C55DD6B_wire_off_topic_memory_test_output_vec_of_object(
     int port_,
     int len,
   ) {
-    return _wire_off_topic_memory_test_output_vec_of_object(
+    return _P7C55DD6B_wire_off_topic_memory_test_output_vec_of_object(
       port_,
       len,
     );
   }
 
-  late final _wire_off_topic_memory_test_output_vec_of_objectPtr =
+  late final _P7C55DD6B_wire_off_topic_memory_test_output_vec_of_objectPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
-          'wire_off_topic_memory_test_output_vec_of_object');
-  late final _wire_off_topic_memory_test_output_vec_of_object =
-      _wire_off_topic_memory_test_output_vec_of_objectPtr.asFunction<void Function(int, int)>();
+          'P7C55DD6B_wire_off_topic_memory_test_output_vec_of_object');
+  late final _P7C55DD6B_wire_off_topic_memory_test_output_vec_of_object =
+      _P7C55DD6B_wire_off_topic_memory_test_output_vec_of_objectPtr.asFunction<void Function(int, int)>();
 
-  void wire_off_topic_memory_test_input_complex_struct(
+  void P7C55DD6B_wire_off_topic_memory_test_input_complex_struct(
     int port_,
     ffi.Pointer<wire_TreeNode> input,
   ) {
-    return _wire_off_topic_memory_test_input_complex_struct(
+    return _P7C55DD6B_wire_off_topic_memory_test_input_complex_struct(
       port_,
       input,
     );
   }
 
-  late final _wire_off_topic_memory_test_input_complex_structPtr =
+  late final _P7C55DD6B_wire_off_topic_memory_test_input_complex_structPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_TreeNode>)>>(
-          'wire_off_topic_memory_test_input_complex_struct');
-  late final _wire_off_topic_memory_test_input_complex_struct =
-      _wire_off_topic_memory_test_input_complex_structPtr.asFunction<void Function(int, ffi.Pointer<wire_TreeNode>)>();
+          'P7C55DD6B_wire_off_topic_memory_test_input_complex_struct');
+  late final _P7C55DD6B_wire_off_topic_memory_test_input_complex_struct =
+      _P7C55DD6B_wire_off_topic_memory_test_input_complex_structPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_TreeNode>)>();
 
-  void wire_off_topic_memory_test_output_complex_struct(
+  void P7C55DD6B_wire_off_topic_memory_test_output_complex_struct(
     int port_,
     int len,
   ) {
-    return _wire_off_topic_memory_test_output_complex_struct(
+    return _P7C55DD6B_wire_off_topic_memory_test_output_complex_struct(
       port_,
       len,
     );
   }
 
-  late final _wire_off_topic_memory_test_output_complex_structPtr =
+  late final _P7C55DD6B_wire_off_topic_memory_test_output_complex_structPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
-          'wire_off_topic_memory_test_output_complex_struct');
-  late final _wire_off_topic_memory_test_output_complex_struct =
-      _wire_off_topic_memory_test_output_complex_structPtr.asFunction<void Function(int, int)>();
+          'P7C55DD6B_wire_off_topic_memory_test_output_complex_struct');
+  late final _P7C55DD6B_wire_off_topic_memory_test_output_complex_struct =
+      _P7C55DD6B_wire_off_topic_memory_test_output_complex_structPtr.asFunction<void Function(int, int)>();
 
-  void wire_off_topic_deliberately_return_error(
+  void P7C55DD6B_wire_off_topic_deliberately_return_error(
     int port_,
   ) {
-    return _wire_off_topic_deliberately_return_error(
+    return _P7C55DD6B_wire_off_topic_deliberately_return_error(
       port_,
     );
   }
 
-  late final _wire_off_topic_deliberately_return_errorPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_off_topic_deliberately_return_error');
-  late final _wire_off_topic_deliberately_return_error =
-      _wire_off_topic_deliberately_return_errorPtr.asFunction<void Function(int)>();
+  late final _P7C55DD6B_wire_off_topic_deliberately_return_errorPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_off_topic_deliberately_return_error');
+  late final _P7C55DD6B_wire_off_topic_deliberately_return_error =
+      _P7C55DD6B_wire_off_topic_deliberately_return_errorPtr.asFunction<void Function(int)>();
 
-  void wire_off_topic_deliberately_panic(
+  void P7C55DD6B_wire_off_topic_deliberately_panic(
     int port_,
   ) {
-    return _wire_off_topic_deliberately_panic(
+    return _P7C55DD6B_wire_off_topic_deliberately_panic(
       port_,
     );
   }
 
-  late final _wire_off_topic_deliberately_panicPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_off_topic_deliberately_panic');
-  late final _wire_off_topic_deliberately_panic =
-      _wire_off_topic_deliberately_panicPtr.asFunction<void Function(int)>();
+  late final _P7C55DD6B_wire_off_topic_deliberately_panicPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_off_topic_deliberately_panic');
+  late final _P7C55DD6B_wire_off_topic_deliberately_panic =
+      _P7C55DD6B_wire_off_topic_deliberately_panicPtr.asFunction<void Function(int)>();
 
   ffi.Pointer<wire_Point> new_box_autoadd_point_0() {
     return _new_box_autoadd_point_0();
