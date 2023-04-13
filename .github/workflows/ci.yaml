@@ -113,7 +113,7 @@ jobs:
         device:
           - "pixel"
           - "Nexus 6"
-        api-level: 29
+        api-level: [29]
       fail-fast: false
 
     steps:
@@ -185,7 +185,7 @@ jobs:
           action: reactivecircus/android-emulator-runner@v2
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
           with: |
-            api-level: 29
+            api-level: ${{ matrix.api-level }}
             arch: x86_64
             profile: ${{ matrix.device }}
             script: cd frb_example/with_flutter && flutter test integration_test/main.dart --verbose
