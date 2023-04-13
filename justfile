@@ -225,13 +225,21 @@ use_flutter_rust_bridge_release:
 
 configure_ndk:
     #!/usr/bin/env bash
-    ANDROID_HOME=$HOME/Library/Android/sdk
-    SDKMANAGER=$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager
-
-    echo y | $SDKMANAGER "ndk;21.4.7075529"
-
-    ln -sfn $ANDROID_HOME/ndk/21.4.7075529 $ANDROID_HOME/ndk-bundle
-
+    if [ "$(uname)" == "Darwin" ]; then
+        # Do something under Mac OS X platform        
+        ANDROID_HOME=$HOME/Library/Android/sdk
+        SDKMANAGER=$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager
+        echo y | $SDKMANAGER "ndk;21.4.7075529"
+        ln -sfn $ANDROID_HOME/ndk/21.4.7075529 $ANDROID_HOME/ndk-bundle
+    elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+        # Do something under GNU/Linux platform
+        ANDROID_ROOT=/usr/local/lib/android
+        ANDROID_SDK_ROOT=${ANDROID_ROOT}/sdk
+        SDKMANAGER=${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager
+        echo "y" | $SDKMANAGER "ndk;21.4.7075529"
+        ANDROID_NDK_ROOT=${ANDROID_SDK_ROOT}/ndk-bundle
+        ln -sfn $ANDROID_SDK_ROOT/ndk/21.4.7075529 $ANDROID_NDK_ROOT
+    fi
 # ============================ precommit ============================
 
 precommit: dart_pub_get generate_all rust_linter dart_linter
