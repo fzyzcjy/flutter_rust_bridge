@@ -75,7 +75,7 @@ jobs:
       - id: cache-deps
         uses: ./.github/actions/setup
         with:
-          cache-key: "steps.rust-toolchain.outputs.cachekey"
+          cache-key: "$${{ steps.rust-toolchain.outputs.cachekey }}"
       - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: 1.68.0
@@ -141,7 +141,7 @@ jobs:
       - id: cache-deps
         uses: ./.github/actions/setup
         with:
-          cache-key: "steps.rust-toolchain.outputs.cachekey"
+          cache-key: "${{ steps.rust-toolchain.outputs.cachekey }}"
           cache-os: "${{ matrix.device }}"
 
       - name: Add Rust targets
