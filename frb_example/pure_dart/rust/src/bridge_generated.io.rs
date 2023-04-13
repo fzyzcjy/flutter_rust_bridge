@@ -597,6 +597,16 @@ pub extern "C" fn wire_opaque_array(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_sync_create_non_clone() -> support::WireSyncReturn {
+    wire_sync_create_non_clone_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn wire_run_non_clone(port_: i64, clone: wire_NonCloneData) {
+    wire_run_non_clone_impl(port_, clone)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_create_sync_opaque(port_: i64) {
     wire_create_sync_opaque_impl(port_)
 }
@@ -805,6 +815,11 @@ pub extern "C" fn wire_test_contains_mirrored_sub_struct(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_as_string__method__Event(port_: i64, that: *mut wire_Event) {
+    wire_as_string__method__Event_impl(port_, that)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_sum__method__SumWith(port_: i64, that: *mut wire_SumWith, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -891,6 +906,11 @@ pub extern "C" fn new_I32() -> wire_I32 {
 #[no_mangle]
 pub extern "C" fn new_MutexHideData() -> wire_MutexHideData {
     wire_MutexHideData::new_with_null_ptr()
+}
+
+#[no_mangle]
+pub extern "C" fn new_NonCloneData() -> wire_NonCloneData {
+    wire_NonCloneData::new_with_null_ptr()
 }
 
 #[no_mangle]
@@ -1000,6 +1020,11 @@ pub extern "C" fn new_box_autoadd_enum_dart_opaque_0() -> *mut wire_EnumDartOpaq
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_enum_opaque_0() -> *mut wire_EnumOpaque {
     support::new_leak_box_ptr(wire_EnumOpaque::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_event_0() -> *mut wire_Event {
+    support::new_leak_box_ptr(wire_Event::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1407,6 +1432,21 @@ pub extern "C" fn share_opaque_MutexHideData(ptr: *const c_void) -> *const c_voi
 }
 
 #[no_mangle]
+pub extern "C" fn drop_opaque_NonCloneData(ptr: *const c_void) {
+    unsafe {
+        Arc::<NonCloneData>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn share_opaque_NonCloneData(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<NonCloneData>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[no_mangle]
 pub extern "C" fn drop_opaque_NonSendHideData(ptr: *const c_void) {
     unsafe {
         Arc::<NonSendHideData>::decrement_strong_count(ptr as _);
@@ -1485,6 +1525,11 @@ impl Wire2Api<RustOpaque<i32>> for wire_I32 {
 }
 impl Wire2Api<RustOpaque<Mutex<HideData>>> for wire_MutexHideData {
     fn wire2api(self) -> RustOpaque<Mutex<HideData>> {
+        unsafe { support::opaque_from_dart(self.ptr as _) }
+    }
+}
+impl Wire2Api<RustOpaque<NonCloneData>> for wire_NonCloneData {
+    fn wire2api(self) -> RustOpaque<NonCloneData> {
         unsafe { support::opaque_from_dart(self.ptr as _) }
     }
 }
@@ -1726,6 +1771,12 @@ impl Wire2Api<EnumOpaque> for *mut wire_EnumOpaque {
     fn wire2api(self) -> EnumOpaque {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<EnumOpaque>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<Event> for *mut wire_Event {
+    fn wire2api(self) -> Event {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Event>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<ExoticOptionals> for *mut wire_ExoticOptionals {
@@ -2028,6 +2079,14 @@ impl Wire2Api<EnumOpaque> for wire_EnumOpaque {
                 EnumOpaque::RwLock(ans.field0.wire2api())
             },
             _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<Event> for wire_Event {
+    fn wire2api(self) -> Event {
+        Event {
+            address: self.address.wire2api(),
+            payload: self.payload.wire2api(),
         }
     }
 }
@@ -2430,6 +2489,12 @@ pub struct wire_MutexHideData {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_NonCloneData {
+    ptr: *const core::ffi::c_void,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_NonSendHideData {
     ptr: *const core::ffi::c_void,
 }
@@ -2524,6 +2589,13 @@ pub struct wire_DartOpaqueNested {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_Empty {}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Event {
+    address: *mut wire_uint_8_list,
+    payload: *mut wire_uint_8_list,
+}
 
 #[repr(C)]
 #[derive(Clone)]
@@ -3038,6 +3110,13 @@ impl NewWithNullPtr for wire_MutexHideData {
         }
     }
 }
+impl NewWithNullPtr for wire_NonCloneData {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            ptr: core::ptr::null(),
+        }
+    }
+}
 impl NewWithNullPtr for wire_NonSendHideData {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -3370,6 +3449,21 @@ pub extern "C" fn inflate_EnumOpaque_RwLock() -> *mut EnumOpaqueKind {
             field0: wire_RwLockHideData::new_with_null_ptr(),
         }),
     })
+}
+
+impl NewWithNullPtr for wire_Event {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            address: core::ptr::null_mut(),
+            payload: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl Default for wire_Event {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
 }
 
 impl NewWithNullPtr for wire_ExoticOptionals {

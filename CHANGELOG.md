@@ -1,3 +1,11 @@
+## 1.74.0
+
+* Allow RustOpaque to be non-Clone #989 (thanks @anlumo)
+
+## 1.73.0
+
+* Support generating Dart structs with freezed + methods #970 (thanks @anlumo)
+
 ## 1.72.2
 
 * Fix: Handle fallible case for TypeGeneralListGenerator. #1149 (thanks @trobanga)
