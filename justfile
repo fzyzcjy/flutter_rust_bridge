@@ -95,7 +95,11 @@ generate_book_help:
 generate_ffigen:
     cd frb_dart && dart run ffigen
 
-cargo_run_codegen := "cargo run --manifest-path frb_codegen/Cargo.toml --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --features 'chrono,uuid' -- "
+cargo_run_codegen := if env_var_or_default("FRB_TEST_USE_RELEASE_VERSION", "false") == "true" {
+    "flutter_rust_bridge_codegen"
+} else {
+    "cargo run --manifest-path frb_codegen/Cargo.toml --package flutter_rust_bridge_codegen --bin flutter_rust_bridge_codegen --features 'chrono,uuid' -- "
+}
 
 generate_bridge:
     just _generate_bridge_pure_dart
@@ -176,6 +180,12 @@ dart_check_included_source:
 
 # ============================ (some of) CI ============================
 
+ci_valgrind:
+    just install_ffigen_dependency
+    just install_valgrind
+    just dart_pub_get dart_only
+    just dart_test_valgrind
+
 ci_codegen:
     just install_ffigen_dependency
     just dart_pub_get
@@ -206,6 +216,21 @@ _normalize_pubspec_lock_one path:
 
 serve *args:
     cd {{invocation_directory()}} && dart run {{justfile_directory()}}/frb_dart/bin/serve.dart {{args}}
+
+use_flutter_rust_bridge_release:
+    cp ./frb_example/pure_dart/dart/pubspec.yaml.release ./frb_example/pure_dart/dart/pubspec.yaml
+    cp ./frb_example/pure_dart/rust/Cargo.toml.release ./frb_example/pure_dart/rust/Cargo.toml
+    cp ./frb_example/with_flutter/pubspec.yaml.release ./frb_example/with_flutter/pubspec.yaml
+    cp ./frb_example/with_flutter/rust/Cargo.toml.release ./frb_example/with_flutter/rust/Cargo.toml
+
+configure_ndk:
+    #!/usr/bin/env bash
+    ANDROID_HOME=$HOME/Library/Android/sdk
+    SDKMANAGER=$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager
+
+    echo y | $SDKMANAGER "ndk;21.4.7075529"
+
+    ln -sfn $ANDROID_HOME/ndk/21.4.7075529 $ANDROID_HOME/ndk-bundle
 
 # ============================ precommit ============================
 
