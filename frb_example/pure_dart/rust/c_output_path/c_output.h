@@ -349,6 +349,10 @@ typedef struct P7C55DD6B_wire_EnumOpaque {
   union EnumOpaqueKind *kind;
 } P7C55DD6B_wire_EnumOpaque;
 
+typedef struct P7C55DD6B_wire_NonCloneData {
+  const void *ptr;
+} P7C55DD6B_wire_NonCloneData;
+
 typedef struct P7C55DD6B_wire_NonSendHideData {
   const void *ptr;
 } P7C55DD6B_wire_NonSendHideData;
@@ -434,6 +438,11 @@ typedef struct P7C55DD6B_wire_Abc {
   int32_t tag;
   union AbcKind *kind;
 } P7C55DD6B_wire_Abc;
+
+typedef struct P7C55DD6B_wire_Event {
+  struct P7C55DD6B_wire_uint_8_list *address;
+  struct P7C55DD6B_wire_uint_8_list *payload;
+} P7C55DD6B_wire_Event;
 
 typedef struct P7C55DD6B_wire_SumWith {
   uint32_t x;
@@ -706,6 +715,10 @@ void P7C55DD6B_wire_run_opaque_with_delay(int64_t port_, struct P7C55DD6B_wire_H
 
 void P7C55DD6B_wire_opaque_array(int64_t port_);
 
+WireSyncReturn P7C55DD6B_wire_sync_create_non_clone(void);
+
+void P7C55DD6B_wire_run_non_clone(int64_t port_, struct P7C55DD6B_wire_NonCloneData clone);
+
 void P7C55DD6B_wire_create_sync_opaque(int64_t port_);
 
 WireSyncReturn P7C55DD6B_wire_sync_create_sync_opaque(void);
@@ -791,6 +804,8 @@ void P7C55DD6B_wire_test_abc_enum(int64_t port_, struct P7C55DD6B_wire_Abc *abc)
 
 void P7C55DD6B_wire_test_contains_mirrored_sub_struct(int64_t port_);
 
+void P7C55DD6B_wire_as_string__method__Event(int64_t port_, struct P7C55DD6B_wire_Event *that);
+
 void P7C55DD6B_wire_sum__method__SumWith(int64_t port_,
                                          struct P7C55DD6B_wire_SumWith *that,
                                          uint32_t y,
@@ -830,6 +845,8 @@ struct P7C55DD6B_wire_HideData new_HideData(void);
 struct P7C55DD6B_wire_I32 new_I32(void);
 
 struct P7C55DD6B_wire_MutexHideData new_MutexHideData(void);
+
+struct P7C55DD6B_wire_NonCloneData new_NonCloneData(void);
 
 struct P7C55DD6B_wire_NonSendHideData new_NonSendHideData(void);
 
@@ -872,6 +889,8 @@ struct P7C55DD6B_wire_Empty *new_box_autoadd_empty_0(void);
 struct P7C55DD6B_wire_EnumDartOpaque *new_box_autoadd_enum_dart_opaque_0(void);
 
 struct P7C55DD6B_wire_EnumOpaque *new_box_autoadd_enum_opaque_0(void);
+
+struct P7C55DD6B_wire_Event *new_box_autoadd_event_0(void);
 
 struct P7C55DD6B_wire_ExoticOptionals *new_box_autoadd_exotic_optionals_0(void);
 
@@ -996,6 +1015,10 @@ const void *share_opaque_I32(const void *ptr);
 void drop_opaque_MutexHideData(const void *ptr);
 
 const void *share_opaque_MutexHideData(const void *ptr);
+
+void drop_opaque_NonCloneData(const void *ptr);
+
+const void *share_opaque_NonCloneData(const void *ptr);
 
 void drop_opaque_NonSendHideData(const void *ptr);
 
@@ -1159,6 +1182,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_run_opaque);
     dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_run_opaque_with_delay);
     dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_opaque_array);
+    dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_sync_create_non_clone);
+    dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_run_non_clone);
     dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_create_sync_opaque);
     dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_sync_create_sync_opaque);
     dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_sync_run_opaque);
@@ -1199,6 +1224,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_list_of_primitive_enums);
     dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_test_abc_enum);
     dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_test_contains_mirrored_sub_struct);
+    dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_as_string__method__Event);
     dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_sum__method__SumWith);
     dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_new__static_method__ConcatenateWith);
     dummy_var ^= ((int64_t) (void*) P7C55DD6B_wire_concatenate__method__ConcatenateWith);
@@ -1212,6 +1238,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_HideData);
     dummy_var ^= ((int64_t) (void*) new_I32);
     dummy_var ^= ((int64_t) (void*) new_MutexHideData);
+    dummy_var ^= ((int64_t) (void*) new_NonCloneData);
     dummy_var ^= ((int64_t) (void*) new_NonSendHideData);
     dummy_var ^= ((int64_t) (void*) new_RwLockHideData);
     dummy_var ^= ((int64_t) (void*) new_StringList_0);
@@ -1233,6 +1260,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_empty_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_dart_opaque_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_opaque_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_event_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_exotic_optionals_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_f64_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_feature_chrono_0);
@@ -1295,6 +1323,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) share_opaque_I32);
     dummy_var ^= ((int64_t) (void*) drop_opaque_MutexHideData);
     dummy_var ^= ((int64_t) (void*) share_opaque_MutexHideData);
+    dummy_var ^= ((int64_t) (void*) drop_opaque_NonCloneData);
+    dummy_var ^= ((int64_t) (void*) share_opaque_NonCloneData);
     dummy_var ^= ((int64_t) (void*) drop_opaque_NonSendHideData);
     dummy_var ^= ((int64_t) (void*) share_opaque_NonSendHideData);
     dummy_var ^= ((int64_t) (void*) drop_opaque_RwLockHideData);

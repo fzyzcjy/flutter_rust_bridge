@@ -14,7 +14,9 @@ use flutter_rust_bridge::*;
 use lazy_static::lazy_static;
 
 use crate::data::{EnumAlias, Id, MyEnum, MyStruct, StructAlias, UserIdAlias};
-pub use crate::data::{FrbOpaqueReturn, FrbOpaqueSyncReturn, HideData, NonSendHideData};
+pub use crate::data::{
+    FrbOpaqueReturn, FrbOpaqueSyncReturn, HideData, NonCloneData, NonSendHideData,
+};
 use crate::new_module_system::{use_new_module_system, NewSimpleStruct};
 use crate::old_module_system::{use_old_module_system, OldSimpleStruct};
 use log::info;
@@ -762,6 +764,12 @@ pub struct Event {
     pub payload: String,
 }
 
+impl Event {
+    pub fn as_string(&self) -> String {
+        format!("{}: {}", self.address, self.payload)
+    }
+}
+
 pub fn register_event_listener(listener: StreamSink<Event>) -> Result<()> {
     match EVENTS.lock() {
         Ok(mut guard) => {
@@ -1261,6 +1269,17 @@ pub fn opaque_array() -> [RustOpaque<HideData>; 2] {
         RustOpaque::new(HideData::new()),
         RustOpaque::new(HideData::new()),
     ]
+}
+
+pub fn sync_create_non_clone() -> SyncReturn<RustOpaque<NonCloneData>> {
+    SyncReturn(RustOpaque::new(NonCloneData::new()))
+}
+
+#[allow(clippy::redundant_clone)]
+pub fn run_non_clone(clone: RustOpaque<NonCloneData>) -> String {
+    // Tests whether `.clone()` works even without the generic type wrapped by it
+    // implementing Clone.
+    clone.clone().hide_data()
 }
 
 pub fn create_sync_opaque() -> RustOpaque<NonSendHideData> {

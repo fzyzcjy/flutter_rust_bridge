@@ -1,4 +1,4 @@
-flutter_rust_bridge_serve 1.72.2
+flutter_rust_bridge_serve 1.74.0
 Develop Rust WASM modules with cross-origin isolation.
 
 USAGE:

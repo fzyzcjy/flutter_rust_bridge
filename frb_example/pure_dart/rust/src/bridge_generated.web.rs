@@ -580,6 +580,16 @@ pub fn wire_opaque_array(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_sync_create_non_clone() -> support::WireSyncReturn {
+    wire_sync_create_non_clone_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_run_non_clone(port_: MessagePort, clone: JsValue) {
+    wire_run_non_clone_impl(port_, clone)
+}
+
+#[wasm_bindgen]
 pub fn wire_create_sync_opaque(port_: MessagePort) {
     wire_create_sync_opaque_impl(port_)
 }
@@ -780,6 +790,11 @@ pub fn wire_test_contains_mirrored_sub_struct(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_as_string__method__Event(port_: MessagePort, that: JsValue) {
+    wire_as_string__method__Event_impl(port_, that)
+}
+
+#[wasm_bindgen]
 pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32, z: u32) {
     wire_sum__method__SumWith_impl(port_, that, y, z)
 }
@@ -927,6 +942,21 @@ pub fn drop_opaque_MutexHideData(ptr: *const c_void) {
 pub fn share_opaque_MutexHideData(ptr: *const c_void) -> *const c_void {
     unsafe {
         Arc::<Mutex<HideData>>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
+pub fn drop_opaque_NonCloneData(ptr: *const c_void) {
+    unsafe {
+        Arc::<NonCloneData>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_NonCloneData(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<NonCloneData>::increment_strong_count(ptr as _);
         ptr
     }
 }
@@ -1240,6 +1270,21 @@ impl Wire2Api<EnumOpaque> for JsValue {
             3 => EnumOpaque::Mutex(self_.get(1).wire2api()),
             4 => EnumOpaque::RwLock(self_.get(1).wire2api()),
             _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<Event> for JsValue {
+    fn wire2api(self) -> Event {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        Event {
+            address: self_.get(0).wire2api(),
+            payload: self_.get(1).wire2api(),
         }
     }
 }
@@ -1841,6 +1886,16 @@ impl Wire2Api<RustOpaque<i32>> for JsValue {
 }
 impl Wire2Api<RustOpaque<Mutex<HideData>>> for JsValue {
     fn wire2api(self) -> RustOpaque<Mutex<HideData>> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+
+        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl Wire2Api<RustOpaque<NonCloneData>> for JsValue {
+    fn wire2api(self) -> RustOpaque<NonCloneData> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");

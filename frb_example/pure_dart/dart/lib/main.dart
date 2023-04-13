@@ -516,7 +516,7 @@ void main(List<String> args) async {
   });
 
   test('dart register event listener & create event with delay', () async {
-    expectLater(api.registerEventListener(), emits(Event(address: 'foo', payload: 'bar')));
+    expectLater(api.registerEventListener(), emits(Event(bridge: api, address: 'foo', payload: 'bar')));
     await Future.delayed(const Duration(milliseconds: 20));
     await api.createEvent(address: 'foo', payload: 'bar');
     await api.closeEventListener();
@@ -1251,6 +1251,13 @@ void main(List<String> args) async {
       expect(data3, isNotNull);
       expect(data4, isNotNull);
       data3!.dispose();
+    });
+
+    test('nonclone', () async {
+      var data = api.syncCreateNonClone();
+      var data2 = await api.runNonClone(clone: data);
+      expect(data2, "content");
+      data.dispose();
     });
 
     test('void', () async {

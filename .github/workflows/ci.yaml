@@ -41,10 +41,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: just install_ffigen_dependency
-      - run: just install_valgrind
-      - run: just dart_pub_get dart_only
-      - run: just dart_test_valgrind
+      - run: just ci_valgrind
 
   # ref https://medium.com/flutter-community/run-flutter-driver-tests-on-github-actions-13c639c7e4ab
   flutter_test_ios:
@@ -115,7 +112,7 @@ jobs:
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
   flutter_test_android:
     name: Flutter integration test on Android
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         device:
@@ -136,17 +133,14 @@ jobs:
           architecture: x64
       - uses: actions/setup-java@v1
         with:
-          java-version: "8.x" # "betterprogramming.pub" says must be java "8"
+          java-version: "11.x" # "betterprogramming.pub" says must be java "8"
+      - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # #499, https://github.com/actions/virtual-environments/issues/5595
       - name: Configure ndk
-        run: |
-          ANDROID_HOME=$HOME/Library/Android/sdk
-          SDKMANAGER=$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager
-
-          echo y | $SDKMANAGER "ndk;21.4.7075529"
-
-          ln -sfn $ANDROID_HOME/ndk/21.4.7075529 $ANDROID_HOME/ndk-bundle
+        run: just configure_ndk
 
       - uses: actions/cache@v3
         id: cache-deps
@@ -289,8 +283,8 @@ jobs:
     strategy:
       matrix:
         include:
-          - features: [ ]
-          - features: [ wasm-start ]
+          - features: []
+          - features: [wasm-start]
 
     steps:
       - uses: actions/checkout@v2
@@ -361,8 +355,14 @@ jobs:
 
   rust_build_and_test:
     name: Rust build and test
-    runs-on: ubuntu-latest
-
+    runs-on: ${{ matrix.image }}
+    strategy:
+      fail-fast: false
+      matrix:
+        image:
+          - macos-11
+          - windows-2019
+          - ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: dtolnay/rust-toolchain@stable
