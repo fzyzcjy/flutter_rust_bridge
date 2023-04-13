@@ -1,7 +1,13 @@
 use convert_case::{Case, Casing};
+use serde::{Deserialize, Serialize};
 use syn::LitStr;
 
 use crate::{ir::*, parser::DefaultValues, Opts};
+
+#[derive(Debug, Clone, Serialize, Deserialize, Hash, PartialEq, Eq, Default)]
+pub struct IrFieldSettings {
+    pub is_in_mirrored_enum: bool,
+}
 
 crate::ir! {
 pub struct IrField {
@@ -10,6 +16,8 @@ pub struct IrField {
     pub is_final: bool,
     pub comments: Vec<IrComment>,
     pub default: Option<DefaultValues>,
+
+    pub settings: IrFieldSettings,
 }
 }
 
@@ -63,5 +71,17 @@ impl IrField {
             crate::utils::misc::make_string_keyword_safe(variant_name.to_case(Case::Camel));
 
         format!("{enum_name}.{variant_name}")
+    }
+
+    /// Takes the provided name and surrounds it with the `mirror_` prefix if the field is in a
+    /// mirrored enum.
+    /// This may be improved in the future: https://github.com/fzyzcjy/flutter_rust_bridge/pull/1144#issuecomment-1486569869
+    pub fn try_name_mirror(&self, name: String) -> String {
+        let mirrored_name = self.ty.mirrored_nested();
+        if self.settings.is_in_mirrored_enum && mirrored_name.is_some() {
+            format!("mirror_{}({})", mirrored_name.unwrap(), name)
+        } else {
+            name
+        }
     }
 }

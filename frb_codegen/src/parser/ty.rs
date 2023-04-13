@@ -488,6 +488,7 @@ impl<'a> TypeParser<'a> {
         } else {
             None
         };
+
         let path = src_enum.path.clone();
         let comments = extract_comments(&src_enum.src.attrs);
         let variants = src_enum
@@ -529,6 +530,9 @@ impl<'a> TypeParser<'a> {
                                     is_final: true,
                                     comments: extract_comments(&field.attrs),
                                     default: DefaultValues::extract(&field.attrs),
+                                    settings: IrFieldSettings {
+                                        is_in_mirrored_enum: src_enum.mirror,
+                                    },
                                 })
                                 .collect(),
                         })
@@ -559,6 +563,7 @@ impl<'a> TypeParser<'a> {
                 is_final: !markers::has_non_final(&field.attrs),
                 comments: extract_comments(&field.attrs),
                 default: DefaultValues::extract(&field.attrs),
+                settings: IrFieldSettings::default(),
             });
         }
         let name = src_struct.ident.to_string();

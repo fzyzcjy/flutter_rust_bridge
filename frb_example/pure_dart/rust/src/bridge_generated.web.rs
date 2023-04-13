@@ -580,6 +580,16 @@ pub fn wire_opaque_array(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_sync_create_non_clone() -> support::WireSyncReturn {
+    wire_sync_create_non_clone_impl()
+}
+
+#[wasm_bindgen]
+pub fn wire_run_non_clone(port_: MessagePort, clone: JsValue) {
+    wire_run_non_clone_impl(port_, clone)
+}
+
+#[wasm_bindgen]
 pub fn wire_create_sync_opaque(port_: MessagePort) {
     wire_create_sync_opaque_impl(port_)
 }
@@ -735,8 +745,53 @@ pub fn wire_test_raw_string_item_struct(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_test_more_than_just_one_raw_string_struct(port_: MessagePort) {
+    wire_test_more_than_just_one_raw_string_struct_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_raw_string_mirrored(port_: MessagePort) {
+    wire_test_raw_string_mirrored_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_nested_raw_string_mirrored(port_: MessagePort) {
+    wire_test_nested_raw_string_mirrored_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_raw_string_enum_mirrored(port_: MessagePort, nested: bool) {
+    wire_test_raw_string_enum_mirrored_impl(port_, nested)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_list_of_raw_nested_string_mirrored(port_: MessagePort) {
+    wire_test_list_of_raw_nested_string_mirrored_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_fallible_of_raw_string_mirrored(port_: MessagePort) {
+    wire_test_fallible_of_raw_string_mirrored_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_list_of_primitive_enums(port_: MessagePort, weekdays: JsValue) {
     wire_list_of_primitive_enums_impl(port_, weekdays)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_abc_enum(port_: MessagePort, abc: JsValue) {
+    wire_test_abc_enum_impl(port_, abc)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_contains_mirrored_sub_struct(port_: MessagePort) {
+    wire_test_contains_mirrored_sub_struct_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_as_string__method__Event(port_: MessagePort, that: JsValue) {
+    wire_as_string__method__Event_impl(port_, that)
 }
 
 #[wasm_bindgen]
@@ -892,6 +947,21 @@ pub fn share_opaque_MutexHideData(ptr: *const c_void) -> *const c_void {
 }
 
 #[wasm_bindgen]
+pub fn drop_opaque_NonCloneData(ptr: *const c_void) {
+    unsafe {
+        Arc::<NonCloneData>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[wasm_bindgen]
+pub fn share_opaque_NonCloneData(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<NonCloneData>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[wasm_bindgen]
 pub fn drop_opaque_NonSendHideData(ptr: *const c_void) {
     unsafe {
         Arc::<NonSendHideData>::decrement_strong_count(ptr as _);
@@ -981,6 +1051,32 @@ impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for Box<[u8]> {
         ZeroCopyBuffer(self.wire2api())
     }
 }
+impl Wire2Api<A> for JsValue {
+    fn wire2api(self) -> A {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        A {
+            a: self_.get(0).wire2api(),
+        }
+    }
+}
+impl Wire2Api<Abc> for JsValue {
+    fn wire2api(self) -> Abc {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => Abc::A(self_.get(1).wire2api()),
+            1 => Abc::B(self_.get(1).wire2api()),
+            2 => Abc::C(self_.get(1).wire2api()),
+            3 => Abc::JustInt(self_.get(1).wire2api()),
+            _ => unreachable!(),
+        }
+    }
+}
 impl Wire2Api<ApplicationEnv> for JsValue {
     fn wire2api(self) -> ApplicationEnv {
         let self_ = self.dyn_into::<JsArray>().unwrap();
@@ -1041,6 +1137,20 @@ impl Wire2Api<Attribute> for JsValue {
         }
     }
 }
+impl Wire2Api<B> for JsValue {
+    fn wire2api(self) -> B {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        B {
+            b: self_.get(0).wire2api(),
+        }
+    }
+}
 impl Wire2Api<Blob> for JsValue {
     fn wire2api(self) -> Blob {
         let self_ = self.dyn_into::<JsArray>().unwrap();
@@ -1060,6 +1170,20 @@ impl Wire2Api<Box<[u8; 1600]>> for Box<[u8]> {
     }
 }
 
+impl Wire2Api<C> for JsValue {
+    fn wire2api(self) -> C {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        C {
+            c: self_.get(0).wire2api(),
+        }
+    }
+}
 impl Wire2Api<ConcatenateWith> for JsValue {
     fn wire2api(self) -> ConcatenateWith {
         let self_ = self.dyn_into::<JsArray>().unwrap();
@@ -1146,6 +1270,21 @@ impl Wire2Api<EnumOpaque> for JsValue {
             3 => EnumOpaque::Mutex(self_.get(1).wire2api()),
             4 => EnumOpaque::RwLock(self_.get(1).wire2api()),
             _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<Event> for JsValue {
+    fn wire2api(self) -> Event {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        Event {
+            address: self_.get(0).wire2api(),
+            payload: self_.get(1).wire2api(),
         }
     }
 }
@@ -1747,6 +1886,16 @@ impl Wire2Api<RustOpaque<i32>> for JsValue {
 }
 impl Wire2Api<RustOpaque<Mutex<HideData>>> for JsValue {
     fn wire2api(self) -> RustOpaque<Mutex<HideData>> {
+        #[cfg(target_pointer_width = "64")]
+        {
+            compile_error!("64-bit pointers are not supported.");
+        }
+
+        unsafe { support::opaque_from_dart((self.as_f64().unwrap() as usize) as _) }
+    }
+}
+impl Wire2Api<RustOpaque<NonCloneData>> for JsValue {
+    fn wire2api(self) -> RustOpaque<NonCloneData> {
         #[cfg(target_pointer_width = "64")]
         {
             compile_error!("64-bit pointers are not supported.");

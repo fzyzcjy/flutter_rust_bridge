@@ -597,6 +597,16 @@ pub extern "C" fn wire_opaque_array(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_sync_create_non_clone() -> support::WireSyncReturn {
+    wire_sync_create_non_clone_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn wire_run_non_clone(port_: i64, clone: wire_NonCloneData) {
+    wire_run_non_clone_impl(port_, clone)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_create_sync_opaque(port_: i64) {
     wire_create_sync_opaque_impl(port_)
 }
@@ -760,8 +770,53 @@ pub extern "C" fn wire_test_raw_string_item_struct(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_test_more_than_just_one_raw_string_struct(port_: i64) {
+    wire_test_more_than_just_one_raw_string_struct_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_raw_string_mirrored(port_: i64) {
+    wire_test_raw_string_mirrored_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_nested_raw_string_mirrored(port_: i64) {
+    wire_test_nested_raw_string_mirrored_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_raw_string_enum_mirrored(port_: i64, nested: bool) {
+    wire_test_raw_string_enum_mirrored_impl(port_, nested)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_list_of_raw_nested_string_mirrored(port_: i64) {
+    wire_test_list_of_raw_nested_string_mirrored_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_fallible_of_raw_string_mirrored(port_: i64) {
+    wire_test_fallible_of_raw_string_mirrored_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_list_of_primitive_enums(port_: i64, weekdays: *mut wire_list_weekdays) {
     wire_list_of_primitive_enums_impl(port_, weekdays)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_abc_enum(port_: i64, abc: *mut wire_Abc) {
+    wire_test_abc_enum_impl(port_, abc)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_contains_mirrored_sub_struct(port_: i64) {
+    wire_test_contains_mirrored_sub_struct_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_as_string__method__Event(port_: i64, that: *mut wire_Event) {
+    wire_as_string__method__Event_impl(port_, that)
 }
 
 #[no_mangle]
@@ -854,6 +909,11 @@ pub extern "C" fn new_MutexHideData() -> wire_MutexHideData {
 }
 
 #[no_mangle]
+pub extern "C" fn new_NonCloneData() -> wire_NonCloneData {
+    wire_NonCloneData::new_with_null_ptr()
+}
+
+#[no_mangle]
 pub extern "C" fn new_NonSendHideData() -> wire_NonSendHideData {
     wire_NonSendHideData::new_with_null_ptr()
 }
@@ -893,6 +953,16 @@ pub extern "C" fn new_box_autoadd_HideData_0() -> *mut wire_HideData {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_a_0() -> *mut wire_A {
+    support::new_leak_box_ptr(wire_A::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_abc_0() -> *mut wire_Abc {
+    support::new_leak_box_ptr(wire_Abc::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_application_env_0() -> *mut wire_ApplicationEnv {
     support::new_leak_box_ptr(wire_ApplicationEnv::new_with_null_ptr())
 }
@@ -908,8 +978,18 @@ pub extern "C" fn new_box_autoadd_attribute_0() -> *mut wire_Attribute {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_b_0() -> *mut wire_B {
+    support::new_leak_box_ptr(wire_B::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_bool_0(value: bool) -> *mut bool {
     support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_c_0() -> *mut wire_C {
+    support::new_leak_box_ptr(wire_C::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -940,6 +1020,11 @@ pub extern "C" fn new_box_autoadd_enum_dart_opaque_0() -> *mut wire_EnumDartOpaq
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_enum_opaque_0() -> *mut wire_EnumOpaque {
     support::new_leak_box_ptr(wire_EnumOpaque::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_event_0() -> *mut wire_Event {
+    support::new_leak_box_ptr(wire_Event::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1347,6 +1432,21 @@ pub extern "C" fn share_opaque_MutexHideData(ptr: *const c_void) -> *const c_voi
 }
 
 #[no_mangle]
+pub extern "C" fn drop_opaque_NonCloneData(ptr: *const c_void) {
+    unsafe {
+        Arc::<NonCloneData>::decrement_strong_count(ptr as _);
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn share_opaque_NonCloneData(ptr: *const c_void) -> *const c_void {
+    unsafe {
+        Arc::<NonCloneData>::increment_strong_count(ptr as _);
+        ptr
+    }
+}
+
+#[no_mangle]
 pub extern "C" fn drop_opaque_NonSendHideData(ptr: *const c_void) {
     unsafe {
         Arc::<NonSendHideData>::decrement_strong_count(ptr as _);
@@ -1428,6 +1528,11 @@ impl Wire2Api<RustOpaque<Mutex<HideData>>> for wire_MutexHideData {
         unsafe { support::opaque_from_dart(self.ptr as _) }
     }
 }
+impl Wire2Api<RustOpaque<NonCloneData>> for wire_NonCloneData {
+    fn wire2api(self) -> RustOpaque<NonCloneData> {
+        unsafe { support::opaque_from_dart(self.ptr as _) }
+    }
+}
 impl Wire2Api<RustOpaque<NonSendHideData>> for wire_NonSendHideData {
     fn wire2api(self) -> RustOpaque<NonSendHideData> {
         unsafe { support::opaque_from_dart(self.ptr as _) }
@@ -1482,6 +1587,40 @@ impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut wire_uint_8_list {
         ZeroCopyBuffer(self.wire2api())
     }
 }
+impl Wire2Api<A> for wire_A {
+    fn wire2api(self) -> A {
+        A {
+            a: self.a.wire2api(),
+        }
+    }
+}
+impl Wire2Api<Abc> for wire_Abc {
+    fn wire2api(self) -> Abc {
+        match self.tag {
+            0 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.A);
+                Abc::A(ans.field0.wire2api())
+            },
+            1 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.B);
+                Abc::B(ans.field0.wire2api())
+            },
+            2 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.C);
+                Abc::C(ans.field0.wire2api())
+            },
+            3 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.JustInt);
+                Abc::JustInt(ans.field0.wire2api())
+            },
+            _ => unreachable!(),
+        }
+    }
+}
 impl Wire2Api<ApplicationEnv> for wire_ApplicationEnv {
     fn wire2api(self) -> ApplicationEnv {
         ApplicationEnv {
@@ -1511,6 +1650,13 @@ impl Wire2Api<Attribute> for wire_Attribute {
         Attribute {
             key: self.key.wire2api(),
             value: self.value.wire2api(),
+        }
+    }
+}
+impl Wire2Api<B> for wire_B {
+    fn wire2api(self) -> B {
+        B {
+            b: self.b.wire2api(),
         }
     }
 }
@@ -1544,6 +1690,18 @@ impl Wire2Api<RustOpaque<HideData>> for *mut wire_HideData {
         Wire2Api::<RustOpaque<HideData>>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<A> for *mut wire_A {
+    fn wire2api(self) -> A {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<A>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<Abc> for *mut wire_Abc {
+    fn wire2api(self) -> Abc {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Abc>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<ApplicationEnv> for *mut wire_ApplicationEnv {
     fn wire2api(self) -> ApplicationEnv {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -1562,9 +1720,21 @@ impl Wire2Api<Attribute> for *mut wire_Attribute {
         Wire2Api::<Attribute>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<B> for *mut wire_B {
+    fn wire2api(self) -> B {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<B>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<bool> for *mut bool {
     fn wire2api(self) -> bool {
         unsafe { *support::box_from_leak_ptr(self) }
+    }
+}
+impl Wire2Api<C> for *mut wire_C {
+    fn wire2api(self) -> C {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<C>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<ConcatenateWith> for *mut wire_ConcatenateWith {
@@ -1601,6 +1771,12 @@ impl Wire2Api<EnumOpaque> for *mut wire_EnumOpaque {
     fn wire2api(self) -> EnumOpaque {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<EnumOpaque>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<Event> for *mut wire_Event {
+    fn wire2api(self) -> Event {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Event>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<ExoticOptionals> for *mut wire_ExoticOptionals {
@@ -1809,6 +1985,13 @@ impl Wire2Api<Box<Weekdays>> for *mut i32 {
         Wire2Api::<Weekdays>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<C> for wire_C {
+    fn wire2api(self) -> C {
+        C {
+            c: self.c.wire2api(),
+        }
+    }
+}
 impl Wire2Api<ConcatenateWith> for wire_ConcatenateWith {
     fn wire2api(self) -> ConcatenateWith {
         ConcatenateWith {
@@ -1896,6 +2079,14 @@ impl Wire2Api<EnumOpaque> for wire_EnumOpaque {
                 EnumOpaque::RwLock(ans.field0.wire2api())
             },
             _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<Event> for wire_Event {
+    fn wire2api(self) -> Event {
+        Event {
+            address: self.address.wire2api(),
+            payload: self.payload.wire2api(),
         }
     }
 }
@@ -2298,6 +2489,12 @@ pub struct wire_MutexHideData {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_NonCloneData {
+    ptr: *const core::ffi::c_void,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_NonSendHideData {
     ptr: *const core::ffi::c_void,
 }
@@ -2313,6 +2510,12 @@ pub struct wire_RwLockHideData {
 pub struct wire_StringList {
     ptr: *mut *mut wire_uint_8_list,
     len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_A {
+    a: *mut wire_uint_8_list,
 }
 
 #[repr(C)]
@@ -2347,8 +2550,20 @@ pub struct wire_Attribute {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_B {
+    b: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_Blob {
     field0: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_C {
+    c: bool,
 }
 
 #[repr(C)]
@@ -2374,6 +2589,13 @@ pub struct wire_DartOpaqueNested {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_Empty {}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Event {
+    address: *mut wire_uint_8_list,
+    payload: *mut wire_uint_8_list,
+}
 
 #[repr(C)]
 #[derive(Clone)]
@@ -2604,6 +2826,45 @@ pub struct wire_uint_8_list {
 #[derive(Clone)]
 pub struct wire_UserId {
     value: u32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Abc {
+    tag: i32,
+    kind: *mut AbcKind,
+}
+
+#[repr(C)]
+pub union AbcKind {
+    A: *mut wire_Abc_A,
+    B: *mut wire_Abc_B,
+    C: *mut wire_Abc_C,
+    JustInt: *mut wire_Abc_JustInt,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Abc_A {
+    field0: *mut wire_A,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Abc_B {
+    field0: *mut wire_B,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Abc_C {
+    field0: *mut wire_C,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_Abc_JustInt {
+    field0: i32,
 }
 
 #[repr(C)]
@@ -2849,6 +3110,13 @@ impl NewWithNullPtr for wire_MutexHideData {
         }
     }
 }
+impl NewWithNullPtr for wire_NonCloneData {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            ptr: core::ptr::null(),
+        }
+    }
+}
 impl NewWithNullPtr for wire_NonSendHideData {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -2863,6 +3131,65 @@ impl NewWithNullPtr for wire_RwLockHideData {
             ptr: core::ptr::null(),
         }
     }
+}
+
+impl NewWithNullPtr for wire_A {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            a: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl Default for wire_A {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
+impl NewWithNullPtr for wire_Abc {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_Abc_A() -> *mut AbcKind {
+    support::new_leak_box_ptr(AbcKind {
+        A: support::new_leak_box_ptr(wire_Abc_A {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_Abc_B() -> *mut AbcKind {
+    support::new_leak_box_ptr(AbcKind {
+        B: support::new_leak_box_ptr(wire_Abc_B {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_Abc_C() -> *mut AbcKind {
+    support::new_leak_box_ptr(AbcKind {
+        C: support::new_leak_box_ptr(wire_Abc_C {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_Abc_JustInt() -> *mut AbcKind {
+    support::new_leak_box_ptr(AbcKind {
+        JustInt: support::new_leak_box_ptr(wire_Abc_JustInt {
+            field0: Default::default(),
+        }),
+    })
 }
 
 impl NewWithNullPtr for wire_ApplicationEnv {
@@ -2927,6 +3254,20 @@ impl Default for wire_Attribute {
     }
 }
 
+impl NewWithNullPtr for wire_B {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            b: Default::default(),
+        }
+    }
+}
+
+impl Default for wire_B {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
 impl NewWithNullPtr for wire_Blob {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -2936,6 +3277,20 @@ impl NewWithNullPtr for wire_Blob {
 }
 
 impl Default for wire_Blob {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
+impl NewWithNullPtr for wire_C {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            c: Default::default(),
+        }
+    }
+}
+
+impl Default for wire_C {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -3094,6 +3449,21 @@ pub extern "C" fn inflate_EnumOpaque_RwLock() -> *mut EnumOpaqueKind {
             field0: wire_RwLockHideData::new_with_null_ptr(),
         }),
     })
+}
+
+impl NewWithNullPtr for wire_Event {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            address: core::ptr::null_mut(),
+            payload: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl Default for wire_Event {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
 }
 
 impl NewWithNullPtr for wire_ExoticOptionals {

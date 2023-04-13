@@ -123,6 +123,14 @@ impl IrType {
             _ => false,
         }
     }
+
+    pub fn mirrored_nested(&self) -> Option<String> {
+        match self {
+            Self::StructRef(struct_ref) => Some(struct_ref.name.clone()),
+            Self::Boxed(IrTypeBoxed { inner, .. }) => inner.mirrored_nested(),
+            _ => None,
+        }
+    }
 }
 
 #[enum_dispatch]

@@ -185,6 +185,7 @@ CA60F3380D5C98AF0B5890DB,
                 
             ALWAYS_SEARCH_USER_PATHS = NO;
             SUPPORTS_MACCATALYST = YES;
+            DYLIB_INSTALL_NAME_BASE = "$(TARGET_BUILD_DIR)";
             CARGO_TARGET_DIR = "$(PROJECT_TEMP_DIR)/cargo_target"; /* for cargo */
             CARGO_XCODE_FEATURES = ""; /* configure yourself */
             "CARGO_XCODE_TARGET_ARCH[arch=arm64*]" = "aarch64";
@@ -209,6 +210,7 @@ CA60F3380D5C98AF0B5890DB,
                 
             ALWAYS_SEARCH_USER_PATHS = NO;
             SUPPORTS_MACCATALYST = YES;
+            DYLIB_INSTALL_NAME_BASE = "$(TARGET_BUILD_DIR)";
             CARGO_TARGET_DIR = "$(PROJECT_TEMP_DIR)/cargo_target"; /* for cargo */
             CARGO_XCODE_FEATURES = ""; /* configure yourself */
             "CARGO_XCODE_TARGET_ARCH[arch=arm64*]" = "aarch64";

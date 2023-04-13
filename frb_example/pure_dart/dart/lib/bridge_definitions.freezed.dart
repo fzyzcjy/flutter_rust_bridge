@@ -15,6 +15,630 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
+mixin _$Abc {
+  Object get field0 => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(A field0) a,
+    required TResult Function(B field0) b,
+    required TResult Function(C field0) c,
+    required TResult Function(int field0) justInt,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(A field0)? a,
+    TResult? Function(B field0)? b,
+    TResult? Function(C field0)? c,
+    TResult? Function(int field0)? justInt,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(A field0)? a,
+    TResult Function(B field0)? b,
+    TResult Function(C field0)? c,
+    TResult Function(int field0)? justInt,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Abc_A value) a,
+    required TResult Function(Abc_B value) b,
+    required TResult Function(Abc_C value) c,
+    required TResult Function(Abc_JustInt value) justInt,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Abc_A value)? a,
+    TResult? Function(Abc_B value)? b,
+    TResult? Function(Abc_C value)? c,
+    TResult? Function(Abc_JustInt value)? justInt,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Abc_A value)? a,
+    TResult Function(Abc_B value)? b,
+    TResult Function(Abc_C value)? c,
+    TResult Function(Abc_JustInt value)? justInt,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AbcCopyWith<$Res> {
+  factory $AbcCopyWith(Abc value, $Res Function(Abc) then) = _$AbcCopyWithImpl<$Res, Abc>;
+}
+
+/// @nodoc
+class _$AbcCopyWithImpl<$Res, $Val extends Abc> implements $AbcCopyWith<$Res> {
+  _$AbcCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$Abc_ACopyWith<$Res> {
+  factory _$$Abc_ACopyWith(_$Abc_A value, $Res Function(_$Abc_A) then) = __$$Abc_ACopyWithImpl<$Res>;
+  @useResult
+  $Res call({A field0});
+}
+
+/// @nodoc
+class __$$Abc_ACopyWithImpl<$Res> extends _$AbcCopyWithImpl<$Res, _$Abc_A> implements _$$Abc_ACopyWith<$Res> {
+  __$$Abc_ACopyWithImpl(_$Abc_A _value, $Res Function(_$Abc_A) _then) : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$Abc_A(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as A,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Abc_A implements Abc_A {
+  const _$Abc_A(this.field0);
+
+  @override
+  final A field0;
+
+  @override
+  String toString() {
+    return 'Abc.a(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$Abc_A &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$Abc_ACopyWith<_$Abc_A> get copyWith => __$$Abc_ACopyWithImpl<_$Abc_A>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(A field0) a,
+    required TResult Function(B field0) b,
+    required TResult Function(C field0) c,
+    required TResult Function(int field0) justInt,
+  }) {
+    return a(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(A field0)? a,
+    TResult? Function(B field0)? b,
+    TResult? Function(C field0)? c,
+    TResult? Function(int field0)? justInt,
+  }) {
+    return a?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(A field0)? a,
+    TResult Function(B field0)? b,
+    TResult Function(C field0)? c,
+    TResult Function(int field0)? justInt,
+    required TResult orElse(),
+  }) {
+    if (a != null) {
+      return a(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Abc_A value) a,
+    required TResult Function(Abc_B value) b,
+    required TResult Function(Abc_C value) c,
+    required TResult Function(Abc_JustInt value) justInt,
+  }) {
+    return a(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Abc_A value)? a,
+    TResult? Function(Abc_B value)? b,
+    TResult? Function(Abc_C value)? c,
+    TResult? Function(Abc_JustInt value)? justInt,
+  }) {
+    return a?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Abc_A value)? a,
+    TResult Function(Abc_B value)? b,
+    TResult Function(Abc_C value)? c,
+    TResult Function(Abc_JustInt value)? justInt,
+    required TResult orElse(),
+  }) {
+    if (a != null) {
+      return a(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Abc_A implements Abc {
+  const factory Abc_A(final A field0) = _$Abc_A;
+
+  @override
+  A get field0;
+  @JsonKey(ignore: true)
+  _$$Abc_ACopyWith<_$Abc_A> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$Abc_BCopyWith<$Res> {
+  factory _$$Abc_BCopyWith(_$Abc_B value, $Res Function(_$Abc_B) then) = __$$Abc_BCopyWithImpl<$Res>;
+  @useResult
+  $Res call({B field0});
+}
+
+/// @nodoc
+class __$$Abc_BCopyWithImpl<$Res> extends _$AbcCopyWithImpl<$Res, _$Abc_B> implements _$$Abc_BCopyWith<$Res> {
+  __$$Abc_BCopyWithImpl(_$Abc_B _value, $Res Function(_$Abc_B) _then) : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$Abc_B(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as B,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Abc_B implements Abc_B {
+  const _$Abc_B(this.field0);
+
+  @override
+  final B field0;
+
+  @override
+  String toString() {
+    return 'Abc.b(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$Abc_B &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$Abc_BCopyWith<_$Abc_B> get copyWith => __$$Abc_BCopyWithImpl<_$Abc_B>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(A field0) a,
+    required TResult Function(B field0) b,
+    required TResult Function(C field0) c,
+    required TResult Function(int field0) justInt,
+  }) {
+    return b(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(A field0)? a,
+    TResult? Function(B field0)? b,
+    TResult? Function(C field0)? c,
+    TResult? Function(int field0)? justInt,
+  }) {
+    return b?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(A field0)? a,
+    TResult Function(B field0)? b,
+    TResult Function(C field0)? c,
+    TResult Function(int field0)? justInt,
+    required TResult orElse(),
+  }) {
+    if (b != null) {
+      return b(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Abc_A value) a,
+    required TResult Function(Abc_B value) b,
+    required TResult Function(Abc_C value) c,
+    required TResult Function(Abc_JustInt value) justInt,
+  }) {
+    return b(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Abc_A value)? a,
+    TResult? Function(Abc_B value)? b,
+    TResult? Function(Abc_C value)? c,
+    TResult? Function(Abc_JustInt value)? justInt,
+  }) {
+    return b?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Abc_A value)? a,
+    TResult Function(Abc_B value)? b,
+    TResult Function(Abc_C value)? c,
+    TResult Function(Abc_JustInt value)? justInt,
+    required TResult orElse(),
+  }) {
+    if (b != null) {
+      return b(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Abc_B implements Abc {
+  const factory Abc_B(final B field0) = _$Abc_B;
+
+  @override
+  B get field0;
+  @JsonKey(ignore: true)
+  _$$Abc_BCopyWith<_$Abc_B> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$Abc_CCopyWith<$Res> {
+  factory _$$Abc_CCopyWith(_$Abc_C value, $Res Function(_$Abc_C) then) = __$$Abc_CCopyWithImpl<$Res>;
+  @useResult
+  $Res call({C field0});
+}
+
+/// @nodoc
+class __$$Abc_CCopyWithImpl<$Res> extends _$AbcCopyWithImpl<$Res, _$Abc_C> implements _$$Abc_CCopyWith<$Res> {
+  __$$Abc_CCopyWithImpl(_$Abc_C _value, $Res Function(_$Abc_C) _then) : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$Abc_C(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as C,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Abc_C implements Abc_C {
+  const _$Abc_C(this.field0);
+
+  @override
+  final C field0;
+
+  @override
+  String toString() {
+    return 'Abc.c(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$Abc_C &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$Abc_CCopyWith<_$Abc_C> get copyWith => __$$Abc_CCopyWithImpl<_$Abc_C>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(A field0) a,
+    required TResult Function(B field0) b,
+    required TResult Function(C field0) c,
+    required TResult Function(int field0) justInt,
+  }) {
+    return c(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(A field0)? a,
+    TResult? Function(B field0)? b,
+    TResult? Function(C field0)? c,
+    TResult? Function(int field0)? justInt,
+  }) {
+    return c?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(A field0)? a,
+    TResult Function(B field0)? b,
+    TResult Function(C field0)? c,
+    TResult Function(int field0)? justInt,
+    required TResult orElse(),
+  }) {
+    if (c != null) {
+      return c(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Abc_A value) a,
+    required TResult Function(Abc_B value) b,
+    required TResult Function(Abc_C value) c,
+    required TResult Function(Abc_JustInt value) justInt,
+  }) {
+    return c(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Abc_A value)? a,
+    TResult? Function(Abc_B value)? b,
+    TResult? Function(Abc_C value)? c,
+    TResult? Function(Abc_JustInt value)? justInt,
+  }) {
+    return c?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Abc_A value)? a,
+    TResult Function(Abc_B value)? b,
+    TResult Function(Abc_C value)? c,
+    TResult Function(Abc_JustInt value)? justInt,
+    required TResult orElse(),
+  }) {
+    if (c != null) {
+      return c(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Abc_C implements Abc {
+  const factory Abc_C(final C field0) = _$Abc_C;
+
+  @override
+  C get field0;
+  @JsonKey(ignore: true)
+  _$$Abc_CCopyWith<_$Abc_C> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$Abc_JustIntCopyWith<$Res> {
+  factory _$$Abc_JustIntCopyWith(_$Abc_JustInt value, $Res Function(_$Abc_JustInt) then) =
+      __$$Abc_JustIntCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int field0});
+}
+
+/// @nodoc
+class __$$Abc_JustIntCopyWithImpl<$Res> extends _$AbcCopyWithImpl<$Res, _$Abc_JustInt>
+    implements _$$Abc_JustIntCopyWith<$Res> {
+  __$$Abc_JustIntCopyWithImpl(_$Abc_JustInt _value, $Res Function(_$Abc_JustInt) _then) : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$Abc_JustInt(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Abc_JustInt implements Abc_JustInt {
+  const _$Abc_JustInt(this.field0);
+
+  @override
+  final int field0;
+
+  @override
+  String toString() {
+    return 'Abc.justInt(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$Abc_JustInt &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$Abc_JustIntCopyWith<_$Abc_JustInt> get copyWith => __$$Abc_JustIntCopyWithImpl<_$Abc_JustInt>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(A field0) a,
+    required TResult Function(B field0) b,
+    required TResult Function(C field0) c,
+    required TResult Function(int field0) justInt,
+  }) {
+    return justInt(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(A field0)? a,
+    TResult? Function(B field0)? b,
+    TResult? Function(C field0)? c,
+    TResult? Function(int field0)? justInt,
+  }) {
+    return justInt?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(A field0)? a,
+    TResult Function(B field0)? b,
+    TResult Function(C field0)? c,
+    TResult Function(int field0)? justInt,
+    required TResult orElse(),
+  }) {
+    if (justInt != null) {
+      return justInt(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Abc_A value) a,
+    required TResult Function(Abc_B value) b,
+    required TResult Function(Abc_C value) c,
+    required TResult Function(Abc_JustInt value) justInt,
+  }) {
+    return justInt(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Abc_A value)? a,
+    TResult? Function(Abc_B value)? b,
+    TResult? Function(Abc_C value)? c,
+    TResult? Function(Abc_JustInt value)? justInt,
+  }) {
+    return justInt?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Abc_A value)? a,
+    TResult Function(Abc_B value)? b,
+    TResult Function(Abc_C value)? c,
+    TResult Function(Abc_JustInt value)? justInt,
+    required TResult orElse(),
+  }) {
+    if (justInt != null) {
+      return justInt(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Abc_JustInt implements Abc {
+  const factory Abc_JustInt(final int field0) = _$Abc_JustInt;
+
+  @override
+  int get field0;
+  @JsonKey(ignore: true)
+  _$$Abc_JustIntCopyWith<_$Abc_JustInt> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ApplicationMessage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -1895,6 +2519,7 @@ abstract class EnumOpaque_RwLock implements EnumOpaque {
 
 /// @nodoc
 mixin _$Event {
+  FlutterRustBridgeExampleSingleBlockTest get bridge => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
   String get payload => throw _privateConstructorUsedError;
 
@@ -1906,7 +2531,7 @@ mixin _$Event {
 abstract class $EventCopyWith<$Res> {
   factory $EventCopyWith(Event value, $Res Function(Event) then) = _$EventCopyWithImpl<$Res, Event>;
   @useResult
-  $Res call({String address, String payload});
+  $Res call({FlutterRustBridgeExampleSingleBlockTest bridge, String address, String payload});
 }
 
 /// @nodoc
@@ -1921,10 +2546,15 @@ class _$EventCopyWithImpl<$Res, $Val extends Event> implements $EventCopyWith<$R
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? bridge = null,
     Object? address = null,
     Object? payload = null,
   }) {
     return _then(_value.copyWith(
+      bridge: null == bridge
+          ? _value.bridge
+          : bridge // ignore: cast_nullable_to_non_nullable
+              as FlutterRustBridgeExampleSingleBlockTest,
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -1942,7 +2572,7 @@ abstract class _$$_EventCopyWith<$Res> implements $EventCopyWith<$Res> {
   factory _$$_EventCopyWith(_$_Event value, $Res Function(_$_Event) then) = __$$_EventCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String address, String payload});
+  $Res call({FlutterRustBridgeExampleSingleBlockTest bridge, String address, String payload});
 }
 
 /// @nodoc
@@ -1952,10 +2582,15 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event> i
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? bridge = null,
     Object? address = null,
     Object? payload = null,
   }) {
     return _then(_$_Event(
+      bridge: null == bridge
+          ? _value.bridge
+          : bridge // ignore: cast_nullable_to_non_nullable
+              as FlutterRustBridgeExampleSingleBlockTest,
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -1970,9 +2605,11 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event> i
 
 /// @nodoc
 
-class _$_Event implements _Event {
-  const _$_Event({required this.address, required this.payload});
+class _$_Event extends _Event {
+  const _$_Event({required this.bridge, required this.address, required this.payload}) : super._();
 
+  @override
+  final FlutterRustBridgeExampleSingleBlockTest bridge;
   @override
   final String address;
   @override
@@ -1980,7 +2617,7 @@ class _$_Event implements _Event {
 
   @override
   String toString() {
-    return 'Event(address: $address, payload: $payload)';
+    return 'Event(bridge: $bridge, address: $address, payload: $payload)';
   }
 
   @override
@@ -1988,12 +2625,13 @@ class _$_Event implements _Event {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Event &&
+            (identical(other.bridge, bridge) || other.bridge == bridge) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.payload, payload) || other.payload == payload));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, address, payload);
+  int get hashCode => Object.hash(runtimeType, bridge, address, payload);
 
   @JsonKey(ignore: true)
   @override
@@ -2001,9 +2639,15 @@ class _$_Event implements _Event {
   _$$_EventCopyWith<_$_Event> get copyWith => __$$_EventCopyWithImpl<_$_Event>(this, _$identity);
 }
 
-abstract class _Event implements Event {
-  const factory _Event({required final String address, required final String payload}) = _$_Event;
+abstract class _Event extends Event {
+  const factory _Event(
+      {required final FlutterRustBridgeExampleSingleBlockTest bridge,
+      required final String address,
+      required final String payload}) = _$_Event;
+  const _Event._() : super._();
 
+  @override
+  FlutterRustBridgeExampleSingleBlockTest get bridge;
   @override
   String get address;
   @override
@@ -3373,6 +4017,492 @@ abstract class Measure_Distance implements Measure {
   Distance get field0;
   @JsonKey(ignore: true)
   _$$Measure_DistanceCopyWith<_$Measure_Distance> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$RawStringEnumMirrored {
+  Object get field0 => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(RawStringMirrored field0) raw,
+    required TResult Function(NestedRawStringMirrored field0) nested,
+    required TResult Function(ListOfNestedRawStringMirrored field0) listOfNested,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(RawStringMirrored field0)? raw,
+    TResult? Function(NestedRawStringMirrored field0)? nested,
+    TResult? Function(ListOfNestedRawStringMirrored field0)? listOfNested,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(RawStringMirrored field0)? raw,
+    TResult Function(NestedRawStringMirrored field0)? nested,
+    TResult Function(ListOfNestedRawStringMirrored field0)? listOfNested,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RawStringEnumMirrored_Raw value) raw,
+    required TResult Function(RawStringEnumMirrored_Nested value) nested,
+    required TResult Function(RawStringEnumMirrored_ListOfNested value) listOfNested,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(RawStringEnumMirrored_Raw value)? raw,
+    TResult? Function(RawStringEnumMirrored_Nested value)? nested,
+    TResult? Function(RawStringEnumMirrored_ListOfNested value)? listOfNested,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RawStringEnumMirrored_Raw value)? raw,
+    TResult Function(RawStringEnumMirrored_Nested value)? nested,
+    TResult Function(RawStringEnumMirrored_ListOfNested value)? listOfNested,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $RawStringEnumMirroredCopyWith<$Res> {
+  factory $RawStringEnumMirroredCopyWith(RawStringEnumMirrored value, $Res Function(RawStringEnumMirrored) then) =
+      _$RawStringEnumMirroredCopyWithImpl<$Res, RawStringEnumMirrored>;
+}
+
+/// @nodoc
+class _$RawStringEnumMirroredCopyWithImpl<$Res, $Val extends RawStringEnumMirrored>
+    implements $RawStringEnumMirroredCopyWith<$Res> {
+  _$RawStringEnumMirroredCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$RawStringEnumMirrored_RawCopyWith<$Res> {
+  factory _$$RawStringEnumMirrored_RawCopyWith(
+          _$RawStringEnumMirrored_Raw value, $Res Function(_$RawStringEnumMirrored_Raw) then) =
+      __$$RawStringEnumMirrored_RawCopyWithImpl<$Res>;
+  @useResult
+  $Res call({RawStringMirrored field0});
+}
+
+/// @nodoc
+class __$$RawStringEnumMirrored_RawCopyWithImpl<$Res>
+    extends _$RawStringEnumMirroredCopyWithImpl<$Res, _$RawStringEnumMirrored_Raw>
+    implements _$$RawStringEnumMirrored_RawCopyWith<$Res> {
+  __$$RawStringEnumMirrored_RawCopyWithImpl(
+      _$RawStringEnumMirrored_Raw _value, $Res Function(_$RawStringEnumMirrored_Raw) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$RawStringEnumMirrored_Raw(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as RawStringMirrored,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RawStringEnumMirrored_Raw implements RawStringEnumMirrored_Raw {
+  const _$RawStringEnumMirrored_Raw(this.field0);
+
+  @override
+  final RawStringMirrored field0;
+
+  @override
+  String toString() {
+    return 'RawStringEnumMirrored.raw(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RawStringEnumMirrored_Raw &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RawStringEnumMirrored_RawCopyWith<_$RawStringEnumMirrored_Raw> get copyWith =>
+      __$$RawStringEnumMirrored_RawCopyWithImpl<_$RawStringEnumMirrored_Raw>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(RawStringMirrored field0) raw,
+    required TResult Function(NestedRawStringMirrored field0) nested,
+    required TResult Function(ListOfNestedRawStringMirrored field0) listOfNested,
+  }) {
+    return raw(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(RawStringMirrored field0)? raw,
+    TResult? Function(NestedRawStringMirrored field0)? nested,
+    TResult? Function(ListOfNestedRawStringMirrored field0)? listOfNested,
+  }) {
+    return raw?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(RawStringMirrored field0)? raw,
+    TResult Function(NestedRawStringMirrored field0)? nested,
+    TResult Function(ListOfNestedRawStringMirrored field0)? listOfNested,
+    required TResult orElse(),
+  }) {
+    if (raw != null) {
+      return raw(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RawStringEnumMirrored_Raw value) raw,
+    required TResult Function(RawStringEnumMirrored_Nested value) nested,
+    required TResult Function(RawStringEnumMirrored_ListOfNested value) listOfNested,
+  }) {
+    return raw(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(RawStringEnumMirrored_Raw value)? raw,
+    TResult? Function(RawStringEnumMirrored_Nested value)? nested,
+    TResult? Function(RawStringEnumMirrored_ListOfNested value)? listOfNested,
+  }) {
+    return raw?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RawStringEnumMirrored_Raw value)? raw,
+    TResult Function(RawStringEnumMirrored_Nested value)? nested,
+    TResult Function(RawStringEnumMirrored_ListOfNested value)? listOfNested,
+    required TResult orElse(),
+  }) {
+    if (raw != null) {
+      return raw(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RawStringEnumMirrored_Raw implements RawStringEnumMirrored {
+  const factory RawStringEnumMirrored_Raw(final RawStringMirrored field0) = _$RawStringEnumMirrored_Raw;
+
+  @override
+  RawStringMirrored get field0;
+  @JsonKey(ignore: true)
+  _$$RawStringEnumMirrored_RawCopyWith<_$RawStringEnumMirrored_Raw> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RawStringEnumMirrored_NestedCopyWith<$Res> {
+  factory _$$RawStringEnumMirrored_NestedCopyWith(
+          _$RawStringEnumMirrored_Nested value, $Res Function(_$RawStringEnumMirrored_Nested) then) =
+      __$$RawStringEnumMirrored_NestedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({NestedRawStringMirrored field0});
+}
+
+/// @nodoc
+class __$$RawStringEnumMirrored_NestedCopyWithImpl<$Res>
+    extends _$RawStringEnumMirroredCopyWithImpl<$Res, _$RawStringEnumMirrored_Nested>
+    implements _$$RawStringEnumMirrored_NestedCopyWith<$Res> {
+  __$$RawStringEnumMirrored_NestedCopyWithImpl(
+      _$RawStringEnumMirrored_Nested _value, $Res Function(_$RawStringEnumMirrored_Nested) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$RawStringEnumMirrored_Nested(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as NestedRawStringMirrored,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RawStringEnumMirrored_Nested implements RawStringEnumMirrored_Nested {
+  const _$RawStringEnumMirrored_Nested(this.field0);
+
+  @override
+  final NestedRawStringMirrored field0;
+
+  @override
+  String toString() {
+    return 'RawStringEnumMirrored.nested(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RawStringEnumMirrored_Nested &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RawStringEnumMirrored_NestedCopyWith<_$RawStringEnumMirrored_Nested> get copyWith =>
+      __$$RawStringEnumMirrored_NestedCopyWithImpl<_$RawStringEnumMirrored_Nested>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(RawStringMirrored field0) raw,
+    required TResult Function(NestedRawStringMirrored field0) nested,
+    required TResult Function(ListOfNestedRawStringMirrored field0) listOfNested,
+  }) {
+    return nested(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(RawStringMirrored field0)? raw,
+    TResult? Function(NestedRawStringMirrored field0)? nested,
+    TResult? Function(ListOfNestedRawStringMirrored field0)? listOfNested,
+  }) {
+    return nested?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(RawStringMirrored field0)? raw,
+    TResult Function(NestedRawStringMirrored field0)? nested,
+    TResult Function(ListOfNestedRawStringMirrored field0)? listOfNested,
+    required TResult orElse(),
+  }) {
+    if (nested != null) {
+      return nested(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RawStringEnumMirrored_Raw value) raw,
+    required TResult Function(RawStringEnumMirrored_Nested value) nested,
+    required TResult Function(RawStringEnumMirrored_ListOfNested value) listOfNested,
+  }) {
+    return nested(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(RawStringEnumMirrored_Raw value)? raw,
+    TResult? Function(RawStringEnumMirrored_Nested value)? nested,
+    TResult? Function(RawStringEnumMirrored_ListOfNested value)? listOfNested,
+  }) {
+    return nested?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RawStringEnumMirrored_Raw value)? raw,
+    TResult Function(RawStringEnumMirrored_Nested value)? nested,
+    TResult Function(RawStringEnumMirrored_ListOfNested value)? listOfNested,
+    required TResult orElse(),
+  }) {
+    if (nested != null) {
+      return nested(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RawStringEnumMirrored_Nested implements RawStringEnumMirrored {
+  const factory RawStringEnumMirrored_Nested(final NestedRawStringMirrored field0) = _$RawStringEnumMirrored_Nested;
+
+  @override
+  NestedRawStringMirrored get field0;
+  @JsonKey(ignore: true)
+  _$$RawStringEnumMirrored_NestedCopyWith<_$RawStringEnumMirrored_Nested> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RawStringEnumMirrored_ListOfNestedCopyWith<$Res> {
+  factory _$$RawStringEnumMirrored_ListOfNestedCopyWith(
+          _$RawStringEnumMirrored_ListOfNested value, $Res Function(_$RawStringEnumMirrored_ListOfNested) then) =
+      __$$RawStringEnumMirrored_ListOfNestedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ListOfNestedRawStringMirrored field0});
+}
+
+/// @nodoc
+class __$$RawStringEnumMirrored_ListOfNestedCopyWithImpl<$Res>
+    extends _$RawStringEnumMirroredCopyWithImpl<$Res, _$RawStringEnumMirrored_ListOfNested>
+    implements _$$RawStringEnumMirrored_ListOfNestedCopyWith<$Res> {
+  __$$RawStringEnumMirrored_ListOfNestedCopyWithImpl(
+      _$RawStringEnumMirrored_ListOfNested _value, $Res Function(_$RawStringEnumMirrored_ListOfNested) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$RawStringEnumMirrored_ListOfNested(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as ListOfNestedRawStringMirrored,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RawStringEnumMirrored_ListOfNested implements RawStringEnumMirrored_ListOfNested {
+  const _$RawStringEnumMirrored_ListOfNested(this.field0);
+
+  @override
+  final ListOfNestedRawStringMirrored field0;
+
+  @override
+  String toString() {
+    return 'RawStringEnumMirrored.listOfNested(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RawStringEnumMirrored_ListOfNested &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RawStringEnumMirrored_ListOfNestedCopyWith<_$RawStringEnumMirrored_ListOfNested> get copyWith =>
+      __$$RawStringEnumMirrored_ListOfNestedCopyWithImpl<_$RawStringEnumMirrored_ListOfNested>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(RawStringMirrored field0) raw,
+    required TResult Function(NestedRawStringMirrored field0) nested,
+    required TResult Function(ListOfNestedRawStringMirrored field0) listOfNested,
+  }) {
+    return listOfNested(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(RawStringMirrored field0)? raw,
+    TResult? Function(NestedRawStringMirrored field0)? nested,
+    TResult? Function(ListOfNestedRawStringMirrored field0)? listOfNested,
+  }) {
+    return listOfNested?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(RawStringMirrored field0)? raw,
+    TResult Function(NestedRawStringMirrored field0)? nested,
+    TResult Function(ListOfNestedRawStringMirrored field0)? listOfNested,
+    required TResult orElse(),
+  }) {
+    if (listOfNested != null) {
+      return listOfNested(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RawStringEnumMirrored_Raw value) raw,
+    required TResult Function(RawStringEnumMirrored_Nested value) nested,
+    required TResult Function(RawStringEnumMirrored_ListOfNested value) listOfNested,
+  }) {
+    return listOfNested(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(RawStringEnumMirrored_Raw value)? raw,
+    TResult? Function(RawStringEnumMirrored_Nested value)? nested,
+    TResult? Function(RawStringEnumMirrored_ListOfNested value)? listOfNested,
+  }) {
+    return listOfNested?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RawStringEnumMirrored_Raw value)? raw,
+    TResult Function(RawStringEnumMirrored_Nested value)? nested,
+    TResult Function(RawStringEnumMirrored_ListOfNested value)? listOfNested,
+    required TResult orElse(),
+  }) {
+    if (listOfNested != null) {
+      return listOfNested(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RawStringEnumMirrored_ListOfNested implements RawStringEnumMirrored {
+  const factory RawStringEnumMirrored_ListOfNested(final ListOfNestedRawStringMirrored field0) =
+      _$RawStringEnumMirrored_ListOfNested;
+
+  @override
+  ListOfNestedRawStringMirrored get field0;
+  @JsonKey(ignore: true)
+  _$$RawStringEnumMirrored_ListOfNestedCopyWith<_$RawStringEnumMirrored_ListOfNested> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

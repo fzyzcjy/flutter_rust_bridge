@@ -1,3 +1,19 @@
+## 1.74.0
+
+* Allow RustOpaque to be non-Clone #989 (thanks @anlumo)
+
+## 1.73.0
+
+* Support generating Dart structs with freezed + methods #970 (thanks @anlumo)
+
+## 1.72.2
+
+* Fix: Handle fallible case for TypeGeneralListGenerator. #1149 (thanks @trobanga)
+
+## 1.72.1
+
+* Fix for enums that contain mirrored structs Enum1(MyStruct) and Unit Tests #1144 (thanks @alexthe2)
+
 ## 1.72.0
 
 * Added support for raw strings #1139 (thanks @alexthe2)

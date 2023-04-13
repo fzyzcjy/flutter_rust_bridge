@@ -529,6 +529,33 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "escwxyz",
+      "name": "J",
+      "avatar_url": "https://avatars.githubusercontent.com/u/124119483?v=4",
+      "profile": "https://github.com/escwxyz",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "anlumo",
+      "name": "Andreas Monitzer",
+      "avatar_url": "https://avatars.githubusercontent.com/u/644763?v=4",
+      "profile": "http://monitzer.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "satvikpendem",
+      "name": "Satvik Pendem",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42670561?v=4",
+      "profile": "https://satvikpendem.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
