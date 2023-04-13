@@ -223,6 +223,13 @@ impl<'a> Generator<'a> {
                 .iter()
                 .filter_map(|ty| self.generate_wasm2api_func(ty, ir_file)),
         );
+
+        let regex = Regex::new(r"wire_[\d\w]+_impl").unwrap();
+        for line in lines.wasm.iter_mut() {
+            let curr = line.clone();
+            let new_line = regex.replace_all(&curr, format!("{}$0", self.config.get_unique_id()));
+            line.replace_range(0..line.len(), &new_line);
+        }
     }
 
     fn section_header_comment(&self, section_name: &str) -> String {

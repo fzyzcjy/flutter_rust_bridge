@@ -3,7 +3,7 @@ use super::*;
 
 #[wasm_bindgen]
 pub fn wire_simple_adder_2(port_: MessagePort, a: i32, b: i32) {
-    wire_simple_adder_2_impl(port_, a, b)
+    P7C55DD6B_wire_simple_adder_2_impl(port_, a, b)
 }
 
 // Section: allocate functions
