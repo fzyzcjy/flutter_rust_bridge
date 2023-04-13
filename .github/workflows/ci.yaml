@@ -143,7 +143,7 @@ jobs:
         uses: ./.github/actions/setup
         with:
           cache-key: "${{ steps.rust-toolchain.outputs.cachekey }}"
-          cache-os: "${{ matrix.device }}"
+          cache-platform: "${{ matrix.device }}"
 
       - name: Add Rust targets
         run: rustup target add x86_64-linux-android
