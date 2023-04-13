@@ -15,6 +15,7 @@ mod ty_sync_return;
 mod wasm;
 
 use func::*;
+use regex::Regex;
 use std::borrow::Cow;
 use std::collections::HashSet;
 use std::ffi::OsStr;
@@ -72,10 +73,15 @@ pub fn generate(ir_file: &IrFile, config: &Opts, wasm_funcs: &[IrFuncDisplay]) -
         generate_dart_declaration_body(dart_api_class_name, dart_funcs, dart_structs),
     );
 
-    let impl_code = generate_dart_implementation_code(
+    let mut impl_code = generate_dart_implementation_code(
         &common_header,
         generate_dart_implementation_body(&spec, config),
     );
+
+    let regex = Regex::new(r"(<| )(wire_[\d\w]+)").unwrap();
+    let curr = impl_code.io.body;
+    impl_code.io.body = regex.replace_all(&curr, format!("${{1}}{}${{2}}", config.get_unique_id()))
+        .to_string();
 
     let file_prelude = generate_file_prelude();
 

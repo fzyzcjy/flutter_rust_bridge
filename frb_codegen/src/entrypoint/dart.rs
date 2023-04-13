@@ -9,6 +9,7 @@ use crate::{command_run, commands, ensure_tools_available, generator, ir, Opts};
 use itertools::Itertools;
 use log::info;
 use pathdiff::diff_paths;
+use regex::Regex;
 use std::ffi::OsStr;
 use std::fs;
 use std::path::Path;
@@ -58,6 +59,18 @@ pub(crate) fn generate_dart_code(
         EXTRA_EXTERN_FUNC_NAMES.to_vec(),
     ]
     .concat();
+
+    let wire_regex = Regex::new(r"wire_[\d\w]+").unwrap();
+    let effective_func_names = effective_func_names
+        .iter()
+        .map(|e| {
+            if wire_regex.is_match(e) {
+                return format!("{}{e}", config.get_unique_id())
+            }
+
+            e.to_string()
+        })
+        .collect::<Vec<String>>();
 
     for (i, each_path) in config.c_output_path.iter().enumerate() {
         let c_dummy_code =

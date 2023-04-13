@@ -12,6 +12,7 @@ mod ty_rust_opaque;
 mod ty_struct;
 mod ty_sync_return;
 
+use regex::Regex;
 pub use ty::*;
 pub use ty_boxed::*;
 pub use ty_dart_opaque::*;
@@ -108,11 +109,10 @@ impl<'a> Generator<'a> {
         lines.push(String::new());
 
         lines.push_all(self.section_header_comment("wire functions"));
-        let prefix = &self.config.get_unique_id();
         lines += ir_file
             .funcs
             .iter()
-            .map(|f| self.generate_wire_func(f, ir_file, prefix))
+            .map(|f| self.generate_wire_func(f, ir_file))
             .collect();
 
         lines.push(self.section_header_comment("wrapper structs"));
@@ -161,6 +161,13 @@ impl<'a> Generator<'a> {
         lines.push(self.section_header_comment("executor"));
         lines.push(self.generate_executor(ir_file));
 
+        let regex = Regex::new(r"wire_[\d\w]+").unwrap();
+        for line in lines.common.iter_mut() {
+            let curr = line.clone();
+            let new_line = regex.replace_all(&curr, format!("{}$0", self.config.get_unique_id()));
+            line.replace_range(0..line.len(), &new_line);
+        }
+
         self.generate_io_part(&mut lines, &distinct_input_types, ir_file);
         self.generate_wasm_part(&mut lines, &distinct_input_types, ir_file);
 
@@ -194,6 +201,13 @@ impl<'a> Generator<'a> {
         if self.config.block_index == BlockIndex::PRIMARY {
             (lines.io).push(self.section_header_comment("sync execution mode utility"));
             lines.io.push(self.generate_sync_execution_mode_utility());
+        }
+
+        let regex = Regex::new(r"wire_[\d\w]+").unwrap();
+        for line in lines.io.iter_mut() {
+            let curr = line.clone();
+            let new_line = regex.replace_all(&curr, format!("{}$0", self.config.get_unique_id()));
+            line.replace_range(0..line.len(), &new_line);
         }
     }
 
@@ -262,7 +276,7 @@ impl<'a> Generator<'a> {
         )
     }
 
-    fn generate_wire_func(&mut self, func: &IrFunc, ir_file: &IrFile, prefix: &str) -> Acc<String> {
+    fn generate_wire_func(&mut self, func: &IrFunc, ir_file: &IrFile) -> Acc<String> {
         let f = FunctionName::deserialize(&func.name);
         let struct_name = f.struct_name();
         let mut params = if func.mode.has_port_argument() {
@@ -385,7 +399,7 @@ impl<'a> Generator<'a> {
         );
         Acc::new(|target| match target {
             Io | Wasm => self.extern_func_collector.generate(
-                &format!("{prefix}{}", func.wire_func_name()),
+                &func.wire_func_name(),
                 if target.is_wasm() {
                     &params.wasm[..]
                 } else {
