@@ -169,7 +169,6 @@ More specifically, thanks for all these contributions:
 * [anstadnik](https://github.com/anstadnik): Check keywords.
 * [Syndim](https://github.com/Syndim): Add a bracket to box.
 * [TENX-S](https://github.com/TENX-S): Improve doc. Reproduce a bug.
-* [satvikpendem](https://github.com/satvikpendem): Co-author #989.
 * [polypixeldev](https://github.com/polypixeldev): Improve doc.
 * [CicadaCinema](https://github.com/CicadaCinema): Bump version. Improve doc.
 * [w1th0utnam3](https://github.com/w1th0utnam3): Improve message.
@@ -185,6 +184,7 @@ More specifically, thanks for all these contributions:
 * [utilForever](https://github.com/utilForever): Fix typos.
 * [Stonks3141](https://github.com/Stonks3141): Fix doc credit.
 * [feber](https://github.com/feber): Fix doc link.
+* [satvikpendem](https://github.com/satvikpendem): Little co-work #989.
 * [rustui](https://github.com/rustui): Fix a typo.
 * [escwxyz](https://github.com/escwxyz): Fix a typo.
 * [eltociear](https://github.com/eltociear): Fix a typo.
