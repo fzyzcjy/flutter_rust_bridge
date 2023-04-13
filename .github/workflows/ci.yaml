@@ -83,6 +83,9 @@ jobs:
 
       - name: Add Rust targets
         run: rustup target add aarch64-apple-ios x86_64-apple-ios
+      - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install `cargo-lipo`
         run: just install_lipo
