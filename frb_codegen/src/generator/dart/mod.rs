@@ -123,7 +123,7 @@ impl DartApiSpec {
         let dart_funcs = (ir_file
             .funcs
             .iter()
-            .map(|f| generate_api_func(f, ir_file, &dart_api2wire_funcs.common)))
+            .map(|f| generate_api_func(f, ir_file, &dart_api2wire_funcs.common, &config.get_unique_id())))
         .chain(
             distinct_output_types
                 .iter()

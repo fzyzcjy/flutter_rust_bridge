@@ -108,10 +108,11 @@ impl<'a> Generator<'a> {
         lines.push(String::new());
 
         lines.push_all(self.section_header_comment("wire functions"));
+        let prefix = &self.config.get_unique_id();
         lines += ir_file
             .funcs
             .iter()
-            .map(|f| self.generate_wire_func(f, ir_file))
+            .map(|f| self.generate_wire_func(f, ir_file, prefix))
             .collect();
 
         lines.push(self.section_header_comment("wrapper structs"));
@@ -261,7 +262,7 @@ impl<'a> Generator<'a> {
         )
     }
 
-    fn generate_wire_func(&mut self, func: &IrFunc, ir_file: &IrFile) -> Acc<String> {
+    fn generate_wire_func(&mut self, func: &IrFunc, ir_file: &IrFile, prefix: &str) -> Acc<String> {
         let f = FunctionName::deserialize(&func.name);
         let struct_name = f.struct_name();
         let mut params = if func.mode.has_port_argument() {
@@ -384,7 +385,7 @@ impl<'a> Generator<'a> {
         );
         Acc::new(|target| match target {
             Io | Wasm => self.extern_func_collector.generate(
-                &func.wire_func_name(),
+                &format!("{prefix}{}", func.wire_func_name()),
                 if target.is_wasm() {
                     &params.wasm[..]
                 } else {

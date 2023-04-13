@@ -4,7 +4,7 @@ use crate::others::{
     extract_dart_wire_content, modify_dart_wire_content, sanity_check, DartBasicCode,
     DUMMY_WIRE_CODE_FOR_BINDGEN, EXTRA_EXTERN_FUNC_NAMES,
 };
-use crate::utils::misc::{with_changed_file, get_unique_id};
+use crate::utils::misc::with_changed_file;
 use crate::{command_run, commands, ensure_tools_available, generator, ir, Opts};
 use itertools::Itertools;
 use log::info;
@@ -28,7 +28,6 @@ pub(crate) fn generate_dart_code(
     let temp_dart_wire_file = tempfile::NamedTempFile::new()?;
     let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile()?;
     let exclude_symbols = generated_rust.get_exclude_symbols(all_symbols);
-    let prefix = &get_unique_id(&config.c_output_path[0])?;
 
     with_changed_file(
         &config.rust_output_path,
@@ -48,7 +47,6 @@ pub(crate) fn generate_dart_code(
                     exclude_symbols,
                     llvm_install_path: &config.llvm_path[..],
                     llvm_compiler_opts: &config.llvm_compiler_opts,
-                    prefix,
                 },
                 &dart_root,
             )
@@ -60,11 +58,6 @@ pub(crate) fn generate_dart_code(
         EXTRA_EXTERN_FUNC_NAMES.to_vec(),
     ]
     .concat();
-
-    let effective_func_names = effective_func_names
-        .iter()
-        .map(|e| format!("{prefix}{e}"))
-        .collect::<Vec<String>>();
 
     for (i, each_path) in config.c_output_path.iter().enumerate() {
         let c_dummy_code =
