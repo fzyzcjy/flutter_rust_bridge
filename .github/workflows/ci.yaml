@@ -134,6 +134,9 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: "8.x" # "betterprogramming.pub" says must be java "8"
+      - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # #499, https://github.com/actions/virtual-environments/issues/5595
       - name: Configure ndk
@@ -280,8 +283,8 @@ jobs:
     strategy:
       matrix:
         include:
-          - features: [ ]
-          - features: [ wasm-start ]
+          - features: []
+          - features: [wasm-start]
 
     steps:
       - uses: actions/checkout@v2
