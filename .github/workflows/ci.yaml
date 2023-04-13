@@ -68,6 +68,7 @@ jobs:
         id: checkout
       - uses: subosito/flutter-action@v2
         with:
+          cache: true
           channel: "stable"
           flutter-version: 3.7.3
           architecture: x64
@@ -75,23 +76,16 @@ jobs:
         with:
           toolchain: 1.68.0
 
-      - uses: actions/cache@v3
-        id: cache-deps
+      - id: cache-deps
+        uses: ./.github/actions/setup
         with:
-          path: |
-            ~/.cargo/bin/
-            ~/.cargo/registry/index/
-            ~/.cargo/registry/cache/
-            ~/.cargo/git/db/
-            ./frb_example/with_flutter/rust/target
-          key: ${{ runner.os }}-cargo-integrate-ios-${{ hashFiles('**/Cargo.lock') }}-${{ steps.checkout.outputs.rustc_hash }}
+          cache-key: "steps.checkout.outputs.rustc_hash"
 
       - name: Add Rust targets
         run: rustup target add aarch64-apple-ios x86_64-apple-ios
 
       - name: Install `cargo-lipo`
-        if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: cargo install cargo-lipo --force
+        run: just install_lipo
 
       - name: Install Flutter dependencies
         working-directory: ./frb_example/with_flutter
@@ -128,6 +122,7 @@ jobs:
           toolchain: 1.68.0
       - uses: subosito/flutter-action@v2
         with:
+          cache: true
           channel: "stable"
           flutter-version: 3.7.3
           architecture: x64
@@ -142,23 +137,16 @@ jobs:
       - name: Configure ndk
         run: just configure_ndk
 
-      - uses: actions/cache@v3
-        id: cache-deps
+      - id: cache-deps
+        uses: ./.github/actions/setup
         with:
-          path: |
-            ~/.cargo/bin/
-            ~/.cargo/registry/index/
-            ~/.cargo/registry/cache/
-            ~/.cargo/git/db/
-            ./frb_example/with_flutter/rust/target
-          key: ${{ runner.os }}-cargo-integrate-android-${{ hashFiles('**/Cargo.lock') }}-${{ steps.checkout.outputs.rustc_hash }}
+          cache-key: "steps.checkout.outputs.rustc_hash"
 
       - name: Add Rust targets
         run: rustup target add x86_64-linux-android
 
       - name: Install `cargo-ndk`
-        if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: cargo install cargo-ndk --force
+        run: just install_ndk
 
       - name: Install Flutter dependencies
         working-directory: ./frb_example/with_flutter
@@ -192,6 +180,7 @@ jobs:
           toolchain: 1.68.0
       - uses: subosito/flutter-action@v2
         with:
+          cache: true
           channel: "stable"
           flutter-version: 3.7.3
           architecture: x64
@@ -234,6 +223,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
+          cache: true
           # TODO should be 3.7.3 but has a weird bug currently
           # https://github.com/fzyzcjy/flutter_rust_bridge/pull/1023#issuecomment-1415852845
           flutter-version: 3.3.10
@@ -255,6 +245,7 @@ jobs:
           toolchain: 1.68.0
       - uses: subosito/flutter-action@v2
         with:
+          cache: true
           channel: "stable"
           flutter-version: 3.7.3
           architecture: x64
@@ -302,6 +293,7 @@ jobs:
 
       - run: just install_ffigen
 
+      # use action.yaml due to I don't know what was done with the `Install crates`
       - name: Cache dependencies
         id: test-cache
         uses: actions/cache@v3
@@ -417,6 +409,7 @@ jobs:
           sdk: "2.19.2"
       - uses: subosito/flutter-action@v2
         with:
+          cache: true
           channel: "stable"
           flutter-version: "3.7.3"
       - uses: extractions/setup-just@v1
@@ -446,6 +439,7 @@ jobs:
           components: rustfmt, clippy
       - uses: subosito/flutter-action@v2
         with:
+          cache: true
           channel: "stable"
           flutter-version: "3.7.3"
           architecture: x64

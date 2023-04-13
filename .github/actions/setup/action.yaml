@@ -1,0 +1,25 @@
+name: Setup Rust Builder
+description: 'Prepare Rust Build Environment'
+inputs:
+  cache-key:
+    description: 'the rust cache key suffix'
+    required: false
+    default: ''
+
+runs:
+  using: "composite"
+  steps:
+    - name: Cache Cargo
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.cargo/bin/
+          ~/.cargo/registry/index/
+          ~/.cargo/registry/cache/
+          ~/.cargo/git/db/
+          ./frb_example/with_flutter/rust/target
+        key: ${{ runner.os }}-cargo-integrate-ios-${{ hashFiles('**/Cargo.lock') }}-${{ inputs.cache-key }}
+        restore-keys: |
+            ${{ runner.os }}-cargo-integrate-ios-${{ hashFiles('**/Cargo.lock') }}
+            ${{ runner.os }}-cargo-integrate-ios
+            ${{ runner.os }}-cargo
