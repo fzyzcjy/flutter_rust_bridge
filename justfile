@@ -225,6 +225,8 @@ use_flutter_rust_bridge_release:
 
 configure_ndk:
     #!/usr/bin/env bash
+    set -euxo pipefail
+
     if [ "$(uname)" == "Darwin" ]; then
         # Do something under Mac OS X platform        
         ANDROID_HOME=$HOME/Library/Android/sdk
@@ -284,6 +286,30 @@ _release_publish_all:
     (cd frb_macros && cargo publish)
     (cd frb_dart && flutter pub publish --force --server=https://pub.dartlang.org)
 
+install_ndk:
+    just _install_crate cargo-ndk
+
+install_lipo:
+    just _install_crate cargo-lipo
+
+_install_crate name="cargo-lipo":
+    #!/usr/bin/env bash
+    set -euxo pipefail
+
+    PACKAGE_NAME={{name}}
+    echo $PACKAGE_NAME
+    VERSION=$(cargo search $PACKAGE_NAME | grep "$PACKAGE_NAME" | cut -d '"' -f 2)
+    echo $VERSION
+
+    if ! [ -x "$(command -v $PACKAGE_NAME)" ]; then
+      echo "$PACKAGE_NAME not found. Installing version $VERSION ..."
+      cargo install $PACKAGE_NAME --version $VERSION
+    elif ! $PACKAGE_NAME --version | grep -q $VERSION; then
+      echo "Updating $PACKAGE_NAME to version $VERSION ..."
+      cargo install $PACKAGE_NAME --version $VERSION --force
+    else
+      echo "Already installed the correct version of $PACKAGE_NAME."
+    fi
 # ============================ to be migrated ============================
 
 # TODO - @Desdaemon

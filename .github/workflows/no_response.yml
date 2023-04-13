@@ -9,6 +9,7 @@ on:
   schedule:
     # Schedule for five minutes after the hour, every hour
     - cron: "5 * * * *"
+      if: github.repository_owner == 'fzyzcjy'
 
 # By specifying the access of one of the scopes, all of those that are not
 # specified are set to 'none'.
