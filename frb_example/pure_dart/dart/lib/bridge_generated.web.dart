@@ -986,337 +986,341 @@ external FlutterRustBridgeExampleSingleBlockTestWasmModule get wasmModule;
 class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external Object /* Promise */ call([String? moduleName]);
   external FlutterRustBridgeExampleSingleBlockTestWasmModule bind(dynamic thisArg, String moduleName);
-  external dynamic /* void */ wire_simple_adder(NativePortType port_, int a, int b);
+  external dynamic /* void */ P7C55DD6B_wire_simple_adder(NativePortType port_, int a, int b);
 
-  external dynamic /* int */ wire_simple_adder_sync(int a, int b);
+  external dynamic /* int */ P7C55DD6B_wire_simple_adder_sync(int a, int b);
 
-  external dynamic /* void */ wire_primitive_types(
+  external dynamic /* void */ P7C55DD6B_wire_primitive_types(
       NativePortType port_, int my_i32, Object my_i64, double my_f64, bool my_bool);
 
-  external dynamic /* void */ wire_primitive_optional_types(
+  external dynamic /* void */ P7C55DD6B_wire_primitive_optional_types(
       NativePortType port_, int? my_i32, Object? my_i64, double? my_f64, bool? my_bool);
 
-  external dynamic /* int */ wire_primitive_types_sync(int my_i32, Object my_i64, double my_f64, bool my_bool);
+  external dynamic /* int */ P7C55DD6B_wire_primitive_types_sync(
+      int my_i32, Object my_i64, double my_f64, bool my_bool);
 
-  external dynamic /* void */ wire_primitive_u32(NativePortType port_, int my_u32);
+  external dynamic /* void */ P7C55DD6B_wire_primitive_u32(NativePortType port_, int my_u32);
 
-  external dynamic /* int */ wire_primitive_u32_sync(int my_u32);
+  external dynamic /* int */ P7C55DD6B_wire_primitive_u32_sync(int my_u32);
 
-  external dynamic /* void */ wire_handle_string(NativePortType port_, String s);
+  external dynamic /* void */ P7C55DD6B_wire_handle_string(NativePortType port_, String s);
 
-  external dynamic /* String */ wire_handle_string_sync(String s);
+  external dynamic /* String */ P7C55DD6B_wire_handle_string_sync(String s);
 
-  external dynamic /* void */ wire_handle_return_unit(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_handle_return_unit(NativePortType port_);
 
-  external dynamic /* void */ wire_handle_return_unit_sync();
+  external dynamic /* void */ P7C55DD6B_wire_handle_return_unit_sync();
 
-  external dynamic /* void */ wire_handle_vec_u8(NativePortType port_, Uint8List v);
+  external dynamic /* void */ P7C55DD6B_wire_handle_vec_u8(NativePortType port_, Uint8List v);
 
-  external dynamic /* Uint8List */ wire_handle_vec_u8_sync(Uint8List v);
+  external dynamic /* Uint8List */ P7C55DD6B_wire_handle_vec_u8_sync(Uint8List v);
 
-  external dynamic /* void */ wire_handle_vec_of_primitive(NativePortType port_, int n);
+  external dynamic /* void */ P7C55DD6B_wire_handle_vec_of_primitive(NativePortType port_, int n);
 
-  external dynamic /* List<dynamic> */ wire_handle_vec_of_primitive_sync(int n);
+  external dynamic /* List<dynamic> */ P7C55DD6B_wire_handle_vec_of_primitive_sync(int n);
 
-  external dynamic /* void */ wire_handle_zero_copy_vec_of_primitive(NativePortType port_, int n);
+  external dynamic /* void */ P7C55DD6B_wire_handle_zero_copy_vec_of_primitive(NativePortType port_, int n);
 
-  external dynamic /* List<dynamic> */ wire_handle_zero_copy_vec_of_primitive_sync(int n);
+  external dynamic /* List<dynamic> */ P7C55DD6B_wire_handle_zero_copy_vec_of_primitive_sync(int n);
 
-  external dynamic /* void */ wire_handle_struct(NativePortType port_, List<dynamic> arg, List<dynamic> boxed);
+  external dynamic /* void */ P7C55DD6B_wire_handle_struct(
+      NativePortType port_, List<dynamic> arg, List<dynamic> boxed);
 
-  external dynamic /* List<dynamic> */ wire_handle_struct_sync(List<dynamic> arg, List<dynamic> boxed);
+  external dynamic /* List<dynamic> */ P7C55DD6B_wire_handle_struct_sync(List<dynamic> arg, List<dynamic> boxed);
 
-  external dynamic /* void */ wire_handle_newtype(NativePortType port_, List<dynamic> arg);
+  external dynamic /* void */ P7C55DD6B_wire_handle_newtype(NativePortType port_, List<dynamic> arg);
 
-  external dynamic /* List<dynamic> */ wire_handle_newtype_sync(List<dynamic> arg);
+  external dynamic /* List<dynamic> */ P7C55DD6B_wire_handle_newtype_sync(List<dynamic> arg);
 
-  external dynamic /* void */ wire_handle_list_of_struct(NativePortType port_, List<dynamic> l);
+  external dynamic /* void */ P7C55DD6B_wire_handle_list_of_struct(NativePortType port_, List<dynamic> l);
 
-  external dynamic /* List<dynamic> */ wire_handle_list_of_struct_sync(List<dynamic> l);
+  external dynamic /* List<dynamic> */ P7C55DD6B_wire_handle_list_of_struct_sync(List<dynamic> l);
 
-  external dynamic /* void */ wire_handle_string_list(NativePortType port_, List<String> names);
+  external dynamic /* void */ P7C55DD6B_wire_handle_string_list(NativePortType port_, List<String> names);
 
-  external dynamic /* List<String> */ wire_handle_string_list_sync(List<String> names);
+  external dynamic /* List<String> */ P7C55DD6B_wire_handle_string_list_sync(List<String> names);
 
-  external dynamic /* void */ wire_handle_complex_struct(NativePortType port_, List<dynamic> s);
+  external dynamic /* void */ P7C55DD6B_wire_handle_complex_struct(NativePortType port_, List<dynamic> s);
 
-  external dynamic /* List<dynamic> */ wire_handle_complex_struct_sync(List<dynamic> s);
+  external dynamic /* List<dynamic> */ P7C55DD6B_wire_handle_complex_struct_sync(List<dynamic> s);
 
-  external dynamic /* void */ wire_handle_nested_struct(NativePortType port_, List<dynamic> s);
+  external dynamic /* void */ P7C55DD6B_wire_handle_nested_struct(NativePortType port_, List<dynamic> s);
 
-  external dynamic /* Uint8List */ wire_handle_sync_return(String mode);
+  external dynamic /* Uint8List */ P7C55DD6B_wire_handle_sync_return(String mode);
 
-  external dynamic /* void */ wire_handle_stream(NativePortType port_, String arg);
+  external dynamic /* void */ P7C55DD6B_wire_handle_stream(NativePortType port_, String arg);
 
-  external dynamic /* void */ wire_handle_stream_of_struct(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_handle_stream_of_struct(NativePortType port_);
 
-  external dynamic /* void */ wire_return_err(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_return_err(NativePortType port_);
 
-  external dynamic /* void */ wire_return_panic(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_return_panic(NativePortType port_);
 
-  external dynamic /* void */ wire_handle_optional_return(NativePortType port_, double left, double right);
+  external dynamic /* void */ P7C55DD6B_wire_handle_optional_return(NativePortType port_, double left, double right);
 
-  external dynamic /* void */ wire_handle_optional_struct(NativePortType port_, String? document);
+  external dynamic /* void */ P7C55DD6B_wire_handle_optional_struct(NativePortType port_, String? document);
 
-  external dynamic /* void */ wire_handle_optional_increment(NativePortType port_, List<dynamic>? opt);
+  external dynamic /* void */ P7C55DD6B_wire_handle_optional_increment(NativePortType port_, List<dynamic>? opt);
 
-  external dynamic /* void */ wire_handle_increment_boxed_optional(NativePortType port_, double? opt);
+  external dynamic /* void */ P7C55DD6B_wire_handle_increment_boxed_optional(NativePortType port_, double? opt);
 
-  external dynamic /* void */ wire_handle_option_box_arguments(NativePortType port_, int? i8box, int? u8box,
+  external dynamic /* void */ P7C55DD6B_wire_handle_option_box_arguments(NativePortType port_, int? i8box, int? u8box,
       int? i32box, Object? i64box, double? f64box, bool? boolbox, List<dynamic>? structbox);
 
-  external dynamic /* void */ wire_print_note(NativePortType port_, List<dynamic> note);
+  external dynamic /* void */ P7C55DD6B_wire_print_note(NativePortType port_, List<dynamic> note);
 
-  external dynamic /* void */ wire_handle_return_enum(NativePortType port_, String input);
+  external dynamic /* void */ P7C55DD6B_wire_handle_return_enum(NativePortType port_, String input);
 
-  external dynamic /* void */ wire_handle_enum_parameter(NativePortType port_, int weekday);
+  external dynamic /* void */ P7C55DD6B_wire_handle_enum_parameter(NativePortType port_, int weekday);
 
-  external dynamic /* void */ wire_handle_customized_struct(NativePortType port_, List<dynamic> val);
+  external dynamic /* void */ P7C55DD6B_wire_handle_customized_struct(NativePortType port_, List<dynamic> val);
 
-  external dynamic /* void */ wire_handle_enum_struct(NativePortType port_, List<dynamic> val);
+  external dynamic /* void */ P7C55DD6B_wire_handle_enum_struct(NativePortType port_, List<dynamic> val);
 
-  external dynamic /* void */ wire_use_imported_struct(NativePortType port_, List<dynamic> my_struct);
+  external dynamic /* void */ P7C55DD6B_wire_use_imported_struct(NativePortType port_, List<dynamic> my_struct);
 
-  external dynamic /* void */ wire_use_imported_enum(NativePortType port_, int my_enum);
+  external dynamic /* void */ P7C55DD6B_wire_use_imported_enum(NativePortType port_, int my_enum);
 
-  external dynamic /* void */ wire_get_app_settings(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_get_app_settings(NativePortType port_);
 
-  external dynamic /* void */ wire_get_fallible_app_settings(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_get_fallible_app_settings(NativePortType port_);
 
-  external dynamic /* void */ wire_is_app_embedded(NativePortType port_, List<dynamic> app_settings);
+  external dynamic /* void */ P7C55DD6B_wire_is_app_embedded(NativePortType port_, List<dynamic> app_settings);
 
-  external dynamic /* void */ wire_get_message(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_get_message(NativePortType port_);
 
-  external dynamic /* void */ wire_repeat_number(NativePortType port_, int number, int times);
+  external dynamic /* void */ P7C55DD6B_wire_repeat_number(NativePortType port_, int number, int times);
 
-  external dynamic /* void */ wire_repeat_sequence(NativePortType port_, int seq, int times);
+  external dynamic /* void */ P7C55DD6B_wire_repeat_sequence(NativePortType port_, int seq, int times);
 
-  external dynamic /* void */ wire_first_number(NativePortType port_, List<dynamic> nums);
+  external dynamic /* void */ P7C55DD6B_wire_first_number(NativePortType port_, List<dynamic> nums);
 
-  external dynamic /* void */ wire_first_sequence(NativePortType port_, List<dynamic> seqs);
+  external dynamic /* void */ P7C55DD6B_wire_first_sequence(NativePortType port_, List<dynamic> seqs);
 
-  external dynamic /* void */ wire_get_array(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_get_array(NativePortType port_);
 
-  external dynamic /* void */ wire_get_complex_array(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_get_complex_array(NativePortType port_);
 
-  external dynamic /* void */ wire_get_usize(NativePortType port_, int u);
+  external dynamic /* void */ P7C55DD6B_wire_get_usize(NativePortType port_, int u);
 
-  external dynamic /* void */ wire_next_user_id(NativePortType port_, List<dynamic> user_id);
+  external dynamic /* void */ P7C55DD6B_wire_next_user_id(NativePortType port_, List<dynamic> user_id);
 
-  external dynamic /* void */ wire_register_event_listener(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_register_event_listener(NativePortType port_);
 
-  external dynamic /* void */ wire_close_event_listener(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_close_event_listener(NativePortType port_);
 
-  external dynamic /* void */ wire_create_event(NativePortType port_, String address, String payload);
+  external dynamic /* void */ P7C55DD6B_wire_create_event(NativePortType port_, String address, String payload);
 
-  external dynamic /* void */ wire_handle_stream_sink_at_1(NativePortType port_, int key, int max);
+  external dynamic /* void */ P7C55DD6B_wire_handle_stream_sink_at_1(NativePortType port_, int key, int max);
 
-  external dynamic /* void */ wire_handle_stream_sink_at_2(NativePortType port_, int key, int max);
+  external dynamic /* void */ P7C55DD6B_wire_handle_stream_sink_at_2(NativePortType port_, int key, int max);
 
-  external dynamic /* void */ wire_handle_stream_sink_at_3(NativePortType port_, int key, int max);
+  external dynamic /* void */ P7C55DD6B_wire_handle_stream_sink_at_3(NativePortType port_, int key, int max);
 
-  external dynamic /* void */ wire_get_sum_struct(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_get_sum_struct(NativePortType port_);
 
-  external dynamic /* void */ wire_get_sum_array(NativePortType port_, int a, int b, int c);
+  external dynamic /* void */ P7C55DD6B_wire_get_sum_array(NativePortType port_, int a, int b, int c);
 
-  external dynamic /* void */ wire_multiply_by_ten(NativePortType port_, List<dynamic> measure);
+  external dynamic /* void */ P7C55DD6B_wire_multiply_by_ten(NativePortType port_, List<dynamic> measure);
 
-  external dynamic /* void */ wire_call_old_module_system(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_call_old_module_system(NativePortType port_);
 
-  external dynamic /* void */ wire_call_new_module_system(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_call_new_module_system(NativePortType port_);
 
-  external dynamic /* void */ wire_handle_big_buffers(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_handle_big_buffers(NativePortType port_);
 
-  external dynamic /* void */ wire_datetime_utc(NativePortType port_, Object d);
+  external dynamic /* void */ P7C55DD6B_wire_datetime_utc(NativePortType port_, Object d);
 
-  external dynamic /* void */ wire_datetime_local(NativePortType port_, Object d);
+  external dynamic /* void */ P7C55DD6B_wire_datetime_local(NativePortType port_, Object d);
 
-  external dynamic /* void */ wire_naivedatetime(NativePortType port_, Object d);
+  external dynamic /* void */ P7C55DD6B_wire_naivedatetime(NativePortType port_, Object d);
 
-  external dynamic /* void */ wire_optional_empty_datetime_utc(NativePortType port_, Object? d);
+  external dynamic /* void */ P7C55DD6B_wire_optional_empty_datetime_utc(NativePortType port_, Object? d);
 
-  external dynamic /* void */ wire_duration(NativePortType port_, Object d);
+  external dynamic /* void */ P7C55DD6B_wire_duration(NativePortType port_, Object d);
 
-  external dynamic /* void */ wire_handle_timestamps(
+  external dynamic /* void */ P7C55DD6B_wire_handle_timestamps(
       NativePortType port_, Object /* BigInt64Array */ timestamps, Object epoch);
 
-  external dynamic /* void */ wire_handle_durations(
+  external dynamic /* void */ P7C55DD6B_wire_handle_durations(
       NativePortType port_, Object /* BigInt64Array */ durations, Object since);
 
-  external dynamic /* void */ wire_test_chrono(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_test_chrono(NativePortType port_);
 
-  external dynamic /* void */ wire_test_precise_chrono(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_test_precise_chrono(NativePortType port_);
 
-  external dynamic /* void */ wire_how_long_does_it_take(NativePortType port_, List<dynamic> mine);
+  external dynamic /* void */ P7C55DD6B_wire_how_long_does_it_take(NativePortType port_, List<dynamic> mine);
 
-  external dynamic /* void */ wire_handle_uuid(NativePortType port_, Uint8List id);
+  external dynamic /* void */ P7C55DD6B_wire_handle_uuid(NativePortType port_, Uint8List id);
 
-  external dynamic /* void */ wire_handle_uuids(NativePortType port_, Uint8List ids);
+  external dynamic /* void */ P7C55DD6B_wire_handle_uuids(NativePortType port_, Uint8List ids);
 
-  external dynamic /* void */ wire_handle_nested_uuids(NativePortType port_, List<dynamic> ids);
+  external dynamic /* void */ P7C55DD6B_wire_handle_nested_uuids(NativePortType port_, List<dynamic> ids);
 
-  external dynamic /* void */ wire_new_msgid(NativePortType port_, Uint8List id);
+  external dynamic /* void */ P7C55DD6B_wire_new_msgid(NativePortType port_, Uint8List id);
 
-  external dynamic /* void */ wire_use_msgid(NativePortType port_, List<dynamic> id);
+  external dynamic /* void */ P7C55DD6B_wire_use_msgid(NativePortType port_, List<dynamic> id);
 
-  external dynamic /* void */ wire_boxed_blob(NativePortType port_, Uint8List blob);
+  external dynamic /* void */ P7C55DD6B_wire_boxed_blob(NativePortType port_, Uint8List blob);
 
-  external dynamic /* void */ wire_use_boxed_blob(NativePortType port_, List<dynamic> blob);
+  external dynamic /* void */ P7C55DD6B_wire_use_boxed_blob(NativePortType port_, List<dynamic> blob);
 
-  external dynamic /* void */ wire_return_boxed_feed_id(NativePortType port_, Uint8List id);
+  external dynamic /* void */ P7C55DD6B_wire_return_boxed_feed_id(NativePortType port_, Uint8List id);
 
-  external dynamic /* void */ wire_return_boxed_raw_feed_id(NativePortType port_, List<dynamic> id);
+  external dynamic /* void */ P7C55DD6B_wire_return_boxed_raw_feed_id(NativePortType port_, List<dynamic> id);
 
-  external dynamic /* void */ wire_test_id(NativePortType port_, List<dynamic> id);
+  external dynamic /* void */ P7C55DD6B_wire_test_id(NativePortType port_, List<dynamic> id);
 
-  external dynamic /* void */ wire_last_number(NativePortType port_, Float64List array);
+  external dynamic /* void */ P7C55DD6B_wire_last_number(NativePortType port_, Float64List array);
 
-  external dynamic /* void */ wire_nested_id(NativePortType port_, List<dynamic> id);
+  external dynamic /* void */ P7C55DD6B_wire_nested_id(NativePortType port_, List<dynamic> id);
 
-  external dynamic /* String */ wire_sync_accept_dart_opaque(Object opaque);
+  external dynamic /* String */ P7C55DD6B_wire_sync_accept_dart_opaque(Object opaque);
 
-  external dynamic /* void */ wire_async_accept_dart_opaque(NativePortType port_, Object opaque);
+  external dynamic /* void */ P7C55DD6B_wire_async_accept_dart_opaque(NativePortType port_, Object opaque);
 
-  external dynamic /* void */ wire_loop_back(NativePortType port_, Object opaque);
+  external dynamic /* void */ P7C55DD6B_wire_loop_back(NativePortType port_, Object opaque);
 
-  external dynamic /* void */ wire_loop_back_option(NativePortType port_, Object opaque);
+  external dynamic /* void */ P7C55DD6B_wire_loop_back_option(NativePortType port_, Object opaque);
 
-  external dynamic /* void */ wire_loop_back_array(NativePortType port_, Object opaque);
+  external dynamic /* void */ P7C55DD6B_wire_loop_back_array(NativePortType port_, Object opaque);
 
-  external dynamic /* void */ wire_loop_back_vec(NativePortType port_, Object opaque);
+  external dynamic /* void */ P7C55DD6B_wire_loop_back_vec(NativePortType port_, Object opaque);
 
-  external dynamic /* void */ wire_loop_back_option_get(NativePortType port_, Object? opaque);
+  external dynamic /* void */ P7C55DD6B_wire_loop_back_option_get(NativePortType port_, Object? opaque);
 
-  external dynamic /* void */ wire_loop_back_array_get(NativePortType port_, List<dynamic> opaque);
+  external dynamic /* void */ P7C55DD6B_wire_loop_back_array_get(NativePortType port_, List<dynamic> opaque);
 
-  external dynamic /* void */ wire_loop_back_vec_get(NativePortType port_, List<dynamic> opaque);
+  external dynamic /* void */ P7C55DD6B_wire_loop_back_vec_get(NativePortType port_, List<dynamic> opaque);
 
-  external dynamic /* String */ wire_unwrap_dart_opaque(Object opaque);
+  external dynamic /* String */ P7C55DD6B_wire_unwrap_dart_opaque(Object opaque);
 
-  external dynamic /* void */ wire_panic_unwrap_dart_opaque(NativePortType port_, Object opaque);
+  external dynamic /* void */ P7C55DD6B_wire_panic_unwrap_dart_opaque(NativePortType port_, Object opaque);
 
-  external dynamic /* void */ wire_create_opaque(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_create_opaque(NativePortType port_);
 
-  external dynamic /* void */ wire_create_option_opaque(NativePortType port_, Object? opaque);
+  external dynamic /* void */ P7C55DD6B_wire_create_option_opaque(NativePortType port_, Object? opaque);
 
-  external dynamic /* Object */ wire_sync_create_opaque();
+  external dynamic /* Object */ P7C55DD6B_wire_sync_create_opaque();
 
-  external dynamic /* void */ wire_create_array_opaque_enum(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_create_array_opaque_enum(NativePortType port_);
 
-  external dynamic /* void */ wire_run_enum_opaque(NativePortType port_, List<dynamic> opaque);
+  external dynamic /* void */ P7C55DD6B_wire_run_enum_opaque(NativePortType port_, List<dynamic> opaque);
 
-  external dynamic /* void */ wire_run_opaque(NativePortType port_, Object opaque);
+  external dynamic /* void */ P7C55DD6B_wire_run_opaque(NativePortType port_, Object opaque);
 
-  external dynamic /* void */ wire_run_opaque_with_delay(NativePortType port_, Object opaque);
+  external dynamic /* void */ P7C55DD6B_wire_run_opaque_with_delay(NativePortType port_, Object opaque);
 
-  external dynamic /* void */ wire_opaque_array(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_opaque_array(NativePortType port_);
 
-  external dynamic /* Object */ wire_sync_create_non_clone();
+  external dynamic /* Object */ P7C55DD6B_wire_sync_create_non_clone();
 
-  external dynamic /* void */ wire_run_non_clone(NativePortType port_, Object clone);
+  external dynamic /* void */ P7C55DD6B_wire_run_non_clone(NativePortType port_, Object clone);
 
-  external dynamic /* void */ wire_create_sync_opaque(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_create_sync_opaque(NativePortType port_);
 
-  external dynamic /* Object */ wire_sync_create_sync_opaque();
+  external dynamic /* Object */ P7C55DD6B_wire_sync_create_sync_opaque();
 
-  external dynamic /* String */ wire_sync_run_opaque(Object opaque);
+  external dynamic /* String */ P7C55DD6B_wire_sync_run_opaque(Object opaque);
 
-  external dynamic /* void */ wire_opaque_array_run(NativePortType port_, List<dynamic> data);
+  external dynamic /* void */ P7C55DD6B_wire_opaque_array_run(NativePortType port_, List<dynamic> data);
 
-  external dynamic /* void */ wire_opaque_vec(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_opaque_vec(NativePortType port_);
 
-  external dynamic /* void */ wire_opaque_vec_run(NativePortType port_, List<dynamic> data);
+  external dynamic /* void */ P7C55DD6B_wire_opaque_vec_run(NativePortType port_, List<dynamic> data);
 
-  external dynamic /* void */ wire_create_nested_opaque(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_create_nested_opaque(NativePortType port_);
 
-  external dynamic /* Object */ wire_sync_loopback(Object opaque);
+  external dynamic /* Object */ P7C55DD6B_wire_sync_loopback(Object opaque);
 
-  external dynamic /* Object? */ wire_sync_option_loopback(Object? opaque);
+  external dynamic /* Object? */ P7C55DD6B_wire_sync_option_loopback(Object? opaque);
 
-  external dynamic /* String? */ wire_sync_option();
+  external dynamic /* String? */ P7C55DD6B_wire_sync_option();
 
-  external dynamic /* String? */ wire_sync_option_null();
+  external dynamic /* String? */ P7C55DD6B_wire_sync_option_null();
 
-  external dynamic /* Object? */ wire_sync_option_rust_opaque();
+  external dynamic /* Object? */ P7C55DD6B_wire_sync_option_rust_opaque();
 
-  external dynamic /* Object? */ wire_sync_option_dart_opaque(Object opaque);
+  external dynamic /* Object? */ P7C55DD6B_wire_sync_option_dart_opaque(Object opaque);
 
-  external dynamic /* void */ wire_sync_void();
+  external dynamic /* void */ P7C55DD6B_wire_sync_void();
 
-  external dynamic /* void */ wire_run_nested_opaque(NativePortType port_, List<dynamic> opaque);
+  external dynamic /* void */ P7C55DD6B_wire_run_nested_opaque(NativePortType port_, List<dynamic> opaque);
 
-  external dynamic /* void */ wire_create_nested_dart_opaque(NativePortType port_, Object opaque1, Object opaque2);
+  external dynamic /* void */ P7C55DD6B_wire_create_nested_dart_opaque(
+      NativePortType port_, Object opaque1, Object opaque2);
 
-  external dynamic /* void */ wire_get_nested_dart_opaque(NativePortType port_, List<dynamic> opaque);
+  external dynamic /* void */ P7C55DD6B_wire_get_nested_dart_opaque(NativePortType port_, List<dynamic> opaque);
 
-  external dynamic /* void */ wire_create_enum_dart_opaque(NativePortType port_, Object opaque);
+  external dynamic /* void */ P7C55DD6B_wire_create_enum_dart_opaque(NativePortType port_, Object opaque);
 
-  external dynamic /* void */ wire_get_enum_dart_opaque(NativePortType port_, List<dynamic> opaque);
+  external dynamic /* void */ P7C55DD6B_wire_get_enum_dart_opaque(NativePortType port_, List<dynamic> opaque);
 
-  external dynamic /* void */ wire_set_static_dart_opaque(NativePortType port_, Object opaque);
+  external dynamic /* void */ P7C55DD6B_wire_set_static_dart_opaque(NativePortType port_, Object opaque);
 
-  external dynamic /* void */ wire_drop_static_dart_opaque(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_drop_static_dart_opaque(NativePortType port_);
 
-  external dynamic /* void */ wire_unwrap_rust_opaque(NativePortType port_, Object opaque);
+  external dynamic /* void */ P7C55DD6B_wire_unwrap_rust_opaque(NativePortType port_, Object opaque);
 
-  external dynamic /* Object */ wire_return_non_droppable_dart_opaque(Object opaque);
+  external dynamic /* Object */ P7C55DD6B_wire_return_non_droppable_dart_opaque(Object opaque);
 
-  external dynamic /* void */ wire_frb_generator_test(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_frb_generator_test(NativePortType port_);
 
-  external dynamic /* Object */ wire_frb_sync_generator_test();
+  external dynamic /* Object */ P7C55DD6B_wire_frb_sync_generator_test();
 
-  external dynamic /* void */ wire_handle_type_alias_id(NativePortType port_, Object input);
+  external dynamic /* void */ P7C55DD6B_wire_handle_type_alias_id(NativePortType port_, Object input);
 
-  external dynamic /* void */ wire_handle_type_nest_alias_id(NativePortType port_, Object input);
+  external dynamic /* void */ P7C55DD6B_wire_handle_type_nest_alias_id(NativePortType port_, Object input);
 
-  external dynamic /* void */ wire_handle_type_alias_model(NativePortType port_, Object input);
+  external dynamic /* void */ P7C55DD6B_wire_handle_type_alias_model(NativePortType port_, Object input);
 
-  external dynamic /* void */ wire_empty_struct(NativePortType port_, List<dynamic> empty);
+  external dynamic /* void */ P7C55DD6B_wire_empty_struct(NativePortType port_, List<dynamic> empty);
 
-  external dynamic /* void */ wire_return_dart_dynamic(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_return_dart_dynamic(NativePortType port_);
 
-  external dynamic /* void */ wire_test_raw_string_item_struct(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_test_raw_string_item_struct(NativePortType port_);
 
-  external dynamic /* void */ wire_test_more_than_just_one_raw_string_struct(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_test_more_than_just_one_raw_string_struct(NativePortType port_);
 
-  external dynamic /* void */ wire_test_raw_string_mirrored(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_test_raw_string_mirrored(NativePortType port_);
 
-  external dynamic /* void */ wire_test_nested_raw_string_mirrored(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_test_nested_raw_string_mirrored(NativePortType port_);
 
-  external dynamic /* void */ wire_test_raw_string_enum_mirrored(NativePortType port_, bool nested);
+  external dynamic /* void */ P7C55DD6B_wire_test_raw_string_enum_mirrored(NativePortType port_, bool nested);
 
-  external dynamic /* void */ wire_test_list_of_raw_nested_string_mirrored(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_test_list_of_raw_nested_string_mirrored(NativePortType port_);
 
-  external dynamic /* void */ wire_test_fallible_of_raw_string_mirrored(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_test_fallible_of_raw_string_mirrored(NativePortType port_);
 
-  external dynamic /* void */ wire_list_of_primitive_enums(NativePortType port_, List<dynamic> weekdays);
+  external dynamic /* void */ P7C55DD6B_wire_list_of_primitive_enums(NativePortType port_, List<dynamic> weekdays);
 
-  external dynamic /* void */ wire_test_abc_enum(NativePortType port_, List<dynamic> abc);
+  external dynamic /* void */ P7C55DD6B_wire_test_abc_enum(NativePortType port_, List<dynamic> abc);
 
-  external dynamic /* void */ wire_test_contains_mirrored_sub_struct(NativePortType port_);
+  external dynamic /* void */ P7C55DD6B_wire_test_contains_mirrored_sub_struct(NativePortType port_);
 
-  external dynamic /* void */ wire_as_string__method__Event(NativePortType port_, List<dynamic> that);
+  external dynamic /* void */ P7C55DD6B_wire_as_string__method__Event(NativePortType port_, List<dynamic> that);
 
-  external dynamic /* void */ wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
+  external dynamic /* void */ P7C55DD6B_wire_sum__method__SumWith(
+      NativePortType port_, List<dynamic> that, int y, int z);
 
-  external dynamic /* void */ wire_new__static_method__ConcatenateWith(NativePortType port_, String a);
+  external dynamic /* void */ P7C55DD6B_wire_new__static_method__ConcatenateWith(NativePortType port_, String a);
 
-  external dynamic /* void */ wire_concatenate__method__ConcatenateWith(
+  external dynamic /* void */ P7C55DD6B_wire_concatenate__method__ConcatenateWith(
       NativePortType port_, List<dynamic> that, String b);
 
-  external dynamic /* void */ wire_concatenate_static__static_method__ConcatenateWith(
+  external dynamic /* void */ P7C55DD6B_wire_concatenate_static__static_method__ConcatenateWith(
       NativePortType port_, String a, String b);
 
-  external dynamic /* void */ wire_handle_some_stream_sink__method__ConcatenateWith(
+  external dynamic /* void */ P7C55DD6B_wire_handle_some_stream_sink__method__ConcatenateWith(
       NativePortType port_, List<dynamic> that, int key, int max);
 
-  external dynamic /* void */ wire_handle_some_stream_sink_at_1__method__ConcatenateWith(
+  external dynamic /* void */ P7C55DD6B_wire_handle_some_stream_sink_at_1__method__ConcatenateWith(
       NativePortType port_, List<dynamic> that);
 
-  external dynamic /* void */ wire_handle_some_static_stream_sink__static_method__ConcatenateWith(
+  external dynamic /* void */ P7C55DD6B_wire_handle_some_static_stream_sink__static_method__ConcatenateWith(
       NativePortType port_, int key, int max);
 
-  external dynamic /* void */ wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(
+  external dynamic /* void */ P7C55DD6B_wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(
       NativePortType port_);
 
   external dynamic /*  */ drop_opaque_BoxDartDebug(ptr);
@@ -1363,403 +1367,459 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   FlutterRustBridgeExampleSingleBlockTestWire(FutureOr<WasmModule> module)
       : super(WasmModule.cast<FlutterRustBridgeExampleSingleBlockTestWasmModule>(module));
 
-  void wire_simple_adder(NativePortType port_, int a, int b) => wasmModule.wire_simple_adder(port_, a, b);
+  void P7C55DD6B_wire_simple_adder(NativePortType port_, int a, int b) =>
+      wasmModule.P7C55DD6B_wire_simple_adder(port_, a, b);
 
-  dynamic /* int */ wire_simple_adder_sync(int a, int b) => wasmModule.wire_simple_adder_sync(a, b);
+  dynamic /* int */ P7C55DD6B_wire_simple_adder_sync(int a, int b) => wasmModule.P7C55DD6B_wire_simple_adder_sync(a, b);
 
-  void wire_primitive_types(NativePortType port_, int my_i32, Object my_i64, double my_f64, bool my_bool) =>
-      wasmModule.wire_primitive_types(port_, my_i32, my_i64, my_f64, my_bool);
+  void P7C55DD6B_wire_primitive_types(NativePortType port_, int my_i32, Object my_i64, double my_f64, bool my_bool) =>
+      wasmModule.P7C55DD6B_wire_primitive_types(port_, my_i32, my_i64, my_f64, my_bool);
 
-  void wire_primitive_optional_types(
+  void P7C55DD6B_wire_primitive_optional_types(
           NativePortType port_, int? my_i32, Object? my_i64, double? my_f64, bool? my_bool) =>
-      wasmModule.wire_primitive_optional_types(port_, my_i32, my_i64, my_f64, my_bool);
+      wasmModule.P7C55DD6B_wire_primitive_optional_types(port_, my_i32, my_i64, my_f64, my_bool);
 
-  dynamic /* int */ wire_primitive_types_sync(int my_i32, Object my_i64, double my_f64, bool my_bool) =>
-      wasmModule.wire_primitive_types_sync(my_i32, my_i64, my_f64, my_bool);
+  dynamic /* int */ P7C55DD6B_wire_primitive_types_sync(int my_i32, Object my_i64, double my_f64, bool my_bool) =>
+      wasmModule.P7C55DD6B_wire_primitive_types_sync(my_i32, my_i64, my_f64, my_bool);
 
-  void wire_primitive_u32(NativePortType port_, int my_u32) => wasmModule.wire_primitive_u32(port_, my_u32);
+  void P7C55DD6B_wire_primitive_u32(NativePortType port_, int my_u32) =>
+      wasmModule.P7C55DD6B_wire_primitive_u32(port_, my_u32);
 
-  dynamic /* int */ wire_primitive_u32_sync(int my_u32) => wasmModule.wire_primitive_u32_sync(my_u32);
+  dynamic /* int */ P7C55DD6B_wire_primitive_u32_sync(int my_u32) =>
+      wasmModule.P7C55DD6B_wire_primitive_u32_sync(my_u32);
 
-  void wire_handle_string(NativePortType port_, String s) => wasmModule.wire_handle_string(port_, s);
+  void P7C55DD6B_wire_handle_string(NativePortType port_, String s) =>
+      wasmModule.P7C55DD6B_wire_handle_string(port_, s);
 
-  dynamic /* String */ wire_handle_string_sync(String s) => wasmModule.wire_handle_string_sync(s);
+  dynamic /* String */ P7C55DD6B_wire_handle_string_sync(String s) => wasmModule.P7C55DD6B_wire_handle_string_sync(s);
 
-  void wire_handle_return_unit(NativePortType port_) => wasmModule.wire_handle_return_unit(port_);
+  void P7C55DD6B_wire_handle_return_unit(NativePortType port_) => wasmModule.P7C55DD6B_wire_handle_return_unit(port_);
 
-  dynamic /* void */ wire_handle_return_unit_sync() => wasmModule.wire_handle_return_unit_sync();
+  dynamic /* void */ P7C55DD6B_wire_handle_return_unit_sync() => wasmModule.P7C55DD6B_wire_handle_return_unit_sync();
 
-  void wire_handle_vec_u8(NativePortType port_, Uint8List v) => wasmModule.wire_handle_vec_u8(port_, v);
+  void P7C55DD6B_wire_handle_vec_u8(NativePortType port_, Uint8List v) =>
+      wasmModule.P7C55DD6B_wire_handle_vec_u8(port_, v);
 
-  dynamic /* Uint8List */ wire_handle_vec_u8_sync(Uint8List v) => wasmModule.wire_handle_vec_u8_sync(v);
+  dynamic /* Uint8List */ P7C55DD6B_wire_handle_vec_u8_sync(Uint8List v) =>
+      wasmModule.P7C55DD6B_wire_handle_vec_u8_sync(v);
 
-  void wire_handle_vec_of_primitive(NativePortType port_, int n) => wasmModule.wire_handle_vec_of_primitive(port_, n);
+  void P7C55DD6B_wire_handle_vec_of_primitive(NativePortType port_, int n) =>
+      wasmModule.P7C55DD6B_wire_handle_vec_of_primitive(port_, n);
 
-  dynamic /* List<dynamic> */ wire_handle_vec_of_primitive_sync(int n) =>
-      wasmModule.wire_handle_vec_of_primitive_sync(n);
+  dynamic /* List<dynamic> */ P7C55DD6B_wire_handle_vec_of_primitive_sync(int n) =>
+      wasmModule.P7C55DD6B_wire_handle_vec_of_primitive_sync(n);
 
-  void wire_handle_zero_copy_vec_of_primitive(NativePortType port_, int n) =>
-      wasmModule.wire_handle_zero_copy_vec_of_primitive(port_, n);
+  void P7C55DD6B_wire_handle_zero_copy_vec_of_primitive(NativePortType port_, int n) =>
+      wasmModule.P7C55DD6B_wire_handle_zero_copy_vec_of_primitive(port_, n);
 
-  dynamic /* List<dynamic> */ wire_handle_zero_copy_vec_of_primitive_sync(int n) =>
-      wasmModule.wire_handle_zero_copy_vec_of_primitive_sync(n);
+  dynamic /* List<dynamic> */ P7C55DD6B_wire_handle_zero_copy_vec_of_primitive_sync(int n) =>
+      wasmModule.P7C55DD6B_wire_handle_zero_copy_vec_of_primitive_sync(n);
 
-  void wire_handle_struct(NativePortType port_, List<dynamic> arg, List<dynamic> boxed) =>
-      wasmModule.wire_handle_struct(port_, arg, boxed);
+  void P7C55DD6B_wire_handle_struct(NativePortType port_, List<dynamic> arg, List<dynamic> boxed) =>
+      wasmModule.P7C55DD6B_wire_handle_struct(port_, arg, boxed);
 
-  dynamic /* List<dynamic> */ wire_handle_struct_sync(List<dynamic> arg, List<dynamic> boxed) =>
-      wasmModule.wire_handle_struct_sync(arg, boxed);
+  dynamic /* List<dynamic> */ P7C55DD6B_wire_handle_struct_sync(List<dynamic> arg, List<dynamic> boxed) =>
+      wasmModule.P7C55DD6B_wire_handle_struct_sync(arg, boxed);
 
-  void wire_handle_newtype(NativePortType port_, List<dynamic> arg) => wasmModule.wire_handle_newtype(port_, arg);
+  void P7C55DD6B_wire_handle_newtype(NativePortType port_, List<dynamic> arg) =>
+      wasmModule.P7C55DD6B_wire_handle_newtype(port_, arg);
 
-  dynamic /* List<dynamic> */ wire_handle_newtype_sync(List<dynamic> arg) => wasmModule.wire_handle_newtype_sync(arg);
+  dynamic /* List<dynamic> */ P7C55DD6B_wire_handle_newtype_sync(List<dynamic> arg) =>
+      wasmModule.P7C55DD6B_wire_handle_newtype_sync(arg);
 
-  void wire_handle_list_of_struct(NativePortType port_, List<dynamic> l) =>
-      wasmModule.wire_handle_list_of_struct(port_, l);
+  void P7C55DD6B_wire_handle_list_of_struct(NativePortType port_, List<dynamic> l) =>
+      wasmModule.P7C55DD6B_wire_handle_list_of_struct(port_, l);
 
-  dynamic /* List<dynamic> */ wire_handle_list_of_struct_sync(List<dynamic> l) =>
-      wasmModule.wire_handle_list_of_struct_sync(l);
+  dynamic /* List<dynamic> */ P7C55DD6B_wire_handle_list_of_struct_sync(List<dynamic> l) =>
+      wasmModule.P7C55DD6B_wire_handle_list_of_struct_sync(l);
 
-  void wire_handle_string_list(NativePortType port_, List<String> names) =>
-      wasmModule.wire_handle_string_list(port_, names);
+  void P7C55DD6B_wire_handle_string_list(NativePortType port_, List<String> names) =>
+      wasmModule.P7C55DD6B_wire_handle_string_list(port_, names);
 
-  dynamic /* List<String> */ wire_handle_string_list_sync(List<String> names) =>
-      wasmModule.wire_handle_string_list_sync(names);
+  dynamic /* List<String> */ P7C55DD6B_wire_handle_string_list_sync(List<String> names) =>
+      wasmModule.P7C55DD6B_wire_handle_string_list_sync(names);
 
-  void wire_handle_complex_struct(NativePortType port_, List<dynamic> s) =>
-      wasmModule.wire_handle_complex_struct(port_, s);
+  void P7C55DD6B_wire_handle_complex_struct(NativePortType port_, List<dynamic> s) =>
+      wasmModule.P7C55DD6B_wire_handle_complex_struct(port_, s);
 
-  dynamic /* List<dynamic> */ wire_handle_complex_struct_sync(List<dynamic> s) =>
-      wasmModule.wire_handle_complex_struct_sync(s);
+  dynamic /* List<dynamic> */ P7C55DD6B_wire_handle_complex_struct_sync(List<dynamic> s) =>
+      wasmModule.P7C55DD6B_wire_handle_complex_struct_sync(s);
 
-  void wire_handle_nested_struct(NativePortType port_, List<dynamic> s) =>
-      wasmModule.wire_handle_nested_struct(port_, s);
+  void P7C55DD6B_wire_handle_nested_struct(NativePortType port_, List<dynamic> s) =>
+      wasmModule.P7C55DD6B_wire_handle_nested_struct(port_, s);
 
-  dynamic /* Uint8List */ wire_handle_sync_return(String mode) => wasmModule.wire_handle_sync_return(mode);
+  dynamic /* Uint8List */ P7C55DD6B_wire_handle_sync_return(String mode) =>
+      wasmModule.P7C55DD6B_wire_handle_sync_return(mode);
 
-  void wire_handle_stream(NativePortType port_, String arg) => wasmModule.wire_handle_stream(port_, arg);
+  void P7C55DD6B_wire_handle_stream(NativePortType port_, String arg) =>
+      wasmModule.P7C55DD6B_wire_handle_stream(port_, arg);
 
-  void wire_handle_stream_of_struct(NativePortType port_) => wasmModule.wire_handle_stream_of_struct(port_);
+  void P7C55DD6B_wire_handle_stream_of_struct(NativePortType port_) =>
+      wasmModule.P7C55DD6B_wire_handle_stream_of_struct(port_);
 
-  void wire_return_err(NativePortType port_) => wasmModule.wire_return_err(port_);
+  void P7C55DD6B_wire_return_err(NativePortType port_) => wasmModule.P7C55DD6B_wire_return_err(port_);
 
-  void wire_return_panic(NativePortType port_) => wasmModule.wire_return_panic(port_);
+  void P7C55DD6B_wire_return_panic(NativePortType port_) => wasmModule.P7C55DD6B_wire_return_panic(port_);
 
-  void wire_handle_optional_return(NativePortType port_, double left, double right) =>
-      wasmModule.wire_handle_optional_return(port_, left, right);
+  void P7C55DD6B_wire_handle_optional_return(NativePortType port_, double left, double right) =>
+      wasmModule.P7C55DD6B_wire_handle_optional_return(port_, left, right);
 
-  void wire_handle_optional_struct(NativePortType port_, String? document) =>
-      wasmModule.wire_handle_optional_struct(port_, document);
+  void P7C55DD6B_wire_handle_optional_struct(NativePortType port_, String? document) =>
+      wasmModule.P7C55DD6B_wire_handle_optional_struct(port_, document);
 
-  void wire_handle_optional_increment(NativePortType port_, List<dynamic>? opt) =>
-      wasmModule.wire_handle_optional_increment(port_, opt);
+  void P7C55DD6B_wire_handle_optional_increment(NativePortType port_, List<dynamic>? opt) =>
+      wasmModule.P7C55DD6B_wire_handle_optional_increment(port_, opt);
 
-  void wire_handle_increment_boxed_optional(NativePortType port_, double? opt) =>
-      wasmModule.wire_handle_increment_boxed_optional(port_, opt);
+  void P7C55DD6B_wire_handle_increment_boxed_optional(NativePortType port_, double? opt) =>
+      wasmModule.P7C55DD6B_wire_handle_increment_boxed_optional(port_, opt);
 
-  void wire_handle_option_box_arguments(NativePortType port_, int? i8box, int? u8box, int? i32box, Object? i64box,
-          double? f64box, bool? boolbox, List<dynamic>? structbox) =>
-      wasmModule.wire_handle_option_box_arguments(port_, i8box, u8box, i32box, i64box, f64box, boolbox, structbox);
+  void P7C55DD6B_wire_handle_option_box_arguments(NativePortType port_, int? i8box, int? u8box, int? i32box,
+          Object? i64box, double? f64box, bool? boolbox, List<dynamic>? structbox) =>
+      wasmModule.P7C55DD6B_wire_handle_option_box_arguments(
+          port_, i8box, u8box, i32box, i64box, f64box, boolbox, structbox);
 
-  void wire_print_note(NativePortType port_, List<dynamic> note) => wasmModule.wire_print_note(port_, note);
+  void P7C55DD6B_wire_print_note(NativePortType port_, List<dynamic> note) =>
+      wasmModule.P7C55DD6B_wire_print_note(port_, note);
 
-  void wire_handle_return_enum(NativePortType port_, String input) => wasmModule.wire_handle_return_enum(port_, input);
+  void P7C55DD6B_wire_handle_return_enum(NativePortType port_, String input) =>
+      wasmModule.P7C55DD6B_wire_handle_return_enum(port_, input);
 
-  void wire_handle_enum_parameter(NativePortType port_, int weekday) =>
-      wasmModule.wire_handle_enum_parameter(port_, weekday);
+  void P7C55DD6B_wire_handle_enum_parameter(NativePortType port_, int weekday) =>
+      wasmModule.P7C55DD6B_wire_handle_enum_parameter(port_, weekday);
 
-  void wire_handle_customized_struct(NativePortType port_, List<dynamic> val) =>
-      wasmModule.wire_handle_customized_struct(port_, val);
+  void P7C55DD6B_wire_handle_customized_struct(NativePortType port_, List<dynamic> val) =>
+      wasmModule.P7C55DD6B_wire_handle_customized_struct(port_, val);
 
-  void wire_handle_enum_struct(NativePortType port_, List<dynamic> val) =>
-      wasmModule.wire_handle_enum_struct(port_, val);
+  void P7C55DD6B_wire_handle_enum_struct(NativePortType port_, List<dynamic> val) =>
+      wasmModule.P7C55DD6B_wire_handle_enum_struct(port_, val);
 
-  void wire_use_imported_struct(NativePortType port_, List<dynamic> my_struct) =>
-      wasmModule.wire_use_imported_struct(port_, my_struct);
+  void P7C55DD6B_wire_use_imported_struct(NativePortType port_, List<dynamic> my_struct) =>
+      wasmModule.P7C55DD6B_wire_use_imported_struct(port_, my_struct);
 
-  void wire_use_imported_enum(NativePortType port_, int my_enum) => wasmModule.wire_use_imported_enum(port_, my_enum);
+  void P7C55DD6B_wire_use_imported_enum(NativePortType port_, int my_enum) =>
+      wasmModule.P7C55DD6B_wire_use_imported_enum(port_, my_enum);
 
-  void wire_get_app_settings(NativePortType port_) => wasmModule.wire_get_app_settings(port_);
+  void P7C55DD6B_wire_get_app_settings(NativePortType port_) => wasmModule.P7C55DD6B_wire_get_app_settings(port_);
 
-  void wire_get_fallible_app_settings(NativePortType port_) => wasmModule.wire_get_fallible_app_settings(port_);
+  void P7C55DD6B_wire_get_fallible_app_settings(NativePortType port_) =>
+      wasmModule.P7C55DD6B_wire_get_fallible_app_settings(port_);
 
-  void wire_is_app_embedded(NativePortType port_, List<dynamic> app_settings) =>
-      wasmModule.wire_is_app_embedded(port_, app_settings);
+  void P7C55DD6B_wire_is_app_embedded(NativePortType port_, List<dynamic> app_settings) =>
+      wasmModule.P7C55DD6B_wire_is_app_embedded(port_, app_settings);
 
-  void wire_get_message(NativePortType port_) => wasmModule.wire_get_message(port_);
+  void P7C55DD6B_wire_get_message(NativePortType port_) => wasmModule.P7C55DD6B_wire_get_message(port_);
 
-  void wire_repeat_number(NativePortType port_, int number, int times) =>
-      wasmModule.wire_repeat_number(port_, number, times);
+  void P7C55DD6B_wire_repeat_number(NativePortType port_, int number, int times) =>
+      wasmModule.P7C55DD6B_wire_repeat_number(port_, number, times);
 
-  void wire_repeat_sequence(NativePortType port_, int seq, int times) =>
-      wasmModule.wire_repeat_sequence(port_, seq, times);
+  void P7C55DD6B_wire_repeat_sequence(NativePortType port_, int seq, int times) =>
+      wasmModule.P7C55DD6B_wire_repeat_sequence(port_, seq, times);
 
-  void wire_first_number(NativePortType port_, List<dynamic> nums) => wasmModule.wire_first_number(port_, nums);
+  void P7C55DD6B_wire_first_number(NativePortType port_, List<dynamic> nums) =>
+      wasmModule.P7C55DD6B_wire_first_number(port_, nums);
 
-  void wire_first_sequence(NativePortType port_, List<dynamic> seqs) => wasmModule.wire_first_sequence(port_, seqs);
+  void P7C55DD6B_wire_first_sequence(NativePortType port_, List<dynamic> seqs) =>
+      wasmModule.P7C55DD6B_wire_first_sequence(port_, seqs);
 
-  void wire_get_array(NativePortType port_) => wasmModule.wire_get_array(port_);
+  void P7C55DD6B_wire_get_array(NativePortType port_) => wasmModule.P7C55DD6B_wire_get_array(port_);
 
-  void wire_get_complex_array(NativePortType port_) => wasmModule.wire_get_complex_array(port_);
+  void P7C55DD6B_wire_get_complex_array(NativePortType port_) => wasmModule.P7C55DD6B_wire_get_complex_array(port_);
 
-  void wire_get_usize(NativePortType port_, int u) => wasmModule.wire_get_usize(port_, u);
+  void P7C55DD6B_wire_get_usize(NativePortType port_, int u) => wasmModule.P7C55DD6B_wire_get_usize(port_, u);
 
-  void wire_next_user_id(NativePortType port_, List<dynamic> user_id) => wasmModule.wire_next_user_id(port_, user_id);
+  void P7C55DD6B_wire_next_user_id(NativePortType port_, List<dynamic> user_id) =>
+      wasmModule.P7C55DD6B_wire_next_user_id(port_, user_id);
 
-  void wire_register_event_listener(NativePortType port_) => wasmModule.wire_register_event_listener(port_);
+  void P7C55DD6B_wire_register_event_listener(NativePortType port_) =>
+      wasmModule.P7C55DD6B_wire_register_event_listener(port_);
 
-  void wire_close_event_listener(NativePortType port_) => wasmModule.wire_close_event_listener(port_);
+  void P7C55DD6B_wire_close_event_listener(NativePortType port_) =>
+      wasmModule.P7C55DD6B_wire_close_event_listener(port_);
 
-  void wire_create_event(NativePortType port_, String address, String payload) =>
-      wasmModule.wire_create_event(port_, address, payload);
+  void P7C55DD6B_wire_create_event(NativePortType port_, String address, String payload) =>
+      wasmModule.P7C55DD6B_wire_create_event(port_, address, payload);
 
-  void wire_handle_stream_sink_at_1(NativePortType port_, int key, int max) =>
-      wasmModule.wire_handle_stream_sink_at_1(port_, key, max);
+  void P7C55DD6B_wire_handle_stream_sink_at_1(NativePortType port_, int key, int max) =>
+      wasmModule.P7C55DD6B_wire_handle_stream_sink_at_1(port_, key, max);
 
-  void wire_handle_stream_sink_at_2(NativePortType port_, int key, int max) =>
-      wasmModule.wire_handle_stream_sink_at_2(port_, key, max);
+  void P7C55DD6B_wire_handle_stream_sink_at_2(NativePortType port_, int key, int max) =>
+      wasmModule.P7C55DD6B_wire_handle_stream_sink_at_2(port_, key, max);
 
-  void wire_handle_stream_sink_at_3(NativePortType port_, int key, int max) =>
-      wasmModule.wire_handle_stream_sink_at_3(port_, key, max);
+  void P7C55DD6B_wire_handle_stream_sink_at_3(NativePortType port_, int key, int max) =>
+      wasmModule.P7C55DD6B_wire_handle_stream_sink_at_3(port_, key, max);
 
-  void wire_get_sum_struct(NativePortType port_) => wasmModule.wire_get_sum_struct(port_);
+  void P7C55DD6B_wire_get_sum_struct(NativePortType port_) => wasmModule.P7C55DD6B_wire_get_sum_struct(port_);
 
-  void wire_get_sum_array(NativePortType port_, int a, int b, int c) => wasmModule.wire_get_sum_array(port_, a, b, c);
+  void P7C55DD6B_wire_get_sum_array(NativePortType port_, int a, int b, int c) =>
+      wasmModule.P7C55DD6B_wire_get_sum_array(port_, a, b, c);
 
-  void wire_multiply_by_ten(NativePortType port_, List<dynamic> measure) =>
-      wasmModule.wire_multiply_by_ten(port_, measure);
+  void P7C55DD6B_wire_multiply_by_ten(NativePortType port_, List<dynamic> measure) =>
+      wasmModule.P7C55DD6B_wire_multiply_by_ten(port_, measure);
 
-  void wire_call_old_module_system(NativePortType port_) => wasmModule.wire_call_old_module_system(port_);
+  void P7C55DD6B_wire_call_old_module_system(NativePortType port_) =>
+      wasmModule.P7C55DD6B_wire_call_old_module_system(port_);
 
-  void wire_call_new_module_system(NativePortType port_) => wasmModule.wire_call_new_module_system(port_);
+  void P7C55DD6B_wire_call_new_module_system(NativePortType port_) =>
+      wasmModule.P7C55DD6B_wire_call_new_module_system(port_);
 
-  void wire_handle_big_buffers(NativePortType port_) => wasmModule.wire_handle_big_buffers(port_);
+  void P7C55DD6B_wire_handle_big_buffers(NativePortType port_) => wasmModule.P7C55DD6B_wire_handle_big_buffers(port_);
 
-  void wire_datetime_utc(NativePortType port_, Object d) => wasmModule.wire_datetime_utc(port_, d);
+  void P7C55DD6B_wire_datetime_utc(NativePortType port_, Object d) => wasmModule.P7C55DD6B_wire_datetime_utc(port_, d);
 
-  void wire_datetime_local(NativePortType port_, Object d) => wasmModule.wire_datetime_local(port_, d);
+  void P7C55DD6B_wire_datetime_local(NativePortType port_, Object d) =>
+      wasmModule.P7C55DD6B_wire_datetime_local(port_, d);
 
-  void wire_naivedatetime(NativePortType port_, Object d) => wasmModule.wire_naivedatetime(port_, d);
+  void P7C55DD6B_wire_naivedatetime(NativePortType port_, Object d) =>
+      wasmModule.P7C55DD6B_wire_naivedatetime(port_, d);
 
-  void wire_optional_empty_datetime_utc(NativePortType port_, Object? d) =>
-      wasmModule.wire_optional_empty_datetime_utc(port_, d);
+  void P7C55DD6B_wire_optional_empty_datetime_utc(NativePortType port_, Object? d) =>
+      wasmModule.P7C55DD6B_wire_optional_empty_datetime_utc(port_, d);
 
-  void wire_duration(NativePortType port_, Object d) => wasmModule.wire_duration(port_, d);
+  void P7C55DD6B_wire_duration(NativePortType port_, Object d) => wasmModule.P7C55DD6B_wire_duration(port_, d);
 
-  void wire_handle_timestamps(NativePortType port_, Object /* BigInt64Array */ timestamps, Object epoch) =>
-      wasmModule.wire_handle_timestamps(port_, timestamps, epoch);
+  void P7C55DD6B_wire_handle_timestamps(NativePortType port_, Object /* BigInt64Array */ timestamps, Object epoch) =>
+      wasmModule.P7C55DD6B_wire_handle_timestamps(port_, timestamps, epoch);
 
-  void wire_handle_durations(NativePortType port_, Object /* BigInt64Array */ durations, Object since) =>
-      wasmModule.wire_handle_durations(port_, durations, since);
+  void P7C55DD6B_wire_handle_durations(NativePortType port_, Object /* BigInt64Array */ durations, Object since) =>
+      wasmModule.P7C55DD6B_wire_handle_durations(port_, durations, since);
 
-  void wire_test_chrono(NativePortType port_) => wasmModule.wire_test_chrono(port_);
+  void P7C55DD6B_wire_test_chrono(NativePortType port_) => wasmModule.P7C55DD6B_wire_test_chrono(port_);
 
-  void wire_test_precise_chrono(NativePortType port_) => wasmModule.wire_test_precise_chrono(port_);
+  void P7C55DD6B_wire_test_precise_chrono(NativePortType port_) => wasmModule.P7C55DD6B_wire_test_precise_chrono(port_);
 
-  void wire_how_long_does_it_take(NativePortType port_, List<dynamic> mine) =>
-      wasmModule.wire_how_long_does_it_take(port_, mine);
+  void P7C55DD6B_wire_how_long_does_it_take(NativePortType port_, List<dynamic> mine) =>
+      wasmModule.P7C55DD6B_wire_how_long_does_it_take(port_, mine);
 
-  void wire_handle_uuid(NativePortType port_, Uint8List id) => wasmModule.wire_handle_uuid(port_, id);
+  void P7C55DD6B_wire_handle_uuid(NativePortType port_, Uint8List id) =>
+      wasmModule.P7C55DD6B_wire_handle_uuid(port_, id);
 
-  void wire_handle_uuids(NativePortType port_, Uint8List ids) => wasmModule.wire_handle_uuids(port_, ids);
+  void P7C55DD6B_wire_handle_uuids(NativePortType port_, Uint8List ids) =>
+      wasmModule.P7C55DD6B_wire_handle_uuids(port_, ids);
 
-  void wire_handle_nested_uuids(NativePortType port_, List<dynamic> ids) =>
-      wasmModule.wire_handle_nested_uuids(port_, ids);
+  void P7C55DD6B_wire_handle_nested_uuids(NativePortType port_, List<dynamic> ids) =>
+      wasmModule.P7C55DD6B_wire_handle_nested_uuids(port_, ids);
 
-  void wire_new_msgid(NativePortType port_, Uint8List id) => wasmModule.wire_new_msgid(port_, id);
+  void P7C55DD6B_wire_new_msgid(NativePortType port_, Uint8List id) => wasmModule.P7C55DD6B_wire_new_msgid(port_, id);
 
-  void wire_use_msgid(NativePortType port_, List<dynamic> id) => wasmModule.wire_use_msgid(port_, id);
+  void P7C55DD6B_wire_use_msgid(NativePortType port_, List<dynamic> id) =>
+      wasmModule.P7C55DD6B_wire_use_msgid(port_, id);
 
-  void wire_boxed_blob(NativePortType port_, Uint8List blob) => wasmModule.wire_boxed_blob(port_, blob);
+  void P7C55DD6B_wire_boxed_blob(NativePortType port_, Uint8List blob) =>
+      wasmModule.P7C55DD6B_wire_boxed_blob(port_, blob);
 
-  void wire_use_boxed_blob(NativePortType port_, List<dynamic> blob) => wasmModule.wire_use_boxed_blob(port_, blob);
+  void P7C55DD6B_wire_use_boxed_blob(NativePortType port_, List<dynamic> blob) =>
+      wasmModule.P7C55DD6B_wire_use_boxed_blob(port_, blob);
 
-  void wire_return_boxed_feed_id(NativePortType port_, Uint8List id) => wasmModule.wire_return_boxed_feed_id(port_, id);
+  void P7C55DD6B_wire_return_boxed_feed_id(NativePortType port_, Uint8List id) =>
+      wasmModule.P7C55DD6B_wire_return_boxed_feed_id(port_, id);
 
-  void wire_return_boxed_raw_feed_id(NativePortType port_, List<dynamic> id) =>
-      wasmModule.wire_return_boxed_raw_feed_id(port_, id);
+  void P7C55DD6B_wire_return_boxed_raw_feed_id(NativePortType port_, List<dynamic> id) =>
+      wasmModule.P7C55DD6B_wire_return_boxed_raw_feed_id(port_, id);
 
-  void wire_test_id(NativePortType port_, List<dynamic> id) => wasmModule.wire_test_id(port_, id);
+  void P7C55DD6B_wire_test_id(NativePortType port_, List<dynamic> id) => wasmModule.P7C55DD6B_wire_test_id(port_, id);
 
-  void wire_last_number(NativePortType port_, Float64List array) => wasmModule.wire_last_number(port_, array);
+  void P7C55DD6B_wire_last_number(NativePortType port_, Float64List array) =>
+      wasmModule.P7C55DD6B_wire_last_number(port_, array);
 
-  void wire_nested_id(NativePortType port_, List<dynamic> id) => wasmModule.wire_nested_id(port_, id);
+  void P7C55DD6B_wire_nested_id(NativePortType port_, List<dynamic> id) =>
+      wasmModule.P7C55DD6B_wire_nested_id(port_, id);
 
-  dynamic /* String */ wire_sync_accept_dart_opaque(Object opaque) => wasmModule.wire_sync_accept_dart_opaque(opaque);
+  dynamic /* String */ P7C55DD6B_wire_sync_accept_dart_opaque(Object opaque) =>
+      wasmModule.P7C55DD6B_wire_sync_accept_dart_opaque(opaque);
 
-  void wire_async_accept_dart_opaque(NativePortType port_, Object opaque) =>
-      wasmModule.wire_async_accept_dart_opaque(port_, opaque);
+  void P7C55DD6B_wire_async_accept_dart_opaque(NativePortType port_, Object opaque) =>
+      wasmModule.P7C55DD6B_wire_async_accept_dart_opaque(port_, opaque);
 
-  void wire_loop_back(NativePortType port_, Object opaque) => wasmModule.wire_loop_back(port_, opaque);
+  void P7C55DD6B_wire_loop_back(NativePortType port_, Object opaque) =>
+      wasmModule.P7C55DD6B_wire_loop_back(port_, opaque);
 
-  void wire_loop_back_option(NativePortType port_, Object opaque) => wasmModule.wire_loop_back_option(port_, opaque);
+  void P7C55DD6B_wire_loop_back_option(NativePortType port_, Object opaque) =>
+      wasmModule.P7C55DD6B_wire_loop_back_option(port_, opaque);
 
-  void wire_loop_back_array(NativePortType port_, Object opaque) => wasmModule.wire_loop_back_array(port_, opaque);
+  void P7C55DD6B_wire_loop_back_array(NativePortType port_, Object opaque) =>
+      wasmModule.P7C55DD6B_wire_loop_back_array(port_, opaque);
 
-  void wire_loop_back_vec(NativePortType port_, Object opaque) => wasmModule.wire_loop_back_vec(port_, opaque);
+  void P7C55DD6B_wire_loop_back_vec(NativePortType port_, Object opaque) =>
+      wasmModule.P7C55DD6B_wire_loop_back_vec(port_, opaque);
 
-  void wire_loop_back_option_get(NativePortType port_, Object? opaque) =>
-      wasmModule.wire_loop_back_option_get(port_, opaque);
+  void P7C55DD6B_wire_loop_back_option_get(NativePortType port_, Object? opaque) =>
+      wasmModule.P7C55DD6B_wire_loop_back_option_get(port_, opaque);
 
-  void wire_loop_back_array_get(NativePortType port_, List<dynamic> opaque) =>
-      wasmModule.wire_loop_back_array_get(port_, opaque);
+  void P7C55DD6B_wire_loop_back_array_get(NativePortType port_, List<dynamic> opaque) =>
+      wasmModule.P7C55DD6B_wire_loop_back_array_get(port_, opaque);
 
-  void wire_loop_back_vec_get(NativePortType port_, List<dynamic> opaque) =>
-      wasmModule.wire_loop_back_vec_get(port_, opaque);
+  void P7C55DD6B_wire_loop_back_vec_get(NativePortType port_, List<dynamic> opaque) =>
+      wasmModule.P7C55DD6B_wire_loop_back_vec_get(port_, opaque);
 
-  dynamic /* String */ wire_unwrap_dart_opaque(Object opaque) => wasmModule.wire_unwrap_dart_opaque(opaque);
+  dynamic /* String */ P7C55DD6B_wire_unwrap_dart_opaque(Object opaque) =>
+      wasmModule.P7C55DD6B_wire_unwrap_dart_opaque(opaque);
 
-  void wire_panic_unwrap_dart_opaque(NativePortType port_, Object opaque) =>
-      wasmModule.wire_panic_unwrap_dart_opaque(port_, opaque);
+  void P7C55DD6B_wire_panic_unwrap_dart_opaque(NativePortType port_, Object opaque) =>
+      wasmModule.P7C55DD6B_wire_panic_unwrap_dart_opaque(port_, opaque);
 
-  void wire_create_opaque(NativePortType port_) => wasmModule.wire_create_opaque(port_);
+  void P7C55DD6B_wire_create_opaque(NativePortType port_) => wasmModule.P7C55DD6B_wire_create_opaque(port_);
 
-  void wire_create_option_opaque(NativePortType port_, Object? opaque) =>
-      wasmModule.wire_create_option_opaque(port_, opaque);
+  void P7C55DD6B_wire_create_option_opaque(NativePortType port_, Object? opaque) =>
+      wasmModule.P7C55DD6B_wire_create_option_opaque(port_, opaque);
 
-  dynamic /* Object */ wire_sync_create_opaque() => wasmModule.wire_sync_create_opaque();
+  dynamic /* Object */ P7C55DD6B_wire_sync_create_opaque() => wasmModule.P7C55DD6B_wire_sync_create_opaque();
 
-  void wire_create_array_opaque_enum(NativePortType port_) => wasmModule.wire_create_array_opaque_enum(port_);
+  void P7C55DD6B_wire_create_array_opaque_enum(NativePortType port_) =>
+      wasmModule.P7C55DD6B_wire_create_array_opaque_enum(port_);
 
-  void wire_run_enum_opaque(NativePortType port_, List<dynamic> opaque) =>
-      wasmModule.wire_run_enum_opaque(port_, opaque);
+  void P7C55DD6B_wire_run_enum_opaque(NativePortType port_, List<dynamic> opaque) =>
+      wasmModule.P7C55DD6B_wire_run_enum_opaque(port_, opaque);
 
-  void wire_run_opaque(NativePortType port_, Object opaque) => wasmModule.wire_run_opaque(port_, opaque);
+  void P7C55DD6B_wire_run_opaque(NativePortType port_, Object opaque) =>
+      wasmModule.P7C55DD6B_wire_run_opaque(port_, opaque);
 
-  void wire_run_opaque_with_delay(NativePortType port_, Object opaque) =>
-      wasmModule.wire_run_opaque_with_delay(port_, opaque);
+  void P7C55DD6B_wire_run_opaque_with_delay(NativePortType port_, Object opaque) =>
+      wasmModule.P7C55DD6B_wire_run_opaque_with_delay(port_, opaque);
 
-  void wire_opaque_array(NativePortType port_) => wasmModule.wire_opaque_array(port_);
+  void P7C55DD6B_wire_opaque_array(NativePortType port_) => wasmModule.P7C55DD6B_wire_opaque_array(port_);
 
-  dynamic /* Object */ wire_sync_create_non_clone() => wasmModule.wire_sync_create_non_clone();
+  dynamic /* Object */ P7C55DD6B_wire_sync_create_non_clone() => wasmModule.P7C55DD6B_wire_sync_create_non_clone();
 
-  void wire_run_non_clone(NativePortType port_, Object clone) => wasmModule.wire_run_non_clone(port_, clone);
+  void P7C55DD6B_wire_run_non_clone(NativePortType port_, Object clone) =>
+      wasmModule.P7C55DD6B_wire_run_non_clone(port_, clone);
 
-  void wire_create_sync_opaque(NativePortType port_) => wasmModule.wire_create_sync_opaque(port_);
+  void P7C55DD6B_wire_create_sync_opaque(NativePortType port_) => wasmModule.P7C55DD6B_wire_create_sync_opaque(port_);
 
-  dynamic /* Object */ wire_sync_create_sync_opaque() => wasmModule.wire_sync_create_sync_opaque();
+  dynamic /* Object */ P7C55DD6B_wire_sync_create_sync_opaque() => wasmModule.P7C55DD6B_wire_sync_create_sync_opaque();
 
-  dynamic /* String */ wire_sync_run_opaque(Object opaque) => wasmModule.wire_sync_run_opaque(opaque);
+  dynamic /* String */ P7C55DD6B_wire_sync_run_opaque(Object opaque) =>
+      wasmModule.P7C55DD6B_wire_sync_run_opaque(opaque);
 
-  void wire_opaque_array_run(NativePortType port_, List<dynamic> data) => wasmModule.wire_opaque_array_run(port_, data);
+  void P7C55DD6B_wire_opaque_array_run(NativePortType port_, List<dynamic> data) =>
+      wasmModule.P7C55DD6B_wire_opaque_array_run(port_, data);
 
-  void wire_opaque_vec(NativePortType port_) => wasmModule.wire_opaque_vec(port_);
+  void P7C55DD6B_wire_opaque_vec(NativePortType port_) => wasmModule.P7C55DD6B_wire_opaque_vec(port_);
 
-  void wire_opaque_vec_run(NativePortType port_, List<dynamic> data) => wasmModule.wire_opaque_vec_run(port_, data);
+  void P7C55DD6B_wire_opaque_vec_run(NativePortType port_, List<dynamic> data) =>
+      wasmModule.P7C55DD6B_wire_opaque_vec_run(port_, data);
 
-  void wire_create_nested_opaque(NativePortType port_) => wasmModule.wire_create_nested_opaque(port_);
+  void P7C55DD6B_wire_create_nested_opaque(NativePortType port_) =>
+      wasmModule.P7C55DD6B_wire_create_nested_opaque(port_);
 
-  dynamic /* Object */ wire_sync_loopback(Object opaque) => wasmModule.wire_sync_loopback(opaque);
+  dynamic /* Object */ P7C55DD6B_wire_sync_loopback(Object opaque) => wasmModule.P7C55DD6B_wire_sync_loopback(opaque);
 
-  dynamic /* Object? */ wire_sync_option_loopback(Object? opaque) => wasmModule.wire_sync_option_loopback(opaque);
+  dynamic /* Object? */ P7C55DD6B_wire_sync_option_loopback(Object? opaque) =>
+      wasmModule.P7C55DD6B_wire_sync_option_loopback(opaque);
 
-  dynamic /* String? */ wire_sync_option() => wasmModule.wire_sync_option();
+  dynamic /* String? */ P7C55DD6B_wire_sync_option() => wasmModule.P7C55DD6B_wire_sync_option();
 
-  dynamic /* String? */ wire_sync_option_null() => wasmModule.wire_sync_option_null();
+  dynamic /* String? */ P7C55DD6B_wire_sync_option_null() => wasmModule.P7C55DD6B_wire_sync_option_null();
 
-  dynamic /* Object? */ wire_sync_option_rust_opaque() => wasmModule.wire_sync_option_rust_opaque();
+  dynamic /* Object? */ P7C55DD6B_wire_sync_option_rust_opaque() => wasmModule.P7C55DD6B_wire_sync_option_rust_opaque();
 
-  dynamic /* Object? */ wire_sync_option_dart_opaque(Object opaque) => wasmModule.wire_sync_option_dart_opaque(opaque);
+  dynamic /* Object? */ P7C55DD6B_wire_sync_option_dart_opaque(Object opaque) =>
+      wasmModule.P7C55DD6B_wire_sync_option_dart_opaque(opaque);
 
-  dynamic /* void */ wire_sync_void() => wasmModule.wire_sync_void();
+  dynamic /* void */ P7C55DD6B_wire_sync_void() => wasmModule.P7C55DD6B_wire_sync_void();
 
-  void wire_run_nested_opaque(NativePortType port_, List<dynamic> opaque) =>
-      wasmModule.wire_run_nested_opaque(port_, opaque);
+  void P7C55DD6B_wire_run_nested_opaque(NativePortType port_, List<dynamic> opaque) =>
+      wasmModule.P7C55DD6B_wire_run_nested_opaque(port_, opaque);
 
-  void wire_create_nested_dart_opaque(NativePortType port_, Object opaque1, Object opaque2) =>
-      wasmModule.wire_create_nested_dart_opaque(port_, opaque1, opaque2);
+  void P7C55DD6B_wire_create_nested_dart_opaque(NativePortType port_, Object opaque1, Object opaque2) =>
+      wasmModule.P7C55DD6B_wire_create_nested_dart_opaque(port_, opaque1, opaque2);
 
-  void wire_get_nested_dart_opaque(NativePortType port_, List<dynamic> opaque) =>
-      wasmModule.wire_get_nested_dart_opaque(port_, opaque);
+  void P7C55DD6B_wire_get_nested_dart_opaque(NativePortType port_, List<dynamic> opaque) =>
+      wasmModule.P7C55DD6B_wire_get_nested_dart_opaque(port_, opaque);
 
-  void wire_create_enum_dart_opaque(NativePortType port_, Object opaque) =>
-      wasmModule.wire_create_enum_dart_opaque(port_, opaque);
+  void P7C55DD6B_wire_create_enum_dart_opaque(NativePortType port_, Object opaque) =>
+      wasmModule.P7C55DD6B_wire_create_enum_dart_opaque(port_, opaque);
 
-  void wire_get_enum_dart_opaque(NativePortType port_, List<dynamic> opaque) =>
-      wasmModule.wire_get_enum_dart_opaque(port_, opaque);
+  void P7C55DD6B_wire_get_enum_dart_opaque(NativePortType port_, List<dynamic> opaque) =>
+      wasmModule.P7C55DD6B_wire_get_enum_dart_opaque(port_, opaque);
 
-  void wire_set_static_dart_opaque(NativePortType port_, Object opaque) =>
-      wasmModule.wire_set_static_dart_opaque(port_, opaque);
+  void P7C55DD6B_wire_set_static_dart_opaque(NativePortType port_, Object opaque) =>
+      wasmModule.P7C55DD6B_wire_set_static_dart_opaque(port_, opaque);
 
-  void wire_drop_static_dart_opaque(NativePortType port_) => wasmModule.wire_drop_static_dart_opaque(port_);
+  void P7C55DD6B_wire_drop_static_dart_opaque(NativePortType port_) =>
+      wasmModule.P7C55DD6B_wire_drop_static_dart_opaque(port_);
 
-  void wire_unwrap_rust_opaque(NativePortType port_, Object opaque) =>
-      wasmModule.wire_unwrap_rust_opaque(port_, opaque);
+  void P7C55DD6B_wire_unwrap_rust_opaque(NativePortType port_, Object opaque) =>
+      wasmModule.P7C55DD6B_wire_unwrap_rust_opaque(port_, opaque);
 
-  dynamic /* Object */ wire_return_non_droppable_dart_opaque(Object opaque) =>
-      wasmModule.wire_return_non_droppable_dart_opaque(opaque);
+  dynamic /* Object */ P7C55DD6B_wire_return_non_droppable_dart_opaque(Object opaque) =>
+      wasmModule.P7C55DD6B_wire_return_non_droppable_dart_opaque(opaque);
 
-  void wire_frb_generator_test(NativePortType port_) => wasmModule.wire_frb_generator_test(port_);
+  void P7C55DD6B_wire_frb_generator_test(NativePortType port_) => wasmModule.P7C55DD6B_wire_frb_generator_test(port_);
 
-  dynamic /* Object */ wire_frb_sync_generator_test() => wasmModule.wire_frb_sync_generator_test();
+  dynamic /* Object */ P7C55DD6B_wire_frb_sync_generator_test() => wasmModule.P7C55DD6B_wire_frb_sync_generator_test();
 
-  void wire_handle_type_alias_id(NativePortType port_, Object input) =>
-      wasmModule.wire_handle_type_alias_id(port_, input);
+  void P7C55DD6B_wire_handle_type_alias_id(NativePortType port_, Object input) =>
+      wasmModule.P7C55DD6B_wire_handle_type_alias_id(port_, input);
 
-  void wire_handle_type_nest_alias_id(NativePortType port_, Object input) =>
-      wasmModule.wire_handle_type_nest_alias_id(port_, input);
+  void P7C55DD6B_wire_handle_type_nest_alias_id(NativePortType port_, Object input) =>
+      wasmModule.P7C55DD6B_wire_handle_type_nest_alias_id(port_, input);
 
-  void wire_handle_type_alias_model(NativePortType port_, Object input) =>
-      wasmModule.wire_handle_type_alias_model(port_, input);
+  void P7C55DD6B_wire_handle_type_alias_model(NativePortType port_, Object input) =>
+      wasmModule.P7C55DD6B_wire_handle_type_alias_model(port_, input);
 
-  void wire_empty_struct(NativePortType port_, List<dynamic> empty) => wasmModule.wire_empty_struct(port_, empty);
+  void P7C55DD6B_wire_empty_struct(NativePortType port_, List<dynamic> empty) =>
+      wasmModule.P7C55DD6B_wire_empty_struct(port_, empty);
 
-  void wire_return_dart_dynamic(NativePortType port_) => wasmModule.wire_return_dart_dynamic(port_);
+  void P7C55DD6B_wire_return_dart_dynamic(NativePortType port_) => wasmModule.P7C55DD6B_wire_return_dart_dynamic(port_);
 
-  void wire_test_raw_string_item_struct(NativePortType port_) => wasmModule.wire_test_raw_string_item_struct(port_);
+  void P7C55DD6B_wire_test_raw_string_item_struct(NativePortType port_) =>
+      wasmModule.P7C55DD6B_wire_test_raw_string_item_struct(port_);
 
-  void wire_test_more_than_just_one_raw_string_struct(NativePortType port_) =>
-      wasmModule.wire_test_more_than_just_one_raw_string_struct(port_);
+  void P7C55DD6B_wire_test_more_than_just_one_raw_string_struct(NativePortType port_) =>
+      wasmModule.P7C55DD6B_wire_test_more_than_just_one_raw_string_struct(port_);
 
-  void wire_test_raw_string_mirrored(NativePortType port_) => wasmModule.wire_test_raw_string_mirrored(port_);
+  void P7C55DD6B_wire_test_raw_string_mirrored(NativePortType port_) =>
+      wasmModule.P7C55DD6B_wire_test_raw_string_mirrored(port_);
 
-  void wire_test_nested_raw_string_mirrored(NativePortType port_) =>
-      wasmModule.wire_test_nested_raw_string_mirrored(port_);
+  void P7C55DD6B_wire_test_nested_raw_string_mirrored(NativePortType port_) =>
+      wasmModule.P7C55DD6B_wire_test_nested_raw_string_mirrored(port_);
 
-  void wire_test_raw_string_enum_mirrored(NativePortType port_, bool nested) =>
-      wasmModule.wire_test_raw_string_enum_mirrored(port_, nested);
+  void P7C55DD6B_wire_test_raw_string_enum_mirrored(NativePortType port_, bool nested) =>
+      wasmModule.P7C55DD6B_wire_test_raw_string_enum_mirrored(port_, nested);
 
-  void wire_test_list_of_raw_nested_string_mirrored(NativePortType port_) =>
-      wasmModule.wire_test_list_of_raw_nested_string_mirrored(port_);
+  void P7C55DD6B_wire_test_list_of_raw_nested_string_mirrored(NativePortType port_) =>
+      wasmModule.P7C55DD6B_wire_test_list_of_raw_nested_string_mirrored(port_);
 
-  void wire_test_fallible_of_raw_string_mirrored(NativePortType port_) =>
-      wasmModule.wire_test_fallible_of_raw_string_mirrored(port_);
+  void P7C55DD6B_wire_test_fallible_of_raw_string_mirrored(NativePortType port_) =>
+      wasmModule.P7C55DD6B_wire_test_fallible_of_raw_string_mirrored(port_);
 
-  void wire_list_of_primitive_enums(NativePortType port_, List<dynamic> weekdays) =>
-      wasmModule.wire_list_of_primitive_enums(port_, weekdays);
+  void P7C55DD6B_wire_list_of_primitive_enums(NativePortType port_, List<dynamic> weekdays) =>
+      wasmModule.P7C55DD6B_wire_list_of_primitive_enums(port_, weekdays);
 
-  void wire_test_abc_enum(NativePortType port_, List<dynamic> abc) => wasmModule.wire_test_abc_enum(port_, abc);
+  void P7C55DD6B_wire_test_abc_enum(NativePortType port_, List<dynamic> abc) =>
+      wasmModule.P7C55DD6B_wire_test_abc_enum(port_, abc);
 
-  void wire_test_contains_mirrored_sub_struct(NativePortType port_) =>
-      wasmModule.wire_test_contains_mirrored_sub_struct(port_);
+  void P7C55DD6B_wire_test_contains_mirrored_sub_struct(NativePortType port_) =>
+      wasmModule.P7C55DD6B_wire_test_contains_mirrored_sub_struct(port_);
 
-  void wire_as_string__method__Event(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_as_string__method__Event(port_, that);
+  void P7C55DD6B_wire_as_string__method__Event(NativePortType port_, List<dynamic> that) =>
+      wasmModule.P7C55DD6B_wire_as_string__method__Event(port_, that);
 
-  void wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z) =>
-      wasmModule.wire_sum__method__SumWith(port_, that, y, z);
+  void P7C55DD6B_wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z) =>
+      wasmModule.P7C55DD6B_wire_sum__method__SumWith(port_, that, y, z);
 
-  void wire_new__static_method__ConcatenateWith(NativePortType port_, String a) =>
-      wasmModule.wire_new__static_method__ConcatenateWith(port_, a);
+  void P7C55DD6B_wire_new__static_method__ConcatenateWith(NativePortType port_, String a) =>
+      wasmModule.P7C55DD6B_wire_new__static_method__ConcatenateWith(port_, a);
 
-  void wire_concatenate__method__ConcatenateWith(NativePortType port_, List<dynamic> that, String b) =>
-      wasmModule.wire_concatenate__method__ConcatenateWith(port_, that, b);
+  void P7C55DD6B_wire_concatenate__method__ConcatenateWith(NativePortType port_, List<dynamic> that, String b) =>
+      wasmModule.P7C55DD6B_wire_concatenate__method__ConcatenateWith(port_, that, b);
 
-  void wire_concatenate_static__static_method__ConcatenateWith(NativePortType port_, String a, String b) =>
-      wasmModule.wire_concatenate_static__static_method__ConcatenateWith(port_, a, b);
+  void P7C55DD6B_wire_concatenate_static__static_method__ConcatenateWith(NativePortType port_, String a, String b) =>
+      wasmModule.P7C55DD6B_wire_concatenate_static__static_method__ConcatenateWith(port_, a, b);
 
-  void wire_handle_some_stream_sink__method__ConcatenateWith(
+  void P7C55DD6B_wire_handle_some_stream_sink__method__ConcatenateWith(
           NativePortType port_, List<dynamic> that, int key, int max) =>
-      wasmModule.wire_handle_some_stream_sink__method__ConcatenateWith(port_, that, key, max);
+      wasmModule.P7C55DD6B_wire_handle_some_stream_sink__method__ConcatenateWith(port_, that, key, max);
 
-  void wire_handle_some_stream_sink_at_1__method__ConcatenateWith(NativePortType port_, List<dynamic> that) =>
-      wasmModule.wire_handle_some_stream_sink_at_1__method__ConcatenateWith(port_, that);
+  void P7C55DD6B_wire_handle_some_stream_sink_at_1__method__ConcatenateWith(NativePortType port_, List<dynamic> that) =>
+      wasmModule.P7C55DD6B_wire_handle_some_stream_sink_at_1__method__ConcatenateWith(port_, that);
 
-  void wire_handle_some_static_stream_sink__static_method__ConcatenateWith(NativePortType port_, int key, int max) =>
-      wasmModule.wire_handle_some_static_stream_sink__static_method__ConcatenateWith(port_, key, max);
+  void P7C55DD6B_wire_handle_some_static_stream_sink__static_method__ConcatenateWith(
+          NativePortType port_, int key, int max) =>
+      wasmModule.P7C55DD6B_wire_handle_some_static_stream_sink__static_method__ConcatenateWith(port_, key, max);
 
-  void wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(NativePortType port_) =>
-      wasmModule.wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(port_);
+  void P7C55DD6B_wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(NativePortType port_) =>
+      wasmModule.P7C55DD6B_wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(port_);
 
   dynamic /*  */ drop_opaque_BoxDartDebug(ptr) => wasmModule.drop_opaque_BoxDartDebug(ptr);
 
