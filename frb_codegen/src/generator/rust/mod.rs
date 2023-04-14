@@ -169,7 +169,8 @@ impl<'a> Generator<'a> {
         for target in targets {
             for line in target.iter_mut() {
                 let curr = line.clone();
-                let new_line = regex.replace_all(&curr, format!("{}$0", self.config.get_unique_id()));
+                let new_line =
+                    regex.replace_all(&curr, format!("{}$0", self.config.get_unique_id()));
                 line.replace_range(0..line.len(), &new_line);
             }
         }
