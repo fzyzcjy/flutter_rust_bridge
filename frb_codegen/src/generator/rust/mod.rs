@@ -161,15 +161,18 @@ impl<'a> Generator<'a> {
         lines.push(self.section_header_comment("executor"));
         lines.push(self.generate_executor(ir_file));
 
-        let regex = Regex::new(r"wire_[\d\w]+").unwrap();
-        for line in lines.common.iter_mut() {
-            let curr = line.clone();
-            let new_line = regex.replace_all(&curr, format!("{}$0", self.config.get_unique_id()));
-            line.replace_range(0..line.len(), &new_line);
-        }
-
         self.generate_io_part(&mut lines, &distinct_input_types, ir_file);
         self.generate_wasm_part(&mut lines, &distinct_input_types, ir_file);
+
+        let targets = [&mut lines.common, &mut lines.io, &mut lines.wasm];
+        let regex = Regex::new(r"wire_[\d\w]+").unwrap();
+        for target in targets {
+            for line in target.iter_mut() {
+                let curr = line.clone();
+                let new_line = regex.replace_all(&curr, format!("{}$0", self.config.get_unique_id()));
+                line.replace_range(0..line.len(), &new_line);
+            }
+        }
 
         lines.join("\n")
     }
@@ -202,13 +205,6 @@ impl<'a> Generator<'a> {
             (lines.io).push(self.section_header_comment("sync execution mode utility"));
             lines.io.push(self.generate_sync_execution_mode_utility());
         }
-
-        let regex = Regex::new(r"wire_[\d\w]+").unwrap();
-        for line in lines.io.iter_mut() {
-            let curr = line.clone();
-            let new_line = regex.replace_all(&curr, format!("{}$0", self.config.get_unique_id()));
-            line.replace_range(0..line.len(), &new_line);
-        }
     }
 
     fn generate_wasm_part(
@@ -223,13 +219,6 @@ impl<'a> Generator<'a> {
                 .iter()
                 .filter_map(|ty| self.generate_wasm2api_func(ty, ir_file)),
         );
-
-        let regex = Regex::new(r"wire_[\d\w]+_impl").unwrap();
-        for line in lines.wasm.iter_mut() {
-            let curr = line.clone();
-            let new_line = regex.replace_all(&curr, format!("{}$0", self.config.get_unique_id()));
-            line.replace_range(0..line.len(), &new_line);
-        }
     }
 
     fn section_header_comment(&self, section_name: &str) -> String {
