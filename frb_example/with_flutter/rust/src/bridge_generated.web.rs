@@ -68,6 +68,11 @@ pub fn wire_off_topic_deliberately_panic(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_next_user_id(port_: MessagePort, user_id: JsValue) {
+    wire_next_user_id_impl(port_, user_id)
+}
+
+#[wasm_bindgen]
 pub fn wire_test_method__method__BoxedPoint(port_: MessagePort, that: JsValue) {
     wire_test_method__method__BoxedPoint_impl(port_, that)
 }
@@ -190,6 +195,20 @@ impl Wire2Api<TreeNode> for JsValue {
 impl Wire2Api<Vec<u8>> for Box<[u8]> {
     fn wire2api(self) -> Vec<u8> {
         self.into_vec()
+    }
+}
+impl Wire2Api<UserId> for JsValue {
+    fn wire2api(self) -> UserId {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        UserId {
+            value: self_.get(0).wire2api(),
+        }
     }
 }
 // Section: impl Wire2Api for JsValue

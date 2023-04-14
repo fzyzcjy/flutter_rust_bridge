@@ -39,6 +39,10 @@ typedef struct wire_list_size {
   int32_t len;
 } wire_list_size;
 
+typedef struct wire_UserId {
+  uint32_t value;
+} wire_UserId;
+
 typedef struct wire_BoxedPoint {
   struct wire_Point *point;
 } wire_BoxedPoint;
@@ -87,6 +91,8 @@ void wire_off_topic_deliberately_return_error(int64_t port_);
 
 void wire_off_topic_deliberately_panic(int64_t port_);
 
+void wire_next_user_id(int64_t port_, struct wire_UserId *user_id);
+
 void wire_test_method__method__BoxedPoint(int64_t port_, struct wire_BoxedPoint *that);
 
 void wire_sum__method__SumWith(int64_t port_, struct wire_SumWith *that, uint32_t y);
@@ -102,6 +108,8 @@ struct wire_Size *new_box_autoadd_size_0(void);
 struct wire_SumWith *new_box_autoadd_sum_with_0(void);
 
 struct wire_TreeNode *new_box_autoadd_tree_node_0(void);
+
+struct wire_UserId *new_box_autoadd_user_id_0(void);
 
 struct wire_Point *new_box_point_0(void);
 
@@ -127,6 +135,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_off_topic_memory_test_output_complex_struct);
     dummy_var ^= ((int64_t) (void*) wire_off_topic_deliberately_return_error);
     dummy_var ^= ((int64_t) (void*) wire_off_topic_deliberately_panic);
+    dummy_var ^= ((int64_t) (void*) wire_next_user_id);
     dummy_var ^= ((int64_t) (void*) wire_test_method__method__BoxedPoint);
     dummy_var ^= ((int64_t) (void*) wire_sum__method__SumWith);
     dummy_var ^= ((int64_t) (void*) wire_sum_static__static_method__SumWith);
@@ -135,6 +144,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_size_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_sum_with_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_tree_node_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_user_id_0);
     dummy_var ^= ((int64_t) (void*) new_box_point_0);
     dummy_var ^= ((int64_t) (void*) new_list_size_0);
     dummy_var ^= ((int64_t) (void*) new_list_tree_node_0);

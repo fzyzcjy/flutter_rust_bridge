@@ -52,6 +52,11 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_user_id(UserId raw) {
+    return api2wire_user_id(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_point(Point raw) {
     return api2wire_point(raw);
   }
@@ -95,6 +100,11 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   Uint8List api2wire_uint_8_list(Uint8List raw) {
     return raw;
   }
+
+  @protected
+  List<dynamic> api2wire_user_id(UserId raw) {
+    return [api2wire_u32(raw.value)];
+  }
 // Section: finalizer
 }
 
@@ -133,6 +143,8 @@ class FlutterRustBridgeExampleWasmModule implements WasmModule {
   external dynamic /* void */ wire_off_topic_deliberately_return_error(NativePortType port_);
 
   external dynamic /* void */ wire_off_topic_deliberately_panic(NativePortType port_);
+
+  external dynamic /* void */ wire_next_user_id(NativePortType port_, List<dynamic> user_id);
 
   external dynamic /* void */ wire_test_method__method__BoxedPoint(NativePortType port_, List<dynamic> that);
 
@@ -182,6 +194,8 @@ class FlutterRustBridgeExampleWire extends FlutterRustBridgeWasmWireBase<Flutter
       wasmModule.wire_off_topic_deliberately_return_error(port_);
 
   void wire_off_topic_deliberately_panic(NativePortType port_) => wasmModule.wire_off_topic_deliberately_panic(port_);
+
+  void wire_next_user_id(NativePortType port_, List<dynamic> user_id) => wasmModule.wire_next_user_id(port_, user_id);
 
   void wire_test_method__method__BoxedPoint(NativePortType port_, List<dynamic> that) =>
       wasmModule.wire_test_method__method__BoxedPoint(port_, that);

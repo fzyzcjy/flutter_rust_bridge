@@ -222,6 +222,22 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
         argNames: [],
       );
 
+  Future<UserId> nextUserId({required UserId userId, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_user_id(userId);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_next_user_id(port_, arg0),
+      parseSuccessData: _wire2api_user_id,
+      constMeta: kNextUserIdConstMeta,
+      argValues: [userId],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kNextUserIdConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "next_user_id",
+        argNames: ["userId"],
+      );
+
   Future<void> testMethodMethodBoxedPoint({required BoxedPoint that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_boxed_point(that);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -354,6 +370,14 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
 
   void _wire2api_unit(dynamic raw) {
     return;
+  }
+
+  UserId _wire2api_user_id(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return UserId(
+      value: _wire2api_u32(arr[0]),
+    );
   }
 }
 

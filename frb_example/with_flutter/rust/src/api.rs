@@ -1,6 +1,6 @@
 use anyhow::{anyhow, Result};
 
-use flutter_rust_bridge::ZeroCopyBuffer;
+use flutter_rust_bridge::{frb, ZeroCopyBuffer};
 
 //
 // NOTE: Please look at https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/simple/rust/src/api.rs
@@ -118,5 +118,17 @@ impl SumWith {
     }
     pub fn sum_static(x: u32, y: u32) -> u32 {
         x + y
+    }
+}
+
+#[frb(dart_metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]
+pub struct UserId {
+    #[frb(default = 0)]
+    pub value: u32,
+}
+
+pub fn next_user_id(user_id: UserId) -> UserId {
+    UserId {
+        value: user_id.value + 1,
     }
 }

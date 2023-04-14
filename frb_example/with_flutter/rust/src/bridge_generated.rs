@@ -203,6 +203,19 @@ fn wire_off_topic_deliberately_panic_impl(port_: MessagePort) {
         move || move |task_callback| Ok(off_topic_deliberately_panic()),
     )
 }
+fn wire_next_user_id_impl(port_: MessagePort, user_id: impl Wire2Api<UserId> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "next_user_id",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_user_id = user_id.wire2api();
+            move |task_callback| Ok(next_user_id(api_user_id))
+        },
+    )
+}
 fn wire_test_method__method__BoxedPoint_impl(
     port_: MessagePort,
     that: impl Wire2Api<BoxedPoint> + UnwindSafe,
@@ -329,6 +342,13 @@ impl support::IntoDart for TreeNode {
     }
 }
 impl support::IntoDartExceptPrimitive for TreeNode {}
+
+impl support::IntoDart for UserId {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.value.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for UserId {}
 
 // Section: executor
 

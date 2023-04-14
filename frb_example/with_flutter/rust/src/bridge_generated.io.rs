@@ -74,6 +74,11 @@ pub extern "C" fn wire_off_topic_deliberately_panic(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_next_user_id(port_: i64, user_id: *mut wire_UserId) {
+    wire_next_user_id_impl(port_, user_id)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_test_method__method__BoxedPoint(port_: i64, that: *mut wire_BoxedPoint) {
     wire_test_method__method__BoxedPoint_impl(port_, that)
 }
@@ -113,6 +118,11 @@ pub extern "C" fn new_box_autoadd_sum_with_0() -> *mut wire_SumWith {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_tree_node_0() -> *mut wire_TreeNode {
     support::new_leak_box_ptr(wire_TreeNode::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_user_id_0() -> *mut wire_UserId {
+    support::new_leak_box_ptr(wire_UserId::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -187,6 +197,12 @@ impl Wire2Api<TreeNode> for *mut wire_TreeNode {
         Wire2Api::<TreeNode>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<UserId> for *mut wire_UserId {
+    fn wire2api(self) -> UserId {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<UserId>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<Box<Point>> for *mut wire_Point {
     fn wire2api(self) -> Box<Point> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -259,6 +275,13 @@ impl Wire2Api<Vec<u8>> for *mut wire_uint_8_list {
         }
     }
 }
+impl Wire2Api<UserId> for wire_UserId {
+    fn wire2api(self) -> UserId {
+        UserId {
+            value: self.value.wire2api(),
+        }
+    }
+}
 // Section: wire structs
 
 #[repr(C)]
@@ -313,6 +336,12 @@ pub struct wire_TreeNode {
 pub struct wire_uint_8_list {
     ptr: *mut u8,
     len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_UserId {
+    value: u32,
 }
 
 // Section: impl NewWithNullPtr
@@ -395,6 +424,20 @@ impl NewWithNullPtr for wire_TreeNode {
 }
 
 impl Default for wire_TreeNode {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
+impl NewWithNullPtr for wire_UserId {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            value: Default::default(),
+        }
+    }
+}
+
+impl Default for wire_UserId {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }

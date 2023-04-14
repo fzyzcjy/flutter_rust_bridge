@@ -30,5 +30,24 @@ class SumWith {
 }
 ```
 
+Or show as follow if you use flag `--no-use-bridge-in-method`:
+```dart
+class SumWith {
+  final int x;
+
+  const SumWith({
+    required this.x,
+  });
+
+  Future<int> sum({required int y, dynamic hint}) => api.sumMethodSumWith(
+        that: this,
+        y: y,
+      );
+
+  static Future<int> sumStatic({required int x, required int y, dynamic hint}) =>
+      api.sumStaticStaticMethodSumWith(x: x, y: y, hint: hint);
+}
+```
+
 Remark: If you are curious about `Future`, have a look at [this](async_dart.md).
 

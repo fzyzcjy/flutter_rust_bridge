@@ -9,6 +9,10 @@ import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+import 'package:meta/meta.dart' as meta;
+
+part 'bridge_definitions.freezed.dart';
 
 abstract class FlutterRustBridgeExample {
   Future<Uint8List> drawMandelbrot(
@@ -63,6 +67,10 @@ abstract class FlutterRustBridgeExample {
   Future<int> offTopicDeliberatelyPanic({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kOffTopicDeliberatelyPanicConstMeta;
+
+  Future<UserId> nextUserId({required UserId userId, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kNextUserIdConstMeta;
 
   Future<void> testMethodMethodBoxedPoint({required BoxedPoint that, dynamic hint});
 
@@ -133,4 +141,12 @@ class TreeNode {
     required this.name,
     required this.children,
   });
+}
+
+@freezed
+@meta.immutable
+class UserId with _$UserId {
+  const factory UserId({
+    @Default(0) int value,
+  }) = _UserId;
 }

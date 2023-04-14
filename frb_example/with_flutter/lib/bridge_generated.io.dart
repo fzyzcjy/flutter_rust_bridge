@@ -59,6 +59,13 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   }
 
   @protected
+  ffi.Pointer<wire_UserId> api2wire_box_autoadd_user_id(UserId raw) {
+    final ptr = inner.new_box_autoadd_user_id_0();
+    _api_fill_to_wire_user_id(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_Point> api2wire_box_point(Point raw) {
     final ptr = inner.new_box_point_0();
     _api_fill_to_wire_point(raw, ptr.ref);
@@ -89,6 +96,7 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
   }
+
 // Section: finalizer
 
 // Section: api_fill_to_wire
@@ -111,6 +119,10 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
 
   void _api_fill_to_wire_box_autoadd_tree_node(TreeNode apiObj, ffi.Pointer<wire_TreeNode> wireObj) {
     _api_fill_to_wire_tree_node(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_user_id(UserId apiObj, ffi.Pointer<wire_UserId> wireObj) {
+    _api_fill_to_wire_user_id(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_point(Point apiObj, ffi.Pointer<wire_Point> wireObj) {
@@ -138,6 +150,10 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   void _api_fill_to_wire_tree_node(TreeNode apiObj, wire_TreeNode wireObj) {
     wireObj.name = api2wire_String(apiObj.name);
     wireObj.children = api2wire_list_tree_node(apiObj.children);
+  }
+
+  void _api_fill_to_wire_user_id(UserId apiObj, wire_UserId wireObj) {
+    wireObj.value = api2wire_u32(apiObj.value);
   }
 }
 
@@ -409,6 +425,20 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _wire_off_topic_deliberately_panic =
       _wire_off_topic_deliberately_panicPtr.asFunction<void Function(int)>();
 
+  void wire_next_user_id(
+    int port_,
+    ffi.Pointer<wire_UserId> user_id,
+  ) {
+    return _wire_next_user_id(
+      port_,
+      user_id,
+    );
+  }
+
+  late final _wire_next_user_idPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_UserId>)>>('wire_next_user_id');
+  late final _wire_next_user_id = _wire_next_user_idPtr.asFunction<void Function(int, ffi.Pointer<wire_UserId>)>();
+
   void wire_test_method__method__BoxedPoint(
     int port_,
     ffi.Pointer<wire_BoxedPoint> that,
@@ -503,6 +533,15 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_TreeNode> Function()>>('new_box_autoadd_tree_node_0');
   late final _new_box_autoadd_tree_node_0 =
       _new_box_autoadd_tree_node_0Ptr.asFunction<ffi.Pointer<wire_TreeNode> Function()>();
+
+  ffi.Pointer<wire_UserId> new_box_autoadd_user_id_0() {
+    return _new_box_autoadd_user_id_0();
+  }
+
+  late final _new_box_autoadd_user_id_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_UserId> Function()>>('new_box_autoadd_user_id_0');
+  late final _new_box_autoadd_user_id_0 =
+      _new_box_autoadd_user_id_0Ptr.asFunction<ffi.Pointer<wire_UserId> Function()>();
 
   ffi.Pointer<wire_Point> new_box_point_0() {
     return _new_box_point_0();
@@ -604,6 +643,11 @@ class wire_list_size extends ffi.Struct {
 
   @ffi.Int32()
   external int len;
+}
+
+class wire_UserId extends ffi.Struct {
+  @ffi.Uint32()
+  external int value;
 }
 
 class wire_BoxedPoint extends ffi.Struct {
