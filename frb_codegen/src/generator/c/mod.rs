@@ -1,5 +1,7 @@
 use std::path::Path;
 
+use regex::Regex;
+
 use crate::config::opts::Opts;
 use crate::utils::misc::{BlockIndex, PathExt};
 
@@ -9,8 +11,21 @@ pub fn generate_dummy(
     func_names: &[String],
     c_path_index: usize,
 ) -> String {
+    let regex = Regex::new(r"wire_[\d\w]+").unwrap();
+    let prefix = &config.get_unique_id();
+    let func_names = &func_names
+        .iter()
+        .map(|e| {
+            if regex.is_match(e) {
+                return format!("{prefix}{e}");
+            }
+
+            e.to_string()
+        })
+        .collect::<Vec<String>>();
+
     if all_configs.len() > 1 {
-        let basic_dummy_func = get_dummy_func(&config.class_name, func_names);
+        let basic_dummy_func = get_dummy_func(&config.class_name, func_names, prefix);
         if config.block_index == BlockIndex(0) {
             let func_names = all_configs
                 .iter()
@@ -44,19 +59,19 @@ pub fn generate_dummy(
                 "{}\n{}\n{}",
                 basic_dummy_func,
                 other_headers,
-                get_dummy_func("", &func_names)
+                get_dummy_func("", &func_names, prefix)
             )
         } else {
             basic_dummy_func
         }
     } else {
-        get_dummy_func("", func_names)
+        get_dummy_func("", func_names, prefix)
     }
 }
 
-fn get_dummy_func(api_block_name: &str, func_names: &[String]) -> String {
+fn get_dummy_func(api_block_name: &str, func_names: &[String], prefix: &str) -> String {
     format!(
-        r#"static int64_t {signature}(void) {{
+        r#"static int64_t {prefix}{signature}(void) {{
     int64_t dummy_var = 0;
 {content}
     return dummy_var;
