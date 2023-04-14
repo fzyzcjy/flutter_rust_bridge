@@ -164,14 +164,16 @@ impl<'a> Generator<'a> {
         self.generate_io_part(&mut lines, &distinct_input_types, ir_file);
         self.generate_wasm_part(&mut lines, &distinct_input_types, ir_file);
 
-        let targets = [&mut lines.common, &mut lines.io, &mut lines.wasm];
-        let regex = Regex::new(r"wire_[\d\w]+").unwrap();
-        for target in targets {
-            for line in target.iter_mut() {
-                let curr = line.clone();
-                let new_line =
-                    regex.replace_all(&curr, format!("{}$0", self.config.get_unique_id()));
-                line.replace_range(0..line.len(), &new_line);
+        if self.config.make_c_output_unique {
+            let targets = [&mut lines.common, &mut lines.io, &mut lines.wasm];
+            let regex = Regex::new(r"wire_[\d\w]+").unwrap();
+            for target in targets {
+                for line in target.iter_mut() {
+                    let curr = line.clone();
+                    let new_line =
+                        regex.replace_all(&curr, format!("{}$0", self.config.get_unique_id()));
+                    line.replace_range(0..line.len(), &new_line);
+                }
             }
         }
 

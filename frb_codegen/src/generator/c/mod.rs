@@ -1,7 +1,5 @@
 use std::path::Path;
 
-use regex::Regex;
-
 use crate::config::opts::Opts;
 use crate::utils::misc::{BlockIndex, PathExt};
 
@@ -10,20 +8,8 @@ pub fn generate_dummy(
     all_configs: &[Opts],
     func_names: &[String],
     c_path_index: usize,
+    prefix: &str,
 ) -> String {
-    let regex = Regex::new(r"wire_[\d\w]+").unwrap();
-    let prefix = &config.get_unique_id();
-    let func_names = &func_names
-        .iter()
-        .map(|e| {
-            if regex.is_match(e) {
-                return format!("{prefix}{e}");
-            }
-
-            e.to_string()
-        })
-        .collect::<Vec<String>>();
-
     if all_configs.len() > 1 {
         let basic_dummy_func = get_dummy_func(&config.class_name, func_names, prefix);
         if config.block_index == BlockIndex(0) {

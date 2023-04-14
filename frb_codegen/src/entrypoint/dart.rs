@@ -9,6 +9,7 @@ use crate::{command_run, commands, ensure_tools_available, generator, ir, Opts};
 use itertools::Itertools;
 use log::info;
 use pathdiff::diff_paths;
+use regex::Regex;
 use std::ffi::OsStr;
 use std::fs;
 use std::path::Path;
@@ -53,15 +54,30 @@ pub(crate) fn generate_dart_code(
         },
     )?;
 
-    let effective_func_names = [
+    let mut effective_func_names = [
         generated_rust.extern_func_names,
         EXTRA_EXTERN_FUNC_NAMES.to_vec(),
     ]
     .concat();
 
+    let regex = Regex::new(r"wire_[\d\w]+").unwrap();
+    let prefix = &config.get_unique_id();
+    if config.make_c_output_unique {
+        effective_func_names = effective_func_names
+            .iter()
+            .map(|e| {
+                if regex.is_match(e) {
+                    return format!("{prefix}{e}");
+                }
+
+                e.to_string()
+            })
+            .collect::<Vec<String>>();
+    }
+
     for (i, each_path) in config.c_output_path.iter().enumerate() {
         let c_dummy_code =
-            generator::c::generate_dummy(config, all_configs, &effective_func_names, i);
+            generator::c::generate_dummy(config, all_configs, &effective_func_names, i, prefix);
         println!("the path is {each_path:?}");
         fs::create_dir_all(Path::new(each_path).parent().unwrap())?;
         fs::write(

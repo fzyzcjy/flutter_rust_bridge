@@ -11,7 +11,6 @@ pub(crate) fn generate_api_func(
     func: &IrFunc,
     ir_file: &IrFile,
     common_api2wire_body: &str,
-    prefix: &str,
 ) -> GeneratedApiFunc {
     let raw_func_param_list = func
         .inputs
@@ -133,7 +132,7 @@ pub(crate) fn generate_api_func(
         "{} {{
             {}
             return {}({task}(
-            callFfi: ({args}) => _platform.inner.{prefix}{}({}),
+            callFfi: ({args}) => _platform.inner.{}({}),
             parseSuccessData: {},
             {}
         ));}}",

@@ -2,75 +2,69 @@ use super::*;
 // Section: wire functions
 
 #[wasm_bindgen]
-pub fn P7C55DD6B_wire_draw_mandelbrot(
+pub fn wire_draw_mandelbrot(
     port_: MessagePort,
     image_size: JsValue,
     zoom_point: JsValue,
     scale: f64,
     num_threads: i32,
 ) {
-    P7C55DD6B_wire_draw_mandelbrot_impl(port_, image_size, zoom_point, scale, num_threads)
+    wire_draw_mandelbrot_impl(port_, image_size, zoom_point, scale, num_threads)
 }
 
 #[wasm_bindgen]
-pub fn P7C55DD6B_wire_passing_complex_structs(port_: MessagePort, root: JsValue) {
-    P7C55DD6B_wire_passing_complex_structs_impl(port_, root)
+pub fn wire_passing_complex_structs(port_: MessagePort, root: JsValue) {
+    wire_passing_complex_structs_impl(port_, root)
 }
 
 #[wasm_bindgen]
-pub fn P7C55DD6B_wire_returning_structs_with_boxed_fields(port_: MessagePort) {
-    P7C55DD6B_wire_returning_structs_with_boxed_fields_impl(port_)
+pub fn wire_returning_structs_with_boxed_fields(port_: MessagePort) {
+    wire_returning_structs_with_boxed_fields_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn P7C55DD6B_wire_off_topic_memory_test_input_array(port_: MessagePort, input: Box<[u8]>) {
-    P7C55DD6B_wire_off_topic_memory_test_input_array_impl(port_, input)
+pub fn wire_off_topic_memory_test_input_array(port_: MessagePort, input: Box<[u8]>) {
+    wire_off_topic_memory_test_input_array_impl(port_, input)
 }
 
 #[wasm_bindgen]
-pub fn P7C55DD6B_wire_off_topic_memory_test_output_zero_copy_buffer(port_: MessagePort, len: i32) {
-    P7C55DD6B_wire_off_topic_memory_test_output_zero_copy_buffer_impl(port_, len)
+pub fn wire_off_topic_memory_test_output_zero_copy_buffer(port_: MessagePort, len: i32) {
+    wire_off_topic_memory_test_output_zero_copy_buffer_impl(port_, len)
 }
 
 #[wasm_bindgen]
-pub fn P7C55DD6B_wire_off_topic_memory_test_output_vec_u8(port_: MessagePort, len: i32) {
-    P7C55DD6B_wire_off_topic_memory_test_output_vec_u8_impl(port_, len)
+pub fn wire_off_topic_memory_test_output_vec_u8(port_: MessagePort, len: i32) {
+    wire_off_topic_memory_test_output_vec_u8_impl(port_, len)
 }
 
 #[wasm_bindgen]
-pub fn P7C55DD6B_wire_off_topic_memory_test_input_vec_of_object(
-    port_: MessagePort,
-    input: JsValue,
-) {
-    P7C55DD6B_wire_off_topic_memory_test_input_vec_of_object_impl(port_, input)
+pub fn wire_off_topic_memory_test_input_vec_of_object(port_: MessagePort, input: JsValue) {
+    wire_off_topic_memory_test_input_vec_of_object_impl(port_, input)
 }
 
 #[wasm_bindgen]
-pub fn P7C55DD6B_wire_off_topic_memory_test_output_vec_of_object(port_: MessagePort, len: i32) {
-    P7C55DD6B_wire_off_topic_memory_test_output_vec_of_object_impl(port_, len)
+pub fn wire_off_topic_memory_test_output_vec_of_object(port_: MessagePort, len: i32) {
+    wire_off_topic_memory_test_output_vec_of_object_impl(port_, len)
 }
 
 #[wasm_bindgen]
-pub fn P7C55DD6B_wire_off_topic_memory_test_input_complex_struct(
-    port_: MessagePort,
-    input: JsValue,
-) {
-    P7C55DD6B_wire_off_topic_memory_test_input_complex_struct_impl(port_, input)
+pub fn wire_off_topic_memory_test_input_complex_struct(port_: MessagePort, input: JsValue) {
+    wire_off_topic_memory_test_input_complex_struct_impl(port_, input)
 }
 
 #[wasm_bindgen]
-pub fn P7C55DD6B_wire_off_topic_memory_test_output_complex_struct(port_: MessagePort, len: i32) {
-    P7C55DD6B_wire_off_topic_memory_test_output_complex_struct_impl(port_, len)
+pub fn wire_off_topic_memory_test_output_complex_struct(port_: MessagePort, len: i32) {
+    wire_off_topic_memory_test_output_complex_struct_impl(port_, len)
 }
 
 #[wasm_bindgen]
-pub fn P7C55DD6B_wire_off_topic_deliberately_return_error(port_: MessagePort) {
-    P7C55DD6B_wire_off_topic_deliberately_return_error_impl(port_)
+pub fn wire_off_topic_deliberately_return_error(port_: MessagePort) {
+    wire_off_topic_deliberately_return_error_impl(port_)
 }
 
 #[wasm_bindgen]
-pub fn P7C55DD6B_wire_off_topic_deliberately_panic(port_: MessagePort) {
-    P7C55DD6B_wire_off_topic_deliberately_panic_impl(port_)
+pub fn wire_off_topic_deliberately_panic(port_: MessagePort) {
+    wire_off_topic_deliberately_panic_impl(port_)
 }
 
 // Section: allocate functions

@@ -21,7 +21,7 @@ use std::sync::Arc;
 
 // Section: wire functions
 
-fn P7C55DD6B_wire_simple_adder_2_impl(
+fn wire_simple_adder_2_impl(
     port_: MessagePort,
     a: impl Wire2Api<i32> + UnwindSafe,
     b: impl Wire2Api<i32> + UnwindSafe,

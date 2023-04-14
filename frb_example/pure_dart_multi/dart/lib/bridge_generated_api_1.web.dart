@@ -31,7 +31,7 @@ external ApiClass1WasmModule get wasmModule;
 class ApiClass1WasmModule implements WasmModule {
   external Object /* Promise */ call([String? moduleName]);
   external ApiClass1WasmModule bind(dynamic thisArg, String moduleName);
-  external dynamic /* void */ P7C55DD6B_wire_simple_adder_1(NativePortType port_, int a, int b);
+  external dynamic /* void */ wire_simple_adder_1(NativePortType port_, int a, int b);
 }
 
 // Section: WASM wire connector
@@ -39,6 +39,5 @@ class ApiClass1WasmModule implements WasmModule {
 class ApiClass1Wire extends FlutterRustBridgeWasmWireBase<ApiClass1WasmModule> {
   ApiClass1Wire(FutureOr<WasmModule> module) : super(WasmModule.cast<ApiClass1WasmModule>(module));
 
-  void P7C55DD6B_wire_simple_adder_1(NativePortType port_, int a, int b) =>
-      wasmModule.P7C55DD6B_wire_simple_adder_1(port_, a, b);
+  void wire_simple_adder_1(NativePortType port_, int a, int b) => wasmModule.wire_simple_adder_1(port_, a, b);
 }

@@ -132,6 +132,10 @@ impl Opts {
     }
 
     pub fn get_unique_id(&self) -> String {
+        if !self.make_c_output_unique {
+            return "".to_string();
+        }
+
         get_unique_id(&self.c_output_path[0]).unwrap();
         //TODO: Persist this somehow.
         "P7C55DD6B_".to_string()

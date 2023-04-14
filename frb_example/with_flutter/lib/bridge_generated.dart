@@ -30,7 +30,7 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
     var arg2 = api2wire_f64(scale);
     var arg3 = api2wire_i32(numThreads);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.P7C55DD6B_wire_draw_mandelbrot(port_, arg0, arg1, arg2, arg3),
+      callFfi: (port_) => _platform.inner.wire_draw_mandelbrot(port_, arg0, arg1, arg2, arg3),
       parseSuccessData: _wire2api_ZeroCopyBuffer_Uint8List,
       constMeta: kDrawMandelbrotConstMeta,
       argValues: [imageSize, zoomPoint, scale, numThreads],
@@ -46,7 +46,7 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
   Future<String> passingComplexStructs({required TreeNode root, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_tree_node(root);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.P7C55DD6B_wire_passing_complex_structs(port_, arg0),
+      callFfi: (port_) => _platform.inner.wire_passing_complex_structs(port_, arg0),
       parseSuccessData: _wire2api_String,
       constMeta: kPassingComplexStructsConstMeta,
       argValues: [root],
@@ -61,7 +61,7 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
 
   Future<BoxedPoint> returningStructsWithBoxedFields({dynamic hint}) {
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.P7C55DD6B_wire_returning_structs_with_boxed_fields(port_),
+      callFfi: (port_) => _platform.inner.wire_returning_structs_with_boxed_fields(port_),
       parseSuccessData: _wire2api_boxed_point,
       constMeta: kReturningStructsWithBoxedFieldsConstMeta,
       argValues: [],
@@ -77,7 +77,7 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
   Future<int> offTopicMemoryTestInputArray({required Uint8List input, dynamic hint}) {
     var arg0 = _platform.api2wire_uint_8_list(input);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.P7C55DD6B_wire_off_topic_memory_test_input_array(port_, arg0),
+      callFfi: (port_) => _platform.inner.wire_off_topic_memory_test_input_array(port_, arg0),
       parseSuccessData: _wire2api_i32,
       constMeta: kOffTopicMemoryTestInputArrayConstMeta,
       argValues: [input],
@@ -93,7 +93,7 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
   Future<Uint8List> offTopicMemoryTestOutputZeroCopyBuffer({required int len, dynamic hint}) {
     var arg0 = api2wire_i32(len);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.P7C55DD6B_wire_off_topic_memory_test_output_zero_copy_buffer(port_, arg0),
+      callFfi: (port_) => _platform.inner.wire_off_topic_memory_test_output_zero_copy_buffer(port_, arg0),
       parseSuccessData: _wire2api_ZeroCopyBuffer_Uint8List,
       constMeta: kOffTopicMemoryTestOutputZeroCopyBufferConstMeta,
       argValues: [len],
@@ -110,7 +110,7 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
   Future<Uint8List> offTopicMemoryTestOutputVecU8({required int len, dynamic hint}) {
     var arg0 = api2wire_i32(len);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.P7C55DD6B_wire_off_topic_memory_test_output_vec_u8(port_, arg0),
+      callFfi: (port_) => _platform.inner.wire_off_topic_memory_test_output_vec_u8(port_, arg0),
       parseSuccessData: _wire2api_uint_8_list,
       constMeta: kOffTopicMemoryTestOutputVecU8ConstMeta,
       argValues: [len],
@@ -126,7 +126,7 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
   Future<int> offTopicMemoryTestInputVecOfObject({required List<Size> input, dynamic hint}) {
     var arg0 = _platform.api2wire_list_size(input);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.P7C55DD6B_wire_off_topic_memory_test_input_vec_of_object(port_, arg0),
+      callFfi: (port_) => _platform.inner.wire_off_topic_memory_test_input_vec_of_object(port_, arg0),
       parseSuccessData: _wire2api_i32,
       constMeta: kOffTopicMemoryTestInputVecOfObjectConstMeta,
       argValues: [input],
@@ -143,7 +143,7 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
   Future<List<Size>> offTopicMemoryTestOutputVecOfObject({required int len, dynamic hint}) {
     var arg0 = api2wire_i32(len);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.P7C55DD6B_wire_off_topic_memory_test_output_vec_of_object(port_, arg0),
+      callFfi: (port_) => _platform.inner.wire_off_topic_memory_test_output_vec_of_object(port_, arg0),
       parseSuccessData: _wire2api_list_size,
       constMeta: kOffTopicMemoryTestOutputVecOfObjectConstMeta,
       argValues: [len],
@@ -160,7 +160,7 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
   Future<int> offTopicMemoryTestInputComplexStruct({required TreeNode input, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_tree_node(input);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.P7C55DD6B_wire_off_topic_memory_test_input_complex_struct(port_, arg0),
+      callFfi: (port_) => _platform.inner.wire_off_topic_memory_test_input_complex_struct(port_, arg0),
       parseSuccessData: _wire2api_i32,
       constMeta: kOffTopicMemoryTestInputComplexStructConstMeta,
       argValues: [input],
@@ -177,7 +177,7 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
   Future<TreeNode> offTopicMemoryTestOutputComplexStruct({required int len, dynamic hint}) {
     var arg0 = api2wire_i32(len);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.P7C55DD6B_wire_off_topic_memory_test_output_complex_struct(port_, arg0),
+      callFfi: (port_) => _platform.inner.wire_off_topic_memory_test_output_complex_struct(port_, arg0),
       parseSuccessData: _wire2api_tree_node,
       constMeta: kOffTopicMemoryTestOutputComplexStructConstMeta,
       argValues: [len],
@@ -193,7 +193,7 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
 
   Future<int> offTopicDeliberatelyReturnError({dynamic hint}) {
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.P7C55DD6B_wire_off_topic_deliberately_return_error(port_),
+      callFfi: (port_) => _platform.inner.wire_off_topic_deliberately_return_error(port_),
       parseSuccessData: _wire2api_i32,
       constMeta: kOffTopicDeliberatelyReturnErrorConstMeta,
       argValues: [],
@@ -208,7 +208,7 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
 
   Future<int> offTopicDeliberatelyPanic({dynamic hint}) {
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.P7C55DD6B_wire_off_topic_deliberately_panic(port_),
+      callFfi: (port_) => _platform.inner.wire_off_topic_deliberately_panic(port_),
       parseSuccessData: _wire2api_i32,
       constMeta: kOffTopicDeliberatelyPanicConstMeta,
       argValues: [],

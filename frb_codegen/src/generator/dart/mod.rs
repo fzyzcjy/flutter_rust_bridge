@@ -78,13 +78,19 @@ pub fn generate(ir_file: &IrFile, config: &Opts, wasm_funcs: &[IrFuncDisplay]) -
         generate_dart_implementation_body(&spec, config),
     );
 
-    let targets = [&mut impl_code.io, &mut impl_code.wasm];
-    let regex = Regex::new(r"([<. ])(wire_[\d\w]+)").unwrap();
-    for target in targets {
-        let curr = target.body.clone();
-        target.body = regex
-            .replace_all(&curr, format!("${{1}}{}${{2}}", config.get_unique_id()))
-            .to_string();
+    if config.make_c_output_unique {
+        let targets = [
+            &mut impl_code.common,
+            &mut impl_code.io,
+            &mut impl_code.wasm,
+        ];
+        let regex = Regex::new(r"([<. ])(wire_[\d\w]+)").unwrap();
+        for target in targets {
+            let curr = target.body.clone();
+            target.body = regex
+                .replace_all(&curr, format!("${{1}}{}${{2}}", config.get_unique_id()))
+                .to_string();
+        }
     }
 
     let file_prelude = generate_file_prelude();
@@ -130,14 +136,10 @@ impl DartApiSpec {
             .collect::<Acc<_>>()
             .join("\n");
 
-        let dart_funcs = (ir_file.funcs.iter().map(|f| {
-            generate_api_func(
-                f,
-                ir_file,
-                &dart_api2wire_funcs.common,
-                &config.get_unique_id(),
-            )
-        }))
+        let dart_funcs = (ir_file
+            .funcs
+            .iter()
+            .map(|f| generate_api_func(f, ir_file, &dart_api2wire_funcs.common)))
         .chain(
             distinct_output_types
                 .iter()
