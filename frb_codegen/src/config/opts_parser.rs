@@ -130,7 +130,7 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
     let llvm_compiler_opts = raw.llvm_compiler_opts.clone().unwrap_or_default();
     let skip_add_mod_to_lib = raw.skip_add_mod_to_lib;
     let build_runner = !raw.no_build_runner;
-    let no_use_bridge_in_method = raw.no_use_bridge_in_method;
+    let bridge_in_method = !raw.no_use_bridge_in_method;
     let wasm = raw.wasm;
     let inline_rust = raw.inline_rust;
 
@@ -156,7 +156,7 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
                 skip_deps_check,
                 wasm_enabled: wasm,
                 inline_rust,
-                no_use_bridge_in_method,
+                bridge_in_method,
             }
         })
         .collect()

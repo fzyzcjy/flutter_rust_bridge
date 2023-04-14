@@ -28,7 +28,7 @@ pub struct Opts {
     pub skip_deps_check: bool,
     pub wasm_enabled: bool,
     pub inline_rust: bool,
-    pub no_use_bridge_in_method: bool,
+    pub bridge_in_method: bool,
 }
 
 impl Opts {
@@ -132,7 +132,9 @@ impl Opts {
         }
     }
     pub fn get_dart_api_bridge_name(&self) -> String {
-        if self.no_use_bridge_in_method {
+        if self.bridge_in_method {
+            "bridge".to_owned()
+        } else {
             Path::new(&self.rust_input_path)
                 .file_stem()
                 .unwrap()
@@ -140,8 +142,6 @@ impl Opts {
                 .unwrap()
                 .to_owned()
                 .to_case(Case::Camel)
-        } else {
-            "bridge".to_owned()
         }
     }
 }

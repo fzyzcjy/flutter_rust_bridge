@@ -64,7 +64,7 @@ pub fn generate(ir_file: &IrFile, config: &Opts, wasm_funcs: &[IrFuncDisplay]) -
     } = &spec;
     let needs_freezed = spec.needs_freezed;
     let mut common_header = generate_common_header();
-    if config.no_use_bridge_in_method {
+    if !config.bridge_in_method {
         common_header.import += "import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';";
     }
 

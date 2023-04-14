@@ -108,10 +108,10 @@ pub fn off_topic_deliberately_panic() -> i32 {
     panic!("deliberately panic!")
 }
 
+// BEDGIN: the code for test flag --use_bridge_in_method
 pub struct SumWith {
     pub x: u32,
 }
-
 impl SumWith {
     pub fn sum(&self, y: u32) -> u32 {
         self.x + y
@@ -132,3 +132,5 @@ pub fn next_user_id(user_id: UserId) -> UserId {
         value: user_id.value + 1,
     }
 }
+
+// END: the code for test flag --use_bridge_in_method

@@ -82,7 +82,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 )
             })
             .collect::<Vec<_>>();
-        if has_methods && !self.context.config.no_use_bridge_in_method {
+        if has_methods && self.context.config.bridge_in_method {
             inner.insert(0, "bridge: this,".to_string());
         }
 
@@ -138,18 +138,18 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             })
             .collect::<Vec<_>>()
             .concat();
-        let extra_argument = if self.context.config.no_use_bridge_in_method {
-            "".to_string()
-        } else {
+        let extra_argument = if self.context.config.bridge_in_method {
             "required this.bridge,".to_string()
-        };
-        let field_bridge = if self.context.config.no_use_bridge_in_method {
-            String::new()
         } else {
+            "".to_string()
+        };
+        let field_bridge = if self.context.config.bridge_in_method {
             format!(
                 "final {} bridge;",
                 self.context.config.dart_api_class_name(),
             )
+        } else {
+            String::new()
         };
         let private_constructor = if has_methods {
             format!("const {}._();", self.ir.name)
@@ -170,7 +170,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                     )
                 })
                 .collect::<Vec<_>>();
-            if has_methods && !self.context.config.no_use_bridge_in_method {
+            if has_methods && self.context.config.bridge_in_method {
                 constructor_params.insert(
                     0,
                     format!(
@@ -283,7 +283,7 @@ fn generate_api_method(
         })
         .collect::<Vec<_>>();
 
-    if f.is_static_method() && !config.no_use_bridge_in_method {
+    if f.is_static_method() && config.bridge_in_method {
         raw_func_param_list.insert(0, format!("required {dart_api_class_name} bridge"));
     }
 
