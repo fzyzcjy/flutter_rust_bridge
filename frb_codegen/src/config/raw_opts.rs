@@ -110,7 +110,8 @@ pub struct RawOpts {
     /// other projects.
     ///
     /// Pass in an empty string if you want to generate
-    /// a unique prefix.
+    /// a unique prefix. If you use a custom prefix, make sure it starts
+    /// with a letter.
     #[arg(long)]
     pub symbol_prefix: Option<String>,
 }
