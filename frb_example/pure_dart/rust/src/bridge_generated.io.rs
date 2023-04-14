@@ -2,250 +2,250 @@ use super::*;
 // Section: wire functions
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_simple_adder(port_: i64, a: i32, b: i32) {
-    P7C55DD6B_wire_simple_adder_impl(port_, a, b)
+pub extern "C" fn P343B03A6_wire_simple_adder(port_: i64, a: i32, b: i32) {
+    P343B03A6_wire_simple_adder_impl(port_, a, b)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_simple_adder_sync(a: i32, b: i32) -> support::WireSyncReturn {
-    P7C55DD6B_wire_simple_adder_sync_impl(a, b)
+pub extern "C" fn P343B03A6_wire_simple_adder_sync(a: i32, b: i32) -> support::WireSyncReturn {
+    P343B03A6_wire_simple_adder_sync_impl(a, b)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_primitive_types(
+pub extern "C" fn P343B03A6_wire_primitive_types(
     port_: i64,
     my_i32: i32,
     my_i64: i64,
     my_f64: f64,
     my_bool: bool,
 ) {
-    P7C55DD6B_wire_primitive_types_impl(port_, my_i32, my_i64, my_f64, my_bool)
+    P343B03A6_wire_primitive_types_impl(port_, my_i32, my_i64, my_f64, my_bool)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_primitive_optional_types(
+pub extern "C" fn P343B03A6_wire_primitive_optional_types(
     port_: i64,
     my_i32: *mut i32,
     my_i64: *mut i64,
     my_f64: *mut f64,
     my_bool: *mut bool,
 ) {
-    P7C55DD6B_wire_primitive_optional_types_impl(port_, my_i32, my_i64, my_f64, my_bool)
+    P343B03A6_wire_primitive_optional_types_impl(port_, my_i32, my_i64, my_f64, my_bool)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_primitive_types_sync(
+pub extern "C" fn P343B03A6_wire_primitive_types_sync(
     my_i32: i32,
     my_i64: i64,
     my_f64: f64,
     my_bool: bool,
 ) -> support::WireSyncReturn {
-    P7C55DD6B_wire_primitive_types_sync_impl(my_i32, my_i64, my_f64, my_bool)
+    P343B03A6_wire_primitive_types_sync_impl(my_i32, my_i64, my_f64, my_bool)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_primitive_u32(port_: i64, my_u32: u32) {
-    P7C55DD6B_wire_primitive_u32_impl(port_, my_u32)
+pub extern "C" fn P343B03A6_wire_primitive_u32(port_: i64, my_u32: u32) {
+    P343B03A6_wire_primitive_u32_impl(port_, my_u32)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_primitive_u32_sync(my_u32: u32) -> support::WireSyncReturn {
-    P7C55DD6B_wire_primitive_u32_sync_impl(my_u32)
+pub extern "C" fn P343B03A6_wire_primitive_u32_sync(my_u32: u32) -> support::WireSyncReturn {
+    P343B03A6_wire_primitive_u32_sync_impl(my_u32)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_string(port_: i64, s: *mut P7C55DD6B_wire_uint_8_list) {
-    P7C55DD6B_wire_handle_string_impl(port_, s)
+pub extern "C" fn P343B03A6_wire_handle_string(port_: i64, s: *mut P343B03A6_wire_uint_8_list) {
+    P343B03A6_wire_handle_string_impl(port_, s)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_string_sync(
-    s: *mut P7C55DD6B_wire_uint_8_list,
+pub extern "C" fn P343B03A6_wire_handle_string_sync(
+    s: *mut P343B03A6_wire_uint_8_list,
 ) -> support::WireSyncReturn {
-    P7C55DD6B_wire_handle_string_sync_impl(s)
+    P343B03A6_wire_handle_string_sync_impl(s)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_return_unit(port_: i64) {
-    P7C55DD6B_wire_handle_return_unit_impl(port_)
+pub extern "C" fn P343B03A6_wire_handle_return_unit(port_: i64) {
+    P343B03A6_wire_handle_return_unit_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_return_unit_sync() -> support::WireSyncReturn {
-    P7C55DD6B_wire_handle_return_unit_sync_impl()
+pub extern "C" fn P343B03A6_wire_handle_return_unit_sync() -> support::WireSyncReturn {
+    P343B03A6_wire_handle_return_unit_sync_impl()
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_vec_u8(port_: i64, v: *mut P7C55DD6B_wire_uint_8_list) {
-    P7C55DD6B_wire_handle_vec_u8_impl(port_, v)
+pub extern "C" fn P343B03A6_wire_handle_vec_u8(port_: i64, v: *mut P343B03A6_wire_uint_8_list) {
+    P343B03A6_wire_handle_vec_u8_impl(port_, v)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_vec_u8_sync(
-    v: *mut P7C55DD6B_wire_uint_8_list,
+pub extern "C" fn P343B03A6_wire_handle_vec_u8_sync(
+    v: *mut P343B03A6_wire_uint_8_list,
 ) -> support::WireSyncReturn {
-    P7C55DD6B_wire_handle_vec_u8_sync_impl(v)
+    P343B03A6_wire_handle_vec_u8_sync_impl(v)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_vec_of_primitive(port_: i64, n: i32) {
-    P7C55DD6B_wire_handle_vec_of_primitive_impl(port_, n)
+pub extern "C" fn P343B03A6_wire_handle_vec_of_primitive(port_: i64, n: i32) {
+    P343B03A6_wire_handle_vec_of_primitive_impl(port_, n)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_vec_of_primitive_sync(n: i32) -> support::WireSyncReturn {
-    P7C55DD6B_wire_handle_vec_of_primitive_sync_impl(n)
+pub extern "C" fn P343B03A6_wire_handle_vec_of_primitive_sync(n: i32) -> support::WireSyncReturn {
+    P343B03A6_wire_handle_vec_of_primitive_sync_impl(n)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_zero_copy_vec_of_primitive(port_: i64, n: i32) {
-    P7C55DD6B_wire_handle_zero_copy_vec_of_primitive_impl(port_, n)
+pub extern "C" fn P343B03A6_wire_handle_zero_copy_vec_of_primitive(port_: i64, n: i32) {
+    P343B03A6_wire_handle_zero_copy_vec_of_primitive_impl(port_, n)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_zero_copy_vec_of_primitive_sync(
+pub extern "C" fn P343B03A6_wire_handle_zero_copy_vec_of_primitive_sync(
     n: i32,
 ) -> support::WireSyncReturn {
-    P7C55DD6B_wire_handle_zero_copy_vec_of_primitive_sync_impl(n)
+    P343B03A6_wire_handle_zero_copy_vec_of_primitive_sync_impl(n)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_struct(
+pub extern "C" fn P343B03A6_wire_handle_struct(
     port_: i64,
-    arg: *mut P7C55DD6B_wire_MySize,
-    boxed: *mut P7C55DD6B_wire_MySize,
+    arg: *mut P343B03A6_wire_MySize,
+    boxed: *mut P343B03A6_wire_MySize,
 ) {
-    P7C55DD6B_wire_handle_struct_impl(port_, arg, boxed)
+    P343B03A6_wire_handle_struct_impl(port_, arg, boxed)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_struct_sync(
-    arg: *mut P7C55DD6B_wire_MySize,
-    boxed: *mut P7C55DD6B_wire_MySize,
+pub extern "C" fn P343B03A6_wire_handle_struct_sync(
+    arg: *mut P343B03A6_wire_MySize,
+    boxed: *mut P343B03A6_wire_MySize,
 ) -> support::WireSyncReturn {
-    P7C55DD6B_wire_handle_struct_sync_impl(arg, boxed)
+    P343B03A6_wire_handle_struct_sync_impl(arg, boxed)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_newtype(port_: i64, arg: *mut P7C55DD6B_wire_NewTypeInt) {
-    P7C55DD6B_wire_handle_newtype_impl(port_, arg)
+pub extern "C" fn P343B03A6_wire_handle_newtype(port_: i64, arg: *mut P343B03A6_wire_NewTypeInt) {
+    P343B03A6_wire_handle_newtype_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_newtype_sync(
-    arg: *mut P7C55DD6B_wire_NewTypeInt,
+pub extern "C" fn P343B03A6_wire_handle_newtype_sync(
+    arg: *mut P343B03A6_wire_NewTypeInt,
 ) -> support::WireSyncReturn {
-    P7C55DD6B_wire_handle_newtype_sync_impl(arg)
+    P343B03A6_wire_handle_newtype_sync_impl(arg)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_list_of_struct(
+pub extern "C" fn P343B03A6_wire_handle_list_of_struct(
     port_: i64,
-    l: *mut P7C55DD6B_wire_list_my_size,
+    l: *mut P343B03A6_wire_list_my_size,
 ) {
-    P7C55DD6B_wire_handle_list_of_struct_impl(port_, l)
+    P343B03A6_wire_handle_list_of_struct_impl(port_, l)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_list_of_struct_sync(
-    l: *mut P7C55DD6B_wire_list_my_size,
+pub extern "C" fn P343B03A6_wire_handle_list_of_struct_sync(
+    l: *mut P343B03A6_wire_list_my_size,
 ) -> support::WireSyncReturn {
-    P7C55DD6B_wire_handle_list_of_struct_sync_impl(l)
+    P343B03A6_wire_handle_list_of_struct_sync_impl(l)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_string_list(
+pub extern "C" fn P343B03A6_wire_handle_string_list(
     port_: i64,
-    names: *mut P7C55DD6B_wire_StringList,
+    names: *mut P343B03A6_wire_StringList,
 ) {
-    P7C55DD6B_wire_handle_string_list_impl(port_, names)
+    P343B03A6_wire_handle_string_list_impl(port_, names)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_string_list_sync(
-    names: *mut P7C55DD6B_wire_StringList,
+pub extern "C" fn P343B03A6_wire_handle_string_list_sync(
+    names: *mut P343B03A6_wire_StringList,
 ) -> support::WireSyncReturn {
-    P7C55DD6B_wire_handle_string_list_sync_impl(names)
+    P343B03A6_wire_handle_string_list_sync_impl(names)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_complex_struct(
+pub extern "C" fn P343B03A6_wire_handle_complex_struct(
     port_: i64,
-    s: *mut P7C55DD6B_wire_MyTreeNode,
+    s: *mut P343B03A6_wire_MyTreeNode,
 ) {
-    P7C55DD6B_wire_handle_complex_struct_impl(port_, s)
+    P343B03A6_wire_handle_complex_struct_impl(port_, s)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_complex_struct_sync(
-    s: *mut P7C55DD6B_wire_MyTreeNode,
+pub extern "C" fn P343B03A6_wire_handle_complex_struct_sync(
+    s: *mut P343B03A6_wire_MyTreeNode,
 ) -> support::WireSyncReturn {
-    P7C55DD6B_wire_handle_complex_struct_sync_impl(s)
+    P343B03A6_wire_handle_complex_struct_sync_impl(s)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_nested_struct(
+pub extern "C" fn P343B03A6_wire_handle_nested_struct(
     port_: i64,
-    s: *mut P7C55DD6B_wire_MyNestedStruct,
+    s: *mut P343B03A6_wire_MyNestedStruct,
 ) {
-    P7C55DD6B_wire_handle_nested_struct_impl(port_, s)
+    P343B03A6_wire_handle_nested_struct_impl(port_, s)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_sync_return(
-    mode: *mut P7C55DD6B_wire_uint_8_list,
+pub extern "C" fn P343B03A6_wire_handle_sync_return(
+    mode: *mut P343B03A6_wire_uint_8_list,
 ) -> support::WireSyncReturn {
-    P7C55DD6B_wire_handle_sync_return_impl(mode)
+    P343B03A6_wire_handle_sync_return_impl(mode)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_stream(port_: i64, arg: *mut P7C55DD6B_wire_uint_8_list) {
-    P7C55DD6B_wire_handle_stream_impl(port_, arg)
+pub extern "C" fn P343B03A6_wire_handle_stream(port_: i64, arg: *mut P343B03A6_wire_uint_8_list) {
+    P343B03A6_wire_handle_stream_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_stream_of_struct(port_: i64) {
-    P7C55DD6B_wire_handle_stream_of_struct_impl(port_)
+pub extern "C" fn P343B03A6_wire_handle_stream_of_struct(port_: i64) {
+    P343B03A6_wire_handle_stream_of_struct_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_return_err(port_: i64) {
-    P7C55DD6B_wire_return_err_impl(port_)
+pub extern "C" fn P343B03A6_wire_return_err(port_: i64) {
+    P343B03A6_wire_return_err_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_return_panic(port_: i64) {
-    P7C55DD6B_wire_return_panic_impl(port_)
+pub extern "C" fn P343B03A6_wire_return_panic(port_: i64) {
+    P343B03A6_wire_return_panic_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_optional_return(port_: i64, left: f64, right: f64) {
-    P7C55DD6B_wire_handle_optional_return_impl(port_, left, right)
+pub extern "C" fn P343B03A6_wire_handle_optional_return(port_: i64, left: f64, right: f64) {
+    P343B03A6_wire_handle_optional_return_impl(port_, left, right)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_optional_struct(
+pub extern "C" fn P343B03A6_wire_handle_optional_struct(
     port_: i64,
-    document: *mut P7C55DD6B_wire_uint_8_list,
+    document: *mut P343B03A6_wire_uint_8_list,
 ) {
-    P7C55DD6B_wire_handle_optional_struct_impl(port_, document)
+    P343B03A6_wire_handle_optional_struct_impl(port_, document)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_optional_increment(
+pub extern "C" fn P343B03A6_wire_handle_optional_increment(
     port_: i64,
-    opt: *mut P7C55DD6B_wire_ExoticOptionals,
+    opt: *mut P343B03A6_wire_ExoticOptionals,
 ) {
-    P7C55DD6B_wire_handle_optional_increment_impl(port_, opt)
+    P343B03A6_wire_handle_optional_increment_impl(port_, opt)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_increment_boxed_optional(port_: i64, opt: *mut f64) {
-    P7C55DD6B_wire_handle_increment_boxed_optional_impl(port_, opt)
+pub extern "C" fn P343B03A6_wire_handle_increment_boxed_optional(port_: i64, opt: *mut f64) {
+    P343B03A6_wire_handle_increment_boxed_optional_impl(port_, opt)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_option_box_arguments(
+pub extern "C" fn P343B03A6_wire_handle_option_box_arguments(
     port_: i64,
     i8box: *mut i8,
     u8box: *mut u8,
@@ -253,766 +253,766 @@ pub extern "C" fn P7C55DD6B_wire_handle_option_box_arguments(
     i64box: *mut i64,
     f64box: *mut f64,
     boolbox: *mut bool,
-    structbox: *mut P7C55DD6B_wire_ExoticOptionals,
+    structbox: *mut P343B03A6_wire_ExoticOptionals,
 ) {
-    P7C55DD6B_wire_handle_option_box_arguments_impl(
+    P343B03A6_wire_handle_option_box_arguments_impl(
         port_, i8box, u8box, i32box, i64box, f64box, boolbox, structbox,
     )
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_print_note(port_: i64, note: *mut P7C55DD6B_wire_Note) {
-    P7C55DD6B_wire_print_note_impl(port_, note)
+pub extern "C" fn P343B03A6_wire_print_note(port_: i64, note: *mut P343B03A6_wire_Note) {
+    P343B03A6_wire_print_note_impl(port_, note)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_return_enum(
+pub extern "C" fn P343B03A6_wire_handle_return_enum(
     port_: i64,
-    input: *mut P7C55DD6B_wire_uint_8_list,
+    input: *mut P343B03A6_wire_uint_8_list,
 ) {
-    P7C55DD6B_wire_handle_return_enum_impl(port_, input)
+    P343B03A6_wire_handle_return_enum_impl(port_, input)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_enum_parameter(port_: i64, weekday: i32) {
-    P7C55DD6B_wire_handle_enum_parameter_impl(port_, weekday)
+pub extern "C" fn P343B03A6_wire_handle_enum_parameter(port_: i64, weekday: i32) {
+    P343B03A6_wire_handle_enum_parameter_impl(port_, weekday)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_customized_struct(
+pub extern "C" fn P343B03A6_wire_handle_customized_struct(
     port_: i64,
-    val: *mut P7C55DD6B_wire_Customized,
+    val: *mut P343B03A6_wire_Customized,
 ) {
-    P7C55DD6B_wire_handle_customized_struct_impl(port_, val)
+    P343B03A6_wire_handle_customized_struct_impl(port_, val)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_enum_struct(
+pub extern "C" fn P343B03A6_wire_handle_enum_struct(
     port_: i64,
-    val: *mut P7C55DD6B_wire_KitchenSink,
+    val: *mut P343B03A6_wire_KitchenSink,
 ) {
-    P7C55DD6B_wire_handle_enum_struct_impl(port_, val)
+    P343B03A6_wire_handle_enum_struct_impl(port_, val)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_use_imported_struct(
+pub extern "C" fn P343B03A6_wire_use_imported_struct(
     port_: i64,
-    my_struct: *mut P7C55DD6B_wire_MyStruct,
+    my_struct: *mut P343B03A6_wire_MyStruct,
 ) {
-    P7C55DD6B_wire_use_imported_struct_impl(port_, my_struct)
+    P343B03A6_wire_use_imported_struct_impl(port_, my_struct)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_use_imported_enum(port_: i64, my_enum: i32) {
-    P7C55DD6B_wire_use_imported_enum_impl(port_, my_enum)
+pub extern "C" fn P343B03A6_wire_use_imported_enum(port_: i64, my_enum: i32) {
+    P343B03A6_wire_use_imported_enum_impl(port_, my_enum)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_get_app_settings(port_: i64) {
-    P7C55DD6B_wire_get_app_settings_impl(port_)
+pub extern "C" fn P343B03A6_wire_get_app_settings(port_: i64) {
+    P343B03A6_wire_get_app_settings_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_get_fallible_app_settings(port_: i64) {
-    P7C55DD6B_wire_get_fallible_app_settings_impl(port_)
+pub extern "C" fn P343B03A6_wire_get_fallible_app_settings(port_: i64) {
+    P343B03A6_wire_get_fallible_app_settings_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_is_app_embedded(
+pub extern "C" fn P343B03A6_wire_is_app_embedded(
     port_: i64,
-    app_settings: *mut P7C55DD6B_wire_ApplicationSettings,
+    app_settings: *mut P343B03A6_wire_ApplicationSettings,
 ) {
-    P7C55DD6B_wire_is_app_embedded_impl(port_, app_settings)
+    P343B03A6_wire_is_app_embedded_impl(port_, app_settings)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_get_message(port_: i64) {
-    P7C55DD6B_wire_get_message_impl(port_)
+pub extern "C" fn P343B03A6_wire_get_message(port_: i64) {
+    P343B03A6_wire_get_message_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_repeat_number(port_: i64, number: i32, times: usize) {
-    P7C55DD6B_wire_repeat_number_impl(port_, number, times)
+pub extern "C" fn P343B03A6_wire_repeat_number(port_: i64, number: i32, times: usize) {
+    P343B03A6_wire_repeat_number_impl(port_, number, times)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_repeat_sequence(port_: i64, seq: i32, times: usize) {
-    P7C55DD6B_wire_repeat_sequence_impl(port_, seq, times)
+pub extern "C" fn P343B03A6_wire_repeat_sequence(port_: i64, seq: i32, times: usize) {
+    P343B03A6_wire_repeat_sequence_impl(port_, seq, times)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_first_number(port_: i64, nums: *mut P7C55DD6B_wire_Numbers) {
-    P7C55DD6B_wire_first_number_impl(port_, nums)
+pub extern "C" fn P343B03A6_wire_first_number(port_: i64, nums: *mut P343B03A6_wire_Numbers) {
+    P343B03A6_wire_first_number_impl(port_, nums)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_first_sequence(port_: i64, seqs: *mut P7C55DD6B_wire_Sequences) {
-    P7C55DD6B_wire_first_sequence_impl(port_, seqs)
+pub extern "C" fn P343B03A6_wire_first_sequence(port_: i64, seqs: *mut P343B03A6_wire_Sequences) {
+    P343B03A6_wire_first_sequence_impl(port_, seqs)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_get_array(port_: i64) {
-    P7C55DD6B_wire_get_array_impl(port_)
+pub extern "C" fn P343B03A6_wire_get_array(port_: i64) {
+    P343B03A6_wire_get_array_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_get_complex_array(port_: i64) {
-    P7C55DD6B_wire_get_complex_array_impl(port_)
+pub extern "C" fn P343B03A6_wire_get_complex_array(port_: i64) {
+    P343B03A6_wire_get_complex_array_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_get_usize(port_: i64, u: usize) {
-    P7C55DD6B_wire_get_usize_impl(port_, u)
+pub extern "C" fn P343B03A6_wire_get_usize(port_: i64, u: usize) {
+    P343B03A6_wire_get_usize_impl(port_, u)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_next_user_id(port_: i64, user_id: *mut P7C55DD6B_wire_UserId) {
-    P7C55DD6B_wire_next_user_id_impl(port_, user_id)
+pub extern "C" fn P343B03A6_wire_next_user_id(port_: i64, user_id: *mut P343B03A6_wire_UserId) {
+    P343B03A6_wire_next_user_id_impl(port_, user_id)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_register_event_listener(port_: i64) {
-    P7C55DD6B_wire_register_event_listener_impl(port_)
+pub extern "C" fn P343B03A6_wire_register_event_listener(port_: i64) {
+    P343B03A6_wire_register_event_listener_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_close_event_listener(port_: i64) {
-    P7C55DD6B_wire_close_event_listener_impl(port_)
+pub extern "C" fn P343B03A6_wire_close_event_listener(port_: i64) {
+    P343B03A6_wire_close_event_listener_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_create_event(
+pub extern "C" fn P343B03A6_wire_create_event(
     port_: i64,
-    address: *mut P7C55DD6B_wire_uint_8_list,
-    payload: *mut P7C55DD6B_wire_uint_8_list,
+    address: *mut P343B03A6_wire_uint_8_list,
+    payload: *mut P343B03A6_wire_uint_8_list,
 ) {
-    P7C55DD6B_wire_create_event_impl(port_, address, payload)
+    P343B03A6_wire_create_event_impl(port_, address, payload)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_stream_sink_at_1(port_: i64, key: u32, max: u32) {
-    P7C55DD6B_wire_handle_stream_sink_at_1_impl(port_, key, max)
+pub extern "C" fn P343B03A6_wire_handle_stream_sink_at_1(port_: i64, key: u32, max: u32) {
+    P343B03A6_wire_handle_stream_sink_at_1_impl(port_, key, max)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_stream_sink_at_2(port_: i64, key: u32, max: u32) {
-    P7C55DD6B_wire_handle_stream_sink_at_2_impl(port_, key, max)
+pub extern "C" fn P343B03A6_wire_handle_stream_sink_at_2(port_: i64, key: u32, max: u32) {
+    P343B03A6_wire_handle_stream_sink_at_2_impl(port_, key, max)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_stream_sink_at_3(port_: i64, key: u32, max: u32) {
-    P7C55DD6B_wire_handle_stream_sink_at_3_impl(port_, key, max)
+pub extern "C" fn P343B03A6_wire_handle_stream_sink_at_3(port_: i64, key: u32, max: u32) {
+    P343B03A6_wire_handle_stream_sink_at_3_impl(port_, key, max)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_get_sum_struct(port_: i64) {
-    P7C55DD6B_wire_get_sum_struct_impl(port_)
+pub extern "C" fn P343B03A6_wire_get_sum_struct(port_: i64) {
+    P343B03A6_wire_get_sum_struct_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_get_sum_array(port_: i64, a: u32, b: u32, c: u32) {
-    P7C55DD6B_wire_get_sum_array_impl(port_, a, b, c)
+pub extern "C" fn P343B03A6_wire_get_sum_array(port_: i64, a: u32, b: u32, c: u32) {
+    P343B03A6_wire_get_sum_array_impl(port_, a, b, c)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_multiply_by_ten(port_: i64, measure: *mut P7C55DD6B_wire_Measure) {
-    P7C55DD6B_wire_multiply_by_ten_impl(port_, measure)
+pub extern "C" fn P343B03A6_wire_multiply_by_ten(port_: i64, measure: *mut P343B03A6_wire_Measure) {
+    P343B03A6_wire_multiply_by_ten_impl(port_, measure)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_call_old_module_system(port_: i64) {
-    P7C55DD6B_wire_call_old_module_system_impl(port_)
+pub extern "C" fn P343B03A6_wire_call_old_module_system(port_: i64) {
+    P343B03A6_wire_call_old_module_system_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_call_new_module_system(port_: i64) {
-    P7C55DD6B_wire_call_new_module_system_impl(port_)
+pub extern "C" fn P343B03A6_wire_call_new_module_system(port_: i64) {
+    P343B03A6_wire_call_new_module_system_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_big_buffers(port_: i64) {
-    P7C55DD6B_wire_handle_big_buffers_impl(port_)
+pub extern "C" fn P343B03A6_wire_handle_big_buffers(port_: i64) {
+    P343B03A6_wire_handle_big_buffers_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_datetime_utc(port_: i64, d: i64) {
-    P7C55DD6B_wire_datetime_utc_impl(port_, d)
+pub extern "C" fn P343B03A6_wire_datetime_utc(port_: i64, d: i64) {
+    P343B03A6_wire_datetime_utc_impl(port_, d)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_datetime_local(port_: i64, d: i64) {
-    P7C55DD6B_wire_datetime_local_impl(port_, d)
+pub extern "C" fn P343B03A6_wire_datetime_local(port_: i64, d: i64) {
+    P343B03A6_wire_datetime_local_impl(port_, d)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_naivedatetime(port_: i64, d: i64) {
-    P7C55DD6B_wire_naivedatetime_impl(port_, d)
+pub extern "C" fn P343B03A6_wire_naivedatetime(port_: i64, d: i64) {
+    P343B03A6_wire_naivedatetime_impl(port_, d)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_optional_empty_datetime_utc(port_: i64, d: *mut i64) {
-    P7C55DD6B_wire_optional_empty_datetime_utc_impl(port_, d)
+pub extern "C" fn P343B03A6_wire_optional_empty_datetime_utc(port_: i64, d: *mut i64) {
+    P343B03A6_wire_optional_empty_datetime_utc_impl(port_, d)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_duration(port_: i64, d: i64) {
-    P7C55DD6B_wire_duration_impl(port_, d)
+pub extern "C" fn P343B03A6_wire_duration(port_: i64, d: i64) {
+    P343B03A6_wire_duration_impl(port_, d)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_timestamps(
+pub extern "C" fn P343B03A6_wire_handle_timestamps(
     port_: i64,
-    timestamps: *mut P7C55DD6B_wire_int_64_list,
+    timestamps: *mut P343B03A6_wire_int_64_list,
     epoch: i64,
 ) {
-    P7C55DD6B_wire_handle_timestamps_impl(port_, timestamps, epoch)
+    P343B03A6_wire_handle_timestamps_impl(port_, timestamps, epoch)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_durations(
+pub extern "C" fn P343B03A6_wire_handle_durations(
     port_: i64,
-    durations: *mut P7C55DD6B_wire_int_64_list,
+    durations: *mut P343B03A6_wire_int_64_list,
     since: i64,
 ) {
-    P7C55DD6B_wire_handle_durations_impl(port_, durations, since)
+    P343B03A6_wire_handle_durations_impl(port_, durations, since)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_test_chrono(port_: i64) {
-    P7C55DD6B_wire_test_chrono_impl(port_)
+pub extern "C" fn P343B03A6_wire_test_chrono(port_: i64) {
+    P343B03A6_wire_test_chrono_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_test_precise_chrono(port_: i64) {
-    P7C55DD6B_wire_test_precise_chrono_impl(port_)
+pub extern "C" fn P343B03A6_wire_test_precise_chrono(port_: i64) {
+    P343B03A6_wire_test_precise_chrono_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_how_long_does_it_take(
+pub extern "C" fn P343B03A6_wire_how_long_does_it_take(
     port_: i64,
-    mine: *mut P7C55DD6B_wire_FeatureChrono,
+    mine: *mut P343B03A6_wire_FeatureChrono,
 ) {
-    P7C55DD6B_wire_how_long_does_it_take_impl(port_, mine)
+    P343B03A6_wire_how_long_does_it_take_impl(port_, mine)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_uuid(port_: i64, id: *mut P7C55DD6B_wire_uint_8_list) {
-    P7C55DD6B_wire_handle_uuid_impl(port_, id)
+pub extern "C" fn P343B03A6_wire_handle_uuid(port_: i64, id: *mut P343B03A6_wire_uint_8_list) {
+    P343B03A6_wire_handle_uuid_impl(port_, id)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_uuids(port_: i64, ids: *mut P7C55DD6B_wire_uint_8_list) {
-    P7C55DD6B_wire_handle_uuids_impl(port_, ids)
+pub extern "C" fn P343B03A6_wire_handle_uuids(port_: i64, ids: *mut P343B03A6_wire_uint_8_list) {
+    P343B03A6_wire_handle_uuids_impl(port_, ids)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_nested_uuids(
+pub extern "C" fn P343B03A6_wire_handle_nested_uuids(
     port_: i64,
-    ids: *mut P7C55DD6B_wire_FeatureUuid,
+    ids: *mut P343B03A6_wire_FeatureUuid,
 ) {
-    P7C55DD6B_wire_handle_nested_uuids_impl(port_, ids)
+    P343B03A6_wire_handle_nested_uuids_impl(port_, ids)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_new_msgid(port_: i64, id: *mut P7C55DD6B_wire_uint_8_list) {
-    P7C55DD6B_wire_new_msgid_impl(port_, id)
+pub extern "C" fn P343B03A6_wire_new_msgid(port_: i64, id: *mut P343B03A6_wire_uint_8_list) {
+    P343B03A6_wire_new_msgid_impl(port_, id)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_use_msgid(port_: i64, id: *mut P7C55DD6B_wire_MessageId) {
-    P7C55DD6B_wire_use_msgid_impl(port_, id)
+pub extern "C" fn P343B03A6_wire_use_msgid(port_: i64, id: *mut P343B03A6_wire_MessageId) {
+    P343B03A6_wire_use_msgid_impl(port_, id)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_boxed_blob(port_: i64, blob: *mut P7C55DD6B_wire_uint_8_list) {
-    P7C55DD6B_wire_boxed_blob_impl(port_, blob)
+pub extern "C" fn P343B03A6_wire_boxed_blob(port_: i64, blob: *mut P343B03A6_wire_uint_8_list) {
+    P343B03A6_wire_boxed_blob_impl(port_, blob)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_use_boxed_blob(port_: i64, blob: *mut P7C55DD6B_wire_Blob) {
-    P7C55DD6B_wire_use_boxed_blob_impl(port_, blob)
+pub extern "C" fn P343B03A6_wire_use_boxed_blob(port_: i64, blob: *mut P343B03A6_wire_Blob) {
+    P343B03A6_wire_use_boxed_blob_impl(port_, blob)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_return_boxed_feed_id(
+pub extern "C" fn P343B03A6_wire_return_boxed_feed_id(
     port_: i64,
-    id: *mut P7C55DD6B_wire_uint_8_list,
+    id: *mut P343B03A6_wire_uint_8_list,
 ) {
-    P7C55DD6B_wire_return_boxed_feed_id_impl(port_, id)
+    P343B03A6_wire_return_boxed_feed_id_impl(port_, id)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_return_boxed_raw_feed_id(
+pub extern "C" fn P343B03A6_wire_return_boxed_raw_feed_id(
     port_: i64,
-    id: *mut P7C55DD6B_wire_FeedId,
+    id: *mut P343B03A6_wire_FeedId,
 ) {
-    P7C55DD6B_wire_return_boxed_raw_feed_id_impl(port_, id)
+    P343B03A6_wire_return_boxed_raw_feed_id_impl(port_, id)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_test_id(port_: i64, id: *mut P7C55DD6B_wire_TestId) {
-    P7C55DD6B_wire_test_id_impl(port_, id)
+pub extern "C" fn P343B03A6_wire_test_id(port_: i64, id: *mut P343B03A6_wire_TestId) {
+    P343B03A6_wire_test_id_impl(port_, id)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_last_number(port_: i64, array: *mut P7C55DD6B_wire_float_64_list) {
-    P7C55DD6B_wire_last_number_impl(port_, array)
+pub extern "C" fn P343B03A6_wire_last_number(port_: i64, array: *mut P343B03A6_wire_float_64_list) {
+    P343B03A6_wire_last_number_impl(port_, array)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_nested_id(port_: i64, id: *mut P7C55DD6B_wire_list_test_id) {
-    P7C55DD6B_wire_nested_id_impl(port_, id)
+pub extern "C" fn P343B03A6_wire_nested_id(port_: i64, id: *mut P343B03A6_wire_list_test_id) {
+    P343B03A6_wire_nested_id_impl(port_, id)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_sync_accept_dart_opaque(
-    opaque: P7C55DD6B_wire_DartOpaque,
+pub extern "C" fn P343B03A6_wire_sync_accept_dart_opaque(
+    opaque: P343B03A6_wire_DartOpaque,
 ) -> support::WireSyncReturn {
-    P7C55DD6B_wire_sync_accept_dart_opaque_impl(opaque)
+    P343B03A6_wire_sync_accept_dart_opaque_impl(opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_async_accept_dart_opaque(
+pub extern "C" fn P343B03A6_wire_async_accept_dart_opaque(
     port_: i64,
-    opaque: P7C55DD6B_wire_DartOpaque,
+    opaque: P343B03A6_wire_DartOpaque,
 ) {
-    P7C55DD6B_wire_async_accept_dart_opaque_impl(port_, opaque)
+    P343B03A6_wire_async_accept_dart_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_loop_back(port_: i64, opaque: P7C55DD6B_wire_DartOpaque) {
-    P7C55DD6B_wire_loop_back_impl(port_, opaque)
+pub extern "C" fn P343B03A6_wire_loop_back(port_: i64, opaque: P343B03A6_wire_DartOpaque) {
+    P343B03A6_wire_loop_back_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_loop_back_option(port_: i64, opaque: P7C55DD6B_wire_DartOpaque) {
-    P7C55DD6B_wire_loop_back_option_impl(port_, opaque)
+pub extern "C" fn P343B03A6_wire_loop_back_option(port_: i64, opaque: P343B03A6_wire_DartOpaque) {
+    P343B03A6_wire_loop_back_option_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_loop_back_array(port_: i64, opaque: P7C55DD6B_wire_DartOpaque) {
-    P7C55DD6B_wire_loop_back_array_impl(port_, opaque)
+pub extern "C" fn P343B03A6_wire_loop_back_array(port_: i64, opaque: P343B03A6_wire_DartOpaque) {
+    P343B03A6_wire_loop_back_array_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_loop_back_vec(port_: i64, opaque: P7C55DD6B_wire_DartOpaque) {
-    P7C55DD6B_wire_loop_back_vec_impl(port_, opaque)
+pub extern "C" fn P343B03A6_wire_loop_back_vec(port_: i64, opaque: P343B03A6_wire_DartOpaque) {
+    P343B03A6_wire_loop_back_vec_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_loop_back_option_get(
+pub extern "C" fn P343B03A6_wire_loop_back_option_get(
     port_: i64,
-    opaque: *mut P7C55DD6B_wire_DartOpaque,
+    opaque: *mut P343B03A6_wire_DartOpaque,
 ) {
-    P7C55DD6B_wire_loop_back_option_get_impl(port_, opaque)
+    P343B03A6_wire_loop_back_option_get_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_loop_back_array_get(
+pub extern "C" fn P343B03A6_wire_loop_back_array_get(
     port_: i64,
-    opaque: *mut P7C55DD6B_wire_list_DartOpaque,
+    opaque: *mut P343B03A6_wire_list_DartOpaque,
 ) {
-    P7C55DD6B_wire_loop_back_array_get_impl(port_, opaque)
+    P343B03A6_wire_loop_back_array_get_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_loop_back_vec_get(
+pub extern "C" fn P343B03A6_wire_loop_back_vec_get(
     port_: i64,
-    opaque: *mut P7C55DD6B_wire_list_DartOpaque,
+    opaque: *mut P343B03A6_wire_list_DartOpaque,
 ) {
-    P7C55DD6B_wire_loop_back_vec_get_impl(port_, opaque)
+    P343B03A6_wire_loop_back_vec_get_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_unwrap_dart_opaque(
-    opaque: P7C55DD6B_wire_DartOpaque,
+pub extern "C" fn P343B03A6_wire_unwrap_dart_opaque(
+    opaque: P343B03A6_wire_DartOpaque,
 ) -> support::WireSyncReturn {
-    P7C55DD6B_wire_unwrap_dart_opaque_impl(opaque)
+    P343B03A6_wire_unwrap_dart_opaque_impl(opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_panic_unwrap_dart_opaque(
+pub extern "C" fn P343B03A6_wire_panic_unwrap_dart_opaque(
     port_: i64,
-    opaque: P7C55DD6B_wire_DartOpaque,
+    opaque: P343B03A6_wire_DartOpaque,
 ) {
-    P7C55DD6B_wire_panic_unwrap_dart_opaque_impl(port_, opaque)
+    P343B03A6_wire_panic_unwrap_dart_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_create_opaque(port_: i64) {
-    P7C55DD6B_wire_create_opaque_impl(port_)
+pub extern "C" fn P343B03A6_wire_create_opaque(port_: i64) {
+    P343B03A6_wire_create_opaque_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_create_option_opaque(
+pub extern "C" fn P343B03A6_wire_create_option_opaque(
     port_: i64,
-    opaque: *mut P7C55DD6B_wire_HideData,
+    opaque: *mut P343B03A6_wire_HideData,
 ) {
-    P7C55DD6B_wire_create_option_opaque_impl(port_, opaque)
+    P343B03A6_wire_create_option_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_sync_create_opaque() -> support::WireSyncReturn {
-    P7C55DD6B_wire_sync_create_opaque_impl()
+pub extern "C" fn P343B03A6_wire_sync_create_opaque() -> support::WireSyncReturn {
+    P343B03A6_wire_sync_create_opaque_impl()
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_create_array_opaque_enum(port_: i64) {
-    P7C55DD6B_wire_create_array_opaque_enum_impl(port_)
+pub extern "C" fn P343B03A6_wire_create_array_opaque_enum(port_: i64) {
+    P343B03A6_wire_create_array_opaque_enum_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_run_enum_opaque(
+pub extern "C" fn P343B03A6_wire_run_enum_opaque(
     port_: i64,
-    opaque: *mut P7C55DD6B_wire_EnumOpaque,
+    opaque: *mut P343B03A6_wire_EnumOpaque,
 ) {
-    P7C55DD6B_wire_run_enum_opaque_impl(port_, opaque)
+    P343B03A6_wire_run_enum_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_run_opaque(port_: i64, opaque: P7C55DD6B_wire_HideData) {
-    P7C55DD6B_wire_run_opaque_impl(port_, opaque)
+pub extern "C" fn P343B03A6_wire_run_opaque(port_: i64, opaque: P343B03A6_wire_HideData) {
+    P343B03A6_wire_run_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_run_opaque_with_delay(
+pub extern "C" fn P343B03A6_wire_run_opaque_with_delay(
     port_: i64,
-    opaque: P7C55DD6B_wire_HideData,
+    opaque: P343B03A6_wire_HideData,
 ) {
-    P7C55DD6B_wire_run_opaque_with_delay_impl(port_, opaque)
+    P343B03A6_wire_run_opaque_with_delay_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_opaque_array(port_: i64) {
-    P7C55DD6B_wire_opaque_array_impl(port_)
+pub extern "C" fn P343B03A6_wire_opaque_array(port_: i64) {
+    P343B03A6_wire_opaque_array_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_sync_create_non_clone() -> support::WireSyncReturn {
-    P7C55DD6B_wire_sync_create_non_clone_impl()
+pub extern "C" fn P343B03A6_wire_sync_create_non_clone() -> support::WireSyncReturn {
+    P343B03A6_wire_sync_create_non_clone_impl()
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_run_non_clone(port_: i64, clone: P7C55DD6B_wire_NonCloneData) {
-    P7C55DD6B_wire_run_non_clone_impl(port_, clone)
+pub extern "C" fn P343B03A6_wire_run_non_clone(port_: i64, clone: P343B03A6_wire_NonCloneData) {
+    P343B03A6_wire_run_non_clone_impl(port_, clone)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_create_sync_opaque(port_: i64) {
-    P7C55DD6B_wire_create_sync_opaque_impl(port_)
+pub extern "C" fn P343B03A6_wire_create_sync_opaque(port_: i64) {
+    P343B03A6_wire_create_sync_opaque_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_sync_create_sync_opaque() -> support::WireSyncReturn {
-    P7C55DD6B_wire_sync_create_sync_opaque_impl()
+pub extern "C" fn P343B03A6_wire_sync_create_sync_opaque() -> support::WireSyncReturn {
+    P343B03A6_wire_sync_create_sync_opaque_impl()
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_sync_run_opaque(
-    opaque: P7C55DD6B_wire_NonSendHideData,
+pub extern "C" fn P343B03A6_wire_sync_run_opaque(
+    opaque: P343B03A6_wire_NonSendHideData,
 ) -> support::WireSyncReturn {
-    P7C55DD6B_wire_sync_run_opaque_impl(opaque)
+    P343B03A6_wire_sync_run_opaque_impl(opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_opaque_array_run(
+pub extern "C" fn P343B03A6_wire_opaque_array_run(
     port_: i64,
-    data: *mut P7C55DD6B_wire_list_HideData,
+    data: *mut P343B03A6_wire_list_HideData,
 ) {
-    P7C55DD6B_wire_opaque_array_run_impl(port_, data)
+    P343B03A6_wire_opaque_array_run_impl(port_, data)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_opaque_vec(port_: i64) {
-    P7C55DD6B_wire_opaque_vec_impl(port_)
+pub extern "C" fn P343B03A6_wire_opaque_vec(port_: i64) {
+    P343B03A6_wire_opaque_vec_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_opaque_vec_run(
+pub extern "C" fn P343B03A6_wire_opaque_vec_run(
     port_: i64,
-    data: *mut P7C55DD6B_wire_list_HideData,
+    data: *mut P343B03A6_wire_list_HideData,
 ) {
-    P7C55DD6B_wire_opaque_vec_run_impl(port_, data)
+    P343B03A6_wire_opaque_vec_run_impl(port_, data)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_create_nested_opaque(port_: i64) {
-    P7C55DD6B_wire_create_nested_opaque_impl(port_)
+pub extern "C" fn P343B03A6_wire_create_nested_opaque(port_: i64) {
+    P343B03A6_wire_create_nested_opaque_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_sync_loopback(
-    opaque: P7C55DD6B_wire_DartOpaque,
+pub extern "C" fn P343B03A6_wire_sync_loopback(
+    opaque: P343B03A6_wire_DartOpaque,
 ) -> support::WireSyncReturn {
-    P7C55DD6B_wire_sync_loopback_impl(opaque)
+    P343B03A6_wire_sync_loopback_impl(opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_sync_option_loopback(
-    opaque: *mut P7C55DD6B_wire_DartOpaque,
+pub extern "C" fn P343B03A6_wire_sync_option_loopback(
+    opaque: *mut P343B03A6_wire_DartOpaque,
 ) -> support::WireSyncReturn {
-    P7C55DD6B_wire_sync_option_loopback_impl(opaque)
+    P343B03A6_wire_sync_option_loopback_impl(opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_sync_option() -> support::WireSyncReturn {
-    P7C55DD6B_wire_sync_option_impl()
+pub extern "C" fn P343B03A6_wire_sync_option() -> support::WireSyncReturn {
+    P343B03A6_wire_sync_option_impl()
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_sync_option_null() -> support::WireSyncReturn {
-    P7C55DD6B_wire_sync_option_null_impl()
+pub extern "C" fn P343B03A6_wire_sync_option_null() -> support::WireSyncReturn {
+    P343B03A6_wire_sync_option_null_impl()
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_sync_option_rust_opaque() -> support::WireSyncReturn {
-    P7C55DD6B_wire_sync_option_rust_opaque_impl()
+pub extern "C" fn P343B03A6_wire_sync_option_rust_opaque() -> support::WireSyncReturn {
+    P343B03A6_wire_sync_option_rust_opaque_impl()
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_sync_option_dart_opaque(
-    opaque: P7C55DD6B_wire_DartOpaque,
+pub extern "C" fn P343B03A6_wire_sync_option_dart_opaque(
+    opaque: P343B03A6_wire_DartOpaque,
 ) -> support::WireSyncReturn {
-    P7C55DD6B_wire_sync_option_dart_opaque_impl(opaque)
+    P343B03A6_wire_sync_option_dart_opaque_impl(opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_sync_void() -> support::WireSyncReturn {
-    P7C55DD6B_wire_sync_void_impl()
+pub extern "C" fn P343B03A6_wire_sync_void() -> support::WireSyncReturn {
+    P343B03A6_wire_sync_void_impl()
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_run_nested_opaque(
+pub extern "C" fn P343B03A6_wire_run_nested_opaque(
     port_: i64,
-    opaque: *mut P7C55DD6B_wire_OpaqueNested,
+    opaque: *mut P343B03A6_wire_OpaqueNested,
 ) {
-    P7C55DD6B_wire_run_nested_opaque_impl(port_, opaque)
+    P343B03A6_wire_run_nested_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_create_nested_dart_opaque(
+pub extern "C" fn P343B03A6_wire_create_nested_dart_opaque(
     port_: i64,
-    opaque1: P7C55DD6B_wire_DartOpaque,
-    opaque2: P7C55DD6B_wire_DartOpaque,
+    opaque1: P343B03A6_wire_DartOpaque,
+    opaque2: P343B03A6_wire_DartOpaque,
 ) {
-    P7C55DD6B_wire_create_nested_dart_opaque_impl(port_, opaque1, opaque2)
+    P343B03A6_wire_create_nested_dart_opaque_impl(port_, opaque1, opaque2)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_get_nested_dart_opaque(
+pub extern "C" fn P343B03A6_wire_get_nested_dart_opaque(
     port_: i64,
-    opaque: *mut P7C55DD6B_wire_DartOpaqueNested,
+    opaque: *mut P343B03A6_wire_DartOpaqueNested,
 ) {
-    P7C55DD6B_wire_get_nested_dart_opaque_impl(port_, opaque)
+    P343B03A6_wire_get_nested_dart_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_create_enum_dart_opaque(
+pub extern "C" fn P343B03A6_wire_create_enum_dart_opaque(
     port_: i64,
-    opaque: P7C55DD6B_wire_DartOpaque,
+    opaque: P343B03A6_wire_DartOpaque,
 ) {
-    P7C55DD6B_wire_create_enum_dart_opaque_impl(port_, opaque)
+    P343B03A6_wire_create_enum_dart_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_get_enum_dart_opaque(
+pub extern "C" fn P343B03A6_wire_get_enum_dart_opaque(
     port_: i64,
-    opaque: *mut P7C55DD6B_wire_EnumDartOpaque,
+    opaque: *mut P343B03A6_wire_EnumDartOpaque,
 ) {
-    P7C55DD6B_wire_get_enum_dart_opaque_impl(port_, opaque)
+    P343B03A6_wire_get_enum_dart_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_set_static_dart_opaque(
+pub extern "C" fn P343B03A6_wire_set_static_dart_opaque(
     port_: i64,
-    opaque: P7C55DD6B_wire_DartOpaque,
+    opaque: P343B03A6_wire_DartOpaque,
 ) {
-    P7C55DD6B_wire_set_static_dart_opaque_impl(port_, opaque)
+    P343B03A6_wire_set_static_dart_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_drop_static_dart_opaque(port_: i64) {
-    P7C55DD6B_wire_drop_static_dart_opaque_impl(port_)
+pub extern "C" fn P343B03A6_wire_drop_static_dart_opaque(port_: i64) {
+    P343B03A6_wire_drop_static_dart_opaque_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_unwrap_rust_opaque(port_: i64, opaque: P7C55DD6B_wire_HideData) {
-    P7C55DD6B_wire_unwrap_rust_opaque_impl(port_, opaque)
+pub extern "C" fn P343B03A6_wire_unwrap_rust_opaque(port_: i64, opaque: P343B03A6_wire_HideData) {
+    P343B03A6_wire_unwrap_rust_opaque_impl(port_, opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_return_non_droppable_dart_opaque(
-    opaque: P7C55DD6B_wire_DartOpaque,
+pub extern "C" fn P343B03A6_wire_return_non_droppable_dart_opaque(
+    opaque: P343B03A6_wire_DartOpaque,
 ) -> support::WireSyncReturn {
-    P7C55DD6B_wire_return_non_droppable_dart_opaque_impl(opaque)
+    P343B03A6_wire_return_non_droppable_dart_opaque_impl(opaque)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_frb_generator_test(port_: i64) {
-    P7C55DD6B_wire_frb_generator_test_impl(port_)
+pub extern "C" fn P343B03A6_wire_frb_generator_test(port_: i64) {
+    P343B03A6_wire_frb_generator_test_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_frb_sync_generator_test() -> support::WireSyncReturn {
-    P7C55DD6B_wire_frb_sync_generator_test_impl()
+pub extern "C" fn P343B03A6_wire_frb_sync_generator_test() -> support::WireSyncReturn {
+    P343B03A6_wire_frb_sync_generator_test_impl()
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_type_alias_id(port_: i64, input: u64) {
-    P7C55DD6B_wire_handle_type_alias_id_impl(port_, input)
+pub extern "C" fn P343B03A6_wire_handle_type_alias_id(port_: i64, input: u64) {
+    P343B03A6_wire_handle_type_alias_id_impl(port_, input)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_type_nest_alias_id(port_: i64, input: u64) {
-    P7C55DD6B_wire_handle_type_nest_alias_id_impl(port_, input)
+pub extern "C" fn P343B03A6_wire_handle_type_nest_alias_id(port_: i64, input: u64) {
+    P343B03A6_wire_handle_type_nest_alias_id_impl(port_, input)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_type_alias_model(port_: i64, input: u64) {
-    P7C55DD6B_wire_handle_type_alias_model_impl(port_, input)
+pub extern "C" fn P343B03A6_wire_handle_type_alias_model(port_: i64, input: u64) {
+    P343B03A6_wire_handle_type_alias_model_impl(port_, input)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_empty_struct(port_: i64, empty: *mut P7C55DD6B_wire_Empty) {
-    P7C55DD6B_wire_empty_struct_impl(port_, empty)
+pub extern "C" fn P343B03A6_wire_empty_struct(port_: i64, empty: *mut P343B03A6_wire_Empty) {
+    P343B03A6_wire_empty_struct_impl(port_, empty)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_return_dart_dynamic(port_: i64) {
-    P7C55DD6B_wire_return_dart_dynamic_impl(port_)
+pub extern "C" fn P343B03A6_wire_return_dart_dynamic(port_: i64) {
+    P343B03A6_wire_return_dart_dynamic_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_test_raw_string_item_struct(port_: i64) {
-    P7C55DD6B_wire_test_raw_string_item_struct_impl(port_)
+pub extern "C" fn P343B03A6_wire_test_raw_string_item_struct(port_: i64) {
+    P343B03A6_wire_test_raw_string_item_struct_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_test_more_than_just_one_raw_string_struct(port_: i64) {
-    P7C55DD6B_wire_test_more_than_just_one_raw_string_struct_impl(port_)
+pub extern "C" fn P343B03A6_wire_test_more_than_just_one_raw_string_struct(port_: i64) {
+    P343B03A6_wire_test_more_than_just_one_raw_string_struct_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_test_raw_string_mirrored(port_: i64) {
-    P7C55DD6B_wire_test_raw_string_mirrored_impl(port_)
+pub extern "C" fn P343B03A6_wire_test_raw_string_mirrored(port_: i64) {
+    P343B03A6_wire_test_raw_string_mirrored_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_test_nested_raw_string_mirrored(port_: i64) {
-    P7C55DD6B_wire_test_nested_raw_string_mirrored_impl(port_)
+pub extern "C" fn P343B03A6_wire_test_nested_raw_string_mirrored(port_: i64) {
+    P343B03A6_wire_test_nested_raw_string_mirrored_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_test_raw_string_enum_mirrored(port_: i64, nested: bool) {
-    P7C55DD6B_wire_test_raw_string_enum_mirrored_impl(port_, nested)
+pub extern "C" fn P343B03A6_wire_test_raw_string_enum_mirrored(port_: i64, nested: bool) {
+    P343B03A6_wire_test_raw_string_enum_mirrored_impl(port_, nested)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_test_list_of_raw_nested_string_mirrored(port_: i64) {
-    P7C55DD6B_wire_test_list_of_raw_nested_string_mirrored_impl(port_)
+pub extern "C" fn P343B03A6_wire_test_list_of_raw_nested_string_mirrored(port_: i64) {
+    P343B03A6_wire_test_list_of_raw_nested_string_mirrored_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_test_fallible_of_raw_string_mirrored(port_: i64) {
-    P7C55DD6B_wire_test_fallible_of_raw_string_mirrored_impl(port_)
+pub extern "C" fn P343B03A6_wire_test_fallible_of_raw_string_mirrored(port_: i64) {
+    P343B03A6_wire_test_fallible_of_raw_string_mirrored_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_list_of_primitive_enums(
+pub extern "C" fn P343B03A6_wire_list_of_primitive_enums(
     port_: i64,
-    weekdays: *mut P7C55DD6B_wire_list_weekdays,
+    weekdays: *mut P343B03A6_wire_list_weekdays,
 ) {
-    P7C55DD6B_wire_list_of_primitive_enums_impl(port_, weekdays)
+    P343B03A6_wire_list_of_primitive_enums_impl(port_, weekdays)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_test_abc_enum(port_: i64, abc: *mut P7C55DD6B_wire_Abc) {
-    P7C55DD6B_wire_test_abc_enum_impl(port_, abc)
+pub extern "C" fn P343B03A6_wire_test_abc_enum(port_: i64, abc: *mut P343B03A6_wire_Abc) {
+    P343B03A6_wire_test_abc_enum_impl(port_, abc)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_test_contains_mirrored_sub_struct(port_: i64) {
-    P7C55DD6B_wire_test_contains_mirrored_sub_struct_impl(port_)
+pub extern "C" fn P343B03A6_wire_test_contains_mirrored_sub_struct(port_: i64) {
+    P343B03A6_wire_test_contains_mirrored_sub_struct_impl(port_)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_as_string__method__Event(
+pub extern "C" fn P343B03A6_wire_as_string__method__Event(
     port_: i64,
-    that: *mut P7C55DD6B_wire_Event,
+    that: *mut P343B03A6_wire_Event,
 ) {
-    P7C55DD6B_wire_as_string__method__Event_impl(port_, that)
+    P343B03A6_wire_as_string__method__Event_impl(port_, that)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_sum__method__SumWith(
+pub extern "C" fn P343B03A6_wire_sum__method__SumWith(
     port_: i64,
-    that: *mut P7C55DD6B_wire_SumWith,
+    that: *mut P343B03A6_wire_SumWith,
     y: u32,
     z: u32,
 ) {
-    P7C55DD6B_wire_sum__method__SumWith_impl(port_, that, y, z)
+    P343B03A6_wire_sum__method__SumWith_impl(port_, that, y, z)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_new__static_method__ConcatenateWith(
+pub extern "C" fn P343B03A6_wire_new__static_method__ConcatenateWith(
     port_: i64,
-    a: *mut P7C55DD6B_wire_uint_8_list,
+    a: *mut P343B03A6_wire_uint_8_list,
 ) {
-    P7C55DD6B_wire_new__static_method__ConcatenateWith_impl(port_, a)
+    P343B03A6_wire_new__static_method__ConcatenateWith_impl(port_, a)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_concatenate__method__ConcatenateWith(
+pub extern "C" fn P343B03A6_wire_concatenate__method__ConcatenateWith(
     port_: i64,
-    that: *mut P7C55DD6B_wire_ConcatenateWith,
-    b: *mut P7C55DD6B_wire_uint_8_list,
+    that: *mut P343B03A6_wire_ConcatenateWith,
+    b: *mut P343B03A6_wire_uint_8_list,
 ) {
-    P7C55DD6B_wire_concatenate__method__ConcatenateWith_impl(port_, that, b)
+    P343B03A6_wire_concatenate__method__ConcatenateWith_impl(port_, that, b)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_concatenate_static__static_method__ConcatenateWith(
+pub extern "C" fn P343B03A6_wire_concatenate_static__static_method__ConcatenateWith(
     port_: i64,
-    a: *mut P7C55DD6B_wire_uint_8_list,
-    b: *mut P7C55DD6B_wire_uint_8_list,
+    a: *mut P343B03A6_wire_uint_8_list,
+    b: *mut P343B03A6_wire_uint_8_list,
 ) {
-    P7C55DD6B_wire_concatenate_static__static_method__ConcatenateWith_impl(port_, a, b)
+    P343B03A6_wire_concatenate_static__static_method__ConcatenateWith_impl(port_, a, b)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_some_stream_sink__method__ConcatenateWith(
+pub extern "C" fn P343B03A6_wire_handle_some_stream_sink__method__ConcatenateWith(
     port_: i64,
-    that: *mut P7C55DD6B_wire_ConcatenateWith,
+    that: *mut P343B03A6_wire_ConcatenateWith,
     key: u32,
     max: u32,
 ) {
-    P7C55DD6B_wire_handle_some_stream_sink__method__ConcatenateWith_impl(port_, that, key, max)
+    P343B03A6_wire_handle_some_stream_sink__method__ConcatenateWith_impl(port_, that, key, max)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_some_stream_sink_at_1__method__ConcatenateWith(
+pub extern "C" fn P343B03A6_wire_handle_some_stream_sink_at_1__method__ConcatenateWith(
     port_: i64,
-    that: *mut P7C55DD6B_wire_ConcatenateWith,
+    that: *mut P343B03A6_wire_ConcatenateWith,
 ) {
-    P7C55DD6B_wire_handle_some_stream_sink_at_1__method__ConcatenateWith_impl(port_, that)
+    P343B03A6_wire_handle_some_stream_sink_at_1__method__ConcatenateWith_impl(port_, that)
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_some_static_stream_sink__static_method__ConcatenateWith(
+pub extern "C" fn P343B03A6_wire_handle_some_static_stream_sink__static_method__ConcatenateWith(
     port_: i64,
     key: u32,
     max: u32,
 ) {
-    P7C55DD6B_wire_handle_some_static_stream_sink__static_method__ConcatenateWith_impl(
+    P343B03A6_wire_handle_some_static_stream_sink__static_method__ConcatenateWith_impl(
         port_, key, max,
     )
 }
 
 #[no_mangle]
-pub extern "C" fn P7C55DD6B_wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(
+pub extern "C" fn P343B03A6_wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(
     port_: i64,
 ) {
-    P7C55DD6B_wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith_impl(
+    P343B03A6_wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith_impl(
         port_,
     )
 }
@@ -1020,57 +1020,57 @@ pub extern "C" fn P7C55DD6B_wire_handle_some_static_stream_sink_single_arg__stat
 // Section: allocate functions
 
 #[no_mangle]
-pub extern "C" fn new_BoxDartDebug() -> P7C55DD6B_wire_BoxDartDebug {
-    P7C55DD6B_wire_BoxDartDebug::new_with_null_ptr()
+pub extern "C" fn new_BoxDartDebug() -> P343B03A6_wire_BoxDartDebug {
+    P343B03A6_wire_BoxDartDebug::new_with_null_ptr()
 }
 
 #[no_mangle]
-pub extern "C" fn new_DartOpaque() -> P7C55DD6B_wire_DartOpaque {
-    P7C55DD6B_wire_DartOpaque::new_with_null_ptr()
+pub extern "C" fn new_DartOpaque() -> P343B03A6_wire_DartOpaque {
+    P343B03A6_wire_DartOpaque::new_with_null_ptr()
 }
 
 #[no_mangle]
-pub extern "C" fn new_HideData() -> P7C55DD6B_wire_HideData {
-    P7C55DD6B_wire_HideData::new_with_null_ptr()
+pub extern "C" fn new_HideData() -> P343B03A6_wire_HideData {
+    P343B03A6_wire_HideData::new_with_null_ptr()
 }
 
 #[no_mangle]
-pub extern "C" fn new_I32() -> P7C55DD6B_wire_I32 {
-    P7C55DD6B_wire_I32::new_with_null_ptr()
+pub extern "C" fn new_I32() -> P343B03A6_wire_I32 {
+    P343B03A6_wire_I32::new_with_null_ptr()
 }
 
 #[no_mangle]
-pub extern "C" fn new_MutexHideData() -> P7C55DD6B_wire_MutexHideData {
-    P7C55DD6B_wire_MutexHideData::new_with_null_ptr()
+pub extern "C" fn new_MutexHideData() -> P343B03A6_wire_MutexHideData {
+    P343B03A6_wire_MutexHideData::new_with_null_ptr()
 }
 
 #[no_mangle]
-pub extern "C" fn new_NonCloneData() -> P7C55DD6B_wire_NonCloneData {
-    P7C55DD6B_wire_NonCloneData::new_with_null_ptr()
+pub extern "C" fn new_NonCloneData() -> P343B03A6_wire_NonCloneData {
+    P343B03A6_wire_NonCloneData::new_with_null_ptr()
 }
 
 #[no_mangle]
-pub extern "C" fn new_NonSendHideData() -> P7C55DD6B_wire_NonSendHideData {
-    P7C55DD6B_wire_NonSendHideData::new_with_null_ptr()
+pub extern "C" fn new_NonSendHideData() -> P343B03A6_wire_NonSendHideData {
+    P343B03A6_wire_NonSendHideData::new_with_null_ptr()
 }
 
 #[no_mangle]
-pub extern "C" fn new_RwLockHideData() -> P7C55DD6B_wire_RwLockHideData {
-    P7C55DD6B_wire_RwLockHideData::new_with_null_ptr()
+pub extern "C" fn new_RwLockHideData() -> P343B03A6_wire_RwLockHideData {
+    P343B03A6_wire_RwLockHideData::new_with_null_ptr()
 }
 
 #[no_mangle]
-pub extern "C" fn new_StringList_0(len: i32) -> *mut P7C55DD6B_wire_StringList {
-    let wrap = P7C55DD6B_wire_StringList {
-        ptr: support::new_leak_vec_ptr(<*mut P7C55DD6B_wire_uint_8_list>::new_with_null_ptr(), len),
+pub extern "C" fn new_StringList_0(len: i32) -> *mut P343B03A6_wire_StringList {
+    let wrap = P343B03A6_wire_StringList {
+        ptr: support::new_leak_vec_ptr(<*mut P343B03A6_wire_uint_8_list>::new_with_null_ptr(), len),
         len,
     };
     support::new_leak_box_ptr(wrap)
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_application_env_0() -> *mut P7C55DD6B_wire_ApplicationEnv {
-    support::new_leak_box_ptr(P7C55DD6B_wire_ApplicationEnv::new_with_null_ptr())
+pub extern "C" fn new_box_application_env_0() -> *mut P343B03A6_wire_ApplicationEnv {
+    support::new_leak_box_ptr(P343B03A6_wire_ApplicationEnv::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1079,44 +1079,44 @@ pub extern "C" fn new_box_autoadd_Chrono_Utc_0(value: i64) -> *mut i64 {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_DartOpaque_0() -> *mut P7C55DD6B_wire_DartOpaque {
-    support::new_leak_box_ptr(P7C55DD6B_wire_DartOpaque::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_DartOpaque_0() -> *mut P343B03A6_wire_DartOpaque {
+    support::new_leak_box_ptr(P343B03A6_wire_DartOpaque::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_HideData_0() -> *mut P7C55DD6B_wire_HideData {
-    support::new_leak_box_ptr(P7C55DD6B_wire_HideData::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_HideData_0() -> *mut P343B03A6_wire_HideData {
+    support::new_leak_box_ptr(P343B03A6_wire_HideData::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_a_0() -> *mut P7C55DD6B_wire_A {
-    support::new_leak_box_ptr(P7C55DD6B_wire_A::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_a_0() -> *mut P343B03A6_wire_A {
+    support::new_leak_box_ptr(P343B03A6_wire_A::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_abc_0() -> *mut P7C55DD6B_wire_Abc {
-    support::new_leak_box_ptr(P7C55DD6B_wire_Abc::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_abc_0() -> *mut P343B03A6_wire_Abc {
+    support::new_leak_box_ptr(P343B03A6_wire_Abc::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_application_env_0() -> *mut P7C55DD6B_wire_ApplicationEnv {
-    support::new_leak_box_ptr(P7C55DD6B_wire_ApplicationEnv::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_application_env_0() -> *mut P343B03A6_wire_ApplicationEnv {
+    support::new_leak_box_ptr(P343B03A6_wire_ApplicationEnv::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_application_settings_0() -> *mut P7C55DD6B_wire_ApplicationSettings
+pub extern "C" fn new_box_autoadd_application_settings_0() -> *mut P343B03A6_wire_ApplicationSettings
 {
-    support::new_leak_box_ptr(P7C55DD6B_wire_ApplicationSettings::new_with_null_ptr())
+    support::new_leak_box_ptr(P343B03A6_wire_ApplicationSettings::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_attribute_0() -> *mut P7C55DD6B_wire_Attribute {
-    support::new_leak_box_ptr(P7C55DD6B_wire_Attribute::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_attribute_0() -> *mut P343B03A6_wire_Attribute {
+    support::new_leak_box_ptr(P343B03A6_wire_Attribute::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_b_0() -> *mut P7C55DD6B_wire_B {
-    support::new_leak_box_ptr(P7C55DD6B_wire_B::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_b_0() -> *mut P343B03A6_wire_B {
+    support::new_leak_box_ptr(P343B03A6_wire_B::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1125,48 +1125,48 @@ pub extern "C" fn new_box_autoadd_bool_0(value: bool) -> *mut bool {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_c_0() -> *mut P7C55DD6B_wire_C {
-    support::new_leak_box_ptr(P7C55DD6B_wire_C::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_c_0() -> *mut P343B03A6_wire_C {
+    support::new_leak_box_ptr(P343B03A6_wire_C::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_concatenate_with_0() -> *mut P7C55DD6B_wire_ConcatenateWith {
-    support::new_leak_box_ptr(P7C55DD6B_wire_ConcatenateWith::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_concatenate_with_0() -> *mut P343B03A6_wire_ConcatenateWith {
+    support::new_leak_box_ptr(P343B03A6_wire_ConcatenateWith::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_customized_0() -> *mut P7C55DD6B_wire_Customized {
-    support::new_leak_box_ptr(P7C55DD6B_wire_Customized::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_customized_0() -> *mut P343B03A6_wire_Customized {
+    support::new_leak_box_ptr(P343B03A6_wire_Customized::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_dart_opaque_nested_0() -> *mut P7C55DD6B_wire_DartOpaqueNested {
-    support::new_leak_box_ptr(P7C55DD6B_wire_DartOpaqueNested::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_dart_opaque_nested_0() -> *mut P343B03A6_wire_DartOpaqueNested {
+    support::new_leak_box_ptr(P343B03A6_wire_DartOpaqueNested::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_empty_0() -> *mut P7C55DD6B_wire_Empty {
-    support::new_leak_box_ptr(P7C55DD6B_wire_Empty::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_empty_0() -> *mut P343B03A6_wire_Empty {
+    support::new_leak_box_ptr(P343B03A6_wire_Empty::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_enum_dart_opaque_0() -> *mut P7C55DD6B_wire_EnumDartOpaque {
-    support::new_leak_box_ptr(P7C55DD6B_wire_EnumDartOpaque::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_enum_dart_opaque_0() -> *mut P343B03A6_wire_EnumDartOpaque {
+    support::new_leak_box_ptr(P343B03A6_wire_EnumDartOpaque::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_enum_opaque_0() -> *mut P7C55DD6B_wire_EnumOpaque {
-    support::new_leak_box_ptr(P7C55DD6B_wire_EnumOpaque::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_enum_opaque_0() -> *mut P343B03A6_wire_EnumOpaque {
+    support::new_leak_box_ptr(P343B03A6_wire_EnumOpaque::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_event_0() -> *mut P7C55DD6B_wire_Event {
-    support::new_leak_box_ptr(P7C55DD6B_wire_Event::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_event_0() -> *mut P343B03A6_wire_Event {
+    support::new_leak_box_ptr(P343B03A6_wire_Event::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_exotic_optionals_0() -> *mut P7C55DD6B_wire_ExoticOptionals {
-    support::new_leak_box_ptr(P7C55DD6B_wire_ExoticOptionals::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_exotic_optionals_0() -> *mut P343B03A6_wire_ExoticOptionals {
+    support::new_leak_box_ptr(P343B03A6_wire_ExoticOptionals::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1175,18 +1175,18 @@ pub extern "C" fn new_box_autoadd_f64_0(value: f64) -> *mut f64 {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_feature_chrono_0() -> *mut P7C55DD6B_wire_FeatureChrono {
-    support::new_leak_box_ptr(P7C55DD6B_wire_FeatureChrono::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_feature_chrono_0() -> *mut P343B03A6_wire_FeatureChrono {
+    support::new_leak_box_ptr(P343B03A6_wire_FeatureChrono::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_feature_uuid_0() -> *mut P7C55DD6B_wire_FeatureUuid {
-    support::new_leak_box_ptr(P7C55DD6B_wire_FeatureUuid::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_feature_uuid_0() -> *mut P343B03A6_wire_FeatureUuid {
+    support::new_leak_box_ptr(P343B03A6_wire_FeatureUuid::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_feed_id_0() -> *mut P7C55DD6B_wire_FeedId {
-    support::new_leak_box_ptr(P7C55DD6B_wire_FeedId::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_feed_id_0() -> *mut P343B03A6_wire_FeedId {
+    support::new_leak_box_ptr(P343B03A6_wire_FeedId::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1200,83 +1200,83 @@ pub extern "C" fn new_box_autoadd_i64_0(value: i64) -> *mut i64 {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_kitchen_sink_0() -> *mut P7C55DD6B_wire_KitchenSink {
-    support::new_leak_box_ptr(P7C55DD6B_wire_KitchenSink::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_kitchen_sink_0() -> *mut P343B03A6_wire_KitchenSink {
+    support::new_leak_box_ptr(P343B03A6_wire_KitchenSink::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_measure_0() -> *mut P7C55DD6B_wire_Measure {
-    support::new_leak_box_ptr(P7C55DD6B_wire_Measure::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_measure_0() -> *mut P343B03A6_wire_Measure {
+    support::new_leak_box_ptr(P343B03A6_wire_Measure::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_message_id_0() -> *mut P7C55DD6B_wire_MessageId {
-    support::new_leak_box_ptr(P7C55DD6B_wire_MessageId::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_message_id_0() -> *mut P343B03A6_wire_MessageId {
+    support::new_leak_box_ptr(P343B03A6_wire_MessageId::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_my_nested_struct_0() -> *mut P7C55DD6B_wire_MyNestedStruct {
-    support::new_leak_box_ptr(P7C55DD6B_wire_MyNestedStruct::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_my_nested_struct_0() -> *mut P343B03A6_wire_MyNestedStruct {
+    support::new_leak_box_ptr(P343B03A6_wire_MyNestedStruct::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_my_size_0() -> *mut P7C55DD6B_wire_MySize {
-    support::new_leak_box_ptr(P7C55DD6B_wire_MySize::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_my_size_0() -> *mut P343B03A6_wire_MySize {
+    support::new_leak_box_ptr(P343B03A6_wire_MySize::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_my_struct_0() -> *mut P7C55DD6B_wire_MyStruct {
-    support::new_leak_box_ptr(P7C55DD6B_wire_MyStruct::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_my_struct_0() -> *mut P343B03A6_wire_MyStruct {
+    support::new_leak_box_ptr(P343B03A6_wire_MyStruct::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_my_tree_node_0() -> *mut P7C55DD6B_wire_MyTreeNode {
-    support::new_leak_box_ptr(P7C55DD6B_wire_MyTreeNode::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_my_tree_node_0() -> *mut P343B03A6_wire_MyTreeNode {
+    support::new_leak_box_ptr(P343B03A6_wire_MyTreeNode::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_new_type_int_0() -> *mut P7C55DD6B_wire_NewTypeInt {
-    support::new_leak_box_ptr(P7C55DD6B_wire_NewTypeInt::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_new_type_int_0() -> *mut P343B03A6_wire_NewTypeInt {
+    support::new_leak_box_ptr(P343B03A6_wire_NewTypeInt::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_note_0() -> *mut P7C55DD6B_wire_Note {
-    support::new_leak_box_ptr(P7C55DD6B_wire_Note::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_note_0() -> *mut P343B03A6_wire_Note {
+    support::new_leak_box_ptr(P343B03A6_wire_Note::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_numbers_0() -> *mut P7C55DD6B_wire_Numbers {
-    support::new_leak_box_ptr(P7C55DD6B_wire_Numbers::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_numbers_0() -> *mut P343B03A6_wire_Numbers {
+    support::new_leak_box_ptr(P343B03A6_wire_Numbers::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_opaque_nested_0() -> *mut P7C55DD6B_wire_OpaqueNested {
-    support::new_leak_box_ptr(P7C55DD6B_wire_OpaqueNested::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_opaque_nested_0() -> *mut P343B03A6_wire_OpaqueNested {
+    support::new_leak_box_ptr(P343B03A6_wire_OpaqueNested::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_sequences_0() -> *mut P7C55DD6B_wire_Sequences {
-    support::new_leak_box_ptr(P7C55DD6B_wire_Sequences::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_sequences_0() -> *mut P343B03A6_wire_Sequences {
+    support::new_leak_box_ptr(P343B03A6_wire_Sequences::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_sum_with_0() -> *mut P7C55DD6B_wire_SumWith {
-    support::new_leak_box_ptr(P7C55DD6B_wire_SumWith::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_sum_with_0() -> *mut P343B03A6_wire_SumWith {
+    support::new_leak_box_ptr(P343B03A6_wire_SumWith::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_test_id_0() -> *mut P7C55DD6B_wire_TestId {
-    support::new_leak_box_ptr(P7C55DD6B_wire_TestId::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_test_id_0() -> *mut P343B03A6_wire_TestId {
+    support::new_leak_box_ptr(P343B03A6_wire_TestId::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_user_id_0() -> *mut P7C55DD6B_wire_UserId {
-    support::new_leak_box_ptr(P7C55DD6B_wire_UserId::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_user_id_0() -> *mut P343B03A6_wire_UserId {
+    support::new_leak_box_ptr(P343B03A6_wire_UserId::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_blob_0() -> *mut P7C55DD6B_wire_Blob {
-    support::new_leak_box_ptr(P7C55DD6B_wire_Blob::new_with_null_ptr())
+pub extern "C" fn new_box_blob_0() -> *mut P343B03A6_wire_Blob {
+    support::new_leak_box_ptr(P343B03A6_wire_Blob::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1285,13 +1285,13 @@ pub extern "C" fn new_box_bool_0(value: bool) -> *mut bool {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_distance_0() -> *mut P7C55DD6B_wire_Distance {
-    support::new_leak_box_ptr(P7C55DD6B_wire_Distance::new_with_null_ptr())
+pub extern "C" fn new_box_distance_0() -> *mut P343B03A6_wire_Distance {
+    support::new_leak_box_ptr(P343B03A6_wire_Distance::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_exotic_optionals_0() -> *mut P7C55DD6B_wire_ExoticOptionals {
-    support::new_leak_box_ptr(P7C55DD6B_wire_ExoticOptionals::new_with_null_ptr())
+pub extern "C" fn new_box_exotic_optionals_0() -> *mut P343B03A6_wire_ExoticOptionals {
+    support::new_leak_box_ptr(P343B03A6_wire_ExoticOptionals::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1315,18 +1315,18 @@ pub extern "C" fn new_box_i8_0(value: i8) -> *mut i8 {
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_kitchen_sink_0() -> *mut P7C55DD6B_wire_KitchenSink {
-    support::new_leak_box_ptr(P7C55DD6B_wire_KitchenSink::new_with_null_ptr())
+pub extern "C" fn new_box_kitchen_sink_0() -> *mut P343B03A6_wire_KitchenSink {
+    support::new_leak_box_ptr(P343B03A6_wire_KitchenSink::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_my_size_0() -> *mut P7C55DD6B_wire_MySize {
-    support::new_leak_box_ptr(P7C55DD6B_wire_MySize::new_with_null_ptr())
+pub extern "C" fn new_box_my_size_0() -> *mut P343B03A6_wire_MySize {
+    support::new_leak_box_ptr(P343B03A6_wire_MySize::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_speed_0() -> *mut P7C55DD6B_wire_Speed {
-    support::new_leak_box_ptr(P7C55DD6B_wire_Speed::new_with_null_ptr())
+pub extern "C" fn new_box_speed_0() -> *mut P343B03A6_wire_Speed {
+    support::new_leak_box_ptr(P343B03A6_wire_Speed::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1340,8 +1340,8 @@ pub extern "C" fn new_box_weekdays_0(value: i32) -> *mut i32 {
 }
 
 #[no_mangle]
-pub extern "C" fn new_float_32_list_0(len: i32) -> *mut P7C55DD6B_wire_float_32_list {
-    let ans = P7C55DD6B_wire_float_32_list {
+pub extern "C" fn new_float_32_list_0(len: i32) -> *mut P343B03A6_wire_float_32_list {
+    let ans = P343B03A6_wire_float_32_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
     };
@@ -1349,8 +1349,8 @@ pub extern "C" fn new_float_32_list_0(len: i32) -> *mut P7C55DD6B_wire_float_32_
 }
 
 #[no_mangle]
-pub extern "C" fn new_float_64_list_0(len: i32) -> *mut P7C55DD6B_wire_float_64_list {
-    let ans = P7C55DD6B_wire_float_64_list {
+pub extern "C" fn new_float_64_list_0(len: i32) -> *mut P343B03A6_wire_float_64_list {
+    let ans = P343B03A6_wire_float_64_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
     };
@@ -1358,8 +1358,8 @@ pub extern "C" fn new_float_64_list_0(len: i32) -> *mut P7C55DD6B_wire_float_64_
 }
 
 #[no_mangle]
-pub extern "C" fn new_int_32_list_0(len: i32) -> *mut P7C55DD6B_wire_int_32_list {
-    let ans = P7C55DD6B_wire_int_32_list {
+pub extern "C" fn new_int_32_list_0(len: i32) -> *mut P343B03A6_wire_int_32_list {
+    let ans = P343B03A6_wire_int_32_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
     };
@@ -1367,8 +1367,8 @@ pub extern "C" fn new_int_32_list_0(len: i32) -> *mut P7C55DD6B_wire_int_32_list
 }
 
 #[no_mangle]
-pub extern "C" fn new_int_64_list_0(len: i32) -> *mut P7C55DD6B_wire_int_64_list {
-    let ans = P7C55DD6B_wire_int_64_list {
+pub extern "C" fn new_int_64_list_0(len: i32) -> *mut P343B03A6_wire_int_64_list {
+    let ans = P343B03A6_wire_int_64_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
     };
@@ -1376,8 +1376,8 @@ pub extern "C" fn new_int_64_list_0(len: i32) -> *mut P7C55DD6B_wire_int_64_list
 }
 
 #[no_mangle]
-pub extern "C" fn new_int_8_list_0(len: i32) -> *mut P7C55DD6B_wire_int_8_list {
-    let ans = P7C55DD6B_wire_int_8_list {
+pub extern "C" fn new_int_8_list_0(len: i32) -> *mut P343B03A6_wire_int_8_list {
+    let ans = P343B03A6_wire_int_8_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
     };
@@ -1385,18 +1385,18 @@ pub extern "C" fn new_int_8_list_0(len: i32) -> *mut P7C55DD6B_wire_int_8_list {
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_DartOpaque_0(len: i32) -> *mut P7C55DD6B_wire_list_DartOpaque {
-    let wrap = P7C55DD6B_wire_list_DartOpaque {
-        ptr: support::new_leak_vec_ptr(<P7C55DD6B_wire_DartOpaque>::new_with_null_ptr(), len),
+pub extern "C" fn new_list_DartOpaque_0(len: i32) -> *mut P343B03A6_wire_list_DartOpaque {
+    let wrap = P343B03A6_wire_list_DartOpaque {
+        ptr: support::new_leak_vec_ptr(<P343B03A6_wire_DartOpaque>::new_with_null_ptr(), len),
         len,
     };
     support::new_leak_box_ptr(wrap)
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_HideData_0(len: i32) -> *mut P7C55DD6B_wire_list_HideData {
-    let wrap = P7C55DD6B_wire_list_HideData {
-        ptr: support::new_leak_vec_ptr(<P7C55DD6B_wire_HideData>::new_with_null_ptr(), len),
+pub extern "C" fn new_list_HideData_0(len: i32) -> *mut P343B03A6_wire_list_HideData {
+    let wrap = P343B03A6_wire_list_HideData {
+        ptr: support::new_leak_vec_ptr(<P343B03A6_wire_HideData>::new_with_null_ptr(), len),
         len,
     };
     support::new_leak_box_ptr(wrap)
@@ -1405,10 +1405,10 @@ pub extern "C" fn new_list_HideData_0(len: i32) -> *mut P7C55DD6B_wire_list_Hide
 #[no_mangle]
 pub extern "C" fn new_list_application_env_var_0(
     len: i32,
-) -> *mut P7C55DD6B_wire_list_application_env_var {
-    let wrap = P7C55DD6B_wire_list_application_env_var {
+) -> *mut P343B03A6_wire_list_application_env_var {
+    let wrap = P343B03A6_wire_list_application_env_var {
         ptr: support::new_leak_vec_ptr(
-            <P7C55DD6B_wire_ApplicationEnvVar>::new_with_null_ptr(),
+            <P343B03A6_wire_ApplicationEnvVar>::new_with_null_ptr(),
             len,
         ),
         len,
@@ -1417,27 +1417,27 @@ pub extern "C" fn new_list_application_env_var_0(
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_attribute_0(len: i32) -> *mut P7C55DD6B_wire_list_attribute {
-    let wrap = P7C55DD6B_wire_list_attribute {
-        ptr: support::new_leak_vec_ptr(<P7C55DD6B_wire_Attribute>::new_with_null_ptr(), len),
+pub extern "C" fn new_list_attribute_0(len: i32) -> *mut P343B03A6_wire_list_attribute {
+    let wrap = P343B03A6_wire_list_attribute {
+        ptr: support::new_leak_vec_ptr(<P343B03A6_wire_Attribute>::new_with_null_ptr(), len),
         len,
     };
     support::new_leak_box_ptr(wrap)
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_my_size_0(len: i32) -> *mut P7C55DD6B_wire_list_my_size {
-    let wrap = P7C55DD6B_wire_list_my_size {
-        ptr: support::new_leak_vec_ptr(<P7C55DD6B_wire_MySize>::new_with_null_ptr(), len),
+pub extern "C" fn new_list_my_size_0(len: i32) -> *mut P343B03A6_wire_list_my_size {
+    let wrap = P343B03A6_wire_list_my_size {
+        ptr: support::new_leak_vec_ptr(<P343B03A6_wire_MySize>::new_with_null_ptr(), len),
         len,
     };
     support::new_leak_box_ptr(wrap)
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_my_tree_node_0(len: i32) -> *mut P7C55DD6B_wire_list_my_tree_node {
-    let wrap = P7C55DD6B_wire_list_my_tree_node {
-        ptr: support::new_leak_vec_ptr(<P7C55DD6B_wire_MyTreeNode>::new_with_null_ptr(), len),
+pub extern "C" fn new_list_my_tree_node_0(len: i32) -> *mut P343B03A6_wire_list_my_tree_node {
+    let wrap = P343B03A6_wire_list_my_tree_node {
+        ptr: support::new_leak_vec_ptr(<P343B03A6_wire_MyTreeNode>::new_with_null_ptr(), len),
         len,
     };
     support::new_leak_box_ptr(wrap)
@@ -1446,26 +1446,26 @@ pub extern "C" fn new_list_my_tree_node_0(len: i32) -> *mut P7C55DD6B_wire_list_
 #[no_mangle]
 pub extern "C" fn new_list_opt_box_autoadd_attribute_0(
     len: i32,
-) -> *mut P7C55DD6B_wire_list_opt_box_autoadd_attribute {
-    let wrap = P7C55DD6B_wire_list_opt_box_autoadd_attribute {
-        ptr: support::new_leak_vec_ptr(<*mut P7C55DD6B_wire_Attribute>::new_with_null_ptr(), len),
+) -> *mut P343B03A6_wire_list_opt_box_autoadd_attribute {
+    let wrap = P343B03A6_wire_list_opt_box_autoadd_attribute {
+        ptr: support::new_leak_vec_ptr(<*mut P343B03A6_wire_Attribute>::new_with_null_ptr(), len),
         len,
     };
     support::new_leak_box_ptr(wrap)
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_test_id_0(len: i32) -> *mut P7C55DD6B_wire_list_test_id {
-    let wrap = P7C55DD6B_wire_list_test_id {
-        ptr: support::new_leak_vec_ptr(<P7C55DD6B_wire_TestId>::new_with_null_ptr(), len),
+pub extern "C" fn new_list_test_id_0(len: i32) -> *mut P343B03A6_wire_list_test_id {
+    let wrap = P343B03A6_wire_list_test_id {
+        ptr: support::new_leak_vec_ptr(<P343B03A6_wire_TestId>::new_with_null_ptr(), len),
         len,
     };
     support::new_leak_box_ptr(wrap)
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_weekdays_0(len: i32) -> *mut P7C55DD6B_wire_list_weekdays {
-    let wrap = P7C55DD6B_wire_list_weekdays {
+pub extern "C" fn new_list_weekdays_0(len: i32) -> *mut P343B03A6_wire_list_weekdays {
+    let wrap = P343B03A6_wire_list_weekdays {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
     };
@@ -1473,8 +1473,8 @@ pub extern "C" fn new_list_weekdays_0(len: i32) -> *mut P7C55DD6B_wire_list_week
 }
 
 #[no_mangle]
-pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut P7C55DD6B_wire_uint_8_list {
-    let ans = P7C55DD6B_wire_uint_8_list {
+pub extern "C" fn new_uint_8_list_0(len: i32) -> *mut P343B03A6_wire_uint_8_list {
+    let ans = P343B03A6_wire_uint_8_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
     };
@@ -1620,7 +1620,7 @@ pub extern "C" fn share_opaque_RwLockHideData(ptr: *const c_void) -> *const c_vo
 
 // Section: impl Wire2Api
 
-impl Wire2Api<RustOpaque<Box<dyn DartDebug>>> for P7C55DD6B_wire_BoxDartDebug {
+impl Wire2Api<RustOpaque<Box<dyn DartDebug>>> for P343B03A6_wire_BoxDartDebug {
     fn wire2api(self) -> RustOpaque<Box<dyn DartDebug>> {
         unsafe { support::opaque_from_dart(self.ptr as _) }
     }
@@ -1630,74 +1630,74 @@ impl Wire2Api<chrono::Duration> for i64 {
         chrono::Duration::microseconds(self)
     }
 }
-impl Wire2Api<Vec<chrono::Duration>> for *mut P7C55DD6B_wire_int_64_list {
+impl Wire2Api<Vec<chrono::Duration>> for *mut P343B03A6_wire_int_64_list {
     fn wire2api(self) -> Vec<chrono::Duration> {
         let vec: Vec<i64> = self.wire2api();
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
 
-impl Wire2Api<Vec<chrono::NaiveDateTime>> for *mut P7C55DD6B_wire_int_64_list {
+impl Wire2Api<Vec<chrono::NaiveDateTime>> for *mut P343B03A6_wire_int_64_list {
     fn wire2api(self) -> Vec<chrono::NaiveDateTime> {
         let vec: Vec<i64> = self.wire2api();
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
 
-impl Wire2Api<DartOpaque> for P7C55DD6B_wire_DartOpaque {
+impl Wire2Api<DartOpaque> for P343B03A6_wire_DartOpaque {
     fn wire2api(self) -> DartOpaque {
         unsafe { DartOpaque::new(self.handle as _, self.port) }
     }
 }
-impl Wire2Api<RustOpaque<HideData>> for P7C55DD6B_wire_HideData {
+impl Wire2Api<RustOpaque<HideData>> for P343B03A6_wire_HideData {
     fn wire2api(self) -> RustOpaque<HideData> {
         unsafe { support::opaque_from_dart(self.ptr as _) }
     }
 }
-impl Wire2Api<[RustOpaque<HideData>; 2]> for *mut P7C55DD6B_wire_list_HideData {
+impl Wire2Api<[RustOpaque<HideData>; 2]> for *mut P343B03A6_wire_list_HideData {
     fn wire2api(self) -> [RustOpaque<HideData>; 2] {
         let vec: Vec<RustOpaque<HideData>> = self.wire2api();
         support::from_vec_to_array(vec)
     }
 }
-impl Wire2Api<RustOpaque<i32>> for P7C55DD6B_wire_I32 {
+impl Wire2Api<RustOpaque<i32>> for P343B03A6_wire_I32 {
     fn wire2api(self) -> RustOpaque<i32> {
         unsafe { support::opaque_from_dart(self.ptr as _) }
     }
 }
-impl Wire2Api<RustOpaque<Mutex<HideData>>> for P7C55DD6B_wire_MutexHideData {
+impl Wire2Api<RustOpaque<Mutex<HideData>>> for P343B03A6_wire_MutexHideData {
     fn wire2api(self) -> RustOpaque<Mutex<HideData>> {
         unsafe { support::opaque_from_dart(self.ptr as _) }
     }
 }
-impl Wire2Api<RustOpaque<NonCloneData>> for P7C55DD6B_wire_NonCloneData {
+impl Wire2Api<RustOpaque<NonCloneData>> for P343B03A6_wire_NonCloneData {
     fn wire2api(self) -> RustOpaque<NonCloneData> {
         unsafe { support::opaque_from_dart(self.ptr as _) }
     }
 }
-impl Wire2Api<RustOpaque<NonSendHideData>> for P7C55DD6B_wire_NonSendHideData {
+impl Wire2Api<RustOpaque<NonSendHideData>> for P343B03A6_wire_NonSendHideData {
     fn wire2api(self) -> RustOpaque<NonSendHideData> {
         unsafe { support::opaque_from_dart(self.ptr as _) }
     }
 }
-impl Wire2Api<[DartOpaque; 1]> for *mut P7C55DD6B_wire_list_DartOpaque {
+impl Wire2Api<[DartOpaque; 1]> for *mut P343B03A6_wire_list_DartOpaque {
     fn wire2api(self) -> [DartOpaque; 1] {
         let vec: Vec<DartOpaque> = self.wire2api();
         support::from_vec_to_array(vec)
     }
 }
-impl Wire2Api<RustOpaque<RwLock<HideData>>> for P7C55DD6B_wire_RwLockHideData {
+impl Wire2Api<RustOpaque<RwLock<HideData>>> for P343B03A6_wire_RwLockHideData {
     fn wire2api(self) -> RustOpaque<RwLock<HideData>> {
         unsafe { support::opaque_from_dart(self.ptr as _) }
     }
 }
-impl Wire2Api<String> for *mut P7C55DD6B_wire_uint_8_list {
+impl Wire2Api<String> for *mut P343B03A6_wire_uint_8_list {
     fn wire2api(self) -> String {
         let vec: Vec<u8> = self.wire2api();
         String::from_utf8_lossy(&vec).into_owned()
     }
 }
-impl Wire2Api<Vec<String>> for *mut P7C55DD6B_wire_StringList {
+impl Wire2Api<Vec<String>> for *mut P343B03A6_wire_StringList {
     fn wire2api(self) -> Vec<String> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
@@ -1706,37 +1706,37 @@ impl Wire2Api<Vec<String>> for *mut P7C55DD6B_wire_StringList {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
-impl Wire2Api<[TestId; 4]> for *mut P7C55DD6B_wire_list_test_id {
+impl Wire2Api<[TestId; 4]> for *mut P343B03A6_wire_list_test_id {
     fn wire2api(self) -> [TestId; 4] {
         let vec: Vec<TestId> = self.wire2api();
         support::from_vec_to_array(vec)
     }
 }
-impl Wire2Api<uuid::Uuid> for *mut P7C55DD6B_wire_uint_8_list {
+impl Wire2Api<uuid::Uuid> for *mut P343B03A6_wire_uint_8_list {
     fn wire2api(self) -> uuid::Uuid {
         let single: Vec<u8> = self.wire2api();
         wire2api_uuid_ref(single.as_slice())
     }
 }
-impl Wire2Api<Vec<uuid::Uuid>> for *mut P7C55DD6B_wire_uint_8_list {
+impl Wire2Api<Vec<uuid::Uuid>> for *mut P343B03A6_wire_uint_8_list {
     fn wire2api(self) -> Vec<uuid::Uuid> {
         let multiple: Vec<u8> = self.wire2api();
         wire2api_uuids(multiple)
     }
 }
-impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut P7C55DD6B_wire_uint_8_list {
+impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut P343B03A6_wire_uint_8_list {
     fn wire2api(self) -> ZeroCopyBuffer<Vec<u8>> {
         ZeroCopyBuffer(self.wire2api())
     }
 }
-impl Wire2Api<A> for P7C55DD6B_wire_A {
+impl Wire2Api<A> for P343B03A6_wire_A {
     fn wire2api(self) -> A {
         A {
             a: self.a.wire2api(),
         }
     }
 }
-impl Wire2Api<Abc> for P7C55DD6B_wire_Abc {
+impl Wire2Api<Abc> for P343B03A6_wire_Abc {
     fn wire2api(self) -> Abc {
         match self.tag {
             0 => unsafe {
@@ -1763,20 +1763,20 @@ impl Wire2Api<Abc> for P7C55DD6B_wire_Abc {
         }
     }
 }
-impl Wire2Api<ApplicationEnv> for P7C55DD6B_wire_ApplicationEnv {
+impl Wire2Api<ApplicationEnv> for P343B03A6_wire_ApplicationEnv {
     fn wire2api(self) -> ApplicationEnv {
         ApplicationEnv {
             vars: self.vars.wire2api(),
         }
     }
 }
-impl Wire2Api<ApplicationEnvVar> for P7C55DD6B_wire_ApplicationEnvVar {
+impl Wire2Api<ApplicationEnvVar> for P343B03A6_wire_ApplicationEnvVar {
     fn wire2api(self) -> ApplicationEnvVar {
         ApplicationEnvVar(self.field0.wire2api(), self.field1.wire2api())
     }
 }
 
-impl Wire2Api<ApplicationSettings> for P7C55DD6B_wire_ApplicationSettings {
+impl Wire2Api<ApplicationSettings> for P343B03A6_wire_ApplicationSettings {
     fn wire2api(self) -> ApplicationSettings {
         ApplicationSettings {
             name: self.name.wire2api(),
@@ -1787,7 +1787,7 @@ impl Wire2Api<ApplicationSettings> for P7C55DD6B_wire_ApplicationSettings {
         }
     }
 }
-impl Wire2Api<Attribute> for P7C55DD6B_wire_Attribute {
+impl Wire2Api<Attribute> for P343B03A6_wire_Attribute {
     fn wire2api(self) -> Attribute {
         Attribute {
             key: self.key.wire2api(),
@@ -1795,20 +1795,20 @@ impl Wire2Api<Attribute> for P7C55DD6B_wire_Attribute {
         }
     }
 }
-impl Wire2Api<B> for P7C55DD6B_wire_B {
+impl Wire2Api<B> for P343B03A6_wire_B {
     fn wire2api(self) -> B {
         B {
             b: self.b.wire2api(),
         }
     }
 }
-impl Wire2Api<Blob> for P7C55DD6B_wire_Blob {
+impl Wire2Api<Blob> for P343B03A6_wire_Blob {
     fn wire2api(self) -> Blob {
         Blob(self.field0.wire2api())
     }
 }
 
-impl Wire2Api<Box<ApplicationEnv>> for *mut P7C55DD6B_wire_ApplicationEnv {
+impl Wire2Api<Box<ApplicationEnv>> for *mut P343B03A6_wire_ApplicationEnv {
     fn wire2api(self) -> Box<ApplicationEnv> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<ApplicationEnv>::wire2api(*wrap).into()
@@ -1820,49 +1820,49 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for *mut i64 {
         Wire2Api::<chrono::DateTime<chrono::Utc>>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<DartOpaque> for *mut P7C55DD6B_wire_DartOpaque {
+impl Wire2Api<DartOpaque> for *mut P343B03A6_wire_DartOpaque {
     fn wire2api(self) -> DartOpaque {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<DartOpaque>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<RustOpaque<HideData>> for *mut P7C55DD6B_wire_HideData {
+impl Wire2Api<RustOpaque<HideData>> for *mut P343B03A6_wire_HideData {
     fn wire2api(self) -> RustOpaque<HideData> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<RustOpaque<HideData>>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<A> for *mut P7C55DD6B_wire_A {
+impl Wire2Api<A> for *mut P343B03A6_wire_A {
     fn wire2api(self) -> A {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<A>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Abc> for *mut P7C55DD6B_wire_Abc {
+impl Wire2Api<Abc> for *mut P343B03A6_wire_Abc {
     fn wire2api(self) -> Abc {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<Abc>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<ApplicationEnv> for *mut P7C55DD6B_wire_ApplicationEnv {
+impl Wire2Api<ApplicationEnv> for *mut P343B03A6_wire_ApplicationEnv {
     fn wire2api(self) -> ApplicationEnv {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<ApplicationEnv>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<ApplicationSettings> for *mut P7C55DD6B_wire_ApplicationSettings {
+impl Wire2Api<ApplicationSettings> for *mut P343B03A6_wire_ApplicationSettings {
     fn wire2api(self) -> ApplicationSettings {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<ApplicationSettings>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Attribute> for *mut P7C55DD6B_wire_Attribute {
+impl Wire2Api<Attribute> for *mut P343B03A6_wire_Attribute {
     fn wire2api(self) -> Attribute {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<Attribute>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<B> for *mut P7C55DD6B_wire_B {
+impl Wire2Api<B> for *mut P343B03A6_wire_B {
     fn wire2api(self) -> B {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<B>::wire2api(*wrap).into()
@@ -1873,55 +1873,55 @@ impl Wire2Api<bool> for *mut bool {
         unsafe { *support::box_from_leak_ptr(self) }
     }
 }
-impl Wire2Api<C> for *mut P7C55DD6B_wire_C {
+impl Wire2Api<C> for *mut P343B03A6_wire_C {
     fn wire2api(self) -> C {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<C>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<ConcatenateWith> for *mut P7C55DD6B_wire_ConcatenateWith {
+impl Wire2Api<ConcatenateWith> for *mut P343B03A6_wire_ConcatenateWith {
     fn wire2api(self) -> ConcatenateWith {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<ConcatenateWith>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Customized> for *mut P7C55DD6B_wire_Customized {
+impl Wire2Api<Customized> for *mut P343B03A6_wire_Customized {
     fn wire2api(self) -> Customized {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<Customized>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<DartOpaqueNested> for *mut P7C55DD6B_wire_DartOpaqueNested {
+impl Wire2Api<DartOpaqueNested> for *mut P343B03A6_wire_DartOpaqueNested {
     fn wire2api(self) -> DartOpaqueNested {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<DartOpaqueNested>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Empty> for *mut P7C55DD6B_wire_Empty {
+impl Wire2Api<Empty> for *mut P343B03A6_wire_Empty {
     fn wire2api(self) -> Empty {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<Empty>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<EnumDartOpaque> for *mut P7C55DD6B_wire_EnumDartOpaque {
+impl Wire2Api<EnumDartOpaque> for *mut P343B03A6_wire_EnumDartOpaque {
     fn wire2api(self) -> EnumDartOpaque {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<EnumDartOpaque>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<EnumOpaque> for *mut P7C55DD6B_wire_EnumOpaque {
+impl Wire2Api<EnumOpaque> for *mut P343B03A6_wire_EnumOpaque {
     fn wire2api(self) -> EnumOpaque {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<EnumOpaque>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Event> for *mut P7C55DD6B_wire_Event {
+impl Wire2Api<Event> for *mut P343B03A6_wire_Event {
     fn wire2api(self) -> Event {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<Event>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<ExoticOptionals> for *mut P7C55DD6B_wire_ExoticOptionals {
+impl Wire2Api<ExoticOptionals> for *mut P343B03A6_wire_ExoticOptionals {
     fn wire2api(self) -> ExoticOptionals {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<ExoticOptionals>::wire2api(*wrap).into()
@@ -1932,19 +1932,19 @@ impl Wire2Api<f64> for *mut f64 {
         unsafe { *support::box_from_leak_ptr(self) }
     }
 }
-impl Wire2Api<FeatureChrono> for *mut P7C55DD6B_wire_FeatureChrono {
+impl Wire2Api<FeatureChrono> for *mut P343B03A6_wire_FeatureChrono {
     fn wire2api(self) -> FeatureChrono {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<FeatureChrono>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<FeatureUuid> for *mut P7C55DD6B_wire_FeatureUuid {
+impl Wire2Api<FeatureUuid> for *mut P343B03A6_wire_FeatureUuid {
     fn wire2api(self) -> FeatureUuid {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<FeatureUuid>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<FeedId> for *mut P7C55DD6B_wire_FeedId {
+impl Wire2Api<FeedId> for *mut P343B03A6_wire_FeedId {
     fn wire2api(self) -> FeedId {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<FeedId>::wire2api(*wrap).into()
@@ -1960,97 +1960,97 @@ impl Wire2Api<i64> for *mut i64 {
         unsafe { *support::box_from_leak_ptr(self) }
     }
 }
-impl Wire2Api<KitchenSink> for *mut P7C55DD6B_wire_KitchenSink {
+impl Wire2Api<KitchenSink> for *mut P343B03A6_wire_KitchenSink {
     fn wire2api(self) -> KitchenSink {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<KitchenSink>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Measure> for *mut P7C55DD6B_wire_Measure {
+impl Wire2Api<Measure> for *mut P343B03A6_wire_Measure {
     fn wire2api(self) -> Measure {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<Measure>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<MessageId> for *mut P7C55DD6B_wire_MessageId {
+impl Wire2Api<MessageId> for *mut P343B03A6_wire_MessageId {
     fn wire2api(self) -> MessageId {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<MessageId>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<MyNestedStruct> for *mut P7C55DD6B_wire_MyNestedStruct {
+impl Wire2Api<MyNestedStruct> for *mut P343B03A6_wire_MyNestedStruct {
     fn wire2api(self) -> MyNestedStruct {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<MyNestedStruct>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<MySize> for *mut P7C55DD6B_wire_MySize {
+impl Wire2Api<MySize> for *mut P343B03A6_wire_MySize {
     fn wire2api(self) -> MySize {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<MySize>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<MyStruct> for *mut P7C55DD6B_wire_MyStruct {
+impl Wire2Api<MyStruct> for *mut P343B03A6_wire_MyStruct {
     fn wire2api(self) -> MyStruct {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<MyStruct>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<MyTreeNode> for *mut P7C55DD6B_wire_MyTreeNode {
+impl Wire2Api<MyTreeNode> for *mut P343B03A6_wire_MyTreeNode {
     fn wire2api(self) -> MyTreeNode {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<MyTreeNode>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<NewTypeInt> for *mut P7C55DD6B_wire_NewTypeInt {
+impl Wire2Api<NewTypeInt> for *mut P343B03A6_wire_NewTypeInt {
     fn wire2api(self) -> NewTypeInt {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<NewTypeInt>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Note> for *mut P7C55DD6B_wire_Note {
+impl Wire2Api<Note> for *mut P343B03A6_wire_Note {
     fn wire2api(self) -> Note {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<Note>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Numbers> for *mut P7C55DD6B_wire_Numbers {
+impl Wire2Api<Numbers> for *mut P343B03A6_wire_Numbers {
     fn wire2api(self) -> Numbers {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<Numbers>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<OpaqueNested> for *mut P7C55DD6B_wire_OpaqueNested {
+impl Wire2Api<OpaqueNested> for *mut P343B03A6_wire_OpaqueNested {
     fn wire2api(self) -> OpaqueNested {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<OpaqueNested>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Sequences> for *mut P7C55DD6B_wire_Sequences {
+impl Wire2Api<Sequences> for *mut P343B03A6_wire_Sequences {
     fn wire2api(self) -> Sequences {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<Sequences>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<SumWith> for *mut P7C55DD6B_wire_SumWith {
+impl Wire2Api<SumWith> for *mut P343B03A6_wire_SumWith {
     fn wire2api(self) -> SumWith {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<SumWith>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<TestId> for *mut P7C55DD6B_wire_TestId {
+impl Wire2Api<TestId> for *mut P343B03A6_wire_TestId {
     fn wire2api(self) -> TestId {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<TestId>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<UserId> for *mut P7C55DD6B_wire_UserId {
+impl Wire2Api<UserId> for *mut P343B03A6_wire_UserId {
     fn wire2api(self) -> UserId {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<UserId>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Box<Blob>> for *mut P7C55DD6B_wire_Blob {
+impl Wire2Api<Box<Blob>> for *mut P343B03A6_wire_Blob {
     fn wire2api(self) -> Box<Blob> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<Blob>::wire2api(*wrap).into()
@@ -2061,13 +2061,13 @@ impl Wire2Api<Box<bool>> for *mut bool {
         unsafe { support::box_from_leak_ptr(self) }
     }
 }
-impl Wire2Api<Box<Distance>> for *mut P7C55DD6B_wire_Distance {
+impl Wire2Api<Box<Distance>> for *mut P343B03A6_wire_Distance {
     fn wire2api(self) -> Box<Distance> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<Distance>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Box<ExoticOptionals>> for *mut P7C55DD6B_wire_ExoticOptionals {
+impl Wire2Api<Box<ExoticOptionals>> for *mut P343B03A6_wire_ExoticOptionals {
     fn wire2api(self) -> Box<ExoticOptionals> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<ExoticOptionals>::wire2api(*wrap).into()
@@ -2093,19 +2093,19 @@ impl Wire2Api<Box<i8>> for *mut i8 {
         unsafe { support::box_from_leak_ptr(self) }
     }
 }
-impl Wire2Api<Box<KitchenSink>> for *mut P7C55DD6B_wire_KitchenSink {
+impl Wire2Api<Box<KitchenSink>> for *mut P343B03A6_wire_KitchenSink {
     fn wire2api(self) -> Box<KitchenSink> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<KitchenSink>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Box<MySize>> for *mut P7C55DD6B_wire_MySize {
+impl Wire2Api<Box<MySize>> for *mut P343B03A6_wire_MySize {
     fn wire2api(self) -> Box<MySize> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<MySize>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Box<Speed>> for *mut P7C55DD6B_wire_Speed {
+impl Wire2Api<Box<Speed>> for *mut P343B03A6_wire_Speed {
     fn wire2api(self) -> Box<Speed> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<Speed>::wire2api(*wrap).into()
@@ -2116,7 +2116,7 @@ impl Wire2Api<Box<u8>> for *mut u8 {
         unsafe { support::box_from_leak_ptr(self) }
     }
 }
-impl Wire2Api<Box<[u8; 1600]>> for *mut P7C55DD6B_wire_uint_8_list {
+impl Wire2Api<Box<[u8; 1600]>> for *mut P343B03A6_wire_uint_8_list {
     fn wire2api(self) -> Box<[u8; 1600]> {
         Wire2Api::<[u8; 1600]>::wire2api(self).into()
     }
@@ -2127,21 +2127,21 @@ impl Wire2Api<Box<Weekdays>> for *mut i32 {
         Wire2Api::<Weekdays>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<C> for P7C55DD6B_wire_C {
+impl Wire2Api<C> for P343B03A6_wire_C {
     fn wire2api(self) -> C {
         C {
             c: self.c.wire2api(),
         }
     }
 }
-impl Wire2Api<ConcatenateWith> for P7C55DD6B_wire_ConcatenateWith {
+impl Wire2Api<ConcatenateWith> for P343B03A6_wire_ConcatenateWith {
     fn wire2api(self) -> ConcatenateWith {
         ConcatenateWith {
             a: self.a.wire2api(),
         }
     }
 }
-impl Wire2Api<Customized> for P7C55DD6B_wire_Customized {
+impl Wire2Api<Customized> for P343B03A6_wire_Customized {
     fn wire2api(self) -> Customized {
         Customized {
             final_field: self.final_field.wire2api(),
@@ -2149,7 +2149,7 @@ impl Wire2Api<Customized> for P7C55DD6B_wire_Customized {
         }
     }
 }
-impl Wire2Api<DartOpaqueNested> for P7C55DD6B_wire_DartOpaqueNested {
+impl Wire2Api<DartOpaqueNested> for P343B03A6_wire_DartOpaqueNested {
     fn wire2api(self) -> DartOpaqueNested {
         DartOpaqueNested {
             first: self.first.wire2api(),
@@ -2157,7 +2157,7 @@ impl Wire2Api<DartOpaqueNested> for P7C55DD6B_wire_DartOpaqueNested {
         }
     }
 }
-impl Wire2Api<Distance> for P7C55DD6B_wire_Distance {
+impl Wire2Api<Distance> for P343B03A6_wire_Distance {
     fn wire2api(self) -> Distance {
         match self.tag {
             0 => Distance::Unknown,
@@ -2170,12 +2170,12 @@ impl Wire2Api<Distance> for P7C55DD6B_wire_Distance {
         }
     }
 }
-impl Wire2Api<Empty> for P7C55DD6B_wire_Empty {
+impl Wire2Api<Empty> for P343B03A6_wire_Empty {
     fn wire2api(self) -> Empty {
         Empty {}
     }
 }
-impl Wire2Api<EnumDartOpaque> for P7C55DD6B_wire_EnumDartOpaque {
+impl Wire2Api<EnumDartOpaque> for P343B03A6_wire_EnumDartOpaque {
     fn wire2api(self) -> EnumDartOpaque {
         match self.tag {
             0 => unsafe {
@@ -2192,7 +2192,7 @@ impl Wire2Api<EnumDartOpaque> for P7C55DD6B_wire_EnumDartOpaque {
         }
     }
 }
-impl Wire2Api<EnumOpaque> for P7C55DD6B_wire_EnumOpaque {
+impl Wire2Api<EnumOpaque> for P343B03A6_wire_EnumOpaque {
     fn wire2api(self) -> EnumOpaque {
         match self.tag {
             0 => unsafe {
@@ -2224,7 +2224,7 @@ impl Wire2Api<EnumOpaque> for P7C55DD6B_wire_EnumOpaque {
         }
     }
 }
-impl Wire2Api<Event> for P7C55DD6B_wire_Event {
+impl Wire2Api<Event> for P343B03A6_wire_Event {
     fn wire2api(self) -> Event {
         Event {
             address: self.address.wire2api(),
@@ -2232,7 +2232,7 @@ impl Wire2Api<Event> for P7C55DD6B_wire_Event {
         }
     }
 }
-impl Wire2Api<ExoticOptionals> for P7C55DD6B_wire_ExoticOptionals {
+impl Wire2Api<ExoticOptionals> for P343B03A6_wire_ExoticOptionals {
     fn wire2api(self) -> ExoticOptionals {
         ExoticOptionals {
             int32: self.int32.wire2api(),
@@ -2253,13 +2253,13 @@ impl Wire2Api<ExoticOptionals> for P7C55DD6B_wire_ExoticOptionals {
     }
 }
 
-impl Wire2Api<[f64; 16]> for *mut P7C55DD6B_wire_float_64_list {
+impl Wire2Api<[f64; 16]> for *mut P343B03A6_wire_float_64_list {
     fn wire2api(self) -> [f64; 16] {
         let vec: Vec<f64> = self.wire2api();
         support::from_vec_to_array(vec)
     }
 }
-impl Wire2Api<FeatureChrono> for P7C55DD6B_wire_FeatureChrono {
+impl Wire2Api<FeatureChrono> for P343B03A6_wire_FeatureChrono {
     fn wire2api(self) -> FeatureChrono {
         FeatureChrono {
             utc: self.utc.wire2api(),
@@ -2269,7 +2269,7 @@ impl Wire2Api<FeatureChrono> for P7C55DD6B_wire_FeatureChrono {
         }
     }
 }
-impl Wire2Api<FeatureUuid> for P7C55DD6B_wire_FeatureUuid {
+impl Wire2Api<FeatureUuid> for P343B03A6_wire_FeatureUuid {
     fn wire2api(self) -> FeatureUuid {
         FeatureUuid {
             one: self.one.wire2api(),
@@ -2277,12 +2277,12 @@ impl Wire2Api<FeatureUuid> for P7C55DD6B_wire_FeatureUuid {
         }
     }
 }
-impl Wire2Api<FeedId> for P7C55DD6B_wire_FeedId {
+impl Wire2Api<FeedId> for P343B03A6_wire_FeedId {
     fn wire2api(self) -> FeedId {
         FeedId(self.field0.wire2api())
     }
 }
-impl Wire2Api<Vec<f32>> for *mut P7C55DD6B_wire_float_32_list {
+impl Wire2Api<Vec<f32>> for *mut P343B03A6_wire_float_32_list {
     fn wire2api(self) -> Vec<f32> {
         unsafe {
             let wrap = support::box_from_leak_ptr(self);
@@ -2290,7 +2290,7 @@ impl Wire2Api<Vec<f32>> for *mut P7C55DD6B_wire_float_32_list {
         }
     }
 }
-impl Wire2Api<Vec<f64>> for *mut P7C55DD6B_wire_float_64_list {
+impl Wire2Api<Vec<f64>> for *mut P343B03A6_wire_float_64_list {
     fn wire2api(self) -> Vec<f64> {
         unsafe {
             let wrap = support::box_from_leak_ptr(self);
@@ -2299,14 +2299,14 @@ impl Wire2Api<Vec<f64>> for *mut P7C55DD6B_wire_float_64_list {
     }
 }
 
-impl Wire2Api<[i32; 2]> for *mut P7C55DD6B_wire_int_32_list {
+impl Wire2Api<[i32; 2]> for *mut P343B03A6_wire_int_32_list {
     fn wire2api(self) -> [i32; 2] {
         let vec: Vec<i32> = self.wire2api();
         support::from_vec_to_array(vec)
     }
 }
 
-impl Wire2Api<Vec<i32>> for *mut P7C55DD6B_wire_int_32_list {
+impl Wire2Api<Vec<i32>> for *mut P343B03A6_wire_int_32_list {
     fn wire2api(self) -> Vec<i32> {
         unsafe {
             let wrap = support::box_from_leak_ptr(self);
@@ -2314,7 +2314,7 @@ impl Wire2Api<Vec<i32>> for *mut P7C55DD6B_wire_int_32_list {
         }
     }
 }
-impl Wire2Api<Vec<i64>> for *mut P7C55DD6B_wire_int_64_list {
+impl Wire2Api<Vec<i64>> for *mut P343B03A6_wire_int_64_list {
     fn wire2api(self) -> Vec<i64> {
         unsafe {
             let wrap = support::box_from_leak_ptr(self);
@@ -2322,7 +2322,7 @@ impl Wire2Api<Vec<i64>> for *mut P7C55DD6B_wire_int_64_list {
         }
     }
 }
-impl Wire2Api<Vec<i8>> for *mut P7C55DD6B_wire_int_8_list {
+impl Wire2Api<Vec<i8>> for *mut P343B03A6_wire_int_8_list {
     fn wire2api(self) -> Vec<i8> {
         unsafe {
             let wrap = support::box_from_leak_ptr(self);
@@ -2330,7 +2330,7 @@ impl Wire2Api<Vec<i8>> for *mut P7C55DD6B_wire_int_8_list {
         }
     }
 }
-impl Wire2Api<KitchenSink> for P7C55DD6B_wire_KitchenSink {
+impl Wire2Api<KitchenSink> for P343B03A6_wire_KitchenSink {
     fn wire2api(self) -> KitchenSink {
         match self.tag {
             0 => KitchenSink::Empty,
@@ -2367,7 +2367,7 @@ impl Wire2Api<KitchenSink> for P7C55DD6B_wire_KitchenSink {
         }
     }
 }
-impl Wire2Api<Vec<DartOpaque>> for *mut P7C55DD6B_wire_list_DartOpaque {
+impl Wire2Api<Vec<DartOpaque>> for *mut P343B03A6_wire_list_DartOpaque {
     fn wire2api(self) -> Vec<DartOpaque> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
@@ -2376,7 +2376,7 @@ impl Wire2Api<Vec<DartOpaque>> for *mut P7C55DD6B_wire_list_DartOpaque {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
-impl Wire2Api<Vec<RustOpaque<HideData>>> for *mut P7C55DD6B_wire_list_HideData {
+impl Wire2Api<Vec<RustOpaque<HideData>>> for *mut P343B03A6_wire_list_HideData {
     fn wire2api(self) -> Vec<RustOpaque<HideData>> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
@@ -2385,7 +2385,7 @@ impl Wire2Api<Vec<RustOpaque<HideData>>> for *mut P7C55DD6B_wire_list_HideData {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
-impl Wire2Api<Vec<ApplicationEnvVar>> for *mut P7C55DD6B_wire_list_application_env_var {
+impl Wire2Api<Vec<ApplicationEnvVar>> for *mut P343B03A6_wire_list_application_env_var {
     fn wire2api(self) -> Vec<ApplicationEnvVar> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
@@ -2394,7 +2394,7 @@ impl Wire2Api<Vec<ApplicationEnvVar>> for *mut P7C55DD6B_wire_list_application_e
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
-impl Wire2Api<Vec<Attribute>> for *mut P7C55DD6B_wire_list_attribute {
+impl Wire2Api<Vec<Attribute>> for *mut P343B03A6_wire_list_attribute {
     fn wire2api(self) -> Vec<Attribute> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
@@ -2403,7 +2403,7 @@ impl Wire2Api<Vec<Attribute>> for *mut P7C55DD6B_wire_list_attribute {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
-impl Wire2Api<Vec<MySize>> for *mut P7C55DD6B_wire_list_my_size {
+impl Wire2Api<Vec<MySize>> for *mut P343B03A6_wire_list_my_size {
     fn wire2api(self) -> Vec<MySize> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
@@ -2412,7 +2412,7 @@ impl Wire2Api<Vec<MySize>> for *mut P7C55DD6B_wire_list_my_size {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
-impl Wire2Api<Vec<MyTreeNode>> for *mut P7C55DD6B_wire_list_my_tree_node {
+impl Wire2Api<Vec<MyTreeNode>> for *mut P343B03A6_wire_list_my_tree_node {
     fn wire2api(self) -> Vec<MyTreeNode> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
@@ -2421,7 +2421,7 @@ impl Wire2Api<Vec<MyTreeNode>> for *mut P7C55DD6B_wire_list_my_tree_node {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
-impl Wire2Api<Vec<Option<Attribute>>> for *mut P7C55DD6B_wire_list_opt_box_autoadd_attribute {
+impl Wire2Api<Vec<Option<Attribute>>> for *mut P343B03A6_wire_list_opt_box_autoadd_attribute {
     fn wire2api(self) -> Vec<Option<Attribute>> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
@@ -2430,7 +2430,7 @@ impl Wire2Api<Vec<Option<Attribute>>> for *mut P7C55DD6B_wire_list_opt_box_autoa
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
-impl Wire2Api<Vec<TestId>> for *mut P7C55DD6B_wire_list_test_id {
+impl Wire2Api<Vec<TestId>> for *mut P343B03A6_wire_list_test_id {
     fn wire2api(self) -> Vec<TestId> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
@@ -2439,7 +2439,7 @@ impl Wire2Api<Vec<TestId>> for *mut P7C55DD6B_wire_list_test_id {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
-impl Wire2Api<Vec<Weekdays>> for *mut P7C55DD6B_wire_list_weekdays {
+impl Wire2Api<Vec<Weekdays>> for *mut P343B03A6_wire_list_weekdays {
     fn wire2api(self) -> Vec<Weekdays> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
@@ -2448,7 +2448,7 @@ impl Wire2Api<Vec<Weekdays>> for *mut P7C55DD6B_wire_list_weekdays {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
-impl Wire2Api<Measure> for P7C55DD6B_wire_Measure {
+impl Wire2Api<Measure> for P343B03A6_wire_Measure {
     fn wire2api(self) -> Measure {
         match self.tag {
             0 => unsafe {
@@ -2465,13 +2465,13 @@ impl Wire2Api<Measure> for P7C55DD6B_wire_Measure {
         }
     }
 }
-impl Wire2Api<MessageId> for P7C55DD6B_wire_MessageId {
+impl Wire2Api<MessageId> for P343B03A6_wire_MessageId {
     fn wire2api(self) -> MessageId {
         MessageId(self.field0.wire2api())
     }
 }
 
-impl Wire2Api<MyNestedStruct> for P7C55DD6B_wire_MyNestedStruct {
+impl Wire2Api<MyNestedStruct> for P343B03A6_wire_MyNestedStruct {
     fn wire2api(self) -> MyNestedStruct {
         MyNestedStruct {
             tree_node: self.tree_node.wire2api(),
@@ -2479,7 +2479,7 @@ impl Wire2Api<MyNestedStruct> for P7C55DD6B_wire_MyNestedStruct {
         }
     }
 }
-impl Wire2Api<MySize> for P7C55DD6B_wire_MySize {
+impl Wire2Api<MySize> for P343B03A6_wire_MySize {
     fn wire2api(self) -> MySize {
         MySize {
             width: self.width.wire2api(),
@@ -2487,14 +2487,14 @@ impl Wire2Api<MySize> for P7C55DD6B_wire_MySize {
         }
     }
 }
-impl Wire2Api<MyStruct> for P7C55DD6B_wire_MyStruct {
+impl Wire2Api<MyStruct> for P343B03A6_wire_MyStruct {
     fn wire2api(self) -> MyStruct {
         MyStruct {
             content: self.content.wire2api(),
         }
     }
 }
-impl Wire2Api<MyTreeNode> for P7C55DD6B_wire_MyTreeNode {
+impl Wire2Api<MyTreeNode> for P343B03A6_wire_MyTreeNode {
     fn wire2api(self) -> MyTreeNode {
         MyTreeNode {
             value_i32: self.value_i32.wire2api(),
@@ -2504,12 +2504,12 @@ impl Wire2Api<MyTreeNode> for P7C55DD6B_wire_MyTreeNode {
         }
     }
 }
-impl Wire2Api<NewTypeInt> for P7C55DD6B_wire_NewTypeInt {
+impl Wire2Api<NewTypeInt> for P343B03A6_wire_NewTypeInt {
     fn wire2api(self) -> NewTypeInt {
         NewTypeInt(self.field0.wire2api())
     }
 }
-impl Wire2Api<Note> for P7C55DD6B_wire_Note {
+impl Wire2Api<Note> for P343B03A6_wire_Note {
     fn wire2api(self) -> Note {
         Note {
             day: self.day.wire2api(),
@@ -2517,12 +2517,12 @@ impl Wire2Api<Note> for P7C55DD6B_wire_Note {
         }
     }
 }
-impl Wire2Api<Numbers> for P7C55DD6B_wire_Numbers {
+impl Wire2Api<Numbers> for P343B03A6_wire_Numbers {
     fn wire2api(self) -> Numbers {
         Numbers(self.field0.wire2api())
     }
 }
-impl Wire2Api<OpaqueNested> for P7C55DD6B_wire_OpaqueNested {
+impl Wire2Api<OpaqueNested> for P343B03A6_wire_OpaqueNested {
     fn wire2api(self) -> OpaqueNested {
         OpaqueNested {
             first: self.first.wire2api(),
@@ -2531,12 +2531,12 @@ impl Wire2Api<OpaqueNested> for P7C55DD6B_wire_OpaqueNested {
     }
 }
 
-impl Wire2Api<Sequences> for P7C55DD6B_wire_Sequences {
+impl Wire2Api<Sequences> for P343B03A6_wire_Sequences {
     fn wire2api(self) -> Sequences {
         Sequences(self.field0.wire2api())
     }
 }
-impl Wire2Api<Speed> for P7C55DD6B_wire_Speed {
+impl Wire2Api<Speed> for P343B03A6_wire_Speed {
     fn wire2api(self) -> Speed {
         match self.tag {
             0 => Speed::Unknown,
@@ -2549,38 +2549,38 @@ impl Wire2Api<Speed> for P7C55DD6B_wire_Speed {
         }
     }
 }
-impl Wire2Api<SumWith> for P7C55DD6B_wire_SumWith {
+impl Wire2Api<SumWith> for P343B03A6_wire_SumWith {
     fn wire2api(self) -> SumWith {
         SumWith {
             x: self.x.wire2api(),
         }
     }
 }
-impl Wire2Api<TestId> for P7C55DD6B_wire_TestId {
+impl Wire2Api<TestId> for P343B03A6_wire_TestId {
     fn wire2api(self) -> TestId {
         TestId(self.field0.wire2api())
     }
 }
 
-impl Wire2Api<[u8; 1600]> for *mut P7C55DD6B_wire_uint_8_list {
+impl Wire2Api<[u8; 1600]> for *mut P343B03A6_wire_uint_8_list {
     fn wire2api(self) -> [u8; 1600] {
         let vec: Vec<u8> = self.wire2api();
         support::from_vec_to_array(vec)
     }
 }
-impl Wire2Api<[u8; 32]> for *mut P7C55DD6B_wire_uint_8_list {
+impl Wire2Api<[u8; 32]> for *mut P343B03A6_wire_uint_8_list {
     fn wire2api(self) -> [u8; 32] {
         let vec: Vec<u8> = self.wire2api();
         support::from_vec_to_array(vec)
     }
 }
-impl Wire2Api<[u8; 8]> for *mut P7C55DD6B_wire_uint_8_list {
+impl Wire2Api<[u8; 8]> for *mut P343B03A6_wire_uint_8_list {
     fn wire2api(self) -> [u8; 8] {
         let vec: Vec<u8> = self.wire2api();
         support::from_vec_to_array(vec)
     }
 }
-impl Wire2Api<Vec<u8>> for *mut P7C55DD6B_wire_uint_8_list {
+impl Wire2Api<Vec<u8>> for *mut P343B03A6_wire_uint_8_list {
     fn wire2api(self) -> Vec<u8> {
         unsafe {
             let wrap = support::box_from_leak_ptr(self);
@@ -2588,7 +2588,7 @@ impl Wire2Api<Vec<u8>> for *mut P7C55DD6B_wire_uint_8_list {
         }
     }
 }
-impl Wire2Api<UserId> for P7C55DD6B_wire_UserId {
+impl Wire2Api<UserId> for P343B03A6_wire_UserId {
     fn wire2api(self) -> UserId {
         UserId {
             value: self.value.wire2api(),
@@ -2600,167 +2600,167 @@ impl Wire2Api<UserId> for P7C55DD6B_wire_UserId {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_BoxDartDebug {
+pub struct P343B03A6_wire_BoxDartDebug {
     ptr: *const core::ffi::c_void,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_DartOpaque {
+pub struct P343B03A6_wire_DartOpaque {
     port: i64,
     handle: usize,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_HideData {
+pub struct P343B03A6_wire_HideData {
     ptr: *const core::ffi::c_void,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_I32 {
+pub struct P343B03A6_wire_I32 {
     ptr: *const core::ffi::c_void,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_MutexHideData {
+pub struct P343B03A6_wire_MutexHideData {
     ptr: *const core::ffi::c_void,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_NonCloneData {
+pub struct P343B03A6_wire_NonCloneData {
     ptr: *const core::ffi::c_void,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_NonSendHideData {
+pub struct P343B03A6_wire_NonSendHideData {
     ptr: *const core::ffi::c_void,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_RwLockHideData {
+pub struct P343B03A6_wire_RwLockHideData {
     ptr: *const core::ffi::c_void,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_StringList {
-    ptr: *mut *mut P7C55DD6B_wire_uint_8_list,
+pub struct P343B03A6_wire_StringList {
+    ptr: *mut *mut P343B03A6_wire_uint_8_list,
     len: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_A {
-    a: *mut P7C55DD6B_wire_uint_8_list,
+pub struct P343B03A6_wire_A {
+    a: *mut P343B03A6_wire_uint_8_list,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_ApplicationEnv {
-    vars: *mut P7C55DD6B_wire_list_application_env_var,
+pub struct P343B03A6_wire_ApplicationEnv {
+    vars: *mut P343B03A6_wire_list_application_env_var,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_ApplicationEnvVar {
-    field0: *mut P7C55DD6B_wire_uint_8_list,
+pub struct P343B03A6_wire_ApplicationEnvVar {
+    field0: *mut P343B03A6_wire_uint_8_list,
     field1: bool,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_ApplicationSettings {
-    name: *mut P7C55DD6B_wire_uint_8_list,
-    version: *mut P7C55DD6B_wire_uint_8_list,
+pub struct P343B03A6_wire_ApplicationSettings {
+    name: *mut P343B03A6_wire_uint_8_list,
+    version: *mut P343B03A6_wire_uint_8_list,
     mode: i32,
-    env: *mut P7C55DD6B_wire_ApplicationEnv,
-    env_optional: *mut P7C55DD6B_wire_ApplicationEnv,
+    env: *mut P343B03A6_wire_ApplicationEnv,
+    env_optional: *mut P343B03A6_wire_ApplicationEnv,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_Attribute {
-    key: *mut P7C55DD6B_wire_uint_8_list,
-    value: *mut P7C55DD6B_wire_uint_8_list,
+pub struct P343B03A6_wire_Attribute {
+    key: *mut P343B03A6_wire_uint_8_list,
+    value: *mut P343B03A6_wire_uint_8_list,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_B {
+pub struct P343B03A6_wire_B {
     b: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_Blob {
-    field0: *mut P7C55DD6B_wire_uint_8_list,
+pub struct P343B03A6_wire_Blob {
+    field0: *mut P343B03A6_wire_uint_8_list,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_C {
+pub struct P343B03A6_wire_C {
     c: bool,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_ConcatenateWith {
-    a: *mut P7C55DD6B_wire_uint_8_list,
+pub struct P343B03A6_wire_ConcatenateWith {
+    a: *mut P343B03A6_wire_uint_8_list,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_Customized {
-    final_field: *mut P7C55DD6B_wire_uint_8_list,
-    non_final_field: *mut P7C55DD6B_wire_uint_8_list,
+pub struct P343B03A6_wire_Customized {
+    final_field: *mut P343B03A6_wire_uint_8_list,
+    non_final_field: *mut P343B03A6_wire_uint_8_list,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_DartOpaqueNested {
-    first: P7C55DD6B_wire_DartOpaque,
-    second: P7C55DD6B_wire_DartOpaque,
+pub struct P343B03A6_wire_DartOpaqueNested {
+    first: P343B03A6_wire_DartOpaque,
+    second: P343B03A6_wire_DartOpaque,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_Empty {}
+pub struct P343B03A6_wire_Empty {}
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_Event {
-    address: *mut P7C55DD6B_wire_uint_8_list,
-    payload: *mut P7C55DD6B_wire_uint_8_list,
+pub struct P343B03A6_wire_Event {
+    address: *mut P343B03A6_wire_uint_8_list,
+    payload: *mut P343B03A6_wire_uint_8_list,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_ExoticOptionals {
+pub struct P343B03A6_wire_ExoticOptionals {
     int32: *mut i32,
     int64: *mut i64,
     float64: *mut f64,
     boolean: *mut bool,
-    zerocopy: *mut P7C55DD6B_wire_uint_8_list,
-    int8list: *mut P7C55DD6B_wire_int_8_list,
-    uint8list: *mut P7C55DD6B_wire_uint_8_list,
-    int32list: *mut P7C55DD6B_wire_int_32_list,
-    float32list: *mut P7C55DD6B_wire_float_32_list,
-    float64list: *mut P7C55DD6B_wire_float_64_list,
-    attributes: *mut P7C55DD6B_wire_list_attribute,
-    attributes_nullable: *mut P7C55DD6B_wire_list_opt_box_autoadd_attribute,
-    nullable_attributes: *mut P7C55DD6B_wire_list_opt_box_autoadd_attribute,
-    newtypeint: *mut P7C55DD6B_wire_NewTypeInt,
+    zerocopy: *mut P343B03A6_wire_uint_8_list,
+    int8list: *mut P343B03A6_wire_int_8_list,
+    uint8list: *mut P343B03A6_wire_uint_8_list,
+    int32list: *mut P343B03A6_wire_int_32_list,
+    float32list: *mut P343B03A6_wire_float_32_list,
+    float64list: *mut P343B03A6_wire_float_64_list,
+    attributes: *mut P343B03A6_wire_list_attribute,
+    attributes_nullable: *mut P343B03A6_wire_list_opt_box_autoadd_attribute,
+    nullable_attributes: *mut P343B03A6_wire_list_opt_box_autoadd_attribute,
+    newtypeint: *mut P343B03A6_wire_NewTypeInt,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_FeatureChrono {
+pub struct P343B03A6_wire_FeatureChrono {
     utc: i64,
     local: i64,
     duration: i64,
@@ -2769,363 +2769,363 @@ pub struct P7C55DD6B_wire_FeatureChrono {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_FeatureUuid {
-    one: *mut P7C55DD6B_wire_uint_8_list,
-    many: *mut P7C55DD6B_wire_uint_8_list,
+pub struct P343B03A6_wire_FeatureUuid {
+    one: *mut P343B03A6_wire_uint_8_list,
+    many: *mut P343B03A6_wire_uint_8_list,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_FeedId {
-    field0: *mut P7C55DD6B_wire_uint_8_list,
+pub struct P343B03A6_wire_FeedId {
+    field0: *mut P343B03A6_wire_uint_8_list,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_float_32_list {
+pub struct P343B03A6_wire_float_32_list {
     ptr: *mut f32,
     len: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_float_64_list {
+pub struct P343B03A6_wire_float_64_list {
     ptr: *mut f64,
     len: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_int_32_list {
+pub struct P343B03A6_wire_int_32_list {
     ptr: *mut i32,
     len: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_int_64_list {
+pub struct P343B03A6_wire_int_64_list {
     ptr: *mut i64,
     len: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_int_8_list {
+pub struct P343B03A6_wire_int_8_list {
     ptr: *mut i8,
     len: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_list_DartOpaque {
-    ptr: *mut P7C55DD6B_wire_DartOpaque,
+pub struct P343B03A6_wire_list_DartOpaque {
+    ptr: *mut P343B03A6_wire_DartOpaque,
     len: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_list_HideData {
-    ptr: *mut P7C55DD6B_wire_HideData,
+pub struct P343B03A6_wire_list_HideData {
+    ptr: *mut P343B03A6_wire_HideData,
     len: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_list_application_env_var {
-    ptr: *mut P7C55DD6B_wire_ApplicationEnvVar,
+pub struct P343B03A6_wire_list_application_env_var {
+    ptr: *mut P343B03A6_wire_ApplicationEnvVar,
     len: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_list_attribute {
-    ptr: *mut P7C55DD6B_wire_Attribute,
+pub struct P343B03A6_wire_list_attribute {
+    ptr: *mut P343B03A6_wire_Attribute,
     len: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_list_my_size {
-    ptr: *mut P7C55DD6B_wire_MySize,
+pub struct P343B03A6_wire_list_my_size {
+    ptr: *mut P343B03A6_wire_MySize,
     len: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_list_my_tree_node {
-    ptr: *mut P7C55DD6B_wire_MyTreeNode,
+pub struct P343B03A6_wire_list_my_tree_node {
+    ptr: *mut P343B03A6_wire_MyTreeNode,
     len: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_list_opt_box_autoadd_attribute {
-    ptr: *mut *mut P7C55DD6B_wire_Attribute,
+pub struct P343B03A6_wire_list_opt_box_autoadd_attribute {
+    ptr: *mut *mut P343B03A6_wire_Attribute,
     len: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_list_test_id {
-    ptr: *mut P7C55DD6B_wire_TestId,
+pub struct P343B03A6_wire_list_test_id {
+    ptr: *mut P343B03A6_wire_TestId,
     len: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_list_weekdays {
+pub struct P343B03A6_wire_list_weekdays {
     ptr: *mut i32,
     len: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_MessageId {
-    field0: *mut P7C55DD6B_wire_uint_8_list,
+pub struct P343B03A6_wire_MessageId {
+    field0: *mut P343B03A6_wire_uint_8_list,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_MyNestedStruct {
-    tree_node: P7C55DD6B_wire_MyTreeNode,
+pub struct P343B03A6_wire_MyNestedStruct {
+    tree_node: P343B03A6_wire_MyTreeNode,
     weekday: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_MySize {
+pub struct P343B03A6_wire_MySize {
     width: i32,
     height: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_MyStruct {
+pub struct P343B03A6_wire_MyStruct {
     content: bool,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_MyTreeNode {
+pub struct P343B03A6_wire_MyTreeNode {
     value_i32: i32,
-    value_vec_u8: *mut P7C55DD6B_wire_uint_8_list,
+    value_vec_u8: *mut P343B03A6_wire_uint_8_list,
     value_boolean: bool,
-    children: *mut P7C55DD6B_wire_list_my_tree_node,
+    children: *mut P343B03A6_wire_list_my_tree_node,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_NewTypeInt {
+pub struct P343B03A6_wire_NewTypeInt {
     field0: i64,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_Note {
+pub struct P343B03A6_wire_Note {
     day: *mut i32,
-    body: *mut P7C55DD6B_wire_uint_8_list,
+    body: *mut P343B03A6_wire_uint_8_list,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_Numbers {
-    field0: *mut P7C55DD6B_wire_int_32_list,
+pub struct P343B03A6_wire_Numbers {
+    field0: *mut P343B03A6_wire_int_32_list,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_OpaqueNested {
-    first: P7C55DD6B_wire_HideData,
-    second: P7C55DD6B_wire_HideData,
+pub struct P343B03A6_wire_OpaqueNested {
+    first: P343B03A6_wire_HideData,
+    second: P343B03A6_wire_HideData,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_Sequences {
-    field0: *mut P7C55DD6B_wire_int_32_list,
+pub struct P343B03A6_wire_Sequences {
+    field0: *mut P343B03A6_wire_int_32_list,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_SumWith {
+pub struct P343B03A6_wire_SumWith {
     x: u32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_TestId {
-    field0: *mut P7C55DD6B_wire_int_32_list,
+pub struct P343B03A6_wire_TestId {
+    field0: *mut P343B03A6_wire_int_32_list,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_uint_8_list {
+pub struct P343B03A6_wire_uint_8_list {
     ptr: *mut u8,
     len: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_UserId {
+pub struct P343B03A6_wire_UserId {
     value: u32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_Abc {
+pub struct P343B03A6_wire_Abc {
     tag: i32,
     kind: *mut AbcKind,
 }
 
 #[repr(C)]
 pub union AbcKind {
-    A: *mut P7C55DD6B_wire_Abc_A,
-    B: *mut P7C55DD6B_wire_Abc_B,
-    C: *mut P7C55DD6B_wire_Abc_C,
-    JustInt: *mut P7C55DD6B_wire_Abc_JustInt,
+    A: *mut P343B03A6_wire_Abc_A,
+    B: *mut P343B03A6_wire_Abc_B,
+    C: *mut P343B03A6_wire_Abc_C,
+    JustInt: *mut P343B03A6_wire_Abc_JustInt,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_Abc_A {
-    field0: *mut P7C55DD6B_wire_A,
+pub struct P343B03A6_wire_Abc_A {
+    field0: *mut P343B03A6_wire_A,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_Abc_B {
-    field0: *mut P7C55DD6B_wire_B,
+pub struct P343B03A6_wire_Abc_B {
+    field0: *mut P343B03A6_wire_B,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_Abc_C {
-    field0: *mut P7C55DD6B_wire_C,
+pub struct P343B03A6_wire_Abc_C {
+    field0: *mut P343B03A6_wire_C,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_Abc_JustInt {
+pub struct P343B03A6_wire_Abc_JustInt {
     field0: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_Distance {
+pub struct P343B03A6_wire_Distance {
     tag: i32,
     kind: *mut DistanceKind,
 }
 
 #[repr(C)]
 pub union DistanceKind {
-    Unknown: *mut P7C55DD6B_wire_Distance_Unknown,
-    Map: *mut P7C55DD6B_wire_Distance_Map,
+    Unknown: *mut P343B03A6_wire_Distance_Unknown,
+    Map: *mut P343B03A6_wire_Distance_Map,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_Distance_Unknown {}
+pub struct P343B03A6_wire_Distance_Unknown {}
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_Distance_Map {
+pub struct P343B03A6_wire_Distance_Map {
     field0: f64,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_EnumDartOpaque {
+pub struct P343B03A6_wire_EnumDartOpaque {
     tag: i32,
     kind: *mut EnumDartOpaqueKind,
 }
 
 #[repr(C)]
 pub union EnumDartOpaqueKind {
-    Primitive: *mut P7C55DD6B_wire_EnumDartOpaque_Primitive,
-    Opaque: *mut P7C55DD6B_wire_EnumDartOpaque_Opaque,
+    Primitive: *mut P343B03A6_wire_EnumDartOpaque_Primitive,
+    Opaque: *mut P343B03A6_wire_EnumDartOpaque_Opaque,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_EnumDartOpaque_Primitive {
+pub struct P343B03A6_wire_EnumDartOpaque_Primitive {
     field0: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_EnumDartOpaque_Opaque {
-    field0: P7C55DD6B_wire_DartOpaque,
+pub struct P343B03A6_wire_EnumDartOpaque_Opaque {
+    field0: P343B03A6_wire_DartOpaque,
 }
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_EnumOpaque {
+pub struct P343B03A6_wire_EnumOpaque {
     tag: i32,
     kind: *mut EnumOpaqueKind,
 }
 
 #[repr(C)]
 pub union EnumOpaqueKind {
-    Struct: *mut P7C55DD6B_wire_EnumOpaque_Struct,
-    Primitive: *mut P7C55DD6B_wire_EnumOpaque_Primitive,
-    TraitObj: *mut P7C55DD6B_wire_EnumOpaque_TraitObj,
-    Mutex: *mut P7C55DD6B_wire_EnumOpaque_Mutex,
-    RwLock: *mut P7C55DD6B_wire_EnumOpaque_RwLock,
+    Struct: *mut P343B03A6_wire_EnumOpaque_Struct,
+    Primitive: *mut P343B03A6_wire_EnumOpaque_Primitive,
+    TraitObj: *mut P343B03A6_wire_EnumOpaque_TraitObj,
+    Mutex: *mut P343B03A6_wire_EnumOpaque_Mutex,
+    RwLock: *mut P343B03A6_wire_EnumOpaque_RwLock,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_EnumOpaque_Struct {
-    field0: P7C55DD6B_wire_HideData,
+pub struct P343B03A6_wire_EnumOpaque_Struct {
+    field0: P343B03A6_wire_HideData,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_EnumOpaque_Primitive {
-    field0: P7C55DD6B_wire_I32,
+pub struct P343B03A6_wire_EnumOpaque_Primitive {
+    field0: P343B03A6_wire_I32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_EnumOpaque_TraitObj {
-    field0: P7C55DD6B_wire_BoxDartDebug,
+pub struct P343B03A6_wire_EnumOpaque_TraitObj {
+    field0: P343B03A6_wire_BoxDartDebug,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_EnumOpaque_Mutex {
-    field0: P7C55DD6B_wire_MutexHideData,
+pub struct P343B03A6_wire_EnumOpaque_Mutex {
+    field0: P343B03A6_wire_MutexHideData,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_EnumOpaque_RwLock {
-    field0: P7C55DD6B_wire_RwLockHideData,
+pub struct P343B03A6_wire_EnumOpaque_RwLock {
+    field0: P343B03A6_wire_RwLockHideData,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_KitchenSink {
+pub struct P343B03A6_wire_KitchenSink {
     tag: i32,
     kind: *mut KitchenSinkKind,
 }
 
 #[repr(C)]
 pub union KitchenSinkKind {
-    Empty: *mut P7C55DD6B_wire_KitchenSink_Empty,
-    Primitives: *mut P7C55DD6B_wire_KitchenSink_Primitives,
-    Nested: *mut P7C55DD6B_wire_KitchenSink_Nested,
-    Optional: *mut P7C55DD6B_wire_KitchenSink_Optional,
-    Buffer: *mut P7C55DD6B_wire_KitchenSink_Buffer,
-    Enums: *mut P7C55DD6B_wire_KitchenSink_Enums,
+    Empty: *mut P343B03A6_wire_KitchenSink_Empty,
+    Primitives: *mut P343B03A6_wire_KitchenSink_Primitives,
+    Nested: *mut P343B03A6_wire_KitchenSink_Nested,
+    Optional: *mut P343B03A6_wire_KitchenSink_Optional,
+    Buffer: *mut P343B03A6_wire_KitchenSink_Buffer,
+    Enums: *mut P343B03A6_wire_KitchenSink_Enums,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_KitchenSink_Empty {}
+pub struct P343B03A6_wire_KitchenSink_Empty {}
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_KitchenSink_Primitives {
+pub struct P343B03A6_wire_KitchenSink_Primitives {
     int32: i32,
     float64: f64,
     boolean: bool,
@@ -3133,75 +3133,75 @@ pub struct P7C55DD6B_wire_KitchenSink_Primitives {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_KitchenSink_Nested {
+pub struct P343B03A6_wire_KitchenSink_Nested {
     field0: i32,
-    field1: *mut P7C55DD6B_wire_KitchenSink,
+    field1: *mut P343B03A6_wire_KitchenSink,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_KitchenSink_Optional {
+pub struct P343B03A6_wire_KitchenSink_Optional {
     field0: *mut i32,
     field1: *mut i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_KitchenSink_Buffer {
-    field0: *mut P7C55DD6B_wire_uint_8_list,
+pub struct P343B03A6_wire_KitchenSink_Buffer {
+    field0: *mut P343B03A6_wire_uint_8_list,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_KitchenSink_Enums {
+pub struct P343B03A6_wire_KitchenSink_Enums {
     field0: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_Measure {
+pub struct P343B03A6_wire_Measure {
     tag: i32,
     kind: *mut MeasureKind,
 }
 
 #[repr(C)]
 pub union MeasureKind {
-    Speed: *mut P7C55DD6B_wire_Measure_Speed,
-    Distance: *mut P7C55DD6B_wire_Measure_Distance,
+    Speed: *mut P343B03A6_wire_Measure_Speed,
+    Distance: *mut P343B03A6_wire_Measure_Distance,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_Measure_Speed {
-    field0: *mut P7C55DD6B_wire_Speed,
+pub struct P343B03A6_wire_Measure_Speed {
+    field0: *mut P343B03A6_wire_Speed,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_Measure_Distance {
-    field0: *mut P7C55DD6B_wire_Distance,
+pub struct P343B03A6_wire_Measure_Distance {
+    field0: *mut P343B03A6_wire_Distance,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_Speed {
+pub struct P343B03A6_wire_Speed {
     tag: i32,
     kind: *mut SpeedKind,
 }
 
 #[repr(C)]
 pub union SpeedKind {
-    Unknown: *mut P7C55DD6B_wire_Speed_Unknown,
-    GPS: *mut P7C55DD6B_wire_Speed_GPS,
+    Unknown: *mut P343B03A6_wire_Speed_Unknown,
+    GPS: *mut P343B03A6_wire_Speed_GPS,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_Speed_Unknown {}
+pub struct P343B03A6_wire_Speed_Unknown {}
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct P7C55DD6B_wire_Speed_GPS {
+pub struct P343B03A6_wire_Speed_GPS {
     field0: f64,
 }
 
@@ -3217,7 +3217,7 @@ impl<T> NewWithNullPtr for *mut T {
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_BoxDartDebug {
+impl NewWithNullPtr for P343B03A6_wire_BoxDartDebug {
     fn new_with_null_ptr() -> Self {
         Self {
             ptr: core::ptr::null(),
@@ -3225,12 +3225,12 @@ impl NewWithNullPtr for P7C55DD6B_wire_BoxDartDebug {
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_DartOpaque {
+impl NewWithNullPtr for P343B03A6_wire_DartOpaque {
     fn new_with_null_ptr() -> Self {
         Self { port: 0, handle: 0 }
     }
 }
-impl NewWithNullPtr for P7C55DD6B_wire_HideData {
+impl NewWithNullPtr for P343B03A6_wire_HideData {
     fn new_with_null_ptr() -> Self {
         Self {
             ptr: core::ptr::null(),
@@ -3238,36 +3238,28 @@ impl NewWithNullPtr for P7C55DD6B_wire_HideData {
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_I32 {
+impl NewWithNullPtr for P343B03A6_wire_I32 {
     fn new_with_null_ptr() -> Self {
         Self {
             ptr: core::ptr::null(),
         }
     }
 }
-impl NewWithNullPtr for P7C55DD6B_wire_MutexHideData {
+impl NewWithNullPtr for P343B03A6_wire_MutexHideData {
     fn new_with_null_ptr() -> Self {
         Self {
             ptr: core::ptr::null(),
         }
     }
 }
-impl NewWithNullPtr for P7C55DD6B_wire_NonCloneData {
+impl NewWithNullPtr for P343B03A6_wire_NonCloneData {
     fn new_with_null_ptr() -> Self {
         Self {
             ptr: core::ptr::null(),
         }
     }
 }
-impl NewWithNullPtr for P7C55DD6B_wire_NonSendHideData {
-    fn new_with_null_ptr() -> Self {
-        Self {
-            ptr: core::ptr::null(),
-        }
-    }
-}
-
-impl NewWithNullPtr for P7C55DD6B_wire_RwLockHideData {
+impl NewWithNullPtr for P343B03A6_wire_NonSendHideData {
     fn new_with_null_ptr() -> Self {
         Self {
             ptr: core::ptr::null(),
@@ -3275,7 +3267,15 @@ impl NewWithNullPtr for P7C55DD6B_wire_RwLockHideData {
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_A {
+impl NewWithNullPtr for P343B03A6_wire_RwLockHideData {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            ptr: core::ptr::null(),
+        }
+    }
+}
+
+impl NewWithNullPtr for P343B03A6_wire_A {
     fn new_with_null_ptr() -> Self {
         Self {
             a: core::ptr::null_mut(),
@@ -3283,13 +3283,13 @@ impl NewWithNullPtr for P7C55DD6B_wire_A {
     }
 }
 
-impl Default for P7C55DD6B_wire_A {
+impl Default for P343B03A6_wire_A {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_Abc {
+impl NewWithNullPtr for P343B03A6_wire_Abc {
     fn new_with_null_ptr() -> Self {
         Self {
             tag: -1,
@@ -3301,7 +3301,7 @@ impl NewWithNullPtr for P7C55DD6B_wire_Abc {
 #[no_mangle]
 pub extern "C" fn inflate_Abc_A() -> *mut AbcKind {
     support::new_leak_box_ptr(AbcKind {
-        A: support::new_leak_box_ptr(P7C55DD6B_wire_Abc_A {
+        A: support::new_leak_box_ptr(P343B03A6_wire_Abc_A {
             field0: core::ptr::null_mut(),
         }),
     })
@@ -3310,7 +3310,7 @@ pub extern "C" fn inflate_Abc_A() -> *mut AbcKind {
 #[no_mangle]
 pub extern "C" fn inflate_Abc_B() -> *mut AbcKind {
     support::new_leak_box_ptr(AbcKind {
-        B: support::new_leak_box_ptr(P7C55DD6B_wire_Abc_B {
+        B: support::new_leak_box_ptr(P343B03A6_wire_Abc_B {
             field0: core::ptr::null_mut(),
         }),
     })
@@ -3319,7 +3319,7 @@ pub extern "C" fn inflate_Abc_B() -> *mut AbcKind {
 #[no_mangle]
 pub extern "C" fn inflate_Abc_C() -> *mut AbcKind {
     support::new_leak_box_ptr(AbcKind {
-        C: support::new_leak_box_ptr(P7C55DD6B_wire_Abc_C {
+        C: support::new_leak_box_ptr(P343B03A6_wire_Abc_C {
             field0: core::ptr::null_mut(),
         }),
     })
@@ -3328,13 +3328,13 @@ pub extern "C" fn inflate_Abc_C() -> *mut AbcKind {
 #[no_mangle]
 pub extern "C" fn inflate_Abc_JustInt() -> *mut AbcKind {
     support::new_leak_box_ptr(AbcKind {
-        JustInt: support::new_leak_box_ptr(P7C55DD6B_wire_Abc_JustInt {
+        JustInt: support::new_leak_box_ptr(P343B03A6_wire_Abc_JustInt {
             field0: Default::default(),
         }),
     })
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_ApplicationEnv {
+impl NewWithNullPtr for P343B03A6_wire_ApplicationEnv {
     fn new_with_null_ptr() -> Self {
         Self {
             vars: core::ptr::null_mut(),
@@ -3342,13 +3342,13 @@ impl NewWithNullPtr for P7C55DD6B_wire_ApplicationEnv {
     }
 }
 
-impl Default for P7C55DD6B_wire_ApplicationEnv {
+impl Default for P343B03A6_wire_ApplicationEnv {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_ApplicationEnvVar {
+impl NewWithNullPtr for P343B03A6_wire_ApplicationEnvVar {
     fn new_with_null_ptr() -> Self {
         Self {
             field0: core::ptr::null_mut(),
@@ -3357,13 +3357,13 @@ impl NewWithNullPtr for P7C55DD6B_wire_ApplicationEnvVar {
     }
 }
 
-impl Default for P7C55DD6B_wire_ApplicationEnvVar {
+impl Default for P343B03A6_wire_ApplicationEnvVar {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_ApplicationSettings {
+impl NewWithNullPtr for P343B03A6_wire_ApplicationSettings {
     fn new_with_null_ptr() -> Self {
         Self {
             name: core::ptr::null_mut(),
@@ -3375,13 +3375,13 @@ impl NewWithNullPtr for P7C55DD6B_wire_ApplicationSettings {
     }
 }
 
-impl Default for P7C55DD6B_wire_ApplicationSettings {
+impl Default for P343B03A6_wire_ApplicationSettings {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_Attribute {
+impl NewWithNullPtr for P343B03A6_wire_Attribute {
     fn new_with_null_ptr() -> Self {
         Self {
             key: core::ptr::null_mut(),
@@ -3390,13 +3390,13 @@ impl NewWithNullPtr for P7C55DD6B_wire_Attribute {
     }
 }
 
-impl Default for P7C55DD6B_wire_Attribute {
+impl Default for P343B03A6_wire_Attribute {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_B {
+impl NewWithNullPtr for P343B03A6_wire_B {
     fn new_with_null_ptr() -> Self {
         Self {
             b: Default::default(),
@@ -3404,13 +3404,13 @@ impl NewWithNullPtr for P7C55DD6B_wire_B {
     }
 }
 
-impl Default for P7C55DD6B_wire_B {
+impl Default for P343B03A6_wire_B {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_Blob {
+impl NewWithNullPtr for P343B03A6_wire_Blob {
     fn new_with_null_ptr() -> Self {
         Self {
             field0: core::ptr::null_mut(),
@@ -3418,13 +3418,13 @@ impl NewWithNullPtr for P7C55DD6B_wire_Blob {
     }
 }
 
-impl Default for P7C55DD6B_wire_Blob {
+impl Default for P343B03A6_wire_Blob {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_C {
+impl NewWithNullPtr for P343B03A6_wire_C {
     fn new_with_null_ptr() -> Self {
         Self {
             c: Default::default(),
@@ -3432,13 +3432,13 @@ impl NewWithNullPtr for P7C55DD6B_wire_C {
     }
 }
 
-impl Default for P7C55DD6B_wire_C {
+impl Default for P343B03A6_wire_C {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_ConcatenateWith {
+impl NewWithNullPtr for P343B03A6_wire_ConcatenateWith {
     fn new_with_null_ptr() -> Self {
         Self {
             a: core::ptr::null_mut(),
@@ -3446,13 +3446,13 @@ impl NewWithNullPtr for P7C55DD6B_wire_ConcatenateWith {
     }
 }
 
-impl Default for P7C55DD6B_wire_ConcatenateWith {
+impl Default for P343B03A6_wire_ConcatenateWith {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_Customized {
+impl NewWithNullPtr for P343B03A6_wire_Customized {
     fn new_with_null_ptr() -> Self {
         Self {
             final_field: core::ptr::null_mut(),
@@ -3461,28 +3461,28 @@ impl NewWithNullPtr for P7C55DD6B_wire_Customized {
     }
 }
 
-impl Default for P7C55DD6B_wire_Customized {
+impl Default for P343B03A6_wire_Customized {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_DartOpaqueNested {
+impl NewWithNullPtr for P343B03A6_wire_DartOpaqueNested {
     fn new_with_null_ptr() -> Self {
         Self {
-            first: P7C55DD6B_wire_DartOpaque::new_with_null_ptr(),
-            second: P7C55DD6B_wire_DartOpaque::new_with_null_ptr(),
+            first: P343B03A6_wire_DartOpaque::new_with_null_ptr(),
+            second: P343B03A6_wire_DartOpaque::new_with_null_ptr(),
         }
     }
 }
 
-impl Default for P7C55DD6B_wire_DartOpaqueNested {
+impl Default for P343B03A6_wire_DartOpaqueNested {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_Distance {
+impl NewWithNullPtr for P343B03A6_wire_Distance {
     fn new_with_null_ptr() -> Self {
         Self {
             tag: -1,
@@ -3494,25 +3494,25 @@ impl NewWithNullPtr for P7C55DD6B_wire_Distance {
 #[no_mangle]
 pub extern "C" fn inflate_Distance_Map() -> *mut DistanceKind {
     support::new_leak_box_ptr(DistanceKind {
-        Map: support::new_leak_box_ptr(P7C55DD6B_wire_Distance_Map {
+        Map: support::new_leak_box_ptr(P343B03A6_wire_Distance_Map {
             field0: Default::default(),
         }),
     })
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_Empty {
+impl NewWithNullPtr for P343B03A6_wire_Empty {
     fn new_with_null_ptr() -> Self {
         Self {}
     }
 }
 
-impl Default for P7C55DD6B_wire_Empty {
+impl Default for P343B03A6_wire_Empty {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_EnumDartOpaque {
+impl NewWithNullPtr for P343B03A6_wire_EnumDartOpaque {
     fn new_with_null_ptr() -> Self {
         Self {
             tag: -1,
@@ -3524,7 +3524,7 @@ impl NewWithNullPtr for P7C55DD6B_wire_EnumDartOpaque {
 #[no_mangle]
 pub extern "C" fn inflate_EnumDartOpaque_Primitive() -> *mut EnumDartOpaqueKind {
     support::new_leak_box_ptr(EnumDartOpaqueKind {
-        Primitive: support::new_leak_box_ptr(P7C55DD6B_wire_EnumDartOpaque_Primitive {
+        Primitive: support::new_leak_box_ptr(P343B03A6_wire_EnumDartOpaque_Primitive {
             field0: Default::default(),
         }),
     })
@@ -3533,13 +3533,13 @@ pub extern "C" fn inflate_EnumDartOpaque_Primitive() -> *mut EnumDartOpaqueKind 
 #[no_mangle]
 pub extern "C" fn inflate_EnumDartOpaque_Opaque() -> *mut EnumDartOpaqueKind {
     support::new_leak_box_ptr(EnumDartOpaqueKind {
-        Opaque: support::new_leak_box_ptr(P7C55DD6B_wire_EnumDartOpaque_Opaque {
-            field0: P7C55DD6B_wire_DartOpaque::new_with_null_ptr(),
+        Opaque: support::new_leak_box_ptr(P343B03A6_wire_EnumDartOpaque_Opaque {
+            field0: P343B03A6_wire_DartOpaque::new_with_null_ptr(),
         }),
     })
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_EnumOpaque {
+impl NewWithNullPtr for P343B03A6_wire_EnumOpaque {
     fn new_with_null_ptr() -> Self {
         Self {
             tag: -1,
@@ -3551,8 +3551,8 @@ impl NewWithNullPtr for P7C55DD6B_wire_EnumOpaque {
 #[no_mangle]
 pub extern "C" fn inflate_EnumOpaque_Struct() -> *mut EnumOpaqueKind {
     support::new_leak_box_ptr(EnumOpaqueKind {
-        Struct: support::new_leak_box_ptr(P7C55DD6B_wire_EnumOpaque_Struct {
-            field0: P7C55DD6B_wire_HideData::new_with_null_ptr(),
+        Struct: support::new_leak_box_ptr(P343B03A6_wire_EnumOpaque_Struct {
+            field0: P343B03A6_wire_HideData::new_with_null_ptr(),
         }),
     })
 }
@@ -3560,8 +3560,8 @@ pub extern "C" fn inflate_EnumOpaque_Struct() -> *mut EnumOpaqueKind {
 #[no_mangle]
 pub extern "C" fn inflate_EnumOpaque_Primitive() -> *mut EnumOpaqueKind {
     support::new_leak_box_ptr(EnumOpaqueKind {
-        Primitive: support::new_leak_box_ptr(P7C55DD6B_wire_EnumOpaque_Primitive {
-            field0: P7C55DD6B_wire_I32::new_with_null_ptr(),
+        Primitive: support::new_leak_box_ptr(P343B03A6_wire_EnumOpaque_Primitive {
+            field0: P343B03A6_wire_I32::new_with_null_ptr(),
         }),
     })
 }
@@ -3569,8 +3569,8 @@ pub extern "C" fn inflate_EnumOpaque_Primitive() -> *mut EnumOpaqueKind {
 #[no_mangle]
 pub extern "C" fn inflate_EnumOpaque_TraitObj() -> *mut EnumOpaqueKind {
     support::new_leak_box_ptr(EnumOpaqueKind {
-        TraitObj: support::new_leak_box_ptr(P7C55DD6B_wire_EnumOpaque_TraitObj {
-            field0: P7C55DD6B_wire_BoxDartDebug::new_with_null_ptr(),
+        TraitObj: support::new_leak_box_ptr(P343B03A6_wire_EnumOpaque_TraitObj {
+            field0: P343B03A6_wire_BoxDartDebug::new_with_null_ptr(),
         }),
     })
 }
@@ -3578,8 +3578,8 @@ pub extern "C" fn inflate_EnumOpaque_TraitObj() -> *mut EnumOpaqueKind {
 #[no_mangle]
 pub extern "C" fn inflate_EnumOpaque_Mutex() -> *mut EnumOpaqueKind {
     support::new_leak_box_ptr(EnumOpaqueKind {
-        Mutex: support::new_leak_box_ptr(P7C55DD6B_wire_EnumOpaque_Mutex {
-            field0: P7C55DD6B_wire_MutexHideData::new_with_null_ptr(),
+        Mutex: support::new_leak_box_ptr(P343B03A6_wire_EnumOpaque_Mutex {
+            field0: P343B03A6_wire_MutexHideData::new_with_null_ptr(),
         }),
     })
 }
@@ -3587,13 +3587,13 @@ pub extern "C" fn inflate_EnumOpaque_Mutex() -> *mut EnumOpaqueKind {
 #[no_mangle]
 pub extern "C" fn inflate_EnumOpaque_RwLock() -> *mut EnumOpaqueKind {
     support::new_leak_box_ptr(EnumOpaqueKind {
-        RwLock: support::new_leak_box_ptr(P7C55DD6B_wire_EnumOpaque_RwLock {
-            field0: P7C55DD6B_wire_RwLockHideData::new_with_null_ptr(),
+        RwLock: support::new_leak_box_ptr(P343B03A6_wire_EnumOpaque_RwLock {
+            field0: P343B03A6_wire_RwLockHideData::new_with_null_ptr(),
         }),
     })
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_Event {
+impl NewWithNullPtr for P343B03A6_wire_Event {
     fn new_with_null_ptr() -> Self {
         Self {
             address: core::ptr::null_mut(),
@@ -3602,13 +3602,13 @@ impl NewWithNullPtr for P7C55DD6B_wire_Event {
     }
 }
 
-impl Default for P7C55DD6B_wire_Event {
+impl Default for P343B03A6_wire_Event {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_ExoticOptionals {
+impl NewWithNullPtr for P343B03A6_wire_ExoticOptionals {
     fn new_with_null_ptr() -> Self {
         Self {
             int32: core::ptr::null_mut(),
@@ -3629,13 +3629,13 @@ impl NewWithNullPtr for P7C55DD6B_wire_ExoticOptionals {
     }
 }
 
-impl Default for P7C55DD6B_wire_ExoticOptionals {
+impl Default for P343B03A6_wire_ExoticOptionals {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_FeatureChrono {
+impl NewWithNullPtr for P343B03A6_wire_FeatureChrono {
     fn new_with_null_ptr() -> Self {
         Self {
             utc: Default::default(),
@@ -3646,13 +3646,13 @@ impl NewWithNullPtr for P7C55DD6B_wire_FeatureChrono {
     }
 }
 
-impl Default for P7C55DD6B_wire_FeatureChrono {
+impl Default for P343B03A6_wire_FeatureChrono {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_FeatureUuid {
+impl NewWithNullPtr for P343B03A6_wire_FeatureUuid {
     fn new_with_null_ptr() -> Self {
         Self {
             one: core::ptr::null_mut(),
@@ -3661,13 +3661,13 @@ impl NewWithNullPtr for P7C55DD6B_wire_FeatureUuid {
     }
 }
 
-impl Default for P7C55DD6B_wire_FeatureUuid {
+impl Default for P343B03A6_wire_FeatureUuid {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_FeedId {
+impl NewWithNullPtr for P343B03A6_wire_FeedId {
     fn new_with_null_ptr() -> Self {
         Self {
             field0: core::ptr::null_mut(),
@@ -3675,13 +3675,13 @@ impl NewWithNullPtr for P7C55DD6B_wire_FeedId {
     }
 }
 
-impl Default for P7C55DD6B_wire_FeedId {
+impl Default for P343B03A6_wire_FeedId {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_KitchenSink {
+impl NewWithNullPtr for P343B03A6_wire_KitchenSink {
     fn new_with_null_ptr() -> Self {
         Self {
             tag: -1,
@@ -3693,7 +3693,7 @@ impl NewWithNullPtr for P7C55DD6B_wire_KitchenSink {
 #[no_mangle]
 pub extern "C" fn inflate_KitchenSink_Primitives() -> *mut KitchenSinkKind {
     support::new_leak_box_ptr(KitchenSinkKind {
-        Primitives: support::new_leak_box_ptr(P7C55DD6B_wire_KitchenSink_Primitives {
+        Primitives: support::new_leak_box_ptr(P343B03A6_wire_KitchenSink_Primitives {
             int32: Default::default(),
             float64: Default::default(),
             boolean: Default::default(),
@@ -3704,7 +3704,7 @@ pub extern "C" fn inflate_KitchenSink_Primitives() -> *mut KitchenSinkKind {
 #[no_mangle]
 pub extern "C" fn inflate_KitchenSink_Nested() -> *mut KitchenSinkKind {
     support::new_leak_box_ptr(KitchenSinkKind {
-        Nested: support::new_leak_box_ptr(P7C55DD6B_wire_KitchenSink_Nested {
+        Nested: support::new_leak_box_ptr(P343B03A6_wire_KitchenSink_Nested {
             field0: Default::default(),
             field1: core::ptr::null_mut(),
         }),
@@ -3714,7 +3714,7 @@ pub extern "C" fn inflate_KitchenSink_Nested() -> *mut KitchenSinkKind {
 #[no_mangle]
 pub extern "C" fn inflate_KitchenSink_Optional() -> *mut KitchenSinkKind {
     support::new_leak_box_ptr(KitchenSinkKind {
-        Optional: support::new_leak_box_ptr(P7C55DD6B_wire_KitchenSink_Optional {
+        Optional: support::new_leak_box_ptr(P343B03A6_wire_KitchenSink_Optional {
             field0: core::ptr::null_mut(),
             field1: core::ptr::null_mut(),
         }),
@@ -3724,7 +3724,7 @@ pub extern "C" fn inflate_KitchenSink_Optional() -> *mut KitchenSinkKind {
 #[no_mangle]
 pub extern "C" fn inflate_KitchenSink_Buffer() -> *mut KitchenSinkKind {
     support::new_leak_box_ptr(KitchenSinkKind {
-        Buffer: support::new_leak_box_ptr(P7C55DD6B_wire_KitchenSink_Buffer {
+        Buffer: support::new_leak_box_ptr(P343B03A6_wire_KitchenSink_Buffer {
             field0: core::ptr::null_mut(),
         }),
     })
@@ -3733,13 +3733,13 @@ pub extern "C" fn inflate_KitchenSink_Buffer() -> *mut KitchenSinkKind {
 #[no_mangle]
 pub extern "C" fn inflate_KitchenSink_Enums() -> *mut KitchenSinkKind {
     support::new_leak_box_ptr(KitchenSinkKind {
-        Enums: support::new_leak_box_ptr(P7C55DD6B_wire_KitchenSink_Enums {
+        Enums: support::new_leak_box_ptr(P343B03A6_wire_KitchenSink_Enums {
             field0: Default::default(),
         }),
     })
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_Measure {
+impl NewWithNullPtr for P343B03A6_wire_Measure {
     fn new_with_null_ptr() -> Self {
         Self {
             tag: -1,
@@ -3751,7 +3751,7 @@ impl NewWithNullPtr for P7C55DD6B_wire_Measure {
 #[no_mangle]
 pub extern "C" fn inflate_Measure_Speed() -> *mut MeasureKind {
     support::new_leak_box_ptr(MeasureKind {
-        Speed: support::new_leak_box_ptr(P7C55DD6B_wire_Measure_Speed {
+        Speed: support::new_leak_box_ptr(P343B03A6_wire_Measure_Speed {
             field0: core::ptr::null_mut(),
         }),
     })
@@ -3760,13 +3760,13 @@ pub extern "C" fn inflate_Measure_Speed() -> *mut MeasureKind {
 #[no_mangle]
 pub extern "C" fn inflate_Measure_Distance() -> *mut MeasureKind {
     support::new_leak_box_ptr(MeasureKind {
-        Distance: support::new_leak_box_ptr(P7C55DD6B_wire_Measure_Distance {
+        Distance: support::new_leak_box_ptr(P343B03A6_wire_Measure_Distance {
             field0: core::ptr::null_mut(),
         }),
     })
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_MessageId {
+impl NewWithNullPtr for P343B03A6_wire_MessageId {
     fn new_with_null_ptr() -> Self {
         Self {
             field0: core::ptr::null_mut(),
@@ -3774,13 +3774,13 @@ impl NewWithNullPtr for P7C55DD6B_wire_MessageId {
     }
 }
 
-impl Default for P7C55DD6B_wire_MessageId {
+impl Default for P343B03A6_wire_MessageId {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_MyNestedStruct {
+impl NewWithNullPtr for P343B03A6_wire_MyNestedStruct {
     fn new_with_null_ptr() -> Self {
         Self {
             tree_node: Default::default(),
@@ -3789,13 +3789,13 @@ impl NewWithNullPtr for P7C55DD6B_wire_MyNestedStruct {
     }
 }
 
-impl Default for P7C55DD6B_wire_MyNestedStruct {
+impl Default for P343B03A6_wire_MyNestedStruct {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_MySize {
+impl NewWithNullPtr for P343B03A6_wire_MySize {
     fn new_with_null_ptr() -> Self {
         Self {
             width: Default::default(),
@@ -3804,13 +3804,13 @@ impl NewWithNullPtr for P7C55DD6B_wire_MySize {
     }
 }
 
-impl Default for P7C55DD6B_wire_MySize {
+impl Default for P343B03A6_wire_MySize {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_MyStruct {
+impl NewWithNullPtr for P343B03A6_wire_MyStruct {
     fn new_with_null_ptr() -> Self {
         Self {
             content: Default::default(),
@@ -3818,13 +3818,13 @@ impl NewWithNullPtr for P7C55DD6B_wire_MyStruct {
     }
 }
 
-impl Default for P7C55DD6B_wire_MyStruct {
+impl Default for P343B03A6_wire_MyStruct {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_MyTreeNode {
+impl NewWithNullPtr for P343B03A6_wire_MyTreeNode {
     fn new_with_null_ptr() -> Self {
         Self {
             value_i32: Default::default(),
@@ -3835,13 +3835,13 @@ impl NewWithNullPtr for P7C55DD6B_wire_MyTreeNode {
     }
 }
 
-impl Default for P7C55DD6B_wire_MyTreeNode {
+impl Default for P343B03A6_wire_MyTreeNode {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_NewTypeInt {
+impl NewWithNullPtr for P343B03A6_wire_NewTypeInt {
     fn new_with_null_ptr() -> Self {
         Self {
             field0: Default::default(),
@@ -3849,13 +3849,13 @@ impl NewWithNullPtr for P7C55DD6B_wire_NewTypeInt {
     }
 }
 
-impl Default for P7C55DD6B_wire_NewTypeInt {
+impl Default for P343B03A6_wire_NewTypeInt {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_Note {
+impl NewWithNullPtr for P343B03A6_wire_Note {
     fn new_with_null_ptr() -> Self {
         Self {
             day: core::ptr::null_mut(),
@@ -3864,13 +3864,13 @@ impl NewWithNullPtr for P7C55DD6B_wire_Note {
     }
 }
 
-impl Default for P7C55DD6B_wire_Note {
+impl Default for P343B03A6_wire_Note {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_Numbers {
+impl NewWithNullPtr for P343B03A6_wire_Numbers {
     fn new_with_null_ptr() -> Self {
         Self {
             field0: core::ptr::null_mut(),
@@ -3878,28 +3878,28 @@ impl NewWithNullPtr for P7C55DD6B_wire_Numbers {
     }
 }
 
-impl Default for P7C55DD6B_wire_Numbers {
+impl Default for P343B03A6_wire_Numbers {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_OpaqueNested {
+impl NewWithNullPtr for P343B03A6_wire_OpaqueNested {
     fn new_with_null_ptr() -> Self {
         Self {
-            first: P7C55DD6B_wire_HideData::new_with_null_ptr(),
-            second: P7C55DD6B_wire_HideData::new_with_null_ptr(),
+            first: P343B03A6_wire_HideData::new_with_null_ptr(),
+            second: P343B03A6_wire_HideData::new_with_null_ptr(),
         }
     }
 }
 
-impl Default for P7C55DD6B_wire_OpaqueNested {
+impl Default for P343B03A6_wire_OpaqueNested {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_Sequences {
+impl NewWithNullPtr for P343B03A6_wire_Sequences {
     fn new_with_null_ptr() -> Self {
         Self {
             field0: core::ptr::null_mut(),
@@ -3907,13 +3907,13 @@ impl NewWithNullPtr for P7C55DD6B_wire_Sequences {
     }
 }
 
-impl Default for P7C55DD6B_wire_Sequences {
+impl Default for P343B03A6_wire_Sequences {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_Speed {
+impl NewWithNullPtr for P343B03A6_wire_Speed {
     fn new_with_null_ptr() -> Self {
         Self {
             tag: -1,
@@ -3925,13 +3925,13 @@ impl NewWithNullPtr for P7C55DD6B_wire_Speed {
 #[no_mangle]
 pub extern "C" fn inflate_Speed_GPS() -> *mut SpeedKind {
     support::new_leak_box_ptr(SpeedKind {
-        GPS: support::new_leak_box_ptr(P7C55DD6B_wire_Speed_GPS {
+        GPS: support::new_leak_box_ptr(P343B03A6_wire_Speed_GPS {
             field0: Default::default(),
         }),
     })
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_SumWith {
+impl NewWithNullPtr for P343B03A6_wire_SumWith {
     fn new_with_null_ptr() -> Self {
         Self {
             x: Default::default(),
@@ -3939,13 +3939,13 @@ impl NewWithNullPtr for P7C55DD6B_wire_SumWith {
     }
 }
 
-impl Default for P7C55DD6B_wire_SumWith {
+impl Default for P343B03A6_wire_SumWith {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_TestId {
+impl NewWithNullPtr for P343B03A6_wire_TestId {
     fn new_with_null_ptr() -> Self {
         Self {
             field0: core::ptr::null_mut(),
@@ -3953,13 +3953,13 @@ impl NewWithNullPtr for P7C55DD6B_wire_TestId {
     }
 }
 
-impl Default for P7C55DD6B_wire_TestId {
+impl Default for P343B03A6_wire_TestId {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for P7C55DD6B_wire_UserId {
+impl NewWithNullPtr for P343B03A6_wire_UserId {
     fn new_with_null_ptr() -> Self {
         Self {
             value: Default::default(),
@@ -3967,7 +3967,7 @@ impl NewWithNullPtr for P7C55DD6B_wire_UserId {
     }
 }
 
-impl Default for P7C55DD6B_wire_UserId {
+impl Default for P343B03A6_wire_UserId {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }

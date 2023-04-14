@@ -108,7 +108,7 @@ pub struct RawOpts {
     /// Appends the prefix to the generated symbols.
     /// This prevents the generated symbols from conflicting with
     /// other projects.
-    /// 
+    ///
     /// Pass in an empty string if you want to generate
     /// a unique prefix.
     #[arg(long)]

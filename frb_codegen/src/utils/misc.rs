@@ -103,7 +103,7 @@ pub fn make_string_keyword_safe(input: String) -> String {
 
 /// Creates a unique prefix by taking the current time in
 /// microseconds and doing some math.
-/// 
+///
 /// Returns a string in the format "P(randomhex)_".
 pub fn create_unique_prefix() -> String {
     // https://stackoverflow.com/questions/3062746/special-simple-random-number-generator

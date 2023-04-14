@@ -72,8 +72,10 @@ Options:
           
           [possible values: config, ir]
 
-      --make-c-output-unique
-          Make the C output files have unique symbols. This prevents the generated symbols from conflicting with other projects
+      --symbol-prefix <SYMBOL_PREFIX>
+          Appends the prefix to the generated symbols. This prevents the generated symbols from conflicting with other projects.
+          
+          Pass in an empty string if you want to generate a unique prefix.
 
   -h, --help
           Print help (see a summary with '-h')

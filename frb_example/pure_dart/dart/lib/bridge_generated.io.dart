@@ -20,7 +20,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 // Section: api2wire
 
   @protected
-  P7C55DD6B_wire_BoxDartDebug api2wire_BoxDartDebug(BoxDartDebug raw) {
+  P343B03A6_wire_BoxDartDebug api2wire_BoxDartDebug(BoxDartDebug raw) {
     final ptr = inner.new_BoxDartDebug();
     _api_fill_to_wire_BoxDartDebug(raw, ptr);
     return ptr;
@@ -32,7 +32,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_int_64_list> api2wire_Chrono_DurationList(List<Duration> raw) {
+  ffi.Pointer<P343B03A6_wire_int_64_list> api2wire_Chrono_DurationList(List<Duration> raw) {
     final ans = Int64List(raw.length);
     for (var i = 0; i < raw.length; ++i) ans[i] = api2wire_Chrono_Duration(raw[i]);
     return api2wire_int_64_list(ans);
@@ -49,7 +49,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_int_64_list> api2wire_Chrono_NaiveList(List<DateTime> raw) {
+  ffi.Pointer<P343B03A6_wire_int_64_list> api2wire_Chrono_NaiveList(List<DateTime> raw) {
     final ans = Int64List(raw.length);
     for (var i = 0; i < raw.length; ++i) ans[i] = api2wire_Chrono_Naive(raw[i]);
     return api2wire_int_64_list(ans);
@@ -61,7 +61,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  P7C55DD6B_wire_DartOpaque api2wire_DartOpaque(Object raw) {
+  P343B03A6_wire_DartOpaque api2wire_DartOpaque(Object raw) {
     inner.dartApi.initApi();
     final ptr = inner.new_DartOpaque();
     _api_fill_to_wire_DartOpaque(raw, ptr);
@@ -69,64 +69,64 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  P7C55DD6B_wire_HideData api2wire_HideData(HideData raw) {
+  P343B03A6_wire_HideData api2wire_HideData(HideData raw) {
     final ptr = inner.new_HideData();
     _api_fill_to_wire_HideData(raw, ptr);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_list_HideData> api2wire_HideData_array_2(HideDataArray2 raw) {
+  ffi.Pointer<P343B03A6_wire_list_HideData> api2wire_HideData_array_2(HideDataArray2 raw) {
     return api2wire_list_HideData(raw);
   }
 
   @protected
-  P7C55DD6B_wire_I32 api2wire_I32(I32 raw) {
+  P343B03A6_wire_I32 api2wire_I32(I32 raw) {
     final ptr = inner.new_I32();
     _api_fill_to_wire_I32(raw, ptr);
     return ptr;
   }
 
   @protected
-  P7C55DD6B_wire_MutexHideData api2wire_MutexHideData(MutexHideData raw) {
+  P343B03A6_wire_MutexHideData api2wire_MutexHideData(MutexHideData raw) {
     final ptr = inner.new_MutexHideData();
     _api_fill_to_wire_MutexHideData(raw, ptr);
     return ptr;
   }
 
   @protected
-  P7C55DD6B_wire_NonCloneData api2wire_NonCloneData(NonCloneData raw) {
+  P343B03A6_wire_NonCloneData api2wire_NonCloneData(NonCloneData raw) {
     final ptr = inner.new_NonCloneData();
     _api_fill_to_wire_NonCloneData(raw, ptr);
     return ptr;
   }
 
   @protected
-  P7C55DD6B_wire_NonSendHideData api2wire_NonSendHideData(NonSendHideData raw) {
+  P343B03A6_wire_NonSendHideData api2wire_NonSendHideData(NonSendHideData raw) {
     final ptr = inner.new_NonSendHideData();
     _api_fill_to_wire_NonSendHideData(raw, ptr);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_list_DartOpaque> api2wire_Object_array_1(ObjectArray1 raw) {
+  ffi.Pointer<P343B03A6_wire_list_DartOpaque> api2wire_Object_array_1(ObjectArray1 raw) {
     return api2wire_list_DartOpaque(raw);
   }
 
   @protected
-  P7C55DD6B_wire_RwLockHideData api2wire_RwLockHideData(RwLockHideData raw) {
+  P343B03A6_wire_RwLockHideData api2wire_RwLockHideData(RwLockHideData raw) {
     final ptr = inner.new_RwLockHideData();
     _api_fill_to_wire_RwLockHideData(raw, ptr);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_uint_8_list> api2wire_String(String raw) {
+  ffi.Pointer<P343B03A6_wire_uint_8_list> api2wire_String(String raw) {
     return api2wire_uint_8_list(utf8.encoder.convert(raw));
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_StringList> api2wire_StringList(List<String> raw) {
+  ffi.Pointer<P343B03A6_wire_StringList> api2wire_StringList(List<String> raw) {
     final ans = inner.new_StringList_0(raw.length);
     for (var i = 0; i < raw.length; i++) {
       ans.ref.ptr[i] = api2wire_String(raw[i]);
@@ -135,27 +135,27 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_list_test_id> api2wire_TestId_array_4(TestIdArray4 raw) {
+  ffi.Pointer<P343B03A6_wire_list_test_id> api2wire_TestId_array_4(TestIdArray4 raw) {
     return api2wire_list_test_id(raw);
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_uint_8_list> api2wire_Uuid(UuidValue raw) {
+  ffi.Pointer<P343B03A6_wire_uint_8_list> api2wire_Uuid(UuidValue raw) {
     return api2wire_uint_8_list(raw.toBytes());
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_uint_8_list> api2wire_Uuids(List<UuidValue> raw) {
+  ffi.Pointer<P343B03A6_wire_uint_8_list> api2wire_Uuids(List<UuidValue> raw) {
     return api2wire_uint_8_list(api2wireConcatenateBytes(raw));
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_uint_8_list> api2wire_ZeroCopyBuffer_Uint8List(Uint8List raw) {
+  ffi.Pointer<P343B03A6_wire_uint_8_list> api2wire_ZeroCopyBuffer_Uint8List(Uint8List raw) {
     return api2wire_uint_8_list(raw);
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_ApplicationEnv> api2wire_box_application_env(ApplicationEnv raw) {
+  ffi.Pointer<P343B03A6_wire_ApplicationEnv> api2wire_box_application_env(ApplicationEnv raw) {
     final ptr = inner.new_box_application_env_0();
     _api_fill_to_wire_application_env(raw, ptr.ref);
     return ptr;
@@ -167,56 +167,56 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_DartOpaque> api2wire_box_autoadd_DartOpaque(Object raw) {
+  ffi.Pointer<P343B03A6_wire_DartOpaque> api2wire_box_autoadd_DartOpaque(Object raw) {
     final ptr = inner.new_box_autoadd_DartOpaque_0();
     _api_fill_to_wire_DartOpaque(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_HideData> api2wire_box_autoadd_HideData(HideData raw) {
+  ffi.Pointer<P343B03A6_wire_HideData> api2wire_box_autoadd_HideData(HideData raw) {
     final ptr = inner.new_box_autoadd_HideData_0();
     _api_fill_to_wire_HideData(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_A> api2wire_box_autoadd_a(A raw) {
+  ffi.Pointer<P343B03A6_wire_A> api2wire_box_autoadd_a(A raw) {
     final ptr = inner.new_box_autoadd_a_0();
     _api_fill_to_wire_a(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_Abc> api2wire_box_autoadd_abc(Abc raw) {
+  ffi.Pointer<P343B03A6_wire_Abc> api2wire_box_autoadd_abc(Abc raw) {
     final ptr = inner.new_box_autoadd_abc_0();
     _api_fill_to_wire_abc(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_ApplicationEnv> api2wire_box_autoadd_application_env(ApplicationEnv raw) {
+  ffi.Pointer<P343B03A6_wire_ApplicationEnv> api2wire_box_autoadd_application_env(ApplicationEnv raw) {
     final ptr = inner.new_box_autoadd_application_env_0();
     _api_fill_to_wire_application_env(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_ApplicationSettings> api2wire_box_autoadd_application_settings(ApplicationSettings raw) {
+  ffi.Pointer<P343B03A6_wire_ApplicationSettings> api2wire_box_autoadd_application_settings(ApplicationSettings raw) {
     final ptr = inner.new_box_autoadd_application_settings_0();
     _api_fill_to_wire_application_settings(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_Attribute> api2wire_box_autoadd_attribute(Attribute raw) {
+  ffi.Pointer<P343B03A6_wire_Attribute> api2wire_box_autoadd_attribute(Attribute raw) {
     final ptr = inner.new_box_autoadd_attribute_0();
     _api_fill_to_wire_attribute(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_B> api2wire_box_autoadd_b(B raw) {
+  ffi.Pointer<P343B03A6_wire_B> api2wire_box_autoadd_b(B raw) {
     final ptr = inner.new_box_autoadd_b_0();
     _api_fill_to_wire_b(raw, ptr.ref);
     return ptr;
@@ -228,62 +228,62 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_C> api2wire_box_autoadd_c(C raw) {
+  ffi.Pointer<P343B03A6_wire_C> api2wire_box_autoadd_c(C raw) {
     final ptr = inner.new_box_autoadd_c_0();
     _api_fill_to_wire_c(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_ConcatenateWith> api2wire_box_autoadd_concatenate_with(ConcatenateWith raw) {
+  ffi.Pointer<P343B03A6_wire_ConcatenateWith> api2wire_box_autoadd_concatenate_with(ConcatenateWith raw) {
     final ptr = inner.new_box_autoadd_concatenate_with_0();
     _api_fill_to_wire_concatenate_with(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_Customized> api2wire_box_autoadd_customized(Customized raw) {
+  ffi.Pointer<P343B03A6_wire_Customized> api2wire_box_autoadd_customized(Customized raw) {
     final ptr = inner.new_box_autoadd_customized_0();
     _api_fill_to_wire_customized(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_DartOpaqueNested> api2wire_box_autoadd_dart_opaque_nested(DartOpaqueNested raw) {
+  ffi.Pointer<P343B03A6_wire_DartOpaqueNested> api2wire_box_autoadd_dart_opaque_nested(DartOpaqueNested raw) {
     final ptr = inner.new_box_autoadd_dart_opaque_nested_0();
     _api_fill_to_wire_dart_opaque_nested(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_Empty> api2wire_box_autoadd_empty(Empty raw) {
+  ffi.Pointer<P343B03A6_wire_Empty> api2wire_box_autoadd_empty(Empty raw) {
     final ptr = inner.new_box_autoadd_empty_0();
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_EnumDartOpaque> api2wire_box_autoadd_enum_dart_opaque(EnumDartOpaque raw) {
+  ffi.Pointer<P343B03A6_wire_EnumDartOpaque> api2wire_box_autoadd_enum_dart_opaque(EnumDartOpaque raw) {
     final ptr = inner.new_box_autoadd_enum_dart_opaque_0();
     _api_fill_to_wire_enum_dart_opaque(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_EnumOpaque> api2wire_box_autoadd_enum_opaque(EnumOpaque raw) {
+  ffi.Pointer<P343B03A6_wire_EnumOpaque> api2wire_box_autoadd_enum_opaque(EnumOpaque raw) {
     final ptr = inner.new_box_autoadd_enum_opaque_0();
     _api_fill_to_wire_enum_opaque(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_Event> api2wire_box_autoadd_event(Event raw) {
+  ffi.Pointer<P343B03A6_wire_Event> api2wire_box_autoadd_event(Event raw) {
     final ptr = inner.new_box_autoadd_event_0();
     _api_fill_to_wire_event(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_ExoticOptionals> api2wire_box_autoadd_exotic_optionals(ExoticOptionals raw) {
+  ffi.Pointer<P343B03A6_wire_ExoticOptionals> api2wire_box_autoadd_exotic_optionals(ExoticOptionals raw) {
     final ptr = inner.new_box_autoadd_exotic_optionals_0();
     _api_fill_to_wire_exotic_optionals(raw, ptr.ref);
     return ptr;
@@ -295,21 +295,21 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_FeatureChrono> api2wire_box_autoadd_feature_chrono(FeatureChrono raw) {
+  ffi.Pointer<P343B03A6_wire_FeatureChrono> api2wire_box_autoadd_feature_chrono(FeatureChrono raw) {
     final ptr = inner.new_box_autoadd_feature_chrono_0();
     _api_fill_to_wire_feature_chrono(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_FeatureUuid> api2wire_box_autoadd_feature_uuid(FeatureUuid raw) {
+  ffi.Pointer<P343B03A6_wire_FeatureUuid> api2wire_box_autoadd_feature_uuid(FeatureUuid raw) {
     final ptr = inner.new_box_autoadd_feature_uuid_0();
     _api_fill_to_wire_feature_uuid(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_FeedId> api2wire_box_autoadd_feed_id(FeedId raw) {
+  ffi.Pointer<P343B03A6_wire_FeedId> api2wire_box_autoadd_feed_id(FeedId raw) {
     final ptr = inner.new_box_autoadd_feed_id_0();
     _api_fill_to_wire_feed_id(raw, ptr.ref);
     return ptr;
@@ -326,112 +326,112 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_KitchenSink> api2wire_box_autoadd_kitchen_sink(KitchenSink raw) {
+  ffi.Pointer<P343B03A6_wire_KitchenSink> api2wire_box_autoadd_kitchen_sink(KitchenSink raw) {
     final ptr = inner.new_box_autoadd_kitchen_sink_0();
     _api_fill_to_wire_kitchen_sink(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_Measure> api2wire_box_autoadd_measure(Measure raw) {
+  ffi.Pointer<P343B03A6_wire_Measure> api2wire_box_autoadd_measure(Measure raw) {
     final ptr = inner.new_box_autoadd_measure_0();
     _api_fill_to_wire_measure(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_MessageId> api2wire_box_autoadd_message_id(MessageId raw) {
+  ffi.Pointer<P343B03A6_wire_MessageId> api2wire_box_autoadd_message_id(MessageId raw) {
     final ptr = inner.new_box_autoadd_message_id_0();
     _api_fill_to_wire_message_id(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_MyNestedStruct> api2wire_box_autoadd_my_nested_struct(MyNestedStruct raw) {
+  ffi.Pointer<P343B03A6_wire_MyNestedStruct> api2wire_box_autoadd_my_nested_struct(MyNestedStruct raw) {
     final ptr = inner.new_box_autoadd_my_nested_struct_0();
     _api_fill_to_wire_my_nested_struct(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_MySize> api2wire_box_autoadd_my_size(MySize raw) {
+  ffi.Pointer<P343B03A6_wire_MySize> api2wire_box_autoadd_my_size(MySize raw) {
     final ptr = inner.new_box_autoadd_my_size_0();
     _api_fill_to_wire_my_size(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_MyStruct> api2wire_box_autoadd_my_struct(MyStruct raw) {
+  ffi.Pointer<P343B03A6_wire_MyStruct> api2wire_box_autoadd_my_struct(MyStruct raw) {
     final ptr = inner.new_box_autoadd_my_struct_0();
     _api_fill_to_wire_my_struct(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_MyTreeNode> api2wire_box_autoadd_my_tree_node(MyTreeNode raw) {
+  ffi.Pointer<P343B03A6_wire_MyTreeNode> api2wire_box_autoadd_my_tree_node(MyTreeNode raw) {
     final ptr = inner.new_box_autoadd_my_tree_node_0();
     _api_fill_to_wire_my_tree_node(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_NewTypeInt> api2wire_box_autoadd_new_type_int(NewTypeInt raw) {
+  ffi.Pointer<P343B03A6_wire_NewTypeInt> api2wire_box_autoadd_new_type_int(NewTypeInt raw) {
     final ptr = inner.new_box_autoadd_new_type_int_0();
     _api_fill_to_wire_new_type_int(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_Note> api2wire_box_autoadd_note(Note raw) {
+  ffi.Pointer<P343B03A6_wire_Note> api2wire_box_autoadd_note(Note raw) {
     final ptr = inner.new_box_autoadd_note_0();
     _api_fill_to_wire_note(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_Numbers> api2wire_box_autoadd_numbers(Numbers raw) {
+  ffi.Pointer<P343B03A6_wire_Numbers> api2wire_box_autoadd_numbers(Numbers raw) {
     final ptr = inner.new_box_autoadd_numbers_0();
     _api_fill_to_wire_numbers(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_OpaqueNested> api2wire_box_autoadd_opaque_nested(OpaqueNested raw) {
+  ffi.Pointer<P343B03A6_wire_OpaqueNested> api2wire_box_autoadd_opaque_nested(OpaqueNested raw) {
     final ptr = inner.new_box_autoadd_opaque_nested_0();
     _api_fill_to_wire_opaque_nested(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_Sequences> api2wire_box_autoadd_sequences(Sequences raw) {
+  ffi.Pointer<P343B03A6_wire_Sequences> api2wire_box_autoadd_sequences(Sequences raw) {
     final ptr = inner.new_box_autoadd_sequences_0();
     _api_fill_to_wire_sequences(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_SumWith> api2wire_box_autoadd_sum_with(SumWith raw) {
+  ffi.Pointer<P343B03A6_wire_SumWith> api2wire_box_autoadd_sum_with(SumWith raw) {
     final ptr = inner.new_box_autoadd_sum_with_0();
     _api_fill_to_wire_sum_with(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_TestId> api2wire_box_autoadd_test_id(TestId raw) {
+  ffi.Pointer<P343B03A6_wire_TestId> api2wire_box_autoadd_test_id(TestId raw) {
     final ptr = inner.new_box_autoadd_test_id_0();
     _api_fill_to_wire_test_id(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_UserId> api2wire_box_autoadd_user_id(UserId raw) {
+  ffi.Pointer<P343B03A6_wire_UserId> api2wire_box_autoadd_user_id(UserId raw) {
     final ptr = inner.new_box_autoadd_user_id_0();
     _api_fill_to_wire_user_id(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_Blob> api2wire_box_blob(Blob raw) {
+  ffi.Pointer<P343B03A6_wire_Blob> api2wire_box_blob(Blob raw) {
     final ptr = inner.new_box_blob_0();
     _api_fill_to_wire_blob(raw, ptr.ref);
     return ptr;
@@ -443,14 +443,14 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_Distance> api2wire_box_distance(Distance raw) {
+  ffi.Pointer<P343B03A6_wire_Distance> api2wire_box_distance(Distance raw) {
     final ptr = inner.new_box_distance_0();
     _api_fill_to_wire_distance(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_ExoticOptionals> api2wire_box_exotic_optionals(ExoticOptionals raw) {
+  ffi.Pointer<P343B03A6_wire_ExoticOptionals> api2wire_box_exotic_optionals(ExoticOptionals raw) {
     final ptr = inner.new_box_exotic_optionals_0();
     _api_fill_to_wire_exotic_optionals(raw, ptr.ref);
     return ptr;
@@ -477,21 +477,21 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_KitchenSink> api2wire_box_kitchen_sink(KitchenSink raw) {
+  ffi.Pointer<P343B03A6_wire_KitchenSink> api2wire_box_kitchen_sink(KitchenSink raw) {
     final ptr = inner.new_box_kitchen_sink_0();
     _api_fill_to_wire_kitchen_sink(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_MySize> api2wire_box_my_size(MySize raw) {
+  ffi.Pointer<P343B03A6_wire_MySize> api2wire_box_my_size(MySize raw) {
     final ptr = inner.new_box_my_size_0();
     _api_fill_to_wire_my_size(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_Speed> api2wire_box_speed(Speed raw) {
+  ffi.Pointer<P343B03A6_wire_Speed> api2wire_box_speed(Speed raw) {
     final ptr = inner.new_box_speed_0();
     _api_fill_to_wire_speed(raw, ptr.ref);
     return ptr;
@@ -503,7 +503,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_uint_8_list> api2wire_box_u8_array_1600(U8Array1600 raw) {
+  ffi.Pointer<P343B03A6_wire_uint_8_list> api2wire_box_u8_array_1600(U8Array1600 raw) {
     return api2wire_u8_array_1600(raw);
   }
 
@@ -513,28 +513,28 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_float_64_list> api2wire_f64_array_16(F64Array16 raw) {
+  ffi.Pointer<P343B03A6_wire_float_64_list> api2wire_f64_array_16(F64Array16 raw) {
     final ans = inner.new_float_64_list_0(16);
     ans.ref.ptr.asTypedList(16).setAll(0, raw);
     return ans;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_float_32_list> api2wire_float_32_list(Float32List raw) {
+  ffi.Pointer<P343B03A6_wire_float_32_list> api2wire_float_32_list(Float32List raw) {
     final ans = inner.new_float_32_list_0(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_float_64_list> api2wire_float_64_list(Float64List raw) {
+  ffi.Pointer<P343B03A6_wire_float_64_list> api2wire_float_64_list(Float64List raw) {
     final ans = inner.new_float_64_list_0(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_int_32_list> api2wire_i32_array_2(I32Array2 raw) {
+  ffi.Pointer<P343B03A6_wire_int_32_list> api2wire_i32_array_2(I32Array2 raw) {
     final ans = inner.new_int_32_list_0(2);
     ans.ref.ptr.asTypedList(2).setAll(0, raw);
     return ans;
@@ -546,28 +546,28 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_int_32_list> api2wire_int_32_list(Int32List raw) {
+  ffi.Pointer<P343B03A6_wire_int_32_list> api2wire_int_32_list(Int32List raw) {
     final ans = inner.new_int_32_list_0(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_int_64_list> api2wire_int_64_list(Int64List raw) {
+  ffi.Pointer<P343B03A6_wire_int_64_list> api2wire_int_64_list(Int64List raw) {
     final ans = inner.new_int_64_list_0(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw.inner);
     return ans;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_int_8_list> api2wire_int_8_list(Int8List raw) {
+  ffi.Pointer<P343B03A6_wire_int_8_list> api2wire_int_8_list(Int8List raw) {
     final ans = inner.new_int_8_list_0(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_list_DartOpaque> api2wire_list_DartOpaque(List<Object> raw) {
+  ffi.Pointer<P343B03A6_wire_list_DartOpaque> api2wire_list_DartOpaque(List<Object> raw) {
     final ans = inner.new_list_DartOpaque_0(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       _api_fill_to_wire_DartOpaque(raw[i], ans.ref.ptr[i]);
@@ -576,7 +576,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_list_HideData> api2wire_list_HideData(List<HideData> raw) {
+  ffi.Pointer<P343B03A6_wire_list_HideData> api2wire_list_HideData(List<HideData> raw) {
     final ans = inner.new_list_HideData_0(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       _api_fill_to_wire_HideData(raw[i], ans.ref.ptr[i]);
@@ -585,7 +585,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_list_application_env_var> api2wire_list_application_env_var(List<ApplicationEnvVar> raw) {
+  ffi.Pointer<P343B03A6_wire_list_application_env_var> api2wire_list_application_env_var(List<ApplicationEnvVar> raw) {
     final ans = inner.new_list_application_env_var_0(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       _api_fill_to_wire_application_env_var(raw[i], ans.ref.ptr[i]);
@@ -594,7 +594,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_list_attribute> api2wire_list_attribute(List<Attribute> raw) {
+  ffi.Pointer<P343B03A6_wire_list_attribute> api2wire_list_attribute(List<Attribute> raw) {
     final ans = inner.new_list_attribute_0(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       _api_fill_to_wire_attribute(raw[i], ans.ref.ptr[i]);
@@ -603,7 +603,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_list_my_size> api2wire_list_my_size(List<MySize> raw) {
+  ffi.Pointer<P343B03A6_wire_list_my_size> api2wire_list_my_size(List<MySize> raw) {
     final ans = inner.new_list_my_size_0(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       _api_fill_to_wire_my_size(raw[i], ans.ref.ptr[i]);
@@ -612,7 +612,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_list_my_tree_node> api2wire_list_my_tree_node(List<MyTreeNode> raw) {
+  ffi.Pointer<P343B03A6_wire_list_my_tree_node> api2wire_list_my_tree_node(List<MyTreeNode> raw) {
     final ans = inner.new_list_my_tree_node_0(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       _api_fill_to_wire_my_tree_node(raw[i], ans.ref.ptr[i]);
@@ -621,7 +621,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_list_opt_box_autoadd_attribute> api2wire_list_opt_box_autoadd_attribute(
+  ffi.Pointer<P343B03A6_wire_list_opt_box_autoadd_attribute> api2wire_list_opt_box_autoadd_attribute(
       List<Attribute?> raw) {
     final ans = inner.new_list_opt_box_autoadd_attribute_0(raw.length);
     for (var i = 0; i < raw.length; ++i) {
@@ -631,7 +631,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_list_test_id> api2wire_list_test_id(List<TestId> raw) {
+  ffi.Pointer<P343B03A6_wire_list_test_id> api2wire_list_test_id(List<TestId> raw) {
     final ans = inner.new_list_test_id_0(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       _api_fill_to_wire_test_id(raw[i], ans.ref.ptr[i]);
@@ -640,7 +640,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_list_weekdays> api2wire_list_weekdays(List<Weekdays> raw) {
+  ffi.Pointer<P343B03A6_wire_list_weekdays> api2wire_list_weekdays(List<Weekdays> raw) {
     final ans = inner.new_list_weekdays_0(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       ans.ref.ptr[i] = api2wire_weekdays(raw[i]);
@@ -649,12 +649,12 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_uint_8_list> api2wire_opt_String(String? raw) {
+  ffi.Pointer<P343B03A6_wire_uint_8_list> api2wire_opt_String(String? raw) {
     return raw == null ? ffi.nullptr : api2wire_String(raw);
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_uint_8_list> api2wire_opt_ZeroCopyBuffer_Uint8List(Uint8List? raw) {
+  ffi.Pointer<P343B03A6_wire_uint_8_list> api2wire_opt_ZeroCopyBuffer_Uint8List(Uint8List? raw) {
     return raw == null ? ffi.nullptr : api2wire_ZeroCopyBuffer_Uint8List(raw);
   }
 
@@ -664,22 +664,22 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_DartOpaque> api2wire_opt_box_autoadd_DartOpaque(Object? raw) {
+  ffi.Pointer<P343B03A6_wire_DartOpaque> api2wire_opt_box_autoadd_DartOpaque(Object? raw) {
     return raw == null ? ffi.nullptr : api2wire_box_autoadd_DartOpaque(raw);
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_HideData> api2wire_opt_box_autoadd_HideData(HideData? raw) {
+  ffi.Pointer<P343B03A6_wire_HideData> api2wire_opt_box_autoadd_HideData(HideData? raw) {
     return raw == null ? ffi.nullptr : api2wire_box_autoadd_HideData(raw);
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_ApplicationEnv> api2wire_opt_box_autoadd_application_env(ApplicationEnv? raw) {
+  ffi.Pointer<P343B03A6_wire_ApplicationEnv> api2wire_opt_box_autoadd_application_env(ApplicationEnv? raw) {
     return raw == null ? ffi.nullptr : api2wire_box_autoadd_application_env(raw);
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_Attribute> api2wire_opt_box_autoadd_attribute(Attribute? raw) {
+  ffi.Pointer<P343B03A6_wire_Attribute> api2wire_opt_box_autoadd_attribute(Attribute? raw) {
     return raw == null ? ffi.nullptr : api2wire_box_autoadd_attribute(raw);
   }
 
@@ -689,7 +689,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_ExoticOptionals> api2wire_opt_box_autoadd_exotic_optionals(ExoticOptionals? raw) {
+  ffi.Pointer<P343B03A6_wire_ExoticOptionals> api2wire_opt_box_autoadd_exotic_optionals(ExoticOptionals? raw) {
     return raw == null ? ffi.nullptr : api2wire_box_autoadd_exotic_optionals(raw);
   }
 
@@ -709,7 +709,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_NewTypeInt> api2wire_opt_box_autoadd_new_type_int(NewTypeInt? raw) {
+  ffi.Pointer<P343B03A6_wire_NewTypeInt> api2wire_opt_box_autoadd_new_type_int(NewTypeInt? raw) {
     return raw == null ? ffi.nullptr : api2wire_box_autoadd_new_type_int(raw);
   }
 
@@ -719,7 +719,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_ExoticOptionals> api2wire_opt_box_exotic_optionals(ExoticOptionals? raw) {
+  ffi.Pointer<P343B03A6_wire_ExoticOptionals> api2wire_opt_box_exotic_optionals(ExoticOptionals? raw) {
     return raw == null ? ffi.nullptr : api2wire_box_exotic_optionals(raw);
   }
 
@@ -749,38 +749,38 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_float_32_list> api2wire_opt_float_32_list(Float32List? raw) {
+  ffi.Pointer<P343B03A6_wire_float_32_list> api2wire_opt_float_32_list(Float32List? raw) {
     return raw == null ? ffi.nullptr : api2wire_float_32_list(raw);
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_float_64_list> api2wire_opt_float_64_list(Float64List? raw) {
+  ffi.Pointer<P343B03A6_wire_float_64_list> api2wire_opt_float_64_list(Float64List? raw) {
     return raw == null ? ffi.nullptr : api2wire_float_64_list(raw);
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_int_32_list> api2wire_opt_int_32_list(Int32List? raw) {
+  ffi.Pointer<P343B03A6_wire_int_32_list> api2wire_opt_int_32_list(Int32List? raw) {
     return raw == null ? ffi.nullptr : api2wire_int_32_list(raw);
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_int_8_list> api2wire_opt_int_8_list(Int8List? raw) {
+  ffi.Pointer<P343B03A6_wire_int_8_list> api2wire_opt_int_8_list(Int8List? raw) {
     return raw == null ? ffi.nullptr : api2wire_int_8_list(raw);
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_list_attribute> api2wire_opt_list_attribute(List<Attribute>? raw) {
+  ffi.Pointer<P343B03A6_wire_list_attribute> api2wire_opt_list_attribute(List<Attribute>? raw) {
     return raw == null ? ffi.nullptr : api2wire_list_attribute(raw);
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_list_opt_box_autoadd_attribute> api2wire_opt_list_opt_box_autoadd_attribute(
+  ffi.Pointer<P343B03A6_wire_list_opt_box_autoadd_attribute> api2wire_opt_list_opt_box_autoadd_attribute(
       List<Attribute?>? raw) {
     return raw == null ? ffi.nullptr : api2wire_list_opt_box_autoadd_attribute(raw);
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_uint_8_list> api2wire_opt_uint_8_list(Uint8List? raw) {
+  ffi.Pointer<P343B03A6_wire_uint_8_list> api2wire_opt_uint_8_list(Uint8List? raw) {
     return raw == null ? ffi.nullptr : api2wire_uint_8_list(raw);
   }
 
@@ -790,28 +790,28 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_uint_8_list> api2wire_u8_array_1600(U8Array1600 raw) {
+  ffi.Pointer<P343B03A6_wire_uint_8_list> api2wire_u8_array_1600(U8Array1600 raw) {
     final ans = inner.new_uint_8_list_0(1600);
     ans.ref.ptr.asTypedList(1600).setAll(0, raw);
     return ans;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_uint_8_list> api2wire_u8_array_32(U8Array32 raw) {
+  ffi.Pointer<P343B03A6_wire_uint_8_list> api2wire_u8_array_32(U8Array32 raw) {
     final ans = inner.new_uint_8_list_0(32);
     ans.ref.ptr.asTypedList(32).setAll(0, raw);
     return ans;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_uint_8_list> api2wire_u8_array_8(U8Array8 raw) {
+  ffi.Pointer<P343B03A6_wire_uint_8_list> api2wire_u8_array_8(U8Array8 raw) {
     final ans = inner.new_uint_8_list_0(8);
     ans.ref.ptr.asTypedList(8).setAll(0, raw);
     return ans;
   }
 
   @protected
-  ffi.Pointer<P7C55DD6B_wire_uint_8_list> api2wire_uint_8_list(Uint8List raw) {
+  ffi.Pointer<P343B03A6_wire_uint_8_list> api2wire_uint_8_list(Uint8List raw) {
     final ans = inner.new_uint_8_list_0(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
@@ -840,44 +840,44 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   OpaqueTypeFinalizer get RwLockHideDataFinalizer => _RwLockHideDataFinalizer;
 // Section: api_fill_to_wire
 
-  void _api_fill_to_wire_BoxDartDebug(BoxDartDebug apiObj, P7C55DD6B_wire_BoxDartDebug wireObj) {
+  void _api_fill_to_wire_BoxDartDebug(BoxDartDebug apiObj, P343B03A6_wire_BoxDartDebug wireObj) {
     wireObj.ptr = apiObj.shareOrMove();
   }
 
-  void _api_fill_to_wire_DartOpaque(Object apiObj, P7C55DD6B_wire_DartOpaque wireObj) {
+  void _api_fill_to_wire_DartOpaque(Object apiObj, P343B03A6_wire_DartOpaque wireObj) {
     wireObj.handle = inner.new_dart_opaque(apiObj);
     wireObj.port = dropPort;
   }
 
-  void _api_fill_to_wire_HideData(HideData apiObj, P7C55DD6B_wire_HideData wireObj) {
+  void _api_fill_to_wire_HideData(HideData apiObj, P343B03A6_wire_HideData wireObj) {
     wireObj.ptr = apiObj.shareOrMove();
   }
 
-  void _api_fill_to_wire_I32(I32 apiObj, P7C55DD6B_wire_I32 wireObj) {
+  void _api_fill_to_wire_I32(I32 apiObj, P343B03A6_wire_I32 wireObj) {
     wireObj.ptr = apiObj.shareOrMove();
   }
 
-  void _api_fill_to_wire_MutexHideData(MutexHideData apiObj, P7C55DD6B_wire_MutexHideData wireObj) {
+  void _api_fill_to_wire_MutexHideData(MutexHideData apiObj, P343B03A6_wire_MutexHideData wireObj) {
     wireObj.ptr = apiObj.shareOrMove();
   }
 
-  void _api_fill_to_wire_NonCloneData(NonCloneData apiObj, P7C55DD6B_wire_NonCloneData wireObj) {
+  void _api_fill_to_wire_NonCloneData(NonCloneData apiObj, P343B03A6_wire_NonCloneData wireObj) {
     wireObj.ptr = apiObj.shareOrMove();
   }
 
-  void _api_fill_to_wire_NonSendHideData(NonSendHideData apiObj, P7C55DD6B_wire_NonSendHideData wireObj) {
+  void _api_fill_to_wire_NonSendHideData(NonSendHideData apiObj, P343B03A6_wire_NonSendHideData wireObj) {
     wireObj.ptr = apiObj.shareOrMove();
   }
 
-  void _api_fill_to_wire_RwLockHideData(RwLockHideData apiObj, P7C55DD6B_wire_RwLockHideData wireObj) {
+  void _api_fill_to_wire_RwLockHideData(RwLockHideData apiObj, P343B03A6_wire_RwLockHideData wireObj) {
     wireObj.ptr = apiObj.shareOrMove();
   }
 
-  void _api_fill_to_wire_a(A apiObj, P7C55DD6B_wire_A wireObj) {
+  void _api_fill_to_wire_a(A apiObj, P343B03A6_wire_A wireObj) {
     wireObj.a = api2wire_String(apiObj.a);
   }
 
-  void _api_fill_to_wire_abc(Abc apiObj, P7C55DD6B_wire_Abc wireObj) {
+  void _api_fill_to_wire_abc(Abc apiObj, P343B03A6_wire_Abc wireObj) {
     if (apiObj is Abc_A) {
       var pre_field0 = api2wire_box_autoadd_a(apiObj.field0);
       wireObj.tag = 0;
@@ -908,16 +908,16 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     }
   }
 
-  void _api_fill_to_wire_application_env(ApplicationEnv apiObj, P7C55DD6B_wire_ApplicationEnv wireObj) {
+  void _api_fill_to_wire_application_env(ApplicationEnv apiObj, P343B03A6_wire_ApplicationEnv wireObj) {
     wireObj.vars = api2wire_list_application_env_var(apiObj.vars);
   }
 
-  void _api_fill_to_wire_application_env_var(ApplicationEnvVar apiObj, P7C55DD6B_wire_ApplicationEnvVar wireObj) {
+  void _api_fill_to_wire_application_env_var(ApplicationEnvVar apiObj, P343B03A6_wire_ApplicationEnvVar wireObj) {
     wireObj.field0 = api2wire_String(apiObj.field0);
     wireObj.field1 = api2wire_bool(apiObj.field1);
   }
 
-  void _api_fill_to_wire_application_settings(ApplicationSettings apiObj, P7C55DD6B_wire_ApplicationSettings wireObj) {
+  void _api_fill_to_wire_application_settings(ApplicationSettings apiObj, P343B03A6_wire_ApplicationSettings wireObj) {
     wireObj.name = api2wire_String(apiObj.name);
     wireObj.version = api2wire_String(apiObj.version);
     wireObj.mode = api2wire_application_mode(apiObj.mode);
@@ -925,217 +925,217 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     wireObj.env_optional = api2wire_opt_box_autoadd_application_env(apiObj.envOptional);
   }
 
-  void _api_fill_to_wire_attribute(Attribute apiObj, P7C55DD6B_wire_Attribute wireObj) {
+  void _api_fill_to_wire_attribute(Attribute apiObj, P343B03A6_wire_Attribute wireObj) {
     wireObj.key = api2wire_String(apiObj.key);
     wireObj.value = api2wire_String(apiObj.value);
   }
 
-  void _api_fill_to_wire_b(B apiObj, P7C55DD6B_wire_B wireObj) {
+  void _api_fill_to_wire_b(B apiObj, P343B03A6_wire_B wireObj) {
     wireObj.b = api2wire_i32(apiObj.b);
   }
 
-  void _api_fill_to_wire_blob(Blob apiObj, P7C55DD6B_wire_Blob wireObj) {
+  void _api_fill_to_wire_blob(Blob apiObj, P343B03A6_wire_Blob wireObj) {
     wireObj.field0 = api2wire_u8_array_1600(apiObj.field0);
   }
 
   void _api_fill_to_wire_box_application_env(
-      ApplicationEnv apiObj, ffi.Pointer<P7C55DD6B_wire_ApplicationEnv> wireObj) {
+      ApplicationEnv apiObj, ffi.Pointer<P343B03A6_wire_ApplicationEnv> wireObj) {
     _api_fill_to_wire_application_env(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_DartOpaque(Object apiObj, ffi.Pointer<P7C55DD6B_wire_DartOpaque> wireObj) {
+  void _api_fill_to_wire_box_autoadd_DartOpaque(Object apiObj, ffi.Pointer<P343B03A6_wire_DartOpaque> wireObj) {
     _api_fill_to_wire_DartOpaque(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_HideData(HideData apiObj, ffi.Pointer<P7C55DD6B_wire_HideData> wireObj) {
+  void _api_fill_to_wire_box_autoadd_HideData(HideData apiObj, ffi.Pointer<P343B03A6_wire_HideData> wireObj) {
     _api_fill_to_wire_HideData(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_a(A apiObj, ffi.Pointer<P7C55DD6B_wire_A> wireObj) {
+  void _api_fill_to_wire_box_autoadd_a(A apiObj, ffi.Pointer<P343B03A6_wire_A> wireObj) {
     _api_fill_to_wire_a(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_abc(Abc apiObj, ffi.Pointer<P7C55DD6B_wire_Abc> wireObj) {
+  void _api_fill_to_wire_box_autoadd_abc(Abc apiObj, ffi.Pointer<P343B03A6_wire_Abc> wireObj) {
     _api_fill_to_wire_abc(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_application_env(
-      ApplicationEnv apiObj, ffi.Pointer<P7C55DD6B_wire_ApplicationEnv> wireObj) {
+      ApplicationEnv apiObj, ffi.Pointer<P343B03A6_wire_ApplicationEnv> wireObj) {
     _api_fill_to_wire_application_env(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_application_settings(
-      ApplicationSettings apiObj, ffi.Pointer<P7C55DD6B_wire_ApplicationSettings> wireObj) {
+      ApplicationSettings apiObj, ffi.Pointer<P343B03A6_wire_ApplicationSettings> wireObj) {
     _api_fill_to_wire_application_settings(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_attribute(Attribute apiObj, ffi.Pointer<P7C55DD6B_wire_Attribute> wireObj) {
+  void _api_fill_to_wire_box_autoadd_attribute(Attribute apiObj, ffi.Pointer<P343B03A6_wire_Attribute> wireObj) {
     _api_fill_to_wire_attribute(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_b(B apiObj, ffi.Pointer<P7C55DD6B_wire_B> wireObj) {
+  void _api_fill_to_wire_box_autoadd_b(B apiObj, ffi.Pointer<P343B03A6_wire_B> wireObj) {
     _api_fill_to_wire_b(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_c(C apiObj, ffi.Pointer<P7C55DD6B_wire_C> wireObj) {
+  void _api_fill_to_wire_box_autoadd_c(C apiObj, ffi.Pointer<P343B03A6_wire_C> wireObj) {
     _api_fill_to_wire_c(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_concatenate_with(
-      ConcatenateWith apiObj, ffi.Pointer<P7C55DD6B_wire_ConcatenateWith> wireObj) {
+      ConcatenateWith apiObj, ffi.Pointer<P343B03A6_wire_ConcatenateWith> wireObj) {
     _api_fill_to_wire_concatenate_with(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_customized(Customized apiObj, ffi.Pointer<P7C55DD6B_wire_Customized> wireObj) {
+  void _api_fill_to_wire_box_autoadd_customized(Customized apiObj, ffi.Pointer<P343B03A6_wire_Customized> wireObj) {
     _api_fill_to_wire_customized(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_dart_opaque_nested(
-      DartOpaqueNested apiObj, ffi.Pointer<P7C55DD6B_wire_DartOpaqueNested> wireObj) {
+      DartOpaqueNested apiObj, ffi.Pointer<P343B03A6_wire_DartOpaqueNested> wireObj) {
     _api_fill_to_wire_dart_opaque_nested(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_enum_dart_opaque(
-      EnumDartOpaque apiObj, ffi.Pointer<P7C55DD6B_wire_EnumDartOpaque> wireObj) {
+      EnumDartOpaque apiObj, ffi.Pointer<P343B03A6_wire_EnumDartOpaque> wireObj) {
     _api_fill_to_wire_enum_dart_opaque(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_enum_opaque(EnumOpaque apiObj, ffi.Pointer<P7C55DD6B_wire_EnumOpaque> wireObj) {
+  void _api_fill_to_wire_box_autoadd_enum_opaque(EnumOpaque apiObj, ffi.Pointer<P343B03A6_wire_EnumOpaque> wireObj) {
     _api_fill_to_wire_enum_opaque(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_event(Event apiObj, ffi.Pointer<P7C55DD6B_wire_Event> wireObj) {
+  void _api_fill_to_wire_box_autoadd_event(Event apiObj, ffi.Pointer<P343B03A6_wire_Event> wireObj) {
     _api_fill_to_wire_event(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_exotic_optionals(
-      ExoticOptionals apiObj, ffi.Pointer<P7C55DD6B_wire_ExoticOptionals> wireObj) {
+      ExoticOptionals apiObj, ffi.Pointer<P343B03A6_wire_ExoticOptionals> wireObj) {
     _api_fill_to_wire_exotic_optionals(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_feature_chrono(
-      FeatureChrono apiObj, ffi.Pointer<P7C55DD6B_wire_FeatureChrono> wireObj) {
+      FeatureChrono apiObj, ffi.Pointer<P343B03A6_wire_FeatureChrono> wireObj) {
     _api_fill_to_wire_feature_chrono(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_feature_uuid(FeatureUuid apiObj, ffi.Pointer<P7C55DD6B_wire_FeatureUuid> wireObj) {
+  void _api_fill_to_wire_box_autoadd_feature_uuid(FeatureUuid apiObj, ffi.Pointer<P343B03A6_wire_FeatureUuid> wireObj) {
     _api_fill_to_wire_feature_uuid(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_feed_id(FeedId apiObj, ffi.Pointer<P7C55DD6B_wire_FeedId> wireObj) {
+  void _api_fill_to_wire_box_autoadd_feed_id(FeedId apiObj, ffi.Pointer<P343B03A6_wire_FeedId> wireObj) {
     _api_fill_to_wire_feed_id(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_kitchen_sink(KitchenSink apiObj, ffi.Pointer<P7C55DD6B_wire_KitchenSink> wireObj) {
+  void _api_fill_to_wire_box_autoadd_kitchen_sink(KitchenSink apiObj, ffi.Pointer<P343B03A6_wire_KitchenSink> wireObj) {
     _api_fill_to_wire_kitchen_sink(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_measure(Measure apiObj, ffi.Pointer<P7C55DD6B_wire_Measure> wireObj) {
+  void _api_fill_to_wire_box_autoadd_measure(Measure apiObj, ffi.Pointer<P343B03A6_wire_Measure> wireObj) {
     _api_fill_to_wire_measure(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_message_id(MessageId apiObj, ffi.Pointer<P7C55DD6B_wire_MessageId> wireObj) {
+  void _api_fill_to_wire_box_autoadd_message_id(MessageId apiObj, ffi.Pointer<P343B03A6_wire_MessageId> wireObj) {
     _api_fill_to_wire_message_id(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_my_nested_struct(
-      MyNestedStruct apiObj, ffi.Pointer<P7C55DD6B_wire_MyNestedStruct> wireObj) {
+      MyNestedStruct apiObj, ffi.Pointer<P343B03A6_wire_MyNestedStruct> wireObj) {
     _api_fill_to_wire_my_nested_struct(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_my_size(MySize apiObj, ffi.Pointer<P7C55DD6B_wire_MySize> wireObj) {
+  void _api_fill_to_wire_box_autoadd_my_size(MySize apiObj, ffi.Pointer<P343B03A6_wire_MySize> wireObj) {
     _api_fill_to_wire_my_size(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_my_struct(MyStruct apiObj, ffi.Pointer<P7C55DD6B_wire_MyStruct> wireObj) {
+  void _api_fill_to_wire_box_autoadd_my_struct(MyStruct apiObj, ffi.Pointer<P343B03A6_wire_MyStruct> wireObj) {
     _api_fill_to_wire_my_struct(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_my_tree_node(MyTreeNode apiObj, ffi.Pointer<P7C55DD6B_wire_MyTreeNode> wireObj) {
+  void _api_fill_to_wire_box_autoadd_my_tree_node(MyTreeNode apiObj, ffi.Pointer<P343B03A6_wire_MyTreeNode> wireObj) {
     _api_fill_to_wire_my_tree_node(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_new_type_int(NewTypeInt apiObj, ffi.Pointer<P7C55DD6B_wire_NewTypeInt> wireObj) {
+  void _api_fill_to_wire_box_autoadd_new_type_int(NewTypeInt apiObj, ffi.Pointer<P343B03A6_wire_NewTypeInt> wireObj) {
     _api_fill_to_wire_new_type_int(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_note(Note apiObj, ffi.Pointer<P7C55DD6B_wire_Note> wireObj) {
+  void _api_fill_to_wire_box_autoadd_note(Note apiObj, ffi.Pointer<P343B03A6_wire_Note> wireObj) {
     _api_fill_to_wire_note(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_numbers(Numbers apiObj, ffi.Pointer<P7C55DD6B_wire_Numbers> wireObj) {
+  void _api_fill_to_wire_box_autoadd_numbers(Numbers apiObj, ffi.Pointer<P343B03A6_wire_Numbers> wireObj) {
     _api_fill_to_wire_numbers(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_opaque_nested(
-      OpaqueNested apiObj, ffi.Pointer<P7C55DD6B_wire_OpaqueNested> wireObj) {
+      OpaqueNested apiObj, ffi.Pointer<P343B03A6_wire_OpaqueNested> wireObj) {
     _api_fill_to_wire_opaque_nested(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_sequences(Sequences apiObj, ffi.Pointer<P7C55DD6B_wire_Sequences> wireObj) {
+  void _api_fill_to_wire_box_autoadd_sequences(Sequences apiObj, ffi.Pointer<P343B03A6_wire_Sequences> wireObj) {
     _api_fill_to_wire_sequences(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_sum_with(SumWith apiObj, ffi.Pointer<P7C55DD6B_wire_SumWith> wireObj) {
+  void _api_fill_to_wire_box_autoadd_sum_with(SumWith apiObj, ffi.Pointer<P343B03A6_wire_SumWith> wireObj) {
     _api_fill_to_wire_sum_with(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_test_id(TestId apiObj, ffi.Pointer<P7C55DD6B_wire_TestId> wireObj) {
+  void _api_fill_to_wire_box_autoadd_test_id(TestId apiObj, ffi.Pointer<P343B03A6_wire_TestId> wireObj) {
     _api_fill_to_wire_test_id(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_user_id(UserId apiObj, ffi.Pointer<P7C55DD6B_wire_UserId> wireObj) {
+  void _api_fill_to_wire_box_autoadd_user_id(UserId apiObj, ffi.Pointer<P343B03A6_wire_UserId> wireObj) {
     _api_fill_to_wire_user_id(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_blob(Blob apiObj, ffi.Pointer<P7C55DD6B_wire_Blob> wireObj) {
+  void _api_fill_to_wire_box_blob(Blob apiObj, ffi.Pointer<P343B03A6_wire_Blob> wireObj) {
     _api_fill_to_wire_blob(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_distance(Distance apiObj, ffi.Pointer<P7C55DD6B_wire_Distance> wireObj) {
+  void _api_fill_to_wire_box_distance(Distance apiObj, ffi.Pointer<P343B03A6_wire_Distance> wireObj) {
     _api_fill_to_wire_distance(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_exotic_optionals(
-      ExoticOptionals apiObj, ffi.Pointer<P7C55DD6B_wire_ExoticOptionals> wireObj) {
+      ExoticOptionals apiObj, ffi.Pointer<P343B03A6_wire_ExoticOptionals> wireObj) {
     _api_fill_to_wire_exotic_optionals(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_kitchen_sink(KitchenSink apiObj, ffi.Pointer<P7C55DD6B_wire_KitchenSink> wireObj) {
+  void _api_fill_to_wire_box_kitchen_sink(KitchenSink apiObj, ffi.Pointer<P343B03A6_wire_KitchenSink> wireObj) {
     _api_fill_to_wire_kitchen_sink(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_my_size(MySize apiObj, ffi.Pointer<P7C55DD6B_wire_MySize> wireObj) {
+  void _api_fill_to_wire_box_my_size(MySize apiObj, ffi.Pointer<P343B03A6_wire_MySize> wireObj) {
     _api_fill_to_wire_my_size(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_speed(Speed apiObj, ffi.Pointer<P7C55DD6B_wire_Speed> wireObj) {
+  void _api_fill_to_wire_box_speed(Speed apiObj, ffi.Pointer<P343B03A6_wire_Speed> wireObj) {
     _api_fill_to_wire_speed(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_u8_array_1600(U8Array1600 apiObj, ffi.Pointer<P7C55DD6B_wire_uint_8_list> wireObj) {
+  void _api_fill_to_wire_box_u8_array_1600(U8Array1600 apiObj, ffi.Pointer<P343B03A6_wire_uint_8_list> wireObj) {
     wireObj = api2wire_u8_array_1600(apiObj);
   }
 
-  void _api_fill_to_wire_c(C apiObj, P7C55DD6B_wire_C wireObj) {
+  void _api_fill_to_wire_c(C apiObj, P343B03A6_wire_C wireObj) {
     wireObj.c = api2wire_bool(apiObj.c);
   }
 
-  void _api_fill_to_wire_concatenate_with(ConcatenateWith apiObj, P7C55DD6B_wire_ConcatenateWith wireObj) {
+  void _api_fill_to_wire_concatenate_with(ConcatenateWith apiObj, P343B03A6_wire_ConcatenateWith wireObj) {
     wireObj.a = api2wire_String(apiObj.a);
   }
 
-  void _api_fill_to_wire_customized(Customized apiObj, P7C55DD6B_wire_Customized wireObj) {
+  void _api_fill_to_wire_customized(Customized apiObj, P343B03A6_wire_Customized wireObj) {
     wireObj.final_field = api2wire_String(apiObj.finalField);
     wireObj.non_final_field = api2wire_opt_String(apiObj.nonFinalField);
   }
 
-  void _api_fill_to_wire_dart_opaque_nested(DartOpaqueNested apiObj, P7C55DD6B_wire_DartOpaqueNested wireObj) {
+  void _api_fill_to_wire_dart_opaque_nested(DartOpaqueNested apiObj, P343B03A6_wire_DartOpaqueNested wireObj) {
     wireObj.first = api2wire_DartOpaque(apiObj.first);
     wireObj.second = api2wire_DartOpaque(apiObj.second);
   }
 
-  void _api_fill_to_wire_distance(Distance apiObj, P7C55DD6B_wire_Distance wireObj) {
+  void _api_fill_to_wire_distance(Distance apiObj, P343B03A6_wire_Distance wireObj) {
     if (apiObj is Distance_Unknown) {
       wireObj.tag = 0;
       return;
@@ -1149,9 +1149,9 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     }
   }
 
-  void _api_fill_to_wire_empty(Empty apiObj, P7C55DD6B_wire_Empty wireObj) {}
+  void _api_fill_to_wire_empty(Empty apiObj, P343B03A6_wire_Empty wireObj) {}
 
-  void _api_fill_to_wire_enum_dart_opaque(EnumDartOpaque apiObj, P7C55DD6B_wire_EnumDartOpaque wireObj) {
+  void _api_fill_to_wire_enum_dart_opaque(EnumDartOpaque apiObj, P343B03A6_wire_EnumDartOpaque wireObj) {
     if (apiObj is EnumDartOpaque_Primitive) {
       var pre_field0 = api2wire_i32(apiObj.field0);
       wireObj.tag = 0;
@@ -1168,7 +1168,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     }
   }
 
-  void _api_fill_to_wire_enum_opaque(EnumOpaque apiObj, P7C55DD6B_wire_EnumOpaque wireObj) {
+  void _api_fill_to_wire_enum_opaque(EnumOpaque apiObj, P343B03A6_wire_EnumOpaque wireObj) {
     if (apiObj is EnumOpaque_Struct) {
       var pre_field0 = api2wire_HideData(apiObj.field0);
       wireObj.tag = 0;
@@ -1206,12 +1206,12 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     }
   }
 
-  void _api_fill_to_wire_event(Event apiObj, P7C55DD6B_wire_Event wireObj) {
+  void _api_fill_to_wire_event(Event apiObj, P343B03A6_wire_Event wireObj) {
     wireObj.address = api2wire_String(apiObj.address);
     wireObj.payload = api2wire_String(apiObj.payload);
   }
 
-  void _api_fill_to_wire_exotic_optionals(ExoticOptionals apiObj, P7C55DD6B_wire_ExoticOptionals wireObj) {
+  void _api_fill_to_wire_exotic_optionals(ExoticOptionals apiObj, P343B03A6_wire_ExoticOptionals wireObj) {
     wireObj.int32 = api2wire_opt_box_autoadd_i32(apiObj.int32);
     wireObj.int64 = api2wire_opt_box_autoadd_i64(apiObj.int64);
     wireObj.float64 = api2wire_opt_box_autoadd_f64(apiObj.float64);
@@ -1228,23 +1228,23 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     wireObj.newtypeint = api2wire_opt_box_autoadd_new_type_int(apiObj.newtypeint);
   }
 
-  void _api_fill_to_wire_feature_chrono(FeatureChrono apiObj, P7C55DD6B_wire_FeatureChrono wireObj) {
+  void _api_fill_to_wire_feature_chrono(FeatureChrono apiObj, P343B03A6_wire_FeatureChrono wireObj) {
     wireObj.utc = api2wire_Chrono_Utc(apiObj.utc);
     wireObj.local = api2wire_Chrono_Local(apiObj.local);
     wireObj.duration = api2wire_Chrono_Duration(apiObj.duration);
     wireObj.naive = api2wire_Chrono_Naive(apiObj.naive);
   }
 
-  void _api_fill_to_wire_feature_uuid(FeatureUuid apiObj, P7C55DD6B_wire_FeatureUuid wireObj) {
+  void _api_fill_to_wire_feature_uuid(FeatureUuid apiObj, P343B03A6_wire_FeatureUuid wireObj) {
     wireObj.one = api2wire_Uuid(apiObj.one);
     wireObj.many = api2wire_Uuids(apiObj.many);
   }
 
-  void _api_fill_to_wire_feed_id(FeedId apiObj, P7C55DD6B_wire_FeedId wireObj) {
+  void _api_fill_to_wire_feed_id(FeedId apiObj, P343B03A6_wire_FeedId wireObj) {
     wireObj.field0 = api2wire_u8_array_8(apiObj.field0);
   }
 
-  void _api_fill_to_wire_kitchen_sink(KitchenSink apiObj, P7C55DD6B_wire_KitchenSink wireObj) {
+  void _api_fill_to_wire_kitchen_sink(KitchenSink apiObj, P343B03A6_wire_KitchenSink wireObj) {
     if (apiObj is KitchenSink_Empty) {
       wireObj.tag = 0;
       return;
@@ -1294,7 +1294,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     }
   }
 
-  void _api_fill_to_wire_measure(Measure apiObj, P7C55DD6B_wire_Measure wireObj) {
+  void _api_fill_to_wire_measure(Measure apiObj, P343B03A6_wire_Measure wireObj) {
     if (apiObj is Measure_Speed) {
       var pre_field0 = api2wire_box_speed(apiObj.field0);
       wireObj.tag = 0;
@@ -1311,86 +1311,86 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     }
   }
 
-  void _api_fill_to_wire_message_id(MessageId apiObj, P7C55DD6B_wire_MessageId wireObj) {
+  void _api_fill_to_wire_message_id(MessageId apiObj, P343B03A6_wire_MessageId wireObj) {
     wireObj.field0 = api2wire_u8_array_32(apiObj.field0);
   }
 
-  void _api_fill_to_wire_my_nested_struct(MyNestedStruct apiObj, P7C55DD6B_wire_MyNestedStruct wireObj) {
+  void _api_fill_to_wire_my_nested_struct(MyNestedStruct apiObj, P343B03A6_wire_MyNestedStruct wireObj) {
     _api_fill_to_wire_my_tree_node(apiObj.treeNode, wireObj.tree_node);
     wireObj.weekday = api2wire_weekdays(apiObj.weekday);
   }
 
-  void _api_fill_to_wire_my_size(MySize apiObj, P7C55DD6B_wire_MySize wireObj) {
+  void _api_fill_to_wire_my_size(MySize apiObj, P343B03A6_wire_MySize wireObj) {
     wireObj.width = api2wire_i32(apiObj.width);
     wireObj.height = api2wire_i32(apiObj.height);
   }
 
-  void _api_fill_to_wire_my_struct(MyStruct apiObj, P7C55DD6B_wire_MyStruct wireObj) {
+  void _api_fill_to_wire_my_struct(MyStruct apiObj, P343B03A6_wire_MyStruct wireObj) {
     wireObj.content = api2wire_bool(apiObj.content);
   }
 
-  void _api_fill_to_wire_my_tree_node(MyTreeNode apiObj, P7C55DD6B_wire_MyTreeNode wireObj) {
+  void _api_fill_to_wire_my_tree_node(MyTreeNode apiObj, P343B03A6_wire_MyTreeNode wireObj) {
     wireObj.value_i32 = api2wire_i32(apiObj.valueI32);
     wireObj.value_vec_u8 = api2wire_uint_8_list(apiObj.valueVecU8);
     wireObj.value_boolean = api2wire_bool(apiObj.valueBoolean);
     wireObj.children = api2wire_list_my_tree_node(apiObj.children);
   }
 
-  void _api_fill_to_wire_new_type_int(NewTypeInt apiObj, P7C55DD6B_wire_NewTypeInt wireObj) {
+  void _api_fill_to_wire_new_type_int(NewTypeInt apiObj, P343B03A6_wire_NewTypeInt wireObj) {
     wireObj.field0 = api2wire_i64(apiObj.field0);
   }
 
-  void _api_fill_to_wire_note(Note apiObj, P7C55DD6B_wire_Note wireObj) {
+  void _api_fill_to_wire_note(Note apiObj, P343B03A6_wire_Note wireObj) {
     wireObj.day = api2wire_box_weekdays(apiObj.day);
     wireObj.body = api2wire_String(apiObj.body);
   }
 
-  void _api_fill_to_wire_numbers(Numbers apiObj, P7C55DD6B_wire_Numbers wireObj) {
+  void _api_fill_to_wire_numbers(Numbers apiObj, P343B03A6_wire_Numbers wireObj) {
     wireObj.field0 = api2wire_int_32_list(apiObj.field0);
   }
 
-  void _api_fill_to_wire_opaque_nested(OpaqueNested apiObj, P7C55DD6B_wire_OpaqueNested wireObj) {
+  void _api_fill_to_wire_opaque_nested(OpaqueNested apiObj, P343B03A6_wire_OpaqueNested wireObj) {
     wireObj.first = api2wire_HideData(apiObj.first);
     wireObj.second = api2wire_HideData(apiObj.second);
   }
 
-  void _api_fill_to_wire_opt_box_autoadd_DartOpaque(Object? apiObj, ffi.Pointer<P7C55DD6B_wire_DartOpaque> wireObj) {
+  void _api_fill_to_wire_opt_box_autoadd_DartOpaque(Object? apiObj, ffi.Pointer<P343B03A6_wire_DartOpaque> wireObj) {
     if (apiObj != null) _api_fill_to_wire_box_autoadd_DartOpaque(apiObj, wireObj);
   }
 
-  void _api_fill_to_wire_opt_box_autoadd_HideData(HideData? apiObj, ffi.Pointer<P7C55DD6B_wire_HideData> wireObj) {
+  void _api_fill_to_wire_opt_box_autoadd_HideData(HideData? apiObj, ffi.Pointer<P343B03A6_wire_HideData> wireObj) {
     if (apiObj != null) _api_fill_to_wire_box_autoadd_HideData(apiObj, wireObj);
   }
 
   void _api_fill_to_wire_opt_box_autoadd_application_env(
-      ApplicationEnv? apiObj, ffi.Pointer<P7C55DD6B_wire_ApplicationEnv> wireObj) {
+      ApplicationEnv? apiObj, ffi.Pointer<P343B03A6_wire_ApplicationEnv> wireObj) {
     if (apiObj != null) _api_fill_to_wire_box_autoadd_application_env(apiObj, wireObj);
   }
 
-  void _api_fill_to_wire_opt_box_autoadd_attribute(Attribute? apiObj, ffi.Pointer<P7C55DD6B_wire_Attribute> wireObj) {
+  void _api_fill_to_wire_opt_box_autoadd_attribute(Attribute? apiObj, ffi.Pointer<P343B03A6_wire_Attribute> wireObj) {
     if (apiObj != null) _api_fill_to_wire_box_autoadd_attribute(apiObj, wireObj);
   }
 
   void _api_fill_to_wire_opt_box_autoadd_exotic_optionals(
-      ExoticOptionals? apiObj, ffi.Pointer<P7C55DD6B_wire_ExoticOptionals> wireObj) {
+      ExoticOptionals? apiObj, ffi.Pointer<P343B03A6_wire_ExoticOptionals> wireObj) {
     if (apiObj != null) _api_fill_to_wire_box_autoadd_exotic_optionals(apiObj, wireObj);
   }
 
   void _api_fill_to_wire_opt_box_autoadd_new_type_int(
-      NewTypeInt? apiObj, ffi.Pointer<P7C55DD6B_wire_NewTypeInt> wireObj) {
+      NewTypeInt? apiObj, ffi.Pointer<P343B03A6_wire_NewTypeInt> wireObj) {
     if (apiObj != null) _api_fill_to_wire_box_autoadd_new_type_int(apiObj, wireObj);
   }
 
   void _api_fill_to_wire_opt_box_exotic_optionals(
-      ExoticOptionals? apiObj, ffi.Pointer<P7C55DD6B_wire_ExoticOptionals> wireObj) {
+      ExoticOptionals? apiObj, ffi.Pointer<P343B03A6_wire_ExoticOptionals> wireObj) {
     if (apiObj != null) _api_fill_to_wire_box_exotic_optionals(apiObj, wireObj);
   }
 
-  void _api_fill_to_wire_sequences(Sequences apiObj, P7C55DD6B_wire_Sequences wireObj) {
+  void _api_fill_to_wire_sequences(Sequences apiObj, P343B03A6_wire_Sequences wireObj) {
     wireObj.field0 = api2wire_int_32_list(apiObj.field0);
   }
 
-  void _api_fill_to_wire_speed(Speed apiObj, P7C55DD6B_wire_Speed wireObj) {
+  void _api_fill_to_wire_speed(Speed apiObj, P343B03A6_wire_Speed wireObj) {
     if (apiObj is Speed_Unknown) {
       wireObj.tag = 0;
       return;
@@ -1404,15 +1404,15 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     }
   }
 
-  void _api_fill_to_wire_sum_with(SumWith apiObj, P7C55DD6B_wire_SumWith wireObj) {
+  void _api_fill_to_wire_sum_with(SumWith apiObj, P343B03A6_wire_SumWith wireObj) {
     wireObj.x = api2wire_u32(apiObj.x);
   }
 
-  void _api_fill_to_wire_test_id(TestId apiObj, P7C55DD6B_wire_TestId wireObj) {
+  void _api_fill_to_wire_test_id(TestId apiObj, P343B03A6_wire_TestId wireObj) {
     wireObj.field0 = api2wire_i32_array_2(apiObj.field0);
   }
 
-  void _api_fill_to_wire_user_id(UserId apiObj, P7C55DD6B_wire_UserId wireObj) {
+  void _api_fill_to_wire_user_id(UserId apiObj, P343B03A6_wire_UserId wireObj) {
     wireObj.value = api2wire_u32(apiObj.value);
   }
 }
@@ -1497,45 +1497,45 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>)>>('init_frb_dart_api_dl');
   late final _init_frb_dart_api_dl = _init_frb_dart_api_dlPtr.asFunction<int Function(ffi.Pointer<ffi.Void>)>();
 
-  void P7C55DD6B_wire_simple_adder(
+  void P343B03A6_wire_simple_adder(
     int port_,
     int a,
     int b,
   ) {
-    return _P7C55DD6B_wire_simple_adder(
+    return _P343B03A6_wire_simple_adder(
       port_,
       a,
       b,
     );
   }
 
-  late final _P7C55DD6B_wire_simple_adderPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>('P7C55DD6B_wire_simple_adder');
-  late final _P7C55DD6B_wire_simple_adder = _P7C55DD6B_wire_simple_adderPtr.asFunction<void Function(int, int, int)>();
+  late final _P343B03A6_wire_simple_adderPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>('P343B03A6_wire_simple_adder');
+  late final _P343B03A6_wire_simple_adder = _P343B03A6_wire_simple_adderPtr.asFunction<void Function(int, int, int)>();
 
-  WireSyncReturn P7C55DD6B_wire_simple_adder_sync(
+  WireSyncReturn P343B03A6_wire_simple_adder_sync(
     int a,
     int b,
   ) {
-    return _P7C55DD6B_wire_simple_adder_sync(
+    return _P343B03A6_wire_simple_adder_sync(
       a,
       b,
     );
   }
 
-  late final _P7C55DD6B_wire_simple_adder_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int32, ffi.Int32)>>('P7C55DD6B_wire_simple_adder_sync');
-  late final _P7C55DD6B_wire_simple_adder_sync =
-      _P7C55DD6B_wire_simple_adder_syncPtr.asFunction<WireSyncReturn Function(int, int)>();
+  late final _P343B03A6_wire_simple_adder_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int32, ffi.Int32)>>('P343B03A6_wire_simple_adder_sync');
+  late final _P343B03A6_wire_simple_adder_sync =
+      _P343B03A6_wire_simple_adder_syncPtr.asFunction<WireSyncReturn Function(int, int)>();
 
-  void P7C55DD6B_wire_primitive_types(
+  void P343B03A6_wire_primitive_types(
     int port_,
     int my_i32,
     int my_i64,
     double my_f64,
     bool my_bool,
   ) {
-    return _P7C55DD6B_wire_primitive_types(
+    return _P343B03A6_wire_primitive_types(
       port_,
       my_i32,
       my_i64,
@@ -1544,20 +1544,20 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
     );
   }
 
-  late final _P7C55DD6B_wire_primitive_typesPtr =
+  late final _P343B03A6_wire_primitive_typesPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int64, ffi.Double, ffi.Bool)>>(
-          'P7C55DD6B_wire_primitive_types');
-  late final _P7C55DD6B_wire_primitive_types =
-      _P7C55DD6B_wire_primitive_typesPtr.asFunction<void Function(int, int, int, double, bool)>();
+          'P343B03A6_wire_primitive_types');
+  late final _P343B03A6_wire_primitive_types =
+      _P343B03A6_wire_primitive_typesPtr.asFunction<void Function(int, int, int, double, bool)>();
 
-  void P7C55DD6B_wire_primitive_optional_types(
+  void P343B03A6_wire_primitive_optional_types(
     int port_,
     ffi.Pointer<ffi.Int32> my_i32,
     ffi.Pointer<ffi.Int64> my_i64,
     ffi.Pointer<ffi.Double> my_f64,
     ffi.Pointer<ffi.Bool> my_bool,
   ) {
-    return _P7C55DD6B_wire_primitive_optional_types(
+    return _P343B03A6_wire_primitive_optional_types(
       port_,
       my_i32,
       my_i64,
@@ -1566,21 +1566,21 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
     );
   }
 
-  late final _P7C55DD6B_wire_primitive_optional_typesPtr = _lookup<
+  late final _P343B03A6_wire_primitive_optional_typesPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Int32>, ffi.Pointer<ffi.Int64>, ffi.Pointer<ffi.Double>,
-              ffi.Pointer<ffi.Bool>)>>('P7C55DD6B_wire_primitive_optional_types');
-  late final _P7C55DD6B_wire_primitive_optional_types = _P7C55DD6B_wire_primitive_optional_typesPtr.asFunction<
+              ffi.Pointer<ffi.Bool>)>>('P343B03A6_wire_primitive_optional_types');
+  late final _P343B03A6_wire_primitive_optional_types = _P343B03A6_wire_primitive_optional_typesPtr.asFunction<
       void Function(
           int, ffi.Pointer<ffi.Int32>, ffi.Pointer<ffi.Int64>, ffi.Pointer<ffi.Double>, ffi.Pointer<ffi.Bool>)>();
 
-  WireSyncReturn P7C55DD6B_wire_primitive_types_sync(
+  WireSyncReturn P343B03A6_wire_primitive_types_sync(
     int my_i32,
     int my_i64,
     double my_f64,
     bool my_bool,
   ) {
-    return _P7C55DD6B_wire_primitive_types_sync(
+    return _P343B03A6_wire_primitive_types_sync(
       my_i32,
       my_i64,
       my_f64,
@@ -1588,485 +1588,485 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
     );
   }
 
-  late final _P7C55DD6B_wire_primitive_types_syncPtr =
+  late final _P343B03A6_wire_primitive_types_syncPtr =
       _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int32, ffi.Int64, ffi.Double, ffi.Bool)>>(
-          'P7C55DD6B_wire_primitive_types_sync');
-  late final _P7C55DD6B_wire_primitive_types_sync =
-      _P7C55DD6B_wire_primitive_types_syncPtr.asFunction<WireSyncReturn Function(int, int, double, bool)>();
+          'P343B03A6_wire_primitive_types_sync');
+  late final _P343B03A6_wire_primitive_types_sync =
+      _P343B03A6_wire_primitive_types_syncPtr.asFunction<WireSyncReturn Function(int, int, double, bool)>();
 
-  void P7C55DD6B_wire_primitive_u32(
+  void P343B03A6_wire_primitive_u32(
     int port_,
     int my_u32,
   ) {
-    return _P7C55DD6B_wire_primitive_u32(
+    return _P343B03A6_wire_primitive_u32(
       port_,
       my_u32,
     );
   }
 
-  late final _P7C55DD6B_wire_primitive_u32Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>('P7C55DD6B_wire_primitive_u32');
-  late final _P7C55DD6B_wire_primitive_u32 = _P7C55DD6B_wire_primitive_u32Ptr.asFunction<void Function(int, int)>();
+  late final _P343B03A6_wire_primitive_u32Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>('P343B03A6_wire_primitive_u32');
+  late final _P343B03A6_wire_primitive_u32 = _P343B03A6_wire_primitive_u32Ptr.asFunction<void Function(int, int)>();
 
-  WireSyncReturn P7C55DD6B_wire_primitive_u32_sync(
+  WireSyncReturn P343B03A6_wire_primitive_u32_sync(
     int my_u32,
   ) {
-    return _P7C55DD6B_wire_primitive_u32_sync(
+    return _P343B03A6_wire_primitive_u32_sync(
       my_u32,
     );
   }
 
-  late final _P7C55DD6B_wire_primitive_u32_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Uint32)>>('P7C55DD6B_wire_primitive_u32_sync');
-  late final _P7C55DD6B_wire_primitive_u32_sync =
-      _P7C55DD6B_wire_primitive_u32_syncPtr.asFunction<WireSyncReturn Function(int)>();
+  late final _P343B03A6_wire_primitive_u32_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Uint32)>>('P343B03A6_wire_primitive_u32_sync');
+  late final _P343B03A6_wire_primitive_u32_sync =
+      _P343B03A6_wire_primitive_u32_syncPtr.asFunction<WireSyncReturn Function(int)>();
 
-  void P7C55DD6B_wire_handle_string(
+  void P343B03A6_wire_handle_string(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_uint_8_list> s,
+    ffi.Pointer<P343B03A6_wire_uint_8_list> s,
   ) {
-    return _P7C55DD6B_wire_handle_string(
+    return _P343B03A6_wire_handle_string(
       port_,
       s,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_stringPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>>(
-          'P7C55DD6B_wire_handle_string');
-  late final _P7C55DD6B_wire_handle_string =
-      _P7C55DD6B_wire_handle_stringPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>();
+  late final _P343B03A6_wire_handle_stringPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_uint_8_list>)>>(
+          'P343B03A6_wire_handle_string');
+  late final _P343B03A6_wire_handle_string =
+      _P343B03A6_wire_handle_stringPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_uint_8_list>)>();
 
-  WireSyncReturn P7C55DD6B_wire_handle_string_sync(
-    ffi.Pointer<P7C55DD6B_wire_uint_8_list> s,
+  WireSyncReturn P343B03A6_wire_handle_string_sync(
+    ffi.Pointer<P343B03A6_wire_uint_8_list> s,
   ) {
-    return _P7C55DD6B_wire_handle_string_sync(
+    return _P343B03A6_wire_handle_string_sync(
       s,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_string_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>>(
-          'P7C55DD6B_wire_handle_string_sync');
-  late final _P7C55DD6B_wire_handle_string_sync = _P7C55DD6B_wire_handle_string_syncPtr.asFunction<
-      WireSyncReturn Function(ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>();
+  late final _P343B03A6_wire_handle_string_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<P343B03A6_wire_uint_8_list>)>>(
+          'P343B03A6_wire_handle_string_sync');
+  late final _P343B03A6_wire_handle_string_sync = _P343B03A6_wire_handle_string_syncPtr.asFunction<
+      WireSyncReturn Function(ffi.Pointer<P343B03A6_wire_uint_8_list>)>();
 
-  void P7C55DD6B_wire_handle_return_unit(
+  void P343B03A6_wire_handle_return_unit(
     int port_,
   ) {
-    return _P7C55DD6B_wire_handle_return_unit(
+    return _P343B03A6_wire_handle_return_unit(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_return_unitPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_handle_return_unit');
-  late final _P7C55DD6B_wire_handle_return_unit =
-      _P7C55DD6B_wire_handle_return_unitPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_handle_return_unitPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_handle_return_unit');
+  late final _P343B03A6_wire_handle_return_unit =
+      _P343B03A6_wire_handle_return_unitPtr.asFunction<void Function(int)>();
 
-  WireSyncReturn P7C55DD6B_wire_handle_return_unit_sync() {
-    return _P7C55DD6B_wire_handle_return_unit_sync();
+  WireSyncReturn P343B03A6_wire_handle_return_unit_sync() {
+    return _P343B03A6_wire_handle_return_unit_sync();
   }
 
-  late final _P7C55DD6B_wire_handle_return_unit_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('P7C55DD6B_wire_handle_return_unit_sync');
-  late final _P7C55DD6B_wire_handle_return_unit_sync =
-      _P7C55DD6B_wire_handle_return_unit_syncPtr.asFunction<WireSyncReturn Function()>();
+  late final _P343B03A6_wire_handle_return_unit_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('P343B03A6_wire_handle_return_unit_sync');
+  late final _P343B03A6_wire_handle_return_unit_sync =
+      _P343B03A6_wire_handle_return_unit_syncPtr.asFunction<WireSyncReturn Function()>();
 
-  void P7C55DD6B_wire_handle_vec_u8(
+  void P343B03A6_wire_handle_vec_u8(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_uint_8_list> v,
+    ffi.Pointer<P343B03A6_wire_uint_8_list> v,
   ) {
-    return _P7C55DD6B_wire_handle_vec_u8(
+    return _P343B03A6_wire_handle_vec_u8(
       port_,
       v,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_vec_u8Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>>(
-          'P7C55DD6B_wire_handle_vec_u8');
-  late final _P7C55DD6B_wire_handle_vec_u8 =
-      _P7C55DD6B_wire_handle_vec_u8Ptr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>();
+  late final _P343B03A6_wire_handle_vec_u8Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_uint_8_list>)>>(
+          'P343B03A6_wire_handle_vec_u8');
+  late final _P343B03A6_wire_handle_vec_u8 =
+      _P343B03A6_wire_handle_vec_u8Ptr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_uint_8_list>)>();
 
-  WireSyncReturn P7C55DD6B_wire_handle_vec_u8_sync(
-    ffi.Pointer<P7C55DD6B_wire_uint_8_list> v,
+  WireSyncReturn P343B03A6_wire_handle_vec_u8_sync(
+    ffi.Pointer<P343B03A6_wire_uint_8_list> v,
   ) {
-    return _P7C55DD6B_wire_handle_vec_u8_sync(
+    return _P343B03A6_wire_handle_vec_u8_sync(
       v,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_vec_u8_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>>(
-          'P7C55DD6B_wire_handle_vec_u8_sync');
-  late final _P7C55DD6B_wire_handle_vec_u8_sync = _P7C55DD6B_wire_handle_vec_u8_syncPtr.asFunction<
-      WireSyncReturn Function(ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>();
+  late final _P343B03A6_wire_handle_vec_u8_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<P343B03A6_wire_uint_8_list>)>>(
+          'P343B03A6_wire_handle_vec_u8_sync');
+  late final _P343B03A6_wire_handle_vec_u8_sync = _P343B03A6_wire_handle_vec_u8_syncPtr.asFunction<
+      WireSyncReturn Function(ffi.Pointer<P343B03A6_wire_uint_8_list>)>();
 
-  void P7C55DD6B_wire_handle_vec_of_primitive(
+  void P343B03A6_wire_handle_vec_of_primitive(
     int port_,
     int n,
   ) {
-    return _P7C55DD6B_wire_handle_vec_of_primitive(
+    return _P343B03A6_wire_handle_vec_of_primitive(
       port_,
       n,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_vec_of_primitivePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('P7C55DD6B_wire_handle_vec_of_primitive');
-  late final _P7C55DD6B_wire_handle_vec_of_primitive =
-      _P7C55DD6B_wire_handle_vec_of_primitivePtr.asFunction<void Function(int, int)>();
+  late final _P343B03A6_wire_handle_vec_of_primitivePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('P343B03A6_wire_handle_vec_of_primitive');
+  late final _P343B03A6_wire_handle_vec_of_primitive =
+      _P343B03A6_wire_handle_vec_of_primitivePtr.asFunction<void Function(int, int)>();
 
-  WireSyncReturn P7C55DD6B_wire_handle_vec_of_primitive_sync(
+  WireSyncReturn P343B03A6_wire_handle_vec_of_primitive_sync(
     int n,
   ) {
-    return _P7C55DD6B_wire_handle_vec_of_primitive_sync(
+    return _P343B03A6_wire_handle_vec_of_primitive_sync(
       n,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_vec_of_primitive_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int32)>>('P7C55DD6B_wire_handle_vec_of_primitive_sync');
-  late final _P7C55DD6B_wire_handle_vec_of_primitive_sync =
-      _P7C55DD6B_wire_handle_vec_of_primitive_syncPtr.asFunction<WireSyncReturn Function(int)>();
+  late final _P343B03A6_wire_handle_vec_of_primitive_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int32)>>('P343B03A6_wire_handle_vec_of_primitive_sync');
+  late final _P343B03A6_wire_handle_vec_of_primitive_sync =
+      _P343B03A6_wire_handle_vec_of_primitive_syncPtr.asFunction<WireSyncReturn Function(int)>();
 
-  void P7C55DD6B_wire_handle_zero_copy_vec_of_primitive(
+  void P343B03A6_wire_handle_zero_copy_vec_of_primitive(
     int port_,
     int n,
   ) {
-    return _P7C55DD6B_wire_handle_zero_copy_vec_of_primitive(
+    return _P343B03A6_wire_handle_zero_copy_vec_of_primitive(
       port_,
       n,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_zero_copy_vec_of_primitivePtr =
+  late final _P343B03A6_wire_handle_zero_copy_vec_of_primitivePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
-          'P7C55DD6B_wire_handle_zero_copy_vec_of_primitive');
-  late final _P7C55DD6B_wire_handle_zero_copy_vec_of_primitive =
-      _P7C55DD6B_wire_handle_zero_copy_vec_of_primitivePtr.asFunction<void Function(int, int)>();
+          'P343B03A6_wire_handle_zero_copy_vec_of_primitive');
+  late final _P343B03A6_wire_handle_zero_copy_vec_of_primitive =
+      _P343B03A6_wire_handle_zero_copy_vec_of_primitivePtr.asFunction<void Function(int, int)>();
 
-  WireSyncReturn P7C55DD6B_wire_handle_zero_copy_vec_of_primitive_sync(
+  WireSyncReturn P343B03A6_wire_handle_zero_copy_vec_of_primitive_sync(
     int n,
   ) {
-    return _P7C55DD6B_wire_handle_zero_copy_vec_of_primitive_sync(
+    return _P343B03A6_wire_handle_zero_copy_vec_of_primitive_sync(
       n,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_zero_copy_vec_of_primitive_syncPtr =
+  late final _P343B03A6_wire_handle_zero_copy_vec_of_primitive_syncPtr =
       _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Int32)>>(
-          'P7C55DD6B_wire_handle_zero_copy_vec_of_primitive_sync');
-  late final _P7C55DD6B_wire_handle_zero_copy_vec_of_primitive_sync =
-      _P7C55DD6B_wire_handle_zero_copy_vec_of_primitive_syncPtr.asFunction<WireSyncReturn Function(int)>();
+          'P343B03A6_wire_handle_zero_copy_vec_of_primitive_sync');
+  late final _P343B03A6_wire_handle_zero_copy_vec_of_primitive_sync =
+      _P343B03A6_wire_handle_zero_copy_vec_of_primitive_syncPtr.asFunction<WireSyncReturn Function(int)>();
 
-  void P7C55DD6B_wire_handle_struct(
+  void P343B03A6_wire_handle_struct(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_MySize> arg,
-    ffi.Pointer<P7C55DD6B_wire_MySize> boxed,
+    ffi.Pointer<P343B03A6_wire_MySize> arg,
+    ffi.Pointer<P343B03A6_wire_MySize> boxed,
   ) {
-    return _P7C55DD6B_wire_handle_struct(
+    return _P343B03A6_wire_handle_struct(
       port_,
       arg,
       boxed,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_structPtr = _lookup<
+  late final _P343B03A6_wire_handle_structPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_MySize>,
-              ffi.Pointer<P7C55DD6B_wire_MySize>)>>('P7C55DD6B_wire_handle_struct');
-  late final _P7C55DD6B_wire_handle_struct = _P7C55DD6B_wire_handle_structPtr.asFunction<
-      void Function(int, ffi.Pointer<P7C55DD6B_wire_MySize>, ffi.Pointer<P7C55DD6B_wire_MySize>)>();
+          ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_MySize>,
+              ffi.Pointer<P343B03A6_wire_MySize>)>>('P343B03A6_wire_handle_struct');
+  late final _P343B03A6_wire_handle_struct = _P343B03A6_wire_handle_structPtr.asFunction<
+      void Function(int, ffi.Pointer<P343B03A6_wire_MySize>, ffi.Pointer<P343B03A6_wire_MySize>)>();
 
-  WireSyncReturn P7C55DD6B_wire_handle_struct_sync(
-    ffi.Pointer<P7C55DD6B_wire_MySize> arg,
-    ffi.Pointer<P7C55DD6B_wire_MySize> boxed,
+  WireSyncReturn P343B03A6_wire_handle_struct_sync(
+    ffi.Pointer<P343B03A6_wire_MySize> arg,
+    ffi.Pointer<P343B03A6_wire_MySize> boxed,
   ) {
-    return _P7C55DD6B_wire_handle_struct_sync(
+    return _P343B03A6_wire_handle_struct_sync(
       arg,
       boxed,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_struct_syncPtr = _lookup<
+  late final _P343B03A6_wire_handle_struct_syncPtr = _lookup<
       ffi.NativeFunction<
-          WireSyncReturn Function(ffi.Pointer<P7C55DD6B_wire_MySize>,
-              ffi.Pointer<P7C55DD6B_wire_MySize>)>>('P7C55DD6B_wire_handle_struct_sync');
-  late final _P7C55DD6B_wire_handle_struct_sync = _P7C55DD6B_wire_handle_struct_syncPtr.asFunction<
-      WireSyncReturn Function(ffi.Pointer<P7C55DD6B_wire_MySize>, ffi.Pointer<P7C55DD6B_wire_MySize>)>();
+          WireSyncReturn Function(ffi.Pointer<P343B03A6_wire_MySize>,
+              ffi.Pointer<P343B03A6_wire_MySize>)>>('P343B03A6_wire_handle_struct_sync');
+  late final _P343B03A6_wire_handle_struct_sync = _P343B03A6_wire_handle_struct_syncPtr.asFunction<
+      WireSyncReturn Function(ffi.Pointer<P343B03A6_wire_MySize>, ffi.Pointer<P343B03A6_wire_MySize>)>();
 
-  void P7C55DD6B_wire_handle_newtype(
+  void P343B03A6_wire_handle_newtype(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_NewTypeInt> arg,
+    ffi.Pointer<P343B03A6_wire_NewTypeInt> arg,
   ) {
-    return _P7C55DD6B_wire_handle_newtype(
+    return _P343B03A6_wire_handle_newtype(
       port_,
       arg,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_newtypePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_NewTypeInt>)>>(
-          'P7C55DD6B_wire_handle_newtype');
-  late final _P7C55DD6B_wire_handle_newtype =
-      _P7C55DD6B_wire_handle_newtypePtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_NewTypeInt>)>();
+  late final _P343B03A6_wire_handle_newtypePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_NewTypeInt>)>>(
+          'P343B03A6_wire_handle_newtype');
+  late final _P343B03A6_wire_handle_newtype =
+      _P343B03A6_wire_handle_newtypePtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_NewTypeInt>)>();
 
-  WireSyncReturn P7C55DD6B_wire_handle_newtype_sync(
-    ffi.Pointer<P7C55DD6B_wire_NewTypeInt> arg,
+  WireSyncReturn P343B03A6_wire_handle_newtype_sync(
+    ffi.Pointer<P343B03A6_wire_NewTypeInt> arg,
   ) {
-    return _P7C55DD6B_wire_handle_newtype_sync(
+    return _P343B03A6_wire_handle_newtype_sync(
       arg,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_newtype_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<P7C55DD6B_wire_NewTypeInt>)>>(
-          'P7C55DD6B_wire_handle_newtype_sync');
-  late final _P7C55DD6B_wire_handle_newtype_sync = _P7C55DD6B_wire_handle_newtype_syncPtr.asFunction<
-      WireSyncReturn Function(ffi.Pointer<P7C55DD6B_wire_NewTypeInt>)>();
+  late final _P343B03A6_wire_handle_newtype_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<P343B03A6_wire_NewTypeInt>)>>(
+          'P343B03A6_wire_handle_newtype_sync');
+  late final _P343B03A6_wire_handle_newtype_sync = _P343B03A6_wire_handle_newtype_syncPtr.asFunction<
+      WireSyncReturn Function(ffi.Pointer<P343B03A6_wire_NewTypeInt>)>();
 
-  void P7C55DD6B_wire_handle_list_of_struct(
+  void P343B03A6_wire_handle_list_of_struct(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_list_my_size> l,
+    ffi.Pointer<P343B03A6_wire_list_my_size> l,
   ) {
-    return _P7C55DD6B_wire_handle_list_of_struct(
+    return _P343B03A6_wire_handle_list_of_struct(
       port_,
       l,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_list_of_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_list_my_size>)>>(
-          'P7C55DD6B_wire_handle_list_of_struct');
-  late final _P7C55DD6B_wire_handle_list_of_struct = _P7C55DD6B_wire_handle_list_of_structPtr.asFunction<
-      void Function(int, ffi.Pointer<P7C55DD6B_wire_list_my_size>)>();
+  late final _P343B03A6_wire_handle_list_of_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_list_my_size>)>>(
+          'P343B03A6_wire_handle_list_of_struct');
+  late final _P343B03A6_wire_handle_list_of_struct = _P343B03A6_wire_handle_list_of_structPtr.asFunction<
+      void Function(int, ffi.Pointer<P343B03A6_wire_list_my_size>)>();
 
-  WireSyncReturn P7C55DD6B_wire_handle_list_of_struct_sync(
-    ffi.Pointer<P7C55DD6B_wire_list_my_size> l,
+  WireSyncReturn P343B03A6_wire_handle_list_of_struct_sync(
+    ffi.Pointer<P343B03A6_wire_list_my_size> l,
   ) {
-    return _P7C55DD6B_wire_handle_list_of_struct_sync(
+    return _P343B03A6_wire_handle_list_of_struct_sync(
       l,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_list_of_struct_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<P7C55DD6B_wire_list_my_size>)>>(
-          'P7C55DD6B_wire_handle_list_of_struct_sync');
-  late final _P7C55DD6B_wire_handle_list_of_struct_sync = _P7C55DD6B_wire_handle_list_of_struct_syncPtr.asFunction<
-      WireSyncReturn Function(ffi.Pointer<P7C55DD6B_wire_list_my_size>)>();
+  late final _P343B03A6_wire_handle_list_of_struct_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<P343B03A6_wire_list_my_size>)>>(
+          'P343B03A6_wire_handle_list_of_struct_sync');
+  late final _P343B03A6_wire_handle_list_of_struct_sync = _P343B03A6_wire_handle_list_of_struct_syncPtr.asFunction<
+      WireSyncReturn Function(ffi.Pointer<P343B03A6_wire_list_my_size>)>();
 
-  void P7C55DD6B_wire_handle_string_list(
+  void P343B03A6_wire_handle_string_list(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_StringList> names,
+    ffi.Pointer<P343B03A6_wire_StringList> names,
   ) {
-    return _P7C55DD6B_wire_handle_string_list(
+    return _P343B03A6_wire_handle_string_list(
       port_,
       names,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_string_listPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_StringList>)>>(
-          'P7C55DD6B_wire_handle_string_list');
-  late final _P7C55DD6B_wire_handle_string_list =
-      _P7C55DD6B_wire_handle_string_listPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_StringList>)>();
+  late final _P343B03A6_wire_handle_string_listPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_StringList>)>>(
+          'P343B03A6_wire_handle_string_list');
+  late final _P343B03A6_wire_handle_string_list =
+      _P343B03A6_wire_handle_string_listPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_StringList>)>();
 
-  WireSyncReturn P7C55DD6B_wire_handle_string_list_sync(
-    ffi.Pointer<P7C55DD6B_wire_StringList> names,
+  WireSyncReturn P343B03A6_wire_handle_string_list_sync(
+    ffi.Pointer<P343B03A6_wire_StringList> names,
   ) {
-    return _P7C55DD6B_wire_handle_string_list_sync(
+    return _P343B03A6_wire_handle_string_list_sync(
       names,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_string_list_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<P7C55DD6B_wire_StringList>)>>(
-          'P7C55DD6B_wire_handle_string_list_sync');
-  late final _P7C55DD6B_wire_handle_string_list_sync = _P7C55DD6B_wire_handle_string_list_syncPtr.asFunction<
-      WireSyncReturn Function(ffi.Pointer<P7C55DD6B_wire_StringList>)>();
+  late final _P343B03A6_wire_handle_string_list_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<P343B03A6_wire_StringList>)>>(
+          'P343B03A6_wire_handle_string_list_sync');
+  late final _P343B03A6_wire_handle_string_list_sync = _P343B03A6_wire_handle_string_list_syncPtr.asFunction<
+      WireSyncReturn Function(ffi.Pointer<P343B03A6_wire_StringList>)>();
 
-  void P7C55DD6B_wire_handle_complex_struct(
+  void P343B03A6_wire_handle_complex_struct(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_MyTreeNode> s,
+    ffi.Pointer<P343B03A6_wire_MyTreeNode> s,
   ) {
-    return _P7C55DD6B_wire_handle_complex_struct(
+    return _P343B03A6_wire_handle_complex_struct(
       port_,
       s,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_complex_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_MyTreeNode>)>>(
-          'P7C55DD6B_wire_handle_complex_struct');
-  late final _P7C55DD6B_wire_handle_complex_struct =
-      _P7C55DD6B_wire_handle_complex_structPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_MyTreeNode>)>();
+  late final _P343B03A6_wire_handle_complex_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_MyTreeNode>)>>(
+          'P343B03A6_wire_handle_complex_struct');
+  late final _P343B03A6_wire_handle_complex_struct =
+      _P343B03A6_wire_handle_complex_structPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_MyTreeNode>)>();
 
-  WireSyncReturn P7C55DD6B_wire_handle_complex_struct_sync(
-    ffi.Pointer<P7C55DD6B_wire_MyTreeNode> s,
+  WireSyncReturn P343B03A6_wire_handle_complex_struct_sync(
+    ffi.Pointer<P343B03A6_wire_MyTreeNode> s,
   ) {
-    return _P7C55DD6B_wire_handle_complex_struct_sync(
+    return _P343B03A6_wire_handle_complex_struct_sync(
       s,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_complex_struct_syncPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<P7C55DD6B_wire_MyTreeNode>)>>(
-          'P7C55DD6B_wire_handle_complex_struct_sync');
-  late final _P7C55DD6B_wire_handle_complex_struct_sync = _P7C55DD6B_wire_handle_complex_struct_syncPtr.asFunction<
-      WireSyncReturn Function(ffi.Pointer<P7C55DD6B_wire_MyTreeNode>)>();
+  late final _P343B03A6_wire_handle_complex_struct_syncPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<P343B03A6_wire_MyTreeNode>)>>(
+          'P343B03A6_wire_handle_complex_struct_sync');
+  late final _P343B03A6_wire_handle_complex_struct_sync = _P343B03A6_wire_handle_complex_struct_syncPtr.asFunction<
+      WireSyncReturn Function(ffi.Pointer<P343B03A6_wire_MyTreeNode>)>();
 
-  void P7C55DD6B_wire_handle_nested_struct(
+  void P343B03A6_wire_handle_nested_struct(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_MyNestedStruct> s,
+    ffi.Pointer<P343B03A6_wire_MyNestedStruct> s,
   ) {
-    return _P7C55DD6B_wire_handle_nested_struct(
+    return _P343B03A6_wire_handle_nested_struct(
       port_,
       s,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_nested_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_MyNestedStruct>)>>(
-          'P7C55DD6B_wire_handle_nested_struct');
-  late final _P7C55DD6B_wire_handle_nested_struct = _P7C55DD6B_wire_handle_nested_structPtr.asFunction<
-      void Function(int, ffi.Pointer<P7C55DD6B_wire_MyNestedStruct>)>();
+  late final _P343B03A6_wire_handle_nested_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_MyNestedStruct>)>>(
+          'P343B03A6_wire_handle_nested_struct');
+  late final _P343B03A6_wire_handle_nested_struct = _P343B03A6_wire_handle_nested_structPtr.asFunction<
+      void Function(int, ffi.Pointer<P343B03A6_wire_MyNestedStruct>)>();
 
-  WireSyncReturn P7C55DD6B_wire_handle_sync_return(
-    ffi.Pointer<P7C55DD6B_wire_uint_8_list> mode,
+  WireSyncReturn P343B03A6_wire_handle_sync_return(
+    ffi.Pointer<P343B03A6_wire_uint_8_list> mode,
   ) {
-    return _P7C55DD6B_wire_handle_sync_return(
+    return _P343B03A6_wire_handle_sync_return(
       mode,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_sync_returnPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>>(
-          'P7C55DD6B_wire_handle_sync_return');
-  late final _P7C55DD6B_wire_handle_sync_return = _P7C55DD6B_wire_handle_sync_returnPtr.asFunction<
-      WireSyncReturn Function(ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>();
+  late final _P343B03A6_wire_handle_sync_returnPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<P343B03A6_wire_uint_8_list>)>>(
+          'P343B03A6_wire_handle_sync_return');
+  late final _P343B03A6_wire_handle_sync_return = _P343B03A6_wire_handle_sync_returnPtr.asFunction<
+      WireSyncReturn Function(ffi.Pointer<P343B03A6_wire_uint_8_list>)>();
 
-  void P7C55DD6B_wire_handle_stream(
+  void P343B03A6_wire_handle_stream(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_uint_8_list> arg,
+    ffi.Pointer<P343B03A6_wire_uint_8_list> arg,
   ) {
-    return _P7C55DD6B_wire_handle_stream(
+    return _P343B03A6_wire_handle_stream(
       port_,
       arg,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_streamPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>>(
-          'P7C55DD6B_wire_handle_stream');
-  late final _P7C55DD6B_wire_handle_stream =
-      _P7C55DD6B_wire_handle_streamPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>();
+  late final _P343B03A6_wire_handle_streamPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_uint_8_list>)>>(
+          'P343B03A6_wire_handle_stream');
+  late final _P343B03A6_wire_handle_stream =
+      _P343B03A6_wire_handle_streamPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_uint_8_list>)>();
 
-  void P7C55DD6B_wire_handle_stream_of_struct(
+  void P343B03A6_wire_handle_stream_of_struct(
     int port_,
   ) {
-    return _P7C55DD6B_wire_handle_stream_of_struct(
+    return _P343B03A6_wire_handle_stream_of_struct(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_stream_of_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_handle_stream_of_struct');
-  late final _P7C55DD6B_wire_handle_stream_of_struct =
-      _P7C55DD6B_wire_handle_stream_of_structPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_handle_stream_of_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_handle_stream_of_struct');
+  late final _P343B03A6_wire_handle_stream_of_struct =
+      _P343B03A6_wire_handle_stream_of_structPtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_return_err(
+  void P343B03A6_wire_return_err(
     int port_,
   ) {
-    return _P7C55DD6B_wire_return_err(
+    return _P343B03A6_wire_return_err(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_return_errPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_return_err');
-  late final _P7C55DD6B_wire_return_err = _P7C55DD6B_wire_return_errPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_return_errPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_return_err');
+  late final _P343B03A6_wire_return_err = _P343B03A6_wire_return_errPtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_return_panic(
+  void P343B03A6_wire_return_panic(
     int port_,
   ) {
-    return _P7C55DD6B_wire_return_panic(
+    return _P343B03A6_wire_return_panic(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_return_panicPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_return_panic');
-  late final _P7C55DD6B_wire_return_panic = _P7C55DD6B_wire_return_panicPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_return_panicPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_return_panic');
+  late final _P343B03A6_wire_return_panic = _P343B03A6_wire_return_panicPtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_handle_optional_return(
+  void P343B03A6_wire_handle_optional_return(
     int port_,
     double left,
     double right,
   ) {
-    return _P7C55DD6B_wire_handle_optional_return(
+    return _P343B03A6_wire_handle_optional_return(
       port_,
       left,
       right,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_optional_returnPtr =
+  late final _P343B03A6_wire_handle_optional_returnPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Double, ffi.Double)>>(
-          'P7C55DD6B_wire_handle_optional_return');
-  late final _P7C55DD6B_wire_handle_optional_return =
-      _P7C55DD6B_wire_handle_optional_returnPtr.asFunction<void Function(int, double, double)>();
+          'P343B03A6_wire_handle_optional_return');
+  late final _P343B03A6_wire_handle_optional_return =
+      _P343B03A6_wire_handle_optional_returnPtr.asFunction<void Function(int, double, double)>();
 
-  void P7C55DD6B_wire_handle_optional_struct(
+  void P343B03A6_wire_handle_optional_struct(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_uint_8_list> document,
+    ffi.Pointer<P343B03A6_wire_uint_8_list> document,
   ) {
-    return _P7C55DD6B_wire_handle_optional_struct(
+    return _P343B03A6_wire_handle_optional_struct(
       port_,
       document,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_optional_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>>(
-          'P7C55DD6B_wire_handle_optional_struct');
-  late final _P7C55DD6B_wire_handle_optional_struct = _P7C55DD6B_wire_handle_optional_structPtr.asFunction<
-      void Function(int, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>();
+  late final _P343B03A6_wire_handle_optional_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_uint_8_list>)>>(
+          'P343B03A6_wire_handle_optional_struct');
+  late final _P343B03A6_wire_handle_optional_struct = _P343B03A6_wire_handle_optional_structPtr.asFunction<
+      void Function(int, ffi.Pointer<P343B03A6_wire_uint_8_list>)>();
 
-  void P7C55DD6B_wire_handle_optional_increment(
+  void P343B03A6_wire_handle_optional_increment(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_ExoticOptionals> opt,
+    ffi.Pointer<P343B03A6_wire_ExoticOptionals> opt,
   ) {
-    return _P7C55DD6B_wire_handle_optional_increment(
+    return _P343B03A6_wire_handle_optional_increment(
       port_,
       opt,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_optional_incrementPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_ExoticOptionals>)>>(
-          'P7C55DD6B_wire_handle_optional_increment');
-  late final _P7C55DD6B_wire_handle_optional_increment = _P7C55DD6B_wire_handle_optional_incrementPtr.asFunction<
-      void Function(int, ffi.Pointer<P7C55DD6B_wire_ExoticOptionals>)>();
+  late final _P343B03A6_wire_handle_optional_incrementPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_ExoticOptionals>)>>(
+          'P343B03A6_wire_handle_optional_increment');
+  late final _P343B03A6_wire_handle_optional_increment = _P343B03A6_wire_handle_optional_incrementPtr.asFunction<
+      void Function(int, ffi.Pointer<P343B03A6_wire_ExoticOptionals>)>();
 
-  void P7C55DD6B_wire_handle_increment_boxed_optional(
+  void P343B03A6_wire_handle_increment_boxed_optional(
     int port_,
     ffi.Pointer<ffi.Double> opt,
   ) {
-    return _P7C55DD6B_wire_handle_increment_boxed_optional(
+    return _P343B03A6_wire_handle_increment_boxed_optional(
       port_,
       opt,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_increment_boxed_optionalPtr =
+  late final _P343B03A6_wire_handle_increment_boxed_optionalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Double>)>>(
-          'P7C55DD6B_wire_handle_increment_boxed_optional');
-  late final _P7C55DD6B_wire_handle_increment_boxed_optional =
-      _P7C55DD6B_wire_handle_increment_boxed_optionalPtr.asFunction<void Function(int, ffi.Pointer<ffi.Double>)>();
+          'P343B03A6_wire_handle_increment_boxed_optional');
+  late final _P343B03A6_wire_handle_increment_boxed_optional =
+      _P343B03A6_wire_handle_increment_boxed_optionalPtr.asFunction<void Function(int, ffi.Pointer<ffi.Double>)>();
 
-  void P7C55DD6B_wire_handle_option_box_arguments(
+  void P343B03A6_wire_handle_option_box_arguments(
     int port_,
     ffi.Pointer<ffi.Int8> i8box,
     ffi.Pointer<ffi.Uint8> u8box,
@@ -2074,9 +2074,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
     ffi.Pointer<ffi.Int64> i64box,
     ffi.Pointer<ffi.Double> f64box,
     ffi.Pointer<ffi.Bool> boolbox,
-    ffi.Pointer<P7C55DD6B_wire_ExoticOptionals> structbox,
+    ffi.Pointer<P343B03A6_wire_ExoticOptionals> structbox,
   ) {
-    return _P7C55DD6B_wire_handle_option_box_arguments(
+    return _P343B03A6_wire_handle_option_box_arguments(
       port_,
       i8box,
       u8box,
@@ -2088,7 +2088,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
     );
   }
 
-  late final _P7C55DD6B_wire_handle_option_box_argumentsPtr = _lookup<
+  late final _P343B03A6_wire_handle_option_box_argumentsPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
               ffi.Int64,
@@ -2098,413 +2098,413 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
               ffi.Pointer<ffi.Int64>,
               ffi.Pointer<ffi.Double>,
               ffi.Pointer<ffi.Bool>,
-              ffi.Pointer<P7C55DD6B_wire_ExoticOptionals>)>>('P7C55DD6B_wire_handle_option_box_arguments');
-  late final _P7C55DD6B_wire_handle_option_box_arguments = _P7C55DD6B_wire_handle_option_box_argumentsPtr.asFunction<
+              ffi.Pointer<P343B03A6_wire_ExoticOptionals>)>>('P343B03A6_wire_handle_option_box_arguments');
+  late final _P343B03A6_wire_handle_option_box_arguments = _P343B03A6_wire_handle_option_box_argumentsPtr.asFunction<
       void Function(int, ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Uint8>, ffi.Pointer<ffi.Int32>, ffi.Pointer<ffi.Int64>,
-          ffi.Pointer<ffi.Double>, ffi.Pointer<ffi.Bool>, ffi.Pointer<P7C55DD6B_wire_ExoticOptionals>)>();
+          ffi.Pointer<ffi.Double>, ffi.Pointer<ffi.Bool>, ffi.Pointer<P343B03A6_wire_ExoticOptionals>)>();
 
-  void P7C55DD6B_wire_print_note(
+  void P343B03A6_wire_print_note(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_Note> note,
+    ffi.Pointer<P343B03A6_wire_Note> note,
   ) {
-    return _P7C55DD6B_wire_print_note(
+    return _P343B03A6_wire_print_note(
       port_,
       note,
     );
   }
 
-  late final _P7C55DD6B_wire_print_notePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_Note>)>>(
-          'P7C55DD6B_wire_print_note');
-  late final _P7C55DD6B_wire_print_note =
-      _P7C55DD6B_wire_print_notePtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_Note>)>();
+  late final _P343B03A6_wire_print_notePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_Note>)>>(
+          'P343B03A6_wire_print_note');
+  late final _P343B03A6_wire_print_note =
+      _P343B03A6_wire_print_notePtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_Note>)>();
 
-  void P7C55DD6B_wire_handle_return_enum(
+  void P343B03A6_wire_handle_return_enum(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_uint_8_list> input,
+    ffi.Pointer<P343B03A6_wire_uint_8_list> input,
   ) {
-    return _P7C55DD6B_wire_handle_return_enum(
+    return _P343B03A6_wire_handle_return_enum(
       port_,
       input,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_return_enumPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>>(
-          'P7C55DD6B_wire_handle_return_enum');
-  late final _P7C55DD6B_wire_handle_return_enum =
-      _P7C55DD6B_wire_handle_return_enumPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>();
+  late final _P343B03A6_wire_handle_return_enumPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_uint_8_list>)>>(
+          'P343B03A6_wire_handle_return_enum');
+  late final _P343B03A6_wire_handle_return_enum =
+      _P343B03A6_wire_handle_return_enumPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_uint_8_list>)>();
 
-  void P7C55DD6B_wire_handle_enum_parameter(
+  void P343B03A6_wire_handle_enum_parameter(
     int port_,
     int weekday,
   ) {
-    return _P7C55DD6B_wire_handle_enum_parameter(
+    return _P343B03A6_wire_handle_enum_parameter(
       port_,
       weekday,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_enum_parameterPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('P7C55DD6B_wire_handle_enum_parameter');
-  late final _P7C55DD6B_wire_handle_enum_parameter =
-      _P7C55DD6B_wire_handle_enum_parameterPtr.asFunction<void Function(int, int)>();
+  late final _P343B03A6_wire_handle_enum_parameterPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('P343B03A6_wire_handle_enum_parameter');
+  late final _P343B03A6_wire_handle_enum_parameter =
+      _P343B03A6_wire_handle_enum_parameterPtr.asFunction<void Function(int, int)>();
 
-  void P7C55DD6B_wire_handle_customized_struct(
+  void P343B03A6_wire_handle_customized_struct(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_Customized> val,
+    ffi.Pointer<P343B03A6_wire_Customized> val,
   ) {
-    return _P7C55DD6B_wire_handle_customized_struct(
+    return _P343B03A6_wire_handle_customized_struct(
       port_,
       val,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_customized_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_Customized>)>>(
-          'P7C55DD6B_wire_handle_customized_struct');
-  late final _P7C55DD6B_wire_handle_customized_struct = _P7C55DD6B_wire_handle_customized_structPtr.asFunction<
-      void Function(int, ffi.Pointer<P7C55DD6B_wire_Customized>)>();
+  late final _P343B03A6_wire_handle_customized_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_Customized>)>>(
+          'P343B03A6_wire_handle_customized_struct');
+  late final _P343B03A6_wire_handle_customized_struct = _P343B03A6_wire_handle_customized_structPtr.asFunction<
+      void Function(int, ffi.Pointer<P343B03A6_wire_Customized>)>();
 
-  void P7C55DD6B_wire_handle_enum_struct(
+  void P343B03A6_wire_handle_enum_struct(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_KitchenSink> val,
+    ffi.Pointer<P343B03A6_wire_KitchenSink> val,
   ) {
-    return _P7C55DD6B_wire_handle_enum_struct(
+    return _P343B03A6_wire_handle_enum_struct(
       port_,
       val,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_enum_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_KitchenSink>)>>(
-          'P7C55DD6B_wire_handle_enum_struct');
-  late final _P7C55DD6B_wire_handle_enum_struct =
-      _P7C55DD6B_wire_handle_enum_structPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_KitchenSink>)>();
+  late final _P343B03A6_wire_handle_enum_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_KitchenSink>)>>(
+          'P343B03A6_wire_handle_enum_struct');
+  late final _P343B03A6_wire_handle_enum_struct =
+      _P343B03A6_wire_handle_enum_structPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_KitchenSink>)>();
 
-  void P7C55DD6B_wire_use_imported_struct(
+  void P343B03A6_wire_use_imported_struct(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_MyStruct> my_struct,
+    ffi.Pointer<P343B03A6_wire_MyStruct> my_struct,
   ) {
-    return _P7C55DD6B_wire_use_imported_struct(
+    return _P343B03A6_wire_use_imported_struct(
       port_,
       my_struct,
     );
   }
 
-  late final _P7C55DD6B_wire_use_imported_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_MyStruct>)>>(
-          'P7C55DD6B_wire_use_imported_struct');
-  late final _P7C55DD6B_wire_use_imported_struct =
-      _P7C55DD6B_wire_use_imported_structPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_MyStruct>)>();
+  late final _P343B03A6_wire_use_imported_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_MyStruct>)>>(
+          'P343B03A6_wire_use_imported_struct');
+  late final _P343B03A6_wire_use_imported_struct =
+      _P343B03A6_wire_use_imported_structPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_MyStruct>)>();
 
-  void P7C55DD6B_wire_use_imported_enum(
+  void P343B03A6_wire_use_imported_enum(
     int port_,
     int my_enum,
   ) {
-    return _P7C55DD6B_wire_use_imported_enum(
+    return _P343B03A6_wire_use_imported_enum(
       port_,
       my_enum,
     );
   }
 
-  late final _P7C55DD6B_wire_use_imported_enumPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('P7C55DD6B_wire_use_imported_enum');
-  late final _P7C55DD6B_wire_use_imported_enum =
-      _P7C55DD6B_wire_use_imported_enumPtr.asFunction<void Function(int, int)>();
+  late final _P343B03A6_wire_use_imported_enumPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('P343B03A6_wire_use_imported_enum');
+  late final _P343B03A6_wire_use_imported_enum =
+      _P343B03A6_wire_use_imported_enumPtr.asFunction<void Function(int, int)>();
 
-  void P7C55DD6B_wire_get_app_settings(
+  void P343B03A6_wire_get_app_settings(
     int port_,
   ) {
-    return _P7C55DD6B_wire_get_app_settings(
+    return _P343B03A6_wire_get_app_settings(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_get_app_settingsPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_get_app_settings');
-  late final _P7C55DD6B_wire_get_app_settings = _P7C55DD6B_wire_get_app_settingsPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_get_app_settingsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_get_app_settings');
+  late final _P343B03A6_wire_get_app_settings = _P343B03A6_wire_get_app_settingsPtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_get_fallible_app_settings(
+  void P343B03A6_wire_get_fallible_app_settings(
     int port_,
   ) {
-    return _P7C55DD6B_wire_get_fallible_app_settings(
+    return _P343B03A6_wire_get_fallible_app_settings(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_get_fallible_app_settingsPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_get_fallible_app_settings');
-  late final _P7C55DD6B_wire_get_fallible_app_settings =
-      _P7C55DD6B_wire_get_fallible_app_settingsPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_get_fallible_app_settingsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_get_fallible_app_settings');
+  late final _P343B03A6_wire_get_fallible_app_settings =
+      _P343B03A6_wire_get_fallible_app_settingsPtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_is_app_embedded(
+  void P343B03A6_wire_is_app_embedded(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_ApplicationSettings> app_settings,
+    ffi.Pointer<P343B03A6_wire_ApplicationSettings> app_settings,
   ) {
-    return _P7C55DD6B_wire_is_app_embedded(
+    return _P343B03A6_wire_is_app_embedded(
       port_,
       app_settings,
     );
   }
 
-  late final _P7C55DD6B_wire_is_app_embeddedPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_ApplicationSettings>)>>(
-          'P7C55DD6B_wire_is_app_embedded');
-  late final _P7C55DD6B_wire_is_app_embedded = _P7C55DD6B_wire_is_app_embeddedPtr.asFunction<
-      void Function(int, ffi.Pointer<P7C55DD6B_wire_ApplicationSettings>)>();
+  late final _P343B03A6_wire_is_app_embeddedPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_ApplicationSettings>)>>(
+          'P343B03A6_wire_is_app_embedded');
+  late final _P343B03A6_wire_is_app_embedded = _P343B03A6_wire_is_app_embeddedPtr.asFunction<
+      void Function(int, ffi.Pointer<P343B03A6_wire_ApplicationSettings>)>();
 
-  void P7C55DD6B_wire_get_message(
+  void P343B03A6_wire_get_message(
     int port_,
   ) {
-    return _P7C55DD6B_wire_get_message(
+    return _P343B03A6_wire_get_message(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_get_messagePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_get_message');
-  late final _P7C55DD6B_wire_get_message = _P7C55DD6B_wire_get_messagePtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_get_messagePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_get_message');
+  late final _P343B03A6_wire_get_message = _P343B03A6_wire_get_messagePtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_repeat_number(
+  void P343B03A6_wire_repeat_number(
     int port_,
     int number,
     int times,
   ) {
-    return _P7C55DD6B_wire_repeat_number(
+    return _P343B03A6_wire_repeat_number(
       port_,
       number,
       times,
     );
   }
 
-  late final _P7C55DD6B_wire_repeat_numberPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.UintPtr)>>('P7C55DD6B_wire_repeat_number');
-  late final _P7C55DD6B_wire_repeat_number =
-      _P7C55DD6B_wire_repeat_numberPtr.asFunction<void Function(int, int, int)>();
+  late final _P343B03A6_wire_repeat_numberPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.UintPtr)>>('P343B03A6_wire_repeat_number');
+  late final _P343B03A6_wire_repeat_number =
+      _P343B03A6_wire_repeat_numberPtr.asFunction<void Function(int, int, int)>();
 
-  void P7C55DD6B_wire_repeat_sequence(
+  void P343B03A6_wire_repeat_sequence(
     int port_,
     int seq,
     int times,
   ) {
-    return _P7C55DD6B_wire_repeat_sequence(
+    return _P343B03A6_wire_repeat_sequence(
       port_,
       seq,
       times,
     );
   }
 
-  late final _P7C55DD6B_wire_repeat_sequencePtr =
+  late final _P343B03A6_wire_repeat_sequencePtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.UintPtr)>>(
-          'P7C55DD6B_wire_repeat_sequence');
-  late final _P7C55DD6B_wire_repeat_sequence =
-      _P7C55DD6B_wire_repeat_sequencePtr.asFunction<void Function(int, int, int)>();
+          'P343B03A6_wire_repeat_sequence');
+  late final _P343B03A6_wire_repeat_sequence =
+      _P343B03A6_wire_repeat_sequencePtr.asFunction<void Function(int, int, int)>();
 
-  void P7C55DD6B_wire_first_number(
+  void P343B03A6_wire_first_number(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_Numbers> nums,
+    ffi.Pointer<P343B03A6_wire_Numbers> nums,
   ) {
-    return _P7C55DD6B_wire_first_number(
+    return _P343B03A6_wire_first_number(
       port_,
       nums,
     );
   }
 
-  late final _P7C55DD6B_wire_first_numberPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_Numbers>)>>(
-          'P7C55DD6B_wire_first_number');
-  late final _P7C55DD6B_wire_first_number =
-      _P7C55DD6B_wire_first_numberPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_Numbers>)>();
+  late final _P343B03A6_wire_first_numberPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_Numbers>)>>(
+          'P343B03A6_wire_first_number');
+  late final _P343B03A6_wire_first_number =
+      _P343B03A6_wire_first_numberPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_Numbers>)>();
 
-  void P7C55DD6B_wire_first_sequence(
+  void P343B03A6_wire_first_sequence(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_Sequences> seqs,
+    ffi.Pointer<P343B03A6_wire_Sequences> seqs,
   ) {
-    return _P7C55DD6B_wire_first_sequence(
+    return _P343B03A6_wire_first_sequence(
       port_,
       seqs,
     );
   }
 
-  late final _P7C55DD6B_wire_first_sequencePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_Sequences>)>>(
-          'P7C55DD6B_wire_first_sequence');
-  late final _P7C55DD6B_wire_first_sequence =
-      _P7C55DD6B_wire_first_sequencePtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_Sequences>)>();
+  late final _P343B03A6_wire_first_sequencePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_Sequences>)>>(
+          'P343B03A6_wire_first_sequence');
+  late final _P343B03A6_wire_first_sequence =
+      _P343B03A6_wire_first_sequencePtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_Sequences>)>();
 
-  void P7C55DD6B_wire_get_array(
+  void P343B03A6_wire_get_array(
     int port_,
   ) {
-    return _P7C55DD6B_wire_get_array(
+    return _P343B03A6_wire_get_array(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_get_arrayPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_get_array');
-  late final _P7C55DD6B_wire_get_array = _P7C55DD6B_wire_get_arrayPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_get_arrayPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_get_array');
+  late final _P343B03A6_wire_get_array = _P343B03A6_wire_get_arrayPtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_get_complex_array(
+  void P343B03A6_wire_get_complex_array(
     int port_,
   ) {
-    return _P7C55DD6B_wire_get_complex_array(
+    return _P343B03A6_wire_get_complex_array(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_get_complex_arrayPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_get_complex_array');
-  late final _P7C55DD6B_wire_get_complex_array = _P7C55DD6B_wire_get_complex_arrayPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_get_complex_arrayPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_get_complex_array');
+  late final _P343B03A6_wire_get_complex_array = _P343B03A6_wire_get_complex_arrayPtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_get_usize(
+  void P343B03A6_wire_get_usize(
     int port_,
     int u,
   ) {
-    return _P7C55DD6B_wire_get_usize(
+    return _P343B03A6_wire_get_usize(
       port_,
       u,
     );
   }
 
-  late final _P7C55DD6B_wire_get_usizePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>('P7C55DD6B_wire_get_usize');
-  late final _P7C55DD6B_wire_get_usize = _P7C55DD6B_wire_get_usizePtr.asFunction<void Function(int, int)>();
+  late final _P343B03A6_wire_get_usizePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.UintPtr)>>('P343B03A6_wire_get_usize');
+  late final _P343B03A6_wire_get_usize = _P343B03A6_wire_get_usizePtr.asFunction<void Function(int, int)>();
 
-  void P7C55DD6B_wire_next_user_id(
+  void P343B03A6_wire_next_user_id(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_UserId> user_id,
+    ffi.Pointer<P343B03A6_wire_UserId> user_id,
   ) {
-    return _P7C55DD6B_wire_next_user_id(
+    return _P343B03A6_wire_next_user_id(
       port_,
       user_id,
     );
   }
 
-  late final _P7C55DD6B_wire_next_user_idPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_UserId>)>>(
-          'P7C55DD6B_wire_next_user_id');
-  late final _P7C55DD6B_wire_next_user_id =
-      _P7C55DD6B_wire_next_user_idPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_UserId>)>();
+  late final _P343B03A6_wire_next_user_idPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_UserId>)>>(
+          'P343B03A6_wire_next_user_id');
+  late final _P343B03A6_wire_next_user_id =
+      _P343B03A6_wire_next_user_idPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_UserId>)>();
 
-  void P7C55DD6B_wire_register_event_listener(
+  void P343B03A6_wire_register_event_listener(
     int port_,
   ) {
-    return _P7C55DD6B_wire_register_event_listener(
+    return _P343B03A6_wire_register_event_listener(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_register_event_listenerPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_register_event_listener');
-  late final _P7C55DD6B_wire_register_event_listener =
-      _P7C55DD6B_wire_register_event_listenerPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_register_event_listenerPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_register_event_listener');
+  late final _P343B03A6_wire_register_event_listener =
+      _P343B03A6_wire_register_event_listenerPtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_close_event_listener(
+  void P343B03A6_wire_close_event_listener(
     int port_,
   ) {
-    return _P7C55DD6B_wire_close_event_listener(
+    return _P343B03A6_wire_close_event_listener(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_close_event_listenerPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_close_event_listener');
-  late final _P7C55DD6B_wire_close_event_listener =
-      _P7C55DD6B_wire_close_event_listenerPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_close_event_listenerPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_close_event_listener');
+  late final _P343B03A6_wire_close_event_listener =
+      _P343B03A6_wire_close_event_listenerPtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_create_event(
+  void P343B03A6_wire_create_event(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_uint_8_list> address,
-    ffi.Pointer<P7C55DD6B_wire_uint_8_list> payload,
+    ffi.Pointer<P343B03A6_wire_uint_8_list> address,
+    ffi.Pointer<P343B03A6_wire_uint_8_list> payload,
   ) {
-    return _P7C55DD6B_wire_create_event(
+    return _P343B03A6_wire_create_event(
       port_,
       address,
       payload,
     );
   }
 
-  late final _P7C55DD6B_wire_create_eventPtr = _lookup<
+  late final _P343B03A6_wire_create_eventPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_uint_8_list>,
-              ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>>('P7C55DD6B_wire_create_event');
-  late final _P7C55DD6B_wire_create_event = _P7C55DD6B_wire_create_eventPtr.asFunction<
-      void Function(int, ffi.Pointer<P7C55DD6B_wire_uint_8_list>, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>();
+          ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_uint_8_list>,
+              ffi.Pointer<P343B03A6_wire_uint_8_list>)>>('P343B03A6_wire_create_event');
+  late final _P343B03A6_wire_create_event = _P343B03A6_wire_create_eventPtr.asFunction<
+      void Function(int, ffi.Pointer<P343B03A6_wire_uint_8_list>, ffi.Pointer<P343B03A6_wire_uint_8_list>)>();
 
-  void P7C55DD6B_wire_handle_stream_sink_at_1(
+  void P343B03A6_wire_handle_stream_sink_at_1(
     int port_,
     int key,
     int max,
   ) {
-    return _P7C55DD6B_wire_handle_stream_sink_at_1(
+    return _P343B03A6_wire_handle_stream_sink_at_1(
       port_,
       key,
       max,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_stream_sink_at_1Ptr =
+  late final _P343B03A6_wire_handle_stream_sink_at_1Ptr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>(
-          'P7C55DD6B_wire_handle_stream_sink_at_1');
-  late final _P7C55DD6B_wire_handle_stream_sink_at_1 =
-      _P7C55DD6B_wire_handle_stream_sink_at_1Ptr.asFunction<void Function(int, int, int)>();
+          'P343B03A6_wire_handle_stream_sink_at_1');
+  late final _P343B03A6_wire_handle_stream_sink_at_1 =
+      _P343B03A6_wire_handle_stream_sink_at_1Ptr.asFunction<void Function(int, int, int)>();
 
-  void P7C55DD6B_wire_handle_stream_sink_at_2(
+  void P343B03A6_wire_handle_stream_sink_at_2(
     int port_,
     int key,
     int max,
   ) {
-    return _P7C55DD6B_wire_handle_stream_sink_at_2(
+    return _P343B03A6_wire_handle_stream_sink_at_2(
       port_,
       key,
       max,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_stream_sink_at_2Ptr =
+  late final _P343B03A6_wire_handle_stream_sink_at_2Ptr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>(
-          'P7C55DD6B_wire_handle_stream_sink_at_2');
-  late final _P7C55DD6B_wire_handle_stream_sink_at_2 =
-      _P7C55DD6B_wire_handle_stream_sink_at_2Ptr.asFunction<void Function(int, int, int)>();
+          'P343B03A6_wire_handle_stream_sink_at_2');
+  late final _P343B03A6_wire_handle_stream_sink_at_2 =
+      _P343B03A6_wire_handle_stream_sink_at_2Ptr.asFunction<void Function(int, int, int)>();
 
-  void P7C55DD6B_wire_handle_stream_sink_at_3(
+  void P343B03A6_wire_handle_stream_sink_at_3(
     int port_,
     int key,
     int max,
   ) {
-    return _P7C55DD6B_wire_handle_stream_sink_at_3(
+    return _P343B03A6_wire_handle_stream_sink_at_3(
       port_,
       key,
       max,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_stream_sink_at_3Ptr =
+  late final _P343B03A6_wire_handle_stream_sink_at_3Ptr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>(
-          'P7C55DD6B_wire_handle_stream_sink_at_3');
-  late final _P7C55DD6B_wire_handle_stream_sink_at_3 =
-      _P7C55DD6B_wire_handle_stream_sink_at_3Ptr.asFunction<void Function(int, int, int)>();
+          'P343B03A6_wire_handle_stream_sink_at_3');
+  late final _P343B03A6_wire_handle_stream_sink_at_3 =
+      _P343B03A6_wire_handle_stream_sink_at_3Ptr.asFunction<void Function(int, int, int)>();
 
-  void P7C55DD6B_wire_get_sum_struct(
+  void P343B03A6_wire_get_sum_struct(
     int port_,
   ) {
-    return _P7C55DD6B_wire_get_sum_struct(
+    return _P343B03A6_wire_get_sum_struct(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_get_sum_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_get_sum_struct');
-  late final _P7C55DD6B_wire_get_sum_struct = _P7C55DD6B_wire_get_sum_structPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_get_sum_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_get_sum_struct');
+  late final _P343B03A6_wire_get_sum_struct = _P343B03A6_wire_get_sum_structPtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_get_sum_array(
+  void P343B03A6_wire_get_sum_array(
     int port_,
     int a,
     int b,
     int c,
   ) {
-    return _P7C55DD6B_wire_get_sum_array(
+    return _P343B03A6_wire_get_sum_array(
       port_,
       a,
       b,
@@ -2512,1282 +2512,1282 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
     );
   }
 
-  late final _P7C55DD6B_wire_get_sum_arrayPtr =
+  late final _P343B03A6_wire_get_sum_arrayPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32, ffi.Uint32)>>(
-          'P7C55DD6B_wire_get_sum_array');
-  late final _P7C55DD6B_wire_get_sum_array =
-      _P7C55DD6B_wire_get_sum_arrayPtr.asFunction<void Function(int, int, int, int)>();
+          'P343B03A6_wire_get_sum_array');
+  late final _P343B03A6_wire_get_sum_array =
+      _P343B03A6_wire_get_sum_arrayPtr.asFunction<void Function(int, int, int, int)>();
 
-  void P7C55DD6B_wire_multiply_by_ten(
+  void P343B03A6_wire_multiply_by_ten(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_Measure> measure,
+    ffi.Pointer<P343B03A6_wire_Measure> measure,
   ) {
-    return _P7C55DD6B_wire_multiply_by_ten(
+    return _P343B03A6_wire_multiply_by_ten(
       port_,
       measure,
     );
   }
 
-  late final _P7C55DD6B_wire_multiply_by_tenPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_Measure>)>>(
-          'P7C55DD6B_wire_multiply_by_ten');
-  late final _P7C55DD6B_wire_multiply_by_ten =
-      _P7C55DD6B_wire_multiply_by_tenPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_Measure>)>();
+  late final _P343B03A6_wire_multiply_by_tenPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_Measure>)>>(
+          'P343B03A6_wire_multiply_by_ten');
+  late final _P343B03A6_wire_multiply_by_ten =
+      _P343B03A6_wire_multiply_by_tenPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_Measure>)>();
 
-  void P7C55DD6B_wire_call_old_module_system(
+  void P343B03A6_wire_call_old_module_system(
     int port_,
   ) {
-    return _P7C55DD6B_wire_call_old_module_system(
+    return _P343B03A6_wire_call_old_module_system(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_call_old_module_systemPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_call_old_module_system');
-  late final _P7C55DD6B_wire_call_old_module_system =
-      _P7C55DD6B_wire_call_old_module_systemPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_call_old_module_systemPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_call_old_module_system');
+  late final _P343B03A6_wire_call_old_module_system =
+      _P343B03A6_wire_call_old_module_systemPtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_call_new_module_system(
+  void P343B03A6_wire_call_new_module_system(
     int port_,
   ) {
-    return _P7C55DD6B_wire_call_new_module_system(
+    return _P343B03A6_wire_call_new_module_system(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_call_new_module_systemPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_call_new_module_system');
-  late final _P7C55DD6B_wire_call_new_module_system =
-      _P7C55DD6B_wire_call_new_module_systemPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_call_new_module_systemPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_call_new_module_system');
+  late final _P343B03A6_wire_call_new_module_system =
+      _P343B03A6_wire_call_new_module_systemPtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_handle_big_buffers(
+  void P343B03A6_wire_handle_big_buffers(
     int port_,
   ) {
-    return _P7C55DD6B_wire_handle_big_buffers(
+    return _P343B03A6_wire_handle_big_buffers(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_big_buffersPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_handle_big_buffers');
-  late final _P7C55DD6B_wire_handle_big_buffers =
-      _P7C55DD6B_wire_handle_big_buffersPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_handle_big_buffersPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_handle_big_buffers');
+  late final _P343B03A6_wire_handle_big_buffers =
+      _P343B03A6_wire_handle_big_buffersPtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_datetime_utc(
+  void P343B03A6_wire_datetime_utc(
     int port_,
     int d,
   ) {
-    return _P7C55DD6B_wire_datetime_utc(
+    return _P343B03A6_wire_datetime_utc(
       port_,
       d,
     );
   }
 
-  late final _P7C55DD6B_wire_datetime_utcPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>('P7C55DD6B_wire_datetime_utc');
-  late final _P7C55DD6B_wire_datetime_utc = _P7C55DD6B_wire_datetime_utcPtr.asFunction<void Function(int, int)>();
+  late final _P343B03A6_wire_datetime_utcPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>('P343B03A6_wire_datetime_utc');
+  late final _P343B03A6_wire_datetime_utc = _P343B03A6_wire_datetime_utcPtr.asFunction<void Function(int, int)>();
 
-  void P7C55DD6B_wire_datetime_local(
+  void P343B03A6_wire_datetime_local(
     int port_,
     int d,
   ) {
-    return _P7C55DD6B_wire_datetime_local(
+    return _P343B03A6_wire_datetime_local(
       port_,
       d,
     );
   }
 
-  late final _P7C55DD6B_wire_datetime_localPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>('P7C55DD6B_wire_datetime_local');
-  late final _P7C55DD6B_wire_datetime_local = _P7C55DD6B_wire_datetime_localPtr.asFunction<void Function(int, int)>();
+  late final _P343B03A6_wire_datetime_localPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>('P343B03A6_wire_datetime_local');
+  late final _P343B03A6_wire_datetime_local = _P343B03A6_wire_datetime_localPtr.asFunction<void Function(int, int)>();
 
-  void P7C55DD6B_wire_naivedatetime(
+  void P343B03A6_wire_naivedatetime(
     int port_,
     int d,
   ) {
-    return _P7C55DD6B_wire_naivedatetime(
+    return _P343B03A6_wire_naivedatetime(
       port_,
       d,
     );
   }
 
-  late final _P7C55DD6B_wire_naivedatetimePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>('P7C55DD6B_wire_naivedatetime');
-  late final _P7C55DD6B_wire_naivedatetime = _P7C55DD6B_wire_naivedatetimePtr.asFunction<void Function(int, int)>();
+  late final _P343B03A6_wire_naivedatetimePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>('P343B03A6_wire_naivedatetime');
+  late final _P343B03A6_wire_naivedatetime = _P343B03A6_wire_naivedatetimePtr.asFunction<void Function(int, int)>();
 
-  void P7C55DD6B_wire_optional_empty_datetime_utc(
+  void P343B03A6_wire_optional_empty_datetime_utc(
     int port_,
     ffi.Pointer<ffi.Int64> d,
   ) {
-    return _P7C55DD6B_wire_optional_empty_datetime_utc(
+    return _P343B03A6_wire_optional_empty_datetime_utc(
       port_,
       d,
     );
   }
 
-  late final _P7C55DD6B_wire_optional_empty_datetime_utcPtr =
+  late final _P343B03A6_wire_optional_empty_datetime_utcPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Int64>)>>(
-          'P7C55DD6B_wire_optional_empty_datetime_utc');
-  late final _P7C55DD6B_wire_optional_empty_datetime_utc =
-      _P7C55DD6B_wire_optional_empty_datetime_utcPtr.asFunction<void Function(int, ffi.Pointer<ffi.Int64>)>();
+          'P343B03A6_wire_optional_empty_datetime_utc');
+  late final _P343B03A6_wire_optional_empty_datetime_utc =
+      _P343B03A6_wire_optional_empty_datetime_utcPtr.asFunction<void Function(int, ffi.Pointer<ffi.Int64>)>();
 
-  void P7C55DD6B_wire_duration(
+  void P343B03A6_wire_duration(
     int port_,
     int d,
   ) {
-    return _P7C55DD6B_wire_duration(
+    return _P343B03A6_wire_duration(
       port_,
       d,
     );
   }
 
-  late final _P7C55DD6B_wire_durationPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>('P7C55DD6B_wire_duration');
-  late final _P7C55DD6B_wire_duration = _P7C55DD6B_wire_durationPtr.asFunction<void Function(int, int)>();
+  late final _P343B03A6_wire_durationPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>('P343B03A6_wire_duration');
+  late final _P343B03A6_wire_duration = _P343B03A6_wire_durationPtr.asFunction<void Function(int, int)>();
 
-  void P7C55DD6B_wire_handle_timestamps(
+  void P343B03A6_wire_handle_timestamps(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_int_64_list> timestamps,
+    ffi.Pointer<P343B03A6_wire_int_64_list> timestamps,
     int epoch,
   ) {
-    return _P7C55DD6B_wire_handle_timestamps(
+    return _P343B03A6_wire_handle_timestamps(
       port_,
       timestamps,
       epoch,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_timestampsPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_int_64_list>, ffi.Int64)>>(
-          'P7C55DD6B_wire_handle_timestamps');
-  late final _P7C55DD6B_wire_handle_timestamps = _P7C55DD6B_wire_handle_timestampsPtr.asFunction<
-      void Function(int, ffi.Pointer<P7C55DD6B_wire_int_64_list>, int)>();
+  late final _P343B03A6_wire_handle_timestampsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_int_64_list>, ffi.Int64)>>(
+          'P343B03A6_wire_handle_timestamps');
+  late final _P343B03A6_wire_handle_timestamps = _P343B03A6_wire_handle_timestampsPtr.asFunction<
+      void Function(int, ffi.Pointer<P343B03A6_wire_int_64_list>, int)>();
 
-  void P7C55DD6B_wire_handle_durations(
+  void P343B03A6_wire_handle_durations(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_int_64_list> durations,
+    ffi.Pointer<P343B03A6_wire_int_64_list> durations,
     int since,
   ) {
-    return _P7C55DD6B_wire_handle_durations(
+    return _P343B03A6_wire_handle_durations(
       port_,
       durations,
       since,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_durationsPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_int_64_list>, ffi.Int64)>>(
-          'P7C55DD6B_wire_handle_durations');
-  late final _P7C55DD6B_wire_handle_durations = _P7C55DD6B_wire_handle_durationsPtr.asFunction<
-      void Function(int, ffi.Pointer<P7C55DD6B_wire_int_64_list>, int)>();
+  late final _P343B03A6_wire_handle_durationsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_int_64_list>, ffi.Int64)>>(
+          'P343B03A6_wire_handle_durations');
+  late final _P343B03A6_wire_handle_durations = _P343B03A6_wire_handle_durationsPtr.asFunction<
+      void Function(int, ffi.Pointer<P343B03A6_wire_int_64_list>, int)>();
 
-  void P7C55DD6B_wire_test_chrono(
+  void P343B03A6_wire_test_chrono(
     int port_,
   ) {
-    return _P7C55DD6B_wire_test_chrono(
+    return _P343B03A6_wire_test_chrono(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_test_chronoPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_test_chrono');
-  late final _P7C55DD6B_wire_test_chrono = _P7C55DD6B_wire_test_chronoPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_test_chronoPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_test_chrono');
+  late final _P343B03A6_wire_test_chrono = _P343B03A6_wire_test_chronoPtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_test_precise_chrono(
+  void P343B03A6_wire_test_precise_chrono(
     int port_,
   ) {
-    return _P7C55DD6B_wire_test_precise_chrono(
+    return _P343B03A6_wire_test_precise_chrono(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_test_precise_chronoPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_test_precise_chrono');
-  late final _P7C55DD6B_wire_test_precise_chrono =
-      _P7C55DD6B_wire_test_precise_chronoPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_test_precise_chronoPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_test_precise_chrono');
+  late final _P343B03A6_wire_test_precise_chrono =
+      _P343B03A6_wire_test_precise_chronoPtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_how_long_does_it_take(
+  void P343B03A6_wire_how_long_does_it_take(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_FeatureChrono> mine,
+    ffi.Pointer<P343B03A6_wire_FeatureChrono> mine,
   ) {
-    return _P7C55DD6B_wire_how_long_does_it_take(
+    return _P343B03A6_wire_how_long_does_it_take(
       port_,
       mine,
     );
   }
 
-  late final _P7C55DD6B_wire_how_long_does_it_takePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_FeatureChrono>)>>(
-          'P7C55DD6B_wire_how_long_does_it_take');
-  late final _P7C55DD6B_wire_how_long_does_it_take = _P7C55DD6B_wire_how_long_does_it_takePtr.asFunction<
-      void Function(int, ffi.Pointer<P7C55DD6B_wire_FeatureChrono>)>();
+  late final _P343B03A6_wire_how_long_does_it_takePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_FeatureChrono>)>>(
+          'P343B03A6_wire_how_long_does_it_take');
+  late final _P343B03A6_wire_how_long_does_it_take = _P343B03A6_wire_how_long_does_it_takePtr.asFunction<
+      void Function(int, ffi.Pointer<P343B03A6_wire_FeatureChrono>)>();
 
-  void P7C55DD6B_wire_handle_uuid(
+  void P343B03A6_wire_handle_uuid(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_uint_8_list> id,
+    ffi.Pointer<P343B03A6_wire_uint_8_list> id,
   ) {
-    return _P7C55DD6B_wire_handle_uuid(
+    return _P343B03A6_wire_handle_uuid(
       port_,
       id,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_uuidPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>>(
-          'P7C55DD6B_wire_handle_uuid');
-  late final _P7C55DD6B_wire_handle_uuid =
-      _P7C55DD6B_wire_handle_uuidPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>();
+  late final _P343B03A6_wire_handle_uuidPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_uint_8_list>)>>(
+          'P343B03A6_wire_handle_uuid');
+  late final _P343B03A6_wire_handle_uuid =
+      _P343B03A6_wire_handle_uuidPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_uint_8_list>)>();
 
-  void P7C55DD6B_wire_handle_uuids(
+  void P343B03A6_wire_handle_uuids(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_uint_8_list> ids,
+    ffi.Pointer<P343B03A6_wire_uint_8_list> ids,
   ) {
-    return _P7C55DD6B_wire_handle_uuids(
+    return _P343B03A6_wire_handle_uuids(
       port_,
       ids,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_uuidsPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>>(
-          'P7C55DD6B_wire_handle_uuids');
-  late final _P7C55DD6B_wire_handle_uuids =
-      _P7C55DD6B_wire_handle_uuidsPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>();
+  late final _P343B03A6_wire_handle_uuidsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_uint_8_list>)>>(
+          'P343B03A6_wire_handle_uuids');
+  late final _P343B03A6_wire_handle_uuids =
+      _P343B03A6_wire_handle_uuidsPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_uint_8_list>)>();
 
-  void P7C55DD6B_wire_handle_nested_uuids(
+  void P343B03A6_wire_handle_nested_uuids(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_FeatureUuid> ids,
+    ffi.Pointer<P343B03A6_wire_FeatureUuid> ids,
   ) {
-    return _P7C55DD6B_wire_handle_nested_uuids(
+    return _P343B03A6_wire_handle_nested_uuids(
       port_,
       ids,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_nested_uuidsPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_FeatureUuid>)>>(
-          'P7C55DD6B_wire_handle_nested_uuids');
-  late final _P7C55DD6B_wire_handle_nested_uuids =
-      _P7C55DD6B_wire_handle_nested_uuidsPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_FeatureUuid>)>();
+  late final _P343B03A6_wire_handle_nested_uuidsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_FeatureUuid>)>>(
+          'P343B03A6_wire_handle_nested_uuids');
+  late final _P343B03A6_wire_handle_nested_uuids =
+      _P343B03A6_wire_handle_nested_uuidsPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_FeatureUuid>)>();
 
-  void P7C55DD6B_wire_new_msgid(
+  void P343B03A6_wire_new_msgid(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_uint_8_list> id,
+    ffi.Pointer<P343B03A6_wire_uint_8_list> id,
   ) {
-    return _P7C55DD6B_wire_new_msgid(
+    return _P343B03A6_wire_new_msgid(
       port_,
       id,
     );
   }
 
-  late final _P7C55DD6B_wire_new_msgidPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>>(
-          'P7C55DD6B_wire_new_msgid');
-  late final _P7C55DD6B_wire_new_msgid =
-      _P7C55DD6B_wire_new_msgidPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>();
+  late final _P343B03A6_wire_new_msgidPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_uint_8_list>)>>(
+          'P343B03A6_wire_new_msgid');
+  late final _P343B03A6_wire_new_msgid =
+      _P343B03A6_wire_new_msgidPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_uint_8_list>)>();
 
-  void P7C55DD6B_wire_use_msgid(
+  void P343B03A6_wire_use_msgid(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_MessageId> id,
+    ffi.Pointer<P343B03A6_wire_MessageId> id,
   ) {
-    return _P7C55DD6B_wire_use_msgid(
+    return _P343B03A6_wire_use_msgid(
       port_,
       id,
     );
   }
 
-  late final _P7C55DD6B_wire_use_msgidPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_MessageId>)>>(
-          'P7C55DD6B_wire_use_msgid');
-  late final _P7C55DD6B_wire_use_msgid =
-      _P7C55DD6B_wire_use_msgidPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_MessageId>)>();
+  late final _P343B03A6_wire_use_msgidPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_MessageId>)>>(
+          'P343B03A6_wire_use_msgid');
+  late final _P343B03A6_wire_use_msgid =
+      _P343B03A6_wire_use_msgidPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_MessageId>)>();
 
-  void P7C55DD6B_wire_boxed_blob(
+  void P343B03A6_wire_boxed_blob(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_uint_8_list> blob,
+    ffi.Pointer<P343B03A6_wire_uint_8_list> blob,
   ) {
-    return _P7C55DD6B_wire_boxed_blob(
+    return _P343B03A6_wire_boxed_blob(
       port_,
       blob,
     );
   }
 
-  late final _P7C55DD6B_wire_boxed_blobPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>>(
-          'P7C55DD6B_wire_boxed_blob');
-  late final _P7C55DD6B_wire_boxed_blob =
-      _P7C55DD6B_wire_boxed_blobPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>();
+  late final _P343B03A6_wire_boxed_blobPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_uint_8_list>)>>(
+          'P343B03A6_wire_boxed_blob');
+  late final _P343B03A6_wire_boxed_blob =
+      _P343B03A6_wire_boxed_blobPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_uint_8_list>)>();
 
-  void P7C55DD6B_wire_use_boxed_blob(
+  void P343B03A6_wire_use_boxed_blob(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_Blob> blob,
+    ffi.Pointer<P343B03A6_wire_Blob> blob,
   ) {
-    return _P7C55DD6B_wire_use_boxed_blob(
+    return _P343B03A6_wire_use_boxed_blob(
       port_,
       blob,
     );
   }
 
-  late final _P7C55DD6B_wire_use_boxed_blobPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_Blob>)>>(
-          'P7C55DD6B_wire_use_boxed_blob');
-  late final _P7C55DD6B_wire_use_boxed_blob =
-      _P7C55DD6B_wire_use_boxed_blobPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_Blob>)>();
+  late final _P343B03A6_wire_use_boxed_blobPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_Blob>)>>(
+          'P343B03A6_wire_use_boxed_blob');
+  late final _P343B03A6_wire_use_boxed_blob =
+      _P343B03A6_wire_use_boxed_blobPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_Blob>)>();
 
-  void P7C55DD6B_wire_return_boxed_feed_id(
+  void P343B03A6_wire_return_boxed_feed_id(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_uint_8_list> id,
+    ffi.Pointer<P343B03A6_wire_uint_8_list> id,
   ) {
-    return _P7C55DD6B_wire_return_boxed_feed_id(
+    return _P343B03A6_wire_return_boxed_feed_id(
       port_,
       id,
     );
   }
 
-  late final _P7C55DD6B_wire_return_boxed_feed_idPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>>(
-          'P7C55DD6B_wire_return_boxed_feed_id');
-  late final _P7C55DD6B_wire_return_boxed_feed_id =
-      _P7C55DD6B_wire_return_boxed_feed_idPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>();
+  late final _P343B03A6_wire_return_boxed_feed_idPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_uint_8_list>)>>(
+          'P343B03A6_wire_return_boxed_feed_id');
+  late final _P343B03A6_wire_return_boxed_feed_id =
+      _P343B03A6_wire_return_boxed_feed_idPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_uint_8_list>)>();
 
-  void P7C55DD6B_wire_return_boxed_raw_feed_id(
+  void P343B03A6_wire_return_boxed_raw_feed_id(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_FeedId> id,
+    ffi.Pointer<P343B03A6_wire_FeedId> id,
   ) {
-    return _P7C55DD6B_wire_return_boxed_raw_feed_id(
+    return _P343B03A6_wire_return_boxed_raw_feed_id(
       port_,
       id,
     );
   }
 
-  late final _P7C55DD6B_wire_return_boxed_raw_feed_idPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_FeedId>)>>(
-          'P7C55DD6B_wire_return_boxed_raw_feed_id');
-  late final _P7C55DD6B_wire_return_boxed_raw_feed_id =
-      _P7C55DD6B_wire_return_boxed_raw_feed_idPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_FeedId>)>();
+  late final _P343B03A6_wire_return_boxed_raw_feed_idPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_FeedId>)>>(
+          'P343B03A6_wire_return_boxed_raw_feed_id');
+  late final _P343B03A6_wire_return_boxed_raw_feed_id =
+      _P343B03A6_wire_return_boxed_raw_feed_idPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_FeedId>)>();
 
-  void P7C55DD6B_wire_test_id(
+  void P343B03A6_wire_test_id(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_TestId> id,
+    ffi.Pointer<P343B03A6_wire_TestId> id,
   ) {
-    return _P7C55DD6B_wire_test_id(
+    return _P343B03A6_wire_test_id(
       port_,
       id,
     );
   }
 
-  late final _P7C55DD6B_wire_test_idPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_TestId>)>>(
-          'P7C55DD6B_wire_test_id');
-  late final _P7C55DD6B_wire_test_id =
-      _P7C55DD6B_wire_test_idPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_TestId>)>();
+  late final _P343B03A6_wire_test_idPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_TestId>)>>(
+          'P343B03A6_wire_test_id');
+  late final _P343B03A6_wire_test_id =
+      _P343B03A6_wire_test_idPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_TestId>)>();
 
-  void P7C55DD6B_wire_last_number(
+  void P343B03A6_wire_last_number(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_float_64_list> array,
+    ffi.Pointer<P343B03A6_wire_float_64_list> array,
   ) {
-    return _P7C55DD6B_wire_last_number(
+    return _P343B03A6_wire_last_number(
       port_,
       array,
     );
   }
 
-  late final _P7C55DD6B_wire_last_numberPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_float_64_list>)>>(
-          'P7C55DD6B_wire_last_number');
-  late final _P7C55DD6B_wire_last_number =
-      _P7C55DD6B_wire_last_numberPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_float_64_list>)>();
+  late final _P343B03A6_wire_last_numberPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_float_64_list>)>>(
+          'P343B03A6_wire_last_number');
+  late final _P343B03A6_wire_last_number =
+      _P343B03A6_wire_last_numberPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_float_64_list>)>();
 
-  void P7C55DD6B_wire_nested_id(
+  void P343B03A6_wire_nested_id(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_list_test_id> id,
+    ffi.Pointer<P343B03A6_wire_list_test_id> id,
   ) {
-    return _P7C55DD6B_wire_nested_id(
+    return _P343B03A6_wire_nested_id(
       port_,
       id,
     );
   }
 
-  late final _P7C55DD6B_wire_nested_idPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_list_test_id>)>>(
-          'P7C55DD6B_wire_nested_id');
-  late final _P7C55DD6B_wire_nested_id =
-      _P7C55DD6B_wire_nested_idPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_list_test_id>)>();
+  late final _P343B03A6_wire_nested_idPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_list_test_id>)>>(
+          'P343B03A6_wire_nested_id');
+  late final _P343B03A6_wire_nested_id =
+      _P343B03A6_wire_nested_idPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_list_test_id>)>();
 
-  WireSyncReturn P7C55DD6B_wire_sync_accept_dart_opaque(
-    P7C55DD6B_wire_DartOpaque opaque,
+  WireSyncReturn P343B03A6_wire_sync_accept_dart_opaque(
+    P343B03A6_wire_DartOpaque opaque,
   ) {
-    return _P7C55DD6B_wire_sync_accept_dart_opaque(
+    return _P343B03A6_wire_sync_accept_dart_opaque(
       opaque,
     );
   }
 
-  late final _P7C55DD6B_wire_sync_accept_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(P7C55DD6B_wire_DartOpaque)>>(
-          'P7C55DD6B_wire_sync_accept_dart_opaque');
-  late final _P7C55DD6B_wire_sync_accept_dart_opaque =
-      _P7C55DD6B_wire_sync_accept_dart_opaquePtr.asFunction<WireSyncReturn Function(P7C55DD6B_wire_DartOpaque)>();
+  late final _P343B03A6_wire_sync_accept_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(P343B03A6_wire_DartOpaque)>>(
+          'P343B03A6_wire_sync_accept_dart_opaque');
+  late final _P343B03A6_wire_sync_accept_dart_opaque =
+      _P343B03A6_wire_sync_accept_dart_opaquePtr.asFunction<WireSyncReturn Function(P343B03A6_wire_DartOpaque)>();
 
-  void P7C55DD6B_wire_async_accept_dart_opaque(
+  void P343B03A6_wire_async_accept_dart_opaque(
     int port_,
-    P7C55DD6B_wire_DartOpaque opaque,
+    P343B03A6_wire_DartOpaque opaque,
   ) {
-    return _P7C55DD6B_wire_async_accept_dart_opaque(
-      port_,
-      opaque,
-    );
-  }
-
-  late final _P7C55DD6B_wire_async_accept_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P7C55DD6B_wire_DartOpaque)>>(
-          'P7C55DD6B_wire_async_accept_dart_opaque');
-  late final _P7C55DD6B_wire_async_accept_dart_opaque =
-      _P7C55DD6B_wire_async_accept_dart_opaquePtr.asFunction<void Function(int, P7C55DD6B_wire_DartOpaque)>();
-
-  void P7C55DD6B_wire_loop_back(
-    int port_,
-    P7C55DD6B_wire_DartOpaque opaque,
-  ) {
-    return _P7C55DD6B_wire_loop_back(
+    return _P343B03A6_wire_async_accept_dart_opaque(
       port_,
       opaque,
     );
   }
 
-  late final _P7C55DD6B_wire_loop_backPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P7C55DD6B_wire_DartOpaque)>>('P7C55DD6B_wire_loop_back');
-  late final _P7C55DD6B_wire_loop_back =
-      _P7C55DD6B_wire_loop_backPtr.asFunction<void Function(int, P7C55DD6B_wire_DartOpaque)>();
+  late final _P343B03A6_wire_async_accept_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P343B03A6_wire_DartOpaque)>>(
+          'P343B03A6_wire_async_accept_dart_opaque');
+  late final _P343B03A6_wire_async_accept_dart_opaque =
+      _P343B03A6_wire_async_accept_dart_opaquePtr.asFunction<void Function(int, P343B03A6_wire_DartOpaque)>();
 
-  void P7C55DD6B_wire_loop_back_option(
+  void P343B03A6_wire_loop_back(
     int port_,
-    P7C55DD6B_wire_DartOpaque opaque,
+    P343B03A6_wire_DartOpaque opaque,
   ) {
-    return _P7C55DD6B_wire_loop_back_option(
+    return _P343B03A6_wire_loop_back(
       port_,
       opaque,
     );
   }
 
-  late final _P7C55DD6B_wire_loop_back_optionPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P7C55DD6B_wire_DartOpaque)>>(
-          'P7C55DD6B_wire_loop_back_option');
-  late final _P7C55DD6B_wire_loop_back_option =
-      _P7C55DD6B_wire_loop_back_optionPtr.asFunction<void Function(int, P7C55DD6B_wire_DartOpaque)>();
+  late final _P343B03A6_wire_loop_backPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P343B03A6_wire_DartOpaque)>>('P343B03A6_wire_loop_back');
+  late final _P343B03A6_wire_loop_back =
+      _P343B03A6_wire_loop_backPtr.asFunction<void Function(int, P343B03A6_wire_DartOpaque)>();
 
-  void P7C55DD6B_wire_loop_back_array(
+  void P343B03A6_wire_loop_back_option(
     int port_,
-    P7C55DD6B_wire_DartOpaque opaque,
+    P343B03A6_wire_DartOpaque opaque,
   ) {
-    return _P7C55DD6B_wire_loop_back_array(
+    return _P343B03A6_wire_loop_back_option(
       port_,
       opaque,
     );
   }
 
-  late final _P7C55DD6B_wire_loop_back_arrayPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P7C55DD6B_wire_DartOpaque)>>(
-          'P7C55DD6B_wire_loop_back_array');
-  late final _P7C55DD6B_wire_loop_back_array =
-      _P7C55DD6B_wire_loop_back_arrayPtr.asFunction<void Function(int, P7C55DD6B_wire_DartOpaque)>();
+  late final _P343B03A6_wire_loop_back_optionPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P343B03A6_wire_DartOpaque)>>(
+          'P343B03A6_wire_loop_back_option');
+  late final _P343B03A6_wire_loop_back_option =
+      _P343B03A6_wire_loop_back_optionPtr.asFunction<void Function(int, P343B03A6_wire_DartOpaque)>();
 
-  void P7C55DD6B_wire_loop_back_vec(
+  void P343B03A6_wire_loop_back_array(
     int port_,
-    P7C55DD6B_wire_DartOpaque opaque,
+    P343B03A6_wire_DartOpaque opaque,
   ) {
-    return _P7C55DD6B_wire_loop_back_vec(
+    return _P343B03A6_wire_loop_back_array(
       port_,
       opaque,
     );
   }
 
-  late final _P7C55DD6B_wire_loop_back_vecPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P7C55DD6B_wire_DartOpaque)>>(
-          'P7C55DD6B_wire_loop_back_vec');
-  late final _P7C55DD6B_wire_loop_back_vec =
-      _P7C55DD6B_wire_loop_back_vecPtr.asFunction<void Function(int, P7C55DD6B_wire_DartOpaque)>();
+  late final _P343B03A6_wire_loop_back_arrayPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P343B03A6_wire_DartOpaque)>>(
+          'P343B03A6_wire_loop_back_array');
+  late final _P343B03A6_wire_loop_back_array =
+      _P343B03A6_wire_loop_back_arrayPtr.asFunction<void Function(int, P343B03A6_wire_DartOpaque)>();
 
-  void P7C55DD6B_wire_loop_back_option_get(
+  void P343B03A6_wire_loop_back_vec(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_DartOpaque> opaque,
+    P343B03A6_wire_DartOpaque opaque,
   ) {
-    return _P7C55DD6B_wire_loop_back_option_get(
+    return _P343B03A6_wire_loop_back_vec(
       port_,
       opaque,
     );
   }
 
-  late final _P7C55DD6B_wire_loop_back_option_getPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_DartOpaque>)>>(
-          'P7C55DD6B_wire_loop_back_option_get');
-  late final _P7C55DD6B_wire_loop_back_option_get =
-      _P7C55DD6B_wire_loop_back_option_getPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_DartOpaque>)>();
+  late final _P343B03A6_wire_loop_back_vecPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P343B03A6_wire_DartOpaque)>>(
+          'P343B03A6_wire_loop_back_vec');
+  late final _P343B03A6_wire_loop_back_vec =
+      _P343B03A6_wire_loop_back_vecPtr.asFunction<void Function(int, P343B03A6_wire_DartOpaque)>();
 
-  void P7C55DD6B_wire_loop_back_array_get(
+  void P343B03A6_wire_loop_back_option_get(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_list_DartOpaque> opaque,
+    ffi.Pointer<P343B03A6_wire_DartOpaque> opaque,
   ) {
-    return _P7C55DD6B_wire_loop_back_array_get(
+    return _P343B03A6_wire_loop_back_option_get(
       port_,
       opaque,
     );
   }
 
-  late final _P7C55DD6B_wire_loop_back_array_getPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_list_DartOpaque>)>>(
-          'P7C55DD6B_wire_loop_back_array_get');
-  late final _P7C55DD6B_wire_loop_back_array_get = _P7C55DD6B_wire_loop_back_array_getPtr.asFunction<
-      void Function(int, ffi.Pointer<P7C55DD6B_wire_list_DartOpaque>)>();
+  late final _P343B03A6_wire_loop_back_option_getPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_DartOpaque>)>>(
+          'P343B03A6_wire_loop_back_option_get');
+  late final _P343B03A6_wire_loop_back_option_get =
+      _P343B03A6_wire_loop_back_option_getPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_DartOpaque>)>();
 
-  void P7C55DD6B_wire_loop_back_vec_get(
+  void P343B03A6_wire_loop_back_array_get(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_list_DartOpaque> opaque,
+    ffi.Pointer<P343B03A6_wire_list_DartOpaque> opaque,
   ) {
-    return _P7C55DD6B_wire_loop_back_vec_get(
+    return _P343B03A6_wire_loop_back_array_get(
       port_,
       opaque,
     );
   }
 
-  late final _P7C55DD6B_wire_loop_back_vec_getPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_list_DartOpaque>)>>(
-          'P7C55DD6B_wire_loop_back_vec_get');
-  late final _P7C55DD6B_wire_loop_back_vec_get = _P7C55DD6B_wire_loop_back_vec_getPtr.asFunction<
-      void Function(int, ffi.Pointer<P7C55DD6B_wire_list_DartOpaque>)>();
+  late final _P343B03A6_wire_loop_back_array_getPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_list_DartOpaque>)>>(
+          'P343B03A6_wire_loop_back_array_get');
+  late final _P343B03A6_wire_loop_back_array_get = _P343B03A6_wire_loop_back_array_getPtr.asFunction<
+      void Function(int, ffi.Pointer<P343B03A6_wire_list_DartOpaque>)>();
 
-  WireSyncReturn P7C55DD6B_wire_unwrap_dart_opaque(
-    P7C55DD6B_wire_DartOpaque opaque,
-  ) {
-    return _P7C55DD6B_wire_unwrap_dart_opaque(
-      opaque,
-    );
-  }
-
-  late final _P7C55DD6B_wire_unwrap_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(P7C55DD6B_wire_DartOpaque)>>(
-          'P7C55DD6B_wire_unwrap_dart_opaque');
-  late final _P7C55DD6B_wire_unwrap_dart_opaque =
-      _P7C55DD6B_wire_unwrap_dart_opaquePtr.asFunction<WireSyncReturn Function(P7C55DD6B_wire_DartOpaque)>();
-
-  void P7C55DD6B_wire_panic_unwrap_dart_opaque(
+  void P343B03A6_wire_loop_back_vec_get(
     int port_,
-    P7C55DD6B_wire_DartOpaque opaque,
+    ffi.Pointer<P343B03A6_wire_list_DartOpaque> opaque,
   ) {
-    return _P7C55DD6B_wire_panic_unwrap_dart_opaque(
+    return _P343B03A6_wire_loop_back_vec_get(
       port_,
       opaque,
     );
   }
 
-  late final _P7C55DD6B_wire_panic_unwrap_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P7C55DD6B_wire_DartOpaque)>>(
-          'P7C55DD6B_wire_panic_unwrap_dart_opaque');
-  late final _P7C55DD6B_wire_panic_unwrap_dart_opaque =
-      _P7C55DD6B_wire_panic_unwrap_dart_opaquePtr.asFunction<void Function(int, P7C55DD6B_wire_DartOpaque)>();
+  late final _P343B03A6_wire_loop_back_vec_getPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_list_DartOpaque>)>>(
+          'P343B03A6_wire_loop_back_vec_get');
+  late final _P343B03A6_wire_loop_back_vec_get = _P343B03A6_wire_loop_back_vec_getPtr.asFunction<
+      void Function(int, ffi.Pointer<P343B03A6_wire_list_DartOpaque>)>();
 
-  void P7C55DD6B_wire_create_opaque(
-    int port_,
+  WireSyncReturn P343B03A6_wire_unwrap_dart_opaque(
+    P343B03A6_wire_DartOpaque opaque,
   ) {
-    return _P7C55DD6B_wire_create_opaque(
-      port_,
+    return _P343B03A6_wire_unwrap_dart_opaque(
+      opaque,
     );
   }
 
-  late final _P7C55DD6B_wire_create_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_create_opaque');
-  late final _P7C55DD6B_wire_create_opaque = _P7C55DD6B_wire_create_opaquePtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_unwrap_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(P343B03A6_wire_DartOpaque)>>(
+          'P343B03A6_wire_unwrap_dart_opaque');
+  late final _P343B03A6_wire_unwrap_dart_opaque =
+      _P343B03A6_wire_unwrap_dart_opaquePtr.asFunction<WireSyncReturn Function(P343B03A6_wire_DartOpaque)>();
 
-  void P7C55DD6B_wire_create_option_opaque(
+  void P343B03A6_wire_panic_unwrap_dart_opaque(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_HideData> opaque,
+    P343B03A6_wire_DartOpaque opaque,
   ) {
-    return _P7C55DD6B_wire_create_option_opaque(
+    return _P343B03A6_wire_panic_unwrap_dart_opaque(
       port_,
       opaque,
     );
   }
 
-  late final _P7C55DD6B_wire_create_option_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_HideData>)>>(
-          'P7C55DD6B_wire_create_option_opaque');
-  late final _P7C55DD6B_wire_create_option_opaque =
-      _P7C55DD6B_wire_create_option_opaquePtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_HideData>)>();
+  late final _P343B03A6_wire_panic_unwrap_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P343B03A6_wire_DartOpaque)>>(
+          'P343B03A6_wire_panic_unwrap_dart_opaque');
+  late final _P343B03A6_wire_panic_unwrap_dart_opaque =
+      _P343B03A6_wire_panic_unwrap_dart_opaquePtr.asFunction<void Function(int, P343B03A6_wire_DartOpaque)>();
 
-  WireSyncReturn P7C55DD6B_wire_sync_create_opaque() {
-    return _P7C55DD6B_wire_sync_create_opaque();
-  }
-
-  late final _P7C55DD6B_wire_sync_create_opaquePtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('P7C55DD6B_wire_sync_create_opaque');
-  late final _P7C55DD6B_wire_sync_create_opaque =
-      _P7C55DD6B_wire_sync_create_opaquePtr.asFunction<WireSyncReturn Function()>();
-
-  void P7C55DD6B_wire_create_array_opaque_enum(
+  void P343B03A6_wire_create_opaque(
     int port_,
   ) {
-    return _P7C55DD6B_wire_create_array_opaque_enum(
+    return _P343B03A6_wire_create_opaque(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_create_array_opaque_enumPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_create_array_opaque_enum');
-  late final _P7C55DD6B_wire_create_array_opaque_enum =
-      _P7C55DD6B_wire_create_array_opaque_enumPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_create_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_create_opaque');
+  late final _P343B03A6_wire_create_opaque = _P343B03A6_wire_create_opaquePtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_run_enum_opaque(
+  void P343B03A6_wire_create_option_opaque(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_EnumOpaque> opaque,
+    ffi.Pointer<P343B03A6_wire_HideData> opaque,
   ) {
-    return _P7C55DD6B_wire_run_enum_opaque(
+    return _P343B03A6_wire_create_option_opaque(
       port_,
       opaque,
     );
   }
 
-  late final _P7C55DD6B_wire_run_enum_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_EnumOpaque>)>>(
-          'P7C55DD6B_wire_run_enum_opaque');
-  late final _P7C55DD6B_wire_run_enum_opaque =
-      _P7C55DD6B_wire_run_enum_opaquePtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_EnumOpaque>)>();
+  late final _P343B03A6_wire_create_option_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_HideData>)>>(
+          'P343B03A6_wire_create_option_opaque');
+  late final _P343B03A6_wire_create_option_opaque =
+      _P343B03A6_wire_create_option_opaquePtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_HideData>)>();
 
-  void P7C55DD6B_wire_run_opaque(
+  WireSyncReturn P343B03A6_wire_sync_create_opaque() {
+    return _P343B03A6_wire_sync_create_opaque();
+  }
+
+  late final _P343B03A6_wire_sync_create_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('P343B03A6_wire_sync_create_opaque');
+  late final _P343B03A6_wire_sync_create_opaque =
+      _P343B03A6_wire_sync_create_opaquePtr.asFunction<WireSyncReturn Function()>();
+
+  void P343B03A6_wire_create_array_opaque_enum(
     int port_,
-    P7C55DD6B_wire_HideData opaque,
   ) {
-    return _P7C55DD6B_wire_run_opaque(
+    return _P343B03A6_wire_create_array_opaque_enum(
+      port_,
+    );
+  }
+
+  late final _P343B03A6_wire_create_array_opaque_enumPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_create_array_opaque_enum');
+  late final _P343B03A6_wire_create_array_opaque_enum =
+      _P343B03A6_wire_create_array_opaque_enumPtr.asFunction<void Function(int)>();
+
+  void P343B03A6_wire_run_enum_opaque(
+    int port_,
+    ffi.Pointer<P343B03A6_wire_EnumOpaque> opaque,
+  ) {
+    return _P343B03A6_wire_run_enum_opaque(
       port_,
       opaque,
     );
   }
 
-  late final _P7C55DD6B_wire_run_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P7C55DD6B_wire_HideData)>>('P7C55DD6B_wire_run_opaque');
-  late final _P7C55DD6B_wire_run_opaque =
-      _P7C55DD6B_wire_run_opaquePtr.asFunction<void Function(int, P7C55DD6B_wire_HideData)>();
+  late final _P343B03A6_wire_run_enum_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_EnumOpaque>)>>(
+          'P343B03A6_wire_run_enum_opaque');
+  late final _P343B03A6_wire_run_enum_opaque =
+      _P343B03A6_wire_run_enum_opaquePtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_EnumOpaque>)>();
 
-  void P7C55DD6B_wire_run_opaque_with_delay(
+  void P343B03A6_wire_run_opaque(
     int port_,
-    P7C55DD6B_wire_HideData opaque,
+    P343B03A6_wire_HideData opaque,
   ) {
-    return _P7C55DD6B_wire_run_opaque_with_delay(
+    return _P343B03A6_wire_run_opaque(
       port_,
       opaque,
     );
   }
 
-  late final _P7C55DD6B_wire_run_opaque_with_delayPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P7C55DD6B_wire_HideData)>>(
-          'P7C55DD6B_wire_run_opaque_with_delay');
-  late final _P7C55DD6B_wire_run_opaque_with_delay =
-      _P7C55DD6B_wire_run_opaque_with_delayPtr.asFunction<void Function(int, P7C55DD6B_wire_HideData)>();
+  late final _P343B03A6_wire_run_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P343B03A6_wire_HideData)>>('P343B03A6_wire_run_opaque');
+  late final _P343B03A6_wire_run_opaque =
+      _P343B03A6_wire_run_opaquePtr.asFunction<void Function(int, P343B03A6_wire_HideData)>();
 
-  void P7C55DD6B_wire_opaque_array(
+  void P343B03A6_wire_run_opaque_with_delay(
+    int port_,
+    P343B03A6_wire_HideData opaque,
+  ) {
+    return _P343B03A6_wire_run_opaque_with_delay(
+      port_,
+      opaque,
+    );
+  }
+
+  late final _P343B03A6_wire_run_opaque_with_delayPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P343B03A6_wire_HideData)>>(
+          'P343B03A6_wire_run_opaque_with_delay');
+  late final _P343B03A6_wire_run_opaque_with_delay =
+      _P343B03A6_wire_run_opaque_with_delayPtr.asFunction<void Function(int, P343B03A6_wire_HideData)>();
+
+  void P343B03A6_wire_opaque_array(
     int port_,
   ) {
-    return _P7C55DD6B_wire_opaque_array(
+    return _P343B03A6_wire_opaque_array(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_opaque_arrayPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_opaque_array');
-  late final _P7C55DD6B_wire_opaque_array = _P7C55DD6B_wire_opaque_arrayPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_opaque_arrayPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_opaque_array');
+  late final _P343B03A6_wire_opaque_array = _P343B03A6_wire_opaque_arrayPtr.asFunction<void Function(int)>();
 
-  WireSyncReturn P7C55DD6B_wire_sync_create_non_clone() {
-    return _P7C55DD6B_wire_sync_create_non_clone();
+  WireSyncReturn P343B03A6_wire_sync_create_non_clone() {
+    return _P343B03A6_wire_sync_create_non_clone();
   }
 
-  late final _P7C55DD6B_wire_sync_create_non_clonePtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('P7C55DD6B_wire_sync_create_non_clone');
-  late final _P7C55DD6B_wire_sync_create_non_clone =
-      _P7C55DD6B_wire_sync_create_non_clonePtr.asFunction<WireSyncReturn Function()>();
+  late final _P343B03A6_wire_sync_create_non_clonePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('P343B03A6_wire_sync_create_non_clone');
+  late final _P343B03A6_wire_sync_create_non_clone =
+      _P343B03A6_wire_sync_create_non_clonePtr.asFunction<WireSyncReturn Function()>();
 
-  void P7C55DD6B_wire_run_non_clone(
+  void P343B03A6_wire_run_non_clone(
     int port_,
-    P7C55DD6B_wire_NonCloneData clone,
+    P343B03A6_wire_NonCloneData clone,
   ) {
-    return _P7C55DD6B_wire_run_non_clone(
+    return _P343B03A6_wire_run_non_clone(
       port_,
       clone,
     );
   }
 
-  late final _P7C55DD6B_wire_run_non_clonePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P7C55DD6B_wire_NonCloneData)>>(
-          'P7C55DD6B_wire_run_non_clone');
-  late final _P7C55DD6B_wire_run_non_clone =
-      _P7C55DD6B_wire_run_non_clonePtr.asFunction<void Function(int, P7C55DD6B_wire_NonCloneData)>();
+  late final _P343B03A6_wire_run_non_clonePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P343B03A6_wire_NonCloneData)>>(
+          'P343B03A6_wire_run_non_clone');
+  late final _P343B03A6_wire_run_non_clone =
+      _P343B03A6_wire_run_non_clonePtr.asFunction<void Function(int, P343B03A6_wire_NonCloneData)>();
 
-  void P7C55DD6B_wire_create_sync_opaque(
+  void P343B03A6_wire_create_sync_opaque(
     int port_,
   ) {
-    return _P7C55DD6B_wire_create_sync_opaque(
+    return _P343B03A6_wire_create_sync_opaque(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_create_sync_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_create_sync_opaque');
-  late final _P7C55DD6B_wire_create_sync_opaque =
-      _P7C55DD6B_wire_create_sync_opaquePtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_create_sync_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_create_sync_opaque');
+  late final _P343B03A6_wire_create_sync_opaque =
+      _P343B03A6_wire_create_sync_opaquePtr.asFunction<void Function(int)>();
 
-  WireSyncReturn P7C55DD6B_wire_sync_create_sync_opaque() {
-    return _P7C55DD6B_wire_sync_create_sync_opaque();
+  WireSyncReturn P343B03A6_wire_sync_create_sync_opaque() {
+    return _P343B03A6_wire_sync_create_sync_opaque();
   }
 
-  late final _P7C55DD6B_wire_sync_create_sync_opaquePtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('P7C55DD6B_wire_sync_create_sync_opaque');
-  late final _P7C55DD6B_wire_sync_create_sync_opaque =
-      _P7C55DD6B_wire_sync_create_sync_opaquePtr.asFunction<WireSyncReturn Function()>();
+  late final _P343B03A6_wire_sync_create_sync_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('P343B03A6_wire_sync_create_sync_opaque');
+  late final _P343B03A6_wire_sync_create_sync_opaque =
+      _P343B03A6_wire_sync_create_sync_opaquePtr.asFunction<WireSyncReturn Function()>();
 
-  WireSyncReturn P7C55DD6B_wire_sync_run_opaque(
-    P7C55DD6B_wire_NonSendHideData opaque,
+  WireSyncReturn P343B03A6_wire_sync_run_opaque(
+    P343B03A6_wire_NonSendHideData opaque,
   ) {
-    return _P7C55DD6B_wire_sync_run_opaque(
+    return _P343B03A6_wire_sync_run_opaque(
       opaque,
     );
   }
 
-  late final _P7C55DD6B_wire_sync_run_opaquePtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(P7C55DD6B_wire_NonSendHideData)>>(
-          'P7C55DD6B_wire_sync_run_opaque');
-  late final _P7C55DD6B_wire_sync_run_opaque =
-      _P7C55DD6B_wire_sync_run_opaquePtr.asFunction<WireSyncReturn Function(P7C55DD6B_wire_NonSendHideData)>();
+  late final _P343B03A6_wire_sync_run_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(P343B03A6_wire_NonSendHideData)>>(
+          'P343B03A6_wire_sync_run_opaque');
+  late final _P343B03A6_wire_sync_run_opaque =
+      _P343B03A6_wire_sync_run_opaquePtr.asFunction<WireSyncReturn Function(P343B03A6_wire_NonSendHideData)>();
 
-  void P7C55DD6B_wire_opaque_array_run(
+  void P343B03A6_wire_opaque_array_run(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_list_HideData> data,
+    ffi.Pointer<P343B03A6_wire_list_HideData> data,
   ) {
-    return _P7C55DD6B_wire_opaque_array_run(
+    return _P343B03A6_wire_opaque_array_run(
       port_,
       data,
     );
   }
 
-  late final _P7C55DD6B_wire_opaque_array_runPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_list_HideData>)>>(
-          'P7C55DD6B_wire_opaque_array_run');
-  late final _P7C55DD6B_wire_opaque_array_run =
-      _P7C55DD6B_wire_opaque_array_runPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_list_HideData>)>();
+  late final _P343B03A6_wire_opaque_array_runPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_list_HideData>)>>(
+          'P343B03A6_wire_opaque_array_run');
+  late final _P343B03A6_wire_opaque_array_run =
+      _P343B03A6_wire_opaque_array_runPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_list_HideData>)>();
 
-  void P7C55DD6B_wire_opaque_vec(
+  void P343B03A6_wire_opaque_vec(
     int port_,
   ) {
-    return _P7C55DD6B_wire_opaque_vec(
+    return _P343B03A6_wire_opaque_vec(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_opaque_vecPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_opaque_vec');
-  late final _P7C55DD6B_wire_opaque_vec = _P7C55DD6B_wire_opaque_vecPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_opaque_vecPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_opaque_vec');
+  late final _P343B03A6_wire_opaque_vec = _P343B03A6_wire_opaque_vecPtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_opaque_vec_run(
+  void P343B03A6_wire_opaque_vec_run(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_list_HideData> data,
+    ffi.Pointer<P343B03A6_wire_list_HideData> data,
   ) {
-    return _P7C55DD6B_wire_opaque_vec_run(
+    return _P343B03A6_wire_opaque_vec_run(
       port_,
       data,
     );
   }
 
-  late final _P7C55DD6B_wire_opaque_vec_runPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_list_HideData>)>>(
-          'P7C55DD6B_wire_opaque_vec_run');
-  late final _P7C55DD6B_wire_opaque_vec_run =
-      _P7C55DD6B_wire_opaque_vec_runPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_list_HideData>)>();
+  late final _P343B03A6_wire_opaque_vec_runPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_list_HideData>)>>(
+          'P343B03A6_wire_opaque_vec_run');
+  late final _P343B03A6_wire_opaque_vec_run =
+      _P343B03A6_wire_opaque_vec_runPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_list_HideData>)>();
 
-  void P7C55DD6B_wire_create_nested_opaque(
+  void P343B03A6_wire_create_nested_opaque(
     int port_,
   ) {
-    return _P7C55DD6B_wire_create_nested_opaque(
+    return _P343B03A6_wire_create_nested_opaque(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_create_nested_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_create_nested_opaque');
-  late final _P7C55DD6B_wire_create_nested_opaque =
-      _P7C55DD6B_wire_create_nested_opaquePtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_create_nested_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_create_nested_opaque');
+  late final _P343B03A6_wire_create_nested_opaque =
+      _P343B03A6_wire_create_nested_opaquePtr.asFunction<void Function(int)>();
 
-  WireSyncReturn P7C55DD6B_wire_sync_loopback(
-    P7C55DD6B_wire_DartOpaque opaque,
+  WireSyncReturn P343B03A6_wire_sync_loopback(
+    P343B03A6_wire_DartOpaque opaque,
   ) {
-    return _P7C55DD6B_wire_sync_loopback(
+    return _P343B03A6_wire_sync_loopback(
       opaque,
     );
   }
 
-  late final _P7C55DD6B_wire_sync_loopbackPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(P7C55DD6B_wire_DartOpaque)>>('P7C55DD6B_wire_sync_loopback');
-  late final _P7C55DD6B_wire_sync_loopback =
-      _P7C55DD6B_wire_sync_loopbackPtr.asFunction<WireSyncReturn Function(P7C55DD6B_wire_DartOpaque)>();
+  late final _P343B03A6_wire_sync_loopbackPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(P343B03A6_wire_DartOpaque)>>('P343B03A6_wire_sync_loopback');
+  late final _P343B03A6_wire_sync_loopback =
+      _P343B03A6_wire_sync_loopbackPtr.asFunction<WireSyncReturn Function(P343B03A6_wire_DartOpaque)>();
 
-  WireSyncReturn P7C55DD6B_wire_sync_option_loopback(
-    ffi.Pointer<P7C55DD6B_wire_DartOpaque> opaque,
+  WireSyncReturn P343B03A6_wire_sync_option_loopback(
+    ffi.Pointer<P343B03A6_wire_DartOpaque> opaque,
   ) {
-    return _P7C55DD6B_wire_sync_option_loopback(
+    return _P343B03A6_wire_sync_option_loopback(
       opaque,
     );
   }
 
-  late final _P7C55DD6B_wire_sync_option_loopbackPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<P7C55DD6B_wire_DartOpaque>)>>(
-          'P7C55DD6B_wire_sync_option_loopback');
-  late final _P7C55DD6B_wire_sync_option_loopback = _P7C55DD6B_wire_sync_option_loopbackPtr.asFunction<
-      WireSyncReturn Function(ffi.Pointer<P7C55DD6B_wire_DartOpaque>)>();
+  late final _P343B03A6_wire_sync_option_loopbackPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<P343B03A6_wire_DartOpaque>)>>(
+          'P343B03A6_wire_sync_option_loopback');
+  late final _P343B03A6_wire_sync_option_loopback = _P343B03A6_wire_sync_option_loopbackPtr.asFunction<
+      WireSyncReturn Function(ffi.Pointer<P343B03A6_wire_DartOpaque>)>();
 
-  WireSyncReturn P7C55DD6B_wire_sync_option() {
-    return _P7C55DD6B_wire_sync_option();
+  WireSyncReturn P343B03A6_wire_sync_option() {
+    return _P343B03A6_wire_sync_option();
   }
 
-  late final _P7C55DD6B_wire_sync_optionPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('P7C55DD6B_wire_sync_option');
-  late final _P7C55DD6B_wire_sync_option = _P7C55DD6B_wire_sync_optionPtr.asFunction<WireSyncReturn Function()>();
+  late final _P343B03A6_wire_sync_optionPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('P343B03A6_wire_sync_option');
+  late final _P343B03A6_wire_sync_option = _P343B03A6_wire_sync_optionPtr.asFunction<WireSyncReturn Function()>();
 
-  WireSyncReturn P7C55DD6B_wire_sync_option_null() {
-    return _P7C55DD6B_wire_sync_option_null();
+  WireSyncReturn P343B03A6_wire_sync_option_null() {
+    return _P343B03A6_wire_sync_option_null();
   }
 
-  late final _P7C55DD6B_wire_sync_option_nullPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('P7C55DD6B_wire_sync_option_null');
-  late final _P7C55DD6B_wire_sync_option_null =
-      _P7C55DD6B_wire_sync_option_nullPtr.asFunction<WireSyncReturn Function()>();
+  late final _P343B03A6_wire_sync_option_nullPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('P343B03A6_wire_sync_option_null');
+  late final _P343B03A6_wire_sync_option_null =
+      _P343B03A6_wire_sync_option_nullPtr.asFunction<WireSyncReturn Function()>();
 
-  WireSyncReturn P7C55DD6B_wire_sync_option_rust_opaque() {
-    return _P7C55DD6B_wire_sync_option_rust_opaque();
+  WireSyncReturn P343B03A6_wire_sync_option_rust_opaque() {
+    return _P343B03A6_wire_sync_option_rust_opaque();
   }
 
-  late final _P7C55DD6B_wire_sync_option_rust_opaquePtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('P7C55DD6B_wire_sync_option_rust_opaque');
-  late final _P7C55DD6B_wire_sync_option_rust_opaque =
-      _P7C55DD6B_wire_sync_option_rust_opaquePtr.asFunction<WireSyncReturn Function()>();
+  late final _P343B03A6_wire_sync_option_rust_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('P343B03A6_wire_sync_option_rust_opaque');
+  late final _P343B03A6_wire_sync_option_rust_opaque =
+      _P343B03A6_wire_sync_option_rust_opaquePtr.asFunction<WireSyncReturn Function()>();
 
-  WireSyncReturn P7C55DD6B_wire_sync_option_dart_opaque(
-    P7C55DD6B_wire_DartOpaque opaque,
+  WireSyncReturn P343B03A6_wire_sync_option_dart_opaque(
+    P343B03A6_wire_DartOpaque opaque,
   ) {
-    return _P7C55DD6B_wire_sync_option_dart_opaque(
+    return _P343B03A6_wire_sync_option_dart_opaque(
       opaque,
     );
   }
 
-  late final _P7C55DD6B_wire_sync_option_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(P7C55DD6B_wire_DartOpaque)>>(
-          'P7C55DD6B_wire_sync_option_dart_opaque');
-  late final _P7C55DD6B_wire_sync_option_dart_opaque =
-      _P7C55DD6B_wire_sync_option_dart_opaquePtr.asFunction<WireSyncReturn Function(P7C55DD6B_wire_DartOpaque)>();
+  late final _P343B03A6_wire_sync_option_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(P343B03A6_wire_DartOpaque)>>(
+          'P343B03A6_wire_sync_option_dart_opaque');
+  late final _P343B03A6_wire_sync_option_dart_opaque =
+      _P343B03A6_wire_sync_option_dart_opaquePtr.asFunction<WireSyncReturn Function(P343B03A6_wire_DartOpaque)>();
 
-  WireSyncReturn P7C55DD6B_wire_sync_void() {
-    return _P7C55DD6B_wire_sync_void();
+  WireSyncReturn P343B03A6_wire_sync_void() {
+    return _P343B03A6_wire_sync_void();
   }
 
-  late final _P7C55DD6B_wire_sync_voidPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('P7C55DD6B_wire_sync_void');
-  late final _P7C55DD6B_wire_sync_void = _P7C55DD6B_wire_sync_voidPtr.asFunction<WireSyncReturn Function()>();
+  late final _P343B03A6_wire_sync_voidPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('P343B03A6_wire_sync_void');
+  late final _P343B03A6_wire_sync_void = _P343B03A6_wire_sync_voidPtr.asFunction<WireSyncReturn Function()>();
 
-  void P7C55DD6B_wire_run_nested_opaque(
+  void P343B03A6_wire_run_nested_opaque(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_OpaqueNested> opaque,
+    ffi.Pointer<P343B03A6_wire_OpaqueNested> opaque,
   ) {
-    return _P7C55DD6B_wire_run_nested_opaque(
+    return _P343B03A6_wire_run_nested_opaque(
       port_,
       opaque,
     );
   }
 
-  late final _P7C55DD6B_wire_run_nested_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_OpaqueNested>)>>(
-          'P7C55DD6B_wire_run_nested_opaque');
-  late final _P7C55DD6B_wire_run_nested_opaque =
-      _P7C55DD6B_wire_run_nested_opaquePtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_OpaqueNested>)>();
+  late final _P343B03A6_wire_run_nested_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_OpaqueNested>)>>(
+          'P343B03A6_wire_run_nested_opaque');
+  late final _P343B03A6_wire_run_nested_opaque =
+      _P343B03A6_wire_run_nested_opaquePtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_OpaqueNested>)>();
 
-  void P7C55DD6B_wire_create_nested_dart_opaque(
+  void P343B03A6_wire_create_nested_dart_opaque(
     int port_,
-    P7C55DD6B_wire_DartOpaque opaque1,
-    P7C55DD6B_wire_DartOpaque opaque2,
+    P343B03A6_wire_DartOpaque opaque1,
+    P343B03A6_wire_DartOpaque opaque2,
   ) {
-    return _P7C55DD6B_wire_create_nested_dart_opaque(
+    return _P343B03A6_wire_create_nested_dart_opaque(
       port_,
       opaque1,
       opaque2,
     );
   }
 
-  late final _P7C55DD6B_wire_create_nested_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P7C55DD6B_wire_DartOpaque, P7C55DD6B_wire_DartOpaque)>>(
-          'P7C55DD6B_wire_create_nested_dart_opaque');
-  late final _P7C55DD6B_wire_create_nested_dart_opaque = _P7C55DD6B_wire_create_nested_dart_opaquePtr.asFunction<
-      void Function(int, P7C55DD6B_wire_DartOpaque, P7C55DD6B_wire_DartOpaque)>();
+  late final _P343B03A6_wire_create_nested_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P343B03A6_wire_DartOpaque, P343B03A6_wire_DartOpaque)>>(
+          'P343B03A6_wire_create_nested_dart_opaque');
+  late final _P343B03A6_wire_create_nested_dart_opaque = _P343B03A6_wire_create_nested_dart_opaquePtr.asFunction<
+      void Function(int, P343B03A6_wire_DartOpaque, P343B03A6_wire_DartOpaque)>();
 
-  void P7C55DD6B_wire_get_nested_dart_opaque(
+  void P343B03A6_wire_get_nested_dart_opaque(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_DartOpaqueNested> opaque,
+    ffi.Pointer<P343B03A6_wire_DartOpaqueNested> opaque,
   ) {
-    return _P7C55DD6B_wire_get_nested_dart_opaque(
+    return _P343B03A6_wire_get_nested_dart_opaque(
       port_,
       opaque,
     );
   }
 
-  late final _P7C55DD6B_wire_get_nested_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_DartOpaqueNested>)>>(
-          'P7C55DD6B_wire_get_nested_dart_opaque');
-  late final _P7C55DD6B_wire_get_nested_dart_opaque = _P7C55DD6B_wire_get_nested_dart_opaquePtr.asFunction<
-      void Function(int, ffi.Pointer<P7C55DD6B_wire_DartOpaqueNested>)>();
+  late final _P343B03A6_wire_get_nested_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_DartOpaqueNested>)>>(
+          'P343B03A6_wire_get_nested_dart_opaque');
+  late final _P343B03A6_wire_get_nested_dart_opaque = _P343B03A6_wire_get_nested_dart_opaquePtr.asFunction<
+      void Function(int, ffi.Pointer<P343B03A6_wire_DartOpaqueNested>)>();
 
-  void P7C55DD6B_wire_create_enum_dart_opaque(
+  void P343B03A6_wire_create_enum_dart_opaque(
     int port_,
-    P7C55DD6B_wire_DartOpaque opaque,
+    P343B03A6_wire_DartOpaque opaque,
   ) {
-    return _P7C55DD6B_wire_create_enum_dart_opaque(
+    return _P343B03A6_wire_create_enum_dart_opaque(
       port_,
       opaque,
     );
   }
 
-  late final _P7C55DD6B_wire_create_enum_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P7C55DD6B_wire_DartOpaque)>>(
-          'P7C55DD6B_wire_create_enum_dart_opaque');
-  late final _P7C55DD6B_wire_create_enum_dart_opaque =
-      _P7C55DD6B_wire_create_enum_dart_opaquePtr.asFunction<void Function(int, P7C55DD6B_wire_DartOpaque)>();
+  late final _P343B03A6_wire_create_enum_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P343B03A6_wire_DartOpaque)>>(
+          'P343B03A6_wire_create_enum_dart_opaque');
+  late final _P343B03A6_wire_create_enum_dart_opaque =
+      _P343B03A6_wire_create_enum_dart_opaquePtr.asFunction<void Function(int, P343B03A6_wire_DartOpaque)>();
 
-  void P7C55DD6B_wire_get_enum_dart_opaque(
+  void P343B03A6_wire_get_enum_dart_opaque(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_EnumDartOpaque> opaque,
+    ffi.Pointer<P343B03A6_wire_EnumDartOpaque> opaque,
   ) {
-    return _P7C55DD6B_wire_get_enum_dart_opaque(
+    return _P343B03A6_wire_get_enum_dart_opaque(
       port_,
       opaque,
     );
   }
 
-  late final _P7C55DD6B_wire_get_enum_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_EnumDartOpaque>)>>(
-          'P7C55DD6B_wire_get_enum_dart_opaque');
-  late final _P7C55DD6B_wire_get_enum_dart_opaque = _P7C55DD6B_wire_get_enum_dart_opaquePtr.asFunction<
-      void Function(int, ffi.Pointer<P7C55DD6B_wire_EnumDartOpaque>)>();
+  late final _P343B03A6_wire_get_enum_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_EnumDartOpaque>)>>(
+          'P343B03A6_wire_get_enum_dart_opaque');
+  late final _P343B03A6_wire_get_enum_dart_opaque = _P343B03A6_wire_get_enum_dart_opaquePtr.asFunction<
+      void Function(int, ffi.Pointer<P343B03A6_wire_EnumDartOpaque>)>();
 
-  void P7C55DD6B_wire_set_static_dart_opaque(
+  void P343B03A6_wire_set_static_dart_opaque(
     int port_,
-    P7C55DD6B_wire_DartOpaque opaque,
+    P343B03A6_wire_DartOpaque opaque,
   ) {
-    return _P7C55DD6B_wire_set_static_dart_opaque(
+    return _P343B03A6_wire_set_static_dart_opaque(
       port_,
       opaque,
     );
   }
 
-  late final _P7C55DD6B_wire_set_static_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P7C55DD6B_wire_DartOpaque)>>(
-          'P7C55DD6B_wire_set_static_dart_opaque');
-  late final _P7C55DD6B_wire_set_static_dart_opaque =
-      _P7C55DD6B_wire_set_static_dart_opaquePtr.asFunction<void Function(int, P7C55DD6B_wire_DartOpaque)>();
+  late final _P343B03A6_wire_set_static_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P343B03A6_wire_DartOpaque)>>(
+          'P343B03A6_wire_set_static_dart_opaque');
+  late final _P343B03A6_wire_set_static_dart_opaque =
+      _P343B03A6_wire_set_static_dart_opaquePtr.asFunction<void Function(int, P343B03A6_wire_DartOpaque)>();
 
-  void P7C55DD6B_wire_drop_static_dart_opaque(
+  void P343B03A6_wire_drop_static_dart_opaque(
     int port_,
   ) {
-    return _P7C55DD6B_wire_drop_static_dart_opaque(
+    return _P343B03A6_wire_drop_static_dart_opaque(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_drop_static_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_drop_static_dart_opaque');
-  late final _P7C55DD6B_wire_drop_static_dart_opaque =
-      _P7C55DD6B_wire_drop_static_dart_opaquePtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_drop_static_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_drop_static_dart_opaque');
+  late final _P343B03A6_wire_drop_static_dart_opaque =
+      _P343B03A6_wire_drop_static_dart_opaquePtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_unwrap_rust_opaque(
+  void P343B03A6_wire_unwrap_rust_opaque(
     int port_,
-    P7C55DD6B_wire_HideData opaque,
+    P343B03A6_wire_HideData opaque,
   ) {
-    return _P7C55DD6B_wire_unwrap_rust_opaque(
+    return _P343B03A6_wire_unwrap_rust_opaque(
       port_,
       opaque,
     );
   }
 
-  late final _P7C55DD6B_wire_unwrap_rust_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P7C55DD6B_wire_HideData)>>(
-          'P7C55DD6B_wire_unwrap_rust_opaque');
-  late final _P7C55DD6B_wire_unwrap_rust_opaque =
-      _P7C55DD6B_wire_unwrap_rust_opaquePtr.asFunction<void Function(int, P7C55DD6B_wire_HideData)>();
+  late final _P343B03A6_wire_unwrap_rust_opaquePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, P343B03A6_wire_HideData)>>(
+          'P343B03A6_wire_unwrap_rust_opaque');
+  late final _P343B03A6_wire_unwrap_rust_opaque =
+      _P343B03A6_wire_unwrap_rust_opaquePtr.asFunction<void Function(int, P343B03A6_wire_HideData)>();
 
-  WireSyncReturn P7C55DD6B_wire_return_non_droppable_dart_opaque(
-    P7C55DD6B_wire_DartOpaque opaque,
+  WireSyncReturn P343B03A6_wire_return_non_droppable_dart_opaque(
+    P343B03A6_wire_DartOpaque opaque,
   ) {
-    return _P7C55DD6B_wire_return_non_droppable_dart_opaque(
+    return _P343B03A6_wire_return_non_droppable_dart_opaque(
       opaque,
     );
   }
 
-  late final _P7C55DD6B_wire_return_non_droppable_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(P7C55DD6B_wire_DartOpaque)>>(
-          'P7C55DD6B_wire_return_non_droppable_dart_opaque');
-  late final _P7C55DD6B_wire_return_non_droppable_dart_opaque = _P7C55DD6B_wire_return_non_droppable_dart_opaquePtr
-      .asFunction<WireSyncReturn Function(P7C55DD6B_wire_DartOpaque)>();
+  late final _P343B03A6_wire_return_non_droppable_dart_opaquePtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(P343B03A6_wire_DartOpaque)>>(
+          'P343B03A6_wire_return_non_droppable_dart_opaque');
+  late final _P343B03A6_wire_return_non_droppable_dart_opaque = _P343B03A6_wire_return_non_droppable_dart_opaquePtr
+      .asFunction<WireSyncReturn Function(P343B03A6_wire_DartOpaque)>();
 
-  void P7C55DD6B_wire_frb_generator_test(
+  void P343B03A6_wire_frb_generator_test(
     int port_,
   ) {
-    return _P7C55DD6B_wire_frb_generator_test(
+    return _P343B03A6_wire_frb_generator_test(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_frb_generator_testPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_frb_generator_test');
-  late final _P7C55DD6B_wire_frb_generator_test =
-      _P7C55DD6B_wire_frb_generator_testPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_frb_generator_testPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_frb_generator_test');
+  late final _P343B03A6_wire_frb_generator_test =
+      _P343B03A6_wire_frb_generator_testPtr.asFunction<void Function(int)>();
 
-  WireSyncReturn P7C55DD6B_wire_frb_sync_generator_test() {
-    return _P7C55DD6B_wire_frb_sync_generator_test();
+  WireSyncReturn P343B03A6_wire_frb_sync_generator_test() {
+    return _P343B03A6_wire_frb_sync_generator_test();
   }
 
-  late final _P7C55DD6B_wire_frb_sync_generator_testPtr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('P7C55DD6B_wire_frb_sync_generator_test');
-  late final _P7C55DD6B_wire_frb_sync_generator_test =
-      _P7C55DD6B_wire_frb_sync_generator_testPtr.asFunction<WireSyncReturn Function()>();
+  late final _P343B03A6_wire_frb_sync_generator_testPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('P343B03A6_wire_frb_sync_generator_test');
+  late final _P343B03A6_wire_frb_sync_generator_test =
+      _P343B03A6_wire_frb_sync_generator_testPtr.asFunction<WireSyncReturn Function()>();
 
-  void P7C55DD6B_wire_handle_type_alias_id(
+  void P343B03A6_wire_handle_type_alias_id(
     int port_,
     int input,
   ) {
-    return _P7C55DD6B_wire_handle_type_alias_id(
+    return _P343B03A6_wire_handle_type_alias_id(
       port_,
       input,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_type_alias_idPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint64)>>('P7C55DD6B_wire_handle_type_alias_id');
-  late final _P7C55DD6B_wire_handle_type_alias_id =
-      _P7C55DD6B_wire_handle_type_alias_idPtr.asFunction<void Function(int, int)>();
+  late final _P343B03A6_wire_handle_type_alias_idPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint64)>>('P343B03A6_wire_handle_type_alias_id');
+  late final _P343B03A6_wire_handle_type_alias_id =
+      _P343B03A6_wire_handle_type_alias_idPtr.asFunction<void Function(int, int)>();
 
-  void P7C55DD6B_wire_handle_type_nest_alias_id(
+  void P343B03A6_wire_handle_type_nest_alias_id(
     int port_,
     int input,
   ) {
-    return _P7C55DD6B_wire_handle_type_nest_alias_id(
+    return _P343B03A6_wire_handle_type_nest_alias_id(
       port_,
       input,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_type_nest_alias_idPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint64)>>('P7C55DD6B_wire_handle_type_nest_alias_id');
-  late final _P7C55DD6B_wire_handle_type_nest_alias_id =
-      _P7C55DD6B_wire_handle_type_nest_alias_idPtr.asFunction<void Function(int, int)>();
+  late final _P343B03A6_wire_handle_type_nest_alias_idPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint64)>>('P343B03A6_wire_handle_type_nest_alias_id');
+  late final _P343B03A6_wire_handle_type_nest_alias_id =
+      _P343B03A6_wire_handle_type_nest_alias_idPtr.asFunction<void Function(int, int)>();
 
-  void P7C55DD6B_wire_handle_type_alias_model(
+  void P343B03A6_wire_handle_type_alias_model(
     int port_,
     int input,
   ) {
-    return _P7C55DD6B_wire_handle_type_alias_model(
+    return _P343B03A6_wire_handle_type_alias_model(
       port_,
       input,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_type_alias_modelPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint64)>>('P7C55DD6B_wire_handle_type_alias_model');
-  late final _P7C55DD6B_wire_handle_type_alias_model =
-      _P7C55DD6B_wire_handle_type_alias_modelPtr.asFunction<void Function(int, int)>();
+  late final _P343B03A6_wire_handle_type_alias_modelPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint64)>>('P343B03A6_wire_handle_type_alias_model');
+  late final _P343B03A6_wire_handle_type_alias_model =
+      _P343B03A6_wire_handle_type_alias_modelPtr.asFunction<void Function(int, int)>();
 
-  void P7C55DD6B_wire_empty_struct(
+  void P343B03A6_wire_empty_struct(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_Empty> empty,
+    ffi.Pointer<P343B03A6_wire_Empty> empty,
   ) {
-    return _P7C55DD6B_wire_empty_struct(
+    return _P343B03A6_wire_empty_struct(
       port_,
       empty,
     );
   }
 
-  late final _P7C55DD6B_wire_empty_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_Empty>)>>(
-          'P7C55DD6B_wire_empty_struct');
-  late final _P7C55DD6B_wire_empty_struct =
-      _P7C55DD6B_wire_empty_structPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_Empty>)>();
+  late final _P343B03A6_wire_empty_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_Empty>)>>(
+          'P343B03A6_wire_empty_struct');
+  late final _P343B03A6_wire_empty_struct =
+      _P343B03A6_wire_empty_structPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_Empty>)>();
 
-  void P7C55DD6B_wire_return_dart_dynamic(
+  void P343B03A6_wire_return_dart_dynamic(
     int port_,
   ) {
-    return _P7C55DD6B_wire_return_dart_dynamic(
+    return _P343B03A6_wire_return_dart_dynamic(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_return_dart_dynamicPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_return_dart_dynamic');
-  late final _P7C55DD6B_wire_return_dart_dynamic =
-      _P7C55DD6B_wire_return_dart_dynamicPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_return_dart_dynamicPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_return_dart_dynamic');
+  late final _P343B03A6_wire_return_dart_dynamic =
+      _P343B03A6_wire_return_dart_dynamicPtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_test_raw_string_item_struct(
+  void P343B03A6_wire_test_raw_string_item_struct(
     int port_,
   ) {
-    return _P7C55DD6B_wire_test_raw_string_item_struct(
+    return _P343B03A6_wire_test_raw_string_item_struct(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_test_raw_string_item_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_test_raw_string_item_struct');
-  late final _P7C55DD6B_wire_test_raw_string_item_struct =
-      _P7C55DD6B_wire_test_raw_string_item_structPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_test_raw_string_item_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_test_raw_string_item_struct');
+  late final _P343B03A6_wire_test_raw_string_item_struct =
+      _P343B03A6_wire_test_raw_string_item_structPtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_test_more_than_just_one_raw_string_struct(
+  void P343B03A6_wire_test_more_than_just_one_raw_string_struct(
     int port_,
   ) {
-    return _P7C55DD6B_wire_test_more_than_just_one_raw_string_struct(
+    return _P343B03A6_wire_test_more_than_just_one_raw_string_struct(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_test_more_than_just_one_raw_string_structPtr =
+  late final _P343B03A6_wire_test_more_than_just_one_raw_string_structPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'P7C55DD6B_wire_test_more_than_just_one_raw_string_struct');
-  late final _P7C55DD6B_wire_test_more_than_just_one_raw_string_struct =
-      _P7C55DD6B_wire_test_more_than_just_one_raw_string_structPtr.asFunction<void Function(int)>();
+          'P343B03A6_wire_test_more_than_just_one_raw_string_struct');
+  late final _P343B03A6_wire_test_more_than_just_one_raw_string_struct =
+      _P343B03A6_wire_test_more_than_just_one_raw_string_structPtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_test_raw_string_mirrored(
+  void P343B03A6_wire_test_raw_string_mirrored(
     int port_,
   ) {
-    return _P7C55DD6B_wire_test_raw_string_mirrored(
+    return _P343B03A6_wire_test_raw_string_mirrored(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_test_raw_string_mirroredPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_test_raw_string_mirrored');
-  late final _P7C55DD6B_wire_test_raw_string_mirrored =
-      _P7C55DD6B_wire_test_raw_string_mirroredPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_test_raw_string_mirroredPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_test_raw_string_mirrored');
+  late final _P343B03A6_wire_test_raw_string_mirrored =
+      _P343B03A6_wire_test_raw_string_mirroredPtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_test_nested_raw_string_mirrored(
+  void P343B03A6_wire_test_nested_raw_string_mirrored(
     int port_,
   ) {
-    return _P7C55DD6B_wire_test_nested_raw_string_mirrored(
+    return _P343B03A6_wire_test_nested_raw_string_mirrored(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_test_nested_raw_string_mirroredPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_test_nested_raw_string_mirrored');
-  late final _P7C55DD6B_wire_test_nested_raw_string_mirrored =
-      _P7C55DD6B_wire_test_nested_raw_string_mirroredPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_test_nested_raw_string_mirroredPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_test_nested_raw_string_mirrored');
+  late final _P343B03A6_wire_test_nested_raw_string_mirrored =
+      _P343B03A6_wire_test_nested_raw_string_mirroredPtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_test_raw_string_enum_mirrored(
+  void P343B03A6_wire_test_raw_string_enum_mirrored(
     int port_,
     bool nested,
   ) {
-    return _P7C55DD6B_wire_test_raw_string_enum_mirrored(
+    return _P343B03A6_wire_test_raw_string_enum_mirrored(
       port_,
       nested,
     );
   }
 
-  late final _P7C55DD6B_wire_test_raw_string_enum_mirroredPtr =
+  late final _P343B03A6_wire_test_raw_string_enum_mirroredPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Bool)>>(
-          'P7C55DD6B_wire_test_raw_string_enum_mirrored');
-  late final _P7C55DD6B_wire_test_raw_string_enum_mirrored =
-      _P7C55DD6B_wire_test_raw_string_enum_mirroredPtr.asFunction<void Function(int, bool)>();
+          'P343B03A6_wire_test_raw_string_enum_mirrored');
+  late final _P343B03A6_wire_test_raw_string_enum_mirrored =
+      _P343B03A6_wire_test_raw_string_enum_mirroredPtr.asFunction<void Function(int, bool)>();
 
-  void P7C55DD6B_wire_test_list_of_raw_nested_string_mirrored(
+  void P343B03A6_wire_test_list_of_raw_nested_string_mirrored(
     int port_,
   ) {
-    return _P7C55DD6B_wire_test_list_of_raw_nested_string_mirrored(
+    return _P343B03A6_wire_test_list_of_raw_nested_string_mirrored(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_test_list_of_raw_nested_string_mirroredPtr =
+  late final _P343B03A6_wire_test_list_of_raw_nested_string_mirroredPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'P7C55DD6B_wire_test_list_of_raw_nested_string_mirrored');
-  late final _P7C55DD6B_wire_test_list_of_raw_nested_string_mirrored =
-      _P7C55DD6B_wire_test_list_of_raw_nested_string_mirroredPtr.asFunction<void Function(int)>();
+          'P343B03A6_wire_test_list_of_raw_nested_string_mirrored');
+  late final _P343B03A6_wire_test_list_of_raw_nested_string_mirrored =
+      _P343B03A6_wire_test_list_of_raw_nested_string_mirroredPtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_test_fallible_of_raw_string_mirrored(
+  void P343B03A6_wire_test_fallible_of_raw_string_mirrored(
     int port_,
   ) {
-    return _P7C55DD6B_wire_test_fallible_of_raw_string_mirrored(
+    return _P343B03A6_wire_test_fallible_of_raw_string_mirrored(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_test_fallible_of_raw_string_mirroredPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_test_fallible_of_raw_string_mirrored');
-  late final _P7C55DD6B_wire_test_fallible_of_raw_string_mirrored =
-      _P7C55DD6B_wire_test_fallible_of_raw_string_mirroredPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_test_fallible_of_raw_string_mirroredPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_test_fallible_of_raw_string_mirrored');
+  late final _P343B03A6_wire_test_fallible_of_raw_string_mirrored =
+      _P343B03A6_wire_test_fallible_of_raw_string_mirroredPtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_list_of_primitive_enums(
+  void P343B03A6_wire_list_of_primitive_enums(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_list_weekdays> weekdays,
+    ffi.Pointer<P343B03A6_wire_list_weekdays> weekdays,
   ) {
-    return _P7C55DD6B_wire_list_of_primitive_enums(
+    return _P343B03A6_wire_list_of_primitive_enums(
       port_,
       weekdays,
     );
   }
 
-  late final _P7C55DD6B_wire_list_of_primitive_enumsPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_list_weekdays>)>>(
-          'P7C55DD6B_wire_list_of_primitive_enums');
-  late final _P7C55DD6B_wire_list_of_primitive_enums = _P7C55DD6B_wire_list_of_primitive_enumsPtr.asFunction<
-      void Function(int, ffi.Pointer<P7C55DD6B_wire_list_weekdays>)>();
+  late final _P343B03A6_wire_list_of_primitive_enumsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_list_weekdays>)>>(
+          'P343B03A6_wire_list_of_primitive_enums');
+  late final _P343B03A6_wire_list_of_primitive_enums = _P343B03A6_wire_list_of_primitive_enumsPtr.asFunction<
+      void Function(int, ffi.Pointer<P343B03A6_wire_list_weekdays>)>();
 
-  void P7C55DD6B_wire_test_abc_enum(
+  void P343B03A6_wire_test_abc_enum(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_Abc> abc,
+    ffi.Pointer<P343B03A6_wire_Abc> abc,
   ) {
-    return _P7C55DD6B_wire_test_abc_enum(
+    return _P343B03A6_wire_test_abc_enum(
       port_,
       abc,
     );
   }
 
-  late final _P7C55DD6B_wire_test_abc_enumPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_Abc>)>>(
-          'P7C55DD6B_wire_test_abc_enum');
-  late final _P7C55DD6B_wire_test_abc_enum =
-      _P7C55DD6B_wire_test_abc_enumPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_Abc>)>();
+  late final _P343B03A6_wire_test_abc_enumPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_Abc>)>>(
+          'P343B03A6_wire_test_abc_enum');
+  late final _P343B03A6_wire_test_abc_enum =
+      _P343B03A6_wire_test_abc_enumPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_Abc>)>();
 
-  void P7C55DD6B_wire_test_contains_mirrored_sub_struct(
+  void P343B03A6_wire_test_contains_mirrored_sub_struct(
     int port_,
   ) {
-    return _P7C55DD6B_wire_test_contains_mirrored_sub_struct(
+    return _P343B03A6_wire_test_contains_mirrored_sub_struct(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_test_contains_mirrored_sub_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P7C55DD6B_wire_test_contains_mirrored_sub_struct');
-  late final _P7C55DD6B_wire_test_contains_mirrored_sub_struct =
-      _P7C55DD6B_wire_test_contains_mirrored_sub_structPtr.asFunction<void Function(int)>();
+  late final _P343B03A6_wire_test_contains_mirrored_sub_structPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('P343B03A6_wire_test_contains_mirrored_sub_struct');
+  late final _P343B03A6_wire_test_contains_mirrored_sub_struct =
+      _P343B03A6_wire_test_contains_mirrored_sub_structPtr.asFunction<void Function(int)>();
 
-  void P7C55DD6B_wire_as_string__method__Event(
+  void P343B03A6_wire_as_string__method__Event(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_Event> that,
+    ffi.Pointer<P343B03A6_wire_Event> that,
   ) {
-    return _P7C55DD6B_wire_as_string__method__Event(
+    return _P343B03A6_wire_as_string__method__Event(
       port_,
       that,
     );
   }
 
-  late final _P7C55DD6B_wire_as_string__method__EventPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_Event>)>>(
-          'P7C55DD6B_wire_as_string__method__Event');
-  late final _P7C55DD6B_wire_as_string__method__Event =
-      _P7C55DD6B_wire_as_string__method__EventPtr.asFunction<void Function(int, ffi.Pointer<P7C55DD6B_wire_Event>)>();
+  late final _P343B03A6_wire_as_string__method__EventPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_Event>)>>(
+          'P343B03A6_wire_as_string__method__Event');
+  late final _P343B03A6_wire_as_string__method__Event =
+      _P343B03A6_wire_as_string__method__EventPtr.asFunction<void Function(int, ffi.Pointer<P343B03A6_wire_Event>)>();
 
-  void P7C55DD6B_wire_sum__method__SumWith(
+  void P343B03A6_wire_sum__method__SumWith(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_SumWith> that,
+    ffi.Pointer<P343B03A6_wire_SumWith> that,
     int y,
     int z,
   ) {
-    return _P7C55DD6B_wire_sum__method__SumWith(
+    return _P343B03A6_wire_sum__method__SumWith(
       port_,
       that,
       y,
@@ -3795,78 +3795,78 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
     );
   }
 
-  late final _P7C55DD6B_wire_sum__method__SumWithPtr = _lookup<
+  late final _P343B03A6_wire_sum__method__SumWithPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_SumWith>, ffi.Uint32,
-              ffi.Uint32)>>('P7C55DD6B_wire_sum__method__SumWith');
-  late final _P7C55DD6B_wire_sum__method__SumWith = _P7C55DD6B_wire_sum__method__SumWithPtr.asFunction<
-      void Function(int, ffi.Pointer<P7C55DD6B_wire_SumWith>, int, int)>();
+          ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_SumWith>, ffi.Uint32,
+              ffi.Uint32)>>('P343B03A6_wire_sum__method__SumWith');
+  late final _P343B03A6_wire_sum__method__SumWith = _P343B03A6_wire_sum__method__SumWithPtr.asFunction<
+      void Function(int, ffi.Pointer<P343B03A6_wire_SumWith>, int, int)>();
 
-  void P7C55DD6B_wire_new__static_method__ConcatenateWith(
+  void P343B03A6_wire_new__static_method__ConcatenateWith(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_uint_8_list> a,
+    ffi.Pointer<P343B03A6_wire_uint_8_list> a,
   ) {
-    return _P7C55DD6B_wire_new__static_method__ConcatenateWith(
+    return _P343B03A6_wire_new__static_method__ConcatenateWith(
       port_,
       a,
     );
   }
 
-  late final _P7C55DD6B_wire_new__static_method__ConcatenateWithPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>>(
-          'P7C55DD6B_wire_new__static_method__ConcatenateWith');
-  late final _P7C55DD6B_wire_new__static_method__ConcatenateWith =
-      _P7C55DD6B_wire_new__static_method__ConcatenateWithPtr.asFunction<
-          void Function(int, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>();
+  late final _P343B03A6_wire_new__static_method__ConcatenateWithPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_uint_8_list>)>>(
+          'P343B03A6_wire_new__static_method__ConcatenateWith');
+  late final _P343B03A6_wire_new__static_method__ConcatenateWith =
+      _P343B03A6_wire_new__static_method__ConcatenateWithPtr.asFunction<
+          void Function(int, ffi.Pointer<P343B03A6_wire_uint_8_list>)>();
 
-  void P7C55DD6B_wire_concatenate__method__ConcatenateWith(
+  void P343B03A6_wire_concatenate__method__ConcatenateWith(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_ConcatenateWith> that,
-    ffi.Pointer<P7C55DD6B_wire_uint_8_list> b,
+    ffi.Pointer<P343B03A6_wire_ConcatenateWith> that,
+    ffi.Pointer<P343B03A6_wire_uint_8_list> b,
   ) {
-    return _P7C55DD6B_wire_concatenate__method__ConcatenateWith(
+    return _P343B03A6_wire_concatenate__method__ConcatenateWith(
       port_,
       that,
       b,
     );
   }
 
-  late final _P7C55DD6B_wire_concatenate__method__ConcatenateWithPtr = _lookup<
+  late final _P343B03A6_wire_concatenate__method__ConcatenateWithPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_ConcatenateWith>,
-              ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>>('P7C55DD6B_wire_concatenate__method__ConcatenateWith');
-  late final _P7C55DD6B_wire_concatenate__method__ConcatenateWith =
-      _P7C55DD6B_wire_concatenate__method__ConcatenateWithPtr.asFunction<
-          void Function(int, ffi.Pointer<P7C55DD6B_wire_ConcatenateWith>, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>();
+          ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_ConcatenateWith>,
+              ffi.Pointer<P343B03A6_wire_uint_8_list>)>>('P343B03A6_wire_concatenate__method__ConcatenateWith');
+  late final _P343B03A6_wire_concatenate__method__ConcatenateWith =
+      _P343B03A6_wire_concatenate__method__ConcatenateWithPtr.asFunction<
+          void Function(int, ffi.Pointer<P343B03A6_wire_ConcatenateWith>, ffi.Pointer<P343B03A6_wire_uint_8_list>)>();
 
-  void P7C55DD6B_wire_concatenate_static__static_method__ConcatenateWith(
+  void P343B03A6_wire_concatenate_static__static_method__ConcatenateWith(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_uint_8_list> a,
-    ffi.Pointer<P7C55DD6B_wire_uint_8_list> b,
+    ffi.Pointer<P343B03A6_wire_uint_8_list> a,
+    ffi.Pointer<P343B03A6_wire_uint_8_list> b,
   ) {
-    return _P7C55DD6B_wire_concatenate_static__static_method__ConcatenateWith(
+    return _P343B03A6_wire_concatenate_static__static_method__ConcatenateWith(
       port_,
       a,
       b,
     );
   }
 
-  late final _P7C55DD6B_wire_concatenate_static__static_method__ConcatenateWithPtr = _lookup<
+  late final _P343B03A6_wire_concatenate_static__static_method__ConcatenateWithPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(
-                  ffi.Int64, ffi.Pointer<P7C55DD6B_wire_uint_8_list>, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>>(
-      'P7C55DD6B_wire_concatenate_static__static_method__ConcatenateWith');
-  late final _P7C55DD6B_wire_concatenate_static__static_method__ConcatenateWith =
-      _P7C55DD6B_wire_concatenate_static__static_method__ConcatenateWithPtr.asFunction<
-          void Function(int, ffi.Pointer<P7C55DD6B_wire_uint_8_list>, ffi.Pointer<P7C55DD6B_wire_uint_8_list>)>();
+                  ffi.Int64, ffi.Pointer<P343B03A6_wire_uint_8_list>, ffi.Pointer<P343B03A6_wire_uint_8_list>)>>(
+      'P343B03A6_wire_concatenate_static__static_method__ConcatenateWith');
+  late final _P343B03A6_wire_concatenate_static__static_method__ConcatenateWith =
+      _P343B03A6_wire_concatenate_static__static_method__ConcatenateWithPtr.asFunction<
+          void Function(int, ffi.Pointer<P343B03A6_wire_uint_8_list>, ffi.Pointer<P343B03A6_wire_uint_8_list>)>();
 
-  void P7C55DD6B_wire_handle_some_stream_sink__method__ConcatenateWith(
+  void P343B03A6_wire_handle_some_stream_sink__method__ConcatenateWith(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_ConcatenateWith> that,
+    ffi.Pointer<P343B03A6_wire_ConcatenateWith> that,
     int key,
     int max,
   ) {
-    return _P7C55DD6B_wire_handle_some_stream_sink__method__ConcatenateWith(
+    return _P343B03A6_wire_handle_some_stream_sink__method__ConcatenateWith(
       port_,
       that,
       key,
@@ -3874,127 +3874,127 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
     );
   }
 
-  late final _P7C55DD6B_wire_handle_some_stream_sink__method__ConcatenateWithPtr = _lookup<
+  late final _P343B03A6_wire_handle_some_stream_sink__method__ConcatenateWithPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_ConcatenateWith>, ffi.Uint32,
-              ffi.Uint32)>>('P7C55DD6B_wire_handle_some_stream_sink__method__ConcatenateWith');
-  late final _P7C55DD6B_wire_handle_some_stream_sink__method__ConcatenateWith =
-      _P7C55DD6B_wire_handle_some_stream_sink__method__ConcatenateWithPtr.asFunction<
-          void Function(int, ffi.Pointer<P7C55DD6B_wire_ConcatenateWith>, int, int)>();
+          ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_ConcatenateWith>, ffi.Uint32,
+              ffi.Uint32)>>('P343B03A6_wire_handle_some_stream_sink__method__ConcatenateWith');
+  late final _P343B03A6_wire_handle_some_stream_sink__method__ConcatenateWith =
+      _P343B03A6_wire_handle_some_stream_sink__method__ConcatenateWithPtr.asFunction<
+          void Function(int, ffi.Pointer<P343B03A6_wire_ConcatenateWith>, int, int)>();
 
-  void P7C55DD6B_wire_handle_some_stream_sink_at_1__method__ConcatenateWith(
+  void P343B03A6_wire_handle_some_stream_sink_at_1__method__ConcatenateWith(
     int port_,
-    ffi.Pointer<P7C55DD6B_wire_ConcatenateWith> that,
+    ffi.Pointer<P343B03A6_wire_ConcatenateWith> that,
   ) {
-    return _P7C55DD6B_wire_handle_some_stream_sink_at_1__method__ConcatenateWith(
+    return _P343B03A6_wire_handle_some_stream_sink_at_1__method__ConcatenateWith(
       port_,
       that,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_some_stream_sink_at_1__method__ConcatenateWithPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P7C55DD6B_wire_ConcatenateWith>)>>(
-          'P7C55DD6B_wire_handle_some_stream_sink_at_1__method__ConcatenateWith');
-  late final _P7C55DD6B_wire_handle_some_stream_sink_at_1__method__ConcatenateWith =
-      _P7C55DD6B_wire_handle_some_stream_sink_at_1__method__ConcatenateWithPtr.asFunction<
-          void Function(int, ffi.Pointer<P7C55DD6B_wire_ConcatenateWith>)>();
+  late final _P343B03A6_wire_handle_some_stream_sink_at_1__method__ConcatenateWithPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<P343B03A6_wire_ConcatenateWith>)>>(
+          'P343B03A6_wire_handle_some_stream_sink_at_1__method__ConcatenateWith');
+  late final _P343B03A6_wire_handle_some_stream_sink_at_1__method__ConcatenateWith =
+      _P343B03A6_wire_handle_some_stream_sink_at_1__method__ConcatenateWithPtr.asFunction<
+          void Function(int, ffi.Pointer<P343B03A6_wire_ConcatenateWith>)>();
 
-  void P7C55DD6B_wire_handle_some_static_stream_sink__static_method__ConcatenateWith(
+  void P343B03A6_wire_handle_some_static_stream_sink__static_method__ConcatenateWith(
     int port_,
     int key,
     int max,
   ) {
-    return _P7C55DD6B_wire_handle_some_static_stream_sink__static_method__ConcatenateWith(
+    return _P343B03A6_wire_handle_some_static_stream_sink__static_method__ConcatenateWith(
       port_,
       key,
       max,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_some_static_stream_sink__static_method__ConcatenateWithPtr =
+  late final _P343B03A6_wire_handle_some_static_stream_sink__static_method__ConcatenateWithPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32, ffi.Uint32)>>(
-          'P7C55DD6B_wire_handle_some_static_stream_sink__static_method__ConcatenateWith');
-  late final _P7C55DD6B_wire_handle_some_static_stream_sink__static_method__ConcatenateWith =
-      _P7C55DD6B_wire_handle_some_static_stream_sink__static_method__ConcatenateWithPtr.asFunction<
+          'P343B03A6_wire_handle_some_static_stream_sink__static_method__ConcatenateWith');
+  late final _P343B03A6_wire_handle_some_static_stream_sink__static_method__ConcatenateWith =
+      _P343B03A6_wire_handle_some_static_stream_sink__static_method__ConcatenateWithPtr.asFunction<
           void Function(int, int, int)>();
 
-  void P7C55DD6B_wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(
+  void P343B03A6_wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(
     int port_,
   ) {
-    return _P7C55DD6B_wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(
+    return _P343B03A6_wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(
       port_,
     );
   }
 
-  late final _P7C55DD6B_wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWithPtr =
+  late final _P343B03A6_wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWithPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'P7C55DD6B_wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith');
-  late final _P7C55DD6B_wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith =
-      _P7C55DD6B_wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWithPtr.asFunction<
+          'P343B03A6_wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith');
+  late final _P343B03A6_wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith =
+      _P343B03A6_wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWithPtr.asFunction<
           void Function(int)>();
 
-  P7C55DD6B_wire_BoxDartDebug new_BoxDartDebug() {
+  P343B03A6_wire_BoxDartDebug new_BoxDartDebug() {
     return _new_BoxDartDebug();
   }
 
   late final _new_BoxDartDebugPtr =
-      _lookup<ffi.NativeFunction<P7C55DD6B_wire_BoxDartDebug Function()>>('new_BoxDartDebug');
-  late final _new_BoxDartDebug = _new_BoxDartDebugPtr.asFunction<P7C55DD6B_wire_BoxDartDebug Function()>();
+      _lookup<ffi.NativeFunction<P343B03A6_wire_BoxDartDebug Function()>>('new_BoxDartDebug');
+  late final _new_BoxDartDebug = _new_BoxDartDebugPtr.asFunction<P343B03A6_wire_BoxDartDebug Function()>();
 
-  P7C55DD6B_wire_DartOpaque new_DartOpaque() {
+  P343B03A6_wire_DartOpaque new_DartOpaque() {
     return _new_DartOpaque();
   }
 
-  late final _new_DartOpaquePtr = _lookup<ffi.NativeFunction<P7C55DD6B_wire_DartOpaque Function()>>('new_DartOpaque');
-  late final _new_DartOpaque = _new_DartOpaquePtr.asFunction<P7C55DD6B_wire_DartOpaque Function()>();
+  late final _new_DartOpaquePtr = _lookup<ffi.NativeFunction<P343B03A6_wire_DartOpaque Function()>>('new_DartOpaque');
+  late final _new_DartOpaque = _new_DartOpaquePtr.asFunction<P343B03A6_wire_DartOpaque Function()>();
 
-  P7C55DD6B_wire_HideData new_HideData() {
+  P343B03A6_wire_HideData new_HideData() {
     return _new_HideData();
   }
 
-  late final _new_HideDataPtr = _lookup<ffi.NativeFunction<P7C55DD6B_wire_HideData Function()>>('new_HideData');
-  late final _new_HideData = _new_HideDataPtr.asFunction<P7C55DD6B_wire_HideData Function()>();
+  late final _new_HideDataPtr = _lookup<ffi.NativeFunction<P343B03A6_wire_HideData Function()>>('new_HideData');
+  late final _new_HideData = _new_HideDataPtr.asFunction<P343B03A6_wire_HideData Function()>();
 
-  P7C55DD6B_wire_I32 new_I32() {
+  P343B03A6_wire_I32 new_I32() {
     return _new_I32();
   }
 
-  late final _new_I32Ptr = _lookup<ffi.NativeFunction<P7C55DD6B_wire_I32 Function()>>('new_I32');
-  late final _new_I32 = _new_I32Ptr.asFunction<P7C55DD6B_wire_I32 Function()>();
+  late final _new_I32Ptr = _lookup<ffi.NativeFunction<P343B03A6_wire_I32 Function()>>('new_I32');
+  late final _new_I32 = _new_I32Ptr.asFunction<P343B03A6_wire_I32 Function()>();
 
-  P7C55DD6B_wire_MutexHideData new_MutexHideData() {
+  P343B03A6_wire_MutexHideData new_MutexHideData() {
     return _new_MutexHideData();
   }
 
   late final _new_MutexHideDataPtr =
-      _lookup<ffi.NativeFunction<P7C55DD6B_wire_MutexHideData Function()>>('new_MutexHideData');
-  late final _new_MutexHideData = _new_MutexHideDataPtr.asFunction<P7C55DD6B_wire_MutexHideData Function()>();
+      _lookup<ffi.NativeFunction<P343B03A6_wire_MutexHideData Function()>>('new_MutexHideData');
+  late final _new_MutexHideData = _new_MutexHideDataPtr.asFunction<P343B03A6_wire_MutexHideData Function()>();
 
-  P7C55DD6B_wire_NonCloneData new_NonCloneData() {
+  P343B03A6_wire_NonCloneData new_NonCloneData() {
     return _new_NonCloneData();
   }
 
   late final _new_NonCloneDataPtr =
-      _lookup<ffi.NativeFunction<P7C55DD6B_wire_NonCloneData Function()>>('new_NonCloneData');
-  late final _new_NonCloneData = _new_NonCloneDataPtr.asFunction<P7C55DD6B_wire_NonCloneData Function()>();
+      _lookup<ffi.NativeFunction<P343B03A6_wire_NonCloneData Function()>>('new_NonCloneData');
+  late final _new_NonCloneData = _new_NonCloneDataPtr.asFunction<P343B03A6_wire_NonCloneData Function()>();
 
-  P7C55DD6B_wire_NonSendHideData new_NonSendHideData() {
+  P343B03A6_wire_NonSendHideData new_NonSendHideData() {
     return _new_NonSendHideData();
   }
 
   late final _new_NonSendHideDataPtr =
-      _lookup<ffi.NativeFunction<P7C55DD6B_wire_NonSendHideData Function()>>('new_NonSendHideData');
-  late final _new_NonSendHideData = _new_NonSendHideDataPtr.asFunction<P7C55DD6B_wire_NonSendHideData Function()>();
+      _lookup<ffi.NativeFunction<P343B03A6_wire_NonSendHideData Function()>>('new_NonSendHideData');
+  late final _new_NonSendHideData = _new_NonSendHideDataPtr.asFunction<P343B03A6_wire_NonSendHideData Function()>();
 
-  P7C55DD6B_wire_RwLockHideData new_RwLockHideData() {
+  P343B03A6_wire_RwLockHideData new_RwLockHideData() {
     return _new_RwLockHideData();
   }
 
   late final _new_RwLockHideDataPtr =
-      _lookup<ffi.NativeFunction<P7C55DD6B_wire_RwLockHideData Function()>>('new_RwLockHideData');
-  late final _new_RwLockHideData = _new_RwLockHideDataPtr.asFunction<P7C55DD6B_wire_RwLockHideData Function()>();
+      _lookup<ffi.NativeFunction<P343B03A6_wire_RwLockHideData Function()>>('new_RwLockHideData');
+  late final _new_RwLockHideData = _new_RwLockHideDataPtr.asFunction<P343B03A6_wire_RwLockHideData Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_StringList> new_StringList_0(
+  ffi.Pointer<P343B03A6_wire_StringList> new_StringList_0(
     int len,
   ) {
     return _new_StringList_0(
@@ -4003,18 +4003,18 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _new_StringList_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_StringList> Function(ffi.Int32)>>('new_StringList_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_StringList> Function(ffi.Int32)>>('new_StringList_0');
   late final _new_StringList_0 =
-      _new_StringList_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_StringList> Function(int)>();
+      _new_StringList_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_StringList> Function(int)>();
 
-  ffi.Pointer<P7C55DD6B_wire_ApplicationEnv> new_box_application_env_0() {
+  ffi.Pointer<P343B03A6_wire_ApplicationEnv> new_box_application_env_0() {
     return _new_box_application_env_0();
   }
 
   late final _new_box_application_env_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_ApplicationEnv> Function()>>('new_box_application_env_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_ApplicationEnv> Function()>>('new_box_application_env_0');
   late final _new_box_application_env_0 =
-      _new_box_application_env_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_ApplicationEnv> Function()>();
+      _new_box_application_env_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_ApplicationEnv> Function()>();
 
   ffi.Pointer<ffi.Int64> new_box_autoadd_Chrono_Utc_0(
     int value,
@@ -4029,77 +4029,77 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_box_autoadd_Chrono_Utc_0 =
       _new_box_autoadd_Chrono_Utc_0Ptr.asFunction<ffi.Pointer<ffi.Int64> Function(int)>();
 
-  ffi.Pointer<P7C55DD6B_wire_DartOpaque> new_box_autoadd_DartOpaque_0() {
+  ffi.Pointer<P343B03A6_wire_DartOpaque> new_box_autoadd_DartOpaque_0() {
     return _new_box_autoadd_DartOpaque_0();
   }
 
   late final _new_box_autoadd_DartOpaque_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_DartOpaque> Function()>>('new_box_autoadd_DartOpaque_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_DartOpaque> Function()>>('new_box_autoadd_DartOpaque_0');
   late final _new_box_autoadd_DartOpaque_0 =
-      _new_box_autoadd_DartOpaque_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_DartOpaque> Function()>();
+      _new_box_autoadd_DartOpaque_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_DartOpaque> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_HideData> new_box_autoadd_HideData_0() {
+  ffi.Pointer<P343B03A6_wire_HideData> new_box_autoadd_HideData_0() {
     return _new_box_autoadd_HideData_0();
   }
 
   late final _new_box_autoadd_HideData_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_HideData> Function()>>('new_box_autoadd_HideData_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_HideData> Function()>>('new_box_autoadd_HideData_0');
   late final _new_box_autoadd_HideData_0 =
-      _new_box_autoadd_HideData_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_HideData> Function()>();
+      _new_box_autoadd_HideData_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_HideData> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_A> new_box_autoadd_a_0() {
+  ffi.Pointer<P343B03A6_wire_A> new_box_autoadd_a_0() {
     return _new_box_autoadd_a_0();
   }
 
   late final _new_box_autoadd_a_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_A> Function()>>('new_box_autoadd_a_0');
-  late final _new_box_autoadd_a_0 = _new_box_autoadd_a_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_A> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_A> Function()>>('new_box_autoadd_a_0');
+  late final _new_box_autoadd_a_0 = _new_box_autoadd_a_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_A> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_Abc> new_box_autoadd_abc_0() {
+  ffi.Pointer<P343B03A6_wire_Abc> new_box_autoadd_abc_0() {
     return _new_box_autoadd_abc_0();
   }
 
   late final _new_box_autoadd_abc_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_Abc> Function()>>('new_box_autoadd_abc_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_Abc> Function()>>('new_box_autoadd_abc_0');
   late final _new_box_autoadd_abc_0 =
-      _new_box_autoadd_abc_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_Abc> Function()>();
+      _new_box_autoadd_abc_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_Abc> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_ApplicationEnv> new_box_autoadd_application_env_0() {
+  ffi.Pointer<P343B03A6_wire_ApplicationEnv> new_box_autoadd_application_env_0() {
     return _new_box_autoadd_application_env_0();
   }
 
   late final _new_box_autoadd_application_env_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_ApplicationEnv> Function()>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_ApplicationEnv> Function()>>(
           'new_box_autoadd_application_env_0');
   late final _new_box_autoadd_application_env_0 =
-      _new_box_autoadd_application_env_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_ApplicationEnv> Function()>();
+      _new_box_autoadd_application_env_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_ApplicationEnv> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_ApplicationSettings> new_box_autoadd_application_settings_0() {
+  ffi.Pointer<P343B03A6_wire_ApplicationSettings> new_box_autoadd_application_settings_0() {
     return _new_box_autoadd_application_settings_0();
   }
 
   late final _new_box_autoadd_application_settings_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_ApplicationSettings> Function()>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_ApplicationSettings> Function()>>(
           'new_box_autoadd_application_settings_0');
   late final _new_box_autoadd_application_settings_0 = _new_box_autoadd_application_settings_0Ptr
-      .asFunction<ffi.Pointer<P7C55DD6B_wire_ApplicationSettings> Function()>();
+      .asFunction<ffi.Pointer<P343B03A6_wire_ApplicationSettings> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_Attribute> new_box_autoadd_attribute_0() {
+  ffi.Pointer<P343B03A6_wire_Attribute> new_box_autoadd_attribute_0() {
     return _new_box_autoadd_attribute_0();
   }
 
   late final _new_box_autoadd_attribute_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_Attribute> Function()>>('new_box_autoadd_attribute_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_Attribute> Function()>>('new_box_autoadd_attribute_0');
   late final _new_box_autoadd_attribute_0 =
-      _new_box_autoadd_attribute_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_Attribute> Function()>();
+      _new_box_autoadd_attribute_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_Attribute> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_B> new_box_autoadd_b_0() {
+  ffi.Pointer<P343B03A6_wire_B> new_box_autoadd_b_0() {
     return _new_box_autoadd_b_0();
   }
 
   late final _new_box_autoadd_b_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_B> Function()>>('new_box_autoadd_b_0');
-  late final _new_box_autoadd_b_0 = _new_box_autoadd_b_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_B> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_B> Function()>>('new_box_autoadd_b_0');
+  late final _new_box_autoadd_b_0 = _new_box_autoadd_b_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_B> Function()>();
 
   ffi.Pointer<ffi.Bool> new_box_autoadd_bool_0(
     bool value,
@@ -4113,89 +4113,89 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Bool> Function(ffi.Bool)>>('new_box_autoadd_bool_0');
   late final _new_box_autoadd_bool_0 = _new_box_autoadd_bool_0Ptr.asFunction<ffi.Pointer<ffi.Bool> Function(bool)>();
 
-  ffi.Pointer<P7C55DD6B_wire_C> new_box_autoadd_c_0() {
+  ffi.Pointer<P343B03A6_wire_C> new_box_autoadd_c_0() {
     return _new_box_autoadd_c_0();
   }
 
   late final _new_box_autoadd_c_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_C> Function()>>('new_box_autoadd_c_0');
-  late final _new_box_autoadd_c_0 = _new_box_autoadd_c_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_C> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_C> Function()>>('new_box_autoadd_c_0');
+  late final _new_box_autoadd_c_0 = _new_box_autoadd_c_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_C> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_ConcatenateWith> new_box_autoadd_concatenate_with_0() {
+  ffi.Pointer<P343B03A6_wire_ConcatenateWith> new_box_autoadd_concatenate_with_0() {
     return _new_box_autoadd_concatenate_with_0();
   }
 
   late final _new_box_autoadd_concatenate_with_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_ConcatenateWith> Function()>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_ConcatenateWith> Function()>>(
           'new_box_autoadd_concatenate_with_0');
   late final _new_box_autoadd_concatenate_with_0 =
-      _new_box_autoadd_concatenate_with_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_ConcatenateWith> Function()>();
+      _new_box_autoadd_concatenate_with_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_ConcatenateWith> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_Customized> new_box_autoadd_customized_0() {
+  ffi.Pointer<P343B03A6_wire_Customized> new_box_autoadd_customized_0() {
     return _new_box_autoadd_customized_0();
   }
 
   late final _new_box_autoadd_customized_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_Customized> Function()>>('new_box_autoadd_customized_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_Customized> Function()>>('new_box_autoadd_customized_0');
   late final _new_box_autoadd_customized_0 =
-      _new_box_autoadd_customized_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_Customized> Function()>();
+      _new_box_autoadd_customized_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_Customized> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_DartOpaqueNested> new_box_autoadd_dart_opaque_nested_0() {
+  ffi.Pointer<P343B03A6_wire_DartOpaqueNested> new_box_autoadd_dart_opaque_nested_0() {
     return _new_box_autoadd_dart_opaque_nested_0();
   }
 
   late final _new_box_autoadd_dart_opaque_nested_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_DartOpaqueNested> Function()>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_DartOpaqueNested> Function()>>(
           'new_box_autoadd_dart_opaque_nested_0');
   late final _new_box_autoadd_dart_opaque_nested_0 =
-      _new_box_autoadd_dart_opaque_nested_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_DartOpaqueNested> Function()>();
+      _new_box_autoadd_dart_opaque_nested_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_DartOpaqueNested> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_Empty> new_box_autoadd_empty_0() {
+  ffi.Pointer<P343B03A6_wire_Empty> new_box_autoadd_empty_0() {
     return _new_box_autoadd_empty_0();
   }
 
   late final _new_box_autoadd_empty_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_Empty> Function()>>('new_box_autoadd_empty_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_Empty> Function()>>('new_box_autoadd_empty_0');
   late final _new_box_autoadd_empty_0 =
-      _new_box_autoadd_empty_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_Empty> Function()>();
+      _new_box_autoadd_empty_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_Empty> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_EnumDartOpaque> new_box_autoadd_enum_dart_opaque_0() {
+  ffi.Pointer<P343B03A6_wire_EnumDartOpaque> new_box_autoadd_enum_dart_opaque_0() {
     return _new_box_autoadd_enum_dart_opaque_0();
   }
 
   late final _new_box_autoadd_enum_dart_opaque_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_EnumDartOpaque> Function()>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_EnumDartOpaque> Function()>>(
           'new_box_autoadd_enum_dart_opaque_0');
   late final _new_box_autoadd_enum_dart_opaque_0 =
-      _new_box_autoadd_enum_dart_opaque_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_EnumDartOpaque> Function()>();
+      _new_box_autoadd_enum_dart_opaque_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_EnumDartOpaque> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_EnumOpaque> new_box_autoadd_enum_opaque_0() {
+  ffi.Pointer<P343B03A6_wire_EnumOpaque> new_box_autoadd_enum_opaque_0() {
     return _new_box_autoadd_enum_opaque_0();
   }
 
   late final _new_box_autoadd_enum_opaque_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_EnumOpaque> Function()>>('new_box_autoadd_enum_opaque_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_EnumOpaque> Function()>>('new_box_autoadd_enum_opaque_0');
   late final _new_box_autoadd_enum_opaque_0 =
-      _new_box_autoadd_enum_opaque_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_EnumOpaque> Function()>();
+      _new_box_autoadd_enum_opaque_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_EnumOpaque> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_Event> new_box_autoadd_event_0() {
+  ffi.Pointer<P343B03A6_wire_Event> new_box_autoadd_event_0() {
     return _new_box_autoadd_event_0();
   }
 
   late final _new_box_autoadd_event_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_Event> Function()>>('new_box_autoadd_event_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_Event> Function()>>('new_box_autoadd_event_0');
   late final _new_box_autoadd_event_0 =
-      _new_box_autoadd_event_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_Event> Function()>();
+      _new_box_autoadd_event_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_Event> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_ExoticOptionals> new_box_autoadd_exotic_optionals_0() {
+  ffi.Pointer<P343B03A6_wire_ExoticOptionals> new_box_autoadd_exotic_optionals_0() {
     return _new_box_autoadd_exotic_optionals_0();
   }
 
   late final _new_box_autoadd_exotic_optionals_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_ExoticOptionals> Function()>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_ExoticOptionals> Function()>>(
           'new_box_autoadd_exotic_optionals_0');
   late final _new_box_autoadd_exotic_optionals_0 =
-      _new_box_autoadd_exotic_optionals_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_ExoticOptionals> Function()>();
+      _new_box_autoadd_exotic_optionals_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_ExoticOptionals> Function()>();
 
   ffi.Pointer<ffi.Double> new_box_autoadd_f64_0(
     double value,
@@ -4209,33 +4209,33 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Double> Function(ffi.Double)>>('new_box_autoadd_f64_0');
   late final _new_box_autoadd_f64_0 = _new_box_autoadd_f64_0Ptr.asFunction<ffi.Pointer<ffi.Double> Function(double)>();
 
-  ffi.Pointer<P7C55DD6B_wire_FeatureChrono> new_box_autoadd_feature_chrono_0() {
+  ffi.Pointer<P343B03A6_wire_FeatureChrono> new_box_autoadd_feature_chrono_0() {
     return _new_box_autoadd_feature_chrono_0();
   }
 
   late final _new_box_autoadd_feature_chrono_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_FeatureChrono> Function()>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_FeatureChrono> Function()>>(
           'new_box_autoadd_feature_chrono_0');
   late final _new_box_autoadd_feature_chrono_0 =
-      _new_box_autoadd_feature_chrono_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_FeatureChrono> Function()>();
+      _new_box_autoadd_feature_chrono_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_FeatureChrono> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_FeatureUuid> new_box_autoadd_feature_uuid_0() {
+  ffi.Pointer<P343B03A6_wire_FeatureUuid> new_box_autoadd_feature_uuid_0() {
     return _new_box_autoadd_feature_uuid_0();
   }
 
   late final _new_box_autoadd_feature_uuid_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_FeatureUuid> Function()>>('new_box_autoadd_feature_uuid_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_FeatureUuid> Function()>>('new_box_autoadd_feature_uuid_0');
   late final _new_box_autoadd_feature_uuid_0 =
-      _new_box_autoadd_feature_uuid_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_FeatureUuid> Function()>();
+      _new_box_autoadd_feature_uuid_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_FeatureUuid> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_FeedId> new_box_autoadd_feed_id_0() {
+  ffi.Pointer<P343B03A6_wire_FeedId> new_box_autoadd_feed_id_0() {
     return _new_box_autoadd_feed_id_0();
   }
 
   late final _new_box_autoadd_feed_id_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_FeedId> Function()>>('new_box_autoadd_feed_id_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_FeedId> Function()>>('new_box_autoadd_feed_id_0');
   late final _new_box_autoadd_feed_id_0 =
-      _new_box_autoadd_feed_id_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_FeedId> Function()>();
+      _new_box_autoadd_feed_id_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_FeedId> Function()>();
 
   ffi.Pointer<ffi.Int32> new_box_autoadd_i32_0(
     int value,
@@ -4261,150 +4261,150 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int64> Function(ffi.Int64)>>('new_box_autoadd_i64_0');
   late final _new_box_autoadd_i64_0 = _new_box_autoadd_i64_0Ptr.asFunction<ffi.Pointer<ffi.Int64> Function(int)>();
 
-  ffi.Pointer<P7C55DD6B_wire_KitchenSink> new_box_autoadd_kitchen_sink_0() {
+  ffi.Pointer<P343B03A6_wire_KitchenSink> new_box_autoadd_kitchen_sink_0() {
     return _new_box_autoadd_kitchen_sink_0();
   }
 
   late final _new_box_autoadd_kitchen_sink_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_KitchenSink> Function()>>('new_box_autoadd_kitchen_sink_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_KitchenSink> Function()>>('new_box_autoadd_kitchen_sink_0');
   late final _new_box_autoadd_kitchen_sink_0 =
-      _new_box_autoadd_kitchen_sink_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_KitchenSink> Function()>();
+      _new_box_autoadd_kitchen_sink_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_KitchenSink> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_Measure> new_box_autoadd_measure_0() {
+  ffi.Pointer<P343B03A6_wire_Measure> new_box_autoadd_measure_0() {
     return _new_box_autoadd_measure_0();
   }
 
   late final _new_box_autoadd_measure_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_Measure> Function()>>('new_box_autoadd_measure_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_Measure> Function()>>('new_box_autoadd_measure_0');
   late final _new_box_autoadd_measure_0 =
-      _new_box_autoadd_measure_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_Measure> Function()>();
+      _new_box_autoadd_measure_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_Measure> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_MessageId> new_box_autoadd_message_id_0() {
+  ffi.Pointer<P343B03A6_wire_MessageId> new_box_autoadd_message_id_0() {
     return _new_box_autoadd_message_id_0();
   }
 
   late final _new_box_autoadd_message_id_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_MessageId> Function()>>('new_box_autoadd_message_id_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_MessageId> Function()>>('new_box_autoadd_message_id_0');
   late final _new_box_autoadd_message_id_0 =
-      _new_box_autoadd_message_id_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_MessageId> Function()>();
+      _new_box_autoadd_message_id_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_MessageId> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_MyNestedStruct> new_box_autoadd_my_nested_struct_0() {
+  ffi.Pointer<P343B03A6_wire_MyNestedStruct> new_box_autoadd_my_nested_struct_0() {
     return _new_box_autoadd_my_nested_struct_0();
   }
 
   late final _new_box_autoadd_my_nested_struct_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_MyNestedStruct> Function()>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_MyNestedStruct> Function()>>(
           'new_box_autoadd_my_nested_struct_0');
   late final _new_box_autoadd_my_nested_struct_0 =
-      _new_box_autoadd_my_nested_struct_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_MyNestedStruct> Function()>();
+      _new_box_autoadd_my_nested_struct_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_MyNestedStruct> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_MySize> new_box_autoadd_my_size_0() {
+  ffi.Pointer<P343B03A6_wire_MySize> new_box_autoadd_my_size_0() {
     return _new_box_autoadd_my_size_0();
   }
 
   late final _new_box_autoadd_my_size_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_MySize> Function()>>('new_box_autoadd_my_size_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_MySize> Function()>>('new_box_autoadd_my_size_0');
   late final _new_box_autoadd_my_size_0 =
-      _new_box_autoadd_my_size_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_MySize> Function()>();
+      _new_box_autoadd_my_size_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_MySize> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_MyStruct> new_box_autoadd_my_struct_0() {
+  ffi.Pointer<P343B03A6_wire_MyStruct> new_box_autoadd_my_struct_0() {
     return _new_box_autoadd_my_struct_0();
   }
 
   late final _new_box_autoadd_my_struct_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_MyStruct> Function()>>('new_box_autoadd_my_struct_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_MyStruct> Function()>>('new_box_autoadd_my_struct_0');
   late final _new_box_autoadd_my_struct_0 =
-      _new_box_autoadd_my_struct_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_MyStruct> Function()>();
+      _new_box_autoadd_my_struct_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_MyStruct> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_MyTreeNode> new_box_autoadd_my_tree_node_0() {
+  ffi.Pointer<P343B03A6_wire_MyTreeNode> new_box_autoadd_my_tree_node_0() {
     return _new_box_autoadd_my_tree_node_0();
   }
 
   late final _new_box_autoadd_my_tree_node_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_MyTreeNode> Function()>>('new_box_autoadd_my_tree_node_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_MyTreeNode> Function()>>('new_box_autoadd_my_tree_node_0');
   late final _new_box_autoadd_my_tree_node_0 =
-      _new_box_autoadd_my_tree_node_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_MyTreeNode> Function()>();
+      _new_box_autoadd_my_tree_node_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_MyTreeNode> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_NewTypeInt> new_box_autoadd_new_type_int_0() {
+  ffi.Pointer<P343B03A6_wire_NewTypeInt> new_box_autoadd_new_type_int_0() {
     return _new_box_autoadd_new_type_int_0();
   }
 
   late final _new_box_autoadd_new_type_int_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_NewTypeInt> Function()>>('new_box_autoadd_new_type_int_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_NewTypeInt> Function()>>('new_box_autoadd_new_type_int_0');
   late final _new_box_autoadd_new_type_int_0 =
-      _new_box_autoadd_new_type_int_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_NewTypeInt> Function()>();
+      _new_box_autoadd_new_type_int_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_NewTypeInt> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_Note> new_box_autoadd_note_0() {
+  ffi.Pointer<P343B03A6_wire_Note> new_box_autoadd_note_0() {
     return _new_box_autoadd_note_0();
   }
 
   late final _new_box_autoadd_note_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_Note> Function()>>('new_box_autoadd_note_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_Note> Function()>>('new_box_autoadd_note_0');
   late final _new_box_autoadd_note_0 =
-      _new_box_autoadd_note_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_Note> Function()>();
+      _new_box_autoadd_note_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_Note> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_Numbers> new_box_autoadd_numbers_0() {
+  ffi.Pointer<P343B03A6_wire_Numbers> new_box_autoadd_numbers_0() {
     return _new_box_autoadd_numbers_0();
   }
 
   late final _new_box_autoadd_numbers_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_Numbers> Function()>>('new_box_autoadd_numbers_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_Numbers> Function()>>('new_box_autoadd_numbers_0');
   late final _new_box_autoadd_numbers_0 =
-      _new_box_autoadd_numbers_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_Numbers> Function()>();
+      _new_box_autoadd_numbers_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_Numbers> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_OpaqueNested> new_box_autoadd_opaque_nested_0() {
+  ffi.Pointer<P343B03A6_wire_OpaqueNested> new_box_autoadd_opaque_nested_0() {
     return _new_box_autoadd_opaque_nested_0();
   }
 
   late final _new_box_autoadd_opaque_nested_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_OpaqueNested> Function()>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_OpaqueNested> Function()>>(
           'new_box_autoadd_opaque_nested_0');
   late final _new_box_autoadd_opaque_nested_0 =
-      _new_box_autoadd_opaque_nested_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_OpaqueNested> Function()>();
+      _new_box_autoadd_opaque_nested_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_OpaqueNested> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_Sequences> new_box_autoadd_sequences_0() {
+  ffi.Pointer<P343B03A6_wire_Sequences> new_box_autoadd_sequences_0() {
     return _new_box_autoadd_sequences_0();
   }
 
   late final _new_box_autoadd_sequences_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_Sequences> Function()>>('new_box_autoadd_sequences_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_Sequences> Function()>>('new_box_autoadd_sequences_0');
   late final _new_box_autoadd_sequences_0 =
-      _new_box_autoadd_sequences_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_Sequences> Function()>();
+      _new_box_autoadd_sequences_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_Sequences> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_SumWith> new_box_autoadd_sum_with_0() {
+  ffi.Pointer<P343B03A6_wire_SumWith> new_box_autoadd_sum_with_0() {
     return _new_box_autoadd_sum_with_0();
   }
 
   late final _new_box_autoadd_sum_with_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_SumWith> Function()>>('new_box_autoadd_sum_with_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_SumWith> Function()>>('new_box_autoadd_sum_with_0');
   late final _new_box_autoadd_sum_with_0 =
-      _new_box_autoadd_sum_with_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_SumWith> Function()>();
+      _new_box_autoadd_sum_with_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_SumWith> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_TestId> new_box_autoadd_test_id_0() {
+  ffi.Pointer<P343B03A6_wire_TestId> new_box_autoadd_test_id_0() {
     return _new_box_autoadd_test_id_0();
   }
 
   late final _new_box_autoadd_test_id_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_TestId> Function()>>('new_box_autoadd_test_id_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_TestId> Function()>>('new_box_autoadd_test_id_0');
   late final _new_box_autoadd_test_id_0 =
-      _new_box_autoadd_test_id_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_TestId> Function()>();
+      _new_box_autoadd_test_id_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_TestId> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_UserId> new_box_autoadd_user_id_0() {
+  ffi.Pointer<P343B03A6_wire_UserId> new_box_autoadd_user_id_0() {
     return _new_box_autoadd_user_id_0();
   }
 
   late final _new_box_autoadd_user_id_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_UserId> Function()>>('new_box_autoadd_user_id_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_UserId> Function()>>('new_box_autoadd_user_id_0');
   late final _new_box_autoadd_user_id_0 =
-      _new_box_autoadd_user_id_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_UserId> Function()>();
+      _new_box_autoadd_user_id_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_UserId> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_Blob> new_box_blob_0() {
+  ffi.Pointer<P343B03A6_wire_Blob> new_box_blob_0() {
     return _new_box_blob_0();
   }
 
   late final _new_box_blob_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_Blob> Function()>>('new_box_blob_0');
-  late final _new_box_blob_0 = _new_box_blob_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_Blob> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_Blob> Function()>>('new_box_blob_0');
+  late final _new_box_blob_0 = _new_box_blob_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_Blob> Function()>();
 
   ffi.Pointer<ffi.Bool> new_box_bool_0(
     bool value,
@@ -4418,22 +4418,22 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Bool> Function(ffi.Bool)>>('new_box_bool_0');
   late final _new_box_bool_0 = _new_box_bool_0Ptr.asFunction<ffi.Pointer<ffi.Bool> Function(bool)>();
 
-  ffi.Pointer<P7C55DD6B_wire_Distance> new_box_distance_0() {
+  ffi.Pointer<P343B03A6_wire_Distance> new_box_distance_0() {
     return _new_box_distance_0();
   }
 
   late final _new_box_distance_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_Distance> Function()>>('new_box_distance_0');
-  late final _new_box_distance_0 = _new_box_distance_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_Distance> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_Distance> Function()>>('new_box_distance_0');
+  late final _new_box_distance_0 = _new_box_distance_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_Distance> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_ExoticOptionals> new_box_exotic_optionals_0() {
+  ffi.Pointer<P343B03A6_wire_ExoticOptionals> new_box_exotic_optionals_0() {
     return _new_box_exotic_optionals_0();
   }
 
   late final _new_box_exotic_optionals_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_ExoticOptionals> Function()>>('new_box_exotic_optionals_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_ExoticOptionals> Function()>>('new_box_exotic_optionals_0');
   late final _new_box_exotic_optionals_0 =
-      _new_box_exotic_optionals_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_ExoticOptionals> Function()>();
+      _new_box_exotic_optionals_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_ExoticOptionals> Function()>();
 
   ffi.Pointer<ffi.Double> new_box_f64_0(
     double value,
@@ -4482,30 +4482,30 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_box_i8_0Ptr = _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int8)>>('new_box_i8_0');
   late final _new_box_i8_0 = _new_box_i8_0Ptr.asFunction<ffi.Pointer<ffi.Int8> Function(int)>();
 
-  ffi.Pointer<P7C55DD6B_wire_KitchenSink> new_box_kitchen_sink_0() {
+  ffi.Pointer<P343B03A6_wire_KitchenSink> new_box_kitchen_sink_0() {
     return _new_box_kitchen_sink_0();
   }
 
   late final _new_box_kitchen_sink_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_KitchenSink> Function()>>('new_box_kitchen_sink_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_KitchenSink> Function()>>('new_box_kitchen_sink_0');
   late final _new_box_kitchen_sink_0 =
-      _new_box_kitchen_sink_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_KitchenSink> Function()>();
+      _new_box_kitchen_sink_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_KitchenSink> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_MySize> new_box_my_size_0() {
+  ffi.Pointer<P343B03A6_wire_MySize> new_box_my_size_0() {
     return _new_box_my_size_0();
   }
 
   late final _new_box_my_size_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_MySize> Function()>>('new_box_my_size_0');
-  late final _new_box_my_size_0 = _new_box_my_size_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_MySize> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_MySize> Function()>>('new_box_my_size_0');
+  late final _new_box_my_size_0 = _new_box_my_size_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_MySize> Function()>();
 
-  ffi.Pointer<P7C55DD6B_wire_Speed> new_box_speed_0() {
+  ffi.Pointer<P343B03A6_wire_Speed> new_box_speed_0() {
     return _new_box_speed_0();
   }
 
   late final _new_box_speed_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_Speed> Function()>>('new_box_speed_0');
-  late final _new_box_speed_0 = _new_box_speed_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_Speed> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_Speed> Function()>>('new_box_speed_0');
+  late final _new_box_speed_0 = _new_box_speed_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_Speed> Function()>();
 
   ffi.Pointer<ffi.Uint8> new_box_u8_0(
     int value,
@@ -4530,7 +4530,7 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int32> Function(ffi.Int32)>>('new_box_weekdays_0');
   late final _new_box_weekdays_0 = _new_box_weekdays_0Ptr.asFunction<ffi.Pointer<ffi.Int32> Function(int)>();
 
-  ffi.Pointer<P7C55DD6B_wire_float_32_list> new_float_32_list_0(
+  ffi.Pointer<P343B03A6_wire_float_32_list> new_float_32_list_0(
     int len,
   ) {
     return _new_float_32_list_0(
@@ -4539,11 +4539,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _new_float_32_list_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_float_32_list> Function(ffi.Int32)>>('new_float_32_list_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_float_32_list> Function(ffi.Int32)>>('new_float_32_list_0');
   late final _new_float_32_list_0 =
-      _new_float_32_list_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_float_32_list> Function(int)>();
+      _new_float_32_list_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_float_32_list> Function(int)>();
 
-  ffi.Pointer<P7C55DD6B_wire_float_64_list> new_float_64_list_0(
+  ffi.Pointer<P343B03A6_wire_float_64_list> new_float_64_list_0(
     int len,
   ) {
     return _new_float_64_list_0(
@@ -4552,11 +4552,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _new_float_64_list_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_float_64_list> Function(ffi.Int32)>>('new_float_64_list_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_float_64_list> Function(ffi.Int32)>>('new_float_64_list_0');
   late final _new_float_64_list_0 =
-      _new_float_64_list_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_float_64_list> Function(int)>();
+      _new_float_64_list_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_float_64_list> Function(int)>();
 
-  ffi.Pointer<P7C55DD6B_wire_int_32_list> new_int_32_list_0(
+  ffi.Pointer<P343B03A6_wire_int_32_list> new_int_32_list_0(
     int len,
   ) {
     return _new_int_32_list_0(
@@ -4565,11 +4565,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _new_int_32_list_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_int_32_list> Function(ffi.Int32)>>('new_int_32_list_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_int_32_list> Function(ffi.Int32)>>('new_int_32_list_0');
   late final _new_int_32_list_0 =
-      _new_int_32_list_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_int_32_list> Function(int)>();
+      _new_int_32_list_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_int_32_list> Function(int)>();
 
-  ffi.Pointer<P7C55DD6B_wire_int_64_list> new_int_64_list_0(
+  ffi.Pointer<P343B03A6_wire_int_64_list> new_int_64_list_0(
     int len,
   ) {
     return _new_int_64_list_0(
@@ -4578,11 +4578,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _new_int_64_list_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_int_64_list> Function(ffi.Int32)>>('new_int_64_list_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_int_64_list> Function(ffi.Int32)>>('new_int_64_list_0');
   late final _new_int_64_list_0 =
-      _new_int_64_list_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_int_64_list> Function(int)>();
+      _new_int_64_list_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_int_64_list> Function(int)>();
 
-  ffi.Pointer<P7C55DD6B_wire_int_8_list> new_int_8_list_0(
+  ffi.Pointer<P343B03A6_wire_int_8_list> new_int_8_list_0(
     int len,
   ) {
     return _new_int_8_list_0(
@@ -4591,11 +4591,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _new_int_8_list_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_int_8_list> Function(ffi.Int32)>>('new_int_8_list_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_int_8_list> Function(ffi.Int32)>>('new_int_8_list_0');
   late final _new_int_8_list_0 =
-      _new_int_8_list_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_int_8_list> Function(int)>();
+      _new_int_8_list_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_int_8_list> Function(int)>();
 
-  ffi.Pointer<P7C55DD6B_wire_list_DartOpaque> new_list_DartOpaque_0(
+  ffi.Pointer<P343B03A6_wire_list_DartOpaque> new_list_DartOpaque_0(
     int len,
   ) {
     return _new_list_DartOpaque_0(
@@ -4604,12 +4604,12 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _new_list_DartOpaque_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_list_DartOpaque> Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_list_DartOpaque> Function(ffi.Int32)>>(
           'new_list_DartOpaque_0');
   late final _new_list_DartOpaque_0 =
-      _new_list_DartOpaque_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_list_DartOpaque> Function(int)>();
+      _new_list_DartOpaque_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_list_DartOpaque> Function(int)>();
 
-  ffi.Pointer<P7C55DD6B_wire_list_HideData> new_list_HideData_0(
+  ffi.Pointer<P343B03A6_wire_list_HideData> new_list_HideData_0(
     int len,
   ) {
     return _new_list_HideData_0(
@@ -4618,11 +4618,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _new_list_HideData_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_list_HideData> Function(ffi.Int32)>>('new_list_HideData_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_list_HideData> Function(ffi.Int32)>>('new_list_HideData_0');
   late final _new_list_HideData_0 =
-      _new_list_HideData_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_list_HideData> Function(int)>();
+      _new_list_HideData_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_list_HideData> Function(int)>();
 
-  ffi.Pointer<P7C55DD6B_wire_list_application_env_var> new_list_application_env_var_0(
+  ffi.Pointer<P343B03A6_wire_list_application_env_var> new_list_application_env_var_0(
     int len,
   ) {
     return _new_list_application_env_var_0(
@@ -4631,12 +4631,12 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _new_list_application_env_var_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_list_application_env_var> Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_list_application_env_var> Function(ffi.Int32)>>(
           'new_list_application_env_var_0');
   late final _new_list_application_env_var_0 = _new_list_application_env_var_0Ptr
-      .asFunction<ffi.Pointer<P7C55DD6B_wire_list_application_env_var> Function(int)>();
+      .asFunction<ffi.Pointer<P343B03A6_wire_list_application_env_var> Function(int)>();
 
-  ffi.Pointer<P7C55DD6B_wire_list_attribute> new_list_attribute_0(
+  ffi.Pointer<P343B03A6_wire_list_attribute> new_list_attribute_0(
     int len,
   ) {
     return _new_list_attribute_0(
@@ -4645,12 +4645,12 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _new_list_attribute_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_list_attribute> Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_list_attribute> Function(ffi.Int32)>>(
           'new_list_attribute_0');
   late final _new_list_attribute_0 =
-      _new_list_attribute_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_list_attribute> Function(int)>();
+      _new_list_attribute_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_list_attribute> Function(int)>();
 
-  ffi.Pointer<P7C55DD6B_wire_list_my_size> new_list_my_size_0(
+  ffi.Pointer<P343B03A6_wire_list_my_size> new_list_my_size_0(
     int len,
   ) {
     return _new_list_my_size_0(
@@ -4659,11 +4659,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _new_list_my_size_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_list_my_size> Function(ffi.Int32)>>('new_list_my_size_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_list_my_size> Function(ffi.Int32)>>('new_list_my_size_0');
   late final _new_list_my_size_0 =
-      _new_list_my_size_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_list_my_size> Function(int)>();
+      _new_list_my_size_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_list_my_size> Function(int)>();
 
-  ffi.Pointer<P7C55DD6B_wire_list_my_tree_node> new_list_my_tree_node_0(
+  ffi.Pointer<P343B03A6_wire_list_my_tree_node> new_list_my_tree_node_0(
     int len,
   ) {
     return _new_list_my_tree_node_0(
@@ -4672,12 +4672,12 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _new_list_my_tree_node_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_list_my_tree_node> Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_list_my_tree_node> Function(ffi.Int32)>>(
           'new_list_my_tree_node_0');
   late final _new_list_my_tree_node_0 =
-      _new_list_my_tree_node_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_list_my_tree_node> Function(int)>();
+      _new_list_my_tree_node_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_list_my_tree_node> Function(int)>();
 
-  ffi.Pointer<P7C55DD6B_wire_list_opt_box_autoadd_attribute> new_list_opt_box_autoadd_attribute_0(
+  ffi.Pointer<P343B03A6_wire_list_opt_box_autoadd_attribute> new_list_opt_box_autoadd_attribute_0(
     int len,
   ) {
     return _new_list_opt_box_autoadd_attribute_0(
@@ -4686,12 +4686,12 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _new_list_opt_box_autoadd_attribute_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_list_opt_box_autoadd_attribute> Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_list_opt_box_autoadd_attribute> Function(ffi.Int32)>>(
           'new_list_opt_box_autoadd_attribute_0');
   late final _new_list_opt_box_autoadd_attribute_0 = _new_list_opt_box_autoadd_attribute_0Ptr
-      .asFunction<ffi.Pointer<P7C55DD6B_wire_list_opt_box_autoadd_attribute> Function(int)>();
+      .asFunction<ffi.Pointer<P343B03A6_wire_list_opt_box_autoadd_attribute> Function(int)>();
 
-  ffi.Pointer<P7C55DD6B_wire_list_test_id> new_list_test_id_0(
+  ffi.Pointer<P343B03A6_wire_list_test_id> new_list_test_id_0(
     int len,
   ) {
     return _new_list_test_id_0(
@@ -4700,11 +4700,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _new_list_test_id_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_list_test_id> Function(ffi.Int32)>>('new_list_test_id_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_list_test_id> Function(ffi.Int32)>>('new_list_test_id_0');
   late final _new_list_test_id_0 =
-      _new_list_test_id_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_list_test_id> Function(int)>();
+      _new_list_test_id_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_list_test_id> Function(int)>();
 
-  ffi.Pointer<P7C55DD6B_wire_list_weekdays> new_list_weekdays_0(
+  ffi.Pointer<P343B03A6_wire_list_weekdays> new_list_weekdays_0(
     int len,
   ) {
     return _new_list_weekdays_0(
@@ -4713,11 +4713,11 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _new_list_weekdays_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_list_weekdays> Function(ffi.Int32)>>('new_list_weekdays_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_list_weekdays> Function(ffi.Int32)>>('new_list_weekdays_0');
   late final _new_list_weekdays_0 =
-      _new_list_weekdays_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_list_weekdays> Function(int)>();
+      _new_list_weekdays_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_list_weekdays> Function(int)>();
 
-  ffi.Pointer<P7C55DD6B_wire_uint_8_list> new_uint_8_list_0(
+  ffi.Pointer<P343B03A6_wire_uint_8_list> new_uint_8_list_0(
     int len,
   ) {
     return _new_uint_8_list_0(
@@ -4726,9 +4726,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _new_uint_8_list_0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<P7C55DD6B_wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list_0');
+      _lookup<ffi.NativeFunction<ffi.Pointer<P343B03A6_wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list_0');
   late final _new_uint_8_list_0 =
-      _new_uint_8_list_0Ptr.asFunction<ffi.Pointer<P7C55DD6B_wire_uint_8_list> Function(int)>();
+      _new_uint_8_list_0Ptr.asFunction<ffi.Pointer<P343B03A6_wire_uint_8_list> Function(int)>();
 
   void drop_opaque_BoxDartDebug(
     ffi.Pointer<ffi.Void> ptr,
@@ -5149,14 +5149,14 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
 
 class _Dart_Handle extends ffi.Opaque {}
 
-class P7C55DD6B_wire_uint_8_list extends ffi.Struct {
+class P343B03A6_wire_uint_8_list extends ffi.Struct {
   external ffi.Pointer<ffi.Uint8> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class P7C55DD6B_wire_MySize extends ffi.Struct {
+class P343B03A6_wire_MySize extends ffi.Struct {
   @ffi.Int32()
   external int width;
 
@@ -5164,100 +5164,100 @@ class P7C55DD6B_wire_MySize extends ffi.Struct {
   external int height;
 }
 
-class P7C55DD6B_wire_NewTypeInt extends ffi.Struct {
+class P343B03A6_wire_NewTypeInt extends ffi.Struct {
   @ffi.Int64()
   external int field0;
 }
 
-class P7C55DD6B_wire_list_my_size extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_MySize> ptr;
+class P343B03A6_wire_list_my_size extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_MySize> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class P7C55DD6B_wire_StringList extends ffi.Struct {
-  external ffi.Pointer<ffi.Pointer<P7C55DD6B_wire_uint_8_list>> ptr;
+class P343B03A6_wire_StringList extends ffi.Struct {
+  external ffi.Pointer<ffi.Pointer<P343B03A6_wire_uint_8_list>> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class P7C55DD6B_wire_list_my_tree_node extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_MyTreeNode> ptr;
+class P343B03A6_wire_list_my_tree_node extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_MyTreeNode> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class P7C55DD6B_wire_MyTreeNode extends ffi.Struct {
+class P343B03A6_wire_MyTreeNode extends ffi.Struct {
   @ffi.Int32()
   external int value_i32;
 
-  external ffi.Pointer<P7C55DD6B_wire_uint_8_list> value_vec_u8;
+  external ffi.Pointer<P343B03A6_wire_uint_8_list> value_vec_u8;
 
   @ffi.Bool()
   external bool value_boolean;
 
-  external ffi.Pointer<P7C55DD6B_wire_list_my_tree_node> children;
+  external ffi.Pointer<P343B03A6_wire_list_my_tree_node> children;
 }
 
-class P7C55DD6B_wire_MyNestedStruct extends ffi.Struct {
-  external P7C55DD6B_wire_MyTreeNode tree_node;
+class P343B03A6_wire_MyNestedStruct extends ffi.Struct {
+  external P343B03A6_wire_MyTreeNode tree_node;
 
   @ffi.Int32()
   external int weekday;
 }
 
-class P7C55DD6B_wire_int_8_list extends ffi.Struct {
+class P343B03A6_wire_int_8_list extends ffi.Struct {
   external ffi.Pointer<ffi.Int8> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class P7C55DD6B_wire_int_32_list extends ffi.Struct {
+class P343B03A6_wire_int_32_list extends ffi.Struct {
   external ffi.Pointer<ffi.Int32> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class P7C55DD6B_wire_float_32_list extends ffi.Struct {
+class P343B03A6_wire_float_32_list extends ffi.Struct {
   external ffi.Pointer<ffi.Float> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class P7C55DD6B_wire_float_64_list extends ffi.Struct {
+class P343B03A6_wire_float_64_list extends ffi.Struct {
   external ffi.Pointer<ffi.Double> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class P7C55DD6B_wire_Attribute extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_uint_8_list> key;
+class P343B03A6_wire_Attribute extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_uint_8_list> key;
 
-  external ffi.Pointer<P7C55DD6B_wire_uint_8_list> value;
+  external ffi.Pointer<P343B03A6_wire_uint_8_list> value;
 }
 
-class P7C55DD6B_wire_list_attribute extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_Attribute> ptr;
+class P343B03A6_wire_list_attribute extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_Attribute> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class P7C55DD6B_wire_list_opt_box_autoadd_attribute extends ffi.Struct {
-  external ffi.Pointer<ffi.Pointer<P7C55DD6B_wire_Attribute>> ptr;
+class P343B03A6_wire_list_opt_box_autoadd_attribute extends ffi.Struct {
+  external ffi.Pointer<ffi.Pointer<P343B03A6_wire_Attribute>> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class P7C55DD6B_wire_ExoticOptionals extends ffi.Struct {
+class P343B03A6_wire_ExoticOptionals extends ffi.Struct {
   external ffi.Pointer<ffi.Int32> int32;
 
   external ffi.Pointer<ffi.Int64> int64;
@@ -5266,42 +5266,42 @@ class P7C55DD6B_wire_ExoticOptionals extends ffi.Struct {
 
   external ffi.Pointer<ffi.Bool> boolean;
 
-  external ffi.Pointer<P7C55DD6B_wire_uint_8_list> zerocopy;
+  external ffi.Pointer<P343B03A6_wire_uint_8_list> zerocopy;
 
-  external ffi.Pointer<P7C55DD6B_wire_int_8_list> int8list;
+  external ffi.Pointer<P343B03A6_wire_int_8_list> int8list;
 
-  external ffi.Pointer<P7C55DD6B_wire_uint_8_list> uint8list;
+  external ffi.Pointer<P343B03A6_wire_uint_8_list> uint8list;
 
-  external ffi.Pointer<P7C55DD6B_wire_int_32_list> int32list;
+  external ffi.Pointer<P343B03A6_wire_int_32_list> int32list;
 
-  external ffi.Pointer<P7C55DD6B_wire_float_32_list> float32list;
+  external ffi.Pointer<P343B03A6_wire_float_32_list> float32list;
 
-  external ffi.Pointer<P7C55DD6B_wire_float_64_list> float64list;
+  external ffi.Pointer<P343B03A6_wire_float_64_list> float64list;
 
-  external ffi.Pointer<P7C55DD6B_wire_list_attribute> attributes;
+  external ffi.Pointer<P343B03A6_wire_list_attribute> attributes;
 
-  external ffi.Pointer<P7C55DD6B_wire_list_opt_box_autoadd_attribute> attributes_nullable;
+  external ffi.Pointer<P343B03A6_wire_list_opt_box_autoadd_attribute> attributes_nullable;
 
-  external ffi.Pointer<P7C55DD6B_wire_list_opt_box_autoadd_attribute> nullable_attributes;
+  external ffi.Pointer<P343B03A6_wire_list_opt_box_autoadd_attribute> nullable_attributes;
 
-  external ffi.Pointer<P7C55DD6B_wire_NewTypeInt> newtypeint;
+  external ffi.Pointer<P343B03A6_wire_NewTypeInt> newtypeint;
 }
 
-class P7C55DD6B_wire_Note extends ffi.Struct {
+class P343B03A6_wire_Note extends ffi.Struct {
   external ffi.Pointer<ffi.Int32> day;
 
-  external ffi.Pointer<P7C55DD6B_wire_uint_8_list> body;
+  external ffi.Pointer<P343B03A6_wire_uint_8_list> body;
 }
 
-class P7C55DD6B_wire_Customized extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_uint_8_list> final_field;
+class P343B03A6_wire_Customized extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_uint_8_list> final_field;
 
-  external ffi.Pointer<P7C55DD6B_wire_uint_8_list> non_final_field;
+  external ffi.Pointer<P343B03A6_wire_uint_8_list> non_final_field;
 }
 
-class P7C55DD6B_wire_KitchenSink_Empty extends ffi.Opaque {}
+class P343B03A6_wire_KitchenSink_Empty extends ffi.Opaque {}
 
-class P7C55DD6B_wire_KitchenSink_Primitives extends ffi.Struct {
+class P343B03A6_wire_KitchenSink_Primitives extends ffi.Struct {
   @ffi.Int32()
   external int int32;
 
@@ -5312,14 +5312,14 @@ class P7C55DD6B_wire_KitchenSink_Primitives extends ffi.Struct {
   external bool boolean;
 }
 
-class P7C55DD6B_wire_KitchenSink_Nested extends ffi.Struct {
+class P343B03A6_wire_KitchenSink_Nested extends ffi.Struct {
   @ffi.Int32()
   external int field0;
 
-  external ffi.Pointer<P7C55DD6B_wire_KitchenSink> field1;
+  external ffi.Pointer<P343B03A6_wire_KitchenSink> field1;
 }
 
-class P7C55DD6B_wire_KitchenSink extends ffi.Struct {
+class P343B03A6_wire_KitchenSink extends ffi.Struct {
   @ffi.Int32()
   external int tag;
 
@@ -5327,152 +5327,152 @@ class P7C55DD6B_wire_KitchenSink extends ffi.Struct {
 }
 
 class KitchenSinkKind extends ffi.Union {
-  external ffi.Pointer<P7C55DD6B_wire_KitchenSink_Empty> Empty;
+  external ffi.Pointer<P343B03A6_wire_KitchenSink_Empty> Empty;
 
-  external ffi.Pointer<P7C55DD6B_wire_KitchenSink_Primitives> Primitives;
+  external ffi.Pointer<P343B03A6_wire_KitchenSink_Primitives> Primitives;
 
-  external ffi.Pointer<P7C55DD6B_wire_KitchenSink_Nested> Nested;
+  external ffi.Pointer<P343B03A6_wire_KitchenSink_Nested> Nested;
 
-  external ffi.Pointer<P7C55DD6B_wire_KitchenSink_Optional> Optional;
+  external ffi.Pointer<P343B03A6_wire_KitchenSink_Optional> Optional;
 
-  external ffi.Pointer<P7C55DD6B_wire_KitchenSink_Buffer> Buffer;
+  external ffi.Pointer<P343B03A6_wire_KitchenSink_Buffer> Buffer;
 
-  external ffi.Pointer<P7C55DD6B_wire_KitchenSink_Enums> Enums;
+  external ffi.Pointer<P343B03A6_wire_KitchenSink_Enums> Enums;
 }
 
-class P7C55DD6B_wire_KitchenSink_Optional extends ffi.Struct {
+class P343B03A6_wire_KitchenSink_Optional extends ffi.Struct {
   external ffi.Pointer<ffi.Int32> field0;
 
   external ffi.Pointer<ffi.Int32> field1;
 }
 
-class P7C55DD6B_wire_KitchenSink_Buffer extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_uint_8_list> field0;
+class P343B03A6_wire_KitchenSink_Buffer extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_uint_8_list> field0;
 }
 
-class P7C55DD6B_wire_KitchenSink_Enums extends ffi.Struct {
+class P343B03A6_wire_KitchenSink_Enums extends ffi.Struct {
   @ffi.Int32()
   external int field0;
 }
 
-class P7C55DD6B_wire_MyStruct extends ffi.Struct {
+class P343B03A6_wire_MyStruct extends ffi.Struct {
   @ffi.Bool()
   external bool content;
 }
 
-class P7C55DD6B_wire_ApplicationEnvVar extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_uint_8_list> field0;
+class P343B03A6_wire_ApplicationEnvVar extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_uint_8_list> field0;
 
   @ffi.Bool()
   external bool field1;
 }
 
-class P7C55DD6B_wire_list_application_env_var extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_ApplicationEnvVar> ptr;
+class P343B03A6_wire_list_application_env_var extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_ApplicationEnvVar> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class P7C55DD6B_wire_ApplicationEnv extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_list_application_env_var> vars;
+class P343B03A6_wire_ApplicationEnv extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_list_application_env_var> vars;
 }
 
-class P7C55DD6B_wire_ApplicationSettings extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_uint_8_list> name;
+class P343B03A6_wire_ApplicationSettings extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_uint_8_list> name;
 
-  external ffi.Pointer<P7C55DD6B_wire_uint_8_list> version;
+  external ffi.Pointer<P343B03A6_wire_uint_8_list> version;
 
   @ffi.Int32()
   external int mode;
 
-  external ffi.Pointer<P7C55DD6B_wire_ApplicationEnv> env;
+  external ffi.Pointer<P343B03A6_wire_ApplicationEnv> env;
 
-  external ffi.Pointer<P7C55DD6B_wire_ApplicationEnv> env_optional;
+  external ffi.Pointer<P343B03A6_wire_ApplicationEnv> env_optional;
 }
 
-class P7C55DD6B_wire_Numbers extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_int_32_list> field0;
+class P343B03A6_wire_Numbers extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_int_32_list> field0;
 }
 
-class P7C55DD6B_wire_Sequences extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_int_32_list> field0;
+class P343B03A6_wire_Sequences extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_int_32_list> field0;
 }
 
-class P7C55DD6B_wire_UserId extends ffi.Struct {
+class P343B03A6_wire_UserId extends ffi.Struct {
   @ffi.Uint32()
   external int value;
 }
 
-class P7C55DD6B_wire_Speed_Unknown extends ffi.Opaque {}
+class P343B03A6_wire_Speed_Unknown extends ffi.Opaque {}
 
-class P7C55DD6B_wire_Speed_GPS extends ffi.Struct {
+class P343B03A6_wire_Speed_GPS extends ffi.Struct {
   @ffi.Double()
   external double field0;
 }
 
 class SpeedKind extends ffi.Union {
-  external ffi.Pointer<P7C55DD6B_wire_Speed_Unknown> Unknown;
+  external ffi.Pointer<P343B03A6_wire_Speed_Unknown> Unknown;
 
-  external ffi.Pointer<P7C55DD6B_wire_Speed_GPS> GPS;
+  external ffi.Pointer<P343B03A6_wire_Speed_GPS> GPS;
 }
 
-class P7C55DD6B_wire_Speed extends ffi.Struct {
+class P343B03A6_wire_Speed extends ffi.Struct {
   @ffi.Int32()
   external int tag;
 
   external ffi.Pointer<SpeedKind> kind;
 }
 
-class P7C55DD6B_wire_Measure_Speed extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_Speed> field0;
+class P343B03A6_wire_Measure_Speed extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_Speed> field0;
 }
 
-class P7C55DD6B_wire_Distance_Unknown extends ffi.Opaque {}
+class P343B03A6_wire_Distance_Unknown extends ffi.Opaque {}
 
-class P7C55DD6B_wire_Distance_Map extends ffi.Struct {
+class P343B03A6_wire_Distance_Map extends ffi.Struct {
   @ffi.Double()
   external double field0;
 }
 
 class DistanceKind extends ffi.Union {
-  external ffi.Pointer<P7C55DD6B_wire_Distance_Unknown> Unknown;
+  external ffi.Pointer<P343B03A6_wire_Distance_Unknown> Unknown;
 
-  external ffi.Pointer<P7C55DD6B_wire_Distance_Map> Map;
+  external ffi.Pointer<P343B03A6_wire_Distance_Map> Map;
 }
 
-class P7C55DD6B_wire_Distance extends ffi.Struct {
+class P343B03A6_wire_Distance extends ffi.Struct {
   @ffi.Int32()
   external int tag;
 
   external ffi.Pointer<DistanceKind> kind;
 }
 
-class P7C55DD6B_wire_Measure_Distance extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_Distance> field0;
+class P343B03A6_wire_Measure_Distance extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_Distance> field0;
 }
 
 class MeasureKind extends ffi.Union {
-  external ffi.Pointer<P7C55DD6B_wire_Measure_Speed> Speed;
+  external ffi.Pointer<P343B03A6_wire_Measure_Speed> Speed;
 
-  external ffi.Pointer<P7C55DD6B_wire_Measure_Distance> Distance;
+  external ffi.Pointer<P343B03A6_wire_Measure_Distance> Distance;
 }
 
-class P7C55DD6B_wire_Measure extends ffi.Struct {
+class P343B03A6_wire_Measure extends ffi.Struct {
   @ffi.Int32()
   external int tag;
 
   external ffi.Pointer<MeasureKind> kind;
 }
 
-class P7C55DD6B_wire_int_64_list extends ffi.Struct {
+class P343B03A6_wire_int_64_list extends ffi.Struct {
   external ffi.Pointer<ffi.Int64> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class P7C55DD6B_wire_FeatureChrono extends ffi.Struct {
+class P343B03A6_wire_FeatureChrono extends ffi.Struct {
   @ffi.Int64()
   external int utc;
 
@@ -5486,36 +5486,36 @@ class P7C55DD6B_wire_FeatureChrono extends ffi.Struct {
   external int naive;
 }
 
-class P7C55DD6B_wire_FeatureUuid extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_uint_8_list> one;
+class P343B03A6_wire_FeatureUuid extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_uint_8_list> one;
 
-  external ffi.Pointer<P7C55DD6B_wire_uint_8_list> many;
+  external ffi.Pointer<P343B03A6_wire_uint_8_list> many;
 }
 
-class P7C55DD6B_wire_MessageId extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_uint_8_list> field0;
+class P343B03A6_wire_MessageId extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_uint_8_list> field0;
 }
 
-class P7C55DD6B_wire_Blob extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_uint_8_list> field0;
+class P343B03A6_wire_Blob extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_uint_8_list> field0;
 }
 
-class P7C55DD6B_wire_FeedId extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_uint_8_list> field0;
+class P343B03A6_wire_FeedId extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_uint_8_list> field0;
 }
 
-class P7C55DD6B_wire_TestId extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_int_32_list> field0;
+class P343B03A6_wire_TestId extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_int_32_list> field0;
 }
 
-class P7C55DD6B_wire_list_test_id extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_TestId> ptr;
+class P343B03A6_wire_list_test_id extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_TestId> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class P7C55DD6B_wire_DartOpaque extends ffi.Struct {
+class P343B03A6_wire_DartOpaque extends ffi.Struct {
   @ffi.Int64()
   external int port;
 
@@ -5523,191 +5523,191 @@ class P7C55DD6B_wire_DartOpaque extends ffi.Struct {
   external int handle;
 }
 
-class P7C55DD6B_wire_list_DartOpaque extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_DartOpaque> ptr;
+class P343B03A6_wire_list_DartOpaque extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_DartOpaque> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class P7C55DD6B_wire_HideData extends ffi.Struct {
+class P343B03A6_wire_HideData extends ffi.Struct {
   external ffi.Pointer<ffi.Void> ptr;
 }
 
-class P7C55DD6B_wire_EnumOpaque_Struct extends ffi.Struct {
-  external P7C55DD6B_wire_HideData field0;
+class P343B03A6_wire_EnumOpaque_Struct extends ffi.Struct {
+  external P343B03A6_wire_HideData field0;
 }
 
-class P7C55DD6B_wire_I32 extends ffi.Struct {
+class P343B03A6_wire_I32 extends ffi.Struct {
   external ffi.Pointer<ffi.Void> ptr;
 }
 
-class P7C55DD6B_wire_EnumOpaque_Primitive extends ffi.Struct {
-  external P7C55DD6B_wire_I32 field0;
+class P343B03A6_wire_EnumOpaque_Primitive extends ffi.Struct {
+  external P343B03A6_wire_I32 field0;
 }
 
-class P7C55DD6B_wire_BoxDartDebug extends ffi.Struct {
+class P343B03A6_wire_BoxDartDebug extends ffi.Struct {
   external ffi.Pointer<ffi.Void> ptr;
 }
 
-class P7C55DD6B_wire_EnumOpaque_TraitObj extends ffi.Struct {
-  external P7C55DD6B_wire_BoxDartDebug field0;
+class P343B03A6_wire_EnumOpaque_TraitObj extends ffi.Struct {
+  external P343B03A6_wire_BoxDartDebug field0;
 }
 
-class P7C55DD6B_wire_MutexHideData extends ffi.Struct {
+class P343B03A6_wire_MutexHideData extends ffi.Struct {
   external ffi.Pointer<ffi.Void> ptr;
 }
 
-class P7C55DD6B_wire_EnumOpaque_Mutex extends ffi.Struct {
-  external P7C55DD6B_wire_MutexHideData field0;
+class P343B03A6_wire_EnumOpaque_Mutex extends ffi.Struct {
+  external P343B03A6_wire_MutexHideData field0;
 }
 
-class P7C55DD6B_wire_RwLockHideData extends ffi.Struct {
+class P343B03A6_wire_RwLockHideData extends ffi.Struct {
   external ffi.Pointer<ffi.Void> ptr;
 }
 
-class P7C55DD6B_wire_EnumOpaque_RwLock extends ffi.Struct {
-  external P7C55DD6B_wire_RwLockHideData field0;
+class P343B03A6_wire_EnumOpaque_RwLock extends ffi.Struct {
+  external P343B03A6_wire_RwLockHideData field0;
 }
 
 class EnumOpaqueKind extends ffi.Union {
-  external ffi.Pointer<P7C55DD6B_wire_EnumOpaque_Struct> Struct;
+  external ffi.Pointer<P343B03A6_wire_EnumOpaque_Struct> Struct;
 
-  external ffi.Pointer<P7C55DD6B_wire_EnumOpaque_Primitive> Primitive;
+  external ffi.Pointer<P343B03A6_wire_EnumOpaque_Primitive> Primitive;
 
-  external ffi.Pointer<P7C55DD6B_wire_EnumOpaque_TraitObj> TraitObj;
+  external ffi.Pointer<P343B03A6_wire_EnumOpaque_TraitObj> TraitObj;
 
-  external ffi.Pointer<P7C55DD6B_wire_EnumOpaque_Mutex> Mutex;
+  external ffi.Pointer<P343B03A6_wire_EnumOpaque_Mutex> Mutex;
 
-  external ffi.Pointer<P7C55DD6B_wire_EnumOpaque_RwLock> RwLock;
+  external ffi.Pointer<P343B03A6_wire_EnumOpaque_RwLock> RwLock;
 }
 
-class P7C55DD6B_wire_EnumOpaque extends ffi.Struct {
+class P343B03A6_wire_EnumOpaque extends ffi.Struct {
   @ffi.Int32()
   external int tag;
 
   external ffi.Pointer<EnumOpaqueKind> kind;
 }
 
-class P7C55DD6B_wire_NonCloneData extends ffi.Struct {
+class P343B03A6_wire_NonCloneData extends ffi.Struct {
   external ffi.Pointer<ffi.Void> ptr;
 }
 
-class P7C55DD6B_wire_NonSendHideData extends ffi.Struct {
+class P343B03A6_wire_NonSendHideData extends ffi.Struct {
   external ffi.Pointer<ffi.Void> ptr;
 }
 
-class P7C55DD6B_wire_list_HideData extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_HideData> ptr;
+class P343B03A6_wire_list_HideData extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_HideData> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class P7C55DD6B_wire_OpaqueNested extends ffi.Struct {
-  external P7C55DD6B_wire_HideData first;
+class P343B03A6_wire_OpaqueNested extends ffi.Struct {
+  external P343B03A6_wire_HideData first;
 
-  external P7C55DD6B_wire_HideData second;
+  external P343B03A6_wire_HideData second;
 }
 
-class P7C55DD6B_wire_DartOpaqueNested extends ffi.Struct {
-  external P7C55DD6B_wire_DartOpaque first;
+class P343B03A6_wire_DartOpaqueNested extends ffi.Struct {
+  external P343B03A6_wire_DartOpaque first;
 
-  external P7C55DD6B_wire_DartOpaque second;
+  external P343B03A6_wire_DartOpaque second;
 }
 
-class P7C55DD6B_wire_EnumDartOpaque_Primitive extends ffi.Struct {
+class P343B03A6_wire_EnumDartOpaque_Primitive extends ffi.Struct {
   @ffi.Int32()
   external int field0;
 }
 
-class P7C55DD6B_wire_EnumDartOpaque_Opaque extends ffi.Struct {
-  external P7C55DD6B_wire_DartOpaque field0;
+class P343B03A6_wire_EnumDartOpaque_Opaque extends ffi.Struct {
+  external P343B03A6_wire_DartOpaque field0;
 }
 
 class EnumDartOpaqueKind extends ffi.Union {
-  external ffi.Pointer<P7C55DD6B_wire_EnumDartOpaque_Primitive> Primitive;
+  external ffi.Pointer<P343B03A6_wire_EnumDartOpaque_Primitive> Primitive;
 
-  external ffi.Pointer<P7C55DD6B_wire_EnumDartOpaque_Opaque> Opaque;
+  external ffi.Pointer<P343B03A6_wire_EnumDartOpaque_Opaque> Opaque;
 }
 
-class P7C55DD6B_wire_EnumDartOpaque extends ffi.Struct {
+class P343B03A6_wire_EnumDartOpaque extends ffi.Struct {
   @ffi.Int32()
   external int tag;
 
   external ffi.Pointer<EnumDartOpaqueKind> kind;
 }
 
-class P7C55DD6B_wire_Empty extends ffi.Opaque {}
+class P343B03A6_wire_Empty extends ffi.Opaque {}
 
-class P7C55DD6B_wire_list_weekdays extends ffi.Struct {
+class P343B03A6_wire_list_weekdays extends ffi.Struct {
   external ffi.Pointer<ffi.Int32> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class P7C55DD6B_wire_A extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_uint_8_list> a;
+class P343B03A6_wire_A extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_uint_8_list> a;
 }
 
-class P7C55DD6B_wire_Abc_A extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_A> field0;
+class P343B03A6_wire_Abc_A extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_A> field0;
 }
 
-class P7C55DD6B_wire_B extends ffi.Struct {
+class P343B03A6_wire_B extends ffi.Struct {
   @ffi.Int32()
   external int b;
 }
 
-class P7C55DD6B_wire_Abc_B extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_B> field0;
+class P343B03A6_wire_Abc_B extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_B> field0;
 }
 
-class P7C55DD6B_wire_C extends ffi.Struct {
+class P343B03A6_wire_C extends ffi.Struct {
   @ffi.Bool()
   external bool c;
 }
 
-class P7C55DD6B_wire_Abc_C extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_C> field0;
+class P343B03A6_wire_Abc_C extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_C> field0;
 }
 
-class P7C55DD6B_wire_Abc_JustInt extends ffi.Struct {
+class P343B03A6_wire_Abc_JustInt extends ffi.Struct {
   @ffi.Int32()
   external int field0;
 }
 
 class AbcKind extends ffi.Union {
-  external ffi.Pointer<P7C55DD6B_wire_Abc_A> A;
+  external ffi.Pointer<P343B03A6_wire_Abc_A> A;
 
-  external ffi.Pointer<P7C55DD6B_wire_Abc_B> B;
+  external ffi.Pointer<P343B03A6_wire_Abc_B> B;
 
-  external ffi.Pointer<P7C55DD6B_wire_Abc_C> C;
+  external ffi.Pointer<P343B03A6_wire_Abc_C> C;
 
-  external ffi.Pointer<P7C55DD6B_wire_Abc_JustInt> JustInt;
+  external ffi.Pointer<P343B03A6_wire_Abc_JustInt> JustInt;
 }
 
-class P7C55DD6B_wire_Abc extends ffi.Struct {
+class P343B03A6_wire_Abc extends ffi.Struct {
   @ffi.Int32()
   external int tag;
 
   external ffi.Pointer<AbcKind> kind;
 }
 
-class P7C55DD6B_wire_Event extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_uint_8_list> address;
+class P343B03A6_wire_Event extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_uint_8_list> address;
 
-  external ffi.Pointer<P7C55DD6B_wire_uint_8_list> payload;
+  external ffi.Pointer<P343B03A6_wire_uint_8_list> payload;
 }
 
-class P7C55DD6B_wire_SumWith extends ffi.Struct {
+class P343B03A6_wire_SumWith extends ffi.Struct {
   @ffi.Uint32()
   external int x;
 }
 
-class P7C55DD6B_wire_ConcatenateWith extends ffi.Struct {
-  external ffi.Pointer<P7C55DD6B_wire_uint_8_list> a;
+class P343B03A6_wire_ConcatenateWith extends ffi.Struct {
+  external ffi.Pointer<P343B03A6_wire_uint_8_list> a;
 }
 
 typedef DartPostCObjectFnType

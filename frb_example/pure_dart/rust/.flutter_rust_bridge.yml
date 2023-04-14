@@ -7,5 +7,5 @@ dart_enums_style: true
 c_output: [c_output_path/c_output.h]
 extra_c_output_path:
   - c_output_path_extra/
-make_c_output_unique: true
+symbol_prefix: "P343B03A6"
 # dump: []

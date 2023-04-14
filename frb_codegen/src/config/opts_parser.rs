@@ -1,7 +1,7 @@
 use crate::config::opts::Opts;
 use crate::config::raw_opts::RawOpts;
 use crate::config::refine_c_output::get_refined_c_output;
-use crate::utils::misc::{find_all_duplicates, BlockIndex, create_unique_prefix};
+use crate::utils::misc::{create_unique_prefix, find_all_duplicates, BlockIndex};
 use anyhow::*;
 use clap::CommandFactory;
 use convert_case::{Case, Casing};
