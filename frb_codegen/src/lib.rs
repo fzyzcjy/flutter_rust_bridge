@@ -75,5 +75,12 @@ pub fn frb_codegen_multi(
     generate_dart_code(config, all_configs, &ir_file, generated_rust, all_symbols)?;
 
     info!("Success!");
+
+    if !config.symbol_prefix.is_empty() {
+        let mut prefix_without_underscore = config.symbol_prefix.clone();
+        prefix_without_underscore.pop();
+        info!("Generated code with prefix: \"{prefix_without_underscore}\"")
+    }
+
     Ok(())
 }

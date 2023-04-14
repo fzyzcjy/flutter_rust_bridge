@@ -8,8 +8,9 @@ pub fn generate_dummy(
     all_configs: &[Opts],
     func_names: &[String],
     c_path_index: usize,
-    prefix: &str,
 ) -> String {
+    let prefix = &config.symbol_prefix;
+
     if all_configs.len() > 1 {
         let basic_dummy_func = get_dummy_func(&config.class_name, func_names, prefix);
         if config.block_index == BlockIndex(0) {

@@ -1,6 +1,6 @@
 use crate::ir::IrFile;
 use crate::parser;
-use crate::utils::misc::{get_unique_id, BlockIndex};
+use crate::utils::misc::BlockIndex;
 use anyhow::{Context, Result};
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -27,7 +27,7 @@ pub struct Opts {
     pub skip_deps_check: bool,
     pub wasm_enabled: bool,
     pub inline_rust: bool,
-    pub make_c_output_unique: bool,
+    pub symbol_prefix: String,
 }
 
 impl Opts {
@@ -129,16 +129,6 @@ impl Opts {
             io_path: self.dart_io_output_path(),
             wasm_path: self.dart_wasm_output_path(),
         }
-    }
-
-    pub fn get_unique_id(&self) -> String {
-        if !self.make_c_output_unique {
-            return "".to_string();
-        }
-
-        get_unique_id(&self.c_output_path[0]).unwrap();
-        //TODO: Persist this somehow.
-        "P7C55DD6B_".to_string()
     }
 }
 

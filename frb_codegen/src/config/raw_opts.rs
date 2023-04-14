@@ -105,11 +105,14 @@ pub struct RawOpts {
     #[arg(long, value_enum, num_args(0..))]
     pub dump: Option<Vec<Dump>>,
 
-    /// Make the C output files have unique symbols.
+    /// Appends the prefix to the generated symbols.
     /// This prevents the generated symbols from conflicting with
     /// other projects.
+    /// 
+    /// Pass in an empty string if you want to generate
+    /// a unique prefix.
     #[arg(long)]
-    pub make_c_output_unique: bool,
+    pub symbol_prefix: Option<String>,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Copy, Deserialize, ValueEnum, enum_iterator::Sequence)]

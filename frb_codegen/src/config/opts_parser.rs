@@ -1,7 +1,7 @@
 use crate::config::opts::Opts;
 use crate::config::raw_opts::RawOpts;
 use crate::config::refine_c_output::get_refined_c_output;
-use crate::utils::misc::{find_all_duplicates, BlockIndex};
+use crate::utils::misc::{find_all_duplicates, BlockIndex, create_unique_prefix};
 use anyhow::*;
 use clap::CommandFactory;
 use convert_case::{Case, Casing};
@@ -107,8 +107,6 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
     let refined_c_outputs =
         get_refined_c_output(&raw.c_output, &raw.extra_c_output_path, &rust_input_paths);
 
-    let make_c_output_unique = raw.make_c_output_unique;
-
     // dart root(s)
     let dart_roots: Vec<_> = match raw.dart_root {
         Some(dart_roots) => dart_roots
@@ -135,6 +133,16 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
     let wasm = raw.wasm;
     let inline_rust = raw.inline_rust;
 
+    let mut symbol_prefix = raw.symbol_prefix;
+    // Generate a unique prefix if the given prefix is empty.
+    if let Some(mut prefix) = symbol_prefix {
+        if prefix.is_empty() {
+            prefix = create_unique_prefix();
+        }
+
+        symbol_prefix = Some(format!("{prefix}_"));
+    }
+
     (0..rust_input_paths.len())
         .map(|i| {
             Opts {
@@ -142,7 +150,6 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
                 dart_output_path: dart_output_paths[i].clone(),
                 dart_decl_output_path: dart_decl_output_path.clone(),
                 c_output_path: refined_c_outputs[i].clone(),
-                make_c_output_unique,
                 rust_crate_dir: rust_crate_dirs[i].clone(),
                 rust_output_path: rust_output_paths[i].clone(),
                 class_name: class_names[i].clone(),
@@ -158,6 +165,7 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
                 skip_deps_check,
                 wasm_enabled: wasm,
                 inline_rust,
+                symbol_prefix: symbol_prefix.clone().unwrap_or_default(),
             }
         })
         .collect()
@@ -254,7 +262,7 @@ fn anchor_config(config: RawOpts, config_path: &str) -> RawOpts {
         dart_decl_output: config.dart_decl_output.map(anchor),
         c_output: config.c_output.map(anchor_many),
         extra_c_output_path: config.extra_c_output_path.map(anchor_many),
-        make_c_output_unique: config.make_c_output_unique,
+        symbol_prefix: config.symbol_prefix,
         rust_crate_dir: config.rust_crate_dir.map(anchor_many),
         dart_root: config.dart_root.map(anchor_many),
         config_file: config.config_file,

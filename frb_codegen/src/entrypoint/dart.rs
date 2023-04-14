@@ -61,13 +61,12 @@ pub(crate) fn generate_dart_code(
     .concat();
 
     let regex = Regex::new(r"wire_[\d\w]+").unwrap();
-    let prefix = &config.get_unique_id();
-    if config.make_c_output_unique {
+    if !config.symbol_prefix.is_empty() {
         effective_func_names = effective_func_names
             .iter()
             .map(|e| {
                 if regex.is_match(e) {
-                    return format!("{prefix}{e}");
+                    return format!("{}{e}", config.symbol_prefix);
                 }
 
                 e.to_string()
@@ -77,7 +76,7 @@ pub(crate) fn generate_dart_code(
 
     for (i, each_path) in config.c_output_path.iter().enumerate() {
         let c_dummy_code =
-            generator::c::generate_dummy(config, all_configs, &effective_func_names, i, prefix);
+            generator::c::generate_dummy(config, all_configs, &effective_func_names, i);
         println!("the path is {each_path:?}");
         fs::create_dir_all(Path::new(each_path).parent().unwrap())?;
         fs::write(

@@ -10,7 +10,6 @@ use crate::utils::consts::DART_KEYWORDS;
 use anyhow::anyhow;
 use convert_case::{Case, Casing};
 use pathdiff::diff_paths;
-use regex::Regex;
 
 pub fn mod_from_rust_path(code_path: &str, crate_path: &str) -> String {
     Path::new(code_path)
@@ -102,29 +101,22 @@ pub fn make_string_keyword_safe(input: String) -> String {
     }
 }
 
-/// Attempts to read a unique ID from the generated header
-/// file. If it doesn't exist, a new one is created.
-pub fn get_unique_id(c_output_path: &str) -> anyhow::Result<String> {
-    let generated = fs::read_to_string(c_output_path)?;
-    let regex = Regex::new(r"^// ([\d\w]+)")?;
+/// Creates a unique prefix by taking the current time in
+/// microseconds and doing some math.
+/// 
+/// Returns a string in the format "P(randomhex)_".
+pub fn create_unique_prefix() -> String {
+    // https://stackoverflow.com/questions/3062746/special-simple-random-number-generator
+    let seed = SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .unwrap()
+        .as_micros();
 
-    match regex.captures(&generated) {
-        Some(capture) => Ok(capture.get(1).unwrap().as_str().to_string()),
-        None => {
-            // https://stackoverflow.com/questions/3062746/special-simple-random-number-generator
-            let seed = SystemTime::now()
-                .duration_since(UNIX_EPOCH)
-                .unwrap()
-                .as_micros();
-
-            let a: u128 = 1103515245;
-            let c: u128 = 12345;
-            let m: u128 = i32::MAX as u128;
-            let random = (a * seed + c) % m;
-            let random_as_hex = format!("P{:X}_", random);
-            Ok(random_as_hex)
-        }
-    }
+    let a: u128 = 1103515245;
+    let c: u128 = 12345;
+    let m: u128 = i32::MAX as u128;
+    let random = (a * seed + c) % m;
+    format!("P{:X}", random)
 }
 
 #[derive(PartialEq, Eq, Debug, Clone, Copy, serde::Serialize)]

@@ -78,7 +78,7 @@ pub fn generate(ir_file: &IrFile, config: &Opts, wasm_funcs: &[IrFuncDisplay]) -
         generate_dart_implementation_body(&spec, config),
     );
 
-    if config.make_c_output_unique {
+    if !config.symbol_prefix.is_empty() {
         let targets = [
             &mut impl_code.common,
             &mut impl_code.io,
@@ -88,7 +88,7 @@ pub fn generate(ir_file: &IrFile, config: &Opts, wasm_funcs: &[IrFuncDisplay]) -
         for target in targets {
             let curr = target.body.clone();
             target.body = regex
-                .replace_all(&curr, format!("${{1}}{}${{2}}", config.get_unique_id()))
+                .replace_all(&curr, format!("${{1}}{}${{2}}", config.symbol_prefix))
                 .to_string();
         }
     }
