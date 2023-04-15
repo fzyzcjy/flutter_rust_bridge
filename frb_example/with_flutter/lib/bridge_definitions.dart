@@ -8,6 +8,11 @@ import 'dart:async';
 import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
+import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+import 'package:meta/meta.dart' as meta;
+
+part 'bridge_definitions.freezed.dart';
 
 abstract class FlutterRustBridgeExample {
   Future<Uint8List> drawMandelbrot(
@@ -62,6 +67,22 @@ abstract class FlutterRustBridgeExample {
   Future<int> offTopicDeliberatelyPanic({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kOffTopicDeliberatelyPanicConstMeta;
+
+  Future<UserId> nextUserId({required UserId userId, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kNextUserIdConstMeta;
+
+  Future<void> testMethodMethodBoxedPoint({required BoxedPoint that, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodBoxedPointConstMeta;
+
+  Future<int> sumMethodSumWith({required SumWith that, required int y, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSumMethodSumWithConstMeta;
+
+  Future<int> sumStaticStaticMethodSumWith({required int x, required int y, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSumStaticStaticMethodSumWithConstMeta;
 }
 
 class BoxedPoint {
@@ -70,6 +91,10 @@ class BoxedPoint {
   const BoxedPoint({
     required this.point,
   });
+
+  Future<void> testMethod({dynamic hint}) => api.testMethodMethodBoxedPoint(
+        that: this,
+      );
 }
 
 class Point {
@@ -92,6 +117,22 @@ class Size {
   });
 }
 
+class SumWith {
+  final int x;
+
+  const SumWith({
+    required this.x,
+  });
+
+  Future<int> sum({required int y, dynamic hint}) => api.sumMethodSumWith(
+        that: this,
+        y: y,
+      );
+
+  static Future<int> sumStatic({required int x, required int y, dynamic hint}) =>
+      api.sumStaticStaticMethodSumWith(x: x, y: y, hint: hint);
+}
+
 class TreeNode {
   final String name;
   final List<TreeNode> children;
@@ -100,4 +141,12 @@ class TreeNode {
     required this.name,
     required this.children,
   });
+}
+
+@freezed
+@meta.immutable
+class UserId with _$UserId {
+  const factory UserId({
+    @Default(0) int value,
+  }) = _UserId;
 }

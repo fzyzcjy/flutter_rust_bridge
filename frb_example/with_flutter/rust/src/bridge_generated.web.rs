@@ -67,6 +67,26 @@ pub fn wire_off_topic_deliberately_panic(port_: MessagePort) {
     wire_off_topic_deliberately_panic_impl(port_)
 }
 
+#[wasm_bindgen]
+pub fn wire_next_user_id(port_: MessagePort, user_id: JsValue) {
+    wire_next_user_id_impl(port_, user_id)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_method__method__BoxedPoint(port_: MessagePort, that: JsValue) {
+    wire_test_method__method__BoxedPoint_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_sum__method__SumWith(port_: MessagePort, that: JsValue, y: u32) {
+    wire_sum__method__SumWith_impl(port_, that, y)
+}
+
+#[wasm_bindgen]
+pub fn wire_sum_static__static_method__SumWith(port_: MessagePort, x: u32, y: u32) {
+    wire_sum_static__static_method__SumWith_impl(port_, x, y)
+}
+
 // Section: allocate functions
 
 // Section: related functions
@@ -76,6 +96,21 @@ pub fn wire_off_topic_deliberately_panic(port_: MessagePort) {
 impl Wire2Api<String> for String {
     fn wire2api(self) -> String {
         self
+    }
+}
+
+impl Wire2Api<BoxedPoint> for JsValue {
+    fn wire2api(self) -> BoxedPoint {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        BoxedPoint {
+            point: self_.get(0).wire2api(),
+        }
     }
 }
 
@@ -127,6 +162,20 @@ impl Wire2Api<Size> for JsValue {
         }
     }
 }
+impl Wire2Api<SumWith> for JsValue {
+    fn wire2api(self) -> SumWith {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        SumWith {
+            x: self_.get(0).wire2api(),
+        }
+    }
+}
 impl Wire2Api<TreeNode> for JsValue {
     fn wire2api(self) -> TreeNode {
         let self_ = self.dyn_into::<JsArray>().unwrap();
@@ -148,11 +197,30 @@ impl Wire2Api<Vec<u8>> for Box<[u8]> {
         self.into_vec()
     }
 }
+impl Wire2Api<UserId> for JsValue {
+    fn wire2api(self) -> UserId {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        UserId {
+            value: self_.get(0).wire2api(),
+        }
+    }
+}
 // Section: impl Wire2Api for JsValue
 
 impl Wire2Api<String> for JsValue {
     fn wire2api(self) -> String {
         self.as_string().expect("non-UTF-8 string, or not a string")
+    }
+}
+impl Wire2Api<Box<Point>> for JsValue {
+    fn wire2api(self) -> Box<Point> {
+        Box::new(self.wire2api())
     }
 }
 impl Wire2Api<f64> for JsValue {
@@ -162,6 +230,11 @@ impl Wire2Api<f64> for JsValue {
 }
 impl Wire2Api<i32> for JsValue {
     fn wire2api(self) -> i32 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<u32> for JsValue {
+    fn wire2api(self) -> u32 {
         self.unchecked_into_f64() as _
     }
 }
