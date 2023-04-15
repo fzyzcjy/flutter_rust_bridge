@@ -1,3 +1,7 @@
+## 1.75.0
+
+* Allow removing `bridge` field in dart model #1170 (thanks @huang12zheng)
+
 ## 1.74.0
 
 * Allow RustOpaque to be non-Clone #989 (thanks @anlumo)
