@@ -135,7 +135,7 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
     let inline_rust = raw.inline_rust;
     let extra_headers = raw.extra_headers.unwrap_or({
         if raw.no_use_bridge_in_method {
-            "import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart'".to_owned()
+            "import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';".to_owned()
         } else {
             "".to_owned()
         }
