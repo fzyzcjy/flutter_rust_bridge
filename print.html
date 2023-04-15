@@ -275,8 +275,8 @@
 <li><a href="https://github.com/Roms1383">Roms1383</a>: Fix build_runner calling bug. Remove global <code>ffigen</code> dependency. Improve version check. Fix enum name-variant conflicts. Support Chrono date time and UUID types. Migrate to Rust 1.64 workspace. Update and refactor CI. Update header comments. Code cleanup.</li>
 <li><a href="https://github.com/GregoryConrad">GregoryConrad</a>: Add doc to setup frb inside a Dart/Flutter library.</li>
 <li><a href="https://github.com/dbsxdbsx">dbsxdbsx</a>: Allow generating multiple Rust and Dart files. Fix lint. Update doc. Add logging.</li>
-<li><a href="https://github.com/trobanga">trobanga</a>: Add support for <code>[T;N]</code> structs. Add <code>usize</code> support. Add a cmd argument. Separate dart tests.Fix fallible list case.</li>
-<li><a href="https://github.com/huang12zheng">huang12zheng</a>: Support type aliases and nested ones. Tweak code generation. Fix rust_build_and_test on Mac. Improve CI logic and cache.</li>
+<li><a href="https://github.com/huang12zheng">huang12zheng</a>: Support type aliases and nested ones. Tweak code generation. Fix rust_build_and_test on Mac. Improve CI logic and cache. Remove bridge field in model.</li>
+<li><a href="https://github.com/trobanga">trobanga</a>: Add support for <code>[T;N]</code> structs. Add <code>usize</code> support. Add a cmd argument. Separate dart tests. Fix fallible list case.</li>
 <li><a href="https://github.com/SoLongAndThanksForAllThePizza">SoLongAndThanksForAllThePizza</a>: Refactor and enhance SyncReturn to support more types. Refactor post-release CI.</li>
 <li><a href="https://github.com/hsfzxjy">hsfzxjy</a>: Fix SyncReturn use-after-free bug.</li>
 <li><a href="https://github.com/Cupnfish">Cupnfish</a>: Support arrays as function parameters. Allow multi mirror.</li>
@@ -4126,7 +4126,7 @@ Options:
 </code></pre>
 <h2 id="flutter_rust_bridge_serve"><a class="header" href="#flutter_rust_bridge_serve"><code>flutter_rust_bridge_serve</code></a></h2>
 <pre><code class="language-shell">$ dart run flutter_rust_bridge_serve --help
-flutter_rust_bridge_serve 1.74.0
+flutter_rust_bridge_serve 1.75.0
 Develop Rust WASM modules with cross-origin isolation.
 
 USAGE:
