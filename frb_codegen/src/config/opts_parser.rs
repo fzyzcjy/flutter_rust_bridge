@@ -133,6 +133,13 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
     let bridge_in_method = !raw.no_use_bridge_in_method;
     let wasm = raw.wasm;
     let inline_rust = raw.inline_rust;
+    let extra_headers = raw.extra_headers.unwrap_or({
+        if raw.no_use_bridge_in_method {
+            "import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart'".to_owned()
+        } else {
+            "".to_owned()
+        }
+    });
 
     (0..rust_input_paths.len())
         .map(|i| {
@@ -157,6 +164,7 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
                 wasm_enabled: wasm,
                 inline_rust,
                 bridge_in_method,
+                extra_headers: extra_headers.clone(),
             }
         })
         .collect()
@@ -269,6 +277,7 @@ fn anchor_config(config: RawOpts, config_path: &str) -> RawOpts {
         skip_deps_check: config.skip_deps_check,
         dump: config.dump,
         no_use_bridge_in_method: config.no_use_bridge_in_method,
+        extra_headers: config.extra_headers,
     }
 }
 

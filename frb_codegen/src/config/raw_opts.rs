@@ -84,6 +84,14 @@ pub struct RawOpts {
     #[serde(default)]
     pub no_use_bridge_in_method: bool,
 
+    /// extra_headers is used to add dependencies header
+    ///
+    /// Note that when no_use_bridge_in_method=true and extra_headers is not set,
+    /// the default is `import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart'`.
+    #[arg(long)]
+    #[serde(default)]
+    pub extra_headers: Option<String>,
+
     /// Show debug messages.
     #[arg(short, long)]
     #[serde(default)]

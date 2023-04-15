@@ -58,6 +58,11 @@ Options:
       --no-use-bridge-in-method
           No use bridge in Model
 
+      --extra-headers <EXTRA_HEADERS>
+          extra_headers is used to add dependencies header
+          
+          Note that when no_use_bridge_in_method=true and extra_headers is not set, \n the default is `import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart'`.
+
   -v, --verbose
           Show debug messages
 

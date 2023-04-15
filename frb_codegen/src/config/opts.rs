@@ -29,6 +29,7 @@ pub struct Opts {
     pub wasm_enabled: bool,
     pub inline_rust: bool,
     pub bridge_in_method: bool,
+    pub extra_headers: String,
 }
 
 impl Opts {
