@@ -239,6 +239,8 @@ pub fn config_parse(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
             shared_rust_output_path,
             shared_dart_output_path,
             dart_enums_style,
+            bridge_in_method,//TODO: check for shared Opt
+            extra_headers,//TODO: check for shared Opt
         };
         [regular_configs, vec![shared_config]].concat()
     };
@@ -352,6 +354,9 @@ fn anchor_config(config: RawOpts, config_path: &str) -> RawOpts {
         inline_rust: config.inline_rust,
         skip_deps_check: config.skip_deps_check,
         dump: config.dump,
+        no_use_bridge_in_method: config.no_use_bridge_in_method,
+        extra_headers: config.extra_headers,
+        shared_rust_output: config.shared_rust_output,
     }
 }
 

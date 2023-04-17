@@ -119,7 +119,8 @@ pub struct RawOpts {
     pub dump: Option<Vec<Dump>>,
 
     // Output path of auto-generated rust file, which is used to store shared stuff among regular API blocks,
-    // it could be something like `src/my_shared.rs`, `"my_shared.rs"`...
+    // it could be something like `"my_shared.rs"`, `./another_shared_name.rs`,
+    // currently, directory is not supported. Say `src/my_shared.rs`, is not supported
     // if it is none, the default path would be `./bridge_generated_shares.rs`
     #[clap(short, long)]
     pub shared_rust_output: Option<String>,

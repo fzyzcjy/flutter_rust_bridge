@@ -270,16 +270,6 @@ class wire_OnlyForApi1Struct extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> name;
 }
 
-class wire_OnlyForApi1Struct extends ffi.Struct {
-  @ffi.Int16()
-  external int id;
-
-  @ffi.Double()
-  external double num;
-
-  external ffi.Pointer<wire_uint_8_list> name;
-}
-
 typedef DartPostCObjectFnType
     = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(DartPort port_id, ffi.Pointer<ffi.Void> message)>>;
 typedef DartPort = ffi.Int64;
