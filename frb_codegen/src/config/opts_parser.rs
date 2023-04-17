@@ -239,8 +239,8 @@ pub fn config_parse(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
             shared_rust_output_path,
             shared_dart_output_path,
             dart_enums_style,
-            bridge_in_method,//TODO: check for shared Opt
-            extra_headers,//TODO: check for shared Opt
+            bridge_in_method, //TODO: check for shared Opt
+            extra_headers,    //TODO: check for shared Opt
         };
         [regular_configs, vec![shared_config]].concat()
     };

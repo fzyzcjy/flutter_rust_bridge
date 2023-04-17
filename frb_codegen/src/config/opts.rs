@@ -2,8 +2,8 @@ use crate::ir::IrFile;
 use crate::utils::misc::{BlockIndex, ExtraTraitForVec};
 use crate::{parser, transformer};
 use anyhow::{Context, Result};
-use std::collections::HashMap;
 use convert_case::{Case, Casing};
+use std::collections::HashMap;
 use std::fs;
 use std::path::{Path, PathBuf};
 
