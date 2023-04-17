@@ -160,8 +160,16 @@ pub fn config_parse(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
     let llvm_compiler_opts = raw.llvm_compiler_opts.clone().unwrap_or_default();
     let skip_add_mod_to_lib = raw.skip_add_mod_to_lib;
     let build_runner = !raw.no_build_runner;
+    let bridge_in_method = !raw.no_use_bridge_in_method;
     let wasm = raw.wasm;
     let inline_rust = raw.inline_rust;
+    let extra_headers = raw.extra_headers.unwrap_or({
+        if raw.no_use_bridge_in_method {
+            "import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';".to_owned()
+        } else {
+            "".to_owned()
+        }
+    });
 
     let regular_configs = (0..rust_input_paths.len())
         .map(|i| {
@@ -188,6 +196,8 @@ pub fn config_parse(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
                 shared: false,
                 shared_rust_output_path: shared_rust_output_path.clone(),
                 shared_dart_output_path: shared_dart_output_path.clone(),
+                bridge_in_method,
+                extra_headers: extra_headers.clone(),
             }
         })
         .collect::<Vec<_>>();
@@ -342,7 +352,6 @@ fn anchor_config(config: RawOpts, config_path: &str) -> RawOpts {
         inline_rust: config.inline_rust,
         skip_deps_check: config.skip_deps_check,
         dump: config.dump,
-        shared_rust_output: config.shared_rust_output,
     }
 }
 

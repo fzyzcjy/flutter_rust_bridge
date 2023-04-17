@@ -110,7 +110,6 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         });
         let has_methods = methods.next().is_some();
         // TODO: refactor into trait method?
-
         let mut inner = if !self.context.config.shared {
             s.fields
                 .iter()
@@ -143,7 +142,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 })
                 .collect::<Vec<_>>()
         };
-        if has_methods {
+        if has_methods && self.context.config.bridge_in_method {
             inner.insert(0, "bridge: this,".to_string());
         }
 
@@ -199,6 +198,24 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             })
             .collect::<Vec<_>>()
             .concat();
+        let extra_argument = if self.context.config.bridge_in_method {
+            "required this.bridge,".to_string()
+        } else {
+            "".to_string()
+        };
+        let field_bridge = if self.context.config.bridge_in_method {
+            format!(
+                "final {} bridge;",
+                self.context.config.dart_api_class_name(),
+            )
+        } else {
+            String::new()
+        };
+        let private_constructor = if has_methods {
+            format!("const {}._();", self.ir.name)
+        } else {
+            "".to_owned()
+        };
         if src.using_freezed() {
             let mut constructor_params = src
                 .fields
@@ -213,7 +230,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                     )
                 })
                 .collect::<Vec<_>>();
-            if has_methods {
+            if has_methods && self.context.config.bridge_in_method {
                 constructor_params.insert(
                     0,
                     format!(
@@ -232,12 +249,8 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 }}",
                 constructor_params,
                 methods_string,
-                private_constructor = if has_methods {
-                    format!("const {}._();", self.ir.name)
-                } else {
-                    "".to_owned()
-                },
                 comments = comments,
+                private_constructor = private_constructor,
                 meta = metadata,
                 Name = self.ir.name
             )
@@ -257,13 +270,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 })
                 .collect::<Vec<_>>();
             if has_methods {
-                field_declarations.insert(
-                    0,
-                    format!(
-                        "final {} bridge;",
-                        self.context.config.dart_api_class_name(),
-                    ),
-                );
+                field_declarations.insert(0, field_bridge);
             }
             let field_declarations = field_declarations.join("\n");
 
@@ -280,7 +287,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 })
                 .collect::<Vec<_>>();
             if has_methods {
-                constructor_params.insert(0, "required this.bridge,".to_string());
+                constructor_params.insert(0, extra_argument);
             }
 
             let (left, right) = if constructor_params.is_empty() {
@@ -340,7 +347,7 @@ fn generate_api_method(
         })
         .collect::<Vec<_>>();
 
-    if f.is_static_method() {
+    if f.is_static_method() && config.bridge_in_method {
         raw_func_param_list.insert(0, format!("required {dart_api_class_name} bridge"));
     }
 
@@ -378,14 +385,16 @@ fn generate_api_method(
         arg_names.push("hint: hint".to_string());
         let arg_names = arg_names.concat();
         format!(
-            "bridge.{}({})",
+            "{}.{}({})",
+            config.get_dart_api_bridge_name(),
             func.name.clone().to_case(Case::Camel),
             arg_names
         )
     } else {
         let arg_names = arg_names.concat();
         format!(
-            "bridge.{}({}: this, {})",
+            "{}.{}({}: this, {})",
+            config.get_dart_api_bridge_name(),
             func.name.clone().to_case(Case::Camel),
             func.inputs[0].name.dart_style(),
             arg_names
