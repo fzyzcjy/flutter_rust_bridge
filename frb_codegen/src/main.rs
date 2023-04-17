@@ -220,6 +220,6 @@ mod tests {
             .expect("failed to execute pure_dart")
             .wait()
             .expect("failed to wait for pure_dart");
-        assert!(status.success(), "pure_dart failed");
+        assert!(status.success(), "pure_dart_multi failed");
     }
 }
