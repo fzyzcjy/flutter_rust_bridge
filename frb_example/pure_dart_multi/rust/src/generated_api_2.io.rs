@@ -36,11 +36,21 @@ pub extern "C" fn wire_test_cross_shared_struct_2(port_: i64, name: *mut wire_ui
     wire_test_cross_shared_struct_2_impl(port_, name)
 }
 
+#[no_mangle]
+pub extern "C" fn wire_test_StructDefinedInApi2(port_: i64, custom: *mut wire_StructDefinedInApi2) {
+    wire_test_StructDefinedInApi2_impl(port_, custom)
+}
+
 // Section: allocate functions
 
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_only_for_api_2_struct() -> *mut wire_OnlyForApi2Struct {
     support::new_leak_box_ptr(wire_OnlyForApi2Struct::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_struct_defined_in_api_2() -> *mut wire_StructDefinedInApi2 {
+    support::new_leak_box_ptr(wire_StructDefinedInApi2::new_with_null_ptr())
 }
 
 // Section: related functions
@@ -53,12 +63,25 @@ impl Wire2Api<OnlyForApi2Struct> for *mut wire_OnlyForApi2Struct {
         Wire2Api::<OnlyForApi2Struct>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<StructDefinedInApi2> for *mut wire_StructDefinedInApi2 {
+    fn wire2api(self) -> StructDefinedInApi2 {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<StructDefinedInApi2>::wire2api(*wrap).into()
+    }
+}
 
 impl Wire2Api<OnlyForApi2Struct> for wire_OnlyForApi2Struct {
     fn wire2api(self) -> OnlyForApi2Struct {
         OnlyForApi2Struct {
             id: self.id.wire2api(),
             num: bridge_generated_shares::Wire2Api::wire2api(self.num),
+            name: bridge_generated_shares::Wire2Api::wire2api(self.name),
+        }
+    }
+}
+impl Wire2Api<StructDefinedInApi2> for wire_StructDefinedInApi2 {
+    fn wire2api(self) -> StructDefinedInApi2 {
+        StructDefinedInApi2 {
             name: bridge_generated_shares::Wire2Api::wire2api(self.name),
         }
     }
@@ -70,6 +93,12 @@ impl Wire2Api<OnlyForApi2Struct> for wire_OnlyForApi2Struct {
 pub struct wire_OnlyForApi2Struct {
     id: i64,
     num: f64,
+    name: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_StructDefinedInApi2 {
     name: *mut wire_uint_8_list,
 }
 
@@ -96,6 +125,20 @@ impl NewWithNullPtr for wire_OnlyForApi2Struct {
 }
 
 impl Default for wire_OnlyForApi2Struct {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
+impl NewWithNullPtr for wire_StructDefinedInApi2 {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            name: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl Default for wire_StructDefinedInApi2 {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }

@@ -1,5 +1,14 @@
 use crate::custom::{CrossSharedStruct, OnlyForApi2Struct, SharedStruct};
 
+pub struct StructDefinedInApi2 {
+    pub name: String,
+}
+impl StructDefinedInApi2 {
+    fn test_struct_method(message: String) -> String {
+        message
+    }
+}
+
 pub fn test_inbuilt_type_2(a: i32, b: f32) -> f32 {
     a as f32 + b
 }
@@ -22,4 +31,8 @@ pub fn test_unique_struct_2(mut custom: OnlyForApi2Struct, s: String, i: i64) ->
 
 pub fn test_cross_shared_struct_2(name: String) -> CrossSharedStruct {
     CrossSharedStruct { name }
+}
+
+pub fn test_StructDefinedInApi2(custom: StructDefinedInApi2) -> String {
+    custom.name
 }

@@ -40,6 +40,10 @@ abstract class ApiClass2 {
   Future<CrossSharedStruct> testCrossSharedStruct2({required String name, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kTestCrossSharedStruct2ConstMeta;
+
+  Future<String> testStructDefinedInApi2({required StructDefinedInApi2 custom, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStructDefinedInApi2ConstMeta;
 }
 
 class OnlyForApi2Struct {
@@ -50,6 +54,14 @@ class OnlyForApi2Struct {
   const OnlyForApi2Struct({
     required this.id,
     required this.num,
+    required this.name,
+  });
+}
+
+class StructDefinedInApi2 {
+  final String name;
+
+  const StructDefinedInApi2({
     required this.name,
   });
 }
@@ -157,6 +169,22 @@ class ApiClass2Impl implements ApiClass2 {
   FlutterRustBridgeTaskConstMeta get kTestCrossSharedStruct2ConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "test_cross_shared_struct_2",
         argNames: ["name"],
+      );
+
+  Future<String> testStructDefinedInApi2({required StructDefinedInApi2 custom, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_struct_defined_in_api_2(custom);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_StructDefinedInApi2(port_, arg0),
+      parseSuccessData: _sharedImpl.wire2api_String,
+      constMeta: kTestStructDefinedInApi2ConstMeta,
+      argValues: [custom],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestStructDefinedInApi2ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_StructDefinedInApi2",
+        argNames: ["custom"],
       );
 
   void dispose() {

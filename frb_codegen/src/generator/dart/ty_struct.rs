@@ -173,6 +173,8 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             })
             .collect::<Vec<_>>();
 
+        log::debug!("the methods is:\n{:?}",methods); //TODO: delete
+
         let has_methods = !methods.is_empty();
         let methods = methods
             .iter()

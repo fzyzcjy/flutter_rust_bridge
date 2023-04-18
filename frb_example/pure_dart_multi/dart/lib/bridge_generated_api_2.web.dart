@@ -28,6 +28,11 @@ class ApiClass2Platform extends FlutterRustBridgeBase<ApiClass2Wire> with Flutte
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_struct_defined_in_api_2(StructDefinedInApi2 raw) {
+    return api2wire_struct_defined_in_api_2(raw);
+  }
+
+  @protected
   Object api2wire_i64(int raw) {
     return castNativeBigInt(raw);
   }
@@ -35,6 +40,11 @@ class ApiClass2Platform extends FlutterRustBridgeBase<ApiClass2Wire> with Flutte
   @protected
   List<dynamic> api2wire_only_for_api_2_struct(OnlyForApi2Struct raw) {
     return [api2wire_i64(raw.id), api2wire_f64(raw.num), _sharedPlatform.api2wire_String(raw.name)];
+  }
+
+  @protected
+  List<dynamic> api2wire_struct_defined_in_api_2(StructDefinedInApi2 raw) {
+    return [_sharedPlatform.api2wire_String(raw.name)];
   }
 // Section: finalizer
 }
@@ -58,6 +68,8 @@ class ApiClass2WasmModule implements WasmModule {
   external dynamic /* void */ wire_test_unique_struct_2(NativePortType port_, List<dynamic> custom, String s, Object i);
 
   external dynamic /* void */ wire_test_cross_shared_struct_2(NativePortType port_, String name);
+
+  external dynamic /* void */ wire_test_StructDefinedInApi2(NativePortType port_, List<dynamic> custom);
 }
 
 // Section: WASM wire connector
@@ -78,4 +90,7 @@ class ApiClass2Wire extends FlutterRustBridgeWasmWireBase<ApiClass2WasmModule> {
 
   void wire_test_cross_shared_struct_2(NativePortType port_, String name) =>
       wasmModule.wire_test_cross_shared_struct_2(port_, name);
+
+  void wire_test_StructDefinedInApi2(NativePortType port_, List<dynamic> custom) =>
+      wasmModule.wire_test_StructDefinedInApi2(port_, custom);
 }

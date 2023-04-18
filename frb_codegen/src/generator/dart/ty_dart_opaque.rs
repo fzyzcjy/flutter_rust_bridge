@@ -40,10 +40,6 @@ impl TypeDartGeneratorTrait for TypeDartOpaqueGenerator<'_> {
         "return _platform.inner.get_dart_object(raw);".into()
     }
 
-    fn structs(&self) -> String {
-        "".into()
-    }
-
     fn get_context(&self) -> &TypeGeneratorContext {
         &self.context
     }

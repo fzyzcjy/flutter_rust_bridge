@@ -26,6 +26,11 @@ pub fn wire_test_cross_shared_struct_1(port_: MessagePort, custom: JsValue) {
     wire_test_cross_shared_struct_1_impl(port_, custom)
 }
 
+#[wasm_bindgen]
+pub fn wire_test_StructDefinedInApi1(port_: MessagePort, custom: JsValue) {
+    wire_test_StructDefinedInApi1_impl(port_, custom)
+}
+
 // Section: allocate functions
 
 // Section: related functions
@@ -45,6 +50,20 @@ impl Wire2Api<OnlyForApi1Struct> for JsValue {
             id: self_.get(0).wire2api(),
             num: self_.get(1).wire2api(),
             name: self_.get(2).wire2api(),
+        }
+    }
+}
+impl Wire2Api<StructDefinedInApi1> for JsValue {
+    fn wire2api(self) -> StructDefinedInApi1 {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        StructDefinedInApi1 {
+            name: self_.get(0).wire2api(),
         }
     }
 }

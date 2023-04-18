@@ -27,6 +27,13 @@ class ApiClass1Platform extends FlutterRustBridgeBase<ApiClass1Wire> {
     return ptr;
   }
 
+  @protected
+  ffi.Pointer<wire_StructDefinedInApi1> api2wire_box_autoadd_struct_defined_in_api_1(StructDefinedInApi1 raw) {
+    final ptr = inner.new_box_autoadd_struct_defined_in_api_1();
+    _api_fill_to_wire_struct_defined_in_api_1(raw, ptr.ref);
+    return ptr;
+  }
+
 // Section: finalizer
 
 // Section: api_fill_to_wire
@@ -36,9 +43,18 @@ class ApiClass1Platform extends FlutterRustBridgeBase<ApiClass1Wire> {
     _api_fill_to_wire_only_for_api_1_struct(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_struct_defined_in_api_1(
+      StructDefinedInApi1 apiObj, ffi.Pointer<wire_StructDefinedInApi1> wireObj) {
+    _api_fill_to_wire_struct_defined_in_api_1(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_only_for_api_1_struct(OnlyForApi1Struct apiObj, wire_OnlyForApi1Struct wireObj) {
     wireObj.id = api2wire_i16(apiObj.id);
     wireObj.num = api2wire_f64(apiObj.num);
+    wireObj.name = _sharedPlatform.api2wire_String(apiObj.name);
+  }
+
+  void _api_fill_to_wire_struct_defined_in_api_1(StructDefinedInApi1 apiObj, wire_StructDefinedInApi1 wireObj) {
     wireObj.name = _sharedPlatform.api2wire_String(apiObj.name);
   }
 }
@@ -247,6 +263,22 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
   late final _wire_test_cross_shared_struct_1 =
       _wire_test_cross_shared_struct_1Ptr.asFunction<void Function(int, ffi.Pointer<wire_CrossSharedStruct>)>();
 
+  void wire_test_StructDefinedInApi1(
+    int port_,
+    ffi.Pointer<wire_StructDefinedInApi1> custom,
+  ) {
+    return _wire_test_StructDefinedInApi1(
+      port_,
+      custom,
+    );
+  }
+
+  late final _wire_test_StructDefinedInApi1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_StructDefinedInApi1>)>>(
+          'wire_test_StructDefinedInApi1');
+  late final _wire_test_StructDefinedInApi1 =
+      _wire_test_StructDefinedInApi1Ptr.asFunction<void Function(int, ffi.Pointer<wire_StructDefinedInApi1>)>();
+
   ffi.Pointer<wire_OnlyForApi1Struct> new_box_autoadd_only_for_api_1_struct() {
     return _new_box_autoadd_only_for_api_1_struct();
   }
@@ -256,6 +288,16 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
           'new_box_autoadd_only_for_api_1_struct');
   late final _new_box_autoadd_only_for_api_1_struct =
       _new_box_autoadd_only_for_api_1_structPtr.asFunction<ffi.Pointer<wire_OnlyForApi1Struct> Function()>();
+
+  ffi.Pointer<wire_StructDefinedInApi1> new_box_autoadd_struct_defined_in_api_1() {
+    return _new_box_autoadd_struct_defined_in_api_1();
+  }
+
+  late final _new_box_autoadd_struct_defined_in_api_1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_StructDefinedInApi1> Function()>>(
+          'new_box_autoadd_struct_defined_in_api_1');
+  late final _new_box_autoadd_struct_defined_in_api_1 =
+      _new_box_autoadd_struct_defined_in_api_1Ptr.asFunction<ffi.Pointer<wire_StructDefinedInApi1> Function()>();
 }
 
 class _Dart_Handle extends ffi.Opaque {}
@@ -267,6 +309,10 @@ class wire_OnlyForApi1Struct extends ffi.Struct {
   @ffi.Double()
   external double num;
 
+  external ffi.Pointer<wire_uint_8_list> name;
+}
+
+class wire_StructDefinedInApi1 extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> name;
 }
 

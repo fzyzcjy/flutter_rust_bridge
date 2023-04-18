@@ -117,6 +117,22 @@ fn wire_test_cross_shared_struct_2_impl(
         },
     )
 }
+fn wire_test_StructDefinedInApi2_impl(
+    port_: MessagePort,
+    custom: impl Wire2Api<StructDefinedInApi2> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_StructDefinedInApi2",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_custom = custom.wire2api();
+            move |task_callback| Ok(test_StructDefinedInApi2(api_custom))
+        },
+    )
+}
 // Section: wrapper structs
 
 // Section: static checks
