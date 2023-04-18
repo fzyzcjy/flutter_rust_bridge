@@ -44,6 +44,15 @@ abstract class ApiClass2 {
   Future<String> testStructDefinedInApi2({required StructDefinedInApi2 custom, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kTestStructDefinedInApi2ConstMeta;
+
+  Future<String> testMethodMethodStructDefinedInApi2(
+      {required StructDefinedInApi2 that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodStructDefinedInApi2ConstMeta;
+
+  Future<String> testStaticMethodStaticMethodStructDefinedInApi2({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodStructDefinedInApi2ConstMeta;
 }
 
 class OnlyForApi2Struct {
@@ -59,11 +68,21 @@ class OnlyForApi2Struct {
 }
 
 class StructDefinedInApi2 {
+  final ApiClass2 bridge;
   final String name;
 
   const StructDefinedInApi2({
+    required this.bridge,
     required this.name,
   });
+
+  Future<String> testMethod({required String message, dynamic hint}) => bridge.testMethodMethodStructDefinedInApi2(
+        that: this,
+        message: message,
+      );
+
+  static Future<String> testStaticMethod({required ApiClass2 bridge, required String message, dynamic hint}) =>
+      bridge.testStaticMethodStaticMethodStructDefinedInApi2(message: message, hint: hint);
 }
 
 class ApiClass2Impl implements ApiClass2 {
@@ -185,6 +204,42 @@ class ApiClass2Impl implements ApiClass2 {
   FlutterRustBridgeTaskConstMeta get kTestStructDefinedInApi2ConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "test_StructDefinedInApi2",
         argNames: ["custom"],
+      );
+
+  Future<String> testMethodMethodStructDefinedInApi2(
+      {required StructDefinedInApi2 that, required String message, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_struct_defined_in_api_2(that);
+    var arg1 = _sharedPlatform.api2wire_String(message);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_method__method__StructDefinedInApi2(port_, arg0, arg1),
+      parseSuccessData: _sharedImpl.wire2api_String,
+      constMeta: kTestMethodMethodStructDefinedInApi2ConstMeta,
+      argValues: [that, message],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodStructDefinedInApi2ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_method__method__StructDefinedInApi2",
+        argNames: ["that", "message"],
+      );
+
+  Future<String> testStaticMethodStaticMethodStructDefinedInApi2({required String message, dynamic hint}) {
+    var arg0 = _sharedPlatform.api2wire_String(message);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_static_method__static_method__StructDefinedInApi2(port_, arg0),
+      parseSuccessData: _sharedImpl.wire2api_String,
+      constMeta: kTestStaticMethodStaticMethodStructDefinedInApi2ConstMeta,
+      argValues: [message],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodStructDefinedInApi2ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_static_method__static_method__StructDefinedInApi2",
+        argNames: ["message"],
       );
 
   void dispose() {

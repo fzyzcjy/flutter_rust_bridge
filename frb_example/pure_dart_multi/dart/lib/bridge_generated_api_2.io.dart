@@ -284,6 +284,42 @@ class ApiClass2Wire implements FlutterRustBridgeWireBase {
   late final _wire_test_StructDefinedInApi2 =
       _wire_test_StructDefinedInApi2Ptr.asFunction<void Function(int, ffi.Pointer<wire_StructDefinedInApi2>)>();
 
+  void wire_test_method__method__StructDefinedInApi2(
+    int port_,
+    ffi.Pointer<wire_StructDefinedInApi2> that,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_method__method__StructDefinedInApi2(
+      port_,
+      that,
+      message,
+    );
+  }
+
+  late final _wire_test_method__method__StructDefinedInApi2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_StructDefinedInApi2>,
+              ffi.Pointer<wire_uint_8_list>)>>('wire_test_method__method__StructDefinedInApi2');
+  late final _wire_test_method__method__StructDefinedInApi2 = _wire_test_method__method__StructDefinedInApi2Ptr
+      .asFunction<void Function(int, ffi.Pointer<wire_StructDefinedInApi2>, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_test_static_method__static_method__StructDefinedInApi2(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_static_method__static_method__StructDefinedInApi2(
+      port_,
+      message,
+    );
+  }
+
+  late final _wire_test_static_method__static_method__StructDefinedInApi2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_test_static_method__static_method__StructDefinedInApi2');
+  late final _wire_test_static_method__static_method__StructDefinedInApi2 =
+      _wire_test_static_method__static_method__StructDefinedInApi2Ptr
+          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
   ffi.Pointer<wire_OnlyForApi2Struct> new_box_autoadd_only_for_api_2_struct() {
     return _new_box_autoadd_only_for_api_2_struct();
   }

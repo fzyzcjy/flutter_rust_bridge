@@ -4,7 +4,10 @@ pub struct StructDefinedInApi2 {
     pub name: String,
 }
 impl StructDefinedInApi2 {
-    fn test_struct_method(message: String) -> String {
+    pub fn test_method(&self, message: String) -> String {
+        message
+    }
+    pub fn test_static_method(message: String) -> String {
         message
     }
 }

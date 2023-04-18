@@ -97,43 +97,70 @@ void main(List<String> args) {
   test('test struct method of `SharedStruct`', () async {
     final obj = SharedStruct(name: "string", id: 1, num: 2.2);
     expect(
-      await obj.testStructMethod("message"),
-      "message",
+      await obj.testMethod(message: 'msg'),
+      "msg",
+    );
+    expect(
+      await SharedStruct.testStaticMethod(message: 'msg'),
+      "msg",
     );
   });
   test('test struct method of `OnlyForApi1Struct`', () async {
     final obj = OnlyForApi1Struct(name: "string", id: 1, num: 2.2);
     expect(
-      await obj.testStructMethod("message"),
-      "message",
+      await obj.testMethod(message: 'msg'),
+      "msg",
+    );
+    expect(
+      await OnlyForApi1Struct.testStaticMethod(message: 'msg'),
+      "msg",
     );
   });
   test('test struct method of `OnlyForApi2Struct`', () async {
     final obj = OnlyForApi2Struct(name: "string", id: 1, num: 2.2);
     expect(
-      await obj.testStructMethod("message"),
-      "message",
+      await obj.testMethod(message: 'msg'),
+      "msg",
+    );
+    expect(
+      await OnlyForApi2Struct.testStaticMethod(message: 'msg'),
+      "msg",
     );
   });
+
   test('test struct method of `CrossSharedStruct`', () async {
     final obj = CrossSharedStruct(name: "testName");
     expect(
-      await obj.testStructMethod("message"),
-      "message",
+      await obj.testMethod(message: 'msg'),
+      "msg",
+    );
+    expect(
+      await CrossSharedStruct.testStaticMethod(message: 'msg'),
+      "msg",
     );
   });
+
   test('test struct method of `StructDefinedInApi1`', () async {
-    final obj = StructDefinedInApi1(name: "testName");
+    final obj = StructDefinedInApi1(bridge: api1, name: "testName");
     expect(
-      await obj.testStructMethod("message"),
-      "message",
+      await obj.testMethod(message: 'msg'),
+      "msg",
+    );
+    expect(
+      await StructDefinedInApi1.testStaticMethod(bridge: api1, message: 'msg'),
+      "msg",
     );
   });
+
   test('test struct method of `StructDefinedInApi2`', () async {
-    final obj = StructDefinedInApi2(name: "testName");
+    final obj = StructDefinedInApi2(bridge: api2, name: "testName");
     expect(
-      await obj.testStructMethod("message"),
-      "message",
+      await obj.testMethod(message: 'msg'),
+      "msg",
+    );
+    expect(
+      await StructDefinedInApi2.testStaticMethod(bridge: api2, message: 'msg'),
+      "msg",
     );
   });
   //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑test struct methods↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑

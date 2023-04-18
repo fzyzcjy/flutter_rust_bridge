@@ -41,6 +41,23 @@ pub extern "C" fn wire_test_StructDefinedInApi2(port_: i64, custom: *mut wire_St
     wire_test_StructDefinedInApi2_impl(port_, custom)
 }
 
+#[no_mangle]
+pub extern "C" fn wire_test_method__method__StructDefinedInApi2(
+    port_: i64,
+    that: *mut wire_StructDefinedInApi2,
+    message: *mut wire_uint_8_list,
+) {
+    wire_test_method__method__StructDefinedInApi2_impl(port_, that, message)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_static_method__static_method__StructDefinedInApi2(
+    port_: i64,
+    message: *mut wire_uint_8_list,
+) {
+    wire_test_static_method__static_method__StructDefinedInApi2_impl(port_, message)
+}
+
 // Section: allocate functions
 
 #[no_mangle]

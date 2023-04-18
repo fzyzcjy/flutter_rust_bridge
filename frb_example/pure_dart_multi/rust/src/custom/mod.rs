@@ -5,7 +5,10 @@ pub struct SharedStruct {
     pub name: String,
 }
 impl SharedStruct {
-    fn test_struct_method(message: String) -> String {
+    pub fn test_method(&self, message: String) -> String {
+        message
+    }
+    pub fn test_static_method(message: String) -> String {
         message
     }
 }
@@ -16,7 +19,10 @@ pub struct OnlyForApi1Struct {
     pub name: String, // struct type used in all API blocks for test
 }
 impl OnlyForApi1Struct {
-    fn test_struct_method(message: String) -> String {
+    pub fn test_method(&self, message: String) -> String {
+        message
+    }
+    pub fn test_static_method(message: String) -> String {
         message
     }
 }
@@ -28,7 +34,10 @@ pub struct OnlyForApi2Struct {
     pub name: String, // struct type used in all API blocks for test
 }
 impl OnlyForApi2Struct {
-    fn test_struct_method(message: String) -> String {
+    pub fn test_method(&self, message: String) -> String {
+        message
+    }
+    pub fn test_static_method(message: String) -> String {
         message
     }
 }
@@ -38,7 +47,10 @@ pub struct CrossSharedStruct {
     pub name: String,
 }
 impl CrossSharedStruct {
-    fn test_struct_method(message: String) -> String {
+    pub fn test_method(&self, message: String) -> String {
+        message
+    }
+    pub fn test_static_method(message: String) -> String {
         message
     }
 }

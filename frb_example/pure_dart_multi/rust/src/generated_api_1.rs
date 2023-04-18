@@ -133,6 +133,40 @@ fn wire_test_StructDefinedInApi1_impl(
         },
     )
 }
+fn wire_test_method__method__StructDefinedInApi1_impl(
+    port_: MessagePort,
+    that: impl Wire2Api<StructDefinedInApi1> + UnwindSafe,
+    message: impl bridge_generated_shares::Wire2Api<String> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_method__method__StructDefinedInApi1",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_that = that.wire2api();
+            let api_message = message.wire2api();
+            move |task_callback| Ok(StructDefinedInApi1::test_method(&api_that, api_message))
+        },
+    )
+}
+fn wire_test_static_method__static_method__StructDefinedInApi1_impl(
+    port_: MessagePort,
+    message: impl bridge_generated_shares::Wire2Api<String> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_static_method__static_method__StructDefinedInApi1",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_message = message.wire2api();
+            move |task_callback| Ok(StructDefinedInApi1::test_static_method(api_message))
+        },
+    )
+}
 // Section: wrapper structs
 
 // Section: static checks

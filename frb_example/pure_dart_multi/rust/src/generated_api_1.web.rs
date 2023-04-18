@@ -31,6 +31,23 @@ pub fn wire_test_StructDefinedInApi1(port_: MessagePort, custom: JsValue) {
     wire_test_StructDefinedInApi1_impl(port_, custom)
 }
 
+#[wasm_bindgen]
+pub fn wire_test_method__method__StructDefinedInApi1(
+    port_: MessagePort,
+    that: JsValue,
+    message: String,
+) {
+    wire_test_method__method__StructDefinedInApi1_impl(port_, that, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_static_method__static_method__StructDefinedInApi1(
+    port_: MessagePort,
+    message: String,
+) {
+    wire_test_static_method__static_method__StructDefinedInApi1_impl(port_, message)
+}
+
 // Section: allocate functions
 
 // Section: related functions

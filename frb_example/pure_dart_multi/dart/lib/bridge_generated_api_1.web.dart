@@ -65,6 +65,12 @@ class ApiClass1WasmModule implements WasmModule {
   external dynamic /* void */ wire_test_cross_shared_struct_1(NativePortType port_, List<dynamic> custom);
 
   external dynamic /* void */ wire_test_StructDefinedInApi1(NativePortType port_, List<dynamic> custom);
+
+  external dynamic /* void */ wire_test_method__method__StructDefinedInApi1(
+      NativePortType port_, List<dynamic> that, String message);
+
+  external dynamic /* void */ wire_test_static_method__static_method__StructDefinedInApi1(
+      NativePortType port_, String message);
 }
 
 // Section: WASM wire connector
@@ -88,4 +94,10 @@ class ApiClass1Wire extends FlutterRustBridgeWasmWireBase<ApiClass1WasmModule> {
 
   void wire_test_StructDefinedInApi1(NativePortType port_, List<dynamic> custom) =>
       wasmModule.wire_test_StructDefinedInApi1(port_, custom);
+
+  void wire_test_method__method__StructDefinedInApi1(NativePortType port_, List<dynamic> that, String message) =>
+      wasmModule.wire_test_method__method__StructDefinedInApi1(port_, that, message);
+
+  void wire_test_static_method__static_method__StructDefinedInApi1(NativePortType port_, String message) =>
+      wasmModule.wire_test_static_method__static_method__StructDefinedInApi1(port_, message);
 }
