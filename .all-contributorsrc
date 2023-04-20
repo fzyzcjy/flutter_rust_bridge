@@ -556,6 +556,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "phlip9",
+      "name": "Philip Kannegaard Hayes",
+      "avatar_url": "https://avatars.githubusercontent.com/u/918989?v=4",
+      "profile": "https://phlip9.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
