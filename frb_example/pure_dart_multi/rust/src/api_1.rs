@@ -1,5 +1,4 @@
 use crate::custom::{CrossSharedStruct, OnlyForApi1Struct, SharedStruct};
-
 pub struct StructDefinedInApi1 {
     pub name: String,
 }
@@ -36,6 +35,6 @@ pub fn test_cross_shared_struct_1(custom: CrossSharedStruct) -> String {
     custom.name
 }
 
-pub fn test_StructDefinedInApi1(custom: StructDefinedInApi1) -> String {
+pub fn test_struct_defined_in_api_1(custom: StructDefinedInApi1) -> String {
     custom.name
 }

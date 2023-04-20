@@ -37,8 +37,11 @@ pub extern "C" fn wire_test_cross_shared_struct_2(port_: i64, name: *mut wire_ui
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_StructDefinedInApi2(port_: i64, custom: *mut wire_StructDefinedInApi2) {
-    wire_test_StructDefinedInApi2_impl(port_, custom)
+pub extern "C" fn wire_test_struct_defined_in_api_2(
+    port_: i64,
+    custom: *mut wire_StructDefinedInApi2,
+) {
+    wire_test_struct_defined_in_api_2_impl(port_, custom)
 }
 
 #[no_mangle]

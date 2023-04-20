@@ -117,19 +117,19 @@ fn wire_test_cross_shared_struct_1_impl(
         },
     )
 }
-fn wire_test_StructDefinedInApi1_impl(
+fn wire_test_struct_defined_in_api_1_impl(
     port_: MessagePort,
     custom: impl Wire2Api<StructDefinedInApi1> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "test_StructDefinedInApi1",
+            debug_name: "test_struct_defined_in_api_1",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_custom = custom.wire2api();
-            move |task_callback| Ok(test_StructDefinedInApi1(api_custom))
+            move |task_callback| Ok(test_struct_defined_in_api_1(api_custom))
         },
     )
 }

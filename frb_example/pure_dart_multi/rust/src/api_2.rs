@@ -36,6 +36,6 @@ pub fn test_cross_shared_struct_2(name: String) -> CrossSharedStruct {
     CrossSharedStruct { name }
 }
 
-pub fn test_StructDefinedInApi2(custom: StructDefinedInApi2) -> String {
+pub fn test_struct_defined_in_api_2(custom: StructDefinedInApi2) -> String {
     custom.name
 }

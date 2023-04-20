@@ -27,8 +27,8 @@ pub fn wire_test_cross_shared_struct_2(port_: MessagePort, name: String) {
 }
 
 #[wasm_bindgen]
-pub fn wire_test_StructDefinedInApi2(port_: MessagePort, custom: JsValue) {
-    wire_test_StructDefinedInApi2_impl(port_, custom)
+pub fn wire_test_struct_defined_in_api_2(port_: MessagePort, custom: JsValue) {
+    wire_test_struct_defined_in_api_2_impl(port_, custom)
 }
 
 #[wasm_bindgen]

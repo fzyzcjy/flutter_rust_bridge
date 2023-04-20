@@ -55,6 +55,7 @@ abstract class ApiClass1 {
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodStructDefinedInApi1ConstMeta;
 }
 
+/// This is a struct only used in API block 1 for test, but not defined in block file
 class OnlyForApi1Struct {
   final int id;
   final double num;
@@ -193,7 +194,7 @@ class ApiClass1Impl implements ApiClass1 {
   Future<String> testStructDefinedInApi1({required StructDefinedInApi1 custom, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_struct_defined_in_api_1(custom);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_StructDefinedInApi1(port_, arg0),
+      callFfi: (port_) => _platform.inner.wire_test_struct_defined_in_api_1(port_, arg0),
       parseSuccessData: _sharedImpl.wire2api_String,
       constMeta: kTestStructDefinedInApi1ConstMeta,
       argValues: [custom],
@@ -202,7 +203,7 @@ class ApiClass1Impl implements ApiClass1 {
   }
 
   FlutterRustBridgeTaskConstMeta get kTestStructDefinedInApi1ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_StructDefinedInApi1",
+        debugName: "test_struct_defined_in_api_1",
         argNames: ["custom"],
       );
 

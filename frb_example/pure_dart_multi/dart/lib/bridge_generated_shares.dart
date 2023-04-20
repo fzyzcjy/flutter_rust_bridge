@@ -20,6 +20,8 @@ import 'bridge_generated_shares.io.dart' if (dart.library.html) 'bridge_generate
 
 abstract class BridgeGeneratedShares {}
 
+/// this struct is used only as parameter in API block1 and used only as return type in API block2, but not
+/// defined in either block file
 class CrossSharedStruct {
   final String name;
 
@@ -28,6 +30,7 @@ class CrossSharedStruct {
   });
 }
 
+/// This is a struct used in all API blocks for test, but not defined in any regular block file
 class SharedStruct {
   final int id;
   final double num;

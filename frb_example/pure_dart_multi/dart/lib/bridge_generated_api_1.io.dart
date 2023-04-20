@@ -263,21 +263,21 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
   late final _wire_test_cross_shared_struct_1 =
       _wire_test_cross_shared_struct_1Ptr.asFunction<void Function(int, ffi.Pointer<wire_CrossSharedStruct>)>();
 
-  void wire_test_StructDefinedInApi1(
+  void wire_test_struct_defined_in_api_1(
     int port_,
     ffi.Pointer<wire_StructDefinedInApi1> custom,
   ) {
-    return _wire_test_StructDefinedInApi1(
+    return _wire_test_struct_defined_in_api_1(
       port_,
       custom,
     );
   }
 
-  late final _wire_test_StructDefinedInApi1Ptr =
+  late final _wire_test_struct_defined_in_api_1Ptr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_StructDefinedInApi1>)>>(
-          'wire_test_StructDefinedInApi1');
-  late final _wire_test_StructDefinedInApi1 =
-      _wire_test_StructDefinedInApi1Ptr.asFunction<void Function(int, ffi.Pointer<wire_StructDefinedInApi1>)>();
+          'wire_test_struct_defined_in_api_1');
+  late final _wire_test_struct_defined_in_api_1 =
+      _wire_test_struct_defined_in_api_1Ptr.asFunction<void Function(int, ffi.Pointer<wire_StructDefinedInApi1>)>();
 
   void wire_test_method__method__StructDefinedInApi1(
     int port_,
