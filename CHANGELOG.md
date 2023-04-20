@@ -1,3 +1,7 @@
+## 1.75.1
+
+* Fix compile error when building frb_codegen w/o serde feature #1185 (thanks @phlip9)
+
 ## 1.75.0
 
 * Allow removing `bridge` field in dart model #1170 (thanks @huang12zheng)
