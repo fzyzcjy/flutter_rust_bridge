@@ -32,6 +32,7 @@ Opts _$parseOptsResult(ArgResults result) => Opts()
   ..open = result['open'] as bool
   ..runTests = result['run-tests'] as bool
   ..release = result['release'] as bool
+  ..localCanvaskit = result['local-canvaskit'] as bool
   ..weakRefs = result['weak-refs'] as bool
   ..referenceTypes = result['reference-types'] as bool
   ..help = result['help'] as bool
@@ -80,7 +81,7 @@ ArgParser _$populateOptsParser(ArgParser parser) => parser
   )
   ..addFlag(
     'relax-coep',
-    help: 'Set COEP to credentialless\nDefaults to true for Flutter',
+    help: 'Set COEP to credentialless\nDefaults to true for Flutter\nset to false for Firefox',
   )
   ..addFlag(
     'open',
@@ -96,6 +97,12 @@ ArgParser _$populateOptsParser(ArgParser parser) => parser
     'release',
     help: 'Compile in release mode',
     negatable: false,
+  )
+  ..addFlag(
+    'local-canvaskit',
+    help: 'Path to a local CanvasKit build',
+    abbr: 'l',
+    defaultsTo: true,
   )
   ..addFlag(
     'weak-refs',

@@ -116,9 +116,9 @@ class Opts {
   @CliOption(abbr: 'v', help: 'Display more verbose information')
   late bool verbose;
   @CliOption(
-    help: 'Set COEP to credentialless\n'
-        'Defaults to true for Flutter',
-  )
+      help: 'Set COEP to credentialless\n'
+          'Defaults to true for Flutter\n'
+          'set to false for Firefox')
   late bool relaxCoep;
   late bool relaxCoepWasParsed;
   @CliOption(help: 'Open the webpage in a browser', defaultsTo: true)
@@ -127,6 +127,11 @@ class Opts {
   late bool runTests;
   @CliOption(help: 'Compile in release mode', negatable: false)
   late bool release;
+  @CliOption(
+      help: 'Use local canvaskit\n'
+          'Firefox does not support remote loaded canvaskit due to CORS settings on the CDN',
+      defaultsTo: true)
+  late bool localCanvaskit;
   @CliOption(
     help: 'Enable the weak references proposal\n'
         'Requires wasm-bindgen in path',
@@ -288,7 +293,14 @@ Future<void> build(
   } else {
     await system(
       'flutter',
-      ['build', 'web', if (!config.release) '--profile'] + Opts.rest(args),
+      [
+            'build',
+            'web',
+            if (!config.release) '--profile',
+            if (config.localCanvaskit)
+              '--dart-define=FLUTTER_WEB_CANVASKIT_URL=/canvaskit/'
+          ] +
+          Opts.rest(args),
     );
   }
 }
@@ -321,6 +333,7 @@ Future<void> runServer(Opts config, {required String root}) async {
     return (req) async {
       final res = await handler(req);
       return res.change(headers: {
+        'Access-Control-Allow-Origin': '*',
         'Cross-Origin-Opener-Policy': 'same-origin',
         'Cross-Origin-Embedder-Policy':
             shouldRelaxCoep ? 'credentialless' : 'require-corp',
