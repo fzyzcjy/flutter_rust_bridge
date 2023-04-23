@@ -94,34 +94,35 @@ void main(List<String> args) {
   //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑test api 2↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
   //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓test struct methods↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+  final apiShare = BridgeGeneratedSharesImpl(dylib);
   test('test struct method of `SharedStruct`', () async {
-    final obj = SharedStruct(name: "string", id: 1, num: 2.2);
+    final obj = SharedStruct(bridge: apiShare, name: "string", id: 1, num: 2.2);
     expect(
       await obj.testMethod(message: 'msg'),
       "msg",
     );
     expect(
-      await SharedStruct.testStaticMethod(message: 'msg'),
+      await SharedStruct.testStaticMethod(bridge: apiShare, message: 'msg'),
       "msg",
     );
   });
 
   test('test struct method of `CrossSharedStruct`', () async {
-    final obj = CrossSharedStruct(name: "testName");
+    final obj = CrossSharedStruct(bridge: apiShare, name: "testName");
     expect(
       await obj.testMethod(message: 'msg'),
       "msg",
     );
     expect(
-      await CrossSharedStruct.testStaticMethod(message: 'msg'),
+      await CrossSharedStruct.testStaticMethod(bridge: apiShare, message: 'msg'),
       "msg",
     );
   });
 
   test('test struct method of `OnlyForApi1Struct`', () async {
-    final obj = OnlyForApi1Struct(name: "string", id: 1, num: 2.2);
+    final obj = OnlyForApi1Struct(bridge: api1, name: "string", id: 1, num: 2.2);
     expect(
-      await obj.testMethod(bridge: api1, message: 'msg'),
+      await obj.testMethod(message: 'msg'),
       "msg",
     );
     expect(
@@ -131,9 +132,9 @@ void main(List<String> args) {
   });
 
   test('test struct method of `OnlyForApi2Struct`', () async {
-    final obj = OnlyForApi2Struct(name: "string", id: 1, num: 2.2);
+    final obj = OnlyForApi2Struct(bridge: api2, name: "string", id: 1, num: 2.2);
     expect(
-      await obj.testMethod(bridge: api2, message: 'msg'),
+      await obj.testMethod(message: 'msg'),
       "msg",
     );
     expect(
