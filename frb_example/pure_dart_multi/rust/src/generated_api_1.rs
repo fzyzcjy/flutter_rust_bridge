@@ -81,6 +81,22 @@ fn wire_test_shared_struct_1_impl(
         },
     )
 }
+fn wire_test_cross_shared_struct_1_impl(
+    port_: MessagePort,
+    custom: impl bridge_generated_shares::Wire2Api<CrossSharedStruct> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_cross_shared_struct_1",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_custom = custom.wire2api();
+            move |task_callback| Ok(test_cross_shared_struct_1(api_custom))
+        },
+    )
+}
 fn wire_test_unique_struct_1_impl(
     port_: MessagePort,
     custom: impl Wire2Api<OnlyForApi1Struct> + UnwindSafe,
@@ -98,22 +114,6 @@ fn wire_test_unique_struct_1_impl(
             let api_s = s.wire2api();
             let api_i = i.wire2api();
             move |task_callback| Ok(test_unique_struct_1(api_custom, api_s, api_i))
-        },
-    )
-}
-fn wire_test_cross_shared_struct_1_impl(
-    port_: MessagePort,
-    custom: impl bridge_generated_shares::Wire2Api<CrossSharedStruct> + UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
-        WrapInfo {
-            debug_name: "test_cross_shared_struct_1",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_custom = custom.wire2api();
-            move |task_callback| Ok(test_cross_shared_struct_1(api_custom))
         },
     )
 }

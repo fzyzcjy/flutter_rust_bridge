@@ -26,14 +26,14 @@ pub fn test_shared_struct_2(mut custom: SharedStruct, s: String, i: i32) -> Shar
     custom
 }
 
+pub fn test_cross_shared_struct_2(name: String) -> CrossSharedStruct {
+    CrossSharedStruct { name }
+}
+
 pub fn test_unique_struct_2(mut custom: OnlyForApi2Struct, s: String, i: i64) -> OnlyForApi2Struct {
     custom.name = s;
     custom.id = i;
     custom
-}
-
-pub fn test_cross_shared_struct_2(name: String) -> CrossSharedStruct {
-    CrossSharedStruct { name }
 }
 
 pub fn test_struct_defined_in_api_2(custom: StructDefinedInApi2) -> String {

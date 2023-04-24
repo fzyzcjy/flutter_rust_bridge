@@ -17,13 +17,13 @@ pub fn wire_test_shared_struct_2(port_: MessagePort, custom: JsValue, s: String,
 }
 
 #[wasm_bindgen]
-pub fn wire_test_unique_struct_2(port_: MessagePort, custom: JsValue, s: String, i: i64) {
-    wire_test_unique_struct_2_impl(port_, custom, s, i)
+pub fn wire_test_cross_shared_struct_2(port_: MessagePort, name: String) {
+    wire_test_cross_shared_struct_2_impl(port_, name)
 }
 
 #[wasm_bindgen]
-pub fn wire_test_cross_shared_struct_2(port_: MessagePort, name: String) {
-    wire_test_cross_shared_struct_2_impl(port_, name)
+pub fn wire_test_unique_struct_2(port_: MessagePort, custom: JsValue, s: String, i: i64) {
+    wire_test_unique_struct_2_impl(port_, custom, s, i)
 }
 
 #[wasm_bindgen]
