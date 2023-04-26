@@ -33,7 +33,7 @@ Here is my another open-source library :) https://github.com/fzyzcjy/flutter_smo
 ## ✨ Contributors
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-59-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-60-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key) following [all-contributors](https://github.com/all-contributors/all-contributors) specification):
@@ -119,6 +119,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/escwxyz"><img src="https://avatars.githubusercontent.com/u/124119483?v=4?s=100" width="100px;" alt="J"/><br /><sub><b>J</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=escwxyz" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://monitzer.com"><img src="https://avatars.githubusercontent.com/u/644763?v=4?s=100" width="100px;" alt="Andreas Monitzer"/><br /><sub><b>Andreas Monitzer</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=anlumo" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://satvikpendem.com"><img src="https://avatars.githubusercontent.com/u/42670561?v=4?s=100" width="100px;" alt="Satvik Pendem"/><br /><sub><b>Satvik Pendem</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=satvikpendem" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://phlip9.com"><img src="https://avatars.githubusercontent.com/u/918989?v=4?s=100" width="100px;" alt="Philip Kannegaard Hayes"/><br /><sub><b>Philip Kannegaard Hayes</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=phlip9" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
@@ -164,6 +165,7 @@ More specifically, thanks for all these contributions:
 * [w-ensink](https://github.com/w-ensink): Improve doc. Fix CI. Refactor. Add tests.
 * [codercengiz](https://github.com/codercengiz): Fix mirroring bug.
 * [Michael-F-Bryan](https://github.com/Michael-F-Bryan): Detect broken bindings.
+* [phlip9](https://github.com/phlip9): Fix no-serde compilation.
 * [bus710](https://github.com/bus710): Add a case in troubleshooting.
 * [Demezy](https://github.com/Demezy): Mention troubleshooting.
 * [anstadnik](https://github.com/anstadnik): Check keywords.

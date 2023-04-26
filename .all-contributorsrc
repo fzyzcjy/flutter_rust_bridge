@@ -543,7 +543,7 @@
       "login": "anlumo",
       "name": "Andreas Monitzer",
       "avatar_url": "https://avatars.githubusercontent.com/u/644763?v=4",
-      "profile": "http://monitzer.com",
+      "profile": "https://monitzer.com",
       "contributions": [
         "code"
       ]
@@ -553,6 +553,15 @@
       "name": "Satvik Pendem",
       "avatar_url": "https://avatars.githubusercontent.com/u/42670561?v=4",
       "profile": "https://satvikpendem.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "phlip9",
+      "name": "Philip Kannegaard Hayes",
+      "avatar_url": "https://avatars.githubusercontent.com/u/918989?v=4",
+      "profile": "https://phlip9.com",
       "contributions": [
         "code"
       ]
