@@ -168,6 +168,10 @@ impl<'a> Generator<'a> {
             .collect();
 
         lines.push(self.section_header_comment("impl IntoDart"));
+        log::debug!(
+            "distinct_output_types_{:?}:\n{distinct_output_types:?}",
+            self.config.block_index
+        ); //TODO: delete
         lines.extend(
             distinct_output_types
                 .iter()
@@ -177,18 +181,9 @@ impl<'a> Generator<'a> {
         lines.push(self.section_header_comment("executor"));
         lines.push(self.generate_executor(ir_file));
 
-        self.generate_io_part(
-            &mut lines,
-            &distinct_input_types,
-            ir_file,
-            all_configs,
-        );
+        self.generate_io_part(&mut lines, &distinct_input_types, ir_file, all_configs);
 
-        self.generate_wasm_part(
-            &mut lines,
-            &distinct_input_types,
-            ir_file,
-        );
+        self.generate_wasm_part(&mut lines, &distinct_input_types, ir_file);
 
         lines.join("\n")
     }

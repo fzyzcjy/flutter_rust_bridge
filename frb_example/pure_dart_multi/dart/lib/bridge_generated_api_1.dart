@@ -19,71 +19,76 @@ export 'bridge_generated_shares.dart';
 import 'bridge_generated_shares.io.dart' if (dart.library.html) 'bridge_generated_shares.web.dart';
 
 abstract class ApiClass1 {
-  Future<double> testInbuiltType1({required int a, required double b, dynamic hint});
+  Future<double> testInbuiltTypeInBlock1({required int a, required double b, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kTestInbuiltType1ConstMeta;
+  FlutterRustBridgeTaskConstMeta get kTestInbuiltTypeInBlock1ConstMeta;
 
-  Future<String> testString1({required String s, required int i, dynamic hint});
+  Future<String> testStringInBlock1({required String s, required int i, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kTestString1ConstMeta;
+  FlutterRustBridgeTaskConstMeta get kTestStringInBlock1ConstMeta;
 
-  Future<SharedStruct> testSharedStruct1(
-      {required SharedStruct custom, required String s, required int i, dynamic hint});
+  Future<SharedStructInAllBlocks> testAllSharedStructInBlock1(
+      {required SharedStructInAllBlocks custom, required String s, required int i, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kTestSharedStruct1ConstMeta;
+  FlutterRustBridgeTaskConstMeta get kTestAllSharedStructInBlock1ConstMeta;
 
-  Future<String> testCrossSharedStruct1({required CrossSharedStruct custom, dynamic hint});
+  Future<SharedStructInBlock1And2> testSharedStructInBlock1For1And2(
+      {required SharedStructInBlock1And2 custom, required String s, required int i, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kTestCrossSharedStruct1ConstMeta;
+  FlutterRustBridgeTaskConstMeta get kTestSharedStructInBlock1For1And2ConstMeta;
 
-  Future<OnlyForApi1Struct> testUniqueStruct1(
-      {required OnlyForApi1Struct custom, required String s, required int i, dynamic hint});
+  Future<String> testCrossSharedStructInBlock1For1And2({required CrossSharedStructInBlock1And2 custom, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestCrossSharedStructInBlock1For1And2ConstMeta;
+
+  Future<StructOnlyForBlock1> testUniqueStruct1(
+      {required StructOnlyForBlock1 custom, required String s, required int i, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kTestUniqueStruct1ConstMeta;
 
-  Future<String> testStructDefinedInApi1({required StructDefinedInApi1 custom, dynamic hint});
+  Future<String> testStructDefinedInBlock1({required StructDefinedInBlock1 custom, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kTestStructDefinedInApi1ConstMeta;
+  FlutterRustBridgeTaskConstMeta get kTestStructDefinedInBlock1ConstMeta;
 
-  Future<String> testMethodMethodStructDefinedInApi1(
-      {required StructDefinedInApi1 that, required String message, dynamic hint});
+  Future<String> testMethodMethodStructDefinedInBlock1(
+      {required StructDefinedInBlock1 that, required String message, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kTestMethodMethodStructDefinedInApi1ConstMeta;
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodStructDefinedInBlock1ConstMeta;
 
-  Future<String> testStaticMethodStaticMethodStructDefinedInApi1({required String message, dynamic hint});
+  Future<String> testStaticMethodStaticMethodStructDefinedInBlock1({required String message, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodStructDefinedInApi1ConstMeta;
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodStructDefinedInBlock1ConstMeta;
 }
 
-/// This is a struct only used in API block 1 for test, but not defined in block file
-class OnlyForApi1Struct {
-  final int id;
-  final double num;
-  final String name;
-
-  const OnlyForApi1Struct({
-    required this.id,
-    required this.num,
-    required this.name,
-  });
-}
-
-class StructDefinedInApi1 {
+class StructDefinedInBlock1 {
   final ApiClass1 bridge;
   final String name;
 
-  const StructDefinedInApi1({
+  const StructDefinedInBlock1({
     required this.bridge,
     required this.name,
   });
 
-  Future<String> testMethod({required String message, dynamic hint}) => bridge.testMethodMethodStructDefinedInApi1(
+  Future<String> testMethod({required String message, dynamic hint}) => bridge.testMethodMethodStructDefinedInBlock1(
         that: this,
         message: message,
       );
 
   static Future<String> testStaticMethod({required ApiClass1 bridge, required String message, dynamic hint}) =>
-      bridge.testStaticMethodStaticMethodStructDefinedInApi1(message: message, hint: hint);
+      bridge.testStaticMethodStaticMethodStructDefinedInBlock1(message: message, hint: hint);
+}
+
+/// This is a struct only used in API block 1 for test, but not defined in block file
+class StructOnlyForBlock1 {
+  final int id;
+  final double num;
+  final String name;
+
+  const StructOnlyForBlock1({
+    required this.id,
+    required this.num,
+    required this.name,
+  });
 }
 
 class ApiClass1Impl implements ApiClass1 {
@@ -103,83 +108,103 @@ class ApiClass1Impl implements ApiClass1 {
   /// Only valid on web/WASM platforms.
   factory ApiClass1Impl.wasm(FutureOr<WasmModule> module) => ApiClass1Impl(module as ExternalLibrary);
 
-  Future<double> testInbuiltType1({required int a, required double b, dynamic hint}) {
+  Future<double> testInbuiltTypeInBlock1({required int a, required double b, dynamic hint}) {
     var arg0 = api2wire_i32(a);
     var arg1 = api2wire_f32(b);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_inbuilt_type_1(port_, arg0, arg1),
+      callFfi: (port_) => _platform.inner.wire_test_inbuilt_type_in_block_1(port_, arg0, arg1),
       parseSuccessData: _sharedImpl.wire2api_f32,
-      constMeta: kTestInbuiltType1ConstMeta,
+      constMeta: kTestInbuiltTypeInBlock1ConstMeta,
       argValues: [a, b],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kTestInbuiltType1ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_inbuilt_type_1",
+  FlutterRustBridgeTaskConstMeta get kTestInbuiltTypeInBlock1ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_inbuilt_type_in_block_1",
         argNames: ["a", "b"],
       );
 
-  Future<String> testString1({required String s, required int i, dynamic hint}) {
+  Future<String> testStringInBlock1({required String s, required int i, dynamic hint}) {
     var arg0 = _sharedPlatform.api2wire_String(s);
     var arg1 = _sharedPlatform.api2wire_u64(i);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_string_1(port_, arg0, arg1),
+      callFfi: (port_) => _platform.inner.wire_test_string_in_block_1(port_, arg0, arg1),
       parseSuccessData: _sharedImpl.wire2api_String,
-      constMeta: kTestString1ConstMeta,
+      constMeta: kTestStringInBlock1ConstMeta,
       argValues: [s, i],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kTestString1ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_string_1",
+  FlutterRustBridgeTaskConstMeta get kTestStringInBlock1ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_string_in_block_1",
         argNames: ["s", "i"],
       );
 
-  Future<SharedStruct> testSharedStruct1(
-      {required SharedStruct custom, required String s, required int i, dynamic hint}) {
-    var arg0 = _sharedPlatform.api2wire_box_autoadd_shared_struct(custom);
+  Future<SharedStructInAllBlocks> testAllSharedStructInBlock1(
+      {required SharedStructInAllBlocks custom, required String s, required int i, dynamic hint}) {
+    var arg0 = _sharedPlatform.api2wire_box_autoadd_shared_struct_in_all_blocks(custom);
     var arg1 = _sharedPlatform.api2wire_String(s);
     var arg2 = api2wire_i32(i);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_shared_struct_1(port_, arg0, arg1, arg2),
-      parseSuccessData: _sharedImpl.wire2api_shared_struct,
-      constMeta: kTestSharedStruct1ConstMeta,
+      callFfi: (port_) => _platform.inner.wire_test_all_shared_struct_in_block_1(port_, arg0, arg1, arg2),
+      parseSuccessData: _sharedImpl.wire2api_shared_struct_in_all_blocks,
+      constMeta: kTestAllSharedStructInBlock1ConstMeta,
       argValues: [custom, s, i],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kTestSharedStruct1ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_shared_struct_1",
+  FlutterRustBridgeTaskConstMeta get kTestAllSharedStructInBlock1ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_all_shared_struct_in_block_1",
         argNames: ["custom", "s", "i"],
       );
 
-  Future<String> testCrossSharedStruct1({required CrossSharedStruct custom, dynamic hint}) {
-    var arg0 = _sharedPlatform.api2wire_box_autoadd_cross_shared_struct(custom);
+  Future<SharedStructInBlock1And2> testSharedStructInBlock1For1And2(
+      {required SharedStructInBlock1And2 custom, required String s, required int i, dynamic hint}) {
+    var arg0 = _sharedPlatform.api2wire_box_autoadd_shared_struct_in_block_1_and_2(custom);
+    var arg1 = _sharedPlatform.api2wire_String(s);
+    var arg2 = api2wire_i32(i);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_cross_shared_struct_1(port_, arg0),
+      callFfi: (port_) => _platform.inner.wire_test_shared_struct_in_block_1_for_1_and_2(port_, arg0, arg1, arg2),
+      parseSuccessData: _sharedImpl.wire2api_shared_struct_in_block_1_and_2,
+      constMeta: kTestSharedStructInBlock1For1And2ConstMeta,
+      argValues: [custom, s, i],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestSharedStructInBlock1For1And2ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_shared_struct_in_block_1_for_1_and_2",
+        argNames: ["custom", "s", "i"],
+      );
+
+  Future<String> testCrossSharedStructInBlock1For1And2({required CrossSharedStructInBlock1And2 custom, dynamic hint}) {
+    var arg0 = _sharedPlatform.api2wire_box_autoadd_cross_shared_struct_in_block_1_and_2(custom);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_cross_shared_struct_in_block_1_for_1_and_2(port_, arg0),
       parseSuccessData: _sharedImpl.wire2api_String,
-      constMeta: kTestCrossSharedStruct1ConstMeta,
+      constMeta: kTestCrossSharedStructInBlock1For1And2ConstMeta,
       argValues: [custom],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kTestCrossSharedStruct1ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_cross_shared_struct_1",
+  FlutterRustBridgeTaskConstMeta get kTestCrossSharedStructInBlock1For1And2ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_cross_shared_struct_in_block_1_for_1_and_2",
         argNames: ["custom"],
       );
 
-  Future<OnlyForApi1Struct> testUniqueStruct1(
-      {required OnlyForApi1Struct custom, required String s, required int i, dynamic hint}) {
-    var arg0 = _platform.api2wire_box_autoadd_only_for_api_1_struct(custom);
+  Future<StructOnlyForBlock1> testUniqueStruct1(
+      {required StructOnlyForBlock1 custom, required String s, required int i, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_struct_only_for_block_1(custom);
     var arg1 = _sharedPlatform.api2wire_String(s);
-    var arg2 = api2wire_i16(i);
+    var arg2 = api2wire_i8(i);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_unique_struct_1(port_, arg0, arg1, arg2),
-      parseSuccessData: _wire2api_only_for_api_1_struct,
+      parseSuccessData: _wire2api_struct_only_for_block_1,
       constMeta: kTestUniqueStruct1ConstMeta,
       argValues: [custom, s, i],
       hint: hint,
@@ -191,55 +216,55 @@ class ApiClass1Impl implements ApiClass1 {
         argNames: ["custom", "s", "i"],
       );
 
-  Future<String> testStructDefinedInApi1({required StructDefinedInApi1 custom, dynamic hint}) {
-    var arg0 = _platform.api2wire_box_autoadd_struct_defined_in_api_1(custom);
+  Future<String> testStructDefinedInBlock1({required StructDefinedInBlock1 custom, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_struct_defined_in_block_1(custom);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_struct_defined_in_api_1(port_, arg0),
+      callFfi: (port_) => _platform.inner.wire_test_struct_defined_in_block_1(port_, arg0),
       parseSuccessData: _sharedImpl.wire2api_String,
-      constMeta: kTestStructDefinedInApi1ConstMeta,
+      constMeta: kTestStructDefinedInBlock1ConstMeta,
       argValues: [custom],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kTestStructDefinedInApi1ConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_struct_defined_in_api_1",
+  FlutterRustBridgeTaskConstMeta get kTestStructDefinedInBlock1ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_struct_defined_in_block_1",
         argNames: ["custom"],
       );
 
-  Future<String> testMethodMethodStructDefinedInApi1(
-      {required StructDefinedInApi1 that, required String message, dynamic hint}) {
-    var arg0 = _platform.api2wire_box_autoadd_struct_defined_in_api_1(that);
+  Future<String> testMethodMethodStructDefinedInBlock1(
+      {required StructDefinedInBlock1 that, required String message, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_struct_defined_in_block_1(that);
     var arg1 = _sharedPlatform.api2wire_String(message);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_method__method__StructDefinedInApi1(port_, arg0, arg1),
+      callFfi: (port_) => _platform.inner.wire_test_method__method__StructDefinedInBlock1(port_, arg0, arg1),
       parseSuccessData: _sharedImpl.wire2api_String,
-      constMeta: kTestMethodMethodStructDefinedInApi1ConstMeta,
+      constMeta: kTestMethodMethodStructDefinedInBlock1ConstMeta,
       argValues: [that, message],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kTestMethodMethodStructDefinedInApi1ConstMeta =>
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodStructDefinedInBlock1ConstMeta =>
       const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_method__method__StructDefinedInApi1",
+        debugName: "test_method__method__StructDefinedInBlock1",
         argNames: ["that", "message"],
       );
 
-  Future<String> testStaticMethodStaticMethodStructDefinedInApi1({required String message, dynamic hint}) {
+  Future<String> testStaticMethodStaticMethodStructDefinedInBlock1({required String message, dynamic hint}) {
     var arg0 = _sharedPlatform.api2wire_String(message);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_static_method__static_method__StructDefinedInApi1(port_, arg0),
+      callFfi: (port_) => _platform.inner.wire_test_static_method__static_method__StructDefinedInBlock1(port_, arg0),
       parseSuccessData: _sharedImpl.wire2api_String,
-      constMeta: kTestStaticMethodStaticMethodStructDefinedInApi1ConstMeta,
+      constMeta: kTestStaticMethodStaticMethodStructDefinedInBlock1ConstMeta,
       argValues: [message],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodStructDefinedInApi1ConstMeta =>
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodStructDefinedInBlock1ConstMeta =>
       const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_static_method__static_method__StructDefinedInApi1",
+        debugName: "test_static_method__static_method__StructDefinedInBlock1",
         argNames: ["message"],
       );
 
@@ -248,15 +273,15 @@ class ApiClass1Impl implements ApiClass1 {
   }
 // Section: wire2api
 
-  int _wire2api_i16(dynamic raw) {
+  int _wire2api_i8(dynamic raw) {
     return raw as int;
   }
 
-  OnlyForApi1Struct _wire2api_only_for_api_1_struct(dynamic raw) {
+  StructOnlyForBlock1 _wire2api_struct_only_for_block_1(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 3) throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
-    return OnlyForApi1Struct(
-      id: _wire2api_i16(arr[0]),
+    return StructOnlyForBlock1(
+      id: _wire2api_i8(arr[0]),
       num: _sharedImpl.wire2api_f64(arr[1]),
       name: _sharedImpl.wire2api_String(arr[2]),
     );
@@ -266,7 +291,7 @@ class ApiClass1Impl implements ApiClass1 {
 // Section: api2wire
 
 @protected
-int api2wire_i16(int raw) {
+int api2wire_i8(int raw) {
   return raw;
 }
 

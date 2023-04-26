@@ -467,11 +467,21 @@ impl IrFile {
         let get_shared_distinct_types_for_current_block =
             &self.get_shared_distinct_types_for_current_block();
         log::warn!(
-            "the fetched get_shared_distinct_types_for_current_block:{:?}",
+            "the fetched get_shared_distinct_types_for_current_block_index_{:?}:{:?}",
+            self.block_index,
             get_shared_distinct_types_for_current_block
         ); //TODO: delete
 
-        let r = get_shared_distinct_types_for_current_block.contains(ty);
+        // TODO: is this work around correct for `syncReturn` wrapper type?
+        for each in get_shared_distinct_types_for_current_block {
+            let s = each.safe_ident();
+            log::debug!("the gott safe ident: {s}"); //TODO: delete
+        }
+
+        let found_op = get_shared_distinct_types_for_current_block
+            .iter()
+            .find(|each| each.safe_ident() == ty.safe_ident());
+        let r = found_op.is_some();
         log::warn!("the r is :{r} for {ty:?}"); //TODO: delete
         r
     }

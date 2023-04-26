@@ -23,16 +23,42 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   }
 
   @protected
-  ffi.Pointer<wire_CrossSharedStruct> api2wire_box_autoadd_cross_shared_struct(CrossSharedStruct raw) {
-    final ptr = inner.new_box_autoadd_cross_shared_struct();
-    _api_fill_to_wire_cross_shared_struct(raw, ptr.ref);
+  ffi.Pointer<wire_CrossSharedStructInBlock1And2> api2wire_box_autoadd_cross_shared_struct_in_block_1_and_2(
+      CrossSharedStructInBlock1And2 raw) {
+    final ptr = inner.new_box_autoadd_cross_shared_struct_in_block_1_and_2();
+    _api_fill_to_wire_cross_shared_struct_in_block_1_and_2(raw, ptr.ref);
     return ptr;
   }
 
   @protected
-  ffi.Pointer<wire_SharedStruct> api2wire_box_autoadd_shared_struct(SharedStruct raw) {
-    final ptr = inner.new_box_autoadd_shared_struct();
-    _api_fill_to_wire_shared_struct(raw, ptr.ref);
+  ffi.Pointer<wire_CrossSharedStructInBlock2And3> api2wire_box_autoadd_cross_shared_struct_in_block_2_and_3(
+      CrossSharedStructInBlock2And3 raw) {
+    final ptr = inner.new_box_autoadd_cross_shared_struct_in_block_2_and_3();
+    _api_fill_to_wire_cross_shared_struct_in_block_2_and_3(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_SharedStructInAllBlocks> api2wire_box_autoadd_shared_struct_in_all_blocks(
+      SharedStructInAllBlocks raw) {
+    final ptr = inner.new_box_autoadd_shared_struct_in_all_blocks();
+    _api_fill_to_wire_shared_struct_in_all_blocks(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_SharedStructInBlock1And2> api2wire_box_autoadd_shared_struct_in_block_1_and_2(
+      SharedStructInBlock1And2 raw) {
+    final ptr = inner.new_box_autoadd_shared_struct_in_block_1_and_2();
+    _api_fill_to_wire_shared_struct_in_block_1_and_2(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_SharedStructInBlock2And3> api2wire_box_autoadd_shared_struct_in_block_2_and_3(
+      SharedStructInBlock2And3 raw) {
+    final ptr = inner.new_box_autoadd_shared_struct_in_block_2_and_3();
+    _api_fill_to_wire_shared_struct_in_block_2_and_3(raw, ptr.ref);
     return ptr;
   }
 
@@ -51,20 +77,57 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
 
 // Section: api_fill_to_wire
 
-  void _api_fill_to_wire_box_autoadd_cross_shared_struct(
-      CrossSharedStruct apiObj, ffi.Pointer<wire_CrossSharedStruct> wireObj) {
-    _api_fill_to_wire_cross_shared_struct(apiObj, wireObj.ref);
+  void _api_fill_to_wire_box_autoadd_cross_shared_struct_in_block_1_and_2(
+      CrossSharedStructInBlock1And2 apiObj, ffi.Pointer<wire_CrossSharedStructInBlock1And2> wireObj) {
+    _api_fill_to_wire_cross_shared_struct_in_block_1_and_2(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_shared_struct(SharedStruct apiObj, ffi.Pointer<wire_SharedStruct> wireObj) {
-    _api_fill_to_wire_shared_struct(apiObj, wireObj.ref);
+  void _api_fill_to_wire_box_autoadd_cross_shared_struct_in_block_2_and_3(
+      CrossSharedStructInBlock2And3 apiObj, ffi.Pointer<wire_CrossSharedStructInBlock2And3> wireObj) {
+    _api_fill_to_wire_cross_shared_struct_in_block_2_and_3(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_cross_shared_struct(CrossSharedStruct apiObj, wire_CrossSharedStruct wireObj) {
+  void _api_fill_to_wire_box_autoadd_shared_struct_in_all_blocks(
+      SharedStructInAllBlocks apiObj, ffi.Pointer<wire_SharedStructInAllBlocks> wireObj) {
+    _api_fill_to_wire_shared_struct_in_all_blocks(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_shared_struct_in_block_1_and_2(
+      SharedStructInBlock1And2 apiObj, ffi.Pointer<wire_SharedStructInBlock1And2> wireObj) {
+    _api_fill_to_wire_shared_struct_in_block_1_and_2(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_shared_struct_in_block_2_and_3(
+      SharedStructInBlock2And3 apiObj, ffi.Pointer<wire_SharedStructInBlock2And3> wireObj) {
+    _api_fill_to_wire_shared_struct_in_block_2_and_3(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_cross_shared_struct_in_block_1_and_2(
+      CrossSharedStructInBlock1And2 apiObj, wire_CrossSharedStructInBlock1And2 wireObj) {
     wireObj.name = api2wire_String(apiObj.name);
   }
 
-  void _api_fill_to_wire_shared_struct(SharedStruct apiObj, wire_SharedStruct wireObj) {
+  void _api_fill_to_wire_cross_shared_struct_in_block_2_and_3(
+      CrossSharedStructInBlock2And3 apiObj, wire_CrossSharedStructInBlock2And3 wireObj) {
+    wireObj.name = api2wire_String(apiObj.name);
+  }
+
+  void _api_fill_to_wire_shared_struct_in_all_blocks(
+      SharedStructInAllBlocks apiObj, wire_SharedStructInAllBlocks wireObj) {
+    wireObj.id = api2wire_i32(apiObj.id);
+    wireObj.num = api2wire_f64(apiObj.num);
+    wireObj.name = api2wire_String(apiObj.name);
+  }
+
+  void _api_fill_to_wire_shared_struct_in_block_1_and_2(
+      SharedStructInBlock1And2 apiObj, wire_SharedStructInBlock1And2 wireObj) {
+    wireObj.id = api2wire_i32(apiObj.id);
+    wireObj.num = api2wire_f64(apiObj.num);
+    wireObj.name = api2wire_String(apiObj.name);
+  }
+
+  void _api_fill_to_wire_shared_struct_in_block_2_and_3(
+      SharedStructInBlock2And3 apiObj, wire_SharedStructInBlock2And3 wireObj) {
     wireObj.id = api2wire_i32(apiObj.id);
     wireObj.num = api2wire_f64(apiObj.num);
     wireObj.name = api2wire_String(apiObj.name);
@@ -150,24 +213,57 @@ class BridgeGeneratedSharesWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>)>>('init_frb_dart_api_dl');
   late final _init_frb_dart_api_dl = _init_frb_dart_api_dlPtr.asFunction<int Function(ffi.Pointer<ffi.Void>)>();
 
-  ffi.Pointer<wire_CrossSharedStruct> new_box_autoadd_cross_shared_struct() {
-    return _new_box_autoadd_cross_shared_struct();
+  ffi.Pointer<wire_CrossSharedStructInBlock1And2> new_box_autoadd_cross_shared_struct_in_block_1_and_2() {
+    return _new_box_autoadd_cross_shared_struct_in_block_1_and_2();
   }
 
-  late final _new_box_autoadd_cross_shared_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_CrossSharedStruct> Function()>>(
-          'new_box_autoadd_cross_shared_struct');
-  late final _new_box_autoadd_cross_shared_struct =
-      _new_box_autoadd_cross_shared_structPtr.asFunction<ffi.Pointer<wire_CrossSharedStruct> Function()>();
+  late final _new_box_autoadd_cross_shared_struct_in_block_1_and_2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_CrossSharedStructInBlock1And2> Function()>>(
+          'new_box_autoadd_cross_shared_struct_in_block_1_and_2');
+  late final _new_box_autoadd_cross_shared_struct_in_block_1_and_2 =
+      _new_box_autoadd_cross_shared_struct_in_block_1_and_2Ptr
+          .asFunction<ffi.Pointer<wire_CrossSharedStructInBlock1And2> Function()>();
 
-  ffi.Pointer<wire_SharedStruct> new_box_autoadd_shared_struct() {
-    return _new_box_autoadd_shared_struct();
+  ffi.Pointer<wire_CrossSharedStructInBlock2And3> new_box_autoadd_cross_shared_struct_in_block_2_and_3() {
+    return _new_box_autoadd_cross_shared_struct_in_block_2_and_3();
   }
 
-  late final _new_box_autoadd_shared_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_SharedStruct> Function()>>('new_box_autoadd_shared_struct');
-  late final _new_box_autoadd_shared_struct =
-      _new_box_autoadd_shared_structPtr.asFunction<ffi.Pointer<wire_SharedStruct> Function()>();
+  late final _new_box_autoadd_cross_shared_struct_in_block_2_and_3Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_CrossSharedStructInBlock2And3> Function()>>(
+          'new_box_autoadd_cross_shared_struct_in_block_2_and_3');
+  late final _new_box_autoadd_cross_shared_struct_in_block_2_and_3 =
+      _new_box_autoadd_cross_shared_struct_in_block_2_and_3Ptr
+          .asFunction<ffi.Pointer<wire_CrossSharedStructInBlock2And3> Function()>();
+
+  ffi.Pointer<wire_SharedStructInAllBlocks> new_box_autoadd_shared_struct_in_all_blocks() {
+    return _new_box_autoadd_shared_struct_in_all_blocks();
+  }
+
+  late final _new_box_autoadd_shared_struct_in_all_blocksPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_SharedStructInAllBlocks> Function()>>(
+          'new_box_autoadd_shared_struct_in_all_blocks');
+  late final _new_box_autoadd_shared_struct_in_all_blocks = _new_box_autoadd_shared_struct_in_all_blocksPtr
+      .asFunction<ffi.Pointer<wire_SharedStructInAllBlocks> Function()>();
+
+  ffi.Pointer<wire_SharedStructInBlock1And2> new_box_autoadd_shared_struct_in_block_1_and_2() {
+    return _new_box_autoadd_shared_struct_in_block_1_and_2();
+  }
+
+  late final _new_box_autoadd_shared_struct_in_block_1_and_2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_SharedStructInBlock1And2> Function()>>(
+          'new_box_autoadd_shared_struct_in_block_1_and_2');
+  late final _new_box_autoadd_shared_struct_in_block_1_and_2 = _new_box_autoadd_shared_struct_in_block_1_and_2Ptr
+      .asFunction<ffi.Pointer<wire_SharedStructInBlock1And2> Function()>();
+
+  ffi.Pointer<wire_SharedStructInBlock2And3> new_box_autoadd_shared_struct_in_block_2_and_3() {
+    return _new_box_autoadd_shared_struct_in_block_2_and_3();
+  }
+
+  late final _new_box_autoadd_shared_struct_in_block_2_and_3Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_SharedStructInBlock2And3> Function()>>(
+          'new_box_autoadd_shared_struct_in_block_2_and_3');
+  late final _new_box_autoadd_shared_struct_in_block_2_and_3 = _new_box_autoadd_shared_struct_in_block_2_and_3Ptr
+      .asFunction<ffi.Pointer<wire_SharedStructInBlock2And3> Function()>();
 
   ffi.Pointer<wire_uint_8_list> new_uint_8_list(
     int len,
@@ -203,11 +299,35 @@ class wire_uint_8_list extends ffi.Struct {
   external int len;
 }
 
-class wire_CrossSharedStruct extends ffi.Struct {
+class wire_CrossSharedStructInBlock1And2 extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> name;
 }
 
-class wire_SharedStruct extends ffi.Struct {
+class wire_CrossSharedStructInBlock2And3 extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> name;
+}
+
+class wire_SharedStructInAllBlocks extends ffi.Struct {
+  @ffi.Int32()
+  external int id;
+
+  @ffi.Double()
+  external double num;
+
+  external ffi.Pointer<wire_uint_8_list> name;
+}
+
+class wire_SharedStructInBlock1And2 extends ffi.Struct {
+  @ffi.Int32()
+  external int id;
+
+  @ffi.Double()
+  external double num;
+
+  external ffi.Pointer<wire_uint_8_list> name;
+}
+
+class wire_SharedStructInBlock2And3 extends ffi.Struct {
   @ffi.Int32()
   external int id;
 

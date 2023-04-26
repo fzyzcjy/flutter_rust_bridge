@@ -23,28 +23,23 @@ class ApiClass2Platform extends FlutterRustBridgeBase<ApiClass2Wire> with Flutte
 // Section: api2wire
 
   @protected
-  List<dynamic> api2wire_box_autoadd_only_for_api_2_struct(OnlyForApi2Struct raw) {
-    return api2wire_only_for_api_2_struct(raw);
+  List<dynamic> api2wire_box_autoadd_struct_defined_in_block_2(StructDefinedInBlock2 raw) {
+    return api2wire_struct_defined_in_block_2(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_struct_defined_in_api_2(StructDefinedInApi2 raw) {
-    return api2wire_struct_defined_in_api_2(raw);
+  List<dynamic> api2wire_box_autoadd_struct_only_for_block_2(StructOnlyForBlock2 raw) {
+    return api2wire_struct_only_for_block_2(raw);
   }
 
   @protected
-  Object api2wire_i64(int raw) {
-    return castNativeBigInt(raw);
-  }
-
-  @protected
-  List<dynamic> api2wire_only_for_api_2_struct(OnlyForApi2Struct raw) {
-    return [api2wire_i64(raw.id), api2wire_f64(raw.num), _sharedPlatform.api2wire_String(raw.name)];
-  }
-
-  @protected
-  List<dynamic> api2wire_struct_defined_in_api_2(StructDefinedInApi2 raw) {
+  List<dynamic> api2wire_struct_defined_in_block_2(StructDefinedInBlock2 raw) {
     return [_sharedPlatform.api2wire_String(raw.name)];
+  }
+
+  @protected
+  List<dynamic> api2wire_struct_only_for_block_2(StructOnlyForBlock2 raw) {
+    return [api2wire_i16(raw.id), api2wire_f64(raw.num), _sharedPlatform.api2wire_String(raw.name)];
   }
 // Section: finalizer
 }
@@ -59,22 +54,32 @@ external ApiClass2WasmModule get wasmModule;
 class ApiClass2WasmModule implements WasmModule {
   external Object /* Promise */ call([String? moduleName]);
   external ApiClass2WasmModule bind(dynamic thisArg, String moduleName);
-  external dynamic /* void */ wire_test_inbuilt_type_2(NativePortType port_, int a, double b);
+  external dynamic /* void */ wire_test_inbuilt_type_in_block_2(NativePortType port_, int a, double b);
 
-  external dynamic /* void */ wire_test_string_2(NativePortType port_, String s, Object i);
+  external dynamic /* void */ wire_test_string_in_block_2(NativePortType port_, String s, Object i);
 
-  external dynamic /* void */ wire_test_shared_struct_2(NativePortType port_, List<dynamic> custom, String s, int i);
+  external dynamic /* void */ wire_test_all_shared_struct_in_block_2(
+      NativePortType port_, List<dynamic> custom, String s, int i);
 
-  external dynamic /* void */ wire_test_cross_shared_struct_2(NativePortType port_, String name);
+  external dynamic /* void */ wire_test_shared_struct_in_block_2_for_1_and_2(
+      NativePortType port_, List<dynamic> custom, String s, int i);
 
-  external dynamic /* void */ wire_test_unique_struct_2(NativePortType port_, List<dynamic> custom, String s, Object i);
+  external dynamic /* void */ wire_test_cross_shared_struct_in_block_2_for_1_and_2(NativePortType port_, String name);
 
-  external dynamic /* void */ wire_test_struct_defined_in_api_2(NativePortType port_, List<dynamic> custom);
+  external dynamic /* void */ wire_test_shared_struct_in_block_2_for_2_and_3(
+      NativePortType port_, List<dynamic> custom, String s, int i);
 
-  external dynamic /* void */ wire_test_method__method__StructDefinedInApi2(
+  external dynamic /* void */ wire_test_cross_shared_struct_in_block_2_for_2_and_3(
+      NativePortType port_, List<dynamic> custom);
+
+  external dynamic /* void */ wire_test_unique_struct_2(NativePortType port_, List<dynamic> custom, String s, int i);
+
+  external dynamic /* void */ wire_test_struct_defined_in_block_2(NativePortType port_, List<dynamic> custom);
+
+  external dynamic /* void */ wire_test_method__method__StructDefinedInBlock2(
       NativePortType port_, List<dynamic> that, String message);
 
-  external dynamic /* void */ wire_test_static_method__static_method__StructDefinedInApi2(
+  external dynamic /* void */ wire_test_static_method__static_method__StructDefinedInBlock2(
       NativePortType port_, String message);
 }
 
@@ -83,26 +88,36 @@ class ApiClass2WasmModule implements WasmModule {
 class ApiClass2Wire extends FlutterRustBridgeWasmWireBase<ApiClass2WasmModule> {
   ApiClass2Wire(FutureOr<WasmModule> module) : super(WasmModule.cast<ApiClass2WasmModule>(module));
 
-  void wire_test_inbuilt_type_2(NativePortType port_, int a, double b) =>
-      wasmModule.wire_test_inbuilt_type_2(port_, a, b);
+  void wire_test_inbuilt_type_in_block_2(NativePortType port_, int a, double b) =>
+      wasmModule.wire_test_inbuilt_type_in_block_2(port_, a, b);
 
-  void wire_test_string_2(NativePortType port_, String s, Object i) => wasmModule.wire_test_string_2(port_, s, i);
+  void wire_test_string_in_block_2(NativePortType port_, String s, Object i) =>
+      wasmModule.wire_test_string_in_block_2(port_, s, i);
 
-  void wire_test_shared_struct_2(NativePortType port_, List<dynamic> custom, String s, int i) =>
-      wasmModule.wire_test_shared_struct_2(port_, custom, s, i);
+  void wire_test_all_shared_struct_in_block_2(NativePortType port_, List<dynamic> custom, String s, int i) =>
+      wasmModule.wire_test_all_shared_struct_in_block_2(port_, custom, s, i);
 
-  void wire_test_cross_shared_struct_2(NativePortType port_, String name) =>
-      wasmModule.wire_test_cross_shared_struct_2(port_, name);
+  void wire_test_shared_struct_in_block_2_for_1_and_2(NativePortType port_, List<dynamic> custom, String s, int i) =>
+      wasmModule.wire_test_shared_struct_in_block_2_for_1_and_2(port_, custom, s, i);
 
-  void wire_test_unique_struct_2(NativePortType port_, List<dynamic> custom, String s, Object i) =>
+  void wire_test_cross_shared_struct_in_block_2_for_1_and_2(NativePortType port_, String name) =>
+      wasmModule.wire_test_cross_shared_struct_in_block_2_for_1_and_2(port_, name);
+
+  void wire_test_shared_struct_in_block_2_for_2_and_3(NativePortType port_, List<dynamic> custom, String s, int i) =>
+      wasmModule.wire_test_shared_struct_in_block_2_for_2_and_3(port_, custom, s, i);
+
+  void wire_test_cross_shared_struct_in_block_2_for_2_and_3(NativePortType port_, List<dynamic> custom) =>
+      wasmModule.wire_test_cross_shared_struct_in_block_2_for_2_and_3(port_, custom);
+
+  void wire_test_unique_struct_2(NativePortType port_, List<dynamic> custom, String s, int i) =>
       wasmModule.wire_test_unique_struct_2(port_, custom, s, i);
 
-  void wire_test_struct_defined_in_api_2(NativePortType port_, List<dynamic> custom) =>
-      wasmModule.wire_test_struct_defined_in_api_2(port_, custom);
+  void wire_test_struct_defined_in_block_2(NativePortType port_, List<dynamic> custom) =>
+      wasmModule.wire_test_struct_defined_in_block_2(port_, custom);
 
-  void wire_test_method__method__StructDefinedInApi2(NativePortType port_, List<dynamic> that, String message) =>
-      wasmModule.wire_test_method__method__StructDefinedInApi2(port_, that, message);
+  void wire_test_method__method__StructDefinedInBlock2(NativePortType port_, List<dynamic> that, String message) =>
+      wasmModule.wire_test_method__method__StructDefinedInBlock2(port_, that, message);
 
-  void wire_test_static_method__static_method__StructDefinedInApi2(NativePortType port_, String message) =>
-      wasmModule.wire_test_static_method__static_method__StructDefinedInApi2(port_, message);
+  void wire_test_static_method__static_method__StructDefinedInBlock2(NativePortType port_, String message) =>
+      wasmModule.wire_test_static_method__static_method__StructDefinedInBlock2(port_, message);
 }

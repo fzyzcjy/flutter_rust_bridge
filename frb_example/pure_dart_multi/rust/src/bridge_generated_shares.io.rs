@@ -4,13 +4,33 @@ use super::*;
 // Section: allocate functions
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_cross_shared_struct() -> *mut wire_CrossSharedStruct {
-    support::new_leak_box_ptr(wire_CrossSharedStruct::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_cross_shared_struct_in_block_1_and_2(
+) -> *mut wire_CrossSharedStructInBlock1And2 {
+    support::new_leak_box_ptr(wire_CrossSharedStructInBlock1And2::new_with_null_ptr())
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_shared_struct() -> *mut wire_SharedStruct {
-    support::new_leak_box_ptr(wire_SharedStruct::new_with_null_ptr())
+pub extern "C" fn new_box_autoadd_cross_shared_struct_in_block_2_and_3(
+) -> *mut wire_CrossSharedStructInBlock2And3 {
+    support::new_leak_box_ptr(wire_CrossSharedStructInBlock2And3::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_shared_struct_in_all_blocks() -> *mut wire_SharedStructInAllBlocks
+{
+    support::new_leak_box_ptr(wire_SharedStructInAllBlocks::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_shared_struct_in_block_1_and_2(
+) -> *mut wire_SharedStructInBlock1And2 {
+    support::new_leak_box_ptr(wire_SharedStructInBlock1And2::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_shared_struct_in_block_2_and_3(
+) -> *mut wire_SharedStructInBlock2And3 {
+    support::new_leak_box_ptr(wire_SharedStructInBlock2And3::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -32,29 +52,72 @@ impl Wire2Api<String> for *mut wire_uint_8_list {
         String::from_utf8_lossy(&vec).into_owned()
     }
 }
-impl Wire2Api<CrossSharedStruct> for *mut wire_CrossSharedStruct {
-    fn wire2api(self) -> CrossSharedStruct {
+impl Wire2Api<CrossSharedStructInBlock1And2> for *mut wire_CrossSharedStructInBlock1And2 {
+    fn wire2api(self) -> CrossSharedStructInBlock1And2 {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<CrossSharedStruct>::wire2api(*wrap).into()
+        Wire2Api::<CrossSharedStructInBlock1And2>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<SharedStruct> for *mut wire_SharedStruct {
-    fn wire2api(self) -> SharedStruct {
+impl Wire2Api<CrossSharedStructInBlock2And3> for *mut wire_CrossSharedStructInBlock2And3 {
+    fn wire2api(self) -> CrossSharedStructInBlock2And3 {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<SharedStruct>::wire2api(*wrap).into()
+        Wire2Api::<CrossSharedStructInBlock2And3>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<CrossSharedStruct> for wire_CrossSharedStruct {
-    fn wire2api(self) -> CrossSharedStruct {
-        CrossSharedStruct {
+impl Wire2Api<SharedStructInAllBlocks> for *mut wire_SharedStructInAllBlocks {
+    fn wire2api(self) -> SharedStructInAllBlocks {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<SharedStructInAllBlocks>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<SharedStructInBlock1And2> for *mut wire_SharedStructInBlock1And2 {
+    fn wire2api(self) -> SharedStructInBlock1And2 {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<SharedStructInBlock1And2>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<SharedStructInBlock2And3> for *mut wire_SharedStructInBlock2And3 {
+    fn wire2api(self) -> SharedStructInBlock2And3 {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<SharedStructInBlock2And3>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<CrossSharedStructInBlock1And2> for wire_CrossSharedStructInBlock1And2 {
+    fn wire2api(self) -> CrossSharedStructInBlock1And2 {
+        CrossSharedStructInBlock1And2 {
+            name: self.name.wire2api(),
+        }
+    }
+}
+impl Wire2Api<CrossSharedStructInBlock2And3> for wire_CrossSharedStructInBlock2And3 {
+    fn wire2api(self) -> CrossSharedStructInBlock2And3 {
+        CrossSharedStructInBlock2And3 {
             name: self.name.wire2api(),
         }
     }
 }
 
-impl Wire2Api<SharedStruct> for wire_SharedStruct {
-    fn wire2api(self) -> SharedStruct {
-        SharedStruct {
+impl Wire2Api<SharedStructInAllBlocks> for wire_SharedStructInAllBlocks {
+    fn wire2api(self) -> SharedStructInAllBlocks {
+        SharedStructInAllBlocks {
+            id: self.id.wire2api(),
+            num: self.num.wire2api(),
+            name: self.name.wire2api(),
+        }
+    }
+}
+impl Wire2Api<SharedStructInBlock1And2> for wire_SharedStructInBlock1And2 {
+    fn wire2api(self) -> SharedStructInBlock1And2 {
+        SharedStructInBlock1And2 {
+            id: self.id.wire2api(),
+            num: self.num.wire2api(),
+            name: self.name.wire2api(),
+        }
+    }
+}
+impl Wire2Api<SharedStructInBlock2And3> for wire_SharedStructInBlock2And3 {
+    fn wire2api(self) -> SharedStructInBlock2And3 {
+        SharedStructInBlock2And3 {
             id: self.id.wire2api(),
             num: self.num.wire2api(),
             name: self.name.wire2api(),
@@ -74,13 +137,35 @@ impl Wire2Api<Vec<u8>> for *mut wire_uint_8_list {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_CrossSharedStruct {
+pub struct wire_CrossSharedStructInBlock1And2 {
     name: *mut wire_uint_8_list,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_SharedStruct {
+pub struct wire_CrossSharedStructInBlock2And3 {
+    name: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_SharedStructInAllBlocks {
+    id: i32,
+    num: f64,
+    name: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_SharedStructInBlock1And2 {
+    id: i32,
+    num: f64,
+    name: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_SharedStructInBlock2And3 {
     id: i32,
     num: f64,
     name: *mut wire_uint_8_list,
@@ -105,7 +190,7 @@ impl<T> NewWithNullPtr for *mut T {
     }
 }
 
-impl NewWithNullPtr for wire_CrossSharedStruct {
+impl NewWithNullPtr for wire_CrossSharedStructInBlock1And2 {
     fn new_with_null_ptr() -> Self {
         Self {
             name: core::ptr::null_mut(),
@@ -113,13 +198,27 @@ impl NewWithNullPtr for wire_CrossSharedStruct {
     }
 }
 
-impl Default for wire_CrossSharedStruct {
+impl Default for wire_CrossSharedStructInBlock1And2 {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for wire_SharedStruct {
+impl NewWithNullPtr for wire_CrossSharedStructInBlock2And3 {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            name: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl Default for wire_CrossSharedStructInBlock2And3 {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
+impl NewWithNullPtr for wire_SharedStructInAllBlocks {
     fn new_with_null_ptr() -> Self {
         Self {
             id: Default::default(),
@@ -129,7 +228,39 @@ impl NewWithNullPtr for wire_SharedStruct {
     }
 }
 
-impl Default for wire_SharedStruct {
+impl Default for wire_SharedStructInAllBlocks {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
+impl NewWithNullPtr for wire_SharedStructInBlock1And2 {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            id: Default::default(),
+            num: Default::default(),
+            name: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl Default for wire_SharedStructInBlock1And2 {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
+impl NewWithNullPtr for wire_SharedStructInBlock2And3 {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            id: Default::default(),
+            num: Default::default(),
+            name: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl Default for wire_SharedStructInBlock2And3 {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }

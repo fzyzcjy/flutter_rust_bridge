@@ -13,8 +13,8 @@ impl Wire2Api<String> for String {
     }
 }
 
-impl Wire2Api<CrossSharedStruct> for JsValue {
-    fn wire2api(self) -> CrossSharedStruct {
+impl Wire2Api<CrossSharedStructInBlock1And2> for JsValue {
+    fn wire2api(self) -> CrossSharedStructInBlock1And2 {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -22,14 +22,28 @@ impl Wire2Api<CrossSharedStruct> for JsValue {
             "Expected 1 elements, got {}",
             self_.length()
         );
-        CrossSharedStruct {
+        CrossSharedStructInBlock1And2 {
+            name: self_.get(0).wire2api(),
+        }
+    }
+}
+impl Wire2Api<CrossSharedStructInBlock2And3> for JsValue {
+    fn wire2api(self) -> CrossSharedStructInBlock2And3 {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        CrossSharedStructInBlock2And3 {
             name: self_.get(0).wire2api(),
         }
     }
 }
 
-impl Wire2Api<SharedStruct> for JsValue {
-    fn wire2api(self) -> SharedStruct {
+impl Wire2Api<SharedStructInAllBlocks> for JsValue {
+    fn wire2api(self) -> SharedStructInAllBlocks {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
@@ -37,7 +51,39 @@ impl Wire2Api<SharedStruct> for JsValue {
             "Expected 3 elements, got {}",
             self_.length()
         );
-        SharedStruct {
+        SharedStructInAllBlocks {
+            id: self_.get(0).wire2api(),
+            num: self_.get(1).wire2api(),
+            name: self_.get(2).wire2api(),
+        }
+    }
+}
+impl Wire2Api<SharedStructInBlock1And2> for JsValue {
+    fn wire2api(self) -> SharedStructInBlock1And2 {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            3,
+            "Expected 3 elements, got {}",
+            self_.length()
+        );
+        SharedStructInBlock1And2 {
+            id: self_.get(0).wire2api(),
+            num: self_.get(1).wire2api(),
+            name: self_.get(2).wire2api(),
+        }
+    }
+}
+impl Wire2Api<SharedStructInBlock2And3> for JsValue {
+    fn wire2api(self) -> SharedStructInBlock2And3 {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            3,
+            "Expected 3 elements, got {}",
+            self_.length()
+        );
+        SharedStructInBlock2And3 {
             id: self_.get(0).wire2api(),
             num: self_.get(1).wire2api(),
             name: self_.get(2).wire2api(),

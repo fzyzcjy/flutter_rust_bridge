@@ -15,8 +15,11 @@ use flutter_rust_bridge::*;
 
 // Section: imports
 
-pub use crate::custom::CrossSharedStruct;
-pub use crate::custom::SharedStruct;
+pub use crate::custom::CrossSharedStructInBlock1And2;
+pub use crate::custom::CrossSharedStructInBlock2And3;
+pub use crate::custom::SharedStructInAllBlocks;
+pub use crate::custom::SharedStructInBlock1And2;
+pub use crate::custom::SharedStructInBlock2And3;
 
 // Section: wire functions
 
@@ -72,14 +75,21 @@ impl Wire2Api<u8> for u8 {
 
 // Section: impl IntoDart
 
-impl support::IntoDart for CrossSharedStruct {
+impl support::IntoDart for CrossSharedStructInBlock1And2 {
     fn into_dart(self) -> support::DartAbi {
         vec![self.name.into_dart()].into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for CrossSharedStruct {}
+impl support::IntoDartExceptPrimitive for CrossSharedStructInBlock1And2 {}
 
-impl support::IntoDart for SharedStruct {
+impl support::IntoDart for CrossSharedStructInBlock2And3 {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.name.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for CrossSharedStructInBlock2And3 {}
+
+impl support::IntoDart for SharedStructInAllBlocks {
     fn into_dart(self) -> support::DartAbi {
         vec![
             self.id.into_dart(),
@@ -89,7 +99,31 @@ impl support::IntoDart for SharedStruct {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for SharedStruct {}
+impl support::IntoDartExceptPrimitive for SharedStructInAllBlocks {}
+
+impl support::IntoDart for SharedStructInBlock1And2 {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.id.into_dart(),
+            self.num.into_dart(),
+            self.name.into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for SharedStructInBlock1And2 {}
+
+impl support::IntoDart for SharedStructInBlock2And3 {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.id.into_dart(),
+            self.num.into_dart(),
+            self.name.into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for SharedStructInBlock2And3 {}
 
 // Section: executor
 

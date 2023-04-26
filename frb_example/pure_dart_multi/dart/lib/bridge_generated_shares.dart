@@ -22,21 +22,57 @@ abstract class BridgeGeneratedShares {}
 
 /// this struct is used only as parameter in API block1 and used only as return type in API block2, but not
 /// defined in either block file
-class CrossSharedStruct {
+class CrossSharedStructInBlock1And2 {
   final String name;
 
-  const CrossSharedStruct({
+  const CrossSharedStructInBlock1And2({
     required this.name,
   });
 }
 
-/// This is a struct used in all API blocks for test, but not defined in any regular block file
-class SharedStruct {
+/// this struct is used only as parameter in API block2 and used only as return type in API block3, but not
+/// defined in either block file
+class CrossSharedStructInBlock2And3 {
+  final String name;
+
+  const CrossSharedStructInBlock2And3({
+    required this.name,
+  });
+}
+
+/// This is a struct used in ALL API blocks, NOT defined in any regular block file
+class SharedStructInAllBlocks {
   final int id;
   final double num;
   final String name;
 
-  const SharedStruct({
+  const SharedStructInAllBlocks({
+    required this.id,
+    required this.num,
+    required this.name,
+  });
+}
+
+/// This is a struct used in API blocks 1 and 2 for test, but not defined in any regular block file
+class SharedStructInBlock1And2 {
+  final int id;
+  final double num;
+  final String name;
+
+  const SharedStructInBlock1And2({
+    required this.id,
+    required this.num,
+    required this.name,
+  });
+}
+
+/// This is a struct used in all API blocks 2 and 3 for test, but not defined in any regular block file
+class SharedStructInBlock2And3 {
+  final int id;
+  final double num;
+  final String name;
+
+  const SharedStructInBlock2And3({
     required this.id,
     required this.num,
     required this.name,
@@ -62,10 +98,18 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
     return raw as String;
   }
 
-  CrossSharedStruct wire2api_cross_shared_struct(dynamic raw) {
+  CrossSharedStructInBlock1And2 wire2api_cross_shared_struct_in_block_1_and_2(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return CrossSharedStruct(
+    return CrossSharedStructInBlock1And2(
+      name: wire2api_String(arr[0]),
+    );
+  }
+
+  CrossSharedStructInBlock2And3 wire2api_cross_shared_struct_in_block_2_and_3(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CrossSharedStructInBlock2And3(
       name: wire2api_String(arr[0]),
     );
   }
@@ -82,10 +126,30 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
     return raw as int;
   }
 
-  SharedStruct wire2api_shared_struct(dynamic raw) {
+  SharedStructInAllBlocks wire2api_shared_struct_in_all_blocks(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 3) throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
-    return SharedStruct(
+    return SharedStructInAllBlocks(
+      id: wire2api_i32(arr[0]),
+      num: wire2api_f64(arr[1]),
+      name: wire2api_String(arr[2]),
+    );
+  }
+
+  SharedStructInBlock1And2 wire2api_shared_struct_in_block_1_and_2(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3) throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return SharedStructInBlock1And2(
+      id: wire2api_i32(arr[0]),
+      num: wire2api_f64(arr[1]),
+      name: wire2api_String(arr[2]),
+    );
+  }
+
+  SharedStructInBlock2And3 wire2api_shared_struct_in_block_2_and_3(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 3) throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    return SharedStructInBlock2And3(
       id: wire2api_i32(arr[0]),
       num: wire2api_f64(arr[1]),
       name: wire2api_String(arr[2]),

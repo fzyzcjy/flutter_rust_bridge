@@ -117,11 +117,7 @@ pub enum TypeRustGenerator<'a> {
 }
 
 impl<'a> TypeRustGenerator<'a> {
-    pub fn new(
-        ty: IrType,
-        ir_file: &'a IrFile,
-        config: &'a Opts,
-    ) -> Self {
+    pub fn new(ty: IrType, ir_file: &'a IrFile, config: &'a Opts) -> Self {
         let context = TypeGeneratorContext {
             type_name: format!("{ty:?}"),
             ir_file,

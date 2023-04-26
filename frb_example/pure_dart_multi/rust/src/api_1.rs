@@ -1,8 +1,11 @@
-use crate::custom::{CrossSharedStruct, OnlyForApi1Struct, SharedStruct};
-pub struct StructDefinedInApi1 {
+use crate::custom::{
+    CrossSharedStructInBlock1And2, SharedStructInAllBlocks, SharedStructInBlock1And2,
+    StructOnlyForBlock1,
+};
+pub struct StructDefinedInBlock1 {
     pub name: String,
 }
-impl StructDefinedInApi1 {
+impl StructDefinedInBlock1 {
     pub fn test_method(&self, message: String) -> String {
         message
     }
@@ -11,30 +14,50 @@ impl StructDefinedInApi1 {
     }
 }
 
-pub fn test_inbuilt_type_1(a: i32, b: f32) -> f32 {
+pub fn test_inbuilt_type_in_block_1(a: i32, b: f32) -> f32 {
     a as f32 + b
 }
 
-pub fn test_string_1(s: String, i: u64) -> String {
+pub fn test_string_in_block_1(s: String, i: u64) -> String {
     format!("{}_{}", s, i)
 }
 
-pub fn test_shared_struct_1(mut custom: SharedStruct, s: String, i: i32) -> SharedStruct {
+pub fn test_all_shared_struct_in_block_1(
+    mut custom: SharedStructInAllBlocks,
+    s: String,
+    i: i32,
+) -> SharedStructInAllBlocks {
     custom.name = s;
     custom.id = i;
     custom
 }
 
-pub fn test_cross_shared_struct_1(custom: CrossSharedStruct) -> String {
+pub fn test_shared_struct_in_block_1_for_1_and_2(
+    mut custom: SharedStructInBlock1And2,
+    s: String,
+    i: i32,
+) -> SharedStructInBlock1And2 {
+    custom.name = s;
+    custom.id = i;
+    custom
+}
+
+pub fn test_cross_shared_struct_in_block_1_for_1_and_2(
+    custom: CrossSharedStructInBlock1And2,
+) -> String {
     custom.name
 }
 
-pub fn test_unique_struct_1(mut custom: OnlyForApi1Struct, s: String, i: i16) -> OnlyForApi1Struct {
+pub fn test_unique_struct_1(
+    mut custom: StructOnlyForBlock1,
+    s: String,
+    i: i8,
+) -> StructOnlyForBlock1 {
     custom.name = s;
     custom.id = i;
     custom
 }
 
-pub fn test_struct_defined_in_api_1(custom: StructDefinedInApi1) -> String {
+pub fn test_struct_defined_in_block_1(custom: StructDefinedInBlock1) -> String {
     custom.name
 }

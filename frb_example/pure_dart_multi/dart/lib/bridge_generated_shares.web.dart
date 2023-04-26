@@ -26,22 +26,52 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_cross_shared_struct(CrossSharedStruct raw) {
-    return api2wire_cross_shared_struct(raw);
+  List<dynamic> api2wire_box_autoadd_cross_shared_struct_in_block_1_and_2(CrossSharedStructInBlock1And2 raw) {
+    return api2wire_cross_shared_struct_in_block_1_and_2(raw);
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_shared_struct(SharedStruct raw) {
-    return api2wire_shared_struct(raw);
+  List<dynamic> api2wire_box_autoadd_cross_shared_struct_in_block_2_and_3(CrossSharedStructInBlock2And3 raw) {
+    return api2wire_cross_shared_struct_in_block_2_and_3(raw);
   }
 
   @protected
-  List<dynamic> api2wire_cross_shared_struct(CrossSharedStruct raw) {
+  List<dynamic> api2wire_box_autoadd_shared_struct_in_all_blocks(SharedStructInAllBlocks raw) {
+    return api2wire_shared_struct_in_all_blocks(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_shared_struct_in_block_1_and_2(SharedStructInBlock1And2 raw) {
+    return api2wire_shared_struct_in_block_1_and_2(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_shared_struct_in_block_2_and_3(SharedStructInBlock2And3 raw) {
+    return api2wire_shared_struct_in_block_2_and_3(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_cross_shared_struct_in_block_1_and_2(CrossSharedStructInBlock1And2 raw) {
     return [api2wire_String(raw.name)];
   }
 
   @protected
-  List<dynamic> api2wire_shared_struct(SharedStruct raw) {
+  List<dynamic> api2wire_cross_shared_struct_in_block_2_and_3(CrossSharedStructInBlock2And3 raw) {
+    return [api2wire_String(raw.name)];
+  }
+
+  @protected
+  List<dynamic> api2wire_shared_struct_in_all_blocks(SharedStructInAllBlocks raw) {
+    return [api2wire_i32(raw.id), api2wire_f64(raw.num), api2wire_String(raw.name)];
+  }
+
+  @protected
+  List<dynamic> api2wire_shared_struct_in_block_1_and_2(SharedStructInBlock1And2 raw) {
+    return [api2wire_i32(raw.id), api2wire_f64(raw.num), api2wire_String(raw.name)];
+  }
+
+  @protected
+  List<dynamic> api2wire_shared_struct_in_block_2_and_3(SharedStructInBlock2And3 raw) {
     return [api2wire_i32(raw.id), api2wire_f64(raw.num), api2wire_String(raw.name)];
   }
 
