@@ -22,6 +22,11 @@ pub extern "C" fn wire_test_shared_struct_1(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_test_cross_shared_struct_1(port_: i64, custom: *mut wire_CrossSharedStruct) {
+    wire_test_cross_shared_struct_1_impl(port_, custom)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_test_unique_struct_1(
     port_: i64,
     custom: *mut wire_OnlyForApi1Struct,
@@ -29,11 +34,6 @@ pub extern "C" fn wire_test_unique_struct_1(
     i: i16,
 ) {
     wire_test_unique_struct_1_impl(port_, custom, s, i)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_test_cross_shared_struct_1(port_: i64, custom: *mut wire_CrossSharedStruct) {
-    wire_test_cross_shared_struct_1_impl(port_, custom)
 }
 
 #[no_mangle]

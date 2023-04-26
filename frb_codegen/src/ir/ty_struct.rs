@@ -26,9 +26,11 @@ impl IrTypeTrait for IrTypeStructRef {
     fn safe_ident(&self) -> String {
         self.dart_api_type().to_case(Case::Snake)
     }
+
     fn dart_api_type(&self) -> String {
         self.name.to_string()
     }
+
     fn dart_wire_type(&self, target: Target) -> String {
         if target.is_wasm() {
             "List<dynamic>".into()

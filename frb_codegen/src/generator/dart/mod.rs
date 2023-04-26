@@ -43,7 +43,7 @@ use crate::ir::IrType::*;
 use crate::target::Target::*;
 use crate::target::{Acc, Target};
 use crate::utils::method::{FunctionName, MethodNamingUtil};
-use crate::utils::misc::PathExt;
+use crate::utils::misc::{is_multi_blocks_case, PathExt};
 use crate::{ir::*, Opts};
 use crate::{others::*, transformer};
 
@@ -125,11 +125,15 @@ impl DartApiSpec {
 
         let dart_structs = distinct_types
             .iter()
-            .map(|ty| TypeDartGenerator::new(ty.clone(), ir_file, config).structs())
+            .map(|ty| {
+                log::debug!("the type is: {:?}", ty); //TODO: delete
+                log::debug!("the type(safe) is: {:?}", ty.safe_ident()); //TODO: delete
+                TypeDartGenerator::new(ty.clone(), ir_file, config).structs()
+            })
             .collect::<Vec<_>>();
 
         // essential shared dart_api2wire funcs
-        let shared_dart_api2wire_funcs = if all_configs.len() > 2 {
+        let shared_dart_api2wire_funcs = if is_multi_blocks_case(all_configs) {
             let shared_config = all_configs.last().unwrap();
             assert!(shared_config.shared);
 
@@ -377,7 +381,7 @@ fn generate_dart_implementation_body(
         dart_wasm_module,
         ..
     } = spec;
-    let shared_config = if all_configs.len() > 2 {
+    let shared_config = if is_multi_blocks_case(all_configs) {
         let shared_config = all_configs.last().unwrap();
         assert!(shared_config.shared);
         Some(shared_config)

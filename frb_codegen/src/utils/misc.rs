@@ -33,8 +33,7 @@ pub fn mod_from_rust_path(
                 get_module_name(&config.rust_input_path, &config.rust_crate_dir)
             } else {
                 // get the shared module in the regular block
-                if all_configs.len() > 2 {
-                    assert!(all_configs.last().unwrap().shared);
+                if is_multi_blocks_case(all_configs) {
                     get_module_name(&config.shared_rust_output_path, &config.rust_crate_dir)
                 } else {
                     "".into()
@@ -55,6 +54,25 @@ pub fn mod_from_rust_path(
         None
     } else {
         Some(output)
+    }
+}
+
+pub fn is_multi_blocks_case(all_configs: &[crate::Opts]) -> bool {
+    match all_configs.len() {
+        0 => panic!("there should be at least 1 config"),
+        1 => {
+            assert!(!all_configs[0].shared); // single item must not be shared
+            false
+        }
+        _ => {
+            for i in 0..all_configs.len() - 1 {
+                if all_configs[i].shared {
+                    log::error!("Config {} is shared, but should not be", i);
+                }
+            }
+            assert!(all_configs[all_configs.len() - 1].shared); // last item must be shared
+            true
+        }
     }
 }
 
@@ -90,13 +108,15 @@ pub fn get_symbols_if_no_duplicates(
     let mut explicit_raw_symbols = Vec::new();
     let mut all_symbols = Vec::new();
     for (_i, config) in regular_configs.iter().enumerate() {
-        let ir_file = config.get_ir_file(&[])?;
-        // for checking explicit API duplication
+        log::debug!("before config.get_ir_file"); //TODO: delete
+        let ir_file = config.get_ir_file(&[config.clone()])?;
+        log::debug!("after config.get_ir_file"); //TODO: delete
+                                                 // for checking explicit API duplication
         let iter = ir_file.funcs.iter().map(|f| f.name.clone());
         log::debug!("the ir_file.funcs:{:?}", iter); //TODO: delete
         explicit_raw_symbols.extend(iter);
         // for checking implicit API duplication
-        let iter = ir_file.get_all_symbols(config, &[]);
+        let iter = ir_file.get_all_symbols(config);
         log::debug!("raw_ir_file.get_all_symbols:{:?}", iter); //TODO: delete
         all_symbols.extend(iter);
     }

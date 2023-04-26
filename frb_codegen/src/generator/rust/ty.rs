@@ -63,23 +63,20 @@ pub trait TypeRustGeneratorTrait {
 
     fn get_context(&self) -> &TypeGeneratorContext;
 
-    fn get_shared_mod_name_if_type_shared(&self, ty: &IrType) -> Option<&str> {
+    fn get_shared_mod_name_if_type_shared(&self, ty: &IrType) -> Option<String> {
         if self.get_context().ir_file.is_type_shared(ty) {
-            if let Some(shared_mod_name) = self.get_context().shared_mod_name {
-                if shared_mod_name.is_empty() {
-                    panic!(
-                        "type \"{}\" is shared, but the shared module name is empty",
-                        self.get_context().type_name
+            return SHARED_MODULE.with(|data| {
+                let cloned = data.borrow().clone();
+                if cloned.is_none() {
+                    panic!("in instance in charge of `{}`: checking shared for type \"{:?}\", it is shared indeed, but the shared module name is None",
+                        self.get_context().type_name, ty
                     );
                 }
-                return Some(shared_mod_name);
-            } else {
-                panic!(
-                    "type \"{}\" is shared, but the shared module name is None",
-                    self.get_context().type_name
-                );
-            }
+                log::warn!("the SHARED_MODULE is :{cloned:?}"); //TODO: delete
+                cloned
+            });
         }
+        log::warn!("got NONE FOR `{:?}`", ty); //TODO: delete
         None
     }
 }
@@ -89,7 +86,6 @@ pub struct TypeGeneratorContext<'a> {
     pub type_name: String,
     pub ir_file: &'a IrFile,
     pub config: &'a Opts,
-    pub shared_mod_name: Option<&'a str>, // if there is only 1 API block, it should be None. Otherwise, it should not be None.
 }
 
 #[macro_export]
@@ -125,13 +121,11 @@ impl<'a> TypeRustGenerator<'a> {
         ty: IrType,
         ir_file: &'a IrFile,
         config: &'a Opts,
-        shared_mod_name: Option<&'a str>,
     ) -> Self {
         let context = TypeGeneratorContext {
             type_name: format!("{ty:?}"),
             ir_file,
             config,
-            shared_mod_name,
         };
         match ty {
             Primitive(ir) => TypePrimitiveGenerator { ir, context }.into(),

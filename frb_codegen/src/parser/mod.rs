@@ -102,15 +102,17 @@ pub fn parse(
     shared: bool,
     all_configs: &[Opts],
 ) -> IrFile {
-    let crate_map = Crate::new(manifest_path);
-
     let mut src_fns = extract_fns_from_file(&file);
+    log::debug!("src_fns:{src_fns:?}"); //TODO: delete
     src_fns.extend(extract_methods_from_file(&file));
+
+    let crate_map = Crate::new(manifest_path);
     let src_structs = crate_map.root_module.collect_structs_to_vec();
     let src_enums = crate_map.root_module.collect_enums_to_vec();
     let src_types = crate_map.root_module.collect_types_to_pool();
     let src_types = topo_resolve(src_types);
-
+    log::debug!("src_structs:{src_structs:?}"); //TODO: delete
+    log::debug!("src_types: {src_types:?}"); //TODO: delete
     let parser = Parser::new(TypeParser::new(src_structs, src_enums, src_types));
     parser.parse(
         source_rust_content,
@@ -140,20 +142,23 @@ impl<'a> Parser<'a> {
         shared: bool,
         all_configs: &[Opts],
     ) -> IrFile {
-        let funcs = src_fns.iter().map(|f| self.parse_function(f)).collect();
+        let funcs = src_fns
+            .iter()
+            .map(|f| self.parse_function(f))
+            .collect::<Vec<_>>();
 
         let has_executor = source_rust_content.contains(HANDLER_NAME);
 
         let (struct_pool, enum_pool) = self.type_parser.consume();
-
+        log::debug!("struct pool:{struct_pool:?}"); //TODO: delete
         IrFile::new(
             funcs,
             struct_pool,
             enum_pool,
             has_executor,
             block_index,
-            shared,
             all_configs,
+            shared,
         )
     }
 
@@ -325,7 +330,7 @@ fn extract_fns_from_file(file: &File) -> Vec<ItemFn> {
     src_fns
 }
 
-fn extract_methods_from_file(file: &File) -> Vec<ItemFn> {
+pub(crate) fn extract_methods_from_file(file: &File) -> Vec<ItemFn> {
     let mut src_fns = Vec::new();
 
     for item in file.items.iter() {

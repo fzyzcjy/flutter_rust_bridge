@@ -30,7 +30,6 @@ impl TypeRustGeneratorTrait for TypeOptionalGenerator<'_> {
             *self.ir.inner.clone(),
             self.context.ir_file,
             self.context.config,
-            self.context.shared_mod_name,
         );
         let obj = match inner.wrapper_struct() {
             // An architecture has been created so that the inner type of optional field is always
@@ -47,12 +46,7 @@ impl TypeRustGeneratorTrait for TypeOptionalGenerator<'_> {
     }
 
     fn imports(&self) -> Option<String> {
-        generate_import(
-            &self.ir.inner,
-            self.context.ir_file,
-            self.context.config,
-            self.context.shared_mod_name,
-        )
+        generate_import(&self.ir.inner, self.context.ir_file, self.context.config)
     }
 
     fn get_context(&self) -> &TypeGeneratorContext {

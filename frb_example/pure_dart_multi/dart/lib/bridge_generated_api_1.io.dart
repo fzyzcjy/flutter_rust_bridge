@@ -226,6 +226,22 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
   late final _wire_test_shared_struct_1 = _wire_test_shared_struct_1Ptr
       .asFunction<void Function(int, ffi.Pointer<wire_SharedStruct>, ffi.Pointer<wire_uint_8_list>, int)>();
 
+  void wire_test_cross_shared_struct_1(
+    int port_,
+    ffi.Pointer<wire_CrossSharedStruct> custom,
+  ) {
+    return _wire_test_cross_shared_struct_1(
+      port_,
+      custom,
+    );
+  }
+
+  late final _wire_test_cross_shared_struct_1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_CrossSharedStruct>)>>(
+          'wire_test_cross_shared_struct_1');
+  late final _wire_test_cross_shared_struct_1 =
+      _wire_test_cross_shared_struct_1Ptr.asFunction<void Function(int, ffi.Pointer<wire_CrossSharedStruct>)>();
+
   void wire_test_unique_struct_1(
     int port_,
     ffi.Pointer<wire_OnlyForApi1Struct> custom,
@@ -246,22 +262,6 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
               ffi.Int16)>>('wire_test_unique_struct_1');
   late final _wire_test_unique_struct_1 = _wire_test_unique_struct_1Ptr
       .asFunction<void Function(int, ffi.Pointer<wire_OnlyForApi1Struct>, ffi.Pointer<wire_uint_8_list>, int)>();
-
-  void wire_test_cross_shared_struct_1(
-    int port_,
-    ffi.Pointer<wire_CrossSharedStruct> custom,
-  ) {
-    return _wire_test_cross_shared_struct_1(
-      port_,
-      custom,
-    );
-  }
-
-  late final _wire_test_cross_shared_struct_1Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_CrossSharedStruct>)>>(
-          'wire_test_cross_shared_struct_1');
-  late final _wire_test_cross_shared_struct_1 =
-      _wire_test_cross_shared_struct_1Ptr.asFunction<void Function(int, ffi.Pointer<wire_CrossSharedStruct>)>();
 
   void wire_test_struct_defined_in_api_1(
     int port_,

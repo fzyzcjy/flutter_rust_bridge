@@ -62,10 +62,6 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
     return raw as String;
   }
 
-  CrossSharedStruct wire2api_box_autoadd_cross_shared_struct(dynamic raw) {
-    return wire2api_cross_shared_struct(raw);
-  }
-
   CrossSharedStruct wire2api_cross_shared_struct(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');

@@ -231,7 +231,6 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                                     field.ty.clone(),
                                     self.context.ir_file,
                                     self.context.config,
-                                    self.context.shared_mod_name,
                                 );
 
                                 gen.convert_to_dart(

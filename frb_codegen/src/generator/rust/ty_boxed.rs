@@ -55,7 +55,6 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
             *self.ir.inner.clone(),
             self.context.ir_file,
             self.context.config,
-            self.context.shared_mod_name,
         );
         src.wrapper_struct()
     }
@@ -69,7 +68,6 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
             *self.ir.inner.clone(),
             self.context.ir_file,
             self.context.config,
-            self.context.shared_mod_name,
         );
         src.wrap_obj(self.self_access(obj), wired_fallible_func)
     }
@@ -111,12 +109,7 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
     }
 
     fn imports(&self) -> Option<String> {
-        generate_import(
-            &self.ir.inner,
-            self.context.ir_file,
-            self.context.config,
-            self.context.shared_mod_name,
-        )
+        generate_import(&self.ir.inner, self.context.ir_file, self.context.config)
     }
 
     fn get_context(&self) -> &TypeGeneratorContext {

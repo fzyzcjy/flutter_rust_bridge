@@ -3,7 +3,8 @@ use crate::utils::misc::{BlockIndex, ExtraTraitForVec};
 use crate::{parser, transformer};
 use anyhow::{Context, Result};
 use convert_case::{Case, Casing};
-use std::collections::HashMap;
+use regex::Regex;
+use std::collections::{HashMap, HashSet};
 use std::fs;
 use std::path::{Path, PathBuf};
 
@@ -54,17 +55,47 @@ impl Opts {
         log::debug!("Phase: Transform IR");
         Ok(transformer::transform(raw_ir_file))
     }
-
+    fn find_impl_block(&self, s: String, v: &[&str]) -> String {
+        let mut result_string = "".to_string();
+        for struct_name in v {
+            let my_r = &format!(r"impl\s+{}\s*\{{([^}}]*)\}}", struct_name); // correct
+            let re: Regex = Regex::new(my_r).unwrap();
+            for matched in re.find_iter(&s) {
+                result_string += &format!("{}\n", matched.as_str());
+            }
+        }
+        result_string
+    }
     fn get_regular_ir_file(&self, all_configs: &[Opts]) -> Result<IrFile> {
         log::debug!("Phase: Parse source code to AST");
-        let source_rust_content = fs::read_to_string(&self.rust_input_path).with_context(|| {
-            let err_msg = format!(
-                "Failed to read rust input file \"{}\"",
-                self.rust_input_path
-            );
-            log::error!("{}", err_msg);
-            err_msg
-        })?;
+        let mut source_rust_content =
+            fs::read_to_string(&self.rust_input_path).with_context(|| {
+                let err_msg = format!(
+                    "Failed to read rust input file \"{}\"",
+                    self.rust_input_path
+                );
+                log::error!("{}", err_msg);
+                err_msg
+            })?;
+
+        // TODO: refine `file_ast` to get methods of structs defined in customized module
+        let extra_method_source = "".to_owned();
+        // let paths = get_module_paths(&source_rust_content);
+        // log::debug!("extra module paths:{paths:?}"); //TODO: delete
+        // let v = vec!["OnlyForApi1Struct"]; // TODO:
+        // for path in paths {
+        //     let content = fs::read_to_string(path).with_context(|| {
+        //         let err_msg = format!("Failed to read rust path \"{path}\"");
+        //         log::error!("{}", err_msg);
+        //         err_msg
+        //     })?;
+        //     extra_method_source = format!(
+        //         "{extra_method_source}\n{}",
+        //         self.find_impl_block(content, &v)
+        //     );
+        // }
+        source_rust_content += &extra_method_source;
+        log::debug!("source_rust_content:\n {source_rust_content}"); //TODO: delete
         let file_ast = syn::parse_file(&source_rust_content).unwrap();
 
         log::debug!("Phase: Parse AST to IR");
@@ -89,47 +120,45 @@ impl Opts {
             let last_index = all_configs.len() - 1;
             (&all_configs[0..last_index], last_index)
         };
-
-        log::debug!("get_shared_ir_file 2"); //TODO: delete
-        log::debug!("configs len:{}", regular_configs.len()); //TODO: delete
-
         assert!(regular_configs.len() > 1);
         assert!(regular_configs.iter().all(|c| !c.shared));
 
-        log::debug!("get_shared_ir_file 3"); //TODO: delete
-
-        // get regular ir_files
-        let funcs = Vec::new(); // TODO:
+        // get shared funcs, struct_pool and enum_pool
+        let funcs = HashSet::new();
         let mut structs = Vec::new();
         let mut enums = Vec::new();
         for config in regular_configs {
-            let ir_file = config.get_ir_file(&[])?;
-            // funcs.extend(raw_ir_file.funcs);// TODO: only methods of shared structs needed
+            let ir_file = config.get_ir_file(all_configs)?;
+
+            // TODO:
+            // funcs.extend(ir_file.get_shared_methods().clone());
             structs.extend(ir_file.struct_pool);
             enums.extend(ir_file.enum_pool);
         }
-        let shared_structs = structs.find_duplicates(true);
-        let shared_enums = enums.find_duplicates(true);
-
-        let struct_pool = shared_structs
+        let funcs = funcs.into_iter().collect::<Vec<_>>();
+        let struct_pool = structs
+            .find_duplicates(true)
             .into_iter()
             .map(|x| (x.0, x.1))
             .collect::<HashMap<_, _>>();
-        let enum_pool = shared_enums
+        let enum_pool = enums
+            .find_duplicates(true)
             .into_iter()
             .map(|x| (x.0, x.1))
             .collect::<HashMap<_, _>>();
 
+        log::debug!("the shared funcs:{:?}", funcs); //TODO: delete
         log::debug!("the shared struct_pool:{:?}", struct_pool); //TODO: delete
         log::debug!("the shared enum_pool:{:?}", enum_pool); //TODO: delete
+
         Ok(IrFile::new(
             funcs, // this field would effect `IrFile.visit_types(...)` and others
             struct_pool,
             enum_pool,
             true, // set true, in case for the methods of a shared struct,
             BlockIndex(shared_index),
-            true,
             all_configs,
+            true,
         ))
     }
 

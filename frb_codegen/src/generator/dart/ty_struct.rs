@@ -164,6 +164,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         let metadata = dart_metadata(&src.dart_metadata);
 
         let ir_file = self.context.ir_file;
+        log::debug!("the ir_file funcs:{:?}", ir_file.funcs); //TODO: delete
         let methods = ir_file
             .funcs
             .iter()
@@ -173,7 +174,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             })
             .collect::<Vec<_>>();
 
-        log::debug!("the methods is:\n{:?}",methods); //TODO: delete
+        log::debug!("the methods is:{:?}", methods); //TODO: delete
 
         let has_methods = !methods.is_empty();
         let methods = methods

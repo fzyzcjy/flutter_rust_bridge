@@ -65,9 +65,9 @@ class ApiClass2WasmModule implements WasmModule {
 
   external dynamic /* void */ wire_test_shared_struct_2(NativePortType port_, List<dynamic> custom, String s, int i);
 
-  external dynamic /* void */ wire_test_unique_struct_2(NativePortType port_, List<dynamic> custom, String s, Object i);
-
   external dynamic /* void */ wire_test_cross_shared_struct_2(NativePortType port_, String name);
+
+  external dynamic /* void */ wire_test_unique_struct_2(NativePortType port_, List<dynamic> custom, String s, Object i);
 
   external dynamic /* void */ wire_test_struct_defined_in_api_2(NativePortType port_, List<dynamic> custom);
 
@@ -91,11 +91,11 @@ class ApiClass2Wire extends FlutterRustBridgeWasmWireBase<ApiClass2WasmModule> {
   void wire_test_shared_struct_2(NativePortType port_, List<dynamic> custom, String s, int i) =>
       wasmModule.wire_test_shared_struct_2(port_, custom, s, i);
 
-  void wire_test_unique_struct_2(NativePortType port_, List<dynamic> custom, String s, Object i) =>
-      wasmModule.wire_test_unique_struct_2(port_, custom, s, i);
-
   void wire_test_cross_shared_struct_2(NativePortType port_, String name) =>
       wasmModule.wire_test_cross_shared_struct_2(port_, name);
+
+  void wire_test_unique_struct_2(NativePortType port_, List<dynamic> custom, String s, Object i) =>
+      wasmModule.wire_test_unique_struct_2(port_, custom, s, i);
 
   void wire_test_struct_defined_in_api_2(NativePortType port_, List<dynamic> custom) =>
       wasmModule.wire_test_struct_defined_in_api_2(port_, custom);

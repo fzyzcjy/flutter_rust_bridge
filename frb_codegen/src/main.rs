@@ -73,7 +73,7 @@ mod tests {
 
         set_dir();
 
-        let _ = *LOGGER;
+        *LOGGER;
 
         // Options for frb_codegen
         let raw_opts = RawOpts {
@@ -105,7 +105,7 @@ mod tests {
             #[cfg(target_os = "windows")]
             "../target/debug/flutter_rust_bridge_example_pure_dart.dll",
         );
-        let absolute_path = fs::canonicalize(&output_path).expect("Failed to get absolute path");
+        let absolute_path = fs::canonicalize(output_path).expect("Failed to get absolute path");
         println!("Absolute path to output: {:?}", absolute_path);
 
         if absolute_path.exists() {
@@ -146,7 +146,7 @@ mod tests {
         const CLASS_NAME_1: &str = "ApiClass1";
         const CLASS_NAME_2: &str = "ApiClass2";
 
-        let _ = *LOGGER;
+        *LOGGER;
 
         // Options for frb_codegen
         let mut raw_opts = RawOpts {
@@ -204,7 +204,7 @@ mod tests {
             #[cfg(target_os = "windows")]
             "../target/debug/flutter_rust_bridge_example_multi.dll",
         );
-        let absolute_path = fs::canonicalize(&output_path).expect("Failed to get absolute path");
+        let absolute_path = fs::canonicalize(output_path).expect("Failed to get absolute path");
         println!("Absolute path to output: {:?}", absolute_path);
 
         if absolute_path.exists() {
