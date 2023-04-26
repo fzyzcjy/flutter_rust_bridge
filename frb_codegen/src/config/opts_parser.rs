@@ -22,6 +22,12 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
     use clap::error::ErrorKind;
     // rust input path(s)
     let rust_input_paths = get_valid_canon_paths(&raw.rust_input);
+    for rust_input in rust_input_paths.iter() {
+        if rust_input.contains("lib.rs") {
+            log::warn!("Do not use `lib.rs` as a Rust input. Please put code to be generated in an `api.rs` or similar.");
+            break;
+        }
+    }
 
     // dart output path(s)
     let dart_output_paths = get_valid_canon_paths(&raw.dart_output);
