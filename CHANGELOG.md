@@ -1,3 +1,7 @@
+## Unreleased
+
+* Warn user about using lib.rs as a Rust input #1193 (thanks @erikas-taroza)
+
 ## 1.75.1
 
 * Fix compile error when building frb_codegen w/o serde feature #1185 (thanks @phlip9)
