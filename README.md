@@ -152,7 +152,7 @@ More specifically, thanks for all these contributions:
 * [alanlzhang](https://github.com/alanlzhang): Add generation for Dart metadata. Enhance module parser.
 * [Zaitam](https://github.com/Zaitam): Fix when method return struct.
 * [nitn3lav](https://github.com/nitn3lav): nested `struct`s without `Box`.
-* [erikas-taroza](https://github.com/erikas-taroza): Support list of primitive enums. Make enum camelCase.
+* [erikas-taroza](https://github.com/erikas-taroza): Support list of primitive enums. Make enum camelCase. Warn wrong path.
 * [alexthe2](https://github.com/alexthe2): Add Option Datetime. Add empty structs. Improve doc. Add `r#`. Fix mirror enum bug.
 * [AlienKevin](https://github.com/AlienKevin): Add flutter example for macOS. Add doc for Android NDK bug.
 * [banool](https://github.com/banool): Fix pubspec parsing. Fix symbol-stripping doc.
