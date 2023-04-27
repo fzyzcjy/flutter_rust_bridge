@@ -191,3 +191,4 @@ More specifically, thanks for all these contributions:
 * [rustui](https://github.com/rustui): Fix a typo.
 * [escwxyz](https://github.com/escwxyz): Fix a typo.
 * [eltociear](https://github.com/eltociear): Fix a typo.
+* [thesimplekid](https://github.com/thesimplekid): Fix a typo.
