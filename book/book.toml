@@ -5,7 +5,19 @@ multilingual = false
 src = "src"
 title = "flutter_rust_bridge"
 
+[build]
+extra-watch-dirs = ["po"]
+
 [preprocessor]
 
 [preprocessor.mermaid]
 command = "mdbook-mermaid"
+
+[preprocessor.gettext]
+after = ["links"]
+
+[output.html]
+curly-quotes = true
+additional-css = ["theme/lang-popup.css"]
+git-repository-url = "https://github.com/trdthg/flutter_rust_bridge"
+edit-url-template = "https://github.com/trdthg/flutter_rust_bridge/edit/main/{path}"

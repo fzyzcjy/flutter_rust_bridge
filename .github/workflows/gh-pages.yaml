@@ -1,38 +1,65 @@
-name: GitHub Pages
+name: Publish
 
 on:
-  workflow_dispatch: {}
   push:
     branches:
       - master
-    paths:
-      - 'book/**'
-  pull_request:
-    paths:
-      - 'book/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+  # Update the language picker in index.hbs to link new languages.
+  LANGUAGES: 
 
 jobs:
-  deploy:
-    runs-on: ubuntu-20.04
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
+  publish:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      # ref https://github.com/peaceiris/actions-mdbook
-      - name: Setup mdBook
-        uses: peaceiris/actions-mdbook@v1
+      - name: Setup Rust cache
+        uses: ./.github/workflows/setup-rust-cache
+
+      - name: Install mdbook
+        uses: ./.github/workflows/install-mdbook
+
+      - name: Build course in English
+        working-directory: ./book
+        run: mdbook build -d book
+
+      - name: Build all translations
+        working-directory: ./book
+        run: |
+          for po_lang in ${{ env.LANGUAGES }}; do
+              echo "::group::Building $po_lang translation"
+              MDBOOK_BOOK__LANGUAGE=$po_lang \
+              MDBOOK_OUTPUT__HTML__SITE_URL=/flutter-rust-bridge/$po_lang/ \
+              mdbook build -d book/$po_lang
+              echo "::endgroup::"
+          done
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          mdbook-version: 'latest'
-      
-      - name: Setup `mdbook-mermaid`
-        run: cargo install mdbook-mermaid
+          path: book/book
 
-      - run: mdbook build ./book
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/master' }}
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./book/book
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
