@@ -12,6 +12,14 @@ pub extern "C" fn wire_test_string_in_block_3(port_: i64, s: *mut wire_uint_8_li
 }
 
 #[no_mangle]
+pub extern "C" fn wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3(
+    port_: i64,
+    score: f64,
+) {
+    wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3_impl(port_, score)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_test_all_shared_struct_in_block_3(
     port_: i64,
     custom: *mut wire_SharedStructInAllBlocks,
@@ -37,6 +45,13 @@ pub extern "C" fn wire_test_cross_shared_struct_in_block_3_for_2_and_3(
     name: *mut wire_uint_8_list,
 ) {
     wire_test_cross_shared_struct_in_block_3_for_2_and_3_impl(port_, name)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_cross_shared_struct_in_sync_in_block_3_for_2_and_3(
+    name: *mut wire_uint_8_list,
+) -> support::WireSyncReturn {
+    wire_test_cross_shared_struct_in_sync_in_block_3_for_2_and_3_impl(name)
 }
 
 #[no_mangle]

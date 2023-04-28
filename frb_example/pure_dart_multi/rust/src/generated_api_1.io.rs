@@ -12,6 +12,21 @@ pub extern "C" fn wire_test_string_in_block_1(port_: i64, s: *mut wire_uint_8_li
 }
 
 #[no_mangle]
+pub extern "C" fn wire_test_string_in_sync_in_block_1(
+    s: *mut wire_uint_8_list,
+    i: u64,
+) -> support::WireSyncReturn {
+    wire_test_string_in_sync_in_block_1_impl(s, i)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1(
+    score: f64,
+) -> support::WireSyncReturn {
+    wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1_impl(score)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_test_all_shared_struct_in_block_1(
     port_: i64,
     custom: *mut wire_SharedStructInAllBlocks,

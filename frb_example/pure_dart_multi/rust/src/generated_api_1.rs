@@ -61,6 +61,38 @@ fn wire_test_string_in_block_1_impl(
         },
     )
 }
+fn wire_test_string_in_sync_in_block_1_impl(
+    s: impl bridge_generated_shares::Wire2Api<String> + UnwindSafe,
+    i: impl bridge_generated_shares::Wire2Api<u64> + UnwindSafe,
+) -> support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "test_string_in_sync_in_block_1",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_s = s.wire2api();
+            let api_i = i.wire2api();
+            Ok(test_string_in_sync_in_block_1(api_s, api_i))
+        },
+    )
+}
+fn wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1_impl(
+    score: impl bridge_generated_shares::Wire2Api<f64> + UnwindSafe,
+) -> support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "test_shared_struct_only_for_sync_with_sync_return_in_block_1",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_score = score.wire2api();
+            Ok(test_shared_struct_only_for_sync_with_sync_return_in_block_1(api_score))
+        },
+    )
+}
 fn wire_test_all_shared_struct_in_block_1_impl(
     port_: MessagePort,
     custom: impl bridge_generated_shares::Wire2Api<SharedStructInAllBlocks> + UnwindSafe,

@@ -5,6 +5,7 @@ use std::fs;
 
 use std::path::Path;
 
+use crate::ir::{IrType, IrTypeTrait};
 use crate::utils::consts::DART_KEYWORDS;
 use anyhow::anyhow;
 use convert_case::{Case, Casing};
@@ -65,9 +66,9 @@ pub fn is_multi_blocks_case(all_configs: &[crate::Opts]) -> bool {
             false
         }
         _ => {
-            for i in 0..all_configs.len() - 1 {
-                if all_configs[i].shared {
-                    log::error!("Config {} is shared, but should not be", i);
+            for (i, config) in all_configs.iter().enumerate().take(all_configs.len() - 1) {
+                if config.shared {
+                    log::error!("Config {i} is shared, but should not be");
                 }
             }
             assert!(all_configs[all_configs.len() - 1].shared); // last item must be shared
@@ -285,6 +286,14 @@ impl<T: Clone + Eq + std::hash::Hash> ExtraTraitForVec<T> for Vec<T> {
         let (_, duplicates) = self.find_uniques_and_duplicates(true, exclude_multi_duplicates);
         duplicates
     }
+}
+
+/// ouput `IrType`s with no duplicated safe_ident
+pub fn get_deduplicate_type(types: &[IrType]) -> Vec<IrType> {
+    let mut types_clone = types.to_vec();
+    types_clone.sort_by_key(|ty| ty.safe_ident());
+    types_clone.dedup_by_key(|ty| ty.safe_ident());
+    types_clone
 }
 
 /// For structs that only has an `inner` serializable property that

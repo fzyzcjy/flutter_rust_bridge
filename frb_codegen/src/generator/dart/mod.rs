@@ -43,7 +43,7 @@ use crate::ir::IrType::*;
 use crate::target::Target::*;
 use crate::target::{Acc, Target};
 use crate::utils::method::{FunctionName, MethodNamingUtil};
-use crate::utils::misc::{is_multi_blocks_case, PathExt};
+use crate::utils::misc::{get_deduplicate_type, is_multi_blocks_case, PathExt};
 use crate::{ir::*, Opts};
 use crate::{others::*, transformer};
 
@@ -120,14 +120,10 @@ impl DartApiSpec {
         let distinct_types = ir_file.distinct_types(true, true, all_configs);
         let distinct_input_types = ir_file.distinct_types(true, false, all_configs);
         let distinct_output_types = ir_file.distinct_types(false, true, all_configs);
-        debug!("distinct_input_types={:?}", distinct_input_types);
-        debug!("distinct_output_types={:?}", distinct_output_types);
 
-        let dart_structs = distinct_types
+        let dart_structs = get_deduplicate_type(&distinct_types)
             .iter()
             .map(|ty| {
-                log::debug!("the type is: {:?}", ty); //TODO: delete
-                log::debug!("the type(safe) is: {:?}", ty.safe_ident()); //TODO: delete
                 TypeDartGenerator::new(ty.clone(), ir_file, config).structs()
             })
             .collect::<Vec<_>>();
@@ -180,7 +176,7 @@ impl DartApiSpec {
             })
             .collect::<Vec<_>>();
 
-        let dart_wire2api_funcs = distinct_output_types
+        let dart_wire2api_funcs = get_deduplicate_type(&distinct_output_types)
             .iter()
             .map(|ty| generate_wire2api_func(ty, ir_file, &dart_api_class_name, config))
             .collect::<Vec<_>>();
@@ -382,9 +378,7 @@ fn generate_dart_implementation_body(
         ..
     } = spec;
     let shared_config = if is_multi_blocks_case(all_configs) {
-        let shared_config = all_configs.last().unwrap();
-        assert!(shared_config.shared);
-        Some(shared_config)
+        all_configs.last()
     } else {
         None
     };

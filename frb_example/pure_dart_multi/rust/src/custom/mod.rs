@@ -12,6 +12,20 @@ impl SharedStructInAllBlocks {
         message
     }
 }
+
+// This struct is shared for testing only sync return type specifically
+pub struct SharedStructOnlyForSyncTest {
+    pub default_score: f64,
+}
+impl SharedStructOnlyForSyncTest {
+    pub fn sum(&self, y: u32) -> u32 {
+        self.default_score as u32 + y
+    }
+    pub fn sum_static(x: u32, y: u32) -> u32 {
+        x + y
+    }
+}
+
 /// This is a struct used in API blocks 1 and 2 for test, but not defined in any regular block file
 pub struct SharedStructInBlock1And2 {
     pub id: i32,

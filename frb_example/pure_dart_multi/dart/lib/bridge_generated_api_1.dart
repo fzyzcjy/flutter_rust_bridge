@@ -27,6 +27,14 @@ abstract class ApiClass1 {
 
   FlutterRustBridgeTaskConstMeta get kTestStringInBlock1ConstMeta;
 
+  String testStringInSyncInBlock1({required String s, required int i, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStringInSyncInBlock1ConstMeta;
+
+  SharedStructOnlyForSyncTest testSharedStructOnlyForSyncWithSyncReturnInBlock1({required double score, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestSharedStructOnlyForSyncWithSyncReturnInBlock1ConstMeta;
+
   Future<SharedStructInAllBlocks> testAllSharedStructInBlock1(
       {required SharedStructInAllBlocks custom, required String s, required int i, dynamic hint});
 
@@ -140,6 +148,40 @@ class ApiClass1Impl implements ApiClass1 {
   FlutterRustBridgeTaskConstMeta get kTestStringInBlock1ConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "test_string_in_block_1",
         argNames: ["s", "i"],
+      );
+
+  String testStringInSyncInBlock1({required String s, required int i, dynamic hint}) {
+    var arg0 = _sharedPlatform.api2wire_String(s);
+    var arg1 = _sharedPlatform.api2wire_u64(i);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_test_string_in_sync_in_block_1(arg0, arg1),
+      parseSuccessData: _sharedImpl.wire2api_String,
+      constMeta: kTestStringInSyncInBlock1ConstMeta,
+      argValues: [s, i],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestStringInSyncInBlock1ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_string_in_sync_in_block_1",
+        argNames: ["s", "i"],
+      );
+
+  SharedStructOnlyForSyncTest testSharedStructOnlyForSyncWithSyncReturnInBlock1({required double score, dynamic hint}) {
+    var arg0 = api2wire_f64(score);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1(arg0),
+      parseSuccessData: _sharedImpl.wire2api_shared_struct_only_for_sync_test,
+      constMeta: kTestSharedStructOnlyForSyncWithSyncReturnInBlock1ConstMeta,
+      argValues: [score],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestSharedStructOnlyForSyncWithSyncReturnInBlock1ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_shared_struct_only_for_sync_with_sync_return_in_block_1",
+        argNames: ["score"],
       );
 
   Future<SharedStructInAllBlocks> testAllSharedStructInBlock1(

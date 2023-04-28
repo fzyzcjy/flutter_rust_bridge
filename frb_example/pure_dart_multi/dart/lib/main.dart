@@ -25,6 +25,16 @@ void main(List<String> args) {
     expect(await api1.testStringInBlock1(s: "string", i: 1), "string_1");
   });
 
+  test('dart call testStringInSyncInBlock1', () async {
+    expect(api1.testStringInSyncInBlock1(s: "string", i: 1), "string_1");
+  });
+
+  test('dart call testSharedStructOnlyForSyncWithSyncReturnInBlock1', () async {
+    final score = 1.1;
+    expect(api1.testSharedStructOnlyForSyncWithSyncReturnInBlock1(score:score),
+        SharedStructOnlyForSyncTest(defaultScore: score));
+  });
+
   test('dart call testAllSharedStructInBlock1', () async {
     expect(
       await api1.testAllSharedStructInBlock1(
@@ -88,6 +98,16 @@ void main(List<String> args) {
   test('dart call testAllSharedStructInBlock2', () async {
     expect(
       await api2.testAllSharedStructInBlock2(
+          custom: SharedStructInAllBlocks(name: "string", id: 1, num: 2.2),
+          s: "newString",
+          i: 2),
+      SharedStructInAllBlocks(name: "newString", id: 2, num: 2.2),
+    );
+  });
+
+  test('dart call testAllSharedStructInSyncInBlock2', () async {
+    expect(
+      api2.testAllSharedStructInSyncInBlock2(
           custom: SharedStructInAllBlocks(name: "string", id: 1, num: 2.2),
           s: "newString",
           i: 2),
@@ -164,6 +184,12 @@ void main(List<String> args) {
     expect(await api3.testStringInBlock3(s: "string", i: 3), "string_3");
   });
 
+  test('dart call testSharedStructOnlyForSyncWithNoSyncReturnInBlock3', () async {
+    final score = 1.1;
+    expect(await api3.testSharedStructOnlyForSyncWithNoSyncReturnInBlock3(score:score),
+        SharedStructOnlyForSyncTest(defaultScore: score));
+  });
+
   test('dart call testAllSharedStructInBlock3', () async {
     expect(
       await api3.testAllSharedStructInBlock3(
@@ -187,6 +213,15 @@ void main(List<String> args) {
   test('dart call testCrossSharedStructInBlock3For2And3', () async {
     expect(
       await api3.testCrossSharedStructInBlock3For2And3(
+        name: "string3",
+      ),
+      CrossSharedStructInBlock2And3(name: "string3"),
+    );
+  });
+
+  test('dart call testCrossSharedStructInSyncInBlock3For2And3', () async {
+    expect(
+      api3.testCrossSharedStructInSyncInBlock3For2And3(
         name: "string3",
       ),
       CrossSharedStructInBlock2And3(name: "string3"),

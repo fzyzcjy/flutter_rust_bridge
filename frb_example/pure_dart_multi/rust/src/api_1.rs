@@ -1,6 +1,8 @@
+use flutter_rust_bridge::SyncReturn;
+
 use crate::custom::{
     CrossSharedStructInBlock1And2, SharedStructInAllBlocks, SharedStructInBlock1And2,
-    StructOnlyForBlock1,
+    SharedStructOnlyForSyncTest, StructOnlyForBlock1,
 };
 pub struct StructDefinedInBlock1 {
     pub name: String,
@@ -20,6 +22,18 @@ pub fn test_inbuilt_type_in_block_1(a: i32, b: f32) -> f32 {
 
 pub fn test_string_in_block_1(s: String, i: u64) -> String {
     format!("{}_{}", s, i)
+}
+
+pub fn test_string_in_sync_in_block_1(s: String, i: u64) -> SyncReturn<String> {
+    SyncReturn(format!("{}_{}", s, i))
+}
+
+pub fn test_shared_struct_only_for_sync_with_sync_return_in_block_1(
+    score: f64,
+) -> SyncReturn<SharedStructOnlyForSyncTest> {
+    SyncReturn(SharedStructOnlyForSyncTest {
+        default_score: score,
+    })
 }
 
 pub fn test_all_shared_struct_in_block_1(

@@ -249,6 +249,26 @@ class ApiClass2Wire implements FlutterRustBridgeWireBase {
   late final _wire_test_all_shared_struct_in_block_2 = _wire_test_all_shared_struct_in_block_2Ptr
       .asFunction<void Function(int, ffi.Pointer<wire_SharedStructInAllBlocks>, ffi.Pointer<wire_uint_8_list>, int)>();
 
+  WireSyncReturn wire_test_all_shared_struct_in_sync_in_block_2(
+    ffi.Pointer<wire_SharedStructInAllBlocks> custom,
+    ffi.Pointer<wire_uint_8_list> s,
+    int i,
+  ) {
+    return _wire_test_all_shared_struct_in_sync_in_block_2(
+      custom,
+      s,
+      i,
+    );
+  }
+
+  late final _wire_test_all_shared_struct_in_sync_in_block_2Ptr = _lookup<
+      ffi.NativeFunction<
+          WireSyncReturn Function(ffi.Pointer<wire_SharedStructInAllBlocks>, ffi.Pointer<wire_uint_8_list>,
+              ffi.Int32)>>('wire_test_all_shared_struct_in_sync_in_block_2');
+  late final _wire_test_all_shared_struct_in_sync_in_block_2 =
+      _wire_test_all_shared_struct_in_sync_in_block_2Ptr.asFunction<
+          WireSyncReturn Function(ffi.Pointer<wire_SharedStructInAllBlocks>, ffi.Pointer<wire_uint_8_list>, int)>();
+
   void wire_test_shared_struct_in_block_2_for_1_and_2(
     int port_,
     ffi.Pointer<wire_SharedStructInBlock1And2> custom,
@@ -417,6 +437,22 @@ class ApiClass2Wire implements FlutterRustBridgeWireBase {
           'new_box_autoadd_struct_only_for_block_2');
   late final _new_box_autoadd_struct_only_for_block_2 =
       _new_box_autoadd_struct_only_for_block_2Ptr.asFunction<ffi.Pointer<wire_StructOnlyForBlock2> Function()>();
+
+  void wire_test_shared_struct_with_no_sync_return_in_block_3(
+    int port_,
+    double score,
+  ) {
+    return _wire_test_shared_struct_with_no_sync_return_in_block_3(
+      port_,
+      score,
+    );
+  }
+
+  late final _wire_test_shared_struct_with_no_sync_return_in_block_3Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Double)>>(
+          'wire_test_shared_struct_with_no_sync_return_in_block_3');
+  late final _wire_test_shared_struct_with_no_sync_return_in_block_3 =
+      _wire_test_shared_struct_with_no_sync_return_in_block_3Ptr.asFunction<void Function(int, double)>();
 }
 
 class _Dart_Handle extends ffi.Opaque {}

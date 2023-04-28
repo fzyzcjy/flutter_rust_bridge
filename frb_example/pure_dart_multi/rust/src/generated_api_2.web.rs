@@ -22,6 +22,15 @@ pub fn wire_test_all_shared_struct_in_block_2(
 }
 
 #[wasm_bindgen]
+pub fn wire_test_all_shared_struct_in_sync_in_block_2(
+    custom: JsValue,
+    s: String,
+    i: i32,
+) -> support::WireSyncReturn {
+    wire_test_all_shared_struct_in_sync_in_block_2_impl(custom, s, i)
+}
+
+#[wasm_bindgen]
 pub fn wire_test_shared_struct_in_block_2_for_1_and_2(
     port_: MessagePort,
     custom: JsValue,

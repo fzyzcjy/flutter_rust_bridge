@@ -20,6 +20,7 @@ pub use crate::custom::CrossSharedStructInBlock2And3;
 pub use crate::custom::SharedStructInAllBlocks;
 pub use crate::custom::SharedStructInBlock1And2;
 pub use crate::custom::SharedStructInBlock2And3;
+pub use crate::custom::SharedStructOnlyForSyncTest;
 
 // Section: wire functions
 
@@ -124,6 +125,13 @@ impl support::IntoDart for SharedStructInBlock2And3 {
     }
 }
 impl support::IntoDartExceptPrimitive for SharedStructInBlock2And3 {}
+
+impl support::IntoDart for SharedStructOnlyForSyncTest {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.default_score.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for SharedStructOnlyForSyncTest {}
 
 // Section: executor
 

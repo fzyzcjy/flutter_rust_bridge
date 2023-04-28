@@ -1,3 +1,5 @@
+use flutter_rust_bridge::SyncReturn;
+
 use crate::custom::SharedStructInAllBlocks;
 use crate::custom::StructOnlyForBlock2;
 use crate::custom::{CrossSharedStructInBlock1And2, SharedStructInBlock1And2};
@@ -30,6 +32,16 @@ pub fn test_all_shared_struct_in_block_2(
     custom.name = s;
     custom.id = i;
     custom
+}
+
+pub fn test_all_shared_struct_in_sync_in_block_2(
+    mut custom: SharedStructInAllBlocks,
+    s: String,
+    i: i32,
+) -> SyncReturn<SharedStructInAllBlocks> {
+    custom.name = s;
+    custom.id = i;
+    SyncReturn(custom)
 }
 
 pub fn test_shared_struct_in_block_2_for_1_and_2(

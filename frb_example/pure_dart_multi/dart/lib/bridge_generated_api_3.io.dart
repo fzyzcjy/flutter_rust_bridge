@@ -233,6 +233,22 @@ class ApiClass3Wire implements FlutterRustBridgeWireBase {
   late final _wire_test_string_in_block_3 =
       _wire_test_string_in_block_3Ptr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>, int)>();
 
+  void wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3(
+    int port_,
+    double score,
+  ) {
+    return _wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3(
+      port_,
+      score,
+    );
+  }
+
+  late final _wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Double)>>(
+          'wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3');
+  late final _wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3 =
+      _wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3Ptr.asFunction<void Function(int, double)>();
+
   void wire_test_all_shared_struct_in_block_3(
     int port_,
     ffi.Pointer<wire_SharedStructInAllBlocks> custom,
@@ -291,6 +307,21 @@ class ApiClass3Wire implements FlutterRustBridgeWireBase {
   late final _wire_test_cross_shared_struct_in_block_3_for_2_and_3 =
       _wire_test_cross_shared_struct_in_block_3_for_2_and_3Ptr
           .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  WireSyncReturn wire_test_cross_shared_struct_in_sync_in_block_3_for_2_and_3(
+    ffi.Pointer<wire_uint_8_list> name,
+  ) {
+    return _wire_test_cross_shared_struct_in_sync_in_block_3_for_2_and_3(
+      name,
+    );
+  }
+
+  late final _wire_test_cross_shared_struct_in_sync_in_block_3_for_2_and_3Ptr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_test_cross_shared_struct_in_sync_in_block_3_for_2_and_3');
+  late final _wire_test_cross_shared_struct_in_sync_in_block_3_for_2_and_3 =
+      _wire_test_cross_shared_struct_in_sync_in_block_3_for_2_and_3Ptr
+          .asFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_test_unique_struct_3(
     int port_,

@@ -123,13 +123,10 @@ impl IrFile {
                 true => {
                     let raw_distinct_types =
                         self.get_regular_distinct_types(include_func_inputs, include_func_output);
-                    log::debug!("the raw distinct types for {include_func_inputs}-{include_func_output}:{:?}", raw_distinct_types); //TODO: delete
-                    let collect = raw_distinct_types
+                       raw_distinct_types
                         .difference(&shared_types)
                         .cloned()
-                        .collect();
-                    log::debug!("the final distinct types:{:?}", collect); //TODO: delete
-                    collect
+                        .collect()
                 }
                 false => shared_types,
             };
@@ -182,8 +179,8 @@ impl IrFile {
         }
     }
 
-    /// Whatever this IrFile instance represents for, get shared types through `all_configs`, which
-    /// may or may not include the shared config at the last index.
+    /// Whatever this IrFile instance represents for,this method would get shared types through `all_configs`,
+    /// which refers to a list may or may not include the shared config at the last index.
     /// For single-block case, it should return empty.
     /// For multi-block case, it should return ALL shared types among ALL regular
     /// blocks, which means that some of the shared types may not be used in all regular blocks.
@@ -202,14 +199,14 @@ impl IrFile {
             RefCell<bool>,
         >| {
             golbal_shared_types.with(|shared| {
-                fetched_for_golbal_shared_types.with(|fetched| {
+                fetched_for_golbal_shared_types.with(|has_fetched| {
                     let shares = shared.borrow_mut();
                     if all_configs.len() <= 1 {
                         // CASE 1: it is single block case;
                         // CASE 2: it is multi-blocks case, but `all_configs` is not available;
                         return shares.clone();
                     }
-                    let mut fetched = fetched.borrow_mut();
+                    let mut fetched = has_fetched.borrow_mut();
                     if *fetched {
                         return shares.clone();
                     }
@@ -299,6 +296,34 @@ impl IrFile {
         }
         //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑for cross shared types↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
+        //↓↓↓↓↓↓↓↓↓↓↓↓for types with same idents but different hashes↓↓↓↓↓↓↓↓↓↓↓↓
+        // Suppose there is a type `String`, it is used as output for a function defined in a
+        // regular block and used as output type of `SyncReturn` version in anthoer function of
+        // another regular block, then the above logic would not treat `String` and the `SyncReturn`
+        // version of it as shared types, which both should be.
+        for (i, set) in block_uniques.iter().enumerate() {
+            for item in set {
+                if shares.contains(item) {
+                    continue;
+                }
+                for (_, other_set) in block_uniques.iter().enumerate().skip(i + 1) {
+                    if other_set.contains(item) {
+                        shares.insert(item.clone());
+                    } else {
+                        // Note: There is no need to check `item` with that in `shares` additionally.
+                        // With cross types got above, the below logic is enough
+                        // to cover all other cases.
+                        for other_item in other_set {
+                            if item.safe_ident() == other_item.safe_ident() {
+                                shares.insert(item.clone());
+                                shares.insert(other_item.clone());
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        //↑↑↑↑↑↑↑↑↑↑↑↑for types with same idents but different hashes↑↑↑↑↑↑↑↑↑↑↑↑
         log::debug!(
             "the new shared for index:{} {include_func_inputs}-{include_func_output} is:{:?}",
             self.block_index.0,

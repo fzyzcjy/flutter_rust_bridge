@@ -79,6 +79,14 @@ class SharedStructInBlock2And3 {
   });
 }
 
+class SharedStructOnlyForSyncTest {
+  final double defaultScore;
+
+  const SharedStructOnlyForSyncTest({
+    required this.defaultScore,
+  });
+}
+
 class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
   final BridgeGeneratedSharesPlatform _platform;
   factory BridgeGeneratedSharesImpl(ExternalLibrary dylib) =>
@@ -153,6 +161,14 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
       id: wire2api_i32(arr[0]),
       num: wire2api_f64(arr[1]),
       name: wire2api_String(arr[2]),
+    );
+  }
+
+  SharedStructOnlyForSyncTest wire2api_shared_struct_only_for_sync_test(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return SharedStructOnlyForSyncTest(
+      defaultScore: wire2api_f64(arr[0]),
     );
   }
 

@@ -32,6 +32,11 @@ abstract class ApiClass2 {
 
   FlutterRustBridgeTaskConstMeta get kTestAllSharedStructInBlock2ConstMeta;
 
+  SharedStructInAllBlocks testAllSharedStructInSyncInBlock2(
+      {required SharedStructInAllBlocks custom, required String s, required int i, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestAllSharedStructInSyncInBlock2ConstMeta;
+
   Future<SharedStructInBlock1And2> testSharedStructInBlock2For1And2(
       {required SharedStructInBlock1And2 custom, required String s, required int i, dynamic hint});
 
@@ -167,6 +172,26 @@ class ApiClass2Impl implements ApiClass2 {
 
   FlutterRustBridgeTaskConstMeta get kTestAllSharedStructInBlock2ConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "test_all_shared_struct_in_block_2",
+        argNames: ["custom", "s", "i"],
+      );
+
+  SharedStructInAllBlocks testAllSharedStructInSyncInBlock2(
+      {required SharedStructInAllBlocks custom, required String s, required int i, dynamic hint}) {
+    var arg0 = _sharedPlatform.api2wire_box_autoadd_shared_struct_in_all_blocks(custom);
+    var arg1 = _sharedPlatform.api2wire_String(s);
+    var arg2 = api2wire_i32(i);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_test_all_shared_struct_in_sync_in_block_2(arg0, arg1, arg2),
+      parseSuccessData: _sharedImpl.wire2api_shared_struct_in_all_blocks,
+      constMeta: kTestAllSharedStructInSyncInBlock2ConstMeta,
+      argValues: [custom, s, i],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestAllSharedStructInSyncInBlock2ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_all_shared_struct_in_sync_in_block_2",
         argNames: ["custom", "s", "i"],
       );
 

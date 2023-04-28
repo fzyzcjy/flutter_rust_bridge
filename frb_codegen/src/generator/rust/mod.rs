@@ -36,7 +36,7 @@ use crate::target::Target;
 use crate::target::Target::*;
 use crate::utils::method::FunctionName;
 
-use crate::utils::misc::is_multi_blocks_case;
+use crate::utils::misc::{get_deduplicate_type, is_multi_blocks_case};
 use crate::{ir::*, Opts};
 use itertools::Itertools;
 
@@ -98,7 +98,6 @@ impl<'a> Generator<'a> {
     ) -> Acc<String> {
         let mut lines = Acc::<Vec<_>>::default();
 
-        log::debug!("rust before distinct_types"); //TODO: delete
         let distinct_input_types = ir_file.distinct_types(true, false, all_configs);
         let distinct_output_types = ir_file.distinct_types(false, true, all_configs);
 
@@ -168,12 +167,8 @@ impl<'a> Generator<'a> {
             .collect();
 
         lines.push(self.section_header_comment("impl IntoDart"));
-        log::debug!(
-            "distinct_output_types_{:?}:\n{distinct_output_types:?}",
-            self.config.block_index
-        ); //TODO: delete
         lines.extend(
-            distinct_output_types
+            get_deduplicate_type(&distinct_output_types)
                 .iter()
                 .map(|ty| self.generate_impl_intodart(ty, ir_file)),
         );

@@ -12,6 +12,14 @@ pub fn wire_test_string_in_block_3(port_: MessagePort, s: String, i: u64) {
 }
 
 #[wasm_bindgen]
+pub fn wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3(
+    port_: MessagePort,
+    score: f64,
+) {
+    wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3_impl(port_, score)
+}
+
+#[wasm_bindgen]
 pub fn wire_test_all_shared_struct_in_block_3(
     port_: MessagePort,
     custom: JsValue,
@@ -34,6 +42,13 @@ pub fn wire_test_shared_struct_in_block_3_for_2_and_3(
 #[wasm_bindgen]
 pub fn wire_test_cross_shared_struct_in_block_3_for_2_and_3(port_: MessagePort, name: String) {
     wire_test_cross_shared_struct_in_block_3_for_2_and_3_impl(port_, name)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_cross_shared_struct_in_sync_in_block_3_for_2_and_3(
+    name: String,
+) -> support::WireSyncReturn {
+    wire_test_cross_shared_struct_in_sync_in_block_3_for_2_and_3_impl(name)
 }
 
 #[wasm_bindgen]

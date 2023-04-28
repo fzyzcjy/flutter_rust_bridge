@@ -81,6 +81,27 @@ fn wire_test_all_shared_struct_in_block_2_impl(
         },
     )
 }
+fn wire_test_all_shared_struct_in_sync_in_block_2_impl(
+    custom: impl bridge_generated_shares::Wire2Api<SharedStructInAllBlocks> + UnwindSafe,
+    s: impl bridge_generated_shares::Wire2Api<String> + UnwindSafe,
+    i: impl bridge_generated_shares::Wire2Api<i32> + UnwindSafe,
+) -> support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "test_all_shared_struct_in_sync_in_block_2",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_custom = custom.wire2api();
+            let api_s = s.wire2api();
+            let api_i = i.wire2api();
+            Ok(test_all_shared_struct_in_sync_in_block_2(
+                api_custom, api_s, api_i,
+            ))
+        },
+    )
+}
 fn wire_test_shared_struct_in_block_2_for_1_and_2_impl(
     port_: MessagePort,
     custom: impl bridge_generated_shares::Wire2Api<SharedStructInBlock1And2> + UnwindSafe,

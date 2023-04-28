@@ -12,6 +12,18 @@ pub fn wire_test_string_in_block_1(port_: MessagePort, s: String, i: u64) {
 }
 
 #[wasm_bindgen]
+pub fn wire_test_string_in_sync_in_block_1(s: String, i: u64) -> support::WireSyncReturn {
+    wire_test_string_in_sync_in_block_1_impl(s, i)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1(
+    score: f64,
+) -> support::WireSyncReturn {
+    wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1_impl(score)
+}
+
+#[wasm_bindgen]
 pub fn wire_test_all_shared_struct_in_block_1(
     port_: MessagePort,
     custom: JsValue,

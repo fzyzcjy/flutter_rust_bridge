@@ -22,6 +22,15 @@ pub extern "C" fn wire_test_all_shared_struct_in_block_2(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_test_all_shared_struct_in_sync_in_block_2(
+    custom: *mut wire_SharedStructInAllBlocks,
+    s: *mut wire_uint_8_list,
+    i: i32,
+) -> support::WireSyncReturn {
+    wire_test_all_shared_struct_in_sync_in_block_2_impl(custom, s, i)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_test_shared_struct_in_block_2_for_1_and_2(
     port_: i64,
     custom: *mut wire_SharedStructInBlock1And2,
