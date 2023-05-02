@@ -1,69 +1,62 @@
+{{!-- Modified from https://github.com/rust-lang/mdBook/blob/master/src/theme/index.hbs --}}
 <!DOCTYPE HTML>
 <html lang="{{ language }}" class="sidebar-visible no-js {{ default_theme }}">
-    <head>
-        <!-- Book generated using mdBook -->
-        <meta charset="UTF-8">
-        <title>{{ title }}</title>
-        {{#if is_print }}
-        <meta name="robots" content="noindex" />
-        {{/if}}
-        {{#if base_url}}
-        <base href="{{ base_url }}">
-        {{/if}}
+<head>
+    <!-- Book generated using mdBook -->
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    {{#if is_print }}
+    <meta name="robots" content="noindex" />
+    {{/if}}
+    {{#if base_url}}
+    <base href="{{ base_url }}">
+    {{/if}}
 
-        <script async src="https://www.gstatic.com/brandstudio/kato/cookie_choice_component/cookie_consent_bar.v3.js"
-                data-autoload-cookie-consent-bar="true"></script>
 
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZN78TEJMRW"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-ZN78TEJMRW');
-        </script>
+    <!-- Custom HTML head -->
+    {{> head}}
 
-        <!-- Custom HTML head -->
-        {{> head}}
+    <meta name="description" content="{{ description }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffffff" />
 
-        <meta name="description" content="{{ description }}">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+    {{#if favicon_svg}}
+    <link rel="icon" href="{{ path_to_root }}favicon.svg">
+    {{/if}}
+    {{#if favicon_png}}
+    <link rel="shortcut icon" href="{{ path_to_root }}favicon.png">
+    {{/if}}
+    <link rel="stylesheet" href="{{ path_to_root }}css/variables.css">
+    <link rel="stylesheet" href="{{ path_to_root }}css/general.css">
+    <link rel="stylesheet" href="{{ path_to_root }}css/chrome.css">
+    {{#if print_enable}}
+    <link rel="stylesheet" href="{{ path_to_root }}css/print.css" media="print">
+    {{/if}}
 
-        {{#if favicon_svg}}
-        <link rel="icon" href="{{ path_to_root }}favicon.svg">
-        {{/if}}
-        {{#if favicon_png}}
-        <link rel="shortcut icon" href="{{ path_to_root }}favicon.png">
-        {{/if}}
-        <link rel="stylesheet" href="{{ path_to_root }}css/variables.css">
-        <link rel="stylesheet" href="{{ path_to_root }}css/general.css">
-        <link rel="stylesheet" href="{{ path_to_root }}css/chrome.css">
-        {{#if print_enable}}
-        <link rel="stylesheet" href="{{ path_to_root }}css/print.css" media="print">
-        {{/if}}
+    <!-- Fonts -->
+    <link rel="stylesheet" href="{{ path_to_root }}FontAwesome/css/font-awesome.css">
+    {{#if copy_fonts}}
+    <link rel="stylesheet" href="{{ path_to_root }}fonts/fonts.css">
+    {{/if}}
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="{{ path_to_root }}FontAwesome/css/font-awesome.css">
-        {{#if copy_fonts}}
-        <link rel="stylesheet" href="{{ path_to_root }}fonts/fonts.css">
-        {{/if}}
+    <!-- Highlight.js Stylesheets -->
+    <link rel="stylesheet" href="{{ path_to_root }}highlight.css">
+    <link rel="stylesheet" href="{{ path_to_root }}tomorrow-night.css">
+    <link rel="stylesheet" href="{{ path_to_root }}ayu-highlight.css">
 
-        <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="{{ path_to_root }}highlight.css">
-        <link rel="stylesheet" href="{{ path_to_root }}tomorrow-night.css">
-        <link rel="stylesheet" href="{{ path_to_root }}ayu-highlight.css">
+    <!-- Custom theme stylesheets -->
+    {{#each additional_css}}
+    <link rel="stylesheet" href="{{ ../path_to_root }}{{ this }}">
+    {{/each}}
 
-        <!-- Custom theme stylesheets -->
-        {{#each additional_css}}
-        <link rel="stylesheet" href="{{ ../path_to_root }}{{ this }}">
-        {{/each}}
-
-        {{#if mathjax_support}}
-        <!-- MathJax -->
-        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        {{/if}}
-    </head>
-    <body>
+    {{#if mathjax_support}}
+    <!-- MathJax -->
+    <script async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    {{/if}}
+</head>
+<body>
+    <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "{{ path_to_root }}";
@@ -89,7 +82,7 @@
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script>
             var theme;
-            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            try { theme = localStorage.getItem('mdbook-theme'); } catch (e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
             html.classList.remove('no-js')
@@ -101,10 +94,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
-                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch (e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -151,55 +146,55 @@
                             <i class="fa fa-globe"></i>
                         </button>
                         <ul id="language-list" class="theme-popup" aria-label="Languages" role="menu">
-                          <li role="none"><button role="menuitem" class="theme"><a id="en">English</a></button></li>
-                          <li role="none"><button role="menuitem" class="theme"><a id="zh">简体中文</a></button></li>
+                            <li role="none"><button role="menuitem" class="theme"><a id="en">English</a></button></li>
+                            <li role="none"><button role="menuitem" class="theme"><a id="zh">简体中文</a></button></li>
                         </ul>
 
                         <script>
-                          let langToggleButton = document.getElementById("language-toggle");
-                          let langPopup = document.getElementById("language-list");
-                          function hideLangs() {
-                              langPopup.style.display = 'none';
-                              langToggleButton.setAttribute('aria-expanded', false);
-                          }
-                          function showLangs() {
-                              langPopup.style.display = 'block';
-                              langToggleButton.setAttribute('aria-expanded', true);
-                          }
-                          langToggleButton.addEventListener('click', function () {
-                              if (langPopup.style.display === 'block') {
-                                  hideLangs();
-                              } else {
-                                  showLangs();
-                              }
-                          });
-                          document.addEventListener('click', function(e) {
-                              console.log("document clicked: " + langPopup.style.display)
-                              if (langPopup.style.display === 'block' && !langToggleButton.contains(e.target) && !langPopup.contains(e.target)) {
-                                  hideLangs();
-                              }
-                          });
-                          let selectedLang = document.getElementById("{{ language }}");
-                          selectedLang.parentNode.classList.add("theme-selected");
+                            let langToggleButton = document.getElementById("language-toggle");
+                            let langPopup = document.getElementById("language-list");
+                            function hideLangs() {
+                                langPopup.style.display = 'none';
+                                langToggleButton.setAttribute('aria-expanded', false);
+                            }
+                            function showLangs() {
+                                langPopup.style.display = 'block';
+                                langToggleButton.setAttribute('aria-expanded', true);
+                            }
+                            langToggleButton.addEventListener('click', function () {
+                                if (langPopup.style.display === 'block') {
+                                    hideLangs();
+                                } else {
+                                    showLangs();
+                                }
+                            });
+                            document.addEventListener('click', function(e) {
+                                console.log("document clicked: " + langPopup.style.display)
+                                if (langPopup.style.display === 'block' && !langToggleButton.contains(e.target) && !langPopup.contains(e.target)) {
+                                    hideLangs();
+                                }
+                            });
+                            let selectedLang = document.getElementById("{{ language }}");
+                            selectedLang.parentNode.classList.add("theme-selected");
 
-                          // The path to the root, taking the current
-                          // language into account.
-                          {{#if (eq language "en")}}
-                          let full_path_to_root = "{{ path_to_root }}";
-                          {{else}}
-                          let full_path_to_root = "{{ path_to_root }}../";
-                          {{/if}}
-                          // The page path (mdbook only gives us
-                          // access to the path to the Markdown file).
-                          let path = "{{ path }}".replace(/\.md$/, ".html");
-                          for (let lang of langPopup.querySelectorAll("a")) {
-                            console.log(lang)
-                              if (lang.id == "en") {
-                                  lang.href = `${full_path_to_root}${path}`;
-                              } else {
-                                  lang.href = `${full_path_to_root}${lang.id}/${path}`;
-                              }
-                          }
+                            // The path to the root, taking the current
+                            // language into account.
+                            {{#if (eq language "en")}}
+                            let full_path_to_root = "{{ path_to_root }}";
+                            {{else}}
+                            let full_path_to_root = "{{ path_to_root }}../";
+                            {{/if}}
+                            // The page path (mdbook only gives us
+                            // access to the path to the Markdown file).
+                            let path = "{{ path }}".replace(/\.md$/, ".html");
+                            for (let lang of langPopup.querySelectorAll("a")) {
+                                console.log(lang)
+                                if (lang.id == "en") {
+                                    lang.href = `${full_path_to_root}${path}`;
+                                } else {
+                                    lang.href = `${full_path_to_root}${lang.id}/${path}`;
+                                }
+                            }
                         </script>
                         {{#if print_enable}}
                         <a href="{{ path_to_root }}print.html" title="Print this book" aria-label="Print this book">
@@ -218,7 +213,7 @@
                         </a>
                         {{else}}
                         <a href="https://github.com/fzyzcjy/flutter_rust_bridge/edit/master/book/po/{{language}}.po"
-                           title="Suggest an edit to the translation" aria-label="Suggest an edit to the translation">
+                            title="Suggest an edit to the translation" aria-label="Suggest an edit to the translation">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
                         {{/if}}
@@ -257,15 +252,15 @@
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         {{#previous}}
-                            <a rel="prev" href="{{ path_to_root }}{{link}}" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
+                        <a rel="prev" href="{{ path_to_root }}{{link}}" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
                         {{/previous}}
 
                         {{#next}}
-                            <a rel="next" href="{{ path_to_root }}{{link}}" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
+                        <a rel="next" href="{{ path_to_root }}{{link}}" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
                         {{/next}}
 
                         <div style="clear: both"></div>
@@ -275,15 +270,15 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 {{#previous}}
-                    <a rel="prev" href="{{ path_to_root }}{{link}}" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
+                <a rel="prev" href="{{ path_to_root }}{{link}}" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 {{/previous}}
 
                 {{#next}}
-                    <a rel="next" href="{{ path_to_root }}{{link}}" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
+                <a rel="next" href="{{ path_to_root }}{{link}}" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 {{/next}}
             </nav>
 
@@ -365,20 +360,20 @@
         {{#if is_print}}
         {{#if mathjax_support}}
         <script>
-        window.addEventListener('load', function() {
-            MathJax.Hub.Register.StartupHook('End', function() {
-                window.setTimeout(window.print, 100);
+            window.addEventListener('load', function() {
+                MathJax.Hub.Register.StartupHook('End', function () {
+                    window.setTimeout(window.print, 100);
+                });
             });
-        });
         </script>
         {{else}}
         <script>
-        window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
-        });
+            window.addEventListener('load', function() {
+                window.setTimeout(window.print, 100);
+            });
         </script>
         {{/if}}
         {{/if}}
-
-    </body>
+    </div>
+</body>
 </html>

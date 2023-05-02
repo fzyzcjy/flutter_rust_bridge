@@ -19,5 +19,6 @@ after = ["links"]
 [output.html]
 curly-quotes = true
 additional-css = ["theme/lang-popup.css"]
+site-url = "/flutter_rust_bridge/"
 git-repository-url = "https://github.com/fzyzcjy/flutter_rust_bridge"
 edit-url-template = "https://github.com/fzyzcjy/flutter_rust_bridge/edit/master/book/{path}"
