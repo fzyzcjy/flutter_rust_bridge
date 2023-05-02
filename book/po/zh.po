@@ -17,7 +17,7 @@ msgstr "介绍"
 
 #: src/SUMMARY.md:5
 msgid "Part I: Core"
-msgstr ""
+msgstr "Part I: 核心"
 
 #: src/SUMMARY.md:7
 msgid "🧭 Quickstart"
