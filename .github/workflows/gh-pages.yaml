@@ -1,6 +1,7 @@
 name: GitHub Pages
 
 on:
+  workflow_dispatch: {}
   push:
     branches:
       - master
@@ -10,38 +11,36 @@ on:
     paths:
       - 'book/**'
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow one concurrent deployment
-concurrency:
-  group: pages
-  cancel-in-progress: true
-
 env:
   CARGO_TERM_COLOR: always
   # Update the language picker in index.hbs to link new languages.
-  LANGUAGES: zh
+  LANGUAGES: ("zh")
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    defaults:
+      run:
+        shell: bash
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: Setup Rust cache
-        uses: ./.github/workflows/setup-rust-cache
+        uses: Swatinem/rust-cache@v2
 
       - name: Install mdbook
-        uses: ./.github/workflows/install-mdbook
+        run: cargo install mdbook --locked --version 0.4.28
 
-      - name: Build course in English
+      - name: Install mdbook-mermaid
+        run: cargo install mdbook-mermaid --locked --version 0.12.6
+
+      - name: Install mdbook-i18n-helpers
+        run: cargo install mdbook-i18n-helpers --locked --version 0.1.0
+
+      - name: Build book in English
         working-directory: ./book
         run: mdbook build -d book
 
@@ -56,14 +55,9 @@ jobs:
               echo "::endgroup::"
           done
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/master' }}
         with:
-          path: book/book
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./book/book
