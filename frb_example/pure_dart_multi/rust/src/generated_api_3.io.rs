@@ -20,6 +20,19 @@ pub extern "C" fn wire_test_shared_struct_only_for_sync_with_no_sync_return_in_b
 }
 
 #[no_mangle]
+pub extern "C" fn wire_test_shared_struct_only_for_sync_as_input_with_no_sync_return_in_block_3(
+    port_: i64,
+    obj: *mut wire_SharedStructOnlyForSyncTest,
+    default_score: f64,
+) {
+    wire_test_shared_struct_only_for_sync_as_input_with_no_sync_return_in_block_3_impl(
+        port_,
+        obj,
+        default_score,
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_test_all_shared_struct_in_block_3(
     port_: i64,
     custom: *mut wire_SharedStructInAllBlocks,

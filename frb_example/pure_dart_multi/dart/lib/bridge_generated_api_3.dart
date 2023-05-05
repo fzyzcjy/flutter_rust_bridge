@@ -32,6 +32,11 @@ abstract class ApiClass3 {
 
   FlutterRustBridgeTaskConstMeta get kTestSharedStructOnlyForSyncWithNoSyncReturnInBlock3ConstMeta;
 
+  Future<SharedStructOnlyForSyncTest> testSharedStructOnlyForSyncAsInputWithNoSyncReturnInBlock3(
+      {required SharedStructOnlyForSyncTest obj, required double defaultScore, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestSharedStructOnlyForSyncAsInputWithNoSyncReturnInBlock3ConstMeta;
+
   Future<SharedStructInAllBlocks> testAllSharedStructInBlock3(
       {required SharedStructInAllBlocks custom, required String s, required int i, dynamic hint});
 
@@ -168,6 +173,26 @@ class ApiClass3Impl implements ApiClass3 {
       const FlutterRustBridgeTaskConstMeta(
         debugName: "test_shared_struct_only_for_sync_with_no_sync_return_in_block_3",
         argNames: ["score"],
+      );
+
+  Future<SharedStructOnlyForSyncTest> testSharedStructOnlyForSyncAsInputWithNoSyncReturnInBlock3(
+      {required SharedStructOnlyForSyncTest obj, required double defaultScore, dynamic hint}) {
+    var arg0 = _sharedPlatform.api2wire_box_autoadd_shared_struct_only_for_sync_test(obj);
+    var arg1 = api2wire_f64(defaultScore);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner
+          .wire_test_shared_struct_only_for_sync_as_input_with_no_sync_return_in_block_3(port_, arg0, arg1),
+      parseSuccessData: _sharedImpl.wire2api_shared_struct_only_for_sync_test,
+      constMeta: kTestSharedStructOnlyForSyncAsInputWithNoSyncReturnInBlock3ConstMeta,
+      argValues: [obj, defaultScore],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestSharedStructOnlyForSyncAsInputWithNoSyncReturnInBlock3ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_shared_struct_only_for_sync_as_input_with_no_sync_return_in_block_3",
+        argNames: ["obj", "defaultScore"],
       );
 
   Future<SharedStructInAllBlocks> testAllSharedStructInBlock3(
@@ -320,6 +345,14 @@ class ApiClass3Impl implements ApiClass3 {
 
   int _wire2api_i64(dynamic raw) {
     return castInt(raw);
+  }
+
+  SharedStructOnlyForSyncTest _wire2api_shared_struct_only_for_sync_test(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return SharedStructOnlyForSyncTest(
+      defaultScore: _sharedImpl.wire2api_f64(arr[0]),
+    );
   }
 
   StructOnlyForBlock3 _wire2api_struct_only_for_block_3(dynamic raw) {

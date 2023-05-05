@@ -56,6 +56,11 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_shared_struct_only_for_sync_test(SharedStructOnlyForSyncTest raw) {
+    return api2wire_shared_struct_only_for_sync_test(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_cross_shared_struct_in_block_1_and_2(CrossSharedStructInBlock1And2 raw) {
     return [api2wire_String(raw.name)];
   }
@@ -78,6 +83,11 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   @protected
   List<dynamic> api2wire_shared_struct_in_block_2_and_3(SharedStructInBlock2And3 raw) {
     return [api2wire_i32(raw.id), api2wire_f64(raw.num), api2wire_String(raw.name)];
+  }
+
+  @protected
+  List<dynamic> api2wire_shared_struct_only_for_sync_test(SharedStructOnlyForSyncTest raw) {
+    return [api2wire_f64(raw.defaultScore)];
   }
 
   @protected

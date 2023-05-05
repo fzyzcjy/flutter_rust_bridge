@@ -68,6 +68,14 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   }
 
   @protected
+  ffi.Pointer<wire_SharedStructOnlyForSyncTest> api2wire_box_autoadd_shared_struct_only_for_sync_test(
+      SharedStructOnlyForSyncTest raw) {
+    final ptr = inner.new_box_autoadd_shared_struct_only_for_sync_test();
+    _api_fill_to_wire_shared_struct_only_for_sync_test(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   int api2wire_u64(int raw) {
     return raw;
   }
@@ -107,6 +115,11 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
     _api_fill_to_wire_shared_struct_in_block_2_and_3(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_shared_struct_only_for_sync_test(
+      SharedStructOnlyForSyncTest apiObj, ffi.Pointer<wire_SharedStructOnlyForSyncTest> wireObj) {
+    _api_fill_to_wire_shared_struct_only_for_sync_test(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_cross_shared_struct_in_block_1_and_2(
       CrossSharedStructInBlock1And2 apiObj, wire_CrossSharedStructInBlock1And2 wireObj) {
     wireObj.name = api2wire_String(apiObj.name);
@@ -136,6 +149,11 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
     wireObj.id = api2wire_i32(apiObj.id);
     wireObj.num = api2wire_f64(apiObj.num);
     wireObj.name = api2wire_String(apiObj.name);
+  }
+
+  void _api_fill_to_wire_shared_struct_only_for_sync_test(
+      SharedStructOnlyForSyncTest apiObj, wire_SharedStructOnlyForSyncTest wireObj) {
+    wireObj.default_score = api2wire_f64(apiObj.defaultScore);
   }
 }
 
@@ -282,6 +300,16 @@ class BridgeGeneratedSharesWire implements FlutterRustBridgeWireBase {
   late final _new_box_autoadd_shared_struct_in_block_2_and_3 = _new_box_autoadd_shared_struct_in_block_2_and_3Ptr
       .asFunction<ffi.Pointer<wire_SharedStructInBlock2And3> Function()>();
 
+  ffi.Pointer<wire_SharedStructOnlyForSyncTest> new_box_autoadd_shared_struct_only_for_sync_test() {
+    return _new_box_autoadd_shared_struct_only_for_sync_test();
+  }
+
+  late final _new_box_autoadd_shared_struct_only_for_sync_testPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_SharedStructOnlyForSyncTest> Function()>>(
+          'new_box_autoadd_shared_struct_only_for_sync_test');
+  late final _new_box_autoadd_shared_struct_only_for_sync_test = _new_box_autoadd_shared_struct_only_for_sync_testPtr
+      .asFunction<ffi.Pointer<wire_SharedStructOnlyForSyncTest> Function()>();
+
   ffi.Pointer<wire_uint_8_list> new_uint_8_list(
     int len,
   ) {
@@ -352,6 +380,11 @@ class wire_SharedStructInBlock2And3 extends ffi.Struct {
   external double num;
 
   external ffi.Pointer<wire_uint_8_list> name;
+}
+
+class wire_SharedStructOnlyForSyncTest extends ffi.Struct {
+  @ffi.Double()
+  external double default_score;
 }
 
 typedef DartPostCObjectFnType

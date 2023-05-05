@@ -39,6 +39,12 @@ pub extern "C" fn new_box_autoadd_shared_struct_in_block_2_and_3(
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_shared_struct_only_for_sync_test(
+) -> *mut wire_SharedStructOnlyForSyncTest {
+    support::new_leak_box_ptr(wire_SharedStructOnlyForSyncTest::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_uint_8_list(len: i32) -> *mut wire_uint_8_list {
     let ans = wire_uint_8_list {
         ptr: support::new_leak_vec_ptr(Default::default(), len),
@@ -92,6 +98,12 @@ impl Wire2Api<SharedStructInBlock2And3> for *mut wire_SharedStructInBlock2And3 {
         Wire2Api::<SharedStructInBlock2And3>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<SharedStructOnlyForSyncTest> for *mut wire_SharedStructOnlyForSyncTest {
+    fn wire2api(self) -> SharedStructOnlyForSyncTest {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<SharedStructOnlyForSyncTest>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<CrossSharedStructInBlock1And2> for wire_CrossSharedStructInBlock1And2 {
     fn wire2api(self) -> CrossSharedStructInBlock1And2 {
         CrossSharedStructInBlock1And2 {
@@ -131,6 +143,13 @@ impl Wire2Api<SharedStructInBlock2And3> for wire_SharedStructInBlock2And3 {
             id: self.id.wire2api(),
             num: self.num.wire2api(),
             name: self.name.wire2api(),
+        }
+    }
+}
+impl Wire2Api<SharedStructOnlyForSyncTest> for wire_SharedStructOnlyForSyncTest {
+    fn wire2api(self) -> SharedStructOnlyForSyncTest {
+        SharedStructOnlyForSyncTest {
+            default_score: self.default_score.wire2api(),
         }
     }
 }
@@ -179,6 +198,12 @@ pub struct wire_SharedStructInBlock2And3 {
     id: i32,
     num: f64,
     name: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_SharedStructOnlyForSyncTest {
+    default_score: f64,
 }
 
 #[repr(C)]
@@ -271,6 +296,20 @@ impl NewWithNullPtr for wire_SharedStructInBlock2And3 {
 }
 
 impl Default for wire_SharedStructInBlock2And3 {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
+impl NewWithNullPtr for wire_SharedStructOnlyForSyncTest {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            default_score: Default::default(),
+        }
+    }
+}
+
+impl Default for wire_SharedStructOnlyForSyncTest {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }

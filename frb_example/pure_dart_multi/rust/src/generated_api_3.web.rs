@@ -20,6 +20,19 @@ pub fn wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3(
 }
 
 #[wasm_bindgen]
+pub fn wire_test_shared_struct_only_for_sync_as_input_with_no_sync_return_in_block_3(
+    port_: MessagePort,
+    obj: JsValue,
+    default_score: f64,
+) {
+    wire_test_shared_struct_only_for_sync_as_input_with_no_sync_return_in_block_3_impl(
+        port_,
+        obj,
+        default_score,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire_test_all_shared_struct_in_block_3(
     port_: MessagePort,
     custom: JsValue,

@@ -121,6 +121,16 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
   late final _new_box_autoadd_shared_struct_in_block_1_and_2 = _new_box_autoadd_shared_struct_in_block_1_and_2Ptr
       .asFunction<ffi.Pointer<wire_SharedStructInBlock1And2> Function()>();
 
+  ffi.Pointer<wire_SharedStructInBlock2And3> new_box_autoadd_shared_struct_in_block_2_and_3() {
+    return _new_box_autoadd_shared_struct_in_block_2_and_3();
+  }
+
+  late final _new_box_autoadd_shared_struct_in_block_2_and_3Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_SharedStructInBlock2And3> Function()>>(
+          'new_box_autoadd_shared_struct_in_block_2_and_3');
+  late final _new_box_autoadd_shared_struct_in_block_2_and_3 = _new_box_autoadd_shared_struct_in_block_2_and_3Ptr
+      .asFunction<ffi.Pointer<wire_SharedStructInBlock2And3> Function()>();
+
   ffi.Pointer<wire_uint_8_list> new_uint_8_list(
     int len,
   ) {
@@ -432,19 +442,19 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
           'new_box_autoadd_struct_only_for_block_1');
   late final _new_box_autoadd_struct_only_for_block_1 =
       _new_box_autoadd_struct_only_for_block_1Ptr.asFunction<ffi.Pointer<wire_StructOnlyForBlock1> Function()>();
-
-  ffi.Pointer<wire_SharedStructInBlock2And3> new_box_autoadd_shared_struct_in_block_2_and_3() {
-    return _new_box_autoadd_shared_struct_in_block_2_and_3();
-  }
-
-  late final _new_box_autoadd_shared_struct_in_block_2_and_3Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_SharedStructInBlock2And3> Function()>>(
-          'new_box_autoadd_shared_struct_in_block_2_and_3');
-  late final _new_box_autoadd_shared_struct_in_block_2_and_3 = _new_box_autoadd_shared_struct_in_block_2_and_3Ptr
-      .asFunction<ffi.Pointer<wire_SharedStructInBlock2And3> Function()>();
 }
 
 class _Dart_Handle extends ffi.Opaque {}
+
+class wire_SharedStructInBlock2And3 extends ffi.Struct {
+  @ffi.Int32()
+  external int id;
+
+  @ffi.Double()
+  external double num;
+
+  external ffi.Pointer<wire_uint_8_list> name;
+}
 
 class wire_StructOnlyForBlock1 extends ffi.Struct {
   external ffi.Pointer<ffi.Int8> id;
@@ -455,16 +465,6 @@ class wire_StructOnlyForBlock1 extends ffi.Struct {
 }
 
 class wire_StructDefinedInBlock1 extends ffi.Struct {
-  external ffi.Pointer<wire_uint_8_list> name;
-}
-
-class wire_SharedStructInBlock2And3 extends ffi.Struct {
-  @ffi.Int32()
-  external int id;
-
-  @ffi.Double()
-  external double num;
-
   external ffi.Pointer<wire_uint_8_list> name;
 }
 

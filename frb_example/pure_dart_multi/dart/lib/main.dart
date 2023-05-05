@@ -31,7 +31,7 @@ void main(List<String> args) {
 
   test('dart call testSharedStructOnlyForSyncWithSyncReturnInBlock1', () async {
     final score = 1.1;
-    expect(api1.testSharedStructOnlyForSyncWithSyncReturnInBlock1(score:score),
+    expect(api1.testSharedStructOnlyForSyncWithSyncReturnInBlock1(score: score),
         SharedStructOnlyForSyncTest(defaultScore: score));
   });
 
@@ -184,10 +184,27 @@ void main(List<String> args) {
     expect(await api3.testStringInBlock3(s: "string", i: 3), "string_3");
   });
 
-  test('dart call testSharedStructOnlyForSyncWithNoSyncReturnInBlock3', () async {
+  test('dart call testSharedStructOnlyForSyncWithNoSyncReturnInBlock3',
+      () async {
     final score = 1.1;
-    expect(await api3.testSharedStructOnlyForSyncWithNoSyncReturnInBlock3(score:score),
+    expect(
+        await api3.testSharedStructOnlyForSyncWithNoSyncReturnInBlock3(
+            score: score),
         SharedStructOnlyForSyncTest(defaultScore: score));
+  });
+
+  test('dart call testSharedStructOnlyForSyncAsInputWithNoSyncReturnInBlock3',
+      () async {
+    final inputObj = SharedStructOnlyForSyncTest(
+      defaultScore: 0.0,
+    );
+    final inputDefaultScore = 1.1;
+    expect(
+        await api3.testSharedStructOnlyForSyncAsInputWithNoSyncReturnInBlock3(
+          obj: inputObj,
+          defaultScore: inputDefaultScore,
+        ),
+        SharedStructOnlyForSyncTest(defaultScore: inputDefaultScore));
   });
 
   test('dart call testAllSharedStructInBlock3', () async {

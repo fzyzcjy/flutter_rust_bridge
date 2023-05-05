@@ -33,6 +33,13 @@ pub fn test_shared_struct_only_for_sync_with_no_sync_return_in_block_3(
     }
 }
 
+pub fn test_shared_struct_only_for_sync_as_input_with_no_sync_return_in_block_3(obj: SharedStructOnlyForSyncTest, default_score: f64) -> SharedStructOnlyForSyncTest {
+    SharedStructOnlyForSyncTest {
+        default_score: default_score,
+        ..obj
+    }
+}
+
 pub fn test_all_shared_struct_in_block_3(
     mut custom: SharedStructInAllBlocks,
     s: String,

@@ -66,6 +66,9 @@ class ApiClass3WasmModule implements WasmModule {
   external dynamic /* void */ wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3(
       NativePortType port_, double score);
 
+  external dynamic /* void */ wire_test_shared_struct_only_for_sync_as_input_with_no_sync_return_in_block_3(
+      NativePortType port_, List<dynamic> obj, double default_score);
+
   external dynamic /* void */ wire_test_all_shared_struct_in_block_3(
       NativePortType port_, List<dynamic> custom, String s, int i);
 
@@ -100,6 +103,11 @@ class ApiClass3Wire extends FlutterRustBridgeWasmWireBase<ApiClass3WasmModule> {
 
   void wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3(NativePortType port_, double score) =>
       wasmModule.wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3(port_, score);
+
+  void wire_test_shared_struct_only_for_sync_as_input_with_no_sync_return_in_block_3(
+          NativePortType port_, List<dynamic> obj, double default_score) =>
+      wasmModule.wire_test_shared_struct_only_for_sync_as_input_with_no_sync_return_in_block_3(
+          port_, obj, default_score);
 
   void wire_test_all_shared_struct_in_block_3(NativePortType port_, List<dynamic> custom, String s, int i) =>
       wasmModule.wire_test_all_shared_struct_in_block_3(port_, custom, s, i);

@@ -21,6 +21,7 @@ use std::sync::Arc;
 
 use crate::bridge_generated_shares;
 use crate::bridge_generated_shares::*;
+use crate::custom::SharedStructOnlyForSyncTest;
 use crate::custom::StructOnlyForBlock3;
 
 // Section: wire functions
@@ -75,6 +76,31 @@ fn wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3_impl(
             let api_score = score.wire2api();
             move |task_callback| {
                 Ok(test_shared_struct_only_for_sync_with_no_sync_return_in_block_3(api_score))
+            }
+        },
+    )
+}
+fn wire_test_shared_struct_only_for_sync_as_input_with_no_sync_return_in_block_3_impl(
+    port_: MessagePort,
+    obj: impl bridge_generated_shares::Wire2Api<SharedStructOnlyForSyncTest> + UnwindSafe,
+    default_score: impl bridge_generated_shares::Wire2Api<f64> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_shared_struct_only_for_sync_as_input_with_no_sync_return_in_block_3",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_obj = obj.wire2api();
+            let api_default_score = default_score.wire2api();
+            move |task_callback| {
+                Ok(
+                    test_shared_struct_only_for_sync_as_input_with_no_sync_return_in_block_3(
+                        api_obj,
+                        api_default_score,
+                    ),
+                )
             }
         },
     )
@@ -256,6 +282,13 @@ impl Wire2Api<i64> for i64 {
 }
 
 // Section: impl IntoDart
+
+impl support::IntoDart for SharedStructOnlyForSyncTest {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.default_score.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for SharedStructOnlyForSyncTest {}
 
 impl support::IntoDart for StructOnlyForBlock3 {
     fn into_dart(self) -> support::DartAbi {
