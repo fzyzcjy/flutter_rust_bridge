@@ -86,9 +86,9 @@ impl CrossSharedStructInBlock2And3 {
 
 /// This is a struct only used in API block 1 for test, but not defined in block file
 pub struct StructOnlyForBlock1 {
-    pub id: i8,       // in-built type only used in API block 1 for test
-    pub num: f64,     // in-built type in all API blocks for test
-    pub name: String, // struct type used in all API blocks for test
+    pub id: Option<i8>, // both the inner in-built type and the `Option` wrapper are only used in API block 1
+    pub num: Option<f64>, // the inner in-built type is used for all API blocks, BUT `Option` wrapped for it is only used here
+    pub name: Option<String>, // the inner struct type is used for all API blocks, BUT `Option` wrapped for it is only used here
 }
 impl StructOnlyForBlock1 {
     pub fn test_method(&self, message: String) -> String {

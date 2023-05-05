@@ -21,6 +21,11 @@ class ApiClass1Platform extends FlutterRustBridgeBase<ApiClass1Wire> {
 // Section: api2wire
 
   @protected
+  ffi.Pointer<ffi.Int8> api2wire_box_autoadd_i8(int raw) {
+    return inner.new_box_autoadd_i8(api2wire_i8(raw));
+  }
+
+  @protected
   ffi.Pointer<wire_StructDefinedInBlock1> api2wire_box_autoadd_struct_defined_in_block_1(StructDefinedInBlock1 raw) {
     final ptr = inner.new_box_autoadd_struct_defined_in_block_1();
     _api_fill_to_wire_struct_defined_in_block_1(raw, ptr.ref);
@@ -32,6 +37,21 @@ class ApiClass1Platform extends FlutterRustBridgeBase<ApiClass1Wire> {
     final ptr = inner.new_box_autoadd_struct_only_for_block_1();
     _api_fill_to_wire_struct_only_for_block_1(raw, ptr.ref);
     return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_uint_8_list> api2wire_opt_String(String? raw) {
+    return raw == null ? ffi.nullptr : _sharedPlatform.api2wire_String(raw);
+  }
+
+  @protected
+  ffi.Pointer<ffi.Double> api2wire_opt_box_autoadd_f64(double? raw) {
+    return raw == null ? ffi.nullptr : _sharedPlatform.api2wire_box_autoadd_f64(raw);
+  }
+
+  @protected
+  ffi.Pointer<ffi.Int8> api2wire_opt_box_autoadd_i8(int? raw) {
+    return raw == null ? ffi.nullptr : api2wire_box_autoadd_i8(raw);
   }
 
 // Section: finalizer
@@ -53,9 +73,9 @@ class ApiClass1Platform extends FlutterRustBridgeBase<ApiClass1Wire> {
   }
 
   void _api_fill_to_wire_struct_only_for_block_1(StructOnlyForBlock1 apiObj, wire_StructOnlyForBlock1 wireObj) {
-    wireObj.id = api2wire_i8(apiObj.id);
-    wireObj.num = api2wire_f64(apiObj.num);
-    wireObj.name = _sharedPlatform.api2wire_String(apiObj.name);
+    wireObj.id = api2wire_opt_box_autoadd_i8(apiObj.id);
+    wireObj.num = api2wire_opt_box_autoadd_f64(apiObj.num);
+    wireObj.name = api2wire_opt_String(apiObj.name);
   }
 }
 
@@ -100,16 +120,6 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
           'new_box_autoadd_shared_struct_in_block_1_and_2');
   late final _new_box_autoadd_shared_struct_in_block_1_and_2 = _new_box_autoadd_shared_struct_in_block_1_and_2Ptr
       .asFunction<ffi.Pointer<wire_SharedStructInBlock1And2> Function()>();
-
-  ffi.Pointer<wire_SharedStructInBlock2And3> new_box_autoadd_shared_struct_in_block_2_and_3() {
-    return _new_box_autoadd_shared_struct_in_block_2_and_3();
-  }
-
-  late final _new_box_autoadd_shared_struct_in_block_2_and_3Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_SharedStructInBlock2And3> Function()>>(
-          'new_box_autoadd_shared_struct_in_block_2_and_3');
-  late final _new_box_autoadd_shared_struct_in_block_2_and_3 = _new_box_autoadd_shared_struct_in_block_2_and_3Ptr
-      .asFunction<ffi.Pointer<wire_SharedStructInBlock2And3> Function()>();
 
   ffi.Pointer<wire_uint_8_list> new_uint_8_list(
     int len,
@@ -391,6 +401,18 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
       _wire_test_static_method__static_method__StructDefinedInBlock1Ptr
           .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
+  ffi.Pointer<ffi.Int8> new_box_autoadd_i8(
+    int value,
+  ) {
+    return _new_box_autoadd_i8(
+      value,
+    );
+  }
+
+  late final _new_box_autoadd_i8Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int8)>>('new_box_autoadd_i8');
+  late final _new_box_autoadd_i8 = _new_box_autoadd_i8Ptr.asFunction<ffi.Pointer<ffi.Int8> Function(int)>();
+
   ffi.Pointer<wire_StructDefinedInBlock1> new_box_autoadd_struct_defined_in_block_1() {
     return _new_box_autoadd_struct_defined_in_block_1();
   }
@@ -411,24 +433,30 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
   late final _new_box_autoadd_struct_only_for_block_1 =
       _new_box_autoadd_struct_only_for_block_1Ptr.asFunction<ffi.Pointer<wire_StructOnlyForBlock1> Function()>();
 
-  void wire_test_shared_struct_with_no_sync_return_in_block_3(
-    int port_,
-    double score,
-  ) {
-    return _wire_test_shared_struct_with_no_sync_return_in_block_3(
-      port_,
-      score,
-    );
+  ffi.Pointer<wire_SharedStructInBlock2And3> new_box_autoadd_shared_struct_in_block_2_and_3() {
+    return _new_box_autoadd_shared_struct_in_block_2_and_3();
   }
 
-  late final _wire_test_shared_struct_with_no_sync_return_in_block_3Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Double)>>(
-          'wire_test_shared_struct_with_no_sync_return_in_block_3');
-  late final _wire_test_shared_struct_with_no_sync_return_in_block_3 =
-      _wire_test_shared_struct_with_no_sync_return_in_block_3Ptr.asFunction<void Function(int, double)>();
+  late final _new_box_autoadd_shared_struct_in_block_2_and_3Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_SharedStructInBlock2And3> Function()>>(
+          'new_box_autoadd_shared_struct_in_block_2_and_3');
+  late final _new_box_autoadd_shared_struct_in_block_2_and_3 = _new_box_autoadd_shared_struct_in_block_2_and_3Ptr
+      .asFunction<ffi.Pointer<wire_SharedStructInBlock2And3> Function()>();
 }
 
 class _Dart_Handle extends ffi.Opaque {}
+
+class wire_StructOnlyForBlock1 extends ffi.Struct {
+  external ffi.Pointer<ffi.Int8> id;
+
+  external ffi.Pointer<ffi.Double> num;
+
+  external ffi.Pointer<wire_uint_8_list> name;
+}
+
+class wire_StructDefinedInBlock1 extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> name;
+}
 
 class wire_SharedStructInBlock2And3 extends ffi.Struct {
   @ffi.Int32()
@@ -437,20 +465,6 @@ class wire_SharedStructInBlock2And3 extends ffi.Struct {
   @ffi.Double()
   external double num;
 
-  external ffi.Pointer<wire_uint_8_list> name;
-}
-
-class wire_StructOnlyForBlock1 extends ffi.Struct {
-  @ffi.Int8()
-  external int id;
-
-  @ffi.Double()
-  external double num;
-
-  external ffi.Pointer<wire_uint_8_list> name;
-}
-
-class wire_StructDefinedInBlock1 extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> name;
 }
 

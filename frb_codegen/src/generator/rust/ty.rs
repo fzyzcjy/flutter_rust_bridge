@@ -64,7 +64,7 @@ pub trait TypeRustGeneratorTrait {
     fn get_context(&self) -> &TypeGeneratorContext;
 
     fn get_shared_mod_name_if_type_shared(&self, ty: &IrType) -> Option<String> {
-        if self.get_context().ir_file.is_type_shared(ty) {
+        if self.get_context().ir_file.is_type_shared_by_safe_ident(ty) {
             return SHARED_MODULE.with(|data| {
                 let cloned = data.borrow().clone();
                 if cloned.is_none() {

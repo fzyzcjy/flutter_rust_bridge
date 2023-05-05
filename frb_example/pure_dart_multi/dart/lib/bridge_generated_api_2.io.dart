@@ -101,16 +101,6 @@ class ApiClass2Wire implements FlutterRustBridgeWireBase {
   late final _new_box_autoadd_shared_struct_in_block_1_and_2 = _new_box_autoadd_shared_struct_in_block_1_and_2Ptr
       .asFunction<ffi.Pointer<wire_SharedStructInBlock1And2> Function()>();
 
-  ffi.Pointer<wire_SharedStructInBlock2And3> new_box_autoadd_shared_struct_in_block_2_and_3() {
-    return _new_box_autoadd_shared_struct_in_block_2_and_3();
-  }
-
-  late final _new_box_autoadd_shared_struct_in_block_2_and_3Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_SharedStructInBlock2And3> Function()>>(
-          'new_box_autoadd_shared_struct_in_block_2_and_3');
-  late final _new_box_autoadd_shared_struct_in_block_2_and_3 = _new_box_autoadd_shared_struct_in_block_2_and_3Ptr
-      .asFunction<ffi.Pointer<wire_SharedStructInBlock2And3> Function()>();
-
   ffi.Pointer<wire_uint_8_list> new_uint_8_list(
     int len,
   ) {
@@ -309,7 +299,7 @@ class ApiClass2Wire implements FlutterRustBridgeWireBase {
 
   void wire_test_shared_struct_in_block_2_for_2_and_3(
     int port_,
-    ffi.Pointer<wire_SharedStructInBlock2And3> custom,
+    ffi.Pointer<ffi.Int> custom,
     ffi.Pointer<wire_uint_8_list> s,
     int i,
   ) {
@@ -323,14 +313,14 @@ class ApiClass2Wire implements FlutterRustBridgeWireBase {
 
   late final _wire_test_shared_struct_in_block_2_for_2_and_3Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_SharedStructInBlock2And3>, ffi.Pointer<wire_uint_8_list>,
+          ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Int>, ffi.Pointer<wire_uint_8_list>,
               ffi.Int32)>>('wire_test_shared_struct_in_block_2_for_2_and_3');
   late final _wire_test_shared_struct_in_block_2_for_2_and_3 = _wire_test_shared_struct_in_block_2_for_2_and_3Ptr
-      .asFunction<void Function(int, ffi.Pointer<wire_SharedStructInBlock2And3>, ffi.Pointer<wire_uint_8_list>, int)>();
+      .asFunction<void Function(int, ffi.Pointer<ffi.Int>, ffi.Pointer<wire_uint_8_list>, int)>();
 
   void wire_test_cross_shared_struct_in_block_2_for_2_and_3(
     int port_,
-    ffi.Pointer<wire_CrossSharedStructInBlock2And3> custom,
+    ffi.Pointer<ffi.Int> custom,
   ) {
     return _wire_test_cross_shared_struct_in_block_2_for_2_and_3(
       port_,
@@ -339,11 +329,10 @@ class ApiClass2Wire implements FlutterRustBridgeWireBase {
   }
 
   late final _wire_test_cross_shared_struct_in_block_2_for_2_and_3Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_CrossSharedStructInBlock2And3>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Int>)>>(
           'wire_test_cross_shared_struct_in_block_2_for_2_and_3');
   late final _wire_test_cross_shared_struct_in_block_2_for_2_and_3 =
-      _wire_test_cross_shared_struct_in_block_2_for_2_and_3Ptr
-          .asFunction<void Function(int, ffi.Pointer<wire_CrossSharedStructInBlock2And3>)>();
+      _wire_test_cross_shared_struct_in_block_2_for_2_and_3Ptr.asFunction<void Function(int, ffi.Pointer<ffi.Int>)>();
 
   void wire_test_unique_struct_2(
     int port_,
@@ -437,22 +426,6 @@ class ApiClass2Wire implements FlutterRustBridgeWireBase {
           'new_box_autoadd_struct_only_for_block_2');
   late final _new_box_autoadd_struct_only_for_block_2 =
       _new_box_autoadd_struct_only_for_block_2Ptr.asFunction<ffi.Pointer<wire_StructOnlyForBlock2> Function()>();
-
-  void wire_test_shared_struct_with_no_sync_return_in_block_3(
-    int port_,
-    double score,
-  ) {
-    return _wire_test_shared_struct_with_no_sync_return_in_block_3(
-      port_,
-      score,
-    );
-  }
-
-  late final _wire_test_shared_struct_with_no_sync_return_in_block_3Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Double)>>(
-          'wire_test_shared_struct_with_no_sync_return_in_block_3');
-  late final _wire_test_shared_struct_with_no_sync_return_in_block_3 =
-      _wire_test_shared_struct_with_no_sync_return_in_block_3Ptr.asFunction<void Function(int, double)>();
 }
 
 class _Dart_Handle extends ffi.Opaque {}

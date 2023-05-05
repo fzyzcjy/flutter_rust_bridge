@@ -88,14 +88,14 @@ class StructDefinedInBlock1 {
 
 /// This is a struct only used in API block 1 for test, but not defined in block file
 class StructOnlyForBlock1 {
-  final int id;
-  final double num;
-  final String name;
+  final int? id;
+  final double? num;
+  final String? name;
 
   const StructOnlyForBlock1({
-    required this.id,
-    required this.num,
-    required this.name,
+    this.id,
+    this.num,
+    this.name,
   });
 }
 
@@ -315,17 +315,37 @@ class ApiClass1Impl implements ApiClass1 {
   }
 // Section: wire2api
 
+  double _wire2api_box_autoadd_f64(dynamic raw) {
+    return raw as double;
+  }
+
+  int _wire2api_box_autoadd_i8(dynamic raw) {
+    return raw as int;
+  }
+
   int _wire2api_i8(dynamic raw) {
     return raw as int;
+  }
+
+  String? _wire2api_opt_String(dynamic raw) {
+    return raw == null ? null : _sharedImpl.wire2api_String(raw);
+  }
+
+  double? _wire2api_opt_box_autoadd_f64(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_f64(raw);
+  }
+
+  int? _wire2api_opt_box_autoadd_i8(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_i8(raw);
   }
 
   StructOnlyForBlock1 _wire2api_struct_only_for_block_1(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 3) throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
     return StructOnlyForBlock1(
-      id: _wire2api_i8(arr[0]),
-      num: _sharedImpl.wire2api_f64(arr[1]),
-      name: _sharedImpl.wire2api_String(arr[2]),
+      id: _wire2api_opt_box_autoadd_i8(arr[0]),
+      num: _wire2api_opt_box_autoadd_f64(arr[1]),
+      name: _wire2api_opt_String(arr[2]),
     );
   }
 }

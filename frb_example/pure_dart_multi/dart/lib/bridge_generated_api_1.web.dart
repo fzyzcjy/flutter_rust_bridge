@@ -23,6 +23,11 @@ class ApiClass1Platform extends FlutterRustBridgeBase<ApiClass1Wire> with Flutte
 // Section: api2wire
 
   @protected
+  int api2wire_box_autoadd_i8(int raw) {
+    return api2wire_i8(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_struct_defined_in_block_1(StructDefinedInBlock1 raw) {
     return api2wire_struct_defined_in_block_1(raw);
   }
@@ -33,13 +38,28 @@ class ApiClass1Platform extends FlutterRustBridgeBase<ApiClass1Wire> with Flutte
   }
 
   @protected
+  String? api2wire_opt_String(String? raw) {
+    return raw == null ? null : _sharedPlatform.api2wire_String(raw);
+  }
+
+  @protected
+  double? api2wire_opt_box_autoadd_f64(double? raw) {
+    return raw == null ? null : _sharedPlatform.api2wire_box_autoadd_f64(raw);
+  }
+
+  @protected
+  int? api2wire_opt_box_autoadd_i8(int? raw) {
+    return raw == null ? null : api2wire_box_autoadd_i8(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_struct_defined_in_block_1(StructDefinedInBlock1 raw) {
     return [_sharedPlatform.api2wire_String(raw.name)];
   }
 
   @protected
   List<dynamic> api2wire_struct_only_for_block_1(StructOnlyForBlock1 raw) {
-    return [api2wire_i8(raw.id), api2wire_f64(raw.num), _sharedPlatform.api2wire_String(raw.name)];
+    return [api2wire_opt_box_autoadd_i8(raw.id), api2wire_opt_box_autoadd_f64(raw.num), api2wire_opt_String(raw.name)];
   }
 // Section: finalizer
 }

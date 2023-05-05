@@ -36,6 +36,11 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   }
 
   @protected
+  double api2wire_box_autoadd_f64(double raw) {
+    return api2wire_f64(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_shared_struct_in_all_blocks(SharedStructInAllBlocks raw) {
     return api2wire_shared_struct_in_all_blocks(raw);
   }

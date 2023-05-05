@@ -81,6 +81,12 @@ pub fn wire_test_static_method__static_method__StructDefinedInBlock1(
 
 // Section: impl Wire2Api
 
+impl Wire2Api<Option<String>> for Option<String> {
+    fn wire2api(self) -> Option<String> {
+        self.map(Wire2Api::wire2api)
+    }
+}
+
 impl Wire2Api<StructDefinedInBlock1> for JsValue {
     fn wire2api(self) -> StructDefinedInBlock1 {
         let self_ = self.dyn_into::<JsArray>().unwrap();
@@ -116,5 +122,20 @@ impl Wire2Api<StructOnlyForBlock1> for JsValue {
 impl Wire2Api<i8> for JsValue {
     fn wire2api(self) -> i8 {
         self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<Option<String>> for JsValue {
+    fn wire2api(self) -> Option<String> {
+        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+    }
+}
+impl Wire2Api<Option<f64>> for JsValue {
+    fn wire2api(self) -> Option<f64> {
+        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+    }
+}
+impl Wire2Api<Option<i8>> for JsValue {
+    fn wire2api(self) -> Option<i8> {
+        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
     }
 }

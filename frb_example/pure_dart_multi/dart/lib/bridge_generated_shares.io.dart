@@ -39,6 +39,11 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   }
 
   @protected
+  ffi.Pointer<ffi.Double> api2wire_box_autoadd_f64(double raw) {
+    return inner.new_box_autoadd_f64(api2wire_f64(raw));
+  }
+
+  @protected
   ffi.Pointer<wire_SharedStructInAllBlocks> api2wire_box_autoadd_shared_struct_in_all_blocks(
       SharedStructInAllBlocks raw) {
     final ptr = inner.new_box_autoadd_shared_struct_in_all_blocks();
@@ -234,6 +239,18 @@ class BridgeGeneratedSharesWire implements FlutterRustBridgeWireBase {
   late final _new_box_autoadd_cross_shared_struct_in_block_2_and_3 =
       _new_box_autoadd_cross_shared_struct_in_block_2_and_3Ptr
           .asFunction<ffi.Pointer<wire_CrossSharedStructInBlock2And3> Function()>();
+
+  ffi.Pointer<ffi.Double> new_box_autoadd_f64(
+    double value,
+  ) {
+    return _new_box_autoadd_f64(
+      value,
+    );
+  }
+
+  late final _new_box_autoadd_f64Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Double> Function(ffi.Double)>>('new_box_autoadd_f64');
+  late final _new_box_autoadd_f64 = _new_box_autoadd_f64Ptr.asFunction<ffi.Pointer<ffi.Double> Function(double)>();
 
   ffi.Pointer<wire_SharedStructInAllBlocks> new_box_autoadd_shared_struct_in_all_blocks() {
     return _new_box_autoadd_shared_struct_in_all_blocks();

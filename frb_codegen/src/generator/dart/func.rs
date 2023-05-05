@@ -45,7 +45,7 @@ pub(crate) fn generate_api_func(
                         log::debug!("shared_dart_api2wire_funcs:{shared_dart_api2wire_funcs:?}"); //TODO: delete
 
                         let shared_common_api2wire_body = &shared_dart_api2wire_funcs.common;
-                        match !ir_file.is_type_shared(&input.ty) {
+                        match !ir_file.is_type_shared_by_safe_ident(&input.ty) {
                             true => {
                                 let ident = input.ty.safe_ident();
                                 log::debug!("type {:?} is NOT shared, ident is:{ident}", input.ty); //TODO: delete
@@ -156,7 +156,7 @@ pub(crate) fn generate_api_func(
     } else {
         format!("_wire2api_{}", func.output.safe_ident())
     };
-    if !ir_file.shared && ir_file.is_type_shared(&func.output) {
+    if !ir_file.shared && ir_file.is_type_shared_by_safe_ident(&func.output) {
         parse_success_data = parse_success_data.replace("_wire2api_", "_sharedImpl.wire2api_");
     }
 

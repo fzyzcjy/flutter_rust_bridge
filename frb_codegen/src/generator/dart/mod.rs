@@ -37,7 +37,6 @@ pub use ty_struct::*;
 pub use ty_sync_return::*;
 
 use convert_case::{Case, Casing};
-use log::debug;
 
 use crate::ir::IrType::*;
 use crate::target::Target::*;
@@ -123,9 +122,7 @@ impl DartApiSpec {
 
         let dart_structs = get_deduplicate_type(&distinct_types)
             .iter()
-            .map(|ty| {
-                TypeDartGenerator::new(ty.clone(), ir_file, config).structs()
-            })
+            .map(|ty| TypeDartGenerator::new(ty.clone(), ir_file, config).structs())
             .collect::<Vec<_>>();
 
         // essential shared dart_api2wire funcs

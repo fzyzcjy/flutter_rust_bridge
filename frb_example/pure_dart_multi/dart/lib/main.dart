@@ -70,7 +70,7 @@ void main(List<String> args) {
           custom: StructOnlyForBlock1(name: "string", id: 1, num: 2.2),
           s: "newString",
           i: 2),
-      StructOnlyForBlock1(name: "newString", id: 2, num: 2.2),
+      StructOnlyForBlock1(name: "newString", id: 2, num: 2.0),
     );
   });
 

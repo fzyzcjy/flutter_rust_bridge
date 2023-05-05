@@ -10,9 +10,19 @@ impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
         &self,
         _shared_dart_api2wire_funcs: &Option<Acc<String>>,
     ) -> Acc<Option<String>> {
+        let prefix = if !self.context.ir_file.shared
+            && self
+                .context
+                .ir_file
+                .is_type_shared_by_safe_ident(&self.ir.inner)
+        {
+            "_sharedPlatform.api2wire"
+        } else {
+            "api2wire"
+        };
         Acc::new(|target| match target {
             Target::Io | Target::Wasm => Some(format!(
-                "return raw == null ? {} : api2wire_{}(raw);",
+                "return raw == null ? {} : {prefix}_{}(raw);",
                 if target.is_wasm() {
                     "null"
                 } else {
@@ -38,10 +48,34 @@ impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
     }
 
     fn wire2api_body(&self) -> String {
-        format!(
-            "return raw == null ? null : _wire2api_{}(raw);",
-            self.ir.inner.safe_ident()
-        )
+        let use_shared_instance = if !self.context.ir_file.shared
+            && self
+                .context
+                .ir_file
+                .is_type_shared_by_safe_ident(&self.ir.inner)
+        {
+            !self.ir.is_primitive()
+        } else {
+            false
+        };
+
+        if !use_shared_instance {
+            let private_prefix = if !self.context.ir_file.shared {
+                "_"
+            } else {
+                ""
+            };
+            format!(
+                "return raw == null ? null : {}wire2api_{}(raw);",
+                private_prefix,
+                self.ir.inner.safe_ident()
+            )
+        } else {
+            format!(
+                "return raw == null ? null : _sharedImpl.wire2api_{}(raw);",
+                self.ir.inner.safe_ident()
+            )
+        }
     }
 
     fn get_context(&self) -> &TypeGeneratorContext {

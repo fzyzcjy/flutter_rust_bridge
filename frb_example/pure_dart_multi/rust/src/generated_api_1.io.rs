@@ -92,6 +92,11 @@ pub extern "C" fn wire_test_static_method__static_method__StructDefinedInBlock1(
 // Section: allocate functions
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_i8(value: i8) -> *mut i8 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_struct_defined_in_block_1() -> *mut wire_StructDefinedInBlock1 {
     support::new_leak_box_ptr(wire_StructDefinedInBlock1::new_with_null_ptr())
 }
@@ -105,6 +110,11 @@ pub extern "C" fn new_box_autoadd_struct_only_for_block_1() -> *mut wire_StructO
 
 // Section: impl Wire2Api
 
+impl Wire2Api<i8> for *mut i8 {
+    fn wire2api(self) -> i8 {
+        unsafe { *support::box_from_leak_ptr(self) }
+    }
+}
 impl Wire2Api<StructDefinedInBlock1> for *mut wire_StructDefinedInBlock1 {
     fn wire2api(self) -> StructDefinedInBlock1 {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -145,8 +155,8 @@ pub struct wire_StructDefinedInBlock1 {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_StructOnlyForBlock1 {
-    id: i8,
-    num: f64,
+    id: *mut i8,
+    num: *mut f64,
     name: *mut wire_uint_8_list,
 }
 
@@ -179,8 +189,8 @@ impl Default for wire_StructDefinedInBlock1 {
 impl NewWithNullPtr for wire_StructOnlyForBlock1 {
     fn new_with_null_ptr() -> Self {
         Self {
-            id: Default::default(),
-            num: Default::default(),
+            id: core::ptr::null_mut(),
+            num: core::ptr::null_mut(),
             name: core::ptr::null_mut(),
         }
     }

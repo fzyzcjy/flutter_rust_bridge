@@ -16,6 +16,11 @@ pub extern "C" fn new_box_autoadd_cross_shared_struct_in_block_2_and_3(
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_f64(value: f64) -> *mut f64 {
+    support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_shared_struct_in_all_blocks() -> *mut wire_SharedStructInAllBlocks
 {
     support::new_leak_box_ptr(wire_SharedStructInAllBlocks::new_with_null_ptr())
@@ -62,6 +67,11 @@ impl Wire2Api<CrossSharedStructInBlock2And3> for *mut wire_CrossSharedStructInBl
     fn wire2api(self) -> CrossSharedStructInBlock2And3 {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<CrossSharedStructInBlock2And3>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<f64> for *mut f64 {
+    fn wire2api(self) -> f64 {
+        unsafe { *support::box_from_leak_ptr(self) }
     }
 }
 impl Wire2Api<SharedStructInAllBlocks> for *mut wire_SharedStructInAllBlocks {

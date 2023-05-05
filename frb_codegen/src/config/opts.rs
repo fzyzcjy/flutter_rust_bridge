@@ -3,7 +3,6 @@ use crate::utils::misc::{BlockIndex, ExtraTraitForVec};
 use crate::{parser, transformer};
 use anyhow::{Context, Result};
 use convert_case::{Case, Casing};
-use regex::Regex;
 use std::collections::{HashMap, HashSet};
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -55,17 +54,20 @@ impl Opts {
         log::debug!("Phase: Transform IR");
         Ok(transformer::transform(raw_ir_file))
     }
-    fn find_impl_block(&self, s: String, v: &[&str]) -> String {
-        let mut result_string = "".to_string();
-        for struct_name in v {
-            let my_r = &format!(r"impl\s+{}\s*\{{([^}}]*)\}}", struct_name); // correct
-            let re: Regex = Regex::new(my_r).unwrap();
-            for matched in re.find_iter(&s) {
-                result_string += &format!("{}\n", matched.as_str());
-            }
-        }
-        result_string
-    }
+
+    // TODO: need or not?
+    // fn find_impl_block(&self, s: String, v: &[&str]) -> String {
+    //     let mut result_string = "".to_string();
+    //     for struct_name in v {
+    //         let my_r = &format!(r"impl\s+{}\s*\{{([^}}]*)\}}", struct_name); // correct
+    //         let re: Regex = Regex::new(my_r).unwrap();
+    //         for matched in re.find_iter(&s) {
+    //             result_string += &format!("{}\n", matched.as_str());
+    //         }
+    //     }
+    //     result_string
+    // }
+
     fn get_regular_ir_file(&self, all_configs: &[Opts]) -> Result<IrFile> {
         log::debug!("Phase: Parse source code to AST");
         let mut source_rust_content =

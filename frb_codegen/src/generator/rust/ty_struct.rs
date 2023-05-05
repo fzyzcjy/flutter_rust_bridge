@@ -21,7 +21,13 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                 } else {
                     String::new()
                 };
-                let shared_mod_name = self.get_shared_mod_name_if_type_shared(&field.ty);
+
+                let shared_mod_name = match &field.ty {
+                    IrType::Optional(inner_type) => {
+                        self.get_shared_mod_name_if_type_shared(&inner_type.inner)
+                    }
+                    _ => self.get_shared_mod_name_if_type_shared(&field.ty),
+                };
                 Acc {
                     io: if !self.context.config.shared && shared_mod_name.is_some() {
                         format!(
@@ -29,11 +35,6 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                             shared_mod_name.unwrap()
                         )
                     } else {
-                        log::warn!(
-                            "the field is:`{field_}` for type `{:?}` and its block share:{} type, and shared_mod_name:{:?}",
-                        field.ty,
-                        self.context.config.shared,
-                        shared_mod_name.is_some()); //TODO: delete
                         format!("{field_} self.{field_name}.wire2api()")
                     },
                     wasm: format!("{field_} self_.get({idx}).wire2api()"),

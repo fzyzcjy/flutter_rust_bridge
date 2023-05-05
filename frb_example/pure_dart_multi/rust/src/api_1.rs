@@ -67,8 +67,9 @@ pub fn test_unique_struct_1(
     s: String,
     i: i8,
 ) -> StructOnlyForBlock1 {
-    custom.name = s;
-    custom.id = i;
+    custom.name = if s.is_empty() { None } else { Some(s) };
+    custom.id = Some(i);
+    custom.num = Some(i as f64);
     custom
 }
 
