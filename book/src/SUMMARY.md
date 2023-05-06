@@ -98,6 +98,7 @@
   - [Rust opaque type safety](contributing/rust_opaque_type_safety.md)
   - [Dart opaque type safety](contributing/dart_opaque_type_safety.md)
 - [Appendix](contributing/appendix.md)
+- [Translate](contributing/translate.md)
 
 # Part IV: More Doc
 - [Unit testing in Flutter](unit_tests_dart.md)

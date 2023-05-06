@@ -311,6 +311,28 @@ _install_crate name="cargo-lipo":
     else
       echo "Already installed the correct version of $PACKAGE_NAME."
     fi
+
+# ============================ mdbook translate ============================
+
+_book_gen_tmpl:
+    cd book && MDBOOK_OUTPUT='{"xgettext": {"pot-file": "messages.pot"}}' mdbook build -d po
+
+book_init lang: _book_gen_tmpl
+    cd book && msginit -i po/messages.pot -l {{ lang }} -o po/{{ lang }}.po
+
+book_update lang: _book_gen_tmpl
+    cd book && msgmerge --update po/{{ lang }}.po po/messages.pot
+
+book_build lang:
+    cd book && MDBOOK_BOOK__LANGUAGE={{ lang }} mdbook build -d book/{{ lang }}
+
+book_serve lang:
+    cd book && MDBOOK_BOOK__LANGUAGE={{ lang }} mdbook serve -d book/{{ lang }}
+
+book_build_all:
+    cd book && mdbook build
+    just book_build zh
+
 # ============================ to be migrated ============================
 
 # TODO - @Desdaemon
