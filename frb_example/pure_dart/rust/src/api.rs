@@ -1598,3 +1598,15 @@ pub fn test_contains_mirrored_sub_struct() -> ContainsMirroredSubStruct {
         },
     }
 }
+
+pub struct StructWithEnum {
+    pub abc1: Abc,
+    pub abc2: Abc,
+}
+
+pub fn test_struct_with_enum(se: StructWithEnum) -> StructWithEnum {
+    StructWithEnum {
+        abc1: se.abc2,
+        abc2: se.abc1,
+    }
+}

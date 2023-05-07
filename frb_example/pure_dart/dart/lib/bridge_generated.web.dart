@@ -385,6 +385,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_struct_with_enum(StructWithEnum raw) {
+    return api2wire_struct_with_enum(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_sum_with(SumWith raw) {
     return api2wire_sum_with(raw);
   }
@@ -908,6 +913,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_struct_with_enum(StructWithEnum raw) {
+    return [api2wire_abc(raw.abc1), api2wire_abc(raw.abc2)];
+  }
+
+  @protected
   List<dynamic> api2wire_sum_with(SumWith raw) {
     return [api2wire_u32(raw.x)];
   }
@@ -1294,6 +1304,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external dynamic /* void */ wire_test_abc_enum(NativePortType port_, List<dynamic> abc);
 
   external dynamic /* void */ wire_test_contains_mirrored_sub_struct(NativePortType port_);
+
+  external dynamic /* void */ wire_test_struct_with_enum(NativePortType port_, List<dynamic> se);
 
   external dynamic /* void */ wire_as_string__method__Event(NativePortType port_, List<dynamic> that);
 
@@ -1731,6 +1743,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_test_contains_mirrored_sub_struct(NativePortType port_) =>
       wasmModule.wire_test_contains_mirrored_sub_struct(port_);
+
+  void wire_test_struct_with_enum(NativePortType port_, List<dynamic> se) =>
+      wasmModule.wire_test_struct_with_enum(port_, se);
 
   void wire_as_string__method__Event(NativePortType port_, List<dynamic> that) =>
       wasmModule.wire_as_string__method__Event(port_, that);

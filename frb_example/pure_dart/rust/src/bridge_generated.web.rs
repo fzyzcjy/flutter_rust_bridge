@@ -790,6 +790,11 @@ pub fn wire_test_contains_mirrored_sub_struct(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_test_struct_with_enum(port_: MessagePort, se: JsValue) {
+    wire_test_struct_with_enum_impl(port_, se)
+}
+
+#[wasm_bindgen]
 pub fn wire_as_string__method__Event(port_: MessagePort, that: JsValue) {
     wire_as_string__method__Event_impl(port_, that)
 }
@@ -1740,6 +1745,21 @@ impl Wire2Api<Speed> for JsValue {
             0 => Speed::Unknown,
             1 => Speed::GPS(self_.get(1).wire2api()),
             _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<StructWithEnum> for JsValue {
+    fn wire2api(self) -> StructWithEnum {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        StructWithEnum {
+            abc1: self_.get(0).wire2api(),
+            abc2: self_.get(1).wire2api(),
         }
     }
 }

@@ -410,6 +410,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_StructWithEnum> api2wire_box_autoadd_struct_with_enum(StructWithEnum raw) {
+    final ptr = inner.new_box_autoadd_struct_with_enum_0();
+    _api_fill_to_wire_struct_with_enum(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_SumWith> api2wire_box_autoadd_sum_with(SumWith raw) {
     final ptr = inner.new_box_autoadd_sum_with_0();
     _api_fill_to_wire_sum_with(raw, ptr.ref);
@@ -1068,6 +1075,10 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     _api_fill_to_wire_sequences(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_struct_with_enum(StructWithEnum apiObj, ffi.Pointer<wire_StructWithEnum> wireObj) {
+    _api_fill_to_wire_struct_with_enum(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_sum_with(SumWith apiObj, ffi.Pointer<wire_SumWith> wireObj) {
     _api_fill_to_wire_sum_with(apiObj, wireObj.ref);
   }
@@ -1391,6 +1402,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
       wireObj.kind.ref.GPS.ref.field0 = pre_field0;
       return;
     }
+  }
+
+  void _api_fill_to_wire_struct_with_enum(StructWithEnum apiObj, wire_StructWithEnum wireObj) {
+    _api_fill_to_wire_abc(apiObj.abc1, wireObj.abc1);
+    _api_fill_to_wire_abc(apiObj.abc2, wireObj.abc2);
   }
 
   void _api_fill_to_wire_sum_with(SumWith apiObj, wire_SumWith wireObj) {
@@ -3629,6 +3645,22 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_test_contains_mirrored_sub_struct =
       _wire_test_contains_mirrored_sub_structPtr.asFunction<void Function(int)>();
 
+  void wire_test_struct_with_enum(
+    int port_,
+    ffi.Pointer<wire_StructWithEnum> se,
+  ) {
+    return _wire_test_struct_with_enum(
+      port_,
+      se,
+    );
+  }
+
+  late final _wire_test_struct_with_enumPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_StructWithEnum>)>>(
+          'wire_test_struct_with_enum');
+  late final _wire_test_struct_with_enum =
+      _wire_test_struct_with_enumPtr.asFunction<void Function(int, ffi.Pointer<wire_StructWithEnum>)>();
+
   void wire_as_string__method__Event(
     int port_,
     ffi.Pointer<wire_Event> that,
@@ -4213,6 +4245,15 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_Sequences> Function()>>('new_box_autoadd_sequences_0');
   late final _new_box_autoadd_sequences_0 =
       _new_box_autoadd_sequences_0Ptr.asFunction<ffi.Pointer<wire_Sequences> Function()>();
+
+  ffi.Pointer<wire_StructWithEnum> new_box_autoadd_struct_with_enum_0() {
+    return _new_box_autoadd_struct_with_enum_0();
+  }
+
+  late final _new_box_autoadd_struct_with_enum_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_StructWithEnum> Function()>>('new_box_autoadd_struct_with_enum_0');
+  late final _new_box_autoadd_struct_with_enum_0 =
+      _new_box_autoadd_struct_with_enum_0Ptr.asFunction<ffi.Pointer<wire_StructWithEnum> Function()>();
 
   ffi.Pointer<wire_SumWith> new_box_autoadd_sum_with_0() {
     return _new_box_autoadd_sum_with_0();
@@ -5521,6 +5562,12 @@ class wire_Abc extends ffi.Struct {
   external int tag;
 
   external ffi.Pointer<AbcKind> kind;
+}
+
+class wire_StructWithEnum extends ffi.Struct {
+  external wire_Abc abc1;
+
+  external wire_Abc abc2;
 }
 
 class wire_Event extends ffi.Struct {

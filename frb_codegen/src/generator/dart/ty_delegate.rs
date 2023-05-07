@@ -120,7 +120,7 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                 "return (raw as List<dynamic>).cast<String>();".to_owned()
             }
             IrTypeDelegate::PrimitiveEnum { ir, .. } => {
-                format!("return {}.values[raw];", ir.dart_api_type())
+                format!("return {}.values[raw as int];", ir.dart_api_type()) // here `as int` is neccessary in strict dynamic mode
             }
             #[cfg(feature = "chrono")]
             IrTypeDelegate::Time(ir) => {

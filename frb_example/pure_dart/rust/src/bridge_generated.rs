@@ -2195,6 +2195,22 @@ fn wire_test_contains_mirrored_sub_struct_impl(port_: MessagePort) {
         move || move |task_callback| Ok(test_contains_mirrored_sub_struct()),
     )
 }
+fn wire_test_struct_with_enum_impl(
+    port_: MessagePort,
+    se: impl Wire2Api<StructWithEnum> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_struct_with_enum",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_se = se.wire2api();
+            move |task_callback| Ok(test_struct_with_enum(api_se))
+        },
+    )
+}
 fn wire_as_string__method__Event_impl(port_: MessagePort, that: impl Wire2Api<Event> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -3082,6 +3098,13 @@ impl support::IntoDart for Speed {
     }
 }
 impl support::IntoDartExceptPrimitive for Speed {}
+impl support::IntoDart for StructWithEnum {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.abc1.into_dart(), self.abc2.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for StructWithEnum {}
+
 impl support::IntoDart for SumWith {
     fn into_dart(self) -> support::DartAbi {
         vec![self.x.into_dart()].into_dart()

@@ -815,6 +815,11 @@ pub extern "C" fn wire_test_contains_mirrored_sub_struct(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_test_struct_with_enum(port_: i64, se: *mut wire_StructWithEnum) {
+    wire_test_struct_with_enum_impl(port_, se)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_as_string__method__Event(port_: i64, that: *mut wire_Event) {
     wire_as_string__method__Event_impl(port_, that)
 }
@@ -1120,6 +1125,11 @@ pub extern "C" fn new_box_autoadd_opaque_nested_0() -> *mut wire_OpaqueNested {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_sequences_0() -> *mut wire_Sequences {
     support::new_leak_box_ptr(wire_Sequences::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_struct_with_enum_0() -> *mut wire_StructWithEnum {
+    support::new_leak_box_ptr(wire_StructWithEnum::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1890,6 +1900,12 @@ impl Wire2Api<Sequences> for *mut wire_Sequences {
         Wire2Api::<Sequences>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<StructWithEnum> for *mut wire_StructWithEnum {
+    fn wire2api(self) -> StructWithEnum {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<StructWithEnum>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<SumWith> for *mut wire_SumWith {
     fn wire2api(self) -> SumWith {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -2407,6 +2423,14 @@ impl Wire2Api<Speed> for wire_Speed {
         }
     }
 }
+impl Wire2Api<StructWithEnum> for wire_StructWithEnum {
+    fn wire2api(self) -> StructWithEnum {
+        StructWithEnum {
+            abc1: self.abc1.wire2api(),
+            abc2: self.abc2.wire2api(),
+        }
+    }
+}
 impl Wire2Api<SumWith> for wire_SumWith {
     fn wire2api(self) -> SumWith {
         SumWith {
@@ -2805,6 +2829,13 @@ pub struct wire_Sequences {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_StructWithEnum {
+    abc1: wire_Abc,
+    abc2: wire_Abc,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_SumWith {
     x: u32,
 }
@@ -3147,6 +3178,12 @@ impl Default for wire_A {
     }
 }
 
+impl Default for wire_Abc {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
 impl NewWithNullPtr for wire_Abc {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -3340,6 +3377,12 @@ impl Default for wire_DartOpaqueNested {
     }
 }
 
+impl Default for wire_Distance {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
 impl NewWithNullPtr for wire_Distance {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -3370,6 +3413,12 @@ impl Default for wire_Empty {
     }
 }
 
+impl Default for wire_EnumDartOpaque {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
 impl NewWithNullPtr for wire_EnumDartOpaque {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -3395,6 +3444,12 @@ pub extern "C" fn inflate_EnumDartOpaque_Opaque() -> *mut EnumDartOpaqueKind {
             field0: wire_DartOpaque::new_with_null_ptr(),
         }),
     })
+}
+
+impl Default for wire_EnumOpaque {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
 }
 
 impl NewWithNullPtr for wire_EnumOpaque {
@@ -3539,6 +3594,12 @@ impl Default for wire_FeedId {
     }
 }
 
+impl Default for wire_KitchenSink {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
 impl NewWithNullPtr for wire_KitchenSink {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -3595,6 +3656,12 @@ pub extern "C" fn inflate_KitchenSink_Enums() -> *mut KitchenSinkKind {
             field0: Default::default(),
         }),
     })
+}
+
+impl Default for wire_Measure {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
 }
 
 impl NewWithNullPtr for wire_Measure {
@@ -3771,6 +3838,12 @@ impl Default for wire_Sequences {
     }
 }
 
+impl Default for wire_Speed {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
 impl NewWithNullPtr for wire_Speed {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -3787,6 +3860,21 @@ pub extern "C" fn inflate_Speed_GPS() -> *mut SpeedKind {
             field0: Default::default(),
         }),
     })
+}
+
+impl NewWithNullPtr for wire_StructWithEnum {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            abc1: Default::default(),
+            abc2: Default::default(),
+        }
+    }
+}
+
+impl Default for wire_StructWithEnum {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
 }
 
 impl NewWithNullPtr for wire_SumWith {
