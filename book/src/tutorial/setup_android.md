@@ -54,7 +54,7 @@ cargo install cargo-ndk
 
 Then run (all Rust versions)
 ```shell
-cargo ndk -o ../android/app/src/main/jniLibs build`
+cargo ndk -o ../android/app/src/main/jniLibs build
 ```
 Then run the Flutter app normally with `flutter run`.
 
