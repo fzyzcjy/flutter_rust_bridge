@@ -49,6 +49,11 @@ mod tests {
         static ref LOGGER: () = init_logger(".", true).unwrap();
     }
 
+    #[cfg(windows)]
+    const DART: &str = "dart.bat";
+    #[cfg(not(windows))]
+    const DART: &str = "dart";
+
     // VS Code runs in frb_codegen with "Run test" and flutter_rust_bridge with "Debug test" >_>
     fn set_dir() {
         if let Ok(metadata) = fs::metadata("frb_codegen") {
@@ -120,7 +125,7 @@ mod tests {
             println!("Output file does not exist");
         }
 
-        let status = Command::new("dart")
+        let status = Command::new(DART)
             .arg("../frb_example/pure_dart/dart/lib/main.dart")
             .arg(absolute_path)
             .spawn()
@@ -220,7 +225,7 @@ mod tests {
             println!("Output file does not exist");
         }
 
-        let status = Command::new("dart")
+        let status = Command::new(DART)
             .arg("../frb_example/pure_dart_multi/dart/lib/main.dart")
             .arg(absolute_path)
             .spawn()

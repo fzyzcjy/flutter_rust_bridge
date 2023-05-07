@@ -648,6 +648,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kTestContainsMirroredSubStructConstMeta;
 
+  Future<StructWithEnum> testStructWithEnum({required StructWithEnum se, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStructWithEnumConstMeta;
+
   Future<String> asStringMethodEvent({required Event that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kAsStringMethodEventConstMeta;
@@ -1521,6 +1525,16 @@ class Speed with _$Speed {
   const factory Speed.gps(
     double field0,
   ) = Speed_GPS;
+}
+
+class StructWithEnum {
+  final Abc abc1;
+  final Abc abc2;
+
+  const StructWithEnum({
+    required this.abc1,
+    required this.abc2,
+  });
 }
 
 class SumWith {

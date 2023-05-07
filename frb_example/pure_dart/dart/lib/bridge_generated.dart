@@ -2453,6 +2453,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<StructWithEnum> testStructWithEnum({required StructWithEnum se, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_struct_with_enum(se);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_struct_with_enum(port_, arg0),
+      parseSuccessData: _wire2api_struct_with_enum,
+      constMeta: kTestStructWithEnumConstMeta,
+      argValues: [se],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestStructWithEnumConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_struct_with_enum",
+        argNames: ["se"],
+      );
+
   Future<String> asStringMethodEvent({required Event that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_event(that);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -2866,7 +2882,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   ApplicationMode _wire2api_application_mode(dynamic raw) {
-    return ApplicationMode.values[raw];
+    return ApplicationMode.values[raw as int];
   }
 
   ApplicationSettings _wire2api_application_settings(dynamic raw) {
@@ -3396,7 +3412,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   MyEnum _wire2api_my_enum(dynamic raw) {
-    return MyEnum.values[raw];
+    return MyEnum.values[raw as int];
   }
 
   MyNestedStruct _wire2api_my_nested_struct(dynamic raw) {
@@ -3662,6 +3678,15 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     }
   }
 
+  StructWithEnum _wire2api_struct_with_enum(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return StructWithEnum(
+      abc1: _wire2api_abc(arr[0]),
+      abc2: _wire2api_abc(arr[1]),
+    );
+  }
+
   SumWith _wire2api_sum_with(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
@@ -3782,7 +3807,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
   }
 
   Weekdays _wire2api_weekdays(dynamic raw) {
-    return Weekdays.values[raw];
+    return Weekdays.values[raw as int];
   }
 
   ZeroCopyVecOfPrimitivePack _wire2api_zero_copy_vec_of_primitive_pack(dynamic raw) {
