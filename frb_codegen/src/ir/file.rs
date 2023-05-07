@@ -118,14 +118,66 @@ impl IrFile {
             include_func_output,
             all_configs,
         );
+
+        log::debug!(
+            "block_{}, the shared_types:{:?}",
+            self.block_index,
+            shared_types
+        ); //TODO: delete
+
         let types = match !self.shared {
             true => {
                 let raw_distinct_types =
                     self.get_regular_distinct_types(include_func_inputs, include_func_output);
-                raw_distinct_types
-                    .difference(&shared_types)
-                    .cloned()
-                    .collect()
+
+                log::debug!(
+                    "block_{}, the raw_distinct_types:{:?}",
+                    self.block_index,
+                    raw_distinct_types
+                ); //TODO: delete
+
+                // way1: distinguished by `safe_ident()`
+                let r = raw_distinct_types
+                    .into_iter()
+                    .filter(|item| {
+                        !shared_types.iter().any(|other_item| {
+                            let cond1 = format!("box_autoadd_{}", other_item.safe_ident())
+                                == item.safe_ident();
+                            let cond2 =
+                                format!("box_autoadd_{}", item.safe_ident())
+                                    == other_item.safe_ident();
+                            let cond3 = item.safe_ident() == other_item.safe_ident();
+
+                            match (include_func_inputs, include_func_output){
+                                (true, true) =>  cond1 || cond2 || cond3,
+                                (true, false) => {
+                                    // assert!(item.safe_ident().contains("box_autoadd_"));
+                                    cond1 || cond3
+                                },
+                                (false, true) => {
+                                    // assert!(!item.safe_ident().contains("box_autoadd_"));
+                                    cond1 || cond3
+                                },
+                                (false, false) => unreachable!(),
+                            }
+
+                        })
+                    })
+                    .collect::<HashSet<_>>();
+
+                // way2: distinguished by hash. Not sure if this is needed
+                // let r = raw_distinct_types
+                //     .difference(&shared_types)
+                //     .cloned()
+                //     .collect();
+
+                log::debug!(
+                    "block_{}, the final_distinct_types:{:?}",
+                    self.block_index,
+                    r
+                ); //TODO: delete
+
+                r
             }
             false => shared_types,
         };
@@ -243,7 +295,7 @@ impl IrFile {
             &all_configs[0..all_configs.len() - 1]
         };
         assert!(regular_configs.iter().all(|c| !c.shared));
-        let mut block_uniques = Vec::new();
+        let mut regular_block_uniques = Vec::new();
         let mut all_regular_types = Vec::new();
         let mut regular_ir_files = Vec::new();
         for (i, config) in regular_configs.iter().enumerate() {
@@ -256,7 +308,7 @@ impl IrFile {
             regular_ir_files.push(ir_file.clone());
             all_regular_types.extend(distinct_types.clone());
 
-            block_uniques.push(distinct_types);
+            regular_block_uniques.push(distinct_types);
         }
 
         // pick out the raw shared types
@@ -273,9 +325,9 @@ impl IrFile {
 
         //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓for cross shared types↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
         if !self.shared {
-            log::debug!("block_uniques:{block_uniques:?}"); //TODO: delete
-            for (i, each_block_uniques) in block_uniques.iter().enumerate() {
-                for suspected_shared_type in each_block_uniques {
+            log::debug!("block_uniques:{regular_block_uniques:?}"); //TODO: delete
+            for (i, each_block_set) in regular_block_uniques.iter().enumerate() {
+                for suspected_shared_type in each_block_set {
                     self.add_cross_shared_types(
                         suspected_shared_type,
                         BlockIndex(i),
@@ -295,28 +347,42 @@ impl IrFile {
         }
         //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑for cross shared types↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
+        // TODO: delete? The below block of code may be redundant check?
         //↓↓↓↓↓↓↓↓↓↓↓↓for types with same idents but different hashes↓↓↓↓↓↓↓↓↓↓↓↓
         // Suppose there is a type `String`, it is used as output for a function defined in a
         // regular block and used as output type of `SyncReturn` version in anthoer function of
         // another regular block, then the above logic would not treat `String` and the `SyncReturn`
         // version of it as shared types, which both should be.
-        for (i, set) in block_uniques.iter().enumerate() {
+        for (i, set) in regular_block_uniques.iter().enumerate() {
             for item in set {
+                // if item.safe_ident().contains("SharedStructOnlyForSyncTest"){
+                log::debug!(
+                    "the check IrType:{:?} with safe_ident:{} in block {}",
+                    item,
+                    item.safe_ident(),
+                    i
+                ); //TODO: delete
+                // }
                 if shares.contains(item) {
+                    log::debug!("already contained "); //TODO: delete
                     continue;
                 }
-                for (_, other_set) in block_uniques.iter().enumerate().skip(i + 1) {
-                    if other_set.contains(item) {
-                        shares.insert(item.clone());
-                    } else {
-                        // Note: There is no need to check `item` with that in `shares` additionally.
-                        // With cross types got above, the below logic is enough
-                        // to cover all other cases.
-                        for other_item in other_set {
-                            if item.safe_ident() == other_item.safe_ident() {
-                                shares.insert(item.clone());
-                                shares.insert(other_item.clone());
-                            }
+                for (_, other_set) in regular_block_uniques.iter().enumerate().skip(i + 1) {
+                    // Note: There is no need to check `item` with that in `shares` additionally.
+                    // With cross types got above, the below logic is enough
+                    // to cover all other cases.
+                    for other_item in other_set {
+                        let cond1 = item.safe_ident() == other_item.safe_ident();
+                        let cond2 =
+                            format!("box_autoadd_{}", item.safe_ident()) == other_item.safe_ident();
+                        let cond3 =
+                            format!("box_autoadd_{}", other_item.safe_ident()) == item.safe_ident();
+                        if cond1 || cond2 || cond3 {
+                            shares.insert(item.clone());
+                            shares.insert(other_item.clone());
+
+                            log::debug!("inserted {:?}", item); //TODO: delete
+                            log::debug!("inserted {:?}", other_item); //TODO: delete
                         }
                     }
                 }

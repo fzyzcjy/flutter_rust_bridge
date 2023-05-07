@@ -21,7 +21,6 @@ use std::sync::Arc;
 
 use crate::bridge_generated_shares;
 use crate::bridge_generated_shares::*;
-use crate::custom::SharedStructOnlyForSyncTest;
 use crate::custom::StructOnlyForBlock3;
 
 // Section: wire functions
@@ -282,13 +281,6 @@ impl Wire2Api<i64> for i64 {
 }
 
 // Section: impl IntoDart
-
-impl support::IntoDart for SharedStructOnlyForSyncTest {
-    fn into_dart(self) -> support::DartAbi {
-        vec![self.default_score.into_dart()].into_dart()
-    }
-}
-impl support::IntoDartExceptPrimitive for SharedStructOnlyForSyncTest {}
 
 impl support::IntoDart for StructOnlyForBlock3 {
     fn into_dart(self) -> support::DartAbi {

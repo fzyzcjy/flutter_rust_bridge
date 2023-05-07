@@ -54,7 +54,7 @@ impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
                 .ir_file
                 .is_type_shared_by_safe_ident(&self.ir.inner)
         {
-            !self.ir.is_primitive()
+            true
         } else {
             false
         };

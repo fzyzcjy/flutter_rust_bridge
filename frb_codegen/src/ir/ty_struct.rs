@@ -11,7 +11,6 @@ pub struct IrTypeStructRef {
 }
 impl IrTypeStructRef {
     pub fn get<'a>(&self, f: &'a IrFile) -> &'a IrStruct {
-        log::debug!("the struct pool len:{}", f.struct_pool.len()); //TODO: delete
         &f.struct_pool[&self.name]
     }
 }

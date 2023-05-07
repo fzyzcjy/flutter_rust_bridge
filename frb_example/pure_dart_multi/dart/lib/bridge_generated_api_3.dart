@@ -347,14 +347,6 @@ class ApiClass3Impl implements ApiClass3 {
     return castInt(raw);
   }
 
-  SharedStructOnlyForSyncTest _wire2api_shared_struct_only_for_sync_test(dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return SharedStructOnlyForSyncTest(
-      defaultScore: _sharedImpl.wire2api_f64(arr[0]),
-    );
-  }
-
   StructOnlyForBlock3 _wire2api_struct_only_for_block_3(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 3) throw Exception('unexpected arr length: expect 3 but see ${arr.length}');

@@ -315,10 +315,6 @@ class ApiClass1Impl implements ApiClass1 {
   }
 // Section: wire2api
 
-  double _wire2api_box_autoadd_f64(dynamic raw) {
-    return raw as double;
-  }
-
   int _wire2api_box_autoadd_i8(dynamic raw) {
     return raw as int;
   }
@@ -332,7 +328,7 @@ class ApiClass1Impl implements ApiClass1 {
   }
 
   double? _wire2api_opt_box_autoadd_f64(dynamic raw) {
-    return raw == null ? null : _wire2api_box_autoadd_f64(raw);
+    return raw == null ? null : _sharedImpl.wire2api_box_autoadd_f64(raw);
   }
 
   int? _wire2api_opt_box_autoadd_i8(dynamic raw) {
