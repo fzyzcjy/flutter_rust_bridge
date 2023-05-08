@@ -113,16 +113,53 @@ abstract class ApiClass2 {
   FlutterRustBridgeTaskConstMeta get kIsAppEmbeddedInApi2ConstMeta;
 }
 
-class BoxedPoint {
-  final Point point;
+class ApplicationSettings {
+  final String name;
+  final String version;
+  final ApplicationMode mode;
+  final ApplicationEnv env;
+  final ApplicationEnv? envOptional;
 
-  const BoxedPoint({
-    required this.point,
+  const ApplicationSettings({
+    required this.name,
+    required this.version,
+    required this.mode,
+    required this.env,
+    this.envOptional,
   });
+}
 
-  Future<void> testMethod({dynamic hint}) => api.testMethodMethodBoxedPoint(
-        that: this,
-      );
+class ApplicationEnv {
+  final List<ApplicationEnvVar> vars;
+
+  const ApplicationEnv({
+    required this.vars,
+  });
+}
+
+class TreeNode {
+  final String name;
+  final List<TreeNode> children;
+
+  const TreeNode({
+    required this.name,
+    required this.children,
+  });
+}
+
+enum ApplicationMode {
+  standalone,
+  embedded,
+}
+
+class Point {
+  final double x;
+  final double y;
+
+  const Point({
+    required this.x,
+    required this.y,
+  });
 }
 
 class ApplicationEnvVar {
@@ -133,6 +170,18 @@ class ApplicationEnvVar {
     required this.field0,
     required this.field1,
   });
+}
+
+class BoxedPoint {
+  final Point point;
+
+  const BoxedPoint({
+    required this.point,
+  });
+
+  Future<void> testMethod({dynamic hint}) => api.testMethodMethodBoxedPoint(
+        that: this,
+      );
 }
 
 class Size {
@@ -167,53 +216,4 @@ class UserId with _$UserId {
   const factory UserId({
     @Default(0) int value,
   }) = _UserId;
-}
-
-class Point {
-  final double x;
-  final double y;
-
-  const Point({
-    required this.x,
-    required this.y,
-  });
-}
-
-class TreeNode {
-  final String name;
-  final List<TreeNode> children;
-
-  const TreeNode({
-    required this.name,
-    required this.children,
-  });
-}
-
-enum ApplicationMode {
-  standalone,
-  embedded,
-}
-
-class ApplicationSettings {
-  final String name;
-  final String version;
-  final ApplicationMode mode;
-  final ApplicationEnv env;
-  final ApplicationEnv? envOptional;
-
-  const ApplicationSettings({
-    required this.name,
-    required this.version,
-    required this.mode,
-    required this.env,
-    this.envOptional,
-  });
-}
-
-class ApplicationEnv {
-  final List<ApplicationEnvVar> vars;
-
-  const ApplicationEnv({
-    required this.vars,
-  });
 }
