@@ -147,11 +147,14 @@ pub fn generate_common_definitions_code(configs: &[Opts]) -> DartBasicCode {
         common_header.import += &config.extra_headers;
     }
 
+    let mut structs_body_vec: Vec<String> = structs_body.into_iter().collect();
+    structs_body_vec.sort();
+
     let decl_code = generate_dart_declaration_code(
         &common_header,
         freezed_header,
         import_header,
-        abstract_classes + &structs_body.into_iter().join("\n\n"),
+        abstract_classes + &structs_body_vec.join("\n\n"),
     );
     generate_file_prelude() + &decl_code
 }

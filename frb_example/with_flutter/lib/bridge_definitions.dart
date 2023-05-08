@@ -113,6 +113,32 @@ abstract class ApiClass2 {
   FlutterRustBridgeTaskConstMeta get kIsAppEmbeddedInApi2ConstMeta;
 }
 
+@freezed
+@meta.immutable
+class UserId with _$UserId {
+  const factory UserId({
+    @Default(0) int value,
+  }) = _UserId;
+}
+
+class ApplicationEnv {
+  final List<ApplicationEnvVar> vars;
+
+  const ApplicationEnv({
+    required this.vars,
+  });
+}
+
+class ApplicationEnvVar {
+  final String field0;
+  final bool field1;
+
+  const ApplicationEnvVar({
+    required this.field0,
+    required this.field1,
+  });
+}
+
 class ApplicationSettings {
   final String name;
   final String version;
@@ -129,49 +155,6 @@ class ApplicationSettings {
   });
 }
 
-class ApplicationEnv {
-  final List<ApplicationEnvVar> vars;
-
-  const ApplicationEnv({
-    required this.vars,
-  });
-}
-
-class TreeNode {
-  final String name;
-  final List<TreeNode> children;
-
-  const TreeNode({
-    required this.name,
-    required this.children,
-  });
-}
-
-enum ApplicationMode {
-  standalone,
-  embedded,
-}
-
-class Point {
-  final double x;
-  final double y;
-
-  const Point({
-    required this.x,
-    required this.y,
-  });
-}
-
-class ApplicationEnvVar {
-  final String field0;
-  final bool field1;
-
-  const ApplicationEnvVar({
-    required this.field0,
-    required this.field1,
-  });
-}
-
 class BoxedPoint {
   final Point point;
 
@@ -182,6 +165,16 @@ class BoxedPoint {
   Future<void> testMethod({dynamic hint}) => api.testMethodMethodBoxedPoint(
         that: this,
       );
+}
+
+class Point {
+  final double x;
+  final double y;
+
+  const Point({
+    required this.x,
+    required this.y,
+  });
 }
 
 class Size {
@@ -210,10 +203,17 @@ class SumWith {
       api.sumStaticStaticMethodSumWith(x: x, y: y, hint: hint);
 }
 
-@freezed
-@meta.immutable
-class UserId with _$UserId {
-  const factory UserId({
-    @Default(0) int value,
-  }) = _UserId;
+class TreeNode {
+  final String name;
+  final List<TreeNode> children;
+
+  const TreeNode({
+    required this.name,
+    required this.children,
+  });
+}
+
+enum ApplicationMode {
+  standalone,
+  embedded,
 }

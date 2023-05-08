@@ -99,10 +99,6 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleStructSyncConstMeta;
 
-  MySizeFreezed handleStructSyncFreezed({required MySizeFreezed arg, required MySizeFreezed boxed, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleStructSyncFreezedConstMeta;
-
   Future<NewTypeInt> handleNewtype({required NewTypeInt arg, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleNewtypeConstMeta;
@@ -198,10 +194,6 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   Future<Weekdays> handleEnumParameter({required Weekdays weekday, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleEnumParameterConstMeta;
-
-  MyEnumFreezed handleEnumSyncFreezed({required MyEnumFreezed value, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kHandleEnumSyncFreezedConstMeta;
 
   Future<void> handleCustomizedStruct({required Customized val, dynamic hint});
 
@@ -1411,16 +1403,6 @@ enum MyEnum {
   True,
 }
 
-@freezed
-sealed class MyEnumFreezed with _$MyEnumFreezed {
-  const factory MyEnumFreezed.a(
-    int field0,
-  ) = MyEnumFreezed_A;
-  const factory MyEnumFreezed.b(
-    String field0,
-  ) = MyEnumFreezed_B;
-}
-
 class MyNestedStruct {
   final MyTreeNode treeNode;
   final Weekdays weekday;
@@ -1439,14 +1421,6 @@ class MySize {
     required this.width,
     required this.height,
   });
-}
-
-@freezed
-class MySizeFreezed with _$MySizeFreezed {
-  const factory MySizeFreezed({
-    required int width,
-    required int height,
-  }) = _MySizeFreezed;
 }
 
 class MyStreamEntry {
