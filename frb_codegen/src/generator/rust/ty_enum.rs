@@ -318,7 +318,13 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
             })
             .collect::<Vec<_>>();
         format!(
-            "impl NewWithNullPtr for {} {{
+            r#"impl Default for {} {{
+                    fn default() -> Self {{
+                        Self::new_with_null_ptr()
+                    }}
+                }}
+
+                impl NewWithNullPtr for {} {{
                 fn new_with_null_ptr() -> Self {{
                     Self {{
                         tag: -1,
@@ -326,7 +332,8 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                     }}
                 }}
             }}
-            {}",
+            {}"#,
+            self.ir.rust_wire_type(Io),
             self.ir.rust_wire_type(Io),
             inflators.join("\n\n")
         )

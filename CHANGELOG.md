@@ -1,6 +1,7 @@
-## Unreleased
+## 1.75.2
 
 * Warn user about using lib.rs as a Rust input #1193 (thanks @erikas-taroza)
+* Allow enum member in struct, and fix enum errors in dart strict dynamic checker #1202 (thanks @alanlzhang)
 
 ## 1.75.1
 

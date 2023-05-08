@@ -439,6 +439,11 @@ typedef struct wire_Abc {
   union AbcKind *kind;
 } wire_Abc;
 
+typedef struct wire_StructWithEnum {
+  struct wire_Abc abc1;
+  struct wire_Abc abc2;
+} wire_StructWithEnum;
+
 typedef struct wire_Event {
   struct wire_uint_8_list *address;
   struct wire_uint_8_list *payload;
@@ -788,6 +793,8 @@ void wire_test_abc_enum(int64_t port_, struct wire_Abc *abc);
 
 void wire_test_contains_mirrored_sub_struct(int64_t port_);
 
+void wire_test_struct_with_enum(int64_t port_, struct wire_StructWithEnum *se);
+
 void wire_as_string__method__Event(int64_t port_, struct wire_Event *that);
 
 void wire_sum__method__SumWith(int64_t port_, struct wire_SumWith *that, uint32_t y, uint32_t z);
@@ -909,6 +916,8 @@ struct wire_Numbers *new_box_autoadd_numbers(void);
 struct wire_OpaqueNested *new_box_autoadd_opaque_nested(void);
 
 struct wire_Sequences *new_box_autoadd_sequences(void);
+
+struct wire_StructWithEnum *new_box_autoadd_struct_with_enum(void);
 
 struct wire_SumWith *new_box_autoadd_sum_with(void);
 
@@ -1204,6 +1213,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_list_of_primitive_enums);
     dummy_var ^= ((int64_t) (void*) wire_test_abc_enum);
     dummy_var ^= ((int64_t) (void*) wire_test_contains_mirrored_sub_struct);
+    dummy_var ^= ((int64_t) (void*) wire_test_struct_with_enum);
     dummy_var ^= ((int64_t) (void*) wire_as_string__method__Event);
     dummy_var ^= ((int64_t) (void*) wire_sum__method__SumWith);
     dummy_var ^= ((int64_t) (void*) wire_new__static_method__ConcatenateWith);
@@ -1260,6 +1270,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_numbers);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_opaque_nested);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_sequences);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_enum);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_sum_with);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_test_id);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_user_id);

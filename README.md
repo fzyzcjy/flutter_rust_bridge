@@ -149,8 +149,8 @@ More specifically, thanks for all these contributions:
 * [SoLongAndThanksForAllThePizza](https://github.com/SoLongAndThanksForAllThePizza): Refactor and enhance SyncReturn to support more types. Refactor post-release CI.
 * [hsfzxjy](https://github.com/hsfzxjy): Fix SyncReturn use-after-free bug.
 * [Cupnfish](https://github.com/Cupnfish): Support arrays as function parameters. Allow multi mirror.
+* [alanlzhang](https://github.com/alanlzhang): Add generation for Dart metadata. Enhance module parser. Fix enum in struct. Fix linter.
 * [temeddix](https://github.com/temeddix): Fix broken CI. Custom num workers. Update doc.
-* [alanlzhang](https://github.com/alanlzhang): Add generation for Dart metadata. Enhance module parser.
 * [Zaitam](https://github.com/Zaitam): Fix when method return struct.
 * [nitn3lav](https://github.com/nitn3lav): nested `struct`s without `Box`.
 * [erikas-taroza](https://github.com/erikas-taroza): Support list of primitive enums. Make enum camelCase. Warn wrong path.

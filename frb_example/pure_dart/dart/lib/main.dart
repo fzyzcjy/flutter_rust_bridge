@@ -1296,6 +1296,12 @@ void main(List<String> args) async {
     List<Weekdays> days = await api.listOfPrimitiveEnums(weekdays: Weekdays.values);
     expect(days, Weekdays.values);
   });
+
+  test("dart call struct_with_enum_member", () async {
+    final result = await api.testStructWithEnum(se: StructWithEnum(abc1: Abc.a(A(a: "aaa")), abc2: Abc.b(B(b: 999))));
+    expect(result.abc1.whenOrNull(b: (B b) => b.b), 999);
+    expect(result.abc2.whenOrNull(a: (A a) => a.a), "aaa");
+  });
 }
 
 int _createGarbage() {
