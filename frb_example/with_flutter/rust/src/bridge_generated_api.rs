@@ -20,6 +20,11 @@ use std::sync::Arc;
 
 // Section: imports
 
+use crate::api2::ApplicationEnv;
+use crate::api2::ApplicationEnvVar;
+use crate::api2::ApplicationMode;
+use crate::api2::ApplicationSettings;
+
 // Section: wire functions
 
 fn wire_draw_mandelbrot_impl(
@@ -217,6 +222,42 @@ fn wire_next_user_id_impl(port_: MessagePort, user_id: impl Wire2Api<UserId> + U
         },
     )
 }
+fn wire_get_app_settings_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "get_app_settings",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(mirror_ApplicationSettings(get_app_settings())),
+    )
+}
+fn wire_get_fallible_app_settings_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "get_fallible_app_settings",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(mirror_ApplicationSettings(get_fallible_app_settings()?)),
+    )
+}
+fn wire_is_app_embedded_impl(
+    port_: MessagePort,
+    app_settings: impl Wire2Api<ApplicationSettings> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "is_app_embedded",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_app_settings = app_settings.wire2api();
+            move |task_callback| Ok(is_app_embedded(api_app_settings))
+        },
+    )
+}
 fn wire_test_method__method__BoxedPoint_impl(
     port_: MessagePort,
     that: impl Wire2Api<BoxedPoint> + UnwindSafe,
@@ -271,8 +312,43 @@ fn wire_sum_static__static_method__SumWith_impl(
 }
 // Section: wrapper structs
 
+#[derive(Clone)]
+struct mirror_ApplicationEnv(ApplicationEnv);
+
+#[derive(Clone)]
+struct mirror_ApplicationEnvVar(ApplicationEnvVar);
+
+#[derive(Clone)]
+struct mirror_ApplicationMode(ApplicationMode);
+
+#[derive(Clone)]
+struct mirror_ApplicationSettings(ApplicationSettings);
+
 // Section: static checks
 
+const _: fn() = || {
+    {
+        let ApplicationEnv = None::<ApplicationEnv>.unwrap();
+        let _: Vec<ApplicationEnvVar> = ApplicationEnv.vars;
+    }
+    {
+        let ApplicationEnvVar_ = None::<ApplicationEnvVar>.unwrap();
+        let _: String = ApplicationEnvVar_.0;
+        let _: bool = ApplicationEnvVar_.1;
+    }
+    match None::<ApplicationMode>.unwrap() {
+        ApplicationMode::Standalone => {}
+        ApplicationMode::Embedded => {}
+    }
+    {
+        let ApplicationSettings = None::<ApplicationSettings>.unwrap();
+        let _: String = ApplicationSettings.name;
+        let _: String = ApplicationSettings.version;
+        let _: ApplicationMode = ApplicationSettings.mode;
+        let _: Box<ApplicationEnv> = ApplicationSettings.env;
+        let _: Option<ApplicationEnv> = ApplicationSettings.env_optional;
+    }
+};
 // Section: allocate functions
 
 // Section: related functions
@@ -289,6 +365,22 @@ where
 {
     fn wire2api(self) -> Option<T> {
         (!self.is_null()).then(|| self.wire2api())
+    }
+}
+
+impl Wire2Api<ApplicationMode> for i32 {
+    fn wire2api(self) -> ApplicationMode {
+        match self {
+            0 => ApplicationMode::Standalone,
+            1 => ApplicationMode::Embedded,
+            _ => unreachable!("Invalid variant for ApplicationMode: {}", self),
+        }
+    }
+}
+
+impl Wire2Api<bool> for bool {
+    fn wire2api(self) -> bool {
+        self
     }
 }
 
@@ -315,6 +407,54 @@ impl Wire2Api<u8> for u8 {
 }
 
 // Section: impl IntoDart
+
+impl support::IntoDart for mirror_ApplicationEnv {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self
+            .0
+            .vars
+            .into_iter()
+            .map(|v| mirror_ApplicationEnvVar(v))
+            .collect::<Vec<_>>()
+            .into_dart()]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_ApplicationEnv {}
+
+impl support::IntoDart for mirror_ApplicationEnvVar {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.0 .0.into_dart(), self.0 .1.into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_ApplicationEnvVar {}
+
+impl support::IntoDart for mirror_ApplicationMode {
+    fn into_dart(self) -> support::DartAbi {
+        match self.0 {
+            ApplicationMode::Standalone => 0,
+            ApplicationMode::Embedded => 1,
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_ApplicationMode {}
+impl support::IntoDart for mirror_ApplicationSettings {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.0.name.into_dart(),
+            self.0.version.into_dart(),
+            mirror_ApplicationMode(self.0.mode).into_dart(),
+            mirror_ApplicationEnv((*self.0.env)).into_dart(),
+            self.0
+                .env_optional
+                .map(|v| mirror_ApplicationEnv(v))
+                .into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_ApplicationSettings {}
 
 impl support::IntoDart for BoxedPoint {
     fn into_dart(self) -> support::DartAbi {
@@ -396,13 +536,13 @@ support::lazy_static! {
 
 /// cbindgen:ignore
 #[cfg(target_family = "wasm")]
-#[path = "bridge_generated.web.rs"]
+#[path = "bridge_generated_api.web.rs"]
 mod web;
 #[cfg(target_family = "wasm")]
 pub use web::*;
 
 #[cfg(not(target_family = "wasm"))]
-#[path = "bridge_generated.io.rs"]
+#[path = "bridge_generated_api.io.rs"]
 mod io;
 #[cfg(not(target_family = "wasm"))]
 pub use io::*;

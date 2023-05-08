@@ -24,6 +24,11 @@ typedef struct wire_uint_8_list {
   int32_t len;
 } wire_uint_8_list;
 
+typedef struct wire_uint_8_list {
+  uint8_t *ptr;
+  int32_t len;
+} wire_uint_8_list;
+
 typedef struct wire_list_tree_node {
   struct wire_TreeNode *ptr;
   int32_t len;
@@ -48,6 +53,16 @@ typedef struct wire_ApplicationEnvVar {
   bool field1;
 } wire_ApplicationEnvVar;
 
+typedef struct wire_ApplicationEnvVar {
+  struct wire_uint_8_list *field0;
+  bool field1;
+} wire_ApplicationEnvVar;
+
+typedef struct wire_list_application_env_var {
+  struct wire_ApplicationEnvVar *ptr;
+  int32_t len;
+} wire_list_application_env_var;
+
 typedef struct wire_list_application_env_var {
   struct wire_ApplicationEnvVar *ptr;
   int32_t len;
@@ -56,6 +71,18 @@ typedef struct wire_list_application_env_var {
 typedef struct wire_ApplicationEnv {
   struct wire_list_application_env_var *vars;
 } wire_ApplicationEnv;
+
+typedef struct wire_ApplicationEnv {
+  struct wire_list_application_env_var *vars;
+} wire_ApplicationEnv;
+
+typedef struct wire_ApplicationSettings {
+  struct wire_uint_8_list *name;
+  struct wire_uint_8_list *version;
+  int32_t mode;
+  struct wire_ApplicationEnv *env;
+  struct wire_ApplicationEnv *env_optional;
+} wire_ApplicationSettings;
 
 typedef struct wire_ApplicationSettings {
   struct wire_uint_8_list *name;
@@ -157,7 +184,9 @@ struct wire_uint_8_list *new_uint_8_list_0(int32_t len);
 
 void free_WireSyncReturn(WireSyncReturn ptr);
 
-static int64_t dummy_method_to_enforce_bundling(void) {
+struct wire_ApplicationSettings *new_box_autoadd_application_settings_1(void);
+
+static int64_t dummy_method_to_enforce_bundling_ApiClass(void) {
     int64_t dummy_var = 0;
     dummy_var ^= ((int64_t) (void*) wire_draw_mandelbrot);
     dummy_var ^= ((int64_t) (void*) wire_passing_complex_structs);
@@ -197,5 +226,13 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) get_dart_object);
     dummy_var ^= ((int64_t) (void*) drop_dart_object);
     dummy_var ^= ((int64_t) (void*) new_dart_opaque);
+    return dummy_var;
+}
+
+#include "bridge_generated_api2.h"
+static int64_t dummy_method_to_enforce_bundling(void) {
+    int64_t dummy_var = 0;
+    dummy_var ^= ((int64_t) (void*) dummy_method_to_enforce_bundling_ApiClass);
+    dummy_var ^= ((int64_t) (void*) dummy_method_to_enforce_bundling_ApiClass2);
     return dummy_var;
 }

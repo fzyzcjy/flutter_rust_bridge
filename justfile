@@ -122,9 +122,15 @@ _generate_bridge_pure_dart_multi:
 _generate_bridge_with_flutter:
     {{cargo_run_codegen}} \
         --rust-input frb_example/with_flutter/rust/src/api.rs \
-        --dart-output frb_example/with_flutter/lib/bridge_generated.dart \
-        --c-output frb_example/with_flutter/ios/Runner/bridge_generated.h \
+        --rust-input frb_example/with_flutter/rust/src/api2.rs \
+        --rust-output frb_example/with_flutter/rust/src/bridge_generated_api.rs \
+        --rust-output frb_example/with_flutter/rust/src/bridge_generated_api2.rs \
+        --dart-output frb_example/with_flutter/lib/bridge_generated_api.dart \
+        --dart-output frb_example/with_flutter/lib/bridge_generated_api2.dart \
+        --c-output frb_example/with_flutter/ios/Runner/bridge_generated_api.h \
+        --c-output frb_example/with_flutter/ios/Runner/bridge_generated_api2.h \
         --dart-decl-output frb_example/with_flutter/lib/bridge_definitions.dart \
+        --class-name ApiClass ApiClass2 \
         --dart-format-line-length 120 \
         --dart-enums-style \
         --no-use-bridge-in-method \

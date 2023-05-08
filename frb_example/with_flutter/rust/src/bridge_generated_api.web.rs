@@ -73,6 +73,21 @@ pub fn wire_next_user_id(port_: MessagePort, user_id: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_get_app_settings(port_: MessagePort) {
+    wire_get_app_settings_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_get_fallible_app_settings(port_: MessagePort) {
+    wire_get_fallible_app_settings_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_is_app_embedded(port_: MessagePort, app_settings: JsValue) {
+    wire_is_app_embedded_impl(port_, app_settings)
+}
+
+#[wasm_bindgen]
 pub fn wire_test_method__method__BoxedPoint(port_: MessagePort, that: JsValue) {
     wire_test_method__method__BoxedPoint_impl(port_, that)
 }
@@ -98,6 +113,51 @@ impl Wire2Api<String> for String {
         self
     }
 }
+impl Wire2Api<ApplicationEnv> for JsValue {
+    fn wire2api(self) -> ApplicationEnv {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        ApplicationEnv {
+            vars: self_.get(0).wire2api(),
+        }
+    }
+}
+impl Wire2Api<ApplicationEnvVar> for JsValue {
+    fn wire2api(self) -> ApplicationEnvVar {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        ApplicationEnvVar(self_.get(0).wire2api(), self_.get(1).wire2api())
+    }
+}
+
+impl Wire2Api<ApplicationSettings> for JsValue {
+    fn wire2api(self) -> ApplicationSettings {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            5,
+            "Expected 5 elements, got {}",
+            self_.length()
+        );
+        ApplicationSettings {
+            name: self_.get(0).wire2api(),
+            version: self_.get(1).wire2api(),
+            mode: self_.get(2).wire2api(),
+            env: self_.get(3).wire2api(),
+            env_optional: self_.get(4).wire2api(),
+        }
+    }
+}
 
 impl Wire2Api<BoxedPoint> for JsValue {
     fn wire2api(self) -> BoxedPoint {
@@ -114,6 +174,15 @@ impl Wire2Api<BoxedPoint> for JsValue {
     }
 }
 
+impl Wire2Api<Vec<ApplicationEnvVar>> for JsValue {
+    fn wire2api(self) -> Vec<ApplicationEnvVar> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
 impl Wire2Api<Vec<Size>> for JsValue {
     fn wire2api(self) -> Vec<Size> {
         self.dyn_into::<JsArray>()
@@ -130,6 +199,11 @@ impl Wire2Api<Vec<TreeNode>> for JsValue {
             .iter()
             .map(Wire2Api::wire2api)
             .collect()
+    }
+}
+impl Wire2Api<Option<ApplicationEnv>> for JsValue {
+    fn wire2api(self) -> Option<ApplicationEnv> {
+        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
     }
 }
 impl Wire2Api<Point> for JsValue {
@@ -216,6 +290,21 @@ impl Wire2Api<UserId> for JsValue {
 impl Wire2Api<String> for JsValue {
     fn wire2api(self) -> String {
         self.as_string().expect("non-UTF-8 string, or not a string")
+    }
+}
+impl Wire2Api<ApplicationMode> for JsValue {
+    fn wire2api(self) -> ApplicationMode {
+        (self.unchecked_into_f64() as i32).wire2api()
+    }
+}
+impl Wire2Api<bool> for JsValue {
+    fn wire2api(self) -> bool {
+        self.is_truthy()
+    }
+}
+impl Wire2Api<Box<ApplicationEnv>> for JsValue {
+    fn wire2api(self) -> Box<ApplicationEnv> {
+        Box::new(self.wire2api())
     }
 }
 impl Wire2Api<Box<Point>> for JsValue {

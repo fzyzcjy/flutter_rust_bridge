@@ -9,17 +9,15 @@ import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
-import 'bridge_generated.io.dart' if (dart.library.html) 'bridge_generated.web.dart';
+import 'bridge_generated_api.io.dart' if (dart.library.html) 'bridge_generated_api.web.dart';
 
-class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
-  final FlutterRustBridgeExamplePlatform _platform;
-  factory FlutterRustBridgeExampleImpl(ExternalLibrary dylib) =>
-      FlutterRustBridgeExampleImpl.raw(FlutterRustBridgeExamplePlatform(dylib));
+class ApiClassImpl implements ApiClass {
+  final ApiClassPlatform _platform;
+  factory ApiClassImpl(ExternalLibrary dylib) => ApiClassImpl.raw(ApiClassPlatform(dylib));
 
   /// Only valid on web/WASM platforms.
-  factory FlutterRustBridgeExampleImpl.wasm(FutureOr<WasmModule> module) =>
-      FlutterRustBridgeExampleImpl(module as ExternalLibrary);
-  FlutterRustBridgeExampleImpl.raw(this._platform);
+  factory ApiClassImpl.wasm(FutureOr<WasmModule> module) => ApiClassImpl(module as ExternalLibrary);
+  ApiClassImpl.raw(this._platform);
   Future<Uint8List> drawMandelbrot(
       {required Size imageSize,
       required Point zoomPoint,
@@ -238,6 +236,52 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
         argNames: ["userId"],
       );
 
+  Future<ApplicationSettings> getAppSettings({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_get_app_settings(port_),
+      parseSuccessData: _wire2api_application_settings,
+      constMeta: kGetAppSettingsConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kGetAppSettingsConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "get_app_settings",
+        argNames: [],
+      );
+
+  Future<ApplicationSettings> getFallibleAppSettings({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_get_fallible_app_settings(port_),
+      parseSuccessData: _wire2api_application_settings,
+      constMeta: kGetFallibleAppSettingsConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kGetFallibleAppSettingsConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "get_fallible_app_settings",
+        argNames: [],
+      );
+
+  Future<bool> isAppEmbedded({required ApplicationSettings appSettings, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_application_settings(appSettings);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_is_app_embedded(port_, arg0),
+      parseSuccessData: _wire2api_bool,
+      constMeta: kIsAppEmbeddedConstMeta,
+      argValues: [appSettings],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kIsAppEmbeddedConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "is_app_embedded",
+        argNames: ["appSettings"],
+      );
+
   Future<void> testMethodMethodBoxedPoint({required BoxedPoint that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_boxed_point(that);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -301,6 +345,51 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
     return raw as Uint8List;
   }
 
+  ApplicationEnv _wire2api_application_env(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return ApplicationEnv(
+      vars: _wire2api_list_application_env_var(arr[0]),
+    );
+  }
+
+  ApplicationEnvVar _wire2api_application_env_var(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return ApplicationEnvVar(
+      field0: _wire2api_String(arr[0]),
+      field1: _wire2api_bool(arr[1]),
+    );
+  }
+
+  ApplicationMode _wire2api_application_mode(dynamic raw) {
+    return ApplicationMode.values[raw as int];
+  }
+
+  ApplicationSettings _wire2api_application_settings(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 5) throw Exception('unexpected arr length: expect 5 but see ${arr.length}');
+    return ApplicationSettings(
+      name: _wire2api_String(arr[0]),
+      version: _wire2api_String(arr[1]),
+      mode: _wire2api_application_mode(arr[2]),
+      env: _wire2api_box_application_env(arr[3]),
+      envOptional: _wire2api_opt_box_autoadd_application_env(arr[4]),
+    );
+  }
+
+  bool _wire2api_bool(dynamic raw) {
+    return raw as bool;
+  }
+
+  ApplicationEnv _wire2api_box_application_env(dynamic raw) {
+    return _wire2api_application_env(raw);
+  }
+
+  ApplicationEnv _wire2api_box_autoadd_application_env(dynamic raw) {
+    return _wire2api_application_env(raw);
+  }
+
   Point _wire2api_box_point(dynamic raw) {
     return _wire2api_point(raw);
   }
@@ -321,12 +410,20 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
     return raw as int;
   }
 
+  List<ApplicationEnvVar> _wire2api_list_application_env_var(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_application_env_var).toList();
+  }
+
   List<Size> _wire2api_list_size(dynamic raw) {
     return (raw as List<dynamic>).map(_wire2api_size).toList();
   }
 
   List<TreeNode> _wire2api_list_tree_node(dynamic raw) {
     return (raw as List<dynamic>).map(_wire2api_tree_node).toList();
+  }
+
+  ApplicationEnv? _wire2api_opt_box_autoadd_application_env(dynamic raw) {
+    return raw == null ? null : _wire2api_box_autoadd_application_env(raw);
   }
 
   Point _wire2api_point(dynamic raw) {
@@ -382,6 +479,16 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
 }
 
 // Section: api2wire
+
+@protected
+int api2wire_application_mode(ApplicationMode raw) {
+  return api2wire_i32(raw.index);
+}
+
+@protected
+bool api2wire_bool(bool raw) {
+  return raw;
+}
 
 @protected
 double api2wire_f64(double raw) {

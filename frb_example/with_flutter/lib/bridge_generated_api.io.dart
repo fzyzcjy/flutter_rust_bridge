@@ -9,18 +9,39 @@ import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
-import 'bridge_generated.dart';
-export 'bridge_generated.dart';
+import 'bridge_generated_api.dart';
+export 'bridge_generated_api.dart';
 import 'dart:ffi' as ffi;
 
-class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRustBridgeExampleWire> {
-  FlutterRustBridgeExamplePlatform(ffi.DynamicLibrary dylib) : super(FlutterRustBridgeExampleWire(dylib));
+class ApiClassPlatform extends FlutterRustBridgeBase<ApiClassWire> {
+  ApiClassPlatform(ffi.DynamicLibrary dylib) : super(ApiClassWire(dylib));
 
 // Section: api2wire
 
   @protected
   ffi.Pointer<wire_uint_8_list> api2wire_String(String raw) {
     return api2wire_uint_8_list(utf8.encoder.convert(raw));
+  }
+
+  @protected
+  ffi.Pointer<wire_ApplicationEnv> api2wire_box_application_env(ApplicationEnv raw) {
+    final ptr = inner.new_box_application_env_0();
+    _api_fill_to_wire_application_env(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_ApplicationEnv> api2wire_box_autoadd_application_env(ApplicationEnv raw) {
+    final ptr = inner.new_box_autoadd_application_env_0();
+    _api_fill_to_wire_application_env(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_ApplicationSettings> api2wire_box_autoadd_application_settings(ApplicationSettings raw) {
+    final ptr = inner.new_box_autoadd_application_settings_0();
+    _api_fill_to_wire_application_settings(raw, ptr.ref);
+    return ptr;
   }
 
   @protected
@@ -73,6 +94,15 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   }
 
   @protected
+  ffi.Pointer<wire_list_application_env_var> api2wire_list_application_env_var(List<ApplicationEnvVar> raw) {
+    final ans = inner.new_list_application_env_var_0(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      _api_fill_to_wire_application_env_var(raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
+  @protected
   ffi.Pointer<wire_list_size> api2wire_list_size(List<Size> raw) {
     final ans = inner.new_list_size_0(raw.length);
     for (var i = 0; i < raw.length; ++i) {
@@ -91,6 +121,11 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   }
 
   @protected
+  ffi.Pointer<wire_ApplicationEnv> api2wire_opt_box_autoadd_application_env(ApplicationEnv? raw) {
+    return raw == null ? ffi.nullptr : api2wire_box_autoadd_application_env(raw);
+  }
+
+  @protected
   ffi.Pointer<wire_uint_8_list> api2wire_uint_8_list(Uint8List raw) {
     final ans = inner.new_uint_8_list_0(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
@@ -100,6 +135,36 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
 // Section: finalizer
 
 // Section: api_fill_to_wire
+
+  void _api_fill_to_wire_application_env(ApplicationEnv apiObj, wire_ApplicationEnv wireObj) {
+    wireObj.vars = api2wire_list_application_env_var(apiObj.vars);
+  }
+
+  void _api_fill_to_wire_application_env_var(ApplicationEnvVar apiObj, wire_ApplicationEnvVar wireObj) {
+    wireObj.field0 = api2wire_String(apiObj.field0);
+    wireObj.field1 = api2wire_bool(apiObj.field1);
+  }
+
+  void _api_fill_to_wire_application_settings(ApplicationSettings apiObj, wire_ApplicationSettings wireObj) {
+    wireObj.name = api2wire_String(apiObj.name);
+    wireObj.version = api2wire_String(apiObj.version);
+    wireObj.mode = api2wire_application_mode(apiObj.mode);
+    wireObj.env = api2wire_box_application_env(apiObj.env);
+    wireObj.env_optional = api2wire_opt_box_autoadd_application_env(apiObj.envOptional);
+  }
+
+  void _api_fill_to_wire_box_application_env(ApplicationEnv apiObj, ffi.Pointer<wire_ApplicationEnv> wireObj) {
+    _api_fill_to_wire_application_env(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_application_env(ApplicationEnv apiObj, ffi.Pointer<wire_ApplicationEnv> wireObj) {
+    _api_fill_to_wire_application_env(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_application_settings(
+      ApplicationSettings apiObj, ffi.Pointer<wire_ApplicationSettings> wireObj) {
+    _api_fill_to_wire_application_settings(apiObj, wireObj.ref);
+  }
 
   void _api_fill_to_wire_box_autoadd_boxed_point(BoxedPoint apiObj, ffi.Pointer<wire_BoxedPoint> wireObj) {
     _api_fill_to_wire_boxed_point(apiObj, wireObj.ref);
@@ -131,6 +196,11 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
 
   void _api_fill_to_wire_boxed_point(BoxedPoint apiObj, wire_BoxedPoint wireObj) {
     wireObj.point = api2wire_box_point(apiObj.point);
+  }
+
+  void _api_fill_to_wire_opt_box_autoadd_application_env(
+      ApplicationEnv? apiObj, ffi.Pointer<wire_ApplicationEnv> wireObj) {
+    if (apiObj != null) _api_fill_to_wire_box_autoadd_application_env(apiObj, wireObj);
   }
 
   void _api_fill_to_wire_point(Point apiObj, wire_Point wireObj) {
@@ -165,7 +235,7 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
 // ignore_for_file: type=lint
 
 /// generated by flutter_rust_bridge
-class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
+class ApiClassWire implements FlutterRustBridgeWireBase {
   @internal
   late final dartApi = DartApiDl(init_frb_dart_api_dl);
 
@@ -173,10 +243,10 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   final ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName) _lookup;
 
   /// The symbols are looked up in [dynamicLibrary].
-  FlutterRustBridgeExampleWire(ffi.DynamicLibrary dynamicLibrary) : _lookup = dynamicLibrary.lookup;
+  ApiClassWire(ffi.DynamicLibrary dynamicLibrary) : _lookup = dynamicLibrary.lookup;
 
   /// The symbols are looked up with [lookup].
-  FlutterRustBridgeExampleWire.fromLookup(ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName) lookup)
+  ApiClassWire.fromLookup(ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName) lookup)
       : _lookup = lookup;
 
   void store_dart_post_cobject(
@@ -439,6 +509,46 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_UserId>)>>('wire_next_user_id');
   late final _wire_next_user_id = _wire_next_user_idPtr.asFunction<void Function(int, ffi.Pointer<wire_UserId>)>();
 
+  void wire_get_app_settings(
+    int port_,
+  ) {
+    return _wire_get_app_settings(
+      port_,
+    );
+  }
+
+  late final _wire_get_app_settingsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_app_settings');
+  late final _wire_get_app_settings = _wire_get_app_settingsPtr.asFunction<void Function(int)>();
+
+  void wire_get_fallible_app_settings(
+    int port_,
+  ) {
+    return _wire_get_fallible_app_settings(
+      port_,
+    );
+  }
+
+  late final _wire_get_fallible_app_settingsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_get_fallible_app_settings');
+  late final _wire_get_fallible_app_settings = _wire_get_fallible_app_settingsPtr.asFunction<void Function(int)>();
+
+  void wire_is_app_embedded(
+    int port_,
+    ffi.Pointer<wire_ApplicationSettings> app_settings,
+  ) {
+    return _wire_is_app_embedded(
+      port_,
+      app_settings,
+    );
+  }
+
+  late final _wire_is_app_embeddedPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_ApplicationSettings>)>>(
+          'wire_is_app_embedded');
+  late final _wire_is_app_embedded =
+      _wire_is_app_embeddedPtr.asFunction<void Function(int, ffi.Pointer<wire_ApplicationSettings>)>();
+
   void wire_test_method__method__BoxedPoint(
     int port_,
     ffi.Pointer<wire_BoxedPoint> that,
@@ -490,6 +600,34 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
           'wire_sum_static__static_method__SumWith');
   late final _wire_sum_static__static_method__SumWith =
       _wire_sum_static__static_method__SumWithPtr.asFunction<void Function(int, int, int)>();
+
+  ffi.Pointer<wire_ApplicationEnv> new_box_application_env_0() {
+    return _new_box_application_env_0();
+  }
+
+  late final _new_box_application_env_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_ApplicationEnv> Function()>>('new_box_application_env_0');
+  late final _new_box_application_env_0 =
+      _new_box_application_env_0Ptr.asFunction<ffi.Pointer<wire_ApplicationEnv> Function()>();
+
+  ffi.Pointer<wire_ApplicationEnv> new_box_autoadd_application_env_0() {
+    return _new_box_autoadd_application_env_0();
+  }
+
+  late final _new_box_autoadd_application_env_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_ApplicationEnv> Function()>>('new_box_autoadd_application_env_0');
+  late final _new_box_autoadd_application_env_0 =
+      _new_box_autoadd_application_env_0Ptr.asFunction<ffi.Pointer<wire_ApplicationEnv> Function()>();
+
+  ffi.Pointer<wire_ApplicationSettings> new_box_autoadd_application_settings_0() {
+    return _new_box_autoadd_application_settings_0();
+  }
+
+  late final _new_box_autoadd_application_settings_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_ApplicationSettings> Function()>>(
+          'new_box_autoadd_application_settings_0');
+  late final _new_box_autoadd_application_settings_0 =
+      _new_box_autoadd_application_settings_0Ptr.asFunction<ffi.Pointer<wire_ApplicationSettings> Function()>();
 
   ffi.Pointer<wire_BoxedPoint> new_box_autoadd_boxed_point_0() {
     return _new_box_autoadd_boxed_point_0();
@@ -550,6 +688,20 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _new_box_point_0Ptr = _lookup<ffi.NativeFunction<ffi.Pointer<wire_Point> Function()>>('new_box_point_0');
   late final _new_box_point_0 = _new_box_point_0Ptr.asFunction<ffi.Pointer<wire_Point> Function()>();
 
+  ffi.Pointer<wire_list_application_env_var> new_list_application_env_var_0(
+    int len,
+  ) {
+    return _new_list_application_env_var_0(
+      len,
+    );
+  }
+
+  late final _new_list_application_env_var_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_application_env_var> Function(ffi.Int32)>>(
+          'new_list_application_env_var_0');
+  late final _new_list_application_env_var_0 =
+      _new_list_application_env_var_0Ptr.asFunction<ffi.Pointer<wire_list_application_env_var> Function(int)>();
+
   ffi.Pointer<wire_list_size> new_list_size_0(
     int len,
   ) {
@@ -598,6 +750,16 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _free_WireSyncReturnPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturn)>>('free_WireSyncReturn');
   late final _free_WireSyncReturn = _free_WireSyncReturnPtr.asFunction<void Function(WireSyncReturn)>();
+
+  ffi.Pointer<wire_ApplicationSettings> new_box_autoadd_application_settings_1() {
+    return _new_box_autoadd_application_settings_1();
+  }
+
+  late final _new_box_autoadd_application_settings_1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_ApplicationSettings> Function()>>(
+          'new_box_autoadd_application_settings_1');
+  late final _new_box_autoadd_application_settings_1 =
+      _new_box_autoadd_application_settings_1Ptr.asFunction<ffi.Pointer<wire_ApplicationSettings> Function()>();
 }
 
 final class _Dart_Handle extends ffi.Opaque {}
@@ -648,6 +810,37 @@ final class wire_list_size extends ffi.Struct {
 final class wire_UserId extends ffi.Struct {
   @ffi.Uint32()
   external int value;
+}
+
+final class wire_ApplicationEnvVar extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> field0;
+
+  @ffi.Bool()
+  external bool field1;
+}
+
+final class wire_list_application_env_var extends ffi.Struct {
+  external ffi.Pointer<wire_ApplicationEnvVar> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_ApplicationEnv extends ffi.Struct {
+  external ffi.Pointer<wire_list_application_env_var> vars;
+}
+
+final class wire_ApplicationSettings extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> name;
+
+  external ffi.Pointer<wire_uint_8_list> version;
+
+  @ffi.Int32()
+  external int mode;
+
+  external ffi.Pointer<wire_ApplicationEnv> env;
+
+  external ffi.Pointer<wire_ApplicationEnv> env_optional;
 }
 
 final class wire_BoxedPoint extends ffi.Struct {

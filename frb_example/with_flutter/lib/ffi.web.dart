@@ -2,7 +2,8 @@
 
 import 'dart:html';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
-import 'bridge_generated.web.dart';
+
+import 'bridge_generated_api.web.dart';
 
 const root = 'pkg/flutter_rust_bridge_example';
 
@@ -19,4 +20,4 @@ Future<WasmModule> _initModule() {
   });
 }
 
-final api = FlutterRustBridgeExampleImpl.wasm(_initModule());
+final api = ApiClassImpl.wasm(_initModule());

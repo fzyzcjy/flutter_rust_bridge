@@ -9,12 +9,11 @@ import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
-import 'bridge_generated.dart';
-export 'bridge_generated.dart';
+import 'bridge_generated_api.dart';
+export 'bridge_generated_api.dart';
 
-class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRustBridgeExampleWire>
-    with FlutterRustBridgeSetupMixin {
-  FlutterRustBridgeExamplePlatform(FutureOr<WasmModule> dylib) : super(FlutterRustBridgeExampleWire(dylib)) {
+class ApiClassPlatform extends FlutterRustBridgeBase<ApiClassWire> with FlutterRustBridgeSetupMixin {
+  ApiClassPlatform(FutureOr<WasmModule> dylib) : super(ApiClassWire(dylib)) {
     setupMixinConstructor();
   }
   Future<void> setup() => inner.init;
@@ -24,6 +23,42 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   @protected
   String api2wire_String(String raw) {
     return raw;
+  }
+
+  @protected
+  List<dynamic> api2wire_application_env(ApplicationEnv raw) {
+    return [api2wire_list_application_env_var(raw.vars)];
+  }
+
+  @protected
+  List<dynamic> api2wire_application_env_var(ApplicationEnvVar raw) {
+    return [api2wire_String(raw.field0), api2wire_bool(raw.field1)];
+  }
+
+  @protected
+  List<dynamic> api2wire_application_settings(ApplicationSettings raw) {
+    return [
+      api2wire_String(raw.name),
+      api2wire_String(raw.version),
+      api2wire_application_mode(raw.mode),
+      api2wire_box_application_env(raw.env),
+      api2wire_opt_box_autoadd_application_env(raw.envOptional)
+    ];
+  }
+
+  @protected
+  List<dynamic> api2wire_box_application_env(ApplicationEnv raw) {
+    return api2wire_application_env(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_application_env(ApplicationEnv raw) {
+    return api2wire_application_env(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_application_settings(ApplicationSettings raw) {
+    return api2wire_application_settings(raw);
   }
 
   @protected
@@ -67,6 +102,11 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   }
 
   @protected
+  List<dynamic> api2wire_list_application_env_var(List<ApplicationEnvVar> raw) {
+    return raw.map(api2wire_application_env_var).toList();
+  }
+
+  @protected
   List<dynamic> api2wire_list_size(List<Size> raw) {
     return raw.map(api2wire_size).toList();
   }
@@ -74,6 +114,11 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
   @protected
   List<dynamic> api2wire_list_tree_node(List<TreeNode> raw) {
     return raw.map(api2wire_tree_node).toList();
+  }
+
+  @protected
+  List<dynamic>? api2wire_opt_box_autoadd_application_env(ApplicationEnv? raw) {
+    return raw == null ? null : api2wire_box_autoadd_application_env(raw);
   }
 
   @protected
@@ -111,13 +156,13 @@ class FlutterRustBridgeExamplePlatform extends FlutterRustBridgeBase<FlutterRust
 // Section: WASM wire module
 
 @JS('wasm_bindgen')
-external FlutterRustBridgeExampleWasmModule get wasmModule;
+external ApiClassWasmModule get wasmModule;
 
 @JS()
 @anonymous
-class FlutterRustBridgeExampleWasmModule implements WasmModule {
+class ApiClassWasmModule implements WasmModule {
   external Object /* Promise */ call([String? moduleName]);
-  external FlutterRustBridgeExampleWasmModule bind(dynamic thisArg, String moduleName);
+  external ApiClassWasmModule bind(dynamic thisArg, String moduleName);
   external dynamic /* void */ wire_draw_mandelbrot(
       NativePortType port_, List<dynamic> image_size, List<dynamic> zoom_point, double scale, int num_threads);
 
@@ -146,6 +191,12 @@ class FlutterRustBridgeExampleWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_next_user_id(NativePortType port_, List<dynamic> user_id);
 
+  external dynamic /* void */ wire_get_app_settings(NativePortType port_);
+
+  external dynamic /* void */ wire_get_fallible_app_settings(NativePortType port_);
+
+  external dynamic /* void */ wire_is_app_embedded(NativePortType port_, List<dynamic> app_settings);
+
   external dynamic /* void */ wire_test_method__method__BoxedPoint(NativePortType port_, List<dynamic> that);
 
   external dynamic /* void */ wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y);
@@ -155,9 +206,8 @@ class FlutterRustBridgeExampleWasmModule implements WasmModule {
 
 // Section: WASM wire connector
 
-class FlutterRustBridgeExampleWire extends FlutterRustBridgeWasmWireBase<FlutterRustBridgeExampleWasmModule> {
-  FlutterRustBridgeExampleWire(FutureOr<WasmModule> module)
-      : super(WasmModule.cast<FlutterRustBridgeExampleWasmModule>(module));
+class ApiClassWire extends FlutterRustBridgeWasmWireBase<ApiClassWasmModule> {
+  ApiClassWire(FutureOr<WasmModule> module) : super(WasmModule.cast<ApiClassWasmModule>(module));
 
   void wire_draw_mandelbrot(
           NativePortType port_, List<dynamic> image_size, List<dynamic> zoom_point, double scale, int num_threads) =>
@@ -196,6 +246,13 @@ class FlutterRustBridgeExampleWire extends FlutterRustBridgeWasmWireBase<Flutter
   void wire_off_topic_deliberately_panic(NativePortType port_) => wasmModule.wire_off_topic_deliberately_panic(port_);
 
   void wire_next_user_id(NativePortType port_, List<dynamic> user_id) => wasmModule.wire_next_user_id(port_, user_id);
+
+  void wire_get_app_settings(NativePortType port_) => wasmModule.wire_get_app_settings(port_);
+
+  void wire_get_fallible_app_settings(NativePortType port_) => wasmModule.wire_get_fallible_app_settings(port_);
+
+  void wire_is_app_embedded(NativePortType port_, List<dynamic> app_settings) =>
+      wasmModule.wire_is_app_embedded(port_, app_settings);
 
   void wire_test_method__method__BoxedPoint(NativePortType port_, List<dynamic> that) =>
       wasmModule.wire_test_method__method__BoxedPoint(port_, that);
