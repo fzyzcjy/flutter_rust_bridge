@@ -42,11 +42,11 @@ use convert_case::{Case, Casing};
 use log::debug;
 
 use crate::ir::IrType::*;
-use crate::others::*;
 use crate::target::Target::*;
 use crate::target::{Acc, Target};
 use crate::utils::method::{FunctionName, MethodNamingUtil};
 use crate::{ir::*, Opts};
+use crate::{others::*, transformer};
 
 pub struct Output {
     pub file_prelude: DartBasicCode,
@@ -88,6 +88,72 @@ pub fn generate(ir_file: &IrFile, config: &Opts, wasm_funcs: &[IrFuncDisplay]) -
         impl_code,
         needs_freezed,
     }
+}
+
+pub fn generate_common_definitions_code(configs: &[Opts]) -> DartBasicCode {
+    let mut common_header = generate_common_header();
+    let mut freezed_header: DartBasicCode = DartBasicCode::default();
+    let mut import_header: DartBasicCode = DartBasicCode::default();
+    let mut abstract_classes: String = String::new();
+    let mut structs_body: HashSet<String> = HashSet::new();
+
+    for config in configs {
+        let raw_ir_file = config.get_ir_file().unwrap();
+        let ir_file = transformer::transform(raw_ir_file);
+
+        let dart_api_class_name = &config.dart_api_class_name();
+        let dart_output_file_root = config.dart_output_root().expect("Internal error");
+
+        // We need only dart_funcs and dart_structs from spec, so we can send empty wasm_funcs
+        let spec = DartApiSpec::from(&ir_file, config, &[]);
+        let DartApiSpec {
+            dart_funcs,
+            dart_structs,
+            ..
+        } = &spec;
+
+        freezed_header += generate_freezed_header(dart_output_file_root, spec.needs_freezed);
+
+        import_header +=
+            generate_import_header(get_dart_imports(&ir_file), spec.import_array.as_deref());
+
+        let abstract_class =
+            generate_dart_declaration_without_structs(dart_api_class_name, dart_funcs);
+        abstract_classes += &abstract_class;
+
+        // add structs to structs_body without duplicates
+        for struct_body in dart_structs {
+            structs_body.insert(struct_body.clone());
+        }
+
+        let import_wasm = format!(
+            "import '{}' if (dart.library.html) '{}';",
+            config
+                .dart_io_output_path()
+                .file_name()
+                .and_then(OsStr::to_str)
+                .unwrap(),
+            config
+                .dart_wasm_output_path()
+                .file_name()
+                .and_then(OsStr::to_str)
+                .unwrap(),
+        );
+        common_header.import += if config.wasm_enabled {
+            &import_wasm
+        } else {
+            ""
+        };
+        common_header.import += &config.extra_headers;
+    }
+
+    let decl_code = generate_dart_declaration_code(
+        &common_header,
+        freezed_header,
+        import_header,
+        abstract_classes + &structs_body.into_iter().join("\n\n"),
+    );
+    generate_file_prelude() + &decl_code
 }
 
 struct DartApiSpec {
@@ -276,6 +342,29 @@ fn generate_dart_declaration_body(
             .collect::<Vec<_>>()
             .join("\n\n"),
         dart_structs.join("\n\n"),
+    )
+}
+
+fn generate_dart_declaration_without_structs(
+    dart_api_class_name: &str,
+    dart_funcs: &[GeneratedApiFunc],
+) -> String {
+    format!(
+        "
+        abstract class {0} {{
+            {1}
+        }}
+
+        ",
+        dart_api_class_name,
+        dart_funcs
+            .iter()
+            .map(|func| format!(
+                "{}{}\n\n{}",
+                func.comments, func.signature, func.companion_field_signature,
+            ))
+            .collect::<Vec<_>>()
+            .join("\n\n"),
     )
 }
 
