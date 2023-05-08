@@ -19,3 +19,7 @@ flutter_rust_bridge = { workspace = true, features = ["chrono"]}
 num = "0.4"                                             # unrelated to Flutter Rust Bridge. Used only to draw beautiful photos.
 image = "0.24.3"                                        # unrelated to Flutter Rust Bridge. Used only to draw beautiful photos.
 crossbeam = "0.8"                                       # unrelated to Flutter Rust Bridge. Used only to draw beautiful photos.
+
+[dependencies.external-lib] # used for demo of external types mirroring
+path = "./external"
+package = "rust_external"
