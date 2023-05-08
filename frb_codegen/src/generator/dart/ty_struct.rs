@@ -120,7 +120,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 generate_api_method(
                     func,
                     src,
-                    self.context.config.dart_api_class_name(),
+                    self.context.config.dart_api_class_name().to_string(),
                     self.context.config,
                 )
             })

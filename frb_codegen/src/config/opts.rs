@@ -52,8 +52,8 @@ impl Opts {
         ))
     }
 
-    pub fn dart_api_class_name(&self) -> String {
-        self.class_name.clone()
+    pub fn dart_api_class_name(&self) -> &str {
+        &self.class_name
     }
 
     pub fn dart_api_impl_class_name(&self) -> String {
