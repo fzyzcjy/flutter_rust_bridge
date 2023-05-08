@@ -48,16 +48,11 @@ impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
     }
 
     fn wire2api_body(&self) -> String {
-        let use_shared_instance = if !self.context.ir_file.shared
+        let use_shared_instance = !self.context.ir_file.shared
             && self
                 .context
                 .ir_file
-                .is_type_shared_by_safe_ident(&self.ir.inner)
-        {
-            true
-        } else {
-            false
-        };
+                .is_type_shared_by_safe_ident(&self.ir.inner);
 
         if !use_shared_instance {
             let private_prefix = if !self.context.ir_file.shared {

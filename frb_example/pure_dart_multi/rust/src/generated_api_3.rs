@@ -63,6 +63,7 @@ fn wire_test_string_in_block_3_impl(
 }
 fn wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3_impl(
     port_: MessagePort,
+    name: impl bridge_generated_shares::Wire2Api<String> + UnwindSafe,
     score: impl bridge_generated_shares::Wire2Api<f64> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
@@ -72,9 +73,14 @@ fn wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3_impl(
             mode: FfiCallMode::Normal,
         },
         move || {
+            let api_name = name.wire2api();
             let api_score = score.wire2api();
             move |task_callback| {
-                Ok(test_shared_struct_only_for_sync_with_no_sync_return_in_block_3(api_score))
+                Ok(
+                    test_shared_struct_only_for_sync_with_no_sync_return_in_block_3(
+                        api_name, api_score,
+                    ),
+                )
             }
         },
     )

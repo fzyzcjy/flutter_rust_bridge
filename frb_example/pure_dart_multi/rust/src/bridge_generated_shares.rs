@@ -128,7 +128,7 @@ impl support::IntoDartExceptPrimitive for SharedStructInBlock2And3 {}
 
 impl support::IntoDart for SharedStructOnlyForSyncTest {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.default_score.into_dart()].into_dart()
+        vec![self.name.into_dart(), self.score.into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for SharedStructOnlyForSyncTest {}

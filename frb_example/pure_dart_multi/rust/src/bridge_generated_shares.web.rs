@@ -95,12 +95,13 @@ impl Wire2Api<SharedStructOnlyForSyncTest> for JsValue {
         let self_ = self.dyn_into::<JsArray>().unwrap();
         assert_eq!(
             self_.length(),
-            1,
-            "Expected 1 elements, got {}",
+            2,
+            "Expected 2 elements, got {}",
             self_.length()
         );
         SharedStructOnlyForSyncTest {
-            default_score: self_.get(0).wire2api(),
+            name: self_.get(0).wire2api(),
+            score: self_.get(1).wire2api(),
         }
     }
 }

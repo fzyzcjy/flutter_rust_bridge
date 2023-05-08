@@ -87,7 +87,7 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
 
   @protected
   List<dynamic> api2wire_shared_struct_only_for_sync_test(SharedStructOnlyForSyncTest raw) {
-    return [api2wire_f64(raw.defaultScore)];
+    return [api2wire_String(raw.name), api2wire_f64(raw.score)];
   }
 
   @protected

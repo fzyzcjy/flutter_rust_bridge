@@ -5,9 +5,11 @@ pub struct SharedStructInAllBlocks {
     pub name: String,
 }
 impl SharedStructInAllBlocks {
+    #[allow(unused)]
     pub fn test_method(&self, message: String) -> String {
         message
     }
+    #[allow(unused)]
     pub fn test_static_method(message: String) -> String {
         message
     }
@@ -15,14 +17,17 @@ impl SharedStructInAllBlocks {
 
 // This struct is shared for testing only sync return type specifically
 pub struct SharedStructOnlyForSyncTest {
-    pub default_score: f64,
+    pub name: String,
+    pub score: f64,
 }
 impl SharedStructOnlyForSyncTest {
-    pub fn sum(&self, y: u32) -> u32 {
-        self.default_score as u32 + y
+    #[allow(unused)]
+    pub fn test_method(&self, y: u32) -> u32 {
+        self.score as u32 + y
     }
-    pub fn sum_static(x: u32, y: u32) -> u32 {
-        x + y
+    #[allow(unused)]
+    pub fn test_static_method(message: String) -> String {
+        message
     }
 }
 
@@ -33,9 +38,11 @@ pub struct SharedStructInBlock1And2 {
     pub name: String,
 }
 impl SharedStructInBlock1And2 {
+    #[allow(unused)]
     pub fn test_method(&self, message: String) -> String {
         message
     }
+    #[allow(unused)]
     pub fn test_static_method(message: String) -> String {
         message
     }
@@ -48,9 +55,11 @@ pub struct SharedStructInBlock2And3 {
     pub name: String,
 }
 impl SharedStructInBlock2And3 {
+    #[allow(unused)]
     pub fn test_method(&self, message: String) -> String {
         message
     }
+    #[allow(unused)]
     pub fn test_static_method(message: String) -> String {
         message
     }
@@ -62,9 +71,11 @@ pub struct CrossSharedStructInBlock1And2 {
     pub name: String,
 }
 impl CrossSharedStructInBlock1And2 {
+    #[allow(unused)]
     pub fn test_method(&self, message: String) -> String {
         message
     }
+    #[allow(unused)]
     pub fn test_static_method(message: String) -> String {
         message
     }
@@ -76,9 +87,11 @@ pub struct CrossSharedStructInBlock2And3 {
     pub name: String,
 }
 impl CrossSharedStructInBlock2And3 {
+    #[allow(unused)]
     pub fn test_method(&self, message: String) -> String {
         message
     }
+    #[allow(unused)]
     pub fn test_static_method(message: String) -> String {
         message
     }
@@ -91,9 +104,11 @@ pub struct StructOnlyForBlock1 {
     pub name: Option<String>, // the inner struct type is used for all API blocks, BUT `Option` wrapped for it is only used here
 }
 impl StructOnlyForBlock1 {
+    #[allow(unused)]
     pub fn test_method(&self, message: String) -> String {
         message
     }
+    #[allow(unused)]
     pub fn test_static_method(message: String) -> String {
         message
     }
@@ -106,9 +121,11 @@ pub struct StructOnlyForBlock2 {
     pub name: String, // struct type used in all API blocks for test
 }
 impl StructOnlyForBlock2 {
+    #[allow(unused)]
     pub fn test_method(&self, message: String) -> String {
         message
     }
+    #[allow(unused)]
     pub fn test_static_method(message: String) -> String {
         message
     }
@@ -121,9 +138,11 @@ pub struct StructOnlyForBlock3 {
     pub name: String, // struct type used in all API blocks for test
 }
 impl StructOnlyForBlock3 {
+    #[allow(unused)]
     pub fn test_method(&self, message: String) -> String {
         message
     }
+    #[allow(unused)]
     pub fn test_static_method(message: String) -> String {
         message
     }

@@ -14,9 +14,10 @@ pub fn wire_test_string_in_block_3(port_: MessagePort, s: String, i: u64) {
 #[wasm_bindgen]
 pub fn wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3(
     port_: MessagePort,
+    name: String,
     score: f64,
 ) {
-    wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3_impl(port_, score)
+    wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3_impl(port_, name, score)
 }
 
 #[wasm_bindgen]

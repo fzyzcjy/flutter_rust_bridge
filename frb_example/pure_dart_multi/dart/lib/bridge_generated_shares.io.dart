@@ -153,7 +153,8 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
 
   void _api_fill_to_wire_shared_struct_only_for_sync_test(
       SharedStructOnlyForSyncTest apiObj, wire_SharedStructOnlyForSyncTest wireObj) {
-    wireObj.default_score = api2wire_f64(apiObj.defaultScore);
+    wireObj.name = api2wire_String(apiObj.name);
+    wireObj.score = api2wire_f64(apiObj.score);
   }
 }
 
@@ -383,8 +384,10 @@ class wire_SharedStructInBlock2And3 extends ffi.Struct {
 }
 
 class wire_SharedStructOnlyForSyncTest extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> name;
+
   @ffi.Double()
-  external double default_score;
+  external double score;
 }
 
 typedef DartPostCObjectFnType

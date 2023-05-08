@@ -8,9 +8,11 @@ pub struct StructDefinedInBlock1 {
     pub name: String,
 }
 impl StructDefinedInBlock1 {
+    #[allow(unused)]
     pub fn test_method(&self, message: String) -> String {
         message
     }
+    #[allow(unused)]
     pub fn test_static_method(message: String) -> String {
         message
     }
@@ -29,11 +31,10 @@ pub fn test_string_in_sync_in_block_1(s: String, i: u64) -> SyncReturn<String> {
 }
 
 pub fn test_shared_struct_only_for_sync_with_sync_return_in_block_1(
+    name: String,
     score: f64,
 ) -> SyncReturn<SharedStructOnlyForSyncTest> {
-    SyncReturn(SharedStructOnlyForSyncTest {
-        default_score: score,
-    })
+    SyncReturn(SharedStructOnlyForSyncTest { name, score })
 }
 
 pub fn test_all_shared_struct_in_block_1(

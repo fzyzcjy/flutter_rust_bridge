@@ -265,19 +265,21 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
       _wire_test_string_in_sync_in_block_1Ptr.asFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>, int)>();
 
   WireSyncReturn wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1(
+    ffi.Pointer<wire_uint_8_list> name,
     double score,
   ) {
     return _wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1(
+      name,
       score,
     );
   }
 
   late final _wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1Ptr =
-      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Double)>>(
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>, ffi.Double)>>(
           'wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1');
   late final _wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1 =
       _wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1Ptr
-          .asFunction<WireSyncReturn Function(double)>();
+          .asFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>, double)>();
 
   void wire_test_all_shared_struct_in_block_1(
     int port_,

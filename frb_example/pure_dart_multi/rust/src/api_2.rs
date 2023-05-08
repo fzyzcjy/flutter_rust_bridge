@@ -8,9 +8,11 @@ pub struct StructDefinedInBlock2 {
     pub name: String,
 }
 impl StructDefinedInBlock2 {
+    #[allow(unused)]
     pub fn test_method(&self, message: String) -> String {
         message
     }
+    #[allow(unused)]
     pub fn test_static_method(message: String) -> String {
         message
     }

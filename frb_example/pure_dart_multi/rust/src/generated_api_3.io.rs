@@ -14,9 +14,10 @@ pub extern "C" fn wire_test_string_in_block_3(port_: i64, s: *mut wire_uint_8_li
 #[no_mangle]
 pub extern "C" fn wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3(
     port_: i64,
+    name: *mut wire_uint_8_list,
     score: f64,
 ) {
-    wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3_impl(port_, score)
+    wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3_impl(port_, name, score)
 }
 
 #[no_mangle]

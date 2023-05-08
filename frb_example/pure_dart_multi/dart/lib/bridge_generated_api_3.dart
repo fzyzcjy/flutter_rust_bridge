@@ -28,7 +28,7 @@ abstract class ApiClass3 {
   FlutterRustBridgeTaskConstMeta get kTestStringInBlock3ConstMeta;
 
   Future<SharedStructOnlyForSyncTest> testSharedStructOnlyForSyncWithNoSyncReturnInBlock3(
-      {required double score, dynamic hint});
+      {required String name, required double score, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kTestSharedStructOnlyForSyncWithNoSyncReturnInBlock3ConstMeta;
 
@@ -157,14 +157,15 @@ class ApiClass3Impl implements ApiClass3 {
       );
 
   Future<SharedStructOnlyForSyncTest> testSharedStructOnlyForSyncWithNoSyncReturnInBlock3(
-      {required double score, dynamic hint}) {
-    var arg0 = api2wire_f64(score);
+      {required String name, required double score, dynamic hint}) {
+    var arg0 = _sharedPlatform.api2wire_String(name);
+    var arg1 = api2wire_f64(score);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) =>
-          _platform.inner.wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3(port_, arg0),
+          _platform.inner.wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3(port_, arg0, arg1),
       parseSuccessData: _sharedImpl.wire2api_shared_struct_only_for_sync_test,
       constMeta: kTestSharedStructOnlyForSyncWithNoSyncReturnInBlock3ConstMeta,
-      argValues: [score],
+      argValues: [name, score],
       hint: hint,
     ));
   }
@@ -172,7 +173,7 @@ class ApiClass3Impl implements ApiClass3 {
   FlutterRustBridgeTaskConstMeta get kTestSharedStructOnlyForSyncWithNoSyncReturnInBlock3ConstMeta =>
       const FlutterRustBridgeTaskConstMeta(
         debugName: "test_shared_struct_only_for_sync_with_no_sync_return_in_block_3",
-        argNames: ["score"],
+        argNames: ["name", "score"],
       );
 
   Future<SharedStructOnlyForSyncTest> testSharedStructOnlyForSyncAsInputWithNoSyncReturnInBlock3(

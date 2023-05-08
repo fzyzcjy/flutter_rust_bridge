@@ -18,9 +18,10 @@ pub fn wire_test_string_in_sync_in_block_1(s: String, i: u64) -> support::WireSy
 
 #[wasm_bindgen]
 pub fn wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1(
+    name: String,
     score: f64,
 ) -> support::WireSyncReturn {
-    wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1_impl(score)
+    wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1_impl(name, score)
 }
 
 #[wasm_bindgen]

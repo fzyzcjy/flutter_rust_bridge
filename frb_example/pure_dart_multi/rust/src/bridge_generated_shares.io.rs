@@ -149,7 +149,8 @@ impl Wire2Api<SharedStructInBlock2And3> for wire_SharedStructInBlock2And3 {
 impl Wire2Api<SharedStructOnlyForSyncTest> for wire_SharedStructOnlyForSyncTest {
     fn wire2api(self) -> SharedStructOnlyForSyncTest {
         SharedStructOnlyForSyncTest {
-            default_score: self.default_score.wire2api(),
+            name: self.name.wire2api(),
+            score: self.score.wire2api(),
         }
     }
 }
@@ -203,7 +204,8 @@ pub struct wire_SharedStructInBlock2And3 {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_SharedStructOnlyForSyncTest {
-    default_score: f64,
+    name: *mut wire_uint_8_list,
+    score: f64,
 }
 
 #[repr(C)]
@@ -304,7 +306,8 @@ impl Default for wire_SharedStructInBlock2And3 {
 impl NewWithNullPtr for wire_SharedStructOnlyForSyncTest {
     fn new_with_null_ptr() -> Self {
         Self {
-            default_score: Default::default(),
+            name: core::ptr::null_mut(),
+            score: Default::default(),
         }
     }
 }

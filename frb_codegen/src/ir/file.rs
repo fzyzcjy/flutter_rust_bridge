@@ -143,24 +143,22 @@ impl IrFile {
                         !shared_types.iter().any(|other_item| {
                             let cond1 = format!("box_autoadd_{}", other_item.safe_ident())
                                 == item.safe_ident();
-                            let cond2 =
-                                format!("box_autoadd_{}", item.safe_ident())
-                                    == other_item.safe_ident();
+                            let cond2 = format!("box_autoadd_{}", item.safe_ident())
+                                == other_item.safe_ident();
                             let cond3 = item.safe_ident() == other_item.safe_ident();
 
-                            match (include_func_inputs, include_func_output){
-                                (true, true) =>  cond1 || cond2 || cond3,
+                            match (include_func_inputs, include_func_output) {
+                                (true, true) => cond1 || cond2 || cond3,
                                 (true, false) => {
                                     // assert!(item.safe_ident().contains("box_autoadd_"));
                                     cond1 || cond3
-                                },
+                                }
                                 (false, true) => {
                                     // assert!(!item.safe_ident().contains("box_autoadd_"));
                                     cond1 || cond3
-                                },
+                                }
                                 (false, false) => unreachable!(),
                             }
-
                         })
                     })
                     .collect::<HashSet<_>>();
@@ -362,7 +360,7 @@ impl IrFile {
                     item.safe_ident(),
                     i
                 ); //TODO: delete
-                // }
+                   // }
                 if shares.contains(item) {
                     log::debug!("already contained "); //TODO: delete
                     continue;

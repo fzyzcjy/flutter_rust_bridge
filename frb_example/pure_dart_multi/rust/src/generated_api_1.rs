@@ -79,6 +79,7 @@ fn wire_test_string_in_sync_in_block_1_impl(
     )
 }
 fn wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1_impl(
+    name: impl bridge_generated_shares::Wire2Api<String> + UnwindSafe,
     score: impl bridge_generated_shares::Wire2Api<f64> + UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
@@ -88,8 +89,9 @@ fn wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1_impl(
             mode: FfiCallMode::Sync,
         },
         move || {
+            let api_name = name.wire2api();
             let api_score = score.wire2api();
-            Ok(test_shared_struct_only_for_sync_with_sync_return_in_block_1(api_score))
+            Ok(test_shared_struct_only_for_sync_with_sync_return_in_block_1(api_name, api_score))
         },
     )
 }

@@ -235,19 +235,22 @@ class ApiClass3Wire implements FlutterRustBridgeWireBase {
 
   void wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3(
     int port_,
+    ffi.Pointer<wire_uint_8_list> name,
     double score,
   ) {
     return _wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3(
       port_,
+      name,
       score,
     );
   }
 
   late final _wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Double)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>, ffi.Double)>>(
           'wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3');
   late final _wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3 =
-      _wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3Ptr.asFunction<void Function(int, double)>();
+      _wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3Ptr
+          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>, double)>();
 
   void wire_test_shared_struct_only_for_sync_as_input_with_no_sync_return_in_block_3(
     int port_,
