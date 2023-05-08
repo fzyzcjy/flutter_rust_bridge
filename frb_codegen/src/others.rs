@@ -1,6 +1,6 @@
-use std::fs;
 use std::ops::Add;
 use std::path::Path;
+use std::{fs, ops::AddAssign};
 
 use anyhow::{anyhow, Context, Result};
 use lazy_static::lazy_static;
@@ -88,6 +88,14 @@ impl Add<&DartBasicCode> for DartBasicCode {
 
     fn add(self, rhs: &DartBasicCode) -> Self::Output {
         (&self).add(rhs)
+    }
+}
+
+impl AddAssign for DartBasicCode {
+    fn add_assign(&mut self, rhs: DartBasicCode) {
+        self.import += &rhs.import;
+        self.part += &rhs.part;
+        self.body += &rhs.body;
     }
 }
 
