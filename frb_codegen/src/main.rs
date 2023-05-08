@@ -2,7 +2,8 @@ use anyhow::Context;
 #[cfg(feature = "serde")]
 use lib_flutter_rust_bridge_codegen::dump;
 use lib_flutter_rust_bridge_codegen::{
-    config_parse, frb_codegen_multi, get_symbols_if_no_duplicates, init_logger, RawOpts,
+    config_parse, frb_codegen_common_files, frb_codegen_multi, get_symbols_if_no_duplicates,
+    init_logger, RawOpts,
 };
 use log::{debug, error, info};
 
@@ -24,6 +25,11 @@ fn main() -> anyhow::Result<()> {
 
     // generation of rust api for ffi
     let all_symbols = get_symbols_if_no_duplicates(&configs)?;
+
+    if let Err(err) = frb_codegen_common_files(&configs) {
+        error!("fatal: {err}");
+        std::process::exit(1);
+    }
 
     let mut errors = vec![];
     for (config_index, config) in configs.iter().enumerate() {

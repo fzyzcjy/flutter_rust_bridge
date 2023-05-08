@@ -1,4 +1,5 @@
 use crate::commands::BindgenRustToDartArg;
+use crate::generator::dart::generate_common_definitions_code;
 use crate::others::{
     extract_dart_wire_content, modify_dart_wire_content, sanity_check, DartBasicCode,
     DUMMY_WIRE_CODE_FOR_BINDGEN, EXTRA_EXTERN_FUNC_NAMES,
@@ -8,7 +9,6 @@ use crate::{command_run, commands, ensure_tools_available, generator, ir, Opts};
 use itertools::Itertools;
 use log::info;
 use pathdiff::diff_paths;
-use std::ffi::OsStr;
 use std::fs;
 use std::path::Path;
 
@@ -92,7 +92,6 @@ pub(crate) fn generate_dart_code(
             dart_decl_output_path,
             dart_output_dir,
             &generated_dart,
-            generated_dart_decl_all,
             &generated_dart_impl_io_wire,
         )?;
     } else if config.wasm_enabled {
@@ -148,12 +147,21 @@ pub(crate) fn generate_dart_code(
     Ok(())
 }
 
+pub fn generate_dart_common_definitions(configs: &[Opts]) -> anyhow::Result<()> {
+    assert!(configs[0].dart_decl_output_path.is_some(), "dart_decl_output_path cannot be empty");
+    let common_definitions = generate_common_definitions_code(configs);
+    write_dart_definitions_to_dart_decl(
+        &configs[0].dart_decl_output_path.clone().unwrap(),
+        &common_definitions,
+    )?;
+    Ok(())
+}
+
 fn write_dart_decls(
     config: &Opts,
     dart_decl_output_path: &str,
     dart_output_dir: &Path,
     generated_dart: &crate::generator::dart::Output,
-    generated_dart_decl_all: &DartBasicCode,
     generated_dart_impl_io_wire: &DartBasicCode,
 ) -> crate::Result {
     let impl_import_decl = DartBasicCode {
@@ -166,32 +174,6 @@ fn write_dart_decls(
         ),
         ..Default::default()
     };
-
-    let common_import = DartBasicCode {
-        import: if config.wasm_enabled {
-            format!(
-                "import '{}' if (dart.library.html) '{}';",
-                config
-                    .dart_io_output_path()
-                    .file_name()
-                    .and_then(OsStr::to_str)
-                    .unwrap(),
-                config
-                    .dart_wasm_output_path()
-                    .file_name()
-                    .and_then(OsStr::to_str)
-                    .unwrap(),
-            )
-        } else {
-            "".into()
-        },
-        ..Default::default()
-    };
-
-    fs::write(
-        dart_decl_output_path,
-        (&generated_dart.file_prelude + &common_import + generated_dart_decl_all).to_text(),
-    )?;
 
     let dart_output_paths = config.get_dart_output_paths();
     if config.wasm_enabled {
@@ -220,5 +202,13 @@ fn write_dart_decls(
                 .to_text(),
         )?;
     }
+    Ok(())
+}
+
+fn write_dart_definitions_to_dart_decl(
+    dart_decl_output_path: &str,
+    generated_dart_decl_all: &DartBasicCode,
+) -> anyhow::Result<()> {
+    fs::write(dart_decl_output_path, (generated_dart_decl_all).to_text())?;
     Ok(())
 }

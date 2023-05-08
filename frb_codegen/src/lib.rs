@@ -26,6 +26,7 @@ mod transformer;
 use crate::entrypoint::dart::generate_dart_code;
 use crate::entrypoint::rust::generate_rust_code;
 use crate::utils::misc::BlockIndex;
+use entrypoint::dart::generate_dart_common_definitions;
 pub(crate) use error::Result;
 use log::info;
 
@@ -76,5 +77,15 @@ pub fn frb_codegen_multi(
     generate_dart_code(config, all_configs, &ir_file, generated_rust, all_symbols)?;
 
     info!("Success!");
+    Ok(())
+}
+
+pub fn frb_codegen_common_files(configs: &[Opts]) -> anyhow::Result<()> {
+    if configs[0].dart_decl_output_path.is_some() {
+        // If there is a dart output path,
+        // we should generate the common definitions in only one file.
+        // Because some structs may be defined in multiple classes.
+        generate_dart_common_definitions(configs)?;
+    }
     Ok(())
 }
