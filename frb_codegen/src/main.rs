@@ -245,9 +245,9 @@ mod tests {
             .arg("../frb_example/pure_dart_multi/dart/lib/main.dart")
             .arg(absolute_path)
             .spawn()
-            .expect("failed to execute pure_dart")
+            .expect("failed to execute pure_dart_multi")
             .wait()
-            .expect("failed to wait for pure_dart");
+            .expect("failed to wait for pure_dart_multi");
         assert!(status.success(), "pure_dart_multi failed");
     }
 }
