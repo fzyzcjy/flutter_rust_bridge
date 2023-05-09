@@ -78,7 +78,10 @@ fn main() {
     let (all_configs, all_symbols) = config_parse(raw_opts).unwrap();
 
     // generation of rust api for ffi (multi-blocks)
-    for config_index in 0..all_configs.len() {
+    // In multi-blocks case, the shared block MUST be generated at first.
+    // Otherwise, the generated dart code for regular blocks would be problematic, since when
+    // the shared rust module has not yet been generated.
+    for config_index in (0..all_configs.len()).rev() {
         frb_codegen_multi(&all_configs, config_index, &all_symbols).unwrap()
     }
 }
