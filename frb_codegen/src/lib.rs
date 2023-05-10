@@ -7,6 +7,7 @@ pub use crate::config::opts_parser::config_parse;
 pub use crate::config::raw_opts::RawOpts;
 pub use crate::logs::init_logger;
 pub use crate::utils::misc::get_symbols_if_no_duplicates;
+pub use crate::utils::misc::ExtraTraitForVec;
 
 mod logs;
 #[macro_use]
