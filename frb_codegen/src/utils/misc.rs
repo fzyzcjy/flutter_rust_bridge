@@ -231,7 +231,7 @@ pub trait ExtraTraitForVec<T: Clone + Eq + std::hash::Hash> {
     /// use crate::ExtraTraitForVec;
     ///
     /// let vec = vec![1, 2, 3, 2, 4, 5, 4, 6];
-    /// let (uniques, duplicates) = vec.split_uniques_and_duplicates(true, true);
+    /// let (uniques, duplicates) = vec.find_uniques_and_duplicates(true, true);
     /// assert_eq!(uniques, vec![1, 3, 5, 6]);
     /// assert_eq!(duplicates, vec![2, 4]);
     /// ```
