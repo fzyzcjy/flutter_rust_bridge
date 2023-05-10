@@ -228,7 +228,7 @@ pub trait ExtraTraitForVec<T: Clone + Eq + std::hash::Hash> {
     /// # Examples
     ///
     /// ```
-    /// use crate::ExtraTraitForVec;
+    /// use lib_flutter_rust_bridge_codegen::ExtraTraitForVec;
     ///
     /// let vec = vec![1, 2, 3, 2, 4, 5, 4, 6];
     /// let (uniques, duplicates) = vec.find_uniques_and_duplicates(true, true);
