@@ -157,9 +157,14 @@ dart_linter mode="default":
     just dart_linter_pana
 
 _dart_linter_single mode directory executable line_length:
-    cd {{directory}} && dart format \
+    dart format {{directory}} \
       --line-length {{line_length}} \
-      {{ if mode == "fix" { "--fix" } else { "--output=none --set-exit-if-changed" } }} .
+      --fix \
+
+    dart format {{directory}} \
+      --line-length {{line_length}} \
+      --output=none --set-exit-if-changed \
+      
     cd {{directory}} && {{executable}} analyze --fatal-infos
 
 dart_linter_pana:
@@ -248,7 +253,7 @@ precommit:
   just dart_pub_get
   just generate_all
   just rust_linter
-  just dart_linter mode=fix
+  just dart_linter
 
 
 # ============================ releasing new versions ============================

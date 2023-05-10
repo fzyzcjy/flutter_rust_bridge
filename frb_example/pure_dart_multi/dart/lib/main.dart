@@ -32,18 +32,14 @@ void main(List<String> args) {
   test('dart call testSharedStructOnlyForSyncWithSyncReturnInBlock1', () async {
     final name = "name";
     final score = 1.1;
-    expect(
-        api1.testSharedStructOnlyForSyncWithSyncReturnInBlock1(
-            name: name, score: score),
+    expect(api1.testSharedStructOnlyForSyncWithSyncReturnInBlock1(name: name, score: score),
         SharedStructOnlyForSyncTest(name: "name", score: score));
   });
 
   test('dart call testAllSharedStructInBlock1', () async {
     expect(
       await api1.testAllSharedStructInBlock1(
-          custom: SharedStructInAllBlocks(name: "string", id: 1, num: 2.2),
-          s: "newString",
-          i: 2),
+          custom: SharedStructInAllBlocks(name: "string", id: 1, num: 2.2), s: "newString", i: 2),
       SharedStructInAllBlocks(name: "newString", id: 2, num: 2.2),
     );
   });
@@ -51,9 +47,7 @@ void main(List<String> args) {
   test('dart call testSharedStructInBlock1For1And2', () async {
     expect(
       await api1.testSharedStructInBlock1For1And2(
-          custom: SharedStructInBlock1And2(name: "string", id: 1, num: 2.2),
-          s: "newString",
-          i: 2),
+          custom: SharedStructInBlock1And2(name: "string", id: 1, num: 2.2), s: "newString", i: 2),
       SharedStructInBlock1And2(name: "newString", id: 2, num: 2.2),
     );
   });
@@ -69,10 +63,7 @@ void main(List<String> args) {
 
   test('dart call testUniqueStruct1', () async {
     expect(
-      await api1.testUniqueStruct1(
-          custom: StructOnlyForBlock1(name: "string", id: 1, num: 2.2),
-          s: "newString",
-          i: 2),
+      await api1.testUniqueStruct1(custom: StructOnlyForBlock1(name: "string", id: 1, num: 2.2), s: "newString", i: 2),
       StructOnlyForBlock1(name: "newString", id: 2, num: 2.0),
     );
   });
@@ -101,9 +92,7 @@ void main(List<String> args) {
   test('dart call testAllSharedStructInBlock2', () async {
     expect(
       await api2.testAllSharedStructInBlock2(
-          custom: SharedStructInAllBlocks(name: "string", id: 1, num: 2.2),
-          s: "newString",
-          i: 2),
+          custom: SharedStructInAllBlocks(name: "string", id: 1, num: 2.2), s: "newString", i: 2),
       SharedStructInAllBlocks(name: "newString", id: 2, num: 2.2),
     );
   });
@@ -111,9 +100,7 @@ void main(List<String> args) {
   test('dart call testAllSharedStructInSyncInBlock2', () async {
     expect(
       api2.testAllSharedStructInSyncInBlock2(
-          custom: SharedStructInAllBlocks(name: "string", id: 1, num: 2.2),
-          s: "newString",
-          i: 2),
+          custom: SharedStructInAllBlocks(name: "string", id: 1, num: 2.2), s: "newString", i: 2),
       SharedStructInAllBlocks(name: "newString", id: 2, num: 2.2),
     );
   });
@@ -121,9 +108,7 @@ void main(List<String> args) {
   test('dart call testSharedStructInBlock2For1And2', () async {
     expect(
       await api2.testSharedStructInBlock2For1And2(
-          custom: SharedStructInBlock1And2(name: "string", id: 1, num: 2.2),
-          s: "newString",
-          i: 2),
+          custom: SharedStructInBlock1And2(name: "string", id: 1, num: 2.2), s: "newString", i: 2),
       SharedStructInBlock1And2(name: "newString", id: 2, num: 2.2),
     );
   });
@@ -140,9 +125,7 @@ void main(List<String> args) {
   test('dart call testSharedStructInBlock2For2And3', () async {
     expect(
       await api2.testSharedStructInBlock2For2And3(
-          custom: SharedStructInBlock2And3(name: "string", id: 1, num: 2.2),
-          s: "newString",
-          i: 2),
+          custom: SharedStructInBlock2And3(name: "string", id: 1, num: 2.2), s: "newString", i: 2),
       SharedStructInBlock2And3(name: "newString", id: 2, num: 2.2),
     );
   });
@@ -158,10 +141,7 @@ void main(List<String> args) {
 
   test('dart call testUniqueStruct2', () async {
     expect(
-      await api2.testUniqueStruct2(
-          custom: StructOnlyForBlock2(name: "string", id: 1, num: 2.2),
-          s: "newString",
-          i: 2),
+      await api2.testUniqueStruct2(custom: StructOnlyForBlock2(name: "string", id: 1, num: 2.2), s: "newString", i: 2),
       StructOnlyForBlock2(name: "newString", id: 2, num: 2.2),
     );
   });
@@ -187,18 +167,14 @@ void main(List<String> args) {
     expect(await api3.testStringInBlock3(s: "string", i: 3), "string_3");
   });
 
-  test('dart call testSharedStructOnlyForSyncWithNoSyncReturnInBlock3',
-      () async {
+  test('dart call testSharedStructOnlyForSyncWithNoSyncReturnInBlock3', () async {
     final name = "name";
     final score = 1.1;
-    expect(
-        await api3.testSharedStructOnlyForSyncWithNoSyncReturnInBlock3(
-            name: name, score: score),
+    expect(await api3.testSharedStructOnlyForSyncWithNoSyncReturnInBlock3(name: name, score: score),
         SharedStructOnlyForSyncTest(name: name, score: score));
   });
 
-  test('dart call testSharedStructOnlyForSyncAsInputWithNoSyncReturnInBlock3',
-      () async {
+  test('dart call testSharedStructOnlyForSyncAsInputWithNoSyncReturnInBlock3', () async {
     final inputObj = SharedStructOnlyForSyncTest(
       name: "name",
       score: 0.0,
@@ -215,9 +191,7 @@ void main(List<String> args) {
   test('dart call testAllSharedStructInBlock3', () async {
     expect(
       await api3.testAllSharedStructInBlock3(
-          custom: SharedStructInAllBlocks(name: "string", id: 1, num: 2.2),
-          s: "newString",
-          i: 2),
+          custom: SharedStructInAllBlocks(name: "string", id: 1, num: 2.2), s: "newString", i: 2),
       SharedStructInAllBlocks(name: "newString", id: 2, num: 2.2),
     );
   });
@@ -225,9 +199,7 @@ void main(List<String> args) {
   test('dart call testSharedStructInBlock3For2And3', () async {
     expect(
       await api3.testSharedStructInBlock3For2And3(
-          custom: SharedStructInBlock2And3(name: "string", id: 1, num: 2.2),
-          s: "newString",
-          i: 2),
+          custom: SharedStructInBlock2And3(name: "string", id: 1, num: 2.2), s: "newString", i: 2),
       SharedStructInBlock2And3(name: "newString", id: 2, num: 2.2),
     );
   });
@@ -252,10 +224,7 @@ void main(List<String> args) {
 
   test('dart call testUniqueStruct3', () async {
     expect(
-      await api3.testUniqueStruct3(
-          custom: StructOnlyForBlock3(name: "string", id: 1, num: 2.2),
-          s: "newString",
-          i: 2),
+      await api3.testUniqueStruct3(custom: StructOnlyForBlock3(name: "string", id: 1, num: 2.2), s: "newString", i: 2),
       StructOnlyForBlock3(name: "newString", id: 2, num: 2.2),
     );
   });
