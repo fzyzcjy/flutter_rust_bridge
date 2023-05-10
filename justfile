@@ -164,7 +164,7 @@ _dart_linter_single mode directory executable line_length:
     dart format {{directory}} \
       --line-length {{line_length}} \
       --output=none --set-exit-if-changed \
-      
+
     cd {{directory}} && {{executable}} analyze --fatal-infos
 
 dart_linter_pana:
