@@ -97,7 +97,6 @@ impl Opts {
         //     );
         // }
         source_rust_content += &extra_method_source;
-        log::debug!("source_rust_content:\n {source_rust_content}"); //TODO: delete
         let file_ast = syn::parse_file(&source_rust_content).unwrap();
 
         log::debug!("Phase: Parse AST to IR");
