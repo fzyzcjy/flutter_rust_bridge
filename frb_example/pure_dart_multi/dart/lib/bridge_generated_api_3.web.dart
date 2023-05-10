@@ -63,13 +63,11 @@ class ApiClass3WasmModule implements WasmModule {
 
   external dynamic /* void */ wire_test_string_in_block_3(NativePortType port_, String s, Object i);
 
-  external dynamic /* void */
-      wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3(
-          NativePortType port_, String name, double score);
+  external dynamic /* void */ wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3(
+      NativePortType port_, String name, double score);
 
-  external dynamic /* void */
-      wire_test_shared_struct_only_for_sync_as_input_with_no_sync_return_in_block_3(
-          NativePortType port_, List<dynamic> obj, double default_score);
+  external dynamic /* void */ wire_test_shared_struct_only_for_sync_as_input_with_no_sync_return_in_block_3(
+      NativePortType port_, List<dynamic> obj, double default_score);
 
   external dynamic /* void */ wire_test_all_shared_struct_in_block_3(
       NativePortType port_, List<dynamic> custom, String s, int i);
@@ -77,11 +75,9 @@ class ApiClass3WasmModule implements WasmModule {
   external dynamic /* void */ wire_test_shared_struct_in_block_3_for_2_and_3(
       NativePortType port_, List<dynamic> custom, String s, int i);
 
-  external dynamic /* void */
-      wire_test_cross_shared_struct_in_block_3_for_2_and_3(NativePortType port_, String name);
+  external dynamic /* void */ wire_test_cross_shared_struct_in_block_3_for_2_and_3(NativePortType port_, String name);
 
-  external dynamic /* List<dynamic> */
-      wire_test_cross_shared_struct_in_sync_in_block_3_for_2_and_3(String name);
+  external dynamic /* List<dynamic> */ wire_test_cross_shared_struct_in_sync_in_block_3_for_2_and_3(String name);
 
   external dynamic /* void */ wire_test_unique_struct_3(NativePortType port_, List<dynamic> custom, String s, Object i);
 
@@ -90,8 +86,8 @@ class ApiClass3WasmModule implements WasmModule {
   external dynamic /* void */ wire_test_method__method__StructDefinedInBlock3(
       NativePortType port_, List<dynamic> that, String message);
 
-  external dynamic /* void */
-      wire_test_static_method__static_method__StructDefinedInBlock3(NativePortType port_, String message);
+  external dynamic /* void */ wire_test_static_method__static_method__StructDefinedInBlock3(
+      NativePortType port_, String message);
 }
 
 // Section: WASM wire connector
@@ -123,9 +119,8 @@ class ApiClass3Wire extends FlutterRustBridgeWasmWireBase<ApiClass3WasmModule> {
   void wire_test_cross_shared_struct_in_block_3_for_2_and_3(NativePortType port_, String name) =>
       wasmModule.wire_test_cross_shared_struct_in_block_3_for_2_and_3(port_, name);
 
-  dynamic /* List<dynamic> */
-      wire_test_cross_shared_struct_in_sync_in_block_3_for_2_and_3(String name) =>
-          wasmModule.wire_test_cross_shared_struct_in_sync_in_block_3_for_2_and_3(name);
+  dynamic /* List<dynamic> */ wire_test_cross_shared_struct_in_sync_in_block_3_for_2_and_3(String name) =>
+      wasmModule.wire_test_cross_shared_struct_in_sync_in_block_3_for_2_and_3(name);
 
   void wire_test_unique_struct_3(NativePortType port_, List<dynamic> custom, String s, Object i) =>
       wasmModule.wire_test_unique_struct_3(port_, custom, s, i);

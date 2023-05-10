@@ -61,20 +61,19 @@ class ApiClass2WasmModule implements WasmModule {
   external dynamic /* void */ wire_test_all_shared_struct_in_block_2(
       NativePortType port_, List<dynamic> custom, String s, int i);
 
-  external dynamic /* List<dynamic> */
-      wire_test_all_shared_struct_in_sync_in_block_2(List<dynamic> custom, String s, int i);
+  external dynamic /* List<dynamic> */ wire_test_all_shared_struct_in_sync_in_block_2(
+      List<dynamic> custom, String s, int i);
 
   external dynamic /* void */ wire_test_shared_struct_in_block_2_for_1_and_2(
       NativePortType port_, List<dynamic> custom, String s, int i);
 
-  external dynamic /* void */
-      wire_test_cross_shared_struct_in_block_2_for_1_and_2(NativePortType port_, String name);
+  external dynamic /* void */ wire_test_cross_shared_struct_in_block_2_for_1_and_2(NativePortType port_, String name);
 
   external dynamic /* void */ wire_test_shared_struct_in_block_2_for_2_and_3(
       NativePortType port_, List<dynamic> custom, String s, int i);
 
-  external dynamic /* void */
-      wire_test_cross_shared_struct_in_block_2_for_2_and_3(NativePortType port_, List<dynamic> custom);
+  external dynamic /* void */ wire_test_cross_shared_struct_in_block_2_for_2_and_3(
+      NativePortType port_, List<dynamic> custom);
 
   external dynamic /* void */ wire_test_unique_struct_2(NativePortType port_, List<dynamic> custom, String s, int i);
 
@@ -83,8 +82,8 @@ class ApiClass2WasmModule implements WasmModule {
   external dynamic /* void */ wire_test_method__method__StructDefinedInBlock2(
       NativePortType port_, List<dynamic> that, String message);
 
-  external dynamic /* void */
-      wire_test_static_method__static_method__StructDefinedInBlock2(NativePortType port_, String message);
+  external dynamic /* void */ wire_test_static_method__static_method__StructDefinedInBlock2(
+      NativePortType port_, String message);
 }
 
 // Section: WASM wire connector

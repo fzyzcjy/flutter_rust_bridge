@@ -80,8 +80,8 @@ class ApiClass1WasmModule implements WasmModule {
 
   external dynamic /* String */ wire_test_string_in_sync_in_block_1(String s, Object i);
 
-  external dynamic /* List<dynamic> */
-      wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1(String name, double score);
+  external dynamic /* List<dynamic> */ wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1(
+      String name, double score);
 
   external dynamic /* void */ wire_test_all_shared_struct_in_block_1(
       NativePortType port_, List<dynamic> custom, String s, int i);
@@ -89,8 +89,8 @@ class ApiClass1WasmModule implements WasmModule {
   external dynamic /* void */ wire_test_shared_struct_in_block_1_for_1_and_2(
       NativePortType port_, List<dynamic> custom, String s, int i);
 
-  external dynamic /* void */
-      wire_test_cross_shared_struct_in_block_1_for_1_and_2(NativePortType port_, List<dynamic> custom);
+  external dynamic /* void */ wire_test_cross_shared_struct_in_block_1_for_1_and_2(
+      NativePortType port_, List<dynamic> custom);
 
   external dynamic /* void */ wire_test_unique_struct_1(NativePortType port_, List<dynamic> custom, String s, int i);
 
@@ -99,8 +99,8 @@ class ApiClass1WasmModule implements WasmModule {
   external dynamic /* void */ wire_test_method__method__StructDefinedInBlock1(
       NativePortType port_, List<dynamic> that, String message);
 
-  external dynamic /* void */
-      wire_test_static_method__static_method__StructDefinedInBlock1(NativePortType port_, String message);
+  external dynamic /* void */ wire_test_static_method__static_method__StructDefinedInBlock1(
+      NativePortType port_, String message);
 }
 
 // Section: WASM wire connector
@@ -117,9 +117,9 @@ class ApiClass1Wire extends FlutterRustBridgeWasmWireBase<ApiClass1WasmModule> {
   dynamic /* String */ wire_test_string_in_sync_in_block_1(String s, Object i) =>
       wasmModule.wire_test_string_in_sync_in_block_1(s, i);
 
-  dynamic /* List<dynamic> */
-      wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1(String name, double score) =>
-          wasmModule.wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1(name, score);
+  dynamic /* List<dynamic> */ wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1(
+          String name, double score) =>
+      wasmModule.wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1(name, score);
 
   void wire_test_all_shared_struct_in_block_1(NativePortType port_, List<dynamic> custom, String s, int i) =>
       wasmModule.wire_test_all_shared_struct_in_block_1(port_, custom, s, i);
