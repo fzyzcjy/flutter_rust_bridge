@@ -1,3 +1,7 @@
+## 1.75.3
+
+* Fix bridge access for Rust opaques #1206 (thanks @Desdaemon)
+
 ## 1.75.2
 
 * Warn user about using lib.rs as a Rust input #1193 (thanks @erikas-taroza)
