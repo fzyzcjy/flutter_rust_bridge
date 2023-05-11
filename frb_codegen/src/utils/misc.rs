@@ -217,23 +217,24 @@ impl PathExt for std::path::Path {
     }
 }
 
-pub trait ExtraTraitForVec<T: Clone + Eq + std::hash::Hash> {
-    /// Splits the vector into two parts: unique items and duplicate items.
+pub(crate) trait ExtraTraitForVec<T: Clone + Eq + std::hash::Hash> {
+    /// This function finds unique and duplicate elements in a vector.
     ///
     /// # Arguments
     ///
-    /// * `exclude_duplicates_in_uniques`: If set to `true`, exclude duplicated items from the  returned unique items vector.
-    /// * `exclude_duplicates_in_duplicates`: If set to `true`, exclude repeated items from the returned duplicates vector.
+    /// * `exclude_duplicates_in_uniques` - A boolean that indicates whether to exclude duplicates in the unique elements.
+    /// * `exclude_duplicates_in_duplicates` - A boolean that indicates whether to exclude duplicates in the duplicate elements.
     ///
     /// # Examples
     ///
-    /// ```
+    /// ```ignore
     /// use crate::utils::misc::ExtraTraitForVec;
     ///
-    /// let vec = vec![1, 2, 3, 2, 4, 2, 5, 4, 6];
+    /// let vec = vec![1, 2, 3, 4, 5, 1, 2, 3];
     /// let (uniques, duplicates) = vec.find_uniques_and_duplicates(true, true);
-    /// assert_eq!(uniques, vec![1, 3, 5, 6]);
-    /// assert_eq!(duplicates, vec![2, 4]);
+    ///
+    /// assert_eq!(uniques, vec![4, 5]);
+    /// assert_eq!(duplicates, vec![1, 2, 3]);
     /// ```
     fn find_uniques_and_duplicates(
         &self,
