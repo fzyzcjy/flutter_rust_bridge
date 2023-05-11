@@ -175,7 +175,7 @@ impl DartApiSpec {
 
         let dart_wire2api_funcs = get_deduplicate_type(&distinct_output_types)
             .iter()
-            .map(|ty| generate_wire2api_func(ty, ir_file, &dart_api_class_name, config))
+            .map(|ty| generate_wire2api_func(ty, ir_file, dart_api_class_name, config))
             .collect::<Vec<_>>();
 
         let dart_opaque_funcs = distinct_output_types
