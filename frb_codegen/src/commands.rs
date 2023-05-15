@@ -233,7 +233,8 @@ pub fn build_runner(dart_root: &str) -> Result {
         "run",
         "build_runner",
         "build",
-        "--delete-conflicting-outputs"
+        "--delete-conflicting-outputs",
+        "--enable-experiment=class-modifiers",
     )?;
     if !out.status.success() {
         return Err(Error::StringError(format!(

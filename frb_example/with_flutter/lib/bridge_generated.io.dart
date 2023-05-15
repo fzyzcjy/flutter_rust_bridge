@@ -600,7 +600,7 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _free_WireSyncReturn = _free_WireSyncReturnPtr.asFunction<void Function(WireSyncReturn)>();
 }
 
-class _Dart_Handle extends ffi.Opaque {}
+base class _Dart_Handle extends ffi.Opaque {}
 
 class wire_Size extends ffi.Struct {
   @ffi.Int32()

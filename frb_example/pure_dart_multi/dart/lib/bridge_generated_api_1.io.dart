@@ -129,7 +129,7 @@ class ApiClass1Wire implements FlutterRustBridgeWireBase {
   late final _free_WireSyncReturn = _free_WireSyncReturnPtr.asFunction<void Function(WireSyncReturn)>();
 }
 
-class _Dart_Handle extends ffi.Opaque {}
+base class _Dart_Handle extends ffi.Opaque {}
 
 typedef DartPostCObjectFnType
     = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(DartPort port_id, ffi.Pointer<ffi.Void> message)>>;

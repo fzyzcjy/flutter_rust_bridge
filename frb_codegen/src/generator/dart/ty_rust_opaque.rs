@@ -49,7 +49,7 @@ impl TypeDartGeneratorTrait for TypeRustOpaqueGenerator<'_> {
                 {0}.fromRaw(int ptr, int size, {param}) : super.unsafe(ptr, size);
                 @override
                 DropFnType get dropFn => {bridge}.dropOpaque{0};
-                
+
                 @override
                 ShareFnType get shareFn => {bridge}.shareOpaque{0};
 
