@@ -69,7 +69,7 @@ jobs:
         with:
           cache: true
           channel: "stable"
-          flutter-version: 3.7.3
+          flutter-version: 3.10.0
           architecture: x64
       - id: cache-deps
         uses: ./.github/actions/setup
@@ -121,7 +121,7 @@ jobs:
         with:
           cache: true
           channel: "stable"
-          flutter-version: 3.7.3
+          flutter-version: 3.10.0
           architecture: x64
       - id: checkout
         uses: dtolnay/rust-toolchain@stable
@@ -201,7 +201,7 @@ jobs:
         with:
           cache: true
           channel: "stable"
-          flutter-version: 3.7.3
+          flutter-version: 3.10.0
           architecture: x64
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -245,7 +245,7 @@ jobs:
           cache: true
           # TODO should be 3.7.3 but has a weird bug currently
           # https://github.com/fzyzcjy/flutter_rust_bridge/pull/1023#issuecomment-1415852845
-          flutter-version: 3.3.10
+          flutter-version: 3.10.0
           architecture: x64
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -266,7 +266,7 @@ jobs:
         with:
           cache: true
           channel: "stable"
-          flutter-version: 3.7.3
+          flutter-version: 3.10.0
           architecture: x64
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -439,7 +439,7 @@ jobs:
         with:
           cache: true
           channel: "stable"
-          flutter-version: "3.7.3"
+          flutter-version: 3.10.0
       - uses: extractions/setup-just@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -469,7 +469,7 @@ jobs:
         with:
           cache: true
           channel: "stable"
-          flutter-version: "3.7.3"
+          flutter-version: 3.10.0
           architecture: x64
       - uses: extractions/setup-just@v1
         env:
