@@ -129,7 +129,7 @@ class ApiClass2Wire implements FlutterRustBridgeWireBase {
   late final _wire_simple_adder_2 = _wire_simple_adder_2Ptr.asFunction<void Function(int, int, int)>();
 }
 
-base class _Dart_Handle extends ffi.Opaque {}
+final class _Dart_Handle extends ffi.Opaque {}
 
 typedef DartPostCObjectFnType
     = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(DartPort port_id, ffi.Pointer<ffi.Void> message)>>;

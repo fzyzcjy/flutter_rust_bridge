@@ -56,11 +56,11 @@ pub fn modify_dart_wire_content(content_raw: &str, dart_wire_class_name: &str) -
     );
 
     content
-        .replace("class DartCObject extends ffi.Opaque {}", "")
-        .replace(
+        .replace("final class DartCObject extends ffi.Opaque {}", "")
+        /*.replace(
             "class _Dart_Handle extends ffi.Opaque {}",
             "base class _Dart_Handle extends ffi.Opaque {}",
-        )
+        )*/
         .replace("typedef WireSyncReturn = ffi.Pointer<DartCObject>;", "")
 }
 

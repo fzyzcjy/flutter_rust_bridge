@@ -5016,16 +5016,16 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _free_WireSyncReturn = _free_WireSyncReturnPtr.asFunction<void Function(WireSyncReturn)>();
 }
 
-base class _Dart_Handle extends ffi.Opaque {}
+final class _Dart_Handle extends ffi.Opaque {}
 
-class wire_uint_8_list extends ffi.Struct {
+final class wire_uint_8_list extends ffi.Struct {
   external ffi.Pointer<ffi.Uint8> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class wire_MySize extends ffi.Struct {
+final class wire_MySize extends ffi.Struct {
   @ffi.Int32()
   external int width;
 
@@ -5033,33 +5033,33 @@ class wire_MySize extends ffi.Struct {
   external int height;
 }
 
-class wire_NewTypeInt extends ffi.Struct {
+final class wire_NewTypeInt extends ffi.Struct {
   @ffi.Int64()
   external int field0;
 }
 
-class wire_list_my_size extends ffi.Struct {
+final class wire_list_my_size extends ffi.Struct {
   external ffi.Pointer<wire_MySize> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class wire_StringList extends ffi.Struct {
+final class wire_StringList extends ffi.Struct {
   external ffi.Pointer<ffi.Pointer<wire_uint_8_list>> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class wire_list_my_tree_node extends ffi.Struct {
+final class wire_list_my_tree_node extends ffi.Struct {
   external ffi.Pointer<wire_MyTreeNode> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class wire_MyTreeNode extends ffi.Struct {
+final class wire_MyTreeNode extends ffi.Struct {
   @ffi.Int32()
   external int value_i32;
 
@@ -5071,62 +5071,62 @@ class wire_MyTreeNode extends ffi.Struct {
   external ffi.Pointer<wire_list_my_tree_node> children;
 }
 
-class wire_MyNestedStruct extends ffi.Struct {
+final class wire_MyNestedStruct extends ffi.Struct {
   external wire_MyTreeNode tree_node;
 
   @ffi.Int32()
   external int weekday;
 }
 
-class wire_int_8_list extends ffi.Struct {
+final class wire_int_8_list extends ffi.Struct {
   external ffi.Pointer<ffi.Int8> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class wire_int_32_list extends ffi.Struct {
+final class wire_int_32_list extends ffi.Struct {
   external ffi.Pointer<ffi.Int32> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class wire_float_32_list extends ffi.Struct {
+final class wire_float_32_list extends ffi.Struct {
   external ffi.Pointer<ffi.Float> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class wire_float_64_list extends ffi.Struct {
+final class wire_float_64_list extends ffi.Struct {
   external ffi.Pointer<ffi.Double> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class wire_Attribute extends ffi.Struct {
+final class wire_Attribute extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> key;
 
   external ffi.Pointer<wire_uint_8_list> value;
 }
 
-class wire_list_attribute extends ffi.Struct {
+final class wire_list_attribute extends ffi.Struct {
   external ffi.Pointer<wire_Attribute> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class wire_list_opt_box_autoadd_attribute extends ffi.Struct {
+final class wire_list_opt_box_autoadd_attribute extends ffi.Struct {
   external ffi.Pointer<ffi.Pointer<wire_Attribute>> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class wire_ExoticOptionals extends ffi.Struct {
+final class wire_ExoticOptionals extends ffi.Struct {
   external ffi.Pointer<ffi.Int32> int32;
 
   external ffi.Pointer<ffi.Int64> int64;
@@ -5156,21 +5156,21 @@ class wire_ExoticOptionals extends ffi.Struct {
   external ffi.Pointer<wire_NewTypeInt> newtypeint;
 }
 
-class wire_Note extends ffi.Struct {
+final class wire_Note extends ffi.Struct {
   external ffi.Pointer<ffi.Int32> day;
 
   external ffi.Pointer<wire_uint_8_list> body;
 }
 
-class wire_Customized extends ffi.Struct {
+final class wire_Customized extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> final_field;
 
   external ffi.Pointer<wire_uint_8_list> non_final_field;
 }
 
-class wire_KitchenSink_Empty extends ffi.Opaque {}
+final class wire_KitchenSink_Empty extends ffi.Opaque {}
 
-class wire_KitchenSink_Primitives extends ffi.Struct {
+final class wire_KitchenSink_Primitives extends ffi.Struct {
   @ffi.Int32()
   external int int32;
 
@@ -5181,21 +5181,21 @@ class wire_KitchenSink_Primitives extends ffi.Struct {
   external bool boolean;
 }
 
-class wire_KitchenSink_Nested extends ffi.Struct {
+final class wire_KitchenSink_Nested extends ffi.Struct {
   @ffi.Int32()
   external int field0;
 
   external ffi.Pointer<wire_KitchenSink> field1;
 }
 
-class wire_KitchenSink extends ffi.Struct {
+final class wire_KitchenSink extends ffi.Struct {
   @ffi.Int32()
   external int tag;
 
   external ffi.Pointer<KitchenSinkKind> kind;
 }
 
-class KitchenSinkKind extends ffi.Union {
+final class KitchenSinkKind extends ffi.Union {
   external ffi.Pointer<wire_KitchenSink_Empty> Empty;
 
   external ffi.Pointer<wire_KitchenSink_Primitives> Primitives;
@@ -5209,45 +5209,45 @@ class KitchenSinkKind extends ffi.Union {
   external ffi.Pointer<wire_KitchenSink_Enums> Enums;
 }
 
-class wire_KitchenSink_Optional extends ffi.Struct {
+final class wire_KitchenSink_Optional extends ffi.Struct {
   external ffi.Pointer<ffi.Int32> field0;
 
   external ffi.Pointer<ffi.Int32> field1;
 }
 
-class wire_KitchenSink_Buffer extends ffi.Struct {
+final class wire_KitchenSink_Buffer extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> field0;
 }
 
-class wire_KitchenSink_Enums extends ffi.Struct {
+final class wire_KitchenSink_Enums extends ffi.Struct {
   @ffi.Int32()
   external int field0;
 }
 
-class wire_MyStruct extends ffi.Struct {
+final class wire_MyStruct extends ffi.Struct {
   @ffi.Bool()
   external bool content;
 }
 
-class wire_ApplicationEnvVar extends ffi.Struct {
+final class wire_ApplicationEnvVar extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> field0;
 
   @ffi.Bool()
   external bool field1;
 }
 
-class wire_list_application_env_var extends ffi.Struct {
+final class wire_list_application_env_var extends ffi.Struct {
   external ffi.Pointer<wire_ApplicationEnvVar> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class wire_ApplicationEnv extends ffi.Struct {
+final class wire_ApplicationEnv extends ffi.Struct {
   external ffi.Pointer<wire_list_application_env_var> vars;
 }
 
-class wire_ApplicationSettings extends ffi.Struct {
+final class wire_ApplicationSettings extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> name;
 
   external ffi.Pointer<wire_uint_8_list> version;
@@ -5260,88 +5260,88 @@ class wire_ApplicationSettings extends ffi.Struct {
   external ffi.Pointer<wire_ApplicationEnv> env_optional;
 }
 
-class wire_Numbers extends ffi.Struct {
+final class wire_Numbers extends ffi.Struct {
   external ffi.Pointer<wire_int_32_list> field0;
 }
 
-class wire_Sequences extends ffi.Struct {
+final class wire_Sequences extends ffi.Struct {
   external ffi.Pointer<wire_int_32_list> field0;
 }
 
-class wire_UserId extends ffi.Struct {
+final class wire_UserId extends ffi.Struct {
   @ffi.Uint32()
   external int value;
 }
 
-class wire_Speed_Unknown extends ffi.Opaque {}
+final class wire_Speed_Unknown extends ffi.Opaque {}
 
-class wire_Speed_GPS extends ffi.Struct {
+final class wire_Speed_GPS extends ffi.Struct {
   @ffi.Double()
   external double field0;
 }
 
-class SpeedKind extends ffi.Union {
+final class SpeedKind extends ffi.Union {
   external ffi.Pointer<wire_Speed_Unknown> Unknown;
 
   external ffi.Pointer<wire_Speed_GPS> GPS;
 }
 
-class wire_Speed extends ffi.Struct {
+final class wire_Speed extends ffi.Struct {
   @ffi.Int32()
   external int tag;
 
   external ffi.Pointer<SpeedKind> kind;
 }
 
-class wire_Measure_Speed extends ffi.Struct {
+final class wire_Measure_Speed extends ffi.Struct {
   external ffi.Pointer<wire_Speed> field0;
 }
 
-class wire_Distance_Unknown extends ffi.Opaque {}
+final class wire_Distance_Unknown extends ffi.Opaque {}
 
-class wire_Distance_Map extends ffi.Struct {
+final class wire_Distance_Map extends ffi.Struct {
   @ffi.Double()
   external double field0;
 }
 
-class DistanceKind extends ffi.Union {
+final class DistanceKind extends ffi.Union {
   external ffi.Pointer<wire_Distance_Unknown> Unknown;
 
   external ffi.Pointer<wire_Distance_Map> Map;
 }
 
-class wire_Distance extends ffi.Struct {
+final class wire_Distance extends ffi.Struct {
   @ffi.Int32()
   external int tag;
 
   external ffi.Pointer<DistanceKind> kind;
 }
 
-class wire_Measure_Distance extends ffi.Struct {
+final class wire_Measure_Distance extends ffi.Struct {
   external ffi.Pointer<wire_Distance> field0;
 }
 
-class MeasureKind extends ffi.Union {
+final class MeasureKind extends ffi.Union {
   external ffi.Pointer<wire_Measure_Speed> Speed;
 
   external ffi.Pointer<wire_Measure_Distance> Distance;
 }
 
-class wire_Measure extends ffi.Struct {
+final class wire_Measure extends ffi.Struct {
   @ffi.Int32()
   external int tag;
 
   external ffi.Pointer<MeasureKind> kind;
 }
 
-class wire_int_64_list extends ffi.Struct {
+final class wire_int_64_list extends ffi.Struct {
   external ffi.Pointer<ffi.Int64> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class wire_FeatureChrono extends ffi.Struct {
+final class wire_FeatureChrono extends ffi.Struct {
   @ffi.Int64()
   external int utc;
 
@@ -5355,36 +5355,36 @@ class wire_FeatureChrono extends ffi.Struct {
   external int naive;
 }
 
-class wire_FeatureUuid extends ffi.Struct {
+final class wire_FeatureUuid extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> one;
 
   external ffi.Pointer<wire_uint_8_list> many;
 }
 
-class wire_MessageId extends ffi.Struct {
+final class wire_MessageId extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> field0;
 }
 
-class wire_Blob extends ffi.Struct {
+final class wire_Blob extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> field0;
 }
 
-class wire_FeedId extends ffi.Struct {
+final class wire_FeedId extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> field0;
 }
 
-class wire_TestId extends ffi.Struct {
+final class wire_TestId extends ffi.Struct {
   external ffi.Pointer<wire_int_32_list> field0;
 }
 
-class wire_list_test_id extends ffi.Struct {
+final class wire_list_test_id extends ffi.Struct {
   external ffi.Pointer<wire_TestId> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class wire_DartOpaque extends ffi.Struct {
+final class wire_DartOpaque extends ffi.Struct {
   @ffi.Int64()
   external int port;
 
@@ -5392,54 +5392,54 @@ class wire_DartOpaque extends ffi.Struct {
   external int handle;
 }
 
-class wire_list_DartOpaque extends ffi.Struct {
+final class wire_list_DartOpaque extends ffi.Struct {
   external ffi.Pointer<wire_DartOpaque> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class wire_HideData extends ffi.Struct {
+final class wire_HideData extends ffi.Struct {
   external ffi.Pointer<ffi.Void> ptr;
 }
 
-class wire_EnumOpaque_Struct extends ffi.Struct {
+final class wire_EnumOpaque_Struct extends ffi.Struct {
   external wire_HideData field0;
 }
 
-class wire_I32 extends ffi.Struct {
+final class wire_I32 extends ffi.Struct {
   external ffi.Pointer<ffi.Void> ptr;
 }
 
-class wire_EnumOpaque_Primitive extends ffi.Struct {
+final class wire_EnumOpaque_Primitive extends ffi.Struct {
   external wire_I32 field0;
 }
 
-class wire_BoxDartDebug extends ffi.Struct {
+final class wire_BoxDartDebug extends ffi.Struct {
   external ffi.Pointer<ffi.Void> ptr;
 }
 
-class wire_EnumOpaque_TraitObj extends ffi.Struct {
+final class wire_EnumOpaque_TraitObj extends ffi.Struct {
   external wire_BoxDartDebug field0;
 }
 
-class wire_MutexHideData extends ffi.Struct {
+final class wire_MutexHideData extends ffi.Struct {
   external ffi.Pointer<ffi.Void> ptr;
 }
 
-class wire_EnumOpaque_Mutex extends ffi.Struct {
+final class wire_EnumOpaque_Mutex extends ffi.Struct {
   external wire_MutexHideData field0;
 }
 
-class wire_RwLockHideData extends ffi.Struct {
+final class wire_RwLockHideData extends ffi.Struct {
   external ffi.Pointer<ffi.Void> ptr;
 }
 
-class wire_EnumOpaque_RwLock extends ffi.Struct {
+final class wire_EnumOpaque_RwLock extends ffi.Struct {
   external wire_RwLockHideData field0;
 }
 
-class EnumOpaqueKind extends ffi.Union {
+final class EnumOpaqueKind extends ffi.Union {
   external ffi.Pointer<wire_EnumOpaque_Struct> Struct;
 
   external ffi.Pointer<wire_EnumOpaque_Primitive> Primitive;
@@ -5451,103 +5451,103 @@ class EnumOpaqueKind extends ffi.Union {
   external ffi.Pointer<wire_EnumOpaque_RwLock> RwLock;
 }
 
-class wire_EnumOpaque extends ffi.Struct {
+final class wire_EnumOpaque extends ffi.Struct {
   @ffi.Int32()
   external int tag;
 
   external ffi.Pointer<EnumOpaqueKind> kind;
 }
 
-class wire_NonCloneData extends ffi.Struct {
+final class wire_NonCloneData extends ffi.Struct {
   external ffi.Pointer<ffi.Void> ptr;
 }
 
-class wire_NonSendHideData extends ffi.Struct {
+final class wire_NonSendHideData extends ffi.Struct {
   external ffi.Pointer<ffi.Void> ptr;
 }
 
-class wire_list_HideData extends ffi.Struct {
+final class wire_list_HideData extends ffi.Struct {
   external ffi.Pointer<wire_HideData> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class wire_OpaqueNested extends ffi.Struct {
+final class wire_OpaqueNested extends ffi.Struct {
   external wire_HideData first;
 
   external wire_HideData second;
 }
 
-class wire_DartOpaqueNested extends ffi.Struct {
+final class wire_DartOpaqueNested extends ffi.Struct {
   external wire_DartOpaque first;
 
   external wire_DartOpaque second;
 }
 
-class wire_EnumDartOpaque_Primitive extends ffi.Struct {
+final class wire_EnumDartOpaque_Primitive extends ffi.Struct {
   @ffi.Int32()
   external int field0;
 }
 
-class wire_EnumDartOpaque_Opaque extends ffi.Struct {
+final class wire_EnumDartOpaque_Opaque extends ffi.Struct {
   external wire_DartOpaque field0;
 }
 
-class EnumDartOpaqueKind extends ffi.Union {
+final class EnumDartOpaqueKind extends ffi.Union {
   external ffi.Pointer<wire_EnumDartOpaque_Primitive> Primitive;
 
   external ffi.Pointer<wire_EnumDartOpaque_Opaque> Opaque;
 }
 
-class wire_EnumDartOpaque extends ffi.Struct {
+final class wire_EnumDartOpaque extends ffi.Struct {
   @ffi.Int32()
   external int tag;
 
   external ffi.Pointer<EnumDartOpaqueKind> kind;
 }
 
-class wire_Empty extends ffi.Opaque {}
+final class wire_Empty extends ffi.Opaque {}
 
-class wire_list_weekdays extends ffi.Struct {
+final class wire_list_weekdays extends ffi.Struct {
   external ffi.Pointer<ffi.Int32> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class wire_A extends ffi.Struct {
+final class wire_A extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> a;
 }
 
-class wire_Abc_A extends ffi.Struct {
+final class wire_Abc_A extends ffi.Struct {
   external ffi.Pointer<wire_A> field0;
 }
 
-class wire_B extends ffi.Struct {
+final class wire_B extends ffi.Struct {
   @ffi.Int32()
   external int b;
 }
 
-class wire_Abc_B extends ffi.Struct {
+final class wire_Abc_B extends ffi.Struct {
   external ffi.Pointer<wire_B> field0;
 }
 
-class wire_C extends ffi.Struct {
+final class wire_C extends ffi.Struct {
   @ffi.Bool()
   external bool c;
 }
 
-class wire_Abc_C extends ffi.Struct {
+final class wire_Abc_C extends ffi.Struct {
   external ffi.Pointer<wire_C> field0;
 }
 
-class wire_Abc_JustInt extends ffi.Struct {
+final class wire_Abc_JustInt extends ffi.Struct {
   @ffi.Int32()
   external int field0;
 }
 
-class AbcKind extends ffi.Union {
+final class AbcKind extends ffi.Union {
   external ffi.Pointer<wire_Abc_A> A;
 
   external ffi.Pointer<wire_Abc_B> B;
@@ -5557,31 +5557,31 @@ class AbcKind extends ffi.Union {
   external ffi.Pointer<wire_Abc_JustInt> JustInt;
 }
 
-class wire_Abc extends ffi.Struct {
+final class wire_Abc extends ffi.Struct {
   @ffi.Int32()
   external int tag;
 
   external ffi.Pointer<AbcKind> kind;
 }
 
-class wire_StructWithEnum extends ffi.Struct {
+final class wire_StructWithEnum extends ffi.Struct {
   external wire_Abc abc1;
 
   external wire_Abc abc2;
 }
 
-class wire_Event extends ffi.Struct {
+final class wire_Event extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> address;
 
   external ffi.Pointer<wire_uint_8_list> payload;
 }
 
-class wire_SumWith extends ffi.Struct {
+final class wire_SumWith extends ffi.Struct {
   @ffi.Uint32()
   external int x;
 }
 
-class wire_ConcatenateWith extends ffi.Struct {
+final class wire_ConcatenateWith extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> a;
 }
 
