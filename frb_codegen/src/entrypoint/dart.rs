@@ -24,7 +24,7 @@ pub(crate) fn generate_dart_code(
     ensure_tools_available(&dart_root, config.skip_deps_check)?;
 
     info!("Phase: Generating Dart bindings for Rust");
-    // phase-step1: generate temporary c file
+    // phase-step1: generate (temporary) c file(s)
     let temp_dart_wire_file = tempfile::NamedTempFile::new()?;
     let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile()?;
     let exclude_symbols = generated_rust.get_exclude_symbols(all_symbols);
@@ -61,7 +61,7 @@ pub(crate) fn generate_dart_code(
     for (i, each_path) in config.c_output_path.iter().enumerate() {
         let c_dummy_code =
             generator::c::generate_dummy(config, all_configs, &effective_func_names, i);
-        println!("the path is {each_path:?}");
+        log::debug!("the c_dummy_code path is: {each_path:?}");
         fs::create_dir_all(Path::new(each_path).parent().unwrap())?;
         fs::write(
             each_path,

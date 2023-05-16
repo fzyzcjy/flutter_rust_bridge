@@ -33,11 +33,10 @@ pub struct Opts {
     pub extra_headers: String,
     pub shared: bool, // it is true if this Opts instance is for auto-generated shared API block. Otherwise, it is false,
     // for the below 2 fields:
-    // whatever the Opts is for regular or auto-generated shared API block,
-    // and whatever there is or no shared stuff,
-    // these fields should always contain (default) shared paths.
-    pub shared_rust_output_path: String,
-    pub shared_dart_output_path: String,
+    // in single-block case, they should be `None`;
+    // in multi-blocks case, they should be paths to generated files with full directories
+    pub shared_rust_output_path: Option<String>,
+    pub shared_dart_output_path: Option<String>,
 }
 
 impl Opts {

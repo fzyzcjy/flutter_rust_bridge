@@ -1,7 +1,9 @@
 use crate::config::opts::Opts;
 use crate::config::raw_opts::RawOpts;
 use crate::config::refine_c_output::get_refined_c_output;
-use crate::utils::misc::{get_symbols_if_no_duplicates, BlockIndex, ExtraTraitForVec, PathExt};
+use crate::utils::misc::{
+    get_symbols_if_no_duplicates, is_same_directory, BlockIndex, ExtraTraitForVec, PathExt,
+};
 use anyhow::*;
 use clap::CommandFactory;
 use convert_case::{Case, Casing};
@@ -23,6 +25,7 @@ pub fn config_parse(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
     use clap::error::ErrorKind;
     // rust input path(s)
     let rust_input_paths = get_valid_canon_paths(&raw.rust_input);
+    assert!(!rust_input_paths.is_empty());
     for rust_input in rust_input_paths.iter() {
         if rust_input.contains("lib.rs") {
             log::warn!("Do not use `lib.rs` as a Rust input. Please put code to be generated in an `api.rs` or similar.");
@@ -88,35 +91,63 @@ pub fn config_parse(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
         );
     }
 
-    // rust/dart shared output path, used for multi API blocks
-    let cloned_rust_output = raw.rust_output.clone();
-    let shared_path = raw.shared_rust_output.unwrap_or_else(|| {
-        let p = cloned_rust_output
-            .map(|vec| vec.get(0).cloned().unwrap_or_default())
-            .unwrap_or_default();
-        let guessed_relative_parent_dir = Path::new(&p).parent().unwrap_or(Path::new(""));
-        Path::join(guessed_relative_parent_dir, "./bridge_generated_shares.rs")
-            .into_os_string()
-            .into_string()
-            .unwrap()
-    });
-    let shared_rust_output_path = get_valid_canon_paths(&[shared_path])[0].clone();
-    log::debug!("shared_rust_output_path:{shared_rust_output_path}");
-    let shared_dart_output_path = Path::join(
-        Path::new(&dart_output_paths[0]).parent().unwrap(),
-        format!(
-            "{}.dart",
-            Path::new(&shared_rust_output_path)
-                .file_name_str()
+    // rust/dart shared output path, used
+    let (shared_rust_output_path, shared_dart_output_path) = if raw.rust_input.len() == 1 {
+        // single block case
+        (None, None)
+    } else {
+        // multi-blocks case
+
+        // 1.check all regular path are at the same paths in
+        if !is_same_directory(&rust_output_paths) || !is_same_directory(&dart_output_paths) {
+            panic!("for multi-blocks case, paths in `rust-output` or `dart-output` respectively should be in the same directory ");
+        }
+
+        // 2.get proper raw shared rust path
+        let raw_shared_rust_output_path = raw.shared_rust_output.clone().unwrap_or({
+            let p = raw
+                .rust_output
+                .clone()
+                .map(|vec| vec.get(0).cloned().unwrap_or_default())
+                .unwrap_or_default();
+            let directory = Path::new(&p).parent().unwrap_or(Path::new(""));
+
+            let raw_path = raw
+                .shared_rust_output
+                .clone()
+                .unwrap_or_else(|| "./bridge_generated_shares.rs".to_string());
+            let shared_rust_file_name = Path::new(&raw_path).get_file_name(); // erase directory if there is
+            Path::join(directory, shared_rust_file_name)
+                .into_os_string()
+                .into_string()
                 .unwrap()
-                .replace(".rs", "")
-                .replace(".dart", "")
-        ),
-    )
-    .into_os_string()
-    .into_string()
-    .unwrap();
-    log::debug!("shared_dart_output_path:{shared_dart_output_path}");
+        });
+
+        log::debug!("the shared_rust_file_path is : {raw_shared_rust_output_path:?}"); //TODO: delete
+
+        // 3.return rust/dart output path with full directories
+        let shared_rust_output_path =
+            get_valid_canon_paths(&[raw_shared_rust_output_path])[0].clone();
+        let shared_dart_output_path = Path::join(
+            Path::new(&dart_output_paths[0]).parent().unwrap(),
+            format!(
+                "{}.dart",
+                Path::new(&shared_rust_output_path)
+                    .file_name_str()
+                    .unwrap()
+                    .replace(".rs", "")
+                    .replace(".dart", "")
+            ),
+        )
+        .into_os_string()
+        .into_string()
+        .unwrap();
+
+        (Some(shared_rust_output_path), Some(shared_dart_output_path))
+    };
+
+    log::debug!("shared_rust_output_path:{shared_rust_output_path:?}"); //TODO: delete
+    log::debug!("shared_dart_output_path:{shared_dart_output_path:?}"); //TODO: delete
 
     // class name(s)
     let class_names = get_outputs_for_flag_requires_full_data(
@@ -140,9 +171,15 @@ pub fn config_parse(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
 
     let skip_deps_check = raw.skip_deps_check;
 
-    // get correct c outputs for all rust inputs
-    let refined_c_outputs =
-        get_refined_c_output(&raw.c_output, &raw.extra_c_output_path, &rust_input_paths);
+    log::debug!("raw.c_output:{:?}", raw.c_output); //TODO: delete
+    log::debug!("raw.extra_c_output_path:{:?}", raw.extra_c_output_path); //TODO: delete
+    log::debug!("rust_input_paths:{:?}", rust_input_paths); //TODO: delete
+    let refined_c_outputs = get_refined_c_output(
+        &raw.c_output,
+        &raw.extra_c_output_path,
+        &rust_input_paths, /* , shared_path */
+    );
+    log::debug!("refined_c_outputs:{:?}", refined_c_outputs); //TODO: delete
 
     // dart root(s)
     let dart_roots: Vec<_> = match raw.dart_root {
@@ -220,12 +257,12 @@ pub fn config_parse(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
         // the extra shared config is essential, whatever `_implicit_duplicated_symbols` is empty or not.
         let shared_config = Opts {
             rust_input_path: "".into(), // this field is meangingless for shared block, so it's empty.
-            rust_output_path: shared_rust_output_path.clone(),
-            dart_output_path: shared_dart_output_path.clone(),
+            rust_output_path: shared_rust_output_path.clone().unwrap(),
+            dart_output_path: shared_dart_output_path.clone().unwrap(),
             dart_decl_output_path,
             rust_crate_dir: regular_configs[0].rust_crate_dir.clone(),
-            c_output_path: vec![], // no need to generate other c header files, even there is a shared block.
-            class_name: Path::new(&shared_dart_output_path)
+            c_output_path: refined_c_outputs.last().unwrap().clone(),
+            class_name: Path::new(&shared_dart_output_path.clone().unwrap())
                 .file_name_str()
                 .unwrap()
                 .replace(".rs", "")

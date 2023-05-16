@@ -35,7 +35,10 @@ pub fn mod_from_rust_path(
             } else {
                 // get the shared module in the regular block
                 if is_multi_blocks_case(all_configs) {
-                    get_module_name(&config.shared_rust_output_path, &config.rust_crate_dir)
+                    get_module_name(
+                        &config.shared_rust_output_path.clone().unwrap(),
+                        &config.rust_crate_dir,
+                    )
                 } else {
                     "".into()
                 }
@@ -43,11 +46,10 @@ pub fn mod_from_rust_path(
         }
         false => {
             // Whatever `get_shared_mod` is, return the shared module name for a shared block
-            log::debug!(
-                "config.shared_rust_output_path:{}",
-                &config.shared_rust_output_path
-            ); //TODO: delete
-            get_module_name(&config.shared_rust_output_path, &config.rust_crate_dir)
+            get_module_name(
+                &config.shared_rust_output_path.clone().unwrap(),
+                &config.rust_crate_dir,
+            )
         }
     };
 
@@ -161,6 +163,21 @@ pub fn make_string_keyword_safe(input: String) -> String {
     } else {
         input
     }
+}
+
+/// check if all items in `paths` contains the same directory
+pub fn is_same_directory(paths: &[String]) -> bool {
+    let mut v = Vec::new();
+    for each in paths {
+        let p = Path::new(each);
+        v.push(p.get_directory_name());
+    }
+
+    // check
+    if v.is_empty() {
+        return true;
+    }
+    v.iter().all(|item| item == &v[0])
 }
 
 #[derive(PartialEq, Eq, Debug, Clone, Copy, serde::Serialize)]
