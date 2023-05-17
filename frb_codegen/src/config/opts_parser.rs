@@ -171,16 +171,13 @@ pub fn config_parse(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
 
     let skip_deps_check = raw.skip_deps_check;
 
-    log::debug!("raw.c_output:{:?}", raw.c_output); //TODO: delete
-    log::debug!("raw.extra_c_output_path:{:?}", raw.extra_c_output_path); //TODO: delete
-    log::debug!("rust_input_paths:{:?}", rust_input_paths); //TODO: delete
     let refined_c_outputs = get_refined_c_output(
         &raw.c_output,
         &shared_rust_output_path,
         &raw.extra_c_output_path,
         &rust_input_paths,
     );
-    log::debug!("refined_c_outputs:{:?}", refined_c_outputs); //TODO: delete
+    // log::debug!("refined_c_outputs:{:?}", refined_c_outputs); //TODO: delete
 
     // dart root(s)
     let dart_roots: Vec<_> = match raw.dart_root {
