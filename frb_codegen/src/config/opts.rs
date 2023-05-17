@@ -13,7 +13,7 @@ pub struct Opts {
     pub rust_input_path: String,
     pub dart_output_path: String,
     pub dart_decl_output_path: Option<String>,
-    pub c_output_path: Vec<String>,
+    pub c_output_paths: Vec<String>,
     pub rust_crate_dir: String,
     pub rust_output_path: String,
     pub class_name: String,

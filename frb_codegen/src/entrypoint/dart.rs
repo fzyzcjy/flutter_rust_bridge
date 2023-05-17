@@ -58,7 +58,7 @@ pub(crate) fn generate_dart_code(
     ]
     .concat();
 
-    for (i, each_path) in config.c_output_path.iter().enumerate() {
+    for (i, each_path) in config.c_output_paths.iter().enumerate() {
         let c_dummy_code =
             generator::c::generate_dummy(config, all_configs, &effective_func_names, i);
         log::debug!("the c_dummy_code path is: {each_path:?}");

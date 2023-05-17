@@ -100,7 +100,7 @@ pub fn config_parse(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
 
         // 1.check all regular path are at the same paths in
         if !is_same_directory(&rust_output_paths) || !is_same_directory(&dart_output_paths) {
-            panic!("for multi-blocks case, paths in `rust-output` or `dart-output` respectively should be in the same directory ");
+            panic!("for multi-blocks case, paths in flag `rust-output`/`dart-output` respectively should be in the same directory ");
         }
 
         // 2.get proper raw shared rust path
@@ -176,8 +176,9 @@ pub fn config_parse(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
     log::debug!("rust_input_paths:{:?}", rust_input_paths); //TODO: delete
     let refined_c_outputs = get_refined_c_output(
         &raw.c_output,
+        &shared_rust_output_path,
         &raw.extra_c_output_path,
-        &rust_input_paths, /* , shared_path */
+        &rust_input_paths,
     );
     log::debug!("refined_c_outputs:{:?}", refined_c_outputs); //TODO: delete
 
@@ -221,7 +222,7 @@ pub fn config_parse(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
                 rust_input_path: rust_input_paths[i].clone(),
                 dart_output_path: dart_output_paths[i].clone(),
                 dart_decl_output_path: dart_decl_output_path.clone(),
-                c_output_path: refined_c_outputs[i].clone(),
+                c_output_paths: refined_c_outputs[i].clone(),
                 rust_crate_dir: rust_crate_dirs[i].clone(),
                 rust_output_path: rust_output_paths[i].clone(),
                 class_name: class_names[i].clone(),
@@ -261,7 +262,7 @@ pub fn config_parse(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
             dart_output_path: shared_dart_output_path.clone().unwrap(),
             dart_decl_output_path,
             rust_crate_dir: regular_configs[0].rust_crate_dir.clone(),
-            c_output_path: refined_c_outputs.last().unwrap().clone(),
+            c_output_paths: refined_c_outputs.last().unwrap().clone(),
             class_name: Path::new(&shared_dart_output_path.clone().unwrap())
                 .file_name_str()
                 .unwrap()

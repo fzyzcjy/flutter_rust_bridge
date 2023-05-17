@@ -23,8 +23,8 @@ pub fn generate_dummy(
                 .filter(|e| !e.shared)
                 .map(|e| {
                     // get directory only from paths
-                    let src_p = Path::new(&config.c_output_path[c_path_index]);
-                    let dst_p = Path::new(&e.c_output_path[c_path_index]);
+                    let src_p = Path::new(&config.c_output_paths[c_path_index]);
+                    let dst_p = Path::new(&e.c_output_paths[c_path_index]);
                     // get reletive path and header file name
                     let relative_p =
                         src_p.get_relative_path_to(dst_p.directory_name_str().unwrap(), true);
