@@ -132,14 +132,3 @@ static int64_t dummy_method_to_enforce_bundling_ApiClass1(void) {
     dummy_var ^= ((int64_t) (void*) new_dart_opaque);
     return dummy_var;
 }
-
-#include "c_output_2.h"
-#include "c_output_3.h"
-static int64_t dummy_method_to_enforce_bundling(void) {
-    int64_t dummy_var = 0;
-    dummy_var ^= ((int64_t) (void*) dummy_method_to_enforce_bundling_ApiClass1);
-    dummy_var ^= ((int64_t) (void*) dummy_method_to_enforce_bundling_ApiClass2);
-    dummy_var ^= ((int64_t) (void*) dummy_method_to_enforce_bundling_ApiClass3);
-    dummy_var ^= ((int64_t) (void*) dummy_method_to_enforce_bundling_BridgeGeneratedShares);
-    return dummy_var;
-}

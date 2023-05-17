@@ -5,21 +5,21 @@ use crate::utils::misc::{BlockIndex, PathExt};
 
 pub fn generate_dummy(
     config: &Opts,
-    all_regular_configs: &[Opts],
+    all_configs: &[Opts],
     func_names: &[String],
     c_path_index: usize,
 ) -> String {
-    if all_regular_configs.len() > 1 {
+    if all_configs.len() > 1 {
         let basic_dummy_func = get_dummy_func(&config.class_name, func_names);
-        if config.block_index == BlockIndex(0) {
-            let func_names = all_regular_configs
+        if config.block_index == BlockIndex(all_configs.len() - 1) {
+            log::debug!("I am here with index:{:?}", config.block_index); //TODO: delete
+            let func_names = all_configs
                 .iter()
                 .map(|e| get_dummy_signature(&e.class_name))
                 .collect::<Vec<_>>();
 
-            let other_headers = all_regular_configs
+            let regular_block_headers = all_configs
                 .iter()
-                .skip(1)
                 .filter(|e| !e.shared)
                 .map(|e| {
                     // get directory only from paths
@@ -44,7 +44,7 @@ pub fn generate_dummy(
             format!(
                 "{}\n{}\n{}",
                 basic_dummy_func,
-                other_headers,
+                regular_block_headers,
                 get_dummy_func("", &func_names)
             )
         } else {
