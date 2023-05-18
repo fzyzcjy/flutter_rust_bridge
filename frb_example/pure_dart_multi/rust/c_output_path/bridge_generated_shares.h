@@ -26,6 +26,7 @@ typedef struct wire_SharedStructInAllBlocks {
   int32_t id;
   double num;
   struct wire_uint_8_list *name;
+  struct wire_uint_8_list *u8_list;
 } wire_SharedStructInAllBlocks;
 
 typedef struct wire_SharedStructInBlock1And2 {
