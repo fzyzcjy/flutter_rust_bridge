@@ -96,6 +96,7 @@ impl support::IntoDart for SharedStructInAllBlocks {
             self.id.into_dart(),
             self.num.into_dart(),
             self.name.into_dart(),
+            self.u8_list.into_dart(),
         ]
         .into_dart()
     }

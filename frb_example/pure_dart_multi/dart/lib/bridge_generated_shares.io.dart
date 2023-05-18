@@ -76,6 +76,11 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   }
 
   @protected
+  ffi.Pointer<wire_uint_8_list> api2wire_opt_uint_8_list(Uint8List? raw) {
+    return raw == null ? ffi.nullptr : api2wire_uint_8_list(raw);
+  }
+
+  @protected
   int api2wire_u64(int raw) {
     return raw;
   }
@@ -135,6 +140,7 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
     wireObj.id = api2wire_i32(apiObj.id);
     wireObj.num = api2wire_f64(apiObj.num);
     wireObj.name = api2wire_String(apiObj.name);
+    wireObj.u8_list = api2wire_opt_uint_8_list(apiObj.u8List);
   }
 
   void _api_fill_to_wire_shared_struct_in_block_1_and_2(
@@ -361,6 +367,8 @@ class wire_SharedStructInAllBlocks extends ffi.Struct {
   external double num;
 
   external ffi.Pointer<wire_uint_8_list> name;
+
+  external ffi.Pointer<wire_uint_8_list> u8_list;
 }
 
 class wire_SharedStructInBlock1And2 extends ffi.Struct {

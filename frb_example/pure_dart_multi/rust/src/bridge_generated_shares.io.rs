@@ -125,6 +125,7 @@ impl Wire2Api<SharedStructInAllBlocks> for wire_SharedStructInAllBlocks {
             id: self.id.wire2api(),
             num: self.num.wire2api(),
             name: self.name.wire2api(),
+            u8_list: self.u8_list.wire2api(),
         }
     }
 }
@@ -183,6 +184,7 @@ pub struct wire_SharedStructInAllBlocks {
     id: i32,
     num: f64,
     name: *mut wire_uint_8_list,
+    u8_list: *mut wire_uint_8_list,
 }
 
 #[repr(C)]
@@ -261,6 +263,7 @@ impl NewWithNullPtr for wire_SharedStructInAllBlocks {
             id: Default::default(),
             num: Default::default(),
             name: core::ptr::null_mut(),
+            u8_list: core::ptr::null_mut(),
         }
     }
 }

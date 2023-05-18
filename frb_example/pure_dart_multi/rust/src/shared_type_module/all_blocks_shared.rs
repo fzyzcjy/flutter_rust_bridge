@@ -3,6 +3,7 @@ pub struct SharedStructInAllBlocks {
     pub id: i32,
     pub num: f64,
     pub name: String,
+    pub u8_list: Option<Vec<u8>>,
 }
 impl SharedStructInAllBlocks {
     #[allow(unused)]

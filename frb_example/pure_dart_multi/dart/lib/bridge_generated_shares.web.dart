@@ -71,8 +71,18 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   }
 
   @protected
+  Uint8List? api2wire_opt_uint_8_list(Uint8List? raw) {
+    return raw == null ? null : api2wire_uint_8_list(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_shared_struct_in_all_blocks(SharedStructInAllBlocks raw) {
-    return [api2wire_i32(raw.id), api2wire_f64(raw.num), api2wire_String(raw.name)];
+    return [
+      api2wire_i32(raw.id),
+      api2wire_f64(raw.num),
+      api2wire_String(raw.name),
+      api2wire_opt_uint_8_list(raw.u8List)
+    ];
   }
 
   @protected

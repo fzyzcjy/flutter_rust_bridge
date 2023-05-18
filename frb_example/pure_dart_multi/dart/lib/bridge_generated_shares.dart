@@ -45,11 +45,13 @@ class SharedStructInAllBlocks {
   final int id;
   final double num;
   final String name;
+  final Uint8List? u8List;
 
   const SharedStructInAllBlocks({
     required this.id,
     required this.num,
     required this.name,
+    this.u8List,
   });
 }
 
@@ -140,13 +142,18 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
     return raw as int;
   }
 
+  Uint8List? wire2api_opt_uint_8_list(dynamic raw) {
+    return raw == null ? null : wire2api_uint_8_list(raw);
+  }
+
   SharedStructInAllBlocks wire2api_shared_struct_in_all_blocks(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 3) throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+    if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
     return SharedStructInAllBlocks(
       id: wire2api_i32(arr[0]),
       num: wire2api_f64(arr[1]),
       name: wire2api_String(arr[2]),
+      u8List: wire2api_opt_uint_8_list(arr[3]),
     );
   }
 
