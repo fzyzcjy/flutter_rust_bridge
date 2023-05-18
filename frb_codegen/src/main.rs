@@ -140,24 +140,27 @@ mod tests {
         set_dir();
 
         /// Path of input Rust code
-        const RUST_INPUT_1: &str = "../frb_example/pure_dart_multi/rust/src/api_1.rs";
-        const RUST_INPUT_2: &str = "../frb_example/pure_dart_multi/rust/src/api_2.rs";
-        const RUST_INPUT_3: &str = "../frb_example/pure_dart_multi/rust/src/api_3.rs";
+        const RUST_INPUT_1: &str = "../frb_example/pure_dart_multi/rust/src/api_block_1.rs";
+        const RUST_INPUT_2: &str = "../frb_example/pure_dart_multi/rust/src/api_block_2.rs";
+        const RUST_INPUT_3: &str = "../frb_example/pure_dart_multi/rust/src/api_block_3.rs";
         /// Path of output generated Dart code
         const DART_OUTPUT_1: &str =
-            "../frb_example/pure_dart_multi/dart/lib/bridge_generated_api_1.dart";
+            "../frb_example/pure_dart_multi/dart/lib/bridge_generated_api_block_1.dart";
         const DART_OUTPUT_2: &str =
-            "../frb_example/pure_dart_multi/dart/lib/bridge_generated_api_2.dart";
+            "../frb_example/pure_dart_multi/dart/lib/bridge_generated_api_block_2.dart";
         const DART_OUTPUT_3: &str =
-            "../frb_example/pure_dart_multi/dart/lib/bridge_generated_api_3.dart";
+            "../frb_example/pure_dart_multi/dart/lib/bridge_generated_api_block_3.dart";
         /// Path of output Rust code
-        const RUST_OUTPUT_1: &str = "../frb_example/pure_dart_multi/rust/src/generated_api_1.rs";
-        const RUST_OUTPUT_2: &str = "../frb_example/pure_dart_multi/rust/src/generated_api_2.rs";
-        const RUST_OUTPUT_3: &str = "../frb_example/pure_dart_multi/rust/src/generated_api_3.rs";
+        const RUST_OUTPUT_1: &str =
+            "../frb_example/pure_dart_multi/rust/src/generated_api_block_1.rs";
+        const RUST_OUTPUT_2: &str =
+            "../frb_example/pure_dart_multi/rust/src/generated_api_block_2.rs";
+        const RUST_OUTPUT_3: &str =
+            "../frb_example/pure_dart_multi/rust/src/generated_api_block_3.rs";
         /// Class name to use in dart, corresponding to each Rust block
-        const CLASS_NAME_1: &str = "ApiClass1";
-        const CLASS_NAME_2: &str = "ApiClass2";
-        const CLASS_NAME_3: &str = "ApiClass3";
+        const CLASS_NAME_1: &str = "ApiBlock1Class";
+        const CLASS_NAME_2: &str = "ApiBlock2Class";
+        const CLASS_NAME_3: &str = "ApiBlock3Class";
 
         *LOGGER;
 

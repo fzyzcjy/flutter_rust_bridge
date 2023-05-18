@@ -1,8 +1,8 @@
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 
-import 'bridge_generated_api_1.dart';
-import 'bridge_generated_api_2.dart';
-import 'bridge_generated_api_3.dart';
+import 'bridge_generated_api_block_1.dart';
+import 'bridge_generated_api_block_2.dart';
+import 'bridge_generated_api_block_3.dart';
 import 'package:test/test.dart';
 
 void main(List<String> args) {
@@ -15,7 +15,7 @@ void main(List<String> args) {
   final dylib = loadLibForDart(dylibPath);
 
   //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓test api block 1↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-  final api1 = ApiClass1Impl(dylib);
+  final api1 = ApiBlock1ClassImpl(dylib);
 
   test('dart call testInbuiltTypeInBlock1', () async {
     expect(await api1.testInbuiltTypeInBlock1(a: 42, b: 100.0), 142.0);
@@ -85,7 +85,7 @@ void main(List<String> args) {
   //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑test api block 1↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
   //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓test api block 2↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-  final api2 = ApiClass2Impl(dylib);
+  final api2 = ApiBlock2ClassImpl(dylib);
 
   test('dart call testInbuiltTypeInBlock2', () async {
     expect(await api2.testInbuiltTypeInBlock2(a: 42, b: 100.0), 142.0);
@@ -168,7 +168,7 @@ void main(List<String> args) {
   //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑test api block 2↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
   //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓test api block 3↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-  final api3 = ApiClass3Impl(dylib);
+  final api3 = ApiBlock3ClassImpl(dylib);
 
   test('dart call testInbuiltTypeInBlock3', () async {
     expect(await api3.testInbuiltTypeInBlock3(a: 42, b: 100.0), 142.0);

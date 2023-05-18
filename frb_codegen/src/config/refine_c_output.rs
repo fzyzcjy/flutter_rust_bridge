@@ -130,8 +130,11 @@ mod test {
     #[test]
     #[should_panic]
     fn test_coutput_with_inconsistent_number_of_input_block_api_with_no_shared_output() {
-        let c_output = Some(vec!["pathA/api_1.rs".into(), "pathA/api_2.rs".into()]);
-        let rust_input = vec!["api_1.rs".into()];
+        let c_output = Some(vec![
+            "pathA/api_block_1.rs".into(),
+            "pathA/api_block_2.rs".into(),
+        ]);
+        let rust_input = vec!["api_block_1.rs".into()];
         let extra_c_output_path = None::<Vec<String>>;
         let shared_rust_output_path = None;
         let _ = get_refined_c_output(
@@ -144,7 +147,7 @@ mod test {
 
     #[test]
     fn test_single_block_with_no_c_output_with_no_extra_paths_with_no_shared_output() {
-        let rust_input = vec!["api_1.rs".into()];
+        let rust_input = vec!["api_block_1.rs".into()];
         let c_output = None;
         let extra_c_output_path = None;
         let shared_rust_output_path = None;
@@ -161,7 +164,7 @@ mod test {
 
     #[test]
     fn test_single_block_with_c_output_with_extra_paths_with_no_shared_output() {
-        let rust_input = vec!["api_1.rs".into()];
+        let rust_input = vec!["api_block_1.rs".into()];
         let c_output = Some(vec!["./c_output.h".into()]);
         let extra_c_output_path = Some(vec!["./extra_path_1/".into(), "./extra_path_2/".into()]);
         let shared_rust_output_path = None;
@@ -187,7 +190,7 @@ mod test {
 
     #[test]
     fn test_single_block_with_c_output_with_no_extra_paths_with_no_shared_output() {
-        let rust_input = vec!["api_1.rs".into()];
+        let rust_input = vec!["api_block_1.rs".into()];
         let c_output = Some(vec!["./c_output.h".into()]);
         let extra_c_output_path = None;
         let shared_rust_output_path = None;
@@ -209,7 +212,7 @@ mod test {
 
     #[test]
     fn test_single_block_with_no_c_output_with_extra_paths_with_no_shared_output() {
-        let rust_input = vec!["api_1.rs".into()];
+        let rust_input = vec!["api_block_1.rs".into()];
         let c_output = None;
         let extra_c_output_path = Some(vec!["./extra_path_1/".into(), "./extra_path_2/".into()]);
         let shared_rust_output_path = None;
@@ -233,7 +236,7 @@ mod test {
 
     #[test]
     fn test_multi_blocks_with_no_c_output_with_no_extra_paths_with_no_shared_output() {
-        let rust_input = vec!["api_1.rs".into(), "api_2.rs".into()];
+        let rust_input = vec!["api_block_1.rs".into(), "api_block_2.rs".into()];
         let c_output = None;
         let extra_c_output_path = None;
         let shared_rust_output_path = None;
@@ -249,7 +252,7 @@ mod test {
     }
     #[test]
     fn test_multi_blocks_with_c_output_with_extra_paths_with_no_shared_output() {
-        let rust_input = vec!["api_1.rs".into(), "api_2.rs".into()];
+        let rust_input = vec!["api_block_1.rs".into(), "api_block_2.rs".into()];
         let c_output = Some(vec!["./c_output_1.h".into(), "./c_output_2.h".into()]);
         let extra_c_output_path = Some(vec!["./extra_path_1/".into(), "./extra_path_2/".into()]);
         let shared_rust_output_path = None;
@@ -285,7 +288,7 @@ mod test {
 
     #[test]
     fn test_multi_blocks_with_c_output_with_no_extra_paths_with_no_shared_output() {
-        let rust_input = vec!["api_1.rs".into(), "api_2.rs".into()];
+        let rust_input = vec!["api_block_1.rs".into(), "api_block_2.rs".into()];
         let c_output = Some(vec!["./c_output_1.h".into(), "./c_output_2.h".into()]);
         let extra_c_output_path = None;
         let shared_rust_output_path = None;
@@ -311,7 +314,7 @@ mod test {
 
     #[test]
     fn test_multi_blocks_with_no_c_output_with_extra_paths_with_no_shared_output() {
-        let rust_input = vec!["api_1.rs".into(), "api_2.rs".into()];
+        let rust_input = vec!["api_block_1.rs".into(), "api_block_2.rs".into()];
         let c_output = None;
         let extra_c_output_path = Some(vec!["./extra_path_1/".into(), "./extra_path_2/".into()]);
         let shared_rust_output_path = None;
@@ -356,8 +359,11 @@ mod test {
     #[test]
     #[should_panic]
     fn test_coutput_with_inconsistent_number_of_input_block_api_with_shared_output() {
-        let c_output = Some(vec!["pathA/api_1.rs".into(), "pathA/api_2.rs".into()]);
-        let rust_input = vec!["api_1.rs".into()];
+        let c_output = Some(vec![
+            "pathA/api_block_1.rs".into(),
+            "pathA/api_block_2.rs".into(),
+        ]);
+        let rust_input = vec!["api_block_1.rs".into()];
         let extra_c_output_path = None::<Vec<String>>;
         let shared_rust_output_path = Some("fake_directory/custom_shared_file_name.rs".to_owned());
         let _ = get_refined_c_output(
@@ -370,7 +376,7 @@ mod test {
 
     #[test]
     fn test_single_block_with_no_c_output_with_no_extra_paths_with_shared_output() {
-        let rust_input = vec!["api_1.rs".into()];
+        let rust_input = vec!["api_block_1.rs".into()];
         let c_output = None;
         let extra_c_output_path = None;
         let shared_rust_output_path = Some("fake_directory/custom_shared_file_name.rs".to_owned());
@@ -387,7 +393,7 @@ mod test {
 
     #[test]
     fn test_single_block_with_c_output_with_extra_paths_with_shared_output() {
-        let rust_input = vec!["api_1.rs".into()];
+        let rust_input = vec!["api_block_1.rs".into()];
         let c_output = Some(vec!["./c_output.h".into()]);
         let extra_c_output_path = Some(vec!["./extra_path_1/".into(), "./extra_path_2/".into()]);
         let shared_rust_file_name = "custom_shared_file_name";
@@ -414,7 +420,7 @@ mod test {
 
     #[test]
     fn test_single_block_with_c_output_with_no_extra_paths_with_shared_output() {
-        let rust_input = vec!["api_1.rs".into()];
+        let rust_input = vec!["api_block_1.rs".into()];
         let c_output = Some(vec!["./c_output.h".into()]);
         let extra_c_output_path = None;
         let shared_rust_output_path = Some("fake_directory/custom_shared_file_name.rs".to_owned());
@@ -436,7 +442,7 @@ mod test {
 
     #[test]
     fn test_single_block_with_no_c_output_with_extra_paths_with_shared_output() {
-        let rust_input = vec!["api_1.rs".into()];
+        let rust_input = vec!["api_block_1.rs".into()];
         let c_output = None;
         let extra_c_output_path = Some(vec!["./extra_path_1/".into(), "./extra_path_2/".into()]);
         let shared_rust_output_path = Some("fake_directory/custom_shared_file_name.rs".to_owned());
@@ -460,7 +466,7 @@ mod test {
 
     #[test]
     fn test_multi_blocks_with_no_c_output_with_no_extra_paths_with_shared_output() {
-        let rust_input = vec!["api_1.rs".into(), "api_2.rs".into()];
+        let rust_input = vec!["api_block_1.rs".into(), "api_block_2.rs".into()];
         let c_output = None;
         let extra_c_output_path = None;
         let shared_rust_output_path: Option<String> =
@@ -477,7 +483,7 @@ mod test {
     }
     #[test]
     fn test_multi_blocks_with_c_output_with_extra_paths_with_shared_output() {
-        let rust_input = vec!["api_1.rs".into(), "api_2.rs".into()];
+        let rust_input = vec!["api_block_1.rs".into(), "api_block_2.rs".into()];
         let c_output = Some(vec!["./c_output_1.h".into(), "./c_output_2.h".into()]);
         let extra_c_output_path = Some(vec!["./extra_path_1/".into(), "./extra_path_2/".into()]);
         let shared_rust_file_name = "custom_shared_file_name";
@@ -532,7 +538,7 @@ mod test {
 
     #[test]
     fn test_multi_blocks_with_c_output_with_no_extra_paths_with_shared_output() {
-        let rust_input = vec!["api_1.rs".into(), "api_2.rs".into()];
+        let rust_input = vec!["api_block_1.rs".into(), "api_block_2.rs".into()];
         let c_output = Some(vec!["./c_output_1.h".into(), "./c_output_2.h".into()]);
         let extra_c_output_path = None;
         let shared_rust_file_name = "custom_shared_file_name";
@@ -563,7 +569,7 @@ mod test {
 
     #[test]
     fn test_multi_blocks_with_no_c_output_with_extra_paths_with_shared_output() {
-        let rust_input = vec!["api_1.rs".into(), "api_2.rs".into()];
+        let rust_input = vec!["api_block_1.rs".into(), "api_block_2.rs".into()];
         let c_output = None;
         let extra_c_output_path = Some(vec!["./extra_path_1/".into(), "./extra_path_2/".into()]);
         let shared_rust_output_path = None;

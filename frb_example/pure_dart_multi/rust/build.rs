@@ -1,21 +1,21 @@
 use lib_flutter_rust_bridge_codegen::{config_parse, frb_codegen_multi, init_logger, RawOpts};
 
 /// Path of input Rust code
-const RUST_INPUT_1: &str = "src/api_1.rs";
-const RUST_INPUT_2: &str = "src/api_2.rs";
-const RUST_INPUT_3: &str = "src/api_3.rs";
+const RUST_INPUT_1: &str = "src/api_block_1.rs";
+const RUST_INPUT_2: &str = "src/api_block_2.rs";
+const RUST_INPUT_3: &str = "src/api_block_3.rs";
 /// Path of output generated Dart code
-const DART_OUTPUT_1: &str = "../dart/lib/bridge_generated_api_1.dart";
-const DART_OUTPUT_2: &str = "../dart/lib/bridge_generated_api_2.dart";
-const DART_OUTPUT_3: &str = "../dart/lib/bridge_generated_api_3.dart";
+const DART_OUTPUT_1: &str = "../dart/lib/bridge_generated_api_block_1.dart";
+const DART_OUTPUT_2: &str = "../dart/lib/bridge_generated_api_block_2.dart";
+const DART_OUTPUT_3: &str = "../dart/lib/bridge_generated_api_block_3.dart";
 /// Path of output Rust code
-const RUST_OUTPUT_1: &str = "src/generated_api_1.rs";
-const RUST_OUTPUT_2: &str = "src/generated_api_2.rs";
-const RUST_OUTPUT_3: &str = "src/generated_api_3.rs";
+const RUST_OUTPUT_1: &str = "src/generated_api_block_1.rs";
+const RUST_OUTPUT_2: &str = "src/generated_api_block_2.rs";
+const RUST_OUTPUT_3: &str = "src/generated_api_block_3.rs";
 /// Class name to use in dart, corresponding to each Rust block
-const CLASS_NAME_1: &str = "ApiClass1";
-const CLASS_NAME_2: &str = "ApiClass2";
-const CLASS_NAME_3: &str = "ApiClass3";
+const CLASS_NAME_1: &str = "ApiBlock1Class";
+const CLASS_NAME_2: &str = "ApiBlock2Class";
+const CLASS_NAME_3: &str = "ApiBlock3Class";
 
 fn main() {
     init_logger("./logs/", true).unwrap();

@@ -24,11 +24,11 @@ pub fn simple_minus(a: i32, b: i32) -> i32 {
 }
 ```
 
-Now you want to classify these 2 Api into 2 blocks for some reason-- say, you put the `simple_add` Api into file `api_1.rs` and the other into `api_2.rs`. And then make a little modification in `lib.rs`:
+Now you want to classify these 2 Api into 2 blocks for some reason-- say, you put the `simple_add` Api into file `api_block_1.rs` and the other into `api_block_2.rs`. And then make a little modification in `lib.rs`:
 
 ```rust,noplayground
-mod api_1;
-mod api_2;
+mod api_block_1;
+mod api_block_2;
 ```
 
 Ok, now the question is how to deal with them with flutter_rust_bridge? From the [template justfile](https://github.com/Desdaemon/flutter_rust_bridge_template/blob/main/justfile#L11), we know code from a single API file called `api_rs` can be generated with a command like this:
@@ -48,12 +48,12 @@ Then, to generate code within 2 blocks(files), you may come out with an approach
 ```
 gen:
     export REPO_DIR="$PWD"; cd /; flutter_rust_bridge_codegen {{llvm_path}} \
-        --rust-input "$REPO_DIR/native/src/api_1.rs" \
-        --dart-output "$REPO_DIR/lib/bridge_generated_api_1.dart" \
+        --rust-input "$REPO_DIR/native/src/api_block_1.rs" \
+        --dart-output "$REPO_DIR/lib/bridge_generated_api_block_1.dart" \
 
     export REPO_DIR="$PWD"; cd /; flutter_rust_bridge_codegen {{llvm_path}} \
-        --rust-input "$REPO_DIR/native/src/api_2.rs" \
-        --dart-output "$REPO_DIR/lib/bridge_generated_api_2.dart" \
+        --rust-input "$REPO_DIR/native/src/api_block_2.rs" \
+        --dart-output "$REPO_DIR/lib/bridge_generated_api_block_2.dart" \
 ...
 ```
 
@@ -63,20 +63,20 @@ But here comes a problem, how to use them in dart? Like `await API.simpleAdd(1,2
 ```
 gen:
     export REPO_DIR="$PWD"; cd /; flutter_rust_bridge_codegen {{llvm_path}} \
-        --rust-input "$REPO_DIR/native/src/api_1.rs" \
-        --dart-output "$REPO_DIR/lib/bridge_generated_api_1.dart" \
-        --class-name ApiClass1
+        --rust-input "$REPO_DIR/native/src/api_block_1.rs" \
+        --dart-output "$REPO_DIR/lib/bridge_generated_api_block_1.dart" \
+        --class-name ApiBlock1Class
 
     export REPO_DIR="$PWD"; cd /; flutter_rust_bridge_codegen {{llvm_path}} \
-        --rust-input "$REPO_DIR/native/src/api_2.rs" \
-        --dart-output "$REPO_DIR/lib/bridge_generated_api_2.dart" \
-        --class-name ApiClass2
+        --rust-input "$REPO_DIR/native/src/api_block_2.rs" \
+        --dart-output "$REPO_DIR/lib/bridge_generated_api_block_2.dart" \
+        --class-name ApiBlock2Class
 ...
 ```
 
-(The class name `ApiClass1` and `ApiClass2` are chosen arbitrarily here.)
+(The class name `ApiBlock1Class` and `ApiBlock2Class` are chosen arbitrarily here.)
 
-So now it seems to be perfect to generate code and using Api in Dart like `ApiClass1.simpleAdd(1,2)` or `ApiClass2.simpleMinus(1,2)`.
+So now it seems to be perfect to generate code and using Api in Dart like `ApiBlock1Class.simpleAdd(1,2)` or `ApiBlock2Class.simpleMinus(1,2)`.
 
 But actually, the above command is still not enough to generate code correctly. Because multiple blocks need to be translated respectively through FFI. So on the rust side, instead of generating code to a single file [`bridge_generated.rs`](https://github.com/Desdaemon/flutter_rust_bridge_template/blob/main/native/src/bridge_generated.rs), now there are 2 files needed. But, what are the names of these 2 auto-generated rust files?
 Here, for less misunderstanding, flutter_rust_bridge decides to ask for another compulsory flag `rust-output`. So the command should be modified like this:
@@ -84,20 +84,20 @@ Here, for less misunderstanding, flutter_rust_bridge decides to ask for another 
 ```
 gen:
     export REPO_DIR="$PWD"; cd /; flutter_rust_bridge_codegen {{llvm_path}} \
-        --rust-input "$REPO_DIR/native/src/api_1.rs" \
-        --dart-output "$REPO_DIR/lib/bridge_generated_api_1.dart" \
-        --class-name ApiClass1 \
-        --rust-output generated_api_1
+        --rust-input "$REPO_DIR/native/src/api_block_1.rs" \
+        --dart-output "$REPO_DIR/lib/bridge_generated_api_block_1.dart" \
+        --class-name ApiBlock1Class \
+        --rust-output generated_api_block_1
 
     export REPO_DIR="$PWD"; cd /; flutter_rust_bridge_codegen {{llvm_path}} \
-        --rust-input "$REPO_DIR/native/src/api_2.rs" \
-        --dart-output "$REPO_DIR/lib/bridge_generated_api_2.dart" \
-        --class-name ApiClass2 \
-        --rust-output generated_api_2
+        --rust-input "$REPO_DIR/native/src/api_block_2.rs" \
+        --dart-output "$REPO_DIR/lib/bridge_generated_api_block_2.dart" \
+        --class-name ApiBlock2Class \
+        --rust-output generated_api_block_2
 ...
 ```
 
-(Still, the rust output name `generated_api_1` and `generated_api_2` are chosen arbitrarily here.)
+(Still, the rust output name `generated_api_block_1` and `generated_api_block_2` are chosen arbitrarily here.)
 
 That is, flutter_rust_bridge asks you to manually define the generated rust file names, feel free to choose any name you like.
 
@@ -105,10 +105,10 @@ That is, flutter_rust_bridge asks you to manually define the generated rust file
 Based on the last commands we come up with, everything seems to be fine --- the code generated, you can use them in Dart, and the whole project is compilable. And you would also notice some changes in `lib.rs`:
 
 ```rust,noplayground
-mod api_1;
-mod api_2;
-mod generated_api_1; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */
-mod generated_api_2; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */
+mod api_block_1;
+mod api_block_2;
+mod generated_api_block_1; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */
+mod generated_api_block_2; /* AUTO INJECTED BY flutter_rust_bridge. This line may not be accurate, and you can change it according to your needs. */
 ```
 
 But actually, it is not good enough.
@@ -119,7 +119,7 @@ Let's say one day, you decide to add another API, say `simpleDivide`. But when y
 
 ### issue from implicit Api conflict
 
-And what makes the Api conflict issue more catastrophic? Say you define another Api with parameter `String` in `api_1.rs`:
+And what makes the Api conflict issue more catastrophic? Say you define another Api with parameter `String` in `api_block_1.rs`:
 
 ```rust,noplayground
 pub fn test_string_1(s1: String) {
@@ -127,7 +127,7 @@ pub fn test_string_1(s1: String) {
 }
 ```
 
-And then you put another Api with parameter `String` in `api_2.rs`:
+And then you put another Api with parameter `String` in `api_block_2.rs`:
 
 ```rust,noplayground
 pub fn test_string_2(s2: String) {
@@ -157,10 +157,10 @@ Now comes the joined command to resolve the above issue:
 ```
 gen:
     export REPO_DIR="$PWD"; cd /; flutter_rust_bridge_codegen {{llvm_path}} \
-        --rust-input "$REPO_DIR/native/src/api_1.rs" "$REPO_DIR/native/src/api_2.rs" \
-        --dart-output "$REPO_DIR/lib/bridge_generated_api_1.dart" "$REPO_DIR/lib/bridge_generated_api_2.dart" \
-        --class-name ApiClass1 ApiClass2 \
-        --rust-output generated_api_1 generated_api_2
+        --rust-input "$REPO_DIR/native/src/api_block_1.rs" "$REPO_DIR/native/src/api_block_2.rs" \
+        --dart-output "$REPO_DIR/lib/bridge_generated_api_block_1.dart" "$REPO_DIR/lib/bridge_generated_api_block_2.dart" \
+        --class-name ApiBlock1Class ApiBlock2Class \
+        --rust-output generated_api_block_1 generated_api_block_2
 ...
 ```
 

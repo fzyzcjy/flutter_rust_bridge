@@ -7,15 +7,15 @@ import 'dart:async';
 import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
-import 'bridge_generated_api_3.dart';
-export 'bridge_generated_api_3.dart';
+import 'bridge_generated_api_block_3.dart';
+export 'bridge_generated_api_block_3.dart';
 import 'bridge_generated_shares.web.dart';
 
-class ApiClass3Platform extends FlutterRustBridgeBase<ApiClass3Wire> with FlutterRustBridgeSetupMixin {
+class ApiBlock3ClassPlatform extends FlutterRustBridgeBase<ApiBlock3ClassWire> with FlutterRustBridgeSetupMixin {
   final BridgeGeneratedSharesPlatform _sharedPlatform;
-  ApiClass3Platform(FutureOr<WasmModule> dylib)
+  ApiBlock3ClassPlatform(FutureOr<WasmModule> dylib)
       : _sharedPlatform = BridgeGeneratedSharesPlatform(dylib),
-        super(ApiClass3Wire(dylib)) {
+        super(ApiBlock3ClassWire(dylib)) {
     setupMixinConstructor();
   }
   Future<void> setup() => inner.init;
@@ -52,13 +52,13 @@ class ApiClass3Platform extends FlutterRustBridgeBase<ApiClass3Wire> with Flutte
 // Section: WASM wire module
 
 @JS('wasm_bindgen')
-external ApiClass3WasmModule get wasmModule;
+external ApiBlock3ClassWasmModule get wasmModule;
 
 @JS()
 @anonymous
-class ApiClass3WasmModule implements WasmModule {
+class ApiBlock3ClassWasmModule implements WasmModule {
   external Object /* Promise */ call([String? moduleName]);
-  external ApiClass3WasmModule bind(dynamic thisArg, String moduleName);
+  external ApiBlock3ClassWasmModule bind(dynamic thisArg, String moduleName);
   external dynamic /* void */ wire_test_inbuilt_type_in_block_3(NativePortType port_, int a, double b);
 
   external dynamic /* void */ wire_test_string_in_block_3(NativePortType port_, String s, Object i);
@@ -92,8 +92,8 @@ class ApiClass3WasmModule implements WasmModule {
 
 // Section: WASM wire connector
 
-class ApiClass3Wire extends FlutterRustBridgeWasmWireBase<ApiClass3WasmModule> {
-  ApiClass3Wire(FutureOr<WasmModule> module) : super(WasmModule.cast<ApiClass3WasmModule>(module));
+class ApiBlock3ClassWire extends FlutterRustBridgeWasmWireBase<ApiBlock3ClassWasmModule> {
+  ApiBlock3ClassWire(FutureOr<WasmModule> module) : super(WasmModule.cast<ApiBlock3ClassWasmModule>(module));
 
   void wire_test_inbuilt_type_in_block_3(NativePortType port_, int a, double b) =>
       wasmModule.wire_test_inbuilt_type_in_block_3(port_, a, b);

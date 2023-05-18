@@ -111,12 +111,12 @@ _generate_bridge_pure_dart:
 
 _generate_bridge_pure_dart_multi:
     {{cargo_run_codegen}} \
-        --rust-input frb_example/pure_dart_multi/rust/src/api_1.rs frb_example/pure_dart_multi/rust/src/api_2.rs frb_example/pure_dart_multi/rust/src/api_3.rs \
-        --dart-output frb_example/pure_dart_multi/dart/lib/bridge_generated_api_1.dart frb_example/pure_dart_multi/dart/lib/bridge_generated_api_2.dart frb_example/pure_dart_multi/dart/lib/bridge_generated_api_3.dart \
+        --rust-input frb_example/pure_dart_multi/rust/src/api_block_1.rs frb_example/pure_dart_multi/rust/src/api_block_2.rs frb_example/pure_dart_multi/rust/src/api_block_3.rs \
+        --dart-output frb_example/pure_dart_multi/dart/lib/bridge_generated_api_block_1.dart frb_example/pure_dart_multi/dart/lib/bridge_generated_api_block_2.dart frb_example/pure_dart_multi/dart/lib/bridge_generated_api_block_3.dart \
         --dart-format-line-length 120 \
         --dart-enums-style \
-        --rust-output frb_example/pure_dart_multi/rust/src/generated_api_1.rs frb_example/pure_dart_multi/rust/src/generated_api_2.rs frb_example/pure_dart_multi/rust/src/generated_api_3.rs \
-        --class-name ApiClass1 ApiClass2 ApiClass3 \
+        --rust-output frb_example/pure_dart_multi/rust/src/generated_api_block_1.rs frb_example/pure_dart_multi/rust/src/generated_api_block_2.rs frb_example/pure_dart_multi/rust/src/generated_api_block_3.rs \
+        --class-name ApiBlock1Class ApiBlock2Class ApiBlock3Class \
         --wasm
 
 _generate_bridge_with_flutter:

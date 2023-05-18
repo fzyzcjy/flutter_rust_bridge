@@ -110,7 +110,7 @@ struct wire_StructDefinedInBlock1 *new_box_autoadd_struct_defined_in_block_1(voi
 
 struct wire_StructOnlyForBlock1 *new_box_autoadd_struct_only_for_block_1(void);
 
-static int64_t dummy_method_to_enforce_bundling_ApiClass1(void) {
+static int64_t dummy_method_to_enforce_bundling_ApiBlock1Class(void) {
     int64_t dummy_var = 0;
     dummy_var ^= ((int64_t) (void*) wire_test_inbuilt_type_in_block_1);
     dummy_var ^= ((int64_t) (void*) wire_test_string_in_block_1);

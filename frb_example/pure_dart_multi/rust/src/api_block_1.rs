@@ -1,9 +1,11 @@
 use flutter_rust_bridge::SyncReturn;
 
-use crate::custom::{
+use crate::block_specific_module::StructOnlyForBlock1;
+use crate::shared_type_module::{
     CrossSharedStructInBlock1And2, SharedStructInAllBlocks, SharedStructInBlock1And2,
-    SharedStructOnlyForSyncTest, StructOnlyForBlock1,
+    SharedStructOnlyForSyncTest,
 };
+
 pub struct StructDefinedInBlock1 {
     pub name: String,
 }

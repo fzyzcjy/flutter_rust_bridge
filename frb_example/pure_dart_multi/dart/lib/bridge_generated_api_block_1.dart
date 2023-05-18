@@ -13,12 +13,12 @@ import 'dart:async';
 import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
-import 'bridge_generated_api_1.io.dart' if (dart.library.html) 'bridge_generated_api_1.web.dart';
+import 'bridge_generated_api_block_1.io.dart' if (dart.library.html) 'bridge_generated_api_block_1.web.dart';
 import 'bridge_generated_shares.dart';
 export 'bridge_generated_shares.dart';
 import 'bridge_generated_shares.io.dart' if (dart.library.html) 'bridge_generated_shares.web.dart';
 
-abstract class ApiClass1 {
+abstract class ApiBlock1Class {
   Future<double> testInbuiltTypeInBlock1({required int a, required double b, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kTestInbuiltTypeInBlock1ConstMeta;
@@ -70,7 +70,7 @@ abstract class ApiClass1 {
 }
 
 class StructDefinedInBlock1 {
-  final ApiClass1 bridge;
+  final ApiBlock1Class bridge;
   final String name;
 
   const StructDefinedInBlock1({
@@ -83,7 +83,7 @@ class StructDefinedInBlock1 {
         message: message,
       );
 
-  static Future<String> testStaticMethod({required ApiClass1 bridge, required String message, dynamic hint}) =>
+  static Future<String> testStaticMethod({required ApiBlock1Class bridge, required String message, dynamic hint}) =>
       bridge.testStaticMethodStaticMethodStructDefinedInBlock1(message: message, hint: hint);
 }
 
@@ -100,22 +100,22 @@ class StructOnlyForBlock1 {
   });
 }
 
-class ApiClass1Impl implements ApiClass1 {
-  final ApiClass1Platform _platform;
+class ApiBlock1ClassImpl implements ApiBlock1Class {
+  final ApiBlock1ClassPlatform _platform;
   final BridgeGeneratedSharesPlatform _sharedPlatform;
   final BridgeGeneratedSharesImpl _sharedImpl;
 
-  factory ApiClass1Impl(ExternalLibrary dylib) {
-    final platform = ApiClass1Platform(dylib);
+  factory ApiBlock1ClassImpl(ExternalLibrary dylib) {
+    final platform = ApiBlock1ClassPlatform(dylib);
     final sharedPlatform = BridgeGeneratedSharesPlatform(dylib);
     final sharedImpl = BridgeGeneratedSharesImpl(dylib);
-    return ApiClass1Impl.raw(platform, sharedPlatform, sharedImpl);
+    return ApiBlock1ClassImpl.raw(platform, sharedPlatform, sharedImpl);
   }
 
-  ApiClass1Impl.raw(this._platform, this._sharedPlatform, this._sharedImpl);
+  ApiBlock1ClassImpl.raw(this._platform, this._sharedPlatform, this._sharedImpl);
 
   /// Only valid on web/WASM platforms.
-  factory ApiClass1Impl.wasm(FutureOr<WasmModule> module) => ApiClass1Impl(module as ExternalLibrary);
+  factory ApiBlock1ClassImpl.wasm(FutureOr<WasmModule> module) => ApiBlock1ClassImpl(module as ExternalLibrary);
 
   Future<double> testInbuiltTypeInBlock1({required int a, required double b, dynamic hint}) {
     var arg0 = api2wire_i32(a);

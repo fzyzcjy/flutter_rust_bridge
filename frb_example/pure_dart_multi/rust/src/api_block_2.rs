@@ -1,9 +1,10 @@
 use flutter_rust_bridge::SyncReturn;
 
-use crate::custom::SharedStructInAllBlocks;
-use crate::custom::StructOnlyForBlock2;
-use crate::custom::{CrossSharedStructInBlock1And2, SharedStructInBlock1And2};
-use crate::custom::{CrossSharedStructInBlock2And3, SharedStructInBlock2And3};
+use crate::block_specific_module::StructOnlyForBlock2;
+use crate::shared_type_module::SharedStructInAllBlocks;
+use crate::shared_type_module::{CrossSharedStructInBlock1And2, SharedStructInBlock1And2};
+use crate::shared_type_module::{CrossSharedStructInBlock2And3, SharedStructInBlock2And3};
+
 pub struct StructDefinedInBlock2 {
     pub name: String,
 }

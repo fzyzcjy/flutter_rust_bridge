@@ -15,12 +15,12 @@ use flutter_rust_bridge::*;
 
 // Section: imports
 
-pub use crate::custom::CrossSharedStructInBlock1And2;
-pub use crate::custom::CrossSharedStructInBlock2And3;
-pub use crate::custom::SharedStructInAllBlocks;
-pub use crate::custom::SharedStructInBlock1And2;
-pub use crate::custom::SharedStructInBlock2And3;
-pub use crate::custom::SharedStructOnlyForSyncTest;
+pub use crate::shared_type_module::all_blocks_shared::SharedStructInAllBlocks;
+pub use crate::shared_type_module::all_blocks_shared::SharedStructInBlock1And2;
+pub use crate::shared_type_module::all_blocks_shared::SharedStructInBlock2And3;
+pub use crate::shared_type_module::all_blocks_shared::SharedStructOnlyForSyncTest;
+pub use crate::shared_type_module::cross_shared::CrossSharedStructInBlock1And2;
+pub use crate::shared_type_module::cross_shared::CrossSharedStructInBlock2And3;
 
 // Section: wire functions
 
