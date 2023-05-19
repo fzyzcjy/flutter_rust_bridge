@@ -26,6 +26,11 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   }
 
   @protected
+  Float32List api2wire_ZeroCopyBuffer_Float32List(Float32List raw) {
+    return api2wire_float_32_list(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_cross_shared_struct_in_block_1_and_2(CrossSharedStructInBlock1And2 raw) {
     return api2wire_cross_shared_struct_in_block_1_and_2(raw);
   }
@@ -38,6 +43,11 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   @protected
   double api2wire_box_autoadd_f64(double raw) {
     return api2wire_f64(raw);
+  }
+
+  @protected
+  int api2wire_box_autoadd_i32(int raw) {
+    return api2wire_i32(raw);
   }
 
   @protected
@@ -61,6 +71,11 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   }
 
   @protected
+  List<dynamic> api2wire_box_enum_type(EnumType raw) {
+    return api2wire_enum_type(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_cross_shared_struct_in_block_1_and_2(CrossSharedStructInBlock1And2 raw) {
     return [api2wire_String(raw.name)];
   }
@@ -68,6 +83,50 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   @protected
   List<dynamic> api2wire_cross_shared_struct_in_block_2_and_3(CrossSharedStructInBlock2And3 raw) {
     return [api2wire_String(raw.name)];
+  }
+
+  @protected
+  List<dynamic> api2wire_enum_type(EnumType raw) {
+    if (raw is EnumType_Empty) {
+      return [0];
+    }
+    if (raw is EnumType_Primitives) {
+      return [1, api2wire_i32(raw.int32), api2wire_f64(raw.float64), api2wire_bool(raw.boolean)];
+    }
+    if (raw is EnumType_Nested) {
+      return [2, api2wire_box_enum_type(raw.field0)];
+    }
+    if (raw is EnumType_Optional) {
+      return [3, api2wire_opt_box_autoadd_i32(raw.field0), api2wire_opt_uint_8_list(raw.field1)];
+    }
+    if (raw is EnumType_Buffer) {
+      return [4, api2wire_ZeroCopyBuffer_Float32List(raw.field0)];
+    }
+    if (raw is EnumType_Enums) {
+      return [5, api2wire_weekdays(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  Float32List api2wire_float_32_list(Float32List raw) {
+    return raw;
+  }
+
+  @protected
+  List<dynamic> api2wire_list_enum_type(List<EnumType> raw) {
+    return raw.map(api2wire_enum_type).toList();
+  }
+
+  @protected
+  int? api2wire_opt_box_autoadd_i32(int? raw) {
+    return raw == null ? null : api2wire_box_autoadd_i32(raw);
+  }
+
+  @protected
+  List<dynamic>? api2wire_opt_list_enum_type(List<EnumType>? raw) {
+    return raw == null ? null : api2wire_list_enum_type(raw);
   }
 
   @protected
@@ -81,7 +140,7 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
       api2wire_i32(raw.id),
       api2wire_f64(raw.num),
       api2wire_String(raw.name),
-      api2wire_opt_uint_8_list(raw.u8List)
+      api2wire_opt_list_enum_type(raw.enumList)
     ];
   }
 
@@ -109,6 +168,7 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   Uint8List api2wire_uint_8_list(Uint8List raw) {
     return raw;
   }
+
 // Section: finalizer
 }
 

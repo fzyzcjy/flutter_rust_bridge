@@ -12,6 +12,11 @@ impl Wire2Api<String> for String {
         self
     }
 }
+impl Wire2Api<ZeroCopyBuffer<Vec<f32>>> for Box<[f32]> {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<f32>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
 
 impl Wire2Api<CrossSharedStructInBlock1And2> for JsValue {
     fn wire2api(self) -> CrossSharedStructInBlock1And2 {
@@ -41,7 +46,46 @@ impl Wire2Api<CrossSharedStructInBlock2And3> for JsValue {
         }
     }
 }
+impl Wire2Api<EnumType> for JsValue {
+    fn wire2api(self) -> EnumType {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => EnumType::Empty,
+            1 => EnumType::Primitives {
+                int32: self_.get(1).wire2api(),
+                float64: self_.get(2).wire2api(),
+                boolean: self_.get(3).wire2api(),
+            },
+            2 => EnumType::Nested(self_.get(1).wire2api()),
+            3 => EnumType::Optional(self_.get(1).wire2api(), self_.get(2).wire2api()),
+            4 => EnumType::Buffer(self_.get(1).wire2api()),
+            5 => EnumType::Enums(self_.get(1).wire2api()),
+            _ => unreachable!(),
+        }
+    }
+}
 
+impl Wire2Api<Vec<f32>> for Box<[f32]> {
+    fn wire2api(self) -> Vec<f32> {
+        self.into_vec()
+    }
+}
+
+impl Wire2Api<Vec<EnumType>> for JsValue {
+    fn wire2api(self) -> Vec<EnumType> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
+
+impl Wire2Api<Option<Vec<EnumType>>> for JsValue {
+    fn wire2api(self) -> Option<Vec<EnumType>> {
+        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+    }
+}
 impl Wire2Api<Option<Vec<u8>>> for Option<Box<[u8]>> {
     fn wire2api(self) -> Option<Vec<u8>> {
         self.map(Wire2Api::wire2api)
@@ -60,7 +104,7 @@ impl Wire2Api<SharedStructInAllBlocks> for JsValue {
             id: self_.get(0).wire2api(),
             num: self_.get(1).wire2api(),
             name: self_.get(2).wire2api(),
-            u8_list: self_.get(3).wire2api(),
+            enum_list: self_.get(3).wire2api(),
         }
     }
 }
@@ -117,11 +161,27 @@ impl Wire2Api<Vec<u8>> for Box<[u8]> {
         self.into_vec()
     }
 }
+
 // Section: impl Wire2Api for JsValue
 
 impl Wire2Api<String> for JsValue {
     fn wire2api(self) -> String {
         self.as_string().expect("non-UTF-8 string, or not a string")
+    }
+}
+impl Wire2Api<ZeroCopyBuffer<Vec<f32>>> for JsValue {
+    fn wire2api(self) -> ZeroCopyBuffer<Vec<f32>> {
+        ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<bool> for JsValue {
+    fn wire2api(self) -> bool {
+        self.is_truthy()
+    }
+}
+impl Wire2Api<Box<EnumType>> for JsValue {
+    fn wire2api(self) -> Box<EnumType> {
+        Box::new(self.wire2api())
     }
 }
 impl Wire2Api<f32> for JsValue {
@@ -134,9 +194,21 @@ impl Wire2Api<f64> for JsValue {
         self.unchecked_into_f64() as _
     }
 }
+impl Wire2Api<Vec<f32>> for JsValue {
+    fn wire2api(self) -> Vec<f32> {
+        self.unchecked_into::<js_sys::Float32Array>()
+            .to_vec()
+            .into()
+    }
+}
 impl Wire2Api<i32> for JsValue {
     fn wire2api(self) -> i32 {
         self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<Option<i32>> for JsValue {
+    fn wire2api(self) -> Option<i32> {
+        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
     }
 }
 impl Wire2Api<Option<Vec<u8>>> for JsValue {
@@ -157,5 +229,10 @@ impl Wire2Api<u8> for JsValue {
 impl Wire2Api<Vec<u8>> for JsValue {
     fn wire2api(self) -> Vec<u8> {
         self.unchecked_into::<js_sys::Uint8Array>().to_vec().into()
+    }
+}
+impl Wire2Api<Weekdays> for JsValue {
+    fn wire2api(self) -> Weekdays {
+        (self.unchecked_into_f64() as i32).wire2api()
     }
 }

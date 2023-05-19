@@ -40,22 +40,34 @@ void main(List<String> args) {
   });
 
   test('dart call testAllSharedStructInBlock1', () async {
+    final enumList = [
+      EnumType.enums(Weekdays.Friday),
+      EnumType.nested(EnumType.enums(Weekdays.Friday)),
+      EnumType.empty(),
+      EnumType.primitives(int32: 1, float64: 2.0, boolean: true),
+      EnumType.optional(null, Uint8List.fromList([1, 2])),
+      EnumType.buffer(Float32List.fromList([1.1, 2.2]))
+    ];
     var expected = SharedStructInAllBlocks(
       name: "newString",
       id: 2,
       num: 2.2,
-      u8List: null,
+      enumList: enumList,
     );
     var actual = await api1.testAllSharedStructInBlock1(
         custom: SharedStructInAllBlocks(
-            name: "string", id: 1, num: 2.2, u8List: null),
+          name: "string",
+          id: 1,
+          num: 2.2,
+          enumList: enumList,
+        ),
         s: "newString",
         i: 2);
 
     expect(expected.name, actual.name);
     expect(expected.id, actual.id);
     expect(expected.num, actual.num);
-    expect(expected.u8List, actual.u8List);
+    expect(expected.enumList, actual.enumList);
   });
 
   test('dart call testSharedStructInBlock1For1And2', () async {
@@ -111,37 +123,47 @@ void main(List<String> args) {
   });
 
   test('dart call testAllSharedStructInBlock2', () async {
+    final enumList = [
+      EnumType.enums(Weekdays.Friday),
+      EnumType.nested(EnumType.enums(Weekdays.Friday)),
+      EnumType.empty(),
+      EnumType.primitives(int32: 1, float64: 2.0, boolean: true),
+      EnumType.optional(null, Uint8List.fromList([1, 2])),
+      EnumType.buffer(Float32List.fromList([1.1, 2.2]))
+    ];
     var expected = SharedStructInAllBlocks(
-        name: "newString", id: 2, num: 2.2, u8List: Uint8List.fromList([1, 2]));
+        name: "newString", id: 2, num: 2.2, enumList: enumList);
     var actual = await api2.testAllSharedStructInBlock2(
         custom: SharedStructInAllBlocks(
-            name: "string",
-            id: 1,
-            num: 2.2,
-            u8List: Uint8List.fromList([1, 2])),
+            name: "string", id: 1, num: 2.2, enumList: enumList),
         s: "newString",
         i: 2);
     expect(expected.name, actual.name);
     expect(expected.id, actual.id);
     expect(expected.num, actual.num);
-    expect(expected.u8List, actual.u8List);
+    expect(expected.enumList, actual.enumList);
   });
 
   test('dart call testAllSharedStructInSyncInBlock2', () async {
+    final enumList = [
+      EnumType.enums(Weekdays.Friday),
+      EnumType.nested(EnumType.enums(Weekdays.Friday)),
+      EnumType.empty(),
+      EnumType.primitives(int32: 1, float64: 2.0, boolean: true),
+      EnumType.optional(null, Uint8List.fromList([1, 2])),
+      EnumType.buffer(Float32List.fromList([1.1, 2.2]))
+    ];
     var expected = SharedStructInAllBlocks(
-        name: "newString", id: 2, num: 2.2, u8List: Uint8List.fromList([1, 2]));
+        name: "newString", id: 2, num: 2.2, enumList: enumList);
     var actual = api2.testAllSharedStructInSyncInBlock2(
         custom: SharedStructInAllBlocks(
-            name: "string",
-            id: 1,
-            num: 2.2,
-            u8List: Uint8List.fromList([1, 2])),
+            name: "string", id: 1, num: 2.2, enumList: enumList),
         s: "newString",
         i: 2);
     expect(expected.name, actual.name);
     expect(expected.id, actual.id);
     expect(expected.num, actual.num);
-    expect(expected.u8List, actual.u8List);
+    expect(expected.enumList, actual.enumList);
   });
 
   test('dart call testSharedStructInBlock2For1And2', () async {
@@ -248,13 +270,13 @@ void main(List<String> args) {
     var expected = SharedStructInAllBlocks(name: "newString", id: 2, num: 2.2);
     var actual = await api3.testAllSharedStructInBlock3(
         custom: SharedStructInAllBlocks(
-            name: "string", id: 1, num: 2.2, u8List: null),
+            name: "string", id: 1, num: 2.2, enumList: null),
         s: "newString",
         i: 2);
     expect(expected.name, actual.name);
     expect(expected.id, actual.id);
     expect(expected.num, actual.num);
-    expect(expected.u8List, actual.u8List);
+    expect(expected.enumList, actual.enumList);
   });
 
   test('dart call testSharedStructInBlock3For2And3', () async {

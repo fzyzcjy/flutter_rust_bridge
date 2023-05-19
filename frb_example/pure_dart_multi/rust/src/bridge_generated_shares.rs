@@ -15,10 +15,12 @@ use flutter_rust_bridge::*;
 
 // Section: imports
 
+pub use crate::shared_type_module::all_blocks_shared::EnumType;
 pub use crate::shared_type_module::all_blocks_shared::SharedStructInAllBlocks;
 pub use crate::shared_type_module::all_blocks_shared::SharedStructInBlock1And2;
 pub use crate::shared_type_module::all_blocks_shared::SharedStructInBlock2And3;
 pub use crate::shared_type_module::all_blocks_shared::SharedStructOnlyForSyncTest;
+pub use crate::shared_type_module::all_blocks_shared::Weekdays;
 pub use crate::shared_type_module::cross_shared::CrossSharedStructInBlock1And2;
 pub use crate::shared_type_module::cross_shared::CrossSharedStructInBlock2And3;
 
@@ -47,6 +49,12 @@ where
     }
 }
 
+impl Wire2Api<bool> for bool {
+    fn wire2api(self) -> bool {
+        self
+    }
+}
+
 impl Wire2Api<f32> for f32 {
     fn wire2api(self) -> f32 {
         self
@@ -57,6 +65,7 @@ impl Wire2Api<f64> for f64 {
         self
     }
 }
+
 impl Wire2Api<i32> for i32 {
     fn wire2api(self) -> i32 {
         self
@@ -74,6 +83,20 @@ impl Wire2Api<u8> for u8 {
     }
 }
 
+impl Wire2Api<Weekdays> for i32 {
+    fn wire2api(self) -> Weekdays {
+        match self {
+            0 => Weekdays::Monday,
+            1 => Weekdays::Tuesday,
+            2 => Weekdays::Wednesday,
+            3 => Weekdays::Thursday,
+            4 => Weekdays::Friday,
+            5 => Weekdays::Saturday,
+            6 => Weekdays::Sunday,
+            _ => unreachable!("Invalid variant for Weekdays: {}", self),
+        }
+    }
+}
 // Section: impl IntoDart
 
 impl support::IntoDart for CrossSharedStructInBlock1And2 {
@@ -90,13 +113,39 @@ impl support::IntoDart for CrossSharedStructInBlock2And3 {
 }
 impl support::IntoDartExceptPrimitive for CrossSharedStructInBlock2And3 {}
 
+impl support::IntoDart for EnumType {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::Empty => vec![0.into_dart()],
+            Self::Primitives {
+                int32,
+                float64,
+                boolean,
+            } => vec![
+                1.into_dart(),
+                int32.into_dart(),
+                float64.into_dart(),
+                boolean.into_dart(),
+            ],
+            Self::Nested(field0) => vec![2.into_dart(), field0.into_dart()],
+            Self::Optional(field0, field1) => {
+                vec![3.into_dart(), field0.into_dart(), field1.into_dart()]
+            }
+            Self::Buffer(field0) => vec![4.into_dart(), field0.into_dart()],
+            Self::Enums(field0) => vec![5.into_dart(), field0.into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for EnumType {}
+
 impl support::IntoDart for SharedStructInAllBlocks {
     fn into_dart(self) -> support::DartAbi {
         vec![
             self.id.into_dart(),
             self.num.into_dart(),
             self.name.into_dart(),
-            self.u8_list.into_dart(),
+            self.enum_list.into_dart(),
         ]
         .into_dart()
     }
@@ -134,6 +183,21 @@ impl support::IntoDart for SharedStructOnlyForSyncTest {
 }
 impl support::IntoDartExceptPrimitive for SharedStructOnlyForSyncTest {}
 
+impl support::IntoDart for Weekdays {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::Monday => 0,
+            Self::Tuesday => 1,
+            Self::Wednesday => 2,
+            Self::Thursday => 3,
+            Self::Friday => 4,
+            Self::Saturday => 5,
+            Self::Sunday => 6,
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for Weekdays {}
 // Section: executor
 
 /* nothing since executor detected */

@@ -101,6 +101,18 @@ class ApiBlock1ClassWire implements FlutterRustBridgeWireBase {
   ApiBlock1ClassWire.fromLookup(ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName) lookup)
       : _lookup = lookup;
 
+  ffi.Pointer<ffi.Int32> new_box_autoadd_i32(
+    int value,
+  ) {
+    return _new_box_autoadd_i32(
+      value,
+    );
+  }
+
+  late final _new_box_autoadd_i32Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int32> Function(ffi.Int32)>>('new_box_autoadd_i32');
+  late final _new_box_autoadd_i32 = _new_box_autoadd_i32Ptr.asFunction<ffi.Pointer<ffi.Int32> Function(int)>();
+
   ffi.Pointer<wire_SharedStructInAllBlocks> new_box_autoadd_shared_struct_in_all_blocks() {
     return _new_box_autoadd_shared_struct_in_all_blocks();
   }
@@ -131,6 +143,38 @@ class ApiBlock1ClassWire implements FlutterRustBridgeWireBase {
   late final _new_box_autoadd_shared_struct_in_block_2_and_3 = _new_box_autoadd_shared_struct_in_block_2_and_3Ptr
       .asFunction<ffi.Pointer<wire_SharedStructInBlock2And3> Function()>();
 
+  ffi.Pointer<wire_EnumType> new_box_enum_type() {
+    return _new_box_enum_type();
+  }
+
+  late final _new_box_enum_typePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_EnumType> Function()>>('new_box_enum_type');
+  late final _new_box_enum_type = _new_box_enum_typePtr.asFunction<ffi.Pointer<wire_EnumType> Function()>();
+
+  ffi.Pointer<wire_float_32_list> new_float_32_list(
+    int len,
+  ) {
+    return _new_float_32_list(
+      len,
+    );
+  }
+
+  late final _new_float_32_listPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_float_32_list> Function(ffi.Int32)>>('new_float_32_list');
+  late final _new_float_32_list = _new_float_32_listPtr.asFunction<ffi.Pointer<wire_float_32_list> Function(int)>();
+
+  ffi.Pointer<wire_list_enum_type> new_list_enum_type(
+    int len,
+  ) {
+    return _new_list_enum_type(
+      len,
+    );
+  }
+
+  late final _new_list_enum_typePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_enum_type> Function(ffi.Int32)>>('new_list_enum_type');
+  late final _new_list_enum_type = _new_list_enum_typePtr.asFunction<ffi.Pointer<wire_list_enum_type> Function(int)>();
+
   ffi.Pointer<wire_uint_8_list> new_uint_8_list(
     int len,
   ) {
@@ -142,6 +186,48 @@ class ApiBlock1ClassWire implements FlutterRustBridgeWireBase {
   late final _new_uint_8_listPtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list');
   late final _new_uint_8_list = _new_uint_8_listPtr.asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
+
+  ffi.Pointer<EnumTypeKind> inflate_EnumType_Primitives() {
+    return _inflate_EnumType_Primitives();
+  }
+
+  late final _inflate_EnumType_PrimitivesPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumTypeKind> Function()>>('inflate_EnumType_Primitives');
+  late final _inflate_EnumType_Primitives =
+      _inflate_EnumType_PrimitivesPtr.asFunction<ffi.Pointer<EnumTypeKind> Function()>();
+
+  ffi.Pointer<EnumTypeKind> inflate_EnumType_Nested() {
+    return _inflate_EnumType_Nested();
+  }
+
+  late final _inflate_EnumType_NestedPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumTypeKind> Function()>>('inflate_EnumType_Nested');
+  late final _inflate_EnumType_Nested = _inflate_EnumType_NestedPtr.asFunction<ffi.Pointer<EnumTypeKind> Function()>();
+
+  ffi.Pointer<EnumTypeKind> inflate_EnumType_Optional() {
+    return _inflate_EnumType_Optional();
+  }
+
+  late final _inflate_EnumType_OptionalPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumTypeKind> Function()>>('inflate_EnumType_Optional');
+  late final _inflate_EnumType_Optional =
+      _inflate_EnumType_OptionalPtr.asFunction<ffi.Pointer<EnumTypeKind> Function()>();
+
+  ffi.Pointer<EnumTypeKind> inflate_EnumType_Buffer() {
+    return _inflate_EnumType_Buffer();
+  }
+
+  late final _inflate_EnumType_BufferPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumTypeKind> Function()>>('inflate_EnumType_Buffer');
+  late final _inflate_EnumType_Buffer = _inflate_EnumType_BufferPtr.asFunction<ffi.Pointer<EnumTypeKind> Function()>();
+
+  ffi.Pointer<EnumTypeKind> inflate_EnumType_Enums() {
+    return _inflate_EnumType_Enums();
+  }
+
+  late final _inflate_EnumType_EnumsPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumTypeKind> Function()>>('inflate_EnumType_Enums');
+  late final _inflate_EnumType_Enums = _inflate_EnumType_EnumsPtr.asFunction<ffi.Pointer<EnumTypeKind> Function()>();
 
   void free_WireSyncReturn(
     WireSyncReturn ptr,
@@ -447,6 +533,52 @@ class ApiBlock1ClassWire implements FlutterRustBridgeWireBase {
 }
 
 class _Dart_Handle extends ffi.Opaque {}
+
+class wire_EnumType_Empty extends ffi.Opaque {}
+
+class wire_EnumType_Primitives extends ffi.Struct {
+  @ffi.Int32()
+  external int int32;
+
+  @ffi.Double()
+  external double float64;
+
+  @ffi.Bool()
+  external bool boolean;
+}
+
+class wire_EnumType_Nested extends ffi.Struct {
+  external ffi.Pointer<wire_EnumType> field0;
+}
+
+class EnumTypeKind extends ffi.Union {
+  external ffi.Pointer<wire_EnumType_Empty> Empty;
+
+  external ffi.Pointer<wire_EnumType_Primitives> Primitives;
+
+  external ffi.Pointer<wire_EnumType_Nested> Nested;
+
+  external ffi.Pointer<wire_EnumType_Optional> Optional;
+
+  external ffi.Pointer<wire_EnumType_Buffer> Buffer;
+
+  external ffi.Pointer<wire_EnumType_Enums> Enums;
+}
+
+class wire_EnumType_Optional extends ffi.Struct {
+  external ffi.Pointer<ffi.Int32> field0;
+
+  external ffi.Pointer<wire_uint_8_list> field1;
+}
+
+class wire_EnumType_Buffer extends ffi.Struct {
+  external ffi.Pointer<wire_float_32_list> field0;
+}
+
+class wire_EnumType_Enums extends ffi.Struct {
+  @ffi.Int32()
+  external int field0;
+}
 
 class wire_SharedStructInBlock2And3 extends ffi.Struct {
   @ffi.Int32()

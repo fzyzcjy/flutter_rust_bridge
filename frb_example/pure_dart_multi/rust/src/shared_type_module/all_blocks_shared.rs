@@ -1,9 +1,39 @@
+use flutter_rust_bridge::ZeroCopyBuffer;
+
+pub enum EnumType {
+    Empty,
+    Primitives {
+        /// Dart field comment
+        int32: i32,
+        float64: f64,
+        boolean: bool,
+    },
+    Nested(Box<EnumType>),
+    Optional(
+        /// Comment on anonymous field
+        Option<i32>,
+        Option<Vec<u8>>,
+    ),
+    Buffer(ZeroCopyBuffer<Vec<f32>>),
+    Enums(Weekdays),
+}
+
+pub enum Weekdays {
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    Saturday,
+    Sunday,
+}
+
 /// This is a struct used in ALL API blocks, NOT defined in any regular block file
 pub struct SharedStructInAllBlocks {
     pub id: i32,
     pub num: f64,
     pub name: String,
-    pub u8_list: Option<Vec<u8>>,
+    pub enum_list: Option<Vec<EnumType>>,
 }
 impl SharedStructInAllBlocks {
     #[allow(unused)]

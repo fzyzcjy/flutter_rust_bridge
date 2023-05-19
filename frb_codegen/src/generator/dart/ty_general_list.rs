@@ -43,7 +43,8 @@ impl TypeDartGeneratorTrait for TypeGeneralListGenerator<'_> {
 
     fn wire2api_body(&self) -> String {
         format!(
-            "return (raw as List<dynamic>).map(_wire2api_{}).toList();",
+            "return (raw as List<dynamic>).map({}wire2api_{}).toList();",
+            self.get_private_prefix(),
             self.ir.inner.safe_ident()
         )
     }

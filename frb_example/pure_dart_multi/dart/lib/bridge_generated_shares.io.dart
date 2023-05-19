@@ -23,6 +23,11 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   }
 
   @protected
+  ffi.Pointer<wire_float_32_list> api2wire_ZeroCopyBuffer_Float32List(Float32List raw) {
+    return api2wire_float_32_list(raw);
+  }
+
+  @protected
   ffi.Pointer<wire_CrossSharedStructInBlock1And2> api2wire_box_autoadd_cross_shared_struct_in_block_1_and_2(
       CrossSharedStructInBlock1And2 raw) {
     final ptr = inner.new_box_autoadd_cross_shared_struct_in_block_1_and_2();
@@ -41,6 +46,11 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   @protected
   ffi.Pointer<ffi.Double> api2wire_box_autoadd_f64(double raw) {
     return inner.new_box_autoadd_f64(api2wire_f64(raw));
+  }
+
+  @protected
+  ffi.Pointer<ffi.Int32> api2wire_box_autoadd_i32(int raw) {
+    return inner.new_box_autoadd_i32(api2wire_i32(raw));
   }
 
   @protected
@@ -76,6 +86,39 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   }
 
   @protected
+  ffi.Pointer<wire_EnumType> api2wire_box_enum_type(EnumType raw) {
+    final ptr = inner.new_box_enum_type();
+    _api_fill_to_wire_enum_type(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_float_32_list> api2wire_float_32_list(Float32List raw) {
+    final ans = inner.new_float_32_list(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_list_enum_type> api2wire_list_enum_type(List<EnumType> raw) {
+    final ans = inner.new_list_enum_type(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      _api_fill_to_wire_enum_type(raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<ffi.Int32> api2wire_opt_box_autoadd_i32(int? raw) {
+    return raw == null ? ffi.nullptr : api2wire_box_autoadd_i32(raw);
+  }
+
+  @protected
+  ffi.Pointer<wire_list_enum_type> api2wire_opt_list_enum_type(List<EnumType>? raw) {
+    return raw == null ? ffi.nullptr : api2wire_list_enum_type(raw);
+  }
+
+  @protected
   ffi.Pointer<wire_uint_8_list> api2wire_opt_uint_8_list(Uint8List? raw) {
     return raw == null ? ffi.nullptr : api2wire_uint_8_list(raw);
   }
@@ -91,6 +134,7 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
     return ans;
   }
+
 // Section: finalizer
 
 // Section: api_fill_to_wire
@@ -125,6 +169,10 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
     _api_fill_to_wire_shared_struct_only_for_sync_test(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_enum_type(EnumType apiObj, ffi.Pointer<wire_EnumType> wireObj) {
+    _api_fill_to_wire_enum_type(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_cross_shared_struct_in_block_1_and_2(
       CrossSharedStructInBlock1And2 apiObj, wire_CrossSharedStructInBlock1And2 wireObj) {
     wireObj.name = api2wire_String(apiObj.name);
@@ -135,12 +183,60 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
     wireObj.name = api2wire_String(apiObj.name);
   }
 
+  void _api_fill_to_wire_enum_type(EnumType apiObj, wire_EnumType wireObj) {
+    if (apiObj is EnumType_Empty) {
+      wireObj.tag = 0;
+      return;
+    }
+    if (apiObj is EnumType_Primitives) {
+      var pre_int32 = api2wire_i32(apiObj.int32);
+      var pre_float64 = api2wire_f64(apiObj.float64);
+      var pre_boolean = api2wire_bool(apiObj.boolean);
+      wireObj.tag = 1;
+      wireObj.kind = inner.inflate_EnumType_Primitives();
+      wireObj.kind.ref.Primitives.ref.int32 = pre_int32;
+      wireObj.kind.ref.Primitives.ref.float64 = pre_float64;
+      wireObj.kind.ref.Primitives.ref.boolean = pre_boolean;
+      return;
+    }
+    if (apiObj is EnumType_Nested) {
+      var pre_field0 = api2wire_box_enum_type(apiObj.field0);
+      wireObj.tag = 2;
+      wireObj.kind = inner.inflate_EnumType_Nested();
+      wireObj.kind.ref.Nested.ref.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is EnumType_Optional) {
+      var pre_field0 = api2wire_opt_box_autoadd_i32(apiObj.field0);
+      var pre_field1 = api2wire_opt_uint_8_list(apiObj.field1);
+      wireObj.tag = 3;
+      wireObj.kind = inner.inflate_EnumType_Optional();
+      wireObj.kind.ref.Optional.ref.field0 = pre_field0;
+      wireObj.kind.ref.Optional.ref.field1 = pre_field1;
+      return;
+    }
+    if (apiObj is EnumType_Buffer) {
+      var pre_field0 = api2wire_ZeroCopyBuffer_Float32List(apiObj.field0);
+      wireObj.tag = 4;
+      wireObj.kind = inner.inflate_EnumType_Buffer();
+      wireObj.kind.ref.Buffer.ref.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is EnumType_Enums) {
+      var pre_field0 = api2wire_weekdays(apiObj.field0);
+      wireObj.tag = 5;
+      wireObj.kind = inner.inflate_EnumType_Enums();
+      wireObj.kind.ref.Enums.ref.field0 = pre_field0;
+      return;
+    }
+  }
+
   void _api_fill_to_wire_shared_struct_in_all_blocks(
       SharedStructInAllBlocks apiObj, wire_SharedStructInAllBlocks wireObj) {
     wireObj.id = api2wire_i32(apiObj.id);
     wireObj.num = api2wire_f64(apiObj.num);
     wireObj.name = api2wire_String(apiObj.name);
-    wireObj.u8_list = api2wire_opt_uint_8_list(apiObj.u8List);
+    wireObj.enum_list = api2wire_opt_list_enum_type(apiObj.enumList);
   }
 
   void _api_fill_to_wire_shared_struct_in_block_1_and_2(
@@ -277,6 +373,18 @@ class BridgeGeneratedSharesWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Double> Function(ffi.Double)>>('new_box_autoadd_f64');
   late final _new_box_autoadd_f64 = _new_box_autoadd_f64Ptr.asFunction<ffi.Pointer<ffi.Double> Function(double)>();
 
+  ffi.Pointer<ffi.Int32> new_box_autoadd_i32(
+    int value,
+  ) {
+    return _new_box_autoadd_i32(
+      value,
+    );
+  }
+
+  late final _new_box_autoadd_i32Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int32> Function(ffi.Int32)>>('new_box_autoadd_i32');
+  late final _new_box_autoadd_i32 = _new_box_autoadd_i32Ptr.asFunction<ffi.Pointer<ffi.Int32> Function(int)>();
+
   ffi.Pointer<wire_SharedStructInAllBlocks> new_box_autoadd_shared_struct_in_all_blocks() {
     return _new_box_autoadd_shared_struct_in_all_blocks();
   }
@@ -317,6 +425,38 @@ class BridgeGeneratedSharesWire implements FlutterRustBridgeWireBase {
   late final _new_box_autoadd_shared_struct_only_for_sync_test = _new_box_autoadd_shared_struct_only_for_sync_testPtr
       .asFunction<ffi.Pointer<wire_SharedStructOnlyForSyncTest> Function()>();
 
+  ffi.Pointer<wire_EnumType> new_box_enum_type() {
+    return _new_box_enum_type();
+  }
+
+  late final _new_box_enum_typePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_EnumType> Function()>>('new_box_enum_type');
+  late final _new_box_enum_type = _new_box_enum_typePtr.asFunction<ffi.Pointer<wire_EnumType> Function()>();
+
+  ffi.Pointer<wire_float_32_list> new_float_32_list(
+    int len,
+  ) {
+    return _new_float_32_list(
+      len,
+    );
+  }
+
+  late final _new_float_32_listPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_float_32_list> Function(ffi.Int32)>>('new_float_32_list');
+  late final _new_float_32_list = _new_float_32_listPtr.asFunction<ffi.Pointer<wire_float_32_list> Function(int)>();
+
+  ffi.Pointer<wire_list_enum_type> new_list_enum_type(
+    int len,
+  ) {
+    return _new_list_enum_type(
+      len,
+    );
+  }
+
+  late final _new_list_enum_typePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_enum_type> Function(ffi.Int32)>>('new_list_enum_type');
+  late final _new_list_enum_type = _new_list_enum_typePtr.asFunction<ffi.Pointer<wire_list_enum_type> Function(int)>();
+
   ffi.Pointer<wire_uint_8_list> new_uint_8_list(
     int len,
   ) {
@@ -328,6 +468,48 @@ class BridgeGeneratedSharesWire implements FlutterRustBridgeWireBase {
   late final _new_uint_8_listPtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list');
   late final _new_uint_8_list = _new_uint_8_listPtr.asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
+
+  ffi.Pointer<EnumTypeKind> inflate_EnumType_Primitives() {
+    return _inflate_EnumType_Primitives();
+  }
+
+  late final _inflate_EnumType_PrimitivesPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumTypeKind> Function()>>('inflate_EnumType_Primitives');
+  late final _inflate_EnumType_Primitives =
+      _inflate_EnumType_PrimitivesPtr.asFunction<ffi.Pointer<EnumTypeKind> Function()>();
+
+  ffi.Pointer<EnumTypeKind> inflate_EnumType_Nested() {
+    return _inflate_EnumType_Nested();
+  }
+
+  late final _inflate_EnumType_NestedPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumTypeKind> Function()>>('inflate_EnumType_Nested');
+  late final _inflate_EnumType_Nested = _inflate_EnumType_NestedPtr.asFunction<ffi.Pointer<EnumTypeKind> Function()>();
+
+  ffi.Pointer<EnumTypeKind> inflate_EnumType_Optional() {
+    return _inflate_EnumType_Optional();
+  }
+
+  late final _inflate_EnumType_OptionalPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumTypeKind> Function()>>('inflate_EnumType_Optional');
+  late final _inflate_EnumType_Optional =
+      _inflate_EnumType_OptionalPtr.asFunction<ffi.Pointer<EnumTypeKind> Function()>();
+
+  ffi.Pointer<EnumTypeKind> inflate_EnumType_Buffer() {
+    return _inflate_EnumType_Buffer();
+  }
+
+  late final _inflate_EnumType_BufferPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumTypeKind> Function()>>('inflate_EnumType_Buffer');
+  late final _inflate_EnumType_Buffer = _inflate_EnumType_BufferPtr.asFunction<ffi.Pointer<EnumTypeKind> Function()>();
+
+  ffi.Pointer<EnumTypeKind> inflate_EnumType_Enums() {
+    return _inflate_EnumType_Enums();
+  }
+
+  late final _inflate_EnumType_EnumsPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumTypeKind> Function()>>('inflate_EnumType_Enums');
+  late final _inflate_EnumType_Enums = _inflate_EnumType_EnumsPtr.asFunction<ffi.Pointer<EnumTypeKind> Function()>();
 
   void free_WireSyncReturn(
     WireSyncReturn ptr,
@@ -359,6 +541,73 @@ class wire_CrossSharedStructInBlock2And3 extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> name;
 }
 
+class wire_EnumType_Empty extends ffi.Opaque {}
+
+class wire_EnumType_Primitives extends ffi.Struct {
+  @ffi.Int32()
+  external int int32;
+
+  @ffi.Double()
+  external double float64;
+
+  @ffi.Bool()
+  external bool boolean;
+}
+
+class wire_EnumType_Nested extends ffi.Struct {
+  external ffi.Pointer<wire_EnumType> field0;
+}
+
+class wire_EnumType extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<EnumTypeKind> kind;
+}
+
+class EnumTypeKind extends ffi.Union {
+  external ffi.Pointer<wire_EnumType_Empty> Empty;
+
+  external ffi.Pointer<wire_EnumType_Primitives> Primitives;
+
+  external ffi.Pointer<wire_EnumType_Nested> Nested;
+
+  external ffi.Pointer<wire_EnumType_Optional> Optional;
+
+  external ffi.Pointer<wire_EnumType_Buffer> Buffer;
+
+  external ffi.Pointer<wire_EnumType_Enums> Enums;
+}
+
+class wire_EnumType_Optional extends ffi.Struct {
+  external ffi.Pointer<ffi.Int32> field0;
+
+  external ffi.Pointer<wire_uint_8_list> field1;
+}
+
+class wire_EnumType_Buffer extends ffi.Struct {
+  external ffi.Pointer<wire_float_32_list> field0;
+}
+
+class wire_float_32_list extends ffi.Struct {
+  external ffi.Pointer<ffi.Float> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+class wire_EnumType_Enums extends ffi.Struct {
+  @ffi.Int32()
+  external int field0;
+}
+
+class wire_list_enum_type extends ffi.Struct {
+  external ffi.Pointer<wire_EnumType> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
 class wire_SharedStructInAllBlocks extends ffi.Struct {
   @ffi.Int32()
   external int id;
@@ -368,7 +617,7 @@ class wire_SharedStructInAllBlocks extends ffi.Struct {
 
   external ffi.Pointer<wire_uint_8_list> name;
 
-  external ffi.Pointer<wire_uint_8_list> u8_list;
+  external ffi.Pointer<wire_list_enum_type> enum_list;
 }
 
 class wire_SharedStructInBlock1And2 extends ffi.Struct {

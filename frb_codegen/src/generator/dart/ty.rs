@@ -28,6 +28,14 @@ pub trait TypeDartGeneratorTrait {
     fn is_type_shared(&self, ty: &IrType) -> bool {
         self.get_context().ir_file.is_type_shared_by_safe_ident(ty)
     }
+
+    fn get_private_prefix(&self) -> String {
+        if !self.get_context().config.shared {
+            "_".into()
+        } else {
+            "".into()
+        }
+    }
 }
 
 #[derive(Debug, Clone)]

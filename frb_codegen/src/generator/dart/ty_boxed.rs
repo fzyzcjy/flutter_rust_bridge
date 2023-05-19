@@ -85,10 +85,9 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
             | EnumRef(_)
             | Primitive(IrTypePrimitive::I64 | IrTypePrimitive::U64 | IrTypePrimitive::Usize)
             | Delegate(IrTypeDelegate::Array(_) | IrTypeDelegate::PrimitiveEnum { .. }) => {
-                // TODO: refactor into trait method?
-                let private_prefix = if !self.context.config.shared { "_" } else { "" };
                 format!(
-                    "return {private_prefix}wire2api_{}(raw);",
+                    "return {}wire2api_{}(raw);",
+                    self.get_private_prefix(),
                     self.ir.inner.safe_ident()
                 )
             }

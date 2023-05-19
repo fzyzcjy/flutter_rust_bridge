@@ -7,6 +7,7 @@ import 'dart:async';
 import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 
 import 'dart:convert';
 import 'dart:async';
@@ -17,6 +18,8 @@ import 'bridge_generated_shares.io.dart' if (dart.library.html) 'bridge_generate
 import 'bridge_generated_shares.dart';
 export 'bridge_generated_shares.dart';
 import 'bridge_generated_shares.io.dart' if (dart.library.html) 'bridge_generated_shares.web.dart';
+
+part 'bridge_generated_shares.freezed.dart';
 
 abstract class BridgeGeneratedShares {}
 
@@ -40,18 +43,43 @@ class CrossSharedStructInBlock2And3 {
   });
 }
 
+@freezed
+class EnumType with _$EnumType {
+  const factory EnumType.empty() = EnumType_Empty;
+  const factory EnumType.primitives({
+    /// Dart field comment
+    required int int32,
+    required double float64,
+    required bool boolean,
+  }) = EnumType_Primitives;
+  const factory EnumType.nested(
+    EnumType field0,
+  ) = EnumType_Nested;
+  const factory EnumType.optional([
+    /// Comment on anonymous field
+    int? field0,
+    Uint8List? field1,
+  ]) = EnumType_Optional;
+  const factory EnumType.buffer(
+    Float32List field0,
+  ) = EnumType_Buffer;
+  const factory EnumType.enums(
+    Weekdays field0,
+  ) = EnumType_Enums;
+}
+
 /// This is a struct used in ALL API blocks, NOT defined in any regular block file
 class SharedStructInAllBlocks {
   final int id;
   final double num;
   final String name;
-  final Uint8List? u8List;
+  final List<EnumType>? enumList;
 
   const SharedStructInAllBlocks({
     required this.id,
     required this.num,
     required this.name,
-    this.u8List,
+    this.enumList,
   });
 }
 
@@ -91,6 +119,16 @@ class SharedStructOnlyForSyncTest {
   });
 }
 
+enum Weekdays {
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday,
+  Sunday,
+}
+
 class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
   final BridgeGeneratedSharesPlatform _platform;
   factory BridgeGeneratedSharesImpl(ExternalLibrary dylib) =>
@@ -110,8 +148,24 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
     return raw as String;
   }
 
+  Float32List wire2api_ZeroCopyBuffer_Float32List(dynamic raw) {
+    return raw as Float32List;
+  }
+
+  bool wire2api_bool(dynamic raw) {
+    return raw as bool;
+  }
+
   double wire2api_box_autoadd_f64(dynamic raw) {
     return raw as double;
+  }
+
+  int wire2api_box_autoadd_i32(dynamic raw) {
+    return raw as int;
+  }
+
+  EnumType wire2api_box_enum_type(dynamic raw) {
+    return wire2api_enum_type(raw);
   }
 
   CrossSharedStructInBlock1And2 wire2api_cross_shared_struct_in_block_1_and_2(dynamic raw) {
@@ -130,6 +184,38 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
     );
   }
 
+  EnumType wire2api_enum_type(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return EnumType_Empty();
+      case 1:
+        return EnumType_Primitives(
+          int32: wire2api_i32(raw[1]),
+          float64: wire2api_f64(raw[2]),
+          boolean: wire2api_bool(raw[3]),
+        );
+      case 2:
+        return EnumType_Nested(
+          wire2api_box_enum_type(raw[1]),
+        );
+      case 3:
+        return EnumType_Optional(
+          wire2api_opt_box_autoadd_i32(raw[1]),
+          wire2api_opt_uint_8_list(raw[2]),
+        );
+      case 4:
+        return EnumType_Buffer(
+          wire2api_ZeroCopyBuffer_Float32List(raw[1]),
+        );
+      case 5:
+        return EnumType_Enums(
+          wire2api_weekdays(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
   double wire2api_f32(dynamic raw) {
     return raw as double;
   }
@@ -138,8 +224,24 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
     return raw as double;
   }
 
+  Float32List wire2api_float_32_list(dynamic raw) {
+    return raw as Float32List;
+  }
+
   int wire2api_i32(dynamic raw) {
     return raw as int;
+  }
+
+  List<EnumType> wire2api_list_enum_type(dynamic raw) {
+    return (raw as List<dynamic>).map(wire2api_enum_type).toList();
+  }
+
+  int? wire2api_opt_box_autoadd_i32(dynamic raw) {
+    return raw == null ? null : wire2api_box_autoadd_i32(raw);
+  }
+
+  List<EnumType>? wire2api_opt_list_enum_type(dynamic raw) {
+    return raw == null ? null : wire2api_list_enum_type(raw);
   }
 
   Uint8List? wire2api_opt_uint_8_list(dynamic raw) {
@@ -153,7 +255,7 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
       id: wire2api_i32(arr[0]),
       num: wire2api_f64(arr[1]),
       name: wire2api_String(arr[2]),
-      u8List: wire2api_opt_uint_8_list(arr[3]),
+      enumList: wire2api_opt_list_enum_type(arr[3]),
     );
   }
 
@@ -193,9 +295,18 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
   Uint8List wire2api_uint_8_list(dynamic raw) {
     return raw as Uint8List;
   }
+
+  Weekdays wire2api_weekdays(dynamic raw) {
+    return Weekdays.values[raw as int];
+  }
 }
 
 // Section: api2wire
+
+@protected
+bool api2wire_bool(bool raw) {
+  return raw;
+}
 
 @protected
 double api2wire_f32(double raw) {
@@ -217,4 +328,8 @@ int api2wire_u8(int raw) {
   return raw;
 }
 
+@protected
+int api2wire_weekdays(Weekdays raw) {
+  return api2wire_i32(raw.index);
+}
 // Section: finalizer
