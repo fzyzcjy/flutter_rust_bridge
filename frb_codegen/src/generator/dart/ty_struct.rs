@@ -121,8 +121,9 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                         "_sharedImpl."
                     };
                     format!(
-                        "{}: {prefix}wire2api_{}(arr[{}]),",
+                        "{}: {}wire2api_{}(arr[{}]),",
                         field.name.dart_style(),
+                        prefix,
                         field.ty.safe_ident(),
                         idx
                     )

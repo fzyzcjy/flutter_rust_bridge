@@ -100,11 +100,26 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                     array.dart_api_type(),
                     general.safe_ident(),
                 ),
-                IrTypeDelegateArray::PrimitiveArray { .. } => format!(
-                    r"return {}(_wire2api_{}(raw));",
-                    array.dart_api_type(),
-                    array.get_delegate().safe_ident(),
-                ),
+                IrTypeDelegateArray::PrimitiveArray { .. } => {
+                    let delegated_type = array.get_delegate();
+                    let prefix = if !self.context.config.shared {
+                        // if ir_file.is_type_shared_by_safe_ident(ty) {
+                        if !self.is_type_shared(&delegated_type) {
+                            "_"
+                        } else {
+                            "_sharedImpl."
+                        }
+                    } else {
+                        ""
+                    };
+
+                    format!(
+                        r"return {}({}wire2api_{}(raw));",
+                        array.dart_api_type(),
+                        prefix,
+                        delegated_type.safe_ident(),
+                    )
+                }
             },
 
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(

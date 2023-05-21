@@ -14,6 +14,16 @@ void main(List<String> args) {
 
   final dylib = loadLibForDart(dylibPath);
 
+  final enumList = [
+    EnumType.enums(Weekdays.Friday),
+    EnumType.nested(EnumType.enums(Weekdays.Friday)),
+    EnumType.empty(),
+    EnumType.primitives(int32: 1, float64: 2.0, boolean: true),
+    EnumType.optional(null, Uint8List.fromList([1, 2])),
+    EnumType.buffer(Float32List.fromList([1.1, 2.2])),
+    EnumType.bytesArray(U8Array3(Uint8List.fromList([1, 2, 3])))
+  ];
+
   //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓test api block 1↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
   final api1 = ApiBlock1ClassImpl(dylib);
 
@@ -40,14 +50,6 @@ void main(List<String> args) {
   });
 
   test('dart call testAllSharedStructInBlock1', () async {
-    final enumList = [
-      EnumType.enums(Weekdays.Friday),
-      EnumType.nested(EnumType.enums(Weekdays.Friday)),
-      EnumType.empty(),
-      EnumType.primitives(int32: 1, float64: 2.0, boolean: true),
-      EnumType.optional(null, Uint8List.fromList([1, 2])),
-      EnumType.buffer(Float32List.fromList([1.1, 2.2]))
-    ];
     var expected = SharedStructInAllBlocks(
       name: "newString",
       id: 2,
@@ -123,14 +125,6 @@ void main(List<String> args) {
   });
 
   test('dart call testAllSharedStructInBlock2', () async {
-    final enumList = [
-      EnumType.enums(Weekdays.Friday),
-      EnumType.nested(EnumType.enums(Weekdays.Friday)),
-      EnumType.empty(),
-      EnumType.primitives(int32: 1, float64: 2.0, boolean: true),
-      EnumType.optional(null, Uint8List.fromList([1, 2])),
-      EnumType.buffer(Float32List.fromList([1.1, 2.2]))
-    ];
     var expected = SharedStructInAllBlocks(
         name: "newString", id: 2, num: 2.2, enumList: enumList);
     var actual = await api2.testAllSharedStructInBlock2(
@@ -145,14 +139,6 @@ void main(List<String> args) {
   });
 
   test('dart call testAllSharedStructInSyncInBlock2', () async {
-    final enumList = [
-      EnumType.enums(Weekdays.Friday),
-      EnumType.nested(EnumType.enums(Weekdays.Friday)),
-      EnumType.empty(),
-      EnumType.primitives(int32: 1, float64: 2.0, boolean: true),
-      EnumType.optional(null, Uint8List.fromList([1, 2])),
-      EnumType.buffer(Float32List.fromList([1.1, 2.2]))
-    ];
     var expected = SharedStructInAllBlocks(
         name: "newString", id: 2, num: 2.2, enumList: enumList);
     var actual = api2.testAllSharedStructInSyncInBlock2(

@@ -8,6 +8,7 @@ import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+import 'package:collection/collection.dart';
 
 import 'dart:convert';
 import 'dart:async';
@@ -66,6 +67,9 @@ class EnumType with _$EnumType {
   const factory EnumType.enums(
     Weekdays field0,
   ) = EnumType_Enums;
+  const factory EnumType.bytesArray(
+    U8Array3 field0,
+  ) = EnumType_BytesArray;
 }
 
 /// This is a struct used in ALL API blocks, NOT defined in any regular block file
@@ -117,6 +121,15 @@ class SharedStructOnlyForSyncTest {
     required this.name,
     required this.score,
   });
+}
+
+class U8Array3 extends NonGrowableListView<int> {
+  static const arraySize = 3;
+  U8Array3(Uint8List inner)
+      : assert(inner.length == arraySize),
+        super(inner);
+  U8Array3.unchecked(Uint8List inner) : super(inner);
+  U8Array3.init() : super(Uint8List(arraySize));
 }
 
 enum Weekdays {
@@ -211,6 +224,10 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
         return EnumType_Enums(
           wire2api_weekdays(raw[1]),
         );
+      case 6:
+        return EnumType_BytesArray(
+          wire2api_u8_array_3(raw[1]),
+        );
       default:
         throw Exception("unreachable");
     }
@@ -290,6 +307,10 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
 
   int wire2api_u8(dynamic raw) {
     return raw as int;
+  }
+
+  U8Array3 wire2api_u8_array_3(dynamic raw) {
+    return U8Array3(wire2api_uint_8_list(raw));
   }
 
   Uint8List wire2api_uint_8_list(dynamic raw) {

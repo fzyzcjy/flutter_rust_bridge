@@ -129,6 +129,13 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   }
 
   @protected
+  ffi.Pointer<wire_uint_8_list> api2wire_u8_array_3(U8Array3 raw) {
+    final ans = inner.new_uint_8_list(3);
+    ans.ref.ptr.asTypedList(3).setAll(0, raw);
+    return ans;
+  }
+
+  @protected
   ffi.Pointer<wire_uint_8_list> api2wire_uint_8_list(Uint8List raw) {
     final ans = inner.new_uint_8_list(raw.length);
     ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
@@ -227,6 +234,13 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
       wireObj.tag = 5;
       wireObj.kind = inner.inflate_EnumType_Enums();
       wireObj.kind.ref.Enums.ref.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is EnumType_BytesArray) {
+      var pre_field0 = api2wire_u8_array_3(apiObj.field0);
+      wireObj.tag = 6;
+      wireObj.kind = inner.inflate_EnumType_BytesArray();
+      wireObj.kind.ref.BytesArray.ref.field0 = pre_field0;
       return;
     }
   }
@@ -511,6 +525,15 @@ class BridgeGeneratedSharesWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Pointer<EnumTypeKind> Function()>>('inflate_EnumType_Enums');
   late final _inflate_EnumType_Enums = _inflate_EnumType_EnumsPtr.asFunction<ffi.Pointer<EnumTypeKind> Function()>();
 
+  ffi.Pointer<EnumTypeKind> inflate_EnumType_BytesArray() {
+    return _inflate_EnumType_BytesArray();
+  }
+
+  late final _inflate_EnumType_BytesArrayPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumTypeKind> Function()>>('inflate_EnumType_BytesArray');
+  late final _inflate_EnumType_BytesArray =
+      _inflate_EnumType_BytesArrayPtr.asFunction<ffi.Pointer<EnumTypeKind> Function()>();
+
   void free_WireSyncReturn(
     WireSyncReturn ptr,
   ) {
@@ -577,6 +600,8 @@ class EnumTypeKind extends ffi.Union {
   external ffi.Pointer<wire_EnumType_Buffer> Buffer;
 
   external ffi.Pointer<wire_EnumType_Enums> Enums;
+
+  external ffi.Pointer<wire_EnumType_BytesArray> BytesArray;
 }
 
 class wire_EnumType_Optional extends ffi.Struct {
@@ -599,6 +624,10 @@ class wire_float_32_list extends ffi.Struct {
 class wire_EnumType_Enums extends ffi.Struct {
   @ffi.Int32()
   external int field0;
+}
+
+class wire_EnumType_BytesArray extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> field0;
 }
 
 class wire_list_enum_type extends ffi.Struct {

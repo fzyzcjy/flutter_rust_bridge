@@ -42,6 +42,10 @@ typedef struct wire_EnumType_Enums {
   int32_t field0;
 } wire_EnumType_Enums;
 
+typedef struct wire_EnumType_BytesArray {
+  struct wire_uint_8_list *field0;
+} wire_EnumType_BytesArray;
+
 typedef union EnumTypeKind {
   struct wire_EnumType_Empty *Empty;
   struct wire_EnumType_Primitives *Primitives;
@@ -49,6 +53,7 @@ typedef union EnumTypeKind {
   struct wire_EnumType_Optional *Optional;
   struct wire_EnumType_Buffer *Buffer;
   struct wire_EnumType_Enums *Enums;
+  struct wire_EnumType_BytesArray *BytesArray;
 } EnumTypeKind;
 
 typedef struct wire_EnumType {
@@ -126,6 +131,8 @@ union EnumTypeKind *inflate_EnumType_Optional(void);
 union EnumTypeKind *inflate_EnumType_Buffer(void);
 
 union EnumTypeKind *inflate_EnumType_Enums(void);
+
+union EnumTypeKind *inflate_EnumType_BytesArray(void);
 
 void free_WireSyncReturn(WireSyncReturn ptr);
 

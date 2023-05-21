@@ -133,6 +133,7 @@ impl support::IntoDart for EnumType {
             }
             Self::Buffer(field0) => vec![4.into_dart(), field0.into_dart()],
             Self::Enums(field0) => vec![5.into_dart(), field0.into_dart()],
+            Self::BytesArray(field0) => vec![6.into_dart(), field0.into_dart()],
         }
         .into_dart()
     }

@@ -60,6 +60,7 @@ impl Wire2Api<EnumType> for JsValue {
             3 => EnumType::Optional(self_.get(1).wire2api(), self_.get(2).wire2api()),
             4 => EnumType::Buffer(self_.get(1).wire2api()),
             5 => EnumType::Enums(self_.get(1).wire2api()),
+            6 => EnumType::BytesArray(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
     }
@@ -156,6 +157,12 @@ impl Wire2Api<SharedStructOnlyForSyncTest> for JsValue {
     }
 }
 
+impl Wire2Api<[u8; 3]> for Box<[u8]> {
+    fn wire2api(self) -> [u8; 3] {
+        let vec: Vec<u8> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
 impl Wire2Api<Vec<u8>> for Box<[u8]> {
     fn wire2api(self) -> Vec<u8> {
         self.into_vec()
@@ -224,6 +231,12 @@ impl Wire2Api<u64> for JsValue {
 impl Wire2Api<u8> for JsValue {
     fn wire2api(self) -> u8 {
         self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<[u8; 3]> for JsValue {
+    fn wire2api(self) -> [u8; 3] {
+        let vec: Vec<u8> = self.wire2api();
+        support::from_vec_to_array(vec)
     }
 }
 impl Wire2Api<Vec<u8>> for JsValue {

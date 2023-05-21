@@ -16,6 +16,7 @@ pub enum EnumType {
     ),
     Buffer(ZeroCopyBuffer<Vec<f32>>),
     Enums(Weekdays),
+    BytesArray([u8; 3]),
 }
 
 pub enum Weekdays {

@@ -105,6 +105,9 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
     if (raw is EnumType_Enums) {
       return [5, api2wire_weekdays(raw.field0)];
     }
+    if (raw is EnumType_BytesArray) {
+      return [6, api2wire_u8_array_3(raw.field0)];
+    }
 
     throw Exception('unreachable');
   }
@@ -162,6 +165,11 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   @protected
   Object api2wire_u64(int raw) {
     return castNativeBigInt(raw);
+  }
+
+  @protected
+  Uint8List api2wire_u8_array_3(U8Array3 raw) {
+    return Uint8List.fromList(raw);
   }
 
   @protected

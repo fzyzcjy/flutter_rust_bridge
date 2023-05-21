@@ -686,17 +686,18 @@ fn generate_wire2api_func(
     _dart_api_class_name: &str,
     config: &Opts,
 ) -> String {
-    let body = TypeDartGenerator::new(ty.clone(), ir_file, config).wire2api_body();
     let prefix = if !config.shared { "_" } else { "" };
+    let body = TypeDartGenerator::new(ty.clone(), ir_file, config).wire2api_body();
     format!(
-        "{} {prefix}wire2api_{}({} raw) {{
+        "{} {}wire2api_{}({} raw) {{
             {}
         }}
         ",
         ty.dart_api_type(),
+        prefix,
         ty.safe_ident(),
         ty.dart_param_type(),
-        body,
+        body
     )
 }
 

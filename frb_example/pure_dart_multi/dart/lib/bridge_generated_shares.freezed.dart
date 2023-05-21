@@ -24,6 +24,7 @@ mixin _$EnumType {
     required TResult Function(int? field0, Uint8List? field1) optional,
     required TResult Function(Float32List field0) buffer,
     required TResult Function(Weekdays field0) enums,
+    required TResult Function(U8Array3 field0) bytesArray,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +35,7 @@ mixin _$EnumType {
     TResult? Function(int? field0, Uint8List? field1)? optional,
     TResult? Function(Float32List field0)? buffer,
     TResult? Function(Weekdays field0)? enums,
+    TResult? Function(U8Array3 field0)? bytesArray,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +46,7 @@ mixin _$EnumType {
     TResult Function(int? field0, Uint8List? field1)? optional,
     TResult Function(Float32List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
+    TResult Function(U8Array3 field0)? bytesArray,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +58,7 @@ mixin _$EnumType {
     required TResult Function(EnumType_Optional value) optional,
     required TResult Function(EnumType_Buffer value) buffer,
     required TResult Function(EnumType_Enums value) enums,
+    required TResult Function(EnumType_BytesArray value) bytesArray,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +69,7 @@ mixin _$EnumType {
     TResult? Function(EnumType_Optional value)? optional,
     TResult? Function(EnumType_Buffer value)? buffer,
     TResult? Function(EnumType_Enums value)? enums,
+    TResult? Function(EnumType_BytesArray value)? bytesArray,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +80,7 @@ mixin _$EnumType {
     TResult Function(EnumType_Optional value)? optional,
     TResult Function(EnumType_Buffer value)? buffer,
     TResult Function(EnumType_Enums value)? enums,
+    TResult Function(EnumType_BytesArray value)? bytesArray,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -134,6 +140,7 @@ class _$EnumType_Empty implements EnumType_Empty {
     required TResult Function(int? field0, Uint8List? field1) optional,
     required TResult Function(Float32List field0) buffer,
     required TResult Function(Weekdays field0) enums,
+    required TResult Function(U8Array3 field0) bytesArray,
   }) {
     return empty();
   }
@@ -147,6 +154,7 @@ class _$EnumType_Empty implements EnumType_Empty {
     TResult? Function(int? field0, Uint8List? field1)? optional,
     TResult? Function(Float32List field0)? buffer,
     TResult? Function(Weekdays field0)? enums,
+    TResult? Function(U8Array3 field0)? bytesArray,
   }) {
     return empty?.call();
   }
@@ -160,6 +168,7 @@ class _$EnumType_Empty implements EnumType_Empty {
     TResult Function(int? field0, Uint8List? field1)? optional,
     TResult Function(Float32List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
+    TResult Function(U8Array3 field0)? bytesArray,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -177,6 +186,7 @@ class _$EnumType_Empty implements EnumType_Empty {
     required TResult Function(EnumType_Optional value) optional,
     required TResult Function(EnumType_Buffer value) buffer,
     required TResult Function(EnumType_Enums value) enums,
+    required TResult Function(EnumType_BytesArray value) bytesArray,
   }) {
     return empty(this);
   }
@@ -190,6 +200,7 @@ class _$EnumType_Empty implements EnumType_Empty {
     TResult? Function(EnumType_Optional value)? optional,
     TResult? Function(EnumType_Buffer value)? buffer,
     TResult? Function(EnumType_Enums value)? enums,
+    TResult? Function(EnumType_BytesArray value)? bytesArray,
   }) {
     return empty?.call(this);
   }
@@ -203,6 +214,7 @@ class _$EnumType_Empty implements EnumType_Empty {
     TResult Function(EnumType_Optional value)? optional,
     TResult Function(EnumType_Buffer value)? buffer,
     TResult Function(EnumType_Enums value)? enums,
+    TResult Function(EnumType_BytesArray value)? bytesArray,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -300,6 +312,7 @@ class _$EnumType_Primitives implements EnumType_Primitives {
     required TResult Function(int? field0, Uint8List? field1) optional,
     required TResult Function(Float32List field0) buffer,
     required TResult Function(Weekdays field0) enums,
+    required TResult Function(U8Array3 field0) bytesArray,
   }) {
     return primitives(int32, float64, boolean);
   }
@@ -313,6 +326,7 @@ class _$EnumType_Primitives implements EnumType_Primitives {
     TResult? Function(int? field0, Uint8List? field1)? optional,
     TResult? Function(Float32List field0)? buffer,
     TResult? Function(Weekdays field0)? enums,
+    TResult? Function(U8Array3 field0)? bytesArray,
   }) {
     return primitives?.call(int32, float64, boolean);
   }
@@ -326,6 +340,7 @@ class _$EnumType_Primitives implements EnumType_Primitives {
     TResult Function(int? field0, Uint8List? field1)? optional,
     TResult Function(Float32List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
+    TResult Function(U8Array3 field0)? bytesArray,
     required TResult orElse(),
   }) {
     if (primitives != null) {
@@ -343,6 +358,7 @@ class _$EnumType_Primitives implements EnumType_Primitives {
     required TResult Function(EnumType_Optional value) optional,
     required TResult Function(EnumType_Buffer value) buffer,
     required TResult Function(EnumType_Enums value) enums,
+    required TResult Function(EnumType_BytesArray value) bytesArray,
   }) {
     return primitives(this);
   }
@@ -356,6 +372,7 @@ class _$EnumType_Primitives implements EnumType_Primitives {
     TResult? Function(EnumType_Optional value)? optional,
     TResult? Function(EnumType_Buffer value)? buffer,
     TResult? Function(EnumType_Enums value)? enums,
+    TResult? Function(EnumType_BytesArray value)? bytesArray,
   }) {
     return primitives?.call(this);
   }
@@ -369,6 +386,7 @@ class _$EnumType_Primitives implements EnumType_Primitives {
     TResult Function(EnumType_Optional value)? optional,
     TResult Function(EnumType_Buffer value)? buffer,
     TResult Function(EnumType_Enums value)? enums,
+    TResult Function(EnumType_BytesArray value)? bytesArray,
     required TResult orElse(),
   }) {
     if (primitives != null) {
@@ -467,6 +485,7 @@ class _$EnumType_Nested implements EnumType_Nested {
     required TResult Function(int? field0, Uint8List? field1) optional,
     required TResult Function(Float32List field0) buffer,
     required TResult Function(Weekdays field0) enums,
+    required TResult Function(U8Array3 field0) bytesArray,
   }) {
     return nested(field0);
   }
@@ -480,6 +499,7 @@ class _$EnumType_Nested implements EnumType_Nested {
     TResult? Function(int? field0, Uint8List? field1)? optional,
     TResult? Function(Float32List field0)? buffer,
     TResult? Function(Weekdays field0)? enums,
+    TResult? Function(U8Array3 field0)? bytesArray,
   }) {
     return nested?.call(field0);
   }
@@ -493,6 +513,7 @@ class _$EnumType_Nested implements EnumType_Nested {
     TResult Function(int? field0, Uint8List? field1)? optional,
     TResult Function(Float32List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
+    TResult Function(U8Array3 field0)? bytesArray,
     required TResult orElse(),
   }) {
     if (nested != null) {
@@ -510,6 +531,7 @@ class _$EnumType_Nested implements EnumType_Nested {
     required TResult Function(EnumType_Optional value) optional,
     required TResult Function(EnumType_Buffer value) buffer,
     required TResult Function(EnumType_Enums value) enums,
+    required TResult Function(EnumType_BytesArray value) bytesArray,
   }) {
     return nested(this);
   }
@@ -523,6 +545,7 @@ class _$EnumType_Nested implements EnumType_Nested {
     TResult? Function(EnumType_Optional value)? optional,
     TResult? Function(EnumType_Buffer value)? buffer,
     TResult? Function(EnumType_Enums value)? enums,
+    TResult? Function(EnumType_BytesArray value)? bytesArray,
   }) {
     return nested?.call(this);
   }
@@ -536,6 +559,7 @@ class _$EnumType_Nested implements EnumType_Nested {
     TResult Function(EnumType_Optional value)? optional,
     TResult Function(EnumType_Buffer value)? buffer,
     TResult Function(EnumType_Enums value)? enums,
+    TResult Function(EnumType_BytesArray value)? bytesArray,
     required TResult orElse(),
   }) {
     if (nested != null) {
@@ -629,6 +653,7 @@ class _$EnumType_Optional implements EnumType_Optional {
     required TResult Function(int? field0, Uint8List? field1) optional,
     required TResult Function(Float32List field0) buffer,
     required TResult Function(Weekdays field0) enums,
+    required TResult Function(U8Array3 field0) bytesArray,
   }) {
     return optional(field0, field1);
   }
@@ -642,6 +667,7 @@ class _$EnumType_Optional implements EnumType_Optional {
     TResult? Function(int? field0, Uint8List? field1)? optional,
     TResult? Function(Float32List field0)? buffer,
     TResult? Function(Weekdays field0)? enums,
+    TResult? Function(U8Array3 field0)? bytesArray,
   }) {
     return optional?.call(field0, field1);
   }
@@ -655,6 +681,7 @@ class _$EnumType_Optional implements EnumType_Optional {
     TResult Function(int? field0, Uint8List? field1)? optional,
     TResult Function(Float32List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
+    TResult Function(U8Array3 field0)? bytesArray,
     required TResult orElse(),
   }) {
     if (optional != null) {
@@ -672,6 +699,7 @@ class _$EnumType_Optional implements EnumType_Optional {
     required TResult Function(EnumType_Optional value) optional,
     required TResult Function(EnumType_Buffer value) buffer,
     required TResult Function(EnumType_Enums value) enums,
+    required TResult Function(EnumType_BytesArray value) bytesArray,
   }) {
     return optional(this);
   }
@@ -685,6 +713,7 @@ class _$EnumType_Optional implements EnumType_Optional {
     TResult? Function(EnumType_Optional value)? optional,
     TResult? Function(EnumType_Buffer value)? buffer,
     TResult? Function(EnumType_Enums value)? enums,
+    TResult? Function(EnumType_BytesArray value)? bytesArray,
   }) {
     return optional?.call(this);
   }
@@ -698,6 +727,7 @@ class _$EnumType_Optional implements EnumType_Optional {
     TResult Function(EnumType_Optional value)? optional,
     TResult Function(EnumType_Buffer value)? buffer,
     TResult Function(EnumType_Enums value)? enums,
+    TResult Function(EnumType_BytesArray value)? bytesArray,
     required TResult orElse(),
   }) {
     if (optional != null) {
@@ -784,6 +814,7 @@ class _$EnumType_Buffer implements EnumType_Buffer {
     required TResult Function(int? field0, Uint8List? field1) optional,
     required TResult Function(Float32List field0) buffer,
     required TResult Function(Weekdays field0) enums,
+    required TResult Function(U8Array3 field0) bytesArray,
   }) {
     return buffer(field0);
   }
@@ -797,6 +828,7 @@ class _$EnumType_Buffer implements EnumType_Buffer {
     TResult? Function(int? field0, Uint8List? field1)? optional,
     TResult? Function(Float32List field0)? buffer,
     TResult? Function(Weekdays field0)? enums,
+    TResult? Function(U8Array3 field0)? bytesArray,
   }) {
     return buffer?.call(field0);
   }
@@ -810,6 +842,7 @@ class _$EnumType_Buffer implements EnumType_Buffer {
     TResult Function(int? field0, Uint8List? field1)? optional,
     TResult Function(Float32List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
+    TResult Function(U8Array3 field0)? bytesArray,
     required TResult orElse(),
   }) {
     if (buffer != null) {
@@ -827,6 +860,7 @@ class _$EnumType_Buffer implements EnumType_Buffer {
     required TResult Function(EnumType_Optional value) optional,
     required TResult Function(EnumType_Buffer value) buffer,
     required TResult Function(EnumType_Enums value) enums,
+    required TResult Function(EnumType_BytesArray value) bytesArray,
   }) {
     return buffer(this);
   }
@@ -840,6 +874,7 @@ class _$EnumType_Buffer implements EnumType_Buffer {
     TResult? Function(EnumType_Optional value)? optional,
     TResult? Function(EnumType_Buffer value)? buffer,
     TResult? Function(EnumType_Enums value)? enums,
+    TResult? Function(EnumType_BytesArray value)? bytesArray,
   }) {
     return buffer?.call(this);
   }
@@ -853,6 +888,7 @@ class _$EnumType_Buffer implements EnumType_Buffer {
     TResult Function(EnumType_Optional value)? optional,
     TResult Function(EnumType_Buffer value)? buffer,
     TResult Function(EnumType_Enums value)? enums,
+    TResult Function(EnumType_BytesArray value)? bytesArray,
     required TResult orElse(),
   }) {
     if (buffer != null) {
@@ -936,6 +972,7 @@ class _$EnumType_Enums implements EnumType_Enums {
     required TResult Function(int? field0, Uint8List? field1) optional,
     required TResult Function(Float32List field0) buffer,
     required TResult Function(Weekdays field0) enums,
+    required TResult Function(U8Array3 field0) bytesArray,
   }) {
     return enums(field0);
   }
@@ -949,6 +986,7 @@ class _$EnumType_Enums implements EnumType_Enums {
     TResult? Function(int? field0, Uint8List? field1)? optional,
     TResult? Function(Float32List field0)? buffer,
     TResult? Function(Weekdays field0)? enums,
+    TResult? Function(U8Array3 field0)? bytesArray,
   }) {
     return enums?.call(field0);
   }
@@ -962,6 +1000,7 @@ class _$EnumType_Enums implements EnumType_Enums {
     TResult Function(int? field0, Uint8List? field1)? optional,
     TResult Function(Float32List field0)? buffer,
     TResult Function(Weekdays field0)? enums,
+    TResult Function(U8Array3 field0)? bytesArray,
     required TResult orElse(),
   }) {
     if (enums != null) {
@@ -979,6 +1018,7 @@ class _$EnumType_Enums implements EnumType_Enums {
     required TResult Function(EnumType_Optional value) optional,
     required TResult Function(EnumType_Buffer value) buffer,
     required TResult Function(EnumType_Enums value) enums,
+    required TResult Function(EnumType_BytesArray value) bytesArray,
   }) {
     return enums(this);
   }
@@ -992,6 +1032,7 @@ class _$EnumType_Enums implements EnumType_Enums {
     TResult? Function(EnumType_Optional value)? optional,
     TResult? Function(EnumType_Buffer value)? buffer,
     TResult? Function(EnumType_Enums value)? enums,
+    TResult? Function(EnumType_BytesArray value)? bytesArray,
   }) {
     return enums?.call(this);
   }
@@ -1005,6 +1046,7 @@ class _$EnumType_Enums implements EnumType_Enums {
     TResult Function(EnumType_Optional value)? optional,
     TResult Function(EnumType_Buffer value)? buffer,
     TResult Function(EnumType_Enums value)? enums,
+    TResult Function(EnumType_BytesArray value)? bytesArray,
     required TResult orElse(),
   }) {
     if (enums != null) {
@@ -1020,4 +1062,163 @@ abstract class EnumType_Enums implements EnumType {
   Weekdays get field0;
   @JsonKey(ignore: true)
   _$$EnumType_EnumsCopyWith<_$EnumType_Enums> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EnumType_BytesArrayCopyWith<$Res> {
+  factory _$$EnumType_BytesArrayCopyWith(_$EnumType_BytesArray value, $Res Function(_$EnumType_BytesArray) then) =
+      __$$EnumType_BytesArrayCopyWithImpl<$Res>;
+  @useResult
+  $Res call({U8Array3 field0});
+}
+
+/// @nodoc
+class __$$EnumType_BytesArrayCopyWithImpl<$Res> extends _$EnumTypeCopyWithImpl<$Res, _$EnumType_BytesArray>
+    implements _$$EnumType_BytesArrayCopyWith<$Res> {
+  __$$EnumType_BytesArrayCopyWithImpl(_$EnumType_BytesArray _value, $Res Function(_$EnumType_BytesArray) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$EnumType_BytesArray(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as U8Array3,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EnumType_BytesArray implements EnumType_BytesArray {
+  const _$EnumType_BytesArray(this.field0);
+
+  @override
+  final U8Array3 field0;
+
+  @override
+  String toString() {
+    return 'EnumType.bytesArray(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EnumType_BytesArray &&
+            const DeepCollectionEquality().equals(other.field0, field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(field0));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EnumType_BytesArrayCopyWith<_$EnumType_BytesArray> get copyWith =>
+      __$$EnumType_BytesArrayCopyWithImpl<_$EnumType_BytesArray>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function(int int32, double float64, bool boolean) primitives,
+    required TResult Function(EnumType field0) nested,
+    required TResult Function(int? field0, Uint8List? field1) optional,
+    required TResult Function(Float32List field0) buffer,
+    required TResult Function(Weekdays field0) enums,
+    required TResult Function(U8Array3 field0) bytesArray,
+  }) {
+    return bytesArray(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? empty,
+    TResult? Function(int int32, double float64, bool boolean)? primitives,
+    TResult? Function(EnumType field0)? nested,
+    TResult? Function(int? field0, Uint8List? field1)? optional,
+    TResult? Function(Float32List field0)? buffer,
+    TResult? Function(Weekdays field0)? enums,
+    TResult? Function(U8Array3 field0)? bytesArray,
+  }) {
+    return bytesArray?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function(int int32, double float64, bool boolean)? primitives,
+    TResult Function(EnumType field0)? nested,
+    TResult Function(int? field0, Uint8List? field1)? optional,
+    TResult Function(Float32List field0)? buffer,
+    TResult Function(Weekdays field0)? enums,
+    TResult Function(U8Array3 field0)? bytesArray,
+    required TResult orElse(),
+  }) {
+    if (bytesArray != null) {
+      return bytesArray(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EnumType_Empty value) empty,
+    required TResult Function(EnumType_Primitives value) primitives,
+    required TResult Function(EnumType_Nested value) nested,
+    required TResult Function(EnumType_Optional value) optional,
+    required TResult Function(EnumType_Buffer value) buffer,
+    required TResult Function(EnumType_Enums value) enums,
+    required TResult Function(EnumType_BytesArray value) bytesArray,
+  }) {
+    return bytesArray(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(EnumType_Empty value)? empty,
+    TResult? Function(EnumType_Primitives value)? primitives,
+    TResult? Function(EnumType_Nested value)? nested,
+    TResult? Function(EnumType_Optional value)? optional,
+    TResult? Function(EnumType_Buffer value)? buffer,
+    TResult? Function(EnumType_Enums value)? enums,
+    TResult? Function(EnumType_BytesArray value)? bytesArray,
+  }) {
+    return bytesArray?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EnumType_Empty value)? empty,
+    TResult Function(EnumType_Primitives value)? primitives,
+    TResult Function(EnumType_Nested value)? nested,
+    TResult Function(EnumType_Optional value)? optional,
+    TResult Function(EnumType_Buffer value)? buffer,
+    TResult Function(EnumType_Enums value)? enums,
+    TResult Function(EnumType_BytesArray value)? bytesArray,
+    required TResult orElse(),
+  }) {
+    if (bytesArray != null) {
+      return bytesArray(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EnumType_BytesArray implements EnumType {
+  const factory EnumType_BytesArray(final U8Array3 field0) = _$EnumType_BytesArray;
+
+  U8Array3 get field0;
+  @JsonKey(ignore: true)
+  _$$EnumType_BytesArrayCopyWith<_$EnumType_BytesArray> get copyWith => throw _privateConstructorUsedError;
 }

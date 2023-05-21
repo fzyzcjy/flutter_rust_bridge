@@ -196,6 +196,11 @@ impl Wire2Api<EnumType> for wire_EnumType {
                 let ans = support::box_from_leak_ptr(ans.Enums);
                 EnumType::Enums(ans.field0.wire2api())
             },
+            6 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.BytesArray);
+                EnumType::BytesArray(ans.field0.wire2api())
+            },
             _ => unreachable!(),
         }
     }
@@ -257,6 +262,12 @@ impl Wire2Api<SharedStructOnlyForSyncTest> for wire_SharedStructOnlyForSyncTest 
     }
 }
 
+impl Wire2Api<[u8; 3]> for *mut wire_uint_8_list {
+    fn wire2api(self) -> [u8; 3] {
+        let vec: Vec<u8> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
 impl Wire2Api<Vec<u8>> for *mut wire_uint_8_list {
     fn wire2api(self) -> Vec<u8> {
         unsafe {
@@ -348,6 +359,7 @@ pub union EnumTypeKind {
     Optional: *mut wire_EnumType_Optional,
     Buffer: *mut wire_EnumType_Buffer,
     Enums: *mut wire_EnumType_Enums,
+    BytesArray: *mut wire_EnumType_BytesArray,
 }
 
 #[repr(C)]
@@ -385,6 +397,12 @@ pub struct wire_EnumType_Buffer {
 #[derive(Clone)]
 pub struct wire_EnumType_Enums {
     field0: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_EnumType_BytesArray {
+    field0: *mut wire_uint_8_list,
 }
 
 // Section: impl NewWithNullPtr
@@ -486,6 +504,15 @@ pub extern "C" fn inflate_EnumType_Enums() -> *mut EnumTypeKind {
     support::new_leak_box_ptr(EnumTypeKind {
         Enums: support::new_leak_box_ptr(wire_EnumType_Enums {
             field0: Default::default(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_EnumType_BytesArray() -> *mut EnumTypeKind {
+    support::new_leak_box_ptr(EnumTypeKind {
+        BytesArray: support::new_leak_box_ptr(wire_EnumType_BytesArray {
+            field0: core::ptr::null_mut(),
         }),
     })
 }
