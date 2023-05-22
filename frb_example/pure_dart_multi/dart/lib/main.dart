@@ -43,8 +43,7 @@ void main(List<String> args) {
     final name = "name";
     final score = 1.1;
     var expected = SharedStructOnlyForSyncTest(name: "name", score: score);
-    var actual = api1.testSharedStructOnlyForSyncWithSyncReturnInBlock1(
-        name: name, score: score);
+    var actual = api1.testSharedStructOnlyForSyncWithSyncReturnInBlock1(name: name, score: score);
     expect(expected.name, actual.name);
     expect(expected.score, actual.score);
   });
@@ -75,9 +74,7 @@ void main(List<String> args) {
   test('dart call testSharedStructInBlock1For1And2', () async {
     var expected = SharedStructInBlock1And2(name: "newString", id: 2, num: 2.2);
     var actual = await api1.testSharedStructInBlock1For1And2(
-        custom: SharedStructInBlock1And2(name: "string", id: 1, num: 2.2),
-        s: "newString",
-        i: 2);
+        custom: SharedStructInBlock1And2(name: "string", id: 1, num: 2.2), s: "newString", i: 2);
     expect(expected.name, actual.name);
     expect(expected.id, actual.id);
     expect(expected.num, actual.num);
@@ -95,9 +92,7 @@ void main(List<String> args) {
   test('dart call testUniqueStruct1', () async {
     var expected = StructOnlyForBlock1(name: "newString", id: 2, num: 2.0);
     var actual = await api1.testUniqueStruct1(
-        custom: StructOnlyForBlock1(name: "string", id: 1, num: 2.2),
-        s: "newString",
-        i: 2);
+        custom: StructOnlyForBlock1(name: "string", id: 1, num: 2.2), s: "newString", i: 2);
     expect(expected.name, actual.name);
     expect(expected.id, actual.id);
     expect(expected.num, actual.num);
@@ -125,13 +120,9 @@ void main(List<String> args) {
   });
 
   test('dart call testAllSharedStructInBlock2', () async {
-    var expected = SharedStructInAllBlocks(
-        name: "newString", id: 2, num: 2.2, enumList: enumList);
+    var expected = SharedStructInAllBlocks(name: "newString", id: 2, num: 2.2, enumList: enumList);
     var actual = await api2.testAllSharedStructInBlock2(
-        custom: SharedStructInAllBlocks(
-            name: "string", id: 1, num: 2.2, enumList: enumList),
-        s: "newString",
-        i: 2);
+        custom: SharedStructInAllBlocks(name: "string", id: 1, num: 2.2, enumList: enumList), s: "newString", i: 2);
     expect(expected.name, actual.name);
     expect(expected.id, actual.id);
     expect(expected.num, actual.num);
@@ -139,13 +130,9 @@ void main(List<String> args) {
   });
 
   test('dart call testAllSharedStructInSyncInBlock2', () async {
-    var expected = SharedStructInAllBlocks(
-        name: "newString", id: 2, num: 2.2, enumList: enumList);
+    var expected = SharedStructInAllBlocks(name: "newString", id: 2, num: 2.2, enumList: enumList);
     var actual = api2.testAllSharedStructInSyncInBlock2(
-        custom: SharedStructInAllBlocks(
-            name: "string", id: 1, num: 2.2, enumList: enumList),
-        s: "newString",
-        i: 2);
+        custom: SharedStructInAllBlocks(name: "string", id: 1, num: 2.2, enumList: enumList), s: "newString", i: 2);
     expect(expected.name, actual.name);
     expect(expected.id, actual.id);
     expect(expected.num, actual.num);
@@ -155,9 +142,7 @@ void main(List<String> args) {
   test('dart call testSharedStructInBlock2For1And2', () async {
     var expected = SharedStructInBlock1And2(name: "newString", id: 2, num: 2.2);
     var actual = await api2.testSharedStructInBlock2For1And2(
-        custom: SharedStructInBlock1And2(name: "string", id: 1, num: 2.2),
-        s: "newString",
-        i: 2);
+        custom: SharedStructInBlock1And2(name: "string", id: 1, num: 2.2), s: "newString", i: 2);
     expect(expected.name, actual.name);
     expect(expected.id, actual.id);
     expect(expected.num, actual.num);
@@ -174,9 +159,7 @@ void main(List<String> args) {
   test('dart call testSharedStructInBlock2For2And3', () async {
     var expected = SharedStructInBlock2And3(name: "newString", id: 2, num: 2.2);
     var actual = await api2.testSharedStructInBlock2For2And3(
-        custom: SharedStructInBlock2And3(name: "string", id: 1, num: 2.2),
-        s: "newString",
-        i: 2);
+        custom: SharedStructInBlock2And3(name: "string", id: 1, num: 2.2), s: "newString", i: 2);
     expect(expected.name, actual.name);
     expect(expected.id, actual.id);
     expect(expected.num, actual.num);
@@ -194,9 +177,7 @@ void main(List<String> args) {
   test('dart call testUniqueStruct2', () async {
     var expected = StructOnlyForBlock2(name: "newString", id: 2, num: 2.2);
     var actual = await api2.testUniqueStruct2(
-        custom: StructOnlyForBlock2(name: "string", id: 1, num: 2.2),
-        s: "newString",
-        i: 2);
+        custom: StructOnlyForBlock2(name: "string", id: 1, num: 2.2), s: "newString", i: 2);
     expect(expected.name, actual.name);
     expect(expected.id, actual.id);
     expect(expected.num, actual.num);
@@ -223,31 +204,26 @@ void main(List<String> args) {
     expect(await api3.testStringInBlock3(s: "string", i: 3), "string_3");
   });
 
-  test('dart call testSharedStructOnlyForSyncWithNoSyncReturnInBlock3',
-      () async {
+  test('dart call testSharedStructOnlyForSyncWithNoSyncReturnInBlock3', () async {
     final name = "name";
     final score = 1.1;
     var expected = SharedStructOnlyForSyncTest(name: name, score: score);
-    var actual = await api3.testSharedStructOnlyForSyncWithNoSyncReturnInBlock3(
-        name: name, score: score);
+    var actual = await api3.testSharedStructOnlyForSyncWithNoSyncReturnInBlock3(name: name, score: score);
     expect(expected.name, actual.name);
     expect(expected.score, actual.score);
   });
 
-  test('dart call testSharedStructOnlyForSyncAsInputWithNoSyncReturnInBlock3',
-      () async {
+  test('dart call testSharedStructOnlyForSyncAsInputWithNoSyncReturnInBlock3', () async {
     final inputObj = SharedStructOnlyForSyncTest(
       name: "name",
       score: 0.0,
     );
     final inputDefaultScore = 1.1;
-    var actual =
-        await api3.testSharedStructOnlyForSyncAsInputWithNoSyncReturnInBlock3(
+    var actual = await api3.testSharedStructOnlyForSyncAsInputWithNoSyncReturnInBlock3(
       obj: inputObj,
       defaultScore: inputDefaultScore,
     );
-    var expected =
-        SharedStructOnlyForSyncTest(name: "name", score: inputDefaultScore);
+    var expected = SharedStructOnlyForSyncTest(name: "name", score: inputDefaultScore);
     expect(actual.name, expected.name);
     expect(actual.score, expected.score);
   });
@@ -255,10 +231,7 @@ void main(List<String> args) {
   test('dart call testAllSharedStructInBlock3', () async {
     var expected = SharedStructInAllBlocks(name: "newString", id: 2, num: 2.2);
     var actual = await api3.testAllSharedStructInBlock3(
-        custom: SharedStructInAllBlocks(
-            name: "string", id: 1, num: 2.2, enumList: null),
-        s: "newString",
-        i: 2);
+        custom: SharedStructInAllBlocks(name: "string", id: 1, num: 2.2, enumList: null), s: "newString", i: 2);
     expect(expected.name, actual.name);
     expect(expected.id, actual.id);
     expect(expected.num, actual.num);
@@ -268,9 +241,7 @@ void main(List<String> args) {
   test('dart call testSharedStructInBlock3For2And3', () async {
     var expected = SharedStructInBlock2And3(name: "newString", id: 2, num: 2.2);
     var actual = await api3.testSharedStructInBlock3For2And3(
-        custom: SharedStructInBlock2And3(name: "string", id: 1, num: 2.2),
-        s: "newString",
-        i: 2);
+        custom: SharedStructInBlock2And3(name: "string", id: 1, num: 2.2), s: "newString", i: 2);
     expect(expected.name, actual.name);
     expect(expected.id, actual.id);
     expect(expected.num, actual.num);
@@ -297,9 +268,7 @@ void main(List<String> args) {
 
   test('dart call testUniqueStruct3', () async {
     var actual = await api3.testUniqueStruct3(
-        custom: StructOnlyForBlock3(name: "string", id: 1, num: 2.2),
-        s: "newString",
-        i: 2);
+        custom: StructOnlyForBlock3(name: "string", id: 1, num: 2.2), s: "newString", i: 2);
     var expected = StructOnlyForBlock3(name: "newString", id: 2, num: 2.2);
     expect(expected.name, actual.name);
     expect(expected.id, actual.id);
