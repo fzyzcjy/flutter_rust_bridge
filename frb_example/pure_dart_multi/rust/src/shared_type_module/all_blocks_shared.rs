@@ -19,12 +19,15 @@ pub enum EnumType {
     BytesArray([u8; 3]),
 }
 
+/// Simple enums.
+#[derive(Debug, Clone, Copy)]
 pub enum Weekdays {
     Monday,
     Tuesday,
     Wednesday,
     Thursday,
     Friday,
+    /// Best day of the week.
     Saturday,
     Sunday,
 }

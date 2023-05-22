@@ -132,12 +132,15 @@ class U8Array3 extends NonGrowableListView<int> {
   U8Array3.init() : super(Uint8List(arraySize));
 }
 
+/// Simple enums.
 enum Weekdays {
   Monday,
   Tuesday,
   Wednesday,
   Thursday,
   Friday,
+
+  /// Best day of the week.
   Saturday,
   Sunday,
 }

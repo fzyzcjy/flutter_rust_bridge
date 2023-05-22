@@ -114,7 +114,6 @@ _generate_bridge_pure_dart_multi:
         --rust-input frb_example/pure_dart_multi/rust/src/api_block_1.rs frb_example/pure_dart_multi/rust/src/api_block_2.rs frb_example/pure_dart_multi/rust/src/api_block_3.rs \
         --dart-output frb_example/pure_dart_multi/dart/lib/bridge_generated_api_block_1.dart frb_example/pure_dart_multi/dart/lib/bridge_generated_api_block_2.dart frb_example/pure_dart_multi/dart/lib/bridge_generated_api_block_3.dart \
         --dart-format-line-length 120 \
-        --dart-enums-style \
         --rust-output frb_example/pure_dart_multi/rust/src/generated_api_block_1.rs frb_example/pure_dart_multi/rust/src/generated_api_block_2.rs frb_example/pure_dart_multi/rust/src/generated_api_block_3.rs \
         --class-name ApiBlock1Class ApiBlock2Class ApiBlock3Class \
         --wasm
