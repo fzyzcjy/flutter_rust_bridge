@@ -1,3 +1,7 @@
+## 1.76.0
+
+* Support Dart 3 and Flutter 3.10 (thanks @Zaitam for partial impl)
+
 ## 1.75.3
 
 * Fix bridge access for Rust opaques #1206 (thanks @Desdaemon)

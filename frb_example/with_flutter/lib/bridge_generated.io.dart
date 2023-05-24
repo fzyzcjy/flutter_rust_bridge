@@ -600,9 +600,9 @@ class FlutterRustBridgeExampleWire implements FlutterRustBridgeWireBase {
   late final _free_WireSyncReturn = _free_WireSyncReturnPtr.asFunction<void Function(WireSyncReturn)>();
 }
 
-class _Dart_Handle extends ffi.Opaque {}
+final class _Dart_Handle extends ffi.Opaque {}
 
-class wire_Size extends ffi.Struct {
+final class wire_Size extends ffi.Struct {
   @ffi.Int32()
   external int width;
 
@@ -610,7 +610,7 @@ class wire_Size extends ffi.Struct {
   external int height;
 }
 
-class wire_Point extends ffi.Struct {
+final class wire_Point extends ffi.Struct {
   @ffi.Double()
   external double x;
 
@@ -618,43 +618,43 @@ class wire_Point extends ffi.Struct {
   external double y;
 }
 
-class wire_uint_8_list extends ffi.Struct {
+final class wire_uint_8_list extends ffi.Struct {
   external ffi.Pointer<ffi.Uint8> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class wire_list_tree_node extends ffi.Struct {
+final class wire_list_tree_node extends ffi.Struct {
   external ffi.Pointer<wire_TreeNode> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class wire_TreeNode extends ffi.Struct {
+final class wire_TreeNode extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> name;
 
   external ffi.Pointer<wire_list_tree_node> children;
 }
 
-class wire_list_size extends ffi.Struct {
+final class wire_list_size extends ffi.Struct {
   external ffi.Pointer<wire_Size> ptr;
 
   @ffi.Int32()
   external int len;
 }
 
-class wire_UserId extends ffi.Struct {
+final class wire_UserId extends ffi.Struct {
   @ffi.Uint32()
   external int value;
 }
 
-class wire_BoxedPoint extends ffi.Struct {
+final class wire_BoxedPoint extends ffi.Struct {
   external ffi.Pointer<wire_Point> point;
 }
 
-class wire_SumWith extends ffi.Struct {
+final class wire_SumWith extends ffi.Struct {
   @ffi.Uint32()
   external int x;
 }

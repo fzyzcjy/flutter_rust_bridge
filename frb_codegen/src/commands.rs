@@ -15,7 +15,7 @@ lazy_static! {
     pub(crate) static ref FFI_REQUIREMENT: VersionReq =
         VersionReq::parse(">= 2.0.1, < 3.0.0").unwrap();
     pub(crate) static ref FFIGEN_REQUIREMENT: VersionReq =
-        VersionReq::parse(">= 6.0.1, < 8.0.0").unwrap();
+        VersionReq::parse(">= 8.0.0, < 9.0.0").unwrap();
 }
 
 pub fn ensure_tools_available(dart_root: &str, skip_deps_check: bool) -> Result {
@@ -233,7 +233,8 @@ pub fn build_runner(dart_root: &str) -> Result {
         "run",
         "build_runner",
         "build",
-        "--delete-conflicting-outputs"
+        "--delete-conflicting-outputs",
+        "--enable-experiment=class-modifiers",
     )?;
     if !out.status.success() {
         return Err(Error::StringError(format!(
