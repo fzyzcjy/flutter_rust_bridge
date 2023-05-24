@@ -102,7 +102,8 @@ jobs:
 
       - name: Run Flutter integration tests
         working-directory: ./frb_example/with_flutter
-        run: flutter test integration_test/main.dart --verbose
+        # NOTE disable impeller because of https://github.com/fzyzcjy/flutter_rust_bridge/pull/1224#issuecomment-1560994332
+        run: flutter test integration_test/main.dart --verbose --no-enable-impeller
 
   # ref https://betterprogramming.pub/test-flutter-apps-on-android-with-github-actions-abdba2137b4
   flutter_test_android:
