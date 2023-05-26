@@ -1,5 +1,4 @@
 use convert_case::{Case, Casing};
-use log::warn;
 
 use crate::ir::*;
 use crate::target::Target;
@@ -214,12 +213,6 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::String => "String".to_owned(),
             IrTypeDelegate::StringList => "StringList".to_owned(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                warn!(concat!(
-                    "`ZeroCopyBuffer` is not needed anymore. ",
-                    "From flutter_rust_brige 1.77, `Vec<u8>` and its friends are ",
-                    "zero-copy by default. ",
-                    "Consider removing `ZeroCopyBuffer` from the function signature."
-                ));
                 "ZeroCopyBuffer_".to_owned() + &self.get_delegate().dart_api_type()
             }
             IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.safe_ident(),
