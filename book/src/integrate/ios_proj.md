@@ -14,6 +14,7 @@ crate-type = ["lib", "staticlib", "cdylib"]
 ```
 
 where
+
 - `lib` is required for non-library targets, such as tests and benchmarks
 - `staticlib` is required for iOS
 - `cdylib` for all other platforms
@@ -26,4 +27,5 @@ cargo xcode
 
 This will generate a `$crate/$crate.xcodeproj` that can be imported into other Xcode projects.
 You only have to do this once per crate.
-Don't open the project yet; we need to configure it through the parent projects first.
+
+Now, open up that `$crate/$crate.xcodeproj` file with Xcode and select the root item at the left pane. The item's name will be identical to your crate's name. In the **Build Settings** tab, search for `Dynamic Library Install Name Base` and change the value into `@executable_path/../Frameworks/`. This is [required by cargo-xcode](https://lib.rs/crates/cargo-xcode#:~:text=DYLIB_INSTALL_NAME_BASE) to enable macOS apps to properly locate `.dylib` library files .
