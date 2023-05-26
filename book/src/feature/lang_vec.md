@@ -29,5 +29,3 @@ Future<Uint8List> drawTree({required List<TreeNode> tree});
 ```
 
 Remark: If you are curious about `Future`, have a look at [this](async_dart.md).
-
-[^1]: Not currently supported on Web, and will fallback to copying the buffer.
