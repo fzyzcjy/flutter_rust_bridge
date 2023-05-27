@@ -4,7 +4,9 @@ Here is a brief glance showing what the code generator can generate (non-exhaust
 
 | Rust                                                 | Dart                                                 |
 | ---------------------------------------------------- | ---------------------------------------------------- |
-| [`Vec<u8>`, `Vec<i8>`..](lang_vec.md)                | `Uint8List`, `Int8List`, ..                          |
+| [`Vec<u8>`..`Vec<u64>`](lang_vec.md)                 | `Uint8List`..`Uint64List`                            |
+| [`Vec<i8>`..`Vec<i64>`](lang_vec.md)                 | `Int8List`..`Int64List`                              |
+| [`Vec<f32>`, `Vec<f64>`](lang_vec.md)                | `Float32List`, `Float64List`                         |
 | [`Vec<T>`](lang_vec.md)                              | `List<T>`                                            |
 | [`[T; N]`](lang_vec.md)                              | `List<T>`                                            |
 | [`struct { .. }`, `struct( .. )`](lang_struct.md)    | `class`                                              |
@@ -23,7 +25,6 @@ Here is a brief glance showing what the code generator can generate (non-exhaust
 | `String`                                             | `String`                                             |
 | `()`                                                 | `void`                                               |
 | `type A = B`                                         | [type alias](lang_type_alias.md)                     |
-
 
 Types from `chrono` crate are supported as a feature, see [here](lang_chrono.md).
 Types from `uuid` crate are supported as a feature, see [here](lang_uuid.md).
