@@ -151,8 +151,8 @@ the symbols.</p>
 <p>Add <code>ios/Runner/bridge_generated.h</code> (or <code>macos/Runner/bridge_generated.h</code>)
 to the project, either by dragging it onto the project tree or
 via the <strong>Add Files to &quot;Runner&quot;...</strong> menu option.</p>
-<p>Switch to the <strong>Build Phases</strong> tab and drag the <strong>bridge_generated.h</strong> file over
-to the <strong>Copy Bundle Resources</strong> phase, if it isn't already present.</p>
+<p>Switch to the <strong>Build Phases</strong> tab and drag the <code>bridge_generated.h</code> file over
+to the <strong>Copy Bundle Resources</strong> section, if it isn't already present.</p>
 <h2 id="ios"><a class="header" href="#ios">iOS</a></h2>
 <p>Next, add this line to <code>ios/Runner/Runner-Bridging-Header.h</code>:</p>
 <pre><code class="language-diff">+#import &quot;bridge_generated.h&quot;
@@ -179,6 +179,7 @@ to the <strong>Copy Bundle Resources</strong> phase, if it isn't already present
 <p>Flutter on MacOS does not use headers by default, so let's go ahead
 and add one ourselves. In the <strong>Build Settings</strong> tab, set the
 <strong>Objective-C Bridging Header</strong> to be <strong>Runner/bridge_generated.h</strong>.</p>
+<p>Also, head over to the <strong>Build Phases</strong> tab, <strong>Bundle Framework</strong> section and add your <code>$crate.dylib</code> by clicking the plus button. This includes your dynamic library file in your app package.</p>
 <p>Finally, use <code>dummy_method_to_enforce_bundling</code> somewhere within
 <code>macos/Runner/AppDelegate.swift</code>, as long as Xcode does not consider it dead code.</p>
 <h1 id="for-multi-blocks"><a class="header" href="#for-multi-blocks">For multi-blocks</a></h1>
