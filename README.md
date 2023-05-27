@@ -150,8 +150,8 @@ More specifically, thanks for all these contributions:
 * [hsfzxjy](https://github.com/hsfzxjy): Fix SyncReturn use-after-free bug.
 * [Cupnfish](https://github.com/Cupnfish): Support arrays as function parameters. Allow multi mirror.
 * [alanlzhang](https://github.com/alanlzhang): Add generation for Dart metadata. Enhance module parser. Fix enum in struct. Fix linter.
+* [temeddix](https://github.com/temeddix): Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc.
 * [Zaitam](https://github.com/Zaitam): Fix when method return struct. Partial migration to Dart 3.
-* [temeddix](https://github.com/temeddix): Fix broken CI. Custom num workers. Update doc.
 * [nitn3lav](https://github.com/nitn3lav): nested `struct`s without `Box`.
 * [erikas-taroza](https://github.com/erikas-taroza): Support list of primitive enums. Make enum camelCase. Warn wrong path.
 * [alexthe2](https://github.com/alexthe2): Add Option Datetime. Add empty structs. Improve doc. Add `r#`. Fix mirror enum bug.
