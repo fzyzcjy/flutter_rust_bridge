@@ -1,3 +1,8 @@
+## 1.77.0
+
+* Provide `zero-copy` cargo feature #1228 （thanks @temeddix)
+* Add steps in macOS integration in docs #1227 (thanks @temeddix)
+
 ## 1.76.0
 
 * Support Dart 3 and Flutter 3.10 (thanks @Zaitam for partial impl)
