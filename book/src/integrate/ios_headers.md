@@ -8,8 +8,8 @@ Add `ios/Runner/bridge_generated.h` (or `macos/Runner/bridge_generated.h`)
 to the project, either by dragging it onto the project tree or
 via the **Add Files to "Runner"...** menu option.
 
-Switch to the **Build Phases** tab and drag the **bridge_generated.h** file over
-to the **Copy Bundle Resources** phase, if it isn't already present.
+Switch to the **Build Phases** tab and drag the `bridge_generated.h` file over
+to the **Copy Bundle Resources** section, if it isn't already present.
 
 ## iOS
 
@@ -43,12 +43,13 @@ If you release your app through App Store, the steps above might not be sufficie
 
 Ref: https://docs.flutter.dev/development/platform-integration/ios/c-interop#stripping-ios-symbols
 
-
 ## MacOS
 
 Flutter on MacOS does not use headers by default, so let's go ahead
 and add one ourselves. In the **Build Settings** tab, set the
 **Objective-C Bridging Header** to be **Runner/bridge_generated.h**.
+
+Also, head over to the **Build Phases** tab, **Bundle Framework** section and add your `$crate.dylib` by clicking the plus button. This includes your dynamic library file in your app package.
 
 Finally, use `dummy_method_to_enforce_bundling` somewhere within
 `macos/Runner/AppDelegate.swift`, as long as Xcode does not consider it dead code.
