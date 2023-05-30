@@ -28,9 +28,9 @@ dependencies = [
 
 [[package]]
 name = "allo-isolate"
-version = "0.1.14"
+version = "0.1.17"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8ed55848be9f41d44c79df6045b680a74a78bc579e0813f7f196cd7928e22fb1"
+checksum = "9980a41e4f88ed39a4dc1f263f94c89ddf6c4b3c725643ecddbcb07d6f41ad3c"
 dependencies = [
  "anyhow",
  "atomic",
@@ -616,7 +616,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge"
-version = "1.75.3"
+version = "1.77.1"
 dependencies = [
  "allo-isolate",
  "anyhow",
@@ -641,7 +641,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_codegen"
-version = "1.75.3"
+version = "1.77.1"
 dependencies = [
  "anyhow",
  "atty",
@@ -717,7 +717,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_macros"
-version = "1.75.3"
+version = "1.77.1"
 
 [[package]]
 name = "futures-core"

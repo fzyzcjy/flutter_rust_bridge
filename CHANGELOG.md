@@ -1,3 +1,16 @@
+## 1.77.1
+
+* Fix on zero-copy cargo feature #1229 (thanks @temeddix)
+
+## 1.77.0
+
+* Provide `zero-copy` cargo feature #1228 （thanks @temeddix)
+* Add steps in macOS integration in docs #1227 (thanks @temeddix)
+
+## 1.76.0
+
+* Support Dart 3 and Flutter 3.10 (thanks @Zaitam for partial impl)
+
 ## 1.75.3
 
 * Fix bridge access for Rust opaques #1206 (thanks @Desdaemon)

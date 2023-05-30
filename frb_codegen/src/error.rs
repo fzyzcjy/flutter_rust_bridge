@@ -12,7 +12,7 @@ pub enum Error {
     #[error(
         "ffigen could not find LLVM.
     Please supply --llvm-path to flutter_rust_bridge_codegen, e.g.:
-    
+
         flutter_rust_bridge_codegen .. --llvm-path <path_to_llvm>"
     )]
     FfigenLlvm,

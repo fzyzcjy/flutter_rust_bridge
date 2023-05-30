@@ -32,6 +32,7 @@ abstract class Modules {
     switch (crossOriginIsolated) {
       case false:
         throw const MissingHeaderException();
+      case true:
       case null:
         warn(
             'Warning: crossOriginIsolated is null, browser might not support buffer sharing.');

@@ -9,7 +9,8 @@ on:
     paths-ignore:
       - "docs/**"
       - "**/*.md"
-
+    workflow_dispatch: {}
+    
 env:
   CARGO_TERM_COLOR: always
 
@@ -31,9 +32,8 @@ jobs:
           components: rustfmt
       - uses: dart-lang/setup-dart@v1
         with:
-          # TODO should be 2.19.2 but has a weird bug currently
-          # https://github.com/fzyzcjy/flutter_rust_bridge/pull/1039#issuecomment-1424292105
-          sdk: "2.17.6"
+          sdk: stable
+          architecture: x64
       - uses: actions/setup-python@v2
         with:
           python-version: "3.x"
@@ -70,7 +70,7 @@ jobs:
         with:
           cache: true
           channel: "stable"
-          flutter-version: 3.7.3
+          flutter-version: 3.10.0
           architecture: x64
       - id: cache-deps
         uses: ./.github/actions/setup
@@ -122,7 +122,7 @@ jobs:
         with:
           cache: true
           channel: "stable"
-          flutter-version: 3.7.3
+          flutter-version: 3.10.0
           architecture: x64
       - id: checkout
         uses: dtolnay/rust-toolchain@stable
@@ -202,7 +202,7 @@ jobs:
         with:
           cache: true
           channel: "stable"
-          flutter-version: 3.7.3
+          flutter-version: 3.10.0
           architecture: x64
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -246,7 +246,7 @@ jobs:
           cache: true
           # TODO should be 3.7.3 but has a weird bug currently
           # https://github.com/fzyzcjy/flutter_rust_bridge/pull/1023#issuecomment-1415852845
-          flutter-version: 3.3.10
+          flutter-version: 3.10.0
           architecture: x64
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -267,7 +267,7 @@ jobs:
         with:
           cache: true
           channel: "stable"
-          flutter-version: 3.7.3
+          flutter-version: 3.10.0
           architecture: x64
       - uses: dtolnay/rust-toolchain@stable
         with:
@@ -304,7 +304,8 @@ jobs:
       - uses: actions/checkout@v2
       - uses: dart-lang/setup-dart@v1
         with:
-          sdk: "2.19.2"
+          sdk: 3.0.0
+          architecture: x64
       - uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: nightly
@@ -359,7 +360,8 @@ jobs:
           components: rustfmt
       - uses: dart-lang/setup-dart@v1
         with:
-          sdk: "2.19.2"
+          sdk: 3.0.0
+          architecture: x64
       - uses: extractions/setup-just@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -386,7 +388,8 @@ jobs:
           components: rustfmt
       - uses: dart-lang/setup-dart@v1
         with:
-          sdk: "2.19.2"
+          sdk: 3.0.0
+          architecture: x64
       - uses: extractions/setup-just@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -414,7 +417,8 @@ jobs:
           components: rustfmt, clippy
       - uses: dart-lang/setup-dart@v1
         with:
-          sdk: "2.19.2"
+          sdk: 3.0.0
+          architecture: x64
       - uses: extractions/setup-just@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -430,12 +434,13 @@ jobs:
       - uses: actions/checkout@v2
       - uses: dart-lang/setup-dart@v1
         with:
-          sdk: "2.19.2"
+          sdk: 3.0.0
+          architecture: x64
       - uses: subosito/flutter-action@v2
         with:
           cache: true
           channel: "stable"
-          flutter-version: "3.7.3"
+          flutter-version: 3.10.0
       - uses: extractions/setup-just@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -465,7 +470,7 @@ jobs:
         with:
           cache: true
           channel: "stable"
-          flutter-version: "3.7.3"
+          flutter-version: 3.10.0
           architecture: x64
       - uses: extractions/setup-just@v1
         env:

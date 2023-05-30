@@ -63,14 +63,19 @@ pub fn modify_dart_wire_content(
     );
 
     content = content
-        .replace("class DartCObject extends ffi.Opaque {}", "")
+        .replace("final class DartCObject extends ffi.Opaque {}", "")
+        /*.replace(
+            "class _Dart_Handle extends ffi.Opaque {}",
+            "base class _Dart_Handle extends ffi.Opaque {}",
+        )*/
         .replace("typedef WireSyncReturn = ffi.Pointer<DartCObject>;", "");
 
     // for ONLY regular configs: erase class block code which are shared.
     if !ir_file.shared {
         let v = ir_file.get_shared_type_names();
         for class_name in v {
-            let my_r = &format!(r"class wire_{class_name} extends ffi\.Struct \{{(?s)(.*?)\}}");
+            let my_r =
+                &format!(r"final class wire_{class_name} extends ffi\.Struct \{{(?s)(.*?)\}}");
             let re = Regex::new(my_r).unwrap();
             content = re.replace_all(&content, "").to_string();
         }
