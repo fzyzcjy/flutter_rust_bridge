@@ -1,3 +1,7 @@
+## 1.77.1
+
+* Fix on zero-copy cargo feature #1229 (thanks @temeddix)
+
 ## 1.77.0
 
 * Provide `zero-copy` cargo feature #1228 （thanks @temeddix)
