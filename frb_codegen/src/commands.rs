@@ -77,25 +77,23 @@ fn cbindgen(
         "execute cbindgen rust_crate_dir={} c_output_path={}",
         rust_crate_dir, c_output_path
     );
-    let config = cbindgen::Config {
-        language: cbindgen::Language::C,
-        sys_includes: vec![
-            "stdbool.h".to_string(),
-            "stdint.h".to_string(),
-            "stdlib.h".to_string(),
-        ],
-        no_includes: true,
-        // copied from: dart-sdk/dart_api.h
-        // used to convert Dart_Handle to Object.
-        after_includes: Some("typedef struct _Dart_Handle* Dart_Handle;".to_owned()),
-        export: cbindgen::ExportConfig {
-            include: c_struct_names
-                .iter()
-                .map(|name| format!("\"{name}\""))
-                .collect(),
-            exclude: exclude_symbols,
-            ..Default::default()
-        },
+    let mut config = cbindgen::Config::default();
+    config.language = cbindgen::Language::C;
+    config.sys_includes = vec![
+        "stdbool.h".to_string(),
+        "stdint.h".to_string(),
+        "stdlib.h".to_string(),
+    ];
+    config.no_includes = true;
+    // copied from: dart-sdk/dart_api.h
+    // used to convert Dart_Handle to Object.
+    config.after_includes = Some("typedef struct _Dart_Handle* Dart_Handle;".to_owned());
+    config.export = cbindgen::ExportConfig {
+        include: c_struct_names
+            .iter()
+            .map(|name| format!("\"{name}\""))
+            .collect(),
+        exclude: exclude_symbols,
         ..Default::default()
     };
 
