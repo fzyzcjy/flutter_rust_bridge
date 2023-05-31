@@ -22,6 +22,7 @@ use std::sync::Arc;
 use crate::block_specific_module::for_api_block_3::StructOnlyForBlock3;
 use crate::bridge_generated_shares;
 use crate::bridge_generated_shares::*;
+use crate::shared_type_module::all_blocks_shared::SharedStructInAllBlocks;
 
 // Section: wire functions
 
@@ -112,7 +113,7 @@ fn wire_test_shared_struct_only_for_sync_as_input_with_no_sync_return_in_block_3
 }
 fn wire_test_all_shared_struct_in_block_3_impl(
     port_: MessagePort,
-    custom: impl bridge_generated_shares::Wire2Api<SharedStructInAllBlocks> + UnwindSafe,
+    custom: impl bridge_generated_shares::Wire2Api<Option<SharedStructInAllBlocks>> + UnwindSafe,
     s: impl bridge_generated_shares::Wire2Api<String> + UnwindSafe,
     i: impl bridge_generated_shares::Wire2Api<i32> + UnwindSafe,
 ) {

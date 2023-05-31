@@ -33,10 +33,7 @@ pub fn test_string_in_sync_in_block_1(s: String, i: u64) -> SyncReturn<String> {
 }
 
 pub fn test_optional_string_in_block_1(s: Option<String>, i: i32) -> Option<String> {
-    match s {
-        Some(s) => Some(format!("{}{}", s, i)),
-        None => None,
-    }
+    s.map(|s| format!("{}{}", s, i))
 }
 
 pub fn test_optional_string_in_sync_in_block_1(

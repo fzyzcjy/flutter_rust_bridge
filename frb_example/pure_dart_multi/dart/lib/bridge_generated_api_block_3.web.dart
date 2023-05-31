@@ -38,6 +38,11 @@ class ApiBlock3ClassPlatform extends FlutterRustBridgeBase<ApiBlock3ClassWire> w
   }
 
   @protected
+  List<dynamic>? api2wire_opt_box_autoadd_shared_struct_in_all_blocks(SharedStructInAllBlocks? raw) {
+    return raw == null ? null : _sharedPlatform.api2wire_box_autoadd_shared_struct_in_all_blocks(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_struct_defined_in_block_3(StructDefinedInBlock3 raw) {
     return [_sharedPlatform.api2wire_String(raw.name)];
   }
@@ -70,7 +75,7 @@ class ApiBlock3ClassWasmModule implements WasmModule {
       NativePortType port_, List<dynamic> obj, double default_score);
 
   external dynamic /* void */ wire_test_all_shared_struct_in_block_3(
-      NativePortType port_, List<dynamic> custom, String s, int i);
+      NativePortType port_, List<dynamic>? custom, String s, int i);
 
   external dynamic /* void */ wire_test_shared_struct_in_block_3_for_2_and_3(
       NativePortType port_, List<dynamic> custom, String s, int i);
@@ -110,7 +115,7 @@ class ApiBlock3ClassWire extends FlutterRustBridgeWasmWireBase<ApiBlock3ClassWas
       wasmModule.wire_test_shared_struct_only_for_sync_as_input_with_no_sync_return_in_block_3(
           port_, obj, default_score);
 
-  void wire_test_all_shared_struct_in_block_3(NativePortType port_, List<dynamic> custom, String s, int i) =>
+  void wire_test_all_shared_struct_in_block_3(NativePortType port_, List<dynamic>? custom, String s, int i) =>
       wasmModule.wire_test_all_shared_struct_in_block_3(port_, custom, s, i);
 
   void wire_test_shared_struct_in_block_3_for_2_and_3(NativePortType port_, List<dynamic> custom, String s, int i) =>

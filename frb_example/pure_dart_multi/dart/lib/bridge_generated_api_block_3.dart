@@ -37,8 +37,8 @@ abstract class ApiBlock3Class {
 
   FlutterRustBridgeTaskConstMeta get kTestSharedStructOnlyForSyncAsInputWithNoSyncReturnInBlock3ConstMeta;
 
-  Future<SharedStructInAllBlocks> testAllSharedStructInBlock3(
-      {required SharedStructInAllBlocks custom, required String s, required int i, dynamic hint});
+  Future<SharedStructInAllBlocks?> testAllSharedStructInBlock3(
+      {SharedStructInAllBlocks? custom, required String s, required int i, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kTestAllSharedStructInBlock3ConstMeta;
 
@@ -196,14 +196,14 @@ class ApiBlock3ClassImpl implements ApiBlock3Class {
         argNames: ["obj", "defaultScore"],
       );
 
-  Future<SharedStructInAllBlocks> testAllSharedStructInBlock3(
-      {required SharedStructInAllBlocks custom, required String s, required int i, dynamic hint}) {
-    var arg0 = _sharedPlatform.api2wire_box_autoadd_shared_struct_in_all_blocks(custom);
+  Future<SharedStructInAllBlocks?> testAllSharedStructInBlock3(
+      {SharedStructInAllBlocks? custom, required String s, required int i, dynamic hint}) {
+    var arg0 = _platform.api2wire_opt_box_autoadd_shared_struct_in_all_blocks(custom);
     var arg1 = _sharedPlatform.api2wire_String(s);
     var arg2 = api2wire_i32(i);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_all_shared_struct_in_block_3(port_, arg0, arg1, arg2),
-      parseSuccessData: _sharedImpl.wire2api_shared_struct_in_all_blocks,
+      parseSuccessData: _wire2api_opt_box_autoadd_shared_struct_in_all_blocks,
       constMeta: kTestAllSharedStructInBlock3ConstMeta,
       argValues: [custom, s, i],
       hint: hint,
@@ -346,6 +346,10 @@ class ApiBlock3ClassImpl implements ApiBlock3Class {
 
   int _wire2api_i64(dynamic raw) {
     return castInt(raw);
+  }
+
+  SharedStructInAllBlocks? _wire2api_opt_box_autoadd_shared_struct_in_all_blocks(dynamic raw) {
+    return raw == null ? null : _sharedImpl.wire2api_box_autoadd_shared_struct_in_all_blocks(raw);
   }
 
   StructOnlyForBlock3 _wire2api_struct_only_for_block_3(dynamic raw) {

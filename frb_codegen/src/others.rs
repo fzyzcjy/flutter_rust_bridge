@@ -80,7 +80,6 @@ pub fn modify_dart_wire_content(
             content = re.replace_all(&content, "").to_string();
         }
     }
-
     content
 }
 

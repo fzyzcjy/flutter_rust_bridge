@@ -28,7 +28,8 @@ impl TypeDartGeneratorTrait for TypeGeneralListGenerator<'_> {
                     // `frb_codegen/src/generator/dart/ty_delegate.rs`
                     format!("ans.ref.ptr[i] = api2wire_{inner}(raw[i]);")
                 } else {
-                    format!("_api_fill_to_wire_{inner}(raw[i], ans.ref.ptr[i]);")
+                    let prefix = if !self.context.config.shared { "_" } else { "" };
+                    format!("{prefix}api_fill_to_wire_{inner}(raw[i], ans.ref.ptr[i]);")
                 }
             )),
             wasm: self.context.config.wasm_enabled.then(|| {

@@ -41,8 +41,24 @@ impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
         if !self.ir.needs_initialization() || self.ir.is_list() || self.ir.is_boxed_primitive() {
             return None;
         }
+
+        let prefix = if !self.context.config.shared {
+            if !self
+                .context
+                .ir_file
+                .is_type_shared_by_safe_ident(&self.ir.inner)
+            {
+                "_"
+            } else {
+                "_sharedPlatform."
+            }
+        } else {
+            ""
+        };
+
         Some(format!(
-            "if (apiObj != null) _api_fill_to_wire_{}(apiObj, wireObj);",
+            "if (apiObj != null) {}api_fill_to_wire_{}(apiObj, wireObj);",
+            prefix,
             self.ir.inner.safe_ident()
         ))
     }

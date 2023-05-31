@@ -666,10 +666,12 @@ fn generate_api_fill_to_wire_func(
             it => it,
         };
 
+        let prefix = if !config.shared { "_" } else { "" };
         format!(
-            "void _api_fill_to_wire_{}({} apiObj, {} wireObj) {{
+            "void {}api_fill_to_wire_{}({} apiObj, {} wireObj) {{
                 {}
             }}",
+            prefix,
             ty.safe_ident(),
             ty.dart_api_type(),
             target_wire_type.dart_wire_type(Target::Io),

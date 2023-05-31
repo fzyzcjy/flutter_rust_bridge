@@ -98,6 +98,11 @@ pub fn wire_test_static_method__static_method__StructDefinedInBlock3(
 
 // Section: impl Wire2Api
 
+impl Wire2Api<Option<SharedStructInAllBlocks>> for JsValue {
+    fn wire2api(self) -> Option<SharedStructInAllBlocks> {
+        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+    }
+}
 impl Wire2Api<StructDefinedInBlock3> for JsValue {
     fn wire2api(self) -> StructDefinedInBlock3 {
         let self_ = self.dyn_into::<JsArray>().unwrap();

@@ -180,6 +180,10 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
     return raw as int;
   }
 
+  SharedStructInAllBlocks wire2api_box_autoadd_shared_struct_in_all_blocks(dynamic raw) {
+    return wire2api_shared_struct_in_all_blocks(raw);
+  }
+
   EnumType wire2api_box_enum_type(dynamic raw) {
     return wire2api_enum_type(raw);
   }

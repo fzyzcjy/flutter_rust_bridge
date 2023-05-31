@@ -151,6 +151,10 @@ void wire_test_string_in_block_1(int64_t port_, struct wire_uint_8_list *s, uint
 
 WireSyncReturn wire_test_string_in_sync_in_block_1(struct wire_uint_8_list *s, uint64_t i);
 
+void wire_test_optional_string_in_block_1(int64_t port_, struct wire_uint_8_list *s, int32_t i);
+
+WireSyncReturn wire_test_optional_string_in_sync_in_block_1(struct wire_uint_8_list *s, int32_t i);
+
 WireSyncReturn wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1(struct wire_uint_8_list *name,
                                                                                  double score);
 
@@ -192,6 +196,8 @@ static int64_t dummy_method_to_enforce_bundling_ApiBlock1Class(void) {
     dummy_var ^= ((int64_t) (void*) wire_test_inbuilt_type_in_block_1);
     dummy_var ^= ((int64_t) (void*) wire_test_string_in_block_1);
     dummy_var ^= ((int64_t) (void*) wire_test_string_in_sync_in_block_1);
+    dummy_var ^= ((int64_t) (void*) wire_test_optional_string_in_block_1);
+    dummy_var ^= ((int64_t) (void*) wire_test_optional_string_in_sync_in_block_1);
     dummy_var ^= ((int64_t) (void*) wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1);
     dummy_var ^= ((int64_t) (void*) wire_test_all_shared_struct_in_block_1);
     dummy_var ^= ((int64_t) (void*) wire_test_shared_struct_in_block_1_for_1_and_2);

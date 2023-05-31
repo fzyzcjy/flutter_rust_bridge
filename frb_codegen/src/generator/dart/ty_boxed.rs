@@ -44,9 +44,10 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
                         return ptr;",
                     )
                 } else {
+                    let prefix = if !self.context.config.shared { "_" } else { "" };
                     format!(
                         "final ptr = inner.new_{ident}();
-                        _api_fill_to_wire_{inner}(raw, ptr.ref);
+                        {prefix}api_fill_to_wire_{inner}(raw, ptr.ref);
                         return ptr;"
                     )
                 }
@@ -70,8 +71,10 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
             ));
         }
         (!self.ir.inner.is_primitive() && !is_empty_struct(self)).then(|| {
+            let prefix = if !self.context.config.shared { "_" } else { "" };
             format!(
-                "_api_fill_to_wire_{}(apiObj, wireObj.ref);",
+                "{}api_fill_to_wire_{}(apiObj, wireObj.ref);",
+                prefix,
                 self.ir.inner.safe_ident()
             )
         })

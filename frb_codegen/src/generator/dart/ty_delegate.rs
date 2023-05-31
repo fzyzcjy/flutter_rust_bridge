@@ -103,7 +103,6 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                 IrTypeDelegateArray::PrimitiveArray { .. } => {
                     let delegated_type = array.get_delegate();
                     let prefix = if !self.context.config.shared {
-                        // if ir_file.is_type_shared_by_safe_ident(ty) {
                         if !self.is_type_shared(&delegated_type) {
                             "_"
                         } else {

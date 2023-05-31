@@ -31,7 +31,7 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   ffi.Pointer<wire_CrossSharedStructInBlock1And2> api2wire_box_autoadd_cross_shared_struct_in_block_1_and_2(
       CrossSharedStructInBlock1And2 raw) {
     final ptr = inner.new_box_autoadd_cross_shared_struct_in_block_1_and_2();
-    _api_fill_to_wire_cross_shared_struct_in_block_1_and_2(raw, ptr.ref);
+    api_fill_to_wire_cross_shared_struct_in_block_1_and_2(raw, ptr.ref);
     return ptr;
   }
 
@@ -39,7 +39,7 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   ffi.Pointer<wire_CrossSharedStructInBlock2And3> api2wire_box_autoadd_cross_shared_struct_in_block_2_and_3(
       CrossSharedStructInBlock2And3 raw) {
     final ptr = inner.new_box_autoadd_cross_shared_struct_in_block_2_and_3();
-    _api_fill_to_wire_cross_shared_struct_in_block_2_and_3(raw, ptr.ref);
+    api_fill_to_wire_cross_shared_struct_in_block_2_and_3(raw, ptr.ref);
     return ptr;
   }
 
@@ -57,7 +57,7 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   ffi.Pointer<wire_SharedStructInAllBlocks> api2wire_box_autoadd_shared_struct_in_all_blocks(
       SharedStructInAllBlocks raw) {
     final ptr = inner.new_box_autoadd_shared_struct_in_all_blocks();
-    _api_fill_to_wire_shared_struct_in_all_blocks(raw, ptr.ref);
+    api_fill_to_wire_shared_struct_in_all_blocks(raw, ptr.ref);
     return ptr;
   }
 
@@ -65,7 +65,7 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   ffi.Pointer<wire_SharedStructInBlock1And2> api2wire_box_autoadd_shared_struct_in_block_1_and_2(
       SharedStructInBlock1And2 raw) {
     final ptr = inner.new_box_autoadd_shared_struct_in_block_1_and_2();
-    _api_fill_to_wire_shared_struct_in_block_1_and_2(raw, ptr.ref);
+    api_fill_to_wire_shared_struct_in_block_1_and_2(raw, ptr.ref);
     return ptr;
   }
 
@@ -73,7 +73,7 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   ffi.Pointer<wire_SharedStructInBlock2And3> api2wire_box_autoadd_shared_struct_in_block_2_and_3(
       SharedStructInBlock2And3 raw) {
     final ptr = inner.new_box_autoadd_shared_struct_in_block_2_and_3();
-    _api_fill_to_wire_shared_struct_in_block_2_and_3(raw, ptr.ref);
+    api_fill_to_wire_shared_struct_in_block_2_and_3(raw, ptr.ref);
     return ptr;
   }
 
@@ -81,14 +81,14 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   ffi.Pointer<wire_SharedStructOnlyForSyncTest> api2wire_box_autoadd_shared_struct_only_for_sync_test(
       SharedStructOnlyForSyncTest raw) {
     final ptr = inner.new_box_autoadd_shared_struct_only_for_sync_test();
-    _api_fill_to_wire_shared_struct_only_for_sync_test(raw, ptr.ref);
+    api_fill_to_wire_shared_struct_only_for_sync_test(raw, ptr.ref);
     return ptr;
   }
 
   @protected
   ffi.Pointer<wire_EnumType> api2wire_box_enum_type(EnumType raw) {
     final ptr = inner.new_box_enum_type();
-    _api_fill_to_wire_enum_type(raw, ptr.ref);
+    api_fill_to_wire_enum_type(raw, ptr.ref);
     return ptr;
   }
 
@@ -103,7 +103,7 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   ffi.Pointer<wire_list_enum_type> api2wire_list_enum_type(List<EnumType> raw) {
     final ans = inner.new_list_enum_type(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _api_fill_to_wire_enum_type(raw[i], ans.ref.ptr[i]);
+      api_fill_to_wire_enum_type(raw[i], ans.ref.ptr[i]);
     }
     return ans;
   }
@@ -146,51 +146,51 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
 
 // Section: api_fill_to_wire
 
-  void _api_fill_to_wire_box_autoadd_cross_shared_struct_in_block_1_and_2(
+  void api_fill_to_wire_box_autoadd_cross_shared_struct_in_block_1_and_2(
       CrossSharedStructInBlock1And2 apiObj, ffi.Pointer<wire_CrossSharedStructInBlock1And2> wireObj) {
-    _api_fill_to_wire_cross_shared_struct_in_block_1_and_2(apiObj, wireObj.ref);
+    api_fill_to_wire_cross_shared_struct_in_block_1_and_2(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_cross_shared_struct_in_block_2_and_3(
+  void api_fill_to_wire_box_autoadd_cross_shared_struct_in_block_2_and_3(
       CrossSharedStructInBlock2And3 apiObj, ffi.Pointer<wire_CrossSharedStructInBlock2And3> wireObj) {
-    _api_fill_to_wire_cross_shared_struct_in_block_2_and_3(apiObj, wireObj.ref);
+    api_fill_to_wire_cross_shared_struct_in_block_2_and_3(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_shared_struct_in_all_blocks(
+  void api_fill_to_wire_box_autoadd_shared_struct_in_all_blocks(
       SharedStructInAllBlocks apiObj, ffi.Pointer<wire_SharedStructInAllBlocks> wireObj) {
-    _api_fill_to_wire_shared_struct_in_all_blocks(apiObj, wireObj.ref);
+    api_fill_to_wire_shared_struct_in_all_blocks(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_shared_struct_in_block_1_and_2(
+  void api_fill_to_wire_box_autoadd_shared_struct_in_block_1_and_2(
       SharedStructInBlock1And2 apiObj, ffi.Pointer<wire_SharedStructInBlock1And2> wireObj) {
-    _api_fill_to_wire_shared_struct_in_block_1_and_2(apiObj, wireObj.ref);
+    api_fill_to_wire_shared_struct_in_block_1_and_2(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_shared_struct_in_block_2_and_3(
+  void api_fill_to_wire_box_autoadd_shared_struct_in_block_2_and_3(
       SharedStructInBlock2And3 apiObj, ffi.Pointer<wire_SharedStructInBlock2And3> wireObj) {
-    _api_fill_to_wire_shared_struct_in_block_2_and_3(apiObj, wireObj.ref);
+    api_fill_to_wire_shared_struct_in_block_2_and_3(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_autoadd_shared_struct_only_for_sync_test(
+  void api_fill_to_wire_box_autoadd_shared_struct_only_for_sync_test(
       SharedStructOnlyForSyncTest apiObj, ffi.Pointer<wire_SharedStructOnlyForSyncTest> wireObj) {
-    _api_fill_to_wire_shared_struct_only_for_sync_test(apiObj, wireObj.ref);
+    api_fill_to_wire_shared_struct_only_for_sync_test(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_box_enum_type(EnumType apiObj, ffi.Pointer<wire_EnumType> wireObj) {
-    _api_fill_to_wire_enum_type(apiObj, wireObj.ref);
+  void api_fill_to_wire_box_enum_type(EnumType apiObj, ffi.Pointer<wire_EnumType> wireObj) {
+    api_fill_to_wire_enum_type(apiObj, wireObj.ref);
   }
 
-  void _api_fill_to_wire_cross_shared_struct_in_block_1_and_2(
+  void api_fill_to_wire_cross_shared_struct_in_block_1_and_2(
       CrossSharedStructInBlock1And2 apiObj, wire_CrossSharedStructInBlock1And2 wireObj) {
     wireObj.name = api2wire_String(apiObj.name);
   }
 
-  void _api_fill_to_wire_cross_shared_struct_in_block_2_and_3(
+  void api_fill_to_wire_cross_shared_struct_in_block_2_and_3(
       CrossSharedStructInBlock2And3 apiObj, wire_CrossSharedStructInBlock2And3 wireObj) {
     wireObj.name = api2wire_String(apiObj.name);
   }
 
-  void _api_fill_to_wire_enum_type(EnumType apiObj, wire_EnumType wireObj) {
+  void api_fill_to_wire_enum_type(EnumType apiObj, wire_EnumType wireObj) {
     if (apiObj is EnumType_Empty) {
       wireObj.tag = 0;
       return;
@@ -245,7 +245,7 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
     }
   }
 
-  void _api_fill_to_wire_shared_struct_in_all_blocks(
+  void api_fill_to_wire_shared_struct_in_all_blocks(
       SharedStructInAllBlocks apiObj, wire_SharedStructInAllBlocks wireObj) {
     wireObj.id = api2wire_i32(apiObj.id);
     wireObj.num = api2wire_f64(apiObj.num);
@@ -253,21 +253,21 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
     wireObj.enum_list = api2wire_opt_list_enum_type(apiObj.enumList);
   }
 
-  void _api_fill_to_wire_shared_struct_in_block_1_and_2(
+  void api_fill_to_wire_shared_struct_in_block_1_and_2(
       SharedStructInBlock1And2 apiObj, wire_SharedStructInBlock1And2 wireObj) {
     wireObj.id = api2wire_i32(apiObj.id);
     wireObj.num = api2wire_f64(apiObj.num);
     wireObj.name = api2wire_String(apiObj.name);
   }
 
-  void _api_fill_to_wire_shared_struct_in_block_2_and_3(
+  void api_fill_to_wire_shared_struct_in_block_2_and_3(
       SharedStructInBlock2And3 apiObj, wire_SharedStructInBlock2And3 wireObj) {
     wireObj.id = api2wire_i32(apiObj.id);
     wireObj.num = api2wire_f64(apiObj.num);
     wireObj.name = api2wire_String(apiObj.name);
   }
 
-  void _api_fill_to_wire_shared_struct_only_for_sync_test(
+  void api_fill_to_wire_shared_struct_only_for_sync_test(
       SharedStructOnlyForSyncTest apiObj, wire_SharedStructOnlyForSyncTest wireObj) {
     wireObj.name = api2wire_String(apiObj.name);
     wireObj.score = api2wire_f64(apiObj.score);

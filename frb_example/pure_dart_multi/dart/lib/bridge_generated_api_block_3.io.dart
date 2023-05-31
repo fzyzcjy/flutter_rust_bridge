@@ -39,6 +39,12 @@ class ApiBlock3ClassPlatform extends FlutterRustBridgeBase<ApiBlock3ClassWire> {
     return raw;
   }
 
+  @protected
+  ffi.Pointer<wire_SharedStructInAllBlocks> api2wire_opt_box_autoadd_shared_struct_in_all_blocks(
+      SharedStructInAllBlocks? raw) {
+    return raw == null ? ffi.nullptr : _sharedPlatform.api2wire_box_autoadd_shared_struct_in_all_blocks(raw);
+  }
+
 // Section: finalizer
 
 // Section: api_fill_to_wire
@@ -51,6 +57,11 @@ class ApiBlock3ClassPlatform extends FlutterRustBridgeBase<ApiBlock3ClassWire> {
   void _api_fill_to_wire_box_autoadd_struct_only_for_block_3(
       StructOnlyForBlock3 apiObj, ffi.Pointer<wire_StructOnlyForBlock3> wireObj) {
     _api_fill_to_wire_struct_only_for_block_3(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_opt_box_autoadd_shared_struct_in_all_blocks(
+      SharedStructInAllBlocks? apiObj, ffi.Pointer<wire_SharedStructInAllBlocks> wireObj) {
+    if (apiObj != null) _sharedPlatform.api_fill_to_wire_box_autoadd_shared_struct_in_all_blocks(apiObj, wireObj);
   }
 
   void _api_fill_to_wire_struct_defined_in_block_3(StructDefinedInBlock3 apiObj, wire_StructDefinedInBlock3 wireObj) {
