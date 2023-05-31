@@ -80,6 +80,10 @@ class ApiBlock1ClassWasmModule implements WasmModule {
 
   external dynamic /* String */ wire_test_string_in_sync_in_block_1(String s, Object i);
 
+  external dynamic /* void */ wire_test_optional_string_in_block_1(NativePortType port_, String? s, int i);
+
+  external dynamic /* String? */ wire_test_optional_string_in_sync_in_block_1(String? s, int i);
+
   external dynamic /* List<dynamic> */ wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1(
       String name, double score);
 
@@ -116,6 +120,12 @@ class ApiBlock1ClassWire extends FlutterRustBridgeWasmWireBase<ApiBlock1ClassWas
 
   dynamic /* String */ wire_test_string_in_sync_in_block_1(String s, Object i) =>
       wasmModule.wire_test_string_in_sync_in_block_1(s, i);
+
+  void wire_test_optional_string_in_block_1(NativePortType port_, String? s, int i) =>
+      wasmModule.wire_test_optional_string_in_block_1(port_, s, i);
+
+  dynamic /* String? */ wire_test_optional_string_in_sync_in_block_1(String? s, int i) =>
+      wasmModule.wire_test_optional_string_in_sync_in_block_1(s, i);
 
   dynamic /* List<dynamic> */ wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1(
           String name, double score) =>

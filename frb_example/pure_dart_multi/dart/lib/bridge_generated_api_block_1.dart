@@ -31,6 +31,14 @@ abstract class ApiBlock1Class {
 
   FlutterRustBridgeTaskConstMeta get kTestStringInSyncInBlock1ConstMeta;
 
+  Future<String?> testOptionalStringInBlock1({String? s, required int i, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestOptionalStringInBlock1ConstMeta;
+
+  String? testOptionalStringInSyncInBlock1({String? s, required int i, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestOptionalStringInSyncInBlock1ConstMeta;
+
   SharedStructOnlyForSyncTest testSharedStructOnlyForSyncWithSyncReturnInBlock1(
       {required String name, required double score, dynamic hint});
 
@@ -165,6 +173,40 @@ class ApiBlock1ClassImpl implements ApiBlock1Class {
 
   FlutterRustBridgeTaskConstMeta get kTestStringInSyncInBlock1ConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "test_string_in_sync_in_block_1",
+        argNames: ["s", "i"],
+      );
+
+  Future<String?> testOptionalStringInBlock1({String? s, required int i, dynamic hint}) {
+    var arg0 = _platform.api2wire_opt_String(s);
+    var arg1 = api2wire_i32(i);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_optional_string_in_block_1(port_, arg0, arg1),
+      parseSuccessData: _wire2api_opt_String,
+      constMeta: kTestOptionalStringInBlock1ConstMeta,
+      argValues: [s, i],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestOptionalStringInBlock1ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_optional_string_in_block_1",
+        argNames: ["s", "i"],
+      );
+
+  String? testOptionalStringInSyncInBlock1({String? s, required int i, dynamic hint}) {
+    var arg0 = _platform.api2wire_opt_String(s);
+    var arg1 = api2wire_i32(i);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_test_optional_string_in_sync_in_block_1(arg0, arg1),
+      parseSuccessData: _wire2api_opt_String,
+      constMeta: kTestOptionalStringInSyncInBlock1ConstMeta,
+      argValues: [s, i],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestOptionalStringInSyncInBlock1ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_optional_string_in_sync_in_block_1",
         argNames: ["s", "i"],
       );
 

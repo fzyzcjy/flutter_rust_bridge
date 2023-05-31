@@ -20,6 +20,23 @@ pub extern "C" fn wire_test_string_in_sync_in_block_1(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_test_optional_string_in_block_1(
+    port_: i64,
+    s: *mut wire_uint_8_list,
+    i: i32,
+) {
+    wire_test_optional_string_in_block_1_impl(port_, s, i)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_optional_string_in_sync_in_block_1(
+    s: *mut wire_uint_8_list,
+    i: i32,
+) -> support::WireSyncReturn {
+    wire_test_optional_string_in_sync_in_block_1_impl(s, i)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1(
     name: *mut wire_uint_8_list,
     score: f64,

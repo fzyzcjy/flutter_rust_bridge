@@ -350,19 +350,33 @@ impl<'a> Generator<'a> {
                 vec![] // There is no need to use it in a shared block(ir_file)
             }
         };
+        log::debug!(
+            "the distinct_input_types_in_shared_block:{:?}",
+            distinct_input_types_in_shared_block
+        ); //TODO: delete
+        if func.inputs.len() == 5 {
+            log::debug!("my target func:{}", func.name); //TODO: delete
+        }
         params += (func.inputs)
             .iter()
             .map(|field| {
                 let rust_api_type = field.ty.rust_api_type();
                 let name = field.name.rust_style();
+                let is_field_shared = |field: &IrField| {
+                    if let Optional(ir) = &field.ty {
+                        log::debug!("inner optional ty：{:?}", ir.inner); //TODO: delete
+                        distinct_input_types_in_shared_block.contains(&ir.inner)
+                    } else {
+                        distinct_input_types_in_shared_block.contains(&field.ty)
+                    }
+                };
+
                 Acc::new(|target| match target {
                     Common => {
                         format!(
                             "{}: impl {}Wire2Api<{}> + UnwindSafe",
                             name,
-                            if !ir_file.shared
-                                && distinct_input_types_in_shared_block.contains(&field.ty)
-                            {
+                            if !ir_file.shared && is_field_shared(&field) {
                                 format!("{}::", shared_rust_wire_mod.unwrap())
                             } else {
                                 "".into()

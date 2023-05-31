@@ -359,6 +359,40 @@ class ApiBlock1ClassWire implements FlutterRustBridgeWireBase {
   late final _wire_test_string_in_sync_in_block_1 =
       _wire_test_string_in_sync_in_block_1Ptr.asFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>, int)>();
 
+  void wire_test_optional_string_in_block_1(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> s,
+    int i,
+  ) {
+    return _wire_test_optional_string_in_block_1(
+      port_,
+      s,
+      i,
+    );
+  }
+
+  late final _wire_test_optional_string_in_block_1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>, ffi.Int32)>>(
+          'wire_test_optional_string_in_block_1');
+  late final _wire_test_optional_string_in_block_1 =
+      _wire_test_optional_string_in_block_1Ptr.asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>, int)>();
+
+  WireSyncReturn wire_test_optional_string_in_sync_in_block_1(
+    ffi.Pointer<wire_uint_8_list> s,
+    int i,
+  ) {
+    return _wire_test_optional_string_in_sync_in_block_1(
+      s,
+      i,
+    );
+  }
+
+  late final _wire_test_optional_string_in_sync_in_block_1Ptr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>, ffi.Int32)>>(
+          'wire_test_optional_string_in_sync_in_block_1');
+  late final _wire_test_optional_string_in_sync_in_block_1 = _wire_test_optional_string_in_sync_in_block_1Ptr
+      .asFunction<WireSyncReturn Function(ffi.Pointer<wire_uint_8_list>, int)>();
+
   WireSyncReturn wire_test_shared_struct_only_for_sync_with_sync_return_in_block_1(
     ffi.Pointer<wire_uint_8_list> name,
     double score,

@@ -46,6 +46,7 @@ pub fn test_shared_struct_only_for_sync_as_input_with_no_sync_return_in_block_3(
     }
 }
 
+
 pub fn test_all_shared_struct_in_block_3(
     mut custom: SharedStructInAllBlocks,
     s: String,
@@ -55,6 +56,20 @@ pub fn test_all_shared_struct_in_block_3(
     custom.id = i;
     custom
 }
+
+// pub fn test_all_shared_struct_in_block_3(
+//     custom: Option<SharedStructInAllBlocks>,
+//     s: String,
+//     i: i32,
+// ) -> Option<SharedStructInAllBlocks> {
+//     if let Some(mut obj) = custom {
+//         obj.name = s;
+//         obj.id = i;
+//         Some(obj)
+//     } else {
+//         None
+//     }
+// }
 
 pub fn test_shared_struct_in_block_3_for_2_and_3(
     mut custom: SharedStructInBlock2And3,

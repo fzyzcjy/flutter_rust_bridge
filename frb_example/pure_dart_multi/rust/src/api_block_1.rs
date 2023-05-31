@@ -32,6 +32,23 @@ pub fn test_string_in_sync_in_block_1(s: String, i: u64) -> SyncReturn<String> {
     SyncReturn(format!("{}_{}", s, i))
 }
 
+pub fn test_optional_string_in_block_1(s: Option<String>, i: i32) -> Option<String> {
+    match s {
+        Some(s) => Some(format!("{}{}", s, i)),
+        None => None,
+    }
+}
+
+pub fn test_optional_string_in_sync_in_block_1(
+    s: Option<String>,
+    i: i32,
+) -> SyncReturn<Option<String>> {
+    match s {
+        Some(s) => SyncReturn(Some(format!("{}{}", s, i))),
+        None => SyncReturn(None),
+    }
+}
+
 pub fn test_shared_struct_only_for_sync_with_sync_return_in_block_1(
     name: String,
     score: f64,
