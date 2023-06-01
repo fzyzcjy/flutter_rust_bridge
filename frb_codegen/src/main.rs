@@ -165,6 +165,7 @@ mod tests {
         *LOGGER;
 
         // Options for frb_codegen
+        let wasm = !cfg!(feature = "no-wasm");
         let mut raw_opts = RawOpts {
             // Path of input Rust code
             rust_input: vec![
@@ -184,7 +185,7 @@ mod tests {
                 RUST_OUTPUT_2.to_string(),
                 RUST_OUTPUT_3.to_string(),
             ]),
-            wasm: true,
+            wasm: wasm,
             // Class name of each Rust block of api
             class_name: Some(vec![
                 CLASS_NAME_1.to_string(),

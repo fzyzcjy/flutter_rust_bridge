@@ -24,7 +24,9 @@ fn main() {
     println!("cargo:rerun-if-changed={RUST_INPUT_1}");
     println!("cargo:rerun-if-changed={RUST_INPUT_2}");
     println!("cargo:rerun-if-changed={RUST_INPUT_3}");
+
     // Options for frb_codegen
+    let wasm = !cfg!(feature = "no-wasm");
     let mut raw_opts = RawOpts {
         // Path of input Rust code
         rust_input: vec![
@@ -44,7 +46,7 @@ fn main() {
             RUST_OUTPUT_2.to_string(),
             RUST_OUTPUT_3.to_string(),
         ]),
-        wasm: true,
+        wasm,
         // Class name of each Rust block of api
         class_name: Some(vec![
             CLASS_NAME_1.to_string(),

@@ -552,11 +552,14 @@ fn generate_dart_implementation_body(
             );
         }
 
-        // 2. the io file
-        impl_import_for_io += &format!("\nimport '{}';", dart_paths.io_path.get_file_name(),);
+        if config.wasm_enabled {
+            // 2. io file: import shared module
+            impl_import_for_io += &format!("\nimport '{}';", dart_paths.io_path.get_file_name(),);
 
-        // 3. the wasm file
-        impl_import_for_web += &format!("\nimport '{}';", dart_paths.wasm_path.get_file_name(),);
+            // 3. wasm file: import shared module
+            impl_import_for_web +=
+                &format!("\nimport '{}';", dart_paths.wasm_path.get_file_name(),);
+        }
     }
 
     Acc {

@@ -50,6 +50,9 @@ rust_build_and_test:
     just _rust_build_and_test_single {{dir_example_pure_dart}}/rust
     just _rust_build_and_test_single {{dir_example_with_flutter}}/rust
     just _rust_build_and_test_single {{dir_example_pure_dart_multi}}/rust
+    just _rust_build_and_test_single {{dir_example_pure_dart_multi}}/rust --features no-wasm
+    just _rust_build_and_test_single {{dir_example_pure_dart_multi}}/rust --features no-wasm,c-output
+    just _rust_build_and_test_single {{dir_example_pure_dart_multi}}/rust --features no-wasm,c-output,extra-c-output-path
     just _rust_build_and_test_single {{dir_example_pure_dart_multi}}/rust --features c-output
     just _rust_build_and_test_single {{dir_example_pure_dart_multi}}/rust --features c-output,extra-c-output-path
 
