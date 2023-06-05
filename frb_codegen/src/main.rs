@@ -165,7 +165,6 @@ mod tests {
         *LOGGER;
 
         // Options for frb_codegen
-        let wasm = !cfg!(feature = "no-wasm");
         let mut raw_opts = RawOpts {
             // Path of input Rust code
             rust_input: vec![
@@ -185,7 +184,8 @@ mod tests {
                 RUST_OUTPUT_2.to_string(),
                 RUST_OUTPUT_3.to_string(),
             ]),
-            wasm: wasm,
+            // Whether generating wasm file(s) or not
+            wasm: !cfg!(feature = "no-wasm"),
             // Class name of each Rust block of api
             class_name: Some(vec![
                 CLASS_NAME_1.to_string(),
@@ -196,6 +196,12 @@ mod tests {
             // for other options use defaults
             ..Default::default()
         };
+
+        // other feature options
+        // if cfg!(feature = "dart-decl-output") {
+        raw_opts.dart_decl_output =
+            Some("../frb_example/pure_dart_multi/dart/lib/bridge_definitions.dart".into());
+        // }
 
         if cfg!(feature = "c-output") {
             raw_opts.c_output = Some(vec![

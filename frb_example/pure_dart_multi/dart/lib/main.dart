@@ -1,5 +1,7 @@
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 
+import 'bridge_definitions.dart';
+
 import 'bridge_generated_api_block_1.dart';
 import 'bridge_generated_api_block_2.dart';
 import 'bridge_generated_api_block_3.dart';

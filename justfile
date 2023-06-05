@@ -44,15 +44,18 @@ dart_pub_get mode="default":
 # ============================ build & test ============================
 
 rust_build_and_test:
+    # basic
     just _rust_build_and_test_single frb_codegen --features uuid --features chrono
     just _rust_build_and_test_single frb_rust
     just _rust_build_and_test_single frb_macros
+    # single block case
     just _rust_build_and_test_single {{dir_example_pure_dart}}/rust
     just _rust_build_and_test_single {{dir_example_with_flutter}}/rust
-    just _rust_build_and_test_single {{dir_example_pure_dart_multi}}/rust
+    # multi blocks case without wasm files
     just _rust_build_and_test_single {{dir_example_pure_dart_multi}}/rust --features no-wasm
     just _rust_build_and_test_single {{dir_example_pure_dart_multi}}/rust --features no-wasm,c-output
     just _rust_build_and_test_single {{dir_example_pure_dart_multi}}/rust --features no-wasm,c-output,extra-c-output-path
+    # multi blocks case with wasm files
     just _rust_build_and_test_single {{dir_example_pure_dart_multi}}/rust --features c-output
     just _rust_build_and_test_single {{dir_example_pure_dart_multi}}/rust --features c-output,extra-c-output-path
 

@@ -252,12 +252,19 @@ pub(crate) trait ExtraTraitForVec<T: Clone + Eq + std::hash::Hash> {
     ///
     /// assert_eq!(uniques, vec![4, 5]);
     /// assert_eq!(duplicates, vec![1, 2, 3]);
+    ///
+    /// let (uniques, duplicates) = vec.find_uniques_and_duplicates(false, false);
+    ///
+    /// assert_eq!(uniques, vec![1, 2, 3, 4, 5]);
+    /// assert_eq!(duplicates, vec![1, 2, 3]);
     /// ```
     fn find_uniques_and_duplicates(
         &self,
         exclude_duplicates_in_uniques: bool,
         exclude_duplicates_in_duplicates: bool,
     ) -> (Vec<T>, Vec<T>);
+
+    fn find_uniques(&self) -> Vec<T>;
 
     fn find_duplicates(&self, exclude_multi_duplicates: bool) -> Vec<T>;
 }
@@ -298,6 +305,11 @@ impl<T: Clone + Eq + std::hash::Hash> ExtraTraitForVec<T> for Vec<T> {
                 .collect();
         }
         (uniques, duplicates)
+    }
+
+    fn find_uniques(&self) -> Vec<T> {
+        let (uniques, _) = self.find_uniques_and_duplicates(false, false);
+        uniques
     }
 
     fn find_duplicates(&self, exclude_multi_duplicates: bool) -> Vec<T> {

@@ -4,7 +4,7 @@ use crate::others::{
     extract_dart_wire_content, modify_dart_wire_content, sanity_check, DartBasicCode,
     DUMMY_WIRE_CODE_FOR_BINDGEN, EXTRA_EXTERN_FUNC_NAMES,
 };
-use crate::utils::misc::with_changed_file;
+use crate::utils::misc::{with_changed_file, ExtraTraitForVec};
 use crate::{command_run, commands, ensure_tools_available, generator, ir, Opts};
 use itertools::Itertools;
 use log::info;
@@ -90,6 +90,7 @@ pub(crate) fn generate_dart_code(
     if let Some(dart_decl_output_path) = &config.dart_decl_output_path {
         write_dart_decls(
             config,
+            all_configs,
             dart_decl_output_path,
             dart_output_dir,
             &generated_dart,
@@ -152,25 +153,28 @@ pub(crate) fn generate_dart_code(
     Ok(())
 }
 
+use std::cell::RefCell;
+thread_local!(static HAS_GENERATED_DART_DECL_FILE: RefCell<bool> = RefCell::new(false));
+
 fn write_dart_decls(
     config: &Opts,
+    all_configs: &[Opts],
     dart_decl_output_path: &str,
     dart_output_dir: &Path,
     generated_dart: &crate::generator::dart::Output,
     generated_dart_decl_all: &DartBasicCode,
     generated_dart_impl_io_wire: &DartBasicCode,
 ) -> anyhow::Result<()> {
-    let impl_import_decl = DartBasicCode {
-        import: format!(
-            "import \"{}\";",
-            diff_paths(dart_decl_output_path, dart_output_dir)
-                .unwrap()
-                .to_str()
-                .unwrap()
-        ),
-        ..Default::default()
-    };
+    // be it single or multi block(s) case, remove the definition file at first
+    HAS_GENERATED_DART_DECL_FILE.with(|data| {
+        let mut flag = data.borrow_mut();
+        if !(*flag) {
+            std::fs::remove_file(dart_decl_output_path).unwrap_or_default();
+            *flag = true;
+        }
+    });
 
+    // get essential import content
     let common_import = DartBasicCode {
         import: if config.wasm_enabled {
             format!(
@@ -192,11 +196,40 @@ fn write_dart_decls(
         ..Default::default()
     };
 
-    fs::write(
-        dart_decl_output_path,
-        (&generated_dart.file_prelude + &common_import + generated_dart_decl_all).to_text(),
+    // if file of `dart_decl_output_path` existed, append content but not create
+    let mut file = fs::OpenOptions::new()
+        .append(true) // essential for multi-blocks case
+        .create(true)
+        .open(dart_decl_output_path)
+        .unwrap_or_else(|_| panic!("{}", "can't open path\"{dart_decl_output_path}\""));
+    std::io::Write::write_all(
+        &mut file,
+        (&generated_dart.file_prelude + &common_import + generated_dart_decl_all)
+            .to_text()
+            .as_bytes(),
     )?;
 
+    // erase duplicated lines for multi-blocks case, like the redundant import statements and class definitions
+    // NOTE: since dart file with syntax error would make the whole generation stuck,
+    // the refinement MUST be done at the end after each block generation.
+    if all_configs.len() > 1 {
+        let mut contents =
+            std::fs::read_to_string(dart_decl_output_path).expect("Unable to read file");
+        remove_dupilicated_prehead_and_imports(&mut contents);
+        fs::write(dart_decl_output_path, contents)?;
+    }
+
+    // refine import for other dart files
+    let impl_import_decl = DartBasicCode {
+        import: format!(
+            "import \"{}\";",
+            diff_paths(dart_decl_output_path, dart_output_dir)
+                .unwrap()
+                .to_str()
+                .unwrap()
+        ),
+        ..Default::default()
+    };
     let dart_output_paths = config.get_dart_output_paths();
     if config.wasm_enabled {
         fs::write(
@@ -224,5 +257,60 @@ fn write_dart_decls(
                 .to_text(),
         )?;
     }
+
     Ok(())
+}
+
+fn remove_dupilicated_prehead_and_imports(contents: &mut String) {
+    let mut lines = contents.lines().collect::<Vec<_>>();
+    let mut correct_imports: Vec<String> = Vec::new();
+    let mut lines_to_delete = Vec::new();
+    let mut check_import_surfix_next_time = false;
+    for (i, line) in lines.iter().enumerate() {
+        let trimmed_line = line.trim();
+        if !check_import_surfix_next_time {
+            if trimmed_line.starts_with("part ") || trimmed_line.starts_with("// ") {
+                if !correct_imports.contains(&String::from(trimmed_line)) {
+                    correct_imports.push(trimmed_line.into());
+                }
+                lines_to_delete.push(i);
+            } else if trimmed_line.starts_with("import ") {
+                if trimmed_line.ends_with(';') {
+                    if !correct_imports.contains(&String::from(trimmed_line)) {
+                        correct_imports.push(trimmed_line.into());
+                    }
+                } else {
+                    check_import_surfix_next_time = true;
+                }
+                lines_to_delete.push(i);
+            }
+        } else {
+            // check current line with previous `import` line together
+            let j = lines_to_delete.last().unwrap();
+            let new_import_line = format!("{} {}", lines[*j].trim(), trimmed_line);
+
+            check_import_surfix_next_time = !trimmed_line.ends_with(';');
+
+            if !correct_imports.contains(&new_import_line) {
+                correct_imports.push(new_import_line);
+                if !check_import_surfix_next_time {
+                    correct_imports = correct_imports.find_uniques();
+                }
+            }
+            lines_to_delete.push(i);
+        }
+    }
+
+    // Sort the indices in descending to prevent issues with subsequent removals
+    lines_to_delete.sort_by(|a, b| b.cmp(a));
+    for i in lines_to_delete {
+        lines.remove(i);
+    }
+
+    // add compact import at file top place
+    correct_imports.sort();
+    // this sort is essential for putting `part ...` after `import ...`
+    let imports_lines = correct_imports.join("\n");
+    *contents = lines.join("\n");
+    *contents = format!("{}\n{}", imports_lines, contents);
 }
