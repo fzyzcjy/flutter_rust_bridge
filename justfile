@@ -122,6 +122,7 @@ _generate_bridge_pure_dart_multi:
         --dart-format-line-length 120 \
         --rust-output frb_example/pure_dart_multi/rust/src/generated_api_block_1.rs frb_example/pure_dart_multi/rust/src/generated_api_block_2.rs frb_example/pure_dart_multi/rust/src/generated_api_block_3.rs \
         --class-name ApiBlock1Class ApiBlock2Class ApiBlock3Class \
+        --dart-decl-output frb_example/pure_dart_multi/dart/lib/bridge_definitions.dart \
         --wasm
 
 _generate_bridge_with_flutter:
