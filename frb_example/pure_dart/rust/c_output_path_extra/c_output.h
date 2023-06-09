@@ -444,6 +444,16 @@ typedef struct wire_StructWithEnum {
   struct wire_Abc abc2;
 } wire_StructWithEnum;
 
+typedef struct wire_record_String_i32 {
+  struct wire_uint_8_list *field0;
+  int32_t field1;
+} wire_record_String_i32;
+
+typedef struct wire_list_record_String_i32 {
+  struct wire_record_String_i32 *ptr;
+  int32_t len;
+} wire_list_record_String_i32;
+
 typedef struct wire_Event {
   struct wire_uint_8_list *address;
   struct wire_uint_8_list *payload;
@@ -795,6 +805,10 @@ void wire_test_contains_mirrored_sub_struct(int64_t port_);
 
 void wire_test_struct_with_enum(int64_t port_, struct wire_StructWithEnum *se);
 
+void wire_test_tuple(int64_t port_, struct wire_record_String_i32 *value);
+
+void wire_test_tuple_2(int64_t port_, struct wire_list_record_String_i32 *value);
+
 void wire_as_string__method__Event(int64_t port_, struct wire_Event *that);
 
 void wire_sum__method__SumWith(int64_t port_, struct wire_SumWith *that, uint32_t y, uint32_t z);
@@ -915,6 +929,8 @@ struct wire_Numbers *new_box_autoadd_numbers_0(void);
 
 struct wire_OpaqueNested *new_box_autoadd_opaque_nested_0(void);
 
+struct wire_record_String_i32 *new_box_autoadd_record_String_i32_0(void);
+
 struct wire_Sequences *new_box_autoadd_sequences_0(void);
 
 struct wire_StructWithEnum *new_box_autoadd_struct_with_enum_0(void);
@@ -974,6 +990,8 @@ struct wire_list_my_size *new_list_my_size_0(int32_t len);
 struct wire_list_my_tree_node *new_list_my_tree_node_0(int32_t len);
 
 struct wire_list_opt_box_autoadd_attribute *new_list_opt_box_autoadd_attribute_0(int32_t len);
+
+struct wire_list_record_String_i32 *new_list_record_String_i32_0(int32_t len);
 
 struct wire_list_test_id *new_list_test_id_0(int32_t len);
 
@@ -1214,6 +1232,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_test_abc_enum);
     dummy_var ^= ((int64_t) (void*) wire_test_contains_mirrored_sub_struct);
     dummy_var ^= ((int64_t) (void*) wire_test_struct_with_enum);
+    dummy_var ^= ((int64_t) (void*) wire_test_tuple);
+    dummy_var ^= ((int64_t) (void*) wire_test_tuple_2);
     dummy_var ^= ((int64_t) (void*) wire_as_string__method__Event);
     dummy_var ^= ((int64_t) (void*) wire_sum__method__SumWith);
     dummy_var ^= ((int64_t) (void*) wire_new__static_method__ConcatenateWith);
@@ -1269,6 +1289,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_note_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_numbers_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_opaque_nested_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_record_String_i32_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_sequences_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_enum_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_sum_with_0);
@@ -1299,6 +1320,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_list_my_size_0);
     dummy_var ^= ((int64_t) (void*) new_list_my_tree_node_0);
     dummy_var ^= ((int64_t) (void*) new_list_opt_box_autoadd_attribute_0);
+    dummy_var ^= ((int64_t) (void*) new_list_record_String_i32_0);
     dummy_var ^= ((int64_t) (void*) new_list_test_id_0);
     dummy_var ^= ((int64_t) (void*) new_list_weekdays_0);
     dummy_var ^= ((int64_t) (void*) new_uint_8_list_0);

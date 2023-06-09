@@ -403,6 +403,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_record_String_i32> api2wire_box_autoadd_record_String_i32((String, int) raw) {
+    final ptr = inner.new_box_autoadd_record_String_i32_0();
+    _api_fill_to_wire_record_String_i32(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_Sequences> api2wire_box_autoadd_sequences(Sequences raw) {
     final ptr = inner.new_box_autoadd_sequences_0();
     _api_fill_to_wire_sequences(raw, ptr.ref);
@@ -637,6 +644,15 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_list_record_String_i32> api2wire_list_record_String_i32(List<(String, int)> raw) {
+    final ans = inner.new_list_record_String_i32_0(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      _api_fill_to_wire_record_String_i32(raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
+  @protected
   ffi.Pointer<wire_list_test_id> api2wire_list_test_id(List<TestId> raw) {
     final ans = inner.new_list_test_id_0(raw.length);
     for (var i = 0; i < raw.length; ++i) {
@@ -717,6 +733,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   ffi.Pointer<wire_NewTypeInt> api2wire_opt_box_autoadd_new_type_int(NewTypeInt? raw) {
     return raw == null ? ffi.nullptr : api2wire_box_autoadd_new_type_int(raw);
+  }
+
+  @protected
+  ffi.Pointer<wire_record_String_i32> api2wire_opt_box_autoadd_record_String_i32((String, int)? raw) {
+    return raw == null ? ffi.nullptr : api2wire_box_autoadd_record_String_i32(raw);
   }
 
   @protected
@@ -1071,6 +1092,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     _api_fill_to_wire_opaque_nested(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_record_String_i32(
+      (String, int) apiObj, ffi.Pointer<wire_record_String_i32> wireObj) {
+    _api_fill_to_wire_record_String_i32(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_sequences(Sequences apiObj, ffi.Pointer<wire_Sequences> wireObj) {
     _api_fill_to_wire_sequences(apiObj, wireObj.ref);
   }
@@ -1382,8 +1408,18 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     if (apiObj != null) _api_fill_to_wire_box_autoadd_new_type_int(apiObj, wireObj);
   }
 
+  void _api_fill_to_wire_opt_box_autoadd_record_String_i32(
+      (String, int)? apiObj, ffi.Pointer<wire_record_String_i32> wireObj) {
+    if (apiObj != null) _api_fill_to_wire_box_autoadd_record_String_i32(apiObj, wireObj);
+  }
+
   void _api_fill_to_wire_opt_box_exotic_optionals(ExoticOptionals? apiObj, ffi.Pointer<wire_ExoticOptionals> wireObj) {
     if (apiObj != null) _api_fill_to_wire_box_exotic_optionals(apiObj, wireObj);
+  }
+
+  void _api_fill_to_wire_record_String_i32((String, int) apiObj, wire_record_String_i32 wireObj) {
+    wireObj.field0 = api2wire_String(apiObj.$1);
+    wireObj.field1 = api2wire_i32(apiObj.$2);
   }
 
   void _api_fill_to_wire_sequences(Sequences apiObj, wire_Sequences wireObj) {
@@ -3661,6 +3697,37 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_test_struct_with_enum =
       _wire_test_struct_with_enumPtr.asFunction<void Function(int, ffi.Pointer<wire_StructWithEnum>)>();
 
+  void wire_test_tuple(
+    int port_,
+    ffi.Pointer<wire_record_String_i32> value,
+  ) {
+    return _wire_test_tuple(
+      port_,
+      value,
+    );
+  }
+
+  late final _wire_test_tuplePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_record_String_i32>)>>('wire_test_tuple');
+  late final _wire_test_tuple =
+      _wire_test_tuplePtr.asFunction<void Function(int, ffi.Pointer<wire_record_String_i32>)>();
+
+  void wire_test_tuple_2(
+    int port_,
+    ffi.Pointer<wire_list_record_String_i32> value,
+  ) {
+    return _wire_test_tuple_2(
+      port_,
+      value,
+    );
+  }
+
+  late final _wire_test_tuple_2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_record_String_i32>)>>(
+          'wire_test_tuple_2');
+  late final _wire_test_tuple_2 =
+      _wire_test_tuple_2Ptr.asFunction<void Function(int, ffi.Pointer<wire_list_record_String_i32>)>();
+
   void wire_as_string__method__Event(
     int port_,
     ffi.Pointer<wire_Event> that,
@@ -4237,6 +4304,16 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_box_autoadd_opaque_nested_0 =
       _new_box_autoadd_opaque_nested_0Ptr.asFunction<ffi.Pointer<wire_OpaqueNested> Function()>();
 
+  ffi.Pointer<wire_record_String_i32> new_box_autoadd_record_String_i32_0() {
+    return _new_box_autoadd_record_String_i32_0();
+  }
+
+  late final _new_box_autoadd_record_String_i32_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_record_String_i32> Function()>>(
+          'new_box_autoadd_record_String_i32_0');
+  late final _new_box_autoadd_record_String_i32_0 =
+      _new_box_autoadd_record_String_i32_0Ptr.asFunction<ffi.Pointer<wire_record_String_i32> Function()>();
+
   ffi.Pointer<wire_Sequences> new_box_autoadd_sequences_0() {
     return _new_box_autoadd_sequences_0();
   }
@@ -4562,6 +4639,20 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
           'new_list_opt_box_autoadd_attribute_0');
   late final _new_list_opt_box_autoadd_attribute_0 = _new_list_opt_box_autoadd_attribute_0Ptr
       .asFunction<ffi.Pointer<wire_list_opt_box_autoadd_attribute> Function(int)>();
+
+  ffi.Pointer<wire_list_record_String_i32> new_list_record_String_i32_0(
+    int len,
+  ) {
+    return _new_list_record_String_i32_0(
+      len,
+    );
+  }
+
+  late final _new_list_record_String_i32_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_record_String_i32> Function(ffi.Int32)>>(
+          'new_list_record_String_i32_0');
+  late final _new_list_record_String_i32_0 =
+      _new_list_record_String_i32_0Ptr.asFunction<ffi.Pointer<wire_list_record_String_i32> Function(int)>();
 
   ffi.Pointer<wire_list_test_id> new_list_test_id_0(
     int len,
@@ -5568,6 +5659,20 @@ final class wire_StructWithEnum extends ffi.Struct {
   external wire_Abc abc1;
 
   external wire_Abc abc2;
+}
+
+final class wire_record_String_i32 extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> field0;
+
+  @ffi.Int32()
+  external int field1;
+}
+
+final class wire_list_record_String_i32 extends ffi.Struct {
+  external ffi.Pointer<wire_record_String_i32> ptr;
+
+  @ffi.Int32()
+  external int len;
 }
 
 final class wire_Event extends ffi.Struct {

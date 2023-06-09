@@ -652,6 +652,14 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kTestStructWithEnumConstMeta;
 
+  Future<(String, int)> testTuple({(String, int)? value, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestTupleConstMeta;
+
+  Future<void> testTuple2({required List<(String, int)> value, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestTuple2ConstMeta;
+
   Future<String> asStringMethodEvent({required Event that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kAsStringMethodEventConstMeta;

@@ -19,6 +19,7 @@ pub enum IrType {
     DartOpaque(IrTypeDartOpaque),
     RustOpaque(IrTypeRustOpaque),
     Dynamic(IrTypeDynamic),
+    Record(IrTypeRecord),
     Unencodable(IrTypeUnencodable),
 }
 }
@@ -88,7 +89,7 @@ impl IrType {
 
     #[inline]
     pub fn is_struct(&self) -> bool {
-        matches!(self, StructRef(_) | EnumRef(_))
+        matches!(self, StructRef(_) | EnumRef(_) | Record(_))
     }
 
     #[inline]
@@ -118,7 +119,8 @@ impl IrType {
             | Self::StructRef(_)
             | Self::EnumRef(_)
             | Self::RustOpaque(_)
-            | Self::DartOpaque(_) => true,
+            | Self::DartOpaque(_)
+            | Self::Record(_) => true,
             Self::Boxed(IrTypeBoxed { inner, .. }) => inner.is_js_value(),
             _ => false,
         }

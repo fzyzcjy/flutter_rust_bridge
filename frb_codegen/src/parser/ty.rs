@@ -144,8 +144,14 @@ impl<'a> TypeParser<'a> {
                     })),
                 }
             }
-            syn::Type::Tuple(syn::TypeTuple { elems, .. }) if elems.is_empty() => {
-                IrType::Primitive(IrTypePrimitive::Unit)
+            syn::Type::Tuple(syn::TypeTuple { elems, .. }) => {
+                if elems.is_empty() {
+                    IrType::Primitive(IrTypePrimitive::Unit)
+                } else {
+                    IrType::Record(IrTypeRecord {
+                        values: elems.iter().map(|elem| self.parse_type(elem)).collect(),
+                    })
+                }
             }
             _ => IrType::Unencodable(IrTypeUnencodable {
                 string: resolve_ty.to_token_stream().to_string(),
@@ -446,6 +452,7 @@ impl<'a> TypeParser<'a> {
                         | RustOpaque(..)
                         | DartOpaque(..)
                         | Primitive(..)
+                        | Record(..)
                         | Delegate(IrTypeDelegate::PrimitiveEnum { .. }) => {
                             IrTypeOptional::new_boxed(inner.clone())
                         }

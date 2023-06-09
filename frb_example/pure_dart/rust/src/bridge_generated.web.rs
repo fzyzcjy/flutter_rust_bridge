@@ -795,6 +795,16 @@ pub fn wire_test_struct_with_enum(port_: MessagePort, se: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_test_tuple(port_: MessagePort, value: JsValue) {
+    wire_test_tuple_impl(port_, value)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_tuple_2(port_: MessagePort, value: JsValue) {
+    wire_test_tuple_2_impl(port_, value)
+}
+
+#[wasm_bindgen]
 pub fn wire_as_string__method__Event(port_: MessagePort, that: JsValue) {
     wire_as_string__method__Event_impl(port_, that)
 }
@@ -1485,6 +1495,15 @@ impl Wire2Api<Vec<Option<Attribute>>> for JsValue {
             .collect()
     }
 }
+impl Wire2Api<Vec<(String, i32)>> for JsValue {
+    fn wire2api(self) -> Vec<(String, i32)> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
 impl Wire2Api<Vec<TestId>> for JsValue {
     fn wire2api(self) -> Vec<TestId> {
         self.dyn_into::<JsArray>()
@@ -1684,6 +1703,11 @@ impl Wire2Api<Option<NewTypeInt>> for JsValue {
         (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
     }
 }
+impl Wire2Api<Option<(String, i32)>> for JsValue {
+    fn wire2api(self) -> Option<(String, i32)> {
+        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+    }
+}
 
 impl Wire2Api<Option<Box<ExoticOptionals>>> for JsValue {
     fn wire2api(self) -> Option<Box<ExoticOptionals>> {
@@ -1724,6 +1748,18 @@ impl Wire2Api<Option<Vec<Option<Attribute>>>> for JsValue {
 impl Wire2Api<Option<Vec<u8>>> for Option<Box<[u8]>> {
     fn wire2api(self) -> Option<Vec<u8>> {
         self.map(Wire2Api::wire2api)
+    }
+}
+impl Wire2Api<(String, i32)> for JsValue {
+    fn wire2api(self) -> (String, i32) {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        (self_.get(0).wire2api(), self_.get(1).wire2api())
     }
 }
 impl Wire2Api<Sequences> for JsValue {

@@ -50,6 +50,7 @@ pub enum TypeDartGenerator<'a> {
     DartOpaque(TypeDartOpaqueGenerator<'a>),
     RustOpaque(TypeRustOpaqueGenerator<'a>),
     Dynamic(TypeDynamicGenerator<'a>),
+    Record(TypeRecordGenerator<'a>),
 }
 
 impl<'a> TypeDartGenerator<'a> {
@@ -68,6 +69,7 @@ impl<'a> TypeDartGenerator<'a> {
             DartOpaque(ir) => TypeDartOpaqueGenerator { ir, context }.into(),
             RustOpaque(ir) => TypeRustOpaqueGenerator { ir, context }.into(),
             Dynamic(ir) => TypeDynamicGenerator { ir, context }.into(),
+            Record(ir) => TypeRecordGenerator { ir, context }.into(),
             Unencodable(IrTypeUnencodable { string, .. }) => {
                 panic!("Cannot generate Dart code for {}", string)
             }
