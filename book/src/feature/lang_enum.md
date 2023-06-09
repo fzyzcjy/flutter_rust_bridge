@@ -58,3 +58,23 @@ And they are powered with [all functionalities](https://pub.dev/packages/freezed
 
 Remark: If you are curious about `Future`, have a look at [this](async_dart.md).
 
+## Switch expressions
+
+You can also make use of sealed classes to exhaustively match against variants of an enum.
+This feature supersedes Freezed's `map` and `when` families of methods, and requires Dart 3.
+You can opt out of generating sealed classes by passing `--no-dart3` when running codegen.
+
+```rust
+pub enum Maybe {
+    None,
+    Some { value: i32 },
+}
+```
+
+```dart
+Maybe maybe;
+final value = switch (maybe) {
+  Maybe_None() => 'got nothing',
+  Maybe_Some(:final value) => 'got value: $value',
+};
+```

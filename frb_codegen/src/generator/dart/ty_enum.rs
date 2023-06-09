@@ -225,9 +225,14 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                     )
                 })
                 .collect::<Vec<_>>();
+            let sealed = if self.context.config.dart3 {
+                "sealed"
+            } else {
+                ""
+            };
             format!(
                 "@freezed
-                class {0} with _${0} {{
+                {sealed} class {0} with _${0} {{
                     {1}
                 }}",
                 self.ir.name,

@@ -44,3 +44,20 @@ In `native/src/api.rs`:
 
 When you `flutter run`, you should get something like this:
 ![macos-intel](macos_intel.png)
+
+## Tip: Using switch expressions
+
+Introduced in Dart 3, switch expressions provide the equivalent of Rust's `match` expressions, complete with exhaustive checks.
+Instead of using `when()` in the above example, you could also use this syntax:
+
+```dart
+final text = switch (platform) {
+  Platform_Android() => 'Android',
+  Platform_Ios() => 'iOS',
+  Platform_MacOs(:final arch) => 'MacOS on $arch',
+  Platform_Windows() => 'Windows',
+  Platform_Unix() => 'Unix',
+  Platform_Wasm() => 'the Web',
+  // we have covered all cases, so this compiles.
+};
+```

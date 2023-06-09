@@ -138,6 +138,7 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
     let build_runner = !raw.no_build_runner;
     let bridge_in_method = !raw.no_use_bridge_in_method;
     let wasm = raw.wasm;
+    let dart3 = raw.dart3;
     let inline_rust = raw.inline_rust;
     let extra_headers = raw.extra_headers.unwrap_or({
         if raw.no_use_bridge_in_method {
@@ -168,6 +169,7 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
                 block_index: BlockIndex(i),
                 skip_deps_check,
                 wasm_enabled: wasm,
+                dart3,
                 inline_rust,
                 bridge_in_method,
                 extra_headers: extra_headers.clone(),
@@ -279,6 +281,7 @@ fn anchor_config(config: RawOpts, config_path: &str) -> RawOpts {
         no_build_runner: config.no_build_runner,
         verbose: config.verbose,
         wasm: config.wasm,
+        dart3: config.dart3,
         inline_rust: config.inline_rust,
         skip_deps_check: config.skip_deps_check,
         no_use_bridge_in_method: config.no_use_bridge_in_method,

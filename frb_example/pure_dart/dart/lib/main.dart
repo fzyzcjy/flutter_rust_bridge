@@ -1302,6 +1302,14 @@ void main(List<String> args) async {
     expect(result.abc1.whenOrNull(b: (B b) => b.b), 999);
     expect(result.abc2.whenOrNull(a: (A a) => a.a), "aaa");
   });
+
+  test('sealed classes', () {
+    final _ = switch (const KitchenSink.empty()) {
+      KitchenSink_Empty() => 'empty',
+      KitchenSink_Nested(field1: KitchenSink_Empty()) => 'empty nested',
+      _ => 'everything else'
+    };
+  });
 }
 
 int _createGarbage() {

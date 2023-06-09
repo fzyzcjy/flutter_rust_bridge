@@ -30,6 +30,7 @@ pub struct Opts {
     pub inline_rust: bool,
     pub bridge_in_method: bool,
     pub extra_headers: String,
+    pub dart3: bool,
 }
 
 impl Opts {
