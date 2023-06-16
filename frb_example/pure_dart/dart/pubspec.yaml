@@ -6,7 +6,7 @@ environment:
   sdk: '>=3.0.0 < 4.0.0'
 dependencies:
   meta: ^1.8.0
-  lints: ^2.0.1
+  lints: ^2.1.1
   flutter_rust_bridge:
     path: ../../../frb_dart
   vm_service: ^9.0.0
