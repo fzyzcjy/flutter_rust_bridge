@@ -8,7 +8,7 @@ In this chapter, we are going to demonstrate the features. Please use the menu b
 
 This library is nothing but a code generator that helps your Flutter/Dart functions call Rust functions. It only generates some boilerplate code that you will manually write down otherwise. Moreover, we have provided detailed tutorials for you to play with examples, set up brand new apps, and integrate with existing apps.
 
-Of course, you may still need to have some basic familiarity with Flutter/Dart, Rust, and its [ffi](https://flutter.dev/docs/development/platform-integration/c-interop).
+Of course, you may still need to have some basic familiarity with Flutter/Dart, Rust, and its ffi. (Link for [Android](https://docs.flutter.dev/platform-integration/android/c-interop), [iOS](https://docs.flutter.dev/platform-integration/ios/c-interop) and [macOS](https://docs.flutter.dev/platform-integration/macos/c-interop))
 
 ### Full examples
 
