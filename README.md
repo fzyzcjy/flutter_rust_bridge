@@ -187,6 +187,7 @@ More specifically, thanks for all these contributions:
 * [svenstaro](https://github.com/svenstaro): Improve doc.
 * [utilForever](https://github.com/utilForever): Fix typos.
 * [Stonks3141](https://github.com/Stonks3141): Fix doc credit.
+* [jaiakash](https://github.com/jaiakash): Fix doc link.
 * [feber](https://github.com/feber): Fix doc link.
 * [satvikpendem](https://github.com/satvikpendem): Little co-work #989.
 * [rustui](https://github.com/rustui): Fix a typo.
