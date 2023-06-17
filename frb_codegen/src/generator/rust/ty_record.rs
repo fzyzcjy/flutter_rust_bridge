@@ -8,6 +8,15 @@ use super::TypeStructRefGenerator;
 
 type_rust_generator_struct!(TypeRecordGenerator, IrTypeRecord);
 
+impl TypeRecordGenerator<'_> {
+    fn as_struct_generator(&self) -> TypeStructRefGenerator {
+        TypeStructRefGenerator {
+            ir: self.ir.inner.clone(),
+            context: self.context.clone(),
+        }
+    }
+}
+
 impl TypeRustGeneratorTrait for TypeRecordGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
         let ir = self.ir.inner.get(self.context.ir_file);
@@ -35,42 +44,23 @@ impl TypeRustGeneratorTrait for TypeRecordGenerator<'_> {
     }
 
     fn wire_struct_fields(&self) -> Option<Vec<String>> {
-        TypeStructRefGenerator {
-            ir: self.ir.inner.clone(),
-            context: self.context.clone(),
-        }
-        .wire_struct_fields()
+        self.as_struct_generator().wire_struct_fields()
     }
 
     fn static_checks(&self) -> Option<String> {
-        TypeStructRefGenerator {
-            ir: self.ir.inner.clone(),
-            context: self.context.clone(),
-        }
-        .static_checks()
+        self.as_struct_generator().static_checks()
     }
 
     fn wrapper_struct(&self) -> Option<String> {
-        TypeStructRefGenerator {
-            ir: self.ir.inner.clone(),
-            context: self.context.clone(),
-        }
-        .wrapper_struct()
+        self.as_struct_generator().wrapper_struct()
     }
 
     fn wrap_obj(&self, obj: String, wired_fallible_func: bool) -> String {
-        TypeStructRefGenerator {
-            ir: self.ir.inner.clone(),
-            context: self.context.clone(),
-        }
-        .wrap_obj(obj, wired_fallible_func)
+        self.as_struct_generator()
+            .wrap_obj(obj, wired_fallible_func)
     }
 
     fn new_with_nullptr(&self, collector: &mut ExternFuncCollector) -> String {
-        TypeStructRefGenerator {
-            ir: self.ir.inner.clone(),
-            context: self.context.clone(),
-        }
-        .new_with_nullptr(collector)
+        self.as_struct_generator().new_with_nullptr(collector)
     }
 }
