@@ -136,6 +136,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire___record__String_i32((String field0, int field1) raw) {
+    return [api2wire_String(raw.field0), api2wire_i32(raw.field1)];
+  }
+
+  @protected
   List<dynamic> api2wire_a(A raw) {
     return [api2wire_String(raw.a)];
   }
@@ -212,6 +217,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   Object api2wire_box_autoadd_HideData(HideData raw) {
     return api2wire_HideData(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd___record__String_i32((String field0, int field1) raw) {
+    return api2wire___record__String_i32(raw);
   }
 
   @protected
@@ -377,11 +387,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   List<dynamic> api2wire_box_autoadd_opaque_nested(OpaqueNested raw) {
     return api2wire_opaque_nested(raw);
-  }
-
-  @protected
-  List<dynamic> api2wire_box_autoadd_record_String_i32((String, int) raw) {
-    return api2wire_record_String_i32(raw);
   }
 
   @protected
@@ -669,6 +674,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_list___record__String_i32(List<(String field0, int field1)> raw) {
+    return raw.map(api2wire___record__String_i32).toList();
+  }
+
+  @protected
   List<dynamic> api2wire_list_application_env_var(List<ApplicationEnvVar> raw) {
     return raw.map(api2wire_application_env_var).toList();
   }
@@ -691,11 +701,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   List<dynamic> api2wire_list_opt_box_autoadd_attribute(List<Attribute?> raw) {
     return raw.map(api2wire_opt_box_autoadd_attribute).toList();
-  }
-
-  @protected
-  List<dynamic> api2wire_list_record_String_i32(List<(String, int)> raw) {
-    return raw.map(api2wire_record_String_i32).toList();
   }
 
   @protected
@@ -796,6 +801,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic>? api2wire_opt_box_autoadd___record__String_i32((String field0, int field1)? raw) {
+    return raw == null ? null : api2wire_box_autoadd___record__String_i32(raw);
+  }
+
+  @protected
   List<dynamic>? api2wire_opt_box_autoadd_application_env(ApplicationEnv? raw) {
     return raw == null ? null : api2wire_box_autoadd_application_env(raw);
   }
@@ -833,11 +843,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   List<dynamic>? api2wire_opt_box_autoadd_new_type_int(NewTypeInt? raw) {
     return raw == null ? null : api2wire_box_autoadd_new_type_int(raw);
-  }
-
-  @protected
-  List<dynamic>? api2wire_opt_box_autoadd_record_String_i32((String, int)? raw) {
-    return raw == null ? null : api2wire_box_autoadd_record_String_i32(raw);
   }
 
   @protected
@@ -908,11 +913,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   Uint8List? api2wire_opt_uint_8_list(Uint8List? raw) {
     return raw == null ? null : api2wire_uint_8_list(raw);
-  }
-
-  @protected
-  List<dynamic> api2wire_record_String_i32((String, int) raw) {
-    return [api2wire_String(raw.$1), api2wire_i32(raw.$2)];
   }
 
   @protected

@@ -2,32 +2,29 @@ use crate::{ir::*, target::Target};
 
 crate::ir! {
 pub struct IrTypeRecord {
-    pub values: Vec<IrType>
+    /// Refers to a virtual struct definition.
+    pub inner: IrTypeStructRef,
+    pub values: Box<[IrType]>,
 }
 }
 
 impl IrTypeTrait for IrTypeRecord {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile) {
-        for typ in &self.values {
-            typ.visit_types(f, ir_file)
+        for ty in self.values.iter() {
+            ty.visit_types(f, ir_file)
         }
     }
 
     fn safe_ident(&self) -> String {
-        let values = self
-            .values
-            .iter()
-            .map(IrType::safe_ident)
-            .collect::<Vec<_>>()
-            .join("_");
-        format!("record_{values}")
+        self.inner.name.clone()
     }
 
     fn dart_api_type(&self) -> String {
         let values = self
             .values
             .iter()
-            .map(IrType::dart_api_type)
+            .enumerate()
+            .map(|(idx, ty)| format!("{} field{idx}", ty.dart_api_type()))
             .collect::<Vec<_>>()
             .join(",");
         if self.values.len() == 1 {

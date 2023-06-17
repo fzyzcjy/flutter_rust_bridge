@@ -2469,11 +2469,11 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["se"],
       );
 
-  Future<(String, int)> testTuple({(String, int)? value, dynamic hint}) {
-    var arg0 = _platform.api2wire_opt_box_autoadd_record_String_i32(value);
+  Future<(String field0, int field1)> testTuple({(String field0, int field1)? value, dynamic hint}) {
+    var arg0 = _platform.api2wire_opt_box_autoadd___record__String_i32(value);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_tuple(port_, arg0),
-      parseSuccessData: _wire2api_record_String_i32,
+      parseSuccessData: _wire2api___record__String_i32,
       constMeta: kTestTupleConstMeta,
       argValues: [value],
       hint: hint,
@@ -2485,8 +2485,8 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["value"],
       );
 
-  Future<void> testTuple2({required List<(String, int)> value, dynamic hint}) {
-    var arg0 = _platform.api2wire_list_record_String_i32(value);
+  Future<void> testTuple2({required List<(String field0, int field1)> value, dynamic hint}) {
+    var arg0 = _platform.api2wire_list___record__String_i32(value);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_tuple_2(port_, arg0),
       parseSuccessData: _wire2api_unit,
@@ -2845,6 +2845,17 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   Uint8List _wire2api_ZeroCopyBuffer_Uint8List(dynamic raw) {
     return raw as Uint8List;
+  }
+
+  (String field0, int field1) _wire2api___record__String_i32(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      _wire2api_String(arr[0]),
+      _wire2api_i32(arr[1]),
+    );
   }
 
   A _wire2api_a(dynamic raw) {
@@ -3686,17 +3697,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return RawStringMirrored(
       value: _wire2api_String(arr[0]),
-    );
-  }
-
-  (String, int) _wire2api_record_String_i32(dynamic raw) {
-    final arr = raw as List<dynamic>;
-    if (arr.length != 2) {
-      throw Exception('Expected 2 elements, got ${arr.length}');
-    }
-    return (
-      _wire2api_String(arr[0]),
-      _wire2api_i32(arr[1]),
     );
   }
 
