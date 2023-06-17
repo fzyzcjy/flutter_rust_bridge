@@ -133,6 +133,42 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
         argNames: ["message"],
       );
 
+  Future<String> testMethodMethodSharedStructInBlock2And3(
+      {required SharedStructInBlock2And3 that, required String message, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_shared_struct_in_block_2_and_3(that);
+    var arg1 = _platform.api2wire_String(message);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_method__method__SharedStructInBlock2And3(port_, arg0, arg1),
+      parseSuccessData: wire2api_String,
+      constMeta: kTestMethodMethodSharedStructInBlock2And3ConstMeta,
+      argValues: [that, message],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructInBlock2And3ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_method__method__SharedStructInBlock2And3",
+        argNames: ["that", "message"],
+      );
+
+  Future<String> testStaticMethodStaticMethodSharedStructInBlock2And3({required String message, dynamic hint}) {
+    var arg0 = _platform.api2wire_String(message);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_static_method__static_method__SharedStructInBlock2And3(port_, arg0),
+      parseSuccessData: wire2api_String,
+      constMeta: kTestStaticMethodStaticMethodSharedStructInBlock2And3ConstMeta,
+      argValues: [message],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInBlock2And3ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_static_method__static_method__SharedStructInBlock2And3",
+        argNames: ["message"],
+      );
+
   Future<String> testMethodMethodSharedStructOnlyForSyncTest(
       {required SharedStructOnlyForSyncTest that, required String message, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_shared_struct_only_for_sync_test(that);
@@ -204,42 +240,6 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodCrossSharedStructInBlock2And3ConstMeta =>
       const FlutterRustBridgeTaskConstMeta(
         debugName: "test_static_method__static_method__CrossSharedStructInBlock2And3",
-        argNames: ["message"],
-      );
-
-  Future<String> testMethodMethodSharedStructInBlock2And3(
-      {required SharedStructInBlock2And3 that, required String message, dynamic hint}) {
-    var arg0 = _platform.api2wire_box_autoadd_shared_struct_in_block_2_and_3(that);
-    var arg1 = _platform.api2wire_String(message);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_method__method__SharedStructInBlock2And3(port_, arg0, arg1),
-      parseSuccessData: wire2api_String,
-      constMeta: kTestMethodMethodSharedStructInBlock2And3ConstMeta,
-      argValues: [that, message],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructInBlock2And3ConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_method__method__SharedStructInBlock2And3",
-        argNames: ["that", "message"],
-      );
-
-  Future<String> testStaticMethodStaticMethodSharedStructInBlock2And3({required String message, dynamic hint}) {
-    var arg0 = _platform.api2wire_String(message);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_static_method__static_method__SharedStructInBlock2And3(port_, arg0),
-      parseSuccessData: wire2api_String,
-      constMeta: kTestStaticMethodStaticMethodSharedStructInBlock2And3ConstMeta,
-      argValues: [message],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInBlock2And3ConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_static_method__static_method__SharedStructInBlock2And3",
         argNames: ["message"],
       );
 

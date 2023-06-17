@@ -151,6 +151,45 @@ fn wire_test_static_method__static_method__CrossSharedStructInBlock1And2_impl(
         },
     )
 }
+fn wire_test_method__method__SharedStructInBlock2And3_impl(
+    port_: MessagePort,
+    that: impl Wire2Api<SharedStructInBlock2And3> + UnwindSafe,
+    message: impl Wire2Api<String> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_method__method__SharedStructInBlock2And3",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_that = that.wire2api();
+            let api_message = message.wire2api();
+            move |task_callback| {
+                Ok(SharedStructInBlock2And3::test_method(
+                    &api_that,
+                    api_message,
+                ))
+            }
+        },
+    )
+}
+fn wire_test_static_method__static_method__SharedStructInBlock2And3_impl(
+    port_: MessagePort,
+    message: impl Wire2Api<String> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_static_method__static_method__SharedStructInBlock2And3",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_message = message.wire2api();
+            move |task_callback| Ok(SharedStructInBlock2And3::test_static_method(api_message))
+        },
+    )
+}
 fn wire_test_method__method__SharedStructOnlyForSyncTest_impl(
     port_: MessagePort,
     that: impl Wire2Api<SharedStructOnlyForSyncTest> + UnwindSafe,
@@ -230,45 +269,6 @@ fn wire_test_static_method__static_method__CrossSharedStructInBlock2And3_impl(
                     api_message,
                 ))
             }
-        },
-    )
-}
-fn wire_test_method__method__SharedStructInBlock2And3_impl(
-    port_: MessagePort,
-    that: impl Wire2Api<SharedStructInBlock2And3> + UnwindSafe,
-    message: impl Wire2Api<String> + UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
-        WrapInfo {
-            debug_name: "test_method__method__SharedStructInBlock2And3",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_that = that.wire2api();
-            let api_message = message.wire2api();
-            move |task_callback| {
-                Ok(SharedStructInBlock2And3::test_method(
-                    &api_that,
-                    api_message,
-                ))
-            }
-        },
-    )
-}
-fn wire_test_static_method__static_method__SharedStructInBlock2And3_impl(
-    port_: MessagePort,
-    message: impl Wire2Api<String> + UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
-        WrapInfo {
-            debug_name: "test_static_method__static_method__SharedStructInBlock2And3",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_message = message.wire2api();
-            move |task_callback| Ok(SharedStructInBlock2And3::test_static_method(api_message))
         },
     )
 }

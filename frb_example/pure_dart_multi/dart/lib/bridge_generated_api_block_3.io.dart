@@ -210,6 +210,43 @@ class ApiBlock3ClassWire implements FlutterRustBridgeWireBase {
       _wire_test_static_method__static_method__CrossSharedStructInBlock1And2Ptr
           .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
+  void wire_test_method__method__SharedStructInBlock2And3(
+    int port_,
+    ffi.Pointer<wire_SharedStructInBlock2And3> that,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_method__method__SharedStructInBlock2And3(
+      port_,
+      that,
+      message,
+    );
+  }
+
+  late final _wire_test_method__method__SharedStructInBlock2And3Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_SharedStructInBlock2And3>,
+              ffi.Pointer<wire_uint_8_list>)>>('wire_test_method__method__SharedStructInBlock2And3');
+  late final _wire_test_method__method__SharedStructInBlock2And3 =
+      _wire_test_method__method__SharedStructInBlock2And3Ptr
+          .asFunction<void Function(int, ffi.Pointer<wire_SharedStructInBlock2And3>, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_test_static_method__static_method__SharedStructInBlock2And3(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_static_method__static_method__SharedStructInBlock2And3(
+      port_,
+      message,
+    );
+  }
+
+  late final _wire_test_static_method__static_method__SharedStructInBlock2And3Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_test_static_method__static_method__SharedStructInBlock2And3');
+  late final _wire_test_static_method__static_method__SharedStructInBlock2And3 =
+      _wire_test_static_method__static_method__SharedStructInBlock2And3Ptr
+          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
   void wire_test_method__method__SharedStructOnlyForSyncTest(
     int port_,
     ffi.Pointer<wire_SharedStructOnlyForSyncTest> that,
@@ -282,43 +319,6 @@ class ApiBlock3ClassWire implements FlutterRustBridgeWireBase {
           'wire_test_static_method__static_method__CrossSharedStructInBlock2And3');
   late final _wire_test_static_method__static_method__CrossSharedStructInBlock2And3 =
       _wire_test_static_method__static_method__CrossSharedStructInBlock2And3Ptr
-          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
-
-  void wire_test_method__method__SharedStructInBlock2And3(
-    int port_,
-    ffi.Pointer<wire_SharedStructInBlock2And3> that,
-    ffi.Pointer<wire_uint_8_list> message,
-  ) {
-    return _wire_test_method__method__SharedStructInBlock2And3(
-      port_,
-      that,
-      message,
-    );
-  }
-
-  late final _wire_test_method__method__SharedStructInBlock2And3Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_SharedStructInBlock2And3>,
-              ffi.Pointer<wire_uint_8_list>)>>('wire_test_method__method__SharedStructInBlock2And3');
-  late final _wire_test_method__method__SharedStructInBlock2And3 =
-      _wire_test_method__method__SharedStructInBlock2And3Ptr
-          .asFunction<void Function(int, ffi.Pointer<wire_SharedStructInBlock2And3>, ffi.Pointer<wire_uint_8_list>)>();
-
-  void wire_test_static_method__static_method__SharedStructInBlock2And3(
-    int port_,
-    ffi.Pointer<wire_uint_8_list> message,
-  ) {
-    return _wire_test_static_method__static_method__SharedStructInBlock2And3(
-      port_,
-      message,
-    );
-  }
-
-  late final _wire_test_static_method__static_method__SharedStructInBlock2And3Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
-          'wire_test_static_method__static_method__SharedStructInBlock2And3');
-  late final _wire_test_static_method__static_method__SharedStructInBlock2And3 =
-      _wire_test_static_method__static_method__SharedStructInBlock2And3Ptr
           .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   ffi.Pointer<ffi.Int32> new_box_autoadd_i32(
