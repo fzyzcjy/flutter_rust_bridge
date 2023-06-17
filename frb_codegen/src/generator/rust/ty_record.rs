@@ -10,11 +10,6 @@ type_rust_generator_struct!(TypeRecordGenerator, IrTypeRecord);
 
 impl TypeRustGeneratorTrait for TypeRecordGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
-        // TypeStructRefGenerator {
-        //     ir: self.ir.inner.clone(),
-        //     context: self.context.clone(),
-        // }
-        // .wire2api_body()
         let ir = self.ir.inner.get(self.context.ir_file);
         let len = ir.fields.len();
         let values: Acc<Vec<_>> = ir

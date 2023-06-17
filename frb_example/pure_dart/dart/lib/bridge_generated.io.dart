@@ -181,7 +181,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<wire___record__String_i32> api2wire_box_autoadd___record__String_i32((String field0, int field1) raw) {
+  ffi.Pointer<wire___record__String_i32> api2wire_box_autoadd___record__String_i32((String, int) raw) {
     final ptr = inner.new_box_autoadd___record__String_i32_0();
     _api_fill_to_wire___record__String_i32(raw, ptr.ref);
     return ptr;
@@ -599,8 +599,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<wire_list___record__String_i32> api2wire_list___record__String_i32(
-      List<(String field0, int field1)> raw) {
+  ffi.Pointer<wire_list___record__String_i32> api2wire_list___record__String_i32(List<(String, int)> raw) {
     final ans = inner.new_list___record__String_i32_0(raw.length);
     for (var i = 0; i < raw.length; ++i) {
       _api_fill_to_wire___record__String_i32(raw[i], ans.ref.ptr[i]);
@@ -697,8 +696,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  ffi.Pointer<wire___record__String_i32> api2wire_opt_box_autoadd___record__String_i32(
-      (String field0, int field1)? raw) {
+  ffi.Pointer<wire___record__String_i32> api2wire_opt_box_autoadd___record__String_i32((String, int)? raw) {
     return raw == null ? ffi.nullptr : api2wire_box_autoadd___record__String_i32(raw);
   }
 
@@ -901,9 +899,9 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     wireObj.ptr = apiObj.shareOrMove();
   }
 
-  void _api_fill_to_wire___record__String_i32((String field0, int field1) apiObj, wire___record__String_i32 wireObj) {
-    wireObj.field0 = api2wire_String(apiObj.field0);
-    wireObj.field1 = api2wire_i32(apiObj.field1);
+  void _api_fill_to_wire___record__String_i32((String, int) apiObj, wire___record__String_i32 wireObj) {
+    wireObj.field0 = api2wire_String(apiObj.$1);
+    wireObj.field1 = api2wire_i32(apiObj.$2);
   }
 
   void _api_fill_to_wire_a(A apiObj, wire_A wireObj) {
@@ -984,7 +982,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   void _api_fill_to_wire_box_autoadd___record__String_i32(
-      (String field0, int field1) apiObj, ffi.Pointer<wire___record__String_i32> wireObj) {
+      (String, int) apiObj, ffi.Pointer<wire___record__String_i32> wireObj) {
     _api_fill_to_wire___record__String_i32(apiObj, wireObj.ref);
   }
 
@@ -1398,7 +1396,7 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   void _api_fill_to_wire_opt_box_autoadd___record__String_i32(
-      (String field0, int field1)? apiObj, ffi.Pointer<wire___record__String_i32> wireObj) {
+      (String, int)? apiObj, ffi.Pointer<wire___record__String_i32> wireObj) {
     if (apiObj != null) _api_fill_to_wire_box_autoadd___record__String_i32(apiObj, wireObj);
   }
 

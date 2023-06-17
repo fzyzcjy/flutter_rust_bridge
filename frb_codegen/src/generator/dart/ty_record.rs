@@ -3,25 +3,50 @@ use crate::ir::*;
 use crate::target::Acc;
 use crate::type_dart_generator_struct;
 
-use super::TypeStructRefGenerator;
-
 type_dart_generator_struct!(TypeRecordGenerator, IrTypeRecord);
 
 impl TypeDartGeneratorTrait for TypeRecordGenerator<'_> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
-        TypeStructRefGenerator {
-            ir: self.ir.inner.clone(),
-            context: self.context.clone(),
+        let values = self
+            .ir
+            .values
+            .iter()
+            .enumerate()
+            .map(|(idx, ty)| format!("api2wire_{}(raw.${})", ty.safe_ident(), idx + 1))
+            .collect::<Vec<_>>()
+            .join(",");
+        Acc {
+            wasm: Some(format!("return [{values}];")),
+            ..Default::default()
         }
-        .api2wire_body()
     }
 
     fn api_fill_to_wire_body(&self) -> Option<String> {
-        TypeStructRefGenerator {
-            ir: self.ir.inner.clone(),
-            context: self.context.clone(),
-        }
-        .api_fill_to_wire_body()
+        let ir = self.ir.inner.get(self.context.ir_file);
+        let values = ir
+            .fields
+            .iter()
+            .enumerate()
+            .map(|(idx, field)| {
+                if field.ty.is_struct() {
+                    format!(
+                        "_api_fill_to_wire_{}(apiObj.${}, wireObj.{});",
+                        field.ty.safe_ident(),
+                        idx + 1,
+                        field.name.rust_style(),
+                    )
+                } else {
+                    format!(
+                        "wireObj.{} = api2wire_{}(apiObj.${});",
+                        field.name.rust_style(),
+                        field.ty.safe_ident(),
+                        idx + 1
+                    )
+                }
+            })
+            .collect::<Vec<_>>()
+            .join("\n");
+        Some(values)
     }
 
     fn wire2api_body(&self) -> String {

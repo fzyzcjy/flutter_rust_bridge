@@ -23,8 +23,7 @@ impl IrTypeTrait for IrTypeRecord {
         let values = self
             .values
             .iter()
-            .enumerate()
-            .map(|(idx, ty)| format!("{} field{idx}", ty.dart_api_type()))
+            .map(IrType::dart_api_type)
             .collect::<Vec<_>>()
             .join(",");
         if self.values.len() == 1 {

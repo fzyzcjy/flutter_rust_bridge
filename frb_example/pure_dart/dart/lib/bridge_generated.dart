@@ -2469,7 +2469,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["se"],
       );
 
-  Future<(String field0, int field1)> testTuple({(String field0, int field1)? value, dynamic hint}) {
+  Future<(String, int)> testTuple({(String, int)? value, dynamic hint}) {
     var arg0 = _platform.api2wire_opt_box_autoadd___record__String_i32(value);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_tuple(port_, arg0),
@@ -2485,7 +2485,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["value"],
       );
 
-  Future<void> testTuple2({required List<(String field0, int field1)> value, dynamic hint}) {
+  Future<void> testTuple2({required List<(String, int)> value, dynamic hint}) {
     var arg0 = _platform.api2wire_list___record__String_i32(value);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_tuple_2(port_, arg0),
@@ -2847,7 +2847,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return raw as Uint8List;
   }
 
-  (String field0, int field1) _wire2api___record__String_i32(dynamic raw) {
+  (String, int) _wire2api___record__String_i32(dynamic raw) {
     final arr = raw as List<dynamic>;
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
