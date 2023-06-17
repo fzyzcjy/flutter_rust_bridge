@@ -25,6 +25,7 @@ Here is a brief glance showing what the code generator can generate (non-exhaust
 | `String`                                             | `String`                                             |
 | `()`                                                 | `void`                                               |
 | `type A = B`                                         | [type alias](lang_type_alias.md)                     |
+| [`(T, U, ..)`](lang_tuple.md)                        | [`(T, U, ..)`](https://dart.dev/language/records)    |
 
 Types from `chrono` crate are supported as a feature, see [here](lang_chrono.md).
 Types from `uuid` crate are supported as a feature, see [here](lang_uuid.md).
