@@ -1,6 +1,109 @@
 use super::*;
 // Section: wire functions
 
+#[wasm_bindgen]
+pub fn wire_test_method__method__SharedStructInBlock1And2(
+    port_: MessagePort,
+    that: JsValue,
+    message: String,
+) {
+    wire_test_method__method__SharedStructInBlock1And2_impl(port_, that, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_static_method__static_method__SharedStructInBlock1And2(
+    port_: MessagePort,
+    message: String,
+) {
+    wire_test_static_method__static_method__SharedStructInBlock1And2_impl(port_, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_method__method__SharedStructInAllBlocks(
+    port_: MessagePort,
+    that: JsValue,
+    message: String,
+    num: u32,
+) {
+    wire_test_method__method__SharedStructInAllBlocks_impl(port_, that, message, num)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_static_method__static_method__SharedStructInAllBlocks(
+    port_: MessagePort,
+    message: String,
+) {
+    wire_test_static_method__static_method__SharedStructInAllBlocks_impl(port_, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_method__method__CrossSharedStructInBlock1And2(
+    port_: MessagePort,
+    that: JsValue,
+    message: String,
+) {
+    wire_test_method__method__CrossSharedStructInBlock1And2_impl(port_, that, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_static_method__static_method__CrossSharedStructInBlock1And2(
+    port_: MessagePort,
+    message: String,
+) {
+    wire_test_static_method__static_method__CrossSharedStructInBlock1And2_impl(port_, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_method__method__SharedStructOnlyForSyncTest(
+    port_: MessagePort,
+    that: JsValue,
+    message: String,
+) {
+    wire_test_method__method__SharedStructOnlyForSyncTest_impl(port_, that, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_static_method__static_method__SharedStructOnlyForSyncTest(
+    port_: MessagePort,
+    message: String,
+) {
+    wire_test_static_method__static_method__SharedStructOnlyForSyncTest_impl(port_, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_method__method__CrossSharedStructInBlock2And3(
+    port_: MessagePort,
+    that: JsValue,
+    message: String,
+) {
+    wire_test_method__method__CrossSharedStructInBlock2And3_impl(port_, that, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_static_method__static_method__CrossSharedStructInBlock2And3(
+    port_: MessagePort,
+    message: String,
+) {
+    wire_test_static_method__static_method__CrossSharedStructInBlock2And3_impl(port_, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_method__method__SharedStructInBlock2And3(
+    port_: MessagePort,
+    that: JsValue,
+    message: String,
+) {
+    wire_test_method__method__SharedStructInBlock2And3_impl(port_, that, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_static_method__static_method__SharedStructInBlock2And3(
+    port_: MessagePort,
+    message: String,
+) {
+    wire_test_static_method__static_method__SharedStructInBlock2And3_impl(port_, message)
+}
+
 // Section: allocate functions
 
 // Section: related functions
@@ -221,6 +324,16 @@ impl Wire2Api<Option<i32>> for JsValue {
 impl Wire2Api<Option<Vec<u8>>> for JsValue {
     fn wire2api(self) -> Option<Vec<u8>> {
         (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+    }
+}
+impl Wire2Api<u16> for JsValue {
+    fn wire2api(self) -> u16 {
+        self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<u32> for JsValue {
+    fn wire2api(self) -> u32 {
+        self.unchecked_into_f64() as _
     }
 }
 impl Wire2Api<u64> for JsValue {

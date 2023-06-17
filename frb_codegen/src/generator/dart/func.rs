@@ -39,37 +39,45 @@ pub(crate) fn generate_api_func(
             } else {
                 let func = format!("api2wire_{}", input.ty.safe_ident());
                 //
-                let prefix = match shared_dart_api2wire_funcs {
-                    Some(shared_dart_api2wire_funcs) => {
-                        log::debug!("the func to check:{func}"); //TODO: delete
-                        log::debug!("shared_dart_api2wire_funcs:{shared_dart_api2wire_funcs:?}"); //TODO: delete
+                let prefix = if common_api2wire_body.contains(&func) {
+                    ""
+                } else {
+                    match shared_dart_api2wire_funcs {
+                        Some(shared_dart_api2wire_funcs) => {
+                            log::debug!("the func to check:{func}"); //TODO: delete
+                            log::debug!(
+                                "shared_dart_api2wire_funcs:{shared_dart_api2wire_funcs:?}"
+                            ); //TODO: delete
 
-                        let shared_common_api2wire_body = &shared_dart_api2wire_funcs.common;
-                        match !ir_file.is_type_shared_by_safe_ident(&input.ty) {
-                            true => {
-                                let ident = input.ty.safe_ident();
-                                log::debug!("type {:?} is NOT shared, ident is:{ident}", input.ty); //TODO: delete
-                                if common_api2wire_body.contains(&func) {
-                                    ""
-                                } else {
-                                    "_platform."
-                                }
-                            }
-                            false => {
-                                if shared_common_api2wire_body.contains(&func) {
-                                    ""
-                                } else {
-                                    "_sharedPlatform."
+                            if ir_file.shared {
+                                "_platform."
+                            } else {
+                                let shared_common_api2wire_body =
+                                    &shared_dart_api2wire_funcs.common;
+                                match !ir_file.is_type_shared_by_safe_ident(&input.ty) {
+                                    true => {
+                                        let ident = input.ty.safe_ident();
+                                        log::debug!(
+                                            "type {:?} is NOT shared, ident is:{ident}",
+                                            input.ty
+                                        ); //TODO: delete
+                                        if common_api2wire_body.contains(&func) {
+                                            ""
+                                        } else {
+                                            "_platform."
+                                        }
+                                    }
+                                    false => {
+                                        if shared_common_api2wire_body.contains(&func) {
+                                            ""
+                                        } else {
+                                            "_sharedPlatform."
+                                        }
+                                    }
                                 }
                             }
                         }
-                    }
-                    _ => {
-                        if common_api2wire_body.contains(&func) {
-                            ""
-                        } else {
-                            "_platform."
-                        }
+                        _ => "_platform.",
                     }
                 };
 
@@ -156,7 +164,9 @@ pub(crate) fn generate_api_func(
     } else {
         format!("_wire2api_{}", func.output.safe_ident())
     };
-    if !ir_file.shared && ir_file.is_type_shared_by_safe_ident(&func.output) {
+    if ir_file.shared {
+        parse_success_data = parse_success_data.replace("_wire2api_", "wire2api_");
+    } else if ir_file.is_type_shared_by_safe_ident(&func.output) {
         parse_success_data = parse_success_data.replace("_wire2api_", "_sharedImpl.wire2api_");
     }
 

@@ -41,8 +41,10 @@ pub struct SharedStructInAllBlocks {
 }
 impl SharedStructInAllBlocks {
     #[allow(unused)]
-    pub fn test_method(&self, message: String) -> String {
-        message
+    /// the parameter type `u32 for `num` is only used here,
+    /// for testing shared type(`u32`) within a shared struct method
+    pub fn test_method(&self, message: String, num: u32) -> String {
+        format!("{}_{}", message, num)
     }
     #[allow(unused)]
     pub fn test_static_method(message: String) -> String {
@@ -57,8 +59,8 @@ pub struct SharedStructOnlyForSyncTest {
 }
 impl SharedStructOnlyForSyncTest {
     #[allow(unused)]
-    pub fn test_method(&self, y: u32) -> u32 {
-        self.score as u32 + y
+    pub fn test_method(&self, message: String) -> String {
+        message
     }
     #[allow(unused)]
     pub fn test_static_method(message: String) -> String {

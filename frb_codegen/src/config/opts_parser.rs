@@ -146,9 +146,6 @@ pub fn config_parse(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
         (Some(shared_rust_output_path), Some(shared_dart_output_path))
     };
 
-    log::debug!("shared_rust_output_path:{shared_rust_output_path:?}"); //TODO: delete
-    log::debug!("shared_dart_output_path:{shared_dart_output_path:?}"); //TODO: delete
-
     // class name(s)
     let class_names = get_outputs_for_flag_requires_full_data(
         &raw.class_name,
@@ -177,7 +174,6 @@ pub fn config_parse(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
         &raw.extra_c_output_path,
         &rust_input_paths,
     );
-    // log::debug!("refined_c_outputs:{:?}", refined_c_outputs); //TODO: delete
 
     // dart root(s)
     let dart_roots: Vec<_> = match raw.dart_root {

@@ -1,11 +1,23 @@
-use crate::ir::IrFile;
+use crate::ir::{IrFile, IrFunc};
 use crate::utils::misc::{BlockIndex, ExtraTraitForVec};
 use crate::{parser, transformer};
 use anyhow::{Context, Result};
 use convert_case::{Case, Casing};
-use std::collections::{HashMap, HashSet};
+use std::collections::HashMap;
 use std::fs;
 use std::path::{Path, PathBuf};
+
+use std::cell::RefCell;
+
+// A thread-local static variable that holds a `HashMap` with `String` keys and `Vec<IrFunc>` values.
+// The key represents a rust module path, and the value is a vector of `IrFunc`(methods) in the path.
+// This global variable is used to avoid redundant overhead
+// when searching `IrFunc` defined in extra rust modules in multi-blocks case.
+thread_local!(static EXTRA_FUNC_MAP: RefCell<HashMap<String, Vec<IrFunc>>> = RefCell::new(HashMap::new()));
+// A thread-local static variable that holds a `HashMap` with `BlockIndex` keys and `IrFile` values.
+// The key represents a block index, and the value is an intermediate representation of the Rust code(`IrFile`) in the block.
+// This global variable is used to avoid redundant overhead for generating the same `IrFile` in multi-blocks case.
+thread_local!(static IR_FILE_MAP: RefCell<HashMap<BlockIndex, IrFile>> = RefCell::new(HashMap::new()));
 
 /// Parsed configs, mainly used for internal logic
 #[derive(Debug, Clone, serde::Serialize)]
@@ -50,70 +62,153 @@ impl Opts {
         } else {
             self.get_shared_ir_file(all_configs)?
         };
+
         log::debug!("Phase: Transform IR");
-        Ok(transformer::transform(raw_ir_file))
+        let ir_file = transformer::transform(raw_ir_file);
+
+        Ok(ir_file)
     }
 
-    // TODO: need or not?
-    // fn find_impl_block(&self, s: String, v: &[&str]) -> String {
-    //     let mut result_string = "".to_string();
-    //     for struct_name in v {
-    //         let my_r = &format!(r"impl\s+{}\s*\{{([^}}]*)\}}", struct_name); // correct
-    //         let re: Regex = Regex::new(my_r).unwrap();
-    //         for matched in re.find_iter(&s) {
-    //             result_string += &format!("{}\n", matched.as_str());
-    //         }
-    //     }
-    //     result_string
-    // }
-
     fn get_regular_ir_file(&self, all_configs: &[Opts]) -> Result<IrFile> {
-        log::debug!("Phase: Parse source code to AST");
-        let mut source_rust_content =
-            fs::read_to_string(&self.rust_input_path).with_context(|| {
-                let err_msg = format!(
-                    "Failed to read rust input file \"{}\"",
-                    self.rust_input_path
+        let mut ir_file = IR_FILE_MAP.with(|data| {
+            let mut ir_file_map = data.borrow_mut();
+            let ir_file = if let std::collections::hash_map::Entry::Vacant(e) =
+                ir_file_map.entry(self.block_index)
+            {
+                log::debug!("Phase: Parse source code to AST");
+                let source_rust_content = try_read_from_file(
+                    &self.rust_input_path,
+                    &format!(
+                        "Failed to read rust input file \"{}\"",
+                        self.rust_input_path
+                    ),
+                )
+                .unwrap();
+
+                let file_ast = syn::parse_file(&source_rust_content).unwrap();
+                log::debug!("Phase: Parse AST to IR");
+                let ir_file = parser::parse(
+                    &source_rust_content,
+                    file_ast,
+                    &self.manifest_path,
+                    self.block_index,
+                    self.shared,
+                    all_configs,
                 );
-                log::error!("{}", err_msg);
-                err_msg
-            })?;
 
-        // TODO: refine `file_ast` to get methods of structs defined in customized module
-        let extra_method_source = "".to_owned();
-        // let paths = get_module_paths(&source_rust_content);
-        // log::debug!("extra module paths:{paths:?}"); //TODO: delete
-        // let v = vec!["OnlyForApi1Struct"]; // TODO:
-        // for path in paths {
-        //     let content = fs::read_to_string(path).with_context(|| {
-        //         let err_msg = format!("Failed to read rust path \"{path}\"");
-        //         log::error!("{}", err_msg);
-        //         err_msg
-        //     })?;
-        //     extra_method_source = format!(
-        //         "{extra_method_source}\n{}",
-        //         self.find_impl_block(content, &v)
-        //     );
-        // }
-        source_rust_content += &extra_method_source;
-        let file_ast = syn::parse_file(&source_rust_content).unwrap();
+                e.insert(ir_file.clone());
 
-        log::debug!("Phase: Parse AST to IR");
-        Ok(parser::parse(
-            &source_rust_content,
-            file_ast,
-            &self.manifest_path,
-            self.block_index,
-            self.shared,
-            all_configs,
-        ))
+                ir_file
+            } else {
+                ir_file_map[&self.block_index].clone()
+            };
+
+            ir_file
+        });
+
+        // if this is a single block case or `all_configs` is empty,
+        // then there is no need to deal with funcs with
+        // extra API blocks or extra rust module files.
+        if all_configs.len() <= 1 {
+            return Ok(ir_file);
+        }
+
+        // TODO： if those shared global
+        log::debug!("before fetch_shared_types_if_needed"); //TODO: delete
+        ir_file.fetch_shared_types_if_needed(all_configs);
+        log::debug!("after fetch_shared_types_if_needed"); //TODO: delete
+
+        let original_func_len = ir_file.funcs.len();
+        EXTRA_FUNC_MAP.with(|data| {
+            let mut extra_func_map = data.borrow_mut();
+
+            // TODO: what about enum pool
+            log::debug!("my struct pool are:{:?}", ir_file.struct_pool); //TODO: delete
+
+            for value in ir_file.struct_pool.values() {
+                if let Some(struct_paths) = &value.path {
+                    let raw_code_path =
+                        format!("{}.rs", struct_paths[..struct_paths.len() - 1].join("/"));
+                    let type_name = struct_paths.last().unwrap();
+
+                    log::debug!("the code_path:{raw_code_path}"); //TODO: delete
+                    log::debug!("the type_name:{type_name}"); //TODO: delete
+
+                    let extra_path_funcs = if let std::collections::hash_map::Entry::Vacant(e) =
+                        extra_func_map.entry(raw_code_path.clone())
+                    {
+                        assert!(raw_code_path.contains("crate/"));
+                        let correct_prefix = self.manifest_path.replace("Cargo.toml", "src/");
+                        let code_path = raw_code_path.replace("crate/", &correct_prefix);
+                        log::debug!("the refined code_path:{code_path}"); //TODO: delete140 +
+                        let extra_source_rust_content = try_read_from_file(
+                            &code_path,
+                            &format!("Failed to read extra rust module file \"{}\"", code_path),
+                        )
+                        .unwrap();
+
+                        //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓extra parse↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+                        let extra_file_ast = syn::parse_file(&extra_source_rust_content).unwrap();
+                        log::debug!("Phase: Parse EXTRA AST to IR");
+                        let extra_ir_file = parser::parse(
+                            &extra_source_rust_content,
+                            extra_file_ast,
+                            &self.manifest_path,
+                            self.block_index,
+                            self.shared,
+                            &[],
+                        );
+                        log::debug!("Finished Phase: Parse EXTRA AST to IR");
+                        //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑extra parse↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+
+                        // collect extra_ir_file.funcs into vec
+                        let extra_path_funcs = extra_ir_file.funcs.into_iter().collect::<Vec<_>>();
+                        e.insert(extra_path_funcs.clone());
+
+                        extra_path_funcs
+                    } else {
+                        extra_func_map[&raw_code_path].clone()
+                    };
+
+                    // add types(struct/enum) methods defined in extra rust modules
+                    for each_func in extra_path_funcs {
+                        if each_func.name.ends_with(&(format!("__{type_name}"))) {
+                            log::debug!("func added: {each_func:?}"); //TODO: delete
+                            let mut method = each_func.clone();
+                            if ir_file.get_shared_type_names().contains(type_name) {
+                                log::debug!("`{}` is found to be a shared type", type_name); //TODO: delete
+                                method.shared = true;
+                            }
+
+                            if !ir_file.funcs.contains(&method) {
+                                ir_file.funcs.push(method);
+                            }
+                        }
+                    }
+
+                    // update the ir_file back to the global irfile map
+                    IR_FILE_MAP.with(|data| {
+                        let mut ir_file_map = data.borrow_mut();
+                        ir_file_map.insert(self.block_index, ir_file.clone());
+                    });
+                }
+            }
+        });
+
+        // if new methods are added, then it is essential to refine (no-)shared types.
+        if original_func_len != ir_file.funcs.len() {
+            ir_file.fetch_shared_types_forcely(all_configs);
+        }
+
+        Ok(ir_file)
     }
 
     fn get_shared_ir_file(&self, all_configs: &[Opts]) -> Result<IrFile> {
         log::debug!("get_shared_ir_file 1"); //TODO: delete
-        if all_configs.len() <= 1 {
-            panic!("`get_shared_ir_file(..)` should not be called when all_configs.len()<=1")
-        }
+        assert!(
+            all_configs.len() > 1,
+            "`get_shared_ir_file(..)` should not be called when all_configs.len()<=1"
+        );
         let (regular_configs, shared_index) = if !all_configs.last().unwrap().shared {
             (all_configs, all_configs.len())
         } else {
@@ -124,18 +219,16 @@ impl Opts {
         assert!(regular_configs.iter().all(|c| !c.shared));
 
         // get shared funcs, struct_pool and enum_pool
-        let funcs = HashSet::new();
+        let mut funcs = Vec::new();
         let mut structs = Vec::new();
         let mut enums = Vec::new();
-        for config in regular_configs {
-            let ir_file = config.get_ir_file(all_configs)?;
-
-            // TODO:
-            // funcs.extend(ir_file.get_shared_methods().clone());
-            structs.extend(ir_file.struct_pool);
-            enums.extend(ir_file.enum_pool);
+        for regular_config in regular_configs {
+            let regular_ir_file = regular_config.get_ir_file(all_configs)?;
+            funcs.extend(regular_ir_file.get_shared_funcs().clone());
+            structs.extend(regular_ir_file.struct_pool);
+            enums.extend(regular_ir_file.enum_pool);
         }
-        let funcs = funcs.into_iter().collect::<Vec<_>>();
+        let funcs = funcs.find_duplicates(true).into_iter().collect::<Vec<_>>();
         let struct_pool = structs
             .find_duplicates(true)
             .into_iter()
@@ -155,7 +248,7 @@ impl Opts {
             funcs, // this field would effect `IrFile.visit_types(...)` and others
             struct_pool,
             enum_pool,
-            true, // set true, in case for the methods of a shared struct,
+            false, // set false like that in regular API block, in case for the methods of a shared struct,
             BlockIndex(shared_index),
             all_configs,
             true,
@@ -255,6 +348,14 @@ impl Opts {
                 .to_case(Case::Camel)
         }
     }
+}
+
+fn try_read_from_file(file_path: &str, error_msg: &str) -> Result<String, anyhow::Error> {
+    let file_content = fs::read_to_string(file_path).with_context(|| {
+        log::error!("{}", error_msg);
+        error_msg.to_owned()
+    })?;
+    Ok(file_content)
 }
 
 pub struct PathForGeneration {

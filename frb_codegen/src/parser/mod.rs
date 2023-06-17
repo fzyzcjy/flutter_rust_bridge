@@ -112,6 +112,7 @@ pub fn parse(
     let src_types = crate_map.root_module.collect_types_to_pool();
     let src_types = topo_resolve(src_types);
     log::debug!("src_structs:{src_structs:?}"); //TODO: delete
+    log::debug!("src_enums:{src_enums:?}"); //TODO: delete
     log::debug!("src_types: {src_types:?}"); //TODO: delete
     let parser = Parser::new(TypeParser::new(src_structs, src_enums, src_types));
     parser.parse(
@@ -150,8 +151,8 @@ impl<'a> Parser<'a> {
         let has_executor = source_rust_content.contains(HANDLER_NAME);
 
         let (struct_pool, enum_pool) = self.type_parser.consume();
-        log::debug!("struct pool:{struct_pool:?}"); //TODO: delete
-        IrFile::new(
+
+        let ir_file = IrFile::new(
             funcs,
             struct_pool,
             enum_pool,
@@ -159,7 +160,12 @@ impl<'a> Parser<'a> {
             block_index,
             all_configs,
             shared,
-        )
+        );
+
+        log::debug!("final struct pool:{:?}", ir_file.struct_pool); //TODO: delete
+        log::debug!("final enum pool:{:?}", ir_file.enum_pool); //TODO: delete
+
+        ir_file
     }
 
     /// Attempts to parse the type from the return part of a function signature. There is a special
@@ -312,6 +318,7 @@ impl<'a> Parser<'a> {
             fallible,
             mode: mode.expect("missing mode"),
             comments: extract_comments(&func.attrs),
+            shared: false, // set not shared as default
         }
     }
 }

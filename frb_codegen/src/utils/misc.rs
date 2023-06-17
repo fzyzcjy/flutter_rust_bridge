@@ -111,10 +111,11 @@ pub fn get_symbols_if_no_duplicates(
     let mut explicit_raw_symbols = Vec::new();
     let mut all_symbols = Vec::new();
     for (_i, config) in regular_configs.iter().enumerate() {
-        log::debug!("before config.get_ir_file"); //TODO: delete
-        let ir_file = config.get_ir_file(&[config.clone()])?;
-        log::debug!("after config.get_ir_file"); //TODO: delete
-                                                 // for checking explicit API duplication
+        log::debug!("get_symbols_if_no_duplicates:before "); //TODO: delete
+        let ir_file = config.get_ir_file(&[])?; // all_configs` is empty, no need to care about other configs here
+        log::debug!("get_symbols_if_no_duplicates:after "); //TODO: delete
+
+        // for checking explicit API duplication
         let iter = ir_file.funcs.iter().map(|f| f.name.clone());
         log::debug!("the ir_file.funcs:{:?}", iter); //TODO: delete
         explicit_raw_symbols.extend(iter);
@@ -180,7 +181,7 @@ pub fn is_same_directory(paths: &[String]) -> bool {
     v.iter().all(|item| item == &v[0])
 }
 
-#[derive(PartialEq, Eq, Debug, Clone, Copy, serde::Serialize)]
+#[derive(PartialEq, Eq, Debug, Clone, Copy, Hash, serde::Serialize)]
 pub struct BlockIndex(pub usize);
 
 impl BlockIndex {
@@ -235,7 +236,7 @@ impl PathExt for std::path::Path {
 }
 
 pub(crate) trait ExtraTraitForVec<T: Clone + Eq + std::hash::Hash> {
-    /// This function finds unique and duplicate elements in a vector.
+    /// This function finds unique and duplicate elements in a vector within  original order.
     ///
     /// # Arguments
     ///

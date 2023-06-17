@@ -102,6 +102,229 @@ class ApiBlock1ClassWire implements FlutterRustBridgeWireBase {
   ApiBlock1ClassWire.fromLookup(ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName) lookup)
       : _lookup = lookup;
 
+  void wire_test_method__method__SharedStructInBlock1And2(
+    int port_,
+    ffi.Pointer<wire_SharedStructInBlock1And2> that,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_method__method__SharedStructInBlock1And2(
+      port_,
+      that,
+      message,
+    );
+  }
+
+  late final _wire_test_method__method__SharedStructInBlock1And2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_SharedStructInBlock1And2>,
+              ffi.Pointer<wire_uint_8_list>)>>('wire_test_method__method__SharedStructInBlock1And2');
+  late final _wire_test_method__method__SharedStructInBlock1And2 =
+      _wire_test_method__method__SharedStructInBlock1And2Ptr
+          .asFunction<void Function(int, ffi.Pointer<wire_SharedStructInBlock1And2>, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_test_static_method__static_method__SharedStructInBlock1And2(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_static_method__static_method__SharedStructInBlock1And2(
+      port_,
+      message,
+    );
+  }
+
+  late final _wire_test_static_method__static_method__SharedStructInBlock1And2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_test_static_method__static_method__SharedStructInBlock1And2');
+  late final _wire_test_static_method__static_method__SharedStructInBlock1And2 =
+      _wire_test_static_method__static_method__SharedStructInBlock1And2Ptr
+          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_test_method__method__SharedStructInAllBlocks(
+    int port_,
+    ffi.Pointer<wire_SharedStructInAllBlocks> that,
+    ffi.Pointer<wire_uint_8_list> message,
+    int num,
+  ) {
+    return _wire_test_method__method__SharedStructInAllBlocks(
+      port_,
+      that,
+      message,
+      num,
+    );
+  }
+
+  late final _wire_test_method__method__SharedStructInAllBlocksPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_SharedStructInAllBlocks>, ffi.Pointer<wire_uint_8_list>,
+              ffi.Uint32)>>('wire_test_method__method__SharedStructInAllBlocks');
+  late final _wire_test_method__method__SharedStructInAllBlocks = _wire_test_method__method__SharedStructInAllBlocksPtr
+      .asFunction<void Function(int, ffi.Pointer<wire_SharedStructInAllBlocks>, ffi.Pointer<wire_uint_8_list>, int)>();
+
+  void wire_test_static_method__static_method__SharedStructInAllBlocks(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_static_method__static_method__SharedStructInAllBlocks(
+      port_,
+      message,
+    );
+  }
+
+  late final _wire_test_static_method__static_method__SharedStructInAllBlocksPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_test_static_method__static_method__SharedStructInAllBlocks');
+  late final _wire_test_static_method__static_method__SharedStructInAllBlocks =
+      _wire_test_static_method__static_method__SharedStructInAllBlocksPtr
+          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_test_method__method__CrossSharedStructInBlock1And2(
+    int port_,
+    ffi.Pointer<wire_CrossSharedStructInBlock1And2> that,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_method__method__CrossSharedStructInBlock1And2(
+      port_,
+      that,
+      message,
+    );
+  }
+
+  late final _wire_test_method__method__CrossSharedStructInBlock1And2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_CrossSharedStructInBlock1And2>,
+              ffi.Pointer<wire_uint_8_list>)>>('wire_test_method__method__CrossSharedStructInBlock1And2');
+  late final _wire_test_method__method__CrossSharedStructInBlock1And2 =
+      _wire_test_method__method__CrossSharedStructInBlock1And2Ptr.asFunction<
+          void Function(int, ffi.Pointer<wire_CrossSharedStructInBlock1And2>, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_test_static_method__static_method__CrossSharedStructInBlock1And2(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_static_method__static_method__CrossSharedStructInBlock1And2(
+      port_,
+      message,
+    );
+  }
+
+  late final _wire_test_static_method__static_method__CrossSharedStructInBlock1And2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_test_static_method__static_method__CrossSharedStructInBlock1And2');
+  late final _wire_test_static_method__static_method__CrossSharedStructInBlock1And2 =
+      _wire_test_static_method__static_method__CrossSharedStructInBlock1And2Ptr
+          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_test_method__method__SharedStructOnlyForSyncTest(
+    int port_,
+    ffi.Pointer<wire_SharedStructOnlyForSyncTest> that,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_method__method__SharedStructOnlyForSyncTest(
+      port_,
+      that,
+      message,
+    );
+  }
+
+  late final _wire_test_method__method__SharedStructOnlyForSyncTestPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_SharedStructOnlyForSyncTest>,
+              ffi.Pointer<wire_uint_8_list>)>>('wire_test_method__method__SharedStructOnlyForSyncTest');
+  late final _wire_test_method__method__SharedStructOnlyForSyncTest =
+      _wire_test_method__method__SharedStructOnlyForSyncTestPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_SharedStructOnlyForSyncTest>, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_test_static_method__static_method__SharedStructOnlyForSyncTest(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_static_method__static_method__SharedStructOnlyForSyncTest(
+      port_,
+      message,
+    );
+  }
+
+  late final _wire_test_static_method__static_method__SharedStructOnlyForSyncTestPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_test_static_method__static_method__SharedStructOnlyForSyncTest');
+  late final _wire_test_static_method__static_method__SharedStructOnlyForSyncTest =
+      _wire_test_static_method__static_method__SharedStructOnlyForSyncTestPtr
+          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_test_method__method__CrossSharedStructInBlock2And3(
+    int port_,
+    ffi.Pointer<wire_CrossSharedStructInBlock2And3> that,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_method__method__CrossSharedStructInBlock2And3(
+      port_,
+      that,
+      message,
+    );
+  }
+
+  late final _wire_test_method__method__CrossSharedStructInBlock2And3Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_CrossSharedStructInBlock2And3>,
+              ffi.Pointer<wire_uint_8_list>)>>('wire_test_method__method__CrossSharedStructInBlock2And3');
+  late final _wire_test_method__method__CrossSharedStructInBlock2And3 =
+      _wire_test_method__method__CrossSharedStructInBlock2And3Ptr.asFunction<
+          void Function(int, ffi.Pointer<wire_CrossSharedStructInBlock2And3>, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_test_static_method__static_method__CrossSharedStructInBlock2And3(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_static_method__static_method__CrossSharedStructInBlock2And3(
+      port_,
+      message,
+    );
+  }
+
+  late final _wire_test_static_method__static_method__CrossSharedStructInBlock2And3Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_test_static_method__static_method__CrossSharedStructInBlock2And3');
+  late final _wire_test_static_method__static_method__CrossSharedStructInBlock2And3 =
+      _wire_test_static_method__static_method__CrossSharedStructInBlock2And3Ptr
+          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_test_method__method__SharedStructInBlock2And3(
+    int port_,
+    ffi.Pointer<wire_SharedStructInBlock2And3> that,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_method__method__SharedStructInBlock2And3(
+      port_,
+      that,
+      message,
+    );
+  }
+
+  late final _wire_test_method__method__SharedStructInBlock2And3Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_SharedStructInBlock2And3>,
+              ffi.Pointer<wire_uint_8_list>)>>('wire_test_method__method__SharedStructInBlock2And3');
+  late final _wire_test_method__method__SharedStructInBlock2And3 =
+      _wire_test_method__method__SharedStructInBlock2And3Ptr
+          .asFunction<void Function(int, ffi.Pointer<wire_SharedStructInBlock2And3>, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_test_static_method__static_method__SharedStructInBlock2And3(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_static_method__static_method__SharedStructInBlock2And3(
+      port_,
+      message,
+    );
+  }
+
+  late final _wire_test_static_method__static_method__SharedStructInBlock2And3Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_test_static_method__static_method__SharedStructInBlock2And3');
+  late final _wire_test_static_method__static_method__SharedStructInBlock2And3 =
+      _wire_test_static_method__static_method__SharedStructInBlock2And3Ptr
+          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
   ffi.Pointer<ffi.Int32> new_box_autoadd_i32(
     int value,
   ) {
@@ -543,6 +766,44 @@ class ApiBlock1ClassWire implements FlutterRustBridgeWireBase {
       _wire_test_static_method__static_method__StructDefinedInBlock1Ptr
           .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
+  void wire_test_method__method__StructOnlyForBlock1(
+    int port_,
+    ffi.Pointer<wire_StructOnlyForBlock1> that,
+    ffi.Pointer<wire_uint_8_list> message,
+    int num,
+  ) {
+    return _wire_test_method__method__StructOnlyForBlock1(
+      port_,
+      that,
+      message,
+      num,
+    );
+  }
+
+  late final _wire_test_method__method__StructOnlyForBlock1Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_StructOnlyForBlock1>, ffi.Pointer<wire_uint_8_list>,
+              ffi.Uint16)>>('wire_test_method__method__StructOnlyForBlock1');
+  late final _wire_test_method__method__StructOnlyForBlock1 = _wire_test_method__method__StructOnlyForBlock1Ptr
+      .asFunction<void Function(int, ffi.Pointer<wire_StructOnlyForBlock1>, ffi.Pointer<wire_uint_8_list>, int)>();
+
+  void wire_test_static_method__static_method__StructOnlyForBlock1(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_static_method__static_method__StructOnlyForBlock1(
+      port_,
+      message,
+    );
+  }
+
+  late final _wire_test_static_method__static_method__StructOnlyForBlock1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_test_static_method__static_method__StructOnlyForBlock1');
+  late final _wire_test_static_method__static_method__StructOnlyForBlock1 =
+      _wire_test_static_method__static_method__StructOnlyForBlock1Ptr
+          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
   ffi.Pointer<ffi.Int8> new_box_autoadd_i8(
     int value,
   ) {
@@ -574,6 +835,82 @@ class ApiBlock1ClassWire implements FlutterRustBridgeWireBase {
           'new_box_autoadd_struct_only_for_block_1');
   late final _new_box_autoadd_struct_only_for_block_1 =
       _new_box_autoadd_struct_only_for_block_1Ptr.asFunction<ffi.Pointer<wire_StructOnlyForBlock1> Function()>();
+
+  void wire_test_method__method__StructOnlyForBlock2(
+    int port_,
+    ffi.Pointer<wire_StructOnlyForBlock2> that,
+    ffi.Pointer<wire_uint_8_list> message,
+    int num,
+  ) {
+    return _wire_test_method__method__StructOnlyForBlock2(
+      port_,
+      that,
+      message,
+      num,
+    );
+  }
+
+  late final _wire_test_method__method__StructOnlyForBlock2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_StructOnlyForBlock2>, ffi.Pointer<wire_uint_8_list>,
+              ffi.Uint16)>>('wire_test_method__method__StructOnlyForBlock2');
+  late final _wire_test_method__method__StructOnlyForBlock2 = _wire_test_method__method__StructOnlyForBlock2Ptr
+      .asFunction<void Function(int, ffi.Pointer<wire_StructOnlyForBlock2>, ffi.Pointer<wire_uint_8_list>, int)>();
+
+  void wire_test_static_method__static_method__StructOnlyForBlock2(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_static_method__static_method__StructOnlyForBlock2(
+      port_,
+      message,
+    );
+  }
+
+  late final _wire_test_static_method__static_method__StructOnlyForBlock2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_test_static_method__static_method__StructOnlyForBlock2');
+  late final _wire_test_static_method__static_method__StructOnlyForBlock2 =
+      _wire_test_static_method__static_method__StructOnlyForBlock2Ptr
+          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_test_method__method__StructOnlyForBlock3(
+    int port_,
+    ffi.Pointer<wire_StructOnlyForBlock3> that,
+    ffi.Pointer<wire_uint_8_list> message,
+    int num,
+  ) {
+    return _wire_test_method__method__StructOnlyForBlock3(
+      port_,
+      that,
+      message,
+      num,
+    );
+  }
+
+  late final _wire_test_method__method__StructOnlyForBlock3Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_StructOnlyForBlock3>, ffi.Pointer<wire_uint_8_list>,
+              ffi.Uint16)>>('wire_test_method__method__StructOnlyForBlock3');
+  late final _wire_test_method__method__StructOnlyForBlock3 = _wire_test_method__method__StructOnlyForBlock3Ptr
+      .asFunction<void Function(int, ffi.Pointer<wire_StructOnlyForBlock3>, ffi.Pointer<wire_uint_8_list>, int)>();
+
+  void wire_test_static_method__static_method__StructOnlyForBlock3(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_static_method__static_method__StructOnlyForBlock3(
+      port_,
+      message,
+    );
+  }
+
+  late final _wire_test_static_method__static_method__StructOnlyForBlock3Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_test_static_method__static_method__StructOnlyForBlock3');
+  late final _wire_test_static_method__static_method__StructOnlyForBlock3 =
+      _wire_test_static_method__static_method__StructOnlyForBlock3Ptr
+          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 }
 
 final class _Dart_Handle extends ffi.Opaque {}
@@ -630,6 +967,10 @@ final class wire_EnumType_BytesArray extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> field0;
 }
 
+final class wire_CrossSharedStructInBlock2And3 extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> name;
+}
+
 final class wire_SharedStructInBlock2And3 extends ffi.Struct {
   @ffi.Int32()
   external int id;
@@ -649,6 +990,26 @@ final class wire_StructOnlyForBlock1 extends ffi.Struct {
 }
 
 final class wire_StructDefinedInBlock1 extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> name;
+}
+
+final class wire_StructOnlyForBlock2 extends ffi.Struct {
+  @ffi.Int16()
+  external int id;
+
+  @ffi.Double()
+  external double num;
+
+  external ffi.Pointer<wire_uint_8_list> name;
+}
+
+final class wire_StructOnlyForBlock3 extends ffi.Struct {
+  @ffi.Int64()
+  external int id;
+
+  @ffi.Double()
+  external double num;
+
   external ffi.Pointer<wire_uint_8_list> name;
 }
 

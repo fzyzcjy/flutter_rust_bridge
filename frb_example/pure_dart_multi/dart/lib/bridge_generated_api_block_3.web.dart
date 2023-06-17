@@ -94,6 +94,36 @@ class ApiBlock3ClassWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_test_static_method__static_method__StructDefinedInBlock3(
       NativePortType port_, String message);
+
+  external dynamic /* void */ wire_test_method__method__SharedStructOnlyForSyncTest(
+      NativePortType port_, List<dynamic> that, String message);
+
+  external dynamic /* void */ wire_test_static_method__static_method__SharedStructOnlyForSyncTest(
+      NativePortType port_, String message);
+
+  external dynamic /* void */ wire_test_method__method__StructOnlyForBlock3(
+      NativePortType port_, List<dynamic> that, String message, int num);
+
+  external dynamic /* void */ wire_test_static_method__static_method__StructOnlyForBlock3(
+      NativePortType port_, String message);
+
+  external dynamic /* void */ wire_test_method__method__CrossSharedStructInBlock2And3(
+      NativePortType port_, List<dynamic> that, String message);
+
+  external dynamic /* void */ wire_test_static_method__static_method__CrossSharedStructInBlock2And3(
+      NativePortType port_, String message);
+
+  external dynamic /* void */ wire_test_method__method__SharedStructInAllBlocks(
+      NativePortType port_, List<dynamic> that, String message, int num);
+
+  external dynamic /* void */ wire_test_static_method__static_method__SharedStructInAllBlocks(
+      NativePortType port_, String message);
+
+  external dynamic /* void */ wire_test_method__method__SharedStructInBlock2And3(
+      NativePortType port_, List<dynamic> that, String message);
+
+  external dynamic /* void */ wire_test_static_method__static_method__SharedStructInBlock2And3(
+      NativePortType port_, String message);
 }
 
 // Section: WASM wire connector
@@ -139,4 +169,38 @@ class ApiBlock3ClassWire extends FlutterRustBridgeWasmWireBase<ApiBlock3ClassWas
 
   void wire_test_static_method__static_method__StructDefinedInBlock3(NativePortType port_, String message) =>
       wasmModule.wire_test_static_method__static_method__StructDefinedInBlock3(port_, message);
+
+  void wire_test_method__method__SharedStructOnlyForSyncTest(
+          NativePortType port_, List<dynamic> that, String message) =>
+      wasmModule.wire_test_method__method__SharedStructOnlyForSyncTest(port_, that, message);
+
+  void wire_test_static_method__static_method__SharedStructOnlyForSyncTest(NativePortType port_, String message) =>
+      wasmModule.wire_test_static_method__static_method__SharedStructOnlyForSyncTest(port_, message);
+
+  void wire_test_method__method__StructOnlyForBlock3(
+          NativePortType port_, List<dynamic> that, String message, int num) =>
+      wasmModule.wire_test_method__method__StructOnlyForBlock3(port_, that, message, num);
+
+  void wire_test_static_method__static_method__StructOnlyForBlock3(NativePortType port_, String message) =>
+      wasmModule.wire_test_static_method__static_method__StructOnlyForBlock3(port_, message);
+
+  void wire_test_method__method__CrossSharedStructInBlock2And3(
+          NativePortType port_, List<dynamic> that, String message) =>
+      wasmModule.wire_test_method__method__CrossSharedStructInBlock2And3(port_, that, message);
+
+  void wire_test_static_method__static_method__CrossSharedStructInBlock2And3(NativePortType port_, String message) =>
+      wasmModule.wire_test_static_method__static_method__CrossSharedStructInBlock2And3(port_, message);
+
+  void wire_test_method__method__SharedStructInAllBlocks(
+          NativePortType port_, List<dynamic> that, String message, int num) =>
+      wasmModule.wire_test_method__method__SharedStructInAllBlocks(port_, that, message, num);
+
+  void wire_test_static_method__static_method__SharedStructInAllBlocks(NativePortType port_, String message) =>
+      wasmModule.wire_test_static_method__static_method__SharedStructInAllBlocks(port_, message);
+
+  void wire_test_method__method__SharedStructInBlock2And3(NativePortType port_, List<dynamic> that, String message) =>
+      wasmModule.wire_test_method__method__SharedStructInBlock2And3(port_, that, message);
+
+  void wire_test_static_method__static_method__SharedStructInBlock2And3(NativePortType port_, String message) =>
+      wasmModule.wire_test_static_method__static_method__SharedStructInBlock2And3(port_, message);
 }

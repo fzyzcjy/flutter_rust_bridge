@@ -14,26 +14,106 @@ import 'package:meta/meta.dart';
 import 'package:uuid/uuid.dart';
 part 'bridge_definitions.freezed.dart';
 
-abstract class BridgeGeneratedShares {}
+abstract class BridgeGeneratedShares {
+  Future<String> testMethodMethodSharedStructInBlock1And2(
+      {required SharedStructInBlock1And2 that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructInBlock1And2ConstMeta;
+
+  Future<String> testStaticMethodStaticMethodSharedStructInBlock1And2({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInBlock1And2ConstMeta;
+
+  /// the parameter type `u32 for `num` is only used here,
+  /// for testing shared type(`u32`) within a shared struct method
+  Future<String> testMethodMethodSharedStructInAllBlocks(
+      {required SharedStructInAllBlocks that, required String message, required int num, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructInAllBlocksConstMeta;
+
+  Future<String> testStaticMethodStaticMethodSharedStructInAllBlocks({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInAllBlocksConstMeta;
+
+  Future<String> testMethodMethodCrossSharedStructInBlock1And2(
+      {required CrossSharedStructInBlock1And2 that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodCrossSharedStructInBlock1And2ConstMeta;
+
+  Future<String> testStaticMethodStaticMethodCrossSharedStructInBlock1And2({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodCrossSharedStructInBlock1And2ConstMeta;
+
+  Future<String> testMethodMethodSharedStructOnlyForSyncTest(
+      {required SharedStructOnlyForSyncTest that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructOnlyForSyncTestConstMeta;
+
+  Future<String> testStaticMethodStaticMethodSharedStructOnlyForSyncTest({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructOnlyForSyncTestConstMeta;
+
+  Future<String> testMethodMethodCrossSharedStructInBlock2And3(
+      {required CrossSharedStructInBlock2And3 that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodCrossSharedStructInBlock2And3ConstMeta;
+
+  Future<String> testStaticMethodStaticMethodCrossSharedStructInBlock2And3({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodCrossSharedStructInBlock2And3ConstMeta;
+
+  Future<String> testMethodMethodSharedStructInBlock2And3(
+      {required SharedStructInBlock2And3 that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructInBlock2And3ConstMeta;
+
+  Future<String> testStaticMethodStaticMethodSharedStructInBlock2And3({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInBlock2And3ConstMeta;
+}
 
 /// this struct is used only as parameter in API block1 and used only as return type in API block2, but not
 /// defined in either block file
 class CrossSharedStructInBlock1And2 {
+  final BridgeGeneratedShares bridge;
   final String name;
 
   const CrossSharedStructInBlock1And2({
+    required this.bridge,
     required this.name,
   });
+
+  Future<String> testMethod({required String message, dynamic hint}) =>
+      bridge.testMethodMethodCrossSharedStructInBlock1And2(
+        that: this,
+        message: message,
+      );
+
+  static Future<String> testStaticMethod(
+          {required BridgeGeneratedShares bridge, required String message, dynamic hint}) =>
+      bridge.testStaticMethodStaticMethodCrossSharedStructInBlock1And2(message: message, hint: hint);
 }
 
 /// this struct is used only as parameter in API block2 and used only as return type in API block3, but not
 /// defined in either block file
 class CrossSharedStructInBlock2And3 {
+  final BridgeGeneratedShares bridge;
   final String name;
 
   const CrossSharedStructInBlock2And3({
+    required this.bridge,
     required this.name,
   });
+
+  Future<String> testMethod({required String message, dynamic hint}) =>
+      bridge.testMethodMethodCrossSharedStructInBlock2And3(
+        that: this,
+        message: message,
+      );
+
+  static Future<String> testStaticMethod(
+          {required BridgeGeneratedShares bridge, required String message, dynamic hint}) =>
+      bridge.testStaticMethodStaticMethodCrossSharedStructInBlock2And3(message: message, hint: hint);
 }
 
 @freezed
@@ -66,53 +146,102 @@ class EnumType with _$EnumType {
 
 /// This is a struct used in ALL API blocks, NOT defined in any regular block file
 class SharedStructInAllBlocks {
+  final BridgeGeneratedShares bridge;
   final int id;
   final double num;
   final String name;
   final List<EnumType>? enumList;
 
   const SharedStructInAllBlocks({
+    required this.bridge,
     required this.id,
     required this.num,
     required this.name,
     this.enumList,
   });
+
+  /// the parameter type `u32 for `num` is only used here,
+  /// for testing shared type(`u32`) within a shared struct method
+  Future<String> testMethod({required String message, required int num, dynamic hint}) =>
+      bridge.testMethodMethodSharedStructInAllBlocks(
+        that: this,
+        message: message,
+        num: num,
+      );
+
+  static Future<String> testStaticMethod(
+          {required BridgeGeneratedShares bridge, required String message, dynamic hint}) =>
+      bridge.testStaticMethodStaticMethodSharedStructInAllBlocks(message: message, hint: hint);
 }
 
 /// This is a struct used in API blocks 1 and 2 for test, but not defined in any regular block file
 class SharedStructInBlock1And2 {
+  final BridgeGeneratedShares bridge;
   final int id;
   final double num;
   final String name;
 
   const SharedStructInBlock1And2({
+    required this.bridge,
     required this.id,
     required this.num,
     required this.name,
   });
+
+  Future<String> testMethod({required String message, dynamic hint}) => bridge.testMethodMethodSharedStructInBlock1And2(
+        that: this,
+        message: message,
+      );
+
+  static Future<String> testStaticMethod(
+          {required BridgeGeneratedShares bridge, required String message, dynamic hint}) =>
+      bridge.testStaticMethodStaticMethodSharedStructInBlock1And2(message: message, hint: hint);
 }
 
 /// This is a struct used in all API blocks 2 and 3 for test, but not defined in any regular block file
 class SharedStructInBlock2And3 {
+  final BridgeGeneratedShares bridge;
   final int id;
   final double num;
   final String name;
 
   const SharedStructInBlock2And3({
+    required this.bridge,
     required this.id,
     required this.num,
     required this.name,
   });
+
+  Future<String> testMethod({required String message, dynamic hint}) => bridge.testMethodMethodSharedStructInBlock2And3(
+        that: this,
+        message: message,
+      );
+
+  static Future<String> testStaticMethod(
+          {required BridgeGeneratedShares bridge, required String message, dynamic hint}) =>
+      bridge.testStaticMethodStaticMethodSharedStructInBlock2And3(message: message, hint: hint);
 }
 
 class SharedStructOnlyForSyncTest {
+  final BridgeGeneratedShares bridge;
   final String name;
   final double score;
 
   const SharedStructOnlyForSyncTest({
+    required this.bridge,
     required this.name,
     required this.score,
   });
+
+  Future<String> testMethod({required String message, dynamic hint}) =>
+      bridge.testMethodMethodSharedStructOnlyForSyncTest(
+        that: this,
+        message: message,
+      );
+
+  static Future<String> testStaticMethod(
+          {required BridgeGeneratedShares bridge, required String message, dynamic hint}) =>
+      bridge.testStaticMethodStaticMethodSharedStructOnlyForSyncTest(message: message, hint: hint);
 }
 
 class U8Array3 extends NonGrowableListView<int> {
@@ -191,6 +320,56 @@ abstract class ApiBlock3Class {
   Future<String> testStaticMethodStaticMethodStructDefinedInBlock3({required String message, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodStructDefinedInBlock3ConstMeta;
+
+  Future<String> testMethodMethodSharedStructOnlyForSyncTest(
+      {required SharedStructOnlyForSyncTest that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructOnlyForSyncTestConstMeta;
+
+  Future<String> testStaticMethodStaticMethodSharedStructOnlyForSyncTest({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructOnlyForSyncTestConstMeta;
+
+  /// the parameter type `u16 for `num` is only used for struct
+  /// used in a specific API block but not defined in the API block(like `StructOnlyForBlock1`,`StructOnlyForBlock2`),
+  /// for testing shared type(`u16`) within a no-shared struct method
+  Future<String> testMethodMethodStructOnlyForBlock3(
+      {required StructOnlyForBlock3 that, required String message, required int num, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodStructOnlyForBlock3ConstMeta;
+
+  Future<String> testStaticMethodStaticMethodStructOnlyForBlock3({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodStructOnlyForBlock3ConstMeta;
+
+  Future<String> testMethodMethodCrossSharedStructInBlock2And3(
+      {required CrossSharedStructInBlock2And3 that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodCrossSharedStructInBlock2And3ConstMeta;
+
+  Future<String> testStaticMethodStaticMethodCrossSharedStructInBlock2And3({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodCrossSharedStructInBlock2And3ConstMeta;
+
+  /// the parameter type `u32 for `num` is only used here,
+  /// for testing shared type(`u32`) within a shared struct method
+  Future<String> testMethodMethodSharedStructInAllBlocks(
+      {required SharedStructInAllBlocks that, required String message, required int num, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructInAllBlocksConstMeta;
+
+  Future<String> testStaticMethodStaticMethodSharedStructInAllBlocks({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInAllBlocksConstMeta;
+
+  Future<String> testMethodMethodSharedStructInBlock2And3(
+      {required SharedStructInBlock2And3 that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructInBlock2And3ConstMeta;
+
+  Future<String> testStaticMethodStaticMethodSharedStructInBlock2And3({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInBlock2And3ConstMeta;
 }
 
 class StructDefinedInBlock3 {
@@ -213,15 +392,30 @@ class StructDefinedInBlock3 {
 
 /// This is a struct only used in API block 3 for test, but not defined in block file
 class StructOnlyForBlock3 {
+  final ApiBlock3Class bridge;
   final int id;
   final double num;
   final String name;
 
   const StructOnlyForBlock3({
+    required this.bridge,
     required this.id,
     required this.num,
     required this.name,
   });
+
+  /// the parameter type `u16 for `num` is only used for struct
+  /// used in a specific API block but not defined in the API block(like `StructOnlyForBlock1`,`StructOnlyForBlock2`),
+  /// for testing shared type(`u16`) within a no-shared struct method
+  Future<String> testMethod({required String message, required int num, dynamic hint}) =>
+      bridge.testMethodMethodStructOnlyForBlock3(
+        that: this,
+        message: message,
+        num: num,
+      );
+
+  static Future<String> testStaticMethod({required ApiBlock3Class bridge, required String message, dynamic hint}) =>
+      bridge.testStaticMethodStaticMethodStructOnlyForBlock3(message: message, hint: hint);
 }
 
 abstract class ApiBlock2Class {
@@ -278,6 +472,65 @@ abstract class ApiBlock2Class {
   Future<String> testStaticMethodStaticMethodStructDefinedInBlock2({required String message, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodStructDefinedInBlock2ConstMeta;
+
+  Future<String> testMethodMethodSharedStructInBlock2And3(
+      {required SharedStructInBlock2And3 that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructInBlock2And3ConstMeta;
+
+  Future<String> testStaticMethodStaticMethodSharedStructInBlock2And3({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInBlock2And3ConstMeta;
+
+  Future<String> testMethodMethodSharedStructInBlock1And2(
+      {required SharedStructInBlock1And2 that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructInBlock1And2ConstMeta;
+
+  Future<String> testStaticMethodStaticMethodSharedStructInBlock1And2({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInBlock1And2ConstMeta;
+
+  /// the parameter type `u16 for `num` is only used for struct
+  /// used in a specific API block but not defined in the API block(like `StructOnlyForBlock1`,`StructOnlyForBlock3`),
+  /// for testing shared type(`u16`) within a no-shared struct method
+  Future<String> testMethodMethodStructOnlyForBlock2(
+      {required StructOnlyForBlock2 that, required String message, required int num, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodStructOnlyForBlock2ConstMeta;
+
+  Future<String> testStaticMethodStaticMethodStructOnlyForBlock2({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodStructOnlyForBlock2ConstMeta;
+
+  Future<String> testMethodMethodCrossSharedStructInBlock2And3(
+      {required CrossSharedStructInBlock2And3 that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodCrossSharedStructInBlock2And3ConstMeta;
+
+  Future<String> testStaticMethodStaticMethodCrossSharedStructInBlock2And3({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodCrossSharedStructInBlock2And3ConstMeta;
+
+  /// the parameter type `u32 for `num` is only used here,
+  /// for testing shared type(`u32`) within a shared struct method
+  Future<String> testMethodMethodSharedStructInAllBlocks(
+      {required SharedStructInAllBlocks that, required String message, required int num, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructInAllBlocksConstMeta;
+
+  Future<String> testStaticMethodStaticMethodSharedStructInAllBlocks({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInAllBlocksConstMeta;
+
+  Future<String> testMethodMethodCrossSharedStructInBlock1And2(
+      {required CrossSharedStructInBlock1And2 that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodCrossSharedStructInBlock1And2ConstMeta;
+
+  Future<String> testStaticMethodStaticMethodCrossSharedStructInBlock1And2({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodCrossSharedStructInBlock1And2ConstMeta;
 }
 
 class StructDefinedInBlock2 {
@@ -300,15 +553,30 @@ class StructDefinedInBlock2 {
 
 /// This is a struct only used in API block 2 for test, but not defined in block file
 class StructOnlyForBlock2 {
+  final ApiBlock2Class bridge;
   final int id;
   final double num;
   final String name;
 
   const StructOnlyForBlock2({
+    required this.bridge,
     required this.id,
     required this.num,
     required this.name,
   });
+
+  /// the parameter type `u16 for `num` is only used for struct
+  /// used in a specific API block but not defined in the API block(like `StructOnlyForBlock1`,`StructOnlyForBlock3`),
+  /// for testing shared type(`u16`) within a no-shared struct method
+  Future<String> testMethod({required String message, required int num, dynamic hint}) =>
+      bridge.testMethodMethodStructOnlyForBlock2(
+        that: this,
+        message: message,
+        num: num,
+      );
+
+  static Future<String> testStaticMethod({required ApiBlock2Class bridge, required String message, dynamic hint}) =>
+      bridge.testStaticMethodStaticMethodStructOnlyForBlock2(message: message, hint: hint);
 }
 
 abstract class ApiBlock1Class {
@@ -368,6 +636,56 @@ abstract class ApiBlock1Class {
   Future<String> testStaticMethodStaticMethodStructDefinedInBlock1({required String message, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodStructDefinedInBlock1ConstMeta;
+
+  Future<String> testMethodMethodCrossSharedStructInBlock1And2(
+      {required CrossSharedStructInBlock1And2 that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodCrossSharedStructInBlock1And2ConstMeta;
+
+  Future<String> testStaticMethodStaticMethodCrossSharedStructInBlock1And2({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodCrossSharedStructInBlock1And2ConstMeta;
+
+  /// the parameter type `u16 for `num` is only used for struct
+  /// used in a specific API block but not defined in the API block(like `StructOnlyForBlock2`,`StructOnlyForBlock3`),
+  /// for testing shared type(`u16`) within a no-shared struct method
+  Future<String> testMethodMethodStructOnlyForBlock1(
+      {required StructOnlyForBlock1 that, required String message, required int num, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodStructOnlyForBlock1ConstMeta;
+
+  Future<String> testStaticMethodStaticMethodStructOnlyForBlock1({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodStructOnlyForBlock1ConstMeta;
+
+  Future<String> testMethodMethodSharedStructOnlyForSyncTest(
+      {required SharedStructOnlyForSyncTest that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructOnlyForSyncTestConstMeta;
+
+  Future<String> testStaticMethodStaticMethodSharedStructOnlyForSyncTest({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructOnlyForSyncTestConstMeta;
+
+  /// the parameter type `u32 for `num` is only used here,
+  /// for testing shared type(`u32`) within a shared struct method
+  Future<String> testMethodMethodSharedStructInAllBlocks(
+      {required SharedStructInAllBlocks that, required String message, required int num, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructInAllBlocksConstMeta;
+
+  Future<String> testStaticMethodStaticMethodSharedStructInAllBlocks({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInAllBlocksConstMeta;
+
+  Future<String> testMethodMethodSharedStructInBlock1And2(
+      {required SharedStructInBlock1And2 that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructInBlock1And2ConstMeta;
+
+  Future<String> testStaticMethodStaticMethodSharedStructInBlock1And2({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInBlock1And2ConstMeta;
 }
 
 class StructDefinedInBlock1 {
@@ -390,13 +708,28 @@ class StructDefinedInBlock1 {
 
 /// This is a struct only used in API block 1 for test, but not defined in block file
 class StructOnlyForBlock1 {
+  final ApiBlock1Class bridge;
   final int? id;
   final double? num;
   final String? name;
 
   const StructOnlyForBlock1({
+    required this.bridge,
     this.id,
     this.num,
     this.name,
   });
+
+  /// the parameter type `u16 for `num` is only used for struct
+  /// used in a specific API block but not defined in the API block(like `StructOnlyForBlock2`,`StructOnlyForBlock3`),
+  /// for testing shared type(`u16`) within a no-shared struct method
+  Future<String> testMethod({required String message, required int num, dynamic hint}) =>
+      bridge.testMethodMethodStructOnlyForBlock1(
+        that: this,
+        message: message,
+        num: num,
+      );
+
+  static Future<String> testStaticMethod({required ApiBlock1Class bridge, required String message, dynamic hint}) =>
+      bridge.testStaticMethodStaticMethodStructOnlyForBlock1(message: message, hint: hint);
 }

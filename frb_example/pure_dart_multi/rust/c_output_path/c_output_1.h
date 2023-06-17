@@ -73,11 +73,20 @@ typedef struct wire_SharedStructInAllBlocks {
   struct wire_list_enum_type *enum_list;
 } wire_SharedStructInAllBlocks;
 
+typedef struct wire_CrossSharedStructInBlock1And2 {
+  struct wire_uint_8_list *name;
+} wire_CrossSharedStructInBlock1And2;
+
 typedef struct wire_SharedStructInBlock1And2 {
   int32_t id;
   double num;
   struct wire_uint_8_list *name;
 } wire_SharedStructInBlock1And2;
+
+typedef struct wire_SharedStructOnlyForSyncTest {
+  struct wire_uint_8_list *name;
+  double score;
+} wire_SharedStructOnlyForSyncTest;
 
 typedef struct wire_SharedStructInBlock2And3 {
   int32_t id;
@@ -85,15 +94,15 @@ typedef struct wire_SharedStructInBlock2And3 {
   struct wire_uint_8_list *name;
 } wire_SharedStructInBlock2And3;
 
+typedef struct wire_CrossSharedStructInBlock2And3 {
+  struct wire_uint_8_list *name;
+} wire_CrossSharedStructInBlock2And3;
+
 typedef struct DartCObject *WireSyncReturn;
 
 typedef int64_t DartPort;
 
 typedef bool (*DartPostCObjectFnType)(DartPort port_id, void *message);
-
-typedef struct wire_CrossSharedStructInBlock1And2 {
-  struct wire_uint_8_list *name;
-} wire_CrossSharedStructInBlock1And2;
 
 typedef struct wire_StructOnlyForBlock1 {
   int8_t *id;
@@ -104,6 +113,61 @@ typedef struct wire_StructOnlyForBlock1 {
 typedef struct wire_StructDefinedInBlock1 {
   struct wire_uint_8_list *name;
 } wire_StructDefinedInBlock1;
+
+typedef struct wire_StructOnlyForBlock2 {
+  int16_t id;
+  double num;
+  struct wire_uint_8_list *name;
+} wire_StructOnlyForBlock2;
+
+typedef struct wire_StructOnlyForBlock3 {
+  int64_t id;
+  double num;
+  struct wire_uint_8_list *name;
+} wire_StructOnlyForBlock3;
+
+void wire_test_method__method__SharedStructInAllBlocks(int64_t port_,
+                                                       struct wire_SharedStructInAllBlocks *that,
+                                                       struct wire_uint_8_list *message,
+                                                       uint32_t num);
+
+void wire_test_static_method__static_method__SharedStructInAllBlocks(int64_t port_,
+                                                                     struct wire_uint_8_list *message);
+
+void wire_test_method__method__CrossSharedStructInBlock1And2(int64_t port_,
+                                                             struct wire_CrossSharedStructInBlock1And2 *that,
+                                                             struct wire_uint_8_list *message);
+
+void wire_test_static_method__static_method__CrossSharedStructInBlock1And2(int64_t port_,
+                                                                           struct wire_uint_8_list *message);
+
+void wire_test_method__method__SharedStructInBlock1And2(int64_t port_,
+                                                        struct wire_SharedStructInBlock1And2 *that,
+                                                        struct wire_uint_8_list *message);
+
+void wire_test_static_method__static_method__SharedStructInBlock1And2(int64_t port_,
+                                                                      struct wire_uint_8_list *message);
+
+void wire_test_method__method__SharedStructOnlyForSyncTest(int64_t port_,
+                                                           struct wire_SharedStructOnlyForSyncTest *that,
+                                                           struct wire_uint_8_list *message);
+
+void wire_test_static_method__static_method__SharedStructOnlyForSyncTest(int64_t port_,
+                                                                         struct wire_uint_8_list *message);
+
+void wire_test_method__method__SharedStructInBlock2And3(int64_t port_,
+                                                        struct wire_SharedStructInBlock2And3 *that,
+                                                        struct wire_uint_8_list *message);
+
+void wire_test_static_method__static_method__SharedStructInBlock2And3(int64_t port_,
+                                                                      struct wire_uint_8_list *message);
+
+void wire_test_method__method__CrossSharedStructInBlock2And3(int64_t port_,
+                                                             struct wire_CrossSharedStructInBlock2And3 *that,
+                                                             struct wire_uint_8_list *message);
+
+void wire_test_static_method__static_method__CrossSharedStructInBlock2And3(int64_t port_,
+                                                                           struct wire_uint_8_list *message);
 
 int32_t *new_box_autoadd_i32(int32_t value);
 
@@ -185,11 +249,35 @@ void wire_test_method__method__StructDefinedInBlock1(int64_t port_,
 void wire_test_static_method__static_method__StructDefinedInBlock1(int64_t port_,
                                                                    struct wire_uint_8_list *message);
 
+void wire_test_method__method__StructOnlyForBlock1(int64_t port_,
+                                                   struct wire_StructOnlyForBlock1 *that,
+                                                   struct wire_uint_8_list *message,
+                                                   uint16_t num);
+
+void wire_test_static_method__static_method__StructOnlyForBlock1(int64_t port_,
+                                                                 struct wire_uint_8_list *message);
+
 int8_t *new_box_autoadd_i8(int8_t value);
 
 struct wire_StructDefinedInBlock1 *new_box_autoadd_struct_defined_in_block_1(void);
 
 struct wire_StructOnlyForBlock1 *new_box_autoadd_struct_only_for_block_1(void);
+
+void wire_test_method__method__StructOnlyForBlock2(int64_t port_,
+                                                   struct wire_StructOnlyForBlock2 *that,
+                                                   struct wire_uint_8_list *message,
+                                                   uint16_t num);
+
+void wire_test_static_method__static_method__StructOnlyForBlock2(int64_t port_,
+                                                                 struct wire_uint_8_list *message);
+
+void wire_test_method__method__StructOnlyForBlock3(int64_t port_,
+                                                   struct wire_StructOnlyForBlock3 *that,
+                                                   struct wire_uint_8_list *message,
+                                                   uint16_t num);
+
+void wire_test_static_method__static_method__StructOnlyForBlock3(int64_t port_,
+                                                                 struct wire_uint_8_list *message);
 
 static int64_t dummy_method_to_enforce_bundling_ApiBlock1Class(void) {
     int64_t dummy_var = 0;
@@ -206,6 +294,8 @@ static int64_t dummy_method_to_enforce_bundling_ApiBlock1Class(void) {
     dummy_var ^= ((int64_t) (void*) wire_test_struct_defined_in_block_1);
     dummy_var ^= ((int64_t) (void*) wire_test_method__method__StructDefinedInBlock1);
     dummy_var ^= ((int64_t) (void*) wire_test_static_method__static_method__StructDefinedInBlock1);
+    dummy_var ^= ((int64_t) (void*) wire_test_method__method__StructOnlyForBlock1);
+    dummy_var ^= ((int64_t) (void*) wire_test_static_method__static_method__StructOnlyForBlock1);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_i8);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_defined_in_block_1);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_only_for_block_1);

@@ -106,9 +106,9 @@ impl<'a> Generator<'a> {
 
         lines.push(String::new());
         lines.push("use flutter_rust_bridge::*;".to_owned());
+        lines.push("use core::panic::UnwindSafe;".to_owned());
         if !ir_file.shared {
             lines.push(format!("use crate::{rust_wire_mod}::*;"));
-            lines.push("use core::panic::UnwindSafe;".to_owned());
             lines.push("use std::sync::Arc;".to_owned());
             lines.push("use std::ffi::c_void;".to_owned());
         }
@@ -127,6 +127,7 @@ impl<'a> Generator<'a> {
         lines += ir_file
             .funcs
             .iter()
+            .filter(|f| f.shared == ir_file.shared)
             .map(|f| self.generate_wire_func(f, ir_file, shared_rust_wire_mod, all_configs))
             .collect();
 

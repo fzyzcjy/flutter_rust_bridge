@@ -89,6 +89,24 @@ pub fn wire_test_static_method__static_method__StructDefinedInBlock1(
     wire_test_static_method__static_method__StructDefinedInBlock1_impl(port_, message)
 }
 
+#[wasm_bindgen]
+pub fn wire_test_method__method__StructOnlyForBlock1(
+    port_: MessagePort,
+    that: JsValue,
+    message: String,
+    num: u16,
+) {
+    wire_test_method__method__StructOnlyForBlock1_impl(port_, that, message, num)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_static_method__static_method__StructOnlyForBlock1(
+    port_: MessagePort,
+    message: String,
+) {
+    wire_test_static_method__static_method__StructOnlyForBlock1_impl(port_, message)
+}
+
 // Section: allocate functions
 
 // Section: related functions

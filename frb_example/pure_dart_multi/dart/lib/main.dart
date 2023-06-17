@@ -14,7 +14,13 @@ void main(List<String> args) {
   print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
   print('construct api');
 
+  // essential initialization
   final dylib = loadLibForDart(dylibPath);
+
+  final api1 = ApiBlock1ClassImpl(dylib);
+  final api2 = ApiBlock2ClassImpl(dylib);
+  final api3 = ApiBlock3ClassImpl(dylib);
+  final apiShared = BridgeGeneratedSharesImpl(dylib);
 
   final enumList = [
     EnumType.enums(Weekdays.Friday),
@@ -25,10 +31,27 @@ void main(List<String> args) {
     EnumType.buffer(Float32List.fromList([1.1, 2.2])),
     EnumType.bytesArray(U8Array3(Uint8List.fromList([1, 2, 3])))
   ];
+  //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓test type method↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+  test('dart test (static) methods of a no-shared type', () async {
+    var obj = StructOnlyForBlock1(bridge: api1, name: "newString", id: 2, num: 2.0);
+    expect("msg_1", await obj.testMethod(message: "msg", num: 1));
+
+    expect("msg", await StructOnlyForBlock1.testStaticMethod(bridge: api1, message: "msg"));
+  });
+
+  test('dart test (static) methods of a shared type', () async {
+    var obj = SharedStructInAllBlocks(
+      bridge: apiShared,
+      id: 0,
+      num: 3,
+      name: "name",
+    );
+    expect("msg_2", await obj.testMethod(message: "msg", num: 2));
+    expect("msg", await SharedStructOnlyForSyncTest.testStaticMethod(bridge: apiShared, message: "msg"));
+  });
+  //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑test type method↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
   //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓test api block 1↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-  final api1 = ApiBlock1ClassImpl(dylib);
-
   test('dart call testInbuiltTypeInBlock1', () async {
     expect(await api1.testInbuiltTypeInBlock1(a: 42, b: 100.0), 142.0);
   });
@@ -56,7 +79,7 @@ void main(List<String> args) {
   test('dart call testSharedStructOnlyForSyncWithSyncReturnInBlock1', () async {
     final name = "name";
     final score = 1.1;
-    var expected = SharedStructOnlyForSyncTest(name: "name", score: score);
+    var expected = SharedStructOnlyForSyncTest(bridge: apiShared, name: "name", score: score);
     var actual = api1.testSharedStructOnlyForSyncWithSyncReturnInBlock1(name: name, score: score);
     expect(expected.name, actual.name);
     expect(expected.score, actual.score);
@@ -64,6 +87,7 @@ void main(List<String> args) {
 
   test('dart call testAllSharedStructInBlock1', () async {
     var expected = SharedStructInAllBlocks(
+      bridge: apiShared,
       name: "newString",
       id: 2,
       num: 2.2,
@@ -71,6 +95,7 @@ void main(List<String> args) {
     );
     var actual = await api1.testAllSharedStructInBlock1(
         custom: SharedStructInAllBlocks(
+          bridge: apiShared,
           name: "string",
           id: 1,
           num: 2.2,
@@ -86,9 +111,9 @@ void main(List<String> args) {
   });
 
   test('dart call testSharedStructInBlock1For1And2', () async {
-    var expected = SharedStructInBlock1And2(name: "newString", id: 2, num: 2.2);
+    var expected = SharedStructInBlock1And2(bridge: apiShared, name: "newString", id: 2, num: 2.2);
     var actual = await api1.testSharedStructInBlock1For1And2(
-        custom: SharedStructInBlock1And2(name: "string", id: 1, num: 2.2), s: "newString", i: 2);
+        custom: SharedStructInBlock1And2(bridge: apiShared, name: "string", id: 1, num: 2.2), s: "newString", i: 2);
     expect(expected.name, actual.name);
     expect(expected.id, actual.id);
     expect(expected.num, actual.num);
@@ -97,16 +122,16 @@ void main(List<String> args) {
   test('dart call testCrossSharedStructInBlock1For1And2', () async {
     expect(
       await api1.testCrossSharedStructInBlock1For1And2(
-        custom: CrossSharedStructInBlock1And2(name: "string1"),
+        custom: CrossSharedStructInBlock1And2(bridge: apiShared, name: "string1"),
       ),
       "string1",
     );
   });
 
   test('dart call testUniqueStruct1', () async {
-    var expected = StructOnlyForBlock1(name: "newString", id: 2, num: 2.0);
+    var expected = StructOnlyForBlock1(bridge: api1, name: "newString", id: 2, num: 2.0);
     var actual = await api1.testUniqueStruct1(
-        custom: StructOnlyForBlock1(name: "string", id: 1, num: 2.2), s: "newString", i: 2);
+        custom: StructOnlyForBlock1(bridge: api1, name: "string", id: 1, num: 2.2), s: "newString", i: 2);
     expect(expected.name, actual.name);
     expect(expected.id, actual.id);
     expect(expected.num, actual.num);
@@ -123,7 +148,6 @@ void main(List<String> args) {
   //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑test api block 1↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
   //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓test api block 2↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-  final api2 = ApiBlock2ClassImpl(dylib);
 
   test('dart call testInbuiltTypeInBlock2', () async {
     expect(await api2.testInbuiltTypeInBlock2(a: 42, b: 100.0), 142.0);
@@ -134,9 +158,11 @@ void main(List<String> args) {
   });
 
   test('dart call testAllSharedStructInBlock2', () async {
-    var expected = SharedStructInAllBlocks(name: "newString", id: 2, num: 2.2, enumList: enumList);
+    var expected = SharedStructInAllBlocks(bridge: apiShared, name: "newString", id: 2, num: 2.2, enumList: enumList);
     var actual = await api2.testAllSharedStructInBlock2(
-        custom: SharedStructInAllBlocks(name: "string", id: 1, num: 2.2, enumList: enumList), s: "newString", i: 2);
+        custom: SharedStructInAllBlocks(bridge: apiShared, name: "string", id: 1, num: 2.2, enumList: enumList),
+        s: "newString",
+        i: 2);
     expect(expected.name, actual.name);
     expect(expected.id, actual.id);
     expect(expected.num, actual.num);
@@ -144,9 +170,11 @@ void main(List<String> args) {
   });
 
   test('dart call testAllSharedStructInSyncInBlock2', () async {
-    var expected = SharedStructInAllBlocks(name: "newString", id: 2, num: 2.2, enumList: enumList);
+    var expected = SharedStructInAllBlocks(bridge: apiShared, name: "newString", id: 2, num: 2.2, enumList: enumList);
     var actual = api2.testAllSharedStructInSyncInBlock2(
-        custom: SharedStructInAllBlocks(name: "string", id: 1, num: 2.2, enumList: enumList), s: "newString", i: 2);
+        custom: SharedStructInAllBlocks(bridge: apiShared, name: "string", id: 1, num: 2.2, enumList: enumList),
+        s: "newString",
+        i: 2);
     expect(expected.name, actual.name);
     expect(expected.id, actual.id);
     expect(expected.num, actual.num);
@@ -154,16 +182,16 @@ void main(List<String> args) {
   });
 
   test('dart call testSharedStructInBlock2For1And2', () async {
-    var expected = SharedStructInBlock1And2(name: "newString", id: 2, num: 2.2);
+    var expected = SharedStructInBlock1And2(bridge: apiShared, name: "newString", id: 2, num: 2.2);
     var actual = await api2.testSharedStructInBlock2For1And2(
-        custom: SharedStructInBlock1And2(name: "string", id: 1, num: 2.2), s: "newString", i: 2);
+        custom: SharedStructInBlock1And2(bridge: apiShared, name: "string", id: 1, num: 2.2), s: "newString", i: 2);
     expect(expected.name, actual.name);
     expect(expected.id, actual.id);
     expect(expected.num, actual.num);
   });
 
   test('dart call testCrossSharedStructInBlock2For1And2', () async {
-    var expected = CrossSharedStructInBlock2And3(name: "string");
+    var expected = CrossSharedStructInBlock2And3(bridge: apiShared, name: "string");
     var actual = await api2.testCrossSharedStructInBlock2For1And2(
       name: "string",
     );
@@ -171,9 +199,9 @@ void main(List<String> args) {
   });
 
   test('dart call testSharedStructInBlock2For2And3', () async {
-    var expected = SharedStructInBlock2And3(name: "newString", id: 2, num: 2.2);
+    var expected = SharedStructInBlock2And3(bridge: apiShared, name: "newString", id: 2, num: 2.2);
     var actual = await api2.testSharedStructInBlock2For2And3(
-        custom: SharedStructInBlock2And3(name: "string", id: 1, num: 2.2), s: "newString", i: 2);
+        custom: SharedStructInBlock2And3(bridge: apiShared, name: "string", id: 1, num: 2.2), s: "newString", i: 2);
     expect(expected.name, actual.name);
     expect(expected.id, actual.id);
     expect(expected.num, actual.num);
@@ -182,16 +210,16 @@ void main(List<String> args) {
   test('dart call testCrossSharedStructInBlock2For2And3', () async {
     expect(
       await api2.testCrossSharedStructInBlock2For2And3(
-        custom: CrossSharedStructInBlock2And3(name: "stringTest"),
+        custom: CrossSharedStructInBlock2And3(bridge: apiShared, name: "stringTest"),
       ),
       "stringTest",
     );
   });
 
   test('dart call testUniqueStruct2', () async {
-    var expected = StructOnlyForBlock2(name: "newString", id: 2, num: 2.2);
+    var expected = StructOnlyForBlock2(bridge: api2, name: "newString", id: 2, num: 2.2);
     var actual = await api2.testUniqueStruct2(
-        custom: StructOnlyForBlock2(name: "string", id: 1, num: 2.2), s: "newString", i: 2);
+        custom: StructOnlyForBlock2(bridge: api2, name: "string", id: 1, num: 2.2), s: "newString", i: 2);
     expect(expected.name, actual.name);
     expect(expected.id, actual.id);
     expect(expected.num, actual.num);
@@ -208,8 +236,6 @@ void main(List<String> args) {
   //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑test api block 2↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
   //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓test api block 3↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-  final api3 = ApiBlock3ClassImpl(dylib);
-
   test('dart call testInbuiltTypeInBlock3', () async {
     expect(await api3.testInbuiltTypeInBlock3(a: 42, b: 100.0), 142.0);
   });
@@ -221,7 +247,7 @@ void main(List<String> args) {
   test('dart call testSharedStructOnlyForSyncWithNoSyncReturnInBlock3', () async {
     final name = "name";
     final score = 1.1;
-    var expected = SharedStructOnlyForSyncTest(name: name, score: score);
+    var expected = SharedStructOnlyForSyncTest(bridge: apiShared, name: name, score: score);
     var actual = await api3.testSharedStructOnlyForSyncWithNoSyncReturnInBlock3(name: name, score: score);
     expect(expected.name, actual.name);
     expect(expected.score, actual.score);
@@ -229,6 +255,7 @@ void main(List<String> args) {
 
   test('dart call testSharedStructOnlyForSyncAsInputWithNoSyncReturnInBlock3', () async {
     final inputObj = SharedStructOnlyForSyncTest(
+      bridge: apiShared,
       name: "name",
       score: 0.0,
     );
@@ -237,16 +264,18 @@ void main(List<String> args) {
       obj: inputObj,
       defaultScore: inputDefaultScore,
     );
-    var expected = SharedStructOnlyForSyncTest(name: "name", score: inputDefaultScore);
+    var expected = SharedStructOnlyForSyncTest(bridge: apiShared, name: "name", score: inputDefaultScore);
     expect(actual.name, expected.name);
     expect(actual.score, expected.score);
   });
 
   test('dart call testAllSharedStructInBlock3', () async {
     {
-      var expected = SharedStructInAllBlocks(name: "newString", id: 2, num: 2.2);
+      var expected = SharedStructInAllBlocks(bridge: apiShared, name: "newString", id: 2, num: 2.2);
       var actual = await api3.testAllSharedStructInBlock3(
-          custom: SharedStructInAllBlocks(name: "string", id: 1, num: 2.2, enumList: null), s: "newString", i: 2);
+          custom: SharedStructInAllBlocks(bridge: apiShared, name: "string", id: 1, num: 2.2, enumList: null),
+          s: "newString",
+          i: 2);
       expect(expected.name, actual!.name);
       expect(expected.id, actual.id);
       expect(expected.num, actual.num);
@@ -259,16 +288,16 @@ void main(List<String> args) {
   });
 
   test('dart call testSharedStructInBlock3For2And3', () async {
-    var expected = SharedStructInBlock2And3(name: "newString", id: 2, num: 2.2);
+    var expected = SharedStructInBlock2And3(bridge: apiShared, name: "newString", id: 2, num: 2.2);
     var actual = await api3.testSharedStructInBlock3For2And3(
-        custom: SharedStructInBlock2And3(name: "string", id: 1, num: 2.2), s: "newString", i: 2);
+        custom: SharedStructInBlock2And3(bridge: apiShared, name: "string", id: 1, num: 2.2), s: "newString", i: 2);
     expect(expected.name, actual.name);
     expect(expected.id, actual.id);
     expect(expected.num, actual.num);
   });
 
   test('dart call testCrossSharedStructInBlock3For2And3', () async {
-    var expected = CrossSharedStructInBlock2And3(name: "string3");
+    var expected = CrossSharedStructInBlock2And3(bridge: apiShared, name: "string3");
     var actual = await api3.testCrossSharedStructInBlock3For2And3(
       name: "string3",
     );
@@ -276,7 +305,7 @@ void main(List<String> args) {
   });
 
   test('dart call testCrossSharedStructInSyncInBlock3For2And3', () async {
-    var actual = CrossSharedStructInBlock2And3(name: "string3");
+    var actual = CrossSharedStructInBlock2And3(bridge: apiShared, name: "string3");
     var expected = api3.testCrossSharedStructInSyncInBlock3For2And3(
       name: "string3",
     );
@@ -288,8 +317,8 @@ void main(List<String> args) {
 
   test('dart call testUniqueStruct3', () async {
     var actual = await api3.testUniqueStruct3(
-        custom: StructOnlyForBlock3(name: "string", id: 1, num: 2.2), s: "newString", i: 2);
-    var expected = StructOnlyForBlock3(name: "newString", id: 2, num: 2.2);
+        custom: StructOnlyForBlock3(bridge: api3, name: "string", id: 1, num: 2.2), s: "newString", i: 2);
+    var expected = StructOnlyForBlock3(bridge: api3, name: "newString", id: 2, num: 2.2);
     expect(expected.name, actual.name);
     expect(expected.id, actual.id);
     expect(expected.num, actual.num);
