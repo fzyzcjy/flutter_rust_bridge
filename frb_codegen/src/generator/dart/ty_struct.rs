@@ -39,21 +39,12 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             s.fields
                 .iter()
                 .map(|field| {
-                    if field.ty.is_struct() {
-                        format!(
-                            "_api_fill_to_wire_{}(apiObj.{}, wireObj.{});",
-                            field.ty.safe_ident(),
-                            field.name.dart_style(),
-                            field.name.rust_style(),
-                        )
-                    } else {
-                        format!(
-                            "wireObj.{} = api2wire_{}(apiObj.{});",
-                            field.name.rust_style(),
-                            field.ty.safe_ident(),
-                            field.name.dart_style()
-                        )
-                    }
+                    api_fill_for_field(
+                        &field.ty.safe_ident(),
+                        &field.name.dart_style(),
+                        field.name.rust_style(),
+                        field.ty.is_struct(),
+                    )
                 })
                 .collect::<Vec<_>>()
                 .join("\n"),
@@ -257,6 +248,26 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 const = const_capable
             )
         }
+    }
+}
+
+#[inline]
+pub(crate) fn api_fill_for_field(
+    safe_ident: &str,
+    dart_style: &str,
+    rust_style: &str,
+    is_struct: bool,
+) -> String {
+    if is_struct {
+        format!(
+            "_api_fill_to_wire_{}(apiObj.{}, wireObj.{});",
+            safe_ident, dart_style, rust_style
+        )
+    } else {
+        format!(
+            "wireObj.{} = api2wire_{}(apiObj.{});",
+            rust_style, safe_ident, dart_style
+        )
     }
 }
 

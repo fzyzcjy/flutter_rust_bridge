@@ -28,21 +28,12 @@ impl TypeDartGeneratorTrait for TypeRecordGenerator<'_> {
             .iter()
             .enumerate()
             .map(|(idx, field)| {
-                if field.ty.is_struct() {
-                    format!(
-                        "_api_fill_to_wire_{}(apiObj.${}, wireObj.{});",
-                        field.ty.safe_ident(),
-                        idx + 1,
-                        field.name.rust_style(),
-                    )
-                } else {
-                    format!(
-                        "wireObj.{} = api2wire_{}(apiObj.${});",
-                        field.name.rust_style(),
-                        field.ty.safe_ident(),
-                        idx + 1
-                    )
-                }
+                super::ty_struct::api_fill_for_field(
+                    &field.ty.safe_ident(),
+                    &format!("${}", idx + 1),
+                    field.name.rust_style(),
+                    field.ty.is_struct(),
+                )
             })
             .collect::<Vec<_>>()
             .join("\n");
