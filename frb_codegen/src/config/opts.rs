@@ -124,8 +124,8 @@ impl Opts {
             log::debug!("my struct pool are:{:?}", ir_file.struct_pool); //TODO: delete
             log::debug!("my enum pool are:{:?}", ir_file.enum_pool); //TODO: delete
 
-            // define type_pool_map from `struct_pool` and `enum_pool`
-            let mut type_pool_map = HashMap::new();
+            // define type_pool_map from `struct_pool` and `enum_pool` in an ordered map
+            let mut type_pool_map = std::collections::BTreeMap::new();
             for value in ir_file.struct_pool.values() {
                 let struct_paths = value.path.clone().unwrap();
                 let raw_code_path =

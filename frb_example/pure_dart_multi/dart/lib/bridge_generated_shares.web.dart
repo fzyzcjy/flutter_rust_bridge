@@ -191,6 +191,12 @@ external BridgeGeneratedSharesWasmModule get wasmModule;
 class BridgeGeneratedSharesWasmModule implements WasmModule {
   external Object /* Promise */ call([String? moduleName]);
   external BridgeGeneratedSharesWasmModule bind(dynamic thisArg, String moduleName);
+  external dynamic /* void */ wire_test_method__method__CrossSharedStructInBlock1And2(
+      NativePortType port_, List<dynamic> that, String message);
+
+  external dynamic /* void */ wire_test_static_method__static_method__CrossSharedStructInBlock1And2(
+      NativePortType port_, String message);
+
   external dynamic /* void */ wire_test_method__method__SharedStructInAllBlocks(
       NativePortType port_, List<dynamic> that, String message, int num);
 
@@ -208,10 +214,10 @@ class BridgeGeneratedSharesWasmModule implements WasmModule {
   external dynamic /* void */ wire_test_static_enum_method__static_method__Weekdays(
       NativePortType port_, String message);
 
-  external dynamic /* void */ wire_test_method__method__CrossSharedStructInBlock1And2(
+  external dynamic /* void */ wire_test_method__method__CrossSharedStructInBlock2And3(
       NativePortType port_, List<dynamic> that, String message);
 
-  external dynamic /* void */ wire_test_static_method__static_method__CrossSharedStructInBlock1And2(
+  external dynamic /* void */ wire_test_static_method__static_method__CrossSharedStructInBlock2And3(
       NativePortType port_, String message);
 
   external dynamic /* void */ wire_test_method__method__SharedStructInBlock2And3(
@@ -225,12 +231,6 @@ class BridgeGeneratedSharesWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_test_static_method__static_method__SharedStructOnlyForSyncTest(
       NativePortType port_, String message);
-
-  external dynamic /* void */ wire_test_method__method__CrossSharedStructInBlock2And3(
-      NativePortType port_, List<dynamic> that, String message);
-
-  external dynamic /* void */ wire_test_static_method__static_method__CrossSharedStructInBlock2And3(
-      NativePortType port_, String message);
 }
 
 // Section: WASM wire connector
@@ -238,6 +238,13 @@ class BridgeGeneratedSharesWasmModule implements WasmModule {
 class BridgeGeneratedSharesWire extends FlutterRustBridgeWasmWireBase<BridgeGeneratedSharesWasmModule> {
   BridgeGeneratedSharesWire(FutureOr<WasmModule> module)
       : super(WasmModule.cast<BridgeGeneratedSharesWasmModule>(module));
+
+  void wire_test_method__method__CrossSharedStructInBlock1And2(
+          NativePortType port_, List<dynamic> that, String message) =>
+      wasmModule.wire_test_method__method__CrossSharedStructInBlock1And2(port_, that, message);
+
+  void wire_test_static_method__static_method__CrossSharedStructInBlock1And2(NativePortType port_, String message) =>
+      wasmModule.wire_test_static_method__static_method__CrossSharedStructInBlock1And2(port_, message);
 
   void wire_test_method__method__SharedStructInAllBlocks(
           NativePortType port_, List<dynamic> that, String message, int num) =>
@@ -258,12 +265,12 @@ class BridgeGeneratedSharesWire extends FlutterRustBridgeWasmWireBase<BridgeGene
   void wire_test_static_enum_method__static_method__Weekdays(NativePortType port_, String message) =>
       wasmModule.wire_test_static_enum_method__static_method__Weekdays(port_, message);
 
-  void wire_test_method__method__CrossSharedStructInBlock1And2(
+  void wire_test_method__method__CrossSharedStructInBlock2And3(
           NativePortType port_, List<dynamic> that, String message) =>
-      wasmModule.wire_test_method__method__CrossSharedStructInBlock1And2(port_, that, message);
+      wasmModule.wire_test_method__method__CrossSharedStructInBlock2And3(port_, that, message);
 
-  void wire_test_static_method__static_method__CrossSharedStructInBlock1And2(NativePortType port_, String message) =>
-      wasmModule.wire_test_static_method__static_method__CrossSharedStructInBlock1And2(port_, message);
+  void wire_test_static_method__static_method__CrossSharedStructInBlock2And3(NativePortType port_, String message) =>
+      wasmModule.wire_test_static_method__static_method__CrossSharedStructInBlock2And3(port_, message);
 
   void wire_test_method__method__SharedStructInBlock2And3(NativePortType port_, List<dynamic> that, String message) =>
       wasmModule.wire_test_method__method__SharedStructInBlock2And3(port_, that, message);
@@ -277,11 +284,4 @@ class BridgeGeneratedSharesWire extends FlutterRustBridgeWasmWireBase<BridgeGene
 
   void wire_test_static_method__static_method__SharedStructOnlyForSyncTest(NativePortType port_, String message) =>
       wasmModule.wire_test_static_method__static_method__SharedStructOnlyForSyncTest(port_, message);
-
-  void wire_test_method__method__CrossSharedStructInBlock2And3(
-          NativePortType port_, List<dynamic> that, String message) =>
-      wasmModule.wire_test_method__method__CrossSharedStructInBlock2And3(port_, that, message);
-
-  void wire_test_static_method__static_method__CrossSharedStructInBlock2And3(NativePortType port_, String message) =>
-      wasmModule.wire_test_static_method__static_method__CrossSharedStructInBlock2And3(port_, message);
 }
