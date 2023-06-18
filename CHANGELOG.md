@@ -1,3 +1,7 @@
+## 1.78.0
+
+* Translate tuples to records and enums to sealed classes #1238 (thanks @Desdaemon)
+
 ## 1.77.1
 
 * Fix on zero-copy cargo feature #1229 (thanks @temeddix)
