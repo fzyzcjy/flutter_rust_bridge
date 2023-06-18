@@ -107,16 +107,10 @@ class ApiBlock1ClassWasmModule implements WasmModule {
   external dynamic /* void */ wire_test_static_method__static_method__StructDefinedInBlock1(
       NativePortType port_, String message);
 
-  external dynamic /* void */ wire_test_method__method__SharedStructInAllBlocks(
-      NativePortType port_, List<dynamic> that, String message, int num);
+  external dynamic /* void */ wire_test_method__method__SharedStructInBlock1And2(
+      NativePortType port_, List<dynamic> that, String message);
 
-  external dynamic /* void */ wire_test_static_method__static_method__SharedStructInAllBlocks(
-      NativePortType port_, String message);
-
-  external dynamic /* void */ wire_test_method__method__StructOnlyForBlock1(
-      NativePortType port_, List<dynamic> that, String message, int num);
-
-  external dynamic /* void */ wire_test_static_method__static_method__StructOnlyForBlock1(
+  external dynamic /* void */ wire_test_static_method__static_method__SharedStructInBlock1And2(
       NativePortType port_, String message);
 
   external dynamic /* void */ wire_test_method__method__CrossSharedStructInBlock1And2(
@@ -125,16 +119,27 @@ class ApiBlock1ClassWasmModule implements WasmModule {
   external dynamic /* void */ wire_test_static_method__static_method__CrossSharedStructInBlock1And2(
       NativePortType port_, String message);
 
+  external dynamic /* void */ wire_test_enum_method__method__Weekdays(NativePortType port_, int that, String message);
+
+  external dynamic /* void */ wire_test_static_enum_method__static_method__Weekdays(
+      NativePortType port_, String message);
+
+  external dynamic /* void */ wire_test_method__method__SharedStructInAllBlocks(
+      NativePortType port_, List<dynamic> that, String message, int num);
+
+  external dynamic /* void */ wire_test_static_method__static_method__SharedStructInAllBlocks(
+      NativePortType port_, String message);
+
   external dynamic /* void */ wire_test_method__method__SharedStructOnlyForSyncTest(
       NativePortType port_, List<dynamic> that, String message);
 
   external dynamic /* void */ wire_test_static_method__static_method__SharedStructOnlyForSyncTest(
       NativePortType port_, String message);
 
-  external dynamic /* void */ wire_test_method__method__SharedStructInBlock1And2(
-      NativePortType port_, List<dynamic> that, String message);
+  external dynamic /* void */ wire_test_method__method__StructOnlyForBlock1(
+      NativePortType port_, List<dynamic> that, String message, int num);
 
-  external dynamic /* void */ wire_test_static_method__static_method__SharedStructInBlock1And2(
+  external dynamic /* void */ wire_test_static_method__static_method__StructOnlyForBlock1(
       NativePortType port_, String message);
 }
 
@@ -183,19 +188,11 @@ class ApiBlock1ClassWire extends FlutterRustBridgeWasmWireBase<ApiBlock1ClassWas
   void wire_test_static_method__static_method__StructDefinedInBlock1(NativePortType port_, String message) =>
       wasmModule.wire_test_static_method__static_method__StructDefinedInBlock1(port_, message);
 
-  void wire_test_method__method__SharedStructInAllBlocks(
-          NativePortType port_, List<dynamic> that, String message, int num) =>
-      wasmModule.wire_test_method__method__SharedStructInAllBlocks(port_, that, message, num);
+  void wire_test_method__method__SharedStructInBlock1And2(NativePortType port_, List<dynamic> that, String message) =>
+      wasmModule.wire_test_method__method__SharedStructInBlock1And2(port_, that, message);
 
-  void wire_test_static_method__static_method__SharedStructInAllBlocks(NativePortType port_, String message) =>
-      wasmModule.wire_test_static_method__static_method__SharedStructInAllBlocks(port_, message);
-
-  void wire_test_method__method__StructOnlyForBlock1(
-          NativePortType port_, List<dynamic> that, String message, int num) =>
-      wasmModule.wire_test_method__method__StructOnlyForBlock1(port_, that, message, num);
-
-  void wire_test_static_method__static_method__StructOnlyForBlock1(NativePortType port_, String message) =>
-      wasmModule.wire_test_static_method__static_method__StructOnlyForBlock1(port_, message);
+  void wire_test_static_method__static_method__SharedStructInBlock1And2(NativePortType port_, String message) =>
+      wasmModule.wire_test_static_method__static_method__SharedStructInBlock1And2(port_, message);
 
   void wire_test_method__method__CrossSharedStructInBlock1And2(
           NativePortType port_, List<dynamic> that, String message) =>
@@ -204,6 +201,19 @@ class ApiBlock1ClassWire extends FlutterRustBridgeWasmWireBase<ApiBlock1ClassWas
   void wire_test_static_method__static_method__CrossSharedStructInBlock1And2(NativePortType port_, String message) =>
       wasmModule.wire_test_static_method__static_method__CrossSharedStructInBlock1And2(port_, message);
 
+  void wire_test_enum_method__method__Weekdays(NativePortType port_, int that, String message) =>
+      wasmModule.wire_test_enum_method__method__Weekdays(port_, that, message);
+
+  void wire_test_static_enum_method__static_method__Weekdays(NativePortType port_, String message) =>
+      wasmModule.wire_test_static_enum_method__static_method__Weekdays(port_, message);
+
+  void wire_test_method__method__SharedStructInAllBlocks(
+          NativePortType port_, List<dynamic> that, String message, int num) =>
+      wasmModule.wire_test_method__method__SharedStructInAllBlocks(port_, that, message, num);
+
+  void wire_test_static_method__static_method__SharedStructInAllBlocks(NativePortType port_, String message) =>
+      wasmModule.wire_test_static_method__static_method__SharedStructInAllBlocks(port_, message);
+
   void wire_test_method__method__SharedStructOnlyForSyncTest(
           NativePortType port_, List<dynamic> that, String message) =>
       wasmModule.wire_test_method__method__SharedStructOnlyForSyncTest(port_, that, message);
@@ -211,9 +221,10 @@ class ApiBlock1ClassWire extends FlutterRustBridgeWasmWireBase<ApiBlock1ClassWas
   void wire_test_static_method__static_method__SharedStructOnlyForSyncTest(NativePortType port_, String message) =>
       wasmModule.wire_test_static_method__static_method__SharedStructOnlyForSyncTest(port_, message);
 
-  void wire_test_method__method__SharedStructInBlock1And2(NativePortType port_, List<dynamic> that, String message) =>
-      wasmModule.wire_test_method__method__SharedStructInBlock1And2(port_, that, message);
+  void wire_test_method__method__StructOnlyForBlock1(
+          NativePortType port_, List<dynamic> that, String message, int num) =>
+      wasmModule.wire_test_method__method__StructOnlyForBlock1(port_, that, message, num);
 
-  void wire_test_static_method__static_method__SharedStructInBlock1And2(NativePortType port_, String message) =>
-      wasmModule.wire_test_static_method__static_method__SharedStructInBlock1And2(port_, message);
+  void wire_test_static_method__static_method__StructOnlyForBlock1(NativePortType port_, String message) =>
+      wasmModule.wire_test_static_method__static_method__StructOnlyForBlock1(port_, message);
 }

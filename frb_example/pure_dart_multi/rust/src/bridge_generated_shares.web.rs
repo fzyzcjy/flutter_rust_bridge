@@ -2,20 +2,30 @@ use super::*;
 // Section: wire functions
 
 #[wasm_bindgen]
-pub fn wire_test_method__method__SharedStructInBlock1And2(
+pub fn wire_test_enum_method__method__Weekdays(port_: MessagePort, that: i32, message: String) {
+    wire_test_enum_method__method__Weekdays_impl(port_, that, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_static_enum_method__static_method__Weekdays(port_: MessagePort, message: String) {
+    wire_test_static_enum_method__static_method__Weekdays_impl(port_, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_method__method__CrossSharedStructInBlock1And2(
     port_: MessagePort,
     that: JsValue,
     message: String,
 ) {
-    wire_test_method__method__SharedStructInBlock1And2_impl(port_, that, message)
+    wire_test_method__method__CrossSharedStructInBlock1And2_impl(port_, that, message)
 }
 
 #[wasm_bindgen]
-pub fn wire_test_static_method__static_method__SharedStructInBlock1And2(
+pub fn wire_test_static_method__static_method__CrossSharedStructInBlock1And2(
     port_: MessagePort,
     message: String,
 ) {
-    wire_test_static_method__static_method__SharedStructInBlock1And2_impl(port_, message)
+    wire_test_static_method__static_method__CrossSharedStructInBlock1And2_impl(port_, message)
 }
 
 #[wasm_bindgen]
@@ -37,37 +47,20 @@ pub fn wire_test_static_method__static_method__SharedStructInAllBlocks(
 }
 
 #[wasm_bindgen]
-pub fn wire_test_method__method__CrossSharedStructInBlock1And2(
+pub fn wire_test_method__method__SharedStructInBlock1And2(
     port_: MessagePort,
     that: JsValue,
     message: String,
 ) {
-    wire_test_method__method__CrossSharedStructInBlock1And2_impl(port_, that, message)
+    wire_test_method__method__SharedStructInBlock1And2_impl(port_, that, message)
 }
 
 #[wasm_bindgen]
-pub fn wire_test_static_method__static_method__CrossSharedStructInBlock1And2(
+pub fn wire_test_static_method__static_method__SharedStructInBlock1And2(
     port_: MessagePort,
     message: String,
 ) {
-    wire_test_static_method__static_method__CrossSharedStructInBlock1And2_impl(port_, message)
-}
-
-#[wasm_bindgen]
-pub fn wire_test_method__method__SharedStructInBlock2And3(
-    port_: MessagePort,
-    that: JsValue,
-    message: String,
-) {
-    wire_test_method__method__SharedStructInBlock2And3_impl(port_, that, message)
-}
-
-#[wasm_bindgen]
-pub fn wire_test_static_method__static_method__SharedStructInBlock2And3(
-    port_: MessagePort,
-    message: String,
-) {
-    wire_test_static_method__static_method__SharedStructInBlock2And3_impl(port_, message)
+    wire_test_static_method__static_method__SharedStructInBlock1And2_impl(port_, message)
 }
 
 #[wasm_bindgen]
@@ -85,6 +78,23 @@ pub fn wire_test_static_method__static_method__SharedStructOnlyForSyncTest(
     message: String,
 ) {
     wire_test_static_method__static_method__SharedStructOnlyForSyncTest_impl(port_, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_method__method__SharedStructInBlock2And3(
+    port_: MessagePort,
+    that: JsValue,
+    message: String,
+) {
+    wire_test_method__method__SharedStructInBlock2And3_impl(port_, that, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_static_method__static_method__SharedStructInBlock2And3(
+    port_: MessagePort,
+    message: String,
+) {
+    wire_test_static_method__static_method__SharedStructInBlock2And3_impl(port_, message)
 }
 
 #[wasm_bindgen]

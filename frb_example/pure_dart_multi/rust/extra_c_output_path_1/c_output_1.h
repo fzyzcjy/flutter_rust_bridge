@@ -10,6 +10,12 @@ typedef struct wire_uint_8_list {
   int32_t len;
 } wire_uint_8_list;
 
+typedef struct wire_SharedStructInBlock1And2 {
+  int32_t id;
+  double num;
+  struct wire_uint_8_list *name;
+} wire_SharedStructInBlock1And2;
+
 typedef struct wire_EnumType_Empty {
 
 } wire_EnumType_Empty;
@@ -77,11 +83,9 @@ typedef struct wire_CrossSharedStructInBlock1And2 {
   struct wire_uint_8_list *name;
 } wire_CrossSharedStructInBlock1And2;
 
-typedef struct wire_SharedStructInBlock1And2 {
-  int32_t id;
-  double num;
+typedef struct wire_CrossSharedStructInBlock2And3 {
   struct wire_uint_8_list *name;
-} wire_SharedStructInBlock1And2;
+} wire_CrossSharedStructInBlock2And3;
 
 typedef struct wire_SharedStructOnlyForSyncTest {
   struct wire_uint_8_list *name;
@@ -93,10 +97,6 @@ typedef struct wire_SharedStructInBlock2And3 {
   double num;
   struct wire_uint_8_list *name;
 } wire_SharedStructInBlock2And3;
-
-typedef struct wire_CrossSharedStructInBlock2And3 {
-  struct wire_uint_8_list *name;
-} wire_CrossSharedStructInBlock2And3;
 
 typedef struct DartCObject *WireSyncReturn;
 
@@ -126,6 +126,20 @@ typedef struct wire_StructOnlyForBlock3 {
   struct wire_uint_8_list *name;
 } wire_StructOnlyForBlock3;
 
+void wire_test_enum_method__method__Weekdays(int64_t port_,
+                                             int32_t that,
+                                             struct wire_uint_8_list *message);
+
+void wire_test_static_enum_method__static_method__Weekdays(int64_t port_,
+                                                           struct wire_uint_8_list *message);
+
+void wire_test_method__method__SharedStructInBlock1And2(int64_t port_,
+                                                        struct wire_SharedStructInBlock1And2 *that,
+                                                        struct wire_uint_8_list *message);
+
+void wire_test_static_method__static_method__SharedStructInBlock1And2(int64_t port_,
+                                                                      struct wire_uint_8_list *message);
+
 void wire_test_method__method__SharedStructInAllBlocks(int64_t port_,
                                                        struct wire_SharedStructInAllBlocks *that,
                                                        struct wire_uint_8_list *message,
@@ -141,12 +155,12 @@ void wire_test_method__method__CrossSharedStructInBlock1And2(int64_t port_,
 void wire_test_static_method__static_method__CrossSharedStructInBlock1And2(int64_t port_,
                                                                            struct wire_uint_8_list *message);
 
-void wire_test_method__method__SharedStructInBlock1And2(int64_t port_,
-                                                        struct wire_SharedStructInBlock1And2 *that,
-                                                        struct wire_uint_8_list *message);
+void wire_test_method__method__CrossSharedStructInBlock2And3(int64_t port_,
+                                                             struct wire_CrossSharedStructInBlock2And3 *that,
+                                                             struct wire_uint_8_list *message);
 
-void wire_test_static_method__static_method__SharedStructInBlock1And2(int64_t port_,
-                                                                      struct wire_uint_8_list *message);
+void wire_test_static_method__static_method__CrossSharedStructInBlock2And3(int64_t port_,
+                                                                           struct wire_uint_8_list *message);
 
 void wire_test_method__method__SharedStructOnlyForSyncTest(int64_t port_,
                                                            struct wire_SharedStructOnlyForSyncTest *that,
@@ -161,13 +175,6 @@ void wire_test_method__method__SharedStructInBlock2And3(int64_t port_,
 
 void wire_test_static_method__static_method__SharedStructInBlock2And3(int64_t port_,
                                                                       struct wire_uint_8_list *message);
-
-void wire_test_method__method__CrossSharedStructInBlock2And3(int64_t port_,
-                                                             struct wire_CrossSharedStructInBlock2And3 *that,
-                                                             struct wire_uint_8_list *message);
-
-void wire_test_static_method__static_method__CrossSharedStructInBlock2And3(int64_t port_,
-                                                                           struct wire_uint_8_list *message);
 
 int32_t *new_box_autoadd_i32(int32_t value);
 

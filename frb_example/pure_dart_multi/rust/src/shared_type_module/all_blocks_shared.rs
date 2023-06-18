@@ -32,6 +32,17 @@ pub enum Weekdays {
     Sunday,
 }
 
+impl Weekdays {
+    #[allow(unused)]
+    pub fn test_enum_method(&self, message: String) -> String {
+        message
+    }
+    #[allow(unused)]
+    pub fn test_static_enum_method(message: String) -> String {
+        message
+    }
+}
+
 /// This is a struct used in ALL API blocks, NOT defined in any regular block file
 pub struct SharedStructInAllBlocks {
     pub id: i32,

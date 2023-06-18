@@ -23,6 +23,43 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
   factory BridgeGeneratedSharesImpl.wasm(FutureOr<WasmModule> module) =>
       BridgeGeneratedSharesImpl(module as ExternalLibrary);
 
+  Future<String> testMethodMethodSharedStructInAllBlocks(
+      {required SharedStructInAllBlocks that, required String message, required int num, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_shared_struct_in_all_blocks(that);
+    var arg1 = _platform.api2wire_String(message);
+    var arg2 = api2wire_u32(num);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_method__method__SharedStructInAllBlocks(port_, arg0, arg1, arg2),
+      parseSuccessData: wire2api_String,
+      constMeta: kTestMethodMethodSharedStructInAllBlocksConstMeta,
+      argValues: [that, message, num],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructInAllBlocksConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_method__method__SharedStructInAllBlocks",
+        argNames: ["that", "message", "num"],
+      );
+
+  Future<String> testStaticMethodStaticMethodSharedStructInAllBlocks({required String message, dynamic hint}) {
+    var arg0 = _platform.api2wire_String(message);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_static_method__static_method__SharedStructInAllBlocks(port_, arg0),
+      parseSuccessData: wire2api_String,
+      constMeta: kTestStaticMethodStaticMethodSharedStructInAllBlocksConstMeta,
+      argValues: [message],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInAllBlocksConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_static_method__static_method__SharedStructInAllBlocks",
+        argNames: ["message"],
+      );
+
   Future<String> testMethodMethodSharedStructInBlock1And2(
       {required SharedStructInBlock1And2 that, required String message, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_shared_struct_in_block_1_and_2(that);
@@ -59,40 +96,37 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
         argNames: ["message"],
       );
 
-  Future<String> testMethodMethodSharedStructInAllBlocks(
-      {required SharedStructInAllBlocks that, required String message, required int num, dynamic hint}) {
-    var arg0 = _platform.api2wire_box_autoadd_shared_struct_in_all_blocks(that);
+  Future<String> testEnumMethodMethodWeekdays({required Weekdays that, required String message, dynamic hint}) {
+    var arg0 = api2wire_weekdays(that);
     var arg1 = _platform.api2wire_String(message);
-    var arg2 = api2wire_u32(num);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_method__method__SharedStructInAllBlocks(port_, arg0, arg1, arg2),
+      callFfi: (port_) => _platform.inner.wire_test_enum_method__method__Weekdays(port_, arg0, arg1),
       parseSuccessData: wire2api_String,
-      constMeta: kTestMethodMethodSharedStructInAllBlocksConstMeta,
-      argValues: [that, message, num],
+      constMeta: kTestEnumMethodMethodWeekdaysConstMeta,
+      argValues: [that, message],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructInAllBlocksConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_method__method__SharedStructInAllBlocks",
-        argNames: ["that", "message", "num"],
+  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodWeekdaysConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_enum_method__method__Weekdays",
+        argNames: ["that", "message"],
       );
 
-  Future<String> testStaticMethodStaticMethodSharedStructInAllBlocks({required String message, dynamic hint}) {
+  Future<String> testStaticEnumMethodStaticMethodWeekdays({required String message, dynamic hint}) {
     var arg0 = _platform.api2wire_String(message);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_static_method__static_method__SharedStructInAllBlocks(port_, arg0),
+      callFfi: (port_) => _platform.inner.wire_test_static_enum_method__static_method__Weekdays(port_, arg0),
       parseSuccessData: wire2api_String,
-      constMeta: kTestStaticMethodStaticMethodSharedStructInAllBlocksConstMeta,
+      constMeta: kTestStaticEnumMethodStaticMethodWeekdaysConstMeta,
       argValues: [message],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInAllBlocksConstMeta =>
+  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodWeekdaysConstMeta =>
       const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_static_method__static_method__SharedStructInAllBlocks",
+        debugName: "test_static_enum_method__static_method__Weekdays",
         argNames: ["message"],
       );
 

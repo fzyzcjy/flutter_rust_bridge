@@ -113,7 +113,6 @@ impl Opts {
             return Ok(ir_file);
         }
 
-        // TODO： if those shared global
         log::debug!("before fetch_shared_types_if_needed"); //TODO: delete
         ir_file.fetch_shared_types_if_needed(all_configs);
         log::debug!("after fetch_shared_types_if_needed"); //TODO: delete
@@ -122,83 +121,95 @@ impl Opts {
         EXTRA_FUNC_MAP.with(|data| {
             let mut extra_func_map = data.borrow_mut();
 
-            // TODO: what about enum pool
             log::debug!("my struct pool are:{:?}", ir_file.struct_pool); //TODO: delete
+            log::debug!("my enum pool are:{:?}", ir_file.enum_pool); //TODO: delete
 
+            // define type_pool_map from `struct_pool` and `enum_pool`
+            let mut type_pool_map = HashMap::new();
             for value in ir_file.struct_pool.values() {
-                if let Some(struct_paths) = &value.path {
-                    let raw_code_path =
-                        format!("{}.rs", struct_paths[..struct_paths.len() - 1].join("/"));
-                    let type_name = struct_paths.last().unwrap();
+                let struct_paths = value.path.clone().unwrap();
+                let raw_code_path =
+                    format!("{}.rs", struct_paths[..struct_paths.len() - 1].join("/"));
+                let type_name = struct_paths.last().unwrap();
+                type_pool_map.insert(type_name.to_string(), raw_code_path.clone());
+            }
+            for value in ir_file.enum_pool.values() {
+                let struct_paths = value.path.clone();
+                let raw_code_path =
+                    format!("{}.rs", struct_paths[..struct_paths.len() - 1].join("/"));
+                let type_name: &String = struct_paths.last().unwrap();
+                type_pool_map.insert(type_name.to_string(), raw_code_path.clone());
+            }
 
-                    log::debug!("the code_path:{raw_code_path}"); //TODO: delete
-                    log::debug!("the type_name:{type_name}"); //TODO: delete
+            // add extra methods
+            for (type_name, raw_code_path) in type_pool_map {
+                log::debug!("the code_path:{raw_code_path}"); //TODO: delete
+                log::debug!("the type_name:{type_name}"); //TODO: delete
 
-                    let extra_path_funcs = if let std::collections::hash_map::Entry::Vacant(e) =
-                        extra_func_map.entry(raw_code_path.clone())
-                    {
-                        assert!(raw_code_path.contains("crate/"));
-                        let correct_prefix = self.manifest_path.replace("Cargo.toml", "src/");
-                        let code_path = raw_code_path.replace("crate/", &correct_prefix);
-                        log::debug!("the refined code_path:{code_path}"); //TODO: delete140 +
-                        let extra_source_rust_content = try_read_from_file(
-                            &code_path,
-                            &format!("Failed to read extra rust module file \"{}\"", code_path),
-                        )
-                        .unwrap();
+                let extra_path_funcs = if let std::collections::hash_map::Entry::Vacant(e) =
+                    extra_func_map.entry(raw_code_path.clone())
+                {
+                    assert!(raw_code_path.contains("crate/"));
+                    let correct_prefix = self.manifest_path.replace("Cargo.toml", "src/");
+                    let code_path = raw_code_path.replace("crate/", &correct_prefix);
+                    log::debug!("the refined code_path:{code_path}"); //TODO: delete140 +
+                    let extra_source_rust_content = try_read_from_file(
+                        &code_path,
+                        &format!("Failed to read extra rust module file \"{}\"", code_path),
+                    )
+                    .unwrap();
 
-                        //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓extra parse↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-                        let extra_file_ast = syn::parse_file(&extra_source_rust_content).unwrap();
-                        log::debug!("Phase: Parse EXTRA AST to IR");
-                        let extra_ir_file = parser::parse(
-                            &extra_source_rust_content,
-                            extra_file_ast,
-                            &self.manifest_path,
-                            self.block_index,
-                            self.shared,
-                            &[],
-                        );
-                        log::debug!("Finished Phase: Parse EXTRA AST to IR");
-                        //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑extra parse↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+                    //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓extra parse↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+                    let extra_file_ast = syn::parse_file(&extra_source_rust_content).unwrap();
+                    log::debug!("Phase: Parse EXTRA AST to IR");
+                    let extra_ir_file = parser::parse(
+                        &extra_source_rust_content,
+                        extra_file_ast,
+                        &self.manifest_path,
+                        self.block_index,
+                        self.shared,
+                        &[],
+                    );
+                    log::debug!("Finished Phase: Parse EXTRA AST to IR");
+                    //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑extra parse↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
-                        // collect extra_ir_file.funcs into vec
-                        let extra_path_funcs = extra_ir_file.funcs.into_iter().collect::<Vec<_>>();
-                        e.insert(extra_path_funcs.clone());
+                    // collect extra_ir_file.funcs into vec
+                    let extra_path_funcs = extra_ir_file.funcs.into_iter().collect::<Vec<_>>();
+                    e.insert(extra_path_funcs.clone());
 
-                        extra_path_funcs
-                    } else {
-                        extra_func_map[&raw_code_path].clone()
-                    };
+                    extra_path_funcs
+                } else {
+                    extra_func_map[&raw_code_path].clone()
+                };
 
-                    // add types(struct/enum) methods defined in extra rust modules
-                    for each_func in extra_path_funcs {
-                        if each_func.name.ends_with(&(format!("__{type_name}"))) {
-                            log::debug!("func added: {each_func:?}"); //TODO: delete
-                            let mut method = each_func.clone();
-                            if ir_file.get_shared_type_names().contains(type_name) {
-                                log::debug!("`{}` is found to be a shared type", type_name); //TODO: delete
-                                method.shared = true;
-                            }
+                // add types(struct/enum) methods defined in extra rust modules
+                for each_func in extra_path_funcs {
+                    if each_func.name.ends_with(&(format!("__{type_name}"))) {
+                        log::debug!("func added: {each_func:?}"); //TODO: delete
+                        let mut method = each_func.clone();
+                        if ir_file.get_shared_type_names().contains(&type_name) {
+                            log::debug!("`{}` is found to be a shared type", type_name); //TODO: delete
+                            method.shared = true;
+                        }
 
-                            if !ir_file.funcs.contains(&method) {
-                                ir_file.funcs.push(method);
-                            }
+                        if !ir_file.funcs.contains(&method) {
+                            ir_file.funcs.push(method);
                         }
                     }
+                }
 
-                    // update the ir_file back to the global irfile map
-                    IR_FILE_MAP.with(|data| {
-                        let mut ir_file_map = data.borrow_mut();
-                        ir_file_map.insert(self.block_index, ir_file.clone());
-                    });
+                // update the ir_file back to the global irfile map
+                IR_FILE_MAP.with(|data| {
+                    let mut ir_file_map = data.borrow_mut();
+                    ir_file_map.insert(self.block_index, ir_file.clone());
+                });
+
+                // if new methods are added, then it is essential to refine (no-)shared types.
+                if original_func_len != ir_file.funcs.len() {
+                    ir_file.fetch_shared_types_forcely(all_configs);
                 }
             }
         });
-
-        // if new methods are added, then it is essential to refine (no-)shared types.
-        if original_func_len != ir_file.funcs.len() {
-            ir_file.fetch_shared_types_forcely(all_configs);
-        }
 
         Ok(ir_file)
     }

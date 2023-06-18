@@ -246,79 +246,6 @@ class ApiBlock2ClassImpl implements ApiBlock2Class {
         argNames: ["message"],
       );
 
-  Future<String> testMethodMethodSharedStructInBlock1And2(
-      {required SharedStructInBlock1And2 that, required String message, dynamic hint}) {
-    var arg0 = _sharedPlatform.api2wire_box_autoadd_shared_struct_in_block_1_and_2(that);
-    var arg1 = _sharedPlatform.api2wire_String(message);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_method__method__SharedStructInBlock1And2(port_, arg0, arg1),
-      parseSuccessData: _sharedImpl.wire2api_String,
-      constMeta: kTestMethodMethodSharedStructInBlock1And2ConstMeta,
-      argValues: [that, message],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructInBlock1And2ConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_method__method__SharedStructInBlock1And2",
-        argNames: ["that", "message"],
-      );
-
-  Future<String> testStaticMethodStaticMethodSharedStructInBlock1And2({required String message, dynamic hint}) {
-    var arg0 = _sharedPlatform.api2wire_String(message);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_static_method__static_method__SharedStructInBlock1And2(port_, arg0),
-      parseSuccessData: _sharedImpl.wire2api_String,
-      constMeta: kTestStaticMethodStaticMethodSharedStructInBlock1And2ConstMeta,
-      argValues: [message],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInBlock1And2ConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_static_method__static_method__SharedStructInBlock1And2",
-        argNames: ["message"],
-      );
-
-  Future<String> testMethodMethodStructOnlyForBlock2(
-      {required StructOnlyForBlock2 that, required String message, required int num, dynamic hint}) {
-    var arg0 = _platform.api2wire_box_autoadd_struct_only_for_block_2(that);
-    var arg1 = _sharedPlatform.api2wire_String(message);
-    var arg2 = api2wire_u16(num);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_method__method__StructOnlyForBlock2(port_, arg0, arg1, arg2),
-      parseSuccessData: _sharedImpl.wire2api_String,
-      constMeta: kTestMethodMethodStructOnlyForBlock2ConstMeta,
-      argValues: [that, message, num],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kTestMethodMethodStructOnlyForBlock2ConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_method__method__StructOnlyForBlock2",
-        argNames: ["that", "message", "num"],
-      );
-
-  Future<String> testStaticMethodStaticMethodStructOnlyForBlock2({required String message, dynamic hint}) {
-    var arg0 = _sharedPlatform.api2wire_String(message);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_static_method__static_method__StructOnlyForBlock2(port_, arg0),
-      parseSuccessData: _sharedImpl.wire2api_String,
-      constMeta: kTestStaticMethodStaticMethodStructOnlyForBlock2ConstMeta,
-      argValues: [message],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodStructOnlyForBlock2ConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_static_method__static_method__StructOnlyForBlock2",
-        argNames: ["message"],
-      );
-
   Future<String> testMethodMethodSharedStructInAllBlocks(
       {required SharedStructInAllBlocks that, required String message, required int num, dynamic hint}) {
     var arg0 = _sharedPlatform.api2wire_box_autoadd_shared_struct_in_all_blocks(that);
@@ -392,40 +319,110 @@ class ApiBlock2ClassImpl implements ApiBlock2Class {
         argNames: ["message"],
       );
 
-  Future<String> testMethodMethodCrossSharedStructInBlock2And3(
-      {required CrossSharedStructInBlock2And3 that, required String message, dynamic hint}) {
-    var arg0 = _sharedPlatform.api2wire_box_autoadd_cross_shared_struct_in_block_2_and_3(that);
+  Future<String> testMethodMethodStructOnlyForBlock2(
+      {required StructOnlyForBlock2 that, required String message, required int num, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_struct_only_for_block_2(that);
     var arg1 = _sharedPlatform.api2wire_String(message);
+    var arg2 = api2wire_u16(num);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_method__method__CrossSharedStructInBlock2And3(port_, arg0, arg1),
+      callFfi: (port_) => _platform.inner.wire_test_method__method__StructOnlyForBlock2(port_, arg0, arg1, arg2),
       parseSuccessData: _sharedImpl.wire2api_String,
-      constMeta: kTestMethodMethodCrossSharedStructInBlock2And3ConstMeta,
-      argValues: [that, message],
+      constMeta: kTestMethodMethodStructOnlyForBlock2ConstMeta,
+      argValues: [that, message, num],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kTestMethodMethodCrossSharedStructInBlock2And3ConstMeta =>
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodStructOnlyForBlock2ConstMeta =>
       const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_method__method__CrossSharedStructInBlock2And3",
-        argNames: ["that", "message"],
+        debugName: "test_method__method__StructOnlyForBlock2",
+        argNames: ["that", "message", "num"],
       );
 
-  Future<String> testStaticMethodStaticMethodCrossSharedStructInBlock2And3({required String message, dynamic hint}) {
+  Future<String> testStaticMethodStaticMethodStructOnlyForBlock2({required String message, dynamic hint}) {
     var arg0 = _sharedPlatform.api2wire_String(message);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) =>
-          _platform.inner.wire_test_static_method__static_method__CrossSharedStructInBlock2And3(port_, arg0),
+      callFfi: (port_) => _platform.inner.wire_test_static_method__static_method__StructOnlyForBlock2(port_, arg0),
       parseSuccessData: _sharedImpl.wire2api_String,
-      constMeta: kTestStaticMethodStaticMethodCrossSharedStructInBlock2And3ConstMeta,
+      constMeta: kTestStaticMethodStaticMethodStructOnlyForBlock2ConstMeta,
       argValues: [message],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodCrossSharedStructInBlock2And3ConstMeta =>
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodStructOnlyForBlock2ConstMeta =>
       const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_static_method__static_method__CrossSharedStructInBlock2And3",
+        debugName: "test_static_method__static_method__StructOnlyForBlock2",
+        argNames: ["message"],
+      );
+
+  Future<String> testMethodMethodSharedStructInBlock1And2(
+      {required SharedStructInBlock1And2 that, required String message, dynamic hint}) {
+    var arg0 = _sharedPlatform.api2wire_box_autoadd_shared_struct_in_block_1_and_2(that);
+    var arg1 = _sharedPlatform.api2wire_String(message);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_method__method__SharedStructInBlock1And2(port_, arg0, arg1),
+      parseSuccessData: _sharedImpl.wire2api_String,
+      constMeta: kTestMethodMethodSharedStructInBlock1And2ConstMeta,
+      argValues: [that, message],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructInBlock1And2ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_method__method__SharedStructInBlock1And2",
+        argNames: ["that", "message"],
+      );
+
+  Future<String> testStaticMethodStaticMethodSharedStructInBlock1And2({required String message, dynamic hint}) {
+    var arg0 = _sharedPlatform.api2wire_String(message);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_static_method__static_method__SharedStructInBlock1And2(port_, arg0),
+      parseSuccessData: _sharedImpl.wire2api_String,
+      constMeta: kTestStaticMethodStaticMethodSharedStructInBlock1And2ConstMeta,
+      argValues: [message],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInBlock1And2ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_static_method__static_method__SharedStructInBlock1And2",
+        argNames: ["message"],
+      );
+
+  Future<String> testEnumMethodMethodWeekdays({required Weekdays that, required String message, dynamic hint}) {
+    var arg0 = api2wire_weekdays(that);
+    var arg1 = _sharedPlatform.api2wire_String(message);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_enum_method__method__Weekdays(port_, arg0, arg1),
+      parseSuccessData: _sharedImpl.wire2api_String,
+      constMeta: kTestEnumMethodMethodWeekdaysConstMeta,
+      argValues: [that, message],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodWeekdaysConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_enum_method__method__Weekdays",
+        argNames: ["that", "message"],
+      );
+
+  Future<String> testStaticEnumMethodStaticMethodWeekdays({required String message, dynamic hint}) {
+    var arg0 = _sharedPlatform.api2wire_String(message);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_static_enum_method__static_method__Weekdays(port_, arg0),
+      parseSuccessData: _sharedImpl.wire2api_String,
+      constMeta: kTestStaticEnumMethodStaticMethodWeekdaysConstMeta,
+      argValues: [message],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodWeekdaysConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_static_enum_method__static_method__Weekdays",
         argNames: ["message"],
       );
 
@@ -463,6 +460,43 @@ class ApiBlock2ClassImpl implements ApiBlock2Class {
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodCrossSharedStructInBlock1And2ConstMeta =>
       const FlutterRustBridgeTaskConstMeta(
         debugName: "test_static_method__static_method__CrossSharedStructInBlock1And2",
+        argNames: ["message"],
+      );
+
+  Future<String> testMethodMethodCrossSharedStructInBlock2And3(
+      {required CrossSharedStructInBlock2And3 that, required String message, dynamic hint}) {
+    var arg0 = _sharedPlatform.api2wire_box_autoadd_cross_shared_struct_in_block_2_and_3(that);
+    var arg1 = _sharedPlatform.api2wire_String(message);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_method__method__CrossSharedStructInBlock2And3(port_, arg0, arg1),
+      parseSuccessData: _sharedImpl.wire2api_String,
+      constMeta: kTestMethodMethodCrossSharedStructInBlock2And3ConstMeta,
+      argValues: [that, message],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodCrossSharedStructInBlock2And3ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_method__method__CrossSharedStructInBlock2And3",
+        argNames: ["that", "message"],
+      );
+
+  Future<String> testStaticMethodStaticMethodCrossSharedStructInBlock2And3({required String message, dynamic hint}) {
+    var arg0 = _sharedPlatform.api2wire_String(message);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) =>
+          _platform.inner.wire_test_static_method__static_method__CrossSharedStructInBlock2And3(port_, arg0),
+      parseSuccessData: _sharedImpl.wire2api_String,
+      constMeta: kTestStaticMethodStaticMethodCrossSharedStructInBlock2And3ConstMeta,
+      argValues: [message],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodCrossSharedStructInBlock2And3ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_static_method__static_method__CrossSharedStructInBlock2And3",
         argNames: ["message"],
       );
 

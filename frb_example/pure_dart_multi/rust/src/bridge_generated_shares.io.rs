@@ -2,20 +2,37 @@ use super::*;
 // Section: wire functions
 
 #[no_mangle]
-pub extern "C" fn wire_test_method__method__SharedStructInBlock1And2(
+pub extern "C" fn wire_test_enum_method__method__Weekdays(
     port_: i64,
-    that: *mut wire_SharedStructInBlock1And2,
+    that: i32,
     message: *mut wire_uint_8_list,
 ) {
-    wire_test_method__method__SharedStructInBlock1And2_impl(port_, that, message)
+    wire_test_enum_method__method__Weekdays_impl(port_, that, message)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_static_method__static_method__SharedStructInBlock1And2(
+pub extern "C" fn wire_test_static_enum_method__static_method__Weekdays(
     port_: i64,
     message: *mut wire_uint_8_list,
 ) {
-    wire_test_static_method__static_method__SharedStructInBlock1And2_impl(port_, message)
+    wire_test_static_enum_method__static_method__Weekdays_impl(port_, message)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_method__method__CrossSharedStructInBlock1And2(
+    port_: i64,
+    that: *mut wire_CrossSharedStructInBlock1And2,
+    message: *mut wire_uint_8_list,
+) {
+    wire_test_method__method__CrossSharedStructInBlock1And2_impl(port_, that, message)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_static_method__static_method__CrossSharedStructInBlock1And2(
+    port_: i64,
+    message: *mut wire_uint_8_list,
+) {
+    wire_test_static_method__static_method__CrossSharedStructInBlock1And2_impl(port_, message)
 }
 
 #[no_mangle]
@@ -37,37 +54,20 @@ pub extern "C" fn wire_test_static_method__static_method__SharedStructInAllBlock
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_method__method__CrossSharedStructInBlock1And2(
+pub extern "C" fn wire_test_method__method__SharedStructInBlock1And2(
     port_: i64,
-    that: *mut wire_CrossSharedStructInBlock1And2,
+    that: *mut wire_SharedStructInBlock1And2,
     message: *mut wire_uint_8_list,
 ) {
-    wire_test_method__method__CrossSharedStructInBlock1And2_impl(port_, that, message)
+    wire_test_method__method__SharedStructInBlock1And2_impl(port_, that, message)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_static_method__static_method__CrossSharedStructInBlock1And2(
+pub extern "C" fn wire_test_static_method__static_method__SharedStructInBlock1And2(
     port_: i64,
     message: *mut wire_uint_8_list,
 ) {
-    wire_test_static_method__static_method__CrossSharedStructInBlock1And2_impl(port_, message)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_test_method__method__SharedStructInBlock2And3(
-    port_: i64,
-    that: *mut wire_SharedStructInBlock2And3,
-    message: *mut wire_uint_8_list,
-) {
-    wire_test_method__method__SharedStructInBlock2And3_impl(port_, that, message)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_test_static_method__static_method__SharedStructInBlock2And3(
-    port_: i64,
-    message: *mut wire_uint_8_list,
-) {
-    wire_test_static_method__static_method__SharedStructInBlock2And3_impl(port_, message)
+    wire_test_static_method__static_method__SharedStructInBlock1And2_impl(port_, message)
 }
 
 #[no_mangle]
@@ -85,6 +85,23 @@ pub extern "C" fn wire_test_static_method__static_method__SharedStructOnlyForSyn
     message: *mut wire_uint_8_list,
 ) {
     wire_test_static_method__static_method__SharedStructOnlyForSyncTest_impl(port_, message)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_method__method__SharedStructInBlock2And3(
+    port_: i64,
+    that: *mut wire_SharedStructInBlock2And3,
+    message: *mut wire_uint_8_list,
+) {
+    wire_test_method__method__SharedStructInBlock2And3_impl(port_, that, message)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_static_method__static_method__SharedStructInBlock2And3(
+    port_: i64,
+    message: *mut wire_uint_8_list,
+) {
+    wire_test_static_method__static_method__SharedStructInBlock2And3_impl(port_, message)
 }
 
 #[no_mangle]
