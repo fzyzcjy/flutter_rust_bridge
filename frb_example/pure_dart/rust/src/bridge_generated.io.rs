@@ -820,6 +820,16 @@ pub extern "C" fn wire_test_struct_with_enum(port_: i64, se: *mut wire_StructWit
 }
 
 #[no_mangle]
+pub extern "C" fn wire_test_tuple(port_: i64, value: *mut wire___record__String_i32) {
+    wire_test_tuple_impl(port_, value)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_tuple_2(port_: i64, value: *mut wire_list___record__String_i32) {
+    wire_test_tuple_2_impl(port_, value)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_as_string__method__Event(port_: i64, that: *mut wire_Event) {
     wire_as_string__method__Event_impl(port_, that)
 }
@@ -955,6 +965,11 @@ pub extern "C" fn new_box_autoadd_DartOpaque_0() -> *mut wire_DartOpaque {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_HideData_0() -> *mut wire_HideData {
     support::new_leak_box_ptr(wire_HideData::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd___record__String_i32_0() -> *mut wire___record__String_i32 {
+    support::new_leak_box_ptr(wire___record__String_i32::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1270,6 +1285,15 @@ pub extern "C" fn new_list_DartOpaque_0(len: i32) -> *mut wire_list_DartOpaque {
 pub extern "C" fn new_list_HideData_0(len: i32) -> *mut wire_list_HideData {
     let wrap = wire_list_HideData {
         ptr: support::new_leak_vec_ptr(<wire_HideData>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list___record__String_i32_0(len: i32) -> *mut wire_list___record__String_i32 {
+    let wrap = wire_list___record__String_i32 {
+        ptr: support::new_leak_vec_ptr(<wire___record__String_i32>::new_with_null_ptr(), len),
         len,
     };
     support::new_leak_box_ptr(wrap)
@@ -1597,6 +1621,11 @@ impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for *mut wire_uint_8_list {
         ZeroCopyBuffer(self.wire2api())
     }
 }
+impl Wire2Api<(String, i32)> for wire___record__String_i32 {
+    fn wire2api(self) -> (String, i32) {
+        (self.field0.wire2api(), self.field1.wire2api())
+    }
+}
 impl Wire2Api<A> for wire_A {
     fn wire2api(self) -> A {
         A {
@@ -1698,6 +1727,12 @@ impl Wire2Api<RustOpaque<HideData>> for *mut wire_HideData {
     fn wire2api(self) -> RustOpaque<HideData> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<RustOpaque<HideData>>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<(String, i32)> for *mut wire___record__String_i32 {
+    fn wire2api(self) -> (String, i32) {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<(String, i32)>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<A> for *mut wire_A {
@@ -2259,6 +2294,15 @@ impl Wire2Api<Vec<RustOpaque<HideData>>> for *mut wire_list_HideData {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
+impl Wire2Api<Vec<(String, i32)>> for *mut wire_list___record__String_i32 {
+    fn wire2api(self) -> Vec<(String, i32)> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
 impl Wire2Api<Vec<ApplicationEnvVar>> for *mut wire_list_application_env_var {
     fn wire2api(self) -> Vec<ApplicationEnvVar> {
         let vec = unsafe {
@@ -2538,6 +2582,13 @@ pub struct wire_StringList {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire___record__String_i32 {
+    field0: *mut wire_uint_8_list,
+    field1: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_A {
     a: *mut wire_uint_8_list,
 }
@@ -2708,6 +2759,13 @@ pub struct wire_list_DartOpaque {
 #[derive(Clone)]
 pub struct wire_list_HideData {
     ptr: *mut wire_HideData,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list___record__String_i32 {
+    ptr: *mut wire___record__String_i32,
     len: i32,
 }
 
@@ -3161,6 +3219,21 @@ impl NewWithNullPtr for wire_RwLockHideData {
         Self {
             ptr: core::ptr::null(),
         }
+    }
+}
+
+impl NewWithNullPtr for wire___record__String_i32 {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            field0: core::ptr::null_mut(),
+            field1: Default::default(),
+        }
+    }
+}
+
+impl Default for wire___record__String_i32 {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
     }
 }
 

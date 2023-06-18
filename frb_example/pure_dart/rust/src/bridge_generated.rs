@@ -2211,6 +2211,38 @@ fn wire_test_struct_with_enum_impl(
         },
     )
 }
+fn wire_test_tuple_impl(
+    port_: MessagePort,
+    value: impl Wire2Api<Option<(String, i32)>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_tuple",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_value = value.wire2api();
+            move |task_callback| Ok(test_tuple(api_value))
+        },
+    )
+}
+fn wire_test_tuple_2_impl(
+    port_: MessagePort,
+    value: impl Wire2Api<Vec<(String, i32)>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_tuple_2",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_value = value.wire2api();
+            move |task_callback| Ok(test_tuple_2(api_value))
+        },
+    )
+}
 fn wire_as_string__method__Event_impl(port_: MessagePort, that: impl Wire2Api<Event> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {

@@ -2469,6 +2469,38 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["se"],
       );
 
+  Future<(String, int)> testTuple({(String, int)? value, dynamic hint}) {
+    var arg0 = _platform.api2wire_opt_box_autoadd___record__String_i32(value);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_tuple(port_, arg0),
+      parseSuccessData: _wire2api___record__String_i32,
+      constMeta: kTestTupleConstMeta,
+      argValues: [value],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestTupleConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_tuple",
+        argNames: ["value"],
+      );
+
+  Future<void> testTuple2({required List<(String, int)> value, dynamic hint}) {
+    var arg0 = _platform.api2wire_list___record__String_i32(value);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_tuple_2(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      constMeta: kTestTuple2ConstMeta,
+      argValues: [value],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestTuple2ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_tuple_2",
+        argNames: ["value"],
+      );
+
   Future<String> asStringMethodEvent({required Event that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_event(that);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -2813,6 +2845,17 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   Uint8List _wire2api_ZeroCopyBuffer_Uint8List(dynamic raw) {
     return raw as Uint8List;
+  }
+
+  (String, int) _wire2api___record__String_i32(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      _wire2api_String(arr[0]),
+      _wire2api_i32(arr[1]),
+    );
   }
 
   A _wire2api_a(dynamic raw) {

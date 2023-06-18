@@ -11,7 +11,7 @@ Here is a brief glance showing what the code generator can generate (non-exhaust
 | [`[T; N]`](lang_vec.md)                              | `List<T>`                                            |
 | [`struct { .. }`, `struct( .. )`](lang_struct.md)    | `class`                                              |
 | [`enum { A, B }`](lang_enum.md)                      | `enum`                                               |
-| [`enum { A(..) }`](lang_enum.md)                     | `@freezed class`                                     |
+| [`enum { A(..) }`](lang_enum.md)                     | `@freezed sealed class`                              |
 | [`use ...`](lang_external.md)                        | act normally                                         |
 | [`Option<T>`](lang_option.md)                        | `T?`                                                 |
 | [Arbitrary Rust types (opaque)](lang_rust_opaque.md) | `RustOpaque`                                         |
@@ -25,6 +25,7 @@ Here is a brief glance showing what the code generator can generate (non-exhaust
 | `String`                                             | `String`                                             |
 | `()`                                                 | `void`                                               |
 | `type A = B`                                         | [type alias](lang_type_alias.md)                     |
+| [`(T, U, ..)`](lang_tuple.md)                        | [`(T, U, ..)`](https://dart.dev/language/records)    |
 
 Types from `chrono` crate are supported as a feature, see [here](lang_chrono.md).
 Types from `uuid` crate are supported as a feature, see [here](lang_uuid.md).

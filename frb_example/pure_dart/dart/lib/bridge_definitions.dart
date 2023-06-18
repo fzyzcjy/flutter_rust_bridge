@@ -652,6 +652,14 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kTestStructWithEnumConstMeta;
 
+  Future<(String, int)> testTuple({(String, int)? value, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestTupleConstMeta;
+
+  Future<void> testTuple2({required List<(String, int)> value, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestTuple2ConstMeta;
+
   Future<String> asStringMethodEvent({required Event that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kAsStringMethodEventConstMeta;
@@ -927,7 +935,7 @@ class A {
 }
 
 @freezed
-class Abc with _$Abc {
+sealed class Abc with _$Abc {
   const factory Abc.a(
     A field0,
   ) = Abc_A;
@@ -961,7 +969,7 @@ class ApplicationEnvVar {
 }
 
 @freezed
-class ApplicationMessage with _$ApplicationMessage {
+sealed class ApplicationMessage with _$ApplicationMessage {
   const factory ApplicationMessage.displayMessage(
     String field0,
   ) = ApplicationMessage_DisplayMessage;
@@ -1118,7 +1126,7 @@ class DartOpaqueNested {
 }
 
 @freezed
-class Distance with _$Distance {
+sealed class Distance with _$Distance {
   const factory Distance.unknown() = Distance_Unknown;
   const factory Distance.map(
     double field0,
@@ -1144,7 +1152,7 @@ class Empty {
 }
 
 @freezed
-class EnumDartOpaque with _$EnumDartOpaque {
+sealed class EnumDartOpaque with _$EnumDartOpaque {
   const factory EnumDartOpaque.primitive(
     int field0,
   ) = EnumDartOpaque_Primitive;
@@ -1154,7 +1162,7 @@ class EnumDartOpaque with _$EnumDartOpaque {
 }
 
 @freezed
-class EnumOpaque with _$EnumOpaque {
+sealed class EnumOpaque with _$EnumOpaque {
   const factory EnumOpaque.struct(
     HideData field0,
   ) = EnumOpaque_Struct;
@@ -1270,7 +1278,7 @@ class I32Array2 extends NonGrowableListView<int> {
 }
 
 @freezed
-class KitchenSink with _$KitchenSink {
+sealed class KitchenSink with _$KitchenSink {
   /// Comment on variant
   const factory KitchenSink.empty() = KitchenSink_Empty;
   const factory KitchenSink.primitives({
@@ -1325,7 +1333,7 @@ class Log2 {
 }
 
 @freezed
-class Measure with _$Measure {
+sealed class Measure with _$Measure {
   const factory Measure.speed(
     Speed field0,
   ) = Measure_Speed;
@@ -1483,7 +1491,7 @@ class Point {
 }
 
 @freezed
-class RawStringEnumMirrored with _$RawStringEnumMirrored {
+sealed class RawStringEnumMirrored with _$RawStringEnumMirrored {
   const factory RawStringEnumMirrored.raw(
     RawStringMirrored field0,
   ) = RawStringEnumMirrored_Raw;
@@ -1520,7 +1528,7 @@ class Sequences {
 }
 
 @freezed
-class Speed with _$Speed {
+sealed class Speed with _$Speed {
   const factory Speed.unknown() = Speed_Unknown;
   const factory Speed.gps(
     double field0,

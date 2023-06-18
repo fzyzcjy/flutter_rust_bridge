@@ -444,6 +444,16 @@ typedef struct wire_StructWithEnum {
   struct wire_Abc abc2;
 } wire_StructWithEnum;
 
+typedef struct wire___record__String_i32 {
+  struct wire_uint_8_list *field0;
+  int32_t field1;
+} wire___record__String_i32;
+
+typedef struct wire_list___record__String_i32 {
+  struct wire___record__String_i32 *ptr;
+  int32_t len;
+} wire_list___record__String_i32;
+
 typedef struct wire_Event {
   struct wire_uint_8_list *address;
   struct wire_uint_8_list *payload;
@@ -795,6 +805,10 @@ void wire_test_contains_mirrored_sub_struct(int64_t port_);
 
 void wire_test_struct_with_enum(int64_t port_, struct wire_StructWithEnum *se);
 
+void wire_test_tuple(int64_t port_, struct wire___record__String_i32 *value);
+
+void wire_test_tuple_2(int64_t port_, struct wire_list___record__String_i32 *value);
+
 void wire_as_string__method__Event(int64_t port_, struct wire_Event *that);
 
 void wire_sum__method__SumWith(int64_t port_, struct wire_SumWith *that, uint32_t y, uint32_t z);
@@ -848,6 +862,8 @@ int64_t *new_box_autoadd_Chrono_Utc_0(int64_t value);
 struct wire_DartOpaque *new_box_autoadd_DartOpaque_0(void);
 
 struct wire_HideData *new_box_autoadd_HideData_0(void);
+
+struct wire___record__String_i32 *new_box_autoadd___record__String_i32_0(void);
 
 struct wire_A *new_box_autoadd_a_0(void);
 
@@ -964,6 +980,8 @@ struct wire_int_8_list *new_int_8_list_0(int32_t len);
 struct wire_list_DartOpaque *new_list_DartOpaque_0(int32_t len);
 
 struct wire_list_HideData *new_list_HideData_0(int32_t len);
+
+struct wire_list___record__String_i32 *new_list___record__String_i32_0(int32_t len);
 
 struct wire_list_application_env_var *new_list_application_env_var_0(int32_t len);
 
@@ -1214,6 +1232,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_test_abc_enum);
     dummy_var ^= ((int64_t) (void*) wire_test_contains_mirrored_sub_struct);
     dummy_var ^= ((int64_t) (void*) wire_test_struct_with_enum);
+    dummy_var ^= ((int64_t) (void*) wire_test_tuple);
+    dummy_var ^= ((int64_t) (void*) wire_test_tuple_2);
     dummy_var ^= ((int64_t) (void*) wire_as_string__method__Event);
     dummy_var ^= ((int64_t) (void*) wire_sum__method__SumWith);
     dummy_var ^= ((int64_t) (void*) wire_new__static_method__ConcatenateWith);
@@ -1236,6 +1256,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_Chrono_Utc_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_DartOpaque_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_HideData_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd___record__String_i32_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_a_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_abc_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_application_env_0);
@@ -1294,6 +1315,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_int_8_list_0);
     dummy_var ^= ((int64_t) (void*) new_list_DartOpaque_0);
     dummy_var ^= ((int64_t) (void*) new_list_HideData_0);
+    dummy_var ^= ((int64_t) (void*) new_list___record__String_i32_0);
     dummy_var ^= ((int64_t) (void*) new_list_application_env_var_0);
     dummy_var ^= ((int64_t) (void*) new_list_attribute_0);
     dummy_var ^= ((int64_t) (void*) new_list_my_size_0);

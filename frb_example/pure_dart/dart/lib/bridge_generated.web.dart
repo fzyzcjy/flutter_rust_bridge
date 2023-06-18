@@ -136,6 +136,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire___record__String_i32((String, int) raw) {
+    return [api2wire_String(raw.$1), api2wire_i32(raw.$2)];
+  }
+
+  @protected
   List<dynamic> api2wire_a(A raw) {
     return [api2wire_String(raw.a)];
   }
@@ -212,6 +217,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   Object api2wire_box_autoadd_HideData(HideData raw) {
     return api2wire_HideData(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd___record__String_i32((String, int) raw) {
+    return api2wire___record__String_i32(raw);
   }
 
   @protected
@@ -664,6 +674,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_list___record__String_i32(List<(String, int)> raw) {
+    return raw.map(api2wire___record__String_i32).toList();
+  }
+
+  @protected
   List<dynamic> api2wire_list_application_env_var(List<ApplicationEnvVar> raw) {
     return raw.map(api2wire_application_env_var).toList();
   }
@@ -783,6 +798,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   Object? api2wire_opt_box_autoadd_HideData(HideData? raw) {
     return raw == null ? null : api2wire_box_autoadd_HideData(raw);
+  }
+
+  @protected
+  List<dynamic>? api2wire_opt_box_autoadd___record__String_i32((String, int)? raw) {
+    return raw == null ? null : api2wire_box_autoadd___record__String_i32(raw);
   }
 
   @protected
@@ -1307,6 +1327,10 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_test_struct_with_enum(NativePortType port_, List<dynamic> se);
 
+  external dynamic /* void */ wire_test_tuple(NativePortType port_, List<dynamic>? value);
+
+  external dynamic /* void */ wire_test_tuple_2(NativePortType port_, List<dynamic> value);
+
   external dynamic /* void */ wire_as_string__method__Event(NativePortType port_, List<dynamic> that);
 
   external dynamic /* void */ wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
@@ -1746,6 +1770,10 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_test_struct_with_enum(NativePortType port_, List<dynamic> se) =>
       wasmModule.wire_test_struct_with_enum(port_, se);
+
+  void wire_test_tuple(NativePortType port_, List<dynamic>? value) => wasmModule.wire_test_tuple(port_, value);
+
+  void wire_test_tuple_2(NativePortType port_, List<dynamic> value) => wasmModule.wire_test_tuple_2(port_, value);
 
   void wire_as_string__method__Event(NativePortType port_, List<dynamic> that) =>
       wasmModule.wire_as_string__method__Event(port_, that);

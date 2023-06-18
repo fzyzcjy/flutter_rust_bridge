@@ -795,6 +795,16 @@ pub fn wire_test_struct_with_enum(port_: MessagePort, se: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_test_tuple(port_: MessagePort, value: JsValue) {
+    wire_test_tuple_impl(port_, value)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_tuple_2(port_: MessagePort, value: JsValue) {
+    wire_test_tuple_2_impl(port_, value)
+}
+
+#[wasm_bindgen]
 pub fn wire_as_string__method__Event(port_: MessagePort, that: JsValue) {
     wire_as_string__method__Event_impl(port_, that)
 }
@@ -1054,6 +1064,18 @@ impl Wire2Api<Vec<uuid::Uuid>> for Box<[u8]> {
 impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for Box<[u8]> {
     fn wire2api(self) -> ZeroCopyBuffer<Vec<u8>> {
         ZeroCopyBuffer(self.wire2api())
+    }
+}
+impl Wire2Api<(String, i32)> for JsValue {
+    fn wire2api(self) -> (String, i32) {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        (self_.get(0).wire2api(), self_.get(1).wire2api())
     }
 }
 impl Wire2Api<A> for JsValue {
@@ -1440,6 +1462,15 @@ impl Wire2Api<Vec<RustOpaque<HideData>>> for JsValue {
             .collect()
     }
 }
+impl Wire2Api<Vec<(String, i32)>> for JsValue {
+    fn wire2api(self) -> Vec<(String, i32)> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
 impl Wire2Api<Vec<ApplicationEnvVar>> for JsValue {
     fn wire2api(self) -> Vec<ApplicationEnvVar> {
         self.dyn_into::<JsArray>()
@@ -1659,6 +1690,11 @@ impl Wire2Api<Option<DartOpaque>> for JsValue {
 }
 impl Wire2Api<Option<RustOpaque<HideData>>> for JsValue {
     fn wire2api(self) -> Option<RustOpaque<HideData>> {
+        (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
+    }
+}
+impl Wire2Api<Option<(String, i32)>> for JsValue {
+    fn wire2api(self) -> Option<(String, i32)> {
         (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
     }
 }
