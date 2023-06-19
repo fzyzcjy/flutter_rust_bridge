@@ -226,6 +226,34 @@ delegate_big_buffers! {
     Vec<i64> => BigInt64Array
     Vec<u64> => BigUint64Array
 }
+
+macro_rules! impl_into_dart_for_tuple {
+    ($( ($($T:ident)+) )*) => {$(
+        impl<$($T: IntoDart),+> IntoDart for ($($T),+,) {
+            #[allow(non_snake_case)]
+            fn into_dart(self) -> DartAbi {
+                let ($($T),+,) = self;
+                vec![$($T.into_dart()),+].into_dart()
+            }
+        }
+
+        impl<$($T: IntoDart),+> IntoDartExceptPrimitive for ($($T),+,) {}
+    )*};
+}
+
+impl_into_dart_for_tuple! {
+    (A)
+    (A B)
+    (A B C)
+    (A B C D)
+    (A B C D E)
+    (A B C D E F)
+    (A B C D E F G)
+    (A B C D E F G H)
+    (A B C D E F G H I)
+    (A B C D E F G H I J)
+}
+
 impl IntoDart for ZeroCopyBuffer<Vec<i64>> {
     #[inline]
     fn into_dart(self) -> DartAbi {

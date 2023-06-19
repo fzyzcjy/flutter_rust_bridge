@@ -1,4 +1,4 @@
-use clap::{Parser, ValueEnum};
+use clap::{ArgAction, Parser, ValueEnum};
 use serde::Deserialize;
 
 // Raw configs, which is mainly given by the user of flutter_rust_bridge
@@ -115,8 +115,13 @@ pub struct RawOpts {
 
     /// A list of data to be dumped. If specified without a value, defaults to all.
     #[cfg(feature = "serde")]
-    #[arg(long, value_enum, num_args(0..))]
+    #[arg(long, value_enum, num_args = 0.., default_missing_values = ["config", "ir"])]
     pub dump: Option<Vec<Dump>>,
+
+    /// Disable language features introduced in Dart 3.
+    #[arg(long = "no-dart3", action(ArgAction::SetFalse))]
+    #[serde(default = "r#true")]
+    pub dart3: bool,
 
     // Output path of auto-generated rust file, which is used to store shared stuff among regular API blocks.
     // Thus, this field is only used in multi-blocks case.
@@ -135,4 +140,9 @@ pub struct RawOpts {
 pub enum Dump {
     Config,
     Ir,
+}
+
+#[inline(always)]
+fn r#true() -> bool {
+    true
 }

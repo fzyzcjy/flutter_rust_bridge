@@ -1302,6 +1302,11 @@ void main(List<String> args) async {
     expect(result.abc1.whenOrNull(b: (B b) => b.b), 999);
     expect(result.abc2.whenOrNull(a: (A a) => a.a), "aaa");
   });
+
+  test("dart call tuples", () async {
+    expect(api.testTuple(), completion(('John', 0)));
+    expect(api.testTuple(value: ('Bob', 42)), completion(('Hello Bob', 43)));
+  });
 }
 
 int _createGarbage() {

@@ -6,6 +6,7 @@ use crate::parser::{extract_comments, extract_metadata};
 use quote::ToTokens;
 use std::collections::{HashMap, HashSet};
 use std::string::String;
+use syn::punctuated::Punctuated;
 use syn::*;
 
 use super::DefaultValues;
@@ -144,8 +145,12 @@ impl<'a> TypeParser<'a> {
                     })),
                 }
             }
-            syn::Type::Tuple(syn::TypeTuple { elems, .. }) if elems.is_empty() => {
-                IrType::Primitive(IrTypePrimitive::Unit)
+            syn::Type::Tuple(syn::TypeTuple { elems, .. }) => {
+                if elems.is_empty() {
+                    IrType::Primitive(IrTypePrimitive::Unit)
+                } else {
+                    self.convert_tuple_to_ir_type(elems)
+                }
             }
             _ => IrType::Unencodable(IrTypeUnencodable {
                 string: resolve_ty.to_token_stream().to_string(),
@@ -446,6 +451,7 @@ impl<'a> TypeParser<'a> {
                         | RustOpaque(..)
                         | DartOpaque(..)
                         | Primitive(..)
+                        | Record(..)
                         | Delegate(IrTypeDelegate::PrimitiveEnum { .. }) => {
                             IrTypeOptional::new_boxed(inner.clone())
                         }
@@ -478,6 +484,50 @@ impl<'a> TypeParser<'a> {
                 type_path.to_token_stream()
             )),
         }
+    }
+
+    fn convert_tuple_to_ir_type(&mut self, elems: Punctuated<Type, Token![,]>) -> IrType {
+        let values = elems
+            .iter()
+            .map(|elem| self.parse_type(elem))
+            .collect::<Vec<_>>();
+        let safe_ident = values
+            .iter()
+            .map(IrType::safe_ident)
+            .collect::<Vec<_>>()
+            .join("_");
+        let safe_ident = format!("__record__{safe_ident}");
+        self.struct_pool.insert(
+            safe_ident.clone(),
+            IrStruct {
+                name: safe_ident.clone(),
+                wrapper_name: None,
+                path: None,
+                is_fields_named: true,
+                dart_metadata: vec![],
+                comments: vec![],
+                fields: values
+                    .iter()
+                    .enumerate()
+                    .map(|(idx, ty)| IrField {
+                        ty: ty.clone(),
+                        name: IrIdent::new(format!("field{idx}")),
+                        is_final: true,
+                        comments: vec![],
+                        default: None,
+                        settings: Default::default(),
+                    })
+                    .collect(),
+            },
+        );
+        IrType::Record(IrTypeRecord {
+            inner: IrTypeStructRef {
+                name: safe_ident,
+                freezed: false,
+                empty: false,
+            },
+            values: values.into_boxed_slice(),
+        })
     }
 
     fn parse_enum_core(&mut self, ident_string: &String) -> IrEnum {

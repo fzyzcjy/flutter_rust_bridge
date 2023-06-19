@@ -43,6 +43,7 @@ pub struct Opts {
     pub inline_rust: bool,
     pub bridge_in_method: bool,
     pub extra_headers: String,
+    pub dart3: bool,
     pub shared: bool, // it is true if this Opts instance is for auto-generated shared API block. Otherwise, it is false,
     // for the below 2 fields:
     // in single-block case, they should be `None`;

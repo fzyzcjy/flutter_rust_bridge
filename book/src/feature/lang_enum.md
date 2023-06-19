@@ -58,3 +58,30 @@ And they are powered with [all functionalities](https://pub.dev/packages/freezed
 
 Remark: If you are curious about `Future`, have a look at [this](async_dart.md).
 
+## Pattern matching in Dart
+
+Introduced in Dart 3, sealed classes can be used to [pattern match](https://dart.dev/language/patterns) values,
+enabling exhaustive variant checks and refuable patterns among other capabilities. Refer to [the documentation](https://dart.dev/language/patterns#switch-statements-and-expressions)
+for more details.
+
+This feature supersedes Freezed's `map` and `when` families of methods.
+You can opt out of generating sealed classes by passing `--no-dart3` when running codegen.
+
+```rust,noplayground
+pub enum Maybe {
+    None,
+    Some { value: i32 },
+}
+```
+
+```dart
+Maybe maybe;
+final value = switch (maybe) {
+  Maybe_None() => 'got nothing',
+  Maybe_Some(:final value) => 'got value: $value',
+};
+// single case à la if-let
+if (maybe case Maybe_Some(:final value)) {
+  ..
+}
+```
