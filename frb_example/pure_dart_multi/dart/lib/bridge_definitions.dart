@@ -133,7 +133,7 @@ class CrossSharedStructInBlock2And3 {
 }
 
 @freezed
-class EnumType with _$EnumType {
+sealed class EnumType with _$EnumType {
   const factory EnumType.empty() = EnumType_Empty;
   const factory EnumType.primitives({
     /// Dart field comment
