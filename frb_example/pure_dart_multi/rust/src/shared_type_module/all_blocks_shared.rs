@@ -18,6 +18,16 @@ pub enum EnumType {
     Enums(Weekdays),
     BytesArray([u8; 3]),
 }
+impl EnumType {
+    #[allow(unused)]
+    pub fn test_enum_method(&self, message: String) -> String {
+        message
+    }
+    #[allow(unused)]
+    pub fn test_static_enum_method(message: String) -> String {
+        message
+    }
+}
 
 /// Simple enums.
 #[derive(Debug, Clone, Copy)]
@@ -31,7 +41,6 @@ pub enum Weekdays {
     Saturday,
     Sunday,
 }
-
 impl Weekdays {
     #[allow(unused)]
     pub fn test_enum_method(&self, message: String) -> String {

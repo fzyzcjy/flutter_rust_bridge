@@ -211,7 +211,7 @@ fn write_dart_decls(
 
     // erase duplicated lines for multi-blocks case, like the redundant import statements and class definitions
     // NOTE: since dart file with syntax error would make the whole generation stuck,
-    // the refinement MUST be done at the end after each block generation.
+    // the refinement MUST be done at the end after EACH dart block generation.
     if all_configs.len() > 1 {
         let mut contents =
             std::fs::read_to_string(dart_decl_output_path).expect("Unable to read file");

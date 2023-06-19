@@ -24,6 +24,14 @@ abstract class BridgeGeneratedShares {
 
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodCrossSharedStructInBlock1And2ConstMeta;
 
+  Future<String> testEnumMethodMethodEnumType({required EnumType that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodEnumTypeConstMeta;
+
+  Future<String> testStaticEnumMethodStaticMethodEnumType({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodEnumTypeConstMeta;
+
   /// the parameter type `u32 for `num` is only used here,
   /// for testing shared type(`u32`) within a shared struct method
   Future<String> testMethodMethodSharedStructInAllBlocks(
@@ -338,6 +346,14 @@ abstract class ApiBlock3Class {
 
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodCrossSharedStructInBlock2And3ConstMeta;
 
+  Future<String> testEnumMethodMethodEnumType({required EnumType that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodEnumTypeConstMeta;
+
+  Future<String> testStaticEnumMethodStaticMethodEnumType({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodEnumTypeConstMeta;
+
   /// the parameter type `u32 for `num` is only used here,
   /// for testing shared type(`u32`) within a shared struct method
   Future<String> testMethodMethodSharedStructInAllBlocks(
@@ -507,6 +523,14 @@ abstract class ApiBlock2Class {
 
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodCrossSharedStructInBlock2And3ConstMeta;
 
+  Future<String> testEnumMethodMethodEnumType({required EnumType that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodEnumTypeConstMeta;
+
+  Future<String> testStaticEnumMethodStaticMethodEnumType({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodEnumTypeConstMeta;
+
   /// the parameter type `u32 for `num` is only used here,
   /// for testing shared type(`u32`) within a shared struct method
   Future<String> testMethodMethodSharedStructInAllBlocks(
@@ -669,6 +693,14 @@ abstract class ApiBlock1Class {
   Future<String> testStaticMethodStaticMethodCrossSharedStructInBlock1And2({required String message, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodCrossSharedStructInBlock1And2ConstMeta;
+
+  Future<String> testEnumMethodMethodEnumType({required EnumType that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodEnumTypeConstMeta;
+
+  Future<String> testStaticEnumMethodStaticMethodEnumType({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodEnumTypeConstMeta;
 
   /// the parameter type `u32 for `num` is only used here,
   /// for testing shared type(`u32`) within a shared struct method

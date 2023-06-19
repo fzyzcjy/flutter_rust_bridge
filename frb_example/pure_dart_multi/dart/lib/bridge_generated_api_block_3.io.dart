@@ -135,6 +135,41 @@ class ApiBlock3ClassWire implements FlutterRustBridgeWireBase {
       _wire_test_static_method__static_method__CrossSharedStructInBlock1And2Ptr
           .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
+  void wire_test_enum_method__method__EnumType(
+    int port_,
+    ffi.Pointer<wire_EnumType> that,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_enum_method__method__EnumType(
+      port_,
+      that,
+      message,
+    );
+  }
+
+  late final _wire_test_enum_method__method__EnumTypePtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_EnumType>, ffi.Pointer<wire_uint_8_list>)>>(
+      'wire_test_enum_method__method__EnumType');
+  late final _wire_test_enum_method__method__EnumType = _wire_test_enum_method__method__EnumTypePtr
+      .asFunction<void Function(int, ffi.Pointer<wire_EnumType>, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_test_static_enum_method__static_method__EnumType(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_static_enum_method__static_method__EnumType(
+      port_,
+      message,
+    );
+  }
+
+  late final _wire_test_static_enum_method__static_method__EnumTypePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_test_static_enum_method__static_method__EnumType');
+  late final _wire_test_static_enum_method__static_method__EnumType =
+      _wire_test_static_enum_method__static_method__EnumTypePtr
+          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
   void wire_test_method__method__SharedStructInAllBlocks(
     int port_,
     ffi.Pointer<wire_SharedStructInAllBlocks> that,
@@ -355,6 +390,15 @@ class ApiBlock3ClassWire implements FlutterRustBridgeWireBase {
   late final _wire_test_static_method__static_method__SharedStructOnlyForSyncTest =
       _wire_test_static_method__static_method__SharedStructOnlyForSyncTestPtr
           .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  ffi.Pointer<wire_EnumType> new_box_autoadd_enum_type() {
+    return _new_box_autoadd_enum_type();
+  }
+
+  late final _new_box_autoadd_enum_typePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_EnumType> Function()>>('new_box_autoadd_enum_type');
+  late final _new_box_autoadd_enum_type =
+      _new_box_autoadd_enum_typePtr.asFunction<ffi.Pointer<wire_EnumType> Function()>();
 
   ffi.Pointer<ffi.Int32> new_box_autoadd_i32(
     int value,

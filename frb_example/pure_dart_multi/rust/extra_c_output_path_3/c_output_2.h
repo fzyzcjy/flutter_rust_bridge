@@ -133,6 +133,13 @@ void wire_test_method__method__CrossSharedStructInBlock1And2(int64_t port_,
 void wire_test_static_method__static_method__CrossSharedStructInBlock1And2(int64_t port_,
                                                                            struct wire_uint_8_list *message);
 
+void wire_test_enum_method__method__EnumType(int64_t port_,
+                                             struct wire_EnumType *that,
+                                             struct wire_uint_8_list *message);
+
+void wire_test_static_enum_method__static_method__EnumType(int64_t port_,
+                                                           struct wire_uint_8_list *message);
+
 void wire_test_method__method__SharedStructInAllBlocks(int64_t port_,
                                                        struct wire_SharedStructInAllBlocks *that,
                                                        struct wire_uint_8_list *message,
@@ -175,6 +182,8 @@ void wire_test_method__method__SharedStructOnlyForSyncTest(int64_t port_,
 
 void wire_test_static_method__static_method__SharedStructOnlyForSyncTest(int64_t port_,
                                                                          struct wire_uint_8_list *message);
+
+struct wire_EnumType *new_box_autoadd_enum_type(void);
 
 int32_t *new_box_autoadd_i32(int32_t value);
 

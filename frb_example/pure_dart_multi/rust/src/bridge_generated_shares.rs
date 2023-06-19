@@ -70,6 +70,40 @@ fn wire_test_static_method__static_method__CrossSharedStructInBlock1And2_impl(
         },
     )
 }
+fn wire_test_enum_method__method__EnumType_impl(
+    port_: MessagePort,
+    that: impl Wire2Api<EnumType> + UnwindSafe,
+    message: impl Wire2Api<String> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_enum_method__method__EnumType",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_that = that.wire2api();
+            let api_message = message.wire2api();
+            move |task_callback| Ok(EnumType::test_enum_method(&api_that, api_message))
+        },
+    )
+}
+fn wire_test_static_enum_method__static_method__EnumType_impl(
+    port_: MessagePort,
+    message: impl Wire2Api<String> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_static_enum_method__static_method__EnumType",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_message = message.wire2api();
+            move |task_callback| Ok(EnumType::test_static_enum_method(api_message))
+        },
+    )
+}
 fn wire_test_method__method__SharedStructInAllBlocks_impl(
     port_: MessagePort,
     that: impl Wire2Api<SharedStructInAllBlocks> + UnwindSafe,

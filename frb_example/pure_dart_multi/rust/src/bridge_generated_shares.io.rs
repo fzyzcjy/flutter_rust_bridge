@@ -19,6 +19,23 @@ pub extern "C" fn wire_test_static_method__static_method__CrossSharedStructInBlo
 }
 
 #[no_mangle]
+pub extern "C" fn wire_test_enum_method__method__EnumType(
+    port_: i64,
+    that: *mut wire_EnumType,
+    message: *mut wire_uint_8_list,
+) {
+    wire_test_enum_method__method__EnumType_impl(port_, that, message)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_static_enum_method__static_method__EnumType(
+    port_: i64,
+    message: *mut wire_uint_8_list,
+) {
+    wire_test_static_enum_method__static_method__EnumType_impl(port_, message)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_test_method__method__SharedStructInAllBlocks(
     port_: i64,
     that: *mut wire_SharedStructInAllBlocks,
@@ -136,6 +153,11 @@ pub extern "C" fn new_box_autoadd_cross_shared_struct_in_block_2_and_3(
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_enum_type() -> *mut wire_EnumType {
+    support::new_leak_box_ptr(wire_EnumType::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_f64(value: f64) -> *mut f64 {
     support::new_leak_box_ptr(value)
 }
@@ -227,6 +249,12 @@ impl Wire2Api<CrossSharedStructInBlock2And3> for *mut wire_CrossSharedStructInBl
     fn wire2api(self) -> CrossSharedStructInBlock2And3 {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<CrossSharedStructInBlock2And3>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<EnumType> for *mut wire_EnumType {
+    fn wire2api(self) -> EnumType {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<EnumType>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<f64> for *mut f64 {

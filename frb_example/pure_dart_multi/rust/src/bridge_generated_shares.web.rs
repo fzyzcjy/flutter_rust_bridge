@@ -19,6 +19,16 @@ pub fn wire_test_static_method__static_method__CrossSharedStructInBlock1And2(
 }
 
 #[wasm_bindgen]
+pub fn wire_test_enum_method__method__EnumType(port_: MessagePort, that: JsValue, message: String) {
+    wire_test_enum_method__method__EnumType_impl(port_, that, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_static_enum_method__static_method__EnumType(port_: MessagePort, message: String) {
+    wire_test_static_enum_method__static_method__EnumType_impl(port_, message)
+}
+
+#[wasm_bindgen]
 pub fn wire_test_method__method__SharedStructInAllBlocks(
     port_: MessagePort,
     that: JsValue,

@@ -60,6 +60,40 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
         argNames: ["message"],
       );
 
+  Future<String> testEnumMethodMethodEnumType({required EnumType that, required String message, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_enum_type(that);
+    var arg1 = _platform.api2wire_String(message);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_enum_method__method__EnumType(port_, arg0, arg1),
+      parseSuccessData: wire2api_String,
+      constMeta: kTestEnumMethodMethodEnumTypeConstMeta,
+      argValues: [that, message],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodEnumTypeConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_enum_method__method__EnumType",
+        argNames: ["that", "message"],
+      );
+
+  Future<String> testStaticEnumMethodStaticMethodEnumType({required String message, dynamic hint}) {
+    var arg0 = _platform.api2wire_String(message);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_static_enum_method__static_method__EnumType(port_, arg0),
+      parseSuccessData: wire2api_String,
+      constMeta: kTestStaticEnumMethodStaticMethodEnumTypeConstMeta,
+      argValues: [message],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodEnumTypeConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_static_enum_method__static_method__EnumType",
+        argNames: ["message"],
+      );
+
   Future<String> testMethodMethodSharedStructInAllBlocks(
       {required SharedStructInAllBlocks that, required String message, required int num, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_shared_struct_in_all_blocks(that);

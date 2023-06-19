@@ -42,6 +42,11 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_enum_type(EnumType raw) {
+    return api2wire_enum_type(raw);
+  }
+
+  @protected
   double api2wire_box_autoadd_f64(double raw) {
     return api2wire_f64(raw);
   }
@@ -197,6 +202,12 @@ class BridgeGeneratedSharesWasmModule implements WasmModule {
   external dynamic /* void */ wire_test_static_method__static_method__CrossSharedStructInBlock1And2(
       NativePortType port_, String message);
 
+  external dynamic /* void */ wire_test_enum_method__method__EnumType(
+      NativePortType port_, List<dynamic> that, String message);
+
+  external dynamic /* void */ wire_test_static_enum_method__static_method__EnumType(
+      NativePortType port_, String message);
+
   external dynamic /* void */ wire_test_method__method__SharedStructInAllBlocks(
       NativePortType port_, List<dynamic> that, String message, int num);
 
@@ -245,6 +256,12 @@ class BridgeGeneratedSharesWire extends FlutterRustBridgeWasmWireBase<BridgeGene
 
   void wire_test_static_method__static_method__CrossSharedStructInBlock1And2(NativePortType port_, String message) =>
       wasmModule.wire_test_static_method__static_method__CrossSharedStructInBlock1And2(port_, message);
+
+  void wire_test_enum_method__method__EnumType(NativePortType port_, List<dynamic> that, String message) =>
+      wasmModule.wire_test_enum_method__method__EnumType(port_, that, message);
+
+  void wire_test_static_enum_method__static_method__EnumType(NativePortType port_, String message) =>
+      wasmModule.wire_test_static_enum_method__static_method__EnumType(port_, message);
 
   void wire_test_method__method__SharedStructInAllBlocks(
           NativePortType port_, List<dynamic> that, String message, int num) =>

@@ -45,6 +45,13 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   }
 
   @protected
+  ffi.Pointer<wire_EnumType> api2wire_box_autoadd_enum_type(EnumType raw) {
+    final ptr = inner.new_box_autoadd_enum_type();
+    api_fill_to_wire_enum_type(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<ffi.Double> api2wire_box_autoadd_f64(double raw) {
     return inner.new_box_autoadd_f64(api2wire_f64(raw));
   }
@@ -155,6 +162,10 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   void api_fill_to_wire_box_autoadd_cross_shared_struct_in_block_2_and_3(
       CrossSharedStructInBlock2And3 apiObj, ffi.Pointer<wire_CrossSharedStructInBlock2And3> wireObj) {
     api_fill_to_wire_cross_shared_struct_in_block_2_and_3(apiObj, wireObj.ref);
+  }
+
+  void api_fill_to_wire_box_autoadd_enum_type(EnumType apiObj, ffi.Pointer<wire_EnumType> wireObj) {
+    api_fill_to_wire_enum_type(apiObj, wireObj.ref);
   }
 
   void api_fill_to_wire_box_autoadd_shared_struct_in_all_blocks(
@@ -389,6 +400,41 @@ class BridgeGeneratedSharesWire implements FlutterRustBridgeWireBase {
           'wire_test_static_method__static_method__CrossSharedStructInBlock1And2');
   late final _wire_test_static_method__static_method__CrossSharedStructInBlock1And2 =
       _wire_test_static_method__static_method__CrossSharedStructInBlock1And2Ptr
+          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_test_enum_method__method__EnumType(
+    int port_,
+    ffi.Pointer<wire_EnumType> that,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_enum_method__method__EnumType(
+      port_,
+      that,
+      message,
+    );
+  }
+
+  late final _wire_test_enum_method__method__EnumTypePtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_EnumType>, ffi.Pointer<wire_uint_8_list>)>>(
+      'wire_test_enum_method__method__EnumType');
+  late final _wire_test_enum_method__method__EnumType = _wire_test_enum_method__method__EnumTypePtr
+      .asFunction<void Function(int, ffi.Pointer<wire_EnumType>, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_test_static_enum_method__static_method__EnumType(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_static_enum_method__static_method__EnumType(
+      port_,
+      message,
+    );
+  }
+
+  late final _wire_test_static_enum_method__static_method__EnumTypePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_test_static_enum_method__static_method__EnumType');
+  late final _wire_test_static_enum_method__static_method__EnumType =
+      _wire_test_static_enum_method__static_method__EnumTypePtr
           .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_test_method__method__SharedStructInAllBlocks(
@@ -633,6 +679,15 @@ class BridgeGeneratedSharesWire implements FlutterRustBridgeWireBase {
   late final _new_box_autoadd_cross_shared_struct_in_block_2_and_3 =
       _new_box_autoadd_cross_shared_struct_in_block_2_and_3Ptr
           .asFunction<ffi.Pointer<wire_CrossSharedStructInBlock2And3> Function()>();
+
+  ffi.Pointer<wire_EnumType> new_box_autoadd_enum_type() {
+    return _new_box_autoadd_enum_type();
+  }
+
+  late final _new_box_autoadd_enum_typePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_EnumType> Function()>>('new_box_autoadd_enum_type');
+  late final _new_box_autoadd_enum_type =
+      _new_box_autoadd_enum_typePtr.asFunction<ffi.Pointer<wire_EnumType> Function()>();
 
   ffi.Pointer<ffi.Double> new_box_autoadd_f64(
     double value,
