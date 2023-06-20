@@ -112,3 +112,14 @@ pub fn test_unique_struct_1(
 pub fn test_struct_defined_in_block_1(custom: StructDefinedInBlock1) -> String {
     custom.name
 }
+
+pub fn test_enum_defined_in_block_1(custom: EnumDefinedInBlock1) -> String {
+    match custom {
+        EnumDefinedInBlock1::Quit => "quit".to_string(),
+        EnumDefinedInBlock1::Move { x, y } => format!("move_{}_{}", x, y),
+        EnumDefinedInBlock1::Write(content) => format!("write_{}", content),
+        EnumDefinedInBlock1::ChangeColor(r, g, b) => {
+            format!("changeColor_{}_{}_{}", r, g, b)
+        }
+    }
+}

@@ -63,23 +63,23 @@ fn main() {
     raw_opts.dart_decl_output = Some("../dart/lib/bridge_definitions.dart".into());
     // }
 
-    // if cfg!(feature = "c-output") {
-    raw_opts.c_output = Some(vec![
-        // each field should contain head file name
-        "./c_output_path/c_output_1.h".into(),
-        "./c_output_path/c_output_2.h".into(),
-        "./c_output_path/c_output_3.h".into(),
-    ]);
-    // }
+    if cfg!(feature = "c-output") {
+        raw_opts.c_output = Some(vec![
+            // each field should contain head file name
+            "./c_output_path/c_output_1.h".into(),
+            "./c_output_path/c_output_2.h".into(),
+            "./c_output_path/c_output_3.h".into(),
+        ]);
+    }
 
-    // if cfg!(feature = "extra-c-output-path") {
-    raw_opts.extra_c_output_path = Some(vec![
-        // For test, the below paths format are made a little different on purpose
-        "./extra_c_output_path_1/".into(),
-        "extra_c_output_path_2".into(),
-        "./extra_c_output_path_3".into(),
-    ]);
-    // }
+    if cfg!(feature = "extra-c-output-path") {
+        raw_opts.extra_c_output_path = Some(vec![
+            // For test, the below paths format are made a little different on purpose
+            "./extra_c_output_path_1/".into(),
+            "extra_c_output_path_2".into(),
+            "./extra_c_output_path_3".into(),
+        ]);
+    }
 
     // get opts from raw opts
     let (all_configs, all_symbols) = config_parse(raw_opts).unwrap();

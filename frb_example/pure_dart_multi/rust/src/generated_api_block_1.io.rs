@@ -91,6 +91,14 @@ pub extern "C" fn wire_test_struct_defined_in_block_1(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_test_enum_defined_in_block_1(
+    port_: i64,
+    custom: *mut wire_EnumDefinedInBlock1,
+) {
+    wire_test_enum_defined_in_block_1_impl(port_, custom)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_test_method__method__EnumDefinedInBlock1(
     port_: i64,
     that: *mut wire_EnumDefinedInBlock1,

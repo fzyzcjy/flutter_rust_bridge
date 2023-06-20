@@ -29,15 +29,12 @@ void main(List<String> args) {
 
   final enumList = [
     SharedComplexEnumInAllBlocks.enums(SharedWeekdaysEnumInAllBlocks.Friday),
-    SharedComplexEnumInAllBlocks.nested(SharedComplexEnumInAllBlocks.enums(
-        SharedWeekdaysEnumInAllBlocks.Friday)),
+    SharedComplexEnumInAllBlocks.nested(SharedComplexEnumInAllBlocks.enums(SharedWeekdaysEnumInAllBlocks.Friday)),
     SharedComplexEnumInAllBlocks.empty(),
-    SharedComplexEnumInAllBlocks.primitives(
-        int32: 1, float64: 2.0, boolean: true),
+    SharedComplexEnumInAllBlocks.primitives(int32: 1, float64: 2.0, boolean: true),
     SharedComplexEnumInAllBlocks.optional(null, Uint8List.fromList([1, 2])),
     SharedComplexEnumInAllBlocks.buffer(Float32List.fromList([1.1, 2.2])),
-    SharedComplexEnumInAllBlocks.bytesArray(
-        U8Array3(Uint8List.fromList([1, 2, 3])))
+    SharedComplexEnumInAllBlocks.bytesArray(U8Array3(Uint8List.fromList([1, 2, 3])))
   ];
   testTypeMethods(api1, apiShared);
   testApiBlock1(api1, apiShared, enumList);

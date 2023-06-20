@@ -881,6 +881,22 @@ class ApiBlock2ClassWire implements FlutterRustBridgeWireBase {
   late final _wire_test_struct_defined_in_block_2 =
       _wire_test_struct_defined_in_block_2Ptr.asFunction<void Function(int, ffi.Pointer<wire_StructDefinedInBlock2>)>();
 
+  void wire_test_enum_defined_in_block_2(
+    int port_,
+    ffi.Pointer<wire_EnumDefinedInBlock2> custom,
+  ) {
+    return _wire_test_enum_defined_in_block_2(
+      port_,
+      custom,
+    );
+  }
+
+  late final _wire_test_enum_defined_in_block_2Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_EnumDefinedInBlock2>)>>(
+          'wire_test_enum_defined_in_block_2');
+  late final _wire_test_enum_defined_in_block_2 =
+      _wire_test_enum_defined_in_block_2Ptr.asFunction<void Function(int, ffi.Pointer<wire_EnumDefinedInBlock2>)>();
+
   void wire_test_method__method__EnumDefinedInBlock2(
     int port_,
     ffi.Pointer<wire_EnumDefinedInBlock2> that,

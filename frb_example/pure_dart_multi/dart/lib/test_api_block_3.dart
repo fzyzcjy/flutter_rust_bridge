@@ -100,4 +100,11 @@ void testApiBlock3(ApiBlock3ClassImpl api3, BridgeGeneratedSharesImpl apiShared)
       "string",
     );
   });
+
+  test('dart call testEnumDefinedInBlock3', () async {
+    expect(
+      await api3.testEnumDefinedInBlock3(custom: EnumDefinedInBlock3.changeColor(1, 2, 3)),
+      "changeColor_1_2_3",
+    );
+  });
 }

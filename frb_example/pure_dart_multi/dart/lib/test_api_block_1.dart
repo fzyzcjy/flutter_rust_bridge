@@ -3,7 +3,8 @@ import 'package:test/test.dart';
 import 'bridge_definitions.dart';
 import 'bridge_generated_api_block_1.dart';
 
-void testApiBlock1(ApiBlock1ClassImpl api1, BridgeGeneratedSharesImpl apiShared, List<SharedComplexEnumInAllBlocks> enumList) {
+void testApiBlock1(
+    ApiBlock1ClassImpl api1, BridgeGeneratedSharesImpl apiShared, List<SharedComplexEnumInAllBlocks> enumList) {
   test('dart call testInbuiltTypeInBlock1', () async {
     expect(await api1.testInbuiltTypeInBlock1(a: 42, b: 100.0), 142.0);
   });
@@ -95,6 +96,13 @@ void testApiBlock1(ApiBlock1ClassImpl api1, BridgeGeneratedSharesImpl apiShared,
         custom: StructDefinedInBlock1(bridge: api1, name: "string"),
       ),
       "string",
+    );
+  });
+
+  test('dart call testEnumDefinedInBlock1', () async {
+    expect(
+      await api1.testEnumDefinedInBlock1(custom: EnumDefinedInBlock1.move(x: -1, y: 2)),
+      "move_-1_2",
     );
   });
 }

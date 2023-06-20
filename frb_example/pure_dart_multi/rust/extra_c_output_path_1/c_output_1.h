@@ -289,6 +289,8 @@ void wire_test_unique_struct_1(int64_t port_,
 
 void wire_test_struct_defined_in_block_1(int64_t port_, struct wire_StructDefinedInBlock1 *custom);
 
+void wire_test_enum_defined_in_block_1(int64_t port_, struct wire_EnumDefinedInBlock1 *custom);
+
 void wire_test_method__method__EnumDefinedInBlock1(int64_t port_,
                                                    struct wire_EnumDefinedInBlock1 *that,
                                                    struct wire_uint_8_list *message);
@@ -354,6 +356,7 @@ static int64_t dummy_method_to_enforce_bundling_ApiBlock1Class(void) {
     dummy_var ^= ((int64_t) (void*) wire_test_cross_shared_struct_in_block_1_for_1_and_2);
     dummy_var ^= ((int64_t) (void*) wire_test_unique_struct_1);
     dummy_var ^= ((int64_t) (void*) wire_test_struct_defined_in_block_1);
+    dummy_var ^= ((int64_t) (void*) wire_test_enum_defined_in_block_1);
     dummy_var ^= ((int64_t) (void*) wire_test_method__method__EnumDefinedInBlock1);
     dummy_var ^= ((int64_t) (void*) wire_test_static_method__static_method__EnumDefinedInBlock1);
     dummy_var ^= ((int64_t) (void*) wire_test_method__method__StructDefinedInBlock1);

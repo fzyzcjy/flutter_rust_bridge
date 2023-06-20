@@ -76,6 +76,11 @@ pub fn wire_test_struct_defined_in_block_3(port_: MessagePort, custom: JsValue) 
 }
 
 #[wasm_bindgen]
+pub fn wire_test_enum_defined_in_block_3(port_: MessagePort, custom: JsValue) {
+    wire_test_enum_defined_in_block_3_impl(port_, custom)
+}
+
+#[wasm_bindgen]
 pub fn wire_test_method__method__EnumDefinedInBlock3(
     port_: MessagePort,
     that: JsValue,

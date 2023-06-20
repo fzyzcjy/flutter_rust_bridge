@@ -112,6 +112,8 @@ class ApiBlock3ClassWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_test_struct_defined_in_block_3(NativePortType port_, List<dynamic> custom);
 
+  external dynamic /* void */ wire_test_enum_defined_in_block_3(NativePortType port_, List<dynamic> custom);
+
   external dynamic /* void */ wire_test_method__method__EnumDefinedInBlock3(
       NativePortType port_, List<dynamic> that, String message);
 
@@ -204,6 +206,9 @@ class ApiBlock3ClassWire extends FlutterRustBridgeWasmWireBase<ApiBlock3ClassWas
 
   void wire_test_struct_defined_in_block_3(NativePortType port_, List<dynamic> custom) =>
       wasmModule.wire_test_struct_defined_in_block_3(port_, custom);
+
+  void wire_test_enum_defined_in_block_3(NativePortType port_, List<dynamic> custom) =>
+      wasmModule.wire_test_enum_defined_in_block_3(port_, custom);
 
   void wire_test_method__method__EnumDefinedInBlock3(NativePortType port_, List<dynamic> that, String message) =>
       wasmModule.wire_test_method__method__EnumDefinedInBlock3(port_, that, message);

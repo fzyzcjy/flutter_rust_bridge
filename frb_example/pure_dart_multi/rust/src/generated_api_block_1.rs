@@ -226,6 +226,22 @@ fn wire_test_struct_defined_in_block_1_impl(
         },
     )
 }
+fn wire_test_enum_defined_in_block_1_impl(
+    port_: MessagePort,
+    custom: impl Wire2Api<EnumDefinedInBlock1> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_enum_defined_in_block_1",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_custom = custom.wire2api();
+            move |task_callback| Ok(test_enum_defined_in_block_1(api_custom))
+        },
+    )
+}
 fn wire_test_method__method__EnumDefinedInBlock1_impl(
     port_: MessagePort,
     that: impl Wire2Api<EnumDefinedInBlock1> + UnwindSafe,

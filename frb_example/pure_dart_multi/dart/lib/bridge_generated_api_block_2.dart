@@ -210,6 +210,22 @@ class ApiBlock2ClassImpl implements ApiBlock2Class {
         argNames: ["custom"],
       );
 
+  Future<String> testEnumDefinedInBlock2({required EnumDefinedInBlock2 custom, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_enum_defined_in_block_2(custom);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_enum_defined_in_block_2(port_, arg0),
+      parseSuccessData: _sharedImpl.wire2api_String,
+      constMeta: kTestEnumDefinedInBlock2ConstMeta,
+      argValues: [custom],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestEnumDefinedInBlock2ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_enum_defined_in_block_2",
+        argNames: ["custom"],
+      );
+
   Future<String> testMethodMethodEnumDefinedInBlock2(
       {required EnumDefinedInBlock2 that, required String message, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_enum_defined_in_block_2(that);

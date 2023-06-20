@@ -330,6 +330,10 @@ abstract class ApiBlock3Class {
 
   FlutterRustBridgeTaskConstMeta get kTestStructDefinedInBlock3ConstMeta;
 
+  Future<String> testEnumDefinedInBlock3({required EnumDefinedInBlock3 custom, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestEnumDefinedInBlock3ConstMeta;
+
   Future<String> testMethodMethodEnumDefinedInBlock3(
       {required EnumDefinedInBlock3 that, required String message, dynamic hint});
 
@@ -525,6 +529,10 @@ abstract class ApiBlock2Class {
   Future<String> testStructDefinedInBlock2({required StructDefinedInBlock2 custom, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kTestStructDefinedInBlock2ConstMeta;
+
+  Future<String> testEnumDefinedInBlock2({required EnumDefinedInBlock2 custom, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestEnumDefinedInBlock2ConstMeta;
 
   Future<String> testMethodMethodEnumDefinedInBlock2(
       {required EnumDefinedInBlock2 that, required String message, dynamic hint});
@@ -733,6 +741,10 @@ abstract class ApiBlock1Class {
   Future<String> testStructDefinedInBlock1({required StructDefinedInBlock1 custom, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kTestStructDefinedInBlock1ConstMeta;
+
+  Future<String> testEnumDefinedInBlock1({required EnumDefinedInBlock1 custom, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestEnumDefinedInBlock1ConstMeta;
 
   Future<String> testMethodMethodEnumDefinedInBlock1(
       {required EnumDefinedInBlock1 that, required String message, dynamic hint});
