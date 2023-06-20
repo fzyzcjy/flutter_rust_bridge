@@ -22,6 +22,13 @@ class ApiBlock1ClassPlatform extends FlutterRustBridgeBase<ApiBlock1ClassWire> {
 // Section: api2wire
 
   @protected
+  ffi.Pointer<wire_EnumDefinedInBlock1> api2wire_box_autoadd_enum_defined_in_block_1(EnumDefinedInBlock1 raw) {
+    final ptr = inner.new_box_autoadd_enum_defined_in_block_1();
+    _api_fill_to_wire_enum_defined_in_block_1(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<ffi.Int8> api2wire_box_autoadd_i8(int raw) {
     return inner.new_box_autoadd_i8(api2wire_i8(raw));
   }
@@ -59,6 +66,11 @@ class ApiBlock1ClassPlatform extends FlutterRustBridgeBase<ApiBlock1ClassWire> {
 
 // Section: api_fill_to_wire
 
+  void _api_fill_to_wire_box_autoadd_enum_defined_in_block_1(
+      EnumDefinedInBlock1 apiObj, ffi.Pointer<wire_EnumDefinedInBlock1> wireObj) {
+    _api_fill_to_wire_enum_defined_in_block_1(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_struct_defined_in_block_1(
       StructDefinedInBlock1 apiObj, ffi.Pointer<wire_StructDefinedInBlock1> wireObj) {
     _api_fill_to_wire_struct_defined_in_block_1(apiObj, wireObj.ref);
@@ -67,6 +79,40 @@ class ApiBlock1ClassPlatform extends FlutterRustBridgeBase<ApiBlock1ClassWire> {
   void _api_fill_to_wire_box_autoadd_struct_only_for_block_1(
       StructOnlyForBlock1 apiObj, ffi.Pointer<wire_StructOnlyForBlock1> wireObj) {
     _api_fill_to_wire_struct_only_for_block_1(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_enum_defined_in_block_1(EnumDefinedInBlock1 apiObj, wire_EnumDefinedInBlock1 wireObj) {
+    if (apiObj is EnumDefinedInBlock1_Quit) {
+      wireObj.tag = 0;
+      return;
+    }
+    if (apiObj is EnumDefinedInBlock1_Move) {
+      var pre_x = api2wire_i32(apiObj.x);
+      var pre_y = api2wire_i32(apiObj.y);
+      wireObj.tag = 1;
+      wireObj.kind = inner.inflate_EnumDefinedInBlock1_Move();
+      wireObj.kind.ref.Move.ref.x = pre_x;
+      wireObj.kind.ref.Move.ref.y = pre_y;
+      return;
+    }
+    if (apiObj is EnumDefinedInBlock1_Write) {
+      var pre_field0 = _sharedPlatform.api2wire_String(apiObj.field0);
+      wireObj.tag = 2;
+      wireObj.kind = inner.inflate_EnumDefinedInBlock1_Write();
+      wireObj.kind.ref.Write.ref.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is EnumDefinedInBlock1_ChangeColor) {
+      var pre_field0 = api2wire_i32(apiObj.field0);
+      var pre_field1 = api2wire_i32(apiObj.field1);
+      var pre_field2 = api2wire_i32(apiObj.field2);
+      wireObj.tag = 3;
+      wireObj.kind = inner.inflate_EnumDefinedInBlock1_ChangeColor();
+      wireObj.kind.ref.ChangeColor.ref.field0 = pre_field0;
+      wireObj.kind.ref.ChangeColor.ref.field1 = pre_field1;
+      wireObj.kind.ref.ChangeColor.ref.field2 = pre_field2;
+      return;
+    }
   }
 
   void _api_fill_to_wire_struct_defined_in_block_1(StructDefinedInBlock1 apiObj, wire_StructDefinedInBlock1 wireObj) {
@@ -139,39 +185,41 @@ class ApiBlock1ClassWire implements FlutterRustBridgeWireBase {
       _wire_test_static_method__static_method__CrossSharedStructInBlock1And2Ptr
           .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
-  void wire_test_enum_method__method__EnumType(
+  void wire_test_enum_method__method__SharedComplexEnumInAllBlocks(
     int port_,
-    ffi.Pointer<wire_EnumType> that,
+    ffi.Pointer<wire_SharedComplexEnumInAllBlocks> that,
     ffi.Pointer<wire_uint_8_list> message,
   ) {
-    return _wire_test_enum_method__method__EnumType(
+    return _wire_test_enum_method__method__SharedComplexEnumInAllBlocks(
       port_,
       that,
       message,
     );
   }
 
-  late final _wire_test_enum_method__method__EnumTypePtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_EnumType>, ffi.Pointer<wire_uint_8_list>)>>(
-      'wire_test_enum_method__method__EnumType');
-  late final _wire_test_enum_method__method__EnumType = _wire_test_enum_method__method__EnumTypePtr
-      .asFunction<void Function(int, ffi.Pointer<wire_EnumType>, ffi.Pointer<wire_uint_8_list>)>();
+  late final _wire_test_enum_method__method__SharedComplexEnumInAllBlocksPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_SharedComplexEnumInAllBlocks>,
+              ffi.Pointer<wire_uint_8_list>)>>('wire_test_enum_method__method__SharedComplexEnumInAllBlocks');
+  late final _wire_test_enum_method__method__SharedComplexEnumInAllBlocks =
+      _wire_test_enum_method__method__SharedComplexEnumInAllBlocksPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_SharedComplexEnumInAllBlocks>, ffi.Pointer<wire_uint_8_list>)>();
 
-  void wire_test_static_enum_method__static_method__EnumType(
+  void wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks(
     int port_,
     ffi.Pointer<wire_uint_8_list> message,
   ) {
-    return _wire_test_static_enum_method__static_method__EnumType(
+    return _wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks(
       port_,
       message,
     );
   }
 
-  late final _wire_test_static_enum_method__static_method__EnumTypePtr =
+  late final _wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocksPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
-          'wire_test_static_enum_method__static_method__EnumType');
-  late final _wire_test_static_enum_method__static_method__EnumType =
-      _wire_test_static_enum_method__static_method__EnumTypePtr
+          'wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks');
+  late final _wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks =
+      _wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocksPtr
           .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_test_method__method__SharedStructInAllBlocks(
@@ -249,39 +297,40 @@ class ApiBlock1ClassWire implements FlutterRustBridgeWireBase {
       _wire_test_static_method__static_method__SharedStructInBlock1And2Ptr
           .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
-  void wire_test_enum_method__method__Weekdays(
+  void wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks(
     int port_,
     int that,
     ffi.Pointer<wire_uint_8_list> message,
   ) {
-    return _wire_test_enum_method__method__Weekdays(
+    return _wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks(
       port_,
       that,
       message,
     );
   }
 
-  late final _wire_test_enum_method__method__WeekdaysPtr =
+  late final _wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocksPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Pointer<wire_uint_8_list>)>>(
-          'wire_test_enum_method__method__Weekdays');
-  late final _wire_test_enum_method__method__Weekdays =
-      _wire_test_enum_method__method__WeekdaysPtr.asFunction<void Function(int, int, ffi.Pointer<wire_uint_8_list>)>();
+          'wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks');
+  late final _wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks =
+      _wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocksPtr
+          .asFunction<void Function(int, int, ffi.Pointer<wire_uint_8_list>)>();
 
-  void wire_test_static_enum_method__static_method__Weekdays(
+  void wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks(
     int port_,
     ffi.Pointer<wire_uint_8_list> message,
   ) {
-    return _wire_test_static_enum_method__static_method__Weekdays(
+    return _wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks(
       port_,
       message,
     );
   }
 
-  late final _wire_test_static_enum_method__static_method__WeekdaysPtr =
+  late final _wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocksPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
-          'wire_test_static_enum_method__static_method__Weekdays');
-  late final _wire_test_static_enum_method__static_method__Weekdays =
-      _wire_test_static_enum_method__static_method__WeekdaysPtr
+          'wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks');
+  late final _wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks =
+      _wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocksPtr
           .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   void wire_test_method__method__CrossSharedStructInBlock2And3(
@@ -395,15 +444,6 @@ class ApiBlock1ClassWire implements FlutterRustBridgeWireBase {
       _wire_test_static_method__static_method__SharedStructOnlyForSyncTestPtr
           .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
-  ffi.Pointer<wire_EnumType> new_box_autoadd_enum_type() {
-    return _new_box_autoadd_enum_type();
-  }
-
-  late final _new_box_autoadd_enum_typePtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_EnumType> Function()>>('new_box_autoadd_enum_type');
-  late final _new_box_autoadd_enum_type =
-      _new_box_autoadd_enum_typePtr.asFunction<ffi.Pointer<wire_EnumType> Function()>();
-
   ffi.Pointer<ffi.Int32> new_box_autoadd_i32(
     int value,
   ) {
@@ -415,6 +455,16 @@ class ApiBlock1ClassWire implements FlutterRustBridgeWireBase {
   late final _new_box_autoadd_i32Ptr =
       _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int32> Function(ffi.Int32)>>('new_box_autoadd_i32');
   late final _new_box_autoadd_i32 = _new_box_autoadd_i32Ptr.asFunction<ffi.Pointer<ffi.Int32> Function(int)>();
+
+  ffi.Pointer<wire_SharedComplexEnumInAllBlocks> new_box_autoadd_shared_complex_enum_in_all_blocks() {
+    return _new_box_autoadd_shared_complex_enum_in_all_blocks();
+  }
+
+  late final _new_box_autoadd_shared_complex_enum_in_all_blocksPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_SharedComplexEnumInAllBlocks> Function()>>(
+          'new_box_autoadd_shared_complex_enum_in_all_blocks');
+  late final _new_box_autoadd_shared_complex_enum_in_all_blocks = _new_box_autoadd_shared_complex_enum_in_all_blocksPtr
+      .asFunction<ffi.Pointer<wire_SharedComplexEnumInAllBlocks> Function()>();
 
   ffi.Pointer<wire_SharedStructInAllBlocks> new_box_autoadd_shared_struct_in_all_blocks() {
     return _new_box_autoadd_shared_struct_in_all_blocks();
@@ -446,13 +496,15 @@ class ApiBlock1ClassWire implements FlutterRustBridgeWireBase {
   late final _new_box_autoadd_shared_struct_in_block_2_and_3 = _new_box_autoadd_shared_struct_in_block_2_and_3Ptr
       .asFunction<ffi.Pointer<wire_SharedStructInBlock2And3> Function()>();
 
-  ffi.Pointer<wire_EnumType> new_box_enum_type() {
-    return _new_box_enum_type();
+  ffi.Pointer<wire_SharedComplexEnumInAllBlocks> new_box_shared_complex_enum_in_all_blocks() {
+    return _new_box_shared_complex_enum_in_all_blocks();
   }
 
-  late final _new_box_enum_typePtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_EnumType> Function()>>('new_box_enum_type');
-  late final _new_box_enum_type = _new_box_enum_typePtr.asFunction<ffi.Pointer<wire_EnumType> Function()>();
+  late final _new_box_shared_complex_enum_in_all_blocksPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_SharedComplexEnumInAllBlocks> Function()>>(
+          'new_box_shared_complex_enum_in_all_blocks');
+  late final _new_box_shared_complex_enum_in_all_blocks = _new_box_shared_complex_enum_in_all_blocksPtr
+      .asFunction<ffi.Pointer<wire_SharedComplexEnumInAllBlocks> Function()>();
 
   ffi.Pointer<wire_float_32_list> new_float_32_list(
     int len,
@@ -466,17 +518,19 @@ class ApiBlock1ClassWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_float_32_list> Function(ffi.Int32)>>('new_float_32_list');
   late final _new_float_32_list = _new_float_32_listPtr.asFunction<ffi.Pointer<wire_float_32_list> Function(int)>();
 
-  ffi.Pointer<wire_list_enum_type> new_list_enum_type(
+  ffi.Pointer<wire_list_shared_complex_enum_in_all_blocks> new_list_shared_complex_enum_in_all_blocks(
     int len,
   ) {
-    return _new_list_enum_type(
+    return _new_list_shared_complex_enum_in_all_blocks(
       len,
     );
   }
 
-  late final _new_list_enum_typePtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_enum_type> Function(ffi.Int32)>>('new_list_enum_type');
-  late final _new_list_enum_type = _new_list_enum_typePtr.asFunction<ffi.Pointer<wire_list_enum_type> Function(int)>();
+  late final _new_list_shared_complex_enum_in_all_blocksPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_shared_complex_enum_in_all_blocks> Function(ffi.Int32)>>(
+          'new_list_shared_complex_enum_in_all_blocks');
+  late final _new_list_shared_complex_enum_in_all_blocks = _new_list_shared_complex_enum_in_all_blocksPtr
+      .asFunction<ffi.Pointer<wire_list_shared_complex_enum_in_all_blocks> Function(int)>();
 
   ffi.Pointer<wire_uint_8_list> new_uint_8_list(
     int len,
@@ -490,56 +544,65 @@ class ApiBlock1ClassWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_uint_8_list> Function(ffi.Int32)>>('new_uint_8_list');
   late final _new_uint_8_list = _new_uint_8_listPtr.asFunction<ffi.Pointer<wire_uint_8_list> Function(int)>();
 
-  ffi.Pointer<EnumTypeKind> inflate_EnumType_Primitives() {
-    return _inflate_EnumType_Primitives();
+  ffi.Pointer<SharedComplexEnumInAllBlocksKind> inflate_SharedComplexEnumInAllBlocks_Primitives() {
+    return _inflate_SharedComplexEnumInAllBlocks_Primitives();
   }
 
-  late final _inflate_EnumType_PrimitivesPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<EnumTypeKind> Function()>>('inflate_EnumType_Primitives');
-  late final _inflate_EnumType_Primitives =
-      _inflate_EnumType_PrimitivesPtr.asFunction<ffi.Pointer<EnumTypeKind> Function()>();
+  late final _inflate_SharedComplexEnumInAllBlocks_PrimitivesPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<SharedComplexEnumInAllBlocksKind> Function()>>(
+          'inflate_SharedComplexEnumInAllBlocks_Primitives');
+  late final _inflate_SharedComplexEnumInAllBlocks_Primitives = _inflate_SharedComplexEnumInAllBlocks_PrimitivesPtr
+      .asFunction<ffi.Pointer<SharedComplexEnumInAllBlocksKind> Function()>();
 
-  ffi.Pointer<EnumTypeKind> inflate_EnumType_Nested() {
-    return _inflate_EnumType_Nested();
+  ffi.Pointer<SharedComplexEnumInAllBlocksKind> inflate_SharedComplexEnumInAllBlocks_Nested() {
+    return _inflate_SharedComplexEnumInAllBlocks_Nested();
   }
 
-  late final _inflate_EnumType_NestedPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<EnumTypeKind> Function()>>('inflate_EnumType_Nested');
-  late final _inflate_EnumType_Nested = _inflate_EnumType_NestedPtr.asFunction<ffi.Pointer<EnumTypeKind> Function()>();
+  late final _inflate_SharedComplexEnumInAllBlocks_NestedPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<SharedComplexEnumInAllBlocksKind> Function()>>(
+          'inflate_SharedComplexEnumInAllBlocks_Nested');
+  late final _inflate_SharedComplexEnumInAllBlocks_Nested = _inflate_SharedComplexEnumInAllBlocks_NestedPtr
+      .asFunction<ffi.Pointer<SharedComplexEnumInAllBlocksKind> Function()>();
 
-  ffi.Pointer<EnumTypeKind> inflate_EnumType_Optional() {
-    return _inflate_EnumType_Optional();
+  ffi.Pointer<SharedComplexEnumInAllBlocksKind> inflate_SharedComplexEnumInAllBlocks_Optional() {
+    return _inflate_SharedComplexEnumInAllBlocks_Optional();
   }
 
-  late final _inflate_EnumType_OptionalPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<EnumTypeKind> Function()>>('inflate_EnumType_Optional');
-  late final _inflate_EnumType_Optional =
-      _inflate_EnumType_OptionalPtr.asFunction<ffi.Pointer<EnumTypeKind> Function()>();
+  late final _inflate_SharedComplexEnumInAllBlocks_OptionalPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<SharedComplexEnumInAllBlocksKind> Function()>>(
+          'inflate_SharedComplexEnumInAllBlocks_Optional');
+  late final _inflate_SharedComplexEnumInAllBlocks_Optional = _inflate_SharedComplexEnumInAllBlocks_OptionalPtr
+      .asFunction<ffi.Pointer<SharedComplexEnumInAllBlocksKind> Function()>();
 
-  ffi.Pointer<EnumTypeKind> inflate_EnumType_Buffer() {
-    return _inflate_EnumType_Buffer();
+  ffi.Pointer<SharedComplexEnumInAllBlocksKind> inflate_SharedComplexEnumInAllBlocks_Buffer() {
+    return _inflate_SharedComplexEnumInAllBlocks_Buffer();
   }
 
-  late final _inflate_EnumType_BufferPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<EnumTypeKind> Function()>>('inflate_EnumType_Buffer');
-  late final _inflate_EnumType_Buffer = _inflate_EnumType_BufferPtr.asFunction<ffi.Pointer<EnumTypeKind> Function()>();
+  late final _inflate_SharedComplexEnumInAllBlocks_BufferPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<SharedComplexEnumInAllBlocksKind> Function()>>(
+          'inflate_SharedComplexEnumInAllBlocks_Buffer');
+  late final _inflate_SharedComplexEnumInAllBlocks_Buffer = _inflate_SharedComplexEnumInAllBlocks_BufferPtr
+      .asFunction<ffi.Pointer<SharedComplexEnumInAllBlocksKind> Function()>();
 
-  ffi.Pointer<EnumTypeKind> inflate_EnumType_Enums() {
-    return _inflate_EnumType_Enums();
+  ffi.Pointer<SharedComplexEnumInAllBlocksKind> inflate_SharedComplexEnumInAllBlocks_Enums() {
+    return _inflate_SharedComplexEnumInAllBlocks_Enums();
   }
 
-  late final _inflate_EnumType_EnumsPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<EnumTypeKind> Function()>>('inflate_EnumType_Enums');
-  late final _inflate_EnumType_Enums = _inflate_EnumType_EnumsPtr.asFunction<ffi.Pointer<EnumTypeKind> Function()>();
+  late final _inflate_SharedComplexEnumInAllBlocks_EnumsPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<SharedComplexEnumInAllBlocksKind> Function()>>(
+          'inflate_SharedComplexEnumInAllBlocks_Enums');
+  late final _inflate_SharedComplexEnumInAllBlocks_Enums = _inflate_SharedComplexEnumInAllBlocks_EnumsPtr
+      .asFunction<ffi.Pointer<SharedComplexEnumInAllBlocksKind> Function()>();
 
-  ffi.Pointer<EnumTypeKind> inflate_EnumType_BytesArray() {
-    return _inflate_EnumType_BytesArray();
+  ffi.Pointer<SharedComplexEnumInAllBlocksKind> inflate_SharedComplexEnumInAllBlocks_BytesArray() {
+    return _inflate_SharedComplexEnumInAllBlocks_BytesArray();
   }
 
-  late final _inflate_EnumType_BytesArrayPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<EnumTypeKind> Function()>>('inflate_EnumType_BytesArray');
-  late final _inflate_EnumType_BytesArray =
-      _inflate_EnumType_BytesArrayPtr.asFunction<ffi.Pointer<EnumTypeKind> Function()>();
+  late final _inflate_SharedComplexEnumInAllBlocks_BytesArrayPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<SharedComplexEnumInAllBlocksKind> Function()>>(
+          'inflate_SharedComplexEnumInAllBlocks_BytesArray');
+  late final _inflate_SharedComplexEnumInAllBlocks_BytesArray = _inflate_SharedComplexEnumInAllBlocks_BytesArrayPtr
+      .asFunction<ffi.Pointer<SharedComplexEnumInAllBlocksKind> Function()>();
 
   void free_WireSyncReturn(
     WireSyncReturn ptr,
@@ -809,6 +872,42 @@ class ApiBlock1ClassWire implements FlutterRustBridgeWireBase {
   late final _wire_test_struct_defined_in_block_1 =
       _wire_test_struct_defined_in_block_1Ptr.asFunction<void Function(int, ffi.Pointer<wire_StructDefinedInBlock1>)>();
 
+  void wire_test_method__method__EnumDefinedInBlock1(
+    int port_,
+    ffi.Pointer<wire_EnumDefinedInBlock1> that,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_method__method__EnumDefinedInBlock1(
+      port_,
+      that,
+      message,
+    );
+  }
+
+  late final _wire_test_method__method__EnumDefinedInBlock1Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_EnumDefinedInBlock1>,
+              ffi.Pointer<wire_uint_8_list>)>>('wire_test_method__method__EnumDefinedInBlock1');
+  late final _wire_test_method__method__EnumDefinedInBlock1 = _wire_test_method__method__EnumDefinedInBlock1Ptr
+      .asFunction<void Function(int, ffi.Pointer<wire_EnumDefinedInBlock1>, ffi.Pointer<wire_uint_8_list>)>();
+
+  void wire_test_static_method__static_method__EnumDefinedInBlock1(
+    int port_,
+    ffi.Pointer<wire_uint_8_list> message,
+  ) {
+    return _wire_test_static_method__static_method__EnumDefinedInBlock1(
+      port_,
+      message,
+    );
+  }
+
+  late final _wire_test_static_method__static_method__EnumDefinedInBlock1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
+          'wire_test_static_method__static_method__EnumDefinedInBlock1');
+  late final _wire_test_static_method__static_method__EnumDefinedInBlock1 =
+      _wire_test_static_method__static_method__EnumDefinedInBlock1Ptr
+          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
+
   void wire_test_method__method__StructDefinedInBlock1(
     int port_,
     ffi.Pointer<wire_StructDefinedInBlock1> that,
@@ -883,6 +982,16 @@ class ApiBlock1ClassWire implements FlutterRustBridgeWireBase {
       _wire_test_static_method__static_method__StructOnlyForBlock1Ptr
           .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
+  ffi.Pointer<wire_EnumDefinedInBlock1> new_box_autoadd_enum_defined_in_block_1() {
+    return _new_box_autoadd_enum_defined_in_block_1();
+  }
+
+  late final _new_box_autoadd_enum_defined_in_block_1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_EnumDefinedInBlock1> Function()>>(
+          'new_box_autoadd_enum_defined_in_block_1');
+  late final _new_box_autoadd_enum_defined_in_block_1 =
+      _new_box_autoadd_enum_defined_in_block_1Ptr.asFunction<ffi.Pointer<wire_EnumDefinedInBlock1> Function()>();
+
   ffi.Pointer<ffi.Int8> new_box_autoadd_i8(
     int value,
   ) {
@@ -914,6 +1023,34 @@ class ApiBlock1ClassWire implements FlutterRustBridgeWireBase {
           'new_box_autoadd_struct_only_for_block_1');
   late final _new_box_autoadd_struct_only_for_block_1 =
       _new_box_autoadd_struct_only_for_block_1Ptr.asFunction<ffi.Pointer<wire_StructOnlyForBlock1> Function()>();
+
+  ffi.Pointer<EnumDefinedInBlock1Kind> inflate_EnumDefinedInBlock1_Move() {
+    return _inflate_EnumDefinedInBlock1_Move();
+  }
+
+  late final _inflate_EnumDefinedInBlock1_MovePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumDefinedInBlock1Kind> Function()>>('inflate_EnumDefinedInBlock1_Move');
+  late final _inflate_EnumDefinedInBlock1_Move =
+      _inflate_EnumDefinedInBlock1_MovePtr.asFunction<ffi.Pointer<EnumDefinedInBlock1Kind> Function()>();
+
+  ffi.Pointer<EnumDefinedInBlock1Kind> inflate_EnumDefinedInBlock1_Write() {
+    return _inflate_EnumDefinedInBlock1_Write();
+  }
+
+  late final _inflate_EnumDefinedInBlock1_WritePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumDefinedInBlock1Kind> Function()>>('inflate_EnumDefinedInBlock1_Write');
+  late final _inflate_EnumDefinedInBlock1_Write =
+      _inflate_EnumDefinedInBlock1_WritePtr.asFunction<ffi.Pointer<EnumDefinedInBlock1Kind> Function()>();
+
+  ffi.Pointer<EnumDefinedInBlock1Kind> inflate_EnumDefinedInBlock1_ChangeColor() {
+    return _inflate_EnumDefinedInBlock1_ChangeColor();
+  }
+
+  late final _inflate_EnumDefinedInBlock1_ChangeColorPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<EnumDefinedInBlock1Kind> Function()>>(
+          'inflate_EnumDefinedInBlock1_ChangeColor');
+  late final _inflate_EnumDefinedInBlock1_ChangeColor =
+      _inflate_EnumDefinedInBlock1_ChangeColorPtr.asFunction<ffi.Pointer<EnumDefinedInBlock1Kind> Function()>();
 
   void wire_test_method__method__StructOnlyForBlock2(
     int port_,
@@ -994,9 +1131,9 @@ class ApiBlock1ClassWire implements FlutterRustBridgeWireBase {
 
 final class _Dart_Handle extends ffi.Opaque {}
 
-final class wire_EnumType_Empty extends ffi.Opaque {}
+final class wire_SharedComplexEnumInAllBlocks_Empty extends ffi.Opaque {}
 
-final class wire_EnumType_Primitives extends ffi.Struct {
+final class wire_SharedComplexEnumInAllBlocks_Primitives extends ffi.Struct {
   @ffi.Int32()
   external int int32;
 
@@ -1007,42 +1144,42 @@ final class wire_EnumType_Primitives extends ffi.Struct {
   external bool boolean;
 }
 
-final class wire_EnumType_Nested extends ffi.Struct {
-  external ffi.Pointer<wire_EnumType> field0;
+final class wire_SharedComplexEnumInAllBlocks_Nested extends ffi.Struct {
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks> field0;
 }
 
-final class EnumTypeKind extends ffi.Union {
-  external ffi.Pointer<wire_EnumType_Empty> Empty;
+final class SharedComplexEnumInAllBlocksKind extends ffi.Union {
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Empty> Empty;
 
-  external ffi.Pointer<wire_EnumType_Primitives> Primitives;
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Primitives> Primitives;
 
-  external ffi.Pointer<wire_EnumType_Nested> Nested;
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Nested> Nested;
 
-  external ffi.Pointer<wire_EnumType_Optional> Optional;
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Optional> Optional;
 
-  external ffi.Pointer<wire_EnumType_Buffer> Buffer;
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Buffer> Buffer;
 
-  external ffi.Pointer<wire_EnumType_Enums> Enums;
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Enums> Enums;
 
-  external ffi.Pointer<wire_EnumType_BytesArray> BytesArray;
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_BytesArray> BytesArray;
 }
 
-final class wire_EnumType_Optional extends ffi.Struct {
+final class wire_SharedComplexEnumInAllBlocks_Optional extends ffi.Struct {
   external ffi.Pointer<ffi.Int32> field0;
 
   external ffi.Pointer<wire_uint_8_list> field1;
 }
 
-final class wire_EnumType_Buffer extends ffi.Struct {
+final class wire_SharedComplexEnumInAllBlocks_Buffer extends ffi.Struct {
   external ffi.Pointer<wire_float_32_list> field0;
 }
 
-final class wire_EnumType_Enums extends ffi.Struct {
+final class wire_SharedComplexEnumInAllBlocks_Enums extends ffi.Struct {
   @ffi.Int32()
   external int field0;
 }
 
-final class wire_EnumType_BytesArray extends ffi.Struct {
+final class wire_SharedComplexEnumInAllBlocks_BytesArray extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> field0;
 }
 
@@ -1070,6 +1207,48 @@ final class wire_StructOnlyForBlock1 extends ffi.Struct {
 
 final class wire_StructDefinedInBlock1 extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> name;
+}
+
+final class wire_EnumDefinedInBlock1_Quit extends ffi.Opaque {}
+
+final class wire_EnumDefinedInBlock1_Move extends ffi.Struct {
+  @ffi.Int32()
+  external int x;
+
+  @ffi.Int32()
+  external int y;
+}
+
+final class wire_EnumDefinedInBlock1_Write extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> field0;
+}
+
+final class wire_EnumDefinedInBlock1_ChangeColor extends ffi.Struct {
+  @ffi.Int32()
+  external int field0;
+
+  @ffi.Int32()
+  external int field1;
+
+  @ffi.Int32()
+  external int field2;
+}
+
+final class EnumDefinedInBlock1Kind extends ffi.Union {
+  external ffi.Pointer<wire_EnumDefinedInBlock1_Quit> Quit;
+
+  external ffi.Pointer<wire_EnumDefinedInBlock1_Move> Move;
+
+  external ffi.Pointer<wire_EnumDefinedInBlock1_Write> Write;
+
+  external ffi.Pointer<wire_EnumDefinedInBlock1_ChangeColor> ChangeColor;
+}
+
+final class wire_EnumDefinedInBlock1 extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<EnumDefinedInBlock1Kind> kind;
 }
 
 final class wire_StructOnlyForBlock2 extends ffi.Struct {

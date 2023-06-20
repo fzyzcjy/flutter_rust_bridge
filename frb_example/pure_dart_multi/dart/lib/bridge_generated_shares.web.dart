@@ -42,11 +42,6 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   }
 
   @protected
-  List<dynamic> api2wire_box_autoadd_enum_type(EnumType raw) {
-    return api2wire_enum_type(raw);
-  }
-
-  @protected
   double api2wire_box_autoadd_f64(double raw) {
     return api2wire_f64(raw);
   }
@@ -54,6 +49,11 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   @protected
   int api2wire_box_autoadd_i32(int raw) {
     return api2wire_i32(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_shared_complex_enum_in_all_blocks(SharedComplexEnumInAllBlocks raw) {
+    return api2wire_shared_complex_enum_in_all_blocks(raw);
   }
 
   @protected
@@ -77,8 +77,8 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   }
 
   @protected
-  List<dynamic> api2wire_box_enum_type(EnumType raw) {
-    return api2wire_enum_type(raw);
+  List<dynamic> api2wire_box_shared_complex_enum_in_all_blocks(SharedComplexEnumInAllBlocks raw) {
+    return api2wire_shared_complex_enum_in_all_blocks(raw);
   }
 
   @protected
@@ -92,40 +92,13 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   }
 
   @protected
-  List<dynamic> api2wire_enum_type(EnumType raw) {
-    if (raw is EnumType_Empty) {
-      return [0];
-    }
-    if (raw is EnumType_Primitives) {
-      return [1, api2wire_i32(raw.int32), api2wire_f64(raw.float64), api2wire_bool(raw.boolean)];
-    }
-    if (raw is EnumType_Nested) {
-      return [2, api2wire_box_enum_type(raw.field0)];
-    }
-    if (raw is EnumType_Optional) {
-      return [3, api2wire_opt_box_autoadd_i32(raw.field0), api2wire_opt_uint_8_list(raw.field1)];
-    }
-    if (raw is EnumType_Buffer) {
-      return [4, api2wire_ZeroCopyBuffer_Float32List(raw.field0)];
-    }
-    if (raw is EnumType_Enums) {
-      return [5, api2wire_weekdays(raw.field0)];
-    }
-    if (raw is EnumType_BytesArray) {
-      return [6, api2wire_u8_array_3(raw.field0)];
-    }
-
-    throw Exception('unreachable');
-  }
-
-  @protected
   Float32List api2wire_float_32_list(Float32List raw) {
     return raw;
   }
 
   @protected
-  List<dynamic> api2wire_list_enum_type(List<EnumType> raw) {
-    return raw.map(api2wire_enum_type).toList();
+  List<dynamic> api2wire_list_shared_complex_enum_in_all_blocks(List<SharedComplexEnumInAllBlocks> raw) {
+    return raw.map(api2wire_shared_complex_enum_in_all_blocks).toList();
   }
 
   @protected
@@ -134,8 +107,8 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   }
 
   @protected
-  List<dynamic>? api2wire_opt_list_enum_type(List<EnumType>? raw) {
-    return raw == null ? null : api2wire_list_enum_type(raw);
+  List<dynamic>? api2wire_opt_list_shared_complex_enum_in_all_blocks(List<SharedComplexEnumInAllBlocks>? raw) {
+    return raw == null ? null : api2wire_list_shared_complex_enum_in_all_blocks(raw);
   }
 
   @protected
@@ -144,12 +117,39 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   }
 
   @protected
+  List<dynamic> api2wire_shared_complex_enum_in_all_blocks(SharedComplexEnumInAllBlocks raw) {
+    if (raw is SharedComplexEnumInAllBlocks_Empty) {
+      return [0];
+    }
+    if (raw is SharedComplexEnumInAllBlocks_Primitives) {
+      return [1, api2wire_i32(raw.int32), api2wire_f64(raw.float64), api2wire_bool(raw.boolean)];
+    }
+    if (raw is SharedComplexEnumInAllBlocks_Nested) {
+      return [2, api2wire_box_shared_complex_enum_in_all_blocks(raw.field0)];
+    }
+    if (raw is SharedComplexEnumInAllBlocks_Optional) {
+      return [3, api2wire_opt_box_autoadd_i32(raw.field0), api2wire_opt_uint_8_list(raw.field1)];
+    }
+    if (raw is SharedComplexEnumInAllBlocks_Buffer) {
+      return [4, api2wire_ZeroCopyBuffer_Float32List(raw.field0)];
+    }
+    if (raw is SharedComplexEnumInAllBlocks_Enums) {
+      return [5, api2wire_shared_weekdays_enum_in_all_blocks(raw.field0)];
+    }
+    if (raw is SharedComplexEnumInAllBlocks_BytesArray) {
+      return [6, api2wire_u8_array_3(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
   List<dynamic> api2wire_shared_struct_in_all_blocks(SharedStructInAllBlocks raw) {
     return [
       api2wire_i32(raw.id),
       api2wire_f64(raw.num),
       api2wire_String(raw.name),
-      api2wire_opt_list_enum_type(raw.enumList)
+      api2wire_opt_list_shared_complex_enum_in_all_blocks(raw.enumList)
     ];
   }
 
@@ -182,7 +182,6 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   Uint8List api2wire_uint_8_list(Uint8List raw) {
     return raw;
   }
-
 // Section: finalizer
 }
 
@@ -202,10 +201,10 @@ class BridgeGeneratedSharesWasmModule implements WasmModule {
   external dynamic /* void */ wire_test_static_method__static_method__CrossSharedStructInBlock1And2(
       NativePortType port_, String message);
 
-  external dynamic /* void */ wire_test_enum_method__method__EnumType(
+  external dynamic /* void */ wire_test_enum_method__method__SharedComplexEnumInAllBlocks(
       NativePortType port_, List<dynamic> that, String message);
 
-  external dynamic /* void */ wire_test_static_enum_method__static_method__EnumType(
+  external dynamic /* void */ wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks(
       NativePortType port_, String message);
 
   external dynamic /* void */ wire_test_method__method__SharedStructInAllBlocks(
@@ -220,9 +219,10 @@ class BridgeGeneratedSharesWasmModule implements WasmModule {
   external dynamic /* void */ wire_test_static_method__static_method__SharedStructInBlock1And2(
       NativePortType port_, String message);
 
-  external dynamic /* void */ wire_test_enum_method__method__Weekdays(NativePortType port_, int that, String message);
+  external dynamic /* void */ wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks(
+      NativePortType port_, int that, String message);
 
-  external dynamic /* void */ wire_test_static_enum_method__static_method__Weekdays(
+  external dynamic /* void */ wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks(
       NativePortType port_, String message);
 
   external dynamic /* void */ wire_test_method__method__CrossSharedStructInBlock2And3(
@@ -257,11 +257,13 @@ class BridgeGeneratedSharesWire extends FlutterRustBridgeWasmWireBase<BridgeGene
   void wire_test_static_method__static_method__CrossSharedStructInBlock1And2(NativePortType port_, String message) =>
       wasmModule.wire_test_static_method__static_method__CrossSharedStructInBlock1And2(port_, message);
 
-  void wire_test_enum_method__method__EnumType(NativePortType port_, List<dynamic> that, String message) =>
-      wasmModule.wire_test_enum_method__method__EnumType(port_, that, message);
+  void wire_test_enum_method__method__SharedComplexEnumInAllBlocks(
+          NativePortType port_, List<dynamic> that, String message) =>
+      wasmModule.wire_test_enum_method__method__SharedComplexEnumInAllBlocks(port_, that, message);
 
-  void wire_test_static_enum_method__static_method__EnumType(NativePortType port_, String message) =>
-      wasmModule.wire_test_static_enum_method__static_method__EnumType(port_, message);
+  void wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks(
+          NativePortType port_, String message) =>
+      wasmModule.wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks(port_, message);
 
   void wire_test_method__method__SharedStructInAllBlocks(
           NativePortType port_, List<dynamic> that, String message, int num) =>
@@ -276,11 +278,12 @@ class BridgeGeneratedSharesWire extends FlutterRustBridgeWasmWireBase<BridgeGene
   void wire_test_static_method__static_method__SharedStructInBlock1And2(NativePortType port_, String message) =>
       wasmModule.wire_test_static_method__static_method__SharedStructInBlock1And2(port_, message);
 
-  void wire_test_enum_method__method__Weekdays(NativePortType port_, int that, String message) =>
-      wasmModule.wire_test_enum_method__method__Weekdays(port_, that, message);
+  void wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks(NativePortType port_, int that, String message) =>
+      wasmModule.wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks(port_, that, message);
 
-  void wire_test_static_enum_method__static_method__Weekdays(NativePortType port_, String message) =>
-      wasmModule.wire_test_static_enum_method__static_method__Weekdays(port_, message);
+  void wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks(
+          NativePortType port_, String message) =>
+      wasmModule.wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks(port_, message);
 
   void wire_test_method__method__CrossSharedStructInBlock2And3(
           NativePortType port_, List<dynamic> that, String message) =>

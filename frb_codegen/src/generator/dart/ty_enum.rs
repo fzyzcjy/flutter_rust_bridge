@@ -1,7 +1,8 @@
 use itertools::Itertools;
 
 use crate::generator::dart::dart_comments;
-use crate::generator::dart::ty::*;
+use crate::generator::dart::func::get_api2wire_prefix;
+use crate::generator::dart::{ty::*, COMMON_API2WIRE};
 use crate::ir::*;
 use crate::target::Acc;
 use crate::type_dart_generator_struct;
@@ -11,8 +12,12 @@ type_dart_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
     fn api2wire_body(
         &self,
-        _shared_dart_api2wire_funcs: &Option<Acc<String>>,
+        shared_dart_api2wire_funcs: &Option<Acc<String>>,
     ) -> Acc<Option<String>> {
+        // NOTE: `COMMON_API2WIRE` should have been fetched by
+        // `DartApiSpec` according to the whole generation routine,
+        // so use it here directly is ok.
+        let common_api2wire_body = COMMON_API2WIRE.with(|data| data.borrow_mut().clone());
         let variants = (self.ir.get(self.context.ir_file).variants())
             .iter()
             .enumerate()
@@ -22,8 +27,18 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                     IrVariantKind::Struct(st) => (st.fields)
                         .iter()
                         .map(|field| {
+                            let func = format!("api2wire_{}", field.ty.safe_ident());
+                            let prefix = get_api2wire_prefix(
+                                &common_api2wire_body,
+                                &func,
+                                shared_dart_api2wire_funcs,
+                                self.context.ir_file,
+                                field,
+                                false,
+                            );
                             format!(
-                                ",api2wire_{}(raw.{})",
+                                ",{}api2wire_{}(raw.{})",
+                                prefix,
                                 field.ty.safe_ident(),
                                 field.name.dart_style()
                             )
@@ -54,7 +69,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
 
     fn api_fill_to_wire_body(
         &self,
-        _shared_dart_api2wire_funcs: &Option<Acc<String>>,
+        shared_dart_api2wire_funcs: &Option<Acc<String>>,
     ) -> Option<String> {
         Some(
             self.ir
@@ -69,14 +84,30 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                             variant.wrapper_name, idx
                         )
                     } else {
+                        // NOTE: `COMMON_API2WIRE` should have been fetched by
+                        // `DartApiSpec` according to the whole generation routine,
+                        // so use it here directly is ok.
+                        let common_api2wire_body =
+                            COMMON_API2WIRE.with(|data| data.borrow_mut().clone());
+
                         let pre_field: Vec<_> = match &variant.kind {
                             IrVariantKind::Struct(st) => st
                                 .fields
                                 .iter()
                                 .map(|field| {
+                                    let func = format!("api2wire_{}", field.ty.safe_ident());
+                                    let prefix = get_api2wire_prefix(
+                                        &common_api2wire_body,
+                                        &func,
+                                        shared_dart_api2wire_funcs,
+                                        self.context.ir_file,
+                                        field,
+                                        false,
+                                    );
                                     format!(
-                                        "var pre_{} = api2wire_{}(apiObj.{});",
+                                        "var pre_{} = {}api2wire_{}(apiObj.{});",
                                         field.name.rust_style(),
+                                        prefix,
                                         field.ty.safe_ident(),
                                         field.name.dart_style()
                                     )

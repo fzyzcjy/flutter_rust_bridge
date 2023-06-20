@@ -5,6 +5,24 @@ use crate::shared_type_module::SharedStructInAllBlocks;
 use crate::shared_type_module::{CrossSharedStructInBlock1And2, SharedStructInBlock1And2};
 use crate::shared_type_module::{CrossSharedStructInBlock2And3, SharedStructInBlock2And3};
 
+pub enum EnumDefinedInBlock2 {
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+    ChangeColor(i32, i32, i32),
+}
+
+impl EnumDefinedInBlock2 {
+    #[allow(unused)]
+    pub fn test_method(&self, message: String) -> String {
+        message
+    }
+    #[allow(unused)]
+    pub fn test_static_method(message: String) -> String {
+        message
+    }
+}
+
 pub struct StructDefinedInBlock2 {
     pub name: String,
 }

@@ -16,7 +16,7 @@ use std::cell::RefCell;
 // this variable should be `none` for single block case, and not none for multi-blocks case.
 thread_local!(pub static SHARED_MODULE: RefCell<Option<String>> = RefCell::new(None));
 
-thread_local!(static SHARED_TYPES_INPUT: RefCell<HashSet<IrType>> = RefCell::new(HashSet::new())); //  shared types among all regular API blocks, in context of function paramters
+thread_local!(pub static SHARED_TYPES_INPUT: RefCell<HashSet<IrType>> = RefCell::new(HashSet::new())); //  shared types among all regular API blocks, in context of function paramters
 thread_local!(static FETCHED_FOR_SHARED_TYPES_INPUT: RefCell<bool> = RefCell::new(false));
 
 thread_local!(static SHARED_TYPES_OUTPUT: RefCell<HashSet<IrType>> = RefCell::new(HashSet::new())); //  shared types among all regular API blocks in context of function outputs

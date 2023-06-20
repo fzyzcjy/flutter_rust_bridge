@@ -71,6 +71,23 @@ pub fn wire_test_struct_defined_in_block_2(port_: MessagePort, custom: JsValue) 
 }
 
 #[wasm_bindgen]
+pub fn wire_test_method__method__EnumDefinedInBlock2(
+    port_: MessagePort,
+    that: JsValue,
+    message: String,
+) {
+    wire_test_method__method__EnumDefinedInBlock2_impl(port_, that, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_static_method__static_method__EnumDefinedInBlock2(
+    port_: MessagePort,
+    message: String,
+) {
+    wire_test_static_method__static_method__EnumDefinedInBlock2_impl(port_, message)
+}
+
+#[wasm_bindgen]
 pub fn wire_test_method__method__StructDefinedInBlock2(
     port_: MessagePort,
     that: JsValue,
@@ -110,6 +127,26 @@ pub fn wire_test_static_method__static_method__StructOnlyForBlock2(
 // Section: related functions
 
 // Section: impl Wire2Api
+
+impl Wire2Api<EnumDefinedInBlock2> for JsValue {
+    fn wire2api(self) -> EnumDefinedInBlock2 {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => EnumDefinedInBlock2::Quit,
+            1 => EnumDefinedInBlock2::Move {
+                x: self_.get(1).wire2api(),
+                y: self_.get(2).wire2api(),
+            },
+            2 => EnumDefinedInBlock2::Write(self_.get(1).wire2api()),
+            3 => EnumDefinedInBlock2::ChangeColor(
+                self_.get(1).wire2api(),
+                self_.get(2).wire2api(),
+                self_.get(3).wire2api(),
+            ),
+            _ => unreachable!(),
+        }
+    }
+}
 
 impl Wire2Api<StructDefinedInBlock2> for JsValue {
     fn wire2api(self) -> StructDefinedInBlock2 {

@@ -211,6 +211,42 @@ class ApiBlock3ClassImpl implements ApiBlock3Class {
         argNames: ["custom"],
       );
 
+  Future<String> testMethodMethodEnumDefinedInBlock3(
+      {required EnumDefinedInBlock3 that, required String message, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_enum_defined_in_block_3(that);
+    var arg1 = _sharedPlatform.api2wire_String(message);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_method__method__EnumDefinedInBlock3(port_, arg0, arg1),
+      parseSuccessData: _sharedImpl.wire2api_String,
+      constMeta: kTestMethodMethodEnumDefinedInBlock3ConstMeta,
+      argValues: [that, message],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodEnumDefinedInBlock3ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_method__method__EnumDefinedInBlock3",
+        argNames: ["that", "message"],
+      );
+
+  Future<String> testStaticMethodStaticMethodEnumDefinedInBlock3({required String message, dynamic hint}) {
+    var arg0 = _sharedPlatform.api2wire_String(message);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_static_method__static_method__EnumDefinedInBlock3(port_, arg0),
+      parseSuccessData: _sharedImpl.wire2api_String,
+      constMeta: kTestStaticMethodStaticMethodEnumDefinedInBlock3ConstMeta,
+      argValues: [message],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodEnumDefinedInBlock3ConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_static_method__static_method__EnumDefinedInBlock3",
+        argNames: ["message"],
+      );
+
   Future<String> testMethodMethodStructDefinedInBlock3(
       {required StructDefinedInBlock3 that, required String message, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_struct_defined_in_block_3(that);
@@ -284,37 +320,41 @@ class ApiBlock3ClassImpl implements ApiBlock3Class {
         argNames: ["message"],
       );
 
-  Future<String> testEnumMethodMethodEnumType({required EnumType that, required String message, dynamic hint}) {
-    var arg0 = _sharedPlatform.api2wire_box_autoadd_enum_type(that);
+  Future<String> testEnumMethodMethodSharedComplexEnumInAllBlocks(
+      {required SharedComplexEnumInAllBlocks that, required String message, dynamic hint}) {
+    var arg0 = _sharedPlatform.api2wire_box_autoadd_shared_complex_enum_in_all_blocks(that);
     var arg1 = _sharedPlatform.api2wire_String(message);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_enum_method__method__EnumType(port_, arg0, arg1),
+      callFfi: (port_) =>
+          _platform.inner.wire_test_enum_method__method__SharedComplexEnumInAllBlocks(port_, arg0, arg1),
       parseSuccessData: _sharedImpl.wire2api_String,
-      constMeta: kTestEnumMethodMethodEnumTypeConstMeta,
+      constMeta: kTestEnumMethodMethodSharedComplexEnumInAllBlocksConstMeta,
       argValues: [that, message],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodEnumTypeConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_enum_method__method__EnumType",
+  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodSharedComplexEnumInAllBlocksConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_enum_method__method__SharedComplexEnumInAllBlocks",
         argNames: ["that", "message"],
       );
 
-  Future<String> testStaticEnumMethodStaticMethodEnumType({required String message, dynamic hint}) {
+  Future<String> testStaticEnumMethodStaticMethodSharedComplexEnumInAllBlocks({required String message, dynamic hint}) {
     var arg0 = _sharedPlatform.api2wire_String(message);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_static_enum_method__static_method__EnumType(port_, arg0),
+      callFfi: (port_) =>
+          _platform.inner.wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks(port_, arg0),
       parseSuccessData: _sharedImpl.wire2api_String,
-      constMeta: kTestStaticEnumMethodStaticMethodEnumTypeConstMeta,
+      constMeta: kTestStaticEnumMethodStaticMethodSharedComplexEnumInAllBlocksConstMeta,
       argValues: [message],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodEnumTypeConstMeta =>
+  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodSharedComplexEnumInAllBlocksConstMeta =>
       const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_static_enum_method__static_method__EnumType",
+        debugName: "test_static_enum_method__static_method__SharedComplexEnumInAllBlocks",
         argNames: ["message"],
       );
 
@@ -428,6 +468,45 @@ class ApiBlock3ClassImpl implements ApiBlock3Class {
         argNames: ["message"],
       );
 
+  Future<String> testEnumMethodMethodSharedWeekdaysEnumInAllBlocks(
+      {required SharedWeekdaysEnumInAllBlocks that, required String message, dynamic hint}) {
+    var arg0 = api2wire_shared_weekdays_enum_in_all_blocks(that);
+    var arg1 = _sharedPlatform.api2wire_String(message);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) =>
+          _platform.inner.wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks(port_, arg0, arg1),
+      parseSuccessData: _sharedImpl.wire2api_String,
+      constMeta: kTestEnumMethodMethodSharedWeekdaysEnumInAllBlocksConstMeta,
+      argValues: [that, message],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodSharedWeekdaysEnumInAllBlocksConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_enum_method__method__SharedWeekdaysEnumInAllBlocks",
+        argNames: ["that", "message"],
+      );
+
+  Future<String> testStaticEnumMethodStaticMethodSharedWeekdaysEnumInAllBlocks(
+      {required String message, dynamic hint}) {
+    var arg0 = _sharedPlatform.api2wire_String(message);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) =>
+          _platform.inner.wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks(port_, arg0),
+      parseSuccessData: _sharedImpl.wire2api_String,
+      constMeta: kTestStaticEnumMethodStaticMethodSharedWeekdaysEnumInAllBlocksConstMeta,
+      argValues: [message],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodSharedWeekdaysEnumInAllBlocksConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks",
+        argNames: ["message"],
+      );
+
   Future<String> testMethodMethodStructOnlyForBlock3(
       {required StructOnlyForBlock3 that, required String message, required int num, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_struct_only_for_block_3(that);
@@ -462,40 +541,6 @@ class ApiBlock3ClassImpl implements ApiBlock3Class {
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodStructOnlyForBlock3ConstMeta =>
       const FlutterRustBridgeTaskConstMeta(
         debugName: "test_static_method__static_method__StructOnlyForBlock3",
-        argNames: ["message"],
-      );
-
-  Future<String> testEnumMethodMethodWeekdays({required Weekdays that, required String message, dynamic hint}) {
-    var arg0 = api2wire_weekdays(that);
-    var arg1 = _sharedPlatform.api2wire_String(message);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_enum_method__method__Weekdays(port_, arg0, arg1),
-      parseSuccessData: _sharedImpl.wire2api_String,
-      constMeta: kTestEnumMethodMethodWeekdaysConstMeta,
-      argValues: [that, message],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodWeekdaysConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_enum_method__method__Weekdays",
-        argNames: ["that", "message"],
-      );
-
-  Future<String> testStaticEnumMethodStaticMethodWeekdays({required String message, dynamic hint}) {
-    var arg0 = _sharedPlatform.api2wire_String(message);
-    return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_static_enum_method__static_method__Weekdays(port_, arg0),
-      parseSuccessData: _sharedImpl.wire2api_String,
-      constMeta: kTestStaticEnumMethodStaticMethodWeekdaysConstMeta,
-      argValues: [message],
-      hint: hint,
-    ));
-  }
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodWeekdaysConstMeta =>
-      const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_static_enum_method__static_method__Weekdays",
         argNames: ["message"],
       );
 

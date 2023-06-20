@@ -28,13 +28,16 @@ void main(List<String> args) {
   final apiShared = BridgeGeneratedSharesImpl(dylib);
 
   final enumList = [
-    EnumType.enums(Weekdays.Friday),
-    EnumType.nested(EnumType.enums(Weekdays.Friday)),
-    EnumType.empty(),
-    EnumType.primitives(int32: 1, float64: 2.0, boolean: true),
-    EnumType.optional(null, Uint8List.fromList([1, 2])),
-    EnumType.buffer(Float32List.fromList([1.1, 2.2])),
-    EnumType.bytesArray(U8Array3(Uint8List.fromList([1, 2, 3])))
+    SharedComplexEnumInAllBlocks.enums(SharedWeekdaysEnumInAllBlocks.Friday),
+    SharedComplexEnumInAllBlocks.nested(SharedComplexEnumInAllBlocks.enums(
+        SharedWeekdaysEnumInAllBlocks.Friday)),
+    SharedComplexEnumInAllBlocks.empty(),
+    SharedComplexEnumInAllBlocks.primitives(
+        int32: 1, float64: 2.0, boolean: true),
+    SharedComplexEnumInAllBlocks.optional(null, Uint8List.fromList([1, 2])),
+    SharedComplexEnumInAllBlocks.buffer(Float32List.fromList([1.1, 2.2])),
+    SharedComplexEnumInAllBlocks.bytesArray(
+        U8Array3(Uint8List.fromList([1, 2, 3])))
   ];
   testTypeMethods(api1, apiShared);
   testApiBlock1(api1, apiShared, enumList);

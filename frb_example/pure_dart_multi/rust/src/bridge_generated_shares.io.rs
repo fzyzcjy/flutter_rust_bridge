@@ -19,20 +19,20 @@ pub extern "C" fn wire_test_static_method__static_method__CrossSharedStructInBlo
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_enum_method__method__EnumType(
+pub extern "C" fn wire_test_enum_method__method__SharedComplexEnumInAllBlocks(
     port_: i64,
-    that: *mut wire_EnumType,
+    that: *mut wire_SharedComplexEnumInAllBlocks,
     message: *mut wire_uint_8_list,
 ) {
-    wire_test_enum_method__method__EnumType_impl(port_, that, message)
+    wire_test_enum_method__method__SharedComplexEnumInAllBlocks_impl(port_, that, message)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_static_enum_method__static_method__EnumType(
+pub extern "C" fn wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks(
     port_: i64,
     message: *mut wire_uint_8_list,
 ) {
-    wire_test_static_enum_method__static_method__EnumType_impl(port_, message)
+    wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks_impl(port_, message)
 }
 
 #[no_mangle]
@@ -71,20 +71,20 @@ pub extern "C" fn wire_test_static_method__static_method__SharedStructInBlock1An
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_enum_method__method__Weekdays(
+pub extern "C" fn wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks(
     port_: i64,
     that: i32,
     message: *mut wire_uint_8_list,
 ) {
-    wire_test_enum_method__method__Weekdays_impl(port_, that, message)
+    wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks_impl(port_, that, message)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_static_enum_method__static_method__Weekdays(
+pub extern "C" fn wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks(
     port_: i64,
     message: *mut wire_uint_8_list,
 ) {
-    wire_test_static_enum_method__static_method__Weekdays_impl(port_, message)
+    wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks_impl(port_, message)
 }
 
 #[no_mangle]
@@ -153,11 +153,6 @@ pub extern "C" fn new_box_autoadd_cross_shared_struct_in_block_2_and_3(
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_autoadd_enum_type() -> *mut wire_EnumType {
-    support::new_leak_box_ptr(wire_EnumType::new_with_null_ptr())
-}
-
-#[no_mangle]
 pub extern "C" fn new_box_autoadd_f64(value: f64) -> *mut f64 {
     support::new_leak_box_ptr(value)
 }
@@ -165,6 +160,12 @@ pub extern "C" fn new_box_autoadd_f64(value: f64) -> *mut f64 {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_i32(value: i32) -> *mut i32 {
     support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_shared_complex_enum_in_all_blocks(
+) -> *mut wire_SharedComplexEnumInAllBlocks {
+    support::new_leak_box_ptr(wire_SharedComplexEnumInAllBlocks::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -192,8 +193,9 @@ pub extern "C" fn new_box_autoadd_shared_struct_only_for_sync_test(
 }
 
 #[no_mangle]
-pub extern "C" fn new_box_enum_type() -> *mut wire_EnumType {
-    support::new_leak_box_ptr(wire_EnumType::new_with_null_ptr())
+pub extern "C" fn new_box_shared_complex_enum_in_all_blocks(
+) -> *mut wire_SharedComplexEnumInAllBlocks {
+    support::new_leak_box_ptr(wire_SharedComplexEnumInAllBlocks::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -206,9 +208,14 @@ pub extern "C" fn new_float_32_list(len: i32) -> *mut wire_float_32_list {
 }
 
 #[no_mangle]
-pub extern "C" fn new_list_enum_type(len: i32) -> *mut wire_list_enum_type {
-    let wrap = wire_list_enum_type {
-        ptr: support::new_leak_vec_ptr(<wire_EnumType>::new_with_null_ptr(), len),
+pub extern "C" fn new_list_shared_complex_enum_in_all_blocks(
+    len: i32,
+) -> *mut wire_list_shared_complex_enum_in_all_blocks {
+    let wrap = wire_list_shared_complex_enum_in_all_blocks {
+        ptr: support::new_leak_vec_ptr(
+            <wire_SharedComplexEnumInAllBlocks>::new_with_null_ptr(),
+            len,
+        ),
         len,
     };
     support::new_leak_box_ptr(wrap)
@@ -251,12 +258,6 @@ impl Wire2Api<CrossSharedStructInBlock2And3> for *mut wire_CrossSharedStructInBl
         Wire2Api::<CrossSharedStructInBlock2And3>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<EnumType> for *mut wire_EnumType {
-    fn wire2api(self) -> EnumType {
-        let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<EnumType>::wire2api(*wrap).into()
-    }
-}
 impl Wire2Api<f64> for *mut f64 {
     fn wire2api(self) -> f64 {
         unsafe { *support::box_from_leak_ptr(self) }
@@ -265,6 +266,12 @@ impl Wire2Api<f64> for *mut f64 {
 impl Wire2Api<i32> for *mut i32 {
     fn wire2api(self) -> i32 {
         unsafe { *support::box_from_leak_ptr(self) }
+    }
+}
+impl Wire2Api<SharedComplexEnumInAllBlocks> for *mut wire_SharedComplexEnumInAllBlocks {
+    fn wire2api(self) -> SharedComplexEnumInAllBlocks {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<SharedComplexEnumInAllBlocks>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<SharedStructInAllBlocks> for *mut wire_SharedStructInAllBlocks {
@@ -291,10 +298,10 @@ impl Wire2Api<SharedStructOnlyForSyncTest> for *mut wire_SharedStructOnlyForSync
         Wire2Api::<SharedStructOnlyForSyncTest>::wire2api(*wrap).into()
     }
 }
-impl Wire2Api<Box<EnumType>> for *mut wire_EnumType {
-    fn wire2api(self) -> Box<EnumType> {
+impl Wire2Api<Box<SharedComplexEnumInAllBlocks>> for *mut wire_SharedComplexEnumInAllBlocks {
+    fn wire2api(self) -> Box<SharedComplexEnumInAllBlocks> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
-        Wire2Api::<EnumType>::wire2api(*wrap).into()
+        Wire2Api::<SharedComplexEnumInAllBlocks>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<CrossSharedStructInBlock1And2> for wire_CrossSharedStructInBlock1And2 {
@@ -311,48 +318,6 @@ impl Wire2Api<CrossSharedStructInBlock2And3> for wire_CrossSharedStructInBlock2A
         }
     }
 }
-impl Wire2Api<EnumType> for wire_EnumType {
-    fn wire2api(self) -> EnumType {
-        match self.tag {
-            0 => EnumType::Empty,
-            1 => unsafe {
-                let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.Primitives);
-                EnumType::Primitives {
-                    int32: ans.int32.wire2api(),
-                    float64: ans.float64.wire2api(),
-                    boolean: ans.boolean.wire2api(),
-                }
-            },
-            2 => unsafe {
-                let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.Nested);
-                EnumType::Nested(ans.field0.wire2api())
-            },
-            3 => unsafe {
-                let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.Optional);
-                EnumType::Optional(ans.field0.wire2api(), ans.field1.wire2api())
-            },
-            4 => unsafe {
-                let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.Buffer);
-                EnumType::Buffer(ans.field0.wire2api())
-            },
-            5 => unsafe {
-                let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.Enums);
-                EnumType::Enums(ans.field0.wire2api())
-            },
-            6 => unsafe {
-                let ans = support::box_from_leak_ptr(self.kind);
-                let ans = support::box_from_leak_ptr(ans.BytesArray);
-                EnumType::BytesArray(ans.field0.wire2api())
-            },
-            _ => unreachable!(),
-        }
-    }
-}
 
 impl Wire2Api<Vec<f32>> for *mut wire_float_32_list {
     fn wire2api(self) -> Vec<f32> {
@@ -363,8 +328,10 @@ impl Wire2Api<Vec<f32>> for *mut wire_float_32_list {
     }
 }
 
-impl Wire2Api<Vec<EnumType>> for *mut wire_list_enum_type {
-    fn wire2api(self) -> Vec<EnumType> {
+impl Wire2Api<Vec<SharedComplexEnumInAllBlocks>>
+    for *mut wire_list_shared_complex_enum_in_all_blocks
+{
+    fn wire2api(self) -> Vec<SharedComplexEnumInAllBlocks> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -373,6 +340,48 @@ impl Wire2Api<Vec<EnumType>> for *mut wire_list_enum_type {
     }
 }
 
+impl Wire2Api<SharedComplexEnumInAllBlocks> for wire_SharedComplexEnumInAllBlocks {
+    fn wire2api(self) -> SharedComplexEnumInAllBlocks {
+        match self.tag {
+            0 => SharedComplexEnumInAllBlocks::Empty,
+            1 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Primitives);
+                SharedComplexEnumInAllBlocks::Primitives {
+                    int32: ans.int32.wire2api(),
+                    float64: ans.float64.wire2api(),
+                    boolean: ans.boolean.wire2api(),
+                }
+            },
+            2 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Nested);
+                SharedComplexEnumInAllBlocks::Nested(ans.field0.wire2api())
+            },
+            3 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Optional);
+                SharedComplexEnumInAllBlocks::Optional(ans.field0.wire2api(), ans.field1.wire2api())
+            },
+            4 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Buffer);
+                SharedComplexEnumInAllBlocks::Buffer(ans.field0.wire2api())
+            },
+            5 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Enums);
+                SharedComplexEnumInAllBlocks::Enums(ans.field0.wire2api())
+            },
+            6 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.BytesArray);
+                SharedComplexEnumInAllBlocks::BytesArray(ans.field0.wire2api())
+            },
+            _ => unreachable!(),
+        }
+    }
+}
 impl Wire2Api<SharedStructInAllBlocks> for wire_SharedStructInAllBlocks {
     fn wire2api(self) -> SharedStructInAllBlocks {
         SharedStructInAllBlocks {
@@ -424,7 +433,6 @@ impl Wire2Api<Vec<u8>> for *mut wire_uint_8_list {
         }
     }
 }
-
 // Section: wire structs
 
 #[repr(C)]
@@ -448,8 +456,8 @@ pub struct wire_float_32_list {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_list_enum_type {
-    ptr: *mut wire_EnumType,
+pub struct wire_list_shared_complex_enum_in_all_blocks {
+    ptr: *mut wire_SharedComplexEnumInAllBlocks,
     len: i32,
 }
 
@@ -459,7 +467,7 @@ pub struct wire_SharedStructInAllBlocks {
     id: i32,
     num: f64,
     name: *mut wire_uint_8_list,
-    enum_list: *mut wire_list_enum_type,
+    enum_list: *mut wire_list_shared_complex_enum_in_all_blocks,
 }
 
 #[repr(C)]
@@ -494,29 +502,29 @@ pub struct wire_uint_8_list {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_EnumType {
+pub struct wire_SharedComplexEnumInAllBlocks {
     tag: i32,
-    kind: *mut EnumTypeKind,
+    kind: *mut SharedComplexEnumInAllBlocksKind,
 }
 
 #[repr(C)]
-pub union EnumTypeKind {
-    Empty: *mut wire_EnumType_Empty,
-    Primitives: *mut wire_EnumType_Primitives,
-    Nested: *mut wire_EnumType_Nested,
-    Optional: *mut wire_EnumType_Optional,
-    Buffer: *mut wire_EnumType_Buffer,
-    Enums: *mut wire_EnumType_Enums,
-    BytesArray: *mut wire_EnumType_BytesArray,
+pub union SharedComplexEnumInAllBlocksKind {
+    Empty: *mut wire_SharedComplexEnumInAllBlocks_Empty,
+    Primitives: *mut wire_SharedComplexEnumInAllBlocks_Primitives,
+    Nested: *mut wire_SharedComplexEnumInAllBlocks_Nested,
+    Optional: *mut wire_SharedComplexEnumInAllBlocks_Optional,
+    Buffer: *mut wire_SharedComplexEnumInAllBlocks_Buffer,
+    Enums: *mut wire_SharedComplexEnumInAllBlocks_Enums,
+    BytesArray: *mut wire_SharedComplexEnumInAllBlocks_BytesArray,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_EnumType_Empty {}
+pub struct wire_SharedComplexEnumInAllBlocks_Empty {}
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_EnumType_Primitives {
+pub struct wire_SharedComplexEnumInAllBlocks_Primitives {
     int32: i32,
     float64: f64,
     boolean: bool,
@@ -524,32 +532,32 @@ pub struct wire_EnumType_Primitives {
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_EnumType_Nested {
-    field0: *mut wire_EnumType,
+pub struct wire_SharedComplexEnumInAllBlocks_Nested {
+    field0: *mut wire_SharedComplexEnumInAllBlocks,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_EnumType_Optional {
+pub struct wire_SharedComplexEnumInAllBlocks_Optional {
     field0: *mut i32,
     field1: *mut wire_uint_8_list,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_EnumType_Buffer {
+pub struct wire_SharedComplexEnumInAllBlocks_Buffer {
     field0: *mut wire_float_32_list,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_EnumType_Enums {
+pub struct wire_SharedComplexEnumInAllBlocks_Enums {
     field0: i32,
 }
 
 #[repr(C)]
 #[derive(Clone)]
-pub struct wire_EnumType_BytesArray {
+pub struct wire_SharedComplexEnumInAllBlocks_BytesArray {
     field0: *mut wire_uint_8_list,
 }
 
@@ -593,13 +601,13 @@ impl Default for wire_CrossSharedStructInBlock2And3 {
     }
 }
 
-impl Default for wire_EnumType {
+impl Default for wire_SharedComplexEnumInAllBlocks {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
 }
 
-impl NewWithNullPtr for wire_EnumType {
+impl NewWithNullPtr for wire_SharedComplexEnumInAllBlocks {
     fn new_with_null_ptr() -> Self {
         Self {
             tag: -1,
@@ -609,9 +617,10 @@ impl NewWithNullPtr for wire_EnumType {
 }
 
 #[no_mangle]
-pub extern "C" fn inflate_EnumType_Primitives() -> *mut EnumTypeKind {
-    support::new_leak_box_ptr(EnumTypeKind {
-        Primitives: support::new_leak_box_ptr(wire_EnumType_Primitives {
+pub extern "C" fn inflate_SharedComplexEnumInAllBlocks_Primitives(
+) -> *mut SharedComplexEnumInAllBlocksKind {
+    support::new_leak_box_ptr(SharedComplexEnumInAllBlocksKind {
+        Primitives: support::new_leak_box_ptr(wire_SharedComplexEnumInAllBlocks_Primitives {
             int32: Default::default(),
             float64: Default::default(),
             boolean: Default::default(),
@@ -620,18 +629,20 @@ pub extern "C" fn inflate_EnumType_Primitives() -> *mut EnumTypeKind {
 }
 
 #[no_mangle]
-pub extern "C" fn inflate_EnumType_Nested() -> *mut EnumTypeKind {
-    support::new_leak_box_ptr(EnumTypeKind {
-        Nested: support::new_leak_box_ptr(wire_EnumType_Nested {
+pub extern "C" fn inflate_SharedComplexEnumInAllBlocks_Nested(
+) -> *mut SharedComplexEnumInAllBlocksKind {
+    support::new_leak_box_ptr(SharedComplexEnumInAllBlocksKind {
+        Nested: support::new_leak_box_ptr(wire_SharedComplexEnumInAllBlocks_Nested {
             field0: core::ptr::null_mut(),
         }),
     })
 }
 
 #[no_mangle]
-pub extern "C" fn inflate_EnumType_Optional() -> *mut EnumTypeKind {
-    support::new_leak_box_ptr(EnumTypeKind {
-        Optional: support::new_leak_box_ptr(wire_EnumType_Optional {
+pub extern "C" fn inflate_SharedComplexEnumInAllBlocks_Optional(
+) -> *mut SharedComplexEnumInAllBlocksKind {
+    support::new_leak_box_ptr(SharedComplexEnumInAllBlocksKind {
+        Optional: support::new_leak_box_ptr(wire_SharedComplexEnumInAllBlocks_Optional {
             field0: core::ptr::null_mut(),
             field1: core::ptr::null_mut(),
         }),
@@ -639,27 +650,30 @@ pub extern "C" fn inflate_EnumType_Optional() -> *mut EnumTypeKind {
 }
 
 #[no_mangle]
-pub extern "C" fn inflate_EnumType_Buffer() -> *mut EnumTypeKind {
-    support::new_leak_box_ptr(EnumTypeKind {
-        Buffer: support::new_leak_box_ptr(wire_EnumType_Buffer {
+pub extern "C" fn inflate_SharedComplexEnumInAllBlocks_Buffer(
+) -> *mut SharedComplexEnumInAllBlocksKind {
+    support::new_leak_box_ptr(SharedComplexEnumInAllBlocksKind {
+        Buffer: support::new_leak_box_ptr(wire_SharedComplexEnumInAllBlocks_Buffer {
             field0: core::ptr::null_mut(),
         }),
     })
 }
 
 #[no_mangle]
-pub extern "C" fn inflate_EnumType_Enums() -> *mut EnumTypeKind {
-    support::new_leak_box_ptr(EnumTypeKind {
-        Enums: support::new_leak_box_ptr(wire_EnumType_Enums {
+pub extern "C" fn inflate_SharedComplexEnumInAllBlocks_Enums(
+) -> *mut SharedComplexEnumInAllBlocksKind {
+    support::new_leak_box_ptr(SharedComplexEnumInAllBlocksKind {
+        Enums: support::new_leak_box_ptr(wire_SharedComplexEnumInAllBlocks_Enums {
             field0: Default::default(),
         }),
     })
 }
 
 #[no_mangle]
-pub extern "C" fn inflate_EnumType_BytesArray() -> *mut EnumTypeKind {
-    support::new_leak_box_ptr(EnumTypeKind {
-        BytesArray: support::new_leak_box_ptr(wire_EnumType_BytesArray {
+pub extern "C" fn inflate_SharedComplexEnumInAllBlocks_BytesArray(
+) -> *mut SharedComplexEnumInAllBlocksKind {
+    support::new_leak_box_ptr(SharedComplexEnumInAllBlocksKind {
+        BytesArray: support::new_leak_box_ptr(wire_SharedComplexEnumInAllBlocks_BytesArray {
             field0: core::ptr::null_mut(),
         }),
     })

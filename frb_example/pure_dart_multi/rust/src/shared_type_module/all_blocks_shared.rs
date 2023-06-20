@@ -1,6 +1,6 @@
 use flutter_rust_bridge::ZeroCopyBuffer;
 
-pub enum EnumType {
+pub enum SharedComplexEnumInAllBlocks {
     Empty,
     Primitives {
         /// Dart field comment
@@ -8,17 +8,17 @@ pub enum EnumType {
         float64: f64,
         boolean: bool,
     },
-    Nested(Box<EnumType>),
+    Nested(Box<SharedComplexEnumInAllBlocks>),
     Optional(
         /// Comment on anonymous field
         Option<i32>,
         Option<Vec<u8>>,
     ),
     Buffer(ZeroCopyBuffer<Vec<f32>>),
-    Enums(Weekdays),
+    Enums(SharedWeekdaysEnumInAllBlocks),
     BytesArray([u8; 3]),
 }
-impl EnumType {
+impl SharedComplexEnumInAllBlocks {
     #[allow(unused)]
     pub fn test_enum_method(&self, message: String) -> String {
         message
@@ -31,7 +31,7 @@ impl EnumType {
 
 /// Simple enums.
 #[derive(Debug, Clone, Copy)]
-pub enum Weekdays {
+pub enum SharedWeekdaysEnumInAllBlocks {
     Monday,
     Tuesday,
     Wednesday,
@@ -41,7 +41,7 @@ pub enum Weekdays {
     Saturday,
     Sunday,
 }
-impl Weekdays {
+impl SharedWeekdaysEnumInAllBlocks {
     #[allow(unused)]
     pub fn test_enum_method(&self, message: String) -> String {
         message
@@ -57,7 +57,7 @@ pub struct SharedStructInAllBlocks {
     pub id: i32,
     pub num: f64,
     pub name: String,
-    pub enum_list: Option<Vec<EnumType>>,
+    pub enum_list: Option<Vec<SharedComplexEnumInAllBlocks>>,
 }
 impl SharedStructInAllBlocks {
     #[allow(unused)]

@@ -22,12 +22,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                     String::new()
                 };
 
-                let shared_mod_name = match &field.ty {
-                    IrType::Optional(inner_type) => {
-                        self.get_shared_mod_name_if_type_shared(&inner_type.inner)
-                    }
-                    _ => self.get_shared_mod_name_if_type_shared(&field.ty),
-                };
+                let shared_mod_name = self.get_shared_module_of_a_field(field);
                 Acc {
                     io: if !self.context.config.shared && shared_mod_name.is_some() {
                         format!(

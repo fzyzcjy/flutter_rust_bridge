@@ -24,13 +24,14 @@ abstract class BridgeGeneratedShares {
 
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodCrossSharedStructInBlock1And2ConstMeta;
 
-  Future<String> testEnumMethodMethodEnumType({required EnumType that, required String message, dynamic hint});
+  Future<String> testEnumMethodMethodSharedComplexEnumInAllBlocks(
+      {required SharedComplexEnumInAllBlocks that, required String message, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodEnumTypeConstMeta;
+  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodSharedComplexEnumInAllBlocksConstMeta;
 
-  Future<String> testStaticEnumMethodStaticMethodEnumType({required String message, dynamic hint});
+  Future<String> testStaticEnumMethodStaticMethodSharedComplexEnumInAllBlocks({required String message, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodEnumTypeConstMeta;
+  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodSharedComplexEnumInAllBlocksConstMeta;
 
   /// the parameter type `u32 for `num` is only used here,
   /// for testing shared type(`u32`) within a shared struct method
@@ -52,13 +53,14 @@ abstract class BridgeGeneratedShares {
 
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInBlock1And2ConstMeta;
 
-  Future<String> testEnumMethodMethodWeekdays({required Weekdays that, required String message, dynamic hint});
+  Future<String> testEnumMethodMethodSharedWeekdaysEnumInAllBlocks(
+      {required SharedWeekdaysEnumInAllBlocks that, required String message, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodWeekdaysConstMeta;
+  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodSharedWeekdaysEnumInAllBlocksConstMeta;
 
-  Future<String> testStaticEnumMethodStaticMethodWeekdays({required String message, dynamic hint});
+  Future<String> testStaticEnumMethodStaticMethodSharedWeekdaysEnumInAllBlocks({required String message, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodWeekdaysConstMeta;
+  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodSharedWeekdaysEnumInAllBlocksConstMeta;
 
   Future<String> testMethodMethodCrossSharedStructInBlock2And3(
       {required CrossSharedStructInBlock2And3 that, required String message, dynamic hint});
@@ -133,31 +135,31 @@ class CrossSharedStructInBlock2And3 {
 }
 
 @freezed
-sealed class EnumType with _$EnumType {
-  const factory EnumType.empty() = EnumType_Empty;
-  const factory EnumType.primitives({
+class SharedComplexEnumInAllBlocks with _$SharedComplexEnumInAllBlocks {
+  const factory SharedComplexEnumInAllBlocks.empty() = SharedComplexEnumInAllBlocks_Empty;
+  const factory SharedComplexEnumInAllBlocks.primitives({
     /// Dart field comment
     required int int32,
     required double float64,
     required bool boolean,
-  }) = EnumType_Primitives;
-  const factory EnumType.nested(
-    EnumType field0,
-  ) = EnumType_Nested;
-  const factory EnumType.optional([
+  }) = SharedComplexEnumInAllBlocks_Primitives;
+  const factory SharedComplexEnumInAllBlocks.nested(
+    SharedComplexEnumInAllBlocks field0,
+  ) = SharedComplexEnumInAllBlocks_Nested;
+  const factory SharedComplexEnumInAllBlocks.optional([
     /// Comment on anonymous field
     int? field0,
     Uint8List? field1,
-  ]) = EnumType_Optional;
-  const factory EnumType.buffer(
+  ]) = SharedComplexEnumInAllBlocks_Optional;
+  const factory SharedComplexEnumInAllBlocks.buffer(
     Float32List field0,
-  ) = EnumType_Buffer;
-  const factory EnumType.enums(
-    Weekdays field0,
-  ) = EnumType_Enums;
-  const factory EnumType.bytesArray(
+  ) = SharedComplexEnumInAllBlocks_Buffer;
+  const factory SharedComplexEnumInAllBlocks.enums(
+    SharedWeekdaysEnumInAllBlocks field0,
+  ) = SharedComplexEnumInAllBlocks_Enums;
+  const factory SharedComplexEnumInAllBlocks.bytesArray(
     U8Array3 field0,
-  ) = EnumType_BytesArray;
+  ) = SharedComplexEnumInAllBlocks_BytesArray;
 }
 
 /// This is a struct used in ALL API blocks, NOT defined in any regular block file
@@ -166,7 +168,7 @@ class SharedStructInAllBlocks {
   final int id;
   final double num;
   final String name;
-  final List<EnumType>? enumList;
+  final List<SharedComplexEnumInAllBlocks>? enumList;
 
   const SharedStructInAllBlocks({
     required this.bridge,
@@ -260,17 +262,8 @@ class SharedStructOnlyForSyncTest {
       bridge.testStaticMethodStaticMethodSharedStructOnlyForSyncTest(message: message, hint: hint);
 }
 
-class U8Array3 extends NonGrowableListView<int> {
-  static const arraySize = 3;
-  U8Array3(Uint8List inner)
-      : assert(inner.length == arraySize),
-        super(inner);
-  U8Array3.unchecked(Uint8List inner) : super(inner);
-  U8Array3.init() : super(Uint8List(arraySize));
-}
-
 /// Simple enums.
-enum Weekdays {
+enum SharedWeekdaysEnumInAllBlocks {
   Monday,
   Tuesday,
   Wednesday,
@@ -280,6 +273,15 @@ enum Weekdays {
   /// Best day of the week.
   Saturday,
   Sunday,
+}
+
+class U8Array3 extends NonGrowableListView<int> {
+  static const arraySize = 3;
+  U8Array3(Uint8List inner)
+      : assert(inner.length == arraySize),
+        super(inner);
+  U8Array3.unchecked(Uint8List inner) : super(inner);
+  U8Array3.init() : super(Uint8List(arraySize));
 }
 
 abstract class ApiBlock3Class {
@@ -328,6 +330,15 @@ abstract class ApiBlock3Class {
 
   FlutterRustBridgeTaskConstMeta get kTestStructDefinedInBlock3ConstMeta;
 
+  Future<String> testMethodMethodEnumDefinedInBlock3(
+      {required EnumDefinedInBlock3 that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodEnumDefinedInBlock3ConstMeta;
+
+  Future<String> testStaticMethodStaticMethodEnumDefinedInBlock3({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodEnumDefinedInBlock3ConstMeta;
+
   Future<String> testMethodMethodStructDefinedInBlock3(
       {required StructDefinedInBlock3 that, required String message, dynamic hint});
 
@@ -346,13 +357,14 @@ abstract class ApiBlock3Class {
 
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodCrossSharedStructInBlock2And3ConstMeta;
 
-  Future<String> testEnumMethodMethodEnumType({required EnumType that, required String message, dynamic hint});
+  Future<String> testEnumMethodMethodSharedComplexEnumInAllBlocks(
+      {required SharedComplexEnumInAllBlocks that, required String message, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodEnumTypeConstMeta;
+  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodSharedComplexEnumInAllBlocksConstMeta;
 
-  Future<String> testStaticEnumMethodStaticMethodEnumType({required String message, dynamic hint});
+  Future<String> testStaticEnumMethodStaticMethodSharedComplexEnumInAllBlocks({required String message, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodEnumTypeConstMeta;
+  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodSharedComplexEnumInAllBlocksConstMeta;
 
   /// the parameter type `u32 for `num` is only used here,
   /// for testing shared type(`u32`) within a shared struct method
@@ -383,6 +395,15 @@ abstract class ApiBlock3Class {
 
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructOnlyForSyncTestConstMeta;
 
+  Future<String> testEnumMethodMethodSharedWeekdaysEnumInAllBlocks(
+      {required SharedWeekdaysEnumInAllBlocks that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodSharedWeekdaysEnumInAllBlocksConstMeta;
+
+  Future<String> testStaticEnumMethodStaticMethodSharedWeekdaysEnumInAllBlocks({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodSharedWeekdaysEnumInAllBlocksConstMeta;
+
   /// the parameter type `u16 for `num` is only used for struct
   /// used in a specific API block but not defined in the API block(like `StructOnlyForBlock1`,`StructOnlyForBlock2`),
   /// for testing shared type(`u16`) within a no-shared struct method
@@ -394,14 +415,23 @@ abstract class ApiBlock3Class {
   Future<String> testStaticMethodStaticMethodStructOnlyForBlock3({required String message, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodStructOnlyForBlock3ConstMeta;
+}
 
-  Future<String> testEnumMethodMethodWeekdays({required Weekdays that, required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodWeekdaysConstMeta;
-
-  Future<String> testStaticEnumMethodStaticMethodWeekdays({required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodWeekdaysConstMeta;
+@freezed
+class EnumDefinedInBlock3 with _$EnumDefinedInBlock3 {
+  const factory EnumDefinedInBlock3.quit() = EnumDefinedInBlock3_Quit;
+  const factory EnumDefinedInBlock3.move({
+    required int x,
+    required int y,
+  }) = EnumDefinedInBlock3_Move;
+  const factory EnumDefinedInBlock3.write(
+    String field0,
+  ) = EnumDefinedInBlock3_Write;
+  const factory EnumDefinedInBlock3.changeColor(
+    int field0,
+    int field1,
+    int field2,
+  ) = EnumDefinedInBlock3_ChangeColor;
 }
 
 class StructDefinedInBlock3 {
@@ -496,6 +526,15 @@ abstract class ApiBlock2Class {
 
   FlutterRustBridgeTaskConstMeta get kTestStructDefinedInBlock2ConstMeta;
 
+  Future<String> testMethodMethodEnumDefinedInBlock2(
+      {required EnumDefinedInBlock2 that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodEnumDefinedInBlock2ConstMeta;
+
+  Future<String> testStaticMethodStaticMethodEnumDefinedInBlock2({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodEnumDefinedInBlock2ConstMeta;
+
   Future<String> testMethodMethodStructDefinedInBlock2(
       {required StructDefinedInBlock2 that, required String message, dynamic hint});
 
@@ -523,13 +562,14 @@ abstract class ApiBlock2Class {
 
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodCrossSharedStructInBlock2And3ConstMeta;
 
-  Future<String> testEnumMethodMethodEnumType({required EnumType that, required String message, dynamic hint});
+  Future<String> testEnumMethodMethodSharedComplexEnumInAllBlocks(
+      {required SharedComplexEnumInAllBlocks that, required String message, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodEnumTypeConstMeta;
+  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodSharedComplexEnumInAllBlocksConstMeta;
 
-  Future<String> testStaticEnumMethodStaticMethodEnumType({required String message, dynamic hint});
+  Future<String> testStaticEnumMethodStaticMethodSharedComplexEnumInAllBlocks({required String message, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodEnumTypeConstMeta;
+  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodSharedComplexEnumInAllBlocksConstMeta;
 
   /// the parameter type `u32 for `num` is only used here,
   /// for testing shared type(`u32`) within a shared struct method
@@ -560,6 +600,15 @@ abstract class ApiBlock2Class {
 
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInBlock2And3ConstMeta;
 
+  Future<String> testEnumMethodMethodSharedWeekdaysEnumInAllBlocks(
+      {required SharedWeekdaysEnumInAllBlocks that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodSharedWeekdaysEnumInAllBlocksConstMeta;
+
+  Future<String> testStaticEnumMethodStaticMethodSharedWeekdaysEnumInAllBlocks({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodSharedWeekdaysEnumInAllBlocksConstMeta;
+
   /// the parameter type `u16 for `num` is only used for struct
   /// used in a specific API block but not defined in the API block(like `StructOnlyForBlock1`,`StructOnlyForBlock3`),
   /// for testing shared type(`u16`) within a no-shared struct method
@@ -571,14 +620,23 @@ abstract class ApiBlock2Class {
   Future<String> testStaticMethodStaticMethodStructOnlyForBlock2({required String message, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodStructOnlyForBlock2ConstMeta;
+}
 
-  Future<String> testEnumMethodMethodWeekdays({required Weekdays that, required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodWeekdaysConstMeta;
-
-  Future<String> testStaticEnumMethodStaticMethodWeekdays({required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodWeekdaysConstMeta;
+@freezed
+class EnumDefinedInBlock2 with _$EnumDefinedInBlock2 {
+  const factory EnumDefinedInBlock2.quit() = EnumDefinedInBlock2_Quit;
+  const factory EnumDefinedInBlock2.move({
+    required int x,
+    required int y,
+  }) = EnumDefinedInBlock2_Move;
+  const factory EnumDefinedInBlock2.write(
+    String field0,
+  ) = EnumDefinedInBlock2_Write;
+  const factory EnumDefinedInBlock2.changeColor(
+    int field0,
+    int field1,
+    int field2,
+  ) = EnumDefinedInBlock2_ChangeColor;
 }
 
 class StructDefinedInBlock2 {
@@ -676,6 +734,15 @@ abstract class ApiBlock1Class {
 
   FlutterRustBridgeTaskConstMeta get kTestStructDefinedInBlock1ConstMeta;
 
+  Future<String> testMethodMethodEnumDefinedInBlock1(
+      {required EnumDefinedInBlock1 that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodEnumDefinedInBlock1ConstMeta;
+
+  Future<String> testStaticMethodStaticMethodEnumDefinedInBlock1({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodEnumDefinedInBlock1ConstMeta;
+
   Future<String> testMethodMethodStructDefinedInBlock1(
       {required StructDefinedInBlock1 that, required String message, dynamic hint});
 
@@ -694,13 +761,14 @@ abstract class ApiBlock1Class {
 
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodCrossSharedStructInBlock1And2ConstMeta;
 
-  Future<String> testEnumMethodMethodEnumType({required EnumType that, required String message, dynamic hint});
+  Future<String> testEnumMethodMethodSharedComplexEnumInAllBlocks(
+      {required SharedComplexEnumInAllBlocks that, required String message, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodEnumTypeConstMeta;
+  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodSharedComplexEnumInAllBlocksConstMeta;
 
-  Future<String> testStaticEnumMethodStaticMethodEnumType({required String message, dynamic hint});
+  Future<String> testStaticEnumMethodStaticMethodSharedComplexEnumInAllBlocks({required String message, dynamic hint});
 
-  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodEnumTypeConstMeta;
+  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodSharedComplexEnumInAllBlocksConstMeta;
 
   /// the parameter type `u32 for `num` is only used here,
   /// for testing shared type(`u32`) within a shared struct method
@@ -731,6 +799,15 @@ abstract class ApiBlock1Class {
 
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructOnlyForSyncTestConstMeta;
 
+  Future<String> testEnumMethodMethodSharedWeekdaysEnumInAllBlocks(
+      {required SharedWeekdaysEnumInAllBlocks that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodSharedWeekdaysEnumInAllBlocksConstMeta;
+
+  Future<String> testStaticEnumMethodStaticMethodSharedWeekdaysEnumInAllBlocks({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodSharedWeekdaysEnumInAllBlocksConstMeta;
+
   /// the parameter type `u16 for `num` is only used for struct
   /// used in a specific API block but not defined in the API block(like `StructOnlyForBlock2`,`StructOnlyForBlock3`),
   /// for testing shared type(`u16`) within a no-shared struct method
@@ -742,14 +819,23 @@ abstract class ApiBlock1Class {
   Future<String> testStaticMethodStaticMethodStructOnlyForBlock1({required String message, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodStructOnlyForBlock1ConstMeta;
+}
 
-  Future<String> testEnumMethodMethodWeekdays({required Weekdays that, required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodWeekdaysConstMeta;
-
-  Future<String> testStaticEnumMethodStaticMethodWeekdays({required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodWeekdaysConstMeta;
+@freezed
+class EnumDefinedInBlock1 with _$EnumDefinedInBlock1 {
+  const factory EnumDefinedInBlock1.quit() = EnumDefinedInBlock1_Quit;
+  const factory EnumDefinedInBlock1.move({
+    required int x,
+    required int y,
+  }) = EnumDefinedInBlock1_Move;
+  const factory EnumDefinedInBlock1.write(
+    String field0,
+  ) = EnumDefinedInBlock1_Write;
+  const factory EnumDefinedInBlock1.changeColor(
+    int field0,
+    int field1,
+    int field2,
+  ) = EnumDefinedInBlock1_ChangeColor;
 }
 
 class StructDefinedInBlock1 {

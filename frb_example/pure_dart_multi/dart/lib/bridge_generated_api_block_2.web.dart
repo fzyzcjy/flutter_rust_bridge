@@ -24,6 +24,11 @@ class ApiBlock2ClassPlatform extends FlutterRustBridgeBase<ApiBlock2ClassWire> w
 // Section: api2wire
 
   @protected
+  List<dynamic> api2wire_box_autoadd_enum_defined_in_block_2(EnumDefinedInBlock2 raw) {
+    return api2wire_enum_defined_in_block_2(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_struct_defined_in_block_2(StructDefinedInBlock2 raw) {
     return api2wire_struct_defined_in_block_2(raw);
   }
@@ -31,6 +36,24 @@ class ApiBlock2ClassPlatform extends FlutterRustBridgeBase<ApiBlock2ClassWire> w
   @protected
   List<dynamic> api2wire_box_autoadd_struct_only_for_block_2(StructOnlyForBlock2 raw) {
     return api2wire_struct_only_for_block_2(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_enum_defined_in_block_2(EnumDefinedInBlock2 raw) {
+    if (raw is EnumDefinedInBlock2_Quit) {
+      return [0];
+    }
+    if (raw is EnumDefinedInBlock2_Move) {
+      return [1, api2wire_i32(raw.x), api2wire_i32(raw.y)];
+    }
+    if (raw is EnumDefinedInBlock2_Write) {
+      return [2, _sharedPlatform.api2wire_String(raw.field0)];
+    }
+    if (raw is EnumDefinedInBlock2_ChangeColor) {
+      return [3, api2wire_i32(raw.field0), api2wire_i32(raw.field1), api2wire_i32(raw.field2)];
+    }
+
+    throw Exception('unreachable');
   }
 
   @protected
@@ -80,6 +103,12 @@ class ApiBlock2ClassWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_test_struct_defined_in_block_2(NativePortType port_, List<dynamic> custom);
 
+  external dynamic /* void */ wire_test_method__method__EnumDefinedInBlock2(
+      NativePortType port_, List<dynamic> that, String message);
+
+  external dynamic /* void */ wire_test_static_method__static_method__EnumDefinedInBlock2(
+      NativePortType port_, String message);
+
   external dynamic /* void */ wire_test_method__method__StructDefinedInBlock2(
       NativePortType port_, List<dynamic> that, String message);
 
@@ -98,10 +127,10 @@ class ApiBlock2ClassWasmModule implements WasmModule {
   external dynamic /* void */ wire_test_static_method__static_method__CrossSharedStructInBlock2And3(
       NativePortType port_, String message);
 
-  external dynamic /* void */ wire_test_enum_method__method__EnumType(
+  external dynamic /* void */ wire_test_enum_method__method__SharedComplexEnumInAllBlocks(
       NativePortType port_, List<dynamic> that, String message);
 
-  external dynamic /* void */ wire_test_static_enum_method__static_method__EnumType(
+  external dynamic /* void */ wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks(
       NativePortType port_, String message);
 
   external dynamic /* void */ wire_test_method__method__SharedStructInAllBlocks(
@@ -122,15 +151,16 @@ class ApiBlock2ClassWasmModule implements WasmModule {
   external dynamic /* void */ wire_test_static_method__static_method__SharedStructInBlock2And3(
       NativePortType port_, String message);
 
+  external dynamic /* void */ wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks(
+      NativePortType port_, int that, String message);
+
+  external dynamic /* void */ wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks(
+      NativePortType port_, String message);
+
   external dynamic /* void */ wire_test_method__method__StructOnlyForBlock2(
       NativePortType port_, List<dynamic> that, String message, int num);
 
   external dynamic /* void */ wire_test_static_method__static_method__StructOnlyForBlock2(
-      NativePortType port_, String message);
-
-  external dynamic /* void */ wire_test_enum_method__method__Weekdays(NativePortType port_, int that, String message);
-
-  external dynamic /* void */ wire_test_static_enum_method__static_method__Weekdays(
       NativePortType port_, String message);
 }
 
@@ -169,6 +199,12 @@ class ApiBlock2ClassWire extends FlutterRustBridgeWasmWireBase<ApiBlock2ClassWas
   void wire_test_struct_defined_in_block_2(NativePortType port_, List<dynamic> custom) =>
       wasmModule.wire_test_struct_defined_in_block_2(port_, custom);
 
+  void wire_test_method__method__EnumDefinedInBlock2(NativePortType port_, List<dynamic> that, String message) =>
+      wasmModule.wire_test_method__method__EnumDefinedInBlock2(port_, that, message);
+
+  void wire_test_static_method__static_method__EnumDefinedInBlock2(NativePortType port_, String message) =>
+      wasmModule.wire_test_static_method__static_method__EnumDefinedInBlock2(port_, message);
+
   void wire_test_method__method__StructDefinedInBlock2(NativePortType port_, List<dynamic> that, String message) =>
       wasmModule.wire_test_method__method__StructDefinedInBlock2(port_, that, message);
 
@@ -189,11 +225,13 @@ class ApiBlock2ClassWire extends FlutterRustBridgeWasmWireBase<ApiBlock2ClassWas
   void wire_test_static_method__static_method__CrossSharedStructInBlock2And3(NativePortType port_, String message) =>
       wasmModule.wire_test_static_method__static_method__CrossSharedStructInBlock2And3(port_, message);
 
-  void wire_test_enum_method__method__EnumType(NativePortType port_, List<dynamic> that, String message) =>
-      wasmModule.wire_test_enum_method__method__EnumType(port_, that, message);
+  void wire_test_enum_method__method__SharedComplexEnumInAllBlocks(
+          NativePortType port_, List<dynamic> that, String message) =>
+      wasmModule.wire_test_enum_method__method__SharedComplexEnumInAllBlocks(port_, that, message);
 
-  void wire_test_static_enum_method__static_method__EnumType(NativePortType port_, String message) =>
-      wasmModule.wire_test_static_enum_method__static_method__EnumType(port_, message);
+  void wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks(
+          NativePortType port_, String message) =>
+      wasmModule.wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks(port_, message);
 
   void wire_test_method__method__SharedStructInAllBlocks(
           NativePortType port_, List<dynamic> that, String message, int num) =>
@@ -214,16 +252,17 @@ class ApiBlock2ClassWire extends FlutterRustBridgeWasmWireBase<ApiBlock2ClassWas
   void wire_test_static_method__static_method__SharedStructInBlock2And3(NativePortType port_, String message) =>
       wasmModule.wire_test_static_method__static_method__SharedStructInBlock2And3(port_, message);
 
+  void wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks(NativePortType port_, int that, String message) =>
+      wasmModule.wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks(port_, that, message);
+
+  void wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks(
+          NativePortType port_, String message) =>
+      wasmModule.wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks(port_, message);
+
   void wire_test_method__method__StructOnlyForBlock2(
           NativePortType port_, List<dynamic> that, String message, int num) =>
       wasmModule.wire_test_method__method__StructOnlyForBlock2(port_, that, message, num);
 
   void wire_test_static_method__static_method__StructOnlyForBlock2(NativePortType port_, String message) =>
       wasmModule.wire_test_static_method__static_method__StructOnlyForBlock2(port_, message);
-
-  void wire_test_enum_method__method__Weekdays(NativePortType port_, int that, String message) =>
-      wasmModule.wire_test_enum_method__method__Weekdays(port_, that, message);
-
-  void wire_test_static_enum_method__static_method__Weekdays(NativePortType port_, String message) =>
-      wasmModule.wire_test_static_enum_method__static_method__Weekdays(port_, message);
 }

@@ -19,13 +19,20 @@ pub fn wire_test_static_method__static_method__CrossSharedStructInBlock1And2(
 }
 
 #[wasm_bindgen]
-pub fn wire_test_enum_method__method__EnumType(port_: MessagePort, that: JsValue, message: String) {
-    wire_test_enum_method__method__EnumType_impl(port_, that, message)
+pub fn wire_test_enum_method__method__SharedComplexEnumInAllBlocks(
+    port_: MessagePort,
+    that: JsValue,
+    message: String,
+) {
+    wire_test_enum_method__method__SharedComplexEnumInAllBlocks_impl(port_, that, message)
 }
 
 #[wasm_bindgen]
-pub fn wire_test_static_enum_method__static_method__EnumType(port_: MessagePort, message: String) {
-    wire_test_static_enum_method__static_method__EnumType_impl(port_, message)
+pub fn wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks(
+    port_: MessagePort,
+    message: String,
+) {
+    wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks_impl(port_, message)
 }
 
 #[wasm_bindgen]
@@ -64,13 +71,20 @@ pub fn wire_test_static_method__static_method__SharedStructInBlock1And2(
 }
 
 #[wasm_bindgen]
-pub fn wire_test_enum_method__method__Weekdays(port_: MessagePort, that: i32, message: String) {
-    wire_test_enum_method__method__Weekdays_impl(port_, that, message)
+pub fn wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks(
+    port_: MessagePort,
+    that: i32,
+    message: String,
+) {
+    wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks_impl(port_, that, message)
 }
 
 #[wasm_bindgen]
-pub fn wire_test_static_enum_method__static_method__Weekdays(port_: MessagePort, message: String) {
-    wire_test_static_enum_method__static_method__Weekdays_impl(port_, message)
+pub fn wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks(
+    port_: MessagePort,
+    message: String,
+) {
+    wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks_impl(port_, message)
 }
 
 #[wasm_bindgen]
@@ -169,25 +183,6 @@ impl Wire2Api<CrossSharedStructInBlock2And3> for JsValue {
         }
     }
 }
-impl Wire2Api<EnumType> for JsValue {
-    fn wire2api(self) -> EnumType {
-        let self_ = self.unchecked_into::<JsArray>();
-        match self_.get(0).unchecked_into_f64() as _ {
-            0 => EnumType::Empty,
-            1 => EnumType::Primitives {
-                int32: self_.get(1).wire2api(),
-                float64: self_.get(2).wire2api(),
-                boolean: self_.get(3).wire2api(),
-            },
-            2 => EnumType::Nested(self_.get(1).wire2api()),
-            3 => EnumType::Optional(self_.get(1).wire2api(), self_.get(2).wire2api()),
-            4 => EnumType::Buffer(self_.get(1).wire2api()),
-            5 => EnumType::Enums(self_.get(1).wire2api()),
-            6 => EnumType::BytesArray(self_.get(1).wire2api()),
-            _ => unreachable!(),
-        }
-    }
-}
 
 impl Wire2Api<Vec<f32>> for Box<[f32]> {
     fn wire2api(self) -> Vec<f32> {
@@ -195,8 +190,8 @@ impl Wire2Api<Vec<f32>> for Box<[f32]> {
     }
 }
 
-impl Wire2Api<Vec<EnumType>> for JsValue {
-    fn wire2api(self) -> Vec<EnumType> {
+impl Wire2Api<Vec<SharedComplexEnumInAllBlocks>> for JsValue {
+    fn wire2api(self) -> Vec<SharedComplexEnumInAllBlocks> {
         self.dyn_into::<JsArray>()
             .unwrap()
             .iter()
@@ -205,14 +200,36 @@ impl Wire2Api<Vec<EnumType>> for JsValue {
     }
 }
 
-impl Wire2Api<Option<Vec<EnumType>>> for JsValue {
-    fn wire2api(self) -> Option<Vec<EnumType>> {
+impl Wire2Api<Option<Vec<SharedComplexEnumInAllBlocks>>> for JsValue {
+    fn wire2api(self) -> Option<Vec<SharedComplexEnumInAllBlocks>> {
         (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
     }
 }
 impl Wire2Api<Option<Vec<u8>>> for Option<Box<[u8]>> {
     fn wire2api(self) -> Option<Vec<u8>> {
         self.map(Wire2Api::wire2api)
+    }
+}
+impl Wire2Api<SharedComplexEnumInAllBlocks> for JsValue {
+    fn wire2api(self) -> SharedComplexEnumInAllBlocks {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => SharedComplexEnumInAllBlocks::Empty,
+            1 => SharedComplexEnumInAllBlocks::Primitives {
+                int32: self_.get(1).wire2api(),
+                float64: self_.get(2).wire2api(),
+                boolean: self_.get(3).wire2api(),
+            },
+            2 => SharedComplexEnumInAllBlocks::Nested(self_.get(1).wire2api()),
+            3 => SharedComplexEnumInAllBlocks::Optional(
+                self_.get(1).wire2api(),
+                self_.get(2).wire2api(),
+            ),
+            4 => SharedComplexEnumInAllBlocks::Buffer(self_.get(1).wire2api()),
+            5 => SharedComplexEnumInAllBlocks::Enums(self_.get(1).wire2api()),
+            6 => SharedComplexEnumInAllBlocks::BytesArray(self_.get(1).wire2api()),
+            _ => unreachable!(),
+        }
     }
 }
 impl Wire2Api<SharedStructInAllBlocks> for JsValue {
@@ -291,7 +308,6 @@ impl Wire2Api<Vec<u8>> for Box<[u8]> {
         self.into_vec()
     }
 }
-
 // Section: impl Wire2Api for JsValue
 
 impl Wire2Api<String> for JsValue {
@@ -309,8 +325,8 @@ impl Wire2Api<bool> for JsValue {
         self.is_truthy()
     }
 }
-impl Wire2Api<Box<EnumType>> for JsValue {
-    fn wire2api(self) -> Box<EnumType> {
+impl Wire2Api<Box<SharedComplexEnumInAllBlocks>> for JsValue {
+    fn wire2api(self) -> Box<SharedComplexEnumInAllBlocks> {
         Box::new(self.wire2api())
     }
 }
@@ -346,6 +362,11 @@ impl Wire2Api<Option<Vec<u8>>> for JsValue {
         (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())
     }
 }
+impl Wire2Api<SharedWeekdaysEnumInAllBlocks> for JsValue {
+    fn wire2api(self) -> SharedWeekdaysEnumInAllBlocks {
+        (self.unchecked_into_f64() as i32).wire2api()
+    }
+}
 impl Wire2Api<u16> for JsValue {
     fn wire2api(self) -> u16 {
         self.unchecked_into_f64() as _
@@ -375,10 +396,5 @@ impl Wire2Api<[u8; 3]> for JsValue {
 impl Wire2Api<Vec<u8>> for JsValue {
     fn wire2api(self) -> Vec<u8> {
         self.unchecked_into::<js_sys::Uint8Array>().to_vec().into()
-    }
-}
-impl Wire2Api<Weekdays> for JsValue {
-    fn wire2api(self) -> Weekdays {
-        (self.unchecked_into_f64() as i32).wire2api()
     }
 }

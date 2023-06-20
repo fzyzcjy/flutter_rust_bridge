@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 import 'bridge_definitions.dart';
 import 'bridge_generated_api_block_1.dart';
 
-void testApiBlock1(ApiBlock1ClassImpl api1, BridgeGeneratedSharesImpl apiShared, List<EnumType> enumList) {
+void testApiBlock1(ApiBlock1ClassImpl api1, BridgeGeneratedSharesImpl apiShared, List<SharedComplexEnumInAllBlocks> enumList) {
   test('dart call testInbuiltTypeInBlock1', () async {
     expect(await api1.testInbuiltTypeInBlock1(a: 42, b: 100.0), 142.0);
   });

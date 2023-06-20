@@ -16,12 +16,12 @@ use flutter_rust_bridge::*;
 
 // Section: imports
 
-pub use crate::shared_type_module::all_blocks_shared::EnumType;
+pub use crate::shared_type_module::all_blocks_shared::SharedComplexEnumInAllBlocks;
 pub use crate::shared_type_module::all_blocks_shared::SharedStructInAllBlocks;
 pub use crate::shared_type_module::all_blocks_shared::SharedStructInBlock1And2;
 pub use crate::shared_type_module::all_blocks_shared::SharedStructInBlock2And3;
 pub use crate::shared_type_module::all_blocks_shared::SharedStructOnlyForSyncTest;
-pub use crate::shared_type_module::all_blocks_shared::Weekdays;
+pub use crate::shared_type_module::all_blocks_shared::SharedWeekdaysEnumInAllBlocks;
 pub use crate::shared_type_module::cross_shared::CrossSharedStructInBlock1And2;
 pub use crate::shared_type_module::cross_shared::CrossSharedStructInBlock2And3;
 
@@ -70,37 +70,46 @@ fn wire_test_static_method__static_method__CrossSharedStructInBlock1And2_impl(
         },
     )
 }
-fn wire_test_enum_method__method__EnumType_impl(
+fn wire_test_enum_method__method__SharedComplexEnumInAllBlocks_impl(
     port_: MessagePort,
-    that: impl Wire2Api<EnumType> + UnwindSafe,
+    that: impl Wire2Api<SharedComplexEnumInAllBlocks> + UnwindSafe,
     message: impl Wire2Api<String> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "test_enum_method__method__EnumType",
+            debug_name: "test_enum_method__method__SharedComplexEnumInAllBlocks",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_that = that.wire2api();
             let api_message = message.wire2api();
-            move |task_callback| Ok(EnumType::test_enum_method(&api_that, api_message))
+            move |task_callback| {
+                Ok(SharedComplexEnumInAllBlocks::test_enum_method(
+                    &api_that,
+                    api_message,
+                ))
+            }
         },
     )
 }
-fn wire_test_static_enum_method__static_method__EnumType_impl(
+fn wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks_impl(
     port_: MessagePort,
     message: impl Wire2Api<String> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "test_static_enum_method__static_method__EnumType",
+            debug_name: "test_static_enum_method__static_method__SharedComplexEnumInAllBlocks",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_message = message.wire2api();
-            move |task_callback| Ok(EnumType::test_static_enum_method(api_message))
+            move |task_callback| {
+                Ok(SharedComplexEnumInAllBlocks::test_static_enum_method(
+                    api_message,
+                ))
+            }
         },
     )
 }
@@ -185,37 +194,46 @@ fn wire_test_static_method__static_method__SharedStructInBlock1And2_impl(
         },
     )
 }
-fn wire_test_enum_method__method__Weekdays_impl(
+fn wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks_impl(
     port_: MessagePort,
-    that: impl Wire2Api<Weekdays> + UnwindSafe,
+    that: impl Wire2Api<SharedWeekdaysEnumInAllBlocks> + UnwindSafe,
     message: impl Wire2Api<String> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "test_enum_method__method__Weekdays",
+            debug_name: "test_enum_method__method__SharedWeekdaysEnumInAllBlocks",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_that = that.wire2api();
             let api_message = message.wire2api();
-            move |task_callback| Ok(Weekdays::test_enum_method(&api_that, api_message))
+            move |task_callback| {
+                Ok(SharedWeekdaysEnumInAllBlocks::test_enum_method(
+                    &api_that,
+                    api_message,
+                ))
+            }
         },
     )
 }
-fn wire_test_static_enum_method__static_method__Weekdays_impl(
+fn wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks_impl(
     port_: MessagePort,
     message: impl Wire2Api<String> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
-            debug_name: "test_static_enum_method__static_method__Weekdays",
+            debug_name: "test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_message = message.wire2api();
-            move |task_callback| Ok(Weekdays::test_static_enum_method(api_message))
+            move |task_callback| {
+                Ok(SharedWeekdaysEnumInAllBlocks::test_static_enum_method(
+                    api_message,
+                ))
+            }
         },
     )
 }
@@ -386,6 +404,23 @@ impl Wire2Api<i32> for i32 {
     }
 }
 
+impl Wire2Api<SharedWeekdaysEnumInAllBlocks> for i32 {
+    fn wire2api(self) -> SharedWeekdaysEnumInAllBlocks {
+        match self {
+            0 => SharedWeekdaysEnumInAllBlocks::Monday,
+            1 => SharedWeekdaysEnumInAllBlocks::Tuesday,
+            2 => SharedWeekdaysEnumInAllBlocks::Wednesday,
+            3 => SharedWeekdaysEnumInAllBlocks::Thursday,
+            4 => SharedWeekdaysEnumInAllBlocks::Friday,
+            5 => SharedWeekdaysEnumInAllBlocks::Saturday,
+            6 => SharedWeekdaysEnumInAllBlocks::Sunday,
+            _ => unreachable!(
+                "Invalid variant for SharedWeekdaysEnumInAllBlocks: {}",
+                self
+            ),
+        }
+    }
+}
 impl Wire2Api<u16> for u16 {
     fn wire2api(self) -> u16 {
         self
@@ -407,20 +442,6 @@ impl Wire2Api<u8> for u8 {
     }
 }
 
-impl Wire2Api<Weekdays> for i32 {
-    fn wire2api(self) -> Weekdays {
-        match self {
-            0 => Weekdays::Monday,
-            1 => Weekdays::Tuesday,
-            2 => Weekdays::Wednesday,
-            3 => Weekdays::Thursday,
-            4 => Weekdays::Friday,
-            5 => Weekdays::Saturday,
-            6 => Weekdays::Sunday,
-            _ => unreachable!("Invalid variant for Weekdays: {}", self),
-        }
-    }
-}
 // Section: impl IntoDart
 
 impl support::IntoDart for CrossSharedStructInBlock1And2 {
@@ -437,7 +458,7 @@ impl support::IntoDart for CrossSharedStructInBlock2And3 {
 }
 impl support::IntoDartExceptPrimitive for CrossSharedStructInBlock2And3 {}
 
-impl support::IntoDart for EnumType {
+impl support::IntoDart for SharedComplexEnumInAllBlocks {
     fn into_dart(self) -> support::DartAbi {
         match self {
             Self::Empty => vec![0.into_dart()],
@@ -462,8 +483,7 @@ impl support::IntoDart for EnumType {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for EnumType {}
-
+impl support::IntoDartExceptPrimitive for SharedComplexEnumInAllBlocks {}
 impl support::IntoDart for SharedStructInAllBlocks {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -508,7 +528,7 @@ impl support::IntoDart for SharedStructOnlyForSyncTest {
 }
 impl support::IntoDartExceptPrimitive for SharedStructOnlyForSyncTest {}
 
-impl support::IntoDart for Weekdays {
+impl support::IntoDart for SharedWeekdaysEnumInAllBlocks {
     fn into_dart(self) -> support::DartAbi {
         match self {
             Self::Monday => 0,
@@ -522,7 +542,8 @@ impl support::IntoDart for Weekdays {
         .into_dart()
     }
 }
-impl support::IntoDartExceptPrimitive for Weekdays {}
+impl support::IntoDartExceptPrimitive for SharedWeekdaysEnumInAllBlocks {}
+
 // Section: executor
 
 support::lazy_static! {

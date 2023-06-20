@@ -36,7 +36,16 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                                 };
 
                                 if !target.is_wasm() {
-                                    format!("{field_} ans.{field_name}.wire2api()")
+                                    let shared_mod_name: Option<String> =
+                                        self.get_shared_module_of_a_field(field);
+                                    if !self.context.config.shared && shared_mod_name.is_some() {
+                                        format!(
+                                            "{field_} {}::Wire2Api::wire2api(ans.{field_name})",
+                                            shared_mod_name.unwrap()
+                                        )
+                                    } else {
+                                        format!("{field_} ans.{field_name}.wire2api()")
+                                    }
                                 } else {
                                     format!("{field_} self_.get({}).wire2api()", idx + 1)
                                 }

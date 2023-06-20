@@ -6,6 +6,25 @@ use crate::shared_type_module::{
     SharedStructOnlyForSyncTest,
 };
 
+#[derive(PartialEq, Debug)]
+pub enum EnumDefinedInBlock1 {
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+    ChangeColor(i32, i32, i32),
+}
+
+impl EnumDefinedInBlock1 {
+    #[allow(unused)]
+    pub fn test_method(&self, message: String) -> String {
+        message
+    }
+    #[allow(unused)]
+    pub fn test_static_method(message: String) -> String {
+        message
+    }
+}
+
 pub struct StructDefinedInBlock1 {
     pub name: String,
 }

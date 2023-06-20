@@ -91,6 +91,23 @@ pub extern "C" fn wire_test_struct_defined_in_block_1(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_test_method__method__EnumDefinedInBlock1(
+    port_: i64,
+    that: *mut wire_EnumDefinedInBlock1,
+    message: *mut wire_uint_8_list,
+) {
+    wire_test_method__method__EnumDefinedInBlock1_impl(port_, that, message)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_static_method__static_method__EnumDefinedInBlock1(
+    port_: i64,
+    message: *mut wire_uint_8_list,
+) {
+    wire_test_static_method__static_method__EnumDefinedInBlock1_impl(port_, message)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_test_method__method__StructDefinedInBlock1(
     port_: i64,
     that: *mut wire_StructDefinedInBlock1,
@@ -128,6 +145,11 @@ pub extern "C" fn wire_test_static_method__static_method__StructOnlyForBlock1(
 // Section: allocate functions
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_enum_defined_in_block_1() -> *mut wire_EnumDefinedInBlock1 {
+    support::new_leak_box_ptr(wire_EnumDefinedInBlock1::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_i8(value: i8) -> *mut i8 {
     support::new_leak_box_ptr(value)
 }
@@ -146,6 +168,12 @@ pub extern "C" fn new_box_autoadd_struct_only_for_block_1() -> *mut wire_StructO
 
 // Section: impl Wire2Api
 
+impl Wire2Api<EnumDefinedInBlock1> for *mut wire_EnumDefinedInBlock1 {
+    fn wire2api(self) -> EnumDefinedInBlock1 {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<EnumDefinedInBlock1>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<i8> for *mut i8 {
     fn wire2api(self) -> i8 {
         unsafe { *support::box_from_leak_ptr(self) }
@@ -161,6 +189,36 @@ impl Wire2Api<StructOnlyForBlock1> for *mut wire_StructOnlyForBlock1 {
     fn wire2api(self) -> StructOnlyForBlock1 {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<StructOnlyForBlock1>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<EnumDefinedInBlock1> for wire_EnumDefinedInBlock1 {
+    fn wire2api(self) -> EnumDefinedInBlock1 {
+        match self.tag {
+            0 => EnumDefinedInBlock1::Quit,
+            1 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Move);
+                EnumDefinedInBlock1::Move {
+                    x: bridge_generated_shares::Wire2Api::wire2api(ans.x),
+                    y: bridge_generated_shares::Wire2Api::wire2api(ans.y),
+                }
+            },
+            2 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.Write);
+                EnumDefinedInBlock1::Write(bridge_generated_shares::Wire2Api::wire2api(ans.field0))
+            },
+            3 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.ChangeColor);
+                EnumDefinedInBlock1::ChangeColor(
+                    bridge_generated_shares::Wire2Api::wire2api(ans.field0),
+                    bridge_generated_shares::Wire2Api::wire2api(ans.field1),
+                    bridge_generated_shares::Wire2Api::wire2api(ans.field2),
+                )
+            },
+            _ => unreachable!(),
+        }
     }
 }
 
@@ -196,6 +254,46 @@ pub struct wire_StructOnlyForBlock1 {
     name: *mut wire_uint_8_list,
 }
 
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_EnumDefinedInBlock1 {
+    tag: i32,
+    kind: *mut EnumDefinedInBlock1Kind,
+}
+
+#[repr(C)]
+pub union EnumDefinedInBlock1Kind {
+    Quit: *mut wire_EnumDefinedInBlock1_Quit,
+    Move: *mut wire_EnumDefinedInBlock1_Move,
+    Write: *mut wire_EnumDefinedInBlock1_Write,
+    ChangeColor: *mut wire_EnumDefinedInBlock1_ChangeColor,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_EnumDefinedInBlock1_Quit {}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_EnumDefinedInBlock1_Move {
+    x: i32,
+    y: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_EnumDefinedInBlock1_Write {
+    field0: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_EnumDefinedInBlock1_ChangeColor {
+    field0: i32,
+    field1: i32,
+    field2: i32,
+}
+
 // Section: impl NewWithNullPtr
 
 pub trait NewWithNullPtr {
@@ -206,6 +304,51 @@ impl<T> NewWithNullPtr for *mut T {
     fn new_with_null_ptr() -> Self {
         std::ptr::null_mut()
     }
+}
+
+impl Default for wire_EnumDefinedInBlock1 {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
+impl NewWithNullPtr for wire_EnumDefinedInBlock1 {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_EnumDefinedInBlock1_Move() -> *mut EnumDefinedInBlock1Kind {
+    support::new_leak_box_ptr(EnumDefinedInBlock1Kind {
+        Move: support::new_leak_box_ptr(wire_EnumDefinedInBlock1_Move {
+            x: Default::default(),
+            y: Default::default(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_EnumDefinedInBlock1_Write() -> *mut EnumDefinedInBlock1Kind {
+    support::new_leak_box_ptr(EnumDefinedInBlock1Kind {
+        Write: support::new_leak_box_ptr(wire_EnumDefinedInBlock1_Write {
+            field0: core::ptr::null_mut(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_EnumDefinedInBlock1_ChangeColor() -> *mut EnumDefinedInBlock1Kind {
+    support::new_leak_box_ptr(EnumDefinedInBlock1Kind {
+        ChangeColor: support::new_leak_box_ptr(wire_EnumDefinedInBlock1_ChangeColor {
+            field0: Default::default(),
+            field1: Default::default(),
+            field2: Default::default(),
+        }),
+    })
 }
 
 impl NewWithNullPtr for wire_StructDefinedInBlock1 {

@@ -60,37 +60,41 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
         argNames: ["message"],
       );
 
-  Future<String> testEnumMethodMethodEnumType({required EnumType that, required String message, dynamic hint}) {
-    var arg0 = _platform.api2wire_box_autoadd_enum_type(that);
+  Future<String> testEnumMethodMethodSharedComplexEnumInAllBlocks(
+      {required SharedComplexEnumInAllBlocks that, required String message, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_shared_complex_enum_in_all_blocks(that);
     var arg1 = _platform.api2wire_String(message);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_enum_method__method__EnumType(port_, arg0, arg1),
+      callFfi: (port_) =>
+          _platform.inner.wire_test_enum_method__method__SharedComplexEnumInAllBlocks(port_, arg0, arg1),
       parseSuccessData: wire2api_String,
-      constMeta: kTestEnumMethodMethodEnumTypeConstMeta,
+      constMeta: kTestEnumMethodMethodSharedComplexEnumInAllBlocksConstMeta,
       argValues: [that, message],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodEnumTypeConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_enum_method__method__EnumType",
+  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodSharedComplexEnumInAllBlocksConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_enum_method__method__SharedComplexEnumInAllBlocks",
         argNames: ["that", "message"],
       );
 
-  Future<String> testStaticEnumMethodStaticMethodEnumType({required String message, dynamic hint}) {
+  Future<String> testStaticEnumMethodStaticMethodSharedComplexEnumInAllBlocks({required String message, dynamic hint}) {
     var arg0 = _platform.api2wire_String(message);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_static_enum_method__static_method__EnumType(port_, arg0),
+      callFfi: (port_) =>
+          _platform.inner.wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks(port_, arg0),
       parseSuccessData: wire2api_String,
-      constMeta: kTestStaticEnumMethodStaticMethodEnumTypeConstMeta,
+      constMeta: kTestStaticEnumMethodStaticMethodSharedComplexEnumInAllBlocksConstMeta,
       argValues: [message],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodEnumTypeConstMeta =>
+  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodSharedComplexEnumInAllBlocksConstMeta =>
       const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_static_enum_method__static_method__EnumType",
+        debugName: "test_static_enum_method__static_method__SharedComplexEnumInAllBlocks",
         argNames: ["message"],
       );
 
@@ -167,37 +171,42 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
         argNames: ["message"],
       );
 
-  Future<String> testEnumMethodMethodWeekdays({required Weekdays that, required String message, dynamic hint}) {
-    var arg0 = api2wire_weekdays(that);
+  Future<String> testEnumMethodMethodSharedWeekdaysEnumInAllBlocks(
+      {required SharedWeekdaysEnumInAllBlocks that, required String message, dynamic hint}) {
+    var arg0 = api2wire_shared_weekdays_enum_in_all_blocks(that);
     var arg1 = _platform.api2wire_String(message);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_enum_method__method__Weekdays(port_, arg0, arg1),
+      callFfi: (port_) =>
+          _platform.inner.wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks(port_, arg0, arg1),
       parseSuccessData: wire2api_String,
-      constMeta: kTestEnumMethodMethodWeekdaysConstMeta,
+      constMeta: kTestEnumMethodMethodSharedWeekdaysEnumInAllBlocksConstMeta,
       argValues: [that, message],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodWeekdaysConstMeta => const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_enum_method__method__Weekdays",
+  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodSharedWeekdaysEnumInAllBlocksConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_enum_method__method__SharedWeekdaysEnumInAllBlocks",
         argNames: ["that", "message"],
       );
 
-  Future<String> testStaticEnumMethodStaticMethodWeekdays({required String message, dynamic hint}) {
+  Future<String> testStaticEnumMethodStaticMethodSharedWeekdaysEnumInAllBlocks(
+      {required String message, dynamic hint}) {
     var arg0 = _platform.api2wire_String(message);
     return _platform.executeNormal(FlutterRustBridgeTask(
-      callFfi: (port_) => _platform.inner.wire_test_static_enum_method__static_method__Weekdays(port_, arg0),
+      callFfi: (port_) =>
+          _platform.inner.wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks(port_, arg0),
       parseSuccessData: wire2api_String,
-      constMeta: kTestStaticEnumMethodStaticMethodWeekdaysConstMeta,
+      constMeta: kTestStaticEnumMethodStaticMethodSharedWeekdaysEnumInAllBlocksConstMeta,
       argValues: [message],
       hint: hint,
     ));
   }
 
-  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodWeekdaysConstMeta =>
+  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodSharedWeekdaysEnumInAllBlocksConstMeta =>
       const FlutterRustBridgeTaskConstMeta(
-        debugName: "test_static_enum_method__static_method__Weekdays",
+        debugName: "test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks",
         argNames: ["message"],
       );
 
@@ -340,8 +349,8 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
     return wire2api_shared_struct_in_all_blocks(raw);
   }
 
-  EnumType wire2api_box_enum_type(dynamic raw) {
-    return wire2api_enum_type(raw);
+  SharedComplexEnumInAllBlocks wire2api_box_shared_complex_enum_in_all_blocks(dynamic raw) {
+    return wire2api_shared_complex_enum_in_all_blocks(raw);
   }
 
   CrossSharedStructInBlock1And2 wire2api_cross_shared_struct_in_block_1_and_2(dynamic raw) {
@@ -362,42 +371,6 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
     );
   }
 
-  EnumType wire2api_enum_type(dynamic raw) {
-    switch (raw[0]) {
-      case 0:
-        return EnumType_Empty();
-      case 1:
-        return EnumType_Primitives(
-          int32: wire2api_i32(raw[1]),
-          float64: wire2api_f64(raw[2]),
-          boolean: wire2api_bool(raw[3]),
-        );
-      case 2:
-        return EnumType_Nested(
-          wire2api_box_enum_type(raw[1]),
-        );
-      case 3:
-        return EnumType_Optional(
-          wire2api_opt_box_autoadd_i32(raw[1]),
-          wire2api_opt_uint_8_list(raw[2]),
-        );
-      case 4:
-        return EnumType_Buffer(
-          wire2api_ZeroCopyBuffer_Float32List(raw[1]),
-        );
-      case 5:
-        return EnumType_Enums(
-          wire2api_weekdays(raw[1]),
-        );
-      case 6:
-        return EnumType_BytesArray(
-          wire2api_u8_array_3(raw[1]),
-        );
-      default:
-        throw Exception("unreachable");
-    }
-  }
-
   double wire2api_f32(dynamic raw) {
     return raw as double;
   }
@@ -414,20 +387,56 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
     return raw as int;
   }
 
-  List<EnumType> wire2api_list_enum_type(dynamic raw) {
-    return (raw as List<dynamic>).map(wire2api_enum_type).toList();
+  List<SharedComplexEnumInAllBlocks> wire2api_list_shared_complex_enum_in_all_blocks(dynamic raw) {
+    return (raw as List<dynamic>).map(wire2api_shared_complex_enum_in_all_blocks).toList();
   }
 
   int? wire2api_opt_box_autoadd_i32(dynamic raw) {
     return raw == null ? null : wire2api_box_autoadd_i32(raw);
   }
 
-  List<EnumType>? wire2api_opt_list_enum_type(dynamic raw) {
-    return raw == null ? null : wire2api_list_enum_type(raw);
+  List<SharedComplexEnumInAllBlocks>? wire2api_opt_list_shared_complex_enum_in_all_blocks(dynamic raw) {
+    return raw == null ? null : wire2api_list_shared_complex_enum_in_all_blocks(raw);
   }
 
   Uint8List? wire2api_opt_uint_8_list(dynamic raw) {
     return raw == null ? null : wire2api_uint_8_list(raw);
+  }
+
+  SharedComplexEnumInAllBlocks wire2api_shared_complex_enum_in_all_blocks(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return SharedComplexEnumInAllBlocks_Empty();
+      case 1:
+        return SharedComplexEnumInAllBlocks_Primitives(
+          int32: wire2api_i32(raw[1]),
+          float64: wire2api_f64(raw[2]),
+          boolean: wire2api_bool(raw[3]),
+        );
+      case 2:
+        return SharedComplexEnumInAllBlocks_Nested(
+          wire2api_box_shared_complex_enum_in_all_blocks(raw[1]),
+        );
+      case 3:
+        return SharedComplexEnumInAllBlocks_Optional(
+          wire2api_opt_box_autoadd_i32(raw[1]),
+          wire2api_opt_uint_8_list(raw[2]),
+        );
+      case 4:
+        return SharedComplexEnumInAllBlocks_Buffer(
+          wire2api_ZeroCopyBuffer_Float32List(raw[1]),
+        );
+      case 5:
+        return SharedComplexEnumInAllBlocks_Enums(
+          wire2api_shared_weekdays_enum_in_all_blocks(raw[1]),
+        );
+      case 6:
+        return SharedComplexEnumInAllBlocks_BytesArray(
+          wire2api_u8_array_3(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
   }
 
   SharedStructInAllBlocks wire2api_shared_struct_in_all_blocks(dynamic raw) {
@@ -438,7 +447,7 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
       id: wire2api_i32(arr[0]),
       num: wire2api_f64(arr[1]),
       name: wire2api_String(arr[2]),
-      enumList: wire2api_opt_list_enum_type(arr[3]),
+      enumList: wire2api_opt_list_shared_complex_enum_in_all_blocks(arr[3]),
     );
   }
 
@@ -474,6 +483,10 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
     );
   }
 
+  SharedWeekdaysEnumInAllBlocks wire2api_shared_weekdays_enum_in_all_blocks(dynamic raw) {
+    return SharedWeekdaysEnumInAllBlocks.values[raw as int];
+  }
+
   int wire2api_u8(dynamic raw) {
     return raw as int;
   }
@@ -484,10 +497,6 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
 
   Uint8List wire2api_uint_8_list(dynamic raw) {
     return raw as Uint8List;
-  }
-
-  Weekdays wire2api_weekdays(dynamic raw) {
-    return Weekdays.values[raw as int];
   }
 }
 
@@ -514,6 +523,11 @@ int api2wire_i32(int raw) {
 }
 
 @protected
+int api2wire_shared_weekdays_enum_in_all_blocks(SharedWeekdaysEnumInAllBlocks raw) {
+  return api2wire_i32(raw.index);
+}
+
+@protected
 int api2wire_u16(int raw) {
   return raw;
 }
@@ -528,8 +542,4 @@ int api2wire_u8(int raw) {
   return raw;
 }
 
-@protected
-int api2wire_weekdays(Weekdays raw) {
-  return api2wire_i32(raw.index);
-}
 // Section: finalizer

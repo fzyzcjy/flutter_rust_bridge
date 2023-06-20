@@ -79,6 +79,15 @@ pub trait TypeRustGeneratorTrait {
         log::warn!("got NONE FOR `{:?}`", ty); //TODO: delete
         None
     }
+
+    fn get_shared_module_of_a_field(&self, field: &IrField) -> Option<String> {
+        match &field.ty {
+            IrType::Optional(inner_type) => {
+                self.get_shared_mod_name_if_type_shared(&inner_type.inner)
+            }
+            _ => self.get_shared_mod_name_if_type_shared(&field.ty),
+        }
+    }
 }
 
 #[derive(Debug, Clone)]

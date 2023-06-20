@@ -17,6 +17,7 @@ mod wasm;
 
 use func::*;
 use std::borrow::Cow;
+use std::cell::RefCell;
 use std::collections::HashSet;
 use std::ffi::OsStr;
 use std::path::Path;
@@ -47,6 +48,8 @@ use crate::utils::method::{FunctionName, MethodNamingUtil};
 use crate::utils::misc::{get_deduplicate_type, is_multi_blocks_case, PathExt};
 use crate::{ir::*, Opts};
 use crate::{others::*, transformer};
+
+thread_local!(pub static COMMON_API2WIRE: RefCell<String> = RefCell::new("".into()));
 
 #[derive(Debug)]
 pub struct Output {
@@ -146,20 +149,22 @@ impl DartApiSpec {
             None
         };
 
-        let dart_api2wire_funcs = distinct_input_types
-            .iter()
-            .map(|ty| generate_api2wire_func(ty, ir_file, config, &shared_dart_api2wire_funcs))
-            .collect::<Acc<_>>()
-            .join("\n");
+        let dart_api2wire_funcs = get_dart_api2wire_funcs(
+            &distinct_input_types,
+            ir_file,
+            config,
+            &shared_dart_api2wire_funcs,
+        );
+        let common = COMMON_API2WIRE.with(|data| {
+            let mut v = data.borrow_mut();
+            *v = dart_api2wire_funcs.common.clone();
+            v.clone()
+        });
 
-        let dart_funcs = (ir_file.funcs.iter().map(|f| {
-            generate_api_func(
-                f,
-                ir_file,
-                &dart_api2wire_funcs.common,
-                &shared_dart_api2wire_funcs,
-            )
-        }))
+        let dart_funcs = (ir_file
+            .funcs
+            .iter()
+            .map(|f| generate_api_func(f, ir_file, &common, &shared_dart_api2wire_funcs)))
         .chain(
             distinct_output_types
                 .iter()
@@ -227,6 +232,20 @@ impl DartApiSpec {
             import_array,
         }
     }
+}
+
+pub fn get_dart_api2wire_funcs(
+    distinct_input_types: &[IrType],
+    ir_file: &IrFile,
+    config: &Opts,
+    shared_dart_api2wire_funcs: &Option<Acc<String>>,
+) -> Acc<String> {
+    let dart_api2wire_funcs = distinct_input_types
+        .iter()
+        .map(|ty| generate_api2wire_func(ty, ir_file, config, shared_dart_api2wire_funcs))
+        .collect::<Acc<_>>()
+        .join("\n");
+    dart_api2wire_funcs
 }
 
 fn generate_freezed_header(dart_output_file_root: &str, needs_freezed: bool) -> DartBasicCode {
