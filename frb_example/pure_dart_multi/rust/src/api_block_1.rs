@@ -1,6 +1,7 @@
 use flutter_rust_bridge::SyncReturn;
 
 use crate::block_specific_module::StructOnlyForBlock1;
+use crate::fake_module::{self}; // this statement is used to test the import of the module when frb is generating.
 use crate::shared_type_module::{
     CrossSharedStructInBlock1And2, SharedStructInAllBlocks, SharedStructInBlock1And2,
     SharedStructOnlyForSyncTest,
