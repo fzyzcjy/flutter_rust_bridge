@@ -153,32 +153,36 @@ impl Opts {
                     assert!(raw_code_path.contains("crate/"));
                     let correct_prefix = self.manifest_path.replace("Cargo.toml", "src/");
                     let code_path = raw_code_path.replace("crate/", &correct_prefix);
-                    log::debug!("the refined code_path:{code_path}"); //TODO: delete140 +
-                    let extra_source_rust_content = try_read_from_file(
-                        &code_path,
-                        &format!("Failed to read extra rust module file \"{}\"", code_path),
-                    )
-                    .unwrap();
+                    if let Some(code_path) = check_rust_path(&code_path) {
+                        log::debug!("the refined code_path:{code_path}"); //TODO: delete140 +
+                        let extra_source_rust_content = try_read_from_file(
+                            &code_path,
+                            &format!("Failed to read extra rust module file \"{}\"", code_path),
+                        )
+                        .unwrap();
 
-                    //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓extra parse↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-                    let extra_file_ast = syn::parse_file(&extra_source_rust_content).unwrap();
-                    log::debug!("Phase: Parse EXTRA AST to IR");
-                    let extra_ir_file = parser::parse(
-                        &extra_source_rust_content,
-                        extra_file_ast,
-                        &self.manifest_path,
-                        self.block_index,
-                        self.shared,
-                        &[],
-                    );
-                    log::debug!("Finished Phase: Parse EXTRA AST to IR");
-                    //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑extra parse↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+                        //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓extra parse↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+                        let extra_file_ast = syn::parse_file(&extra_source_rust_content).unwrap();
+                        log::debug!("Phase: Parse EXTRA AST to IR");
+                        let extra_ir_file = parser::parse(
+                            &extra_source_rust_content,
+                            extra_file_ast,
+                            &self.manifest_path,
+                            self.block_index,
+                            self.shared,
+                            &[],
+                        );
+                        log::debug!("Finished Phase: Parse EXTRA AST to IR");
+                        //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑extra parse↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
-                    // collect extra_ir_file.funcs into vec
-                    let extra_path_funcs = extra_ir_file.funcs.into_iter().collect::<Vec<_>>();
-                    e.insert(extra_path_funcs.clone());
+                        // collect extra_ir_file.funcs into vec
+                        let extra_path_funcs = extra_ir_file.funcs.into_iter().collect::<Vec<_>>();
+                        e.insert(extra_path_funcs.clone());
 
-                    extra_path_funcs
+                        extra_path_funcs
+                    } else {
+                        continue;
+                    }
                 } else {
                     extra_func_map[&raw_code_path].clone()
                 };
@@ -360,6 +364,26 @@ impl Opts {
                 .to_case(Case::Camel)
         }
     }
+}
+
+fn check_rust_path(path_str: &str) -> Option<String> {
+    let path = Path::new(path_str);
+    if !path.exists() {
+        return None;
+    }
+    if path.is_file() {
+        if let Some(ext) = path.extension() {
+            if ext == "rs" {
+                return Some(path.to_string_lossy().to_string());
+            }
+        }
+    } else if path.is_dir() {
+        let mod_rs_path = path.join("mod.rs");
+        if mod_rs_path.exists() {
+            return Some(mod_rs_path.to_string_lossy().to_string());
+        }
+    }
+    None
 }
 
 fn try_read_from_file(file_path: &str, error_msg: &str) -> Result<String, anyhow::Error> {
