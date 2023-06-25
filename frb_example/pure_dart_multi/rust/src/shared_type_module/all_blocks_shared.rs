@@ -116,6 +116,12 @@ impl SharedStructInBlock2And3 {
     pub fn test_method(&self, message: String) -> String {
         message
     }
+
+    #[allow(unused)]
+    pub fn test_mutable_method(&mut self, name: String) {
+        self.name = name;
+    }
+
     #[allow(unused)]
     pub fn test_static_method(message: String) -> String {
         message

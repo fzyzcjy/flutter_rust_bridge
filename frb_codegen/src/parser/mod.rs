@@ -11,7 +11,7 @@ use log::debug;
 use quote::quote;
 use syn::parse::{Parse, ParseStream};
 use syn::punctuated::Punctuated;
-use syn::token::Colon;
+use syn::token::{Colon, Comma};
 use syn::*;
 use topological_sort::TopologicalSort;
 
@@ -345,9 +345,16 @@ pub(crate) fn extract_methods_from_file(file: &File) -> Vec<ItemFn> {
             for item in &item_impl.items {
                 if let ImplItem::Method(item_method) = item {
                     if let Visibility::Public(_) = &item_method.vis {
-                        let f = item_method_to_function(item_impl, item_method)
-                            .expect("item implementation is unsupported");
-                        src_fns.push(f);
+                        let f = item_method_to_function(item_impl, item_method);
+                        if f.is_none() {
+                            log::warn!(
+                                "For `{:?}`, the item implementation is unsupported",
+                                item_method
+                            );
+                            continue;
+                        }
+
+                        src_fns.push(f.unwrap());
                     }
                 }
             }
@@ -362,6 +369,56 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
     if let Type::Path(p) = item_impl.self_ty.as_ref() {
         let struct_name = p.path.segments.first().unwrap().ident.to_string();
         let span = item_method.sig.ident.span();
+
+        // get/check inputs for mutability first
+        let mut is_mut = false;
+        let inputs = item_method
+            .sig
+            .inputs
+            .iter()
+            .enumerate()
+            .map(|(i, input)| {
+                let mut segments = Punctuated::new();
+                segments.push(PathSegment {
+                    ident: Ident::new(struct_name.as_str(), span),
+                    arguments: PathArguments::None,
+                });
+                if let FnArg::Receiver(Receiver { mutability, .. }) = input {
+                    if i == 0 && mutability.is_some() {
+                        is_mut = true;
+                    }
+                    FnArg::Typed(PatType {
+                        attrs: vec![],
+                        pat: Box::new(Pat::Ident(PatIdent {
+                            attrs: vec![],
+                            by_ref: Some(syn::token::Ref { span }),
+                            mutability: *mutability,
+                            ident: Ident::new("that", span),
+                            subpat: None,
+                        })),
+                        colon_token: Colon { spans: [span] },
+                        ty: Box::new(Type::Path(TypePath {
+                            qself: None,
+                            path: Path {
+                                leading_colon: None,
+                                segments,
+                            },
+                        })),
+                    })
+                } else {
+                    input.clone()
+                }
+            })
+            .collect::<Punctuated<FnArg, Comma>>();
+        if is_mut {
+            // panic!(
+            //     "Panic with `{:?}`: mutable methods are unsupported for safety reasons",
+            //     item_method.sig.ident
+            // );
+
+            return None; // if the method is mutable, don't panic but skip it
+        }
+
         let is_static_method = {
             let Signature { inputs, .. } = &item_method.sig;
             {
@@ -399,9 +456,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
             Ident::new(
                 &FunctionName::new(
                     &item_method.sig.ident.to_string(),
-                    crate::utils::method::MethodInfo::NonStatic {
-                        struct_name: struct_name.clone(),
-                    },
+                    crate::utils::method::MethodInfo::NonStatic { struct_name },
                 )
                 .serialize(),
                 span,
@@ -420,43 +475,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
                 ident: method_name,
                 generics: item_method.sig.generics.clone(),
                 paren_token: item_method.sig.paren_token,
-                inputs: item_method
-                    .sig
-                    .inputs
-                    .iter()
-                    .map(|input| {
-                        if let FnArg::Receiver(Receiver { mutability, .. }) = input {
-                            let mut segments = Punctuated::new();
-                            segments.push(PathSegment {
-                                ident: Ident::new(struct_name.as_str(), span),
-                                arguments: PathArguments::None,
-                            });
-                            if mutability.is_some() {
-                                panic!("mutable methods are unsupported for safety reasons");
-                            }
-                            FnArg::Typed(PatType {
-                                attrs: vec![],
-                                pat: Box::new(Pat::Ident(PatIdent {
-                                    attrs: vec![],
-                                    by_ref: Some(syn::token::Ref { span }),
-                                    mutability: *mutability,
-                                    ident: Ident::new("that", span),
-                                    subpat: None,
-                                })),
-                                colon_token: Colon { spans: [span] },
-                                ty: Box::new(Type::Path(TypePath {
-                                    qself: None,
-                                    path: Path {
-                                        leading_colon: None,
-                                        segments,
-                                    },
-                                })),
-                            })
-                        } else {
-                            input.clone()
-                        }
-                    })
-                    .collect::<Punctuated<_, _>>(),
+                inputs,
                 variadic: None,
                 output: item_method.sig.output.clone(),
             },
