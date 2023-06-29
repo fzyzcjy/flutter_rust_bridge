@@ -107,7 +107,8 @@ class Opts {
   late String crate;
   @CliOption(
     abbr: 'd',
-    help: 'Run "dart compile" with the specified input instead of "flutter build"',
+    help:
+        'Run "dart compile" with the specified input instead of "flutter build"',
     valueHelp: 'ENTRY',
   )
   late String? dartInput;
@@ -151,14 +152,16 @@ class Opts {
   )
   late bool noDefaultFeatures;
 
-  static List<String> rest(List<String> args) => _$parserForOpts.parse(args).rest;
+  static List<String> rest(List<String> args) =>
+      _$parserForOpts.parse(args).rest;
 }
 
 extension on Opts {
   bool get shouldRunBindgen => weakRefs || referenceTypes;
 
   /// If not set by user, relax COEP on Flutter.
-  bool get shouldRelaxCoep => relaxCoep || (!relaxCoepWasParsed && dartInput == null);
+  bool get shouldRelaxCoep =>
+      relaxCoep || (!relaxCoepWasParsed && dartInput == null);
 }
 
 void main(List<String> args) async {
@@ -243,8 +246,8 @@ Future<void> build(
     pwd: crateDir,
     silent: true,
   ));
-  final String crateName =
-      (manifest['targets'] as List).firstWhere((target) => (target['kind'] as List).contains('cdylib'))['name'];
+  final String crateName = (manifest['targets'] as List).firstWhere(
+      (target) => (target['kind'] as List).contains('cdylib'))['name'];
   if (crateName.isEmpty) bail('Crate name cannot be empty.');
   await system('wasm-pack', [
     'build', '-t', 'no-modules', '-d', wasmOutput, '--no-typescript',
@@ -294,7 +297,8 @@ Future<void> build(
 Future<void> runServer(Opts config, {required String root}) async {
   final ip = InternetAddress.anyIPv4;
 
-  final staticFilesHandler = createStaticHandler(root, defaultDocument: 'index.html');
+  final staticFilesHandler =
+      createStaticHandler(root, defaultDocument: 'index.html');
   Browser? browser;
 
   // Test helper.
@@ -319,7 +323,8 @@ Future<void> runServer(Opts config, {required String root}) async {
       final res = await handler(req);
       return res.change(headers: {
         'Cross-Origin-Opener-Policy': 'same-origin',
-        'Cross-Origin-Embedder-Policy': shouldRelaxCoep ? 'credentialless' : 'require-corp',
+        'Cross-Origin-Embedder-Policy':
+            shouldRelaxCoep ? 'credentialless' : 'require-corp',
       });
     };
   }).addHandler(Cascade().add(socketHandler).add(staticFilesHandler).handler);
