@@ -2,14 +2,13 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:build_cli_annotations/build_cli_annotations.dart';
+import 'package:path/path.dart' as p;
+import 'package:puppeteer/puppeteer.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
 import 'package:shelf_static/shelf_static.dart';
-import 'package:path/path.dart' as p;
 import 'package:shelf_web_socket/shelf_web_socket.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
-import 'package:puppeteer/puppeteer.dart';
-import 'package:colorize/colorize.dart';
 import 'package:yaml/yaml.dart';
 
 part 'serve.g.dart';
@@ -34,15 +33,17 @@ final open = const {
     }[Platform.operatingSystem] ??
     'open';
 
-String err(String msg) =>
-    stderr.supportsAnsiEscapes ? Colorize(msg).red().bold().toString() : msg;
+String err(String msg) {
+  // return stderr.supportsAnsiEscapes ? Colorize(msg).red().bold().toString() : msg; // #1262
+  return msg;
+}
 
 void eprint([Object? msg = 'unspecified']) {
   stderr.writeln('${err('error')}: $msg');
 }
 
-final arrow =
-    stdout.supportsAnsiEscapes ? Colorize('>').green().bold().toString() : '>';
+// final arrow = stdout.supportsAnsiEscapes ? Colorize('>').green().bold().toString() : '>'; // #1262
+const arrow = '>';
 
 Future<String> system(
   String command,
