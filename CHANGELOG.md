@@ -1,3 +1,7 @@
+## Unreleased
+
+* Update example tab on pub.dev and remove low-quality dependency #1263
+
 ## 1.78.0
 
 * Translate tuples to records and enums to sealed classes #1238 (thanks @Desdaemon)

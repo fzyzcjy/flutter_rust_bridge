@@ -261,6 +261,7 @@ precommit:
   just generate_all
   just rust_linter
   just dart_linter
+  just normalize_pubspec_lock
 
 
 # ============================ releasing new versions ============================
@@ -269,7 +270,6 @@ release old_version new_version:
     just _release_sanity_check_version {{old_version}} {{new_version}}
     just _release_update_version {{old_version}} {{new_version}}
     just precommit
-    just normalize_pubspec_lock
     just _release_update_scoop
     just _release_update_git {{old_version}} {{new_version}}
     just _release_update_github {{old_version}} {{new_version}}

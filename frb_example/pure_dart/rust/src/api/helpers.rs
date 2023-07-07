@@ -1,3 +1,4 @@
+#[allow(unused_imports)]
 use super::*;
 
 // wasm-bindgen only allows one "start" function,
