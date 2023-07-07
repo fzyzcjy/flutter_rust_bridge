@@ -46,7 +46,7 @@ impl MethodNamingUtil {
 
     /// Does `ir_file` has any methods directed for `struct_name`?
     pub fn has_methods(struct_name: &str, ir_file: &IrFile) -> bool {
-        ir_file.funcs.iter().any(|f| {
+        ir_file.funcs(true).iter().any(|f| {
             let f = FunctionName::deserialize(&f.name);
             f.is_method_for_struct(struct_name) || f.is_static_method_for_struct(struct_name)
         })

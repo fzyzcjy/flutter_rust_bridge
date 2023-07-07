@@ -118,7 +118,7 @@ impl Opts {
         ir_file.fetch_shared_types_if_needed(all_configs);
         log::debug!("after fetch_shared_types_if_needed"); //TODO: delete
 
-        let original_func_len = ir_file.funcs.len();
+        let original_func_len = ir_file.funcs(false).len();
         EXTRA_FUNC_MAP.with(|data| {
             let mut extra_func_map = data.borrow_mut();
 
@@ -154,7 +154,7 @@ impl Opts {
                     let correct_prefix = self.manifest_path.replace("Cargo.toml", "src/");
                     let code_path = raw_code_path.replace("crate/", &correct_prefix);
                     if let Some(code_path) = check_rust_path(&code_path) {
-                        log::debug!("the refined code_path:{code_path}"); //TODO: delete140 +
+                        log::debug!("the refined code_path:{code_path}"); //TODO: delete
                         let extra_source_rust_content = try_read_from_file(
                             &code_path,
                             &format!("Failed to read extra rust module file \"{}\"", code_path),
@@ -176,7 +176,8 @@ impl Opts {
                         //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑extra parse↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
                         // collect extra_ir_file.funcs into vec
-                        let extra_path_funcs = extra_ir_file.funcs.into_iter().collect::<Vec<_>>();
+                        let extra_path_funcs =
+                            extra_ir_file.funcs(false).into_iter().collect::<Vec<_>>();
                         e.insert(extra_path_funcs.clone());
 
                         extra_path_funcs
@@ -188,20 +189,24 @@ impl Opts {
                 };
 
                 // add types(struct/enum) methods defined in extra rust modules
+                let mut new_funcs = Vec::new();
                 for each_func in extra_path_funcs {
                     if each_func.name.ends_with(&(format!("__{type_name}"))) {
                         log::debug!("func added: {each_func:?}"); //TODO: delete
                         let mut method = each_func.clone();
+
                         if ir_file.get_shared_type_names().contains(&type_name) {
                             log::debug!("`{}` is found to be a shared type", type_name); //TODO: delete
                             method.shared = true;
                         }
 
-                        if !ir_file.funcs.contains(&method) {
-                            ir_file.funcs.push(method);
+                        if !ir_file.funcs(false).contains(&method) {
+                            new_funcs.push(method.clone());
                         }
                     }
                 }
+
+                ir_file.append_funcs(new_funcs);
 
                 // update the ir_file back to the global irfile map
                 IR_FILE_MAP.with(|data| {
@@ -210,7 +215,7 @@ impl Opts {
                 });
 
                 // if new methods are added, then it is essential to refine (no-)shared types.
-                if original_func_len != ir_file.funcs.len() {
+                if original_func_len != ir_file.funcs(false).len() {
                     ir_file.fetch_shared_types_forcely(all_configs);
                 }
             }
@@ -235,16 +240,19 @@ impl Opts {
         assert!(regular_configs.iter().all(|c| !c.shared));
 
         // get shared funcs, struct_pool and enum_pool
-        let mut funcs = Vec::new();
+        let mut shared_methods = Vec::new();
         let mut structs = Vec::new();
         let mut enums = Vec::new();
         for regular_config in regular_configs {
             let regular_ir_file = regular_config.get_ir_file(all_configs)?;
-            funcs.extend(regular_ir_file.get_shared_funcs().clone());
+            shared_methods.extend(regular_ir_file.get_shared_methods().clone());
             structs.extend(regular_ir_file.struct_pool);
             enums.extend(regular_ir_file.enum_pool);
         }
-        let funcs = funcs.find_duplicates(true).into_iter().collect::<Vec<_>>();
+        let funcs = shared_methods
+            .find_uniques()
+            .into_iter()
+            .collect::<Vec<_>>();
         let struct_pool = structs
             .find_duplicates(true)
             .into_iter()

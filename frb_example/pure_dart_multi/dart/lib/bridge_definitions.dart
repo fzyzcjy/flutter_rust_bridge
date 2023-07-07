@@ -53,6 +53,15 @@ abstract class BridgeGeneratedShares {
 
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInBlock1And2ConstMeta;
 
+  Future<String> testMethodMethodSharedStructOnlyForSyncTest(
+      {required SharedStructOnlyForSyncTest that, required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructOnlyForSyncTestConstMeta;
+
+  Future<String> testStaticMethodStaticMethodSharedStructOnlyForSyncTest({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructOnlyForSyncTestConstMeta;
+
   Future<String> testEnumMethodMethodSharedWeekdaysEnumInAllBlocks(
       {required SharedWeekdaysEnumInAllBlocks that, required String message, dynamic hint});
 
@@ -79,15 +88,6 @@ abstract class BridgeGeneratedShares {
   Future<String> testStaticMethodStaticMethodSharedStructInBlock2And3({required String message, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInBlock2And3ConstMeta;
-
-  Future<String> testMethodMethodSharedStructOnlyForSyncTest(
-      {required SharedStructOnlyForSyncTest that, required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructOnlyForSyncTestConstMeta;
-
-  Future<String> testStaticMethodStaticMethodSharedStructOnlyForSyncTest({required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructOnlyForSyncTestConstMeta;
 }
 
 /// this struct is used only as parameter in API block1 and used only as return type in API block2, but not
@@ -135,7 +135,7 @@ class CrossSharedStructInBlock2And3 {
 }
 
 @freezed
-sealed class SharedComplexEnumInAllBlocks with _$SharedComplexEnumInAllBlocks {
+class SharedComplexEnumInAllBlocks with _$SharedComplexEnumInAllBlocks {
   const factory SharedComplexEnumInAllBlocks.empty() = SharedComplexEnumInAllBlocks_Empty;
   const factory SharedComplexEnumInAllBlocks.primitives({
     /// Dart field comment
@@ -352,62 +352,6 @@ abstract class ApiBlock3Class {
 
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodStructDefinedInBlock3ConstMeta;
 
-  Future<String> testMethodMethodCrossSharedStructInBlock2And3(
-      {required CrossSharedStructInBlock2And3 that, required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestMethodMethodCrossSharedStructInBlock2And3ConstMeta;
-
-  Future<String> testStaticMethodStaticMethodCrossSharedStructInBlock2And3({required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodCrossSharedStructInBlock2And3ConstMeta;
-
-  Future<String> testEnumMethodMethodSharedComplexEnumInAllBlocks(
-      {required SharedComplexEnumInAllBlocks that, required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodSharedComplexEnumInAllBlocksConstMeta;
-
-  Future<String> testStaticEnumMethodStaticMethodSharedComplexEnumInAllBlocks({required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodSharedComplexEnumInAllBlocksConstMeta;
-
-  /// the parameter type `u32 for `num` is only used here,
-  /// for testing shared type(`u32`) within a shared struct method
-  Future<String> testMethodMethodSharedStructInAllBlocks(
-      {required SharedStructInAllBlocks that, required String message, required int num, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructInAllBlocksConstMeta;
-
-  Future<String> testStaticMethodStaticMethodSharedStructInAllBlocks({required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInAllBlocksConstMeta;
-
-  Future<String> testMethodMethodSharedStructInBlock2And3(
-      {required SharedStructInBlock2And3 that, required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructInBlock2And3ConstMeta;
-
-  Future<String> testStaticMethodStaticMethodSharedStructInBlock2And3({required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInBlock2And3ConstMeta;
-
-  Future<String> testMethodMethodSharedStructOnlyForSyncTest(
-      {required SharedStructOnlyForSyncTest that, required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructOnlyForSyncTestConstMeta;
-
-  Future<String> testStaticMethodStaticMethodSharedStructOnlyForSyncTest({required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructOnlyForSyncTestConstMeta;
-
-  Future<String> testEnumMethodMethodSharedWeekdaysEnumInAllBlocks(
-      {required SharedWeekdaysEnumInAllBlocks that, required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodSharedWeekdaysEnumInAllBlocksConstMeta;
-
-  Future<String> testStaticEnumMethodStaticMethodSharedWeekdaysEnumInAllBlocks({required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodSharedWeekdaysEnumInAllBlocksConstMeta;
-
   /// the parameter type `u16 for `num` is only used for struct
   /// used in a specific API block but not defined in the API block(like `StructOnlyForBlock1`,`StructOnlyForBlock2`),
   /// for testing shared type(`u16`) within a no-shared struct method
@@ -422,7 +366,7 @@ abstract class ApiBlock3Class {
 }
 
 @freezed
-sealed class EnumDefinedInBlock3 with _$EnumDefinedInBlock3 {
+class EnumDefinedInBlock3 with _$EnumDefinedInBlock3 {
   const factory EnumDefinedInBlock3.quit() = EnumDefinedInBlock3_Quit;
   const factory EnumDefinedInBlock3.move({
     required int x,
@@ -552,71 +496,6 @@ abstract class ApiBlock2Class {
 
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodStructDefinedInBlock2ConstMeta;
 
-  Future<String> testMethodMethodCrossSharedStructInBlock1And2(
-      {required CrossSharedStructInBlock1And2 that, required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestMethodMethodCrossSharedStructInBlock1And2ConstMeta;
-
-  Future<String> testStaticMethodStaticMethodCrossSharedStructInBlock1And2({required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodCrossSharedStructInBlock1And2ConstMeta;
-
-  Future<String> testMethodMethodCrossSharedStructInBlock2And3(
-      {required CrossSharedStructInBlock2And3 that, required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestMethodMethodCrossSharedStructInBlock2And3ConstMeta;
-
-  Future<String> testStaticMethodStaticMethodCrossSharedStructInBlock2And3({required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodCrossSharedStructInBlock2And3ConstMeta;
-
-  Future<String> testEnumMethodMethodSharedComplexEnumInAllBlocks(
-      {required SharedComplexEnumInAllBlocks that, required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodSharedComplexEnumInAllBlocksConstMeta;
-
-  Future<String> testStaticEnumMethodStaticMethodSharedComplexEnumInAllBlocks({required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodSharedComplexEnumInAllBlocksConstMeta;
-
-  /// the parameter type `u32 for `num` is only used here,
-  /// for testing shared type(`u32`) within a shared struct method
-  Future<String> testMethodMethodSharedStructInAllBlocks(
-      {required SharedStructInAllBlocks that, required String message, required int num, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructInAllBlocksConstMeta;
-
-  Future<String> testStaticMethodStaticMethodSharedStructInAllBlocks({required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInAllBlocksConstMeta;
-
-  Future<String> testMethodMethodSharedStructInBlock1And2(
-      {required SharedStructInBlock1And2 that, required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructInBlock1And2ConstMeta;
-
-  Future<String> testStaticMethodStaticMethodSharedStructInBlock1And2({required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInBlock1And2ConstMeta;
-
-  Future<String> testMethodMethodSharedStructInBlock2And3(
-      {required SharedStructInBlock2And3 that, required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructInBlock2And3ConstMeta;
-
-  Future<String> testStaticMethodStaticMethodSharedStructInBlock2And3({required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInBlock2And3ConstMeta;
-
-  Future<String> testEnumMethodMethodSharedWeekdaysEnumInAllBlocks(
-      {required SharedWeekdaysEnumInAllBlocks that, required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodSharedWeekdaysEnumInAllBlocksConstMeta;
-
-  Future<String> testStaticEnumMethodStaticMethodSharedWeekdaysEnumInAllBlocks({required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodSharedWeekdaysEnumInAllBlocksConstMeta;
-
   /// the parameter type `u16 for `num` is only used for struct
   /// used in a specific API block but not defined in the API block(like `StructOnlyForBlock1`,`StructOnlyForBlock3`),
   /// for testing shared type(`u16`) within a no-shared struct method
@@ -631,7 +510,7 @@ abstract class ApiBlock2Class {
 }
 
 @freezed
-sealed class EnumDefinedInBlock2 with _$EnumDefinedInBlock2 {
+class EnumDefinedInBlock2 with _$EnumDefinedInBlock2 {
   const factory EnumDefinedInBlock2.quit() = EnumDefinedInBlock2_Quit;
   const factory EnumDefinedInBlock2.move({
     required int x,
@@ -764,62 +643,6 @@ abstract class ApiBlock1Class {
 
   FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodStructDefinedInBlock1ConstMeta;
 
-  Future<String> testMethodMethodCrossSharedStructInBlock1And2(
-      {required CrossSharedStructInBlock1And2 that, required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestMethodMethodCrossSharedStructInBlock1And2ConstMeta;
-
-  Future<String> testStaticMethodStaticMethodCrossSharedStructInBlock1And2({required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodCrossSharedStructInBlock1And2ConstMeta;
-
-  Future<String> testEnumMethodMethodSharedComplexEnumInAllBlocks(
-      {required SharedComplexEnumInAllBlocks that, required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodSharedComplexEnumInAllBlocksConstMeta;
-
-  Future<String> testStaticEnumMethodStaticMethodSharedComplexEnumInAllBlocks({required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodSharedComplexEnumInAllBlocksConstMeta;
-
-  /// the parameter type `u32 for `num` is only used here,
-  /// for testing shared type(`u32`) within a shared struct method
-  Future<String> testMethodMethodSharedStructInAllBlocks(
-      {required SharedStructInAllBlocks that, required String message, required int num, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructInAllBlocksConstMeta;
-
-  Future<String> testStaticMethodStaticMethodSharedStructInAllBlocks({required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInAllBlocksConstMeta;
-
-  Future<String> testMethodMethodSharedStructInBlock1And2(
-      {required SharedStructInBlock1And2 that, required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructInBlock1And2ConstMeta;
-
-  Future<String> testStaticMethodStaticMethodSharedStructInBlock1And2({required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructInBlock1And2ConstMeta;
-
-  Future<String> testMethodMethodSharedStructOnlyForSyncTest(
-      {required SharedStructOnlyForSyncTest that, required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestMethodMethodSharedStructOnlyForSyncTestConstMeta;
-
-  Future<String> testStaticMethodStaticMethodSharedStructOnlyForSyncTest({required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticMethodStaticMethodSharedStructOnlyForSyncTestConstMeta;
-
-  Future<String> testEnumMethodMethodSharedWeekdaysEnumInAllBlocks(
-      {required SharedWeekdaysEnumInAllBlocks that, required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestEnumMethodMethodSharedWeekdaysEnumInAllBlocksConstMeta;
-
-  Future<String> testStaticEnumMethodStaticMethodSharedWeekdaysEnumInAllBlocks({required String message, dynamic hint});
-
-  FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodSharedWeekdaysEnumInAllBlocksConstMeta;
-
   /// the parameter type `u16 for `num` is only used for struct
   /// used in a specific API block but not defined in the API block(like `StructOnlyForBlock2`,`StructOnlyForBlock3`),
   /// for testing shared type(`u16`) within a no-shared struct method
@@ -834,7 +657,7 @@ abstract class ApiBlock1Class {
 }
 
 @freezed
-sealed class EnumDefinedInBlock1 with _$EnumDefinedInBlock1 {
+class EnumDefinedInBlock1 with _$EnumDefinedInBlock1 {
   const factory EnumDefinedInBlock1.quit() = EnumDefinedInBlock1_Quit;
   const factory EnumDefinedInBlock1.move({
     required int x,

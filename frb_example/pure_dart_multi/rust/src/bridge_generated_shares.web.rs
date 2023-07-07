@@ -71,6 +71,23 @@ pub fn wire_test_static_method__static_method__SharedStructInBlock1And2(
 }
 
 #[wasm_bindgen]
+pub fn wire_test_method__method__SharedStructOnlyForSyncTest(
+    port_: MessagePort,
+    that: JsValue,
+    message: String,
+) {
+    wire_test_method__method__SharedStructOnlyForSyncTest_impl(port_, that, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_static_method__static_method__SharedStructOnlyForSyncTest(
+    port_: MessagePort,
+    message: String,
+) {
+    wire_test_static_method__static_method__SharedStructOnlyForSyncTest_impl(port_, message)
+}
+
+#[wasm_bindgen]
 pub fn wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks(
     port_: MessagePort,
     that: i32,
@@ -119,23 +136,6 @@ pub fn wire_test_static_method__static_method__SharedStructInBlock2And3(
     message: String,
 ) {
     wire_test_static_method__static_method__SharedStructInBlock2And3_impl(port_, message)
-}
-
-#[wasm_bindgen]
-pub fn wire_test_method__method__SharedStructOnlyForSyncTest(
-    port_: MessagePort,
-    that: JsValue,
-    message: String,
-) {
-    wire_test_method__method__SharedStructOnlyForSyncTest_impl(port_, that, message)
-}
-
-#[wasm_bindgen]
-pub fn wire_test_static_method__static_method__SharedStructOnlyForSyncTest(
-    port_: MessagePort,
-    message: String,
-) {
-    wire_test_static_method__static_method__SharedStructOnlyForSyncTest_impl(port_, message)
 }
 
 // Section: allocate functions

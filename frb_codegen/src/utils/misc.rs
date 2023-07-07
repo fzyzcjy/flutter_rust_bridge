@@ -116,7 +116,7 @@ pub fn get_symbols_if_no_duplicates(
         log::debug!("get_symbols_if_no_duplicates:after "); //TODO: delete
 
         // for checking explicit API duplication
-        let iter = ir_file.funcs.iter().map(|f| f.name.clone());
+        let iter = ir_file.funcs(true).into_iter().map(|f| f.name);
         log::debug!("the ir_file.funcs:{:?}", iter); //TODO: delete
         explicit_raw_symbols.extend(iter);
         // for checking implicit API duplication

@@ -3,9 +3,9 @@ use log::debug;
 use crate::ir::IrType::*;
 use crate::ir::*;
 
-pub fn transform(src: IrFile) -> IrFile {
+pub fn transform(mut src: IrFile) -> IrFile {
     let dst_funcs = src
-        .funcs
+        .funcs(false)
         .into_iter()
         .map(|src_func| IrFunc {
             inputs: src_func
@@ -17,10 +17,9 @@ pub fn transform(src: IrFile) -> IrFile {
         })
         .collect();
 
-    IrFile {
-        funcs: dst_funcs,
-        ..src
-    }
+    src.set_funcs(dst_funcs);
+
+    src
 }
 
 fn transform_func_input_add_boxed(input: IrField) -> IrField {

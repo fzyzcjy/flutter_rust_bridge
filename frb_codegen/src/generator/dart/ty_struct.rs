@@ -81,7 +81,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         let src = self.ir.get(self.context.ir_file);
         let s = self.ir.get(self.context.ir_file);
 
-        let mut methods = self.context.ir_file.funcs.iter().filter(|f| {
+        let mut methods = self.context.ir_file.funcs(true).into_iter().filter(|f| {
             let f = FunctionName::deserialize(&f.name);
             f.is_method_for_struct(&src.name) || f.is_static_method_for_struct(&src.name)
         });
@@ -142,10 +142,9 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         let metadata = dart_metadata(&src.dart_metadata);
 
         let ir_file = self.context.ir_file;
-        log::debug!("the ir_file funcs:{:?}", ir_file.funcs); //TODO: delete
         let methods = ir_file
-            .funcs
-            .iter()
+            .funcs(true)
+            .into_iter()
             .filter(|f| {
                 let f = FunctionName::deserialize(&f.name);
                 f.is_method_for_struct(&src.name) || f.is_static_method_for_struct(&src.name)

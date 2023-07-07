@@ -71,6 +71,23 @@ pub extern "C" fn wire_test_static_method__static_method__SharedStructInBlock1An
 }
 
 #[no_mangle]
+pub extern "C" fn wire_test_method__method__SharedStructOnlyForSyncTest(
+    port_: i64,
+    that: *mut wire_SharedStructOnlyForSyncTest,
+    message: *mut wire_uint_8_list,
+) {
+    wire_test_method__method__SharedStructOnlyForSyncTest_impl(port_, that, message)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_static_method__static_method__SharedStructOnlyForSyncTest(
+    port_: i64,
+    message: *mut wire_uint_8_list,
+) {
+    wire_test_static_method__static_method__SharedStructOnlyForSyncTest_impl(port_, message)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks(
     port_: i64,
     that: i32,
@@ -119,23 +136,6 @@ pub extern "C" fn wire_test_static_method__static_method__SharedStructInBlock2An
     message: *mut wire_uint_8_list,
 ) {
     wire_test_static_method__static_method__SharedStructInBlock2And3_impl(port_, message)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_test_method__method__SharedStructOnlyForSyncTest(
-    port_: i64,
-    that: *mut wire_SharedStructOnlyForSyncTest,
-    message: *mut wire_uint_8_list,
-) {
-    wire_test_method__method__SharedStructOnlyForSyncTest_impl(port_, that, message)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_test_static_method__static_method__SharedStructOnlyForSyncTest(
-    port_: i64,
-    message: *mut wire_uint_8_list,
-) {
-    wire_test_static_method__static_method__SharedStructOnlyForSyncTest_impl(port_, message)
 }
 
 // Section: allocate functions

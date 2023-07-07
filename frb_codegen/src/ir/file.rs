@@ -28,10 +28,11 @@ thread_local!(static FETCHED_FOR_SHARED_TYPES_ALL: RefCell<bool> = RefCell::new(
 #[derive(Debug, Clone)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize))]
 pub struct IrFile {
-    /// for a regular API block, this field contains APIs defined in this block and
-    /// all methods of types(struct/enum)---the types are used only in this block;
-    /// for a shared block, it ONLY contains methods from ALL shared types.
-    pub funcs: Vec<IrFunc>,
+    /// for a regular API block: this field contains APIs defined in this block and
+    /// all methods of types(struct/enum) used ONLY in this block
+    /// ---NOTE: for shared types used in this block, their methods are also included here;
+    /// for a shared block: it ONLY contains methods from ALL shared types.
+    funcs: Vec<IrFunc>,
     pub struct_pool: IrStructPool,
     pub enum_pool: IrEnumPool,
     pub has_executor: bool,
@@ -40,6 +41,48 @@ pub struct IrFile {
 }
 
 impl IrFile {
+    pub fn funcs(&self, exclude_shared_method: bool) -> Vec<IrFunc> {
+        if self.shared {
+            // assert each item of funcs are shared
+            for each in &self.funcs {
+                assert!(each.shared);
+            }
+            return self.funcs.clone();
+        }
+        match exclude_shared_method {
+            true => self
+                .funcs
+                .iter()
+                .cloned()
+                .filter(|each| !each.shared)
+                .collect::<Vec<_>>(),
+            false => self.funcs.clone(),
+        }
+    }
+
+    pub fn set_funcs(&mut self, dst_funcs: Vec<IrFunc>) {
+        self.funcs = dst_funcs;
+    }
+
+    pub fn append_funcs(&mut self, dst_funcs: Vec<IrFunc>) {
+        self.funcs.extend(dst_funcs);
+    }
+
+    /// Returns a vector of all shared methods in the file.
+    /// For a regular API block, this method returns all methods of shared types used in this block.
+    /// For a shared block, it returns all methods from all shared types.
+    pub fn get_shared_methods(&self) -> Vec<IrFunc> {
+        if !self.shared {
+            self.funcs
+                .iter()
+                .cloned()
+                .filter(|each| each.shared)
+                .collect::<Vec<_>>()
+        } else {
+            self.funcs.clone()
+        }
+    }
+
     pub fn new(
         funcs: Vec<IrFunc>,
         struct_pool: IrStructPool,
@@ -75,7 +118,7 @@ impl IrFile {
         include_func_inputs: bool,
         include_func_output: bool,
     ) {
-        for func in &self.funcs {
+        for func in &self.funcs(false) {
             if include_func_inputs {
                 for field in &func.inputs {
                     field.ty.visit_types(f, self);
@@ -102,7 +145,7 @@ impl IrFile {
         c_struct_names
     }
 
-    /// get distinct types for this IrFile instance,
+    /// get distinct types for this IrFile instance
     /// for either a regular or an auto-generated shared API block.
     /// NOTE: in multi-blocks case, the output would NOT include shared types for a regular block IrFile.
     pub fn distinct_types(
@@ -297,7 +340,6 @@ impl IrFile {
         include_func_output: bool,
         all_configs: &[Opts],
     ) -> HashSet<IrType> {
-        // get it from scratch for multi-blocks case
         let regular_configs = if !all_configs.last().unwrap().shared {
             all_configs
         } else {
@@ -414,7 +456,7 @@ impl IrFile {
     /// even both `include_func_inputs` and `include_func_output` are set true.
     /// because the signatures for the same raw type(e.g. `bool`) are different when it is used as input and output of a function.
     /// But indeed, this special kind of type should be treated as shared type within
-    /// either input or output context or both, even it is shared but not shared in ALL of regular API blocks.
+    /// either input or output context or both.
     /// Thus, here comes an extra manipulation to pick it out.
     fn add_cross_shared_types(
         &self,
@@ -559,19 +601,6 @@ impl IrFile {
                 std::iter::once(safe_ident.clone())
                     .chain(std::iter::once(safe_ident.to_case(Case::UpperCamel)))
             })
-            .collect()
-    }
-
-    /// Get all shared methods used in current block.
-    /// This method should only be called for a regular IrFile instance.
-    pub fn get_shared_funcs(&self) -> Vec<IrFunc> {
-        if self.shared {
-            panic!("`get_shared_methods` should not be called from a shared ir_file")
-        }
-        self.funcs
-            .iter()
-            .filter(|irfunc| irfunc.shared)
-            .cloned()
             .collect()
     }
 

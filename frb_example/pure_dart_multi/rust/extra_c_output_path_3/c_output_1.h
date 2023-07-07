@@ -5,15 +5,6 @@ typedef struct _Dart_Handle* Dart_Handle;
 
 typedef struct DartCObject DartCObject;
 
-typedef struct wire_uint_8_list {
-  uint8_t *ptr;
-  int32_t len;
-} wire_uint_8_list;
-
-typedef struct wire_CrossSharedStructInBlock1And2 {
-  struct wire_uint_8_list *name;
-} wire_CrossSharedStructInBlock1And2;
-
 typedef struct wire_SharedComplexEnumInAllBlocks_Empty {
 
 } wire_SharedComplexEnumInAllBlocks_Empty;
@@ -27,6 +18,11 @@ typedef struct wire_SharedComplexEnumInAllBlocks_Primitives {
 typedef struct wire_SharedComplexEnumInAllBlocks_Nested {
   struct wire_SharedComplexEnumInAllBlocks *field0;
 } wire_SharedComplexEnumInAllBlocks_Nested;
+
+typedef struct wire_uint_8_list {
+  uint8_t *ptr;
+  int32_t len;
+} wire_uint_8_list;
 
 typedef struct wire_SharedComplexEnumInAllBlocks_Optional {
   int32_t *field0;
@@ -83,26 +79,21 @@ typedef struct wire_SharedStructInBlock1And2 {
   struct wire_uint_8_list *name;
 } wire_SharedStructInBlock1And2;
 
-typedef struct wire_CrossSharedStructInBlock2And3 {
-  struct wire_uint_8_list *name;
-} wire_CrossSharedStructInBlock2And3;
-
 typedef struct wire_SharedStructInBlock2And3 {
   int32_t id;
   double num;
   struct wire_uint_8_list *name;
 } wire_SharedStructInBlock2And3;
 
-typedef struct wire_SharedStructOnlyForSyncTest {
-  struct wire_uint_8_list *name;
-  double score;
-} wire_SharedStructOnlyForSyncTest;
-
 typedef struct DartCObject *WireSyncReturn;
 
 typedef int64_t DartPort;
 
 typedef bool (*DartPostCObjectFnType)(DartPort port_id, void *message);
+
+typedef struct wire_CrossSharedStructInBlock1And2 {
+  struct wire_uint_8_list *name;
+} wire_CrossSharedStructInBlock1And2;
 
 typedef struct wire_StructOnlyForBlock1 {
   int8_t *id;
@@ -156,63 +147,6 @@ typedef struct wire_StructOnlyForBlock3 {
   double num;
   struct wire_uint_8_list *name;
 } wire_StructOnlyForBlock3;
-
-void wire_test_method__method__CrossSharedStructInBlock1And2(int64_t port_,
-                                                             struct wire_CrossSharedStructInBlock1And2 *that,
-                                                             struct wire_uint_8_list *message);
-
-void wire_test_static_method__static_method__CrossSharedStructInBlock1And2(int64_t port_,
-                                                                           struct wire_uint_8_list *message);
-
-void wire_test_enum_method__method__SharedComplexEnumInAllBlocks(int64_t port_,
-                                                                 struct wire_SharedComplexEnumInAllBlocks *that,
-                                                                 struct wire_uint_8_list *message);
-
-void wire_test_static_enum_method__static_method__SharedComplexEnumInAllBlocks(int64_t port_,
-                                                                               struct wire_uint_8_list *message);
-
-void wire_test_method__method__SharedStructInAllBlocks(int64_t port_,
-                                                       struct wire_SharedStructInAllBlocks *that,
-                                                       struct wire_uint_8_list *message,
-                                                       uint32_t num);
-
-void wire_test_static_method__static_method__SharedStructInAllBlocks(int64_t port_,
-                                                                     struct wire_uint_8_list *message);
-
-void wire_test_method__method__SharedStructInBlock1And2(int64_t port_,
-                                                        struct wire_SharedStructInBlock1And2 *that,
-                                                        struct wire_uint_8_list *message);
-
-void wire_test_static_method__static_method__SharedStructInBlock1And2(int64_t port_,
-                                                                      struct wire_uint_8_list *message);
-
-void wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks(int64_t port_,
-                                                                  int32_t that,
-                                                                  struct wire_uint_8_list *message);
-
-void wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks(int64_t port_,
-                                                                                struct wire_uint_8_list *message);
-
-void wire_test_method__method__CrossSharedStructInBlock2And3(int64_t port_,
-                                                             struct wire_CrossSharedStructInBlock2And3 *that,
-                                                             struct wire_uint_8_list *message);
-
-void wire_test_static_method__static_method__CrossSharedStructInBlock2And3(int64_t port_,
-                                                                           struct wire_uint_8_list *message);
-
-void wire_test_method__method__SharedStructInBlock2And3(int64_t port_,
-                                                        struct wire_SharedStructInBlock2And3 *that,
-                                                        struct wire_uint_8_list *message);
-
-void wire_test_static_method__static_method__SharedStructInBlock2And3(int64_t port_,
-                                                                      struct wire_uint_8_list *message);
-
-void wire_test_method__method__SharedStructOnlyForSyncTest(int64_t port_,
-                                                           struct wire_SharedStructOnlyForSyncTest *that,
-                                                           struct wire_uint_8_list *message);
-
-void wire_test_static_method__static_method__SharedStructOnlyForSyncTest(int64_t port_,
-                                                                         struct wire_uint_8_list *message);
 
 int32_t *new_box_autoadd_i32(int32_t value);
 

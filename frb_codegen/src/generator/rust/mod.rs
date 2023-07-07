@@ -28,6 +28,7 @@ pub use ty_rust_opaque::*;
 pub use ty_struct::*;
 pub use ty_sync_return::*;
 
+use std::cell::RefCell;
 use std::collections::HashSet;
 use std::fmt::Display;
 
@@ -50,13 +51,35 @@ pub struct Output {
     pub wasm_exports: Vec<IrFuncDisplay>,
 }
 
+thread_local!(static SHARED_METHODS_WIRE_NAMES: RefCell<Vec<String>> = RefCell::new(Vec::new()));
+
 impl Output {
-    pub fn get_exclude_symbols(&self, all_symbols: &[String]) -> Vec<String> {
-        all_symbols
+    pub fn get_exclude_symbols(&self, all_symbols: &[String], ir_file: &IrFile) -> Vec<String> {
+        let mut exclude_symbols = all_symbols
             .iter()
             .filter(|s| !self.extern_func_names.contains(s))
             .map(|s| (*s).clone())
-            .collect::<Vec<_>>()
+            .collect::<Vec<_>>();
+
+        if !ir_file.shared {
+            // for regular blocks, push those methods from shared types in
+            let shared_method_names = SHARED_METHODS_WIRE_NAMES.with(|data| data.borrow().clone());
+            exclude_symbols.extend(shared_method_names);
+        } else {
+            // for shared blocks, push the wire names of all shared methods to global variable
+            let all_shared_methods_wire_names = ir_file
+                .get_shared_methods()
+                .iter()
+                .map(|method| format!("wire_{}", method.name))
+                .collect::<Vec<_>>();
+            log::debug!("the all_shared_methods:{:?}", all_shared_methods_wire_names); //TODO: delete
+            SHARED_METHODS_WIRE_NAMES.with(|data| {
+                let mut vec = data.borrow_mut();
+                *vec = all_shared_methods_wire_names;
+            });
+        }
+
+        exclude_symbols
     }
 }
 
@@ -101,6 +124,12 @@ impl<'a> Generator<'a> {
         let mut lines = Acc::<Vec<_>>::default();
 
         let distinct_input_types = ir_file.distinct_types(true, false, all_configs);
+        log::debug!(
+            "the input for block{:?} : ir_file is:\n{:?} \n input_types:{:?}",
+            ir_file.block_index,
+            ir_file,
+            distinct_input_types
+        ); //TODO: delete
         let distinct_output_types = ir_file.distinct_types(false, true, all_configs);
 
         lines.push(r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion, clippy::unit_arg, clippy::double_parens, non_snake_case, clippy::too_many_arguments)]"#.to_string());
@@ -127,7 +156,7 @@ impl<'a> Generator<'a> {
 
         lines.push_all(self.section_header_comment("wire functions"));
         lines += ir_file
-            .funcs
+            .funcs(true)
             .iter()
             .filter(|f| f.shared == ir_file.shared)
             .map(|f| self.generate_wire_func(f, ir_file, shared_rust_wire_mod, all_configs))

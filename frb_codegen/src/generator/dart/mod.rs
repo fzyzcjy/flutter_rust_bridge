@@ -73,6 +73,9 @@ pub fn generate(
         dart_structs,
         ..
     } = &spec;
+
+    log::debug!("block {:?} the spec is: {spec:?}", ir_file.block_index); //TODO: delete
+
     let needs_freezed = spec.needs_freezed;
     let mut common_header = generate_common_header();
     common_header.import += &config.extra_headers;
@@ -99,6 +102,7 @@ pub fn generate(
     }
 }
 
+#[derive(Debug)]
 struct DartApiSpec {
     dart_funcs: Vec<GeneratedApiFunc>,
     dart_structs: Vec<String>,
@@ -155,6 +159,7 @@ impl DartApiSpec {
             config,
             &shared_dart_api2wire_funcs,
         );
+
         let common = COMMON_API2WIRE.with(|data| {
             let mut v = data.borrow_mut();
             *v = dart_api2wire_funcs.common.clone();
@@ -162,7 +167,7 @@ impl DartApiSpec {
         });
 
         let dart_funcs = (ir_file
-            .funcs
+            .funcs(true)
             .iter()
             .map(|f| generate_api_func(f, ir_file, &common, &shared_dart_api2wire_funcs)))
         .chain(
@@ -194,7 +199,7 @@ impl DartApiSpec {
 
         let ir_wasm_func_exports = config.wasm_enabled.then(|| {
             ir_file
-                .funcs
+                .funcs(true)
                 .iter()
                 .map(|fun| IrFuncDisplay::from_ir(fun, Target::Wasm))
                 .chain(extra_funcs.iter().cloned())
