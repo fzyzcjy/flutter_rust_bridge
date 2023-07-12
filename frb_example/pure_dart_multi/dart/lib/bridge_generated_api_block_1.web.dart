@@ -24,6 +24,11 @@ class ApiBlock1ClassPlatform extends FlutterRustBridgeBase<ApiBlock1ClassWire> w
 // Section: api2wire
 
   @protected
+  List<String> api2wire_StringList(List<String> raw) {
+    return raw;
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_enum_defined_in_block_1(EnumDefinedInBlock1 raw) {
     return api2wire_enum_defined_in_block_1(raw);
   }
@@ -59,6 +64,31 @@ class ApiBlock1ClassPlatform extends FlutterRustBridgeBase<ApiBlock1ClassWire> w
     }
 
     throw Exception('unreachable');
+  }
+
+  @protected
+  Int32List api2wire_int_32_list(Int32List raw) {
+    return raw;
+  }
+
+  @protected
+  List<dynamic> api2wire_list_enum_defined_in_block_1(List<EnumDefinedInBlock1> raw) {
+    return raw.map(api2wire_enum_defined_in_block_1).toList();
+  }
+
+  @protected
+  List<dynamic> api2wire_list_shared_struct_in_all_blocks(List<SharedStructInAllBlocks> raw) {
+    return raw.map(_sharedPlatform.api2wire_shared_struct_in_all_blocks).toList();
+  }
+
+  @protected
+  List<dynamic> api2wire_list_shared_weekdays_enum_in_all_blocks(List<SharedWeekdaysEnumInAllBlocks> raw) {
+    return raw.map(api2wire_shared_weekdays_enum_in_all_blocks).toList();
+  }
+
+  @protected
+  List<dynamic> api2wire_list_struct_defined_in_block_1(List<StructDefinedInBlock1> raw) {
+    return raw.map(api2wire_struct_defined_in_block_1).toList();
   }
 
   @protected
@@ -126,6 +156,9 @@ class ApiBlock1ClassWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_test_enum_defined_in_block_1(NativePortType port_, List<dynamic> custom);
 
+  external dynamic /* void */ wire_test_list_in_block_1(NativePortType port_, List<dynamic> shared_structs,
+      List<String> strings, Int32List nums, List<dynamic> weekdays, List<dynamic> struct_list, List<dynamic> enum_list);
+
   external dynamic /* void */ wire_test_method__method__EnumDefinedInBlock1(
       NativePortType port_, List<dynamic> that, String message);
 
@@ -186,6 +219,10 @@ class ApiBlock1ClassWire extends FlutterRustBridgeWasmWireBase<ApiBlock1ClassWas
 
   void wire_test_enum_defined_in_block_1(NativePortType port_, List<dynamic> custom) =>
       wasmModule.wire_test_enum_defined_in_block_1(port_, custom);
+
+  void wire_test_list_in_block_1(NativePortType port_, List<dynamic> shared_structs, List<String> strings,
+          Int32List nums, List<dynamic> weekdays, List<dynamic> struct_list, List<dynamic> enum_list) =>
+      wasmModule.wire_test_list_in_block_1(port_, shared_structs, strings, nums, weekdays, struct_list, enum_list);
 
   void wire_test_method__method__EnumDefinedInBlock1(NativePortType port_, List<dynamic> that, String message) =>
       wasmModule.wire_test_method__method__EnumDefinedInBlock1(port_, that, message);

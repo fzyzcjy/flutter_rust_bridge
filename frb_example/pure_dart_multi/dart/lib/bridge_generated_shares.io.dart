@@ -593,6 +593,22 @@ class BridgeGeneratedSharesWire implements FlutterRustBridgeWireBase {
       _wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocksPtr
           .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
+  void wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks(
+    int port_,
+    int that,
+  ) {
+    return _wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_print_weekday__method__SharedWeekdaysEnumInAllBlocksPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks');
+  late final _wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks =
+      _wire_print_weekday__method__SharedWeekdaysEnumInAllBlocksPtr.asFunction<void Function(int, int)>();
+
   void wire_test_method__method__CrossSharedStructInBlock2And3(
     int port_,
     ffi.Pointer<wire_CrossSharedStructInBlock2And3> that,

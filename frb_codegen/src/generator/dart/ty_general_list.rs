@@ -3,17 +3,27 @@ use crate::ir::*;
 use crate::target::Acc;
 use crate::type_dart_generator_struct;
 
+use super::func::{get_api2wire_prefix, get_api_to_fill_wire_prefix};
+
 type_dart_generator_struct!(TypeGeneralListGenerator, IrTypeGeneralList);
 
 impl TypeDartGeneratorTrait for TypeGeneralListGenerator<'_> {
     fn api2wire_body(
         &self,
-        _shared_dart_api2wire_funcs: &Option<Acc<String>>,
+        shared_dart_api2wire_funcs: &Option<Acc<String>>,
     ) -> Acc<Option<String>> {
         // NOTE the memory strategy is same as PrimitiveList, see comments there.
         let ident = self.ir.safe_ident();
         let inner = self.ir.inner.safe_ident();
-
+        let api2wire_prefix = get_api2wire_prefix(
+            &format!("api2wire_{}", inner),
+            shared_dart_api2wire_funcs,
+            self.context.ir_file,
+            &self.ir.inner,
+            false,
+        );
+        let api_fill_to_wire_prefix =
+            get_api_to_fill_wire_prefix(self.context.ir_file, &self.ir.inner);
         Acc {
             io: Some(format!(
                 "final ans = inner.new_{ident}(raw.length);
@@ -26,15 +36,14 @@ impl TypeDartGeneratorTrait for TypeGeneralListGenerator<'_> {
                     // Handle primitive enums list.
                     // This is similar to `StringList` in
                     // `frb_codegen/src/generator/dart/ty_delegate.rs`
-                    format!("ans.ref.ptr[i] = api2wire_{inner}(raw[i]);")
+                    format!("ans.ref.ptr[i] = {api2wire_prefix}api2wire_{inner}(raw[i]);")
                 } else {
-                    let prefix = if !self.context.config.shared { "_" } else { "" };
-                    format!("{prefix}api_fill_to_wire_{inner}(raw[i], ans.ref.ptr[i]);")
+                    format!("{api_fill_to_wire_prefix}api_fill_to_wire_{inner}(raw[i], ans.ref.ptr[i]);")
                 }
             )),
             wasm: self.context.config.wasm_enabled.then(|| {
                 format!(
-                    "return raw.map(api2wire_{}).toList();",
+                    "return raw.map({api2wire_prefix}api2wire_{}).toList();",
                     self.ir.inner.safe_ident()
                 )
             }),

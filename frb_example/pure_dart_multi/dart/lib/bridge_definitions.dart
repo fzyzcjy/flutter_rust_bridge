@@ -71,6 +71,11 @@ abstract class BridgeGeneratedShares {
 
   FlutterRustBridgeTaskConstMeta get kTestStaticEnumMethodStaticMethodSharedWeekdaysEnumInAllBlocksConstMeta;
 
+  Future<String> printWeekdayMethodSharedWeekdaysEnumInAllBlocks(
+      {required SharedWeekdaysEnumInAllBlocks that, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kPrintWeekdayMethodSharedWeekdaysEnumInAllBlocksConstMeta;
+
   Future<String> testMethodMethodCrossSharedStructInBlock2And3(
       {required CrossSharedStructInBlock2And3 that, required String message, dynamic hint});
 
@@ -135,7 +140,7 @@ class CrossSharedStructInBlock2And3 {
 }
 
 @freezed
-sealed class SharedComplexEnumInAllBlocks with _$SharedComplexEnumInAllBlocks {
+class SharedComplexEnumInAllBlocks with _$SharedComplexEnumInAllBlocks {
   const factory SharedComplexEnumInAllBlocks.empty() = SharedComplexEnumInAllBlocks_Empty;
   const factory SharedComplexEnumInAllBlocks.primitives({
     /// Dart field comment
@@ -366,7 +371,7 @@ abstract class ApiBlock3Class {
 }
 
 @freezed
-sealed class EnumDefinedInBlock3 with _$EnumDefinedInBlock3 {
+class EnumDefinedInBlock3 with _$EnumDefinedInBlock3 {
   const factory EnumDefinedInBlock3.quit() = EnumDefinedInBlock3_Quit;
   const factory EnumDefinedInBlock3.move({
     required int x,
@@ -510,7 +515,7 @@ abstract class ApiBlock2Class {
 }
 
 @freezed
-sealed class EnumDefinedInBlock2 with _$EnumDefinedInBlock2 {
+class EnumDefinedInBlock2 with _$EnumDefinedInBlock2 {
   const factory EnumDefinedInBlock2.quit() = EnumDefinedInBlock2_Quit;
   const factory EnumDefinedInBlock2.move({
     required int x,
@@ -625,6 +630,34 @@ abstract class ApiBlock1Class {
 
   FlutterRustBridgeTaskConstMeta get kTestEnumDefinedInBlock1ConstMeta;
 
+  /// This API is for testing generating API with list types.
+  /// To achieve a complete test, it accepts params of various types of lists
+  /// -- lists of primitive types, strings, and customized structs/enums, some of the inner items of which are
+  /// shared, and the others are not shared.
+  ///
+  /// # Arguments
+  ///
+  /// * `shared_structs` - A vector of `SharedStructInAllBlocks` items -- the item is a shared type.
+  /// * `strings` - A vector of `String` items -- the item is a shared type.
+  /// * `nums` - A vector of `i32` items -- the item is a shared type.
+  /// * `weekdays` - A vector of `SharedWeekdaysEnumInAllBlocks` items -- the item is a shared type.
+  /// * `struct_list` - A vector of `StructDefinedInBlock1` items -- the item is NOT a shared type.
+  /// * `enum_list` - A vector of `EnumDefinedInBlock1` items -- the item is NOT a shared type.
+  ///
+  /// # Returns
+  ///
+  /// A string that concatenates the names of each item in the input vectors, separated by underscores.
+  Future<String> testListInBlock1(
+      {required List<SharedStructInAllBlocks> sharedStructs,
+      required List<String> strings,
+      required Int32List nums,
+      required List<SharedWeekdaysEnumInAllBlocks> weekdays,
+      required List<StructDefinedInBlock1> structList,
+      required List<EnumDefinedInBlock1> enumList,
+      dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestListInBlock1ConstMeta;
+
   Future<String> testMethodMethodEnumDefinedInBlock1(
       {required EnumDefinedInBlock1 that, required String message, dynamic hint});
 
@@ -657,7 +690,7 @@ abstract class ApiBlock1Class {
 }
 
 @freezed
-sealed class EnumDefinedInBlock1 with _$EnumDefinedInBlock1 {
+class EnumDefinedInBlock1 with _$EnumDefinedInBlock1 {
   const factory EnumDefinedInBlock1.quit() = EnumDefinedInBlock1_Quit;
   const factory EnumDefinedInBlock1.move({
     required int x,

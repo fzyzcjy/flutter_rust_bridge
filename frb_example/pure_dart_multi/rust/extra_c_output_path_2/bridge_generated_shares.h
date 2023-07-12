@@ -175,6 +175,8 @@ void wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks(int64_t port_,
 void wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks(int64_t port_,
                                                                                 struct wire_uint_8_list *message);
 
+void wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks(int64_t port_, int32_t that);
+
 void wire_test_method__method__CrossSharedStructInBlock2And3(int64_t port_,
                                                              struct wire_CrossSharedStructInBlock2And3 *that,
                                                              struct wire_uint_8_list *message);
@@ -267,6 +269,7 @@ static int64_t dummy_method_to_enforce_bundling_BridgeGeneratedShares(void) {
     dummy_var ^= ((int64_t) (void*) wire_test_static_method__static_method__SharedStructOnlyForSyncTest);
     dummy_var ^= ((int64_t) (void*) wire_test_enum_method__method__SharedWeekdaysEnumInAllBlocks);
     dummy_var ^= ((int64_t) (void*) wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks);
+    dummy_var ^= ((int64_t) (void*) wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks);
     dummy_var ^= ((int64_t) (void*) wire_test_method__method__CrossSharedStructInBlock2And3);
     dummy_var ^= ((int64_t) (void*) wire_test_static_method__static_method__CrossSharedStructInBlock2And3);
     dummy_var ^= ((int64_t) (void*) wire_test_method__method__SharedStructInBlock2And3);

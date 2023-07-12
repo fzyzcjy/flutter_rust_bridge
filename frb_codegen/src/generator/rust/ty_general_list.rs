@@ -19,9 +19,15 @@ impl TypeGeneralListGenerator<'_> {
 
 impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
+        let prefix = self.get_wire2api_prefix(&self.ir.inner);
+        // REPLACE PREFIX TO WIRE2API_BODY_IO AND WIRE2API_BODY_WASM
+        let wire2api_body_io =
+            TypeGeneralListGenerator::WIRE2API_BODY_IO.replace("Wire2Api", &prefix);
+        let wire2api_body_wasm =
+            TypeGeneralListGenerator::WIRE2API_BODY_WASM.replace("Wire2Api", &prefix);
         Acc {
-            wasm: Some(TypeGeneralListGenerator::WIRE2API_BODY_WASM.to_owned()),
-            io: Some(TypeGeneralListGenerator::WIRE2API_BODY_IO.to_owned()),
+            io: Some(wire2api_body_io),
+            wasm: Some(wire2api_body_wasm),
             ..Default::default()
         }
     }

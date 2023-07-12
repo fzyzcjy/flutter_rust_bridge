@@ -99,6 +99,27 @@ pub extern "C" fn wire_test_enum_defined_in_block_1(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_test_list_in_block_1(
+    port_: i64,
+    shared_structs: *mut wire_list_shared_struct_in_all_blocks,
+    strings: *mut wire_StringList,
+    nums: *mut wire_int_32_list,
+    weekdays: *mut wire_list_shared_weekdays_enum_in_all_blocks,
+    struct_list: *mut wire_list_struct_defined_in_block_1,
+    enum_list: *mut wire_list_enum_defined_in_block_1,
+) {
+    wire_test_list_in_block_1_impl(
+        port_,
+        shared_structs,
+        strings,
+        nums,
+        weekdays,
+        struct_list,
+        enum_list,
+    )
+}
+
+#[no_mangle]
 pub extern "C" fn wire_test_method__method__EnumDefinedInBlock1(
     port_: i64,
     that: *mut wire_EnumDefinedInBlock1,
@@ -153,6 +174,15 @@ pub extern "C" fn wire_test_static_method__static_method__StructOnlyForBlock1(
 // Section: allocate functions
 
 #[no_mangle]
+pub extern "C" fn new_StringList(len: i32) -> *mut wire_StringList {
+    let wrap = wire_StringList {
+        ptr: support::new_leak_vec_ptr(<*mut wire_uint_8_list>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_enum_defined_in_block_1() -> *mut wire_EnumDefinedInBlock1 {
     support::new_leak_box_ptr(wire_EnumDefinedInBlock1::new_with_null_ptr())
 }
@@ -172,10 +202,74 @@ pub extern "C" fn new_box_autoadd_struct_only_for_block_1() -> *mut wire_StructO
     support::new_leak_box_ptr(wire_StructOnlyForBlock1::new_with_null_ptr())
 }
 
+#[no_mangle]
+pub extern "C" fn new_int_32_list(len: i32) -> *mut wire_int_32_list {
+    let ans = wire_int_32_list {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_enum_defined_in_block_1(
+    len: i32,
+) -> *mut wire_list_enum_defined_in_block_1 {
+    let wrap = wire_list_enum_defined_in_block_1 {
+        ptr: support::new_leak_vec_ptr(<wire_EnumDefinedInBlock1>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_shared_struct_in_all_blocks(
+    len: i32,
+) -> *mut wire_list_shared_struct_in_all_blocks {
+    let wrap = wire_list_shared_struct_in_all_blocks {
+        ptr: support::new_leak_vec_ptr(<wire_SharedStructInAllBlocks>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_shared_weekdays_enum_in_all_blocks(
+    len: i32,
+) -> *mut wire_list_shared_weekdays_enum_in_all_blocks {
+    let wrap = wire_list_shared_weekdays_enum_in_all_blocks {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_struct_defined_in_block_1(
+    len: i32,
+) -> *mut wire_list_struct_defined_in_block_1 {
+    let wrap = wire_list_struct_defined_in_block_1 {
+        ptr: support::new_leak_vec_ptr(<wire_StructDefinedInBlock1>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
 // Section: related functions
 
 // Section: impl Wire2Api
 
+impl Wire2Api<Vec<String>> for *mut wire_StringList {
+    fn wire2api(self) -> Vec<String> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter()
+            .map(bridge_generated_shares::Wire2Api::wire2api)
+            .collect()
+    }
+}
 impl Wire2Api<EnumDefinedInBlock1> for *mut wire_EnumDefinedInBlock1 {
     fn wire2api(self) -> EnumDefinedInBlock1 {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -230,6 +324,57 @@ impl Wire2Api<EnumDefinedInBlock1> for wire_EnumDefinedInBlock1 {
     }
 }
 
+impl Wire2Api<Vec<i32>> for *mut wire_int_32_list {
+    fn wire2api(self) -> Vec<i32> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+impl Wire2Api<Vec<EnumDefinedInBlock1>> for *mut wire_list_enum_defined_in_block_1 {
+    fn wire2api(self) -> Vec<EnumDefinedInBlock1> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+impl Wire2Api<Vec<SharedStructInAllBlocks>> for *mut wire_list_shared_struct_in_all_blocks {
+    fn wire2api(self) -> Vec<SharedStructInAllBlocks> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter()
+            .map(bridge_generated_shares::Wire2Api::wire2api)
+            .collect()
+    }
+}
+impl Wire2Api<Vec<SharedWeekdaysEnumInAllBlocks>>
+    for *mut wire_list_shared_weekdays_enum_in_all_blocks
+{
+    fn wire2api(self) -> Vec<SharedWeekdaysEnumInAllBlocks> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter()
+            .map(bridge_generated_shares::Wire2Api::wire2api)
+            .collect()
+    }
+}
+impl Wire2Api<Vec<StructDefinedInBlock1>> for *mut wire_list_struct_defined_in_block_1 {
+    fn wire2api(self) -> Vec<StructDefinedInBlock1> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+
 impl Wire2Api<StructDefinedInBlock1> for wire_StructDefinedInBlock1 {
     fn wire2api(self) -> StructDefinedInBlock1 {
         StructDefinedInBlock1 {
@@ -247,6 +392,48 @@ impl Wire2Api<StructOnlyForBlock1> for wire_StructOnlyForBlock1 {
     }
 }
 // Section: wire structs
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_StringList {
+    ptr: *mut *mut wire_uint_8_list,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_int_32_list {
+    ptr: *mut i32,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_enum_defined_in_block_1 {
+    ptr: *mut wire_EnumDefinedInBlock1,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_shared_struct_in_all_blocks {
+    ptr: *mut wire_SharedStructInAllBlocks,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_shared_weekdays_enum_in_all_blocks {
+    ptr: *mut i32,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_struct_defined_in_block_1 {
+    ptr: *mut wire_StructDefinedInBlock1,
+    len: i32,
+}
 
 #[repr(C)]
 #[derive(Clone)]
@@ -303,16 +490,6 @@ pub struct wire_EnumDefinedInBlock1_ChangeColor {
 }
 
 // Section: impl NewWithNullPtr
-
-pub trait NewWithNullPtr {
-    fn new_with_null_ptr() -> Self;
-}
-
-impl<T> NewWithNullPtr for *mut T {
-    fn new_with_null_ptr() -> Self {
-        std::ptr::null_mut()
-    }
-}
 
 impl Default for wire_EnumDefinedInBlock1 {
     fn default() -> Self {

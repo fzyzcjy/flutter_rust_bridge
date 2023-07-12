@@ -52,6 +52,7 @@ pub struct Output {
 }
 
 thread_local!(static SHARED_METHODS_WIRE_NAMES: RefCell<Vec<String>> = RefCell::new(Vec::new()));
+thread_local!(static FETCHED_FOR_SHARED_METHODS_WIRE_NAMES: RefCell<bool> = RefCell::new(false));
 
 impl Output {
     pub fn get_exclude_symbols(&self, all_symbols: &[String], ir_file: &IrFile) -> Vec<String> {
@@ -63,8 +64,12 @@ impl Output {
 
         if !ir_file.shared {
             // for regular blocks, push those methods from shared types in
-            let shared_method_names = SHARED_METHODS_WIRE_NAMES.with(|data| data.borrow().clone());
-            exclude_symbols.extend(shared_method_names);
+            FETCHED_FOR_SHARED_METHODS_WIRE_NAMES.with(|_has_fetched| {
+                // assert!(*has_fetched.borrow());
+                let shared_method_names =
+                    SHARED_METHODS_WIRE_NAMES.with(|data| data.borrow().clone());
+                exclude_symbols.extend(shared_method_names);
+            });
         } else {
             // for shared blocks, push the wire names of all shared methods to global variable
             let all_shared_methods_wire_names = ir_file
@@ -76,6 +81,10 @@ impl Output {
             SHARED_METHODS_WIRE_NAMES.with(|data| {
                 let mut vec = data.borrow_mut();
                 *vec = all_shared_methods_wire_names;
+            });
+
+            FETCHED_FOR_SHARED_METHODS_WIRE_NAMES.with(|has_fetched| {
+                *has_fetched.borrow_mut() = true;
             });
         }
 
@@ -234,7 +243,10 @@ impl<'a> Generator<'a> {
                 .map(|ty| TypeRustGenerator::new(ty.clone(), ir_file, self.config).structs()),
         );
         (lines.io).push(self.section_header_comment("impl NewWithNullPtr"));
-        (lines.io).push(self.generate_new_with_nullptr_misc().to_string());
+        assert!(!all_configs.is_empty());
+        if all_configs.len() == 1 || ir_file.shared {
+            (lines.io).push(self.generate_new_with_nullptr_misc().to_string());
+        }
         lines.io.extend(
             distinct_input_types
                 .iter()
@@ -689,8 +701,10 @@ pub fn generate_list_allocate_func(
         ),
         &format!(
             "let wrap = {} {{ ptr: support::new_leak_vec_ptr({}, len), len }};
-                support::new_leak_box_ptr(wrap)",
+                         support::new_leak_box_ptr(wrap)",
             list.rust_wire_type(Target::Io),
+            // "Default::default()".to_string()
+            // if inner.has_default_trait() {
             if inner.is_primitive() {
                 // A primitive enum list can use a default value since
                 // `<i32>::new_with_null_ptr()` isn't implemented.

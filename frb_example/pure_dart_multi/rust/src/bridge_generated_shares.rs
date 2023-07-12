@@ -276,6 +276,22 @@ fn wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks_im
         },
     )
 }
+fn wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks_impl(
+    port_: MessagePort,
+    that: impl Wire2Api<SharedWeekdaysEnumInAllBlocks> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "print_weekday__method__SharedWeekdaysEnumInAllBlocks",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_that = that.wire2api();
+            move |task_callback| Ok(SharedWeekdaysEnumInAllBlocks::print_weekday(&api_that))
+        },
+    )
+}
 fn wire_test_method__method__CrossSharedStructInBlock2And3_impl(
     port_: MessagePort,
     that: impl Wire2Api<CrossSharedStructInBlock2And3> + UnwindSafe,

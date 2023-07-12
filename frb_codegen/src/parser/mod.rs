@@ -252,8 +252,9 @@ impl<'a> Parser<'a> {
                 };
                 match self.try_parse_fn_arg_type(&pat_type.ty).unwrap_or_else(|| {
                     panic!(
-                        "Failed to parse function argument type `{}`",
-                        type_to_string(&pat_type.ty)
+                        "Failed to parse function argument type `{}` in function `{}`",
+                        type_to_string(&pat_type.ty),
+                        func_name
                     )
                 }) {
                     IrFuncArg::StreamSinkType(ty) => {
@@ -288,8 +289,9 @@ impl<'a> Parser<'a> {
                 ReturnType::Type(_, ty) => {
                     match self.try_parse_fn_output_type(ty).unwrap_or_else(|| {
                         panic!(
-                            "Failed to parse function output type `{}`",
-                            type_to_string(ty)
+                            "Failed to parse function output type `{}` in function `{}`",
+                            type_to_string(ty),
+                            func_name
                         )
                     }) {
                         IrFuncOutput::ResultType(ty) => ty,

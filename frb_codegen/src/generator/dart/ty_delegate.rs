@@ -4,12 +4,14 @@ use crate::ir::*;
 use crate::target::Acc;
 use crate::type_dart_generator_struct;
 
+use super::func::get_api2wire_prefix;
+
 type_dart_generator_struct!(TypeDelegateGenerator, IrTypeDelegate);
 
 impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
     fn api2wire_body(
         &self,
-        _shared_dart_api2wire_funcs: &Option<Acc<String>>,
+        shared_dart_api2wire_funcs: &Option<Acc<String>>,
     ) -> Acc<Option<String>> {
         match &self.ir {
             IrTypeDelegate::Array(ref array) => match array {
@@ -47,14 +49,20 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                 Acc::distribute(Some(body))
             }
             IrTypeDelegate::StringList => Acc {
-                io: Some(
+                io: Some(format!(
                     "final ans = inner.new_StringList(raw.length);
-                    for (var i = 0; i < raw.length; i++){
-                        ans.ref.ptr[i] = api2wire_String(raw[i]);
-                    }
-                    return ans;"
-                        .to_string(),
-                ),
+                    for (var i = 0; i < raw.length; i++){{
+                        ans.ref.ptr[i] = {prefix}api2wire_String(raw[i]);
+                    }}
+                    return ans;",
+                    prefix = get_api2wire_prefix(
+                        "api2wire_String",
+                        shared_dart_api2wire_funcs,
+                        self.context.ir_file,
+                        &IrType::Delegate(IrTypeDelegate::String),
+                        false,
+                    )
+                )),
                 wasm: Some("return raw;".into()),
                 ..Default::default()
             },

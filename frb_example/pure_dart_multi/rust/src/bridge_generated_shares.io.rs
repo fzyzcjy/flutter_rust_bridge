@@ -105,6 +105,11 @@ pub extern "C" fn wire_test_static_enum_method__static_method__SharedWeekdaysEnu
 }
 
 #[no_mangle]
+pub extern "C" fn wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks(port_: i64, that: i32) {
+    wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks_impl(port_, that)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_test_method__method__CrossSharedStructInBlock2And3(
     port_: i64,
     that: *mut wire_CrossSharedStructInBlock2And3,

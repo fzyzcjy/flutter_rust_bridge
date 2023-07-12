@@ -247,6 +247,24 @@ class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
         argNames: ["message"],
       );
 
+  Future<String> printWeekdayMethodSharedWeekdaysEnumInAllBlocks(
+      {required SharedWeekdaysEnumInAllBlocks that, dynamic hint}) {
+    var arg0 = api2wire_shared_weekdays_enum_in_all_blocks(that);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks(port_, arg0),
+      parseSuccessData: wire2api_String,
+      constMeta: kPrintWeekdayMethodSharedWeekdaysEnumInAllBlocksConstMeta,
+      argValues: [that],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kPrintWeekdayMethodSharedWeekdaysEnumInAllBlocksConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "print_weekday__method__SharedWeekdaysEnumInAllBlocks",
+        argNames: ["that"],
+      );
+
   Future<String> testMethodMethodCrossSharedStructInBlock2And3(
       {required CrossSharedStructInBlock2And3 that, required String message, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_cross_shared_struct_in_block_2_and_3(that);

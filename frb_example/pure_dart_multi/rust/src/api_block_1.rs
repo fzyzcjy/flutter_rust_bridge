@@ -1,6 +1,7 @@
 use flutter_rust_bridge::SyncReturn;
 
 use crate::block_specific_module::StructOnlyForBlock1;
+use crate::bridge_generated_shares::SharedWeekdaysEnumInAllBlocks;
 #[allow(unused)]
 use crate::fake_module::{self}; // this statement is used to test special import of the module when frb is generating.
 use crate::shared_type_module::{
@@ -124,4 +125,66 @@ pub fn test_enum_defined_in_block_1(custom: EnumDefinedInBlock1) -> String {
             format!("changeColor_{}_{}_{}", r, g, b)
         }
     }
+}
+
+/// This API is for testing generating API with list types.
+/// To achieve a complete test, it accepts params of various types of lists
+/// -- lists of primitive types, strings, and customized structs/enums, some of the inner items of which are
+/// shared, and the others are not shared.
+///
+/// # Arguments
+///
+/// * `shared_structs` - A vector of `SharedStructInAllBlocks` items -- the item is a shared type.
+/// * `strings` - A vector of `String` items -- the item is a shared type.
+/// * `nums` - A vector of `i32` items -- the item is a shared type.
+/// * `weekdays` - A vector of `SharedWeekdaysEnumInAllBlocks` items -- the item is a shared type.
+/// * `struct_list` - A vector of `StructDefinedInBlock1` items -- the item is NOT a shared type.
+/// * `enum_list` - A vector of `EnumDefinedInBlock1` items -- the item is NOT a shared type.
+///
+/// # Returns
+///
+/// A string that concatenates the names of each item in the input vectors, separated by underscores.
+pub fn test_list_in_block_1(
+    shared_structs: Vec<SharedStructInAllBlocks>,
+    strings: Vec<String>,
+    nums: Vec<i32>,
+    weekdays: Vec<SharedWeekdaysEnumInAllBlocks>,
+    struct_list: Vec<StructDefinedInBlock1>,
+    enum_list: Vec<EnumDefinedInBlock1>,
+) -> String {
+    //join name of each item in shared_structs
+    let s = shared_structs
+        .iter()
+        .map(|s| s.name.clone())
+        .collect::<Vec<String>>()
+        .join("_");
+    let mut s = format!("{}_{}", s, strings.join("_"));
+
+    // put each num in `nums` to stirng `s`
+    for num in nums {
+        s.push_str(&format!("_{}", num));
+    }
+
+    // put each weekday in `weekdays` to string `s`
+    for weekday in weekdays {
+        s.push_str(&format!("_{}", weekday.print_weekday()));
+    }
+
+    // join name of each item in struct_list
+    let struct_names = struct_list
+        .iter()
+        .map(|s| s.name.clone())
+        .collect::<Vec<String>>()
+        .join("_");
+    s = format!("{}_{}", s, struct_names);
+
+    // join name of each item in enum_list
+    let enum_names = enum_list
+        .iter()
+        .map(|e| format!("{:?}", e))
+        .collect::<Vec<String>>()
+        .join("_");
+    s = format!("{}_{}", s, enum_names);
+
+    s
 }

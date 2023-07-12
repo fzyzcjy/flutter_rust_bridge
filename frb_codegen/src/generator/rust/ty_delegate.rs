@@ -28,6 +28,7 @@ macro_rules! delegate_enum{
 
 impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
+        log::debug!("coming here with type:{:?}", self.ir); //TODO: delete
         match &self.ir {
             IrTypeDelegate::Array(array) => {
                 let acc =
@@ -55,10 +56,19 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 Acc::distribute(Some("ZeroCopyBuffer(self.wire2api())".into()))
             },
-            IrTypeDelegate::StringList => Acc {
-                io: Some(TypeGeneralListGenerator::WIRE2API_BODY_IO.to_owned()),
-                wasm: Some(TypeGeneralListGenerator::WIRE2API_BODY_WASM.to_owned()),
-                ..Default::default()
+            IrTypeDelegate::StringList =>{
+                let x = self.ir.get_delegate();
+                let prefix = self.get_wire2api_prefix(&x);
+                // REPLACE PREFIX TO WIRE2API_BODY_IO AND WIRE2API_BODY_WASM
+                let wire2api_body_io =
+                    TypeGeneralListGenerator::WIRE2API_BODY_IO.replace("Wire2Api", &prefix);
+                let wire2api_body_wasm =
+                    TypeGeneralListGenerator::WIRE2API_BODY_WASM.replace("Wire2Api", &prefix);
+                Acc {
+                    io: Some(wire2api_body_io),
+                    wasm: Some(wire2api_body_wasm),
+                    ..Default::default()
+                }
             },
             IrTypeDelegate::PrimitiveEnum { ir, .. } => {
                 let enu = ir.get(self.context.ir_file);
@@ -105,7 +115,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::TimeList(_) => {
                 Acc::distribute(
                     Some(
-                        "let vec: Vec<i64> = self.wire2api(); vec.into_iter().map(Wire2Api::wire2api).collect()".into()
+                        "let vec: Vec<i64> = self.wire2api(); vec.into_iter().map(Wire2Api::wire2api).collect()".to_string()
                     )
                 )
             }

@@ -22,6 +22,15 @@ class ApiBlock1ClassPlatform extends FlutterRustBridgeBase<ApiBlock1ClassWire> {
 // Section: api2wire
 
   @protected
+  ffi.Pointer<wire_StringList> api2wire_StringList(List<String> raw) {
+    final ans = inner.new_StringList(raw.length);
+    for (var i = 0; i < raw.length; i++) {
+      ans.ref.ptr[i] = _sharedPlatform.api2wire_String(raw[i]);
+    }
+    return ans;
+  }
+
+  @protected
   ffi.Pointer<wire_EnumDefinedInBlock1> api2wire_box_autoadd_enum_defined_in_block_1(EnumDefinedInBlock1 raw) {
     final ptr = inner.new_box_autoadd_enum_defined_in_block_1();
     _api_fill_to_wire_enum_defined_in_block_1(raw, ptr.ref);
@@ -45,6 +54,52 @@ class ApiBlock1ClassPlatform extends FlutterRustBridgeBase<ApiBlock1ClassWire> {
     final ptr = inner.new_box_autoadd_struct_only_for_block_1();
     _api_fill_to_wire_struct_only_for_block_1(raw, ptr.ref);
     return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_int_32_list> api2wire_int_32_list(Int32List raw) {
+    final ans = inner.new_int_32_list(raw.length);
+    ans.ref.ptr.asTypedList(raw.length).setAll(0, raw);
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_list_enum_defined_in_block_1> api2wire_list_enum_defined_in_block_1(List<EnumDefinedInBlock1> raw) {
+    final ans = inner.new_list_enum_defined_in_block_1(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      _api_fill_to_wire_enum_defined_in_block_1(raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_list_shared_struct_in_all_blocks> api2wire_list_shared_struct_in_all_blocks(
+      List<SharedStructInAllBlocks> raw) {
+    final ans = inner.new_list_shared_struct_in_all_blocks(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      _sharedPlatform.api_fill_to_wire_shared_struct_in_all_blocks(raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_list_shared_weekdays_enum_in_all_blocks> api2wire_list_shared_weekdays_enum_in_all_blocks(
+      List<SharedWeekdaysEnumInAllBlocks> raw) {
+    final ans = inner.new_list_shared_weekdays_enum_in_all_blocks(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      ans.ref.ptr[i] = api2wire_shared_weekdays_enum_in_all_blocks(raw[i]);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_list_struct_defined_in_block_1> api2wire_list_struct_defined_in_block_1(
+      List<StructDefinedInBlock1> raw) {
+    final ans = inner.new_list_struct_defined_in_block_1(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      _api_fill_to_wire_struct_defined_in_block_1(raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
   }
 
   @protected
@@ -592,6 +647,46 @@ class ApiBlock1ClassWire implements FlutterRustBridgeWireBase {
   late final _wire_test_enum_defined_in_block_1 =
       _wire_test_enum_defined_in_block_1Ptr.asFunction<void Function(int, ffi.Pointer<wire_EnumDefinedInBlock1>)>();
 
+  void wire_test_list_in_block_1(
+    int port_,
+    ffi.Pointer<wire_list_shared_struct_in_all_blocks> shared_structs,
+    ffi.Pointer<wire_StringList> strings,
+    ffi.Pointer<wire_int_32_list> nums,
+    ffi.Pointer<wire_list_shared_weekdays_enum_in_all_blocks> weekdays,
+    ffi.Pointer<wire_list_struct_defined_in_block_1> struct_list,
+    ffi.Pointer<wire_list_enum_defined_in_block_1> enum_list,
+  ) {
+    return _wire_test_list_in_block_1(
+      port_,
+      shared_structs,
+      strings,
+      nums,
+      weekdays,
+      struct_list,
+      enum_list,
+    );
+  }
+
+  late final _wire_test_list_in_block_1Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Int64,
+              ffi.Pointer<wire_list_shared_struct_in_all_blocks>,
+              ffi.Pointer<wire_StringList>,
+              ffi.Pointer<wire_int_32_list>,
+              ffi.Pointer<wire_list_shared_weekdays_enum_in_all_blocks>,
+              ffi.Pointer<wire_list_struct_defined_in_block_1>,
+              ffi.Pointer<wire_list_enum_defined_in_block_1>)>>('wire_test_list_in_block_1');
+  late final _wire_test_list_in_block_1 = _wire_test_list_in_block_1Ptr.asFunction<
+      void Function(
+          int,
+          ffi.Pointer<wire_list_shared_struct_in_all_blocks>,
+          ffi.Pointer<wire_StringList>,
+          ffi.Pointer<wire_int_32_list>,
+          ffi.Pointer<wire_list_shared_weekdays_enum_in_all_blocks>,
+          ffi.Pointer<wire_list_struct_defined_in_block_1>,
+          ffi.Pointer<wire_list_enum_defined_in_block_1>)>();
+
   void wire_test_method__method__EnumDefinedInBlock1(
     int port_,
     ffi.Pointer<wire_EnumDefinedInBlock1> that,
@@ -702,6 +797,18 @@ class ApiBlock1ClassWire implements FlutterRustBridgeWireBase {
       _wire_test_static_method__static_method__StructOnlyForBlock1Ptr
           .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
+  ffi.Pointer<wire_StringList> new_StringList(
+    int len,
+  ) {
+    return _new_StringList(
+      len,
+    );
+  }
+
+  late final _new_StringListPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_StringList> Function(ffi.Int32)>>('new_StringList');
+  late final _new_StringList = _new_StringListPtr.asFunction<ffi.Pointer<wire_StringList> Function(int)>();
+
   ffi.Pointer<wire_EnumDefinedInBlock1> new_box_autoadd_enum_defined_in_block_1() {
     return _new_box_autoadd_enum_defined_in_block_1();
   }
@@ -743,6 +850,74 @@ class ApiBlock1ClassWire implements FlutterRustBridgeWireBase {
           'new_box_autoadd_struct_only_for_block_1');
   late final _new_box_autoadd_struct_only_for_block_1 =
       _new_box_autoadd_struct_only_for_block_1Ptr.asFunction<ffi.Pointer<wire_StructOnlyForBlock1> Function()>();
+
+  ffi.Pointer<wire_int_32_list> new_int_32_list(
+    int len,
+  ) {
+    return _new_int_32_list(
+      len,
+    );
+  }
+
+  late final _new_int_32_listPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_int_32_list> Function(ffi.Int32)>>('new_int_32_list');
+  late final _new_int_32_list = _new_int_32_listPtr.asFunction<ffi.Pointer<wire_int_32_list> Function(int)>();
+
+  ffi.Pointer<wire_list_enum_defined_in_block_1> new_list_enum_defined_in_block_1(
+    int len,
+  ) {
+    return _new_list_enum_defined_in_block_1(
+      len,
+    );
+  }
+
+  late final _new_list_enum_defined_in_block_1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_enum_defined_in_block_1> Function(ffi.Int32)>>(
+          'new_list_enum_defined_in_block_1');
+  late final _new_list_enum_defined_in_block_1 =
+      _new_list_enum_defined_in_block_1Ptr.asFunction<ffi.Pointer<wire_list_enum_defined_in_block_1> Function(int)>();
+
+  ffi.Pointer<wire_list_shared_struct_in_all_blocks> new_list_shared_struct_in_all_blocks(
+    int len,
+  ) {
+    return _new_list_shared_struct_in_all_blocks(
+      len,
+    );
+  }
+
+  late final _new_list_shared_struct_in_all_blocksPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_shared_struct_in_all_blocks> Function(ffi.Int32)>>(
+          'new_list_shared_struct_in_all_blocks');
+  late final _new_list_shared_struct_in_all_blocks = _new_list_shared_struct_in_all_blocksPtr
+      .asFunction<ffi.Pointer<wire_list_shared_struct_in_all_blocks> Function(int)>();
+
+  ffi.Pointer<wire_list_shared_weekdays_enum_in_all_blocks> new_list_shared_weekdays_enum_in_all_blocks(
+    int len,
+  ) {
+    return _new_list_shared_weekdays_enum_in_all_blocks(
+      len,
+    );
+  }
+
+  late final _new_list_shared_weekdays_enum_in_all_blocksPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_shared_weekdays_enum_in_all_blocks> Function(ffi.Int32)>>(
+          'new_list_shared_weekdays_enum_in_all_blocks');
+  late final _new_list_shared_weekdays_enum_in_all_blocks = _new_list_shared_weekdays_enum_in_all_blocksPtr
+      .asFunction<ffi.Pointer<wire_list_shared_weekdays_enum_in_all_blocks> Function(int)>();
+
+  ffi.Pointer<wire_list_struct_defined_in_block_1> new_list_struct_defined_in_block_1(
+    int len,
+  ) {
+    return _new_list_struct_defined_in_block_1(
+      len,
+    );
+  }
+
+  late final _new_list_struct_defined_in_block_1Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_struct_defined_in_block_1> Function(ffi.Int32)>>(
+          'new_list_struct_defined_in_block_1');
+  late final _new_list_struct_defined_in_block_1 = _new_list_struct_defined_in_block_1Ptr
+      .asFunction<ffi.Pointer<wire_list_struct_defined_in_block_1> Function(int)>();
 
   ffi.Pointer<EnumDefinedInBlock1Kind> inflate_EnumDefinedInBlock1_Move() {
     return _inflate_EnumDefinedInBlock1_Move();
@@ -965,6 +1140,48 @@ final class wire_EnumDefinedInBlock1 extends ffi.Struct {
   external int tag;
 
   external ffi.Pointer<EnumDefinedInBlock1Kind> kind;
+}
+
+final class wire_list_shared_struct_in_all_blocks extends ffi.Struct {
+  external ffi.Pointer<wire_SharedStructInAllBlocks> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_StringList extends ffi.Struct {
+  external ffi.Pointer<ffi.Pointer<wire_uint_8_list>> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_int_32_list extends ffi.Struct {
+  external ffi.Pointer<ffi.Int32> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_list_shared_weekdays_enum_in_all_blocks extends ffi.Struct {
+  external ffi.Pointer<ffi.Int32> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_list_struct_defined_in_block_1 extends ffi.Struct {
+  external ffi.Pointer<wire_StructDefinedInBlock1> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_list_enum_defined_in_block_1 extends ffi.Struct {
+  external ffi.Pointer<wire_EnumDefinedInBlock1> ptr;
+
+  @ffi.Int32()
+  external int len;
 }
 
 final class wire_StructOnlyForBlock2 extends ffi.Struct {

@@ -288,16 +288,6 @@ pub struct wire_EnumDefinedInBlock2_ChangeColor {
 
 // Section: impl NewWithNullPtr
 
-pub trait NewWithNullPtr {
-    fn new_with_null_ptr() -> Self;
-}
-
-impl<T> NewWithNullPtr for *mut T {
-    fn new_with_null_ptr() -> Self {
-        std::ptr::null_mut()
-    }
-}
-
 impl Default for wire_EnumDefinedInBlock2 {
     fn default() -> Self {
         Self::new_with_null_ptr()

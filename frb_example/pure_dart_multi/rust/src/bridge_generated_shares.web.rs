@@ -105,6 +105,11 @@ pub fn wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlock
 }
 
 #[wasm_bindgen]
+pub fn wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks(port_: MessagePort, that: i32) {
+    wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks_impl(port_, that)
+}
+
+#[wasm_bindgen]
 pub fn wire_test_method__method__CrossSharedStructInBlock2And3(
     port_: MessagePort,
     that: JsValue,

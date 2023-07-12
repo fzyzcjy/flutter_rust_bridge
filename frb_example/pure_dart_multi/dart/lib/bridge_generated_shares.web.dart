@@ -231,6 +231,8 @@ class BridgeGeneratedSharesWasmModule implements WasmModule {
   external dynamic /* void */ wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks(
       NativePortType port_, String message);
 
+  external dynamic /* void */ wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks(NativePortType port_, int that);
+
   external dynamic /* void */ wire_test_method__method__CrossSharedStructInBlock2And3(
       NativePortType port_, List<dynamic> that, String message);
 
@@ -291,6 +293,9 @@ class BridgeGeneratedSharesWire extends FlutterRustBridgeWasmWireBase<BridgeGene
   void wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks(
           NativePortType port_, String message) =>
       wasmModule.wire_test_static_enum_method__static_method__SharedWeekdaysEnumInAllBlocks(port_, message);
+
+  void wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks(NativePortType port_, int that) =>
+      wasmModule.wire_print_weekday__method__SharedWeekdaysEnumInAllBlocks(port_, that);
 
   void wire_test_method__method__CrossSharedStructInBlock2And3(
           NativePortType port_, List<dynamic> that, String message) =>

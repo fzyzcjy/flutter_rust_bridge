@@ -22,6 +22,8 @@ use std::sync::Arc;
 use crate::block_specific_module::for_api_block_1::StructOnlyForBlock1;
 use crate::bridge_generated_shares;
 use crate::bridge_generated_shares::*;
+use crate::shared_type_module::all_blocks_shared::SharedStructInAllBlocks;
+use crate::shared_type_module::all_blocks_shared::SharedWeekdaysEnumInAllBlocks;
 
 // Section: wire functions
 
@@ -239,6 +241,41 @@ fn wire_test_enum_defined_in_block_1_impl(
         move || {
             let api_custom = custom.wire2api();
             move |task_callback| Ok(test_enum_defined_in_block_1(api_custom))
+        },
+    )
+}
+fn wire_test_list_in_block_1_impl(
+    port_: MessagePort,
+    shared_structs: impl Wire2Api<Vec<SharedStructInAllBlocks>> + UnwindSafe,
+    strings: impl Wire2Api<Vec<String>> + UnwindSafe,
+    nums: impl Wire2Api<Vec<i32>> + UnwindSafe,
+    weekdays: impl Wire2Api<Vec<SharedWeekdaysEnumInAllBlocks>> + UnwindSafe,
+    struct_list: impl Wire2Api<Vec<StructDefinedInBlock1>> + UnwindSafe,
+    enum_list: impl Wire2Api<Vec<EnumDefinedInBlock1>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_list_in_block_1",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_shared_structs = shared_structs.wire2api();
+            let api_strings = strings.wire2api();
+            let api_nums = nums.wire2api();
+            let api_weekdays = weekdays.wire2api();
+            let api_struct_list = struct_list.wire2api();
+            let api_enum_list = enum_list.wire2api();
+            move |task_callback| {
+                Ok(test_list_in_block_1(
+                    api_shared_structs,
+                    api_strings,
+                    api_nums,
+                    api_weekdays,
+                    api_struct_list,
+                    api_enum_list,
+                ))
+            }
         },
     )
 }

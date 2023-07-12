@@ -240,6 +240,34 @@ class ApiBlock1ClassImpl implements ApiBlock1Class {
         argNames: ["custom"],
       );
 
+  Future<String> testListInBlock1(
+      {required List<SharedStructInAllBlocks> sharedStructs,
+      required List<String> strings,
+      required Int32List nums,
+      required List<SharedWeekdaysEnumInAllBlocks> weekdays,
+      required List<StructDefinedInBlock1> structList,
+      required List<EnumDefinedInBlock1> enumList,
+      dynamic hint}) {
+    var arg0 = _platform.api2wire_list_shared_struct_in_all_blocks(sharedStructs);
+    var arg1 = _platform.api2wire_StringList(strings);
+    var arg2 = _platform.api2wire_int_32_list(nums);
+    var arg3 = _platform.api2wire_list_shared_weekdays_enum_in_all_blocks(weekdays);
+    var arg4 = _platform.api2wire_list_struct_defined_in_block_1(structList);
+    var arg5 = _platform.api2wire_list_enum_defined_in_block_1(enumList);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_test_list_in_block_1(port_, arg0, arg1, arg2, arg3, arg4, arg5),
+      parseSuccessData: _sharedImpl.wire2api_String,
+      constMeta: kTestListInBlock1ConstMeta,
+      argValues: [sharedStructs, strings, nums, weekdays, structList, enumList],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kTestListInBlock1ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "test_list_in_block_1",
+        argNames: ["sharedStructs", "strings", "nums", "weekdays", "structList", "enumList"],
+      );
+
   Future<String> testMethodMethodEnumDefinedInBlock1(
       {required EnumDefinedInBlock1 that, required String message, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_enum_defined_in_block_1(that);

@@ -78,6 +78,27 @@ pub fn wire_test_enum_defined_in_block_1(port_: MessagePort, custom: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_test_list_in_block_1(
+    port_: MessagePort,
+    shared_structs: JsValue,
+    strings: JsValue,
+    nums: Box<[i32]>,
+    weekdays: JsValue,
+    struct_list: JsValue,
+    enum_list: JsValue,
+) {
+    wire_test_list_in_block_1_impl(
+        port_,
+        shared_structs,
+        strings,
+        nums,
+        weekdays,
+        struct_list,
+        enum_list,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire_test_method__method__EnumDefinedInBlock1(
     port_: MessagePort,
     that: JsValue,
@@ -135,6 +156,16 @@ pub fn wire_test_static_method__static_method__StructOnlyForBlock1(
 
 // Section: impl Wire2Api
 
+impl Wire2Api<Vec<String>> for JsValue {
+    fn wire2api(self) -> Vec<String> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(bridge_generated_shares::Wire2Api::wire2api)
+            .collect()
+    }
+}
+
 impl Wire2Api<EnumDefinedInBlock1> for JsValue {
     fn wire2api(self) -> EnumDefinedInBlock1 {
         let self_ = self.unchecked_into::<JsArray>();
@@ -155,6 +186,47 @@ impl Wire2Api<EnumDefinedInBlock1> for JsValue {
     }
 }
 
+impl Wire2Api<Vec<i32>> for Box<[i32]> {
+    fn wire2api(self) -> Vec<i32> {
+        self.into_vec()
+    }
+}
+impl Wire2Api<Vec<EnumDefinedInBlock1>> for JsValue {
+    fn wire2api(self) -> Vec<EnumDefinedInBlock1> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
+impl Wire2Api<Vec<SharedStructInAllBlocks>> for JsValue {
+    fn wire2api(self) -> Vec<SharedStructInAllBlocks> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(bridge_generated_shares::Wire2Api::wire2api)
+            .collect()
+    }
+}
+impl Wire2Api<Vec<SharedWeekdaysEnumInAllBlocks>> for JsValue {
+    fn wire2api(self) -> Vec<SharedWeekdaysEnumInAllBlocks> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(bridge_generated_shares::Wire2Api::wire2api)
+            .collect()
+    }
+}
+impl Wire2Api<Vec<StructDefinedInBlock1>> for JsValue {
+    fn wire2api(self) -> Vec<StructDefinedInBlock1> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
 impl Wire2Api<Option<String>> for Option<String> {
     fn wire2api(self) -> Option<String> {
         self.map(Wire2Api::wire2api)
@@ -196,6 +268,11 @@ impl Wire2Api<StructOnlyForBlock1> for JsValue {
 impl Wire2Api<i8> for JsValue {
     fn wire2api(self) -> i8 {
         self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<Vec<i32>> for JsValue {
+    fn wire2api(self) -> Vec<i32> {
+        self.unchecked_into::<js_sys::Int32Array>().to_vec().into()
     }
 }
 impl Wire2Api<Option<String>> for JsValue {

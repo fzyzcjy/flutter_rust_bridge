@@ -136,6 +136,36 @@ typedef struct wire_EnumDefinedInBlock1 {
   union EnumDefinedInBlock1Kind *kind;
 } wire_EnumDefinedInBlock1;
 
+typedef struct wire_list_shared_struct_in_all_blocks {
+  struct wire_SharedStructInAllBlocks *ptr;
+  int32_t len;
+} wire_list_shared_struct_in_all_blocks;
+
+typedef struct wire_StringList {
+  struct wire_uint_8_list **ptr;
+  int32_t len;
+} wire_StringList;
+
+typedef struct wire_int_32_list {
+  int32_t *ptr;
+  int32_t len;
+} wire_int_32_list;
+
+typedef struct wire_list_shared_weekdays_enum_in_all_blocks {
+  int32_t *ptr;
+  int32_t len;
+} wire_list_shared_weekdays_enum_in_all_blocks;
+
+typedef struct wire_list_struct_defined_in_block_1 {
+  struct wire_StructDefinedInBlock1 *ptr;
+  int32_t len;
+} wire_list_struct_defined_in_block_1;
+
+typedef struct wire_list_enum_defined_in_block_1 {
+  struct wire_EnumDefinedInBlock1 *ptr;
+  int32_t len;
+} wire_list_enum_defined_in_block_1;
+
 typedef struct wire_StructOnlyForBlock2 {
   int16_t id;
   double num;
@@ -225,6 +255,14 @@ void wire_test_struct_defined_in_block_1(int64_t port_, struct wire_StructDefine
 
 void wire_test_enum_defined_in_block_1(int64_t port_, struct wire_EnumDefinedInBlock1 *custom);
 
+void wire_test_list_in_block_1(int64_t port_,
+                               struct wire_list_shared_struct_in_all_blocks *shared_structs,
+                               struct wire_StringList *strings,
+                               struct wire_int_32_list *nums,
+                               struct wire_list_shared_weekdays_enum_in_all_blocks *weekdays,
+                               struct wire_list_struct_defined_in_block_1 *struct_list,
+                               struct wire_list_enum_defined_in_block_1 *enum_list);
+
 void wire_test_method__method__EnumDefinedInBlock1(int64_t port_,
                                                    struct wire_EnumDefinedInBlock1 *that,
                                                    struct wire_uint_8_list *message);
@@ -247,6 +285,8 @@ void wire_test_method__method__StructOnlyForBlock1(int64_t port_,
 void wire_test_static_method__static_method__StructOnlyForBlock1(int64_t port_,
                                                                  struct wire_uint_8_list *message);
 
+struct wire_StringList *new_StringList(int32_t len);
+
 struct wire_EnumDefinedInBlock1 *new_box_autoadd_enum_defined_in_block_1(void);
 
 int8_t *new_box_autoadd_i8(int8_t value);
@@ -254,6 +294,16 @@ int8_t *new_box_autoadd_i8(int8_t value);
 struct wire_StructDefinedInBlock1 *new_box_autoadd_struct_defined_in_block_1(void);
 
 struct wire_StructOnlyForBlock1 *new_box_autoadd_struct_only_for_block_1(void);
+
+struct wire_int_32_list *new_int_32_list(int32_t len);
+
+struct wire_list_enum_defined_in_block_1 *new_list_enum_defined_in_block_1(int32_t len);
+
+struct wire_list_shared_struct_in_all_blocks *new_list_shared_struct_in_all_blocks(int32_t len);
+
+struct wire_list_shared_weekdays_enum_in_all_blocks *new_list_shared_weekdays_enum_in_all_blocks(int32_t len);
+
+struct wire_list_struct_defined_in_block_1 *new_list_struct_defined_in_block_1(int32_t len);
 
 union EnumDefinedInBlock1Kind *inflate_EnumDefinedInBlock1_Move(void);
 
@@ -291,16 +341,23 @@ static int64_t dummy_method_to_enforce_bundling_ApiBlock1Class(void) {
     dummy_var ^= ((int64_t) (void*) wire_test_unique_struct_1);
     dummy_var ^= ((int64_t) (void*) wire_test_struct_defined_in_block_1);
     dummy_var ^= ((int64_t) (void*) wire_test_enum_defined_in_block_1);
+    dummy_var ^= ((int64_t) (void*) wire_test_list_in_block_1);
     dummy_var ^= ((int64_t) (void*) wire_test_method__method__EnumDefinedInBlock1);
     dummy_var ^= ((int64_t) (void*) wire_test_static_method__static_method__EnumDefinedInBlock1);
     dummy_var ^= ((int64_t) (void*) wire_test_method__method__StructDefinedInBlock1);
     dummy_var ^= ((int64_t) (void*) wire_test_static_method__static_method__StructDefinedInBlock1);
     dummy_var ^= ((int64_t) (void*) wire_test_method__method__StructOnlyForBlock1);
     dummy_var ^= ((int64_t) (void*) wire_test_static_method__static_method__StructOnlyForBlock1);
+    dummy_var ^= ((int64_t) (void*) new_StringList);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_defined_in_block_1);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_i8);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_defined_in_block_1);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_only_for_block_1);
+    dummy_var ^= ((int64_t) (void*) new_int_32_list);
+    dummy_var ^= ((int64_t) (void*) new_list_enum_defined_in_block_1);
+    dummy_var ^= ((int64_t) (void*) new_list_shared_struct_in_all_blocks);
+    dummy_var ^= ((int64_t) (void*) new_list_shared_weekdays_enum_in_all_blocks);
+    dummy_var ^= ((int64_t) (void*) new_list_struct_defined_in_block_1);
     dummy_var ^= ((int64_t) (void*) inflate_EnumDefinedInBlock1_Move);
     dummy_var ^= ((int64_t) (void*) inflate_EnumDefinedInBlock1_Write);
     dummy_var ^= ((int64_t) (void*) inflate_EnumDefinedInBlock1_ChangeColor);

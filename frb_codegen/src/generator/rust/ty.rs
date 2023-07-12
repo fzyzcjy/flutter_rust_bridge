@@ -80,12 +80,22 @@ pub trait TypeRustGeneratorTrait {
         None
     }
 
-    fn get_shared_module_of_a_field(&self, field: &IrField) -> Option<String> {
-        match &field.ty {
+    fn get_shared_module_of_a_type(&self, ir_type: &IrType) -> Option<String> {
+        match ir_type {
             IrType::Optional(inner_type) => {
                 self.get_shared_mod_name_if_type_shared(&inner_type.inner)
             }
-            _ => self.get_shared_mod_name_if_type_shared(&field.ty),
+            _ => self.get_shared_mod_name_if_type_shared(ir_type),
+        }
+    }
+
+    fn get_wire2api_prefix(&self, ir_type: &IrType) -> String {
+        let shared_mod_name = self.get_shared_module_of_a_type(ir_type);
+
+        if !self.get_context().config.shared && shared_mod_name.is_some() {
+            format!("{}::Wire2Api", shared_mod_name.unwrap())
+        } else {
+            "Wire2Api".into()
         }
     }
 }

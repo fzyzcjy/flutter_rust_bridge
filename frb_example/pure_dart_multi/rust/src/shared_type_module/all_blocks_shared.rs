@@ -50,6 +50,18 @@ impl SharedWeekdaysEnumInAllBlocks {
     pub fn test_static_enum_method(message: String) -> String {
         message
     }
+    #[allow(unused)]
+    pub fn print_weekday(&self) -> String {
+        match self {
+            SharedWeekdaysEnumInAllBlocks::Monday => "Monday".to_string(),
+            SharedWeekdaysEnumInAllBlocks::Tuesday => "Tuesday".to_string(),
+            SharedWeekdaysEnumInAllBlocks::Wednesday => "Wednesday".to_string(),
+            SharedWeekdaysEnumInAllBlocks::Thursday => "Thursday".to_string(),
+            SharedWeekdaysEnumInAllBlocks::Friday => "Friday".to_string(),
+            SharedWeekdaysEnumInAllBlocks::Saturday => "Saturday".to_string(),
+            SharedWeekdaysEnumInAllBlocks::Sunday => "Sunday".to_string(),
+        }
+    }
 }
 
 /// This is a struct used in ALL API blocks, NOT defined in any regular block file

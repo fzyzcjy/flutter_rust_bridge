@@ -50,6 +50,7 @@ use crate::{ir::*, Opts};
 use crate::{others::*, transformer};
 
 thread_local!(pub static COMMON_API2WIRE: RefCell<String> = RefCell::new("".into()));
+thread_local!(pub static FETCHED_FOR_COMMON_API2WIRE: RefCell<bool> = RefCell::new(false));
 
 #[derive(Debug)]
 pub struct Output {
@@ -160,16 +161,14 @@ impl DartApiSpec {
             &shared_dart_api2wire_funcs,
         );
 
-        let common = COMMON_API2WIRE.with(|data| {
-            let mut v = data.borrow_mut();
-            *v = dart_api2wire_funcs.common.clone();
-            v.clone()
+        COMMON_API2WIRE.with(|data| {
+            *data.borrow_mut() = dart_api2wire_funcs.common.clone();
         });
 
         let dart_funcs = (ir_file
             .funcs(true)
             .iter()
-            .map(|f| generate_api_func(f, ir_file, &common, &shared_dart_api2wire_funcs)))
+            .map(|f| generate_api_func(f, ir_file, &shared_dart_api2wire_funcs)))
         .chain(
             distinct_output_types
                 .iter()

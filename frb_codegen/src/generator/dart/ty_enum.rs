@@ -2,7 +2,7 @@ use itertools::Itertools;
 
 use crate::generator::dart::dart_comments;
 use crate::generator::dart::func::get_api2wire_prefix;
-use crate::generator::dart::{ty::*, COMMON_API2WIRE};
+use crate::generator::dart::ty::*;
 use crate::ir::*;
 use crate::target::Acc;
 use crate::type_dart_generator_struct;
@@ -14,10 +14,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
         &self,
         shared_dart_api2wire_funcs: &Option<Acc<String>>,
     ) -> Acc<Option<String>> {
-        // NOTE: `COMMON_API2WIRE` should have been fetched by
-        // `DartApiSpec` according to the whole generation routine,
-        // so use it here directly is ok.
-        let common_api2wire_body = COMMON_API2WIRE.with(|data| data.borrow_mut().clone());
+        log::debug!("I am in enum 1"); //TODO: delete
         let variants = (self.ir.get(self.context.ir_file).variants())
             .iter()
             .enumerate()
@@ -27,13 +24,12 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                     IrVariantKind::Struct(st) => (st.fields)
                         .iter()
                         .map(|field| {
-                            let func = format!("api2wire_{}", field.ty.safe_ident());
+                            let api2wire_func = format!("api2wire_{}", field.ty.safe_ident());
                             let prefix = get_api2wire_prefix(
-                                &common_api2wire_body,
-                                &func,
+                                &api2wire_func,
                                 shared_dart_api2wire_funcs,
                                 self.context.ir_file,
-                                field,
+                                &field.ty,
                                 false,
                             );
                             format!(
@@ -71,6 +67,8 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
         &self,
         shared_dart_api2wire_funcs: &Option<Acc<String>>,
     ) -> Option<String> {
+        log::debug!("I am in enum 2"); //TODO: delete
+
         Some(
             self.ir
                 .get(self.context.ir_file)
@@ -84,24 +82,18 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                             variant.wrapper_name, idx
                         )
                     } else {
-                        // NOTE: `COMMON_API2WIRE` should have been fetched by
-                        // `DartApiSpec` according to the whole generation routine,
-                        // so use it here directly is ok.
-                        let common_api2wire_body =
-                            COMMON_API2WIRE.with(|data| data.borrow_mut().clone());
-
                         let pre_field: Vec<_> = match &variant.kind {
                             IrVariantKind::Struct(st) => st
                                 .fields
                                 .iter()
                                 .map(|field| {
-                                    let func = format!("api2wire_{}", field.ty.safe_ident());
+                                    let api2wire_func =
+                                        format!("api2wire_{}", field.ty.safe_ident());
                                     let prefix = get_api2wire_prefix(
-                                        &common_api2wire_body,
-                                        &func,
+                                        &api2wire_func,
                                         shared_dart_api2wire_funcs,
                                         self.context.ir_file,
-                                        field,
+                                        &field.ty,
                                         false,
                                     );
                                     format!(
