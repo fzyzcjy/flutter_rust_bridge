@@ -811,6 +811,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["appSettings"],
       );
 
+  Stream<ApplicationSettings> appSettingsStream({dynamic hint}) {
+    return _platform.executeStream(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_app_settings_stream(port_),
+      parseSuccessData: _wire2api_application_settings,
+      constMeta: kAppSettingsStreamConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kAppSettingsStreamConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "app_settings_stream",
+        argNames: [],
+      );
+
   Future<ApplicationMessage> getMessage({dynamic hint}) {
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_get_message(port_),

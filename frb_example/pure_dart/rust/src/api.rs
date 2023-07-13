@@ -689,6 +689,9 @@ pub fn is_app_embedded(app_settings: ApplicationSettings) -> bool {
     matches!(app_settings.mode, ApplicationMode::Embedded)
 }
 
+// use a stream of a mirrored type
+pub fn app_settings_stream(sink: StreamSink<ApplicationSettings>) {}
+
 #[frb(mirror(ApplicationMessage))]
 pub enum _ApplicationMessage {
     DisplayMessage(String),

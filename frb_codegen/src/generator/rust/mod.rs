@@ -324,6 +324,11 @@ impl<'a> Generator<'a> {
             .collect::<Vec<_>>()
             .join("");
 
+        // Stream functions do not have a return value on the rust side
+        let output = match func.mode {
+            IrFuncMode::Stream { .. } => IrType::Primitive(IrTypePrimitive::Unit),
+            _ => func.output.clone(),
+        };
         let code_call_inner_func = if f.is_non_static_method() || f.is_static_method() {
             let method_name = if f.is_non_static_method() {
                 inner_func_params[0] = format!("&{}", inner_func_params[0]);
@@ -335,7 +340,7 @@ impl<'a> Generator<'a> {
             } else {
                 panic!("{} is not a method, nor a static method.", func.name)
             };
-            TypeRustGenerator::new(func.output.clone(), ir_file, self.config).wrap_obj(
+            TypeRustGenerator::new(output, ir_file, self.config).wrap_obj(
                 format!(
                     r"{}::{}({})",
                     struct_name.unwrap(),
@@ -345,7 +350,7 @@ impl<'a> Generator<'a> {
                 func.fallible,
             )
         } else {
-            TypeRustGenerator::new(func.output.clone(), ir_file, self.config).wrap_obj(
+            TypeRustGenerator::new(output, ir_file, self.config).wrap_obj(
                 format!("{}({})", func.name, inner_func_params.join(", ")),
                 func.fallible,
             )

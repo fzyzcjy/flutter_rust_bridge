@@ -1115,6 +1115,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_is_app_embedded(NativePortType port_, List<dynamic> app_settings);
 
+  external dynamic /* void */ wire_app_settings_stream(NativePortType port_);
+
   external dynamic /* void */ wire_get_message(NativePortType port_);
 
   external dynamic /* void */ wire_repeat_number(NativePortType port_, int num, int times);
@@ -1521,6 +1523,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_is_app_embedded(NativePortType port_, List<dynamic> app_settings) =>
       wasmModule.wire_is_app_embedded(port_, app_settings);
+
+  void wire_app_settings_stream(NativePortType port_) => wasmModule.wire_app_settings_stream(port_);
 
   void wire_get_message(NativePortType port_) => wasmModule.wire_get_message(port_);
 
