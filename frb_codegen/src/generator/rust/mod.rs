@@ -497,10 +497,15 @@ impl<'a> Generator<'a> {
                         format!(
                             r###"
                             #[derive(Clone)]
-                            struct {}({});
+                            pub struct {w}({i});
+                            impl From<{i}> for {w} {{
+                                fn from(inner: {i}) -> Self {{
+                                    Self(inner)
+                                }}
+                            }} 
                             "###,
-                            wrapper,
-                            ty.rust_api_type(),
+                            w = wrapper,
+                            i = ty.rust_api_type(),
                         )
                     })
             }

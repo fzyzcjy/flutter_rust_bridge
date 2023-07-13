@@ -26,7 +26,10 @@ impl IrTypeTrait for IrTypeStructRef {
         self.dart_api_type().to_case(Case::Snake)
     }
     fn dart_api_type(&self) -> String {
-        self.name.to_string()
+        self.name
+            .strip_prefix("mirror_")
+            .unwrap_or(&self.name)
+            .to_string()
     }
     fn dart_wire_type(&self, target: Target) -> String {
         if target.is_wasm() {

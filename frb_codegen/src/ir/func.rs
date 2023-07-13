@@ -91,7 +91,9 @@ impl IrFuncMode {
         match self {
             Self::Normal => format!("Future<{inner}>"),
             Self::Sync => inner.to_string(),
-            Self::Stream { .. } => format!("Stream<{inner}>"),
+            Self::Stream { .. } => {
+                format!("Stream<{}>", inner.strip_prefix("mirror_").unwrap_or(inner))
+            }
         }
     }
 

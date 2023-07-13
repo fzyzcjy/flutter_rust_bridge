@@ -13,6 +13,7 @@ use anyhow::{anyhow, Result};
 use flutter_rust_bridge::*;
 use lazy_static::lazy_static;
 
+use crate::bridge_generated::mirror_ApplicationSettings;
 use crate::data::{EnumAlias, Id, MyEnum, MyStruct, StructAlias, UserIdAlias};
 pub use crate::data::{
     FrbOpaqueReturn, FrbOpaqueSyncReturn, HideData, NonCloneData, NonSendHideData,
@@ -690,7 +691,10 @@ pub fn is_app_embedded(app_settings: ApplicationSettings) -> bool {
 }
 
 // use a stream of a mirrored type
-pub fn app_settings_stream(sink: StreamSink<ApplicationSettings>) {}
+pub fn app_settings_stream(sink: StreamSink<mirror_ApplicationSettings>) {
+    let app_settings = external_lib::get_app_settings();
+    sink.add(app_settings.into());
+}
 
 #[frb(mirror(ApplicationMessage))]
 pub enum _ApplicationMessage {

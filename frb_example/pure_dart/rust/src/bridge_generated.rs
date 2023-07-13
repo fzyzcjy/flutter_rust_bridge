@@ -2431,37 +2431,92 @@ fn wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWit
 // Section: wrapper structs
 
 #[derive(Clone)]
-struct mirror_ApplicationEnv(ApplicationEnv);
+pub struct mirror_ApplicationEnv(ApplicationEnv);
+impl From<ApplicationEnv> for mirror_ApplicationEnv {
+    fn from(inner: ApplicationEnv) -> Self {
+        Self(inner)
+    }
+}
 
 #[derive(Clone)]
-struct mirror_ApplicationEnvVar(ApplicationEnvVar);
+pub struct mirror_ApplicationEnvVar(ApplicationEnvVar);
+impl From<ApplicationEnvVar> for mirror_ApplicationEnvVar {
+    fn from(inner: ApplicationEnvVar) -> Self {
+        Self(inner)
+    }
+}
 
 #[derive(Clone)]
-struct mirror_ApplicationMessage(ApplicationMessage);
+pub struct mirror_ApplicationMessage(ApplicationMessage);
+impl From<ApplicationMessage> for mirror_ApplicationMessage {
+    fn from(inner: ApplicationMessage) -> Self {
+        Self(inner)
+    }
+}
 
 #[derive(Clone)]
-struct mirror_ApplicationMode(ApplicationMode);
+pub struct mirror_ApplicationMode(ApplicationMode);
+impl From<ApplicationMode> for mirror_ApplicationMode {
+    fn from(inner: ApplicationMode) -> Self {
+        Self(inner)
+    }
+}
 
 #[derive(Clone)]
-struct mirror_ApplicationSettings(ApplicationSettings);
+pub struct mirror_ApplicationSettings(ApplicationSettings);
+impl From<ApplicationSettings> for mirror_ApplicationSettings {
+    fn from(inner: ApplicationSettings) -> Self {
+        Self(inner)
+    }
+}
 
 #[derive(Clone)]
-struct mirror_ListOfNestedRawStringMirrored(ListOfNestedRawStringMirrored);
+pub struct mirror_ListOfNestedRawStringMirrored(ListOfNestedRawStringMirrored);
+impl From<ListOfNestedRawStringMirrored> for mirror_ListOfNestedRawStringMirrored {
+    fn from(inner: ListOfNestedRawStringMirrored) -> Self {
+        Self(inner)
+    }
+}
 
 #[derive(Clone)]
-struct mirror_NestedRawStringMirrored(NestedRawStringMirrored);
+pub struct mirror_NestedRawStringMirrored(NestedRawStringMirrored);
+impl From<NestedRawStringMirrored> for mirror_NestedRawStringMirrored {
+    fn from(inner: NestedRawStringMirrored) -> Self {
+        Self(inner)
+    }
+}
 
 #[derive(Clone)]
-struct mirror_Numbers(Numbers);
+pub struct mirror_Numbers(Numbers);
+impl From<Numbers> for mirror_Numbers {
+    fn from(inner: Numbers) -> Self {
+        Self(inner)
+    }
+}
 
 #[derive(Clone)]
-struct mirror_RawStringEnumMirrored(RawStringEnumMirrored);
+pub struct mirror_RawStringEnumMirrored(RawStringEnumMirrored);
+impl From<RawStringEnumMirrored> for mirror_RawStringEnumMirrored {
+    fn from(inner: RawStringEnumMirrored) -> Self {
+        Self(inner)
+    }
+}
 
 #[derive(Clone)]
-struct mirror_RawStringMirrored(RawStringMirrored);
+pub struct mirror_RawStringMirrored(RawStringMirrored);
+impl From<RawStringMirrored> for mirror_RawStringMirrored {
+    fn from(inner: RawStringMirrored) -> Self {
+        Self(inner)
+    }
+}
 
 #[derive(Clone)]
-struct mirror_Sequences(Sequences);
+pub struct mirror_Sequences(Sequences);
+impl From<Sequences> for mirror_Sequences {
+    fn from(inner: Sequences) -> Self {
+        Self(inner)
+    }
+}
 
 // Section: static checks
 
