@@ -57,6 +57,16 @@ class ApiBlock2ClassPlatform extends FlutterRustBridgeBase<ApiBlock2ClassWire> w
   }
 
   @protected
+  List<dynamic> api2wire_list_enum_defined_in_block_2(List<EnumDefinedInBlock2> raw) {
+    return raw.map(api2wire_enum_defined_in_block_2).toList();
+  }
+
+  @protected
+  List<dynamic> api2wire_list_struct_defined_in_block_2(List<StructDefinedInBlock2> raw) {
+    return raw.map(api2wire_struct_defined_in_block_2).toList();
+  }
+
+  @protected
   List<dynamic> api2wire_struct_defined_in_block_2(StructDefinedInBlock2 raw) {
     return [_sharedPlatform.api2wire_String(raw.name)];
   }
@@ -104,6 +114,9 @@ class ApiBlock2ClassWasmModule implements WasmModule {
   external dynamic /* void */ wire_test_struct_defined_in_block_2(NativePortType port_, List<dynamic> custom);
 
   external dynamic /* void */ wire_test_enum_defined_in_block_2(NativePortType port_, List<dynamic> custom);
+
+  external dynamic /* void */ wire_test_list_in_block_2(NativePortType port_, List<dynamic> shared_structs,
+      List<String> strings, Int32List nums, List<dynamic> weekdays, List<dynamic> struct_list, List<dynamic> enum_list);
 
   external dynamic /* void */ wire_test_method__method__EnumDefinedInBlock2(
       NativePortType port_, List<dynamic> that, String message);
@@ -161,6 +174,10 @@ class ApiBlock2ClassWire extends FlutterRustBridgeWasmWireBase<ApiBlock2ClassWas
 
   void wire_test_enum_defined_in_block_2(NativePortType port_, List<dynamic> custom) =>
       wasmModule.wire_test_enum_defined_in_block_2(port_, custom);
+
+  void wire_test_list_in_block_2(NativePortType port_, List<dynamic> shared_structs, List<String> strings,
+          Int32List nums, List<dynamic> weekdays, List<dynamic> struct_list, List<dynamic> enum_list) =>
+      wasmModule.wire_test_list_in_block_2(port_, shared_structs, strings, nums, weekdays, struct_list, enum_list);
 
   void wire_test_method__method__EnumDefinedInBlock2(NativePortType port_, List<dynamic> that, String message) =>
       wasmModule.wire_test_method__method__EnumDefinedInBlock2(port_, that, message);

@@ -76,6 +76,27 @@ pub fn wire_test_enum_defined_in_block_2(port_: MessagePort, custom: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_test_list_in_block_2(
+    port_: MessagePort,
+    shared_structs: JsValue,
+    strings: JsValue,
+    nums: Box<[i32]>,
+    weekdays: JsValue,
+    struct_list: JsValue,
+    enum_list: JsValue,
+) {
+    wire_test_list_in_block_2_impl(
+        port_,
+        shared_structs,
+        strings,
+        nums,
+        weekdays,
+        struct_list,
+        enum_list,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire_test_method__method__EnumDefinedInBlock2(
     port_: MessagePort,
     that: JsValue,
@@ -153,6 +174,24 @@ impl Wire2Api<EnumDefinedInBlock2> for JsValue {
     }
 }
 
+impl Wire2Api<Vec<EnumDefinedInBlock2>> for JsValue {
+    fn wire2api(self) -> Vec<EnumDefinedInBlock2> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
+impl Wire2Api<Vec<StructDefinedInBlock2>> for JsValue {
+    fn wire2api(self) -> Vec<StructDefinedInBlock2> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
 impl Wire2Api<StructDefinedInBlock2> for JsValue {
     fn wire2api(self) -> StructDefinedInBlock2 {
         let self_ = self.dyn_into::<JsArray>().unwrap();

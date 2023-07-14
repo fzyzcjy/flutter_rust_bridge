@@ -154,6 +154,15 @@ impl Wire2Api<String> for String {
         self
     }
 }
+impl Wire2Api<Vec<String>> for JsValue {
+    fn wire2api(self) -> Vec<String> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
 impl Wire2Api<ZeroCopyBuffer<Vec<f32>>> for Box<[f32]> {
     fn wire2api(self) -> ZeroCopyBuffer<Vec<f32>> {
         ZeroCopyBuffer(self.wire2api())
@@ -195,8 +204,31 @@ impl Wire2Api<Vec<f32>> for Box<[f32]> {
     }
 }
 
+impl Wire2Api<Vec<i32>> for Box<[i32]> {
+    fn wire2api(self) -> Vec<i32> {
+        self.into_vec()
+    }
+}
 impl Wire2Api<Vec<SharedComplexEnumInAllBlocks>> for JsValue {
     fn wire2api(self) -> Vec<SharedComplexEnumInAllBlocks> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
+impl Wire2Api<Vec<SharedStructInAllBlocks>> for JsValue {
+    fn wire2api(self) -> Vec<SharedStructInAllBlocks> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
+impl Wire2Api<Vec<SharedWeekdaysEnumInAllBlocks>> for JsValue {
+    fn wire2api(self) -> Vec<SharedWeekdaysEnumInAllBlocks> {
         self.dyn_into::<JsArray>()
             .unwrap()
             .iter()
@@ -355,6 +387,11 @@ impl Wire2Api<Vec<f32>> for JsValue {
 impl Wire2Api<i32> for JsValue {
     fn wire2api(self) -> i32 {
         self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<Vec<i32>> for JsValue {
+    fn wire2api(self) -> Vec<i32> {
+        self.unchecked_into::<js_sys::Int32Array>().to_vec().into()
     }
 }
 impl Wire2Api<Option<i32>> for JsValue {

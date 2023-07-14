@@ -39,7 +39,7 @@ void main(List<String> args) {
   testTypeMethods(api1, apiShared);
   testApiBlock1(api1, apiShared, enumList);
   testApiBlock2(api2, apiShared, enumList);
-  testApiBlock3(api3, apiShared);
+  testApiBlock3(api3, apiShared, enumList);
 
   tearDownAll(() {
     api1.dispose();

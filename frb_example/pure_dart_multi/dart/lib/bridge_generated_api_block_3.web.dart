@@ -62,6 +62,16 @@ class ApiBlock3ClassPlatform extends FlutterRustBridgeBase<ApiBlock3ClassWire> w
   }
 
   @protected
+  List<dynamic> api2wire_list_enum_defined_in_block_3(List<EnumDefinedInBlock3> raw) {
+    return raw.map(api2wire_enum_defined_in_block_3).toList();
+  }
+
+  @protected
+  List<dynamic> api2wire_list_struct_defined_in_block_3(List<StructDefinedInBlock3> raw) {
+    return raw.map(api2wire_struct_defined_in_block_3).toList();
+  }
+
+  @protected
   List<dynamic>? api2wire_opt_box_autoadd_shared_struct_in_all_blocks(SharedStructInAllBlocks? raw) {
     return raw == null ? null : _sharedPlatform.api2wire_box_autoadd_shared_struct_in_all_blocks(raw);
   }
@@ -113,6 +123,9 @@ class ApiBlock3ClassWasmModule implements WasmModule {
   external dynamic /* void */ wire_test_struct_defined_in_block_3(NativePortType port_, List<dynamic> custom);
 
   external dynamic /* void */ wire_test_enum_defined_in_block_3(NativePortType port_, List<dynamic> custom);
+
+  external dynamic /* void */ wire_test_list_in_block_3(NativePortType port_, List<dynamic> shared_structs,
+      List<String> strings, Int32List nums, List<dynamic> weekdays, List<dynamic> struct_list, List<dynamic> enum_list);
 
   external dynamic /* void */ wire_test_method__method__EnumDefinedInBlock3(
       NativePortType port_, List<dynamic> that, String message);
@@ -173,6 +186,10 @@ class ApiBlock3ClassWire extends FlutterRustBridgeWasmWireBase<ApiBlock3ClassWas
 
   void wire_test_enum_defined_in_block_3(NativePortType port_, List<dynamic> custom) =>
       wasmModule.wire_test_enum_defined_in_block_3(port_, custom);
+
+  void wire_test_list_in_block_3(NativePortType port_, List<dynamic> shared_structs, List<String> strings,
+          Int32List nums, List<dynamic> weekdays, List<dynamic> struct_list, List<dynamic> enum_list) =>
+      wasmModule.wire_test_list_in_block_3(port_, shared_structs, strings, nums, weekdays, struct_list, enum_list);
 
   void wire_test_method__method__EnumDefinedInBlock3(NativePortType port_, List<dynamic> that, String message) =>
       wasmModule.wire_test_method__method__EnumDefinedInBlock3(port_, that, message);

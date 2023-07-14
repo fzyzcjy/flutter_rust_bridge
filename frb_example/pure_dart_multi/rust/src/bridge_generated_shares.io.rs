@@ -146,6 +146,15 @@ pub extern "C" fn wire_test_static_method__static_method__SharedStructInBlock2An
 // Section: allocate functions
 
 #[no_mangle]
+pub extern "C" fn new_StringList(len: i32) -> *mut wire_StringList {
+    let wrap = wire_StringList {
+        ptr: support::new_leak_vec_ptr(<*mut wire_uint_8_list>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_cross_shared_struct_in_block_1_and_2(
 ) -> *mut wire_CrossSharedStructInBlock1And2 {
     support::new_leak_box_ptr(wire_CrossSharedStructInBlock1And2::new_with_null_ptr())
@@ -213,6 +222,15 @@ pub extern "C" fn new_float_32_list(len: i32) -> *mut wire_float_32_list {
 }
 
 #[no_mangle]
+pub extern "C" fn new_int_32_list(len: i32) -> *mut wire_int_32_list {
+    let ans = wire_int_32_list {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
 pub extern "C" fn new_list_shared_complex_enum_in_all_blocks(
     len: i32,
 ) -> *mut wire_list_shared_complex_enum_in_all_blocks {
@@ -221,6 +239,28 @@ pub extern "C" fn new_list_shared_complex_enum_in_all_blocks(
             <wire_SharedComplexEnumInAllBlocks>::new_with_null_ptr(),
             len,
         ),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_shared_struct_in_all_blocks(
+    len: i32,
+) -> *mut wire_list_shared_struct_in_all_blocks {
+    let wrap = wire_list_shared_struct_in_all_blocks {
+        ptr: support::new_leak_vec_ptr(<wire_SharedStructInAllBlocks>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_shared_weekdays_enum_in_all_blocks(
+    len: i32,
+) -> *mut wire_list_shared_weekdays_enum_in_all_blocks {
+    let wrap = wire_list_shared_weekdays_enum_in_all_blocks {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
         len,
     };
     support::new_leak_box_ptr(wrap)
@@ -243,6 +283,15 @@ impl Wire2Api<String> for *mut wire_uint_8_list {
     fn wire2api(self) -> String {
         let vec: Vec<u8> = self.wire2api();
         String::from_utf8_lossy(&vec).into_owned()
+    }
+}
+impl Wire2Api<Vec<String>> for *mut wire_StringList {
+    fn wire2api(self) -> Vec<String> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
 impl Wire2Api<ZeroCopyBuffer<Vec<f32>>> for *mut wire_float_32_list {
@@ -333,10 +382,38 @@ impl Wire2Api<Vec<f32>> for *mut wire_float_32_list {
     }
 }
 
+impl Wire2Api<Vec<i32>> for *mut wire_int_32_list {
+    fn wire2api(self) -> Vec<i32> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
 impl Wire2Api<Vec<SharedComplexEnumInAllBlocks>>
     for *mut wire_list_shared_complex_enum_in_all_blocks
 {
     fn wire2api(self) -> Vec<SharedComplexEnumInAllBlocks> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+impl Wire2Api<Vec<SharedStructInAllBlocks>> for *mut wire_list_shared_struct_in_all_blocks {
+    fn wire2api(self) -> Vec<SharedStructInAllBlocks> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+impl Wire2Api<Vec<SharedWeekdaysEnumInAllBlocks>>
+    for *mut wire_list_shared_weekdays_enum_in_all_blocks
+{
+    fn wire2api(self) -> Vec<SharedWeekdaysEnumInAllBlocks> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -442,6 +519,13 @@ impl Wire2Api<Vec<u8>> for *mut wire_uint_8_list {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_StringList {
+    ptr: *mut *mut wire_uint_8_list,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_CrossSharedStructInBlock1And2 {
     name: *mut wire_uint_8_list,
 }
@@ -461,8 +545,29 @@ pub struct wire_float_32_list {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_int_32_list {
+    ptr: *mut i32,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_list_shared_complex_enum_in_all_blocks {
     ptr: *mut wire_SharedComplexEnumInAllBlocks,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_shared_struct_in_all_blocks {
+    ptr: *mut wire_SharedStructInAllBlocks,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_shared_weekdays_enum_in_all_blocks {
+    ptr: *mut i32,
     len: i32,
 }
 

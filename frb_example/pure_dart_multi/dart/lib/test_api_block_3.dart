@@ -1,9 +1,12 @@
+import 'dart:typed_data';
+
 import 'package:test/test.dart';
 
 import 'bridge_definitions.dart';
 import 'bridge_generated_api_block_3.dart';
 
-void testApiBlock3(ApiBlock3ClassImpl api3, BridgeGeneratedSharesImpl apiShared) {
+void testApiBlock3(
+    ApiBlock3ClassImpl api3, BridgeGeneratedSharesImpl apiShared, List<SharedComplexEnumInAllBlocks> enumList) {
   test('dart call testInbuiltTypeInBlock3', () async {
     expect(await api3.testInbuiltTypeInBlock3(a: 42, b: 100.0), 142.0);
   });
@@ -106,5 +109,45 @@ void testApiBlock3(ApiBlock3ClassImpl api3, BridgeGeneratedSharesImpl apiShared)
       await api3.testEnumDefinedInBlock3(custom: EnumDefinedInBlock3.changeColor(1, 2, 3)),
       "changeColor_1_2_3",
     );
+  });
+
+  test('dart call testListInBlock3', () async {
+    // add test case for method `api1.testListInBlock1`
+    expect(
+        await api3.testListInBlock3(nums: Int32List.fromList([1, 2]), strings: [
+          "a",
+          "b"
+        ], sharedStructs: [
+          SharedStructInAllBlocks(
+            bridge: apiShared,
+            name: "struct1",
+            id: 1,
+            num: 1.1,
+            enumList: enumList,
+          ),
+          SharedStructInAllBlocks(
+            bridge: apiShared,
+            name: "struct2",
+            id: 2,
+            num: 2.2,
+            enumList: enumList,
+          ),
+        ], weekdays: [
+          SharedWeekdaysEnumInAllBlocks.Saturday,
+          SharedWeekdaysEnumInAllBlocks.Sunday
+        ], structList: [
+          StructDefinedInBlock3(
+            bridge: api3,
+            name: "struct1",
+          ),
+          StructDefinedInBlock3(
+            bridge: api3,
+            name: "struct2",
+          ),
+        ], enumList: [
+          EnumDefinedInBlock3.quit(),
+          EnumDefinedInBlock3.write("write"),
+        ]),
+        "struct1_struct2_a_b_1_2_Saturday_Sunday_struct1_struct2_Quit_Write(\"write\")");
   });
 }

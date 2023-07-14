@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:test/test.dart';
 
 import 'bridge_definitions.dart';
@@ -95,5 +97,45 @@ void testApiBlock2(
       await api2.testEnumDefinedInBlock2(custom: EnumDefinedInBlock2.write("content")),
       "write_content",
     );
+  });
+
+  test('dart call testListInBlock2', () async {
+    // add test case for method `api1.testListInBlock1`
+    expect(
+        await api2.testListInBlock2(nums: Int32List.fromList([1, 2]), strings: [
+          "a",
+          "b"
+        ], sharedStructs: [
+          SharedStructInAllBlocks(
+            bridge: apiShared,
+            name: "struct1",
+            id: 1,
+            num: 1.1,
+            enumList: enumList,
+          ),
+          SharedStructInAllBlocks(
+            bridge: apiShared,
+            name: "struct2",
+            id: 2,
+            num: 2.2,
+            enumList: enumList,
+          ),
+        ], weekdays: [
+          SharedWeekdaysEnumInAllBlocks.Saturday,
+          SharedWeekdaysEnumInAllBlocks.Sunday
+        ], structList: [
+          StructDefinedInBlock2(
+            bridge: api2,
+            name: "struct1",
+          ),
+          StructDefinedInBlock2(
+            bridge: api2,
+            name: "struct2",
+          ),
+        ], enumList: [
+          EnumDefinedInBlock2.quit(),
+          EnumDefinedInBlock2.write("write"),
+        ]),
+        "struct1_struct2_a_b_1_2_Saturday_Sunday_struct1_struct2_Quit_Write(\"write\")");
   });
 }

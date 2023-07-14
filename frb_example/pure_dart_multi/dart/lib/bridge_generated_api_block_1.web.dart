@@ -24,11 +24,6 @@ class ApiBlock1ClassPlatform extends FlutterRustBridgeBase<ApiBlock1ClassWire> w
 // Section: api2wire
 
   @protected
-  List<String> api2wire_StringList(List<String> raw) {
-    return raw;
-  }
-
-  @protected
   List<dynamic> api2wire_box_autoadd_enum_defined_in_block_1(EnumDefinedInBlock1 raw) {
     return api2wire_enum_defined_in_block_1(raw);
   }
@@ -67,23 +62,8 @@ class ApiBlock1ClassPlatform extends FlutterRustBridgeBase<ApiBlock1ClassWire> w
   }
 
   @protected
-  Int32List api2wire_int_32_list(Int32List raw) {
-    return raw;
-  }
-
-  @protected
   List<dynamic> api2wire_list_enum_defined_in_block_1(List<EnumDefinedInBlock1> raw) {
     return raw.map(api2wire_enum_defined_in_block_1).toList();
-  }
-
-  @protected
-  List<dynamic> api2wire_list_shared_struct_in_all_blocks(List<SharedStructInAllBlocks> raw) {
-    return raw.map(_sharedPlatform.api2wire_shared_struct_in_all_blocks).toList();
-  }
-
-  @protected
-  List<dynamic> api2wire_list_shared_weekdays_enum_in_all_blocks(List<SharedWeekdaysEnumInAllBlocks> raw) {
-    return raw.map(api2wire_shared_weekdays_enum_in_all_blocks).toList();
   }
 
   @protected

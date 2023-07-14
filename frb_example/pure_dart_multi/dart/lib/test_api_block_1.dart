@@ -110,42 +110,41 @@ void testApiBlock1(
 
   test('dart call testListInBlock1', () async {
     // add test case for method `api1.testListInBlock1`
-    final sharedStructs = [
-      SharedStructInAllBlocks(
-        bridge: apiShared,
-        name: "struct1",
-        id: 1,
-        num: 1.1,
-        enumList: enumList,
-      ),
-      SharedStructInAllBlocks(
-        bridge: apiShared,
-        name: "struct2",
-        id: 2,
-        num: 2.2,
-        enumList: enumList,
-      ),
-    ];
     expect(
-        await api1.testListInBlock1(
-            nums: Int32List.fromList([1, 2]),
-            strings: ["a", "b"],
-            sharedStructs: sharedStructs,
-            weekdays: [SharedWeekdaysEnumInAllBlocks.Saturday, SharedWeekdaysEnumInAllBlocks.Sunday],
-            structList: [
-              StructDefinedInBlock1(
-                bridge: api1,
-                name: "struct1",
-              ),
-              StructDefinedInBlock1(
-                bridge: api1,
-                name: "struct2",
-              ),
-            ],
-            enumList: [
-              EnumDefinedInBlock1.quit(),
-              EnumDefinedInBlock1.write("write"),
-            ]),
+        await api1.testListInBlock1(nums: Int32List.fromList([1, 2]), strings: [
+          "a",
+          "b"
+        ], sharedStructs: [
+          SharedStructInAllBlocks(
+            bridge: apiShared,
+            name: "struct1",
+            id: 1,
+            num: 1.1,
+            enumList: enumList,
+          ),
+          SharedStructInAllBlocks(
+            bridge: apiShared,
+            name: "struct2",
+            id: 2,
+            num: 2.2,
+            enumList: enumList,
+          ),
+        ], weekdays: [
+          SharedWeekdaysEnumInAllBlocks.Saturday,
+          SharedWeekdaysEnumInAllBlocks.Sunday
+        ], structList: [
+          StructDefinedInBlock1(
+            bridge: api1,
+            name: "struct1",
+          ),
+          StructDefinedInBlock1(
+            bridge: api1,
+            name: "struct2",
+          ),
+        ], enumList: [
+          EnumDefinedInBlock1.quit(),
+          EnumDefinedInBlock1.write("write"),
+        ]),
         "struct1_struct2_a_b_1_2_Saturday_Sunday_struct1_struct2_Quit_Write(\"write\")");
   });
 }

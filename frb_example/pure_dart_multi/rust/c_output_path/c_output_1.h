@@ -5,6 +5,16 @@ typedef struct _Dart_Handle* Dart_Handle;
 
 typedef struct DartCObject DartCObject;
 
+typedef struct wire_uint_8_list {
+  uint8_t *ptr;
+  int32_t len;
+} wire_uint_8_list;
+
+typedef struct wire_StringList {
+  struct wire_uint_8_list **ptr;
+  int32_t len;
+} wire_StringList;
+
 typedef struct wire_SharedComplexEnumInAllBlocks_Empty {
 
 } wire_SharedComplexEnumInAllBlocks_Empty;
@@ -18,11 +28,6 @@ typedef struct wire_SharedComplexEnumInAllBlocks_Primitives {
 typedef struct wire_SharedComplexEnumInAllBlocks_Nested {
   struct wire_SharedComplexEnumInAllBlocks *field0;
 } wire_SharedComplexEnumInAllBlocks_Nested;
-
-typedef struct wire_uint_8_list {
-  uint8_t *ptr;
-  int32_t len;
-} wire_uint_8_list;
 
 typedef struct wire_SharedComplexEnumInAllBlocks_Optional {
   int32_t *field0;
@@ -85,6 +90,21 @@ typedef struct wire_SharedStructInBlock2And3 {
   struct wire_uint_8_list *name;
 } wire_SharedStructInBlock2And3;
 
+typedef struct wire_int_32_list {
+  int32_t *ptr;
+  int32_t len;
+} wire_int_32_list;
+
+typedef struct wire_list_shared_struct_in_all_blocks {
+  struct wire_SharedStructInAllBlocks *ptr;
+  int32_t len;
+} wire_list_shared_struct_in_all_blocks;
+
+typedef struct wire_list_shared_weekdays_enum_in_all_blocks {
+  int32_t *ptr;
+  int32_t len;
+} wire_list_shared_weekdays_enum_in_all_blocks;
+
 typedef struct DartCObject *WireSyncReturn;
 
 typedef int64_t DartPort;
@@ -136,26 +156,6 @@ typedef struct wire_EnumDefinedInBlock1 {
   union EnumDefinedInBlock1Kind *kind;
 } wire_EnumDefinedInBlock1;
 
-typedef struct wire_list_shared_struct_in_all_blocks {
-  struct wire_SharedStructInAllBlocks *ptr;
-  int32_t len;
-} wire_list_shared_struct_in_all_blocks;
-
-typedef struct wire_StringList {
-  struct wire_uint_8_list **ptr;
-  int32_t len;
-} wire_StringList;
-
-typedef struct wire_int_32_list {
-  int32_t *ptr;
-  int32_t len;
-} wire_int_32_list;
-
-typedef struct wire_list_shared_weekdays_enum_in_all_blocks {
-  int32_t *ptr;
-  int32_t len;
-} wire_list_shared_weekdays_enum_in_all_blocks;
-
 typedef struct wire_list_struct_defined_in_block_1 {
   struct wire_StructDefinedInBlock1 *ptr;
   int32_t len;
@@ -178,6 +178,8 @@ typedef struct wire_StructOnlyForBlock3 {
   struct wire_uint_8_list *name;
 } wire_StructOnlyForBlock3;
 
+struct wire_StringList *new_StringList(int32_t len);
+
 int32_t *new_box_autoadd_i32(int32_t value);
 
 struct wire_SharedComplexEnumInAllBlocks *new_box_autoadd_shared_complex_enum_in_all_blocks(void);
@@ -192,7 +194,13 @@ struct wire_SharedComplexEnumInAllBlocks *new_box_shared_complex_enum_in_all_blo
 
 struct wire_float_32_list *new_float_32_list(int32_t len);
 
+struct wire_int_32_list *new_int_32_list(int32_t len);
+
 struct wire_list_shared_complex_enum_in_all_blocks *new_list_shared_complex_enum_in_all_blocks(int32_t len);
+
+struct wire_list_shared_struct_in_all_blocks *new_list_shared_struct_in_all_blocks(int32_t len);
+
+struct wire_list_shared_weekdays_enum_in_all_blocks *new_list_shared_weekdays_enum_in_all_blocks(int32_t len);
 
 struct wire_uint_8_list *new_uint_8_list(int32_t len);
 
@@ -285,8 +293,6 @@ void wire_test_method__method__StructOnlyForBlock1(int64_t port_,
 void wire_test_static_method__static_method__StructOnlyForBlock1(int64_t port_,
                                                                  struct wire_uint_8_list *message);
 
-struct wire_StringList *new_StringList(int32_t len);
-
 struct wire_EnumDefinedInBlock1 *new_box_autoadd_enum_defined_in_block_1(void);
 
 int8_t *new_box_autoadd_i8(int8_t value);
@@ -295,13 +301,7 @@ struct wire_StructDefinedInBlock1 *new_box_autoadd_struct_defined_in_block_1(voi
 
 struct wire_StructOnlyForBlock1 *new_box_autoadd_struct_only_for_block_1(void);
 
-struct wire_int_32_list *new_int_32_list(int32_t len);
-
 struct wire_list_enum_defined_in_block_1 *new_list_enum_defined_in_block_1(int32_t len);
-
-struct wire_list_shared_struct_in_all_blocks *new_list_shared_struct_in_all_blocks(int32_t len);
-
-struct wire_list_shared_weekdays_enum_in_all_blocks *new_list_shared_weekdays_enum_in_all_blocks(int32_t len);
 
 struct wire_list_struct_defined_in_block_1 *new_list_struct_defined_in_block_1(int32_t len);
 
@@ -348,15 +348,11 @@ static int64_t dummy_method_to_enforce_bundling_ApiBlock1Class(void) {
     dummy_var ^= ((int64_t) (void*) wire_test_static_method__static_method__StructDefinedInBlock1);
     dummy_var ^= ((int64_t) (void*) wire_test_method__method__StructOnlyForBlock1);
     dummy_var ^= ((int64_t) (void*) wire_test_static_method__static_method__StructOnlyForBlock1);
-    dummy_var ^= ((int64_t) (void*) new_StringList);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_defined_in_block_1);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_i8);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_defined_in_block_1);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_only_for_block_1);
-    dummy_var ^= ((int64_t) (void*) new_int_32_list);
     dummy_var ^= ((int64_t) (void*) new_list_enum_defined_in_block_1);
-    dummy_var ^= ((int64_t) (void*) new_list_shared_struct_in_all_blocks);
-    dummy_var ^= ((int64_t) (void*) new_list_shared_weekdays_enum_in_all_blocks);
     dummy_var ^= ((int64_t) (void*) new_list_struct_defined_in_block_1);
     dummy_var ^= ((int64_t) (void*) inflate_EnumDefinedInBlock1_Move);
     dummy_var ^= ((int64_t) (void*) inflate_EnumDefinedInBlock1_Write);

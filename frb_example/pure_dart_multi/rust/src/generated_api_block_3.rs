@@ -240,6 +240,41 @@ fn wire_test_enum_defined_in_block_3_impl(
         },
     )
 }
+fn wire_test_list_in_block_3_impl(
+    port_: MessagePort,
+    shared_structs: impl bridge_generated_shares::Wire2Api<Vec<SharedStructInAllBlocks>> + UnwindSafe,
+    strings: impl bridge_generated_shares::Wire2Api<Vec<String>> + UnwindSafe,
+    nums: impl bridge_generated_shares::Wire2Api<Vec<i32>> + UnwindSafe,
+    weekdays: impl bridge_generated_shares::Wire2Api<Vec<SharedWeekdaysEnumInAllBlocks>> + UnwindSafe,
+    struct_list: impl Wire2Api<Vec<StructDefinedInBlock3>> + UnwindSafe,
+    enum_list: impl Wire2Api<Vec<EnumDefinedInBlock3>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "test_list_in_block_3",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_shared_structs = shared_structs.wire2api();
+            let api_strings = strings.wire2api();
+            let api_nums = nums.wire2api();
+            let api_weekdays = weekdays.wire2api();
+            let api_struct_list = struct_list.wire2api();
+            let api_enum_list = enum_list.wire2api();
+            move |task_callback| {
+                Ok(test_list_in_block_3(
+                    api_shared_structs,
+                    api_strings,
+                    api_nums,
+                    api_weekdays,
+                    api_struct_list,
+                    api_enum_list,
+                ))
+            }
+        },
+    )
+}
 fn wire_test_method__method__EnumDefinedInBlock3_impl(
     port_: MessagePort,
     that: impl Wire2Api<EnumDefinedInBlock3> + UnwindSafe,

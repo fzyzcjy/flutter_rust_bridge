@@ -248,10 +248,10 @@ class ApiBlock1ClassImpl implements ApiBlock1Class {
       required List<StructDefinedInBlock1> structList,
       required List<EnumDefinedInBlock1> enumList,
       dynamic hint}) {
-    var arg0 = _platform.api2wire_list_shared_struct_in_all_blocks(sharedStructs);
-    var arg1 = _platform.api2wire_StringList(strings);
-    var arg2 = _platform.api2wire_int_32_list(nums);
-    var arg3 = _platform.api2wire_list_shared_weekdays_enum_in_all_blocks(weekdays);
+    var arg0 = _sharedPlatform.api2wire_list_shared_struct_in_all_blocks(sharedStructs);
+    var arg1 = _sharedPlatform.api2wire_StringList(strings);
+    var arg2 = _sharedPlatform.api2wire_int_32_list(nums);
+    var arg3 = _sharedPlatform.api2wire_list_shared_weekdays_enum_in_all_blocks(weekdays);
     var arg4 = _platform.api2wire_list_struct_defined_in_block_1(structList);
     var arg5 = _platform.api2wire_list_enum_defined_in_block_1(enumList);
     return _platform.executeNormal(FlutterRustBridgeTask(

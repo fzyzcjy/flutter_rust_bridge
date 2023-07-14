@@ -339,6 +339,34 @@ abstract class ApiBlock3Class {
 
   FlutterRustBridgeTaskConstMeta get kTestEnumDefinedInBlock3ConstMeta;
 
+  /// This API is for testing generating API with list types.
+  /// To achieve a complete test, it accepts params of various types of lists
+  /// -- lists of primitive types, strings, and customized structs/enums, some of the inner items of which are
+  /// shared, and the others are not shared.
+  ///
+  /// # Arguments
+  ///
+  /// * `shared_structs` - A vector of `SharedStructInAllBlocks` items -- the item is a shared type.
+  /// * `strings` - A vector of `String` items -- the item is a shared type.
+  /// * `nums` - A vector of `i32` items -- the item is a shared type.
+  /// * `weekdays` - A vector of `SharedWeekdaysEnumInAllBlocks` items -- the item is a shared type.
+  /// * `struct_list` - A vector of `StructDefinedInBlock3` items -- the item is NOT a shared type.
+  /// * `enum_list` - A vector of `EnumDefinedInBlock3` items -- the item is NOT a shared type.
+  ///
+  /// # Returns
+  ///
+  /// A string that concatenates the names of each item in the input vectors, separated by underscores.
+  Future<String> testListInBlock3(
+      {required List<SharedStructInAllBlocks> sharedStructs,
+      required List<String> strings,
+      required Int32List nums,
+      required List<SharedWeekdaysEnumInAllBlocks> weekdays,
+      required List<StructDefinedInBlock3> structList,
+      required List<EnumDefinedInBlock3> enumList,
+      dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestListInBlock3ConstMeta;
+
   Future<String> testMethodMethodEnumDefinedInBlock3(
       {required EnumDefinedInBlock3 that, required String message, dynamic hint});
 
@@ -482,6 +510,34 @@ abstract class ApiBlock2Class {
   Future<String> testEnumDefinedInBlock2({required EnumDefinedInBlock2 custom, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kTestEnumDefinedInBlock2ConstMeta;
+
+  /// This API is for testing generating API with list types.
+  /// To achieve a complete test, it accepts params of various types of lists
+  /// -- lists of primitive types, strings, and customized structs/enums, some of the inner items of which are
+  /// shared, and the others are not shared.
+  ///
+  /// # Arguments
+  ///
+  /// * `shared_structs` - A vector of `SharedStructInAllBlocks` items -- the item is a shared type.
+  /// * `strings` - A vector of `String` items -- the item is a shared type.
+  /// * `nums` - A vector of `i32` items -- the item is a shared type.
+  /// * `weekdays` - A vector of `SharedWeekdaysEnumInAllBlocks` items -- the item is a shared type.
+  /// * `struct_list` - A vector of `StructDefinedInBlock2` items -- the item is NOT a shared type.
+  /// * `enum_list` - A vector of `EnumDefinedInBlock2` items -- the item is NOT a shared type.
+  ///
+  /// # Returns
+  ///
+  /// A string that concatenates the names of each item in the input vectors, separated by underscores.
+  Future<String> testListInBlock2(
+      {required List<SharedStructInAllBlocks> sharedStructs,
+      required List<String> strings,
+      required Int32List nums,
+      required List<SharedWeekdaysEnumInAllBlocks> weekdays,
+      required List<StructDefinedInBlock2> structList,
+      required List<EnumDefinedInBlock2> enumList,
+      dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTestListInBlock2ConstMeta;
 
   Future<String> testMethodMethodEnumDefinedInBlock2(
       {required EnumDefinedInBlock2 that, required String message, dynamic hint});

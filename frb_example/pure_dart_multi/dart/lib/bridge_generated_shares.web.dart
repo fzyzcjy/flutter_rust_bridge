@@ -27,6 +27,11 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   }
 
   @protected
+  List<String> api2wire_StringList(List<String> raw) {
+    return raw;
+  }
+
+  @protected
   Float32List api2wire_ZeroCopyBuffer_Float32List(Float32List raw) {
     return api2wire_float_32_list(raw);
   }
@@ -97,8 +102,23 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
   }
 
   @protected
+  Int32List api2wire_int_32_list(Int32List raw) {
+    return raw;
+  }
+
+  @protected
   List<dynamic> api2wire_list_shared_complex_enum_in_all_blocks(List<SharedComplexEnumInAllBlocks> raw) {
     return raw.map(api2wire_shared_complex_enum_in_all_blocks).toList();
+  }
+
+  @protected
+  List<dynamic> api2wire_list_shared_struct_in_all_blocks(List<SharedStructInAllBlocks> raw) {
+    return raw.map(api2wire_shared_struct_in_all_blocks).toList();
+  }
+
+  @protected
+  List<dynamic> api2wire_list_shared_weekdays_enum_in_all_blocks(List<SharedWeekdaysEnumInAllBlocks> raw) {
+    return raw.map(api2wire_shared_weekdays_enum_in_all_blocks).toList();
   }
 
   @protected

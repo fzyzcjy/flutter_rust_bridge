@@ -28,6 +28,7 @@ impl EnumDefinedInBlock1 {
     }
 }
 
+#[derive(Debug)]
 pub struct StructDefinedInBlock1 {
     pub name: String,
 }

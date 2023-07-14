@@ -81,6 +81,27 @@ pub fn wire_test_enum_defined_in_block_3(port_: MessagePort, custom: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_test_list_in_block_3(
+    port_: MessagePort,
+    shared_structs: JsValue,
+    strings: JsValue,
+    nums: Box<[i32]>,
+    weekdays: JsValue,
+    struct_list: JsValue,
+    enum_list: JsValue,
+) {
+    wire_test_list_in_block_3_impl(
+        port_,
+        shared_structs,
+        strings,
+        nums,
+        weekdays,
+        struct_list,
+        enum_list,
+    )
+}
+
+#[wasm_bindgen]
 pub fn wire_test_method__method__EnumDefinedInBlock3(
     port_: MessagePort,
     that: JsValue,
@@ -158,6 +179,24 @@ impl Wire2Api<EnumDefinedInBlock3> for JsValue {
     }
 }
 
+impl Wire2Api<Vec<EnumDefinedInBlock3>> for JsValue {
+    fn wire2api(self) -> Vec<EnumDefinedInBlock3> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
+impl Wire2Api<Vec<StructDefinedInBlock3>> for JsValue {
+    fn wire2api(self) -> Vec<StructDefinedInBlock3> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
 impl Wire2Api<Option<SharedStructInAllBlocks>> for JsValue {
     fn wire2api(self) -> Option<SharedStructInAllBlocks> {
         (!self.is_undefined() && !self.is_null()).then(|| self.wire2api())

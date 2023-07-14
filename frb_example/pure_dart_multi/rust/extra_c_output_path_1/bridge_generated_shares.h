@@ -102,6 +102,26 @@ typedef struct wire_SharedStructInBlock2And3 {
   struct wire_uint_8_list *name;
 } wire_SharedStructInBlock2And3;
 
+typedef struct wire_StringList {
+  struct wire_uint_8_list **ptr;
+  int32_t len;
+} wire_StringList;
+
+typedef struct wire_int_32_list {
+  int32_t *ptr;
+  int32_t len;
+} wire_int_32_list;
+
+typedef struct wire_list_shared_struct_in_all_blocks {
+  struct wire_SharedStructInAllBlocks *ptr;
+  int32_t len;
+} wire_list_shared_struct_in_all_blocks;
+
+typedef struct wire_list_shared_weekdays_enum_in_all_blocks {
+  int32_t *ptr;
+  int32_t len;
+} wire_list_shared_weekdays_enum_in_all_blocks;
+
 typedef struct DartCObject *WireSyncReturn;
 
 typedef struct wire_StructOnlyForBlock1 {
@@ -191,6 +211,8 @@ void wire_test_method__method__SharedStructInBlock2And3(int64_t port_,
 void wire_test_static_method__static_method__SharedStructInBlock2And3(int64_t port_,
                                                                       struct wire_uint_8_list *message);
 
+struct wire_StringList *new_StringList(int32_t len);
+
 struct wire_CrossSharedStructInBlock1And2 *new_box_autoadd_cross_shared_struct_in_block_1_and_2(void);
 
 struct wire_CrossSharedStructInBlock2And3 *new_box_autoadd_cross_shared_struct_in_block_2_and_3(void);
@@ -213,7 +235,13 @@ struct wire_SharedComplexEnumInAllBlocks *new_box_shared_complex_enum_in_all_blo
 
 struct wire_float_32_list *new_float_32_list(int32_t len);
 
+struct wire_int_32_list *new_int_32_list(int32_t len);
+
 struct wire_list_shared_complex_enum_in_all_blocks *new_list_shared_complex_enum_in_all_blocks(int32_t len);
+
+struct wire_list_shared_struct_in_all_blocks *new_list_shared_struct_in_all_blocks(int32_t len);
+
+struct wire_list_shared_weekdays_enum_in_all_blocks *new_list_shared_weekdays_enum_in_all_blocks(int32_t len);
 
 struct wire_uint_8_list *new_uint_8_list(int32_t len);
 
@@ -274,6 +302,7 @@ static int64_t dummy_method_to_enforce_bundling_BridgeGeneratedShares(void) {
     dummy_var ^= ((int64_t) (void*) wire_test_static_method__static_method__CrossSharedStructInBlock2And3);
     dummy_var ^= ((int64_t) (void*) wire_test_method__method__SharedStructInBlock2And3);
     dummy_var ^= ((int64_t) (void*) wire_test_static_method__static_method__SharedStructInBlock2And3);
+    dummy_var ^= ((int64_t) (void*) new_StringList);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_cross_shared_struct_in_block_1_and_2);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_cross_shared_struct_in_block_2_and_3);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_f64);
@@ -285,7 +314,10 @@ static int64_t dummy_method_to_enforce_bundling_BridgeGeneratedShares(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_shared_struct_only_for_sync_test);
     dummy_var ^= ((int64_t) (void*) new_box_shared_complex_enum_in_all_blocks);
     dummy_var ^= ((int64_t) (void*) new_float_32_list);
+    dummy_var ^= ((int64_t) (void*) new_int_32_list);
     dummy_var ^= ((int64_t) (void*) new_list_shared_complex_enum_in_all_blocks);
+    dummy_var ^= ((int64_t) (void*) new_list_shared_struct_in_all_blocks);
+    dummy_var ^= ((int64_t) (void*) new_list_shared_weekdays_enum_in_all_blocks);
     dummy_var ^= ((int64_t) (void*) new_uint_8_list);
     dummy_var ^= ((int64_t) (void*) inflate_SharedComplexEnumInAllBlocks_Primitives);
     dummy_var ^= ((int64_t) (void*) inflate_SharedComplexEnumInAllBlocks_Nested);

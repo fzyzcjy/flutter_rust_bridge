@@ -22,8 +22,6 @@ use std::sync::Arc;
 use crate::block_specific_module::for_api_block_1::StructOnlyForBlock1;
 use crate::bridge_generated_shares;
 use crate::bridge_generated_shares::*;
-use crate::shared_type_module::all_blocks_shared::SharedStructInAllBlocks;
-use crate::shared_type_module::all_blocks_shared::SharedWeekdaysEnumInAllBlocks;
 
 // Section: wire functions
 
@@ -246,10 +244,10 @@ fn wire_test_enum_defined_in_block_1_impl(
 }
 fn wire_test_list_in_block_1_impl(
     port_: MessagePort,
-    shared_structs: impl Wire2Api<Vec<SharedStructInAllBlocks>> + UnwindSafe,
-    strings: impl Wire2Api<Vec<String>> + UnwindSafe,
-    nums: impl Wire2Api<Vec<i32>> + UnwindSafe,
-    weekdays: impl Wire2Api<Vec<SharedWeekdaysEnumInAllBlocks>> + UnwindSafe,
+    shared_structs: impl bridge_generated_shares::Wire2Api<Vec<SharedStructInAllBlocks>> + UnwindSafe,
+    strings: impl bridge_generated_shares::Wire2Api<Vec<String>> + UnwindSafe,
+    nums: impl bridge_generated_shares::Wire2Api<Vec<i32>> + UnwindSafe,
+    weekdays: impl bridge_generated_shares::Wire2Api<Vec<SharedWeekdaysEnumInAllBlocks>> + UnwindSafe,
     struct_list: impl Wire2Api<Vec<StructDefinedInBlock1>> + UnwindSafe,
     enum_list: impl Wire2Api<Vec<EnumDefinedInBlock1>> + UnwindSafe,
 ) {

@@ -48,6 +48,25 @@ class ApiBlock3ClassPlatform extends FlutterRustBridgeBase<ApiBlock3ClassWire> {
   }
 
   @protected
+  ffi.Pointer<wire_list_enum_defined_in_block_3> api2wire_list_enum_defined_in_block_3(List<EnumDefinedInBlock3> raw) {
+    final ans = inner.new_list_enum_defined_in_block_3(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      _api_fill_to_wire_enum_defined_in_block_3(raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_list_struct_defined_in_block_3> api2wire_list_struct_defined_in_block_3(
+      List<StructDefinedInBlock3> raw) {
+    final ans = inner.new_list_struct_defined_in_block_3(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      _api_fill_to_wire_struct_defined_in_block_3(raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
+  @protected
   ffi.Pointer<wire_SharedStructInAllBlocks> api2wire_opt_box_autoadd_shared_struct_in_all_blocks(
       SharedStructInAllBlocks? raw) {
     return raw == null ? ffi.nullptr : _sharedPlatform.api2wire_box_autoadd_shared_struct_in_all_blocks(raw);
@@ -144,6 +163,18 @@ class ApiBlock3ClassWire implements FlutterRustBridgeWireBase {
   ApiBlock3ClassWire.fromLookup(ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName) lookup)
       : _lookup = lookup;
 
+  ffi.Pointer<wire_StringList> new_StringList(
+    int len,
+  ) {
+    return _new_StringList(
+      len,
+    );
+  }
+
+  late final _new_StringListPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_StringList> Function(ffi.Int32)>>('new_StringList');
+  late final _new_StringList = _new_StringListPtr.asFunction<ffi.Pointer<wire_StringList> Function(int)>();
+
   ffi.Pointer<ffi.Int32> new_box_autoadd_i32(
     int value,
   ) {
@@ -218,6 +249,18 @@ class ApiBlock3ClassWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_float_32_list> Function(ffi.Int32)>>('new_float_32_list');
   late final _new_float_32_list = _new_float_32_listPtr.asFunction<ffi.Pointer<wire_float_32_list> Function(int)>();
 
+  ffi.Pointer<wire_int_32_list> new_int_32_list(
+    int len,
+  ) {
+    return _new_int_32_list(
+      len,
+    );
+  }
+
+  late final _new_int_32_listPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_int_32_list> Function(ffi.Int32)>>('new_int_32_list');
+  late final _new_int_32_list = _new_int_32_listPtr.asFunction<ffi.Pointer<wire_int_32_list> Function(int)>();
+
   ffi.Pointer<wire_list_shared_complex_enum_in_all_blocks> new_list_shared_complex_enum_in_all_blocks(
     int len,
   ) {
@@ -231,6 +274,34 @@ class ApiBlock3ClassWire implements FlutterRustBridgeWireBase {
           'new_list_shared_complex_enum_in_all_blocks');
   late final _new_list_shared_complex_enum_in_all_blocks = _new_list_shared_complex_enum_in_all_blocksPtr
       .asFunction<ffi.Pointer<wire_list_shared_complex_enum_in_all_blocks> Function(int)>();
+
+  ffi.Pointer<wire_list_shared_struct_in_all_blocks> new_list_shared_struct_in_all_blocks(
+    int len,
+  ) {
+    return _new_list_shared_struct_in_all_blocks(
+      len,
+    );
+  }
+
+  late final _new_list_shared_struct_in_all_blocksPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_shared_struct_in_all_blocks> Function(ffi.Int32)>>(
+          'new_list_shared_struct_in_all_blocks');
+  late final _new_list_shared_struct_in_all_blocks = _new_list_shared_struct_in_all_blocksPtr
+      .asFunction<ffi.Pointer<wire_list_shared_struct_in_all_blocks> Function(int)>();
+
+  ffi.Pointer<wire_list_shared_weekdays_enum_in_all_blocks> new_list_shared_weekdays_enum_in_all_blocks(
+    int len,
+  ) {
+    return _new_list_shared_weekdays_enum_in_all_blocks(
+      len,
+    );
+  }
+
+  late final _new_list_shared_weekdays_enum_in_all_blocksPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_shared_weekdays_enum_in_all_blocks> Function(ffi.Int32)>>(
+          'new_list_shared_weekdays_enum_in_all_blocks');
+  late final _new_list_shared_weekdays_enum_in_all_blocks = _new_list_shared_weekdays_enum_in_all_blocksPtr
+      .asFunction<ffi.Pointer<wire_list_shared_weekdays_enum_in_all_blocks> Function(int)>();
 
   ffi.Pointer<wire_uint_8_list> new_uint_8_list(
     int len,
@@ -650,6 +721,46 @@ class ApiBlock3ClassWire implements FlutterRustBridgeWireBase {
   late final _wire_test_enum_defined_in_block_3 =
       _wire_test_enum_defined_in_block_3Ptr.asFunction<void Function(int, ffi.Pointer<wire_EnumDefinedInBlock3>)>();
 
+  void wire_test_list_in_block_3(
+    int port_,
+    ffi.Pointer<wire_list_shared_struct_in_all_blocks> shared_structs,
+    ffi.Pointer<wire_StringList> strings,
+    ffi.Pointer<wire_int_32_list> nums,
+    ffi.Pointer<wire_list_shared_weekdays_enum_in_all_blocks> weekdays,
+    ffi.Pointer<wire_list_struct_defined_in_block_3> struct_list,
+    ffi.Pointer<wire_list_enum_defined_in_block_3> enum_list,
+  ) {
+    return _wire_test_list_in_block_3(
+      port_,
+      shared_structs,
+      strings,
+      nums,
+      weekdays,
+      struct_list,
+      enum_list,
+    );
+  }
+
+  late final _wire_test_list_in_block_3Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Int64,
+              ffi.Pointer<wire_list_shared_struct_in_all_blocks>,
+              ffi.Pointer<wire_StringList>,
+              ffi.Pointer<wire_int_32_list>,
+              ffi.Pointer<wire_list_shared_weekdays_enum_in_all_blocks>,
+              ffi.Pointer<wire_list_struct_defined_in_block_3>,
+              ffi.Pointer<wire_list_enum_defined_in_block_3>)>>('wire_test_list_in_block_3');
+  late final _wire_test_list_in_block_3 = _wire_test_list_in_block_3Ptr.asFunction<
+      void Function(
+          int,
+          ffi.Pointer<wire_list_shared_struct_in_all_blocks>,
+          ffi.Pointer<wire_StringList>,
+          ffi.Pointer<wire_int_32_list>,
+          ffi.Pointer<wire_list_shared_weekdays_enum_in_all_blocks>,
+          ffi.Pointer<wire_list_struct_defined_in_block_3>,
+          ffi.Pointer<wire_list_enum_defined_in_block_3>)>();
+
   void wire_test_method__method__EnumDefinedInBlock3(
     int port_,
     ffi.Pointer<wire_EnumDefinedInBlock3> that,
@@ -789,6 +900,34 @@ class ApiBlock3ClassWire implements FlutterRustBridgeWireBase {
           'new_box_autoadd_struct_only_for_block_3');
   late final _new_box_autoadd_struct_only_for_block_3 =
       _new_box_autoadd_struct_only_for_block_3Ptr.asFunction<ffi.Pointer<wire_StructOnlyForBlock3> Function()>();
+
+  ffi.Pointer<wire_list_enum_defined_in_block_3> new_list_enum_defined_in_block_3(
+    int len,
+  ) {
+    return _new_list_enum_defined_in_block_3(
+      len,
+    );
+  }
+
+  late final _new_list_enum_defined_in_block_3Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_enum_defined_in_block_3> Function(ffi.Int32)>>(
+          'new_list_enum_defined_in_block_3');
+  late final _new_list_enum_defined_in_block_3 =
+      _new_list_enum_defined_in_block_3Ptr.asFunction<ffi.Pointer<wire_list_enum_defined_in_block_3> Function(int)>();
+
+  ffi.Pointer<wire_list_struct_defined_in_block_3> new_list_struct_defined_in_block_3(
+    int len,
+  ) {
+    return _new_list_struct_defined_in_block_3(
+      len,
+    );
+  }
+
+  late final _new_list_struct_defined_in_block_3Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_struct_defined_in_block_3> Function(ffi.Int32)>>(
+          'new_list_struct_defined_in_block_3');
+  late final _new_list_struct_defined_in_block_3 = _new_list_struct_defined_in_block_3Ptr
+      .asFunction<ffi.Pointer<wire_list_struct_defined_in_block_3> Function(int)>();
 
   ffi.Pointer<EnumDefinedInBlock3Kind> inflate_EnumDefinedInBlock3_Move() {
     return _inflate_EnumDefinedInBlock3_Move();
@@ -955,6 +1094,20 @@ final class wire_EnumDefinedInBlock3 extends ffi.Struct {
   external int tag;
 
   external ffi.Pointer<EnumDefinedInBlock3Kind> kind;
+}
+
+final class wire_list_struct_defined_in_block_3 extends ffi.Struct {
+  external ffi.Pointer<wire_StructDefinedInBlock3> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_list_enum_defined_in_block_3 extends ffi.Struct {
+  external ffi.Pointer<wire_EnumDefinedInBlock3> ptr;
+
+  @ffi.Int32()
+  external int len;
 }
 
 typedef DartPostCObjectFnType
