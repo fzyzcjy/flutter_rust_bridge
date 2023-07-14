@@ -59,13 +59,6 @@ impl IrFile {
         let mut ans = Vec::new();
         self.visit_types(
             &mut |ty| {
-                // ignore mirror types that already come from generated code
-                // used e.g. in StreamSink<..>
-                if let IrType::StructRef(ty) = ty {
-                    if ty.name.starts_with("mirror_") {
-                        return false;
-                    }
-                }
                 let ident = ty.safe_ident();
                 let contains = seen_idents.contains(&ident);
                 if !contains {
@@ -80,7 +73,6 @@ impl IrFile {
 
         // make the output change less when input change
         ans.sort_by_key(|ty| ty.safe_ident());
-
         ans
     }
 

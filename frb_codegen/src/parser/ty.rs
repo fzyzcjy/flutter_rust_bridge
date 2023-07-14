@@ -305,8 +305,20 @@ impl<'a> TypeParser<'a> {
                         Ok(Primitive(IrTypePrimitive::try_from_rust_str(name).unwrap()))
                     }
 
-                    [(name, None)] if self.src_structs.contains_key(&name.to_string()) => {
-                        let ident_string = name.to_string();
+                    [(name, None)]
+                        if self.src_structs.contains_key(
+                            &name
+                                .strip_prefix("mirror_")
+                                .or(Some(name))
+                                .expect("can not be None")
+                                .to_string(),
+                        ) =>
+                    {
+                        let ident_string = name
+                            .strip_prefix("mirror_")
+                            .or(Some(name))
+                            .expect("can not be None")
+                            .to_string();
                         if !self.parsing_or_parsed_struct_names.contains(&ident_string) {
                             self.parsing_or_parsed_struct_names
                                 .insert(ident_string.to_owned());
