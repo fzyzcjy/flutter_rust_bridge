@@ -81,6 +81,8 @@ fn main() {
         ]);
     }
 
+    raw_opts.dart3 = true; // weird, without this, the generated dart code would be treated as non-dart3
+
     // get opts from raw opts
     let (all_configs, all_symbols) = config_parse(raw_opts).unwrap();
 
