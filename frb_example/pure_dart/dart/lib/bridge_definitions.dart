@@ -227,6 +227,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kAppSettingsStreamConstMeta;
 
+  Stream<List<ApplicationSettings>> appSettingsVecStream({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kAppSettingsVecStreamConstMeta;
+
   Future<ApplicationMessage> getMessage({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kGetMessageConstMeta;

@@ -696,6 +696,18 @@ pub fn app_settings_stream(sink: StreamSink<mirror_ApplicationSettings>) {
     sink.add(app_settings.into());
 }
 
+// use a stream of a vec of mirrored type
+pub fn app_settings_vec_stream(sink: StreamSink<Vec<mirror_ApplicationSettings>>) {
+    let app_settings = vec![external_lib::get_app_settings()];
+    sink.add(
+        app_settings
+            .iter()
+            .map(|e| e.to_owned().into())
+            .collect::<Vec<_>>()
+            .into(),
+    );
+}
+
 #[frb(mirror(ApplicationMessage))]
 pub enum _ApplicationMessage {
     DisplayMessage(String),

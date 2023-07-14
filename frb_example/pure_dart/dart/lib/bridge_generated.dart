@@ -826,6 +826,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Stream<List<ApplicationSettings>> appSettingsVecStream({dynamic hint}) {
+    return _platform.executeStream(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_app_settings_vec_stream(port_),
+      parseSuccessData: _wire2api_list_application_settings,
+      constMeta: kAppSettingsVecStreamConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kAppSettingsVecStreamConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "app_settings_vec_stream",
+        argNames: [],
+      );
+
   Future<ApplicationMessage> getMessage({dynamic hint}) {
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_get_message(port_),
@@ -3359,6 +3374,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   List<ApplicationEnvVar> _wire2api_list_application_env_var(dynamic raw) {
     return (raw as List<dynamic>).map(_wire2api_application_env_var).toList();
+  }
+
+  List<ApplicationSettings> _wire2api_list_application_settings(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_application_settings).toList();
   }
 
   List<Attribute> _wire2api_list_attribute(dynamic raw) {

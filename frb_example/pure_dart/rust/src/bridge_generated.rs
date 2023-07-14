@@ -778,6 +778,16 @@ fn wire_app_settings_stream_impl(port_: MessagePort) {
         move || move |task_callback| Ok(app_settings_stream(task_callback.stream_sink())),
     )
 }
+fn wire_app_settings_vec_stream_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "app_settings_vec_stream",
+            port: Some(port_),
+            mode: FfiCallMode::Stream,
+        },
+        move || move |task_callback| Ok(app_settings_vec_stream(task_callback.stream_sink())),
+    )
+}
 fn wire_get_message_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {

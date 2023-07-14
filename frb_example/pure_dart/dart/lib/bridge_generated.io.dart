@@ -2279,6 +2279,18 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_app_settings_stream');
   late final _wire_app_settings_stream = _wire_app_settings_streamPtr.asFunction<void Function(int)>();
 
+  void wire_app_settings_vec_stream(
+    int port_,
+  ) {
+    return _wire_app_settings_vec_stream(
+      port_,
+    );
+  }
+
+  late final _wire_app_settings_vec_streamPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_app_settings_vec_stream');
+  late final _wire_app_settings_vec_stream = _wire_app_settings_vec_streamPtr.asFunction<void Function(int)>();
+
   void wire_get_message(
     int port_,
   ) {

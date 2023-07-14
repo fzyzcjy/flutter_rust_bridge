@@ -284,6 +284,11 @@ pub extern "C" fn wire_app_settings_stream(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_app_settings_vec_stream(port_: i64) {
+    wire_app_settings_vec_stream_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_get_message(port_: i64) {
     wire_get_message_impl(port_)
 }
