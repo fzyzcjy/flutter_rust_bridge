@@ -502,7 +502,17 @@ impl<'a> Generator<'a> {
                                 fn from(inner: {i}) -> Self {{
                                     Self(inner)
                                 }}
-                            }} 
+                            }}
+                            impl From<&{i}> for {w} {{
+                                fn from(inner: &{i}) -> Self {{
+                                    Self(inner.clone())
+                                }}
+                            }}
+                            impl {w} {{
+                                pub fn from(inner: Vec<{i}>) -> Vec<Self> {{
+                                    inner.iter().map(|x| x.into()).collect()
+                                }}
+                            }}
                             "###,
                             w = wrapper,
                             i = ty.rust_api_type(),

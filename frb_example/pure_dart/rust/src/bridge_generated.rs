@@ -788,6 +788,16 @@ fn wire_app_settings_vec_stream_impl(port_: MessagePort) {
         move || move |task_callback| Ok(app_settings_vec_stream(task_callback.stream_sink())),
     )
 }
+fn wire_mirror_struct_stream_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "mirror_struct_stream",
+            port: Some(port_),
+            mode: FfiCallMode::Stream,
+        },
+        move || move |task_callback| Ok(mirror_struct_stream(task_callback.stream_sink())),
+    )
+}
 fn wire_get_message_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap(
         WrapInfo {
@@ -2447,12 +2457,32 @@ impl From<ApplicationEnv> for mirror_ApplicationEnv {
         Self(inner)
     }
 }
+impl From<&ApplicationEnv> for mirror_ApplicationEnv {
+    fn from(inner: &ApplicationEnv) -> Self {
+        Self(inner.clone())
+    }
+}
+impl mirror_ApplicationEnv {
+    pub fn from(inner: Vec<ApplicationEnv>) -> Vec<Self> {
+        inner.iter().map(|x| x.into()).collect()
+    }
+}
 
 #[derive(Clone)]
 pub struct mirror_ApplicationEnvVar(ApplicationEnvVar);
 impl From<ApplicationEnvVar> for mirror_ApplicationEnvVar {
     fn from(inner: ApplicationEnvVar) -> Self {
         Self(inner)
+    }
+}
+impl From<&ApplicationEnvVar> for mirror_ApplicationEnvVar {
+    fn from(inner: &ApplicationEnvVar) -> Self {
+        Self(inner.clone())
+    }
+}
+impl mirror_ApplicationEnvVar {
+    pub fn from(inner: Vec<ApplicationEnvVar>) -> Vec<Self> {
+        inner.iter().map(|x| x.into()).collect()
     }
 }
 
@@ -2463,12 +2493,32 @@ impl From<ApplicationMessage> for mirror_ApplicationMessage {
         Self(inner)
     }
 }
+impl From<&ApplicationMessage> for mirror_ApplicationMessage {
+    fn from(inner: &ApplicationMessage) -> Self {
+        Self(inner.clone())
+    }
+}
+impl mirror_ApplicationMessage {
+    pub fn from(inner: Vec<ApplicationMessage>) -> Vec<Self> {
+        inner.iter().map(|x| x.into()).collect()
+    }
+}
 
 #[derive(Clone)]
 pub struct mirror_ApplicationMode(ApplicationMode);
 impl From<ApplicationMode> for mirror_ApplicationMode {
     fn from(inner: ApplicationMode) -> Self {
         Self(inner)
+    }
+}
+impl From<&ApplicationMode> for mirror_ApplicationMode {
+    fn from(inner: &ApplicationMode) -> Self {
+        Self(inner.clone())
+    }
+}
+impl mirror_ApplicationMode {
+    pub fn from(inner: Vec<ApplicationMode>) -> Vec<Self> {
+        inner.iter().map(|x| x.into()).collect()
     }
 }
 
@@ -2479,12 +2529,32 @@ impl From<ApplicationSettings> for mirror_ApplicationSettings {
         Self(inner)
     }
 }
+impl From<&ApplicationSettings> for mirror_ApplicationSettings {
+    fn from(inner: &ApplicationSettings) -> Self {
+        Self(inner.clone())
+    }
+}
+impl mirror_ApplicationSettings {
+    pub fn from(inner: Vec<ApplicationSettings>) -> Vec<Self> {
+        inner.iter().map(|x| x.into()).collect()
+    }
+}
 
 #[derive(Clone)]
 pub struct mirror_ListOfNestedRawStringMirrored(ListOfNestedRawStringMirrored);
 impl From<ListOfNestedRawStringMirrored> for mirror_ListOfNestedRawStringMirrored {
     fn from(inner: ListOfNestedRawStringMirrored) -> Self {
         Self(inner)
+    }
+}
+impl From<&ListOfNestedRawStringMirrored> for mirror_ListOfNestedRawStringMirrored {
+    fn from(inner: &ListOfNestedRawStringMirrored) -> Self {
+        Self(inner.clone())
+    }
+}
+impl mirror_ListOfNestedRawStringMirrored {
+    pub fn from(inner: Vec<ListOfNestedRawStringMirrored>) -> Vec<Self> {
+        inner.iter().map(|x| x.into()).collect()
     }
 }
 
@@ -2495,12 +2565,32 @@ impl From<NestedRawStringMirrored> for mirror_NestedRawStringMirrored {
         Self(inner)
     }
 }
+impl From<&NestedRawStringMirrored> for mirror_NestedRawStringMirrored {
+    fn from(inner: &NestedRawStringMirrored) -> Self {
+        Self(inner.clone())
+    }
+}
+impl mirror_NestedRawStringMirrored {
+    pub fn from(inner: Vec<NestedRawStringMirrored>) -> Vec<Self> {
+        inner.iter().map(|x| x.into()).collect()
+    }
+}
 
 #[derive(Clone)]
 pub struct mirror_Numbers(Numbers);
 impl From<Numbers> for mirror_Numbers {
     fn from(inner: Numbers) -> Self {
         Self(inner)
+    }
+}
+impl From<&Numbers> for mirror_Numbers {
+    fn from(inner: &Numbers) -> Self {
+        Self(inner.clone())
+    }
+}
+impl mirror_Numbers {
+    pub fn from(inner: Vec<Numbers>) -> Vec<Self> {
+        inner.iter().map(|x| x.into()).collect()
     }
 }
 
@@ -2511,6 +2601,16 @@ impl From<RawStringEnumMirrored> for mirror_RawStringEnumMirrored {
         Self(inner)
     }
 }
+impl From<&RawStringEnumMirrored> for mirror_RawStringEnumMirrored {
+    fn from(inner: &RawStringEnumMirrored) -> Self {
+        Self(inner.clone())
+    }
+}
+impl mirror_RawStringEnumMirrored {
+    pub fn from(inner: Vec<RawStringEnumMirrored>) -> Vec<Self> {
+        inner.iter().map(|x| x.into()).collect()
+    }
+}
 
 #[derive(Clone)]
 pub struct mirror_RawStringMirrored(RawStringMirrored);
@@ -2519,12 +2619,32 @@ impl From<RawStringMirrored> for mirror_RawStringMirrored {
         Self(inner)
     }
 }
+impl From<&RawStringMirrored> for mirror_RawStringMirrored {
+    fn from(inner: &RawStringMirrored) -> Self {
+        Self(inner.clone())
+    }
+}
+impl mirror_RawStringMirrored {
+    pub fn from(inner: Vec<RawStringMirrored>) -> Vec<Self> {
+        inner.iter().map(|x| x.into()).collect()
+    }
+}
 
 #[derive(Clone)]
 pub struct mirror_Sequences(Sequences);
 impl From<Sequences> for mirror_Sequences {
     fn from(inner: Sequences) -> Self {
         Self(inner)
+    }
+}
+impl From<&Sequences> for mirror_Sequences {
+    fn from(inner: &Sequences) -> Self {
+        Self(inner.clone())
+    }
+}
+impl mirror_Sequences {
+    pub fn from(inner: Vec<Sequences>) -> Vec<Self> {
+        inner.iter().map(|x| x.into()).collect()
     }
 }
 
@@ -3041,6 +3161,19 @@ impl support::IntoDart for MessageId {
     }
 }
 impl support::IntoDartExceptPrimitive for MessageId {}
+
+impl support::IntoDart for MirrorStruct {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.a.into_dart(),
+            self.b.into_dart(),
+            self.c.into_dart(),
+            self.d.into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for MirrorStruct {}
 
 impl support::IntoDart for MoreThanJustOneRawStringStruct {
     fn into_dart(self) -> support::DartAbi {

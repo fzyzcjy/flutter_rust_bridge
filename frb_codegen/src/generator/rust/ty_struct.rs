@@ -104,6 +104,9 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
     }
 
     fn wrapper_struct(&self) -> Option<String> {
+        if self.ir.mirror {
+            return None;
+        }
         let src = self.ir.get(self.context.ir_file);
         src.wrapper_name.as_ref().cloned()
     }

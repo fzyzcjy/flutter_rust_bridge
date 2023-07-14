@@ -1,6 +1,8 @@
 #![allow(dead_code)]
 
 use std::rc::Rc;
+
+#[derive(Default)]
 pub struct MyStruct {
     pub content: bool,
 }

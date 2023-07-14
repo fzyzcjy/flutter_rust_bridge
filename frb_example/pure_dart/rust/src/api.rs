@@ -699,14 +699,18 @@ pub fn app_settings_stream(sink: StreamSink<mirror_ApplicationSettings>) {
 // use a stream of a vec of mirrored type
 pub fn app_settings_vec_stream(sink: StreamSink<Vec<mirror_ApplicationSettings>>) {
     let app_settings = vec![external_lib::get_app_settings()];
-    sink.add(
-        app_settings
-            .iter()
-            .map(|e| e.to_owned().into())
-            .collect::<Vec<_>>()
-            .into(),
-    );
+    sink.add(mirror_ApplicationSettings::from(app_settings));
 }
+
+pub struct MirrorStruct {
+    pub a: mirror_ApplicationSettings,
+    pub b: MyStruct,
+    pub c: Vec<MyEnum>,
+    pub d: Vec<mirror_ApplicationSettings>,
+}
+
+// use a Struct consisting of mirror types as argument to a Stream
+pub fn mirror_struct_stream(sink: StreamSink<MirrorStruct>) {}
 
 #[frb(mirror(ApplicationMessage))]
 pub enum _ApplicationMessage {

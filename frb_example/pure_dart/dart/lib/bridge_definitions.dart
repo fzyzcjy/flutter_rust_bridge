@@ -231,6 +231,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kAppSettingsVecStreamConstMeta;
 
+  Stream<MirrorStruct> mirrorStructStream({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kMirrorStructStreamConstMeta;
+
   Future<ApplicationMessage> getMessage({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kGetMessageConstMeta;
@@ -1355,6 +1359,20 @@ class MessageId {
 
   const MessageId({
     required this.field0,
+  });
+}
+
+class MirrorStruct {
+  final ApplicationSettings a;
+  final MyStruct b;
+  final List<MyEnum> c;
+  final List<ApplicationSettings> d;
+
+  const MirrorStruct({
+    required this.a,
+    required this.b,
+    required this.c,
+    required this.d,
   });
 }
 

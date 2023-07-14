@@ -343,6 +343,7 @@ impl<'a> TypeParser<'a> {
                                 .get(&ident_string)
                                 .map(IrStruct::is_empty)
                                 .unwrap_or(false),
+                            mirror: name.starts_with("mirror_"),
                         }))
                     }
 
@@ -537,6 +538,7 @@ impl<'a> TypeParser<'a> {
                 name: safe_ident,
                 freezed: false,
                 empty: false,
+                mirror: false,
             },
             values: values.into_boxed_slice(),
         })

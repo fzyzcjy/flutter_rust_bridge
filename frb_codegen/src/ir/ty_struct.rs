@@ -7,6 +7,7 @@ pub struct IrTypeStructRef {
     pub name: String,
     pub freezed: bool,
     pub empty: bool,
+    pub mirror: bool,
 }
 }
 impl IrTypeStructRef {
