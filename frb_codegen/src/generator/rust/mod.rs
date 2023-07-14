@@ -491,11 +491,15 @@ impl<'a> Generator<'a> {
             IrType::StructRef(_)
             | IrType::EnumRef(_)
             | IrType::Delegate(IrTypeDelegate::PrimitiveEnum { .. }) => {
-                TypeRustGenerator::new(ty.clone(), ir_file, self.config)
-                    .wrapper_struct()
-                    .map(|wrapper| {
-                        format!(
-                            r###"
+                let wrapper = match ty {
+                    IrType::StructRef(IrTypeStructRef { name, mirror, .. }) if *mirror => {
+                        Some(format!("mirror_{name}"))
+                    }
+                    _ => TypeRustGenerator::new(ty.clone(), ir_file, self.config).wrapper_struct(),
+                };
+                wrapper.map(|wrapper| {
+                    format!(
+                        r###"
                             #[derive(Clone)]
                             pub struct {w}({i});
                             impl From<{i}> for {w} {{
@@ -514,10 +518,10 @@ impl<'a> Generator<'a> {
                                 }}
                             }}
                             "###,
-                            w = wrapper,
-                            i = ty.rust_api_type(),
-                        )
-                    })
+                        w = wrapper,
+                        i = ty.rust_api_type(),
+                    )
+                })
             }
             _ => None,
         }
