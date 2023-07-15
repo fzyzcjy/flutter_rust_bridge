@@ -304,7 +304,13 @@ impl<'a> Generator<'a> {
         ]
         .concat();
         if let IrFuncMode::Stream { argument_index } = func.mode {
-            inner_func_params.insert(argument_index, "task_callback.stream_sink()".to_string());
+            inner_func_params.insert(
+                argument_index,
+                format!(
+                    "task_callback.stream_sink::<_,{}>()",
+                    func.output.into_dart_type(ir_file)
+                ),
+            );
         }
         let wrap_info_obj = format!(
             "WrapInfo{{ debug_name: \"{}\", port: {}, mode: FfiCallMode::{} }}",
@@ -335,7 +341,11 @@ impl<'a> Generator<'a> {
             } else {
                 panic!("{} is not a method, nor a static method.", func.name)
             };
-            TypeRustGenerator::new(func.output.clone(), ir_file, self.config).wrap_obj(
+            let ret_type = match func.mode {
+                IrFuncMode::Stream { .. } => IrType::Primitive(IrTypePrimitive::Unit),
+                _ => func.output.clone(),
+            };
+            TypeRustGenerator::new(ret_type, ir_file, self.config).wrap_obj(
                 format!(
                     r"{}::{}({})",
                     struct_name.unwrap(),
@@ -345,7 +355,11 @@ impl<'a> Generator<'a> {
                 func.fallible,
             )
         } else {
-            TypeRustGenerator::new(func.output.clone(), ir_file, self.config).wrap_obj(
+            let ret_type = match func.mode {
+                IrFuncMode::Stream { .. } => IrType::Primitive(IrTypePrimitive::Unit),
+                _ => func.output.clone(),
+            };
+            TypeRustGenerator::new(ret_type, ir_file, self.config).wrap_obj(
                 format!("{}({})", func.name, inner_func_params.join(", ")),
                 func.fallible,
             )
@@ -358,15 +372,20 @@ impl<'a> Generator<'a> {
 
         let (handler_func_name, return_type, code_closure) = match func.mode {
             IrFuncMode::Sync => (
-                "wrap_sync",
+                String::from("wrap_sync"),
                 Some("support::WireSyncReturn"),
                 format!(
                     "{code_wire2api}
                     {code_call_inner_func_result}"
                 ),
             ),
-            IrFuncMode::Normal | IrFuncMode::Stream { .. } => (
-                "wrap",
+            IrFuncMode::Normal => (
+                format!("wrap::<_,_,_,{}>", func.output.into_dart_type(ir_file)),
+                None,
+                format!("{code_wire2api} move |task_callback| {code_call_inner_func_result}"),
+            ),
+            IrFuncMode::Stream { .. } => (
+                String::from("wrap::<_,_,_,()>"),
                 None,
                 format!("{code_wire2api} move |task_callback| {code_call_inner_func_result}"),
             ),

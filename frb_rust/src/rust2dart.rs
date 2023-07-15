@@ -150,9 +150,9 @@ pub trait IntoIntoDart<D> {
 
 impl<T, D> IntoIntoDart<Vec<D>> for Vec<T>
 where
-    T: Clone + IntoIntoDart<D>,
+    T: IntoIntoDart<D>,
 {
-    fn into(self) -> Vec<D> {
-        self.iter().map(|e| e.clone().into()).collect()
+    fn into(mut self) -> Vec<D> {
+        self.drain(0..).map(|e| e.into()).collect()
     }
 }
