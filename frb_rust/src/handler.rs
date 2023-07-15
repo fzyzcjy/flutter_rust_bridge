@@ -7,7 +7,7 @@ use std::panic::{RefUnwindSafe, UnwindSafe};
 use crate::ffi::{IntoDart, MessagePort};
 use anyhow::Result;
 
-use crate::rust2dart::{Rust2Dart, TaskCallback};
+use crate::rust2dart::{IntoIntoDart, Rust2Dart, TaskCallback};
 use crate::support::WireSyncReturn;
 use crate::{spawn, SyncReturn};
 
@@ -48,7 +48,7 @@ pub trait Handler {
     where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
-        TaskRet: Into<D>,
+        TaskRet: IntoIntoDart<D>,
         D: IntoDart;
 
     /// Same as [`wrap`][Handler::wrap], but the Rust function must return a [SyncReturn] and
@@ -97,7 +97,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
     where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
-        TaskRet: Into<D>,
+        TaskRet: IntoIntoDart<D>,
         D: IntoDart,
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
@@ -157,7 +157,7 @@ pub trait Executor: RefUnwindSafe {
     fn execute<TaskFn, TaskRet, D>(&self, wrap_info: WrapInfo, task: TaskFn)
     where
         TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
-        TaskRet: Into<D>,
+        TaskRet: IntoIntoDart<D>,
         D: IntoDart;
 
     /// Executes a Rust function that returns a [SyncReturn].
@@ -189,7 +189,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
     fn execute<TaskFn, TaskRet, D>(&self, wrap_info: WrapInfo, task: TaskFn)
     where
         TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
-        TaskRet: Into<D>,
+        TaskRet: IntoIntoDart<D>,
         D: IntoDart,
     {
         let eh = self.error_handler;

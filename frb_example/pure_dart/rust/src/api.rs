@@ -13,6 +13,7 @@ use anyhow::{anyhow, Result};
 use flutter_rust_bridge::*;
 use lazy_static::lazy_static;
 
+use crate::bridge_generated::{ApplicationSettingsStreamSink, VecApplicationSettingsStreamSink};
 use crate::data::{EnumAlias, Id, MyEnum, MyStruct, StructAlias, UserIdAlias};
 pub use crate::data::{
     FrbOpaqueReturn, FrbOpaqueSyncReturn, HideData, NonCloneData, NonSendHideData,
@@ -692,20 +693,20 @@ pub fn is_app_embedded(app_settings: ApplicationSettings) -> bool {
 // use a stream of a mirrored type
 pub fn app_settings_stream(sink: StreamSink<ApplicationSettings>) {
     let app_settings = external_lib::get_app_settings();
-    sink.add(app_settings.into());
+    sink.add(app_settings);
 }
 
 // use a stream of a vec of mirrored type
 pub fn app_settings_vec_stream(sink: StreamSink<Vec<ApplicationSettings>>) {
     let app_settings = vec![external_lib::get_app_settings()];
-    sink.add(mirror_ApplicationSettings::from(app_settings));
+    sink.add(app_settings);
 }
 
 pub struct MirrorStruct {
-    pub a: mirror_ApplicationSettings,
+    pub a: ApplicationSettings,
     pub b: MyStruct,
     pub c: Vec<MyEnum>,
-    pub d: Vec<mirror_ApplicationSettings>,
+    pub d: Vec<ApplicationSettings>,
 }
 
 // use a Struct consisting of mirror types as argument to a Stream

@@ -1,3 +1,5 @@
+use crate::generator::rust::get_into_into_dart;
+use crate::generator::rust::get_stream_sink_traits;
 use crate::generator::rust::ty::*;
 use crate::generator::rust::ExternFuncCollector;
 use crate::ir::*;
@@ -169,31 +171,8 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
             )
         };
 
-        let into_into_dart = match &src.wrapper_name {
-            None => {
-                // case for types without mirror_ wrapper
-                format!(
-                    "impl rust2dart::IntoIntoDart<{name}> for {name} {{
-                    fn into(self) -> Self {{
-                        self
-                    }}
-                }}"
-                )
-            }
-            Some(wrapper) => {
-                // case for type with mirror_ wrapper
-                let name = &src.name;
-                format!(
-                    "impl rust2dart::IntoIntoDart<{wrapper}> for {name} {{
-                    fn into(self) -> {wrapper} {{
-                        {wrapper}(self)
-                    }}
-                }}"
-                )
-            }
-        };
-
-        let orig_name = &src.name;
+        let into_into_dart = get_into_into_dart(&src.name, src.wrapper_name.as_ref());
+        let stream_sink_traits = get_stream_sink_traits(&src.name, src.wrapper_name.as_ref());
         format!(
             "impl support::IntoDart for {name} {{
                 fn into_dart(self) -> support::DartAbi {{
@@ -202,22 +181,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
             }}
             impl support::IntoDartExceptPrimitive for {name} {{}}
             {into_into_dart}
-            pub trait {orig_name}StreamSink {{
-                fn add(&self,val: {orig_name}) -> bool;
-            }}
-            impl {orig_name}StreamSink for StreamSink<{orig_name}> {{
-                fn add(&self,val: {orig_name}) -> bool {{
-                    self.add_inner::<_,{name}>(val)
-                }}
-            }}
-            pub trait Vec{orig_name}StreamSink {{
-                fn add(&self,val: Vec<{orig_name}>) -> bool;
-            }}
-            impl Vec{orig_name}StreamSink for StreamSink<Vec<{orig_name}>> {{
-                fn add(&self,val: Vec<{orig_name}>) -> bool {{
-                    self.add_inner::<_,Vec<{name}>>(val)
-                }}
-            }}
+            {stream_sink_traits}
             "
         )
     }

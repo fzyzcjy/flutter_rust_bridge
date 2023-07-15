@@ -666,3 +666,52 @@ impl ExternFuncCollector {
         )
     }
 }
+
+pub fn get_into_into_dart(name: impl Display, wrapper_name: Option<impl Display>) -> String {
+    match wrapper_name {
+        None => {
+            // case for types without mirror_ wrapper
+            format!(
+                "impl rust2dart::IntoIntoDart<{name}> for {name} {{
+                fn into(self) -> Self {{
+                    self
+                }}
+            }}"
+            )
+        }
+        Some(wrapper) => {
+            // case for type with mirror_ wrapper
+            format!(
+                "impl rust2dart::IntoIntoDart<{wrapper}> for {name} {{
+                fn into(self) -> {wrapper} {{
+                    {wrapper}(self)
+                }}
+            }}"
+            )
+        }
+    }
+}
+
+pub fn get_stream_sink_traits(name: impl Display, wrapper_name: Option<impl Display>) -> String {
+    match wrapper_name {
+        Some(wrapper) => format!(
+            "pub trait {name}StreamSink {{
+            fn add(&self,val: {name}) -> bool;
+        }}
+        impl {name}StreamSink for StreamSink<{name}> {{
+        fn add(&self,val: {name}) -> bool {{
+            self.add_inner::<_,{wrapper}>(val)
+        }}
+        }}
+        pub trait Vec{name}StreamSink {{
+            fn add(&self,val: Vec<{name}>) -> bool;
+        }}
+        impl Vec{name}StreamSink for StreamSink<Vec<{name}>> {{
+            fn add(&self,val: Vec<{name}>) -> bool {{
+                self.add_inner::<_,Vec<{wrapper}>>(val)
+            }}
+        }}"
+        ),
+        None => String::from(""),
+    }
+}

@@ -1,5 +1,6 @@
 use itertools::Itertools;
 
+use crate::generator::rust::get_into_into_dart;
 use crate::generator::rust::ty::*;
 use crate::generator::rust::ExternFuncCollector;
 use crate::generator::rust::NO_PARAMS;
@@ -257,6 +258,8 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                 }
             })
             .collect::<Vec<_>>();
+
+        let into_into_dart = get_into_into_dart(&src.name, src.wrapper_name.as_ref());
         format!(
             "impl support::IntoDart for {} {{
                 fn into_dart(self) -> support::DartAbi {{
@@ -265,7 +268,9 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                     }}.into_dart()
                 }}
             }}
-            impl support::IntoDartExceptPrimitive for {0} {{}}",
+            impl support::IntoDartExceptPrimitive for {0} {{}}
+            {into_into_dart}
+            ",
             name,
             self_ref,
             variants.join("\n")

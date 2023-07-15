@@ -144,6 +144,22 @@ impl<T> StreamSink<T> {
     }
 }
 
+pub trait StreamSinkTrait<T> {
+    fn add(&self, value: T) -> bool;
+}
+
+// all the simple types without additional Conversions
+impl<T> StreamSinkTrait<T> for StreamSink<T>
+where
+    T: IntoIntoDart<T> + IntoDart,
+{
+    fn add(&self, value: T) -> bool {
+        self.add_inner(value)
+    }
+}
+
+/// Basically the Into trait.
+/// We need this separate trait because we need to implement int for Vec<T> etc.
 pub trait IntoIntoDart<D> {
     fn into(self) -> D;
 }
@@ -156,3 +172,45 @@ where
         self.drain(0..).map(|e| e.into()).collect()
     }
 }
+
+// more generic impls do not work because they crate possibly conflicting trait impls
+// this is why here are some more specific impls
+
+// impl for tuples
+
+impl<A, AD, B, BD> IntoIntoDart<(AD, BD)> for (A, B)
+where
+    A: IntoIntoDart<AD>,
+    B: IntoIntoDart<BD>,
+{
+    fn into(self) -> (AD, BD) {
+        (self.0.into(), self.1.into())
+    }
+}
+
+// Implementations for simple types
+macro_rules! impl_into_into_dart {
+    ($t:ty) => {
+        impl IntoIntoDart<$t> for $t {
+            fn into(self) -> $t {
+                self
+            }
+        }
+    };
+}
+
+impl_into_into_dart!(u8);
+impl_into_into_dart!(i8);
+impl_into_into_dart!(u16);
+impl_into_into_dart!(i16);
+impl_into_into_dart!(u32);
+impl_into_into_dart!(i32);
+impl_into_into_dart!(u64);
+impl_into_into_dart!(i64);
+impl_into_into_dart!(f32);
+impl_into_into_dart!(f64);
+impl_into_into_dart!(bool);
+impl_into_into_dart!(());
+impl_into_into_dart!(usize);
+impl_into_into_dart!(isize);
+impl_into_into_dart!(String);
