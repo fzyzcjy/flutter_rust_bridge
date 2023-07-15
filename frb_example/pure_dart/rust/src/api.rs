@@ -689,6 +689,28 @@ pub fn is_app_embedded(app_settings: ApplicationSettings) -> bool {
     matches!(app_settings.mode, ApplicationMode::Embedded)
 }
 
+// use a stream of a mirrored type
+pub fn app_settings_stream(sink: StreamSink<ApplicationSettings>) {
+    let app_settings = external_lib::get_app_settings();
+    sink.add(app_settings.into());
+}
+
+// use a stream of a vec of mirrored type
+pub fn app_settings_vec_stream(sink: StreamSink<Vec<ApplicationSettings>>) {
+    let app_settings = vec![external_lib::get_app_settings()];
+    sink.add(mirror_ApplicationSettings::from(app_settings));
+}
+
+pub struct MirrorStruct {
+    pub a: mirror_ApplicationSettings,
+    pub b: MyStruct,
+    pub c: Vec<MyEnum>,
+    pub d: Vec<mirror_ApplicationSettings>,
+}
+
+// use a Struct consisting of mirror types as argument to a Stream
+pub fn mirror_struct_stream(sink: StreamSink<MirrorStruct>) {}
+
 #[frb(mirror(ApplicationMessage))]
 pub enum _ApplicationMessage {
     DisplayMessage(String),

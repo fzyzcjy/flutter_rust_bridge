@@ -44,11 +44,12 @@ pub trait Handler {
     ///
     /// If a Rust function returns [`SyncReturn`], it must be called with
     /// [`wrap_sync`](Handler::wrap_sync) instead.
-    fn wrap<PrepareFn, TaskFn, TaskRet>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
+    fn wrap<PrepareFn, TaskFn, TaskRet, D>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
     where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
-        TaskRet: IntoDart;
+        TaskRet: Into<D>,
+        D: IntoDart;
 
     /// Same as [`wrap`][Handler::wrap], but the Rust function must return a [SyncReturn] and
     /// need not implement [Send].
@@ -92,11 +93,12 @@ impl Default for DefaultHandler {
 }
 
 impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
-    fn wrap<PrepareFn, TaskFn, TaskRet>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
+    fn wrap<PrepareFn, TaskFn, TaskRet, D>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
     where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
         TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
-        TaskRet: IntoDart,
+        TaskRet: Into<D>,
+        D: IntoDart,
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
         // Why do this: As nomicon says, unwind across languages is undefined behavior (UB).
@@ -152,10 +154,11 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
 pub trait Executor: RefUnwindSafe {
     /// Executes a Rust function and transforms its return value into a Dart-compatible
     /// value, i.e. types that implement [`IntoDart`].
-    fn execute<TaskFn, TaskRet>(&self, wrap_info: WrapInfo, task: TaskFn)
+    fn execute<TaskFn, TaskRet, D>(&self, wrap_info: WrapInfo, task: TaskFn)
     where
         TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
-        TaskRet: IntoDart;
+        TaskRet: Into<D>,
+        D: IntoDart;
 
     /// Executes a Rust function that returns a [SyncReturn].
     fn execute_sync<SyncTaskFn, TaskRet>(
@@ -183,10 +186,11 @@ impl<EH: ErrorHandler> ThreadPoolExecutor<EH> {
 }
 
 impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
-    fn execute<TaskFn, TaskRet>(&self, wrap_info: WrapInfo, task: TaskFn)
+    fn execute<TaskFn, TaskRet, D>(&self, wrap_info: WrapInfo, task: TaskFn)
     where
         TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
-        TaskRet: IntoDart,
+        TaskRet: Into<D>,
+        D: IntoDart,
     {
         let eh = self.error_handler;
         let eh2 = self.error_handler;
@@ -200,7 +204,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
                 #[allow(clippy::clone_on_copy)]
                 let rust2dart = Rust2Dart::new(port2.clone());
 
-                let ret = task(TaskCallback::new(rust2dart.clone())).map(IntoDart::into_dart);
+                let ret = task(TaskCallback::new(rust2dart.clone())).map(|e| e.into().into_dart());
 
                 match ret {
                     Ok(result) => {
