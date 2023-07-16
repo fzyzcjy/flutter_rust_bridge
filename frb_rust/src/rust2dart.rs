@@ -258,8 +258,9 @@ impl_into_into_dart!(());
 impl_into_into_dart!(usize);
 impl_into_into_dart!(isize);
 impl_into_into_dart!(String);
-impl_into_into_dart!(allo_isolate::ffi::DartCObject);
 impl_into_into_dart!(DartOpaque);
+#[cfg(not(target_family = "wasm"))]
+impl_into_into_dart!(allo_isolate::ffi::DartCObject);
 
 #[cfg(feature = "uuid")]
 impl_into_into_dart!(uuid::Uuid);

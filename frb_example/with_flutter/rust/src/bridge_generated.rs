@@ -13,6 +13,7 @@
 
 use crate::api::*;
 use core::panic::UnwindSafe;
+use flutter_rust_bridge::rust2dart::IntoIntoDart;
 use flutter_rust_bridge::*;
 use std::ffi::c_void;
 use std::sync::Arc;
@@ -28,7 +29,7 @@ fn wire_draw_mandelbrot_impl(
     scale: impl Wire2Api<f64> + UnwindSafe,
     num_threads: impl Wire2Api<i32> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ZeroCopyBuffer<Vec<u8>>>(
         WrapInfo {
             debug_name: "draw_mandelbrot",
             port: Some(port_),
@@ -49,7 +50,7 @@ fn wire_passing_complex_structs_impl(
     port_: MessagePort,
     root: impl Wire2Api<TreeNode> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String>(
         WrapInfo {
             debug_name: "passing_complex_structs",
             port: Some(port_),
@@ -62,7 +63,7 @@ fn wire_passing_complex_structs_impl(
     )
 }
 fn wire_returning_structs_with_boxed_fields_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, BoxedPoint>(
         WrapInfo {
             debug_name: "returning_structs_with_boxed_fields",
             port: Some(port_),
@@ -75,7 +76,7 @@ fn wire_off_topic_memory_test_input_array_impl(
     port_: MessagePort,
     input: impl Wire2Api<Vec<u8>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32>(
         WrapInfo {
             debug_name: "off_topic_memory_test_input_array",
             port: Some(port_),
@@ -91,7 +92,7 @@ fn wire_off_topic_memory_test_output_zero_copy_buffer_impl(
     port_: MessagePort,
     len: impl Wire2Api<i32> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ZeroCopyBuffer<Vec<u8>>>(
         WrapInfo {
             debug_name: "off_topic_memory_test_output_zero_copy_buffer",
             port: Some(port_),
@@ -107,7 +108,7 @@ fn wire_off_topic_memory_test_output_vec_u8_impl(
     port_: MessagePort,
     len: impl Wire2Api<i32> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<u8>>(
         WrapInfo {
             debug_name: "off_topic_memory_test_output_vec_u8",
             port: Some(port_),
@@ -123,7 +124,7 @@ fn wire_off_topic_memory_test_input_vec_of_object_impl(
     port_: MessagePort,
     input: impl Wire2Api<Vec<Size>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32>(
         WrapInfo {
             debug_name: "off_topic_memory_test_input_vec_of_object",
             port: Some(port_),
@@ -139,7 +140,7 @@ fn wire_off_topic_memory_test_output_vec_of_object_impl(
     port_: MessagePort,
     len: impl Wire2Api<i32> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<Size>>(
         WrapInfo {
             debug_name: "off_topic_memory_test_output_vec_of_object",
             port: Some(port_),
@@ -155,7 +156,7 @@ fn wire_off_topic_memory_test_input_complex_struct_impl(
     port_: MessagePort,
     input: impl Wire2Api<TreeNode> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32>(
         WrapInfo {
             debug_name: "off_topic_memory_test_input_complex_struct",
             port: Some(port_),
@@ -171,7 +172,7 @@ fn wire_off_topic_memory_test_output_complex_struct_impl(
     port_: MessagePort,
     len: impl Wire2Api<i32> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, TreeNode>(
         WrapInfo {
             debug_name: "off_topic_memory_test_output_complex_struct",
             port: Some(port_),
@@ -184,7 +185,7 @@ fn wire_off_topic_memory_test_output_complex_struct_impl(
     )
 }
 fn wire_off_topic_deliberately_return_error_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32>(
         WrapInfo {
             debug_name: "off_topic_deliberately_return_error",
             port: Some(port_),
@@ -194,7 +195,7 @@ fn wire_off_topic_deliberately_return_error_impl(port_: MessagePort) {
     )
 }
 fn wire_off_topic_deliberately_panic_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32>(
         WrapInfo {
             debug_name: "off_topic_deliberately_panic",
             port: Some(port_),
@@ -204,7 +205,7 @@ fn wire_off_topic_deliberately_panic_impl(port_: MessagePort) {
     )
 }
 fn wire_next_user_id_impl(port_: MessagePort, user_id: impl Wire2Api<UserId> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, UserId>(
         WrapInfo {
             debug_name: "next_user_id",
             port: Some(port_),
@@ -220,7 +221,7 @@ fn wire_test_method__method__BoxedPoint_impl(
     port_: MessagePort,
     that: impl Wire2Api<BoxedPoint> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "test_method__method__BoxedPoint",
             port: Some(port_),
@@ -237,7 +238,7 @@ fn wire_sum__method__SumWith_impl(
     that: impl Wire2Api<SumWith> + UnwindSafe,
     y: impl Wire2Api<u32> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32>(
         WrapInfo {
             debug_name: "sum__method__SumWith",
             port: Some(port_),
@@ -255,7 +256,7 @@ fn wire_sum_static__static_method__SumWith_impl(
     x: impl Wire2Api<u32> + UnwindSafe,
     y: impl Wire2Api<u32> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32>(
         WrapInfo {
             debug_name: "sum_static__static_method__SumWith",
             port: Some(port_),
@@ -315,40 +316,104 @@ impl Wire2Api<u8> for u8 {
 
 // Section: impl IntoDart
 
+//Delegate(String)
+
+//Delegate(ZeroCopyBufferVecPrimitive(U8))
+
+//Boxed(IrTypeBoxed { exist_in_real_api: true, inner: StructRef(IrTypeStructRef { name: "Point", freezed: false, empty: false }) })
+
+//StructRef(IrTypeStructRef { name: "BoxedPoint", freezed: false, empty: false })
 impl support::IntoDart for BoxedPoint {
     fn into_dart(self) -> support::DartAbi {
-        vec![(*self.point).into_dart()].into_dart()
+        vec![self.point.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for BoxedPoint {}
+impl rust2dart::IntoIntoDart<BoxedPoint> for BoxedPoint {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//Primitive(F64)
+
+//Primitive(I32)
+
+//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "Size", freezed: false, empty: false }) })
+
+//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "TreeNode", freezed: false, empty: false }) })
+
+//StructRef(IrTypeStructRef { name: "Point", freezed: false, empty: false })
 impl support::IntoDart for Point {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.x.into_dart(), self.y.into_dart()].into_dart()
+        vec![
+            self.x.into_into_dart().into_dart(),
+            self.y.into_into_dart().into_dart(),
+        ]
+        .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for Point {}
+impl rust2dart::IntoIntoDart<Point> for Point {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "Size", freezed: false, empty: false })
 impl support::IntoDart for Size {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.width.into_dart(), self.height.into_dart()].into_dart()
+        vec![
+            self.width.into_into_dart().into_dart(),
+            self.height.into_into_dart().into_dart(),
+        ]
+        .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for Size {}
+impl rust2dart::IntoIntoDart<Size> for Size {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "TreeNode", freezed: false, empty: false })
 impl support::IntoDart for TreeNode {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.name.into_dart(), self.children.into_dart()].into_dart()
+        vec![
+            self.name.into_into_dart().into_dart(),
+            self.children.into_into_dart().into_dart(),
+        ]
+        .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for TreeNode {}
+impl rust2dart::IntoIntoDart<TreeNode> for TreeNode {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//Primitive(U32)
+
+//Primitive(U8)
+
+//PrimitiveList(IrTypePrimitiveList { primitive: U8 })
+
+//Primitive(Unit)
+
+//StructRef(IrTypeStructRef { name: "UserId", freezed: true, empty: false })
 impl support::IntoDart for UserId {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.value.into_dart()].into_dart()
+        vec![self.value.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for UserId {}
+impl rust2dart::IntoIntoDart<UserId> for UserId {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
 // Section: executor
 

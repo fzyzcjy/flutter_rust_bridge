@@ -55,8 +55,8 @@ impl IrTypeTrait for IrTypeEnumRef {
         }
     }
 
-    fn into_dart_type(&self, ir_file: &IrFile) -> String {
-        match &self.get(&ir_file).wrapper_name {
+    fn intodart_type(&self, ir_file: &IrFile) -> String {
+        match &self.get(ir_file).wrapper_name {
             Some(wrapper) => wrapper.clone(),
             None => self.dart_api_type(),
         }

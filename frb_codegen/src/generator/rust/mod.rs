@@ -309,7 +309,7 @@ impl<'a> Generator<'a> {
                 argument_index,
                 format!(
                     "task_callback.stream_sink::<_,{}>()",
-                    func.output.into_dart_type(ir_file)
+                    func.output.intodart_type(ir_file)
                 ),
             );
         }
@@ -342,10 +342,6 @@ impl<'a> Generator<'a> {
             } else {
                 panic!("{} is not a method, nor a static method.", func.name)
             };
-            let ret_type = match func.mode {
-                IrFuncMode::Stream { .. } => IrType::Primitive(IrTypePrimitive::Unit),
-                _ => func.output.clone(),
-            };
             format!(
                 r"{}::{}({})",
                 struct_name.unwrap(),
@@ -353,10 +349,6 @@ impl<'a> Generator<'a> {
                 inner_func_params.join(", ")
             )
         } else {
-            let ret_type = match func.mode {
-                IrFuncMode::Stream { .. } => IrType::Primitive(IrTypePrimitive::Unit),
-                _ => func.output.clone(),
-            };
             format!("{}({})", func.name, inner_func_params.join(", "))
         };
         let code_call_inner_func_result = if func.fallible {
@@ -375,7 +367,7 @@ impl<'a> Generator<'a> {
                 ),
             ),
             IrFuncMode::Normal => (
-                format!("wrap::<_,_,_,{}>", func.output.into_dart_type(ir_file)),
+                format!("wrap::<_,_,_,{}>", func.output.intodart_type(ir_file)),
                 None,
                 format!("{code_wire2api} move |task_callback| {code_call_inner_func_result}"),
             ),

@@ -13,6 +13,7 @@
 
 use crate::api::*;
 use core::panic::UnwindSafe;
+use flutter_rust_bridge::rust2dart::IntoIntoDart;
 use flutter_rust_bridge::*;
 use std::ffi::c_void;
 use std::sync::Arc;
@@ -31,7 +32,7 @@ fn wire_simple_adder_impl(
     a: impl Wire2Api<i32> + UnwindSafe,
     b: impl Wire2Api<i32> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32>(
         WrapInfo {
             debug_name: "simple_adder",
             port: Some(port_),
@@ -68,7 +69,7 @@ fn wire_primitive_types_impl(
     my_f64: impl Wire2Api<f64> + UnwindSafe,
     my_bool: impl Wire2Api<bool> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32>(
         WrapInfo {
             debug_name: "primitive_types",
             port: Some(port_),
@@ -97,7 +98,7 @@ fn wire_primitive_optional_types_impl(
     my_f64: impl Wire2Api<Option<f64>> + UnwindSafe,
     my_bool: impl Wire2Api<Option<bool>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<i32>>(
         WrapInfo {
             debug_name: "primitive_optional_types",
             port: Some(port_),
@@ -146,7 +147,7 @@ fn wire_primitive_types_sync_impl(
     )
 }
 fn wire_primitive_u32_impl(port_: MessagePort, my_u32: impl Wire2Api<u32> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32>(
         WrapInfo {
             debug_name: "primitive_u32",
             port: Some(port_),
@@ -174,7 +175,7 @@ fn wire_primitive_u32_sync_impl(
     )
 }
 fn wire_handle_string_impl(port_: MessagePort, s: impl Wire2Api<String> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String>(
         WrapInfo {
             debug_name: "handle_string",
             port: Some(port_),
@@ -200,7 +201,7 @@ fn wire_handle_string_sync_impl(s: impl Wire2Api<String> + UnwindSafe) -> suppor
     )
 }
 fn wire_handle_return_unit_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "handle_return_unit",
             port: Some(port_),
@@ -220,7 +221,7 @@ fn wire_handle_return_unit_sync_impl() -> support::WireSyncReturn {
     )
 }
 fn wire_handle_vec_u8_impl(port_: MessagePort, v: impl Wire2Api<Vec<u8>> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<u8>>(
         WrapInfo {
             debug_name: "handle_vec_u8",
             port: Some(port_),
@@ -246,7 +247,7 @@ fn wire_handle_vec_u8_sync_impl(v: impl Wire2Api<Vec<u8>> + UnwindSafe) -> suppo
     )
 }
 fn wire_handle_vec_of_primitive_impl(port_: MessagePort, n: impl Wire2Api<i32> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, VecOfPrimitivePack>(
         WrapInfo {
             debug_name: "handle_vec_of_primitive",
             port: Some(port_),
@@ -277,7 +278,7 @@ fn wire_handle_zero_copy_vec_of_primitive_impl(
     port_: MessagePort,
     n: impl Wire2Api<i32> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ZeroCopyVecOfPrimitivePack>(
         WrapInfo {
             debug_name: "handle_zero_copy_vec_of_primitive",
             port: Some(port_),
@@ -309,7 +310,7 @@ fn wire_handle_struct_impl(
     arg: impl Wire2Api<MySize> + UnwindSafe,
     boxed: impl Wire2Api<Box<MySize>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, MySize>(
         WrapInfo {
             debug_name: "handle_struct",
             port: Some(port_),
@@ -340,7 +341,7 @@ fn wire_handle_struct_sync_impl(
     )
 }
 fn wire_handle_newtype_impl(port_: MessagePort, arg: impl Wire2Api<NewTypeInt> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, NewTypeInt>(
         WrapInfo {
             debug_name: "handle_newtype",
             port: Some(port_),
@@ -368,7 +369,7 @@ fn wire_handle_newtype_sync_impl(
     )
 }
 fn wire_handle_list_of_struct_impl(port_: MessagePort, l: impl Wire2Api<Vec<MySize>> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<MySize>>(
         WrapInfo {
             debug_name: "handle_list_of_struct",
             port: Some(port_),
@@ -399,7 +400,7 @@ fn wire_handle_string_list_impl(
     port_: MessagePort,
     names: impl Wire2Api<Vec<String>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<String>>(
         WrapInfo {
             debug_name: "handle_string_list",
             port: Some(port_),
@@ -427,7 +428,7 @@ fn wire_handle_string_list_sync_impl(
     )
 }
 fn wire_handle_complex_struct_impl(port_: MessagePort, s: impl Wire2Api<MyTreeNode> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, MyTreeNode>(
         WrapInfo {
             debug_name: "handle_complex_struct",
             port: Some(port_),
@@ -458,7 +459,7 @@ fn wire_handle_nested_struct_impl(
     port_: MessagePort,
     s: impl Wire2Api<MyNestedStruct> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, MyNestedStruct>(
         WrapInfo {
             debug_name: "handle_nested_struct",
             port: Some(port_),
@@ -486,7 +487,7 @@ fn wire_handle_sync_return_impl(
     )
 }
 fn wire_handle_stream_impl(port_: MessagePort, arg: impl Wire2Api<String> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "handle_stream",
             port: Some(port_),
@@ -494,22 +495,33 @@ fn wire_handle_stream_impl(port_: MessagePort, arg: impl Wire2Api<String> + Unwi
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Ok(handle_stream(task_callback.stream_sink(), api_arg))
+            move |task_callback| {
+                Ok(handle_stream(
+                    task_callback.stream_sink::<_, String>(),
+                    api_arg,
+                ))
+            }
         },
     )
 }
 fn wire_handle_stream_of_struct_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "handle_stream_of_struct",
             port: Some(port_),
             mode: FfiCallMode::Stream,
         },
-        move || move |task_callback| Ok(handle_stream_of_struct(task_callback.stream_sink())),
+        move || {
+            move |task_callback| {
+                Ok(handle_stream_of_struct(
+                    task_callback.stream_sink::<_, MyStreamEntry>(),
+                ))
+            }
+        },
     )
 }
 fn wire_return_err_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32>(
         WrapInfo {
             debug_name: "return_err",
             port: Some(port_),
@@ -519,7 +531,7 @@ fn wire_return_err_impl(port_: MessagePort) {
     )
 }
 fn wire_return_panic_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32>(
         WrapInfo {
             debug_name: "return_panic",
             port: Some(port_),
@@ -533,7 +545,7 @@ fn wire_handle_optional_return_impl(
     left: impl Wire2Api<f64> + UnwindSafe,
     right: impl Wire2Api<f64> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<f64>>(
         WrapInfo {
             debug_name: "handle_optional_return",
             port: Some(port_),
@@ -550,7 +562,7 @@ fn wire_handle_optional_struct_impl(
     port_: MessagePort,
     document: impl Wire2Api<Option<String>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<Element>>(
         WrapInfo {
             debug_name: "handle_optional_struct",
             port: Some(port_),
@@ -566,7 +578,7 @@ fn wire_handle_optional_increment_impl(
     port_: MessagePort,
     opt: impl Wire2Api<Option<ExoticOptionals>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<ExoticOptionals>>(
         WrapInfo {
             debug_name: "handle_optional_increment",
             port: Some(port_),
@@ -582,7 +594,7 @@ fn wire_handle_increment_boxed_optional_impl(
     port_: MessagePort,
     opt: impl Wire2Api<Option<Box<f64>>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, f64>(
         WrapInfo {
             debug_name: "handle_increment_boxed_optional",
             port: Some(port_),
@@ -604,7 +616,7 @@ fn wire_handle_option_box_arguments_impl(
     boolbox: impl Wire2Api<Option<Box<bool>>> + UnwindSafe,
     structbox: impl Wire2Api<Option<Box<ExoticOptionals>>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String>(
         WrapInfo {
             debug_name: "handle_option_box_arguments",
             port: Some(port_),
@@ -633,7 +645,7 @@ fn wire_handle_option_box_arguments_impl(
     )
 }
 fn wire_print_note_impl(port_: MessagePort, note: impl Wire2Api<Note> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ZeroCopyBuffer<Vec<u8>>>(
         WrapInfo {
             debug_name: "print_note",
             port: Some(port_),
@@ -646,7 +658,7 @@ fn wire_print_note_impl(port_: MessagePort, note: impl Wire2Api<Note> + UnwindSa
     )
 }
 fn wire_handle_return_enum_impl(port_: MessagePort, input: impl Wire2Api<String> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<Weekdays>>(
         WrapInfo {
             debug_name: "handle_return_enum",
             port: Some(port_),
@@ -662,7 +674,7 @@ fn wire_handle_enum_parameter_impl(
     port_: MessagePort,
     weekday: impl Wire2Api<Weekdays> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Weekdays>(
         WrapInfo {
             debug_name: "handle_enum_parameter",
             port: Some(port_),
@@ -678,7 +690,7 @@ fn wire_handle_customized_struct_impl(
     port_: MessagePort,
     val: impl Wire2Api<Customized> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "handle_customized_struct",
             port: Some(port_),
@@ -691,7 +703,7 @@ fn wire_handle_customized_struct_impl(
     )
 }
 fn wire_handle_enum_struct_impl(port_: MessagePort, val: impl Wire2Api<KitchenSink> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, KitchenSink>(
         WrapInfo {
             debug_name: "handle_enum_struct",
             port: Some(port_),
@@ -707,7 +719,7 @@ fn wire_use_imported_struct_impl(
     port_: MessagePort,
     my_struct: impl Wire2Api<MyStruct> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, bool>(
         WrapInfo {
             debug_name: "use_imported_struct",
             port: Some(port_),
@@ -720,7 +732,7 @@ fn wire_use_imported_struct_impl(
     )
 }
 fn wire_use_imported_enum_impl(port_: MessagePort, my_enum: impl Wire2Api<MyEnum> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, bool>(
         WrapInfo {
             debug_name: "use_imported_enum",
             port: Some(port_),
@@ -733,30 +745,30 @@ fn wire_use_imported_enum_impl(port_: MessagePort, my_enum: impl Wire2Api<MyEnum
     )
 }
 fn wire_get_app_settings_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_ApplicationSettings>(
         WrapInfo {
             debug_name: "get_app_settings",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(mirror_ApplicationSettings(get_app_settings())),
+        move || move |task_callback| Ok(get_app_settings()),
     )
 }
 fn wire_get_fallible_app_settings_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_ApplicationSettings>(
         WrapInfo {
             debug_name: "get_fallible_app_settings",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(mirror_ApplicationSettings(get_fallible_app_settings()?)),
+        move || move |task_callback| get_fallible_app_settings(),
     )
 }
 fn wire_is_app_embedded_impl(
     port_: MessagePort,
     app_settings: impl Wire2Api<ApplicationSettings> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, bool>(
         WrapInfo {
             debug_name: "is_app_embedded",
             port: Some(port_),
@@ -768,14 +780,62 @@ fn wire_is_app_embedded_impl(
         },
     )
 }
+fn wire_app_settings_stream_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
+        WrapInfo {
+            debug_name: "app_settings_stream",
+            port: Some(port_),
+            mode: FfiCallMode::Stream,
+        },
+        move || {
+            move |task_callback| {
+                Ok(app_settings_stream(
+                    task_callback.stream_sink::<_, mirror_ApplicationSettings>(),
+                ))
+            }
+        },
+    )
+}
+fn wire_app_settings_vec_stream_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
+        WrapInfo {
+            debug_name: "app_settings_vec_stream",
+            port: Some(port_),
+            mode: FfiCallMode::Stream,
+        },
+        move || {
+            move |task_callback| {
+                Ok(app_settings_vec_stream(
+                    task_callback.stream_sink::<_, Vec<mirror_ApplicationSettings>>(),
+                ))
+            }
+        },
+    )
+}
+fn wire_mirror_struct_stream_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
+        WrapInfo {
+            debug_name: "mirror_struct_stream",
+            port: Some(port_),
+            mode: FfiCallMode::Stream,
+        },
+        move || {
+            move |task_callback| {
+                Ok(mirror_struct_stream(
+                    task_callback.stream_sink::<_, MirrorStruct>(),
+                ))
+            }
+        },
+    )
+}
 fn wire_get_message_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_ApplicationMessage>(
         WrapInfo {
             debug_name: "get_message",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(mirror_ApplicationMessage(get_message())),
+        move || move |task_callback| Ok(get_message()),
     )
 }
 fn wire_repeat_number_impl(
@@ -783,7 +843,7 @@ fn wire_repeat_number_impl(
     num: impl Wire2Api<i32> + UnwindSafe,
     times: impl Wire2Api<usize> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_Numbers>(
         WrapInfo {
             debug_name: "repeat_number",
             port: Some(port_),
@@ -792,7 +852,7 @@ fn wire_repeat_number_impl(
         move || {
             let api_num = num.wire2api();
             let api_times = times.wire2api();
-            move |task_callback| Ok(mirror_Numbers(repeat_number(api_num, api_times)))
+            move |task_callback| Ok(repeat_number(api_num, api_times))
         },
     )
 }
@@ -801,7 +861,7 @@ fn wire_repeat_sequence_impl(
     seq: impl Wire2Api<i32> + UnwindSafe,
     times: impl Wire2Api<usize> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_Sequences>(
         WrapInfo {
             debug_name: "repeat_sequence",
             port: Some(port_),
@@ -810,12 +870,12 @@ fn wire_repeat_sequence_impl(
         move || {
             let api_seq = seq.wire2api();
             let api_times = times.wire2api();
-            move |task_callback| Ok(mirror_Sequences(repeat_sequence(api_seq, api_times)))
+            move |task_callback| Ok(repeat_sequence(api_seq, api_times))
         },
     )
 }
 fn wire_first_number_impl(port_: MessagePort, nums: impl Wire2Api<Numbers> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<i32>>(
         WrapInfo {
             debug_name: "first_number",
             port: Some(port_),
@@ -828,7 +888,7 @@ fn wire_first_number_impl(port_: MessagePort, nums: impl Wire2Api<Numbers> + Unw
     )
 }
 fn wire_first_sequence_impl(port_: MessagePort, seqs: impl Wire2Api<Sequences> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<i32>>(
         WrapInfo {
             debug_name: "first_sequence",
             port: Some(port_),
@@ -841,7 +901,7 @@ fn wire_first_sequence_impl(port_: MessagePort, seqs: impl Wire2Api<Sequences> +
     )
 }
 fn wire_get_array_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [u8; 5]>(
         WrapInfo {
             debug_name: "get_array",
             port: Some(port_),
@@ -851,7 +911,7 @@ fn wire_get_array_impl(port_: MessagePort) {
     )
 }
 fn wire_get_complex_array_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [Point; 2]>(
         WrapInfo {
             debug_name: "get_complex_array",
             port: Some(port_),
@@ -861,7 +921,7 @@ fn wire_get_complex_array_impl(port_: MessagePort) {
     )
 }
 fn wire_get_usize_impl(port_: MessagePort, u: impl Wire2Api<usize> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, usize>(
         WrapInfo {
             debug_name: "get_usize",
             port: Some(port_),
@@ -874,7 +934,7 @@ fn wire_get_usize_impl(port_: MessagePort, u: impl Wire2Api<usize> + UnwindSafe)
     )
 }
 fn wire_next_user_id_impl(port_: MessagePort, user_id: impl Wire2Api<UserId> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, UserId>(
         WrapInfo {
             debug_name: "next_user_id",
             port: Some(port_),
@@ -887,17 +947,19 @@ fn wire_next_user_id_impl(port_: MessagePort, user_id: impl Wire2Api<UserId> + U
     )
 }
 fn wire_register_event_listener_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "register_event_listener",
             port: Some(port_),
             mode: FfiCallMode::Stream,
         },
-        move || move |task_callback| register_event_listener(task_callback.stream_sink()),
+        move || {
+            move |task_callback| register_event_listener(task_callback.stream_sink::<_, Event>())
+        },
     )
 }
 fn wire_close_event_listener_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "close_event_listener",
             port: Some(port_),
@@ -911,7 +973,7 @@ fn wire_create_event_impl(
     address: impl Wire2Api<String> + UnwindSafe,
     payload: impl Wire2Api<String> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "create_event",
             port: Some(port_),
@@ -929,7 +991,7 @@ fn wire_handle_stream_sink_at_1_impl(
     key: impl Wire2Api<u32> + UnwindSafe,
     max: impl Wire2Api<u32> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "handle_stream_sink_at_1",
             port: Some(port_),
@@ -942,7 +1004,7 @@ fn wire_handle_stream_sink_at_1_impl(
                 Ok(handle_stream_sink_at_1(
                     api_key,
                     api_max,
-                    task_callback.stream_sink(),
+                    task_callback.stream_sink::<_, Log>(),
                 ))
             }
         },
@@ -953,7 +1015,7 @@ fn wire_handle_stream_sink_at_2_impl(
     key: impl Wire2Api<u32> + UnwindSafe,
     max: impl Wire2Api<u32> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "handle_stream_sink_at_2",
             port: Some(port_),
@@ -965,7 +1027,7 @@ fn wire_handle_stream_sink_at_2_impl(
             move |task_callback| {
                 Ok(handle_stream_sink_at_2(
                     api_key,
-                    task_callback.stream_sink(),
+                    task_callback.stream_sink::<_, Log>(),
                     api_max,
                 ))
             }
@@ -977,7 +1039,7 @@ fn wire_handle_stream_sink_at_3_impl(
     key: impl Wire2Api<u32> + UnwindSafe,
     max: impl Wire2Api<u32> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "handle_stream_sink_at_3",
             port: Some(port_),
@@ -988,7 +1050,7 @@ fn wire_handle_stream_sink_at_3_impl(
             let api_max = max.wire2api();
             move |task_callback| {
                 Ok(handle_stream_sink_at_3(
-                    task_callback.stream_sink(),
+                    task_callback.stream_sink::<_, Log>(),
                     api_key,
                     api_max,
                 ))
@@ -997,7 +1059,7 @@ fn wire_handle_stream_sink_at_3_impl(
     )
 }
 fn wire_get_sum_struct_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, SumWith>(
         WrapInfo {
             debug_name: "get_sum_struct",
             port: Some(port_),
@@ -1012,7 +1074,7 @@ fn wire_get_sum_array_impl(
     b: impl Wire2Api<u32> + UnwindSafe,
     c: impl Wire2Api<u32> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [SumWith; 3]>(
         WrapInfo {
             debug_name: "get_sum_array",
             port: Some(port_),
@@ -1027,7 +1089,7 @@ fn wire_get_sum_array_impl(
     )
 }
 fn wire_multiply_by_ten_impl(port_: MessagePort, measure: impl Wire2Api<Measure> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<Measure>>(
         WrapInfo {
             debug_name: "multiply_by_ten",
             port: Some(port_),
@@ -1040,7 +1102,7 @@ fn wire_multiply_by_ten_impl(port_: MessagePort, measure: impl Wire2Api<Measure>
     )
 }
 fn wire_call_old_module_system_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, OldSimpleStruct>(
         WrapInfo {
             debug_name: "call_old_module_system",
             port: Some(port_),
@@ -1050,7 +1112,7 @@ fn wire_call_old_module_system_impl(port_: MessagePort) {
     )
 }
 fn wire_call_new_module_system_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, NewSimpleStruct>(
         WrapInfo {
             debug_name: "call_new_module_system",
             port: Some(port_),
@@ -1060,7 +1122,7 @@ fn wire_call_new_module_system_impl(port_: MessagePort) {
     )
 }
 fn wire_handle_big_buffers_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, BigBuffers>(
         WrapInfo {
             debug_name: "handle_big_buffers",
             port: Some(port_),
@@ -1073,7 +1135,7 @@ fn wire_datetime_utc_impl(
     port_: MessagePort,
     d: impl Wire2Api<chrono::DateTime<chrono::Utc>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, chrono::DateTime<chrono::Utc>>(
         WrapInfo {
             debug_name: "datetime_utc",
             port: Some(port_),
@@ -1089,7 +1151,7 @@ fn wire_datetime_local_impl(
     port_: MessagePort,
     d: impl Wire2Api<chrono::DateTime<chrono::Local>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, chrono::DateTime<chrono::Local>>(
         WrapInfo {
             debug_name: "datetime_local",
             port: Some(port_),
@@ -1105,7 +1167,7 @@ fn wire_naivedatetime_impl(
     port_: MessagePort,
     d: impl Wire2Api<chrono::NaiveDateTime> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, chrono::NaiveDateTime>(
         WrapInfo {
             debug_name: "naivedatetime",
             port: Some(port_),
@@ -1121,7 +1183,7 @@ fn wire_optional_empty_datetime_utc_impl(
     port_: MessagePort,
     d: impl Wire2Api<Option<chrono::DateTime<chrono::Utc>>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<chrono::DateTime<chrono::Utc>>>(
         WrapInfo {
             debug_name: "optional_empty_datetime_utc",
             port: Some(port_),
@@ -1134,7 +1196,7 @@ fn wire_optional_empty_datetime_utc_impl(
     )
 }
 fn wire_duration_impl(port_: MessagePort, d: impl Wire2Api<chrono::Duration> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, chrono::Duration>(
         WrapInfo {
             debug_name: "duration",
             port: Some(port_),
@@ -1151,7 +1213,7 @@ fn wire_handle_timestamps_impl(
     timestamps: impl Wire2Api<Vec<chrono::NaiveDateTime>> + UnwindSafe,
     epoch: impl Wire2Api<chrono::NaiveDateTime> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<chrono::Duration>>(
         WrapInfo {
             debug_name: "handle_timestamps",
             port: Some(port_),
@@ -1169,7 +1231,7 @@ fn wire_handle_durations_impl(
     durations: impl Wire2Api<Vec<chrono::Duration>> + UnwindSafe,
     since: impl Wire2Api<chrono::DateTime<chrono::Local>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<chrono::DateTime<chrono::Local>>>(
         WrapInfo {
             debug_name: "handle_durations",
             port: Some(port_),
@@ -1183,7 +1245,7 @@ fn wire_handle_durations_impl(
     )
 }
 fn wire_test_chrono_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, TestChrono>(
         WrapInfo {
             debug_name: "test_chrono",
             port: Some(port_),
@@ -1193,7 +1255,7 @@ fn wire_test_chrono_impl(port_: MessagePort) {
     )
 }
 fn wire_test_precise_chrono_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, TestChrono>(
         WrapInfo {
             debug_name: "test_precise_chrono",
             port: Some(port_),
@@ -1206,7 +1268,7 @@ fn wire_how_long_does_it_take_impl(
     port_: MessagePort,
     mine: impl Wire2Api<FeatureChrono> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, chrono::Duration>(
         WrapInfo {
             debug_name: "how_long_does_it_take",
             port: Some(port_),
@@ -1219,7 +1281,7 @@ fn wire_how_long_does_it_take_impl(
     )
 }
 fn wire_handle_uuid_impl(port_: MessagePort, id: impl Wire2Api<uuid::Uuid> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, uuid::Uuid>(
         WrapInfo {
             debug_name: "handle_uuid",
             port: Some(port_),
@@ -1232,7 +1294,7 @@ fn wire_handle_uuid_impl(port_: MessagePort, id: impl Wire2Api<uuid::Uuid> + Unw
     )
 }
 fn wire_handle_uuids_impl(port_: MessagePort, ids: impl Wire2Api<Vec<uuid::Uuid>> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<uuid::Uuid>>(
         WrapInfo {
             debug_name: "handle_uuids",
             port: Some(port_),
@@ -1245,7 +1307,7 @@ fn wire_handle_uuids_impl(port_: MessagePort, ids: impl Wire2Api<Vec<uuid::Uuid>
     )
 }
 fn wire_handle_nested_uuids_impl(port_: MessagePort, ids: impl Wire2Api<FeatureUuid> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, FeatureUuid>(
         WrapInfo {
             debug_name: "handle_nested_uuids",
             port: Some(port_),
@@ -1258,7 +1320,7 @@ fn wire_handle_nested_uuids_impl(port_: MessagePort, ids: impl Wire2Api<FeatureU
     )
 }
 fn wire_new_msgid_impl(port_: MessagePort, id: impl Wire2Api<[u8; 32]> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, MessageId>(
         WrapInfo {
             debug_name: "new_msgid",
             port: Some(port_),
@@ -1271,7 +1333,7 @@ fn wire_new_msgid_impl(port_: MessagePort, id: impl Wire2Api<[u8; 32]> + UnwindS
     )
 }
 fn wire_use_msgid_impl(port_: MessagePort, id: impl Wire2Api<MessageId> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [u8; 32]>(
         WrapInfo {
             debug_name: "use_msgid",
             port: Some(port_),
@@ -1284,7 +1346,7 @@ fn wire_use_msgid_impl(port_: MessagePort, id: impl Wire2Api<MessageId> + Unwind
     )
 }
 fn wire_boxed_blob_impl(port_: MessagePort, blob: impl Wire2Api<Box<[u8; 1600]>> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Blob>(
         WrapInfo {
             debug_name: "boxed_blob",
             port: Some(port_),
@@ -1297,7 +1359,7 @@ fn wire_boxed_blob_impl(port_: MessagePort, blob: impl Wire2Api<Box<[u8; 1600]>>
     )
 }
 fn wire_use_boxed_blob_impl(port_: MessagePort, blob: impl Wire2Api<Box<Blob>> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [u8; 1600]>(
         WrapInfo {
             debug_name: "use_boxed_blob",
             port: Some(port_),
@@ -1310,7 +1372,7 @@ fn wire_use_boxed_blob_impl(port_: MessagePort, blob: impl Wire2Api<Box<Blob>> +
     )
 }
 fn wire_return_boxed_feed_id_impl(port_: MessagePort, id: impl Wire2Api<[u8; 8]> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, FeedId>(
         WrapInfo {
             debug_name: "return_boxed_feed_id",
             port: Some(port_),
@@ -1318,12 +1380,12 @@ fn wire_return_boxed_feed_id_impl(port_: MessagePort, id: impl Wire2Api<[u8; 8]>
         },
         move || {
             let api_id = id.wire2api();
-            move |task_callback| Ok((*return_boxed_feed_id(api_id)))
+            move |task_callback| Ok(return_boxed_feed_id(api_id))
         },
     )
 }
 fn wire_return_boxed_raw_feed_id_impl(port_: MessagePort, id: impl Wire2Api<FeedId> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [u8; 8]>(
         WrapInfo {
             debug_name: "return_boxed_raw_feed_id",
             port: Some(port_),
@@ -1331,12 +1393,12 @@ fn wire_return_boxed_raw_feed_id_impl(port_: MessagePort, id: impl Wire2Api<Feed
         },
         move || {
             let api_id = id.wire2api();
-            move |task_callback| Ok((*return_boxed_raw_feed_id(api_id)))
+            move |task_callback| Ok(return_boxed_raw_feed_id(api_id))
         },
     )
 }
 fn wire_test_id_impl(port_: MessagePort, id: impl Wire2Api<TestId> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, TestId>(
         WrapInfo {
             debug_name: "test_id",
             port: Some(port_),
@@ -1349,7 +1411,7 @@ fn wire_test_id_impl(port_: MessagePort, id: impl Wire2Api<TestId> + UnwindSafe)
     )
 }
 fn wire_last_number_impl(port_: MessagePort, array: impl Wire2Api<[f64; 16]> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, f64>(
         WrapInfo {
             debug_name: "last_number",
             port: Some(port_),
@@ -1362,7 +1424,7 @@ fn wire_last_number_impl(port_: MessagePort, array: impl Wire2Api<[f64; 16]> + U
     )
 }
 fn wire_nested_id_impl(port_: MessagePort, id: impl Wire2Api<[TestId; 4]> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [TestId; 2]>(
         WrapInfo {
             debug_name: "nested_id",
             port: Some(port_),
@@ -1393,7 +1455,7 @@ fn wire_async_accept_dart_opaque_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String>(
         WrapInfo {
             debug_name: "async_accept_dart_opaque",
             port: Some(port_),
@@ -1406,7 +1468,7 @@ fn wire_async_accept_dart_opaque_impl(
     )
 }
 fn wire_loop_back_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaque> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, DartOpaque>(
         WrapInfo {
             debug_name: "loop_back",
             port: Some(port_),
@@ -1419,7 +1481,7 @@ fn wire_loop_back_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaque> + U
     )
 }
 fn wire_loop_back_option_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaque> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<DartOpaque>>(
         WrapInfo {
             debug_name: "loop_back_option",
             port: Some(port_),
@@ -1432,7 +1494,7 @@ fn wire_loop_back_option_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaq
     )
 }
 fn wire_loop_back_array_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaque> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [DartOpaque; 1]>(
         WrapInfo {
             debug_name: "loop_back_array",
             port: Some(port_),
@@ -1445,7 +1507,7 @@ fn wire_loop_back_array_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaqu
     )
 }
 fn wire_loop_back_vec_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaque> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<DartOpaque>>(
         WrapInfo {
             debug_name: "loop_back_vec",
             port: Some(port_),
@@ -1461,7 +1523,7 @@ fn wire_loop_back_option_get_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<Option<DartOpaque>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "loop_back_option_get",
             port: Some(port_),
@@ -1477,7 +1539,7 @@ fn wire_loop_back_array_get_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<[DartOpaque; 1]> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "loop_back_array_get",
             port: Some(port_),
@@ -1493,7 +1555,7 @@ fn wire_loop_back_vec_get_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<Vec<DartOpaque>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "loop_back_vec_get",
             port: Some(port_),
@@ -1524,7 +1586,7 @@ fn wire_panic_unwrap_dart_opaque_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "panic_unwrap_dart_opaque",
             port: Some(port_),
@@ -1537,7 +1599,7 @@ fn wire_panic_unwrap_dart_opaque_impl(
     )
 }
 fn wire_create_opaque_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, RustOpaque<HideData>>(
         WrapInfo {
             debug_name: "create_opaque",
             port: Some(port_),
@@ -1550,7 +1612,7 @@ fn wire_create_option_opaque_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<Option<RustOpaque<HideData>>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<RustOpaque<HideData>>>(
         WrapInfo {
             debug_name: "create_option_opaque",
             port: Some(port_),
@@ -1573,7 +1635,7 @@ fn wire_sync_create_opaque_impl() -> support::WireSyncReturn {
     )
 }
 fn wire_create_array_opaque_enum_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [EnumOpaque; 5]>(
         WrapInfo {
             debug_name: "create_array_opaque_enum",
             port: Some(port_),
@@ -1583,7 +1645,7 @@ fn wire_create_array_opaque_enum_impl(port_: MessagePort) {
     )
 }
 fn wire_run_enum_opaque_impl(port_: MessagePort, opaque: impl Wire2Api<EnumOpaque> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String>(
         WrapInfo {
             debug_name: "run_enum_opaque",
             port: Some(port_),
@@ -1599,7 +1661,7 @@ fn wire_run_opaque_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<RustOpaque<HideData>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String>(
         WrapInfo {
             debug_name: "run_opaque",
             port: Some(port_),
@@ -1615,7 +1677,7 @@ fn wire_run_opaque_with_delay_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<RustOpaque<HideData>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String>(
         WrapInfo {
             debug_name: "run_opaque_with_delay",
             port: Some(port_),
@@ -1628,7 +1690,7 @@ fn wire_run_opaque_with_delay_impl(
     )
 }
 fn wire_opaque_array_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [RustOpaque<HideData>; 2]>(
         WrapInfo {
             debug_name: "opaque_array",
             port: Some(port_),
@@ -1651,7 +1713,7 @@ fn wire_run_non_clone_impl(
     port_: MessagePort,
     clone: impl Wire2Api<RustOpaque<NonCloneData>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String>(
         WrapInfo {
             debug_name: "run_non_clone",
             port: Some(port_),
@@ -1664,7 +1726,7 @@ fn wire_run_non_clone_impl(
     )
 }
 fn wire_create_sync_opaque_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, RustOpaque<NonSendHideData>>(
         WrapInfo {
             debug_name: "create_sync_opaque",
             port: Some(port_),
@@ -1702,7 +1764,7 @@ fn wire_opaque_array_run_impl(
     port_: MessagePort,
     data: impl Wire2Api<[RustOpaque<HideData>; 2]> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "opaque_array_run",
             port: Some(port_),
@@ -1715,7 +1777,7 @@ fn wire_opaque_array_run_impl(
     )
 }
 fn wire_opaque_vec_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<RustOpaque<HideData>>>(
         WrapInfo {
             debug_name: "opaque_vec",
             port: Some(port_),
@@ -1728,7 +1790,7 @@ fn wire_opaque_vec_run_impl(
     port_: MessagePort,
     data: impl Wire2Api<Vec<RustOpaque<HideData>>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "opaque_vec_run",
             port: Some(port_),
@@ -1741,7 +1803,7 @@ fn wire_opaque_vec_run_impl(
     )
 }
 fn wire_create_nested_opaque_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, OpaqueNested>(
         WrapInfo {
             debug_name: "create_nested_opaque",
             port: Some(port_),
@@ -1839,7 +1901,7 @@ fn wire_run_nested_opaque_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<OpaqueNested> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "run_nested_opaque",
             port: Some(port_),
@@ -1856,7 +1918,7 @@ fn wire_create_nested_dart_opaque_impl(
     opaque1: impl Wire2Api<DartOpaque> + UnwindSafe,
     opaque2: impl Wire2Api<DartOpaque> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, DartOpaqueNested>(
         WrapInfo {
             debug_name: "create_nested_dart_opaque",
             port: Some(port_),
@@ -1873,7 +1935,7 @@ fn wire_get_nested_dart_opaque_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<DartOpaqueNested> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "get_nested_dart_opaque",
             port: Some(port_),
@@ -1889,7 +1951,7 @@ fn wire_create_enum_dart_opaque_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, EnumDartOpaque>(
         WrapInfo {
             debug_name: "create_enum_dart_opaque",
             port: Some(port_),
@@ -1905,7 +1967,7 @@ fn wire_get_enum_dart_opaque_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<EnumDartOpaque> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "get_enum_dart_opaque",
             port: Some(port_),
@@ -1921,7 +1983,7 @@ fn wire_set_static_dart_opaque_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<DartOpaque> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "set_static_dart_opaque",
             port: Some(port_),
@@ -1934,7 +1996,7 @@ fn wire_set_static_dart_opaque_impl(
     )
 }
 fn wire_drop_static_dart_opaque_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "drop_static_dart_opaque",
             port: Some(port_),
@@ -1947,7 +2009,7 @@ fn wire_unwrap_rust_opaque_impl(
     port_: MessagePort,
     opaque: impl Wire2Api<RustOpaque<HideData>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String>(
         WrapInfo {
             debug_name: "unwrap_rust_opaque",
             port: Some(port_),
@@ -1975,7 +2037,7 @@ fn wire_return_non_droppable_dart_opaque_impl(
     )
 }
 fn wire_frb_generator_test_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, RustOpaque<FrbOpaqueReturn>>(
         WrapInfo {
             debug_name: "frb_generator_test",
             port: Some(port_),
@@ -1995,7 +2057,7 @@ fn wire_frb_sync_generator_test_impl() -> support::WireSyncReturn {
     )
 }
 fn wire_handle_type_alias_id_impl(port_: MessagePort, input: impl Wire2Api<u64> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u64>(
         WrapInfo {
             debug_name: "handle_type_alias_id",
             port: Some(port_),
@@ -2008,7 +2070,7 @@ fn wire_handle_type_alias_id_impl(port_: MessagePort, input: impl Wire2Api<u64> 
     )
 }
 fn wire_handle_type_nest_alias_id_impl(port_: MessagePort, input: impl Wire2Api<u64> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u64>(
         WrapInfo {
             debug_name: "handle_type_nest_alias_id",
             port: Some(port_),
@@ -2021,7 +2083,7 @@ fn wire_handle_type_nest_alias_id_impl(port_: MessagePort, input: impl Wire2Api<
     )
 }
 fn wire_handle_type_alias_model_impl(port_: MessagePort, input: impl Wire2Api<u64> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, TestModel>(
         WrapInfo {
             debug_name: "handle_type_alias_model",
             port: Some(port_),
@@ -2034,7 +2096,7 @@ fn wire_handle_type_alias_model_impl(port_: MessagePort, input: impl Wire2Api<u6
     )
 }
 fn wire_empty_struct_impl(port_: MessagePort, empty: impl Wire2Api<Empty> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Empty>(
         WrapInfo {
             debug_name: "empty_struct",
             port: Some(port_),
@@ -2047,7 +2109,7 @@ fn wire_empty_struct_impl(port_: MessagePort, empty: impl Wire2Api<Empty> + Unwi
     )
 }
 fn wire_return_dart_dynamic_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, flutter_rust_bridge::DartAbi>(
         WrapInfo {
             debug_name: "return_dart_dynamic",
             port: Some(port_),
@@ -2057,7 +2119,7 @@ fn wire_return_dart_dynamic_impl(port_: MessagePort) {
     )
 }
 fn wire_test_raw_string_item_struct_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, RawStringItemStruct>(
         WrapInfo {
             debug_name: "test_raw_string_item_struct",
             port: Some(port_),
@@ -2067,7 +2129,7 @@ fn wire_test_raw_string_item_struct_impl(port_: MessagePort) {
     )
 }
 fn wire_test_more_than_just_one_raw_string_struct_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, MoreThanJustOneRawStringStruct>(
         WrapInfo {
             debug_name: "test_more_than_just_one_raw_string_struct",
             port: Some(port_),
@@ -2077,36 +2139,30 @@ fn wire_test_more_than_just_one_raw_string_struct_impl(port_: MessagePort) {
     )
 }
 fn wire_test_raw_string_mirrored_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_RawStringMirrored>(
         WrapInfo {
             debug_name: "test_raw_string_mirrored",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(mirror_RawStringMirrored(test_raw_string_mirrored())),
+        move || move |task_callback| Ok(test_raw_string_mirrored()),
     )
 }
 fn wire_test_nested_raw_string_mirrored_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_NestedRawStringMirrored>(
         WrapInfo {
             debug_name: "test_nested_raw_string_mirrored",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || {
-            move |task_callback| {
-                Ok(mirror_NestedRawStringMirrored(
-                    test_nested_raw_string_mirrored(),
-                ))
-            }
-        },
+        move || move |task_callback| Ok(test_nested_raw_string_mirrored()),
     )
 }
 fn wire_test_raw_string_enum_mirrored_impl(
     port_: MessagePort,
     nested: impl Wire2Api<bool> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_RawStringEnumMirrored>(
         WrapInfo {
             debug_name: "test_raw_string_enum_mirrored",
             port: Some(port_),
@@ -2114,53 +2170,35 @@ fn wire_test_raw_string_enum_mirrored_impl(
         },
         move || {
             let api_nested = nested.wire2api();
-            move |task_callback| {
-                Ok(mirror_RawStringEnumMirrored(test_raw_string_enum_mirrored(
-                    api_nested,
-                )))
-            }
+            move |task_callback| Ok(test_raw_string_enum_mirrored(api_nested))
         },
     )
 }
 fn wire_test_list_of_raw_nested_string_mirrored_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_ListOfNestedRawStringMirrored>(
         WrapInfo {
             debug_name: "test_list_of_raw_nested_string_mirrored",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || {
-            move |task_callback| {
-                Ok(mirror_ListOfNestedRawStringMirrored(
-                    test_list_of_raw_nested_string_mirrored(),
-                ))
-            }
-        },
+        move || move |task_callback| Ok(test_list_of_raw_nested_string_mirrored()),
     )
 }
 fn wire_test_fallible_of_raw_string_mirrored_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<mirror_RawStringMirrored>>(
         WrapInfo {
             debug_name: "test_fallible_of_raw_string_mirrored",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || {
-            move |task_callback| {
-                test_fallible_of_raw_string_mirrored().map(|s| {
-                    s.into_iter()
-                        .map(|v| mirror_RawStringMirrored(v))
-                        .collect::<Vec<_>>()
-                })
-            }
-        },
+        move || move |task_callback| test_fallible_of_raw_string_mirrored(),
     )
 }
 fn wire_list_of_primitive_enums_impl(
     port_: MessagePort,
     weekdays: impl Wire2Api<Vec<Weekdays>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<Weekdays>>(
         WrapInfo {
             debug_name: "list_of_primitive_enums",
             port: Some(port_),
@@ -2173,7 +2211,7 @@ fn wire_list_of_primitive_enums_impl(
     )
 }
 fn wire_test_abc_enum_impl(port_: MessagePort, abc: impl Wire2Api<Abc> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Abc>(
         WrapInfo {
             debug_name: "test_abc_enum",
             port: Some(port_),
@@ -2186,7 +2224,7 @@ fn wire_test_abc_enum_impl(port_: MessagePort, abc: impl Wire2Api<Abc> + UnwindS
     )
 }
 fn wire_test_contains_mirrored_sub_struct_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ContainsMirroredSubStruct>(
         WrapInfo {
             debug_name: "test_contains_mirrored_sub_struct",
             port: Some(port_),
@@ -2199,7 +2237,7 @@ fn wire_test_struct_with_enum_impl(
     port_: MessagePort,
     se: impl Wire2Api<StructWithEnum> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, StructWithEnum>(
         WrapInfo {
             debug_name: "test_struct_with_enum",
             port: Some(port_),
@@ -2215,7 +2253,7 @@ fn wire_test_tuple_impl(
     port_: MessagePort,
     value: impl Wire2Api<Option<(String, i32)>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (String, i32)>(
         WrapInfo {
             debug_name: "test_tuple",
             port: Some(port_),
@@ -2231,7 +2269,7 @@ fn wire_test_tuple_2_impl(
     port_: MessagePort,
     value: impl Wire2Api<Vec<(String, i32)>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "test_tuple_2",
             port: Some(port_),
@@ -2244,7 +2282,7 @@ fn wire_test_tuple_2_impl(
     )
 }
 fn wire_as_string__method__Event_impl(port_: MessagePort, that: impl Wire2Api<Event> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String>(
         WrapInfo {
             debug_name: "as_string__method__Event",
             port: Some(port_),
@@ -2262,7 +2300,7 @@ fn wire_sum__method__SumWith_impl(
     y: impl Wire2Api<u32> + UnwindSafe,
     z: impl Wire2Api<u32> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32>(
         WrapInfo {
             debug_name: "sum__method__SumWith",
             port: Some(port_),
@@ -2280,7 +2318,7 @@ fn wire_new__static_method__ConcatenateWith_impl(
     port_: MessagePort,
     a: impl Wire2Api<String> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ConcatenateWith>(
         WrapInfo {
             debug_name: "new__static_method__ConcatenateWith",
             port: Some(port_),
@@ -2297,7 +2335,7 @@ fn wire_concatenate__method__ConcatenateWith_impl(
     that: impl Wire2Api<ConcatenateWith> + UnwindSafe,
     b: impl Wire2Api<String> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String>(
         WrapInfo {
             debug_name: "concatenate__method__ConcatenateWith",
             port: Some(port_),
@@ -2315,7 +2353,7 @@ fn wire_concatenate_static__static_method__ConcatenateWith_impl(
     a: impl Wire2Api<String> + UnwindSafe,
     b: impl Wire2Api<String> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String>(
         WrapInfo {
             debug_name: "concatenate_static__static_method__ConcatenateWith",
             port: Some(port_),
@@ -2334,7 +2372,7 @@ fn wire_handle_some_stream_sink__method__ConcatenateWith_impl(
     key: impl Wire2Api<u32> + UnwindSafe,
     max: impl Wire2Api<u32> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "handle_some_stream_sink__method__ConcatenateWith",
             port: Some(port_),
@@ -2349,7 +2387,7 @@ fn wire_handle_some_stream_sink__method__ConcatenateWith_impl(
                     &api_that,
                     api_key,
                     api_max,
-                    task_callback.stream_sink(),
+                    task_callback.stream_sink::<_, Log2>(),
                 ))
             }
         },
@@ -2359,7 +2397,7 @@ fn wire_handle_some_stream_sink_at_1__method__ConcatenateWith_impl(
     port_: MessagePort,
     that: impl Wire2Api<ConcatenateWith> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "handle_some_stream_sink_at_1__method__ConcatenateWith",
             port: Some(port_),
@@ -2370,7 +2408,7 @@ fn wire_handle_some_stream_sink_at_1__method__ConcatenateWith_impl(
             move |task_callback| {
                 Ok(ConcatenateWith::handle_some_stream_sink_at_1(
                     &api_that,
-                    task_callback.stream_sink(),
+                    task_callback.stream_sink::<_, u32>(),
                 ))
             }
         },
@@ -2381,7 +2419,7 @@ fn wire_handle_some_static_stream_sink__static_method__ConcatenateWith_impl(
     key: impl Wire2Api<u32> + UnwindSafe,
     max: impl Wire2Api<u32> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "handle_some_static_stream_sink__static_method__ConcatenateWith",
             port: Some(port_),
@@ -2394,7 +2432,7 @@ fn wire_handle_some_static_stream_sink__static_method__ConcatenateWith_impl(
                 Ok(ConcatenateWith::handle_some_static_stream_sink(
                     api_key,
                     api_max,
-                    task_callback.stream_sink(),
+                    task_callback.stream_sink::<_, Log2>(),
                 ))
             }
         },
@@ -2403,7 +2441,7 @@ fn wire_handle_some_static_stream_sink__static_method__ConcatenateWith_impl(
 fn wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith_impl(
     port_: MessagePort,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
         WrapInfo {
             debug_name: "handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith",
             port: Some(port_),
@@ -2412,7 +2450,7 @@ fn wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWit
         move || {
             move |task_callback| {
                 Ok(ConcatenateWith::handle_some_static_stream_sink_single_arg(
-                    task_callback.stream_sink(),
+                    task_callback.stream_sink::<_, u32>(),
                 ))
             }
         },
@@ -2657,59 +2695,199 @@ impl Wire2Api<Weekdays> for i32 {
 }
 // Section: impl IntoDart
 
+//RustOpaque(IrTypeRustOpaque { inner_rust: "Box<dyn DartDebug>", inner_dart: "BoxDartDebug" })
+
+//Delegate(Time(Duration))
+
+//Delegate(TimeList(Duration))
+
+//Delegate(Time(Local))
+
+//Delegate(TimeList(Local))
+
+//Delegate(Time(Naive))
+
+//Delegate(Time(Utc))
+
+//DartOpaque(IrTypeDartOpaque)
+
+//Delegate(Array(GeneralArray { length: 5, general: EnumRef(IrTypeEnumRef { name: "EnumOpaque" }) }))
+
+//RustOpaque(IrTypeRustOpaque { inner_rust: "FrbOpaqueReturn", inner_dart: "FrbOpaqueReturn" })
+
+//SyncReturn(IrTypeSyncReturn(RustOpaque(IrTypeRustOpaque { inner_rust: "FrbOpaqueSyncReturn", inner_dart: "FrbOpaqueSyncReturn" })))
+
+//RustOpaque(IrTypeRustOpaque { inner_rust: "HideData", inner_dart: "HideData" })
+
+//Delegate(Array(GeneralArray { length: 2, general: RustOpaque(IrTypeRustOpaque { inner_rust: "HideData", inner_dart: "HideData" }) }))
+
+//RustOpaque(IrTypeRustOpaque { inner_rust: "i32", inner_dart: "I32" })
+
+//RustOpaque(IrTypeRustOpaque { inner_rust: "Mutex < HideData >", inner_dart: "MutexHideData" })
+
+//SyncReturn(IrTypeSyncReturn(RustOpaque(IrTypeRustOpaque { inner_rust: "NonCloneData", inner_dart: "NonCloneData" })))
+
+//RustOpaque(IrTypeRustOpaque { inner_rust: "NonSendHideData", inner_dart: "NonSendHideData" })
+
+//Delegate(Array(GeneralArray { length: 1, general: DartOpaque(IrTypeDartOpaque) }))
+
+//Delegate(Array(GeneralArray { length: 2, general: StructRef(IrTypeStructRef { name: "Point", freezed: false, empty: false }) }))
+
+//RustOpaque(IrTypeRustOpaque { inner_rust: "RwLock < HideData >", inner_dart: "RwLockHideData" })
+
+//Delegate(String)
+
+//Delegate(StringList)
+
+//Delegate(Array(GeneralArray { length: 3, general: StructRef(IrTypeStructRef { name: "SumWith", freezed: false, empty: false }) }))
+
+//Delegate(Array(GeneralArray { length: 2, general: StructRef(IrTypeStructRef { name: "TestId", freezed: false, empty: false }) }))
+
+//Delegate(Uuid)
+
+//Delegate(Uuids)
+
+//Delegate(ZeroCopyBufferVecPrimitive(F32))
+
+//Delegate(ZeroCopyBufferVecPrimitive(F64))
+
+//Delegate(ZeroCopyBufferVecPrimitive(I16))
+
+//Delegate(ZeroCopyBufferVecPrimitive(I32))
+
+//Delegate(ZeroCopyBufferVecPrimitive(I64))
+
+//Delegate(ZeroCopyBufferVecPrimitive(I8))
+
+//Delegate(ZeroCopyBufferVecPrimitive(U16))
+
+//Delegate(ZeroCopyBufferVecPrimitive(U32))
+
+//Delegate(ZeroCopyBufferVecPrimitive(U64))
+
+//Delegate(ZeroCopyBufferVecPrimitive(U8))
+
+//Record(IrTypeRecord { inner: IrTypeStructRef { name: "__record__String_i32", freezed: false, empty: false }, values: [Delegate(String), Primitive(I32)] })
+
+//StructRef(IrTypeStructRef { name: "A", freezed: false, empty: false })
 impl support::IntoDart for A {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.a.into_dart()].into_dart()
+        vec![self.a.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for A {}
+impl rust2dart::IntoIntoDart<A> for A {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//EnumRef(IrTypeEnumRef { name: "Abc" })
 impl support::IntoDart for Abc {
     fn into_dart(self) -> support::DartAbi {
         match self {
-            Self::A(field0) => vec![0.into_dart(), field0.into_dart()],
-            Self::B(field0) => vec![1.into_dart(), field0.into_dart()],
-            Self::C(field0) => vec![2.into_dart(), field0.into_dart()],
-            Self::JustInt(field0) => vec![3.into_dart(), field0.into_dart()],
+            Self::A(field0) => vec![0.into_dart(), field0.into_into_dart().into_dart()],
+            Self::B(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
+            Self::C(field0) => vec![2.into_dart(), field0.into_into_dart().into_dart()],
+            Self::JustInt(field0) => vec![3.into_dart(), field0.into_into_dart().into_dart()],
         }
         .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for Abc {}
+impl rust2dart::IntoIntoDart<Abc> for Abc {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
+
+//StructRef(IrTypeStructRef { name: "ApplicationEnv", freezed: false, empty: false })
 impl support::IntoDart for mirror_ApplicationEnv {
     fn into_dart(self) -> support::DartAbi {
-        vec![self
-            .0
-            .vars
-            .into_iter()
-            .map(|v| mirror_ApplicationEnvVar(v))
-            .collect::<Vec<_>>()
-            .into_dart()]
-        .into_dart()
+        vec![self.0.vars.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_ApplicationEnv {}
+impl rust2dart::IntoIntoDart<mirror_ApplicationEnv> for ApplicationEnv {
+    fn into_into_dart(self) -> mirror_ApplicationEnv {
+        mirror_ApplicationEnv(self)
+    }
+}
+pub trait ApplicationEnvStreamSink {
+    fn add(&self, val: ApplicationEnv) -> bool;
+}
+impl ApplicationEnvStreamSink for StreamSink<ApplicationEnv> {
+    fn add(&self, val: ApplicationEnv) -> bool {
+        self.add_inner::<_, mirror_ApplicationEnv>(val)
+    }
+}
+pub trait VecApplicationEnvStreamSink {
+    fn add(&self, val: Vec<ApplicationEnv>) -> bool;
+}
+impl VecApplicationEnvStreamSink for StreamSink<Vec<ApplicationEnv>> {
+    fn add(&self, val: Vec<ApplicationEnv>) -> bool {
+        self.add_inner::<_, Vec<mirror_ApplicationEnv>>(val)
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "ApplicationEnvVar", freezed: false, empty: false })
 impl support::IntoDart for mirror_ApplicationEnvVar {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.0 .0.into_dart(), self.0 .1.into_dart()].into_dart()
+        vec![
+            self.0 .0.into_into_dart().into_dart(),
+            self.0 .1.into_into_dart().into_dart(),
+        ]
+        .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_ApplicationEnvVar {}
+impl rust2dart::IntoIntoDart<mirror_ApplicationEnvVar> for ApplicationEnvVar {
+    fn into_into_dart(self) -> mirror_ApplicationEnvVar {
+        mirror_ApplicationEnvVar(self)
+    }
+}
+pub trait ApplicationEnvVarStreamSink {
+    fn add(&self, val: ApplicationEnvVar) -> bool;
+}
+impl ApplicationEnvVarStreamSink for StreamSink<ApplicationEnvVar> {
+    fn add(&self, val: ApplicationEnvVar) -> bool {
+        self.add_inner::<_, mirror_ApplicationEnvVar>(val)
+    }
+}
+pub trait VecApplicationEnvVarStreamSink {
+    fn add(&self, val: Vec<ApplicationEnvVar>) -> bool;
+}
+impl VecApplicationEnvVarStreamSink for StreamSink<Vec<ApplicationEnvVar>> {
+    fn add(&self, val: Vec<ApplicationEnvVar>) -> bool {
+        self.add_inner::<_, Vec<mirror_ApplicationEnvVar>>(val)
+    }
+}
 
+//EnumRef(IrTypeEnumRef { name: "ApplicationMessage" })
 impl support::IntoDart for mirror_ApplicationMessage {
     fn into_dart(self) -> support::DartAbi {
         match self.0 {
-            ApplicationMessage::DisplayMessage(field0) => vec![0.into_dart(), field0.into_dart()],
-            ApplicationMessage::RenderPixel { x, y } => {
-                vec![1.into_dart(), x.into_dart(), y.into_dart()]
+            ApplicationMessage::DisplayMessage(field0) => {
+                vec![0.into_dart(), field0.into_into_dart().into_dart()]
             }
+            ApplicationMessage::RenderPixel { x, y } => vec![
+                1.into_dart(),
+                x.into_into_dart().into_dart(),
+                y.into_into_dart().into_dart(),
+            ],
             ApplicationMessage::Exit => vec![2.into_dart()],
         }
         .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_ApplicationMessage {}
+impl rust2dart::IntoIntoDart<mirror_ApplicationMessage> for ApplicationMessage {
+    fn into_into_dart(self) -> mirror_ApplicationMessage {
+        mirror_ApplicationMessage(self)
+    }
+}
+
+//Delegate(PrimitiveEnum { ir: IrTypeEnumRef { name: "ApplicationMode" }, repr: I32 })
 impl support::IntoDart for mirror_ApplicationMode {
     fn into_dart(self) -> support::DartAbi {
         match self.0 {
@@ -2720,13 +2898,20 @@ impl support::IntoDart for mirror_ApplicationMode {
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_ApplicationMode {}
+impl rust2dart::IntoIntoDart<mirror_ApplicationMode> for ApplicationMode {
+    fn into_into_dart(self) -> mirror_ApplicationMode {
+        mirror_ApplicationMode(self)
+    }
+}
+
+//StructRef(IrTypeStructRef { name: "ApplicationSettings", freezed: false, empty: false })
 impl support::IntoDart for mirror_ApplicationSettings {
     fn into_dart(self) -> support::DartAbi {
         vec![
-            self.0.name.into_dart(),
-            self.0.version.into_dart(),
-            mirror_ApplicationMode(self.0.mode).into_dart(),
-            mirror_ApplicationEnv((*self.0.env)).into_dart(),
+            self.0.name.into_into_dart().into_dart(),
+            self.0.version.into_into_dart().into_dart(),
+            self.0.mode.into_into_dart().into_dart(),
+            self.0.env.into_into_dart().into_dart(),
             self.0
                 .env_optional
                 .map(|v| mirror_ApplicationEnv(v))
@@ -2736,77 +2921,226 @@ impl support::IntoDart for mirror_ApplicationSettings {
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_ApplicationSettings {}
+impl rust2dart::IntoIntoDart<mirror_ApplicationSettings> for ApplicationSettings {
+    fn into_into_dart(self) -> mirror_ApplicationSettings {
+        mirror_ApplicationSettings(self)
+    }
+}
+pub trait ApplicationSettingsStreamSink {
+    fn add(&self, val: ApplicationSettings) -> bool;
+}
+impl ApplicationSettingsStreamSink for StreamSink<ApplicationSettings> {
+    fn add(&self, val: ApplicationSettings) -> bool {
+        self.add_inner::<_, mirror_ApplicationSettings>(val)
+    }
+}
+pub trait VecApplicationSettingsStreamSink {
+    fn add(&self, val: Vec<ApplicationSettings>) -> bool;
+}
+impl VecApplicationSettingsStreamSink for StreamSink<Vec<ApplicationSettings>> {
+    fn add(&self, val: Vec<ApplicationSettings>) -> bool {
+        self.add_inner::<_, Vec<mirror_ApplicationSettings>>(val)
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "Attribute", freezed: false, empty: false })
 impl support::IntoDart for Attribute {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.key.into_dart(), self.value.into_dart()].into_dart()
+        vec![
+            self.key.into_into_dart().into_dart(),
+            self.value.into_into_dart().into_dart(),
+        ]
+        .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for Attribute {}
+impl rust2dart::IntoIntoDart<Attribute> for Attribute {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "B", freezed: false, empty: false })
 impl support::IntoDart for B {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.b.into_dart()].into_dart()
+        vec![self.b.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for B {}
+impl rust2dart::IntoIntoDart<B> for B {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "BigBuffers", freezed: false, empty: false })
 impl support::IntoDart for BigBuffers {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.int64.into_dart(), self.uint64.into_dart()].into_dart()
+        vec![
+            self.int64.into_into_dart().into_dart(),
+            self.uint64.into_into_dart().into_dart(),
+        ]
+        .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for BigBuffers {}
+impl rust2dart::IntoIntoDart<BigBuffers> for BigBuffers {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "Blob", freezed: false, empty: false })
 impl support::IntoDart for Blob {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.0.into_dart()].into_dart()
+        vec![self.0.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for Blob {}
+impl rust2dart::IntoIntoDart<Blob> for Blob {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//Primitive(Bool)
+
+//Boxed(IrTypeBoxed { exist_in_real_api: true, inner: StructRef(IrTypeStructRef { name: "ApplicationEnv", freezed: false, empty: false }) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Delegate(Time(Duration)) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Delegate(Time(Naive)) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Delegate(Time(Utc)) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: DartOpaque(IrTypeDartOpaque) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: RustOpaque(IrTypeRustOpaque { inner_rust: "HideData", inner_dart: "HideData" }) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "A", freezed: false, empty: false }) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "ApplicationEnv", freezed: false, empty: false }) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "Attribute", freezed: false, empty: false }) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "B", freezed: false, empty: false }) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Primitive(Bool) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "C", freezed: false, empty: false }) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "Element", freezed: false, empty: false }) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "ExoticOptionals", freezed: false, empty: false }) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Primitive(F64) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Primitive(I32) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Primitive(I64) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "ListOfNestedRawStringMirrored", freezed: false, empty: false }) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: EnumRef(IrTypeEnumRef { name: "Measure" }) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "NestedRawStringMirrored", freezed: false, empty: false }) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "NewTypeInt", freezed: false, empty: false }) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "RawStringMirrored", freezed: false, empty: false }) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Delegate(PrimitiveEnum { ir: IrTypeEnumRef { name: "Weekdays" }, repr: I32 }) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: true, inner: EnumRef(IrTypeEnumRef { name: "Distance" }) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: true, inner: StructRef(IrTypeStructRef { name: "FeedId", freezed: false, empty: false }) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: true, inner: EnumRef(IrTypeEnumRef { name: "KitchenSink" }) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: true, inner: EnumRef(IrTypeEnumRef { name: "Speed" }) })
+
+//Boxed(IrTypeBoxed { exist_in_real_api: true, inner: Delegate(Array(PrimitiveArray { length: 8, primitive: U8 })) })
+
+//StructRef(IrTypeStructRef { name: "C", freezed: false, empty: false })
 impl support::IntoDart for C {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.c.into_dart()].into_dart()
+        vec![self.c.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for C {}
+impl rust2dart::IntoIntoDart<C> for C {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "ConcatenateWith", freezed: false, empty: false })
 impl support::IntoDart for ConcatenateWith {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.a.into_dart()].into_dart()
+        vec![self.a.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for ConcatenateWith {}
+impl rust2dart::IntoIntoDart<ConcatenateWith> for ConcatenateWith {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "ContainsMirroredSubStruct", freezed: false, empty: false })
 impl support::IntoDart for ContainsMirroredSubStruct {
     fn into_dart(self) -> support::DartAbi {
         vec![
-            mirror_RawStringMirrored(self.test).into_dart(),
-            self.test2.into_dart(),
+            self.test.into_into_dart().into_dart(),
+            self.test2.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for ContainsMirroredSubStruct {}
+impl rust2dart::IntoIntoDart<ContainsMirroredSubStruct> for ContainsMirroredSubStruct {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "DartOpaqueNested", freezed: false, empty: false })
 impl support::IntoDart for DartOpaqueNested {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.first.into_dart(), self.second.into_dart()].into_dart()
+        vec![
+            self.first.into_into_dart().into_dart(),
+            self.second.into_into_dart().into_dart(),
+        ]
+        .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for DartOpaqueNested {}
+impl rust2dart::IntoIntoDart<DartOpaqueNested> for DartOpaqueNested {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//Dynamic(IrTypeDynamic)
+
+//EnumRef(IrTypeEnumRef { name: "Distance" })
 impl support::IntoDart for Distance {
     fn into_dart(self) -> support::DartAbi {
         match self {
             Self::Unknown => vec![0.into_dart()],
-            Self::Map(field0) => vec![1.into_dart(), field0.into_dart()],
+            Self::Map(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
         }
         .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for Distance {}
+impl rust2dart::IntoIntoDart<Distance> for Distance {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
+
+//StructRef(IrTypeStructRef { name: "Element", freezed: false, empty: false })
 impl support::IntoDart for Element {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -2819,24 +3153,43 @@ impl support::IntoDart for Element {
     }
 }
 impl support::IntoDartExceptPrimitive for Element {}
+impl rust2dart::IntoIntoDart<Element> for Element {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "Empty", freezed: false, empty: true })
 impl support::IntoDart for Empty {
     fn into_dart(self) -> support::DartAbi {
         Vec::<u8>::new().into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for Empty {}
+impl rust2dart::IntoIntoDart<Empty> for Empty {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//EnumRef(IrTypeEnumRef { name: "EnumDartOpaque" })
 impl support::IntoDart for EnumDartOpaque {
     fn into_dart(self) -> support::DartAbi {
         match self {
-            Self::Primitive(field0) => vec![0.into_dart(), field0.into_dart()],
-            Self::Opaque(field0) => vec![1.into_dart(), field0.into_dart()],
+            Self::Primitive(field0) => vec![0.into_dart(), field0.into_into_dart().into_dart()],
+            Self::Opaque(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
         }
         .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for EnumDartOpaque {}
+impl rust2dart::IntoIntoDart<EnumDartOpaque> for EnumDartOpaque {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
+
+//EnumRef(IrTypeEnumRef { name: "EnumOpaque" })
 impl support::IntoDart for EnumOpaque {
     fn into_dart(self) -> support::DartAbi {
         match self {
@@ -2850,13 +3203,30 @@ impl support::IntoDart for EnumOpaque {
     }
 }
 impl support::IntoDartExceptPrimitive for EnumOpaque {}
+impl rust2dart::IntoIntoDart<EnumOpaque> for EnumOpaque {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
+
+//StructRef(IrTypeStructRef { name: "Event", freezed: true, empty: false })
 impl support::IntoDart for Event {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.address.into_dart(), self.payload.into_dart()].into_dart()
+        vec![
+            self.address.into_into_dart().into_dart(),
+            self.payload.into_into_dart().into_dart(),
+        ]
+        .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for Event {}
+impl rust2dart::IntoIntoDart<Event> for Event {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "ExoticOptionals", freezed: false, empty: false })
 impl support::IntoDart for ExoticOptionals {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -2871,7 +3241,7 @@ impl support::IntoDart for ExoticOptionals {
             self.float32list.into_dart(),
             self.float64list.into_dart(),
             self.attributes.into_dart(),
-            self.attributes_nullable.into_dart(),
+            self.attributes_nullable.into_into_dart().into_dart(),
             self.nullable_attributes.into_dart(),
             self.newtypeint.into_dart(),
         ]
@@ -2879,21 +3249,69 @@ impl support::IntoDart for ExoticOptionals {
     }
 }
 impl support::IntoDartExceptPrimitive for ExoticOptionals {}
+impl rust2dart::IntoIntoDart<ExoticOptionals> for ExoticOptionals {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//Primitive(F32)
+
+//Primitive(F64)
+
+//StructRef(IrTypeStructRef { name: "FeatureUuid", freezed: false, empty: false })
 impl support::IntoDart for FeatureUuid {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.one.into_dart(), self.many.into_dart()].into_dart()
+        vec![
+            self.one.into_into_dart().into_dart(),
+            self.many.into_into_dart().into_dart(),
+        ]
+        .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for FeatureUuid {}
+impl rust2dart::IntoIntoDart<FeatureUuid> for FeatureUuid {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "FeedId", freezed: false, empty: false })
 impl support::IntoDart for FeedId {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.0.into_dart()].into_dart()
+        vec![self.0.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for FeedId {}
+impl rust2dart::IntoIntoDart<FeedId> for FeedId {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//PrimitiveList(IrTypePrimitiveList { primitive: F32 })
+
+//PrimitiveList(IrTypePrimitiveList { primitive: F64 })
+
+//Primitive(I16)
+
+//Primitive(I32)
+
+//Delegate(Array(PrimitiveArray { length: 2, primitive: I32 }))
+
+//Primitive(I64)
+
+//Primitive(I8)
+
+//PrimitiveList(IrTypePrimitiveList { primitive: I16 })
+
+//PrimitiveList(IrTypePrimitiveList { primitive: I32 })
+
+//PrimitiveList(IrTypePrimitiveList { primitive: I64 })
+
+//PrimitiveList(IrTypePrimitiveList { primitive: I8 })
+
+//EnumRef(IrTypeEnumRef { name: "KitchenSink" })
 impl support::IntoDart for KitchenSink {
     fn into_dart(self) -> support::DartAbi {
         match self {
@@ -2904,82 +3322,199 @@ impl support::IntoDart for KitchenSink {
                 boolean,
             } => vec![
                 1.into_dart(),
-                int32.into_dart(),
-                float64.into_dart(),
-                boolean.into_dart(),
+                int32.into_into_dart().into_dart(),
+                float64.into_into_dart().into_dart(),
+                boolean.into_into_dart().into_dart(),
             ],
-            Self::Nested(field0, field1) => {
-                vec![2.into_dart(), field0.into_dart(), field1.into_dart()]
-            }
+            Self::Nested(field0, field1) => vec![
+                2.into_dart(),
+                field0.into_into_dart().into_dart(),
+                field1.into_into_dart().into_dart(),
+            ],
             Self::Optional(field0, field1) => {
                 vec![3.into_dart(), field0.into_dart(), field1.into_dart()]
             }
-            Self::Buffer(field0) => vec![4.into_dart(), field0.into_dart()],
-            Self::Enums(field0) => vec![5.into_dart(), field0.into_dart()],
+            Self::Buffer(field0) => vec![4.into_dart(), field0.into_into_dart().into_dart()],
+            Self::Enums(field0) => vec![5.into_dart(), field0.into_into_dart().into_dart()],
         }
         .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for KitchenSink {}
+impl rust2dart::IntoIntoDart<KitchenSink> for KitchenSink {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//GeneralList(IrTypeGeneralList { inner: DartOpaque(IrTypeDartOpaque) })
+
+//GeneralList(IrTypeGeneralList { inner: RustOpaque(IrTypeRustOpaque { inner_rust: "HideData", inner_dart: "HideData" }) })
+
+//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "ApplicationEnvVar", freezed: false, empty: false }) })
+
+//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "ApplicationSettings", freezed: false, empty: false }) })
+
+//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "Attribute", freezed: false, empty: false }) })
+
+//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "Element", freezed: false, empty: false }) })
+
+//GeneralList(IrTypeGeneralList { inner: EnumRef(IrTypeEnumRef { name: "EnumOpaque" }) })
+
+//GeneralList(IrTypeGeneralList { inner: Delegate(PrimitiveEnum { ir: IrTypeEnumRef { name: "MyEnum" }, repr: I32 }) })
+
+//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "MySize", freezed: false, empty: false }) })
+
+//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "MyTreeNode", freezed: false, empty: false }) })
+
+//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "NestedRawStringMirrored", freezed: false, empty: false }) })
+
+//StructRef(IrTypeStructRef { name: "ListOfNestedRawStringMirrored", freezed: false, empty: false })
 impl support::IntoDart for mirror_ListOfNestedRawStringMirrored {
     fn into_dart(self) -> support::DartAbi {
-        vec![self
-            .0
-            .raw
-            .into_iter()
-            .map(|v| mirror_NestedRawStringMirrored(v))
-            .collect::<Vec<_>>()
-            .into_dart()]
-        .into_dart()
+        vec![self.0.raw.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_ListOfNestedRawStringMirrored {}
+impl rust2dart::IntoIntoDart<mirror_ListOfNestedRawStringMirrored>
+    for ListOfNestedRawStringMirrored
+{
+    fn into_into_dart(self) -> mirror_ListOfNestedRawStringMirrored {
+        mirror_ListOfNestedRawStringMirrored(self)
+    }
+}
+pub trait ListOfNestedRawStringMirroredStreamSink {
+    fn add(&self, val: ListOfNestedRawStringMirrored) -> bool;
+}
+impl ListOfNestedRawStringMirroredStreamSink for StreamSink<ListOfNestedRawStringMirrored> {
+    fn add(&self, val: ListOfNestedRawStringMirrored) -> bool {
+        self.add_inner::<_, mirror_ListOfNestedRawStringMirrored>(val)
+    }
+}
+pub trait VecListOfNestedRawStringMirroredStreamSink {
+    fn add(&self, val: Vec<ListOfNestedRawStringMirrored>) -> bool;
+}
+impl VecListOfNestedRawStringMirroredStreamSink for StreamSink<Vec<ListOfNestedRawStringMirrored>> {
+    fn add(&self, val: Vec<ListOfNestedRawStringMirrored>) -> bool {
+        self.add_inner::<_, Vec<mirror_ListOfNestedRawStringMirrored>>(val)
+    }
+}
 
+//GeneralList(IrTypeGeneralList { inner: Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "Attribute", freezed: false, empty: false }) }) }) })
+
+//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "Point", freezed: false, empty: false }) })
+
+//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "RawStringMirrored", freezed: false, empty: false }) })
+
+//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "SumWith", freezed: false, empty: false }) })
+
+//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "TestId", freezed: false, empty: false }) })
+
+//GeneralList(IrTypeGeneralList { inner: Delegate(PrimitiveEnum { ir: IrTypeEnumRef { name: "Weekdays" }, repr: I32 }) })
+
+//StructRef(IrTypeStructRef { name: "Log", freezed: false, empty: false })
 impl support::IntoDart for Log {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.key.into_dart(), self.value.into_dart()].into_dart()
+        vec![
+            self.key.into_into_dart().into_dart(),
+            self.value.into_into_dart().into_dart(),
+        ]
+        .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for Log {}
+impl rust2dart::IntoIntoDart<Log> for Log {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "Log2", freezed: false, empty: false })
 impl support::IntoDart for Log2 {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.key.into_dart(), self.value.into_dart()].into_dart()
+        vec![
+            self.key.into_into_dart().into_dart(),
+            self.value.into_into_dart().into_dart(),
+        ]
+        .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for Log2 {}
+impl rust2dart::IntoIntoDart<Log2> for Log2 {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//EnumRef(IrTypeEnumRef { name: "Measure" })
 impl support::IntoDart for Measure {
     fn into_dart(self) -> support::DartAbi {
         match self {
-            Self::Speed(field0) => vec![0.into_dart(), field0.into_dart()],
-            Self::Distance(field0) => vec![1.into_dart(), field0.into_dart()],
+            Self::Speed(field0) => vec![0.into_dart(), field0.into_into_dart().into_dart()],
+            Self::Distance(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
         }
         .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for Measure {}
+impl rust2dart::IntoIntoDart<Measure> for Measure {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
+
+//StructRef(IrTypeStructRef { name: "MessageId", freezed: false, empty: false })
 impl support::IntoDart for MessageId {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.0.into_dart()].into_dart()
+        vec![self.0.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for MessageId {}
+impl rust2dart::IntoIntoDart<MessageId> for MessageId {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "MirrorStruct", freezed: false, empty: false })
+impl support::IntoDart for MirrorStruct {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.a.into_into_dart().into_dart(),
+            self.b.into_into_dart().into_dart(),
+            self.c.into_into_dart().into_dart(),
+            self.d.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for MirrorStruct {}
+impl rust2dart::IntoIntoDart<MirrorStruct> for MirrorStruct {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
+
+//StructRef(IrTypeStructRef { name: "MoreThanJustOneRawStringStruct", freezed: false, empty: false })
 impl support::IntoDart for MoreThanJustOneRawStringStruct {
     fn into_dart(self) -> support::DartAbi {
         vec![
-            self.regular.into_dart(),
-            self.r#type.into_dart(),
-            self.r#async.into_dart(),
-            self.another.into_dart(),
+            self.regular.into_into_dart().into_dart(),
+            self.r#type.into_into_dart().into_dart(),
+            self.r#async.into_into_dart().into_dart(),
+            self.another.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for MoreThanJustOneRawStringStruct {}
+impl rust2dart::IntoIntoDart<MoreThanJustOneRawStringStruct> for MoreThanJustOneRawStringStruct {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//Delegate(PrimitiveEnum { ir: IrTypeEnumRef { name: "MyEnum" }, repr: I32 })
 impl support::IntoDart for MyEnum {
     fn into_dart(self) -> support::DartAbi {
         match self {
@@ -2990,160 +3525,413 @@ impl support::IntoDart for MyEnum {
     }
 }
 impl support::IntoDartExceptPrimitive for MyEnum {}
+impl rust2dart::IntoIntoDart<MyEnum> for MyEnum {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
+
+//StructRef(IrTypeStructRef { name: "MyNestedStruct", freezed: false, empty: false })
 impl support::IntoDart for MyNestedStruct {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.tree_node.into_dart(), self.weekday.into_dart()].into_dart()
+        vec![
+            self.tree_node.into_into_dart().into_dart(),
+            self.weekday.into_into_dart().into_dart(),
+        ]
+        .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for MyNestedStruct {}
+impl rust2dart::IntoIntoDart<MyNestedStruct> for MyNestedStruct {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "MySize", freezed: false, empty: false })
 impl support::IntoDart for MySize {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.width.into_dart(), self.height.into_dart()].into_dart()
+        vec![
+            self.width.into_into_dart().into_dart(),
+            self.height.into_into_dart().into_dart(),
+        ]
+        .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for MySize {}
+impl rust2dart::IntoIntoDart<MySize> for MySize {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "MyStreamEntry", freezed: false, empty: false })
 impl support::IntoDart for MyStreamEntry {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.hello.into_dart()].into_dart()
+        vec![self.hello.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for MyStreamEntry {}
+impl rust2dart::IntoIntoDart<MyStreamEntry> for MyStreamEntry {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "MyStruct", freezed: false, empty: false })
 impl support::IntoDart for MyStruct {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.content.into_dart()].into_dart()
+        vec![self.content.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for MyStruct {}
+impl rust2dart::IntoIntoDart<MyStruct> for MyStruct {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "MyTreeNode", freezed: false, empty: false })
 impl support::IntoDart for MyTreeNode {
     fn into_dart(self) -> support::DartAbi {
         vec![
-            self.value_i32.into_dart(),
-            self.value_vec_u8.into_dart(),
-            self.value_boolean.into_dart(),
-            self.children.into_dart(),
+            self.value_i32.into_into_dart().into_dart(),
+            self.value_vec_u8.into_into_dart().into_dart(),
+            self.value_boolean.into_into_dart().into_dart(),
+            self.children.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for MyTreeNode {}
+impl rust2dart::IntoIntoDart<MyTreeNode> for MyTreeNode {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "NestedRawStringMirrored", freezed: false, empty: false })
 impl support::IntoDart for mirror_NestedRawStringMirrored {
     fn into_dart(self) -> support::DartAbi {
-        vec![mirror_RawStringMirrored(self.0.raw).into_dart()].into_dart()
+        vec![self.0.raw.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_NestedRawStringMirrored {}
+impl rust2dart::IntoIntoDart<mirror_NestedRawStringMirrored> for NestedRawStringMirrored {
+    fn into_into_dart(self) -> mirror_NestedRawStringMirrored {
+        mirror_NestedRawStringMirrored(self)
+    }
+}
+pub trait NestedRawStringMirroredStreamSink {
+    fn add(&self, val: NestedRawStringMirrored) -> bool;
+}
+impl NestedRawStringMirroredStreamSink for StreamSink<NestedRawStringMirrored> {
+    fn add(&self, val: NestedRawStringMirrored) -> bool {
+        self.add_inner::<_, mirror_NestedRawStringMirrored>(val)
+    }
+}
+pub trait VecNestedRawStringMirroredStreamSink {
+    fn add(&self, val: Vec<NestedRawStringMirrored>) -> bool;
+}
+impl VecNestedRawStringMirroredStreamSink for StreamSink<Vec<NestedRawStringMirrored>> {
+    fn add(&self, val: Vec<NestedRawStringMirrored>) -> bool {
+        self.add_inner::<_, Vec<mirror_NestedRawStringMirrored>>(val)
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "NewSimpleStruct", freezed: false, empty: false })
 impl support::IntoDart for NewSimpleStruct {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.field.into_dart()].into_dart()
+        vec![self.field.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for NewSimpleStruct {}
+impl rust2dart::IntoIntoDart<NewSimpleStruct> for NewSimpleStruct {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "NewTypeInt", freezed: false, empty: false })
 impl support::IntoDart for NewTypeInt {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.0.into_dart()].into_dart()
+        vec![self.0.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for NewTypeInt {}
+impl rust2dart::IntoIntoDart<NewTypeInt> for NewTypeInt {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "Numbers", freezed: false, empty: false })
 impl support::IntoDart for mirror_Numbers {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.0 .0.into_dart()].into_dart()
+        vec![self.0 .0.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_Numbers {}
+impl rust2dart::IntoIntoDart<mirror_Numbers> for Numbers {
+    fn into_into_dart(self) -> mirror_Numbers {
+        mirror_Numbers(self)
+    }
+}
+pub trait NumbersStreamSink {
+    fn add(&self, val: Numbers) -> bool;
+}
+impl NumbersStreamSink for StreamSink<Numbers> {
+    fn add(&self, val: Numbers) -> bool {
+        self.add_inner::<_, mirror_Numbers>(val)
+    }
+}
+pub trait VecNumbersStreamSink {
+    fn add(&self, val: Vec<Numbers>) -> bool;
+}
+impl VecNumbersStreamSink for StreamSink<Vec<Numbers>> {
+    fn add(&self, val: Vec<Numbers>) -> bool {
+        self.add_inner::<_, Vec<mirror_Numbers>>(val)
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "OldSimpleStruct", freezed: false, empty: false })
 impl support::IntoDart for OldSimpleStruct {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.field.into_dart()].into_dart()
+        vec![self.field.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for OldSimpleStruct {}
+impl rust2dart::IntoIntoDart<OldSimpleStruct> for OldSimpleStruct {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "OpaqueNested", freezed: false, empty: false })
 impl support::IntoDart for OpaqueNested {
     fn into_dart(self) -> support::DartAbi {
         vec![self.first.into_dart(), self.second.into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for OpaqueNested {}
+impl rust2dart::IntoIntoDart<OpaqueNested> for OpaqueNested {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//Optional(IrTypeOptional { inner: Delegate(String) })
+
+//Optional(IrTypeOptional { inner: Delegate(ZeroCopyBufferVecPrimitive(U8)) })
+
+//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Delegate(Time(Duration)) }) })
+
+//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Delegate(Time(Naive)) }) })
+
+//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Delegate(Time(Utc)) }) })
+
+//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: DartOpaque(IrTypeDartOpaque) }) })
+
+//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: RustOpaque(IrTypeRustOpaque { inner_rust: "HideData", inner_dart: "HideData" }) }) })
+
+//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "ApplicationEnv", freezed: false, empty: false }) }) })
+
+//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "Attribute", freezed: false, empty: false }) }) })
+
+//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Primitive(Bool) }) })
+
+//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "Element", freezed: false, empty: false }) }) })
+
+//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "ExoticOptionals", freezed: false, empty: false }) }) })
+
+//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Primitive(F64) }) })
+
+//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Primitive(I32) }) })
+
+//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Primitive(I64) }) })
+
+//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: EnumRef(IrTypeEnumRef { name: "Measure" }) }) })
+
+//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "NewTypeInt", freezed: false, empty: false }) }) })
+
+//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Delegate(PrimitiveEnum { ir: IrTypeEnumRef { name: "Weekdays" }, repr: I32 }) }) })
+
+//Optional(IrTypeOptional { inner: PrimitiveList(IrTypePrimitiveList { primitive: F32 }) })
+
+//Optional(IrTypeOptional { inner: PrimitiveList(IrTypePrimitiveList { primitive: F64 }) })
+
+//Optional(IrTypeOptional { inner: PrimitiveList(IrTypePrimitiveList { primitive: I32 }) })
+
+//Optional(IrTypeOptional { inner: PrimitiveList(IrTypePrimitiveList { primitive: I8 }) })
+
+//Optional(IrTypeOptional { inner: GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "Attribute", freezed: false, empty: false }) }) })
+
+//Optional(IrTypeOptional { inner: GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "Element", freezed: false, empty: false }) }) })
+
+//Optional(IrTypeOptional { inner: GeneralList(IrTypeGeneralList { inner: Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "Attribute", freezed: false, empty: false }) }) }) }) })
+
+//Optional(IrTypeOptional { inner: PrimitiveList(IrTypePrimitiveList { primitive: U8 }) })
+
+//StructRef(IrTypeStructRef { name: "Point", freezed: false, empty: false })
 impl support::IntoDart for Point {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.x.into_dart(), self.y.into_dart()].into_dart()
+        vec![
+            self.x.into_into_dart().into_dart(),
+            self.y.into_into_dart().into_dart(),
+        ]
+        .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for Point {}
+impl rust2dart::IntoIntoDart<Point> for Point {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//EnumRef(IrTypeEnumRef { name: "RawStringEnumMirrored" })
 impl support::IntoDart for mirror_RawStringEnumMirrored {
     fn into_dart(self) -> support::DartAbi {
         match self.0 {
             RawStringEnumMirrored::Raw(field0) => {
-                vec![0.into_dart(), mirror_RawStringMirrored(field0).into_dart()]
+                vec![0.into_dart(), field0.into_into_dart().into_dart()]
             }
-            RawStringEnumMirrored::Nested(field0) => vec![
-                1.into_dart(),
-                mirror_NestedRawStringMirrored(field0).into_dart(),
-            ],
-            RawStringEnumMirrored::ListOfNested(field0) => vec![
-                2.into_dart(),
-                mirror_ListOfNestedRawStringMirrored(field0).into_dart(),
-            ],
+            RawStringEnumMirrored::Nested(field0) => {
+                vec![1.into_dart(), field0.into_into_dart().into_dart()]
+            }
+            RawStringEnumMirrored::ListOfNested(field0) => {
+                vec![2.into_dart(), field0.into_into_dart().into_dart()]
+            }
         }
         .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_RawStringEnumMirrored {}
+impl rust2dart::IntoIntoDart<mirror_RawStringEnumMirrored> for RawStringEnumMirrored {
+    fn into_into_dart(self) -> mirror_RawStringEnumMirrored {
+        mirror_RawStringEnumMirrored(self)
+    }
+}
+
+//StructRef(IrTypeStructRef { name: "RawStringItemStruct", freezed: false, empty: false })
 impl support::IntoDart for RawStringItemStruct {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.r#type.into_dart()].into_dart()
+        vec![self.r#type.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for RawStringItemStruct {}
+impl rust2dart::IntoIntoDart<RawStringItemStruct> for RawStringItemStruct {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "RawStringMirrored", freezed: false, empty: false })
 impl support::IntoDart for mirror_RawStringMirrored {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.0.r#value.into_dart()].into_dart()
+        vec![self.0.r#value.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_RawStringMirrored {}
+impl rust2dart::IntoIntoDart<mirror_RawStringMirrored> for RawStringMirrored {
+    fn into_into_dart(self) -> mirror_RawStringMirrored {
+        mirror_RawStringMirrored(self)
+    }
+}
+pub trait RawStringMirroredStreamSink {
+    fn add(&self, val: RawStringMirrored) -> bool;
+}
+impl RawStringMirroredStreamSink for StreamSink<RawStringMirrored> {
+    fn add(&self, val: RawStringMirrored) -> bool {
+        self.add_inner::<_, mirror_RawStringMirrored>(val)
+    }
+}
+pub trait VecRawStringMirroredStreamSink {
+    fn add(&self, val: Vec<RawStringMirrored>) -> bool;
+}
+impl VecRawStringMirroredStreamSink for StreamSink<Vec<RawStringMirrored>> {
+    fn add(&self, val: Vec<RawStringMirrored>) -> bool {
+        self.add_inner::<_, Vec<mirror_RawStringMirrored>>(val)
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "Sequences", freezed: false, empty: false })
 impl support::IntoDart for mirror_Sequences {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.0 .0.into_dart()].into_dart()
+        vec![self.0 .0.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_Sequences {}
+impl rust2dart::IntoIntoDart<mirror_Sequences> for Sequences {
+    fn into_into_dart(self) -> mirror_Sequences {
+        mirror_Sequences(self)
+    }
+}
+pub trait SequencesStreamSink {
+    fn add(&self, val: Sequences) -> bool;
+}
+impl SequencesStreamSink for StreamSink<Sequences> {
+    fn add(&self, val: Sequences) -> bool {
+        self.add_inner::<_, mirror_Sequences>(val)
+    }
+}
+pub trait VecSequencesStreamSink {
+    fn add(&self, val: Vec<Sequences>) -> bool;
+}
+impl VecSequencesStreamSink for StreamSink<Vec<Sequences>> {
+    fn add(&self, val: Vec<Sequences>) -> bool {
+        self.add_inner::<_, Vec<mirror_Sequences>>(val)
+    }
+}
 
+//EnumRef(IrTypeEnumRef { name: "Speed" })
 impl support::IntoDart for Speed {
     fn into_dart(self) -> support::DartAbi {
         match self {
             Self::Unknown => vec![0.into_dart()],
-            Self::GPS(field0) => vec![1.into_dart(), field0.into_dart()],
+            Self::GPS(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
         }
         .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for Speed {}
+impl rust2dart::IntoIntoDart<Speed> for Speed {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
+
+//StructRef(IrTypeStructRef { name: "StructWithEnum", freezed: false, empty: false })
 impl support::IntoDart for StructWithEnum {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.abc1.into_dart(), self.abc2.into_dart()].into_dart()
+        vec![
+            self.abc1.into_into_dart().into_dart(),
+            self.abc2.into_into_dart().into_dart(),
+        ]
+        .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for StructWithEnum {}
+impl rust2dart::IntoIntoDart<StructWithEnum> for StructWithEnum {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "SumWith", freezed: false, empty: false })
 impl support::IntoDart for SumWith {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.x.into_dart()].into_dart()
+        vec![self.x.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for SumWith {}
+impl rust2dart::IntoIntoDart<SumWith> for SumWith {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "TestChrono", freezed: false, empty: false })
 impl support::IntoDart for TestChrono {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -3155,53 +3943,111 @@ impl support::IntoDart for TestChrono {
     }
 }
 impl support::IntoDartExceptPrimitive for TestChrono {}
+impl rust2dart::IntoIntoDart<TestChrono> for TestChrono {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "TestId", freezed: false, empty: false })
 impl support::IntoDart for TestId {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.0.into_dart()].into_dart()
+        vec![self.0.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for TestId {}
+impl rust2dart::IntoIntoDart<TestId> for TestId {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//StructRef(IrTypeStructRef { name: "TestModel", freezed: false, empty: false })
 impl support::IntoDart for TestModel {
     fn into_dart(self) -> support::DartAbi {
         vec![
-            self.id.into_dart(),
-            self.name.into_dart(),
-            self.alias_enum.into_dart(),
-            self.alias_struct.into_dart(),
+            self.id.into_into_dart().into_dart(),
+            self.name.into_into_dart().into_dart(),
+            self.alias_enum.into_into_dart().into_dart(),
+            self.alias_struct.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for TestModel {}
+impl rust2dart::IntoIntoDart<TestModel> for TestModel {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//Primitive(U16)
+
+//Primitive(U32)
+
+//Primitive(U64)
+
+//Primitive(U8)
+
+//Delegate(Array(PrimitiveArray { length: 1600, primitive: U8 }))
+
+//Delegate(Array(PrimitiveArray { length: 32, primitive: U8 }))
+
+//Delegate(Array(PrimitiveArray { length: 5, primitive: U8 }))
+
+//Delegate(Array(PrimitiveArray { length: 8, primitive: U8 }))
+
+//PrimitiveList(IrTypePrimitiveList { primitive: U16 })
+
+//PrimitiveList(IrTypePrimitiveList { primitive: U32 })
+
+//PrimitiveList(IrTypePrimitiveList { primitive: U64 })
+
+//PrimitiveList(IrTypePrimitiveList { primitive: U8 })
+
+//Primitive(Unit)
+
+//StructRef(IrTypeStructRef { name: "UserId", freezed: true, empty: false })
 impl support::IntoDart for UserId {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.value.into_dart()].into_dart()
+        vec![self.value.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for UserId {}
+impl rust2dart::IntoIntoDart<UserId> for UserId {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//Primitive(Usize)
+
+//StructRef(IrTypeStructRef { name: "VecOfPrimitivePack", freezed: false, empty: false })
 impl support::IntoDart for VecOfPrimitivePack {
     fn into_dart(self) -> support::DartAbi {
         vec![
-            self.int8list.into_dart(),
-            self.uint8list.into_dart(),
-            self.int16list.into_dart(),
-            self.uint16list.into_dart(),
-            self.uint32list.into_dart(),
-            self.int32list.into_dart(),
-            self.uint64list.into_dart(),
-            self.int64list.into_dart(),
-            self.float32list.into_dart(),
-            self.float64list.into_dart(),
+            self.int8list.into_into_dart().into_dart(),
+            self.uint8list.into_into_dart().into_dart(),
+            self.int16list.into_into_dart().into_dart(),
+            self.uint16list.into_into_dart().into_dart(),
+            self.uint32list.into_into_dart().into_dart(),
+            self.int32list.into_into_dart().into_dart(),
+            self.uint64list.into_into_dart().into_dart(),
+            self.int64list.into_into_dart().into_dart(),
+            self.float32list.into_into_dart().into_dart(),
+            self.float64list.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for VecOfPrimitivePack {}
+impl rust2dart::IntoIntoDart<VecOfPrimitivePack> for VecOfPrimitivePack {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
+//Delegate(PrimitiveEnum { ir: IrTypeEnumRef { name: "Weekdays" }, repr: I32 })
 impl support::IntoDart for Weekdays {
     fn into_dart(self) -> support::DartAbi {
         match self {
@@ -3217,24 +4063,36 @@ impl support::IntoDart for Weekdays {
     }
 }
 impl support::IntoDartExceptPrimitive for Weekdays {}
+impl rust2dart::IntoIntoDart<Weekdays> for Weekdays {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
+
+//StructRef(IrTypeStructRef { name: "ZeroCopyVecOfPrimitivePack", freezed: false, empty: false })
 impl support::IntoDart for ZeroCopyVecOfPrimitivePack {
     fn into_dart(self) -> support::DartAbi {
         vec![
-            self.int8list.into_dart(),
-            self.uint8list.into_dart(),
-            self.int16list.into_dart(),
-            self.uint16list.into_dart(),
-            self.uint32list.into_dart(),
-            self.int32list.into_dart(),
-            self.uint64list.into_dart(),
-            self.int64list.into_dart(),
-            self.float32list.into_dart(),
-            self.float64list.into_dart(),
+            self.int8list.into_into_dart().into_dart(),
+            self.uint8list.into_into_dart().into_dart(),
+            self.int16list.into_into_dart().into_dart(),
+            self.uint16list.into_into_dart().into_dart(),
+            self.uint32list.into_into_dart().into_dart(),
+            self.int32list.into_into_dart().into_dart(),
+            self.uint64list.into_into_dart().into_dart(),
+            self.int64list.into_into_dart().into_dart(),
+            self.float32list.into_into_dart().into_dart(),
+            self.float64list.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for ZeroCopyVecOfPrimitivePack {}
+impl rust2dart::IntoIntoDart<ZeroCopyVecOfPrimitivePack> for ZeroCopyVecOfPrimitivePack {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
 
 // Section: executor
 

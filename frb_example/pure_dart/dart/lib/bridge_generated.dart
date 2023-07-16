@@ -811,6 +811,51 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["appSettings"],
       );
 
+  Stream<ApplicationSettings> appSettingsStream({dynamic hint}) {
+    return _platform.executeStream(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_app_settings_stream(port_),
+      parseSuccessData: _wire2api_application_settings,
+      constMeta: kAppSettingsStreamConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kAppSettingsStreamConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "app_settings_stream",
+        argNames: [],
+      );
+
+  Stream<List<ApplicationSettings>> appSettingsVecStream({dynamic hint}) {
+    return _platform.executeStream(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_app_settings_vec_stream(port_),
+      parseSuccessData: _wire2api_list_application_settings,
+      constMeta: kAppSettingsVecStreamConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kAppSettingsVecStreamConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "app_settings_vec_stream",
+        argNames: [],
+      );
+
+  Stream<MirrorStruct> mirrorStructStream({dynamic hint}) {
+    return _platform.executeStream(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_mirror_struct_stream(port_),
+      parseSuccessData: _wire2api_mirror_struct,
+      constMeta: kMirrorStructStreamConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kMirrorStructStreamConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "mirror_struct_stream",
+        argNames: [],
+      );
+
   Future<ApplicationMessage> getMessage({dynamic hint}) {
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_get_message(port_),
@@ -3346,6 +3391,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return (raw as List<dynamic>).map(_wire2api_application_env_var).toList();
   }
 
+  List<ApplicationSettings> _wire2api_list_application_settings(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_application_settings).toList();
+  }
+
   List<Attribute> _wire2api_list_attribute(dynamic raw) {
     return (raw as List<dynamic>).map(_wire2api_attribute).toList();
   }
@@ -3356,6 +3405,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   List<EnumOpaque> _wire2api_list_enum_opaque(dynamic raw) {
     return (raw as List<dynamic>).map(_wire2api_enum_opaque).toList();
+  }
+
+  List<MyEnum> _wire2api_list_my_enum(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_my_enum).toList();
   }
 
   List<MySize> _wire2api_list_my_size(dynamic raw) {
@@ -3440,6 +3493,17 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return MessageId(
       field0: _wire2api_u8_array_32(arr[0]),
+    );
+  }
+
+  MirrorStruct _wire2api_mirror_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return MirrorStruct(
+      a: _wire2api_application_settings(arr[0]),
+      b: _wire2api_my_struct(arr[1]),
+      c: _wire2api_list_my_enum(arr[2]),
+      d: _wire2api_list_application_settings(arr[3]),
     );
   }
 

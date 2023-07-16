@@ -77,7 +77,7 @@ impl IrTypeTrait for IrTypePrimitive {
         .to_string()
     }
 
-    fn into_dart_type(&self, _ir_file: &IrFile) -> String {
+    fn intodart_type(&self, _ir_file: &IrFile) -> String {
         match self {
             IrTypePrimitive::Unit => String::from("()"),
             _ => self.rust_api_type(),

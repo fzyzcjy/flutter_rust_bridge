@@ -143,7 +143,7 @@ pub trait IrTypeTrait {
     fn dart_wire_type(&self, target: Target) -> String;
     fn rust_api_type(&self) -> String;
     fn rust_wire_type(&self, target: Target) -> String;
-    fn into_dart_type(&self, _ir_file: &IrFile) -> String {
+    fn intodart_type(&self, _ir_file: &IrFile) -> String {
         self.rust_api_type()
     }
 
