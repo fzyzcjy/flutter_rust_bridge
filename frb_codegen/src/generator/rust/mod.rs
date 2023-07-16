@@ -346,24 +346,18 @@ impl<'a> Generator<'a> {
                 IrFuncMode::Stream { .. } => IrType::Primitive(IrTypePrimitive::Unit),
                 _ => func.output.clone(),
             };
-            TypeRustGenerator::new(ret_type, ir_file, self.config).wrap_obj(
-                format!(
-                    r"{}::{}({})",
-                    struct_name.unwrap(),
-                    method_name,
-                    inner_func_params.join(", ")
-                ),
-                func.fallible,
+            format!(
+                r"{}::{}({})",
+                struct_name.unwrap(),
+                method_name,
+                inner_func_params.join(", ")
             )
         } else {
             let ret_type = match func.mode {
                 IrFuncMode::Stream { .. } => IrType::Primitive(IrTypePrimitive::Unit),
                 _ => func.output.clone(),
             };
-            TypeRustGenerator::new(ret_type, ir_file, self.config).wrap_obj(
-                format!("{}({})", func.name, inner_func_params.join(", ")),
-                func.fallible,
-            )
+            format!("{}({})", func.name, inner_func_params.join(", "))
         };
         let code_call_inner_func_result = if func.fallible {
             code_call_inner_func

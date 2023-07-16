@@ -74,4 +74,8 @@ impl IrTypeTrait for IrTypeBoxed {
         !target.is_wasm()
             || !self.inner.is_js_value() && !self.inner.is_array() && !self.inner.is_primitive()
     }
+
+    fn into_dart_type(&self, ir_file: &IrFile) -> String {
+        self.inner.into_dart_type(ir_file)
+    }
 }

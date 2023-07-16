@@ -133,8 +133,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                     self.context.config,
                 );
 
-                // wired_fallible is always false here, this parameter is only used for generate_wire_func
-                gen.convert_to_dart(gen.wrap_obj(format!("self{unwrap}.{field_ref}"), false))
+                gen.convert_to_dart(format!("self{unwrap}.{field_ref}"))
             })
             .collect::<Vec<_>>()
             .join(",\n");

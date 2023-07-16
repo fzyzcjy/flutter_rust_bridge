@@ -211,6 +211,24 @@ where
     }
 }
 
+impl<T, const C: usize> IntoIntoDart<[T; C]> for [T; C]
+where
+    T: IntoDart,
+{
+    fn into_into_dart(self) -> [T; C] {
+        self
+    }
+}
+
+impl<T> IntoIntoDart<T> for Box<T>
+where
+    T: IntoDart,
+{
+    fn into_into_dart(self) -> T {
+        *self
+    }
+}
+
 // more generic impls do not work because they crate possibly conflicting trait impls
 // this is why here are some more specific impls
 
@@ -240,3 +258,19 @@ impl_into_into_dart!(());
 impl_into_into_dart!(usize);
 impl_into_into_dart!(isize);
 impl_into_into_dart!(String);
+impl_into_into_dart!(allo_isolate::ffi::DartCObject);
+impl_into_into_dart!(DartOpaque);
+
+#[cfg(feature = "uuid")]
+impl_into_into_dart!(uuid::Uuid);
+
+#[cfg(feature = "chrono")]
+mod chrono_impls {
+    use chrono::{Local, Utc};
+
+    use super::IntoIntoDart;
+    impl_into_into_dart!(chrono::Duration);
+    impl_into_into_dart!(chrono::NaiveDateTime);
+    impl_into_into_dart!(chrono::DateTime<Local>);
+    impl_into_into_dart!(chrono::DateTime<Utc>);
+}

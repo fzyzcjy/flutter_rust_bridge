@@ -58,13 +58,4 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
     fn imports(&self) -> Option<String> {
         generate_import(&self.ir.inner, self.context.ir_file, self.context.config)
     }
-
-    fn convert_to_dart(&self, obj: String) -> String {
-        format!(
-            "{obj}.drain(0..)
-            .map(|e| e.into_into_dart().into_dart())
-            .collect::<Vec<_>>()
-            .into_dart(),"
-        )
-    }
 }
