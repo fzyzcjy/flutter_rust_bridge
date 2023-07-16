@@ -316,13 +316,6 @@ impl Wire2Api<u8> for u8 {
 
 // Section: impl IntoDart
 
-//Delegate(String)
-
-//Delegate(ZeroCopyBufferVecPrimitive(U8))
-
-//Boxed(IrTypeBoxed { exist_in_real_api: true, inner: StructRef(IrTypeStructRef { name: "Point", freezed: false, empty: false }) })
-
-//StructRef(IrTypeStructRef { name: "BoxedPoint", freezed: false, empty: false })
 impl support::IntoDart for BoxedPoint {
     fn into_dart(self) -> support::DartAbi {
         vec![self.point.into_into_dart().into_dart()].into_dart()
@@ -335,15 +328,6 @@ impl rust2dart::IntoIntoDart<BoxedPoint> for BoxedPoint {
     }
 }
 
-//Primitive(F64)
-
-//Primitive(I32)
-
-//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "Size", freezed: false, empty: false }) })
-
-//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "TreeNode", freezed: false, empty: false }) })
-
-//StructRef(IrTypeStructRef { name: "Point", freezed: false, empty: false })
 impl support::IntoDart for Point {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -360,7 +344,6 @@ impl rust2dart::IntoIntoDart<Point> for Point {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "Size", freezed: false, empty: false })
 impl support::IntoDart for Size {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -377,7 +360,6 @@ impl rust2dart::IntoIntoDart<Size> for Size {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "TreeNode", freezed: false, empty: false })
 impl support::IntoDart for TreeNode {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -394,15 +376,6 @@ impl rust2dart::IntoIntoDart<TreeNode> for TreeNode {
     }
 }
 
-//Primitive(U32)
-
-//Primitive(U8)
-
-//PrimitiveList(IrTypePrimitiveList { primitive: U8 })
-
-//Primitive(Unit)
-
-//StructRef(IrTypeStructRef { name: "UserId", freezed: true, empty: false })
 impl support::IntoDart for UserId {
     fn into_dart(self) -> support::DartAbi {
         vec![self.value.into_into_dart().into_dart()].into_dart()

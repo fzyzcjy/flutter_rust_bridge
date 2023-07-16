@@ -12,32 +12,11 @@ Notice that, you can hold that `StreamSink` forever, and use it freely even _aft
 
 The `StreamSink` can be placed at any location. For example, `fn f(a: i32, b: StreamSink<String>)` and `fn f(a: StreamSink<String>, b: i32)` are both valid.
 
+To use a `StreamSink` in Rust, you also have to import the `StreamSinkTrait`.
+
 ## Examples
 
 See [logging examples](logging.md) which uses streams extensively.
-
-## Mirrored types in streams
-
-For mirrored types a Trait is generated that is used to implement the add method on the StreamSink. This trait is called `<T>StreamSink` where T is the type of the mirrored type. For example, if you have a mirrored type `MyType` then the trait is called `MyTypeStreamSink`. This trait has to be imported to be able to use a `StreamSink<MyType>`.
-The usage of the Sink doesn't change.
-
-Example:
-
-```rust,noplayground
-...
-pub use external_lib::MyType;
-use MyTypeStreamSink;
-
-#[frb(mirror(MyType))]
-_MyType{
-    ...
-}
-
-pub fn my_type_stream_sink_example(sink: StreamSink<MyType>) {
-    sink.add(MyType::new());
-}
-
-```
 
 ## What about streaming from Dart/Flutter to Rust?
 

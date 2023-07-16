@@ -68,7 +68,7 @@ Credits: [this](https://gist.github.com/Desdaemon/be5da0a1c6b4724f20093ef4349597
 use anyhow::Result;
 use std::{thread::sleep, time::Duration};
 
-use flutter_rust_bridge::StreamSink;
+use flutter_rust_bridge::{StreamSink,StreamSinkTrait};
 
 const ONE_SECOND: Duration = Duration::from_secs(1);
 
