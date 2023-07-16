@@ -1,6 +1,7 @@
 //! Manages receiving and sending values across the FFI boundary.
 
 use std::marker::PhantomData;
+use type_equals::TypeEquals;
 
 /// The representation of a Dart object outside of the Dart heap.
 ///
@@ -134,7 +135,7 @@ impl<T> StreamSink<T> {
 
     /// Add data to the stream. Returns false when data could not be sent,
     /// or the stream has been closed.
-    pub fn add_inner<V: IntoIntoDart<D>, D: IntoDart>(&self, value: V) -> bool {
+    pub fn add<V: IntoIntoDart<D> + TypeEquals<Other = T>, D: IntoDart>(&self, value: V) -> bool {
         self.rust2dart().success(value.into_into_dart().into_dart())
     }
 
@@ -142,21 +143,6 @@ impl<T> StreamSink<T> {
     /// the stream could not be closed, or when it has already been closed.
     pub fn close(&self) -> bool {
         self.rust2dart().close_stream()
-    }
-}
-
-pub trait StreamSinkTrait<T, D> {
-    fn add(&self, value: T) -> bool;
-}
-
-// all the simple types without additional Conversions
-impl<T, D> StreamSinkTrait<T, D> for StreamSink<T>
-where
-    T: IntoIntoDart<D>,
-    D: IntoDart,
-{
-    fn add(&self, value: T) -> bool {
-        self.add_inner(value)
     }
 }
 

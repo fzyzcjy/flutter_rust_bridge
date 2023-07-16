@@ -2,7 +2,7 @@ use std::panic::{RefUnwindSafe, UnwindSafe};
 
 pub use flutter_rust_bridge_macros::frb;
 pub use handler::{FfiCallMode, Handler, WrapInfo};
-pub use rust2dart::{StreamSink, StreamSinkTrait};
+pub use rust2dart::StreamSink;
 
 pub mod ffi;
 pub use ffi::*;

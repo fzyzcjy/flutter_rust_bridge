@@ -12,8 +12,6 @@ Notice that, you can hold that `StreamSink` forever, and use it freely even _aft
 
 The `StreamSink` can be placed at any location. For example, `fn f(a: i32, b: StreamSink<String>)` and `fn f(a: StreamSink<String>, b: i32)` are both valid.
 
-To use a `StreamSink` in Rust, you also have to import the `StreamSinkTrait`.
-
 ## Examples
 
 See [logging examples](logging.md) which uses streams extensively.
