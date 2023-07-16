@@ -98,6 +98,7 @@ impl<'a> Generator<'a> {
         lines.push("use core::panic::UnwindSafe;".to_owned());
         lines.push("use std::sync::Arc;".to_owned());
         lines.push("use std::ffi::c_void;".to_owned());
+        lines.push("use flutter_rust_bridge::rust2dart::IntoIntoDart;".to_owned());
         lines.push(String::new());
 
         lines.push(self.section_header_comment("imports"));
@@ -156,7 +157,7 @@ impl<'a> Generator<'a> {
         lines.extend(
             distinct_output_types
                 .iter()
-                .map(|ty| self.generate_impl_intodart(ty, ir_file)),
+                .map(|ty| format!("//{:?}\n{}", ty, self.generate_impl_intodart(ty, ir_file))),
         );
 
         lines.push(self.section_header_comment("executor"));
@@ -673,7 +674,7 @@ pub fn get_into_into_dart(name: impl Display, wrapper_name: Option<impl Display>
             // case for types without mirror_ wrapper
             format!(
                 "impl rust2dart::IntoIntoDart<{name}> for {name} {{
-                fn into(self) -> Self {{
+                fn into_into_dart(self) -> Self {{
                     self
                 }}
             }}"
@@ -683,7 +684,7 @@ pub fn get_into_into_dart(name: impl Display, wrapper_name: Option<impl Display>
             // case for type with mirror_ wrapper
             format!(
                 "impl rust2dart::IntoIntoDart<{wrapper}> for {name} {{
-                fn into(self) -> {wrapper} {{
+                fn into_into_dart(self) -> {wrapper} {{
                     {wrapper}(self)
                 }}
             }}"

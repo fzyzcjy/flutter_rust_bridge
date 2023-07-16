@@ -67,10 +67,6 @@ impl TypeRustGeneratorTrait for TypeDartOpaqueGenerator<'_> {
         obj
     }
 
-    fn convert_to_dart(&self, obj: String) -> String {
-        format!("{obj}.into_dart()")
-    }
-
     fn structs(&self) -> String {
         "".to_owned()
     }

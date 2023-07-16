@@ -181,7 +181,12 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                         }}.into_dart()
                     }}
                 }}
-                impl support::IntoDartExceptPrimitive for {name} {{}}"
+                impl support::IntoDartExceptPrimitive for {name} {{}}
+                impl rust2dart::IntoIntoDart<{name}> for {name} {{
+                    fn into_into_dart(self) -> Self {{
+                        self
+                    }}
+                }}"
             );
         }
         "".into()

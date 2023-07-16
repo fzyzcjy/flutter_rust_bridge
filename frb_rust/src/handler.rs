@@ -204,7 +204,8 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
                 #[allow(clippy::clone_on_copy)]
                 let rust2dart = Rust2Dart::new(port2.clone());
 
-                let ret = task(TaskCallback::new(rust2dart.clone())).map(|e| e.into().into_dart());
+                let ret = task(TaskCallback::new(rust2dart.clone()))
+                    .map(|e| e.into_into_dart().into_dart());
 
                 match ret {
                     Ok(result) => {

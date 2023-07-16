@@ -7,6 +7,7 @@ use std::marker::PhantomData;
 /// Its implementation lies with the Dart language and therefore should not be
 /// depended on to be stable.
 pub use crate::ffi::*;
+use crate::DartSafe;
 
 /// A wrapper around a Dart [`Isolate`].
 #[derive(Clone)]
@@ -134,7 +135,7 @@ impl<T> StreamSink<T> {
     /// Add data to the stream. Returns false when data could not be sent,
     /// or the stream has been closed.
     pub fn add_inner<V: IntoIntoDart<D>, D: IntoDart>(&self, value: V) -> bool {
-        self.rust2dart().success(value.into().into_dart())
+        self.rust2dart().success(value.into_into_dart().into_dart())
     }
 
     /// Close the stream and ignore further messages. Returns false when
@@ -161,38 +162,63 @@ where
 /// Basically the Into trait.
 /// We need this separate trait because we need to implement int for Vec<T> etc.
 pub trait IntoIntoDart<D> {
-    fn into(self) -> D;
+    fn into_into_dart(self) -> D;
 }
 
 impl<T, D> IntoIntoDart<Vec<D>> for Vec<T>
 where
     T: IntoIntoDart<D>,
 {
-    fn into(mut self) -> Vec<D> {
-        self.drain(0..).map(|e| e.into()).collect()
+    fn into_into_dart(mut self) -> Vec<D> {
+        self.drain(0..).map(|e| e.into_into_dart()).collect()
     }
 }
-
-// more generic impls do not work because they crate possibly conflicting trait impls
-// this is why here are some more specific impls
-
-// impl for tuples
 
 impl<A, AD, B, BD> IntoIntoDart<(AD, BD)> for (A, B)
 where
     A: IntoIntoDart<AD>,
     B: IntoIntoDart<BD>,
 {
-    fn into(self) -> (AD, BD) {
-        (self.0.into(), self.1.into())
+    fn into_into_dart(self) -> (AD, BD) {
+        (self.0.into_into_dart(), self.1.into_into_dart())
     }
 }
+
+impl<T, D> IntoIntoDart<Option<D>> for Option<T>
+where
+    T: IntoIntoDart<D>,
+{
+    fn into_into_dart(self) -> Option<D> {
+        self.map(|e| e.into_into_dart())
+    }
+}
+
+impl<T> IntoIntoDart<RustOpaque<T>> for RustOpaque<T>
+where
+    T: DartSafe,
+{
+    fn into_into_dart(self) -> RustOpaque<T> {
+        self
+    }
+}
+
+impl<T, D> IntoIntoDart<ZeroCopyBuffer<D>> for ZeroCopyBuffer<T>
+where
+    T: IntoIntoDart<D>,
+{
+    fn into_into_dart(self) -> ZeroCopyBuffer<D> {
+        ZeroCopyBuffer(self.0.into_into_dart())
+    }
+}
+
+// more generic impls do not work because they crate possibly conflicting trait impls
+// this is why here are some more specific impls
 
 // Implementations for simple types
 macro_rules! impl_into_into_dart {
     ($t:ty) => {
         impl IntoIntoDart<$t> for $t {
-            fn into(self) -> $t {
+            fn into_into_dart(self) -> $t {
                 self
             }
         }
