@@ -13,7 +13,6 @@ use anyhow::{anyhow, Result};
 use flutter_rust_bridge::*;
 use lazy_static::lazy_static;
 
-use crate::bridge_generated::{ApplicationSettingsStreamSink, VecApplicationSettingsStreamSink};
 use crate::data::{EnumAlias, Id, MyEnum, MyStruct, StructAlias, UserIdAlias};
 pub use crate::data::{
     FrbOpaqueReturn, FrbOpaqueSyncReturn, HideData, NonCloneData, NonSendHideData,

@@ -2459,37 +2459,37 @@ fn wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWit
 // Section: wrapper structs
 
 #[derive(Clone)]
-struct mirror_ApplicationEnv(ApplicationEnv);
+pub struct mirror_ApplicationEnv(ApplicationEnv);
 
 #[derive(Clone)]
-struct mirror_ApplicationEnvVar(ApplicationEnvVar);
+pub struct mirror_ApplicationEnvVar(ApplicationEnvVar);
 
 #[derive(Clone)]
-struct mirror_ApplicationMessage(ApplicationMessage);
+pub struct mirror_ApplicationMessage(ApplicationMessage);
 
 #[derive(Clone)]
-struct mirror_ApplicationMode(ApplicationMode);
+pub struct mirror_ApplicationMode(ApplicationMode);
 
 #[derive(Clone)]
-struct mirror_ApplicationSettings(ApplicationSettings);
+pub struct mirror_ApplicationSettings(ApplicationSettings);
 
 #[derive(Clone)]
-struct mirror_ListOfNestedRawStringMirrored(ListOfNestedRawStringMirrored);
+pub struct mirror_ListOfNestedRawStringMirrored(ListOfNestedRawStringMirrored);
 
 #[derive(Clone)]
-struct mirror_NestedRawStringMirrored(NestedRawStringMirrored);
+pub struct mirror_NestedRawStringMirrored(NestedRawStringMirrored);
 
 #[derive(Clone)]
-struct mirror_Numbers(Numbers);
+pub struct mirror_Numbers(Numbers);
 
 #[derive(Clone)]
-struct mirror_RawStringEnumMirrored(RawStringEnumMirrored);
+pub struct mirror_RawStringEnumMirrored(RawStringEnumMirrored);
 
 #[derive(Clone)]
-struct mirror_RawStringMirrored(RawStringMirrored);
+pub struct mirror_RawStringMirrored(RawStringMirrored);
 
 #[derive(Clone)]
-struct mirror_Sequences(Sequences);
+pub struct mirror_Sequences(Sequences);
 
 // Section: static checks
 
@@ -2695,81 +2695,6 @@ impl Wire2Api<Weekdays> for i32 {
 }
 // Section: impl IntoDart
 
-//RustOpaque(IrTypeRustOpaque { inner_rust: "Box<dyn DartDebug>", inner_dart: "BoxDartDebug" })
-
-//Delegate(Time(Duration))
-
-//Delegate(TimeList(Duration))
-
-//Delegate(Time(Local))
-
-//Delegate(TimeList(Local))
-
-//Delegate(Time(Naive))
-
-//Delegate(Time(Utc))
-
-//DartOpaque(IrTypeDartOpaque)
-
-//Delegate(Array(GeneralArray { length: 5, general: EnumRef(IrTypeEnumRef { name: "EnumOpaque" }) }))
-
-//RustOpaque(IrTypeRustOpaque { inner_rust: "FrbOpaqueReturn", inner_dart: "FrbOpaqueReturn" })
-
-//SyncReturn(IrTypeSyncReturn(RustOpaque(IrTypeRustOpaque { inner_rust: "FrbOpaqueSyncReturn", inner_dart: "FrbOpaqueSyncReturn" })))
-
-//RustOpaque(IrTypeRustOpaque { inner_rust: "HideData", inner_dart: "HideData" })
-
-//Delegate(Array(GeneralArray { length: 2, general: RustOpaque(IrTypeRustOpaque { inner_rust: "HideData", inner_dart: "HideData" }) }))
-
-//RustOpaque(IrTypeRustOpaque { inner_rust: "i32", inner_dart: "I32" })
-
-//RustOpaque(IrTypeRustOpaque { inner_rust: "Mutex < HideData >", inner_dart: "MutexHideData" })
-
-//SyncReturn(IrTypeSyncReturn(RustOpaque(IrTypeRustOpaque { inner_rust: "NonCloneData", inner_dart: "NonCloneData" })))
-
-//RustOpaque(IrTypeRustOpaque { inner_rust: "NonSendHideData", inner_dart: "NonSendHideData" })
-
-//Delegate(Array(GeneralArray { length: 1, general: DartOpaque(IrTypeDartOpaque) }))
-
-//Delegate(Array(GeneralArray { length: 2, general: StructRef(IrTypeStructRef { name: "Point", freezed: false, empty: false }) }))
-
-//RustOpaque(IrTypeRustOpaque { inner_rust: "RwLock < HideData >", inner_dart: "RwLockHideData" })
-
-//Delegate(String)
-
-//Delegate(StringList)
-
-//Delegate(Array(GeneralArray { length: 3, general: StructRef(IrTypeStructRef { name: "SumWith", freezed: false, empty: false }) }))
-
-//Delegate(Array(GeneralArray { length: 2, general: StructRef(IrTypeStructRef { name: "TestId", freezed: false, empty: false }) }))
-
-//Delegate(Uuid)
-
-//Delegate(Uuids)
-
-//Delegate(ZeroCopyBufferVecPrimitive(F32))
-
-//Delegate(ZeroCopyBufferVecPrimitive(F64))
-
-//Delegate(ZeroCopyBufferVecPrimitive(I16))
-
-//Delegate(ZeroCopyBufferVecPrimitive(I32))
-
-//Delegate(ZeroCopyBufferVecPrimitive(I64))
-
-//Delegate(ZeroCopyBufferVecPrimitive(I8))
-
-//Delegate(ZeroCopyBufferVecPrimitive(U16))
-
-//Delegate(ZeroCopyBufferVecPrimitive(U32))
-
-//Delegate(ZeroCopyBufferVecPrimitive(U64))
-
-//Delegate(ZeroCopyBufferVecPrimitive(U8))
-
-//Record(IrTypeRecord { inner: IrTypeStructRef { name: "__record__String_i32", freezed: false, empty: false }, values: [Delegate(String), Primitive(I32)] })
-
-//StructRef(IrTypeStructRef { name: "A", freezed: false, empty: false })
 impl support::IntoDart for A {
     fn into_dart(self) -> support::DartAbi {
         vec![self.a.into_into_dart().into_dart()].into_dart()
@@ -2782,7 +2707,6 @@ impl rust2dart::IntoIntoDart<A> for A {
     }
 }
 
-//EnumRef(IrTypeEnumRef { name: "Abc" })
 impl support::IntoDart for Abc {
     fn into_dart(self) -> support::DartAbi {
         match self {
@@ -2801,7 +2725,6 @@ impl rust2dart::IntoIntoDart<Abc> for Abc {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "ApplicationEnv", freezed: false, empty: false })
 impl support::IntoDart for mirror_ApplicationEnv {
     fn into_dart(self) -> support::DartAbi {
         vec![self.0.vars.into_into_dart().into_dart()].into_dart()
@@ -2813,24 +2736,7 @@ impl rust2dart::IntoIntoDart<mirror_ApplicationEnv> for ApplicationEnv {
         mirror_ApplicationEnv(self)
     }
 }
-pub trait ApplicationEnvStreamSink {
-    fn add(&self, val: ApplicationEnv) -> bool;
-}
-impl ApplicationEnvStreamSink for StreamSink<ApplicationEnv> {
-    fn add(&self, val: ApplicationEnv) -> bool {
-        self.add_inner::<_, mirror_ApplicationEnv>(val)
-    }
-}
-pub trait VecApplicationEnvStreamSink {
-    fn add(&self, val: Vec<ApplicationEnv>) -> bool;
-}
-impl VecApplicationEnvStreamSink for StreamSink<Vec<ApplicationEnv>> {
-    fn add(&self, val: Vec<ApplicationEnv>) -> bool {
-        self.add_inner::<_, Vec<mirror_ApplicationEnv>>(val)
-    }
-}
 
-//StructRef(IrTypeStructRef { name: "ApplicationEnvVar", freezed: false, empty: false })
 impl support::IntoDart for mirror_ApplicationEnvVar {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -2846,24 +2752,7 @@ impl rust2dart::IntoIntoDart<mirror_ApplicationEnvVar> for ApplicationEnvVar {
         mirror_ApplicationEnvVar(self)
     }
 }
-pub trait ApplicationEnvVarStreamSink {
-    fn add(&self, val: ApplicationEnvVar) -> bool;
-}
-impl ApplicationEnvVarStreamSink for StreamSink<ApplicationEnvVar> {
-    fn add(&self, val: ApplicationEnvVar) -> bool {
-        self.add_inner::<_, mirror_ApplicationEnvVar>(val)
-    }
-}
-pub trait VecApplicationEnvVarStreamSink {
-    fn add(&self, val: Vec<ApplicationEnvVar>) -> bool;
-}
-impl VecApplicationEnvVarStreamSink for StreamSink<Vec<ApplicationEnvVar>> {
-    fn add(&self, val: Vec<ApplicationEnvVar>) -> bool {
-        self.add_inner::<_, Vec<mirror_ApplicationEnvVar>>(val)
-    }
-}
 
-//EnumRef(IrTypeEnumRef { name: "ApplicationMessage" })
 impl support::IntoDart for mirror_ApplicationMessage {
     fn into_dart(self) -> support::DartAbi {
         match self.0 {
@@ -2887,7 +2776,6 @@ impl rust2dart::IntoIntoDart<mirror_ApplicationMessage> for ApplicationMessage {
     }
 }
 
-//Delegate(PrimitiveEnum { ir: IrTypeEnumRef { name: "ApplicationMode" }, repr: I32 })
 impl support::IntoDart for mirror_ApplicationMode {
     fn into_dart(self) -> support::DartAbi {
         match self.0 {
@@ -2904,7 +2792,6 @@ impl rust2dart::IntoIntoDart<mirror_ApplicationMode> for ApplicationMode {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "ApplicationSettings", freezed: false, empty: false })
 impl support::IntoDart for mirror_ApplicationSettings {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -2926,24 +2813,7 @@ impl rust2dart::IntoIntoDart<mirror_ApplicationSettings> for ApplicationSettings
         mirror_ApplicationSettings(self)
     }
 }
-pub trait ApplicationSettingsStreamSink {
-    fn add(&self, val: ApplicationSettings) -> bool;
-}
-impl ApplicationSettingsStreamSink for StreamSink<ApplicationSettings> {
-    fn add(&self, val: ApplicationSettings) -> bool {
-        self.add_inner::<_, mirror_ApplicationSettings>(val)
-    }
-}
-pub trait VecApplicationSettingsStreamSink {
-    fn add(&self, val: Vec<ApplicationSettings>) -> bool;
-}
-impl VecApplicationSettingsStreamSink for StreamSink<Vec<ApplicationSettings>> {
-    fn add(&self, val: Vec<ApplicationSettings>) -> bool {
-        self.add_inner::<_, Vec<mirror_ApplicationSettings>>(val)
-    }
-}
 
-//StructRef(IrTypeStructRef { name: "Attribute", freezed: false, empty: false })
 impl support::IntoDart for Attribute {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -2960,7 +2830,6 @@ impl rust2dart::IntoIntoDart<Attribute> for Attribute {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "B", freezed: false, empty: false })
 impl support::IntoDart for B {
     fn into_dart(self) -> support::DartAbi {
         vec![self.b.into_into_dart().into_dart()].into_dart()
@@ -2973,7 +2842,6 @@ impl rust2dart::IntoIntoDart<B> for B {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "BigBuffers", freezed: false, empty: false })
 impl support::IntoDart for BigBuffers {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -2990,7 +2858,6 @@ impl rust2dart::IntoIntoDart<BigBuffers> for BigBuffers {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "Blob", freezed: false, empty: false })
 impl support::IntoDart for Blob {
     fn into_dart(self) -> support::DartAbi {
         vec![self.0.into_into_dart().into_dart()].into_dart()
@@ -3003,65 +2870,6 @@ impl rust2dart::IntoIntoDart<Blob> for Blob {
     }
 }
 
-//Primitive(Bool)
-
-//Boxed(IrTypeBoxed { exist_in_real_api: true, inner: StructRef(IrTypeStructRef { name: "ApplicationEnv", freezed: false, empty: false }) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Delegate(Time(Duration)) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Delegate(Time(Naive)) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Delegate(Time(Utc)) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: DartOpaque(IrTypeDartOpaque) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: RustOpaque(IrTypeRustOpaque { inner_rust: "HideData", inner_dart: "HideData" }) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "A", freezed: false, empty: false }) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "ApplicationEnv", freezed: false, empty: false }) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "Attribute", freezed: false, empty: false }) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "B", freezed: false, empty: false }) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Primitive(Bool) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "C", freezed: false, empty: false }) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "Element", freezed: false, empty: false }) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "ExoticOptionals", freezed: false, empty: false }) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Primitive(F64) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Primitive(I32) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Primitive(I64) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "ListOfNestedRawStringMirrored", freezed: false, empty: false }) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: EnumRef(IrTypeEnumRef { name: "Measure" }) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "NestedRawStringMirrored", freezed: false, empty: false }) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "NewTypeInt", freezed: false, empty: false }) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "RawStringMirrored", freezed: false, empty: false }) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Delegate(PrimitiveEnum { ir: IrTypeEnumRef { name: "Weekdays" }, repr: I32 }) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: true, inner: EnumRef(IrTypeEnumRef { name: "Distance" }) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: true, inner: StructRef(IrTypeStructRef { name: "FeedId", freezed: false, empty: false }) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: true, inner: EnumRef(IrTypeEnumRef { name: "KitchenSink" }) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: true, inner: EnumRef(IrTypeEnumRef { name: "Speed" }) })
-
-//Boxed(IrTypeBoxed { exist_in_real_api: true, inner: Delegate(Array(PrimitiveArray { length: 8, primitive: U8 })) })
-
-//StructRef(IrTypeStructRef { name: "C", freezed: false, empty: false })
 impl support::IntoDart for C {
     fn into_dart(self) -> support::DartAbi {
         vec![self.c.into_into_dart().into_dart()].into_dart()
@@ -3074,7 +2882,6 @@ impl rust2dart::IntoIntoDart<C> for C {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "ConcatenateWith", freezed: false, empty: false })
 impl support::IntoDart for ConcatenateWith {
     fn into_dart(self) -> support::DartAbi {
         vec![self.a.into_into_dart().into_dart()].into_dart()
@@ -3087,7 +2894,6 @@ impl rust2dart::IntoIntoDart<ConcatenateWith> for ConcatenateWith {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "ContainsMirroredSubStruct", freezed: false, empty: false })
 impl support::IntoDart for ContainsMirroredSubStruct {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -3104,7 +2910,6 @@ impl rust2dart::IntoIntoDart<ContainsMirroredSubStruct> for ContainsMirroredSubS
     }
 }
 
-//StructRef(IrTypeStructRef { name: "DartOpaqueNested", freezed: false, empty: false })
 impl support::IntoDart for DartOpaqueNested {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -3121,9 +2926,6 @@ impl rust2dart::IntoIntoDart<DartOpaqueNested> for DartOpaqueNested {
     }
 }
 
-//Dynamic(IrTypeDynamic)
-
-//EnumRef(IrTypeEnumRef { name: "Distance" })
 impl support::IntoDart for Distance {
     fn into_dart(self) -> support::DartAbi {
         match self {
@@ -3140,7 +2942,6 @@ impl rust2dart::IntoIntoDart<Distance> for Distance {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "Element", freezed: false, empty: false })
 impl support::IntoDart for Element {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -3159,7 +2960,6 @@ impl rust2dart::IntoIntoDart<Element> for Element {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "Empty", freezed: false, empty: true })
 impl support::IntoDart for Empty {
     fn into_dart(self) -> support::DartAbi {
         Vec::<u8>::new().into_dart()
@@ -3172,7 +2972,6 @@ impl rust2dart::IntoIntoDart<Empty> for Empty {
     }
 }
 
-//EnumRef(IrTypeEnumRef { name: "EnumDartOpaque" })
 impl support::IntoDart for EnumDartOpaque {
     fn into_dart(self) -> support::DartAbi {
         match self {
@@ -3189,7 +2988,6 @@ impl rust2dart::IntoIntoDart<EnumDartOpaque> for EnumDartOpaque {
     }
 }
 
-//EnumRef(IrTypeEnumRef { name: "EnumOpaque" })
 impl support::IntoDart for EnumOpaque {
     fn into_dart(self) -> support::DartAbi {
         match self {
@@ -3209,7 +3007,6 @@ impl rust2dart::IntoIntoDart<EnumOpaque> for EnumOpaque {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "Event", freezed: true, empty: false })
 impl support::IntoDart for Event {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -3226,7 +3023,6 @@ impl rust2dart::IntoIntoDart<Event> for Event {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "ExoticOptionals", freezed: false, empty: false })
 impl support::IntoDart for ExoticOptionals {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -3255,11 +3051,6 @@ impl rust2dart::IntoIntoDart<ExoticOptionals> for ExoticOptionals {
     }
 }
 
-//Primitive(F32)
-
-//Primitive(F64)
-
-//StructRef(IrTypeStructRef { name: "FeatureUuid", freezed: false, empty: false })
 impl support::IntoDart for FeatureUuid {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -3276,7 +3067,6 @@ impl rust2dart::IntoIntoDart<FeatureUuid> for FeatureUuid {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "FeedId", freezed: false, empty: false })
 impl support::IntoDart for FeedId {
     fn into_dart(self) -> support::DartAbi {
         vec![self.0.into_into_dart().into_dart()].into_dart()
@@ -3289,29 +3079,6 @@ impl rust2dart::IntoIntoDart<FeedId> for FeedId {
     }
 }
 
-//PrimitiveList(IrTypePrimitiveList { primitive: F32 })
-
-//PrimitiveList(IrTypePrimitiveList { primitive: F64 })
-
-//Primitive(I16)
-
-//Primitive(I32)
-
-//Delegate(Array(PrimitiveArray { length: 2, primitive: I32 }))
-
-//Primitive(I64)
-
-//Primitive(I8)
-
-//PrimitiveList(IrTypePrimitiveList { primitive: I16 })
-
-//PrimitiveList(IrTypePrimitiveList { primitive: I32 })
-
-//PrimitiveList(IrTypePrimitiveList { primitive: I64 })
-
-//PrimitiveList(IrTypePrimitiveList { primitive: I8 })
-
-//EnumRef(IrTypeEnumRef { name: "KitchenSink" })
 impl support::IntoDart for KitchenSink {
     fn into_dart(self) -> support::DartAbi {
         match self {
@@ -3347,29 +3114,6 @@ impl rust2dart::IntoIntoDart<KitchenSink> for KitchenSink {
     }
 }
 
-//GeneralList(IrTypeGeneralList { inner: DartOpaque(IrTypeDartOpaque) })
-
-//GeneralList(IrTypeGeneralList { inner: RustOpaque(IrTypeRustOpaque { inner_rust: "HideData", inner_dart: "HideData" }) })
-
-//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "ApplicationEnvVar", freezed: false, empty: false }) })
-
-//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "ApplicationSettings", freezed: false, empty: false }) })
-
-//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "Attribute", freezed: false, empty: false }) })
-
-//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "Element", freezed: false, empty: false }) })
-
-//GeneralList(IrTypeGeneralList { inner: EnumRef(IrTypeEnumRef { name: "EnumOpaque" }) })
-
-//GeneralList(IrTypeGeneralList { inner: Delegate(PrimitiveEnum { ir: IrTypeEnumRef { name: "MyEnum" }, repr: I32 }) })
-
-//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "MySize", freezed: false, empty: false }) })
-
-//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "MyTreeNode", freezed: false, empty: false }) })
-
-//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "NestedRawStringMirrored", freezed: false, empty: false }) })
-
-//StructRef(IrTypeStructRef { name: "ListOfNestedRawStringMirrored", freezed: false, empty: false })
 impl support::IntoDart for mirror_ListOfNestedRawStringMirrored {
     fn into_dart(self) -> support::DartAbi {
         vec![self.0.raw.into_into_dart().into_dart()].into_dart()
@@ -3383,36 +3127,7 @@ impl rust2dart::IntoIntoDart<mirror_ListOfNestedRawStringMirrored>
         mirror_ListOfNestedRawStringMirrored(self)
     }
 }
-pub trait ListOfNestedRawStringMirroredStreamSink {
-    fn add(&self, val: ListOfNestedRawStringMirrored) -> bool;
-}
-impl ListOfNestedRawStringMirroredStreamSink for StreamSink<ListOfNestedRawStringMirrored> {
-    fn add(&self, val: ListOfNestedRawStringMirrored) -> bool {
-        self.add_inner::<_, mirror_ListOfNestedRawStringMirrored>(val)
-    }
-}
-pub trait VecListOfNestedRawStringMirroredStreamSink {
-    fn add(&self, val: Vec<ListOfNestedRawStringMirrored>) -> bool;
-}
-impl VecListOfNestedRawStringMirroredStreamSink for StreamSink<Vec<ListOfNestedRawStringMirrored>> {
-    fn add(&self, val: Vec<ListOfNestedRawStringMirrored>) -> bool {
-        self.add_inner::<_, Vec<mirror_ListOfNestedRawStringMirrored>>(val)
-    }
-}
 
-//GeneralList(IrTypeGeneralList { inner: Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "Attribute", freezed: false, empty: false }) }) }) })
-
-//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "Point", freezed: false, empty: false }) })
-
-//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "RawStringMirrored", freezed: false, empty: false }) })
-
-//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "SumWith", freezed: false, empty: false }) })
-
-//GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "TestId", freezed: false, empty: false }) })
-
-//GeneralList(IrTypeGeneralList { inner: Delegate(PrimitiveEnum { ir: IrTypeEnumRef { name: "Weekdays" }, repr: I32 }) })
-
-//StructRef(IrTypeStructRef { name: "Log", freezed: false, empty: false })
 impl support::IntoDart for Log {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -3429,7 +3144,6 @@ impl rust2dart::IntoIntoDart<Log> for Log {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "Log2", freezed: false, empty: false })
 impl support::IntoDart for Log2 {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -3446,7 +3160,6 @@ impl rust2dart::IntoIntoDart<Log2> for Log2 {
     }
 }
 
-//EnumRef(IrTypeEnumRef { name: "Measure" })
 impl support::IntoDart for Measure {
     fn into_dart(self) -> support::DartAbi {
         match self {
@@ -3463,7 +3176,6 @@ impl rust2dart::IntoIntoDart<Measure> for Measure {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "MessageId", freezed: false, empty: false })
 impl support::IntoDart for MessageId {
     fn into_dart(self) -> support::DartAbi {
         vec![self.0.into_into_dart().into_dart()].into_dart()
@@ -3476,7 +3188,6 @@ impl rust2dart::IntoIntoDart<MessageId> for MessageId {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "MirrorStruct", freezed: false, empty: false })
 impl support::IntoDart for MirrorStruct {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -3495,7 +3206,6 @@ impl rust2dart::IntoIntoDart<MirrorStruct> for MirrorStruct {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "MoreThanJustOneRawStringStruct", freezed: false, empty: false })
 impl support::IntoDart for MoreThanJustOneRawStringStruct {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -3514,7 +3224,6 @@ impl rust2dart::IntoIntoDart<MoreThanJustOneRawStringStruct> for MoreThanJustOne
     }
 }
 
-//Delegate(PrimitiveEnum { ir: IrTypeEnumRef { name: "MyEnum" }, repr: I32 })
 impl support::IntoDart for MyEnum {
     fn into_dart(self) -> support::DartAbi {
         match self {
@@ -3531,7 +3240,6 @@ impl rust2dart::IntoIntoDart<MyEnum> for MyEnum {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "MyNestedStruct", freezed: false, empty: false })
 impl support::IntoDart for MyNestedStruct {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -3548,7 +3256,6 @@ impl rust2dart::IntoIntoDart<MyNestedStruct> for MyNestedStruct {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "MySize", freezed: false, empty: false })
 impl support::IntoDart for MySize {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -3565,7 +3272,6 @@ impl rust2dart::IntoIntoDart<MySize> for MySize {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "MyStreamEntry", freezed: false, empty: false })
 impl support::IntoDart for MyStreamEntry {
     fn into_dart(self) -> support::DartAbi {
         vec![self.hello.into_into_dart().into_dart()].into_dart()
@@ -3578,7 +3284,6 @@ impl rust2dart::IntoIntoDart<MyStreamEntry> for MyStreamEntry {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "MyStruct", freezed: false, empty: false })
 impl support::IntoDart for MyStruct {
     fn into_dart(self) -> support::DartAbi {
         vec![self.content.into_into_dart().into_dart()].into_dart()
@@ -3591,7 +3296,6 @@ impl rust2dart::IntoIntoDart<MyStruct> for MyStruct {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "MyTreeNode", freezed: false, empty: false })
 impl support::IntoDart for MyTreeNode {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -3610,7 +3314,6 @@ impl rust2dart::IntoIntoDart<MyTreeNode> for MyTreeNode {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "NestedRawStringMirrored", freezed: false, empty: false })
 impl support::IntoDart for mirror_NestedRawStringMirrored {
     fn into_dart(self) -> support::DartAbi {
         vec![self.0.raw.into_into_dart().into_dart()].into_dart()
@@ -3622,24 +3325,7 @@ impl rust2dart::IntoIntoDart<mirror_NestedRawStringMirrored> for NestedRawString
         mirror_NestedRawStringMirrored(self)
     }
 }
-pub trait NestedRawStringMirroredStreamSink {
-    fn add(&self, val: NestedRawStringMirrored) -> bool;
-}
-impl NestedRawStringMirroredStreamSink for StreamSink<NestedRawStringMirrored> {
-    fn add(&self, val: NestedRawStringMirrored) -> bool {
-        self.add_inner::<_, mirror_NestedRawStringMirrored>(val)
-    }
-}
-pub trait VecNestedRawStringMirroredStreamSink {
-    fn add(&self, val: Vec<NestedRawStringMirrored>) -> bool;
-}
-impl VecNestedRawStringMirroredStreamSink for StreamSink<Vec<NestedRawStringMirrored>> {
-    fn add(&self, val: Vec<NestedRawStringMirrored>) -> bool {
-        self.add_inner::<_, Vec<mirror_NestedRawStringMirrored>>(val)
-    }
-}
 
-//StructRef(IrTypeStructRef { name: "NewSimpleStruct", freezed: false, empty: false })
 impl support::IntoDart for NewSimpleStruct {
     fn into_dart(self) -> support::DartAbi {
         vec![self.field.into_into_dart().into_dart()].into_dart()
@@ -3652,7 +3338,6 @@ impl rust2dart::IntoIntoDart<NewSimpleStruct> for NewSimpleStruct {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "NewTypeInt", freezed: false, empty: false })
 impl support::IntoDart for NewTypeInt {
     fn into_dart(self) -> support::DartAbi {
         vec![self.0.into_into_dart().into_dart()].into_dart()
@@ -3665,7 +3350,6 @@ impl rust2dart::IntoIntoDart<NewTypeInt> for NewTypeInt {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "Numbers", freezed: false, empty: false })
 impl support::IntoDart for mirror_Numbers {
     fn into_dart(self) -> support::DartAbi {
         vec![self.0 .0.into_into_dart().into_dart()].into_dart()
@@ -3677,24 +3361,7 @@ impl rust2dart::IntoIntoDart<mirror_Numbers> for Numbers {
         mirror_Numbers(self)
     }
 }
-pub trait NumbersStreamSink {
-    fn add(&self, val: Numbers) -> bool;
-}
-impl NumbersStreamSink for StreamSink<Numbers> {
-    fn add(&self, val: Numbers) -> bool {
-        self.add_inner::<_, mirror_Numbers>(val)
-    }
-}
-pub trait VecNumbersStreamSink {
-    fn add(&self, val: Vec<Numbers>) -> bool;
-}
-impl VecNumbersStreamSink for StreamSink<Vec<Numbers>> {
-    fn add(&self, val: Vec<Numbers>) -> bool {
-        self.add_inner::<_, Vec<mirror_Numbers>>(val)
-    }
-}
 
-//StructRef(IrTypeStructRef { name: "OldSimpleStruct", freezed: false, empty: false })
 impl support::IntoDart for OldSimpleStruct {
     fn into_dart(self) -> support::DartAbi {
         vec![self.field.into_into_dart().into_dart()].into_dart()
@@ -3707,7 +3374,6 @@ impl rust2dart::IntoIntoDart<OldSimpleStruct> for OldSimpleStruct {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "OpaqueNested", freezed: false, empty: false })
 impl support::IntoDart for OpaqueNested {
     fn into_dart(self) -> support::DartAbi {
         vec![self.first.into_dart(), self.second.into_dart()].into_dart()
@@ -3720,59 +3386,6 @@ impl rust2dart::IntoIntoDart<OpaqueNested> for OpaqueNested {
     }
 }
 
-//Optional(IrTypeOptional { inner: Delegate(String) })
-
-//Optional(IrTypeOptional { inner: Delegate(ZeroCopyBufferVecPrimitive(U8)) })
-
-//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Delegate(Time(Duration)) }) })
-
-//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Delegate(Time(Naive)) }) })
-
-//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Delegate(Time(Utc)) }) })
-
-//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: DartOpaque(IrTypeDartOpaque) }) })
-
-//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: RustOpaque(IrTypeRustOpaque { inner_rust: "HideData", inner_dart: "HideData" }) }) })
-
-//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "ApplicationEnv", freezed: false, empty: false }) }) })
-
-//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "Attribute", freezed: false, empty: false }) }) })
-
-//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Primitive(Bool) }) })
-
-//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "Element", freezed: false, empty: false }) }) })
-
-//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "ExoticOptionals", freezed: false, empty: false }) }) })
-
-//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Primitive(F64) }) })
-
-//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Primitive(I32) }) })
-
-//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Primitive(I64) }) })
-
-//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: EnumRef(IrTypeEnumRef { name: "Measure" }) }) })
-
-//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "NewTypeInt", freezed: false, empty: false }) }) })
-
-//Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: Delegate(PrimitiveEnum { ir: IrTypeEnumRef { name: "Weekdays" }, repr: I32 }) }) })
-
-//Optional(IrTypeOptional { inner: PrimitiveList(IrTypePrimitiveList { primitive: F32 }) })
-
-//Optional(IrTypeOptional { inner: PrimitiveList(IrTypePrimitiveList { primitive: F64 }) })
-
-//Optional(IrTypeOptional { inner: PrimitiveList(IrTypePrimitiveList { primitive: I32 }) })
-
-//Optional(IrTypeOptional { inner: PrimitiveList(IrTypePrimitiveList { primitive: I8 }) })
-
-//Optional(IrTypeOptional { inner: GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "Attribute", freezed: false, empty: false }) }) })
-
-//Optional(IrTypeOptional { inner: GeneralList(IrTypeGeneralList { inner: StructRef(IrTypeStructRef { name: "Element", freezed: false, empty: false }) }) })
-
-//Optional(IrTypeOptional { inner: GeneralList(IrTypeGeneralList { inner: Optional(IrTypeOptional { inner: Boxed(IrTypeBoxed { exist_in_real_api: false, inner: StructRef(IrTypeStructRef { name: "Attribute", freezed: false, empty: false }) }) }) }) })
-
-//Optional(IrTypeOptional { inner: PrimitiveList(IrTypePrimitiveList { primitive: U8 }) })
-
-//StructRef(IrTypeStructRef { name: "Point", freezed: false, empty: false })
 impl support::IntoDart for Point {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -3789,7 +3402,6 @@ impl rust2dart::IntoIntoDart<Point> for Point {
     }
 }
 
-//EnumRef(IrTypeEnumRef { name: "RawStringEnumMirrored" })
 impl support::IntoDart for mirror_RawStringEnumMirrored {
     fn into_dart(self) -> support::DartAbi {
         match self.0 {
@@ -3813,7 +3425,6 @@ impl rust2dart::IntoIntoDart<mirror_RawStringEnumMirrored> for RawStringEnumMirr
     }
 }
 
-//StructRef(IrTypeStructRef { name: "RawStringItemStruct", freezed: false, empty: false })
 impl support::IntoDart for RawStringItemStruct {
     fn into_dart(self) -> support::DartAbi {
         vec![self.r#type.into_into_dart().into_dart()].into_dart()
@@ -3826,7 +3437,6 @@ impl rust2dart::IntoIntoDart<RawStringItemStruct> for RawStringItemStruct {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "RawStringMirrored", freezed: false, empty: false })
 impl support::IntoDart for mirror_RawStringMirrored {
     fn into_dart(self) -> support::DartAbi {
         vec![self.0.r#value.into_into_dart().into_dart()].into_dart()
@@ -3838,24 +3448,7 @@ impl rust2dart::IntoIntoDart<mirror_RawStringMirrored> for RawStringMirrored {
         mirror_RawStringMirrored(self)
     }
 }
-pub trait RawStringMirroredStreamSink {
-    fn add(&self, val: RawStringMirrored) -> bool;
-}
-impl RawStringMirroredStreamSink for StreamSink<RawStringMirrored> {
-    fn add(&self, val: RawStringMirrored) -> bool {
-        self.add_inner::<_, mirror_RawStringMirrored>(val)
-    }
-}
-pub trait VecRawStringMirroredStreamSink {
-    fn add(&self, val: Vec<RawStringMirrored>) -> bool;
-}
-impl VecRawStringMirroredStreamSink for StreamSink<Vec<RawStringMirrored>> {
-    fn add(&self, val: Vec<RawStringMirrored>) -> bool {
-        self.add_inner::<_, Vec<mirror_RawStringMirrored>>(val)
-    }
-}
 
-//StructRef(IrTypeStructRef { name: "Sequences", freezed: false, empty: false })
 impl support::IntoDart for mirror_Sequences {
     fn into_dart(self) -> support::DartAbi {
         vec![self.0 .0.into_into_dart().into_dart()].into_dart()
@@ -3867,24 +3460,7 @@ impl rust2dart::IntoIntoDart<mirror_Sequences> for Sequences {
         mirror_Sequences(self)
     }
 }
-pub trait SequencesStreamSink {
-    fn add(&self, val: Sequences) -> bool;
-}
-impl SequencesStreamSink for StreamSink<Sequences> {
-    fn add(&self, val: Sequences) -> bool {
-        self.add_inner::<_, mirror_Sequences>(val)
-    }
-}
-pub trait VecSequencesStreamSink {
-    fn add(&self, val: Vec<Sequences>) -> bool;
-}
-impl VecSequencesStreamSink for StreamSink<Vec<Sequences>> {
-    fn add(&self, val: Vec<Sequences>) -> bool {
-        self.add_inner::<_, Vec<mirror_Sequences>>(val)
-    }
-}
 
-//EnumRef(IrTypeEnumRef { name: "Speed" })
 impl support::IntoDart for Speed {
     fn into_dart(self) -> support::DartAbi {
         match self {
@@ -3901,7 +3477,6 @@ impl rust2dart::IntoIntoDart<Speed> for Speed {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "StructWithEnum", freezed: false, empty: false })
 impl support::IntoDart for StructWithEnum {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -3918,7 +3493,6 @@ impl rust2dart::IntoIntoDart<StructWithEnum> for StructWithEnum {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "SumWith", freezed: false, empty: false })
 impl support::IntoDart for SumWith {
     fn into_dart(self) -> support::DartAbi {
         vec![self.x.into_into_dart().into_dart()].into_dart()
@@ -3931,7 +3505,6 @@ impl rust2dart::IntoIntoDart<SumWith> for SumWith {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "TestChrono", freezed: false, empty: false })
 impl support::IntoDart for TestChrono {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -3949,7 +3522,6 @@ impl rust2dart::IntoIntoDart<TestChrono> for TestChrono {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "TestId", freezed: false, empty: false })
 impl support::IntoDart for TestId {
     fn into_dart(self) -> support::DartAbi {
         vec![self.0.into_into_dart().into_dart()].into_dart()
@@ -3962,7 +3534,6 @@ impl rust2dart::IntoIntoDart<TestId> for TestId {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "TestModel", freezed: false, empty: false })
 impl support::IntoDart for TestModel {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -3981,33 +3552,6 @@ impl rust2dart::IntoIntoDart<TestModel> for TestModel {
     }
 }
 
-//Primitive(U16)
-
-//Primitive(U32)
-
-//Primitive(U64)
-
-//Primitive(U8)
-
-//Delegate(Array(PrimitiveArray { length: 1600, primitive: U8 }))
-
-//Delegate(Array(PrimitiveArray { length: 32, primitive: U8 }))
-
-//Delegate(Array(PrimitiveArray { length: 5, primitive: U8 }))
-
-//Delegate(Array(PrimitiveArray { length: 8, primitive: U8 }))
-
-//PrimitiveList(IrTypePrimitiveList { primitive: U16 })
-
-//PrimitiveList(IrTypePrimitiveList { primitive: U32 })
-
-//PrimitiveList(IrTypePrimitiveList { primitive: U64 })
-
-//PrimitiveList(IrTypePrimitiveList { primitive: U8 })
-
-//Primitive(Unit)
-
-//StructRef(IrTypeStructRef { name: "UserId", freezed: true, empty: false })
 impl support::IntoDart for UserId {
     fn into_dart(self) -> support::DartAbi {
         vec![self.value.into_into_dart().into_dart()].into_dart()
@@ -4020,9 +3564,6 @@ impl rust2dart::IntoIntoDart<UserId> for UserId {
     }
 }
 
-//Primitive(Usize)
-
-//StructRef(IrTypeStructRef { name: "VecOfPrimitivePack", freezed: false, empty: false })
 impl support::IntoDart for VecOfPrimitivePack {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -4047,7 +3588,6 @@ impl rust2dart::IntoIntoDart<VecOfPrimitivePack> for VecOfPrimitivePack {
     }
 }
 
-//Delegate(PrimitiveEnum { ir: IrTypeEnumRef { name: "Weekdays" }, repr: I32 })
 impl support::IntoDart for Weekdays {
     fn into_dart(self) -> support::DartAbi {
         match self {
@@ -4069,7 +3609,6 @@ impl rust2dart::IntoIntoDart<Weekdays> for Weekdays {
     }
 }
 
-//StructRef(IrTypeStructRef { name: "ZeroCopyVecOfPrimitivePack", freezed: false, empty: false })
 impl support::IntoDart for ZeroCopyVecOfPrimitivePack {
     fn into_dart(self) -> support::DartAbi {
         vec![

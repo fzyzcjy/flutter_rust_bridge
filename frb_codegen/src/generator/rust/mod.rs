@@ -157,7 +157,7 @@ impl<'a> Generator<'a> {
         lines.extend(
             distinct_output_types
                 .iter()
-                .map(|ty| format!("//{:?}\n{}", ty, self.generate_impl_intodart(ty, ir_file))),
+                .map(|ty| self.generate_impl_intodart(ty, ir_file)),
         );
 
         lines.push(self.section_header_comment("executor"));
@@ -488,6 +488,7 @@ impl<'a> Generator<'a> {
     }
 
     fn generate_wrapper_struct(&mut self, ty: &IrType, ir_file: &IrFile) -> Option<String> {
+        // the generated wrapper structs need to be public for the StreamSinkTrait impl to work
         match ty {
             IrType::StructRef(_)
             | IrType::EnumRef(_)
@@ -498,7 +499,7 @@ impl<'a> Generator<'a> {
                         format!(
                             r###"
                             #[derive(Clone)]
-                            struct {}({});
+                            pub struct {}({});
                             "###,
                             wrapper,
                             ty.rust_api_type(),
@@ -676,29 +677,5 @@ pub fn get_into_into_dart(name: impl Display, wrapper_name: Option<impl Display>
             }}"
             )
         }
-    }
-}
-
-pub fn get_stream_sink_traits(name: impl Display, wrapper_name: Option<impl Display>) -> String {
-    match wrapper_name {
-        Some(wrapper) => format!(
-            "pub trait {name}StreamSink {{
-            fn add(&self,val: {name}) -> bool;
-        }}
-        impl {name}StreamSink for StreamSink<{name}> {{
-        fn add(&self,val: {name}) -> bool {{
-            self.add_inner::<_,{wrapper}>(val)
-        }}
-        }}
-        pub trait Vec{name}StreamSink {{
-            fn add(&self,val: Vec<{name}>) -> bool;
-        }}
-        impl Vec{name}StreamSink for StreamSink<Vec<{name}>> {{
-            fn add(&self,val: Vec<{name}>) -> bool {{
-                self.add_inner::<_,Vec<{wrapper}>>(val)
-            }}
-        }}"
-        ),
-        None => String::from(""),
     }
 }

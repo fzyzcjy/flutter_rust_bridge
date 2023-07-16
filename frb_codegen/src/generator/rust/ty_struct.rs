@@ -1,5 +1,4 @@
 use crate::generator::rust::get_into_into_dart;
-use crate::generator::rust::get_stream_sink_traits;
 use crate::generator::rust::ty::*;
 use crate::generator::rust::ExternFuncCollector;
 use crate::ir::*;
@@ -154,7 +153,6 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
         };
 
         let into_into_dart = get_into_into_dart(&src.name, src.wrapper_name.as_ref());
-        let stream_sink_traits = get_stream_sink_traits(&src.name, src.wrapper_name.as_ref());
         format!(
             "impl support::IntoDart for {name} {{
                 fn into_dart(self) -> support::DartAbi {{
@@ -163,7 +161,6 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
             }}
             impl support::IntoDartExceptPrimitive for {name} {{}}
             {into_into_dart}
-            {stream_sink_traits}
             "
         )
     }

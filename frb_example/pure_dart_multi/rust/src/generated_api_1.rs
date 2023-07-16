@@ -69,8 +69,6 @@ impl Wire2Api<i32> for i32 {
 }
 // Section: impl IntoDart
 
-//Primitive(I32)
-
 // Section: executor
 
 support::lazy_static! {

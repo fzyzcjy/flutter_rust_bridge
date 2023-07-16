@@ -145,14 +145,15 @@ impl<T> StreamSink<T> {
     }
 }
 
-pub trait StreamSinkTrait<T> {
+pub trait StreamSinkTrait<T, D> {
     fn add(&self, value: T) -> bool;
 }
 
 // all the simple types without additional Conversions
-impl<T> StreamSinkTrait<T> for StreamSink<T>
+impl<T, D> StreamSinkTrait<T, D> for StreamSink<T>
 where
-    T: IntoIntoDart<T> + IntoDart,
+    T: IntoIntoDart<D>,
+    D: IntoDart,
 {
     fn add(&self, value: T) -> bool {
         self.add_inner(value)
