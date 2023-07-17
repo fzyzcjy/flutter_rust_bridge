@@ -235,6 +235,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kMirrorStructStreamConstMeta;
 
+  Stream<(ApplicationSettings, RawStringEnumMirrored)> mirrorTupleStream({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kMirrorTupleStreamConstMeta;
+
   Future<ApplicationMessage> getMessage({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kGetMessageConstMeta;

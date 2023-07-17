@@ -711,6 +711,17 @@ pub struct MirrorStruct {
 // use a Struct consisting of mirror types as argument to a Stream
 pub fn mirror_struct_stream(sink: StreamSink<MirrorStruct>) {}
 
+// usa a tuple of Mirror types for a StreamSink
+pub fn mirror_tuple_stream(sink: StreamSink<(ApplicationSettings, RawStringEnumMirrored)>) {
+    let tuple = (
+        external_lib::get_app_settings(),
+        RawStringEnumMirrored::Raw(RawStringMirrored {
+            value: String::from("test"),
+        }),
+    );
+    sink.add(tuple);
+}
+
 #[frb(mirror(ApplicationMessage))]
 pub enum _ApplicationMessage {
     DisplayMessage(String),

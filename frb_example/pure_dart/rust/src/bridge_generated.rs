@@ -828,6 +828,9 @@ fn wire_mirror_struct_stream_impl(port_: MessagePort) {
         },
     )
 }
+fn wire_mirror_tuple_stream_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,()>(WrapInfo{ debug_name: "mirror_tuple_stream", port: Some(port_), mode: FfiCallMode::Stream }, move || {  move |task_callback| Ok(mirror_tuple_stream(task_callback.stream_sink::<_,(mirror_ApplicationSettings,mirror_RawStringEnumMirrored,)>())) })
+}
 fn wire_get_message_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_ApplicationMessage>(
         WrapInfo {

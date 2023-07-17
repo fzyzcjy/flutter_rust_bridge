@@ -856,6 +856,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Stream<(ApplicationSettings, RawStringEnumMirrored)> mirrorTupleStream({dynamic hint}) {
+    return _platform.executeStream(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_mirror_tuple_stream(port_),
+      parseSuccessData: _wire2api___record__application_settings_raw_string_enum_mirrored,
+      constMeta: kMirrorTupleStreamConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kMirrorTupleStreamConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "mirror_tuple_stream",
+        argNames: [],
+      );
+
   Future<ApplicationMessage> getMessage({dynamic hint}) {
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_get_message(port_),
@@ -2900,6 +2915,18 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return (
       _wire2api_String(arr[0]),
       _wire2api_i32(arr[1]),
+    );
+  }
+
+  (ApplicationSettings, RawStringEnumMirrored) _wire2api___record__application_settings_raw_string_enum_mirrored(
+      dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) {
+      throw Exception('Expected 2 elements, got ${arr.length}');
+    }
+    return (
+      _wire2api_application_settings(arr[0]),
+      _wire2api_raw_string_enum_mirrored(arr[1]),
     );
   }
 

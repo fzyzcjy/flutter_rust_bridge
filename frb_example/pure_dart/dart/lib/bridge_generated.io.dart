@@ -2303,6 +2303,18 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_mirror_struct_stream');
   late final _wire_mirror_struct_stream = _wire_mirror_struct_streamPtr.asFunction<void Function(int)>();
 
+  void wire_mirror_tuple_stream(
+    int port_,
+  ) {
+    return _wire_mirror_tuple_stream(
+      port_,
+    );
+  }
+
+  late final _wire_mirror_tuple_streamPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_mirror_tuple_stream');
+  late final _wire_mirror_tuple_stream = _wire_mirror_tuple_streamPtr.asFunction<void Function(int)>();
+
   void wire_get_message(
     int port_,
   ) {

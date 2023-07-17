@@ -58,4 +58,14 @@ impl IrTypeTrait for IrTypeRecord {
             format!("wire_{}", self.safe_ident())
         }
     }
+
+    fn intodart_type(&self, ir_file: &IrFile) -> String {
+        let values = self
+            .values
+            .iter()
+            .map(|e| e.intodart_type(ir_file))
+            .collect::<Vec<_>>()
+            .join(",");
+        format!("({values},)")
+    }
 }

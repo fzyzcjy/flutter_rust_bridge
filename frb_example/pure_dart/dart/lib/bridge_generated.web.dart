@@ -1121,6 +1121,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_mirror_struct_stream(NativePortType port_);
 
+  external dynamic /* void */ wire_mirror_tuple_stream(NativePortType port_);
+
   external dynamic /* void */ wire_get_message(NativePortType port_);
 
   external dynamic /* void */ wire_repeat_number(NativePortType port_, int num, int times);
@@ -1533,6 +1535,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_app_settings_vec_stream(NativePortType port_) => wasmModule.wire_app_settings_vec_stream(port_);
 
   void wire_mirror_struct_stream(NativePortType port_) => wasmModule.wire_mirror_struct_stream(port_);
+
+  void wire_mirror_tuple_stream(NativePortType port_) => wasmModule.wire_mirror_tuple_stream(port_);
 
   void wire_get_message(NativePortType port_) => wasmModule.wire_get_message(port_);
 

@@ -294,6 +294,11 @@ pub extern "C" fn wire_mirror_struct_stream(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_mirror_tuple_stream(port_: i64) {
+    wire_mirror_tuple_stream_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_get_message(port_: i64) {
     wire_get_message_impl(port_)
 }
