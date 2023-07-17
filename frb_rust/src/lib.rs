@@ -12,6 +12,7 @@ pub mod thread;
 pub mod handler;
 #[macro_use]
 mod macros;
+mod into_into_dart;
 pub mod rust2dart;
 pub mod support;
 

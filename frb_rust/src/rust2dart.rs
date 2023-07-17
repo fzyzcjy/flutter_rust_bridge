@@ -1,14 +1,13 @@
 //! Manages receiving and sending values across the FFI boundary.
 
 use std::marker::PhantomData;
-use type_equals::TypeEquals;
 
 /// The representation of a Dart object outside of the Dart heap.
 ///
 /// Its implementation lies with the Dart language and therefore should not be
 /// depended on to be stable.
 pub use crate::ffi::*;
-use crate::DartSafe;
+pub use crate::into_into_dart::IntoIntoDart;
 
 /// A wrapper around a Dart [`Isolate`].
 #[derive(Clone)]
@@ -135,7 +134,10 @@ impl<T> StreamSink<T> {
 
     /// Add data to the stream. Returns false when data could not be sent,
     /// or the stream has been closed.
-    pub fn add<V: IntoIntoDart<D> + TypeEquals<Other = T>, D: IntoDart>(&self, value: V) -> bool {
+    pub fn add<D: IntoDart>(&self, value: T) -> bool
+    where
+        T: IntoIntoDart<D>,
+    {
         self.rust2dart().success(value.into_into_dart().into_dart())
     }
 
@@ -144,121 +146,4 @@ impl<T> StreamSink<T> {
     pub fn close(&self) -> bool {
         self.rust2dart().close_stream()
     }
-}
-
-/// Basically the Into trait.
-/// We need this separate trait because we need to implement int for Vec<T> etc.
-pub trait IntoIntoDart<D> {
-    fn into_into_dart(self) -> D;
-}
-
-impl<T, D> IntoIntoDart<Vec<D>> for Vec<T>
-where
-    T: IntoIntoDart<D>,
-{
-    fn into_into_dart(mut self) -> Vec<D> {
-        self.drain(0..).map(|e| e.into_into_dart()).collect()
-    }
-}
-
-impl<A, AD, B, BD> IntoIntoDart<(AD, BD)> for (A, B)
-where
-    A: IntoIntoDart<AD>,
-    B: IntoIntoDart<BD>,
-{
-    fn into_into_dart(self) -> (AD, BD) {
-        (self.0.into_into_dart(), self.1.into_into_dart())
-    }
-}
-
-impl<T, D> IntoIntoDart<Option<D>> for Option<T>
-where
-    T: IntoIntoDart<D>,
-{
-    fn into_into_dart(self) -> Option<D> {
-        self.map(|e| e.into_into_dart())
-    }
-}
-
-impl<T> IntoIntoDart<RustOpaque<T>> for RustOpaque<T>
-where
-    T: DartSafe,
-{
-    fn into_into_dart(self) -> RustOpaque<T> {
-        self
-    }
-}
-
-impl<T, D> IntoIntoDart<ZeroCopyBuffer<D>> for ZeroCopyBuffer<T>
-where
-    T: IntoIntoDart<D>,
-{
-    fn into_into_dart(self) -> ZeroCopyBuffer<D> {
-        ZeroCopyBuffer(self.0.into_into_dart())
-    }
-}
-
-impl<T, const C: usize> IntoIntoDart<[T; C]> for [T; C]
-where
-    T: IntoDart,
-{
-    fn into_into_dart(self) -> [T; C] {
-        self
-    }
-}
-
-impl<T> IntoIntoDart<T> for Box<T>
-where
-    T: IntoDart,
-{
-    fn into_into_dart(self) -> T {
-        *self
-    }
-}
-
-// more generic impls do not work because they crate possibly conflicting trait impls
-// this is why here are some more specific impls
-
-// Implementations for simple types
-macro_rules! impl_into_into_dart {
-    ($t:ty) => {
-        impl IntoIntoDart<$t> for $t {
-            fn into_into_dart(self) -> $t {
-                self
-            }
-        }
-    };
-}
-
-impl_into_into_dart!(u8);
-impl_into_into_dart!(i8);
-impl_into_into_dart!(u16);
-impl_into_into_dart!(i16);
-impl_into_into_dart!(u32);
-impl_into_into_dart!(i32);
-impl_into_into_dart!(u64);
-impl_into_into_dart!(i64);
-impl_into_into_dart!(f32);
-impl_into_into_dart!(f64);
-impl_into_into_dart!(bool);
-impl_into_into_dart!(());
-impl_into_into_dart!(usize);
-impl_into_into_dart!(isize);
-impl_into_into_dart!(String);
-impl_into_into_dart!(DartOpaque);
-#[cfg(not(target_family = "wasm"))]
-impl_into_into_dart!(allo_isolate::ffi::DartCObject);
-
-#[cfg(feature = "uuid")]
-impl_into_into_dart!(uuid::Uuid);
-
-#[cfg(feature = "chrono")]
-mod chrono_impls {
-    use chrono::{Local, Utc};
-
-    use super::IntoIntoDart;
-    impl_into_into_dart!(chrono::Duration);
-    impl_into_into_dart!(chrono::NaiveDateTime);
-    impl_into_into_dart!(chrono::DateTime<Local>);
-    impl_into_into_dart!(chrono::DateTime<Utc>);
 }
