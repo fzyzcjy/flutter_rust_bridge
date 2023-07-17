@@ -8,7 +8,7 @@ For example, your Rust function may run computationally heavy algorithms, and fo
 
 As for the details, a Rust function with signature like `fn f(sink: StreamSink<T>, ..) -> Result<()>` is translated to a Dart function `Stream<T> f(..)`.
 
-Notice that, you can hold that `StreamSink` forever, and use it freely even _after the Rust function itself returns_. The logger example below also demonstrates this (the `create_log_stream` returns almost immediately, while you can use the `StreamSink` after, say, an hour).
+Notice that, you can hold that `StreamSink` forever, and use it freely even *after the Rust function itself returns*. The logger example below also demonstrates this (the `create_log_stream` returns almost immediately, while you can use the `StreamSink` after, say, an hour).
 
 The `StreamSink` can be placed at any location. For example, `fn f(a: i32, b: StreamSink<String>)` and `fn f(a: StreamSink<String>, b: i32)` are both valid.
 

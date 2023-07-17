@@ -366,16 +366,18 @@ impl<'a> Generator<'a> {
                     {code_call_inner_func_result}"
                 ),
             ),
-            IrFuncMode::Normal => (
-                format!("wrap::<_,_,_,{}>", func.output.intodart_type(ir_file)),
-                None,
-                format!("{code_wire2api} move |task_callback| {code_call_inner_func_result}"),
-            ),
-            IrFuncMode::Stream { .. } => (
-                String::from("wrap::<_,_,_,()>"),
-                None,
-                format!("{code_wire2api} move |task_callback| {code_call_inner_func_result}"),
-            ),
+            IrFuncMode::Normal | IrFuncMode::Stream { .. } => {
+                let output = if matches!(func.mode, IrFuncMode::Stream { .. }) {
+                    String::from("()")
+                } else {
+                    func.output.intodart_type(ir_file)
+                };
+                (
+                    format!("wrap::<_,_,_,{output}>"),
+                    None,
+                    format!("{code_wire2api} move |task_callback| {code_call_inner_func_result}"),
+                )
+            }
         };
 
         let body = format!(
