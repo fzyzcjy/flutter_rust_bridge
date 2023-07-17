@@ -303,7 +303,8 @@ void main(List<String> args) async {
   test('dart call mirror_tuple_stream', () async {
     final (settings, rawStringEnum) = await api.mirrorTupleStream().first;
     testAppSettings(settings);
-    expect(rawStringEnum, RawStringEnumMirrored.raw(RawStringMirrored(value: "test")));
+    expect(rawStringEnum is RawStringEnumMirrored_Raw, true);
+    expect((rawStringEnum as RawStringEnumMirrored_Raw).field0.value, "test");
   });
 
   test('dart call returnErr', () async {
