@@ -307,7 +307,7 @@ fn extract_methods_from_file(file: &File) -> Vec<ItemFn> {
     for item in file.items.iter() {
         if let Item::Impl(ref item_impl) = item {
             for item in &item_impl.items {
-                if let ImplItem::Method(item_method) = item {
+                if let ImplItem::Fn(item_method) = item {
                     if let Visibility::Public(_) = &item_method.vis {
                         let f = item_method_to_function(item_impl, item_method)
                             .expect("item implementation is unsupported");
@@ -322,7 +322,7 @@ fn extract_methods_from_file(file: &File) -> Vec<ItemFn> {
 }
 
 // Converts an item implementation (something like fn(&self, ...)) into a function where `&self` is a named parameter to `&Self`
-fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -> Option<ItemFn> {
+fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemFn) -> Option<ItemFn> {
     if let Type::Path(p) = item_impl.self_ty.as_ref() {
         let struct_name = p.path.segments.first().unwrap().ident.to_string();
         let span = item_method.sig.ident.span();
@@ -434,12 +434,15 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemMethod) -
 fn extract_comments(attrs: &[Attribute]) -> Vec<IrComment> {
     attrs
         .iter()
-        .filter_map(|attr| match attr.parse_meta() {
-            Ok(Meta::NameValue(MetaNameValue {
+        .filter_map(|attr| match &attr.meta {
+            Meta::NameValue(MetaNameValue {
                 path,
-                lit: Lit::Str(lit),
+                value:
+                    Expr::Lit(ExprLit {
+                        lit: Lit::Str(lit), ..
+                    }),
                 ..
-            })) if path.is_ident("doc") => Some(IrComment::from(lit.value().as_ref())),
+            }) if path.is_ident("doc") => Some(IrComment::from(lit.value().as_ref())),
             _ => None,
         })
         .collect()
@@ -570,7 +573,7 @@ impl Parse for FrbOption {
 fn extract_metadata(attrs: &[Attribute]) -> Vec<IrDartAnnotation> {
     attrs
         .iter()
-        .filter(|attr| attr.path.is_ident("frb"))
+        .filter(|attr| attr.path().is_ident("frb"))
         .map(|attr| attr.parse_args::<FrbOption>())
         .flat_map(|frb_option| match frb_option {
             Ok(FrbOption::Metadata(NamedOption {
@@ -631,7 +634,7 @@ impl DefaultValues {
     pub(crate) fn extract(attrs: &[Attribute]) -> Option<Self> {
         let defaults = attrs
             .iter()
-            .filter(|attr| attr.path.is_ident("frb"))
+            .filter(|attr| attr.path().is_ident("frb"))
             .map(|attr| attr.parse_args::<FrbOption>())
             .filter_map(|attr| {
                 if let Ok(FrbOption::Default(default)) = attr {

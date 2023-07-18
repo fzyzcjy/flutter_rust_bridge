@@ -7,6 +7,7 @@ use std::marker::PhantomData;
 /// Its implementation lies with the Dart language and therefore should not be
 /// depended on to be stable.
 pub use crate::ffi::*;
+pub use crate::into_into_dart::IntoIntoDart;
 
 /// A wrapper around a Dart [`Isolate`].
 #[derive(Clone)]
@@ -74,7 +75,11 @@ impl TaskCallback {
     }
 
     /// Create a new [StreamSink] of the specified type.
-    pub fn stream_sink<T: IntoDart>(&self) -> StreamSink<T> {
+    pub fn stream_sink<T, D>(&self) -> StreamSink<T>
+    where
+        T: IntoIntoDart<D>,
+        D: IntoDart,
+    {
         StreamSink::new(self.rust2dart.clone())
     }
 }
@@ -94,7 +99,7 @@ impl ChannelHandle {
 /// Represented as a Dart
 /// [`Stream`](https://api.dart.dev/stable/dart-async/Stream-class.html).
 #[derive(Clone)]
-pub struct StreamSink<T: IntoDart> {
+pub struct StreamSink<T> {
     #[cfg(not(wasm))]
     rust2dart: Rust2Dart,
     #[cfg(wasm)]
@@ -102,7 +107,7 @@ pub struct StreamSink<T: IntoDart> {
     _phantom_data: PhantomData<T>,
 }
 
-impl<T: IntoDart> StreamSink<T> {
+impl<T> StreamSink<T> {
     /// Create a new sink from a port wrapper.
     pub fn new(rust2dart: Rust2Dart) -> Self {
         #[cfg(wasm)]
@@ -129,8 +134,11 @@ impl<T: IntoDart> StreamSink<T> {
 
     /// Add data to the stream. Returns false when data could not be sent,
     /// or the stream has been closed.
-    pub fn add(&self, value: T) -> bool {
-        self.rust2dart().success(value)
+    pub fn add<D: IntoDart>(&self, value: T) -> bool
+    where
+        T: IntoIntoDart<D>,
+    {
+        self.rust2dart().success(value.into_into_dart().into_dart())
     }
 
     /// Close the stream and ignore further messages. Returns false when

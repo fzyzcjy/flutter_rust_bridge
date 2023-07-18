@@ -270,6 +270,26 @@ pub fn wire_is_app_embedded(port_: MessagePort, app_settings: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_app_settings_stream(port_: MessagePort) {
+    wire_app_settings_stream_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_app_settings_vec_stream(port_: MessagePort) {
+    wire_app_settings_vec_stream_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_mirror_struct_stream(port_: MessagePort) {
+    wire_mirror_struct_stream_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_mirror_tuple_stream(port_: MessagePort) {
+    wire_mirror_tuple_stream_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_get_message(port_: MessagePort) {
     wire_get_message_impl(port_)
 }

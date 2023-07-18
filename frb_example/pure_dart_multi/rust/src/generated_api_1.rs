@@ -13,6 +13,7 @@
 
 use crate::api_1::*;
 use core::panic::UnwindSafe;
+use flutter_rust_bridge::rust2dart::IntoIntoDart;
 use flutter_rust_bridge::*;
 use std::ffi::c_void;
 use std::sync::Arc;
@@ -26,7 +27,7 @@ fn wire_simple_adder_1_impl(
     a: impl Wire2Api<i32> + UnwindSafe,
     b: impl Wire2Api<i32> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32>(
         WrapInfo {
             debug_name: "simple_adder_1",
             port: Some(port_),

@@ -90,7 +90,6 @@ impl Crate {
 #[derive(Debug, Clone)]
 pub enum Visibility {
     Public,
-    Crate,
     Restricted, // Not supported
     Inherited,  // Usually means private
 }
@@ -98,7 +97,6 @@ pub enum Visibility {
 fn syn_vis_to_visibility(vis: &syn::Visibility) -> Visibility {
     match vis {
         syn::Visibility::Public(_) => Visibility::Public,
-        syn::Visibility::Crate(_) => Visibility::Crate,
         syn::Visibility::Restricted(_) => Visibility::Restricted,
         syn::Visibility::Inherited => Visibility::Inherited,
     }

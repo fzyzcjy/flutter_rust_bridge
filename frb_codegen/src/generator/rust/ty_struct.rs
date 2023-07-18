@@ -1,3 +1,4 @@
+use crate::generator::rust::get_into_into_dart;
 use crate::generator::rust::ty::*;
 use crate::generator::rust::ExternFuncCollector;
 use crate::ir::*;
@@ -108,20 +109,6 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
         src.wrapper_name.as_ref().cloned()
     }
 
-    fn wrap_obj(&self, obj: String, wired_fallible_func: bool) -> String {
-        match self.wrapper_struct() {
-            Some(wrapper) => {
-                if wired_fallible_func {
-                    format!("Ok({wrapper}({obj}?))")
-                } else {
-                    format!("{wrapper}({obj})")
-                }
-            }
-
-            None => obj,
-        }
-    }
-
     fn impl_intodart(&self) -> String {
         let src = self.ir.get(self.context.ir_file);
 
@@ -145,11 +132,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                     self.context.config,
                 );
 
-                // wired_fallible is always false here, this parameter is only used for generate_wire_func
-                gen.convert_to_dart(gen.wrap_obj(
-                    field.try_name_mirror(format!("self{unwrap}.{field_ref}")),
-                    false,
-                ))
+                gen.convert_to_dart(format!("self{unwrap}.{field_ref}"))
             })
             .collect::<Vec<_>>()
             .join(",\n");
@@ -169,6 +152,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
             )
         };
 
+        let into_into_dart = get_into_into_dart(&src.name, src.wrapper_name.as_ref());
         format!(
             "impl support::IntoDart for {name} {{
                 fn into_dart(self) -> support::DartAbi {{
@@ -176,6 +160,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                 }}
             }}
             impl support::IntoDartExceptPrimitive for {name} {{}}
+            {into_into_dart}
             "
         )
     }

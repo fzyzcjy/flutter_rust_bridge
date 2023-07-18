@@ -54,6 +54,13 @@ impl IrTypeTrait for IrTypeEnumRef {
             format!("wire_{}", self.name)
         }
     }
+
+    fn intodart_type(&self, ir_file: &IrFile) -> String {
+        match &self.get(ir_file).wrapper_name {
+            Some(wrapper) => wrapper.clone(),
+            None => self.dart_api_type(),
+        }
+    }
 }
 
 crate::ir! {
