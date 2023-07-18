@@ -693,6 +693,7 @@ pub fn is_app_embedded(app_settings: ApplicationSettings) -> bool {
 pub fn app_settings_stream(sink: StreamSink<ApplicationSettings>) {
     let app_settings = external_lib::get_app_settings();
     sink.add(app_settings);
+    sink.close();
 }
 
 // use a stream of a vec of mirrored type
@@ -702,6 +703,7 @@ pub fn app_settings_vec_stream(sink: StreamSink<Vec<ApplicationSettings>>) {
         external_lib::get_app_settings(),
     ];
     sink.add(app_settings);
+    sink.close();
 }
 
 pub struct MirrorStruct {
@@ -723,6 +725,7 @@ pub fn mirror_struct_stream(sink: StreamSink<MirrorStruct>) {
         ],
     };
     sink.add(val);
+    sink.close();
 }
 
 // usa a tuple of Mirror types for a StreamSink
@@ -734,6 +737,7 @@ pub fn mirror_tuple_stream(sink: StreamSink<(ApplicationSettings, RawStringEnumM
         }),
     );
     sink.add(tuple);
+    sink.close();
 }
 
 #[frb(mirror(ApplicationMessage))]
