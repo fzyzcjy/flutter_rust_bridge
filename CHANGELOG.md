@@ -1,6 +1,7 @@
-## Unreleased
+## 1.79.0
 
 * Update example tab on pub.dev and remove low-quality dependency #1263
+* Adjust type constraints to allow mirror types in Streams #1285 (thanks @MnlPhlp)
 
 ## 1.78.0
 
