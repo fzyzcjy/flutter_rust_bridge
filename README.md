@@ -155,6 +155,7 @@ More specifically, thanks for all these contributions:
 * [temeddix](https://github.com/temeddix): Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc. Make zero-copy defaultable.
 * [Zaitam](https://github.com/Zaitam): Fix when method return struct. Partial migration to Dart 3.
 * [nitn3lav](https://github.com/nitn3lav): nested `struct`s without `Box`.
+* [MnlPhlp](https://github.com/MnlPhlp): Allow mirror types in streams.
 * [erikas-taroza](https://github.com/erikas-taroza): Support list of primitive enums. Make enum camelCase. Warn wrong path.
 * [alexthe2](https://github.com/alexthe2): Add Option Datetime. Add empty structs. Improve doc. Add `r#`. Fix mirror enum bug.
 * [AlienKevin](https://github.com/AlienKevin): Add flutter example for macOS. Add doc for Android NDK bug.
