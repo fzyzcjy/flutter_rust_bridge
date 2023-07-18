@@ -175,7 +175,8 @@ impl_into_into_dart!(String);
 impl_into_into_dart!(DartOpaque);
 #[cfg(not(target_family = "wasm"))]
 impl_into_into_dart!(allo_isolate::ffi::DartCObject);
-
+#[cfg(target_family = "wasm")]
+impl_into_into_dart!(crate::JsValue);
 #[cfg(feature = "uuid")]
 impl_into_into_dart!(uuid::Uuid);
 
