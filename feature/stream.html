@@ -88,11 +88,33 @@
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
@@ -148,7 +170,7 @@
 <p>What is <code>Stream</code>? In short: call once, return multiple times; like <code>Iterator</code>s.</p>
 <p>Flutter's <a href="https://dart.dev/tutorials/language/streams">Stream</a> is a powerful abstraction. When using it as the return value of Rust function, we can allow the scenario that we call function once, and then return multiple times.</p>
 <p>For example, your Rust function may run computationally heavy algorithms, and for every hundreds of milliseconds, it finds out a new piece of the full solution. In this case, it can immediately give that piece to Flutter, then Flutter can render it to UI immediately. Therefore, users do not need to wait for the full algorithm to finish before he can see some partial results on the user interface.</p>
-<p>As for the details, a Rust function with signature like <code>fn f(sink: StreamSink&lt;T&gt;, ..) -&gt; Result&lt;()&gt;</code> is translated to a Dart function  <code>Stream&lt;T&gt; f(..)</code>.</p>
+<p>As for the details, a Rust function with signature like <code>fn f(sink: StreamSink&lt;T&gt;, ..) -&gt; Result&lt;()&gt;</code> is translated to a Dart function <code>Stream&lt;T&gt; f(..)</code>.</p>
 <p>Notice that, you can hold that <code>StreamSink</code> forever, and use it freely even <em>after the Rust function itself returns</em>. The logger example below also demonstrates this (the <code>create_log_stream</code> returns almost immediately, while you can use the <code>StreamSink</code> after, say, an hour).</p>
 <p>The <code>StreamSink</code> can be placed at any location. For example, <code>fn f(a: i32, b: StreamSink&lt;String&gt;)</code> and <code>fn f(a: StreamSink&lt;String&gt;, b: i32)</code> are both valid.</p>
 <h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
