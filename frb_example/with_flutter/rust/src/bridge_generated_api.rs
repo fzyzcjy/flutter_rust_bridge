@@ -223,30 +223,30 @@ fn wire_next_user_id_impl(port_: MessagePort, user_id: impl Wire2Api<UserId> + U
     )
 }
 fn wire_get_app_settings_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_ApplicationSettings>(
         WrapInfo {
             debug_name: "get_app_settings",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(mirror_ApplicationSettings(get_app_settings())),
+        move || move |task_callback| Ok(get_app_settings()),
     )
 }
 fn wire_get_fallible_app_settings_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_ApplicationSettings>(
         WrapInfo {
             debug_name: "get_fallible_app_settings",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(mirror_ApplicationSettings(get_fallible_app_settings()?)),
+        move || move |task_callback| get_fallible_app_settings(),
     )
 }
 fn wire_is_app_embedded_impl(
     port_: MessagePort,
     app_settings: impl Wire2Api<ApplicationSettings> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, bool>(
         WrapInfo {
             debug_name: "is_app_embedded",
             port: Some(port_),
@@ -313,16 +313,16 @@ fn wire_sum_static__static_method__SumWith_impl(
 // Section: wrapper structs
 
 #[derive(Clone)]
-struct mirror_ApplicationEnv(ApplicationEnv);
+pub struct mirror_ApplicationEnv(ApplicationEnv);
 
 #[derive(Clone)]
-struct mirror_ApplicationEnvVar(ApplicationEnvVar);
+pub struct mirror_ApplicationEnvVar(ApplicationEnvVar);
 
 #[derive(Clone)]
-struct mirror_ApplicationMode(ApplicationMode);
+pub struct mirror_ApplicationMode(ApplicationMode);
 
 #[derive(Clone)]
-struct mirror_ApplicationSettings(ApplicationSettings);
+pub struct mirror_ApplicationSettings(ApplicationSettings);
 
 // Section: static checks
 
@@ -410,24 +410,31 @@ impl Wire2Api<u8> for u8 {
 
 impl support::IntoDart for mirror_ApplicationEnv {
     fn into_dart(self) -> support::DartAbi {
-        vec![self
-            .0
-            .vars
-            .into_iter()
-            .map(|v| mirror_ApplicationEnvVar(v))
-            .collect::<Vec<_>>()
-            .into_dart()]
-        .into_dart()
+        vec![self.0.vars.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_ApplicationEnv {}
+impl rust2dart::IntoIntoDart<mirror_ApplicationEnv> for ApplicationEnv {
+    fn into_into_dart(self) -> mirror_ApplicationEnv {
+        mirror_ApplicationEnv(self)
+    }
+}
 
 impl support::IntoDart for mirror_ApplicationEnvVar {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.0 .0.into_dart(), self.0 .1.into_dart()].into_dart()
+        vec![
+            self.0 .0.into_into_dart().into_dart(),
+            self.0 .1.into_into_dart().into_dart(),
+        ]
+        .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_ApplicationEnvVar {}
+impl rust2dart::IntoIntoDart<mirror_ApplicationEnvVar> for ApplicationEnvVar {
+    fn into_into_dart(self) -> mirror_ApplicationEnvVar {
+        mirror_ApplicationEnvVar(self)
+    }
+}
 
 impl support::IntoDart for mirror_ApplicationMode {
     fn into_dart(self) -> support::DartAbi {
@@ -439,13 +446,19 @@ impl support::IntoDart for mirror_ApplicationMode {
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_ApplicationMode {}
+impl rust2dart::IntoIntoDart<mirror_ApplicationMode> for ApplicationMode {
+    fn into_into_dart(self) -> mirror_ApplicationMode {
+        mirror_ApplicationMode(self)
+    }
+}
+
 impl support::IntoDart for mirror_ApplicationSettings {
     fn into_dart(self) -> support::DartAbi {
         vec![
-            self.0.name.into_dart(),
-            self.0.version.into_dart(),
-            mirror_ApplicationMode(self.0.mode).into_dart(),
-            mirror_ApplicationEnv((*self.0.env)).into_dart(),
+            self.0.name.into_into_dart().into_dart(),
+            self.0.version.into_into_dart().into_dart(),
+            self.0.mode.into_into_dart().into_dart(),
+            self.0.env.into_into_dart().into_dart(),
             self.0
                 .env_optional
                 .map(|v| mirror_ApplicationEnv(v))
@@ -455,6 +468,11 @@ impl support::IntoDart for mirror_ApplicationSettings {
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_ApplicationSettings {}
+impl rust2dart::IntoIntoDart<mirror_ApplicationSettings> for ApplicationSettings {
+    fn into_into_dart(self) -> mirror_ApplicationSettings {
+        mirror_ApplicationSettings(self)
+    }
+}
 
 impl support::IntoDart for BoxedPoint {
     fn into_dart(self) -> support::DartAbi {
