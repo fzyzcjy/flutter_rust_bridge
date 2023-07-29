@@ -29,12 +29,8 @@ pub trait TypeRustGeneratorTrait {
         obj
     }
 
-    fn wrap_obj(&self, obj: String, _wired_fallible_func: bool) -> String {
-        obj
-    }
-
     fn convert_to_dart(&self, obj: String) -> String {
-        format!("{obj}.into_dart()")
+        format!("{obj}.into_into_dart().into_dart()")
     }
 
     fn structs(&self) -> String {

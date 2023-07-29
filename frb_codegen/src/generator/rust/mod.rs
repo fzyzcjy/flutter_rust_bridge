@@ -152,6 +152,7 @@ impl<'a> Generator<'a> {
             lines.push("use std::sync::Arc;".to_owned());
             lines.push("use std::ffi::c_void;".to_owned());
         }
+        lines.push("use flutter_rust_bridge::rust2dart::IntoIntoDart;".to_owned());
         lines.push(String::new());
         lines.push(self.section_header_comment("imports"));
         lines.extend(self.generate_imports(
@@ -440,7 +441,13 @@ impl<'a> Generator<'a> {
         ]
         .concat();
         if let IrFuncMode::Stream { argument_index } = func.mode {
-            inner_func_params.insert(argument_index, "task_callback.stream_sink()".to_string());
+            inner_func_params.insert(
+                argument_index,
+                format!(
+                    "task_callback.stream_sink::<_,{}>()",
+                    func.output.intodart_type(ir_file)
+                ),
+            );
         }
         let wrap_info_obj = format!(
             "WrapInfo{{ debug_name: \"{}\", port: {}, mode: FfiCallMode::{} }}",
@@ -471,20 +478,14 @@ impl<'a> Generator<'a> {
             } else {
                 panic!("{} is not a method, nor a static method.", func.name)
             };
-            TypeRustGenerator::new(func.output.clone(), ir_file, self.config).wrap_obj(
-                format!(
-                    r"{}::{}({})",
-                    struct_name.unwrap(),
-                    method_name,
-                    inner_func_params.join(", ")
-                ),
-                func.fallible,
+            format!(
+                r"{}::{}({})",
+                struct_name.unwrap(),
+                method_name,
+                inner_func_params.join(", ")
             )
         } else {
-            TypeRustGenerator::new(func.output.clone(), ir_file, self.config).wrap_obj(
-                format!("{}({})", func.name, inner_func_params.join(", ")),
-                func.fallible,
-            )
+            format!("{}({})", func.name, inner_func_params.join(", "))
         };
         let code_call_inner_func_result = if func.fallible {
             code_call_inner_func
@@ -494,18 +495,25 @@ impl<'a> Generator<'a> {
 
         let (handler_func_name, return_type, code_closure) = match func.mode {
             IrFuncMode::Sync => (
-                "wrap_sync",
+                String::from("wrap_sync"),
                 Some("support::WireSyncReturn"),
                 format!(
                     "{code_wire2api}
                     {code_call_inner_func_result}"
                 ),
             ),
-            IrFuncMode::Normal | IrFuncMode::Stream { .. } => (
-                "wrap",
-                None,
-                format!("{code_wire2api} move |task_callback| {code_call_inner_func_result}"),
-            ),
+            IrFuncMode::Normal | IrFuncMode::Stream { .. } => {
+                let output = if matches!(func.mode, IrFuncMode::Stream { .. }) {
+                    String::from("()")
+                } else {
+                    func.output.intodart_type(ir_file)
+                };
+                (
+                    format!("wrap::<_,_,_,{output}>"),
+                    None,
+                    format!("{code_wire2api} move |task_callback| {code_call_inner_func_result}"),
+                )
+            }
         };
 
         let body = format!(
@@ -618,6 +626,7 @@ impl<'a> Generator<'a> {
     }
 
     fn generate_wrapper_struct(&mut self, ty: &IrType, ir_file: &IrFile) -> Option<String> {
+        // the generated wrapper structs need to be public for the StreamSinkTrait impl to work
         match ty {
             IrType::StructRef(_)
             | IrType::EnumRef(_)
@@ -628,7 +637,7 @@ impl<'a> Generator<'a> {
                         format!(
                             r###"
                             #[derive(Clone)]
-                            struct {}({});
+                            pub struct {}({});
                             "###,
                             wrapper,
                             ty.rust_api_type(),
@@ -782,5 +791,30 @@ impl ExternFuncCollector {
             attr = target.extern_func_attr(),
             call_conv = target.call_convention(),
         )
+    }
+}
+
+pub fn get_into_into_dart(name: impl Display, wrapper_name: Option<impl Display>) -> String {
+    match wrapper_name {
+        None => {
+            // case for types without mirror_ wrapper
+            format!(
+                "impl rust2dart::IntoIntoDart<{name}> for {name} {{
+                fn into_into_dart(self) -> Self {{
+                    self
+                }}
+            }}"
+            )
+        }
+        Some(wrapper) => {
+            // case for type with mirror_ wrapper
+            format!(
+                "impl rust2dart::IntoIntoDart<{wrapper}> for {name} {{
+                fn into_into_dart(self) -> {wrapper} {{
+                    {wrapper}(self)
+                }}
+            }}"
+            )
+        }
     }
 }

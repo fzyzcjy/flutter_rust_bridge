@@ -49,6 +49,11 @@ impl IrTypeTrait for IrTypeStructRef {
             format!("wire_{}", self.name)
         }
     }
+
+    fn intodart_type(&self, ir_file: &IrFile) -> String {
+        let wrapper = self.get(ir_file).wrapper_name.as_ref();
+        wrapper.unwrap_or(&self.rust_api_type()).clone()
+    }
 }
 
 crate::ir! {

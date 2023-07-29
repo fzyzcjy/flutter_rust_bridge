@@ -6,6 +6,8 @@ use crate::ir::*;
 use crate::target::{Acc, Target};
 use crate::type_rust_generator_struct;
 
+use super::get_into_into_dart;
+
 type_rust_generator_struct!(TypeDelegateGenerator, IrTypeDelegate);
 
 macro_rules! delegate_enum{
@@ -177,6 +179,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 .map(|(idx, variant)| format!("{}::{} => {},", self_path, variant.name, idx))
                 .collect::<Vec<_>>()
                 .join("\n");
+            let into_into_dart = get_into_into_dart(&src.name, src.wrapper_name.as_ref());
             return format!(
                 "impl support::IntoDart for {name} {{
                     fn into_dart(self) -> support::DartAbi {{
@@ -185,7 +188,9 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                         }}.into_dart()
                     }}
                 }}
-                impl support::IntoDartExceptPrimitive for {name} {{}}"
+                impl support::IntoDartExceptPrimitive for {name} {{}}
+                {into_into_dart}
+                "
             );
         }
         "".into()
@@ -229,10 +234,6 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
 
     fn wrapper_struct(&self) -> Option<String> {
         delegate_enum!(self, wrapper_struct(), None)
-    }
-
-    fn wrap_obj(&self, obj: String, wired_fallible_func: bool) -> String {
-        delegate_enum!(self, wrap_obj(obj, wired_fallible_func), obj)
     }
 
     fn self_access(&self, obj: String) -> String {

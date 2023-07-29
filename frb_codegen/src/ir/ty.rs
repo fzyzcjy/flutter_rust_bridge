@@ -144,6 +144,9 @@ pub trait IrTypeTrait {
     fn dart_wire_type(&self, target: Target) -> String;
     fn rust_api_type(&self) -> String;
     fn rust_wire_type(&self, target: Target) -> String;
+    fn intodart_type(&self, _ir_file: &IrFile) -> String {
+        self.rust_api_type()
+    }
 
     fn rust_wire_modifier(&self, target: Target) -> String {
         if self.rust_wire_is_pointer(target) {

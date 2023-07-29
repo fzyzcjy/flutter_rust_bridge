@@ -63,15 +63,6 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
         format!("(*{obj})")
     }
 
-    fn wrap_obj(&self, obj: String, wired_fallible_func: bool) -> String {
-        let src = TypeRustGenerator::new(
-            *self.ir.inner.clone(),
-            self.context.ir_file,
-            self.context.config,
-        );
-        src.wrap_obj(self.self_access(obj), wired_fallible_func)
-    }
-
     fn allocate_funcs(&self, collector: &mut ExternFuncCollector) -> Acc<Option<String>> {
         if self.ir.inner.is_array() {
             return Acc::default();

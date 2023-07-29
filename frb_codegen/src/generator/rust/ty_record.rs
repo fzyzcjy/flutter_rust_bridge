@@ -55,11 +55,6 @@ impl TypeRustGeneratorTrait for TypeRecordGenerator<'_> {
         self.as_struct_generator().wrapper_struct()
     }
 
-    fn wrap_obj(&self, obj: String, wired_fallible_func: bool) -> String {
-        self.as_struct_generator()
-            .wrap_obj(obj, wired_fallible_func)
-    }
-
     fn new_with_nullptr(&self, collector: &mut ExternFuncCollector) -> String {
         self.as_struct_generator().new_with_nullptr(collector)
     }

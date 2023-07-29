@@ -71,6 +71,7 @@ impl TypeRustGeneratorTrait for TypePrimitiveListGenerator<'_> {
             ..Default::default()
         }
     }
+
     fn get_context(&self) -> &TypeGeneratorContext {
         &self.context
     }

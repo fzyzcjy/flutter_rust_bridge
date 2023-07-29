@@ -583,6 +583,16 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "MnlPhlp",
+      "name": "Manuel Philipp",
+      "avatar_url": "https://avatars.githubusercontent.com/u/33608297?v=4",
+      "profile": "https://github.com/MnlPhlp",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,

@@ -9,6 +9,7 @@ impl TypeRustGeneratorTrait for TypePrimitiveGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
         "self".into()
     }
+
     fn wire2api_jsvalue(&self) -> Option<std::borrow::Cow<str>> {
         use IrTypePrimitive::*;
         Some(match self.ir {
@@ -17,6 +18,7 @@ impl TypeRustGeneratorTrait for TypePrimitiveGenerator<'_> {
             _ => "self.unchecked_into_f64() as _".into(),
         })
     }
+
     fn get_context(&self) -> &TypeGeneratorContext {
         &self.context
     }
