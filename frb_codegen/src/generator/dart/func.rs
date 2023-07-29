@@ -196,22 +196,22 @@ pub(crate) fn get_api2wire_prefix(
     FETCHED_FOR_COMMON_API2WIRE.with(|data| {
         let borrow_mut = *data.borrow_mut();
         if !borrow_mut {
-            log::debug!("the ir_file is from block:{:?}", ir_file.block_index); //TODO: delete
+            log::debug!("the ir_file is from block:{:?}", ir_file.block_index); // TODO: delete
 
         // TODO：panic!("COMMON_API2WIRE not fetched");
         } else {
             log::debug!(
                 "fetched COMMON BY ir_file from block:{:?}",
                 ir_file.block_index
-            ); //TODO: delete
+            ); // TODO: delete
         }
     });
     let common_api2wire_body = COMMON_API2WIRE.with(|data| data.borrow_mut().clone());
     if !common_api2wire_body.is_empty() {
-        log::debug!("common_api2wire_body:{:?}", common_api2wire_body); //TODO: delete
+        log::debug!("common_api2wire_body:{:?}", common_api2wire_body); // TODO: delete
     }
 
-    log::debug!("the final common_api2wire_body:{:?}", common_api2wire_body); //TODO: delete
+    log::debug!("the final common_api2wire_body:{:?}", common_api2wire_body); // TODO: delete
 
     let prefix = if common_api2wire_body.contains(api2wire_func) {
         ""
@@ -219,8 +219,8 @@ pub(crate) fn get_api2wire_prefix(
         match shared_dart_api2wire_funcs {
             // multi-blocks case
             Some(shared_dart_api2wire_funcs) => {
-                log::debug!("the func to check:{api2wire_func}"); //TODO: delete
-                log::debug!("shared_dart_api2wire_funcs:{shared_dart_api2wire_funcs:?}"); //TODO: delete
+                log::debug!("the func to check:{api2wire_func}"); // TODO: delete
+                log::debug!("shared_dart_api2wire_funcs:{shared_dart_api2wire_funcs:?}"); // TODO: delete
 
                 if ir_file.shared {
                     if for_dart_basic_file {
@@ -232,7 +232,7 @@ pub(crate) fn get_api2wire_prefix(
                     match !ir_file.is_type_shared_by_safe_ident(ir_type) {
                         true => {
                             let ident = ir_type.safe_ident();
-                            log::debug!("type {:?} is NOT shared, ident is:{ident}", ir_type); //TODO: delete
+                            log::debug!("type {:?} is NOT shared, ident is:{ident}", ir_type); // TODO: delete
                             if common_api2wire_body.contains(api2wire_func) {
                                 ""
                             } else if for_dart_basic_file {

@@ -72,7 +72,7 @@ pub fn modify_dart_wire_content(
 
     // for ONLY regular configs: erase class block code which are shared.
     if !ir_file.shared {
-        let v = ir_file.get_shared_type_names();
+        let v = ir_file.get_shared_type_names(true);
         for class_name in v {
             let my_r =
                 &format!(r"final class wire_{class_name} extends ffi\.Struct \{{(?s)(.*?)\}}");

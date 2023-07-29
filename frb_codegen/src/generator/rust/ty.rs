@@ -72,11 +72,11 @@ pub trait TypeRustGeneratorTrait {
                         self.get_context().type_name, ty
                     );
                 }
-                log::warn!("the SHARED_MODULE is :{cloned:?}"); //TODO: delete
+                log::warn!("the SHARED_MODULE is :{cloned:?}"); // TODO: delete
                 cloned
             });
         }
-        log::warn!("got NONE FOR `{:?}`", ty); //TODO: delete
+        log::warn!("got NONE FOR `{:?}`", ty); // TODO: delete
         None
     }
 

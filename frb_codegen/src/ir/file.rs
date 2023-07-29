@@ -16,13 +16,16 @@ use std::cell::RefCell;
 // this variable should be `none` for single block case, and not none for multi-blocks case.
 thread_local!(pub static SHARED_MODULE: RefCell<Option<String>> = RefCell::new(None));
 
-thread_local!(pub static SHARED_TYPES_INPUT: RefCell<HashSet<IrType>> = RefCell::new(HashSet::new())); //  shared types among all regular API blocks, in context of function paramters
+// shared types among all regular API blocks, in context of function paramters
+thread_local!(pub static SHARED_TYPES_INPUT: RefCell<HashSet<IrType>> = RefCell::new(HashSet::new()));
 thread_local!(static FETCHED_FOR_SHARED_TYPES_INPUT: RefCell<bool> = RefCell::new(false));
 
-thread_local!(static SHARED_TYPES_OUTPUT: RefCell<HashSet<IrType>> = RefCell::new(HashSet::new())); //  shared types among all regular API blocks in context of function outputs
+// shared types among all regular API blocks in context of function outputs
+thread_local!(static SHARED_TYPES_OUTPUT: RefCell<HashSet<IrType>> = RefCell::new(HashSet::new()));
 thread_local!(static FETCHED_FOR_SHARED_TYPES_OUTPUT: RefCell<bool> = RefCell::new(false));
 
-thread_local!(static SHARED_TYPES_ALL: RefCell<HashSet<IrType>> = RefCell::new(HashSet::new())); //  shared types among all regular API blocks
+// shared types among all regular API blocks
+thread_local!(static SHARED_TYPES_ALL: RefCell<HashSet<IrType>> = RefCell::new(HashSet::new()));
 thread_local!(static FETCHED_FOR_SHARED_TYPES_ALL: RefCell<bool> = RefCell::new(false));
 
 #[derive(Debug, Clone)]
@@ -92,7 +95,7 @@ impl IrFile {
         all_configs: &[Opts],
         shared: bool,
     ) -> Self {
-        log::debug!("init new IrFile"); //TODO: delete
+        log::debug!("init new IrFile"); // TODO: delete
         let ir_fie = IrFile {
             funcs,
             struct_pool,
@@ -101,12 +104,12 @@ impl IrFile {
             block_index,
             shared,
         };
-        log::debug!("Finish init new IrFile"); //TODO: delete
+        log::debug!("Finish init new IrFile"); // TODO: delete
 
         // Get shared types in advance here, because these types will be used multiple times later for multi-blocks case.
         ir_fie.fetch_shared_types_if_needed(all_configs);
 
-        log::debug!("Finish after all_configs new IrFile"); //TODO: delete
+        log::debug!("Finish after all_configs new IrFile"); // TODO: delete
 
         ir_fie
     }
@@ -164,7 +167,7 @@ impl IrFile {
             "block_{}, the shared_types:{:?}",
             self.block_index,
             shared_types
-        ); //TODO: delete
+        ); // TODO: delete
 
         let types = match !self.shared {
             true => {
@@ -175,7 +178,7 @@ impl IrFile {
                     "block_{}, the raw_distinct_types:{:?}",
                     self.block_index,
                     raw_distinct_types
-                ); //TODO: delete
+                ); // TODO: delete
 
                 // way1: distinguished by `safe_ident()`
                 let r = raw_distinct_types
@@ -214,7 +217,7 @@ impl IrFile {
                     "block_{}, the final_distinct_types:{:?}",
                     self.block_index,
                     r
-                ); //TODO: delete
+                ); // TODO: delete
 
                 r
             }
@@ -228,7 +231,7 @@ impl IrFile {
 
     /// Get dinstinct types only for a regular API block(the current IrFile instance).
     /// NOTE: in multi-blocks case, the returned items would include shared types
-    /// usded in this regular block.
+    /// usded in the specific regular block.
     fn get_regular_distinct_types(
         &self,
         include_func_inputs: bool,
@@ -289,7 +292,7 @@ impl IrFile {
                 global_fetched.with(|has_fetched| {
                     global_shared_types.with(|shared| {
                         let mut shares = shared.borrow_mut();
-                        log::debug!("got ref shared"); //TODO: delete
+                        log::debug!("got ref shared"); // TODO: delete
 
                         if all_configs.len() <= 1 {
                             // CASE 1: it is single block case;
@@ -302,13 +305,13 @@ impl IrFile {
                             return shares.clone();
                         }
 
-                        log::debug!("before get_shared_types_for_all_blocks_from_scratch"); //TODO: delete
+                        log::debug!("before get_shared_types_for_all_blocks_from_scratch"); // TODO: delete
                         *shares = self.get_shared_types_for_all_blocks_from_scratch(
                             include_func_inputs,
                             include_func_output,
                             all_configs,
                         );
-                        log::debug!("after get_shared_types_for_all_blocks_from_scratch"); //TODO: delete
+                        log::debug!("after get_shared_types_for_all_blocks_from_scratch"); // TODO: delete
 
                         *fetched = true;
                         shares.clone()
@@ -318,15 +321,15 @@ impl IrFile {
 
         match (include_func_inputs, include_func_output) {
             (true, true) => {
-                log::debug!("start for SHARED_TYPES_ALL"); //TODO: delete
+                log::debug!("start for SHARED_TYPES_ALL"); // TODO: delete
                 fetch_func(&SHARED_TYPES_ALL, &FETCHED_FOR_SHARED_TYPES_ALL)
             }
             (true, false) => {
-                log::debug!("start for SHARED_TYPES_INPUT"); //TODO: delete
+                log::debug!("start for SHARED_TYPES_INPUT"); // TODO: delete
                 fetch_func(&SHARED_TYPES_INPUT, &FETCHED_FOR_SHARED_TYPES_INPUT)
             }
             (false, true) => {
-                log::debug!("start for SHARED_TYPES_OUTPUT"); //TODO: delete
+                log::debug!("start for SHARED_TYPES_OUTPUT"); // TODO: delete
                 fetch_func(&SHARED_TYPES_OUTPUT, &FETCHED_FOR_SHARED_TYPES_OUTPUT)
             }
             (false, false) => panic!("either input or output should be true"),
@@ -350,9 +353,9 @@ impl IrFile {
         let mut all_regular_types = Vec::new();
         let mut regular_ir_files = Vec::new();
         for (i, config) in regular_configs.iter().enumerate() {
-            log::debug!("before get regular irfile for {i}"); //TODO: delete
+            log::debug!("before get regular irfile for {i}"); // TODO: delete
             let ir_file = config.get_ir_file(&[]).unwrap(); // all_configs` is empty, no need to care about other configs here
-            log::debug!("after get regular irfile for {i}"); //TODO: delete
+            log::debug!("after get regular irfile for {i}"); // TODO: delete
 
             let distinct_types =
                 ir_file.get_regular_distinct_types(include_func_inputs, include_func_output);
@@ -372,11 +375,11 @@ impl IrFile {
             self.block_index.0,
             shares
         );
-        //TODO: delete
+        // TODO: delete
 
         //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓for cross shared types↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
         if !self.shared {
-            log::debug!("block_uniques:{regular_block_uniques:?}"); //TODO: delete
+            log::debug!("block_uniques:{regular_block_uniques:?}"); // TODO: delete
             for (i, each_block_set) in regular_block_uniques.iter().enumerate() {
                 for suspected_shared_type in each_block_set {
                     self.add_cross_shared_types(
@@ -412,10 +415,10 @@ impl IrFile {
                     item,
                     item.safe_ident(),
                     i
-                ); //TODO: delete
+                ); // TODO: delete
                    // }
                 if shares.contains(item) {
-                    log::debug!("already contained "); //TODO: delete
+                    log::debug!("already contained "); // TODO: delete
                     continue;
                 }
                 for (_, other_set) in regular_block_uniques.iter().enumerate().skip(i + 1) {
@@ -432,8 +435,8 @@ impl IrFile {
                             shares.insert(item.clone());
                             shares.insert(other_item.clone());
 
-                            log::debug!("inserted {:?}", item); //TODO: delete
-                            log::debug!("inserted {:?}", other_item); //TODO: delete
+                            log::debug!("inserted {:?}", item); // TODO: delete
+                            log::debug!("inserted {:?}", other_item); // TODO: delete
                         }
                     }
                 }
@@ -445,7 +448,7 @@ impl IrFile {
             self.block_index.0,
             shares
         );
-        //TODO: delete
+        // TODO: delete
 
         shares
     }
@@ -487,7 +490,7 @@ impl IrFile {
                                 suspected_shared_type,
                                 include_func_inputs,
                                 include_func_output
-                            ); //TODO: delete
+                            ); // TODO: delete
                             shares.insert(suspected_shared_type.clone());
                             break;
                         }
@@ -510,7 +513,7 @@ impl IrFile {
                                 suspected_shared_type,
                                 include_func_inputs,
                                 include_func_output
-                            ); //TODO: delete
+                            ); // TODO: delete
                             shares.insert(suspected_shared_type.clone());
                             break;
                         }
@@ -533,7 +536,7 @@ impl IrFile {
                                 suspected_shared_type,
                                 include_func_inputs,
                                 include_func_output
-                            ); //TODO: delete
+                            ); // TODO: delete
                             shares.insert(suspected_shared_type.clone());
                             break;
                         }
@@ -545,17 +548,28 @@ impl IrFile {
     }
 
     pub fn generate_rust(&self, config: &Opts, all_configs: &[Opts]) -> generator::rust::Output {
-        log::debug!("generate_rust 1"); //TODO: delete
+        log::debug!("generate_rust 1"); // TODO: delete
 
         let regular_mod = mod_from_rust_path(config, all_configs, false).unwrap();
         let shared_mod = SHARED_MODULE.with(|text| {
-            log::debug!("inner all configs len:{:?}", all_configs.len()); //TODO: delete
-                                                                          // TODO：check option first?
-            *text.borrow_mut() = mod_from_rust_path(config, all_configs, true);
-            text.borrow().clone()
+            match all_configs.len() {
+                0 => panic!("all_configs.len() == 0"),
+                1 => {
+                    log::debug!("all_configs.len() == 1"); // TODO: delete
+                    None
+                }
+                _ => {
+                    log::debug!("all_configs.len() > 1"); // TODO: delete
+                    let mut x = text.borrow_mut();
+                    if x.is_none() {
+                        *x = mod_from_rust_path(config, all_configs, true);
+                    }
+                    x.clone()
+                }
+            }
         });
-        log::debug!("regular mod:{regular_mod}"); //TODO: delete
-        log::debug!("shared mod:{:?}", shared_mod); //TODO: delete
+        log::debug!("regular mod:{regular_mod}"); // TODO: delete
+        log::debug!("shared mod:{:?}", shared_mod); // TODO: delete
 
         generator::rust::generate(
             self,
@@ -593,8 +607,16 @@ impl IrFile {
         found_op.is_some()
     }
 
-    pub fn get_shared_type_names(&self) -> HashSet<String> {
-        self.get_shared_distinct_types_for_current_block()
+    /// if `only_for_this_block` is `true`,
+    /// then it returns shared types used in current block(for shared IrFile，it returns all shared types);
+    /// otherwise, it returns shared types used in all blocks，whatever the IrFile represents for.
+    pub fn get_shared_type_names(&self, only_for_this_block: bool) -> HashSet<String> {
+        let shared_types = match only_for_this_block {
+            true => self.get_shared_distinct_types_for_current_block(),
+            false => self.get_shared_distinct_types_for_all_blocks(true, true, &[]),
+        };
+
+        shared_types
             .iter()
             .flat_map(|ty| {
                 let safe_ident = ty.safe_ident();
@@ -616,43 +638,44 @@ impl IrFile {
 
     pub fn fetch_shared_types_if_needed(&self, all_configs: &[Opts]) {
         if all_configs.len() > 1 && !self.fetched_all_shared_types() {
-            log::debug!("start for global"); //TODO: delete
+            log::debug!("start for global"); // TODO: delete
             self.get_shared_distinct_types_for_all_blocks(true, true, all_configs);
-            log::debug!("start for input"); //TODO: delete
+            log::debug!("start for input"); // TODO: delete
             self.get_shared_distinct_types_for_all_blocks(true, false, all_configs);
-            log::debug!("start for output"); //TODO: delete
+            log::debug!("start for output"); // TODO: delete
             self.get_shared_distinct_types_for_all_blocks(false, true, all_configs);
         }
     }
+
     pub fn fetch_shared_types_forcely(&self, all_configs: &[Opts]) {
-        log::debug!("start for global"); //TODO: delete
+        log::debug!("start for global"); // TODO: delete
         SHARED_TYPES_ALL.with(|shared| {
             let mut shares = shared.borrow_mut();
-            log::debug!("the old shares len={}", shares.len()); //TODO: delete
+            log::debug!("the old shares len={}", shares.len()); // TODO: delete
             *shares = self.get_shared_types_for_all_blocks_from_scratch(true, true, all_configs);
-            log::debug!("the new shares len={}", shares.len()); //TODO: delete
+            log::debug!("the new shares len={}", shares.len()); // TODO: delete
         });
         FETCHED_FOR_SHARED_TYPES_ALL.with(|has_fetched| {
             *has_fetched.borrow_mut() = true;
         });
 
-        log::debug!("start for input"); //TODO: delete
+        log::debug!("start for input"); // TODO: delete
         SHARED_TYPES_INPUT.with(|shared| {
             let mut shares = shared.borrow_mut();
-            log::debug!("the old shares len={}", shares.len()); //TODO: delete
+            log::debug!("the old shares len={}", shares.len()); // TODO: delete
             *shares = self.get_shared_types_for_all_blocks_from_scratch(true, false, all_configs);
-            log::debug!("the new shares len={}", shares.len()); //TODO: delete
+            log::debug!("the new shares len={}", shares.len()); // TODO: delete
         });
         FETCHED_FOR_SHARED_TYPES_INPUT.with(|has_fetched| {
             *has_fetched.borrow_mut() = true;
         });
 
-        log::debug!("start for output"); //TODO: delete
+        log::debug!("start for output"); // TODO: delete
         SHARED_TYPES_OUTPUT.with(|shared| {
             let mut shares = shared.borrow_mut();
-            log::debug!("the old shares len={}", shares.len()); //TODO: delete
+            log::debug!("the old shares len={}", shares.len()); // TODO: delete
             *shares = self.get_shared_types_for_all_blocks_from_scratch(false, true, all_configs);
-            log::debug!("the new shares len={}", shares.len()); //TODO: delete
+            log::debug!("the new shares len={}", shares.len()); // TODO: delete
         });
         FETCHED_FOR_SHARED_TYPES_OUTPUT.with(|has_fetched| {
             *has_fetched.borrow_mut() = true;

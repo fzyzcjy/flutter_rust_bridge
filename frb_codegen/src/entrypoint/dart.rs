@@ -28,21 +28,51 @@ pub(crate) fn generate_dart_code(
     let temp_dart_wire_file = tempfile::NamedTempFile::new()?;
     let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile()?;
     let exclude_symbols = generated_rust.get_exclude_symbols(all_symbols, ir_file);
+    // exclude_symbols = [
+    //     exclude_symbols,
+    //     vec![
+    //         "wire_StructOnlyForBlock1".into(),
+    //         "wire_test_method__method__StructOnlyForBlock1".into(),
+    //     ],
+    // ]
+    // .concat();
+    // if ir_file.shared{
+    //     let v = ir_file.get_shared_type_names(true);
+
+    // }
+    // if !ir_file.shared {
+    //     let v = ir_file.get_shared_type_names(true);
+    //     log::debug!(
+    //         "block {:?} the fetched_all_shared_types is: {:?}",
+    //         ir_file.block_index,
+    //         v
+    //     ); // TODO: delete
+
+    //     exclude_symbols.extend(v);
+    //     // exclude_symbols.extend(v.iter().map(|s| format!("wire_{}", s)));
+    // }
     log::debug!(
         "block {:?} the all_symbols is: {:?}",
         ir_file.block_index,
         all_symbols
-    ); //TODO: delete
+    ); // TODO: delete
     log::debug!(
         "block {:?} the extern_func_names is: {:?}",
         ir_file.block_index,
         generated_rust.extern_func_names
-    ); //TODO: delete
+    ); // TODO: delete
     log::debug!(
         "block {:?} the exclude_symbols is: {:?}",
         ir_file.block_index,
         exclude_symbols
-    ); //TODO: delete
+    ); // TODO: delete
+    let c_struct_names = ir_file.get_c_struct_names(all_configs);
+    // let c_struct_names: Vec<String> = [].to_vec();
+    log::debug!(
+        "block {:?} the c_struct_names is: {:?}",
+        ir_file.block_index,
+        c_struct_names
+    ); // TODO: delete
     with_changed_file(
         &config.rust_output_path,
         DUMMY_WIRE_CODE_FOR_BINDGEN,
@@ -57,7 +87,7 @@ pub(crate) fn generate_dart_code(
                         .unwrap(),
                     dart_output_path: temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
                     dart_class_name: &config.dart_wire_class_name(),
-                    c_struct_names: ir_file.get_c_struct_names(all_configs),
+                    c_struct_names,
                     exclude_symbols,
                     llvm_install_path: &config.llvm_path[..],
                     llvm_compiler_opts: &config.llvm_compiler_opts,
@@ -76,7 +106,6 @@ pub(crate) fn generate_dart_code(
     for (i, each_path) in config.c_output_paths.iter().enumerate() {
         let c_dummy_code =
             generator::c::generate_dummy(config, all_configs, &effective_func_names, i);
-        log::debug!("the c_dummy_code path is: {each_path:?}");
         fs::create_dir_all(Path::new(each_path).parent().unwrap())?;
         fs::write(
             each_path,
@@ -90,7 +119,7 @@ pub(crate) fn generate_dart_code(
         "block {:?} the generated_dart_wire_code_raw is: {:?}",
         ir_file.block_index,
         generated_dart_wire_code_raw
-    ); //TODO: delete
+    ); // TODO: delete
     let generated_dart_wire = extract_dart_wire_content(&modify_dart_wire_content(
         &generated_dart_wire_code_raw,
         &config.dart_wire_class_name(),
@@ -107,12 +136,12 @@ pub(crate) fn generate_dart_code(
         "block {:?} the generated_dart.impl_code.io is: {:?}",
         ir_file.block_index,
         generated_dart.impl_code.io
-    ); //TODO: delete
+    ); // TODO: delete
     log::debug!(
         "block {:?} the generated_dart_wire is: {generated_dart_wire:?}",
         ir_file.block_index
-    ); //TODO: delete
-       // log::debug!("block {:?} the generated_dart_impl_io_wire is: {generated_dart_impl_io_wire:?}", ir_file.block_index); //TODO: delete
+    ); // TODO: delete
+       // log::debug!("block {:?} the generated_dart_impl_io_wire is: {generated_dart_impl_io_wire:?}", ir_file.block_index); // TODO: delete
 
     let dart_output_paths = config.get_dart_output_paths();
     let dart_output_dir = Path::new(&dart_output_paths.base_path).parent().unwrap();

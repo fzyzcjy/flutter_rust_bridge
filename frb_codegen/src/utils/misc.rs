@@ -111,17 +111,17 @@ pub fn get_symbols_if_no_duplicates(
     let mut explicit_raw_symbols = Vec::new();
     let mut all_symbols = Vec::new();
     for (_i, config) in regular_configs.iter().enumerate() {
-        log::debug!("get_symbols_if_no_duplicates:before "); //TODO: delete
+        log::debug!("get_symbols_if_no_duplicates:before "); // TODO: delete
         let ir_file = config.get_ir_file(&[])?; // all_configs` is empty, no need to care about other configs here
-        log::debug!("get_symbols_if_no_duplicates:after "); //TODO: delete
+        log::debug!("get_symbols_if_no_duplicates:after "); // TODO: delete
 
         // for checking explicit API duplication
         let iter = ir_file.funcs(true).into_iter().map(|f| f.name);
-        log::debug!("the ir_file.funcs:{:?}", iter); //TODO: delete
+        log::debug!("the ir_file.funcs:{:?}", iter); // TODO: delete
         explicit_raw_symbols.extend(iter);
         // for checking implicit API duplication
         let iter = ir_file.get_all_symbols(config);
-        log::debug!("raw_ir_file.get_all_symbols:{:?}", iter); //TODO: delete
+        log::debug!("raw_ir_file.get_all_symbols:{:?}", iter); // TODO: delete
         all_symbols.extend(iter);
     }
     // check duplication among explicitly defined API
@@ -146,8 +146,8 @@ pub fn get_symbols_if_no_duplicates(
 
     // check duplication among implicitly defined API
     let (regular_symbols, shared_symbols) = all_symbols.find_uniques_and_duplicates(true, true);
-    log::debug!("regular_symbols:{:?}", regular_symbols); //TODO: delete
-    log::debug!("shared_symbols:{:?}", shared_symbols); //TODO: delete
+    log::debug!("regular_symbols:{:?}", regular_symbols); // TODO: delete
+    log::debug!("shared_symbols:{:?}", shared_symbols); // TODO: delete
 
     Ok((regular_symbols, shared_symbols))
 }
@@ -159,7 +159,7 @@ pub fn get_symbols_if_no_duplicates(
 pub fn make_string_keyword_safe(input: String) -> String {
     if check_for_keywords(&[input.clone()]).is_err() {
         let new_name = input.to_case(Case::Pascal);
-        log::info!("convert `{input}` to Pascal style `{new_name}`"); //TODO: delete
+        log::info!("convert `{input}` to Pascal style `{new_name}`"); // TODO: delete
         new_name
     } else {
         input

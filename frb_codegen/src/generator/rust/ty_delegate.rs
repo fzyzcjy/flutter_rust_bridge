@@ -28,7 +28,7 @@ macro_rules! delegate_enum{
 
 impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
-        log::debug!("coming here with type:{:?}", self.ir); //TODO: delete
+        log::debug!("coming here with type:{:?}", self.ir); // TODO: delete
         match &self.ir {
             IrTypeDelegate::Array(array) => {
                 let acc =

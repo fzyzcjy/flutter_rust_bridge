@@ -103,7 +103,7 @@ pub fn parse(
     all_configs: &[Opts],
 ) -> IrFile {
     let mut src_fns = extract_fns_from_file(&file);
-    log::debug!("src_fns:{src_fns:?}"); //TODO: delete
+    log::debug!("src_fns:{src_fns:?}"); // TODO: delete
     src_fns.extend(extract_methods_from_file(&file));
 
     let crate_map = Crate::new(manifest_path);
@@ -111,9 +111,9 @@ pub fn parse(
     let src_enums = crate_map.root_module.collect_enums_to_vec();
     let src_types = crate_map.root_module.collect_types_to_pool();
     let src_types = topo_resolve(src_types);
-    log::debug!("src_structs:{src_structs:?}"); //TODO: delete
-    log::debug!("src_enums:{src_enums:?}"); //TODO: delete
-    log::debug!("src_types: {src_types:?}"); //TODO: delete
+    log::debug!("src_structs:{src_structs:?}"); // TODO: delete
+    log::debug!("src_enums:{src_enums:?}"); // TODO: delete
+    log::debug!("src_types: {src_types:?}"); // TODO: delete
     let parser = Parser::new(TypeParser::new(src_structs, src_enums, src_types));
     parser.parse(
         source_rust_content,
@@ -162,8 +162,8 @@ impl<'a> Parser<'a> {
             shared,
         );
 
-        log::debug!("final struct pool:{:?}", ir_file.struct_pool); //TODO: delete
-        log::debug!("final enum pool:{:?}", ir_file.enum_pool); //TODO: delete
+        log::debug!("final struct pool:{:?}", ir_file.struct_pool); // TODO: delete
+        log::debug!("final enum pool:{:?}", ir_file.enum_pool); // TODO: delete
 
         ir_file
     }

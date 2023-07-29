@@ -77,7 +77,7 @@ impl Output {
                 .iter()
                 .map(|method| format!("wire_{}", method.name))
                 .collect::<Vec<_>>();
-            log::debug!("the all_shared_methods:{:?}", all_shared_methods_wire_names); //TODO: delete
+            log::debug!("the all_shared_methods:{:?}", all_shared_methods_wire_names); // TODO: delete
             SHARED_METHODS_WIRE_NAMES.with(|data| {
                 let mut vec = data.borrow_mut();
                 *vec = all_shared_methods_wire_names;
@@ -99,9 +99,9 @@ pub fn generate(
     config: &Opts,
     all_configs: &[Opts],
 ) -> Output {
-    log::debug!("rust generate 1"); //TODO: delete
+    log::debug!("rust generate 1"); // TODO: delete
     let mut generator = Generator::new(config);
-    log::debug!("rust generate 2"); //TODO: delete
+    log::debug!("rust generate 2"); // TODO: delete
     let code = generator.generate(ir_file, rust_wire_mod, shared_rust_wire_mod, all_configs);
     Output {
         code,
@@ -138,7 +138,7 @@ impl<'a> Generator<'a> {
             ir_file.block_index,
             ir_file,
             distinct_input_types
-        ); //TODO: delete
+        ); // TODO: delete
         let distinct_output_types = ir_file.distinct_types(false, true, all_configs);
 
         lines.push(r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion, clippy::unit_arg, clippy::double_parens, non_snake_case, clippy::too_many_arguments)]"#.to_string());
@@ -288,19 +288,19 @@ impl<'a> Generator<'a> {
         distinct_input_types: &[IrType],
         distinct_output_types: &[IrType],
     ) -> impl Iterator<Item = String> {
-        log::debug!("distinct_input_types len: {}", distinct_input_types.len()); //TODO: delete
-        log::debug!("distinct_output_types len: {}", distinct_output_types.len()); //TODO: delete
+        log::debug!("distinct_input_types len: {}", distinct_input_types.len()); // TODO: delete
+        log::debug!("distinct_output_types len: {}", distinct_output_types.len()); // TODO: delete
 
         let input_type_imports = distinct_input_types
             .iter()
             .map(|api_type| generate_import(api_type, ir_file, self.config))
             .collect::<Vec<_>>();
-        log::debug!("1 import"); //TODO: delete
+        log::debug!("1 import"); // TODO: delete
         let output_type_imports = distinct_output_types
             .iter()
             .map(|api_type| generate_import(api_type, ir_file, self.config))
             .collect::<Vec<_>>();
-        log::debug!("2 import"); //TODO: delete
+        log::debug!("2 import"); // TODO: delete
 
         //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓orig code↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
         let mut import_crates = input_type_imports
@@ -314,7 +314,7 @@ impl<'a> Generator<'a> {
             .collect::<HashSet<String>>();
         //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑orig code↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
         if ir_file.shared {
-            log::debug!("I am in shared"); //TODO: delete
+            log::debug!("I am in shared"); // TODO: delete
             import_crates = import_crates.iter().map(|s| format!("pub {}", s)).collect();
         }
 
@@ -329,7 +329,7 @@ impl<'a> Generator<'a> {
             }
         }
 
-        log::debug!("tag rust4"); //TODO: delete
+        log::debug!("tag rust4"); // TODO: delete
 
         import_crates.into_iter()
     }
@@ -363,7 +363,7 @@ impl<'a> Generator<'a> {
         shared_rust_wire_mod: Option<&str>,
         all_configs: &[Opts],
     ) -> Acc<String> {
-        log::debug!("the func name:{}", func.name); //TODO: delete
+        log::debug!("the func name:{}", func.name); // TODO: delete
         let f = FunctionName::deserialize(&func.name);
         let struct_name = f.struct_name();
         let mut params = if func.mode.has_port_argument() {
@@ -401,7 +401,7 @@ impl<'a> Generator<'a> {
                 let name = field.name.rust_style();
                 let is_field_shared = |field: &IrField| {
                     if let Optional(ir) = &field.ty {
-                        log::debug!("inner optional ty：{:?}", ir.inner); //TODO: delete
+                        log::debug!("inner optional ty：{:?}", ir.inner); // TODO: delete
                         distinct_input_types_in_shared_block.contains(&ir.inner)
                     } else {
                         distinct_input_types_in_shared_block.contains(&field.ty)

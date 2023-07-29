@@ -75,7 +75,7 @@ pub fn generate(
         ..
     } = &spec;
 
-    log::debug!("block {:?} the spec is: {spec:?}", ir_file.block_index); //TODO: delete
+    log::debug!("block {:?} the spec is: {spec:?}", ir_file.block_index); // TODO: delete
 
     let needs_freezed = spec.needs_freezed;
     let mut common_header = generate_common_header();
@@ -272,8 +272,8 @@ fn generate_import_header(
     // shared_mod: Option<&str>,
     // wasm_enabled: bool,
 ) -> DartBasicCode {
-    log::debug!("dart imports:{:?}", imports); //TODO: delete
-    log::debug!("dart import_array:{:?}", import_array); //TODO: delete
+    log::debug!("dart imports:{:?}", imports); // TODO: delete
+    log::debug!("dart import_array:{:?}", import_array); // TODO: delete
     let code = if !imports.is_empty() || import_array.is_some() {
         DartBasicCode {
             import: imports
@@ -612,9 +612,9 @@ fn generate_dart_declaration_code(
     import_header: DartBasicCode,
     declaration_body: String,
 ) -> DartBasicCode {
-    log::debug!("common_header:\n{:?}", common_header); //TODO: delete
-    log::debug!("freezed_header:\n{:?}", freezed_header); //TODO: delete
-    log::debug!("import_header:\n{:?}", import_header); //TODO: delete
+    log::debug!("common_header:\n{:?}", common_header); // TODO: delete
+    log::debug!("freezed_header:\n{:?}", freezed_header); // TODO: delete
+    log::debug!("import_header:\n{:?}", import_header); // TODO: delete
 
     common_header
         + &freezed_header

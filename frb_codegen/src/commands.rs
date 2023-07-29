@@ -51,7 +51,7 @@ pub(crate) fn bindgen_rust_to_dart(
     arg: BindgenRustToDartArg,
     dart_root: &str,
 ) -> anyhow::Result<()> {
-    log::debug!("BEFORE CBINDGEN"); //TODO: delete
+    log::debug!("BEFORE CBINDGEN"); // TODO: delete
     log::debug!(
         "dart root:{}\n dart_output_path:{}\n dart_class_name:{}\n rust_crate_dir:{}\n c_output_path:{}\n c_struct_names:{:#?}\n exclude_symbols:{:?}",
         dart_root,
@@ -61,7 +61,7 @@ pub(crate) fn bindgen_rust_to_dart(
         arg.c_output_path,
         arg.c_struct_names,
         arg.exclude_symbols,
-    ); //TODO: delete
+    ); // TODO: delete
 
     cbindgen(
         arg.rust_crate_dir,
@@ -69,7 +69,11 @@ pub(crate) fn bindgen_rust_to_dart(
         arg.c_struct_names,
         arg.exclude_symbols,
     )?;
-    log::debug!("AFTER CBINDGEN"); //TODO: delete
+
+    // let content = fs::read_to_string(arg.c_output_path)?;
+    // log::debug!("the content is:\n{}", content); // TODO: delete
+
+    log::debug!("AFTER CBINDGEN"); // TODO: delete
 
     ffigen(
         arg.c_output_path,
@@ -124,7 +128,7 @@ fn cbindgen(
     if path.starts_with(r"\\?\") {
         path = &path[r"\\?\".len()..];
     }
-
+    log::debug!("the final crate path is:{path}"); // TODO: delete
     if cbindgen::generate_with_config(path, config)?.write_to_file(c_output_path) {
         Ok(())
     } else {
@@ -192,7 +196,7 @@ fn ffigen(
         "--config",
         config_file.path()
     )?;
-    log::debug!("test2"); //TODO: delete
+    log::debug!("test2"); // TODO: delete
 
     if !res.status.success() {
         let err = String::from_utf8_lossy(&res.stderr);
@@ -203,7 +207,7 @@ fn ffigen(
         }
         return Err(Error::string(format!("ffigen failed:\nstderr: {err}\nstdout: {out}")).into());
     }
-    log::debug!("test3"); //TODO: delete
+    log::debug!("test3"); // TODO: delete
 
     Ok(())
 }

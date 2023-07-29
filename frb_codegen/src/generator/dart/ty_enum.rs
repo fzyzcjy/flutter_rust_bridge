@@ -14,7 +14,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
         &self,
         shared_dart_api2wire_funcs: &Option<Acc<String>>,
     ) -> Acc<Option<String>> {
-        log::debug!("I am in enum 1"); //TODO: delete
+        log::debug!("I am in enum 1"); // TODO: delete
         let variants = (self.ir.get(self.context.ir_file).variants())
             .iter()
             .enumerate()
@@ -67,7 +67,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
         &self,
         shared_dart_api2wire_funcs: &Option<Acc<String>>,
     ) -> Option<String> {
-        log::debug!("I am in enum 2"); //TODO: delete
+        log::debug!("I am in enum 2"); // TODO: delete
 
         Some(
             self.ir
