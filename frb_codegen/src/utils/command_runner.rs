@@ -1,7 +1,8 @@
 use crate::commands::CommandResult;
 use anyhow::Context;
 use itertools::Itertools;
-use log::{debug, log_enabled, warn};
+use log::warn;
+use log::{debug, log_enabled};
 use std::path::PathBuf;
 use std::process::Command;
 use std::process::Output;
@@ -107,7 +108,7 @@ pub(crate) fn execute_command<'a>(
 
     let result = cmd
         .output()
-        .with_context(|| format!("\"{bin}\" \"{}\" failed", args_display))?;
+        .with_context(|| format!("\"{bin}\" \"{args_display}\" failed"))?;
 
     let stdout = String::from_utf8_lossy(&result.stdout);
     if result.status.success() {

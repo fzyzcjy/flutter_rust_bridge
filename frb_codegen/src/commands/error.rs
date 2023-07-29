@@ -28,10 +28,10 @@ pub enum Error {
         manager: DartDependencyMode,
         requirement: String,
     },
-    #[error(transparent)]
-    Uncategorized(#[from] anyhow::Error),
     #[error("I/O failure.\n{0}")]
     Io(#[from] std::io::Error),
     #[error("Formatting failure.\n{0}")]
     Fmt(#[from] std::fmt::Error),
+    #[error(transparent)]
+    Uncategorized(#[from] anyhow::Error),
 }

@@ -32,15 +32,17 @@ fn main() -> anyhow::Result<()> {
                 errors.push((&config.rust_input_path, err));
                 continue;
             }
-            error!("fatal: {err}");
-            std::process::exit(1);
+            error!("Fatal error encountered. Rerun with RUST_BACKTRACE=1 or RUST_BACKTRACE=full for more details.");
+            return Err(err);
         }
     }
-    for (path, error) in &errors {
-        error!("Error running codegen for {path}:\n{error}");
-    }
     if !errors.is_empty() {
-        std::process::exit(1);
+        error!("Codegen failed with {} error(s).", errors.len());
+        for (path, error) in &errors {
+            error!("Error running codegen for {path}:\n{error}");
+        }
+        info!("Rerun with RUST_BACKTRACE=1 or RUST_BACKTRACE=full for more details.");
+        std::process::exit(1)
     }
 
     info!("Now go and use it :)");

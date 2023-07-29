@@ -104,9 +104,7 @@ fn cbindgen(
 
     debug!("cbindgen config: {:#?}", config);
 
-    let canonical = Path::new(rust_crate_dir)
-        .canonicalize()
-        .expect("Could not canonicalize rust crate dir");
+    let canonical = Path::new(rust_crate_dir).canonicalize()?;
     let mut path = canonical.to_str().unwrap();
 
     // on windows get rid of the UNC path

@@ -293,9 +293,9 @@ impl<'a> Parser<'a> {
         Ok(IrFunc {
             name: func_name,
             inputs,
-            output: output.expect("unsupported output"),
+            output: output.context("Unsupported output")?,
             fallible,
-            mode: mode.expect("missing mode"),
+            mode: mode.context("Missing mode")?,
             comments: extract_comments(&func.attrs),
         })
     }
@@ -324,7 +324,7 @@ fn extract_methods_from_file(file: &File) -> ParserResult<Vec<ItemFn>> {
                 if let ImplItem::Fn(item_method) = item {
                     if let Visibility::Public(_) = &item_method.vis {
                         let f = item_method_to_function(item_impl, item_method)?
-                            .expect("item implementation is unsupported");
+                            .context("Unsupported item implementation")?;
                         src_fns.push(f);
                     }
                 }

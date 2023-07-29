@@ -32,3 +32,4 @@ flutter_rust_bridge_codegen = { path = "frb_codegen", version = "1" }
 [profile.release]
 strip = "debuginfo"
 lto = "thin"
+debug = 1 # preserves some debug information

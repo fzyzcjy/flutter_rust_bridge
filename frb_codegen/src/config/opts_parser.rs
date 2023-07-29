@@ -309,7 +309,7 @@ pub(crate) fn format_fail_to_guess_error(name: &str) -> String {
 fn fallback_rust_crate_dir(rust_input_path: &str) -> Result<String> {
     let mut dir_curr = Path::new(rust_input_path)
         .parent()
-        .ok_or_else(|| anyhow!(""))?;
+        .context("Unexpected value for rust-crate-dir")?;
 
     loop {
         let path_cargo_toml = dir_curr.join("Cargo.toml");
@@ -318,7 +318,7 @@ fn fallback_rust_crate_dir(rust_input_path: &str) -> Result<String> {
             return Ok(dir_curr
                 .as_os_str()
                 .to_str()
-                .ok_or_else(|| anyhow!(""))?
+                .context("Not a UTF-8 path")?
                 .to_string());
         }
 
@@ -335,11 +335,9 @@ fn fallback_rust_crate_dir(rust_input_path: &str) -> Result<String> {
 
 fn fallback_rust_output_path(rust_input_path: &str) -> Result<String> {
     Ok(Path::new(rust_input_path)
-        .parent()
-        .ok_or_else(|| anyhow!(""))?
-        .join("bridge_generated.rs")
+        .with_file_name("bridge_generated.rs")
         .to_str()
-        .ok_or_else(|| anyhow!(""))?
+        .context("Not a UTF-8 path")?
         .to_string())
 }
 
@@ -350,7 +348,7 @@ fn fallback_dart_root(dart_output_path: &str) -> Result<String> {
             return res
                 .to_str()
                 .map(ToString::to_string)
-                .ok_or_else(|| anyhow!("Non-utf8 path"));
+                .context("Not a UTF-8 path");
         }
     }
     Err(anyhow!(
@@ -365,11 +363,11 @@ fn fallback_class_name(rust_crate_dir: &str) -> Result<String> {
     let cargo_toml_value = cargo_toml_content.parse::<Value>()?;
     let package_name = cargo_toml_value
         .get("package")
-        .ok_or_else(|| anyhow!("no `package` in Cargo.toml"))?
+        .context("no `package` in Cargo.toml")?
         .get("name")
-        .ok_or_else(|| anyhow!("no `name` in Cargo.toml"))?
+        .context("no `name` in Cargo.toml")?
         .as_str()
-        .ok_or_else(|| anyhow!(""))?;
+        .unwrap();
 
     Ok(package_name.to_case(Case::Pascal))
 }

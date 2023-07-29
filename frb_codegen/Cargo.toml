@@ -54,7 +54,7 @@ i686-pc-windows-msvc = {pkg-fmt = "zip"}
 x86_64-pc-windows-msvc = {pkg-fmt = "zip"}
 
 [features]
-default = ["chrono", "serde", "uuid"]
+default = ["chrono", "serde", "uuid", "anyhow/backtrace"]
 serde = []
 chrono = []
 uuid = []
