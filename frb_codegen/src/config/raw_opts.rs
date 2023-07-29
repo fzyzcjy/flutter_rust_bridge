@@ -122,6 +122,11 @@ pub struct RawOpts {
     #[arg(long = "no-dart3", action(ArgAction::SetFalse))]
     #[serde(default = "r#true")]
     pub dart3: bool,
+
+    /// If set, the program will delay error reporting until all codegen operations have completed.
+    #[arg(long)]
+    #[serde(default)]
+    pub keep_going: bool,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Copy, Deserialize, ValueEnum, enum_iterator::Sequence)]

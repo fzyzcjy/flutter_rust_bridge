@@ -140,6 +140,7 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
     let wasm = raw.wasm;
     let dart3 = raw.dart3;
     let inline_rust = raw.inline_rust;
+    let keep_going = raw.keep_going;
     let extra_headers = raw.extra_headers.unwrap_or({
         if raw.no_use_bridge_in_method {
             "import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';".to_owned()
@@ -172,6 +173,7 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
                 dart3,
                 inline_rust,
                 bridge_in_method,
+                keep_going,
                 extra_headers: extra_headers.clone(),
             }
         })
@@ -286,6 +288,7 @@ fn anchor_config(config: RawOpts, config_path: &str) -> RawOpts {
         skip_deps_check: config.skip_deps_check,
         no_use_bridge_in_method: config.no_use_bridge_in_method,
         extra_headers: config.extra_headers,
+        keep_going: config.keep_going,
         #[cfg(feature = "serde")]
         dump: config.dump,
     }

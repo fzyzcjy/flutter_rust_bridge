@@ -1,3 +1,4 @@
+use anyhow::Context;
 #[cfg(feature = "serde")]
 use lib_flutter_rust_bridge_codegen::dump;
 use lib_flutter_rust_bridge_codegen::{
@@ -18,17 +19,28 @@ fn main() -> anyhow::Result<()> {
 
     #[cfg(feature = "serde")]
     if let Some(dump) = dump_config {
-        return dump::dump_multi(&configs, dump);
+        return dump::dump_multi(&configs, dump).context("Failed to dump config");
     }
 
     // generation of rust api for ffi
     let all_symbols = get_symbols_if_no_duplicates(&configs)?;
 
-    for config_index in 0..configs.len() {
+    let mut errors = vec![];
+    for (config_index, config) in configs.iter().enumerate() {
         if let Err(err) = frb_codegen_multi(&configs, config_index, &all_symbols) {
+            if config.keep_going {
+                errors.push((&config.rust_input_path, err));
+                continue;
+            }
             error!("fatal: {err}");
             std::process::exit(1);
         }
+    }
+    for (path, error) in &errors {
+        error!("Error running codegen for {path}:\n{error}");
+    }
+    if !errors.is_empty() {
+        std::process::exit(1);
     }
 
     info!("Now go and use it :)");

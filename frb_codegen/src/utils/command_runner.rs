@@ -1,5 +1,5 @@
-use anyhow::anyhow;
-use anyhow::Result;
+use crate::commands::CommandResult;
+use anyhow::Context;
 use itertools::Itertools;
 use log::{debug, log_enabled, warn};
 use std::path::PathBuf;
@@ -68,7 +68,7 @@ macro_rules! command_args {
     }};
 }
 
-pub(crate) fn call_shell(cmd: &[PathBuf], pwd: Option<&str>) -> Result<Output> {
+pub(crate) fn call_shell(cmd: &[PathBuf], pwd: Option<&str>) -> CommandResult<Output> {
     let cmd = cmd.iter().map(|section| format!("{section:?}")).join(" ");
     #[cfg(windows)]
     {
@@ -84,7 +84,7 @@ pub(crate) fn execute_command<'a>(
     bin: &str,
     args: impl IntoIterator<Item = &'a PathBuf>,
     current_dir: Option<&str>,
-) -> Result<Output> {
+) -> CommandResult<Output> {
     let args = args.into_iter().collect::<Vec<_>>();
     let args_display = args.iter().map(|path| path.to_string_lossy()).join(" ");
     let mut cmd = Command::new(bin);
@@ -107,7 +107,7 @@ pub(crate) fn execute_command<'a>(
 
     let result = cmd
         .output()
-        .map_err(|err| anyhow!("\"{}\" \"{}\" failed: {}", bin, args_display, err))?;
+        .with_context(|| format!("\"{bin}\" \"{}\" failed", args_display))?;
 
     let stdout = String::from_utf8_lossy(&result.stdout);
     if result.status.success() {

@@ -114,16 +114,12 @@ pub fn extract_dart_wire_content(content: &str) -> DartBasicCode {
     }
 }
 
-pub fn sanity_check(
-    generated_dart_wire_code: &str,
-    dart_wire_class_name: &str,
-) -> anyhow::Result<()> {
+pub fn sanity_check(generated_dart_wire_code: &str, dart_wire_class_name: &str) -> crate::Result {
     if !generated_dart_wire_code.contains(dart_wire_class_name) {
-        return Err(crate::error::Error::string(
+        Err(anyhow!(
             "Nothing is generated for dart wire class. \
             Maybe you forget to put code like `mod the_generated_bridge_code;` to your `lib.rs`?",
-        )
-        .into());
+        ))?;
     }
     Ok(())
 }

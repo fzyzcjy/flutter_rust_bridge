@@ -8,24 +8,25 @@ pub use crate::config::raw_opts::RawOpts;
 pub use crate::logs::init_logger;
 pub use crate::utils::misc::get_symbols_if_no_duplicates;
 
-mod logs;
-#[macro_use]
-mod commands;
 pub mod config;
 pub mod dump;
+pub mod utils;
+
+mod commands;
 mod entrypoint;
 mod error;
 mod generator;
 mod ir;
+mod logs;
 mod others;
 mod parser;
 mod target;
 mod transformer;
-pub mod utils;
 
 use crate::entrypoint::dart::generate_dart_code;
 use crate::entrypoint::rust::generate_rust_code;
 use crate::utils::misc::BlockIndex;
+pub(crate) use error::Result;
 use log::info;
 
 /// When the API is only defined in 1 rust file(block), take this one for generation, where `config`
