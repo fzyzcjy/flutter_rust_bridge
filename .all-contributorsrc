@@ -593,6 +593,15 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "lker-dev",
+      "name": "Jonathan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/40730443?v=4",
+      "profile": "https://github.com/lker-dev",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
