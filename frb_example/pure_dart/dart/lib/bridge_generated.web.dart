@@ -360,6 +360,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_my_size_freezed(MySizeFreezed raw) {
+    return api2wire_my_size_freezed(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_my_struct(MyStruct raw) {
     return api2wire_my_struct(raw);
   }
@@ -462,6 +467,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   List<dynamic> api2wire_box_my_size(MySize raw) {
     return api2wire_my_size(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_my_size_freezed(MySizeFreezed raw) {
+    return api2wire_my_size_freezed(raw);
   }
 
   @protected
@@ -737,6 +747,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   @protected
   List<dynamic> api2wire_my_size(MySize raw) {
+    return [api2wire_i32(raw.width), api2wire_i32(raw.height)];
+  }
+
+  @protected
+  List<dynamic> api2wire_my_size_freezed(MySizeFreezed raw) {
     return [api2wire_i32(raw.width), api2wire_i32(raw.height)];
   }
 
@@ -1055,6 +1070,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external dynamic /* void */ wire_handle_struct(NativePortType port_, List<dynamic> arg, List<dynamic> boxed);
 
   external dynamic /* List<dynamic> */ wire_handle_struct_sync(List<dynamic> arg, List<dynamic> boxed);
+
+  external dynamic /* List<dynamic> */ wire_handle_struct_sync_freezed(List<dynamic> arg, List<dynamic> boxed);
 
   external dynamic /* void */ wire_handle_newtype(NativePortType port_, List<dynamic> arg);
 
@@ -1453,6 +1470,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   dynamic /* List<dynamic> */ wire_handle_struct_sync(List<dynamic> arg, List<dynamic> boxed) =>
       wasmModule.wire_handle_struct_sync(arg, boxed);
+
+  dynamic /* List<dynamic> */ wire_handle_struct_sync_freezed(List<dynamic> arg, List<dynamic> boxed) =>
+      wasmModule.wire_handle_struct_sync_freezed(arg, boxed);
 
   void wire_handle_newtype(NativePortType port_, List<dynamic> arg) => wasmModule.wire_handle_newtype(port_, arg);
 

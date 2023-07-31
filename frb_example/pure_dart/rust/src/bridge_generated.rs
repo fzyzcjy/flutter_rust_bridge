@@ -340,6 +340,23 @@ fn wire_handle_struct_sync_impl(
         },
     )
 }
+fn wire_handle_struct_sync_freezed_impl(
+    arg: impl Wire2Api<MySizeFreezed> + UnwindSafe,
+    boxed: impl Wire2Api<Box<MySizeFreezed>> + UnwindSafe,
+) -> support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "handle_struct_sync_freezed",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            let api_boxed = boxed.wire2api();
+            Ok(handle_struct_sync_freezed(api_arg, api_boxed))
+        },
+    )
+}
 fn wire_handle_newtype_impl(port_: MessagePort, arg: impl Wire2Api<NewTypeInt> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, NewTypeInt>(
         WrapInfo {
@@ -3270,6 +3287,22 @@ impl support::IntoDart for MySize {
 }
 impl support::IntoDartExceptPrimitive for MySize {}
 impl rust2dart::IntoIntoDart<MySize> for MySize {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
+
+impl support::IntoDart for MySizeFreezed {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.width.into_into_dart().into_dart(),
+            self.height.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for MySizeFreezed {}
+impl rust2dart::IntoIntoDart<MySizeFreezed> for MySizeFreezed {
     fn into_into_dart(self) -> Self {
         self
     }

@@ -4020,6 +4020,130 @@ abstract class Measure_Distance implements Measure {
 }
 
 /// @nodoc
+mixin _$MySizeFreezed {
+  int get width => throw _privateConstructorUsedError;
+  int get height => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $MySizeFreezedCopyWith<MySizeFreezed> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MySizeFreezedCopyWith<$Res> {
+  factory $MySizeFreezedCopyWith(MySizeFreezed value, $Res Function(MySizeFreezed) then) =
+      _$MySizeFreezedCopyWithImpl<$Res, MySizeFreezed>;
+  @useResult
+  $Res call({int width, int height});
+}
+
+/// @nodoc
+class _$MySizeFreezedCopyWithImpl<$Res, $Val extends MySizeFreezed> implements $MySizeFreezedCopyWith<$Res> {
+  _$MySizeFreezedCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? width = null,
+    Object? height = null,
+  }) {
+    return _then(_value.copyWith(
+      width: null == width
+          ? _value.width
+          : width // ignore: cast_nullable_to_non_nullable
+              as int,
+      height: null == height
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_MySizeFreezedCopyWith<$Res> implements $MySizeFreezedCopyWith<$Res> {
+  factory _$$_MySizeFreezedCopyWith(_$_MySizeFreezed value, $Res Function(_$_MySizeFreezed) then) =
+      __$$_MySizeFreezedCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int width, int height});
+}
+
+/// @nodoc
+class __$$_MySizeFreezedCopyWithImpl<$Res> extends _$MySizeFreezedCopyWithImpl<$Res, _$_MySizeFreezed>
+    implements _$$_MySizeFreezedCopyWith<$Res> {
+  __$$_MySizeFreezedCopyWithImpl(_$_MySizeFreezed _value, $Res Function(_$_MySizeFreezed) _then) : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? width = null,
+    Object? height = null,
+  }) {
+    return _then(_$_MySizeFreezed(
+      width: null == width
+          ? _value.width
+          : width // ignore: cast_nullable_to_non_nullable
+              as int,
+      height: null == height
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_MySizeFreezed implements _MySizeFreezed {
+  const _$_MySizeFreezed({required this.width, required this.height});
+
+  @override
+  final int width;
+  @override
+  final int height;
+
+  @override
+  String toString() {
+    return 'MySizeFreezed(width: $width, height: $height)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MySizeFreezed &&
+            (identical(other.width, width) || other.width == width) &&
+            (identical(other.height, height) || other.height == height));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, width, height);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_MySizeFreezedCopyWith<_$_MySizeFreezed> get copyWith =>
+      __$$_MySizeFreezedCopyWithImpl<_$_MySizeFreezed>(this, _$identity);
+}
+
+abstract class _MySizeFreezed implements MySizeFreezed {
+  const factory _MySizeFreezed({required final int width, required final int height}) = _$_MySizeFreezed;
+
+  @override
+  int get width;
+  @override
+  int get height;
+  @override
+  @JsonKey(ignore: true)
+  _$$_MySizeFreezedCopyWith<_$_MySizeFreezed> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$RawStringEnumMirrored {
   Object get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs

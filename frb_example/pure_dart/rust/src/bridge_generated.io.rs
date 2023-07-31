@@ -117,6 +117,14 @@ pub extern "C" fn wire_handle_struct_sync(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_struct_sync_freezed(
+    arg: *mut wire_MySizeFreezed,
+    boxed: *mut wire_MySizeFreezed,
+) -> support::WireSyncReturn {
+    wire_handle_struct_sync_freezed_impl(arg, boxed)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_handle_newtype(port_: i64, arg: *mut wire_NewTypeInt) {
     wire_handle_newtype_impl(port_, arg)
 }
@@ -1128,6 +1136,11 @@ pub extern "C" fn new_box_autoadd_my_size_0() -> *mut wire_MySize {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_my_size_freezed_0() -> *mut wire_MySizeFreezed {
+    support::new_leak_box_ptr(wire_MySizeFreezed::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_my_struct_0() -> *mut wire_MyStruct {
     support::new_leak_box_ptr(wire_MyStruct::new_with_null_ptr())
 }
@@ -1230,6 +1243,11 @@ pub extern "C" fn new_box_kitchen_sink_0() -> *mut wire_KitchenSink {
 #[no_mangle]
 pub extern "C" fn new_box_my_size_0() -> *mut wire_MySize {
     support::new_leak_box_ptr(wire_MySize::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_my_size_freezed_0() -> *mut wire_MySizeFreezed {
+    support::new_leak_box_ptr(wire_MySizeFreezed::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1913,6 +1931,12 @@ impl Wire2Api<MySize> for *mut wire_MySize {
         Wire2Api::<MySize>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<MySizeFreezed> for *mut wire_MySizeFreezed {
+    fn wire2api(self) -> MySizeFreezed {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<MySizeFreezed>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<MyStruct> for *mut wire_MyStruct {
     fn wire2api(self) -> MyStruct {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -2032,6 +2056,12 @@ impl Wire2Api<Box<MySize>> for *mut wire_MySize {
     fn wire2api(self) -> Box<MySize> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<MySize>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<Box<MySizeFreezed>> for *mut wire_MySizeFreezed {
+    fn wire2api(self) -> Box<MySizeFreezed> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<MySizeFreezed>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<Box<Speed>> for *mut wire_Speed {
@@ -2420,6 +2450,14 @@ impl Wire2Api<MyNestedStruct> for wire_MyNestedStruct {
 impl Wire2Api<MySize> for wire_MySize {
     fn wire2api(self) -> MySize {
         MySize {
+            width: self.width.wire2api(),
+            height: self.height.wire2api(),
+        }
+    }
+}
+impl Wire2Api<MySizeFreezed> for wire_MySizeFreezed {
+    fn wire2api(self) -> MySizeFreezed {
+        MySizeFreezed {
             width: self.width.wire2api(),
             height: self.height.wire2api(),
         }
@@ -2854,6 +2892,13 @@ pub struct wire_MyNestedStruct {
 #[repr(C)]
 #[derive(Clone)]
 pub struct wire_MySize {
+    width: i32,
+    height: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_MySizeFreezed {
     width: i32,
     height: i32,
 }
@@ -3823,6 +3868,21 @@ impl NewWithNullPtr for wire_MySize {
 }
 
 impl Default for wire_MySize {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
+impl NewWithNullPtr for wire_MySizeFreezed {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            width: Default::default(),
+            height: Default::default(),
+        }
+    }
+}
+
+impl Default for wire_MySizeFreezed {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }

@@ -336,6 +336,23 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["arg", "boxed"],
       );
 
+  MySizeFreezed handleStructSyncFreezed({required MySizeFreezed arg, required MySizeFreezed boxed, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_my_size_freezed(arg);
+    var arg1 = _platform.api2wire_box_my_size_freezed(boxed);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_struct_sync_freezed(arg0, arg1),
+      parseSuccessData: _wire2api_my_size_freezed,
+      constMeta: kHandleStructSyncFreezedConstMeta,
+      argValues: [arg, boxed],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleStructSyncFreezedConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_struct_sync_freezed",
+        argNames: ["arg", "boxed"],
+      );
+
   Future<NewTypeInt> handleNewtype({required NewTypeInt arg, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_new_type_int(arg);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -3562,6 +3579,15 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     final arr = raw as List<dynamic>;
     if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return MySize(
+      width: _wire2api_i32(arr[0]),
+      height: _wire2api_i32(arr[1]),
+    );
+  }
+
+  MySizeFreezed _wire2api_my_size_freezed(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+    return MySizeFreezed(
       width: _wire2api_i32(arr[0]),
       height: _wire2api_i32(arr[1]),
     );
