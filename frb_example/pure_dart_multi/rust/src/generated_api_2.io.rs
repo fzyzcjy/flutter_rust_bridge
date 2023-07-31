@@ -3,7 +3,7 @@ use super::*;
 
 #[no_mangle]
 pub extern "C" fn wire_simple_adder_2(port_: i64, a: i32, b: i32) {
-	wire_simple_adder_2_impl(port_, a, b)
+    wire_simple_adder_2_impl(port_, a, b)
 }
 
 // Section: allocate functions
@@ -17,11 +17,11 @@ pub extern "C" fn wire_simple_adder_2(port_: i64, a: i32, b: i32) {
 // Section: impl NewWithNullPtr
 
 pub trait NewWithNullPtr {
-	fn new_with_null_ptr() -> Self;
+    fn new_with_null_ptr() -> Self;
 }
 
 impl<T> NewWithNullPtr for *mut T {
-	fn new_with_null_ptr() -> Self {
-		std::ptr::null_mut()
-	}
+    fn new_with_null_ptr() -> Self {
+        std::ptr::null_mut()
+    }
 }
