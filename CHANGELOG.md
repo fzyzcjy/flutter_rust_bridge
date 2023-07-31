@@ -1,3 +1,7 @@
+## 1.80.0
+
+* Reinforce error handling and reduce usage of panic in codegen #1298 (thanks @Desdaemon)
+
 ## 1.79.0
 
 * Update example tab on pub.dev and remove low-quality dependency #1263
