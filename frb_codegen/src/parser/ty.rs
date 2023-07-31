@@ -58,7 +58,7 @@ pub fn convert_ident_str(ty: &Type) -> Option<String> {
     None
 }
 
-#[cfg(all(feature = "chrono"))]
+#[cfg(feature = "chrono")]
 fn datetime_to_ir_type(args: &[IrType]) -> std::result::Result<IrType, String> {
     if let [Unencodable(IrTypeUnencodable { segments, .. })] = args {
         let mut segments = segments.clone();

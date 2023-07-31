@@ -83,6 +83,9 @@ Options:
       --no-dart3
           Disable language features introduced in Dart 3
 
+      --keep-going
+          If set, the program will delay error reporting until all codegen operations have completed
+
   -h, --help
           Print help (see a summary with '-h')
 

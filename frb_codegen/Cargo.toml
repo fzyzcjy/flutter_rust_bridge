@@ -18,6 +18,7 @@ path = "src/main.rs"
 
 [dependencies]
 anyhow = {workspace = true}
+thiserror = {workspace = true}
 cargo_metadata = "0.14.1"
 convert_case = "0.5.0"
 delegate = "0.8.0"
@@ -36,7 +37,6 @@ serde_yaml = "0.8"
 strum_macros = "0.24.3"
 syn = {version = "2.0.26", features = ["full", "extra-traits"]}
 tempfile = "3.2.0"
-thiserror = "1"
 toml = "0.5.8"
 topological-sort = "0.2.2"
 enum-iterator = "1.4.0"
@@ -54,7 +54,7 @@ i686-pc-windows-msvc = {pkg-fmt = "zip"}
 x86_64-pc-windows-msvc = {pkg-fmt = "zip"}
 
 [features]
-default = ["chrono", "serde", "uuid"]
+default = ["chrono", "serde", "uuid", "anyhow/backtrace"]
 serde = []
 chrono = []
 uuid = []
