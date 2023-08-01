@@ -114,6 +114,11 @@ pub fn wire_handle_struct_sync(arg: JsValue, boxed: JsValue) -> support::WireSyn
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_struct_sync_freezed(arg: JsValue, boxed: JsValue) -> support::WireSyncReturn {
+    wire_handle_struct_sync_freezed_impl(arg, boxed)
+}
+
+#[wasm_bindgen]
 pub fn wire_handle_newtype(port_: MessagePort, arg: JsValue) {
     wire_handle_newtype_impl(port_, arg)
 }
@@ -1607,6 +1612,21 @@ impl Wire2Api<MySize> for JsValue {
         }
     }
 }
+impl Wire2Api<MySizeFreezed> for JsValue {
+    fn wire2api(self) -> MySizeFreezed {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        MySizeFreezed {
+            width: self_.get(0).wire2api(),
+            height: self_.get(1).wire2api(),
+        }
+    }
+}
 impl Wire2Api<MyStruct> for JsValue {
     fn wire2api(self) -> MyStruct {
         let self_ = self.dyn_into::<JsArray>().unwrap();
@@ -2100,6 +2120,11 @@ impl Wire2Api<Box<KitchenSink>> for JsValue {
 }
 impl Wire2Api<Box<MySize>> for JsValue {
     fn wire2api(self) -> Box<MySize> {
+        Box::new(self.wire2api())
+    }
+}
+impl Wire2Api<Box<MySizeFreezed>> for JsValue {
+    fn wire2api(self) -> Box<MySizeFreezed> {
         Box::new(self.wire2api())
     }
 }

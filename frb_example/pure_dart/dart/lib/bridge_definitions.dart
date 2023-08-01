@@ -99,6 +99,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleStructSyncConstMeta;
 
+  MySizeFreezed handleStructSyncFreezed({required MySizeFreezed arg, required MySizeFreezed boxed, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleStructSyncFreezedConstMeta;
+
   Future<NewTypeInt> handleNewtype({required NewTypeInt arg, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleNewtypeConstMeta;
@@ -1417,6 +1421,14 @@ class MySize {
     required this.width,
     required this.height,
   });
+}
+
+@freezed
+class MySizeFreezed with _$MySizeFreezed {
+  const factory MySizeFreezed({
+    required int width,
+    required int height,
+  }) = _MySizeFreezed;
 }
 
 class MyStreamEntry {
