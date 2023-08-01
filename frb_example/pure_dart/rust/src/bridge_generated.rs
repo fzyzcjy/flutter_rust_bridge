@@ -17,9 +17,9 @@ use std::{ffi::c_void, sync::Arc};
 use flutter_rust_bridge::{rust2dart::IntoIntoDart, *};
 
 // Section: imports
-use crate::data::MyEnum;
+use crate::data::MyStruct;
 use crate::{
-	api::*, data::MyStruct, new_module_system::sub_module::NewSimpleStruct,
+	api::*, data::MyEnum, new_module_system::sub_module::NewSimpleStruct,
 	old_module_system::sub_module::OldSimpleStruct,
 };
 
