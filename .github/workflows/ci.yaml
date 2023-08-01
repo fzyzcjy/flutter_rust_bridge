@@ -485,10 +485,10 @@ jobs:
     strategy:
       matrix:
        rust_version:
-        # - nightly-2023-06-28   # pre https://github.com/rust-lang/rust/issues/113152
-        # - nightly-2023-07-26   # post https://github.com/rust-lang/rust/issues/113152
-        # - nightly              # latest nightly
-        - nightly-2018-12-06   # MSRV (first release of rust 2018)
+         - nightly-2023-06-28   # pre https://github.com/rust-lang/rust/issues/113152
+         - nightly-2023-07-26   # post https://github.com/rust-lang/rust/issues/113152
+         - nightly              # latest nightly
+        # TODO(@fzyzcjy, @gutenfries): add MSRV here, as well as other locked versions as needed
 
     steps:
       - uses: actions/checkout@v2
