@@ -602,6 +602,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "SiongSng",
+      "name": "菘菘",
+      "avatar_url": "https://avatars.githubusercontent.com/u/48402225?v=4",
+      "profile": "https://lipoic.org",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
