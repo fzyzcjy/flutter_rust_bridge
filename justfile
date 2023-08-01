@@ -44,7 +44,7 @@ dart_pub_get mode="default":
 # ============================ build & test ============================
 
 rust_build_and_test:
-    just _rust_build_and_test_single frb_codegen --features uuid --features chrono
+    just _rust_build_and_test_single frb_codegen --features uuid,chrono
     just _rust_build_and_test_single frb_rust
     just _rust_build_and_test_single frb_macros
     just _rust_build_and_test_single {{dir_example_pure_dart}}/rust
@@ -229,7 +229,7 @@ configure_ndk:
     set -euxo pipefail
 
     if [ "$(uname)" == "Darwin" ]; then
-        # Do something under Mac OS X platform        
+        # Do something under Mac OS X platform
         ANDROID_HOME=$HOME/Library/Android/sdk
         SDKMANAGER=$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager
         echo y | $SDKMANAGER "ndk;21.4.7075529"

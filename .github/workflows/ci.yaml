@@ -9,8 +9,8 @@ on:
     paths-ignore:
       - "docs/**"
       - "**/*.md"
-    workflow_dispatch: {}
-    
+  workflow_dispatch: {}
+
 env:
   CARGO_TERM_COLOR: always
 
@@ -477,3 +477,49 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: just ci_codegen
+
+  # -------------- MSRV & specific version testing --------------
+  msrv:
+    name: MSRV & specific version testing
+    runs-on: ubuntu-latest # as of now, there is no real reason to test on multiple OSs
+    strategy:
+      matrix:
+       rust_version:
+         - nightly-2023-06-28   # pre https://github.com/rust-lang/rust/issues/113152
+         - nightly-2023-07-26   # post https://github.com/rust-lang/rust/issues/113152
+         - nightly              # latest nightly
+        # TODO(@fzyzcjy, @gutenfries): add MSRV here, as well as other locked versions as needed
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ matrix.rust_version }}
+          components: rustfmt, clippy
+
+      # cache rust toolchains to reduce build time
+      # automaticly updates cache if Cargo.lock changes, ie, if nightly-latest changes
+      - uses: actions/cache@v3
+        with:
+          path: ~/.cargo
+          key: ${{ runner.os }}-rust-${{ matrix.rust_version }}-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-rust-${{ matrix.rust_version }}-
+            ${{ runner.os }}-rust-
+            ${{ runner.os }}-
+
+      - uses: subosito/flutter-action@v2
+        with:
+          cache: true
+          channel: "stable"
+          flutter-version: 3.10.0
+          architecture: x64
+
+      - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: just install_ffigen_dependency
+      - run: just dart_pub_get dart_only
+      - run: just rust_build_and_test
