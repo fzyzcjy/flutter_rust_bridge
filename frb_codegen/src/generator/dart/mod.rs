@@ -168,9 +168,7 @@ impl DartApiSpec {
             generate_wasm_wire(exports, &dart_wire_class_name, &config.dart_wasm_module())
         });
 
-        let needs_freezed = distinct_types
-            .iter()
-            .any(|ty| needs_freezed(ty, ir_file));
+        let needs_freezed = distinct_types.iter().any(|ty| needs_freezed(ty, ir_file));
 
         let import_array = distinct_types
             .iter()
