@@ -8,7 +8,7 @@ use log::{info, warn};
 use pathdiff::diff_paths;
 use regex::Regex;
 
-use crate::ir;
+use crate::ir::{self, IrType};
 
 // NOTE [DartPostCObjectFnType] was originally [*mut DartCObject] but I changed it to [*mut c_void]
 // because cannot automatically generate things related to [DartCObject]. Anyway this works fine.
@@ -72,7 +72,7 @@ pub fn modify_dart_wire_content(
 
     // for ONLY regular configs: erase class block code which are shared.
     if !ir_file.shared {
-        let v = ir_file.get_shared_type_names(true);
+        let v = ir_file.get_shared_type_names(true, Option::<Box<dyn Fn(&IrType) -> bool>>::None);
         for class_name in v {
             let my_r =
                 &format!(r"final class wire_{class_name} extends ffi\.Struct \{{(?s)(.*?)\}}");

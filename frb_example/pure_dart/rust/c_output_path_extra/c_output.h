@@ -1,6 +1,11 @@
+#pragma once
+
+
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
+
+
 typedef struct _Dart_Handle* Dart_Handle;
 
 typedef struct DartCObject DartCObject;

@@ -371,44 +371,6 @@ class ApiBlock2ClassWire implements FlutterRustBridgeWireBase {
       _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturn)>>('free_WireSyncReturn');
   late final _free_WireSyncReturn = _free_WireSyncReturnPtr.asFunction<void Function(WireSyncReturn)>();
 
-  void wire_test_method__method__StructOnlyForBlock1(
-    int port_,
-    ffi.Pointer<wire_StructOnlyForBlock1> that,
-    ffi.Pointer<wire_uint_8_list> message,
-    int num,
-  ) {
-    return _wire_test_method__method__StructOnlyForBlock1(
-      port_,
-      that,
-      message,
-      num,
-    );
-  }
-
-  late final _wire_test_method__method__StructOnlyForBlock1Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_StructOnlyForBlock1>, ffi.Pointer<wire_uint_8_list>,
-              ffi.Uint16)>>('wire_test_method__method__StructOnlyForBlock1');
-  late final _wire_test_method__method__StructOnlyForBlock1 = _wire_test_method__method__StructOnlyForBlock1Ptr
-      .asFunction<void Function(int, ffi.Pointer<wire_StructOnlyForBlock1>, ffi.Pointer<wire_uint_8_list>, int)>();
-
-  void wire_test_static_method__static_method__StructOnlyForBlock1(
-    int port_,
-    ffi.Pointer<wire_uint_8_list> message,
-  ) {
-    return _wire_test_static_method__static_method__StructOnlyForBlock1(
-      port_,
-      message,
-    );
-  }
-
-  late final _wire_test_static_method__static_method__StructOnlyForBlock1Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
-          'wire_test_static_method__static_method__StructOnlyForBlock1');
-  late final _wire_test_static_method__static_method__StructOnlyForBlock1 =
-      _wire_test_static_method__static_method__StructOnlyForBlock1Ptr
-          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
-
   void store_dart_post_cobject(
     DartPostCObjectFnType ptr,
   ) {
@@ -907,45 +869,33 @@ class ApiBlock2ClassWire implements FlutterRustBridgeWireBase {
           'inflate_EnumDefinedInBlock2_ChangeColor');
   late final _inflate_EnumDefinedInBlock2_ChangeColor =
       _inflate_EnumDefinedInBlock2_ChangeColorPtr.asFunction<ffi.Pointer<EnumDefinedInBlock2Kind> Function()>();
-
-  void wire_test_method__method__StructOnlyForBlock3(
-    int port_,
-    ffi.Pointer<wire_StructOnlyForBlock3> that,
-    ffi.Pointer<wire_uint_8_list> message,
-    int num,
-  ) {
-    return _wire_test_method__method__StructOnlyForBlock3(
-      port_,
-      that,
-      message,
-      num,
-    );
-  }
-
-  late final _wire_test_method__method__StructOnlyForBlock3Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_StructOnlyForBlock3>, ffi.Pointer<wire_uint_8_list>,
-              ffi.Uint16)>>('wire_test_method__method__StructOnlyForBlock3');
-  late final _wire_test_method__method__StructOnlyForBlock3 = _wire_test_method__method__StructOnlyForBlock3Ptr
-      .asFunction<void Function(int, ffi.Pointer<wire_StructOnlyForBlock3>, ffi.Pointer<wire_uint_8_list>, int)>();
-
-  void wire_test_static_method__static_method__StructOnlyForBlock3(
-    int port_,
-    ffi.Pointer<wire_uint_8_list> message,
-  ) {
-    return _wire_test_static_method__static_method__StructOnlyForBlock3(
-      port_,
-      message,
-    );
-  }
-
-  late final _wire_test_static_method__static_method__StructOnlyForBlock3Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
-          'wire_test_static_method__static_method__StructOnlyForBlock3');
-  late final _wire_test_static_method__static_method__StructOnlyForBlock3 =
-      _wire_test_static_method__static_method__StructOnlyForBlock3Ptr
-          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 }
+
+final class wire_CrossSharedStructInBlock1And2 extends ffi.Opaque {}
+
+final class wire_CrossSharedStructInBlock2And3 extends ffi.Opaque {}
+
+final class wire_SharedComplexEnumInAllBlocks extends ffi.Opaque {}
+
+final class wire_SharedStructInAllBlocks extends ffi.Opaque {}
+
+final class wire_SharedStructInBlock1And2 extends ffi.Opaque {}
+
+final class wire_SharedStructInBlock2And3 extends ffi.Opaque {}
+
+final class wire_StringList extends ffi.Opaque {}
+
+final class wire_float_32_list extends ffi.Opaque {}
+
+final class wire_int_32_list extends ffi.Opaque {}
+
+final class wire_list_shared_complex_enum_in_all_blocks extends ffi.Opaque {}
+
+final class wire_list_shared_struct_in_all_blocks extends ffi.Opaque {}
+
+final class wire_list_shared_weekdays_enum_in_all_blocks extends ffi.Opaque {}
+
+final class wire_uint_8_list extends ffi.Opaque {}
 
 final class _Dart_Handle extends ffi.Opaque {}
 
@@ -964,22 +914,6 @@ final class wire_SharedComplexEnumInAllBlocks_Primitives extends ffi.Struct {
 
 final class wire_SharedComplexEnumInAllBlocks_Nested extends ffi.Struct {
   external ffi.Pointer<wire_SharedComplexEnumInAllBlocks> field0;
-}
-
-final class SharedComplexEnumInAllBlocksKind extends ffi.Union {
-  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Empty> Empty;
-
-  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Primitives> Primitives;
-
-  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Nested> Nested;
-
-  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Optional> Optional;
-
-  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Buffer> Buffer;
-
-  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Enums> Enums;
-
-  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_BytesArray> BytesArray;
 }
 
 final class wire_SharedComplexEnumInAllBlocks_Optional extends ffi.Struct {
@@ -1001,12 +935,20 @@ final class wire_SharedComplexEnumInAllBlocks_BytesArray extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> field0;
 }
 
-final class wire_StructOnlyForBlock1 extends ffi.Struct {
-  external ffi.Pointer<ffi.Int8> id;
+final class SharedComplexEnumInAllBlocksKind extends ffi.Union {
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Empty> Empty;
 
-  external ffi.Pointer<ffi.Double> num;
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Primitives> Primitives;
 
-  external ffi.Pointer<wire_uint_8_list> name;
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Nested> Nested;
+
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Optional> Optional;
+
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Buffer> Buffer;
+
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Enums> Enums;
+
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_BytesArray> BytesArray;
 }
 
 final class wire_StructOnlyForBlock2 extends ffi.Struct {
@@ -1077,16 +1019,6 @@ final class wire_list_enum_defined_in_block_2 extends ffi.Struct {
 
   @ffi.Int32()
   external int len;
-}
-
-final class wire_StructOnlyForBlock3 extends ffi.Struct {
-  @ffi.Int64()
-  external int id;
-
-  @ffi.Double()
-  external double num;
-
-  external ffi.Pointer<wire_uint_8_list> name;
 }
 
 typedef DartPostCObjectFnType

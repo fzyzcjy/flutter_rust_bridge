@@ -1,11 +1,13 @@
 use crate::commands::BindgenRustToDartArg;
 use crate::error::Error;
+use crate::ir::IrTypeTrait;
 use crate::others::{
     extract_dart_wire_content, modify_dart_wire_content, sanity_check, DartBasicCode,
     DUMMY_WIRE_CODE_FOR_BINDGEN, EXTRA_EXTERN_FUNC_NAMES,
 };
 use crate::utils::misc::{with_changed_file, ExtraTraitForVec};
 use crate::{command_run, commands, ensure_tools_available, generator, ir, Opts};
+use convert_case::{Case, Casing};
 use itertools::Itertools;
 use log::info;
 use pathdiff::diff_paths;
@@ -27,30 +29,47 @@ pub(crate) fn generate_dart_code(
     // phase-step1: generate (temporary) c file(s)
     let temp_dart_wire_file = tempfile::NamedTempFile::new()?;
     let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile()?;
-    let exclude_symbols = generated_rust.get_exclude_symbols(all_symbols, ir_file);
-    // exclude_symbols = [
-    //     exclude_symbols,
-    //     vec![
-    //         "wire_StructOnlyForBlock1".into(),
-    //         "wire_test_method__method__StructOnlyForBlock1".into(),
-    //     ],
-    // ]
-    // .concat();
-    // if ir_file.shared{
-    //     let v = ir_file.get_shared_type_names(true);
+    let mut exclude_symbols = generated_rust.get_exclude_symbols(all_symbols, ir_file);
+    let mut extra_forward_declarations = Vec::new();
+    //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓refine exclude_symbols↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+    log::debug!("working on block:{:?}", ir_file.block_index); // TODO: delete
+    match ir_file.shared {
+        true => {
+            for c in all_configs {
+                if c.shared {
+                    continue;
+                }
+                let (wire_types, wire_funcs) = get_wire_types_funcs_for_c_file(c, all_configs);
+                exclude_symbols.extend(wire_types);
+                exclude_symbols.extend(wire_funcs);
+            }
+        }
+        false => {
+            // 1. refine `exclude_symbols`
+            for c in all_configs {
+                if c.block_index == config.block_index {
+                    continue;
+                }
+                let (wire_types, wire_funcs) = get_wire_types_funcs_for_c_file(c, all_configs);
+                exclude_symbols.extend(wire_types);
+                exclude_symbols.extend(wire_funcs);
+            }
 
-    // }
-    // if !ir_file.shared {
-    //     let v = ir_file.get_shared_type_names(true);
-    //     log::debug!(
-    //         "block {:?} the fetched_all_shared_types is: {:?}",
-    //         ir_file.block_index,
-    //         v
-    //     ); // TODO: delete
+            // 2. refine `extra_forward_declarations`
+            let x = ir_file.get_shared_type_names(
+                true,
+                Some(|each: &ir::IrType| each.is_struct() || each.is_list(false)),
+            );
+            let extra_forward_declaration = x
+                .iter()
+                .map(|each| format!("typedef struct wire_{each} wire_{each}"))
+                .collect::<Vec<_>>();
 
-    //     exclude_symbols.extend(v);
-    //     // exclude_symbols.extend(v.iter().map(|s| format!("wire_{}", s)));
-    // }
+            extra_forward_declarations.extend(extra_forward_declaration);
+        }
+    }
+    //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑refine exclude_symbols↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+
     log::debug!(
         "block {:?} the all_symbols is: {:?}",
         ir_file.block_index,
@@ -89,6 +108,7 @@ pub(crate) fn generate_dart_code(
                     dart_class_name: &config.dart_wire_class_name(),
                     c_struct_names,
                     exclude_symbols,
+                    extra_forward_declarations,
                     llvm_install_path: &config.llvm_path[..],
                     llvm_compiler_opts: &config.llvm_compiler_opts,
                 },
@@ -211,6 +231,35 @@ pub(crate) fn generate_dart_code(
     )?;
 
     Ok(())
+}
+
+fn get_wire_types_funcs_for_c_file(
+    config: &Opts,
+    all_configs: &[Opts],
+) -> (Vec<String>, Vec<String>) {
+    let ir_file = config.get_ir_file(all_configs).unwrap();
+    let types = ir_file.distinct_types(true, true, all_configs);
+
+    // 1. wire_types
+    let wire_types = types
+        .iter()
+        .map(|each| {
+            if each.is_list(true) {
+                format!("wire_{}", each.safe_ident())
+            } else {
+                format!("wire_{}", each.safe_ident().to_case(Case::Pascal))
+            }
+        })
+        .collect::<Vec<_>>();
+    let funcs = ir_file.funcs(true).into_iter().collect::<Vec<_>>();
+
+    // 2. wire_funcs
+    let wire_funcs = funcs
+        .iter()
+        .map(|each| format!("wire_{}", each.name))
+        .collect::<Vec<_>>();
+
+    (wire_types, wire_funcs)
 }
 
 use std::cell::RefCell;

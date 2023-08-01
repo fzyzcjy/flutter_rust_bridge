@@ -89,6 +89,20 @@ impl IrType {
     }
 
     #[inline]
+    pub fn is_list(&self, exclude_string_time_list: bool) -> bool {
+        if exclude_string_time_list {
+            return matches!(self, |GeneralList(_)| PrimitiveList(_));
+        }
+        matches!(
+            self,
+            IrType::Delegate(IrTypeDelegate::StringList)
+                | Delegate(IrTypeDelegate::TimeList(_))
+                | GeneralList(_)
+                | PrimitiveList(_)
+        )
+    }
+
+    #[inline]
     pub fn is_struct(&self) -> bool {
         matches!(self, StructRef(_) | EnumRef(_) | Record(_))
     }

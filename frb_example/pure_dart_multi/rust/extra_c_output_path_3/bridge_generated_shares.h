@@ -1,6 +1,11 @@
+#pragma once
+
+
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
+
+
 typedef struct _Dart_Handle* Dart_Handle;
 
 typedef struct DartCObject DartCObject;
@@ -124,24 +129,6 @@ typedef struct wire_list_shared_weekdays_enum_in_all_blocks {
 
 typedef struct DartCObject *WireSyncReturn;
 
-typedef struct wire_StructOnlyForBlock1 {
-  int8_t *id;
-  double *num;
-  struct wire_uint_8_list *name;
-} wire_StructOnlyForBlock1;
-
-typedef struct wire_StructOnlyForBlock2 {
-  int16_t id;
-  double num;
-  struct wire_uint_8_list *name;
-} wire_StructOnlyForBlock2;
-
-typedef struct wire_StructOnlyForBlock3 {
-  int64_t id;
-  double num;
-  struct wire_uint_8_list *name;
-} wire_StructOnlyForBlock3;
-
 void store_dart_post_cobject(DartPostCObjectFnType ptr);
 
 Dart_Handle get_dart_object(uintptr_t ptr);
@@ -258,30 +245,6 @@ union SharedComplexEnumInAllBlocksKind *inflate_SharedComplexEnumInAllBlocks_Enu
 union SharedComplexEnumInAllBlocksKind *inflate_SharedComplexEnumInAllBlocks_BytesArray(void);
 
 void free_WireSyncReturn(WireSyncReturn ptr);
-
-void wire_test_method__method__StructOnlyForBlock1(int64_t port_,
-                                                   struct wire_StructOnlyForBlock1 *that,
-                                                   struct wire_uint_8_list *message,
-                                                   uint16_t num);
-
-void wire_test_static_method__static_method__StructOnlyForBlock1(int64_t port_,
-                                                                 struct wire_uint_8_list *message);
-
-void wire_test_method__method__StructOnlyForBlock2(int64_t port_,
-                                                   struct wire_StructOnlyForBlock2 *that,
-                                                   struct wire_uint_8_list *message,
-                                                   uint16_t num);
-
-void wire_test_static_method__static_method__StructOnlyForBlock2(int64_t port_,
-                                                                 struct wire_uint_8_list *message);
-
-void wire_test_method__method__StructOnlyForBlock3(int64_t port_,
-                                                   struct wire_StructOnlyForBlock3 *that,
-                                                   struct wire_uint_8_list *message,
-                                                   uint16_t num);
-
-void wire_test_static_method__static_method__StructOnlyForBlock3(int64_t port_,
-                                                                 struct wire_uint_8_list *message);
 
 static int64_t dummy_method_to_enforce_bundling_BridgeGeneratedShares(void) {
     int64_t dummy_var = 0;

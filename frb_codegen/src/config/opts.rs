@@ -1,4 +1,4 @@
-use crate::ir::{IrFile, IrFunc};
+use crate::ir::{IrFile, IrFunc, IrType};
 use crate::utils::misc::{BlockIndex, ExtraTraitForVec};
 use crate::{parser, transformer};
 use anyhow::{Context, Result};
@@ -194,8 +194,13 @@ impl Opts {
                     if each_func.name.ends_with(&(format!("__{type_name}"))) {
                         log::debug!("func added: {each_func:?}"); // TODO: delete
                         let mut method = each_func.clone();
-
-                        if ir_file.get_shared_type_names(true).contains(&type_name) {
+                        if ir_file
+                            .get_shared_type_names(
+                                true,
+                                Option::<Box<dyn Fn(&IrType) -> bool>>::None,
+                            )
+                            .contains(&type_name)
+                        {
                             log::debug!("`{}` is found to be a shared type", type_name); // TODO: delete
                             method.shared = true;
                         }

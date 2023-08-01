@@ -43,6 +43,7 @@ pub(crate) struct BindgenRustToDartArg<'a> {
     pub dart_class_name: &'a str,
     pub c_struct_names: Vec<String>,
     pub exclude_symbols: Vec<String>,
+    pub extra_forward_declarations: Vec<String>,
     pub llvm_install_path: &'a [String],
     pub llvm_compiler_opts: &'a str,
 }
@@ -68,6 +69,7 @@ pub(crate) fn bindgen_rust_to_dart(
         arg.c_output_path,
         arg.c_struct_names,
         arg.exclude_symbols,
+        arg.extra_forward_declarations,
     )?;
 
     // let content = fs::read_to_string(arg.c_output_path)?;
@@ -90,13 +92,20 @@ fn cbindgen(
     c_output_path: &str,
     c_struct_names: Vec<String>,
     exclude_symbols: Vec<String>,
+    extra_forward_definitions: Vec<String>,
 ) -> anyhow::Result<()> {
+    let mut declarations = "".to_string();
+    extra_forward_definitions.iter().for_each(|declare| {
+        declarations.push_str(&format!("\n{};", declare));
+    });
+    declarations.push_str("\n\ntypedef struct _Dart_Handle* Dart_Handle;");
     debug!(
         "execute cbindgen rust_crate_dir={} c_output_path={}",
         rust_crate_dir, c_output_path
     );
     let config = cbindgen::Config {
         language: cbindgen::Language::C,
+        header: Some("#pragma once\n".to_owned()),
         sys_includes: vec![
             "stdbool.h".to_string(),
             "stdint.h".to_string(),
@@ -105,7 +114,7 @@ fn cbindgen(
         no_includes: true,
         // copied from: dart-sdk/dart_api.h
         // used to convert Dart_Handle to Object.
-        after_includes: Some("typedef struct _Dart_Handle* Dart_Handle;".to_owned()),
+        after_includes: Some(declarations),
         export: cbindgen::ExportConfig {
             include: c_struct_names
                 .iter()

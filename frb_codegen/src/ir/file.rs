@@ -150,7 +150,8 @@ impl IrFile {
 
     /// get distinct types for this IrFile instance
     /// for either a regular or an auto-generated shared API block.
-    /// NOTE: in multi-blocks case, the output would NOT include shared types for a regular block IrFile.
+    /// NOTE: in multi-blocks case, the output would NOT include shared types for a regular block IrFile;
+    /// and it would ONLY contain shared types for a shared block IrFile.
     pub fn distinct_types(
         &self,
         include_func_inputs: bool,
@@ -300,11 +301,13 @@ impl IrFile {
                             return shares.clone();
                         }
 
+                        // For multi-blocks case, directly return it if it is fetched before.
                         let mut fetched: std::cell::RefMut<bool> = has_fetched.borrow_mut();
                         if *fetched {
                             return shares.clone();
                         }
 
+                        // If not fetched before, do it from scracth.
                         log::debug!("before get_shared_types_for_all_blocks_from_scratch"); // TODO: delete
                         *shares = self.get_shared_types_for_all_blocks_from_scratch(
                             include_func_inputs,
@@ -608,22 +611,40 @@ impl IrFile {
     }
 
     /// if `only_for_this_block` is `true`,
-    /// then it returns shared types used in current block(for shared IrFile，it returns all shared types);
+    /// then it returns shared types used in current IrFile block(for shared IrFile，it returns all shared types);
     /// otherwise, it returns shared types used in all blocks，whatever the IrFile represents for.
-    pub fn get_shared_type_names(&self, only_for_this_block: bool) -> HashSet<String> {
+    pub fn get_shared_type_names(
+        &self,
+        only_for_this_block: bool,
+        filter_func: Option<impl Fn(&IrType) -> bool>,
+    ) -> Vec<String> {
         let shared_types = match only_for_this_block {
             true => self.get_shared_distinct_types_for_current_block(),
             false => self.get_shared_distinct_types_for_all_blocks(true, true, &[]),
         };
 
-        shared_types
+        let shared_types = match filter_func {
+            Some(f) => shared_types.into_iter().filter(|ty| f(ty)).collect(),
+            None => shared_types,
+        };
+
+        let mut f = shared_types
             .iter()
-            .flat_map(|ty| {
+            .map(|ty| {
                 let safe_ident = ty.safe_ident();
-                std::iter::once(safe_ident.clone())
-                    .chain(std::iter::once(safe_ident.to_case(Case::UpperCamel)))
+                if !ty.is_list(true) {
+                    safe_ident.to_case(Case::Pascal)
+                } else {
+                    safe_ident
+                }
             })
-            .collect()
+            .collect::<Vec<_>>();
+
+        // deduplicated
+        f.sort_by_key(|ty| ty.to_owned());
+        f.dedup();
+
+        f
     }
 
     pub fn fetched_all_shared_types(&self) -> bool {

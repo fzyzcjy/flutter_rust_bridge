@@ -207,15 +207,14 @@ class ApiBlock3ClassWire implements FlutterRustBridgeWireBase {
   late final _new_box_autoadd_shared_struct_in_all_blocks = _new_box_autoadd_shared_struct_in_all_blocksPtr
       .asFunction<ffi.Pointer<wire_SharedStructInAllBlocks> Function()>();
 
-  ffi.Pointer<wire_SharedStructInBlock1And2> new_box_autoadd_shared_struct_in_block_1_and_2() {
+  ffi.Pointer<ffi.Int> new_box_autoadd_shared_struct_in_block_1_and_2() {
     return _new_box_autoadd_shared_struct_in_block_1_and_2();
   }
 
   late final _new_box_autoadd_shared_struct_in_block_1_and_2Ptr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<wire_SharedStructInBlock1And2> Function()>>(
-          'new_box_autoadd_shared_struct_in_block_1_and_2');
-  late final _new_box_autoadd_shared_struct_in_block_1_and_2 = _new_box_autoadd_shared_struct_in_block_1_and_2Ptr
-      .asFunction<ffi.Pointer<wire_SharedStructInBlock1And2> Function()>();
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int> Function()>>('new_box_autoadd_shared_struct_in_block_1_and_2');
+  late final _new_box_autoadd_shared_struct_in_block_1_and_2 =
+      _new_box_autoadd_shared_struct_in_block_1_and_2Ptr.asFunction<ffi.Pointer<ffi.Int> Function()>();
 
   ffi.Pointer<wire_SharedStructInBlock2And3> new_box_autoadd_shared_struct_in_block_2_and_3() {
     return _new_box_autoadd_shared_struct_in_block_2_and_3();
@@ -386,82 +385,6 @@ class ApiBlock3ClassWire implements FlutterRustBridgeWireBase {
   late final _free_WireSyncReturnPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturn)>>('free_WireSyncReturn');
   late final _free_WireSyncReturn = _free_WireSyncReturnPtr.asFunction<void Function(WireSyncReturn)>();
-
-  void wire_test_method__method__StructOnlyForBlock1(
-    int port_,
-    ffi.Pointer<wire_StructOnlyForBlock1> that,
-    ffi.Pointer<wire_uint_8_list> message,
-    int num,
-  ) {
-    return _wire_test_method__method__StructOnlyForBlock1(
-      port_,
-      that,
-      message,
-      num,
-    );
-  }
-
-  late final _wire_test_method__method__StructOnlyForBlock1Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_StructOnlyForBlock1>, ffi.Pointer<wire_uint_8_list>,
-              ffi.Uint16)>>('wire_test_method__method__StructOnlyForBlock1');
-  late final _wire_test_method__method__StructOnlyForBlock1 = _wire_test_method__method__StructOnlyForBlock1Ptr
-      .asFunction<void Function(int, ffi.Pointer<wire_StructOnlyForBlock1>, ffi.Pointer<wire_uint_8_list>, int)>();
-
-  void wire_test_static_method__static_method__StructOnlyForBlock1(
-    int port_,
-    ffi.Pointer<wire_uint_8_list> message,
-  ) {
-    return _wire_test_static_method__static_method__StructOnlyForBlock1(
-      port_,
-      message,
-    );
-  }
-
-  late final _wire_test_static_method__static_method__StructOnlyForBlock1Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
-          'wire_test_static_method__static_method__StructOnlyForBlock1');
-  late final _wire_test_static_method__static_method__StructOnlyForBlock1 =
-      _wire_test_static_method__static_method__StructOnlyForBlock1Ptr
-          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
-
-  void wire_test_method__method__StructOnlyForBlock2(
-    int port_,
-    ffi.Pointer<wire_StructOnlyForBlock2> that,
-    ffi.Pointer<wire_uint_8_list> message,
-    int num,
-  ) {
-    return _wire_test_method__method__StructOnlyForBlock2(
-      port_,
-      that,
-      message,
-      num,
-    );
-  }
-
-  late final _wire_test_method__method__StructOnlyForBlock2Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_StructOnlyForBlock2>, ffi.Pointer<wire_uint_8_list>,
-              ffi.Uint16)>>('wire_test_method__method__StructOnlyForBlock2');
-  late final _wire_test_method__method__StructOnlyForBlock2 = _wire_test_method__method__StructOnlyForBlock2Ptr
-      .asFunction<void Function(int, ffi.Pointer<wire_StructOnlyForBlock2>, ffi.Pointer<wire_uint_8_list>, int)>();
-
-  void wire_test_static_method__static_method__StructOnlyForBlock2(
-    int port_,
-    ffi.Pointer<wire_uint_8_list> message,
-  ) {
-    return _wire_test_static_method__static_method__StructOnlyForBlock2(
-      port_,
-      message,
-    );
-  }
-
-  late final _wire_test_static_method__static_method__StructOnlyForBlock2Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>)>>(
-          'wire_test_static_method__static_method__StructOnlyForBlock2');
-  late final _wire_test_static_method__static_method__StructOnlyForBlock2 =
-      _wire_test_static_method__static_method__StructOnlyForBlock2Ptr
-          .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>)>();
 
   void store_dart_post_cobject(
     DartPostCObjectFnType ptr,
@@ -958,6 +881,30 @@ class ApiBlock3ClassWire implements FlutterRustBridgeWireBase {
       _inflate_EnumDefinedInBlock3_ChangeColorPtr.asFunction<ffi.Pointer<EnumDefinedInBlock3Kind> Function()>();
 }
 
+final class wire_CrossSharedStructInBlock2And3 extends ffi.Opaque {}
+
+final class wire_SharedComplexEnumInAllBlocks extends ffi.Opaque {}
+
+final class wire_SharedStructInAllBlocks extends ffi.Opaque {}
+
+final class wire_SharedStructInBlock2And3 extends ffi.Opaque {}
+
+final class wire_SharedStructOnlyForSyncTest extends ffi.Opaque {}
+
+final class wire_StringList extends ffi.Opaque {}
+
+final class wire_float_32_list extends ffi.Opaque {}
+
+final class wire_int_32_list extends ffi.Opaque {}
+
+final class wire_list_shared_complex_enum_in_all_blocks extends ffi.Opaque {}
+
+final class wire_list_shared_struct_in_all_blocks extends ffi.Opaque {}
+
+final class wire_list_shared_weekdays_enum_in_all_blocks extends ffi.Opaque {}
+
+final class wire_uint_8_list extends ffi.Opaque {}
+
 final class _Dart_Handle extends ffi.Opaque {}
 
 final class wire_SharedComplexEnumInAllBlocks_Empty extends ffi.Opaque {}
@@ -975,22 +922,6 @@ final class wire_SharedComplexEnumInAllBlocks_Primitives extends ffi.Struct {
 
 final class wire_SharedComplexEnumInAllBlocks_Nested extends ffi.Struct {
   external ffi.Pointer<wire_SharedComplexEnumInAllBlocks> field0;
-}
-
-final class SharedComplexEnumInAllBlocksKind extends ffi.Union {
-  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Empty> Empty;
-
-  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Primitives> Primitives;
-
-  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Nested> Nested;
-
-  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Optional> Optional;
-
-  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Buffer> Buffer;
-
-  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Enums> Enums;
-
-  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_BytesArray> BytesArray;
 }
 
 final class wire_SharedComplexEnumInAllBlocks_Optional extends ffi.Struct {
@@ -1012,32 +943,20 @@ final class wire_SharedComplexEnumInAllBlocks_BytesArray extends ffi.Struct {
   external ffi.Pointer<wire_uint_8_list> field0;
 }
 
-final class wire_SharedStructInBlock1And2 extends ffi.Struct {
-  @ffi.Int32()
-  external int id;
+final class SharedComplexEnumInAllBlocksKind extends ffi.Union {
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Empty> Empty;
 
-  @ffi.Double()
-  external double num;
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Primitives> Primitives;
 
-  external ffi.Pointer<wire_uint_8_list> name;
-}
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Nested> Nested;
 
-final class wire_StructOnlyForBlock1 extends ffi.Struct {
-  external ffi.Pointer<ffi.Int8> id;
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Optional> Optional;
 
-  external ffi.Pointer<ffi.Double> num;
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Buffer> Buffer;
 
-  external ffi.Pointer<wire_uint_8_list> name;
-}
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_Enums> Enums;
 
-final class wire_StructOnlyForBlock2 extends ffi.Struct {
-  @ffi.Int16()
-  external int id;
-
-  @ffi.Double()
-  external double num;
-
-  external ffi.Pointer<wire_uint_8_list> name;
+  external ffi.Pointer<wire_SharedComplexEnumInAllBlocks_BytesArray> BytesArray;
 }
 
 final class wire_StructOnlyForBlock3 extends ffi.Struct {
