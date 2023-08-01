@@ -172,6 +172,7 @@ More specifically, thanks for all these contributions:
 * [jsonmona](https://github.com/jsonmona): Add import.
 * [w-ensink](https://github.com/w-ensink): Improve doc. Fix CI. Refactor. Add tests.
 * [codercengiz](https://github.com/codercengiz): Fix mirroring bug.
+* [SiongSng](https://github.com/SiongSng): Fix SyncReturn bug.
 * [Michael-F-Bryan](https://github.com/Michael-F-Bryan): Detect broken bindings.
 * [phlip9](https://github.com/phlip9): Fix no-serde compilation.
 * [bus710](https://github.com/bus710): Add a case in troubleshooting.
