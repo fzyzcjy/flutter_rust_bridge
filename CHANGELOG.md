@@ -1,3 +1,7 @@
+## 1.80.1
+
+* fix: sync return with Freezed metadata #1304 (thanks @SiongSng)
+
 ## 1.80.0
 
 * Reinforce error handling and reduce usage of panic in codegen #1298 (thanks @Desdaemon)
