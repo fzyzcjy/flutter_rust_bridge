@@ -156,6 +156,15 @@ void main(List<String> args) async {
     expect(structResp.height, 100 + 10000);
   });
 
+  test('dart call handleStructSyncFreezed', () {
+    final structResp = api.handleStructSyncFreezed(
+        arg: MySizeFreezed(width: 42, height: 100), boxed: MySizeFreezed(width: 1000, height: 10000));
+    expect(structResp.width, 42 + 1000);
+    expect(structResp.height, 100 + 10000);
+    // Only freezed classes have copyWith
+    expect(structResp.copyWith, isNotNull);
+  });
+
   test('dart call handleNewtype', () async {
     final newtypeResp = await api.handleNewtype(arg: NewTypeInt(field0: 42));
     expect(newtypeResp.field0, 84);

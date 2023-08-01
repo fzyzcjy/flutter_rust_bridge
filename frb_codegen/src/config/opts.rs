@@ -1,7 +1,6 @@
 use crate::ir::IrFile;
-use crate::parser;
+use crate::parser::{self, ParserResult};
 use crate::utils::misc::BlockIndex;
-use anyhow::{Context, Result};
 use convert_case::{Case, Casing};
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -31,26 +30,17 @@ pub struct Opts {
     pub bridge_in_method: bool,
     pub extra_headers: String,
     pub dart3: bool,
+    pub keep_going: bool,
 }
 
 impl Opts {
-    pub fn get_ir_file(&self) -> Result<IrFile> {
+    pub fn get_ir_file(&self) -> ParserResult<IrFile> {
         // info!("Phase: Parse source code to AST");
-        let source_rust_content = fs::read_to_string(&self.rust_input_path).with_context(|| {
-            format!(
-                "Failed to read rust input file \"{}\"",
-                self.rust_input_path
-            )
-        })?;
-        let file_ast = syn::parse_file(&source_rust_content).unwrap();
+        let source_rust_content = fs::read_to_string(&self.rust_input_path)?;
+        let file_ast = syn::parse_file(&source_rust_content)?;
 
         // info!("Phase: Parse AST to IR");
-
-        Ok(parser::parse(
-            &source_rust_content,
-            file_ast,
-            &self.manifest_path,
-        ))
+        parser::parse(&source_rust_content, file_ast, &self.manifest_path)
     }
 
     pub fn dart_api_class_name(&self) -> &str {

@@ -21,6 +21,11 @@ typedef struct wire_MySize {
   int32_t height;
 } wire_MySize;
 
+typedef struct wire_MySizeFreezed {
+  int32_t width;
+  int32_t height;
+} wire_MySizeFreezed;
+
 typedef struct wire_NewTypeInt {
   int64_t field0;
 } wire_NewTypeInt;
@@ -526,6 +531,9 @@ void wire_handle_struct(int64_t port_, struct wire_MySize *arg, struct wire_MySi
 
 WireSyncReturn wire_handle_struct_sync(struct wire_MySize *arg, struct wire_MySize *boxed);
 
+WireSyncReturn wire_handle_struct_sync_freezed(struct wire_MySizeFreezed *arg,
+                                               struct wire_MySizeFreezed *boxed);
+
 void wire_handle_newtype(int64_t port_, struct wire_NewTypeInt *arg);
 
 WireSyncReturn wire_handle_newtype_sync(struct wire_NewTypeInt *arg);
@@ -927,6 +935,8 @@ struct wire_MyNestedStruct *new_box_autoadd_my_nested_struct_0(void);
 
 struct wire_MySize *new_box_autoadd_my_size_0(void);
 
+struct wire_MySizeFreezed *new_box_autoadd_my_size_freezed_0(void);
+
 struct wire_MyStruct *new_box_autoadd_my_struct_0(void);
 
 struct wire_MyTreeNode *new_box_autoadd_my_tree_node_0(void);
@@ -968,6 +978,8 @@ int8_t *new_box_i8_0(int8_t value);
 struct wire_KitchenSink *new_box_kitchen_sink_0(void);
 
 struct wire_MySize *new_box_my_size_0(void);
+
+struct wire_MySizeFreezed *new_box_my_size_freezed_0(void);
 
 struct wire_Speed *new_box_speed_0(void);
 
@@ -1106,6 +1118,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_handle_zero_copy_vec_of_primitive_sync);
     dummy_var ^= ((int64_t) (void*) wire_handle_struct);
     dummy_var ^= ((int64_t) (void*) wire_handle_struct_sync);
+    dummy_var ^= ((int64_t) (void*) wire_handle_struct_sync_freezed);
     dummy_var ^= ((int64_t) (void*) wire_handle_newtype);
     dummy_var ^= ((int64_t) (void*) wire_handle_newtype_sync);
     dummy_var ^= ((int64_t) (void*) wire_handle_list_of_struct);
@@ -1296,6 +1309,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_message_id_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_nested_struct_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_size_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_size_freezed_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_struct_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_tree_node_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_new_type_int_0);
@@ -1317,6 +1331,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_i8_0);
     dummy_var ^= ((int64_t) (void*) new_box_kitchen_sink_0);
     dummy_var ^= ((int64_t) (void*) new_box_my_size_0);
+    dummy_var ^= ((int64_t) (void*) new_box_my_size_freezed_0);
     dummy_var ^= ((int64_t) (void*) new_box_speed_0);
     dummy_var ^= ((int64_t) (void*) new_box_u8_0);
     dummy_var ^= ((int64_t) (void*) new_box_weekdays_0);
