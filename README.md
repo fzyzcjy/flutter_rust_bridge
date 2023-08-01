@@ -178,6 +178,7 @@ More specifically, thanks for all these contributions:
 * [phlip9](https://github.com/phlip9): Fix no-serde compilation.
 * [bus710](https://github.com/bus710): Add a case in troubleshooting.
 * [Demezy](https://github.com/Demezy): Mention troubleshooting.
+* [gutenfries](https://github.com/gutenfries): Bump proc-macros.
 * [anstadnik](https://github.com/anstadnik): Check keywords.
 * [Syndim](https://github.com/Syndim): Add a bracket to box.
 * [TENX-S](https://github.com/TENX-S): Improve doc. Reproduce a bug.
