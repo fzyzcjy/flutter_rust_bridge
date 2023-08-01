@@ -140,7 +140,7 @@ class CrossSharedStructInBlock2And3 {
 }
 
 @freezed
-sealed class SharedComplexEnumInAllBlocks with _$SharedComplexEnumInAllBlocks {
+class SharedComplexEnumInAllBlocks with _$SharedComplexEnumInAllBlocks {
   const factory SharedComplexEnumInAllBlocks.empty() = SharedComplexEnumInAllBlocks_Empty;
   const factory SharedComplexEnumInAllBlocks.primitives({
     /// Dart field comment
@@ -399,7 +399,7 @@ abstract class ApiBlock3Class {
 }
 
 @freezed
-sealed class EnumDefinedInBlock3 with _$EnumDefinedInBlock3 {
+class EnumDefinedInBlock3 with _$EnumDefinedInBlock3 {
   const factory EnumDefinedInBlock3.quit() = EnumDefinedInBlock3_Quit;
   const factory EnumDefinedInBlock3.move({
     required int x,
@@ -571,7 +571,7 @@ abstract class ApiBlock2Class {
 }
 
 @freezed
-sealed class EnumDefinedInBlock2 with _$EnumDefinedInBlock2 {
+class EnumDefinedInBlock2 with _$EnumDefinedInBlock2 {
   const factory EnumDefinedInBlock2.quit() = EnumDefinedInBlock2_Quit;
   const factory EnumDefinedInBlock2.move({
     required int x,
@@ -746,7 +746,7 @@ abstract class ApiBlock1Class {
 }
 
 @freezed
-sealed class EnumDefinedInBlock1 with _$EnumDefinedInBlock1 {
+class EnumDefinedInBlock1 with _$EnumDefinedInBlock1 {
   const factory EnumDefinedInBlock1.quit() = EnumDefinedInBlock1_Quit;
   const factory EnumDefinedInBlock1.move({
     required int x,

@@ -871,32 +871,6 @@ class ApiBlock2ClassWire implements FlutterRustBridgeWireBase {
       _inflate_EnumDefinedInBlock2_ChangeColorPtr.asFunction<ffi.Pointer<EnumDefinedInBlock2Kind> Function()>();
 }
 
-final class wire_CrossSharedStructInBlock1And2 extends ffi.Opaque {}
-
-final class wire_CrossSharedStructInBlock2And3 extends ffi.Opaque {}
-
-final class wire_SharedComplexEnumInAllBlocks extends ffi.Opaque {}
-
-final class wire_SharedStructInAllBlocks extends ffi.Opaque {}
-
-final class wire_SharedStructInBlock1And2 extends ffi.Opaque {}
-
-final class wire_SharedStructInBlock2And3 extends ffi.Opaque {}
-
-final class wire_StringList extends ffi.Opaque {}
-
-final class wire_float_32_list extends ffi.Opaque {}
-
-final class wire_int_32_list extends ffi.Opaque {}
-
-final class wire_list_shared_complex_enum_in_all_blocks extends ffi.Opaque {}
-
-final class wire_list_shared_struct_in_all_blocks extends ffi.Opaque {}
-
-final class wire_list_shared_weekdays_enum_in_all_blocks extends ffi.Opaque {}
-
-final class wire_uint_8_list extends ffi.Opaque {}
-
 final class _Dart_Handle extends ffi.Opaque {}
 
 final class wire_SharedComplexEnumInAllBlocks_Empty extends ffi.Opaque {}

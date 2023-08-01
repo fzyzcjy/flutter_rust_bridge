@@ -70,12 +70,14 @@ pub fn modify_dart_wire_content(
         )*/
         .replace("typedef WireSyncReturn = ffi.Pointer<DartCObject>;", "");
 
-    // for ONLY regular configs: erase class block code which are shared.
+    // For ONLY regular configs: erase class block code which are shared.
+    // The redundant classes are due to the forward declaration in c header file for regular block.
+    // I didn't find a way to let it not generated in dart, so here remove it after dart code generated.
     if !ir_file.shared {
         let v = ir_file.get_shared_type_names(true, Option::<Box<dyn Fn(&IrType) -> bool>>::None);
         for class_name in v {
             let my_r =
-                &format!(r"final class wire_{class_name} extends ffi\.Struct \{{(?s)(.*?)\}}");
+                &format!(r"final class wire_{class_name} extends ffi\.Opaque \{{(?s)(.*?)\}}");
             let re = Regex::new(my_r).unwrap();
             content = re.replace_all(&content, "").to_string();
         }
