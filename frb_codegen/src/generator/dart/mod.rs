@@ -170,7 +170,7 @@ impl DartApiSpec {
 
         let needs_freezed = distinct_types
             .iter()
-            .any(|ty| is_needs_freezed(ty, ir_file));
+            .any(|ty| needs_freezed(ty, ir_file));
 
         let import_array = distinct_types
             .iter()
@@ -599,15 +599,15 @@ fn dart_metadata(metadata: &[IrDartAnnotation]) -> String {
     metadata
 }
 
-fn is_needs_freezed(ty: &IrType, ir_file: &IrFile) -> bool {
+fn needs_freezed(ty: &IrType, ir_file: &IrFile) -> bool {
     match ty {
         EnumRef(_) => true,
         StructRef(st) => st.freezed,
         SyncReturn(sync_return) => {
             let mut need = false;
             sync_return.visit_children_types(
-                &mut |children| {
-                    need = is_needs_freezed(children, ir_file);
+                &mut |child| {
+                    need = needs_freezed(child, ir_file);
                     need
                 },
                 ir_file,
