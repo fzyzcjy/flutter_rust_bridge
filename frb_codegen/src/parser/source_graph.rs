@@ -18,6 +18,7 @@ use cargo_metadata::MetadataCommand;
 use log::{debug, warn};
 use syn::{Attribute, Ident, ItemEnum, ItemStruct, PathArguments, Type, UseTree};
 
+use super::ParserResult;
 use crate::parser::markers;
 
 /// Represents a crate, including a map of its modules, imports, structs and
@@ -31,7 +32,7 @@ pub struct Crate {
 }
 
 impl Crate {
-    pub fn new(manifest_path: &str) -> Self {
+    pub fn new(manifest_path: &str) -> ParserResult<Self> {
         let mut cmd = MetadataCommand::new();
         cmd.manifest_path(manifest_path);
 
@@ -55,7 +56,7 @@ impl Crate {
             } else if main_file.exists() {
                 fs::canonicalize(main_file).unwrap()
             } else {
-                panic!("No src/lib.rs or src/main.rs found for this Cargo.toml file");
+                return Err(super::Error::NoEntryPoint);
             }
         };
 
@@ -77,7 +78,7 @@ impl Crate {
 
         result.resolve();
 
-        result
+        Ok(result)
     }
 
     /// Create a map of the modules for this crate
@@ -239,7 +240,7 @@ fn try_get_module_file_path(
 fn get_module_file_path(
     module_name: String,
     parent_module_file_path: &Path,
-) -> Result<PathBuf, Vec<PathBuf>> {
+) -> ParserResult<PathBuf, Vec<PathBuf>> {
     let mut tried = Vec::new();
 
     if let Some(file_path) = try_get_module_file_path(
@@ -413,7 +414,7 @@ impl Module {
 
         for item in items.iter() {
             if let syn::Item::Use(item_use) = item {
-                let flattened_imports = flatten_use_tree(&item_use.tree);
+                let flattened_imports = flatten_use_tree(&item_use.tree).unwrap();
 
                 for import in flattened_imports {
                     imports.push(Import {
@@ -491,7 +492,7 @@ fn flatten_use_tree_rename_abort_warning(use_tree: &UseTree) {
 ///
 /// Warning: As of writing, import renames (import a::b as c) are silently
 /// ignored.
-fn flatten_use_tree(use_tree: &UseTree) -> Vec<Vec<String>> {
+fn flatten_use_tree(use_tree: &UseTree) -> ParserResult<Vec<Vec<String>>> {
     // Vec<(path, is_complete)>
     let mut result = vec![(vec![], false)];
 
@@ -617,16 +618,16 @@ fn flatten_use_tree(use_tree: &UseTree) -> Vec<Vec<String>> {
                                 }
                             }
                             UseTree::Group(_) => {
-                                panic!(
+                                Err(anyhow::anyhow!(
                                     "Directly-nested use groups ({}) are not supported by flutter_rust_bridge. Use {} instead.",
                                     "use a::{{b}, c}",
                                     "a::{b, c}"
-                                );
+                                ))?;
                             }
                             // UseTree::Group(_) => panic!(),
                             UseTree::Rename(_) => {
                                 flatten_use_tree_rename_abort_warning(use_tree);
-                                return vec![];
+                                return Ok(vec![]);
                             }
                         }
 
@@ -635,7 +636,7 @@ fn flatten_use_tree(use_tree: &UseTree) -> Vec<Vec<String>> {
                 }
                 UseTree::Rename(_) => {
                     flatten_use_tree_rename_abort_warning(use_tree);
-                    return vec![];
+                    return Ok(vec![]);
                 }
             }
         }
@@ -645,5 +646,5 @@ fn flatten_use_tree(use_tree: &UseTree) -> Vec<Vec<String>> {
         }
     }
 
-    result.into_iter().map(|val| val.0).collect()
+    Ok(result.into_iter().map(|val| val.0).collect())
 }

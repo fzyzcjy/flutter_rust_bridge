@@ -9,7 +9,7 @@ members = [
 ]
 
 [workspace.package]
-version = "1.79.0"
+version = "1.80.0"
 edition = "2018"
 license = "MIT"
 description = "High-level memory-safe binding generator for Flutter/Dart <-> Rust"
@@ -23,11 +23,12 @@ anyhow = "1.0.64"
 chrono = "0.4.23"
 lazy_static = "1.4.0"
 uuid = "1.1.2"
+thiserror = "1.0"
 
 flutter_rust_bridge_macros = { path = "frb_macros", version = "1" }
 flutter_rust_bridge = { path = "frb_rust", default-features = false, version = "1" }
 flutter_rust_bridge_codegen = { path = "frb_codegen", version = "1" }
 
-[profile.release]
+[profile.release.package.flutter_rust_bridge_codegen]
 strip = "debuginfo"
-lto = "thin"
+debug = 1 # preserves some debug information

@@ -7,6 +7,7 @@ use std::collections::HashMap;
 use std::default::Default as _;
 use std::string::String;
 
+use anyhow::Context;
 use log::debug;
 use quote::quote;
 use syn::parse::{Parse, ParseStream};
@@ -25,6 +26,10 @@ use crate::utils::method::FunctionName;
 use self::ty::convert_ident_str;
 
 const STREAM_SINK_IDENT: &str = "StreamSink";
+
+mod error;
+pub use error::Error;
+pub(crate) type ParserResult<T = (), E = Error> = core::result::Result<T, E>;
 
 pub(crate) fn topo_resolve(src: HashMap<String, Type>) -> HashMap<String, Type> {
     // Some types that cannot be Handled.
@@ -93,11 +98,11 @@ pub(crate) fn topo_resolve(src: HashMap<String, Type>) -> HashMap<String, Type> 
     ret
 }
 
-pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> IrFile {
-    let crate_map = Crate::new(manifest_path);
+pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> ParserResult<IrFile> {
+    let crate_map = Crate::new(manifest_path)?;
 
     let mut src_fns = extract_fns_from_file(&file);
-    src_fns.extend(extract_methods_from_file(&file));
+    src_fns.extend(extract_methods_from_file(&file)?);
     let src_structs = crate_map.root_module.collect_structs_to_vec();
     let src_enums = crate_map.root_module.collect_enums_to_vec();
     let src_types = crate_map.root_module.collect_types_to_pool();
@@ -118,19 +123,22 @@ impl<'a> Parser<'a> {
 }
 
 impl<'a> Parser<'a> {
-    fn parse(mut self, source_rust_content: &str, src_fns: Vec<ItemFn>) -> IrFile {
-        let funcs = src_fns.iter().map(|f| self.parse_function(f)).collect();
+    fn parse(mut self, source_rust_content: &str, src_fns: Vec<ItemFn>) -> ParserResult<IrFile> {
+        let funcs = src_fns
+            .iter()
+            .map(|f| self.parse_function(f))
+            .collect::<ParserResult<Vec<_>>>()?;
 
         let has_executor = source_rust_content.contains(HANDLER_NAME);
 
         let (struct_pool, enum_pool) = self.type_parser.consume();
 
-        IrFile {
+        Ok(IrFile {
             funcs,
             struct_pool,
             enum_pool,
             has_executor,
-        }
+        })
     }
 
     /// Attempts to parse the type from the return part of a function signature. There is a special
@@ -197,7 +205,7 @@ impl<'a> Parser<'a> {
         }
     }
 
-    fn parse_function(&mut self, func: &ItemFn) -> IrFunc {
+    fn parse_function(&mut self, func: &ItemFn) -> ParserResult<IrFunc> {
         debug!("parse_function function name: {:?}", func.sig.ident);
 
         let sig = &func.sig;
@@ -213,14 +221,17 @@ impl<'a> Parser<'a> {
                 let name = if let Pat::Ident(ref pat_ident) = *pat_type.pat {
                     format!("{}", pat_ident.ident)
                 } else {
-                    panic!("unexpected pat_type={:?}", pat_type)
+                    return Err(Error::UnexpectedPattern(
+                        quote::quote!(#pat_type).to_string().into(),
+                    ));
                 };
-                match self.try_parse_fn_arg_type(&pat_type.ty).unwrap_or_else(|| {
-                    panic!(
+                let arg_type = self.try_parse_fn_arg_type(&pat_type.ty).with_context(|| {
+                    format!(
                         "Failed to parse function argument type `{}`",
                         type_to_string(&pat_type.ty)
                     )
-                }) {
+                })?;
+                match arg_type {
                     IrFuncArg::StreamSinkType(ty) => {
                         output = Some(ty);
                         mode = Some(IrFuncMode::Stream { argument_index: i });
@@ -244,19 +255,22 @@ impl<'a> Parser<'a> {
                     }
                 }
             } else {
-                panic!("unexpected sig_input={:?}", sig_input);
+                return Err(Error::UnexpectedSigInput(
+                    quote::quote!(#sig_input).to_string().into(),
+                ));
             }
         }
 
         if output.is_none() {
             output = Some(match &sig.output {
                 ReturnType::Type(_, ty) => {
-                    match self.try_parse_fn_output_type(ty).unwrap_or_else(|| {
-                        panic!(
+                    let output_type = self.try_parse_fn_output_type(ty).with_context(|| {
+                        format!(
                             "Failed to parse function output type `{}`",
                             type_to_string(ty)
                         )
-                    }) {
+                    })?;
+                    match output_type {
                         IrFuncOutput::ResultType(ty) => ty,
                         IrFuncOutput::Type(ty) => {
                             fallible = false;
@@ -276,14 +290,14 @@ impl<'a> Parser<'a> {
             });
         }
 
-        IrFunc {
+        Ok(IrFunc {
             name: func_name,
             inputs,
-            output: output.expect("unsupported output"),
+            output: output.context("Unsupported output")?,
             fallible,
-            mode: mode.expect("missing mode"),
+            mode: mode.context("Missing mode")?,
             comments: extract_comments(&func.attrs),
-        }
+        })
     }
 }
 
@@ -301,7 +315,7 @@ fn extract_fns_from_file(file: &File) -> Vec<ItemFn> {
     src_fns
 }
 
-fn extract_methods_from_file(file: &File) -> Vec<ItemFn> {
+fn extract_methods_from_file(file: &File) -> ParserResult<Vec<ItemFn>> {
     let mut src_fns = Vec::new();
 
     for item in file.items.iter() {
@@ -309,8 +323,8 @@ fn extract_methods_from_file(file: &File) -> Vec<ItemFn> {
             for item in &item_impl.items {
                 if let ImplItem::Fn(item_method) = item {
                     if let Visibility::Public(_) = &item_method.vis {
-                        let f = item_method_to_function(item_impl, item_method)
-                            .expect("item implementation is unsupported");
+                        let f = item_method_to_function(item_impl, item_method)?
+                            .context("Unsupported item implementation")?;
                         src_fns.push(f);
                     }
                 }
@@ -318,11 +332,14 @@ fn extract_methods_from_file(file: &File) -> Vec<ItemFn> {
         }
     }
 
-    src_fns
+    Ok(src_fns)
 }
 
 // Converts an item implementation (something like fn(&self, ...)) into a function where `&self` is a named parameter to `&Self`
-fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemFn) -> Option<ItemFn> {
+fn item_method_to_function(
+    item_impl: &ItemImpl,
+    item_method: &ImplItemFn,
+) -> ParserResult<Option<ItemFn>> {
     if let Type::Path(p) = item_impl.self_ty.as_ref() {
         let struct_name = p.path.segments.first().unwrap().ident.to_string();
         let span = item_method.sig.ident.span();
@@ -372,7 +389,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemFn) -> Op
             )
         };
 
-        Some(ItemFn {
+        Ok(Some(ItemFn {
             attrs: item_method.attrs.clone(),
             vis: item_method.vis.clone(),
             sig: Signature {
@@ -388,7 +405,7 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemFn) -> Op
                     .sig
                     .inputs
                     .iter()
-                    .map(|input| {
+                    .map(|input| -> ParserResult<_> {
                         if let FnArg::Receiver(Receiver { mutability, .. }) = input {
                             let mut segments = Punctuated::new();
                             segments.push(PathSegment {
@@ -396,9 +413,9 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemFn) -> Op
                                 arguments: PathArguments::None,
                             });
                             if mutability.is_some() {
-                                panic!("mutable methods are unsupported for safety reasons");
+                                return Err(Error::NoMutSelf);
                             }
-                            FnArg::Typed(PatType {
+                            Ok(FnArg::Typed(PatType {
                                 attrs: vec![],
                                 pat: Box::new(Pat::Ident(PatIdent {
                                     attrs: vec![],
@@ -415,19 +432,19 @@ fn item_method_to_function(item_impl: &ItemImpl, item_method: &ImplItemFn) -> Op
                                         segments,
                                     },
                                 })),
-                            })
+                            }))
                         } else {
-                            input.clone()
+                            Ok(input.clone())
                         }
                     })
-                    .collect::<Punctuated<_, _>>(),
+                    .collect::<ParserResult<Punctuated<_, _>>>()?,
                 variadic: None,
                 output: item_method.sig.output.clone(),
             },
             block: Box::new(item_method.block.clone()),
-        })
+        }))
     } else {
-        None
+        Ok(None)
     }
 }
 
@@ -462,7 +479,7 @@ pub struct NamedOption<K, V> {
 }
 
 impl<K: Parse + std::fmt::Debug, V: Parse> Parse for NamedOption<K, V> {
-    fn parse(input: ParseStream<'_>) -> Result<Self> {
+    fn parse(input: ParseStream<'_>) -> syn::Result<Self> {
         let name: K = input.parse()?;
         let _: Token![=] = input.parse()?;
         let value = input.parse()?;
@@ -474,7 +491,7 @@ impl<K: Parse + std::fmt::Debug, V: Parse> Parse for NamedOption<K, V> {
 pub struct MirrorOption(Path);
 
 impl Parse for MirrorOption {
-    fn parse(input: ParseStream<'_>) -> Result<Self> {
+    fn parse(input: ParseStream<'_>) -> syn::Result<Self> {
         let content;
         parenthesized!(content in input);
         let path: Path = content.parse()?;
@@ -486,7 +503,7 @@ impl Parse for MirrorOption {
 pub struct MetadataAnnotations(Vec<IrDartAnnotation>);
 
 impl Parse for IrDartAnnotation {
-    fn parse(input: ParseStream<'_>) -> Result<Self> {
+    fn parse(input: ParseStream<'_>) -> syn::Result<Self> {
         let annotation: LitStr = input.parse()?;
         let library = if input.peek(frb_keyword::import) {
             let _ = input.parse::<frb_keyword::import>()?;
@@ -502,7 +519,7 @@ impl Parse for IrDartAnnotation {
     }
 }
 impl Parse for MetadataAnnotations {
-    fn parse(input: ParseStream<'_>) -> Result<Self> {
+    fn parse(input: ParseStream<'_>) -> syn::Result<Self> {
         let content;
         parenthesized!(content in input);
         let annotations =
@@ -517,7 +534,7 @@ impl Parse for MetadataAnnotations {
 pub struct DartImports(Vec<IrDartImport>);
 
 impl Parse for IrDartImport {
-    fn parse(input: ParseStream<'_>) -> Result<Self> {
+    fn parse(input: ParseStream<'_>) -> syn::Result<Self> {
         let uri: LitStr = input.parse()?;
         let alias: Option<String> = if input.peek(token::As) {
             let _ = input.parse::<token::As>()?;
@@ -533,7 +550,7 @@ impl Parse for IrDartImport {
     }
 }
 impl Parse for DartImports {
-    fn parse(input: ParseStream<'_>) -> Result<Self> {
+    fn parse(input: ParseStream<'_>) -> syn::Result<Self> {
         let content;
         parenthesized!(content in input);
         let imports = Punctuated::<IrDartImport, syn::Token![,]>::parse_terminated(&content)?
@@ -551,7 +568,7 @@ enum FrbOption {
 }
 
 impl Parse for FrbOption {
-    fn parse(input: ParseStream<'_>) -> Result<Self> {
+    fn parse(input: ParseStream<'_>) -> syn::Result<Self> {
         let lookahead = input.lookahead1();
         if lookahead.peek(frb_keyword::mirror) {
             input.parse().map(FrbOption::Mirror)
@@ -669,7 +686,7 @@ impl DefaultValues {
 }
 
 impl Parse for DefaultValues {
-    fn parse(input: ParseStream) -> Result<Self> {
+    fn parse(input: ParseStream) -> syn::Result<Self> {
         let lh = input.lookahead1();
         if lh.peek(token::Bracket) {
             let inner;

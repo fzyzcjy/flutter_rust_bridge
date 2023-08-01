@@ -4,9 +4,10 @@ use std::collections::HashMap;
 
 use crate::config::opts::Opts;
 use crate::config::raw_opts::Dump;
+use crate::parser::ParserResult;
 use enum_iterator::all;
 
-pub fn dump_multi(configs: &[Opts], dump: Vec<Dump>) -> anyhow::Result<()> {
+pub fn dump_multi(configs: &[Opts], dump: Vec<Dump>) -> ParserResult {
     let dump = if dump.is_empty() {
         all().collect()
     } else {
@@ -24,7 +25,7 @@ pub fn dump_multi(configs: &[Opts], dump: Vec<Dump>) -> anyhow::Result<()> {
             }
             Ok(data)
         })
-        .collect::<anyhow::Result<Vec<_>>>()?;
+        .collect::<ParserResult<Vec<_>>>()?;
     let data = serde_yaml::to_string(&data)?;
     println!("{data}");
     Ok(())

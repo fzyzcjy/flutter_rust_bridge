@@ -230,6 +230,13 @@ pub struct MySize {
     pub height: i32,
 }
 
+#[frb(dart_metadata = ("freezed"))]
+#[derive(Debug, Clone)]
+pub struct MySizeFreezed {
+    pub width: i32,
+    pub height: i32,
+}
+
 pub fn handle_struct(arg: MySize, boxed: Box<MySize>) -> MySize {
     info!("handle_struct({:?}, {:?})", &arg, &boxed);
     MySize {
@@ -241,6 +248,17 @@ pub fn handle_struct(arg: MySize, boxed: Box<MySize>) -> MySize {
 pub fn handle_struct_sync(arg: MySize, boxed: Box<MySize>) -> SyncReturn<MySize> {
     info!("handle_struct_sync({:?}, {:?})", &arg, &boxed);
     SyncReturn(MySize {
+        width: arg.width + boxed.width,
+        height: arg.height + boxed.height,
+    })
+}
+
+pub fn handle_struct_sync_freezed(
+    arg: MySizeFreezed,
+    boxed: Box<MySizeFreezed>,
+) -> SyncReturn<MySizeFreezed> {
+    info!("handle_struct_sync_freezed({:?}, {:?})", &arg, &boxed);
+    SyncReturn(MySizeFreezed {
         width: arg.width + boxed.width,
         height: arg.height + boxed.height,
     })
