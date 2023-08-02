@@ -1,3 +1,5 @@
+cargo-features = ["workspace-inheritance"]
+
 [package]
 name = "flutter_rust_bridge_example"
 version = "0.1.0"

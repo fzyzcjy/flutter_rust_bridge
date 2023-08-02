@@ -1,11 +1,11 @@
 [workspace]
 members = [
-  "frb_codegen",
-  "frb_rust",
-  "frb_macros",
-  "frb_example/pure_dart/rust",
-  "frb_example/pure_dart_multi/rust",
-  "frb_example/with_flutter/rust",
+	"frb_codegen",
+	"frb_rust",
+	"frb_macros",
+	"frb_example/pure_dart/rust",
+	"frb_example/pure_dart_multi/rust",
+	"frb_example/with_flutter/rust",
 ]
 
 [workspace.package]
@@ -31,4 +31,4 @@ flutter_rust_bridge_codegen = { path = "frb_codegen", version = "1" }
 
 [profile.release.package.flutter_rust_bridge_codegen]
 strip = "debuginfo"
-debug = 1 # preserves some debug information
+debug = 1           # preserves some debug information

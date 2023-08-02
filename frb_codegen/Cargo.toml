@@ -1,10 +1,12 @@
+cargo-features = ["workspace-inheritance"]
+
 [package]
+name = "flutter_rust_bridge_codegen"
 categories.workspace = true
 description.workspace = true
 edition.workspace = true
 keywords.workspace = true
 license.workspace = true
-name = "flutter_rust_bridge_codegen"
 repository.workspace = true
 version.workspace = true
 
@@ -17,25 +19,25 @@ name = "flutter_rust_bridge_codegen"
 path = "src/main.rs"
 
 [dependencies]
-anyhow = {workspace = true}
-thiserror = {workspace = true}
+anyhow = { workspace = true }
+thiserror = { workspace = true }
 cargo_metadata = "0.14.1"
 convert_case = "0.5.0"
 delegate = "0.8.0"
 enum_dispatch = "0.3.8"
 itertools = "0.10.3"
-lazy_static = {workspace = true}
+lazy_static = { workspace = true }
 log = "0.4"
-fern = { version = "0.6.0", features = ["date-based","colored"] }
+fern = { version = "0.6.0", features = ["date-based", "colored"] }
 atty = "0.2.14"
 chrono = "0.4"
 pathdiff = "0.2.1"
 quote = "1.0"
 regex = "1.5.4"
-serde = {version = "1.0", features = ["derive"]}
+serde = { version = "1.0", features = ["derive"] }
 serde_yaml = "0.8"
 strum_macros = "0.24.3"
-syn = {version = "2.0.26", features = ["full", "extra-traits"]}
+syn = { version = "2.0.26", features = ["full", "extra-traits"] }
 tempfile = "3.2.0"
 toml = "0.5.8"
 topological-sort = "0.2.2"
@@ -50,8 +52,8 @@ semver = "1.0.12"
 bin-dir = "{bin}{binary-ext}"
 
 [package.metadata.binstall.overrides]
-i686-pc-windows-msvc = {pkg-fmt = "zip"}
-x86_64-pc-windows-msvc = {pkg-fmt = "zip"}
+i686-pc-windows-msvc = { pkg-fmt = "zip" }
+x86_64-pc-windows-msvc = { pkg-fmt = "zip" }
 
 [features]
 default = ["chrono", "serde", "uuid", "anyhow/backtrace"]
