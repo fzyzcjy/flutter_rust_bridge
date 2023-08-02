@@ -6,6 +6,8 @@
 [![CI](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/ci.yaml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/ci.yaml)
 [![Example](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/post_release.yaml/badge.svg)](https://github.com/fzyzcjy/flutter_rust_bridge/actions/workflows/post_release.yaml)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6afbdad19e7245adbf9e9771777be3d7)](https://app.codacy.com/gh/fzyzcjy/flutter_rust_bridge?utm_source=github.com&utm_medium=referral&utm_content=fzyzcjy/flutter_rust_bridge&utm_campaign=Badge_Grade_Settings)
+[![Minimum Supported Stable Rust Version](https://img.shields.io/badge/stable_msrv-1.64+-green.svg)](/.msrv)
+[![Minimum Supported Nightly Rust Version](https://img.shields.io/badge/nightly_msrv-nightly--2022--07--15+-orange.svg)](/.nightly_msrv)
 
 ![Logo](https://github.com/fzyzcjy/flutter_rust_bridge/raw/master/book/logo.png)
 
@@ -28,7 +30,7 @@ Check out [the user guide](https://fzyzcjy.github.io/flutter_rust_bridge/) for [
 
 ## 📎 P.S. Achieve ~60 FPS, no matter how janky the Flutter app was due to build/layout
 
-Here is my another open-source library :) https://github.com/fzyzcjy/flutter_smooth.
+Here is my another open-source library :) <https://github.com/fzyzcjy/flutter_smooth>.
 
 ## ✨ Contributors
 

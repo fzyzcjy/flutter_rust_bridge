@@ -194,6 +194,10 @@ ci_codegen:
     just generate_all
     just check_no_git_diff
 
+msrv:
+    bash tools/find_msrv.sh
+    bash tools/find_nightly_msrv.sh
+
 # ============================ misc ============================
 
 clean:
@@ -310,6 +314,9 @@ _install_crate name="cargo-lipo":
     else
       echo "Already installed the correct version of $PACKAGE_NAME."
     fi
+
+
+
 # ============================ to be migrated ============================
 
 # TODO - @Desdaemon
