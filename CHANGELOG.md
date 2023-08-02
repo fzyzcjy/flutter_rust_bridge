@@ -1,3 +1,7 @@
+## 1.80.1
+
+* Manually bump proc-macro2 -> 1.0.66 #1306 (thanks @gutenfries)
+
 ## 1.80.0
 
 * Reinforce error handling and reduce usage of panic in codegen #1298 (thanks @Desdaemon)

@@ -45,7 +45,7 @@ dart_pub_get mode="default":
 
 rust_build_and_test:
     # basic
-    just _rust_build_and_test_single frb_codegen --features uuid --features chrono
+    just _rust_build_and_test_single frb_codegen --features uuid,chrono
     just _rust_build_and_test_single frb_rust
     just _rust_build_and_test_single frb_macros
     # single block case
