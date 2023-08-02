@@ -240,6 +240,11 @@ pub fn wire_handle_enum_parameter(port_: MessagePort, weekday: i32) {
 }
 
 #[wasm_bindgen]
+pub fn wire_handle_enum_sync_freezed(value: JsValue) -> support::WireSyncReturn {
+    wire_handle_enum_sync_freezed_impl(value)
+}
+
+#[wasm_bindgen]
 pub fn wire_handle_customized_struct(port_: MessagePort, val: JsValue) {
     wire_handle_customized_struct_impl(port_, val)
 }
@@ -1582,6 +1587,16 @@ impl Wire2Api<MessageId> for JsValue {
     }
 }
 
+impl Wire2Api<MyEnumFreezed> for JsValue {
+    fn wire2api(self) -> MyEnumFreezed {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => MyEnumFreezed::A(self_.get(1).wire2api()),
+            1 => MyEnumFreezed::B(self_.get(1).wire2api()),
+            _ => unreachable!(),
+        }
+    }
+}
 impl Wire2Api<MyNestedStruct> for JsValue {
     fn wire2api(self) -> MyNestedStruct {
         let self_ = self.dyn_into::<JsArray>().unwrap();

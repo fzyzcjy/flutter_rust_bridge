@@ -422,6 +422,10 @@ void main(List<String> args) async {
     expect(await api.handleEnumParameter(weekday: Weekdays.saturday), Weekdays.saturday);
   });
 
+  test('dart call handleEnumParameter', () async {
+    expect(api.handleEnumSyncFreezed(value: MyEnumFreezed.a(1)), MyEnumFreezed.b('hello'));
+  });
+
   test('dart call handleEnumStruct', () async {
     expect(await api.handleEnumStruct(val: KitchenSink_Empty()), KitchenSink_Empty());
     expect(

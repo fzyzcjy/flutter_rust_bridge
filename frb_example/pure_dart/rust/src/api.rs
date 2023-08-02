@@ -569,6 +569,17 @@ pub fn handle_enum_parameter(weekday: Weekdays) -> Weekdays {
     weekday
 }
 
+#[derive(Debug)]
+pub enum MyEnumFreezed {
+    A(i32),
+    B(String),
+}
+
+pub fn handle_enum_sync_freezed(value: MyEnumFreezed) -> SyncReturn<MyEnumFreezed> {
+    info!("handle_struct_sync_enum_freezed({:?})", &value);
+    SyncReturn(MyEnumFreezed::B("hello".to_string()))
+}
+
 #[frb]
 #[derive(Debug, Clone)]
 pub struct Customized {

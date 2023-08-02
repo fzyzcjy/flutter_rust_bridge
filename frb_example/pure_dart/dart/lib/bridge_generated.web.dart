@@ -350,6 +350,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_my_enum_freezed(MyEnumFreezed raw) {
+    return api2wire_my_enum_freezed(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_my_nested_struct(MyNestedStruct raw) {
     return api2wire_my_nested_struct(raw);
   }
@@ -741,6 +746,18 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_my_enum_freezed(MyEnumFreezed raw) {
+    if (raw is MyEnumFreezed_A) {
+      return [0, api2wire_i32(raw.field0)];
+    }
+    if (raw is MyEnumFreezed_B) {
+      return [1, api2wire_String(raw.field0)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
   List<dynamic> api2wire_my_nested_struct(MyNestedStruct raw) {
     return [api2wire_my_tree_node(raw.treeNode), api2wire_weekdays(raw.weekday)];
   }
@@ -1117,6 +1134,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external dynamic /* void */ wire_handle_return_enum(NativePortType port_, String input);
 
   external dynamic /* void */ wire_handle_enum_parameter(NativePortType port_, int weekday);
+
+  external dynamic /* List<dynamic> */ wire_handle_enum_sync_freezed(List<dynamic> value);
 
   external dynamic /* void */ wire_handle_customized_struct(NativePortType port_, List<dynamic> val);
 
@@ -1531,6 +1550,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_handle_enum_parameter(NativePortType port_, int weekday) =>
       wasmModule.wire_handle_enum_parameter(port_, weekday);
+
+  dynamic /* List<dynamic> */ wire_handle_enum_sync_freezed(List<dynamic> value) =>
+      wasmModule.wire_handle_enum_sync_freezed(value);
 
   void wire_handle_customized_struct(NativePortType port_, List<dynamic> val) =>
       wasmModule.wire_handle_customized_struct(port_, val);
