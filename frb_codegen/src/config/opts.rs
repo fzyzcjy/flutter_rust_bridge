@@ -117,16 +117,11 @@ impl Opts {
             return Ok(ir_file);
         }
 
-        log::debug!("before fetch_shared_types_if_needed"); // TODO: delete
         ir_file.fetch_shared_types_if_needed(all_configs);
-        log::debug!("after fetch_shared_types_if_needed"); // TODO: delete
 
         let original_func_len = ir_file.funcs(false).len();
         EXTRA_FUNC_MAP.with(|data| {
             let mut extra_func_map = data.borrow_mut();
-
-            log::debug!("my struct pool are:{:?}", ir_file.struct_pool); // TODO: delete
-            log::debug!("my enum pool are:{:?}", ir_file.enum_pool); // TODO: delete
 
             // define type_pool_map from `struct_pool` and `enum_pool` in an ordered map
             let mut type_pool_map = std::collections::BTreeMap::new();
@@ -147,9 +142,6 @@ impl Opts {
 
             // add extra methods
             for (type_name, raw_code_path) in type_pool_map {
-                log::debug!("the code_path:{raw_code_path}"); // TODO: delete
-                log::debug!("the type_name:{type_name}"); // TODO: delete
-
                 let extra_path_funcs = if let std::collections::hash_map::Entry::Vacant(e) =
                     extra_func_map.entry(raw_code_path.clone())
                 {
@@ -157,7 +149,6 @@ impl Opts {
                     let correct_prefix = self.manifest_path.replace("Cargo.toml", "src/");
                     let code_path = raw_code_path.replace("crate/", &correct_prefix);
                     if let Some(code_path) = check_rust_path(&code_path) {
-                        log::debug!("the refined code_path:{code_path}"); // TODO: delete
                         let extra_source_rust_content = try_read_from_file(
                             &code_path,
                             &format!("Failed to read extra rust module file \"{}\"", code_path),
@@ -196,7 +187,6 @@ impl Opts {
                 let mut new_funcs = Vec::new();
                 for each_func in extra_path_funcs {
                     if each_func.name.ends_with(&(format!("__{type_name}"))) {
-                        log::debug!("func added: {each_func:?}"); // TODO: delete
                         let mut method = each_func.clone();
                         if ir_file
                             .get_shared_type_names(
@@ -205,7 +195,6 @@ impl Opts {
                             )
                             .contains(&type_name)
                         {
-                            log::debug!("`{}` is found to be a shared type", type_name); // TODO: delete
                             method.shared = true;
                         }
 
@@ -234,7 +223,6 @@ impl Opts {
     }
 
     fn get_shared_ir_file(&self, all_configs: &[Opts]) -> ParserResult<IrFile> {
-        log::debug!("get_shared_ir_file 1"); // TODO: delete
         assert!(
             all_configs.len() > 1,
             "`get_shared_ir_file(..)` should not be called when all_configs.len()<=1"
@@ -272,10 +260,6 @@ impl Opts {
             .into_iter()
             .map(|x| (x.0, x.1))
             .collect::<HashMap<_, _>>();
-
-        log::debug!("the shared funcs:{:?}", funcs); // TODO: delete
-        log::debug!("the shared struct_pool:{:?}", struct_pool); // TODO: delete
-        log::debug!("the shared enum_pool:{:?}", enum_pool); // TODO: delete
 
         Ok(IrFile::new(
             funcs, // this field would effect `IrFile.visit_types(...)` and others

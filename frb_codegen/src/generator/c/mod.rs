@@ -12,7 +12,6 @@ pub fn generate_dummy(
     if all_configs.len() > 1 {
         let basic_dummy_func = get_dummy_func(&config.class_name, func_names);
         if config.block_index == BlockIndex(all_configs.len() - 1) {
-            log::debug!("I am here with index:{:?}", config.block_index); // TODO: delete
             let func_names = all_configs
                 .iter()
                 .map(|e| get_dummy_signature(&e.class_name))

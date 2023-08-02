@@ -123,8 +123,6 @@ pub fn config_parse(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
                 .unwrap()
         });
 
-        log::debug!("the shared_rust_file_path is : {raw_shared_rust_output_path:?}"); // TODO: delete
-
         // 3.return rust/dart output path with full directories
         let shared_rust_output_path =
             get_valid_canon_paths(&[raw_shared_rust_output_path])[0].clone();

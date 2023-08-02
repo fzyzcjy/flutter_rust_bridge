@@ -120,7 +120,6 @@ fn cbindgen(
     if path.starts_with(r"\\?\") {
         path = &path[r"\\?\".len()..];
     }
-    log::debug!("the final crate path is:{path}"); // TODO: delete
     if cbindgen::generate_with_config(path, config)?.write_to_file(c_output_path) {
         Ok(())
     } else {

@@ -34,7 +34,6 @@ pub struct Crate {
 impl Crate {
     pub fn new(manifest_path: &str) -> ParserResult<Self> {
         let mut cmd = MetadataCommand::new();
-        log::debug!("the manifest_path:{manifest_path}"); // TODO: delete
         cmd.manifest_path(manifest_path);
 
         let metadata = cmd.exec().unwrap();

@@ -29,7 +29,6 @@ impl IrType {
         if f(self) {
             return;
         }
-        // log::debug!("start visit children types"); // TODO: delete
         self.visit_children_types(f, ir_file);
     }
 

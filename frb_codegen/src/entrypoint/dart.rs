@@ -32,7 +32,6 @@ pub(crate) fn generate_dart_code(
     let mut exclude_symbols = generated_rust.get_exclude_symbols(all_symbols, ir_file);
     let mut extra_forward_declarations = Vec::new();
     //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓refine exclude_symbols↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-    log::debug!("working on block:{:?}", ir_file.block_index); // TODO: delete
     match ir_file.shared {
         true => {
             for c in all_configs {
@@ -69,29 +68,7 @@ pub(crate) fn generate_dart_code(
         }
     }
     //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑refine exclude_symbols↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
-
-    log::debug!(
-        "block {:?} the all_symbols is: {:?}",
-        ir_file.block_index,
-        all_symbols
-    ); // TODO: delete
-    log::debug!(
-        "block {:?} the extern_func_names is: {:?}",
-        ir_file.block_index,
-        generated_rust.extern_func_names
-    ); // TODO: delete
-    log::debug!(
-        "block {:?} the exclude_symbols is: {:?}",
-        ir_file.block_index,
-        exclude_symbols
-    ); // TODO: delete
     let c_struct_names = ir_file.get_c_struct_names(all_configs);
-    // let c_struct_names: Vec<String> = [].to_vec();
-    log::debug!(
-        "block {:?} the c_struct_names is: {:?}",
-        ir_file.block_index,
-        c_struct_names
-    ); // TODO: delete
     with_changed_file(
         &config.rust_output_path,
         DUMMY_WIRE_CODE_FOR_BINDGEN,
@@ -136,11 +113,6 @@ pub(crate) fn generate_dart_code(
 
     // phase-step2: generate raw dart code instance from the c file
     let generated_dart_wire_code_raw = fs::read_to_string(temp_dart_wire_file)?;
-    log::debug!(
-        "block {:?} the generated_dart_wire_code_raw is: {:?}",
-        ir_file.block_index,
-        generated_dart_wire_code_raw
-    ); // TODO: delete
     let generated_dart_wire = extract_dart_wire_content(&modify_dart_wire_content(
         &generated_dart_wire_code_raw,
         &config.dart_wire_class_name(),
@@ -152,17 +124,6 @@ pub(crate) fn generate_dart_code(
     let generated_dart = ir_file.generate_dart(config, all_configs, &generated_rust.wasm_exports);
     let generated_dart_decl_all = &generated_dart.decl_code;
     let generated_dart_impl_io_wire = &generated_dart.impl_code.io + &generated_dart_wire;
-
-    log::debug!(
-        "block {:?} the generated_dart.impl_code.io is: {:?}",
-        ir_file.block_index,
-        generated_dart.impl_code.io
-    ); // TODO: delete
-    log::debug!(
-        "block {:?} the generated_dart_wire is: {generated_dart_wire:?}",
-        ir_file.block_index
-    ); // TODO: delete
-       // log::debug!("block {:?} the generated_dart_impl_io_wire is: {generated_dart_impl_io_wire:?}", ir_file.block_index); // TODO: delete
 
     let dart_output_paths = config.get_dart_output_paths();
     let dart_output_dir = Path::new(&dart_output_paths.base_path).parent().unwrap();

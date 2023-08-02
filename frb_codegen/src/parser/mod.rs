@@ -114,9 +114,6 @@ pub fn parse(
     let src_enums = crate_map.root_module.collect_enums_to_vec();
     let src_types = crate_map.root_module.collect_types_to_pool();
     let src_types = topo_resolve(src_types);
-    log::debug!("src_structs:{src_structs:?}"); // TODO: delete
-    log::debug!("src_enums:{src_enums:?}"); // TODO: delete
-    log::debug!("src_types: {src_types:?}"); // TODO: delete
     let parser = Parser::new(TypeParser::new(src_structs, src_enums, src_types));
     parser.parse(
         source_rust_content,
