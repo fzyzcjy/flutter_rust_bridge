@@ -61,15 +61,6 @@ mod tests {
         static ref LOGGER: () = init_logger(".", true).unwrap();
     }
 
-    // For the online Github CLI, even on windows, it is working on `dart` but not `dart.bat`.
-    // So the below configure is commented out.
-    // But if there is issue like `program not found` when running tests locally on Windows,
-    // Please uncomment the below configure and still comment it out before git push.
-    // #[cfg(target_os = "windows")]
-    // const DART: &str = "dart.bat";
-    // #[cfg(not(target_os = "windows"))]
-    // const DART: &str = "dart";
-
     // VS Code runs in frb_codegen with "Run test" and flutter_rust_bridge with "Debug test" >_>
     fn set_dir() {
         if let Ok(metadata) = fs::metadata("frb_codegen") {
