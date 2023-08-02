@@ -61,11 +61,9 @@ mod tests {
         static ref LOGGER: () = init_logger(".", true).unwrap();
     }
 
-    // #[cfg(target_os = "windows")]
-    // const DART: &str = "dart.bat";
-    // #[cfg(not(windows))]
-    // #[cfg(not(target_os = "windows"))]
-
+    #[cfg(target_os = "windows")]
+    const DART: &str = "dart.bat";
+    #[cfg(not(target_os = "windows"))]
     const DART: &str = "dart";
 
     // VS Code runs in frb_codegen with "Run test" and flutter_rust_bridge with "Debug test" >_>
