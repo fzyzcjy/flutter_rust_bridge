@@ -68,7 +68,7 @@ mod tests {
     // #[cfg(target_os = "windows")]
     // const DART: &str = "dart.bat";
     // #[cfg(not(target_os = "windows"))]
-    const DART: &str = "dart";
+    // const DART: &str = "dart";
 
     // VS Code runs in frb_codegen with "Run test" and flutter_rust_bridge with "Debug test" >_>
     fn set_dir() {
@@ -112,19 +112,45 @@ mod tests {
     }
 
     fn run_dart_test_command(test_case: &str, absolute_path: PathBuf) -> std::process::ExitStatus {
-        let status = std::process::Command::new(DART)
+        // 1.decide which dart command is valid in the specific system
+        let dart = if cfg!(target_os = "windows") {
+            "dart.bat"
+        } else {
+            "dart"
+        };
+        if std::process::Command::new(dart)
+            .arg("--version")
+            .status()
+            .is_err()
+        {
+            let dart = if cfg!(target_os = "windows") {
+                "dart"
+            } else {
+                "dart.bat"
+            };
+            if std::process::Command::new(dart)
+                .arg("--version")
+                .status()
+                .is_err()
+            {
+                panic!("Failed to find 'dart' or 'dart.bat' command in the system path.");
+            }
+        }
+
+        // 2. do the dart test check
+        let status = std::process::Command::new(dart)
             .arg(format!("../frb_example/{test_case}/dart/lib/main.dart"))
             .arg(absolute_path)
             .spawn()
             .map_err(|e| {
                 if e.kind() == std::io::ErrorKind::NotFound {
                     format!(
-                        "`{test_case}`: Failed to execute '{DART}': program not found on {OS}",
+                        "`{test_case}`: Failed to execute '{dart}': program not found on {OS}",
                         OS = std::env::consts::OS
                     )
                 } else {
                     format!(
-                        "`{test_case}`: Failed to execute '{DART}': {error} on {OS}",
+                        "`{test_case}`: Failed to execute '{dart}': {error} on {OS}",
                         error = e,
                         OS = std::env::consts::OS
                     )
@@ -134,7 +160,7 @@ mod tests {
             .wait()
             .map_err(|e| {
                 format!(
-                    "`{test_case}`: Failed to wait for '{DART}': {error} on {OS}",
+                    "`{test_case}`: Failed to wait for '{dart}': {error} on {OS}",
                     error = e,
                     OS = std::env::consts::OS
                 )

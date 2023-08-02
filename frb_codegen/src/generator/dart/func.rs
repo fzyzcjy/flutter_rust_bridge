@@ -192,7 +192,7 @@ pub(crate) fn get_api2wire_prefix(
     for_dart_basic_file: bool,
 ) -> String {
     // NOTE: `COMMON_API2WIRE` should have been fetched by
-    // `DartApiSpec::from()` according to the whole generation routine,
+    // `DartApiSpec::from()` according to the whole frb generation routine,
     FETCHED_FOR_COMMON_API2WIRE.with(|data| {
         let borrow_mut = *data.borrow_mut();
         if !borrow_mut {
