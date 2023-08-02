@@ -61,10 +61,10 @@ mod tests {
         static ref LOGGER: () = init_logger(".", true).unwrap();
     }
 
-    // #[cfg(windows)]
+    // #[cfg(target_os = "windows")]
     // const DART: &str = "dart.bat";
     // #[cfg(not(windows))]
-    // const DART: &str = "dart";
+    // #[cfg(not(target_os = "windows"))]
 
     const DART: &str = "dart";
 
@@ -75,6 +75,70 @@ mod tests {
                 std::env::set_current_dir("frb_codegen").unwrap();
             }
         }
+    }
+
+    fn run_cargo_test_command(test_case: &str) -> std::process::ExitStatus {
+        let status = std::process::Command::new("cargo")
+            .current_dir(format!("../frb_example/{test_case}/rust"))
+            .arg("build")
+            .spawn()
+            .map_err(|e| {
+                if e.kind() == std::io::ErrorKind::NotFound {
+                    format!(
+                        "`{test_case}`: Failed to execute 'cargo': program not found on {OS}",
+                        OS = std::env::consts::OS
+                    )
+                } else {
+                    format!(
+                        "`{test_case}`: Failed to execute 'cargo': {error} on {OS}",
+                        error = e,
+                        OS = std::env::consts::OS
+                    )
+                }
+            })
+            .unwrap()
+            .wait()
+            .map_err(|e| {
+                format!(
+                    "`{test_case}`: Failed to wait for 'cargo': {error} on {OS}",
+                    error = e,
+                    OS = std::env::consts::OS
+                )
+            })
+            .unwrap();
+        status
+    }
+
+    fn run_dart_test_command(test_case: &str, absolute_path: PathBuf) -> std::process::ExitStatus {
+        let status = std::process::Command::new(DART)
+            .arg(format!("../frb_example/{test_case}/dart/lib/main.dart"))
+            .arg(absolute_path)
+            .spawn()
+            .map_err(|e| {
+                if e.kind() == std::io::ErrorKind::NotFound {
+                    format!(
+                        "`{test_case}`: Failed to execute '{DART}': program not found on {OS}",
+                        OS = std::env::consts::OS
+                    )
+                } else {
+                    format!(
+                        "`{test_case}`: Failed to execute '{DART}': {error} on {OS}",
+                        error = e,
+                        OS = std::env::consts::OS
+                    )
+                }
+            })
+            .unwrap()
+            .wait()
+            .map_err(|e| {
+                format!(
+                    "`{test_case}`: Failed to wait for '{DART}': {error} on {OS}",
+                    error = e,
+                    OS = std::env::consts::OS
+                )
+            })
+            .unwrap();
+        status
     }
 
     /// When the `frb_example/pure_dart` fails to build, i.e. the `cargo build` there fails,
@@ -90,10 +154,10 @@ mod tests {
     /// Then that `build.rs` is temporarily disabled and cargo build can run.
     #[test]
     fn pure_dart() {
+        let test_case = "pure_dart";
+
         assert!(cfg!(feature = "chrono"));
         assert!(cfg!(feature = "uuid"));
-
-        use std::process::Command;
 
         set_dir();
 
@@ -112,14 +176,7 @@ mod tests {
         assert_eq!(all_configs.len(), 1);
         frb_codegen(&all_configs[0], &all_symbols).unwrap();
 
-        let status = Command::new("cargo")
-            .current_dir("../frb_example/pure_dart/rust")
-            .arg("build")
-            .spawn()
-            .expect("failed to execute cargo")
-            .wait()
-            .expect("failed to wait for cargo to finish");
-        assert!(status.success(), "cargo build failed");
+        let _status = run_cargo_test_command(test_case);
 
         let output_path = PathBuf::from(
             #[cfg(target_os = "macos")]
@@ -138,20 +195,14 @@ mod tests {
             println!("Output file does not exist");
         }
 
-        let status = Command::new(DART)
-            .arg("../frb_example/pure_dart/dart/lib/main.dart")
-            .arg(absolute_path)
-            .spawn()
-            .expect("failed to execute pure_dart")
-            .wait()
-            .expect("failed to wait for pure_dart");
-        assert!(status.success(), "pure_dart failed");
+        let status = run_dart_test_command(test_case, absolute_path);
+        assert!(status.success());
     }
 
     /// See the documentation for the `pure_dart` test
     #[test]
     fn pure_dart_multi() {
-        use std::process::Command;
+        let test_case = "pure_dart_multi";
 
         set_dir();
 
@@ -248,14 +299,8 @@ mod tests {
             frb_codegen_multi(&all_configs, config_index, &all_symbols).unwrap()
         }
 
-        let status = Command::new("cargo")
-            .current_dir("../frb_example/pure_dart_multi/rust")
-            .arg("build")
-            .spawn()
-            .expect("failed to execute cargo")
-            .wait()
-            .expect("failed to wait for cargo to finish");
-        assert!(status.success(), "cargo build failed");
+        let _status = run_cargo_test_command(test_case);
+
         let output_path = PathBuf::from(
             #[cfg(target_os = "macos")]
             "../target/debug/libflutter_rust_bridge_example_multi.dylib",
@@ -273,13 +318,7 @@ mod tests {
             println!("Output file does not exist");
         }
 
-        let status = Command::new(DART)
-            .arg("../frb_example/pure_dart_multi/dart/lib/main.dart")
-            .arg(absolute_path)
-            .spawn()
-            .expect("failed to execute pure_dart_multi")
-            .wait()
-            .expect("failed to wait for pure_dart_multi");
-        assert!(status.success(), "pure_dart_multi failed");
+        let status = run_dart_test_command(test_case, absolute_path);
+        assert!(status.success());
     }
 }
