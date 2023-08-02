@@ -61,8 +61,8 @@ mod tests {
         static ref LOGGER: () = init_logger(".", true).unwrap();
     }
 
-    #[cfg(windows)]
-    const DART: &str = "dart.bat";
+    // #[cfg(windows)]
+    // const DART: &str = "dart.bat";
     #[cfg(not(windows))]
     const DART: &str = "dart";
 
