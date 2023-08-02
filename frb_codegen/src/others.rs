@@ -2,7 +2,7 @@ use std::fs;
 use std::ops::Add;
 use std::path::Path;
 
-use anyhow::{anyhow, Result};
+use anyhow::{anyhow, Context, Result};
 use lazy_static::lazy_static;
 use log::{info, warn};
 use pathdiff::diff_paths;
@@ -135,16 +135,12 @@ pub fn extract_dart_wire_content(content: &str) -> DartBasicCode {
     }
 }
 
-pub fn sanity_check(
-    generated_dart_wire_code: &str,
-    dart_wire_class_name: &str,
-) -> anyhow::Result<()> {
+pub fn sanity_check(generated_dart_wire_code: &str, dart_wire_class_name: &str) -> crate::Result {
     if !generated_dart_wire_code.contains(dart_wire_class_name) {
-        return Err(crate::error::Error::string(
+        Err(anyhow!(
             "Nothing is generated for dart wire class. \
             Maybe you forget to put code like `mod the_generated_bridge_code;` to your `lib.rs`?",
-        )
-        .into());
+        ))?;
     }
     Ok(())
 }
@@ -163,19 +159,18 @@ pub fn try_add_mod_to_lib(rust_crate_dir: &str, rust_output_path: &str) {
 pub fn auto_add_mod_to_lib_core(rust_crate_dir: &str, rust_output_path: &str) -> Result<()> {
     let path_src_folder = Path::new(rust_crate_dir).join("src");
     let rust_output_path_relative_to_src_folder =
-        diff_paths(rust_output_path, path_src_folder.clone()).ok_or_else(|| {
-            anyhow!(
+        diff_paths(rust_output_path, path_src_folder.clone()).with_context(|| {
+            format!(
                 "rust_output_path={} is unrelated to path_src_folder={:?}",
-                rust_output_path,
-                &path_src_folder,
+                rust_output_path, &path_src_folder,
             )
         })?;
 
     let mod_name = rust_output_path_relative_to_src_folder
         .file_stem()
-        .ok_or_else(|| anyhow!(""))?
+        .context("No file_stem")?
         .to_str()
-        .ok_or_else(|| anyhow!(""))?
+        .context("Not a UTF-8 path")?
         .to_string()
         .replace('/', "::");
     let expect_code = format!("mod {mod_name};");

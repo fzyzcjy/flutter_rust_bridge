@@ -1,7 +1,8 @@
 use crate::ir::{IrFile, IrFunc, IrType};
+use crate::parser::{self, ParserResult};
+use crate::transformer;
 use crate::utils::misc::{BlockIndex, ExtraTraitForVec};
-use crate::{parser, transformer};
-use anyhow::{Context, Result};
+use anyhow::Context;
 use convert_case::{Case, Casing};
 use std::collections::HashMap;
 use std::fs;
@@ -50,6 +51,7 @@ pub struct Opts {
     // in multi-blocks case, they should be paths to generated files with full directories
     pub shared_rust_output_path: Option<String>,
     pub shared_dart_output_path: Option<String>,
+    pub keep_going: bool,
 }
 
 impl Opts {
@@ -57,7 +59,7 @@ impl Opts {
     /// it would return an `IrFile` with field of EMPTY `shared_types` for the regular block;
     /// for `Opts` for an auto-generated shared API block, make sure `all_configs` has at least 2 items, each of which
     /// is for the regular block. Otherwise, it would panic.
-    pub fn get_ir_file(&self, all_configs: &[Opts]) -> Result<IrFile> {
+    pub fn get_ir_file(&self, all_configs: &[Opts]) -> ParserResult<IrFile> {
         let raw_ir_file = if !self.shared {
             self.get_regular_ir_file(all_configs)?
         } else {
@@ -70,7 +72,7 @@ impl Opts {
         Ok(ir_file)
     }
 
-    fn get_regular_ir_file(&self, all_configs: &[Opts]) -> Result<IrFile> {
+    fn get_regular_ir_file(&self, all_configs: &[Opts]) -> ParserResult<IrFile> {
         let mut ir_file = IR_FILE_MAP.with(|data| {
             let mut ir_file_map = data.borrow_mut();
             let ir_file = if let std::collections::hash_map::Entry::Vacant(e) =
@@ -95,7 +97,8 @@ impl Opts {
                     self.block_index,
                     self.shared,
                     all_configs,
-                );
+                )
+                .unwrap();
 
                 e.insert(ir_file.clone());
 
@@ -171,7 +174,8 @@ impl Opts {
                             self.block_index,
                             self.shared,
                             &[],
-                        );
+                        )
+                        .unwrap();
                         log::debug!("Finished Phase: Parse EXTRA AST to IR");
                         //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑extra parse↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
@@ -229,7 +233,7 @@ impl Opts {
         Ok(ir_file)
     }
 
-    fn get_shared_ir_file(&self, all_configs: &[Opts]) -> Result<IrFile> {
+    fn get_shared_ir_file(&self, all_configs: &[Opts]) -> ParserResult<IrFile> {
         log::debug!("get_shared_ir_file 1"); // TODO: delete
         assert!(
             all_configs.len() > 1,
@@ -399,7 +403,7 @@ fn check_rust_path(path_str: &str) -> Option<String> {
     None
 }
 
-fn try_read_from_file(file_path: &str, error_msg: &str) -> Result<String, anyhow::Error> {
+fn try_read_from_file(file_path: &str, error_msg: &str) -> ParserResult<String, anyhow::Error> {
     let file_content = fs::read_to_string(file_path).with_context(|| {
         log::error!("{}", error_msg);
         error_msg.to_owned()

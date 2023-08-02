@@ -79,11 +79,11 @@ pub fn is_multi_blocks_case(all_configs: &[crate::Opts]) -> bool {
     }
 }
 
-pub fn with_changed_file<F: FnOnce() -> anyhow::Result<()>>(
+pub fn with_changed_file<F: FnOnce() -> crate::Result<()>>(
     path: &str,
     append_content: &str,
     f: F,
-) -> anyhow::Result<()> {
+) -> crate::Result<()> {
     let content_original = fs::read_to_string(path)?;
     fs::write(path, content_original.clone() + append_content)?;
     f()?;

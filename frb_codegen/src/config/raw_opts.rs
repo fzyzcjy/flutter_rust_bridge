@@ -133,6 +133,11 @@ pub struct RawOpts {
     // it should be sured that all generated files for regular blocks are in the same directory.
     #[clap(short, long)]
     pub shared_rust_output: Option<String>,
+
+    /// If set, the program will delay error reporting until all codegen operations have completed.
+    #[arg(long)]
+    #[serde(default)]
+    pub keep_going: bool,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Copy, Deserialize, ValueEnum, enum_iterator::Sequence)]

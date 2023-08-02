@@ -202,6 +202,7 @@ pub fn config_parse(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
     let wasm = raw.wasm;
     let dart3 = raw.dart3;
     let inline_rust = raw.inline_rust;
+    let keep_going = raw.keep_going;
     let extra_headers = raw.extra_headers.unwrap_or({
         if raw.no_use_bridge_in_method {
             "import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';".to_owned()
@@ -237,6 +238,7 @@ pub fn config_parse(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
                 shared_rust_output_path: shared_rust_output_path.clone(),
                 shared_dart_output_path: shared_dart_output_path.clone(),
                 bridge_in_method,
+                keep_going,
                 extra_headers: extra_headers.clone(),
             }
         })
@@ -282,6 +284,7 @@ pub fn config_parse(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
             bridge_in_method, //TODO: check for shared Opt
             extra_headers,    //TODO: check for shared Opt
             dart3,
+            keep_going,
         };
         [regular_configs, vec![shared_config]].concat()
     };
@@ -398,6 +401,7 @@ fn anchor_config(config: RawOpts, config_path: &str) -> RawOpts {
         no_use_bridge_in_method: config.no_use_bridge_in_method,
         extra_headers: config.extra_headers,
         shared_rust_output: config.shared_rust_output,
+        keep_going: config.keep_going,
         #[cfg(feature = "serde")]
         dump: config.dump,
     }
@@ -418,7 +422,7 @@ pub(crate) fn format_fail_to_guess_error(name: &str) -> String {
 fn fallback_rust_crate_dir(rust_input_path: &str) -> Result<String> {
     let mut dir_curr = Path::new(rust_input_path)
         .parent()
-        .ok_or_else(|| anyhow!(""))?;
+        .context("Unexpected value for rust-crate-dir")?;
 
     loop {
         let path_cargo_toml = dir_curr.join("Cargo.toml");
@@ -427,7 +431,7 @@ fn fallback_rust_crate_dir(rust_input_path: &str) -> Result<String> {
             return Ok(dir_curr
                 .as_os_str()
                 .to_str()
-                .ok_or_else(|| anyhow!(""))?
+                .context("Not a UTF-8 path")?
                 .to_string());
         }
 
@@ -444,11 +448,9 @@ fn fallback_rust_crate_dir(rust_input_path: &str) -> Result<String> {
 
 fn fallback_rust_output_path(rust_input_path: &str) -> Result<String> {
     Ok(Path::new(rust_input_path)
-        .parent()
-        .ok_or_else(|| anyhow!(""))?
-        .join("bridge_generated.rs")
+        .with_file_name("bridge_generated.rs")
         .to_str()
-        .ok_or_else(|| anyhow!(""))?
+        .context("Not a UTF-8 path")?
         .to_string())
 }
 
@@ -459,7 +461,7 @@ fn fallback_dart_root(dart_output_path: &str) -> Result<String> {
             return res
                 .to_str()
                 .map(ToString::to_string)
-                .ok_or_else(|| anyhow!("Non-utf8 path"));
+                .context("Not a UTF-8 path");
         }
     }
     Err(anyhow!(
@@ -474,11 +476,11 @@ fn fallback_class_name(rust_crate_dir: &str) -> Result<String> {
     let cargo_toml_value = cargo_toml_content.parse::<Value>()?;
     let package_name = cargo_toml_value
         .get("package")
-        .ok_or_else(|| anyhow!("no `package` in Cargo.toml"))?
+        .context("no `package` in Cargo.toml")?
         .get("name")
-        .ok_or_else(|| anyhow!("no `name` in Cargo.toml"))?
+        .context("no `name` in Cargo.toml")?
         .as_str()
-        .ok_or_else(|| anyhow!(""))?;
+        .unwrap();
 
     Ok(package_name.to_case(Case::Pascal))
 }

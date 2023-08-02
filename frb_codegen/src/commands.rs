@@ -1,3 +1,4 @@
+use crate::Result;
 use cargo_metadata::VersionReq;
 use lazy_static::lazy_static;
 use std::fmt::Write;
@@ -6,10 +7,13 @@ use std::path::PathBuf;
 use std::str::FromStr;
 
 use crate::command_run;
-use crate::error::{Error, Result};
 use crate::utils::command_runner::{call_shell, execute_command};
 use crate::utils::dart_repository::dart_repo::{DartDependencyMode, DartRepository};
 use log::{debug, info};
+
+mod error;
+pub use error::Error;
+pub(crate) type CommandResult<T = (), E = Error> = core::result::Result<T, E>;
 
 lazy_static! {
     pub(crate) static ref FFI_REQUIREMENT: VersionReq =
@@ -18,11 +22,10 @@ lazy_static! {
         VersionReq::parse(">= 8.0.0, < 9.0.0").unwrap();
 }
 
-pub fn ensure_tools_available(dart_root: &str, skip_deps_check: bool) -> Result {
-    let repo =
-        DartRepository::from_str(dart_root).map_err(|e| Error::StringError(e.to_string()))?;
+pub fn ensure_tools_available(dart_root: &str, skip_deps_check: bool) -> Result<(), Error> {
+    let repo = DartRepository::from_str(dart_root)?;
     if !repo.toolchain_available() {
-        return Err(Error::MissingExe(repo.toolchain.to_string()));
+        return Err(Error::MissingExe(repo.toolchain.to_string()))?;
     }
 
     if !skip_deps_check {
@@ -51,19 +54,7 @@ pub(crate) struct BindgenRustToDartArg<'a> {
 pub(crate) fn bindgen_rust_to_dart(
     arg: BindgenRustToDartArg,
     dart_root: &str,
-) -> anyhow::Result<()> {
-    log::debug!("BEFORE CBINDGEN"); // TODO: delete
-    log::debug!(
-        "dart root:{}\n dart_output_path:{}\n dart_class_name:{}\n rust_crate_dir:{}\n c_output_path:{}\n c_struct_names:{:#?}\n exclude_symbols:{:?}",
-        dart_root,
-        arg.dart_output_path,
-        arg.dart_class_name,
-        arg.rust_crate_dir,
-        arg.c_output_path,
-        arg.c_struct_names,
-        arg.exclude_symbols,
-    ); // TODO: delete
-
+) -> CommandResult<()> {
     cbindgen(
         arg.rust_crate_dir,
         arg.c_output_path,
@@ -71,12 +62,6 @@ pub(crate) fn bindgen_rust_to_dart(
         arg.exclude_symbols,
         arg.extra_forward_declarations,
     )?;
-
-    // let content = fs::read_to_string(arg.c_output_path)?;
-    // log::debug!("the content is:\n{}", content); // TODO: delete
-
-    log::debug!("AFTER CBINDGEN"); // TODO: delete
-
     ffigen(
         arg.c_output_path,
         arg.dart_output_path,
@@ -93,7 +78,7 @@ fn cbindgen(
     c_struct_names: Vec<String>,
     exclude_symbols: Vec<String>,
     extra_forward_definitions: Vec<String>,
-) -> anyhow::Result<()> {
+) -> CommandResult {
     let mut declarations = "".to_string();
     extra_forward_definitions.iter().for_each(|declare| {
         declarations.push_str(&format!("\n{};", declare));
@@ -128,9 +113,7 @@ fn cbindgen(
 
     debug!("cbindgen config: {:#?}", config);
 
-    let canonical = Path::new(rust_crate_dir)
-        .canonicalize()
-        .expect("Could not canonicalize rust crate dir");
+    let canonical = Path::new(rust_crate_dir).canonicalize()?;
     let mut path = canonical.to_str().unwrap();
 
     // on windows get rid of the UNC path
@@ -141,7 +124,7 @@ fn cbindgen(
     if cbindgen::generate_with_config(path, config)?.write_to_file(c_output_path) {
         Ok(())
     } else {
-        Err(Error::string("cbindgen failed writing file").into())
+        Err(anyhow::anyhow!("cbindgen failed writing file"))?
     }
 }
 
@@ -152,7 +135,7 @@ fn ffigen(
     llvm_path: &[String],
     llvm_compiler_opts: &str,
     dart_root: &str,
-) -> anyhow::Result<()> {
+) -> CommandResult {
     debug!(
         "execute ffigen c_path={} dart_path={} llvm_path={:?}",
         c_path, dart_path, llvm_path
@@ -205,19 +188,18 @@ fn ffigen(
         "--config",
         config_file.path()
     )?;
-    log::debug!("test2"); // TODO: delete
 
     if !res.status.success() {
         let err = String::from_utf8_lossy(&res.stderr);
         let out = String::from_utf8_lossy(&res.stdout);
         let pat = "Couldn't find dynamic library in default locations.";
         if err.contains(pat) || out.contains(pat) {
-            return Err(Error::FfigenLlvm.into());
+            return Err(Error::FfigenLlvm);
         }
-        return Err(Error::string(format!("ffigen failed:\nstderr: {err}\nstdout: {out}")).into());
+        Err(anyhow::anyhow!(
+            "ffigen failed:\nstderr: {err}\nstdout: {out}"
+        ))?;
     }
-    log::debug!("test3"); // TODO: delete
-
     Ok(())
 }
 
@@ -225,9 +207,7 @@ pub fn format_rust(path: &[PathBuf]) -> Result {
     debug!("execute format_rust path={:?}", path);
     let res = execute_command("rustfmt", path, None)?;
     if !res.status.success() {
-        return Err(Error::Rustfmt(
-            String::from_utf8_lossy(&res.stderr).to_string(),
-        ));
+        return Err(Error::Rustfmt(String::from_utf8_lossy(&res.stderr).to_string()).into());
     }
     Ok(())
 }
@@ -244,12 +224,11 @@ pub fn format_dart(path: &[PathBuf], line_length: u32) -> Result {
         "--line-length",
         line_length.to_string(),
         *path
-    )
-    .map_err(|err| Error::StringError(format!("{err}")))?;
+    )?;
     if !res.status.success() {
-        return Err(Error::Dartfmt(
+        Err(Error::Dartfmt(
             String::from_utf8_lossy(&res.stderr).to_string(),
-        ));
+        ))?;
     }
     Ok(())
 }
@@ -267,11 +246,11 @@ pub fn build_runner(dart_root: &str) -> Result {
         "--enable-experiment=class-modifiers",
     )?;
     if !out.status.success() {
-        return Err(Error::StringError(format!(
+        Err(anyhow::anyhow!(
             "Failed to run build_runner for {}: {}",
             dart_root,
             String::from_utf8_lossy(&out.stdout)
-        )));
+        ))?;
     }
     Ok(())
 }

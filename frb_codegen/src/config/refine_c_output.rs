@@ -1,6 +1,6 @@
 use crate::config::opts_parser::{canon_path, format_fail_to_guess_error};
 use crate::utils::misc::{is_same_directory, PathExt};
-use anyhow::{anyhow, Result};
+use anyhow::{Context, Result};
 use std::path::Path;
 
 pub(crate) fn get_refined_c_output(
@@ -601,6 +601,6 @@ fn fallback_c_output_path() -> Result<String> {
     Ok(named_temp_file
         .path()
         .to_str()
-        .ok_or_else(|| anyhow!(""))?
+        .context("Not a UTF-8 path")?
         .to_string())
 }

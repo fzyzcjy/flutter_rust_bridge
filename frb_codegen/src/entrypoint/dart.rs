@@ -1,5 +1,5 @@
 use crate::commands::BindgenRustToDartArg;
-use crate::error::Error;
+
 use crate::ir::IrTypeTrait;
 use crate::others::{
     extract_dart_wire_content, modify_dart_wire_content, sanity_check, DartBasicCode,
@@ -21,7 +21,7 @@ pub(crate) fn generate_dart_code(
     ir_file: &ir::IrFile,
     generated_rust: generator::rust::Output,
     all_symbols: &[String],
-) -> anyhow::Result<()> {
+) -> crate::Result {
     let dart_root = config.dart_root_or_default();
     ensure_tools_available(&dart_root, config.skip_deps_check)?;
 
@@ -114,6 +114,7 @@ pub(crate) fn generate_dart_code(
                 },
                 &dart_root,
             )
+            .map_err(Into::into)
         },
     )?;
 
@@ -205,12 +206,9 @@ pub(crate) fn generate_dart_code(
     info!("Phase: Running build_runner");
     let dart_root = &config.dart_root;
     if generated_dart.needs_freezed && config.build_runner {
-        let dart_root = dart_root.as_ref().ok_or_else(|| {
-            Error::string(
-                "build_runner configured to run, but Dart root could not be inferred.
-        Please specify --dart-root, or disable build_runner with --no-build-runner.",
-            )
-        })?;
+        let dart_root = dart_root
+            .as_ref()
+            .ok_or(crate::config::Error::FailedInferDartRoot)?;
         commands::build_runner(dart_root)?;
     }
 
@@ -273,7 +271,7 @@ fn write_dart_decls(
     generated_dart: &crate::generator::dart::Output,
     generated_dart_decl_all: &DartBasicCode,
     generated_dart_impl_io_wire: &DartBasicCode,
-) -> anyhow::Result<()> {
+) -> crate::Result {
     // be it single or multi block(s) case, remove the definition file at first
     HAS_GENERATED_DART_DECL_FILE.with(|data| {
         let mut flag = data.borrow_mut();

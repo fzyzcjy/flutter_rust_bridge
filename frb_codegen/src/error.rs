@@ -1,50 +1,36 @@
-use crate::utils::dart_repository::dart_repo::DartDependencyMode;
+use std::sync::Arc;
 use thiserror::Error;
 
-pub type Result<T = ()> = std::result::Result<T, Error>;
+pub type Result<T = (), E = Error> = core::result::Result<T, E>;
 
 #[derive(Error, Debug, Clone)]
-pub enum Error {
-    #[error("rustfmt failed: {0}")]
-    Rustfmt(String),
-    #[error("dart fmt failed: {0}")]
-    Dartfmt(String),
-    #[error(
-        "ffigen could not find LLVM.
-    Please supply --llvm-path to flutter_rust_bridge_codegen, e.g.:
+#[repr(transparent)]
+#[error(transparent)]
+pub struct Error(Arc<ErrorImpl>);
 
-        flutter_rust_bridge_codegen .. --llvm-path <path_to_llvm>"
-    )]
-    FfigenLlvm,
-    #[error("{0} is not a command, or not executable.")]
-    MissingExe(String),
-    #[error("{0}")]
-    StringError(String),
-    #[error("please add {name} to your {manager}. (version {requirement})")]
-    MissingDep {
-        name: String,
-        manager: DartDependencyMode,
-        requirement: String,
-    },
-    #[error("please update version of {name} in your {manager}. (version {requirement})")]
-    InvalidDep {
-        name: String,
-        manager: DartDependencyMode,
-        requirement: String,
-    },
+#[derive(Error, Debug)]
+pub(crate) enum ErrorImpl {
+    #[error("External command failure.\n{0}")]
+    Command(#[from] crate::commands::Error),
+
+    #[error("Configuration error.\n{0}")]
+    Config(#[from] crate::config::Error),
+
+    #[error("Parser failure.\n{0}")]
+    Parser(#[from] crate::parser::Error),
+
+    #[error("I/O failure.\n{0}")]
+    Io(#[from] std::io::Error),
+
+    #[error(transparent)]
+    Uncategorized(#[from] anyhow::Error),
 }
 
-impl Error {
-    pub fn string<T: Into<String>>(msg: T) -> Self {
-        Self::StringError(msg.into())
-    }
-}
-
-impl From<anyhow::Error> for Error {
-    fn from(e: anyhow::Error) -> Self {
-        if let Some(e) = e.downcast_ref::<Self>() {
-            return e.clone();
-        }
-        Error::StringError(e.to_string())
+impl<E> From<E> for Error
+where
+    ErrorImpl: From<E>,
+{
+    fn from(value: E) -> Self {
+        Error(Arc::new(value.into()))
     }
 }

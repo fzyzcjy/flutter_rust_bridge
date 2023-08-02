@@ -1,3 +1,4 @@
+use anyhow::Context;
 #[cfg(feature = "serde")]
 use lib_flutter_rust_bridge_codegen::dump;
 use lib_flutter_rust_bridge_codegen::{config_parse, frb_codegen_multi, init_logger, RawOpts};
@@ -17,17 +18,30 @@ fn main() -> anyhow::Result<()> {
     // generation of rust api for ffi
     #[cfg(feature = "serde")]
     if let Some(dump) = dump_config {
-        return dump::dump_multi(&all_configs, dump);
+        return dump::dump_multi(&all_configs, dump).context("Failed to dump config");
     }
 
     // If in multi-blocks case, the shared block MUST be generated at first.
     // Otherwise, the generated dart code for regular blocks would be problematic, since when
     // the shared rust module has not yet been generated.
-    for config_index in (0..all_configs.len()).rev() {
+    let mut errors = vec![];
+    for (config_index, config) in (all_configs.iter().enumerate()).rev() {
         if let Err(err) = frb_codegen_multi(&all_configs, config_index, &all_symbols) {
-            error!("fatal: {err}");
-            std::process::exit(1);
+            if config.keep_going {
+                errors.push((&config.rust_input_path, err));
+                continue;
+            }
+            error!("Fatal error encountered. Rerun with RUST_BACKTRACE=1 or RUST_BACKTRACE=full for more details.");
+            return Err(err);
         }
+    }
+    if !errors.is_empty() {
+        error!("Codegen failed with {} error(s).", errors.len());
+        for (path, error) in &errors {
+            error!("Error running codegen for {path}:\n{error}");
+        }
+        info!("Rerun with RUST_BACKTRACE=1 or RUST_BACKTRACE=full for more details.");
+        std::process::exit(1)
     }
 
     info!("Now go and use it :)");
@@ -47,9 +61,9 @@ mod tests {
         static ref LOGGER: () = init_logger(".", true).unwrap();
     }
 
-    // #[cfg(windows)]
-    // const DART: &str = "dart.bat";
-    // #[cfg(not(windows))]
+    #[cfg(windows)]
+    const DART: &str = "dart.bat";
+    #[cfg(not(windows))]
     const DART: &str = "dart";
 
     // VS Code runs in frb_codegen with "Run test" and flutter_rust_bridge with "Debug test" >_>
