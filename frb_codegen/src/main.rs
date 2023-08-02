@@ -113,21 +113,24 @@ mod tests {
 
     fn run_dart_test_command(test_case: &str, absolute_path: PathBuf) -> std::process::ExitStatus {
         // 1.decide which dart command is valid in the specific system
-        let dart = if cfg!(target_os = "windows") {
+        let mut dart = if cfg!(target_os = "windows") {
             "dart.bat"
         } else {
             "dart"
         };
+        // check command validation
         if std::process::Command::new(dart)
             .arg("--version")
             .status()
             .is_err()
         {
-            let dart = if cfg!(target_os = "windows") {
+            dart = if cfg!(target_os = "windows") {
                 "dart"
             } else {
                 "dart.bat"
             };
+
+            // check command validation again
             if std::process::Command::new(dart)
                 .arg("--version")
                 .status()
