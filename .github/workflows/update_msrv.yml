@@ -31,9 +31,14 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
       # checkout sources
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
 
       # ensure rustup is installed
       - uses: actions-rs/toolchain@v1
@@ -77,9 +82,9 @@ jobs:
           # # Optional. Create given branch name in local and remote repository.
           # create_branch: true
 
-          # Optional. Local and remote branch name where commit is going to be pushed to.
-          # Defaults to the current branch.
-          branch: master
+          # # Optional. Local and remote branch name where commit is going to be pushed to.
+          # # Defaults to the current branch.
+          # branch: new-feat
 
           # Optional. Options used by `git-commit`.
           # See https://git-scm.com/docs/git-commit#_options
@@ -132,7 +137,7 @@ jobs:
 
           # Optional. Prevents the shell from expanding filenames.
           # Details: https://www.gnu.org/software/bash/manual/html_node/Filename-Expansion.html
-          disable_globbing: false
+          disable_globbing: true
 
       # # open a PR if the MSRV has changed
       # - name: Create Pull Request
