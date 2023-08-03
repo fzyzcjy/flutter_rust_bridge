@@ -13,6 +13,8 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
+  OLD_MSRV: ""
+  NEW_MSRV: ""
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -39,9 +41,9 @@ jobs:
           toolchain: ${{ matrix.toolchain }}
           override: true
 
-      # set initial msrvs (.msrv, .nightly_msrv) as env vars
-      - name: Store initial MSRVs
-        run: echo "::set-env name=OLD_MSRV::$(cat tools/.${{ matrix.toolchain }}_msrv)"
+      # Store initial MSRV in memory (update OLD_MSRV)
+      - name: Store initial MSRV
+        run: echo "OLD_MSRV=$(cat .${{ matrix.toolchain }}_msrv)" >> $GITHUB_ENV
 
 
       # run the MSRV check (tools/{toolchain}_msrv.sh) for the current toolchain
@@ -52,7 +54,7 @@ jobs:
 
       # Store the new MSRV as an env var
       - name: Store new MSRV
-        run: echo "::set-env name=NEW_MSRV::$(cat .${{ matrix.toolchain }}_msrv)"
+        run: echo "NEW_MSRV=$(cat .${{ matrix.toolchain }}_msrv)" >> $GITHUB_ENV
 
 
       # If MSRV has not changed, exit early
@@ -63,7 +65,8 @@ jobs:
             exit 0
           fi
 
-      # add, commit, and push changes, if any
+      # Commit changes from these files:
+      # README.md, .github/workflows/ci.yml, .msrv,.nightly_msrv, clippy.toml
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
@@ -92,7 +95,7 @@ jobs:
           ### README.md
           ### .nightly_msrv
           ### .msrv
-          file_pattern: "{README.md,.github/workflows/ci.yml,.msrv,.nightly_msrv,clippy.toml}"
+          file_pattern: 'README.md .github/workflows/ci.yml .msrv .nightly_msrv clippy.toml'
 
           # # Optional. Local file path to the repository. Defaults to the root of the repository.
           # repository: .
