@@ -601,17 +601,9 @@ fn needs_freezed(ty: &IrType, ir_file: &IrFile) -> bool {
     match ty {
         EnumRef(_) => true,
         StructRef(st) => st.freezed,
-        SyncReturn(sync_return) => {
-            let mut need = false;
-            sync_return.visit_children_types(
-                &mut |child| {
-                    need = needs_freezed(child, ir_file);
-                    need
-                },
-                ir_file,
-            );
-
-            need
+        SyncReturn(sync) => {
+            let types = sync.clone().into_inner().distinct_types(ir_file);
+            types.iter().any(|child| needs_freezed(child, ir_file))
         }
         _ => false,
     }

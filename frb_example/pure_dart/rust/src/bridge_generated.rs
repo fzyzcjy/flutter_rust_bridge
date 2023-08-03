@@ -703,6 +703,21 @@ fn wire_handle_enum_parameter_impl(
         },
     )
 }
+fn wire_handle_enum_sync_freezed_impl(
+    value: impl Wire2Api<MyEnumFreezed> + UnwindSafe,
+) -> support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "handle_enum_sync_freezed",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_value = value.wire2api();
+            Ok(handle_enum_sync_freezed(api_value))
+        },
+    )
+}
 fn wire_handle_customized_struct_impl(
     port_: MessagePort,
     val: impl Wire2Api<Customized> + UnwindSafe,
@@ -3265,6 +3280,22 @@ impl support::IntoDart for MyEnum {
 }
 impl support::IntoDartExceptPrimitive for MyEnum {}
 impl rust2dart::IntoIntoDart<MyEnum> for MyEnum {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
+
+impl support::IntoDart for MyEnumFreezed {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::A(field0) => vec![0.into_dart(), field0.into_into_dart().into_dart()],
+            Self::B(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for MyEnumFreezed {}
+impl rust2dart::IntoIntoDart<MyEnumFreezed> for MyEnumFreezed {
     fn into_into_dart(self) -> Self {
         self
     }

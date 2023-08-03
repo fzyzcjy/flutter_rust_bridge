@@ -199,6 +199,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleEnumParameterConstMeta;
 
+  MyEnumFreezed handleEnumSyncFreezed({required MyEnumFreezed value, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleEnumSyncFreezedConstMeta;
+
   Future<void> handleCustomizedStruct({required Customized val, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleCustomizedStructConstMeta;
@@ -1405,6 +1409,16 @@ class MoreThanJustOneRawStringStruct {
 enum MyEnum {
   False,
   True,
+}
+
+@freezed
+sealed class MyEnumFreezed with _$MyEnumFreezed {
+  const factory MyEnumFreezed.a(
+    int field0,
+  ) = MyEnumFreezed_A;
+  const factory MyEnumFreezed.b(
+    String field0,
+  ) = MyEnumFreezed_B;
 }
 
 class MyNestedStruct {
