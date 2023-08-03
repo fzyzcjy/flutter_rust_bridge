@@ -1,3 +1,7 @@
+## 1.80.2
+
+* Fix and test for SyncReturn of mirrored type #1315 (thanks @MnlPhlp)
+
 ## 1.80.1
 
 * Manually bump proc-macro2 -> 1.0.66 #1306 (thanks @gutenfries)
