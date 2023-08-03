@@ -501,7 +501,7 @@ jobs:
 
       # cache cargo and rustup to reduce future build times as much as possible
       - name: cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             ~/.cargo

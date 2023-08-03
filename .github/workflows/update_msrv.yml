@@ -50,7 +50,7 @@ jobs:
 
 
       # Cache/Restore Cache cargo and rustup for faster subsequent runs
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: |
             ~/.cargo
