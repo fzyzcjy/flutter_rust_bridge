@@ -2578,6 +2578,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["value"],
       );
 
+  ApplicationSettings syncReturnMirror({dynamic hint}) {
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_return_mirror(),
+      parseSuccessData: _wire2api_application_settings,
+      constMeta: kSyncReturnMirrorConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncReturnMirrorConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_return_mirror",
+        argNames: [],
+      );
+
   Future<String> asStringMethodEvent({required Event that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_event(that);
     return _platform.executeNormal(FlutterRustBridgeTask(

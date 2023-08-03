@@ -858,6 +858,11 @@ pub extern "C" fn wire_test_tuple_2(port_: i64, value: *mut wire_list___record__
 }
 
 #[no_mangle]
+pub extern "C" fn wire_sync_return_mirror() -> support::WireSyncReturn {
+    wire_sync_return_mirror_impl()
+}
+
+#[no_mangle]
 pub extern "C" fn wire_as_string__method__Event(port_: i64, that: *mut wire_Event) {
     wire_as_string__method__Event_impl(port_, that)
 }

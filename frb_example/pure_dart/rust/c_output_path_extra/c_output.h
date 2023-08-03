@@ -825,6 +825,8 @@ void wire_test_tuple(int64_t port_, struct wire___record__String_i32 *value);
 
 void wire_test_tuple_2(int64_t port_, struct wire_list___record__String_i32 *value);
 
+WireSyncReturn wire_sync_return_mirror(void);
+
 void wire_as_string__method__Event(int64_t port_, struct wire_Event *that);
 
 void wire_sum__method__SumWith(int64_t port_, struct wire_SumWith *that, uint32_t y, uint32_t z);
@@ -1259,6 +1261,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_test_struct_with_enum);
     dummy_var ^= ((int64_t) (void*) wire_test_tuple);
     dummy_var ^= ((int64_t) (void*) wire_test_tuple_2);
+    dummy_var ^= ((int64_t) (void*) wire_sync_return_mirror);
     dummy_var ^= ((int64_t) (void*) wire_as_string__method__Event);
     dummy_var ^= ((int64_t) (void*) wire_sum__method__SumWith);
     dummy_var ^= ((int64_t) (void*) wire_new__static_method__ConcatenateWith);

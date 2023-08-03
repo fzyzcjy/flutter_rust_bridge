@@ -1350,6 +1350,11 @@ void main(List<String> args) async {
     expect(api.testTuple(), completion(('John', 0)));
     expect(api.testTuple(value: ('Bob', 42)), completion(('Hello Bob', 43)));
   });
+
+  test("sync return mirror", () {
+    final settings = api.syncReturnMirror();
+    testAppSettings(settings);
+  });
 }
 
 int _createGarbage() {

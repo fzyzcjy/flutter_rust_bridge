@@ -1691,3 +1691,7 @@ pub fn test_tuple(value: Option<(String, i32)>) -> (String, i32) {
 pub fn test_tuple_2(value: Vec<(String, i32)>) {
     drop(value)
 }
+
+pub fn sync_return_mirror() -> SyncReturn<ApplicationSettings> {
+    SyncReturn(external_lib::get_app_settings())
+}

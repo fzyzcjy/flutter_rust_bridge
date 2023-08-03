@@ -2301,6 +2301,16 @@ fn wire_test_tuple_2_impl(
         },
     )
 }
+fn wire_sync_return_mirror_impl() -> support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "sync_return_mirror",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || Ok(sync_return_mirror()),
+    )
+}
 fn wire_as_string__method__Event_impl(port_: MessagePort, that: impl Wire2Api<Event> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String>(
         WrapInfo {
