@@ -680,6 +680,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kTestTuple2ConstMeta;
 
+  ApplicationSettings syncReturnMirror({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSyncReturnMirrorConstMeta;
+
   Future<String> asStringMethodEvent({required Event that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kAsStringMethodEventConstMeta;

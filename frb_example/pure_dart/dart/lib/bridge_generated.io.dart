@@ -3821,6 +3821,14 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_test_tuple_2 =
       _wire_test_tuple_2Ptr.asFunction<void Function(int, ffi.Pointer<wire_list___record__String_i32>)>();
 
+  WireSyncReturn wire_sync_return_mirror() {
+    return _wire_sync_return_mirror();
+  }
+
+  late final _wire_sync_return_mirrorPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('wire_sync_return_mirror');
+  late final _wire_sync_return_mirror = _wire_sync_return_mirrorPtr.asFunction<WireSyncReturn Function()>();
+
   void wire_as_string__method__Event(
     int port_,
     ffi.Pointer<wire_Event> that,

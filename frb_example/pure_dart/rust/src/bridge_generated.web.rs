@@ -830,6 +830,11 @@ pub fn wire_test_tuple_2(port_: MessagePort, value: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_sync_return_mirror() -> support::WireSyncReturn {
+    wire_sync_return_mirror_impl()
+}
+
+#[wasm_bindgen]
 pub fn wire_as_string__method__Event(port_: MessagePort, that: JsValue) {
     wire_as_string__method__Event_impl(port_, that)
 }
