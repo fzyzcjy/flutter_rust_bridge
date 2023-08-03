@@ -66,7 +66,7 @@ jobs:
           fi
 
       # Commit changes from these files:
-      # README.md, .github/workflows/ci.yml, .msrv,.nightly_msrv, clippy.toml
+      # README.md, .github/workflows/ci.yml, .stable_msrv,.nightly_msrv, clippy.toml
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
@@ -94,8 +94,8 @@ jobs:
           ### clippy.toml
           ### README.md
           ### .nightly_msrv
-          ### .msrv
-          file_pattern: 'README.md .github/workflows/ci.yml .msrv .nightly_msrv clippy.toml'
+          ### .stable_msrv
+          file_pattern: 'README.md .github/workflows/ci.yml .stable_msrv .nightly_msrv clippy.toml'
 
           # # Optional. Local file path to the repository. Defaults to the root of the repository.
           # repository: .
