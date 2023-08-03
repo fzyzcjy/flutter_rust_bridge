@@ -68,11 +68,11 @@ done
 
 echo -e "\e[32mSUCCESS: Found Minimum Supported Rust Version: 1.$end_version\e[0m"
 
-echo -e "\e[34mINFO: Writing .msrv ...\e[0m"
+echo -e "\e[34mINFO: Writing tools/.stable_msrv ...\e[0m"
 
-echo -e "1.$end_version" >.msrv
+echo -e "1.$end_version" >tools/.stable_msrv
 
-echo -e "\e[32mSUCCESS: Successfully wrote .msrv\e[0m"
+echo -e "\e[32mSUCCESS: Successfully wrote tools/.stable_msrv\e[0m"
 
 echo -e "\e[34mINFO: Updating README.md\e[0m"
 
@@ -106,7 +106,7 @@ echo -e "\e[34mINFO: Updating .github/workflows/msrv.yml\e[0m"
 # find and update:
 # - 1.45 ### stable MSRV (DO NOT EDIT THIS LINE):
 
-sed -i.bak "s/- 1.[0-9]\+ ### stable MSRV (DO NOT EDIT THIS LINE):/- 1.$end_version ### stable MSRV (DO NOT EDIT THIS LINE):/g" .github/workflows/msrv.yml
+sed -i.bak "s/- 1.[0-9]\+ ### stable MSRV (DO NOT EDIT THIS LINE):/- 1.$end_version ### stable MSRV (DO NOT EDIT THIS LINE):/g" .github/workflows/ci.yml
 
 echo -e "\e[32mSUCCESS: Successfully updated .github/workflows/msrv.yml\e[0m"
 

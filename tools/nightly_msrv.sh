@@ -61,11 +61,11 @@ done
 
 echo -e "\e[32mSUCCESS: Found Minimum Supported Rust Version: nightly-$end_date\e[0m"
 
-echo -e "\e[34mINFO: Writing .nightly_msrv ...\e[0m"
+echo -e "\e[34mINFO: Writing tools/.nightly_msrv ...\e[0m"
 
-echo -e "nightly-$end_date" >.nightly_msrv
+echo -e "nightly-$end_date" >tools/.nightly_msrv
 
-echo -e "\e[32mSUCCESS: Successfully wrote .nightly_msrv\e[0m"
+echo -e "\e[32mSUCCESS: Successfully wrote tools/.nightly_msrv\e[0m"
 
 echo -e "\e[34mINFO: Updating README.md\e[0m"
 
@@ -91,7 +91,7 @@ echo -e "\e[34mINFO: Updating .github/workflows/msrv.yml\e[0m"
 # find and update:
 # - nightly-2023-06-28 ### nightly MSRV (DO NOT EDIT THIS LINE):
 
-sed -i.bak "s/- nightly-[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\} ### nightly MSRV (DO NOT EDIT THIS LINE):/- nightly-${end_date} ### nightly MSRV (DO NOT EDIT THIS LINE):/g" .github/workflows/msrv.yml
+sed -i.bak "s/- nightly-[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\} ### nightly MSRV (DO NOT EDIT THIS LINE):/- nightly-${end_date} ### nightly MSRV (DO NOT EDIT THIS LINE):/g" .github/workflows/ci.yml
 
 echo -e "\e[32mSUCCESS: Successfully updated .github/workflows/msrv.yml\e[0m"
 

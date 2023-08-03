@@ -477,3 +477,54 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: just ci_codegen
+
+  msrv:
+    name: test MSRV and specific problematic versions
+    runs-on: ubuntu-latest # as of now, there is no real reason to test on multiple OSs
+    strategy:
+      matrix:
+       rust_version:
+         - nightly              # latest nightly
+         - nightly-2023-06-28   # pre https://github.com/rust-lang/rust/issues/113152
+         - nightly-2023-07-26   # post https://github.com/rust-lang/rust/issues/113152
+         #
+         # DO NOT EDIT BELOW THIS LINE
+         #
+         - nightly-2022-07-15 ### nightly MSRV (DO NOT EDIT THIS LINE):
+         - 1.64 ### stable MSRV (DO NOT EDIT THIS LINE):
+         #
+         # DO NOT EDIT ABOVE THIS LINE
+         #
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ matrix.rust_version }}
+          components: rustfmt, clippy
+
+      # cache cargo and rustup to reduce future build times as much as possible
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo
+            ~/.rustup
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-
+
+      - uses: subosito/flutter-action@v2
+        with:
+          cache: true
+          channel: "stable"
+          flutter-version: 3.10.0
+          architecture: x64
+
+      - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: just install_ffigen_dependency
+      - run: just dart_pub_get dart_only
+      - run: just rust_build_and_test

@@ -1,0 +1,168 @@
+name: MSRV
+
+on:
+  push:
+    paths-ignore:
+      - "docs/**"
+      - "**/*.md"
+  pull_request:
+    paths-ignore:
+      - "docs/**"
+      - "**/*.md"
+  workflow_dispatch: {}
+
+env:
+  CARGO_TERM_COLOR: always
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check_msrv:
+    name: Check MSRV && update accordingly
+    strategy:
+      matrix:
+        toolchain:
+          - stable
+          - nightly
+
+    runs-on: ubuntu-latest
+
+    steps:
+      # checkout sources
+      - uses: actions/checkout@v2
+
+      # ensure rustup is installed
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: ${{ matrix.toolchain }}
+          override: true
+
+      # set initial msrvs (.msrv, .nightly_msrv) as env vars
+      - name: Store initial MSRVs
+        run: echo "::set-env name=OLD_MSRV::$(cat tools/.${{ matrix.toolchain }}_msrv)"
+
+
+      # run the MSRV check (tools/{toolchain}_msrv.sh) for the current toolchain
+      - name: Check MSRV
+        run: |
+          ./tools/${{ matrix.toolchain }}_msrv.sh
+
+
+      # Store the new MSRV as an env var
+      - name: Store new MSRV
+        run: echo "::set-env name=NEW_MSRV::$(cat .${{ matrix.toolchain }}_msrv)"
+
+
+      # If MSRV has not changed, exit early
+      - name: Exit early if MSRV has not changed
+        run: |
+          if [ "${{ env.OLD_MSRV }}" = "${{ env.NEW_MSRV }}" ]; then
+            echo "MSRV has not changed, exiting early"
+            exit 0
+          fi
+
+      # add, commit, and push changes, if any
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          # Optional. Commit message for the created commit.
+          # Defaults to "Apply automatic changes"
+          commit_message: Update MSRV for toolchain ${{ matrix.toolchain }} (`${{ env.OLD_MSRV }}` -> `${{ env.NEW_MSRV }}`)
+
+          # # Optional. Create given branch name in local and remote repository.
+          # create_branch: true
+
+          # # Optional. Local and remote branch name where commit is going to be pushed to.
+          # # Defaults to the current branch.
+          # branch: update_msrv
+
+          # Optional. Options used by `git-commit`.
+          # See https://git-scm.com/docs/git-commit#_options
+          commit_options: "--no-verify --signoff"
+
+          # Optional glob pattern of files which should be added to the commit.
+          # Defaults to all (.)
+          #
+          ### We only want to track the following files:
+          ###
+          ### .github/workflows/ci.yml
+          ### clippy.toml
+          ### README.md
+          ### .nightly_msrv
+          ### .msrv
+          file_pattern: "{README.md,.github/workflows/ci.yml,.msrv,.nightly_msrv,clippy.toml}"
+
+          # # Optional. Local file path to the repository. Defaults to the root of the repository.
+          # repository: .
+
+          # # Optional commit user and author settings
+          # commit_user_name: My GitHub Actions Bot # defaults to "github-actions[bot]"
+          # commit_user_email: my-github-actions-bot@example.org # defaults to "41898282+github-actions[bot]@users.noreply.github.com"
+          # commit_author: Author <actions@github.com> # defaults to author of the commit that triggered the run
+
+          # # Optional. Tag name being created in the local repository and
+          # # pushed to remote repository and defined branch.
+          # tagging_message: 'v1.0.0'
+
+          # # Optional. Options used by `git-add`.
+          # # See https://git-scm.com/docs/git-add#_options
+          # add_options: '-u'
+
+          # # Optional. Options used by `git-push`.
+          # # See https://git-scm.com/docs/git-push#_options
+          # push_options: '--force'
+
+          # Optional. Disable dirty check and always try to create a commit and push
+          skip_dirty_check: true
+
+          # # Optional. Option used by `git-status` to determine if the repository is
+          # # dirty. See https://git-scm.com/docs/git-status#_options
+          # status_options: '--untracked-files=no'
+
+          # Optional. Skip internal call to `git fetch`
+          skip_fetch: true
+
+          # Optional. Skip internal call to `git checkout`
+          skip_checkout: false
+
+          # Optional. Prevents the shell from expanding filenames.
+          # Details: https://www.gnu.org/software/bash/manual/html_node/Filename-Expansion.html
+          disable_globbing: false
+
+      # # open a PR if the MSRV has changed
+      # - name: Create Pull Request
+      #   uses: peter-evans/create-pull-request@v5
+      #   with:
+      #     token: ${{ secrets.PAT }}
+      #     commit-message: Update MSRV
+      #     committer: GitHub <noreply@github.com>
+      #     author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+      #     signoff: false
+      #     branch: msrv
+      #     delete-branch: false
+      #     title: "(chore): Update MSRV"
+      #     body: |
+      #       Update MSRV
+      #       - Updated MSRV for ${{ matrix.toolchain }} on ${{ matrix.os }} (`${{ env.OLD_MSRV }}` -> `${{ env.NEW_MSRV }}`)
+      #       - Auto-generated by [create-pull-request][1]
+      #
+      #         [1]: https://github.com/peter-evans/create-pull-request
+      #     labels: |
+      #       msrv
+      #     assignees: fzyzcjy
+      #     reviewers: fzyzcjy
+      #     milestone: 1
+      #     draft: false
+
+      # Cache cargo and rustup for faster subsequent runs
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo
+            ~/.rustup
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-
+
