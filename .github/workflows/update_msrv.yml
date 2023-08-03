@@ -46,7 +46,7 @@ jobs:
 
       # Store initial MSRV in memory (update OLD_MSRV)
       - name: Store initial MSRV
-        run: echo "OLD_MSRV=$(cat .${{ matrix.toolchain }}_msrv)" >> $GITHUB_ENV
+        run: echo "OLD_MSRV=$(cat tools/.${{ matrix.toolchain }}_msrv)" >> $GITHUB_ENV
 
 
       # run the MSRV check (tools/{toolchain}_msrv.sh) for the current toolchain
@@ -57,7 +57,7 @@ jobs:
 
       # Store the new MSRV as an env var
       - name: Store new MSRV
-        run: echo "NEW_MSRV=$(cat .${{ matrix.toolchain }}_msrv)" >> $GITHUB_ENV
+        run: echo "NEW_MSRV=$(cat tools/.${{ matrix.toolchain }}_msrv)" >> $GITHUB_ENV
 
 
       # If MSRV has not changed, exit early
