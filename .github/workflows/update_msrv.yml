@@ -36,7 +36,18 @@ jobs:
 
     steps:
       # checkout sources
-      - uses: actions/checkout@v3
+      # By default, actions/checkout will checkout a PR in detatched HEAD state.
+      - if: github.event_name == 'pull_request'
+        name: Checkout (PR)
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - if: github.event_name == 'push'
+        name: Checkout (Push)
+        uses: actions/checkout@v3
+
 
       # Cache/Restore Cache cargo and rustup for faster subsequent runs
       - uses: actions/cache@v2

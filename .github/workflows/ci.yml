@@ -499,13 +499,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: dtolnay/rust-toolchain@stable
-        with:
-          toolchain: ${{ matrix.rust_version }}
-          components: rustfmt, clippy
-
       # cache cargo and rustup to reduce future build times as much as possible
-      - uses: actions/cache@v2
+      - name: cache
+        uses: actions/cache@v2
         with:
           path: |
             ~/.cargo
@@ -513,6 +509,14 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: |
             ${{ runner.os }}-cargo-
+
+      # Check cache, then insdtall if not found
+      - if: steps.cache.outputs.cache-hit != 'true'
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ matrix.rust_version }}
+          components: rustfmt, clippy
+
 
       - uses: subosito/flutter-action@v2
         with:
