@@ -1,6 +1,7 @@
 ## 1.80.2
 
 * Fix and test for SyncReturn of mirrored type #1315 (thanks @MnlPhlp)
+* Fix better check for whether the file need to generate freezed structs/enums #1312 (thanks @SiongSng)
 
 ## 1.80.1
 
