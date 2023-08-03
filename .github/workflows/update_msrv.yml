@@ -22,7 +22,7 @@ concurrency:
 
 jobs:
   check_msrv:
-    name: Check MSRV && update accordingly
+    name: Check MSRV
     strategy:
       matrix:
         toolchain:
