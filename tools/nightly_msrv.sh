@@ -44,7 +44,7 @@ end_date="$msrv"
 # use binary search to find the earliest compatible version of rust
 while [[ "$start_date" != "$end_date" ]]; do
 	# Display the progress: ruled-out count / total count
-	echo -e "\e[36mINFO: Searching between $start_date and $end_date\e[0m"
+	echo -e "\e[36mINFO: Searching between nightly releases $start_date and $end_date\e[0m"
 
 	# Calculate the midpoint date
 	mid_date=$(date -d "$start_date + $((($(date -d "$end_date" +%s) - $(date -d "$start_date" +%s)) / 2)) seconds" +"%Y-%m-%d")
@@ -73,7 +73,7 @@ echo -e "\e[34mINFO: Updating README.md\e[0m"
 # https://img.shields.io/badge/nightly_msrv-nightly--2021--08--04+-orange.svg
 
 # replace single dashes with double dashes
-sed -i.bak "s/nightly_msrv-nightly--.*+-orange.svg/nightly_msrv-nightly--${end_date//-/--}+-orange.svg/g" README.md
+sed -i.bak "s/nightly_msrv-nightly--[0-9]\{4\}--[0-9]\{2\}--[0-9]\{2\}+-orange.svg/nightly_msrv-nightly--${end_date//-/--}+-orange.svg/g" README.md
 
 echo -e "\e[32mSUCCESS: Successfully updated README.md\e[0m"
 

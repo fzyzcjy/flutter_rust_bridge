@@ -51,7 +51,7 @@ end_version=$(curl https://api.github.com/repos/rust-lang/rust/releases/latest |
 # use binary search to find the earliest compatible version of rust
 while [[ "$start_version" -lt "$end_version" ]]; do
 	# Display the progress: ruled-out count / total count
-	echo -e "\e[36mINFO: Searching between $start_version and $end_version\e[0m"
+	echo -e "\e[36mINFO: Searching between versions 1.$start_version and 1.$end_version\e[0m"
 
 	# Calculate the midpoint version
 	mid_version="$(((start_version + end_version) / 2))"
