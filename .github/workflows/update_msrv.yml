@@ -77,9 +77,9 @@ jobs:
           # # Optional. Create given branch name in local and remote repository.
           # create_branch: true
 
-          # # Optional. Local and remote branch name where commit is going to be pushed to.
-          # # Defaults to the current branch.
-          # branch: update_msrv
+          # Optional. Local and remote branch name where commit is going to be pushed to.
+          # Defaults to the current branch.
+          branch: master
 
           # Optional. Options used by `git-commit`.
           # See https://git-scm.com/docs/git-commit#_options
