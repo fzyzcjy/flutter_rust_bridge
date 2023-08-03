@@ -1,10 +1,11 @@
-use std::collections::HashSet;
+use std::{collections::HashSet, path::PathBuf};
 
 use std::fmt::Display;
 use std::fs;
 use std::hash::Hash;
 use std::path::Path;
 
+use crate::commands::cargo_expand;
 use crate::utils::consts::DART_KEYWORDS;
 use anyhow::anyhow;
 use convert_case::{Case, Casing};
@@ -183,4 +184,18 @@ macro_rules! ir {
 
         $crate::ir!($($rest)*);
     }
+}
+
+pub fn read_rust_file(path: &PathBuf) -> String {
+    let module = match path.file_name().and_then(|e| e.to_str()).unwrap_or("") {
+        "mod.rs" => path
+            .parent()
+            .and_then(|p| p.file_name())
+            .and_then(|f| f.to_str()),
+        "lib.rs" => None,
+        "" => None,
+        _ => path.file_stem().and_then(|f| f.to_str()),
+    };
+    let dir = path.directory_name_str().unwrap();
+    cargo_expand(dir, module)
 }

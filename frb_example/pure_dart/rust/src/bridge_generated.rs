@@ -2311,6 +2311,16 @@ fn wire_sync_return_mirror_impl() -> support::WireSyncReturn {
         move || Ok(sync_return_mirror()),
     )
 }
+fn wire_macro_struct_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, MacroStruct>(
+        WrapInfo {
+            debug_name: "macro_struct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(macro_struct()),
+    )
+}
 fn wire_as_string__method__Event_impl(port_: MessagePort, that: impl Wire2Api<Event> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String>(
         WrapInfo {
@@ -2580,7 +2590,7 @@ const _: fn() = || {
     }
     {
         let RawStringMirrored = None::<RawStringMirrored>.unwrap();
-        let _: String = RawStringMirrored.r#value;
+        let _: String = RawStringMirrored.value;
     }
     {
         let Sequences_ = None::<Sequences>.unwrap();
@@ -3190,6 +3200,18 @@ impl rust2dart::IntoIntoDart<Log2> for Log2 {
     }
 }
 
+impl support::IntoDart for MacroStruct {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.data.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for MacroStruct {}
+impl rust2dart::IntoIntoDart<MacroStruct> for MacroStruct {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
+
 impl support::IntoDart for Measure {
     fn into_dart(self) -> support::DartAbi {
         match self {
@@ -3485,7 +3507,7 @@ impl rust2dart::IntoIntoDart<RawStringItemStruct> for RawStringItemStruct {
 
 impl support::IntoDart for mirror_RawStringMirrored {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.0.r#value.into_into_dart().into_dart()].into_dart()
+        vec![self.0.value.into_into_dart().into_dart()].into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for mirror_RawStringMirrored {}

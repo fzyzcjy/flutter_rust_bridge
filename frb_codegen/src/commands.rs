@@ -245,3 +245,27 @@ pub fn build_runner(dart_root: &str) -> Result {
     }
     Ok(())
 }
+
+pub fn cargo_expand(path: &str, module: Option<&str>) -> String {
+    info!("Running cargo expand in {path}");
+    let mut args = vec![PathBuf::from("expand"), PathBuf::from("--theme=none")];
+    if let Some(module) = module {
+        args.push(PathBuf::from(module));
+    }
+    match execute_command("cargo", &args, Some(path)) {
+        Ok(output) => {
+            let output = String::from_utf8(output.stdout).unwrap();
+            if output.is_empty() {
+                panic!("cargo expand returned empty output");
+            }
+            // remove first and last line
+            let mut output = output.lines();
+            output.next();
+            output.next_back();
+            output.collect::<Vec<_>>().join("\n")
+        }
+        Err(e) => {
+            panic!("Could not expand rust code at path {}: {}\n", path, e);
+        }
+    }
+}

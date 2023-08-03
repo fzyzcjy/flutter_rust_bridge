@@ -1358,6 +1358,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* List<dynamic> */ wire_sync_return_mirror();
 
+  external dynamic /* void */ wire_macro_struct(NativePortType port_);
+
   external dynamic /* void */ wire_as_string__method__Event(NativePortType port_, List<dynamic> that);
 
   external dynamic /* void */ wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
@@ -1814,6 +1816,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_test_tuple_2(NativePortType port_, List<dynamic> value) => wasmModule.wire_test_tuple_2(port_, value);
 
   dynamic /* List<dynamic> */ wire_sync_return_mirror() => wasmModule.wire_sync_return_mirror();
+
+  void wire_macro_struct(NativePortType port_) => wasmModule.wire_macro_struct(port_);
 
   void wire_as_string__method__Event(NativePortType port_, List<dynamic> that) =>
       wasmModule.wire_as_string__method__Event(port_, that);

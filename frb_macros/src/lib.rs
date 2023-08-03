@@ -36,6 +36,13 @@ fn remove_marker_attr(input: TokenStream, ident: &str) -> TokenStream {
 ///
 /// For what it can do, have a look at the documentation website.
 #[proc_macro_attribute]
-pub fn frb(_: TokenStream, item: TokenStream) -> TokenStream {
+pub fn frb(attribute: TokenStream, item: TokenStream) -> TokenStream {
+    if attribute.to_string().contains("mirror(") {
+        let mirrored = attribute
+            .to_string()
+            .replace("mirror(", "")
+            .replace(")", "");
+        return format!("/// mirror({mirrored})\n{item}").parse().unwrap();
+    }
     remove_marker_attr(item, "frb")
 }

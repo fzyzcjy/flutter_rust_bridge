@@ -90,15 +90,12 @@ pub(crate) fn execute_command<'a>(
     let args_display = args.iter().map(|path| path.to_string_lossy()).join(" ");
     let mut cmd = Command::new(bin);
     cmd.args(args);
-    if log_enabled!(log::Level::Info) {
-        cmd.stdout(Stdio::inherit()).stderr(Stdio::inherit());
-    }
 
     if let Some(current_dir) = current_dir {
         cmd.current_dir(current_dir);
     }
     if log_enabled!(log::Level::Info) {
-        cmd.stdout(Stdio::inherit()).stderr(Stdio::inherit());
+        cmd.stderr(Stdio::inherit());
     }
 
     debug!(

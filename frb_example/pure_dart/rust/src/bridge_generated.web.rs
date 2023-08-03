@@ -835,6 +835,11 @@ pub fn wire_sync_return_mirror() -> support::WireSyncReturn {
 }
 
 #[wasm_bindgen]
+pub fn wire_macro_struct(port_: MessagePort) {
+    wire_macro_struct_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_as_string__method__Event(port_: MessagePort, that: JsValue) {
     wire_as_string__method__Event_impl(port_, that)
 }

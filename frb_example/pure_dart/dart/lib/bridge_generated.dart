@@ -2593,6 +2593,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<MacroStruct> macroStruct({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_macro_struct(port_),
+      parseSuccessData: _wire2api_macro_struct,
+      constMeta: kMacroStructConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kMacroStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "macro_struct",
+        argNames: [],
+      );
+
   Future<String> asStringMethodEvent({required Event that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_event(that);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -3529,6 +3544,14 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return Log2(
       key: _wire2api_u32(arr[0]),
       value: _wire2api_String(arr[1]),
+    );
+  }
+
+  MacroStruct _wire2api_macro_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return MacroStruct(
+      data: _wire2api_i32(arr[0]),
     );
   }
 

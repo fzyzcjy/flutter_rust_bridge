@@ -9,7 +9,6 @@ import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
-import 'package:meta/meta.dart' as meta;
 import 'package:collection/collection.dart';
 
 part 'bridge_definitions.freezed.dart';
@@ -684,6 +683,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kSyncReturnMirrorConstMeta;
 
+  Future<MacroStruct> macroStruct({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kMacroStructConstMeta;
+
   Future<String> asStringMethodEvent({required Event that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kAsStringMethodEventConstMeta;
@@ -974,6 +977,7 @@ sealed class Abc with _$Abc {
   ) = Abc_JustInt;
 }
 
+/// mirror_marker(ApplicationEnv)
 class ApplicationEnv {
   final List<ApplicationEnvVar> vars;
 
@@ -982,6 +986,7 @@ class ApplicationEnv {
   });
 }
 
+/// mirror_marker(ApplicationEnvVar)
 class ApplicationEnvVar {
   final String field0;
   final bool field1;
@@ -1004,11 +1009,13 @@ sealed class ApplicationMessage with _$ApplicationMessage {
   const factory ApplicationMessage.exit() = ApplicationMessage_Exit;
 }
 
+/// mirror_marker(ApplicationMode)
 enum ApplicationMode {
   standalone,
   embedded,
 }
 
+/// mirror_marker(ApplicationSettings)
 class ApplicationSettings {
   final String name;
   final String version;
@@ -1131,9 +1138,9 @@ class ContainsMirroredSubStruct {
 
 class Customized {
   final String finalField;
-  String? nonFinalField;
+  final String? nonFinalField;
 
-  Customized({
+  const Customized({
     required this.finalField,
     this.nonFinalField,
   });
@@ -1204,14 +1211,17 @@ sealed class EnumOpaque with _$EnumOpaque {
   ) = EnumOpaque_RwLock;
 }
 
-@freezed
-class Event with _$Event {
-  const Event._();
-  const factory Event({
-    required FlutterRustBridgeExampleSingleBlockTest bridge,
-    required String address,
-    required String payload,
-  }) = _Event;
+class Event {
+  final FlutterRustBridgeExampleSingleBlockTest bridge;
+  final String address;
+  final String payload;
+
+  const Event({
+    required this.bridge,
+    required this.address,
+    required this.payload,
+  });
+
   Future<String> asString({dynamic hint}) => bridge.asStringMethodEvent(
         that: this,
       );
@@ -1307,27 +1317,28 @@ sealed class KitchenSink with _$KitchenSink {
   const factory KitchenSink.empty() = KitchenSink_Empty;
   const factory KitchenSink.primitives({
     /// Dart field comment
-    @Default(-1) int int32,
+    required int int32,
     required double float64,
     required bool boolean,
   }) = KitchenSink_Primitives;
   const factory KitchenSink.nested(
-    int field0, [
-    @Default(KitchenSink.empty()) KitchenSink field1,
-  ]) = KitchenSink_Nested;
+    int field0,
+    KitchenSink field1,
+  ) = KitchenSink_Nested;
   const factory KitchenSink.optional([
     /// Comment on anonymous field
-    @Default(-1) int? field0,
+    int? field0,
     int? field1,
   ]) = KitchenSink_Optional;
   const factory KitchenSink.buffer(
     Uint8List field0,
   ) = KitchenSink_Buffer;
-  const factory KitchenSink.enums([
-    @Default(Weekdays.sunday) Weekdays field0,
-  ]) = KitchenSink_Enums;
+  const factory KitchenSink.enums(
+    Weekdays field0,
+  ) = KitchenSink_Enums;
 }
 
+/// mirror_marker(ListOfNestedRawStringMirrored)
 class ListOfNestedRawStringMirrored {
   final List<NestedRawStringMirrored> raw;
 
@@ -1353,6 +1364,14 @@ class Log2 {
   const Log2({
     required this.key,
     required this.value,
+  });
+}
+
+class MacroStruct {
+  final int data;
+
+  const MacroStruct({
+    required this.data,
   });
 }
 
@@ -1427,12 +1446,14 @@ class MySize {
   });
 }
 
-@freezed
-class MySizeFreezed with _$MySizeFreezed {
-  const factory MySizeFreezed({
-    required int width,
-    required int height,
-  }) = _MySizeFreezed;
+class MySizeFreezed {
+  final int width;
+  final int height;
+
+  const MySizeFreezed({
+    required this.width,
+    required this.height,
+  });
 }
 
 class MyStreamEntry {
@@ -1465,6 +1486,7 @@ class MyTreeNode {
   });
 }
 
+/// mirror_marker(NestedRawStringMirrored)
 class NestedRawStringMirrored {
   final RawStringMirrored raw;
 
@@ -1494,11 +1516,12 @@ class Note {
   final String body;
 
   const Note({
-    this.day = Weekdays.sunday,
+    required this.day,
     required this.body,
   });
 }
 
+/// mirror_marker(Numbers, Sequences)
 class Numbers {
   final Int32List field0;
 
@@ -1557,6 +1580,7 @@ class RawStringItemStruct {
   });
 }
 
+/// mirror_marker(RawStringMirrored)
 class RawStringMirrored {
   final String value;
 
@@ -1565,6 +1589,7 @@ class RawStringMirrored {
   });
 }
 
+/// mirror_marker(Numbers, Sequences)
 class Sequences {
   final Int32List field0;
 
@@ -1678,12 +1703,12 @@ class U8Array8 extends NonGrowableListView<int> {
 }
 
 /// Example for @freezed and @meta.immutable
-@freezed
-@meta.immutable
-class UserId with _$UserId {
-  const factory UserId({
-    @Default(0) int value,
-  }) = _UserId;
+class UserId {
+  final int value;
+
+  const UserId({
+    required this.value,
+  });
 }
 
 class VecOfPrimitivePack {
