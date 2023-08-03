@@ -7,21 +7,24 @@ pub fn extract_mirror_marker(attrs: &[Attribute]) -> Vec<Path> {
         .iter()
         .filter(|attr| attr.path().is_ident("doc"))
         .for_each(|attr| {
-            if let Meta::NameValue(MetaNameValue { value, .. }) = &attr.meta {
-                if let Expr::Lit(ExprLit { lit, .. }) = value {
-                    if let Lit::Str(lit) = lit {
-                        let comment = lit.value();
-                        if let Some(mirrored) = comment
-                            .trim()
-                            .strip_prefix("mirror_marker(")
-                            .and_then(|c| c.strip_suffix(")"))
-                        {
-                            let mirror_paths = mirrored
-                                .split(',')
-                                .map(|p| Path::from(syn::parse_str::<Path>(p).unwrap()));
-                            paths.extend(mirror_paths);
-                        }
-                    }
+            if let Meta::NameValue(MetaNameValue {
+                value:
+                    Expr::Lit(ExprLit {
+                        lit: Lit::Str(lit), ..
+                    }),
+                ..
+            }) = &attr.meta
+            {
+                let comment = lit.value();
+                if let Some(mirrored) = comment
+                    .trim()
+                    .strip_prefix("mirror(")
+                    .and_then(|c| c.strip_suffix(')'))
+                {
+                    let mirror_paths = mirrored
+                        .split(',')
+                        .map(|p| syn::parse_str::<Path>(p).unwrap());
+                    paths.extend(mirror_paths);
                 }
             }
         });

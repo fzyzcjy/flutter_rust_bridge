@@ -41,7 +41,7 @@ pub fn frb(attribute: TokenStream, item: TokenStream) -> TokenStream {
         let mirrored = attribute
             .to_string()
             .replace("mirror(", "")
-            .replace(")", "");
+            .replace(')', "");
         return format!("/// mirror({mirrored})\n{item}").parse().unwrap();
     }
     remove_marker_attr(item, "frb")

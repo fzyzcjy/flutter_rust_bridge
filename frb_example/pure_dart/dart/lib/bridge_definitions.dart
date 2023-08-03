@@ -977,7 +977,7 @@ sealed class Abc with _$Abc {
   ) = Abc_JustInt;
 }
 
-/// mirror_marker(ApplicationEnv)
+/// mirror(ApplicationEnv)
 class ApplicationEnv {
   final List<ApplicationEnvVar> vars;
 
@@ -986,7 +986,7 @@ class ApplicationEnv {
   });
 }
 
-/// mirror_marker(ApplicationEnvVar)
+/// mirror(ApplicationEnvVar)
 class ApplicationEnvVar {
   final String field0;
   final bool field1;
@@ -1009,13 +1009,13 @@ sealed class ApplicationMessage with _$ApplicationMessage {
   const factory ApplicationMessage.exit() = ApplicationMessage_Exit;
 }
 
-/// mirror_marker(ApplicationMode)
+/// mirror(ApplicationMode)
 enum ApplicationMode {
   standalone,
   embedded,
 }
 
-/// mirror_marker(ApplicationSettings)
+/// mirror(ApplicationSettings)
 class ApplicationSettings {
   final String name;
   final String version;
@@ -1338,7 +1338,7 @@ sealed class KitchenSink with _$KitchenSink {
   ) = KitchenSink_Enums;
 }
 
-/// mirror_marker(ListOfNestedRawStringMirrored)
+/// mirror(ListOfNestedRawStringMirrored)
 class ListOfNestedRawStringMirrored {
   final List<NestedRawStringMirrored> raw;
 
@@ -1486,7 +1486,7 @@ class MyTreeNode {
   });
 }
 
-/// mirror_marker(NestedRawStringMirrored)
+/// mirror(NestedRawStringMirrored)
 class NestedRawStringMirrored {
   final RawStringMirrored raw;
 
@@ -1521,7 +1521,7 @@ class Note {
   });
 }
 
-/// mirror_marker(Numbers, Sequences)
+/// mirror(Numbers, Sequences)
 class Numbers {
   final Int32List field0;
 
@@ -1580,7 +1580,7 @@ class RawStringItemStruct {
   });
 }
 
-/// mirror_marker(RawStringMirrored)
+/// mirror(RawStringMirrored)
 class RawStringMirrored {
   final String value;
 
@@ -1589,7 +1589,7 @@ class RawStringMirrored {
   });
 }
 
-/// mirror_marker(Numbers, Sequences)
+/// mirror(Numbers, Sequences)
 class Sequences {
   final Int32List field0;
 

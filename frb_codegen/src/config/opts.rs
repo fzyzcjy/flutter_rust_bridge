@@ -2,7 +2,6 @@ use crate::ir::IrFile;
 use crate::parser::{self, ParserResult};
 use crate::utils::misc::{read_rust_file, BlockIndex};
 use convert_case::{Case, Casing};
-use std::fs;
 use std::path::{Path, PathBuf};
 
 /// Parsed configs, mainly used for internal logic
