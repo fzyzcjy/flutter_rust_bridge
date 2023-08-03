@@ -31,9 +31,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
-
     steps:
       # checkout sources
       # By default, actions/checkout will checkout a PR in detatched HEAD state.
