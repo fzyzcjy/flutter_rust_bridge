@@ -95,8 +95,7 @@ jobs:
 
       # Commit changes from these files:
       # README.md, .github/workflows/ci.yml, .stable_msrv,.nightly_msrv, clippy.toml
-      - if: github.event_name != 'pull_request'
-        name: Commit MSRV changes (Push)
+      - name: Commit MSRV changes
         uses: EndBug/add-and-commit@v9
         with:
           default_author: github_actions
