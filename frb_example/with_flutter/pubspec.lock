@@ -5,18 +5,18 @@ packages:
     dependency: transitive
     description:
       name: _fe_analyzer_shared
-      sha256: ae92f5d747aee634b87f89d9946000c2de774be1d6ac3e58268224348cd0101a
+      sha256: "0816708f5fbcacca324d811297153fe3c8e047beb5c6752e12292d2974c17045"
       url: "https://pub.dev"
     source: hosted
-    version: "61.0.0"
+    version: "62.0.0"
   analyzer:
     dependency: transitive
     description:
       name: analyzer
-      sha256: ea3d8652bda62982addfd92fdc2d0214e5f82e43325104990d4f4c4a2a313562
+      sha256: "21862995c9932cd082f89d72ae5f5e2c110d1a0204ad06e4ebaee8307b76b834"
       url: "https://pub.dev"
     source: hosted
-    version: "5.13.0"
+    version: "6.0.0"
   archive:
     dependency: transitive
     description:
@@ -193,6 +193,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  dart_internal:
+    dependency: transitive
+    description:
+      name: dart_internal
+      sha256: "689dccc3d5f62affd339534cca548dce12b3a6b32f0f10861569d3025efc0567"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.9"
   dart_style:
     dependency: transitive
     description:
@@ -275,10 +283,10 @@ packages:
     dependency: "direct dev"
     description:
       name: freezed
-      sha256: "2df89855fe181baae3b6d714dc3c4317acf4fccd495a6f36e5e00f24144c6c3b"
+      sha256: "83462cfc33dc9680533a7f3a4a6ab60aa94f287db5f4ee6511248c22833c497f"
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.1"
+    version: "2.4.2"
   freezed_annotation:
     dependency: "direct main"
     description:
