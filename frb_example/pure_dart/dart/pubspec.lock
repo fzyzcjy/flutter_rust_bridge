@@ -596,10 +596,10 @@ packages:
     dependency: "direct main"
     description:
       name: vm_service
-      sha256: e7fb6c2282f7631712b69c19d1bff82f3767eea33a2321c14fa59ad67ea391c7
+      sha256: "0fae432c85c4ea880b33b497d32824b97795b04cdaa74d270219572a1f50268d"
       url: "https://pub.dev"
     source: hosted
-    version: "9.4.0"
+    version: "11.9.0"
   watcher:
     dependency: transitive
     description:
