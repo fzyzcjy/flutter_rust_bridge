@@ -41,7 +41,7 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
 
-      - if: github.event_name == 'push'
+      - if: github.event_name != 'pull_request'
         name: Checkout (Push)
         uses: actions/checkout@v3
 
@@ -89,7 +89,8 @@ jobs:
 
       # Commit changes from these files:
       # README.md, .github/workflows/ci.yml, .stable_msrv,.nightly_msrv, clippy.toml
-      - name: Commit changes
+      - if: github.event_name != 'pull_request'
+        name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
           default_author: github_actions
@@ -100,4 +101,13 @@ jobs:
             tools/.nightly_msrv
             clippy.toml
             README.md
+
+      # If in a PR, create a comment and block merging until comment is resolved
+      - uses: zt4ff/auto-commmenter@v2
+        with:
+          type: custom
+          body: |
+            # MSRV has changed
+            The MSRV has changed from `${{ env.OLD_MSRV }}` to `${{ env.NEW_MSRV }}`.
+            Please review the changes and merge if they are acceptable.
 
