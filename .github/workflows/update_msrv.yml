@@ -31,6 +31,12 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+
+
     steps:
       # checkout sources
       # By default, actions/checkout will checkout a PR in detatched HEAD state.
@@ -105,10 +111,10 @@ jobs:
       # If in a PR, create a comment and block merging until comment is resolved
       - if: github.event_name == 'pull_request'
         name: Comment MSRV changes (PR)
-        uses: zt4ff/auto-commenter@v2
+        uses: alexrogalskiy/github-action-issue-commenter@master
         with:
-          type: custom
-          body: |
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          message: |
             # MSRV has changed
             The MSRV has changed from `${{ env.OLD_MSRV }}` to `${{ env.NEW_MSRV }}`.
             Please review the changes and merge if they are acceptable.
