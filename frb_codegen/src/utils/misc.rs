@@ -198,13 +198,13 @@ pub fn read_rust_file(path: &PathBuf) -> String {
         _ => path.file_stem().and_then(|f| f.to_str()),
     };
     let dir = path.directory_name_str().unwrap();
+    let dir = dir.strip_suffix("/src").unwrap_or(dir);
     let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
-    if manifest_dir.len() > 0 && dir.contains(&manifest_dir) {
-        // if System::new_all().processes_by_name("cargo").count() > 0 {
+    if manifest_dir.len() > 0 && dir == manifest_dir {
         warn!(
-            "skipping cargo expand because cargo is already running and would block cargo-expand. This might lead to errors if there are macros in your api definition."
+            "can not run cargo expand on {dir} because cargo is already running and would block cargo-expand. This might cause errors if your api contains macros."
         );
-        return fs::read_to_string(path).expect("file must be readable");
+        return fs::read_to_string(path).unwrap_or_default();
     }
     cargo_expand(dir, module)
 }
