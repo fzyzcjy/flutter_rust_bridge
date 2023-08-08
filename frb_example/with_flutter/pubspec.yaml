@@ -37,7 +37,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.5
   freezed_annotation: ^2.1.0
-  ffi: ^2.0.1
+  ffi: ^2.1.0
 
 dev_dependencies:
   flutter_test:
