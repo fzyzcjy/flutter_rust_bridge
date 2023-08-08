@@ -1,14 +1,15 @@
 use std::{collections::HashSet, path::PathBuf};
 
 use std::fmt::Display;
-use std::fs;
 use std::hash::Hash;
 use std::path::Path;
+use std::{env, fs};
 
 use crate::commands::cargo_expand;
 use crate::utils::consts::DART_KEYWORDS;
 use anyhow::anyhow;
 use convert_case::{Case, Casing};
+use log::warn;
 use pathdiff::diff_paths;
 
 pub fn mod_from_rust_path(code_path: &str, crate_path: &str) -> String {
@@ -197,5 +198,13 @@ pub fn read_rust_file(path: &PathBuf) -> String {
         _ => path.file_stem().and_then(|f| f.to_str()),
     };
     let dir = path.directory_name_str().unwrap();
+    let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
+    if dir.contains(&manifest_dir) {
+        // if System::new_all().processes_by_name("cargo").count() > 0 {
+        warn!(
+            "skipping cargo expand because cargo is already running and would block cargo-expand. This might lead to errors if there are macros in your api definition."
+        );
+        return fs::read_to_string(path).expect("file must be readable");
+    }
     cargo_expand(dir, module)
 }

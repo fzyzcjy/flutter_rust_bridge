@@ -1,3 +1,4 @@
+extern crate lib_flutter_rust_bridge_codegen;
 use lib_flutter_rust_bridge_codegen::{
     config_parse, frb_codegen, get_symbols_if_no_duplicates, init_logger, RawOpts,
 };

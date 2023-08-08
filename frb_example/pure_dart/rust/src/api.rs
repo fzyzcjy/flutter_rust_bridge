@@ -1701,11 +1701,11 @@ macro_rules! generate_struct {
         pub struct MacroStruct {
             pub data: i32,
         }
+        #[allow(unused)]
+        pub fn macro_struct() -> MacroStruct {
+            MacroStruct { data: 123 }
+        }
     };
 }
 
 generate_struct!();
-
-pub fn macro_struct() -> MacroStruct {
-    MacroStruct { data: 123 }
-}
