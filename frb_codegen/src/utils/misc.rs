@@ -199,7 +199,7 @@ pub fn read_rust_file(path: &PathBuf) -> String {
     };
     let dir = path.directory_name_str().unwrap();
     let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
-    if dir.contains(&manifest_dir) {
+    if manifest_dir.len() > 0 && dir.contains(&manifest_dir) {
         // if System::new_all().processes_by_name("cargo").count() > 0 {
         warn!(
             "skipping cargo expand because cargo is already running and would block cargo-expand. This might lead to errors if there are macros in your api definition."

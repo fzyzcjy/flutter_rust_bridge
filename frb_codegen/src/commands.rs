@@ -247,7 +247,12 @@ pub fn build_runner(dart_root: &str) -> Result {
 }
 
 pub fn cargo_expand(path: &str, module: Option<&str>) -> String {
-    info!("Running cargo expand in {path}");
+    let for_module = if let Some(mod_name) = module {
+        format!("for module {mod_name}")
+    } else {
+        String::from("")
+    };
+    info!("Running cargo expand in '{path}' {for_module}");
     let mut args = vec![PathBuf::from("expand"), PathBuf::from("--theme=none")];
     if let Some(module) = module {
         args.push(PathBuf::from(module));
