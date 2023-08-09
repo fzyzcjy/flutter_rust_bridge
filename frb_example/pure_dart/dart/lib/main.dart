@@ -422,6 +422,10 @@ void main(List<String> args) async {
     expect(await api.handleEnumParameter(weekday: Weekdays.saturday), Weekdays.saturday);
   });
 
+  test('dart call handleEnumParameter', () async {
+    expect(api.handleEnumSyncFreezed(value: MyEnumFreezed.a(1)), MyEnumFreezed.b('hello'));
+  });
+
   test('dart call handleEnumStruct', () async {
     expect(await api.handleEnumStruct(val: KitchenSink_Empty()), KitchenSink_Empty());
     expect(
@@ -1349,6 +1353,11 @@ void main(List<String> args) async {
   test("dart call tuples", () async {
     expect(api.testTuple(), completion(('John', 0)));
     expect(api.testTuple(value: ('Bob', 42)), completion(('Hello Bob', 43)));
+  });
+
+  test("sync return mirror", () {
+    final settings = api.syncReturnMirror();
+    testAppSettings(settings);
   });
 }
 

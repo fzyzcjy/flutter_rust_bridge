@@ -252,6 +252,13 @@ pub extern "C" fn wire_handle_enum_parameter(port_: i64, weekday: i32) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_enum_sync_freezed(
+    value: *mut wire_MyEnumFreezed,
+) -> support::WireSyncReturn {
+    wire_handle_enum_sync_freezed_impl(value)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_handle_customized_struct(port_: i64, val: *mut wire_Customized) {
     wire_handle_customized_struct_impl(port_, val)
 }
@@ -858,6 +865,11 @@ pub extern "C" fn wire_test_tuple_2(port_: i64, value: *mut wire_list___record__
 }
 
 #[no_mangle]
+pub extern "C" fn wire_sync_return_mirror() -> support::WireSyncReturn {
+    wire_sync_return_mirror_impl()
+}
+
+#[no_mangle]
 pub extern "C" fn wire_as_string__method__Event(port_: i64, that: *mut wire_Event) {
     wire_as_string__method__Event_impl(port_, that)
 }
@@ -1123,6 +1135,11 @@ pub extern "C" fn new_box_autoadd_measure() -> *mut wire_Measure {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_message_id() -> *mut wire_MessageId {
     support::new_leak_box_ptr(wire_MessageId::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_my_enum_freezed() -> *mut wire_MyEnumFreezed {
+    support::new_leak_box_ptr(wire_MyEnumFreezed::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1919,6 +1936,12 @@ impl Wire2Api<MessageId> for *mut wire_MessageId {
         Wire2Api::<MessageId>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<MyEnumFreezed> for *mut wire_MyEnumFreezed {
+    fn wire2api(self) -> MyEnumFreezed {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<MyEnumFreezed>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<MyNestedStruct> for *mut wire_MyNestedStruct {
     fn wire2api(self) -> MyNestedStruct {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -2439,6 +2462,23 @@ impl Wire2Api<MessageId> for wire_MessageId {
     }
 }
 
+impl Wire2Api<MyEnumFreezed> for wire_MyEnumFreezed {
+    fn wire2api(self) -> MyEnumFreezed {
+        match self.tag {
+            0 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.A);
+                MyEnumFreezed::A(ans.field0.wire2api())
+            },
+            1 => unsafe {
+                let ans = support::box_from_leak_ptr(self.kind);
+                let ans = support::box_from_leak_ptr(ans.B);
+                MyEnumFreezed::B(ans.field0.wire2api())
+            },
+            _ => unreachable!(),
+        }
+    }
+}
 impl Wire2Api<MyNestedStruct> for wire_MyNestedStruct {
     fn wire2api(self) -> MyNestedStruct {
         MyNestedStruct {
@@ -3196,6 +3236,31 @@ pub struct wire_Measure_Distance {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_MyEnumFreezed {
+    tag: i32,
+    kind: *mut MyEnumFreezedKind,
+}
+
+#[repr(C)]
+pub union MyEnumFreezedKind {
+    A: *mut wire_MyEnumFreezed_A,
+    B: *mut wire_MyEnumFreezed_B,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_MyEnumFreezed_A {
+    field0: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_MyEnumFreezed_B {
+    field0: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_Speed {
     tag: i32,
     kind: *mut SpeedKind,
@@ -3841,6 +3906,39 @@ impl Default for wire_MessageId {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
+}
+
+impl Default for wire_MyEnumFreezed {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
+impl NewWithNullPtr for wire_MyEnumFreezed {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            tag: -1,
+            kind: core::ptr::null_mut(),
+        }
+    }
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_MyEnumFreezed_A() -> *mut MyEnumFreezedKind {
+    support::new_leak_box_ptr(MyEnumFreezedKind {
+        A: support::new_leak_box_ptr(wire_MyEnumFreezed_A {
+            field0: Default::default(),
+        }),
+    })
+}
+
+#[no_mangle]
+pub extern "C" fn inflate_MyEnumFreezed_B() -> *mut MyEnumFreezedKind {
+    support::new_leak_box_ptr(MyEnumFreezedKind {
+        B: support::new_leak_box_ptr(wire_MyEnumFreezed_B {
+            field0: core::ptr::null_mut(),
+        }),
+    })
 }
 
 impl NewWithNullPtr for wire_MyNestedStruct {

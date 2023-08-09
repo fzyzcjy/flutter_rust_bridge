@@ -354,6 +354,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_MyEnumFreezed> api2wire_box_autoadd_my_enum_freezed(MyEnumFreezed raw) {
+    final ptr = inner.new_box_autoadd_my_enum_freezed();
+    _api_fill_to_wire_my_enum_freezed(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_MyNestedStruct> api2wire_box_autoadd_my_nested_struct(MyNestedStruct raw) {
     final ptr = inner.new_box_autoadd_my_nested_struct();
     _api_fill_to_wire_my_nested_struct(raw, ptr.ref);
@@ -1084,6 +1091,10 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     _api_fill_to_wire_message_id(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_my_enum_freezed(MyEnumFreezed apiObj, ffi.Pointer<wire_MyEnumFreezed> wireObj) {
+    _api_fill_to_wire_my_enum_freezed(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_my_nested_struct(MyNestedStruct apiObj, ffi.Pointer<wire_MyNestedStruct> wireObj) {
     _api_fill_to_wire_my_nested_struct(apiObj, wireObj.ref);
   }
@@ -1368,6 +1379,23 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
 
   void _api_fill_to_wire_message_id(MessageId apiObj, wire_MessageId wireObj) {
     wireObj.field0 = api2wire_u8_array_32(apiObj.field0);
+  }
+
+  void _api_fill_to_wire_my_enum_freezed(MyEnumFreezed apiObj, wire_MyEnumFreezed wireObj) {
+    if (apiObj is MyEnumFreezed_A) {
+      var pre_field0 = api2wire_i32(apiObj.field0);
+      wireObj.tag = 0;
+      wireObj.kind = inner.inflate_MyEnumFreezed_A();
+      wireObj.kind.ref.A.ref.field0 = pre_field0;
+      return;
+    }
+    if (apiObj is MyEnumFreezed_B) {
+      var pre_field0 = api2wire_String(apiObj.field0);
+      wireObj.tag = 1;
+      wireObj.kind = inner.inflate_MyEnumFreezed_B();
+      wireObj.kind.ref.B.ref.field0 = pre_field0;
+      return;
+    }
   }
 
   void _api_fill_to_wire_my_nested_struct(MyNestedStruct apiObj, wire_MyNestedStruct wireObj) {
@@ -2209,6 +2237,20 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_handle_enum_parameterPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>('wire_handle_enum_parameter');
   late final _wire_handle_enum_parameter = _wire_handle_enum_parameterPtr.asFunction<void Function(int, int)>();
+
+  WireSyncReturn wire_handle_enum_sync_freezed(
+    ffi.Pointer<wire_MyEnumFreezed> value,
+  ) {
+    return _wire_handle_enum_sync_freezed(
+      value,
+    );
+  }
+
+  late final _wire_handle_enum_sync_freezedPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_MyEnumFreezed>)>>(
+          'wire_handle_enum_sync_freezed');
+  late final _wire_handle_enum_sync_freezed =
+      _wire_handle_enum_sync_freezedPtr.asFunction<WireSyncReturn Function(ffi.Pointer<wire_MyEnumFreezed>)>();
 
   void wire_handle_customized_struct(
     int port_,
@@ -3821,6 +3863,14 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _wire_test_tuple_2 =
       _wire_test_tuple_2Ptr.asFunction<void Function(int, ffi.Pointer<wire_list___record__String_i32>)>();
 
+  WireSyncReturn wire_sync_return_mirror() {
+    return _wire_sync_return_mirror();
+  }
+
+  late final _wire_sync_return_mirrorPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('wire_sync_return_mirror');
+  late final _wire_sync_return_mirror = _wire_sync_return_mirrorPtr.asFunction<WireSyncReturn Function()>();
+
   void wire_as_string__method__Event(
     int port_,
     ffi.Pointer<wire_Event> that,
@@ -4329,6 +4379,15 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_MessageId> Function()>>('new_box_autoadd_message_id');
   late final _new_box_autoadd_message_id =
       _new_box_autoadd_message_idPtr.asFunction<ffi.Pointer<wire_MessageId> Function()>();
+
+  ffi.Pointer<wire_MyEnumFreezed> new_box_autoadd_my_enum_freezed() {
+    return _new_box_autoadd_my_enum_freezed();
+  }
+
+  late final _new_box_autoadd_my_enum_freezedPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_MyEnumFreezed> Function()>>('new_box_autoadd_my_enum_freezed');
+  late final _new_box_autoadd_my_enum_freezed =
+      _new_box_autoadd_my_enum_freezedPtr.asFunction<ffi.Pointer<wire_MyEnumFreezed> Function()>();
 
   ffi.Pointer<wire_MyNestedStruct> new_box_autoadd_my_nested_struct() {
     return _new_box_autoadd_my_nested_struct();
@@ -5180,6 +5239,24 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<MeasureKind> Function()>>('inflate_Measure_Distance');
   late final _inflate_Measure_Distance = _inflate_Measure_DistancePtr.asFunction<ffi.Pointer<MeasureKind> Function()>();
 
+  ffi.Pointer<MyEnumFreezedKind> inflate_MyEnumFreezed_A() {
+    return _inflate_MyEnumFreezed_A();
+  }
+
+  late final _inflate_MyEnumFreezed_APtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<MyEnumFreezedKind> Function()>>('inflate_MyEnumFreezed_A');
+  late final _inflate_MyEnumFreezed_A =
+      _inflate_MyEnumFreezed_APtr.asFunction<ffi.Pointer<MyEnumFreezedKind> Function()>();
+
+  ffi.Pointer<MyEnumFreezedKind> inflate_MyEnumFreezed_B() {
+    return _inflate_MyEnumFreezed_B();
+  }
+
+  late final _inflate_MyEnumFreezed_BPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<MyEnumFreezedKind> Function()>>('inflate_MyEnumFreezed_B');
+  late final _inflate_MyEnumFreezed_B =
+      _inflate_MyEnumFreezed_BPtr.asFunction<ffi.Pointer<MyEnumFreezedKind> Function()>();
+
   ffi.Pointer<SpeedKind> inflate_Speed_GPS() {
     return _inflate_Speed_GPS();
   }
@@ -5353,6 +5430,28 @@ final class wire_Note extends ffi.Struct {
   external ffi.Pointer<ffi.Int32> day;
 
   external ffi.Pointer<wire_uint_8_list> body;
+}
+
+final class wire_MyEnumFreezed_A extends ffi.Struct {
+  @ffi.Int32()
+  external int field0;
+}
+
+final class wire_MyEnumFreezed_B extends ffi.Struct {
+  external ffi.Pointer<wire_uint_8_list> field0;
+}
+
+final class MyEnumFreezedKind extends ffi.Union {
+  external ffi.Pointer<wire_MyEnumFreezed_A> A;
+
+  external ffi.Pointer<wire_MyEnumFreezed_B> B;
+}
+
+final class wire_MyEnumFreezed extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<MyEnumFreezedKind> kind;
 }
 
 final class wire_Customized extends ffi.Struct {

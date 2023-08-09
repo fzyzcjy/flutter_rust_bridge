@@ -719,6 +719,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["weekday"],
       );
 
+  MyEnumFreezed handleEnumSyncFreezed({required MyEnumFreezed value, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_my_enum_freezed(value);
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_handle_enum_sync_freezed(arg0),
+      parseSuccessData: _wire2api_my_enum_freezed,
+      constMeta: kHandleEnumSyncFreezedConstMeta,
+      argValues: [value],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleEnumSyncFreezedConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_enum_sync_freezed",
+        argNames: ["value"],
+      );
+
   Future<void> handleCustomizedStruct({required Customized val, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_customized(val);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -2579,6 +2595,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["value"],
       );
 
+  ApplicationSettings syncReturnMirror({dynamic hint}) {
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_return_mirror(),
+      parseSuccessData: _wire2api_application_settings,
+      constMeta: kSyncReturnMirrorConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncReturnMirrorConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_return_mirror",
+        argNames: [],
+      );
+
   Future<String> asStringMethodEvent({required Event that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_event(that);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -3565,6 +3596,21 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   MyEnum _wire2api_my_enum(dynamic raw) {
     return MyEnum.values[raw as int];
+  }
+
+  MyEnumFreezed _wire2api_my_enum_freezed(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return MyEnumFreezed_A(
+          _wire2api_i32(raw[1]),
+        );
+      case 1:
+        return MyEnumFreezed_B(
+          _wire2api_String(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
   }
 
   MyNestedStruct _wire2api_my_nested_struct(dynamic raw) {

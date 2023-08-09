@@ -4020,6 +4020,325 @@ abstract class Measure_Distance implements Measure {
 }
 
 /// @nodoc
+mixin _$MyEnumFreezed {
+  Object get field0 => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int field0) a,
+    required TResult Function(String field0) b,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int field0)? a,
+    TResult? Function(String field0)? b,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int field0)? a,
+    TResult Function(String field0)? b,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(MyEnumFreezed_A value) a,
+    required TResult Function(MyEnumFreezed_B value) b,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(MyEnumFreezed_A value)? a,
+    TResult? Function(MyEnumFreezed_B value)? b,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MyEnumFreezed_A value)? a,
+    TResult Function(MyEnumFreezed_B value)? b,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MyEnumFreezedCopyWith<$Res> {
+  factory $MyEnumFreezedCopyWith(MyEnumFreezed value, $Res Function(MyEnumFreezed) then) =
+      _$MyEnumFreezedCopyWithImpl<$Res, MyEnumFreezed>;
+}
+
+/// @nodoc
+class _$MyEnumFreezedCopyWithImpl<$Res, $Val extends MyEnumFreezed> implements $MyEnumFreezedCopyWith<$Res> {
+  _$MyEnumFreezedCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$MyEnumFreezed_ACopyWith<$Res> {
+  factory _$$MyEnumFreezed_ACopyWith(_$MyEnumFreezed_A value, $Res Function(_$MyEnumFreezed_A) then) =
+      __$$MyEnumFreezed_ACopyWithImpl<$Res>;
+  @useResult
+  $Res call({int field0});
+}
+
+/// @nodoc
+class __$$MyEnumFreezed_ACopyWithImpl<$Res> extends _$MyEnumFreezedCopyWithImpl<$Res, _$MyEnumFreezed_A>
+    implements _$$MyEnumFreezed_ACopyWith<$Res> {
+  __$$MyEnumFreezed_ACopyWithImpl(_$MyEnumFreezed_A _value, $Res Function(_$MyEnumFreezed_A) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$MyEnumFreezed_A(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$MyEnumFreezed_A implements MyEnumFreezed_A {
+  const _$MyEnumFreezed_A(this.field0);
+
+  @override
+  final int field0;
+
+  @override
+  String toString() {
+    return 'MyEnumFreezed.a(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MyEnumFreezed_A &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MyEnumFreezed_ACopyWith<_$MyEnumFreezed_A> get copyWith =>
+      __$$MyEnumFreezed_ACopyWithImpl<_$MyEnumFreezed_A>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int field0) a,
+    required TResult Function(String field0) b,
+  }) {
+    return a(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int field0)? a,
+    TResult? Function(String field0)? b,
+  }) {
+    return a?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int field0)? a,
+    TResult Function(String field0)? b,
+    required TResult orElse(),
+  }) {
+    if (a != null) {
+      return a(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(MyEnumFreezed_A value) a,
+    required TResult Function(MyEnumFreezed_B value) b,
+  }) {
+    return a(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(MyEnumFreezed_A value)? a,
+    TResult? Function(MyEnumFreezed_B value)? b,
+  }) {
+    return a?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MyEnumFreezed_A value)? a,
+    TResult Function(MyEnumFreezed_B value)? b,
+    required TResult orElse(),
+  }) {
+    if (a != null) {
+      return a(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MyEnumFreezed_A implements MyEnumFreezed {
+  const factory MyEnumFreezed_A(final int field0) = _$MyEnumFreezed_A;
+
+  @override
+  int get field0;
+  @JsonKey(ignore: true)
+  _$$MyEnumFreezed_ACopyWith<_$MyEnumFreezed_A> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$MyEnumFreezed_BCopyWith<$Res> {
+  factory _$$MyEnumFreezed_BCopyWith(_$MyEnumFreezed_B value, $Res Function(_$MyEnumFreezed_B) then) =
+      __$$MyEnumFreezed_BCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String field0});
+}
+
+/// @nodoc
+class __$$MyEnumFreezed_BCopyWithImpl<$Res> extends _$MyEnumFreezedCopyWithImpl<$Res, _$MyEnumFreezed_B>
+    implements _$$MyEnumFreezed_BCopyWith<$Res> {
+  __$$MyEnumFreezed_BCopyWithImpl(_$MyEnumFreezed_B _value, $Res Function(_$MyEnumFreezed_B) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? field0 = null,
+  }) {
+    return _then(_$MyEnumFreezed_B(
+      null == field0
+          ? _value.field0
+          : field0 // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$MyEnumFreezed_B implements MyEnumFreezed_B {
+  const _$MyEnumFreezed_B(this.field0);
+
+  @override
+  final String field0;
+
+  @override
+  String toString() {
+    return 'MyEnumFreezed.b(field0: $field0)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MyEnumFreezed_B &&
+            (identical(other.field0, field0) || other.field0 == field0));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, field0);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MyEnumFreezed_BCopyWith<_$MyEnumFreezed_B> get copyWith =>
+      __$$MyEnumFreezed_BCopyWithImpl<_$MyEnumFreezed_B>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int field0) a,
+    required TResult Function(String field0) b,
+  }) {
+    return b(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int field0)? a,
+    TResult? Function(String field0)? b,
+  }) {
+    return b?.call(field0);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int field0)? a,
+    TResult Function(String field0)? b,
+    required TResult orElse(),
+  }) {
+    if (b != null) {
+      return b(field0);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(MyEnumFreezed_A value) a,
+    required TResult Function(MyEnumFreezed_B value) b,
+  }) {
+    return b(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(MyEnumFreezed_A value)? a,
+    TResult? Function(MyEnumFreezed_B value)? b,
+  }) {
+    return b?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MyEnumFreezed_A value)? a,
+    TResult Function(MyEnumFreezed_B value)? b,
+    required TResult orElse(),
+  }) {
+    if (b != null) {
+      return b(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MyEnumFreezed_B implements MyEnumFreezed {
+  const factory MyEnumFreezed_B(final String field0) = _$MyEnumFreezed_B;
+
+  @override
+  String get field0;
+  @JsonKey(ignore: true)
+  _$$MyEnumFreezed_BCopyWith<_$MyEnumFreezed_B> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$MySizeFreezed {
   int get width => throw _privateConstructorUsedError;
   int get height => throw _privateConstructorUsedError;

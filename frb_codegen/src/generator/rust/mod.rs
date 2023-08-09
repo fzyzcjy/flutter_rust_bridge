@@ -62,7 +62,7 @@ impl Output {
             .map(|s| (*s).clone())
             .collect::<Vec<_>>();
 
-        if is_multi_blocks_case(None) {
+        if !is_multi_blocks_case(None) {
             return exclude_symbols;
         }
 
