@@ -38,7 +38,7 @@ fn remove_marker_attr(input: TokenStream, ident: &str) -> TokenStream {
 #[proc_macro_attribute]
 pub fn frb(attribute: TokenStream, item: TokenStream) -> TokenStream {
     let item = remove_marker_attr(item, "frb");
-    let attr = attribute.to_string().replace("\n", "");
+    let attr = attribute.to_string().replace('\n', "");
     let comment_str = format!("/// frb_marker: #[frb({attr})]");
     if comment_str.contains("immutable") {
         dbg!(&comment_str);

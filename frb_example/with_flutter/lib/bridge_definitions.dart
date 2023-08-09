@@ -9,6 +9,10 @@ import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
+import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+import 'package:meta/meta.dart' as meta;
+
+part 'bridge_definitions.freezed.dart';
 
 abstract class FlutterRustBridgeExample {
   Future<Uint8List> drawMandelbrot(
@@ -139,10 +143,10 @@ class TreeNode {
   });
 }
 
-class UserId {
-  final int value;
-
-  const UserId({
-    required this.value,
-  });
+@freezed
+@meta.immutable
+class UserId with _$UserId {
+  const factory UserId({
+    required int value,
+  }) = _UserId;
 }
