@@ -1,10 +1,15 @@
 use crate::Result;
 use cargo_metadata::VersionReq;
 use lazy_static::lazy_static;
+use log::warn;
+use std::collections::HashMap;
+use std::env;
 use std::fmt::Write;
+use std::fs;
 use std::path::Path;
 use std::path::PathBuf;
 use std::str::FromStr;
+use std::sync::Mutex;
 
 use crate::command_run;
 use crate::utils::command_runner::{call_shell, execute_command};
@@ -246,25 +251,73 @@ pub fn build_runner(dart_root: &str) -> Result {
     Ok(())
 }
 
+lazy_static! {
+    static ref CACHE: Mutex<HashMap<String, String>> = Mutex::new(HashMap::new());
+}
+
 pub fn cargo_expand(path: &str, module: Option<&str>) -> String {
-    let for_module = if let Some(mod_name) = module {
-        format!("for module {mod_name}")
-    } else {
-        String::from("")
-    };
-    info!("Running cargo expand in '{path}' {for_module}");
-    let mut args = vec![PathBuf::from("expand"), PathBuf::from("--theme=none")];
-    if let Some(module) = module {
-        args.push(PathBuf::from(module));
+    let mut cache = CACHE.lock().unwrap();
+    match cache.get(path) {
+        Some(expanded) => {
+            info!("cargo expand cache hit");
+            extract_module(expanded, module)
+        }
+        None => {
+            let expanded = run_cargo_expand(path);
+            let module_expanded = extract_module(&expanded, module);
+            cache.insert(path.into(), expanded);
+            module_expanded
+        }
     }
+}
+
+fn extract_module(expanded: &str, module: Option<&str>) -> String {
+    match module {
+        Some(module) => {
+            let searched = format!("mod {module} {{\n");
+            let start = expanded
+                .find(&searched)
+                .and_then(|n| Some(n + searched.len()))
+                .unwrap_or_default();
+            let end = expanded[start..]
+                .find("\n}")
+                .and_then(|n| Some(n + start))
+                .unwrap_or(expanded.len());
+            let part = String::from(&expanded[start..end]);
+            part
+        }
+        None => String::from(expanded),
+    }
+}
+
+fn run_cargo_expand(path: &str) -> String {
+    info!("Running cargo expand in '{path}'");
+    let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
+    if !manifest_dir.is_empty() && path == manifest_dir {
+        warn!(
+            "can not run cargo expand on {path} because cargo is already running and would block cargo-expand. This might cause errors if your api contains macros."
+        );
+        return fs::read_to_string(path).unwrap_or_default();
+    }
+    let args = vec![
+        PathBuf::from("expand"),
+        PathBuf::from("--theme=none"),
+        PathBuf::from("--ugly"),
+    ];
     match execute_command("cargo", &args, Some(path)) {
         Ok(output) => {
-            let output = String::from_utf8(output.stdout).unwrap();
-            if output.is_empty() {
+            let stdout = String::from_utf8(output.stdout).unwrap_or_default();
+            let stderr = String::from_utf8(output.stderr).unwrap_or_default();
+            if stdout.is_empty() {
+                if stderr.contains("no such command: `expand`") {
+                    panic!(
+                        "cargo expand is not installed. Please run  `cargo install cargo-expand`"
+                    );
+                }
                 panic!("cargo expand returned empty output");
             }
             // remove first and last line to get rid of wrapping module
-            let mut output = output.lines();
+            let mut output = stdout.lines();
             output.next();
             output.next_back();
             output
