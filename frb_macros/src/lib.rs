@@ -38,12 +38,12 @@ fn remove_marker_attr(input: TokenStream, ident: &str) -> TokenStream {
 #[proc_macro_attribute]
 pub fn frb(attribute: TokenStream, item: TokenStream) -> TokenStream {
     let item = remove_marker_attr(item, "frb");
-    if attribute.to_string().contains("mirror(") {
-        let mirrored = attribute
-            .to_string()
-            .replace("mirror(", "")
-            .replace(')', "");
-        return format!("/// mirror({mirrored})\n{item}").parse().unwrap();
+    let attr = attribute.to_string().replace("\n", "");
+    let comment_str = format!("/// frb_marker: #[frb({attr})]");
+    if comment_str.contains("immutable") {
+        dbg!(&comment_str);
     }
-    item
+    let mut comment: TokenStream = comment_str.parse().unwrap();
+    comment.extend([item]);
+    comment
 }

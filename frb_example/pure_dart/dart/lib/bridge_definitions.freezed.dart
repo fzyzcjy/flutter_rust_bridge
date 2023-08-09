@@ -2518,6 +2518,146 @@ abstract class EnumOpaque_RwLock implements EnumOpaque {
 }
 
 /// @nodoc
+mixin _$Event {
+  FlutterRustBridgeExampleSingleBlockTest get bridge => throw _privateConstructorUsedError;
+  String get address => throw _privateConstructorUsedError;
+  String get payload => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $EventCopyWith<Event> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EventCopyWith<$Res> {
+  factory $EventCopyWith(Event value, $Res Function(Event) then) = _$EventCopyWithImpl<$Res, Event>;
+  @useResult
+  $Res call({FlutterRustBridgeExampleSingleBlockTest bridge, String address, String payload});
+}
+
+/// @nodoc
+class _$EventCopyWithImpl<$Res, $Val extends Event> implements $EventCopyWith<$Res> {
+  _$EventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? bridge = null,
+    Object? address = null,
+    Object? payload = null,
+  }) {
+    return _then(_value.copyWith(
+      bridge: null == bridge
+          ? _value.bridge
+          : bridge // ignore: cast_nullable_to_non_nullable
+              as FlutterRustBridgeExampleSingleBlockTest,
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      payload: null == payload
+          ? _value.payload
+          : payload // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_EventCopyWith<$Res> implements $EventCopyWith<$Res> {
+  factory _$$_EventCopyWith(_$_Event value, $Res Function(_$_Event) then) = __$$_EventCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({FlutterRustBridgeExampleSingleBlockTest bridge, String address, String payload});
+}
+
+/// @nodoc
+class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event> implements _$$_EventCopyWith<$Res> {
+  __$$_EventCopyWithImpl(_$_Event _value, $Res Function(_$_Event) _then) : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? bridge = null,
+    Object? address = null,
+    Object? payload = null,
+  }) {
+    return _then(_$_Event(
+      bridge: null == bridge
+          ? _value.bridge
+          : bridge // ignore: cast_nullable_to_non_nullable
+              as FlutterRustBridgeExampleSingleBlockTest,
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      payload: null == payload
+          ? _value.payload
+          : payload // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Event extends _Event {
+  const _$_Event({required this.bridge, required this.address, required this.payload}) : super._();
+
+  @override
+  final FlutterRustBridgeExampleSingleBlockTest bridge;
+  @override
+  final String address;
+  @override
+  final String payload;
+
+  @override
+  String toString() {
+    return 'Event(bridge: $bridge, address: $address, payload: $payload)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Event &&
+            (identical(other.bridge, bridge) || other.bridge == bridge) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.payload, payload) || other.payload == payload));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, bridge, address, payload);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_EventCopyWith<_$_Event> get copyWith => __$$_EventCopyWithImpl<_$_Event>(this, _$identity);
+}
+
+abstract class _Event extends Event {
+  const factory _Event(
+      {required final FlutterRustBridgeExampleSingleBlockTest bridge,
+      required final String address,
+      required final String payload}) = _$_Event;
+  const _Event._() : super._();
+
+  @override
+  FlutterRustBridgeExampleSingleBlockTest get bridge;
+  @override
+  String get address;
+  @override
+  String get payload;
+  @override
+  @JsonKey(ignore: true)
+  _$$_EventCopyWith<_$_Event> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$KitchenSink {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -3878,6 +4018,130 @@ abstract class Measure_Distance implements Measure {
 }
 
 /// @nodoc
+mixin _$MySizeFreezed {
+  int get width => throw _privateConstructorUsedError;
+  int get height => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $MySizeFreezedCopyWith<MySizeFreezed> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MySizeFreezedCopyWith<$Res> {
+  factory $MySizeFreezedCopyWith(MySizeFreezed value, $Res Function(MySizeFreezed) then) =
+      _$MySizeFreezedCopyWithImpl<$Res, MySizeFreezed>;
+  @useResult
+  $Res call({int width, int height});
+}
+
+/// @nodoc
+class _$MySizeFreezedCopyWithImpl<$Res, $Val extends MySizeFreezed> implements $MySizeFreezedCopyWith<$Res> {
+  _$MySizeFreezedCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? width = null,
+    Object? height = null,
+  }) {
+    return _then(_value.copyWith(
+      width: null == width
+          ? _value.width
+          : width // ignore: cast_nullable_to_non_nullable
+              as int,
+      height: null == height
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_MySizeFreezedCopyWith<$Res> implements $MySizeFreezedCopyWith<$Res> {
+  factory _$$_MySizeFreezedCopyWith(_$_MySizeFreezed value, $Res Function(_$_MySizeFreezed) then) =
+      __$$_MySizeFreezedCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int width, int height});
+}
+
+/// @nodoc
+class __$$_MySizeFreezedCopyWithImpl<$Res> extends _$MySizeFreezedCopyWithImpl<$Res, _$_MySizeFreezed>
+    implements _$$_MySizeFreezedCopyWith<$Res> {
+  __$$_MySizeFreezedCopyWithImpl(_$_MySizeFreezed _value, $Res Function(_$_MySizeFreezed) _then) : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? width = null,
+    Object? height = null,
+  }) {
+    return _then(_$_MySizeFreezed(
+      width: null == width
+          ? _value.width
+          : width // ignore: cast_nullable_to_non_nullable
+              as int,
+      height: null == height
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_MySizeFreezed implements _MySizeFreezed {
+  const _$_MySizeFreezed({required this.width, required this.height});
+
+  @override
+  final int width;
+  @override
+  final int height;
+
+  @override
+  String toString() {
+    return 'MySizeFreezed(width: $width, height: $height)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MySizeFreezed &&
+            (identical(other.width, width) || other.width == width) &&
+            (identical(other.height, height) || other.height == height));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, width, height);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_MySizeFreezedCopyWith<_$_MySizeFreezed> get copyWith =>
+      __$$_MySizeFreezedCopyWithImpl<_$_MySizeFreezed>(this, _$identity);
+}
+
+abstract class _MySizeFreezed implements MySizeFreezed {
+  const factory _MySizeFreezed({required final int width, required final int height}) = _$_MySizeFreezed;
+
+  @override
+  int get width;
+  @override
+  int get height;
+  @override
+  @JsonKey(ignore: true)
+  _$$_MySizeFreezedCopyWith<_$_MySizeFreezed> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$RawStringEnumMirrored {
   Object get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -4641,4 +4905,108 @@ abstract class Speed_GPS implements Speed {
   double get field0;
   @JsonKey(ignore: true)
   _$$Speed_GPSCopyWith<_$Speed_GPS> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$UserId {
+  int get value => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $UserIdCopyWith<UserId> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UserIdCopyWith<$Res> {
+  factory $UserIdCopyWith(UserId value, $Res Function(UserId) then) = _$UserIdCopyWithImpl<$Res, UserId>;
+  @useResult
+  $Res call({int value});
+}
+
+/// @nodoc
+class _$UserIdCopyWithImpl<$Res, $Val extends UserId> implements $UserIdCopyWith<$Res> {
+  _$UserIdCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_value.copyWith(
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_UserIdCopyWith<$Res> implements $UserIdCopyWith<$Res> {
+  factory _$$_UserIdCopyWith(_$_UserId value, $Res Function(_$_UserId) then) = __$$_UserIdCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int value});
+}
+
+/// @nodoc
+class __$$_UserIdCopyWithImpl<$Res> extends _$UserIdCopyWithImpl<$Res, _$_UserId> implements _$$_UserIdCopyWith<$Res> {
+  __$$_UserIdCopyWithImpl(_$_UserId _value, $Res Function(_$_UserId) _then) : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_$_UserId(
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UserId implements _UserId {
+  const _$_UserId({required this.value});
+
+  @override
+  final int value;
+
+  @override
+  String toString() {
+    return 'UserId(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UserId &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UserIdCopyWith<_$_UserId> get copyWith => __$$_UserIdCopyWithImpl<_$_UserId>(this, _$identity);
+}
+
+abstract class _UserId implements UserId {
+  const factory _UserId({required final int value}) = _$_UserId;
+
+  @override
+  int get value;
+  @override
+  @JsonKey(ignore: true)
+  _$$_UserIdCopyWith<_$_UserId> get copyWith => throw _privateConstructorUsedError;
 }

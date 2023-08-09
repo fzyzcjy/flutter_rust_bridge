@@ -263,11 +263,14 @@ pub fn cargo_expand(path: &str, module: Option<&str>) -> String {
             if output.is_empty() {
                 panic!("cargo expand returned empty output");
             }
-            // remove first and last line
+            // remove first and last line to get rid of wrapping module
             let mut output = output.lines();
             output.next();
             output.next_back();
-            output.collect::<Vec<_>>().join("\n")
+            output
+                .collect::<Vec<_>>()
+                .join("\n")
+                .replace("/// frb_marker: ", "")
         }
         Err(e) => {
             panic!("Could not expand rust code at path {}: {}\n", path, e);

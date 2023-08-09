@@ -9,6 +9,7 @@ import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
+import 'package:meta/meta.dart' as meta;
 import 'package:collection/collection.dart';
 
 part 'bridge_definitions.freezed.dart';
@@ -977,7 +978,6 @@ sealed class Abc with _$Abc {
   ) = Abc_JustInt;
 }
 
-/// mirror(ApplicationEnv)
 class ApplicationEnv {
   final List<ApplicationEnvVar> vars;
 
@@ -986,7 +986,6 @@ class ApplicationEnv {
   });
 }
 
-/// mirror(ApplicationEnvVar)
 class ApplicationEnvVar {
   final String field0;
   final bool field1;
@@ -1009,13 +1008,11 @@ sealed class ApplicationMessage with _$ApplicationMessage {
   const factory ApplicationMessage.exit() = ApplicationMessage_Exit;
 }
 
-/// mirror(ApplicationMode)
 enum ApplicationMode {
   standalone,
   embedded,
 }
 
-/// mirror(ApplicationSettings)
 class ApplicationSettings {
   final String name;
   final String version;
@@ -1211,17 +1208,14 @@ sealed class EnumOpaque with _$EnumOpaque {
   ) = EnumOpaque_RwLock;
 }
 
-class Event {
-  final FlutterRustBridgeExampleSingleBlockTest bridge;
-  final String address;
-  final String payload;
-
-  const Event({
-    required this.bridge,
-    required this.address,
-    required this.payload,
-  });
-
+@freezed
+class Event with _$Event {
+  const Event._();
+  const factory Event({
+    required FlutterRustBridgeExampleSingleBlockTest bridge,
+    required String address,
+    required String payload,
+  }) = _Event;
   Future<String> asString({dynamic hint}) => bridge.asStringMethodEvent(
         that: this,
       );
@@ -1338,7 +1332,6 @@ sealed class KitchenSink with _$KitchenSink {
   ) = KitchenSink_Enums;
 }
 
-/// mirror(ListOfNestedRawStringMirrored)
 class ListOfNestedRawStringMirrored {
   final List<NestedRawStringMirrored> raw;
 
@@ -1446,14 +1439,12 @@ class MySize {
   });
 }
 
-class MySizeFreezed {
-  final int width;
-  final int height;
-
-  const MySizeFreezed({
-    required this.width,
-    required this.height,
-  });
+@freezed
+class MySizeFreezed with _$MySizeFreezed {
+  const factory MySizeFreezed({
+    required int width,
+    required int height,
+  }) = _MySizeFreezed;
 }
 
 class MyStreamEntry {
@@ -1486,7 +1477,6 @@ class MyTreeNode {
   });
 }
 
-/// mirror(NestedRawStringMirrored)
 class NestedRawStringMirrored {
   final RawStringMirrored raw;
 
@@ -1521,7 +1511,6 @@ class Note {
   });
 }
 
-/// mirror(Numbers, Sequences)
 class Numbers {
   final Int32List field0;
 
@@ -1580,7 +1569,6 @@ class RawStringItemStruct {
   });
 }
 
-/// mirror(RawStringMirrored)
 class RawStringMirrored {
   final String value;
 
@@ -1589,7 +1577,6 @@ class RawStringMirrored {
   });
 }
 
-/// mirror(Numbers, Sequences)
 class Sequences {
   final Int32List field0;
 
@@ -1703,12 +1690,12 @@ class U8Array8 extends NonGrowableListView<int> {
 }
 
 /// Example for @freezed and @meta.immutable
-class UserId {
-  final int value;
-
-  const UserId({
-    required this.value,
-  });
+@freezed
+@meta.immutable
+class UserId with _$UserId {
+  const factory UserId({
+    required int value,
+  }) = _UserId;
 }
 
 class VecOfPrimitivePack {
