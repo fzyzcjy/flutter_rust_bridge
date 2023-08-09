@@ -165,14 +165,8 @@ impl IrFile {
                 let raw_distinct_types =
                     self.get_regular_distinct_types(include_func_inputs, include_func_output);
 
-                // way1: distinguished by `safe_ident()`
-
-                // way2: distinguished by hash. Not sure if this is needed
-                // let r = raw_distinct_types
-                //     .difference(&shared_types)
-                //     .cloned()
-                //     .collect();
-
+                // NOTE: for `raw_distinct_types`, don't distinguished by hash, but by safe_ident(),
+                // since some types have different hashes, but the same safe_ident().
                 raw_distinct_types
                     .into_iter()
                     .filter(|item| {
@@ -185,14 +179,8 @@ impl IrFile {
 
                             match (include_func_inputs, include_func_output) {
                                 (true, true) => cond1 || cond2 || cond3,
-                                (true, false) => {
-                                    // assert!(item.safe_ident().contains("box_autoadd_"));
-                                    cond1 || cond3
-                                }
-                                (false, true) => {
-                                    // assert!(!item.safe_ident().contains("box_autoadd_"));
-                                    cond1 || cond3
-                                }
+                                (true, false) => cond1 || cond3,
+                                (false, true) => cond2 || cond3,
                                 (false, false) => unreachable!(),
                             }
                         })
@@ -359,7 +347,6 @@ impl IrFile {
         }
         //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑for cross shared types↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
-        // TODO: delete? The below block of code may be redundant check?
         //↓↓↓↓↓↓↓↓↓↓↓↓for types with same idents but different hashes↓↓↓↓↓↓↓↓↓↓↓↓
         // Suppose there is a type `String`, it is used as output for a function defined in a
         // regular block and used as output type of `SyncReturn` version in anthoer function of

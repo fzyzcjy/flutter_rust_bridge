@@ -86,7 +86,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             f.is_method_for_struct(&src.name) || f.is_static_method_for_struct(&src.name)
         });
         let has_methods = methods.next().is_some();
-        // TODO: refactor into trait method?
+
         let mut inner = if !self.context.config.shared {
             s.fields
                 .iter()

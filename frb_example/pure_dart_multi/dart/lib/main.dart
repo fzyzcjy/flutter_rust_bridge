@@ -10,6 +10,7 @@ import 'package:test/test.dart';
 import 'test_api_block_1.dart';
 import 'test_api_block_2.dart';
 import 'test_api_block_3.dart';
+import 'test_shared_obj_over_blocks.dart';
 import 'test_type_methods.dart';
 
 void main(List<String> args) {
@@ -40,6 +41,7 @@ void main(List<String> args) {
   testApiBlock1(api1, apiShared, enumList);
   testApiBlock2(api2, apiShared, enumList);
   testApiBlock3(api3, apiShared, enumList);
+  testSharedObjOverBlocks(api1, api2, api3, apiShared, enumList);
 
   tearDownAll(() {
     api1.dispose();

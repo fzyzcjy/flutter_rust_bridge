@@ -283,27 +283,6 @@ fn generate_import_header(
         DartBasicCode::default()
     };
 
-    // TODO: import shared module if essential
-    // if let Some(shared_mod) = shared_mod {
-    //     code.import += &format!("\nimport '{}';", shared_mod);
-    //     code.import += &format!("\nexport '{}';", shared_mod);
-    //     if config.wasm_enabled {
-    //         code.import += &format!(
-    //             "import '{}' if (dart.library.html) '{}';",
-    //             config
-    //                 .dart_io_output_path()
-    //                 .file_name()
-    //                 .and_then(OsStr::to_str)
-    //                 .unwrap(),
-    //             config
-    //                 .dart_wasm_output_path()
-    //                 .file_name()
-    //                 .and_then(OsStr::to_str)
-    //                 .unwrap(),
-    //         );
-    //     }
-    // }
-
     code
 }
 
