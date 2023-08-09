@@ -1135,9 +1135,9 @@ class ContainsMirroredSubStruct {
 
 class Customized {
   final String finalField;
-  final String? nonFinalField;
+  String? nonFinalField;
 
-  const Customized({
+  Customized({
     required this.finalField,
     this.nonFinalField,
   });
@@ -1311,25 +1311,25 @@ sealed class KitchenSink with _$KitchenSink {
   const factory KitchenSink.empty() = KitchenSink_Empty;
   const factory KitchenSink.primitives({
     /// Dart field comment
-    required int int32,
+    @Default(-1) int int32,
     required double float64,
     required bool boolean,
   }) = KitchenSink_Primitives;
   const factory KitchenSink.nested(
-    int field0,
-    KitchenSink field1,
-  ) = KitchenSink_Nested;
+    int field0, [
+    @Default(KitchenSink.empty()) KitchenSink field1,
+  ]) = KitchenSink_Nested;
   const factory KitchenSink.optional([
     /// Comment on anonymous field
-    int? field0,
+    @Default(-1) int? field0,
     int? field1,
   ]) = KitchenSink_Optional;
   const factory KitchenSink.buffer(
     Uint8List field0,
   ) = KitchenSink_Buffer;
-  const factory KitchenSink.enums(
-    Weekdays field0,
-  ) = KitchenSink_Enums;
+  const factory KitchenSink.enums([
+    @Default(Weekdays.sunday) Weekdays field0,
+  ]) = KitchenSink_Enums;
 }
 
 class ListOfNestedRawStringMirrored {
@@ -1506,7 +1506,7 @@ class Note {
   final String body;
 
   const Note({
-    required this.day,
+    this.day = Weekdays.sunday,
     required this.body,
   });
 }
@@ -1694,7 +1694,7 @@ class U8Array8 extends NonGrowableListView<int> {
 @meta.immutable
 class UserId with _$UserId {
   const factory UserId({
-    required int value,
+    @Default(0) int value,
   }) = _UserId;
 }
 

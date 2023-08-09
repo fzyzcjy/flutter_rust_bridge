@@ -549,9 +549,8 @@ void main(List<String> args) async {
   test('dart check that non-final field is modifiable', () {
     var customized = Customized(finalField: "finalField", nonFinalField: "nonFinalField");
     expect(customized.nonFinalField, "nonFinalField");
-    // ToDo not yet implemented with expanded macros;
-    // customized.nonFinalField = "changed";
-    // expect(customized.nonFinalField, "changed");
+    customized.nonFinalField = "changed";
+    expect(customized.nonFinalField, "changed");
   });
 
   test('dart call next_user_id to test metadata annotations', () async {
@@ -559,13 +558,12 @@ void main(List<String> args) async {
     expect(await api.nextUserId(userId: userId), UserId(value: 12));
   });
 
-  //test('dart register event listener & create event with delay', () async {
-  //  expectLater(api.registerEventListener(),
-  //      emits(Event(bridge: api, address: 'foo', payload: 'bar')));
-  //  await Future.delayed(const Duration(milliseconds: 20));
-  //  await api.createEvent(address: 'foo', payload: 'bar');
-  //  await api.closeEventListener();
-  //});
+  test('dart register event listener & create event with delay', () async {
+    expectLater(api.registerEventListener(), emits(Event(bridge: api, address: 'foo', payload: 'bar')));
+    await Future.delayed(const Duration(milliseconds: 20));
+    await api.createEvent(address: 'foo', payload: 'bar');
+    await api.closeEventListener();
+  });
 
   test('ConcatenateWith test', () async {
     final ConcatenateWith concatenateWith = ConcatenateWith(a: "hello ", bridge: api);

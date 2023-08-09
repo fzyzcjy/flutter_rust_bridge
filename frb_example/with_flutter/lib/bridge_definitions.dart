@@ -147,6 +147,6 @@ class TreeNode {
 @meta.immutable
 class UserId with _$UserId {
   const factory UserId({
-    required int value,
+    @Default(0) int value,
   }) = _UserId;
 }

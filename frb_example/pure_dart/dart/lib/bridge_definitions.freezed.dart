@@ -2903,10 +2903,11 @@ class __$$KitchenSink_PrimitivesCopyWithImpl<$Res> extends _$KitchenSinkCopyWith
 /// @nodoc
 
 class _$KitchenSink_Primitives implements KitchenSink_Primitives {
-  const _$KitchenSink_Primitives({required this.int32, required this.float64, required this.boolean});
+  const _$KitchenSink_Primitives({this.int32 = -1, required this.float64, required this.boolean});
 
   /// Dart field comment
   @override
+  @JsonKey()
   final int int32;
   @override
   final double float64;
@@ -3025,10 +3026,8 @@ class _$KitchenSink_Primitives implements KitchenSink_Primitives {
 }
 
 abstract class KitchenSink_Primitives implements KitchenSink {
-  const factory KitchenSink_Primitives(
-      {required final int int32,
-      required final double float64,
-      required final bool boolean}) = _$KitchenSink_Primitives;
+  const factory KitchenSink_Primitives({final int int32, required final double float64, required final bool boolean}) =
+      _$KitchenSink_Primitives;
 
   /// Dart field comment
   int get int32;
@@ -3084,11 +3083,12 @@ class __$$KitchenSink_NestedCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl
 /// @nodoc
 
 class _$KitchenSink_Nested implements KitchenSink_Nested {
-  const _$KitchenSink_Nested(this.field0, this.field1);
+  const _$KitchenSink_Nested(this.field0, [this.field1 = const KitchenSink.empty()]);
 
   @override
   final int field0;
   @override
+  @JsonKey()
   final KitchenSink field1;
 
   @override
@@ -3202,7 +3202,7 @@ class _$KitchenSink_Nested implements KitchenSink_Nested {
 }
 
 abstract class KitchenSink_Nested implements KitchenSink {
-  const factory KitchenSink_Nested(final int field0, final KitchenSink field1) = _$KitchenSink_Nested;
+  const factory KitchenSink_Nested(final int field0, [final KitchenSink field1]) = _$KitchenSink_Nested;
 
   int get field0;
   KitchenSink get field1;
@@ -3246,10 +3246,11 @@ class __$$KitchenSink_OptionalCopyWithImpl<$Res> extends _$KitchenSinkCopyWithIm
 /// @nodoc
 
 class _$KitchenSink_Optional implements KitchenSink_Optional {
-  const _$KitchenSink_Optional([this.field0, this.field1]);
+  const _$KitchenSink_Optional([this.field0 = -1, this.field1]);
 
   /// Comment on anonymous field
   @override
+  @JsonKey()
   final int? field0;
   @override
   final int? field1;
@@ -3558,9 +3559,10 @@ class __$$KitchenSink_EnumsCopyWithImpl<$Res> extends _$KitchenSinkCopyWithImpl<
 /// @nodoc
 
 class _$KitchenSink_Enums implements KitchenSink_Enums {
-  const _$KitchenSink_Enums(this.field0);
+  const _$KitchenSink_Enums([this.field0 = Weekdays.sunday]);
 
   @override
+  @JsonKey()
   final Weekdays field0;
 
   @override
@@ -3673,7 +3675,7 @@ class _$KitchenSink_Enums implements KitchenSink_Enums {
 }
 
 abstract class KitchenSink_Enums implements KitchenSink {
-  const factory KitchenSink_Enums(final Weekdays field0) = _$KitchenSink_Enums;
+  const factory KitchenSink_Enums([final Weekdays field0]) = _$KitchenSink_Enums;
 
   Weekdays get field0;
   @JsonKey(ignore: true)
@@ -4974,9 +4976,10 @@ class __$$_UserIdCopyWithImpl<$Res> extends _$UserIdCopyWithImpl<$Res, _$_UserId
 /// @nodoc
 
 class _$_UserId implements _UserId {
-  const _$_UserId({required this.value});
+  const _$_UserId({this.value = 0});
 
   @override
+  @JsonKey()
   final int value;
 
   @override
@@ -5002,7 +5005,7 @@ class _$_UserId implements _UserId {
 }
 
 abstract class _UserId implements UserId {
-  const factory _UserId({required final int value}) = _$_UserId;
+  const factory _UserId({final int value}) = _$_UserId;
 
   @override
   int get value;
