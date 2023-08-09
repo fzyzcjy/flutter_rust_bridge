@@ -137,7 +137,6 @@ impl DartApiSpec {
         let shared_dart_api2wire_funcs = if is_multi_blocks_case(None) {
             let shared_config = all_configs.last().unwrap();
             assert!(shared_config.shared);
-
             let raw_ir_file = shared_config.get_ir_file(all_configs).unwrap();
             let shared_ir_file = transformer::transform(raw_ir_file);
             let distinct_input_types = shared_ir_file.distinct_types(true, false, all_configs);
@@ -161,6 +160,9 @@ impl DartApiSpec {
 
         COMMON_API2WIRE.with(|data| {
             *data.borrow_mut() = dart_api2wire_funcs.common.clone();
+            FETCHED_FOR_COMMON_API2WIRE.with(|data| {
+                *data.borrow_mut() = true;
+            });
         });
 
         let dart_funcs = (ir_file

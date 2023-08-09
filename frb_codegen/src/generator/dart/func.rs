@@ -191,23 +191,14 @@ pub(crate) fn get_api2wire_prefix(
     ir_type: &IrType,
     for_dart_basic_file: bool,
 ) -> String {
-    // NOTE: `COMMON_API2WIRE` should have been fetched by
-    // `DartApiSpec::from()` according to the whole frb generation routine,
-    FETCHED_FOR_COMMON_API2WIRE.with(|data| {
-        let borrow_mut = *data.borrow_mut();
-        if !borrow_mut {
-
-            // TODO：panic!("COMMON_API2WIRE not fetched");
-        } else {
-            log::debug!(
-                "fetched COMMON BY ir_file from block:{:?}",
-                ir_file.block_index
-            ); // TODO: delete
-        }
-    });
+    if is_multi_blocks_case(None) && !ir_file.shared {
+        // NOTE: For multi-blocks case, `COMMON_API2WIRE` should have been fetched by
+        // `DartApiSpec::from()` according to the whole frb generation routine.
+        FETCHED_FOR_COMMON_API2WIRE.with(|data| {
+            assert!(*data.borrow_mut(), "COMMON_API2WIRE not fetched before");
+        });
+    }
     let common_api2wire_body = COMMON_API2WIRE.with(|data| data.borrow_mut().clone());
-    if !common_api2wire_body.is_empty() {}
-
     let prefix = if common_api2wire_body.contains(api2wire_func) {
         ""
     } else {
