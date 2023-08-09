@@ -277,14 +277,13 @@ fn extract_module(expanded: &str, module: Option<&str>) -> String {
             let searched = format!("mod {module} {{\n");
             let start = expanded
                 .find(&searched)
-                .and_then(|n| Some(n + searched.len()))
+                .map(|n| n + searched.len())
                 .unwrap_or_default();
             let end = expanded[start..]
                 .find("\n}")
-                .and_then(|n| Some(n + start))
+                .map(|n| n + start)
                 .unwrap_or(expanded.len());
-            let part = String::from(&expanded[start..end]);
-            part
+            String::from(&expanded[start..end])
         }
         None => String::from(expanded),
     }

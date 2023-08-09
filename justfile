@@ -44,6 +44,7 @@ dart_pub_get mode="default":
 # ============================ build & test ============================
 
 rust_build_and_test:
+    just _install_crate cargo-expand
     just _rust_build_and_test_single frb_codegen --features uuid,chrono
     just _rust_build_and_test_single frb_rust
     just _rust_build_and_test_single frb_macros
@@ -191,6 +192,7 @@ ci_codegen:
     just install_ffigen_dependency
     just dart_pub_get
     just dart_check_included_source
+    just install_expand
     just generate_all
     just check_no_git_diff
 
@@ -291,6 +293,9 @@ install_ndk:
 
 install_lipo:
     just _install_crate cargo-lipo
+
+install_expand:
+    just _install_crate cargo-expand
 
 _install_crate name="cargo-lipo":
     #!/usr/bin/env bash
