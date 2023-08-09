@@ -1,3 +1,4 @@
+use std::cell::RefCell;
 use std::collections::HashSet;
 
 use std::fmt::Display;
@@ -12,11 +13,7 @@ use convert_case::{Case, Casing};
 use pathdiff::diff_paths;
 
 /// get the raw or shared API module name
-pub fn mod_from_rust_path(
-    config: &crate::Opts,
-    all_configs: &[crate::Opts],
-    get_shared_mod: bool,
-) -> Option<String> {
+pub fn mod_from_rust_path(config: &crate::Opts, get_shared_mod: bool) -> Option<String> {
     fn get_module_name(code_path: &str, crate_path: &str) -> String {
         Path::new(code_path)
             .strip_prefix(Path::new(crate_path).join("src"))
@@ -34,7 +31,7 @@ pub fn mod_from_rust_path(
                 get_module_name(&config.rust_input_path, &config.rust_crate_dir)
             } else {
                 // get the shared module in the regular block
-                if is_multi_blocks_case(all_configs) {
+                if is_multi_blocks_case(None) {
                     get_module_name(
                         &config.shared_rust_output_path.clone().unwrap(),
                         &config.rust_crate_dir,
@@ -60,8 +57,21 @@ pub fn mod_from_rust_path(
     }
 }
 
-pub fn is_multi_blocks_case(all_configs: &[crate::Opts]) -> bool {
-    match all_configs.len() {
+thread_local!(pub static IS_MULTI_BLOCKS_CASE: RefCell<Option<bool>> = RefCell::new(None));
+
+pub fn is_multi_blocks_case(all_configs: Option<&[crate::Opts]>) -> bool {
+    // if already fetched, get it directly from `IS_MULTI_BLOCKS_CASE`
+    if all_configs.is_none() {
+        return IS_MULTI_BLOCKS_CASE.with(|data| {
+            let v = *data.borrow();
+            assert!(v.is_some());
+            v.unwrap()
+        });
+    }
+
+    // fetch from scratch
+    let all_configs = all_configs.unwrap();
+    let r = match all_configs.len() {
         0 => panic!("there should be at least 1 config"),
         1 => {
             assert!(!all_configs[0].shared); // single item must not be shared
@@ -76,7 +86,13 @@ pub fn is_multi_blocks_case(all_configs: &[crate::Opts]) -> bool {
             assert!(all_configs[all_configs.len() - 1].shared); // last item must be shared
             true
         }
-    }
+    };
+
+    IS_MULTI_BLOCKS_CASE.with(|data| {
+        *data.borrow_mut() = Some(r);
+    });
+
+    r
 }
 
 pub fn with_changed_file<F: FnOnce() -> crate::Result<()>>(

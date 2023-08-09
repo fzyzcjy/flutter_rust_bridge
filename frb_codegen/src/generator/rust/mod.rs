@@ -62,10 +62,15 @@ impl Output {
             .map(|s| (*s).clone())
             .collect::<Vec<_>>();
 
+        if is_multi_blocks_case(None) {
+            return exclude_symbols;
+        }
+
+        // the below is only for multi-blocks case
         if !ir_file.shared {
             // for regular blocks, push those methods from shared types in
-            FETCHED_FOR_SHARED_METHODS_WIRE_NAMES.with(|_has_fetched| {
-                // assert!(*has_fetched.borrow());
+            FETCHED_FOR_SHARED_METHODS_WIRE_NAMES.with(|has_fetched| {
+                assert!(*has_fetched.borrow());
                 let shared_method_names =
                     SHARED_METHODS_WIRE_NAMES.with(|data| data.borrow().clone());
                 exclude_symbols.extend(shared_method_names);
@@ -238,7 +243,7 @@ impl<'a> Generator<'a> {
         );
         (lines.io).push(self.section_header_comment("impl NewWithNullPtr"));
         assert!(!all_configs.is_empty());
-        if all_configs.len() == 1 || ir_file.shared {
+        if !is_multi_blocks_case(None) || ir_file.shared {
             (lines.io).push(self.generate_new_with_nullptr_misc().to_string());
         }
         lines.io.extend(
@@ -250,7 +255,7 @@ impl<'a> Generator<'a> {
         (lines.io).push(self.section_header_comment("sync execution mode utility"));
 
         // add `free_WireSyncReturn` only for single-block case or the share block in multi-blocks case
-        let is_multi_blocks = is_multi_blocks_case(all_configs);
+        let is_multi_blocks = is_multi_blocks_case(None);
         if (!is_multi_blocks && !ir_file.shared) || (is_multi_blocks && ir_file.shared) {
             lines.io.push(self.generate_sync_execution_mode_utility());
         }

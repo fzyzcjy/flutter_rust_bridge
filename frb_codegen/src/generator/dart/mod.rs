@@ -134,7 +134,7 @@ impl DartApiSpec {
             .collect::<Vec<_>>();
 
         // essential shared dart_api2wire funcs
-        let shared_dart_api2wire_funcs = if is_multi_blocks_case(all_configs) {
+        let shared_dart_api2wire_funcs = if is_multi_blocks_case(None) {
             let shared_config = all_configs.last().unwrap();
             assert!(shared_config.shared);
 
@@ -388,7 +388,7 @@ fn generate_dart_implementation_body(
         dart_wasm_module,
         ..
     } = spec;
-    let shared_config = if is_multi_blocks_case(all_configs) {
+    let shared_config = if is_multi_blocks_case(None) {
         all_configs.last()
     } else {
         None

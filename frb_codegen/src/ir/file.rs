@@ -1,7 +1,7 @@
 use convert_case::{Case, Casing};
 
 use crate::target::Target;
-use crate::utils::misc::{mod_from_rust_path, BlockIndex};
+use crate::utils::misc::{is_multi_blocks_case, mod_from_rust_path, BlockIndex};
 use crate::{generator, ir::*, Opts};
 use std::collections::{HashMap, HashSet};
 use std::thread;
@@ -471,18 +471,18 @@ impl IrFile {
     }
 
     pub fn generate_rust(&self, config: &Opts, all_configs: &[Opts]) -> generator::rust::Output {
-        let regular_mod = mod_from_rust_path(config, all_configs, false).unwrap();
-        let shared_mod = SHARED_MODULE.with(|text| match all_configs.len() {
-            0 => panic!("all_configs.len() == 0"),
-            1 => None,
-            _ => {
+        let regular_mod = mod_from_rust_path(config, false).unwrap();
+        let shared_mod = if is_multi_blocks_case(None) {
+            SHARED_MODULE.with(|text| {
                 let mut x = text.borrow_mut();
                 if x.is_none() {
-                    *x = mod_from_rust_path(config, all_configs, true);
+                    *x = mod_from_rust_path(config, true);
                 }
                 x.clone()
-            }
-        });
+            })
+        } else {
+            None
+        };
 
         generator::rust::generate(
             self,

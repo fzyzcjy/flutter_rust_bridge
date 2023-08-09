@@ -5,7 +5,7 @@ use crate::others::{
     extract_dart_wire_content, modify_dart_wire_content, sanity_check, DartBasicCode,
     DUMMY_WIRE_CODE_FOR_BINDGEN, EXTRA_EXTERN_FUNC_NAMES,
 };
-use crate::utils::misc::{with_changed_file, ExtraTraitForVec};
+use crate::utils::misc::{is_multi_blocks_case, with_changed_file, ExtraTraitForVec};
 use crate::{command_run, commands, ensure_tools_available, generator, ir, Opts};
 use convert_case::{Case, Casing};
 use itertools::Itertools;
@@ -132,7 +132,6 @@ pub(crate) fn generate_dart_code(
     if let Some(dart_decl_output_path) = &config.dart_decl_output_path {
         write_dart_decls(
             config,
-            all_configs,
             dart_decl_output_path,
             dart_output_dir,
             &generated_dart,
@@ -226,7 +225,6 @@ thread_local!(static HAS_GENERATED_DART_DECL_FILE: RefCell<bool> = RefCell::new(
 
 fn write_dart_decls(
     config: &Opts,
-    all_configs: &[Opts],
     dart_decl_output_path: &str,
     dart_output_dir: &Path,
     generated_dart: &crate::generator::dart::Output,
@@ -280,7 +278,7 @@ fn write_dart_decls(
     // erase duplicated lines for multi-blocks case, like the redundant import statements and class definitions
     // NOTE: since dart file with syntax error would make the whole generation stuck,
     // the refinement MUST be done at the end after EACH dart block generation.
-    if all_configs.len() > 1 {
+    if is_multi_blocks_case(None) {
         let mut contents =
             std::fs::read_to_string(dart_decl_output_path).expect("Unable to read file");
         remove_dupilicated_prehead_and_imports(&mut contents);

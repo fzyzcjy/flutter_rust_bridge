@@ -2,7 +2,8 @@ use crate::config::opts::Opts;
 use crate::config::raw_opts::RawOpts;
 use crate::config::refine_c_output::get_refined_c_output;
 use crate::utils::misc::{
-    get_symbols_if_no_duplicates, is_same_directory, BlockIndex, ExtraTraitForVec, PathExt,
+    get_symbols_if_no_duplicates, is_multi_blocks_case, is_same_directory, BlockIndex,
+    ExtraTraitForVec, PathExt,
 };
 use anyhow::*;
 use clap::CommandFactory;
@@ -244,10 +245,8 @@ pub fn config_parse(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
 
     // if shared API-block(config) is essential, generate and add it to vec
     assert!(!regular_configs.is_empty());
-    let (distinct_symbols, _implicit_duplicated_symbols) =
-        get_symbols_if_no_duplicates(&regular_configs)?;
     let all_configs = if regular_configs.len() == 1 {
-        regular_configs
+        regular_configs.clone()
     } else {
         // NOTE: since there would be at least 1 shared API called `free_WireSyncReturn` for multi-blocks,
         // the extra shared config is essential, whatever `_implicit_duplicated_symbols` is empty or not.
@@ -284,10 +283,16 @@ pub fn config_parse(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
             dart3,
             keep_going,
         };
-        [regular_configs, vec![shared_config]].concat()
+        [regular_configs.clone(), vec![shared_config]].concat()
     };
 
-    Ok((all_configs, distinct_symbols))
+    // set it here, so that no need to manually check afterwards with param `all_configs`
+    let _ = is_multi_blocks_case(Some(&all_configs));
+
+    Ok((
+        all_configs,
+        get_symbols_if_no_duplicates(&regular_configs)?.0,
+    ))
 }
 
 #[inline(never)]

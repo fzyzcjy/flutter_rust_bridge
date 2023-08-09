@@ -1,7 +1,7 @@
 use std::path::Path;
 
 use crate::config::opts::Opts;
-use crate::utils::misc::{BlockIndex, PathExt};
+use crate::utils::misc::{is_multi_blocks_case, BlockIndex, PathExt};
 
 pub fn generate_dummy(
     config: &Opts,
@@ -9,7 +9,7 @@ pub fn generate_dummy(
     func_names: &[String],
     c_path_index: usize,
 ) -> String {
-    if all_configs.len() > 1 {
+    if is_multi_blocks_case(None) {
         let basic_dummy_func = get_dummy_func(&config.class_name, func_names);
         if config.block_index == BlockIndex(all_configs.len() - 1) {
             let func_names = all_configs
