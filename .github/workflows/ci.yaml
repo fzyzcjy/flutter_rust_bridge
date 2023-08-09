@@ -28,7 +28,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: 1.68.0
+          toolchain: 1.70.0
           components: rustfmt
       - uses: dart-lang/setup-dart@v1
         with:
@@ -78,8 +78,10 @@ jobs:
           cache-key: "$${{ steps.rust-toolchain.outputs.cachekey }}"
       - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: 1.68.0
+          toolchain: 1.70.0
+      
       - name: Add Rust targets
+      
         run: rustup target add aarch64-apple-ios x86_64-apple-ios
       - uses: extractions/setup-just@v1
         env:
@@ -127,8 +129,10 @@ jobs:
       - id: checkout
         uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: 1.68.0
+          toolchain: 1.70.0
+      
       - uses: actions/setup-java@v1
+      
         with:
           java-version: "11.x" # "betterprogramming.pub" says must be java "8"
       - uses: extractions/setup-just@v1
@@ -206,8 +210,10 @@ jobs:
           architecture: x64
       - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: 1.68.0
+          toolchain: 1.70.0
+      
       - uses: extractions/setup-just@v1
+      
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -250,8 +256,10 @@ jobs:
           architecture: x64
       - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: 1.68.0
+          toolchain: 1.70.0
+      
       - uses: extractions/setup-just@v1
+      
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -271,8 +279,10 @@ jobs:
           architecture: x64
       - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: 1.68.0
+          toolchain: 1.70.0
+      
       - name: Setup headless display
+      
         uses: pyvista/setup-headless-display-action@v1
       - uses: extractions/setup-just@v1
         env:
@@ -356,8 +366,10 @@ jobs:
       - uses: actions/checkout@v2
       - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: 1.68.0
+          toolchain: 1.70.0
+        
           components: rustfmt
+      
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: 3.0.0
@@ -384,8 +396,10 @@ jobs:
       - id: rust-toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: 1.68.0
+          toolchain: 1.70.0
+        
           components: rustfmt
+      
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: 3.0.0
@@ -406,10 +420,12 @@ jobs:
     strategy:
       matrix:
         cargo_toolchain_version:
-          - 1.68.0
+          - 1.70.0
+    
 
     steps:
       - uses: actions/checkout@v2
+      
       - id: rust-toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
@@ -440,7 +456,9 @@ jobs:
         with:
           cache: true
           channel: "stable"
+        
           flutter-version: 3.10.0
+      
       - uses: extractions/setup-just@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -464,8 +482,10 @@ jobs:
       - uses: actions/checkout@v2
       - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: 1.68.0
+          toolchain: 1.70.0
+        
           components: rustfmt, clippy
+      
       - uses: subosito/flutter-action@v2
         with:
           cache: true
