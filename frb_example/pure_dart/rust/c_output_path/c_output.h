@@ -119,6 +119,24 @@ typedef struct wire_Note {
   struct wire_uint_8_list *body;
 } wire_Note;
 
+typedef struct wire_MyEnumFreezed_A {
+  int32_t field0;
+} wire_MyEnumFreezed_A;
+
+typedef struct wire_MyEnumFreezed_B {
+  struct wire_uint_8_list *field0;
+} wire_MyEnumFreezed_B;
+
+typedef union MyEnumFreezedKind {
+  struct wire_MyEnumFreezed_A *A;
+  struct wire_MyEnumFreezed_B *B;
+} MyEnumFreezedKind;
+
+typedef struct wire_MyEnumFreezed {
+  int32_t tag;
+  union MyEnumFreezedKind *kind;
+} wire_MyEnumFreezed;
+
 typedef struct wire_Customized {
   struct wire_uint_8_list *final_field;
   struct wire_uint_8_list *non_final_field;
@@ -590,6 +608,8 @@ void wire_handle_return_enum(int64_t port_, struct wire_uint_8_list *input);
 
 void wire_handle_enum_parameter(int64_t port_, int32_t weekday);
 
+WireSyncReturn wire_handle_enum_sync_freezed(struct wire_MyEnumFreezed *value);
+
 void wire_handle_customized_struct(int64_t port_, struct wire_Customized *val);
 
 void wire_handle_enum_struct(int64_t port_, struct wire_KitchenSink *val);
@@ -830,6 +850,8 @@ void wire_test_tuple(int64_t port_, struct wire___record__String_i32 *value);
 
 void wire_test_tuple_2(int64_t port_, struct wire_list___record__String_i32 *value);
 
+WireSyncReturn wire_sync_return_mirror(void);
+
 void wire_as_string__method__Event(int64_t port_, struct wire_Event *that);
 
 void wire_sum__method__SumWith(int64_t port_, struct wire_SumWith *that, uint32_t y, uint32_t z);
@@ -935,6 +957,8 @@ struct wire_KitchenSink *new_box_autoadd_kitchen_sink(void);
 struct wire_Measure *new_box_autoadd_measure(void);
 
 struct wire_MessageId *new_box_autoadd_message_id(void);
+
+struct wire_MyEnumFreezed *new_box_autoadd_my_enum_freezed(void);
 
 struct wire_MyNestedStruct *new_box_autoadd_my_nested_struct(void);
 
@@ -1098,6 +1122,10 @@ union MeasureKind *inflate_Measure_Speed(void);
 
 union MeasureKind *inflate_Measure_Distance(void);
 
+union MyEnumFreezedKind *inflate_MyEnumFreezed_A(void);
+
+union MyEnumFreezedKind *inflate_MyEnumFreezed_B(void);
+
 union SpeedKind *inflate_Speed_GPS(void);
 
 void free_WireSyncReturn(WireSyncReturn ptr);
@@ -1146,6 +1174,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_print_note);
     dummy_var ^= ((int64_t) (void*) wire_handle_return_enum);
     dummy_var ^= ((int64_t) (void*) wire_handle_enum_parameter);
+    dummy_var ^= ((int64_t) (void*) wire_handle_enum_sync_freezed);
     dummy_var ^= ((int64_t) (void*) wire_handle_customized_struct);
     dummy_var ^= ((int64_t) (void*) wire_handle_enum_struct);
     dummy_var ^= ((int64_t) (void*) wire_use_imported_struct);
@@ -1264,6 +1293,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_test_struct_with_enum);
     dummy_var ^= ((int64_t) (void*) wire_test_tuple);
     dummy_var ^= ((int64_t) (void*) wire_test_tuple_2);
+    dummy_var ^= ((int64_t) (void*) wire_sync_return_mirror);
     dummy_var ^= ((int64_t) (void*) wire_as_string__method__Event);
     dummy_var ^= ((int64_t) (void*) wire_sum__method__SumWith);
     dummy_var ^= ((int64_t) (void*) wire_new__static_method__ConcatenateWith);
@@ -1312,6 +1342,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_kitchen_sink);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_measure);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_message_id);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_enum_freezed);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_nested_struct);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_size);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_size_freezed);
@@ -1393,6 +1424,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) inflate_KitchenSink_Enums);
     dummy_var ^= ((int64_t) (void*) inflate_Measure_Speed);
     dummy_var ^= ((int64_t) (void*) inflate_Measure_Distance);
+    dummy_var ^= ((int64_t) (void*) inflate_MyEnumFreezed_A);
+    dummy_var ^= ((int64_t) (void*) inflate_MyEnumFreezed_B);
     dummy_var ^= ((int64_t) (void*) inflate_Speed_GPS);
     dummy_var ^= ((int64_t) (void*) free_WireSyncReturn);
     dummy_var ^= ((int64_t) (void*) store_dart_post_cobject);
