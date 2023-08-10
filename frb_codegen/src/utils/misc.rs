@@ -189,14 +189,18 @@ macro_rules! ir {
 pub fn read_rust_file(path: &Path) -> String {
     let path = path.to_str().unwrap();
     let (dir, module) = get_dir_and_mod(path);
-    cargo_expand(dir, module, path)
+    cargo_expand(&dir, module, path)
 }
 
-fn get_dir_and_mod(path: &str) -> (&str, Option<String>) {
-    let src_index = path.rfind("/src/").unwrap();
+fn get_dir_and_mod(path: &str) -> (String, Option<String>) {
+    #[cfg(windows)]
+    let path = &path.replace('\\', "/");
+    let src_index = path
+        .rfind("/src/")
+        .expect("src dir must exist in rust project");
     let dir = &path[..src_index];
     let module = &path[src_index + 5..];
-    let module = module.strip_suffix("/mod.rs").unwrap_or(module);
+    let module = module.strip_suffix("mod.rs").unwrap_or(module);
     let module = match module {
         "lib.rs" => None,
         "" => None,
@@ -210,7 +214,7 @@ fn get_dir_and_mod(path: &str) -> (&str, Option<String>) {
             )
         }
     };
-    (dir, module)
+    (String::from(dir), module)
 }
 
 #[cfg(test)]
