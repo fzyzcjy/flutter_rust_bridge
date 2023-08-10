@@ -1,4 +1,4 @@
-use std::{collections::HashSet, path::PathBuf};
+use std::collections::HashSet;
 
 use std::fmt::Display;
 use std::fs;
@@ -186,17 +186,48 @@ macro_rules! ir {
     }
 }
 
-pub fn read_rust_file(path: &PathBuf) -> String {
-    let module = match path.file_name().and_then(|e| e.to_str()).unwrap_or("") {
-        "mod.rs" => path
-            .parent()
-            .and_then(|p| p.file_name())
-            .and_then(|f| f.to_str()),
+pub fn read_rust_file(path: &Path) -> String {
+    let path = path.to_str().unwrap();
+    let (dir, module) = get_dir_and_mod(path);
+    cargo_expand(dir, module, path)
+}
+
+fn get_dir_and_mod(path: &str) -> (&str, Option<String>) {
+    let src_index = path.rfind("/src/").unwrap();
+    let dir = &path[..src_index];
+    let module = &path[src_index + 5..];
+    let module = module.strip_suffix("/mod.rs").unwrap_or(module);
+    let module = match module {
         "lib.rs" => None,
         "" => None,
-        _ => path.file_stem().and_then(|f| f.to_str()),
+        _ => {
+            let module = module.replace('/', "::");
+            Some(
+                module
+                    .strip_suffix(".rs")
+                    .map(String::from)
+                    .unwrap_or(module),
+            )
+        }
     };
-    let dir = path.directory_name_str().unwrap();
-    let dir = dir.strip_suffix("/src").unwrap_or(dir);
-    cargo_expand(dir, module)
+    (dir, module)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    pub fn simple_mod() {
+        let (dir, module) = get_dir_and_mod("/project/src/api.rs");
+        assert_eq!("/project", dir);
+        assert_eq!(Some(String::from("api")), module);
+    }
+
+    #[test]
+    pub fn sub_mod() {
+        let (dir, module) = get_dir_and_mod("/project/src/sub/subsub.rs");
+        assert_eq!("/project", dir);
+        assert_eq!(Some(String::from("sub::subsub")), module);
+    }
 }

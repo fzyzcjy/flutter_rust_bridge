@@ -255,55 +255,52 @@ lazy_static! {
     static ref CACHE: Mutex<HashMap<String, String>> = Mutex::new(HashMap::new());
 }
 
-pub fn cargo_expand(path: &str, module: Option<&str>) -> String {
-    let mut cache = CACHE.lock().unwrap();
-    match cache.get(path) {
-        Some(expanded) => {
-            info!("cargo expand cache hit");
-            extract_module(expanded, module)
-        }
-        None => {
-            let expanded = run_cargo_expand(path);
-            let module_expanded = extract_module(&expanded, module);
-            cache.insert(path.into(), expanded);
-            module_expanded
-        }
+pub fn cargo_expand(dir: &str, module: Option<String>, file: &str) -> String {
+    let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
+    if !manifest_dir.is_empty() && dir == manifest_dir {
+        warn!(
+            "can not run cargo expand on {dir} because cargo is already running and would block cargo-expand. This might cause errors if your api contains macros."
+        );
+        return fs::read_to_string(file).unwrap_or_default();
     }
+    let mut cache = CACHE.lock().unwrap();
+    let expanded = cache
+        .entry(String::from(dir))
+        .or_insert_with(|| run_cargo_expand(dir));
+    extract_module(expanded, module)
 }
 
-fn extract_module(expanded: &str, module: Option<&str>) -> String {
-    match module {
-        Some(module) => {
+fn extract_module(mut expanded: &str, module: Option<String>) -> String {
+    if let Some(module) = module {
+        let mut spaces = 0;
+        for module in module.split("::") {
             let searched = format!("mod {module} {{\n");
             let start = expanded
                 .find(&searched)
                 .map(|n| n + searched.len())
                 .unwrap_or_default();
+            if start == 0 {
+                continue;
+            }
             let end = expanded[start..]
-                .find("\n}")
+                .find(&format!("\n{}}}", " ".repeat(spaces)))
                 .map(|n| n + start)
                 .unwrap_or(expanded.len());
-            String::from(&expanded[start..end])
+            expanded = &expanded[start..end];
+            spaces += 4;
         }
-        None => String::from(expanded),
     }
+    String::from(expanded)
 }
 
-fn run_cargo_expand(path: &str) -> String {
-    info!("Running cargo expand in '{path}'");
-    let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
-    if !manifest_dir.is_empty() && path == manifest_dir {
-        warn!(
-            "can not run cargo expand on {path} because cargo is already running and would block cargo-expand. This might cause errors if your api contains macros."
-        );
-        return fs::read_to_string(path).unwrap_or_default();
-    }
+fn run_cargo_expand(dir: &str) -> String {
+    info!("Running cargo expand in '{dir}'");
     let args = vec![
         PathBuf::from("expand"),
         PathBuf::from("--theme=none"),
         PathBuf::from("--ugly"),
     ];
-    match execute_command("cargo", &args, Some(path)) {
+    match execute_command("cargo", &args, Some(dir)) {
         Ok(output) => {
             let stdout = String::from_utf8(output.stdout).unwrap_or_default();
             let stderr = String::from_utf8(output.stderr).unwrap_or_default();
@@ -325,7 +322,37 @@ fn run_cargo_expand(path: &str) -> String {
                 .replace("/// frb_marker: ", "")
         }
         Err(e) => {
-            panic!("Could not expand rust code at path {}: {}\n", path, e);
+            panic!("Could not expand rust code at path {}: {}\n", dir, e);
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::extract_module;
+
+    #[test]
+    pub fn extract_mod() {
+        let src = "mod module_1 {
+    // code 1
+}
+mod module_2 {
+    // code 2
+}";
+        let extracted = extract_module(src, Some(String::from("module_1")));
+        assert_eq!(String::from("    // code 1"), extracted);
+        let extracted = extract_module(src, Some(String::from("module_2")));
+        assert_eq!(String::from("    // code 2"), extracted);
+    }
+
+    #[test]
+    pub fn extract_submod() {
+        let src = "mod module {
+    mod submodule {
+        // sub code
+    }
+}";
+        let extracted = extract_module(src, Some(String::from("module::submodule")));
+        assert_eq!(String::from("        // sub code"), extracted);
     }
 }

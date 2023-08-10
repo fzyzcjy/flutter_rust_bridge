@@ -105,10 +105,14 @@ pub(crate) fn execute_command<'a>(
 
     let stdout = String::from_utf8_lossy(&result.stdout);
     if result.status.success() {
-        let mut error = false;
+        debug!(
+            "command={:?} stdout={} stderr={}",
+            cmd,
+            stdout,
+            String::from_utf8_lossy(&result.stderr)
+        );
         if stdout.contains("fatal error") {
             warn!("See keywords such as `error` in command output. Maybe there is a problem? command={:?} output={:?}", cmd, result);
-            error = true;
         } else if args_display.contains("ffigen") && stdout.contains("[SEVERE]") {
             // HACK: If ffigen can't find a header file it will generate broken
             // bindings but still exit successfully. We can detect these broken
@@ -120,15 +124,6 @@ pub(crate) fn execute_command<'a>(
             warn!(
                 "The `ffigen` command emitted a SEVERE error. Maybe there is a problem? command={:?} output=\n{}",
                 cmd, String::from_utf8_lossy(&result.stdout)
-            );
-            error = true;
-        }
-        if error {
-            debug!(
-                "command={:?} stdout={} stderr={}",
-                cmd,
-                stdout,
-                String::from_utf8_lossy(&result.stderr)
             );
         }
     } else {
