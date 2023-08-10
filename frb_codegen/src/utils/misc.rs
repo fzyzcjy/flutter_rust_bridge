@@ -199,6 +199,8 @@ fn get_dir_and_mod(path: &str) -> (String, Option<String>) {
         .rfind("/src/")
         .expect("src dir must exist in rust project");
     let dir = &path[..src_index];
+    #[cfg(windows)]
+    let dir = dir.strip_prefix("//?/").unwrap_or(dir);
     let module = &path[src_index + 5..];
     let module = module.strip_suffix("mod.rs").unwrap_or(module);
     let module = match module {
