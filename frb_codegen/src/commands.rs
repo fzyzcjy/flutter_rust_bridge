@@ -270,25 +270,26 @@ pub fn cargo_expand(dir: &str, module: Option<String>, file: &str) -> String {
     extract_module(expanded, module)
 }
 
-fn extract_module(mut expanded: &str, module: Option<String>) -> String {
+fn extract_module(expanded: &str, module: Option<String>) -> String {
     if let Some(module) = module {
-        let mut spaces = 0;
-        for module in module.split("::") {
-            let searched = format!("mod {module} {{\n");
-            let start = expanded
-                .find(&searched)
-                .map(|n| n + searched.len())
-                .unwrap_or_default();
-            if start == 0 {
-                continue;
-            }
-            let end = expanded[start..]
-                .find(&format!("\n{}}}", " ".repeat(spaces)))
-                .map(|n| n + start)
-                .unwrap_or(expanded.len());
-            expanded = &expanded[start..end];
-            spaces += 4;
-        }
+        let (_, expanded) = module
+            .split("::")
+            .fold((0, expanded), |(spaces, expanded), module| {
+                let searched = format!("mod {module} {{\n");
+                let start = expanded
+                    .find(&searched)
+                    .map(|n| n + searched.len())
+                    .unwrap_or_default();
+                if start == 0 {
+                    return (spaces, expanded);
+                }
+                let end = expanded[start..]
+                    .find(&format!("\n{}}}", " ".repeat(spaces)))
+                    .map(|n| n + start)
+                    .unwrap_or(expanded.len());
+                (spaces + 4, &expanded[start..end])
+            });
+        return String::from(expanded);
     }
     String::from(expanded)
 }
