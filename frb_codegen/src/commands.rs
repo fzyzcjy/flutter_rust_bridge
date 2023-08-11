@@ -257,6 +257,8 @@ lazy_static! {
 
 pub fn cargo_expand(dir: &str, module: Option<String>, file: &str) -> String {
     let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
+    #[cfg(windows)]
+    let manifest_dir = &manifest_dir.replace('\\', "/");
     if !manifest_dir.is_empty() && dir == manifest_dir {
         warn!(
             "can not run cargo expand on {dir} because cargo is already running and would block cargo-expand. This might cause errors if your api contains macros."
