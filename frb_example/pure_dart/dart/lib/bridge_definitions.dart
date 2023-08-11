@@ -1362,9 +1362,11 @@ class Log2 {
 
 class MacroStruct {
   final int data;
+  int nonFinalData;
 
-  const MacroStruct({
+  MacroStruct({
     required this.data,
+    required this.nonFinalData,
   });
 }
 

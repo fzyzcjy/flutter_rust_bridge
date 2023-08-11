@@ -3549,9 +3549,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   MacroStruct _wire2api_macro_struct(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    if (arr.length != 2) throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
     return MacroStruct(
       data: _wire2api_i32(arr[0]),
+      nonFinalData: _wire2api_i32(arr[1]),
     );
   }
 

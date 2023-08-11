@@ -3202,7 +3202,11 @@ impl rust2dart::IntoIntoDart<Log2> for Log2 {
 
 impl support::IntoDart for MacroStruct {
     fn into_dart(self) -> support::DartAbi {
-        vec![self.data.into_into_dart().into_dart()].into_dart()
+        vec![
+            self.data.into_into_dart().into_dart(),
+            self.non_final_data.into_into_dart().into_dart(),
+        ]
+        .into_dart()
     }
 }
 impl support::IntoDartExceptPrimitive for MacroStruct {}

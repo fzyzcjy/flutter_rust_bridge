@@ -1698,12 +1698,18 @@ pub fn sync_return_mirror() -> SyncReturn<ApplicationSettings> {
 
 macro_rules! generate_struct {
     () => {
+        #[frb]
         pub struct MacroStruct {
             pub data: i32,
+            #[frb(non_final)]
+            pub non_final_data: i32,
         }
         #[allow(unused)]
         pub fn macro_struct() -> MacroStruct {
-            MacroStruct { data: 123 }
+            MacroStruct {
+                data: 123,
+                non_final_data: 0,
+            }
         }
     };
 }
