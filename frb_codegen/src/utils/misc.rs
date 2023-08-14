@@ -193,15 +193,14 @@ pub fn read_rust_file(path: &Path) -> String {
 }
 
 fn get_dir_and_mod(path: &str) -> (String, Option<String>) {
+    const SRC: &str = "/src/";
     #[cfg(windows)]
     let path = &path.replace('\\', "/");
-    let src_index = path
-        .rfind("/src/")
-        .expect("src dir must exist in rust project");
+    let src_index = path.rfind(SRC).expect("src dir must exist in rust project");
     let dir = &path[..src_index];
     #[cfg(windows)]
     let dir = dir.strip_prefix("//?/").unwrap_or(dir);
-    let module = &path[src_index + 5..];
+    let module = &path[src_index + SRC.len()..];
     let module = module.strip_suffix("mod.rs").unwrap_or(module);
     let module = match module {
         "lib.rs" => None,
