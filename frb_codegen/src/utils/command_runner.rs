@@ -1,12 +1,11 @@
 use crate::commands::CommandResult;
 use anyhow::Context;
 use itertools::Itertools;
+use log::debug;
 use log::warn;
-use log::{debug, log_enabled};
 use std::path::PathBuf;
 use std::process::Command;
 use std::process::Output;
-use std::process::Stdio;
 
 /// - First argument is either a string of a command, or a function receiving a slice of [`PathBuf`].
 ///   - The command may be followed by `in <expr>` to specify the working directory.
@@ -90,15 +89,9 @@ pub(crate) fn execute_command<'a>(
     let args_display = args.iter().map(|path| path.to_string_lossy()).join(" ");
     let mut cmd = Command::new(bin);
     cmd.args(args);
-    if log_enabled!(log::Level::Info) {
-        cmd.stdout(Stdio::inherit()).stderr(Stdio::inherit());
-    }
 
     if let Some(current_dir) = current_dir {
         cmd.current_dir(current_dir);
-    }
-    if log_enabled!(log::Level::Info) {
-        cmd.stdout(Stdio::inherit()).stderr(Stdio::inherit());
     }
 
     debug!(

@@ -19,7 +19,7 @@ use log::{debug, warn};
 use syn::{Attribute, Ident, ItemEnum, ItemStruct, PathArguments, Type, UseTree};
 
 use super::ParserResult;
-use crate::parser::markers;
+use crate::{parser::markers, utils::misc::read_rust_file};
 
 /// Represents a crate, including a map of its modules, imports, structs and
 /// enums.
@@ -353,8 +353,7 @@ impl Module {
                             match file_path {
                                 Ok(file_path) => {
                                     let source = {
-                                        let source_rust_content =
-                                            fs::read_to_string(&file_path).unwrap();
+                                        let source_rust_content = read_rust_file(&file_path);
                                         debug!("Trying to parse {:?}", file_path);
                                         Some(ModuleSource::File(
                                             syn::parse_file(&source_rust_content).unwrap(),

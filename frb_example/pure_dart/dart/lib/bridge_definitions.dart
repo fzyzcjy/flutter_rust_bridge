@@ -688,6 +688,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kSyncReturnMirrorConstMeta;
 
+  Future<MacroStruct> macroStruct({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kMacroStructConstMeta;
+
   Future<String> asStringMethodEvent({required Event that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kAsStringMethodEventConstMeta;
@@ -1357,6 +1361,16 @@ class Log2 {
   const Log2({
     required this.key,
     required this.value,
+  });
+}
+
+class MacroStruct {
+  final int data;
+  int nonFinalData;
+
+  MacroStruct({
+    required this.data,
+    required this.nonFinalData,
   });
 }
 
