@@ -1,3 +1,7 @@
+## 1.81.0
+
+* Allow macros to be used and will be expanded #1320 (thanks @MnlPhlp)
+
 ## 1.80.2
 
 * Fix and test for SyncReturn of mirrored type #1315 (thanks @MnlPhlp)
