@@ -64,7 +64,7 @@ dart_test_web_unit:
     cd frb_dart && dart test -p chrome test/*.dart
 
 dart_test_web_integration features:
-    dart_pub_get dart_only
+    just dart_pub_get dart_only
     cd {{dir_example_pure_dart}}/dart && dart run \
       ../../../frb_dart/bin/serve.dart \
       -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests \
