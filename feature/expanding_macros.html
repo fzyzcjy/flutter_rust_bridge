@@ -167,13 +167,13 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="expanding-macros"><a class="header" href="#expanding-macros">Expanding macros</a></h1>
-<p>To produce code for types or functions that are generated through macros, it is necessary to first expand the code before it is parsed.
-This is done by invoking <a href="https://crates.io/crates/cargo-expand">cargo-expand</a>, a tool that expands all macros, resulting in code that can then be parsed.</p>
-<p>Caution: This expansion process cannot be utilized when the code-generator is invoked within a build.rs script.
-The issue here is that cargo-expand triggers a project build, and invoking it within build.rs would lead to a deadlock, as cargo-expand would wait for the calling cargo build to complete.
+<p>This library automatically handles macros inside your code. For example, support you calls a macro that will generate a struct, then even if that struct is not in the code directly, this library can understand it.</p>
+<p>The implementation is as follows: To produce code for types or functions that are generated through macros, it is necessary to first expand the code before it is parsed. This is done by invoking <a href="https://crates.io/crates/cargo-expand">cargo-expand</a>, a tool that expands all macros, resulting in code that can then be parsed.</p>
+<p>Caution: This expansion process <strong>cannot</strong> be utilized when the code-generator is invoked within a <code>build.rs</code> script.
+The issue here is that <code>cargo-expand</code> triggers a project build, and invoking it within <code>build.rs</code> would lead to a deadlock, as <code>cargo-expand</code> would wait for the calling cargo build to complete.
 In such cases, code is read from files without macro expansion.
-If your API definition does not rely on macros for code generation this works fine.
-Otherwise you have to call the flutter_rust_bridge_codegen binary seperately.</p>
+If your API definition does not rely on macros for code generation, this works fine.
+Otherwise, you have to call the <code>flutter_rust_bridge_codegen</code> binary seperately.</p>
 
                     </main>
 

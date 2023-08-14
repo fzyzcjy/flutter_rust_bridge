@@ -308,6 +308,7 @@
 <li><a href="https://github.com/dbsxdbsx">dbsxdbsx</a>: Allow generating multiple Rust and Dart files. Fix lint. Update doc. Add logging.</li>
 <li><a href="https://github.com/huang12zheng">huang12zheng</a>: Support type aliases and nested ones. Tweak code generation. Fix rust_build_and_test on Mac. Improve CI logic and cache. Remove bridge field in model.</li>
 <li><a href="https://github.com/trobanga">trobanga</a>: Add support for <code>[T;N]</code> structs. Add <code>usize</code> support. Add a cmd argument. Separate dart tests. Fix fallible list case.</li>
+<li><a href="https://github.com/MnlPhlp">MnlPhlp</a>: Support macros and will auto expand. Allow mirror types in streams.</li>
 <li><a href="https://github.com/SoLongAndThanksForAllThePizza">SoLongAndThanksForAllThePizza</a>: Refactor and enhance SyncReturn to support more types. Refactor post-release CI.</li>
 <li><a href="https://github.com/hsfzxjy">hsfzxjy</a>: Fix SyncReturn use-after-free bug.</li>
 <li><a href="https://github.com/Cupnfish">Cupnfish</a>: Support arrays as function parameters. Allow multi mirror.</li>
@@ -315,7 +316,6 @@
 <li><a href="https://github.com/temeddix">temeddix</a>: Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc. Make zero-copy defaultable.</li>
 <li><a href="https://github.com/Zaitam">Zaitam</a>: Fix when method return struct. Partial migration to Dart 3.</li>
 <li><a href="https://github.com/nitn3lav">nitn3lav</a>: nested <code>struct</code>s without <code>Box</code>.</li>
-<li><a href="https://github.com/MnlPhlp">MnlPhlp</a>: Allow mirror types in streams.</li>
 <li><a href="https://github.com/erikas-taroza">erikas-taroza</a>: Support list of primitive enums. Make enum camelCase. Warn wrong path.</li>
 <li><a href="https://github.com/alexthe2">alexthe2</a>: Add Option Datetime. Add empty structs. Improve doc. Add <code>r#</code>. Fix mirror enum bug.</li>
 <li><a href="https://github.com/AlienKevin">AlienKevin</a>: Add flutter example for macOS. Add doc for Android NDK bug.</li>
@@ -1304,13 +1304,13 @@ flutter_rust_bridge = { workspace = true, features = [&quot;worker-max&quot;] }
 <p>Note that both non-WASM and WASM configurations provide true multithreaded parallelism. They both utilize actual threads in logical cores. However, you do need to be aware of the limitations of WASM, such as inability to use shared memory, etc.</p>
 <p>The options are experimental, and may change later. However, it should be trivial to migrate even if it changes.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="expanding-macros"><a class="header" href="#expanding-macros">Expanding macros</a></h1>
-<p>To produce code for types or functions that are generated through macros, it is necessary to first expand the code before it is parsed.
-This is done by invoking <a href="https://crates.io/crates/cargo-expand">cargo-expand</a>, a tool that expands all macros, resulting in code that can then be parsed.</p>
-<p>Caution: This expansion process cannot be utilized when the code-generator is invoked within a build.rs script.
-The issue here is that cargo-expand triggers a project build, and invoking it within build.rs would lead to a deadlock, as cargo-expand would wait for the calling cargo build to complete.
+<p>This library automatically handles macros inside your code. For example, support you calls a macro that will generate a struct, then even if that struct is not in the code directly, this library can understand it.</p>
+<p>The implementation is as follows: To produce code for types or functions that are generated through macros, it is necessary to first expand the code before it is parsed. This is done by invoking <a href="https://crates.io/crates/cargo-expand">cargo-expand</a>, a tool that expands all macros, resulting in code that can then be parsed.</p>
+<p>Caution: This expansion process <strong>cannot</strong> be utilized when the code-generator is invoked within a <code>build.rs</code> script.
+The issue here is that <code>cargo-expand</code> triggers a project build, and invoking it within <code>build.rs</code> would lead to a deadlock, as <code>cargo-expand</code> would wait for the calling cargo build to complete.
 In such cases, code is read from files without macro expansion.
-If your API definition does not rely on macros for code generation this works fine.
-Otherwise you have to call the flutter_rust_bridge_codegen binary seperately.</p>
+If your API definition does not rely on macros for code generation, this works fine.
+Otherwise, you have to call the <code>flutter_rust_bridge_codegen</code> binary seperately.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="create-new-projects-from-a-template"><a class="header" href="#create-new-projects-from-a-template">Create new projects from a template</a></h1>
 <p>In this chapter, we are going to use create your own project from a code template. It seems a bit long, but it is just because we have tried to describe <em>every detail</em> that you may encounter.</p>
 <p><strong>Remark:</strong> Most complexity does <em>not</em> come from this library, <code>flutter_rust_bridge</code> - it is as same complex as using raw Dart/Flutter FFI with Rust. In other words, it is the Dart/Flutter + Rust toolchain that takes time to set up.</p>
