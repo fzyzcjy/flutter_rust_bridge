@@ -639,7 +639,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge"
-version = "1.80.1"
+version = "1.81.0"
 dependencies = [
  "allo-isolate",
  "anyhow",
@@ -664,7 +664,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_codegen"
-version = "1.80.1"
+version = "1.81.0"
 dependencies = [
  "anyhow",
  "atty",
@@ -740,7 +740,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_macros"
-version = "1.80.1"
+version = "1.81.0"
 
 [[package]]
 name = "futures-core"
