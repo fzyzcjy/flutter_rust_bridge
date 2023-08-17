@@ -958,7 +958,7 @@ class TestIdArray4 extends NonGrowableListView<TestId> {
   TestIdArray4.init(TestId fill) : super(List<TestId>.filled(arraySize, fill));
 }
 
-class A implements FrbException {
+class A {
   final String a;
 
   const A({
@@ -967,7 +967,7 @@ class A implements FrbException {
 }
 
 @freezed
-class Abc with _$Abc implements FrbException {
+class Abc with _$Abc {
   const factory Abc.a(
     A field0,
   ) = Abc_A;
@@ -982,7 +982,7 @@ class Abc with _$Abc implements FrbException {
   ) = Abc_JustInt;
 }
 
-class ApplicationEnv implements FrbException {
+class ApplicationEnv {
   final List<ApplicationEnvVar> vars;
 
   const ApplicationEnv({
@@ -990,7 +990,7 @@ class ApplicationEnv implements FrbException {
   });
 }
 
-class ApplicationEnvVar implements FrbException {
+class ApplicationEnvVar {
   final String field0;
   final bool field1;
 
@@ -1033,7 +1033,7 @@ class ApplicationSettings {
   });
 }
 
-class Attribute implements FrbException {
+class Attribute {
   final String key;
   final String value;
 
@@ -1043,7 +1043,7 @@ class Attribute implements FrbException {
   });
 }
 
-class B implements FrbException {
+class B {
   final int b;
 
   const B({
@@ -1069,7 +1069,7 @@ class Blob {
   });
 }
 
-class C implements FrbException {
+class C {
   final bool c;
 
   const C({
@@ -1137,7 +1137,7 @@ class ContainsMirroredSubStruct {
   });
 }
 
-class Customized implements FrbException {
+class Customized {
   final String finalField;
   String? nonFinalField;
 
@@ -1158,14 +1158,14 @@ class DartOpaqueNested {
 }
 
 @freezed
-class Distance with _$Distance implements FrbException {
+class Distance with _$Distance {
   const factory Distance.unknown() = Distance_Unknown;
   const factory Distance.map(
     double field0,
   ) = Distance_Map;
 }
 
-class Element implements FrbException {
+class Element {
   final String? tag;
   final String? text;
   final List<Attribute>? attributes;
@@ -1179,7 +1179,7 @@ class Element implements FrbException {
   });
 }
 
-class Empty implements FrbException {
+class Empty {
   const Empty();
 }
 
@@ -1194,7 +1194,7 @@ class EnumDartOpaque with _$EnumDartOpaque {
 }
 
 @freezed
-class EnumOpaque with _$EnumOpaque implements FrbException {
+class EnumOpaque with _$EnumOpaque {
   const factory EnumOpaque.struct(
     HideData field0,
   ) = EnumOpaque_Struct;
@@ -1213,7 +1213,7 @@ class EnumOpaque with _$EnumOpaque implements FrbException {
 }
 
 @freezed
-class Event with _$Event implements FrbException {
+class Event with _$Event {
   const Event._();
   const factory Event({
     required FlutterRustBridgeExampleSingleBlockTest bridge,
@@ -1225,7 +1225,7 @@ class Event with _$Event implements FrbException {
       );
 }
 
-class ExoticOptionals implements FrbException {
+class ExoticOptionals {
   final int? int32;
   final int? int64;
   final double? float64;
@@ -1268,7 +1268,7 @@ class F64Array16 extends NonGrowableListView<double> {
   F64Array16.init() : super(Float64List(arraySize));
 }
 
-class FeatureChrono implements FrbException {
+class FeatureChrono {
   final DateTime utc;
   final DateTime local;
   final Duration duration;
@@ -1282,7 +1282,7 @@ class FeatureChrono implements FrbException {
   });
 }
 
-class FeatureUuid implements FrbException {
+class FeatureUuid {
   final UuidValue one;
   final List<UuidValue> many;
 
@@ -1292,7 +1292,7 @@ class FeatureUuid implements FrbException {
   });
 }
 
-class FeedId implements FrbException {
+class FeedId {
   final U8Array8 field0;
 
   const FeedId({
@@ -1310,7 +1310,7 @@ class I32Array2 extends NonGrowableListView<int> {
 }
 
 @freezed
-class KitchenSink with _$KitchenSink implements FrbException {
+class KitchenSink with _$KitchenSink {
   /// Comment on variant
   const factory KitchenSink.empty() = KitchenSink_Empty;
   const factory KitchenSink.primitives({
@@ -1336,7 +1336,7 @@ class KitchenSink with _$KitchenSink implements FrbException {
   ]) = KitchenSink_Enums;
 }
 
-class ListOfNestedRawStringMirrored implements FrbException {
+class ListOfNestedRawStringMirrored {
   final List<NestedRawStringMirrored> raw;
 
   const ListOfNestedRawStringMirrored({
@@ -1344,7 +1344,7 @@ class ListOfNestedRawStringMirrored implements FrbException {
   });
 }
 
-class Log implements FrbException {
+class Log {
   final int key;
   final int value;
 
@@ -1354,7 +1354,7 @@ class Log implements FrbException {
   });
 }
 
-class Log2 implements FrbException {
+class Log2 {
   final int key;
   final String value;
 
@@ -1375,7 +1375,7 @@ class MacroStruct {
 }
 
 @freezed
-class Measure with _$Measure implements FrbException {
+class Measure with _$Measure {
   const factory Measure.speed(
     Speed field0,
   ) = Measure_Speed;
@@ -1392,7 +1392,7 @@ class MessageId {
   });
 }
 
-class MirrorStruct implements FrbException {
+class MirrorStruct {
   final ApplicationSettings a;
   final MyStruct b;
   final List<MyEnum> c;
@@ -1426,7 +1426,7 @@ enum MyEnum {
 }
 
 @freezed
-class MyEnumFreezed with _$MyEnumFreezed implements FrbException {
+class MyEnumFreezed with _$MyEnumFreezed {
   const factory MyEnumFreezed.a(
     int field0,
   ) = MyEnumFreezed_A;
@@ -1435,7 +1435,7 @@ class MyEnumFreezed with _$MyEnumFreezed implements FrbException {
   ) = MyEnumFreezed_B;
 }
 
-class MyNestedStruct implements FrbException {
+class MyNestedStruct {
   final MyTreeNode treeNode;
   final Weekdays weekday;
 
@@ -1445,7 +1445,7 @@ class MyNestedStruct implements FrbException {
   });
 }
 
-class MySize implements FrbException {
+class MySize {
   final int width;
   final int height;
 
@@ -1456,14 +1456,14 @@ class MySize implements FrbException {
 }
 
 @freezed
-class MySizeFreezed with _$MySizeFreezed implements FrbException {
+class MySizeFreezed with _$MySizeFreezed {
   const factory MySizeFreezed({
     required int width,
     required int height,
   }) = _MySizeFreezed;
 }
 
-class MyStreamEntry implements FrbException {
+class MyStreamEntry {
   final String hello;
 
   const MyStreamEntry({
@@ -1471,7 +1471,7 @@ class MyStreamEntry implements FrbException {
   });
 }
 
-class MyStruct implements FrbException {
+class MyStruct {
   final bool content;
 
   const MyStruct({
@@ -1479,7 +1479,7 @@ class MyStruct implements FrbException {
   });
 }
 
-class MyTreeNode implements FrbException {
+class MyTreeNode {
   final int valueI32;
   final Uint8List valueVecU8;
   final bool valueBoolean;
@@ -1493,7 +1493,7 @@ class MyTreeNode implements FrbException {
   });
 }
 
-class NestedRawStringMirrored implements FrbException {
+class NestedRawStringMirrored {
   final RawStringMirrored raw;
 
   const NestedRawStringMirrored({
@@ -1509,7 +1509,7 @@ class NewSimpleStruct {
   });
 }
 
-class NewTypeInt implements FrbException {
+class NewTypeInt {
   final int field0;
 
   const NewTypeInt({
@@ -1517,7 +1517,7 @@ class NewTypeInt implements FrbException {
   });
 }
 
-class Note implements FrbException {
+class Note {
   final Weekdays day;
   final String body;
 
@@ -1554,7 +1554,7 @@ class OpaqueNested {
   });
 }
 
-class Point implements FrbException {
+class Point {
   final double x;
   final double y;
 
@@ -1565,7 +1565,7 @@ class Point implements FrbException {
 }
 
 @freezed
-class RawStringEnumMirrored with _$RawStringEnumMirrored implements FrbException {
+class RawStringEnumMirrored with _$RawStringEnumMirrored {
   const factory RawStringEnumMirrored.raw(
     RawStringMirrored field0,
   ) = RawStringEnumMirrored_Raw;
@@ -1585,7 +1585,7 @@ class RawStringItemStruct {
   });
 }
 
-class RawStringMirrored implements FrbException {
+class RawStringMirrored {
   final String value;
 
   const RawStringMirrored({
@@ -1602,14 +1602,14 @@ class Sequences {
 }
 
 @freezed
-class Speed with _$Speed implements FrbException {
+class Speed with _$Speed {
   const factory Speed.unknown() = Speed_Unknown;
   const factory Speed.gps(
     double field0,
   ) = Speed_GPS;
 }
 
-class StructWithEnum implements FrbException {
+class StructWithEnum {
   final Abc abc1;
   final Abc abc2;
 
@@ -1647,7 +1647,7 @@ class TestChrono {
   });
 }
 
-class TestId implements FrbException {
+class TestId {
   final I32Array2 field0;
 
   const TestId({
@@ -1708,7 +1708,7 @@ class U8Array8 extends NonGrowableListView<int> {
 /// Example for @freezed and @meta.immutable
 @freezed
 @meta.immutable
-class UserId with _$UserId implements FrbException {
+class UserId with _$UserId {
   const factory UserId({
     @Default(0) int value,
   }) = _UserId;

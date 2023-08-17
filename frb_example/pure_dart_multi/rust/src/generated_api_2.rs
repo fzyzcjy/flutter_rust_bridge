@@ -36,7 +36,7 @@ fn wire_simple_adder_2_impl(
         move || {
             let api_a = a.wire2api();
             let api_b = b.wire2api();
-            move |task_callback| Ok(simple_adder_2(api_a, api_b))
+            move |task_callback| Result::<_, _>::Ok(simple_adder_2(api_a, api_b))
         },
     )
 }

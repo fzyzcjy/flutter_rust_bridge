@@ -124,7 +124,7 @@ impl<'a> TypeParser<'a> {
         let resolve_ty = self.resolve_alias(ty).clone();
 
         match resolve_ty.clone() {
-            syn::Type::Path(path) => self.convert_path_to_ir_type(&path, true).unwrap(),
+            syn::Type::Path(path) => self.convert_path_to_ir_type(&path, false).unwrap(),
             syn::Type::Array(syn::TypeArray { elem, len, .. }) => {
                 let length: usize = match len {
                     syn::Expr::Lit(lit) => match &lit.lit {

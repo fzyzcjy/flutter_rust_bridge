@@ -58,7 +58,7 @@ fn wire_passing_complex_structs_impl(
         },
         move || {
             let api_root = root.wire2api();
-            move |task_callback| Ok(passing_complex_structs(api_root))
+            move |task_callback| Result::<_, _>::Ok(passing_complex_structs(api_root))
         },
     )
 }
@@ -69,7 +69,7 @@ fn wire_returning_structs_with_boxed_fields_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(returning_structs_with_boxed_fields()),
+        move || move |task_callback| Result::<_, _>::Ok(returning_structs_with_boxed_fields()),
     )
 }
 fn wire_off_topic_memory_test_input_array_impl(
@@ -84,7 +84,7 @@ fn wire_off_topic_memory_test_input_array_impl(
         },
         move || {
             let api_input = input.wire2api();
-            move |task_callback| Ok(off_topic_memory_test_input_array(api_input))
+            move |task_callback| Result::<_, _>::Ok(off_topic_memory_test_input_array(api_input))
         },
     )
 }
@@ -100,7 +100,9 @@ fn wire_off_topic_memory_test_output_zero_copy_buffer_impl(
         },
         move || {
             let api_len = len.wire2api();
-            move |task_callback| Ok(off_topic_memory_test_output_zero_copy_buffer(api_len))
+            move |task_callback| {
+                Result::<_, _>::Ok(off_topic_memory_test_output_zero_copy_buffer(api_len))
+            }
         },
     )
 }
@@ -116,7 +118,7 @@ fn wire_off_topic_memory_test_output_vec_u8_impl(
         },
         move || {
             let api_len = len.wire2api();
-            move |task_callback| Ok(off_topic_memory_test_output_vec_u8(api_len))
+            move |task_callback| Result::<_, _>::Ok(off_topic_memory_test_output_vec_u8(api_len))
         },
     )
 }
@@ -132,7 +134,9 @@ fn wire_off_topic_memory_test_input_vec_of_object_impl(
         },
         move || {
             let api_input = input.wire2api();
-            move |task_callback| Ok(off_topic_memory_test_input_vec_of_object(api_input))
+            move |task_callback| {
+                Result::<_, _>::Ok(off_topic_memory_test_input_vec_of_object(api_input))
+            }
         },
     )
 }
@@ -148,7 +152,9 @@ fn wire_off_topic_memory_test_output_vec_of_object_impl(
         },
         move || {
             let api_len = len.wire2api();
-            move |task_callback| Ok(off_topic_memory_test_output_vec_of_object(api_len))
+            move |task_callback| {
+                Result::<_, _>::Ok(off_topic_memory_test_output_vec_of_object(api_len))
+            }
         },
     )
 }
@@ -164,7 +170,9 @@ fn wire_off_topic_memory_test_input_complex_struct_impl(
         },
         move || {
             let api_input = input.wire2api();
-            move |task_callback| Ok(off_topic_memory_test_input_complex_struct(api_input))
+            move |task_callback| {
+                Result::<_, _>::Ok(off_topic_memory_test_input_complex_struct(api_input))
+            }
         },
     )
 }
@@ -180,7 +188,9 @@ fn wire_off_topic_memory_test_output_complex_struct_impl(
         },
         move || {
             let api_len = len.wire2api();
-            move |task_callback| Ok(off_topic_memory_test_output_complex_struct(api_len))
+            move |task_callback| {
+                Result::<_, _>::Ok(off_topic_memory_test_output_complex_struct(api_len))
+            }
         },
     )
 }
@@ -201,7 +211,7 @@ fn wire_off_topic_deliberately_panic_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(off_topic_deliberately_panic()),
+        move || move |task_callback| Result::<_, _>::Ok(off_topic_deliberately_panic()),
     )
 }
 fn wire_next_user_id_impl(port_: MessagePort, user_id: impl Wire2Api<UserId> + UnwindSafe) {
@@ -213,7 +223,7 @@ fn wire_next_user_id_impl(port_: MessagePort, user_id: impl Wire2Api<UserId> + U
         },
         move || {
             let api_user_id = user_id.wire2api();
-            move |task_callback| Ok(next_user_id(api_user_id))
+            move |task_callback| Result::<_, _>::Ok(next_user_id(api_user_id))
         },
     )
 }
@@ -229,7 +239,7 @@ fn wire_test_method__method__BoxedPoint_impl(
         },
         move || {
             let api_that = that.wire2api();
-            move |task_callback| Ok(BoxedPoint::test_method(&api_that))
+            move |task_callback| Result::<_, _>::Ok(BoxedPoint::test_method(&api_that))
         },
     )
 }
@@ -247,7 +257,7 @@ fn wire_sum__method__SumWith_impl(
         move || {
             let api_that = that.wire2api();
             let api_y = y.wire2api();
-            move |task_callback| Ok(SumWith::sum(&api_that, api_y))
+            move |task_callback| Result::<_, _>::Ok(SumWith::sum(&api_that, api_y))
         },
     )
 }
@@ -265,7 +275,7 @@ fn wire_sum_static__static_method__SumWith_impl(
         move || {
             let api_x = x.wire2api();
             let api_y = y.wire2api();
-            move |task_callback| Ok(SumWith::sum_static(api_x, api_y))
+            move |task_callback| Result::<_, _>::Ok(SumWith::sum_static(api_x, api_y))
         },
     )
 }

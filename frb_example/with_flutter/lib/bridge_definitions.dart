@@ -97,7 +97,7 @@ class BoxedPoint {
       );
 }
 
-class Point implements FrbException {
+class Point {
   final double x;
   final double y;
 
@@ -107,7 +107,7 @@ class Point implements FrbException {
   });
 }
 
-class Size implements FrbException {
+class Size {
   final int width;
   final int height;
 
@@ -117,7 +117,7 @@ class Size implements FrbException {
   });
 }
 
-class SumWith implements FrbException {
+class SumWith {
   final int x;
 
   const SumWith({
@@ -133,7 +133,7 @@ class SumWith implements FrbException {
       api.sumStaticStaticMethodSumWith(x: x, y: y, hint: hint);
 }
 
-class TreeNode implements FrbException {
+class TreeNode {
   final String name;
   final List<TreeNode> children;
 
@@ -145,7 +145,7 @@ class TreeNode implements FrbException {
 
 @freezed
 @meta.immutable
-class UserId with _$UserId implements FrbException {
+class UserId with _$UserId {
   const factory UserId({
     @Default(0) int value,
   }) = _UserId;
