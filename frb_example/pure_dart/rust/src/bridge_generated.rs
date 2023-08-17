@@ -41,7 +41,7 @@ fn wire_simple_adder_impl(
         move || {
             let api_a = a.wire2api();
             let api_b = b.wire2api();
-            move |task_callback| Ok(simple_adder(api_a, api_b))
+            move |task_callback| Result::<_, ()>::Ok(simple_adder(api_a, api_b))
         },
     )
 }
@@ -58,7 +58,7 @@ fn wire_simple_adder_sync_impl(
         move || {
             let api_a = a.wire2api();
             let api_b = b.wire2api();
-            Ok(simple_adder_sync(api_a, api_b))
+            Result::<_, ()>::Ok(simple_adder_sync(api_a, api_b))
         },
     )
 }
@@ -81,7 +81,7 @@ fn wire_primitive_types_impl(
             let api_my_f64 = my_f64.wire2api();
             let api_my_bool = my_bool.wire2api();
             move |task_callback| {
-                Ok(primitive_types(
+                Result::<_, ()>::Ok(primitive_types(
                     api_my_i32,
                     api_my_i64,
                     api_my_f64,
@@ -110,7 +110,7 @@ fn wire_primitive_optional_types_impl(
             let api_my_f64 = my_f64.wire2api();
             let api_my_bool = my_bool.wire2api();
             move |task_callback| {
-                Ok(primitive_optional_types(
+                Result::<_, ()>::Ok(primitive_optional_types(
                     api_my_i32,
                     api_my_i64,
                     api_my_f64,
@@ -137,7 +137,7 @@ fn wire_primitive_types_sync_impl(
             let api_my_i64 = my_i64.wire2api();
             let api_my_f64 = my_f64.wire2api();
             let api_my_bool = my_bool.wire2api();
-            Ok(primitive_types_sync(
+            Result::<_, ()>::Ok(primitive_types_sync(
                 api_my_i32,
                 api_my_i64,
                 api_my_f64,
@@ -155,7 +155,7 @@ fn wire_primitive_u32_impl(port_: MessagePort, my_u32: impl Wire2Api<u32> + Unwi
         },
         move || {
             let api_my_u32 = my_u32.wire2api();
-            move |task_callback| Ok(primitive_u32(api_my_u32))
+            move |task_callback| Result::<_, ()>::Ok(primitive_u32(api_my_u32))
         },
     )
 }
@@ -170,7 +170,7 @@ fn wire_primitive_u32_sync_impl(
         },
         move || {
             let api_my_u32 = my_u32.wire2api();
-            Ok(primitive_u32_sync(api_my_u32))
+            Result::<_, ()>::Ok(primitive_u32_sync(api_my_u32))
         },
     )
 }
@@ -183,7 +183,7 @@ fn wire_handle_string_impl(port_: MessagePort, s: impl Wire2Api<String> + Unwind
         },
         move || {
             let api_s = s.wire2api();
-            move |task_callback| Ok(handle_string(api_s))
+            move |task_callback| Result::<_, ()>::Ok(handle_string(api_s))
         },
     )
 }
@@ -196,7 +196,7 @@ fn wire_handle_string_sync_impl(s: impl Wire2Api<String> + UnwindSafe) -> suppor
         },
         move || {
             let api_s = s.wire2api();
-            Ok(handle_string_sync(api_s))
+            Result::<_, ()>::Ok(handle_string_sync(api_s))
         },
     )
 }
@@ -207,7 +207,7 @@ fn wire_handle_return_unit_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(handle_return_unit()),
+        move || move |task_callback| Result::<_, ()>::Ok(handle_return_unit()),
     )
 }
 fn wire_handle_return_unit_sync_impl() -> support::WireSyncReturn {
@@ -217,7 +217,7 @@ fn wire_handle_return_unit_sync_impl() -> support::WireSyncReturn {
             port: None,
             mode: FfiCallMode::Sync,
         },
-        move || Ok(handle_return_unit_sync()),
+        move || Result::<_, ()>::Ok(handle_return_unit_sync()),
     )
 }
 fn wire_handle_vec_u8_impl(port_: MessagePort, v: impl Wire2Api<Vec<u8>> + UnwindSafe) {
@@ -229,7 +229,7 @@ fn wire_handle_vec_u8_impl(port_: MessagePort, v: impl Wire2Api<Vec<u8>> + Unwin
         },
         move || {
             let api_v = v.wire2api();
-            move |task_callback| Ok(handle_vec_u8(api_v))
+            move |task_callback| Result::<_, ()>::Ok(handle_vec_u8(api_v))
         },
     )
 }
@@ -242,7 +242,7 @@ fn wire_handle_vec_u8_sync_impl(v: impl Wire2Api<Vec<u8>> + UnwindSafe) -> suppo
         },
         move || {
             let api_v = v.wire2api();
-            Ok(handle_vec_u8_sync(api_v))
+            Result::<_, ()>::Ok(handle_vec_u8_sync(api_v))
         },
     )
 }
@@ -255,7 +255,7 @@ fn wire_handle_vec_of_primitive_impl(port_: MessagePort, n: impl Wire2Api<i32> +
         },
         move || {
             let api_n = n.wire2api();
-            move |task_callback| Ok(handle_vec_of_primitive(api_n))
+            move |task_callback| Result::<_, ()>::Ok(handle_vec_of_primitive(api_n))
         },
     )
 }
@@ -270,7 +270,7 @@ fn wire_handle_vec_of_primitive_sync_impl(
         },
         move || {
             let api_n = n.wire2api();
-            Ok(handle_vec_of_primitive_sync(api_n))
+            Result::<_, ()>::Ok(handle_vec_of_primitive_sync(api_n))
         },
     )
 }
@@ -286,7 +286,7 @@ fn wire_handle_zero_copy_vec_of_primitive_impl(
         },
         move || {
             let api_n = n.wire2api();
-            move |task_callback| Ok(handle_zero_copy_vec_of_primitive(api_n))
+            move |task_callback| Result::<_, ()>::Ok(handle_zero_copy_vec_of_primitive(api_n))
         },
     )
 }
@@ -301,7 +301,7 @@ fn wire_handle_zero_copy_vec_of_primitive_sync_impl(
         },
         move || {
             let api_n = n.wire2api();
-            Ok(handle_zero_copy_vec_of_primitive_sync(api_n))
+            Result::<_, ()>::Ok(handle_zero_copy_vec_of_primitive_sync(api_n))
         },
     )
 }
@@ -319,7 +319,7 @@ fn wire_handle_struct_impl(
         move || {
             let api_arg = arg.wire2api();
             let api_boxed = boxed.wire2api();
-            move |task_callback| Ok(handle_struct(api_arg, api_boxed))
+            move |task_callback| Result::<_, ()>::Ok(handle_struct(api_arg, api_boxed))
         },
     )
 }
@@ -336,7 +336,7 @@ fn wire_handle_struct_sync_impl(
         move || {
             let api_arg = arg.wire2api();
             let api_boxed = boxed.wire2api();
-            Ok(handle_struct_sync(api_arg, api_boxed))
+            Result::<_, ()>::Ok(handle_struct_sync(api_arg, api_boxed))
         },
     )
 }
@@ -353,7 +353,7 @@ fn wire_handle_struct_sync_freezed_impl(
         move || {
             let api_arg = arg.wire2api();
             let api_boxed = boxed.wire2api();
-            Ok(handle_struct_sync_freezed(api_arg, api_boxed))
+            Result::<_, ()>::Ok(handle_struct_sync_freezed(api_arg, api_boxed))
         },
     )
 }
@@ -366,7 +366,7 @@ fn wire_handle_newtype_impl(port_: MessagePort, arg: impl Wire2Api<NewTypeInt> +
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Ok(handle_newtype(api_arg))
+            move |task_callback| Result::<_, ()>::Ok(handle_newtype(api_arg))
         },
     )
 }
@@ -381,7 +381,7 @@ fn wire_handle_newtype_sync_impl(
         },
         move || {
             let api_arg = arg.wire2api();
-            Ok(handle_newtype_sync(api_arg))
+            Result::<_, ()>::Ok(handle_newtype_sync(api_arg))
         },
     )
 }
@@ -394,7 +394,7 @@ fn wire_handle_list_of_struct_impl(port_: MessagePort, l: impl Wire2Api<Vec<MySi
         },
         move || {
             let api_l = l.wire2api();
-            move |task_callback| Ok(handle_list_of_struct(api_l))
+            move |task_callback| Result::<_, ()>::Ok(handle_list_of_struct(api_l))
         },
     )
 }
@@ -409,7 +409,7 @@ fn wire_handle_list_of_struct_sync_impl(
         },
         move || {
             let api_l = l.wire2api();
-            Ok(handle_list_of_struct_sync(api_l))
+            Result::<_, ()>::Ok(handle_list_of_struct_sync(api_l))
         },
     )
 }
@@ -425,7 +425,7 @@ fn wire_handle_string_list_impl(
         },
         move || {
             let api_names = names.wire2api();
-            move |task_callback| Ok(handle_string_list(api_names))
+            move |task_callback| Result::<_, ()>::Ok(handle_string_list(api_names))
         },
     )
 }
@@ -440,7 +440,7 @@ fn wire_handle_string_list_sync_impl(
         },
         move || {
             let api_names = names.wire2api();
-            Ok(handle_string_list_sync(api_names))
+            Result::<_, ()>::Ok(handle_string_list_sync(api_names))
         },
     )
 }
@@ -453,7 +453,7 @@ fn wire_handle_complex_struct_impl(port_: MessagePort, s: impl Wire2Api<MyTreeNo
         },
         move || {
             let api_s = s.wire2api();
-            move |task_callback| Ok(handle_complex_struct(api_s))
+            move |task_callback| Result::<_, ()>::Ok(handle_complex_struct(api_s))
         },
     )
 }
@@ -468,7 +468,7 @@ fn wire_handle_complex_struct_sync_impl(
         },
         move || {
             let api_s = s.wire2api();
-            Ok(handle_complex_struct_sync(api_s))
+            Result::<_, ()>::Ok(handle_complex_struct_sync(api_s))
         },
     )
 }
@@ -484,7 +484,7 @@ fn wire_handle_nested_struct_impl(
         },
         move || {
             let api_s = s.wire2api();
-            move |task_callback| Ok(handle_nested_struct(api_s))
+            move |task_callback| Result::<_, ()>::Ok(handle_nested_struct(api_s))
         },
     )
 }
@@ -513,7 +513,7 @@ fn wire_handle_stream_impl(port_: MessagePort, arg: impl Wire2Api<String> + Unwi
         move || {
             let api_arg = arg.wire2api();
             move |task_callback| {
-                Ok(handle_stream(
+                Result::<_, ()>::Ok(handle_stream(
                     task_callback.stream_sink::<_, String>(),
                     api_arg,
                 ))
@@ -530,7 +530,7 @@ fn wire_handle_stream_of_struct_impl(port_: MessagePort) {
         },
         move || {
             move |task_callback| {
-                Ok(handle_stream_of_struct(
+                Result::<_, ()>::Ok(handle_stream_of_struct(
                     task_callback.stream_sink::<_, MyStreamEntry>(),
                 ))
             }
@@ -554,7 +554,7 @@ fn wire_return_panic_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(return_panic()),
+        move || move |task_callback| Result::<_, ()>::Ok(return_panic()),
     )
 }
 fn wire_handle_optional_return_impl(
@@ -571,7 +571,7 @@ fn wire_handle_optional_return_impl(
         move || {
             let api_left = left.wire2api();
             let api_right = right.wire2api();
-            move |task_callback| Ok(handle_optional_return(api_left, api_right))
+            move |task_callback| Result::<_, ()>::Ok(handle_optional_return(api_left, api_right))
         },
     )
 }
@@ -587,7 +587,7 @@ fn wire_handle_optional_struct_impl(
         },
         move || {
             let api_document = document.wire2api();
-            move |task_callback| Ok(handle_optional_struct(api_document))
+            move |task_callback| Result::<_, ()>::Ok(handle_optional_struct(api_document))
         },
     )
 }
@@ -603,7 +603,7 @@ fn wire_handle_optional_increment_impl(
         },
         move || {
             let api_opt = opt.wire2api();
-            move |task_callback| Ok(handle_optional_increment(api_opt))
+            move |task_callback| Result::<_, ()>::Ok(handle_optional_increment(api_opt))
         },
     )
 }
@@ -619,7 +619,7 @@ fn wire_handle_increment_boxed_optional_impl(
         },
         move || {
             let api_opt = opt.wire2api();
-            move |task_callback| Ok(handle_increment_boxed_optional(api_opt))
+            move |task_callback| Result::<_, ()>::Ok(handle_increment_boxed_optional(api_opt))
         },
     )
 }
@@ -648,7 +648,7 @@ fn wire_handle_option_box_arguments_impl(
             let api_boolbox = boolbox.wire2api();
             let api_structbox = structbox.wire2api();
             move |task_callback| {
-                Ok(handle_option_box_arguments(
+                Result::<_, ()>::Ok(handle_option_box_arguments(
                     api_i8box,
                     api_u8box,
                     api_i32box,
@@ -670,7 +670,7 @@ fn wire_print_note_impl(port_: MessagePort, note: impl Wire2Api<Note> + UnwindSa
         },
         move || {
             let api_note = note.wire2api();
-            move |task_callback| Ok(print_note(api_note))
+            move |task_callback| Result::<_, ()>::Ok(print_note(api_note))
         },
     )
 }
@@ -683,7 +683,7 @@ fn wire_handle_return_enum_impl(port_: MessagePort, input: impl Wire2Api<String>
         },
         move || {
             let api_input = input.wire2api();
-            move |task_callback| Ok(handle_return_enum(api_input))
+            move |task_callback| Result::<_, ()>::Ok(handle_return_enum(api_input))
         },
     )
 }
@@ -699,7 +699,7 @@ fn wire_handle_enum_parameter_impl(
         },
         move || {
             let api_weekday = weekday.wire2api();
-            move |task_callback| Ok(handle_enum_parameter(api_weekday))
+            move |task_callback| Result::<_, ()>::Ok(handle_enum_parameter(api_weekday))
         },
     )
 }
@@ -714,7 +714,7 @@ fn wire_handle_enum_sync_freezed_impl(
         },
         move || {
             let api_value = value.wire2api();
-            Ok(handle_enum_sync_freezed(api_value))
+            Result::<_, ()>::Ok(handle_enum_sync_freezed(api_value))
         },
     )
 }
@@ -730,7 +730,7 @@ fn wire_handle_customized_struct_impl(
         },
         move || {
             let api_val = val.wire2api();
-            move |task_callback| Ok(handle_customized_struct(api_val))
+            move |task_callback| Result::<_, ()>::Ok(handle_customized_struct(api_val))
         },
     )
 }
@@ -743,7 +743,7 @@ fn wire_handle_enum_struct_impl(port_: MessagePort, val: impl Wire2Api<KitchenSi
         },
         move || {
             let api_val = val.wire2api();
-            move |task_callback| Ok(handle_enum_struct(api_val))
+            move |task_callback| Result::<_, ()>::Ok(handle_enum_struct(api_val))
         },
     )
 }
@@ -759,7 +759,7 @@ fn wire_use_imported_struct_impl(
         },
         move || {
             let api_my_struct = my_struct.wire2api();
-            move |task_callback| Ok(use_imported_struct(api_my_struct))
+            move |task_callback| Result::<_, ()>::Ok(use_imported_struct(api_my_struct))
         },
     )
 }
@@ -772,7 +772,7 @@ fn wire_use_imported_enum_impl(port_: MessagePort, my_enum: impl Wire2Api<MyEnum
         },
         move || {
             let api_my_enum = my_enum.wire2api();
-            move |task_callback| Ok(use_imported_enum(api_my_enum))
+            move |task_callback| Result::<_, ()>::Ok(use_imported_enum(api_my_enum))
         },
     )
 }
@@ -783,7 +783,7 @@ fn wire_get_app_settings_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(get_app_settings()),
+        move || move |task_callback| Result::<_, ()>::Ok(get_app_settings()),
     )
 }
 fn wire_get_fallible_app_settings_impl(port_: MessagePort) {
@@ -808,7 +808,7 @@ fn wire_is_app_embedded_impl(
         },
         move || {
             let api_app_settings = app_settings.wire2api();
-            move |task_callback| Ok(is_app_embedded(api_app_settings))
+            move |task_callback| Result::<_, ()>::Ok(is_app_embedded(api_app_settings))
         },
     )
 }
@@ -821,7 +821,7 @@ fn wire_app_settings_stream_impl(port_: MessagePort) {
         },
         move || {
             move |task_callback| {
-                Ok(app_settings_stream(
+                Result::<_, ()>::Ok(app_settings_stream(
                     task_callback.stream_sink::<_, mirror_ApplicationSettings>(),
                 ))
             }
@@ -837,7 +837,7 @@ fn wire_app_settings_vec_stream_impl(port_: MessagePort) {
         },
         move || {
             move |task_callback| {
-                Ok(app_settings_vec_stream(
+                Result::<_, ()>::Ok(app_settings_vec_stream(
                     task_callback.stream_sink::<_, Vec<mirror_ApplicationSettings>>(),
                 ))
             }
@@ -853,7 +853,7 @@ fn wire_mirror_struct_stream_impl(port_: MessagePort) {
         },
         move || {
             move |task_callback| {
-                Ok(mirror_struct_stream(
+                Result::<_, ()>::Ok(mirror_struct_stream(
                     task_callback.stream_sink::<_, MirrorStruct>(),
                 ))
             }
@@ -861,7 +861,7 @@ fn wire_mirror_struct_stream_impl(port_: MessagePort) {
     )
 }
 fn wire_mirror_tuple_stream_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,()>(WrapInfo{ debug_name: "mirror_tuple_stream", port: Some(port_), mode: FfiCallMode::Stream }, move || {  move |task_callback| Ok(mirror_tuple_stream(task_callback.stream_sink::<_,(mirror_ApplicationSettings,mirror_RawStringEnumMirrored,)>())) })
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,()>(WrapInfo{ debug_name: "mirror_tuple_stream", port: Some(port_), mode: FfiCallMode::Stream }, move || {  move |task_callback| Result::<_,()>::Ok(mirror_tuple_stream(task_callback.stream_sink::<_,(mirror_ApplicationSettings,mirror_RawStringEnumMirrored,)>())) })
 }
 fn wire_get_message_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_ApplicationMessage>(
@@ -870,7 +870,7 @@ fn wire_get_message_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(get_message()),
+        move || move |task_callback| Result::<_, ()>::Ok(get_message()),
     )
 }
 fn wire_repeat_number_impl(
@@ -887,7 +887,7 @@ fn wire_repeat_number_impl(
         move || {
             let api_num = num.wire2api();
             let api_times = times.wire2api();
-            move |task_callback| Ok(repeat_number(api_num, api_times))
+            move |task_callback| Result::<_, ()>::Ok(repeat_number(api_num, api_times))
         },
     )
 }
@@ -905,7 +905,7 @@ fn wire_repeat_sequence_impl(
         move || {
             let api_seq = seq.wire2api();
             let api_times = times.wire2api();
-            move |task_callback| Ok(repeat_sequence(api_seq, api_times))
+            move |task_callback| Result::<_, ()>::Ok(repeat_sequence(api_seq, api_times))
         },
     )
 }
@@ -918,7 +918,7 @@ fn wire_first_number_impl(port_: MessagePort, nums: impl Wire2Api<Numbers> + Unw
         },
         move || {
             let api_nums = nums.wire2api();
-            move |task_callback| Ok(first_number(api_nums))
+            move |task_callback| Result::<_, ()>::Ok(first_number(api_nums))
         },
     )
 }
@@ -931,7 +931,7 @@ fn wire_first_sequence_impl(port_: MessagePort, seqs: impl Wire2Api<Sequences> +
         },
         move || {
             let api_seqs = seqs.wire2api();
-            move |task_callback| Ok(first_sequence(api_seqs))
+            move |task_callback| Result::<_, ()>::Ok(first_sequence(api_seqs))
         },
     )
 }
@@ -942,7 +942,7 @@ fn wire_get_array_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(get_array()),
+        move || move |task_callback| Result::<_, ()>::Ok(get_array()),
     )
 }
 fn wire_get_complex_array_impl(port_: MessagePort) {
@@ -952,7 +952,7 @@ fn wire_get_complex_array_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(get_complex_array()),
+        move || move |task_callback| Result::<_, ()>::Ok(get_complex_array()),
     )
 }
 fn wire_get_usize_impl(port_: MessagePort, u: impl Wire2Api<usize> + UnwindSafe) {
@@ -964,7 +964,7 @@ fn wire_get_usize_impl(port_: MessagePort, u: impl Wire2Api<usize> + UnwindSafe)
         },
         move || {
             let api_u = u.wire2api();
-            move |task_callback| Ok(get_usize(api_u))
+            move |task_callback| Result::<_, ()>::Ok(get_usize(api_u))
         },
     )
 }
@@ -977,7 +977,7 @@ fn wire_next_user_id_impl(port_: MessagePort, user_id: impl Wire2Api<UserId> + U
         },
         move || {
             let api_user_id = user_id.wire2api();
-            move |task_callback| Ok(next_user_id(api_user_id))
+            move |task_callback| Result::<_, ()>::Ok(next_user_id(api_user_id))
         },
     )
 }
@@ -1000,7 +1000,7 @@ fn wire_close_event_listener_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(close_event_listener()),
+        move || move |task_callback| Result::<_, ()>::Ok(close_event_listener()),
     )
 }
 fn wire_create_event_impl(
@@ -1017,7 +1017,7 @@ fn wire_create_event_impl(
         move || {
             let api_address = address.wire2api();
             let api_payload = payload.wire2api();
-            move |task_callback| Ok(create_event(api_address, api_payload))
+            move |task_callback| Result::<_, ()>::Ok(create_event(api_address, api_payload))
         },
     )
 }
@@ -1036,7 +1036,7 @@ fn wire_handle_stream_sink_at_1_impl(
             let api_key = key.wire2api();
             let api_max = max.wire2api();
             move |task_callback| {
-                Ok(handle_stream_sink_at_1(
+                Result::<_, ()>::Ok(handle_stream_sink_at_1(
                     api_key,
                     api_max,
                     task_callback.stream_sink::<_, Log>(),
@@ -1060,7 +1060,7 @@ fn wire_handle_stream_sink_at_2_impl(
             let api_key = key.wire2api();
             let api_max = max.wire2api();
             move |task_callback| {
-                Ok(handle_stream_sink_at_2(
+                Result::<_, ()>::Ok(handle_stream_sink_at_2(
                     api_key,
                     task_callback.stream_sink::<_, Log>(),
                     api_max,
@@ -1084,7 +1084,7 @@ fn wire_handle_stream_sink_at_3_impl(
             let api_key = key.wire2api();
             let api_max = max.wire2api();
             move |task_callback| {
-                Ok(handle_stream_sink_at_3(
+                Result::<_, ()>::Ok(handle_stream_sink_at_3(
                     task_callback.stream_sink::<_, Log>(),
                     api_key,
                     api_max,
@@ -1100,7 +1100,7 @@ fn wire_get_sum_struct_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(get_sum_struct()),
+        move || move |task_callback| Result::<_, ()>::Ok(get_sum_struct()),
     )
 }
 fn wire_get_sum_array_impl(
@@ -1119,7 +1119,7 @@ fn wire_get_sum_array_impl(
             let api_a = a.wire2api();
             let api_b = b.wire2api();
             let api_c = c.wire2api();
-            move |task_callback| Ok(get_sum_array(api_a, api_b, api_c))
+            move |task_callback| Result::<_, ()>::Ok(get_sum_array(api_a, api_b, api_c))
         },
     )
 }
@@ -1132,7 +1132,7 @@ fn wire_multiply_by_ten_impl(port_: MessagePort, measure: impl Wire2Api<Measure>
         },
         move || {
             let api_measure = measure.wire2api();
-            move |task_callback| Ok(multiply_by_ten(api_measure))
+            move |task_callback| Result::<_, ()>::Ok(multiply_by_ten(api_measure))
         },
     )
 }
@@ -1143,7 +1143,7 @@ fn wire_call_old_module_system_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(call_old_module_system()),
+        move || move |task_callback| Result::<_, ()>::Ok(call_old_module_system()),
     )
 }
 fn wire_call_new_module_system_impl(port_: MessagePort) {
@@ -1153,7 +1153,7 @@ fn wire_call_new_module_system_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(call_new_module_system()),
+        move || move |task_callback| Result::<_, ()>::Ok(call_new_module_system()),
     )
 }
 fn wire_handle_big_buffers_impl(port_: MessagePort) {
@@ -1163,7 +1163,7 @@ fn wire_handle_big_buffers_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(handle_big_buffers()),
+        move || move |task_callback| Result::<_, ()>::Ok(handle_big_buffers()),
     )
 }
 fn wire_datetime_utc_impl(
@@ -1178,7 +1178,7 @@ fn wire_datetime_utc_impl(
         },
         move || {
             let api_d = d.wire2api();
-            move |task_callback| Ok(datetime_utc(api_d))
+            move |task_callback| Result::<_, ()>::Ok(datetime_utc(api_d))
         },
     )
 }
@@ -1194,7 +1194,7 @@ fn wire_datetime_local_impl(
         },
         move || {
             let api_d = d.wire2api();
-            move |task_callback| Ok(datetime_local(api_d))
+            move |task_callback| Result::<_, ()>::Ok(datetime_local(api_d))
         },
     )
 }
@@ -1210,7 +1210,7 @@ fn wire_naivedatetime_impl(
         },
         move || {
             let api_d = d.wire2api();
-            move |task_callback| Ok(naivedatetime(api_d))
+            move |task_callback| Result::<_, ()>::Ok(naivedatetime(api_d))
         },
     )
 }
@@ -1226,7 +1226,7 @@ fn wire_optional_empty_datetime_utc_impl(
         },
         move || {
             let api_d = d.wire2api();
-            move |task_callback| Ok(optional_empty_datetime_utc(api_d))
+            move |task_callback| Result::<_, ()>::Ok(optional_empty_datetime_utc(api_d))
         },
     )
 }
@@ -1239,7 +1239,7 @@ fn wire_duration_impl(port_: MessagePort, d: impl Wire2Api<chrono::Duration> + U
         },
         move || {
             let api_d = d.wire2api();
-            move |task_callback| Ok(duration(api_d))
+            move |task_callback| Result::<_, ()>::Ok(duration(api_d))
         },
     )
 }
@@ -1257,7 +1257,7 @@ fn wire_handle_timestamps_impl(
         move || {
             let api_timestamps = timestamps.wire2api();
             let api_epoch = epoch.wire2api();
-            move |task_callback| Ok(handle_timestamps(api_timestamps, api_epoch))
+            move |task_callback| Result::<_, ()>::Ok(handle_timestamps(api_timestamps, api_epoch))
         },
     )
 }
@@ -1275,7 +1275,7 @@ fn wire_handle_durations_impl(
         move || {
             let api_durations = durations.wire2api();
             let api_since = since.wire2api();
-            move |task_callback| Ok(handle_durations(api_durations, api_since))
+            move |task_callback| Result::<_, ()>::Ok(handle_durations(api_durations, api_since))
         },
     )
 }
@@ -1286,7 +1286,7 @@ fn wire_test_chrono_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(test_chrono()),
+        move || move |task_callback| Result::<_, ()>::Ok(test_chrono()),
     )
 }
 fn wire_test_precise_chrono_impl(port_: MessagePort) {
@@ -1296,7 +1296,7 @@ fn wire_test_precise_chrono_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(test_precise_chrono()),
+        move || move |task_callback| Result::<_, ()>::Ok(test_precise_chrono()),
     )
 }
 fn wire_how_long_does_it_take_impl(
@@ -1363,7 +1363,7 @@ fn wire_new_msgid_impl(port_: MessagePort, id: impl Wire2Api<[u8; 32]> + UnwindS
         },
         move || {
             let api_id = id.wire2api();
-            move |task_callback| Ok(new_msgid(api_id))
+            move |task_callback| Result::<_, ()>::Ok(new_msgid(api_id))
         },
     )
 }
@@ -1376,7 +1376,7 @@ fn wire_use_msgid_impl(port_: MessagePort, id: impl Wire2Api<MessageId> + Unwind
         },
         move || {
             let api_id = id.wire2api();
-            move |task_callback| Ok(use_msgid(api_id))
+            move |task_callback| Result::<_, ()>::Ok(use_msgid(api_id))
         },
     )
 }
@@ -1389,7 +1389,7 @@ fn wire_boxed_blob_impl(port_: MessagePort, blob: impl Wire2Api<Box<[u8; 1600]>>
         },
         move || {
             let api_blob = blob.wire2api();
-            move |task_callback| Ok(boxed_blob(api_blob))
+            move |task_callback| Result::<_, ()>::Ok(boxed_blob(api_blob))
         },
     )
 }
@@ -1402,7 +1402,7 @@ fn wire_use_boxed_blob_impl(port_: MessagePort, blob: impl Wire2Api<Box<Blob>> +
         },
         move || {
             let api_blob = blob.wire2api();
-            move |task_callback| Ok(use_boxed_blob(api_blob))
+            move |task_callback| Result::<_, ()>::Ok(use_boxed_blob(api_blob))
         },
     )
 }
@@ -1415,7 +1415,7 @@ fn wire_return_boxed_feed_id_impl(port_: MessagePort, id: impl Wire2Api<[u8; 8]>
         },
         move || {
             let api_id = id.wire2api();
-            move |task_callback| Ok(return_boxed_feed_id(api_id))
+            move |task_callback| Result::<_, ()>::Ok(return_boxed_feed_id(api_id))
         },
     )
 }
@@ -1428,7 +1428,7 @@ fn wire_return_boxed_raw_feed_id_impl(port_: MessagePort, id: impl Wire2Api<Feed
         },
         move || {
             let api_id = id.wire2api();
-            move |task_callback| Ok(return_boxed_raw_feed_id(api_id))
+            move |task_callback| Result::<_, ()>::Ok(return_boxed_raw_feed_id(api_id))
         },
     )
 }
@@ -1441,7 +1441,7 @@ fn wire_test_id_impl(port_: MessagePort, id: impl Wire2Api<TestId> + UnwindSafe)
         },
         move || {
             let api_id = id.wire2api();
-            move |task_callback| Ok(test_id(api_id))
+            move |task_callback| Result::<_, ()>::Ok(test_id(api_id))
         },
     )
 }
@@ -1454,7 +1454,7 @@ fn wire_last_number_impl(port_: MessagePort, array: impl Wire2Api<[f64; 16]> + U
         },
         move || {
             let api_array = array.wire2api();
-            move |task_callback| Ok(last_number(api_array))
+            move |task_callback| Result::<_, ()>::Ok(last_number(api_array))
         },
     )
 }
@@ -1467,7 +1467,7 @@ fn wire_nested_id_impl(port_: MessagePort, id: impl Wire2Api<[TestId; 4]> + Unwi
         },
         move || {
             let api_id = id.wire2api();
-            move |task_callback| Ok(nested_id(api_id))
+            move |task_callback| Result::<_, ()>::Ok(nested_id(api_id))
         },
     )
 }
@@ -1482,7 +1482,7 @@ fn wire_sync_accept_dart_opaque_impl(
         },
         move || {
             let api_opaque = opaque.wire2api();
-            Ok(sync_accept_dart_opaque(api_opaque))
+            Result::<_, ()>::Ok(sync_accept_dart_opaque(api_opaque))
         },
     )
 }
@@ -1498,7 +1498,7 @@ fn wire_async_accept_dart_opaque_impl(
         },
         move || {
             let api_opaque = opaque.wire2api();
-            move |task_callback| Ok(async_accept_dart_opaque(api_opaque))
+            move |task_callback| Result::<_, ()>::Ok(async_accept_dart_opaque(api_opaque))
         },
     )
 }
@@ -1511,7 +1511,7 @@ fn wire_loop_back_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaque> + U
         },
         move || {
             let api_opaque = opaque.wire2api();
-            move |task_callback| Ok(loop_back(api_opaque))
+            move |task_callback| Result::<_, ()>::Ok(loop_back(api_opaque))
         },
     )
 }
@@ -1524,7 +1524,7 @@ fn wire_loop_back_option_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaq
         },
         move || {
             let api_opaque = opaque.wire2api();
-            move |task_callback| Ok(loop_back_option(api_opaque))
+            move |task_callback| Result::<_, ()>::Ok(loop_back_option(api_opaque))
         },
     )
 }
@@ -1537,7 +1537,7 @@ fn wire_loop_back_array_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaqu
         },
         move || {
             let api_opaque = opaque.wire2api();
-            move |task_callback| Ok(loop_back_array(api_opaque))
+            move |task_callback| Result::<_, ()>::Ok(loop_back_array(api_opaque))
         },
     )
 }
@@ -1550,7 +1550,7 @@ fn wire_loop_back_vec_impl(port_: MessagePort, opaque: impl Wire2Api<DartOpaque>
         },
         move || {
             let api_opaque = opaque.wire2api();
-            move |task_callback| Ok(loop_back_vec(api_opaque))
+            move |task_callback| Result::<_, ()>::Ok(loop_back_vec(api_opaque))
         },
     )
 }
@@ -1566,7 +1566,7 @@ fn wire_loop_back_option_get_impl(
         },
         move || {
             let api_opaque = opaque.wire2api();
-            move |task_callback| Ok(loop_back_option_get(api_opaque))
+            move |task_callback| Result::<_, ()>::Ok(loop_back_option_get(api_opaque))
         },
     )
 }
@@ -1582,7 +1582,7 @@ fn wire_loop_back_array_get_impl(
         },
         move || {
             let api_opaque = opaque.wire2api();
-            move |task_callback| Ok(loop_back_array_get(api_opaque))
+            move |task_callback| Result::<_, ()>::Ok(loop_back_array_get(api_opaque))
         },
     )
 }
@@ -1598,7 +1598,7 @@ fn wire_loop_back_vec_get_impl(
         },
         move || {
             let api_opaque = opaque.wire2api();
-            move |task_callback| Ok(loop_back_vec_get(api_opaque))
+            move |task_callback| Result::<_, ()>::Ok(loop_back_vec_get(api_opaque))
         },
     )
 }
@@ -1613,7 +1613,7 @@ fn wire_unwrap_dart_opaque_impl(
         },
         move || {
             let api_opaque = opaque.wire2api();
-            Ok(unwrap_dart_opaque(api_opaque))
+            Result::<_, ()>::Ok(unwrap_dart_opaque(api_opaque))
         },
     )
 }
@@ -1629,7 +1629,7 @@ fn wire_panic_unwrap_dart_opaque_impl(
         },
         move || {
             let api_opaque = opaque.wire2api();
-            move |task_callback| Ok(panic_unwrap_dart_opaque(api_opaque))
+            move |task_callback| Result::<_, ()>::Ok(panic_unwrap_dart_opaque(api_opaque))
         },
     )
 }
@@ -1640,7 +1640,7 @@ fn wire_create_opaque_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(create_opaque()),
+        move || move |task_callback| Result::<_, ()>::Ok(create_opaque()),
     )
 }
 fn wire_create_option_opaque_impl(
@@ -1655,7 +1655,7 @@ fn wire_create_option_opaque_impl(
         },
         move || {
             let api_opaque = opaque.wire2api();
-            move |task_callback| Ok(create_option_opaque(api_opaque))
+            move |task_callback| Result::<_, ()>::Ok(create_option_opaque(api_opaque))
         },
     )
 }
@@ -1666,7 +1666,7 @@ fn wire_sync_create_opaque_impl() -> support::WireSyncReturn {
             port: None,
             mode: FfiCallMode::Sync,
         },
-        move || Ok(sync_create_opaque()),
+        move || Result::<_, ()>::Ok(sync_create_opaque()),
     )
 }
 fn wire_create_array_opaque_enum_impl(port_: MessagePort) {
@@ -1676,7 +1676,7 @@ fn wire_create_array_opaque_enum_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(create_array_opaque_enum()),
+        move || move |task_callback| Result::<_, ()>::Ok(create_array_opaque_enum()),
     )
 }
 fn wire_run_enum_opaque_impl(port_: MessagePort, opaque: impl Wire2Api<EnumOpaque> + UnwindSafe) {
@@ -1688,7 +1688,7 @@ fn wire_run_enum_opaque_impl(port_: MessagePort, opaque: impl Wire2Api<EnumOpaqu
         },
         move || {
             let api_opaque = opaque.wire2api();
-            move |task_callback| Ok(run_enum_opaque(api_opaque))
+            move |task_callback| Result::<_, ()>::Ok(run_enum_opaque(api_opaque))
         },
     )
 }
@@ -1704,7 +1704,7 @@ fn wire_run_opaque_impl(
         },
         move || {
             let api_opaque = opaque.wire2api();
-            move |task_callback| Ok(run_opaque(api_opaque))
+            move |task_callback| Result::<_, ()>::Ok(run_opaque(api_opaque))
         },
     )
 }
@@ -1720,7 +1720,7 @@ fn wire_run_opaque_with_delay_impl(
         },
         move || {
             let api_opaque = opaque.wire2api();
-            move |task_callback| Ok(run_opaque_with_delay(api_opaque))
+            move |task_callback| Result::<_, ()>::Ok(run_opaque_with_delay(api_opaque))
         },
     )
 }
@@ -1731,7 +1731,7 @@ fn wire_opaque_array_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(opaque_array()),
+        move || move |task_callback| Result::<_, ()>::Ok(opaque_array()),
     )
 }
 fn wire_sync_create_non_clone_impl() -> support::WireSyncReturn {
@@ -1741,7 +1741,7 @@ fn wire_sync_create_non_clone_impl() -> support::WireSyncReturn {
             port: None,
             mode: FfiCallMode::Sync,
         },
-        move || Ok(sync_create_non_clone()),
+        move || Result::<_, ()>::Ok(sync_create_non_clone()),
     )
 }
 fn wire_run_non_clone_impl(
@@ -1756,7 +1756,7 @@ fn wire_run_non_clone_impl(
         },
         move || {
             let api_clone = clone.wire2api();
-            move |task_callback| Ok(run_non_clone(api_clone))
+            move |task_callback| Result::<_, ()>::Ok(run_non_clone(api_clone))
         },
     )
 }
@@ -1767,7 +1767,7 @@ fn wire_create_sync_opaque_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(create_sync_opaque()),
+        move || move |task_callback| Result::<_, ()>::Ok(create_sync_opaque()),
     )
 }
 fn wire_sync_create_sync_opaque_impl() -> support::WireSyncReturn {
@@ -1777,7 +1777,7 @@ fn wire_sync_create_sync_opaque_impl() -> support::WireSyncReturn {
             port: None,
             mode: FfiCallMode::Sync,
         },
-        move || Ok(sync_create_sync_opaque()),
+        move || Result::<_, ()>::Ok(sync_create_sync_opaque()),
     )
 }
 fn wire_sync_run_opaque_impl(
@@ -1791,7 +1791,7 @@ fn wire_sync_run_opaque_impl(
         },
         move || {
             let api_opaque = opaque.wire2api();
-            Ok(sync_run_opaque(api_opaque))
+            Result::<_, ()>::Ok(sync_run_opaque(api_opaque))
         },
     )
 }
@@ -1807,7 +1807,7 @@ fn wire_opaque_array_run_impl(
         },
         move || {
             let api_data = data.wire2api();
-            move |task_callback| Ok(opaque_array_run(api_data))
+            move |task_callback| Result::<_, ()>::Ok(opaque_array_run(api_data))
         },
     )
 }
@@ -1818,7 +1818,7 @@ fn wire_opaque_vec_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(opaque_vec()),
+        move || move |task_callback| Result::<_, ()>::Ok(opaque_vec()),
     )
 }
 fn wire_opaque_vec_run_impl(
@@ -1833,7 +1833,7 @@ fn wire_opaque_vec_run_impl(
         },
         move || {
             let api_data = data.wire2api();
-            move |task_callback| Ok(opaque_vec_run(api_data))
+            move |task_callback| Result::<_, ()>::Ok(opaque_vec_run(api_data))
         },
     )
 }
@@ -1844,7 +1844,7 @@ fn wire_create_nested_opaque_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(create_nested_opaque()),
+        move || move |task_callback| Result::<_, ()>::Ok(create_nested_opaque()),
     )
 }
 fn wire_sync_loopback_impl(
@@ -1858,7 +1858,7 @@ fn wire_sync_loopback_impl(
         },
         move || {
             let api_opaque = opaque.wire2api();
-            Ok(sync_loopback(api_opaque))
+            Result::<_, ()>::Ok(sync_loopback(api_opaque))
         },
     )
 }
@@ -1873,7 +1873,7 @@ fn wire_sync_option_loopback_impl(
         },
         move || {
             let api_opaque = opaque.wire2api();
-            Ok(sync_option_loopback(api_opaque))
+            Result::<_, ()>::Ok(sync_option_loopback(api_opaque))
         },
     )
 }
@@ -1929,7 +1929,7 @@ fn wire_sync_void_impl() -> support::WireSyncReturn {
             port: None,
             mode: FfiCallMode::Sync,
         },
-        move || Ok(sync_void()),
+        move || Result::<_, ()>::Ok(sync_void()),
     )
 }
 fn wire_run_nested_opaque_impl(
@@ -1944,7 +1944,7 @@ fn wire_run_nested_opaque_impl(
         },
         move || {
             let api_opaque = opaque.wire2api();
-            move |task_callback| Ok(run_nested_opaque(api_opaque))
+            move |task_callback| Result::<_, ()>::Ok(run_nested_opaque(api_opaque))
         },
     )
 }
@@ -1962,7 +1962,9 @@ fn wire_create_nested_dart_opaque_impl(
         move || {
             let api_opaque1 = opaque1.wire2api();
             let api_opaque2 = opaque2.wire2api();
-            move |task_callback| Ok(create_nested_dart_opaque(api_opaque1, api_opaque2))
+            move |task_callback| {
+                Result::<_, ()>::Ok(create_nested_dart_opaque(api_opaque1, api_opaque2))
+            }
         },
     )
 }
@@ -1978,7 +1980,7 @@ fn wire_get_nested_dart_opaque_impl(
         },
         move || {
             let api_opaque = opaque.wire2api();
-            move |task_callback| Ok(get_nested_dart_opaque(api_opaque))
+            move |task_callback| Result::<_, ()>::Ok(get_nested_dart_opaque(api_opaque))
         },
     )
 }
@@ -1994,7 +1996,7 @@ fn wire_create_enum_dart_opaque_impl(
         },
         move || {
             let api_opaque = opaque.wire2api();
-            move |task_callback| Ok(create_enum_dart_opaque(api_opaque))
+            move |task_callback| Result::<_, ()>::Ok(create_enum_dart_opaque(api_opaque))
         },
     )
 }
@@ -2010,7 +2012,7 @@ fn wire_get_enum_dart_opaque_impl(
         },
         move || {
             let api_opaque = opaque.wire2api();
-            move |task_callback| Ok(get_enum_dart_opaque(api_opaque))
+            move |task_callback| Result::<_, ()>::Ok(get_enum_dart_opaque(api_opaque))
         },
     )
 }
@@ -2026,7 +2028,7 @@ fn wire_set_static_dart_opaque_impl(
         },
         move || {
             let api_opaque = opaque.wire2api();
-            move |task_callback| Ok(set_static_dart_opaque(api_opaque))
+            move |task_callback| Result::<_, ()>::Ok(set_static_dart_opaque(api_opaque))
         },
     )
 }
@@ -2037,7 +2039,7 @@ fn wire_drop_static_dart_opaque_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(drop_static_dart_opaque()),
+        move || move |task_callback| Result::<_, ()>::Ok(drop_static_dart_opaque()),
     )
 }
 fn wire_unwrap_rust_opaque_impl(
@@ -2067,7 +2069,7 @@ fn wire_return_non_droppable_dart_opaque_impl(
         },
         move || {
             let api_opaque = opaque.wire2api();
-            Ok(return_non_droppable_dart_opaque(api_opaque))
+            Result::<_, ()>::Ok(return_non_droppable_dart_opaque(api_opaque))
         },
     )
 }
@@ -2078,7 +2080,7 @@ fn wire_frb_generator_test_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(frb_generator_test()),
+        move || move |task_callback| Result::<_, ()>::Ok(frb_generator_test()),
     )
 }
 fn wire_frb_sync_generator_test_impl() -> support::WireSyncReturn {
@@ -2088,7 +2090,7 @@ fn wire_frb_sync_generator_test_impl() -> support::WireSyncReturn {
             port: None,
             mode: FfiCallMode::Sync,
         },
-        move || Ok(frb_sync_generator_test()),
+        move || Result::<_, ()>::Ok(frb_sync_generator_test()),
     )
 }
 fn wire_handle_type_alias_id_impl(port_: MessagePort, input: impl Wire2Api<u64> + UnwindSafe) {
@@ -2100,7 +2102,7 @@ fn wire_handle_type_alias_id_impl(port_: MessagePort, input: impl Wire2Api<u64> 
         },
         move || {
             let api_input = input.wire2api();
-            move |task_callback| Ok(handle_type_alias_id(api_input))
+            move |task_callback| Result::<_, ()>::Ok(handle_type_alias_id(api_input))
         },
     )
 }
@@ -2113,7 +2115,7 @@ fn wire_handle_type_nest_alias_id_impl(port_: MessagePort, input: impl Wire2Api<
         },
         move || {
             let api_input = input.wire2api();
-            move |task_callback| Ok(handle_type_nest_alias_id(api_input))
+            move |task_callback| Result::<_, ()>::Ok(handle_type_nest_alias_id(api_input))
         },
     )
 }
@@ -2126,7 +2128,7 @@ fn wire_handle_type_alias_model_impl(port_: MessagePort, input: impl Wire2Api<u6
         },
         move || {
             let api_input = input.wire2api();
-            move |task_callback| Ok(handle_type_alias_model(api_input))
+            move |task_callback| Result::<_, ()>::Ok(handle_type_alias_model(api_input))
         },
     )
 }
@@ -2139,7 +2141,7 @@ fn wire_empty_struct_impl(port_: MessagePort, empty: impl Wire2Api<Empty> + Unwi
         },
         move || {
             let api_empty = empty.wire2api();
-            move |task_callback| Ok(empty_struct(api_empty))
+            move |task_callback| Result::<_, ()>::Ok(empty_struct(api_empty))
         },
     )
 }
@@ -2150,7 +2152,7 @@ fn wire_return_dart_dynamic_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(return_dart_dynamic()),
+        move || move |task_callback| Result::<_, ()>::Ok(return_dart_dynamic()),
     )
 }
 fn wire_test_raw_string_item_struct_impl(port_: MessagePort) {
@@ -2160,7 +2162,7 @@ fn wire_test_raw_string_item_struct_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(test_raw_string_item_struct()),
+        move || move |task_callback| Result::<_, ()>::Ok(test_raw_string_item_struct()),
     )
 }
 fn wire_test_more_than_just_one_raw_string_struct_impl(port_: MessagePort) {
@@ -2170,7 +2172,9 @@ fn wire_test_more_than_just_one_raw_string_struct_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(test_more_than_just_one_raw_string_struct()),
+        move || {
+            move |task_callback| Result::<_, ()>::Ok(test_more_than_just_one_raw_string_struct())
+        },
     )
 }
 fn wire_test_raw_string_mirrored_impl(port_: MessagePort) {
@@ -2180,7 +2184,7 @@ fn wire_test_raw_string_mirrored_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(test_raw_string_mirrored()),
+        move || move |task_callback| Result::<_, ()>::Ok(test_raw_string_mirrored()),
     )
 }
 fn wire_test_nested_raw_string_mirrored_impl(port_: MessagePort) {
@@ -2190,7 +2194,7 @@ fn wire_test_nested_raw_string_mirrored_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(test_nested_raw_string_mirrored()),
+        move || move |task_callback| Result::<_, ()>::Ok(test_nested_raw_string_mirrored()),
     )
 }
 fn wire_test_raw_string_enum_mirrored_impl(
@@ -2205,7 +2209,7 @@ fn wire_test_raw_string_enum_mirrored_impl(
         },
         move || {
             let api_nested = nested.wire2api();
-            move |task_callback| Ok(test_raw_string_enum_mirrored(api_nested))
+            move |task_callback| Result::<_, ()>::Ok(test_raw_string_enum_mirrored(api_nested))
         },
     )
 }
@@ -2216,7 +2220,7 @@ fn wire_test_list_of_raw_nested_string_mirrored_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(test_list_of_raw_nested_string_mirrored()),
+        move || move |task_callback| Result::<_, ()>::Ok(test_list_of_raw_nested_string_mirrored()),
     )
 }
 fn wire_test_fallible_of_raw_string_mirrored_impl(port_: MessagePort) {
@@ -2241,7 +2245,7 @@ fn wire_list_of_primitive_enums_impl(
         },
         move || {
             let api_weekdays = weekdays.wire2api();
-            move |task_callback| Ok(list_of_primitive_enums(api_weekdays))
+            move |task_callback| Result::<_, ()>::Ok(list_of_primitive_enums(api_weekdays))
         },
     )
 }
@@ -2254,7 +2258,7 @@ fn wire_test_abc_enum_impl(port_: MessagePort, abc: impl Wire2Api<Abc> + UnwindS
         },
         move || {
             let api_abc = abc.wire2api();
-            move |task_callback| Ok(test_abc_enum(api_abc))
+            move |task_callback| Result::<_, ()>::Ok(test_abc_enum(api_abc))
         },
     )
 }
@@ -2265,7 +2269,7 @@ fn wire_test_contains_mirrored_sub_struct_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(test_contains_mirrored_sub_struct()),
+        move || move |task_callback| Result::<_, ()>::Ok(test_contains_mirrored_sub_struct()),
     )
 }
 fn wire_test_struct_with_enum_impl(
@@ -2280,7 +2284,7 @@ fn wire_test_struct_with_enum_impl(
         },
         move || {
             let api_se = se.wire2api();
-            move |task_callback| Ok(test_struct_with_enum(api_se))
+            move |task_callback| Result::<_, ()>::Ok(test_struct_with_enum(api_se))
         },
     )
 }
@@ -2296,7 +2300,7 @@ fn wire_test_tuple_impl(
         },
         move || {
             let api_value = value.wire2api();
-            move |task_callback| Ok(test_tuple(api_value))
+            move |task_callback| Result::<_, ()>::Ok(test_tuple(api_value))
         },
     )
 }
@@ -2312,7 +2316,7 @@ fn wire_test_tuple_2_impl(
         },
         move || {
             let api_value = value.wire2api();
-            move |task_callback| Ok(test_tuple_2(api_value))
+            move |task_callback| Result::<_, ()>::Ok(test_tuple_2(api_value))
         },
     )
 }
@@ -2323,7 +2327,7 @@ fn wire_sync_return_mirror_impl() -> support::WireSyncReturn {
             port: None,
             mode: FfiCallMode::Sync,
         },
-        move || Ok(sync_return_mirror()),
+        move || Result::<_, ()>::Ok(sync_return_mirror()),
     )
 }
 fn wire_macro_struct_impl(port_: MessagePort) {
@@ -2333,7 +2337,7 @@ fn wire_macro_struct_impl(port_: MessagePort) {
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Ok(macro_struct()),
+        move || move |task_callback| Result::<_, ()>::Ok(macro_struct()),
     )
 }
 fn wire_as_string__method__Event_impl(port_: MessagePort, that: impl Wire2Api<Event> + UnwindSafe) {
@@ -2345,7 +2349,7 @@ fn wire_as_string__method__Event_impl(port_: MessagePort, that: impl Wire2Api<Ev
         },
         move || {
             let api_that = that.wire2api();
-            move |task_callback| Ok(Event::as_string(&api_that))
+            move |task_callback| Result::<_, ()>::Ok(Event::as_string(&api_that))
         },
     )
 }
@@ -2365,7 +2369,7 @@ fn wire_sum__method__SumWith_impl(
             let api_that = that.wire2api();
             let api_y = y.wire2api();
             let api_z = z.wire2api();
-            move |task_callback| Ok(SumWith::sum(&api_that, api_y, api_z))
+            move |task_callback| Result::<_, ()>::Ok(SumWith::sum(&api_that, api_y, api_z))
         },
     )
 }
@@ -2381,7 +2385,7 @@ fn wire_new__static_method__ConcatenateWith_impl(
         },
         move || {
             let api_a = a.wire2api();
-            move |task_callback| Ok(ConcatenateWith::new(api_a))
+            move |task_callback| Result::<_, ()>::Ok(ConcatenateWith::new(api_a))
         },
     )
 }
@@ -2399,7 +2403,7 @@ fn wire_concatenate__method__ConcatenateWith_impl(
         move || {
             let api_that = that.wire2api();
             let api_b = b.wire2api();
-            move |task_callback| Ok(ConcatenateWith::concatenate(&api_that, api_b))
+            move |task_callback| Result::<_, ()>::Ok(ConcatenateWith::concatenate(&api_that, api_b))
         },
     )
 }
@@ -2417,7 +2421,9 @@ fn wire_concatenate_static__static_method__ConcatenateWith_impl(
         move || {
             let api_a = a.wire2api();
             let api_b = b.wire2api();
-            move |task_callback| Ok(ConcatenateWith::concatenate_static(api_a, api_b))
+            move |task_callback| {
+                Result::<_, ()>::Ok(ConcatenateWith::concatenate_static(api_a, api_b))
+            }
         },
     )
 }
@@ -2438,7 +2444,7 @@ fn wire_handle_some_stream_sink__method__ConcatenateWith_impl(
             let api_key = key.wire2api();
             let api_max = max.wire2api();
             move |task_callback| {
-                Ok(ConcatenateWith::handle_some_stream_sink(
+                Result::<_, ()>::Ok(ConcatenateWith::handle_some_stream_sink(
                     &api_that,
                     api_key,
                     api_max,
@@ -2461,7 +2467,7 @@ fn wire_handle_some_stream_sink_at_1__method__ConcatenateWith_impl(
         move || {
             let api_that = that.wire2api();
             move |task_callback| {
-                Ok(ConcatenateWith::handle_some_stream_sink_at_1(
+                Result::<_, ()>::Ok(ConcatenateWith::handle_some_stream_sink_at_1(
                     &api_that,
                     task_callback.stream_sink::<_, u32>(),
                 ))
@@ -2484,7 +2490,7 @@ fn wire_handle_some_static_stream_sink__static_method__ConcatenateWith_impl(
             let api_key = key.wire2api();
             let api_max = max.wire2api();
             move |task_callback| {
-                Ok(ConcatenateWith::handle_some_static_stream_sink(
+                Result::<_, ()>::Ok(ConcatenateWith::handle_some_static_stream_sink(
                     api_key,
                     api_max,
                     task_callback.stream_sink::<_, Log2>(),
@@ -2504,7 +2510,7 @@ fn wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWit
         },
         move || {
             move |task_callback| {
-                Ok(ConcatenateWith::handle_some_static_stream_sink_single_arg(
+                Result::<_, ()>::Ok(ConcatenateWith::handle_some_static_stream_sink_single_arg(
                     task_callback.stream_sink::<_, u32>(),
                 ))
             }

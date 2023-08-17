@@ -967,7 +967,7 @@ class A {
 }
 
 @freezed
-sealed class Abc with _$Abc {
+class Abc with _$Abc {
   const factory Abc.a(
     A field0,
   ) = Abc_A;
@@ -1001,7 +1001,7 @@ class ApplicationEnvVar {
 }
 
 @freezed
-sealed class ApplicationMessage with _$ApplicationMessage {
+class ApplicationMessage with _$ApplicationMessage {
   const factory ApplicationMessage.displayMessage(
     String field0,
   ) = ApplicationMessage_DisplayMessage;
@@ -1158,7 +1158,7 @@ class DartOpaqueNested {
 }
 
 @freezed
-sealed class Distance with _$Distance {
+class Distance with _$Distance {
   const factory Distance.unknown() = Distance_Unknown;
   const factory Distance.map(
     double field0,
@@ -1184,7 +1184,7 @@ class Empty {
 }
 
 @freezed
-sealed class EnumDartOpaque with _$EnumDartOpaque {
+class EnumDartOpaque with _$EnumDartOpaque {
   const factory EnumDartOpaque.primitive(
     int field0,
   ) = EnumDartOpaque_Primitive;
@@ -1194,7 +1194,7 @@ sealed class EnumDartOpaque with _$EnumDartOpaque {
 }
 
 @freezed
-sealed class EnumOpaque with _$EnumOpaque {
+class EnumOpaque with _$EnumOpaque {
   const factory EnumOpaque.struct(
     HideData field0,
   ) = EnumOpaque_Struct;
@@ -1310,7 +1310,7 @@ class I32Array2 extends NonGrowableListView<int> {
 }
 
 @freezed
-sealed class KitchenSink with _$KitchenSink {
+class KitchenSink with _$KitchenSink {
   /// Comment on variant
   const factory KitchenSink.empty() = KitchenSink_Empty;
   const factory KitchenSink.primitives({
@@ -1375,7 +1375,7 @@ class MacroStruct {
 }
 
 @freezed
-sealed class Measure with _$Measure {
+class Measure with _$Measure {
   const factory Measure.speed(
     Speed field0,
   ) = Measure_Speed;
@@ -1426,7 +1426,7 @@ enum MyEnum {
 }
 
 @freezed
-sealed class MyEnumFreezed with _$MyEnumFreezed {
+class MyEnumFreezed with _$MyEnumFreezed {
   const factory MyEnumFreezed.a(
     int field0,
   ) = MyEnumFreezed_A;
@@ -1565,7 +1565,7 @@ class Point {
 }
 
 @freezed
-sealed class RawStringEnumMirrored with _$RawStringEnumMirrored {
+class RawStringEnumMirrored with _$RawStringEnumMirrored {
   const factory RawStringEnumMirrored.raw(
     RawStringMirrored field0,
   ) = RawStringEnumMirrored_Raw;
@@ -1602,7 +1602,7 @@ class Sequences {
 }
 
 @freezed
-sealed class Speed with _$Speed {
+class Speed with _$Speed {
   const factory Speed.unknown() = Speed_Unknown;
   const factory Speed.gps(
     double field0,

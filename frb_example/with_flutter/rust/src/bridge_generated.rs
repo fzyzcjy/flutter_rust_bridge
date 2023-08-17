@@ -223,7 +223,7 @@ fn wire_next_user_id_impl(port_: MessagePort, user_id: impl Wire2Api<UserId> + U
         },
         move || {
             let api_user_id = user_id.wire2api();
-            move |task_callback| Ok(next_user_id(api_user_id))
+            move |task_callback| Result::<_, ()>::Ok(next_user_id(api_user_id))
         },
     )
 }
@@ -239,7 +239,7 @@ fn wire_test_method__method__BoxedPoint_impl(
         },
         move || {
             let api_that = that.wire2api();
-            move |task_callback| Ok(BoxedPoint::test_method(&api_that))
+            move |task_callback| Result::<_, ()>::Ok(BoxedPoint::test_method(&api_that))
         },
     )
 }
@@ -257,7 +257,7 @@ fn wire_sum__method__SumWith_impl(
         move || {
             let api_that = that.wire2api();
             let api_y = y.wire2api();
-            move |task_callback| Ok(SumWith::sum(&api_that, api_y))
+            move |task_callback| Result::<_, ()>::Ok(SumWith::sum(&api_that, api_y))
         },
     )
 }
@@ -275,7 +275,7 @@ fn wire_sum_static__static_method__SumWith_impl(
         move || {
             let api_x = x.wire2api();
             let api_y = y.wire2api();
-            move |task_callback| Ok(SumWith::sum_static(api_x, api_y))
+            move |task_callback| Result::<_, ()>::Ok(SumWith::sum_static(api_x, api_y))
         },
     )
 }

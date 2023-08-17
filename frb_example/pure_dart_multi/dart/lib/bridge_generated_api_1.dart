@@ -35,6 +35,7 @@ class ApiClass1Impl implements ApiClass1 {
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_simple_adder_1(port_, arg0, arg1),
       parseSuccessData: _wire2api_i32,
+      parseErrorData: null,
       constMeta: kSimpleAdder1ConstMeta,
       argValues: [a, b],
       hint: hint,
