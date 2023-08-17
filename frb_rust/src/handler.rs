@@ -7,7 +7,7 @@ use std::panic::{RefUnwindSafe, UnwindSafe};
 use crate::ffi::{IntoDart, MessagePort};
 use anyhow::Result;
 
-use crate::rust2dart::{IntoIntoDart, Rust2Dart, TaskCallback};
+use crate::rust2dart::{BoxIntoDart, IntoIntoDart, Rust2Dart, TaskCallback};
 use crate::support::WireSyncReturn;
 use crate::{spawn, SyncReturn};
 
@@ -139,7 +139,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
                     Ok(data) => wire_sync_from_data(data.0.into_into_dart(), true),
                     Err(err) => self
                         .error_handler
-                        .handle_error_sync(Error::ResultError(err)),
+                        .handle_error_sync(Error::CustomError(Box::new(err))),
                 }
             });
             catch_unwind_result
@@ -225,7 +225,7 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
                         }
                     }
                     Err(error) => {
-                        eh2.handle_error(port2, Error::ResultError(error));
+                        eh2.handle_error(port2, Error::CustomError(Box::new(error)));
                     }
                 };
             });
@@ -251,35 +251,39 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
 }
 
 /// Errors that occur from normal code execution.
-#[derive(Debug)]
 pub enum Error {
-    /// Errors from an [anyhow::Error].
-    ResultError(anyhow::Error),
+    /// Errors that implement [IntoDart].
+    CustomError(Box<dyn BoxIntoDart>),
     /// Exceptional errors from panicking.
     Panic(Box<dyn Any + Send>),
 }
 
-impl Error {
-    /// The identifier of the type of error.
-    pub fn code(&self) -> &'static str {
-        match self {
-            Error::ResultError(_) => "RESULT_ERROR",
-            Error::Panic(_) => "PANIC_ERROR",
-        }
+fn error_to_string(panic_err: &Box<dyn Any + Send>) -> String {
+    match panic_err.downcast_ref::<&'static str>() {
+        Some(s) => *s,
+        None => match panic_err.downcast_ref::<String>() {
+            Some(s) => &s[..],
+            None => "Box<dyn Any>",
+        },
     }
+    .to_string()
+}
 
+impl Error {
     /// The message of the error.
     pub fn message(&self) -> String {
         match self {
-            Error::ResultError(e) => format!("{e:?}"),
-            Error::Panic(panic_err) => match panic_err.downcast_ref::<&'static str>() {
-                Some(s) => *s,
-                None => match panic_err.downcast_ref::<String>() {
-                    Some(s) => &s[..],
-                    None => "Box<dyn Any>",
-                },
-            }
-            .to_string(),
+            Error::CustomError(_e) => "Box<dyn BoxIntoDart>".to_string(),
+            Error::Panic(panic_err) => error_to_string(panic_err),
+        }
+    }
+}
+
+impl IntoDart for Error {
+    fn into_dart(self) -> allo_isolate::ffi::DartCObject {
+        match self {
+            Error::CustomError(e) => e.box_into_dart(),
+            Error::Panic(panic_err) => error_to_string(&panic_err).into_dart(),
         }
     }
 }
@@ -303,11 +307,14 @@ pub struct ReportDartErrorHandler;
 
 impl ErrorHandler for ReportDartErrorHandler {
     fn handle_error(&self, port: MessagePort, error: Error) {
-        Rust2Dart::new(port).error(error.code().to_string(), error.message());
+        match error {
+            e @ Error::CustomError(_) => Rust2Dart::new(port).error(e),
+            e @ Error::Panic(_) => Rust2Dart::new(port).panic(e),
+        };
     }
 
     fn handle_error_sync(&self, error: Error) -> WireSyncReturn {
-        wire_sync_from_data(format!("{}: {}", error.code(), error.message()), false)
+        wire_sync_from_data(error.message(), false)
     }
 }
 

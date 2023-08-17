@@ -9,13 +9,6 @@ use std::string::String;
 use syn::punctuated::Punctuated;
 use syn::*;
 
-use crate::markers;
-
-use crate::source_graph::{Enum, Struct};
-
-use crate::parser::{extract_comments, extract_metadata, type_to_string};
-use crate::utils::remove_first;
-
 use super::ANYHOW_IDENT;
 use super::DefaultValues;
 

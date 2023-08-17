@@ -1,15 +1,14 @@
 //! Manages receiving and sending values across the FFI boundary.
 
+pub use crate::ffi::*;
+pub use crate::into_into_dart::IntoIntoDart;
 /// The representation of a Dart object outside of the Dart heap.
 ///
 /// Its implementation lies with the Dart language and therefore should not be
 /// depended on to be stable.
 pub use allo_isolate::ffi::DartCObject;
 pub use allo_isolate::IntoDart;
-use allo_isolate::Isolate;
 use std::marker::PhantomData;
-pub use crate::ffi::*;
-pub use crate::into_into_dart::IntoIntoDart;
 
 /// A wrapper around a Dart [`Isolate`].
 #[derive(Clone)]
@@ -46,13 +45,13 @@ impl Rust2Dart {
 
     /// Send a detailed error back to the specified port.
     pub fn error(&self, e: impl IntoDart) -> bool {
-        self.isolate
+        self.channel
             .post(vec![RUST2DART_ACTION_ERROR.into_dart(), e.into_dart()])
     }
 
     /// Send a detailed error back to the specified port.
     pub fn panic_full(&self, e: impl IntoDart) -> bool {
-        self.isolate
+        self.channel
             .post(vec![RUST2DART_ACTION_PANIC.into_dart(), e.into_dart()])
     }
 

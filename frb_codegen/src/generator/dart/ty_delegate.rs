@@ -117,7 +117,6 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             }
             IrTypeDelegate::String
             | IrTypeDelegate::Backtrace
-            | IrTypeDelegate::SyncReturnVecU8
             | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 gen_wire2api_simple_type_cast(&self.ir.dart_api_type())
             }
@@ -154,7 +153,7 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             final bytes = _wire2api_uint_8_list(raw);
             return wire2apiUuids(bytes);"
                 .to_owned(),
-            IrTypeDelegate::Anyhow => "return FrbAnyhowException(raw as String);".to_string(),
+            IrTypeDelegate::Anyhow => "return FrbAnyhowException(raw as String);".to_owned(),
         }
     }
 

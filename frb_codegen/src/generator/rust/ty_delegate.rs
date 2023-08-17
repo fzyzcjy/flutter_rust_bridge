@@ -124,7 +124,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                     "let multiple: Vec<u8> = self.wire2api(); wire2api_uuids(multiple)".into(),
                 ),
             ),
-            IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "self.wire2api()".to_owned(),
+            IrTypeDelegate::Backtrace | IrTypeDelegate::Anyhow => "self.wire2api()".into(),
         }
     }
 

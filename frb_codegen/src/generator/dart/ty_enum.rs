@@ -5,8 +5,7 @@ use crate::generator::dart::ty::*;
 use crate::ir::*;
 use crate::target::Acc;
 use crate::type_dart_generator_struct;
-use crate::utils::dart_maybe_implements_exception;
-use crate::utils::BlockIndex;
+use crate::utils::misc::dart_maybe_implements_exception;
 
 type_dart_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 
@@ -168,6 +167,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                         fields,
                         ..
                     }) if fields.iter().any(|field| field.name.raw =="backtrace"));
+
                     let args = match &variant.kind {
                         IrVariantKind::Value => "".to_owned(),
                         IrVariantKind::Struct(IrStruct {
@@ -222,11 +222,13 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                             format!("{{ {} }}", fields.join(""))
                         }
                     };
+
                     let implements_exception = if self.ir.is_exception && has_backtrace {
                         "@Implements<FrbBacktracedException>()"
                     } else {
                         ""
                     };
+
                     format!(
                         "{} {}const factory {}.{}({}) = {};",
                         implements_exception,

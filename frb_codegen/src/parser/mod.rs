@@ -149,36 +149,55 @@ impl<'a> Parser<'a> {
         let ty = &self.type_parser.resolve_alias(ty).clone();
 
         if let Type::Path(type_path) = ty {
-            match self.type_parser.convert_path_to_ir_type(type_path) {
+            // TODO
+            // let c = type_path.path.segments;
+
+            // for x in c {
+            //     match x.arguments {
+            //         PathArguments::None => todo!(),
+            //         PathArguments::AngleBracketed(y) => {
+            //             y.args.iter().for_each(|x| match x {
+            //                 GenericArgument::Type(ty) => {
+            //                     self.type_parser.resolve_alias(ty);
+            //                 }
+            //                 _ => {}
+            //             })
+            //         },
+            //         PathArguments::Parenthesized(_) => todo!(),
+            //     }
+            // }
+
+            match self.type_parser.convert_path_to_ir_type(type_path, false) {
                 Ok(IrType::Unencodable(IrTypeUnencodable { segments, .. })) => {
-                    match if cfg!(feature = "qualified_names") {
+                    let a = if cfg!(feature = "qualified_names") {
                         segments.splay()
                     } else {
                         // Emulate old behavior by discarding any name qualifiers
                         vec![segments.splay().pop().unwrap()]
-                    }[..]
-                    {
+                    }
+                    .as_slice();
+
+                    match a {
                         #[cfg(feature = "qualified_names")]
                         [("anyhow", None), ("Result", Some(ArgsRefs::Generic([args])))] => {
                             Some(IrFuncOutput::ResultType(args.clone()))
                         }
                         [("Result", Some(ArgsRefs::Generic([args])))] => {
-                            let result = self
-                            .type_parser
-                            .convert_to_ir_type(generic.remove(0), false)
-                            .unwrap();
-                        let error = if generic.len() == 1 {
-                            Some(
-                                self.type_parser
-                                    .convert_to_ir_type(generic.remove(0), true)
-                                    .unwrap(),
-                            )
-                        } else if path_segments.iter().any(|x| x.ident == ANYHOW_IDENT) {
-                            Some(IrType::Delegate(IrTypeDelegate::Anyhow))
-                        } else {
-                            None
-                        };
-                        Some(IrFuncOutput::ResultType { ok: result, error })
+                            // let mut args = args.to_vec();
+
+                            // let result = args.remove(0);
+                            // let error = if args.len() == 1 {
+                            //     Some(args.remove(0))
+                            // } else if args.iter().any(|x| x.safe_ident() == ANYHOW_IDENT) {
+                            //     Some(IrType::Delegate(IrTypeDelegate::Anyhow))
+                            // } else {
+                            //     None
+                            // };
+
+                            Some(IrFuncOutput::ResultType {
+                                ok: args.clone(),
+                                error: None,
+                            })
                         }
                         _ => None, // unencodable types not implemented
                     }
@@ -230,7 +249,6 @@ impl<'a> Parser<'a> {
 
         let mut inputs = Vec::new();
         let mut output = None;
-        let mut error_output = None;
         let mut mode: Option<IrFuncMode> = None;
         let mut fallible = true;
 
@@ -280,7 +298,7 @@ impl<'a> Parser<'a> {
         }
 
         if output.is_none() {
-            (output, error_output) = match &sig.output {
+            output = Some(match &sig.output {
                 ReturnType::Type(_, ty) => {
                     let output_type = self.try_parse_fn_output_type(ty).with_context(|| {
                         format!(
@@ -289,16 +307,16 @@ impl<'a> Parser<'a> {
                         )
                     })?;
                     match output_type {
-                        IrFuncOutput::ResultType { ok: result, error } => (Some(result), error),
+                        IrFuncOutput::ResultType(ty) => ty,
                         IrFuncOutput::Type(ty) => {
                             fallible = false;
-                            (Some(ty), None)
+                            ty
                         }
                     }
                 }
                 ReturnType::Default => {
                     fallible = false;
-                    (Some(IrType::Primitive(IrTypePrimitive::Unit)), None)
+                    IrType::Primitive(IrTypePrimitive::Unit)
                 }
             });
             mode = Some(if let Some(IrType::SyncReturn(_)) = output {
@@ -312,7 +330,6 @@ impl<'a> Parser<'a> {
             name: func_name,
             inputs,
             output: output.context("Unsupported output")?,
-            error_output,
             fallible,
             mode: mode.context("Missing mode")?,
             comments: extract_comments(&func.attrs),

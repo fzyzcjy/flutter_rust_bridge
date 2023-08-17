@@ -2,8 +2,8 @@ use crate::generator::dart::ty::*;
 use crate::generator::dart::{dart_comments, dart_metadata, GeneratedApiMethod};
 use crate::target::Acc;
 use crate::type_dart_generator_struct;
-use crate::utils::{dart_maybe_implements_exception, BlockIndex};
 use crate::utils::method::FunctionName;
+use crate::utils::misc::dart_maybe_implements_exception;
 use crate::{ir::*, Opts};
 use convert_case::{Case, Casing};
 
@@ -173,18 +173,18 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             let constructor_params = constructor_params.join("");
 
             format!(
-                "{comments}{meta}class {Name} with _${Name} {} {{
+                "{comments}{meta}class {Name} with _${Name} {implements_exception} {{
                     {private_constructor}
                     const factory {Name}({{{}}}) = _{Name};
                     {}
                 }}",
-                dart_maybe_implements_exception(self.ir.is_exception),
                 constructor_params,
                 methods_string,
                 comments = comments,
                 private_constructor = private_constructor,
                 meta = metadata,
-                Name = self.ir.name
+                Name = self.ir.name,
+                implements_exception = dart_maybe_implements_exception(self.ir.is_exception),
             )
         } else {
             let mut field_declarations = src
@@ -230,14 +230,13 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             let const_capable = if src.const_capable() { "const " } else { "" };
 
             format!(
-                "{comments}{meta}class {Name} {} {{
+                "{comments}{meta}class {Name} {implements_exception} {{
                     {}
 
                     {const}{Name}({}{}{});
 
                 {}
             }}",
-                dart_maybe_implements_exception(self.ir.is_exception),
                 field_declarations,
                 left,
                 constructor_params,
@@ -246,7 +245,8 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 comments = comments,
                 meta = metadata,
                 Name = self.ir.name,
-                const = const_capable
+                const = const_capable,
+                implements_exception = dart_maybe_implements_exception(self.ir.is_exception),
             )
         }
     }
