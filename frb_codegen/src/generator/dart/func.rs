@@ -140,7 +140,7 @@ pub(crate) fn generate_api_func(
             return {}({task}(
             callFfi: ({args}) => _platform.inner.{}({}),
             parseSuccessData: {},
-            parseErrorData: {},
+            parseErrorData: {}
             {}
         ));}}",
         func_expr,
