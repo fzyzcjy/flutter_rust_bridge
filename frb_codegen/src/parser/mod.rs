@@ -149,54 +149,33 @@ impl<'a> Parser<'a> {
         let ty = &self.type_parser.resolve_alias(ty).clone();
 
         if let Type::Path(type_path) = ty {
-            // TODO
-            // let c = type_path.path.segments;
-
-            // for x in c {
-            //     match x.arguments {
-            //         PathArguments::None => todo!(),
-            //         PathArguments::AngleBracketed(y) => {
-            //             y.args.iter().for_each(|x| match x {
-            //                 GenericArgument::Type(ty) => {
-            //                     self.type_parser.resolve_alias(ty);
-            //                 }
-            //                 _ => {}
-            //             })
-            //         },
-            //         PathArguments::Parenthesized(_) => todo!(),
-            //     }
-            // }
-
             match self.type_parser.convert_path_to_ir_type(type_path, false) {
                 Ok(IrType::Unencodable(IrTypeUnencodable { segments, .. })) => {
-                    let a = if cfg!(feature = "qualified_names") {
+                    match if cfg!(feature = "qualified_names") {
                         segments.splay()
                     } else {
                         // Emulate old behavior by discarding any name qualifiers
                         vec![segments.splay().pop().unwrap()]
-                    }
-                    .as_slice();
-
-                    match a {
+                    }[..]
+                    {
                         #[cfg(feature = "qualified_names")]
                         [("anyhow", None), ("Result", Some(ArgsRefs::Generic([args])))] => {
                             Some(IrFuncOutput::ResultType(args.clone()))
                         }
-                        [("Result", Some(ArgsRefs::Generic([args])))] => {
-                            // let mut args = args.to_vec();
-
-                            // let result = args.remove(0);
-                            // let error = if args.len() == 1 {
-                            //     Some(args.remove(0))
-                            // } else if args.iter().any(|x| x.safe_ident() == ANYHOW_IDENT) {
-                            //     Some(IrType::Delegate(IrTypeDelegate::Anyhow))
-                            // } else {
-                            //     None
-                            // };
+                        [("Result", Some(ArgsRefs::Generic(args)))] => {
+                            let args = args.to_vec();
+                            let ok = args.first().unwrap();
+                            let error = if let Some(x) = args.last() {
+                                Some(x.clone())
+                            } else if args.iter().any(|x| x.safe_ident() == ANYHOW_IDENT) {
+                                Some(IrType::Delegate(IrTypeDelegate::Anyhow))
+                            } else {
+                                None
+                            };
 
                             Some(IrFuncOutput::ResultType {
-                                ok: args.clone(),
-                                error: None,
+                                ok: ok.clone(),
+                                error,
                             })
                         }
                         _ => None, // unencodable types not implemented
@@ -249,6 +228,7 @@ impl<'a> Parser<'a> {
 
         let mut inputs = Vec::new();
         let mut output = None;
+        let mut err = None;
         let mut mode: Option<IrFuncMode> = None;
         let mut fallible = true;
 
@@ -298,7 +278,7 @@ impl<'a> Parser<'a> {
         }
 
         if output.is_none() {
-            output = Some(match &sig.output {
+            let a = match &sig.output {
                 ReturnType::Type(_, ty) => {
                     let output_type = self.try_parse_fn_output_type(ty).with_context(|| {
                         format!(
@@ -307,18 +287,21 @@ impl<'a> Parser<'a> {
                         )
                     })?;
                     match output_type {
-                        IrFuncOutput::ResultType(ty) => ty,
+                        // weird one
+                        IrFuncOutput::ResultType { ok: ty, error: err } => (ty, err),
                         IrFuncOutput::Type(ty) => {
                             fallible = false;
-                            ty
+                            (ty, None)
                         }
                     }
                 }
                 ReturnType::Default => {
                     fallible = false;
-                    IrType::Primitive(IrTypePrimitive::Unit)
+                    (IrType::Primitive(IrTypePrimitive::Unit), None)
                 }
-            });
+            };
+            output = Some(a.0);
+            err = a.1;
             mode = Some(if let Some(IrType::SyncReturn(_)) = output {
                 IrFuncMode::Sync
             } else {
@@ -333,6 +316,7 @@ impl<'a> Parser<'a> {
             fallible,
             mode: mode.context("Missing mode")?,
             comments: extract_comments(&func.attrs),
+            error_output: err,
         })
     }
 }

@@ -9,8 +9,8 @@ use std::string::String;
 use syn::punctuated::Punctuated;
 use syn::*;
 
-use super::ANYHOW_IDENT;
 use super::DefaultValues;
+use super::ANYHOW_IDENT;
 
 pub struct TypeParser<'a> {
     src_structs: HashMap<String, &'a Struct>,
@@ -124,7 +124,7 @@ impl<'a> TypeParser<'a> {
         let resolve_ty = self.resolve_alias(ty).clone();
 
         match resolve_ty.clone() {
-            syn::Type::Path(path) => self.convert_path_to_ir_type(&path).unwrap(),
+            syn::Type::Path(path) => self.convert_path_to_ir_type(&path, false).unwrap(),
             syn::Type::Array(syn::TypeArray { elem, len, .. }) => {
                 let length: usize = match len {
                     syn::Expr::Lit(lit) => match &lit.lit {
@@ -333,14 +333,15 @@ impl<'a> TypeParser<'a> {
                                 .get(&ident_string)
                                 .map(IrStruct::is_empty)
                                 .unwrap_or(false),
-                                is_exception,
+                            is_exception,
                         }))
                     }
 
-                    [(name, None)] if self.src_enums.contains_key(&name.to_string()) => {
+                    [(name, _)] if self.src_enums.contains_key(&name.to_string()) => {
                         let ident_string = name.to_string();
                         if self.parsed_enums.insert(ident_string.to_owned()) {
-                            let enu = self.parse_enum_core(&ident_string,p.is_exception);
+                            // NOTE: not working
+                            let enu = self.parse_enum_core(&ident_string, is_exception);
                             self.enum_pool.insert(ident_string.to_owned(), enu);
                         }
 
@@ -529,12 +530,13 @@ impl<'a> TypeParser<'a> {
                 name: safe_ident,
                 freezed: false,
                 empty: false,
+                is_exception: false,
             },
             values: values.into_boxed_slice(),
         })
     }
 
-    fn parse_enum_core(&mut self, ident_string: &String) -> IrEnum {
+    fn parse_enum_core(&mut self, ident_string: &String, is_exception: bool) -> IrEnum {
         let src_enum = self.src_enums[ident_string];
         let name = src_enum.ident.to_string();
         let wrapper_name = if src_enum.mirror {
