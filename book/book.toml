@@ -1,6 +1,11 @@
 [book]
-authors = ["fzyzcjy", "Desdaemon"]
+authors = ["authors of flutter_rust_bridge, see GitHub README.md for detailed contributions"]
 language = "en"
 multilingual = false
 src = "src"
 title = "flutter_rust_bridge"
+
+[preprocessor]
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"

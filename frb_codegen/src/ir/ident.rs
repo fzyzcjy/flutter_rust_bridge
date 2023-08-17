@@ -1,8 +1,20 @@
 use convert_case::{Case, Casing};
 
-#[derive(Debug, Clone)]
+crate::ir! {
+#[no_serde]
 pub struct IrIdent {
     pub raw: String,
+}
+}
+
+#[cfg(feature = "serde")]
+impl serde::Serialize for IrIdent {
+    fn serialize<S>(&self, s: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        s.serialize_newtype_struct("IrIdent", &self.raw)
+    }
 }
 
 impl std::fmt::Display for IrIdent {
@@ -21,6 +33,10 @@ impl IrIdent {
     }
 
     pub fn dart_style(&self) -> String {
-        self.raw.to_case(Case::Camel)
+        self.raw
+            .strip_prefix("r#")
+            .unwrap_or(self.raw.as_str())
+            .to_string()
+            .to_case(Case::Camel)
     }
 }

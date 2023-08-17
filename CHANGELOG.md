@@ -1,3 +1,306 @@
+## 1.81.0
+
+* Allow macros to be used and will be expanded #1320 (thanks @MnlPhlp)
+
+## 1.80.2
+
+* Fix and test for SyncReturn of mirrored type #1315 (thanks @MnlPhlp)
+* Fix better check for whether the file need to generate freezed structs/enums #1312 (thanks @SiongSng)
+
+## 1.80.1
+
+* Manually bump proc-macro2 -> 1.0.66 #1306 (thanks @gutenfries)
+
+## 1.80.0
+
+* Reinforce error handling and reduce usage of panic in codegen #1298 (thanks @Desdaemon)
+* fix: sync return with Freezed metadata #1304 (thanks @SiongSng)
+
+## 1.79.0
+
+* Update example tab on pub.dev and remove low-quality dependency #1263
+* Adjust type constraints to allow mirror types in Streams #1285 (thanks @MnlPhlp)
+
+## 1.78.0
+
+* Translate tuples to records and enums to sealed classes #1238 (thanks @Desdaemon)
+
+## 1.77.1
+
+* Fix on zero-copy cargo feature #1229 (thanks @temeddix)
+
+## 1.77.0
+
+* Provide `zero-copy` cargo feature #1228 （thanks @temeddix)
+* Add steps in macOS integration in docs #1227 (thanks @temeddix)
+
+## 1.76.0
+
+* Support Dart 3 and Flutter 3.10 (thanks @Zaitam for partial impl)
+
+## 1.75.3
+
+* Fix bridge access for Rust opaques #1206 (thanks @Desdaemon)
+
+## 1.75.2
+
+* Warn user about using lib.rs as a Rust input #1193 (thanks @erikas-taroza)
+* Allow enum member in struct, and fix enum errors in dart strict dynamic checker #1202 (thanks @alanlzhang)
+
+## 1.75.1
+
+* Fix compile error when building frb_codegen w/o serde feature #1185 (thanks @phlip9)
+
+## 1.75.0
+
+* Allow removing `bridge` field in dart model #1170 (thanks @huang12zheng)
+
+## 1.74.0
+
+* Allow RustOpaque to be non-Clone #989 (thanks @anlumo)
+
+## 1.73.0
+
+* Support generating Dart structs with freezed + methods #970 (thanks @anlumo)
+
+## 1.72.2
+
+* Fix: Handle fallible case for TypeGeneralListGenerator. #1149 (thanks @trobanga)
+
+## 1.72.1
+
+* Fix for enums that contain mirrored structs Enum1(MyStruct) and Unit Tests #1144 (thanks @alexthe2)
+
+## 1.72.0
+
+* Added support for raw strings #1139 (thanks @alexthe2)
+
+## 1.71.2
+
+* Code refactor #1137
+* Remove SupportedInnerType #1117 (thanks @coder0xff)
+
+## 1.71.1
+
+* Fix log_initial for panic! and refine a panic! info #1124 (thanks @dbsxdbsx)
+
+## 1.71.0
+
+* Support for list of primitive enums #1128 (thanks @erikas-taroza)
+
+## 1.70.0
+
+* Add tests to gen, build, run pure_dart #1106 (thanks @coder0xff)
+* Generate Dart enum variants in camelCase #1112 (thanks @erikas-taroza)
+* General CLI improvements: dumping, upgrade clap, yaml config, serialize IR, bump versions, etc #1119 (thanks @Desdaemon)
+* Fixes for serde-yml #1122 (thanks @Desdaemon)
+
+## 1.69.0
+
+* Check for dart keywords #958 (thanks @anstadnik)
+
+## 1.68.0
+
+* feat: return dynamic data as `DartAbi` #1102 (thanks @Desdaemon)
+* fix: incorrect ffi.Usize type #1102 (thanks @Desdaemon)
+* fix: default on freezed structs not applied #1101 (thanks @Desdaemon)
+
+## 1.67.0
+
+* Refractor and refine for frb_codegen #1093 (thanks @dbsxdbsx)
+* Translate Rust method comments #1094 (thanks @Desdaemon)
+* Add documentation for Rust versions 1.68 and above with the latest Android NDK #1096 (thanks @polypixeldev)
+* Parameter defaults, make structs const-constructible #1095 (thanks @Desdaemon)
+
+## 1.66.0
+
+* Implement `List<DateTime>`, `List<Duration>` #972 (thanks @Desdaemon)
+
+## 1.65.1
+
+* Fix the duplicated "dummy_method_to_enforce_bundling" in C header within multi-blocks #1024 (thanks @dbsxdbsx)
+
+## 1.65.0
+
+* Support empty structs #1071 (thanks @alexthe2)
+* Fix Optional<DateTime> #1079 (thanks @alexthe2)
+
+## 1.64.0
+
+* Support Option<Datetime> #1066 (thanks @alexthe2)
+
+## 1.63.1
+
+* Fix the problem with using worker-max feature in WASM #1056 (thanks @temeddix)
+
+## 1.63.0
+
+* Provide cargo features to change the number of pool workers #1026 (thanks @temeddix)
+
+## 1.62.1
+
+* Add logging to disk for frb_codegen #1019 (thanks @dbsxdbsx)
+* Upgrade dart sys, upgrade ci version, and fix linters #1023 (thanks @rogurotus)
+
+## 1.62.0
+
+* Migration to dart-sys #998 (thanks @rogurotus)
+
+## 1.61.1
+
+* Add import package:meta/meta.dart to all generated files #980 (thanks @jsonmona)
+
+## 1.61.0
+
+* Allow opt-out of WASM initializer #963 (thanks @Desdaemon)
+
+## 1.60.0
+
+* Refactors for `Boxed` and `Option` (Refactors `EnumRef` to make `Option<FieldlessEnum>` work; `Box<primitive>` and `Option<Box<primitive>>` on WASM no longer allocates a Box, but receives a (nullable) value directly from Dart) #949 thanks @Desdaemon
+
+## 1.59.0
+
+* Fix unexpected content in c output header #937 (thanks @dbsxdbsx)
+
+## 1.58.2
+
+* Fix `SyncReturn<RustOpaque<T>>` #934 (thanks @rogurotus)
+
+## 1.58.1
+
+* fix SyncReturn restrictions and update CI #936 (thanks @rogurotus)
+
+## 1.58.0
+
+* Support nest type alias with topology sort #929 (thanks @huang12zheng)
+
+## 1.57.0
+
+* Make sync mode support whatever types that classical async mode supports #882 (thanks @ngasull)
+* docs: add Dart/Flutter library setup documentation #899 (thanks @GregoryConrad)
+* Fix lookup symbol store dart post cobject #898 (thanks @Roms1383)
+
+## 1.56.0
+
+* Return error when rust input file cannot be read #912 (thanks @w1th0utnam3)
+
+## 1.55.1
+
+* Fix mirroring to support `Result` return type and `Option<T>` field #907 (thanks @codercengiz)
+* Bump Dart SDK to 2.15 #906 (thanks @ngasull)
+
+## 1.55.0
+
+* Bump chrono #905 (thanks @Roms1383)
+* Support type aliases #900 (thanks @huang12zheng)
+
+## 1.54.1
+
+* Delete dart_sys #890 (thanks @rogurotus)
+
+## 1.54.0
+
+* Extend `SyncReturn` to support `RustOpaque`, `DartOpaque`, `Option` and so on #876 (thanks @rogurotus)
+
+## 1.53.0
+
+* Add Dart opaque types, allowing to use any Dart objects in Rust code #853 (thanks @rogurotus)
+
+## 1.52.0
+
+* Move semantics of opaque rust for Dart #869 (thanks @rogurotus)
+
+## 1.51.1
+
+* Fix function generation related to opaque rust #867 (thanks @rogurotus)
+
+## 1.51.0
+
+* support wasm with no decl set #861 (thanks @huang12zheng)
+
+## 1.50.0
+
+* Implement opaque types, enabling arbitrary Rust structs to be used as opaque Dart objects, by generating wrappers and raw Arc pointers #795 (thanks @rogurotus)
+
+## 1.49.2
+
+* Fix parsing of packages in pubspec.yaml that have no explicit version specification #846 (thanks @banool)
+
+## 1.49.1
+
+* Bump constraint on ffigen #823 (thanks @CicadaCinema)
+* Set default version strategy requirement for chrono #821 (thanks @vincent-herlemont)
+
+## 1.49.0
+
+* Fix return for struct with methods #764 (thanks @Zaitam)
+* Support array as parameter types #623 (thanks @Cupnfish)
+
+## 1.48.1
+
+* Pass JS BigInt to wire #747 (thanks @Desdaemon)
+
+## 1.48.0
+
+* Support uuid #728 (thanks @Roms1383)
+
+## 1.47.1
+
+* Allow streaming functions to omit return type #730 (thanks @Desdaemon)
+
+## 1.47.0
+
+* Support chrono date time #694 (thanks @Roms1383)
+
+## 1.46.0
+
+* Fix WireSyncReturnStruct should be freed after buffer being consumed #720 (thanks @hsfzxjy)
+
+## 1.45.0
+
+* Add support for the Web platform, parallel to the existing mobile/desktop platforms, via WASM and JavaScript as intermediate values #589 (thanks @Desdaemon)
+
+## 1.44.0
+
+* Bump dependency versions
+
+## 1.43.0
+
+* Add crate version to generated code header #666 (thanks @Roms1383)
+
+## 1.42.0
+
+* Refactor and enhance SyncReturn to support more types #663 (thanks @SoLongAndThanksForAllThePizza)
+
+## 1.41.3
+
+* Fix "Skipping unresolvable module" by align latest #651 (thanks @alanlzhang)
+
+## 1.41.2
+
+* Add cli arg to skip dependencies check #640 (thanks @Roms1383)
+
+## 1.41.1
+
+* Fix bug with conflicting names in enum name and variant #604 (thanks @Roms1383)
+
+## 1.41.0
+
+* Allow multi-`mirror` #619 (thanks @Cupnfish)
+
+## 1.40.0
+
+* Improve version check #613 (thanks @Roms1383)
+
+## 1.39.0
+
+* Avoid global ffigen #605 (thanks @Roms1383)
+* Code cleanup #603 (thanks @Roms1383)
+
+## 1.38.2
+
+* Run build_runner either for Dart or Flutter #599 (thanks @Roms1383)
+
 ## 1.38.1
 
 * Fix case when returning a struct with a method in a non method function #587 (thanks @lattice0)

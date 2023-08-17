@@ -1,12 +1,12 @@
 [package]
+categories.workspace = true
+description.workspace = true
+edition.workspace = true
+keywords.workspace = true
+license.workspace = true
 name = "flutter_rust_bridge_codegen"
-version = "1.38.1"
-edition = "2018"
-description = "High-level memory-safe bindgen for Dart/Flutter <-> Rust"
-license = "MIT"
-repository = "https://github.com/fzyzcjy/flutter_rust_bridge"
-keywords = ["flutter", "dart", "ffi", "code-generation", "bindings"]
-categories = ["development-tools::ffi"]
+repository.workspace = true
+version.workspace = true
 
 [lib]
 name = "lib_flutter_rust_bridge_codegen"
@@ -17,32 +17,46 @@ name = "flutter_rust_bridge_codegen"
 path = "src/main.rs"
 
 [dependencies]
-syn = { version = "1.0.77", features = ["full", "extra-traits"] }
+anyhow = {workspace = true}
+thiserror = {workspace = true}
+cargo_metadata = "0.14.1"
+convert_case = "0.5.0"
+delegate = "0.8.0"
+enum_dispatch = "0.3.8"
+itertools = "0.10.3"
+lazy_static = {workspace = true}
+log = "0.4"
+fern = { version = "0.6.0", features = ["date-based","colored"] }
+atty = "0.2.14"
+chrono = "0.4"
+pathdiff = "0.2.1"
 quote = "1.0"
 regex = "1.5.4"
-lazy_static = "1.4.0"
-convert_case = "0.5.0"
-tempfile = "3.2.0"
-serde = { version = "1.0", features = ["derive"] }
+serde = {version = "1.0", features = ["derive"]}
 serde_yaml = "0.8"
-log = "0.4"
-env_logger = "0.9.0"
-structopt = "0.3"
+strum_macros = "0.24.3"
+syn = {version = "2.0.26", features = ["full", "extra-traits"]}
+tempfile = "3.2.0"
 toml = "0.5.8"
-anyhow = "1.0.44"
-pathdiff = "0.2.1"
-cargo_metadata = "0.14.1"
-enum_dispatch = "0.3.8"
-thiserror = "1"
-cbindgen = "0.24"
+topological-sort = "0.2.2"
+enum-iterator = "1.4.0"
+clap = { version = "4.1.8", features = ["derive"] }
+cbindgen = "0.24.3"
 
-[profile.release]
-strip = "debuginfo"
-lto = "thin"
+[dev-dependencies]
+semver = "1.0.12"
 
 [package.metadata.binstall]
 bin-dir = "{bin}{binary-ext}"
 
 [package.metadata.binstall.overrides]
-x86_64-pc-windows-msvc = { pkg-fmt = "zip" }
-i686-pc-windows-msvc = { pkg-fmt = "zip" }
+i686-pc-windows-msvc = {pkg-fmt = "zip"}
+x86_64-pc-windows-msvc = {pkg-fmt = "zip"}
+
+[features]
+default = ["chrono", "serde", "uuid", "anyhow/backtrace"]
+serde = []
+chrono = []
+uuid = []
+# When disabled, name qualifiers are discarded, e.g. my_library::SyncReturn == flutter_rust_bridge::SyncReturn
+qualified_names = []

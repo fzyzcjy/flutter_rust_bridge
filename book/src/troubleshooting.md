@@ -35,17 +35,37 @@ Related: https://github.com/fzyzcjy/flutter_rust_bridge/issues/330
 
 ## `Can't create typedef from non-function type.`
 
-Ensure min sdk version of Flutter `pubspec.yaml` is at least 2.13.0 to let `ffigen` happy.
+Ensure min sdk version of Flutter `pubspec.yaml` is at least 2.17.0 to let `ffigen` happy.
 
 https://github.com/fzyzcjy/flutter_rust_bridge/issues/334
+
+## Imported from both `bridge_definitions.dart` and `bridge_generated.io.dart`
+
+If you use a Rust type with `Kind` in it's name it may conflict with some generated types which can cause a duplicate import error. The workaround is to avoid using `Kind` as a suffix for a type name in Rust. See issue #757 for more details.
+
+## Error on iOS TestFlight only (`store_dart_post_cobject`)
+
+You may have an iOS app that works fine in Debug and Release modes locally but when deployed to TestFlight an error occurs trying to locate the `store_dart_post_cobject` - this is because the nested XCode project for the native bindings maybe be stripping symbols from the linked product.
+
+Select the scheme (eg: `Product > Scheme > native-staticlib`) and go to *Build Settings* then under the `Deployment` section change `Strip Linked Product` to `No`; you may also need to change `Strip Style` to `Debugging Symbols`.
 
 ## Generated code is so long
 
 Indeed all generated code are necessary (if you find something that can be simplified, file an issue). Moreover, other code generation tools also generate long code - for example, when using Google protobuf, a very popular serialization library, I see >10k lines of Java code generated for a quite simple source proto file.
 
-## Why need Dart `2.14.0`
+## Why need Dart `2.17.0`
 
-Dart SDK `>=2.14.0` is needed not by this library, but by the latest version of the `ffigen` tool. Therefore, write `sdk: ">=2.14.0 <3.0.0"` in the `environment` section of `pubspec.yaml`. If you do not want that, consider installing a older version of the `ffigen` tool.
+Dart SDK `>=2.15.0` is supported by this library, but by the latest version of the `ffigen` tool requires `>=2.17.0`. Therefore, write `sdk: ">=2.17.0 <3.0.0"` in the `environment` section of `pubspec.yaml`. If you do not want that, consider installing a older version of the `ffigen` tool.
+
+## Why doesn't `flutter_rust_bridge_serve` work on Firefox?
+
+This is a known issue stemming from Firefox's stricter rules regarding cross-origin requests. Use Chromium for testing, and check out
+[this guide on enabling `crossOriginIsolated`](https://web.dev/cross-origin-isolation-guide/) for your production servers.
+
+## Issues on Web?
+
+Check out [Limitations on WASM](./wasm_limitations.md) for some common problems and solutions
+to adapt existing code to WASM.
 
 ## Other problems?
 

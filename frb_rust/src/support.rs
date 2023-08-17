@@ -4,8 +4,7 @@
 
 use std::mem;
 
-pub use allo_isolate::ffi::DartCObject;
-pub use allo_isolate::{IntoDart, IntoDartExceptPrimitive};
+pub use crate::ffi::*;
 pub use lazy_static::lazy_static;
 
 pub use crate::handler::DefaultHandler;
@@ -30,6 +29,16 @@ pub unsafe fn vec_from_leak_ptr<T>(ptr: *mut T, len: i32) -> Vec<T> {
     Vec::from_raw_parts(ptr, len as usize, len as usize)
 }
 
+/// Convert [Vec<T>] to array length `N`.
+///
+/// # Panics
+///
+/// Panics if length of [Vec<T>] != `N`.
+pub fn from_vec_to_array<T, const N: usize>(v: Vec<T>) -> [T; N] {
+    core::convert::TryInto::try_into(v)
+        .unwrap_or_else(|v: Vec<T>| panic!("Expected a Vec of length {} but it was {}", N, v.len()))
+}
+
 // ref: doc of [Box::into_raw]
 pub fn new_leak_box_ptr<T>(t: T) -> *mut T {
     let x: Box<T> = Box::new(t);
@@ -42,11 +51,25 @@ pub unsafe fn box_from_leak_ptr<T>(ptr: *mut T) -> Box<T> {
     Box::from_raw(ptr)
 }
 
-/// NOTE for maintainer: Please keep this struct in sync with `DUMMY_WIRE_CODE_FOR_BINDGEN`
-/// in the code generator
-#[repr(C)]
-pub struct WireSyncReturnStruct {
-    pub ptr: *mut u8,
-    pub len: i32,
-    pub success: bool,
+/// Cast a byte buffer into a boxed slice of the target type without making any copies.
+/// Panics if the cast fails.
+pub fn slice_from_byte_buffer<T: bytemuck::Pod>(buffer: Vec<u8>) -> Box<[T]> {
+    let buf = Box::leak(buffer.into_boxed_slice());
+    match bytemuck::try_cast_slice_mut(buf) {
+        Ok(buf) => unsafe { Box::from_raw(buf) },
+        Err(err) => {
+            // clean up before panicking
+            unsafe { core::ptr::drop_in_place(buf) }
+            panic!("cast error: {}", err);
+        }
+    }
 }
+
+#[cfg(not(wasm))]
+use allo_isolate::ffi::DartCObject;
+
+#[cfg(not(wasm))]
+pub type WireSyncReturn = *mut DartCObject;
+
+#[cfg(wasm)]
+pub type WireSyncReturn = wasm_bindgen::JsValue;

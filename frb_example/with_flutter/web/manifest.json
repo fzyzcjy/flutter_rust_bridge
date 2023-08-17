@@ -1,6 +1,6 @@
 {
-    "name": "frb_example",
-    "short_name": "frb_example",
+    "name": "with_flutter",
+    "short_name": "with_flutter",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

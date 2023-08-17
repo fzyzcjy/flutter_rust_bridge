@@ -1,25 +1,44 @@
+use crate::Result;
+use cargo_metadata::VersionReq;
+use lazy_static::lazy_static;
+use log::warn;
+use std::collections::HashMap;
+use std::env;
 use std::fmt::Write;
+use std::fs;
 use std::path::Path;
-use std::process::Command;
-use std::process::Output;
+use std::path::PathBuf;
+use std::str::FromStr;
+use std::sync::Mutex;
 
-use crate::error::{Error, Result};
-use log::{debug, info, warn};
+use crate::command_run;
+use crate::utils::command_runner::{call_shell, execute_command};
+use crate::utils::dart_repository::dart_repo::{DartDependencyMode, DartRepository};
+use log::{debug, info};
 
-#[must_use]
-fn call_shell(cmd: &str) -> Output {
-    #[cfg(windows)]
-    return execute_command("powershell", &["-noprofile", "-c", cmd], None);
+mod error;
+pub use error::Error;
+pub(crate) type CommandResult<T = (), E = Error> = core::result::Result<T, E>;
 
-    #[cfg(not(windows))]
-    execute_command("sh", &["-c", cmd], None)
+lazy_static! {
+    pub(crate) static ref FFI_REQUIREMENT: VersionReq =
+        VersionReq::parse(">= 2.0.1, < 3.0.0").unwrap();
+    pub(crate) static ref FFIGEN_REQUIREMENT: VersionReq =
+        VersionReq::parse(">= 8.0.0, < 9.0.0").unwrap();
 }
 
-pub fn ensure_tools_available() -> Result {
-    let output = call_shell("dart pub global list");
-    let output = String::from_utf8_lossy(&output.stdout);
-    if !output.contains("ffigen") {
-        return Err(Error::MissingExe(String::from("ffigen")));
+pub fn ensure_tools_available(dart_root: &str, skip_deps_check: bool) -> Result<(), Error> {
+    let repo = DartRepository::from_str(dart_root)?;
+    if !repo.toolchain_available() {
+        return Err(Error::MissingExe(repo.toolchain.to_string()))?;
+    }
+
+    if !skip_deps_check {
+        repo.has_specified("ffi", DartDependencyMode::Main, &FFI_REQUIREMENT)?;
+        repo.has_installed("ffi", DartDependencyMode::Main, &FFI_REQUIREMENT)?;
+
+        repo.has_specified("ffigen", DartDependencyMode::Dev, &FFIGEN_REQUIREMENT)?;
+        repo.has_installed("ffigen", DartDependencyMode::Dev, &FFIGEN_REQUIREMENT)?;
     }
 
     Ok(())
@@ -36,7 +55,10 @@ pub(crate) struct BindgenRustToDartArg<'a> {
     pub llvm_compiler_opts: &'a str,
 }
 
-pub(crate) fn bindgen_rust_to_dart(arg: BindgenRustToDartArg) -> anyhow::Result<()> {
+pub(crate) fn bindgen_rust_to_dart(
+    arg: BindgenRustToDartArg,
+    dart_root: &str,
+) -> CommandResult<()> {
     cbindgen(
         arg.rust_crate_dir,
         arg.c_output_path,
@@ -49,59 +71,8 @@ pub(crate) fn bindgen_rust_to_dart(arg: BindgenRustToDartArg) -> anyhow::Result<
         arg.dart_class_name,
         arg.llvm_install_path,
         arg.llvm_compiler_opts,
+        dart_root,
     )
-}
-
-#[must_use = "Error path must be handled."]
-fn execute_command(bin: &str, args: &[&str], current_dir: Option<&str>) -> Output {
-    let mut cmd = Command::new(bin);
-    cmd.args(args);
-
-    if let Some(current_dir) = current_dir {
-        cmd.current_dir(current_dir);
-    }
-
-    debug!(
-        "execute command: bin={} args={:?} current_dir={:?} cmd={:?}",
-        bin, args, current_dir, cmd
-    );
-
-    let result = cmd
-        .output()
-        .unwrap_or_else(|err| panic!("\"{}\" \"{}\" failed: {}", bin, args.join(" "), err));
-
-    let stdout = String::from_utf8_lossy(&result.stdout);
-    if result.status.success() {
-        debug!(
-            "command={:?} stdout={} stderr={}",
-            cmd,
-            stdout,
-            String::from_utf8_lossy(&result.stderr)
-        );
-        if stdout.contains("fatal error") {
-            warn!("See keywords such as `error` in command output. Maybe there is a problem? command={:?} output={:?}", cmd, result);
-        } else if args.contains(&"ffigen") && stdout.contains("[SEVERE]") {
-            // HACK: If ffigen can't find a header file it will generate broken
-            // bindings but still exit successfully. We can detect these broken
-            // bindings by looking for a "[SEVERE]" log message.
-            //
-            // It may emit SEVERE log messages for non-fatal errors though, so
-            // we don't want to error out completely.
-
-            warn!(
-                "The `ffigen` command emitted a SEVERE error. Maybe there is a problem? command={:?} output=\n{}",
-                cmd, String::from_utf8_lossy(&result.stdout)
-            );
-        }
-    } else {
-        warn!(
-            "command={:?} stdout={} stderr={}",
-            cmd,
-            stdout,
-            String::from_utf8_lossy(&result.stderr)
-        );
-    }
-    result
 }
 
 fn cbindgen(
@@ -109,7 +80,7 @@ fn cbindgen(
     c_output_path: &str,
     c_struct_names: Vec<String>,
     exclude_symbols: Vec<String>,
-) -> anyhow::Result<()> {
+) -> CommandResult {
     debug!(
         "execute cbindgen rust_crate_dir={} c_output_path={}",
         rust_crate_dir, c_output_path
@@ -122,22 +93,23 @@ fn cbindgen(
             "stdlib.h".to_string(),
         ],
         no_includes: true,
+        // copied from: dart-sdk/dart_api.h
+        // used to convert Dart_Handle to Object.
+        after_includes: Some("typedef struct _Dart_Handle* Dart_Handle;".to_owned()),
         export: cbindgen::ExportConfig {
             include: c_struct_names
                 .iter()
-                .map(|name| format!("\"{}\"", name))
-                .collect::<Vec<_>>(),
+                .map(|name| format!("\"{name}\""))
+                .collect(),
             exclude: exclude_symbols,
             ..Default::default()
         },
         ..Default::default()
     };
 
-    debug!("cbindgen config: {:?}", config);
+    debug!("cbindgen config: {:#?}", config);
 
-    let canonical = Path::new(rust_crate_dir)
-        .canonicalize()
-        .expect("Could not canonicalize rust crate dir");
+    let canonical = Path::new(rust_crate_dir).canonicalize()?;
     let mut path = canonical.to_str().unwrap();
 
     // on windows get rid of the UNC path
@@ -148,7 +120,7 @@ fn cbindgen(
     if cbindgen::generate_with_config(path, config)?.write_to_file(c_output_path) {
         Ok(())
     } else {
-        Err(Error::str("cbindgen failed writing file").into())
+        Err(anyhow::anyhow!("cbindgen failed writing file"))?
     }
 }
 
@@ -158,26 +130,26 @@ fn ffigen(
     dart_class_name: &str,
     llvm_path: &[String],
     llvm_compiler_opts: &str,
-) -> anyhow::Result<()> {
+    dart_root: &str,
+) -> CommandResult {
     debug!(
         "execute ffigen c_path={} dart_path={} llvm_path={:?}",
         c_path, dart_path, llvm_path
     );
     let mut config = format!(
         "
-        output: '{}'
-        name: '{}'
+        output: '{dart_path}'
+        name: '{dart_class_name}'
         description: 'generated by flutter_rust_bridge'
         headers:
           entry-points:
-            - '{}'
+            - '{c_path}'
           include-directives:
-            - '{}'
+            - '{c_path}'
         comments: false
         preamble: |
           // ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names
-        ",
-        dart_path, dart_class_name, c_path, c_path,
+        "
     );
     if !llvm_path.is_empty() {
         write!(
@@ -186,16 +158,15 @@ fn ffigen(
         llvm-path:\n"
         )?;
         for path in llvm_path {
-            writeln!(&mut config, "           - '{}'", path)?;
+            writeln!(&mut config, "           - '{path}'")?;
         }
     }
 
     if !llvm_compiler_opts.is_empty() {
         config = format!(
-            "{}
+            "{config}
         compiler-opts:
-            - '{}'",
-            config, llvm_compiler_opts
+            - '{llvm_compiler_opts}'"
         );
     }
 
@@ -205,72 +176,186 @@ fn ffigen(
     std::io::Write::write_all(&mut config_file, config.as_bytes())?;
     debug!("ffigen config_file: {:?}", config_file);
 
-    // NOTE please install ffigen globally first: `dart pub global activate ffigen`
-    let res = call_shell(&format!(
-        "dart pub global run ffigen --config \"{}\"",
-        config_file.path().to_string_lossy()
-    ));
+    let repo = DartRepository::from_str(dart_root).unwrap();
+    let res = command_run!(
+        call_shell[Some(dart_root)],
+        *repo.toolchain.as_run_command(),
+        "run",
+        "ffigen",
+        "--config",
+        config_file.path()
+    )?;
     if !res.status.success() {
         let err = String::from_utf8_lossy(&res.stderr);
         let out = String::from_utf8_lossy(&res.stdout);
         let pat = "Couldn't find dynamic library in default locations.";
         if err.contains(pat) || out.contains(pat) {
-            return Err(Error::FfigenLlvm.into());
+            return Err(Error::FfigenLlvm);
         }
-        return Err(
-            Error::string(format!("ffigen failed:\nstderr: {}\nstdout: {}", err, out)).into(),
-        );
+        Err(anyhow::anyhow!(
+            "ffigen failed:\nstderr: {err}\nstdout: {out}"
+        ))?;
     }
     Ok(())
 }
 
-pub fn format_rust(path: &str) -> Result {
-    debug!("execute format_rust path={}", path);
-    let res = execute_command("rustfmt", &[path], None);
+pub fn format_rust(path: &[PathBuf]) -> Result {
+    debug!("execute format_rust path={:?}", path);
+    let res = execute_command("rustfmt", path, None)?;
     if !res.status.success() {
-        return Err(Error::Rustfmt(
-            String::from_utf8_lossy(&res.stderr).to_string(),
-        ));
+        return Err(Error::Rustfmt(String::from_utf8_lossy(&res.stderr).to_string()).into());
     }
     Ok(())
 }
 
-pub fn format_dart(path: &str, line_length: i32) -> Result {
+pub fn format_dart(path: &[PathBuf], line_length: u32) -> Result {
     debug!(
-        "execute format_dart path={} line_length={}",
+        "execute format_dart path={:?} line_length={}",
         path, line_length
     );
-    let res = call_shell(&format!(
-        "dart format {} --line-length {}",
-        path, line_length
-    ));
+    let res = command_run!(
+        call_shell[None],
+        "dart",
+        "format",
+        "--line-length",
+        line_length.to_string(),
+        *path
+    )?;
     if !res.status.success() {
-        return Err(Error::Dartfmt(
+        Err(Error::Dartfmt(
             String::from_utf8_lossy(&res.stderr).to_string(),
-        ));
+        ))?;
     }
     Ok(())
 }
 
 pub fn build_runner(dart_root: &str) -> Result {
     info!("Running build_runner at {}", dart_root);
-    let out = if cfg!(windows) {
-        call_shell(&format!(
-            "cd \"{}\"; dart run build_runner build --delete-conflicting-outputs",
-            dart_root
-        ))
-    } else {
-        call_shell(&format!(
-            "cd \"{}\" && dart run build_runner build --delete-conflicting-outputs",
-            dart_root
-        ))
-    };
+    let repo = DartRepository::from_str(dart_root).unwrap();
+    let out = command_run!(
+        call_shell[Some(dart_root)],
+        *repo.toolchain.as_run_command(),
+        "run",
+        "build_runner",
+        "build",
+        "--delete-conflicting-outputs",
+        "--enable-experiment=class-modifiers",
+    )?;
     if !out.status.success() {
-        return Err(Error::StringError(format!(
+        Err(anyhow::anyhow!(
             "Failed to run build_runner for {}: {}",
             dart_root,
             String::from_utf8_lossy(&out.stdout)
-        )));
+        ))?;
     }
     Ok(())
+}
+
+lazy_static! {
+    static ref CACHE: Mutex<HashMap<String, String>> = Mutex::new(HashMap::new());
+}
+
+pub fn cargo_expand(dir: &str, module: Option<String>, file: &str) -> String {
+    let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
+    #[cfg(windows)]
+    let manifest_dir = &manifest_dir.replace('\\', "/");
+    if !manifest_dir.is_empty() && dir == manifest_dir {
+        warn!(
+            "can not run cargo expand on {dir} because cargo is already running and would block cargo-expand. This might cause errors if your api contains macros."
+        );
+        return fs::read_to_string(file).unwrap_or_default();
+    }
+    let mut cache = CACHE.lock().unwrap();
+    let expanded = cache
+        .entry(String::from(dir))
+        .or_insert_with(|| run_cargo_expand(dir));
+    extract_module(expanded, module)
+}
+
+fn extract_module(expanded: &str, module: Option<String>) -> String {
+    if let Some(module) = module {
+        let (_, expanded) = module
+            .split("::")
+            .fold((0, expanded), |(spaces, expanded), module| {
+                let searched = format!("mod {module} {{\n");
+                let start = expanded
+                    .find(&searched)
+                    .map(|n| n + searched.len())
+                    .unwrap_or_default();
+                if start == 0 {
+                    return (spaces, expanded);
+                }
+                let end = expanded[start..]
+                    .find(&format!("\n{}}}", " ".repeat(spaces)))
+                    .map(|n| n + start)
+                    .unwrap_or(expanded.len());
+                (spaces + 4, &expanded[start..end])
+            });
+        return String::from(expanded);
+    }
+    String::from(expanded)
+}
+
+fn run_cargo_expand(dir: &str) -> String {
+    info!("Running cargo expand in '{dir}'");
+    let args = vec![
+        PathBuf::from("expand"),
+        PathBuf::from("--theme=none"),
+        PathBuf::from("--ugly"),
+    ];
+    match execute_command("cargo", &args, Some(dir)) {
+        Ok(output) => {
+            let stdout = String::from_utf8(output.stdout).unwrap_or_default();
+            let stderr = String::from_utf8(output.stderr).unwrap_or_default();
+            if stdout.is_empty() {
+                if stderr.contains("no such command: `expand`") {
+                    panic!(
+                        "cargo expand is not installed. Please run  `cargo install cargo-expand`"
+                    );
+                }
+                panic!("cargo expand returned empty output");
+            }
+            // remove first and last line to get rid of wrapping module
+            let mut output = stdout.lines();
+            output.next();
+            output.next_back();
+            output
+                .collect::<Vec<_>>()
+                .join("\n")
+                .replace("/// frb_marker: ", "")
+        }
+        Err(e) => {
+            panic!("Could not expand rust code at path {}: {}\n", dir, e);
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::extract_module;
+
+    #[test]
+    pub fn extract_mod() {
+        let src = "mod module_1 {
+    // code 1
+}
+mod module_2 {
+    // code 2
+}";
+        let extracted = extract_module(src, Some(String::from("module_1")));
+        assert_eq!(String::from("    // code 1"), extracted);
+        let extracted = extract_module(src, Some(String::from("module_2")));
+        assert_eq!(String::from("    // code 2"), extracted);
+    }
+
+    #[test]
+    pub fn extract_submod() {
+        let src = "mod module {
+    mod submodule {
+        // sub code
+    }
+}";
+        let extracted = extract_module(src, Some(String::from("module::submodule")));
+        assert_eq!(String::from("        // sub code"), extracted);
+    }
 }

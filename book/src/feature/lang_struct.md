@@ -2,7 +2,7 @@
 
 Normal Rust structs are supported. You can even use recursive fields, such as `pub struct TreeNode { pub value: String, pub children: Vec<MyTreeNode>, pub parent: Box<MyTreeNode> }`.
 
-If a struct field has type being a struct or an enum, please add a `Box` on it, or it will lead to compile-time error. For example, `struct A {b: B}` should be `struct A {b: Box<B>}` instead.
+For versions older than v1.66.0 (no need for latest version), if a struct field has type being a struct or an enum, please add a `Box` on it, or it will lead to compile-time error. For example, `struct A {b: B}` should be `struct A {b: Box<B>}` instead.
 
 ## Tuple structs
 
@@ -12,6 +12,8 @@ Tuple structs `struct Foo(A, B)` are translated as `class Foo { A field0; B fiel
 
 By adding `#[frb(non_final)]` to a field of struct, the corresponding field in Dart will be non-final. By default, we make all generated fields final because of Rust's philosophy - immutable by default.
 
+Unless a field has been annotated with `#[frb(non_final)]`, generated classes will also be const-constructible.
+
 ## Dart metadata annotations
 
 You can add dart metadata annotations using `dart_metadata` parameter in `frb` macro.
@@ -20,7 +22,7 @@ You can add dart metadata annotations using `dart_metadata` parameter in `frb` m
 * If importing is needed, then add importing part behind the annotation string. Currently two forms of importing supported:
   * `import 'somepackage'`
   * `import 'somepackage' as somename`, where `somename` will be the prefix of the annotation
-* Multiple annotations are seperated by comma `,`.
+* Multiple annotations are separated by comma `,`.
 
 See below for an example.
 

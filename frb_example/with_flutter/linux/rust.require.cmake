@@ -1,6 +1,6 @@
 find_package(Corrosion REQUIRED)
 
-corrosion_import_crate(MANIFEST_PATH ../rust/Cargo.toml)
+corrosion_import_crate(MANIFEST_PATH ../rust/Cargo.toml CRATES flutter_rust_bridge_example)
 
 # Flutter-specific
 

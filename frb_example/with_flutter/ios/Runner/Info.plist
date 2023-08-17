@@ -41,5 +41,10 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<!-- disable impeller because of https://github.com/fzyzcjy/flutter_rust_bridge/pull/1224#issuecomment-1560994332 -->
+  <key>FLTEnableImpeller</key>
+  <false/>
 </dict>
 </plist>

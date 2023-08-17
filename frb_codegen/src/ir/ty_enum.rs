@@ -1,14 +1,16 @@
-use crate::ir::IrType::{EnumRef, StructRef};
 use crate::ir::*;
+use crate::target::Target;
 use convert_case::{Case, Casing};
 
-#[derive(Debug, Clone)]
+crate::ir! {
 pub struct IrTypeEnumRef {
     pub name: String,
     pub is_exception: bool,
 }
+}
 
 impl IrTypeEnumRef {
+    #[inline]
     pub fn get<'a>(&self, file: &'a IrFile) -> &'a IrEnum {
         &file.enum_pool[&self.name]
     }
@@ -29,29 +31,49 @@ impl IrTypeTrait for IrTypeEnumRef {
     fn safe_ident(&self) -> String {
         self.dart_api_type().to_case(Case::Snake)
     }
+
     fn dart_api_type(&self) -> String {
         self.name.to_string()
     }
-    fn dart_wire_type(&self) -> String {
-        self.rust_wire_type()
+
+    fn dart_wire_type(&self, target: Target) -> String {
+        if let Target::Wasm = target {
+            "List<dynamic>".into()
+        } else {
+            self.rust_wire_type(target)
+        }
     }
+
     fn rust_api_type(&self) -> String {
         self.name.to_string()
     }
-    fn rust_wire_type(&self) -> String {
-        format!("wire_{}", self.name)
+
+    fn rust_wire_type(&self, target: Target) -> String {
+        if let Target::Wasm = target {
+            "JsValue".into()
+        } else {
+            format!("wire_{}", self.name)
+        }
+    }
+
+    fn intodart_type(&self, ir_file: &IrFile) -> String {
+        match &self.get(ir_file).wrapper_name {
+            Some(wrapper) => wrapper.clone(),
+            None => self.dart_api_type(),
+        }
     }
 }
 
-#[derive(Debug, Clone)]
+crate::ir! {
 pub struct IrEnum {
     pub name: String,
     pub wrapper_name: Option<String>,
     pub path: Vec<String>,
     pub comments: Vec<IrComment>,
     pub is_exception: bool,
-    _variants: Vec<IrVariant>,
-    _is_struct: bool,
+    variants: Vec<IrVariant>,
+    is_struct: bool,
+}
 }
 
 impl IrEnum {
@@ -63,69 +85,57 @@ impl IrEnum {
         mut variants: Vec<IrVariant>,
         is_exception: bool,
     ) -> Self {
-        fn wrap_box(ty: IrType) -> IrType {
-            match ty {
-                StructRef(_) | EnumRef(IrTypeEnumRef { .. }) => IrType::Boxed(IrTypeBoxed {
+        fn wrap_box(ty: &mut IrType) {
+            if ty.is_struct() {
+                *ty = IrType::Boxed(IrTypeBoxed {
                     exist_in_real_api: false,
-                    inner: Box::new(ty),
-                }),
-                _ => ty,
+                    inner: Box::new(ty.clone()),
+                });
             }
         }
-        let _is_struct = variants
+
+        let is_struct = variants
             .iter()
             .any(|variant| !matches!(variant.kind, IrVariantKind::Value));
-        if _is_struct {
-            variants = variants
-                .into_iter()
-                .map(|variant| IrVariant {
-                    kind: match variant.kind {
-                        IrVariantKind::Struct(st) => IrVariantKind::Struct(IrStruct {
-                            fields: st
-                                .fields
-                                .into_iter()
-                                .map(|field| IrField {
-                                    ty: wrap_box(field.ty),
-                                    ..field
-                                })
-                                .collect(),
-                            ..st
-                        }),
-                        _ => variant.kind,
-                    },
-                    ..variant
-                })
-                .collect::<Vec<_>>();
+        if is_struct {
+            for variant in &mut variants {
+                if let IrVariantKind::Struct(st) = &mut variant.kind {
+                    for field in &mut st.fields {
+                        wrap_box(&mut field.ty);
+                    }
+                }
+            }
         }
         Self {
             name,
             wrapper_name,
             path,
             comments,
-            _variants: variants,
-            _is_struct,
+            variants,
+            is_struct,
             is_exception,
         }
     }
 
     pub fn variants(&self) -> &[IrVariant] {
-        &self._variants
+        &self.variants
     }
 
     pub fn is_struct(&self) -> bool {
-        self._is_struct
+        self.is_struct
     }
 }
 
-#[derive(Debug, Clone)]
+crate::ir! {
 pub struct IrVariant {
     pub name: IrIdent,
+    pub wrapper_name: IrIdent,
     pub comments: Vec<IrComment>,
     pub kind: IrVariantKind,
 }
 
-#[derive(Debug, Clone)]
 pub enum IrVariantKind {
     Value,
     Struct(IrStruct),
+}
 }

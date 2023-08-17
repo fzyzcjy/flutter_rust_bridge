@@ -14,7 +14,7 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(Corrosion)
 
-corrosion_import_crate(MANIFEST_PATH ../rust/Cargo.toml)
+corrosion_import_crate(MANIFEST_PATH ../rust/Cargo.toml CRATES flutter_rust_bridge_example)
 
 # Flutter-specific
 

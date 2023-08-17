@@ -1,6 +1,9 @@
+use itertools::Itertools;
+
 use crate::generator::dart::dart_comments;
 use crate::generator::dart::ty::*;
 use crate::ir::*;
+use crate::target::Acc;
 use crate::type_dart_generator_struct;
 use crate::utils::dart_maybe_implements_exception;
 use crate::utils::BlockIndex;
@@ -8,8 +11,44 @@ use crate::utils::BlockIndex;
 type_dart_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 
 impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
-    fn api2wire_body(&self, _block_index: BlockIndex) -> Option<String> {
-        None
+    fn api2wire_body(&self) -> Acc<Option<String>> {
+        let variants = (self.ir.get(self.context.ir_file).variants())
+            .iter()
+            .enumerate()
+            .map(|(idx, variant)| {
+                let fields = match &variant.kind {
+                    IrVariantKind::Value => vec![],
+                    IrVariantKind::Struct(st) => (st.fields)
+                        .iter()
+                        .map(|field| {
+                            format!(
+                                ",api2wire_{}(raw.{})",
+                                field.ty.safe_ident(),
+                                field.name.dart_style()
+                            )
+                        })
+                        .collect(),
+                }
+                .join("");
+                format!(
+                    "if (raw is {variant}) {{
+                        return [{} {}];
+                    }}",
+                    idx,
+                    fields,
+                    variant = variant.wrapper_name.rust_style(),
+                )
+            })
+            .join("\n");
+
+        Acc {
+            wasm: Some(format!(
+                "{variants}
+
+                throw Exception('unreachable');"
+            )),
+            ..Default::default()
+        }
     }
 
     fn api_fill_to_wire_body(&self) -> Option<String> {
@@ -23,18 +62,16 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                     if let IrVariantKind::Value = &variant.kind {
                         format!(
                             "if (apiObj is {}) {{ wireObj.tag = {}; return; }}",
-                            variant.name, idx
+                            variant.wrapper_name, idx
                         )
                     } else {
-                        let r = format!("wireObj.kind.ref.{}.ref", variant.name);
-                        let body: Vec<_> = match &variant.kind {
+                        let pre_field: Vec<_> = match &variant.kind {
                             IrVariantKind::Struct(st) => st
                                 .fields
                                 .iter()
                                 .map(|field| {
                                     format!(
-                                        "{}.{} = _api2wire_{}(apiObj.{});",
-                                        r,
+                                        "var pre_{} = api2wire_{}(apiObj.{});",
                                         field.name.rust_style(),
                                         field.ty.safe_ident(),
                                         field.name.dart_style()
@@ -43,20 +80,38 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                                 .collect(),
                             _ => unreachable!(),
                         };
+                        let r = format!("wireObj.kind.ref.{}.ref", variant.name);
+                        let body: Vec<_> = match &variant.kind {
+                            IrVariantKind::Struct(st) => st
+                                .fields
+                                .iter()
+                                .map(|field| {
+                                    format!(
+                                        "{}.{name} = pre_{name};",
+                                        r,
+                                        name = field.name.rust_style(),
+                                    )
+                                })
+                                .collect(),
+                            _ => unreachable!(),
+                        };
                         format!(
-                            "if (apiObj is {0}) {{
+                            "if (apiObj is {5}) {{
+                                {3}
                                 wireObj.tag = {1};
                                 wireObj.kind = inner.inflate_{2}_{0}();
-                                {3}
+                                {4}
+                                return;
                             }}",
                             variant.name,
                             idx,
                             self.ir.name,
-                            body.join("\n")
+                            pre_field.join("\n"),
+                            body.join("\n"),
+                            variant.wrapper_name
                         )
                     }
                 })
-                .collect::<Vec<_>>()
                 .join("\n"),
         )
     }
@@ -87,7 +142,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                         .collect::<Vec<_>>()
                         .join(""),
                 };
-                format!("case {}: return {}({});", idx, variant.name, args)
+                format!("case {}: return {}({});", idx, variant.wrapper_name, args)
             })
             .collect::<Vec<_>>();
         format!(
@@ -120,16 +175,23 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                             fields,
                             ..
                         }) => {
-                            let types = fields.iter().map(|field| &field.ty).collect::<Vec<_>>();
-                            let split = optional_boundary_index(&types);
+                            let split = optional_boundary_index(fields);
                             let types = fields
                                 .iter()
                                 .map(|field| {
+                                    // If no split, default values are not valid.
+                                    let default = split
+                                        .is_some()
+                                        .then(|| {
+                                            field.field_default(true, Some(self.context.config))
+                                        })
+                                        .unwrap_or_default();
                                     format!(
-                                        "{}{} {},",
-                                        dart_comments(&field.comments),
+                                        "{comments} {default} {} {},",
                                         field.ty.dart_api_type(),
-                                        field.name.dart_style()
+                                        field.name.dart_style(),
+                                        comments = dart_comments(&field.comments),
+                                        default = default
                                     )
                                 })
                                 .collect::<Vec<_>>();
@@ -147,11 +209,13 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                                 .iter()
                                 .map(|field| {
                                     format!(
-                                        "{}{}{} {},",
-                                        dart_comments(&field.comments),
-                                        field.ty.dart_required_modifier(),
+                                        "{comments} {default} {required}{} {} ,",
                                         field.ty.dart_api_type(),
-                                        field.name.dart_style()
+                                        field.name.dart_style(),
+                                        required = field.required_modifier(),
+                                        comments = dart_comments(&field.comments),
+                                        default =
+                                            field.field_default(true, Some(self.context.config)),
                                     )
                                 })
                                 .collect::<Vec<_>>();
@@ -170,10 +234,15 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                         self.ir.name,
                         variant.name.dart_style(),
                         args,
-                        variant.name.rust_style(),
+                        variant.wrapper_name.rust_style(),
                     )
                 })
                 .collect::<Vec<_>>();
+            let sealed = if self.context.config.dart3 {
+                "sealed"
+            } else {
+                ""
+            };
             format!(
                 "@freezed
                 class {0} with _${0} {1} {{
@@ -188,11 +257,13 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                 .variants()
                 .iter()
                 .map(|variant| {
-                    format!(
-                        "{}{},",
-                        dart_comments(&variant.comments),
-                        variant.name.rust_style()
-                    )
+                    let variant_name = if self.context.config.dart_enums_style {
+                        crate::utils::misc::make_string_keyword_safe(variant.name.dart_style())
+                    } else {
+                        variant.name.rust_style().to_string()
+                    };
+
+                    format!("{}{},", dart_comments(&variant.comments), variant_name)
                 })
                 .collect::<Vec<_>>()
                 .join("\n");

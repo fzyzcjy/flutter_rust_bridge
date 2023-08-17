@@ -1,32 +1,36 @@
+use std::sync::Arc;
 use thiserror::Error;
 
-pub type Result = std::result::Result<(), Error>;
+pub type Result<T = (), E = Error> = core::result::Result<T, E>;
+
+#[derive(Error, Debug, Clone)]
+#[repr(transparent)]
+#[error(transparent)]
+pub struct Error(Arc<ErrorImpl>);
 
 #[derive(Error, Debug)]
-pub enum Error {
-    #[error("rustfmt failed: {0}")]
-    Rustfmt(String),
-    #[error("dart fmt failed: {0}")]
-    Dartfmt(String),
-    #[error(
-        "ffigen could not find LLVM.
-    Please supply --llvm-path to flutter_rust_bridge_codegen, e.g.:
-    
-        flutter_rust_bridge_codegen .. --llvm-path <path_to_llvm>"
-    )]
-    FfigenLlvm,
-    #[error("{0} is not a command, or not executable.")]
-    MissingExe(String),
-    #[error("{0}")]
-    StringError(String),
+pub(crate) enum ErrorImpl {
+    #[error("External command failure.\n{0}")]
+    Command(#[from] crate::commands::Error),
+
+    #[error("Configuration error.\n{0}")]
+    Config(#[from] crate::config::Error),
+
+    #[error("Parser failure.\n{0}")]
+    Parser(#[from] crate::parser::Error),
+
+    #[error("I/O failure.\n{0}")]
+    Io(#[from] std::io::Error),
+
+    #[error(transparent)]
+    Uncategorized(#[from] anyhow::Error),
 }
 
-impl Error {
-    pub fn str(msg: &str) -> Self {
-        Self::StringError(msg.to_owned())
-    }
-
-    pub fn string(msg: String) -> Self {
-        Self::StringError(msg)
+impl<E> From<E> for Error
+where
+    ErrorImpl: From<E>,
+{
+    fn from(value: E) -> Self {
+        Error(Arc::new(value.into()))
     }
 }

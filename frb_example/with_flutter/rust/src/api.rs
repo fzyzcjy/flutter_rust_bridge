@@ -1,6 +1,6 @@
 use anyhow::{anyhow, Result};
 
-use flutter_rust_bridge::ZeroCopyBuffer;
+use flutter_rust_bridge::{frb, ZeroCopyBuffer};
 
 //
 // NOTE: Please look at https://github.com/fzyzcjy/flutter_rust_bridge/blob/master/frb_example/simple/rust/src/api.rs
@@ -19,10 +19,7 @@ pub fn draw_mandelbrot(
 }
 
 pub fn passing_complex_structs(root: TreeNode) -> String {
-    format!(
-        "Hi this string is from Rust. I received a complex struct: {:?}",
-        root
-    )
+    format!("Hi this string is from Rust. I received a complex struct: {root:?}")
 }
 
 pub fn returning_structs_with_boxed_fields() -> BoxedPoint {
@@ -52,6 +49,10 @@ pub struct TreeNode {
 #[derive(Debug, Clone)]
 pub struct BoxedPoint {
     pub point: Box<Point>,
+}
+
+impl BoxedPoint {
+    pub fn test_method(&self) {}
 }
 
 // following are used only for memory tests. Readers of this example do not need to consider it.
@@ -96,11 +97,40 @@ pub fn off_topic_memory_test_output_complex_struct(len: i32) -> TreeNode {
 }
 
 pub fn off_topic_deliberately_return_error() -> Result<i32> {
+    #[cfg(not(target_family = "wasm"))]
     std::env::set_var("RUST_BACKTRACE", "1"); // optional, just to see more info...
     Err(anyhow!("deliberately return Error!"))
 }
 
 pub fn off_topic_deliberately_panic() -> i32 {
+    #[cfg(not(target_family = "wasm"))]
     std::env::set_var("RUST_BACKTRACE", "1"); // optional, just to see more info...
     panic!("deliberately panic!")
 }
+
+// BEDGIN: the code for test flag --use_bridge_in_method
+pub struct SumWith {
+    pub x: u32,
+}
+impl SumWith {
+    pub fn sum(&self, y: u32) -> u32 {
+        self.x + y
+    }
+    pub fn sum_static(x: u32, y: u32) -> u32 {
+        x + y
+    }
+}
+
+#[frb(dart_metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]
+pub struct UserId {
+    #[frb(default = 0)]
+    pub value: u32,
+}
+
+pub fn next_user_id(user_id: UserId) -> UserId {
+    UserId {
+        value: user_id.value + 1,
+    }
+}
+
+// END: the code for test flag --use_bridge_in_method

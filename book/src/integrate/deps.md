@@ -4,21 +4,35 @@ Next, we need to install a few build-time and runtime dependencies.
 
 ## Build-time dependencies
 
-These depdencies are required only in build-time:
+These dependencies are required only in build-time:
 
 - [`flutter_rust_bridge_codegen`](https://lib.rs/crates/flutter_rust_bridge_codegen), the core codegen for Rust-Dart glue code
 - [`ffigen`](https://pub.dev/packages/ffigen), to generate Dart code from C headers
-- [`cargo-xcode`](https://lib.rs/crates/cargo-xcode), to generate Xcode projects for iOS and MacOS
-- A working installation of LLVM, see [Installing LLVM](https://pub.dev/packages/ffigen#installing-llvm)
+- A working installation of LLVM, see [Installing LLVM](https://pub.dev/packages/ffigen#installing-llvm), used by `ffigen`
+- (Optional) [`cargo-xcode`](https://lib.rs/crates/cargo-xcode), if you want to generate Xcode projects for iOS and MacOS
 
 An easy way to install most of these dependencies is to run:
 
-```bash
-cargo install flutter_rust_bridge_codegen
-dart pub global activate ffigen
-# if building for iOS or MacOS
-cargo install cargo-xcode
-```
+- dart project
+  
+  ```bash
+  cargo install flutter_rust_bridge_codegen
+  dart pub add --dev ffigen && dart pub add ffi
+  # if building for iOS or MacOS
+  cargo install cargo-xcode
+  ```
+
+- flutter project
+
+  ```bash
+  cargo install flutter_rust_bridge_codegen
+  flutter pub add --dev ffigen && flutter pub add ffi
+  # if building for iOS or MacOS
+  cargo install cargo-xcode
+  ```
+
+Alternatively, each of these dependencies may provide prebuilt binaries. Check with
+your package manager and review them individually.
 
 ## Dart dependencies
 
@@ -51,6 +65,22 @@ Add these lines to `Cargo.toml`:
 +flutter_rust_bridge = "1"
 ```
 
-> **Note** \
-> If you wish to return a `Result`, keep in mind that this library can only run codegen
-> for [`anyhow::Result`](https://docs.rs/anyhow/latest/anyhow/type.Result.html).
+## System dependencies
+
+### Non-Debian Linux
+
+For non-debian based Linux distributions, there are a few prerequisites:
+
+Firstly, ensure that packages are up to date (or install by demand).
+
+- clang
+- llvm-libs
+- glibc
+
+Restarting system may be required.
+
+Secondly, set the environment variable in your shell profile (`.bashrc`, `.zshrc`, etc):
+
+```bash
+export CPATH="$(clang -v 2>&1 | grep "Selected GCC installation" | rev | cut -d' ' -f1 | rev)/include"
+```

@@ -1,4 +1,27 @@
 //! Examples of types you'd want to mirror
+//!
+
+#[derive(Debug, Clone)]
+pub struct RawStringMirrored {
+    pub r#value: String,
+}
+
+#[derive(Debug, Clone)]
+pub struct NestedRawStringMirrored {
+    pub raw: RawStringMirrored,
+}
+
+#[derive(Debug, Clone)]
+pub struct ListOfNestedRawStringMirrored {
+    pub raw: Vec<NestedRawStringMirrored>,
+}
+
+#[derive(Debug, Clone)]
+pub enum RawStringEnumMirrored {
+    Raw(RawStringMirrored),
+    Nested(NestedRawStringMirrored),
+    ListOfNested(ListOfNestedRawStringMirrored),
+}
 
 #[derive(Debug, Clone)]
 pub struct ApplicationSettings {
@@ -6,6 +29,7 @@ pub struct ApplicationSettings {
     pub version: String,
     pub mode: ApplicationMode,
     pub env: Box<ApplicationEnv>,
+    pub env_optional: Option<ApplicationEnv>,
 }
 
 #[derive(Debug, Clone)]
@@ -27,6 +51,12 @@ pub enum ApplicationMessage {
 }
 
 #[derive(Debug, Clone)]
+pub struct Numbers(pub Vec<i32>);
+
+#[derive(Debug, Clone)]
+pub struct Sequences(pub Vec<i32>);
+
+#[derive(Debug, Clone)]
 pub struct ApplicationEnvVar(pub String, pub bool);
 
 impl ApplicationSettings {
@@ -46,6 +76,7 @@ impl ApplicationSettings {
                     .map(|(k, v)| ApplicationEnvVar(k.into(), v))
                     .collect(),
             }),
+            env_optional: None,
         }
     }
 }
@@ -65,4 +96,12 @@ pub fn poll_messages() -> Vec<ApplicationMessage> {
         ApplicationMessage::RenderPixel { x: 5, y: 10 },
         ApplicationMessage::Exit,
     ]
+}
+
+pub fn repeat_number(num: i32, times: usize) -> Numbers {
+    Numbers(vec![num; times])
+}
+
+pub fn repeat_sequences(seq: i32, times: usize) -> Sequences {
+    Sequences(vec![seq; times])
 }

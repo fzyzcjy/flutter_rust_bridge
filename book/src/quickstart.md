@@ -24,8 +24,11 @@ scoop install flutter_rust_bridge_codegen
 brew install desdaemon/repo/flutter_rust_bridge_codegen
 ```
 
+<small>(Remark: Thanks @Desdaemon for scripts to publish to brew/scoop)</small>
 
-Then run the code generator. (It needs some installation steps. You may refer to [the tutorial](tutorial_with_flutter.md), [create new projects from a template](template.md) or [integrating with existing projects](integrate.md) for details.)
+Then run the code generator.
+
+<small>Remark: It needs some installation steps. You may refer to [the tutorial](tutorial_with_flutter.md), [create new projects from a template](template.md) or [integrating with existing projects](integrate.md) for details.</small>
 
 ```bash
 flutter_rust_bridge_codegen --rust-input path/to/api.rs \

@@ -1,4 +1,5 @@
 # Async in Rust
 
-To use async/await or return a Future type from your Rust functions, please refer to [this documentation](../article/async_in_rust.md). If you have interest in more integrated generator, please create and issue.
+Currently, this feature has not been supported yet. However, it is implementable and the flutter_rust_bridge barely has assumption that user Rust functions should be sync. Issue [#966](https://github.com/fzyzcjy/flutter_rust_bridge/issues/966) has some discussions about how to implement it.
 
+[This](../article/async_in_rust.md) older article also describes some workarounds, which may be useful before the function is implemented.

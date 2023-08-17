@@ -4,16 +4,16 @@ Inspect your `lib/bridge_generated.dart` and you will see that the definition of
 
 ```dart
 @freezed
-class Platform with _$Platform {
-    const factory Platform.unknown() = Unknown;
-    const factory Platform.android() = Android;
-    const factory Platforn.ios() = Ios;
-    const factory Platform.windows() = Windows;
-    const factory Platform.unix() = Unix;
+sealed class Platform with _$Platform {
+    const factory Platform.unknown() = Platform_Unknown;
+    const factory Platform.android() = Platform_Android;
+    const factory Platforn.ios() = Platform_Ios;
+    const factory Platform.windows() = Platform_Windows;
+    const factory Platform.unix() = Platform_Unix;
     const factory Platform.macOs(
         String field0,
-    ) = MacOs;
-    const factory Platform.wasm() = Wasm;
+    ) = Platform_MacOs;
+    const factory Platform.wasm() = Platform_Wasm;
 }
 ```
 

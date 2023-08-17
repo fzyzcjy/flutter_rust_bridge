@@ -1,3 +1,9 @@
+//! NOTE: This file is **unrelated** to the main topic of our example.
+//! Only for generating beautiful image.
+//! Mandelbrot is copied and modified from
+//! https://github.com/ProgrammingRust/mandelbrot/blob/task-queue/src/main.rs and
+//! https://github.com/Ducolnd/rust-mandelbrot/blob/master/src/main.rs
+
 use std::sync::Mutex;
 
 use anyhow::*;
@@ -5,11 +11,6 @@ use image::codecs::png::PngEncoder;
 use image::*;
 use num::Complex;
 
-///! NOTE: This file is **unrelated** to the main topic of our example.
-///! Only for generating beautiful image.
-///! Mandelbrot is copied and modified from
-///! https://github.com/ProgrammingRust/mandelbrot/blob/task-queue/src/main.rs and
-///! https://github.com/Ducolnd/rust-mandelbrot/blob/master/src/main.rs
 use crate::api::*;
 
 /// Try to determine if `c` is in the Mandelbrot set, using at most `limit`
@@ -157,35 +158,36 @@ pub fn mandelbrot(
 
     {
         let bands = Mutex::new(pixels.chunks_mut(band_rows * bounds.0).enumerate());
+        let worker = || loop {
+            match {
+                let mut guard = bands.lock().unwrap();
+                guard.next()
+            } {
+                None => {
+                    return;
+                }
+                Some((i, band)) => {
+                    let top = band_rows * i;
+                    let height = band.len() / bounds.0;
+                    let band_bounds = (bounds.0, height);
+                    let band_upper_left = pixel_to_point(bounds, (0, top), upper_left, lower_right);
+                    let band_lower_right =
+                        pixel_to_point(bounds, (bounds.0, top + height), upper_left, lower_right);
+                    render(band, band_bounds, band_upper_left, band_lower_right);
+                }
+            }
+        };
+
+        #[cfg(not(target_family = "wasm"))]
         crossbeam::scope(|scope| {
             for _ in 0..num_threads {
-                scope.spawn(|_| loop {
-                    match {
-                        let mut guard = bands.lock().unwrap();
-                        guard.next()
-                    } {
-                        None => {
-                            return;
-                        }
-                        Some((i, band)) => {
-                            let top = band_rows * i;
-                            let height = band.len() / bounds.0;
-                            let band_bounds = (bounds.0, height);
-                            let band_upper_left =
-                                pixel_to_point(bounds, (0, top), upper_left, lower_right);
-                            let band_lower_right = pixel_to_point(
-                                bounds,
-                                (bounds.0, top + height),
-                                upper_left,
-                                lower_right,
-                            );
-                            render(band, band_bounds, band_upper_left, band_lower_right);
-                        }
-                    }
-                });
+                scope.spawn(|_| worker());
             }
         })
         .unwrap();
+
+        #[cfg(target_family = "wasm")]
+        worker();
     }
 
     write_image(&colorize(&pixels), bounds)

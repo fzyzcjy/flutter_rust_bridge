@@ -1,20 +1,41 @@
 [package]
 name = "flutter_rust_bridge_example_single_block_test"
 version = "1.0.0"
-edition = "2018"
+edition.workspace = true
 
 [lib]
-name = "flutter_rust_bridge_example"
+name = "flutter_rust_bridge_example_pure_dart"
 crate-type = ["cdylib"]
 
+[features]
+wasm-start = ["flutter_rust_bridge/wasm-start"]
+
 [build-dependencies]
-flutter_rust_bridge_codegen = { path = "../../../frb_codegen" }
+flutter_rust_bridge_codegen = { workspace = true, features = [
+  "chrono",
+  "uuid",
+] }
 
 [dependencies]
-anyhow = { version = "1.0.58", features = ["backtrace"] }
-flutter_rust_bridge = { path = "../../../frb_rust" }
-lazy_static = "1.4.0"
+anyhow = { workspace = true, features = ["backtrace"] }
+lazy_static = { workspace = true }
+chrono = { workspace = true }
+flutter_rust_bridge = { workspace = true, features = [
+  "chrono",
+  "uuid",
+  "worker-max",
+] }
+uuid = { workspace = true }
+log = "0.4"
 backtrace = "0.3.66"
+
+[target.'cfg(target_family = "wasm")'.dependencies]
+console_log = { version = "0.2", features = ["color"] }
+console_error_panic_hook = "0.1"
+
+[target.'cfg(not(target_family = "wasm"))'.dependencies]
+env_logger = "0.10.0"
+static_init = "1.0.3"
 
 [dependencies.external-lib] # used for demo of external types mirroring
 path = "./external"

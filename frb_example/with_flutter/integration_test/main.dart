@@ -6,7 +6,7 @@ import 'dart:isolate';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart' hide Size;
-import 'package:flutter_rust_bridge_example/bridge_generated.dart';
+import 'package:flutter_rust_bridge_example/bridge_definitions.dart';
 import 'package:flutter_rust_bridge_example/main.dart' as app;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
@@ -69,8 +69,11 @@ void main() {
           tester,
           () async => expect(
               await app.api.offTopicMemoryTestInputComplexStruct(
-                  input: TreeNode(
-                      name: 'root', children: [for (var i = 0; i < 2000; ++i) TreeNode(name: 'child', children: [])])),
+                  input: TreeNode(name: 'root', children: [
+                for (var i = 0; i < 2000; ++i)
+                  // ignore: prefer_const_constructors
+                  TreeNode(name: 'child', children: [])
+              ])),
               2000));
     });
     testWidgets('repeat call to offTopicMemoryTestOutputComplexStruct', (WidgetTester tester) async {
@@ -83,6 +86,7 @@ void main() {
           tester,
           () async => expect(
               await app.api
+                  // ignore: prefer_const_constructors
                   .offTopicMemoryTestInputVecOfObject(input: List.filled(100000, Size(width: 42, height: 100))),
               100000));
     });

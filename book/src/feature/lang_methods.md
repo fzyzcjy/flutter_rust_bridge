@@ -2,6 +2,8 @@
 
 There is support for structs with methods. Both static methods, and non-static methods are supported.
 
+Related configuration: `--no-use-bridge-in-method` (see below for an example).
+
 ## Example
 
 ```rust,noplayground
@@ -27,6 +29,25 @@ class SumWith {
 
   Future<int> sum({required int y, dynamic hint}) => ..
   static Future<int> sum({required int x, required int y, dynamic hint}) => ..
+}
+```
+
+Or show as follow if you use flag `--no-use-bridge-in-method`:
+```dart
+class SumWith {
+  final int x;
+
+  const SumWith({
+    required this.x,
+  });
+
+  Future<int> sum({required int y, dynamic hint}) => api.sumMethodSumWith(
+        that: this,
+        y: y,
+      );
+
+  static Future<int> sumStatic({required int x, required int y, dynamic hint}) =>
+      api.sumStaticStaticMethodSumWith(x: x, y: y, hint: hint);
 }
 ```
 

@@ -3,3 +3,7 @@
 *.iml
 target
 launch.json
+.local-chromium
+Makefile
+*.log
+.vscode
