@@ -33,7 +33,7 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_draw_mandelbrot(port_, arg0, arg1, arg2, arg3),
       parseSuccessData: _wire2api_ZeroCopyBuffer_Uint8List,
-      parseErrorData: _wire2api_ZeroCopyBuffer_Uint8List,
+      parseErrorData: null,
       constMeta: kDrawMandelbrotConstMeta,
       argValues: [imageSize, zoomPoint, scale, numThreads],
       hint: hint,
@@ -206,7 +206,7 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_off_topic_deliberately_return_error(port_),
       parseSuccessData: _wire2api_i32,
-      parseErrorData: _wire2api_i32,
+      parseErrorData: null,
       constMeta: kOffTopicDeliberatelyReturnErrorConstMeta,
       argValues: [],
       hint: hint,

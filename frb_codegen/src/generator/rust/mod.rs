@@ -354,7 +354,7 @@ impl<'a> Generator<'a> {
         let code_call_inner_func_result = if func.fallible {
             code_call_inner_func
         } else {
-            format!("Result::<_,()>::Ok({code_call_inner_func})")
+            format!("Ok({code_call_inner_func})")
         };
 
         let (handler_func_name, return_type, code_closure) = match func.mode {

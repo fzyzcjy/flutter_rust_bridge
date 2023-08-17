@@ -3684,7 +3684,7 @@ abstract class KitchenSink_Enums implements KitchenSink {
 
 /// @nodoc
 mixin _$Measure {
-  Object get field0 => throw _privateConstructorUsedError;
+  FrbException get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Speed field0) speed,
@@ -4464,7 +4464,7 @@ abstract class _MySizeFreezed implements MySizeFreezed {
 
 /// @nodoc
 mixin _$RawStringEnumMirrored {
-  Object get field0 => throw _privateConstructorUsedError;
+  FrbException get field0 => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(RawStringMirrored field0) raw,

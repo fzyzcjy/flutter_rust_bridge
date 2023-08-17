@@ -531,7 +531,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_handle_sync_return(arg0),
       parseSuccessData: _wire2api_uint_8_list,
-      parseErrorData: _wire2api_uint_8_list,
+      parseErrorData: null,
       constMeta: kHandleSyncReturnConstMeta,
       argValues: [mode],
       hint: hint,
@@ -580,7 +580,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_return_err(port_),
       parseSuccessData: _wire2api_i32,
-      parseErrorData: _wire2api_i32,
+      parseErrorData: null,
       constMeta: kReturnErrConstMeta,
       argValues: [],
       hint: hint,
@@ -865,7 +865,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_get_fallible_app_settings(port_),
       parseSuccessData: _wire2api_application_settings,
-      parseErrorData: _wire2api_application_settings,
+      parseErrorData: null,
       constMeta: kGetFallibleAppSettingsConstMeta,
       argValues: [],
       hint: hint,
@@ -1472,7 +1472,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_how_long_does_it_take(port_, arg0),
       parseSuccessData: _wire2api_Chrono_Duration,
-      parseErrorData: _wire2api_Chrono_Duration,
+      parseErrorData: null,
       constMeta: kHowLongDoesItTakeConstMeta,
       argValues: [mine],
       hint: hint,
@@ -1489,7 +1489,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_uuid(port_, arg0),
       parseSuccessData: _wire2api_Uuid,
-      parseErrorData: _wire2api_Uuid,
+      parseErrorData: null,
       constMeta: kHandleUuidConstMeta,
       argValues: [id],
       hint: hint,
@@ -1506,7 +1506,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_uuids(port_, arg0),
       parseSuccessData: _wire2api_Uuids,
-      parseErrorData: _wire2api_Uuids,
+      parseErrorData: null,
       constMeta: kHandleUuidsConstMeta,
       argValues: [ids],
       hint: hint,
@@ -1523,7 +1523,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_nested_uuids(port_, arg0),
       parseSuccessData: _wire2api_feature_uuid,
-      parseErrorData: _wire2api_feature_uuid,
+      parseErrorData: null,
       constMeta: kHandleNestedUuidsConstMeta,
       argValues: [ids],
       hint: hint,
@@ -2193,7 +2193,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_sync_option(),
       parseSuccessData: _wire2api_opt_String,
-      parseErrorData: _wire2api_opt_String,
+      parseErrorData: null,
       constMeta: kSyncOptionConstMeta,
       argValues: [],
       hint: hint,
@@ -2209,7 +2209,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_sync_option_null(),
       parseSuccessData: _wire2api_opt_String,
-      parseErrorData: _wire2api_opt_String,
+      parseErrorData: null,
       constMeta: kSyncOptionNullConstMeta,
       argValues: [],
       hint: hint,
@@ -2225,7 +2225,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_sync_option_rust_opaque(),
       parseSuccessData: _wire2api_opt_box_autoadd_HideData,
-      parseErrorData: _wire2api_opt_box_autoadd_HideData,
+      parseErrorData: null,
       constMeta: kSyncOptionRustOpaqueConstMeta,
       argValues: [],
       hint: hint,
@@ -2242,7 +2242,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_sync_option_dart_opaque(arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_DartOpaque,
-      parseErrorData: _wire2api_opt_box_autoadd_DartOpaque,
+      parseErrorData: null,
       constMeta: kSyncOptionDartOpaqueConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -2394,7 +2394,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_unwrap_rust_opaque(port_, arg0),
       parseSuccessData: _wire2api_String,
-      parseErrorData: _wire2api_String,
+      parseErrorData: null,
       constMeta: kUnwrapRustOpaqueConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -2642,7 +2642,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_fallible_of_raw_string_mirrored(port_),
       parseSuccessData: _wire2api_list_raw_string_mirrored,
-      parseErrorData: _wire2api_list_raw_string_mirrored,
+      parseErrorData: null,
       constMeta: kTestFallibleOfRawStringMirroredConstMeta,
       argValues: [],
       hint: hint,

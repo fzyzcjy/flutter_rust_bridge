@@ -124,7 +124,7 @@ impl<'a> TypeParser<'a> {
         let resolve_ty = self.resolve_alias(ty).clone();
 
         match resolve_ty.clone() {
-            syn::Type::Path(path) => self.convert_path_to_ir_type(&path, false).unwrap(),
+            syn::Type::Path(path) => self.convert_path_to_ir_type(&path, true).unwrap(),
             syn::Type::Array(syn::TypeArray { elem, len, .. }) => {
                 let length: usize = match len {
                     syn::Expr::Lit(lit) => match &lit.lit {
@@ -299,6 +299,14 @@ impl<'a> TypeParser<'a> {
                     [("DartOpaque", None)] => Ok(DartOpaque(IrTypeDartOpaque {})),
 
                     [("String", None)] => Ok(Delegate(IrTypeDelegate::String)),
+
+                    [("Error", Some(Generic(x)))]
+                        if x.iter().any(|x| x.safe_ident().contains(ANYHOW_IDENT)) =>
+                    {
+                        Ok(Delegate(IrTypeDelegate::Anyhow))
+                    }
+
+                    [("Backtrace", _)] => Ok(Delegate(IrTypeDelegate::Backtrace)),
 
                     // TODO: change to "if let guard" https://github.com/rust-lang/rust/issues/51114
                     [(name, None)]

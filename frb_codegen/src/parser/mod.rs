@@ -26,7 +26,6 @@ use crate::utils::method::FunctionName;
 use self::ty::convert_ident_str;
 
 const STREAM_SINK_IDENT: &str = "StreamSink";
-const RESULT_IDENT: &str = "Result";
 const ANYHOW_IDENT: &str = "anyhow";
 
 mod error;
@@ -163,11 +162,11 @@ impl<'a> Parser<'a> {
                             Some(IrFuncOutput::ResultType(args.clone()))
                         }
                         [("Result", Some(ArgsRefs::Generic(args)))] => {
-                            let args = args.to_vec();
-                            let ok = args.first().unwrap();
+                            let mut args = args.to_vec();
+                            let ok = args.remove(0);
                             let error = if let Some(x) = args.last() {
                                 Some(x.clone())
-                            } else if args.iter().any(|x| x.safe_ident() == ANYHOW_IDENT) {
+                            } else if args.iter().any(|x| x.safe_ident().contains(ANYHOW_IDENT)) {
                                 Some(IrType::Delegate(IrTypeDelegate::Anyhow))
                             } else {
                                 None
