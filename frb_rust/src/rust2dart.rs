@@ -6,8 +6,6 @@ pub use crate::into_into_dart::IntoIntoDart;
 ///
 /// Its implementation lies with the Dart language and therefore should not be
 /// depended on to be stable.
-pub use allo_isolate::ffi::DartCObject;
-pub use allo_isolate::IntoDart;
 use std::marker::PhantomData;
 
 /// A wrapper around a Dart [`Isolate`].
@@ -149,11 +147,11 @@ impl<T> StreamSink<T> {
 
 // IntoDart consumes `self` so we need a trait for the `Box` case
 pub trait BoxIntoDart {
-    fn box_into_dart(self: Box<Self>) -> DartCObject;
+    fn box_into_dart(self: Box<Self>) -> DartAbi;
 }
 
 impl<T: IntoDart> BoxIntoDart for T {
-    fn box_into_dart(self: Box<T>) -> DartCObject {
+    fn box_into_dart(self: Box<T>) -> DartAbi {
         self.into_dart()
     }
 }

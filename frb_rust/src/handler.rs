@@ -9,7 +9,7 @@ use anyhow::Result;
 
 use crate::rust2dart::{BoxIntoDart, IntoIntoDart, Rust2Dart, TaskCallback};
 use crate::support::WireSyncReturn;
-use crate::{spawn, SyncReturn};
+use crate::{spawn, DartAbi, SyncReturn};
 
 /// The types of return values for a particular Rust function.
 #[derive(Copy, Clone)]
@@ -280,7 +280,7 @@ impl Error {
 }
 
 impl IntoDart for Error {
-    fn into_dart(self) -> allo_isolate::ffi::DartCObject {
+    fn into_dart(self) -> DartAbi {
         match self {
             Error::CustomError(e) => e.box_into_dart(),
             Error::Panic(panic_err) => error_to_string(&panic_err).into_dart(),
