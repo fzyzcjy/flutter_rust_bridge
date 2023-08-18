@@ -26,7 +26,6 @@ use crate::utils::method::FunctionName;
 use self::ty::convert_ident_str;
 
 const STREAM_SINK_IDENT: &str = "StreamSink";
-const ANYHOW_IDENT: &str = "anyhow";
 
 mod error;
 pub use error::Error;
@@ -159,17 +158,18 @@ impl<'a> Parser<'a> {
                     {
                         #[cfg(feature = "qualified_names")]
                         [("anyhow", None), ("Result", Some(ArgsRefs::Generic([args])))] => {
-                            Some(IrFuncOutput::ResultType(args.clone()))
+                            Some(IrFuncOutput::ResultType {
+                                ok: args.clone(),
+                                error: None,
+                            })
                         }
                         [("Result", Some(ArgsRefs::Generic(args)))] => {
-                            let mut args = args.to_vec();
-                            let ok = args.remove(0);
-                            let error = if let Some(x) = args.last() {
-                                Some(x.clone())
-                            } else if args.iter().any(|x| x.safe_ident().contains(ANYHOW_IDENT)) {
+                            let ok = args.first().unwrap();
+
+                            let error = if args.len() == 1 {
                                 Some(IrType::Delegate(IrTypeDelegate::Anyhow))
                             } else {
-                                None
+                                args.last().cloned()
                             };
 
                             Some(IrFuncOutput::ResultType {

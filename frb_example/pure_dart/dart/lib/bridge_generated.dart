@@ -531,7 +531,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_handle_sync_return(arg0),
       parseSuccessData: _wire2api_uint_8_list,
-      parseErrorData: null,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kHandleSyncReturnConstMeta,
       argValues: [mode],
       hint: hint,
@@ -580,7 +580,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_return_err(port_),
       parseSuccessData: _wire2api_i32,
-      parseErrorData: null,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kReturnErrConstMeta,
       argValues: [],
       hint: hint,
@@ -865,7 +865,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_get_fallible_app_settings(port_),
       parseSuccessData: _wire2api_application_settings,
-      parseErrorData: null,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kGetFallibleAppSettingsConstMeta,
       argValues: [],
       hint: hint,
@@ -1472,7 +1472,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_how_long_does_it_take(port_, arg0),
       parseSuccessData: _wire2api_Chrono_Duration,
-      parseErrorData: null,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kHowLongDoesItTakeConstMeta,
       argValues: [mine],
       hint: hint,
@@ -1489,7 +1489,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_uuid(port_, arg0),
       parseSuccessData: _wire2api_Uuid,
-      parseErrorData: null,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kHandleUuidConstMeta,
       argValues: [id],
       hint: hint,
@@ -1506,7 +1506,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_uuids(port_, arg0),
       parseSuccessData: _wire2api_Uuids,
-      parseErrorData: null,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kHandleUuidsConstMeta,
       argValues: [ids],
       hint: hint,
@@ -1523,7 +1523,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_nested_uuids(port_, arg0),
       parseSuccessData: _wire2api_feature_uuid,
-      parseErrorData: null,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kHandleNestedUuidsConstMeta,
       argValues: [ids],
       hint: hint,
@@ -2193,7 +2193,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_sync_option(),
       parseSuccessData: _wire2api_opt_String,
-      parseErrorData: null,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kSyncOptionConstMeta,
       argValues: [],
       hint: hint,
@@ -2209,7 +2209,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_sync_option_null(),
       parseSuccessData: _wire2api_opt_String,
-      parseErrorData: null,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kSyncOptionNullConstMeta,
       argValues: [],
       hint: hint,
@@ -2225,7 +2225,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_sync_option_rust_opaque(),
       parseSuccessData: _wire2api_opt_box_autoadd_HideData,
-      parseErrorData: null,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kSyncOptionRustOpaqueConstMeta,
       argValues: [],
       hint: hint,
@@ -2242,7 +2242,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_sync_option_dart_opaque(arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_DartOpaque,
-      parseErrorData: null,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kSyncOptionDartOpaqueConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -2394,7 +2394,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_unwrap_rust_opaque(port_, arg0),
       parseSuccessData: _wire2api_String,
-      parseErrorData: null,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kUnwrapRustOpaqueConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -2642,7 +2642,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_fallible_of_raw_string_mirrored(port_),
       parseSuccessData: _wire2api_list_raw_string_mirrored,
-      parseErrorData: null,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kTestFallibleOfRawStringMirroredConstMeta,
       argValues: [],
       hint: hint,
@@ -3031,6 +3031,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   EnumOpaqueArray5 _wire2api_EnumOpaque_array_5(dynamic raw) {
     return EnumOpaqueArray5((raw as List<dynamic>).map(_wire2api_enum_opaque).toList());
+  }
+
+  FrbAnyhowException _wire2api_FrbAnyhowException(dynamic raw) {
+    return FrbAnyhowException(raw as String);
   }
 
   FrbOpaqueReturn _wire2api_FrbOpaqueReturn(dynamic raw) {

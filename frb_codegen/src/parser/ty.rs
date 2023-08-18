@@ -10,7 +10,6 @@ use syn::punctuated::Punctuated;
 use syn::*;
 
 use super::DefaultValues;
-use super::ANYHOW_IDENT;
 
 pub struct TypeParser<'a> {
     src_structs: HashMap<String, &'a Struct>,
@@ -300,9 +299,7 @@ impl<'a> TypeParser<'a> {
 
                     [("String", None)] => Ok(Delegate(IrTypeDelegate::String)),
 
-                    [("Error", Some(Generic(x)))]
-                        if x.iter().any(|x| x.safe_ident().contains(ANYHOW_IDENT)) =>
-                    {
+                    [("Error", Some(Generic(x)))] if x.len() == 1 => {
                         Ok(Delegate(IrTypeDelegate::Anyhow))
                     }
 

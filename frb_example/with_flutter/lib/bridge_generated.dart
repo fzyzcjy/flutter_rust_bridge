@@ -33,7 +33,7 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_draw_mandelbrot(port_, arg0, arg1, arg2, arg3),
       parseSuccessData: _wire2api_ZeroCopyBuffer_Uint8List,
-      parseErrorData: null,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kDrawMandelbrotConstMeta,
       argValues: [imageSize, zoomPoint, scale, numThreads],
       hint: hint,
@@ -206,7 +206,7 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_off_topic_deliberately_return_error(port_),
       parseSuccessData: _wire2api_i32,
-      parseErrorData: null,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kOffTopicDeliberatelyReturnErrorConstMeta,
       argValues: [],
       hint: hint,
@@ -308,6 +308,10 @@ class FlutterRustBridgeExampleImpl implements FlutterRustBridgeExample {
     _platform.dispose();
   }
 // Section: wire2api
+
+  FrbAnyhowException _wire2api_FrbAnyhowException(dynamic raw) {
+    return FrbAnyhowException(raw as String);
+  }
 
   String _wire2api_String(dynamic raw) {
     return raw as String;

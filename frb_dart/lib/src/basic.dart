@@ -21,6 +21,7 @@ class _DropIdPortGenerator {
 
 class PanicException extends FrbException {
   final String error;
+
   PanicException(this.error);
 }
 
@@ -109,7 +110,8 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 
   /// Similar to [executeNormal], except that this will return a [Stream] instead of a [Future].
   @protected
-  Stream<S> executeStream<S, E extends Object>(FlutterRustBridgeTask<S> task) async* {
+  Stream<S> executeStream<S, E extends Object>(
+      FlutterRustBridgeTask<S, E> task) async* {
     final func = task.constMeta.debugName;
     final nextIndex = _streamSinkNameIndex.update(func, (value) => value + 1,
         ifAbsent: () => 0);
@@ -129,7 +131,9 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   }
 
   S _transformRust2DartMessage<S, E extends Object>(
-      List<dynamic> raw, S Function(dynamic) parseSuccessData,E Function(dynamic)? parseErrorData,
+      List<dynamic> raw,
+      S Function(dynamic) parseSuccessData,
+      E Function(dynamic)? parseErrorData,
       PanicException Function(dynamic)? parsePanicData) {
     final action = raw[0];
     switch (action) {
@@ -198,16 +202,21 @@ class FlutterRustBridgeTask<S, E extends Object>
 
 /// A task to call FFI function, but it is synchronous.
 @immutable
-class FlutterRustBridgeSyncTask<S> extends FlutterRustBridgeBaseTask {
+class FlutterRustBridgeSyncTask<S, E>
+    extends FlutterRustBridgeBaseTask {
   /// The underlying function to call FFI function, usually the generated wire function
   final WireSyncReturn Function() callFfi;
 
   /// Parse the returned data from the underlying function
   final S Function(dynamic) parseSuccessData;
 
+  /// Parse the returned errordata from the underlying function
+  final E Function(dynamic)? parseErrorData;
+
   const FlutterRustBridgeSyncTask({
     required this.callFfi,
     required this.parseSuccessData,
+    required this.parseErrorData,
     required FlutterRustBridgeTaskConstMeta constMeta,
     required List<dynamic> argValues,
     required dynamic hint,
@@ -224,19 +233,4 @@ class FrbException implements Exception {}
 
 abstract class FrbBacktracedException extends FrbException {
   String get backtrace;
-}
-
-// NOTE for maintainer: Please manually keep in sync with [WireSyncReturnStruct] in Rust
-/// This class is only for internal usage.
-class WireSyncReturnStruct extends ffi.Struct {
-  /// Not to be used by normal users, but has to be public for generated code
-  external ffi.Pointer<ffi.Uint8> ptr;
-
-  /// Not to be used by normal users, but has to be public for generated code
-  @ffi.Int32()
-  external int len;
-
-  /// Not to be used by normal users, but has to be public for generated code
-  @ffi.Uint8()
-  external int success;
 }

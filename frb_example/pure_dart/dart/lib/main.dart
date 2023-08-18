@@ -320,7 +320,7 @@ void main(List<String> args) async {
     try {
       await api.returnErr();
       fail("exception not thrown");
-    } on FfiException catch (e) {
+    } on FrbAnyhowException catch (e) {
       print('dart catch e: $e');
     }
   });
@@ -331,7 +331,7 @@ void main(List<String> args) async {
       fail("exception not thrown");
     } catch (e) {
       print('dart catch e: $e');
-      expect(e, isA<FfiException>());
+      expect(e, isA<PanicException>());
     }
   });
 
@@ -982,7 +982,7 @@ void main(List<String> args) async {
     test('unwrap', () async {
       expect(api.unwrapDartOpaque(opaque: createLargeList(mb: 200)), 'Test');
       await expectLater(
-          () => api.panicUnwrapDartOpaque(opaque: createLargeList(mb: 200)), throwsA(isA<FfiException>()));
+          () => api.panicUnwrapDartOpaque(opaque: createLargeList(mb: 200)), throwsA(isA<PanicException>()));
     });
 
     test('nested', () async {
@@ -1065,7 +1065,7 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
       data.dispose();
-      await expectLater(() => api.runOpaque(opaque: data), throwsA(isA<FfiException>()));
+      await expectLater(() => api.runOpaque(opaque: data), throwsA(isA<PanicException>()));
     });
 
     test('dispose before complete', () async {
@@ -1081,7 +1081,7 @@ void main(List<String> args) async {
           "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
           "lifetime: \"static str\" "
           "})");
-      await expectLater(() => api.runOpaque(opaque: data), throwsA(isA<FfiException>()));
+      await expectLater(() => api.runOpaque(opaque: data), throwsA(isA<PanicException>()));
     });
 
     test('create array of opaque type', () async {
@@ -1097,7 +1097,7 @@ void main(List<String> args) async {
             "lifetime: \"static str\" "
             "})");
         v.dispose();
-        await expectLater(() => api.runOpaque(opaque: v), throwsA(isA<FfiException>()));
+        await expectLater(() => api.runOpaque(opaque: v), throwsA(isA<PanicException>()));
       }
     });
 
@@ -1142,7 +1142,7 @@ void main(List<String> args) async {
           "lifetime: \\\"static str\\\" "
           "})\"");
       (data[4] as EnumOpaque_RwLock).field0.dispose();
-      await expectLater(() => api.runEnumOpaque(opaque: data[4]), throwsA(isA<FfiException>()));
+      await expectLater(() => api.runEnumOpaque(opaque: data[4]), throwsA(isA<PanicException>()));
     });
 
     test('opaque field', () async {
@@ -1168,8 +1168,8 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
       data.first.dispose();
-      await expectLater(() => api.runOpaque(opaque: data.first), throwsA(isA<FfiException>()));
-      await expectLater(() => api.runNestedOpaque(opaque: data), throwsA(isA<FfiException>()));
+      await expectLater(() => api.runOpaque(opaque: data.first), throwsA(isA<PanicException>()));
+      await expectLater(() => api.runNestedOpaque(opaque: data), throwsA(isA<PanicException>()));
       expect(
           await api.runOpaque(opaque: data.second),
           "content - Some(PrivateData "
@@ -1197,7 +1197,7 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
 
-      await expectLater(() => api.opaqueArrayRun(data: data), throwsA(isA<FfiException>()));
+      await expectLater(() => api.opaqueArrayRun(data: data), throwsA(isA<PanicException>()));
       data[1].dispose();
     });
 
@@ -1216,7 +1216,7 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
 
-      await expectLater(() => api.opaqueVecRun(data: data), throwsA(isA<FfiException>()));
+      await expectLater(() => api.opaqueVecRun(data: data), throwsA(isA<PanicException>()));
       data[1].dispose();
     });
 
@@ -1235,7 +1235,7 @@ void main(List<String> args) async {
       expect(data.isStale(), isTrue);
 
       var data2 = await api.createOpaque();
-      await expectLater(() => api.unwrapRustOpaque(opaque: data2), throwsA(isA<FfiException>()));
+      await expectLater(() => api.unwrapRustOpaque(opaque: data2), throwsA(isA<FrbAnyhowException>()));
       expect(data2.isStale(), isFalse);
     });
   });
