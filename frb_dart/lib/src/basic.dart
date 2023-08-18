@@ -145,7 +145,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
         if (parseErrorData != null) {
           throw parseErrorData(raw[1]);
         }
-        throw Exception("tried to parse error data but function is null");
+        throw PanicException("tried to parse error data but function is null");
       case _RUST2DART_ACTION_PANIC:
         assert(raw.length == 2);
         if (parsePanicData != null) {
