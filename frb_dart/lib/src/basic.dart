@@ -202,8 +202,7 @@ class FlutterRustBridgeTask<S, E extends Object>
 
 /// A task to call FFI function, but it is synchronous.
 @immutable
-class FlutterRustBridgeSyncTask<S, E>
-    extends FlutterRustBridgeBaseTask {
+class FlutterRustBridgeSyncTask<S, E> extends FlutterRustBridgeBaseTask {
   /// The underlying function to call FFI function, usually the generated wire function
   final WireSyncReturn Function() callFfi;
 

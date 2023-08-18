@@ -239,7 +239,7 @@ impl<'a> TypeParser<'a> {
     /// Converts a path type into an `IrType` if possible.
     pub fn convert_path_to_ir_type(
         &mut self,
-        type_path: &TypePath
+        type_path: &TypePath,
     ) -> std::result::Result<IrType, String> {
         match &type_path {
             TypePath { qself: None, path } => {
