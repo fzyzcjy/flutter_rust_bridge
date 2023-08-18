@@ -692,6 +692,46 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kMacroStructConstMeta;
 
+  Future<int> returnErrCustomError({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kReturnErrCustomErrorConstMeta;
+
+  Future<int> returnOkCustomError({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kReturnOkCustomErrorConstMeta;
+
+  Future<int> returnErrorVariant({required int variant, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kReturnErrorVariantConstMeta;
+
+  Future<void> returnCustomNestedError1({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kReturnCustomNestedError1ConstMeta;
+
+  Future<void> returnCustomNestedError1Variant1({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kReturnCustomNestedError1Variant1ConstMeta;
+
+  Future<void> returnCustomNestedError2({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kReturnCustomNestedError2ConstMeta;
+
+  Future<void> returnCustomStructError({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kReturnCustomStructErrorConstMeta;
+
+  Future<int> returnCustomStructOk({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kReturnCustomStructOkConstMeta;
+
+  Future<void> throwAnyhow({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kThrowAnyhowConstMeta;
+
+  Future<void> panicWithCustomResult({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kPanicWithCustomResultConstMeta;
+
   Future<String> asStringMethodEvent({required Event that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kAsStringMethodEventConstMeta;
@@ -731,6 +771,46 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
   Stream<int> handleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWith({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kHandleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWithConstMeta;
+
+  Future<SomeStruct> newStaticMethodSomeStruct({required int value, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kNewStaticMethodSomeStructConstMeta;
+
+  Future<int> staticReturnErrCustomErrorStaticMethodSomeStruct({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kStaticReturnErrCustomErrorStaticMethodSomeStructConstMeta;
+
+  Future<int> staticReturnOkCustomErrorStaticMethodSomeStruct({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kStaticReturnOkCustomErrorStaticMethodSomeStructConstMeta;
+
+  Future<int> nonStaticReturnErrCustomErrorMethodSomeStruct({required SomeStruct that, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kNonStaticReturnErrCustomErrorMethodSomeStructConstMeta;
+
+  Future<int> nonStaticReturnOkCustomErrorMethodSomeStruct({required SomeStruct that, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kNonStaticReturnOkCustomErrorMethodSomeStructConstMeta;
+
+  Future<CustomStruct> newStaticMethodCustomStruct({required String message, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kNewStaticMethodCustomStructConstMeta;
+
+  Future<void> staticReturnCustomStructErrorStaticMethodCustomStruct({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kStaticReturnCustomStructErrorStaticMethodCustomStructConstMeta;
+
+  Future<int> staticReturnCustomStructOkStaticMethodCustomStruct({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kStaticReturnCustomStructOkStaticMethodCustomStructConstMeta;
+
+  Future<void> nonstaticReturnCustomStructErrorMethodCustomStruct({required CustomStruct that, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kNonstaticReturnCustomStructErrorMethodCustomStructConstMeta;
+
+  Future<int> nonstaticReturnCustomStructOkMethodCustomStruct({required CustomStruct that, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kNonstaticReturnCustomStructOkMethodCustomStructConstMeta;
 
   DropFnType get dropOpaqueBoxDartDebug;
   ShareFnType get shareOpaqueBoxDartDebug;
@@ -967,7 +1047,7 @@ class A {
 }
 
 @freezed
-class Abc with _$Abc {
+sealed class Abc with _$Abc {
   const factory Abc.a(
     A field0,
   ) = Abc_A;
@@ -1001,7 +1081,7 @@ class ApplicationEnvVar {
 }
 
 @freezed
-class ApplicationMessage with _$ApplicationMessage {
+sealed class ApplicationMessage with _$ApplicationMessage {
   const factory ApplicationMessage.displayMessage(
     String field0,
   ) = ApplicationMessage_DisplayMessage;
@@ -1137,6 +1217,79 @@ class ContainsMirroredSubStruct {
   });
 }
 
+@freezed
+sealed class CustomError with _$CustomError implements FrbException {
+  @Implements<FrbBacktracedException>()
+  const factory CustomError.error0({
+    required String e,
+    required String backtrace,
+  }) = CustomError_Error0;
+  @Implements<FrbBacktracedException>()
+  const factory CustomError.error1({
+    required int e,
+    required String backtrace,
+  }) = CustomError_Error1;
+}
+
+@freezed
+sealed class CustomNestedError1 with _$CustomNestedError1 implements FrbException {
+  const factory CustomNestedError1.customNested1(
+    String field0,
+  ) = CustomNestedError1_CustomNested1;
+  const factory CustomNestedError1.errorNested(
+    CustomNestedError2 field0,
+  ) = CustomNestedError1_ErrorNested;
+}
+
+@freezed
+sealed class CustomNestedError2 with _$CustomNestedError2 {
+  const factory CustomNestedError2.customNested2(
+    String field0,
+  ) = CustomNestedError2_CustomNested2;
+  const factory CustomNestedError2.customNested2Number(
+    int field0,
+  ) = CustomNestedError2_CustomNested2Number;
+}
+
+class CustomStruct {
+  final FlutterRustBridgeExampleSingleBlockTest bridge;
+  final String message;
+
+  const CustomStruct({
+    required this.bridge,
+    required this.message,
+  });
+
+  static Future<CustomStruct> newCustomStruct(
+          {required FlutterRustBridgeExampleSingleBlockTest bridge, required String message, dynamic hint}) =>
+      bridge.newStaticMethodCustomStruct(message: message, hint: hint);
+
+  static Future<void> staticReturnCustomStructError(
+          {required FlutterRustBridgeExampleSingleBlockTest bridge, dynamic hint}) =>
+      bridge.staticReturnCustomStructErrorStaticMethodCustomStruct(hint: hint);
+
+  static Future<int> staticReturnCustomStructOk(
+          {required FlutterRustBridgeExampleSingleBlockTest bridge, dynamic hint}) =>
+      bridge.staticReturnCustomStructOkStaticMethodCustomStruct(hint: hint);
+
+  Future<void> nonstaticReturnCustomStructError({dynamic hint}) =>
+      bridge.nonstaticReturnCustomStructErrorMethodCustomStruct(
+        that: this,
+      );
+
+  Future<int> nonstaticReturnCustomStructOk({dynamic hint}) => bridge.nonstaticReturnCustomStructOkMethodCustomStruct(
+        that: this,
+      );
+}
+
+class CustomStructError implements FrbException {
+  final String message;
+
+  const CustomStructError({
+    required this.message,
+  });
+}
+
 class Customized {
   final String finalField;
   String? nonFinalField;
@@ -1158,7 +1311,7 @@ class DartOpaqueNested {
 }
 
 @freezed
-class Distance with _$Distance {
+sealed class Distance with _$Distance {
   const factory Distance.unknown() = Distance_Unknown;
   const factory Distance.map(
     double field0,
@@ -1184,7 +1337,7 @@ class Empty {
 }
 
 @freezed
-class EnumDartOpaque with _$EnumDartOpaque {
+sealed class EnumDartOpaque with _$EnumDartOpaque {
   const factory EnumDartOpaque.primitive(
     int field0,
   ) = EnumDartOpaque_Primitive;
@@ -1194,7 +1347,7 @@ class EnumDartOpaque with _$EnumDartOpaque {
 }
 
 @freezed
-class EnumOpaque with _$EnumOpaque {
+sealed class EnumOpaque with _$EnumOpaque {
   const factory EnumOpaque.struct(
     HideData field0,
   ) = EnumOpaque_Struct;
@@ -1310,7 +1463,7 @@ class I32Array2 extends NonGrowableListView<int> {
 }
 
 @freezed
-class KitchenSink with _$KitchenSink {
+sealed class KitchenSink with _$KitchenSink {
   /// Comment on variant
   const factory KitchenSink.empty() = KitchenSink_Empty;
   const factory KitchenSink.primitives({
@@ -1375,7 +1528,7 @@ class MacroStruct {
 }
 
 @freezed
-class Measure with _$Measure {
+sealed class Measure with _$Measure {
   const factory Measure.speed(
     Speed field0,
   ) = Measure_Speed;
@@ -1426,7 +1579,7 @@ enum MyEnum {
 }
 
 @freezed
-class MyEnumFreezed with _$MyEnumFreezed {
+sealed class MyEnumFreezed with _$MyEnumFreezed {
   const factory MyEnumFreezed.a(
     int field0,
   ) = MyEnumFreezed_A;
@@ -1565,7 +1718,7 @@ class Point {
 }
 
 @freezed
-class RawStringEnumMirrored with _$RawStringEnumMirrored {
+sealed class RawStringEnumMirrored with _$RawStringEnumMirrored {
   const factory RawStringEnumMirrored.raw(
     RawStringMirrored field0,
   ) = RawStringEnumMirrored_Raw;
@@ -1601,8 +1754,38 @@ class Sequences {
   });
 }
 
+class SomeStruct {
+  final FlutterRustBridgeExampleSingleBlockTest bridge;
+  final int value;
+
+  const SomeStruct({
+    required this.bridge,
+    required this.value,
+  });
+
+  static Future<SomeStruct> newSomeStruct(
+          {required FlutterRustBridgeExampleSingleBlockTest bridge, required int value, dynamic hint}) =>
+      bridge.newStaticMethodSomeStruct(value: value, hint: hint);
+
+  static Future<int> staticReturnErrCustomError(
+          {required FlutterRustBridgeExampleSingleBlockTest bridge, dynamic hint}) =>
+      bridge.staticReturnErrCustomErrorStaticMethodSomeStruct(hint: hint);
+
+  static Future<int> staticReturnOkCustomError(
+          {required FlutterRustBridgeExampleSingleBlockTest bridge, dynamic hint}) =>
+      bridge.staticReturnOkCustomErrorStaticMethodSomeStruct(hint: hint);
+
+  Future<int> nonStaticReturnErrCustomError({dynamic hint}) => bridge.nonStaticReturnErrCustomErrorMethodSomeStruct(
+        that: this,
+      );
+
+  Future<int> nonStaticReturnOkCustomError({dynamic hint}) => bridge.nonStaticReturnOkCustomErrorMethodSomeStruct(
+        that: this,
+      );
+}
+
 @freezed
-class Speed with _$Speed {
+sealed class Speed with _$Speed {
   const factory Speed.unknown() = Speed_Unknown;
   const factory Speed.gps(
     double field0,

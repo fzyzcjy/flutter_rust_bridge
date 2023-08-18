@@ -29,7 +29,7 @@ fn wire_draw_mandelbrot_impl(
     scale: impl Wire2Api<f64> + UnwindSafe,
     num_threads: impl Wire2Api<i32> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ZeroCopyBuffer<Vec<u8>>>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ZeroCopyBuffer<Vec<u8>>, _>(
         WrapInfo {
             debug_name: "draw_mandelbrot",
             port: Some(port_),
@@ -50,7 +50,7 @@ fn wire_passing_complex_structs_impl(
     port_: MessagePort,
     root: impl Wire2Api<TreeNode> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
         WrapInfo {
             debug_name: "passing_complex_structs",
             port: Some(port_),
@@ -58,25 +58,25 @@ fn wire_passing_complex_structs_impl(
         },
         move || {
             let api_root = root.wire2api();
-            move |task_callback| Result::<_, _>::Ok(passing_complex_structs(api_root))
+            move |task_callback| Result::<_, ()>::Ok(passing_complex_structs(api_root))
         },
     )
 }
 fn wire_returning_structs_with_boxed_fields_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, BoxedPoint>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, BoxedPoint, _>(
         WrapInfo {
             debug_name: "returning_structs_with_boxed_fields",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Result::<_, _>::Ok(returning_structs_with_boxed_fields()),
+        move || move |task_callback| Result::<_, ()>::Ok(returning_structs_with_boxed_fields()),
     )
 }
 fn wire_off_topic_memory_test_input_array_impl(
     port_: MessagePort,
     input: impl Wire2Api<Vec<u8>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
         WrapInfo {
             debug_name: "off_topic_memory_test_input_array",
             port: Some(port_),
@@ -84,7 +84,7 @@ fn wire_off_topic_memory_test_input_array_impl(
         },
         move || {
             let api_input = input.wire2api();
-            move |task_callback| Result::<_, _>::Ok(off_topic_memory_test_input_array(api_input))
+            move |task_callback| Result::<_, ()>::Ok(off_topic_memory_test_input_array(api_input))
         },
     )
 }
@@ -92,7 +92,7 @@ fn wire_off_topic_memory_test_output_zero_copy_buffer_impl(
     port_: MessagePort,
     len: impl Wire2Api<i32> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ZeroCopyBuffer<Vec<u8>>>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ZeroCopyBuffer<Vec<u8>>, _>(
         WrapInfo {
             debug_name: "off_topic_memory_test_output_zero_copy_buffer",
             port: Some(port_),
@@ -101,7 +101,7 @@ fn wire_off_topic_memory_test_output_zero_copy_buffer_impl(
         move || {
             let api_len = len.wire2api();
             move |task_callback| {
-                Result::<_, _>::Ok(off_topic_memory_test_output_zero_copy_buffer(api_len))
+                Result::<_, ()>::Ok(off_topic_memory_test_output_zero_copy_buffer(api_len))
             }
         },
     )
@@ -110,7 +110,7 @@ fn wire_off_topic_memory_test_output_vec_u8_impl(
     port_: MessagePort,
     len: impl Wire2Api<i32> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<u8>>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<u8>, _>(
         WrapInfo {
             debug_name: "off_topic_memory_test_output_vec_u8",
             port: Some(port_),
@@ -118,7 +118,7 @@ fn wire_off_topic_memory_test_output_vec_u8_impl(
         },
         move || {
             let api_len = len.wire2api();
-            move |task_callback| Result::<_, _>::Ok(off_topic_memory_test_output_vec_u8(api_len))
+            move |task_callback| Result::<_, ()>::Ok(off_topic_memory_test_output_vec_u8(api_len))
         },
     )
 }
@@ -126,7 +126,7 @@ fn wire_off_topic_memory_test_input_vec_of_object_impl(
     port_: MessagePort,
     input: impl Wire2Api<Vec<Size>> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
         WrapInfo {
             debug_name: "off_topic_memory_test_input_vec_of_object",
             port: Some(port_),
@@ -135,7 +135,7 @@ fn wire_off_topic_memory_test_input_vec_of_object_impl(
         move || {
             let api_input = input.wire2api();
             move |task_callback| {
-                Result::<_, _>::Ok(off_topic_memory_test_input_vec_of_object(api_input))
+                Result::<_, ()>::Ok(off_topic_memory_test_input_vec_of_object(api_input))
             }
         },
     )
@@ -144,7 +144,7 @@ fn wire_off_topic_memory_test_output_vec_of_object_impl(
     port_: MessagePort,
     len: impl Wire2Api<i32> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<Size>>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<Size>, _>(
         WrapInfo {
             debug_name: "off_topic_memory_test_output_vec_of_object",
             port: Some(port_),
@@ -153,7 +153,7 @@ fn wire_off_topic_memory_test_output_vec_of_object_impl(
         move || {
             let api_len = len.wire2api();
             move |task_callback| {
-                Result::<_, _>::Ok(off_topic_memory_test_output_vec_of_object(api_len))
+                Result::<_, ()>::Ok(off_topic_memory_test_output_vec_of_object(api_len))
             }
         },
     )
@@ -162,7 +162,7 @@ fn wire_off_topic_memory_test_input_complex_struct_impl(
     port_: MessagePort,
     input: impl Wire2Api<TreeNode> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
         WrapInfo {
             debug_name: "off_topic_memory_test_input_complex_struct",
             port: Some(port_),
@@ -171,7 +171,7 @@ fn wire_off_topic_memory_test_input_complex_struct_impl(
         move || {
             let api_input = input.wire2api();
             move |task_callback| {
-                Result::<_, _>::Ok(off_topic_memory_test_input_complex_struct(api_input))
+                Result::<_, ()>::Ok(off_topic_memory_test_input_complex_struct(api_input))
             }
         },
     )
@@ -180,7 +180,7 @@ fn wire_off_topic_memory_test_output_complex_struct_impl(
     port_: MessagePort,
     len: impl Wire2Api<i32> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, TreeNode>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, TreeNode, _>(
         WrapInfo {
             debug_name: "off_topic_memory_test_output_complex_struct",
             port: Some(port_),
@@ -189,13 +189,13 @@ fn wire_off_topic_memory_test_output_complex_struct_impl(
         move || {
             let api_len = len.wire2api();
             move |task_callback| {
-                Result::<_, _>::Ok(off_topic_memory_test_output_complex_struct(api_len))
+                Result::<_, ()>::Ok(off_topic_memory_test_output_complex_struct(api_len))
             }
         },
     )
 }
 fn wire_off_topic_deliberately_return_error_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
         WrapInfo {
             debug_name: "off_topic_deliberately_return_error",
             port: Some(port_),
@@ -205,17 +205,17 @@ fn wire_off_topic_deliberately_return_error_impl(port_: MessagePort) {
     )
 }
 fn wire_off_topic_deliberately_panic_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
         WrapInfo {
             debug_name: "off_topic_deliberately_panic",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| Result::<_, _>::Ok(off_topic_deliberately_panic()),
+        move || move |task_callback| Result::<_, ()>::Ok(off_topic_deliberately_panic()),
     )
 }
 fn wire_next_user_id_impl(port_: MessagePort, user_id: impl Wire2Api<UserId> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, UserId>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, UserId, _>(
         WrapInfo {
             debug_name: "next_user_id",
             port: Some(port_),
@@ -223,7 +223,7 @@ fn wire_next_user_id_impl(port_: MessagePort, user_id: impl Wire2Api<UserId> + U
         },
         move || {
             let api_user_id = user_id.wire2api();
-            move |task_callback| Result::<_, _>::Ok(next_user_id(api_user_id))
+            move |task_callback| Result::<_, ()>::Ok(next_user_id(api_user_id))
         },
     )
 }
@@ -231,7 +231,7 @@ fn wire_test_method__method__BoxedPoint_impl(
     port_: MessagePort,
     that: impl Wire2Api<BoxedPoint> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ()>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
             debug_name: "test_method__method__BoxedPoint",
             port: Some(port_),
@@ -239,7 +239,7 @@ fn wire_test_method__method__BoxedPoint_impl(
         },
         move || {
             let api_that = that.wire2api();
-            move |task_callback| Result::<_, _>::Ok(BoxedPoint::test_method(&api_that))
+            move |task_callback| Result::<_, ()>::Ok(BoxedPoint::test_method(&api_that))
         },
     )
 }
@@ -248,7 +248,7 @@ fn wire_sum__method__SumWith_impl(
     that: impl Wire2Api<SumWith> + UnwindSafe,
     y: impl Wire2Api<u32> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32, _>(
         WrapInfo {
             debug_name: "sum__method__SumWith",
             port: Some(port_),
@@ -257,7 +257,7 @@ fn wire_sum__method__SumWith_impl(
         move || {
             let api_that = that.wire2api();
             let api_y = y.wire2api();
-            move |task_callback| Result::<_, _>::Ok(SumWith::sum(&api_that, api_y))
+            move |task_callback| Result::<_, ()>::Ok(SumWith::sum(&api_that, api_y))
         },
     )
 }
@@ -266,7 +266,7 @@ fn wire_sum_static__static_method__SumWith_impl(
     x: impl Wire2Api<u32> + UnwindSafe,
     y: impl Wire2Api<u32> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32, _>(
         WrapInfo {
             debug_name: "sum_static__static_method__SumWith",
             port: Some(port_),
@@ -275,7 +275,7 @@ fn wire_sum_static__static_method__SumWith_impl(
         move || {
             let api_x = x.wire2api();
             let api_y = y.wire2api();
-            move |task_callback| Result::<_, _>::Ok(SumWith::sum_static(api_x, api_y))
+            move |task_callback| Result::<_, ()>::Ok(SumWith::sum_static(api_x, api_y))
         },
     )
 }

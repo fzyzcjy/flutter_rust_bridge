@@ -21,6 +21,7 @@ use crate::ir::*;
 use crate::generator::rust::HANDLER_NAME;
 use crate::parser::source_graph::Crate;
 use crate::parser::ty::TypeParser;
+use crate::parser::IrType::{EnumRef, StructRef};
 use crate::utils::method::FunctionName;
 
 use self::ty::convert_ident_str;
@@ -147,7 +148,7 @@ impl<'a> Parser<'a> {
         let ty = &self.type_parser.resolve_alias(ty).clone();
 
         if let Type::Path(type_path) = ty {
-            match self.type_parser.convert_path_to_ir_type(type_path, false) {
+            match self.type_parser.convert_path_to_ir_type(type_path) {
                 Ok(IrType::Unencodable(IrTypeUnencodable { segments, .. })) => {
                     match if cfg!(feature = "qualified_names") {
                         segments.splay()
@@ -166,10 +167,27 @@ impl<'a> Parser<'a> {
                         [("Result", Some(ArgsRefs::Generic(args)))] => {
                             let ok = args.first().unwrap();
 
-                            let error = if args.len() == 1 {
+                            let is_anyhow = args.len() == 1
+                                || args.iter().any(|x| match x {
+                                    IrType::Unencodable(IrTypeUnencodable { string, .. }) => {
+                                        string == "anyhow :: Error"
+                                    }
+                                    _ => false,
+                                });
+                            let error = if is_anyhow {
                                 Some(IrType::Delegate(IrTypeDelegate::Anyhow))
                             } else {
                                 args.last().cloned()
+                            };
+
+                            let error = if let Some(StructRef(mut struct_ref)) = error {
+                                struct_ref.is_exception = true;
+                                Some(StructRef(struct_ref))
+                            } else if let Some(EnumRef(mut enum_ref)) = error {
+                                enum_ref.is_exception = true;
+                                Some(EnumRef(enum_ref))
+                            } else {
+                                error
                             };
 
                             Some(IrFuncOutput::ResultType {

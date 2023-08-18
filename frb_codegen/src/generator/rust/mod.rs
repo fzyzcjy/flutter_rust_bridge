@@ -354,7 +354,7 @@ impl<'a> Generator<'a> {
         let code_call_inner_func_result = if func.fallible {
             code_call_inner_func
         } else {
-            format!("Result::<_,_>::Ok({code_call_inner_func})")
+            format!("Result::<_,()>::Ok({code_call_inner_func})")
         };
 
         let (handler_func_name, return_type, code_closure) = match func.mode {
@@ -373,7 +373,7 @@ impl<'a> Generator<'a> {
                     func.output.intodart_type(ir_file)
                 };
                 (
-                    format!("wrap::<_,_,_,{output}>"),
+                    format!("wrap::<_,_,_,{output},_>"),
                     None,
                     format!("{code_wire2api} move |task_callback| {code_call_inner_func_result}"),
                 )

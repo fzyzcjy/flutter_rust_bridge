@@ -5,7 +5,6 @@ use std::panic;
 use std::panic::{RefUnwindSafe, UnwindSafe};
 
 use crate::ffi::{IntoDart, MessagePort};
-use anyhow::Result;
 
 use crate::rust2dart::{BoxIntoDart, IntoIntoDart, Rust2Dart, TaskCallback};
 use crate::support::WireSyncReturn;
@@ -44,24 +43,26 @@ pub trait Handler {
     ///
     /// If a Rust function returns [`SyncReturn`], it must be called with
     /// [`wrap_sync`](Handler::wrap_sync) instead.
-    fn wrap<PrepareFn, TaskFn, TaskRet, D>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
+    fn wrap<PrepareFn, TaskFn, TaskRet, D, Er>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
     where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
-        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
+        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet, Er> + Send + UnwindSafe + 'static,
         TaskRet: IntoIntoDart<D>,
-        D: IntoDart;
+        D: IntoDart,
+        Er: IntoDart + 'static;
 
     /// Same as [`wrap`][Handler::wrap], but the Rust function must return a [SyncReturn] and
     /// need not implement [Send].
-    fn wrap_sync<SyncTaskFn, TaskRet, D>(
+    fn wrap_sync<SyncTaskFn, TaskRet, D, Er>(
         &self,
         wrap_info: WrapInfo,
         sync_task: SyncTaskFn,
     ) -> WireSyncReturn
     where
-        SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>> + UnwindSafe,
+        SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>, Er> + UnwindSafe,
         TaskRet: IntoIntoDart<D>,
-        D: IntoDart;
+        D: IntoDart,
+        Er: IntoDart + 'static;
 }
 
 /// The simple handler uses a simple thread pool to execute tasks.
@@ -94,12 +95,13 @@ impl Default for DefaultHandler {
 }
 
 impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
-    fn wrap<PrepareFn, TaskFn, TaskRet, D>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
+    fn wrap<PrepareFn, TaskFn, TaskRet, D, Er>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
     where
         PrepareFn: FnOnce() -> TaskFn + UnwindSafe,
-        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
+        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet, Er> + Send + UnwindSafe + 'static,
         TaskRet: IntoIntoDart<D>,
         D: IntoDart,
+        Er: IntoDart + 'static,
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
         // Why do this: As nomicon says, unwind across languages is undefined behavior (UB).
@@ -121,7 +123,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         });
     }
 
-    fn wrap_sync<SyncTaskFn, TaskRet, D>(
+    fn wrap_sync<SyncTaskFn, TaskRet, D, Er>(
         &self,
         wrap_info: WrapInfo,
         sync_task: SyncTaskFn,
@@ -129,7 +131,8 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
     where
         TaskRet: IntoIntoDart<D>,
         D: IntoDart,
-        SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>> + UnwindSafe,
+        SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>, Er> + UnwindSafe,
+        Er: IntoDart + 'static,
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
         // For reason, see comments in [wrap]
@@ -156,22 +159,24 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
 pub trait Executor: RefUnwindSafe {
     /// Executes a Rust function and transforms its return value into a Dart-compatible
     /// value, i.e. types that implement [`IntoDart`].
-    fn execute<TaskFn, TaskRet, D>(&self, wrap_info: WrapInfo, task: TaskFn)
+    fn execute<TaskFn, TaskRet, D, Er>(&self, wrap_info: WrapInfo, task: TaskFn)
     where
-        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
+        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet, Er> + Send + UnwindSafe + 'static,
         TaskRet: IntoIntoDart<D>,
-        D: IntoDart;
+        D: IntoDart,
+        Er: IntoDart + 'static;
 
     /// Executes a Rust function that returns a [SyncReturn].
-    fn execute_sync<SyncTaskFn, TaskRet, D>(
+    fn execute_sync<SyncTaskFn, TaskRet, D, Er>(
         &self,
         wrap_info: WrapInfo,
         sync_task: SyncTaskFn,
-    ) -> Result<SyncReturn<TaskRet>>
+    ) -> Result<SyncReturn<TaskRet>, Er>
     where
-        SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>> + UnwindSafe,
+        SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>, Er> + UnwindSafe,
         TaskRet: IntoIntoDart<D>,
-        D: IntoDart;
+        D: IntoDart,
+        Er: IntoDart + 'static;
 }
 
 /// The default executor used.
@@ -189,11 +194,12 @@ impl<EH: ErrorHandler> ThreadPoolExecutor<EH> {
 }
 
 impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
-    fn execute<TaskFn, TaskRet, D>(&self, wrap_info: WrapInfo, task: TaskFn)
+    fn execute<TaskFn, TaskRet, D, Er>(&self, wrap_info: WrapInfo, task: TaskFn)
     where
-        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet> + Send + UnwindSafe + 'static,
+        TaskFn: FnOnce(TaskCallback) -> Result<TaskRet, Er> + Send + UnwindSafe + 'static,
         TaskRet: IntoIntoDart<D>,
         D: IntoDart,
+        Er: IntoDart + 'static,
     {
         let eh = self.error_handler;
         let eh2 = self.error_handler;
@@ -236,15 +242,16 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
         });
     }
 
-    fn execute_sync<SyncTaskFn, TaskRet, D>(
+    fn execute_sync<SyncTaskFn, TaskRet, D, Er>(
         &self,
         _wrap_info: WrapInfo,
         sync_task: SyncTaskFn,
-    ) -> Result<SyncReturn<TaskRet>>
+    ) -> Result<SyncReturn<TaskRet>, Er>
     where
-        SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>> + UnwindSafe,
+        SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>, Er> + UnwindSafe,
         TaskRet: IntoIntoDart<D>,
         D: IntoDart,
+        Er: IntoDart,
     {
         sync_task()
     }

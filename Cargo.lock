@@ -644,6 +644,7 @@ version = "1.81.0"
 dependencies = [
  "allo-isolate",
  "anyhow",
+ "backtrace",
  "build-target",
  "bytemuck",
  "cc",

@@ -128,9 +128,9 @@ pub(crate) fn generate_api_func(
     };
 
     let parse_error_data = if let Some(error_output) = &func.error_output {
-        format!("_wire2api_{},", error_output.safe_ident())
+        format!("_wire2api_{}", error_output.safe_ident())
     } else {
-        "null,".to_string()
+        "null".to_string()
     };
 
     let is_sync = matches!(func.mode, IrFuncMode::Sync);
@@ -140,7 +140,7 @@ pub(crate) fn generate_api_func(
             return {}({task}(
             callFfi: ({args}) => _platform.inner.{}({}),
             parseSuccessData: {},
-            parseErrorData: {}
+            parseErrorData: {},
             {}
         ));}}",
         func_expr,

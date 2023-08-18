@@ -2787,6 +2787,167 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<int> returnErrCustomError({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_return_err_custom_error(port_),
+      parseSuccessData: _wire2api_u32,
+      parseErrorData: _wire2api_custom_error,
+      constMeta: kReturnErrCustomErrorConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kReturnErrCustomErrorConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_err_custom_error",
+        argNames: [],
+      );
+
+  Future<int> returnOkCustomError({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_return_ok_custom_error(port_),
+      parseSuccessData: _wire2api_u32,
+      parseErrorData: _wire2api_custom_error,
+      constMeta: kReturnOkCustomErrorConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kReturnOkCustomErrorConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_ok_custom_error",
+        argNames: [],
+      );
+
+  Future<int> returnErrorVariant({required int variant, dynamic hint}) {
+    var arg0 = api2wire_u32(variant);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_return_error_variant(port_, arg0),
+      parseSuccessData: _wire2api_u32,
+      parseErrorData: _wire2api_custom_error,
+      constMeta: kReturnErrorVariantConstMeta,
+      argValues: [variant],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kReturnErrorVariantConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_error_variant",
+        argNames: ["variant"],
+      );
+
+  Future<void> returnCustomNestedError1({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_return_custom_nested_error_1(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_nested_error_1,
+      constMeta: kReturnCustomNestedError1ConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kReturnCustomNestedError1ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_custom_nested_error_1",
+        argNames: [],
+      );
+
+  Future<void> returnCustomNestedError1Variant1({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_return_custom_nested_error_1_variant1(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_nested_error_1,
+      constMeta: kReturnCustomNestedError1Variant1ConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kReturnCustomNestedError1Variant1ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_custom_nested_error_1_variant1",
+        argNames: [],
+      );
+
+  Future<void> returnCustomNestedError2({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_return_custom_nested_error_2(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_nested_error_2,
+      constMeta: kReturnCustomNestedError2ConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kReturnCustomNestedError2ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_custom_nested_error_2",
+        argNames: [],
+      );
+
+  Future<void> returnCustomStructError({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_return_custom_struct_error(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_struct_error,
+      constMeta: kReturnCustomStructErrorConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kReturnCustomStructErrorConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_custom_struct_error",
+        argNames: [],
+      );
+
+  Future<int> returnCustomStructOk({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_return_custom_struct_ok(port_),
+      parseSuccessData: _wire2api_u32,
+      parseErrorData: _wire2api_custom_struct_error,
+      constMeta: kReturnCustomStructOkConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kReturnCustomStructOkConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_custom_struct_ok",
+        argNames: [],
+      );
+
+  Future<void> throwAnyhow({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_throw_anyhow(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_FrbAnyhowException,
+      constMeta: kThrowAnyhowConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kThrowAnyhowConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "throw_anyhow",
+        argNames: [],
+      );
+
+  Future<void> panicWithCustomResult({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_panic_with_custom_result(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_error,
+      constMeta: kPanicWithCustomResultConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kPanicWithCustomResultConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "panic_with_custom_result",
+        argNames: [],
+      );
+
   Future<String> asStringMethodEvent({required Event that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_event(that);
     return _platform.executeNormal(FlutterRustBridgeTask(
@@ -2954,6 +3115,180 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
       const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith",
         argNames: [],
+      );
+
+  Future<SomeStruct> newStaticMethodSomeStruct({required int value, dynamic hint}) {
+    var arg0 = api2wire_u32(value);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_new__static_method__SomeStruct(port_, arg0),
+      parseSuccessData: (d) => _wire2api_some_struct(d),
+      parseErrorData: null,
+      constMeta: kNewStaticMethodSomeStructConstMeta,
+      argValues: [value],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kNewStaticMethodSomeStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "new__static_method__SomeStruct",
+        argNames: ["value"],
+      );
+
+  Future<int> staticReturnErrCustomErrorStaticMethodSomeStruct({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_static_return_err_custom_error__static_method__SomeStruct(port_),
+      parseSuccessData: _wire2api_u32,
+      parseErrorData: _wire2api_custom_error,
+      constMeta: kStaticReturnErrCustomErrorStaticMethodSomeStructConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kStaticReturnErrCustomErrorStaticMethodSomeStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "static_return_err_custom_error__static_method__SomeStruct",
+        argNames: [],
+      );
+
+  Future<int> staticReturnOkCustomErrorStaticMethodSomeStruct({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_static_return_ok_custom_error__static_method__SomeStruct(port_),
+      parseSuccessData: _wire2api_u32,
+      parseErrorData: _wire2api_custom_error,
+      constMeta: kStaticReturnOkCustomErrorStaticMethodSomeStructConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kStaticReturnOkCustomErrorStaticMethodSomeStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "static_return_ok_custom_error__static_method__SomeStruct",
+        argNames: [],
+      );
+
+  Future<int> nonStaticReturnErrCustomErrorMethodSomeStruct({required SomeStruct that, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_some_struct(that);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_non_static_return_err_custom_error__method__SomeStruct(port_, arg0),
+      parseSuccessData: _wire2api_u32,
+      parseErrorData: _wire2api_custom_error,
+      constMeta: kNonStaticReturnErrCustomErrorMethodSomeStructConstMeta,
+      argValues: [that],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kNonStaticReturnErrCustomErrorMethodSomeStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "non_static_return_err_custom_error__method__SomeStruct",
+        argNames: ["that"],
+      );
+
+  Future<int> nonStaticReturnOkCustomErrorMethodSomeStruct({required SomeStruct that, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_some_struct(that);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_non_static_return_ok_custom_error__method__SomeStruct(port_, arg0),
+      parseSuccessData: _wire2api_u32,
+      parseErrorData: _wire2api_custom_error,
+      constMeta: kNonStaticReturnOkCustomErrorMethodSomeStructConstMeta,
+      argValues: [that],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kNonStaticReturnOkCustomErrorMethodSomeStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "non_static_return_ok_custom_error__method__SomeStruct",
+        argNames: ["that"],
+      );
+
+  Future<CustomStruct> newStaticMethodCustomStruct({required String message, dynamic hint}) {
+    var arg0 = _platform.api2wire_String(message);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_new__static_method__CustomStruct(port_, arg0),
+      parseSuccessData: (d) => _wire2api_custom_struct(d),
+      parseErrorData: null,
+      constMeta: kNewStaticMethodCustomStructConstMeta,
+      argValues: [message],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kNewStaticMethodCustomStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "new__static_method__CustomStruct",
+        argNames: ["message"],
+      );
+
+  Future<void> staticReturnCustomStructErrorStaticMethodCustomStruct({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_static_return_custom_struct_error__static_method__CustomStruct(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_struct_error,
+      constMeta: kStaticReturnCustomStructErrorStaticMethodCustomStructConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kStaticReturnCustomStructErrorStaticMethodCustomStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "static_return_custom_struct_error__static_method__CustomStruct",
+        argNames: [],
+      );
+
+  Future<int> staticReturnCustomStructOkStaticMethodCustomStruct({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_static_return_custom_struct_ok__static_method__CustomStruct(port_),
+      parseSuccessData: _wire2api_u32,
+      parseErrorData: _wire2api_custom_struct_error,
+      constMeta: kStaticReturnCustomStructOkStaticMethodCustomStructConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kStaticReturnCustomStructOkStaticMethodCustomStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "static_return_custom_struct_ok__static_method__CustomStruct",
+        argNames: [],
+      );
+
+  Future<void> nonstaticReturnCustomStructErrorMethodCustomStruct({required CustomStruct that, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_custom_struct(that);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_nonstatic_return_custom_struct_error__method__CustomStruct(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_struct_error,
+      constMeta: kNonstaticReturnCustomStructErrorMethodCustomStructConstMeta,
+      argValues: [that],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kNonstaticReturnCustomStructErrorMethodCustomStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "nonstatic_return_custom_struct_error__method__CustomStruct",
+        argNames: ["that"],
+      );
+
+  Future<int> nonstaticReturnCustomStructOkMethodCustomStruct({required CustomStruct that, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_custom_struct(that);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_nonstatic_return_custom_struct_ok__method__CustomStruct(port_, arg0),
+      parseSuccessData: _wire2api_u32,
+      parseErrorData: _wire2api_custom_struct_error,
+      constMeta: kNonstaticReturnCustomStructOkMethodCustomStructConstMeta,
+      argValues: [that],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kNonstaticReturnCustomStructOkMethodCustomStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "nonstatic_return_custom_struct_ok__method__CustomStruct",
+        argNames: ["that"],
       );
 
   DropFnType get dropOpaqueBoxDartDebug => _platform.inner.drop_opaque_BoxDartDebug;
@@ -3337,6 +3672,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _wire2api_c(raw);
   }
 
+  CustomNestedError2 _wire2api_box_autoadd_custom_nested_error_2(dynamic raw) {
+    return _wire2api_custom_nested_error_2(raw);
+  }
+
   Element _wire2api_box_autoadd_element(dynamic raw) {
     return _wire2api_element(raw);
   }
@@ -3424,6 +3763,70 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return ContainsMirroredSubStruct(
       test: _wire2api_raw_string_mirrored(arr[0]),
       test2: _wire2api_a(arr[1]),
+    );
+  }
+
+  CustomError _wire2api_custom_error(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomError_Error0(
+          e: _wire2api_String(raw[1]),
+          backtrace: _wire2api_String(raw[2]),
+        );
+      case 1:
+        return CustomError_Error1(
+          e: _wire2api_u32(raw[1]),
+          backtrace: _wire2api_String(raw[2]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  CustomNestedError1 _wire2api_custom_nested_error_1(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedError1_CustomNested1(
+          _wire2api_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedError1_ErrorNested(
+          _wire2api_box_autoadd_custom_nested_error_2(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  CustomNestedError2 _wire2api_custom_nested_error_2(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedError2_CustomNested2(
+          _wire2api_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedError2_CustomNested2Number(
+          _wire2api_u32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  CustomStruct _wire2api_custom_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStruct(
+      bridge: this,
+      message: _wire2api_String(arr[0]),
+    );
+  }
+
+  CustomStructError _wire2api_custom_struct_error(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStructError(
+      message: _wire2api_String(arr[0]),
     );
   }
 
@@ -4068,6 +4471,15 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return Sequences(
       field0: _wire2api_int_32_list(arr[0]),
+    );
+  }
+
+  SomeStruct _wire2api_some_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return SomeStruct(
+      bridge: this,
+      value: _wire2api_u32(arr[0]),
     );
   }
 

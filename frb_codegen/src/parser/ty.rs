@@ -123,7 +123,7 @@ impl<'a> TypeParser<'a> {
         let resolve_ty = self.resolve_alias(ty).clone();
 
         match resolve_ty.clone() {
-            syn::Type::Path(path) => self.convert_path_to_ir_type(&path, false).unwrap(),
+            syn::Type::Path(path) => self.convert_path_to_ir_type(&path).unwrap(),
             syn::Type::Array(syn::TypeArray { elem, len, .. }) => {
                 let length: usize = match len {
                     syn::Expr::Lit(lit) => match &lit.lit {
@@ -239,8 +239,7 @@ impl<'a> TypeParser<'a> {
     /// Converts a path type into an `IrType` if possible.
     pub fn convert_path_to_ir_type(
         &mut self,
-        type_path: &TypePath,
-        is_exception: bool,
+        type_path: &TypePath
     ) -> std::result::Result<IrType, String> {
         match &type_path {
             TypePath { qself: None, path } => {
@@ -299,11 +298,7 @@ impl<'a> TypeParser<'a> {
 
                     [("String", None)] => Ok(Delegate(IrTypeDelegate::String)),
 
-                    [("Error", Some(Generic(x)))] if x.len() == 1 => {
-                        Ok(Delegate(IrTypeDelegate::Anyhow))
-                    }
-
-                    [("Backtrace", _)] => Ok(Delegate(IrTypeDelegate::Backtrace)),
+                    [("Backtrace", None)] => Ok(Delegate(IrTypeDelegate::Backtrace)),
 
                     // TODO: change to "if let guard" https://github.com/rust-lang/rust/issues/51114
                     [(name, None)]
@@ -338,7 +333,7 @@ impl<'a> TypeParser<'a> {
                                 .get(&ident_string)
                                 .map(IrStruct::is_empty)
                                 .unwrap_or(false),
-                            is_exception,
+                            is_exception: false,
                         }))
                     }
 
@@ -346,13 +341,13 @@ impl<'a> TypeParser<'a> {
                         let ident_string = name.to_string();
                         if self.parsed_enums.insert(ident_string.to_owned()) {
                             // NOTE: not working
-                            let enu = self.parse_enum_core(&ident_string, is_exception);
+                            let enu = self.parse_enum_core(&ident_string);
                             self.enum_pool.insert(ident_string.to_owned(), enu);
                         }
 
                         let enum_ref = IrTypeEnumRef {
                             name: ident_string.to_owned(),
-                            is_exception,
+                            is_exception: false,
                         };
                         let enu = self.enum_pool.get(&ident_string);
                         let is_struct = enu.map(IrEnum::is_struct).unwrap_or(true);
@@ -541,7 +536,7 @@ impl<'a> TypeParser<'a> {
         })
     }
 
-    fn parse_enum_core(&mut self, ident_string: &String, is_exception: bool) -> IrEnum {
+    fn parse_enum_core(&mut self, ident_string: &String) -> IrEnum {
         let src_enum = self.src_enums[ident_string];
         let name = src_enum.ident.to_string();
         let wrapper_name = if src_enum.mirror {
@@ -601,7 +596,7 @@ impl<'a> TypeParser<'a> {
                 },
             })
             .collect();
-        IrEnum::new(name, wrapper_name, path, comments, variants, is_exception)
+        IrEnum::new(name, wrapper_name, path, comments, variants, false)
     }
 
     fn parse_struct_core(&mut self, ident_string: &String) -> Option<IrStruct> {
