@@ -304,7 +304,6 @@ impl<'a> Parser<'a> {
                         )
                     })?;
                     match output_type {
-                        // weird one
                         IrFuncOutput::ResultType { ok: ty, error: err } => (ty, err),
                         IrFuncOutput::Type(ty) => {
                             fallible = false;
