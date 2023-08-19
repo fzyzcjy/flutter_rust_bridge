@@ -86,7 +86,8 @@ impl WorkerPool {
                         wasm_bindgen.receive_transfer_closure(payload, transfer)
                     }} catch (err) {{
                         if (transfer[0] && typeof transfer[0].postMessage === 'function') {{
-                            transfer[0].postMessage([1, 'ABORT', err.toString(), err.stack])
+                            // panic
+                            transfer[0].postMessage([3, err.toString()])
                         }}
                         setTimeout(() => {{ throw err }})
                         postMessage(null)

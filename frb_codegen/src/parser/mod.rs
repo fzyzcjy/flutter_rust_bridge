@@ -245,7 +245,7 @@ impl<'a> Parser<'a> {
 
         let mut inputs = Vec::new();
         let mut output = None;
-        let mut err = None;
+        let mut error = None;
         let mut mode: Option<IrFuncMode> = None;
         let mut fallible = true;
 
@@ -295,7 +295,7 @@ impl<'a> Parser<'a> {
         }
 
         if output.is_none() {
-            let a = match &sig.output {
+            let result = match &sig.output {
                 ReturnType::Type(_, ty) => {
                     let output_type = self.try_parse_fn_output_type(ty).with_context(|| {
                         format!(
@@ -317,8 +317,8 @@ impl<'a> Parser<'a> {
                     (IrType::Primitive(IrTypePrimitive::Unit), None)
                 }
             };
-            output = Some(a.0);
-            err = a.1;
+            output = Some(result.0);
+            error = result.1;
             mode = Some(if let Some(IrType::SyncReturn(_)) = output {
                 IrFuncMode::Sync
             } else {
@@ -333,7 +333,7 @@ impl<'a> Parser<'a> {
             fallible,
             mode: mode.context("Missing mode")?,
             comments: extract_comments(&func.attrs),
-            error_output: err,
+            error_output: error,
         })
     }
 }
