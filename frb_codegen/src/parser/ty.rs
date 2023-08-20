@@ -340,7 +340,6 @@ impl<'a> TypeParser<'a> {
                     [(name, _)] if self.src_enums.contains_key(&name.to_string()) => {
                         let ident_string = name.to_string();
                         if self.parsed_enums.insert(ident_string.to_owned()) {
-                            // NOTE: not working
                             let enu = self.parse_enum_core(&ident_string);
                             self.enum_pool.insert(ident_string.to_owned(), enu);
                         }

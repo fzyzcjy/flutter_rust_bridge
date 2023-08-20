@@ -74,6 +74,7 @@ impl WorkerPool {
         let src = &self.script_src;
         let script = format!(
             "importScripts('{}');
+            const FRB_ACTION_PANIC = 3;
             onmessage = event => {{
                 let init = wasm_bindgen(...event.data).catch(err => {{
                     setTimeout(() => {{ throw err }})
@@ -87,7 +88,7 @@ impl WorkerPool {
                     }} catch (err) {{
                         if (transfer[0] && typeof transfer[0].postMessage === 'function') {{
                             // panic
-                            transfer[0].postMessage([3, err.toString()])
+                            transfer[0].postMessage([FRB_ACTION_PANIC, err.toString()])
                         }}
                         setTimeout(() => {{ throw err }})
                         postMessage(null)

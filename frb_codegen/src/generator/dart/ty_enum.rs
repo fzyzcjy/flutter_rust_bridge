@@ -7,6 +7,8 @@ use crate::target::Acc;
 use crate::type_dart_generator_struct;
 use crate::utils::misc::dart_maybe_implements_exception;
 
+const BACKTRACE_IDENT: &str = "backtrace";
+
 type_dart_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 
 impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
@@ -166,7 +168,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                         is_fields_named: true,
                         fields,
                         ..
-                    }) if fields.iter().any(|field| field.name.raw == "backtrace"));
+                    }) if fields.iter().any(|field| field.name.raw == BACKTRACE_IDENT));
 
                     let args = match &variant.kind {
                         IrVariantKind::Value => "".to_owned(),

@@ -114,9 +114,3 @@ bool _listEquals<T>(List<T>? a, List<T>? b) {
   }
   return true;
 }
-
-class FrbAnyhowException implements FrbException {
-  final String anyhow;
-
-  FrbAnyhowException(this.anyhow);
-}

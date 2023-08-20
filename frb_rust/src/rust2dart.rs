@@ -38,19 +38,14 @@ impl Rust2Dart {
 
     /// Send a panic back to the specified port.
     pub fn panic(&self, e: impl IntoDart) -> bool {
-        self.panic_full(e)
+        self.channel
+            .post(vec![RUST2DART_ACTION_PANIC.into_dart(), e.into_dart()])
     }
 
     /// Send a detailed error back to the specified port.
     pub fn error(&self, e: impl IntoDart) -> bool {
         self.channel
             .post(vec![RUST2DART_ACTION_ERROR.into_dart(), e.into_dart()])
-    }
-
-    /// Send a detailed error back to the specified port.
-    pub fn panic_full(&self, e: impl IntoDart) -> bool {
-        self.channel
-            .post(vec![RUST2DART_ACTION_PANIC.into_dart(), e.into_dart()])
     }
 
     /// Close the stream and ignore further messages.

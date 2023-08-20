@@ -19,16 +19,6 @@ class _DropIdPortGenerator {
   String create() => '__frb_dart_opaque_drop_${nextPort++}';
 }
 
-class PanicException extends FrbException {
-  final String error;
-
-  PanicException(this.error);
-}
-
-PanicException wire2apiPanicError(dynamic raw) {
-  return PanicException(raw as String);
-}
-
 /// Base class for generated bindings of Flutter Rust Bridge.
 /// Normally, users do not extend this class manually. Instead,
 /// users should directly use the generated class.
@@ -138,26 +128,27 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
     final action = raw[0];
     switch (action) {
       case _RUST2DART_ACTION_SUCCESS:
-        assert(raw.length == 2);
-        return parseSuccessData(raw[1]);
+        return _parseData<S>(raw, parseSuccessData);
       case _RUST2DART_ACTION_ERROR:
-        assert(raw.length == 2);
-        if (parseErrorData != null) {
-          throw parseErrorData(raw[1]);
-        }
-        throw Exception("tried to parse error data but function is null");
+        throw _parseData<E>(raw, parseErrorData);
       case _RUST2DART_ACTION_PANIC:
-        assert(raw.length == 2);
-        if (parsePanicData != null) {
-          throw parsePanicData(raw[1]);
-        }
-        throw Exception("tried to parse panic data but function is null");
+        throw _parseData<PanicException>(raw, parsePanicData);
       case _RUST2DART_ACTION_CLOSE_STREAM:
         assert(raw.length == 1);
         throw _CloseStreamException();
       default:
         throw Exception('Unsupported message, action=$action raw=$raw');
     }
+  }
+
+  R _parseData<R>(
+      List<dynamic> rawData, R Function(dynamic)? function) {
+    assert(rawData.length == 2);
+    if (function != null) {
+      return function(rawData[1]);
+    }
+
+    throw Exception("tried to parse data but function is null");
   }
 
   // ignore: constant_identifier_names
@@ -229,6 +220,22 @@ class FlutterRustBridgeSyncTask<S, E> extends FlutterRustBridgeBaseTask {
 class _CloseStreamException {}
 
 class FrbException implements Exception {}
+
+class PanicException extends FrbException {
+  final String error;
+
+  PanicException(this.error);
+}
+
+PanicException wire2apiPanicError(dynamic raw) {
+  return PanicException(raw as String);
+}
+
+class FrbAnyhowException implements FrbException {
+  final String anyhow;
+
+  FrbAnyhowException(this.anyhow);
+}
 
 abstract class FrbBacktracedException extends FrbException {
   String get backtrace;
