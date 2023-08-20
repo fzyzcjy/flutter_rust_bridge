@@ -64,10 +64,7 @@ pub fn frb_codegen_multi(
     info!("Picked config: {:?}", config);
 
     info!("Phase: Parse source code to AST, then to IR");
-    let raw_ir_file = config.get_ir_file(all_configs)?;
-
-    info!("Phase: Transform IR");
-    let ir_file = transformer::transform(raw_ir_file);
+    let ir_file = config.get_ir_file(all_configs)?;
 
     info!("Phase: Generate Rust code");
     let generated_rust = generate_rust_code(config, all_configs, &ir_file)?;

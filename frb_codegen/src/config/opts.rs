@@ -139,8 +139,8 @@ impl Opts {
                     let correct_prefix = self.manifest_path.replace("Cargo.toml", "src/");
                     let code_path = raw_code_path.replace("crate/", &correct_prefix);
                     if let Some(code_path) = check_rust_path(&code_path) {
-                        //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓extra parse↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
                         let extra_source_rust_content = read_rust_file(&PathBuf::from(&code_path));
+                        //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓extra parse↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
                         let extra_file_ast = syn::parse_file(&extra_source_rust_content).unwrap();
                         log::debug!("Phase: Parse EXTRA AST to IR");
                         let extra_ir_file = parser::parse(
