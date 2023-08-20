@@ -28,12 +28,11 @@ Becomes something that can be used like this:
 
 ```Dart
 try {
-      final r = await api.returnErrCustomError();
-      print("received $r");
-    } catch (e) {
-      print('dart catch e: $e');
-      expect(e, isA<CustomError>());
-    }
+    final r = await api.returnErrCustomError();
+    print("received $r");
+} catch (e) {
+    print('dart catch e: $e');
+    expect(e, isA<CustomError>());
 }
 ```
 
