@@ -141,8 +141,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
     }
   }
 
-  R _parseData<R>(
-      List<dynamic> rawData, R Function(dynamic)? function) {
+  R _parseData<R>(List<dynamic> rawData, R Function(dynamic)? function) {
     assert(rawData.length == 2);
     if (function != null) {
       return function(rawData[1]);
