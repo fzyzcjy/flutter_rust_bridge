@@ -273,6 +273,12 @@ impl IntoDart for ZeroCopyBuffer<Vec<u64>> {
     }
 }
 
+impl IntoDart for anyhow::Error {
+    fn into_dart(self) -> DartAbi {
+        format!("{:?}", self).into_dart()
+    }
+}
+
 #[derive(Clone)]
 pub struct Channel {
     port: MessagePort,

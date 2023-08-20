@@ -150,10 +150,3 @@ impl<T: IntoDart> BoxIntoDart for T {
         self.into_dart()
     }
 }
-
-#[cfg(wasm)]
-impl IntoDart for anyhow::Error {
-    fn into_dart(self) -> DartAbi {
-        format!("{:?}", self).into_dart()
-    }
-}
