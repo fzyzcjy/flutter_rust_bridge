@@ -42,6 +42,7 @@
   - [Logging](feature/logging.md)
   - [Stack Traces](feature/stack_trace.md)
   - [Worker pool](feature/worker_pool.md)
+  - [Expanding macros](feature/expanding_macros.md)
 
 # Part II: User Guide
 

@@ -1,11 +1,9 @@
 use crate::ir::{IrFile, IrFunc, IrType};
 use crate::parser::{self, ParserResult};
 use crate::transformer;
-use crate::utils::misc::{BlockIndex, ExtraTraitForVec};
-use anyhow::Context;
+use crate::utils::misc::{read_rust_file, BlockIndex, ExtraTraitForVec};
 use convert_case::{Case, Casing};
 use std::collections::HashMap;
-use std::fs;
 use std::path::{Path, PathBuf};
 
 use std::cell::RefCell;
@@ -79,15 +77,7 @@ impl Opts {
                 ir_file_map.entry(self.block_index)
             {
                 log::debug!("Phase: Parse source code to AST");
-                let source_rust_content = try_read_from_file(
-                    &self.rust_input_path,
-                    &format!(
-                        "Failed to read rust input file \"{}\"",
-                        self.rust_input_path
-                    ),
-                )
-                .unwrap();
-
+                let source_rust_content = read_rust_file(&PathBuf::from(&self.rust_input_path));
                 let file_ast = syn::parse_file(&source_rust_content).unwrap();
                 log::debug!("Phase: Parse AST to IR");
                 let ir_file = parser::parse(
@@ -149,13 +139,8 @@ impl Opts {
                     let correct_prefix = self.manifest_path.replace("Cargo.toml", "src/");
                     let code_path = raw_code_path.replace("crate/", &correct_prefix);
                     if let Some(code_path) = check_rust_path(&code_path) {
-                        let extra_source_rust_content = try_read_from_file(
-                            &code_path,
-                            &format!("Failed to read extra rust module file \"{}\"", code_path),
-                        )
-                        .unwrap();
-
                         //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓extra parse↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+                        let extra_source_rust_content = read_rust_file(&PathBuf::from(&code_path));
                         let extra_file_ast = syn::parse_file(&extra_source_rust_content).unwrap();
                         log::debug!("Phase: Parse EXTRA AST to IR");
                         let extra_ir_file = parser::parse(
@@ -385,14 +370,6 @@ fn check_rust_path(path_str: &str) -> Option<String> {
         }
     }
     None
-}
-
-fn try_read_from_file(file_path: &str, error_msg: &str) -> ParserResult<String, anyhow::Error> {
-    let file_content = fs::read_to_string(file_path).with_context(|| {
-        log::error!("{}", error_msg);
-        error_msg.to_owned()
-    })?;
-    Ok(file_content)
 }
 
 pub struct PathForGeneration {

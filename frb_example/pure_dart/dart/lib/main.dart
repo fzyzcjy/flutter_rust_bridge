@@ -1359,6 +1359,13 @@ void main(List<String> args) async {
     final settings = api.syncReturnMirror();
     testAppSettings(settings);
   });
+
+  test("macro struct", () async {
+    var macroStruct = await api.macroStruct();
+    expect(macroStruct.data, 123);
+    macroStruct.nonFinalData = 321;
+    expect(macroStruct.nonFinalData, 321);
+  });
 }
 
 int _createGarbage() {

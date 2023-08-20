@@ -45,6 +45,7 @@ dart_pub_get mode="default":
 
 rust_build_and_test:
     # basic
+    just install_expand
     just _rust_build_and_test_single frb_codegen --features uuid,chrono
     just _rust_build_and_test_single frb_rust
     just _rust_build_and_test_single frb_macros
@@ -69,6 +70,7 @@ dart_test_web_unit:
     cd frb_dart && dart test -p chrome test/*.dart
 
 dart_test_web_integration features:
+    just dart_pub_get dart_only
     cd {{dir_example_pure_dart}}/dart && dart run \
       ../../../frb_dart/bin/serve.dart \
       -c ../rust --dart-input lib/main.web.dart --root web/ --run-tests \
@@ -201,6 +203,7 @@ ci_codegen:
     just install_ffigen_dependency
     just dart_pub_get
     just dart_check_included_source
+    just install_expand
     just generate_all
     just check_no_git_diff
 
@@ -308,6 +311,9 @@ install_ndk:
 
 install_lipo:
     just _install_crate cargo-lipo
+
+install_expand:
+    just _install_crate cargo-expand
 
 _install_crate name="cargo-lipo":
     #!/usr/bin/env bash

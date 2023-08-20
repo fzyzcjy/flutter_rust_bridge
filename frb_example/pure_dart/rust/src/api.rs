@@ -1706,3 +1706,23 @@ pub fn test_tuple_2(value: Vec<(String, i32)>) {
 pub fn sync_return_mirror() -> SyncReturn<ApplicationSettings> {
     SyncReturn(external_lib::get_app_settings())
 }
+
+macro_rules! generate_struct {
+    () => {
+        #[frb]
+        pub struct MacroStruct {
+            pub data: i32,
+            #[frb(non_final)]
+            pub non_final_data: i32,
+        }
+        #[allow(unused)]
+        pub fn macro_struct() -> MacroStruct {
+            MacroStruct {
+                data: 123,
+                non_final_data: 0,
+            }
+        }
+    };
+}
+
+generate_struct!();
