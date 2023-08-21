@@ -251,4 +251,6 @@ Generally, the C files are transparent to users, since they are generated in tem
 
 ### Something not implemented
 
-Currently,  those complex types like `stream`, and `opaque`, are not yet supported to be used as shared types. For `enum`, it is supported to be shared, but the methods of this kind of type are not supported to be generated in Dart yet.
+Currently, those complex types like `stream`, and `opaque`, are not yet supported to be used as shared types. For `enum`, it is supported to be shared, but the methods of this kind of type are not supported to be generated in Dart yet.
+
+Besides, the method within a shared type may be incompatible with flags `extra-headers` and `no-use-bridge-in-method`.
