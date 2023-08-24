@@ -33,7 +33,7 @@ Here is my another open-source library :) https://github.com/fzyzcjy/flutter_smo
 ## ✨ Contributors
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-66-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-67-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key) following [all-contributors](https://github.com/all-contributors/all-contributors) specification):
@@ -81,7 +81,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Cupnfish"><img src="https://avatars.githubusercontent.com/u/40173605?v=4?s=100" width="100px;" alt="Cupnfish"/><br /><sub><b>Cupnfish</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Cupnfish" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/SoLongAndThanksForAllThePizza"><img src="https://avatars.githubusercontent.com/u/103753680?v=4?s=100" width="100px;" alt="SoLongAndThanksForAllThePizza"/><br /><sub><b>SoLongAnd...</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=SoLongAndThanksForAllThePizza" title="Code">💻</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=SoLongAndThanksForAllThePizza" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/SoLongAndThanksForAllThePizza"><img src="https://avatars.githubusercontent.com/u/103753680?v=4?s=100" width="100px;" alt="SoLongAnd..."/><br /><sub><b>SoLongAnd...</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=SoLongAndThanksForAllThePizza" title="Code">💻</a> <a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=SoLongAndThanksForAllThePizza" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Stonks3141"><img src="https://avatars.githubusercontent.com/u/82178396?v=4?s=100" width="100px;" alt="Sam Nystrom"/><br /><sub><b>Sam Nystrom</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=Stonks3141" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://i.hsfzxjy.site"><img src="https://avatars.githubusercontent.com/u/4702188?v=4?s=100" width="100px;" alt="hsfzxjy"/><br /><sub><b>hsfzxjy</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=hsfzxjy" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://tmpfs.org"><img src="https://avatars.githubusercontent.com/u/238069?v=4?s=100" width="100px;" alt="muji"/><br /><sub><b>muji</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=tmpfs" title="Documentation">📖</a></td>
@@ -128,6 +128,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/lker-dev"><img src="https://avatars.githubusercontent.com/u/40730443?v=4?s=100" width="100px;" alt="Jonathan"/><br /><sub><b>Jonathan</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=lker-dev" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://lipoic.org"><img src="https://avatars.githubusercontent.com/u/48402225?v=4?s=100" width="100px;" alt="菘菘"/><br /><sub><b>菘菘</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=SiongSng" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://gutenfries.deno.dev"><img src="https://avatars.githubusercontent.com/u/79616833?v=4?s=100" width="100px;" alt="Marc Gutenberger"/><br /><sub><b>Marc Gutenberger</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=gutenfries" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/aran"><img src="https://avatars.githubusercontent.com/u/5295?v=4?s=100" width="100px;" alt="Aran Donohue"/><br /><sub><b>Aran Donohue</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=aran" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
