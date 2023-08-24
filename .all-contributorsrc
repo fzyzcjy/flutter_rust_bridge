@@ -620,6 +620,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "aran",
+      "name": "Aran Donohue",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5295?v=4",
+      "profile": "https://github.com/aran",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
