@@ -629,6 +629,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "powpingdone",
+      "name": "Aidan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/20116021?v=4",
+      "profile": "https://github.com/powpingdone",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
