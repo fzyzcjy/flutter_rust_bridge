@@ -64,6 +64,8 @@ This is a known issue stemming from Firefox's stricter rules regarding cross-ori
 
 ## "android context was not initialized", or `ndk_context` initialization.
 
+Related issue: [#1323](https://github.com/fzyzcjy/flutter_rust_bridge/issues/1323).
+
 On android, when attempting to use crates that interact with the JavaVM through the JNI (like oboe-rs via cpal), you may get panics that typically have this message:
 
 ```
