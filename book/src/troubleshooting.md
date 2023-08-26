@@ -62,6 +62,85 @@ Dart SDK `>=2.15.0` is supported by this library, but by the latest version of t
 This is a known issue stemming from Firefox's stricter rules regarding cross-origin requests. Use Chromium for testing, and check out
 [this guide on enabling `crossOriginIsolated`](https://web.dev/cross-origin-isolation-guide/) for your production servers.
 
+## "android context was not initialized", or `ndk_context` initialization.
+
+On android, when attempting to use crates that interact with the JavaVM through the JNI (like oboe-rs via cpal), you may get panics that typically have this message:
+
+```
+[ERROR:flutter/runtime/dart_vm_initializer.cc(41)] Unhandled Exception: FfiException(PANIC_ERROR, android context was not initialized, null)
+```
+
+This is due to a interesting quirk of Rust NDK interaction, where the [`ndk_context`](https://github.com/rust-mobile/ndk-context) crate does not have it's JVM and Android context initialized. Typically, in a normal application, the Android JVM would `System.loadLibrary()` the library through the Activity inside the JVM. It looks for symbols related to the JNI and executes them in accordance with the JNI standard. This would initialize the `ndk_context` normally via `JNI_OnLoad`. However, using the DartVM this step is skipped while loading the library, as the DartVM is not the JVM. So, the Android specific variables are not initialized, and therefore you cannot interact with the system via the Java interface.
+
+### MainActivity.kt 
+
+Add these lines to your FlutterActivity subclass:
+
+```kotlin
+package com.example.frontend
+
+import io.flutter.embedding.android.FlutterActivity
+
+// https://github.com/dart-lang/sdk/issues/46027
+class MainActivity : FlutterActivity() {
+    // this `init` block, where "foo" is the name of your library
+    // ex: if it's libfoo.so, then use "foo"
+    init {
+        System.loadLibrary("foo")
+    }
+}
+```
+
+This handles loading the library before Dart does, and also executes the JNI related initialization.
+
+### Rust
+
+#### Cargo.toml
+
+```toml
+[target.'cfg(target_os = "android")'.dependencies]
+jni = "0.21"
+ndk-context = "0.1"
+```
+
+#### lib.rs
+
+```rust
+#[cfg(target_os = "android")]
+#[no_mangle]
+pub extern "C" fn JNI_OnLoad(vm: jni::JavaVM, res: *mut std::os::raw::c_void) -> jni::sys::jint {
+    use std::ffi::c_void;
+
+    let vm = vm.get_java_vm_pointer() as *mut c_void;
+    unsafe {
+        ndk_context::initialize_android_context(vm, res);
+    }
+    jni::JNIVersion::V6.into()
+}
+```
+
+This is the bit of JNI glue that allows for `ndk_context` to be initialized.
+
+## "Could not resolve symbol __cxa_pure_virtual", or libc++_shared issues.
+
+At the time of writing this, linking with `libc++_static` or not linking at all may lead to symbol resolution errors when launching the flutter application, after loading your dynamic library. Adding a fix is quite easy, create a build.rs script in the root of your Rust code:
+
+### build.rs
+
+```rust
+fn main() {
+    #[cfg(target_os = "android")]
+    println!("cargo:rustc-link-lib=c++_shared");
+}
+```
+
+Then, in each `jniLibs` architecture directory, put the corresponding `libc++_shared.so` from the Android NDK. `libc++_shared.so` is typically located in `$ANDROID_NDK/toolchains/llvm/prebuilt/`. You will have to search for it, as it's different for each operating system.
+
+* arm-linux-androideabi -> armeabi-v7a
+* aarch64-linux-android -> arm64-v8a
+* i686-linux-android -> x86
+* x86_64-linux-android -> x86_64
+
 ## Issues on Web?
 
 Check out [Limitations on WASM](./wasm_limitations.md) for some common problems and solutions
