@@ -638,6 +638,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "vimaxwell",
+      "name": "max",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19898639?v=4",
+      "profile": "https://github.com/vimaxwell",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
