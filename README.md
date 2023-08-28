@@ -33,7 +33,7 @@ Here is my another open-source library :) https://github.com/fzyzcjy/flutter_smo
 ## ✨ Contributors
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-68-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-69-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key) following [all-contributors](https://github.com/all-contributors/all-contributors) specification):
@@ -130,6 +130,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://gutenfries.deno.dev"><img src="https://avatars.githubusercontent.com/u/79616833?v=4?s=100" width="100px;" alt="Marc Gutenberger"/><br /><sub><b>Marc Gutenberger</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=gutenfries" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/aran"><img src="https://avatars.githubusercontent.com/u/5295?v=4?s=100" width="100px;" alt="Aran Donohue"/><br /><sub><b>Aran Donohue</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=aran" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/powpingdone"><img src="https://avatars.githubusercontent.com/u/20116021?v=4?s=100" width="100px;" alt="Aidan"/><br /><sub><b>Aidan</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=powpingdone" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/vimaxwell"><img src="https://avatars.githubusercontent.com/u/19898639?v=4?s=100" width="100px;" alt="max"/><br /><sub><b>max</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=vimaxwell" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
