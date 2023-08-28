@@ -201,6 +201,7 @@ More specifically, thanks for all these contributions:
 * [svenstaro](https://github.com/svenstaro): Improve doc.
 * [utilForever](https://github.com/utilForever): Fix typos.
 * [Stonks3141](https://github.com/Stonks3141): Fix doc credit.
+* [vimaxwell](https://github.com/vimaxwell): Fix doc link.
 * [lker-dev](https://github.com/lker-dev): Fix doc link.
 * [jaiakash](https://github.com/jaiakash): Fix doc link.
 * [feber](https://github.com/feber): Fix doc link.
