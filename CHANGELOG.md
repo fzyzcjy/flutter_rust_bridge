@@ -1,3 +1,8 @@
+## Unreleased
+
+* Fix invalid sdk spec syntax #1331 (thanks @aran)
+* Document some common android fixes #1335 (thanks @powpingdone)
+
 ## 1.81.0
 
 * Allow macros to be used and will be expanded #1320 (thanks @MnlPhlp)

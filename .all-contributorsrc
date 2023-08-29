@@ -620,6 +620,33 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "aran",
+      "name": "Aran Donohue",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5295?v=4",
+      "profile": "https://github.com/aran",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "powpingdone",
+      "name": "Aidan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/20116021?v=4",
+      "profile": "https://github.com/powpingdone",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "vimaxwell",
+      "name": "max",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19898639?v=4",
+      "profile": "https://github.com/vimaxwell",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
