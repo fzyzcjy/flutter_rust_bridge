@@ -108,7 +108,7 @@ pub fn parse(
     all_configs: &[Opts],
 ) -> ParserResult<IrFile> {
     let mut src_fns = extract_fns_from_file(&file);
-    src_fns.extend(extract_methods_from_file(&file)?.into_iter());
+    src_fns.extend(extract_methods_from_file(&file)?);
     let crate_map = Crate::new(manifest_path)?;
     let src_structs = crate_map.root_module.collect_structs_to_vec();
     let src_enums = crate_map.root_module.collect_enums_to_vec();

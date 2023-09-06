@@ -25,7 +25,7 @@ impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
     /// Handles JsValue to Self conversions.
     fn wire2api_jsvalue(&self) -> Option<Cow<str>> {
         Some(
-            r##"
+            r#"
             #[cfg(target_pointer_width = "64")]
             {
                 compile_error!("64-bit pointers are not supported.");
@@ -33,7 +33,7 @@ impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
 
             unsafe {
                 support::opaque_from_dart((self.as_f64().unwrap() as usize) as _)
-            }"##
+            }"#
             .into(),
         )
     }
@@ -74,7 +74,7 @@ impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
 
     fn related_funcs(&self, collector: &mut ExternFuncCollector) -> Acc<Option<String>> {
         let mut generate_impl = |target| {
-            vec![
+            [
                 collector.generate(
                     &format!("drop_opaque_{}", self.ir.safe_ident()),
                     [("ptr: *const c_void", "")],

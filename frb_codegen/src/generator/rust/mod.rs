@@ -300,7 +300,7 @@ impl<'a> Generator<'a> {
         //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓orig code↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
         let mut import_crates = input_type_imports
             .into_iter()
-            .chain(output_type_imports.into_iter())
+            .chain(output_type_imports)
             // Filter out `None` and unwrap
             .flatten()
             // Don't include imports from the API file
