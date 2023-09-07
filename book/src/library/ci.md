@@ -313,13 +313,13 @@ jobs:
 In order for this workflow to execute correctly and publish packages to pub.dev,
 you need to have the contents of your pub credentials JSON file in a GitHub repo secret.
 
-After signing into pub locally:
+After signing into pub locally, open the credentials file which can be found:
 
-- On Linux, open the file at `~/.config/dart/pub-credentials.json`,
-- On macOS, open the file at `~/Library/Application Support/dart/pub-credentials.json`
-- Not sure where the `dart` config folder is on Windows, but you should be able to find it
-  - Feel free to PR and fix this if you find it!
-    And copy the contents of this `pub-credentials.json` file to a new GitHub repo secret named `PUB_CRED_JSON`.
+- On Linux, at `~/.config/dart/pub-credentials.json`
+- On macOS, at `~/Library/Application Support/dart/pub-credentials.json`
+- On Windows, at `C:\Users\YourUsername\AppData\Roaming\dart\pub-credentials.json`
+  
+Now copy the contents of this `pub-credentials.json` file to a new GitHub repo secret named `PUB_CRED_JSON`.
 
 This workflow is set to execute whenever new version tags are pushed up to GitHub.
 
