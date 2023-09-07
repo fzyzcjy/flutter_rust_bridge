@@ -314,7 +314,7 @@ In order for this workflow to execute correctly and publish packages to pub.dev,
 you need to have the contents of your pub credentials JSON file in a GitHub repo secret.
 
 First you need to sign-in into your pub account locally by
-running the following command ```dart pub login```
+running the following command: `dart pub login`.
 
 After the authorization is completed, open the credentials file, which can be found:
 
