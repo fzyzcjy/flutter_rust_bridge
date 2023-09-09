@@ -98,6 +98,7 @@ void main(List<String> args) async {
     expect(resp.float64List, Float64List.fromList(List.filled(n, 42)));
     expect(resp.uint64List, Uint64List.fromList(List.filled(n, 42)));
     expect(resp.int64List, Int64List.fromList(List.filled(n, 42)));
+    expect(resp.boolList, List.filled(n, true));
   });
   test('dart call handleVecOfPrimitiveSync', () {
     final n = 10000;
@@ -112,6 +113,7 @@ void main(List<String> args) async {
     expect(resp.float64List, Float64List.fromList(List.filled(n, 42)));
     expect(resp.uint64List, Uint64List.fromList(List.filled(n, 42)));
     expect(resp.int64List, Int64List.fromList(List.filled(n, 42)));
+    expect(resp.boolList, List.filled(n, true));
   });
 
   test('dart call handleZeroCopyVecOfPrimitive', () async {

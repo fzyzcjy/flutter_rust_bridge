@@ -149,7 +149,7 @@ pub struct VecOfPrimitivePack {
     pub int64list: Vec<i64>,
     pub float32list: Vec<f32>,
     pub float64list: Vec<f64>,
-    pub boollist: Vec<bool>,
+    pub bool_list: Vec<bool>,
 }
 
 pub fn handle_vec_of_primitive(n: i32) -> VecOfPrimitivePack {
@@ -164,7 +164,7 @@ pub fn handle_vec_of_primitive(n: i32) -> VecOfPrimitivePack {
         uint64list: vec![42u64; n as usize],
         float32list: vec![42.0f32; n as usize],
         float64list: vec![42.0f64; n as usize],
-        boollist: vec![true; n as usize]
+        bool_list: vec![true; n as usize]
     }
 }
 
@@ -180,7 +180,7 @@ pub fn handle_vec_of_primitive_sync(n: i32) -> SyncReturn<VecOfPrimitivePack> {
         uint64list: vec![42u64; n as usize],
         float32list: vec![42.0f32; n as usize],
         float64list: vec![42.0f64; n as usize],
-        boollist: vec![true; n as usize]
+        bool_list: vec![true; n as usize],
     })
 }
 
