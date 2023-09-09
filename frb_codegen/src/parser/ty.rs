@@ -379,9 +379,7 @@ impl<'a> TypeParser<'a> {
                     [("Vec", Some(Generic([Primitive(primitive)])))] => {
                         if primitive == &IrTypePrimitive::Bool {
                             Ok(GeneralList(IrTypeGeneralList {
-                                inner: Box::new(
-                                    IrType::Primitive(IrTypePrimitive::Bool)
-                                ),
+                                inner: Box::new(IrType::Primitive(IrTypePrimitive::Bool)),
                             }))
                         } else {
                             Ok(PrimitiveList(IrTypePrimitiveList {
