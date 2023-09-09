@@ -20,7 +20,7 @@ uuid = { workspace = true, optional = true }
 log = "0.4"
 
 [target.'cfg(not(target_family = "wasm"))'.dependencies]
-allo-isolate = { path = "allo-isolate", workspace = true }
+allo-isolate = { git = "https://github.com/NightFeather0615/allo-isolate.git", workspace = true }
 libc = "0.2"
 parking_lot = { version = "0.12.1" }
 threadpool = { version = "1.8.1" }

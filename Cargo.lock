@@ -29,6 +29,7 @@ dependencies = [
 [[package]]
 name = "allo-isolate"
 version = "0.1.18"
+source = "git+https://github.com/NightFeather0615/allo-isolate.git#1cd502fdd8a9b70c5eb03c53e8f2b51e6bd721ca"
 dependencies = [
  "anyhow",
  "atomic",
