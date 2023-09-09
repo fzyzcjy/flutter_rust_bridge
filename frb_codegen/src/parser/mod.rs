@@ -146,6 +146,8 @@ impl<'a> Parser<'a> {
     pub fn try_parse_fn_output_type(&mut self, ty: &syn::Type) -> Option<IrFuncOutput> {
         let ty = &self.type_parser.resolve_alias(ty).clone();
 
+        dbg!(ty.clone());
+
         if let Type::Path(type_path) = ty {
             match self.type_parser.convert_path_to_ir_type(type_path) {
                 Ok(IrType::Unencodable(IrTypeUnencodable { segments, .. })) => {
@@ -270,6 +272,7 @@ impl<'a> Parser<'a> {
                             type_to_string(ty)
                         )
                     })?;
+                    dbg!(output_type.clone());
                     match output_type {
                         IrFuncOutput::ResultType(ty) => ty,
                         IrFuncOutput::Type(ty) => {
@@ -283,6 +286,7 @@ impl<'a> Parser<'a> {
                     IrType::Primitive(IrTypePrimitive::Unit)
                 }
             });
+            // dbg!(output.clone());
             mode = Some(if let Some(IrType::SyncReturn(_)) = output {
                 IrFuncMode::Sync
             } else {

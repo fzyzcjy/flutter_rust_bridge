@@ -86,6 +86,8 @@ impl<'a> Generator<'a> {
     fn generate(&mut self, ir_file: &IrFile, rust_wire_mod: &str) -> Acc<String> {
         let mut lines = Acc::<Vec<_>>::default();
 
+        dbg!(ir_file);
+
         let distinct_input_types = ir_file.distinct_types(true, false);
         let distinct_output_types = ir_file.distinct_types(false, true);
 
@@ -154,6 +156,7 @@ impl<'a> Generator<'a> {
             .collect();
 
         lines.push(self.section_header_comment("impl IntoDart"));
+        lines.push(format!("// {:?}", distinct_output_types.iter().map(|ty| self.generate_impl_intodart(ty, ir_file))));
         lines.extend(
             distinct_output_types
                 .iter()

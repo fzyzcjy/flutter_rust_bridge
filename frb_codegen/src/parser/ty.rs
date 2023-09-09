@@ -377,9 +377,17 @@ impl<'a> TypeParser<'a> {
                     }
 
                     [("Vec", Some(Generic([Primitive(primitive)])))] => {
-                        Ok(PrimitiveList(IrTypePrimitiveList {
-                            primitive: primitive.clone(),
-                        }))
+                        if primitive == &IrTypePrimitive::Bool {
+                            Ok(GeneralList(IrTypeGeneralList {
+                                inner: Box::new(
+                                    IrType::Primitive(IrTypePrimitive::Bool)
+                                ),
+                            }))
+                        } else {
+                            Ok(PrimitiveList(IrTypePrimitiveList {
+                                primitive: primitive.clone(),
+                            }))
+                        }
                     }
 
                     #[cfg(feature = "chrono")]
