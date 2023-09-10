@@ -164,7 +164,7 @@ pub fn handle_vec_of_primitive(n: i32) -> VecOfPrimitivePack {
         uint64list: vec![42u64; n as usize],
         float32list: vec![42.0f32; n as usize],
         float64list: vec![42.0f64; n as usize],
-        bool_list: vec![true; n as usize]
+        bool_list: vec![true; n as usize],
     }
 }
 

@@ -377,6 +377,8 @@ impl<'a> TypeParser<'a> {
                     }
 
                     [("Vec", Some(Generic([Primitive(primitive)])))] => {
+                        // Since Dart doesn't have a boolean primitive list like `Uint8List`,
+                        // we need to convert `Vec<bool>` to a boolean general list in order to achieve the binding.
                         if primitive == &IrTypePrimitive::Bool {
                             Ok(GeneralList(IrTypeGeneralList {
                                 inner: Box::new(IrType::Primitive(IrTypePrimitive::Bool)),

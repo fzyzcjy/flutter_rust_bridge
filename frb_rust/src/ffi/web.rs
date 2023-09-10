@@ -26,6 +26,7 @@ impl IntoDartExceptPrimitive for JsValue {}
 impl<T: DartSafe> IntoDartExceptPrimitive for RustOpaque<T> {}
 impl IntoDartExceptPrimitive for DartOpaque {}
 impl IntoDartExceptPrimitive for String {}
+impl IntoDartExceptPrimitive for bool {}
 impl<T: IntoDart> IntoDartExceptPrimitive for Option<T> {}
 
 impl IntoDart for () {
