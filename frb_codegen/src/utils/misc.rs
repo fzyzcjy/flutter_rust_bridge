@@ -178,17 +178,15 @@ pub fn make_string_keyword_safe(input: String) -> String {
 
 /// check if all items in `paths` contains the same directory
 pub fn is_same_directory(paths: &[String]) -> bool {
-    let mut v = Vec::new();
-    for each in paths {
-        let p = Path::new(each);
-        v.push(p.get_directory_name());
-    }
+    let paths = paths
+        .iter()
+        .map(|path| Path::new(&path).get_directory_name().to_owned())
+        .collect::<Vec<_>>();
 
-    // check
-    if v.is_empty() {
+    if paths.is_empty() {
         return true;
     }
-    v.iter().all(|item| item == &v[0])
+    paths.iter().all(|item| item == &paths[0])
 }
 
 #[derive(PartialEq, Eq, Debug, Clone, Copy, Hash, serde::Serialize)]
