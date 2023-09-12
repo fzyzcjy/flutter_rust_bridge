@@ -87,7 +87,7 @@ impl IrFile {
         block_index: BlockIndex,
         all_configs: &[Opts],
         shared: bool,
-    ) -> Self {
+    ) -> IrFile {
         let ir_fie = IrFile {
             funcs,
             struct_pool,
