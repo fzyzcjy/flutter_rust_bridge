@@ -42,12 +42,12 @@ pub use ty_sync_return::*;
 use convert_case::{Case, Casing};
 
 use crate::ir::IrType::*;
+use crate::others::*;
 use crate::target::Target::*;
 use crate::target::{Acc, Target};
 use crate::utils::method::{FunctionName, MethodNamingUtil};
 use crate::utils::misc::{get_deduplicate_type, is_multi_blocks_case, PathExt};
 use crate::{ir::*, Opts};
-use crate::{others::*, transformer};
 
 thread_local!(pub static COMMON_API2WIRE: RefCell<String> = RefCell::new("".into()));
 thread_local!(pub static FETCHED_FOR_COMMON_API2WIRE: RefCell<bool> = RefCell::new(false));
@@ -137,8 +137,7 @@ impl DartApiSpec {
         let shared_dart_api2wire_funcs = if is_multi_blocks_case(None) {
             let shared_config = all_configs.last().unwrap();
             assert!(shared_config.shared);
-            let raw_ir_file = shared_config.get_ir_file(all_configs).unwrap();
-            let shared_ir_file = transformer::transform(raw_ir_file);
+            let shared_ir_file = shared_config.get_ir_file(all_configs).unwrap();
             let distinct_input_types = shared_ir_file.distinct_types(true, false, all_configs);
             Some(
                 distinct_input_types
