@@ -19,11 +19,10 @@ pub enum SharedComplexEnumInAllBlocks {
     BytesArray([u8; 3]),
 }
 impl SharedComplexEnumInAllBlocks {
-    #[allow(unused)]
     pub fn test_enum_method(&self, message: String) -> String {
         message
     }
-    #[allow(unused)]
+
     pub fn test_static_enum_method(message: String) -> String {
         message
     }
@@ -42,15 +41,14 @@ pub enum SharedWeekdaysEnumInAllBlocks {
     Sunday,
 }
 impl SharedWeekdaysEnumInAllBlocks {
-    #[allow(unused)]
     pub fn test_enum_method(&self, message: String) -> String {
         message
     }
-    #[allow(unused)]
+
     pub fn test_static_enum_method(message: String) -> String {
         message
     }
-    #[allow(unused)]
+
     pub fn print_weekday(&self) -> String {
         match self {
             SharedWeekdaysEnumInAllBlocks::Monday => "Monday".to_string(),
@@ -72,13 +70,12 @@ pub struct SharedStructInAllBlocks {
     pub enum_list: Option<Vec<SharedComplexEnumInAllBlocks>>,
 }
 impl SharedStructInAllBlocks {
-    #[allow(unused)]
     /// the parameter type `u32 for `num` is only used here,
     /// for testing shared type(`u32`) within a shared struct method
     pub fn test_method(&self, message: String, num: u32) -> String {
         format!("{}_{}", message, num)
     }
-    #[allow(unused)]
+
     pub fn test_static_method(message: String) -> String {
         message
     }
@@ -90,11 +87,10 @@ pub struct SharedStructOnlyForSyncTest {
     pub score: f64,
 }
 impl SharedStructOnlyForSyncTest {
-    #[allow(unused)]
     pub fn test_method(&self, message: String) -> String {
         message
     }
-    #[allow(unused)]
+
     pub fn test_static_method(message: String) -> String {
         message
     }
@@ -107,11 +103,10 @@ pub struct SharedStructInBlock1And2 {
     pub name: String,
 }
 impl SharedStructInBlock1And2 {
-    #[allow(unused)]
     pub fn test_method(&self, message: String) -> String {
         message
     }
-    #[allow(unused)]
+
     pub fn test_static_method(message: String) -> String {
         message
     }
@@ -124,7 +119,6 @@ pub struct SharedStructInBlock2And3 {
     pub name: String,
 }
 impl SharedStructInBlock2And3 {
-    #[allow(unused)]
     pub fn test_method(&self, message: String) -> String {
         message
     }
@@ -134,7 +128,6 @@ impl SharedStructInBlock2And3 {
         self.name = name;
     }
 
-    #[allow(unused)]
     pub fn test_static_method(message: String) -> String {
         message
     }

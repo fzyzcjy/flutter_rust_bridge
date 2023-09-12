@@ -5,14 +5,13 @@ pub struct StructOnlyForBlock1 {
     pub name: Option<String>, // the inner struct type is used for all API blocks, BUT `Option` wrapped for it is only used here
 }
 impl StructOnlyForBlock1 {
-    #[allow(unused)]
     /// the parameter type `u16 for `num` is only used for struct
     /// used in a specific API block but not defined in the API block(like `StructOnlyForBlock2`,`StructOnlyForBlock3`),
     /// for testing shared type(`u16`) within a no-shared struct method
     pub fn test_method(&self, message: String, num: u16) -> String {
         format!("{}_{}", message, num)
     }
-    #[allow(unused)]
+
     pub fn test_static_method(message: String) -> String {
         message
     }

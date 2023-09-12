@@ -4,11 +4,10 @@ pub struct CrossSharedStructInBlock1And2 {
     pub name: String,
 }
 impl CrossSharedStructInBlock1And2 {
-    #[allow(unused)]
     pub fn test_method(&self, message: String) -> String {
         message
     }
-    #[allow(unused)]
+
     pub fn test_static_method(message: String) -> String {
         message
     }
@@ -20,11 +19,10 @@ pub struct CrossSharedStructInBlock2And3 {
     pub name: String,
 }
 impl CrossSharedStructInBlock2And3 {
-    #[allow(unused)]
     pub fn test_method(&self, message: String) -> String {
         message
     }
-    #[allow(unused)]
+
     pub fn test_static_method(message: String) -> String {
         message
     }

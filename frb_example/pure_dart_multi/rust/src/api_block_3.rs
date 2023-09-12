@@ -17,11 +17,10 @@ pub enum EnumDefinedInBlock3 {
 }
 
 impl EnumDefinedInBlock3 {
-    #[allow(unused)]
     pub fn test_method(&self, message: String) -> String {
         message
     }
-    #[allow(unused)]
+
     pub fn test_static_method(message: String) -> String {
         message
     }
@@ -32,11 +31,10 @@ pub struct StructDefinedInBlock3 {
     pub name: String,
 }
 impl StructDefinedInBlock3 {
-    #[allow(unused)]
     pub fn test_method(&self, message: String) -> String {
         message
     }
-    #[allow(unused)]
+
     pub fn test_static_method(message: String) -> String {
         message
     }
