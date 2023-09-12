@@ -45,21 +45,10 @@ pub struct IrFile {
 
 impl IrFile {
     pub fn funcs(&self, exclude_shared_method: bool) -> Vec<IrFunc> {
-        if self.shared {
-            // assert each item of funcs are shared
-            for each in &self.funcs {
-                assert!(each.shared);
-            }
-            return self.funcs.clone();
-        }
-        match exclude_shared_method {
-            true => self
-                .funcs
-                .iter()
-                .cloned()
-                .filter(|each| !each.shared)
-                .collect::<Vec<_>>(),
-            false => self.funcs.clone(),
+        if !self.shared && exclude_shared_method {
+            self .funcs .iter().filter(|each| !each.shared).cloned() .collect()
+        } else {
+          self.funcs.clone()
         }
     }
 
