@@ -16,8 +16,7 @@ pub(crate) fn get_refined_c_output(
             if c_output.len() <= 1 {
                 Some(c_output.clone())
             } else {
-                match shared_rust_output_path {
-                    Some(shared_rust_output_path) => {
+                if let Some(shared_rust_output_path) = shared_rust_output_path {
                         if !is_same_directory(c_output) {
                             panic!("for multi-blocks case, paths in flag `c-output`(if defined) should be in the same directory ");
                         }
