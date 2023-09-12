@@ -75,6 +75,9 @@ impl IrFile {
                 .filter(|each| each.shared)
                 .collect::<Vec<_>>()
         } else {
+            if self.shared {
+                assert!(self.funcs.iter().all(|x| x.shared))
+            }
             self.funcs.clone()
         }
     }
