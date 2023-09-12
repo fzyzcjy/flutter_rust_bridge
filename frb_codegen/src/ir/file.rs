@@ -46,9 +46,13 @@ pub struct IrFile {
 impl IrFile {
     pub fn funcs(&self, exclude_shared_method: bool) -> Vec<IrFunc> {
         if !self.shared && exclude_shared_method {
-            self .funcs .iter().filter(|each| !each.shared).cloned() .collect()
+            self.funcs
+                .iter()
+                .filter(|each| !each.shared)
+                .cloned()
+                .collect()
         } else {
-          self.funcs.clone()
+            self.funcs.clone()
         }
     }
 
