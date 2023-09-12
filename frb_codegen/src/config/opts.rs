@@ -59,9 +59,9 @@ impl Opts {
     /// is for the regular block. Otherwise, it would panic.
     pub fn get_ir_file(&self, all_configs: &[Opts]) -> ParserResult<IrFile> {
         let raw_ir_file = if !self.shared {
-            self.get_regular_ir_file(all_configs)?
+            self.get_ir_file_for_regular_block(all_configs)?
         } else {
-            self.get_shared_ir_file(all_configs)?
+            self.get_ir_file_for_shared_block(all_configs)?
         };
 
         log::debug!("Phase: Transform IR");
@@ -70,7 +70,7 @@ impl Opts {
         Ok(ir_file)
     }
 
-    fn get_regular_ir_file(&self, all_configs: &[Opts]) -> ParserResult<IrFile> {
+    fn get_ir_file_for_regular_block(&self, all_configs: &[Opts]) -> ParserResult<IrFile> {
         let mut ir_file = IR_FILE_MAP.with(|data| {
             let mut ir_file_map = data.borrow_mut();
             let ir_file = if let std::collections::hash_map::Entry::Vacant(e) =
@@ -207,7 +207,7 @@ impl Opts {
         Ok(ir_file)
     }
 
-    fn get_shared_ir_file(&self, all_configs: &[Opts]) -> ParserResult<IrFile> {
+    fn get_ir_file_for_shared_block(&self, all_configs: &[Opts]) -> ParserResult<IrFile> {
         assert!(
             all_configs.len() > 1,
             "`get_shared_ir_file(..)` should not be called when all_configs.len()<=1"
