@@ -1,9 +1,15 @@
 # To use this file, install Just: `cargo install just`
 
 pana := if os() == "windows" {
-   "pana.bat"
+    "pana.bat"
 } else {
-   "pana"
+    "pana"
+}
+
+sed := if os() == "macos" {
+    "sed -i ''"
+} else {
+    "sed -i"
 }
 
 dir_example_pure_dart := "frb_example/pure_dart"
@@ -216,7 +222,7 @@ normalize_pubspec_lock:
     just _normalize_pubspec_lock_one frb_example/with_flutter/pubspec.lock
 
 _normalize_pubspec_lock_one path:
-    sed -i "" -e 's/pub.flutter-io.cn/pub.dev/g' {{path}}
+    {{sed}} -e 's/pub.flutter-io.cn/pub.dev/g' {{path}}
 
 serve *args:
     cd {{invocation_directory()}} && dart run {{justfile_directory()}}/frb_dart/bin/serve.dart {{args}}
@@ -266,8 +272,8 @@ _release_sanity_check_version old_version new_version:
     grep -q '{{new_version}}' CHANGELOG.md
 
 _release_update_version old_version new_version:
-    sed -i '' 's/version = "{{old_version}}"/version = "{{new_version}}"/g' Cargo.toml
-    sed -i '' 's/version: {{old_version}}/version: {{new_version}}/g' frb_dart/pubspec.yaml
+    {{sed}} 's/version = "{{old_version}}"/version = "{{new_version}}"/g' Cargo.toml
+    {{sed}} 's/version: {{old_version}}/version: {{new_version}}/g' frb_dart/pubspec.yaml
 
 _release_update_scoop:
     cd frb_codegen && ./contrib/scoop.json.sh > ./contrib/flutter_rust_bridge_codegen.json
