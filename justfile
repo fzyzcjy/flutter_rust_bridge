@@ -1,9 +1,15 @@
 # To use this file, install Just: `cargo install just`
 
 pana := if os() == "windows" {
-   "pana.bat"
+    "pana.bat"
 } else {
-   "pana"
+    "pana"
+}
+
+sed := if os() == "macos" {
+    "sed -i ''"
+} else {
+    "sed -i"
 }
 
 dir_example_pure_dart := "frb_example/pure_dart"
