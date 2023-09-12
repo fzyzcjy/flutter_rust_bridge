@@ -249,7 +249,7 @@ pub fn config_parse(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
         regular_configs.clone()
     } else {
         // NOTE: since there would be at least 1 shared API called `free_WireSyncReturn` for multi-blocks,
-        // the extra shared config is essential, whatever `_implicit_duplicated_symbols` is empty or not.
+        // the extra shared config is essential.
         let shared_config = Opts {
             rust_input_path: "".into(), // this field is meangingless for shared block, so it's empty.
             rust_output_path: shared_rust_output_path.clone().unwrap(),
