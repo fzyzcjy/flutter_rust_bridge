@@ -87,39 +87,29 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         });
         let has_methods = methods.next().is_some();
 
-        let mut inner = if !self.context.config.shared {
-            s.fields
-                .iter()
-                .enumerate()
-                .map(|(idx, field)| {
-                    let prefix = if !self.is_type_shared(&field.ty) {
+        let mut inner = s
+            .fields
+            .iter()
+            .enumerate()
+            .map(|(idx, field)| {
+                let prefix = if !self.context.config.shared {
+                    if !self.is_type_shared(&field.ty) {
                         "_"
                     } else {
                         "_sharedImpl."
-                    };
-                    format!(
-                        "{}: {}wire2api_{}(arr[{}]),",
-                        field.name.dart_style(),
-                        prefix,
-                        field.ty.safe_ident(),
-                        idx
-                    )
-                })
-                .collect::<Vec<_>>()
-        } else {
-            s.fields
-                .iter()
-                .enumerate()
-                .map(|(idx, field)| {
-                    format!(
-                        "{}: wire2api_{}(arr[{}]),", //no prefix in shared block
-                        field.name.dart_style(),
-                        field.ty.safe_ident(),
-                        idx
-                    )
-                })
-                .collect::<Vec<_>>()
-        };
+                    }
+                } else {
+                    ""
+                };
+                format!(
+                    "{}: {}wire2api_{}(arr[{}]),",
+                    field.name.dart_style(),
+                    prefix,
+                    field.ty.safe_ident(),
+                    idx
+                )
+            })
+            .collect::<Vec<_>>();
         if has_methods && self.context.config.bridge_in_method {
             inner.insert(0, "bridge: this,".to_string());
         }
