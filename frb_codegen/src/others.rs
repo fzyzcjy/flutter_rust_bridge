@@ -72,7 +72,7 @@ pub fn modify_dart_wire_content(
 
     // For ONLY regular configs: erase class block code which are shared.
     // The redundant classes are due to the forward declaration in c header file for regular block.
-    // I didn't find a way to let it not generated in dart, so here remove it after dart code generated.
+    // I (@dbsxdbsx) didn't find a way to let it not generated in dart, so here remove it after dart code generated.
     if !ir_file.shared {
         let v = ir_file.get_shared_type_names(true, Option::<Box<dyn Fn(&IrType) -> bool>>::None);
         for class_name in v {

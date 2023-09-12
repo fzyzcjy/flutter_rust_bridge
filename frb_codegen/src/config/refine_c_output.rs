@@ -11,14 +11,12 @@ pub(crate) fn get_refined_c_output(
 ) -> Vec<Vec<String>> {
     assert!(!rust_input_paths.is_empty());
 
-    let c_output = match c_output {
-        Some(c_output) => {
+    let c_output = c_output.map(|c_output| {
             assert_eq!(rust_input_paths.len(), c_output.len(), "when flag `c-output` is specified, then length of it should match that of `rust-input`");
             if c_output.len() <= 1 {
                 Some(c_output.clone())
             } else {
-                match shared_rust_output_path {
-                    Some(shared_rust_output_path) => {
+                if let Some(shared_rust_output_path) = shared_rust_output_path {
                         if !is_same_directory(c_output) {
                             panic!("for multi-blocks case, paths in flag `c-output`(if defined) should be in the same directory ");
                         }

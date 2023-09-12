@@ -128,7 +128,7 @@ pub fn get_symbols_if_no_duplicates(
 ) -> Result<(Vec<String>, Vec<String>), anyhow::Error> {
     let mut explicit_raw_symbols = Vec::new();
     let mut all_symbols = Vec::new();
-    for (_i, config) in regular_configs.iter().enumerate() {
+    for config in regular_configs.iter() {
         let ir_file = config.get_ir_file(&[])?; // all_configs` is empty, no need to care about other configs here
 
         // for checking explicit API duplication
