@@ -182,10 +182,6 @@ pub fn is_same_directory(paths: &[String]) -> bool {
         .iter()
         .map(|path| Path::new(&path).get_directory_name().to_owned())
         .collect::<Vec<_>>();
-
-    if paths.is_empty() {
-        return true;
-    }
     paths.iter().all(|item| item == &paths[0])
 }
 
