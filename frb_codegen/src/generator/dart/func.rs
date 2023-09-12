@@ -189,7 +189,7 @@ pub(crate) fn get_api2wire_prefix(
     shared_dart_api2wire_funcs: &Option<Acc<String>>,
     ir_file: &IrFile,
     ir_type: &IrType,
-    for_dart_basic_file: bool,
+    for_dart_common_file: bool,
 ) -> String {
     if is_multi_blocks_case(None) && !ir_file.shared {
         // NOTE: For multi-blocks case, `COMMON_API2WIRE` should have been fetched by
@@ -206,7 +206,7 @@ pub(crate) fn get_api2wire_prefix(
             // multi-blocks case
             Some(shared_dart_api2wire_funcs) => {
                 if ir_file.shared {
-                    if for_dart_basic_file {
+                    if for_dart_common_file {
                         "_platform."
                     } else {
                         ""
@@ -216,7 +216,7 @@ pub(crate) fn get_api2wire_prefix(
                         true => {
                             if common_api2wire_body.contains(api2wire_func) {
                                 ""
-                            } else if for_dart_basic_file {
+                            } else if for_dart_common_file {
                                 "_platform."
                             } else {
                                 ""
@@ -235,7 +235,7 @@ pub(crate) fn get_api2wire_prefix(
             }
             // single block case
             _ => {
-                if for_dart_basic_file {
+                if for_dart_common_file {
                     "_platform."
                 } else {
                     ""
