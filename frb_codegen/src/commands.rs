@@ -85,9 +85,11 @@ fn cbindgen(
     extra_forward_definitions: Vec<String>,
 ) -> CommandResult {
     let mut declarations = "".to_string();
-    extra_forward_definitions.iter().for_each(|declare| {
-        declarations.push_str(&format!("\n{};", declare));
-    });
+    declarations += extra_forward_definitions
+        .iter()
+        .map(|s| format!("\n{};", s))
+        .collect::<String>()
+        .as_str();
     declarations.push_str("\n\ntypedef struct _Dart_Handle* Dart_Handle;");
     debug!(
         "execute cbindgen rust_crate_dir={} c_output_path={}",
