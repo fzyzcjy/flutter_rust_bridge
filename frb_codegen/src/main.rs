@@ -22,8 +22,8 @@ fn main() -> anyhow::Result<()> {
     }
 
     // If in multi-blocks case, the shared block MUST be generated at first.
-    // Otherwise, the generated dart code for regular blocks would be problematic, since when
-    // the shared rust module has not yet been generated.
+    // Otherwise, the generated dart code for regular blocks would be problematic, since when they are being generated,
+    // the shared rust module they depend on has not yet been generated.
     let mut errors = vec![];
     for (config_index, config) in (all_configs.iter().enumerate()).rev() {
         if let Err(err) = frb_codegen_multi(&all_configs, config_index, &all_symbols) {
