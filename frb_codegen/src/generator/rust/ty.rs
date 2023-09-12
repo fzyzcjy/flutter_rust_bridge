@@ -59,28 +59,24 @@ pub trait TypeRustGeneratorTrait {
 
     fn get_context(&self) -> &TypeGeneratorContext;
 
-    fn get_shared_mod_name_if_type_shared(&self, ty: &IrType) -> Option<String> {
+    fn get_shared_module_of_a_type(&self, ir_type: &IrType) -> Option<String> {
+        let ty = match ir_type {
+            IrType::Optional(inner_type) => &inner_type.inner,
+            _ => ir_type,
+        };
+
         if self.get_context().ir_file.is_type_shared_by_safe_ident(ty) {
             return SHARED_MODULE.with(|data| {
-                let cloned = data.borrow().clone();
-                if cloned.is_none() {
-                    panic!("in instance in charge of `{}`: checking shared for type \"{:?}\", it is shared indeed, but the shared module name is None",
-                        self.get_context().type_name, ty
-                    );
-                }
-                cloned
-            });
+                        let cloned = data.borrow().clone();
+                        if cloned.is_none() {
+                            panic!("in instance in charge of `{}`: checking shared for type \"{:?}\", it is shared indeed, but the shared module name is None",
+                                self.get_context().type_name, ty
+                            );
+                        }
+                        cloned
+                    });
         }
         None
-    }
-
-    fn get_shared_module_of_a_type(&self, ir_type: &IrType) -> Option<String> {
-        match ir_type {
-            IrType::Optional(inner_type) => {
-                self.get_shared_mod_name_if_type_shared(&inner_type.inner)
-            }
-            _ => self.get_shared_mod_name_if_type_shared(ir_type),
-        }
     }
 
     fn get_wire2api_prefix(&self, ir_type: &IrType) -> String {

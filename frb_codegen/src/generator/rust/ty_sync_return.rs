@@ -48,7 +48,6 @@ impl<'a> TypeRustGeneratorTrait for TypeSyncReturnGenerator<'a> {
             fn new_with_nullptr(&self, _collector: &mut ExternFuncCollector) -> String;
             fn imports(&self) -> Option<String>;
             fn get_context(&self) -> &TypeGeneratorContext;
-            fn get_shared_mod_name_if_type_shared(&self, ty:&IrType) ->  Option<String>;
         }
     }
 }
