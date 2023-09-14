@@ -2,6 +2,7 @@ use crate::generator::dart::ty::*;
 use crate::ir::*;
 use crate::target::{Acc, Target};
 use crate::type_dart_generator_struct;
+use crate::utils::misc::ShareMode;
 
 type_dart_generator_struct!(TypeOptionalGenerator, IrTypeOptional);
 
@@ -10,11 +11,12 @@ impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
         &self,
         _shared_dart_api2wire_funcs: &Option<Acc<String>>,
     ) -> Acc<Option<String>> {
-        let prefix = if !self.context.ir_file.shared
+        let prefix = if self.context.ir_file.shared == ShareMode::Unique
             && self
                 .context
                 .ir_file
                 .is_type_shared_by_safe_ident(&self.ir.inner)
+                == ShareMode::Shared
         {
             "_sharedPlatform.api2wire"
         } else {
@@ -42,18 +44,16 @@ impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
             return None;
         }
 
-        let prefix = if !self.context.config.shared {
-            if !self
+        let prefix = match self.context.config.shared {
+            ShareMode::Unique => match self
                 .context
                 .ir_file
                 .is_type_shared_by_safe_ident(&self.ir.inner)
             {
-                "_"
-            } else {
-                "_sharedPlatform."
-            }
-        } else {
-            ""
+                ShareMode::Unique => "_",
+                ShareMode::Shared => "_sharedPlatform.",
+            },
+            ShareMode::Shared => "",
         };
 
         Some(format!(
@@ -64,26 +64,26 @@ impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
     }
 
     fn wire2api_body(&self) -> String {
-        let use_shared_instance = !self.context.ir_file.shared
+        let use_shared_instance = self.context.ir_file.shared == ShareMode::Unique
             && self
                 .context
                 .ir_file
-                .is_type_shared_by_safe_ident(&self.ir.inner);
+                .is_type_shared_by_safe_ident(&self.ir.inner)
+                == ShareMode::Shared;
 
-        if !use_shared_instance {
-            let private_prefix = if !self.context.ir_file.shared {
-                "_"
-            } else {
-                ""
+        if use_shared_instance {
+            format!(
+                "return raw == null ? null : _sharedImpl.wire2api_{}(raw);",
+                self.ir.inner.safe_ident()
+            )
+        } else {
+            let private_prefix = match self.context.ir_file.shared {
+                ShareMode::Unique => "_",
+                ShareMode::Shared => "",
             };
             format!(
                 "return raw == null ? null : {}wire2api_{}(raw);",
                 private_prefix,
-                self.ir.inner.safe_ident()
-            )
-        } else {
-            format!(
-                "return raw == null ? null : _sharedImpl.wire2api_{}(raw);",
                 self.ir.inner.safe_ident()
             )
         }

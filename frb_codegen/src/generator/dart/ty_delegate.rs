@@ -110,16 +110,16 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                 ),
                 IrTypeDelegateArray::PrimitiveArray { .. } => {
                     let delegated_type = array.get_delegate();
-                    let prefix = if !self.context.config.shared {
-                        if !self.is_type_shared(&delegated_type) {
-                            "_"
-                        } else {
-                            "_sharedImpl."
+                    let prefix = match self.context.config.shared {
+                        crate::utils::misc::ShareMode::Unique => {
+                            if !self.is_type_shared(&delegated_type) {
+                                "_"
+                            } else {
+                                "_sharedImpl."
+                            }
                         }
-                    } else {
-                        ""
+                        crate::utils::misc::ShareMode::Shared => "",
                     };
-
                     format!(
                         r"return {}({}wire2api_{}(raw));",
                         array.dart_api_type(),

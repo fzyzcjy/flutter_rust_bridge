@@ -26,14 +26,16 @@ pub trait TypeDartGeneratorTrait {
     fn get_context(&self) -> &TypeGeneratorContext;
 
     fn is_type_shared(&self, ty: &IrType) -> bool {
-        self.get_context().ir_file.is_type_shared_by_safe_ident(ty)
+        match self.get_context().ir_file.is_type_shared_by_safe_ident(ty) {
+            crate::utils::misc::ShareMode::Unique => false,
+            crate::utils::misc::ShareMode::Shared => true,
+        }
     }
 
     fn get_private_prefix(&self) -> String {
-        if !self.get_context().config.shared {
-            "_".into()
-        } else {
-            "".into()
+        match self.get_context().config.shared {
+            crate::utils::misc::ShareMode::Unique => "_".into(),
+            crate::utils::misc::ShareMode::Shared => "".into(),
         }
     }
 }

@@ -8,6 +8,7 @@ use crate::ir::*;
 use crate::target::Acc;
 use crate::target::Target::*;
 use crate::type_rust_generator_struct;
+use crate::utils::misc::ShareMode;
 
 type_rust_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 
@@ -39,7 +40,9 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                                 if !target.is_wasm() {
                                     let shared_mod_name: Option<String> =
                                         self.get_shared_module_of_a_type(&field.ty);
-                                    if !self.context.config.shared && shared_mod_name.is_some() {
+                                    if self.context.config.shared == ShareMode::Unique
+                                        && shared_mod_name.is_some()
+                                    {
                                         format!(
                                             "{field_} {}::Wire2Api::wire2api(ans.{field_name})",
                                             shared_mod_name.unwrap()

@@ -1,7 +1,7 @@
 use crate::ir::{IrFile, IrFunc, IrType};
 use crate::parser::{self, ParserResult};
 use crate::transformer;
-use crate::utils::misc::{read_rust_file, BlockIndex, ExtraTraitForVec};
+use crate::utils::misc::{read_rust_file, BlockIndex, ExtraTraitForVec, ShareMode};
 use convert_case::{Case, Casing};
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
@@ -43,7 +43,7 @@ pub struct Opts {
     pub bridge_in_method: bool,
     pub extra_headers: String,
     pub dart3: bool,
-    pub shared: bool, // it is true if this Opts instance is for auto-generated shared API block. Otherwise, it is false,
+    pub shared: ShareMode, // it is true if this Opts instance is for auto-generated shared API block. Otherwise, it is false,
     // for the below 2 fields:
     // in single-block case, they should be `None`;
     // in multi-blocks case, they should be paths to generated files with full directories
@@ -58,10 +58,9 @@ impl Opts {
     /// for `Opts` for an auto-generated shared API block, make sure `all_configs` has at least 2 items, each of which
     /// is for the regular block. Otherwise, it would panic.
     pub fn get_ir_file(&self, all_configs: &[Opts]) -> ParserResult<IrFile> {
-        let raw_ir_file = if !self.shared {
-            self.get_ir_file_for_regular_block(all_configs)?
-        } else {
-            self.get_ir_file_for_shared_block(all_configs)?
+        let raw_ir_file = match self.shared {
+            ShareMode::Unique => self.get_ir_file_for_regular_block(all_configs)?,
+            ShareMode::Shared => self.get_ir_file_for_shared_block(all_configs)?,
         };
 
         log::debug!("Phase: Transform IR");
@@ -180,7 +179,7 @@ impl Opts {
                             )
                             .contains(&type_name)
                         {
-                            method.shared = true;
+                            method.shared = ShareMode::Shared;
                         }
 
                         if !ir_file.funcs(false).contains(&method) {
@@ -212,14 +211,17 @@ impl Opts {
             all_configs.len() > 1,
             "`get_shared_ir_file(..)` should not be called when all_configs.len()<=1"
         );
-        let (regular_configs, shared_index) = if !all_configs.last().unwrap().shared {
-            (all_configs, all_configs.len())
-        } else {
-            let last_index = all_configs.len() - 1;
-            (&all_configs[0..last_index], last_index)
+        let (regular_configs, shared_index) = match all_configs.last().unwrap().shared {
+            ShareMode::Unique => (all_configs, all_configs.len()),
+            ShareMode::Shared => {
+                let last_index = all_configs.len() - 1;
+                (&all_configs[0..last_index], last_index)
+            }
         };
         assert!(regular_configs.len() > 1);
-        assert!(regular_configs.iter().all(|c| !c.shared));
+        assert!(regular_configs
+            .iter()
+            .all(|c| c.shared == ShareMode::Unique));
 
         // get shared funcs, struct_pool and enum_pool
         let mut shared_methods = Vec::new();
@@ -253,7 +255,7 @@ impl Opts {
             false, // set false like that in regular API block, in case for the methods of a shared struct,
             BlockIndex(shared_index),
             all_configs,
-            true,
+            ShareMode::Shared,
         ))
     }
 

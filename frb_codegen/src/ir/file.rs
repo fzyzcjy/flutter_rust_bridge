@@ -1,7 +1,7 @@
 use convert_case::{Case, Casing};
 
 use crate::target::Target;
-use crate::utils::misc::{is_multi_blocks_case, mod_from_rust_path, BlockIndex};
+use crate::utils::misc::{is_multi_blocks_case, mod_from_rust_path, BlockIndex, ShareMode};
 use crate::{generator, ir::*, Opts};
 use std::collections::{HashMap, HashSet};
 use std::thread;
@@ -40,15 +40,15 @@ pub struct IrFile {
     pub enum_pool: IrEnumPool,
     pub has_executor: bool,
     pub block_index: BlockIndex,
-    pub shared: bool, // `true` for an auto-generated shared block, otherwise `false`
+    pub shared: ShareMode,
 }
 
 impl IrFile {
     pub fn funcs(&self, exclude_shared_method: bool) -> Vec<IrFunc> {
-        if !self.shared && exclude_shared_method {
+        if self.shared == ShareMode::Unique && exclude_shared_method {
             self.funcs
                 .iter()
-                .filter(|each| !each.shared)
+                .filter(|each| each.shared == ShareMode::Unique)
                 .cloned()
                 .collect()
         } else {
@@ -68,15 +68,15 @@ impl IrFile {
     /// For a regular API block, this method returns all methods of shared types used in this block.
     /// For a shared block, it returns all methods from all shared types.
     pub fn get_shared_methods(&self) -> Vec<IrFunc> {
-        if !self.shared {
+        if self.shared == ShareMode::Unique {
             self.funcs
                 .iter()
                 .cloned()
-                .filter(|each| each.shared)
+                .filter(|each| each.shared == ShareMode::Shared)
                 .collect::<Vec<_>>()
         } else {
-            if self.shared {
-                assert!(self.funcs.iter().all(|x| x.shared))
+            if self.shared == ShareMode::Shared {
+                assert!(self.funcs.iter().all(|x| x.shared == ShareMode::Shared))
             }
             self.funcs.clone()
         }
@@ -89,7 +89,7 @@ impl IrFile {
         has_executor: bool,
         block_index: BlockIndex,
         all_configs: &[Opts],
-        shared: bool,
+        shared: ShareMode,
     ) -> IrFile {
         let ir_fie = IrFile {
             funcs,
@@ -156,8 +156,8 @@ impl IrFile {
             all_configs,
         );
 
-        let types = match !self.shared {
-            true => {
+        let types = match self.shared {
+            ShareMode::Unique => {
                 let raw_distinct_types =
                     self.get_regular_distinct_types(include_func_inputs, include_func_output);
 
@@ -183,7 +183,7 @@ impl IrFile {
                     })
                     .collect::<HashSet<_>>()
             }
-            false => shared_types,
+            ShareMode::Shared => shared_types,
         };
 
         let mut types = types.into_iter().collect::<Vec<_>>();
@@ -200,7 +200,7 @@ impl IrFile {
         include_func_output: bool,
     ) -> HashSet<IrType> {
         assert!(include_func_inputs || include_func_output);
-        assert!(!self.shared);
+        assert!(self.shared == ShareMode::Unique);
         let mut seen_idents = HashSet::new();
         let mut ans = Vec::new();
         self.visit_types(
@@ -225,13 +225,13 @@ impl IrFile {
     /// for a shared IrFile, all shared types would be returned.
     fn get_shared_distinct_types_for_current_block(&self) -> HashSet<IrType> {
         let global_shared = self.get_shared_distinct_types_for_all_blocks(true, true, &[]);
-        if self.shared {
-            global_shared
-        } else {
-            self.get_regular_distinct_types(true, true)
+        match self.shared {
+            ShareMode::Unique => self
+                .get_regular_distinct_types(true, true)
                 .intersection(&global_shared)
                 .map(|s| s.to_owned())
-                .collect()
+                .collect(),
+            ShareMode::Shared => global_shared,
         }
     }
 
@@ -296,12 +296,13 @@ impl IrFile {
         include_func_output: bool,
         all_configs: &[Opts],
     ) -> HashSet<IrType> {
-        let regular_configs = if !all_configs.last().unwrap().shared {
-            all_configs
-        } else {
-            &all_configs[0..all_configs.len() - 1]
+        let regular_configs = match all_configs.last().unwrap().shared {
+            ShareMode::Unique => all_configs,
+            ShareMode::Shared => &all_configs[0..all_configs.len() - 1],
         };
-        assert!(regular_configs.iter().all(|c| !c.shared));
+        assert!(regular_configs
+            .iter()
+            .all(|c| c.shared == ShareMode::Unique));
         let mut regular_block_uniques = Vec::new();
         let mut all_regular_types = Vec::new();
         let mut regular_ir_files = Vec::new();
@@ -321,7 +322,7 @@ impl IrFile {
             .into_iter()
             .collect::<HashSet<_>>();
         //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓for cross shared types↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-        if !self.shared {
+        if self.shared == ShareMode::Unique {
             for (i, each_block_set) in regular_block_uniques.iter().enumerate() {
                 for suspected_shared_type in each_block_set {
                     self.add_cross_shared_types(
@@ -494,13 +495,16 @@ impl IrFile {
     }
 
     /// check if `ty` is sharely used in current block
-    pub fn is_type_shared_by_safe_ident(&self, ty: &IrType) -> bool {
+    pub fn is_type_shared_by_safe_ident(&self, ty: &IrType) -> ShareMode {
         let get_shared_distinct_types_for_current_block =
             &self.get_shared_distinct_types_for_current_block();
         let found_op = get_shared_distinct_types_for_current_block
             .iter()
             .find(|each| each.safe_ident() == ty.safe_ident());
-        found_op.is_some()
+        if found_op.is_some() {
+            return ShareMode::Shared;
+        }
+        ShareMode::Unique
     }
 
     /// if `only_for_this_block` is `true`,

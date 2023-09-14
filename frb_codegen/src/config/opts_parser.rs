@@ -3,7 +3,7 @@ use crate::config::raw_opts::RawOpts;
 use crate::config::refine_c_output::get_refined_c_output;
 use crate::utils::misc::{
     get_symbols_if_no_duplicates, is_multi_blocks_case, is_same_directory, BlockIndex,
-    ExtraTraitForVec, PathExt,
+    ExtraTraitForVec, PathExt, ShareMode,
 };
 use anyhow::*;
 use clap::CommandFactory;
@@ -233,7 +233,7 @@ pub fn config_parse(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
                 wasm_enabled: wasm,
                 dart3,
                 inline_rust,
-                shared: false,
+                shared: ShareMode::Unique,
                 shared_rust_output_path: shared_rust_output_path.clone(),
                 shared_dart_output_path: shared_dart_output_path.clone(),
                 bridge_in_method,
@@ -274,7 +274,7 @@ pub fn config_parse(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
             skip_deps_check: true,
             wasm_enabled: wasm,
             inline_rust,
-            shared: true,
+            shared: ShareMode::Shared,
             shared_rust_output_path,
             shared_dart_output_path,
             dart_enums_style,

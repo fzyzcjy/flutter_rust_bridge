@@ -5,6 +5,7 @@ use crate::ir::*;
 use crate::target::Acc;
 use crate::target::Target;
 use crate::type_rust_generator_struct;
+use crate::utils::misc::ShareMode;
 
 type_rust_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
@@ -25,7 +26,9 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
 
                 let shared_mod_name = self.get_shared_module_of_a_type(&field.ty);
                 Acc {
-                    io: if !self.context.config.shared && shared_mod_name.is_some() {
+                    io: if self.context.config.shared == ShareMode::Unique
+                        && shared_mod_name.is_some()
+                    {
                         format!(
                             "{field_} {}::Wire2Api::wire2api(self.{field_name})",
                             shared_mod_name.unwrap()

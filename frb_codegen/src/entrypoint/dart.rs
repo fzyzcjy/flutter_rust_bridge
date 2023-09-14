@@ -5,7 +5,7 @@ use crate::others::{
     extract_dart_wire_content, modify_dart_wire_content, sanity_check, DartBasicCode,
     DUMMY_WIRE_CODE_FOR_BINDGEN, EXTRA_EXTERN_FUNC_NAMES,
 };
-use crate::utils::misc::{is_multi_blocks_case, with_changed_file, ExtraTraitForVec};
+use crate::utils::misc::{is_multi_blocks_case, with_changed_file, ExtraTraitForVec, ShareMode};
 use crate::{command_run, commands, ensure_tools_available, generator, ir, Opts};
 use convert_case::{Case, Casing};
 use itertools::Itertools;
@@ -33,17 +33,7 @@ pub(crate) fn generate_dart_code(
     let mut extra_forward_declarations = Vec::new();
     //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓refine exclude_symbols↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
     match ir_file.shared {
-        true => {
-            for c in all_configs {
-                if c.shared {
-                    continue;
-                }
-                let (wire_types, wire_funcs) = get_wire_types_funcs_for_c_file(c, all_configs);
-                exclude_symbols.extend(wire_types);
-                exclude_symbols.extend(wire_funcs);
-            }
-        }
-        false => {
+        ShareMode::Unique => {
             // 1. refine `exclude_symbols`
             for c in all_configs {
                 if c.block_index == config.block_index {
@@ -65,6 +55,16 @@ pub(crate) fn generate_dart_code(
                 .collect::<Vec<_>>();
 
             extra_forward_declarations.extend(extra_forward_declaration);
+        }
+        ShareMode::Shared => {
+            for c in all_configs {
+                if c.shared == ShareMode::Shared {
+                    continue;
+                }
+                let (wire_types, wire_funcs) = get_wire_types_funcs_for_c_file(c, all_configs);
+                exclude_symbols.extend(wire_types);
+                exclude_symbols.extend(wire_funcs);
+            }
         }
     }
     //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑refine exclude_symbols↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑

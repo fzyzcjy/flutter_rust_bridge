@@ -1,4 +1,5 @@
 use crate::utils::consts::*;
+use crate::utils::misc::ShareMode;
 use crate::{ir::*, target::Target};
 
 crate::ir! {
@@ -9,7 +10,7 @@ pub struct IrFunc {
     pub fallible: bool,
     pub mode: IrFuncMode,
     pub comments: Vec<IrComment>,
-    pub shared: bool,
+    pub shared: ShareMode,
 }
 }
 

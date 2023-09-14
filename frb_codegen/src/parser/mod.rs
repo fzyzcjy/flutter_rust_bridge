@@ -16,7 +16,7 @@ use syn::token::{Colon, Comma};
 use syn::*;
 use topological_sort::TopologicalSort;
 
-use crate::utils::misc::BlockIndex;
+use crate::utils::misc::{BlockIndex, ShareMode};
 use crate::{ir::*, Opts};
 
 use crate::generator::rust::HANDLER_NAME;
@@ -104,7 +104,7 @@ pub fn parse(
     file: File,
     manifest_path: &str,
     block_index: BlockIndex,
-    shared: bool,
+    shared: ShareMode,
     all_configs: &[Opts],
 ) -> ParserResult<IrFile> {
     let mut src_fns = extract_fns_from_file(&file);
@@ -140,7 +140,7 @@ impl<'a> Parser<'a> {
         source_rust_content: &str,
         src_fns: Vec<ItemFn>,
         block_index: BlockIndex,
-        shared: bool,
+        shared: ShareMode,
         all_configs: &[Opts],
     ) -> ParserResult<IrFile> {
         let funcs = src_fns
@@ -323,7 +323,7 @@ impl<'a> Parser<'a> {
             fallible,
             mode: mode.context("Missing mode")?,
             comments: extract_comments(&func.attrs),
-            shared: false, // set not shared as default
+            shared: ShareMode::Unique, // set not shared as default
         })
     }
 }

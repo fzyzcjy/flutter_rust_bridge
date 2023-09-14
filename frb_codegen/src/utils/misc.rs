@@ -27,8 +27,8 @@ pub fn mod_from_rust_path(config: &crate::Opts, get_shared_mod: bool) -> Option<
             .replace('/', "::")
     }
 
-    let output = match !config.shared {
-        true => {
+    let output = match config.shared {
+        ShareMode::Unique => {
             if !get_shared_mod {
                 get_module_name(&config.rust_input_path, &config.rust_crate_dir)
             } else {
@@ -43,7 +43,7 @@ pub fn mod_from_rust_path(config: &crate::Opts, get_shared_mod: bool) -> Option<
                 }
             }
         }
-        false => {
+        ShareMode::Shared => {
             // Whatever `get_shared_mod` is, return the shared module name for a shared block
             get_module_name(
                 &config.shared_rust_output_path.clone().unwrap(),
@@ -76,16 +76,16 @@ pub fn is_multi_blocks_case(all_configs: Option<&[crate::Opts]>) -> bool {
     let r = match all_configs.len() {
         0 => panic!("there should be at least 1 config"),
         1 => {
-            assert!(!all_configs[0].shared); // single item must not be shared
+            assert_eq!(all_configs[0].shared, ShareMode::Unique); // single item must not be shared
             false
         }
         _ => {
             for (i, config) in all_configs.iter().enumerate().take(all_configs.len() - 1) {
-                if config.shared {
+                if config.shared == ShareMode::Shared {
                     log::error!("Config {i} is shared, but should not be");
                 }
             }
-            assert!(all_configs[all_configs.len() - 1].shared); // last item must be shared
+            assert_eq!(all_configs[all_configs.len() - 1].shared, ShareMode::Shared); // last item must be shared
             true
         }
     };
@@ -196,6 +196,12 @@ impl Display for BlockIndex {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "{}", self.0)
     }
+}
+
+#[derive(PartialEq, Eq, Copy, Clone, Debug, serde::Serialize, Hash)]
+pub enum ShareMode {
+    Unique, // for (the types only for) regular/no-shared block
+    Shared, // for (the types only for) shared block
 }
 
 pub trait PathExt {

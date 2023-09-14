@@ -65,24 +65,24 @@ pub trait TypeRustGeneratorTrait {
             _ => ir_type,
         };
 
-        if self.get_context().ir_file.is_type_shared_by_safe_ident(ty) {
-            return SHARED_MODULE.with(|data| {
-                        let cloned = data.borrow().clone();
-                        if cloned.is_none() {
-                            panic!("in instance in charge of `{}`: checking shared for type \"{:?}\", it is shared indeed, but the shared module name is None",
-                                self.get_context().type_name, ty
-                            );
-                        }
-                        cloned
-                    });
+        match self.get_context().ir_file.is_type_shared_by_safe_ident(ty) {
+            ShareMode::Unique => None,
+            ShareMode::Shared => SHARED_MODULE.with(|data| {
+                let cloned = data.borrow().clone();
+                if cloned.is_none() {
+                    panic!("in instance in charge of `{}`: checking shared for type \"{:?}\", it is shared indeed, but the shared module name is None",
+                        self.get_context().type_name, ty
+                    );
+                }
+                cloned
+            }),
         }
-        None
     }
 
     fn get_wire2api_prefix(&self, ir_type: &IrType) -> String {
         let shared_mod_name = self.get_shared_module_of_a_type(ir_type);
 
-        if !self.get_context().config.shared && shared_mod_name.is_some() {
+        if self.get_context().config.shared == ShareMode::Unique && shared_mod_name.is_some() {
             format!("{}::Wire2Api", shared_mod_name.unwrap())
         } else {
             "Wire2Api".into()

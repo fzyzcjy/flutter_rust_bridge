@@ -3,6 +3,7 @@ use crate::generator::dart::{dart_comments, dart_metadata, GeneratedApiMethod};
 use crate::target::Acc;
 use crate::type_dart_generator_struct;
 use crate::utils::method::FunctionName;
+use crate::utils::misc::ShareMode;
 use crate::{ir::*, Opts};
 use convert_case::{Case, Casing};
 
@@ -23,8 +24,8 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                         .iter()
                         .map(|field| {
                             let api2wire_func_name = format!("api2wire_{}", field.ty.safe_ident());
-                            let prefix = match !self.context.config.shared {
-                                true => {
+                            let prefix = match self.context.config.shared {
+                                ShareMode::Unique => {
                                     if !self.is_type_shared(&field.ty) {
                                         ""
                                     } else {
@@ -38,8 +39,9 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                                         }
                                     }
                                 }
-                                false => "",
+                                ShareMode::Shared => "",
                             };
+
                             format!(
                                 "{prefix}{api2wire_func_name}(raw.{})",
                                 field.name.dart_style()
@@ -92,14 +94,15 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             .iter()
             .enumerate()
             .map(|(idx, field)| {
-                let prefix = if !self.context.config.shared {
-                    if !self.is_type_shared(&field.ty) {
-                        "_"
-                    } else {
-                        "_sharedImpl."
+                let prefix = match self.context.ir_file.shared {
+                    ShareMode::Unique => {
+                        if !self.is_type_shared(&field.ty) {
+                            "_"
+                        } else {
+                            "_sharedImpl."
+                        }
                     }
-                } else {
-                    ""
+                    ShareMode::Shared => "",
                 };
                 format!(
                     "{}: {}wire2api_{}(arr[{}]),",
@@ -298,7 +301,7 @@ pub(crate) fn api_fill_for_field(
     dart_style: &str,
     rust_style: &str,
     is_struct: bool,
-    is_ir_file_shared: bool,
+    ir_file_shared_mode: ShareMode,
     is_type_shared: bool,
     shared_dart_api2wire_funcs: &Option<Acc<String>>,
 ) -> String {
@@ -309,8 +312,8 @@ pub(crate) fn api_fill_for_field(
         )
     } else {
         let api2wire_func_name = format!("api2wire_{}", safe_ident);
-        let prefix = match !is_ir_file_shared {
-            true => {
+        let prefix = match ir_file_shared_mode {
+            ShareMode::Unique => {
                 if !is_type_shared {
                     ""
                 } else {
@@ -323,7 +326,7 @@ pub(crate) fn api_fill_for_field(
                     }
                 }
             }
-            false => "",
+            ShareMode::Shared => "",
         };
 
         format!(
