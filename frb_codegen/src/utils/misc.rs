@@ -27,7 +27,7 @@ pub fn mod_from_rust_path(config: &crate::Opts, get_shared_mod: bool) -> Option<
             .replace('/', "::")
     }
 
-    let output = match config.shared {
+    let output = match config.share_mode {
         ShareMode::Unique => {
             if !get_shared_mod {
                 get_module_name(&config.rust_input_path, &config.rust_crate_dir)
@@ -76,16 +76,19 @@ pub fn is_multi_blocks_case(all_configs: Option<&[crate::Opts]>) -> bool {
     let r = match all_configs.len() {
         0 => panic!("there should be at least 1 config"),
         1 => {
-            assert_eq!(all_configs[0].shared, ShareMode::Unique); // single item must not be shared
+            assert_eq!(all_configs[0].share_mode, ShareMode::Unique); // single item must not be shared
             false
         }
         _ => {
             for (i, config) in all_configs.iter().enumerate().take(all_configs.len() - 1) {
-                if config.shared == ShareMode::Shared {
+                if config.share_mode == ShareMode::Shared {
                     log::error!("Config {i} is shared, but should not be");
                 }
             }
-            assert_eq!(all_configs[all_configs.len() - 1].shared, ShareMode::Shared); // last item must be shared
+            assert_eq!(
+                all_configs[all_configs.len() - 1].share_mode,
+                ShareMode::Shared
+            ); // last item must be shared
             true
         }
     };

@@ -70,7 +70,7 @@ pub fn modify_dart_wire_content(
         )*/
         .replace("typedef WireSyncReturn = ffi.Pointer<DartCObject>;", "");
 
-    match ir_file.shared {
+    match ir_file.share_mode {
         crate::utils::misc::ShareMode::Unique => {
             // For ONLY regular configs: erase class block code which are shared.
             // The redundant classes are due to the forward declaration in c header file for regular block.

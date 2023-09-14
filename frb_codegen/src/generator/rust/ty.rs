@@ -82,7 +82,7 @@ pub trait TypeRustGeneratorTrait {
     fn get_wire2api_prefix(&self, ir_type: &IrType) -> String {
         let shared_mod_name = self.get_shared_module_of_a_type(ir_type);
 
-        if self.get_context().config.shared == ShareMode::Unique && shared_mod_name.is_some() {
+        if self.get_context().config.share_mode == ShareMode::Unique && shared_mod_name.is_some() {
             format!("{}::Wire2Api", shared_mod_name.unwrap())
         } else {
             "Wire2Api".into()

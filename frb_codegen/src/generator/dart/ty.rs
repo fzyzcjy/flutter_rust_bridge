@@ -33,7 +33,7 @@ pub trait TypeDartGeneratorTrait {
     }
 
     fn get_private_prefix(&self) -> String {
-        match self.get_context().config.shared {
+        match self.get_context().config.share_mode {
             crate::utils::misc::ShareMode::Unique => "_".into(),
             crate::utils::misc::ShareMode::Shared => "".into(),
         }

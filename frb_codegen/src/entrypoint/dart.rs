@@ -32,7 +32,7 @@ pub(crate) fn generate_dart_code(
     let mut exclude_symbols = generated_rust.get_exclude_symbols(all_symbols, ir_file);
     let mut extra_forward_declarations = Vec::new();
     //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓refine exclude_symbols↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-    match ir_file.shared {
+    match ir_file.share_mode {
         ShareMode::Unique => {
             // 1. refine `exclude_symbols`
             for c in all_configs {
@@ -58,7 +58,7 @@ pub(crate) fn generate_dart_code(
         }
         ShareMode::Shared => {
             for c in all_configs {
-                if c.shared == ShareMode::Shared {
+                if c.share_mode == ShareMode::Shared {
                     continue;
                 }
                 let (wire_types, wire_funcs) = get_wire_types_funcs_for_c_file(c, all_configs);

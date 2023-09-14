@@ -24,7 +24,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                         .iter()
                         .map(|field| {
                             let api2wire_func_name = format!("api2wire_{}", field.ty.safe_ident());
-                            let prefix = match self.context.config.shared {
+                            let prefix = match self.context.config.share_mode {
                                 ShareMode::Unique => {
                                     if !self.is_type_shared(&field.ty) {
                                         ""
@@ -69,7 +69,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                         &field.name.dart_style(),
                         field.name.rust_style(),
                         field.ty.is_struct(),
-                        self.context.ir_file.shared,
+                        self.context.ir_file.share_mode,
                         self.is_type_shared(&field.ty),
                         shared_dart_api2wire_funcs,
                     )
@@ -94,7 +94,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             .iter()
             .enumerate()
             .map(|(idx, field)| {
-                let prefix = match self.context.ir_file.shared {
+                let prefix = match self.context.ir_file.share_mode {
                     ShareMode::Unique => {
                         if !self.is_type_shared(&field.ty) {
                             "_"

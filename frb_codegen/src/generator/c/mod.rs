@@ -19,7 +19,7 @@ pub fn generate_dummy(
 
             let regular_block_headers = all_configs
                 .iter()
-                .filter(|e| e.shared == ShareMode::Unique)
+                .filter(|e| e.share_mode == ShareMode::Unique)
                 .map(|e| {
                     // get directory only from paths
                     let src_p = Path::new(&config.c_output_paths[c_path_index]);

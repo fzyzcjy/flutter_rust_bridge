@@ -26,7 +26,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
 
                 let shared_mod_name = self.get_shared_module_of_a_type(&field.ty);
                 Acc {
-                    io: if self.context.config.shared == ShareMode::Unique
+                    io: if self.context.config.share_mode == ShareMode::Unique
                         && shared_mod_name.is_some()
                     {
                         format!(

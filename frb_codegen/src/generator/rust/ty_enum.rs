@@ -40,7 +40,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                                 if !target.is_wasm() {
                                     let shared_mod_name: Option<String> =
                                         self.get_shared_module_of_a_type(&field.ty);
-                                    if self.context.config.shared == ShareMode::Unique
+                                    if self.context.config.share_mode == ShareMode::Unique
                                         && shared_mod_name.is_some()
                                     {
                                         format!(

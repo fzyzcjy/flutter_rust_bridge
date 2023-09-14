@@ -40,15 +40,15 @@ pub struct IrFile {
     pub enum_pool: IrEnumPool,
     pub has_executor: bool,
     pub block_index: BlockIndex,
-    pub shared: ShareMode,
+    pub share_mode: ShareMode,
 }
 
 impl IrFile {
     pub fn funcs(&self, exclude_shared_method: bool) -> Vec<IrFunc> {
-        if self.shared == ShareMode::Unique && exclude_shared_method {
+        if self.share_mode == ShareMode::Unique && exclude_shared_method {
             self.funcs
                 .iter()
-                .filter(|each| each.shared == ShareMode::Unique)
+                .filter(|each| each.share_mode == ShareMode::Unique)
                 .cloned()
                 .collect()
         } else {
@@ -68,15 +68,15 @@ impl IrFile {
     /// For a regular API block, this method returns all methods of shared types used in this block.
     /// For a shared block, it returns all methods from all shared types.
     pub fn get_shared_methods(&self) -> Vec<IrFunc> {
-        if self.shared == ShareMode::Unique {
+        if self.share_mode == ShareMode::Unique {
             self.funcs
                 .iter()
                 .cloned()
-                .filter(|each| each.shared == ShareMode::Shared)
+                .filter(|each| each.share_mode == ShareMode::Shared)
                 .collect::<Vec<_>>()
         } else {
-            if self.shared == ShareMode::Shared {
-                assert!(self.funcs.iter().all(|x| x.shared == ShareMode::Shared))
+            if self.share_mode == ShareMode::Shared {
+                assert!(self.funcs.iter().all(|x| x.share_mode == ShareMode::Shared))
             }
             self.funcs.clone()
         }
@@ -89,7 +89,7 @@ impl IrFile {
         has_executor: bool,
         block_index: BlockIndex,
         all_configs: &[Opts],
-        shared: ShareMode,
+        share_mode: ShareMode,
     ) -> IrFile {
         let ir_fie = IrFile {
             funcs,
@@ -97,7 +97,7 @@ impl IrFile {
             enum_pool,
             has_executor,
             block_index,
-            shared,
+            share_mode,
         };
 
         // Get shared types in advance here, because these types will be used multiple times later for multi-blocks case.
@@ -156,7 +156,7 @@ impl IrFile {
             all_configs,
         );
 
-        let types = match self.shared {
+        let types = match self.share_mode {
             ShareMode::Unique => {
                 let raw_distinct_types =
                     self.get_regular_distinct_types(include_func_inputs, include_func_output);
@@ -200,7 +200,7 @@ impl IrFile {
         include_func_output: bool,
     ) -> HashSet<IrType> {
         assert!(include_func_inputs || include_func_output);
-        assert!(self.shared == ShareMode::Unique);
+        assert!(self.share_mode == ShareMode::Unique);
         let mut seen_idents = HashSet::new();
         let mut ans = Vec::new();
         self.visit_types(
@@ -225,7 +225,7 @@ impl IrFile {
     /// for a shared IrFile, all shared types would be returned.
     fn get_shared_distinct_types_for_current_block(&self) -> HashSet<IrType> {
         let global_shared = self.get_shared_distinct_types_for_all_blocks(true, true, &[]);
-        match self.shared {
+        match self.share_mode {
             ShareMode::Unique => self
                 .get_regular_distinct_types(true, true)
                 .intersection(&global_shared)
@@ -296,13 +296,13 @@ impl IrFile {
         include_func_output: bool,
         all_configs: &[Opts],
     ) -> HashSet<IrType> {
-        let regular_configs = match all_configs.last().unwrap().shared {
+        let regular_configs = match all_configs.last().unwrap().share_mode {
             ShareMode::Unique => all_configs,
             ShareMode::Shared => &all_configs[0..all_configs.len() - 1],
         };
         assert!(regular_configs
             .iter()
-            .all(|c| c.shared == ShareMode::Unique));
+            .all(|c| c.share_mode == ShareMode::Unique));
         let mut regular_block_uniques = Vec::new();
         let mut all_regular_types = Vec::new();
         let mut regular_ir_files = Vec::new();
@@ -322,7 +322,7 @@ impl IrFile {
             .into_iter()
             .collect::<HashSet<_>>();
         //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓for cross shared types↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-        if self.shared == ShareMode::Unique {
+        if self.share_mode == ShareMode::Unique {
             for (i, each_block_set) in regular_block_uniques.iter().enumerate() {
                 for suspected_shared_type in each_block_set {
                     self.add_cross_shared_types(

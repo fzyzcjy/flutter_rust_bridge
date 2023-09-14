@@ -67,7 +67,7 @@ impl Output {
         }
 
         // the below is only for multi-blocks case
-        match ir_file.shared {
+        match ir_file.share_mode {
             crate::utils::misc::ShareMode::Unique => {
                 // for regular blocks, push those methods from shared types in
                 FETCHED_FOR_SHARED_METHODS_WIRE_NAMES.with(|has_fetched| {
@@ -147,7 +147,7 @@ impl<'a> Generator<'a> {
         lines.push(String::new());
         lines.push("use flutter_rust_bridge::*;".to_owned());
         lines.push("use core::panic::UnwindSafe;".to_owned());
-        if ir_file.shared == ShareMode::Unique {
+        if ir_file.share_mode == ShareMode::Unique {
             lines.push(format!("use crate::{rust_wire_mod}::*;"));
             lines.push("use std::sync::Arc;".to_owned());
             lines.push("use std::ffi::c_void;".to_owned());
@@ -168,7 +168,7 @@ impl<'a> Generator<'a> {
         lines += ir_file
             .funcs(true)
             .iter()
-            .filter(|f| f.shared == ir_file.shared)
+            .filter(|f| f.share_mode == ir_file.share_mode)
             .map(|f| self.generate_wire_func(f, ir_file, shared_rust_wire_mod, all_configs))
             .collect();
 
@@ -245,7 +245,7 @@ impl<'a> Generator<'a> {
         );
         (lines.io).push(self.section_header_comment("impl NewWithNullPtr"));
         assert!(!all_configs.is_empty());
-        if !is_multi_blocks_case(None) || ir_file.shared == ShareMode::Shared {
+        if !is_multi_blocks_case(None) || ir_file.share_mode == ShareMode::Shared {
             (lines.io).push(self.generate_new_with_nullptr_misc().to_string());
         }
         lines.io.extend(
@@ -258,8 +258,8 @@ impl<'a> Generator<'a> {
 
         // add `free_WireSyncReturn` only for single-block case or the share block in multi-blocks case
         let is_multi_blocks = is_multi_blocks_case(None);
-        if (!is_multi_blocks && ir_file.shared == ShareMode::Unique)
-            || (is_multi_blocks && ir_file.shared == ShareMode::Shared)
+        if (!is_multi_blocks && ir_file.share_mode == ShareMode::Unique)
+            || (is_multi_blocks && ir_file.share_mode == ShareMode::Shared)
         {
             lines.io.push(self.generate_sync_execution_mode_utility());
         }
@@ -312,7 +312,7 @@ impl<'a> Generator<'a> {
             // de-duplicate
             .collect::<HashSet<String>>();
         //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑orig code↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
-        match ir_file.shared {
+        match ir_file.share_mode {
             ShareMode::Unique => {
                 // import shared-block module, if essential
                 if let Some(shared_rust_wire_mod) = shared_rust_wire_mod {
@@ -372,13 +372,13 @@ impl<'a> Generator<'a> {
             Acc::default()
         };
 
-        let distinct_input_types_in_shared_block = match ir_file.shared {
+        let distinct_input_types_in_shared_block = match ir_file.share_mode {
             ShareMode::Unique => {
                 if all_configs.is_empty() {
                     vec![]
                 } else {
                     let last_config = all_configs.last().unwrap();
-                    match last_config.shared {
+                    match last_config.share_mode {
                         ShareMode::Unique => vec![],
                         ShareMode::Shared => {
                             let shared_ir_file = last_config.get_ir_file(all_configs).unwrap();
@@ -409,7 +409,7 @@ impl<'a> Generator<'a> {
                         format!(
                             "{}: impl {}Wire2Api<{}> + UnwindSafe",
                             name,
-                            if ir_file.shared == ShareMode::Unique && is_field_shared(field) {
+                            if ir_file.share_mode == ShareMode::Unique && is_field_shared(field) {
                                 format!("{}::", shared_rust_wire_mod.unwrap())
                             } else {
                                 "".into()

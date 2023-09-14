@@ -39,7 +39,7 @@ impl TypeDartGeneratorTrait for TypeRecordGenerator<'_> {
                     &format!("${}", idx + 1),
                     field.name.rust_style(),
                     field.ty.is_struct(),
-                    self.context.ir_file.shared,
+                    self.context.ir_file.share_mode,
                     self.is_type_shared(&field.ty),
                     shared_dart_api2wire_funcs,
                 )

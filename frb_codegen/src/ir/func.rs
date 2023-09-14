@@ -10,7 +10,7 @@ pub struct IrFunc {
     pub fallible: bool,
     pub mode: IrFuncMode,
     pub comments: Vec<IrComment>,
-    pub shared: ShareMode,
+    pub share_mode: ShareMode,
 }
 }
 
