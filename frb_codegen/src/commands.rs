@@ -84,7 +84,7 @@ fn cbindgen(
     exclude_symbols: Vec<String>,
     extra_forward_definitions: Vec<String>,
 ) -> CommandResult {
-    let mut declarations = "".to_string();
+    let mut declarations = "".to_string(); // copied from `dart-sdk/dart_api.h`, to convert Dart_Handle to Object.
     declarations += extra_forward_definitions
         .iter()
         .map(|s| format!("\n{};", s))
@@ -104,8 +104,6 @@ fn cbindgen(
             "stdlib.h".to_string(),
         ],
         no_includes: true,
-        // copied from: dart-sdk/dart_api.h
-        // used to convert Dart_Handle to Object.
         after_includes: Some(declarations),
         export: cbindgen::ExportConfig {
             include: c_struct_names
