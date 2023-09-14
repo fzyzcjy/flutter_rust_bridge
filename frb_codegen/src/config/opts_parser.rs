@@ -18,7 +18,11 @@ use std::str::FromStr;
 use std::{env, fs};
 use toml::Value;
 
-pub fn config_parse(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
+/// Parses the raw command-line options,
+/// and returns a tuple containing a vector of `Opts` structs
+/// and a vector of unique symbol name(s)/Api(s).
+/// Both the 2 are essential for code generation.
+pub fn parse_configs_and_symbols(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<String>)> {
     if let Some(config) = raw.config_file {
         raw = parse_yaml(&config);
     }

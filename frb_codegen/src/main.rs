@@ -1,7 +1,9 @@
 use anyhow::Context;
 #[cfg(feature = "serde")]
 use lib_flutter_rust_bridge_codegen::dump;
-use lib_flutter_rust_bridge_codegen::{config_parse, frb_codegen_multi, init_logger, RawOpts};
+use lib_flutter_rust_bridge_codegen::{
+    frb_codegen_multi, init_logger, parse_configs_and_symbols, RawOpts,
+};
 use log::{debug, error, info};
 
 fn main() -> anyhow::Result<()> {
@@ -12,7 +14,7 @@ fn main() -> anyhow::Result<()> {
     #[cfg(feature = "serde")]
     let dump_config = raw_opts.dump.clone();
 
-    let (all_configs, all_symbols) = config_parse(raw_opts)?;
+    let (all_configs, all_symbols) = parse_configs_and_symbols(raw_opts)?;
     debug!("configs={:?}", all_configs);
 
     // dump config(s)
@@ -54,7 +56,7 @@ mod tests {
 
     use lazy_static::lazy_static;
     use lib_flutter_rust_bridge_codegen::{
-        config_parse, frb_codegen, frb_codegen_multi, init_logger, RawOpts,
+        frb_codegen, frb_codegen_multi, init_logger, parse_configs_and_symbols, RawOpts,
     };
 
     lazy_static! {
@@ -192,7 +194,7 @@ mod tests {
         };
 
         // get opts from raw opts
-        let (all_configs, all_symbols) = config_parse(raw_opts).unwrap();
+        let (all_configs, all_symbols) = parse_configs_and_symbols(raw_opts).unwrap();
 
         // generation of rust api for ffi (single block)
         assert_eq!(all_configs.len(), 1);
@@ -311,7 +313,7 @@ mod tests {
         }
 
         // get opts from raw opts
-        let (all_configs, all_symbols) = config_parse(raw_opts).unwrap();
+        let (all_configs, all_symbols) = parse_configs_and_symbols(raw_opts).unwrap();
 
         // generation of rust api for ffi (multi-blocks)
         // In multi-blocks case, the shared block MUST be generated at first.
