@@ -15,7 +15,7 @@ fn main() -> anyhow::Result<()> {
     let (all_configs, all_symbols) = config_parse(raw_opts)?;
     debug!("configs={:?}", all_configs);
 
-    // generation of rust api for ffi
+    // dump config(s)
     #[cfg(feature = "serde")]
     if let Some(dump) = dump_config {
         return dump::dump_multi(&all_configs, dump).context("Failed to dump config");
