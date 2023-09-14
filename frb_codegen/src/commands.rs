@@ -84,13 +84,13 @@ fn cbindgen(
     exclude_symbols: Vec<String>,
     extra_forward_definitions: Vec<String>,
 ) -> CommandResult {
-    let mut declarations = "".to_string(); // copied from `dart-sdk/dart_api.h`, to convert Dart_Handle to Object.
+    let mut declarations = "".to_string();
     declarations += extra_forward_definitions
         .iter()
         .map(|s| format!("\n{};", s))
         .collect::<String>()
         .as_str();
-    declarations.push_str("\n\ntypedef struct _Dart_Handle* Dart_Handle;");
+    declarations.push_str("\n\ntypedef struct _Dart_Handle* Dart_Handle;"); // copied from `dart-sdk/dart_api.h`, to convert Dart_Handle to Object.
     debug!(
         "execute cbindgen rust_crate_dir={} c_output_path={}",
         rust_crate_dir, c_output_path
