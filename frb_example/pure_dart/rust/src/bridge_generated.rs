@@ -3680,6 +3680,7 @@ impl support::IntoDart for VecOfPrimitivePack {
             self.int64list.into_into_dart().into_dart(),
             self.float32list.into_into_dart().into_dart(),
             self.float64list.into_into_dart().into_dart(),
+            self.bool_list.into_into_dart().into_dart(),
         ]
         .into_dart()
     }
