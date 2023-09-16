@@ -1725,6 +1725,7 @@ class VecOfPrimitivePack {
   final Int64List int64List;
   final Float32List float32List;
   final Float64List float64List;
+  final List<bool> boolList;
 
   const VecOfPrimitivePack({
     required this.int8List,
@@ -1737,6 +1738,7 @@ class VecOfPrimitivePack {
     required this.int64List,
     required this.float32List,
     required this.float64List,
+    required this.boolList,
   });
 }
 

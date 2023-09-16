@@ -3490,6 +3490,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return (raw as List<dynamic>).map(_wire2api_attribute).toList();
   }
 
+  List<bool> _wire2api_list_bool(dynamic raw) {
+    return (raw as List<dynamic>).map(_wire2api_bool).toList();
+  }
+
   List<Element> _wire2api_list_element(dynamic raw) {
     return (raw as List<dynamic>).map(_wire2api_element).toList();
   }
@@ -4022,7 +4026,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   VecOfPrimitivePack _wire2api_vec_of_primitive_pack(dynamic raw) {
     final arr = raw as List<dynamic>;
-    if (arr.length != 10) throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
+    if (arr.length != 11) throw Exception('unexpected arr length: expect 11 but see ${arr.length}');
     return VecOfPrimitivePack(
       int8List: _wire2api_int_8_list(arr[0]),
       uint8List: _wire2api_uint_8_list(arr[1]),
@@ -4034,6 +4038,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
       int64List: _wire2api_int_64_list(arr[7]),
       float32List: _wire2api_float_32_list(arr[8]),
       float64List: _wire2api_float_64_list(arr[9]),
+      boolList: _wire2api_list_bool(arr[10]),
     );
   }
 
