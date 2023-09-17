@@ -167,6 +167,7 @@ More specifically, thanks for all these contributions:
 * [nitn3lav](https://github.com/nitn3lav): nested `struct`s without `Box`.
 * [erikas-taroza](https://github.com/erikas-taroza): Support list of primitive enums. Make enum camelCase. Warn wrong path.
 * [alexthe2](https://github.com/alexthe2): Add Option Datetime. Add empty structs. Improve doc. Add `r#`. Fix mirror enum bug.
+* [SiongSng](https://github.com/SiongSng): Finish implementing exception hierarchy. Fix SyncReturn bug.
 * [AlienKevin](https://github.com/AlienKevin): Add flutter example for macOS. Add doc for Android NDK bug.
 * [banool](https://github.com/banool): Fix pubspec parsing. Fix symbol-stripping doc.
 * [coder0xff](https://github.com/coder0xff): Refactor SupportedInnerType. Extra codegen tester.
@@ -178,7 +179,6 @@ More specifically, thanks for all these contributions:
 * [jsonmona](https://github.com/jsonmona): Add import.
 * [w-ensink](https://github.com/w-ensink): Improve doc. Fix CI. Refactor. Add tests.
 * [codercengiz](https://github.com/codercengiz): Fix mirroring bug.
-* [SiongSng](https://github.com/SiongSng): Fix SyncReturn bug.
 * [Michael-F-Bryan](https://github.com/Michael-F-Bryan): Detect broken bindings.
 * [phlip9](https://github.com/phlip9): Fix no-serde compilation.
 * [bus710](https://github.com/bus710): Add a case in troubleshooting.
