@@ -90,13 +90,13 @@ dart_test_valgrind name:
 dart_test_simple name:
     just _dart_test_raw {{name}} ""
 
-_dart_test_raw name script_prefix $CARGO_TARGET_DIR="/home/runner":
+_dart_test_raw name script_prefix:
     cd frb_example/{{name}}/rust && cargo build --verbose
     # need to be AOT, since prod environment is AOT, and JIT+valgrind will have strange problems
     cd frb_example/{{name}}/dart && dart compile exe bin/{{name}}.dart -o main.exe
     cd frb_example/{{name}}/dart && \
         {{script_prefix}} ./main.exe \
-        "${CARGO_TARGET_DIR}/debug/libflutter_rust_bridge_example_{{name}}.{{library_file_ext}}" --chain-stack-traces
+        "../../../target/debug/libflutter_rust_bridge_example_{{name}}.{{library_file_ext}}" --chain-stack-traces
 
 flutter_example_with_flutter_integration_test:
     flutter config --enable-{{ os() }}-desktop
