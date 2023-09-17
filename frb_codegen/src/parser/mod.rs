@@ -21,6 +21,7 @@ use crate::ir::*;
 use crate::generator::rust::HANDLER_NAME;
 use crate::parser::source_graph::Crate;
 use crate::parser::ty::TypeParser;
+use crate::parser::IrType::{EnumRef, StructRef};
 use crate::utils::method::FunctionName;
 
 use self::ty::convert_ident_str;
@@ -158,10 +159,41 @@ impl<'a> Parser<'a> {
                     {
                         #[cfg(feature = "qualified_names")]
                         [("anyhow", None), ("Result", Some(ArgsRefs::Generic([args])))] => {
-                            Some(IrFuncOutput::ResultType(args.clone()))
+                            Some(IrFuncOutput::ResultType {
+                                ok: args.clone(),
+                                error: None,
+                            })
                         }
-                        [("Result", Some(ArgsRefs::Generic([args])))] => {
-                            Some(IrFuncOutput::ResultType(args.clone()))
+                        [("Result", Some(ArgsRefs::Generic(args)))] => {
+                            let ok = args.first().unwrap();
+
+                            let is_anyhow = args.len() == 1
+                                || args.iter().any(|x| match x {
+                                    IrType::Unencodable(IrTypeUnencodable { string, .. }) => {
+                                        string == "anyhow :: Error"
+                                    }
+                                    _ => false,
+                                });
+                            let error = if is_anyhow {
+                                Some(IrType::Delegate(IrTypeDelegate::Anyhow))
+                            } else {
+                                args.last().cloned()
+                            };
+
+                            let error = if let Some(StructRef(mut struct_ref)) = error {
+                                struct_ref.is_exception = true;
+                                Some(StructRef(struct_ref))
+                            } else if let Some(EnumRef(mut enum_ref)) = error {
+                                enum_ref.is_exception = true;
+                                Some(EnumRef(enum_ref))
+                            } else {
+                                error
+                            };
+
+                            Some(IrFuncOutput::ResultType {
+                                ok: ok.clone(),
+                                error,
+                            })
                         }
                         _ => None, // unencodable types not implemented
                     }
@@ -213,6 +245,7 @@ impl<'a> Parser<'a> {
 
         let mut inputs = Vec::new();
         let mut output = None;
+        let mut error = None;
         let mut mode: Option<IrFuncMode> = None;
         let mut fallible = true;
 
@@ -262,7 +295,7 @@ impl<'a> Parser<'a> {
         }
 
         if output.is_none() {
-            output = Some(match &sig.output {
+            let result = match &sig.output {
                 ReturnType::Type(_, ty) => {
                     let output_type = self.try_parse_fn_output_type(ty).with_context(|| {
                         format!(
@@ -271,18 +304,20 @@ impl<'a> Parser<'a> {
                         )
                     })?;
                     match output_type {
-                        IrFuncOutput::ResultType(ty) => ty,
+                        IrFuncOutput::ResultType { ok: ty, error: err } => (ty, err),
                         IrFuncOutput::Type(ty) => {
                             fallible = false;
-                            ty
+                            (ty, None)
                         }
                     }
                 }
                 ReturnType::Default => {
                     fallible = false;
-                    IrType::Primitive(IrTypePrimitive::Unit)
+                    (IrType::Primitive(IrTypePrimitive::Unit), None)
                 }
-            });
+            };
+            output = Some(result.0);
+            error = result.1;
             mode = Some(if let Some(IrType::SyncReturn(_)) = output {
                 IrFuncMode::Sync
             } else {
@@ -297,6 +332,7 @@ impl<'a> Parser<'a> {
             fallible,
             mode: mode.context("Missing mode")?,
             comments: extract_comments(&func.attrs),
+            error_output: error,
         })
     }
 }

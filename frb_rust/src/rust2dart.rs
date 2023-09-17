@@ -1,13 +1,12 @@
 //! Manages receiving and sending values across the FFI boundary.
 
-use std::marker::PhantomData;
-
+pub use crate::ffi::*;
+pub use crate::into_into_dart::IntoIntoDart;
 /// The representation of a Dart object outside of the Dart heap.
 ///
 /// Its implementation lies with the Dart language and therefore should not be
 /// depended on to be stable.
-pub use crate::ffi::*;
-pub use crate::into_into_dart::IntoIntoDart;
+use std::marker::PhantomData;
 
 /// A wrapper around a Dart [`Isolate`].
 #[derive(Clone)]
@@ -18,6 +17,7 @@ pub struct Rust2Dart {
 const RUST2DART_ACTION_SUCCESS: i32 = 0;
 const RUST2DART_ACTION_ERROR: i32 = 1;
 const RUST2DART_ACTION_CLOSE_STREAM: i32 = 2;
+const RUST2DART_ACTION_PANIC: i32 = 3;
 
 // api signatures is similar to Flutter Android's callback https://api.flutter.dev/javadoc/io/flutter/plugin/common/MethodChannel.Result.html
 impl Rust2Dart {
@@ -36,24 +36,16 @@ impl Rust2Dart {
         ])
     }
 
-    /// Send an error back to the specified port.
-    pub fn error(&self, error_code: String, error_message: String) -> bool {
-        self.error_full(error_code, error_message, ())
+    /// Send a panic back to the specified port.
+    pub fn panic(&self, e: impl IntoDart) -> bool {
+        self.channel
+            .post(vec![RUST2DART_ACTION_PANIC.into_dart(), e.into_dart()])
     }
 
     /// Send a detailed error back to the specified port.
-    pub fn error_full(
-        &self,
-        error_code: String,
-        error_message: String,
-        error_details: impl IntoDart,
-    ) -> bool {
-        self.channel.post(vec![
-            RUST2DART_ACTION_ERROR.into_dart(),
-            error_code.into_dart(),
-            error_message.into_dart(),
-            error_details.into_dart(),
-        ])
+    pub fn error(&self, e: impl IntoDart) -> bool {
+        self.channel
+            .post(vec![RUST2DART_ACTION_ERROR.into_dart(), e.into_dart()])
     }
 
     /// Close the stream and ignore further messages.
@@ -145,5 +137,16 @@ impl<T> StreamSink<T> {
     /// the stream could not be closed, or when it has already been closed.
     pub fn close(&self) -> bool {
         self.rust2dart().close_stream()
+    }
+}
+
+// IntoDart consumes `self` so we need a trait for the `Box` case
+pub trait BoxIntoDart {
+    fn box_into_dart(self: Box<Self>) -> DartAbi;
+}
+
+impl<T: IntoDart> BoxIntoDart for T {
+    fn box_into_dart(self: Box<T>) -> DartAbi {
+        self.into_dart()
     }
 }

@@ -127,6 +127,12 @@ pub(crate) fn generate_api_func(
         format!("_wire2api_{}", func.output.safe_ident())
     };
 
+    let parse_error_data = if let Some(error_output) = &func.error_output {
+        format!("_wire2api_{}", error_output.safe_ident())
+    } else {
+        "null".to_string()
+    };
+
     let is_sync = matches!(func.mode, IrFuncMode::Sync);
     let implementation = format!(
         "{} {{
@@ -134,6 +140,7 @@ pub(crate) fn generate_api_func(
             return {}({task}(
             callFfi: ({args}) => _platform.inner.{}({}),
             parseSuccessData: {},
+            parseErrorData: {},
             {}
         ));}}",
         func_expr,
@@ -142,6 +149,7 @@ pub(crate) fn generate_api_func(
         func.wire_func_name(),
         wire_param_list.join(", "),
         parse_success_data,
+        parse_error_data,
         task_common_args,
         task = if is_sync {
             "FlutterRustBridgeSyncTask"

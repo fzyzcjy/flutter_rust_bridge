@@ -490,6 +490,14 @@ typedef struct wire_ConcatenateWith {
   struct wire_uint_8_list *a;
 } wire_ConcatenateWith;
 
+typedef struct wire_SomeStruct {
+  uint32_t value;
+} wire_SomeStruct;
+
+typedef struct wire_CustomStruct {
+  struct wire_uint_8_list *message;
+} wire_CustomStruct;
+
 void store_dart_post_cobject(DartPostCObjectFnType ptr);
 
 Dart_Handle get_dart_object(uintptr_t ptr);
@@ -849,6 +857,26 @@ WireSyncReturn wire_sync_return_mirror(void);
 
 void wire_macro_struct(int64_t port_);
 
+void wire_return_err_custom_error(int64_t port_);
+
+void wire_return_ok_custom_error(int64_t port_);
+
+void wire_return_error_variant(int64_t port_, uint32_t variant);
+
+void wire_return_custom_nested_error_1(int64_t port_);
+
+void wire_return_custom_nested_error_1_variant1(int64_t port_);
+
+void wire_return_custom_nested_error_2(int64_t port_);
+
+void wire_return_custom_struct_error(int64_t port_);
+
+void wire_return_custom_struct_ok(int64_t port_);
+
+void wire_throw_anyhow(int64_t port_);
+
+void wire_panic_with_custom_result(int64_t port_);
+
 void wire_as_string__method__Event(int64_t port_, struct wire_Event *that);
 
 void wire_sum__method__SumWith(int64_t port_, struct wire_SumWith *that, uint32_t y, uint32_t z);
@@ -876,6 +904,30 @@ void wire_handle_some_static_stream_sink__static_method__ConcatenateWith(int64_t
                                                                          uint32_t max);
 
 void wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(int64_t port_);
+
+void wire_new__static_method__SomeStruct(int64_t port_, uint32_t value);
+
+void wire_static_return_err_custom_error__static_method__SomeStruct(int64_t port_);
+
+void wire_static_return_ok_custom_error__static_method__SomeStruct(int64_t port_);
+
+void wire_non_static_return_err_custom_error__method__SomeStruct(int64_t port_,
+                                                                 struct wire_SomeStruct *that);
+
+void wire_non_static_return_ok_custom_error__method__SomeStruct(int64_t port_,
+                                                                struct wire_SomeStruct *that);
+
+void wire_new__static_method__CustomStruct(int64_t port_, struct wire_uint_8_list *message);
+
+void wire_static_return_custom_struct_error__static_method__CustomStruct(int64_t port_);
+
+void wire_static_return_custom_struct_ok__static_method__CustomStruct(int64_t port_);
+
+void wire_nonstatic_return_custom_struct_error__method__CustomStruct(int64_t port_,
+                                                                     struct wire_CustomStruct *that);
+
+void wire_nonstatic_return_custom_struct_ok__method__CustomStruct(int64_t port_,
+                                                                  struct wire_CustomStruct *that);
 
 struct wire_BoxDartDebug new_BoxDartDebug(void);
 
@@ -922,6 +974,8 @@ bool *new_box_autoadd_bool_0(bool value);
 struct wire_C *new_box_autoadd_c_0(void);
 
 struct wire_ConcatenateWith *new_box_autoadd_concatenate_with_0(void);
+
+struct wire_CustomStruct *new_box_autoadd_custom_struct_0(void);
 
 struct wire_Customized *new_box_autoadd_customized_0(void);
 
@@ -976,6 +1030,8 @@ struct wire_Numbers *new_box_autoadd_numbers_0(void);
 struct wire_OpaqueNested *new_box_autoadd_opaque_nested_0(void);
 
 struct wire_Sequences *new_box_autoadd_sequences_0(void);
+
+struct wire_SomeStruct *new_box_autoadd_some_struct_0(void);
 
 struct wire_StructWithEnum *new_box_autoadd_struct_with_enum_0(void);
 
@@ -1292,6 +1348,16 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_test_tuple_2);
     dummy_var ^= ((int64_t) (void*) wire_sync_return_mirror);
     dummy_var ^= ((int64_t) (void*) wire_macro_struct);
+    dummy_var ^= ((int64_t) (void*) wire_return_err_custom_error);
+    dummy_var ^= ((int64_t) (void*) wire_return_ok_custom_error);
+    dummy_var ^= ((int64_t) (void*) wire_return_error_variant);
+    dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_1);
+    dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_1_variant1);
+    dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_2);
+    dummy_var ^= ((int64_t) (void*) wire_return_custom_struct_error);
+    dummy_var ^= ((int64_t) (void*) wire_return_custom_struct_ok);
+    dummy_var ^= ((int64_t) (void*) wire_throw_anyhow);
+    dummy_var ^= ((int64_t) (void*) wire_panic_with_custom_result);
     dummy_var ^= ((int64_t) (void*) wire_as_string__method__Event);
     dummy_var ^= ((int64_t) (void*) wire_sum__method__SumWith);
     dummy_var ^= ((int64_t) (void*) wire_new__static_method__ConcatenateWith);
@@ -1301,6 +1367,16 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_handle_some_stream_sink_at_1__method__ConcatenateWith);
     dummy_var ^= ((int64_t) (void*) wire_handle_some_static_stream_sink__static_method__ConcatenateWith);
     dummy_var ^= ((int64_t) (void*) wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith);
+    dummy_var ^= ((int64_t) (void*) wire_new__static_method__SomeStruct);
+    dummy_var ^= ((int64_t) (void*) wire_static_return_err_custom_error__static_method__SomeStruct);
+    dummy_var ^= ((int64_t) (void*) wire_static_return_ok_custom_error__static_method__SomeStruct);
+    dummy_var ^= ((int64_t) (void*) wire_non_static_return_err_custom_error__method__SomeStruct);
+    dummy_var ^= ((int64_t) (void*) wire_non_static_return_ok_custom_error__method__SomeStruct);
+    dummy_var ^= ((int64_t) (void*) wire_new__static_method__CustomStruct);
+    dummy_var ^= ((int64_t) (void*) wire_static_return_custom_struct_error__static_method__CustomStruct);
+    dummy_var ^= ((int64_t) (void*) wire_static_return_custom_struct_ok__static_method__CustomStruct);
+    dummy_var ^= ((int64_t) (void*) wire_nonstatic_return_custom_struct_error__method__CustomStruct);
+    dummy_var ^= ((int64_t) (void*) wire_nonstatic_return_custom_struct_ok__method__CustomStruct);
     dummy_var ^= ((int64_t) (void*) new_BoxDartDebug);
     dummy_var ^= ((int64_t) (void*) new_DartOpaque);
     dummy_var ^= ((int64_t) (void*) new_HideData);
@@ -1324,6 +1400,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_bool_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_c_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_concatenate_with_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_custom_struct_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_customized_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_dart_opaque_nested_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_empty_0);
@@ -1351,6 +1428,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_numbers_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_opaque_nested_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_sequences_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_some_struct_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_enum_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_sum_with_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_test_id_0);

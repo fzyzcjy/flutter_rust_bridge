@@ -55,6 +55,8 @@ pub enum IrTypeDelegate {
     Uuid,
     #[cfg(feature = "uuid")]
     Uuids,
+    Backtrace,
+    Anyhow,
 }
 
 pub enum IrTypeDelegateArray {
@@ -192,6 +194,8 @@ impl IrTypeDelegate {
             IrTypeDelegate::Uuids => IrType::PrimitiveList(IrTypePrimitiveList {
                 primitive: IrTypePrimitive::U8,
             }),
+            IrTypeDelegate::Backtrace => IrType::Delegate(IrTypeDelegate::String),
+            IrTypeDelegate::Anyhow => IrType::Delegate(IrTypeDelegate::String),
         }
     }
 }
@@ -224,6 +228,8 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::Uuid => "Uuid".to_owned(),
             #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuids => "Uuids".to_owned(),
+            IrTypeDelegate::Backtrace => "String".to_owned(),
+            IrTypeDelegate::Anyhow => "FrbAnyhowException".to_owned(),
         }
     }
 
@@ -249,6 +255,8 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::Uuid => "UuidValue".to_owned(),
             #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuids => "List<UuidValue>".to_owned(),
+            IrTypeDelegate::Backtrace => "String".to_string(),
+            IrTypeDelegate::Anyhow => "FrbAnyhowException".to_string(),
         }
     }
 
@@ -292,6 +300,8 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::Uuid => "uuid::Uuid".to_owned(),
             #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuids => "Vec<uuid::Uuid>".to_owned(),
+            IrTypeDelegate::Backtrace => "String".to_owned(),
+            IrTypeDelegate::Anyhow => "String".to_owned(),
         }
     }
 

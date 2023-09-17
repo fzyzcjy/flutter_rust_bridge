@@ -875,6 +875,56 @@ pub extern "C" fn wire_macro_struct(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_return_err_custom_error(port_: i64) {
+    wire_return_err_custom_error_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_return_ok_custom_error(port_: i64) {
+    wire_return_ok_custom_error_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_return_error_variant(port_: i64, variant: u32) {
+    wire_return_error_variant_impl(port_, variant)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_return_custom_nested_error_1(port_: i64) {
+    wire_return_custom_nested_error_1_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_return_custom_nested_error_1_variant1(port_: i64) {
+    wire_return_custom_nested_error_1_variant1_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_return_custom_nested_error_2(port_: i64) {
+    wire_return_custom_nested_error_2_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_return_custom_struct_error(port_: i64) {
+    wire_return_custom_struct_error_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_return_custom_struct_ok(port_: i64) {
+    wire_return_custom_struct_ok_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_throw_anyhow(port_: i64) {
+    wire_throw_anyhow_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_panic_with_custom_result(port_: i64) {
+    wire_panic_with_custom_result_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_as_string__method__Event(port_: i64, that: *mut wire_Event) {
     wire_as_string__method__Event_impl(port_, that)
 }
@@ -939,6 +989,71 @@ pub extern "C" fn wire_handle_some_static_stream_sink_single_arg__static_method_
     port_: i64,
 ) {
     wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_new__static_method__SomeStruct(port_: i64, value: u32) {
+    wire_new__static_method__SomeStruct_impl(port_, value)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_static_return_err_custom_error__static_method__SomeStruct(port_: i64) {
+    wire_static_return_err_custom_error__static_method__SomeStruct_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_static_return_ok_custom_error__static_method__SomeStruct(port_: i64) {
+    wire_static_return_ok_custom_error__static_method__SomeStruct_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_non_static_return_err_custom_error__method__SomeStruct(
+    port_: i64,
+    that: *mut wire_SomeStruct,
+) {
+    wire_non_static_return_err_custom_error__method__SomeStruct_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_non_static_return_ok_custom_error__method__SomeStruct(
+    port_: i64,
+    that: *mut wire_SomeStruct,
+) {
+    wire_non_static_return_ok_custom_error__method__SomeStruct_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_new__static_method__CustomStruct(
+    port_: i64,
+    message: *mut wire_uint_8_list,
+) {
+    wire_new__static_method__CustomStruct_impl(port_, message)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_static_return_custom_struct_error__static_method__CustomStruct(port_: i64) {
+    wire_static_return_custom_struct_error__static_method__CustomStruct_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_static_return_custom_struct_ok__static_method__CustomStruct(port_: i64) {
+    wire_static_return_custom_struct_ok__static_method__CustomStruct_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_nonstatic_return_custom_struct_error__method__CustomStruct(
+    port_: i64,
+    that: *mut wire_CustomStruct,
+) {
+    wire_nonstatic_return_custom_struct_error__method__CustomStruct_impl(port_, that)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_nonstatic_return_custom_struct_ok__method__CustomStruct(
+    port_: i64,
+    that: *mut wire_CustomStruct,
+) {
+    wire_nonstatic_return_custom_struct_ok__method__CustomStruct_impl(port_, that)
 }
 
 // Section: allocate functions
@@ -1060,6 +1175,11 @@ pub extern "C" fn new_box_autoadd_c_0() -> *mut wire_C {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_concatenate_with_0() -> *mut wire_ConcatenateWith {
     support::new_leak_box_ptr(wire_ConcatenateWith::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_custom_struct_0() -> *mut wire_CustomStruct {
+    support::new_leak_box_ptr(wire_CustomStruct::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1195,6 +1315,11 @@ pub extern "C" fn new_box_autoadd_opaque_nested_0() -> *mut wire_OpaqueNested {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_sequences_0() -> *mut wire_Sequences {
     support::new_leak_box_ptr(wire_Sequences::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_some_struct_0() -> *mut wire_SomeStruct {
+    support::new_leak_box_ptr(wire_SomeStruct::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -1848,6 +1973,12 @@ impl Wire2Api<ConcatenateWith> for *mut wire_ConcatenateWith {
         Wire2Api::<ConcatenateWith>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<CustomStruct> for *mut wire_CustomStruct {
+    fn wire2api(self) -> CustomStruct {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<CustomStruct>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<Customized> for *mut wire_Customized {
     fn wire2api(self) -> Customized {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -2007,6 +2138,12 @@ impl Wire2Api<Sequences> for *mut wire_Sequences {
         Wire2Api::<Sequences>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<SomeStruct> for *mut wire_SomeStruct {
+    fn wire2api(self) -> SomeStruct {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<SomeStruct>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<StructWithEnum> for *mut wire_StructWithEnum {
     fn wire2api(self) -> StructWithEnum {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -2125,6 +2262,13 @@ impl Wire2Api<ConcatenateWith> for wire_ConcatenateWith {
     fn wire2api(self) -> ConcatenateWith {
         ConcatenateWith {
             a: self.a.wire2api(),
+        }
+    }
+}
+impl Wire2Api<CustomStruct> for wire_CustomStruct {
+    fn wire2api(self) -> CustomStruct {
+        CustomStruct {
+            message: self.message.wire2api(),
         }
     }
 }
@@ -2557,6 +2701,13 @@ impl Wire2Api<Sequences> for wire_Sequences {
         Sequences(self.field0.wire2api())
     }
 }
+impl Wire2Api<SomeStruct> for wire_SomeStruct {
+    fn wire2api(self) -> SomeStruct {
+        SomeStruct {
+            value: self.value.wire2api(),
+        }
+    }
+}
 impl Wire2Api<Speed> for wire_Speed {
     fn wire2api(self) -> Speed {
         match self.tag {
@@ -2748,6 +2899,12 @@ pub struct wire_C {
 #[derive(Clone)]
 pub struct wire_ConcatenateWith {
     a: *mut wire_uint_8_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_CustomStruct {
+    message: *mut wire_uint_8_list,
 }
 
 #[repr(C)]
@@ -2993,6 +3150,12 @@ pub struct wire_OpaqueNested {
 #[derive(Clone)]
 pub struct wire_Sequences {
     field0: *mut wire_int_32_list,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_SomeStruct {
+    value: u32,
 }
 
 #[repr(C)]
@@ -3555,6 +3718,20 @@ impl Default for wire_ConcatenateWith {
     }
 }
 
+impl NewWithNullPtr for wire_CustomStruct {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            message: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl Default for wire_CustomStruct {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
 impl NewWithNullPtr for wire_Customized {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -4089,6 +4266,20 @@ impl NewWithNullPtr for wire_Sequences {
 }
 
 impl Default for wire_Sequences {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
+impl NewWithNullPtr for wire_SomeStruct {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            value: Default::default(),
+        }
+    }
+}
+
+impl Default for wire_SomeStruct {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }

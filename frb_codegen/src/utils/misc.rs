@@ -218,6 +218,14 @@ fn get_dir_and_mod(path: &str) -> (String, Option<String>) {
     (String::from(dir), module)
 }
 
+pub fn dart_maybe_implements_exception(is_exception: bool) -> &'static str {
+    if is_exception {
+        "implements FrbException"
+    } else {
+        ""
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

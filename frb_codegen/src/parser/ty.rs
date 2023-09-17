@@ -298,6 +298,8 @@ impl<'a> TypeParser<'a> {
 
                     [("String", None)] => Ok(Delegate(IrTypeDelegate::String)),
 
+                    [("Backtrace", None)] => Ok(Delegate(IrTypeDelegate::Backtrace)),
+
                     // TODO: change to "if let guard" https://github.com/rust-lang/rust/issues/51114
                     [(name, None)]
                         if matches!(IrTypePrimitive::try_from_rust_str(name), Some(..)) =>
@@ -331,10 +333,11 @@ impl<'a> TypeParser<'a> {
                                 .get(&ident_string)
                                 .map(IrStruct::is_empty)
                                 .unwrap_or(false),
+                            is_exception: false,
                         }))
                     }
 
-                    [(name, None)] if self.src_enums.contains_key(&name.to_string()) => {
+                    [(name, _)] if self.src_enums.contains_key(&name.to_string()) => {
                         let ident_string = name.to_string();
                         if self.parsed_enums.insert(ident_string.to_owned()) {
                             let enu = self.parse_enum_core(&ident_string);
@@ -343,6 +346,7 @@ impl<'a> TypeParser<'a> {
 
                         let enum_ref = IrTypeEnumRef {
                             name: ident_string.to_owned(),
+                            is_exception: false,
                         };
                         let enu = self.enum_pool.get(&ident_string);
                         let is_struct = enu.map(IrEnum::is_struct).unwrap_or(true);
@@ -533,6 +537,7 @@ impl<'a> TypeParser<'a> {
                 name: safe_ident,
                 freezed: false,
                 empty: false,
+                is_exception: false,
             },
             values: values.into_boxed_slice(),
         })
@@ -598,7 +603,7 @@ impl<'a> TypeParser<'a> {
                 },
             })
             .collect();
-        IrEnum::new(name, wrapper_name, path, comments, variants)
+        IrEnum::new(name, wrapper_name, path, comments, variants, false)
     }
 
     fn parse_struct_core(&mut self, ident_string: &String) -> Option<IrStruct> {

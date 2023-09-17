@@ -27,7 +27,7 @@ fn wire_simple_adder_2_impl(
     a: impl Wire2Api<i32> + UnwindSafe,
     b: impl Wire2Api<i32> + UnwindSafe,
 ) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32>(
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
         WrapInfo {
             debug_name: "simple_adder_2",
             port: Some(port_),
@@ -36,7 +36,7 @@ fn wire_simple_adder_2_impl(
         move || {
             let api_a = a.wire2api();
             let api_b = b.wire2api();
-            move |task_callback| Ok(simple_adder_2(api_a, api_b))
+            move |task_callback| Result::<_, ()>::Ok(simple_adder_2(api_a, api_b))
         },
     )
 }

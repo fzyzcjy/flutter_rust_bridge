@@ -105,6 +105,12 @@ impl IntoDart for Vec<uuid::Uuid> {
     }
 }
 
+impl IntoDart for backtrace::Backtrace {
+    fn into_dart(self) -> DartAbi {
+        format!("{:?}", self).into_dart()
+    }
+}
+
 macro_rules! delegate {
     ($( $ty:ty )*) => {$(
         impl IntoDart for $ty {
@@ -265,6 +271,12 @@ impl IntoDart for ZeroCopyBuffer<Vec<u64>> {
     #[inline]
     fn into_dart(self) -> DartAbi {
         self.0.into_dart()
+    }
+}
+
+impl IntoDart for anyhow::Error {
+    fn into_dart(self) -> DartAbi {
+        format!("{:?}", self).into_dart()
     }
 }
 

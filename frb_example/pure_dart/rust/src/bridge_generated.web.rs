@@ -845,6 +845,56 @@ pub fn wire_macro_struct(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_return_err_custom_error(port_: MessagePort) {
+    wire_return_err_custom_error_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_return_ok_custom_error(port_: MessagePort) {
+    wire_return_ok_custom_error_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_return_error_variant(port_: MessagePort, variant: u32) {
+    wire_return_error_variant_impl(port_, variant)
+}
+
+#[wasm_bindgen]
+pub fn wire_return_custom_nested_error_1(port_: MessagePort) {
+    wire_return_custom_nested_error_1_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_return_custom_nested_error_1_variant1(port_: MessagePort) {
+    wire_return_custom_nested_error_1_variant1_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_return_custom_nested_error_2(port_: MessagePort) {
+    wire_return_custom_nested_error_2_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_return_custom_struct_error(port_: MessagePort) {
+    wire_return_custom_struct_error_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_return_custom_struct_ok(port_: MessagePort) {
+    wire_return_custom_struct_ok_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_throw_anyhow(port_: MessagePort) {
+    wire_throw_anyhow_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_panic_with_custom_result(port_: MessagePort) {
+    wire_panic_with_custom_result_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_as_string__method__Event(port_: MessagePort, that: JsValue) {
     wire_as_string__method__Event_impl(port_, that)
 }
@@ -905,6 +955,68 @@ pub fn wire_handle_some_static_stream_sink_single_arg__static_method__Concatenat
     port_: MessagePort,
 ) {
     wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_new__static_method__SomeStruct(port_: MessagePort, value: u32) {
+    wire_new__static_method__SomeStruct_impl(port_, value)
+}
+
+#[wasm_bindgen]
+pub fn wire_static_return_err_custom_error__static_method__SomeStruct(port_: MessagePort) {
+    wire_static_return_err_custom_error__static_method__SomeStruct_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_static_return_ok_custom_error__static_method__SomeStruct(port_: MessagePort) {
+    wire_static_return_ok_custom_error__static_method__SomeStruct_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_non_static_return_err_custom_error__method__SomeStruct(
+    port_: MessagePort,
+    that: JsValue,
+) {
+    wire_non_static_return_err_custom_error__method__SomeStruct_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_non_static_return_ok_custom_error__method__SomeStruct(
+    port_: MessagePort,
+    that: JsValue,
+) {
+    wire_non_static_return_ok_custom_error__method__SomeStruct_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_new__static_method__CustomStruct(port_: MessagePort, message: String) {
+    wire_new__static_method__CustomStruct_impl(port_, message)
+}
+
+#[wasm_bindgen]
+pub fn wire_static_return_custom_struct_error__static_method__CustomStruct(port_: MessagePort) {
+    wire_static_return_custom_struct_error__static_method__CustomStruct_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_static_return_custom_struct_ok__static_method__CustomStruct(port_: MessagePort) {
+    wire_static_return_custom_struct_ok__static_method__CustomStruct_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_nonstatic_return_custom_struct_error__method__CustomStruct(
+    port_: MessagePort,
+    that: JsValue,
+) {
+    wire_nonstatic_return_custom_struct_error__method__CustomStruct_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_nonstatic_return_custom_struct_ok__method__CustomStruct(
+    port_: MessagePort,
+    that: JsValue,
+) {
+    wire_nonstatic_return_custom_struct_ok__method__CustomStruct_impl(port_, that)
 }
 
 // Section: allocate functions
@@ -1262,6 +1374,20 @@ impl Wire2Api<ConcatenateWith> for JsValue {
         );
         ConcatenateWith {
             a: self_.get(0).wire2api(),
+        }
+    }
+}
+impl Wire2Api<CustomStruct> for JsValue {
+    fn wire2api(self) -> CustomStruct {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        CustomStruct {
+            message: self_.get(0).wire2api(),
         }
     }
 }
@@ -1837,6 +1963,20 @@ impl Wire2Api<Sequences> for JsValue {
             self_.length()
         );
         Sequences(self_.get(0).wire2api())
+    }
+}
+impl Wire2Api<SomeStruct> for JsValue {
+    fn wire2api(self) -> SomeStruct {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        SomeStruct {
+            value: self_.get(0).wire2api(),
+        }
     }
 }
 impl Wire2Api<Speed> for JsValue {

@@ -18,6 +18,7 @@
     - [External types](feature/lang_external.md)
     - [Option](feature/lang_option.md)
     - [Methods](feature/lang_methods.md)
+    - [Result](feature/lang_result.md)
     - [Return types](feature/lang_return_types.md)
     - [Dynamic](feature/lang_dynamic.md)
     - [Arbitrary Rust types (opaque)](feature/lang_rust_opaque.md)

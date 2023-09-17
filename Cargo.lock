@@ -34,6 +34,7 @@ checksum = "c258c1a017ecaccfb34c8fa46ecbb2f5402584e31082c12b5caf0be82ac5ac44"
 dependencies = [
  "anyhow",
  "atomic",
+ "backtrace",
  "chrono",
  "uuid",
 ]
@@ -643,6 +644,7 @@ version = "1.81.0"
 dependencies = [
  "allo-isolate",
  "anyhow",
+ "backtrace",
  "build-target",
  "bytemuck",
  "cc",
@@ -725,6 +727,7 @@ name = "flutter_rust_bridge_example_single_block_test"
 version = "1.0.0"
 dependencies = [
  "anyhow",
+ "backtrace",
  "chrono",
  "console_error_panic_hook",
  "console_log",

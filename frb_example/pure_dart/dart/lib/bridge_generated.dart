@@ -25,6 +25,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_simple_adder(port_, arg0, arg1),
       parseSuccessData: _wire2api_i32,
+      parseErrorData: null,
       constMeta: kSimpleAdderConstMeta,
       argValues: [a, b],
       hint: hint,
@@ -42,6 +43,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_simple_adder_sync(arg0, arg1),
       parseSuccessData: _wire2api_i32,
+      parseErrorData: null,
       constMeta: kSimpleAdderSyncConstMeta,
       argValues: [a, b],
       hint: hint,
@@ -62,6 +64,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_primitive_types(port_, arg0, arg1, arg2, arg3),
       parseSuccessData: _wire2api_i32,
+      parseErrorData: null,
       constMeta: kPrimitiveTypesConstMeta,
       argValues: [myI32, myI64, myF64, myBool],
       hint: hint,
@@ -81,6 +84,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_primitive_optional_types(port_, arg0, arg1, arg2, arg3),
       parseSuccessData: _wire2api_opt_box_autoadd_i32,
+      parseErrorData: null,
       constMeta: kPrimitiveOptionalTypesConstMeta,
       argValues: [myI32, myI64, myF64, myBool],
       hint: hint,
@@ -101,6 +105,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_primitive_types_sync(arg0, arg1, arg2, arg3),
       parseSuccessData: _wire2api_i32,
+      parseErrorData: null,
       constMeta: kPrimitiveTypesSyncConstMeta,
       argValues: [myI32, myI64, myF64, myBool],
       hint: hint,
@@ -117,6 +122,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_primitive_u32(port_, arg0),
       parseSuccessData: _wire2api_u32,
+      parseErrorData: null,
       constMeta: kPrimitiveU32ConstMeta,
       argValues: [myU32],
       hint: hint,
@@ -133,6 +139,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_primitive_u32_sync(arg0),
       parseSuccessData: _wire2api_u32,
+      parseErrorData: null,
       constMeta: kPrimitiveU32SyncConstMeta,
       argValues: [myU32],
       hint: hint,
@@ -149,6 +156,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_string(port_, arg0),
       parseSuccessData: _wire2api_String,
+      parseErrorData: null,
       constMeta: kHandleStringConstMeta,
       argValues: [s],
       hint: hint,
@@ -165,6 +173,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_handle_string_sync(arg0),
       parseSuccessData: _wire2api_String,
+      parseErrorData: null,
       constMeta: kHandleStringSyncConstMeta,
       argValues: [s],
       hint: hint,
@@ -180,6 +189,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_return_unit(port_),
       parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
       constMeta: kHandleReturnUnitConstMeta,
       argValues: [],
       hint: hint,
@@ -195,6 +205,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_handle_return_unit_sync(),
       parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
       constMeta: kHandleReturnUnitSyncConstMeta,
       argValues: [],
       hint: hint,
@@ -211,6 +222,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_vec_u8(port_, arg0),
       parseSuccessData: _wire2api_uint_8_list,
+      parseErrorData: null,
       constMeta: kHandleVecU8ConstMeta,
       argValues: [v],
       hint: hint,
@@ -227,6 +239,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_handle_vec_u8_sync(arg0),
       parseSuccessData: _wire2api_uint_8_list,
+      parseErrorData: null,
       constMeta: kHandleVecU8SyncConstMeta,
       argValues: [v],
       hint: hint,
@@ -243,6 +256,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_vec_of_primitive(port_, arg0),
       parseSuccessData: _wire2api_vec_of_primitive_pack,
+      parseErrorData: null,
       constMeta: kHandleVecOfPrimitiveConstMeta,
       argValues: [n],
       hint: hint,
@@ -259,6 +273,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_handle_vec_of_primitive_sync(arg0),
       parseSuccessData: _wire2api_vec_of_primitive_pack,
+      parseErrorData: null,
       constMeta: kHandleVecOfPrimitiveSyncConstMeta,
       argValues: [n],
       hint: hint,
@@ -275,6 +290,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_zero_copy_vec_of_primitive(port_, arg0),
       parseSuccessData: _wire2api_zero_copy_vec_of_primitive_pack,
+      parseErrorData: null,
       constMeta: kHandleZeroCopyVecOfPrimitiveConstMeta,
       argValues: [n],
       hint: hint,
@@ -291,6 +307,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_handle_zero_copy_vec_of_primitive_sync(arg0),
       parseSuccessData: _wire2api_zero_copy_vec_of_primitive_pack,
+      parseErrorData: null,
       constMeta: kHandleZeroCopyVecOfPrimitiveSyncConstMeta,
       argValues: [n],
       hint: hint,
@@ -308,6 +325,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_struct(port_, arg0, arg1),
       parseSuccessData: _wire2api_my_size,
+      parseErrorData: null,
       constMeta: kHandleStructConstMeta,
       argValues: [arg, boxed],
       hint: hint,
@@ -325,6 +343,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_handle_struct_sync(arg0, arg1),
       parseSuccessData: _wire2api_my_size,
+      parseErrorData: null,
       constMeta: kHandleStructSyncConstMeta,
       argValues: [arg, boxed],
       hint: hint,
@@ -342,6 +361,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_handle_struct_sync_freezed(arg0, arg1),
       parseSuccessData: _wire2api_my_size_freezed,
+      parseErrorData: null,
       constMeta: kHandleStructSyncFreezedConstMeta,
       argValues: [arg, boxed],
       hint: hint,
@@ -358,6 +378,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_newtype(port_, arg0),
       parseSuccessData: _wire2api_new_type_int,
+      parseErrorData: null,
       constMeta: kHandleNewtypeConstMeta,
       argValues: [arg],
       hint: hint,
@@ -374,6 +395,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_handle_newtype_sync(arg0),
       parseSuccessData: _wire2api_new_type_int,
+      parseErrorData: null,
       constMeta: kHandleNewtypeSyncConstMeta,
       argValues: [arg],
       hint: hint,
@@ -390,6 +412,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_list_of_struct(port_, arg0),
       parseSuccessData: _wire2api_list_my_size,
+      parseErrorData: null,
       constMeta: kHandleListOfStructConstMeta,
       argValues: [l],
       hint: hint,
@@ -406,6 +429,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_handle_list_of_struct_sync(arg0),
       parseSuccessData: _wire2api_list_my_size,
+      parseErrorData: null,
       constMeta: kHandleListOfStructSyncConstMeta,
       argValues: [l],
       hint: hint,
@@ -422,6 +446,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_string_list(port_, arg0),
       parseSuccessData: _wire2api_StringList,
+      parseErrorData: null,
       constMeta: kHandleStringListConstMeta,
       argValues: [names],
       hint: hint,
@@ -438,6 +463,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_handle_string_list_sync(arg0),
       parseSuccessData: _wire2api_StringList,
+      parseErrorData: null,
       constMeta: kHandleStringListSyncConstMeta,
       argValues: [names],
       hint: hint,
@@ -454,6 +480,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_complex_struct(port_, arg0),
       parseSuccessData: _wire2api_my_tree_node,
+      parseErrorData: null,
       constMeta: kHandleComplexStructConstMeta,
       argValues: [s],
       hint: hint,
@@ -470,6 +497,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_handle_complex_struct_sync(arg0),
       parseSuccessData: _wire2api_my_tree_node,
+      parseErrorData: null,
       constMeta: kHandleComplexStructSyncConstMeta,
       argValues: [s],
       hint: hint,
@@ -486,6 +514,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_nested_struct(port_, arg0),
       parseSuccessData: _wire2api_my_nested_struct,
+      parseErrorData: null,
       constMeta: kHandleNestedStructConstMeta,
       argValues: [s],
       hint: hint,
@@ -502,6 +531,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_handle_sync_return(arg0),
       parseSuccessData: _wire2api_uint_8_list,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kHandleSyncReturnConstMeta,
       argValues: [mode],
       hint: hint,
@@ -518,6 +548,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeStream(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_stream(port_, arg0),
       parseSuccessData: _wire2api_String,
+      parseErrorData: null,
       constMeta: kHandleStreamConstMeta,
       argValues: [arg],
       hint: hint,
@@ -533,6 +564,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeStream(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_stream_of_struct(port_),
       parseSuccessData: _wire2api_my_stream_entry,
+      parseErrorData: null,
       constMeta: kHandleStreamOfStructConstMeta,
       argValues: [],
       hint: hint,
@@ -548,6 +580,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_return_err(port_),
       parseSuccessData: _wire2api_i32,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kReturnErrConstMeta,
       argValues: [],
       hint: hint,
@@ -563,6 +596,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_return_panic(port_),
       parseSuccessData: _wire2api_i32,
+      parseErrorData: null,
       constMeta: kReturnPanicConstMeta,
       argValues: [],
       hint: hint,
@@ -580,6 +614,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_optional_return(port_, arg0, arg1),
       parseSuccessData: _wire2api_opt_box_autoadd_f64,
+      parseErrorData: null,
       constMeta: kHandleOptionalReturnConstMeta,
       argValues: [left, right],
       hint: hint,
@@ -596,6 +631,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_optional_struct(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_element,
+      parseErrorData: null,
       constMeta: kHandleOptionalStructConstMeta,
       argValues: [document],
       hint: hint,
@@ -612,6 +648,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_optional_increment(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_exotic_optionals,
+      parseErrorData: null,
       constMeta: kHandleOptionalIncrementConstMeta,
       argValues: [opt],
       hint: hint,
@@ -628,6 +665,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_increment_boxed_optional(port_, arg0),
       parseSuccessData: _wire2api_f64,
+      parseErrorData: null,
       constMeta: kHandleIncrementBoxedOptionalConstMeta,
       argValues: [opt],
       hint: hint,
@@ -659,6 +697,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
       callFfi: (port_) =>
           _platform.inner.wire_handle_option_box_arguments(port_, arg0, arg1, arg2, arg3, arg4, arg5, arg6),
       parseSuccessData: _wire2api_String,
+      parseErrorData: null,
       constMeta: kHandleOptionBoxArgumentsConstMeta,
       argValues: [i8Box, u8Box, i32Box, i64Box, f64Box, boolbox, structbox],
       hint: hint,
@@ -675,6 +714,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_print_note(port_, arg0),
       parseSuccessData: _wire2api_ZeroCopyBuffer_Uint8List,
+      parseErrorData: null,
       constMeta: kPrintNoteConstMeta,
       argValues: [note],
       hint: hint,
@@ -691,6 +731,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_return_enum(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_weekdays,
+      parseErrorData: null,
       constMeta: kHandleReturnEnumConstMeta,
       argValues: [input],
       hint: hint,
@@ -707,6 +748,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_enum_parameter(port_, arg0),
       parseSuccessData: _wire2api_weekdays,
+      parseErrorData: null,
       constMeta: kHandleEnumParameterConstMeta,
       argValues: [weekday],
       hint: hint,
@@ -723,6 +765,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_handle_enum_sync_freezed(arg0),
       parseSuccessData: _wire2api_my_enum_freezed,
+      parseErrorData: null,
       constMeta: kHandleEnumSyncFreezedConstMeta,
       argValues: [value],
       hint: hint,
@@ -739,6 +782,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_customized_struct(port_, arg0),
       parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
       constMeta: kHandleCustomizedStructConstMeta,
       argValues: [val],
       hint: hint,
@@ -755,6 +799,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_enum_struct(port_, arg0),
       parseSuccessData: _wire2api_kitchen_sink,
+      parseErrorData: null,
       constMeta: kHandleEnumStructConstMeta,
       argValues: [val],
       hint: hint,
@@ -771,6 +816,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_use_imported_struct(port_, arg0),
       parseSuccessData: _wire2api_bool,
+      parseErrorData: null,
       constMeta: kUseImportedStructConstMeta,
       argValues: [myStruct],
       hint: hint,
@@ -787,6 +833,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_use_imported_enum(port_, arg0),
       parseSuccessData: _wire2api_bool,
+      parseErrorData: null,
       constMeta: kUseImportedEnumConstMeta,
       argValues: [myEnum],
       hint: hint,
@@ -802,6 +849,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_get_app_settings(port_),
       parseSuccessData: _wire2api_application_settings,
+      parseErrorData: null,
       constMeta: kGetAppSettingsConstMeta,
       argValues: [],
       hint: hint,
@@ -817,6 +865,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_get_fallible_app_settings(port_),
       parseSuccessData: _wire2api_application_settings,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kGetFallibleAppSettingsConstMeta,
       argValues: [],
       hint: hint,
@@ -833,6 +882,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_is_app_embedded(port_, arg0),
       parseSuccessData: _wire2api_bool,
+      parseErrorData: null,
       constMeta: kIsAppEmbeddedConstMeta,
       argValues: [appSettings],
       hint: hint,
@@ -848,6 +898,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeStream(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_app_settings_stream(port_),
       parseSuccessData: _wire2api_application_settings,
+      parseErrorData: null,
       constMeta: kAppSettingsStreamConstMeta,
       argValues: [],
       hint: hint,
@@ -863,6 +914,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeStream(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_app_settings_vec_stream(port_),
       parseSuccessData: _wire2api_list_application_settings,
+      parseErrorData: null,
       constMeta: kAppSettingsVecStreamConstMeta,
       argValues: [],
       hint: hint,
@@ -878,6 +930,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeStream(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_mirror_struct_stream(port_),
       parseSuccessData: _wire2api_mirror_struct,
+      parseErrorData: null,
       constMeta: kMirrorStructStreamConstMeta,
       argValues: [],
       hint: hint,
@@ -893,6 +946,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeStream(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_mirror_tuple_stream(port_),
       parseSuccessData: _wire2api___record__application_settings_raw_string_enum_mirrored,
+      parseErrorData: null,
       constMeta: kMirrorTupleStreamConstMeta,
       argValues: [],
       hint: hint,
@@ -908,6 +962,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_get_message(port_),
       parseSuccessData: _wire2api_application_message,
+      parseErrorData: null,
       constMeta: kGetMessageConstMeta,
       argValues: [],
       hint: hint,
@@ -925,6 +980,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_repeat_number(port_, arg0, arg1),
       parseSuccessData: _wire2api_numbers,
+      parseErrorData: null,
       constMeta: kRepeatNumberConstMeta,
       argValues: [num, times],
       hint: hint,
@@ -942,6 +998,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_repeat_sequence(port_, arg0, arg1),
       parseSuccessData: _wire2api_sequences,
+      parseErrorData: null,
       constMeta: kRepeatSequenceConstMeta,
       argValues: [seq, times],
       hint: hint,
@@ -958,6 +1015,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_first_number(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_i32,
+      parseErrorData: null,
       constMeta: kFirstNumberConstMeta,
       argValues: [nums],
       hint: hint,
@@ -974,6 +1032,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_first_sequence(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_i32,
+      parseErrorData: null,
       constMeta: kFirstSequenceConstMeta,
       argValues: [seqs],
       hint: hint,
@@ -989,6 +1048,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_get_array(port_),
       parseSuccessData: _wire2api_u8_array_5,
+      parseErrorData: null,
       constMeta: kGetArrayConstMeta,
       argValues: [],
       hint: hint,
@@ -1004,6 +1064,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_get_complex_array(port_),
       parseSuccessData: _wire2api_Point_array_2,
+      parseErrorData: null,
       constMeta: kGetComplexArrayConstMeta,
       argValues: [],
       hint: hint,
@@ -1020,6 +1081,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_get_usize(port_, arg0),
       parseSuccessData: _wire2api_usize,
+      parseErrorData: null,
       constMeta: kGetUsizeConstMeta,
       argValues: [u],
       hint: hint,
@@ -1036,6 +1098,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_next_user_id(port_, arg0),
       parseSuccessData: _wire2api_user_id,
+      parseErrorData: null,
       constMeta: kNextUserIdConstMeta,
       argValues: [userId],
       hint: hint,
@@ -1051,6 +1114,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeStream(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_register_event_listener(port_),
       parseSuccessData: (d) => _wire2api_event(d),
+      parseErrorData: null,
       constMeta: kRegisterEventListenerConstMeta,
       argValues: [],
       hint: hint,
@@ -1066,6 +1130,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_close_event_listener(port_),
       parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
       constMeta: kCloseEventListenerConstMeta,
       argValues: [],
       hint: hint,
@@ -1083,6 +1148,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_create_event(port_, arg0, arg1),
       parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
       constMeta: kCreateEventConstMeta,
       argValues: [address, payload],
       hint: hint,
@@ -1100,6 +1166,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeStream(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_stream_sink_at_1(port_, arg0, arg1),
       parseSuccessData: _wire2api_log,
+      parseErrorData: null,
       constMeta: kHandleStreamSinkAt1ConstMeta,
       argValues: [key, max],
       hint: hint,
@@ -1117,6 +1184,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeStream(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_stream_sink_at_2(port_, arg0, arg1),
       parseSuccessData: _wire2api_log,
+      parseErrorData: null,
       constMeta: kHandleStreamSinkAt2ConstMeta,
       argValues: [key, max],
       hint: hint,
@@ -1134,6 +1202,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeStream(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_stream_sink_at_3(port_, arg0, arg1),
       parseSuccessData: _wire2api_log,
+      parseErrorData: null,
       constMeta: kHandleStreamSinkAt3ConstMeta,
       argValues: [key, max],
       hint: hint,
@@ -1149,6 +1218,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_get_sum_struct(port_),
       parseSuccessData: (d) => _wire2api_sum_with(d),
+      parseErrorData: null,
       constMeta: kGetSumStructConstMeta,
       argValues: [],
       hint: hint,
@@ -1167,6 +1237,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_get_sum_array(port_, arg0, arg1, arg2),
       parseSuccessData: _wire2api_SumWith_array_3,
+      parseErrorData: null,
       constMeta: kGetSumArrayConstMeta,
       argValues: [a, b, c],
       hint: hint,
@@ -1183,6 +1254,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_multiply_by_ten(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_measure,
+      parseErrorData: null,
       constMeta: kMultiplyByTenConstMeta,
       argValues: [measure],
       hint: hint,
@@ -1198,6 +1270,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_call_old_module_system(port_),
       parseSuccessData: _wire2api_old_simple_struct,
+      parseErrorData: null,
       constMeta: kCallOldModuleSystemConstMeta,
       argValues: [],
       hint: hint,
@@ -1213,6 +1286,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_call_new_module_system(port_),
       parseSuccessData: _wire2api_new_simple_struct,
+      parseErrorData: null,
       constMeta: kCallNewModuleSystemConstMeta,
       argValues: [],
       hint: hint,
@@ -1228,6 +1302,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_big_buffers(port_),
       parseSuccessData: _wire2api_big_buffers,
+      parseErrorData: null,
       constMeta: kHandleBigBuffersConstMeta,
       argValues: [],
       hint: hint,
@@ -1244,6 +1319,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_datetime_utc(port_, arg0),
       parseSuccessData: _wire2api_Chrono_Utc,
+      parseErrorData: null,
       constMeta: kDatetimeUtcConstMeta,
       argValues: [d],
       hint: hint,
@@ -1260,6 +1336,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_datetime_local(port_, arg0),
       parseSuccessData: _wire2api_Chrono_Local,
+      parseErrorData: null,
       constMeta: kDatetimeLocalConstMeta,
       argValues: [d],
       hint: hint,
@@ -1276,6 +1353,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_naivedatetime(port_, arg0),
       parseSuccessData: _wire2api_Chrono_Naive,
+      parseErrorData: null,
       constMeta: kNaivedatetimeConstMeta,
       argValues: [d],
       hint: hint,
@@ -1292,6 +1370,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_optional_empty_datetime_utc(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_Chrono_Utc,
+      parseErrorData: null,
       constMeta: kOptionalEmptyDatetimeUtcConstMeta,
       argValues: [d],
       hint: hint,
@@ -1308,6 +1387,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_duration(port_, arg0),
       parseSuccessData: _wire2api_Chrono_Duration,
+      parseErrorData: null,
       constMeta: kDurationConstMeta,
       argValues: [d],
       hint: hint,
@@ -1325,6 +1405,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_timestamps(port_, arg0, arg1),
       parseSuccessData: _wire2api_Chrono_DurationList,
+      parseErrorData: null,
       constMeta: kHandleTimestampsConstMeta,
       argValues: [timestamps, epoch],
       hint: hint,
@@ -1342,6 +1423,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_durations(port_, arg0, arg1),
       parseSuccessData: _wire2api_Chrono_LocalList,
+      parseErrorData: null,
       constMeta: kHandleDurationsConstMeta,
       argValues: [durations, since],
       hint: hint,
@@ -1357,6 +1439,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_chrono(port_),
       parseSuccessData: _wire2api_test_chrono,
+      parseErrorData: null,
       constMeta: kTestChronoConstMeta,
       argValues: [],
       hint: hint,
@@ -1372,6 +1455,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_precise_chrono(port_),
       parseSuccessData: _wire2api_test_chrono,
+      parseErrorData: null,
       constMeta: kTestPreciseChronoConstMeta,
       argValues: [],
       hint: hint,
@@ -1388,6 +1472,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_how_long_does_it_take(port_, arg0),
       parseSuccessData: _wire2api_Chrono_Duration,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kHowLongDoesItTakeConstMeta,
       argValues: [mine],
       hint: hint,
@@ -1404,6 +1489,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_uuid(port_, arg0),
       parseSuccessData: _wire2api_Uuid,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kHandleUuidConstMeta,
       argValues: [id],
       hint: hint,
@@ -1420,6 +1506,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_uuids(port_, arg0),
       parseSuccessData: _wire2api_Uuids,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kHandleUuidsConstMeta,
       argValues: [ids],
       hint: hint,
@@ -1436,6 +1523,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_nested_uuids(port_, arg0),
       parseSuccessData: _wire2api_feature_uuid,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kHandleNestedUuidsConstMeta,
       argValues: [ids],
       hint: hint,
@@ -1452,6 +1540,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_new_msgid(port_, arg0),
       parseSuccessData: _wire2api_message_id,
+      parseErrorData: null,
       constMeta: kNewMsgidConstMeta,
       argValues: [id],
       hint: hint,
@@ -1468,6 +1557,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_use_msgid(port_, arg0),
       parseSuccessData: _wire2api_u8_array_32,
+      parseErrorData: null,
       constMeta: kUseMsgidConstMeta,
       argValues: [id],
       hint: hint,
@@ -1484,6 +1574,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_boxed_blob(port_, arg0),
       parseSuccessData: _wire2api_blob,
+      parseErrorData: null,
       constMeta: kBoxedBlobConstMeta,
       argValues: [blob],
       hint: hint,
@@ -1500,6 +1591,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_use_boxed_blob(port_, arg0),
       parseSuccessData: _wire2api_u8_array_1600,
+      parseErrorData: null,
       constMeta: kUseBoxedBlobConstMeta,
       argValues: [blob],
       hint: hint,
@@ -1516,6 +1608,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_return_boxed_feed_id(port_, arg0),
       parseSuccessData: _wire2api_box_feed_id,
+      parseErrorData: null,
       constMeta: kReturnBoxedFeedIdConstMeta,
       argValues: [id],
       hint: hint,
@@ -1532,6 +1625,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_return_boxed_raw_feed_id(port_, arg0),
       parseSuccessData: _wire2api_box_u8_array_8,
+      parseErrorData: null,
       constMeta: kReturnBoxedRawFeedIdConstMeta,
       argValues: [id],
       hint: hint,
@@ -1548,6 +1642,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_id(port_, arg0),
       parseSuccessData: _wire2api_test_id,
+      parseErrorData: null,
       constMeta: kTestIdConstMeta,
       argValues: [id],
       hint: hint,
@@ -1564,6 +1659,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_last_number(port_, arg0),
       parseSuccessData: _wire2api_f64,
+      parseErrorData: null,
       constMeta: kLastNumberConstMeta,
       argValues: [array],
       hint: hint,
@@ -1580,6 +1676,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_nested_id(port_, arg0),
       parseSuccessData: _wire2api_TestId_array_2,
+      parseErrorData: null,
       constMeta: kNestedIdConstMeta,
       argValues: [id],
       hint: hint,
@@ -1596,6 +1693,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_sync_accept_dart_opaque(arg0),
       parseSuccessData: _wire2api_String,
+      parseErrorData: null,
       constMeta: kSyncAcceptDartOpaqueConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -1612,6 +1710,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_async_accept_dart_opaque(port_, arg0),
       parseSuccessData: _wire2api_String,
+      parseErrorData: null,
       constMeta: kAsyncAcceptDartOpaqueConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -1628,6 +1727,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_loop_back(port_, arg0),
       parseSuccessData: _wire2api_DartOpaque,
+      parseErrorData: null,
       constMeta: kLoopBackConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -1644,6 +1744,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_loop_back_option(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_DartOpaque,
+      parseErrorData: null,
       constMeta: kLoopBackOptionConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -1660,6 +1761,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_loop_back_array(port_, arg0),
       parseSuccessData: _wire2api_Object_array_1,
+      parseErrorData: null,
       constMeta: kLoopBackArrayConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -1676,6 +1778,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_loop_back_vec(port_, arg0),
       parseSuccessData: _wire2api_list_DartOpaque,
+      parseErrorData: null,
       constMeta: kLoopBackVecConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -1692,6 +1795,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_loop_back_option_get(port_, arg0),
       parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
       constMeta: kLoopBackOptionGetConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -1708,6 +1812,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_loop_back_array_get(port_, arg0),
       parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
       constMeta: kLoopBackArrayGetConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -1724,6 +1829,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_loop_back_vec_get(port_, arg0),
       parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
       constMeta: kLoopBackVecGetConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -1740,6 +1846,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_unwrap_dart_opaque(arg0),
       parseSuccessData: _wire2api_String,
+      parseErrorData: null,
       constMeta: kUnwrapDartOpaqueConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -1756,6 +1863,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_panic_unwrap_dart_opaque(port_, arg0),
       parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
       constMeta: kPanicUnwrapDartOpaqueConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -1771,6 +1879,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_create_opaque(port_),
       parseSuccessData: _wire2api_HideData,
+      parseErrorData: null,
       constMeta: kCreateOpaqueConstMeta,
       argValues: [],
       hint: hint,
@@ -1787,6 +1896,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_create_option_opaque(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_HideData,
+      parseErrorData: null,
       constMeta: kCreateOptionOpaqueConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -1802,6 +1912,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_sync_create_opaque(),
       parseSuccessData: _wire2api_HideData,
+      parseErrorData: null,
       constMeta: kSyncCreateOpaqueConstMeta,
       argValues: [],
       hint: hint,
@@ -1817,6 +1928,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_create_array_opaque_enum(port_),
       parseSuccessData: _wire2api_EnumOpaque_array_5,
+      parseErrorData: null,
       constMeta: kCreateArrayOpaqueEnumConstMeta,
       argValues: [],
       hint: hint,
@@ -1833,6 +1945,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_run_enum_opaque(port_, arg0),
       parseSuccessData: _wire2api_String,
+      parseErrorData: null,
       constMeta: kRunEnumOpaqueConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -1849,6 +1962,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_run_opaque(port_, arg0),
       parseSuccessData: _wire2api_String,
+      parseErrorData: null,
       constMeta: kRunOpaqueConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -1865,6 +1979,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_run_opaque_with_delay(port_, arg0),
       parseSuccessData: _wire2api_String,
+      parseErrorData: null,
       constMeta: kRunOpaqueWithDelayConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -1880,6 +1995,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_opaque_array(port_),
       parseSuccessData: _wire2api_HideData_array_2,
+      parseErrorData: null,
       constMeta: kOpaqueArrayConstMeta,
       argValues: [],
       hint: hint,
@@ -1895,6 +2011,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_sync_create_non_clone(),
       parseSuccessData: _wire2api_NonCloneData,
+      parseErrorData: null,
       constMeta: kSyncCreateNonCloneConstMeta,
       argValues: [],
       hint: hint,
@@ -1911,6 +2028,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_run_non_clone(port_, arg0),
       parseSuccessData: _wire2api_String,
+      parseErrorData: null,
       constMeta: kRunNonCloneConstMeta,
       argValues: [clone],
       hint: hint,
@@ -1926,6 +2044,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_create_sync_opaque(port_),
       parseSuccessData: _wire2api_NonSendHideData,
+      parseErrorData: null,
       constMeta: kCreateSyncOpaqueConstMeta,
       argValues: [],
       hint: hint,
@@ -1941,6 +2060,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_sync_create_sync_opaque(),
       parseSuccessData: _wire2api_NonSendHideData,
+      parseErrorData: null,
       constMeta: kSyncCreateSyncOpaqueConstMeta,
       argValues: [],
       hint: hint,
@@ -1957,6 +2077,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_sync_run_opaque(arg0),
       parseSuccessData: _wire2api_String,
+      parseErrorData: null,
       constMeta: kSyncRunOpaqueConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -1973,6 +2094,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_opaque_array_run(port_, arg0),
       parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
       constMeta: kOpaqueArrayRunConstMeta,
       argValues: [data],
       hint: hint,
@@ -1988,6 +2110,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_opaque_vec(port_),
       parseSuccessData: _wire2api_list_HideData,
+      parseErrorData: null,
       constMeta: kOpaqueVecConstMeta,
       argValues: [],
       hint: hint,
@@ -2004,6 +2127,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_opaque_vec_run(port_, arg0),
       parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
       constMeta: kOpaqueVecRunConstMeta,
       argValues: [data],
       hint: hint,
@@ -2019,6 +2143,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_create_nested_opaque(port_),
       parseSuccessData: _wire2api_opaque_nested,
+      parseErrorData: null,
       constMeta: kCreateNestedOpaqueConstMeta,
       argValues: [],
       hint: hint,
@@ -2035,6 +2160,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_sync_loopback(arg0),
       parseSuccessData: _wire2api_DartOpaque,
+      parseErrorData: null,
       constMeta: kSyncLoopbackConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -2051,6 +2177,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_sync_option_loopback(arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_DartOpaque,
+      parseErrorData: null,
       constMeta: kSyncOptionLoopbackConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -2066,6 +2193,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_sync_option(),
       parseSuccessData: _wire2api_opt_String,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kSyncOptionConstMeta,
       argValues: [],
       hint: hint,
@@ -2081,6 +2209,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_sync_option_null(),
       parseSuccessData: _wire2api_opt_String,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kSyncOptionNullConstMeta,
       argValues: [],
       hint: hint,
@@ -2096,6 +2225,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_sync_option_rust_opaque(),
       parseSuccessData: _wire2api_opt_box_autoadd_HideData,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kSyncOptionRustOpaqueConstMeta,
       argValues: [],
       hint: hint,
@@ -2112,6 +2242,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_sync_option_dart_opaque(arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_DartOpaque,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kSyncOptionDartOpaqueConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -2127,6 +2258,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_sync_void(),
       parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
       constMeta: kSyncVoidConstMeta,
       argValues: [],
       hint: hint,
@@ -2143,6 +2275,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_run_nested_opaque(port_, arg0),
       parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
       constMeta: kRunNestedOpaqueConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -2160,6 +2293,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_create_nested_dart_opaque(port_, arg0, arg1),
       parseSuccessData: _wire2api_dart_opaque_nested,
+      parseErrorData: null,
       constMeta: kCreateNestedDartOpaqueConstMeta,
       argValues: [opaque1, opaque2],
       hint: hint,
@@ -2176,6 +2310,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_get_nested_dart_opaque(port_, arg0),
       parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
       constMeta: kGetNestedDartOpaqueConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -2192,6 +2327,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_create_enum_dart_opaque(port_, arg0),
       parseSuccessData: _wire2api_enum_dart_opaque,
+      parseErrorData: null,
       constMeta: kCreateEnumDartOpaqueConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -2208,6 +2344,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_get_enum_dart_opaque(port_, arg0),
       parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
       constMeta: kGetEnumDartOpaqueConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -2224,6 +2361,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_set_static_dart_opaque(port_, arg0),
       parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
       constMeta: kSetStaticDartOpaqueConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -2239,6 +2377,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_drop_static_dart_opaque(port_),
       parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
       constMeta: kDropStaticDartOpaqueConstMeta,
       argValues: [],
       hint: hint,
@@ -2255,6 +2394,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_unwrap_rust_opaque(port_, arg0),
       parseSuccessData: _wire2api_String,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kUnwrapRustOpaqueConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -2271,6 +2411,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_return_non_droppable_dart_opaque(arg0),
       parseSuccessData: _wire2api_DartOpaque,
+      parseErrorData: null,
       constMeta: kReturnNonDroppableDartOpaqueConstMeta,
       argValues: [opaque],
       hint: hint,
@@ -2286,6 +2427,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_frb_generator_test(port_),
       parseSuccessData: _wire2api_FrbOpaqueReturn,
+      parseErrorData: null,
       constMeta: kFrbGeneratorTestConstMeta,
       argValues: [],
       hint: hint,
@@ -2301,6 +2443,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_frb_sync_generator_test(),
       parseSuccessData: _wire2api_FrbOpaqueSyncReturn,
+      parseErrorData: null,
       constMeta: kFrbSyncGeneratorTestConstMeta,
       argValues: [],
       hint: hint,
@@ -2317,6 +2460,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_type_alias_id(port_, arg0),
       parseSuccessData: _wire2api_u64,
+      parseErrorData: null,
       constMeta: kHandleTypeAliasIdConstMeta,
       argValues: [input],
       hint: hint,
@@ -2333,6 +2477,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_type_nest_alias_id(port_, arg0),
       parseSuccessData: _wire2api_u64,
+      parseErrorData: null,
       constMeta: kHandleTypeNestAliasIdConstMeta,
       argValues: [input],
       hint: hint,
@@ -2349,6 +2494,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_type_alias_model(port_, arg0),
       parseSuccessData: _wire2api_test_model,
+      parseErrorData: null,
       constMeta: kHandleTypeAliasModelConstMeta,
       argValues: [input],
       hint: hint,
@@ -2365,6 +2511,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_empty_struct(port_, arg0),
       parseSuccessData: _wire2api_empty,
+      parseErrorData: null,
       constMeta: kEmptyStructConstMeta,
       argValues: [empty],
       hint: hint,
@@ -2380,6 +2527,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_return_dart_dynamic(port_),
       parseSuccessData: _wire2api_dartabi,
+      parseErrorData: null,
       constMeta: kReturnDartDynamicConstMeta,
       argValues: [],
       hint: hint,
@@ -2395,6 +2543,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_raw_string_item_struct(port_),
       parseSuccessData: _wire2api_raw_string_item_struct,
+      parseErrorData: null,
       constMeta: kTestRawStringItemStructConstMeta,
       argValues: [],
       hint: hint,
@@ -2410,6 +2559,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_more_than_just_one_raw_string_struct(port_),
       parseSuccessData: _wire2api_more_than_just_one_raw_string_struct,
+      parseErrorData: null,
       constMeta: kTestMoreThanJustOneRawStringStructConstMeta,
       argValues: [],
       hint: hint,
@@ -2426,6 +2576,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_raw_string_mirrored(port_),
       parseSuccessData: _wire2api_raw_string_mirrored,
+      parseErrorData: null,
       constMeta: kTestRawStringMirroredConstMeta,
       argValues: [],
       hint: hint,
@@ -2441,6 +2592,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_nested_raw_string_mirrored(port_),
       parseSuccessData: _wire2api_nested_raw_string_mirrored,
+      parseErrorData: null,
       constMeta: kTestNestedRawStringMirroredConstMeta,
       argValues: [],
       hint: hint,
@@ -2457,6 +2609,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_raw_string_enum_mirrored(port_, arg0),
       parseSuccessData: _wire2api_raw_string_enum_mirrored,
+      parseErrorData: null,
       constMeta: kTestRawStringEnumMirroredConstMeta,
       argValues: [nested],
       hint: hint,
@@ -2472,6 +2625,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_list_of_raw_nested_string_mirrored(port_),
       parseSuccessData: _wire2api_list_of_nested_raw_string_mirrored,
+      parseErrorData: null,
       constMeta: kTestListOfRawNestedStringMirroredConstMeta,
       argValues: [],
       hint: hint,
@@ -2488,6 +2642,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_fallible_of_raw_string_mirrored(port_),
       parseSuccessData: _wire2api_list_raw_string_mirrored,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kTestFallibleOfRawStringMirroredConstMeta,
       argValues: [],
       hint: hint,
@@ -2504,6 +2659,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_list_of_primitive_enums(port_, arg0),
       parseSuccessData: _wire2api_list_weekdays,
+      parseErrorData: null,
       constMeta: kListOfPrimitiveEnumsConstMeta,
       argValues: [weekdays],
       hint: hint,
@@ -2520,6 +2676,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_abc_enum(port_, arg0),
       parseSuccessData: _wire2api_abc,
+      parseErrorData: null,
       constMeta: kTestAbcEnumConstMeta,
       argValues: [abc],
       hint: hint,
@@ -2535,6 +2692,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_contains_mirrored_sub_struct(port_),
       parseSuccessData: _wire2api_contains_mirrored_sub_struct,
+      parseErrorData: null,
       constMeta: kTestContainsMirroredSubStructConstMeta,
       argValues: [],
       hint: hint,
@@ -2551,6 +2709,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_struct_with_enum(port_, arg0),
       parseSuccessData: _wire2api_struct_with_enum,
+      parseErrorData: null,
       constMeta: kTestStructWithEnumConstMeta,
       argValues: [se],
       hint: hint,
@@ -2567,6 +2726,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_tuple(port_, arg0),
       parseSuccessData: _wire2api___record__String_i32,
+      parseErrorData: null,
       constMeta: kTestTupleConstMeta,
       argValues: [value],
       hint: hint,
@@ -2583,6 +2743,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_test_tuple_2(port_, arg0),
       parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
       constMeta: kTestTuple2ConstMeta,
       argValues: [value],
       hint: hint,
@@ -2598,6 +2759,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeSync(FlutterRustBridgeSyncTask(
       callFfi: () => _platform.inner.wire_sync_return_mirror(),
       parseSuccessData: _wire2api_application_settings,
+      parseErrorData: null,
       constMeta: kSyncReturnMirrorConstMeta,
       argValues: [],
       hint: hint,
@@ -2613,6 +2775,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_macro_struct(port_),
       parseSuccessData: _wire2api_macro_struct,
+      parseErrorData: null,
       constMeta: kMacroStructConstMeta,
       argValues: [],
       hint: hint,
@@ -2624,11 +2787,173 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  Future<int> returnErrCustomError({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_return_err_custom_error(port_),
+      parseSuccessData: _wire2api_u32,
+      parseErrorData: _wire2api_custom_error,
+      constMeta: kReturnErrCustomErrorConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kReturnErrCustomErrorConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_err_custom_error",
+        argNames: [],
+      );
+
+  Future<int> returnOkCustomError({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_return_ok_custom_error(port_),
+      parseSuccessData: _wire2api_u32,
+      parseErrorData: _wire2api_custom_error,
+      constMeta: kReturnOkCustomErrorConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kReturnOkCustomErrorConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_ok_custom_error",
+        argNames: [],
+      );
+
+  Future<int> returnErrorVariant({required int variant, dynamic hint}) {
+    var arg0 = api2wire_u32(variant);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_return_error_variant(port_, arg0),
+      parseSuccessData: _wire2api_u32,
+      parseErrorData: _wire2api_custom_error,
+      constMeta: kReturnErrorVariantConstMeta,
+      argValues: [variant],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kReturnErrorVariantConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_error_variant",
+        argNames: ["variant"],
+      );
+
+  Future<void> returnCustomNestedError1({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_return_custom_nested_error_1(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_nested_error_1,
+      constMeta: kReturnCustomNestedError1ConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kReturnCustomNestedError1ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_custom_nested_error_1",
+        argNames: [],
+      );
+
+  Future<void> returnCustomNestedError1Variant1({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_return_custom_nested_error_1_variant1(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_nested_error_1,
+      constMeta: kReturnCustomNestedError1Variant1ConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kReturnCustomNestedError1Variant1ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_custom_nested_error_1_variant1",
+        argNames: [],
+      );
+
+  Future<void> returnCustomNestedError2({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_return_custom_nested_error_2(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_nested_error_2,
+      constMeta: kReturnCustomNestedError2ConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kReturnCustomNestedError2ConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_custom_nested_error_2",
+        argNames: [],
+      );
+
+  Future<void> returnCustomStructError({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_return_custom_struct_error(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_struct_error,
+      constMeta: kReturnCustomStructErrorConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kReturnCustomStructErrorConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_custom_struct_error",
+        argNames: [],
+      );
+
+  Future<int> returnCustomStructOk({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_return_custom_struct_ok(port_),
+      parseSuccessData: _wire2api_u32,
+      parseErrorData: _wire2api_custom_struct_error,
+      constMeta: kReturnCustomStructOkConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kReturnCustomStructOkConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "return_custom_struct_ok",
+        argNames: [],
+      );
+
+  Future<void> throwAnyhow({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_throw_anyhow(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_FrbAnyhowException,
+      constMeta: kThrowAnyhowConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kThrowAnyhowConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "throw_anyhow",
+        argNames: [],
+      );
+
+  Future<void> panicWithCustomResult({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_panic_with_custom_result(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_error,
+      constMeta: kPanicWithCustomResultConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kPanicWithCustomResultConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "panic_with_custom_result",
+        argNames: [],
+      );
+
   Future<String> asStringMethodEvent({required Event that, dynamic hint}) {
     var arg0 = _platform.api2wire_box_autoadd_event(that);
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_as_string__method__Event(port_, arg0),
       parseSuccessData: _wire2api_String,
+      parseErrorData: null,
       constMeta: kAsStringMethodEventConstMeta,
       argValues: [that],
       hint: hint,
@@ -2647,6 +2972,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_sum__method__SumWith(port_, arg0, arg1, arg2),
       parseSuccessData: _wire2api_u32,
+      parseErrorData: null,
       constMeta: kSumMethodSumWithConstMeta,
       argValues: [that, y, z],
       hint: hint,
@@ -2663,6 +2989,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_new__static_method__ConcatenateWith(port_, arg0),
       parseSuccessData: (d) => _wire2api_concatenate_with(d),
+      parseErrorData: null,
       constMeta: kNewStaticMethodConcatenateWithConstMeta,
       argValues: [a],
       hint: hint,
@@ -2680,6 +3007,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_concatenate__method__ConcatenateWith(port_, arg0, arg1),
       parseSuccessData: _wire2api_String,
+      parseErrorData: null,
       constMeta: kConcatenateMethodConcatenateWithConstMeta,
       argValues: [that, b],
       hint: hint,
@@ -2697,6 +3025,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_concatenate_static__static_method__ConcatenateWith(port_, arg0, arg1),
       parseSuccessData: _wire2api_String,
+      parseErrorData: null,
       constMeta: kConcatenateStaticStaticMethodConcatenateWithConstMeta,
       argValues: [a, b],
       hint: hint,
@@ -2718,6 +3047,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
       callFfi: (port_) =>
           _platform.inner.wire_handle_some_stream_sink__method__ConcatenateWith(port_, arg0, arg1, arg2),
       parseSuccessData: _wire2api_log_2,
+      parseErrorData: null,
       constMeta: kHandleSomeStreamSinkMethodConcatenateWithConstMeta,
       argValues: [that, key, max],
       hint: hint,
@@ -2735,6 +3065,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeStream(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_handle_some_stream_sink_at_1__method__ConcatenateWith(port_, arg0),
       parseSuccessData: _wire2api_u32,
+      parseErrorData: null,
       constMeta: kHandleSomeStreamSinkAt1MethodConcatenateWithConstMeta,
       argValues: [that],
       hint: hint,
@@ -2755,6 +3086,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
       callFfi: (port_) =>
           _platform.inner.wire_handle_some_static_stream_sink__static_method__ConcatenateWith(port_, arg0, arg1),
       parseSuccessData: _wire2api_log_2,
+      parseErrorData: null,
       constMeta: kHandleSomeStaticStreamSinkStaticMethodConcatenateWithConstMeta,
       argValues: [key, max],
       hint: hint,
@@ -2772,6 +3104,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
       callFfi: (port_) =>
           _platform.inner.wire_handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith(port_),
       parseSuccessData: _wire2api_u32,
+      parseErrorData: null,
       constMeta: kHandleSomeStaticStreamSinkSingleArgStaticMethodConcatenateWithConstMeta,
       argValues: [],
       hint: hint,
@@ -2782,6 +3115,180 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
       const FlutterRustBridgeTaskConstMeta(
         debugName: "handle_some_static_stream_sink_single_arg__static_method__ConcatenateWith",
         argNames: [],
+      );
+
+  Future<SomeStruct> newStaticMethodSomeStruct({required int value, dynamic hint}) {
+    var arg0 = api2wire_u32(value);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_new__static_method__SomeStruct(port_, arg0),
+      parseSuccessData: (d) => _wire2api_some_struct(d),
+      parseErrorData: null,
+      constMeta: kNewStaticMethodSomeStructConstMeta,
+      argValues: [value],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kNewStaticMethodSomeStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "new__static_method__SomeStruct",
+        argNames: ["value"],
+      );
+
+  Future<int> staticReturnErrCustomErrorStaticMethodSomeStruct({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_static_return_err_custom_error__static_method__SomeStruct(port_),
+      parseSuccessData: _wire2api_u32,
+      parseErrorData: _wire2api_custom_error,
+      constMeta: kStaticReturnErrCustomErrorStaticMethodSomeStructConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kStaticReturnErrCustomErrorStaticMethodSomeStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "static_return_err_custom_error__static_method__SomeStruct",
+        argNames: [],
+      );
+
+  Future<int> staticReturnOkCustomErrorStaticMethodSomeStruct({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_static_return_ok_custom_error__static_method__SomeStruct(port_),
+      parseSuccessData: _wire2api_u32,
+      parseErrorData: _wire2api_custom_error,
+      constMeta: kStaticReturnOkCustomErrorStaticMethodSomeStructConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kStaticReturnOkCustomErrorStaticMethodSomeStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "static_return_ok_custom_error__static_method__SomeStruct",
+        argNames: [],
+      );
+
+  Future<int> nonStaticReturnErrCustomErrorMethodSomeStruct({required SomeStruct that, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_some_struct(that);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_non_static_return_err_custom_error__method__SomeStruct(port_, arg0),
+      parseSuccessData: _wire2api_u32,
+      parseErrorData: _wire2api_custom_error,
+      constMeta: kNonStaticReturnErrCustomErrorMethodSomeStructConstMeta,
+      argValues: [that],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kNonStaticReturnErrCustomErrorMethodSomeStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "non_static_return_err_custom_error__method__SomeStruct",
+        argNames: ["that"],
+      );
+
+  Future<int> nonStaticReturnOkCustomErrorMethodSomeStruct({required SomeStruct that, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_some_struct(that);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_non_static_return_ok_custom_error__method__SomeStruct(port_, arg0),
+      parseSuccessData: _wire2api_u32,
+      parseErrorData: _wire2api_custom_error,
+      constMeta: kNonStaticReturnOkCustomErrorMethodSomeStructConstMeta,
+      argValues: [that],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kNonStaticReturnOkCustomErrorMethodSomeStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "non_static_return_ok_custom_error__method__SomeStruct",
+        argNames: ["that"],
+      );
+
+  Future<CustomStruct> newStaticMethodCustomStruct({required String message, dynamic hint}) {
+    var arg0 = _platform.api2wire_String(message);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_new__static_method__CustomStruct(port_, arg0),
+      parseSuccessData: (d) => _wire2api_custom_struct(d),
+      parseErrorData: null,
+      constMeta: kNewStaticMethodCustomStructConstMeta,
+      argValues: [message],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kNewStaticMethodCustomStructConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "new__static_method__CustomStruct",
+        argNames: ["message"],
+      );
+
+  Future<void> staticReturnCustomStructErrorStaticMethodCustomStruct({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_static_return_custom_struct_error__static_method__CustomStruct(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_struct_error,
+      constMeta: kStaticReturnCustomStructErrorStaticMethodCustomStructConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kStaticReturnCustomStructErrorStaticMethodCustomStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "static_return_custom_struct_error__static_method__CustomStruct",
+        argNames: [],
+      );
+
+  Future<int> staticReturnCustomStructOkStaticMethodCustomStruct({dynamic hint}) {
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_static_return_custom_struct_ok__static_method__CustomStruct(port_),
+      parseSuccessData: _wire2api_u32,
+      parseErrorData: _wire2api_custom_struct_error,
+      constMeta: kStaticReturnCustomStructOkStaticMethodCustomStructConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kStaticReturnCustomStructOkStaticMethodCustomStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "static_return_custom_struct_ok__static_method__CustomStruct",
+        argNames: [],
+      );
+
+  Future<void> nonstaticReturnCustomStructErrorMethodCustomStruct({required CustomStruct that, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_custom_struct(that);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_nonstatic_return_custom_struct_error__method__CustomStruct(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_struct_error,
+      constMeta: kNonstaticReturnCustomStructErrorMethodCustomStructConstMeta,
+      argValues: [that],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kNonstaticReturnCustomStructErrorMethodCustomStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "nonstatic_return_custom_struct_error__method__CustomStruct",
+        argNames: ["that"],
+      );
+
+  Future<int> nonstaticReturnCustomStructOkMethodCustomStruct({required CustomStruct that, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_custom_struct(that);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_nonstatic_return_custom_struct_ok__method__CustomStruct(port_, arg0),
+      parseSuccessData: _wire2api_u32,
+      parseErrorData: _wire2api_custom_struct_error,
+      constMeta: kNonstaticReturnCustomStructOkMethodCustomStructConstMeta,
+      argValues: [that],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kNonstaticReturnCustomStructOkMethodCustomStructConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "nonstatic_return_custom_struct_ok__method__CustomStruct",
+        argNames: ["that"],
       );
 
   DropFnType get dropOpaqueBoxDartDebug => _platform.inner.drop_opaque_BoxDartDebug;
@@ -2859,6 +3366,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   EnumOpaqueArray5 _wire2api_EnumOpaque_array_5(dynamic raw) {
     return EnumOpaqueArray5((raw as List<dynamic>).map(_wire2api_enum_opaque).toList());
+  }
+
+  FrbAnyhowException _wire2api_FrbAnyhowException(dynamic raw) {
+    return FrbAnyhowException(raw as String);
   }
 
   FrbOpaqueReturn _wire2api_FrbOpaqueReturn(dynamic raw) {
@@ -3161,6 +3672,10 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _wire2api_c(raw);
   }
 
+  CustomNestedError2 _wire2api_box_autoadd_custom_nested_error_2(dynamic raw) {
+    return _wire2api_custom_nested_error_2(raw);
+  }
+
   Element _wire2api_box_autoadd_element(dynamic raw) {
     return _wire2api_element(raw);
   }
@@ -3248,6 +3763,70 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return ContainsMirroredSubStruct(
       test: _wire2api_raw_string_mirrored(arr[0]),
       test2: _wire2api_a(arr[1]),
+    );
+  }
+
+  CustomError _wire2api_custom_error(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomError_Error0(
+          e: _wire2api_String(raw[1]),
+          backtrace: _wire2api_String(raw[2]),
+        );
+      case 1:
+        return CustomError_Error1(
+          e: _wire2api_u32(raw[1]),
+          backtrace: _wire2api_String(raw[2]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  CustomNestedError1 _wire2api_custom_nested_error_1(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedError1_CustomNested1(
+          _wire2api_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedError1_ErrorNested(
+          _wire2api_box_autoadd_custom_nested_error_2(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  CustomNestedError2 _wire2api_custom_nested_error_2(dynamic raw) {
+    switch (raw[0]) {
+      case 0:
+        return CustomNestedError2_CustomNested2(
+          _wire2api_String(raw[1]),
+        );
+      case 1:
+        return CustomNestedError2_CustomNested2Number(
+          _wire2api_u32(raw[1]),
+        );
+      default:
+        throw Exception("unreachable");
+    }
+  }
+
+  CustomStruct _wire2api_custom_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStruct(
+      bridge: this,
+      message: _wire2api_String(arr[0]),
+    );
+  }
+
+  CustomStructError _wire2api_custom_struct_error(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return CustomStructError(
+      message: _wire2api_String(arr[0]),
     );
   }
 
@@ -3896,6 +4475,15 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
     return Sequences(
       field0: _wire2api_int_32_list(arr[0]),
+    );
+  }
+
+  SomeStruct _wire2api_some_struct(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 1) throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+    return SomeStruct(
+      bridge: this,
+      value: _wire2api_u32(arr[0]),
     );
   }
 

@@ -87,6 +87,8 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::Uuids => Acc::distribute(Some(
                 "return api2wire_uint_8_list(api2wireConcatenateBytes(raw));".into(),
             )),
+            IrTypeDelegate::Backtrace => unimplemented!(),
+            IrTypeDelegate::Anyhow => unimplemented!(),
         }
     }
 
@@ -113,7 +115,9 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                     self.ir.get_delegate().safe_ident()
                 )
             }
-            IrTypeDelegate::String | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
+            IrTypeDelegate::String
+            | IrTypeDelegate::Backtrace
+            | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 gen_wire2api_simple_type_cast(&self.ir.dart_api_type())
             }
             IrTypeDelegate::StringList => {
@@ -149,6 +153,7 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             final bytes = _wire2api_uint_8_list(raw);
             return wire2apiUuids(bytes);"
                 .to_owned(),
+            IrTypeDelegate::Anyhow => "return FrbAnyhowException(raw as String);".to_owned(),
         }
     }
 

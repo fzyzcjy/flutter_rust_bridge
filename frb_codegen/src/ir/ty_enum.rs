@@ -5,6 +5,7 @@ use convert_case::{Case, Casing};
 crate::ir! {
 pub struct IrTypeEnumRef {
     pub name: String,
+    pub is_exception: bool,
 }
 }
 
@@ -69,6 +70,7 @@ pub struct IrEnum {
     pub wrapper_name: Option<String>,
     pub path: Vec<String>,
     pub comments: Vec<IrComment>,
+    pub is_exception: bool,
     variants: Vec<IrVariant>,
     is_struct: bool,
 }
@@ -81,6 +83,7 @@ impl IrEnum {
         path: Vec<String>,
         comments: Vec<IrComment>,
         mut variants: Vec<IrVariant>,
+        is_exception: bool,
     ) -> Self {
         fn wrap_box(ty: &mut IrType) {
             if ty.is_struct() {
@@ -110,6 +113,7 @@ impl IrEnum {
             comments,
             variants,
             is_struct,
+            is_exception,
         }
     }
 
