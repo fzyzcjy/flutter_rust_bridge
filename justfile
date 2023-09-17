@@ -12,6 +12,8 @@ sed := if os() == "macos" {
     "sed -i"
 }
 
+library_file_ext := if os() == "macos" { "dylib" } else { "so" }
+
 dir_example_pure_dart := "frb_example/pure_dart"
 dir_example_pure_dart_multi := "frb_example/pure_dart_multi"
 dir_example_with_flutter := "frb_example/with_flutter"
@@ -94,7 +96,7 @@ _dart_test_raw name script_prefix $CARGO_TARGET_DIR="/home/runner":
     cd frb_example/{{name}}/dart && dart compile exe bin/{{name}}.dart -o main.exe
     cd frb_example/{{name}}/dart && \
         {{script_prefix}} ./main.exe \
-        "${CARGO_TARGET_DIR}/debug/libflutter_rust_bridge_example_{{name}}.so" --chain-stack-traces
+        "${CARGO_TARGET_DIR}/debug/libflutter_rust_bridge_example_{{name}}.{{library_file_ext}}" --chain-stack-traces
 
 flutter_example_with_flutter_integration_test:
     flutter config --enable-{{ os() }}-desktop
