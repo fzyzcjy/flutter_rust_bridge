@@ -16,9 +16,9 @@ Here is a brief glance showing what the code generator can generate (non-exhaust
 | [`Option<T>`](lang_option.md)                        | `T?`                                                 |
 | [Arbitrary Rust types (opaque)](lang_rust_opaque.md) | `RustOpaque`                                         |
 | `DartOpaque`                                         | [Arbitrary Dart types (opaque)](lang_dart_opaque.md) |
+| [`Result::Err`, panic](lang_exceptions.md)           | `throw Exception`                                    |
 | `Box<T>`                                             | `T`                                                  |
 | comments                                             | same                                                 |
-| `Result::Err`, panic                                 | `throw Exception`                                    |
 | `i8`, `u8`, .., `usize`                              | `int`                                                |
 | `f32`, `f64`                                         | `double`                                             |
 | `bool`                                               | `bool`                                               |
