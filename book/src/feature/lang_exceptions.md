@@ -14,11 +14,19 @@ For example, the following code, when called by Dart code, will throw Dart excep
 
 ```rust,noplayground
 pub fn f() -> anyhow::Result<i32> { bail!("oops I failed") }
-
-pub fn g() -> i32 { panic!("oops I failed") }
 ```
 
-### Example 2: Custom Error Without backtrace
+### Example 2: Panic
+
+All functions below, when called, will throw Dart exceptions at the Dart side due to the `panic`.
+
+```
+pub fn g1() -> i32 { panic!("oops I failed") }
+pub fn g2() -> anyhow::Result<String> { panic!("oops I failed") }
+pub fn g3() -> Result<Vec<u8>, CustomError> { panic!("oops I failed") }
+```
+
+### Example 3: Custom Error Without backtrace
 
 ```rust,noplayground
 pub enum CustomError {
@@ -43,7 +51,7 @@ try {
 }
 ```
 
-### Example 3: Custom Error With backtrace
+### Example 4: Custom Error With backtrace
 
 Errors with custom fields are also supported, and you can even pass a backtrace:
 
