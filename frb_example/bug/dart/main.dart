@@ -5,7 +5,7 @@ typedef NativeRustHelloFunction = ffi.Void Function();
 typedef NativeHelloFunction = void Function();
 
 void main() {
-  final dl = ffi.DynamicLibrary.open("../../../target/debug/libhello_rust.so");
+  final dl = ffi.DynamicLibrary.open("../rust/target/debug/libhello_rust.so");
   final f = dl.lookupFunction<NativeRustHelloFunction, NativeHelloFunction>("hello_rust_function");
   f();
 }
