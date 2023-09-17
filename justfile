@@ -202,7 +202,7 @@ ci_valgrind:
     just install_ffigen_dependency
     just install_valgrind
     just dart_pub_get dart_only
-    just dart_test_valgrind pure_dart
+    just {{ if os() == "linux" { "dart_test_valgrind" } else { "dart_test_simple" } }} pure_dart
     just dart_test_simple pure_dart_multi
 
 ci_codegen:
