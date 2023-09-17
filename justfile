@@ -82,12 +82,18 @@ dart_test_vm_service:
       frb_example/pure_dart/dart/lib/main_with_vm_service.dart \
       target/debug/libflutter_rust_bridge_example_pure_dart.so
 
-dart_test_main name $CARGO_TARGET_DIR="/home/runner":
+dart_test_valgrind name:
+    just _dart_test_raw {{name}} "PYTHONUNBUFFERED=1 ./valgrind_util.py"
+
+dart_test_simple name:
+    just _dart_test_raw {{name}} ""
+
+_dart_test_raw name script_prefix $CARGO_TARGET_DIR="/home/runner":
     cd frb_example/{{name}}/rust && cargo build --verbose
     # need to be AOT, since prod environment is AOT, and JIT+valgrind will have strange problems
     cd frb_example/{{name}}/dart && dart compile exe bin/{{name}}.dart -o main.exe
     cd frb_example/{{name}}/dart && \
-        PYTHONUNBUFFERED=1 ./valgrind_util.py ./main.exe \
+        {{script_prefix}} ./main.exe \
         "${CARGO_TARGET_DIR}/debug/libflutter_rust_bridge_example_{{name}}.so" --chain-stack-traces
 
 flutter_example_with_flutter_integration_test:
@@ -196,7 +202,7 @@ ci_valgrind:
     just install_ffigen_dependency
     just install_valgrind
     just dart_pub_get dart_only
-    just dart_test_valgrind
+    just dart_test_valgrind pure_dart
 
 ci_codegen:
     just install_ffigen_dependency
