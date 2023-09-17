@@ -491,6 +491,7 @@ fn wire_handle_nested_struct_impl(
 fn wire_handle_sync_return_impl(
     mode: impl Wire2Api<String> + UnwindSafe,
 ) -> support::WireSyncReturn {
+    println!("wire_handle_sync_return_impl start");
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
             debug_name: "handle_sync_return",
@@ -498,7 +499,9 @@ fn wire_handle_sync_return_impl(
             mode: FfiCallMode::Sync,
         },
         move || {
+            println!("wire_handle_sync_return_impl inside closure start");
             let api_mode = mode.wire2api();
+            println!("wire_handle_sync_return_impl inside closure middle");
             handle_sync_return(api_mode)
         },
     )

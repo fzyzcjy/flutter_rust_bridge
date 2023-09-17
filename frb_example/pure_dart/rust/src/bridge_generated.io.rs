@@ -177,6 +177,13 @@ pub extern "C" fn wire_handle_nested_struct(port_: i64, s: *mut wire_MyNestedStr
 
 #[no_mangle]
 pub extern "C" fn wire_handle_sync_return(mode: *mut wire_uint_8_list) -> support::WireSyncReturn {
+    println!("wire_handle_sync_return experiment start");
+    let result_of_catch_unwind = std::panic::catch_unwind(move || {
+        println!("wire_handle_sync_return experiment inside catch_unwind start");
+        panic!("hi this is panic");
+    });
+    println!("wire_handle_sync_return experiment end");
+
     wire_handle_sync_return_impl(mode)
 }
 
