@@ -21,7 +21,7 @@ anyhow = {workspace = true}
 thiserror = {workspace = true}
 cargo_metadata = "0.14.1"
 convert_case = "0.5.0"
-delegate = "0.8.0"
+delegate-attr = "0.3.0"
 enum_dispatch = "0.3.8"
 itertools = "0.10.3"
 lazy_static = {workspace = true}
