@@ -548,9 +548,9 @@ you need to manually create four text files to redirect calls from libgcc to lib
 <tr><td><a href="feature/lang_option.html"><code>Option&lt;T&gt;</code></a></td><td><code>T?</code></td></tr>
 <tr><td><a href="feature/lang_rust_opaque.html">Arbitrary Rust types (opaque)</a></td><td><code>RustOpaque</code></td></tr>
 <tr><td><code>DartOpaque</code></td><td><a href="feature/lang_dart_opaque.html">Arbitrary Dart types (opaque)</a></td></tr>
+<tr><td><a href="feature/lang_exceptions.html"><code>Result::Err</code>, panic</a></td><td><code>throw Exception</code></td></tr>
 <tr><td><code>Box&lt;T&gt;</code></td><td><code>T</code></td></tr>
 <tr><td>comments</td><td>same</td></tr>
-<tr><td><code>Result::Err</code>, panic</td><td><code>throw Exception</code></td></tr>
 <tr><td><code>i8</code>, <code>u8</code>, .., <code>usize</code></td><td><code>int</code></td></tr>
 <tr><td><code>f32</code>, <code>f64</code></td><td><code>double</code></td></tr>
 <tr><td><code>bool</code></td><td><code>bool</code></td></tr>
@@ -950,18 +950,44 @@ pub struct TestModel { pub id: Id, pub e: EnumAlias, pub s: StructAlias}
 pub fn f(input: Id) -&gt; TestModel {...}</code></pre>
 <h2 id="limitation"><a class="header" href="#limitation">Limitation</a></h2>
 <p>The <code>ItemType</code> inside Generic is not supported yet, such as <code>SyncReturn&lt;Id&gt;</code>. The nested <code>ItemType</code> may also not be supported.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="exceptions"><a class="header" href="#exceptions">Exceptions</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="result--exceptions"><a class="header" href="#result--exceptions">Result / Exceptions</a></h1>
 <ol>
 <li>For Result/Error, the<code>anyhow::Result</code>/<code>anyhow::Error</code> is supported. It will be automatically converted to a Dart Exception.</li>
 <li>For <code>panic</code>s, it will also be automatically captured and converted to Dart exceptions.</li>
-<li><a href="https://github.com/fzyzcjy/flutter_rust_bridge/pull/582">#582</a> adds support for error hierarchy, or arbitrary error types. For example, you can create your own <code>CustomError</code> (such as using <code>thiserror</code>), and it will automatically be converted to a new Dart class. The PR is already almost completed (with the hard work done), and the missing piece is fixing the test errors. I have provided some guidance about how to fix it at the PR comments as well.</li>
+<li>For error hierarchy, or arbitrary error types, it is also supported. For example, you can create your own <code>CustomError</code> (such as using <code>thiserror</code>), and it will automatically be converted to a new Dart class.</li>
 </ol>
 <p>If you want to see stack traces (backtraces), <a href="feature/stack_trace.html">this doc page</a> discusses how to configure it.</p>
 <h2 id="example-9"><a class="header" href="#example-9">Example</a></h2>
+<h3 id="example-1-anyhow-result"><a class="header" href="#example-1-anyhow-result">Example 1: Anyhow Result</a></h3>
 <p>For example, the following code, when called by Dart code, will throw Dart exceptions.</p>
 <pre><code class="language-rust noplayground">pub fn f() -&gt; anyhow::Result&lt;i32&gt; { bail!(&quot;oops I failed&quot;) }
 
 pub fn g() -&gt; i32 { panic!(&quot;oops I failed&quot;) }</code></pre>
+<h3 id="example-2-custom-error-without-backtrace"><a class="header" href="#example-2-custom-error-without-backtrace">Example 2: Custom Error Without backtrace</a></h3>
+<pre><code class="language-rust noplayground">pub enum CustomError {
+    Error0(String),
+    Error1(u32),
+}
+
+pub fn return_err_custom_error() -&gt; Result&lt;u32, CustomError&gt; {
+    Err(CustomError::Error1(3))
+}</code></pre>
+<p>Becomes something that can be used like this:</p>
+<pre><code class="language-Dart">try {
+    final r = await api.returnErrCustomError();
+    print(&quot;received $r&quot;);
+} catch (e) {
+    print('dart catch e: $e');
+    expect(e, isA&lt;CustomError&gt;());
+}
+</code></pre>
+<h3 id="example-3-custom-error-with-backtrace"><a class="header" href="#example-3-custom-error-with-backtrace">Example 3: Custom Error With backtrace</a></h3>
+<p>Errors with custom fields are also supported, and you can even pass a backtrace:</p>
+<pre><code class="language-rust noplayground">pub enum CustomStructError {
+    Error0 { e: String, backtrace: Backtrace },
+    Error1 { e: u32, backtrace: Backtrace },
+}</code></pre>
+<p>As for how to fill it in or use it, you can refer to <code>thiserror</code> crate for some hints.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="parameter-defaults"><a class="header" href="#parameter-defaults">Parameter defaults</a></h1>
 <p>Dart allows default values for function and constructor parameters, and you can achieve the same effect using <code>#[frb(default)]</code>. The syntax is as follows:</p>
 <ul>
