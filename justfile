@@ -82,10 +82,13 @@ dart_test_vm_service:
       frb_example/pure_dart/dart/lib/main_with_vm_service.dart \
       target/debug/libflutter_rust_bridge_example_pure_dart.so
 
-dart_test_valgrind $CARGO_TARGET_DIR="/home/runner":
-    cd {{dir_example_pure_dart}}/dart && \
-        chmod +x ./run.sh ./valgrind_util.py && \
-        ./run.sh
+dart_test_main name $CARGO_TARGET_DIR="/home/runner":
+    cd frb_example/{{name}}/rust && cargo build --verbose
+    # need to be AOT, since prod environment is AOT, and JIT+valgrind will have strange problems
+    cd frb_example/{{name}}/dart && dart compile exe bin/{{name}}.dart -o main.exe
+    cd frb_example/{{name}}/dart && \
+        PYTHONUNBUFFERED=1 ./valgrind_util.py ./main.exe \
+        "${CARGO_TARGET_DIR}/debug/libflutter_rust_bridge_example_pure_dart.so" --chain-stack-traces
 
 flutter_example_with_flutter_integration_test:
     flutter config --enable-{{ os() }}-desktop
