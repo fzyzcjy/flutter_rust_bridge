@@ -3,8 +3,9 @@ import 'dart:developer';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:test/test.dart';
 import 'package:uuid/uuid.dart';
-import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
+
 import 'bridge_definitions.dart';
+import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
 
 const isWeb = bool.fromEnvironment('dart.library.html');
 
@@ -1371,11 +1372,11 @@ void main(List<String> args) async {
 
   group('Custom error (Result<T,E>)', () {
     test('Throw CustomError', () async {
-      expect(() async => await api.returnErrCustomError(), throwsA(isA<CustomError>()));
+      await expectLater(() async => await api.returnErrCustomError(), throwsA(isA<CustomError>()));
     });
 
     test('Throw CustomStructError', () async {
-      expect(() async => await api.returnCustomStructError(), throwsA(isA<CustomStructError>()));
+      await expectLater(() async => await api.returnCustomStructError(), throwsA(isA<CustomStructError>()));
     });
 
     test('Do not throw CustomStructError', () async {
@@ -1383,7 +1384,8 @@ void main(List<String> args) async {
     });
 
     test('Throw CustomStructError non static method', () async {
-      expect(() async => await CustomStruct(bridge: api, message: "hello").nonstaticReturnCustomStructError(),
+      await expectLater(
+          () async => await CustomStruct(bridge: api, message: "hello").nonstaticReturnCustomStructError(),
           throwsA(isA<CustomStructError>()));
     });
 
@@ -1392,7 +1394,7 @@ void main(List<String> args) async {
     });
 
     test('Throw CustomStructError static method', () async {
-      expect(
+      await expectLater(
           () async => await CustomStruct.staticReturnCustomStructError(bridge: api), throwsA(isA<CustomStructError>()));
     });
 
@@ -1401,25 +1403,26 @@ void main(List<String> args) async {
     });
 
     test('Throw CustomNestedError1', () async {
-      expect(() async => await api.returnCustomNestedError1(),
+      await expectLater(() async => await api.returnCustomNestedError1(),
           throwsA(CustomNestedError1.errorNested(CustomNestedError2.customNested2Number(3))));
     });
 
     test('Throw CustomNestedError1 variant 1', () async {
-      expect(() async => await api.returnCustomNestedError1Variant1(),
+      await expectLater(() async => await api.returnCustomNestedError1Variant1(),
           throwsA(CustomNestedError1.customNested1("custom")));
     });
 
     test('Throw CustomNestedError2', () async {
-      expect(() async => await api.returnCustomNestedError2(), throwsA(CustomNestedError2.customNested2("custom")));
+      await expectLater(
+          () async => await api.returnCustomNestedError2(), throwsA(CustomNestedError2.customNested2("custom")));
     });
 
     test('Throw CustomError variant 0', () async {
-      expect(() async => await api.returnErrorVariant(variant: 0), throwsA(isA<CustomError>()));
+      await expectLater(() async => await api.returnErrorVariant(variant: 0), throwsA(isA<CustomError>()));
     });
 
     test('Throw CustomError variant 1', () async {
-      expect(() async => await api.returnErrorVariant(variant: 1), throwsA(isA<CustomError>()));
+      await expectLater(() async => await api.returnErrorVariant(variant: 1), throwsA(isA<CustomError>()));
     });
 
     test('Do not throw CustomError', () async {
@@ -1427,11 +1430,13 @@ void main(List<String> args) async {
     });
 
     test('Throw CustomError static method', () async {
-      expect(() async => await SomeStruct.staticReturnErrCustomError(bridge: api), throwsA(isA<CustomError>()));
+      await expectLater(
+          () async => await SomeStruct.staticReturnErrCustomError(bridge: api), throwsA(isA<CustomError>()));
     });
 
     test('Throw CustomError static method, verifies implements Frb', () async {
-      expect(() async => await SomeStruct.staticReturnErrCustomError(bridge: api), throwsA(isA<FrbException>()));
+      await expectLater(
+          () async => await SomeStruct.staticReturnErrCustomError(bridge: api), throwsA(isA<FrbException>()));
     });
 
     test('Do not throw CustomError static method', () async {
@@ -1443,7 +1448,7 @@ void main(List<String> args) async {
     });
 
     test('Throw CustomError non-static method', () async {
-      expect(() async => await SomeStruct(bridge: api, value: 7).nonStaticReturnErrCustomError(),
+      await expectLater(() async => await SomeStruct(bridge: api, value: 7).nonStaticReturnErrCustomError(),
           throwsA(isA<CustomError>()));
       bool didCatch = false;
       try {
@@ -1462,7 +1467,7 @@ void main(List<String> args) async {
     });
 
     test('Throw anyhow error', () async {
-      expect(() async => await api.throwAnyhow(), throwsA(isA<FrbException>()));
+      await expectLater(() async => await api.throwAnyhow(), throwsA(isA<FrbException>()));
       try {
         await api.throwAnyhow();
       } catch (e) {
@@ -1473,7 +1478,7 @@ void main(List<String> args) async {
     });
 
     test('Function with custom result panics', () async {
-      expect(() async => await api.panicWithCustomResult(), throwsA(isA<FrbException>()));
+      await expectLater(() async => await api.panicWithCustomResult(), throwsA(isA<FrbException>()));
       try {
         await api.panicWithCustomResult();
       } catch (e) {
