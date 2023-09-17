@@ -88,7 +88,7 @@ dart_test_main name $CARGO_TARGET_DIR="/home/runner":
     cd frb_example/{{name}}/dart && dart compile exe bin/{{name}}.dart -o main.exe
     cd frb_example/{{name}}/dart && \
         PYTHONUNBUFFERED=1 ./valgrind_util.py ./main.exe \
-        "${CARGO_TARGET_DIR}/debug/libflutter_rust_bridge_example_pure_dart.so" --chain-stack-traces
+        "${CARGO_TARGET_DIR}/debug/libflutter_rust_bridge_example_{{name}}.so" --chain-stack-traces
 
 flutter_example_with_flutter_integration_test:
     flutter config --enable-{{ os() }}-desktop
