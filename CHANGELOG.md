@@ -1,5 +1,6 @@
 ## Unreleased
 
+* Support for Result<T, E> with exception throwing on Dart (thanks @lattice0, @SiongSng, @JustSimplyKyle)
 * Fix invalid sdk spec syntax #1331 (thanks @aran)
 * Document some common android fixes #1335 (thanks @powpingdone)
 
