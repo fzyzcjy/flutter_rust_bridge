@@ -674,6 +674,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "upsuper",
+      "name": "Xidorn Quan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/333750?v=4",
+      "profile": "https://www.upsuper.org/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
