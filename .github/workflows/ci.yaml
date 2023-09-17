@@ -212,6 +212,11 @@ jobs:
         with:
           toolchain: 1.70.0
 
+      - name: Setup cmake
+        uses: jwlawson/actions-setup-cmake@v1.13
+        with:
+          cmake-version: '3.22.x'
+
       - uses: extractions/setup-just@v1
 
         env:
