@@ -190,8 +190,8 @@ More specifically, thanks for all these contributions:
 * [Demezy](https://github.com/Demezy): Mention troubleshooting.
 * [gutenfries](https://github.com/gutenfries): Bump proc-macros.
 * [anstadnik](https://github.com/anstadnik): Check keywords.
+* [aran](https://github.com/aran): Fix pubspec. Bump version.
 * [Syndim](https://github.com/Syndim): Add a bracket to box.
-* [aran](https://github.com/aran): Fix pubspec.
 * [TENX-S](https://github.com/TENX-S): Improve doc. Reproduce a bug.
 * [polypixeldev](https://github.com/polypixeldev): Improve doc.
 * [CicadaCinema](https://github.com/CicadaCinema): Bump version. Improve doc.
