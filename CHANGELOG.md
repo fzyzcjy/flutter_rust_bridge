@@ -4,6 +4,7 @@
 * Fix invalid sdk spec syntax #1331 (thanks @aran)
 * Document some common android fixes #1335 (thanks @powpingdone)
 * Add support of `Vec<bool>` (thanks @NightFeather0615)
+* Update ffigen version (thanks @aran)
 
 ## 1.81.0
 
