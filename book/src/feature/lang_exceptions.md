@@ -20,7 +20,7 @@ pub fn f() -> anyhow::Result<i32> { bail!("oops I failed") }
 
 All functions below, when called, will throw Dart exceptions at the Dart side due to the `panic`.
 
-```
+```rust,noplayground
 pub fn g1() -> i32 { panic!("oops I failed") }
 pub fn g2() -> anyhow::Result<String> { panic!("oops I failed") }
 pub fn g3() -> Result<Vec<u8>, CustomError> { panic!("oops I failed") }
