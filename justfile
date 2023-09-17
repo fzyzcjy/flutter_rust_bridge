@@ -200,7 +200,7 @@ dart_check_included_source:
 
 ci_valgrind:
     just install_ffigen_dependency
-    just install_valgrind
+    just {{ if os() == "linux" { "install_valgrind" } else { "_noop" } }}
     just dart_pub_get dart_only
     just {{ if os() == "linux" { "dart_test_valgrind" } else { "dart_test_simple" } }} pure_dart
     just dart_test_simple pure_dart_multi
@@ -332,6 +332,10 @@ _install_crate name="cargo-lipo":
     else
       echo "Already installed the correct version of $PACKAGE_NAME."
     fi
+
+_noop:
+    echo "this is noop"
+
 # ============================ to be migrated ============================
 
 # TODO - @Desdaemon
