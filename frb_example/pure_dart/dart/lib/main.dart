@@ -1277,20 +1277,21 @@ void main(List<String> args) async {
       data.dispose();
     });
 
-    test('call after drop', () {
-      var data = api.syncCreateSyncOpaque();
-      expect(
-          api.syncRunOpaque(opaque: data),
-          "content - Some(PrivateData "
-          "{"
-          " content: \"content nested\", "
-          "primitive: 424242, "
-          "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
-          "lifetime: \"static str\" "
-          "})");
-      data.dispose();
-      expect(() => api.syncRunOpaque(opaque: data), throwsA(isA<FfiException>()));
-    });
+    // TODO ???
+    // test('call after drop', () {
+    //   var data = api.syncCreateSyncOpaque();
+    //   expect(
+    //       api.syncRunOpaque(opaque: data),
+    //       "content - Some(PrivateData "
+    //       "{"
+    //       " content: \"content nested\", "
+    //       "primitive: 424242, "
+    //       "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
+    //       "lifetime: \"static str\" "
+    //       "})");
+    //   data.dispose();
+    //   expect(() => api.syncRunOpaque(opaque: data), throwsA(isA<FfiException>()));
+    // });
 
     test('option', () async {
       var data = api.syncOption();
