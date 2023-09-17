@@ -203,6 +203,7 @@ ci_valgrind:
     just install_valgrind
     just dart_pub_get dart_only
     just dart_test_valgrind pure_dart
+    just dart_test_simple pure_dart_multi
 
 ci_codegen:
     just install_ffigen_dependency
