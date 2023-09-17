@@ -198,11 +198,16 @@ dart_check_included_source:
 
 # ============================ (some of) CI ============================
 
-ci_valgrind:
+ci_dart_valgrind:
     just install_ffigen_dependency
-    just {{ if os() == "linux" { "install_valgrind" } else { "_noop" } }}
+    just install_valgrind
     just dart_pub_get dart_only
-    just {{ if os() == "linux" { "dart_test_valgrind" } else { "dart_test_simple" } }} pure_dart
+    just dart_test_valgrind pure_dart
+
+ci_dart_simple:
+    just install_ffigen_dependency
+    just dart_pub_get dart_only
+    just dart_test_simple pure_dart
     just dart_test_simple pure_dart_multi
 
 ci_codegen:
