@@ -491,14 +491,14 @@ dependencies = [
 ]
 
 [[package]]
-name = "delegate"
-version = "0.8.0"
+name = "delegate-attr"
+version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "082a24a9967533dc5d743c602157637116fc1b52806d694a5a45e6f32567fcdd"
+checksum = "51aac4c99b2e6775164b412ea33ae8441b2fde2dbf05a20bc0052a63d08c475b"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 1.0.109",
+ "syn 2.0.28",
 ]
 
 [[package]]
@@ -675,7 +675,7 @@ dependencies = [
  "chrono",
  "clap 4.3.21",
  "convert_case",
- "delegate",
+ "delegate-attr",
  "enum-iterator",
  "enum_dispatch",
  "fern",
