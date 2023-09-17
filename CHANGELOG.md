@@ -1,3 +1,7 @@
+## Unreleased
+
+* Use delegate-attr to simplify code #1364 (thanks @upsuper)
+
 ## 1.82.0
 
 * Support for Result<T, E> with exception throwing on Dart (thanks @lattice0, @SiongSng, @JustSimplyKyle)
