@@ -134,6 +134,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/DMouayad"><img src="https://avatars.githubusercontent.com/u/82384138?v=4?s=100" width="100px;" alt="Mouayad Alhamwi"/><br /><sub><b>Mouayad Alhamwi</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=DMouayad" title="Documentation">📖</a></td>
     </tr>
     <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://blog.nightfeather.dev/"><img src="https://avatars.githubusercontent.com/u/77222233?v=4?s=100" width="100px;" alt="NightFeather"/><br /><sub><b>NightFeather</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=NightFeather0615" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/JustSimplyKyle"><img src="https://avatars.githubusercontent.com/u/68589851?v=4?s=100" width="100px;" alt="SimplyKyle!"/><br /><sub><b>SimplyKyle!</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=JustSimplyKyle" title="Code">💻</a></td>
     </tr>
   </tbody>
