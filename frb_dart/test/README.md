@@ -1,0 +1,1 @@
+These tests are not organized as a regular Dart package, because of the reasons discussed in https://github.com/fzyzcjy/flutter_rust_bridge/issues/1261.
