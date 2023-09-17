@@ -1378,14 +1378,6 @@ void main(List<String> args) async {
       expect(() async => await api.returnCustomStructError(), throwsA(isA<CustomStructError>()));
     });
 
-    test('Throw CustomError', () async {
-      expect(() async => await api.returnErrCustomError(), throwsA(isA<CustomError>()));
-    });
-
-    test('Throw CustomStructError', () async {
-      expect(() async => await api.returnCustomStructError(), throwsA(isA<CustomStructError>()));
-    });
-
     test('Do not throw CustomStructError', () async {
       expect(await api.returnCustomStructOk(), 3);
     });
@@ -1538,6 +1530,7 @@ MyNestedStruct _createMyNestedStruct() {
 
 class MatchBigInt extends CustomMatcher {
   MatchBigInt(matcher) : super("is a numeric", "value", _featureValueOf(matcher));
+
   @override
   Object? featureValueOf(actual) => _featureValueOf(actual);
 
