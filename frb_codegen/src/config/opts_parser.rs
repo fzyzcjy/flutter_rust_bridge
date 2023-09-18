@@ -97,7 +97,8 @@ pub fn parse_configs_and_symbols(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<Str
     }
 
     // rust/dart shared output path, used
-    let (shared_rust_output_path, shared_dart_output_path) = if raw.rust_input.len() == 1 {
+    let single_block_mode = raw.rust_input.len() == 1;
+    let (shared_rust_output_path, shared_dart_output_path) = if single_block_mode {
         // single block case
         (None, None)
     } else {
