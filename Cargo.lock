@@ -34,6 +34,7 @@ checksum = "c258c1a017ecaccfb34c8fa46ecbb2f5402584e31082c12b5caf0be82ac5ac44"
 dependencies = [
  "anyhow",
  "atomic",
+ "backtrace",
  "chrono",
  "uuid",
 ]
@@ -490,14 +491,14 @@ dependencies = [
 ]
 
 [[package]]
-name = "delegate"
-version = "0.8.0"
+name = "delegate-attr"
+version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "082a24a9967533dc5d743c602157637116fc1b52806d694a5a45e6f32567fcdd"
+checksum = "51aac4c99b2e6775164b412ea33ae8441b2fde2dbf05a20bc0052a63d08c475b"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 1.0.109",
+ "syn 2.0.28",
 ]
 
 [[package]]
@@ -639,10 +640,11 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge"
-version = "1.81.0"
+version = "1.82.0"
 dependencies = [
  "allo-isolate",
  "anyhow",
+ "backtrace",
  "build-target",
  "bytemuck",
  "cc",
@@ -664,7 +666,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_codegen"
-version = "1.81.0"
+version = "1.82.0"
 dependencies = [
  "anyhow",
  "atty",
@@ -673,7 +675,7 @@ dependencies = [
  "chrono",
  "clap 4.3.21",
  "convert_case",
- "delegate",
+ "delegate-attr",
  "enum-iterator",
  "enum_dispatch",
  "fern",
@@ -725,6 +727,7 @@ name = "flutter_rust_bridge_example_single_block_test"
 version = "1.0.0"
 dependencies = [
  "anyhow",
+ "backtrace",
  "chrono",
  "console_error_panic_hook",
  "console_log",
@@ -740,7 +743,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_rust_bridge_macros"
-version = "1.81.0"
+version = "1.82.0"
 
 [[package]]
 name = "futures-core"

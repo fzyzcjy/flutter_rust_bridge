@@ -6,6 +6,9 @@ use crate::generator::dart::ty::*;
 use crate::ir::*;
 use crate::target::Acc;
 use crate::type_dart_generator_struct;
+use crate::utils::misc::dart_maybe_implements_exception;
+
+const BACKTRACE_IDENT: &str = "backtrace";
 
 type_dart_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 
@@ -193,6 +196,12 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                 .variants()
                 .iter()
                 .map(|variant| {
+                    let has_backtrace = matches!(&variant.kind, IrVariantKind::Struct(IrStruct {
+                        is_fields_named: true,
+                        fields,
+                        ..
+                    }) if fields.iter().any(|field| field.name.raw == BACKTRACE_IDENT));
+
                     let args = match &variant.kind {
                         IrVariantKind::Value => "".to_owned(),
                         IrVariantKind::Struct(IrStruct {
@@ -247,8 +256,16 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                             format!("{{ {} }}", fields.join(""))
                         }
                     };
+
+                    let implements_exception = if self.ir.is_exception && has_backtrace {
+                        "@Implements<FrbBacktracedException>()"
+                    } else {
+                        ""
+                    };
+
                     format!(
-                        "{}const factory {}.{}({}) = {};",
+                        "{} {}const factory {}.{}({}) = {};",
+                        implements_exception,
                         dart_comments(&variant.comments),
                         self.ir.name,
                         variant.name.dart_style(),
@@ -264,10 +281,11 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
             };
             format!(
                 "@freezed
-                {sealed} class {0} with _${0} {{
-                    {1}
+                {sealed} class {0} with _${0} {1} {{
+                    {2}
                 }}",
                 self.ir.name,
+                dart_maybe_implements_exception(self.ir.is_exception),
                 variants.join("\n")
             )
         } else {

@@ -130,15 +130,23 @@ pub(crate) fn generate_api_func(
         format!("_wire2api_{}", func.output.safe_ident())
     };
 
+    let mut parse_error_data = if let Some(error_output) = &func.error_output {
+        format!("_wire2api_{}", error_output.safe_ident())
+    } else {
+        "null".to_string()
+    };
+
     match ir_file.share_mode {
         crate::utils::misc::ShareMode::Unique => {
             if ir_file.is_type_shared_by_safe_ident(&func.output) == ShareMode::Shared {
                 parse_success_data =
-                    parse_success_data.replace("_wire2api_", "_sharedImpl.wire2api_")
+                    parse_success_data.replace("_wire2api_", "_sharedImpl.wire2api_");
+                parse_error_data = parse_error_data.replace("_wire2api_", "_sharedImpl.wire2api_");
             }
         }
         crate::utils::misc::ShareMode::Shared => {
-            parse_success_data = parse_success_data.replace("_wire2api_", "wire2api_")
+            parse_success_data = parse_success_data.replace("_wire2api_", "wire2api_");
+            parse_error_data = parse_error_data.replace("_wire2api_", "wire2api_");
         }
     }
 
@@ -149,6 +157,7 @@ pub(crate) fn generate_api_func(
             return {}({task}(
             callFfi: ({args}) => _platform.inner.{}({}),
             parseSuccessData: {},
+            parseErrorData: {},
             {}
         ));}}",
         func_expr,
@@ -157,6 +166,7 @@ pub(crate) fn generate_api_func(
         func.wire_func_name(),
         wire_param_list.join(", "),
         parse_success_data,
+        parse_error_data,
         task_common_args,
         task = if is_sync {
             "FlutterRustBridgeSyncTask"

@@ -179,6 +179,7 @@ impl_into_into_dart!(allo_isolate::ffi::DartCObject);
 impl_into_into_dart!(crate::JsValue);
 #[cfg(feature = "uuid")]
 impl_into_into_dart!(uuid::Uuid);
+impl_into_into_dart!(backtrace::Backtrace);
 
 #[cfg(feature = "chrono")]
 mod chrono_impls {

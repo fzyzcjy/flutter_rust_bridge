@@ -327,11 +327,11 @@ mod tests {
 
         let output_path = PathBuf::from(
             #[cfg(target_os = "macos")]
-            "../target/debug/libflutter_rust_bridge_example_multi.dylib",
+            "../target/debug/libflutter_rust_bridge_example_pure_dart_multi.dylib",
             #[cfg(target_os = "linux")]
-            "../target/debug/libflutter_rust_bridge_example_multi.so",
+            "../target/debug/libflutter_rust_bridge_example_pure_dart_multi.so",
             #[cfg(target_os = "windows")]
-            "../target/debug/flutter_rust_bridge_example_multi.dll",
+            "../target/debug/flutter_rust_bridge_example_pure_dart_multi.dll",
         );
         let absolute_path = fs::canonicalize(output_path).expect("Failed to get absolute path");
         println!("Absolute path to output: {:?}", absolute_path);

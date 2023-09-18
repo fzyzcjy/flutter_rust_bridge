@@ -74,6 +74,7 @@ impl WorkerPool {
         let src = &self.script_src;
         let script = format!(
             "importScripts('{}');
+            const FRB_ACTION_PANIC = 3;
             onmessage = event => {{
                 let init = wasm_bindgen(...event.data).catch(err => {{
                     setTimeout(() => {{ throw err }})
@@ -86,7 +87,8 @@ impl WorkerPool {
                         wasm_bindgen.receive_transfer_closure(payload, transfer)
                     }} catch (err) {{
                         if (transfer[0] && typeof transfer[0].postMessage === 'function') {{
-                            transfer[0].postMessage([1, 'ABORT', err.toString(), err.stack])
+                            // panic
+                            transfer[0].postMessage([FRB_ACTION_PANIC, err.toString()])
                         }}
                         setTimeout(() => {{ throw err }})
                         postMessage(null)

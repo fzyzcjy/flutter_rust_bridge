@@ -12,6 +12,8 @@ sed := if os() == "macos" {
     "sed -i"
 }
 
+library_file_ext := if os() == "macos" { "dylib" } else { "so" }
+
 dir_example_pure_dart := "frb_example/pure_dart"
 dir_example_pure_dart_multi := "frb_example/pure_dart_multi"
 dir_example_with_flutter := "frb_example/with_flutter"
@@ -88,10 +90,19 @@ dart_test_vm_service:
       frb_example/pure_dart/dart/lib/main_with_vm_service.dart \
       target/debug/libflutter_rust_bridge_example_pure_dart.so
 
-dart_test_valgrind $CARGO_TARGET_DIR="/home/runner":
-    cd {{dir_example_pure_dart}}/dart && \
-        chmod +x ./run.sh ./valgrind_util.py && \
-        ./run.sh
+dart_test_valgrind name:
+    just _dart_test_raw {{name}} "PYTHONUNBUFFERED=1 ./valgrind_util.py"
+
+dart_test_simple name:
+    just _dart_test_raw {{name}} ""
+
+_dart_test_raw name script_prefix:
+    cd frb_example/{{name}}/rust && cargo build --verbose
+    # need to be AOT, since prod environment is AOT, and JIT+valgrind will have strange problems
+    cd frb_example/{{name}}/dart && dart compile exe bin/{{name}}.dart -o main.exe
+    cd frb_example/{{name}}/dart && \
+        {{script_prefix}} ./main.exe \
+        "../../../target/debug/libflutter_rust_bridge_example_{{name}}.{{library_file_ext}}" --chain-stack-traces
 
 flutter_example_with_flutter_integration_test:
     flutter config --enable-{{ os() }}-desktop
@@ -199,11 +210,17 @@ dart_check_included_source:
 
 # ============================ (some of) CI ============================
 
-ci_valgrind:
+ci_dart_valgrind:
     just install_ffigen_dependency
     just install_valgrind
     just dart_pub_get dart_only
-    just dart_test_valgrind
+    just dart_test_valgrind pure_dart
+
+ci_dart_simple:
+    just install_ffigen_dependency
+    just dart_pub_get dart_only
+    just dart_test_simple pure_dart
+    just dart_test_simple pure_dart_multi
 
 ci_codegen:
     just install_ffigen_dependency
@@ -339,6 +356,10 @@ _install_crate name="cargo-lipo":
     else
       echo "Already installed the correct version of $PACKAGE_NAME."
     fi
+
+_noop:
+    echo "this is noop"
+
 # ============================ to be migrated ============================
 
 # TODO - @Desdaemon

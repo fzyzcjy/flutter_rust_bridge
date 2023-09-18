@@ -1,7 +1,14 @@
 ## Unreleased
 
+* Use delegate-attr to simplify code #1364 (thanks @upsuper)
+
+## 1.82.0
+
+* Support for Result<T, E> with exception throwing on Dart (thanks @lattice0, @SiongSng, @JustSimplyKyle)
 * Fix invalid sdk spec syntax #1331 (thanks @aran)
 * Document some common android fixes #1335 (thanks @powpingdone)
+* Add support of `Vec<bool>` (thanks @NightFeather0615)
+* Update ffigen version (thanks @aran)
 
 ## 1.81.0
 

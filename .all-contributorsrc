@@ -656,6 +656,33 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "NightFeather0615",
+      "name": "NightFeather",
+      "avatar_url": "https://avatars.githubusercontent.com/u/77222233?v=4",
+      "profile": "https://blog.nightfeather.dev/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "JustSimplyKyle",
+      "name": "SimplyKyle!",
+      "avatar_url": "https://avatars.githubusercontent.com/u/68589851?v=4",
+      "profile": "https://github.com/JustSimplyKyle",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "upsuper",
+      "name": "Xidorn Quan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/333750?v=4",
+      "profile": "https://www.upsuper.org/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

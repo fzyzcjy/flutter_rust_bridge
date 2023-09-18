@@ -3,8 +3,9 @@ import 'dart:developer';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:test/test.dart';
 import 'package:uuid/uuid.dart';
-import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
+
 import 'bridge_definitions.dart';
+import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
 
 const isWeb = bool.fromEnvironment('dart.library.html');
 
@@ -322,7 +323,7 @@ void main(List<String> args) async {
     try {
       await api.returnErr();
       fail("exception not thrown");
-    } on FfiException catch (e) {
+    } on FrbAnyhowException catch (e) {
       print('dart catch e: $e');
     }
   });
@@ -333,7 +334,7 @@ void main(List<String> args) async {
       fail("exception not thrown");
     } catch (e) {
       print('dart catch e: $e');
-      expect(e, isA<FfiException>());
+      expect(e, isA<PanicException>());
     }
   });
 
@@ -984,7 +985,7 @@ void main(List<String> args) async {
     test('unwrap', () async {
       expect(api.unwrapDartOpaque(opaque: createLargeList(mb: 200)), 'Test');
       await expectLater(
-          () => api.panicUnwrapDartOpaque(opaque: createLargeList(mb: 200)), throwsA(isA<FfiException>()));
+          () => api.panicUnwrapDartOpaque(opaque: createLargeList(mb: 200)), throwsA(isA<PanicException>()));
     });
 
     test('nested', () async {
@@ -1067,7 +1068,7 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
       data.dispose();
-      await expectLater(() => api.runOpaque(opaque: data), throwsA(isA<FfiException>()));
+      await expectLater(() => api.runOpaque(opaque: data), throwsA(isA<PanicException>()));
     });
 
     test('dispose before complete', () async {
@@ -1083,7 +1084,7 @@ void main(List<String> args) async {
           "array: [451, 451, 451, 451, 451, 451, 451, 451, 451, 451], "
           "lifetime: \"static str\" "
           "})");
-      await expectLater(() => api.runOpaque(opaque: data), throwsA(isA<FfiException>()));
+      await expectLater(() => api.runOpaque(opaque: data), throwsA(isA<PanicException>()));
     });
 
     test('create array of opaque type', () async {
@@ -1099,7 +1100,7 @@ void main(List<String> args) async {
             "lifetime: \"static str\" "
             "})");
         v.dispose();
-        await expectLater(() => api.runOpaque(opaque: v), throwsA(isA<FfiException>()));
+        await expectLater(() => api.runOpaque(opaque: v), throwsA(isA<PanicException>()));
       }
     });
 
@@ -1144,7 +1145,7 @@ void main(List<String> args) async {
           "lifetime: \\\"static str\\\" "
           "})\"");
       (data[4] as EnumOpaque_RwLock).field0.dispose();
-      await expectLater(() => api.runEnumOpaque(opaque: data[4]), throwsA(isA<FfiException>()));
+      await expectLater(() => api.runEnumOpaque(opaque: data[4]), throwsA(isA<PanicException>()));
     });
 
     test('opaque field', () async {
@@ -1170,8 +1171,8 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
       data.first.dispose();
-      await expectLater(() => api.runOpaque(opaque: data.first), throwsA(isA<FfiException>()));
-      await expectLater(() => api.runNestedOpaque(opaque: data), throwsA(isA<FfiException>()));
+      await expectLater(() => api.runOpaque(opaque: data.first), throwsA(isA<PanicException>()));
+      await expectLater(() => api.runNestedOpaque(opaque: data), throwsA(isA<PanicException>()));
       expect(
           await api.runOpaque(opaque: data.second),
           "content - Some(PrivateData "
@@ -1199,7 +1200,7 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
 
-      await expectLater(() => api.opaqueArrayRun(data: data), throwsA(isA<FfiException>()));
+      await expectLater(() => api.opaqueArrayRun(data: data), throwsA(isA<PanicException>()));
       data[1].dispose();
     });
 
@@ -1218,7 +1219,7 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
 
-      await expectLater(() => api.opaqueVecRun(data: data), throwsA(isA<FfiException>()));
+      await expectLater(() => api.opaqueVecRun(data: data), throwsA(isA<PanicException>()));
       data[1].dispose();
     });
 
@@ -1237,7 +1238,7 @@ void main(List<String> args) async {
       expect(data.isStale(), isTrue);
 
       var data2 = await api.createOpaque();
-      await expectLater(() => api.unwrapRustOpaque(opaque: data2), throwsA(isA<FfiException>()));
+      await expectLater(() => api.unwrapRustOpaque(opaque: data2), throwsA(isA<FrbAnyhowException>()));
       expect(data2.isStale(), isFalse);
     });
   });
@@ -1368,6 +1369,125 @@ void main(List<String> args) async {
     macroStruct.nonFinalData = 321;
     expect(macroStruct.nonFinalData, 321);
   });
+
+  group('Custom error (Result<T,E>)', () {
+    test('Throw CustomError', () async {
+      await expectLater(() async => await api.returnErrCustomError(), throwsA(isA<CustomError>()));
+    });
+
+    test('Throw CustomStructError', () async {
+      await expectLater(() async => await api.returnCustomStructError(), throwsA(isA<CustomStructError>()));
+    });
+
+    test('Do not throw CustomStructError', () async {
+      expect(await api.returnCustomStructOk(), 3);
+    });
+
+    test('Throw CustomStructError non static method', () async {
+      await expectLater(
+          () async => await CustomStruct(bridge: api, message: "hello").nonstaticReturnCustomStructError(),
+          throwsA(isA<CustomStructError>()));
+    });
+
+    test('Do not throw CustomStructError non static method', () async {
+      expect(await CustomStruct(bridge: api, message: "hello").nonstaticReturnCustomStructOk(), 3);
+    });
+
+    test('Throw CustomStructError static method', () async {
+      await expectLater(
+          () async => await CustomStruct.staticReturnCustomStructError(bridge: api), throwsA(isA<CustomStructError>()));
+    });
+
+    test('Do not throw CustomStructError static method', () async {
+      expect(await CustomStruct.staticReturnCustomStructOk(bridge: api), 3);
+    });
+
+    test('Throw CustomNestedError1', () async {
+      await expectLater(() async => await api.returnCustomNestedError1(),
+          throwsA(CustomNestedError1.errorNested(CustomNestedError2.customNested2Number(3))));
+    });
+
+    test('Throw CustomNestedError1 variant 1', () async {
+      await expectLater(() async => await api.returnCustomNestedError1Variant1(),
+          throwsA(CustomNestedError1.customNested1("custom")));
+    });
+
+    test('Throw CustomNestedError2', () async {
+      await expectLater(
+          () async => await api.returnCustomNestedError2(), throwsA(CustomNestedError2.customNested2("custom")));
+    });
+
+    test('Throw CustomError variant 0', () async {
+      await expectLater(() async => await api.returnErrorVariant(variant: 0), throwsA(isA<CustomError>()));
+    });
+
+    test('Throw CustomError variant 1', () async {
+      await expectLater(() async => await api.returnErrorVariant(variant: 1), throwsA(isA<CustomError>()));
+    });
+
+    test('Do not throw CustomError', () async {
+      expect(await api.returnOkCustomError(), 3);
+    });
+
+    test('Throw CustomError static method', () async {
+      await expectLater(
+          () async => await SomeStruct.staticReturnErrCustomError(bridge: api), throwsA(isA<CustomError>()));
+    });
+
+    test('Throw CustomError static method, verifies implements Frb', () async {
+      await expectLater(
+          () async => await SomeStruct.staticReturnErrCustomError(bridge: api), throwsA(isA<FrbException>()));
+    });
+
+    test('Do not throw CustomError static method', () async {
+      expect(await SomeStruct.staticReturnOkCustomError(bridge: api), 3);
+    });
+
+    test('Do not throw CustomError', () async {
+      expect(await api.returnOkCustomError(), 3);
+    });
+
+    test('Throw CustomError non-static method', () async {
+      await expectLater(() async => await SomeStruct(bridge: api, value: 7).nonStaticReturnErrCustomError(),
+          throwsA(isA<CustomError>()));
+      bool didCatch = false;
+      try {
+        await SomeStruct(bridge: api, value: 7).nonStaticReturnErrCustomError();
+      } catch (e) {
+        final FrbBacktracedException ex = e as FrbBacktracedException;
+        print("backtrace: ${ex.backtrace}");
+        assert(ex.backtrace.contains("wire_non_static_return_err_custom_error__method__SomeStruct::"));
+        didCatch = true;
+      }
+      assert(didCatch);
+    });
+
+    test('Do not throw CustomError non-static method', () async {
+      expect(await SomeStruct(bridge: api, value: 6).nonStaticReturnOkCustomError(), 6);
+    });
+
+    test('Throw anyhow error', () async {
+      await expectLater(() async => await api.throwAnyhow(), throwsA(isA<FrbException>()));
+      try {
+        await api.throwAnyhow();
+      } catch (e) {
+        final FrbAnyhowException p = e as FrbAnyhowException;
+        print("anyhow error: ${p.anyhow}");
+        assert(p.anyhow.contains("anyhow error"));
+      }
+    });
+
+    test('Function with custom result panics', () async {
+      await expectLater(() async => await api.panicWithCustomResult(), throwsA(isA<FrbException>()));
+      try {
+        await api.panicWithCustomResult();
+      } catch (e) {
+        final PanicException p = e as PanicException;
+        print("panic error: ${p.error}");
+        assert(p.error.contains("just a panic"));
+      }
+    });
+  });
 }
 
 int _createGarbage() {
@@ -1415,6 +1535,7 @@ MyNestedStruct _createMyNestedStruct() {
 
 class MatchBigInt extends CustomMatcher {
   MatchBigInt(matcher) : super("is a numeric", "value", _featureValueOf(matcher));
+
   @override
   Object? featureValueOf(actual) => _featureValueOf(actual);
 

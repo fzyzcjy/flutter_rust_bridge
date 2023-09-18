@@ -1,4 +1,4 @@
-use delegate::delegate;
+use delegate_attr::delegate;
 
 use crate::generator::dart::*;
 use crate::target::Acc;
@@ -22,18 +22,19 @@ impl<'a> TypeSyncReturnGenerator<'a> {
     }
 }
 
+#[delegate(self.inner)]
 impl<'a> TypeDartGeneratorTrait for TypeSyncReturnGenerator<'a> {
-    delegate! {
-        to self.inner {
-            fn api2wire_body(&self, shared_dart_api2wire_funcs: &Option<Acc<String>>) -> Acc<Option<String>>;
-            fn api_fill_to_wire_body(
-                &self,
-                shared_dart_api2wire_funcs: &Option<Acc<String>>,
-            ) -> Option<String>;
-            fn wire2api_body(&self) -> String;
-            fn structs(&self) -> String;
-            fn get_context(&self) -> &TypeGeneratorContext;
-
-        }
+    fn api2wire_body(
+        &self,
+        shared_dart_api2wire_funcs: &Option<Acc<String>>,
+    ) -> Acc<Option<String>> {
     }
+    fn api_fill_to_wire_body(
+        &self,
+        shared_dart_api2wire_funcs: &Option<Acc<String>>,
+    ) -> Option<String> {
+    }
+    fn wire2api_body(&self) -> String {}
+    fn structs(&self) -> String {}
+    fn get_context(&self) -> &TypeGeneratorContext {}
 }
