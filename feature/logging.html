@@ -169,7 +169,7 @@
                         <h1 id="logging"><a class="header" href="#logging">Logging</a></h1>
 <p>Since I have seen some questions asking how logging can be implemented with a Flutter + Rust application, here are some examples.</p>
 <h2 id="logger-in-production"><a class="header" href="#logger-in-production">Logger in production</a></h2>
-<p>In my own app in production, I use the following strategy for Rust logging: Use normal Rust logging methods, such as <code>info!</code> and <code>debug!</code> macros. The logs are consumed in two places: They are printed via platform-specific methods (like android Logcat and iOS NSLog), and also use a Stream to send them to the Dart side such that my Dart code and further process it using the same pipeline as normal Dart logs (e.g. save to a file, send to server, etc).</p>
+<p>In my own app in production, I use the following strategy for Rust logging: Use normal Rust logging methods, such as <code>info!</code> and <code>debug!</code> macros. The logs are consumed in two places: They are printed via platform-specific methods (like android Logcat and iOS NSLog), and also use a Stream to send them to the Dart side such that my Dart code and further process are using the same pipeline as normal Dart logs (e.g. save to a file, send to server, etc).</p>
 <p>The <em>full</em> code related to logging in my app can be seen here: <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/486">#486</a>.</p>
 <h2 id="simple-logger"><a class="header" href="#simple-logger">Simple logger</a></h2>
 <p>Let us implement a simple logging system (adapted from the logging system I use with <code>flutter_rust_bridge</code> in my app in production), where Rust code can send logs to Dart code.</p>
@@ -203,7 +203,7 @@ To fix this error you should just rerun <code>flutter_rust_bridge_codegen</code>
 </code></pre>
 <p>And now we can happily log anything in Rust:</p>
 <pre><code class="language-rust noplayground">log_stream_sink.add(LogEntry { msg: &quot;hello I am a log from Rust&quot;, ... })</code></pre>
-<p>Of course, you can implement a logger following the Rust's <code>log</code> crate wrapping this raw stream sink, then you can use standard Rust logging mechanisms like <code>info!</code>. I exactly did that in my project.</p>
+<p>Of course, you can implement a logger following the Rust's <code>log</code> crate wrapping this raw stream sink, then you can use standard Rust logging mechanisms like <code>info!</code>. I did exactly that in my project.</p>
 <h3 id="example-simple-timer"><a class="header" href="#example-simple-timer">Example: Simple timer</a></h3>
 <p>Credits: <a href="https://gist.github.com/Desdaemon/be5da0a1c6b4724f20093ef434959744">this</a> and <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/347">#347</a>.</p>
 <pre><code class="language-rust noplayground">use anyhow::Result;

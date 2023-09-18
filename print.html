@@ -194,7 +194,7 @@
 <p>Here is my another open-source library :) https://github.com/fzyzcjy/flutter_smooth.</p>
 <h2 id="-contributors"><a class="header" href="#-contributors">✨ Contributors</a></h2>
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-<p><a href="index.html#contributors-"><img src="https://img.shields.io/badge/all_contributors-72-orange.svg?style=flat-square" alt="All Contributors" /></a></p>
+<p><a href="index.html#contributors-"><img src="https://img.shields.io/badge/all_contributors-73-orange.svg?style=flat-square" alt="All Contributors" /></a></p>
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p>Thanks goes to these wonderful people (<a href="https://allcontributors.org/docs/en/emoji-key">emoji key</a> following <a href="https://github.com/all-contributors/all-contributors">all-contributors</a> specification):</p>
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
@@ -295,6 +295,7 @@
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://blog.nightfeather.dev/"><img src="https://avatars.githubusercontent.com/u/77222233?v=4?s=100" width="100px;" alt="NightFeather"/><br /><sub><b>NightFeather</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=NightFeather0615" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/JustSimplyKyle"><img src="https://avatars.githubusercontent.com/u/68589851?v=4?s=100" width="100px;" alt="SimplyKyle!"/><br /><sub><b>SimplyKyle!</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=JustSimplyKyle" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.upsuper.org/"><img src="https://avatars.githubusercontent.com/u/333750?v=4?s=100" width="100px;" alt="Xidorn Quan"/><br /><sub><b>Xidorn Quan</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=upsuper" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
@@ -338,6 +339,7 @@
 <li><a href="https://github.com/valeth">valeth</a>: Rename callFfi's port.</li>
 <li><a href="https://github.com/sccheruku">sccheruku</a>: Prevent double-generating utility.</li>
 <li><a href="https://github.com/jsonmona">jsonmona</a>: Add import.</li>
+<li><a href="https://github.com/upsuper">upsuper</a>: Refactor delegate-attr.</li>
 <li><a href="https://github.com/w-ensink">w-ensink</a>: Improve doc. Fix CI. Refactor. Add tests.</li>
 <li><a href="https://github.com/codercengiz">codercengiz</a>: Fix mirroring bug.</li>
 <li><a href="https://github.com/Michael-F-Bryan">Michael-F-Bryan</a>: Detect broken bindings.</li>
@@ -1195,7 +1197,7 @@ fn main() {
 <div style="break-before: page; page-break-before: always;"></div><h1 id="logging"><a class="header" href="#logging">Logging</a></h1>
 <p>Since I have seen some questions asking how logging can be implemented with a Flutter + Rust application, here are some examples.</p>
 <h2 id="logger-in-production"><a class="header" href="#logger-in-production">Logger in production</a></h2>
-<p>In my own app in production, I use the following strategy for Rust logging: Use normal Rust logging methods, such as <code>info!</code> and <code>debug!</code> macros. The logs are consumed in two places: They are printed via platform-specific methods (like android Logcat and iOS NSLog), and also use a Stream to send them to the Dart side such that my Dart code and further process it using the same pipeline as normal Dart logs (e.g. save to a file, send to server, etc).</p>
+<p>In my own app in production, I use the following strategy for Rust logging: Use normal Rust logging methods, such as <code>info!</code> and <code>debug!</code> macros. The logs are consumed in two places: They are printed via platform-specific methods (like android Logcat and iOS NSLog), and also use a Stream to send them to the Dart side such that my Dart code and further process are using the same pipeline as normal Dart logs (e.g. save to a file, send to server, etc).</p>
 <p>The <em>full</em> code related to logging in my app can be seen here: <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/486">#486</a>.</p>
 <h2 id="simple-logger"><a class="header" href="#simple-logger">Simple logger</a></h2>
 <p>Let us implement a simple logging system (adapted from the logging system I use with <code>flutter_rust_bridge</code> in my app in production), where Rust code can send logs to Dart code.</p>
@@ -1229,7 +1231,7 @@ To fix this error you should just rerun <code>flutter_rust_bridge_codegen</code>
 </code></pre>
 <p>And now we can happily log anything in Rust:</p>
 <pre><code class="language-rust noplayground">log_stream_sink.add(LogEntry { msg: &quot;hello I am a log from Rust&quot;, ... })</code></pre>
-<p>Of course, you can implement a logger following the Rust's <code>log</code> crate wrapping this raw stream sink, then you can use standard Rust logging mechanisms like <code>info!</code>. I exactly did that in my project.</p>
+<p>Of course, you can implement a logger following the Rust's <code>log</code> crate wrapping this raw stream sink, then you can use standard Rust logging mechanisms like <code>info!</code>. I did exactly that in my project.</p>
 <h3 id="example-simple-timer"><a class="header" href="#example-simple-timer">Example: Simple timer</a></h3>
 <p>Credits: <a href="https://gist.github.com/Desdaemon/be5da0a1c6b4724f20093ef434959744">this</a> and <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/347">#347</a>.</p>
 <pre><code class="language-rust noplayground">use anyhow::Result;
