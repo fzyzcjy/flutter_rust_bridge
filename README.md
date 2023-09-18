@@ -212,6 +212,7 @@ More specifically, thanks for all these contributions:
 * [Voklen](https://github.com/Voklen): Improve doc.
 * [svenstaro](https://github.com/svenstaro): Improve doc.
 * [utilForever](https://github.com/utilForever): Fix typos.
+* [not-holar](https://github.com/not-holar): Fix typos.
 * [Stonks3141](https://github.com/Stonks3141): Fix doc credit.
 * [vimaxwell](https://github.com/vimaxwell): Fix doc link.
 * [lker-dev](https://github.com/lker-dev): Fix doc link.
