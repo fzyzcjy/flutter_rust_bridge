@@ -208,17 +208,8 @@ pub enum ShareMode {
     Shared, // for (the types only for) shared block
 }
 
-pub trait PathExt {
-    fn file_name_str(&self) -> Option<&str>;
-    fn get_file_name(&self) -> &str;
-    fn directory_name_str(&self) -> Option<&str>;
-    fn get_directory_name(&self) -> &str;
-    fn get_relative_path_to<P>(&self, path: P, exclude_file: bool) -> String
-    where
-        P: AsRef<Path>;
-}
-
-impl PathExt for std::path::Path {
+#[ext(name = PathExt)]
+pub(crate) impl std::path::Path {
     #[inline]
     fn file_name_str(&self) -> Option<&str> {
         self.file_name().and_then(std::ffi::OsStr::to_str)

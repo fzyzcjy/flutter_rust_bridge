@@ -104,32 +104,29 @@ pub fn parse_configs_and_symbols(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<Str
     } else {
         // multi-blocks case
 
-        // 1.check all regular path are at the same paths in
+        // 1.Check if all regular paths are in the same directory
         if !is_same_directory(&rust_output_paths) || !is_same_directory(&dart_output_paths) {
-            panic!("for multi-blocks case, paths in flag `rust-output`/`dart-output` respectively should be in the same directory ");
+            panic!("For multi-blocks case, paths in flag `rust-output`/`dart-output` respectively should be in the same directory");
         }
-
-        // 2.get proper raw shared rust path
-        let raw_shared_rust_output_path = raw.shared_rust_output.clone().unwrap_or({
-            let p = raw
-                .rust_output
-                .clone()
-                .map(|vec| vec.get(0).cloned().unwrap_or_default())
-                .unwrap_or_default();
+        // 2.Get proper raw shared rust path
+        let p = raw
+            .rust_output
+            .clone()
+            .map(|vec| vec.get(0).cloned().unwrap_or_default())
+            .unwrap_or_default();
+        let raw_path = raw
+            .shared_rust_output
+            .clone()
+            .unwrap_or_else(|| "./bridge_generated_shares.rs".to_string());
+        let raw_shared_rust_output_path = raw.shared_rust_output.clone().unwrap_or_else(|| {
             let directory = Path::new(&p).parent().unwrap_or(Path::new(""));
-
-            let raw_path = raw
-                .shared_rust_output
-                .clone()
-                .unwrap_or_else(|| "./bridge_generated_shares.rs".to_string());
-            let shared_rust_file_name = Path::new(&raw_path).get_file_name(); // erase directory if there is
+            let shared_rust_file_name = Path::new(&raw_path).get_file_name();
             Path::join(directory, shared_rust_file_name)
                 .into_os_string()
                 .into_string()
                 .unwrap()
         });
-
-        // 3.return rust/dart output path with full directories
+        // 3.Return rust/dart output path with full directories
         let shared_rust_output_path =
             get_valid_canon_paths(&[raw_shared_rust_output_path])[0].clone();
         let shared_dart_output_path = Path::join(
