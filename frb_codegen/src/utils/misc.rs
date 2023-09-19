@@ -1,5 +1,4 @@
 use std::cell::RefCell;
-use std::collections::HashSet;
 
 use std::fmt::Display;
 use std::fs;
@@ -249,28 +248,35 @@ impl PathExt for std::path::Path {
 }
 
 pub(crate) trait ExtraTraitForVec<T: Clone + Eq + std::hash::Hash> {
-    /// This function finds unique and duplicate elements in a vector within  original order.
+    /// This function finds unique and duplicate elements in a vector within original order.
     ///
     /// # Arguments
     ///
-    /// * `exclude_duplicates_in_uniques` - A boolean that indicates whether to exclude duplicates in the unique elements.
-    /// * `exclude_duplicates_in_duplicates` - A boolean that indicates whether to exclude duplicates in the duplicate elements.
+    /// * `exclude_duplicates_in_uniques` - A boolean that indicates whether to exclude duplicate elements in the returned unique_list.
+    /// * `exclude_duplicates_in_duplicates` - A boolean that indicates whether to exclude duplicate elements in the returned duplicate_list.
     ///
     /// # Examples
     ///
     /// ```ignore
     /// use crate::utils::misc::ExtraTraitForVec;
     ///
-    /// let vec = vec![1, 2, 3, 4, 5, 1, 2, 3];
+    /// let vec = vec![1, 2, 3, 4, 5, 2, 1, 3];
+    /// // Case 1: exclude duplicates in both uniques and duplicates
     /// let (uniques, duplicates) = vec.find_uniques_and_duplicates(true, true);
-    ///
     /// assert_eq!(uniques, vec![4, 5]);
     /// assert_eq!(duplicates, vec![1, 2, 3]);
-    ///
-    /// let (uniques, duplicates) = vec.find_uniques_and_duplicates(false, false);
-    ///
+    /// // Case 2: only exclude duplicates in uniques
+    /// let (uniques, duplicates) = vec.find_uniques_and_duplicates(true, false);
+    /// assert_eq!(uniques, vec![4, 5]);
+    /// assert_eq!(duplicates, vec![1, 2, 3, 2, 1, 3]);
+    /// // Case 3: only exclude duplicates in duplicates
+    /// let (uniques, duplicates) = vec.find_uniques_and_duplicates(false, true);
     /// assert_eq!(uniques, vec![1, 2, 3, 4, 5]);
     /// assert_eq!(duplicates, vec![1, 2, 3]);
+    /// // Case 4: include duplicates in both uniques and duplicates
+    /// let (uniques, duplicates) = vec.find_uniques_and_duplicates(false, false);
+    /// assert_eq!(uniques, vec![1, 2, 3, 4, 5]);
+    /// assert_eq!(duplicates, vec![1, 2, 3, 2, 1, 3]);
     /// ```
     fn find_uniques_and_duplicates(
         &self,
@@ -289,40 +295,29 @@ impl<T: Clone + Eq + std::hash::Hash> ExtraTraitForVec<T> for Vec<T> {
         exclude_duplicates_in_uniques: bool,
         exclude_duplicates_in_duplicates: bool,
     ) -> (Vec<T>, Vec<T>) {
-        let mut uniques = Vec::new();
-        let mut duplicates = Vec::new();
-        let mut seen = HashSet::new();
-
+        let mut uniques = vec![];
+        let mut duplicates = vec![];
         for item in self {
-            if !seen.insert(item.clone()) {
-                duplicates.push(item.clone());
+            let count = self.iter().filter(|&n| n == item).count();
+            let is_unique = count == 1;
+            if is_unique {
+                if !uniques.contains(item) || !exclude_duplicates_in_uniques {
+                    uniques.push(item.clone());
+                }
             } else {
-                uniques.push(item.clone());
+                if !uniques.contains(item) && !exclude_duplicates_in_uniques {
+                    uniques.push(item.clone());
+                }
+                if !duplicates.contains(item) || !exclude_duplicates_in_duplicates {
+                    duplicates.push(item.clone());
+                }
             }
-        }
-
-        if exclude_duplicates_in_uniques {
-            uniques.retain(|item| !duplicates.contains(item));
-        }
-
-        if exclude_duplicates_in_duplicates {
-            let mut seen = HashSet::new();
-            duplicates = duplicates
-                .iter()
-                .filter_map(|x| {
-                    if seen.insert(x.clone()) {
-                        Some(x.clone())
-                    } else {
-                        None
-                    }
-                })
-                .collect();
         }
         (uniques, duplicates)
     }
 
     fn find_uniques(&self) -> Vec<T> {
-        let (uniques, _) = self.find_uniques_and_duplicates(false, false);
+        let (uniques, _) = self.find_uniques_and_duplicates(true, false);
         uniques
     }
 
@@ -436,5 +431,49 @@ mod tests {
         let (dir, module) = get_dir_and_mod("/project/src/sub/subsub.rs");
         assert_eq!("/project", dir);
         assert_eq!(Some(String::from("sub::subsub")), module);
+    }
+
+    use super::ExtraTraitForVec;
+    #[test]
+    fn test_find_uniques_and_duplicates() {
+        let vec = vec![1, 2, 3, 4, 5, 2, 1, 3];
+
+        // Case 1: exclude duplicates in both uniques and duplicates
+        let (uniques, duplicates) = vec.find_uniques_and_duplicates(true, true);
+        assert_eq!(uniques, vec![4, 5]);
+        assert_eq!(duplicates, vec![1, 2, 3]);
+
+        // Case 2: only exclude duplicates in uniques
+        let (uniques, duplicates) = vec.find_uniques_and_duplicates(true, false);
+        assert_eq!(uniques, vec![4, 5]);
+        assert_eq!(duplicates, vec![1, 2, 3, 2, 1, 3]);
+
+        // Case 3: only exclude duplicates in duplicates
+        let (uniques, duplicates) = vec.find_uniques_and_duplicates(false, true);
+        assert_eq!(uniques, vec![1, 2, 3, 4, 5]);
+        assert_eq!(duplicates, vec![1, 2, 3]);
+
+        // Case 4: include duplicates in both uniques and duplicates
+        let (uniques, duplicates) = vec.find_uniques_and_duplicates(false, false);
+        assert_eq!(uniques, vec![1, 2, 3, 4, 5]);
+        assert_eq!(duplicates, vec![1, 2, 3, 2, 1, 3]);
+    }
+
+    #[test]
+    fn test_find_uniques() {
+        let vec = vec![1, 2, 3, 4, 5, 2, 1, 3];
+        let uniques = vec.find_uniques();
+        assert_eq!(uniques, vec![4, 5]);
+    }
+
+    #[test]
+    fn test_find_duplicates() {
+        let vec = vec![1, 2, 3, 4, 5, 2, 1, 3];
+
+        let duplicates = vec.find_duplicates(true);
+        assert_eq!(duplicates, vec![1, 2, 3]);
+
+        let duplicates = vec.find_duplicates(false);
+        assert_eq!(duplicates, vec![1, 2, 3, 2, 1, 3]);
     }
 }
