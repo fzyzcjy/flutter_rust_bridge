@@ -416,7 +416,6 @@ fn item_method_to_function(
 
         // get/check inputs for mutability first
         let mut is_mut = false;
-        // let inputs: syn::punctuated::Punctuated<_, _> = item_method
         let inputs: Punctuated<FnArg, Comma> = item_method
             .sig
             .inputs
@@ -457,7 +456,12 @@ fn item_method_to_function(
             .collect::<ParserResult<Punctuated<_, _>>>()?;
 
         if is_mut {
-            return Ok(None); // if the method is mutable, don't panic but skip it
+            log::warn!(
+                "Mutable method detected: `{}::{}`, which won't be generated",
+                struct_name,
+                item_method.sig.ident
+            );
+            return Ok(None);
         }
 
         let is_static_method = {

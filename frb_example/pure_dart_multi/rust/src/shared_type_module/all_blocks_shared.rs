@@ -23,6 +23,12 @@ impl SharedComplexEnumInAllBlocks {
         message
     }
 
+    #[allow(unused)]
+    pub fn test_mutable_enum_method(mut self) {}
+
+    #[allow(unused)]
+    pub fn test_mutable_ref_enum_method(&mut self) {}
+
     pub fn test_static_enum_method(message: String) -> String {
         message
     }
@@ -124,7 +130,12 @@ impl SharedStructInBlock2And3 {
     }
 
     #[allow(unused)]
-    pub fn test_mutable_method(&mut self, name: String) {
+    pub fn test_mutable_method(mut self, name: String) {
+        self.name = name;
+    }
+
+    #[allow(unused)]
+    pub fn test_mutable_ref_method(&mut self, name: String) {
         self.name = name;
     }
 
