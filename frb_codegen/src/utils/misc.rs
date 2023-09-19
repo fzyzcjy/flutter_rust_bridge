@@ -284,9 +284,43 @@ pub(crate) trait ExtraTraitForVec<T: Clone + Eq + std::hash::Hash> {
         exclude_duplicates_in_duplicates: bool,
     ) -> (Vec<T>, Vec<T>);
 
-    fn find_uniques(&self) -> Vec<T>;
+    /// This function finds unique elements in a vector within original order.
+    /// # Arguments
+    /// * `exclude_duplicates` - A boolean that indicates whether to exclude duplicate elements in the returned unique_list.
+    ///
+    /// # Examples
+    ///
+    /// ```ignore
+    /// use crate::utils::misc::ExtraTraitForVec;
+    ///
+    /// let vec = vec![1, 2, 3, 4, 5, 2, 1, 3];
+    ///
+    /// let uniques = vec.find_uniques(true);
+    /// assert_eq!(uniques, vec![4, 5]);
+    ///
+    /// let uniques = vec.find_uniques(false);
+    /// assert_eq!(uniques, vec![1, 2, 3, 4, 5]);
+    /// ```
+    fn find_uniques(&self, exclude_duplicates: bool) -> Vec<T>;
 
-    fn find_duplicates(&self, exclude_multi_duplicates: bool) -> Vec<T>;
+    /// This function finds duplicate elements in a vector within original order.
+    /// # Arguments
+    /// * `exclude_duplicates` - A boolean that indicates whether to exclude duplicate elements in the returned duplicate_list.
+    ///
+    /// # Examples
+    ///
+    /// ```ignore
+    /// use crate::utils::misc::ExtraTraitForVec;
+    /// 
+    /// let vec = vec![1, 2, 3, 4, 5, 2, 1, 3];
+    ///
+    /// let duplicates = vec.find_duplicates(true);
+    /// assert_eq!(duplicates, vec![1, 2, 3]);
+    ///
+    /// let duplicates = vec.find_duplicates(false);
+    /// assert_eq!(duplicates, vec![1, 2, 3, 2, 1, 3]);
+    /// ```
+    fn find_duplicates(&self, exclude_duplicates: bool) -> Vec<T>;
 }
 
 impl<T: Clone + Eq + std::hash::Hash> ExtraTraitForVec<T> for Vec<T> {
@@ -316,13 +350,13 @@ impl<T: Clone + Eq + std::hash::Hash> ExtraTraitForVec<T> for Vec<T> {
         (uniques, duplicates)
     }
 
-    fn find_uniques(&self) -> Vec<T> {
-        let (uniques, _) = self.find_uniques_and_duplicates(true, false);
+    fn find_uniques(&self, exclude_duplicates: bool) -> Vec<T> {
+        let (uniques, _) = self.find_uniques_and_duplicates(exclude_duplicates, false);
         uniques
     }
 
-    fn find_duplicates(&self, exclude_multi_duplicates: bool) -> Vec<T> {
-        let (_, duplicates) = self.find_uniques_and_duplicates(true, exclude_multi_duplicates);
+    fn find_duplicates(&self, exclude_duplicates: bool) -> Vec<T> {
+        let (_, duplicates) = self.find_uniques_and_duplicates(true, exclude_duplicates);
         duplicates
     }
 }
@@ -462,8 +496,12 @@ mod tests {
     #[test]
     fn test_find_uniques() {
         let vec = vec![1, 2, 3, 4, 5, 2, 1, 3];
-        let uniques = vec.find_uniques();
+
+        let uniques = vec.find_uniques(true);
         assert_eq!(uniques, vec![4, 5]);
+
+        let uniques = vec.find_uniques(false);
+        assert_eq!(uniques, vec![1, 2, 3, 4, 5]);
     }
 
     #[test]

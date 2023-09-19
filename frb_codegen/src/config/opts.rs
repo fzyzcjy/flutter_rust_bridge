@@ -234,7 +234,7 @@ impl Opts {
             enums.extend(regular_ir_file.enum_pool);
         }
         let funcs = shared_methods
-            .find_uniques()
+            .find_uniques(false)
             .into_iter()
             .collect::<Vec<_>>();
         let struct_pool = structs
