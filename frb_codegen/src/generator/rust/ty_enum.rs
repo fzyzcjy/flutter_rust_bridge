@@ -351,8 +351,4 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
         let api_enum = self.ir.get(self.context.ir_file);
         Some(format!("use {};", api_enum.path.join("::")))
     }
-
-    fn get_context(&self) -> &TypeGeneratorContext {
-        &self.context
-    }
 }

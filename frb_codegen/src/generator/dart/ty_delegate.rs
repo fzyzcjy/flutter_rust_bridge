@@ -211,8 +211,4 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             _ => "".into(),
         }
     }
-
-    fn get_context(&self) -> &TypeGeneratorContext {
-        &self.context
-    }
 }

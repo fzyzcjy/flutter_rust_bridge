@@ -14,7 +14,4 @@ impl TypeDartGeneratorTrait for TypeDynamicGenerator<'_> {
     fn wire2api_body(&self) -> String {
         "return raw;".into()
     }
-    fn get_context(&self) -> &TypeGeneratorContext {
-        &self.context
-    }
 }

@@ -231,8 +231,4 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
             None
         }
     }
-
-    fn get_context(&self) -> &TypeGeneratorContext {
-        &self.context
-    }
 }

@@ -22,22 +22,6 @@ pub trait TypeDartGeneratorTrait {
     fn structs(&self) -> String {
         "".to_string()
     }
-
-    fn get_context(&self) -> &TypeGeneratorContext;
-
-    fn is_type_shared(&self, ty: &IrType) -> bool {
-        match self.get_context().ir_file.is_type_shared_by_safe_ident(ty) {
-            crate::utils::misc::ShareMode::Unique => false,
-            crate::utils::misc::ShareMode::Shared => true,
-        }
-    }
-
-    fn get_private_prefix(&self) -> String {
-        match self.get_context().config.share_mode {
-            crate::utils::misc::ShareMode::Unique => "_".into(),
-            crate::utils::misc::ShareMode::Shared => "".into(),
-        }
-    }
 }
 
 #[derive(Debug, Clone)]
@@ -53,6 +37,27 @@ macro_rules! type_dart_generator_struct {
         pub struct $cls<'a> {
             pub ir: $ir_cls,
             pub context: $crate::generator::dart::ty::TypeGeneratorContext<'a>,
+        }
+
+        impl $cls<'_> {
+            #[allow(unused)]
+            fn get_context(&self) -> &TypeGeneratorContext {
+                &self.context
+            }
+            #[allow(unused)]
+            fn is_type_shared(&self, ty: &$crate::ir::IrType) -> bool {
+                match self.get_context().ir_file.is_type_shared_by_safe_ident(ty) {
+                    $crate::utils::misc::ShareMode::Unique => false,
+                    $crate::utils::misc::ShareMode::Shared => true,
+                }
+            }
+            #[allow(unused)]
+            fn get_private_prefix(&self) -> String {
+                match self.get_context().config.share_mode {
+                    $crate::utils::misc::ShareMode::Unique => "_".into(),
+                    $crate::utils::misc::ShareMode::Shared => "".into(),
+                }
+            }
         }
     };
 }

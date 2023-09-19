@@ -30,8 +30,4 @@ impl TypeDartGeneratorTrait for TypePrimitiveGenerator<'_> {
             _ => gen_wire2api_simple_type_cast(&self.ir.dart_api_type()),
         }
     }
-
-    fn get_context(&self) -> &TypeGeneratorContext {
-        &self.context
-    }
 }

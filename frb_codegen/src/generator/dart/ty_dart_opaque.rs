@@ -39,8 +39,4 @@ impl TypeDartGeneratorTrait for TypeDartOpaqueGenerator<'_> {
     fn wire2api_body(&self) -> String {
         "return _platform.inner.get_dart_object(raw);".into()
     }
-
-    fn get_context(&self) -> &TypeGeneratorContext {
-        &self.context
-    }
 }

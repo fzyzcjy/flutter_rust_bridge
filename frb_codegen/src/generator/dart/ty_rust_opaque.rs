@@ -65,8 +65,4 @@ impl TypeDartGeneratorTrait for TypeRustOpaqueGenerator<'_> {
             self.ir.dart_api_type()
         )
     }
-
-    fn get_context(&self) -> &TypeGeneratorContext {
-        &self.context
-    }
 }

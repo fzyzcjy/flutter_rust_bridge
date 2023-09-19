@@ -40,5 +40,4 @@ impl<'a> TypeRustGeneratorTrait for TypeSyncReturnGenerator<'a> {
     fn impl_intodart(&self) -> String {}
     fn new_with_nullptr(&self, _collector: &mut ExternFuncCollector) -> String {}
     fn imports(&self) -> Option<String> {}
-    fn get_context(&self) -> &TypeGeneratorContext {}
 }

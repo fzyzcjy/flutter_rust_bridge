@@ -290,10 +290,6 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
             )
         }
     }
-
-    fn get_context(&self) -> &TypeGeneratorContext {
-        &self.context
-    }
 }
 
 #[inline]

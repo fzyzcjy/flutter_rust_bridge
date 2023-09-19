@@ -56,38 +56,6 @@ pub trait TypeRustGeneratorTrait {
     fn imports(&self) -> Option<String> {
         None
     }
-
-    fn get_context(&self) -> &TypeGeneratorContext;
-
-    fn get_shared_module_of_a_type(&self, ir_type: &IrType) -> Option<String> {
-        let ty = match ir_type {
-            IrType::Optional(inner_type) => &inner_type.inner,
-            _ => ir_type,
-        };
-
-        match self.get_context().ir_file.is_type_shared_by_safe_ident(ty) {
-            ShareMode::Unique => None,
-            ShareMode::Shared => SHARED_MODULE.with(|data| {
-                let cloned = data.borrow().clone();
-                if cloned.is_none() {
-                    panic!("in instance in charge of `{}`: checking shared for type \"{:?}\", it is shared indeed, but the shared module name is None",
-                        self.get_context().type_name, ty
-                    );
-                }
-                cloned
-            }),
-        }
-    }
-
-    fn get_wire2api_prefix(&self, ir_type: &IrType) -> String {
-        let shared_mod_name = self.get_shared_module_of_a_type(ir_type);
-
-        if self.get_context().config.share_mode == ShareMode::Unique && shared_mod_name.is_some() {
-            format!("{}::Wire2Api", shared_mod_name.unwrap())
-        } else {
-            "Wire2Api".into()
-        }
-    }
 }
 
 #[derive(Debug, Clone)]
@@ -104,6 +72,43 @@ macro_rules! type_rust_generator_struct {
         pub struct $cls<'a> {
             pub ir: $ir_cls,
             pub context: $crate::generator::rust::ty::TypeGeneratorContext<'a>,
+        }
+
+        impl $cls<'_> {
+            #[allow(unused)]
+            fn get_context(&self) -> &TypeGeneratorContext {
+                &self.context
+            }
+            #[allow(unused)]
+            fn get_shared_module_of_a_type(&self, ir_type: &$crate::ir::IrType) -> Option<String> {
+                let ty = match ir_type {
+                    $crate::ir::IrType::Optional(inner_type) => &inner_type.inner,
+                    _ => ir_type,
+                };
+
+                match self.get_context().ir_file.is_type_shared_by_safe_ident(ty) {
+                    $crate::utils::misc::ShareMode::Unique => None,
+                    $crate::utils::misc::ShareMode::Shared =>  $crate::ir::SHARED_MODULE.with(|data| {
+                        let cloned = data.borrow().clone();
+                        if cloned.is_none() {
+                            panic!("in instance in charge of `{}`: checking shared for type \"{:?}\", it is shared indeed, but the shared module name is None",
+                                self.get_context().type_name, ty
+                            );
+                        }
+                        cloned
+                    }),
+                }
+            }
+            #[allow(unused)]
+            fn get_wire2api_prefix(&self, ir_type: &$crate::ir::IrType) -> String {
+                let shared_mod_name = self.get_shared_module_of_a_type(ir_type);
+
+                if self.get_context().config.share_mode == $crate::utils::misc::ShareMode::Unique && shared_mod_name.is_some() {
+                    format!("{}::Wire2Api", shared_mod_name.unwrap())
+                } else {
+                    "Wire2Api".into()
+                }
+            }
         }
     };
 }

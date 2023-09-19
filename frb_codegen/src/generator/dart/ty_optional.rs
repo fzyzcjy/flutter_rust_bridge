@@ -88,8 +88,4 @@ impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
             )
         }
     }
-
-    fn get_context(&self) -> &TypeGeneratorContext {
-        &self.context
-    }
 }

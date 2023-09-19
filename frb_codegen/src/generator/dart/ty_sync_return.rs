@@ -36,5 +36,4 @@ impl<'a> TypeDartGeneratorTrait for TypeSyncReturnGenerator<'a> {
     }
     fn wire2api_body(&self) -> String {}
     fn structs(&self) -> String {}
-    fn get_context(&self) -> &TypeGeneratorContext {}
 }

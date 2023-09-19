@@ -58,8 +58,4 @@ impl TypeRustGeneratorTrait for TypeRecordGenerator<'_> {
     fn new_with_nullptr(&self, collector: &mut ExternFuncCollector) -> String {
         self.as_struct_generator().new_with_nullptr(collector)
     }
-
-    fn get_context(&self) -> &TypeGeneratorContext {
-        &self.context
-    }
 }

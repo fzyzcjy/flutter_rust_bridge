@@ -8,8 +8,4 @@ impl TypeRustGeneratorTrait for TypeDynamicGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
         Default::default()
     }
-
-    fn get_context(&self) -> &TypeGeneratorContext {
-        &self.context
-    }
 }

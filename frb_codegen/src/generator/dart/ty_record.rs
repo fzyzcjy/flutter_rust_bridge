@@ -67,8 +67,4 @@ impl TypeDartGeneratorTrait for TypeRecordGenerator<'_> {
             return ({values},);"
         )
     }
-
-    fn get_context(&self) -> &TypeGeneratorContext {
-        &self.context
-    }
 }

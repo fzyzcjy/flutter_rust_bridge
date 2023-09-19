@@ -18,8 +18,4 @@ impl TypeRustGeneratorTrait for TypePrimitiveGenerator<'_> {
             _ => "self.unchecked_into_f64() as _".into(),
         })
     }
-
-    fn get_context(&self) -> &TypeGeneratorContext {
-        &self.context
-    }
 }

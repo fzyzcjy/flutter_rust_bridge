@@ -58,8 +58,4 @@ impl TypeDartGeneratorTrait for TypeGeneralListGenerator<'_> {
             self.ir.inner.safe_ident()
         )
     }
-
-    fn get_context(&self) -> &TypeGeneratorContext {
-        &self.context
-    }
 }

@@ -311,8 +311,4 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
             )
         }
     }
-
-    fn get_context(&self) -> &TypeGeneratorContext {
-        &self.context
-    }
 }
