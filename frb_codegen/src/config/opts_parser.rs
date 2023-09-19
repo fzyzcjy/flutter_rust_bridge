@@ -154,7 +154,7 @@ pub fn parse_configs_and_symbols(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<Str
         &fallback_class_name,
         "class_name",
     );
-    if !class_names.find_duplicates(true).is_empty() {
+    if !class_names.find_duplicates_in_order(true).is_empty() {
         raw_opts_bail(
             ErrorKind::ValueValidation,
             "there should be no duplication in --class-name's inputs".into(),

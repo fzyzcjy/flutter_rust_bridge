@@ -321,7 +321,7 @@ impl IrFile {
 
         // pick out the raw shared types
         let mut shares = all_regular_types
-            .find_duplicates(true)
+            .find_duplicates_in_order(true)
             .into_iter()
             .collect::<HashSet<_>>();
         //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓for cross shared types↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓

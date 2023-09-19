@@ -143,7 +143,7 @@ pub fn get_symbols_if_no_duplicates(
         all_symbols.extend(iter);
     }
     // check duplication among explicitly defined API
-    let duplicates = explicit_raw_symbols.find_duplicates(true);
+    let duplicates = explicit_raw_symbols.find_duplicates_in_order(true);
     if !duplicates.is_empty() {
         let duplicated_symbols = duplicates.join(",");
 
@@ -163,7 +163,8 @@ pub fn get_symbols_if_no_duplicates(
     check_for_keywords(&all_symbols)?;
 
     // check duplication among implicitly defined API
-    let (regular_symbols, shared_symbols) = all_symbols.find_uniques_and_duplicates(true, true);
+    let (regular_symbols, shared_symbols) =
+        all_symbols.find_uniques_and_duplicates_in_order(true, true);
 
     Ok((regular_symbols, shared_symbols))
 }
@@ -272,7 +273,7 @@ pub(crate) impl<T: Clone + Eq + std::hash::Hash> Vec<T> {
     /// assert_eq!(uniques, vec![1, 2, 3, 4, 5]);
     /// assert_eq!(duplicates, vec![1, 2, 3, 2, 1, 3]);
     /// ```
-    fn find_uniques_and_duplicates(
+    fn find_uniques_and_duplicates_in_order(
         &self,
         exclude_duplicates_in_uniques: bool,
         exclude_duplicates_in_duplicates: bool,
@@ -315,8 +316,8 @@ pub(crate) impl<T: Clone + Eq + std::hash::Hash> Vec<T> {
     /// let uniques = vec.find_uniques(false);
     /// assert_eq!(uniques, vec![1, 2, 3, 4, 5]);
     /// ```
-    fn find_uniques(&self, exclude_duplicates: bool) -> Vec<T> {
-        let (uniques, _) = self.find_uniques_and_duplicates(exclude_duplicates, false);
+    fn find_uniques_in_order(&self, exclude_duplicates: bool) -> Vec<T> {
+        let (uniques, _) = self.find_uniques_and_duplicates_in_order(exclude_duplicates, false);
         uniques
     }
 
@@ -337,8 +338,8 @@ pub(crate) impl<T: Clone + Eq + std::hash::Hash> Vec<T> {
     /// let duplicates = vec.find_duplicates(false);
     /// assert_eq!(duplicates, vec![1, 2, 3, 2, 1, 3]);
     /// ```
-    fn find_duplicates(&self, exclude_duplicates: bool) -> Vec<T> {
-        let (_, duplicates) = self.find_uniques_and_duplicates(true, exclude_duplicates);
+    fn find_duplicates_in_order(&self, exclude_duplicates: bool) -> Vec<T> {
+        let (_, duplicates) = self.find_uniques_and_duplicates_in_order(true, exclude_duplicates);
         duplicates
     }
 }
@@ -454,22 +455,22 @@ mod tests {
         let vec = vec![1, 2, 3, 4, 5, 2, 1, 3];
 
         // Case 1: exclude duplicates in both uniques and duplicates
-        let (uniques, duplicates) = vec.find_uniques_and_duplicates(true, true);
+        let (uniques, duplicates) = vec.find_uniques_and_duplicates_in_order(true, true);
         assert_eq!(uniques, vec![4, 5]);
         assert_eq!(duplicates, vec![1, 2, 3]);
 
         // Case 2: only exclude duplicates in uniques
-        let (uniques, duplicates) = vec.find_uniques_and_duplicates(true, false);
+        let (uniques, duplicates) = vec.find_uniques_and_duplicates_in_order(true, false);
         assert_eq!(uniques, vec![4, 5]);
         assert_eq!(duplicates, vec![1, 2, 3, 2, 1, 3]);
 
         // Case 3: only exclude duplicates in duplicates
-        let (uniques, duplicates) = vec.find_uniques_and_duplicates(false, true);
+        let (uniques, duplicates) = vec.find_uniques_and_duplicates_in_order(false, true);
         assert_eq!(uniques, vec![1, 2, 3, 4, 5]);
         assert_eq!(duplicates, vec![1, 2, 3]);
 
         // Case 4: include duplicates in both uniques and duplicates
-        let (uniques, duplicates) = vec.find_uniques_and_duplicates(false, false);
+        let (uniques, duplicates) = vec.find_uniques_and_duplicates_in_order(false, false);
         assert_eq!(uniques, vec![1, 2, 3, 4, 5]);
         assert_eq!(duplicates, vec![1, 2, 3, 2, 1, 3]);
     }
@@ -478,10 +479,10 @@ mod tests {
     fn test_find_uniques() {
         let vec = vec![1, 2, 3, 4, 5, 2, 1, 3];
 
-        let uniques = vec.find_uniques(true);
+        let uniques = vec.find_uniques_in_order(true);
         assert_eq!(uniques, vec![4, 5]);
 
-        let uniques = vec.find_uniques(false);
+        let uniques = vec.find_uniques_in_order(false);
         assert_eq!(uniques, vec![1, 2, 3, 4, 5]);
     }
 
@@ -489,10 +490,10 @@ mod tests {
     fn test_find_duplicates() {
         let vec = vec![1, 2, 3, 4, 5, 2, 1, 3];
 
-        let duplicates = vec.find_duplicates(true);
+        let duplicates = vec.find_duplicates_in_order(true);
         assert_eq!(duplicates, vec![1, 2, 3]);
 
-        let duplicates = vec.find_duplicates(false);
+        let duplicates = vec.find_duplicates_in_order(false);
         assert_eq!(duplicates, vec![1, 2, 3, 2, 1, 3]);
     }
 }

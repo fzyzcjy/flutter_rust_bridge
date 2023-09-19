@@ -360,7 +360,7 @@ fn remove_dupilicated_prehead_and_imports(contents: &mut String) {
             if !correct_imports.contains(&new_import_line) {
                 correct_imports.push(new_import_line);
                 if !check_import_surfix_next_time {
-                    correct_imports = correct_imports.find_uniques(false);
+                    correct_imports = correct_imports.find_uniques_in_order(false);
                 }
             }
             lines_to_delete.push(i);

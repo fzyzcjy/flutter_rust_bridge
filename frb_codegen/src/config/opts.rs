@@ -234,16 +234,16 @@ impl Opts {
             enums.extend(regular_ir_file.enum_pool);
         }
         let funcs = shared_methods
-            .find_uniques(false)
+            .find_uniques_in_order(false)
             .into_iter()
             .collect::<Vec<_>>();
         let struct_pool = structs
-            .find_duplicates(true)
+            .find_duplicates_in_order(true)
             .into_iter()
             .map(|x| (x.0, x.1))
             .collect::<HashMap<_, _>>();
         let enum_pool = enums
-            .find_duplicates(true)
+            .find_duplicates_in_order(true)
             .into_iter()
             .map(|x| (x.0, x.1))
             .collect::<HashMap<_, _>>();
