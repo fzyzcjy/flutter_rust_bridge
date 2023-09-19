@@ -318,7 +318,6 @@ fn run_cargo_expand(dir: &str) -> String {
             // remove first and last line to get rid of wrapping module
             let mut output = stdout.lines();
             output.next();
-            output.next_back();
             output
                 .collect::<Vec<_>>()
                 .join("\n")
