@@ -243,7 +243,7 @@ Here, `apiShare` is responsible for any shared types. For example, if there is a
 
 ### Shared C header file
 
-Besides, for the generated C (header) files, like the corresponding generated Rust and Dart files, there would be also an auto-generated C file with the name `bridge_generated_shares.h`(the name would also be changed by flag `shared_rust_output`) besides the other C files for regular blocks.
+Besides, for the generated C (header) files, like the corresponding generated Rust and Dart files, there would be also an auto-generated C file with the name `bridge_generated_shared.h`(the name would also be changed by flag `shared_rust_output`) besides the other C files for regular blocks.
 
 This shared C file, besides all shared types and Apis, also includes ALL the headers of all regular C files. That is, it could be treated as the manager of all C files.
 
