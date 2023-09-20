@@ -35,7 +35,7 @@ Here is my another open-source library :) https://github.com/fzyzcjy/flutter_smo
 ## ✨ Contributors
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-73-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-74-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key) following [all-contributors](https://github.com/all-contributors/all-contributors) specification):
@@ -139,6 +139,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://blog.nightfeather.dev/"><img src="https://avatars.githubusercontent.com/u/77222233?v=4?s=100" width="100px;" alt="NightFeather"/><br /><sub><b>NightFeather</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=NightFeather0615" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/JustSimplyKyle"><img src="https://avatars.githubusercontent.com/u/68589851?v=4?s=100" width="100px;" alt="SimplyKyle!"/><br /><sub><b>SimplyKyle!</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=JustSimplyKyle" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://www.upsuper.org/"><img src="https://avatars.githubusercontent.com/u/333750?v=4?s=100" width="100px;" alt="Xidorn Quan"/><br /><sub><b>Xidorn Quan</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=upsuper" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/not-holar"><img src="https://avatars.githubusercontent.com/u/58831297?v=4?s=100" width="100px;" alt="Vitalii Hurianov"/><br /><sub><b>Vitalii Hurianov</b></sub></a><br /><a href="https://github.com/fzyzcjy/flutter_rust_bridge/commits?author=not-holar" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
@@ -171,8 +172,8 @@ More specifically, thanks for all these contributions:
 * [alanlzhang](https://github.com/alanlzhang): Add generation for Dart metadata. Enhance module parser. Fix enum in struct. Fix linter.
 * [temeddix](https://github.com/temeddix): Fix broken CI. Custom num workers. Fix MacOS doc steps. Update doc. Make zero-copy defaultable.
 * [Zaitam](https://github.com/Zaitam): Fix when method return struct. Partial migration to Dart 3.
+* [erikas-taroza](https://github.com/erikas-taroza): Support list of primitive enums. Make enum camelCase. Warn wrong path. Fix cargo expand.
 * [nitn3lav](https://github.com/nitn3lav): nested `struct`s without `Box`.
-* [erikas-taroza](https://github.com/erikas-taroza): Support list of primitive enums. Make enum camelCase. Warn wrong path.
 * [alexthe2](https://github.com/alexthe2): Add Option Datetime. Add empty structs. Improve doc. Add `r#`. Fix mirror enum bug.
 * [SiongSng](https://github.com/SiongSng): Finish implementing exception hierarchy. Fix SyncReturn bug.
 * [AlienKevin](https://github.com/AlienKevin): Add flutter example for macOS. Add doc for Android NDK bug.
@@ -211,6 +212,7 @@ More specifically, thanks for all these contributions:
 * [Voklen](https://github.com/Voklen): Improve doc.
 * [svenstaro](https://github.com/svenstaro): Improve doc.
 * [utilForever](https://github.com/utilForever): Fix typos.
+* [not-holar](https://github.com/not-holar): Fix typos.
 * [Stonks3141](https://github.com/Stonks3141): Fix doc credit.
 * [vimaxwell](https://github.com/vimaxwell): Fix doc link.
 * [lker-dev](https://github.com/lker-dev): Fix doc link.

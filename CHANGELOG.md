@@ -1,5 +1,6 @@
-## Unreleased
+## 1.82.1
 
+* Fix cargo expand missing code #1372 (thanks @erikas-taroza)
 * Use delegate-attr to simplify code #1364 (thanks @upsuper)
 
 ## 1.82.0

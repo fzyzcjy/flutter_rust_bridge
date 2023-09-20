@@ -683,6 +683,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "not-holar",
+      "name": "Vitalii Hurianov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/58831297?v=4",
+      "profile": "https://github.com/not-holar",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
