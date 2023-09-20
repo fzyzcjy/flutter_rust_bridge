@@ -60,13 +60,8 @@ rust_build_and_test:
     # single block case
     just _rust_build_and_test_single {{dir_example_pure_dart}}/rust
     just _rust_build_and_test_single {{dir_example_with_flutter}}/rust
-    # multi blocks case without wasm files
-    just _rust_build_and_test_single {{dir_example_pure_dart_multi}}/rust --features no-wasm
-    just _rust_build_and_test_single {{dir_example_pure_dart_multi}}/rust --features no-wasm,c-output
-    just _rust_build_and_test_single {{dir_example_pure_dart_multi}}/rust --features no-wasm,c-output,extra-c-output-path
-    # multi blocks case with wasm files
-    just _rust_build_and_test_single {{dir_example_pure_dart_multi}}/rust --features c-output
-    just _rust_build_and_test_single {{dir_example_pure_dart_multi}}/rust --features c-output,extra-c-output-path
+    # multi blocks case (TODO: add a multi-blocks version for `with_flutter`)
+    just _rust_build_and_test_single {{dir_example_pure_dart_multi}}/rust
 
 _rust_build_and_test_single directory *args:
     cd {{directory}} && cargo build {{args}}
@@ -135,14 +130,7 @@ _generate_bridge_pure_dart:
     {{cargo_run_codegen}} frb_example/pure_dart/rust/.flutter_rust_bridge.yml
 
 _generate_bridge_pure_dart_multi:
-    {{cargo_run_codegen}} \
-        --rust-input frb_example/pure_dart_multi/rust/src/api_block_1.rs frb_example/pure_dart_multi/rust/src/api_block_2.rs frb_example/pure_dart_multi/rust/src/api_block_3.rs \
-        --dart-output frb_example/pure_dart_multi/dart/lib/bridge_generated_api_block_1.dart frb_example/pure_dart_multi/dart/lib/bridge_generated_api_block_2.dart frb_example/pure_dart_multi/dart/lib/bridge_generated_api_block_3.dart \
-        --dart-format-line-length 120 \
-        --rust-output frb_example/pure_dart_multi/rust/src/generated_api_block_1.rs frb_example/pure_dart_multi/rust/src/generated_api_block_2.rs frb_example/pure_dart_multi/rust/src/generated_api_block_3.rs \
-        --class-name ApiBlock1Class ApiBlock2Class ApiBlock3Class \
-        --dart-decl-output frb_example/pure_dart_multi/dart/lib/bridge_definitions.dart \
-        --wasm
+    {{cargo_run_codegen}} frb_example/pure_dart_multi/rust/.flutter_rust_bridge.yml
 
 _generate_bridge_with_flutter:
     {{cargo_run_codegen}} \
@@ -283,8 +271,8 @@ configure_ndk:
 
 precommit:
   just dart_pub_get
-  just rust_build_and_test
   just generate_all
+  just rust_build_and_test
   just rust_linter
   just dart_linter
   just normalize_pubspec_lock

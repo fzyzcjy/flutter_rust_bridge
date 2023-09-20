@@ -7,11 +7,6 @@ edition = "2018"
 name = "flutter_rust_bridge_example_pure_dart_multi"
 crate-type = ["cdylib"]
 
-[features]
-no-wasm = []
-c-output = []
-extra-c-output-path = []
-
 [build-dependencies]
 flutter_rust_bridge_codegen = { workspace = true }
 
