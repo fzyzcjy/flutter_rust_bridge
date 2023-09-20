@@ -21,16 +21,16 @@ use std::sync::Arc;
 // Section: imports
 
 use crate::block_specific_module::for_api_block_3::StructOnlyForBlock3;
-use crate::bridge_generated_shares;
-use crate::bridge_generated_shares::*;
+use crate::bridge_generated_shared;
+use crate::bridge_generated_shared::*;
 use crate::shared_type_module::all_blocks_shared::SharedStructInAllBlocks;
 
 // Section: wire functions
 
 fn wire_test_inbuilt_type_in_block_3_impl(
     port_: MessagePort,
-    a: impl bridge_generated_shares::Wire2Api<i32> + UnwindSafe,
-    b: impl bridge_generated_shares::Wire2Api<f32> + UnwindSafe,
+    a: impl bridge_generated_shared::Wire2Api<i32> + UnwindSafe,
+    b: impl bridge_generated_shared::Wire2Api<f32> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, f32, _>(
         WrapInfo {
@@ -47,8 +47,8 @@ fn wire_test_inbuilt_type_in_block_3_impl(
 }
 fn wire_test_string_in_block_3_impl(
     port_: MessagePort,
-    s: impl bridge_generated_shares::Wire2Api<String> + UnwindSafe,
-    i: impl bridge_generated_shares::Wire2Api<u64> + UnwindSafe,
+    s: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
+    i: impl bridge_generated_shared::Wire2Api<u64> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
         WrapInfo {
@@ -65,8 +65,8 @@ fn wire_test_string_in_block_3_impl(
 }
 fn wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3_impl(
     port_: MessagePort,
-    name: impl bridge_generated_shares::Wire2Api<String> + UnwindSafe,
-    score: impl bridge_generated_shares::Wire2Api<f64> + UnwindSafe,
+    name: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
+    score: impl bridge_generated_shared::Wire2Api<f64> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, SharedStructOnlyForSyncTest, _>(
         WrapInfo {
@@ -89,8 +89,8 @@ fn wire_test_shared_struct_only_for_sync_with_no_sync_return_in_block_3_impl(
 }
 fn wire_test_shared_struct_only_for_sync_as_input_with_no_sync_return_in_block_3_impl(
     port_: MessagePort,
-    obj: impl bridge_generated_shares::Wire2Api<SharedStructOnlyForSyncTest> + UnwindSafe,
-    default_score: impl bridge_generated_shares::Wire2Api<f64> + UnwindSafe,
+    obj: impl bridge_generated_shared::Wire2Api<SharedStructOnlyForSyncTest> + UnwindSafe,
+    default_score: impl bridge_generated_shared::Wire2Api<f64> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, SharedStructOnlyForSyncTest, _>(
         WrapInfo {
@@ -114,9 +114,9 @@ fn wire_test_shared_struct_only_for_sync_as_input_with_no_sync_return_in_block_3
 }
 fn wire_test_all_shared_struct_in_block_3_impl(
     port_: MessagePort,
-    custom: impl bridge_generated_shares::Wire2Api<Option<SharedStructInAllBlocks>> + UnwindSafe,
-    s: impl bridge_generated_shares::Wire2Api<String> + UnwindSafe,
-    i: impl bridge_generated_shares::Wire2Api<i32> + UnwindSafe,
+    custom: impl bridge_generated_shared::Wire2Api<Option<SharedStructInAllBlocks>> + UnwindSafe,
+    s: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
+    i: impl bridge_generated_shared::Wire2Api<i32> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<SharedStructInAllBlocks>, _>(
         WrapInfo {
@@ -136,9 +136,9 @@ fn wire_test_all_shared_struct_in_block_3_impl(
 }
 fn wire_test_shared_struct_in_block_3_for_2_and_3_impl(
     port_: MessagePort,
-    custom: impl bridge_generated_shares::Wire2Api<SharedStructInBlock2And3> + UnwindSafe,
-    s: impl bridge_generated_shares::Wire2Api<String> + UnwindSafe,
-    i: impl bridge_generated_shares::Wire2Api<i32> + UnwindSafe,
+    custom: impl bridge_generated_shared::Wire2Api<SharedStructInBlock2And3> + UnwindSafe,
+    s: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
+    i: impl bridge_generated_shared::Wire2Api<i32> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, SharedStructInBlock2And3, _>(
         WrapInfo {
@@ -160,7 +160,7 @@ fn wire_test_shared_struct_in_block_3_for_2_and_3_impl(
 }
 fn wire_test_cross_shared_struct_in_block_3_for_2_and_3_impl(
     port_: MessagePort,
-    name: impl bridge_generated_shares::Wire2Api<String> + UnwindSafe,
+    name: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, CrossSharedStructInBlock2And3, _>(
         WrapInfo {
@@ -177,7 +177,7 @@ fn wire_test_cross_shared_struct_in_block_3_for_2_and_3_impl(
     )
 }
 fn wire_test_cross_shared_struct_in_sync_in_block_3_for_2_and_3_impl(
-    name: impl bridge_generated_shares::Wire2Api<String> + UnwindSafe,
+    name: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
@@ -196,7 +196,7 @@ fn wire_test_cross_shared_struct_in_sync_in_block_3_for_2_and_3_impl(
 fn wire_test_unique_struct_3_impl(
     port_: MessagePort,
     custom: impl Wire2Api<StructOnlyForBlock3> + UnwindSafe,
-    s: impl bridge_generated_shares::Wire2Api<String> + UnwindSafe,
+    s: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
     i: impl Wire2Api<i64> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, StructOnlyForBlock3, _>(
@@ -247,10 +247,10 @@ fn wire_test_enum_defined_in_block_3_impl(
 }
 fn wire_test_list_in_block_3_impl(
     port_: MessagePort,
-    shared_structs: impl bridge_generated_shares::Wire2Api<Vec<SharedStructInAllBlocks>> + UnwindSafe,
-    strings: impl bridge_generated_shares::Wire2Api<Vec<String>> + UnwindSafe,
-    nums: impl bridge_generated_shares::Wire2Api<Vec<i32>> + UnwindSafe,
-    weekdays: impl bridge_generated_shares::Wire2Api<Vec<SharedWeekdaysEnumInAllBlocks>> + UnwindSafe,
+    shared_structs: impl bridge_generated_shared::Wire2Api<Vec<SharedStructInAllBlocks>> + UnwindSafe,
+    strings: impl bridge_generated_shared::Wire2Api<Vec<String>> + UnwindSafe,
+    nums: impl bridge_generated_shared::Wire2Api<Vec<i32>> + UnwindSafe,
+    weekdays: impl bridge_generated_shared::Wire2Api<Vec<SharedWeekdaysEnumInAllBlocks>> + UnwindSafe,
     struct_list: impl Wire2Api<Vec<StructDefinedInBlock3>> + UnwindSafe,
     enum_list: impl Wire2Api<Vec<EnumDefinedInBlock3>> + UnwindSafe,
 ) {
@@ -283,7 +283,7 @@ fn wire_test_list_in_block_3_impl(
 fn wire_test_method__method__EnumDefinedInBlock3_impl(
     port_: MessagePort,
     that: impl Wire2Api<EnumDefinedInBlock3> + UnwindSafe,
-    message: impl bridge_generated_shares::Wire2Api<String> + UnwindSafe,
+    message: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
         WrapInfo {
@@ -302,7 +302,7 @@ fn wire_test_method__method__EnumDefinedInBlock3_impl(
 }
 fn wire_test_static_method__static_method__EnumDefinedInBlock3_impl(
     port_: MessagePort,
-    message: impl bridge_generated_shares::Wire2Api<String> + UnwindSafe,
+    message: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
         WrapInfo {
@@ -321,7 +321,7 @@ fn wire_test_static_method__static_method__EnumDefinedInBlock3_impl(
 fn wire_test_method__method__StructDefinedInBlock3_impl(
     port_: MessagePort,
     that: impl Wire2Api<StructDefinedInBlock3> + UnwindSafe,
-    message: impl bridge_generated_shares::Wire2Api<String> + UnwindSafe,
+    message: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
         WrapInfo {
@@ -340,7 +340,7 @@ fn wire_test_method__method__StructDefinedInBlock3_impl(
 }
 fn wire_test_static_method__static_method__StructDefinedInBlock3_impl(
     port_: MessagePort,
-    message: impl bridge_generated_shares::Wire2Api<String> + UnwindSafe,
+    message: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
         WrapInfo {
@@ -359,8 +359,8 @@ fn wire_test_static_method__static_method__StructDefinedInBlock3_impl(
 fn wire_test_method__method__StructOnlyForBlock3_impl(
     port_: MessagePort,
     that: impl Wire2Api<StructOnlyForBlock3> + UnwindSafe,
-    message: impl bridge_generated_shares::Wire2Api<String> + UnwindSafe,
-    num: impl bridge_generated_shares::Wire2Api<u16> + UnwindSafe,
+    message: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
+    num: impl bridge_generated_shared::Wire2Api<u16> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
         WrapInfo {
@@ -384,7 +384,7 @@ fn wire_test_method__method__StructOnlyForBlock3_impl(
 }
 fn wire_test_static_method__static_method__StructOnlyForBlock3_impl(
     port_: MessagePort,
-    message: impl bridge_generated_shares::Wire2Api<String> + UnwindSafe,
+    message: impl bridge_generated_shared::Wire2Api<String> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
         WrapInfo {

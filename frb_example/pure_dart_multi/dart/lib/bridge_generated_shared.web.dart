@@ -8,13 +8,13 @@ import 'dart:async';
 import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
-import 'bridge_generated_shares.dart';
-export 'bridge_generated_shares.dart';
-import 'bridge_generated_shares.web.dart';
+import 'bridge_generated_shared.dart';
+export 'bridge_generated_shared.dart';
+import 'bridge_generated_shared.web.dart';
 
-class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGeneratedSharesWire>
+class BridgeGeneratedSharedPlatform extends FlutterRustBridgeBase<BridgeGeneratedSharedWire>
     with FlutterRustBridgeSetupMixin {
-  BridgeGeneratedSharesPlatform(FutureOr<WasmModule> dylib) : super(BridgeGeneratedSharesWire(dylib)) {
+  BridgeGeneratedSharedPlatform(FutureOr<WasmModule> dylib) : super(BridgeGeneratedSharedWire(dylib)) {
     setupMixinConstructor();
   }
   Future<void> setup() => inner.init;
@@ -208,13 +208,13 @@ class BridgeGeneratedSharesPlatform extends FlutterRustBridgeBase<BridgeGenerate
 // Section: WASM wire module
 
 @JS('wasm_bindgen')
-external BridgeGeneratedSharesWasmModule get wasmModule;
+external BridgeGeneratedSharedWasmModule get wasmModule;
 
 @JS()
 @anonymous
-class BridgeGeneratedSharesWasmModule implements WasmModule {
+class BridgeGeneratedSharedWasmModule implements WasmModule {
   external Object /* Promise */ call([String? moduleName]);
-  external BridgeGeneratedSharesWasmModule bind(dynamic thisArg, String moduleName);
+  external BridgeGeneratedSharedWasmModule bind(dynamic thisArg, String moduleName);
   external dynamic /* void */ wire_test_method__method__CrossSharedStructInBlock1And2(
       NativePortType port_, List<dynamic> that, String message);
 
@@ -268,9 +268,9 @@ class BridgeGeneratedSharesWasmModule implements WasmModule {
 
 // Section: WASM wire connector
 
-class BridgeGeneratedSharesWire extends FlutterRustBridgeWasmWireBase<BridgeGeneratedSharesWasmModule> {
-  BridgeGeneratedSharesWire(FutureOr<WasmModule> module)
-      : super(WasmModule.cast<BridgeGeneratedSharesWasmModule>(module));
+class BridgeGeneratedSharedWire extends FlutterRustBridgeWasmWireBase<BridgeGeneratedSharedWasmModule> {
+  BridgeGeneratedSharedWire(FutureOr<WasmModule> module)
+      : super(WasmModule.cast<BridgeGeneratedSharedWasmModule>(module));
 
   void wire_test_method__method__CrossSharedStructInBlock1And2(
           NativePortType port_, List<dynamic> that, String message) =>

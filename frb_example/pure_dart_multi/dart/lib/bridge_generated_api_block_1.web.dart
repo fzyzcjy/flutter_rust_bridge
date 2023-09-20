@@ -10,12 +10,12 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 import 'bridge_generated_api_block_1.dart';
 export 'bridge_generated_api_block_1.dart';
-import 'bridge_generated_shares.web.dart';
+import 'bridge_generated_shared.web.dart';
 
 class ApiBlock1ClassPlatform extends FlutterRustBridgeBase<ApiBlock1ClassWire> with FlutterRustBridgeSetupMixin {
-  final BridgeGeneratedSharesPlatform _sharedPlatform;
+  final BridgeGeneratedSharedPlatform _sharedPlatform;
   ApiBlock1ClassPlatform(FutureOr<WasmModule> dylib)
-      : _sharedPlatform = BridgeGeneratedSharesPlatform(dylib),
+      : _sharedPlatform = BridgeGeneratedSharedPlatform(dylib),
         super(ApiBlock1ClassWire(dylib)) {
     setupMixinConstructor();
   }

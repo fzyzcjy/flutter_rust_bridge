@@ -1,7 +1,7 @@
 use flutter_rust_bridge::SyncReturn;
 
 use crate::block_specific_module::StructOnlyForBlock1;
-use crate::bridge_generated_shares::SharedWeekdaysEnumInAllBlocks;
+use crate::bridge_generated_shared::SharedWeekdaysEnumInAllBlocks;
 #[allow(unused)]
 use crate::fake_module::{self}; // this statement is used to test special import of the module when frb is generating.
 use crate::shared_type_module::{

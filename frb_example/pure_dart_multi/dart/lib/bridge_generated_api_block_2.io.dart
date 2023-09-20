@@ -10,13 +10,13 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 import 'bridge_generated_api_block_2.dart';
 export 'bridge_generated_api_block_2.dart';
-import 'bridge_generated_shares.io.dart';
+import 'bridge_generated_shared.io.dart';
 import 'dart:ffi' as ffi;
 
 class ApiBlock2ClassPlatform extends FlutterRustBridgeBase<ApiBlock2ClassWire> {
-  final BridgeGeneratedSharesPlatform _sharedPlatform;
+  final BridgeGeneratedSharedPlatform _sharedPlatform;
   ApiBlock2ClassPlatform(ffi.DynamicLibrary dylib)
-      : _sharedPlatform = BridgeGeneratedSharesPlatform(dylib),
+      : _sharedPlatform = BridgeGeneratedSharedPlatform(dylib),
         super(ApiBlock2ClassWire(dylib));
 
 // Section: api2wire

@@ -128,7 +128,7 @@ pub struct RawOpts {
     // It could be something like `"my_shared.rs"`, `./another_shared_name.rs`,
     // directory is not supported --- like `custom_directory/my_shared.rs` would be treated as `./my_shared.rs`.
     // If this field is initialized as `None` in multi-blocks case,
-    // path `.[regular_block_directory]/bridge_generated_shares.rs` should be used afterwards
+    // path `.[regular_block_directory]/<BRIDGE_GENERATED_SHARED>.rs` should be used afterwards
     // Here `regular_block_directory` is from field `rust_output`, from which
     // it should be sured that all generated files for regular blocks are in the same directory.
     #[clap(short, long)]

@@ -26,7 +26,7 @@ void main(List<String> args) {
   final api1 = ApiBlock1ClassImpl(dylib);
   final api2 = ApiBlock2ClassImpl(dylib);
   final api3 = ApiBlock3ClassImpl(dylib);
-  final apiShared = BridgeGeneratedSharesImpl(dylib);
+  final apiShared = BridgeGeneratedSharedImpl(dylib);
 
   final enumList = [
     SharedComplexEnumInAllBlocks.enums(SharedWeekdaysEnumInAllBlocks.Friday),

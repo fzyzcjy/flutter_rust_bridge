@@ -9,7 +9,7 @@ import 'bridge_generated_api_block_2.dart';
 import 'bridge_generated_api_block_3.dart';
 
 void testSharedObjOverBlocks(ApiBlock1ClassImpl api1, ApiBlock2ClassImpl api2, ApiBlock3ClassImpl api3,
-    BridgeGeneratedSharesImpl apiShared, List<SharedComplexEnumInAllBlocks> enumList) {
+    BridgeGeneratedSharedImpl apiShared, List<SharedComplexEnumInAllBlocks> enumList) {
   test('dart call testAllSharedStructInBlock1', () async {
     // Create a shared object using methods from ApiBlock1ClassImpl
     var sharedObj = SharedStructInAllBlocks(

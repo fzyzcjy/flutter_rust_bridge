@@ -18,6 +18,9 @@ use std::str::FromStr;
 use std::{env, fs};
 use toml::Value;
 
+// the default shared file/type name, for both the generated Rust, Dart and C header file
+const BRIDGE_GENERATED_SHARED: &str = "bridge_generated_shared";
+
 /// Parses the raw command-line options,
 /// and returns a tuple containing a vector of `Opts` structs
 /// and a vector of unique symbol name(s)/Api(s).
@@ -117,7 +120,7 @@ pub fn parse_configs_and_symbols(mut raw: RawOpts) -> Result<(Vec<Opts>, Vec<Str
         let raw_path = raw
             .shared_rust_output
             .clone()
-            .unwrap_or_else(|| "./bridge_generated_shares.rs".to_string());
+            .unwrap_or_else(|| format!("./{BRIDGE_GENERATED_SHARED}.rs"));
         let raw_shared_rust_output_path = raw.shared_rust_output.clone().unwrap_or_else(|| {
             let directory = Path::new(&p).parent().unwrap_or(Path::new(""));
             let shared_rust_file_name = Path::new(&raw_path).get_file_name();

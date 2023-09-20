@@ -8,20 +8,20 @@ import 'dart:async';
 import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
-import 'bridge_generated_shares.io.dart' if (dart.library.html) 'bridge_generated_shares.web.dart';
-import 'bridge_generated_shares.dart';
-export 'bridge_generated_shares.dart';
-import 'bridge_generated_shares.io.dart' if (dart.library.html) 'bridge_generated_shares.web.dart';
+import 'bridge_generated_shared.io.dart' if (dart.library.html) 'bridge_generated_shared.web.dart';
+import 'bridge_generated_shared.dart';
+export 'bridge_generated_shared.dart';
+import 'bridge_generated_shared.io.dart' if (dart.library.html) 'bridge_generated_shared.web.dart';
 
-class BridgeGeneratedSharesImpl implements BridgeGeneratedShares {
-  final BridgeGeneratedSharesPlatform _platform;
-  factory BridgeGeneratedSharesImpl(ExternalLibrary dylib) =>
-      BridgeGeneratedSharesImpl.raw(BridgeGeneratedSharesPlatform(dylib));
-  BridgeGeneratedSharesImpl.raw(this._platform);
+class BridgeGeneratedSharedImpl implements BridgeGeneratedShared {
+  final BridgeGeneratedSharedPlatform _platform;
+  factory BridgeGeneratedSharedImpl(ExternalLibrary dylib) =>
+      BridgeGeneratedSharedImpl.raw(BridgeGeneratedSharedPlatform(dylib));
+  BridgeGeneratedSharedImpl.raw(this._platform);
 
   /// Only valid on web/WASM platforms.
-  factory BridgeGeneratedSharesImpl.wasm(FutureOr<WasmModule> module) =>
-      BridgeGeneratedSharesImpl(module as ExternalLibrary);
+  factory BridgeGeneratedSharedImpl.wasm(FutureOr<WasmModule> module) =>
+      BridgeGeneratedSharedImpl(module as ExternalLibrary);
 
   Future<String> testMethodMethodCrossSharedStructInBlock1And2(
       {required CrossSharedStructInBlock1And2 that, required String message, dynamic hint}) {

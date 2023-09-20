@@ -250,22 +250,22 @@ impl Wire2Api<EnumDefinedInBlock1> for wire_EnumDefinedInBlock1 {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.Move);
                 EnumDefinedInBlock1::Move {
-                    x: bridge_generated_shares::Wire2Api::wire2api(ans.x),
-                    y: bridge_generated_shares::Wire2Api::wire2api(ans.y),
+                    x: bridge_generated_shared::Wire2Api::wire2api(ans.x),
+                    y: bridge_generated_shared::Wire2Api::wire2api(ans.y),
                 }
             },
             2 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.Write);
-                EnumDefinedInBlock1::Write(bridge_generated_shares::Wire2Api::wire2api(ans.field0))
+                EnumDefinedInBlock1::Write(bridge_generated_shared::Wire2Api::wire2api(ans.field0))
             },
             3 => unsafe {
                 let ans = support::box_from_leak_ptr(self.kind);
                 let ans = support::box_from_leak_ptr(ans.ChangeColor);
                 EnumDefinedInBlock1::ChangeColor(
-                    bridge_generated_shares::Wire2Api::wire2api(ans.field0),
-                    bridge_generated_shares::Wire2Api::wire2api(ans.field1),
-                    bridge_generated_shares::Wire2Api::wire2api(ans.field2),
+                    bridge_generated_shared::Wire2Api::wire2api(ans.field0),
+                    bridge_generated_shared::Wire2Api::wire2api(ans.field1),
+                    bridge_generated_shared::Wire2Api::wire2api(ans.field2),
                 )
             },
             _ => unreachable!(),
@@ -295,7 +295,7 @@ impl Wire2Api<Vec<StructDefinedInBlock1>> for *mut wire_list_struct_defined_in_b
 impl Wire2Api<StructDefinedInBlock1> for wire_StructDefinedInBlock1 {
     fn wire2api(self) -> StructDefinedInBlock1 {
         StructDefinedInBlock1 {
-            name: bridge_generated_shares::Wire2Api::wire2api(self.name),
+            name: bridge_generated_shared::Wire2Api::wire2api(self.name),
         }
     }
 }
@@ -303,8 +303,8 @@ impl Wire2Api<StructOnlyForBlock1> for wire_StructOnlyForBlock1 {
     fn wire2api(self) -> StructOnlyForBlock1 {
         StructOnlyForBlock1 {
             id: self.id.wire2api(),
-            num: bridge_generated_shares::Wire2Api::wire2api(self.num),
-            name: bridge_generated_shares::Wire2Api::wire2api(self.name),
+            num: bridge_generated_shared::Wire2Api::wire2api(self.num),
+            name: bridge_generated_shared::Wire2Api::wire2api(self.name),
         }
     }
 }

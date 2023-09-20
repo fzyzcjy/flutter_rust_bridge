@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 import 'bridge_definitions.dart';
 import 'bridge_generated_api_block_1.dart';
 
-void testTypeMethods(ApiBlock1ClassImpl api1, BridgeGeneratedSharesImpl apiShared) {
+void testTypeMethods(ApiBlock1ClassImpl api1, BridgeGeneratedSharedImpl apiShared) {
   test('dart test (static) methods of `StructDefinedInBlock1`', () async {
     var obj = StructDefinedInBlock1(bridge: api1, name: "newString");
     expect("msg", await obj.testMethod(message: "msg"));

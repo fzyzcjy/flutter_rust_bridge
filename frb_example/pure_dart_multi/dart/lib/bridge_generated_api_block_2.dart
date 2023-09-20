@@ -9,19 +9,19 @@ import 'package:meta/meta.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:uuid/uuid.dart';
 import 'bridge_generated_api_block_2.io.dart' if (dart.library.html) 'bridge_generated_api_block_2.web.dart';
-import 'bridge_generated_shares.dart';
-export 'bridge_generated_shares.dart';
-import 'bridge_generated_shares.io.dart' if (dart.library.html) 'bridge_generated_shares.web.dart';
+import 'bridge_generated_shared.dart';
+export 'bridge_generated_shared.dart';
+import 'bridge_generated_shared.io.dart' if (dart.library.html) 'bridge_generated_shared.web.dart';
 
 class ApiBlock2ClassImpl implements ApiBlock2Class {
   final ApiBlock2ClassPlatform _platform;
-  final BridgeGeneratedSharesPlatform _sharedPlatform;
-  final BridgeGeneratedSharesImpl _sharedImpl;
+  final BridgeGeneratedSharedPlatform _sharedPlatform;
+  final BridgeGeneratedSharedImpl _sharedImpl;
 
   factory ApiBlock2ClassImpl(ExternalLibrary dylib) {
     final platform = ApiBlock2ClassPlatform(dylib);
-    final sharedPlatform = BridgeGeneratedSharesPlatform(dylib);
-    final sharedImpl = BridgeGeneratedSharesImpl(dylib);
+    final sharedPlatform = BridgeGeneratedSharedPlatform(dylib);
+    final sharedImpl = BridgeGeneratedSharedImpl(dylib);
     return ApiBlock2ClassImpl.raw(platform, sharedPlatform, sharedImpl);
   }
 

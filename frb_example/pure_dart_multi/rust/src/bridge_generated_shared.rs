@@ -624,13 +624,13 @@ support::lazy_static! {
 
 /// cbindgen:ignore
 #[cfg(target_family = "wasm")]
-#[path = "bridge_generated_shares.web.rs"]
+#[path = "bridge_generated_shared.web.rs"]
 mod web;
 #[cfg(target_family = "wasm")]
 pub use web::*;
 
 #[cfg(not(target_family = "wasm"))]
-#[path = "bridge_generated_shares.io.rs"]
+#[path = "bridge_generated_shared.io.rs"]
 mod io;
 #[cfg(not(target_family = "wasm"))]
 pub use io::*;

@@ -246,7 +246,7 @@ union SharedComplexEnumInAllBlocksKind *inflate_SharedComplexEnumInAllBlocks_Byt
 
 void free_WireSyncReturn(WireSyncReturn ptr);
 
-static int64_t dummy_method_to_enforce_bundling_BridgeGeneratedShares(void) {
+static int64_t dummy_method_to_enforce_bundling_BridgeGeneratedShared(void) {
     int64_t dummy_var = 0;
     dummy_var ^= ((int64_t) (void*) wire_test_method__method__CrossSharedStructInBlock1And2);
     dummy_var ^= ((int64_t) (void*) wire_test_static_method__static_method__CrossSharedStructInBlock1And2);
@@ -304,6 +304,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) dummy_method_to_enforce_bundling_ApiBlock1Class);
     dummy_var ^= ((int64_t) (void*) dummy_method_to_enforce_bundling_ApiBlock2Class);
     dummy_var ^= ((int64_t) (void*) dummy_method_to_enforce_bundling_ApiBlock3Class);
-    dummy_var ^= ((int64_t) (void*) dummy_method_to_enforce_bundling_BridgeGeneratedShares);
+    dummy_var ^= ((int64_t) (void*) dummy_method_to_enforce_bundling_BridgeGeneratedShared);
     return dummy_var;
 }

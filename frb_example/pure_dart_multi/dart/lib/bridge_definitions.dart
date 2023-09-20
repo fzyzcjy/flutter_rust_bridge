@@ -4,7 +4,7 @@
 import 'bridge_generated_api_block_1.io.dart' if (dart.library.html) 'bridge_generated_api_block_1.web.dart';
 import 'bridge_generated_api_block_2.io.dart' if (dart.library.html) 'bridge_generated_api_block_2.web.dart';
 import 'bridge_generated_api_block_3.io.dart' if (dart.library.html) 'bridge_generated_api_block_3.web.dart';
-import 'bridge_generated_shares.io.dart' if (dart.library.html) 'bridge_generated_shares.web.dart';
+import 'bridge_generated_shared.io.dart' if (dart.library.html) 'bridge_generated_shared.web.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:collection/collection.dart';
@@ -14,7 +14,7 @@ import 'package:meta/meta.dart';
 import 'package:uuid/uuid.dart';
 part 'bridge_definitions.freezed.dart';
 
-abstract class BridgeGeneratedShares {
+abstract class BridgeGeneratedShared {
   Future<String> testMethodMethodCrossSharedStructInBlock1And2(
       {required CrossSharedStructInBlock1And2 that, required String message, dynamic hint});
 
@@ -98,7 +98,7 @@ abstract class BridgeGeneratedShares {
 /// this struct is used only as parameter in API block1 and used only as return type in API block2, but not
 /// defined in either block file
 class CrossSharedStructInBlock1And2 {
-  final BridgeGeneratedShares bridge;
+  final BridgeGeneratedShared bridge;
   final String name;
 
   const CrossSharedStructInBlock1And2({
@@ -113,14 +113,14 @@ class CrossSharedStructInBlock1And2 {
       );
 
   static Future<String> testStaticMethod(
-          {required BridgeGeneratedShares bridge, required String message, dynamic hint}) =>
+          {required BridgeGeneratedShared bridge, required String message, dynamic hint}) =>
       bridge.testStaticMethodStaticMethodCrossSharedStructInBlock1And2(message: message, hint: hint);
 }
 
 /// this struct is used only as parameter in API block2 and used only as return type in API block3, but not
 /// defined in either block file
 class CrossSharedStructInBlock2And3 {
-  final BridgeGeneratedShares bridge;
+  final BridgeGeneratedShared bridge;
   final String name;
 
   const CrossSharedStructInBlock2And3({
@@ -135,7 +135,7 @@ class CrossSharedStructInBlock2And3 {
       );
 
   static Future<String> testStaticMethod(
-          {required BridgeGeneratedShares bridge, required String message, dynamic hint}) =>
+          {required BridgeGeneratedShared bridge, required String message, dynamic hint}) =>
       bridge.testStaticMethodStaticMethodCrossSharedStructInBlock2And3(message: message, hint: hint);
 }
 
@@ -169,7 +169,7 @@ sealed class SharedComplexEnumInAllBlocks with _$SharedComplexEnumInAllBlocks {
 
 /// This is a struct used in ALL API blocks, NOT defined in any regular block file
 class SharedStructInAllBlocks {
-  final BridgeGeneratedShares bridge;
+  final BridgeGeneratedShared bridge;
   final int id;
   final double num;
   final String name;
@@ -193,13 +193,13 @@ class SharedStructInAllBlocks {
       );
 
   static Future<String> testStaticMethod(
-          {required BridgeGeneratedShares bridge, required String message, dynamic hint}) =>
+          {required BridgeGeneratedShared bridge, required String message, dynamic hint}) =>
       bridge.testStaticMethodStaticMethodSharedStructInAllBlocks(message: message, hint: hint);
 }
 
 /// This is a struct used in API blocks 1 and 2 for test, but not defined in any regular block file
 class SharedStructInBlock1And2 {
-  final BridgeGeneratedShares bridge;
+  final BridgeGeneratedShared bridge;
   final int id;
   final double num;
   final String name;
@@ -217,13 +217,13 @@ class SharedStructInBlock1And2 {
       );
 
   static Future<String> testStaticMethod(
-          {required BridgeGeneratedShares bridge, required String message, dynamic hint}) =>
+          {required BridgeGeneratedShared bridge, required String message, dynamic hint}) =>
       bridge.testStaticMethodStaticMethodSharedStructInBlock1And2(message: message, hint: hint);
 }
 
 /// This is a struct used in all API blocks 2 and 3 for test, but not defined in any regular block file
 class SharedStructInBlock2And3 {
-  final BridgeGeneratedShares bridge;
+  final BridgeGeneratedShared bridge;
   final int id;
   final double num;
   final String name;
@@ -241,12 +241,12 @@ class SharedStructInBlock2And3 {
       );
 
   static Future<String> testStaticMethod(
-          {required BridgeGeneratedShares bridge, required String message, dynamic hint}) =>
+          {required BridgeGeneratedShared bridge, required String message, dynamic hint}) =>
       bridge.testStaticMethodStaticMethodSharedStructInBlock2And3(message: message, hint: hint);
 }
 
 class SharedStructOnlyForSyncTest {
-  final BridgeGeneratedShares bridge;
+  final BridgeGeneratedShared bridge;
   final String name;
   final double score;
 
@@ -263,7 +263,7 @@ class SharedStructOnlyForSyncTest {
       );
 
   static Future<String> testStaticMethod(
-          {required BridgeGeneratedShares bridge, required String message, dynamic hint}) =>
+          {required BridgeGeneratedShared bridge, required String message, dynamic hint}) =>
       bridge.testStaticMethodStaticMethodSharedStructOnlyForSyncTest(message: message, hint: hint);
 }
 

@@ -1,7 +1,7 @@
 use flutter_rust_bridge::SyncReturn;
 
 use crate::block_specific_module::StructOnlyForBlock2;
-use crate::bridge_generated_shares::SharedWeekdaysEnumInAllBlocks;
+use crate::bridge_generated_shared::SharedWeekdaysEnumInAllBlocks;
 use crate::shared_type_module::SharedStructInAllBlocks;
 use crate::shared_type_module::{CrossSharedStructInBlock1And2, SharedStructInBlock1And2};
 use crate::shared_type_module::{CrossSharedStructInBlock2And3, SharedStructInBlock2And3};
