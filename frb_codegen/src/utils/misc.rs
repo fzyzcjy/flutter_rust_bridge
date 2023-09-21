@@ -28,28 +28,22 @@ pub fn mod_from_rust_path(config: &crate::Opts, get_shared_mod: bool) -> Option<
             .replace('/', "::")
     }
 
-    let output = match config.share_mode {
-        ShareMode::Unique => {
-            if !get_shared_mod {
-                get_module_name(&config.rust_input_path, &config.rust_crate_dir)
-            } else {
-                // get the shared module in the regular block
-                if is_multi_blocks_case(None) {
-                    get_module_name(
-                        &config.shared_rust_output_path.clone().unwrap(),
-                        &config.rust_crate_dir,
-                    )
-                } else {
-                    "".into()
-                }
-            }
-        }
-        ShareMode::Shared => {
-            // Whatever `get_shared_mod` is, return the shared module name for a shared block
+    let output = if config.shared {
+        get_module_name(
+            &config.shared_rust_output_path.clone().unwrap(),
+            &config.rust_crate_dir,
+        )
+    } else if !get_shared_mod {
+        get_module_name(&config.rust_input_path, &config.rust_crate_dir)
+    } else {
+        // get the shared module in the regular block
+        if is_multi_blocks_case(None) {
             get_module_name(
                 &config.shared_rust_output_path.clone().unwrap(),
                 &config.rust_crate_dir,
             )
+        } else {
+            "".into()
         }
     };
 
@@ -77,19 +71,16 @@ pub fn is_multi_blocks_case(all_configs: Option<&[crate::Opts]>) -> bool {
     let r = match all_configs.len() {
         0 => panic!("there should be at least 1 config"),
         1 => {
-            assert_eq!(all_configs[0].share_mode, ShareMode::Unique); // single item must not be shared
+            assert!(!all_configs[0].shared); // single item must not be shared
             false
         }
         _ => {
             for (i, config) in all_configs.iter().enumerate().take(all_configs.len() - 1) {
-                if config.share_mode == ShareMode::Shared {
+                if config.shared {
                     log::error!("Config {i} is shared, but should not be");
                 }
             }
-            assert_eq!(
-                all_configs[all_configs.len() - 1].share_mode,
-                ShareMode::Shared
-            ); // last item must be shared
+            assert!(all_configs[all_configs.len() - 1].shared); // last item must be shared
             true
         }
     };
@@ -205,8 +196,17 @@ impl Display for BlockIndex {
 
 #[derive(PartialEq, Eq, Copy, Clone, Debug, serde::Serialize, Hash)]
 pub enum ShareMode {
-    Unique, // for (the types only for) regular/no-shared block
-    Shared, // for (the types only for) shared block
+    Unique, // for types/funcs NOT shared among regular Api blocks
+    Shared, // for types/funcs shared among regular Api blocks
+            // TODO: may need other item to distinguish shared by if it is shared by safe_ident or not
+}
+impl ShareMode {
+    pub fn is_shared(&self) -> bool {
+        match self {
+            ShareMode::Unique => false,
+            ShareMode::Shared => true,
+        }
+    }
 }
 
 #[ext(name = PathExt)]

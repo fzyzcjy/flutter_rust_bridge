@@ -136,18 +136,12 @@ pub(crate) fn generate_api_func(
         "null".to_string()
     };
 
-    match ir_file.share_mode {
-        crate::utils::misc::ShareMode::Unique => {
-            if ir_file.is_type_shared_by_safe_ident(&func.output) == ShareMode::Shared {
-                parse_success_data =
-                    parse_success_data.replace("_wire2api_", "_sharedImpl.wire2api_");
-                parse_error_data = parse_error_data.replace("_wire2api_", "_sharedImpl.wire2api_");
-            }
-        }
-        crate::utils::misc::ShareMode::Shared => {
-            parse_success_data = parse_success_data.replace("_wire2api_", "wire2api_");
-            parse_error_data = parse_error_data.replace("_wire2api_", "wire2api_");
-        }
+    if ir_file.shared {
+        parse_success_data = parse_success_data.replace("_wire2api_", "wire2api_");
+        parse_error_data = parse_error_data.replace("_wire2api_", "wire2api_");
+    } else if ir_file.is_type_shared_by_safe_ident(&func.output) == ShareMode::Shared {
+        parse_success_data = parse_success_data.replace("_wire2api_", "_sharedImpl.wire2api_");
+        parse_error_data = parse_error_data.replace("_wire2api_", "_sharedImpl.wire2api_");
     }
 
     let is_sync = matches!(func.mode, IrFuncMode::Sync);
@@ -210,7 +204,7 @@ pub(crate) fn get_api2wire_prefix(
     ir_type: &IrType,
     for_dart_common_file: bool,
 ) -> String {
-    if is_multi_blocks_case(None) && ir_file.share_mode == ShareMode::Unique {
+    if is_multi_blocks_case(None) && !ir_file.shared {
         // NOTE: For multi-blocks case, `COMMON_API2WIRE` should have been fetched by
         // `DartApiSpec::from()` according to the whole frb generation routine.
         FETCHED_FOR_COMMON_API2WIRE.with(|data| {
@@ -223,34 +217,35 @@ pub(crate) fn get_api2wire_prefix(
     } else {
         match shared_dart_api2wire_funcs {
             // multi-blocks case
-            Some(shared_dart_api2wire_funcs) => match ir_file.share_mode {
-                ShareMode::Unique => match ir_file.is_type_shared_by_safe_ident(ir_type) {
-                    ShareMode::Unique => {
-                        if common_api2wire_body.contains(api2wire_func) {
-                            ""
-                        } else if for_dart_common_file {
-                            "_platform."
-                        } else {
-                            ""
-                        }
-                    }
-                    ShareMode::Shared => {
-                        let shared_common_api2wire_body = &shared_dart_api2wire_funcs.common;
-                        if shared_common_api2wire_body.contains(api2wire_func) {
-                            ""
-                        } else {
-                            "_sharedPlatform."
-                        }
-                    }
-                },
-                ShareMode::Shared => {
+            Some(shared_dart_api2wire_funcs) => {
+                if ir_file.shared {
                     if for_dart_common_file {
                         "_platform."
                     } else {
                         ""
                     }
+                } else {
+                    match ir_file.is_type_shared_by_safe_ident(ir_type) {
+                        ShareMode::Unique => {
+                            if common_api2wire_body.contains(api2wire_func) {
+                                ""
+                            } else if for_dart_common_file {
+                                "_platform."
+                            } else {
+                                ""
+                            }
+                        }
+                        ShareMode::Shared => {
+                            let shared_common_api2wire_body = &shared_dart_api2wire_funcs.common;
+                            if shared_common_api2wire_body.contains(api2wire_func) {
+                                ""
+                            } else {
+                                "_sharedPlatform."
+                            }
+                        }
+                    }
                 }
-            },
+            }
             // single block case
             _ => {
                 if for_dart_common_file {
@@ -266,12 +261,13 @@ pub(crate) fn get_api2wire_prefix(
 }
 
 pub(crate) fn get_api_to_fill_wire_prefix(ir_file: &IrFile, ir_type: &IrType) -> String {
-    match ir_file.share_mode {
-        ShareMode::Unique => match ir_file.is_type_shared_by_safe_ident(ir_type) {
+    if ir_file.shared {
+        ""
+    } else {
+        match ir_file.is_type_shared_by_safe_ident(ir_type) {
             ShareMode::Unique => "_",
             ShareMode::Shared => "_sharedPlatform",
-        },
-        ShareMode::Shared => "",
+        }
     }
     .into()
 }

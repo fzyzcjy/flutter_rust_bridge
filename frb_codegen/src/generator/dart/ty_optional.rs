@@ -11,7 +11,7 @@ impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
         &self,
         _shared_dart_api2wire_funcs: &Option<Acc<String>>,
     ) -> Acc<Option<String>> {
-        let prefix = if self.context.ir_file.share_mode == ShareMode::Unique
+        let prefix = if !self.context.ir_file.shared
             && self
                 .context
                 .ir_file
@@ -44,16 +44,17 @@ impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
             return None;
         }
 
-        let prefix = match self.context.config.share_mode {
-            ShareMode::Unique => match self
+        let prefix = if self.context.config.shared {
+            ""
+        } else {
+            match self
                 .context
                 .ir_file
                 .is_type_shared_by_safe_ident(&self.ir.inner)
             {
                 ShareMode::Unique => "_",
                 ShareMode::Shared => "_sharedPlatform.",
-            },
-            ShareMode::Shared => "",
+            }
         };
 
         Some(format!(
@@ -64,7 +65,7 @@ impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
     }
 
     fn wire2api_body(&self) -> String {
-        let use_shared_instance = self.context.ir_file.share_mode == ShareMode::Unique
+        let use_shared_instance = !self.context.ir_file.shared
             && self
                 .context
                 .ir_file
@@ -77,13 +78,10 @@ impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
                 self.ir.inner.safe_ident()
             )
         } else {
-            let private_prefix = match self.context.ir_file.share_mode {
-                ShareMode::Unique => "_",
-                ShareMode::Shared => "",
-            };
+            let prefix = if self.context.config.shared { "" } else { "_" };
             format!(
                 "return raw == null ? null : {}wire2api_{}(raw);",
-                private_prefix,
+                prefix,
                 self.ir.inner.safe_ident()
             )
         }

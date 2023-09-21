@@ -5,7 +5,7 @@ use crate::others::{
     extract_dart_wire_content, modify_dart_wire_content, sanity_check, DartBasicCode,
     DUMMY_WIRE_CODE_FOR_BINDGEN, EXTRA_EXTERN_FUNC_NAMES,
 };
-use crate::utils::misc::{is_multi_blocks_case, with_changed_file, ExtraTraitForVec, ShareMode};
+use crate::utils::misc::{is_multi_blocks_case, with_changed_file, ExtraTraitForVec};
 use crate::{command_run, commands, ensure_tools_available, generator, ir, Opts};
 use convert_case::{Case, Casing};
 use itertools::Itertools;
@@ -32,40 +32,37 @@ pub(crate) fn generate_dart_code(
     let mut exclude_symbols = generated_rust.get_exclude_symbols(all_symbols, ir_file);
     let mut extra_forward_declarations = Vec::new();
     //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓refine exclude_symbols↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-    match ir_file.share_mode {
-        ShareMode::Unique => {
-            // 1. refine `exclude_symbols`
-            for c in all_configs {
-                if c.block_index == config.block_index {
-                    continue;
-                }
-                let (wire_types, wire_funcs) = get_wire_types_funcs_for_c_file(c, all_configs);
-                exclude_symbols.extend(wire_types);
-                exclude_symbols.extend(wire_funcs);
+    if ir_file.shared {
+        for c in all_configs {
+            if c.shared {
+                continue;
             }
-
-            // 2. refine `extra_forward_declarations`
-            let x = ir_file.get_shared_type_names(
-                true,
-                Some(|each: &ir::IrType| each.is_struct() || each.is_list(false)),
-            );
-            let extra_forward_declaration = x
-                .iter()
-                .map(|each| format!("typedef struct wire_{each} wire_{each}"))
-                .collect::<Vec<_>>();
-
-            extra_forward_declarations.extend(extra_forward_declaration);
+            let (wire_types, wire_funcs) = get_wire_types_funcs_for_c_file(c, all_configs);
+            exclude_symbols.extend(wire_types);
+            exclude_symbols.extend(wire_funcs);
         }
-        ShareMode::Shared => {
-            for c in all_configs {
-                if c.share_mode == ShareMode::Shared {
-                    continue;
-                }
-                let (wire_types, wire_funcs) = get_wire_types_funcs_for_c_file(c, all_configs);
-                exclude_symbols.extend(wire_types);
-                exclude_symbols.extend(wire_funcs);
+    } else {
+        // 1. refine `exclude_symbols`
+        for c in all_configs {
+            if c.block_index == config.block_index {
+                continue;
             }
+            let (wire_types, wire_funcs) = get_wire_types_funcs_for_c_file(c, all_configs);
+            exclude_symbols.extend(wire_types);
+            exclude_symbols.extend(wire_funcs);
         }
+
+        // 2. refine `extra_forward_declarations`
+        let x = ir_file.get_shared_type_names(
+            true,
+            Some(|each: &ir::IrType| each.is_struct() || each.is_list(false)),
+        );
+        let extra_forward_declaration = x
+            .iter()
+            .map(|each| format!("typedef struct wire_{each} wire_{each}"))
+            .collect::<Vec<_>>();
+
+        extra_forward_declarations.extend(extra_forward_declaration);
     }
     //↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑refine exclude_symbols↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
     let c_struct_names = ir_file.get_c_struct_names(all_configs);

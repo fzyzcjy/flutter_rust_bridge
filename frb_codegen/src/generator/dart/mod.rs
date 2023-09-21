@@ -46,7 +46,7 @@ use crate::others::*;
 use crate::target::Target::*;
 use crate::target::{Acc, Target};
 use crate::utils::method::{FunctionName, MethodNamingUtil};
-use crate::utils::misc::{get_deduplicate_type, is_multi_blocks_case, PathExt, ShareMode};
+use crate::utils::misc::{get_deduplicate_type, is_multi_blocks_case, PathExt};
 use crate::{ir::*, Opts};
 
 thread_local!(pub static COMMON_API2WIRE: RefCell<String> = RefCell::new("".into()));
@@ -136,7 +136,7 @@ impl DartApiSpec {
         // essential shared dart_api2wire funcs
         let shared_dart_api2wire_funcs = if is_multi_blocks_case(None) {
             let shared_config = all_configs.last().unwrap();
-            assert_eq!(shared_config.share_mode, ShareMode::Shared);
+            assert!(shared_config.shared);
             let shared_ir_file = shared_config.get_ir_file(all_configs).unwrap();
             let distinct_input_types = shared_ir_file.distinct_types(true, false, all_configs);
             Some(
@@ -377,7 +377,7 @@ fn generate_dart_implementation_body(
         common: {
             let implement = &dart_api_impl_class_name;
             let plat = &dart_platform_class_name;
-            let mut basic_code = match shared_config.is_none() || config.share_mode==ShareMode::Shared {
+            let mut basic_code = match shared_config.is_none() || config.shared {
                 true => {
                     format!(
                         "class {implement} implements {dart_api_class_name} {{
@@ -417,7 +417,7 @@ fn generate_dart_implementation_body(
             let plat = &dart_platform_class_name;
             let wire = &dart_wire_class_name;
             let (shared_definition, shared_initialization) =
-            match shared_config.is_none() || config.share_mode == ShareMode::Shared{
+            match shared_config.is_none() || config.shared{
                 true => ("".to_string(), "".to_string()),
                 false => {
                     let shared_plat = shared_config.unwrap().dart_platform_class_name();
@@ -434,14 +434,13 @@ fn generate_dart_implementation_body(
             let plat = &dart_platform_class_name;
             let wire = &dart_wire_class_name;
             let (shared_definition, shared_initialization) =
-            match shared_config.is_none() || config.share_mode==ShareMode::Shared{
+            match shared_config.is_none() || config.shared{
                 true => ("".to_string(), "".to_string()),
                 false => {
                     let shared_plat = shared_config.unwrap().dart_platform_class_name();
                     (format!("final {} _sharedPlatform;", shared_plat), format!("_sharedPlatform = {}(dylib),", shared_plat))
                 }
             };
-
             format!(
             "class {plat} extends FlutterRustBridgeBase<{wire}> with FlutterRustBridgeSetupMixin {{
                 {shared_definition}
@@ -658,10 +657,7 @@ fn generate_api_fill_to_wire_func(
             Optional(inner) => &inner.inner,
             it => it,
         };
-        let prefix = match config.share_mode {
-            ShareMode::Unique => "_",
-            ShareMode::Shared => "",
-        };
+        let prefix = if config.shared { "" } else { "_" };
         format!(
             "void {}api_fill_to_wire_{}({} apiObj, {} wireObj) {{
                 {}
@@ -683,10 +679,7 @@ fn generate_wire2api_func(
     _dart_api_class_name: &str,
     config: &Opts,
 ) -> String {
-    let prefix = match config.share_mode {
-        ShareMode::Unique => "_",
-        ShareMode::Shared => "",
-    };
+    let prefix = if config.shared { "" } else { "_" };
     let body = TypeDartGenerator::new(ty.clone(), ir_file, config).wire2api_body();
     format!(
         "{} {}wire2api_{}({} raw) {{

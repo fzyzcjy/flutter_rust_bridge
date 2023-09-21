@@ -44,10 +44,7 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
                         return ptr;",
                     )
                 } else {
-                    let prefix = match self.context.config.share_mode {
-                        crate::utils::misc::ShareMode::Unique => "_",
-                        crate::utils::misc::ShareMode::Shared => "",
-                    };
+                    let prefix = if self.context.config.shared { "" } else { "_" };
                     format!(
                         "final ptr = inner.new_{ident}();
                         {prefix}api_fill_to_wire_{inner}(raw, ptr.ref);
@@ -74,10 +71,7 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
             ));
         }
         (!self.ir.inner.is_primitive() && !is_empty_struct(self)).then(|| {
-            let prefix = match self.context.config.share_mode {
-                crate::utils::misc::ShareMode::Unique => "_",
-                crate::utils::misc::ShareMode::Shared => "",
-            };
+            let prefix = if self.context.config.shared { "" } else { "_" };
             format!(
                 "{}api_fill_to_wire_{}(apiObj, wireObj.ref);",
                 prefix,

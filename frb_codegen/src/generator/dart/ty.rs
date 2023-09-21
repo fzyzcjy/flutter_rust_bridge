@@ -45,6 +45,8 @@ macro_rules! type_dart_generator_struct {
                 &self.context
             }
             #[allow(unused)]
+            /// this method only cares if a specifc type is shared or not, but not
+            /// care about the type of the shared mode.
             fn is_type_shared(&self, ty: &$crate::ir::IrType) -> bool {
                 match self.get_context().ir_file.is_type_shared_by_safe_ident(ty) {
                     $crate::utils::misc::ShareMode::Unique => false,
@@ -53,10 +55,12 @@ macro_rules! type_dart_generator_struct {
             }
             #[allow(unused)]
             fn get_private_prefix(&self) -> String {
-                match self.get_context().config.share_mode {
-                    $crate::utils::misc::ShareMode::Unique => "_".into(),
-                    $crate::utils::misc::ShareMode::Shared => "".into(),
+                if self.get_context().config.shared {
+                    ""
+                } else {
+                    "_"
                 }
+                .into()
             }
         }
     };

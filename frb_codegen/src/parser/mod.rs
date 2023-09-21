@@ -105,7 +105,7 @@ pub fn parse(
     file: File,
     manifest_path: &str,
     block_index: BlockIndex,
-    share_mode: ShareMode,
+    share: bool,
     all_configs: &[Opts],
 ) -> ParserResult<IrFile> {
     let mut src_fns = extract_fns_from_file(&file);
@@ -120,7 +120,7 @@ pub fn parse(
         source_rust_content,
         src_fns,
         block_index,
-        share_mode,
+        share,
         all_configs,
     )
 }
@@ -141,7 +141,7 @@ impl<'a> Parser<'a> {
         source_rust_content: &str,
         src_fns: Vec<ItemFn>,
         block_index: BlockIndex,
-        share_mode: ShareMode,
+        share: bool,
         all_configs: &[Opts],
     ) -> ParserResult<IrFile> {
         let funcs = src_fns
@@ -160,7 +160,7 @@ impl<'a> Parser<'a> {
             has_executor,
             block_index,
             all_configs,
-            share_mode,
+            share,
         );
 
         Ok(ir_file)

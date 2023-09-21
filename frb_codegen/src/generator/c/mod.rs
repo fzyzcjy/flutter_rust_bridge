@@ -1,7 +1,7 @@
 use std::path::Path;
 
 use crate::config::opts::Opts;
-use crate::utils::misc::{is_multi_blocks_case, BlockIndex, PathExt, ShareMode};
+use crate::utils::misc::{is_multi_blocks_case, BlockIndex, PathExt};
 
 pub fn generate_dummy(
     config: &Opts,
@@ -19,7 +19,7 @@ pub fn generate_dummy(
 
             let regular_block_headers = all_configs
                 .iter()
-                .filter(|e| e.share_mode == ShareMode::Unique)
+                .filter(|e| !e.shared)
                 .map(|e| {
                     // get directory only from paths
                     let src_p = Path::new(&config.c_output_paths[c_path_index]);

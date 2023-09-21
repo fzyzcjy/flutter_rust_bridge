@@ -103,7 +103,7 @@ macro_rules! type_rust_generator_struct {
             fn get_wire2api_prefix(&self, ir_type: &$crate::ir::IrType) -> String {
                 let shared_mod_name = self.get_shared_module_of_a_type(ir_type);
 
-                if self.get_context().config.share_mode == $crate::utils::misc::ShareMode::Unique && shared_mod_name.is_some() {
+                if !self.get_context().config.shared && shared_mod_name.is_some() {
                     format!("{}::Wire2Api", shared_mod_name.unwrap())
                 } else {
                     "Wire2Api".into()
