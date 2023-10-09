@@ -221,6 +221,11 @@ pub extern "C" fn wire_handle_increment_boxed_optional(port_: i64, opt: *mut f64
 }
 
 #[no_mangle]
+pub extern "C" fn wire_handle_vec_of_opts(port_: i64, opt: *mut wire_OptVecs) {
+    wire_handle_vec_of_opts_impl(port_, opt)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_handle_option_box_arguments(
     port_: i64,
     i8box: *mut i8,
@@ -1313,6 +1318,11 @@ pub extern "C" fn new_box_autoadd_opaque_nested_0() -> *mut wire_OpaqueNested {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_opt_vecs_0() -> *mut wire_OptVecs {
+    support::new_leak_box_ptr(wire_OptVecs::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_sequences_0() -> *mut wire_Sequences {
     support::new_leak_box_ptr(wire_Sequences::new_with_null_ptr())
 }
@@ -1340,6 +1350,11 @@ pub extern "C" fn new_box_autoadd_test_id_0() -> *mut wire_TestId {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_user_id_0() -> *mut wire_UserId {
     support::new_leak_box_ptr(wire_UserId::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_weekdays_0(value: i32) -> *mut i32 {
+    support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
@@ -1521,11 +1536,49 @@ pub extern "C" fn new_list_my_tree_node_0(len: i32) -> *mut wire_list_my_tree_no
 }
 
 #[no_mangle]
+pub extern "C" fn new_list_opt_String_0(len: i32) -> *mut wire_list_opt_String {
+    let wrap = wire_list_opt_String {
+        ptr: support::new_leak_vec_ptr(core::ptr::null_mut(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
 pub extern "C" fn new_list_opt_box_autoadd_attribute_0(
     len: i32,
 ) -> *mut wire_list_opt_box_autoadd_attribute {
     let wrap = wire_list_opt_box_autoadd_attribute {
-        ptr: support::new_leak_vec_ptr(<*mut wire_Attribute>::new_with_null_ptr(), len),
+        ptr: support::new_leak_vec_ptr(core::ptr::null_mut(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_opt_box_autoadd_i32_0(len: i32) -> *mut wire_list_opt_box_autoadd_i32 {
+    let wrap = wire_list_opt_box_autoadd_i32 {
+        ptr: support::new_leak_vec_ptr(core::ptr::null_mut(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_opt_box_autoadd_weekdays_0(
+    len: i32,
+) -> *mut wire_list_opt_box_autoadd_weekdays {
+    let wrap = wire_list_opt_box_autoadd_weekdays {
+        ptr: support::new_leak_vec_ptr(core::ptr::null_mut(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_opt_int_32_list_0(len: i32) -> *mut wire_list_opt_int_32_list {
+    let wrap = wire_list_opt_int_32_list {
+        ptr: support::new_leak_vec_ptr(core::ptr::null_mut(), len),
         len,
     };
     support::new_leak_box_ptr(wrap)
@@ -2132,6 +2185,12 @@ impl Wire2Api<OpaqueNested> for *mut wire_OpaqueNested {
         Wire2Api::<OpaqueNested>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<OptVecs> for *mut wire_OptVecs {
+    fn wire2api(self) -> OptVecs {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<OptVecs>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<Sequences> for *mut wire_Sequences {
     fn wire2api(self) -> Sequences {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -2166,6 +2225,12 @@ impl Wire2Api<UserId> for *mut wire_UserId {
     fn wire2api(self) -> UserId {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<UserId>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<Weekdays> for *mut i32 {
+    fn wire2api(self) -> Weekdays {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Weekdays>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<Box<Blob>> for *mut wire_Blob {
@@ -2561,8 +2626,44 @@ impl Wire2Api<Vec<MyTreeNode>> for *mut wire_list_my_tree_node {
         vec.into_iter().map(Wire2Api::wire2api).collect()
     }
 }
+impl Wire2Api<Vec<Option<String>>> for *mut wire_list_opt_String {
+    fn wire2api(self) -> Vec<Option<String>> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
 impl Wire2Api<Vec<Option<Attribute>>> for *mut wire_list_opt_box_autoadd_attribute {
     fn wire2api(self) -> Vec<Option<Attribute>> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+impl Wire2Api<Vec<Option<i32>>> for *mut wire_list_opt_box_autoadd_i32 {
+    fn wire2api(self) -> Vec<Option<i32>> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+impl Wire2Api<Vec<Option<Weekdays>>> for *mut wire_list_opt_box_autoadd_weekdays {
+    fn wire2api(self) -> Vec<Option<Weekdays>> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+impl Wire2Api<Vec<Option<Vec<i32>>>> for *mut wire_list_opt_int_32_list {
+    fn wire2api(self) -> Vec<Option<Vec<i32>>> {
         let vec = unsafe {
             let wrap = support::box_from_leak_ptr(self);
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
@@ -2696,6 +2797,16 @@ impl Wire2Api<OpaqueNested> for wire_OpaqueNested {
     }
 }
 
+impl Wire2Api<OptVecs> for wire_OptVecs {
+    fn wire2api(self) -> OptVecs {
+        OptVecs {
+            i32: self.i32.wire2api(),
+            enums: self.enums.wire2api(),
+            strings: self.strings.wire2api(),
+            buffers: self.buffers.wire2api(),
+        }
+    }
+}
 impl Wire2Api<Sequences> for wire_Sequences {
     fn wire2api(self) -> Sequences {
         Sequences(self.field0.wire2api())
@@ -3059,8 +3170,36 @@ pub struct wire_list_my_tree_node {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_list_opt_String {
+    ptr: *mut *mut wire_uint_8_list,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_list_opt_box_autoadd_attribute {
     ptr: *mut *mut wire_Attribute,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_opt_box_autoadd_i32 {
+    ptr: *mut *mut i32,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_opt_box_autoadd_weekdays {
+    ptr: *mut *mut i32,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_opt_int_32_list {
+    ptr: *mut *mut wire_int_32_list,
     len: i32,
 }
 
@@ -3144,6 +3283,15 @@ pub struct wire_Numbers {
 pub struct wire_OpaqueNested {
     first: wire_HideData,
     second: wire_HideData,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_OptVecs {
+    i32: *mut wire_list_opt_box_autoadd_i32,
+    enums: *mut wire_list_opt_box_autoadd_weekdays,
+    strings: *mut wire_list_opt_String,
+    buffers: *mut wire_list_opt_int_32_list,
 }
 
 #[repr(C)]
@@ -4252,6 +4400,23 @@ impl NewWithNullPtr for wire_OpaqueNested {
 }
 
 impl Default for wire_OpaqueNested {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+
+impl NewWithNullPtr for wire_OptVecs {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            i32: core::ptr::null_mut(),
+            enums: core::ptr::null_mut(),
+            strings: core::ptr::null_mut(),
+            buffers: core::ptr::null_mut(),
+        }
+    }
+}
+
+impl Default for wire_OptVecs {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }

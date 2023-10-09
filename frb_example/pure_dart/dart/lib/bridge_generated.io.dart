@@ -431,6 +431,13 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_OptVecs> api2wire_box_autoadd_opt_vecs(OptVecs raw) {
+    final ptr = inner.new_box_autoadd_opt_vecs_0();
+    _api_fill_to_wire_opt_vecs(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_Sequences> api2wire_box_autoadd_sequences(Sequences raw) {
     final ptr = inner.new_box_autoadd_sequences_0();
     _api_fill_to_wire_sequences(raw, ptr.ref);
@@ -470,6 +477,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     final ptr = inner.new_box_autoadd_user_id_0();
     _api_fill_to_wire_user_id(raw, ptr.ref);
     return ptr;
+  }
+
+  @protected
+  ffi.Pointer<ffi.Int32> api2wire_box_autoadd_weekdays(Weekdays raw) {
+    return inner.new_box_autoadd_weekdays_0(api2wire_weekdays(raw));
   }
 
   @protected
@@ -679,10 +691,56 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  ffi.Pointer<wire_list_opt_String> api2wire_list_opt_String(List<String?> raw) {
+    final ans = inner.new_list_opt_String_0(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      final item = raw[i];
+      if (item == null) continue;
+      ans.ref.ptr[i] = api2wire_String(item);
+    }
+    return ans;
+  }
+
+  @protected
   ffi.Pointer<wire_list_opt_box_autoadd_attribute> api2wire_list_opt_box_autoadd_attribute(List<Attribute?> raw) {
     final ans = inner.new_list_opt_box_autoadd_attribute_0(raw.length);
     for (var i = 0; i < raw.length; ++i) {
-      _api_fill_to_wire_opt_box_autoadd_attribute(raw[i], ans.ref.ptr[i]);
+      final item = raw[i];
+      if (item == null) continue;
+      ans.ref.ptr[i] = api2wire_box_autoadd_attribute(item);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_list_opt_box_autoadd_i32> api2wire_list_opt_box_autoadd_i32(List<int?> raw) {
+    final ans = inner.new_list_opt_box_autoadd_i32_0(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      final item = raw[i];
+      if (item == null) continue;
+      ans.ref.ptr[i] = api2wire_box_autoadd_i32(item);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_list_opt_box_autoadd_weekdays> api2wire_list_opt_box_autoadd_weekdays(List<Weekdays?> raw) {
+    final ans = inner.new_list_opt_box_autoadd_weekdays_0(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      final item = raw[i];
+      if (item == null) continue;
+      ans.ref.ptr[i] = api2wire_box_autoadd_weekdays(item);
+    }
+    return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_list_opt_int_32_list> api2wire_list_opt_int_32_list(List<Int32List?> raw) {
+    final ans = inner.new_list_opt_int_32_list_0(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      final item = raw[i];
+      if (item == null) continue;
+      ans.ref.ptr[i] = api2wire_int_32_list(item);
     }
     return ans;
   }
@@ -738,11 +796,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   ffi.Pointer<wire_ApplicationEnv> api2wire_opt_box_autoadd_application_env(ApplicationEnv? raw) {
     return raw == null ? ffi.nullptr : api2wire_box_autoadd_application_env(raw);
-  }
-
-  @protected
-  ffi.Pointer<wire_Attribute> api2wire_opt_box_autoadd_attribute(Attribute? raw) {
-    return raw == null ? ffi.nullptr : api2wire_box_autoadd_attribute(raw);
   }
 
   @protected
@@ -1149,6 +1202,10 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     _api_fill_to_wire_opaque_nested(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_opt_vecs(OptVecs apiObj, ffi.Pointer<wire_OptVecs> wireObj) {
+    _api_fill_to_wire_opt_vecs(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_sequences(Sequences apiObj, ffi.Pointer<wire_Sequences> wireObj) {
     _api_fill_to_wire_sequences(apiObj, wireObj.ref);
   }
@@ -1468,39 +1525,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
     wireObj.second = api2wire_HideData(apiObj.second);
   }
 
-  void _api_fill_to_wire_opt_box_autoadd_DartOpaque(Object? apiObj, ffi.Pointer<wire_DartOpaque> wireObj) {
-    if (apiObj != null) _api_fill_to_wire_box_autoadd_DartOpaque(apiObj, wireObj);
-  }
-
-  void _api_fill_to_wire_opt_box_autoadd_HideData(HideData? apiObj, ffi.Pointer<wire_HideData> wireObj) {
-    if (apiObj != null) _api_fill_to_wire_box_autoadd_HideData(apiObj, wireObj);
-  }
-
-  void _api_fill_to_wire_opt_box_autoadd___record__String_i32(
-      (String, int)? apiObj, ffi.Pointer<wire___record__String_i32> wireObj) {
-    if (apiObj != null) _api_fill_to_wire_box_autoadd___record__String_i32(apiObj, wireObj);
-  }
-
-  void _api_fill_to_wire_opt_box_autoadd_application_env(
-      ApplicationEnv? apiObj, ffi.Pointer<wire_ApplicationEnv> wireObj) {
-    if (apiObj != null) _api_fill_to_wire_box_autoadd_application_env(apiObj, wireObj);
-  }
-
-  void _api_fill_to_wire_opt_box_autoadd_attribute(Attribute? apiObj, ffi.Pointer<wire_Attribute> wireObj) {
-    if (apiObj != null) _api_fill_to_wire_box_autoadd_attribute(apiObj, wireObj);
-  }
-
-  void _api_fill_to_wire_opt_box_autoadd_exotic_optionals(
-      ExoticOptionals? apiObj, ffi.Pointer<wire_ExoticOptionals> wireObj) {
-    if (apiObj != null) _api_fill_to_wire_box_autoadd_exotic_optionals(apiObj, wireObj);
-  }
-
-  void _api_fill_to_wire_opt_box_autoadd_new_type_int(NewTypeInt? apiObj, ffi.Pointer<wire_NewTypeInt> wireObj) {
-    if (apiObj != null) _api_fill_to_wire_box_autoadd_new_type_int(apiObj, wireObj);
-  }
-
-  void _api_fill_to_wire_opt_box_exotic_optionals(ExoticOptionals? apiObj, ffi.Pointer<wire_ExoticOptionals> wireObj) {
-    if (apiObj != null) _api_fill_to_wire_box_exotic_optionals(apiObj, wireObj);
+  void _api_fill_to_wire_opt_vecs(OptVecs apiObj, wire_OptVecs wireObj) {
+    wireObj.i32 = api2wire_list_opt_box_autoadd_i32(apiObj.i32);
+    wireObj.enums = api2wire_list_opt_box_autoadd_weekdays(apiObj.enums);
+    wireObj.strings = api2wire_list_opt_String(apiObj.strings);
+    wireObj.buffers = api2wire_list_opt_int_32_list(apiObj.buffers);
   }
 
   void _api_fill_to_wire_sequences(Sequences apiObj, wire_Sequences wireObj) {
@@ -1920,9 +1949,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_handle_struct_sync_freezedPtr = _lookup<
-      ffi.NativeFunction<
-          WireSyncReturn Function(
-              ffi.Pointer<wire_MySizeFreezed>, ffi.Pointer<wire_MySizeFreezed>)>>('wire_handle_struct_sync_freezed');
+          ffi
+          .NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_MySizeFreezed>, ffi.Pointer<wire_MySizeFreezed>)>>(
+      'wire_handle_struct_sync_freezed');
   late final _wire_handle_struct_sync_freezed = _wire_handle_struct_sync_freezedPtr
       .asFunction<WireSyncReturn Function(ffi.Pointer<wire_MySizeFreezed>, ffi.Pointer<wire_MySizeFreezed>)>();
 
@@ -2186,6 +2215,21 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
           'wire_handle_increment_boxed_optional');
   late final _wire_handle_increment_boxed_optional =
       _wire_handle_increment_boxed_optionalPtr.asFunction<void Function(int, ffi.Pointer<ffi.Double>)>();
+
+  void wire_handle_vec_of_opts(
+    int port_,
+    ffi.Pointer<wire_OptVecs> opt,
+  ) {
+    return _wire_handle_vec_of_opts(
+      port_,
+      opt,
+    );
+  }
+
+  late final _wire_handle_vec_of_optsPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_OptVecs>)>>('wire_handle_vec_of_opts');
+  late final _wire_handle_vec_of_opts =
+      _wire_handle_vec_of_optsPtr.asFunction<void Function(int, ffi.Pointer<wire_OptVecs>)>();
 
   void wire_handle_option_box_arguments(
     int port_,
@@ -2591,9 +2635,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_create_eventPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Int64, ffi.Pointer<wire_uint_8_list>, ffi.Pointer<wire_uint_8_list>)>>('wire_create_event');
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>, ffi.Pointer<wire_uint_8_list>)>>(
+      'wire_create_event');
   late final _wire_create_event = _wire_create_eventPtr
       .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>, ffi.Pointer<wire_uint_8_list>)>();
 
@@ -4120,9 +4164,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_concatenate_static__static_method__ConcatenateWithPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>,
-              ffi.Pointer<wire_uint_8_list>)>>('wire_concatenate_static__static_method__ConcatenateWith');
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>, ffi.Pointer<wire_uint_8_list>)>>(
+      'wire_concatenate_static__static_method__ConcatenateWith');
   late final _wire_concatenate_static__static_method__ConcatenateWith =
       _wire_concatenate_static__static_method__ConcatenateWithPtr
           .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>, ffi.Pointer<wire_uint_8_list>)>();
@@ -4804,6 +4848,15 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_box_autoadd_opaque_nested_0 =
       _new_box_autoadd_opaque_nested_0Ptr.asFunction<ffi.Pointer<wire_OpaqueNested> Function()>();
 
+  ffi.Pointer<wire_OptVecs> new_box_autoadd_opt_vecs_0() {
+    return _new_box_autoadd_opt_vecs_0();
+  }
+
+  late final _new_box_autoadd_opt_vecs_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_OptVecs> Function()>>('new_box_autoadd_opt_vecs_0');
+  late final _new_box_autoadd_opt_vecs_0 =
+      _new_box_autoadd_opt_vecs_0Ptr.asFunction<ffi.Pointer<wire_OptVecs> Function()>();
+
   ffi.Pointer<wire_Sequences> new_box_autoadd_sequences_0() {
     return _new_box_autoadd_sequences_0();
   }
@@ -4857,6 +4910,19 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Pointer<wire_UserId> Function()>>('new_box_autoadd_user_id_0');
   late final _new_box_autoadd_user_id_0 =
       _new_box_autoadd_user_id_0Ptr.asFunction<ffi.Pointer<wire_UserId> Function()>();
+
+  ffi.Pointer<ffi.Int32> new_box_autoadd_weekdays_0(
+    int value,
+  ) {
+    return _new_box_autoadd_weekdays_0(
+      value,
+    );
+  }
+
+  late final _new_box_autoadd_weekdays_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int32> Function(ffi.Int32)>>('new_box_autoadd_weekdays_0');
+  late final _new_box_autoadd_weekdays_0 =
+      _new_box_autoadd_weekdays_0Ptr.asFunction<ffi.Pointer<ffi.Int32> Function(int)>();
 
   ffi.Pointer<wire_Blob> new_box_blob_0() {
     return _new_box_blob_0();
@@ -5148,6 +5214,19 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   late final _new_list_my_tree_node_0 =
       _new_list_my_tree_node_0Ptr.asFunction<ffi.Pointer<wire_list_my_tree_node> Function(int)>();
 
+  ffi.Pointer<wire_list_opt_String> new_list_opt_String_0(
+    int len,
+  ) {
+    return _new_list_opt_String_0(
+      len,
+    );
+  }
+
+  late final _new_list_opt_String_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_opt_String> Function(ffi.Int32)>>('new_list_opt_String_0');
+  late final _new_list_opt_String_0 =
+      _new_list_opt_String_0Ptr.asFunction<ffi.Pointer<wire_list_opt_String> Function(int)>();
+
   ffi.Pointer<wire_list_opt_box_autoadd_attribute> new_list_opt_box_autoadd_attribute_0(
     int len,
   ) {
@@ -5161,6 +5240,48 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
           'new_list_opt_box_autoadd_attribute_0');
   late final _new_list_opt_box_autoadd_attribute_0 = _new_list_opt_box_autoadd_attribute_0Ptr
       .asFunction<ffi.Pointer<wire_list_opt_box_autoadd_attribute> Function(int)>();
+
+  ffi.Pointer<wire_list_opt_box_autoadd_i32> new_list_opt_box_autoadd_i32_0(
+    int len,
+  ) {
+    return _new_list_opt_box_autoadd_i32_0(
+      len,
+    );
+  }
+
+  late final _new_list_opt_box_autoadd_i32_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_opt_box_autoadd_i32> Function(ffi.Int32)>>(
+          'new_list_opt_box_autoadd_i32_0');
+  late final _new_list_opt_box_autoadd_i32_0 =
+      _new_list_opt_box_autoadd_i32_0Ptr.asFunction<ffi.Pointer<wire_list_opt_box_autoadd_i32> Function(int)>();
+
+  ffi.Pointer<wire_list_opt_box_autoadd_weekdays> new_list_opt_box_autoadd_weekdays_0(
+    int len,
+  ) {
+    return _new_list_opt_box_autoadd_weekdays_0(
+      len,
+    );
+  }
+
+  late final _new_list_opt_box_autoadd_weekdays_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_opt_box_autoadd_weekdays> Function(ffi.Int32)>>(
+          'new_list_opt_box_autoadd_weekdays_0');
+  late final _new_list_opt_box_autoadd_weekdays_0 = _new_list_opt_box_autoadd_weekdays_0Ptr
+      .asFunction<ffi.Pointer<wire_list_opt_box_autoadd_weekdays> Function(int)>();
+
+  ffi.Pointer<wire_list_opt_int_32_list> new_list_opt_int_32_list_0(
+    int len,
+  ) {
+    return _new_list_opt_int_32_list_0(
+      len,
+    );
+  }
+
+  late final _new_list_opt_int_32_list_0Ptr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_list_opt_int_32_list> Function(ffi.Int32)>>(
+          'new_list_opt_int_32_list_0');
+  late final _new_list_opt_int_32_list_0 =
+      _new_list_opt_int_32_list_0Ptr.asFunction<ffi.Pointer<wire_list_opt_int_32_list> Function(int)>();
 
   ffi.Pointer<wire_list_test_id> new_list_test_id_0(
     int len,
@@ -5779,6 +5900,44 @@ final class wire_ExoticOptionals extends ffi.Struct {
   external ffi.Pointer<wire_list_opt_box_autoadd_attribute> nullable_attributes;
 
   external ffi.Pointer<wire_NewTypeInt> newtypeint;
+}
+
+final class wire_list_opt_box_autoadd_i32 extends ffi.Struct {
+  external ffi.Pointer<ffi.Pointer<ffi.Int32>> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_list_opt_box_autoadd_weekdays extends ffi.Struct {
+  external ffi.Pointer<ffi.Pointer<ffi.Int32>> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_list_opt_String extends ffi.Struct {
+  external ffi.Pointer<ffi.Pointer<wire_uint_8_list>> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_list_opt_int_32_list extends ffi.Struct {
+  external ffi.Pointer<ffi.Pointer<wire_int_32_list>> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_OptVecs extends ffi.Struct {
+  external ffi.Pointer<wire_list_opt_box_autoadd_i32> i32;
+
+  external ffi.Pointer<wire_list_opt_box_autoadd_weekdays> enums;
+
+  external ffi.Pointer<wire_list_opt_String> strings;
+
+  external ffi.Pointer<wire_list_opt_int_32_list> buffers;
 }
 
 final class wire_Note extends ffi.Struct {

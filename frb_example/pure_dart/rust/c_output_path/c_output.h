@@ -109,6 +109,33 @@ typedef struct wire_ExoticOptionals {
   struct wire_NewTypeInt *newtypeint;
 } wire_ExoticOptionals;
 
+typedef struct wire_list_opt_box_autoadd_i32 {
+  int32_t **ptr;
+  int32_t len;
+} wire_list_opt_box_autoadd_i32;
+
+typedef struct wire_list_opt_box_autoadd_weekdays {
+  int32_t **ptr;
+  int32_t len;
+} wire_list_opt_box_autoadd_weekdays;
+
+typedef struct wire_list_opt_String {
+  struct wire_uint_8_list **ptr;
+  int32_t len;
+} wire_list_opt_String;
+
+typedef struct wire_list_opt_int_32_list {
+  struct wire_int_32_list **ptr;
+  int32_t len;
+} wire_list_opt_int_32_list;
+
+typedef struct wire_OptVecs {
+  struct wire_list_opt_box_autoadd_i32 *i32;
+  struct wire_list_opt_box_autoadd_weekdays *enums;
+  struct wire_list_opt_String *strings;
+  struct wire_list_opt_int_32_list *buffers;
+} wire_OptVecs;
+
 typedef struct wire_Note {
   int32_t *day;
   struct wire_uint_8_list *body;
@@ -596,6 +623,8 @@ void wire_handle_optional_increment(int64_t port_, struct wire_ExoticOptionals *
 
 void wire_handle_increment_boxed_optional(int64_t port_, double *opt);
 
+void wire_handle_vec_of_opts(int64_t port_, struct wire_OptVecs *opt);
+
 void wire_handle_option_box_arguments(int64_t port_,
                                       int8_t *i8box,
                                       uint8_t *u8box,
@@ -1029,6 +1058,8 @@ struct wire_Numbers *new_box_autoadd_numbers_0(void);
 
 struct wire_OpaqueNested *new_box_autoadd_opaque_nested_0(void);
 
+struct wire_OptVecs *new_box_autoadd_opt_vecs_0(void);
+
 struct wire_Sequences *new_box_autoadd_sequences_0(void);
 
 struct wire_SomeStruct *new_box_autoadd_some_struct_0(void);
@@ -1040,6 +1071,8 @@ struct wire_SumWith *new_box_autoadd_sum_with_0(void);
 struct wire_TestId *new_box_autoadd_test_id_0(void);
 
 struct wire_UserId *new_box_autoadd_user_id_0(void);
+
+int32_t *new_box_autoadd_weekdays_0(int32_t value);
 
 struct wire_Blob *new_box_blob_0(void);
 
@@ -1093,7 +1126,15 @@ struct wire_list_my_size *new_list_my_size_0(int32_t len);
 
 struct wire_list_my_tree_node *new_list_my_tree_node_0(int32_t len);
 
+struct wire_list_opt_String *new_list_opt_String_0(int32_t len);
+
 struct wire_list_opt_box_autoadd_attribute *new_list_opt_box_autoadd_attribute_0(int32_t len);
+
+struct wire_list_opt_box_autoadd_i32 *new_list_opt_box_autoadd_i32_0(int32_t len);
+
+struct wire_list_opt_box_autoadd_weekdays *new_list_opt_box_autoadd_weekdays_0(int32_t len);
+
+struct wire_list_opt_int_32_list *new_list_opt_int_32_list_0(int32_t len);
 
 struct wire_list_test_id *new_list_test_id_0(int32_t len);
 
@@ -1223,6 +1264,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_handle_optional_struct);
     dummy_var ^= ((int64_t) (void*) wire_handle_optional_increment);
     dummy_var ^= ((int64_t) (void*) wire_handle_increment_boxed_optional);
+    dummy_var ^= ((int64_t) (void*) wire_handle_vec_of_opts);
     dummy_var ^= ((int64_t) (void*) wire_handle_option_box_arguments);
     dummy_var ^= ((int64_t) (void*) wire_print_note);
     dummy_var ^= ((int64_t) (void*) wire_handle_return_enum);
@@ -1427,12 +1469,14 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_note_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_numbers_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_opaque_nested_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_opt_vecs_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_sequences_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_some_struct_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_enum_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_sum_with_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_test_id_0);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_user_id_0);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_weekdays_0);
     dummy_var ^= ((int64_t) (void*) new_box_blob_0);
     dummy_var ^= ((int64_t) (void*) new_box_bool_0);
     dummy_var ^= ((int64_t) (void*) new_box_distance_0);
@@ -1459,7 +1503,11 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_list_attribute_0);
     dummy_var ^= ((int64_t) (void*) new_list_my_size_0);
     dummy_var ^= ((int64_t) (void*) new_list_my_tree_node_0);
+    dummy_var ^= ((int64_t) (void*) new_list_opt_String_0);
     dummy_var ^= ((int64_t) (void*) new_list_opt_box_autoadd_attribute_0);
+    dummy_var ^= ((int64_t) (void*) new_list_opt_box_autoadd_i32_0);
+    dummy_var ^= ((int64_t) (void*) new_list_opt_box_autoadd_weekdays_0);
+    dummy_var ^= ((int64_t) (void*) new_list_opt_int_32_list_0);
     dummy_var ^= ((int64_t) (void*) new_list_test_id_0);
     dummy_var ^= ((int64_t) (void*) new_list_weekdays_0);
     dummy_var ^= ((int64_t) (void*) new_uint_8_list_0);

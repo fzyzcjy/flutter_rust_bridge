@@ -405,6 +405,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_opt_vecs(OptVecs raw) {
+    return api2wire_opt_vecs(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_sequences(Sequences raw) {
     return api2wire_sequences(raw);
   }
@@ -432,6 +437,11 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   List<dynamic> api2wire_box_autoadd_user_id(UserId raw) {
     return api2wire_user_id(raw);
+  }
+
+  @protected
+  int api2wire_box_autoadd_weekdays(Weekdays raw) {
+    return api2wire_weekdays(raw);
   }
 
   @protected
@@ -729,8 +739,28 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
+  List<dynamic> api2wire_list_opt_String(List<String?> raw) {
+    return mapNonNull(raw, api2wire_String);
+  }
+
+  @protected
   List<dynamic> api2wire_list_opt_box_autoadd_attribute(List<Attribute?> raw) {
-    return raw.map(api2wire_opt_box_autoadd_attribute).toList();
+    return mapNonNull(raw, api2wire_box_autoadd_attribute);
+  }
+
+  @protected
+  List<dynamic> api2wire_list_opt_box_autoadd_i32(List<int?> raw) {
+    return mapNonNull(raw, api2wire_box_autoadd_i32);
+  }
+
+  @protected
+  List<dynamic> api2wire_list_opt_box_autoadd_weekdays(List<Weekdays?> raw) {
+    return mapNonNull(raw, api2wire_box_autoadd_weekdays);
+  }
+
+  @protected
+  List<dynamic> api2wire_list_opt_int_32_list(List<Int32List?> raw) {
+    return mapNonNull(raw, api2wire_int_32_list);
   }
 
   @protected
@@ -858,11 +888,6 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   }
 
   @protected
-  List<dynamic>? api2wire_opt_box_autoadd_attribute(Attribute? raw) {
-    return raw == null ? null : api2wire_box_autoadd_attribute(raw);
-  }
-
-  @protected
   bool? api2wire_opt_box_autoadd_bool(bool? raw) {
     return raw == null ? null : api2wire_box_autoadd_bool(raw);
   }
@@ -960,6 +985,16 @@ class FlutterRustBridgeExampleSingleBlockTestPlatform
   @protected
   Uint8List? api2wire_opt_uint_8_list(Uint8List? raw) {
     return raw == null ? null : api2wire_uint_8_list(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_opt_vecs(OptVecs raw) {
+    return [
+      api2wire_list_opt_box_autoadd_i32(raw.i32),
+      api2wire_list_opt_box_autoadd_weekdays(raw.enums),
+      api2wire_list_opt_String(raw.strings),
+      api2wire_list_opt_int_32_list(raw.buffers)
+    ];
   }
 
   @protected
@@ -1145,6 +1180,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
   external dynamic /* void */ wire_handle_optional_increment(NativePortType port_, List<dynamic>? opt);
 
   external dynamic /* void */ wire_handle_increment_boxed_optional(NativePortType port_, double? opt);
+
+  external dynamic /* void */ wire_handle_vec_of_opts(NativePortType port_, List<dynamic> opt);
 
   external dynamic /* void */ wire_handle_option_box_arguments(NativePortType port_, int? i8box, int? u8box,
       int? i32box, Object? i64box, double? f64box, bool? boolbox, List<dynamic>? structbox);
@@ -1607,6 +1644,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire
 
   void wire_handle_increment_boxed_optional(NativePortType port_, double? opt) =>
       wasmModule.wire_handle_increment_boxed_optional(port_, opt);
+
+  void wire_handle_vec_of_opts(NativePortType port_, List<dynamic> opt) =>
+      wasmModule.wire_handle_vec_of_opts(port_, opt);
 
   void wire_handle_option_box_arguments(NativePortType port_, int? i8box, int? u8box, int? i32box, Object? i64box,
           double? f64box, bool? boolbox, List<dynamic>? structbox) =>

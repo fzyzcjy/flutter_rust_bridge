@@ -34,18 +34,6 @@ impl IrTypeOptional {
     pub fn is_boxed_primitive(&self) -> bool {
         matches!(&*self.inner, Boxed(boxed) if boxed.exist_in_real_api && boxed.inner.is_primitive())
     }
-
-    pub fn is_list(&self) -> bool {
-        matches!(&*self.inner, GeneralList(_) | PrimitiveList(_))
-    }
-
-    pub fn is_delegate(&self) -> bool {
-        matches!(&*self.inner, Delegate(_))
-    }
-
-    pub fn needs_initialization(&self) -> bool {
-        !(self.is_primitive() || self.is_delegate())
-    }
 }
 
 impl IrTypeTrait for IrTypeOptional {

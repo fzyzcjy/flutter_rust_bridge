@@ -677,6 +677,23 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: ["opt"],
       );
 
+  Future<OptVecs> handleVecOfOpts({required OptVecs opt, dynamic hint}) {
+    var arg0 = _platform.api2wire_box_autoadd_opt_vecs(opt);
+    return _platform.executeNormal(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_handle_vec_of_opts(port_, arg0),
+      parseSuccessData: _wire2api_opt_vecs,
+      parseErrorData: null,
+      constMeta: kHandleVecOfOptsConstMeta,
+      argValues: [opt],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kHandleVecOfOptsConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "handle_vec_of_opts",
+        argNames: ["opt"],
+      );
+
   Future<String> handleOptionBoxArguments(
       {int? i8Box,
       int? u8Box,
@@ -4104,8 +4121,24 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     );
   }
 
+  List<String?> _wire2api_list_opt_String(dynamic raw) {
+    return mapNonNull(raw as List<dynamic>, _wire2api_String);
+  }
+
   List<Attribute?> _wire2api_list_opt_box_autoadd_attribute(dynamic raw) {
-    return (raw as List<dynamic>).map(_wire2api_opt_box_autoadd_attribute).toList();
+    return mapNonNull(raw as List<dynamic>, _wire2api_box_autoadd_attribute);
+  }
+
+  List<int?> _wire2api_list_opt_box_autoadd_i32(dynamic raw) {
+    return mapNonNull(raw as List<dynamic>, _wire2api_box_autoadd_i32);
+  }
+
+  List<Weekdays?> _wire2api_list_opt_box_autoadd_weekdays(dynamic raw) {
+    return mapNonNull(raw as List<dynamic>, _wire2api_box_autoadd_weekdays);
+  }
+
+  List<Int32List?> _wire2api_list_opt_int_32_list(dynamic raw) {
+    return mapNonNull(raw as List<dynamic>, _wire2api_int_32_list);
   }
 
   List<Point> _wire2api_list_point(dynamic raw) {
@@ -4354,10 +4387,6 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return raw == null ? null : _wire2api_box_autoadd_application_env(raw);
   }
 
-  Attribute? _wire2api_opt_box_autoadd_attribute(dynamic raw) {
-    return raw == null ? null : _wire2api_box_autoadd_attribute(raw);
-  }
-
   bool? _wire2api_opt_box_autoadd_bool(dynamic raw) {
     return raw == null ? null : _wire2api_box_autoadd_bool(raw);
   }
@@ -4424,6 +4453,17 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   Uint8List? _wire2api_opt_uint_8_list(dynamic raw) {
     return raw == null ? null : _wire2api_uint_8_list(raw);
+  }
+
+  OptVecs _wire2api_opt_vecs(dynamic raw) {
+    final arr = raw as List<dynamic>;
+    if (arr.length != 4) throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+    return OptVecs(
+      i32: _wire2api_list_opt_box_autoadd_i32(arr[0]),
+      enums: _wire2api_list_opt_box_autoadd_weekdays(arr[1]),
+      strings: _wire2api_list_opt_String(arr[2]),
+      buffers: _wire2api_list_opt_int_32_list(arr[3]),
+    );
   }
 
   Point _wire2api_point(dynamic raw) {

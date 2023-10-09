@@ -9,20 +9,12 @@ type_rust_generator_struct!(TypeOptionalGenerator, IrTypeOptional);
 impl TypeRustGeneratorTrait for TypeOptionalGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
         Acc {
-            wasm: if self.ir.inner.is_js_value() {
-                Some("(!self.is_undefined() && !self.is_null()).then(|| self.wire2api())".into())
-            } else if self.ir.is_primitive() || self.ir.is_boxed_primitive() {
-                None
-            } else {
-                Some("self.map(Wire2Api::wire2api)".into())
-            },
+            wasm: (!self.ir.inner.is_js_value()
+                && !self.ir.is_primitive()
+                && !self.ir.is_boxed_primitive())
+            .then(|| "self.map(Wire2Api::wire2api)".into()),
             ..Default::default()
         }
-    }
-
-    fn wire2api_jsvalue(&self) -> Option<std::borrow::Cow<str>> {
-        (!self.ir.inner.is_js_value())
-            .then(|| "(!self.is_undefined() && !self.is_null()).then(|| self.wire2api())".into())
     }
 
     fn convert_to_dart(&self, obj: String) -> String {

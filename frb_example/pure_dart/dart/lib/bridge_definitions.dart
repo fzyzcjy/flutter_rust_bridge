@@ -175,6 +175,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kHandleIncrementBoxedOptionalConstMeta;
 
+  Future<OptVecs> handleVecOfOpts({required OptVecs opt, dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kHandleVecOfOptsConstMeta;
+
   Future<String> handleOptionBoxArguments(
       {int? i8Box,
       int? u8Box,
@@ -1704,6 +1708,20 @@ class OpaqueNested {
   const OpaqueNested({
     required this.first,
     required this.second,
+  });
+}
+
+class OptVecs {
+  final List<int?> i32;
+  final List<Weekdays?> enums;
+  final List<String?> strings;
+  final List<Int32List?> buffers;
+
+  const OptVecs({
+    required this.i32,
+    required this.enums,
+    required this.strings,
+    required this.buffers,
   });
 }
 

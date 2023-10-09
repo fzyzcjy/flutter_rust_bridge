@@ -383,8 +383,8 @@ void main(List<String> args) async {
       expect(ret.zerocopy?.length, loopFor);
       expect(ret.int8List?.length, loopFor);
       expect(ret.uint8List?.length, loopFor);
-      expect(ret.attributesNullable.length, loopFor);
-      expect(ret.nullableAttributes?.length, loopFor);
+      expect(ret.attributesNullable, List.filled(loopFor, null));
+      expect(ret.nullableAttributes, List.filled(loopFor, null));
       expect(ret.newtypeint?.field0, loopFor, reason: 'NewTypeInt');
     }
   });
@@ -414,6 +414,19 @@ void main(List<String> args) async {
       );
       print(optional10);
     }
+  });
+
+  test('dart call handleVecOfOpts', () async {
+    const loops = 20;
+    var opt = OptVecs(i32: [], enums: [Weekdays.monday], strings: ['foo'], buffers: []);
+    for (var i = 0; i < loops; i++) {
+      opt = await api.handleVecOfOpts(opt: opt);
+    }
+    final nulls = List.filled(loops, null);
+    expect(opt.i32, nulls);
+    expect(opt.enums, [Weekdays.monday, for (final val in nulls) val]);
+    expect(opt.strings, ['foo', for (final val in nulls) val]);
+    expect(opt.buffers, nulls);
   });
 
   test('dart call handleReturnEnum', () async {
