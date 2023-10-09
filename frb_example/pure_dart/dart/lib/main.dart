@@ -1384,8 +1384,10 @@ void main(List<String> args) async {
   });
 
   group('Custom error (Result<T,E>)', () {
-    test('Throw CustomError', () async {
-      await expectLater(() async => await api.returnErrCustomError(), throwsA(isA<CustomError>()));
+    // The first time a backtrace is created, symbol resolution
+    // takes a significant amount of time.
+    test('Throw CustomError', timeout: Timeout.factor(5), () {
+      expect(api.returnErrCustomError(), throwsA(isA<CustomError>()));
     });
 
     test('Throw CustomStructError', () async {
