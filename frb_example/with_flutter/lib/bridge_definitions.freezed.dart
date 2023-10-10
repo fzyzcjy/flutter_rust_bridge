@@ -53,23 +53,25 @@ class _$UserIdCopyWithImpl<$Res, $Val extends UserId> implements $UserIdCopyWith
 }
 
 /// @nodoc
-abstract class _$$_UserIdCopyWith<$Res> implements $UserIdCopyWith<$Res> {
-  factory _$$_UserIdCopyWith(_$_UserId value, $Res Function(_$_UserId) then) = __$$_UserIdCopyWithImpl<$Res>;
+abstract class _$$UserIdImplCopyWith<$Res> implements $UserIdCopyWith<$Res> {
+  factory _$$UserIdImplCopyWith(_$UserIdImpl value, $Res Function(_$UserIdImpl) then) =
+      __$$UserIdImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int value});
 }
 
 /// @nodoc
-class __$$_UserIdCopyWithImpl<$Res> extends _$UserIdCopyWithImpl<$Res, _$_UserId> implements _$$_UserIdCopyWith<$Res> {
-  __$$_UserIdCopyWithImpl(_$_UserId _value, $Res Function(_$_UserId) _then) : super(_value, _then);
+class __$$UserIdImplCopyWithImpl<$Res> extends _$UserIdCopyWithImpl<$Res, _$UserIdImpl>
+    implements _$$UserIdImplCopyWith<$Res> {
+  __$$UserIdImplCopyWithImpl(_$UserIdImpl _value, $Res Function(_$UserIdImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? value = null,
   }) {
-    return _then(_$_UserId(
+    return _then(_$UserIdImpl(
       value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -80,8 +82,8 @@ class __$$_UserIdCopyWithImpl<$Res> extends _$UserIdCopyWithImpl<$Res, _$_UserId
 
 /// @nodoc
 
-class _$_UserId implements _UserId {
-  const _$_UserId({this.value = 0});
+class _$UserIdImpl implements _UserId {
+  const _$UserIdImpl({this.value = 0});
 
   @override
   @JsonKey()
@@ -96,7 +98,7 @@ class _$_UserId implements _UserId {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserId &&
+            other is _$UserIdImpl &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -106,15 +108,15 @@ class _$_UserId implements _UserId {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserIdCopyWith<_$_UserId> get copyWith => __$$_UserIdCopyWithImpl<_$_UserId>(this, _$identity);
+  _$$UserIdImplCopyWith<_$UserIdImpl> get copyWith => __$$UserIdImplCopyWithImpl<_$UserIdImpl>(this, _$identity);
 }
 
 abstract class _UserId implements UserId {
-  const factory _UserId({final int value}) = _$_UserId;
+  const factory _UserId({final int value}) = _$UserIdImpl;
 
   @override
   int get value;
   @override
   @JsonKey(ignore: true)
-  _$$_UserIdCopyWith<_$_UserId> get copyWith => throw _privateConstructorUsedError;
+  _$$UserIdImplCopyWith<_$UserIdImpl> get copyWith => throw _privateConstructorUsedError;
 }
