@@ -1,3 +1,7 @@
+## 1.82.2
+
+* Refactor `Vec<Option<_>>` #1388 (thanks @Desdaemon)
+
 ## 1.82.1
 
 * Fix cargo expand missing code #1372 (thanks @erikas-taroza)
