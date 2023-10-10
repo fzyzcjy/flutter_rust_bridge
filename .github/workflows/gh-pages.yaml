@@ -6,10 +6,10 @@ on:
     branches:
       - master
     paths:
-      - 'book/**'
+      - "book/**"
   pull_request:
     paths:
-      - 'book/**'
+      - "book/**"
 
 jobs:
   deploy:
@@ -17,14 +17,14 @@ jobs:
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       # ref https://github.com/peaceiris/actions-mdbook
       - name: Setup mdBook
         uses: peaceiris/actions-mdbook@v1
         with:
-          mdbook-version: 'latest'
-      
+          mdbook-version: "latest"
+
       - name: Setup `mdbook-mermaid`
         run: cargo install mdbook-mermaid
 

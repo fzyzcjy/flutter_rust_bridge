@@ -6,6 +6,7 @@ mod ty_dynamic;
 mod ty_enum;
 mod ty_general_list;
 mod ty_optional;
+mod ty_optional_list;
 mod ty_primitive;
 mod ty_primitive_list;
 mod ty_record;
@@ -21,6 +22,7 @@ pub use ty_dynamic::*;
 pub use ty_enum::*;
 pub use ty_general_list::*;
 pub use ty_optional::*;
+pub use ty_optional_list::*;
 pub use ty_primitive::*;
 pub use ty_primitive_list::*;
 pub use ty_record::*;
@@ -206,6 +208,14 @@ impl<'a> Generator<'a> {
         ir_file: &IrFile,
     ) {
         (lines.wasm).push(self.section_header_comment("impl Wire2Api for JsValue"));
+        (lines.wasm).push(
+            "impl<T> Wire2Api<Option<T>> for JsValue where JsValue: Wire2Api<T> {
+                fn wire2api(self) -> Option<T> {
+                    (!self.is_null() && !self.is_undefined()).then(|| self.wire2api())
+                }
+            }"
+            .into(),
+        );
         lines.wasm.extend(
             distinct_input_types
                 .iter()

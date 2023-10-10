@@ -50,7 +50,7 @@ impl IrTypeTrait for IrTypeBoxed {
                     .unwrap_or_else(|| self.inner.dart_wire_type(target));
                 format!("ffi.Pointer<{wire_type}>")
             }
-            Target::Common => "".into(),
+            Target::Common => unreachable!(),
         }
     }
 

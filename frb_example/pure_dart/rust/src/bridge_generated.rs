@@ -623,6 +623,19 @@ fn wire_handle_increment_boxed_optional_impl(
         },
     )
 }
+fn wire_handle_vec_of_opts_impl(port_: MessagePort, opt: impl Wire2Api<OptVecs> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, OptVecs, _>(
+        WrapInfo {
+            debug_name: "handle_vec_of_opts",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_opt = opt.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(handle_vec_of_opts(api_opt))
+        },
+    )
+}
 fn wire_handle_option_box_arguments_impl(
     port_: MessagePort,
     i8box: impl Wire2Api<Option<Box<i8>>> + UnwindSafe,
@@ -3811,6 +3824,24 @@ impl support::IntoDart for OpaqueNested {
 }
 impl support::IntoDartExceptPrimitive for OpaqueNested {}
 impl rust2dart::IntoIntoDart<OpaqueNested> for OpaqueNested {
+    fn into_into_dart(self) -> Self {
+        self
+    }
+}
+
+impl support::IntoDart for OptVecs {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.i32.into_into_dart().into_dart(),
+            self.enums.into_into_dart().into_dart(),
+            self.strings.into_into_dart().into_dart(),
+            self.buffers.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for OptVecs {}
+impl rust2dart::IntoIntoDart<OptVecs> for OptVecs {
     fn into_into_dart(self) -> Self {
         self
     }
