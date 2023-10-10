@@ -1131,7 +1131,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeStream(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_register_event_listener(port_),
       parseSuccessData: (d) => _wire2api_event(d),
-      parseErrorData: null,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kRegisterEventListenerConstMeta,
       argValues: [],
       hint: hint,
