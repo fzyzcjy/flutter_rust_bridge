@@ -930,6 +930,11 @@ pub extern "C" fn wire_panic_with_custom_result(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_stream_sink_throw_anyhow(port_: i64) {
+    wire_stream_sink_throw_anyhow_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_as_string__method__Event(port_: i64, that: *mut wire_Event) {
     wire_as_string__method__Event_impl(port_, that)
 }

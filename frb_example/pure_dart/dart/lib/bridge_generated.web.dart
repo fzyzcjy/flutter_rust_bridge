@@ -1456,6 +1456,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_panic_with_custom_result(NativePortType port_);
 
+  external dynamic /* void */ wire_stream_sink_throw_anyhow(NativePortType port_);
+
   external dynamic /* void */ wire_as_string__method__Event(NativePortType port_, List<dynamic> that);
 
   external dynamic /* void */ wire_sum__method__SumWith(NativePortType port_, List<dynamic> that, int y, int z);
@@ -1966,6 +1968,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_throw_anyhow(NativePortType port_) => wasmModule.wire_throw_anyhow(port_);
 
   void wire_panic_with_custom_result(NativePortType port_) => wasmModule.wire_panic_with_custom_result(port_);
+
+  void wire_stream_sink_throw_anyhow(NativePortType port_) => wasmModule.wire_stream_sink_throw_anyhow(port_);
 
   void wire_as_string__method__Event(NativePortType port_, List<dynamic> that) =>
       wasmModule.wire_as_string__method__Event(port_, that);

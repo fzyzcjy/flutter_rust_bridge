@@ -2456,6 +2456,18 @@ fn wire_panic_with_custom_result_impl(port_: MessagePort) {
         move || move |task_callback| panic_with_custom_result(),
     )
 }
+fn wire_stream_sink_throw_anyhow_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        WrapInfo {
+            debug_name: "stream_sink_throw_anyhow",
+            port: Some(port_),
+            mode: FfiCallMode::Stream,
+        },
+        move || {
+            move |task_callback| stream_sink_throw_anyhow(task_callback.stream_sink::<_, String>())
+        },
+    )
+}
 fn wire_as_string__method__Event_impl(port_: MessagePort, that: impl Wire2Api<Event> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, String, _>(
         WrapInfo {

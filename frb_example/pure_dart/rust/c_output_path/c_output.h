@@ -906,6 +906,8 @@ void wire_throw_anyhow(int64_t port_);
 
 void wire_panic_with_custom_result(int64_t port_);
 
+void wire_stream_sink_throw_anyhow(int64_t port_);
+
 void wire_as_string__method__Event(int64_t port_, struct wire_Event *that);
 
 void wire_sum__method__SumWith(int64_t port_, struct wire_SumWith *that, uint32_t y, uint32_t z);
@@ -1400,6 +1402,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_return_custom_struct_ok);
     dummy_var ^= ((int64_t) (void*) wire_throw_anyhow);
     dummy_var ^= ((int64_t) (void*) wire_panic_with_custom_result);
+    dummy_var ^= ((int64_t) (void*) wire_stream_sink_throw_anyhow);
     dummy_var ^= ((int64_t) (void*) wire_as_string__method__Event);
     dummy_var ^= ((int64_t) (void*) wire_sum__method__SumWith);
     dummy_var ^= ((int64_t) (void*) wire_new__static_method__ConcatenateWith);
