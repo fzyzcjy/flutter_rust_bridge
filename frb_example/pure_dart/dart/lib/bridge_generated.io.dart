@@ -1949,9 +1949,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_handle_struct_sync_freezedPtr = _lookup<
-      ffi.NativeFunction<
-          WireSyncReturn Function(
-              ffi.Pointer<wire_MySizeFreezed>, ffi.Pointer<wire_MySizeFreezed>)>>('wire_handle_struct_sync_freezed');
+          ffi
+          .NativeFunction<WireSyncReturn Function(ffi.Pointer<wire_MySizeFreezed>, ffi.Pointer<wire_MySizeFreezed>)>>(
+      'wire_handle_struct_sync_freezed');
   late final _wire_handle_struct_sync_freezed = _wire_handle_struct_sync_freezedPtr
       .asFunction<WireSyncReturn Function(ffi.Pointer<wire_MySizeFreezed>, ffi.Pointer<wire_MySizeFreezed>)>();
 
@@ -2635,9 +2635,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_create_eventPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Int64, ffi.Pointer<wire_uint_8_list>, ffi.Pointer<wire_uint_8_list>)>>('wire_create_event');
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>, ffi.Pointer<wire_uint_8_list>)>>(
+      'wire_create_event');
   late final _wire_create_event = _wire_create_eventPtr
       .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>, ffi.Pointer<wire_uint_8_list>)>();
 
@@ -4164,9 +4164,9 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
   }
 
   late final _wire_concatenate_static__static_method__ConcatenateWithPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>,
-              ffi.Pointer<wire_uint_8_list>)>>('wire_concatenate_static__static_method__ConcatenateWith');
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<wire_uint_8_list>, ffi.Pointer<wire_uint_8_list>)>>(
+      'wire_concatenate_static__static_method__ConcatenateWith');
   late final _wire_concatenate_static__static_method__ConcatenateWith =
       _wire_concatenate_static__static_method__ConcatenateWithPtr
           .asFunction<void Function(int, ffi.Pointer<wire_uint_8_list>, ffi.Pointer<wire_uint_8_list>)>();
