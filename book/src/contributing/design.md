@@ -183,6 +183,24 @@ Rust Worker 2 ->> Dart: channel.postMessage
 It is theoretically possible to have a one-to-one implementation of Isolate using only web primitives,
 `BroadcastChannel`s and `Worker`s, but it remains to be seen how practical such an approach would be.
 
+## OptionalList
+
+Per the implementation, most IRs are also accompanied by a List type (GeneralList, PrimitiveList, StringList etc.)
+each of which handles lists in different ways. When Optional was first implemented, it relied on GeneralList since the
+underlying assumption that Optional already boxed stack values should allow for seamless interaction. Howver, this became an issue
+later because other IRs would have to accommodate for Optionals instead of being perfectly encapsulated, leading to
+ugly hacks. [#1388](https://github.com/fzyzcjy/flutter_rust_bridge/pull/1388) introduced OptionalList to bring
+Optional in line with other IRs, and is implemented as a list of maybe-null pointers. It does highlight several drawbacks
+to this approach to IRs where specializations shine compared to GeneralList.
+
+1. GeneralList requires a fully-allocated list and asks the Dart side to _fill_ in the blanks via `api_fill` functions, but these
+   are not implemented by any delegates since they all have their own special lists (StringList, TimeList, Uuids). This renders
+   types like `List<String?>` difficult to implement without hacks.
+2. OptionalList's inner pointer is a `*mut *mut T`, which without significant refactoring would be difficult to represent with
+   GeneralList, and whose typical usage doesn't really require double indirection often enough to justify it.
+3. OptionalList enables future optimizations, for example the case when `sizeof(T) <= sizeof(usize)`, which would certainly be difficult
+   to accomplish with GeneralList.
+
 ## Want to know more? Tell me
 
 What do you want to know? Feel free to create an issue in GitHub, and I will tell more :)
