@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -10,7 +10,7 @@
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="../favicon.svg">
         <link rel="shortcut icon" href="../favicon.png">
@@ -31,7 +31,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -61,24 +61,29 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
+            var body = document.querySelector('body');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -116,9 +121,9 @@
                                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -177,21 +182,16 @@ platforms the easiest even from scratch. The template uses <a href="https://gith
 -FetchContent_Declare(
 -    Corrosion
 -    GIT_REPOSITORY https://github.com/AndrewGaspar/corrosion.git
--    GIT_TAG origin/master # Optionally specify a version tag or branch here
+-    GIT_TAG v0.4.4 # Optionally specify a version tag or branch here
 -)
 -
 -FetchContent_MakeAvailable(Corrosion)
 </code></pre>
 <h2 id="troubleshooting-cmake-on-linux"><a class="header" href="#troubleshooting-cmake-on-linux">Troubleshooting: CMake on Linux</a></h2>
-<p>The minimum version of CMake required to use <a href="https://github.com/corrosion-rs/corrosion">Corrosion</a> is 3.12, which is not the version set
-by default in <code>CMakeLists.txt</code>. You will need to modify this line in <code>linux/CMakeLists.txt</code>:</p>
-<pre><code class="language-diff">-cmake_minimum_required(VERSION 3.10)
-+cmake_minimum_required(VERSION 3.12)
-</code></pre>
-<p>However, this has a separate issue of disallowing Flutter SDK installations via Snap to build,
-as these are bundled with a non-upgradeable CMake 3.10. If possible, it is recommended to install
-Flutter manually using the command line. This issue may be resolved once
-<a href="https://github.com/canonical/flutter-snap/pull/61">canonical/flutter-snap#61</a> lands.</p>
+<p>Unless you have certain use-cases that you require from the latest versions of <a href="https://github.com/corrosion-rs/corrosion">Corrosion</a>, it is recommended to
+use <strong>v0.4.x</strong> in your build scripts since CMake versions supplied by the system and/or Flutter snap installations
+trail behind the master branch. This will relax the CMake requirement to v15, which should be generally available
+from most package maintainers and Flutter snaps.</p>
 <p>A workaround is to ignore <code>rust.cmake</code> and manually configure CMake to build and bundle the Rust library, as suggested by
 <a href="https://github.com/fzyzcjy/flutter_rust_bridge/issues/318#issuecomment-1038751426">this comment</a>
 in the case of Flutter on ARM Linux.</p>
@@ -204,7 +204,7 @@ in the case of Flutter on ARM Linux.</p>
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../template/setup_others.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../template/setup_others.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -218,7 +218,7 @@ in the case of Flutter on ARM Linux.</p>
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../template/setup_others.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../template/setup_others.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

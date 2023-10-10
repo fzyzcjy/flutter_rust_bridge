@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -10,7 +10,7 @@
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="../favicon.svg">
         <link rel="shortcut icon" href="../favicon.png">
@@ -31,7 +31,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -61,24 +61,29 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
+            var body = document.querySelector('body');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -116,9 +121,9 @@
                                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -322,6 +327,23 @@ Rust Worker 2 -&gt;&gt; Dart: channel.postMessage
 </pre>
 <p>It is theoretically possible to have a one-to-one implementation of Isolate using only web primitives,
 <code>BroadcastChannel</code>s and <code>Worker</code>s, but it remains to be seen how practical such an approach would be.</p>
+<h2 id="optionallist"><a class="header" href="#optionallist">OptionalList</a></h2>
+<p>Per the implementation, most IRs are also accompanied by a List type (GeneralList, PrimitiveList, StringList etc.)
+each of which handles lists in different ways. When Optional was first implemented, it relied on GeneralList since the
+underlying assumption that Optional already boxed stack values should allow for seamless interaction. Howver, this became an issue
+later because other IRs would have to accommodate for Optionals instead of being perfectly encapsulated, leading to
+ugly hacks. <a href="https://github.com/fzyzcjy/flutter_rust_bridge/pull/1388">#1388</a> introduced OptionalList to bring
+Optional in line with other IRs, and is implemented as a list of maybe-null pointers. It does highlight several drawbacks
+to this approach to IRs where specializations shine compared to GeneralList.</p>
+<ol>
+<li>GeneralList requires a fully-allocated list and asks the Dart side to <em>fill</em> in the blanks via <code>api_fill</code> functions, but these
+are not implemented by any delegates since they all have their own special lists (StringList, TimeList, Uuids). This renders
+types like <code>List&lt;String?&gt;</code> difficult to implement without hacks.</li>
+<li>OptionalList's inner pointer is a <code>*mut *mut T</code>, which without significant refactoring would be difficult to represent with
+GeneralList, and whose typical usage doesn't really require double indirection often enough to justify it.</li>
+<li>OptionalList enables future optimizations, for example the case when <code>sizeof(T) &lt;= sizeof(usize)</code>, which would certainly be difficult
+to accomplish with GeneralList.</li>
+</ol>
 <h2 id="want-to-know-more-tell-me"><a class="header" href="#want-to-know-more-tell-me">Want to know more? Tell me</a></h2>
 <p>What do you want to know? Feel free to create an issue in GitHub, and I will tell more :)</p>
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
@@ -352,7 +374,7 @@ mermaid.initialize({
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../contributing/submodule.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../contributing/submodule.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -366,7 +388,7 @@ mermaid.initialize({
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../contributing/submodule.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../contributing/submodule.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
