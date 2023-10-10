@@ -234,6 +234,9 @@ class FrbAnyhowException implements FrbException {
   final String anyhow;
 
   FrbAnyhowException(this.anyhow);
+
+  @override
+  String toString() => anyhow;
 }
 
 abstract class FrbBacktracedException extends FrbException {

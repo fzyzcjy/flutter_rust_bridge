@@ -245,7 +245,6 @@ impl<'a> Parser<'a> {
 
         let mut inputs = Vec::new();
         let mut output = None;
-        let mut error = None;
         let mut mode: Option<IrFuncMode> = None;
         let mut fallible = true;
 
@@ -294,35 +293,41 @@ impl<'a> Parser<'a> {
             }
         }
 
-        if output.is_none() {
-            let result = match &sig.output {
-                ReturnType::Type(_, ty) => {
-                    let output_type = self.try_parse_fn_output_type(ty).with_context(|| {
-                        format!(
-                            "Failed to parse function output type `{}`",
-                            type_to_string(ty)
-                        )
-                    })?;
-                    match output_type {
-                        IrFuncOutput::ResultType { ok: ty, error: err } => (ty, err),
-                        IrFuncOutput::Type(ty) => {
-                            fallible = false;
-                            (ty, None)
-                        }
+        let result = match &sig.output {
+            ReturnType::Type(_, ty) => {
+                let output_type = self.try_parse_fn_output_type(ty).with_context(|| {
+                    format!(
+                        "Failed to parse function output type `{}`",
+                        type_to_string(ty)
+                    )
+                })?;
+                match output_type {
+                    IrFuncOutput::ResultType { ok: ty, error: err } => (ty, err),
+                    IrFuncOutput::Type(ty) => {
+                        fallible = false;
+                        (ty, None)
                     }
                 }
-                ReturnType::Default => {
-                    fallible = false;
-                    (IrType::Primitive(IrTypePrimitive::Unit), None)
-                }
-            };
-            output = Some(result.0);
-            error = result.1;
-            mode = Some(if let Some(IrType::SyncReturn(_)) = output {
+            }
+            ReturnType::Default => {
+                fallible = false;
+                (IrType::Primitive(IrTypePrimitive::Unit), None)
+            }
+        };
+
+        if matches!(mode, Some(IrFuncMode::Stream { argument_index: _ }) if result.0 != IrType::Primitive(IrTypePrimitive::Unit))
+        {
+            return Err(Error::NoStreamSinkAndOutput(func_name.into()));
+        }
+
+        if output.is_none() {
+            let tmp_mode = if let IrType::SyncReturn(_) = result.0 {
                 IrFuncMode::Sync
             } else {
                 IrFuncMode::Normal
-            });
+            };
+            mode = Some(tmp_mode);
+            output = Some(result.0);
         }
 
         Ok(IrFunc {
@@ -332,7 +337,7 @@ impl<'a> Parser<'a> {
             fallible,
             mode: mode.context("Missing mode")?,
             comments: extract_comments(&func.attrs),
-            error_output: error,
+            error_output: result.1,
         })
     }
 }
