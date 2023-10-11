@@ -1,3 +1,7 @@
+## 1.82.3
+
+* Fix Rust error string not displayed in Dart #1390 (thanks @OfficialBoyfriend)
+
 ## 1.82.2
 
 * Refactor `Vec<Option<_>>` #1388 (thanks @Desdaemon)
