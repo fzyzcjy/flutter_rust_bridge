@@ -182,6 +182,7 @@ More specifically, thanks for all these contributions:
 * [coder0xff](https://github.com/coder0xff): Refactor SupportedInnerType. Extra codegen tester.
 * [anlumo](https://github.com/anlumo): Fix freezed + methods. Non-clone RustOpaque.
 * [NightFeather0615](https://github.com/NightFeather0615): Fix Vec bool.
+* [OfficialBoyfriend](https://github.com/OfficialBoyfriend): Fix error display.
 * [powpingdone](https://github.com/powpingdone): Document JNI init and libc++_static linking.
 * [efc-mw](https://github.com/efc-mw): Improve Windows encoding handling.
 * [valeth](https://github.com/valeth): Rename callFfi's port.
