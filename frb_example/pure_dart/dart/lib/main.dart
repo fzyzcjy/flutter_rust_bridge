@@ -1504,16 +1504,12 @@ void main(List<String> args) async {
     });
 
     test('Stream sink throw anyhow error', () async {
-      try {
-        await for (final _ in api.streamSinkThrowAnyhow()) {
-          break;
-        }
-        assert(false);
-      } catch (e) {
-        final FrbAnyhowException p = e as FrbAnyhowException;
-        print("anyhow error: ${p.anyhow}");
-        assert(p.anyhow.contains("anyhow error"));
-      }
+      expect(
+        () async {
+          await for (final _ in api.streamSinkThrowAnyhow()) {}
+        },
+        throwsA(isA<FrbAnyhowException>().having((e) => e.toString(), 'toString', 'FrbAnyhowException(anyhow error)')),
+      );
     });
   });
 }

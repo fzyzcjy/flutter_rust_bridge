@@ -321,12 +321,11 @@ impl<'a> Parser<'a> {
         }
 
         if output.is_none() {
-            let tmp_mode = if let IrType::SyncReturn(_) = result.0 {
+            mode = Some(if let IrType::SyncReturn(_) = result.0 {
                 IrFuncMode::Sync
             } else {
                 IrFuncMode::Normal
-            };
-            mode = Some(tmp_mode);
+            });
             output = Some(result.0);
         }
 

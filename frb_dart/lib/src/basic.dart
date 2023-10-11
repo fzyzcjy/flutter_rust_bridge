@@ -236,7 +236,7 @@ class FrbAnyhowException implements FrbException {
   FrbAnyhowException(this.anyhow);
 
   @override
-  String toString() => anyhow;
+  String toString() => 'FrbAnyhowException($anyhow)';
 }
 
 abstract class FrbBacktracedException extends FrbException {
