@@ -1886,3 +1886,7 @@ pub fn throw_anyhow() -> Result<(), anyhow::Error> {
 pub fn panic_with_custom_result() -> Result<(), CustomError> {
     panic!("just a panic");
 }
+
+pub fn stream_sink_throw_anyhow(_sink: StreamSink<String>) -> Result<()> {
+    Err(anyhow!("anyhow error"))
+}

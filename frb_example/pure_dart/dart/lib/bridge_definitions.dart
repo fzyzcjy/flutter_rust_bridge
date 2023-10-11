@@ -736,6 +736,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kPanicWithCustomResultConstMeta;
 
+  Stream<String> streamSinkThrowAnyhow({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kStreamSinkThrowAnyhowConstMeta;
+
   Future<String> asStringMethodEvent({required Event that, dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kAsStringMethodEventConstMeta;

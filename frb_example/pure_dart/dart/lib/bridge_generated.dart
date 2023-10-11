@@ -1131,7 +1131,7 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
     return _platform.executeStream(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_register_event_listener(port_),
       parseSuccessData: (d) => _wire2api_event(d),
-      parseErrorData: null,
+      parseErrorData: _wire2api_FrbAnyhowException,
       constMeta: kRegisterEventListenerConstMeta,
       argValues: [],
       hint: hint,
@@ -2962,6 +2962,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
 
   FlutterRustBridgeTaskConstMeta get kPanicWithCustomResultConstMeta => const FlutterRustBridgeTaskConstMeta(
         debugName: "panic_with_custom_result",
+        argNames: [],
+      );
+
+  Stream<String> streamSinkThrowAnyhow({dynamic hint}) {
+    return _platform.executeStream(FlutterRustBridgeTask(
+      callFfi: (port_) => _platform.inner.wire_stream_sink_throw_anyhow(port_),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: _wire2api_FrbAnyhowException,
+      constMeta: kStreamSinkThrowAnyhowConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kStreamSinkThrowAnyhowConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "stream_sink_throw_anyhow",
         argNames: [],
       );
 

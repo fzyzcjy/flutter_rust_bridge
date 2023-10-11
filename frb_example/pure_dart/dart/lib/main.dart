@@ -1502,6 +1502,15 @@ void main(List<String> args) async {
         assert(p.error.contains("just a panic"));
       }
     });
+
+    test('Stream sink throw anyhow error', () async {
+      expect(
+        () async {
+          await for (final _ in api.streamSinkThrowAnyhow()) {}
+        },
+        throwsA(isA<FrbAnyhowException>().having((e) => e.toString(), 'toString', 'FrbAnyhowException(anyhow error)')),
+      );
+    });
   });
 }
 

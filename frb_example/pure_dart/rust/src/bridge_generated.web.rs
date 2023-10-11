@@ -900,6 +900,11 @@ pub fn wire_panic_with_custom_result(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_stream_sink_throw_anyhow(port_: MessagePort) {
+    wire_stream_sink_throw_anyhow_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_as_string__method__Event(port_: MessagePort, that: JsValue) {
     wire_as_string__method__Event_impl(port_, that)
 }

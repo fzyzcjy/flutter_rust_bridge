@@ -4080,6 +4080,18 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_panic_with_custom_result');
   late final _wire_panic_with_custom_result = _wire_panic_with_custom_resultPtr.asFunction<void Function(int)>();
 
+  void wire_stream_sink_throw_anyhow(
+    int port_,
+  ) {
+    return _wire_stream_sink_throw_anyhow(
+      port_,
+    );
+  }
+
+  late final _wire_stream_sink_throw_anyhowPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_stream_sink_throw_anyhow');
+  late final _wire_stream_sink_throw_anyhow = _wire_stream_sink_throw_anyhowPtr.asFunction<void Function(int)>();
+
   void wire_as_string__method__Event(
     int port_,
     ffi.Pointer<wire_Event> that,
