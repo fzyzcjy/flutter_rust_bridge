@@ -692,6 +692,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "OfficialBoyfriend",
+      "name": "九月",
+      "avatar_url": "https://avatars.githubusercontent.com/u/52571365?v=4",
+      "profile": "https://woini.men",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
