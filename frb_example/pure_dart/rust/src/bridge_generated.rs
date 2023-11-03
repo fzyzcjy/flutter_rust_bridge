@@ -2,7 +2,6 @@
     non_camel_case_types,
     unused,
     clippy::redundant_closure,
-    clippy::unnecessary_literal_unwrap,
     clippy::useless_conversion,
     clippy::unit_arg,
     clippy::double_parens,
