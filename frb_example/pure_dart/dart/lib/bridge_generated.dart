@@ -2917,6 +2917,22 @@ class FlutterRustBridgeExampleSingleBlockTestImpl implements FlutterRustBridgeEx
         argNames: [],
       );
 
+  void syncReturnCustomStructError({dynamic hint}) {
+    return _platform.executeSync(FlutterRustBridgeSyncTask(
+      callFfi: () => _platform.inner.wire_sync_return_custom_struct_error(),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: _wire2api_custom_struct_error,
+      constMeta: kSyncReturnCustomStructErrorConstMeta,
+      argValues: [],
+      hint: hint,
+    ));
+  }
+
+  FlutterRustBridgeTaskConstMeta get kSyncReturnCustomStructErrorConstMeta => const FlutterRustBridgeTaskConstMeta(
+        debugName: "sync_return_custom_struct_error",
+        argNames: [],
+      );
+
   Future<int> returnCustomStructOk({dynamic hint}) {
     return _platform.executeNormal(FlutterRustBridgeTask(
       callFfi: (port_) => _platform.inner.wire_return_custom_struct_ok(port_),

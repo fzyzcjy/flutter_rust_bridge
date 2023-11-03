@@ -4045,6 +4045,15 @@ class FlutterRustBridgeExampleSingleBlockTestWire implements FlutterRustBridgeWi
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_return_custom_struct_error');
   late final _wire_return_custom_struct_error = _wire_return_custom_struct_errorPtr.asFunction<void Function(int)>();
 
+  WireSyncReturn wire_sync_return_custom_struct_error() {
+    return _wire_sync_return_custom_struct_error();
+  }
+
+  late final _wire_sync_return_custom_struct_errorPtr =
+      _lookup<ffi.NativeFunction<WireSyncReturn Function()>>('wire_sync_return_custom_struct_error');
+  late final _wire_sync_return_custom_struct_error =
+      _wire_sync_return_custom_struct_errorPtr.asFunction<WireSyncReturn Function()>();
+
   void wire_return_custom_struct_ok(
     int port_,
   ) {

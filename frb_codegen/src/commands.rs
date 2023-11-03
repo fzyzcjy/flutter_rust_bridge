@@ -30,7 +30,7 @@ lazy_static! {
 pub fn ensure_tools_available(dart_root: &str, skip_deps_check: bool) -> Result<(), Error> {
     let repo = DartRepository::from_str(dart_root)?;
     if !repo.toolchain_available() {
-        return Err(Error::MissingExe(repo.toolchain.to_string()))?;
+        Err(Error::MissingExe(repo.toolchain.to_string()))?;
     }
 
     if !skip_deps_check {

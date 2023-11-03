@@ -88,11 +88,12 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
       if (isSuccess) {
         return task.parseSuccessData(rawReturn);
       } else {
-        throw FfiException('EXECUTE_SYNC', rawReturn as String, null);
+        if (rawReturn is String) {
+          throw FfiException('EXECUTE_SYNC', rawReturn, null);
+        } else {
+          throw task.parseErrorData!(rawReturn);
+        }
       }
-    } catch (err, st) {
-      if (err is FfiException) rethrow;
-      throw FfiException('EXECUTE_SYNC_ABORT', '$err', st);
     } finally {
       inner.free_WireSyncReturn(syncReturn);
     }

@@ -885,6 +885,11 @@ pub fn wire_return_custom_struct_error(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_sync_return_custom_struct_error() -> support::WireSyncReturn {
+    wire_sync_return_custom_struct_error_impl()
+}
+
+#[wasm_bindgen]
 pub fn wire_return_custom_struct_ok(port_: MessagePort) {
     wire_return_custom_struct_ok_impl(port_)
 }

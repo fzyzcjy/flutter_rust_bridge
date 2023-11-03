@@ -321,7 +321,19 @@ impl ErrorHandler for ReportDartErrorHandler {
     }
 
     fn handle_error_sync(&self, error: Error) -> WireSyncReturn {
-        wire_sync_from_data(error.message(), false)
+        match error {
+            Error::CustomError(err) => {
+                let data = err.box_into_dart();
+                let sync_return = vec![data, false.into_dart()].into_dart();
+
+                #[cfg(not(wasm))]
+                return crate::support::new_leak_box_ptr(sync_return);
+
+                #[cfg(wasm)]
+                return sync_return;
+            }
+            Error::Panic(err) => wire_sync_from_data(error_to_string(&err), false),
+        }
     }
 }
 

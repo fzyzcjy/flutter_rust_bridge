@@ -724,6 +724,10 @@ abstract class FlutterRustBridgeExampleSingleBlockTest {
 
   FlutterRustBridgeTaskConstMeta get kReturnCustomStructErrorConstMeta;
 
+  void syncReturnCustomStructError({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kSyncReturnCustomStructErrorConstMeta;
+
   Future<int> returnCustomStructOk({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kReturnCustomStructOkConstMeta;

@@ -1845,6 +1845,12 @@ pub fn return_custom_struct_error() -> Result<(), CustomStructError> {
     })
 }
 
+pub fn sync_return_custom_struct_error() -> Result<SyncReturn<()>, CustomStructError> {
+    Err(CustomStructError {
+        message: "error message".to_string(),
+    })
+}
+
 pub fn return_custom_struct_ok() -> Result<u32, CustomStructError> {
     Ok(3)
 }

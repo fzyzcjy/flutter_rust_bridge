@@ -1450,6 +1450,8 @@ class FlutterRustBridgeExampleSingleBlockTestWasmModule implements WasmModule {
 
   external dynamic /* void */ wire_return_custom_struct_error(NativePortType port_);
 
+  external dynamic /* void */ wire_sync_return_custom_struct_error();
+
   external dynamic /* void */ wire_return_custom_struct_ok(NativePortType port_);
 
   external dynamic /* void */ wire_throw_anyhow(NativePortType port_);
@@ -1962,6 +1964,8 @@ class FlutterRustBridgeExampleSingleBlockTestWire
   void wire_return_custom_nested_error_2(NativePortType port_) => wasmModule.wire_return_custom_nested_error_2(port_);
 
   void wire_return_custom_struct_error(NativePortType port_) => wasmModule.wire_return_custom_struct_error(port_);
+
+  dynamic /* void */ wire_sync_return_custom_struct_error() => wasmModule.wire_sync_return_custom_struct_error();
 
   void wire_return_custom_struct_ok(NativePortType port_) => wasmModule.wire_return_custom_struct_ok(port_);
 

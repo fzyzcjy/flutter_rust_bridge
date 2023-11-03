@@ -2,6 +2,7 @@
     non_camel_case_types,
     unused,
     clippy::redundant_closure,
+    clippy::unnecessary_literal_unwrap,
     clippy::useless_conversion,
     clippy::unit_arg,
     clippy::double_parens,
@@ -2424,6 +2425,16 @@ fn wire_return_custom_struct_error_impl(port_: MessagePort) {
             mode: FfiCallMode::Normal,
         },
         move || move |task_callback| return_custom_struct_error(),
+    )
+}
+fn wire_sync_return_custom_struct_error_impl() -> support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "sync_return_custom_struct_error",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || sync_return_custom_struct_error(),
     )
 }
 fn wire_return_custom_struct_ok_impl(port_: MessagePort) {
