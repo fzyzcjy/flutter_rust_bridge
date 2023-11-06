@@ -271,11 +271,15 @@ void main(List<String> args) async {
     expect(api.handleSyncReturn(mode: 'NORMAL'), List.filled(100, 42));
 
     for (final mode in ['RESULT_ERR', 'PANIC']) {
-      print(mode);
       try {
         api.handleSyncReturn(mode: mode);
         fail("exception not thrown");
-      } on PanicException catch (e) {
+      } catch (e) {
+        if (mode == 'RESULT_ERR') {
+          e as FrbAnyhowException;
+        } else {
+          e as PanicException;
+        }
         print('dart catch e: $e');
       }
     }
