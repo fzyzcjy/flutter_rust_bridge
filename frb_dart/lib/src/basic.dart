@@ -78,6 +78,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
     try {
       syncReturn = task.callFfi();
     } catch (err, st) {
+      print('here $err $st');
       throw FfiException('EXECUTE_SYNC_ABORT', '$err', st);
     }
     try {
