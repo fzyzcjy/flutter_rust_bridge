@@ -75,24 +75,16 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   @protected
   S executeSync<S, E extends Object>(FlutterRustBridgeSyncTask<S, E> task) {
     final WireSyncReturn syncReturn;
-    print("WTF1");
     try {
-      print("WTF2");
       syncReturn = task.callFfi();
-      print("WTF3");
     } catch (err, st) {
-      print("WTF4");
-      throw '42';
-      throw FfiException('EXECUTE_SYNC_ABORT', '$err', st);
+      throw PanicException('EXECUTE_SYNC_ABORT $err $st');
     }
     try {
-      print("WTF5");
       final syncReturnAsDartObject = wireSyncReturnIntoDart(syncReturn);
-      print("WTF6 $syncReturnAsDartObject");
       return _transformRust2DartMessage(syncReturnAsDartObject,
           task.parseSuccessData, task.parseErrorData, wire2apiPanicError);
     } catch (err) {
-      print("WTF7");
       rethrow;
     } finally {
       inner.free_WireSyncReturn(syncReturn);
