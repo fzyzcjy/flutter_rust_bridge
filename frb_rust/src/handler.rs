@@ -6,7 +6,7 @@ use std::panic::{RefUnwindSafe, UnwindSafe};
 
 use crate::ffi::{IntoDart, MessagePort};
 
-use crate::rust2dart::{BoxIntoDart, IntoIntoDart, Rust2Dart, TaskCallback};
+use crate::rust2dart::{BoxIntoDart, IntoIntoDart, Rust2Dart, Rust2DartAction, TaskCallback};
 use crate::support::WireSyncReturn;
 use crate::{spawn, DartAbi, SyncReturn};
 
@@ -139,7 +139,9 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
         panic::catch_unwind(move || {
             let catch_unwind_result = panic::catch_unwind(move || {
                 match self.executor.execute_sync(wrap_info, sync_task) {
-                    Ok(data) => wire_sync_from_data(data.0.into_into_dart(), true),
+                    Ok(data) => {
+                        wire_sync_from_data(data.0.into_into_dart(), Rust2DartAction::Success)
+                    }
                     Err(err) => self
                         .error_handler
                         .handle_error_sync(Error::CustomError(Box::new(err))),
@@ -148,7 +150,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
             catch_unwind_result
                 .unwrap_or_else(|error| self.error_handler.handle_error_sync(Error::Panic(error)))
         })
-        .unwrap_or_else(|_| wire_sync_from_data(None::<()>, false))
+        .unwrap_or_else(|_| wire_sync_from_data(None::<()>, Rust2DartAction::Panic))
     }
 }
 
@@ -321,15 +323,13 @@ impl ErrorHandler for ReportDartErrorHandler {
     }
 
     fn handle_error_sync(&self, error: Error) -> WireSyncReturn {
-        match error {
-            Error::CustomError(err) => wire_sync_from_data(err.box_into_dart(), false),
-            Error::Panic(err) => wire_sync_from_data(error_to_string(&err), false),
-        }
+        let result_code = (&error).into();
+        wire_sync_from_data(error.into_dart(), result_code)
     }
 }
 
-fn wire_sync_from_data<T: IntoDart>(data: T, success: bool) -> WireSyncReturn {
-    let sync_return = vec![data.into_dart(), success.into_dart()].into_dart();
+fn wire_sync_from_data<T: IntoDart>(data: T, result_code: Rust2DartAction) -> WireSyncReturn {
+    let sync_return = vec![result_code.into_dart(), data.into_dart()].into_dart();
 
     #[cfg(not(wasm))]
     return crate::support::new_leak_box_ptr(sync_return);

@@ -73,7 +73,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 
   /// Similar to [executeNormal], except that this will return synchronously
   @protected
-  S executeSync<S>(FlutterRustBridgeSyncTask task) {
+  S executeSync<S, E extends Object>(FlutterRustBridgeSyncTask<S, E> task) {
     final WireSyncReturn syncReturn;
     try {
       syncReturn = task.callFfi();
@@ -82,18 +82,11 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
     }
     try {
       final syncReturnAsDartObject = wireSyncReturnIntoDart(syncReturn);
-      assert(syncReturnAsDartObject.length == 2);
-      final rawReturn = syncReturnAsDartObject[0];
-      final isSuccess = syncReturnAsDartObject[1];
-      if (isSuccess) {
-        return task.parseSuccessData(rawReturn);
-      } else {
-        if (rawReturn is String) {
-          throw FfiException('EXECUTE_SYNC', rawReturn, null);
-        } else {
-          throw task.parseErrorData!(rawReturn);
-        }
-      }
+      return _transformRust2DartMessage(syncReturnAsDartObject,
+          task.parseSuccessData, task.parseErrorData, wire2apiPanicError);
+    } catch (err, st) {
+      if (err is FfiException) rethrow;
+      throw FfiException('EXECUTE_SYNC_ABORT', '$err', st);
     } finally {
       inner.free_WireSyncReturn(syncReturn);
     }
@@ -193,7 +186,8 @@ class FlutterRustBridgeTask<S, E extends Object>
 
 /// A task to call FFI function, but it is synchronous.
 @immutable
-class FlutterRustBridgeSyncTask<S, E> extends FlutterRustBridgeBaseTask {
+class FlutterRustBridgeSyncTask<S, E extends Object>
+    extends FlutterRustBridgeBaseTask {
   /// The underlying function to call FFI function, usually the generated wire function
   final WireSyncReturn Function() callFfi;
 
