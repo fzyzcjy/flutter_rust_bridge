@@ -84,9 +84,8 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
       final syncReturnAsDartObject = wireSyncReturnIntoDart(syncReturn);
       return _transformRust2DartMessage(syncReturnAsDartObject,
           task.parseSuccessData, task.parseErrorData, wire2apiPanicError);
-    } catch (err, st) {
-      if (err is FfiException) rethrow;
-      throw FfiException('EXECUTE_SYNC_ABORT', '$err', st);
+    } catch (err) {
+      rethrow;
     } finally {
       inner.free_WireSyncReturn(syncReturn);
     }
