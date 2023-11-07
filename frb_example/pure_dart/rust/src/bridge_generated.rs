@@ -2426,6 +2426,16 @@ fn wire_return_custom_struct_error_impl(port_: MessagePort) {
         move || move |task_callback| return_custom_struct_error(),
     )
 }
+fn wire_sync_return_custom_struct_error_impl() -> support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "sync_return_custom_struct_error",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || sync_return_custom_struct_error(),
+    )
+}
 fn wire_return_custom_struct_ok_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32, _>(
         WrapInfo {

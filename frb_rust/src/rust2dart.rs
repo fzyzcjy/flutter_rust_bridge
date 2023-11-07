@@ -14,10 +14,28 @@ pub struct Rust2Dart {
     pub(crate) channel: Channel,
 }
 
-const RUST2DART_ACTION_SUCCESS: i32 = 0;
-const RUST2DART_ACTION_ERROR: i32 = 1;
-const RUST2DART_ACTION_CLOSE_STREAM: i32 = 2;
-const RUST2DART_ACTION_PANIC: i32 = 3;
+#[derive(Debug)]
+pub enum Rust2DartAction {
+    Success = 0,
+    Error = 1,
+    CloseStream = 2,
+    Panic = 3,
+}
+
+impl From<&crate::handler::Error> for Rust2DartAction {
+    fn from(value: &crate::handler::Error) -> Self {
+        match value {
+            crate::handler::Error::CustomError(_) => Self::Error,
+            crate::handler::Error::Panic(_) => Self::Panic,
+        }
+    }
+}
+
+impl IntoDart for Rust2DartAction {
+    fn into_dart(self) -> DartAbi {
+        (self as i32).into_dart()
+    }
+}
 
 // api signatures is similar to Flutter Android's callback https://api.flutter.dev/javadoc/io/flutter/plugin/common/MethodChannel.Result.html
 impl Rust2Dart {
@@ -31,7 +49,7 @@ impl Rust2Dart {
     /// Send a success message back to the specified port.
     pub fn success(&self, result: impl IntoDart) -> bool {
         self.channel.post(vec![
-            RUST2DART_ACTION_SUCCESS.into_dart(),
+            Rust2DartAction::Success.into_dart(),
             result.into_dart(),
         ])
     }
@@ -39,19 +57,19 @@ impl Rust2Dart {
     /// Send a panic back to the specified port.
     pub fn panic(&self, e: impl IntoDart) -> bool {
         self.channel
-            .post(vec![RUST2DART_ACTION_PANIC.into_dart(), e.into_dart()])
+            .post(vec![Rust2DartAction::Panic.into_dart(), e.into_dart()])
     }
 
     /// Send a detailed error back to the specified port.
     pub fn error(&self, e: impl IntoDart) -> bool {
         self.channel
-            .post(vec![RUST2DART_ACTION_ERROR.into_dart(), e.into_dart()])
+            .post(vec![Rust2DartAction::Error.into_dart(), e.into_dart()])
     }
 
     /// Close the stream and ignore further messages.
     pub fn close_stream(&self) -> bool {
         self.channel
-            .post(vec![RUST2DART_ACTION_CLOSE_STREAM.into_dart()])
+            .post(vec![Rust2DartAction::CloseStream.into_dart()])
     }
 }
 

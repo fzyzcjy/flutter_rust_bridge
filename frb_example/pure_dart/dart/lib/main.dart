@@ -239,13 +239,18 @@ void main(List<String> args) async {
   test('dart call handle_sync_return', () async {
     expect(api.handleSyncReturn(mode: 'NORMAL'), List.filled(100, 42));
 
-    for (final mode in ['RESULT_ERR', 'PANIC']) {
-      try {
-        api.handleSyncReturn(mode: mode);
-        fail("exception not thrown");
-      } on FfiException catch (e) {
-        print('dart catch e: $e');
-      }
+    try {
+      api.handleSyncReturn(mode: 'RESULT_ERR');
+      fail("exception not thrown");
+    } on FrbAnyhowException catch (e) {
+      print('dart catch anyhow e: $e');
+    }
+
+    try {
+      api.handleSyncReturn(mode: 'PANIC');
+      fail("exception not thrown");
+    } on PanicException catch (e) {
+      print('dart catch panic e: $e');
     }
   });
 
@@ -1301,7 +1306,7 @@ void main(List<String> args) async {
           "lifetime: \"static str\" "
           "})");
       data.dispose();
-      expect(() => api.syncRunOpaque(opaque: data), throwsA(isA<FfiException>()));
+      expect(() => api.syncRunOpaque(opaque: data), throwsA(isA<PanicException>()));
     });
 
     test('option', () async {
@@ -1392,6 +1397,14 @@ void main(List<String> args) async {
 
     test('Throw CustomStructError', () async {
       await expectLater(() async => await api.returnCustomStructError(), throwsA(isA<CustomStructError>()));
+    });
+
+    test('Throw sync CustomStructError', () {
+      try {
+        api.syncReturnCustomStructError();
+      } on CustomStructError catch (e) {
+        expect(e.message, "error message");
+      }
     });
 
     test('Do not throw CustomStructError', () async {

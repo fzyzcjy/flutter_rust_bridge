@@ -915,6 +915,11 @@ pub extern "C" fn wire_return_custom_struct_error(port_: i64) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_sync_return_custom_struct_error() -> support::WireSyncReturn {
+    wire_sync_return_custom_struct_error_impl()
+}
+
+#[no_mangle]
 pub extern "C" fn wire_return_custom_struct_ok(port_: i64) {
     wire_return_custom_struct_ok_impl(port_)
 }

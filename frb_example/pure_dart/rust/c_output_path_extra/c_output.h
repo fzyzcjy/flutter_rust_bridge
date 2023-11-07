@@ -900,6 +900,8 @@ void wire_return_custom_nested_error_2(int64_t port_);
 
 void wire_return_custom_struct_error(int64_t port_);
 
+WireSyncReturn wire_sync_return_custom_struct_error(void);
+
 void wire_return_custom_struct_ok(int64_t port_);
 
 void wire_throw_anyhow(int64_t port_);
@@ -1399,6 +1401,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_1_variant1);
     dummy_var ^= ((int64_t) (void*) wire_return_custom_nested_error_2);
     dummy_var ^= ((int64_t) (void*) wire_return_custom_struct_error);
+    dummy_var ^= ((int64_t) (void*) wire_sync_return_custom_struct_error);
     dummy_var ^= ((int64_t) (void*) wire_return_custom_struct_ok);
     dummy_var ^= ((int64_t) (void*) wire_throw_anyhow);
     dummy_var ^= ((int64_t) (void*) wire_panic_with_custom_result);
