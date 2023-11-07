@@ -1,3 +1,7 @@
+## 1.82.4
+
+* Fix `Result<SyncReturn(T), E>` #1407 (thanks @rogurotus)
+
 ## 1.82.3
 
 * Fix Rust error string not displayed in Dart #1390 (thanks @OfficialBoyfriend)
