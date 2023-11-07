@@ -238,18 +238,18 @@ void main(List<String> args) async {
   // Test if sync return is working as expected.
   test('dart call handle_sync_return', () async {
     expect(api.handleSyncReturn(mode: 'NORMAL'), List.filled(100, 42));
-    
+
     try {
       api.handleSyncReturn(mode: 'RESULT_ERR');
       fail("exception not thrown");
     } on FrbAnyhowException catch (e) {
       print('dart catch anyhow e: $e');
     }
-    
+
     try {
       api.handleSyncReturn(mode: 'PANIC');
       fail("exception not thrown");
-    } on FrbAnyhowException catch (e) {
+    } on PanicException catch (e) {
       print('dart catch panic e: $e');
     }
   });
