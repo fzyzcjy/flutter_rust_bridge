@@ -596,10 +596,10 @@ packages:
     dependency: "direct main"
     description:
       name: uuid
-      sha256: "49ea0b5f9f741a601de59398b2e08dd5cdc3f41d19c215e53b92b6cab2a2337b"
+      sha256: df5a4d8f22ee4ccd77f8839ac7cb274ebc11ef9adcce8b92be14b797fe889921
       url: "https://pub.dev"
     source: hosted
-    version: "4.2.0"
+    version: "4.2.1"
   vm_service:
     dependency: "direct main"
     description:
