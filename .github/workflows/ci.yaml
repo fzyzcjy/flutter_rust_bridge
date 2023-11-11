@@ -264,30 +264,31 @@ jobs:
           mv -Force windows/rust.require.cmake windows/rust.cmake
           just flutter_example_with_flutter_integration_test
 
-  flutter_test_macos:
-    name: Flutter integration test on MacOS
-    runs-on: macos-11
+  # should re-open after Flutter fixes this infra timeout issue #1225
+  # flutter_test_macos:
+  #   name: Flutter integration test on MacOS
+  #   runs-on: macos-11
 
-    steps:
-      - uses: actions/checkout@v4
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: "stable"
-          cache: true
-          # TODO should be 3.7.3 but has a weird bug currently
-          # https://github.com/fzyzcjy/flutter_rust_bridge/pull/1023#issuecomment-1415852845
-          flutter-version: 3.13.6
-          architecture: x64
-      - uses: dtolnay/rust-toolchain@stable
-        with:
-          toolchain: 1.70.0
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: subosito/flutter-action@v2
+  #       with:
+  #         channel: "stable"
+  #         cache: true
+  #         # TODO should be 3.7.3 but has a weird bug currently
+  #         # https://github.com/fzyzcjy/flutter_rust_bridge/pull/1023#issuecomment-1415852845
+  #         flutter-version: 3.13.6
+  #         architecture: x64
+  #     - uses: dtolnay/rust-toolchain@stable
+  #       with:
+  #         toolchain: 1.70.0
 
-      - uses: extractions/setup-just@v1
+  #     - uses: extractions/setup-just@v1
 
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: just flutter_example_with_flutter_integration_test
+  #     - run: just flutter_example_with_flutter_integration_test
 
   flutter_test_linux:
     name: Flutter integration test on Linux
