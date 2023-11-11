@@ -58,10 +58,13 @@
 
 #if __GNUC__
 #define DART_WARN_UNUSED_RESULT __attribute__((warn_unused_result))
+#define DART_DEPRECATED(msg) __attribute__((deprecated(msg)))
 #elif _MSC_VER
 #define DART_WARN_UNUSED_RESULT _Check_return_
+#define DART_DEPRECATED(msg) __declspec(deprecated(msg))
 #else
 #define DART_WARN_UNUSED_RESULT
+#define DART_DEPRECATED(msg)
 #endif
 
 /*
@@ -503,14 +506,6 @@ DART_EXPORT void Dart_DeleteWeakPersistentHandle(
     Dart_WeakPersistentHandle object);
 
 /**
- * Updates the external memory size for the given weak persistent handle.
- *
- * May trigger garbage collection.
- */
-DART_EXPORT void Dart_UpdateExternalSize(Dart_WeakPersistentHandle object,
-                                         intptr_t external_allocation_size);
-
-/**
  * Allocates a finalizable handle for an object.
  *
  * This handle has the lifetime of the current isolate group unless the object
@@ -561,18 +556,6 @@ Dart_NewFinalizableHandle(Dart_Handle object,
 DART_EXPORT void Dart_DeleteFinalizableHandle(Dart_FinalizableHandle object,
                                               Dart_Handle strong_ref_to_object);
 
-/**
- * Updates the external memory size for the given finalizable handle.
- *
- * The caller has to provide the actual Dart object the handle was created from
- * to prove the object (and therefore the finalizable handle) is still alive.
- *
- * May trigger garbage collection.
- */
-DART_EXPORT void Dart_UpdateFinalizableExternalSize(
-    Dart_FinalizableHandle object,
-    Dart_Handle strong_ref_to_object,
-    intptr_t external_allocation_size);
 
 /*
  * ==========================
@@ -2259,6 +2242,17 @@ DART_EXPORT Dart_Handle Dart_BooleanValue(Dart_Handle boolean_obj, bool* value);
 DART_EXPORT Dart_Handle Dart_StringLength(Dart_Handle str, intptr_t* length);
 
 /**
+ * Gets the length of UTF-8 encoded representation for a string.
+ *
+ * \param str A String.
+ * \param length Returns the length of UTF-8 encoded representation for string.
+ *
+ * \return A valid handle if no error occurs during the operation.
+ */
+DART_EXPORT Dart_Handle Dart_StringUTF8Length(Dart_Handle str,
+                                              intptr_t* length);
+
+/**
  * Returns a String built from the provided C string
  * (There is an implicit assumption that the C string passed in contains
  *  UTF-8 encoded characters and '\0' is considered as a termination
@@ -2384,6 +2378,24 @@ DART_EXPORT Dart_Handle Dart_StringToCString(Dart_Handle str,
 DART_EXPORT Dart_Handle Dart_StringToUTF8(Dart_Handle str,
                                           uint8_t** utf8_array,
                                           intptr_t* length);
+
+/**
+ * Copies the UTF-8 encoded representation of a String into specified buffer.
+ *
+ * Any unpaired surrogate code points in the string will be converted as
+ * replacement characters (U+FFFD, 0xEF 0xBF 0xBD in UTF-8).
+ *
+ * \param str A string.
+ * \param utf8_array Buffer into which the UTF-8 encoded representation of
+ *   the string is copied into.
+ *   The buffer is allocated and managed by the caller.
+ * \param length Specifies the length of the buffer passed in.
+ *
+ * \return A valid handle if no error occurs during the operation.
+ */
+DART_EXPORT Dart_Handle Dart_CopyUTF8EncodingOfString(Dart_Handle str,
+                                                      uint8_t* utf8_array,
+                                                      intptr_t length);
 
 /**
  * Gets the data corresponding to the string object. This function returns
@@ -3360,7 +3372,7 @@ DART_EXPORT Dart_Handle Dart_GetNativeSymbol(Dart_Handle library,
 /**
  * Sets the callback used to resolve FFI native functions for a library.
  * The resolved functions are expected to be a C function pointer of the
- * correct signature (as specified in the `@FfiNative<NFT>()` function
+ * correct signature (as specified in the `@Native<NFT>()` function
  * annotation in Dart code).
  *
  * NOTE: This is an experimental feature and might change in the future.
@@ -3776,7 +3788,6 @@ typedef enum {
 
 typedef struct {
   Dart_KernelCompilationStatus status;
-  bool null_safety;
   char* error;
   uint8_t* kernel;
   intptr_t kernel_size;
@@ -3805,6 +3816,9 @@ DART_EXPORT Dart_Port Dart_KernelPort(void);
  * This is used by the frontend to determine if compilation related information
  * should be printed to console (e.g., null safety mode).
  *
+ * \param embed_sources Set to `true` when sources should be embedded in the
+ * kernel file.
+ *
  * \param verbosity Specifies the logging behavior of the kernel compilation
  * service.
  *
@@ -3826,6 +3840,7 @@ Dart_CompileToKernel(const char* script_uri,
                      const intptr_t platform_kernel_size,
                      bool incremental_compile,
                      bool snapshot_compile,
+                     bool embed_sources,
                      const char* package_config,
                      Dart_KernelCompilationVerbosityLevel verbosity);
 
