@@ -7,7 +7,8 @@ RUN cargo install --path frb_codegen &&  \
 FROM dart:3.1.5
 
 # libclang-dev is required by https://pub.dev/packages/ffigen
-RUN apt-get update &&  \
+RUN dart pub global activate ffigen --version 8.0.0 && \
+    apt-get update && \
     apt-get install -y libclang-dev
 # TODO rm
 # && rm -rf /var/lib/apt/lists/*
