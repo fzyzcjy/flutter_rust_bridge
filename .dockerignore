@@ -1,0 +1,7 @@
+# Ignore everything
+*
+
+# Allow files and directories
+!/frb_codegen
+!/Cargo.toml
+!/Cargo.lock

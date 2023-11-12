@@ -344,7 +344,7 @@ _noop:
     echo "this is noop"
 
 docker_build_codegen:
-    cd frb_codegen && docker build .
+    docker build .
 
 # ============================ to be migrated ============================
 
