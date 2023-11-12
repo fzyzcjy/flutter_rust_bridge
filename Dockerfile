@@ -1,7 +1,7 @@
 FROM rust:1.70.0 as builder
 WORKDIR /usr/src/flutter_rust_bridge_codegen
 COPY . .
-RUN cargo install --path .
+RUN cargo install --path frb_codegen
 
 FROM debian:bullseye-slim
 RUN apt-get update

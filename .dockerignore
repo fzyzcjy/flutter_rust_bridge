@@ -3,5 +3,10 @@
 
 # Allow files and directories
 !/frb_codegen
+!/frb_rust
+!/frb_macros
+!/frb_example/pure_dart/rust
+!/frb_example/pure_dart_multi/rust
+!/frb_example/with_flutter/rust
 !/Cargo.toml
 !/Cargo.lock
