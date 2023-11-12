@@ -344,7 +344,10 @@ _noop:
     echo "this is noop"
 
 docker_build_codegen:
-    docker build .
+    docker build -t fzyzcjy/flutter_rust_bridge_codegen:latest .
+
+docker_debug_codegen:
+    docker run -it --entrypoint /bin/bash fzyzcjy/flutter_rust_bridge_codegen:latest
 
 # ============================ to be migrated ============================
 
