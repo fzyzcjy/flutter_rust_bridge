@@ -1,3 +1,5 @@
+# tentative experiment. create an issue if you want flutter_rust_bridge_codegen bundled in docker!
+
 FROM rust:1.70.0 as builder
 WORKDIR /usr/src/flutter_rust_bridge_codegen
 COPY . .
