@@ -343,6 +343,9 @@ _install_crate name="cargo-lipo":
 _noop:
     echo "this is noop"
 
+docker_build_codegen:
+    cd frb_codegen && docker build .
+
 # ============================ to be migrated ============================
 
 # TODO - @Desdaemon
