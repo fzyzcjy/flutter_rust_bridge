@@ -1,4 +1,4 @@
-use clap::{Args, Parser, Subcommand, ValueEnum};
+use clap::{Args, Parser, Subcommand, ArgAction};
 use serde::Deserialize;
 use lib_flutter_rust_bridge_codegen::*;
 use lib_flutter_rust_bridge_codegen::codegen::ConfigDump;
@@ -33,7 +33,7 @@ enum Commands {
     Integrate(IntegrateCommandArgs),
 }
 
-#[derive(Debug, Args)]
+#[derive(Debug, Args, Deserialize)]
 struct GenerateCommandArgs {
     /// Path of input Rust code
     #[arg(short, long, required_unless_present = "config_file", num_args = 1..)]
