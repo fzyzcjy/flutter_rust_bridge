@@ -33,15 +33,16 @@ enum Commands {
     Integrate(IntegrateCommandArgs),
 }
 
+// TODO clean up the api and docs
 #[derive(Debug, Args, Deserialize)]
 struct GenerateCommandArgs {
     /// Path of input Rust code
-    #[arg(short, long, required_unless_present = "config_file", num_args = 1..)]
-    pub rust_input: Vec<String>,
+    #[arg(short, long)]
+    pub rust_input: Option<String>,
 
     /// Path of output generated Dart code
-    #[arg(short, long, required_unless_present = "config_file", num_args = 1..)]
-    pub dart_output: Vec<String>,
+    #[arg(short, long)]
+    pub dart_output: Option<String>,
 
     /// Path to a YAML config file.
     ///
@@ -54,25 +55,22 @@ struct GenerateCommandArgs {
     #[arg(long)]
     pub dart_decl_output: Option<String>,
 
+    // TODO single c_output, then what about ios + macos?
     /// Output path (including file name) of generated C header, each field corresponding to that of --rust-input.
     #[arg(short, long)]
-    pub c_output: Option<Vec<String>>,
-
-    /// Extra output path (excluding file name) of generated C header
-    #[arg(short, long)]
-    pub extra_c_output_path: Option<Vec<String>>,
+    pub c_output: Option<String>,
 
     /// Crate directory for your Rust project
-    #[arg(long, num_args = 1..)]
-    pub rust_crate_dir: Option<Vec<String>>,
+    #[arg(long)]
+    pub rust_crate_dir: Option<String>,
 
     /// Output path of generated Rust code
-    #[arg(long, num_args = 1..)]
-    pub rust_output: Option<Vec<String>>,
+    #[arg(long)]
+    pub rust_output: Option<String>,
 
     /// Generated class name
-    #[arg(long, num_args = 1..)]
-    pub class_name: Option<Vec<String>>,
+    #[arg(long)]
+    pub class_name: Option<String>,
 
     /// Line length for Dart formatting
     #[arg(long, default_value = "80")]
@@ -86,7 +84,7 @@ struct GenerateCommandArgs {
     /// Skip automatically adding `mod bridge_generated;` to `lib.rs`
     #[arg(long)]
     #[serde(default)]
-    pub skip_add_mod_to_lib: bool,
+    pub no_add_mod_to_lib: bool,
 
     /// Path to the installed LLVM
     #[arg(long, num_args = 1..)]
@@ -98,8 +96,9 @@ struct GenerateCommandArgs {
 
     /// Path to root of Dart project, otherwise inferred from --dart-output
     #[arg(long, num_args = 1..)]
-    pub dart_root: Option<Vec<String>>,
+    pub dart_root: Option<String>,
 
+    // TODO about negation?
     /// Skip running build_runner even when codegen-required code is detected
     #[arg(long)]
     #[serde(default)]
