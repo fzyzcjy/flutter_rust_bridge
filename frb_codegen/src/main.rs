@@ -1,8 +1,14 @@
 use clap::{Args, Parser, Subcommand};
+use lib_flutter_rust_bridge_codegen::*;
 
 fn main() -> anyhow::Result<()> {
     let cli = Cli::parse();
-    todo!()
+    match cli.command {
+        Commands::Generate(args) => codegen::generate(&codegen::Config {})?,
+        Commands::Create(args) => integration::create(&args.name),
+        Commands::Integrate(_) => integration::integrate(),
+    }
+    Ok(())
 }
 
 // The name `Cli`, `Commands` come from https://docs.rs/clap/latest/clap/_derive/_tutorial/chapter_0/index.html
@@ -10,7 +16,7 @@ fn main() -> anyhow::Result<()> {
 #[command(author, version, about, long_about = None)]
 struct Cli {
     #[command(subcommand)]
-    command: Option<Commands>,
+    command: Commands,
 }
 
 #[derive(Subcommand)]
