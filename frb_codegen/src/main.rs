@@ -5,8 +5,8 @@ fn main() -> anyhow::Result<()> {
     let cli = Cli::parse();
     match cli.command {
         Commands::Generate(args) => codegen::generate(&codegen::Config {})?,
-        Commands::Create(args) => integration::create(&args.name),
-        Commands::Integrate(_) => integration::integrate(),
+        Commands::Create(args) => integration::create(&args.name)?,
+        Commands::Integrate(_) => integration::integrate()?,
     }
     Ok(())
 }
