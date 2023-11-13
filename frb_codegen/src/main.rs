@@ -14,19 +14,21 @@ struct Cli {
 
 #[derive(Subcommand)]
 enum Commands {
-    /// hello world
+    /// Execute main code generator
     Generate {
         /// hello world
         #[arg(short, long)]
         list: bool,
     },
-    /// hello world
+
+    /// Create a new Flutter + Rust project
     Create {
         /// hello world
         #[arg(short, long)]
         list: bool,
     },
-    /// hello world
+
+    /// Integrate Rust into existing Flutter project
     Integrate {
         /// hello world
         #[arg(short, long)]
