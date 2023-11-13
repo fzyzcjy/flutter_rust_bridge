@@ -1,6 +1,9 @@
 use clap::{ArgAction, Parser, ValueEnum};
 use serde::Deserialize;
 
+// Raw configs, which is mainly given by the user of flutter_rust_bridge
+#[derive(Parser, Debug, PartialEq, Eq, Deserialize, Default)]
+#[command(version)]
 #[command(override_usage(
 "flutter_rust_bridge_codegen [OPTIONS] --rust-input <RUST_INPUT>... --dart-output <DART_OUTPUT>...
        flutter_rust_bridge_codegen [CONFIG_FILE]"

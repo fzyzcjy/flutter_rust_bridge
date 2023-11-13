@@ -1,7 +1,6 @@
 //! Code generator for `flutter_rust_bridge`
 
-use clap::{Args};
-use serde::Deserialize;
+use clap::Args;
 
 /// Execute the main code generator
 pub fn generate(config: &Config) -> anyhow::Result<()> {
@@ -10,7 +9,7 @@ pub fn generate(config: &Config) -> anyhow::Result<()> {
 
 /// Configuration for code generation
 // For internal usage, please use [ParsedConfig] instead.
-#[derive(Args, Debug, PartialEq, Eq, Deserialize, Default)]
+#[derive(Debug, Args)]
 pub struct Config {
     // TODO
 }
