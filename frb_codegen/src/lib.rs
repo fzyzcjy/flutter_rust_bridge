@@ -1,4 +1,4 @@
-//! Main documentation is in https://github.com/fzyzcjy/flutter_rust_bridge
+//! Main documentation is in <https://github.com/fzyzcjy/flutter_rust_bridge>
 #![allow(clippy::vec_init_then_push)]
 
 pub use crate::commands::ensure_tools_available;
@@ -43,7 +43,7 @@ pub fn frb_codegen(config: &Opts, all_symbols: &[String]) -> anyhow::Result<()> 
 /// from all other blocks, `all_configs` is used here,
 /// with `index` referring to the place of the current block to deal with.
 /// For details on how to take advantage of multi-blocks, please refers to
-/// this article: https://cjycode.com/flutter_rust_bridge/feature/multiple_files.html
+/// this article: <https://cjycode.com/flutter_rust_bridge/feature/multiple_files.html>
 pub fn frb_codegen_multi(
     all_configs: &[Opts],
     index: usize,
