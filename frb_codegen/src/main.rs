@@ -6,7 +6,7 @@ mod binary;
 use clap::{Args, Parser, Subcommand, FromArgMatches};
 use itertools::Itertools;
 use log::debug;
-use lib_flutter_rust_bridge_codegen::library::*;
+use lib_flutter_rust_bridge_codegen::*;
 use crate::binary::commands::{Cli, Commands};
 
 fn main() -> anyhow::Result<()> {
@@ -24,7 +24,7 @@ fn main() -> anyhow::Result<()> {
 #[cfg(test)]
 mod tests {
     use clap::Parser;
-    use lib_flutter_rust_bridge_codegen::library::codegen;
+    use lib_flutter_rust_bridge_codegen::codegen;
     use crate::{Cli, Commands};
 
     #[test]

@@ -1,4 +1,4 @@
-use lib_flutter_rust_bridge_codegen::library::codegen;
+use lib_flutter_rust_bridge_codegen::codegen;
 use crate::binary::commands::GenerateCommandArgs;
 
 impl GenerateCommandArgs {

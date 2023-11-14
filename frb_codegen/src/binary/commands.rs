@@ -1,5 +1,5 @@
 use clap::{Args, Parser, Subcommand};
-use lib_flutter_rust_bridge_codegen::library::codegen::ConfigDump;
+use lib_flutter_rust_bridge_codegen::codegen::ConfigDump;
 
 // The name `Cli`, `Commands` come from https://docs.rs/clap/latest/clap/_derive/_tutorial/chapter_0/index.html
 #[derive(Debug, Parser)]
