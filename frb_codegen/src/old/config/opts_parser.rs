@@ -26,12 +26,12 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
 
     // dart output path(s)
     let dart_output_paths = get_valid_canon_paths(&raw.dart_output);
-    if dart_output_paths.len() != rust_input_paths.len() {
-        raw_opts_bail(
-            ErrorKind::WrongNumberOfValues,
-            "--dart-output's inputs should match --rust-input's length".into(),
-        )
-    }
+    // if dart_output_paths.len() != rust_input_paths.len() {
+    //     raw_opts_bail(
+    //         ErrorKind::WrongNumberOfValues,
+    //         "--dart-output's inputs should match --rust-input's length".into(),
+    //     )
+    // }
 
     // rust crate dir(s)
     let rust_crate_dirs = raw.rust_crate_dir.unwrap_or_else(|| {
