@@ -72,6 +72,6 @@ pub fn configure_opinionated_test_logging() {
     // This will fail if called twice; don't worry.
     let _ = fern::Dispatch::new()
         .level(log::LevelFilter::Debug)
-        .chain(std::io::stdout())
+        .chain(fern::Output::call(|record| println!("{}", record.args())))
         .apply();
 }
