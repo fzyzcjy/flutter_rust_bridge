@@ -135,43 +135,6 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
     let dart_enums_style = raw.dart_enums_style;
     let llvm_paths = get_llvm_paths(&raw.llvm_path);
     let llvm_compiler_opts = raw.llvm_compiler_opts.clone().unwrap_or_default();
-    let extra_headers = raw.extra_headers.unwrap_or({
-        if raw.no_use_bridge_in_method {
-            "import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';".to_owned()
-        } else {
-            "".to_owned()
-        }
-    });
-
-    (0..rust_input_paths.len())
-        .map(|i| {
-            Opts {
-                rust_input_path: rust_input_paths[i].clone(),
-                dart_output_path: dart_output_paths[i].clone(),
-                dart_decl_output_path: dart_decl_output_path.clone(),
-                c_output_path: refined_c_outputs[i].clone(),
-                rust_crate_dir: rust_crate_dirs[i].clone(),
-                rust_output_path: rust_output_paths[i].clone(),
-                class_name: class_names[i].clone(),
-                dart_format_line_length,
-                dart_enums_style,
-                skip_add_mod_to_lib, //same for all rust api blocks
-                llvm_path: llvm_paths.clone(),
-                llvm_compiler_opts: llvm_compiler_opts.clone(),
-                manifest_path: manifest_paths[i].clone(),
-                dart_root: dart_roots[i].clone(),
-                build_runner, //same for all rust api blocks
-                block_index: BlockIndex(i),
-                skip_deps_check,
-                wasm_enabled: wasm,
-                dart3,
-                inline_rust,
-                bridge_in_method,
-                keep_going,
-                extra_headers: extra_headers.clone(),
-            }
-        })
-        .collect()
 }
 
 #[inline(never)]
