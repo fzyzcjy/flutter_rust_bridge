@@ -7,17 +7,38 @@ pub enum IrTypeDelegate {
     String,
     StringList,
     ZeroCopyBufferVecPrimitive(IrTypePrimitive),
-    PrimitiveEnum {
-        ir: IrTypeEnumRef,
-        /// Allows for `#[repr]`'s other than [i32]
-        repr: IrTypePrimitive,
-    },
-    Time(IrTypeTime),
-    TimeList(IrTypeTime),
+    PrimitiveEnum(IrTypeDelegatePrimitiveEnum),
+    Time(IrTypeDelegateTime),
+    TimeList(IrTypeDelegateTime),
     Uuid,
     Uuids,
     Backtrace,
     Anyhow,
+}
+
+pub enum IrTypeDelegateArray {
+    GeneralArray {
+        length: usize,
+        general: Box<IrType>,
+    },
+    PrimitiveArray {
+        length: usize,
+        primitive: IrTypePrimitive,
+    },
+}
+
+pub struct IrTypeDelegatePrimitiveEnum {
+    ir: IrTypeEnumRef,
+    /// Allows for `#[repr]`'s other than [i32]
+    repr: IrTypePrimitive,
+}
+
+#[derive(Copy, strum_macros::Display)]
+pub enum IrTypeDelegateTime {
+    Local,
+    Utc,
+    Naive,
+    Duration,
 }
 }
 
@@ -39,7 +60,7 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 "ZeroCopyBuffer_".to_owned() + &self.get_delegate().dart_api_type()
             }
-            IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.safe_ident(),
+            IrTypeDelegate::PrimitiveEnum(ir) => ir.ir.safe_ident(),
             IrTypeDelegate::Time(ir) => format!("Chrono_{}", ir.safe_ident()),
             IrTypeDelegate::TimeList(ir) => format!("Chrono_{}List", ir.safe_ident()),
             IrTypeDelegate::Uuid => "Uuid".to_owned(),

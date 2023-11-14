@@ -3,16 +3,6 @@ use convert_case::{Case, Casing};
 use crate::ir::*;
 use crate::target::Target;
 
-crate::ir! {
-#[derive(Copy, strum_macros::Display)]
-pub enum IrTypeTime {
-    Local,
-    Utc,
-    Naive,
-    Duration,
-}
-}
-
 impl IrTypeTime {
     #[inline]
     pub fn safe_ident(&self) -> &str {
@@ -31,19 +21,6 @@ impl IrTypeTime {
     pub fn is_utc(&self) -> bool {
         matches!(self, Self::Naive | Self::Utc)
     }
-}
-
-crate::ir! {
-pub enum IrTypeDelegateArray {
-    GeneralArray {
-        length: usize,
-        general: Box<IrType>,
-    },
-    PrimitiveArray {
-        length: usize,
-        primitive: IrTypePrimitive,
-    },
-}
 }
 
 impl IrTypeDelegateArray {
