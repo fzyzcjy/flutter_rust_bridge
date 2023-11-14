@@ -1,3 +1,4 @@
-rust_input:
-  - hello.rs
+rust_input: hello.rs
+dart_output: hello.dart
+c_output: hello.h
 dart3: false

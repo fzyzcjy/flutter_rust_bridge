@@ -108,7 +108,7 @@ mod tests {
         configure_opinionated_test_logging();
 
         // bool flags
-        let common_args = vec!["", "generate", "--rust-input", "hello.rs", "--dart-output", "hello.dart"];
+        let common_args = vec!["", "generate", "--rust-input", "hello.rs", "--dart-output", "hello.dart", "--c-output", "hello.h"];
         assert_eq!(run_command_line(common_args.clone()).dart3, Some(true));
         assert_eq!(run_command_line(common_args.clone()).rust_input, "hello.rs".to_string());
         assert_eq!(run_command_line(concat([common_args.clone(), vec!["--no-dart3"]])).dart3, Some(false));
