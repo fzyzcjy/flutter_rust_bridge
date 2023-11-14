@@ -5,7 +5,6 @@ pub(crate) struct InternalConfig {
     pub parser: ParserInternalConfig,
     pub generator: GeneratorInternalConfig,
     pub polisher: PolisherInternalConfig,
-    pub keep_going: bool,
 }
 
 pub(crate) struct ParserInternalConfig {
