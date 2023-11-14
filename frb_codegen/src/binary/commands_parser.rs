@@ -48,7 +48,6 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> 
 #[cfg(test)]
 mod tests {
     use std::fs;
-    use std::fs::File;
     use clap::Parser;
     use tempfile::tempdir;
     use lib_flutter_rust_bridge_codegen::codegen;
@@ -57,11 +56,11 @@ mod tests {
     use crate::binary::commands_parser::compute_codegen_config;
 
     #[test]
-    fn test_compute_codegen_config__mode_from_files_auto() -> anyhow::Result<()> {
+    fn test_compute_codegen_config_mode_from_files_auto() -> anyhow::Result<()> {
         configure_opinionated_test_logging();
 
         let temp_dir = tempdir()?;
-        fs::write(tmp_dir.path().join(".flutter_rust_bridge.yaml"), "rust_input: hello.rs\ndart3: false")?;
+        fs::write(temp_dir.path().join(".flutter_rust_bridge.yaml"), "rust_input: hello.rs\ndart3: false")?;
 
         let config = run_command_line(vec!["", "generate"]);
         assert_eq!(config.rust_input.unwrap(), "hello.rs");
@@ -71,11 +70,11 @@ mod tests {
     }
 
     #[test]
-    fn test_compute_codegen_config__mode_config_file() -> anyhow::Result<()> {
+    fn test_compute_codegen_config_mode_config_file() -> anyhow::Result<()> {
         configure_opinionated_test_logging();
 
         let temp_dir = tempdir()?;
-        fs::write(tmp_dir.path().join("pubspec.yaml"), "flutter_rust_bridge:\n  rust_input: hello.rs\n  dart3: false")?;
+        fs::write(temp_dir.path().join("pubspec.yaml"), "flutter_rust_bridge:\n  rust_input: hello.rs\n  dart3: false")?;
 
         let config = run_command_line(vec!["", "generate"]);
         assert_eq!(config.rust_input.unwrap(), "hello.rs");
@@ -85,7 +84,7 @@ mod tests {
     }
 
     #[test]
-    fn test_compute_codegen_config__mode_from_naive_generate_command_args() {
+    fn test_compute_codegen_config_mode_from_naive_generate_command_args() {
         configure_opinionated_test_logging();
 
         // bool flags
