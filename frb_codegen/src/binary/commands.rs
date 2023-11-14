@@ -37,7 +37,7 @@ pub(crate) struct GenerateCommandArgs {
     #[arg(long)]
     pub config_file: Option<String>,
 
-    /// Regular expression of input Rust files
+    /// Glob pattern of input Rust files
     #[arg(short, long)]
     pub rust_input: Option<String>,
 
