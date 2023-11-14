@@ -47,41 +47,58 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> 
 
 #[cfg(test)]
 mod tests {
+    use std::fs;
+    use std::fs::File;
     use clap::Parser;
+    use tempfile::tempdir;
     use lib_flutter_rust_bridge_codegen::codegen;
     use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_test_logging;
     use crate::binary::commands::{Cli, Commands};
     use crate::binary::commands_parser::compute_codegen_config;
 
     #[test]
-    fn test_compute_codegen_config__mode_from_files_auto() {
+    fn test_compute_codegen_config__mode_from_files_auto() -> anyhow::Result<()> {
         configure_opinionated_test_logging();
 
-        todo!()
+        let temp_dir = tempdir()?;
+        fs::write(tmp_dir.path().join(".flutter_rust_bridge.yaml"), "rust_input: hello.rs\ndart3: false")?;
+
+        let config = run_command_line(vec!["", "generate"]);
+        assert_eq!(config.rust_input.unwrap(), "hello.rs");
+        assert_eq!(config.dart3.unwrap(), false);
+
+        Ok(())
     }
 
     #[test]
-    fn test_compute_codegen_config__mode_config_file() {
+    fn test_compute_codegen_config__mode_config_file() -> anyhow::Result<()> {
         configure_opinionated_test_logging();
 
-        todo!()
+        let temp_dir = tempdir()?;
+        fs::write(tmp_dir.path().join("pubspec.yaml"), "flutter_rust_bridge:\n  rust_input: hello.rs\n  dart3: false")?;
+
+        let config = run_command_line(vec!["", "generate"]);
+        assert_eq!(config.rust_input.unwrap(), "hello.rs");
+        assert_eq!(config.dart3.unwrap(), false);
+
+        Ok(())
     }
 
     #[test]
     fn test_compute_codegen_config__mode_from_naive_generate_command_args() {
         configure_opinionated_test_logging();
 
-        fn body(args: Vec<&'static str>) -> codegen::Config {
-            let cli = Cli::parse_from(args);
-            let args = match cli.command {
-                Commands::Generate(args) => args,
-                _ => panic!()
-            };
-            compute_codegen_config(args).unwrap()
-        }
-
         // bool flags
-        assert_eq!(body(vec!["", "generate", "--class-name", "hello"]).dart3, Some(true));
-        assert_eq!(body(vec!["", "generate", "--class-name", "hello", "--no-dart3"]).dart3, Some(false));
+        assert_eq!(run_command_line(vec!["", "generate", "--class-name", "hello"]).dart3, Some(true));
+        assert_eq!(run_command_line(vec!["", "generate", "--class-name", "hello", "--no-dart3"]).dart3, Some(false));
+    }
+
+    fn run_command_line(args: Vec<&'static str>) -> codegen::Config {
+        let cli = Cli::parse_from(args);
+        let args = match cli.command {
+            Commands::Generate(args) => args,
+            _ => panic!()
+        };
+        compute_codegen_config(args).unwrap()
     }
 }
