@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use std::path::PathBuf;
 
 #[derive(Debug, Clone, serde::Serialize)]
@@ -9,7 +10,7 @@ pub(crate) struct InternalConfig {
 
 #[derive(Debug, Clone, serde::Serialize)]
 pub(crate) struct ParserInternalConfig {
-    pub rust_input_path: Vec<PathBuf>,
+    pub rust_input_path: HashMap<Namespace, PathBuf>,
     pub manifest_path: PathBuf,
 }
 
@@ -22,8 +23,8 @@ pub(crate) struct GeneratorInternalConfig {
 
 #[derive(Debug, Clone, serde::Serialize)]
 pub(crate) struct GeneratorDartInternalConfig {
-    pub dart_output_path: PathBuf,
-    pub dart_decl_output_path: Option<PathBuf>,
+    pub dart_output_path: HashMap<Namespace, PathBuf>,
+    pub dart_decl_output_path: Option<HashMap<Namespace, PathBuf>>,
     pub dart_enums_style: bool,
     pub class_name: String,
     pub dart_root: Option<String>,
@@ -35,13 +36,13 @@ pub(crate) struct GeneratorDartInternalConfig {
 #[derive(Debug, Clone, serde::Serialize)]
 pub(crate) struct GeneratorRustInternalConfig {
     pub rust_crate_dir: String,
-    pub rust_output_path: PathBuf,
+    pub rust_output_path: HashMap<Namespace, PathBuf>,
     pub inline_rust: bool,
 }
 
 #[derive(Debug, Clone, serde::Serialize)]
 pub(crate) struct GeneratorCInternalConfig {
-    pub c_output_path: Vec<PathBuf>,
+    pub c_output_path: PathBuf,
     pub llvm_path: Vec<PathBuf>,
     pub llvm_compiler_opts: String,
     pub extra_headers: String,
@@ -49,9 +50,12 @@ pub(crate) struct GeneratorCInternalConfig {
 
 #[derive(Debug, Clone, serde::Serialize)]
 pub(crate) struct PolisherInternalConfig {
-    pub extra_c_output_path: Vec<PathBuf>,
+    pub duplicate_c_output_path: Vec<PathBuf>,
     pub dart_format_line_length: u32,
     pub add_mod_to_lib: bool,
     pub build_runner: bool,
     pub deps_check: bool,
 }
+
+// TODO move?
+pub struct Namespace(String);

@@ -40,7 +40,7 @@ impl InternalConfig {
                 },
             },
             polisher: PolisherInternalConfig {
-                extra_c_output_path: TODO,
+                duplicate_c_output_path: TODO,
                 dart_format_line_length: config.dart_format_line_length.unwrap_or(80),
                 add_mod_to_lib: config.add_mod_to_lib.unwrap_or(true),
                 build_runner: config.build_runner.unwrap_or(true),
