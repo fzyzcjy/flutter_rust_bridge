@@ -42,13 +42,8 @@ pub(crate) struct DartOutputPaths {
 #[derive(Debug, Clone, serde::Serialize)]
 pub(crate) struct GeneratorRustInternalConfig {
     pub rust_crate_dir: String,
-    pub rust_output_paths: RustOutputPaths,
+    pub rust_output_path: PathBuf,
     pub inline_rust: bool,
-}
-
-#[derive(Debug, Clone, serde::Serialize)]
-pub(crate) struct RustOutputPaths {
-    pub rust_output_path: HashMap<Namespace, PathBuf>,
 }
 
 #[derive(Debug, Clone, serde::Serialize)]

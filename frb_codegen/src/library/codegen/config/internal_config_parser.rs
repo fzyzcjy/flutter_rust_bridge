@@ -30,9 +30,7 @@ impl InternalConfig {
                 },
                 rust: GeneratorRustInternalConfig {
                     rust_crate_dir: TODO,
-                    rust_output_paths: RustOutputPaths {
-                        rust_output_path: TODO,
-                    },
+                    rust_output_path: TODO,
                     inline_rust: config.inline_rust.unwrap_or(false),
                 },
                 c: GeneratorCInternalConfig {
