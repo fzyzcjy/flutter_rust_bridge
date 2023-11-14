@@ -1,17 +1,17 @@
-use lib_flutter_rust_bridge_codegen::codegen;
+use anyhow::{Context, Result};
 use lib_flutter_rust_bridge_codegen::codegen::Config;
 use crate::binary::commands::GenerateCommandArgs;
 
-pub(crate) fn get_codegen_config(args: GenerateCommandArgs) -> Config {
+pub(crate) fn get_codegen_config(args: GenerateCommandArgs) -> Result<Config> {
     if no_args {
         todo!("from yaml")
     }
 
-    if args.config_file {
-        todo!()
+    if let Some(config_file) = args.config_file {
+        return Config::from_config_file(&config_file)?.context("Cannot find config_file");
     }
 
-    get_codegen_config_from_naive_generate_command_args(args)
+    Ok(get_codegen_config_from_naive_generate_command_args(args))
 }
 
 fn get_codegen_config_from_naive_generate_command_args(args: GenerateCommandArgs) -> Config {
