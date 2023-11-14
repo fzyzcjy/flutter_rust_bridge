@@ -2,13 +2,6 @@ use crate::ir::IrType::*;
 use crate::ir::*;
 use crate::target::Target;
 
-crate::ir! {
-#[no_serde]
-pub struct IrTypeOptional {
-    pub inner: Box<IrType>,
-}
-}
-
 crate::derive_serde_inner_as_newtype!(IrTypeOptional);
 
 impl IrTypeOptional {

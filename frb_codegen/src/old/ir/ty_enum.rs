@@ -2,13 +2,6 @@ use crate::ir::*;
 use crate::target::Target;
 use convert_case::{Case, Casing};
 
-crate::ir! {
-pub struct IrTypeEnumRef {
-    pub name: String,
-    pub is_exception: bool,
-}
-}
-
 impl IrTypeEnumRef {
     #[inline]
     pub fn get<'a>(&self, file: &'a IrFile) -> &'a IrEnum {

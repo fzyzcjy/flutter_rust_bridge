@@ -2,10 +2,6 @@ use delegate_attr::delegate;
 
 use crate::{ir::*, target::Target};
 
-crate::ir! {
-pub struct IrTypeSyncReturn(Box<IrType>);
-}
-
 impl IrTypeSyncReturn {
     pub fn new(ir: IrType) -> Self {
         Self(Box::new(ir))

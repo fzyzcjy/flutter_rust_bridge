@@ -25,13 +25,6 @@ pub struct NameComponent {
 }
 }
 
-crate::ir! {
-pub struct IrTypeUnencodable {
-    pub string: String,
-    pub segments: Vec<NameComponent>,
-}
-}
-
 impl Splayable for Vec<NameComponent> {
     /// Spread and turn out the data of a fully qualified name for structural pattern matching.
     fn splay(&self) -> Vec<(&str, Option<ArgsRefs>)> {

@@ -2,14 +2,6 @@ use crate::ir::*;
 use crate::target::Target;
 use convert_case::{Case, Casing};
 
-crate::ir! {
-pub struct IrTypeStructRef {
-    pub name: String,
-    pub freezed: bool,
-    pub empty: bool,
-    pub is_exception: bool,
-}
-}
 impl IrTypeStructRef {
     pub fn get<'a>(&self, f: &'a IrFile) -> &'a IrStruct {
         &f.struct_pool[&self.name]

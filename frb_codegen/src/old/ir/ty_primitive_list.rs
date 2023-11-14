@@ -2,12 +2,6 @@ use crate::ir::*;
 use crate::target::Target;
 use convert_case::{Case, Casing};
 
-crate::ir! {
-pub struct IrTypePrimitiveList {
-    pub primitive: IrTypePrimitive,
-}
-}
-
 impl IrTypeTrait for IrTypePrimitiveList {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, _ir_file: &IrFile) {
         f(&IrType::Primitive(self.primitive.clone()));
