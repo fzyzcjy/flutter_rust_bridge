@@ -47,12 +47,14 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> 
 
 #[cfg(test)]
 mod tests {
+    use std::fs::File;
     use std::path::PathBuf;
     use clap::Parser;
     use lib_flutter_rust_bridge_codegen::codegen;
     use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_test_logging;
     use crate::binary::commands::{Cli, Commands};
     use crate::binary::commands_parser::compute_codegen_config;
+    use serial_test::serial;
 
     fn set_cwd_test_fixture(name: &str) -> anyhow::Result<()> {
         let mut d = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
@@ -62,7 +64,9 @@ mod tests {
         Ok(std::env::set_current_dir(d)?)
     }
 
+    // need to run serially, otherwise working directory will override each other
     #[test]
+    #[serial]
     fn test_compute_codegen_config_mode_from_files_auto_flutter_rust_bridge_yaml() -> anyhow::Result<()> {
         configure_opinionated_test_logging();
         set_cwd_test_fixture("commands_parser/flutter_rust_bridge_yaml")?;
@@ -75,6 +79,7 @@ mod tests {
     }
 
     #[test]
+    #[serial]
     fn test_compute_codegen_config_mode_from_files_auto_pubspec_yaml() -> anyhow::Result<()> {
         configure_opinionated_test_logging();
         set_cwd_test_fixture("commands_parser/pubspec_yaml")?;
@@ -87,9 +92,13 @@ mod tests {
     }
 
     #[test]
+    #[serial]
     fn test_compute_codegen_config_mode_config_file() -> anyhow::Result<()> {
         configure_opinionated_test_logging();
         set_cwd_test_fixture("commands_parser/config_file")?;
+
+        println!("open");
+        File::open("hello.yaml")?;
 
         let config = run_command_line(vec!["", "generate", "--config-file", "hello.yaml"]);
         assert_eq!(config.rust_input.unwrap(), "hello.rs");
