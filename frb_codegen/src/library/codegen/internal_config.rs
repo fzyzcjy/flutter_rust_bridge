@@ -6,6 +6,7 @@ pub(crate) struct InternalConfig {
     pub dart_output_path: PathBuf,
     pub dart_decl_output_path: Option<PathBuf>,
     pub c_output_path: Vec<PathBuf>,
+    pub extra_c_output_path: Vec<PathBuf>,
     pub rust_crate_dir: String,
     pub rust_output_path: PathBuf,
     pub class_name: String,

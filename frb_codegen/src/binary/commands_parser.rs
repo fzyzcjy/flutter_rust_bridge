@@ -24,6 +24,7 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> 
         dart_output: args.dart_output,
         dart_decl_output: args.dart_decl_output,
         c_output: args.c_output,
+        extra_c_output: args.extra_c_output,
         rust_crate_dir: args.rust_crate_dir,
         rust_output: args.rust_output,
         class_name: args.class_name,

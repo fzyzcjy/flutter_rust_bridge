@@ -53,6 +53,10 @@ pub(crate) struct GenerateCommandArgs {
     #[arg(short, long, num_args = 1..)]
     pub c_output: Option<Vec<String>>,
 
+    /// Extra output path (excluding file name) of generated C header
+    #[arg(short, long)]
+    pub extra_c_output: Option<Vec<String>>,
+
     /// Crate directory for your Rust project
     #[arg(long)]
     pub rust_crate_dir: Option<String>,
