@@ -40,6 +40,10 @@ mod tests {
             items.iter().map(|x| x.file_name().unwrap().to_str().unwrap().to_owned()).collect()
         }
 
+        assert_eq!(PathBuf::from("/a/b").join("*.rs"), PathBuf::from("/a/b/*.rs"));
+        assert_eq!(PathBuf::from("/a/b").join("c/*.rs"), PathBuf::from("/a/b/c/*.rs"));
+        assert_eq!(PathBuf::from("/a/b").join("/c/*.rs"), PathBuf::from("/c/*.rs"));
+
         assert_eq!(
             extract_names(&glob_path("a*.rs", &temp_dir.path())?),
             vec!["apple.rs".to_owned(), "aha.rs".to_owned()].into_iter().collect(),
