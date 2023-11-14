@@ -4,11 +4,7 @@ use lib_flutter_rust_bridge_codegen::*;
 use lib_flutter_rust_bridge_codegen::codegen::ConfigDump;
 
 fn main() -> anyhow::Result<()> {
-    let app = <Cli as clap::CommandFactory>::command();
-    let app = add_negations(app);
-    let matches = app.try_get_matches()?;
-    let cli = Cli::from_arg_matches(&matches)?;
-
+    let cli = Cli::parse();
     println!("cli={cli:#?}");
 
     match cli.command {
@@ -25,38 +21,6 @@ fn main() -> anyhow::Result<()> {
 struct Cli {
     #[command(subcommand)]
     command: Commands,
-}
-
-// Every option should have a --no- variant that makes it as if it was
-// never passed.
-// https://github.com/clap-rs/clap/issues/815
-// https://github.com/ducaale/xh/blob/1a74a521e1f1def2f9463abcfe05b448f04c27be/src/cli.rs#L583
-fn add_negations(mut command: Command) -> Command {
-    let subcommand_names = command.get_subcommands().map(|c| c.get_name().to_string()).collect_vec();
-    for subcommand_name in subcommand_names {
-        command = command.mut_subcommand(subcommand_name, add_negations);
-    }
-
-    let negations: Vec<_> = command
-        .get_arguments()
-        .filter(|a| !a.is_positional())
-        .map(|opt| {
-            let long = opt.get_long().expect("long option");
-            let negated_long: &'static str = Box::leak(format!("no-{}", long).into_boxed_str());
-
-            clap::Arg::new(negated_long)
-                .long(negated_long)
-                .action(ArgAction::SetTrue)
-                .help(format!("The opposite of --{long}"))
-                // overrides_with is enough to make the flags take effect
-                // We never have to check their values, they'll simply
-                // unset previous occurrences of the original flag
-                .overrides_with(opt.get_id())
-        })
-        .collect();
-    command = command.args(negations);
-
-    command
 }
 
 #[derive(Debug, Subcommand)]
