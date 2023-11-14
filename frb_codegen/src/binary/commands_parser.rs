@@ -2,6 +2,10 @@ use lib_flutter_rust_bridge_codegen::codegen;
 use crate::binary::commands::GenerateCommandArgs;
 
 pub(crate) fn parse_generate_command_args(args: GenerateCommandArgs) -> codegen::Config {
+    if no_args {
+        todo!("from yaml")
+    }
+
     if args.config_file {
         todo!()
     }
