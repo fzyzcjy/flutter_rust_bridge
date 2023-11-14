@@ -12,7 +12,7 @@ use log::LevelFilter;
 /// use lib_flutter_rust_bridge_codegen::init_logger;
 /// init_logger("./logs/", false).expect("failed to initialize log");
 /// ```
-pub fn init_logger(path: &str, verbose: bool) -> Result<(), fern::InitError> {
+pub(crate) fn init_logger(path: &str, verbose: bool) -> Result<(), fern::InitError> {
     let colored_output = ColoredLevelConfig::new()
         .error(Color::Red)
         .warn(Color::Yellow)
