@@ -47,12 +47,12 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
                 fallback_rust_crate_dir(each_rust_input_path)
                     .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("rust_crate_dir")))
             })
-            .collect::<Vec<_>>()
+            .collect_vec()
     });
     let rust_crate_dirs = rust_crate_dirs
         .iter()
         .map(|each_path| canon_path(each_path))
-        .collect::<Vec<_>>();
+        .collect_vec();
     if rust_crate_dirs.len() != rust_input_paths.len() {
         raw_opts_bail(
             ErrorKind::WrongNumberOfValues,
@@ -68,7 +68,7 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
             path.push("Cargo.toml");
             path_to_string(path).unwrap()
         })
-        .collect::<Vec<_>>();
+        .collect_vec();
 
     // rust output path(s)
     let rust_output_paths = get_outputs_for_flag_requires_full_data(
@@ -80,7 +80,7 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
     let rust_output_paths = rust_output_paths
         .iter()
         .map(|each_path| canon_path(each_path))
-        .collect::<Vec<_>>();
+        .collect_vec();
     if rust_output_paths.len() != rust_input_paths.len() {
         raw_opts_bail(
             ErrorKind::WrongNumberOfValues,
@@ -108,8 +108,6 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
         );
     }
 
-    let skip_deps_check = raw.skip_deps_check;
-
     // get correct c outputs for all rust inputs
     let refined_c_outputs =
         get_refined_c_output(&raw.c_output, &raw.extra_c_output_path, &rust_input_paths);
@@ -131,10 +129,6 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
         .dart_decl_output
         .as_ref()
         .map(|s| canon_path(s.as_str()));
-    let dart_format_line_length = raw.dart_format_line_length;
-    let dart_enums_style = raw.dart_enums_style;
-    let llvm_paths = get_llvm_paths(&raw.llvm_path);
-    let llvm_compiler_opts = raw.llvm_compiler_opts.clone().unwrap_or_default();
 }
 
 #[inline(never)]
@@ -153,7 +147,7 @@ fn get_outputs_for_flag_requires_full_data(
             vec![fallback_func(&fallback_paths[0])
                 .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error(field_str)))]
         } else {
-            let strs = field_str.split('_').collect::<Vec<_>>();
+            let strs = field_str.split('_').collect_vec();
             let raw_str = strs.join(" ");
             let flag_str = strs.join("-");
             raw_opts_bail(
@@ -161,26 +155,6 @@ fn get_outputs_for_flag_requires_full_data(
                 format!("for more than 1 rust blocks, please specify each {raw_str} clearly with flag \"{flag_str}\"").into()
             )
         }
-    })
-}
-
-fn get_llvm_paths(llvm_path: &Option<Vec<String>>) -> Vec<String> {
-    llvm_path.clone().unwrap_or_else(|| {
-        vec![
-            "/opt/homebrew/opt/llvm".to_owned(), // Homebrew root
-            "/usr/local/opt/llvm".to_owned(),    // Homebrew x86-64 root
-            // Possible Linux LLVM roots
-            "/usr/lib/llvm-9".to_owned(),
-            "/usr/lib/llvm-10".to_owned(),
-            "/usr/lib/llvm-11".to_owned(),
-            "/usr/lib/llvm-12".to_owned(),
-            "/usr/lib/llvm-13".to_owned(),
-            "/usr/lib/llvm-14".to_owned(),
-            "/usr/lib/".to_owned(),
-            "/usr/lib64/".to_owned(),
-            "C:/Program Files/llvm".to_owned(), // Default on Windows
-            "C:/msys64/mingw64".to_owned(), // https://packages.msys2.org/package/mingw-w64-x86_64-clang
-        ]
     })
 }
 
@@ -255,7 +229,7 @@ fn get_valid_canon_paths(paths: &[String]) -> Vec<String> {
         .iter()
         .filter(|p| !p.trim().is_empty())
         .map(|p| canon_path(p))
-        .collect::<Vec<_>>()
+        .collect_vec()
 }
 
 pub(crate) fn format_fail_to_guess_error(name: &str) -> String {
