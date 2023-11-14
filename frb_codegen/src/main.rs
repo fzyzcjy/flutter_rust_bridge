@@ -8,13 +8,14 @@ use itertools::Itertools;
 use log::debug;
 use lib_flutter_rust_bridge_codegen::*;
 use crate::binary::commands::{Cli, Commands};
+use crate::binary::commands_parser::parse_generate_command_args;
 
 fn main() -> anyhow::Result<()> {
     let cli = Cli::parse();
     debug!("cli={cli:?}");
 
     match cli.command {
-        Commands::Generate(args) => codegen::generate(&args.into_config())?,
+        Commands::Generate(args) => codegen::generate(&parse_generate_command_args(args))?,
         Commands::Create(args) => integration::create(&args.name)?,
         Commands::Integrate(_) => integration::integrate()?,
     }
