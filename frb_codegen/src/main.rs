@@ -1,6 +1,5 @@
 use clap::{Args, Parser, Subcommand, ArgAction, FromArgMatches, Command};
 use itertools::Itertools;
-use serde::Deserialize;
 use lib_flutter_rust_bridge_codegen::*;
 use lib_flutter_rust_bridge_codegen::codegen::ConfigDump;
 
@@ -72,8 +71,11 @@ enum Commands {
     Integrate(IntegrateCommandArgs),
 }
 
+// Deliberately decoupled from `codegen::Config`,
+// because the command line arguments contains extra things like `--config-file`,
+// which is not a config to the real codegen.
 // TODO clean up the api and docs
-#[derive(Debug, Args, Deserialize)]
+#[derive(Debug, Args)]
 struct GenerateCommandArgs {
     /// Path of input Rust code
     #[arg(short, long)]

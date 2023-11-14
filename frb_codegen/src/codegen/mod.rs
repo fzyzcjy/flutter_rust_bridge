@@ -12,6 +12,7 @@ pub fn generate(config: &Config) -> anyhow::Result<()> {
 pub struct Config {
     // TODO
 }
+// TODO
 
 #[derive(Debug, PartialEq, Eq, Clone, Copy, Deserialize, ValueEnum, enum_iterator::Sequence)]
 #[serde(rename_all = "snake_case")]
