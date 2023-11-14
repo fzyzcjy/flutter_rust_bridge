@@ -9,8 +9,8 @@ pub struct IrTypePrimitiveList {
 }
 
 impl IrTypeTrait for IrTypePrimitiveList {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, _ir_file: &IrFile) {
-        f(&IrType::Primitive(self.primitive.clone()));
+    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile) {
+        IrType::Primitive(self.primitive.clone()).visit_types(f, ir_file);
     }
 
     fn safe_ident(&self) -> String {
