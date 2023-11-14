@@ -272,21 +272,6 @@ fn fallback_rust_output_path(rust_input_path: &str) -> Result<String> {
         .to_string())
 }
 
-fn fallback_dart_root(dart_output_path: &str) -> Result<String> {
-    let mut res = canon_pathbuf(dart_output_path);
-    while res.pop() {
-        if res.join("pubspec.yaml").is_file() {
-            return res
-                .to_str()
-                .map(ToString::to_string)
-                .context("Not a UTF-8 path");
-        }
-    }
-    Err(anyhow!(
-        "Root of Dart library could not be inferred from Dart output"
-    ))
-}
-
 fn fallback_class_name(rust_crate_dir: &str) -> Result<String> {
     let cargo_toml_path = Path::new(rust_crate_dir).join("Cargo.toml");
     let cargo_toml_content = fs::read_to_string(cargo_toml_path)?;

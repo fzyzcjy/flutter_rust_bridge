@@ -26,7 +26,7 @@ pub(crate) struct GeneratorDartInternalConfig {
     pub dart_output_paths: DartOutputPaths,
     pub dart_enums_style: bool,
     pub class_name: String,
-    pub dart_root: Option<String>,
+    pub dart_root: PathBuf,
     pub use_bridge_in_method: bool,
     pub wasm_enabled: bool,
     pub dart3: bool,
