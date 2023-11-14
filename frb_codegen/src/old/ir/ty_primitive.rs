@@ -2,10 +2,6 @@ use crate::ir::*;
 use crate::target::Target;
 
 impl IrTypeTrait for IrTypePrimitive {
-    fn safe_ident(&self) -> String {
-        self.rust_api_type()
-    }
-
     fn dart_api_type(&self) -> String {
         match self {
             IrTypePrimitive::U8

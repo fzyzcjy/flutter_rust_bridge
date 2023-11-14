@@ -50,4 +50,6 @@ impl IrType {
 #[enum_dispatch]
 pub trait IrTypeTrait {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile);
+
+    fn safe_ident(&self) -> String;
 }

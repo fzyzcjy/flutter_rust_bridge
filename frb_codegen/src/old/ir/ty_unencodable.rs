@@ -44,14 +44,6 @@ impl Splayable for Vec<NameComponent> {
 }
 
 impl IrTypeTrait for IrTypeUnencodable {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, _f: &mut F, _ir_file: &IrFile) {
-        // Do nothing.
-    }
-
-    fn safe_ident(&self) -> String {
-        todo!("generate code for type \"{}\"", self.string);
-    }
-
     fn dart_api_type(&self) -> String {
         todo!("generate code for type \"{}\"", self.string);
     }

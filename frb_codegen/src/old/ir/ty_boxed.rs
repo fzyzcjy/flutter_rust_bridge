@@ -2,22 +2,6 @@ use crate::ir::*;
 use crate::target::Target;
 
 impl IrTypeTrait for IrTypeBoxed {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile) {
-        self.inner.visit_types(f, ir_file);
-    }
-
-    fn safe_ident(&self) -> String {
-        format!(
-            "box_{}{}",
-            if self.exist_in_real_api {
-                ""
-            } else {
-                "autoadd_"
-            },
-            self.inner.safe_ident()
-        )
-    }
-
     fn dart_api_type(&self) -> String {
         self.inner.dart_api_type()
     }
