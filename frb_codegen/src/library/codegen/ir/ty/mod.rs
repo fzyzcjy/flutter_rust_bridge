@@ -1,4 +1,7 @@
+pub(crate) mod primitive;
+
 use enum_dispatch::enum_dispatch;
+use primitive::IrTypePrimitive;
 
 crate::ir! {
 // Remark: "Ty" instead of "Type", since "type" is a reserved word in Rust.
