@@ -1,10 +1,10 @@
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 
 crate::ir! {
-    #[no_serde]
-    pub struct IrTypeOptionalList {
-        pub inner: Box<IrType>,
-    }
+#[no_serde]
+pub struct IrTypeOptionalList {
+    pub inner: Box<IrType>,
+}
 }
 
 impl IrTypeTrait for IrTypeOptionalList {

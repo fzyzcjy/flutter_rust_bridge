@@ -1,6 +1,8 @@
+use convert_case::{Case, Casing};
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 
 crate::ir! {
+#[derive(strum_macros::ToString, Debug)]
 pub enum IrTypePrimitive {
     U8,
     I8,
@@ -23,6 +25,6 @@ impl IrTypeTrait for IrTypePrimitive {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, _f: &mut F, _ir_file: &IrFile) {}
 
     fn safe_ident(&self) -> String {
-        self.rust_api_type()
+        self.to_string().to_case(Case::Snake)
     }
 }

@@ -1,4 +1,4 @@
-use convert_case::Case;
+use convert_case::{Case, Casing};
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 
 crate::ir! {
@@ -21,6 +21,6 @@ impl IrTypeTrait for IrTypeEnumRef {
     }
 
     fn safe_ident(&self) -> String {
-        self.dart_api_type().to_case(Case::Snake)
+        self.name.to_case(Case::Snake)
     }
 }

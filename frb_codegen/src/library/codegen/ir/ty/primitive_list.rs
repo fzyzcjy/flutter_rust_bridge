@@ -14,6 +14,6 @@ impl IrTypeTrait for IrTypePrimitiveList {
     }
 
     fn safe_ident(&self) -> String {
-        self.dart_api_type().to_case(Case::Snake)
+        format!("list_prim_{}", self.inner.safe_ident())
     }
 }
