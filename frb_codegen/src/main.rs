@@ -197,8 +197,8 @@ mod tests {
 
     #[test]
     fn test_args_to_codegen_config() {
-        assert_eq!(args_to_codegen_config(vec!["generate"]).dart3, Some(true));
-        assert_eq!(args_to_codegen_config(vec!["generate", "--no-dart3"]).dart3, Some(false));
+        assert_eq!(args_to_codegen_config(vec!["", "generate"]).dart3, Some(true));
+        assert_eq!(args_to_codegen_config(vec!["", "generate", "--no-dart3"]).dart3, Some(false));
     }
 
     fn args_to_codegen_config(args: Vec<&'static str>) -> codegen::Config {
