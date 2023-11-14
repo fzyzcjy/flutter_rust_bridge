@@ -125,10 +125,6 @@ pub(crate) struct GenerateCommandArgs {
     #[arg(long)]
     pub no_dart3: bool,
 
-    /// If set, the program will delay error reporting until all codegen operations have completed.
-    #[arg(long)]
-    pub keep_going: bool,
-
     /// A list of data to be dumped. If specified without a value, defaults to all.
     #[arg(long, value_enum, num_args = 0.., default_missing_values = ["config", "ir"])]
     pub dump: Option<Vec<ConfigDump>>,

@@ -26,7 +26,6 @@ pub struct Config {
     pub inline_rust: Option<bool>,
     pub deps_check: Option<bool>,
     pub dart3: Option<bool>,
-    pub keep_going: Option<bool>,
     pub dump: Option<Vec<ConfigDump>>,
 }
 

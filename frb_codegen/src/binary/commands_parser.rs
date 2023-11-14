@@ -41,7 +41,6 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> 
         inline_rust: Some(args.inline_rust),
         deps_check: Some(!args.no_deps_check),
         dart3: Some(!args.no_dart3),
-        keep_going: Some(args.keep_going),
         dump: args.dump,
     }
 }
