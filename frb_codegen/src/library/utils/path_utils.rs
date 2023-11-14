@@ -2,7 +2,7 @@ use std::path::{Path, PathBuf};
 use anyhow::{anyhow, Context};
 
 pub fn canonicalize_path<P: AsRef<Path>>(raw_path: P, base_dir: &Path) -> PathBuf {
-    todo!()
+    base_dir.join(raw_path)
 }
 
 pub fn glob_path(raw_path: &str, base_dir: &Path) -> Vec<PathBuf> {
