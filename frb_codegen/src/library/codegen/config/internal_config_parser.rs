@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use std::fmt::format;
 use std::path::{Path, PathBuf};
 use anyhow::{Context, ensure, Result};
 use convert_case::{Case, Casing};
@@ -140,10 +141,12 @@ fn fallback_llvm_path() -> Vec<String> {
 
 fn fallback_dart_root(dart_output_dir: &Path) -> Result<PathBuf> {
     find_parent_dir_with_file(dart_output_dir, "pubspec.yaml")
+        .with_context(|| format!("Fail to detect dart root from dart_output_dir={dart_output_dir:?}"))
 }
 
 fn fallback_rust_crate_dir(rust_input_path: &Path) -> Result<PathBuf> {
     find_parent_dir_with_file(rust_input_path, "Cargo.toml")
+        .with_context(|| format!("Fail to detect rust crate dir from rust_input_path={rust_input_path:?}"))
 }
 
 fn fallback_rust_output_path(rust_input_path: &Path) -> PathBuf {
