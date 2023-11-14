@@ -50,7 +50,7 @@ impl Config {
                 Ok(Needle { data: Some(data) }) => Ok(Some(data)),
                 Ok(Needle { data: None }) => Ok(None),
                 Err(err) => Err(Error::new(err)
-                    .context(format!("Could not parse the 'flutter_rust_bridge' entry in {location}"))),
+                    .context(format!("Could not parse the 'flutter_rust_bridge' entry in {PUBSPEC_LOCATION}"))),
             };
         }
 
