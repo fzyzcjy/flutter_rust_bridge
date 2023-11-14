@@ -24,5 +24,4 @@ pub(crate) struct InternalConfig {
     pub dart3: bool,
     pub keep_going: bool,
     pub manifest_path: Path,
-    pub block_index: BlockIndex, // TODO
 }
