@@ -3,6 +3,7 @@
 mod config_parser;
 mod internal_config;
 mod internal_config_parser;
+mod config;
 
 pub use config_parser::*;
 
