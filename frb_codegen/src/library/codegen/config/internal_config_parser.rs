@@ -29,7 +29,7 @@ impl InternalConfig {
                     c_output_path: TODO,
                     llvm_path: TODO,
                     llvm_compiler_opts: TODO,
-                    extra_headers: get_extra_headers(&config),
+                    extra_headers: config.extra_headers.unwrap_or_else(String::new),
                 },
             },
             polisher: PolisherInternalConfig {
@@ -41,9 +41,4 @@ impl InternalConfig {
             },
         })
     }
-}
-
-fn get_extra_headers(config: &Config) -> String {
-    config.extra_headers.unwrap_or_else(||
-        if config.use_bridge_in_method { "" } else { "import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';" }.to_owned())
 }

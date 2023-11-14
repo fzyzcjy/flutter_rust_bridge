@@ -129,13 +129,13 @@ impl DartApiSpec {
             .funcs
             .iter()
             .map(|f| generate_api_func(f, ir_file, &dart_api2wire_funcs.common)))
-        .chain(
-            distinct_output_types
-                .iter()
-                .filter(|ty| ty.is_rust_opaque() || ty.is_sync_rust_opaque())
-                .map(generate_opaque_getters),
-        )
-        .collect::<Vec<_>>();
+            .chain(
+                distinct_output_types
+                    .iter()
+                    .filter(|ty| ty.is_rust_opaque() || ty.is_sync_rust_opaque())
+                    .map(generate_opaque_getters),
+            )
+            .collect::<Vec<_>>();
 
         let dart_api_fill_to_wire_funcs = distinct_input_types
             .iter()
@@ -235,12 +235,9 @@ fn generate_common_header() -> DartBasicCode {
             "import 'dart:convert';
             import 'dart:async';
             import 'package:meta/meta.dart';
-            import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';",
-            // if cfg!(feature = "uuid") {
-            "import 'package:uuid/uuid.dart';",
-            // } else {
-            //     ""
-            // },
+            import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+            import 'package:uuid/uuid.dart';",
+            if config.use_bridge_in_method { "" } else { "import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';" },
         ),
         part: "".to_string(),
         body: "".to_string(),
@@ -334,12 +331,12 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
             let plat = &dart_platform_class_name;
             let wire = &dart_wire_class_name;
             format!(
-            "class {plat} extends FlutterRustBridgeBase<{wire}> with FlutterRustBridgeSetupMixin {{
+                "class {plat} extends FlutterRustBridgeBase<{wire}> with FlutterRustBridgeSetupMixin {{
                 {plat}(FutureOr<WasmModule> dylib) : super({wire}(dylib)) {{
                     setupMixinConstructor();
                 }}
                 Future<void> setup() => inner.init;",
-        )
+            )
         },
     });
 
@@ -444,10 +441,10 @@ fn generate_dart_declaration_code(
         + &freezed_header
         + &import_header
         + &DartBasicCode {
-            import: "".to_string(),
-            part: "".to_string(),
-            body: declaration_body,
-        }
+        import: "".to_string(),
+        part: "".to_string(),
+        body: declaration_body,
+    }
 }
 
 fn generate_dart_implementation_code(
@@ -462,7 +459,7 @@ fn generate_file_prelude() -> DartBasicCode {
         import: format!("{}
             // ignore_for_file: non_constant_identifier_names, unused_element, duplicate_ignore, directives_ordering, curly_braces_in_flow_control_structures, unnecessary_lambdas, slash_for_doc_comments, prefer_const_literals_to_create_immutables, implicit_dynamic_list_literal, duplicate_import, unused_import, unnecessary_import, prefer_single_quotes, prefer_const_constructors, use_super_parameters, always_use_package_imports, annotate_overrides, invalid_use_of_protected_member, constant_identifier_names, invalid_use_of_internal_member, prefer_is_empty, unnecessary_const
             ",
-            code_header()
+                        code_header()
         ),
         part: "".to_string(),
         body: "".to_string(),
@@ -493,7 +490,7 @@ fn generate_api2wire_func(ty: &IrType, ir_file: &IrFile, config: &Opts) -> Acc<S
                 body,
             )
         })
-        .unwrap_or_default()
+            .unwrap_or_default()
     })
 }
 
@@ -586,8 +583,8 @@ fn dart_metadata(metadata: &[IrDartAnnotation]) -> String {
         .iter()
         .map(|it| match &it.library {
             Some(IrDartImport {
-                alias: Some(alias), ..
-            }) => format!("@{}.{}", alias, it.content),
+                     alias: Some(alias), ..
+                 }) => format!("@{}.{}", alias, it.content),
             _ => format!("@{}", it.content),
         })
         .collect::<Vec<_>>()
