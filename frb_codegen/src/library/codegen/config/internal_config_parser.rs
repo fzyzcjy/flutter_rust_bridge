@@ -1,11 +1,11 @@
 use std::path::{Path, PathBuf};
-use anyhow::{anyhow, Context, Result};
+use anyhow::{anyhow, bail, Context, ensure, Result};
 use itertools::Itertools;
 use log::debug;
 use crate::codegen::Config;
 use crate::codegen::config::internal_config::{DartOutputPaths, GeneratorCInternalConfig, GeneratorDartInternalConfig, GeneratorInternalConfig, GeneratorRustInternalConfig, InternalConfig, ParserInternalConfig, PolisherInternalConfig, RustOutputPaths};
 use crate::utils::fp::Also;
-use crate::utils::path_utils::{canonicalize_path, glob_path};
+use crate::utils::path_utils::{canonicalize_path, glob_path, path_to_string};
 
 impl InternalConfig {
     pub(crate) fn parse(config: Config) -> Result<Self> {
@@ -23,6 +23,8 @@ impl InternalConfig {
         let c_output_path = canonicalize_path(&config.c_output, &base_dir);
         let duplicated_c_output_path = config.duplicated_c_output.unwrap_or_default()
             .into_iter().map(|p| canonicalize_path(&p, &base_dir)).collect();
+
+        sanity_check_rust_input_path(rust_input_path)?;
 
         Ok(InternalConfig {
             parser: ParserInternalConfig {
@@ -64,6 +66,14 @@ impl InternalConfig {
             },
         })
     }
+}
+
+fn sanity_check_rust_input_path(rust_input_paths: Vec<PathBuf>) -> Result<()> {
+    ensure!(
+        !rust_input_paths.iter().any(|p| path_to_string(p)?.contains("lib.rs")),
+        "Do not use `lib.rs` as a Rust input. Please put code to be generated in something like `api.rs`.",
+    );
+    Ok(())
 }
 
 fn default_llvm_path() -> Vec<String> {
