@@ -142,54 +142,17 @@ fn fallback_rust_output_path(rust_input_path: &Path) -> PathBuf {
 
 #[cfg(test)]
 mod tests {
-    use crate::codegen::Config;
-    use crate::codegen::config::internal_config::InternalConfig;
-
     #[test]
     fn test_parse_paths_simple() -> anyhow::Result<()> {
-        let output = InternalConfig::parse(Config {
-            rust_input: Some(vec!["api.rs".to_string()]),
-            dart_output: Some("api.dart".to_string()),
-            ..Default::default()
-        })?;
-
-        assert_eq!(output.parser.rust_input_path, todo);
-        assert_eq!(output.generator.rust.rust_output_path, todo);
-        assert_eq!(output.generator.dart.dart_output_path, todo);
-        assert_eq!(output.generator.c.c_output_path, todo);
-
-        Ok(())
-    }
-
-    #[test]
-    fn test_parse_paths_multi_literal_input() -> anyhow::Result<()> {
-        let output = InternalConfig::parse(Config {
-            rust_input: Some(vec!["api_1.rs".to_string(), "api_2.rs".to_string()]),
-            dart_output: Some("api.dart".to_string()),
-            ..Default::default()
-        })?;
-
-        assert_eq!(output.parser.rust_input_path, todo);
-        assert_eq!(output.generator.rust.rust_output_path, todo);
-        assert_eq!(output.generator.dart.dart_output_path, todo);
-        assert_eq!(output.generator.c.c_output_path, todo);
-
-        Ok(())
+        todo!()
     }
 
     #[test]
     fn test_parse_paths_regex_input() -> anyhow::Result<()> {
-        let output = InternalConfig::parse(Config {
-            rust_input: Some(vec!["api.*.rs".to_string()]),
-            dart_output: Some("api.dart".to_string()),
-            ..Default::default()
-        })?;
+        todo!()
+    }
 
-        assert_eq!(output.parser.rust_input_path, todo);
-        assert_eq!(output.generator.rust.rust_output_path, todo);
-        assert_eq!(output.generator.dart.dart_output_path, todo);
-        assert_eq!(output.generator.c.c_output_path, todo);
+    fn body() -> anyhow::Result<()> {
 
-        Ok(())
     }
 }
