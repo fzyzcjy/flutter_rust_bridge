@@ -1,13 +1,12 @@
 use std::path::{Path, PathBuf};
 use anyhow::{anyhow, Context, Result};
 
-pub fn glob_path(raw_path: &str, base_dir: &Path) -> Result<Vec<PathBuf>> {
-    let pattern = base_dir.join(raw_path);
+pub fn glob_path(pattern: &Path) -> Result<Vec<PathBuf>> {
     let pattern = pattern.to_str().context("cannot convert to str")?;
     Ok(glob::glob(pattern)?.filter_map(Result::ok).collect())
 }
 
-pub fn path_to_string(path: &Path) -> anyhow::Result<String> {
+pub fn path_to_string(path: &Path) -> Result<String> {
     Ok(path.to_str().context("cannot convert path to str")?.to_owned())
 }
 
@@ -45,22 +44,12 @@ mod tests {
         assert_eq!(PathBuf::from("/a/b").join("/c/*.rs"), PathBuf::from("/c/*.rs"));
 
         assert_eq!(
-            extract_names(&glob_path("a*.rs", &temp_dir.path())?),
-            vec!["apple.rs".to_owned(), "aha.rs".to_owned()].into_iter().collect(),
-        );
-
-        assert_eq!(
-            extract_names(&glob_path("*.rs", &temp_dir.path())?),
+            extract_names(&glob_path(&temp_dir.path().join("*.rs"))?),
             vec!["apple.rs".to_owned(), "orange.rs".to_owned(), "aha.rs".to_owned()].into_iter().collect(),
         );
 
         assert_eq!(
-            extract_names(&glob_path(temp_dir.path().join("*.rs").to_str().unwrap(), &PathBuf::from("/hello/world"))?),
-            vec!["apple.rs".to_owned(), "orange.rs".to_owned(), "aha.rs".to_owned()].into_iter().collect(),
-        );
-
-        assert_eq!(
-            extract_names(&glob_path(temp_dir.path().join("a*.rs").to_str().unwrap(), &PathBuf::from("/hello/world"))?),
+            extract_names(&glob_path(&temp_dir.path().join("a*.rs"))?),
             vec!["apple.rs".to_owned(), "aha.rs".to_owned()].into_iter().collect(),
         );
 
