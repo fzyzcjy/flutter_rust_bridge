@@ -1,5 +1,9 @@
 //! Code generator for `flutter_rust_bridge`
 
+mod config_parser;
+
+pub use config_parser::*;
+
 use clap::ValueEnum;
 use log::debug;
 use serde::Deserialize;
