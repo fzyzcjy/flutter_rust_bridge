@@ -61,12 +61,13 @@ mod tests {
 
         let temp_dir = tempdir()?;
         std::env::set_current_dir(&temp_dir)?;
-        fs::write(temp_dir.path().join(".flutter_rust_bridge.yaml"), "rust_input: hello.rs\ndart3: false")?;
+        fs::write(&temp_dir.path().join(".flutter_rust_bridge.yaml"), "rust_input: hello.rs\ndart3: false")?;
 
         let config = run_command_line(vec!["", "generate"]);
         assert_eq!(config.rust_input.unwrap(), "hello.rs");
         assert_eq!(config.dart3.unwrap(), false);
 
+        drop(temp_dir); // to avoid dropping too early
         Ok(())
     }
 
@@ -76,12 +77,13 @@ mod tests {
 
         let temp_dir = tempdir()?;
         std::env::set_current_dir(&temp_dir)?;
-        fs::write(temp_dir.path().join("pubspec.yaml"), "flutter_rust_bridge:\n  rust_input: hello.rs\n  dart3: false")?;
+        fs::write(&temp_dir.path().join("pubspec.yaml"), "flutter_rust_bridge:\n  rust_input: hello.rs\n  dart3: false")?;
 
         let config = run_command_line(vec!["", "generate"]);
         assert_eq!(config.rust_input.unwrap(), "hello.rs");
         assert_eq!(config.dart3.unwrap(), false);
 
+        drop(temp_dir);
         Ok(())
     }
 
@@ -91,12 +93,13 @@ mod tests {
 
         let temp_dir = tempdir()?;
         std::env::set_current_dir(&temp_dir)?;
-        fs::write(temp_dir.path().join("hello.yaml"), "rust_input: hello.rs\ndart3: false")?;
+        fs::write(&temp_dir.path().join("hello.yaml"), "rust_input: hello.rs\ndart3: false")?;
 
         let config = run_command_line(vec!["", "generate", "--config-file", "hello.yaml"]);
         assert_eq!(config.rust_input.unwrap(), "hello.rs");
         assert_eq!(config.dart3.unwrap(), false);
 
+        drop(temp_dir);
         Ok(())
     }
 
