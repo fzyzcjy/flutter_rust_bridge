@@ -5,6 +5,10 @@ use lib_flutter_rust_bridge_codegen::codegen::ConfigDump;
 #[derive(Debug, Parser)]
 #[command(author, version, about, long_about = None)]
 pub(crate) struct Cli {
+    /// Show debug messages.
+    #[arg(short, long)]
+    pub verbose: bool,
+
     #[command(subcommand)]
     pub(crate) command: Commands,
 }
@@ -99,10 +103,6 @@ pub(crate) struct GenerateCommandArgs {
     /// the default is `import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart'`.
     #[arg(long)]
     pub extra_headers: Option<String>,
-
-    /// Show debug messages.
-    #[arg(short, long)]
-    pub verbose: bool,
 
     /// Enable WASM module generation.
     /// Requires: --dart-decl-output

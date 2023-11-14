@@ -6,13 +6,16 @@ mod binary;
 use clap::Parser;
 use log::debug;
 use lib_flutter_rust_bridge_codegen::*;
+use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_logging;
 use crate::binary::commands::{Cli, Commands};
 use crate::binary::commands_parser::compute_codegen_config;
 
 fn main() -> anyhow::Result<()> {
     let cli = Cli::parse();
-    debug!("cli={cli:?}");
 
+    configure_opinionated_logging("./logs/", cli.verbose)?;
+
+    debug!("cli={cli:?}");
     match cli.command {
         Commands::Generate(args) => codegen::generate(&compute_codegen_config(args)?)?,
         Commands::Create(args) => integration::create(&args.name)?,
