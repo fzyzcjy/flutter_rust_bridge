@@ -7,17 +7,20 @@ pub(crate) struct InternalConfig {
     pub polisher: PolisherInternalConfig,
 }
 
+#[derive(Debug, Clone, serde::Serialize)]
 pub(crate) struct ParserInternalConfig {
     pub rust_input_path: Vec<PathBuf>,
     pub manifest_path: PathBuf,
 }
 
+#[derive(Debug, Clone, serde::Serialize)]
 pub(crate) struct GeneratorInternalConfig {
     pub dart: GeneratorDartInternalConfig,
     pub rust: GeneratorRustInternalConfig,
     pub c: GeneratorCInternalConfig,
 }
 
+#[derive(Debug, Clone, serde::Serialize)]
 pub(crate) struct GeneratorDartInternalConfig {
     pub dart_output_path: PathBuf,
     pub dart_decl_output_path: Option<PathBuf>,
@@ -29,12 +32,14 @@ pub(crate) struct GeneratorDartInternalConfig {
     pub dart3: bool,
 }
 
+#[derive(Debug, Clone, serde::Serialize)]
 pub(crate) struct GeneratorRustInternalConfig {
     pub rust_crate_dir: String,
     pub rust_output_path: PathBuf,
     pub inline_rust: bool,
 }
 
+#[derive(Debug, Clone, serde::Serialize)]
 pub(crate) struct GeneratorCInternalConfig {
     pub c_output_path: Vec<PathBuf>,
     pub llvm_path: Vec<PathBuf>,
@@ -42,7 +47,7 @@ pub(crate) struct GeneratorCInternalConfig {
     pub extra_headers: String,
 }
 
-// TODO naming
+#[derive(Debug, Clone, serde::Serialize)]
 pub(crate) struct PolisherInternalConfig {
     pub extra_c_output_path: Vec<PathBuf>,
     pub dart_format_line_length: u32,
