@@ -77,7 +77,7 @@ impl RustInputPathPack {
 }
 
 fn compute_rust_input_path_pack(raw_rust_input: &str, base_dir: &Path) -> Result<RustInputPathPack> {
-    let paths = glob_path(raw_rust_input, base_dir);
+    let paths = glob_path(raw_rust_input, base_dir)?;
 
     let pack = RustInputPathPack {
         rust_input_path: paths.into_iter()
