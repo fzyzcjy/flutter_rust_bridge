@@ -1,38 +1,10 @@
 use crate::{ir::*, target::Target};
-use enum_dispatch::enum_dispatch;
+use nnum_dispatch::enum_dispatch;
 use std::collections::HashSet;
 use IrType::*;
 
-crate::ir! {
-/// Remark: "Ty" instead of "Type", since "type" is a reserved word in Rust.
-#[enum_dispatch(IrTypeTrait)]
-pub enum IrType {
-    Primitive(IrTypePrimitive),
-    Delegate(IrTypeDelegate),
-    PrimitiveList(IrTypePrimitiveList),
-    Optional(IrTypeOptional),
-    OptionalList(IrTypeOptionalList),
-    GeneralList(IrTypeGeneralList),
-    StructRef(IrTypeStructRef),
-    Boxed(IrTypeBoxed),
-    EnumRef(IrTypeEnumRef),
-    SyncReturn(IrTypeSyncReturn),
-    DartOpaque(IrTypeDartOpaque),
-    RustOpaque(IrTypeRustOpaque),
-    Dynamic(IrTypeDynamic),
-    Record(IrTypeRecord),
-    Unencodable(IrTypeUnencodable),
-}
-}
-
 impl IrType {
-    pub fn visit_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile) {
-        if f(self) {
-            return;
-        }
-        self.visit_children_types(f, ir_file);
-    }
-
+    // TODO note it has *duplicate* with IrFile
     pub fn distinct_types(&self, ir_file: &IrFile) -> Vec<IrType> {
         let mut seen_idents = HashSet::new();
         let mut ans = Vec::new();
@@ -141,7 +113,7 @@ impl IrType {
 
 #[enum_dispatch]
 pub trait IrTypeTrait {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile);
+    // fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile); // moved
     fn safe_ident(&self) -> String;
     fn dart_api_type(&self) -> String;
     fn dart_wire_type(&self, target: Target) -> String;
