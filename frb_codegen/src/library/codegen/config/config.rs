@@ -6,12 +6,12 @@ use serde::Deserialize;
 #[derive(Debug, Deserialize)]
 pub struct Config {
     pub base_dir: Option<String>,
-    pub rust_input: Option<String>,
-    pub dart_output: Option<String>,
-    pub c_output: Option<String>,
+    pub rust_input: String,
+    pub dart_output: String,
+    pub c_output: String,
     pub duplicated_c_output: Option<Vec<String>>,
     pub rust_crate_dir: Option<String>,
-    pub rust_output: Option<String>,
+    pub rust_output: String,
     pub class_name: Option<String>,
     pub dart_format_line_length: Option<u32>,
     pub dart_enums_style: Option<bool>,
