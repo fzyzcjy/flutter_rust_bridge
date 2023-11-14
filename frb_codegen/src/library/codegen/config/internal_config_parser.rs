@@ -165,6 +165,7 @@ mod tests {
     use std::fs;
     use log::debug;
     use serde_json::Value;
+    use serial_test::serial;
     use crate::codegen::Config;
     use crate::codegen::config::internal_config::InternalConfig;
     use crate::utils::logs::configure_opinionated_test_logging;
@@ -172,11 +173,13 @@ mod tests {
     use crate::utils::test_utils::{get_test_fixture_dir, set_cwd_test_fixture};
 
     #[test]
+    #[serial]
     fn test_parse_single_rust_input() -> anyhow::Result<()> {
         body("internal_config_parser/single_rust_input")
     }
 
     #[test]
+    #[serial]
     fn test_parse_wildcard_rust_input() -> anyhow::Result<()> {
         body("internal_config_parser/wildcard_rust_input")
     }
