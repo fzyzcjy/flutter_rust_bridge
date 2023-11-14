@@ -50,7 +50,7 @@ pub(crate) struct GenerateCommandArgs {
     pub c_output: Option<String>,
 
     /// Duplicate the files generated at the location `--c-output` specifies
-    #[arg(short, long)]
+    #[arg(long)]
     pub duplicated_c_output: Option<Vec<String>>,
 
     /// Crate directory for your Rust project
