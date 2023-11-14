@@ -49,26 +49,27 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
             })
             .collect_vec()
     });
-    let rust_crate_dirs = rust_crate_dirs
-        .iter()
-        .map(|each_path| canon_path(each_path))
-        .collect_vec();
-    if rust_crate_dirs.len() != rust_input_paths.len() {
-        raw_opts_bail(
-            ErrorKind::WrongNumberOfValues,
-            "--rust-crate-dir's inputs should match --rust-input's length".into(),
-        );
-    }
+    // no need anymore, we have single dir
+    // let rust_crate_dirs = rust_crate_dirs
+    //     .iter()
+    //     .map(|each_path| canon_path(each_path))
+    //     .collect_vec();
+    // if rust_crate_dirs.len() != rust_input_paths.len() {
+    //     raw_opts_bail(
+    //         ErrorKind::WrongNumberOfValues,
+    //         "--rust-crate-dir's inputs should match --rust-input's length".into(),
+    //     );
+    // }
 
-    // manifest path(s)
-    let manifest_paths = rust_crate_dirs
-        .iter()
-        .map(|each| {
-            let mut path = PathBuf::from_str(each).unwrap();
-            path.push("Cargo.toml");
-            path_to_string(path).unwrap()
-        })
-        .collect_vec();
+    // // manifest path(s)
+    // let manifest_paths = rust_crate_dirs
+    //     .iter()
+    //     .map(|each| {
+    //         let mut path = PathBuf::from_str(each).unwrap();
+    //         path.push("Cargo.toml");
+    //         path_to_string(path).unwrap()
+    //     })
+    //     .collect_vec();
 
     // rust output path(s)
     let rust_output_paths = get_outputs_for_flag_requires_full_data(

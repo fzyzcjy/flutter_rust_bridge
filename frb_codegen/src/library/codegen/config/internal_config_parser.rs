@@ -4,16 +4,20 @@ use itertools::Itertools;
 use log::debug;
 use crate::codegen::Config;
 use crate::codegen::config::internal_config::{DartOutputPaths, GeneratorCInternalConfig, GeneratorDartInternalConfig, GeneratorInternalConfig, GeneratorRustInternalConfig, InternalConfig, ParserInternalConfig, PolisherInternalConfig, RustOutputPaths};
+use crate::utils::fp::Also;
 
 impl InternalConfig {
     pub(crate) fn parse(config: Config) -> Result<Self> {
         let base_dir = config.base_dir.map(PathBuf::from).unwrap_or_else(|| std::env::current_dir()?);
         debug!("InternalConfig.parse base_dir={base_dir}");
 
+        let rust_crate_dir: PathBuf = config.rust_crate_dir.unwrap_or_else(|| TODO()).into();
+        let manifest_path = rust_crate_dir.clone().also(|p| p.push("Cargo.toml"));
+
         Ok(InternalConfig {
             parser: ParserInternalConfig {
                 rust_input_path: TODO,
-                manifest_path: TODO,
+                manifest_path,
             },
             generator: GeneratorInternalConfig {
                 dart: GeneratorDartInternalConfig {
@@ -29,7 +33,7 @@ impl InternalConfig {
                     dart3: config.dart3.unwrap_or(true),
                 },
                 rust: GeneratorRustInternalConfig {
-                    rust_crate_dir: TODO,
+                    rust_crate_dir,
                     rust_output_path: TODO,
                     inline_rust: config.inline_rust.unwrap_or(false),
                 },
