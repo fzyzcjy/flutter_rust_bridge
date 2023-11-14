@@ -49,6 +49,7 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> 
 mod tests {
     use std::path::PathBuf;
     use clap::Parser;
+    use itertools::concat;
     use lib_flutter_rust_bridge_codegen::codegen;
     use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_test_logging;
     use crate::binary::commands::{Cli, Commands};
@@ -107,9 +108,10 @@ mod tests {
         configure_opinionated_test_logging();
 
         // bool flags
-        assert_eq!(run_command_line(vec!["", "generate", "--dart-class-name", "hello"]).dart3, Some(true));
-        assert_eq!(run_command_line(vec!["", "generate", "--dart-class-name", "hello", "--no-dart3"]).dart3, Some(false));
-        assert_eq!(run_command_line(vec!["", "generate", "--rust-input", "hello.rs"]).rust_input, "hello.rs".to_string());
+        let common_args = vec!["", "generate", "--rust-input", "hello.rs", "--dart-output", "hello.dart"];
+        assert_eq!(run_command_line(common_args.clone()).dart3, Some(true));
+        assert_eq!(run_command_line(common_args.clone()).rust_input, "hello.rs".to_string());
+        assert_eq!(run_command_line(concat([common_args.clone(), vec!["--no-dart3"]])).dart3, Some(false));
     }
 
     fn run_command_line(args: Vec<&'static str>) -> codegen::Config {
