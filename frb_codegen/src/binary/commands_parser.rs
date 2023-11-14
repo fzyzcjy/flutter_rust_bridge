@@ -66,7 +66,7 @@ mod tests {
             compute_codegen_config(args).unwrap()
         }
 
-        assert_eq!(body(vec!["", "generate"]).dart3, Some(true));
-        assert_eq!(body(vec!["", "generate", "--no-dart3"]).dart3, Some(false));
+        assert_eq!(body(vec!["", "generate", "--class-name", "hello"]).dart3, Some(true));
+        assert_eq!(body(vec!["", "generate", "--class-name", "hello", "--no-dart3"]).dart3, Some(false));
     }
 }
