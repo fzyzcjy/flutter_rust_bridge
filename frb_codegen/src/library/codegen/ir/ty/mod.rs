@@ -2,7 +2,7 @@ mod boxed;
 mod dart_opaque;
 mod delegate;
 mod dynamic;
-mod enumeration;
+mod enum_ref;
 mod general_list;
 mod optional;
 mod optional_list;
@@ -10,7 +10,7 @@ mod primitive;
 mod primitive_list;
 mod record;
 mod rust_opaque;
-mod structure;
+mod struct_ref;
 mod unencodable;
 
 use enum_dispatch::enum_dispatch;
@@ -20,19 +20,20 @@ crate::ir! {
 // Remark: "Ty" instead of "Type", since "type" is a reserved word in Rust.
 #[enum_dispatch(IrTypeTrait)]
 pub enum IrType {
-    Primitive(IrTypePrimitive),
+    // alphabetical order
+    Boxed(IrTypeBoxed),
+    DartOpaque(IrTypeDartOpaque),
     Delegate(IrTypeDelegate),
-    PrimitiveList(IrTypePrimitiveList),
+    Dynamic(IrTypeDynamic),
+    EnumRef(IrTypeEnumRef),
+    GeneralList(IrTypeGeneralList),
     Optional(IrTypeOptional),
     OptionalList(IrTypeOptionalList),
-    GeneralList(IrTypeGeneralList),
-    StructRef(IrTypeStructRef),
-    Boxed(IrTypeBoxed),
-    EnumRef(IrTypeEnumRef),
-    DartOpaque(IrTypeDartOpaque),
-    RustOpaque(IrTypeRustOpaque),
-    Dynamic(IrTypeDynamic),
+    Primitive(IrTypePrimitive),
+    PrimitiveList(IrTypePrimitiveList),
     Record(IrTypeRecord),
+    RustOpaque(IrTypeRustOpaque),
+    StructRef(IrTypeStructRef),
     Unencodable(IrTypeUnencodable),
 }
 }

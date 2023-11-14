@@ -1,4 +1,3 @@
-// Call it "structure" not "struct", since the latter is a preserved word.
 crate::ir! {
 pub struct IrTypeStructRef {
     pub name: String,
