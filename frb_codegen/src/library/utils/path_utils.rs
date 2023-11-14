@@ -4,6 +4,10 @@ pub fn canonicalize_path(raw_path: &str, base_dir: &Path) -> PathBuf {
     todo!()
 }
 
+pub fn glob_path(raw_path: &str, base_dir: &Path) -> Vec<PathBuf> {
+    todo!()
+}
+
 pub fn path_to_string(path: &Path) -> anyhow::Result<String> {
     Ok(path.into_os_string().into_string()?)
 }

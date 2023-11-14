@@ -5,6 +5,7 @@ use log::debug;
 use crate::codegen::Config;
 use crate::codegen::config::internal_config::{DartOutputPaths, GeneratorCInternalConfig, GeneratorDartInternalConfig, GeneratorInternalConfig, GeneratorRustInternalConfig, InternalConfig, ParserInternalConfig, PolisherInternalConfig, RustOutputPaths};
 use crate::utils::fp::Also;
+use crate::utils::path_utils::{canonicalize_path, glob_path};
 
 impl InternalConfig {
     pub(crate) fn parse(config: Config) -> Result<Self> {
@@ -14,9 +15,16 @@ impl InternalConfig {
         let rust_crate_dir: PathBuf = config.rust_crate_dir.unwrap_or_else(|| TODO()).into();
         let manifest_path = rust_crate_dir.clone().also(|p| p.push("Cargo.toml"));
 
+        // paths
+        let rust_input_path = glob_path(&config.rust_input);
+        let rust_output_path = canonicalize_path(&config.rust_output, &base_dir);
+        let c_output_path = canonicalize_path(&config.c_output, &base_dir);
+        let duplicated_c_output_path = config.duplicated_c_output.unwrap_or_default()
+            .into_iter().map(|p| canonicalize_path(&p, &base_dir)).collect();
+
         Ok(InternalConfig {
             parser: ParserInternalConfig {
-                rust_input_path: TODO,
+                rust_input_path,
                 manifest_path,
             },
             generator: GeneratorInternalConfig {
@@ -34,11 +42,11 @@ impl InternalConfig {
                 },
                 rust: GeneratorRustInternalConfig {
                     rust_crate_dir,
-                    rust_output_path: TODO,
+                    rust_output_path,
                     inline_rust: config.inline_rust.unwrap_or(false),
                 },
                 c: GeneratorCInternalConfig {
-                    c_output_path: TODO,
+                    c_output_path,
                     llvm_path: config.llvm_path.unwrap_or_else(get_default_llvm_path)
                         .into_iter().map(PathBuf::from).collect_vec(),
                     llvm_compiler_opts: config.llvm_compiler_opts.unwrap_or_else(String::new),
@@ -46,7 +54,7 @@ impl InternalConfig {
                 },
             },
             polisher: PolisherInternalConfig {
-                duplicated_c_output_path: TODO,
+                duplicated_c_output_path,
                 dart_format_line_length: config.dart_format_line_length.unwrap_or(80),
                 add_mod_to_lib: config.add_mod_to_lib.unwrap_or(true),
                 build_runner: config.build_runner.unwrap_or(true),
