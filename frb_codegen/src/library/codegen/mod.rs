@@ -10,7 +10,7 @@ use crate::codegen::config::internal_config::InternalConfig;
 
 /// Execute the main code generator
 pub fn generate(config: Config) -> anyhow::Result<()> {
-    let internal_config = InternalConfig::parse(config, base_dir)?;
+    let internal_config = InternalConfig::parse(config)?;
     debug!("config={config:?} internal_config={internal_config:?}");
 
     todo!("generate")

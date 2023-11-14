@@ -20,6 +20,7 @@ pub(crate) fn compute_codegen_config(args: GenerateCommandArgs) -> Result<Config
 
 fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> Config {
     Config {
+        base_dir: None,
         rust_input: args.rust_input,
         dart_output: args.dart_output,
         dart_decl_output: args.dart_decl_output,

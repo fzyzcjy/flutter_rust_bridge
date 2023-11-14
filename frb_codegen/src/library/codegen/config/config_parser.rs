@@ -29,8 +29,10 @@ impl Config {
     pub fn from_config_file(location: &str) -> Result<Option<Self>, Error> {
         if let Ok(file) = fs::File::open(location) {
             debug!("Found config file {location}");
-            return serde_yaml::from_reader(file)
-                .with_context(|| format!("Could not parse {location}"));
+            let raw: Config = serde_yaml::from_reader(file)
+                .with_context(|| format!("Could not parse {location}"))?;
+            let base_dir = TODO;
+            return Ok(Some(raw.with_base_dir(base_dir)));
         }
 
         Ok(None)
@@ -57,3 +59,11 @@ impl Config {
         Ok(None)
     }
 }
+
+impl Config {
+    fn with_base_dir(mut self, base_dir: String) -> Self {
+        self.base_dir = Some(base_dir);
+        self
+    }
+}
+

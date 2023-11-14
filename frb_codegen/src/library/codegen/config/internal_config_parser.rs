@@ -1,11 +1,13 @@
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 use anyhow::Result;
 use itertools::Itertools;
 use crate::codegen::Config;
 use crate::codegen::config::internal_config::{GeneratorCInternalConfig, GeneratorDartInternalConfig, GeneratorInternalConfig, GeneratorRustInternalConfig, InternalConfig, ParserInternalConfig, PolisherInternalConfig};
 
 impl InternalConfig {
-    pub(crate) fn parse(config: Config, base_dir: &Path) -> Result<Self> {
+    pub(crate) fn parse(config: Config) -> Result<Self> {
+        let base_dir = config.base_dir.map(PathBuf::from).unwrap_or_else(|| std::env::current_dir()?);
+
         Ok(InternalConfig {
             parser: ParserInternalConfig {
                 rust_input_path: TODO,
@@ -62,22 +64,4 @@ fn get_default_llvm_path() -> Vec<String> {
         "C:/Program Files/llvm".to_owned(), // Default on Windows
         "C:/msys64/mingw64".to_owned(), // https://packages.msys2.org/package/mingw-w64-x86_64-clang
     ]
-}
-
-fn canonicalize_path(raw_path: &str, base_dir: &Path) -> PathBuf {
-    todo!()
-}
-
-#[cfg(test)]
-mod tests {
-    use crate::codegen::config::internal_config_parser::canonicalize_path;
-
-    #[test]
-    fn test_canonicalize_path_simple() {
-        // relative
-        assert_eq!(canonicalize_path("./a.rs", "/x/y".into()), "/x/y/a.rs");
-
-        // absolute
-        assert_eq!(canonicalize_path("/a/b/c.rs", "/x/y".into()), "/a/b/c.rs");
-    }
 }
