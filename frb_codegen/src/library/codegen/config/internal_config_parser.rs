@@ -77,7 +77,12 @@ impl RustInputPathPack {
 }
 
 fn compute_rust_input_path_pack(raw_rust_input: &str, base_dir: &Path) -> Result<RustInputPathPack> {
-    let paths = glob_path(&base_dir.join(raw_rust_input))?;
+    const BLACKLIST_FILE_NAMES: [&str; 1] = ["mod.rs"];
+
+    let paths = glob_path(&base_dir.join(raw_rust_input))?
+        .into_iter()
+        .filter(|path| !BLACKLIST_FILE_NAMES.contains(&path.file_name().unwrap().to_str().unwrap()))
+        .collect_vec();
 
     let pack = RustInputPathPack {
         rust_input_path: paths.into_iter()
