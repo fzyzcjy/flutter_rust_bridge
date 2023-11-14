@@ -11,10 +11,7 @@ crate-type = ["cdylib"]
 wasm-start = ["flutter_rust_bridge/wasm-start"]
 
 [build-dependencies]
-flutter_rust_bridge_codegen = { workspace = true, features = [
-  "chrono",
-  "uuid",
-] }
+flutter_rust_bridge_codegen = { workspace = true }
 
 [dependencies]
 anyhow = { workspace = true, features = ["backtrace"] }

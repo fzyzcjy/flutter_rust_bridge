@@ -135,7 +135,6 @@ struct GenerateCommandArgs {
     pub skip_deps_check: bool,
 
     /// A list of data to be dumped. If specified without a value, defaults to all.
-    #[cfg(feature = "serde")]
     #[arg(long, value_enum, num_args = 0.., default_missing_values = ["config", "ir"])]
     pub dump: Option<Vec<ConfigDump>>,
 
