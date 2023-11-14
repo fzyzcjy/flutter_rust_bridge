@@ -1,10 +1,13 @@
-use clap::{Args, Parser, Subcommand, ArgAction};
+use clap::{Args, Parser, Subcommand, ArgAction, FromArgMatches};
 use serde::Deserialize;
 use lib_flutter_rust_bridge_codegen::*;
 use lib_flutter_rust_bridge_codegen::codegen::ConfigDump;
 
 fn main() -> anyhow::Result<()> {
-    let cli = Cli::parse();
+    let app = Cli::create_app();
+    let matches = app.try_get_matches()?;
+    let cli = Cli::from_arg_matches(&matches)?;
+
     match cli.command {
         Commands::Generate(args) => codegen::generate(&codegen::Config {})?,
         Commands::Create(args) => integration::create(&args.name)?,
@@ -19,6 +22,41 @@ fn main() -> anyhow::Result<()> {
 struct Cli {
     #[command(subcommand)]
     command: Commands,
+}
+
+impl Cli {
+    // https://github.com/clap-rs/clap/issues/815
+    // https://github.com/ducaale/xh/blob/1a74a521e1f1def2f9463abcfe05b448f04c27be/src/cli.rs#L583
+    fn create_app() -> clap::Command {
+        let app = <Self as clap::CommandFactory>::command();
+
+        // Every option should have a --no- variant that makes it as if it was
+        // never passed.
+        // https://github.com/clap-rs/clap/issues/815
+        // https://github.com/httpie/httpie/blob/225dccb2186f14f871695b6c4e0bfbcdb2e3aa28/httpie/cli/argparser.py#L312
+        // Unlike HTTPie we apply the options in order, so the --no- variant
+        // has to follow the original to apply. You could have a chain of
+        // --x=y --no-x --x=z where the last one takes precedence.
+        let negations: Vec<_> = app
+            .get_arguments()
+            .filter(|a| !a.is_positional())
+            .map(|opt| {
+                let long = opt.get_long().expect("long option");
+                clap::Arg::new(&format!("no-{}", long))
+                    .long(&format!("no-{}", long))
+                    .hide(true)
+                    .action(ArgAction::SetTrue)
+                    // overrides_with is enough to make the flags take effect
+                    // We never have to check their values, they'll simply
+                    // unset previous occurrences of the original flag
+                    .overrides_with(opt.get_id())
+            })
+            .collect();
+
+        app.args(negations)
+            .after_help(format!("Each option can be reset with a --no-OPTION argument.\n\nRun \"{} help\" for more complete documentation.", env!("CARGO_PKG_NAME")))
+            .after_long_help("Each option can be reset with a --no-OPTION argument.")
+    }
 }
 
 #[derive(Subcommand)]
