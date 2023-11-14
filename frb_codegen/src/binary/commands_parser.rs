@@ -45,3 +45,26 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> 
         keep_going: Some(args.keep_going),
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use clap::Parser;
+    use lib_flutter_rust_bridge_codegen::codegen;
+    use crate::binary::commands::{Cli, Commands};
+    use crate::binary::commands_parser::compute_codegen_config;
+
+    #[test]
+    fn test_compute_codegen_config_e2e() {
+        fn body(args: Vec<&'static str>) -> codegen::Config {
+            let cli = Cli::parse_from(args);
+            let args = match cli.command {
+                Commands::Generate(args) => args,
+                _ => panic!()
+            };
+            compute_codegen_config(args).unwrap()
+        }
+
+        assert_eq!(body(vec!["", "generate"]).dart3, Some(true));
+        assert_eq!(body(vec!["", "generate", "--no-dart3"]).dart3, Some(false));
+    }
+}
