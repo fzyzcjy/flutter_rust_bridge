@@ -1,16 +1,25 @@
 use std::fs;
-use anyhow::{Context, Error};
+use anyhow::{bail, Context, Error};
 use log::debug;
 use crate::codegen::Config;
 
 impl Config {
-    pub fn from_configuration_files() -> Result<Self, Error> {
+    pub fn from_config_files() -> Result<Self, Error> {
+        if let Some(config) = Self::from_flutter_rust_bridge_config_files()? {
+            return Ok(config);
+        }
+        if let Some(config) = Self::from_pubspec_yaml()? {
+            return Ok(config);
+        }
+        bail!("todo") // TODO
+    }
+
+    fn from_flutter_rust_bridge_config_files() -> Result<Option<Self>, Error> {
         const CONFIG_LOCATIONS: [&str; 3] = [
             ".flutter_rust_bridge.yml",
             ".flutter_rust_bridge.yaml",
             ".flutter_rust_bridge.json",
         ];
-        const PUBSPEC_LOCATIONS: [&str; 1] = ["pubspec.yaml"];
 
         for location in CONFIG_LOCATIONS {
             if let Ok(file) = fs::File::open(location) {
@@ -19,6 +28,12 @@ impl Config {
                     .with_context(|| format!("Could not parse {location}"));
             }
         }
+
+        Ok(None)
+    }
+
+    fn from_pubspec_yaml() -> Result<Option<Self>, Error> {
+        const PUBSPEC_LOCATIONS: [&str; 1] = ["pubspec.yaml"];
 
         let mut hint = "fill in .flutter_rust_bridge.yml with your config.".to_owned();
         for location in PUBSPEC_LOCATIONS {
@@ -29,7 +44,7 @@ impl Config {
                     data: Option<Config>,
                 }
                 match serde_yaml::from_reader(pubspec) {
-                    Ok(Needle { data: Some(data) }) => return Ok(data),
+                    Ok(Needle { data: Some(data) }) => return Ok(Some(data)),
                     Ok(Needle { data: None }) => {
                         hint = format!("create an entry called 'flutter_rust_bridge' in {location} with your config.");
                     }
@@ -42,6 +57,6 @@ impl Config {
             }
         }
 
-        Ok(todo)
+        Ok(None)
     }
 }
