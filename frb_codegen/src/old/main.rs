@@ -1,14 +1,14 @@
 use anyhow::Context;
 use lib_flutter_rust_bridge_codegen::dump;
 use lib_flutter_rust_bridge_codegen::{
-    config_parse, frb_codegen_multi, get_symbols_if_no_duplicates, init_logger, RawOpts,
+    config_parse, frb_codegen_multi, get_symbols_if_no_duplicates, configure_opinionated_logging, RawOpts,
 };
 use log::{debug, error, info};
 
 fn main() -> anyhow::Result<()> {
     //  get valiable options from user input command
     let raw_opts = RawOpts::try_parse_args_or_yaml()?;
-    init_logger("./logs/", raw_opts.verbose)?;
+    configure_opinionated_logging("./logs/", raw_opts.verbose)?;
 
     let dump_config = raw_opts.dump.clone();
 
@@ -52,12 +52,12 @@ mod tests {
 
     use lazy_static::lazy_static;
     use lib_flutter_rust_bridge_codegen::{
-        config_parse, frb_codegen, frb_codegen_multi, get_symbols_if_no_duplicates, init_logger,
+        config_parse, frb_codegen, frb_codegen_multi, get_symbols_if_no_duplicates, configure_opinionated_logging,
         RawOpts,
     };
 
     lazy_static! {
-        static ref LOGGER: () = init_logger(".", true).unwrap();
+        static ref LOGGER: () = configure_opinionated_logging(".", true).unwrap();
     }
 
     // #[cfg(windows)]

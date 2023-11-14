@@ -4,7 +4,7 @@ pub use crate::commands::ensure_tools_available;
 pub use crate::config::opts::Opts;
 pub use crate::config::opts_parser::config_parse;
 pub use crate::config::raw_opts::RawOpts;
-pub use crate::logs::init_logger;
+pub use crate::logs::configure_opinionated_logging;
 pub use crate::utils::misc::get_symbols_if_no_duplicates;
 
 pub mod config;

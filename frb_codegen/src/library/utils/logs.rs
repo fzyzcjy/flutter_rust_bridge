@@ -1,7 +1,12 @@
 use fern::colors::{Color, ColoredLevelConfig};
 use log::LevelFilter;
 
-/// Initializes logging to file and standard output.
+/// Configure an opinionated way of logging.
+///
+/// This is just one way of outputing logs, and users are free to use this function
+/// or choose their own way of outputing logs. That's why this function is "opinionated".
+///
+/// It will log to file and standard output.
 /// All logs with level `debug`(with parameter `verbose`=true or system variable `RUST_LOG`="debug") or above
 /// will be recorded in `./logs/<date>.log`.
 /// Logs with level `info` and above will be output to standard output, with colored tag.
@@ -9,10 +14,10 @@ use log::LevelFilter;
 /// # Example
 ///
 /// ```
-/// use lib_flutter_rust_bridge_codegen::init_logger;
-/// init_logger("./logs/", false).expect("failed to initialize log");
+/// use lib_flutter_rust_bridge_codegen::configure_opinionated_logging;
+/// configure_opinionated_logging("./logs/", false).expect("failed to initialize log");
 /// ```
-pub(crate) fn init_logger(path: &str, verbose: bool) -> Result<(), fern::InitError> {
+pub fn configure_opinionated_logging(path: &str, verbose: bool) -> Result<(), fern::InitError> {
     let colored_output = ColoredLevelConfig::new()
         .error(Color::Red)
         .warn(Color::Yellow)
