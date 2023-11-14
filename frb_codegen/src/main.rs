@@ -39,9 +39,14 @@ enum Commands {
 // Deliberately decoupled from `codegen::Config`,
 // because the command line arguments contains extra things like `--config-file`,
 // which is not a config to the real codegen.
-// TODO clean up the api and docs
 #[derive(Debug, Args)]
 struct GenerateCommandArgs {
+    /// Path to a YAML config file.
+    ///
+    /// If present, other options and flags will be ignored.
+    /// Accepts the same options as the CLI, but uses snake_case keys.
+    pub config_file: Option<String>,
+
     /// Path of input Rust code
     #[arg(short, long)]
     pub rust_input: Option<String>,
@@ -50,21 +55,13 @@ struct GenerateCommandArgs {
     #[arg(short, long)]
     pub dart_output: Option<String>,
 
-    // TODO handle it
-    /// Path to a YAML config file.
-    ///
-    /// If present, other options and flags will be ignored.
-    /// Accepts the same options as the CLI, but uses snake_case keys.
-    pub config_file: Option<String>,
-
     /// If provided, generated Dart declaration code to this separate file
     #[arg(long)]
     pub dart_decl_output: Option<String>,
 
-    // TODO single c_output, then what about ios + macos?
     /// Output path (including file name) of generated C header, each field corresponding to that of --rust-input.
     #[arg(short, long)]
-    pub c_output: Option<String>,
+    pub c_output: Vec<String>,
 
     /// Crate directory for your Rust project
     #[arg(long)]
@@ -102,7 +99,6 @@ struct GenerateCommandArgs {
     #[arg(long, num_args = 1..)]
     pub dart_root: Option<String>,
 
-    // TODO about negation?
     /// Skip running build_runner even when codegen-required code is detected
     #[arg(long)]
     pub no_build_runner: bool,

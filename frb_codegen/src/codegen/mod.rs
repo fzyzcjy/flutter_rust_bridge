@@ -18,7 +18,7 @@ pub struct Config {
     pub rust_input: Option<String>,
     pub dart_output: Option<String>,
     pub dart_decl_output: Option<String>,
-    pub c_output: Option<String>,
+    pub c_output: Vec<String>,
     pub rust_crate_dir: Option<String>,
     pub rust_output: Option<String>,
     pub class_name: Option<String>,
