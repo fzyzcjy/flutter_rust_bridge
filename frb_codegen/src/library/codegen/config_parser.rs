@@ -5,13 +5,9 @@ use crate::codegen::Config;
 
 impl Config {
     pub fn from_files() -> Result<Self, Error> {
-        if let Some(config) = Self::from_config_files()? {
-            return Ok(config);
-        }
-        if let Some(config) = Self::from_pubspec_yaml()? {
-            return Ok(config);
-        }
-        bail!("todo") // TODO
+        if let Some(config) = Self::from_config_files()? { return Ok(config); }
+        if let Some(config) = Self::from_pubspec_yaml()? { return Ok(config); }
+        bail!("Fail to find any configuration file")
     }
 
     fn from_config_files() -> Result<Option<Self>, Error> {
@@ -41,7 +37,7 @@ impl Config {
     }
 
     fn from_pubspec_yaml() -> Result<Option<Self>, Error> {
-        const PUBSPEC_LOCATION: &str= "pubspec.yaml";
+        const PUBSPEC_LOCATION: &str = "pubspec.yaml";
 
         #[derive(serde::Deserialize)]
         struct Needle {
@@ -49,19 +45,13 @@ impl Config {
             data: Option<Config>,
         }
 
-        let mut hint = "fill in .flutter_rust_bridge.yml with your config.".to_owned();
         if let Ok(pubspec) = fs::File::open(PUBSPEC_LOCATION) {
-            match serde_yaml::from_reader(pubspec) {
-                Ok(Needle { data: Some(data) }) => return Ok(Some(data)),
-                Ok(Needle { data: None }) => {
-                    hint = format!("create an entry called 'flutter_rust_bridge' in {location} with your config.");
-                }
-                Err(err) => {
-                    return Err(Error::new(err).context(format!(
-                        "Could not parse the 'flutter_rust_bridge' entry in {location}"
-                    )));
-                }
-            }
+            return match serde_yaml::from_reader(pubspec) {
+                Ok(Needle { data: Some(data) }) => Ok(Some(data)),
+                Ok(Needle { data: None }) => Ok(None),
+                Err(err) => Err(Error::new(err)
+                    .context(format!("Could not parse the 'flutter_rust_bridge' entry in {location}"))),
+            };
         }
 
         Ok(None)
