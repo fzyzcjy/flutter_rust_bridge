@@ -2,7 +2,6 @@
 //! (instead be in `lib.rs` and so on)
 
 mod binary;
-pub(crate) mod common;
 
 use clap::Parser;
 use log::debug;
