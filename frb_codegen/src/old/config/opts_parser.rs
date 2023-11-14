@@ -20,12 +20,12 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
     //     raw = parse_yaml(&config);
     // }
 
-    use clap::error::ErrorKind;
+    // use clap::error::ErrorKind;
     // rust input path(s)
-    let rust_input_paths = get_valid_canon_paths(&raw.rust_input);
+    // let rust_input_paths = get_valid_canon_paths(&raw.rust_input);
 
     // dart output path(s)
-    let dart_output_paths = get_valid_canon_paths(&raw.dart_output);
+    // let dart_output_paths = get_valid_canon_paths(&raw.dart_output);
     // if dart_output_paths.len() != rust_input_paths.len() {
     //     raw_opts_bail(
     //         ErrorKind::WrongNumberOfValues,
@@ -34,15 +34,15 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
     // }
 
     // rust crate dir(s)
-    let rust_crate_dirs = raw.rust_crate_dir.unwrap_or_else(|| {
-        rust_input_paths
-            .iter()
-            .map(|each_rust_input_path| {
-                fallback_rust_crate_dir(each_rust_input_path)
-                    .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("rust_crate_dir")))
-            })
-            .collect_vec()
-    });
+    // let rust_crate_dirs = raw.rust_crate_dir.unwrap_or_else(|| {
+    //     rust_input_paths
+    //         .iter()
+    //         .map(|each_rust_input_path| {
+    //             fallback_rust_crate_dir(each_rust_input_path)
+    //                 .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error("rust_crate_dir")))
+    //         })
+    //         .collect_vec()
+    // });
     // no need anymore, we have single dir
     // let rust_crate_dirs = rust_crate_dirs
     //     .iter()
@@ -66,22 +66,22 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
     //     .collect_vec();
 
     // rust output path(s)
-    let rust_output_paths = get_outputs_for_flag_requires_full_data(
-        &raw.rust_output,
-        &rust_input_paths,
-        &fallback_rust_output_path,
-        "rust_output",
-    );
-    let rust_output_paths = rust_output_paths
-        .iter()
-        .map(|each_path| canon_path(each_path))
-        .collect_vec();
-    if rust_output_paths.len() != rust_input_paths.len() {
-        raw_opts_bail(
-            ErrorKind::WrongNumberOfValues,
-            "--rust-output's inputs should match --rust-input's length".into(),
-        );
-    }
+    // let rust_output_paths = get_outputs_for_flag_requires_full_data(
+    //     &raw.rust_output,
+    //     &rust_input_paths,
+    //     &fallback_rust_output_path,
+    //     "rust_output",
+    // );
+    // let rust_output_paths = rust_output_paths
+    //     .iter()
+    //     .map(|each_path| canon_path(each_path))
+    //     .collect_vec();
+    // if rust_output_paths.len() != rust_input_paths.len() {
+    //     raw_opts_bail(
+    //         ErrorKind::WrongNumberOfValues,
+    //         "--rust-output's inputs should match --rust-input's length".into(),
+    //     );
+    // }
 
     // class name(s)
     let class_names = get_outputs_for_flag_requires_full_data(
@@ -108,50 +108,50 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
     //     get_refined_c_output(&raw.c_output, &raw.extra_c_output_path, &rust_input_paths);
 
     // dart root(s)
-    let dart_roots: Vec<_> = match raw.dart_root {
-        Some(dart_roots) => dart_roots
-            .into_iter()
-            .map(|each_path| Some(canon_path(&each_path)))
-            .collect(),
-        None => dart_output_paths
-            .iter()
-            .map(|each_dart_output_path| fallback_dart_root(each_dart_output_path).ok())
-            .collect(),
-    };
+    // let dart_roots: Vec<_> = match raw.dart_root {
+    //     Some(dart_roots) => dart_roots
+    //         .into_iter()
+    //         .map(|each_path| Some(canon_path(&each_path)))
+    //         .collect(),
+    //     None => dart_output_paths
+    //         .iter()
+    //         .map(|each_dart_output_path| fallback_dart_root(each_dart_output_path).ok())
+    //         .collect(),
+    // };
 
     // build Opt for each rust api block
-    let dart_decl_output_path = raw
-        .dart_decl_output
-        .as_ref()
-        .map(|s| canon_path(s.as_str()));
+    // let dart_decl_output_path = raw
+    //     .dart_decl_output
+    //     .as_ref()
+    //     .map(|s| canon_path(s.as_str()));
 }
 
-#[inline(never)]
-pub(crate) fn raw_opts_bail(err: clap::error::ErrorKind, message: Cow<str>) -> ! {
-    RawOpts::command().error(err, message).exit()
-}
+// #[inline(never)]
+// pub(crate) fn raw_opts_bail(err: clap::error::ErrorKind, message: Cow<str>) -> ! {
+//     RawOpts::command().error(err, message).exit()
+// }
 
-fn get_outputs_for_flag_requires_full_data(
-    strings: &Option<Vec<String>>,
-    fallback_paths: &[String],
-    fallback_func: &dyn Fn(&str) -> Result<String>,
-    field_str: &str, // str with underline, like "class_name"
-) -> Vec<String> {
-    strings.clone().unwrap_or_else(|| -> Vec<String> {
-        if fallback_paths.len() == 1 {
-            vec![fallback_func(&fallback_paths[0])
-                .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error(field_str)))]
-        } else {
-            let strs = field_str.split('_').collect_vec();
-            let raw_str = strs.join(" ");
-            let flag_str = strs.join("-");
-            raw_opts_bail(
-                clap::error::ErrorKind::ValueValidation,
-                format!("for more than 1 rust blocks, please specify each {raw_str} clearly with flag \"{flag_str}\"").into()
-            )
-        }
-    })
-}
+// fn get_outputs_for_flag_requires_full_data(
+//     strings: &Option<Vec<String>>,
+//     fallback_paths: &[String],
+//     fallback_func: &dyn Fn(&str) -> Result<String>,
+//     field_str: &str, // str with underline, like "class_name"
+// ) -> Vec<String> {
+//     strings.clone().unwrap_or_else(|| -> Vec<String> {
+//         if fallback_paths.len() == 1 {
+//             vec![fallback_func(&fallback_paths[0])
+//                 .unwrap_or_else(|_| panic!("{}", format_fail_to_guess_error(field_str)))]
+//         } else {
+//             let strs = field_str.split('_').collect_vec();
+//             let raw_str = strs.join(" ");
+//             let flag_str = strs.join("-");
+//             raw_opts_bail(
+//                 clap::error::ErrorKind::ValueValidation,
+//                 format!("for more than 1 rust blocks, please specify each {raw_str} clearly with flag \"{flag_str}\"").into()
+//             )
+//         }
+//     })
+// }
 
 // already done "anchor" via `base_dir`
 // /// Terminates the program if either the file doesn't exist, or is invalid.
@@ -220,17 +220,9 @@ fn get_outputs_for_flag_requires_full_data(
 //     }
 // }
 
-fn get_valid_canon_paths(paths: &[String]) -> Vec<String> {
-    paths
-        .iter()
-        .filter(|p| !p.trim().is_empty())
-        .map(|p| canon_path(p))
-        .collect_vec()
-}
-
-pub(crate) fn format_fail_to_guess_error(name: &str) -> String {
-    format!("fail to guess {name}, please specify it manually in command line arguments")
-}
+// pub(crate) fn format_fail_to_guess_error(name: &str) -> String {
+//     format!("fail to guess {name}, please specify it manually in command line arguments")
+// }
 
 fn fallback_class_name(rust_crate_dir: &str) -> Result<String> {
     let cargo_toml_path = Path::new(rust_crate_dir).join("Cargo.toml");
@@ -248,15 +240,23 @@ fn fallback_class_name(rust_crate_dir: &str) -> Result<String> {
     Ok(package_name.to_case(Case::Pascal))
 }
 
-pub(crate) fn canon_path(sub_path: &str) -> String {
-    let path = canon_pathbuf(sub_path);
-    path_to_string(path).unwrap_or_else(|_| panic!("fail to parse path: {}", sub_path))
-}
-
-fn canon_pathbuf(sub_path: &str) -> PathBuf {
-    let mut path =
-        env::current_dir().unwrap_or_else(|_| panic!("fail to parse path: {}", sub_path));
-    path.push(sub_path);
-    path
-}
-
+// fn get_valid_canon_paths(paths: &[String]) -> Vec<String> {
+//     paths
+//         .iter()
+//         .filter(|p| !p.trim().is_empty())
+//         .map(|p| canon_path(p))
+//         .collect_vec()
+// }
+//
+// pub(crate) fn canon_path(sub_path: &str) -> String {
+//     let path = canon_pathbuf(sub_path);
+//     path_to_string(path).unwrap_or_else(|_| panic!("fail to parse path: {}", sub_path))
+// }
+//
+// fn canon_pathbuf(sub_path: &str) -> PathBuf {
+//     let mut path =
+//         env::current_dir().unwrap_or_else(|_| panic!("fail to parse path: {}", sub_path));
+//     path.push(sub_path);
+//     path
+// }
+//
