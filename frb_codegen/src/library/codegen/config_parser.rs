@@ -4,7 +4,7 @@ use log::debug;
 use crate::codegen::Config;
 
 impl Config {
-    pub fn from_files() -> Result<Self, Error> {
+    pub fn from_files_auto() -> Result<Self, Error> {
         if let Some(config) = Self::from_config_files()? { return Ok(config); }
         if let Some(config) = Self::from_pubspec_yaml()? { return Ok(config); }
         bail!("Fail to find any configuration file")
