@@ -24,7 +24,7 @@ pub(crate) enum Commands {
 // Deliberately decoupled from `codegen::Config`,
 // because the command line arguments contains extra things like `--config-file`,
 // which is not a config to the real codegen.
-#[derive(Debug, Args, Default)]
+#[derive(Debug, Args, Default, Eq, PartialEq)]
 pub(crate) struct GenerateCommandArgs {
     /// Path to a YAML config file.
     ///

@@ -3,8 +3,7 @@
 
 mod binary;
 
-use clap::{Args, Parser, Subcommand, FromArgMatches};
-use itertools::Itertools;
+use clap::Parser;
 use log::debug;
 use lib_flutter_rust_bridge_codegen::*;
 use crate::binary::commands::{Cli, Commands};

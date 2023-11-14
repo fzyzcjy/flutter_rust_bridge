@@ -1,7 +1,7 @@
 //! Integrate Flutter with Rust
 
 /// Create a new Flutter + Rust project.
-pub fn create(name: &str) -> anyhow::Result<()> {
+pub fn create(_name: &str) -> anyhow::Result<()> {
     todo!("create")
 }
 
