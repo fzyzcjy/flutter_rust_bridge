@@ -1,5 +1,4 @@
 use std::collections::HashMap;
-use std::fmt::format;
 use std::path::{Path, PathBuf};
 use anyhow::{Context, ensure, Result};
 use convert_case::{Case, Casing};
@@ -159,6 +158,7 @@ mod tests {
     use log::debug;
     use crate::codegen::Config;
     use crate::codegen::config::internal_config::InternalConfig;
+    use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::test_utils::set_cwd_test_fixture;
 
     #[test]
@@ -172,6 +172,7 @@ mod tests {
     }
 
     fn body(fixture_name: &str) -> anyhow::Result<()> {
+        configure_opinionated_test_logging();
         set_cwd_test_fixture(fixture_name)?;
         let config = Config::from_files_auto()?;
         let internal_config = InternalConfig::parse(config)?;

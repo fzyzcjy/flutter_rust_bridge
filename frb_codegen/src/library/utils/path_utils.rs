@@ -1,5 +1,5 @@
 use std::path::{Path, PathBuf};
-use anyhow::{anyhow, Context, Result};
+use anyhow::{Context, Result};
 
 pub fn glob_path(pattern: &Path) -> Result<Vec<PathBuf>> {
     let pattern = pattern.to_str().context("cannot convert to str")?;
