@@ -135,13 +135,6 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
     let dart_enums_style = raw.dart_enums_style;
     let llvm_paths = get_llvm_paths(&raw.llvm_path);
     let llvm_compiler_opts = raw.llvm_compiler_opts.clone().unwrap_or_default();
-    let skip_add_mod_to_lib = raw.skip_add_mod_to_lib;
-    let build_runner = !raw.no_build_runner;
-    let bridge_in_method = !raw.no_use_bridge_in_method;
-    let wasm = raw.wasm;
-    let dart3 = raw.dart3;
-    let inline_rust = raw.inline_rust;
-    let keep_going = raw.keep_going;
     let extra_headers = raw.extra_headers.unwrap_or({
         if raw.no_use_bridge_in_method {
             "import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';".to_owned()

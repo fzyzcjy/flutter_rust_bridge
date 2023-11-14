@@ -16,14 +16,14 @@ impl InternalConfig {
                     dart_enums_style: TODO,
                     class_name: TODO,
                     dart_root: TODO,
-                    use_bridge_in_method: TODO,
-                    wasm_enabled: TODO,
-                    dart3: TODO,
+                    use_bridge_in_method: config.use_bridge_in_method.unwrap_or(true),
+                    wasm_enabled: config.wasm.unwrap_or(false),
+                    dart3: config.dart3.unwrap_or(true),
                 },
                 rust: GeneratorRustInternalConfig {
                     rust_crate_dir: TODO,
                     rust_output_path: TODO,
-                    inline_rust: TODO,
+                    inline_rust: config.inline_rust.unwrap_or(false),
                 },
                 c: GeneratorCInternalConfig {
                     c_output_path: TODO,
@@ -35,8 +35,8 @@ impl InternalConfig {
             polisher: PolisherInternalConfig {
                 extra_c_output_path: TODO,
                 dart_format_line_length: TODO,
-                add_mod_to_lib: TODO,
-                build_runner: TODO,
+                add_mod_to_lib: config.add_mod_to_lib.unwrap_or(true),
+                build_runner: config.build_runner.unwrap_or(true),
                 deps_check: TODO,
             },
         })
