@@ -33,7 +33,7 @@ impl Config {
             debug!("Found config file {location}");
             let raw: Config = serde_yaml::from_reader(file)
                 .with_context(|| format!("Could not parse {location}"))?;
-            let base_dir = path_to_string(PathBuf::from(location).parent()?)?;
+            let base_dir = path_to_string(PathBuf::from(location).parent().context("no parent")?)?;
             return Ok(Some(raw.with_base_dir(base_dir)));
         }
 

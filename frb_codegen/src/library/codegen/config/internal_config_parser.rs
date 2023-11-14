@@ -1,20 +1,17 @@
 use std::collections::HashMap;
-use std::fmt::format;
-use std::fs;
 use std::path::{Path, PathBuf};
-use anyhow::{anyhow, bail, Context, ensure, Result};
+use anyhow::{ensure, Result};
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 use log::debug;
 use crate::codegen::Config;
-use crate::codegen::config::internal_config::{DartOutputPathPack, GeneratorCInternalConfig, GeneratorDartInternalConfig, GeneratorInternalConfig, GeneratorRustInternalConfig, InternalConfig, Namespace, ParserInternalConfig, PolisherInternalConfig, RustInputPathPack, RustOutputPaths};
-use crate::utils::fp::Also;
+use crate::codegen::config::internal_config::{DartOutputPathPack, GeneratorCInternalConfig, GeneratorDartInternalConfig, GeneratorInternalConfig, GeneratorRustInternalConfig, InternalConfig, Namespace, ParserInternalConfig, PolisherInternalConfig, RustInputPathPack};
 use crate::utils::path_utils::{canonicalize_path, find_parent_dir_with_file, glob_path, path_to_string};
 
 impl InternalConfig {
     pub(crate) fn parse(config: Config) -> Result<Self> {
         let base_dir = config.base_dir.map(PathBuf::from).unwrap_or_else(|| std::env::current_dir()?);
-        debug!("InternalConfig.parse base_dir={base_dir}");
+        debug!("InternalConfig.parse base_dir={base_dir:?}");
 
         let rust_input_path_pack = compute_rust_input_path_pack(&config.rust_input, &base_dir)?;
         let namespaces = rust_input_path_pack.rust_input_path.keys().collect_vec();
@@ -94,7 +91,7 @@ fn compute_rust_input_path_pack(raw_rust_input: &str, base_dir: &Path) -> Result
         "Do not use `lib.rs` as a Rust input. Please put code to be generated in something like `api.rs`.",
     );
 
-    OK(pack)
+    Ok(pack)
 }
 
 fn compute_namespace_from_rust_input_path(rust_input_path: &Path) -> Result<Namespace> {
@@ -159,7 +156,6 @@ mod tests {
     use log::debug;
     use crate::codegen::Config;
     use crate::codegen::config::internal_config::InternalConfig;
-    use crate::common::test_utils::set_cwd_test_fixture;
     use crate::utils::test_utils::set_cwd_test_fixture;
 
     #[test]
@@ -176,7 +172,7 @@ mod tests {
         set_cwd_test_fixture(fixture_name)?;
         let config = Config::from_files_auto()?;
         let internal_config = InternalConfig::parse(config)?;
-        debug!("internal_config:\n{}", serde_json::to_string_pretty(internal_config)?);
+        debug!("internal_config:\n{}", serde_json::to_string_pretty(&internal_config)?);
         let expect: InternalConfig = serde_json::from_str(&fs::read_to_string("expect_output.json")?)?;
         assert_eq!(internal_config, expect);
         Ok(())

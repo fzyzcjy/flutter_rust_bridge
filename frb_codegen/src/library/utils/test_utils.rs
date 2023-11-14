@@ -1,3 +1,4 @@
+#[cfg(test)]
 use std::path::PathBuf;
 
 #[cfg(test)]
