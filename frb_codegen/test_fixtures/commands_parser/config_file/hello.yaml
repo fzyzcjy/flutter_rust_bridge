@@ -1,2 +1,3 @@
-rust_input: hello.rs
+rust_input:
+  - hello.rs
 dart3: false

@@ -38,7 +38,7 @@ pub(crate) struct GenerateCommandArgs {
     pub config_file: Option<String>,
 
     /// Path of input Rust code
-    #[arg(short, long)]
+    #[arg(short, long, num_args = 1..)]
     pub rust_input: Option<Vec<String>>,
 
     /// Path of output generated Dart code
@@ -50,7 +50,7 @@ pub(crate) struct GenerateCommandArgs {
     pub dart_decl_output: Option<String>,
 
     /// Output path (including file name) of generated C header, each field corresponding to that of --rust-input.
-    #[arg(short, long)]
+    #[arg(short, long, num_args = 1..)]
     pub c_output: Option<Vec<String>>,
 
     /// Crate directory for your Rust project

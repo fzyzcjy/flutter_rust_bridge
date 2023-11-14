@@ -71,7 +71,7 @@ mod tests {
         set_cwd_test_fixture("commands_parser/flutter_rust_bridge_yaml")?;
 
         let config = run_command_line(vec!["", "generate"]);
-        assert_eq!(config.rust_input.unwrap(), vec!["hello.rs"]);
+        assert_eq!(config.rust_input.unwrap(), vec!["hello.rs".to_string()]);
         assert_eq!(config.dart3.unwrap(), false);
 
         Ok(())
@@ -84,7 +84,7 @@ mod tests {
         set_cwd_test_fixture("commands_parser/pubspec_yaml")?;
 
         let config = run_command_line(vec!["", "generate"]);
-        assert_eq!(config.rust_input.unwrap(), vec!["hello.rs"]);
+        assert_eq!(config.rust_input.unwrap(), vec!["hello.rs".to_string()]);
         assert_eq!(config.dart3.unwrap(), false);
 
         Ok(())
@@ -97,7 +97,7 @@ mod tests {
         set_cwd_test_fixture("commands_parser/config_file")?;
 
         let config = run_command_line(vec!["", "generate", "--config-file", "hello.yaml"]);
-        assert_eq!(config.rust_input.unwrap(), vec!["hello.rs"]);
+        assert_eq!(config.rust_input.unwrap(), vec!["hello.rs".to_string()]);
         assert_eq!(config.dart3.unwrap(), false);
 
         Ok(())
