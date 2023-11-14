@@ -42,17 +42,18 @@ fn add_negations(mut command: Command) -> Command {
         .map(|opt| {
             let long = opt.get_long().expect("long option");
             let negated_long: &'static str = Box::leak(format!("no-{}", long).into_boxed_str());
+
             clap::Arg::new(negated_long)
                 .long(negated_long)
-                // .hide(true)
                 .action(ArgAction::SetTrue)
+                .help(format!("The opposite of --{long}"))
                 // overrides_with is enough to make the flags take effect
                 // We never have to check their values, they'll simply
                 // unset previous occurrences of the original flag
                 .overrides_with(opt.get_id())
         })
         .collect();
-    command = command.args(negations)
+    command = command.args(negations);
 
     command
 }
