@@ -1,4 +1,6 @@
+use convert_case::Case;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
+use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 
 crate::ir! {
 pub struct IrTypePrimitiveList {
