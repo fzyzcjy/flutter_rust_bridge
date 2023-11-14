@@ -51,7 +51,7 @@ pub(crate) struct GenerateCommandArgs {
 
     /// Output path (including file name) of generated C header, each field corresponding to that of --rust-input.
     #[arg(short, long)]
-    pub c_output: Vec<String>,
+    pub c_output: Option<Vec<String>>,
 
     /// Crate directory for your Rust project
     #[arg(long)]

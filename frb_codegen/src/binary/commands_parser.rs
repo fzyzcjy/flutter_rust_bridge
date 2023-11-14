@@ -60,7 +60,7 @@ mod tests {
         configure_opinionated_test_logging();
 
         let temp_dir = tempdir()?;
-        std::env::set_current_dir(temp_dir)?;
+        std::env::set_current_dir(&temp_dir)?;
         fs::write(temp_dir.path().join(".flutter_rust_bridge.yaml"), "rust_input: hello.rs\ndart3: false")?;
 
         let config = run_command_line(vec!["", "generate"]);
@@ -75,7 +75,7 @@ mod tests {
         configure_opinionated_test_logging();
 
         let temp_dir = tempdir()?;
-        std::env::set_current_dir(temp_dir)?;
+        std::env::set_current_dir(&temp_dir)?;
         fs::write(temp_dir.path().join("pubspec.yaml"), "flutter_rust_bridge:\n  rust_input: hello.rs\n  dart3: false")?;
 
         let config = run_command_line(vec!["", "generate"]);
@@ -90,7 +90,7 @@ mod tests {
         configure_opinionated_test_logging();
 
         let temp_dir = tempdir()?;
-        std::env::set_current_dir(temp_dir)?;
+        std::env::set_current_dir(&temp_dir)?;
         fs::write(temp_dir.path().join("hello.yaml"), "rust_input: hello.rs\ndart3: false")?;
 
         let config = run_command_line(vec!["", "generate", "--config-file", "hello.yaml"]);
