@@ -1,6 +1,8 @@
 //! Code generator for `flutter_rust_bridge`
 
 mod config_parser;
+mod internal_config;
+mod internal_config_parser;
 
 pub use config_parser::*;
 
