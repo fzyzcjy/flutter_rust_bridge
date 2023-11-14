@@ -1,12 +1,14 @@
 use std::path::PathBuf;
 use anyhow::Result;
 use itertools::Itertools;
+use log::debug;
 use crate::codegen::Config;
 use crate::codegen::config::internal_config::{GeneratorCInternalConfig, GeneratorDartInternalConfig, GeneratorInternalConfig, GeneratorRustInternalConfig, InternalConfig, ParserInternalConfig, PolisherInternalConfig};
 
 impl InternalConfig {
     pub(crate) fn parse(config: Config) -> Result<Self> {
         let base_dir = config.base_dir.map(PathBuf::from).unwrap_or_else(|| std::env::current_dir()?);
+        debug!("InternalConfig.parse base_dir={base_dir}");
 
         Ok(InternalConfig {
             parser: ParserInternalConfig {
