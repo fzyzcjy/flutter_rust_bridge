@@ -10,7 +10,7 @@ use crate::utils::path_utils::{canonicalize_path, find_parent_dir_with_file, glo
 
 impl InternalConfig {
     pub(crate) fn parse(config: Config) -> Result<Self> {
-        let base_dir = config.base_dir.map(PathBuf::from).unwrap_or_else(|| std::env::current_dir()?);
+        let base_dir = config.base_dir.map(PathBuf::from).unwrap_or(std::env::current_dir()?);
         debug!("InternalConfig.parse base_dir={base_dir:?}");
 
         let rust_input_path_pack = compute_rust_input_path_pack(&config.rust_input, &base_dir)?;
@@ -28,10 +28,10 @@ impl InternalConfig {
             .into_iter().map(|p| canonicalize_path(&p, &base_dir)).collect();
 
         let rust_crate_dir: PathBuf = config.rust_crate_dir.map(PathBuf::from)
-            .unwrap_or_else(|| fallback_rust_crate_dir(rust_input_path_pack.one_rust_input_path())?);
+            .unwrap_or(fallback_rust_crate_dir(rust_input_path_pack.one_rust_input_path())?);
         let manifest_path = rust_crate_dir.join("Cargo.toml");
         let dart_root = config.dart_root.map(PathBuf::from)
-            .unwrap_or_else(|| fallback_dart_root(&dart_output_dir)?);
+            .unwrap_or(fallback_dart_root(&dart_output_dir)?);
 
         Ok(InternalConfig {
             parser: ParserInternalConfig {
@@ -81,8 +81,8 @@ fn compute_rust_input_path_pack(raw_rust_input: &str, base_dir: &Path) -> Result
 
     let pack = RustInputPathPack {
         rust_input_path: paths.into_iter()
-            .map(|path| (compute_namespace_from_rust_input_path(&path)?, path))
-            .collect(),
+            .map(|path| Ok((compute_namespace_from_rust_input_path(&path)?, path)))
+            .collect::<Result<HashMap<_, _>>>()?,
     };
 
     ensure!(!pack.rust_input_path.is_empty());
