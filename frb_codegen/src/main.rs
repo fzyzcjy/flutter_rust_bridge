@@ -183,7 +183,7 @@ struct GenerateCommandArgs {
     pub dump: Option<Vec<ConfigDump>>,
 
     /// Disable language features introduced in Dart 3.
-    #[arg(long = "no-dart3", action(ArgAction::SetFalse))]
+    #[arg(long, default_value_t=true)]
     #[serde(default = "r#true")]
     pub dart3: bool,
 
