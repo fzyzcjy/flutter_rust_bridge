@@ -26,6 +26,8 @@ struct Cli {
     command: Commands,
 }
 
+// Every option should have a --no- variant that makes it as if it was
+// never passed.
 // https://github.com/clap-rs/clap/issues/815
 // https://github.com/ducaale/xh/blob/1a74a521e1f1def2f9463abcfe05b448f04c27be/src/cli.rs#L583
 fn add_negations(mut command: Command) -> Command {
@@ -34,20 +36,12 @@ fn add_negations(mut command: Command) -> Command {
         command = command.mut_subcommand(subcommand_name, add_negations);
     }
 
-    // Every option should have a --no- variant that makes it as if it was
-    // never passed.
-    // https://github.com/clap-rs/clap/issues/815
-    // https://github.com/httpie/httpie/blob/225dccb2186f14f871695b6c4e0bfbcdb2e3aa28/httpie/cli/argparser.py#L312
-    // Unlike HTTPie we apply the options in order, so the --no- variant
-    // has to follow the original to apply. You could have a chain of
-    // --x=y --no-x --x=z where the last one takes precedence.
     let negations: Vec<_> = command
         .get_arguments()
         .filter(|a| !a.is_positional())
         .map(|opt| {
             let long = opt.get_long().expect("long option");
             let negated_long: &'static str = Box::leak(format!("no-{}", long).into_boxed_str());
-            println!("hi {long} {negated_long}");
             clap::Arg::new(negated_long)
                 .long(negated_long)
                 // .hide(true)
@@ -58,8 +52,9 @@ fn add_negations(mut command: Command) -> Command {
                 .overrides_with(opt.get_id())
         })
         .collect();
+    command = command.args(negations)
 
-    command.args(negations)
+    command
 }
 
 #[derive(Subcommand)]
