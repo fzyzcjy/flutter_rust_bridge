@@ -14,7 +14,7 @@ use log::LevelFilter;
 /// # Example
 ///
 /// ```
-/// use lib_flutter_rust_bridge_codegen::configure_opinionated_logging;
+/// use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_logging;
 /// configure_opinionated_logging("./logs/", false).expect("failed to initialize log");
 /// ```
 pub fn configure_opinionated_logging(path: &str, verbose: bool) -> Result<(), fern::InitError> {
@@ -27,12 +27,13 @@ pub fn configure_opinionated_logging(path: &str, verbose: bool) -> Result<(), fe
 
     let mut d = fern::Dispatch::new();
     d = d.format(move |out, message, record| {
-        let level = if atty::is(atty::Stream::Stdout) {
-            colored_output.color(record.level())
+        let time = chrono::Local::now().format("%Y/%m/%d %H:%M:%S");
+        let level = record.level();
+        let format = if atty::is(atty::Stream::Stdout) {
+            format!("{} [{}] {}", time, colored_output.color(level), message)
         } else {
-            record.level()
+            format!("{} [{}] {}", time, level, message)
         };
-        let format = format!("{} [{}] {}", chrono::Local::now().format("%Y/%m/%d %H:%M:%S"), level, message)
         out.finish(format_args!("{}", format))
     });
 
