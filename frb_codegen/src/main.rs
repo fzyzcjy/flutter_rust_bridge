@@ -8,7 +8,7 @@ fn main() -> anyhow::Result<()> {
     println!("cli={cli:#?}");
 
     match cli.command {
-        Commands::Generate(args) => codegen::generate(&codegen::Config {})?,
+        Commands::Generate(args) => codegen::generate(&args.into_config())?,
         Commands::Create(args) => integration::create(&args.name)?,
         Commands::Integrate(_) => integration::integrate()?,
     }
@@ -49,11 +49,11 @@ struct GenerateCommandArgs {
     #[arg(short, long)]
     pub dart_output: Option<String>,
 
+    // TODO handle it
     /// Path to a YAML config file.
     ///
     /// If present, other options and flags will be ignored.
     /// Accepts the same options as the CLI, but uses snake_case keys.
-    #[serde(skip)]
     pub config_file: Option<String>,
 
     /// If provided, generated Dart declaration code to this separate file
@@ -78,17 +78,15 @@ struct GenerateCommandArgs {
     pub class_name: Option<String>,
 
     /// Line length for Dart formatting
-    #[arg(long, default_value = "80")]
-    pub dart_format_line_length: u32,
+    #[arg(long)]
+    pub dart_format_line_length: Option<u32>,
 
     /// The generated Dart enums will have their variant names camelCased.
     #[arg(long)]
-    #[serde(default)]
     pub dart_enums_style: bool,
 
     /// Skip automatically adding `mod bridge_generated;` to `lib.rs`
     #[arg(long)]
-    #[serde(default)]
     pub no_add_mod_to_lib: bool,
 
     /// Path to the installed LLVM
@@ -106,12 +104,10 @@ struct GenerateCommandArgs {
     // TODO about negation?
     /// Skip running build_runner even when codegen-required code is detected
     #[arg(long)]
-    #[serde(default)]
     pub no_build_runner: bool,
 
     /// No use bridge in Model
     #[arg(long)]
-    #[serde(default)]
     pub no_use_bridge_in_method: bool,
 
     /// extra_headers is used to add dependencies header
@@ -119,28 +115,23 @@ struct GenerateCommandArgs {
     /// Note that when no_use_bridge_in_method=true and extra_headers is not set,
     /// the default is `import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart'`.
     #[arg(long)]
-    #[serde(default)]
     pub extra_headers: Option<String>,
 
     /// Show debug messages.
     #[arg(short, long)]
-    #[serde(default)]
     pub verbose: bool,
 
     /// Enable WASM module generation.
     /// Requires: --dart-decl-output
     #[arg(long)]
-    #[serde(default)]
     pub wasm: bool,
 
     /// Inline declaration of Rust bridge modules
     #[arg(long)]
-    #[serde(default)]
     pub inline_rust: bool,
 
     /// Skip dependencies check.
     #[arg(long)]
-    #[serde(default)]
     pub skip_deps_check: bool,
 
     /// A list of data to be dumped. If specified without a value, defaults to all.
@@ -149,19 +140,42 @@ struct GenerateCommandArgs {
     pub dump: Option<Vec<ConfigDump>>,
 
     /// Disable language features introduced in Dart 3.
-    #[arg(long, default_value_t=true)]
-    #[serde(default = "r#true")]
-    pub dart3: bool,
+    #[arg(long)]
+    pub no_dart3: bool,
 
     /// If set, the program will delay error reporting until all codegen operations have completed.
     #[arg(long)]
-    #[serde(default)]
     pub keep_going: bool,
 }
 
-#[inline(always)]
-fn r#true() -> bool {
-    true
+impl GenerateCommandArgs {
+    fn into_config(self) -> codegen::Config {
+        codegen::Config {
+            rust_input: self.rust_input,
+            dart_output: self.dart_output,
+            dart_decl_output: self.dart_decl_output,
+            c_output: self.c_output,
+            rust_crate_dir: self.rust_crate_dir,
+            rust_output: self.rust_output,
+            class_name: self.class_name,
+            dart_format_line_length: self.dart_format_line_length,
+            dart_enums_style: Some(self.dart_enums_style),
+            add_mod_to_lib: Some(!self.no_add_mod_to_lib),
+            llvm_path: self.llvm_path,
+            llvm_compiler_opts: self.llvm_compiler_opts,
+            dart_root: self.dart_root,
+            build_runner: Some(!self.no_build_runner),
+            use_bridge_in_method: Some(!self.no_use_bridge_in_method),
+            extra_headers: self.extra_headers,
+            verbose: Some(self.verbose),
+            wasm: Some(self.wasm),
+            inline_rust: Some(self.inline_rust),
+            skip_deps_check: Some(self.skip_deps_check),
+            dump: self.dump,
+            dart3: Some(!self.no_dart3),
+            keep_going: Some(self.keep_going),
+        }
+    }
 }
 
 #[derive(Debug, Args)]

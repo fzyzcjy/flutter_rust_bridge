@@ -14,7 +14,6 @@ pub fn generate(config: &Config) -> anyhow::Result<()> {
 pub struct Config {
     pub rust_input: Option<String>,
     pub dart_output: Option<String>,
-    pub config_file: Option<String>,
     pub dart_decl_output: Option<String>,
     pub c_output: Option<String>,
     pub rust_crate_dir: Option<String>,
