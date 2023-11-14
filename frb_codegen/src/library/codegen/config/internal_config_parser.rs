@@ -112,7 +112,7 @@ fn compute_dart_output_path_pack(dart_output_dir: PathBuf, namespaces: &[&Namesp
 }
 
 fn compute_dart_decl_output_filename(namespace: &Namespace) -> String {
-    format!("{}.dart", namespace.name)
+    format!("{}.dart", namespace.name.to_case(Case::Snake))
 }
 
 fn compute_dart_class_name(dart_class_name: &Option<String>, namespaces: &[&Namespace]) -> HashMap<Namespace, String> {
