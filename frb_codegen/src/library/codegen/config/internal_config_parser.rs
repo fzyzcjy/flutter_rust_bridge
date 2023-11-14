@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
-use anyhow::{ensure, Result};
+use anyhow::{Context, ensure, Result};
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 use log::debug;
@@ -87,7 +87,7 @@ fn compute_rust_input_path_pack(raw_rust_input: &str, base_dir: &Path) -> Result
 
     ensure!(!pack.rust_input_path.is_empty());
     ensure!(
-        !pack.rust_input_path.values().any(|p| path_to_string(p)?.contains("lib.rs")),
+        !pack.rust_input_path.values().any(|p| path_to_string(p).unwrap().contains("lib.rs")),
         "Do not use `lib.rs` as a Rust input. Please put code to be generated in something like `api.rs`.",
     );
 
@@ -95,7 +95,7 @@ fn compute_rust_input_path_pack(raw_rust_input: &str, base_dir: &Path) -> Result
 }
 
 fn compute_namespace_from_rust_input_path(rust_input_path: &Path) -> Result<Namespace> {
-    let stem = rust_input_path.file_stem()?.to_str()?;
+    let stem = rust_input_path.file_stem().context("cannot get file stem")?.to_str().context("cannot convert to str")?;
     Ok(Namespace { name: stem.to_owned() })
 }
 
