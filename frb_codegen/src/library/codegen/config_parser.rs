@@ -1,6 +1,7 @@
 use std::fs;
 use anyhow::{bail, Context, Error};
 use log::debug;
+use syn::token::Pub;
 use crate::codegen::Config;
 
 impl Config {
@@ -33,26 +34,25 @@ impl Config {
     }
 
     fn from_pubspec_yaml() -> Result<Option<Self>, Error> {
-        const PUBSPEC_LOCATIONS: [&str; 1] = ["pubspec.yaml"];
+        const PUBSPEC_LOCATION: &str= "pubspec.yaml";
+
+        #[derive(serde::Deserialize)]
+        struct Needle {
+            #[serde(rename = "flutter_rust_bridge")]
+            data: Option<Config>,
+        }
 
         let mut hint = "fill in .flutter_rust_bridge.yml with your config.".to_owned();
-        for location in PUBSPEC_LOCATIONS {
-            if let Ok(pubspec) = fs::File::open(location) {
-                #[derive(serde::Deserialize)]
-                struct Needle {
-                    #[serde(rename = "flutter_rust_bridge")]
-                    data: Option<Config>,
+        if let Ok(pubspec) = fs::File::open(PUBSPEC_LOCATION) {
+            match serde_yaml::from_reader(pubspec) {
+                Ok(Needle { data: Some(data) }) => return Ok(Some(data)),
+                Ok(Needle { data: None }) => {
+                    hint = format!("create an entry called 'flutter_rust_bridge' in {location} with your config.");
                 }
-                match serde_yaml::from_reader(pubspec) {
-                    Ok(Needle { data: Some(data) }) => return Ok(Some(data)),
-                    Ok(Needle { data: None }) => {
-                        hint = format!("create an entry called 'flutter_rust_bridge' in {location} with your config.");
-                    }
-                    Err(err) => {
-                        return Err(Error::new(err).context(format!(
-                            "Could not parse the 'flutter_rust_bridge' entry in {location}"
-                        )));
-                    }
+                Err(err) => {
+                    return Err(Error::new(err).context(format!(
+                        "Could not parse the 'flutter_rust_bridge' entry in {location}"
+                    )));
                 }
             }
         }
