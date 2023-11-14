@@ -1,4 +1,18 @@
-pub(crate) mod primitive;
+mod boxed;
+mod dart_opaque;
+mod delegate;
+mod dynamic;
+mod enumeration;
+mod general_list;
+mod optional;
+mod optional_list;
+mod primitive;
+mod primitive_list;
+mod record;
+mod rust_opaque;
+mod structure;
+mod sync_return;
+mod unencodable;
 
 use enum_dispatch::enum_dispatch;
 use primitive::IrTypePrimitive;
