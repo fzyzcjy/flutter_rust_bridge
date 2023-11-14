@@ -35,4 +35,9 @@ mod tests {
         // absolute
         assert_eq!(canonicalize_path("/a/b/c.rs", &PathBuf::from("/x/y")), PathBuf::from("/a/b/c.rs"));
     }
+
+    #[test]
+    fn test_glob_path_simple() {
+        todo!()
+    }
 }
