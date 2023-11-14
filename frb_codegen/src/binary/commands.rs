@@ -37,25 +37,21 @@ pub(crate) struct GenerateCommandArgs {
     #[arg(long)]
     pub config_file: Option<String>,
 
-    /// Path of input Rust code
-    #[arg(short, long, num_args = 1..)]
-    pub rust_input: Option<Vec<String>>,
+    /// Regular expression of input Rust files
+    #[arg(short, long)]
+    pub rust_input: Option<String>,
 
-    /// Path of output generated Dart code
+    /// Directory of output generated Dart code
     #[arg(short, long)]
     pub dart_output: Option<String>,
 
-    /// If provided, generated Dart declaration code to this separate file
-    #[arg(long)]
-    pub dart_decl_output: Option<String>,
-
-    /// Output path (including file name) of generated C header, each field corresponding to that of --rust-input.
-    #[arg(short, long, num_args = 1..)]
-    pub c_output: Option<Vec<String>>,
-
-    /// Extra output path (excluding file name) of generated C header
+    /// Output path of generated C header
     #[arg(short, long)]
-    pub extra_c_output: Option<Vec<String>>,
+    pub c_output: Option<String>,
+
+    /// Duplicate the files generated at the location `--c-output` specifies
+    #[arg(short, long)]
+    pub duplicated_c_output: Option<Vec<String>>,
 
     /// Crate directory for your Rust project
     #[arg(long)]

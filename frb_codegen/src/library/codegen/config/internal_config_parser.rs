@@ -3,7 +3,7 @@ use anyhow::Result;
 use itertools::Itertools;
 use log::debug;
 use crate::codegen::Config;
-use crate::codegen::config::internal_config::{GeneratorCInternalConfig, GeneratorDartInternalConfig, GeneratorInternalConfig, GeneratorRustInternalConfig, InternalConfig, ParserInternalConfig, PolisherInternalConfig};
+use crate::codegen::config::internal_config::{DartOutputPaths, GeneratorCInternalConfig, GeneratorDartInternalConfig, GeneratorInternalConfig, GeneratorRustInternalConfig, InternalConfig, ParserInternalConfig, PolisherInternalConfig, RustOutputPaths};
 
 impl InternalConfig {
     pub(crate) fn parse(config: Config) -> Result<Self> {
@@ -17,8 +17,10 @@ impl InternalConfig {
             },
             generator: GeneratorInternalConfig {
                 dart: GeneratorDartInternalConfig {
-                    dart_output_path: TODO,
-                    dart_decl_output_path: TODO,
+                    dart_output_paths: DartOutputPaths {
+                        dart_decl_output_path: TODO,
+                        dart_impl_output_path: TODO,
+                    },
                     dart_enums_style: config.dart_enums_style.unwrap_or(false),
                     class_name: TODO,
                     dart_root: TODO,
@@ -28,7 +30,9 @@ impl InternalConfig {
                 },
                 rust: GeneratorRustInternalConfig {
                     rust_crate_dir: TODO,
-                    rust_output_path: TODO,
+                    rust_output_paths: RustOutputPaths {
+                        rust_output_path: TODO,
+                    },
                     inline_rust: config.inline_rust.unwrap_or(false),
                 },
                 c: GeneratorCInternalConfig {
@@ -40,7 +44,7 @@ impl InternalConfig {
                 },
             },
             polisher: PolisherInternalConfig {
-                duplicate_c_output_path: TODO,
+                duplicated_c_output_path: TODO,
                 dart_format_line_length: config.dart_format_line_length.unwrap_or(80),
                 add_mod_to_lib: config.add_mod_to_lib.unwrap_or(true),
                 build_runner: config.build_runner.unwrap_or(true),
