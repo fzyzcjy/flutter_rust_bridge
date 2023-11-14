@@ -7,7 +7,7 @@ pub type IrStructPool = HashMap<String, IrStruct>;
 pub type IrEnumPool = HashMap<String, IrEnum>;
 
 #[derive(Debug, Clone)]
-#[cfg_attr(feature = "serde", derive(serde::Serialize))]
+#[derive(serde::Serialize)]
 pub struct IrFile {
     pub funcs: Vec<IrFunc>,
     pub struct_pool: IrStructPool,

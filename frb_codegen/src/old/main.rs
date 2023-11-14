@@ -1,5 +1,4 @@
 use anyhow::Context;
-#[cfg(feature = "serde")]
 use lib_flutter_rust_bridge_codegen::dump;
 use lib_flutter_rust_bridge_codegen::{
     config_parse, frb_codegen_multi, get_symbols_if_no_duplicates, init_logger, RawOpts,
@@ -11,13 +10,11 @@ fn main() -> anyhow::Result<()> {
     let raw_opts = RawOpts::try_parse_args_or_yaml()?;
     init_logger("./logs/", raw_opts.verbose)?;
 
-    #[cfg(feature = "serde")]
     let dump_config = raw_opts.dump.clone();
 
     let configs = config_parse(raw_opts);
     debug!("configs={:?}", configs);
 
-    #[cfg(feature = "serde")]
     if let Some(dump) = dump_config {
         return dump::dump_multi(&configs, dump).context("Failed to dump config");
     }

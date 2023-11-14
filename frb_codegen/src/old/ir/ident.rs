@@ -7,7 +7,6 @@ pub struct IrIdent {
 }
 }
 
-#[cfg(feature = "serde")]
 impl serde::Serialize for IrIdent {
     fn serialize<S>(&self, s: S) -> Result<S::Ok, S::Error>
     where

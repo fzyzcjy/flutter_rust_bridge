@@ -289,7 +289,6 @@ fn anchor_config(config: RawOpts, config_path: &str) -> RawOpts {
         no_use_bridge_in_method: config.no_use_bridge_in_method,
         extra_headers: config.extra_headers,
         keep_going: config.keep_going,
-        #[cfg(feature = "serde")]
         dump: config.dump,
     }
 }

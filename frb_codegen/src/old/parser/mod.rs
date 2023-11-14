@@ -644,23 +644,21 @@ fn extract_metadata(attrs: &[Attribute]) -> Vec<IrDartAnnotation> {
 
 crate::ir! {
 pub enum DefaultValues {
-    #[cfg_attr(feature = "serde", serde(serialize_with = "serialize_litstr"))]
+    #[serde(serialize_with = "serialize_litstr")]
     Str(syn::LitStr),
-    #[cfg_attr(feature = "serde", serde(serialize_with = "serialize_litbool"))]
+    #[serde(serialize_with = "serialize_litbool")]
     Bool(syn::LitBool),
-    #[cfg_attr(feature = "serde", serde(serialize_with = "serialize_litint"))]
+    #[serde(serialize_with = "serialize_litint")]
     Int(syn::LitInt),
-    #[cfg_attr(feature = "serde", serde(serialize_with = "serialize_litfloat"))]
+    #[serde(serialize_with = "serialize_litfloat")]
     Float(syn::LitFloat),
-    #[cfg_attr(feature = "serde", serde(serialize_with = "serialize_punctuated"))]
+    #[serde(serialize_with = "serialize_punctuated")]
     Vec(Punctuated<DefaultValues, Token![,]>),
 }
 }
 
-#[cfg(feature = "serde")]
 use _serde::*;
 
-#[cfg(feature = "serde")]
 mod _serde {
     use serde::{Serialize, Serializer};
     use syn::{punctuated::Punctuated, Token};

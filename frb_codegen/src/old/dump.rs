@@ -1,5 +1,3 @@
-#![cfg(feature = "serde")]
-
 use std::collections::HashMap;
 
 use crate::config::opts::Opts;

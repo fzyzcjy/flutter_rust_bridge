@@ -151,7 +151,6 @@ impl PathExt for std::path::Path {
 #[macro_export]
 macro_rules! derive_serde_inner_as_newtype {
     ($($type:ident),*) => {$(
-        #[cfg(feature = "serde")]
         impl ::serde::Serialize for $type {
             fn serialize<S>(&self, s: S) -> Result<S::Ok, S::Error>
             where
@@ -179,7 +178,7 @@ macro_rules! ir {
     };
     ($decl:item $($rest:tt)*) => {
         #[derive(Debug, Clone, Hash, Eq, PartialEq)]
-        #[cfg_attr(feature = "serde", derive(::serde::Serialize))]
+        #[derive(::serde::Serialize)]
         $decl
 
         $crate::ir!($($rest)*);
