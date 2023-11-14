@@ -142,25 +142,30 @@ fn fallback_rust_output_path(rust_input_path: &Path) -> PathBuf {
 
 #[cfg(test)]
 mod tests {
+    use std::fs;
+    use log::debug;
     use crate::codegen::Config;
-    use crate::codegen::config::internal_config;
     use crate::codegen::config::internal_config::InternalConfig;
     use crate::common::test_utils::set_cwd_test_fixture;
+    use crate::utils::test_utils::set_cwd_test_fixture;
 
     #[test]
-    fn test_parse_paths_simple() -> anyhow::Result<()> {
-        todo!()
+    fn test_parse_single_rust_input() -> anyhow::Result<()> {
+        body("internal_config_parser/single_rust_input")
     }
 
     #[test]
-    fn test_parse_paths_regex_input() -> anyhow::Result<()> {
-        todo!()
+    fn test_parse_wildcard_rust_input() -> anyhow::Result<()> {
+        body("internal_config_parser/wildcard_rust_input")
     }
 
     fn body(fixture_name: &str) -> anyhow::Result<()> {
         set_cwd_test_fixture(fixture_name)?;
         let config = Config::from_files_auto()?;
         let internal_config = InternalConfig::parse(config)?;
+        debug!("internal_config:\n{}", serde_json::to_string_pretty(internal_config)?);
+        let expect: InternalConfig = serde_json::from_str(&fs::read_to_string("expect_output.json")?)?;
+        assert_eq!(internal_config, expect);
         Ok(())
     }
 }
