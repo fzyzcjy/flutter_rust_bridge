@@ -1,7 +1,9 @@
 use std::fs;
+use std::path::PathBuf;
 use anyhow::{bail, Context, Error};
 use log::debug;
 use crate::codegen::config::config::Config;
+use crate::utils::path_utils::path_to_string;
 
 impl Config {
     pub fn from_files_auto() -> Result<Self, Error> {
@@ -31,7 +33,7 @@ impl Config {
             debug!("Found config file {location}");
             let raw: Config = serde_yaml::from_reader(file)
                 .with_context(|| format!("Could not parse {location}"))?;
-            let base_dir = TODO;
+            let base_dir = path_to_string(PathBuf::from(location).parent()?)?;
             return Ok(Some(raw.with_base_dir(base_dir)));
         }
 

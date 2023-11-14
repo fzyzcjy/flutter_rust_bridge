@@ -314,6 +314,3 @@ fn canon_pathbuf(sub_path: &str) -> PathBuf {
     path
 }
 
-fn path_to_string(path: PathBuf) -> Result<String, OsString> {
-    path.into_os_string().into_string()
-}
