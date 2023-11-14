@@ -48,6 +48,7 @@ struct GenerateCommandArgs {
     ///
     /// If present, other options and flags will be ignored.
     /// Accepts the same options as the CLI, but uses snake_case keys.
+    #[arg(long)]
     pub config_file: Option<String>,
 
     /// Path of input Rust code
