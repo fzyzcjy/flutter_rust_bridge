@@ -109,9 +109,9 @@ pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
         );
     }
 
-    // get correct c outputs for all rust inputs
-    let refined_c_outputs =
-        get_refined_c_output(&raw.c_output, &raw.extra_c_output_path, &rust_input_paths);
+    // // get correct c outputs for all rust inputs
+    // let refined_c_outputs =
+    //     get_refined_c_output(&raw.c_output, &raw.extra_c_output_path, &rust_input_paths);
 
     // dart root(s)
     let dart_roots: Vec<_> = match raw.dart_root {
