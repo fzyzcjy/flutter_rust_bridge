@@ -107,8 +107,8 @@ mod tests {
         configure_opinionated_test_logging();
 
         // bool flags
-        assert_eq!(run_command_line(vec!["", "generate", "--class-name", "hello"]).dart3, Some(true));
-        assert_eq!(run_command_line(vec!["", "generate", "--class-name", "hello", "--no-dart3"]).dart3, Some(false));
+        assert_eq!(run_command_line(vec!["", "generate", "--dart-class-name", "hello"]).dart3, Some(true));
+        assert_eq!(run_command_line(vec!["", "generate", "--dart-class-name", "hello", "--no-dart3"]).dart3, Some(false));
         assert_eq!(run_command_line(vec!["", "generate", "--rust-input", "hello.rs"]).rust_input, "hello.rs".to_string());
     }
 
