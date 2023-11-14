@@ -47,7 +47,6 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> 
 
 #[cfg(test)]
 mod tests {
-    use std::fs::File;
     use std::path::PathBuf;
     use clap::Parser;
     use lib_flutter_rust_bridge_codegen::codegen;
@@ -60,7 +59,7 @@ mod tests {
         let mut d = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
         d.push("test_fixtures");
         d.push(name);
-        println!("set_cwd_test_fixture: {d:?}");
+        log::debug!("set_cwd_test_fixture: {d:?}");
         Ok(std::env::set_current_dir(d)?)
     }
 
@@ -96,9 +95,6 @@ mod tests {
     fn test_compute_codegen_config_mode_config_file() -> anyhow::Result<()> {
         configure_opinionated_test_logging();
         set_cwd_test_fixture("commands_parser/config_file")?;
-
-        println!("open");
-        File::open("hello.yaml")?;
 
         let config = run_command_line(vec!["", "generate", "--config-file", "hello.yaml"]);
         assert_eq!(config.rust_input.unwrap(), "hello.rs");
