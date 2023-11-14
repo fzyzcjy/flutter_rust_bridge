@@ -10,6 +10,8 @@ fn main() -> anyhow::Result<()> {
     let matches = app.try_get_matches()?;
     let cli = Cli::from_arg_matches(&matches)?;
 
+    println!("cli={cli:#?}");
+
     match cli.command {
         Commands::Generate(args) => codegen::generate(&codegen::Config {})?,
         Commands::Create(args) => integration::create(&args.name)?,
@@ -19,7 +21,7 @@ fn main() -> anyhow::Result<()> {
 }
 
 // The name `Cli`, `Commands` come from https://docs.rs/clap/latest/clap/_derive/_tutorial/chapter_0/index.html
-#[derive(Parser)]
+#[derive(Debug, Parser)]
 #[command(author, version, about, long_about = None)]
 struct Cli {
     #[command(subcommand)]
@@ -58,7 +60,7 @@ fn add_negations(mut command: Command) -> Command {
     command
 }
 
-#[derive(Subcommand)]
+#[derive(Debug, Subcommand)]
 enum Commands {
     /// Execute the main code generator
     Generate(GenerateCommandArgs),
