@@ -5,16 +5,16 @@ use crate::binary::commands::GenerateCommandArgs;
 
 pub(crate) fn compute_codegen_config(args: GenerateCommandArgs) -> Result<Config> {
     if args == Default::default() {
-        debug!("get_codegen_config: mode=from_files_auto");
+        debug!("compute_codegen_config: mode=from_files_auto");
         return Config::from_files_auto();
     }
 
     if let Some(config_file) = args.config_file {
-        debug!("get_codegen_config: mode=config_file");
+        debug!("compute_codegen_config: mode=config_file");
         return Config::from_config_file(&config_file)?.context("Cannot find config_file");
     }
 
-    debug!("get_codegen_config: mode=from_naive_generate_command_args");
+    debug!("compute_codegen_config: mode=from_naive_generate_command_args");
     Ok(compute_codegen_config_from_naive_generate_command_args(args))
 }
 
