@@ -15,9 +15,10 @@ use std::{env, fs};
 use toml::Value;
 
 pub fn config_parse(mut raw: RawOpts) -> Vec<Opts> {
-    if let Some(config) = raw.config_file {
-        raw = parse_yaml(&config);
-    }
+    // already done in other parts now
+    // if let Some(config) = raw.config_file {
+    //     raw = parse_yaml(&config);
+    // }
 
     use clap::error::ErrorKind;
     // rust input path(s)
