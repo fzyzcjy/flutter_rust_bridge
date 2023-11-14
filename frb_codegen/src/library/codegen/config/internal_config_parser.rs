@@ -3,7 +3,7 @@ use anyhow::{anyhow, bail, Context, ensure, Result};
 use itertools::Itertools;
 use log::debug;
 use crate::codegen::Config;
-use crate::codegen::config::internal_config::{DartOutputPaths, GeneratorCInternalConfig, GeneratorDartInternalConfig, GeneratorInternalConfig, GeneratorRustInternalConfig, InternalConfig, ParserInternalConfig, PolisherInternalConfig, RustOutputPaths};
+use crate::codegen::config::internal_config::{DartOutputPathPack, GeneratorCInternalConfig, GeneratorDartInternalConfig, GeneratorInternalConfig, GeneratorRustInternalConfig, InternalConfig, ParserInternalConfig, PolisherInternalConfig, RustOutputPaths};
 use crate::utils::fp::Also;
 use crate::utils::path_utils::{canonicalize_path, glob_path, path_to_string};
 
@@ -33,7 +33,7 @@ impl InternalConfig {
             },
             generator: GeneratorInternalConfig {
                 dart: GeneratorDartInternalConfig {
-                    dart_output_paths: DartOutputPaths {
+                    dart_output_path_pack: DartOutputPathPack {
                         dart_decl_output_path: TODO,
                         dart_impl_output_path: TODO,
                     },

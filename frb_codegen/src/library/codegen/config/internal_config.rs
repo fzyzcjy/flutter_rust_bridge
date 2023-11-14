@@ -23,7 +23,7 @@ pub(crate) struct GeneratorInternalConfig {
 
 #[derive(Debug, Clone, serde::Serialize)]
 pub(crate) struct GeneratorDartInternalConfig {
-    pub dart_output_paths: DartOutputPaths,
+    pub dart_output_path_pack: DartOutputPathPack,
     pub dart_enums_style: bool,
     pub class_name: HashMap<Namespace, String>,
     pub dart_root: PathBuf,
@@ -33,7 +33,7 @@ pub(crate) struct GeneratorDartInternalConfig {
 }
 
 #[derive(Debug, Clone, serde::Serialize)]
-pub(crate) struct DartOutputPaths {
+pub(crate) struct DartOutputPathPack {
     // TODO details depend on the actual output files...
     pub dart_decl_output_path: HashMap<Namespace, PathBuf>,
     pub dart_impl_output_path: PathBuf,
