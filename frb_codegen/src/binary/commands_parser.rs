@@ -15,17 +15,16 @@ pub(crate) fn compute_codegen_config(args: GenerateCommandArgs) -> Result<Config
     }
 
     debug!("compute_codegen_config: mode=from_naive_generate_command_args");
-    Ok(compute_codegen_config_from_naive_command_args(args))
+    compute_codegen_config_from_naive_command_args(args)
 }
 
-fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> Config {
-    Config {
+fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> Result<Config> {
+    Ok(Config {
         base_dir: None,
-        rust_input: args.rust_input,
-        dart_output: args.dart_output,
-        dart_decl_output: args.dart_decl_output,
-        c_output: args.c_output,
-        extra_c_output: args.extra_c_output,
+        rust_input: args.rust_input.context("rust_input is required")?,
+        dart_output: args.dart_output.context("dart_output is required")?,
+        c_output: args.c_output.context("c_output is required")?,
+        duplicated_c_output: args.duplicated_c_output,
         rust_crate_dir: args.rust_crate_dir,
         rust_output: args.rust_output,
         dart_class_name: args.dart_class_name,
@@ -43,7 +42,7 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> 
         deps_check: Some(!args.no_deps_check),
         dart3: Some(!args.no_dart3),
         dump: args.dump,
-    }
+    })
 }
 
 #[cfg(test)]
@@ -71,7 +70,7 @@ mod tests {
         set_cwd_test_fixture("commands_parser/flutter_rust_bridge_yaml")?;
 
         let config = run_command_line(vec!["", "generate"]);
-        assert_eq!(config.rust_input.unwrap(), vec!["hello.rs".to_string()]);
+        assert_eq!(config.rust_input, "hello.rs".to_string());
         assert_eq!(config.dart3.unwrap(), false);
 
         Ok(())
@@ -84,7 +83,7 @@ mod tests {
         set_cwd_test_fixture("commands_parser/pubspec_yaml")?;
 
         let config = run_command_line(vec!["", "generate"]);
-        assert_eq!(config.rust_input.unwrap(), vec!["hello.rs".to_string()]);
+        assert_eq!(config.rust_input, "hello.rs".to_string());
         assert_eq!(config.dart3.unwrap(), false);
 
         Ok(())
@@ -97,7 +96,7 @@ mod tests {
         set_cwd_test_fixture("commands_parser/config_file")?;
 
         let config = run_command_line(vec!["", "generate", "--config-file", "hello.yaml"]);
-        assert_eq!(config.rust_input.unwrap(), vec!["hello.rs".to_string()]);
+        assert_eq!(config.rust_input, "hello.rs".to_string());
         assert_eq!(config.dart3.unwrap(), false);
 
         Ok(())
@@ -110,11 +109,7 @@ mod tests {
         // bool flags
         assert_eq!(run_command_line(vec!["", "generate", "--class-name", "hello"]).dart3, Some(true));
         assert_eq!(run_command_line(vec!["", "generate", "--class-name", "hello", "--no-dart3"]).dart3, Some(false));
-        assert_eq!(run_command_line(vec!["", "generate", "--rust-input", "hello.rs"]).rust_input, Some(vec!["hello.rs".to_string()]));
-        assert_eq!(
-            run_command_line(vec!["", "generate", "--rust-input", "a.rs", "--rust-input", "b.rs"]).rust_input,
-            Some(vec!["a.rs".to_string(), "b.rs".to_string()]),
-        );
+        assert_eq!(run_command_line(vec!["", "generate", "--rust-input", "hello.rs"]).rust_input, "hello.rs".to_string());
     }
 
     fn run_command_line(args: Vec<&'static str>) -> codegen::Config {

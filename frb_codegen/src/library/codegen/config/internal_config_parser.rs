@@ -20,7 +20,7 @@ impl InternalConfig {
             .unwrap_or_else(|| fallback_rust_output_path(rust_input_path_pack.one_rust_input_path())), &base_dir);
 
         let dart_output_dir: PathBuf = config.dart_output.into();
-        let dart_output_path_pack = compute_dart_output_path_pack(dart_output_dir, &namespaces);
+        let dart_output_path_pack = compute_dart_output_path_pack(&dart_output_dir, &namespaces);
         let dart_class_name = compute_dart_class_name(&config.dart_class_name, &namespaces);
 
         let c_output_path = canonicalize_path(&config.c_output, &base_dir);
@@ -99,7 +99,7 @@ fn compute_namespace_from_rust_input_path(rust_input_path: &Path) -> Result<Name
     Ok(Namespace { name: stem.to_owned() })
 }
 
-fn compute_dart_output_path_pack(dart_output_dir: PathBuf, namespaces: &[&Namespace]) -> DartOutputPathPack {
+fn compute_dart_output_path_pack(dart_output_dir: &Path, namespaces: &[&Namespace]) -> DartOutputPathPack {
     DartOutputPathPack {
         dart_decl_output_path: namespaces.iter()
             .map(|&namespace| (namespace.to_owned(), dart_output_dir.join(compute_dart_decl_output_filename(namespace))))
@@ -114,7 +114,7 @@ fn compute_dart_decl_output_filename(namespace: &Namespace) -> String {
 
 fn compute_dart_class_name(dart_class_name: &Option<String>, namespaces: &[&Namespace]) -> HashMap<Namespace, String> {
     const NAMESPACE_PLACEHOLDER: &str = "{namespace}";
-    let dart_class_name = dart_class_name.unwrap_or_else(|| NAMESPACE_PLACEHOLDER.to_owned());
+    let dart_class_name = dart_class_name.as_deref().unwrap_or(NAMESPACE_PLACEHOLDER);
     namespaces.iter()
         .map(|&namespace| (namespace.to_owned(), dart_class_name.replace(NAMESPACE_PLACEHOLDER, &namespace.name.to_case(Case::Pascal))))
         .collect()
