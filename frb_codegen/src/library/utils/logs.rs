@@ -27,21 +27,12 @@ pub fn configure_opinionated_logging(path: &str, verbose: bool) -> Result<(), fe
 
     let mut d = fern::Dispatch::new();
     d = d.format(move |out, message, record| {
-        let format = if atty::is(atty::Stream::Stdout) {
-            format!(
-                "{} [{}] {}",
-                chrono::Local::now().format("%Y/%m/%d %H:%M:%S"),
-                colored_output.color(record.level()),
-                message
-            )
+        let level = if atty::is(atty::Stream::Stdout) {
+            colored_output.color(record.level())
         } else {
-            format!(
-                "{} [{}] {}",
-                chrono::Local::now().format("%Y/%m/%d %H:%M:%S"),
-                record.level(),
-                message
-            )
+            record.level()
         };
+        let format = format!("{} [{}] {}", chrono::Local::now().format("%Y/%m/%d %H:%M:%S"), level, message)
         out.finish(format_args!("{}", format))
     });
 
