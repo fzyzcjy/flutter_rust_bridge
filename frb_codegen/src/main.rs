@@ -1,4 +1,5 @@
 use clap::{Args, Parser, Subcommand, ArgAction, FromArgMatches, Command};
+use itertools::Itertools;
 use serde::Deserialize;
 use lib_flutter_rust_bridge_codegen::*;
 use lib_flutter_rust_bridge_codegen::codegen::ConfigDump;
@@ -27,8 +28,12 @@ struct Cli {
 
 // https://github.com/clap-rs/clap/issues/815
 // https://github.com/ducaale/xh/blob/1a74a521e1f1def2f9463abcfe05b448f04c27be/src/cli.rs#L583
-fn add_negations(command: Command) -> Command {
-    command.get_subcommands_mut();
+fn add_negations(mut command: Command) -> Command {
+    let subcommand_names = command.get_subcommands().map(|c| c.get_name().to_string()).collect_vec();
+    for subcommand_name in subcommand_names {
+        command = command.mut_subcommand(subcommand_name, add_negations);
+    }
+
     // Every option should have a --no- variant that makes it as if it was
     // never passed.
     // https://github.com/clap-rs/clap/issues/815
