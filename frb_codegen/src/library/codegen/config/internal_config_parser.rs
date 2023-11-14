@@ -5,9 +5,7 @@ use crate::codegen::Config;
 use crate::codegen::config::internal_config::{GeneratorCInternalConfig, GeneratorDartInternalConfig, GeneratorInternalConfig, GeneratorRustInternalConfig, InternalConfig, ParserInternalConfig, PolisherInternalConfig};
 
 impl InternalConfig {
-    pub(crate) fn parse(config: Config) -> Result<Self> {
-        let base_dir = config.base_dir.map(PathBuf::from).unwrap_or_else(|| std::env::current_dir()?);
-
+    pub(crate) fn parse(config: Config, base_dir: &Path) -> Result<Self> {
         Ok(InternalConfig {
             parser: ParserInternalConfig {
                 rust_input_path: TODO,

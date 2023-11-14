@@ -5,7 +5,6 @@ use serde::Deserialize;
 /// Refer to `GenerateCommandArgs` for documentations
 #[derive(Debug, Deserialize)]
 pub struct Config {
-    pub base_dir: Option<String>,
     pub rust_input: Option<Vec<String>>,
     pub dart_output: Option<String>,
     pub dart_decl_output: Option<String>,

@@ -17,7 +17,7 @@ fn main() -> anyhow::Result<()> {
 
     debug!("cli={cli:?}");
     match cli.command {
-        Commands::Generate(args) => codegen::generate(&compute_codegen_config(args)?)?,
+        Commands::Generate(args) => codegen::generate(compute_codegen_config(args)?)?,
         Commands::Create(args) => integration::create(&args.name)?,
         Commands::Integrate(_) => integration::integrate()?,
     }
