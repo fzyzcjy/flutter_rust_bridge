@@ -1,7 +1,9 @@
+use std::collections::HashMap;
 use std::fmt::format;
 use std::fs;
 use std::path::{Path, PathBuf};
 use anyhow::{anyhow, bail, Context, ensure, Result};
+use convert_case::{Case, Casing};
 use itertools::Itertools;
 use log::debug;
 use crate::codegen::Config;
@@ -15,12 +17,14 @@ impl InternalConfig {
         debug!("InternalConfig.parse base_dir={base_dir}");
 
         let rust_input_path_pack = compute_rust_input_path_pack(&config.rust_input, &base_dir)?;
+        let namespaces = rust_input_path_pack.rust_input_path.keys().collect_vec();
 
         let rust_output_path = canonicalize_path(&config.rust_output.map(PathBuf::from)
             .unwrap_or_else(|| fallback_rust_output_path(rust_input_path_pack.one_rust_input_path())), &base_dir);
 
         let dart_output_dir: PathBuf = config.dart_output.into();
-        let dart_output_path_pack = compute_dart_output_path_pack(dart_output_dir, &rust_input_path_pack);
+        let dart_output_path_pack = compute_dart_output_path_pack(dart_output_dir, &namespaces);
+        let dart_class_name = compute_dart_class_name(&config.dart_class_name, &namespaces);
 
         let c_output_path = canonicalize_path(&config.c_output, &base_dir);
         let duplicated_c_output_path = config.duplicated_c_output.unwrap_or_default()
@@ -41,7 +45,7 @@ impl InternalConfig {
                 dart: GeneratorDartInternalConfig {
                     dart_output_path_pack,
                     dart_enums_style: config.dart_enums_style.unwrap_or(false),
-                    dart_class_name: TODO,
+                    dart_class_name,
                     dart_root,
                     use_bridge_in_method: config.use_bridge_in_method.unwrap_or(true),
                     wasm_enabled: config.wasm.unwrap_or(false),
@@ -80,7 +84,7 @@ fn compute_rust_input_path_pack(raw_rust_input: &str, base_dir: &Path) -> Result
 
     let pack = RustInputPathPack {
         rust_input_path: paths.into_iter()
-            .map(|path| (compute_namespace_from_rust_input_path(&path), path))
+            .map(|path| (compute_namespace_from_rust_input_path(&path)?, path))
             .collect(),
     };
 
@@ -93,21 +97,30 @@ fn compute_rust_input_path_pack(raw_rust_input: &str, base_dir: &Path) -> Result
     OK(pack)
 }
 
-fn compute_namespace_from_rust_input_path(rust_input_path: &Path) -> Namespace {
-    TODO
+fn compute_namespace_from_rust_input_path(rust_input_path: &Path) -> Result<Namespace> {
+    let stem = rust_input_path.file_stem()?.to_str()?;
+    Ok(Namespace { name: stem.to_owned() })
 }
 
-fn compute_dart_output_path_pack(dart_output_dir: PathBuf, rust_input_path_pack: &RustInputPathPack) -> DartOutputPathPack {
+fn compute_dart_output_path_pack(dart_output_dir: PathBuf, namespaces: &[&Namespace]) -> DartOutputPathPack {
     DartOutputPathPack {
-        dart_decl_output_path: rust_input_path_pack.rust_input_path.keys()
-            .map(|namespace| (namespace.to_owned(), dart_output_dir.join(compute_dart_decl_output_filename(namespace))))
+        dart_decl_output_path: namespaces.iter()
+            .map(|&namespace| (namespace.to_owned(), dart_output_dir.join(compute_dart_decl_output_filename(namespace))))
             .collect(),
         dart_impl_output_path: dart_output_dir.join("bridge_generated.dart"),
     }
 }
 
 fn compute_dart_decl_output_filename(namespace: &Namespace) -> String {
-    format!("{}.dart", TODO)
+    format!("{}.dart", namespace.name)
+}
+
+fn compute_dart_class_name(dart_class_name: &Option<String>, namespaces: &[&Namespace]) -> HashMap<Namespace, String> {
+    const NAMESPACE_PLACEHOLDER: &str = "{namespace}";
+    let dart_class_name = dart_class_name.unwrap_or_else(|| NAMESPACE_PLACEHOLDER.to_owned());
+    namespaces.iter()
+        .map(|&namespace| (namespace.to_owned(), dart_class_name.replace(NAMESPACE_PLACEHOLDER, &namespace.name.to_case(Case::Pascal))))
+        .collect()
 }
 
 fn fallback_llvm_path() -> Vec<String> {

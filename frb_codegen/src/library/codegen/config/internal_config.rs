@@ -71,4 +71,6 @@ pub(crate) struct PolisherInternalConfig {
 
 // TODO move?
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct Namespace(String);
+pub struct Namespace {
+    pub name: String,
+}
