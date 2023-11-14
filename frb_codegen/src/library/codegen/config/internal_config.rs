@@ -10,8 +10,13 @@ pub(crate) struct InternalConfig {
 
 #[derive(Debug, Clone, serde::Serialize)]
 pub(crate) struct ParserInternalConfig {
-    pub rust_input_path: HashMap<Namespace, PathBuf>,
+    pub rust_input_path_pack: RustInputPathPack,
     pub manifest_path: PathBuf,
+}
+
+#[derive(Debug, Clone, serde::Serialize)]
+pub(crate) struct RustInputPathPack {
+    pub rust_input_path: HashMap<Namespace, PathBuf>,
 }
 
 #[derive(Debug, Clone, serde::Serialize)]

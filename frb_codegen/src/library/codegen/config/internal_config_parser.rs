@@ -1,10 +1,11 @@
+use std::fmt::format;
 use std::fs;
 use std::path::{Path, PathBuf};
 use anyhow::{anyhow, bail, Context, ensure, Result};
 use itertools::Itertools;
 use log::debug;
 use crate::codegen::Config;
-use crate::codegen::config::internal_config::{DartOutputPathPack, GeneratorCInternalConfig, GeneratorDartInternalConfig, GeneratorInternalConfig, GeneratorRustInternalConfig, InternalConfig, ParserInternalConfig, PolisherInternalConfig, RustOutputPaths};
+use crate::codegen::config::internal_config::{DartOutputPathPack, GeneratorCInternalConfig, GeneratorDartInternalConfig, GeneratorInternalConfig, GeneratorRustInternalConfig, InternalConfig, Namespace, ParserInternalConfig, PolisherInternalConfig, RustInputPathPack, RustOutputPaths};
 use crate::utils::fp::Also;
 use crate::utils::path_utils::{canonicalize_path, find_parent_dir_with_file, glob_path, path_to_string};
 
@@ -13,32 +14,32 @@ impl InternalConfig {
         let base_dir = config.base_dir.map(PathBuf::from).unwrap_or_else(|| std::env::current_dir()?);
         debug!("InternalConfig.parse base_dir={base_dir}");
 
-        let rust_input_path = glob_path(&config.rust_input);
-        sanity_check_rust_input_path(rust_input_path)?;
+        let rust_input_path_pack = compute_rust_input_path_pack(&config.rust_input, &base_dir)?;
 
         let rust_output_path = canonicalize_path(&config.rust_output.map(PathBuf::from)
-            .unwrap_or_else(|| fallback_rust_output_path(&rust_input_path[0])), &base_dir);
+            .unwrap_or_else(|| fallback_rust_output_path(rust_input_path_pack.one_rust_input_path())), &base_dir);
+
+        let dart_output_dir: PathBuf = config.dart_output.into();
+        let dart_output_path_pack = compute_dart_output_path_pack(dart_output_dir, &rust_input_path_pack);
+
         let c_output_path = canonicalize_path(&config.c_output, &base_dir);
         let duplicated_c_output_path = config.duplicated_c_output.unwrap_or_default()
             .into_iter().map(|p| canonicalize_path(&p, &base_dir)).collect();
 
         let rust_crate_dir: PathBuf = config.rust_crate_dir.map(PathBuf::from)
-            .unwrap_or_else(|| fallback_rust_crate_dir(&rust_input_path[0])?);
+            .unwrap_or_else(|| fallback_rust_crate_dir(rust_input_path_pack.one_rust_input_path())?);
         let manifest_path = rust_crate_dir.join("Cargo.toml");
         let dart_root = config.dart_root.map(PathBuf::from)
-            .unwrap_or_else(|| fallback_dart_root(dart_output_path)?);
+            .unwrap_or_else(|| fallback_dart_root(&dart_output_dir)?);
 
         Ok(InternalConfig {
             parser: ParserInternalConfig {
-                rust_input_path,
+                rust_input_path_pack,
                 manifest_path,
             },
             generator: GeneratorInternalConfig {
                 dart: GeneratorDartInternalConfig {
-                    dart_output_path_pack: DartOutputPathPack {
-                        dart_decl_output_path: TODO,
-                        dart_impl_output_path: TODO,
-                    },
+                    dart_output_path_pack,
                     dart_enums_style: config.dart_enums_style.unwrap_or(false),
                     class_name: TODO,
                     dart_root,
@@ -70,13 +71,43 @@ impl InternalConfig {
     }
 }
 
-fn sanity_check_rust_input_path(rust_input_paths: Vec<PathBuf>) -> Result<()> {
-    ensure!(!rust_input_path.is_empty());
+impl RustInputPathPack {
+    fn one_rust_input_path(&self) -> &Path { self.rust_input_path.iter().next().unwrap().1 }
+}
+
+fn compute_rust_input_path_pack(raw_rust_input: &str, base_dir: &Path) -> Result<RustInputPathPack> {
+    let paths = glob_path(raw_rust_input, base_dir);
+
+    let pack = RustInputPathPack {
+        rust_input_path: paths.into_iter()
+            .map(|path| (compute_namespace_from_rust_input_path(&path), path))
+            .collect(),
+    };
+
+    ensure!(!pack.rust_input_path.is_empty());
     ensure!(
-        !rust_input_paths.iter().any(|p| path_to_string(p)?.contains("lib.rs")),
+        !pack.rust_input_path.values().any(|p| path_to_string(p)?.contains("lib.rs")),
         "Do not use `lib.rs` as a Rust input. Please put code to be generated in something like `api.rs`.",
     );
-    Ok(())
+
+    OK(pack)
+}
+
+fn compute_namespace_from_rust_input_path(rust_input_path: &Path) -> Namespace {
+    TODO
+}
+
+fn compute_dart_output_path_pack(dart_output_dir: PathBuf, rust_input_path_pack: &RustInputPathPack) -> DartOutputPathPack {
+    DartOutputPathPack {
+        dart_decl_output_path: rust_input_path_pack.rust_input_path.keys()
+            .map(|namespace| (namespace.to_owned(), dart_output_dir.join(compute_dart_decl_output_filename(namespace))))
+            .collect(),
+        dart_impl_output_path: dart_output_dir.join("bridge_generated.dart"),
+    }
+}
+
+fn compute_dart_decl_output_filename(namespace: &Namespace) -> String {
+    format!("{}.dart", TODO)
 }
 
 fn fallback_llvm_path() -> Vec<String> {
@@ -97,8 +128,8 @@ fn fallback_llvm_path() -> Vec<String> {
     ]
 }
 
-fn fallback_dart_root(dart_output_path: &Path) -> Result<PathBuf> {
-    find_parent_dir_with_file(dart_output_path, "pubspec.yaml")
+fn fallback_dart_root(dart_output_dir: &Path) -> Result<PathBuf> {
+    find_parent_dir_with_file(dart_output_dir, "pubspec.yaml")
 }
 
 fn fallback_rust_crate_dir(rust_input_path: &Path) -> Result<PathBuf> {
