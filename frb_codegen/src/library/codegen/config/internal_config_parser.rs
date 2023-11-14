@@ -41,7 +41,7 @@ impl InternalConfig {
                 dart: GeneratorDartInternalConfig {
                     dart_output_path_pack,
                     dart_enums_style: config.dart_enums_style.unwrap_or(false),
-                    class_name: TODO,
+                    dart_class_name: TODO,
                     dart_root,
                     use_bridge_in_method: config.use_bridge_in_method.unwrap_or(true),
                     wasm_enabled: config.wasm.unwrap_or(false),

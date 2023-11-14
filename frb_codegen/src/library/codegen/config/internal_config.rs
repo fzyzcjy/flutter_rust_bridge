@@ -31,7 +31,7 @@ pub(crate) struct GeneratorInternalConfig {
 pub(crate) struct GeneratorDartInternalConfig {
     pub dart_output_path_pack: DartOutputPathPack,
     pub dart_enums_style: bool,
-    pub class_name: HashMap<Namespace, String>,
+    pub dart_class_name: HashMap<Namespace, String>,
     pub dart_root: PathBuf,
     pub use_bridge_in_method: bool,
     pub wasm_enabled: bool,

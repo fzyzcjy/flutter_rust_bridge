@@ -12,7 +12,7 @@ pub struct Config {
     pub duplicated_c_output: Option<Vec<String>>,
     pub rust_crate_dir: Option<String>,
     pub rust_output: Option<String>,
-    pub class_name: Option<String>,
+    pub dart_class_name: Option<String>,
     pub dart_format_line_length: Option<u32>,
     pub dart_enums_style: Option<bool>,
     pub add_mod_to_lib: Option<bool>,

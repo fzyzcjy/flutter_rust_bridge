@@ -63,7 +63,7 @@ pub(crate) struct GenerateCommandArgs {
 
     /// Generated class name
     #[arg(long)]
-    pub class_name: Option<String>,
+    pub dart_class_name: Option<String>,
 
     /// Line length for Dart formatting
     #[arg(long)]
