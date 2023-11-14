@@ -22,7 +22,7 @@ impl InternalConfig {
         let rust_output_path = base_dir.join(&config.rust_output.map(PathBuf::from)
             .unwrap_or_else(|| fallback_rust_output_path(rust_input_path_pack.one_rust_input_path())));
 
-        let dart_output_dir: PathBuf = config.dart_output.into();
+        let dart_output_dir: PathBuf = base_dir.join(config.dart_output);
         let dart_output_path_pack = compute_dart_output_path_pack(&dart_output_dir, &namespaces);
         let dart_class_name = compute_dart_class_name(&config.dart_class_name, &namespaces);
 
