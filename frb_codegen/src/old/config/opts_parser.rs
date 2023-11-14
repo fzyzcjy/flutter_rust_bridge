@@ -153,71 +153,72 @@ fn get_outputs_for_flag_requires_full_data(
     })
 }
 
-/// Terminates the program if either the file doesn't exist, or is invalid.
-fn parse_yaml(path: &str) -> RawOpts {
-    use clap::error::ErrorKind;
-
-    let file = File::open(path)
-        .map_err(|err| {
-            raw_opts_bail(
-                ErrorKind::Io,
-                format!("Could not open {path}: {err}").into(),
-            )
-        })
-        .unwrap();
-    let config = serde_yaml::from_reader(file)
-        .map_err(|err| {
-            raw_opts_bail(
-                ErrorKind::InvalidValue,
-                format!("Could not parse config from {path}: {err}").into(),
-            )
-        })
-        .unwrap();
-    anchor_config(config, path)
-}
-
-fn anchor_config(config: RawOpts, config_path: &str) -> RawOpts {
-    let config_path = canon_pathbuf(config_path);
-    let cwd = config_path.parent().unwrap();
-    let anchor = |path: String| {
-        if Path::new(&path).is_absolute() {
-            path
-        } else {
-            cwd.join(&path).to_str().unwrap().to_owned()
-        }
-    };
-    let anchor_many = |paths: Vec<String>| paths.into_iter().map(anchor).collect_vec();
-
-    // Don't collapse reassignments into a spread here, as future configs may need to be
-    // correctly re-anchored.
-    RawOpts {
-        rust_input: anchor_many(config.rust_input),
-        dart_output: anchor_many(config.dart_output),
-        rust_output: config.rust_output.map(anchor_many),
-        dart_decl_output: config.dart_decl_output.map(anchor),
-        c_output: config.c_output.map(anchor_many),
-        extra_c_output_path: config.extra_c_output_path.map(anchor_many),
-        rust_crate_dir: config.rust_crate_dir.map(anchor_many),
-        dart_root: config.dart_root.map(anchor_many),
-        config_file: config.config_file,
-        class_name: config.class_name,
-        dart_format_line_length: config.dart_format_line_length,
-        dart_enums_style: config.dart_enums_style,
-        skip_add_mod_to_lib: config.skip_add_mod_to_lib,
-        llvm_path: config.llvm_path,
-        llvm_compiler_opts: config.llvm_compiler_opts,
-        no_build_runner: config.no_build_runner,
-        verbose: config.verbose,
-        wasm: config.wasm,
-        dart3: config.dart3,
-        inline_rust: config.inline_rust,
-        skip_deps_check: config.skip_deps_check,
-        no_use_bridge_in_method: config.no_use_bridge_in_method,
-        extra_headers: config.extra_headers,
-        keep_going: config.keep_going,
-        dump: config.dump,
-    }
-}
+// already done "anchor" via `base_dir`
+// /// Terminates the program if either the file doesn't exist, or is invalid.
+// fn parse_yaml(path: &str) -> RawOpts {
+//     use clap::error::ErrorKind;
+//
+//     let file = File::open(path)
+//         .map_err(|err| {
+//             raw_opts_bail(
+//                 ErrorKind::Io,
+//                 format!("Could not open {path}: {err}").into(),
+//             )
+//         })
+//         .unwrap();
+//     let config = serde_yaml::from_reader(file)
+//         .map_err(|err| {
+//             raw_opts_bail(
+//                 ErrorKind::InvalidValue,
+//                 format!("Could not parse config from {path}: {err}").into(),
+//             )
+//         })
+//         .unwrap();
+//     anchor_config(config, path)
+// }
+//
+// fn anchor_config(config: RawOpts, config_path: &str) -> RawOpts {
+//     let config_path = canon_pathbuf(config_path);
+//     let cwd = config_path.parent().unwrap();
+//     let anchor = |path: String| {
+//         if Path::new(&path).is_absolute() {
+//             path
+//         } else {
+//             cwd.join(&path).to_str().unwrap().to_owned()
+//         }
+//     };
+//     let anchor_many = |paths: Vec<String>| paths.into_iter().map(anchor).collect_vec();
+//
+//     // Don't collapse reassignments into a spread here, as future configs may need to be
+//     // correctly re-anchored.
+//     RawOpts {
+//         rust_input: anchor_many(config.rust_input),
+//         dart_output: anchor_many(config.dart_output),
+//         rust_output: config.rust_output.map(anchor_many),
+//         dart_decl_output: config.dart_decl_output.map(anchor),
+//         c_output: config.c_output.map(anchor_many),
+//         extra_c_output_path: config.extra_c_output_path.map(anchor_many),
+//         rust_crate_dir: config.rust_crate_dir.map(anchor_many),
+//         dart_root: config.dart_root.map(anchor_many),
+//         config_file: config.config_file,
+//         class_name: config.class_name,
+//         dart_format_line_length: config.dart_format_line_length,
+//         dart_enums_style: config.dart_enums_style,
+//         skip_add_mod_to_lib: config.skip_add_mod_to_lib,
+//         llvm_path: config.llvm_path,
+//         llvm_compiler_opts: config.llvm_compiler_opts,
+//         no_build_runner: config.no_build_runner,
+//         verbose: config.verbose,
+//         wasm: config.wasm,
+//         dart3: config.dart3,
+//         inline_rust: config.inline_rust,
+//         skip_deps_check: config.skip_deps_check,
+//         no_use_bridge_in_method: config.no_use_bridge_in_method,
+//         extra_headers: config.extra_headers,
+//         keep_going: config.keep_going,
+//         dump: config.dump,
+//     }
+// }
 
 fn get_valid_canon_paths(paths: &[String]) -> Vec<String> {
     paths
@@ -229,41 +230,6 @@ fn get_valid_canon_paths(paths: &[String]) -> Vec<String> {
 
 pub(crate) fn format_fail_to_guess_error(name: &str) -> String {
     format!("fail to guess {name}, please specify it manually in command line arguments")
-}
-
-fn fallback_rust_crate_dir(rust_input_path: &str) -> Result<String> {
-    let mut dir_curr = Path::new(rust_input_path)
-        .parent()
-        .context("Unexpected value for rust-crate-dir")?;
-
-    loop {
-        let path_cargo_toml = dir_curr.join("Cargo.toml");
-
-        if path_cargo_toml.exists() {
-            return Ok(dir_curr
-                .as_os_str()
-                .to_str()
-                .context("Not a UTF-8 path")?
-                .to_string());
-        }
-
-        if let Some(next_parent) = dir_curr.parent() {
-            dir_curr = next_parent;
-        } else {
-            break;
-        }
-    }
-    Err(anyhow!(
-        "look at parent directories but none contains Cargo.toml"
-    ))
-}
-
-fn fallback_rust_output_path(rust_input_path: &str) -> Result<String> {
-    Ok(Path::new(rust_input_path)
-        .with_file_name("bridge_generated.rs")
-        .to_str()
-        .context("Not a UTF-8 path")?
-        .to_string())
 }
 
 fn fallback_class_name(rust_crate_dir: &str) -> Result<String> {

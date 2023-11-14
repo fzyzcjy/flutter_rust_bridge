@@ -1,3 +1,4 @@
+use std::fs;
 use std::path::{Path, PathBuf};
 use anyhow::{anyhow, bail, Context, ensure, Result};
 use itertools::Itertools;
@@ -5,26 +6,27 @@ use log::debug;
 use crate::codegen::Config;
 use crate::codegen::config::internal_config::{DartOutputPathPack, GeneratorCInternalConfig, GeneratorDartInternalConfig, GeneratorInternalConfig, GeneratorRustInternalConfig, InternalConfig, ParserInternalConfig, PolisherInternalConfig, RustOutputPaths};
 use crate::utils::fp::Also;
-use crate::utils::path_utils::{canonicalize_path, glob_path, path_to_string};
+use crate::utils::path_utils::{canonicalize_path, find_parent_dir_with_file, glob_path, path_to_string};
 
 impl InternalConfig {
     pub(crate) fn parse(config: Config) -> Result<Self> {
         let base_dir = config.base_dir.map(PathBuf::from).unwrap_or_else(|| std::env::current_dir()?);
         debug!("InternalConfig.parse base_dir={base_dir}");
 
-        let rust_crate_dir: PathBuf = config.rust_crate_dir.unwrap_or_else(|| TODO()).into();
-        let manifest_path = rust_crate_dir.join("Cargo.toml");
-
-        let dart_root = config.dart_root.map(PathBuf::from)
-            .unwrap_or_else(|| default_dart_root(dart_output_path)?);
-
         let rust_input_path = glob_path(&config.rust_input);
-        let rust_output_path = canonicalize_path(&config.rust_output, &base_dir);
+        sanity_check_rust_input_path(rust_input_path)?;
+
+        let rust_output_path = canonicalize_path(&config.rust_output.map(PathBuf::from)
+            .unwrap_or_else(|| fallback_rust_output_path(&rust_input_path[0])), &base_dir);
         let c_output_path = canonicalize_path(&config.c_output, &base_dir);
         let duplicated_c_output_path = config.duplicated_c_output.unwrap_or_default()
             .into_iter().map(|p| canonicalize_path(&p, &base_dir)).collect();
 
-        sanity_check_rust_input_path(rust_input_path)?;
+        let rust_crate_dir: PathBuf = config.rust_crate_dir.map(PathBuf::from)
+            .unwrap_or_else(|| fallback_rust_crate_dir(&rust_input_path[0])?);
+        let manifest_path = rust_crate_dir.join("Cargo.toml");
+        let dart_root = config.dart_root.map(PathBuf::from)
+            .unwrap_or_else(|| fallback_dart_root(dart_output_path)?);
 
         Ok(InternalConfig {
             parser: ParserInternalConfig {
@@ -51,7 +53,7 @@ impl InternalConfig {
                 },
                 c: GeneratorCInternalConfig {
                     c_output_path,
-                    llvm_path: config.llvm_path.unwrap_or_else(default_llvm_path)
+                    llvm_path: config.llvm_path.unwrap_or_else(fallback_llvm_path)
                         .into_iter().map(PathBuf::from).collect_vec(),
                     llvm_compiler_opts: config.llvm_compiler_opts.unwrap_or_else(String::new),
                     extra_headers: config.extra_headers.unwrap_or_else(String::new),
@@ -69,6 +71,7 @@ impl InternalConfig {
 }
 
 fn sanity_check_rust_input_path(rust_input_paths: Vec<PathBuf>) -> Result<()> {
+    ensure!(!rust_input_path.is_empty());
     ensure!(
         !rust_input_paths.iter().any(|p| path_to_string(p)?.contains("lib.rs")),
         "Do not use `lib.rs` as a Rust input. Please put code to be generated in something like `api.rs`.",
@@ -76,7 +79,7 @@ fn sanity_check_rust_input_path(rust_input_paths: Vec<PathBuf>) -> Result<()> {
     Ok(())
 }
 
-fn default_llvm_path() -> Vec<String> {
+fn fallback_llvm_path() -> Vec<String> {
     vec![
         "/opt/homebrew/opt/llvm".to_owned(), // Homebrew root
         "/usr/local/opt/llvm".to_owned(),    // Homebrew x86-64 root
@@ -94,14 +97,16 @@ fn default_llvm_path() -> Vec<String> {
     ]
 }
 
-fn default_dart_root(dart_output_path: &Path) -> Result<PathBuf> {
-    let mut res = dart_output_path.to_owned();
-    while res.pop() {
-        if res.join("pubspec.yaml").is_file() {
-            return Ok(res);
-        }
-    }
-    Err(anyhow!("Root of Dart library could not be inferred from Dart output"))
+fn fallback_dart_root(dart_output_path: &Path) -> Result<PathBuf> {
+    find_parent_dir_with_file(dart_output_path, "pubspec.yaml")
+}
+
+fn fallback_rust_crate_dir(rust_input_path: &Path) -> Result<PathBuf> {
+    find_parent_dir_with_file(rust_input_path, "Cargo.toml")
+}
+
+fn fallback_rust_output_path(rust_input_path: &Path) -> PathBuf {
+    rust_input_path.with_file_name("bridge_generated.rs")
 }
 
 #[cfg(test)]
