@@ -10,7 +10,7 @@ impl Config {
             ".flutter_rust_bridge.yaml",
             ".flutter_rust_bridge.json",
         ];
-        const PUBSPEC_LOCATIONS: [&str; 2] = ["pubspec.yaml", "pubspec.yml"];
+        const PUBSPEC_LOCATIONS: [&str; 1] = ["pubspec.yaml"];
 
         for location in CONFIG_LOCATIONS {
             if let Ok(file) = fs::File::open(location) {
