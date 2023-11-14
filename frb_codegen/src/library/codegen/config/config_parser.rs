@@ -1,7 +1,7 @@
 use std::fs;
 use anyhow::{bail, Context, Error};
 use log::debug;
-use crate::codegen::Config;
+use crate::codegen::config::config::Config;
 
 impl Config {
     pub fn from_files_auto() -> Result<Self, Error> {
