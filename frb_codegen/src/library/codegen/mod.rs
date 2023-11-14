@@ -39,10 +39,10 @@ pub struct Config {
     pub extra_headers: Option<String>,
     pub wasm: Option<bool>,
     pub inline_rust: Option<bool>,
-    pub skip_deps_check: Option<bool>,
-    pub dump: Option<Vec<ConfigDump>>,
+    pub deps_check: Option<bool>,
     pub dart3: Option<bool>,
     pub keep_going: Option<bool>,
+    pub dump: Option<Vec<ConfigDump>>,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Copy, Deserialize, ValueEnum, enum_iterator::Sequence)]

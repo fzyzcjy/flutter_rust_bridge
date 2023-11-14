@@ -115,11 +115,7 @@ pub(crate) struct GenerateCommandArgs {
 
     /// Skip dependencies check.
     #[arg(long)]
-    pub skip_deps_check: bool,
-
-    /// A list of data to be dumped. If specified without a value, defaults to all.
-    #[arg(long, value_enum, num_args = 0.., default_missing_values = ["config", "ir"])]
-    pub dump: Option<Vec<ConfigDump>>,
+    pub no_deps_check: bool,
 
     /// Disable language features introduced in Dart 3.
     #[arg(long)]
@@ -128,6 +124,10 @@ pub(crate) struct GenerateCommandArgs {
     /// If set, the program will delay error reporting until all codegen operations have completed.
     #[arg(long)]
     pub keep_going: bool,
+
+    /// A list of data to be dumped. If specified without a value, defaults to all.
+    #[arg(long, value_enum, num_args = 0.., default_missing_values = ["config", "ir"])]
+    pub dump: Option<Vec<ConfigDump>>,
 }
 
 #[derive(Debug, Args)]

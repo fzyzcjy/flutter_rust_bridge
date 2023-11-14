@@ -38,10 +38,10 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> 
         extra_headers: args.extra_headers,
         wasm: Some(args.wasm),
         inline_rust: Some(args.inline_rust),
-        skip_deps_check: Some(args.skip_deps_check),
-        dump: args.dump,
+        deps_check: Some(!args.no_deps_check),
         dart3: Some(!args.no_dart3),
         keep_going: Some(args.keep_going),
+        dump: args.dump,
     }
 }
 
