@@ -236,11 +236,11 @@ fn generate_common_header() -> DartBasicCode {
             import 'dart:async';
             import 'package:meta/meta.dart';
             import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';",
-            if cfg!(feature = "uuid") {
-                "\nimport 'package:uuid/uuid.dart';"
-            } else {
-                ""
-            },
+            // if cfg!(feature = "uuid") {
+            "import 'package:uuid/uuid.dart';",
+            // } else {
+            //     ""
+            // },
         ),
         part: "".to_string(),
         body: "".to_string(),
@@ -560,7 +560,6 @@ fn generate_opaque_func(ty: &IrType) -> Acc<String> {
     }
 }
 
-#[cfg(feature = "chrono")]
 fn gen_wire2api_chrono(chrono_type: &IrTypeTime) -> String {
     format!("return _wire2api_Chrono_{}(raw);", chrono_type)
 }

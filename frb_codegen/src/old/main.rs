@@ -90,9 +90,6 @@ mod tests {
     /// Then that `build.rs` is temporarily disabled and cargo build can run.
     #[test]
     fn pure_dart() {
-        assert!(cfg!(feature = "chrono"));
-        assert!(cfg!(feature = "uuid"));
-
         use std::process::Command;
 
         set_dir();

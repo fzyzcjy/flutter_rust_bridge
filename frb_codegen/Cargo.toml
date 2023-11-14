@@ -54,9 +54,6 @@ i686-pc-windows-msvc = { pkg-fmt = "zip" }
 x86_64-pc-windows-msvc = { pkg-fmt = "zip" }
 
 [features]
-default = ["chrono", "serde", "uuid", "anyhow/backtrace"]
-serde = []
-chrono = []
-uuid = []
+default = ["anyhow/backtrace"]
 # When disabled, name qualifiers are discarded, e.g. my_library::SyncReturn == flutter_rust_bridge::SyncReturn
 qualified_names = []

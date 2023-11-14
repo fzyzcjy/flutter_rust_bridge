@@ -79,7 +79,6 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                     enu.name
                 ).into()
             },
-            #[cfg(feature = "chrono")]
             IrTypeDelegate::Time(ir) => {
                 if ir == &IrTypeTime::Duration {
                     return Acc {
@@ -104,7 +103,6 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                     ..Default::default()
                 }
             },
-            #[cfg(feature = "chrono")]
             IrTypeDelegate::TimeList(_) => {
                 Acc::distribute(
                     Some(
@@ -112,13 +110,11 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                     )
                 )
             }
-            #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuid => Acc::distribute(
                 Some(
                     "let single: Vec<u8> = self.wire2api(); wire2api_uuid_ref(single.as_slice())".into(),
                 ),
             ),
-            #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuids => Acc::distribute(
                 Some(
                     "let multiple: Vec<u8> = self.wire2api(); wire2api_uuids(multiple)".into(),
@@ -206,12 +202,9 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 "ZeroCopyBuffer(self.wire2api())".into()
             }
-            #[cfg(feature = "chrono")]
             IrTypeDelegate::Time(_) => "Wire2Api::<i64>::wire2api(self).wire2api()".into(),
-            #[cfg(feature = "chrono")]
             IrTypeDelegate::TimeList(_) =>
                 "self.unchecked_into::<js_sys::BigInt64Array>().to_vec().into_iter().map(Wire2Api::wire2api).collect()".into(),
-            #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuid | IrTypeDelegate::Uuids => {
                 "self.unchecked_into::<js_sys::Uint8Array>().to_vec().into_boxed_slice().wire2api()"
                     .into()

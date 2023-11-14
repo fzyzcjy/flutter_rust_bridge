@@ -4,7 +4,6 @@ use crate::ir::*;
 use crate::target::Target;
 
 crate::ir! {
-#[cfg(feature = "chrono")]
 #[derive(Copy, strum_macros::Display)]
 pub enum IrTypeTime {
     Local,
@@ -14,7 +13,6 @@ pub enum IrTypeTime {
 }
 }
 
-#[cfg(feature = "chrono")]
 impl IrTypeTime {
     #[inline]
     pub fn safe_ident(&self) -> &str {
@@ -47,13 +45,9 @@ pub enum IrTypeDelegate {
         /// Allows for `#[repr]`'s other than [i32]
         repr: IrTypePrimitive,
     },
-    #[cfg(feature = "chrono")]
     Time(IrTypeTime),
-    #[cfg(feature = "chrono")]
     TimeList(IrTypeTime),
-    #[cfg(feature = "uuid")]
     Uuid,
-    #[cfg(feature = "uuid")]
     Uuids,
     Backtrace,
     Anyhow,
@@ -180,17 +174,13 @@ impl IrTypeDelegate {
             }
             IrTypeDelegate::StringList => IrType::Delegate(IrTypeDelegate::String),
             IrTypeDelegate::PrimitiveEnum { repr, .. } => IrType::Primitive(repr.clone()),
-            #[cfg(feature = "chrono")]
             IrTypeDelegate::Time(_) => IrType::Primitive(IrTypePrimitive::I64),
-            #[cfg(feature = "chrono")]
             IrTypeDelegate::TimeList(_) => IrType::PrimitiveList(IrTypePrimitiveList {
                 primitive: IrTypePrimitive::I64,
             }),
-            #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuid => IrType::PrimitiveList(IrTypePrimitiveList {
                 primitive: IrTypePrimitive::U8,
             }),
-            #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuids => IrType::PrimitiveList(IrTypePrimitiveList {
                 primitive: IrTypePrimitive::U8,
             }),
@@ -205,7 +195,6 @@ impl IrTypeTrait for IrTypeDelegate {
         self.get_delegate().visit_types(f, ir_file);
 
         // extras
-        #[cfg(feature = "chrono")]
         if let Self::TimeList(ir) = self {
             IrType::Delegate(IrTypeDelegate::Time(*ir)).visit_types(f, ir_file);
         }
@@ -220,13 +209,9 @@ impl IrTypeTrait for IrTypeDelegate {
                 "ZeroCopyBuffer_".to_owned() + &self.get_delegate().dart_api_type()
             }
             IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.safe_ident(),
-            #[cfg(feature = "chrono")]
             IrTypeDelegate::Time(ir) => format!("Chrono_{}", ir.safe_ident()),
-            #[cfg(feature = "chrono")]
             IrTypeDelegate::TimeList(ir) => format!("Chrono_{}List", ir.safe_ident()),
-            #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuid => "Uuid".to_owned(),
-            #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuids => "Uuids".to_owned(),
             IrTypeDelegate::Backtrace => "String".to_owned(),
             IrTypeDelegate::Anyhow => "FrbAnyhowException".to_owned(),
@@ -240,20 +225,15 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::StringList => "List<String>".to_owned(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => self.get_delegate().dart_api_type(),
             IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.dart_api_type(),
-            #[cfg(feature = "chrono")]
             IrTypeDelegate::Time(ir) => match ir {
                 IrTypeTime::Local | IrTypeTime::Utc | IrTypeTime::Naive => "DateTime".to_string(),
                 IrTypeTime::Duration => "Duration".to_string(),
             },
-            #[cfg(feature = "chrono")]
             IrTypeDelegate::TimeList(IrTypeTime::Local | IrTypeTime::Utc | IrTypeTime::Naive) => {
                 "List<DateTime>".to_string()
             }
-            #[cfg(feature = "chrono")]
             IrTypeDelegate::TimeList(IrTypeTime::Duration) => "List<Duration>".to_string(),
-            #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuid => "UuidValue".to_owned(),
-            #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuids => "List<UuidValue>".to_owned(),
             IrTypeDelegate::Backtrace => "String".to_string(),
             IrTypeDelegate::Anyhow => "FrbAnyhowException".to_string(),
@@ -280,7 +260,6 @@ impl IrTypeTrait for IrTypeDelegate {
                 format!("ZeroCopyBuffer<{}>", self.get_delegate().rust_api_type())
             }
             IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.rust_api_type(),
-            #[cfg(feature = "chrono")]
             IrTypeDelegate::Time(ir) => match ir {
                 IrTypeTime::Naive => "chrono::NaiveDateTime",
                 IrTypeTime::Local => "chrono::DateTime::<chrono::Local>",
@@ -288,7 +267,6 @@ impl IrTypeTrait for IrTypeDelegate {
                 IrTypeTime::Duration => "chrono::Duration",
             }
             .to_owned(),
-            #[cfg(feature = "chrono")]
             IrTypeDelegate::TimeList(ir) => match ir {
                 IrTypeTime::Naive => "Vec<chrono::NaiveDateTime>",
                 IrTypeTime::Local => "Vec<chrono::DateTime::<chrono::Local>>",
@@ -296,9 +274,7 @@ impl IrTypeTrait for IrTypeDelegate {
                 IrTypeTime::Duration => "Vec<chrono::Duration>",
             }
             .to_owned(),
-            #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuid => "uuid::Uuid".to_owned(),
-            #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuids => "Vec<uuid::Uuid>".to_owned(),
             IrTypeDelegate::Backtrace => "String".to_owned(),
             IrTypeDelegate::Anyhow => "String".to_owned(),

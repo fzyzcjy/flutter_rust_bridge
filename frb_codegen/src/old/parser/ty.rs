@@ -58,7 +58,6 @@ pub fn convert_ident_str(ty: &Type) -> Option<String> {
     None
 }
 
-#[cfg(feature = "chrono")]
 fn datetime_to_ir_type(args: &[IrType]) -> std::result::Result<IrType, String> {
     if let [Unencodable(IrTypeUnencodable { segments, .. })] = args {
         let mut segments = segments.clone();
@@ -256,22 +255,22 @@ impl<'a> TypeParser<'a> {
                 let flat_array = &flat_vector[..];
                 match flat_array {
                     // Non generic types
-                    #[cfg(all(feature = "chrono", feature = "qualified_names"))]
+                    #[cfg(all(feature = "qualified_names"))]
                     [("chrono", None), ("Duration", None)] => {
                         Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Duration)))
                     }
 
-                    #[cfg(all(feature = "chrono", not(feature = "qualified_names")))]
+                    #[cfg(all(not(feature = "qualified_names")))]
                     [("Duration", None)] => {
                         Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Duration)))
                     }
 
-                    #[cfg(all(feature = "chrono", feature = "qualified_names"))]
+                    #[cfg(all(feature = "qualified_names"))]
                     [("chrono", None), ("NaiveDateTime", None)] => {
                         Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Naive)))
                     }
 
-                    #[cfg(all(feature = "chrono", not(feature = "qualified_names")))]
+                    #[cfg(all(not(feature = "qualified_names")))]
                     [("NaiveDateTime", None)] => {
                         Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Naive)))
                     }
@@ -283,10 +282,10 @@ impl<'a> TypeParser<'a> {
 
                     [("DartAbi", None)] => Ok(Dynamic(IrTypeDynamic)),
 
-                    #[cfg(all(feature = "uuid", feature = "qualified_names"))]
+                    #[cfg(all(feature = "qualified_names"))]
                     [("uuid", None), ("Uuid", None)] => Ok(Delegate(IrTypeDelegate::Uuid)),
 
-                    #[cfg(all(feature = "uuid", not(feature = "qualified_names")))]
+                    #[cfg(all(not(feature = "qualified_names")))]
                     [("Uuid", None)] => Ok(Delegate(IrTypeDelegate::Uuid)),
 
                     #[cfg(feature = "qualified_names")]
@@ -375,7 +374,6 @@ impl<'a> TypeParser<'a> {
                         Ok(Delegate(IrTypeDelegate::StringList))
                     }
 
-                    #[cfg(feature = "uuid")]
                     [("Vec", Some(Generic([Delegate(IrTypeDelegate::Uuid)])))] => {
                         Ok(Delegate(IrTypeDelegate::Uuids))
                     }
@@ -406,7 +404,6 @@ impl<'a> TypeParser<'a> {
                         }
                     }
 
-                    #[cfg(feature = "chrono")]
                     [("Vec", Some(Generic([Delegate(IrTypeDelegate::Time(time))])))] => {
                         Ok(Delegate(IrTypeDelegate::TimeList(*time)))
                     }
@@ -484,7 +481,6 @@ impl<'a> TypeParser<'a> {
                         | Delegate(IrTypeDelegate::PrimitiveEnum { .. }) => {
                             IrTypeOptional::new_boxed(inner.clone())
                         }
-                        #[cfg(feature = "chrono")]
                         Delegate(IrTypeDelegate::Time(..)) => {
                             IrTypeOptional::new_boxed(inner.clone())
                         }
@@ -494,12 +490,11 @@ impl<'a> TypeParser<'a> {
                         Optional(_) | SyncReturn(_) => unreachable!(),
                     })),
 
-                    #[cfg(all(feature = "chrono", feature = "qualified_names"))]
+                    #[cfg(all(feature = "qualified_names"))]
                     [("chrono", None), ("DateTime", Some(Generic(args)))] => {
                         datetime_to_ir_type(args)
                     }
 
-                    #[cfg(feature = "chrono")]
                     [("DateTime", Some(Generic(args)))] => datetime_to_ir_type(args),
 
                     _ => Ok(path_type_to_unencodable(type_path, flat_vector)),

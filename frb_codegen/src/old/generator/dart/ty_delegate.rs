@@ -59,7 +59,6 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::PrimitiveEnum { ref repr, .. } => {
                 format!("return api2wire_{}(raw.index);", repr.safe_ident()).into()
             }
-            #[cfg(feature = "chrono")]
             IrTypeDelegate::Time(ir) => match ir {
                 IrTypeTime::Utc | IrTypeTime::Local | IrTypeTime::Naive => Acc {
                     io: Some("return api2wire_i64(raw.microsecondsSinceEpoch);".into()),
@@ -72,18 +71,15 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                     ..Default::default()
                 },
             },
-            #[cfg(feature = "chrono")]
             IrTypeDelegate::TimeList(ir) => Acc::distribute(Some(format!(
                 "final ans = Int64List(raw.length);
                 for (var i=0; i < raw.length; ++i) ans[i] = api2wire_Chrono_{}(raw[i]);
                 return api2wire_int_64_list(ans);",
                 ir.safe_ident()
             ))),
-            #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuid => {
                 Acc::distribute(Some("return api2wire_uint_8_list(raw.toBytes());".into()))
             }
-            #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuids => Acc::distribute(Some(
                 "return api2wire_uint_8_list(api2wireConcatenateBytes(raw));".into(),
             )),
@@ -126,7 +122,6 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
             IrTypeDelegate::PrimitiveEnum { ir, .. } => {
                 format!("return {}.values[raw as int];", ir.dart_api_type()) // here `as int` is neccessary in strict dynamic mode
             }
-            #[cfg(feature = "chrono")]
             IrTypeDelegate::Time(ir) => {
                 if !ir.is_duration() {
                     format!(
@@ -137,18 +132,15 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                     "return wire2apiDuration(_wire2api_i64(raw));".to_owned()
                 }
             }
-            #[cfg(feature = "chrono")]
             IrTypeDelegate::TimeList(ir) => {
                 format!(
                     "return (raw as List<dynamic>).map(_wire2api_Chrono_{}).toList();",
                     ir.safe_ident()
                 )
             }
-            #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuid => {
                 "return UuidValue.fromByteList(_wire2api_uint_8_list(raw));".to_owned()
             }
-            #[cfg(feature = "uuid")]
             IrTypeDelegate::Uuids => "
             final bytes = _wire2api_uint_8_list(raw);
             return wire2apiUuids(bytes);"
