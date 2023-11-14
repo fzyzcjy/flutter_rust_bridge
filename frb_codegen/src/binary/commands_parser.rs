@@ -110,6 +110,11 @@ mod tests {
         // bool flags
         assert_eq!(run_command_line(vec!["", "generate", "--class-name", "hello"]).dart3, Some(true));
         assert_eq!(run_command_line(vec!["", "generate", "--class-name", "hello", "--no-dart3"]).dart3, Some(false));
+        assert_eq!(run_command_line(vec!["", "generate", "--rust-input", "hello.rs"]).rust_input, Some(vec!["hello.rs".to_string()]));
+        assert_eq!(
+            run_command_line(vec!["", "generate", "--rust-input", "a.rs", "--rust-input", "b.rs"]).rust_input,
+            Some(vec!["a.rs".to_string(), "b.rs".to_string()]),
+        );
     }
 
     fn run_command_line(args: Vec<&'static str>) -> codegen::Config {
