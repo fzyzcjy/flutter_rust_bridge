@@ -42,8 +42,9 @@ impl Cli {
             .filter(|a| !a.is_positional())
             .map(|opt| {
                 let long = opt.get_long().expect("long option");
-                clap::Arg::new(&format!("no-{}", long))
-                    .long(&format!("no-{}", long))
+                let negated_long: &'static str = Box::leak(format!("no-{}", long).into_boxed_str());
+                clap::Arg::new(negated_long)
+                    .long(negated_long)
                     .hide(true)
                     .action(ArgAction::SetTrue)
                     // overrides_with is enough to make the flags take effect
