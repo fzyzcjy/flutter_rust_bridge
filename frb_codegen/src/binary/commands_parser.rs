@@ -15,10 +15,10 @@ pub(crate) fn compute_codegen_config(args: GenerateCommandArgs) -> Result<Config
     }
 
     debug!("compute_codegen_config: mode=from_naive_generate_command_args");
-    Ok(compute_codegen_config_from_naive_generate_command_args(args))
+    Ok(compute_codegen_config_from_naive_command_args(args))
 }
 
-fn compute_codegen_config_from_naive_generate_command_args(args: GenerateCommandArgs) -> Config {
+fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> Config {
     Config {
         rust_input: args.rust_input,
         dart_output: args.dart_output,
