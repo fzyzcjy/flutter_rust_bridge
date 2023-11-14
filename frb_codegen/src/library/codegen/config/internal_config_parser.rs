@@ -164,10 +164,12 @@ fn fallback_rust_output_path(rust_input_path: &Path) -> PathBuf {
 mod tests {
     use std::fs;
     use log::debug;
+    use serde_json::Value;
     use crate::codegen::Config;
     use crate::codegen::config::internal_config::InternalConfig;
     use crate::utils::logs::configure_opinionated_test_logging;
-    use crate::utils::test_utils::set_cwd_test_fixture;
+    use crate::utils::path_utils::path_to_string;
+    use crate::utils::test_utils::{get_test_fixture_dir, set_cwd_test_fixture};
 
     #[test]
     fn test_parse_single_rust_input() -> anyhow::Result<()> {
@@ -182,11 +184,19 @@ mod tests {
     fn body(fixture_name: &str) -> anyhow::Result<()> {
         configure_opinionated_test_logging();
         set_cwd_test_fixture(fixture_name)?;
+
         let config = Config::from_files_auto()?;
+
         let internal_config = InternalConfig::parse(config)?;
-        debug!("internal_config:\n{}", serde_json::to_string_pretty(&internal_config)?);
-        let expect: InternalConfig = serde_json::from_str(&fs::read_to_string("expect_output.json")?)?;
-        assert_eq!(internal_config, expect);
+
+        let actual_string = serde_json::to_string_pretty(&internal_config)?;
+        let actual_string = actual_string.replace(&path_to_string(&get_test_fixture_dir(fixture_name))?, "{the-working-directory}");
+        debug!("internal_config:\n{}", actual_string);
+
+        let actual: Value = serde_json::from_str(&actual_string)?;
+        let expect: Value = serde_json::from_str(&fs::read_to_string("expect_output.json")?)?;
+        assert_eq!(actual, expect);
+
         Ok(())
     }
 }
