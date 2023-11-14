@@ -6,7 +6,7 @@ use itertools::Itertools;
 use log::debug;
 use crate::codegen::Config;
 use crate::codegen::config::internal_config::{DartOutputPathPack, GeneratorCInternalConfig, GeneratorDartInternalConfig, GeneratorInternalConfig, GeneratorRustInternalConfig, InternalConfig, Namespace, ParserInternalConfig, PolisherInternalConfig, RustInputPathPack};
-use crate::utils::path_utils::{canonicalize_path, find_parent_dir_with_file, glob_path, path_to_string};
+use crate::utils::path_utils::{find_parent_dir_with_file, glob_path, path_to_string};
 
 impl InternalConfig {
     pub(crate) fn parse(config: Config) -> Result<Self> {
@@ -16,16 +16,16 @@ impl InternalConfig {
         let rust_input_path_pack = compute_rust_input_path_pack(&config.rust_input, &base_dir)?;
         let namespaces = rust_input_path_pack.rust_input_path.keys().collect_vec();
 
-        let rust_output_path = canonicalize_path(&config.rust_output.map(PathBuf::from)
-            .unwrap_or_else(|| fallback_rust_output_path(rust_input_path_pack.one_rust_input_path())), &base_dir);
+        let rust_output_path = base_dir.join(&config.rust_output.map(PathBuf::from)
+            .unwrap_or_else(|| fallback_rust_output_path(rust_input_path_pack.one_rust_input_path())));
 
         let dart_output_dir: PathBuf = config.dart_output.into();
         let dart_output_path_pack = compute_dart_output_path_pack(&dart_output_dir, &namespaces);
         let dart_class_name = compute_dart_class_name(&config.dart_class_name, &namespaces);
 
-        let c_output_path = canonicalize_path(&config.c_output, &base_dir);
+        let c_output_path = base_dir.join(&config.c_output);
         let duplicated_c_output_path = config.duplicated_c_output.unwrap_or_default()
-            .into_iter().map(|p| canonicalize_path(&p, &base_dir)).collect();
+            .into_iter().map(|p| base_dir.join(&p)).collect();
 
         let rust_crate_dir: PathBuf = config.rust_crate_dir.map(PathBuf::from)
             .unwrap_or(fallback_rust_crate_dir(rust_input_path_pack.one_rust_input_path())?);
