@@ -1,4 +1,7 @@
-use clap::{Args, Parser, Subcommand, ArgAction, FromArgMatches, Command};
+//! A thin command line interface. Please avoid putting logic here
+//! (instead be in `lib.rs` and so on)
+
+use clap::{Args, Parser, Subcommand, FromArgMatches};
 use itertools::Itertools;
 use log::debug;
 use lib_flutter_rust_bridge_codegen::*;
