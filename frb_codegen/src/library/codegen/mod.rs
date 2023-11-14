@@ -3,6 +3,7 @@
 pub(crate) mod config;
 pub(crate) mod parser;
 pub(crate) mod ir;
+mod generator;
 
 pub use config::config::{Config, ConfigDump};
 pub use config::config_parser::*;
