@@ -1,7 +1,8 @@
 use lib_flutter_rust_bridge_codegen::codegen;
+use lib_flutter_rust_bridge_codegen::codegen::Config;
 use crate::binary::commands::GenerateCommandArgs;
 
-pub(crate) fn parse_generate_command_args(args: GenerateCommandArgs) -> codegen::Config {
+pub(crate) fn get_codegen_config(args: GenerateCommandArgs) -> Config {
     if no_args {
         todo!("from yaml")
     }
@@ -10,7 +11,11 @@ pub(crate) fn parse_generate_command_args(args: GenerateCommandArgs) -> codegen:
         todo!()
     }
 
-    codegen::Config {
+    get_codegen_config_from_naive_generate_command_args(args)
+}
+
+fn get_codegen_config_from_naive_generate_command_args(args: GenerateCommandArgs) -> Config {
+    Config {
         rust_input: args.rust_input,
         dart_output: args.dart_output,
         dart_decl_output: args.dart_decl_output,
