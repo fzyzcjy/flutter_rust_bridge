@@ -1,12 +1,11 @@
 use std::fs;
 use anyhow::{bail, Context, Error};
 use log::debug;
-use syn::token::Pub;
 use crate::codegen::Config;
 
 impl Config {
-    pub fn from_config_files() -> Result<Self, Error> {
-        if let Some(config) = Self::from_flutter_rust_bridge_config_files()? {
+    pub fn from_files() -> Result<Self, Error> {
+        if let Some(config) = Self::from_config_files()? {
             return Ok(config);
         }
         if let Some(config) = Self::from_pubspec_yaml()? {
@@ -15,7 +14,7 @@ impl Config {
         bail!("todo") // TODO
     }
 
-    fn from_flutter_rust_bridge_config_files() -> Result<Option<Self>, Error> {
+    fn from_config_files() -> Result<Option<Self>, Error> {
         const CONFIG_LOCATIONS: [&str; 3] = [
             ".flutter_rust_bridge.yml",
             ".flutter_rust_bridge.yaml",
@@ -23,11 +22,19 @@ impl Config {
         ];
 
         for location in CONFIG_LOCATIONS {
-            if let Ok(file) = fs::File::open(location) {
-                debug!("Found config file {location}");
-                return serde_yaml::from_reader(file)
-                    .with_context(|| format!("Could not parse {location}"));
+            if let Some(config) = Self::from_config_file(location)? {
+                return Ok(Some(config));
             }
+        }
+
+        Ok(None)
+    }
+
+    pub fn from_config_file(location: &str) -> Result<Option<Self>, Error> {
+        if let Ok(file) = fs::File::open(location) {
+            debug!("Found config file {location}");
+            return serde_yaml::from_reader(file)
+                .with_context(|| format!("Could not parse {location}"));
         }
 
         Ok(None)
