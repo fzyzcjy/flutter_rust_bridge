@@ -54,7 +54,21 @@ mod tests {
     use crate::binary::commands_parser::compute_codegen_config;
 
     #[test]
-    fn test_compute_codegen_config_e2e() {
+    fn test_compute_codegen_config__mode_from_files_auto() {
+        configure_opinionated_test_logging();
+
+        todo!()
+    }
+
+    #[test]
+    fn test_compute_codegen_config__mode_config_file() {
+        configure_opinionated_test_logging();
+
+        todo!()
+    }
+
+    #[test]
+    fn test_compute_codegen_config__mode_from_naive_generate_command_args() {
         configure_opinionated_test_logging();
 
         fn body(args: Vec<&'static str>) -> codegen::Config {
@@ -66,6 +80,7 @@ mod tests {
             compute_codegen_config(args).unwrap()
         }
 
+        // bool flags
         assert_eq!(body(vec!["", "generate", "--class-name", "hello"]).dart3, Some(true));
         assert_eq!(body(vec!["", "generate", "--class-name", "hello", "--no-dart3"]).dart3, Some(false));
     }
