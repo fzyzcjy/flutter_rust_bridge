@@ -39,7 +39,7 @@ pub(crate) struct GenerateCommandArgs {
 
     /// Path of input Rust code
     #[arg(short, long)]
-    pub rust_input: Option<String>,
+    pub rust_input: Option<Vec<String>>,
 
     /// Path of output generated Dart code
     #[arg(short, long)]

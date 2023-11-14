@@ -2,7 +2,7 @@ use std::path::Path;
 
 #[derive(Debug, Clone, serde::Serialize)]
 pub(crate) struct InternalConfig {
-    pub rust_input_path: Path,
+    pub rust_input_path: Vec<Path>,
     pub dart_output_path: Path,
     pub dart_decl_output_path: Option<Path>,
     pub c_output_path: Vec<Path>,
