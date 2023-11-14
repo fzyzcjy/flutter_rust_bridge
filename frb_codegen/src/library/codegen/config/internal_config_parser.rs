@@ -6,6 +6,8 @@ use crate::codegen::config::internal_config::{GeneratorCInternalConfig, Generato
 
 impl InternalConfig {
     pub(crate) fn parse(config: Config) -> Result<Self> {
+        let base_dir = config.base_dir.map(PathBuf::from).unwrap_or_else(|| std::env::current_dir()?);
+
         Ok(InternalConfig {
             parser: ParserInternalConfig {
                 rust_input_path: TODO,
@@ -64,7 +66,7 @@ fn get_default_llvm_path() -> Vec<String> {
     ]
 }
 
-fn canonicalize_path(raw_path: &str, base_directory: &Path) -> PathBuf {
+fn canonicalize_path(raw_path: &str, base_dir: &Path) -> PathBuf {
     todo!()
 }
 
@@ -74,7 +76,10 @@ mod tests {
 
     #[test]
     fn test_canonicalize_path_simple() {
+        // relative
         assert_eq!(canonicalize_path("./a.rs", "/x/y".into()), "/x/y/a.rs");
+
+        // absolute
         assert_eq!(canonicalize_path("/a/b/c.rs", "/x/y".into()), "/a/b/c.rs");
     }
 }
