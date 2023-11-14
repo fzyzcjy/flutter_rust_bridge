@@ -36,7 +36,6 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> 
         build_runner: Some(!args.no_build_runner),
         use_bridge_in_method: Some(!args.no_use_bridge_in_method),
         extra_headers: args.extra_headers,
-        verbose: Some(args.verbose),
         wasm: Some(args.wasm),
         inline_rust: Some(args.inline_rust),
         skip_deps_check: Some(args.skip_deps_check),

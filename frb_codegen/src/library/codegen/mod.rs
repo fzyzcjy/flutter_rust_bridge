@@ -35,7 +35,6 @@ pub struct Config {
     pub build_runner: Option<bool>,
     pub use_bridge_in_method: Option<bool>,
     pub extra_headers: Option<String>,
-    pub verbose: Option<bool>,
     pub wasm: Option<bool>,
     pub inline_rust: Option<bool>,
     pub skip_deps_check: Option<bool>,
