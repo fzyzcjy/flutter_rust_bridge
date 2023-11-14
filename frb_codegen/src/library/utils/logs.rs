@@ -65,3 +65,13 @@ pub fn configure_opinionated_logging(path: &str, verbose: bool) -> Result<(), fe
 
     Ok(())
 }
+
+/// Configure an opinionated way of logging, useful in tests.
+pub fn configure_opinionated_test_logging() {
+    // https://github.com/daboross/fern/issues/54
+    // This will fail if called twice; don't worry.
+    let _ = fern::Dispatch::new()
+        .level(log::LevelFilter::Debug)
+        .chain(std::io::stdout())
+        .apply();
+}

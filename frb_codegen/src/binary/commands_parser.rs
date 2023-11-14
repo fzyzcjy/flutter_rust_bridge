@@ -49,11 +49,14 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> 
 mod tests {
     use clap::Parser;
     use lib_flutter_rust_bridge_codegen::codegen;
+    use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_test_logging;
     use crate::binary::commands::{Cli, Commands};
     use crate::binary::commands_parser::compute_codegen_config;
 
     #[test]
     fn test_compute_codegen_config_e2e() {
+        configure_opinionated_test_logging();
+
         fn body(args: Vec<&'static str>) -> codegen::Config {
             let cli = Cli::parse_from(args);
             let args = match cli.command {
