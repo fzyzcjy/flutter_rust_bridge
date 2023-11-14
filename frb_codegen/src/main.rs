@@ -1,11 +1,12 @@
 use clap::{Args, Parser, Subcommand, ArgAction, FromArgMatches, Command};
 use itertools::Itertools;
+use log::debug;
 use lib_flutter_rust_bridge_codegen::*;
 use lib_flutter_rust_bridge_codegen::codegen::ConfigDump;
 
 fn main() -> anyhow::Result<()> {
     let cli = Cli::parse();
-    println!("cli={cli:#?}");
+    debug!("cli={cli:?}");
 
     match cli.command {
         Commands::Generate(args) => codegen::generate(&args.into_config())?,

@@ -1,10 +1,13 @@
 //! Code generator for `flutter_rust_bridge`
 
 use clap::ValueEnum;
+use log::debug;
 use serde::Deserialize;
 
 /// Execute the main code generator
 pub fn generate(config: &Config) -> anyhow::Result<()> {
+    debug!("config={config:?}");
+
     todo!("generate")
 }
 
