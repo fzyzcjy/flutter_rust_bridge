@@ -47,71 +47,54 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> 
 
 #[cfg(test)]
 mod tests {
-    use std::fs::File;
-    use std::io;
-    use std::io::Write;
-    use std::path::Path;
+    use std::path::PathBuf;
     use clap::Parser;
-    use tempfile::tempdir;
     use lib_flutter_rust_bridge_codegen::codegen;
     use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_test_logging;
     use crate::binary::commands::{Cli, Commands};
     use crate::binary::commands_parser::compute_codegen_config;
 
-    // https://github.com/rust-lang/rust/issues/51775
-    fn fs_write_and_sync<P: AsRef<Path>, C: AsRef<[u8]>>(path: P, contents: C) -> io::Result<()> {
-        let mut file = File::create(path)?;
-        file.write_all(contents.as_ref())?;
-        file.flush()?;
-        file.sync_all()?;
-        Ok(())
+    fn set_cwd_test_fixture(name: &str) -> anyhow::Result<()> {
+        let mut d = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+        d.push("test_fixtures");
+        d.push(name);
+        println!("set_cwd_test_fixture: {d:?}");
+        Ok(std::env::set_current_dir(d)?)
     }
 
     #[test]
     fn test_compute_codegen_config_mode_from_files_auto_flutter_rust_bridge_yaml() -> anyhow::Result<()> {
         configure_opinionated_test_logging();
-
-        let temp_dir = tempdir()?;
-        std::env::set_current_dir(&temp_dir)?;
-        fs_write_and_sync(&temp_dir.path().join(".flutter_rust_bridge.yaml"), "rust_input: hello.rs\ndart3: false")?;
+        set_cwd_test_fixture("commands_parser/flutter_rust_bridge_yaml")?;
 
         let config = run_command_line(vec!["", "generate"]);
         assert_eq!(config.rust_input.unwrap(), "hello.rs");
         assert_eq!(config.dart3.unwrap(), false);
 
-        drop(temp_dir); // to avoid dropping too early
         Ok(())
     }
 
     #[test]
     fn test_compute_codegen_config_mode_from_files_auto_pubspec_yaml() -> anyhow::Result<()> {
         configure_opinionated_test_logging();
-
-        let temp_dir = tempdir()?;
-        std::env::set_current_dir(&temp_dir)?;
-        fs_write_and_sync(&temp_dir.path().join("pubspec.yaml"), "flutter_rust_bridge:\n  rust_input: hello.rs\n  dart3: false")?;
+        set_cwd_test_fixture("commands_parser/pubspec_yaml")?;
 
         let config = run_command_line(vec!["", "generate"]);
         assert_eq!(config.rust_input.unwrap(), "hello.rs");
         assert_eq!(config.dart3.unwrap(), false);
 
-        drop(temp_dir);
         Ok(())
     }
 
     #[test]
     fn test_compute_codegen_config_mode_config_file() -> anyhow::Result<()> {
         configure_opinionated_test_logging();
-
-        let temp_dir = tempdir()?;
-        std::env::set_current_dir(&temp_dir)?;
-        fs_write_and_sync(&temp_dir.path().join("hello.yaml"), "rust_input: hello.rs\ndart3: false")?;
+        set_cwd_test_fixture("commands_parser/config_file")?;
 
         let config = run_command_line(vec!["", "generate", "--config-file", "hello.yaml"]);
         assert_eq!(config.rust_input.unwrap(), "hello.rs");
         assert_eq!(config.dart3.unwrap(), false);
 
-        drop(temp_dir);
         Ok(())
     }
 
