@@ -11,7 +11,6 @@ mod primitive_list;
 mod record;
 mod rust_opaque;
 mod structure;
-mod sync_return;
 mod unencodable;
 
 use enum_dispatch::enum_dispatch;
@@ -30,7 +29,6 @@ pub enum IrType {
     StructRef(IrTypeStructRef),
     Boxed(IrTypeBoxed),
     EnumRef(IrTypeEnumRef),
-    SyncReturn(IrTypeSyncReturn),
     DartOpaque(IrTypeDartOpaque),
     RustOpaque(IrTypeRustOpaque),
     Dynamic(IrTypeDynamic),
