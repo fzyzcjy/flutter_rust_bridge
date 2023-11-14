@@ -1,6 +1,8 @@
 //! Code generator for `flutter_rust_bridge`
 
 pub(crate) mod config;
+pub(crate) mod parser;
+pub(crate) mod ir;
 
 pub use config::config::{Config, ConfigDump};
 pub use config::config_parser::*;
