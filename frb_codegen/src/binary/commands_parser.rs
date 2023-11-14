@@ -48,21 +48,13 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> 
 
 #[cfg(test)]
 mod tests {
-    use std::path::PathBuf;
+    use crate::common::test_utils::set_cwd_test_fixture;
     use clap::Parser;
     use lib_flutter_rust_bridge_codegen::codegen;
     use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_test_logging;
     use crate::binary::commands::{Cli, Commands};
     use crate::binary::commands_parser::compute_codegen_config;
     use serial_test::serial;
-
-    fn set_cwd_test_fixture(name: &str) -> anyhow::Result<()> {
-        let mut d = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-        d.push("test_fixtures");
-        d.push(name);
-        log::debug!("set_cwd_test_fixture: {d:?}");
-        Ok(std::env::set_current_dir(d)?)
-    }
 
     // need to run serially, otherwise working directory will override each other
     #[test]

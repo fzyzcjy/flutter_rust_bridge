@@ -142,6 +142,11 @@ fn fallback_rust_output_path(rust_input_path: &Path) -> PathBuf {
 
 #[cfg(test)]
 mod tests {
+    use crate::codegen::Config;
+    use crate::codegen::config::internal_config;
+    use crate::codegen::config::internal_config::InternalConfig;
+    use crate::common::test_utils::set_cwd_test_fixture;
+
     #[test]
     fn test_parse_paths_simple() -> anyhow::Result<()> {
         todo!()
@@ -152,7 +157,10 @@ mod tests {
         todo!()
     }
 
-    fn body() -> anyhow::Result<()> {
-
+    fn body(fixture_name: &str) -> anyhow::Result<()> {
+        set_cwd_test_fixture(fixture_name)?;
+        let config = Config::from_files_auto()?;
+        let internal_config = InternalConfig::parse(config)?;
+        Ok(())
     }
 }
