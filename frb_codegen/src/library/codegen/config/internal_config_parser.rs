@@ -10,7 +10,10 @@ use crate::utils::path_utils::{find_parent_dir_with_file, glob_path, path_to_str
 
 impl InternalConfig {
     pub(crate) fn parse(config: Config) -> Result<Self> {
-        let base_dir = config.base_dir.map(PathBuf::from).unwrap_or(std::env::current_dir()?);
+        let base_dir = config.base_dir
+            .filter(|s| !s.is_empty())
+            .map(PathBuf::from)
+            .unwrap_or(std::env::current_dir()?);
         debug!("InternalConfig.parse base_dir={base_dir:?}");
 
         let rust_input_path_pack = compute_rust_input_path_pack(&config.rust_input, &base_dir)?;
