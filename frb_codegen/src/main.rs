@@ -1,13 +1,13 @@
 //! A thin command line interface. Please avoid putting logic here
 //! (instead be in `lib.rs` and so on)
 
-mod cli;
+mod binary;
 
 use clap::{Args, Parser, Subcommand, FromArgMatches};
 use itertools::Itertools;
 use log::debug;
-use lib_flutter_rust_bridge_codegen::*;
-use crate::cli::commands::{Cli, Commands};
+use lib_flutter_rust_bridge_codegen::library::*;
+use crate::binary::commands::{Cli, Commands};
 
 fn main() -> anyhow::Result<()> {
     let cli = Cli::parse();
@@ -24,7 +24,7 @@ fn main() -> anyhow::Result<()> {
 #[cfg(test)]
 mod tests {
     use clap::Parser;
-    use lib_flutter_rust_bridge_codegen::codegen;
+    use lib_flutter_rust_bridge_codegen::library::codegen;
     use crate::{Cli, Commands};
 
     #[test]

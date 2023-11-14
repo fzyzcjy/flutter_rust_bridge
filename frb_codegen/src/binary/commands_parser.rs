@@ -1,5 +1,5 @@
-use lib_flutter_rust_bridge_codegen::codegen;
-use crate::cli::commands::GenerateCommandArgs;
+use lib_flutter_rust_bridge_codegen::library::codegen;
+use crate::binary::commands::GenerateCommandArgs;
 
 impl GenerateCommandArgs {
     pub(crate) fn into_config(self) -> codegen::Config {
