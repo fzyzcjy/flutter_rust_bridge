@@ -4,7 +4,7 @@ use std::path::{Path, PathBuf};
 use std::sync::Mutex;
 use lazy_static::lazy_static;
 use log::{info, warn};
-use anyhow::{bail, Result};
+use anyhow::{bail, Context, Result};
 use itertools::Itertools;
 use crate::library::commands::command_runner::execute_command;
 
