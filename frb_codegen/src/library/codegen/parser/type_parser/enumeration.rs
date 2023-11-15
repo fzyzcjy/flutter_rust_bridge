@@ -85,7 +85,7 @@ impl<'a> TypeParser<'a> {
                                 .map(ToString::to_string)
                                 .unwrap_or_else(|| format!("field{idx}")),
                         ),
-                        ty: self.parse_type(&field.ty),
+                        ty: self.parse_type(&field.ty)?,
                         is_final: true,
                         comments: parse_comments(&field.attrs),
                         default: FrbAttributes::parse(&field.attrs)?.default_value(),

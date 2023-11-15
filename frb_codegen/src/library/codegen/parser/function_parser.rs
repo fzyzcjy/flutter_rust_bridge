@@ -47,7 +47,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                         quote::quote!(#pat_type).to_string().into(),
                     ));
                 };
-                let arg_type = self.try_parse_fn_arg_type(&pat_type.ty).with_context(|| {
+                let arg_type = self.try_parse_fn_arg_type(&pat_type.ty)?.with_context(|| {
                     format!(
                         "Failed to parse function argument type `{}`",
                         type_to_string(&pat_type.ty)
@@ -60,7 +60,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                         fallible = match &sig.output {
                             ReturnType::Default => false,
                             ReturnType::Type(_, ty) => !matches!(
-                                self.try_parse_fn_output_type(ty),
+                                self.try_parse_fn_output_type(ty)?,
                                 Some(FuncOutput::Type(_))
                             ),
                         }
@@ -86,7 +86,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let (output_ok, output_err) = match &sig.output {
             ReturnType::Type(_, ty) => {
-                let output_type = self.try_parse_fn_output_type(ty).with_context(|| {
+                let output_type = self.try_parse_fn_output_type(ty)?.with_context(|| {
                     format!(
                         "Failed to parse function output type `{}`",
                         type_to_string(ty)
@@ -135,8 +135,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
     /// Attempts to parse the type from an argument of a function signature. There is a special
     /// case for top-level `StreamSink` types.
-    fn try_parse_fn_arg_type(&mut self, ty: &Type) -> Option<FuncArg> {
-        match ty {
+    fn try_parse_fn_arg_type(&mut self, ty: &Type) -> anyhow::Result<Option<FuncArg>> {
+        Ok(match ty {
             Type::Path(TypePath { path, .. }) => {
                 let last_segment = path.segments.last().unwrap();
                 if last_segment.ident == STREAM_SINK_IDENT {
@@ -148,7 +148,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                             // Unwrap is safe here because args.len() == 1
                             match args.last().unwrap() {
                                 GenericArgument::Type(t) => {
-                                    Some(FuncArg::StreamSinkType(self.type_parser.parse_type(t)))
+                                    Some(FuncArg::StreamSinkType(self.type_parser.parse_type(t)?))
                                 }
                                 _ => None,
                             }
@@ -156,20 +156,20 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                         _ => None,
                     }
                 } else {
-                    Some(FuncArg::Type(self.type_parser.parse_type(ty)))
+                    Some(FuncArg::Type(self.type_parser.parse_type(ty)?))
                 }
             }
-            Type::Array(_) => Some(FuncArg::Type(self.type_parser.parse_type(ty))),
+            Type::Array(_) => Some(FuncArg::Type(self.type_parser.parse_type(ty)?)),
             _ => None,
-        }
+        })
     }
 
     /// Attempts to parse the type from the return part of a function signature. There is a special
     /// case for top-level `Result` types.
-    fn try_parse_fn_output_type(&mut self, ty: &Type) -> Option<FuncOutput> {
+    fn try_parse_fn_output_type(&mut self, ty: &Type) -> anyhow::Result<Option<FuncOutput>> {
         let ty = &self.type_parser.resolve_alias(ty).clone();
 
-        if let Type::Path(type_path) = ty {
+        Ok(if let Type::Path(type_path) = ty {
             match self.type_parser.parse_type_path(&type_path) {
                 Ok(IrType::Unencodable(IrTypeUnencodable { segments, .. })) => {
                     match if cfg!(feature = "qualified_names") {
@@ -224,9 +224,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 Err(..) => None,
             }
         } else {
-            let ir_ty = self.type_parser.parse_type(ty);
+            let ir_ty = self.type_parser.parse_type(ty)?;
             Some(FuncOutput::Type(ir_ty))
-        }
+        })
     }
 }
 

@@ -47,7 +47,7 @@ impl<'a> TypeParser<'a> {
             .ident
             .as_ref()
             .map_or(format!("field{idx}"), ToString::to_string);
-        let field_type = self.parse_type(&field.ty);
+        let field_type = self.parse_type(&field.ty)?;
         let attributes = FrbAttributes::parse(&field.attrs)?;
         Ok(IrField {
             name: IrIdent::new(field_name),

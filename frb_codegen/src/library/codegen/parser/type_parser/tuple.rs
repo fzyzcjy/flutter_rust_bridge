@@ -7,19 +7,20 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Primitive;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::library::codegen::ir::ty::IrTypeTrait;
+use anyhow::Result;
 use syn::TypeTuple;
 
 impl<'a> TypeParser<'a> {
-    pub(crate) fn parse_type_tuple(&mut self, type_tuple: &TypeTuple) -> IrType {
+    pub(crate) fn parse_type_tuple(&mut self, type_tuple: &TypeTuple) -> anyhow::Result<IrType> {
         if type_tuple.elems.is_empty() {
-            return Primitive(IrTypePrimitive::Unit);
+            return Ok(Primitive(IrTypePrimitive::Unit));
         }
 
         let values = type_tuple
             .elems
             .iter()
             .map(|elem| self.parse_type(elem))
-            .collect::<Vec<_>>();
+            .collect::<Result<Vec<_>>>()?;
         let safe_ident = values
             .iter()
             .map(IrType::safe_ident)
@@ -49,7 +50,7 @@ impl<'a> TypeParser<'a> {
                     .collect(),
             },
         );
-        IrType::Record(IrTypeRecord {
+        Ok(IrType::Record(IrTypeRecord {
             inner: IrTypeStructRef {
                 // name: safe_ident,
                 // freezed: false,
@@ -58,6 +59,6 @@ impl<'a> TypeParser<'a> {
                 is_exception: false,
             },
             values: values.into_boxed_slice(),
-        })
+        }))
     }
 }
