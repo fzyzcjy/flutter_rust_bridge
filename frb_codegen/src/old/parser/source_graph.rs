@@ -116,45 +116,27 @@ pub enum ModuleSource {
 }
 
 #[derive(Clone)]
+#[derive(Derivative)]
+#[derivative(Debug)]
 pub struct Struct {
     pub ident: Ident,
+    #[derivative(Debug="ignore")]
     pub src: ItemStruct,
     pub visibility: Visibility,
     pub path: Vec<String>,
     pub mirror: bool,
 }
 
-impl Debug for Struct {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        f.debug_struct("Struct")
-            .field("ident", &self.ident)
-            .field("src", &"omitted")
-            .field("visibility", &self.visibility)
-            .field("path", &self.path)
-            .field("mirror", &self.mirror)
-            .finish()
-    }
-}
-
 #[derive(Clone)]
+#[derive(Derivative)]
+#[derivative(Debug)]
 pub struct Enum {
     pub ident: Ident,
+    #[derivative(Debug="ignore")]
     pub src: ItemEnum,
     pub visibility: Visibility,
     pub path: Vec<String>,
     pub mirror: bool,
-}
-
-impl Debug for Enum {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        f.debug_struct("Enum")
-            .field("ident", &self.ident)
-            .field("src", &"omitted")
-            .field("visibility", &self.visibility)
-            .field("path", &self.path)
-            .field("mirror", &self.mirror)
-            .finish()
-    }
 }
 
 #[derive(Clone, Debug)]
@@ -173,24 +155,15 @@ pub struct ModuleScope {
 }
 
 #[derive(Clone)]
+#[derive(Derivative)]
+#[derivative(Debug)]
 pub struct Module {
     pub visibility: Visibility,
     pub file_path: PathBuf,
     pub module_path: Vec<String>,
+    #[derivative(Debug="ignore")]
     pub source: Option<ModuleSource>,
     pub scope: Option<ModuleScope>,
-}
-
-impl Debug for Module {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        f.debug_struct("Module")
-            .field("visibility", &self.visibility)
-            .field("module_path", &self.module_path)
-            .field("file_path", &self.file_path)
-            .field("source", &"omitted")
-            .field("scope", &self.scope)
-            .finish()
-    }
 }
 
 /// Get a struct or enum ident, possibly remapped by a mirror marker
