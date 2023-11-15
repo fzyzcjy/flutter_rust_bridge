@@ -41,29 +41,25 @@ mod tests {
 
     #[test]
     pub fn test_get_dir_and_mod_simple_mod() {
-        let (dir, module) = get_dir_and_mod("/project/src/api.rs".into());
-        assert_eq!("/project".into(), dir);
-        assert_eq!(Some("api".to_owned()), module);
+        let actual = get_dir_and_mod("/project/src/api.rs".into());
+        assert_eq!(("/project".into(), Some("api".to_owned())), actual);
     }
 
     #[test]
     pub fn test_get_dir_and_mod_sub_mod() {
-        let (dir, module) = get_dir_and_mod("/project/src/sub/subsub.rs".into());
-        assert_eq!("/project".into(), dir);
-        assert_eq!(Some("sub::subsub".to_owned()), module);
+        let actual = get_dir_and_mod("/project/src/sub/subsub.rs".into());
+        assert_eq!(("/project".into(), Some("sub::subsub".to_owned())), actual);
     }
 
     #[test]
     pub fn test_get_dir_and_mod_lib_rs() {
-        let (dir, module) = get_dir_and_mod("/project/src/lib.rs".into());
-        assert_eq!("/project".into(), dir);
-        assert_eq!(None, module);
+        let actual = get_dir_and_mod("/project/src/lib.rs".into());
+        assert_eq!(("/project".into(), None), actual);
     }
 
     #[test]
     pub fn test_get_dir_and_mod_mod_rs() {
-        let (dir, module) = get_dir_and_mod("/project/src/hello/mod.rs".into());
-        assert_eq!("/project".into(), dir);
-        assert_eq!(Some("hello".to_owned()), module);
+        let actual = get_dir_and_mod("/project/src/hello/mod.rs".into());
+        assert_eq!(("/project".into(), Some("hello".to_owned())), actual);
     }
 }
