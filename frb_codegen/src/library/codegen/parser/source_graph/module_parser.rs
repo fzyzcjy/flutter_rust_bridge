@@ -1,3 +1,4 @@
+use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::reader::read_rust_file;
 use crate::codegen::parser::source_graph::modules::{
     Enum, Module, ModuleInfo, ModuleScope, ModuleSource, Struct, TypeAlias,
@@ -31,7 +32,8 @@ impl Module {
         for item in items.iter() {
             match item {
                 syn::Item::Struct(item_struct) => {
-                    let (idents, mirror) = get_ident(&item_struct.ident, &item_struct.attrs);
+                    let GetIdentOutput { idents, mirror } =
+                        get_ident(&item_struct.ident, &item_struct.attrs)?;
                     scope_structs.extend(idents.into_iter().map(|ident| {
                         let ident_str = ident.to_string();
                         Struct {
@@ -48,7 +50,8 @@ impl Module {
                     }));
                 }
                 syn::Item::Enum(item_enum) => {
-                    let (idents, mirror) = get_ident(&item_enum.ident, &item_enum.attrs);
+                    let GetIdentOutput { idents, mirror } =
+                        get_ident(&item_enum.ident, &item_enum.attrs)?;
 
                     scope_enums.extend(idents.into_iter().map(|ident| {
                         let ident_str = ident.to_string();
@@ -160,13 +163,19 @@ fn first_existing_path(path_candidates: &[PathBuf]) -> Option<&PathBuf> {
     path_candidates.iter().find(|path| path.exists())
 }
 
+struct GetIdentOutput {
+    idents: Vec<Ident>,
+    mirror: bool,
+}
+
 /// Get a struct or enum ident, possibly remapped by a mirror marker
-fn get_ident(ident: &Ident, attrs: &[Attribute]) -> (Vec<Ident>, bool) {
-    // TODO use `metadata.mirror()`
-    let res = markers::extract_mirror_marker(attrs)
+fn get_ident(ident: &Ident, attrs: &[Attribute]) -> anyhow::Result<GetIdentOutput> {
+    let attributes = FrbAttributes::parse(attrs)?;
+    let mirror_info = attributes.mirror();
+
+    let res = mirror_info
         .into_iter()
         .filter_map(|path| {
-            // eq: path.get_ident().map(Clone::clone)
             if path.leading_colon.is_none()
                 && path.segments.len() == 1
                 && path.segments[0].arguments == PathArguments::None
@@ -176,13 +185,14 @@ fn get_ident(ident: &Ident, attrs: &[Attribute]) -> (Vec<Ident>, bool) {
                 None
             }
         })
-        .collect::<Vec<_>>();
+        .collect_vec();
+
     let mirror = !res.is_empty();
-    if mirror {
-        (res, mirror)
-    } else {
-        (vec![ident.clone()], mirror)
-    }
+
+    Ok(GetIdentOutput {
+        idents: if mirror { res } else { vec![ident.clone()] },
+        mirror,
+    })
 }
 
 #[cfg(test)]
