@@ -11,8 +11,7 @@ pub struct Module {
     file_path: PathBuf,
     module_path: Vec<String>,
     #[derivative(Debug = "ignore")]
-    // TODO why so many `Option`?
-    source: Option<ModuleSource>,
+    source: ModuleSource,
     scope: Option<ModuleScope>,
 }
 

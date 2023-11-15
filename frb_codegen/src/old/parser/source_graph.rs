@@ -61,7 +61,7 @@ impl Crate {
                 visibility: Visibility::Public,
                 file_path: root_src_file,
                 module_path: vec!["crate".to_string()],
-                source: Some(ModuleSource::File(file_ast)),
+                source: ModuleSource::File(file_ast),
                 scope: None,
             },
         };
@@ -238,7 +238,7 @@ impl Module {
                                 visibility: syn_vis_to_visibility(&item_mod.vis),
                                 file_path: self.file_path.clone(),
                                 module_path,
-                                source: Some(ModuleSource::ModuleInFile(content.1.clone())),
+                                source: ModuleSource::ModuleInFile(content.1.clone()),
                                 scope: None,
                             };
 
@@ -255,9 +255,9 @@ impl Module {
                                     let source = {
                                         let source_rust_content = read_rust_file(&file_path);
                                         debug!("Trying to parse {:?}", file_path);
-                                        Some(ModuleSource::File(
+                                        ModuleSource::File(
                                             syn::parse_file(&source_rust_content).unwrap(),
-                                        ))
+                                        )
                                     };
                                     let mut child_module = Module {
                                         visibility: syn_vis_to_visibility(&item_mod.vis),
