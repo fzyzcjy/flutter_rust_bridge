@@ -79,47 +79,51 @@ impl<'a> TypeParser<'a> {
                 })
             })
             .collect::<anyhow::Result<Vec<_>>>()?;
-        Ok(IrEnum::new(name, wrapper_name, path, comments, variants))
-    }
-}
-
-// TODO merge or something?
-impl IrEnum {
-    fn new(
-        name: String,
-        wrapper_name: Option<String>,
-        path: Vec<String>,
-        comments: Vec<IrComment>,
-        mut variants: Vec<IrVariant>,
-    ) -> Self {
-        fn wrap_box(ty: &mut IrType) {
-            if ty.is_struct_or_enum_or_record() {
-                *ty = IrType::Boxed(IrTypeBoxed {
-                    exist_in_real_api: false,
-                    inner: Box::new(ty.clone()),
-                });
-            }
-        }
-
-        let is_struct = variants
-            .iter()
-            .any(|variant| !matches!(variant.kind, IrVariantKind::Value));
-        if is_struct {
-            for variant in &mut variants {
-                if let IrVariantKind::Struct(st) = &mut variant.kind {
-                    for field in &mut st.fields {
-                        wrap_box(&mut field.ty);
-                    }
-                }
-            }
-        }
-        Self {
+        Ok(postprocess_and_construct(
             name,
             wrapper_name,
             path,
             comments,
             variants,
-            is_struct,
+        ))
+    }
+}
+
+fn postprocess_and_construct(
+    name: String,
+    wrapper_name: Option<String>,
+    path: Vec<String>,
+    comments: Vec<IrComment>,
+    mut variants: Vec<IrVariant>,
+) -> IrEnum {
+    fn wrap_box(ty: &mut IrType) {
+        if ty.is_struct_or_enum_or_record() {
+            *ty = IrType::Boxed(IrTypeBoxed {
+                exist_in_real_api: false,
+                inner: Box::new(ty.clone()),
+            });
         }
+    }
+
+    let is_struct = variants
+        .iter()
+        .any(|variant| !matches!(variant.kind, IrVariantKind::Value));
+    if is_struct {
+        for variant in &mut variants {
+            if let IrVariantKind::Struct(st) = &mut variant.kind {
+                for field in &mut st.fields {
+                    wrap_box(&mut field.ty);
+                }
+            }
+        }
+    }
+
+    IrEnum {
+        name,
+        wrapper_name,
+        path,
+        comments,
+        variants,
+        is_struct,
     }
 }
