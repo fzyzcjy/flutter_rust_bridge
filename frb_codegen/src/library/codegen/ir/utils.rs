@@ -3,6 +3,7 @@
 /// Valid forms:
 /// - `ir! { pub struct Foo { .. } .. }`
 /// - `ir! { #[no_serde] pub struct Bar { .. } .. }`
+#[doc(hidden)] // only to be used within crate, not for end users
 #[macro_export]
 macro_rules! ir {
     () => {};

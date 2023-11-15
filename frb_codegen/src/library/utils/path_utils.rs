@@ -1,16 +1,16 @@
 use std::path::{Path, PathBuf};
 use anyhow::{Context, Result};
 
-pub fn glob_path(pattern: &Path) -> Result<Vec<PathBuf>> {
+pub(crate) fn glob_path(pattern: &Path) -> Result<Vec<PathBuf>> {
     let pattern = pattern.to_str().context("cannot convert to str")?;
     Ok(glob::glob(pattern)?.filter_map(Result::ok).collect())
 }
 
-pub fn path_to_string(path: &Path) -> Result<String> {
+pub(crate) fn path_to_string(path: &Path) -> Result<String> {
     Ok(path.to_str().context("cannot convert path to str")?.to_owned())
 }
 
-pub fn find_parent_dir_with_file(path_start: &Path, probe_file_name: &str) -> Option<PathBuf> {
+pub(crate) fn find_parent_dir_with_file(path_start: &Path, probe_file_name: &str) -> Option<PathBuf> {
     let mut path = path_start.to_owned();
     loop {
         if path.join(probe_file_name).is_file() { return Some(path); }
