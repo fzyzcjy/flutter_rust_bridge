@@ -2,7 +2,7 @@ use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::IrType;
 use serde::Deserialize;
-use crate::codegen::ir::default::DefaultValues;
+use crate::codegen::ir::default::IrDefaultValue;
 
 crate::ir! {
 pub struct IrField {
@@ -10,7 +10,7 @@ pub struct IrField {
     pub name: IrIdent,
     pub is_final: bool,
     pub comments: Vec<IrComment>,
-    pub default: Option<DefaultValues>,
+    pub default: Option<IrDefaultValue>,
 
     pub settings: IrFieldSettings,
 }

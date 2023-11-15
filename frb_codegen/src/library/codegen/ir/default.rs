@@ -3,7 +3,7 @@ use syn::punctuated::Punctuated;
 use syn::Token;
 
 crate::ir! {
-pub enum DefaultValues {
+pub enum IrDefaultValue {
     #[serde(serialize_with = "serialize_litstr")]
     Str(syn::LitStr),
     #[serde(serialize_with = "serialize_litbool")]
@@ -13,7 +13,7 @@ pub enum DefaultValues {
     #[serde(serialize_with = "serialize_litfloat")]
     Float(syn::LitFloat),
     #[serde(serialize_with = "serialize_punctuated")]
-    Vec(Punctuated<DefaultValues, Token![,]>),
+    Vec(Punctuated<IrDefaultValue, Token![,]>),
 }
 }
 
@@ -34,7 +34,7 @@ fn serialize_litfloat<S: Serializer>(lit: &syn::LitFloat, s: S) -> Result<S::Ok,
 }
 
 fn serialize_punctuated<S: Serializer>(
-    lit: &Punctuated<DefaultValues, Token![,]>,
+    lit: &Punctuated<IrDefaultValue, Token![,]>,
     s: S,
 ) -> Result<S::Ok, S::Error> {
     lit.into_iter().collect::<Vec<_>>().serialize(s)
