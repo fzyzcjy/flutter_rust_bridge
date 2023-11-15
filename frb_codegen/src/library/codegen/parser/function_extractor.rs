@@ -1,9 +1,11 @@
 use syn::File;
 use anyhow::Context;
+use itertools::Itertools;
 use syn::*;
 use syn::punctuated::Punctuated;
 use syn::token::Colon;
 use crate::codegen::parser::ParserResult;
+use crate::if_then_some;
 
 pub(crate) fn extract_generalized_functions_from_file(file: &File) -> ParserResult<Vec<ItemFn>> {
     let mut ans = extract_fns_from_file(&file);
@@ -12,17 +14,10 @@ pub(crate) fn extract_generalized_functions_from_file(file: &File) -> ParserResu
 }
 
 fn extract_fns_from_file(file: &File) -> Vec<ItemFn> {
-    let mut src_fns = Vec::new();
-
-    for item in file.items.iter() {
-        if let Item::Fn(ref item_fn) = item {
-            if let Visibility::Public(_) = &item_fn.vis {
-                src_fns.push(item_fn.clone());
-            }
-        }
-    }
-
-    src_fns
+    file.items.iter()
+        .filter_map(if_then_some!(let Item::Fn(ref item_fn) = item, item_fn))
+        .filter(|item_fn| matches!(item_fn.vis, Visibility::Public(_)))
+        .collect_vec()
 }
 
 fn extract_methods_from_file(file: &File) -> ParserResult<Vec<ItemFn>> {
