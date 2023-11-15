@@ -1,6 +1,7 @@
 pub(crate) mod enumeration;
 pub(crate) mod misc;
 pub(crate) mod structure;
+pub(crate) mod ty;
 
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
 use crate::codegen::ir::ty::IrType;
@@ -38,10 +39,6 @@ impl<'a> TypeParser<'a> {
 
     pub(crate) fn consume(self) -> (IrStructPool, IrEnumPool) {
         (self.struct_pool, self.enum_pool)
-    }
-
-    pub(crate) fn parse_type(&mut self, ty: &Type) -> IrType {
-        todo!()
     }
 
     pub(crate) fn convert_path_to_ir_type(
