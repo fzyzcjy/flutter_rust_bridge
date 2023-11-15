@@ -3,3 +3,4 @@
 pub mod codegen;
 pub mod integration;
 pub mod utils;
+pub(crate) mod commands;

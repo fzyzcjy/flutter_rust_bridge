@@ -1,4 +1,5 @@
 use std::path::Path;
+use crate::library::commands::cargo_expand::cargo_expand;
 
 pub(crate) fn read_rust_file(path: &Path) -> String {
     let path = path.to_str().unwrap();
