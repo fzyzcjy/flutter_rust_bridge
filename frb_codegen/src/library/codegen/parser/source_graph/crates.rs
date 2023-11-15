@@ -18,7 +18,6 @@ impl Crate {
     pub fn parse(manifest_path: &Path) -> ParserResult<Self> {
         let metadata = execute_cargo_metadata(manifest_path)?;
 
-        // TODO is this duplicated with logic before?
         let root_package = metadata.root_package().context("no root package")?;
         let root_src_file = get_root_src_file(root_package)?;
 
