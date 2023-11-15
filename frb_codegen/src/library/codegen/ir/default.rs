@@ -2,6 +2,7 @@ use serde::{Serialize, Serializer};
 use syn::punctuated::Punctuated;
 use syn::Token;
 
+// TODO maybe should not have `syn` dependency in this `ir` mod?
 crate::ir! {
 pub enum IrDefaultValue {
     #[serde(serialize_with = "serialize_litstr")]
