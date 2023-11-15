@@ -1,6 +1,6 @@
 use std::path::{Path, PathBuf};
 use crate::codegen::parser::ParserResult;
-use crate::codegen::parser::source_map::modules::Module;
+use crate::codegen::parser::source_graph::modules::Module;
 
 /// Represents a crate, including a map of its modules, imports, structs and
 /// enums.
