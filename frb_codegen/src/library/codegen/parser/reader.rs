@@ -1,8 +1,10 @@
 use std::path::{Path, PathBuf};
+use log::debug;
 use crate::library::commands::cargo_expand::cargo_expand;
 
 pub(crate) fn read_rust_file(path: &Path) -> String {
     let (dir, module) = get_dir_and_mod(path);
+    debug!("read_rust_file path={path:?} => dir={dir:?} module={module:?}");
     cargo_expand(&dir, module, path)
 }
 
