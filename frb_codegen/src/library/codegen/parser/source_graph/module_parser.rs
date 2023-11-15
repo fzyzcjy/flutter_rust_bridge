@@ -3,6 +3,8 @@ use crate::codegen::parser::source_graph::modules::{
     Enum, Module, ModuleInfo, ModuleScope, ModuleSource, Struct, TypeAlias,
 };
 use crate::codegen::parser::ParserResult;
+use crate::utils::path_utils::path_to_string;
+use itertools::Itertools;
 use log::{debug, warn};
 use std::path::{Path, PathBuf};
 
@@ -80,40 +82,30 @@ impl Module {
                             source: ModuleSource::ModuleInFile(content.1.clone()),
                         })?,
                         None => {
-                            let file_path =
-                                get_module_file_path(ident.to_string(), &info.file_path);
+                            let file_path_candidates =
+                                get_module_file_path_candidates(ident.to_string(), &info.file_path);
 
-                            match file_path {
-                                Ok(file_path) => {
-                                    let source = {
-                                        let source_rust_content = read_rust_file(&file_path)?;
-                                        debug!("Trying to parse {:?}", file_path);
-                                        ModuleSource::File(
-                                            syn::parse_file(&source_rust_content).unwrap(),
-                                        )
-                                    };
-                                    Module::parse(ModuleInfo {
-                                        visibility: item_mod.vis.into(),
-                                        file_path,
-                                        module_path,
-                                        source,
-                                    })?
-                                }
-                                Err(tried) => {
-                                    warn!(
-                                        "Skipping unresolvable module {} (tried {})",
-                                        &ident,
-                                        tried
-                                            .into_iter()
-                                            .map(|it| it.to_string_lossy().to_string())
-                                            .fold(String::new(), |mut a, b| {
-                                                a.push_str(&b);
-                                                a.push_str(", ");
-                                                a
-                                            })
-                                    );
-                                    continue;
-                                }
+                            if let Some(file_path) = first_existing_path(&file_path_candidates) {
+                                let source = {
+                                    let source_rust_content = read_rust_file(&file_path)?;
+                                    debug!("Trying to parse {:?}", file_path);
+                                    ModuleSource::File(
+                                        syn::parse_file(&source_rust_content).unwrap(),
+                                    )
+                                };
+                                Module::parse(ModuleInfo {
+                                    visibility: item_mod.vis.into(),
+                                    file_path: file_path.to_owned(),
+                                    module_path,
+                                    source,
+                                })?
+                            } else {
+                                warn!(
+                                    "Skipping unresolvable module {} (tried {})",
+                                    &ident,
+                                    file_path_candidates.iter().map(path_to_string).join(", ")
+                                );
+                                continue;
                             }
                         }
                     });
@@ -135,49 +127,38 @@ impl Module {
     }
 }
 
-fn get_module_file_path(
+fn get_module_file_path_candidates(
     module_name: String,
     parent_module_file_path: &Path,
-) -> Result<PathBuf, Vec<PathBuf>> {
-    let mut tried = Vec::new();
-
-    // TODO optimize these blocks
-
-    if let Some(file_path) = try_get_module_file_path(
+) -> Vec<PathBuf> {
+    [
         parent_module_file_path.parent().unwrap(),
-        &module_name,
-        &mut tried,
-    ) {
-        return Ok(file_path);
-    }
-    if let Some(file_path) = try_get_module_file_path(
-        &parent_module_file_path.with_extension(""),
-        &module_name,
-        &mut tried,
-    ) {
-        return Ok(file_path);
-    }
-    Err(tried)
+        parent_module_file_path.with_extension(""),
+    ]
+    .into_iter()
+    .flat_map(|folder_path| {
+        [
+            folder_path.join(&module_name).with_extension("rs"),
+            folder_path.join(&module_name).join("mod.rs"),
+        ]
+    })
+    .collect_vec()
 }
 
-fn try_get_module_file_path(
-    folder_path: &Path,
-    module_name: &str,
-    tried: &mut Vec<PathBuf>,
-) -> Option<PathBuf> {
-    // TODO optimize these two blocks
+fn first_existing_path(path_candidates: &[PathBuf]) -> Option<&PathBuf> {
+    path_candidates.iter().find(|path| path.exists())
+}
 
-    let file_path = folder_path.join(module_name).with_extension("rs");
-    if file_path.exists() {
-        return Some(file_path);
+#[cfg(test)]
+mod tests {
+    use crate::codegen::parser::source_graph::module_parser::get_module_file_path;
+    use std::path::PathBuf;
+
+    #[test]
+    fn test_get_module_file_path_simple() {
+        assert_eq!(
+            get_module_file_path("sub".to_owned(), &PathBuf::from("/hello/world")),
+            Err(vec![TODO,])
+        );
     }
-    tried.push(file_path);
-
-    let file_path = folder_path.join(module_name).join("mod.rs");
-    if file_path.exists() {
-        return Some(file_path);
-    }
-    tried.push(file_path);
-
-    None
 }
