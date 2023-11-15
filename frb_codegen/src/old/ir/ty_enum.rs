@@ -42,18 +42,6 @@ impl IrTypeTrait for IrTypeEnumRef {
     }
 }
 
-crate::ir! {
-pub struct IrEnum {
-    pub name: String,
-    pub wrapper_name: Option<String>,
-    pub path: Vec<String>,
-    pub comments: Vec<IrComment>,
-    pub is_exception: bool,
-    variants: Vec<IrVariant>,
-    is_struct: bool,
-}
-}
-
 impl IrEnum {
     pub fn new(
         name: String,

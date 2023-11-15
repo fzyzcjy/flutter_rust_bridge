@@ -38,18 +38,6 @@ impl IrTypeTrait for IrTypeStructRef {
     }
 }
 
-crate::ir! {
-pub struct IrStruct {
-    pub name: String,
-    pub wrapper_name: Option<String>,
-    pub path: Option<Vec<String>>,
-    pub fields: Vec<IrField>,
-    pub is_fields_named: bool,
-    pub dart_metadata: Vec<IrDartAnnotation>,
-    pub comments: Vec<IrComment>,
-}
-}
-
 impl IrStruct {
     pub fn brackets_pair(&self) -> (char, char) {
         if self.is_fields_named {

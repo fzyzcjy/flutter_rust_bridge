@@ -8,6 +8,16 @@ pub struct IrTypeEnumRef {
     pub name: String,
     pub is_exception: bool,
 }
+
+pub struct IrEnum {
+    pub name: String,
+    pub wrapper_name: Option<String>,
+    pub path: Vec<String>,
+    pub comments: Vec<IrComment>,
+    pub is_exception: bool,
+    variants: Vec<IrVariant>,
+    is_struct: bool,
+}
 }
 
 impl IrTypeTrait for IrTypeEnumRef {

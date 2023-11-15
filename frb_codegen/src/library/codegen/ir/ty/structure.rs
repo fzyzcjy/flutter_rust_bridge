@@ -10,6 +10,16 @@ pub struct IrTypeStructRef {
     pub empty: bool,
     pub is_exception: bool,
 }
+
+pub struct IrStruct {
+    pub name: String,
+    pub wrapper_name: Option<String>,
+    pub path: Option<Vec<String>>,
+    pub fields: Vec<IrField>,
+    pub is_fields_named: bool,
+    pub dart_metadata: Vec<IrDartAnnotation>,
+    pub comments: Vec<IrComment>,
+}
 }
 
 impl IrTypeTrait for IrTypeStructRef {
