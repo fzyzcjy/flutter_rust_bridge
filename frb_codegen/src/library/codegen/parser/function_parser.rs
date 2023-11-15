@@ -1,12 +1,12 @@
-use anyhow::Context;
-use log::debug;
-use syn::*;
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::func::{IrFunc, IrFuncMode};
 use crate::codegen::ir::ident::IrIdent;
-use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::ParserResult;
+use anyhow::Context;
+use log::debug;
+use syn::*;
 
 struct FunctionParser;
 

@@ -1,7 +1,7 @@
+use crate::codegen::parser::type_parser::misc::convert_ident_str;
 use std::collections::HashMap;
 use syn::Type;
 use topological_sort::TopologicalSort;
-use crate::codegen::parser::type_parser::misc::convert_ident_str;
 
 // See https://github.com/fzyzcjy/flutter_rust_bridge/pull/929 for more details of the algorithm
 pub(crate) fn resolve_type_aliases(src: HashMap<String, Type>) -> HashMap<String, Type> {
@@ -73,9 +73,9 @@ pub(crate) fn resolve_type_aliases(src: HashMap<String, Type>) -> HashMap<String
 
 #[cfg(test)]
 mod tests {
+    use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
     use std::collections::HashMap;
     use syn::{parse_str, Type};
-    use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 
     #[test]
     fn test_topo_resolve_primary_type_with_nest() {
