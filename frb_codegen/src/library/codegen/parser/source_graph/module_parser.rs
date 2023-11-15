@@ -61,42 +61,32 @@ impl Module {
     }
 }
 
-fn parse_syn_item_struct(
-    info: &ModuleInfo,
-    item_struct: &ItemStruct,
-) -> anyhow::Result<Vec<Struct>> {
-    let ParseMirrorIdentOutput { idents, mirror } =
-        parse_mirror_ident(&item_struct.ident, &item_struct.attrs)?;
-    Ok(idents
-        .into_iter()
-        .map(|ident| {
-            let ident_str = ident.to_string();
-            Struct(StructOrEnum {
-                ident,
-                src: item_struct.clone(),
-                visibility: Visibility::from_syn(&item_struct.vis),
-                path: {
-                    let mut path = info.module_path.clone();
-                    path.push(ident_str);
-                    path
-                },
-                mirror,
-            })
-        })
-        .collect_vec())
+fn parse_syn_item_struct(info: &ModuleInfo, item: &ItemStruct) -> anyhow::Result<Vec<Struct>> {
+    parse_syn_item_struct_or_enum(info, item, Struct)
 }
 
-fn parse_syn_item_enum(info: &ModuleInfo, item_enum: &ItemEnum) -> anyhow::Result<Vec<Enum>> {
+fn parse_syn_item_enum(info: &ModuleInfo, item: &ItemEnum) -> anyhow::Result<Vec<Enum>> {
+    parse_syn_item_struct_or_enum(info, item, Enum)
+}
+
+fn parse_syn_item_struct_or_enum<I, F, T>(
+    info: &ModuleInfo,
+    item_struct_or_enum: &I,
+    constructor: F,
+) -> anyhow::Result<Vec<T>>
+where
+    F: Fn(StructOrEnum<I>) -> T,
+{
     let ParseMirrorIdentOutput { idents, mirror } =
-        parse_mirror_ident(&item_enum.ident, &item_enum.attrs)?;
+        parse_mirror_ident(&item_struct_or_enum.ident, &item_struct_or_enum.attrs)?;
     Ok(idents
         .into_iter()
         .map(|ident| {
             let ident_str = ident.to_string();
-            Enum(StructOrEnum {
+            constructor(StructOrEnum {
                 ident,
-                src: item_enum.clone(),
-                visibility: Visibility::from_syn(&item_enum.vis),
+                src: item_struct_or_enum.clone(),
+                visibility: Visibility::from_syn(&item_struct_or_enum.vis),
                 path: {
                     let mut path = info.module_path.clone();
                     path.push(ident_str);
