@@ -1,15 +1,15 @@
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::func::{IrFunc, IrFuncMode};
 use crate::codegen::ir::ident::IrIdent;
+use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
 use crate::codegen::parser::ParserResult;
 use anyhow::Context;
 use log::debug;
 use syn::*;
-use crate::codegen::ir::ty::delegate::IrTypeDelegate;
-use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
-use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 
 struct FunctionParser;
 
@@ -125,9 +125,10 @@ impl FunctionParser {
                 let last_segment = path.segments.last().unwrap();
                 if last_segment.ident == STREAM_SINK_IDENT {
                     match &last_segment.arguments {
-                        PathArguments::AngleBracketed(
-                            AngleBracketedGenericArguments { args, .. },
-                        ) if args.len() == 1 => {
+                        PathArguments::AngleBracketed(AngleBracketedGenericArguments {
+                            args,
+                            ..
+                        }) if args.len() == 1 => {
                             // Unwrap is safe here because args.len() == 1
                             match args.last().unwrap() {
                                 GenericArgument::Type(t) => {
@@ -174,11 +175,11 @@ impl FunctionParser {
 
                             let is_anyhow = args.len() == 1
                                 || args.iter().any(|x| match x {
-                                IrType::Unencodable(IrTypeUnencodable { string, .. }) => {
-                                    string == "anyhow :: Error"
-                                }
-                                _ => false,
-                            });
+                                    IrType::Unencodable(IrTypeUnencodable { string, .. }) => {
+                                        string == "anyhow :: Error"
+                                    }
+                                    _ => false,
+                                });
                             let error = if is_anyhow {
                                 Some(IrType::Delegate(IrTypeDelegate::Anyhow))
                             } else {

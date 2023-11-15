@@ -49,8 +49,6 @@ impl<'a> Parser<'a> {
             has_executor,
         })
     }
-
-
 }
 
 fn extract_comments(attrs: &[Attribute]) -> Vec<IrComment> {
