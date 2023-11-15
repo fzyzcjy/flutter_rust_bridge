@@ -541,7 +541,7 @@ impl<'a> TypeParser<'a> {
                             wrapper_name: None,
                             path: None,
                             is_fields_named: field_ident.is_some(),
-                            dart_metadata: parse_metadataattrs),
+                            dart_metadata: parse_metadata(attrs),
                             comments: extract_comments(attrs),
                             fields: variant
                                 .fields

@@ -1,8 +1,8 @@
+pub(crate) mod attribute_parser;
 pub(crate) mod error;
 pub(crate) mod function_extractor;
 pub(crate) mod function_parser;
 pub(crate) mod internal_config;
-pub(crate) mod metadata_parser;
 pub(crate) mod reader;
 pub(crate) mod source_graph;
 pub(crate) mod type_alias_resolver;

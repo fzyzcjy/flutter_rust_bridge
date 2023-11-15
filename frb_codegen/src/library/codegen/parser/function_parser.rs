@@ -6,7 +6,7 @@ use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
-use crate::codegen::parser::metadata_parser::FrbMetadata;
+use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::parser::ParserResult;
 use anyhow::Context;
@@ -60,7 +60,7 @@ impl<'a> FunctionParser<'a> {
                         }
                     }
                     FuncArg::Type(ty) => {
-                        let metadata = FrbMetadata::parse(&pat_type.attrs)?;
+                        let metadata = FrbAttributes::parse(&pat_type.attrs)?;
                         inputs.push(IrField {
                             name: IrIdent::new(name),
                             ty,

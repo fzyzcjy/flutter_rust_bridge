@@ -9,15 +9,15 @@ use syn::*;
 
 const METADATA_IDENT: &str = "frb";
 
-pub(crate) struct FrbMetadata(Vec<FrbOption>);
+pub(crate) struct FrbAttributes(Vec<FrbAttribute>);
 
-impl FrbMetadata {
+impl FrbAttributes {
     pub(crate) fn parse(attrs: &[Attribute]) -> Result<Self> {
         Ok(Self(
             attrs
                 .iter()
                 .filter(|attr| attr.path().is_ident(METADATA_IDENT))
-                .map(|attr| attr.parse_args::<FrbOption>())
+                .map(|attr| attr.parse_args::<FrbAttribute>())
                 .collect::<Result<Vec<_>>>()?,
         ))
     }
@@ -27,7 +27,7 @@ impl FrbMetadata {
             .0
             .iter()
             .filter_map(
-                |item| if_then_some!(let FrbOption::Default(default) = item, default.clone()),
+                |item| if_then_some!(let FrbAttribute::Default(default) = item, default.clone()),
             )
             .collect_vec();
         if candidates.len() > 1 {
@@ -39,13 +39,13 @@ impl FrbMetadata {
     pub(crate) fn non_final(&self) -> bool {
         self.0
             .iter()
-            .any(|item| matches!(item, FrbOption::NonFinal))
+            .any(|item| matches!(item, FrbAttribute::NonFinal))
     }
 
     pub(crate) fn mirror(&self) -> Vec<Path> {
         self.0
             .iter()
-            .filter_map(|item| if_then_some!(let FrbOption::Mirror(mirror) = item, mirror.0))
+            .filter_map(|item| if_then_some!(let FrbAttribute::Mirror(mirror) = item, mirror.0))
             .collect()
     }
 }
@@ -57,28 +57,28 @@ mod frb_keyword {
     syn::custom_keyword!(import);
 }
 
-enum FrbOption {
-    Mirror(MirrorOption),
+enum FrbAttribute {
+    Mirror(FrbAttributeMirror),
     NonFinal,
-    Metadata(NamedOption<frb_keyword::dart_metadata, MetadataAnnotations>),
+    Metadata(NamedOption<frb_keyword::dart_metadata, FrbAttributeDartAnnotation>),
     Default(IrDefaultValue),
 }
 
-impl Parse for FrbOption {
+impl Parse for FrbAttribute {
     fn parse(input: ParseStream<'_>) -> Result<Self> {
         let lookahead = input.lookahead1();
         if lookahead.peek(frb_keyword::mirror) {
-            input.parse().map(FrbOption::Mirror)
+            input.parse().map(FrbAttribute::Mirror)
         } else if lookahead.peek(frb_keyword::non_final) {
             input
                 .parse::<frb_keyword::non_final>()
-                .map(|_| FrbOption::NonFinal)
+                .map(|_| FrbAttribute::NonFinal)
         } else if lookahead.peek(frb_keyword::dart_metadata) {
-            input.parse().map(FrbOption::Metadata)
+            input.parse().map(FrbAttribute::Metadata)
         } else if lookahead.peek(Token![default]) {
             input.parse::<Token![default]>()?;
             input.parse::<Token![=]>()?;
-            input.parse().map(FrbOption::Default)
+            input.parse().map(FrbAttribute::Default)
         } else {
             Err(lookahead.error())
         }
@@ -86,9 +86,9 @@ impl Parse for FrbOption {
 }
 
 #[derive(Clone, Debug)]
-pub struct NamedOption<K, V> {
-    pub name: K,
-    pub value: V,
+struct NamedOption<K, V> {
+    name: K,
+    value: V,
 }
 
 impl<K: Parse + std::fmt::Debug, V: Parse> Parse for NamedOption<K, V> {
@@ -101,9 +101,9 @@ impl<K: Parse + std::fmt::Debug, V: Parse> Parse for NamedOption<K, V> {
 }
 
 #[derive(Clone, Debug)]
-pub struct MirrorOption(Path);
+struct FrbAttributeMirror(Path);
 
-impl Parse for MirrorOption {
+impl Parse for FrbAttributeMirror {
     fn parse(input: ParseStream<'_>) -> Result<Self> {
         let content;
         parenthesized!(content in input);
@@ -113,9 +113,9 @@ impl Parse for MirrorOption {
 }
 
 #[derive(Clone, Debug)]
-pub struct MetadataAnnotations(Vec<IrDartAnnotation>);
+struct FrbAttributeDartAnnotation(Vec<IrDartAnnotation>);
 
-impl Parse for MetadataAnnotations {
+impl Parse for FrbAttributeDartAnnotation {
     fn parse(input: ParseStream<'_>) -> Result<Self> {
         let content;
         parenthesized!(content in input);
@@ -127,7 +127,7 @@ impl Parse for MetadataAnnotations {
 }
 
 #[derive(Clone, Debug)]
-pub struct DartImports(Vec<IrDartImport>);
+struct DartImports(Vec<IrDartImport>);
 
 impl Parse for DartImports {
     fn parse(input: ParseStream<'_>) -> Result<Self> {
