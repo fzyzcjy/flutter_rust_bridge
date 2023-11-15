@@ -33,8 +33,8 @@ impl Module {
         for item in items.iter() {
             match item {
                 syn::Item::Struct(item_struct) => {
-                    let GetIdentOutput { idents, mirror } =
-                        get_ident(&item_struct.ident, &item_struct.attrs)?;
+                    let ParseMirrorIdentOutput { idents, mirror } =
+                        parse_mirror_ident(&item_struct.ident, &item_struct.attrs)?;
                     scope_structs.extend(idents.into_iter().map(|ident| {
                         let ident_str = ident.to_string();
                         Struct {
@@ -51,8 +51,8 @@ impl Module {
                     }));
                 }
                 syn::Item::Enum(item_enum) => {
-                    let GetIdentOutput { idents, mirror } =
-                        get_ident(&item_enum.ident, &item_enum.attrs)?;
+                    let ParseMirrorIdentOutput { idents, mirror } =
+                        parse_mirror_ident(&item_enum.ident, &item_enum.attrs)?;
 
                     scope_enums.extend(idents.into_iter().map(|ident| {
                         let ident_str = ident.to_string();
@@ -164,13 +164,16 @@ fn first_existing_path(path_candidates: &[PathBuf]) -> Option<&PathBuf> {
     path_candidates.iter().find(|path| path.exists())
 }
 
-struct GetIdentOutput {
+struct ParseMirrorIdentOutput {
     idents: Vec<Ident>,
     mirror: bool,
 }
 
 /// Get a struct or enum ident, possibly remapped by a mirror marker
-fn get_ident(ident: &Ident, attrs: &[Attribute]) -> anyhow::Result<GetIdentOutput> {
+fn parse_mirror_ident(
+    ident: &Ident,
+    attrs: &[Attribute],
+) -> anyhow::Result<ParseMirrorIdentOutput> {
     let attributes = FrbAttributes::parse(attrs)?;
     let mirror_info = attributes.mirror();
 
@@ -190,7 +193,7 @@ fn get_ident(ident: &Ident, attrs: &[Attribute]) -> anyhow::Result<GetIdentOutpu
 
     let mirror = !res.is_empty();
 
-    Ok(GetIdentOutput {
+    Ok(ParseMirrorIdentOutput {
         idents: if mirror { res } else { vec![ident.clone()] },
         mirror,
     })
