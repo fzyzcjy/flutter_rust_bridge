@@ -15,6 +15,7 @@ use crate::codegen::parser::type_parser::TypeParser;
 
 pub(crate) type ParserResult<T = (), E = error::Error> = Result<T, E>;
 
+// TODO handle multi file correctly
 pub(crate) fn parse(config: &ParserInternalConfig) -> ParserResult<IrPack> {
     let raw_packs = config.rust_input_path_pack.rust_input_path.iter()
         // TODO handle namespace
