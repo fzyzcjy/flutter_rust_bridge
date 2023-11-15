@@ -52,4 +52,18 @@ mod tests {
         assert_eq!("/project".into(), dir);
         assert_eq!(Some("sub::subsub".to_owned()), module);
     }
+
+    #[test]
+    pub fn test_get_dir_and_mod_lib_rs() {
+        let (dir, module) = get_dir_and_mod("/project/src/lib.rs".into());
+        assert_eq!("/project".into(), dir);
+        assert_eq!(None, module);
+    }
+
+    #[test]
+    pub fn test_get_dir_and_mod_mod_rs() {
+        let (dir, module) = get_dir_and_mod("/project/src/hello/mod.rs".into());
+        assert_eq!("/project".into(), dir);
+        assert_eq!(Some("hello".to_owned()), module);
+    }
 }
