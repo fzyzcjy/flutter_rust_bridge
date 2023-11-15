@@ -2,6 +2,7 @@ use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::IrType;
 use serde::Deserialize;
+use crate::codegen::ir::default::DefaultValues;
 
 crate::ir! {
 pub struct IrField {

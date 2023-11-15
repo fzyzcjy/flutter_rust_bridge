@@ -6,4 +6,5 @@ pub(crate) mod comment;
 pub(crate) mod field;
 pub(crate) mod ident;
 pub(crate) mod import;
+pub(crate) mod default;
 mod utils;
