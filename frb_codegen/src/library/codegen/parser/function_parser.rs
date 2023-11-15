@@ -134,7 +134,7 @@ impl<'a> FunctionParser<'a> {
 
     /// Attempts to parse the type from an argument of a function signature. There is a special
     /// case for top-level `StreamSink` types.
-    pub fn try_parse_fn_arg_type(&self, ty: &Type) -> Option<FuncArg> {
+    fn try_parse_fn_arg_type(&self, ty: &Type) -> Option<FuncArg> {
         match ty {
             Type::Path(TypePath { path, .. }) => {
                 let last_segment = path.segments.last().unwrap();
@@ -165,7 +165,7 @@ impl<'a> FunctionParser<'a> {
 
     /// Attempts to parse the type from the return part of a function signature. There is a special
     /// case for top-level `Result` types.
-    pub fn try_parse_fn_output_type(&self, ty: &Type) -> Option<FuncOutput> {
+    fn try_parse_fn_output_type(&self, ty: &Type) -> Option<FuncOutput> {
         let ty = &self.type_parser.resolve_alias(ty).clone();
 
         if let Type::Path(type_path) = ty {
