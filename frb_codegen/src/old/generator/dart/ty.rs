@@ -20,7 +20,7 @@ pub trait TypeDartGeneratorTrait {
 
 #[derive(Debug, Clone)]
 pub struct TypeGeneratorContext<'a> {
-    pub ir_file: &'a IrFile,
+    pub ir_pack: &'a IrPack,
     pub config: &'a Opts,
 }
 
@@ -55,8 +55,8 @@ pub enum TypeDartGenerator<'a> {
 }
 
 impl<'a> TypeDartGenerator<'a> {
-    pub fn new(ty: IrType, ir_file: &'a IrFile, config: &'a Opts) -> Self {
-        let context = TypeGeneratorContext { ir_file, config };
+    pub fn new(ty: IrType, ir_pack: &'a IrPack, config: &'a Opts) -> Self {
+        let context = TypeGeneratorContext { ir_pack, config };
         match ty {
             Primitive(ir) => TypePrimitiveGenerator { ir, context }.into(),
             Delegate(ir) => TypeDelegateGenerator { ir, context }.into(),

@@ -57,10 +57,10 @@ pub struct Output {
     pub needs_freezed: bool,
 }
 
-pub fn generate(ir_file: &IrFile, config: &Opts, wasm_funcs: &[IrFuncDisplay]) -> Output {
+pub fn generate(ir_pack: &IrPack, config: &Opts, wasm_funcs: &[IrFuncDisplay]) -> Output {
     let dart_api_class_name = &config.dart_api_class_name();
     let dart_output_file_root = config.dart_output_root().expect("Internal error");
-    let spec = DartApiSpec::from(ir_file, config, wasm_funcs);
+    let spec = DartApiSpec::from(ir_pack, config, wasm_funcs);
     let DartApiSpec {
         dart_funcs,
         dart_structs,
@@ -73,7 +73,7 @@ pub fn generate(ir_file: &IrFile, config: &Opts, wasm_funcs: &[IrFuncDisplay]) -
     let decl_code = generate_dart_declaration_code(
         &common_header,
         generate_freezed_header(dart_output_file_root, needs_freezed),
-        generate_import_header(get_dart_imports(ir_file), spec.import_array.as_deref()),
+        generate_import_header(get_dart_imports(ir_pack), spec.import_array.as_deref()),
         generate_dart_declaration_body(dart_api_class_name, dart_funcs, dart_structs),
     );
 
@@ -106,29 +106,29 @@ struct DartApiSpec {
 }
 
 impl DartApiSpec {
-    fn from(ir_file: &IrFile, config: &Opts, extra_funcs: &[IrFuncDisplay]) -> Self {
+    fn from(ir_pack: &IrPack, config: &Opts, extra_funcs: &[IrFuncDisplay]) -> Self {
         let dart_api_class_name = config.dart_api_class_name();
         let dart_wire_class_name = config.dart_wire_class_name();
-        let distinct_types = ir_file.distinct_types(true, true);
-        let distinct_input_types = ir_file.distinct_types(true, false);
-        let distinct_output_types = ir_file.distinct_types(false, true);
+        let distinct_types = ir_pack.distinct_types(true, true);
+        let distinct_input_types = ir_pack.distinct_types(true, false);
+        let distinct_output_types = ir_pack.distinct_types(false, true);
         debug!("distinct_input_types={:?}", distinct_input_types);
         debug!("distinct_output_types={:?}", distinct_output_types);
 
         let dart_structs = distinct_types
             .iter()
-            .map(|ty| TypeDartGenerator::new(ty.clone(), ir_file, config).structs())
+            .map(|ty| TypeDartGenerator::new(ty.clone(), ir_pack, config).structs())
             .collect::<Vec<_>>();
         let dart_api2wire_funcs = distinct_input_types
             .iter()
-            .map(|ty| generate_api2wire_func(ty, ir_file, config))
+            .map(|ty| generate_api2wire_func(ty, ir_pack, config))
             .collect::<Acc<_>>()
             .join("\n");
 
-        let dart_funcs = (ir_file
+        let dart_funcs = (ir_pack
             .funcs
             .iter()
-            .map(|f| generate_api_func(f, ir_file, &dart_api2wire_funcs.common)))
+            .map(|f| generate_api_func(f, ir_pack, &dart_api2wire_funcs.common)))
             .chain(
                 distinct_output_types
                     .iter()
@@ -139,12 +139,12 @@ impl DartApiSpec {
 
         let dart_api_fill_to_wire_funcs = distinct_input_types
             .iter()
-            .map(|ty| generate_api_fill_to_wire_func(ty, ir_file, config))
+            .map(|ty| generate_api_fill_to_wire_func(ty, ir_pack, config))
             .collect::<Vec<_>>();
 
         let dart_wire2api_funcs = distinct_output_types
             .iter()
-            .map(|ty| generate_wire2api_func(ty, ir_file, dart_api_class_name, config))
+            .map(|ty| generate_wire2api_func(ty, ir_pack, dart_api_class_name, config))
             .collect::<Vec<_>>();
 
         let dart_opaque_funcs = distinct_output_types
@@ -155,7 +155,7 @@ impl DartApiSpec {
             .join("\n");
 
         let ir_wasm_func_exports = config.wasm_enabled.then(|| {
-            ir_file
+            ir_pack
                 .funcs
                 .iter()
                 .map(|fun| IrFuncDisplay::from_ir(fun, Target::Wasm))
@@ -170,7 +170,7 @@ impl DartApiSpec {
             generate_wasm_wire(exports, &dart_wire_class_name, &config.dart_wasm_module())
         });
 
-        let needs_freezed = distinct_types.iter().any(|ty| needs_freezed(ty, ir_file));
+        let needs_freezed = distinct_types.iter().any(|ty| needs_freezed(ty, ir_pack));
 
         let import_array = distinct_types
             .iter()
@@ -244,8 +244,8 @@ fn generate_common_header() -> DartBasicCode {
     }
 }
 
-fn get_dart_imports(ir_file: &IrFile) -> HashSet<&IrDartImport> {
-    ir_file
+fn get_dart_imports(ir_pack: &IrPack) -> HashSet<&IrDartImport> {
+    ir_pack
         .struct_pool
         .values()
         .flat_map(|s| s.dart_metadata.iter().flat_map(|it| &it.library))
@@ -475,8 +475,8 @@ pub(crate) struct GeneratedApiFunc {
     companion_field_implementation: String,
 }
 
-fn generate_api2wire_func(ty: &IrType, ir_file: &IrFile, config: &Opts) -> Acc<String> {
-    let generator = TypeDartGenerator::new(ty.clone(), ir_file, config);
+fn generate_api2wire_func(ty: &IrType, ir_pack: &IrPack, config: &Opts) -> Acc<String> {
+    let generator = TypeDartGenerator::new(ty.clone(), ir_pack, config);
     generator.api2wire_body().map(|body, target| {
         body.map(|body| {
             format!(
@@ -494,8 +494,8 @@ fn generate_api2wire_func(ty: &IrType, ir_file: &IrFile, config: &Opts) -> Acc<S
     })
 }
 
-fn generate_api_fill_to_wire_func(ty: &IrType, ir_file: &IrFile, config: &Opts) -> String {
-    if let Some(body) = TypeDartGenerator::new(ty.clone(), ir_file, config).api_fill_to_wire_body()
+fn generate_api_fill_to_wire_func(ty: &IrType, ir_pack: &IrPack, config: &Opts) -> String {
+    if let Some(body) = TypeDartGenerator::new(ty.clone(), ir_pack, config).api_fill_to_wire_body()
     {
         let target_wire_type = match ty {
             Optional(inner) => &inner.inner,
@@ -518,11 +518,11 @@ fn generate_api_fill_to_wire_func(ty: &IrType, ir_file: &IrFile, config: &Opts) 
 
 fn generate_wire2api_func(
     ty: &IrType,
-    ir_file: &IrFile,
+    ir_pack: &IrPack,
     _dart_api_class_name: &str,
     config: &Opts,
 ) -> String {
-    let body = TypeDartGenerator::new(ty.clone(), ir_file, config).wire2api_body();
+    let body = TypeDartGenerator::new(ty.clone(), ir_pack, config).wire2api_body();
     format!(
         "{} _wire2api_{}({} raw) {{
             {}
@@ -595,13 +595,13 @@ fn dart_metadata(metadata: &[IrDartAnnotation]) -> String {
     metadata
 }
 
-fn needs_freezed(ty: &IrType, ir_file: &IrFile) -> bool {
+fn needs_freezed(ty: &IrType, ir_pack: &IrPack) -> bool {
     match ty {
         EnumRef(_) => true,
         StructRef(st) => st.freezed,
         SyncReturn(sync) => {
-            let types = sync.clone().into_inner().distinct_types(ir_file);
-            types.iter().any(|child| needs_freezed(child, ir_file))
+            let types = sync.clone().into_inner().distinct_types(ir_pack);
+            types.iter().any(|child| needs_freezed(child, ir_pack))
         }
         _ => false,
     }

@@ -51,7 +51,7 @@ impl IrTypeTrait for IrTypeBoxed {
             || !self.inner.is_js_value() && !self.inner.is_array() && !self.inner.is_primitive()
     }
 
-    fn intodart_type(&self, ir_file: &IrFile) -> String {
-        self.inner.intodart_type(ir_file)
+    fn intodart_type(&self, ir_pack: &IrPack) -> String {
+        self.inner.intodart_type(ir_pack)
     }
 }

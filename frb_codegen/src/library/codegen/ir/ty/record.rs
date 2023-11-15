@@ -9,9 +9,9 @@ pub struct IrTypeRecord {
 }
 
 impl IrTypeTrait for IrTypeRecord {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile) {
+    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_pack: &IrPack) {
         for ty in self.values.iter() {
-            ty.visit_types(f, ir_file)
+            ty.visit_types(f, ir_pack)
         }
     }
 

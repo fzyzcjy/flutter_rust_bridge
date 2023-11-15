@@ -22,7 +22,7 @@ pub enum IrTypePrimitive {
 }
 
 impl IrTypeTrait for IrTypePrimitive {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, _f: &mut F, _ir_file: &IrFile) {}
+    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, _f: &mut F, _ir_pack: &IrPack) {}
 
     fn safe_ident(&self) -> String {
         self.to_string().to_case(Case::Snake)

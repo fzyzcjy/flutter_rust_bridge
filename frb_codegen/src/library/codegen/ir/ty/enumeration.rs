@@ -21,13 +21,13 @@ pub struct IrEnum {
 }
 
 impl IrTypeTrait for IrTypeEnumRef {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile) {
-        let enu = self.get(ir_file);
+    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_pack: &IrPack) {
+        let enu = self.get(ir_pack);
         for variant in enu.variants() {
             if let IrVariantKind::Struct(st) = &variant.kind {
                 st.fields
                     .iter()
-                    .for_each(|field| field.ty.visit_types(f, ir_file));
+                    .for_each(|field| field.ty.visit_types(f, ir_pack));
             }
         }
     }

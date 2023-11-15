@@ -64,7 +64,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 ..Default::default()
             },
             IrTypeDelegate::PrimitiveEnum { ir, .. } => {
-                let enu = ir.get(self.context.ir_file);
+                let enu = ir.get(self.context.ir_pack);
                 let variants =
                     (enu.variants().iter().enumerate())
                         .map(|(idx, variant)| format!("{} => {}::{},", idx, enu.name, variant.name))
@@ -159,7 +159,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
 
     fn impl_intodart(&self) -> String {
         if let IrTypeDelegate::PrimitiveEnum { ir, .. } = &self.ir {
-            let src = ir.get(self.context.ir_file);
+            let src = ir.get(self.context.ir_pack);
             let (name, self_path): (&str, &str) = match &src.wrapper_name {
                 Some(wrapper) => (wrapper, &src.name),
                 None => (&src.name, "Self"),

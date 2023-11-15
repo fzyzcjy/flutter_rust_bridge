@@ -6,7 +6,7 @@ use std::collections::{HashMap, HashSet};
 pub type IrStructPool = HashMap<String, IrStruct>;
 pub type IrEnumPool = HashMap<String, IrEnum>;
 
-impl IrFile {
+impl IrPack {
     /// [f] returns [true] if it wants to stop going to the *children* of this subtree
     pub fn visit_types<F: FnMut(&IrType) -> bool>(
         &self,

@@ -15,7 +15,7 @@ use std::path::Path;
 pub(crate) fn generate_dart_code(
     config: &Opts,
     all_configs: &[Opts],
-    ir_file: &ir::IrFile,
+    ir_pack: &ir::IrPack,
     generated_rust: generator::rust::Output,
     all_symbols: &[String],
 ) -> crate::Result {
@@ -41,7 +41,7 @@ pub(crate) fn generate_dart_code(
                         .unwrap(),
                     dart_output_path: temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
                     dart_class_name: &config.dart_wire_class_name(),
-                    c_struct_names: ir_file.get_c_struct_names(),
+                    c_struct_names: ir_pack.get_c_struct_names(),
                     exclude_symbols,
                     llvm_install_path: &config.llvm_path[..],
                     llvm_compiler_opts: &config.llvm_compiler_opts,
@@ -78,7 +78,7 @@ pub(crate) fn generate_dart_code(
     sanity_check(&generated_dart_wire.body, &config.dart_wire_class_name())?;
 
     // phase-step3: compose dart codes and write to file
-    let generated_dart = ir_file.generate_dart(config, &generated_rust.wasm_exports);
+    let generated_dart = ir_pack.generate_dart(config, &generated_rust.wasm_exports);
     let generated_dart_decl_all = &generated_dart.decl_code;
     let generated_dart_impl_io_wire = &generated_dart.impl_code.io + &generated_dart_wire;
 

@@ -27,7 +27,7 @@ impl IrTypeTrait for IrTypeOptionalList {
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
         !target.is_wasm()
     }
-    fn intodart_type(&self, ir_file: &IrFile) -> String {
-        format!("Vec<Option<{}>>", self.inner.intodart_type(ir_file))
+    fn intodart_type(&self, ir_pack: &IrPack) -> String {
+        format!("Vec<Option<{}>>", self.inner.intodart_type(ir_pack))
     }
 }

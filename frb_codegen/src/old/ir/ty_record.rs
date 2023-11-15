@@ -41,11 +41,11 @@ impl IrTypeTrait for IrTypeRecord {
         }
     }
 
-    fn intodart_type(&self, ir_file: &IrFile) -> String {
+    fn intodart_type(&self, ir_pack: &IrPack) -> String {
         let values = self
             .values
             .iter()
-            .map(|e| e.intodart_type(ir_file))
+            .map(|e| e.intodart_type(ir_pack))
             .collect::<Vec<_>>()
             .join(",");
         format!("({values},)")

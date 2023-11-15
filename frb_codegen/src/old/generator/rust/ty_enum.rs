@@ -13,7 +13,7 @@ type_rust_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 
 impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
-        let enu = self.ir.get(self.context.ir_file);
+        let enu = self.ir.get(self.context.ir_pack);
         Acc::new(|target| {
             if matches!(target, Common) {
                 return None;
@@ -88,7 +88,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
     }
 
     fn structs(&self) -> String {
-        let src = self.ir.get(self.context.ir_file);
+        let src = self.ir.get(self.context.ir_pack);
         if !src.is_struct() {
             return "".to_owned();
         }
@@ -145,7 +145,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
     }
 
     fn static_checks(&self) -> Option<String> {
-        let src = self.ir.get(self.context.ir_file);
+        let src = self.ir.get(self.context.ir_pack);
         src.wrapper_name.as_ref()?;
 
         let branches: Vec<_> = src
@@ -187,12 +187,12 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
     }
 
     fn wrapper_struct(&self) -> Option<String> {
-        let src = self.ir.get(self.context.ir_file);
+        let src = self.ir.get(self.context.ir_pack);
         src.wrapper_name.as_ref().cloned()
     }
 
     fn self_access(&self, obj: String) -> String {
-        let src = self.ir.get(self.context.ir_file);
+        let src = self.ir.get(self.context.ir_pack);
         match &src.wrapper_name {
             Some(_) => format!("{obj}.0"),
             None => obj,
@@ -200,7 +200,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
     }
 
     fn impl_intodart(&self) -> String {
-        let src = self.ir.get(self.context.ir_file);
+        let src = self.ir.get(self.context.ir_pack);
 
         let (name, self_path): (&str, &str) = match &src.wrapper_name {
             Some(wrapper) => (wrapper, &src.name),
@@ -223,7 +223,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                             .chain(st.fields.iter().map(|field| {
                                 let gen = TypeRustGenerator::new(
                                     field.ty.clone(),
-                                    self.context.ir_file,
+                                    self.context.ir_pack,
                                     self.context.config,
                                 );
 
@@ -279,7 +279,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
             }
         }
 
-        let src = self.ir.get(self.context.ir_file);
+        let src = self.ir.get(self.context.ir_pack);
 
         let inflators = src
             .variants()
@@ -336,7 +336,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
     }
 
     fn imports(&self) -> Option<String> {
-        let api_enum = self.ir.get(self.context.ir_file);
+        let api_enum = self.ir.get(self.context.ir_pack);
         Some(format!("use {};", api_enum.path.join("::")))
     }
 }

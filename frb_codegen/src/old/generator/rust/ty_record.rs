@@ -19,7 +19,7 @@ impl TypeRecordGenerator<'_> {
 
 impl TypeRustGeneratorTrait for TypeRecordGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
-        let ir = self.ir.inner.get(self.context.ir_file);
+        let ir = self.ir.inner.get(self.context.ir_pack);
         let len = ir.fields.len();
         let values: Acc<Vec<_>> = ir
             .fields

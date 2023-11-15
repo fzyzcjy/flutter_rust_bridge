@@ -63,16 +63,16 @@ pub fn frb_codegen_multi(
     info!("Picked config: {:?}", config);
 
     info!("Phase: Parse source code to AST, then to IR");
-    let raw_ir_file = config.get_ir_file()?;
+    let raw_ir_pack = config.get_ir_pack()?;
 
     info!("Phase: Transform IR");
-    let ir_file = transformer::transform(raw_ir_file);
+    let ir_pack = transformer::transform(raw_ir_pack);
 
     info!("Phase: Generate Rust code");
-    let generated_rust = generate_rust_code(config, &ir_file)?;
+    let generated_rust = generate_rust_code(config, &ir_pack)?;
 
     info!("Phase: Generate Dart code");
-    generate_dart_code(config, all_configs, &ir_file, generated_rust, all_symbols)?;
+    generate_dart_code(config, all_configs, &ir_pack, generated_rust, all_symbols)?;
 
     info!("Success!");
     Ok(())

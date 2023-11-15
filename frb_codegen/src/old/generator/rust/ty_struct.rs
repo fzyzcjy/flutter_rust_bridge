@@ -10,7 +10,7 @@ type_rust_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
 impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
-        let api_struct = self.ir.get(self.context.ir_file);
+        let api_struct = self.ir.get(self.context.ir_pack);
         let fields: Acc<Vec<_>> = api_struct
             .fields
             .iter()
@@ -54,7 +54,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
     }
 
     fn wire_struct_fields(&self) -> Option<Vec<String>> {
-        let s = self.ir.get(self.context.ir_file);
+        let s = self.ir.get(self.context.ir_pack);
         Some(
             s.fields
                 .iter()
@@ -71,7 +71,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
     }
 
     fn static_checks(&self) -> Option<String> {
-        let src = self.ir.get(self.context.ir_file);
+        let src = self.ir.get(self.context.ir_pack);
         src.wrapper_name.as_ref()?;
 
         let var = if src.is_fields_named {
@@ -105,12 +105,12 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
     }
 
     fn wrapper_struct(&self) -> Option<String> {
-        let src = self.ir.get(self.context.ir_file);
+        let src = self.ir.get(self.context.ir_pack);
         src.wrapper_name.as_ref().cloned()
     }
 
     fn impl_intodart(&self) -> String {
-        let src = self.ir.get(self.context.ir_file);
+        let src = self.ir.get(self.context.ir_pack);
 
         let unwrap = match &src.wrapper_name {
             Some(_) => ".0",
@@ -128,7 +128,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                 };
                 let gen = TypeRustGenerator::new(
                     field.ty.clone(),
-                    self.context.ir_file,
+                    self.context.ir_pack,
                     self.context.config,
                 );
 
@@ -166,7 +166,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
     }
 
     fn new_with_nullptr(&self, _collector: &mut ExternFuncCollector) -> String {
-        let src = self.ir.get(self.context.ir_file);
+        let src = self.ir.get(self.context.ir_pack);
 
         let body = {
             src.fields
@@ -210,7 +210,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
     }
 
     fn imports(&self) -> Option<String> {
-        let api_struct = self.ir.get(self.context.ir_file);
+        let api_struct = self.ir.get(self.context.ir_pack);
         if api_struct.path.is_some() {
             Some(format!(
                 "use {};",

@@ -16,7 +16,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 format!(
                     "return [{}];",
                     self.ir
-                        .get(self.context.ir_file)
+                        .get(self.context.ir_pack)
                         .fields
                         .iter()
                         .map(|field| {
@@ -35,7 +35,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
     }
 
     fn api_fill_to_wire_body(&self) -> Option<String> {
-        let s = self.ir.get(self.context.ir_file);
+        let s = self.ir.get(self.context.ir_pack);
         Some(
             s.fields
                 .iter()
@@ -53,10 +53,10 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
     }
 
     fn wire2api_body(&self) -> String {
-        let src = self.ir.get(self.context.ir_file);
-        let s = self.ir.get(self.context.ir_file);
+        let src = self.ir.get(self.context.ir_pack);
+        let s = self.ir.get(self.context.ir_pack);
 
-        let mut methods = self.context.ir_file.funcs.iter().filter(|f| {
+        let mut methods = self.context.ir_pack.funcs.iter().filter(|f| {
             let f = FunctionName::deserialize(&f.name);
             f.is_method_for_struct(&src.name) || f.is_static_method_for_struct(&src.name)
         });
@@ -90,12 +90,12 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
     }
 
     fn structs(&self) -> String {
-        let src = self.ir.get(self.context.ir_file);
+        let src = self.ir.get(self.context.ir_pack);
         let comments = dart_comments(&src.comments);
         let metadata = dart_metadata(&src.dart_metadata);
 
-        let ir_file = self.context.ir_file;
-        let methods = ir_file
+        let ir_pack = self.context.ir_pack;
+        let methods = ir_pack
             .funcs
             .iter()
             .filter(|f| {

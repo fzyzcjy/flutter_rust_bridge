@@ -3,7 +3,7 @@ use crate::target::Target;
 use convert_case::{Case, Casing};
 
 impl IrTypeStructRef {
-    pub fn get<'a>(&self, f: &'a IrFile) -> &'a IrStruct {
+    pub fn get<'a>(&self, f: &'a IrPack) -> &'a IrStruct {
         &f.struct_pool[&self.name]
     }
 }
@@ -32,8 +32,8 @@ impl IrTypeTrait for IrTypeStructRef {
         }
     }
 
-    fn intodart_type(&self, ir_file: &IrFile) -> String {
-        let wrapper = self.get(ir_file).wrapper_name.as_ref();
+    fn intodart_type(&self, ir_pack: &IrPack) -> String {
+        let wrapper = self.get(ir_pack).wrapper_name.as_ref();
         wrapper.unwrap_or(&self.rust_api_type()).clone()
     }
 }

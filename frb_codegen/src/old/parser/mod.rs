@@ -99,7 +99,7 @@ pub(crate) fn topo_resolve(src: HashMap<String, Type>) -> HashMap<String, Type> 
     ret
 }
 
-pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> ParserResult<IrFile> {
+pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> ParserResult<IrPack> {
     let crate_map = Crate::new(manifest_path)?;
 
     let mut src_fns = extract_fns_from_file(&file);
@@ -124,7 +124,7 @@ impl<'a> Parser<'a> {
 }
 
 impl<'a> Parser<'a> {
-    fn parse(mut self, source_rust_content: &str, src_fns: Vec<ItemFn>) -> ParserResult<IrFile> {
+    fn parse(mut self, source_rust_content: &str, src_fns: Vec<ItemFn>) -> ParserResult<IrPack> {
         let funcs = src_fns
             .iter()
             .map(|f| self.parse_function(f))
@@ -134,7 +134,7 @@ impl<'a> Parser<'a> {
 
         let (struct_pool, enum_pool) = self.type_parser.consume();
 
-        Ok(IrFile {
+        Ok(IrPack {
             funcs,
             struct_pool,
             enum_pool,

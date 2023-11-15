@@ -13,7 +13,7 @@ type_dart_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 
 impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
-        let variants = (self.ir.get(self.context.ir_file).variants())
+        let variants = (self.ir.get(self.context.ir_pack).variants())
             .iter()
             .enumerate()
             .map(|(idx, variant)| {
@@ -55,7 +55,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
     fn api_fill_to_wire_body(&self) -> Option<String> {
         Some(
             self.ir
-                .get(self.context.ir_file)
+                .get(self.context.ir_pack)
                 .variants()
                 .iter()
                 .enumerate()
@@ -118,7 +118,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
     }
 
     fn wire2api_body(&self) -> String {
-        let enu = self.ir.get(self.context.ir_file);
+        let enu = self.ir.get(self.context.ir_pack);
         assert!(enu.is_struct());
         let variants = enu
             .variants()
@@ -156,7 +156,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
     }
 
     fn structs(&self) -> String {
-        let src = self.ir.get(self.context.ir_file);
+        let src = self.ir.get(self.context.ir_pack);
 
         let comments = dart_comments(&src.comments);
         if src.is_struct() {

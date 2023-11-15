@@ -52,7 +52,7 @@ impl IrTypeTrait for IrTypePrimitive {
         .to_string()
     }
 
-    fn intodart_type(&self, _ir_file: &IrFile) -> String {
+    fn intodart_type(&self, _ir_pack: &IrPack) -> String {
         match self {
             IrTypePrimitive::Unit => String::from("()"),
             _ => self.rust_api_type(),

@@ -22,7 +22,7 @@ impl TypeDartGeneratorTrait for TypeRecordGenerator<'_> {
     }
 
     fn api_fill_to_wire_body(&self) -> Option<String> {
-        let ir = self.ir.inner.get(self.context.ir_file);
+        let ir = self.ir.inner.get(self.context.ir_pack);
         let values = ir
             .fields
             .iter()

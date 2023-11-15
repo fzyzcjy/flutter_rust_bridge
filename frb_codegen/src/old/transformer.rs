@@ -3,7 +3,7 @@ use log::debug;
 use crate::ir::IrType::*;
 use crate::ir::*;
 
-pub fn transform(src: IrFile) -> IrFile {
+pub fn transform(src: IrPack) -> IrPack {
     let dst_funcs = src
         .funcs
         .into_iter()
@@ -17,7 +17,7 @@ pub fn transform(src: IrFile) -> IrFile {
         })
         .collect();
 
-    IrFile {
+    IrPack {
         funcs: dst_funcs,
         ..src
     }

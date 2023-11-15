@@ -47,6 +47,6 @@ impl TypeRustGeneratorTrait for TypeOptionalListGenerator<'_> {
         }
     }
     fn imports(&self) -> Option<String> {
-        generate_import(&self.ir.inner, self.context.ir_file, self.context.config)
+        generate_import(&self.ir.inner, self.context.ir_pack, self.context.config)
     }
 }

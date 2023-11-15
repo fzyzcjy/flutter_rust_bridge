@@ -4,7 +4,7 @@ use convert_case::{Case, Casing};
 
 impl IrTypeEnumRef {
     #[inline]
-    pub fn get<'a>(&self, file: &'a IrFile) -> &'a IrEnum {
+    pub fn get<'a>(&self, file: &'a IrPack) -> &'a IrEnum {
         &file.enum_pool[&self.name]
     }
 }
@@ -34,8 +34,8 @@ impl IrTypeTrait for IrTypeEnumRef {
         }
     }
 
-    fn intodart_type(&self, ir_file: &IrFile) -> String {
-        match &self.get(ir_file).wrapper_name {
+    fn intodart_type(&self, ir_pack: &IrPack) -> String {
+        match &self.get(ir_pack).wrapper_name {
             Some(wrapper) => wrapper.clone(),
             None => self.dart_api_type(),
         }

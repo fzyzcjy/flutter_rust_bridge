@@ -11,7 +11,7 @@ type_dart_generator_struct!(TypeBoxedGenerator, IrTypeBoxed);
 
 fn is_empty_struct(ty: &TypeBoxedGenerator) -> bool {
     if let StructRef(ref s) = ty.ir.inner.as_ref() {
-        let s = s.get(ty.context.ir_file);
+        let s = s.get(ty.context.ir_pack);
         s.fields.is_empty()
     } else {
         false

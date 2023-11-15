@@ -9,7 +9,7 @@ pub(crate) struct GeneratedApiMethod {
 
 pub(crate) fn generate_api_func(
     func: &IrFunc,
-    ir_file: &IrFile,
+    ir_pack: &IrPack,
     common_api2wire_body: &str,
 ) -> GeneratedApiFunc {
     let raw_func_param_list = func
@@ -117,10 +117,10 @@ pub(crate) fn generate_api_func(
             }
         })
         // If struct has a method with first element `input0`
-        || (input_0_struct_name.is_some() && MethodNamingUtil::has_methods(input_0_struct_name.unwrap(), ir_file))
+        || (input_0_struct_name.is_some() && MethodNamingUtil::has_methods(input_0_struct_name.unwrap(), ir_pack))
         //If output is a struct with methods
         || (func_output_struct_name.is_some()
-            && MethodNamingUtil::has_methods(func_output_struct_name.unwrap(), ir_file))
+            && MethodNamingUtil::has_methods(func_output_struct_name.unwrap(), ir_pack))
     {
         format!("(d) => _wire2api_{}(d)", func.output.safe_ident())
     } else {

@@ -39,17 +39,17 @@ pub enum IrType {
 }
 
 impl IrType {
-    pub fn visit_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile) {
+    pub fn visit_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_pack: &IrPack) {
         if f(self) {
             return;
         }
-        self.visit_children_types(f, ir_file);
+        self.visit_children_types(f, ir_pack);
     }
 }
 
 #[enum_dispatch]
 pub trait IrTypeTrait {
-    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile);
+    fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_pack: &IrPack);
 
     fn safe_ident(&self) -> String;
 }
