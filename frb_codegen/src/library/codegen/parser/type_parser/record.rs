@@ -1,8 +1,10 @@
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ident::IrIdent;
+use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::record::IrTypeRecord;
 use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent, IrTypeStructRef};
 use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::ty::IrType::Primitive;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use syn::punctuated::Punctuated;
@@ -10,6 +12,10 @@ use syn::{Token, Type};
 
 impl<'a> TypeParser<'a> {
     pub(crate) fn parse_type_tuple(&mut self, elems: Punctuated<Type, Token![,]>) -> IrType {
+        if elems.is_empty() {
+            return Primitive(IrTypePrimitive::Unit);
+        }
+
         let values = elems
             .iter()
             .map(|elem| self.parse_type(elem))
