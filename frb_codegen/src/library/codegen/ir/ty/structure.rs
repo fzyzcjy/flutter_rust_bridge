@@ -10,6 +10,7 @@ use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 crate::ir! {
 pub struct IrTypeStructRef {
     pub name: String,
+    // TODO these fields should be put into `IrStruct`?
     pub freezed: bool,
     pub empty: bool,
     pub is_exception: bool,

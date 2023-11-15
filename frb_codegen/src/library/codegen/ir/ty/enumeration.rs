@@ -10,6 +10,7 @@ use crate::codegen::ir::ty::structure::IrStruct;
 crate::ir! {
 pub struct IrTypeEnumRef {
     pub name: String,
+    // TODO this field is duplicated from `IrEnum`?
     pub is_exception: bool,
 }
 
