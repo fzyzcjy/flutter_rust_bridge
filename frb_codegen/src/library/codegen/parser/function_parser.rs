@@ -5,6 +5,7 @@ use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::TypeParser;
@@ -201,17 +202,15 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                                 args.last().cloned()
                             };
 
-                            // TODO rm this block, which simply sets `is_exception` to be true
-                            //      but we have removed this field
-                            // let error = if let Some(StructRef(mut struct_ref)) = error {
-                            //     struct_ref.is_exception = true;
-                            //     Some(StructRef(struct_ref))
-                            // } else if let Some(EnumRef(mut enum_ref)) = error {
-                            //     enum_ref.is_exception = true;
-                            //     Some(EnumRef(enum_ref))
-                            // } else {
-                            //     error
-                            // };
+                            let error = if let Some(StructRef(mut struct_ref)) = error {
+                                struct_ref.is_exception = true;
+                                Some(StructRef(struct_ref))
+                            } else if let Some(EnumRef(mut enum_ref)) = error {
+                                enum_ref.is_exception = true;
+                                Some(EnumRef(enum_ref))
+                            } else {
+                                error
+                            };
 
                             Some(FuncOutput::ResultType {
                                 ok: ok.clone(),

@@ -44,7 +44,6 @@ impl<'a> TypeParser<'a> {
             dart_metadata,
             comments,
             freezed: TODO,
-            is_exception: TODO,
         }))
     }
 

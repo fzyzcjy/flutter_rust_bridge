@@ -10,6 +10,7 @@ use convert_case::{Case, Casing};
 crate::ir! {
 pub struct IrTypeStructRef {
     pub ident: IrStructIdent,
+    pub is_exception: bool,
 }
 
 pub struct IrStructIdent(pub String);
@@ -23,7 +24,6 @@ pub struct IrStruct {
     pub dart_metadata: Vec<IrDartAnnotation>,
     pub comments: Vec<IrComment>,
     pub freezed: bool,
-    pub is_exception: bool,
 }
 }
 
