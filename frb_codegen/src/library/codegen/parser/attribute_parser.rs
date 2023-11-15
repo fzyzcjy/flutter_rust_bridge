@@ -1,4 +1,5 @@
 use crate::codegen::ir::annotation::IrDartAnnotation;
+use crate::codegen::ir::default::IrDefaultValue;
 use crate::codegen::ir::import::IrDartImport;
 use crate::if_then_some;
 use itertools::Itertools;
@@ -22,7 +23,7 @@ impl FrbAttributes {
         ))
     }
 
-    pub(crate) fn default_value(&self) -> Option<FrbAttributeDefaultValue> {
+    pub(crate) fn default_value(&self) -> Option<IrDefaultValue> {
         let candidates = self
             .0
             .iter()
@@ -33,7 +34,10 @@ impl FrbAttributes {
         if candidates.len() > 1 {
             log::warn!("Only one `default = ..` attribute is expected; taking the last one");
         }
-        candidates.last().cloned()
+        // TODO after determining what `IrDefaultValue` really needs, impl this
+        candidates
+            .last()
+            .map(|item| IrDefaultValue("TODO".to_owned()))
     }
 
     pub(crate) fn non_final(&self) -> bool {
@@ -174,7 +178,7 @@ impl Parse for IrDartAnnotation {
     }
 }
 
-#[derive(Clone)]
+#[derive(Clone, Serialize)]
 enum FrbAttributeDefaultValue {
     #[serde(serialize_with = "serialize_litstr")]
     Str(syn::LitStr),

@@ -1,5 +1,3 @@
-use serde::Serializer;
-
 crate::ir! {
-pub struct IrDefaultValue(String);
+pub struct IrDefaultValue(pub String);
 }
