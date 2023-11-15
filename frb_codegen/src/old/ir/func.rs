@@ -63,17 +63,6 @@ pub enum IrFuncArg {
     Type(IrType),
 }
 
-crate::ir! {
-pub enum IrFuncMode {
-    Normal,
-    Sync,
-    Stream {
-        // The index of StreamSink in the function arguments
-        argument_index: usize,
-    },
-}
-}
-
 impl IrFuncMode {
     #[inline]
     pub fn dart_return_type(&self, inner: &str) -> String {

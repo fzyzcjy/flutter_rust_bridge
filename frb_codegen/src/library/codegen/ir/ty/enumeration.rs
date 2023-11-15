@@ -1,8 +1,11 @@
 // Name "enumeration" not "enum", since the latter is a keyword
 
 use convert_case::{Case, Casing};
+use crate::codegen::ir::comment::IrComment;
+use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
+use crate::codegen::ir::ty::structure::IrStruct;
 
 crate::ir! {
 pub struct IrTypeEnumRef {
@@ -18,6 +21,18 @@ pub struct IrEnum {
     pub is_exception: bool,
     variants: Vec<IrVariant>,
     is_struct: bool,
+}
+
+pub struct IrVariant {
+    pub name: IrIdent,
+    pub wrapper_name: IrIdent,
+    pub comments: Vec<IrComment>,
+    pub kind: IrVariantKind,
+}
+
+pub enum IrVariantKind {
+    Value,
+    Struct(IrStruct),
 }
 }
 

@@ -4,11 +4,6 @@ use syn::LitStr;
 
 use crate::{ir::*, parser::DefaultValues, Opts};
 
-#[derive(Debug, Clone, Serialize, Deserialize, Hash, PartialEq, Eq, Default)]
-pub struct IrFieldSettings {
-    pub is_in_mirrored_enum: bool,
-}
-
 impl IrField {
     #[inline]
     pub fn required_modifier(&self) -> &str {

@@ -14,6 +14,6 @@ impl IrTypeTrait for IrTypePrimitiveList {
     }
 
     fn safe_ident(&self) -> String {
-        format!("list_prim_{}", self.inner.safe_ident())
+        format!("list_prim_{}", self.primitive.safe_ident())
     }
 }

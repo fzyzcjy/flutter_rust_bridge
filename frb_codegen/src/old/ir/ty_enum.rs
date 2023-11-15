@@ -91,17 +91,3 @@ impl IrEnum {
         self.is_struct
     }
 }
-
-crate::ir! {
-pub struct IrVariant {
-    pub name: IrIdent,
-    pub wrapper_name: IrIdent,
-    pub comments: Vec<IrComment>,
-    pub kind: IrVariantKind,
-}
-
-pub enum IrVariantKind {
-    Value,
-    Struct(IrStruct),
-}
-}

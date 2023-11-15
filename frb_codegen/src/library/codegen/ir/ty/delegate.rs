@@ -1,5 +1,7 @@
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
+use crate::codegen::ir::ty::enumeration::IrTypeEnumRef;
+use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 
 crate::ir! {
 /// types that delegate to another type
