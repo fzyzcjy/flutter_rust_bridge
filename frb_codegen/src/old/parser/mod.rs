@@ -68,13 +68,6 @@ fn extract_comments(attrs: &[Attribute]) -> Vec<IrComment> {
         .collect()
 }
 
-pub mod frb_keyword {
-    syn::custom_keyword!(mirror);
-    syn::custom_keyword!(non_final);
-    syn::custom_keyword!(dart_metadata);
-    syn::custom_keyword!(import);
-}
-
 #[derive(Clone, Debug)]
 pub struct NamedOption<K, V> {
     pub name: K,
@@ -90,21 +83,6 @@ impl<K: Parse + std::fmt::Debug, V: Parse> Parse for NamedOption<K, V> {
     }
 }
 
-#[derive(Clone, Debug)]
-pub struct MirrorOption(Path);
-
-impl Parse for MirrorOption {
-    fn parse(input: ParseStream<'_>) -> syn::Result<Self> {
-        let content;
-        parenthesized!(content in input);
-        let path: Path = content.parse()?;
-        Ok(Self(path))
-    }
-}
-
-#[derive(Clone, Debug)]
-pub struct MetadataAnnotations(Vec<IrDartAnnotation>);
-
 impl Parse for IrDartAnnotation {
     fn parse(input: ParseStream<'_>) -> syn::Result<Self> {
         let annotation: LitStr = input.parse()?;
@@ -119,17 +97,6 @@ impl Parse for IrDartAnnotation {
             content: annotation.value(),
             library,
         })
-    }
-}
-impl Parse for MetadataAnnotations {
-    fn parse(input: ParseStream<'_>) -> syn::Result<Self> {
-        let content;
-        parenthesized!(content in input);
-        let annotations =
-            Punctuated::<IrDartAnnotation, syn::Token![,]>::parse_terminated(&content)?
-                .into_iter()
-                .collect();
-        Ok(Self(annotations))
     }
 }
 
@@ -152,6 +119,7 @@ impl Parse for IrDartImport {
         })
     }
 }
+
 impl Parse for DartImports {
     fn parse(input: ParseStream<'_>) -> syn::Result<Self> {
         let content;
@@ -163,35 +131,7 @@ impl Parse for DartImports {
     }
 }
 
-enum FrbOption {
-    Mirror(MirrorOption),
-    NonFinal,
-    Metadata(NamedOption<frb_keyword::dart_metadata, MetadataAnnotations>),
-    Default(DefaultValues),
-}
-
-impl Parse for FrbOption {
-    fn parse(input: ParseStream<'_>) -> syn::Result<Self> {
-        let lookahead = input.lookahead1();
-        if lookahead.peek(frb_keyword::mirror) {
-            input.parse().map(FrbOption::Mirror)
-        } else if lookahead.peek(frb_keyword::non_final) {
-            input
-                .parse::<frb_keyword::non_final>()
-                .map(|_| FrbOption::NonFinal)
-        } else if lookahead.peek(frb_keyword::dart_metadata) {
-            input.parse().map(FrbOption::Metadata)
-        } else if lookahead.peek(Token![default]) {
-            input.parse::<Token![default]>()?;
-            input.parse::<Token![=]>()?;
-            input.parse().map(FrbOption::Default)
-        } else {
-            Err(lookahead.error())
-        }
-    }
-}
-
-impl DefaultValues {
+impl IrDefaultValue {
     pub(crate) fn extract(attrs: &[Attribute]) -> Option<Self> {
         let defaults = attrs
             .iter()
@@ -214,6 +154,7 @@ impl DefaultValues {
             }
         }
     }
+
     pub(crate) fn to_dart(&self) -> Cow<str> {
         match self {
             Self::Bool(lit) => if lit.value { "true" } else { "false" }.into(),
@@ -225,27 +166,6 @@ impl DefaultValues {
                 lit.iter().map(Self::to_dart).collect::<Vec<_>>().join(",")
             )
             .into(),
-        }
-    }
-}
-
-impl Parse for DefaultValues {
-    fn parse(input: ParseStream) -> syn::Result<Self> {
-        let lh = input.lookahead1();
-        if lh.peek(token::Bracket) {
-            let inner;
-            bracketed!(inner in input);
-            Punctuated::parse_terminated(&inner).map(Self::Vec)
-        } else if lh.peek(syn::LitStr) {
-            input.parse().map(Self::Str)
-        } else if lh.peek(syn::LitBool) {
-            input.parse().map(Self::Bool)
-        } else if lh.peek(syn::LitFloat) {
-            input.parse().map(Self::Float)
-        } else if lh.peek(syn::LitInt) {
-            input.parse().map(Self::Int)
-        } else {
-            Err(lh.error())
         }
     }
 }

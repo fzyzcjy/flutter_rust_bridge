@@ -58,7 +58,7 @@ impl FunctionParser {
                             ty,
                             is_final: true,
                             comments: extract_comments(&pat_type.attrs),
-                            default: DefaultValues::extract(&pat_type.attrs),
+                            default: IrDefaultValue::extract(&pat_type.attrs),
                             settings: IrFieldSettings::default(),
                         });
                     }

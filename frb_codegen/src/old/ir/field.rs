@@ -2,7 +2,7 @@ use convert_case::{Case, Casing};
 use serde::{Deserialize, Serialize};
 use syn::LitStr;
 
-use crate::{ir::*, parser::DefaultValues, Opts};
+use crate::{ir::*, parser::IrDefaultValue, Opts};
 
 impl IrField {
     #[inline]
@@ -18,7 +18,7 @@ impl IrField {
             .as_ref()
             .map(|r#default| {
                 let r#default = match r#default {
-                    DefaultValues::Str(lit)
+                    IrDefaultValue::Str(lit)
                         if !matches!(&self.ty, IrType::Delegate(IrTypeDelegate::String)) =>
                     {
                         // Convert the default value to Dart style.

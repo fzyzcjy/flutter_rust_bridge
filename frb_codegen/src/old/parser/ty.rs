@@ -9,7 +9,7 @@ use std::string::String;
 use syn::punctuated::Punctuated;
 use syn::*;
 
-use super::DefaultValues;
+use super::IrDefaultValue;
 
 fn datetime_to_ir_type(args: &[IrType]) -> std::result::Result<IrType, String> {
     if let [Unencodable(IrTypeUnencodable { segments, .. })] = args {
@@ -558,7 +558,7 @@ impl<'a> TypeParser<'a> {
                                     ty: self.parse_type(&field.ty),
                                     is_final: true,
                                     comments: extract_comments(&field.attrs),
-                                    default: DefaultValues::extract(&field.attrs),
+                                    default: IrDefaultValue::extract(&field.attrs),
                                     settings: IrFieldSettings {
                                         is_in_mirrored_enum: src_enum.mirror,
                                     },
@@ -591,7 +591,7 @@ impl<'a> TypeParser<'a> {
                 ty: field_type,
                 is_final: !markers::has_non_final(&field.attrs),
                 comments: extract_comments(&field.attrs),
-                default: DefaultValues::extract(&field.attrs),
+                default: IrDefaultValue::extract(&field.attrs),
                 settings: IrFieldSettings::default(),
             });
         }
