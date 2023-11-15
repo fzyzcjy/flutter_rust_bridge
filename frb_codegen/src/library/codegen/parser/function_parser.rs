@@ -7,7 +7,6 @@ use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
-use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::parser::ParserResult;
 use anyhow::Context;
@@ -164,7 +163,7 @@ impl<'a> FunctionParser<'a> {
         let ty = &self.type_parser.resolve_alias(ty).clone();
 
         if let Type::Path(type_path) = ty {
-            match self.type_parser.convert_path_to_ir_type(type_path) {
+            match self.type_parser.convert_path_to_ir_type(&type_path) {
                 Ok(IrType::Unencodable(IrTypeUnencodable { segments, .. })) => {
                     match if cfg!(feature = "qualified_names") {
                         segments.splay()

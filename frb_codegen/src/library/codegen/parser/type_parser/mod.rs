@@ -44,4 +44,8 @@ impl<'a> TypeParser<'a> {
     pub(crate) fn convert_path_to_ir_type(&self, type_path: &TypePath) -> Result<IrType, String> {
         todo!()
     }
+
+    pub(crate) fn resolve_alias<'b: 'a>(&self, ty: &'b Type) -> &Type {
+        todo!()
+    }
 }
