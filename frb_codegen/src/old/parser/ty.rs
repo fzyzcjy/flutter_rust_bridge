@@ -501,7 +501,7 @@ impl<'a> TypeParser<'a> {
         })
     }
 
-    fn parse_enum_core(&mut self, ident_string: &String) -> IrEnum {
+    fn parse_enum_core(&mut self, ident_string: &str) -> IrEnum {
         let src_enum = self.src_enums[ident_string];
         let name = src_enum.ident.to_string();
         let wrapper_name = if src_enum.mirror {
