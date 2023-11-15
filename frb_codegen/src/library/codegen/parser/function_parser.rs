@@ -1,12 +1,12 @@
-use crate::codegen::ir::field::{IrField, IrFieldSettings};
-use crate::codegen::ir::func::{IrFunc, IrFuncMode};
-use crate::codegen::ir::ident::IrIdent;
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::IrType;
-use crate::codegen::parser::ParserResult;
 use anyhow::Context;
 use log::debug;
 use syn::*;
+use crate::codegen::ir::field::{IrField, IrFieldSettings};
+use crate::codegen::ir::func::{IrFunc, IrFuncMode};
+use crate::codegen::ir::ident::IrIdent;
+use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::codegen::parser::ParserResult;
 
 struct FunctionParser;
 
@@ -23,15 +23,48 @@ impl FunctionParser {
         let mut fallible = true;
 
         for (i, sig_input) in sig.inputs.iter().enumerate() {
-            self.parse_argument(
-                &sig,
-                i,
-                sig_input,
-                &mut inputs,
-                &mut output,
-                &mut mode,
-                &mut fallible,
-            )?;
+            if let FnArg::Typed(ref pat_type) = sig_input {
+                let name = if let Pat::Ident(ref pat_ident) = *pat_type.pat {
+                    format!("{}", pat_ident.ident)
+                } else {
+                    return Err(Error::UnexpectedPattern(
+                        quote::quote!(#pat_type).to_string().into(),
+                    ));
+                };
+                let arg_type = self.try_parse_fn_arg_type(&pat_type.ty).with_context(|| {
+                    format!(
+                        "Failed to parse function argument type `{}`",
+                        type_to_string(&pat_type.ty)
+                    )
+                })?;
+                match arg_type {
+                    IrFuncArg::StreamSinkType(ty) => {
+                        output = Some(ty);
+                        mode = Some(IrFuncMode::Stream { argument_index: i });
+                        fallible = match &sig.output {
+                            ReturnType::Default => false,
+                            ReturnType::Type(_, ty) => !matches!(
+                                self.try_parse_fn_output_type(ty),
+                                Some(IrFuncOutput::Type(_))
+                            ),
+                        }
+                    }
+                    IrFuncArg::Type(ty) => {
+                        inputs.push(IrField {
+                            name: IrIdent::new(name),
+                            ty,
+                            is_final: true,
+                            comments: extract_comments(&pat_type.attrs),
+                            default: DefaultValues::extract(&pat_type.attrs),
+                            settings: IrFieldSettings::default(),
+                        });
+                    }
+                }
+            } else {
+                return Err(Error::UnexpectedSigInput(
+                    quote::quote!(#sig_input).to_string().into(),
+                ));
+            }
         }
 
         let result = match &sig.output {
@@ -79,60 +112,5 @@ impl FunctionParser {
             comments: extract_comments(&func.attrs),
             error_output: result.1,
         })
-    }
-
-    fn parse_argument(
-        &self,
-        sig: &Signature,
-        i: usize,
-        sig_input: &FnArg,
-        mut inputs: &mut Vec<IrField>,
-        mut output: &mut Option<IrType>,
-        mut mode: &mut Option<IrFuncMode>,
-        mut fallible: &mut bool,
-    ) -> ParserResult<()> {
-        if let FnArg::Typed(ref pat_type) = sig_input {
-            let name = if let Pat::Ident(ref pat_ident) = *pat_type.pat {
-                format!("{}", pat_ident.ident)
-            } else {
-                return Err(Error::UnexpectedPattern(
-                    quote::quote!(#pat_type).to_string().into(),
-                ));
-            };
-            let arg_type = self.try_parse_fn_arg_type(&pat_type.ty).with_context(|| {
-                format!(
-                    "Failed to parse function argument type `{}`",
-                    type_to_string(&pat_type.ty)
-                )
-            })?;
-            match arg_type {
-                IrFuncArg::StreamSinkType(ty) => {
-                    output = Some(ty);
-                    mode = Some(IrFuncMode::Stream { argument_index: i });
-                    *fallible = match &sig.output {
-                        ReturnType::Default => false,
-                        ReturnType::Type(_, ty) => !matches!(
-                            self.try_parse_fn_output_type(ty),
-                            Some(IrFuncOutput::Type(_))
-                        ),
-                    }
-                }
-                IrFuncArg::Type(ty) => {
-                    inputs.push(IrField {
-                        name: IrIdent::new(name),
-                        ty,
-                        is_final: true,
-                        comments: extract_comments(&pat_type.attrs),
-                        default: DefaultValues::extract(&pat_type.attrs),
-                        settings: IrFieldSettings::default(),
-                    });
-                }
-            }
-            Ok(())
-        } else {
-            Err(Error::UnexpectedSigInput(
-                quote::quote!(#sig_input).to_string().into(),
-            ))
-        }
     }
 }
