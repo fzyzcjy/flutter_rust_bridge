@@ -1,8 +1,8 @@
 use crate::codegen::ir::annotation::IrDartAnnotation;
-use crate::codegen::ir::default::IrDefaultValue;
 use crate::codegen::ir::import::IrDartImport;
 use crate::if_then_some;
 use itertools::Itertools;
+use serde::{Serialize, Serializer};
 use syn::parse::{Parse, ParseStream};
 use syn::punctuated::Punctuated;
 use syn::*;
@@ -22,7 +22,7 @@ impl FrbAttributes {
         ))
     }
 
-    pub(crate) fn default_value(&self) -> Option<IrDefaultValue> {
+    pub(crate) fn default_value(&self) -> Option<FrbAttributeDefaultValue> {
         let candidates = self
             .0
             .iter()
@@ -61,7 +61,7 @@ enum FrbAttribute {
     Mirror(FrbAttributeMirror),
     NonFinal,
     Metadata(NamedOption<frb_keyword::dart_metadata, FrbAttributeDartAnnotation>),
-    Default(IrDefaultValue),
+    Default(FrbAttributeDefaultValue),
 }
 
 impl Parse for FrbAttribute {
@@ -174,7 +174,21 @@ impl Parse for IrDartAnnotation {
     }
 }
 
-impl Parse for IrDefaultValue {
+#[derive(Clone)]
+enum FrbAttributeDefaultValue {
+    #[serde(serialize_with = "serialize_litstr")]
+    Str(syn::LitStr),
+    #[serde(serialize_with = "serialize_litbool")]
+    Bool(syn::LitBool),
+    #[serde(serialize_with = "serialize_litint")]
+    Int(syn::LitInt),
+    #[serde(serialize_with = "serialize_litfloat")]
+    Float(syn::LitFloat),
+    #[serde(serialize_with = "serialize_punctuated")]
+    Vec(Punctuated<FrbAttributeDefaultValue, Token![,]>),
+}
+
+impl Parse for FrbAttributeDefaultValue {
     fn parse(input: ParseStream) -> Result<Self> {
         let lh = input.lookahead1();
         if lh.peek(token::Bracket) {
@@ -193,4 +207,39 @@ impl Parse for IrDefaultValue {
             Err(lh.error())
         }
     }
+}
+
+fn serialize_litstr<S: Serializer>(
+    lit: &syn::LitStr,
+    s: S,
+) -> std::result::Result<S::Ok, S::Error> {
+    lit.value().serialize(s)
+}
+
+fn serialize_litbool<S: Serializer>(
+    lit: &syn::LitBool,
+    s: S,
+) -> std::result::Result<S::Ok, S::Error> {
+    lit.value().serialize(s)
+}
+
+fn serialize_litint<S: Serializer>(
+    lit: &syn::LitInt,
+    s: S,
+) -> std::result::Result<S::Ok, S::Error> {
+    lit.base10_parse::<i64>().unwrap().serialize(s)
+}
+
+fn serialize_litfloat<S: Serializer>(
+    lit: &syn::LitFloat,
+    s: S,
+) -> std::result::Result<S::Ok, S::Error> {
+    lit.base10_parse::<f64>().unwrap().serialize(s)
+}
+
+fn serialize_punctuated<S: Serializer>(
+    lit: &Punctuated<FrbAttributeDefaultValue, Token![,]>,
+    s: S,
+) -> std::result::Result<S::Ok, S::Error> {
+    lit.into_iter().collect::<Vec<_>>().serialize(s)
 }
