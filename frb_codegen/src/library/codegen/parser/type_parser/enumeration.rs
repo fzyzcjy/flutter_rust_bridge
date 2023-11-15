@@ -7,10 +7,10 @@ use crate::codegen::ir::ty::enumeration::{IrEnum, IrVariant, IrVariantKind};
 use crate::codegen::ir::ty::structure::IrStruct;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
+use crate::codegen::parser::source_graph::modules::Enum;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::TypeParser;
-use anyhow::anyhow;
-use syn::Field;
+use syn::{Attribute, Field, Ident, Variant};
 
 impl<'a> TypeParser<'a> {
     fn parse_enum(&mut self, ident_string: &str) -> anyhow::Result<IrEnum> {
@@ -29,55 +29,7 @@ impl<'a> TypeParser<'a> {
             .src
             .variants
             .iter()
-            .map(|variant| {
-                Ok(IrVariant {
-                    name: IrIdent::new(variant.ident.to_string()),
-                    wrapper_name: IrIdent::new(format!("{}_{}", src_enum.0.ident, variant.ident)),
-                    comments: parse_comments(&variant.attrs),
-                    kind: match variant.fields.iter().next() {
-                        None => IrVariantKind::Value,
-                        Some(Field {
-                            attrs,
-                            ident: field_ident,
-                            ..
-                        }) => {
-                            let variant_ident = variant.ident.to_string();
-                            IrVariantKind::Struct(IrStruct {
-                                name: variant_ident,
-                                wrapper_name: None,
-                                path: None,
-                                is_fields_named: field_ident.is_some(),
-                                dart_metadata: FrbAttributes::parse(attrs)?.dart_metadata(),
-                                comments: parse_comments(attrs),
-                                fields: variant
-                                    .fields
-                                    .iter()
-                                    .enumerate()
-                                    .map(|(idx, field)| {
-                                        Ok(IrField {
-                                            name: IrIdent::new(
-                                                field
-                                                    .ident
-                                                    .as_ref()
-                                                    .map(ToString::to_string)
-                                                    .unwrap_or_else(|| format!("field{idx}")),
-                                            ),
-                                            ty: self.parse_type(&field.ty),
-                                            is_final: true,
-                                            comments: parse_comments(&field.attrs),
-                                            default: FrbAttributes::parse(&field.attrs)?
-                                                .default_value(),
-                                            settings: IrFieldSettings {
-                                                is_in_mirrored_enum: src_enum.0.mirror,
-                                            },
-                                        })
-                                    })
-                                    .collect::<anyhow::Result<Vec<_>>>()?,
-                            })
-                        }
-                    },
-                })
-            })
+            .map(|variant| self.parse_variant(src_enum, &variant))
             .collect::<anyhow::Result<Vec<_>>>()?;
 
         let is_struct = compute_is_struct(&raw_variants);
@@ -91,6 +43,63 @@ impl<'a> TypeParser<'a> {
             variants,
             is_struct,
         })
+    }
+
+    fn parse_variant(&mut self, src_enum: &Enum, variant: &&Variant) -> anyhow::Result<IrVariant> {
+        Ok(IrVariant {
+            name: IrIdent::new(variant.ident.to_string()),
+            wrapper_name: IrIdent::new(format!("{}_{}", src_enum.0.ident, variant.ident)),
+            comments: parse_comments(&variant.attrs),
+            kind: match variant.fields.iter().next() {
+                None => IrVariantKind::Value,
+                Some(Field {
+                    attrs,
+                    ident: field_ident,
+                    ..
+                }) => self.parse_variant_kind_struct(src_enum, variant, attrs, field_ident)?,
+            },
+        })
+    }
+
+    fn parse_variant_kind_struct(
+        &mut self,
+        src_enum: &Enum,
+        variant: &&Variant,
+        attrs: &Vec<Attribute>,
+        field_ident: &Option<Ident>,
+    ) -> anyhow::Result<IrVariantKind> {
+        let variant_ident = variant.ident.to_string();
+        Ok(IrVariantKind::Struct(IrStruct {
+            name: variant_ident,
+            wrapper_name: None,
+            path: None,
+            is_fields_named: field_ident.is_some(),
+            dart_metadata: FrbAttributes::parse(attrs)?.dart_metadata(),
+            comments: parse_comments(attrs),
+            fields: variant
+                .fields
+                .iter()
+                .enumerate()
+                .map(|(idx, field)| {
+                    Ok(IrField {
+                        name: IrIdent::new(
+                            field
+                                .ident
+                                .as_ref()
+                                .map(ToString::to_string)
+                                .unwrap_or_else(|| format!("field{idx}")),
+                        ),
+                        ty: self.parse_type(&field.ty),
+                        is_final: true,
+                        comments: parse_comments(&field.attrs),
+                        default: FrbAttributes::parse(&field.attrs)?.default_value(),
+                        settings: IrFieldSettings {
+                            is_in_mirrored_enum: src_enum.0.mirror,
+                        },
+                    })
+                })
+                .collect::<anyhow::Result<Vec<_>>>()?,
+        }))
     }
 }
 
