@@ -256,7 +256,7 @@ impl<'a> TypeParser<'a> {
                         if !self.parsing_or_parsed_struct_names.contains(&ident_string) {
                             self.parsing_or_parsed_struct_names
                                 .insert(ident_string.to_owned());
-                            let api_struct = match self.parse_struct_core(&ident_string) {
+                            let api_struct = match self.parse_struct(&ident_string) {
                                 Some(ir_struct) => ir_struct,
                                 None => {
                                     return Ok(path_type_to_unencodable(type_path, flat_vector))
@@ -284,7 +284,7 @@ impl<'a> TypeParser<'a> {
                     [(name, _)] if self.src_enums.contains_key(&name.to_string()) => {
                         let ident_string = name.to_string();
                         if self.parsed_enums.insert(ident_string.to_owned()) {
-                            let enu = self.parse_enum_core(&ident_string);
+                            let enu = self.parse_enum(&ident_string);
                             self.enum_pool.insert(ident_string.to_owned(), enu);
                         }
 
