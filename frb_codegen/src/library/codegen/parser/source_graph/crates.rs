@@ -11,7 +11,6 @@ use crate::codegen::parser::source_graph::modules::{Module, ModuleInfo, ModuleSo
 pub struct Crate {
     name: String,
     manifest_path: PathBuf,
-    root_src_file: PathBuf,
     root_module: Module,
 }
 
@@ -31,7 +30,6 @@ impl Crate {
         Ok(Crate {
             name: root_package.name.clone(),
             manifest_path: fs::canonicalize(manifest_path)?,
-            root_src_file,
             root_module,
         })
     }
