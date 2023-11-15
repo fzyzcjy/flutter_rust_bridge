@@ -1,18 +1,22 @@
 use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::default::IrDefaultValue;
 use crate::codegen::ir::import::IrDartImport;
+use crate::if_then_some;
+use itertools::Itertools;
 use syn::parse::{Parse, ParseStream};
 use syn::punctuated::Punctuated;
 use syn::*;
 
 const METADATA_IDENT: &str = "frb";
 
-fn parse_metadata(attrs: &[Attribute]) -> Result<Vec<FrbOption>> {
-    attrs
-        .iter()
-        .filter(|attr| attr.path().is_ident(METADATA_IDENT))
-        .map(|attr| attr.parse_args::<FrbOption>())
-        .collect()
+pub(crate) fn parse_metadata(attrs: &[Attribute]) -> Result<FrbOptions> {
+    Ok(FrbOptions(
+        attrs
+            .iter()
+            .filter(|attr| attr.path().is_ident(METADATA_IDENT))
+            .map(|attr| attr.parse_args::<FrbOption>())
+            .collect()?,
+    ))
 }
 
 mod frb_keyword {
@@ -20,6 +24,22 @@ mod frb_keyword {
     syn::custom_keyword!(non_final);
     syn::custom_keyword!(dart_metadata);
     syn::custom_keyword!(import);
+}
+
+struct FrbOptions(Vec<FrbOption>);
+
+impl FrbOptions {
+    pub(crate) fn default_value(&self) -> Option<IrDefaultValue> {
+        let candidates = self
+            .0
+            .iter()
+            .filter_map(|item| if_then_some!(let FrbOption::Default(default) = item, default))
+            .collect_vec();
+        if candidates.len() > 1 {
+            log::warn!("Only one `default = ..` attribute is expected; taking the last one");
+        }
+        (*candidates.last()).copied()
+    }
 }
 
 enum FrbOption {

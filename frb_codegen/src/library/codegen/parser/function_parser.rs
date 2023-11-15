@@ -1,5 +1,4 @@
 use crate::codegen::ir::comment::IrComment;
-use crate::codegen::ir::default::IrDefaultValue;
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::func::{IrFunc, IrFuncMode};
 use crate::codegen::ir::ident::IrIdent;
@@ -7,6 +6,7 @@ use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
+use crate::codegen::parser::metadata_parser::parse_metadata;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::parser::ParserResult;
 use anyhow::Context;
@@ -60,12 +60,13 @@ impl<'a> FunctionParser<'a> {
                         }
                     }
                     FuncArg::Type(ty) => {
+                        let metadata = parse_metadata(&pat_type.attrs)?;
                         inputs.push(IrField {
                             name: IrIdent::new(name),
                             ty,
                             is_final: true,
                             comments: parse_comments(&pat_type.attrs),
-                            default: IrDefaultValue::extract(&pat_type.attrs),
+                            default: metadata.default_value(),
                             settings: IrFieldSettings::default(),
                         });
                     }
