@@ -4,11 +4,14 @@ use syn::Type;
 
 impl Module {
     pub fn collect_structs(&self) -> HashMap<String, &Struct> {
-        self.collect_objects(|module| &module.scope.structs, |x| (x.ident.to_string(), x))
+        self.collect_objects(
+            |module| &module.scope.structs,
+            |x| (x.0.ident.to_string(), x),
+        )
     }
 
     pub fn collect_enums(&self) -> HashMap<String, &Enum> {
-        self.collect_objects(|module| &module.scope.enums, |x| (x.ident.to_string(), x))
+        self.collect_objects(|module| &module.scope.enums, |x| (x.0.ident.to_string(), x))
     }
 
     pub fn collect_types(&self) -> HashMap<String, Type> {

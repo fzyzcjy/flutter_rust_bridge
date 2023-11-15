@@ -1,7 +1,8 @@
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::reader::read_rust_file;
 use crate::codegen::parser::source_graph::modules::{
-    Enum, Module, ModuleInfo, ModuleScope, ModuleSource, Struct, TypeAlias, Visibility,
+    Enum, Module, ModuleInfo, ModuleScope, ModuleSource, Struct, StructOrEnum, TypeAlias,
+    Visibility,
 };
 use crate::utils::path_utils::{find_rust_crate_dir, path_to_string};
 use itertools::Itertools;
@@ -70,7 +71,7 @@ fn parse_syn_item_struct(
         .into_iter()
         .map(|ident| {
             let ident_str = ident.to_string();
-            Struct {
+            Struct(StructOrEnum {
                 ident,
                 src: item_struct.clone(),
                 visibility: Visibility::from_syn(&item_struct.vis),
@@ -80,7 +81,7 @@ fn parse_syn_item_struct(
                     path
                 },
                 mirror,
-            }
+            })
         })
         .collect_vec())
 }
@@ -92,7 +93,7 @@ fn parse_syn_item_enum(info: &ModuleInfo, item_enum: &ItemEnum) -> anyhow::Resul
         .into_iter()
         .map(|ident| {
             let ident_str = ident.to_string();
-            Enum {
+            Enum(StructOrEnum {
                 ident,
                 src: item_enum.clone(),
                 visibility: Visibility::from_syn(&item_enum.vis),
@@ -102,7 +103,7 @@ fn parse_syn_item_enum(info: &ModuleInfo, item_enum: &ItemEnum) -> anyhow::Resul
                     path
                 },
                 mirror,
-            }
+            })
         })
         .collect_vec())
 }

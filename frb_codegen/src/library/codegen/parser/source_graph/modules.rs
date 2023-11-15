@@ -41,20 +41,20 @@ pub enum ModuleSource {
 
 #[derive(Clone, Derivative)]
 #[derivative(Debug)]
-pub struct StructOrEnum {
+pub struct StructOrEnum<Item> {
     pub(super) ident: Ident,
     #[derivative(Debug = "ignore")]
-    pub(super) src: ItemStruct,
+    pub(super) src: Item,
     pub(super) visibility: Visibility,
     pub(super) path: Vec<String>,
     pub(super) mirror: bool,
 }
 
 #[derive(Clone, Debug)]
-pub struct Struct(pub StructOrEnum);
+pub struct Struct(pub StructOrEnum<ItemStruct>);
 
 #[derive(Clone, Debug)]
-pub struct Enum(pub StructOrEnum);
+pub struct Enum(pub StructOrEnum<ItemEnum>);
 
 #[derive(Clone, Debug)]
 pub struct TypeAlias {
