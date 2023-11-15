@@ -17,12 +17,12 @@ use syn::*;
 
 const STREAM_SINK_IDENT: &str = "StreamSink";
 
-pub(crate) struct FunctionParser<'a> {
-    type_parser: &'a mut TypeParser<'a>,
+pub(crate) struct FunctionParser<'a, 'b> {
+    type_parser: &'a mut TypeParser<'b>,
 }
 
-impl<'a> FunctionParser<'a> {
-    pub(crate) fn new(type_parser: &'a mut TypeParser<'a>) -> Self {
+impl<'a, 'b> FunctionParser<'a, 'b> {
+    pub(crate) fn new(type_parser: &'a mut TypeParser<'b>) -> Self {
         Self { type_parser }
     }
 
