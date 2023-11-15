@@ -99,7 +99,7 @@ pub(crate) fn topo_resolve(src: HashMap<String, Type>) -> HashMap<String, Type> 
 }
 
 pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> ParserResult<IrPack> {
-    let crate_map = Crate::new(manifest_path)?;
+    let crate_map = Crate::parse(manifest_path)?;
 
     let mut src_fns = extract_fns_from_file(&file);
     src_fns.extend(extract_methods_from_file(&file)?);

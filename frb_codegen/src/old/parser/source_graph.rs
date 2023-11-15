@@ -21,18 +21,8 @@ use syn::{Attribute, Ident, ItemEnum, ItemStruct, PathArguments, Type, UseTree};
 use super::ParserResult;
 use crate::{parser::markers, utils::misc::read_rust_file};
 
-/// Represents a crate, including a map of its modules, imports, structs and
-/// enums.
-#[derive(Debug, Clone)]
-pub struct Crate {
-    pub name: String,
-    pub manifest_path: PathBuf,
-    pub root_src_file: PathBuf,
-    pub root_module: Module,
-}
-
 impl Crate {
-    pub fn new(manifest_path: &str) -> ParserResult<Self> {
+    pub fn parse(manifest_path: &Path) -> ParserResult<Self> {
         let mut cmd = MetadataCommand::new();
         cmd.manifest_path(manifest_path);
 
@@ -152,18 +142,6 @@ pub struct ModuleScope {
     pub structs: Vec<Struct>,
     pub imports: Vec<Import>,
     pub type_alias: Vec<TypeAlias>,
-}
-
-#[derive(Clone)]
-#[derive(Derivative)]
-#[derivative(Debug)]
-pub struct Module {
-    pub visibility: Visibility,
-    pub file_path: PathBuf,
-    pub module_path: Vec<String>,
-    #[derivative(Debug="ignore")]
-    pub source: Option<ModuleSource>,
-    pub scope: Option<ModuleScope>,
 }
 
 /// Get a struct or enum ident, possibly remapped by a mirror marker

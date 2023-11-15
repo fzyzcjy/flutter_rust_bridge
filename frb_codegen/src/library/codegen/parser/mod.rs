@@ -1,6 +1,7 @@
 pub(crate) mod error;
 pub(crate) mod internal_config;
 pub(crate) mod reader;
+pub(crate) mod source_map;
 
 use std::path::Path;
 use log::debug;
