@@ -1,5 +1,3 @@
-use crate::codegen::ir::comment::IrComment;
-use crate::codegen::ir::default::IrDefaultValue;
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
@@ -9,18 +7,16 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::source_graph::modules::Enum;
 use crate::codegen::parser::type_parser::misc::parse_comments;
+use crate::codegen::parser::type_parser::structure::compute_name_and_wrapper_name;
 use crate::codegen::parser::type_parser::TypeParser;
 use syn::{Attribute, Field, Ident, Variant};
 
 impl<'a> TypeParser<'a> {
     fn parse_enum(&mut self, ident_string: &str) -> anyhow::Result<IrEnum> {
         let src_enum = self.src_enums[ident_string];
-        let name = src_enum.0.ident.to_string();
-        let wrapper_name = if src_enum.0.mirror {
-            Some(format!("mirror_{name}"))
-        } else {
-            None
-        };
+
+        let (name, wrapper_name) =
+            compute_name_and_wrapper_name(&src_enum.0.ident, src_enum.0.mirror);
 
         let path = src_enum.0.path.clone();
         let comments = parse_comments(&src_enum.0.src.attrs);
