@@ -43,8 +43,6 @@ use crate::utils::misc::BlockIndex;
 use crate::{ir::*, Opts};
 use itertools::Itertools;
 
-pub const HANDLER_NAME: &str = "FLUTTER_RUST_BRIDGE_HANDLER";
-
 pub struct Output {
     pub code: Acc<String>,
     pub extern_func_names: Vec<String>,

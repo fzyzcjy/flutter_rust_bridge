@@ -16,6 +16,7 @@ use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::reader::read_rust_file;
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
+use crate::library::misc::consts::HANDLER_NAME;
 use std::path::Path;
 use syn::File;
 
