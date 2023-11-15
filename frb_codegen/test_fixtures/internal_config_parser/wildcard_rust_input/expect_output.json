@@ -6,7 +6,7 @@
                 "orange": "{the-working-directory}/api/orange.rs"
             }
         },
-        "manifest_path": "{the-working-directory}/Cargo.toml"
+        "rust_crate_dir": "{the-working-directory}"
     },
     "generator": {
         "dart": {
