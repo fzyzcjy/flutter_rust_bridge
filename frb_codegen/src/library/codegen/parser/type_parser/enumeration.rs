@@ -24,7 +24,7 @@ impl<'a> TypeParser<'a> {
 
         let path = src_enum.0.path.clone();
         let comments = parse_comments(&src_enum.0.src.attrs);
-        let variants = src_enum
+        let raw_variants = src_enum
             .0
             .src
             .variants
@@ -79,51 +79,46 @@ impl<'a> TypeParser<'a> {
                 })
             })
             .collect::<anyhow::Result<Vec<_>>>()?;
-        Ok(postprocess_and_construct(
+
+        let is_struct = compute_is_struct(&raw_variants);
+        let variants = maybe_field_wrap_box(raw_variants, is_struct);
+
+        Ok(IrEnum {
             name,
             wrapper_name,
             path,
             comments,
             variants,
-        ))
+            is_struct,
+        })
     }
 }
 
-fn postprocess_and_construct(
-    name: String,
-    wrapper_name: Option<String>,
-    path: Vec<String>,
-    comments: Vec<IrComment>,
-    mut variants: Vec<IrVariant>,
-) -> IrEnum {
-    fn wrap_box(ty: &mut IrType) {
-        if ty.is_struct_or_enum_or_record() {
-            *ty = IrType::Boxed(IrTypeBoxed {
-                exist_in_real_api: false,
-                inner: Box::new(ty.clone()),
-            });
-        }
-    }
-
-    let is_struct = variants
-        .iter()
-        .any(|variant| !matches!(variant.kind, IrVariantKind::Value));
+fn maybe_field_wrap_box(mut variants: Vec<IrVariant>, is_struct: bool) -> Vec<IrVariant> {
     if is_struct {
         for variant in &mut variants {
             if let IrVariantKind::Struct(st) = &mut variant.kind {
                 for field in &mut st.fields {
+                    fn wrap_box(ty: &mut IrType) {
+                        if ty.is_struct_or_enum_or_record() {
+                            *ty = IrType::Boxed(IrTypeBoxed {
+                                exist_in_real_api: false,
+                                inner: Box::new(ty.clone()),
+                            });
+                        }
+                    }
+
                     wrap_box(&mut field.ty);
                 }
             }
         }
     }
 
-    IrEnum {
-        name,
-        wrapper_name,
-        path,
-        comments,
-        variants,
-        is_struct,
-    }
+    variants
+}
+
+fn compute_is_struct(variants: &[IrVariant]) -> bool {
+    variants
+        .iter()
+        .any(|variant| !matches!(variant.kind, IrVariantKind::Value))
 }
