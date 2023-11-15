@@ -8,6 +8,7 @@ use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{Delegate, Primitive};
 use crate::codegen::parser::type_parser::TypeParser;
+use crate::library::codegen::ir::ty::IrTypeTrait;
 use quote::ToTokens;
 use syn::punctuated::Punctuated;
 use syn::{Expr, Token, Type};
@@ -67,7 +68,7 @@ impl<'a> TypeParser<'a> {
             .join("_");
         let safe_ident = format!("__record__{safe_ident}");
         self.struct_pool.insert(
-            safe_ident.clone(),
+            IrStructIdent(safe_ident.clone()),
             IrStruct {
                 name: safe_ident.clone(),
                 wrapper_name: None,
