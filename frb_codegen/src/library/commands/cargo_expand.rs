@@ -1,32 +1,35 @@
 use std::{env, fs};
+use std::collections::HashMap;
 use std::path::{Path, PathBuf};
+use std::sync::Mutex;
 use lazy_static::lazy_static;
 use log::{info, warn};
 use anyhow::{bail, Result};
 use itertools::Itertools;
+use crate::library::commands::command_runner::execute_command;
 
 pub(crate) fn cargo_expand(rust_crate_dir: &Path, module: Option<String>, rust_file_path: &Path) -> Result<String> {
-    let manifest_dir: PathBuf = env::var("CARGO_MANIFEST_DIR")?.into();
+    let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
 
-    if !manifest_dir.is_empty() && rust_crate_dir == manifest_dir {
+    if !manifest_dir.is_empty() && rust_crate_dir == PathBuf::from(manifest_dir) {
         warn!(
-            "Skip cargo-expand on {rust_crate_dir}, \
+            "Skip cargo-expand on {rust_crate_dir:?}, \
              because cargo is already running and would block cargo-expand. \
              This might cause errors if your api contains macros."
         );
-        return Ok(fs::read_to_string(file)?);
+        return Ok(fs::read_to_string(rust_file_path)?);
     }
 
     let mut cache = CARGO_EXPAND_CACHE.lock().unwrap();
     let expanded = cache
-        .entry(String::from(rust_crate_dir))
+        .entry(rust_crate_dir.to_owned())
         .or_insert_with(|| run_cargo_expand(rust_crate_dir));
 
     extract_module(expanded, module)
 }
 
 lazy_static! {
-    static ref CARGO_EXPAND_CACHE: Mutex<HashMap<String, String>> = Mutex::new(HashMap::new());
+    static ref CARGO_EXPAND_CACHE: Mutex<HashMap<PathBuf, String>> = Mutex::new(HashMap::new());
 }
 
 fn extract_module(raw_expanded: &str, module: Option<String>) -> Result<String> {
@@ -53,8 +56,8 @@ fn extract_module(raw_expanded: &str, module: Option<String>) -> Result<String> 
     Ok(raw_expanded.to_owned())
 }
 
-fn run_cargo_expand(rust_crate_dir: &Path) -> String {
-    info!("Running cargo expand in '{rust_crate_dir}'");
+fn run_cargo_expand(rust_crate_dir: &Path) -> Result<String> {
+    info!("Running cargo expand in '{rust_crate_dir:?}'");
     let args = vec![
         PathBuf::from("expand"),
         PathBuf::from("--theme=none"),
@@ -62,7 +65,7 @@ fn run_cargo_expand(rust_crate_dir: &Path) -> String {
     ];
 
     let output = execute_command("cargo", &args, Some(rust_crate_dir))
-        .with_context(|| format!("Could not expand rust code at path {:?}: {}\n", rust_crate_dir, e))?;
+        .with_context(|| format!("Could not expand rust code at path {rust_crate_dir:?}"))?;
 
     let stdout = String::from_utf8(output.stdout)?;
     let stderr = String::from_utf8(output.stderr)?;
@@ -76,7 +79,7 @@ fn run_cargo_expand(rust_crate_dir: &Path) -> String {
 
     let mut stdout_lines = stdout.lines();
     stdout_lines.next();
-    stdout_lines.join("\n").replace("/// frb_marker: ", "")
+    Ok(stdout_lines.join("\n").replace("/// frb_marker: ", ""))
 }
 
 #[cfg(test)]
@@ -91,9 +94,9 @@ mod tests {
 mod module_2 {
     // code 2
 }";
-        let extracted = extract_module(src, Some(String::from("module_1")));
+        let extracted = extract_module(src, Some(String::from("module_1"))).unwrap();
         assert_eq!(String::from("    // code 1"), extracted);
-        let extracted = extract_module(src, Some(String::from("module_2")));
+        let extracted = extract_module(src, Some(String::from("module_2"))).unwrap();
         assert_eq!(String::from("    // code 2"), extracted);
     }
 
@@ -104,7 +107,7 @@ mod module_2 {
         // sub code
     }
 }";
-        let extracted = extract_module(src, Some(String::from("module::submodule")));
+        let extracted = extract_module(src, Some(String::from("module::submodule"))).unwrap();
         assert_eq!(String::from("        // sub code"), extracted);
     }
 }
