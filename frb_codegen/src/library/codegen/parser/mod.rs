@@ -51,13 +51,12 @@ fn parse_one_ast(
     let src_fns = extract_generalized_functions_from_file(&file_ast)?;
     let src_structs = crate_map.root_module().collect_structs();
     let src_enums = crate_map.root_module().collect_enums();
-    let src_types = crate_map.root_module().collect_types();
-    let src_types = resolve_type_aliases(src_types);
+    let src_types = resolve_type_aliases(crate_map.root_module().collect_types());
 
     let type_parser = TypeParser::new(src_structs, src_enums, src_types);
     let function_parser = FunctionParser::new(&type_parser);
 
-    let funcs = src_fns
+    let ir_funcs = src_fns
         .iter()
         .map(|f| function_parser.parse_function(f))
         .collect::<ParserResult<_>>()?;
@@ -67,7 +66,7 @@ fn parse_one_ast(
     let (struct_pool, enum_pool) = type_parser.consume();
 
     Ok(IrPack {
-        funcs,
+        funcs: ir_funcs,
         struct_pool,
         enum_pool,
         has_executor,
