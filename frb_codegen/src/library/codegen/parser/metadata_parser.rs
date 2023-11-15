@@ -98,7 +98,7 @@ impl Parse for DartImports {
     fn parse(input: ParseStream<'_>) -> Result<Self> {
         let content;
         parenthesized!(content in input);
-        let imports = Punctuated::<IrDartImport, syn::Token![,]>::parse_terminated(&content)?
+        let imports = Punctuated::<IrDartImport, Token![,]>::parse_terminated(&content)?
             .into_iter()
             .collect();
         Ok(Self(imports))

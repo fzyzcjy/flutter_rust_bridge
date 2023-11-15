@@ -51,46 +51,30 @@ impl<'a> Parser<'a> {
     }
 }
 
-fn extract_comments(attrs: &[Attribute]) -> Vec<IrComment> {
-    attrs
-        .iter()
-        .filter_map(|attr| match &attr.meta {
-            Meta::NameValue(MetaNameValue {
-                path,
-                value:
-                    Expr::Lit(ExprLit {
-                        lit: Lit::Str(lit), ..
-                    }),
-                ..
-            }) if path.is_ident("doc") => Some(IrComment::from(lit.value().as_ref())),
-            _ => None,
-        })
-        .collect()
-}
-
 impl IrDefaultValue {
-    pub(crate) fn extract(attrs: &[Attribute]) -> Option<Self> {
-        let defaults = attrs
-            .iter()
-            .filter(|attr| attr.path().is_ident("frb"))
-            .map(|attr| attr.parse_args::<FrbOption>())
-            .filter_map(|attr| {
-                if let Ok(FrbOption::Default(default)) = attr {
-                    Some(default)
-                } else {
-                    None
-                }
-            })
-            .collect::<Vec<_>>();
-        match &defaults[..] {
-            [] => None,
-            [single] => Some(single.clone()),
-            [.., last] => {
-                log::warn!("Only one `default = ..` attribute is expected; taking the last one");
-                Some(last.clone())
-            }
-        }
-    }
+    // TODO use `parse_metadata`
+    // pub(crate) fn extract(attrs: &[Attribute]) -> Option<Self> {
+    //     let defaults = attrs
+    //         .iter()
+    //         .filter(|attr| attr.path().is_ident("frb"))
+    //         .map(|attr| attr.parse_args::<FrbOption>())
+    //         .filter_map(|attr| {
+    //             if let Ok(FrbOption::Default(default)) = attr {
+    //                 Some(default)
+    //             } else {
+    //                 None
+    //             }
+    //         })
+    //         .collect::<Vec<_>>();
+    //     match &defaults[..] {
+    //         [] => None,
+    //         [single] => Some(single.clone()),
+    //         [.., last] => {
+    //             log::warn!("Only one `default = ..` attribute is expected; taking the last one");
+    //             Some(last.clone())
+    //         }
+    //     }
+    // }
 
     pub(crate) fn to_dart(&self) -> Cow<str> {
         match self {

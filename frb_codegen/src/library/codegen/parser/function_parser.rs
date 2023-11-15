@@ -1,3 +1,5 @@
+use crate::codegen::ir::comment::IrComment;
+use crate::codegen::ir::default::IrDefaultValue;
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::func::{IrFunc, IrFuncMode};
 use crate::codegen::ir::ident::IrIdent;
@@ -212,4 +214,21 @@ impl FunctionParser {
             Some(IrFuncOutput::Type(ir_ty))
         }
     }
+}
+
+fn extract_comments(attrs: &[Attribute]) -> Vec<IrComment> {
+    attrs
+        .iter()
+        .filter_map(|attr| match &attr.meta {
+            Meta::NameValue(MetaNameValue {
+                path,
+                value:
+                    Expr::Lit(ExprLit {
+                        lit: Lit::Str(lit), ..
+                    }),
+                ..
+            }) if path.is_ident("doc") => Some(IrComment::from(lit.value().as_ref())),
+            _ => None,
+        })
+        .collect()
 }
