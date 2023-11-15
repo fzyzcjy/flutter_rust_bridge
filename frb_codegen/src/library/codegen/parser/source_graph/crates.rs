@@ -2,6 +2,7 @@ use std::fs;
 use std::path::{Path, PathBuf};
 use anyhow::Context;
 use cargo_metadata::{Metadata, MetadataCommand, Package};
+use syn::File;
 use crate::codegen::parser::ParserResult;
 use crate::codegen::parser::source_graph::modules::{Module, ModuleInfo, ModuleSource, Visibility};
 
@@ -24,18 +25,13 @@ impl Crate {
         let root_src_content = fs::read_to_string(&root_src_file)?;
         let root_src_ast = syn::parse_file(&root_src_content)?;
 
-        let root_module_info = ModuleInfo {
-            visibility: Visibility::Public,
-            file_path: root_src_file,
-            module_path: vec!["crate".to_string()],
-            source: ModuleSource::File(root_src_ast),
-        };
+        let root_module_info = get_root_module_info(root_src_file.clone(), root_src_ast);
         let root_module = Module::parse(root_module_info);
 
         Ok(Crate {
             name: root_package.name.clone(),
             manifest_path: fs::canonicalize(manifest_path)?,
-            root_src_file: root_src_file.clone(),
+            root_src_file,
             root_module,
         })
     }
@@ -58,3 +54,13 @@ fn get_root_src_file(root_package: &Package) -> ParserResult<PathBuf> {
     }
     Err(super::Error::NoEntryPoint)
 }
+
+fn get_root_module_info(root_src_file: PathBuf, root_src_ast: File) -> ModuleInfo {
+    ModuleInfo {
+        visibility: Visibility::Public,
+        file_path: root_src_file,
+        module_path: vec!["crate".to_string()],
+        source: ModuleSource::File(root_src_ast),
+    }
+}
+
