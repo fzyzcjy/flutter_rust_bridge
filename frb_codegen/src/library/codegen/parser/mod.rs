@@ -4,6 +4,7 @@ pub(crate) mod internal_config;
 pub(crate) mod main_parser;
 pub(crate) mod reader;
 pub(crate) mod source_graph;
+pub(crate) mod type_alias_resolver;
 pub(crate) mod type_parser;
 
 use crate::codegen::ir::pack::IrPack;
