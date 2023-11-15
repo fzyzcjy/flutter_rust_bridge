@@ -12,7 +12,7 @@ impl<'a> TypeParser<'a> {
 
         match resolve_ty.clone() {
             Type::Path(path) => self.parse_type_path(&path).unwrap(),
-            Type::Array(syn::TypeArray { elem, len, .. }) => self.parse_type_array(&elem, len),
+            Type::Array(type_array) => self.parse_type_array(&type_array),
             Type::Tuple(syn::TypeTuple { elems, .. }) => {
                 if elems.is_empty() {
                     Primitive(IrTypePrimitive::Unit)
