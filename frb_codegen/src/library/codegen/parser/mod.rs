@@ -11,9 +11,11 @@ pub(crate) mod unencodable;
 
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::parser::function_extractor::extract_generalized_functions_from_file;
+use crate::codegen::parser::function_parser::FunctionParser;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::reader::read_rust_file;
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
+use crate::codegen::parser::type_parser::TypeParser;
 use std::path::Path;
 use syn::File;
 
@@ -51,8 +53,22 @@ fn parse_one_ast(
     let src_types = crate_map.root_module().collect_types();
     let src_types = resolve_type_aliases(src_types);
 
-    todo!()
-    // TODO use function parser etc
-    // let main_parser = MainParser::new(TypeParser::new(src_structs, src_enums, src_types));
-    // main_parser.parse(source_rust_content, src_fns)
+    let type_parser = TypeParser::new(src_structs, src_enums, src_types);
+    let function_parser = FunctionParser::new(&type_parser);
+
+    let funcs = src_fns
+        .iter()
+        .map(function_parser.parse_function)
+        .collect::<ParserResult<_>>()?;
+
+    let has_executor = source_rust_content.contains(HANDLER_NAME);
+
+    let (struct_pool, enum_pool) = type_parser.consume();
+
+    Ok(IrPack {
+        funcs,
+        struct_pool,
+        enum_pool,
+        has_executor,
+    })
 }

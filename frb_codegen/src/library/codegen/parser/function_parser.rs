@@ -17,7 +17,7 @@ use syn::*;
 
 const STREAM_SINK_IDENT: &str = "StreamSink";
 
-struct FunctionParser<'a> {
+pub(crate) struct FunctionParser<'a> {
     type_parser: TypeParser<'a>,
 }
 

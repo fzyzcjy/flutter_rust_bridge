@@ -29,26 +29,6 @@ use self::ty::convert_ident_str;
 mod error;
 pub use error::Error;
 
-impl<'a> Parser<'a> {
-    fn parse(mut self, source_rust_content: &str, src_fns: Vec<ItemFn>) -> ParserResult<IrPack> {
-        let funcs = src_fns
-            .iter()
-            .map(|f| self.parse_function(f))
-            .collect::<ParserResult<Vec<_>>>()?;
-
-        let has_executor = source_rust_content.contains(HANDLER_NAME);
-
-        let (struct_pool, enum_pool) = self.type_parser.consume();
-
-        Ok(IrPack {
-            funcs,
-            struct_pool,
-            enum_pool,
-            has_executor,
-        })
-    }
-}
-
 impl IrDefaultValue {
     pub(crate) fn to_dart(&self) -> Cow<str> {
         match self {
