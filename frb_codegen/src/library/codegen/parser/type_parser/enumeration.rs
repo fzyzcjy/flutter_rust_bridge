@@ -99,15 +99,6 @@ fn maybe_field_wrap_box(mut variants: Vec<IrVariant>, is_struct: bool) -> Vec<Ir
         for variant in &mut variants {
             if let IrVariantKind::Struct(st) = &mut variant.kind {
                 for field in &mut st.fields {
-                    fn wrap_box(ty: &mut IrType) {
-                        if ty.is_struct_or_enum_or_record() {
-                            *ty = IrType::Boxed(IrTypeBoxed {
-                                exist_in_real_api: false,
-                                inner: Box::new(ty.clone()),
-                            });
-                        }
-                    }
-
                     wrap_box(&mut field.ty);
                 }
             }
@@ -115,6 +106,15 @@ fn maybe_field_wrap_box(mut variants: Vec<IrVariant>, is_struct: bool) -> Vec<Ir
     }
 
     variants
+}
+
+fn wrap_box(ty: &mut IrType) {
+    if ty.is_struct_or_enum_or_record() {
+        *ty = IrType::Boxed(IrTypeBoxed {
+            exist_in_real_api: false,
+            inner: Box::new(ty.clone()),
+        });
+    }
 }
 
 fn compute_is_struct(variants: &[IrVariant]) -> bool {
