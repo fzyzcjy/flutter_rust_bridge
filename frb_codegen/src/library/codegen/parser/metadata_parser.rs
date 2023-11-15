@@ -1,5 +1,6 @@
 use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::default::IrDefaultValue;
+use crate::codegen::ir::import::IrDartImport;
 use syn::parse::{Parse, ParseStream};
 use syn::punctuated::Punctuated;
 use syn::*;
@@ -55,6 +56,21 @@ impl Parse for FrbOption {
 }
 
 #[derive(Clone, Debug)]
+pub struct NamedOption<K, V> {
+    pub name: K,
+    pub value: V,
+}
+
+impl<K: Parse + std::fmt::Debug, V: Parse> Parse for NamedOption<K, V> {
+    fn parse(input: ParseStream<'_>) -> Result<Self> {
+        let name: K = input.parse()?;
+        let _: Token![=] = input.parse()?;
+        let value = input.parse()?;
+        Ok(Self { name, value })
+    }
+}
+
+#[derive(Clone, Debug)]
 pub struct MirrorOption(Path);
 
 impl Parse for MirrorOption {
@@ -80,8 +96,56 @@ impl Parse for MetadataAnnotations {
     }
 }
 
+#[derive(Clone, Debug)]
+pub struct DartImports(Vec<IrDartImport>);
+
+impl Parse for DartImports {
+    fn parse(input: ParseStream<'_>) -> Result<Self> {
+        let content;
+        parenthesized!(content in input);
+        let imports = Punctuated::<IrDartImport, syn::Token![,]>::parse_terminated(&content)?
+            .into_iter()
+            .collect();
+        Ok(Self(imports))
+    }
+}
+
+impl Parse for IrDartImport {
+    fn parse(input: ParseStream<'_>) -> Result<Self> {
+        let uri: LitStr = input.parse()?;
+        let alias: Option<String> = if input.peek(token::As) {
+            let _ = input.parse::<token::As>()?;
+            let alias: Ident = input.parse()?;
+            Some(alias.to_string())
+        } else {
+            None
+        };
+        Ok(Self {
+            uri: uri.value(),
+            alias,
+        })
+    }
+}
+
+impl Parse for IrDartAnnotation {
+    fn parse(input: ParseStream<'_>) -> Result<Self> {
+        let annotation: LitStr = input.parse()?;
+        let library = if input.peek(frb_keyword::import) {
+            let _ = input.parse::<frb_keyword::import>()?;
+            let library: IrDartImport = input.parse()?;
+            Some(library)
+        } else {
+            None
+        };
+        Ok(Self {
+            content: annotation.value(),
+            library,
+        })
+    }
+}
+
 impl Parse for IrDefaultValue {
-    fn parse(input: ParseStream) -> syn::Result<Self> {
+    fn parse(input: ParseStream) -> Result<Self> {
         let lh = input.lookahead1();
         if lh.peek(token::Bracket) {
             let inner;
