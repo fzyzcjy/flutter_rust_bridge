@@ -2,7 +2,6 @@ use crate::codegen::parser::reader::read_rust_file;
 use crate::codegen::parser::source_graph::modules::{
     Enum, Module, ModuleInfo, ModuleScope, ModuleSource, Struct, TypeAlias,
 };
-use crate::codegen::parser::ParserResult;
 use crate::utils::path_utils::path_to_string;
 use itertools::Itertools;
 use log::{debug, warn};
@@ -103,7 +102,11 @@ impl Module {
                                 warn!(
                                     "Skipping unresolvable module {} (tried {})",
                                     &ident,
-                                    file_path_candidates.iter().map(path_to_string).join(", ")
+                                    file_path_candidates
+                                        .iter()
+                                        .map(|p| path_to_string(p))
+                                        .collect()?
+                                        .join(", ")
                                 );
                                 continue;
                             }
@@ -132,7 +135,7 @@ fn get_module_file_path_candidates(
     parent_module_file_path: &Path,
 ) -> Vec<PathBuf> {
     [
-        parent_module_file_path.parent().unwrap(),
+        parent_module_file_path.parent().unwrap().to_owned(),
         parent_module_file_path.with_extension(""),
     ]
     .into_iter()
@@ -151,14 +154,8 @@ fn first_existing_path(path_candidates: &[PathBuf]) -> Option<&PathBuf> {
 
 #[cfg(test)]
 mod tests {
-    use crate::codegen::parser::source_graph::module_parser::get_module_file_path;
-    use std::path::PathBuf;
-
     #[test]
     fn test_get_module_file_path_simple() {
-        assert_eq!(
-            get_module_file_path("sub".to_owned(), &PathBuf::from("/hello/world")),
-            Err(vec![TODO,])
-        );
+        todo!()
     }
 }
