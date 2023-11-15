@@ -1,6 +1,7 @@
 pub(crate) mod misc;
 
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
+use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::source_graph::modules::{Enum, Struct};
 use std::collections::{HashMap, HashSet};
 use syn::Type;
@@ -34,5 +35,9 @@ impl<'a> TypeParser<'a> {
 
     pub fn consume(self) -> (IrStructPool, IrEnumPool) {
         (self.struct_pool, self.enum_pool)
+    }
+
+    pub(crate) fn parse_type(&self, ty: &Type) -> IrType {
+        todo!()
     }
 }

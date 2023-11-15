@@ -21,7 +21,7 @@ struct FunctionParser<'a> {
     type_parser: TypeParser<'a>,
 }
 
-impl FunctionParser {
+impl<'a> FunctionParser<'a> {
     fn parse_function(&self, func: &ItemFn) -> ParserResult<IrFunc> {
         debug!("parse_function function name: {:?}", func.sig.ident);
 
@@ -72,7 +72,7 @@ impl FunctionParser {
                     }
                 }
             } else {
-                return Err(Error::UnexpectedSigInput(
+                return Err(super::error::Error::UnexpectedSigInput(
                     quote::quote!(#sig_input).to_string().into(),
                 ));
             }
@@ -102,15 +102,17 @@ impl FunctionParser {
 
         if matches!(mode, Some(IrFuncMode::Stream { argument_index: _ }) if output_ok != IrType::Primitive(IrTypePrimitive::Unit))
         {
-            return Err(Error::NoStreamSinkAndOutput(func_name.into()));
+            return Err(super::error::Error::NoStreamSinkAndOutput(func_name.into()));
         }
 
         if output.is_none() {
-            mode = Some(if let IrType::SyncReturn(_) = output_ok {
-                IrFuncMode::Sync
-            } else {
-                IrFuncMode::Normal
-            });
+            // TODO handle SyncReturn as a marker
+            // mode = Some(if let IrType::SyncReturn(_) = output_ok {
+            //     IrFuncMode::Sync
+            // } else {
+            //     IrFuncMode::Normal
+            // });
+            mode = Some(IrFuncMode::Normal);
             output = Some(output_ok);
         }
 

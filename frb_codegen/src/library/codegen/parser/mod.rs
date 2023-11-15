@@ -2,7 +2,6 @@ pub(crate) mod error;
 pub(crate) mod function_extractor;
 pub(crate) mod function_parser;
 pub(crate) mod internal_config;
-pub(crate) mod main_parser;
 pub(crate) mod metadata_parser;
 pub(crate) mod reader;
 pub(crate) mod source_graph;
@@ -12,7 +11,6 @@ pub(crate) mod type_parser;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::parser::function_extractor::extract_generalized_functions_from_file;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
-use crate::codegen::parser::main_parser::MainParser;
 use crate::codegen::parser::reader::read_rust_file;
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
@@ -53,6 +51,8 @@ fn parse_one_ast(
     let src_types = crate_map.root_module().collect_types();
     let src_types = resolve_type_aliases(src_types);
 
-    let main_parser = MainParser::new(TypeParser::new(src_structs, src_enums, src_types));
-    main_parser.parse(source_rust_content, src_fns)
+    todo!()
+    // TODO use function parser etc
+    // let main_parser = MainParser::new(TypeParser::new(src_structs, src_enums, src_types));
+    // main_parser.parse(source_rust_content, src_fns)
 }
