@@ -1,6 +1,7 @@
 use std::collections::HashMap;
 use syn::Type;
 use topological_sort::TopologicalSort;
+use crate::codegen::parser::type_parser::misc::convert_ident_str;
 
 // See https://github.com/fzyzcjy/flutter_rust_bridge/pull/929 for more details of the algorithm
 pub(crate) fn resolve_type_aliases(src: HashMap<String, Type>) -> HashMap<String, Type> {

@@ -1,3 +1,5 @@
+pub(crate) mod misc;
+
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
 use crate::codegen::parser::source_graph::modules::{Enum, Struct};
 use std::collections::{HashMap, HashSet};

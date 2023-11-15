@@ -11,21 +11,6 @@ use syn::*;
 
 use super::DefaultValues;
 
-pub fn convert_ident_str(ty: &Type) -> Option<String> {
-    if let Type::Path(TypePath { qself: _, path }) = ty {
-        if let Some(PathSegment {
-            ident,
-            arguments: _,
-        }) = path.segments.first()
-        {
-            return Some(ident.to_string());
-        }
-    }
-
-    // Unhandled case, return None
-    None
-}
-
 fn datetime_to_ir_type(args: &[IrType]) -> std::result::Result<IrType, String> {
     if let [Unencodable(IrTypeUnencodable { segments, .. })] = args {
         let mut segments = segments.clone();
