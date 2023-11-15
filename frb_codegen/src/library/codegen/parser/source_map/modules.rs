@@ -7,18 +7,18 @@ use syn::{Visibility, Ident, ItemEnum, ItemStruct, Type};
 #[derive(Derivative)]
 #[derivative(Debug)]
 pub struct Module {
-    pub visibility: Visibility,
-    pub file_path: PathBuf,
-    pub module_path: Vec<String>,
+    visibility: Visibility,
+    file_path: PathBuf,
+    module_path: Vec<String>,
     #[derivative(Debug="ignore")]
-    pub source: Option<ModuleSource>,
-    pub scope: Option<ModuleScope>,
+    source: Option<ModuleSource>,
+    scope: Option<ModuleScope>,
 }
 
 #[derive(Debug, Clone)]
 pub struct Import {
-    pub path: Vec<String>,
-    pub visibility: Visibility,
+    path: Vec<String>,
+    visibility: Visibility,
 }
 
 #[derive(Debug, Clone)]
@@ -31,39 +31,39 @@ pub enum ModuleSource {
 #[derive(Derivative)]
 #[derivative(Debug)]
 pub struct Struct {
-    pub ident: Ident,
+    ident: Ident,
     #[derivative(Debug="ignore")]
-    pub src: ItemStruct,
-    pub visibility: Visibility,
-    pub path: Vec<String>,
-    pub mirror: bool,
+    src: ItemStruct,
+    visibility: Visibility,
+    path: Vec<String>,
+    mirror: bool,
 }
 
 #[derive(Clone)]
 #[derive(Derivative)]
 #[derivative(Debug)]
 pub struct Enum {
-    pub ident: Ident,
+    ident: Ident,
     #[derivative(Debug="ignore")]
-    pub src: ItemEnum,
-    pub visibility: Visibility,
-    pub path: Vec<String>,
-    pub mirror: bool,
+    src: ItemEnum,
+    visibility: Visibility,
+    path: Vec<String>,
+    mirror: bool,
 }
 
 #[derive(Clone, Debug)]
 pub struct TypeAlias {
-    pub ident: String,
-    pub target: Type,
+    ident: String,
+    target: Type,
 }
 
 #[derive(Debug, Clone)]
 pub struct ModuleScope {
-    pub modules: Vec<Module>,
-    pub enums: Vec<Enum>,
-    pub structs: Vec<Struct>,
-    pub imports: Vec<Import>,
-    pub type_alias: Vec<TypeAlias>,
+    modules: Vec<Module>,
+    enums: Vec<Enum>,
+    structs: Vec<Struct>,
+    imports: Vec<Import>,
+    type_alias: Vec<TypeAlias>,
 }
 
 impl Module {
