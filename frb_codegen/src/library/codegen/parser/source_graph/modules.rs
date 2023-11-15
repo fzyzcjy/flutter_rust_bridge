@@ -42,12 +42,12 @@ pub enum ModuleSource {
 #[derive(Clone, Derivative)]
 #[derivative(Debug)]
 pub struct StructOrEnum<Item> {
-    pub(super) ident: Ident,
+    pub(crate) ident: Ident,
     #[derivative(Debug = "ignore")]
-    pub(super) src: Item,
-    pub(super) visibility: Visibility,
-    pub(super) path: Vec<String>,
-    pub(super) mirror: bool,
+    pub(crate) src: Item,
+    pub(crate) visibility: Visibility,
+    pub(crate) path: Vec<String>,
+    pub(crate) mirror: bool,
 }
 
 #[derive(Clone, Debug)]
