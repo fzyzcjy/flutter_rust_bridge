@@ -2,7 +2,9 @@ use crate::codegen::parser::reader::read_rust_file;
 use crate::codegen::parser::source_graph::modules::{
     Enum, Module, ModuleInfo, ModuleScope, ModuleSource, Struct, TypeAlias,
 };
+use crate::codegen::parser::ParserResult;
 use log::{debug, warn};
+use std::path::{Path, PathBuf};
 
 impl Module {
     /// Maps out modules, structs and enums within the scope of this module
@@ -131,4 +133,51 @@ impl Module {
             },
         })
     }
+}
+
+fn get_module_file_path(
+    module_name: String,
+    parent_module_file_path: &Path,
+) -> Result<PathBuf, Vec<PathBuf>> {
+    let mut tried = Vec::new();
+
+    // TODO optimize these blocks
+
+    if let Some(file_path) = try_get_module_file_path(
+        parent_module_file_path.parent().unwrap(),
+        &module_name,
+        &mut tried,
+    ) {
+        return Ok(file_path);
+    }
+    if let Some(file_path) = try_get_module_file_path(
+        &parent_module_file_path.with_extension(""),
+        &module_name,
+        &mut tried,
+    ) {
+        return Ok(file_path);
+    }
+    Err(tried)
+}
+
+fn try_get_module_file_path(
+    folder_path: &Path,
+    module_name: &str,
+    tried: &mut Vec<PathBuf>,
+) -> Option<PathBuf> {
+    // TODO optimize these two blocks
+
+    let file_path = folder_path.join(module_name).with_extension("rs");
+    if file_path.exists() {
+        return Some(file_path);
+    }
+    tried.push(file_path);
+
+    let file_path = folder_path.join(module_name).join("mod.rs");
+    if file_path.exists() {
+        return Some(file_path);
+    }
+    tried.push(file_path);
+
+    None
 }
