@@ -3,6 +3,7 @@ use derivative::Derivative;
 use log::{debug, warn};
 use std::collections::HashMap;
 use std::path::PathBuf;
+use syn::token::Mod;
 use syn::{Ident, ItemEnum, ItemStruct, Type};
 
 #[derive(Clone, Debug)]
@@ -79,6 +80,7 @@ pub struct ModuleScope {
     type_alias: Vec<TypeAlias>,
 }
 
+// functions related to parsing
 impl Module {
     /// Maps out modules, structs and enums within the scope of this module
     pub fn parse(info: ModuleInfo) -> anyhow::Result<Self> {
@@ -96,7 +98,6 @@ impl Module {
             match item {
                 syn::Item::Struct(item_struct) => {
                     let (idents, mirror) = get_ident(&item_struct.ident, &item_struct.attrs);
-
                     scope_structs.extend(idents.into_iter().map(|ident| {
                         let ident_str = ident.to_string();
                         Struct {
@@ -207,7 +208,10 @@ impl Module {
             },
         })
     }
+}
 
+// functions related to exporting
+impl Module {
     pub fn collect_structs(&self) -> HashMap<String, &Struct> {
         self.collect_objects(|module| &module.scope.structs, |x| (x.ident.to_string(), x))
     }
