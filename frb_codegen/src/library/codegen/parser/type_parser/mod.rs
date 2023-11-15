@@ -4,9 +4,9 @@ use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::source_graph::modules::{Enum, Struct};
 use std::collections::{HashMap, HashSet};
-use syn::Type;
+use syn::{Type, TypePath};
 
-pub struct TypeParser<'a> {
+pub(crate) struct TypeParser<'a> {
     src_structs: HashMap<String, &'a Struct>,
     src_enums: HashMap<String, &'a Enum>,
     src_types: HashMap<String, Type>,
@@ -17,7 +17,7 @@ pub struct TypeParser<'a> {
 }
 
 impl<'a> TypeParser<'a> {
-    pub fn new(
+    pub(crate) fn new(
         src_structs: HashMap<String, &'a Struct>,
         src_enums: HashMap<String, &'a Enum>,
         src_types: HashMap<String, Type>,
@@ -33,11 +33,15 @@ impl<'a> TypeParser<'a> {
         }
     }
 
-    pub fn consume(self) -> (IrStructPool, IrEnumPool) {
+    pub(crate) fn consume(self) -> (IrStructPool, IrEnumPool) {
         (self.struct_pool, self.enum_pool)
     }
 
     pub(crate) fn parse_type(&self, ty: &Type) -> IrType {
+        todo!()
+    }
+
+    pub(crate) fn convert_path_to_ir_type(&self, type_path: &TypePath) -> Result<IrType, String> {
         todo!()
     }
 }

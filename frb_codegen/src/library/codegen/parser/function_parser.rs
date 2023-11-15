@@ -197,10 +197,10 @@ impl<'a> FunctionParser<'a> {
                             };
 
                             let error = if let Some(StructRef(mut struct_ref)) = error {
-                                struct_ref.is_exception = true;
+                                // struct_ref.is_exception = true; // TODO rm
                                 Some(StructRef(struct_ref))
                             } else if let Some(EnumRef(mut enum_ref)) = error {
-                                enum_ref.is_exception = true;
+                                // enum_ref.is_exception = true; // TODO rm
                                 Some(EnumRef(enum_ref))
                             } else {
                                 error
