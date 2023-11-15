@@ -11,7 +11,7 @@ use crate::codegen::parser::ParserResult;
 struct FunctionParser;
 
 impl FunctionParser {
-    fn parse_function(&mut self, func: &ItemFn) -> ParserResult<IrFunc> {
+    fn parse_function(&self, func: &ItemFn) -> ParserResult<IrFunc> {
         debug!("parse_function function name: {:?}", func.sig.ident);
 
         let sig = &func.sig;
