@@ -2,6 +2,7 @@ pub(crate) mod error;
 pub(crate) mod internal_config;
 pub(crate) mod reader;
 pub(crate) mod source_graph;
+pub(crate) mod type_parser;
 
 use std::path::Path;
 use syn::File;
