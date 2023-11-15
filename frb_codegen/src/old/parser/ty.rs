@@ -589,6 +589,7 @@ impl<'a> TypeParser<'a> {
             fields.push(IrField {
                 name: IrIdent::new(field_name),
                 ty: field_type,
+                // TODO use `metadata.non_final()`
                 is_final: !markers::has_non_final(&field.attrs),
                 comments: extract_comments(&field.attrs),
                 default: IrDefaultValue::extract(&field.attrs),

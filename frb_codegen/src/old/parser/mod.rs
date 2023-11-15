@@ -50,30 +50,6 @@ impl<'a> Parser<'a> {
 }
 
 impl IrDefaultValue {
-    // TODO use `parse_metadata`
-    // pub(crate) fn extract(attrs: &[Attribute]) -> Option<Self> {
-    //     let defaults = attrs
-    //         .iter()
-    //         .filter(|attr| attr.path().is_ident("frb"))
-    //         .map(|attr| attr.parse_args::<FrbOption>())
-    //         .filter_map(|attr| {
-    //             if let Ok(FrbOption::Default(default)) = attr {
-    //                 Some(default)
-    //             } else {
-    //                 None
-    //             }
-    //         })
-    //         .collect::<Vec<_>>();
-    //     match &defaults[..] {
-    //         [] => None,
-    //         [single] => Some(single.clone()),
-    //         [.., last] => {
-    //             log::warn!("Only one `default = ..` attribute is expected; taking the last one");
-    //             Some(last.clone())
-    //         }
-    //     }
-    // }
-
     pub(crate) fn to_dart(&self) -> Cow<str> {
         match self {
             Self::Bool(lit) => if lit.value { "true" } else { "false" }.into(),

@@ -33,6 +33,17 @@ impl FrbMetadata {
         }
         (*candidates.last()).copied()
     }
+
+    pub(crate) fn non_final(&self) -> bool {
+        self.0.iter().any(|item| item == FrbOption::NonFinal)
+    }
+
+    pub(crate) fn mirror(&self) -> Vec<Path> {
+        self.0
+            .iter()
+            .filter_map(|item| if_then_some!(let FrbOption::Mirror(mirror) = item, mirror.0))
+            .collect()
+    }
 }
 
 mod frb_keyword {

@@ -31,6 +31,7 @@ fn syn_vis_to_visibility(vis: &syn::Visibility) -> Visibility {
 
 /// Get a struct or enum ident, possibly remapped by a mirror marker
 fn get_ident(ident: &Ident, attrs: &[Attribute]) -> (Vec<Ident>, bool) {
+    // TODO use `metadata.mirror()`
     let res = markers::extract_mirror_marker(attrs)
         .into_iter()
         .filter_map(|path| {
