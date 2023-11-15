@@ -15,15 +15,15 @@ pub(crate) fn parse(config: &ParserInternalConfig) -> ParserResult<IrPack> {
     todo!()
 }
 
-fn parse_one(rust_input_path: &Path, manifest_path: &Path) -> ParserResult<IrPack> {
+fn parse_one(rust_input_path: &Path, rust_crate_dir: &Path) -> ParserResult<IrPack> {
     debug!("Phase: Parse source code to AST");
-    let source_rust_content = read_rust_file(rust_input_path);
+    let source_rust_content = read_rust_file(rust_input_path, rust_crate_dir);
     let file_ast = syn::parse_file(&source_rust_content)?;
 
     debug!("Phase: Parse AST to IR");
     parse_one_ast(&source_rust_content, file_ast, &manifest_path)
 }
 
-fn parse_one_ast(source_rust_content: &str, file_ast: File, manifest_path: &Path) -> ParserResult<IrPack> {
+fn parse_one_ast(source_rust_content: &str, file_ast: File, rust_crate_dir: &Path) -> ParserResult<IrPack> {
     todo!()
 }

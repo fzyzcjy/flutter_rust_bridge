@@ -33,14 +33,13 @@ impl InternalConfig {
 
         let rust_crate_dir: PathBuf = config.rust_crate_dir.map(PathBuf::from)
             .unwrap_or(fallback_rust_crate_dir(rust_input_path_pack.one_rust_input_path())?);
-        let manifest_path = rust_crate_dir.join("Cargo.toml");
         let dart_root = config.dart_root.map(PathBuf::from)
             .unwrap_or(fallback_dart_root(&dart_output_dir)?);
 
         Ok(InternalConfig {
             parser: ParserInternalConfig {
                 rust_input_path_pack,
-                manifest_path,
+                rust_crate_dir,
             },
             generator: GeneratorInternalConfig {
                 dart: GeneratorDartInternalConfig {
