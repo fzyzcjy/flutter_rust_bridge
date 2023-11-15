@@ -24,20 +24,21 @@ impl Crate {
         let root_src_content = fs::read_to_string(&root_src_file)?;
         let root_src_ast = syn::parse_file(&root_src_content)?;
 
-        let mut result = Crate {
+        let root_module = Module {
+            visibility: Visibility::Public,
+            file_path: root_src_file,
+            module_path: vec!["crate".to_string()],
+            source: ModuleSource::File(root_src_ast),
+            scope: None,
+        };
+        root_module.resolve();
+
+        Ok(Crate {
             name: root_package.name.clone(),
             manifest_path: fs::canonicalize(manifest_path)?,
             root_src_file: root_src_file.clone(),
-            root_module: Module {
-                visibility: Visibility::Public,
-                file_path: root_src_file,
-                module_path: vec!["crate".to_string()],
-                source: ModuleSource::File(root_src_ast),
-                scope: None,
-            },
-        };
-        result.root_module.resolve();
-        Ok(result)
+            root_module,
+        })
     }
 
     pub fn root_module(&self) -> &Module { &self.root_module }
