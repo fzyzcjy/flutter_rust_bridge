@@ -16,8 +16,9 @@ pub(crate) fn extract_generalized_functions_from_file(file: &File) -> ParserResu
 fn extract_fns_from_file(file: &File) -> Vec<ItemFn> {
     file.items
         .iter()
-        .filter_map(if_then_some!(let Item::Fn(ref item_fn) = item, item_fn))
+        .filter_map(|item| if_then_some!(let Item::Fn(ref item_fn) = item, item_fn))
         .filter(|item_fn| matches!(item_fn.vis, Visibility::Public(_)))
+        .cloned()
         .collect_vec()
 }
 
@@ -118,7 +119,7 @@ fn convert_item_method_to_function(
                                 arguments: PathArguments::None,
                             });
                             if mutability.is_some() {
-                                return Err(Error::NoMutSelf);
+                                return Err(super::error::Error::NoMutSelf);
                             }
                             Ok(FnArg::Typed(PatType {
                                 attrs: vec![],
