@@ -58,7 +58,7 @@ fn parse_one_ast(
 
     let funcs = src_fns
         .iter()
-        .map(function_parser.parse_function)
+        .map(|f| function_parser.parse_function(f))
         .collect::<ParserResult<_>>()?;
 
     let has_executor = source_rust_content.contains(HANDLER_NAME);

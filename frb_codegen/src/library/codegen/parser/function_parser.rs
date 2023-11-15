@@ -18,11 +18,15 @@ use syn::*;
 const STREAM_SINK_IDENT: &str = "StreamSink";
 
 pub(crate) struct FunctionParser<'a> {
-    type_parser: TypeParser<'a>,
+    type_parser: &'a TypeParser<'a>,
 }
 
 impl<'a> FunctionParser<'a> {
-    fn parse_function(&self, func: &ItemFn) -> ParserResult<IrFunc> {
+    pub(crate) fn new(type_parser: &'a TypeParser<'a>) -> Self {
+        Self { type_parser }
+    }
+
+    pub(crate) fn parse_function(&self, func: &ItemFn) -> ParserResult<IrFunc> {
         debug!("parse_function function name: {:?}", func.sig.ident);
 
         let sig = &func.sig;
