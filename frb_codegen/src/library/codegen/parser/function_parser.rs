@@ -196,15 +196,17 @@ impl<'a> FunctionParser<'a> {
                                 args.last().cloned()
                             };
 
-                            let error = if let Some(StructRef(struct_ref)) = error {
-                                // struct_ref.is_exception = true; // TODO rm
-                                Some(StructRef(struct_ref))
-                            } else if let Some(EnumRef(enum_ref)) = error {
-                                // enum_ref.is_exception = true; // TODO rm
-                                Some(EnumRef(enum_ref))
-                            } else {
-                                error
-                            };
+                            // TODO rm this block, which simply sets `is_exception` to be true
+                            //      but we have removed this field
+                            // let error = if let Some(StructRef(mut struct_ref)) = error {
+                            //     struct_ref.is_exception = true;
+                            //     Some(StructRef(struct_ref))
+                            // } else if let Some(EnumRef(mut enum_ref)) = error {
+                            //     enum_ref.is_exception = true;
+                            //     Some(EnumRef(enum_ref))
+                            // } else {
+                            //     error
+                            // };
 
                             Some(FuncOutput::ResultType {
                                 ok: ok.clone(),
