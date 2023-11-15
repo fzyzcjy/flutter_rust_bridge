@@ -17,7 +17,11 @@ impl IrTypeTrait for IrTypeBoxed {
     fn safe_ident(&self) -> String {
         format!(
             "box_{}{}",
-            if self.exist_in_real_api { "" } else { "autoadd_" },
+            if self.exist_in_real_api {
+                ""
+            } else {
+                "autoadd_"
+            },
             self.inner.safe_ident()
         )
     }

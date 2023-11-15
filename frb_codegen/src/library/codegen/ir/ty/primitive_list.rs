@@ -1,6 +1,6 @@
 use crate::codegen::ir::pack::IrPack;
-use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 
 crate::ir! {
 pub struct IrTypePrimitiveList {

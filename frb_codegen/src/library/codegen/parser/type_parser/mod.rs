@@ -1,7 +1,7 @@
-use std::collections::{HashMap, HashSet};
-use syn::Type;
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
 use crate::codegen::parser::source_graph::modules::{Enum, Struct};
+use std::collections::{HashMap, HashSet};
+use syn::Type;
 
 pub struct TypeParser<'a> {
     src_structs: HashMap<String, &'a Struct>,

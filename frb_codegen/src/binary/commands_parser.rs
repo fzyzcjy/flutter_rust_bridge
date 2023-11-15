@@ -1,7 +1,7 @@
-use anyhow::{Context, Result};
-use log::debug;
-use lib_flutter_rust_bridge_codegen::codegen::Config;
 use crate::binary::commands::GenerateCommandArgs;
+use anyhow::{Context, Result};
+use lib_flutter_rust_bridge_codegen::codegen::Config;
+use log::debug;
 
 pub(crate) fn compute_codegen_config(args: GenerateCommandArgs) -> Result<Config> {
     if args == Default::default() {
@@ -47,18 +47,20 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> 
 
 #[cfg(test)]
 mod tests {
-    use std::path::PathBuf;
+    use crate::binary::commands::{Cli, Commands};
+    use crate::binary::commands_parser::compute_codegen_config;
     use clap::Parser;
     use itertools::concat;
     use lib_flutter_rust_bridge_codegen::codegen;
     use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_test_logging;
-    use crate::binary::commands::{Cli, Commands};
-    use crate::binary::commands_parser::compute_codegen_config;
     use serial_test::serial;
+    use std::path::PathBuf;
 
     // duplicated from `test_utils.rs`, since we do not want to expose it from the lib
     fn set_cwd_test_fixture(fixture_name: &str) -> anyhow::Result<()> {
-        let d = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("test_fixtures").join(fixture_name);
+        let d = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+            .join("test_fixtures")
+            .join(fixture_name);
         log::debug!("set_cwd_test_fixture: {d:?}");
         Ok(std::env::set_current_dir(d)?)
     }
@@ -66,7 +68,8 @@ mod tests {
     // need to run serially, otherwise working directory will override each other
     #[test]
     #[serial]
-    fn test_compute_codegen_config_mode_from_files_auto_flutter_rust_bridge_yaml() -> anyhow::Result<()> {
+    fn test_compute_codegen_config_mode_from_files_auto_flutter_rust_bridge_yaml(
+    ) -> anyhow::Result<()> {
         configure_opinionated_test_logging();
         set_cwd_test_fixture("commands_parser/flutter_rust_bridge_yaml")?;
 
@@ -108,17 +111,32 @@ mod tests {
         configure_opinionated_test_logging();
 
         // bool flags
-        let common_args = vec!["", "generate", "--rust-input", "hello.rs", "--dart-output", "hello.dart", "--c-output", "hello.h"];
+        let common_args = vec![
+            "",
+            "generate",
+            "--rust-input",
+            "hello.rs",
+            "--dart-output",
+            "hello.dart",
+            "--c-output",
+            "hello.h",
+        ];
         assert_eq!(run_command_line(common_args.clone()).dart3, Some(true));
-        assert_eq!(run_command_line(common_args.clone()).rust_input, "hello.rs".to_string());
-        assert_eq!(run_command_line(concat([common_args.clone(), vec!["--no-dart3"]])).dart3, Some(false));
+        assert_eq!(
+            run_command_line(common_args.clone()).rust_input,
+            "hello.rs".to_string()
+        );
+        assert_eq!(
+            run_command_line(concat([common_args.clone(), vec!["--no-dart3"]])).dart3,
+            Some(false)
+        );
     }
 
     fn run_command_line(args: Vec<&'static str>) -> codegen::Config {
         let cli = Cli::parse_from(args);
         let args = match cli.command {
             Commands::Generate(args) => args,
-            _ => panic!()
+            _ => panic!(),
         };
         compute_codegen_config(args).unwrap()
     }

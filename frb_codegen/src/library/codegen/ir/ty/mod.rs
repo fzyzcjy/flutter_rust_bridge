@@ -13,8 +13,8 @@ pub(crate) mod rust_opaque;
 pub(crate) mod structure;
 pub(crate) mod unencodable;
 
-use enum_dispatch::enum_dispatch;
 use crate::codegen::ir::pack::IrPack;
+use enum_dispatch::enum_dispatch;
 
 crate::ir! {
 // Remark: "Ty" instead of "Type", since "type" is a reserved word in Rust.

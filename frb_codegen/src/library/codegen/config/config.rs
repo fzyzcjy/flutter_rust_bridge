@@ -35,4 +35,3 @@ pub enum ConfigDump {
     Config,
     Ir,
 }
-

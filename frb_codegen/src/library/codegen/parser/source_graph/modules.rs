@@ -1,6 +1,6 @@
+use derivative::Derivative;
 use std::collections::HashMap;
 use std::path::PathBuf;
-use derivative::Derivative;
 use syn::{Ident, ItemEnum, ItemStruct, Type};
 
 #[derive(Clone, Debug)]
@@ -9,8 +9,7 @@ pub struct Module {
     pub(super) scope: ModuleScope,
 }
 
-#[derive(Clone)]
-#[derive(Derivative)]
+#[derive(Clone, Derivative)]
 #[derivative(Debug)]
 pub struct ModuleInfo {
     pub(super) visibility: Visibility,
@@ -26,7 +25,7 @@ pub enum Visibility {
     Public,
     Restricted,
     // Not supported
-    Inherited,  // Usually means private
+    Inherited, // Usually means private
 }
 
 #[derive(Debug, Clone)]
@@ -41,8 +40,7 @@ pub enum ModuleSource {
     ModuleInFile(Vec<syn::Item>),
 }
 
-#[derive(Clone)]
-#[derive(Derivative)]
+#[derive(Clone, Derivative)]
 #[derivative(Debug)]
 pub struct Struct {
     ident: Ident,
@@ -53,8 +51,7 @@ pub struct Struct {
     mirror: bool,
 }
 
-#[derive(Clone)]
-#[derive(Derivative)]
+#[derive(Clone, Derivative)]
 #[derivative(Debug)]
 pub struct Enum {
     ident: Ident,
@@ -94,12 +91,16 @@ impl Module {
     }
 
     pub fn collect_types(&self) -> HashMap<String, Type> {
-        self.collect_objects(|module| &module.scope.type_alias, |x| (x.ident.clone(), x.target.clone()))
+        self.collect_objects(
+            |module| &module.scope.type_alias,
+            |x| (x.ident.clone(), x.target.clone()),
+        )
     }
 
     fn collect_objects<T, F, G, K, V>(&self, f: F, extract_entry: G) -> HashMap<String, V>
-        where F: Fn(&Module) -> &[T],
-              G: Fn(&T) -> (String, V),
+    where
+        F: Fn(&Module) -> &[T],
+        G: Fn(&T) -> (String, V),
     {
         let mut ans = HashMap::new();
         self.visit_modules(&mut |module| {

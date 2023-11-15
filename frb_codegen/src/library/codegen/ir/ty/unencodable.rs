@@ -22,5 +22,7 @@ pub enum Args {
 impl IrTypeTrait for IrTypeUnencodable {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, _f: &mut F, _ir_pack: &IrPack) {}
 
-    fn safe_ident(&self) -> String { unimplemented!() }
+    fn safe_ident(&self) -> String {
+        unimplemented!()
+    }
 }

@@ -1,8 +1,8 @@
+use crate::library::commands::cargo_expand::cargo_expand;
 use anyhow::Result;
-use std::path::Path;
 use itertools::Itertools;
 use log::debug;
-use crate::library::commands::cargo_expand::cargo_expand;
+use std::path::Path;
 
 pub(crate) fn read_rust_file(rust_file_path: &Path, rust_crate_dir: &Path) -> Result<String> {
     let module = get_rust_mod(rust_file_path, rust_crate_dir)?;
@@ -13,7 +13,10 @@ pub(crate) fn read_rust_file(rust_file_path: &Path, rust_crate_dir: &Path) -> Re
 fn get_rust_mod(rust_file_path: &Path, rust_crate_dir: &Path) -> Result<Option<String>> {
     let relative_path = rust_file_path.strip_prefix(rust_crate_dir.join("src"))?;
 
-    let mut components = relative_path.iter().map(|s| s.to_str().unwrap().to_owned()).collect_vec();
+    let mut components = relative_path
+        .iter()
+        .map(|s| s.to_str().unwrap().to_owned())
+        .collect_vec();
 
     strip_suffix_inplace(components.last_mut().unwrap(), ".rs");
 
@@ -33,34 +36,46 @@ fn strip_suffix_inplace(mut s: &mut String, suffix: &str) {
 
 #[cfg(test)]
 mod tests {
-    use std::path::PathBuf;
     use super::*;
+    use std::path::PathBuf;
 
     #[test]
     pub fn test_get_dir_and_mod_simple_mod() {
         let actual = get_rust_mod(
-            &PathBuf::from("/project/src/api.rs"), &PathBuf::from("/project")).unwrap();
+            &PathBuf::from("/project/src/api.rs"),
+            &PathBuf::from("/project"),
+        )
+        .unwrap();
         assert_eq!(Some("api".to_owned()), actual);
     }
 
     #[test]
     pub fn test_get_dir_and_mod_sub_mod() {
         let actual = get_rust_mod(
-            &PathBuf::from("/project/src/sub/subsub.rs"), &PathBuf::from("/project")).unwrap();
+            &PathBuf::from("/project/src/sub/subsub.rs"),
+            &PathBuf::from("/project"),
+        )
+        .unwrap();
         assert_eq!(Some("sub::subsub".to_owned()), actual);
     }
 
     #[test]
     pub fn test_get_dir_and_mod_lib_rs() {
         let actual = get_rust_mod(
-            &PathBuf::from("/project/src/lib.rs"), &PathBuf::from("/project")).unwrap();
+            &PathBuf::from("/project/src/lib.rs"),
+            &PathBuf::from("/project"),
+        )
+        .unwrap();
         assert_eq!(None, actual);
     }
 
     #[test]
     pub fn test_get_dir_and_mod_mod_rs() {
         let actual = get_rust_mod(
-            &PathBuf::from("/project/src/hello/mod.rs"), &PathBuf::from("/project")).unwrap();
+            &PathBuf::from("/project/src/hello/mod.rs"),
+            &PathBuf::from("/project"),
+        )
+        .unwrap();
         assert_eq!(Some("hello".to_owned()), actual);
     }
 }

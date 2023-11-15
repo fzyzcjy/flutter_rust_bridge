@@ -1,11 +1,11 @@
-use syn::File;
-use anyhow::Context;
-use itertools::Itertools;
-use syn::*;
-use syn::punctuated::Punctuated;
-use syn::token::Colon;
 use crate::codegen::parser::ParserResult;
 use crate::if_then_some;
+use anyhow::Context;
+use itertools::Itertools;
+use syn::punctuated::Punctuated;
+use syn::token::Colon;
+use syn::File;
+use syn::*;
 
 pub(crate) fn extract_generalized_functions_from_file(file: &File) -> ParserResult<Vec<ItemFn>> {
     let mut ans = extract_fns_from_file(&file);
@@ -14,7 +14,8 @@ pub(crate) fn extract_generalized_functions_from_file(file: &File) -> ParserResu
 }
 
 fn extract_fns_from_file(file: &File) -> Vec<ItemFn> {
-    file.items.iter()
+    file.items
+        .iter()
         .filter_map(if_then_some!(let Item::Fn(ref item_fn) = item, item_fn))
         .filter(|item_fn| matches!(item_fn.vis, Visibility::Public(_)))
         .collect_vec()
@@ -58,9 +59,9 @@ fn convert_item_method_to_function(
                 let ItemImpl { self_ty, .. } = item_impl;
                 if let Type::Path(TypePath { qself: _, path }) = &**self_ty {
                     if let Some(PathSegment {
-                                    ident,
-                                    arguments: _,
-                                }) = path.segments.first()
+                        ident,
+                        arguments: _,
+                    }) = path.segments.first()
                     {
                         Some(ident.to_string())
                     } else {
@@ -77,7 +78,7 @@ fn convert_item_method_to_function(
                         struct_name: self_type.unwrap(),
                     },
                 )
-                    .serialize(),
+                .serialize(),
                 span,
             )
         } else {
@@ -88,7 +89,7 @@ fn convert_item_method_to_function(
                         struct_name: struct_name.clone(),
                     },
                 )
-                    .serialize(),
+                .serialize(),
                 span,
             )
         };

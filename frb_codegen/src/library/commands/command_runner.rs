@@ -1,6 +1,6 @@
+use crate::library::commands::error::Error;
 use std::path::{Path, PathBuf};
 use std::process::Output;
-use crate::library::commands::error::Error;
 
 pub(crate) type CommandResult<T = (), E = Error> = Result<T, E>;
 

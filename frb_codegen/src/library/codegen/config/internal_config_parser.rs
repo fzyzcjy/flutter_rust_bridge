@@ -1,17 +1,22 @@
-use std::collections::HashMap;
-use std::path::{Path, PathBuf};
-use anyhow::{Context, ensure, Result};
+use crate::codegen::config::internal_config::{
+    DartOutputPathPack, GeneratorCInternalConfig, GeneratorDartInternalConfig,
+    GeneratorInternalConfig, GeneratorRustInternalConfig, InternalConfig, Namespace,
+    PolisherInternalConfig,
+};
+use crate::codegen::parser::internal_config::{ParserInternalConfig, RustInputPathPack};
+use crate::codegen::Config;
+use crate::utils::path_utils::{find_parent_dir_with_file, glob_path, path_to_string};
+use anyhow::{ensure, Context, Result};
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 use log::debug;
-use crate::codegen::Config;
-use crate::codegen::config::internal_config::{DartOutputPathPack, GeneratorCInternalConfig, GeneratorDartInternalConfig, GeneratorInternalConfig, GeneratorRustInternalConfig, InternalConfig, Namespace, PolisherInternalConfig};
-use crate::codegen::parser::internal_config::{ParserInternalConfig, RustInputPathPack};
-use crate::utils::path_utils::{find_parent_dir_with_file, glob_path, path_to_string};
+use std::collections::HashMap;
+use std::path::{Path, PathBuf};
 
 impl InternalConfig {
     pub(crate) fn parse(config: Config) -> Result<Self> {
-        let base_dir = config.base_dir
+        let base_dir = config
+            .base_dir
             .filter(|s| !s.is_empty())
             .map(PathBuf::from)
             .unwrap_or(std::env::current_dir()?);
@@ -20,20 +25,33 @@ impl InternalConfig {
         let rust_input_path_pack = compute_rust_input_path_pack(&config.rust_input, &base_dir)?;
         let namespaces = rust_input_path_pack.rust_input_path.keys().collect_vec();
 
-        let rust_output_path = base_dir.join(&config.rust_output.map(PathBuf::from)
-            .unwrap_or_else(|| fallback_rust_output_path(rust_input_path_pack.one_rust_input_path())));
+        let rust_output_path =
+            base_dir.join(&config.rust_output.map(PathBuf::from).unwrap_or_else(|| {
+                fallback_rust_output_path(rust_input_path_pack.one_rust_input_path())
+            }));
 
         let dart_output_dir: PathBuf = base_dir.join(config.dart_output);
         let dart_output_path_pack = compute_dart_output_path_pack(&dart_output_dir, &namespaces);
         let dart_class_name = compute_dart_class_name(&config.dart_class_name, &namespaces);
 
         let c_output_path = base_dir.join(&config.c_output);
-        let duplicated_c_output_path = config.duplicated_c_output.unwrap_or_default()
-            .into_iter().map(|p| base_dir.join(&p)).collect();
+        let duplicated_c_output_path = config
+            .duplicated_c_output
+            .unwrap_or_default()
+            .into_iter()
+            .map(|p| base_dir.join(&p))
+            .collect();
 
-        let rust_crate_dir: PathBuf = config.rust_crate_dir.map(PathBuf::from)
-            .unwrap_or(fallback_rust_crate_dir(rust_input_path_pack.one_rust_input_path())?);
-        let dart_root = config.dart_root.map(PathBuf::from)
+        let rust_crate_dir: PathBuf =
+            config
+                .rust_crate_dir
+                .map(PathBuf::from)
+                .unwrap_or(fallback_rust_crate_dir(
+                    rust_input_path_pack.one_rust_input_path(),
+                )?);
+        let dart_root = config
+            .dart_root
+            .map(PathBuf::from)
             .unwrap_or(fallback_dart_root(&dart_output_dir)?);
 
         Ok(InternalConfig {
@@ -58,8 +76,12 @@ impl InternalConfig {
                 },
                 c: GeneratorCInternalConfig {
                     c_output_path,
-                    llvm_path: config.llvm_path.unwrap_or_else(fallback_llvm_path)
-                        .into_iter().map(PathBuf::from).collect_vec(),
+                    llvm_path: config
+                        .llvm_path
+                        .unwrap_or_else(fallback_llvm_path)
+                        .into_iter()
+                        .map(PathBuf::from)
+                        .collect_vec(),
                     llvm_compiler_opts: config.llvm_compiler_opts.unwrap_or_else(String::new),
                     extra_headers: config.extra_headers.unwrap_or_else(String::new),
                 },
@@ -76,10 +98,15 @@ impl InternalConfig {
 }
 
 impl RustInputPathPack {
-    fn one_rust_input_path(&self) -> &Path { self.rust_input_path.iter().next().unwrap().1 }
+    fn one_rust_input_path(&self) -> &Path {
+        self.rust_input_path.iter().next().unwrap().1
+    }
 }
 
-fn compute_rust_input_path_pack(raw_rust_input: &str, base_dir: &Path) -> Result<RustInputPathPack> {
+fn compute_rust_input_path_pack(
+    raw_rust_input: &str,
+    base_dir: &Path,
+) -> Result<RustInputPathPack> {
     const BLACKLIST_FILE_NAMES: [&str; 1] = ["mod.rs"];
 
     let paths = glob_path(&base_dir.join(raw_rust_input))?
@@ -88,7 +115,8 @@ fn compute_rust_input_path_pack(raw_rust_input: &str, base_dir: &Path) -> Result
         .collect_vec();
 
     let pack = RustInputPathPack {
-        rust_input_path: paths.into_iter()
+        rust_input_path: paths
+            .into_iter()
             .map(|path| Ok((compute_namespace_from_rust_input_path(&path)?, path)))
             .collect::<Result<HashMap<_, _>>>()?,
     };
@@ -103,14 +131,29 @@ fn compute_rust_input_path_pack(raw_rust_input: &str, base_dir: &Path) -> Result
 }
 
 fn compute_namespace_from_rust_input_path(rust_input_path: &Path) -> Result<Namespace> {
-    let stem = rust_input_path.file_stem().context("cannot get file stem")?.to_str().context("cannot convert to str")?;
-    Ok(Namespace { name: stem.to_owned() })
+    let stem = rust_input_path
+        .file_stem()
+        .context("cannot get file stem")?
+        .to_str()
+        .context("cannot convert to str")?;
+    Ok(Namespace {
+        name: stem.to_owned(),
+    })
 }
 
-fn compute_dart_output_path_pack(dart_output_dir: &Path, namespaces: &[&Namespace]) -> DartOutputPathPack {
+fn compute_dart_output_path_pack(
+    dart_output_dir: &Path,
+    namespaces: &[&Namespace],
+) -> DartOutputPathPack {
     DartOutputPathPack {
-        dart_decl_output_path: namespaces.iter()
-            .map(|&namespace| (namespace.to_owned(), dart_output_dir.join(compute_dart_decl_output_filename(namespace))))
+        dart_decl_output_path: namespaces
+            .iter()
+            .map(|&namespace| {
+                (
+                    namespace.to_owned(),
+                    dart_output_dir.join(compute_dart_decl_output_filename(namespace)),
+                )
+            })
             .collect(),
         dart_impl_output_path: dart_output_dir.join("bridge_generated.dart"),
     }
@@ -120,11 +163,21 @@ fn compute_dart_decl_output_filename(namespace: &Namespace) -> String {
     format!("{}.dart", namespace.name.to_case(Case::Snake))
 }
 
-fn compute_dart_class_name(dart_class_name: &Option<String>, namespaces: &[&Namespace]) -> HashMap<Namespace, String> {
+fn compute_dart_class_name(
+    dart_class_name: &Option<String>,
+    namespaces: &[&Namespace],
+) -> HashMap<Namespace, String> {
     const NAMESPACE_PLACEHOLDER: &str = "{namespace}";
     let dart_class_name = dart_class_name.as_deref().unwrap_or(NAMESPACE_PLACEHOLDER);
-    namespaces.iter()
-        .map(|&namespace| (namespace.to_owned(), dart_class_name.replace(NAMESPACE_PLACEHOLDER, &namespace.name.to_case(Case::Pascal))))
+    namespaces
+        .iter()
+        .map(|&namespace| {
+            (
+                namespace.to_owned(),
+                dart_class_name
+                    .replace(NAMESPACE_PLACEHOLDER, &namespace.name.to_case(Case::Pascal)),
+            )
+        })
         .collect()
 }
 
@@ -147,13 +200,15 @@ fn fallback_llvm_path() -> Vec<String> {
 }
 
 fn fallback_dart_root(dart_output_dir: &Path) -> Result<PathBuf> {
-    find_parent_dir_with_file(dart_output_dir, "pubspec.yaml")
-        .with_context(|| format!("Fail to detect dart root from dart_output_dir={dart_output_dir:?}"))
+    find_parent_dir_with_file(dart_output_dir, "pubspec.yaml").with_context(|| {
+        format!("Fail to detect dart root from dart_output_dir={dart_output_dir:?}")
+    })
 }
 
 fn fallback_rust_crate_dir(rust_input_path: &Path) -> Result<PathBuf> {
-    find_parent_dir_with_file(rust_input_path, "Cargo.toml")
-        .with_context(|| format!("Fail to detect rust crate dir from rust_input_path={rust_input_path:?}"))
+    find_parent_dir_with_file(rust_input_path, "Cargo.toml").with_context(|| {
+        format!("Fail to detect rust crate dir from rust_input_path={rust_input_path:?}")
+    })
 }
 
 fn fallback_rust_output_path(rust_input_path: &Path) -> PathBuf {
@@ -162,15 +217,15 @@ fn fallback_rust_output_path(rust_input_path: &Path) -> PathBuf {
 
 #[cfg(test)]
 mod tests {
-    use std::fs;
-    use log::debug;
-    use serde_json::Value;
-    use serial_test::serial;
-    use crate::codegen::Config;
     use crate::codegen::config::internal_config::InternalConfig;
+    use crate::codegen::Config;
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::path_utils::path_to_string;
     use crate::utils::test_utils::{get_test_fixture_dir, set_cwd_test_fixture};
+    use log::debug;
+    use serde_json::Value;
+    use serial_test::serial;
+    use std::fs;
 
     #[test]
     #[serial]
@@ -193,7 +248,10 @@ mod tests {
         let internal_config = InternalConfig::parse(config)?;
 
         let actual_string = serde_json::to_string_pretty(&internal_config)?;
-        let actual_string = actual_string.replace(&path_to_string(&get_test_fixture_dir(fixture_name))?, "{the-working-directory}");
+        let actual_string = actual_string.replace(
+            &path_to_string(&get_test_fixture_dir(fixture_name))?,
+            "{the-working-directory}",
+        );
         debug!("internal_config:\n{}", actual_string);
 
         let actual: Value = serde_json::from_str(&actual_string)?;

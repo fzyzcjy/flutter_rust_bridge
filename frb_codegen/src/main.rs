@@ -3,12 +3,12 @@
 
 mod binary;
 
-use clap::Parser;
-use log::debug;
-use lib_flutter_rust_bridge_codegen::*;
-use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_logging;
 use crate::binary::commands::{Cli, Commands};
 use crate::binary::commands_parser::compute_codegen_config;
+use clap::Parser;
+use lib_flutter_rust_bridge_codegen::utils::logs::configure_opinionated_logging;
+use lib_flutter_rust_bridge_codegen::*;
+use log::debug;
 
 fn main() -> anyhow::Result<()> {
     let cli = Cli::parse();

@@ -136,4 +136,3 @@ pub(crate) struct CreateCommandArgs {
 pub(crate) struct IntegrateCommandArgs {
     // nothing yet
 }
-

@@ -1,14 +1,18 @@
-use std::fs;
-use std::path::PathBuf;
-use anyhow::{bail, Context, Error};
-use log::debug;
 use crate::codegen::config::config::Config;
 use crate::utils::path_utils::path_to_string;
+use anyhow::{bail, Context, Error};
+use log::debug;
+use std::fs;
+use std::path::PathBuf;
 
 impl Config {
     pub fn from_files_auto() -> Result<Self, Error> {
-        if let Some(config) = Self::from_config_files()? { return Ok(config); }
-        if let Some(config) = Self::from_pubspec_yaml()? { return Ok(config); }
+        if let Some(config) = Self::from_config_files()? {
+            return Ok(config);
+        }
+        if let Some(config) = Self::from_pubspec_yaml()? {
+            return Ok(config);
+        }
         bail!("Fail to find any configuration file")
     }
 
@@ -53,8 +57,9 @@ impl Config {
             return match serde_yaml::from_reader(pubspec) {
                 Ok(Needle { data: Some(data) }) => Ok(Some(data)),
                 Ok(Needle { data: None }) => Ok(None),
-                Err(err) => Err(Error::new(err)
-                    .context(format!("Could not parse the 'flutter_rust_bridge' entry in {PUBSPEC_LOCATION}"))),
+                Err(err) => Err(Error::new(err).context(format!(
+                    "Could not parse the 'flutter_rust_bridge' entry in {PUBSPEC_LOCATION}"
+                ))),
             };
         }
 
@@ -68,4 +73,3 @@ impl Config {
         self
     }
 }
-

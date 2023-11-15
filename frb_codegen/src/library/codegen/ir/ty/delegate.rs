@@ -1,9 +1,9 @@
 use crate::codegen::ir::pack::IrPack;
-use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use crate::codegen::ir::ty::enumeration::IrTypeEnumRef;
 use crate::codegen::ir::ty::general_list::IrTypeGeneralList;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
+use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 
 crate::ir! {
 /// types that delegate to another type
@@ -85,7 +85,9 @@ impl IrTypeDelegate {
                 primitive: IrTypePrimitive::U8,
             }),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(primitive) => {
-                IrType::PrimitiveList(IrTypePrimitiveList { primitive: primitive.clone() })
+                IrType::PrimitiveList(IrTypePrimitiveList {
+                    primitive: primitive.clone(),
+                })
             }
             IrTypeDelegate::StringList => IrType::Delegate(IrTypeDelegate::String),
             IrTypeDelegate::PrimitiveEnum(inner) => IrType::Primitive(inner.repr.clone()),
@@ -109,10 +111,14 @@ impl IrTypeDelegateArray {
     pub fn get_delegate(&self) -> IrType {
         match self {
             IrTypeDelegateArray::GeneralArray { general, .. } => {
-                IrType::GeneralList(IrTypeGeneralList { inner: general.clone() })
+                IrType::GeneralList(IrTypeGeneralList {
+                    inner: general.clone(),
+                })
             }
             IrTypeDelegateArray::PrimitiveArray { primitive, .. } => {
-                IrType::PrimitiveList(IrTypePrimitiveList { primitive: primitive.clone() })
+                IrType::PrimitiveList(IrTypePrimitiveList {
+                    primitive: primitive.clone(),
+                })
             }
         }
     }

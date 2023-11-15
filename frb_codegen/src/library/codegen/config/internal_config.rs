@@ -1,7 +1,7 @@
+use crate::codegen::parser::internal_config::ParserInternalConfig;
+use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::path::PathBuf;
-use serde::{Serialize, Deserialize};
-use crate::codegen::parser::internal_config::ParserInternalConfig;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub(crate) struct InternalConfig {
