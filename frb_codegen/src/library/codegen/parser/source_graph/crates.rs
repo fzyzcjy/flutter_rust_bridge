@@ -27,7 +27,7 @@ impl Crate {
         let root_src_ast = syn::parse_file(&root_src_content)?;
 
         let root_module_info = get_root_module_info(root_src_file.clone(), root_src_ast);
-        let root_module = Module::parse(root_module_info);
+        let root_module = Module::parse(root_module_info)?;
 
         Ok(Crate {
             name: root_package.name.clone(),

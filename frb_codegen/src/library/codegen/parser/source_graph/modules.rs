@@ -87,9 +87,9 @@ impl Module {
         let mut scope_enums = Vec::new();
         let mut scope_types = Vec::new();
 
-        let items = match info.source.as_ref().unwrap() {
+        let items = match info.source {
             ModuleSource::File(file) => &file.items,
-            ModuleSource::ModuleInFile(items) => items,
+            ModuleSource::ModuleInFile(items) => &items,
         };
 
         for item in items.iter() {
