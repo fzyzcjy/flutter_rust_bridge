@@ -16,7 +16,8 @@ pub struct Crate {
 
 impl Crate {
     pub fn parse(manifest_path: &Path) -> ParserResult<Self> {
-        let metadata = execute_cargo_metadata(manifest_path)?;
+        let manifest_path = fs::canonicalize(manifest_path)?;
+        let metadata = execute_cargo_metadata(&manifest_path)?;
 
         let root_package = metadata.root_package().context("no root package")?;
         let root_src_file = get_root_src_file(root_package)?;
@@ -29,7 +30,7 @@ impl Crate {
 
         Ok(Crate {
             name: root_package.name.clone(),
-            manifest_path: fs::canonicalize(manifest_path)?,
+            manifest_path,
             root_module,
         })
     }
