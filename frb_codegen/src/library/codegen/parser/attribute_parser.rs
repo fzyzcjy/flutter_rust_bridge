@@ -76,7 +76,7 @@ mod frb_keyword {
 enum FrbAttribute {
     Mirror(FrbAttributeMirror),
     NonFinal,
-    Metadata(NamedOption<frb_keyword::dart_metadata, FrbAttributeDartAnnotation>),
+    Metadata(NamedOption<frb_keyword::dart_metadata, FrbAttributeDartMetadata>),
     Default(FrbAttributeDefaultValue),
 }
 
@@ -129,9 +129,9 @@ impl Parse for FrbAttributeMirror {
 }
 
 #[derive(Clone, Debug)]
-struct FrbAttributeDartAnnotation(Vec<IrDartAnnotation>);
+struct FrbAttributeDartMetadata(Vec<IrDartAnnotation>);
 
-impl Parse for FrbAttributeDartAnnotation {
+impl Parse for FrbAttributeDartMetadata {
     fn parse(input: ParseStream<'_>) -> Result<Self> {
         let content;
         parenthesized!(content in input);
