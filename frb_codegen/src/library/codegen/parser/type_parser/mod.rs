@@ -1,4 +1,5 @@
 pub(crate) mod misc;
+pub(crate) mod structure;
 
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
 use crate::codegen::ir::ty::IrType;

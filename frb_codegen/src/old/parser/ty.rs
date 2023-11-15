@@ -563,48 +563,4 @@ impl<'a> TypeParser<'a> {
             .collect();
         IrEnum::new(name, wrapper_name, path, comments, variants, false)
     }
-
-    fn parse_struct_core(&mut self, ident_string: &String) -> Option<IrStruct> {
-        let src_struct = self.src_structs[ident_string];
-        let mut fields = Vec::new();
-        let (is_fields_named, struct_fields) = match &src_struct.src.fields {
-            Fields::Named(FieldsNamed { named, .. }) => (true, named),
-            Fields::Unnamed(FieldsUnnamed { unnamed, .. }) => (false, unnamed),
-            _ => return None,
-        };
-        for (idx, field) in struct_fields.iter().enumerate() {
-            let field_name = field
-                .ident
-                .as_ref()
-                .map_or(format!("field{idx}"), ToString::to_string);
-            let field_type = self.parse_type(&field.ty);
-            fields.push(IrField {
-                name: IrIdent::new(field_name),
-                ty: field_type,
-                // TODO use `metadata.non_final()`
-                is_final: !markers::has_non_final(&field.attrs),
-                comments: extract_comments(&field.attrs),
-                default: IrDefaultValue::extract(&field.attrs),
-                settings: IrFieldSettings::default(),
-            });
-        }
-        let name = src_struct.ident.to_string();
-        let wrapper_name = if src_struct.mirror {
-            Some(format!("mirror_{name}"))
-        } else {
-            None
-        };
-        let path = Some(src_struct.path.clone());
-        let metadata = parse_metadata&src_struct.src.attrs);
-        let comments = extract_comments(&src_struct.src.attrs);
-        Some(IrStruct {
-            name,
-            wrapper_name,
-            path,
-            fields,
-            is_fields_named,
-            dart_metadata: metadata,
-            comments,
-        })
-    }
 }
