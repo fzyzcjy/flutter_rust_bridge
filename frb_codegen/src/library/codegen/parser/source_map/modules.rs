@@ -10,7 +10,8 @@ pub struct Module {
     visibility: Visibility,
     file_path: PathBuf,
     module_path: Vec<String>,
-    #[derivative(Debug="ignore")]
+    #[derivative(Debug = "ignore")]
+    // TODO why so many `Option`?
     source: Option<ModuleSource>,
     scope: Option<ModuleScope>,
 }
@@ -32,7 +33,7 @@ pub enum ModuleSource {
 #[derivative(Debug)]
 pub struct Struct {
     ident: Ident,
-    #[derivative(Debug="ignore")]
+    #[derivative(Debug = "ignore")]
     src: ItemStruct,
     visibility: Visibility,
     path: Vec<String>,
@@ -44,7 +45,7 @@ pub struct Struct {
 #[derivative(Debug)]
 pub struct Enum {
     ident: Ident,
-    #[derivative(Debug="ignore")]
+    #[derivative(Debug = "ignore")]
     src: ItemEnum,
     visibility: Visibility,
     path: Vec<String>,
@@ -67,51 +68,32 @@ pub struct ModuleScope {
 }
 
 impl Module {
-    pub fn collect_structs<'a>(&'a self, container: &mut HashMap<String, &'a Struct>) {
-        let scope = self.scope.as_ref().unwrap();
-        for scope_struct in &scope.structs {
-            container.insert(scope_struct.ident.to_string(), scope_struct);
-        }
-        for scope_module in &scope.modules {
-            scope_module.collect_structs(container);
-        }
+    pub fn collect_structs(&self) -> HashMap<String, &Struct> {
+        self.collect_objects(|module| &module.scope.as_ref().unwrap().structs)
     }
 
-    pub fn collect_structs_to_vec(&self) -> HashMap<String, &Struct> {
+    pub fn collect_enums(&self) -> HashMap<String, &Enum> {
+        self.collect_objects(|module| &module.scope.as_ref().unwrap().enums)
+    }
+
+    pub fn collect_type_aliases(&self) -> HashMap<String, &TypeAlias> {
+        self.collect_objects(|module| &module.scope.as_ref().unwrap().type_alias)
+    }
+
+    fn collect_objects<T, F: FnMut(&Module) -> &[T]>(&self, f: F) -> HashMap<String, &T> {
         let mut ans = HashMap::new();
-        self.collect_structs(&mut ans);
+        self.visit_modules(&mut |module| {
+            for item in f(module) {
+                ans.insert(item.ident.to_string(), item);
+            }
+        });
         ans
     }
 
-    pub fn collect_enums<'a>(&'a self, container: &mut HashMap<String, &'a Enum>) {
-        let scope = self.scope.as_ref().unwrap();
-        for scope_enum in &scope.enums {
-            container.insert(scope_enum.ident.to_string(), scope_enum);
+    fn visit_modules<F: FnMut(&Module)>(&self, f: &mut F) {
+        f(self);
+        for scope_module in &self.scope.as_ref().unwrap().modules {
+            scope_module.visit_modules(f);
         }
-        for scope_module in &scope.modules {
-            scope_module.collect_enums(container);
-        }
-    }
-
-    pub fn collect_enums_to_vec(&self) -> HashMap<String, &Enum> {
-        let mut ans = HashMap::new();
-        self.collect_enums(&mut ans);
-        ans
-    }
-
-    pub fn collect_types(&self, container: &mut HashMap<String, Type>) {
-        let scope = self.scope.as_ref().unwrap();
-        for scope_type in &scope.type_alias {
-            container.insert(scope_type.ident.to_string(), scope_type.target.clone());
-        }
-        for scope_module in &scope.modules {
-            scope_module.collect_types(container);
-        }
-    }
-
-    pub fn collect_types_to_pool(&self) -> HashMap<String, Type> {
-        let mut ans = HashMap::new();
-        self.collect_types(&mut ans);
-        ans
     }
 }
