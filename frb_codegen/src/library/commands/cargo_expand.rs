@@ -2,22 +2,25 @@ use std::{env, fs};
 use std::path::{Path, PathBuf};
 use lazy_static::lazy_static;
 use log::{info, warn};
+use anyhow::Result;
 
-// TODO use Path
-pub(crate) fn cargo_expand(rust_crate_dir: &Path, module: Option<String>, rust_file_path: &Path) -> String {
-    let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
-    #[cfg(windows)]
-        let manifest_dir = &manifest_dir.replace('\\', "/");
-    if !manifest_dir.is_empty() && dir == manifest_dir {
+pub(crate) fn cargo_expand(rust_crate_dir: &Path, module: Option<String>, rust_file_path: &Path) -> Result<String> {
+    let manifest_dir: PathBuf = env::var("CARGO_MANIFEST_DIR")?.into();
+
+    if !manifest_dir.is_empty() && rust_crate_dir == manifest_dir {
         warn!(
-            "can not run cargo expand on {dir} because cargo is already running and would block cargo-expand. This might cause errors if your api contains macros."
+            "Skip cargo-expand on {rust_crate_dir}, \
+             because cargo is already running and would block cargo-expand. \
+             This might cause errors if your api contains macros."
         );
-        return fs::read_to_string(file).unwrap_or_default();
+        return Ok(fs::read_to_string(file)?);
     }
+
     let mut cache = CACHE.lock().unwrap();
     let expanded = cache
-        .entry(String::from(dir))
-        .or_insert_with(|| run_cargo_expand(dir));
+        .entry(String::from(rust_crate_dir))
+        .or_insert_with(|| run_cargo_expand(rust_crate_dir));
+
     extract_module(expanded, module)
 }
 
@@ -25,7 +28,7 @@ lazy_static! {
     static ref CACHE: Mutex<HashMap<String, String>> = Mutex::new(HashMap::new());
 }
 
-fn extract_module(expanded: &str, module: Option<String>) -> String {
+fn extract_module(expanded: &str, module: Option<String>) -> Result<String> {
     if let Some(module) = module {
         let (_, expanded) = module
             .split("::")
@@ -44,19 +47,19 @@ fn extract_module(expanded: &str, module: Option<String>) -> String {
                     .unwrap_or(expanded.len());
                 (spaces + 4, &expanded[start..end])
             });
-        return String::from(expanded);
+        return Ok(expanded.to_owned())
     }
-    String::from(expanded)
+    Ok(expanded.to_owned())
 }
 
-fn run_cargo_expand(dir: &str) -> String {
-    info!("Running cargo expand in '{dir}'");
+fn run_cargo_expand(rust_crate_dir: &Path) -> String {
+    info!("Running cargo expand in '{rust_crate_dir}'");
     let args = vec![
         PathBuf::from("expand"),
         PathBuf::from("--theme=none"),
         PathBuf::from("--ugly"),
     ];
-    match execute_command("cargo", &args, Some(dir)) {
+    match execute_command("cargo", &args, Some(rust_crate_dir)) {
         Ok(output) => {
             let stdout = String::from_utf8(output.stdout).unwrap_or_default();
             let stderr = String::from_utf8(output.stderr).unwrap_or_default();
@@ -77,7 +80,7 @@ fn run_cargo_expand(dir: &str) -> String {
                 .replace("/// frb_marker: ", "")
         }
         Err(e) => {
-            panic!("Could not expand rust code at path {}: {}\n", dir, e);
+            panic!("Could not expand rust code at path {:?}: {}\n", rust_crate_dir, e);
         }
     }
 }
