@@ -541,7 +541,7 @@ impl<'a> TypeParser<'a> {
                             wrapper_name: None,
                             path: None,
                             is_fields_named: field_ident.is_some(),
-                            dart_metadata: extract_metadata(attrs),
+                            dart_metadata: parse_metadataattrs),
                             comments: extract_comments(attrs),
                             fields: variant
                                 .fields
@@ -602,7 +602,7 @@ impl<'a> TypeParser<'a> {
             None
         };
         let path = Some(src_struct.path.clone());
-        let metadata = extract_metadata(&src_struct.src.attrs);
+        let metadata = parse_metadata&src_struct.src.attrs);
         let comments = extract_comments(&src_struct.src.attrs);
         Some(IrStruct {
             name,
