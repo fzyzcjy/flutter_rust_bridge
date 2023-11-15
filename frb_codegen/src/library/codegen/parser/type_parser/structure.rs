@@ -16,11 +16,11 @@ impl<'a> TypeParser<'a> {
             _ => return Ok(None),
         };
 
-        let fields: Vec<_> = struct_fields
+        let fields = struct_fields
             .iter()
             .enumerate()
             .map(|(idx, field)| self.parse_struct_field(idx, field))
-            .collect()?;
+            .collect::<anyhow::Result<Vec<_>>>()?;
 
         let name = src_struct.0.ident.to_string();
         let wrapper_name = if src_struct.0.mirror {
