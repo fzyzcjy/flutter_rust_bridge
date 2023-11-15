@@ -64,7 +64,7 @@ impl<'a> FunctionParser<'a> {
                             name: IrIdent::new(name),
                             ty,
                             is_final: true,
-                            comments: extract_comments(&pat_type.attrs),
+                            comments: parse_comments(&pat_type.attrs),
                             default: IrDefaultValue::extract(&pat_type.attrs),
                             settings: IrFieldSettings::default(),
                         });
@@ -121,7 +121,7 @@ impl<'a> FunctionParser<'a> {
             output: output.context("Unsupported output")?,
             fallible,
             mode: mode.context("Missing mode")?,
-            comments: extract_comments(&func.attrs),
+            comments: parse_comments(&func.attrs),
             error_output: output_err,
         })
     }
@@ -225,7 +225,7 @@ impl<'a> FunctionParser<'a> {
     }
 }
 
-fn extract_comments(attrs: &[Attribute]) -> Vec<IrComment> {
+fn parse_comments(attrs: &[Attribute]) -> Vec<IrComment> {
     attrs
         .iter()
         .filter_map(|attr| match &attr.meta {
@@ -236,10 +236,25 @@ fn extract_comments(attrs: &[Attribute]) -> Vec<IrComment> {
                         lit: Lit::Str(lit), ..
                     }),
                 ..
-            }) if path.is_ident("doc") => Some(IrComment::from(lit.value().as_ref())),
+            }) if path.is_ident("doc") => Some(parse_comment(&lit.value())),
             _ => None,
         })
         .collect()
+}
+
+fn parse_comment(input: &str) -> IrComment {
+    IrComment(if input.contains('\n') {
+        // Dart's formatter has issues with block comments
+        // so we convert them ahead of time.
+        let formatted = input
+            .split('\n')
+            .map(|line| format!("///{line}"))
+            .collect::<Vec<_>>()
+            .join("\n");
+        formatted
+    } else {
+        format!("///{input}")
+    })
 }
 
 /// Represents a function's output type
