@@ -3,7 +3,7 @@ use convert_case::{Case, Casing};
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 
 crate::ir! {
-#[derive(strum_macros::ToString, Debug)]
+#[derive(strum_macros::Display)]
 pub enum IrTypePrimitive {
     U8,
     I8,

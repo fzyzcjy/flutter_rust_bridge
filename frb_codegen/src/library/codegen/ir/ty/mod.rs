@@ -14,27 +14,27 @@ pub(crate) mod structure;
 pub(crate) mod unencodable;
 
 use enum_dispatch::enum_dispatch;
-use primitive::IrTypePrimitive;
+use crate::codegen::ir::pack::IrPack;
 
 crate::ir! {
 // Remark: "Ty" instead of "Type", since "type" is a reserved word in Rust.
 #[enum_dispatch(IrTypeTrait)]
 pub enum IrType {
     // alphabetical order
-    Boxed(IrTypeBoxed),
-    DartOpaque(IrTypeDartOpaque),
-    Delegate(IrTypeDelegate),
-    Dynamic(IrTypeDynamic),
-    EnumRef(IrTypeEnumRef),
-    GeneralList(IrTypeGeneralList),
-    Optional(IrTypeOptional),
-    OptionalList(IrTypeOptionalList),
-    Primitive(IrTypePrimitive),
-    PrimitiveList(IrTypePrimitiveList),
-    Record(IrTypeRecord),
-    RustOpaque(IrTypeRustOpaque),
-    StructRef(IrTypeStructRef),
-    Unencodable(IrTypeUnencodable),
+    Boxed(boxed::IrTypeBoxed),
+    DartOpaque(dart_opaque::IrTypeDartOpaque),
+    Delegate(delegate::IrTypeDelegate),
+    Dynamic(dynamic::IrTypeDynamic),
+    EnumRef(enumeration::IrTypeEnumRef),
+    GeneralList(general_list::IrTypeGeneralList),
+    Optional(optional::IrTypeOptional),
+    OptionalList(optional_list::IrTypeOptionalList),
+    Primitive(primitive::IrTypePrimitive),
+    PrimitiveList(primitive_list::IrTypePrimitiveList),
+    Record(record::IrTypeRecord),
+    RustOpaque(rust_opaque::IrTypeRustOpaque),
+    StructRef(structure::IrTypeStructRef),
+    Unencodable(unencodable::IrTypeUnencodable),
 }
 }
 

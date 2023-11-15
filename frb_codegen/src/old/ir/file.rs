@@ -3,9 +3,6 @@ use crate::utils::misc::mod_from_rust_path;
 use crate::{generator, ir::*, Opts};
 use std::collections::{HashMap, HashSet};
 
-pub type IrStructPool = HashMap<String, IrStruct>;
-pub type IrEnumPool = HashMap<String, IrEnum>;
-
 impl IrPack {
     /// [f] returns [true] if it wants to stop going to the *children* of this subtree
     pub fn visit_types<F: FnMut(&IrType) -> bool>(

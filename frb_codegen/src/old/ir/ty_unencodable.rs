@@ -10,21 +10,6 @@ pub trait Splayable {
     fn splay(&self) -> Vec<(&str, Option<ArgsRefs>)>;
 }
 
-crate::ir! {
-pub enum Args {
-    Generic(Vec<IrType>),
-    Signature(Vec<IrType>),
-}
-}
-
-crate::ir! {
-/// A component of a fully qualified name and any type arguments for it
-pub struct NameComponent {
-    pub ident: String,
-    pub args: Option<Args>,
-}
-}
-
 impl Splayable for Vec<NameComponent> {
     /// Spread and turn out the data of a fully qualified name for structural pattern matching.
     fn splay(&self) -> Vec<(&str, Option<ArgsRefs>)> {
