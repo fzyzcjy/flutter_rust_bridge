@@ -42,7 +42,7 @@ impl Module {
                     scope_types.extend(parse_syn_item_type(item_type));
                 }
                 syn::Item::Mod(item_mod) => {
-                    scope_modules.push(parse_syn_item_mod(&info, &item_mod));
+                    scope_modules.extend(parse_syn_item_mod(&info, &item_mod)?);
                 }
                 _ => {}
             }
@@ -62,31 +62,33 @@ impl Module {
 }
 
 fn parse_syn_item_struct(info: &ModuleInfo, item: &ItemStruct) -> anyhow::Result<Vec<Struct>> {
-    parse_syn_item_struct_or_enum(info, item, Struct)
+    parse_syn_item_struct_or_enum(info, item, &item.ident, &item.attrs, &item.vis, Struct)
 }
 
 fn parse_syn_item_enum(info: &ModuleInfo, item: &ItemEnum) -> anyhow::Result<Vec<Enum>> {
-    parse_syn_item_struct_or_enum(info, item, Enum)
+    parse_syn_item_struct_or_enum(info, item, &item.ident, &item.attrs, &item.vis, Enum)
 }
 
-fn parse_syn_item_struct_or_enum<I, F, T>(
+fn parse_syn_item_struct_or_enum<I: Clone, F, T>(
     info: &ModuleInfo,
-    item_struct_or_enum: &I,
+    item: &I,
+    item_ident: &Ident,
+    item_attrs: &[Attribute],
+    item_vis: &syn::Visibility,
     constructor: F,
 ) -> anyhow::Result<Vec<T>>
 where
     F: Fn(StructOrEnum<I>) -> T,
 {
-    let ParseMirrorIdentOutput { idents, mirror } =
-        parse_mirror_ident(&item_struct_or_enum.ident, &item_struct_or_enum.attrs)?;
+    let ParseMirrorIdentOutput { idents, mirror } = parse_mirror_ident(item_ident, item_attrs)?;
     Ok(idents
         .into_iter()
         .map(|ident| {
             let ident_str = ident.to_string();
             constructor(StructOrEnum {
                 ident,
-                src: item_struct_or_enum.clone(),
-                visibility: Visibility::from_syn(&item_struct_or_enum.vis),
+                src: item.clone(),
+                visibility: Visibility::from_syn(item_vis),
                 path: {
                     let mut path = info.module_path.clone();
                     path.push(ident_str);
@@ -98,18 +100,18 @@ where
         .collect_vec())
 }
 
-fn parse_syn_item_type(item_type: &ItemType) -> Vec<TypeAlias> {
+fn parse_syn_item_type(item_type: &ItemType) -> Option<TypeAlias> {
     if item_type.generics.where_clause.is_none() && item_type.generics.lt_token.is_none() {
-        vec![TypeAlias {
+        Some(TypeAlias {
             ident: item_type.ident.to_string(),
             target: *item_type.ty.clone(),
-        }]
+        })
     } else {
-        vec![]
+        None
     }
 }
 
-fn parse_syn_item_mod(info: &ModuleInfo, item_mod: &&ItemMod) -> Module {
+fn parse_syn_item_mod(info: &ModuleInfo, item_mod: &&ItemMod) -> anyhow::Result<Option<Module>> {
     let ident = item_mod.ident.clone();
 
     let module_path = {
@@ -118,13 +120,13 @@ fn parse_syn_item_mod(info: &ModuleInfo, item_mod: &&ItemMod) -> Module {
         x
     };
 
-    match &item_mod.content {
-        Some(content) => Module::parse(ModuleInfo {
+    Ok(match &item_mod.content {
+        Some(content) => Some(Module::parse(ModuleInfo {
             visibility: Visibility::from_syn(&item_mod.vis),
             file_path: info.file_path.clone(),
             module_path,
             source: ModuleSource::ModuleInFile(content.1.clone()),
-        })?,
+        })?),
         None => {
             let file_path_candidates =
                 get_module_file_path_candidates(ident.to_string(), &info.file_path);
@@ -135,12 +137,12 @@ fn parse_syn_item_mod(info: &ModuleInfo, item_mod: &&ItemMod) -> Module {
                 debug!("Trying to parse {:?}", file_path);
                 let source = ModuleSource::File(syn::parse_file(&source_rust_content).unwrap());
 
-                Module::parse(ModuleInfo {
+                Some(Module::parse(ModuleInfo {
                     visibility: Visibility::from_syn(&item_mod.vis),
                     file_path: file_path.to_owned(),
                     module_path,
                     source,
-                })?
+                })?)
             } else {
                 warn!(
                     "Skipping unresolvable module {} (tried {})",
@@ -151,9 +153,10 @@ fn parse_syn_item_mod(info: &ModuleInfo, item_mod: &&ItemMod) -> Module {
                         .collect::<anyhow::Result<Vec<_>>>()?
                         .join(", ")
                 );
+                None
             }
         }
-    }
+    })
 }
 
 fn get_module_file_path_candidates(
