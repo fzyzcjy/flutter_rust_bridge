@@ -1,3 +1,4 @@
+pub(crate) mod enumeration;
 pub(crate) mod misc;
 pub(crate) mod structure;
 
