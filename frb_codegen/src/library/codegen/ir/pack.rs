@@ -1,10 +1,10 @@
 use std::collections::HashMap;
 use crate::codegen::ir::func::IrFunc;
-use crate::codegen::ir::ty::enumeration::IrEnum;
-use crate::codegen::ir::ty::structure::IrStruct;
+use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumIdent};
+use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent};
 
-pub type IrStructPool = HashMap<String, IrStruct>;
-pub type IrEnumPool = HashMap<String, IrEnum>;
+pub type IrStructPool = HashMap<IrStructIdent, IrStruct>;
+pub type IrEnumPool = HashMap<IrEnumIdent, IrEnum>;
 
 #[derive(Debug, Clone)]
 #[derive(serde::Serialize)]

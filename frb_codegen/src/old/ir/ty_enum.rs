@@ -2,13 +2,6 @@ use crate::ir::*;
 use crate::target::Target;
 use convert_case::{Case, Casing};
 
-impl IrTypeEnumRef {
-    #[inline]
-    pub fn get<'a>(&self, file: &'a IrPack) -> &'a IrEnum {
-        &file.enum_pool[&self.name]
-    }
-}
-
 impl IrTypeTrait for IrTypeEnumRef {
     fn dart_api_type(&self) -> String {
         self.name.to_string()

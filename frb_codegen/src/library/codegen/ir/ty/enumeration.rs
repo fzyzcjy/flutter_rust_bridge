@@ -9,8 +9,10 @@ use crate::codegen::ir::ty::structure::IrStruct;
 
 crate::ir! {
 pub struct IrTypeEnumRef {
-    pub name: String,
+    pub ident: IrEnumIdent,
 }
+
+pub struct IrEnumIdent(pub String);
 
 pub struct IrEnum {
     pub name: String,
@@ -35,6 +37,13 @@ pub enum IrVariantKind {
 }
 }
 
+impl IrTypeEnumRef {
+    #[inline]
+    pub fn get<'a>(&self, file: &'a IrPack) -> &'a IrEnum {
+        &file.enum_pool[&self.ident]
+    }
+}
+
 impl IrTypeTrait for IrTypeEnumRef {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_pack: &IrPack) {
         let enu = self.get(ir_pack);
@@ -48,6 +57,6 @@ impl IrTypeTrait for IrTypeEnumRef {
     }
 
     fn safe_ident(&self) -> String {
-        self.name.to_case(Case::Snake)
+        self.ident.0.to_case(Case::Snake)
     }
 }

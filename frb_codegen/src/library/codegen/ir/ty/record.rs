@@ -18,6 +18,6 @@ impl IrTypeTrait for IrTypeRecord {
     }
 
     fn safe_ident(&self) -> String {
-        self.inner.name.clone()
+        self.inner.safe_ident()
     }
 }
