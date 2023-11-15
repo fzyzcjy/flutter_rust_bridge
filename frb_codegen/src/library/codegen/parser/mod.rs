@@ -12,7 +12,11 @@ use crate::codegen::parser::reader::read_rust_file;
 pub(crate) type ParserResult<T = (), E = error::Error> = Result<T, E>;
 
 pub(crate) fn parse(config: &ParserInternalConfig) -> ParserResult<IrPack> {
-    todo!()
+    let raw_packs = config.rust_input_path_pack.rust_input_path.iter()
+        .map(|(namespace, rust_input_path)| parse_one(rust_input_path, &config.rust_crate_dir))
+        .collect::<Result<Vec<_>, _>>()?;
+    let merged_pack = raw_packs.into_iter().reduce(|acc, e| acc.merge(e)).unwrap();
+    Ok(merged_pack)
 }
 
 fn parse_one(rust_input_path: &Path, rust_crate_dir: &Path) -> ParserResult<IrPack> {

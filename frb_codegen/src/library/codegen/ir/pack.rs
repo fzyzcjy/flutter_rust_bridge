@@ -14,3 +14,9 @@ pub struct IrPack {
     pub enum_pool: IrEnumPool,
     pub has_executor: bool,
 }
+
+impl IrPack {
+    pub(crate) fn merge(self, other: Self) -> Self {
+        todo!()
+    }
+}
