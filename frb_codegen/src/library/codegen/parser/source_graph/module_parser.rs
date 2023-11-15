@@ -4,11 +4,10 @@ use crate::codegen::parser::source_graph::modules::{
     Enum, Module, ModuleInfo, ModuleScope, ModuleSource, Struct, TypeAlias, Visibility,
 };
 use crate::utils::path_utils::{find_rust_crate_dir, path_to_string};
-use anyhow::anyhow;
 use itertools::Itertools;
 use log::{debug, warn};
 use std::path::{Path, PathBuf};
-use syn::{Attribute, Ident, PathArguments};
+use syn::{Attribute, Ident, ItemEnum, ItemMod, ItemStruct, ItemType, PathArguments};
 
 impl Module {
     /// Maps out modules, structs and enums within the scope of this module
@@ -33,97 +32,16 @@ impl Module {
         for item in items.iter() {
             match item {
                 syn::Item::Struct(item_struct) => {
-                    let ParseMirrorIdentOutput { idents, mirror } =
-                        parse_mirror_ident(&item_struct.ident, &item_struct.attrs)?;
-                    scope_structs.extend(idents.into_iter().map(|ident| {
-                        let ident_str = ident.to_string();
-                        Struct {
-                            ident,
-                            src: item_struct.clone(),
-                            visibility: Visibility::from_syn(&item_struct.vis),
-                            path: {
-                                let mut path = info.module_path.clone();
-                                path.push(ident_str);
-                                path
-                            },
-                            mirror,
-                        }
-                    }));
+                    scope_structs.extend(parse_syn_item_struct(&info, &item_struct)?);
                 }
                 syn::Item::Enum(item_enum) => {
-                    let ParseMirrorIdentOutput { idents, mirror } =
-                        parse_mirror_ident(&item_enum.ident, &item_enum.attrs)?;
-
-                    scope_enums.extend(idents.into_iter().map(|ident| {
-                        let ident_str = ident.to_string();
-                        Enum {
-                            ident,
-                            src: item_enum.clone(),
-                            visibility: Visibility::from_syn(&item_enum.vis),
-                            path: {
-                                let mut path = info.module_path.clone();
-                                path.push(ident_str);
-                                path
-                            },
-                            mirror,
-                        }
-                    }));
+                    scope_enums.extend(parse_syn_item_enum(&info, &item_enum)?);
                 }
                 syn::Item::Type(item_type) => {
-                    if item_type.generics.where_clause.is_none()
-                        && item_type.generics.lt_token.is_none()
-                    {
-                        scope_types.push(TypeAlias {
-                            ident: item_type.ident.to_string(),
-                            target: *item_type.ty.clone(),
-                        });
-                    }
+                    scope_types.extend(parse_syn_item_type(item_type));
                 }
                 syn::Item::Mod(item_mod) => {
-                    let ident = item_mod.ident.clone();
-
-                    let mut module_path = info.module_path.clone();
-                    module_path.push(ident.to_string());
-
-                    scope_modules.push(match &item_mod.content {
-                        Some(content) => Module::parse(ModuleInfo {
-                            visibility: Visibility::from_syn(&item_mod.vis),
-                            file_path: info.file_path.clone(),
-                            module_path,
-                            source: ModuleSource::ModuleInFile(content.1.clone()),
-                        })?,
-                        None => {
-                            let file_path_candidates =
-                                get_module_file_path_candidates(ident.to_string(), &info.file_path);
-
-                            if let Some(file_path) = first_existing_path(&file_path_candidates) {
-                                let rust_crate_dir_for_file = find_rust_crate_dir(file_path)?;
-                                let source_rust_content =
-                                    read_rust_file(&file_path, &rust_crate_dir_for_file)?;
-                                debug!("Trying to parse {:?}", file_path);
-                                let source = ModuleSource::File(
-                                    syn::parse_file(&source_rust_content).unwrap(),
-                                );
-                                Module::parse(ModuleInfo {
-                                    visibility: Visibility::from_syn(&item_mod.vis),
-                                    file_path: file_path.to_owned(),
-                                    module_path,
-                                    source,
-                                })?
-                            } else {
-                                warn!(
-                                    "Skipping unresolvable module {} (tried {})",
-                                    &ident,
-                                    file_path_candidates
-                                        .iter()
-                                        .map(|p| path_to_string(p))
-                                        .collect::<anyhow::Result<Vec<_>>>()?
-                                        .join(", ")
-                                );
-                                continue;
-                            }
-                        }
-                    });
+                    scope_modules.push(parse_syn_item_mod(&info, &item_mod));
                 }
                 _ => {}
             }
@@ -139,6 +57,111 @@ impl Module {
                 type_alias: scope_types,
             },
         })
+    }
+}
+
+fn parse_syn_item_struct(
+    info: &ModuleInfo,
+    item_struct: &ItemStruct,
+) -> anyhow::Result<Vec<Struct>> {
+    let ParseMirrorIdentOutput { idents, mirror } =
+        parse_mirror_ident(&item_struct.ident, &item_struct.attrs)?;
+    Ok(idents
+        .into_iter()
+        .map(|ident| {
+            let ident_str = ident.to_string();
+            Struct {
+                ident,
+                src: item_struct.clone(),
+                visibility: Visibility::from_syn(&item_struct.vis),
+                path: {
+                    let mut path = info.module_path.clone();
+                    path.push(ident_str);
+                    path
+                },
+                mirror,
+            }
+        })
+        .collect_vec())
+}
+
+fn parse_syn_item_enum(info: &ModuleInfo, item_enum: &ItemEnum) -> anyhow::Result<Vec<Enum>> {
+    let ParseMirrorIdentOutput { idents, mirror } =
+        parse_mirror_ident(&item_enum.ident, &item_enum.attrs)?;
+    Ok(idents
+        .into_iter()
+        .map(|ident| {
+            let ident_str = ident.to_string();
+            Enum {
+                ident,
+                src: item_enum.clone(),
+                visibility: Visibility::from_syn(&item_enum.vis),
+                path: {
+                    let mut path = info.module_path.clone();
+                    path.push(ident_str);
+                    path
+                },
+                mirror,
+            }
+        })
+        .collect_vec())
+}
+
+fn parse_syn_item_type(item_type: &ItemType) -> Vec<TypeAlias> {
+    if item_type.generics.where_clause.is_none() && item_type.generics.lt_token.is_none() {
+        vec![TypeAlias {
+            ident: item_type.ident.to_string(),
+            target: *item_type.ty.clone(),
+        }]
+    } else {
+        vec![]
+    }
+}
+
+fn parse_syn_item_mod(info: &ModuleInfo, item_mod: &&ItemMod) -> Module {
+    let ident = item_mod.ident.clone();
+
+    let module_path = {
+        let mut x = info.module_path.clone();
+        x.push(ident.to_string());
+        x
+    };
+
+    match &item_mod.content {
+        Some(content) => Module::parse(ModuleInfo {
+            visibility: Visibility::from_syn(&item_mod.vis),
+            file_path: info.file_path.clone(),
+            module_path,
+            source: ModuleSource::ModuleInFile(content.1.clone()),
+        })?,
+        None => {
+            let file_path_candidates =
+                get_module_file_path_candidates(ident.to_string(), &info.file_path);
+
+            if let Some(file_path) = first_existing_path(&file_path_candidates) {
+                let rust_crate_dir_for_file = find_rust_crate_dir(file_path)?;
+                let source_rust_content = read_rust_file(&file_path, &rust_crate_dir_for_file)?;
+                debug!("Trying to parse {:?}", file_path);
+                let source = ModuleSource::File(syn::parse_file(&source_rust_content).unwrap());
+
+                Module::parse(ModuleInfo {
+                    visibility: Visibility::from_syn(&item_mod.vis),
+                    file_path: file_path.to_owned(),
+                    module_path,
+                    source,
+                })?
+            } else {
+                warn!(
+                    "Skipping unresolvable module {} (tried {})",
+                    &ident,
+                    file_path_candidates
+                        .iter()
+                        .map(|p| path_to_string(p))
+                        .collect::<anyhow::Result<Vec<_>>>()?
+                        .join(", ")
+                );
+            }
+        }
     }
 }
 
