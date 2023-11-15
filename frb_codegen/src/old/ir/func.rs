@@ -49,20 +49,6 @@ impl IrFunc {
     }
 }
 
-/// Represents a function's output type
-#[derive(Debug, Clone)]
-pub enum IrFuncOutput {
-    ResultType { ok: IrType, error: Option<IrType> },
-    Type(IrType),
-}
-
-/// Represents the type of an argument to a function
-#[derive(Debug, Clone)]
-pub enum IrFuncArg {
-    StreamSinkType(IrType),
-    Type(IrType),
-}
-
 impl IrFuncMode {
     #[inline]
     pub fn dart_return_type(&self, inner: &str) -> String {

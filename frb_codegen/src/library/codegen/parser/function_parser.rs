@@ -43,18 +43,18 @@ impl FunctionParser {
                     )
                 })?;
                 match arg_type {
-                    IrFuncArg::StreamSinkType(ty) => {
+                    FuncArg::StreamSinkType(ty) => {
                         output = Some(ty);
                         mode = Some(IrFuncMode::Stream { argument_index: i });
                         fallible = match &sig.output {
                             ReturnType::Default => false,
                             ReturnType::Type(_, ty) => !matches!(
                                 self.try_parse_fn_output_type(ty),
-                                Some(IrFuncOutput::Type(_))
+                                Some(FuncOutput::Type(_))
                             ),
                         }
                     }
-                    IrFuncArg::Type(ty) => {
+                    FuncArg::Type(ty) => {
                         inputs.push(IrField {
                             name: IrIdent::new(name),
                             ty,
@@ -81,8 +81,8 @@ impl FunctionParser {
                     )
                 })?;
                 match output_type {
-                    IrFuncOutput::ResultType { ok: ty, error: err } => (ty, err),
-                    IrFuncOutput::Type(ty) => {
+                    FuncOutput::ResultType { ok: ty, error: err } => (ty, err),
+                    FuncOutput::Type(ty) => {
                         fallible = false;
                         (ty, None)
                     }
@@ -121,7 +121,7 @@ impl FunctionParser {
 
     /// Attempts to parse the type from an argument of a function signature. There is a special
     /// case for top-level `StreamSink` types.
-    pub fn try_parse_fn_arg_type(&self, ty: &Type) -> Option<IrFuncArg> {
+    pub fn try_parse_fn_arg_type(&self, ty: &Type) -> Option<FuncArg> {
         match ty {
             Type::Path(TypePath { path, .. }) => {
                 let last_segment = path.segments.last().unwrap();
@@ -134,7 +134,7 @@ impl FunctionParser {
                             // Unwrap is safe here because args.len() == 1
                             match args.last().unwrap() {
                                 GenericArgument::Type(t) => {
-                                    Some(IrFuncArg::StreamSinkType(self.type_parser.parse_type(t)))
+                                    Some(FuncArg::StreamSinkType(self.type_parser.parse_type(t)))
                                 }
                                 _ => None,
                             }
@@ -142,17 +142,17 @@ impl FunctionParser {
                         _ => None,
                     }
                 } else {
-                    Some(IrFuncArg::Type(self.type_parser.parse_type(ty)))
+                    Some(FuncArg::Type(self.type_parser.parse_type(ty)))
                 }
             }
-            Type::Array(_) => Some(IrFuncArg::Type(self.type_parser.parse_type(ty))),
+            Type::Array(_) => Some(FuncArg::Type(self.type_parser.parse_type(ty))),
             _ => None,
         }
     }
 
     /// Attempts to parse the type from the return part of a function signature. There is a special
     /// case for top-level `Result` types.
-    pub fn try_parse_fn_output_type(&self, ty: &Type) -> Option<IrFuncOutput> {
+    pub fn try_parse_fn_output_type(&self, ty: &Type) -> Option<FuncOutput> {
         let ty = &self.type_parser.resolve_alias(ty).clone();
 
         if let Type::Path(type_path) = ty {
@@ -167,7 +167,7 @@ impl FunctionParser {
                     {
                         #[cfg(feature = "qualified_names")]
                         [("anyhow", None), ("Result", Some(ArgsRefs::Generic([args])))] => {
-                            Some(IrFuncOutput::ResultType {
+                            Some(FuncOutput::ResultType {
                                 ok: args.clone(),
                                 error: None,
                             })
@@ -198,7 +198,7 @@ impl FunctionParser {
                                 error
                             };
 
-                            Some(IrFuncOutput::ResultType {
+                            Some(FuncOutput::ResultType {
                                 ok: ok.clone(),
                                 error,
                             })
@@ -206,12 +206,12 @@ impl FunctionParser {
                         _ => None, // unencodable types not implemented
                     }
                 }
-                Ok(result) => Some(IrFuncOutput::Type(result)),
+                Ok(result) => Some(FuncOutput::Type(result)),
                 Err(..) => None,
             }
         } else {
             let ir_ty = self.type_parser.parse_type(ty);
-            Some(IrFuncOutput::Type(ir_ty))
+            Some(FuncOutput::Type(ir_ty))
         }
     }
 }
@@ -231,4 +231,18 @@ fn extract_comments(attrs: &[Attribute]) -> Vec<IrComment> {
             _ => None,
         })
         .collect()
+}
+
+/// Represents a function's output type
+#[derive(Debug, Clone)]
+enum FuncOutput {
+    ResultType { ok: IrType, error: Option<IrType> },
+    Type(IrType),
+}
+
+/// Represents the type of an argument to a function
+#[derive(Debug, Clone)]
+enum FuncArg {
+    StreamSinkType(IrType),
+    Type(IrType),
 }
