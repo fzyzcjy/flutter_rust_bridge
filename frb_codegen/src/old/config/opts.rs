@@ -9,14 +9,15 @@ pub struct Opts {
 }
 
 impl Opts {
-    pub fn get_ir_pack(&self) -> ParserResult<IrPack> {
-        // info!("Phase: Parse source code to AST");
-        let source_rust_content = read_rust_file(&PathBuf::from(&self.rust_input_path));
-        let file_ast = syn::parse_file(&source_rust_content)?;
-
-        // info!("Phase: Parse AST to IR");
-        parser::parse(&source_rust_content, file_ast, &self.manifest_path)
-    }
+    // moved to parser
+    // pub fn get_ir_pack(&self) -> ParserResult<IrPack> {
+    //     // info!("Phase: Parse source code to AST");
+    //     let source_rust_content = read_rust_file(&PathBuf::from(&self.rust_input_path));
+    //     let file_ast = syn::parse_file(&source_rust_content)?;
+    //
+    //     // info!("Phase: Parse AST to IR");
+    //     parser::parse(&source_rust_content, file_ast, &self.manifest_path)
+    // }
 
     pub fn dart_api_class_name(&self) -> &str {
         &self.class_name

@@ -30,7 +30,6 @@ const STREAM_SINK_IDENT: &str = "StreamSink";
 
 mod error;
 pub use error::Error;
-pub(crate) type ParserResult<T = (), E = Error> = core::result::Result<T, E>;
 
 pub(crate) fn topo_resolve(src: HashMap<String, Type>) -> HashMap<String, Type> {
     // Some types that cannot be Handled.
