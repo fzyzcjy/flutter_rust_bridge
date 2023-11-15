@@ -51,9 +51,7 @@ fn convert_item_method_to_function(
         let span = item_method.sig.ident.span();
         let is_static_method = {
             let Signature { inputs, .. } = &item_method.sig;
-            {
-                !matches!(inputs.first(), Some(FnArg::Receiver(..)))
-            }
+            !matches!(inputs.first(), Some(FnArg::Receiver(..)))
         };
         let method_name = if is_static_method {
             let self_type = {
