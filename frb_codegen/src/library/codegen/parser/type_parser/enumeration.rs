@@ -1,8 +1,11 @@
+use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::default::IrDefaultValue;
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::ident::IrIdent;
+use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrVariant, IrVariantKind};
 use crate::codegen::ir::ty::structure::IrStruct;
+use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::TypeParser;
@@ -76,6 +79,47 @@ impl<'a> TypeParser<'a> {
                 })
             })
             .collect::<anyhow::Result<Vec<_>>>()?;
-        IrEnum::new(name, wrapper_name, path, comments, variants, false)
+        Ok(IrEnum::new(name, wrapper_name, path, comments, variants))
+    }
+}
+
+// TODO merge or something?
+impl IrEnum {
+    fn new(
+        name: String,
+        wrapper_name: Option<String>,
+        path: Vec<String>,
+        comments: Vec<IrComment>,
+        mut variants: Vec<IrVariant>,
+    ) -> Self {
+        fn wrap_box(ty: &mut IrType) {
+            if ty.is_struct() {
+                *ty = IrType::Boxed(IrTypeBoxed {
+                    exist_in_real_api: false,
+                    inner: Box::new(ty.clone()),
+                });
+            }
+        }
+
+        let is_struct = variants
+            .iter()
+            .any(|variant| !matches!(variant.kind, IrVariantKind::Value));
+        if is_struct {
+            for variant in &mut variants {
+                if let IrVariantKind::Struct(st) = &mut variant.kind {
+                    for field in &mut st.fields {
+                        wrap_box(&mut field.ty);
+                    }
+                }
+            }
+        }
+        Self {
+            name,
+            wrapper_name,
+            path,
+            comments,
+            variants,
+            is_struct,
+        }
     }
 }

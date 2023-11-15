@@ -20,8 +20,8 @@ pub struct IrEnum {
     pub wrapper_name: Option<String>,
     pub path: Vec<String>,
     pub comments: Vec<IrComment>,
-    variants: Vec<IrVariant>,
-    is_struct: bool,
+    pub variants: Vec<IrVariant>,
+    pub is_struct: bool,
 }
 
 pub struct IrVariant {

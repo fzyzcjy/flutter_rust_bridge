@@ -36,46 +36,6 @@ impl IrTypeTrait for IrTypeEnumRef {
 }
 
 impl IrEnum {
-    pub fn new(
-        name: String,
-        wrapper_name: Option<String>,
-        path: Vec<String>,
-        comments: Vec<IrComment>,
-        mut variants: Vec<IrVariant>,
-        is_exception: bool,
-    ) -> Self {
-        fn wrap_box(ty: &mut IrType) {
-            if ty.is_struct() {
-                *ty = IrType::Boxed(IrTypeBoxed {
-                    exist_in_real_api: false,
-                    inner: Box::new(ty.clone()),
-                });
-            }
-        }
-
-        let is_struct = variants
-            .iter()
-            .any(|variant| !matches!(variant.kind, IrVariantKind::Value));
-        if is_struct {
-            for variant in &mut variants {
-                if let IrVariantKind::Struct(st) = &mut variant.kind {
-                    for field in &mut st.fields {
-                        wrap_box(&mut field.ty);
-                    }
-                }
-            }
-        }
-        Self {
-            name,
-            wrapper_name,
-            path,
-            comments,
-            variants,
-            is_struct,
-            is_exception,
-        }
-    }
-
     pub fn is_struct(&self) -> bool {
         self.is_struct
     }
