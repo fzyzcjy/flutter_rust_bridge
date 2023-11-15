@@ -1,4 +1,5 @@
 use std::{env, fs};
+use std::collections::hash_map::Entry::{Occupied, Vacant};
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 use std::sync::Mutex;
@@ -21,9 +22,10 @@ pub(crate) fn cargo_expand(rust_crate_dir: &Path, module: Option<String>, rust_f
     }
 
     let mut cache = CARGO_EXPAND_CACHE.lock().unwrap();
-    let expanded = cache
-        .entry(rust_crate_dir.to_owned())
-        .or_insert_with(|| run_cargo_expand(rust_crate_dir));
+    let expanded = match cache.entry(rust_crate_dir.to_owned()) {
+        Occupied(entry) => entry.into_mut(),
+        Vacant(entry) => entry.insert(run_cargo_expand(rust_crate_dir)?),
+    };
 
     extract_module(expanded, module)
 }
