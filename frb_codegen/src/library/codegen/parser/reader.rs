@@ -36,3 +36,22 @@ fn get_dir_and_mod(path: &str) -> (String, Option<String>) {
     };
     (String::from(dir), module)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    pub fn simple_mod() {
+        let (dir, module) = get_dir_and_mod("/project/src/api.rs");
+        assert_eq!("/project", dir);
+        assert_eq!(Some(String::from("api")), module);
+    }
+
+    #[test]
+    pub fn sub_mod() {
+        let (dir, module) = get_dir_and_mod("/project/src/sub/subsub.rs");
+        assert_eq!("/project", dir);
+        assert_eq!(Some(String::from("sub::subsub")), module);
+    }
+}
