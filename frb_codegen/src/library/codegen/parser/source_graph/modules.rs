@@ -31,6 +31,16 @@ pub enum Visibility {
     Inherited, // Usually means private
 }
 
+impl From<syn::Visibility> for Visibility {
+    fn from(value: syn::Visibility) -> Self {
+        match value {
+            syn::Visibility::Public(_) => Visibility::Public,
+            syn::Visibility::Restricted(_) => Visibility::Restricted,
+            syn::Visibility::Inherited => Visibility::Inherited,
+        }
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct Import {
     path: Vec<String>,
@@ -103,7 +113,7 @@ impl Module {
                         Struct {
                             ident,
                             src: item_struct.clone(),
-                            visibility: syn_vis_to_visibility(&item_struct.vis),
+                            visibility: item_struct.vis.into(),
                             path: {
                                 let mut path = info.module_path.clone();
                                 path.push(ident_str);
@@ -121,7 +131,7 @@ impl Module {
                         Enum {
                             ident,
                             src: item_enum.clone(),
-                            visibility: syn_vis_to_visibility(&item_enum.vis),
+                            visibility: item_enum.vis.into(),
                             path: {
                                 let mut path = info.module_path.clone();
                                 path.push(ident_str);
@@ -149,7 +159,7 @@ impl Module {
 
                     scope_modules.push(match &item_mod.content {
                         Some(content) => Module::parse(ModuleInfo {
-                            visibility: syn_vis_to_visibility(&item_mod.vis),
+                            visibility: item_mod.vis.into(),
                             file_path: info.file_path.clone(),
                             module_path,
                             source: ModuleSource::ModuleInFile(content.1.clone()),
@@ -168,7 +178,7 @@ impl Module {
                                         )
                                     };
                                     Module::parse(ModuleInfo {
-                                        visibility: syn_vis_to_visibility(&item_mod.vis),
+                                        visibility: item_mod.vis.into(),
                                         file_path,
                                         module_path,
                                         source,

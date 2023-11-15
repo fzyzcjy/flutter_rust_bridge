@@ -21,14 +21,6 @@ use syn::{Attribute, Ident, ItemEnum, ItemStruct, PathArguments, Type, UseTree};
 use super::ParserResult;
 use crate::{parser::markers, utils::misc::read_rust_file};
 
-fn syn_vis_to_visibility(vis: &syn::Visibility) -> Visibility {
-    match vis {
-        syn::Visibility::Public(_) => Visibility::Public,
-        syn::Visibility::Restricted(_) => Visibility::Restricted,
-        syn::Visibility::Inherited => Visibility::Inherited,
-    }
-}
-
 /// Get a struct or enum ident, possibly remapped by a mirror marker
 fn get_ident(ident: &Ident, attrs: &[Attribute]) -> (Vec<Ident>, bool) {
     // TODO use `metadata.mirror()`
