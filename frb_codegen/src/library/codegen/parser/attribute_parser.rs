@@ -49,7 +49,9 @@ impl FrbAttributes {
     pub(crate) fn mirror(&self) -> Vec<Path> {
         self.0
             .iter()
-            .filter_map(|item| if_then_some!(let FrbAttribute::Mirror(mirror) = item, mirror.0))
+            .filter_map(
+                |item| if_then_some!(let FrbAttribute::Mirror(mirror) = item, mirror.0.clone()),
+            )
             .collect()
     }
 }
