@@ -1,35 +1,34 @@
-use std::path::{Path, PathBuf};
+use anyhow::Result;
+use std::path::Path;
+use itertools::Itertools;
 use log::debug;
 use crate::library::commands::cargo_expand::cargo_expand;
 
-pub(crate) fn read_rust_file(rust_file_path: &Path, rust_crate_dir: &Path) -> String {
-    let (dir, module) = get_rust_mod(path);
-    debug!("read_rust_file path={path:?} => dir={dir:?} module={module:?}");
-    cargo_expand(&dir, module, path)
+pub(crate) fn read_rust_file(rust_file_path: &Path, rust_crate_dir: &Path) -> Result<String> {
+    let module = get_rust_mod(path)?;
+    debug!("read_rust_file path={path:?} module={module:?}");
+    Ok(cargo_expand(&dir, module, path))
 }
 
-fn get_rust_mod(rust_file_path: &Path, rust_crate_dir: &Path) -> String {
-    const SRC: &str = "/src/";
+fn get_rust_mod(rust_file_path: &Path, rust_crate_dir: &Path) -> Result<Option<String>> {
+    let relative_path = rust_file_path.strip_prefix(rust_crate_dir.join("src"))?;
 
-    #[cfg(windows)]
-        let path = &path.replace('\\', "/");
-    let src_index = rust_file_path.rfind(SRC).expect("src dir must exist in rust project");
+    let mut components = relative_path.iter().map(|s| s.to_str().unwrap().to_owned()).collect_vec();
 
-    let dir = &rust_file_path[..src_index];
-    #[cfg(windows)]
-        let dir = dir.strip_prefix("//?/").unwrap_or(dir);
+    strip_suffix_inplace(components.last_mut().unwrap(), ".rs");
 
-    let module = &rust_file_path[src_index + SRC.len()..];
-    let module = module.strip_suffix("mod.rs").unwrap_or(module);
-    let module = match module {
-        "lib.rs" => None,
-        "" => None,
-        _ => {
-            let module = module.replace('/', "::");
-            Some(module.strip_suffix(".rs").map(String::from).unwrap_or(module))
-        }
-    };
-    (String::from(dir), module)
+    if components.last().unwrap() == "mod" || components.last().unwrap() == "lib" {
+        components.pop();
+    }
+
+    let ans = components.join("::");
+    Ok(if ans.is_empty() { None } else { Some(ans) })
+}
+
+fn strip_suffix_inplace(mut s: &mut String, suffix: &str) {
+    if let Some(stripped) = s.strip_suffix(suffix) {
+        *s = stripped.to_owned();
+    }
 }
 
 #[cfg(test)]
