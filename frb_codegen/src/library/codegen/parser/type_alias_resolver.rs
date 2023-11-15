@@ -70,13 +70,11 @@ pub(crate) fn resolve_type_aliases(src: HashMap<String, Type>) -> HashMap<String
     ret
 }
 
-
 #[cfg(test)]
 mod tests {
     use std::collections::HashMap;
     use syn::{parse_str, Type};
-    use crate::codegen::parser::type_alias_resolver::topo_resolve;
-    use crate::parser::topo_resolve;
+    use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 
     #[test]
     fn test_topo_resolve_primary_type_with_nest() {
@@ -88,7 +86,7 @@ mod tests {
             ("id".to_string(), parse_str::<Type>("i32").unwrap()),
             ("UserId".to_string(), parse_str::<Type>("i32").unwrap()),
         ]);
-        let output = topo_resolve(input);
+        let output = resolve_type_aliases(input);
         assert_eq!(output, expect);
     }
 
@@ -97,7 +95,7 @@ mod tests {
         let input = HashMap::from([("id".to_string(), parse_str::<Type>("i32").unwrap())]);
         let expect = HashMap::from([("id".to_string(), parse_str::<Type>("i32").unwrap())]);
 
-        let output = topo_resolve(input);
+        let output = resolve_type_aliases(input);
         assert_eq!(output, expect);
     }
 
@@ -105,7 +103,7 @@ mod tests {
     fn test_topo_resolve3_unhandle_case() {
         let input = HashMap::from([("DartPostCObjectFnType".to_string(), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap())]);
         let expect = HashMap::from([("DartPostCObjectFnType".to_string(), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap())]);
-        let output = topo_resolve(input);
+        let output = resolve_type_aliases(input);
         assert_eq!(output, expect);
     }
 
@@ -122,7 +120,7 @@ mod tests {
             ("DartPostCObjectFnType".to_string(), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap()),
             ("DartPostCObjectFnTypeAlias".to_string(), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap()),
         ]);
-        let output = topo_resolve(input);
+        let output = resolve_type_aliases(input);
         assert_eq!(&output, &expect);
     }
 }

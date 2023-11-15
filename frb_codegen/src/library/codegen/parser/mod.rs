@@ -12,10 +12,10 @@ use crate::codegen::parser::function_extractor::extract_generalized_functions_fr
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::main_parser::MainParser;
 use crate::codegen::parser::reader::read_rust_file;
+use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
 use std::path::Path;
 use syn::File;
-use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 
 pub(crate) type ParserResult<T = (), E = error::Error> = Result<T, E>;
 
