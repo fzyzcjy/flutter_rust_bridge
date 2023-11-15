@@ -60,3 +60,9 @@ impl IrTypeTrait for IrTypeEnumRef {
         self.ident.0.to_case(Case::Snake)
     }
 }
+
+impl IrEnum {
+    pub fn variants(&self) -> &[IrVariant] {
+        &self.variants
+    }
+}

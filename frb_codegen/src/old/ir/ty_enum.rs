@@ -76,10 +76,6 @@ impl IrEnum {
         }
     }
 
-    pub fn variants(&self) -> &[IrVariant] {
-        &self.variants
-    }
-
     pub fn is_struct(&self) -> bool {
         self.is_struct
     }
