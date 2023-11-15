@@ -67,7 +67,7 @@ impl FunctionParser {
             }
         }
 
-        let result = match &sig.output {
+        let (output_ok, output_err) = match &sig.output {
             ReturnType::Type(_, ty) => {
                 let output_type = self.try_parse_fn_output_type(ty).with_context(|| {
                     format!(
@@ -89,18 +89,18 @@ impl FunctionParser {
             }
         };
 
-        if matches!(mode, Some(IrFuncMode::Stream { argument_index: _ }) if result.0 != IrType::Primitive(IrTypePrimitive::Unit))
+        if matches!(mode, Some(IrFuncMode::Stream { argument_index: _ }) if output_ok != IrType::Primitive(IrTypePrimitive::Unit))
         {
             return Err(Error::NoStreamSinkAndOutput(func_name.into()));
         }
 
         if output.is_none() {
-            mode = Some(if let IrType::SyncReturn(_) = result.0 {
+            mode = Some(if let IrType::SyncReturn(_) = output_ok {
                 IrFuncMode::Sync
             } else {
                 IrFuncMode::Normal
             });
-            output = Some(result.0);
+            output = Some(output_ok);
         }
 
         Ok(IrFunc {
@@ -110,7 +110,7 @@ impl FunctionParser {
             fallible,
             mode: mode.context("Missing mode")?,
             comments: extract_comments(&func.attrs),
-            error_output: result.1,
+            error_output: output_err,
         })
     }
 }
