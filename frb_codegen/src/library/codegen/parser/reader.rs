@@ -1,14 +1,12 @@
-use std::path::Path;
+use std::path::{Path, PathBuf};
 use crate::library::commands::cargo_expand::cargo_expand;
 
 pub(crate) fn read_rust_file(path: &Path) -> String {
-    let path = path.to_str().unwrap();
     let (dir, module) = get_dir_and_mod(path);
     cargo_expand(&dir, module, path)
 }
 
-// TODO refactor
-fn get_dir_and_mod(path: &str) -> (String, Option<String>) {
+fn get_dir_and_mod(path: &Path) -> (PathBuf, Option<String>) {
     const SRC: &str = "/src/";
 
     #[cfg(windows)]
@@ -42,16 +40,16 @@ mod tests {
     use super::*;
 
     #[test]
-    pub fn simple_mod() {
-        let (dir, module) = get_dir_and_mod("/project/src/api.rs");
-        assert_eq!("/project", dir);
-        assert_eq!(Some(String::from("api")), module);
+    pub fn test_get_dir_and_mod_simple_mod() {
+        let (dir, module) = get_dir_and_mod("/project/src/api.rs".into());
+        assert_eq!("/project".into(), dir);
+        assert_eq!(Some("api".to_owned()), module);
     }
 
     #[test]
-    pub fn sub_mod() {
-        let (dir, module) = get_dir_and_mod("/project/src/sub/subsub.rs");
-        assert_eq!("/project", dir);
-        assert_eq!(Some(String::from("sub::subsub")), module);
+    pub fn test_get_dir_and_mod_sub_mod() {
+        let (dir, module) = get_dir_and_mod("/project/src/sub/subsub.rs".into());
+        assert_eq!("/project".into(), dir);
+        assert_eq!(Some("sub::subsub".to_owned()), module);
     }
 }
