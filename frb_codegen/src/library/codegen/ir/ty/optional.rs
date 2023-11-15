@@ -2,7 +2,6 @@ use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 
 crate::ir! {
-#[no_serde]
 pub struct IrTypeOptional {
     pub inner: Box<IrType>,
 }
