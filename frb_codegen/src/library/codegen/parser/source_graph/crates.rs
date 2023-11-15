@@ -3,7 +3,7 @@ use std::path::{Path, PathBuf};
 use anyhow::Context;
 use cargo_metadata::{Metadata, MetadataCommand, Package};
 use crate::codegen::parser::ParserResult;
-use crate::codegen::parser::source_graph::modules::{Module, ModuleSource, Visibility};
+use crate::codegen::parser::source_graph::modules::{Module, ModuleInfo, ModuleSource, Visibility};
 
 /// Represents a crate, including a map of its modules, imports, structs and enums.
 #[derive(Debug, Clone)]
@@ -24,14 +24,13 @@ impl Crate {
         let root_src_content = fs::read_to_string(&root_src_file)?;
         let root_src_ast = syn::parse_file(&root_src_content)?;
 
-        let root_module = Module {
+        let root_module_info = ModuleInfo {
             visibility: Visibility::Public,
             file_path: root_src_file,
             module_path: vec!["crate".to_string()],
             source: ModuleSource::File(root_src_ast),
-            scope: None,
         };
-        root_module.resolve();
+        let root_module = Module::parse(root_module_info);
 
         Ok(Crate {
             name: root_package.name.clone(),

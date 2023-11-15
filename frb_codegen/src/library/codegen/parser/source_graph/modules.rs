@@ -7,12 +7,17 @@ use syn::{Ident, ItemEnum, ItemStruct, Type};
 #[derive(Derivative)]
 #[derivative(Debug)]
 pub struct Module {
+    pub(super) info: ModuleInfo,
+    pub(super) scope: ModuleScope,
+}
+
+#[derive(Clone, Debug)]
+pub struct ModuleInfo {
     pub(super) visibility: Visibility,
     pub(super) file_path: PathBuf,
     pub(super) module_path: Vec<String>,
     #[derivative(Debug = "ignore")]
     pub(super) source: ModuleSource,
-    pub(super) scope: Option<ModuleScope>,
 }
 
 /// Mirrors syn::Visibility, but can be created without a token
@@ -75,6 +80,10 @@ pub struct ModuleScope {
 }
 
 impl Module {
+    pub fn parse(info: ModuleInfo) -> Self {
+        todo!()
+    }
+
     pub fn collect_structs(&self) -> HashMap<String, &Struct> {
         self.collect_objects(|module| &module.scope.as_ref().unwrap().structs, |x| x.ident.to_string())
     }
