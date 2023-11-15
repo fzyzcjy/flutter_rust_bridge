@@ -98,16 +98,6 @@ pub(crate) fn topo_resolve(src: HashMap<String, Type>) -> HashMap<String, Type> 
     ret
 }
 
-struct Parser<'a> {
-    type_parser: TypeParser<'a>,
-}
-
-impl<'a> Parser<'a> {
-    pub fn new(type_parser: TypeParser<'a>) -> Self {
-        Parser { type_parser }
-    }
-}
-
 impl<'a> Parser<'a> {
     fn parse(mut self, source_rust_content: &str, src_fns: Vec<ItemFn>) -> ParserResult<IrPack> {
         let funcs = src_fns

@@ -3,11 +3,13 @@ pub(crate) mod internal_config;
 pub(crate) mod reader;
 pub(crate) mod source_graph;
 pub(crate) mod type_parser;
+pub(crate) mod main_parser;
 
 use std::path::Path;
 use syn::File;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
+use crate::codegen::parser::main_parser::MainParser;
 use crate::codegen::parser::reader::read_rust_file;
 use crate::codegen::parser::type_parser::TypeParser;
 
@@ -38,6 +40,6 @@ fn parse_one_ast(source_rust_content: &str, file_ast: File, rust_crate_dir: &Pat
     let src_types = crate_map.root_module().collect_types();
     let src_types = topo_resolve(src_types);
 
-    let parser = Parser::new(TypeParser::new(src_structs, src_enums, src_types));
-    parser.parse(source_rust_content, src_fns)
+    let main_parser = MainParser::new(TypeParser::new(src_structs, src_enums, src_types));
+    main_parser.parse(source_rust_content, src_fns)
 }
