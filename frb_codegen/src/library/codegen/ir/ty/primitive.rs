@@ -1,3 +1,4 @@
+use crate::codegen::ir::pack::IrPack;
 use convert_case::{Case, Casing};
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 

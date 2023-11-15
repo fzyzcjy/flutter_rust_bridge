@@ -1,6 +1,7 @@
 // Name "enumeration" not "enum", since the latter is a keyword
 
 use convert_case::{Case, Casing};
+use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 
 crate::ir! {
