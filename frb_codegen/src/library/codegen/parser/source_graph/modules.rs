@@ -24,7 +24,8 @@ pub struct ModuleInfo {
 #[derive(Debug, Clone)]
 pub enum Visibility {
     Public,
-    Restricted, // Not supported
+    Restricted,
+    // Not supported
     Inherited,  // Usually means private
 }
 
@@ -85,25 +86,26 @@ impl Module {
     }
 
     pub fn collect_structs(&self) -> HashMap<String, &Struct> {
-        self.collect_objects(|module| &module.scope.structs, |x| x.ident.to_string())
+        self.collect_objects(|module| &module.scope.structs, |x| (x.ident.to_string(), x))
     }
 
     pub fn collect_enums(&self) -> HashMap<String, &Enum> {
-        self.collect_objects(|module| &module.scope.enums, |x| x.ident.to_string())
+        self.collect_objects(|module| &module.scope.enums, |x| (x.ident.to_string(), x))
     }
 
-    pub fn collect_types(&self) -> HashMap<String, &TypeAlias> {
-        self.collect_objects(|module| &module.scope.type_alias, |x| x.ident.clone())
+    pub fn collect_types(&self) -> HashMap<String, Type> {
+        self.collect_objects(|module| &module.scope.type_alias, |x| (x.ident.clone(), x.target.clone()))
     }
 
-    fn collect_objects<T, F, G>(&self, f: F, extract_ident: G) -> HashMap<String, &T>
+    fn collect_objects<T, F, G, K, V>(&self, f: F, extract_entry: G) -> HashMap<String, V>
         where F: Fn(&Module) -> &[T],
-              G: Fn(&T) -> String,
+              G: Fn(&T) -> (String, V),
     {
         let mut ans = HashMap::new();
         self.visit_modules(&mut |module| {
             for item in f(module) {
-                ans.insert(extract_ident(item), item);
+                let (k, v) = extract_entry(item);
+                ans.insert(k, v);
             }
         });
         ans
