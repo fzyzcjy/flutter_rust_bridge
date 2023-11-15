@@ -93,7 +93,8 @@ impl Module {
         ans
     }
 
-    fn visit_modules<F: FnMut(&Module)>(&self, f: &mut F) {
+    //noinspection RsNeedlessLifetimes
+    fn visit_modules<'a, F: FnMut(&'a Module)>(&'a self, f: &mut F) {
         f(self);
         for scope_module in &self.scope.as_ref().unwrap().modules {
             scope_module.visit_modules(f);
