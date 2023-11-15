@@ -14,6 +14,7 @@ pub(crate) mod structure;
 pub(crate) mod unencodable;
 
 use crate::codegen::ir::pack::IrPack;
+use crate::codegen::ir::ty::IrType::StructRef;
 use enum_dispatch::enum_dispatch;
 
 crate::ir! {
@@ -44,6 +45,14 @@ impl IrType {
             return;
         }
         self.visit_children_types(f, ir_pack);
+    }
+
+    #[inline]
+    pub fn is_struct_or_enum_or_record(&self) -> bool {
+        matches!(
+            self,
+            IrType::StructRef(_) | IrType::EnumRef(_) | IrType::Record(_)
+        )
     }
 }
 

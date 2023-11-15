@@ -59,10 +59,11 @@ impl IrType {
         matches!(self, IrType::Delegate(IrTypeDelegate::Array(_)))
     }
 
-    #[inline]
-    pub fn is_struct(&self) -> bool {
-        matches!(self, StructRef(_) | EnumRef(_) | Record(_))
-    }
+    // -> is_struct_or_enum_or_record
+    // #[inline]
+    // pub fn is_struct(&self) -> bool {
+    //     matches!(self, StructRef(_) | EnumRef(_) | Record(_))
+    // }
 
     #[inline]
     pub fn is_rust_opaque(&self) -> bool {

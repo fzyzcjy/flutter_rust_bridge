@@ -93,7 +93,7 @@ impl IrEnum {
         mut variants: Vec<IrVariant>,
     ) -> Self {
         fn wrap_box(ty: &mut IrType) {
-            if ty.is_struct() {
+            if ty.is_struct_or_enum_or_record() {
                 *ty = IrType::Boxed(IrTypeBoxed {
                     exist_in_real_api: false,
                     inner: Box::new(ty.clone()),
