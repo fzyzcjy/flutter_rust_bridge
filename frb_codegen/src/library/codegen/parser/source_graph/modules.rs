@@ -92,7 +92,7 @@ impl Module {
         self.collect_objects(|module| &module.scope.enums, |x| x.ident.to_string())
     }
 
-    pub fn collect_type_aliases(&self) -> HashMap<String, &TypeAlias> {
+    pub fn collect_types(&self) -> HashMap<String, &TypeAlias> {
         self.collect_objects(|module| &module.scope.type_alias, |x| x.ident.clone())
     }
 

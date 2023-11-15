@@ -9,6 +9,7 @@ use syn::File;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::reader::read_rust_file;
+use crate::codegen::parser::type_parser::TypeParser;
 
 pub(crate) type ParserResult<T = (), E = error::Error> = Result<T, E>;
 
@@ -28,5 +29,15 @@ fn parse_one(rust_input_path: &Path, rust_crate_dir: &Path) -> ParserResult<IrPa
 }
 
 fn parse_one_ast(source_rust_content: &str, file_ast: File, rust_crate_dir: &Path) -> ParserResult<IrPack> {
-    todo!()
+    let crate_map = source_graph::crates::Crate::parse(manifest_path)?;
+
+    let mut src_fns = extract_fns_from_file(&file);
+    src_fns.extend(extract_methods_from_file(&file)?);
+    let src_structs = crate_map.root_module().collect_structs();
+    let src_enums = crate_map.root_module().collect_enums();
+    let src_types = crate_map.root_module().collect_types();
+    let src_types = topo_resolve(src_types);
+
+    let parser = Parser::new(TypeParser::new(src_structs, src_enums, src_types));
+    parser.parse(source_rust_content, src_fns)
 }
