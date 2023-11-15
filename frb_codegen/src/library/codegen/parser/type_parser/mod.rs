@@ -1,8 +1,8 @@
 pub(crate) mod array;
 pub(crate) mod enumeration;
 pub(crate) mod misc;
-pub(crate) mod record;
 pub(crate) mod structure;
+pub(crate) mod tuple;
 pub(crate) mod ty;
 
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
