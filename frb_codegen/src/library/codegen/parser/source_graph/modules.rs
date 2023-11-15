@@ -97,10 +97,10 @@ impl Module {
         )
     }
 
-    fn collect_objects<T, F, G, V>(&self, f: F, extract_entry: G) -> HashMap<String, V>
+    fn collect_objects<'a, T: 'a, F, G, V: 'a>(&'a self, f: F, extract_entry: G) -> HashMap<String, V>
     where
         F: Fn(&Module) -> &[T],
-        G: Fn(&T) -> (String, V),
+        G: Fn(&'a T) -> (String, V),
     {
         let mut ans = HashMap::new();
         self.visit_modules(&mut |module| {
