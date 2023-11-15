@@ -7,16 +7,16 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Primitive;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::library::codegen::ir::ty::IrTypeTrait;
-use syn::punctuated::Punctuated;
-use syn::{Token, Type};
+use syn::TypeTuple;
 
 impl<'a> TypeParser<'a> {
-    pub(crate) fn parse_type_tuple(&mut self, elems: Punctuated<Type, Token![,]>) -> IrType {
-        if elems.is_empty() {
+    pub(crate) fn parse_type_tuple(&mut self, type_tuple: &TypeTuple) -> IrType {
+        if type_tuple.elems.is_empty() {
             return Primitive(IrTypePrimitive::Unit);
         }
 
-        let values = elems
+        let values = type_tuple
+            .elems
             .iter()
             .map(|elem| self.parse_type(elem))
             .collect::<Vec<_>>();

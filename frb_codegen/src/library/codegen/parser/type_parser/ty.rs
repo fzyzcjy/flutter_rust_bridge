@@ -13,7 +13,7 @@ impl<'a> TypeParser<'a> {
         match resolve_ty.clone() {
             Type::Path(path) => self.parse_type_path(&path).unwrap(),
             Type::Array(type_array) => self.parse_type_array(&type_array),
-            Type::Tuple(syn::TypeTuple { elems, .. }) => self.parse_type_tuple(elems),
+            Type::Tuple(type_tuple) => self.parse_type_tuple(&type_tuple),
             _ => IrType::Unencodable(IrTypeUnencodable {
                 string: resolve_ty.to_token_stream().to_string(),
                 segments: vec![],
