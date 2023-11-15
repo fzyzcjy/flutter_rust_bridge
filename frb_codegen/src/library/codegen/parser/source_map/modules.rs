@@ -69,22 +69,25 @@ pub struct ModuleScope {
 
 impl Module {
     pub fn collect_structs(&self) -> HashMap<String, &Struct> {
-        self.collect_objects(|module| &module.scope.as_ref().unwrap().structs)
+        self.collect_objects(|module| &module.scope.as_ref().unwrap().structs, |x| x.ident.to_string())
     }
 
     pub fn collect_enums(&self) -> HashMap<String, &Enum> {
-        self.collect_objects(|module| &module.scope.as_ref().unwrap().enums)
+        self.collect_objects(|module| &module.scope.as_ref().unwrap().enums, |x| x.ident.to_string())
     }
 
     pub fn collect_type_aliases(&self) -> HashMap<String, &TypeAlias> {
-        self.collect_objects(|module| &module.scope.as_ref().unwrap().type_alias)
+        self.collect_objects(|module| &module.scope.as_ref().unwrap().type_alias, |x| x.ident.clone())
     }
 
-    fn collect_objects<T, F: FnMut(&Module) -> &[T]>(&self, f: F) -> HashMap<String, &T> {
+    fn collect_objects<T, F, G>(&self, f: F, extract_ident: G) -> HashMap<String, &T>
+        where F: Fn(&Module) -> &[T],
+              G: Fn(&T) -> String,
+    {
         let mut ans = HashMap::new();
         self.visit_modules(&mut |module| {
             for item in f(module) {
-                ans.insert(item.ident.to_string(), item);
+                ans.insert(extract_ident(item), item);
             }
         });
         ans
