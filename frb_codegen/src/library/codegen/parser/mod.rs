@@ -1,11 +1,13 @@
 pub(crate) mod error;
 pub(crate) mod internal_config;
+pub(crate) mod reader;
 
 use std::path::Path;
 use log::debug;
 use syn::File;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
+use crate::codegen::parser::reader::read_rust_file;
 
 pub(crate) type ParserResult<T = (), E = error::Error> = Result<T, E>;
 
