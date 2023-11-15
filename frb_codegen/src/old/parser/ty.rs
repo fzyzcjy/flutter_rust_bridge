@@ -63,14 +63,6 @@ fn path_type_to_unencodable(
 }
 
 impl<'a> TypeParser<'a> {
-    pub fn resolve_alias<'b: 'a>(&self, ty: &'b Type) -> &Type {
-        self.get_alias_type(ty).unwrap_or(ty)
-    }
-
-    pub fn get_alias_type(&self, ty: &syn::Type) -> Option<&Type> {
-        convert_ident_str(ty).and_then(|key| self.src_types.get(&key))
-    }
-
     pub fn parse_type(&mut self, ty: &syn::Type) -> IrType {
         let resolve_ty = self.resolve_alias(ty).clone();
 

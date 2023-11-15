@@ -3,6 +3,7 @@ pub(crate) mod misc;
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::source_graph::modules::{Enum, Struct};
+use crate::codegen::parser::type_parser::misc::convert_ident_str;
 use std::collections::{HashMap, HashSet};
 use syn::{Type, TypePath};
 
@@ -49,6 +50,10 @@ impl<'a> TypeParser<'a> {
     }
 
     pub(crate) fn resolve_alias<'b: 'a>(&self, ty: &'b Type) -> &Type {
-        todo!()
+        self.get_alias_type(ty).unwrap_or(ty)
+    }
+
+    pub(crate) fn get_alias_type(&self, ty: &Type) -> Option<&Type> {
+        convert_ident_str(ty).and_then(|key| self.src_types.get(&key))
     }
 }
