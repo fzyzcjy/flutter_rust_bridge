@@ -6,6 +6,7 @@ use itertools::Itertools;
 use log::debug;
 use crate::codegen::Config;
 use crate::codegen::config::internal_config::{DartOutputPathPack, GeneratorCInternalConfig, GeneratorDartInternalConfig, GeneratorInternalConfig, GeneratorRustInternalConfig, InternalConfig, Namespace, ParserInternalConfig, PolisherInternalConfig, RustInputPathPack};
+use crate::codegen::parser::internal_config::RustInputPathPack;
 use crate::utils::path_utils::{find_parent_dir_with_file, glob_path, path_to_string};
 
 impl InternalConfig {

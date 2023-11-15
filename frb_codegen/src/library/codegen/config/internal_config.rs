@@ -1,23 +1,13 @@
 use std::collections::HashMap;
 use std::path::PathBuf;
 use serde::{Serialize, Deserialize};
+use crate::codegen::parser::internal_config::ParserInternalConfig;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub(crate) struct InternalConfig {
     pub parser: ParserInternalConfig,
     pub generator: GeneratorInternalConfig,
     pub polisher: PolisherInternalConfig,
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
-pub(crate) struct ParserInternalConfig {
-    pub rust_input_path_pack: RustInputPathPack,
-    pub manifest_path: PathBuf,
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
-pub(crate) struct RustInputPathPack {
-    pub rust_input_path: HashMap<Namespace, PathBuf>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
