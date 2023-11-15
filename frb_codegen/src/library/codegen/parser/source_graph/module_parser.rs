@@ -1,7 +1,7 @@
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::reader::read_rust_file;
 use crate::codegen::parser::source_graph::modules::{
-    Enum, Module, ModuleInfo, ModuleScope, ModuleSource, Struct, TypeAlias,
+    Enum, Module, ModuleInfo, ModuleScope, ModuleSource, Struct, TypeAlias, Visibility,
 };
 use crate::utils::path_utils::{find_rust_crate_dir, path_to_string};
 use anyhow::anyhow;
@@ -40,7 +40,7 @@ impl Module {
                         Struct {
                             ident,
                             src: item_struct.clone(),
-                            visibility: item_struct.vis.into(),
+                            visibility: Visibility::from_syn(&item_struct.vis),
                             path: {
                                 let mut path = info.module_path.clone();
                                 path.push(ident_str);
@@ -59,7 +59,7 @@ impl Module {
                         Enum {
                             ident,
                             src: item_enum.clone(),
-                            visibility: item_enum.vis.into(),
+                            visibility: Visibility::from_syn(&item_enum.vis),
                             path: {
                                 let mut path = info.module_path.clone();
                                 path.push(ident_str);
@@ -87,7 +87,7 @@ impl Module {
 
                     scope_modules.push(match &item_mod.content {
                         Some(content) => Module::parse(ModuleInfo {
-                            visibility: item_mod.vis.into(),
+                            visibility: Visibility::from_syn(&item_mod.vis),
                             file_path: info.file_path.clone(),
                             module_path,
                             source: ModuleSource::ModuleInFile(content.1.clone()),
@@ -105,7 +105,7 @@ impl Module {
                                     syn::parse_file(&source_rust_content).unwrap(),
                                 );
                                 Module::parse(ModuleInfo {
-                                    visibility: item_mod.vis.into(),
+                                    visibility: Visibility::from_syn(&item_mod.vis),
                                     file_path: file_path.to_owned(),
                                     module_path,
                                     source,
@@ -194,6 +194,16 @@ fn get_ident(ident: &Ident, attrs: &[Attribute]) -> anyhow::Result<GetIdentOutpu
         idents: if mirror { res } else { vec![ident.clone()] },
         mirror,
     })
+}
+
+impl Visibility {
+    fn from_syn(value: &syn::Visibility) -> Self {
+        match value {
+            syn::Visibility::Public(_) => Visibility::Public,
+            syn::Visibility::Restricted(_) => Visibility::Restricted,
+            syn::Visibility::Inherited => Visibility::Inherited,
+        }
+    }
 }
 
 #[cfg(test)]

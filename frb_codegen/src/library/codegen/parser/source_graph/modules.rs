@@ -27,16 +27,6 @@ pub enum Visibility {
     Inherited, // Usually means private
 }
 
-impl From<syn::Visibility> for Visibility {
-    fn from(value: syn::Visibility) -> Self {
-        match value {
-            syn::Visibility::Public(_) => Visibility::Public,
-            syn::Visibility::Restricted(_) => Visibility::Restricted,
-            syn::Visibility::Inherited => Visibility::Inherited,
-        }
-    }
-}
-
 #[derive(Debug, Clone)]
 pub struct Import {
     path: Vec<String>,
