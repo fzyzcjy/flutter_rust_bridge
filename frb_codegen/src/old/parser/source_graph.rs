@@ -375,7 +375,6 @@ impl Module {
         });
     }
 
-    #[allow(dead_code)]
     fn resolve_imports(&mut self) {
         let imports = &mut self.scope.as_mut().unwrap().imports;
 
