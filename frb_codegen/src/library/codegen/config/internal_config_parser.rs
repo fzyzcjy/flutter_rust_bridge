@@ -5,7 +5,9 @@ use crate::codegen::config::internal_config::{
 };
 use crate::codegen::parser::internal_config::{ParserInternalConfig, RustInputPathPack};
 use crate::codegen::Config;
-use crate::utils::path_utils::{find_parent_dir_with_file, glob_path, path_to_string};
+use crate::utils::path_utils::{
+    find_dart_package_dir, find_rust_crate_dir, glob_path, path_to_string,
+};
 use anyhow::{ensure, Context, Result};
 use convert_case::{Case, Casing};
 use itertools::Itertools;
@@ -46,13 +48,13 @@ impl InternalConfig {
             config
                 .rust_crate_dir
                 .map(PathBuf::from)
-                .unwrap_or(fallback_rust_crate_dir(
+                .unwrap_or(find_rust_crate_dir(
                     rust_input_path_pack.one_rust_input_path(),
                 )?);
         let dart_root = config
             .dart_root
             .map(PathBuf::from)
-            .unwrap_or(fallback_dart_root(&dart_output_dir)?);
+            .unwrap_or(find_dart_package_dir(&dart_output_dir)?);
 
         Ok(InternalConfig {
             parser: ParserInternalConfig {
@@ -181,6 +183,10 @@ fn compute_dart_class_name(
         .collect()
 }
 
+fn fallback_rust_output_path(rust_input_path: &Path) -> PathBuf {
+    rust_input_path.with_file_name("bridge_generated.rs")
+}
+
 fn fallback_llvm_path() -> Vec<String> {
     vec![
         "/opt/homebrew/opt/llvm".to_owned(), // Homebrew root
@@ -197,22 +203,6 @@ fn fallback_llvm_path() -> Vec<String> {
         "C:/Program Files/llvm".to_owned(), // Default on Windows
         "C:/msys64/mingw64".to_owned(), // https://packages.msys2.org/package/mingw-w64-x86_64-clang
     ]
-}
-
-fn fallback_dart_root(dart_output_dir: &Path) -> Result<PathBuf> {
-    find_parent_dir_with_file(dart_output_dir, "pubspec.yaml").with_context(|| {
-        format!("Fail to detect dart root from dart_output_dir={dart_output_dir:?}")
-    })
-}
-
-fn fallback_rust_crate_dir(rust_input_path: &Path) -> Result<PathBuf> {
-    find_parent_dir_with_file(rust_input_path, "Cargo.toml").with_context(|| {
-        format!("Fail to detect rust crate dir from rust_input_path={rust_input_path:?}")
-    })
-}
-
-fn fallback_rust_output_path(rust_input_path: &Path) -> PathBuf {
-    rust_input_path.with_file_name("bridge_generated.rs")
 }
 
 #[cfg(test)]

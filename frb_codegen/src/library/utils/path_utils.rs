@@ -29,6 +29,18 @@ pub(crate) fn find_parent_dir_with_file(
     None
 }
 
+pub(crate) fn find_dart_package_dir(dart_file_path: &Path) -> Result<PathBuf> {
+    find_parent_dir_with_file(dart_file_path, "pubspec.yaml").with_context(|| {
+        format!("Fail to detect dart package from dart_file_path={dart_file_path:?}")
+    })
+}
+
+pub(crate) fn find_rust_crate_dir(rust_file_path: &Path) -> Result<PathBuf> {
+    find_parent_dir_with_file(rust_file_path, "Cargo.toml").with_context(|| {
+        format!("Fail to detect rust crate dir from rust_file_path={rust_file_path:?}")
+    })
+}
+
 #[cfg(test)]
 mod tests {
     use crate::utils::path_utils::glob_path;
