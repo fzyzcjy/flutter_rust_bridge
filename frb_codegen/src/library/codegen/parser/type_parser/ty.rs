@@ -12,13 +12,13 @@ impl<'a> TypeParser<'a> {
         let resolve_ty = self.resolve_alias(ty).clone();
 
         match resolve_ty.clone() {
-            Type::Path(path) => self.convert_path_to_ir_type(&path).unwrap(),
+            Type::Path(path) => self.parse_type_path(&path).unwrap(),
             Type::Array(syn::TypeArray { elem, len, .. }) => self.parse_type_array(&elem, len),
             Type::Tuple(syn::TypeTuple { elems, .. }) => {
                 if elems.is_empty() {
                     Primitive(IrTypePrimitive::Unit)
                 } else {
-                    self.convert_tuple_to_ir_type(elems)
+                    self.parse_type_tuple(elems)
                 }
             }
             _ => IrType::Unencodable(IrTypeUnencodable {

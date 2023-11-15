@@ -141,10 +141,7 @@ impl<'a> TypeParser<'a> {
     }
 
     /// Converts a path type into an `IrType` if possible.
-    pub fn convert_path_to_ir_type(
-        &mut self,
-        type_path: &TypePath,
-    ) -> std::result::Result<IrType, String> {
+    pub fn parse_type_path(&mut self, type_path: &TypePath) -> std::result::Result<IrType, String> {
         match &type_path {
             TypePath { qself: None, path } => {
                 let segments: Vec<NameComponent> = if cfg!(feature = "qualified_names") {
@@ -416,7 +413,7 @@ impl<'a> TypeParser<'a> {
         }
     }
 
-    fn convert_tuple_to_ir_type(&mut self, elems: Punctuated<Type, Token![,]>) -> IrType {
+    fn parse_type_tuple(&mut self, elems: Punctuated<Type, Token![,]>) -> IrType {
         let values = elems
             .iter()
             .map(|elem| self.parse_type(elem))

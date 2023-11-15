@@ -41,10 +41,7 @@ impl<'a> TypeParser<'a> {
         (self.struct_pool, self.enum_pool)
     }
 
-    pub(crate) fn convert_path_to_ir_type(
-        &mut self,
-        type_path: &TypePath,
-    ) -> Result<IrType, String> {
+    pub(crate) fn parse_type_path(&mut self, type_path: &TypePath) -> Result<IrType, String> {
         todo!()
     }
 

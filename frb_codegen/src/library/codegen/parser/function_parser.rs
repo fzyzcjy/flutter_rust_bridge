@@ -170,7 +170,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let ty = &self.type_parser.resolve_alias(ty).clone();
 
         if let Type::Path(type_path) = ty {
-            match self.type_parser.convert_path_to_ir_type(&type_path) {
+            match self.type_parser.parse_type_path(&type_path) {
                 Ok(IrType::Unencodable(IrTypeUnencodable { segments, .. })) => {
                     match if cfg!(feature = "qualified_names") {
                         segments.splay()
