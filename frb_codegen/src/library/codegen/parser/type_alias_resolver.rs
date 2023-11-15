@@ -2,7 +2,8 @@ use std::collections::HashMap;
 use syn::Type;
 use topological_sort::TopologicalSort;
 
-pub(crate) fn topo_resolve(src: HashMap<String, Type>) -> HashMap<String, Type> {
+// See https://github.com/fzyzcjy/flutter_rust_bridge/pull/929 for more details of the algorithm
+pub(crate) fn resolve_type_aliases(src: HashMap<String, Type>) -> HashMap<String, Type> {
     // Some types that cannot be Handled.
     // Filter something like `BareFn( TypeBareFn...`
     // Filter something like `Ptr( TypePtr { star_token: Star,`

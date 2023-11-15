@@ -15,6 +15,7 @@ use crate::codegen::parser::reader::read_rust_file;
 use crate::codegen::parser::type_parser::TypeParser;
 use std::path::Path;
 use syn::File;
+use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 
 pub(crate) type ParserResult<T = (), E = error::Error> = Result<T, E>;
 
@@ -48,7 +49,7 @@ fn parse_one_ast(
     let src_structs = crate_map.root_module().collect_structs();
     let src_enums = crate_map.root_module().collect_enums();
     let src_types = crate_map.root_module().collect_types();
-    let src_types = topo_resolve(src_types);
+    let src_types = resolve_type_aliases(src_types);
 
     let main_parser = MainParser::new(TypeParser::new(src_structs, src_enums, src_types));
     main_parser.parse(source_rust_content, src_fns)
