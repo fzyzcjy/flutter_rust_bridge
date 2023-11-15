@@ -5,15 +5,6 @@ use crate::target::Target;
 
 impl IrTypeTime {
     #[inline]
-    pub fn safe_ident(&self) -> &str {
-        match self {
-            IrTypeTime::Local => "Local",
-            IrTypeTime::Utc => "Utc",
-            IrTypeTime::Duration => "Duration",
-            IrTypeTime::Naive => "Naive",
-        }
-    }
-    #[inline]
     pub fn is_duration(&self) -> bool {
         matches!(self, Self::Duration)
     }
@@ -24,21 +15,6 @@ impl IrTypeTime {
 }
 
 impl IrTypeDelegateArray {
-    pub fn get_delegate(&self) -> IrType {
-        match self {
-            IrTypeDelegateArray::GeneralArray { general, .. } => {
-                IrType::GeneralList(IrTypeGeneralList {
-                    inner: general.clone(),
-                })
-            }
-            IrTypeDelegateArray::PrimitiveArray { primitive, .. } => {
-                IrType::PrimitiveList(IrTypePrimitiveList {
-                    primitive: primitive.clone(),
-                })
-            }
-        }
-    }
-
     pub fn dart_api_type(&self) -> String {
         match self {
             IrTypeDelegateArray::GeneralArray { general, length } => {
@@ -49,17 +25,6 @@ impl IrTypeDelegateArray {
                     "{}Array{length}",
                     primitive.safe_ident().to_case(Case::Pascal)
                 )
-            }
-        }
-    }
-
-    pub fn safe_ident(&self) -> String {
-        match self {
-            IrTypeDelegateArray::GeneralArray { general, length } => {
-                format!("{}_array_{length}", general.dart_api_type())
-            }
-            IrTypeDelegateArray::PrimitiveArray { primitive, length } => {
-                format!("{}_array_{length}", primitive.safe_ident())
             }
         }
     }
@@ -114,36 +79,6 @@ impl IrTypeDelegateArray {
         *match self {
             IrTypeDelegateArray::GeneralArray { length, .. } => length,
             IrTypeDelegateArray::PrimitiveArray { length, .. } => length,
-        }
-    }
-}
-
-impl IrTypeDelegate {
-    pub fn get_delegate(&self) -> IrType {
-        match self {
-            IrTypeDelegate::Array(array) => array.get_delegate(),
-            IrTypeDelegate::String => IrType::PrimitiveList(IrTypePrimitiveList {
-                primitive: IrTypePrimitive::U8,
-            }),
-            IrTypeDelegate::ZeroCopyBufferVecPrimitive(primitive) => {
-                IrType::PrimitiveList(IrTypePrimitiveList {
-                    primitive: primitive.clone(),
-                })
-            }
-            IrTypeDelegate::StringList => IrType::Delegate(IrTypeDelegate::String),
-            IrTypeDelegate::PrimitiveEnum { repr, .. } => IrType::Primitive(repr.clone()),
-            IrTypeDelegate::Time(_) => IrType::Primitive(IrTypePrimitive::I64),
-            IrTypeDelegate::TimeList(_) => IrType::PrimitiveList(IrTypePrimitiveList {
-                primitive: IrTypePrimitive::I64,
-            }),
-            IrTypeDelegate::Uuid => IrType::PrimitiveList(IrTypePrimitiveList {
-                primitive: IrTypePrimitive::U8,
-            }),
-            IrTypeDelegate::Uuids => IrType::PrimitiveList(IrTypePrimitiveList {
-                primitive: IrTypePrimitive::U8,
-            }),
-            IrTypeDelegate::Backtrace => IrType::Delegate(IrTypeDelegate::String),
-            IrTypeDelegate::Anyhow => IrType::Delegate(IrTypeDelegate::String),
         }
     }
 }

@@ -1,7 +1,9 @@
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use crate::codegen::ir::ty::enumeration::IrTypeEnumRef;
+use crate::codegen::ir::ty::general_list::IrTypeGeneralList;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 
 crate::ir! {
 /// types that delegate to another type
@@ -12,9 +14,9 @@ pub enum IrTypeDelegate {
     ZeroCopyBufferVecPrimitive(IrTypePrimitive),
     PrimitiveEnum(IrTypeDelegatePrimitiveEnum),
     Time(IrTypeDelegateTime),
-    TimeList(IrTypeDelegateTime),
+    TimeList(IrTypeDelegateTime),// TODO avoid this special case?
     Uuid,
-    Uuids,
+    Uuids,// TODO avoid this special case?
     Backtrace,
     Anyhow,
 }
@@ -49,6 +51,7 @@ impl IrTypeTrait for IrTypeDelegate {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_pack: &IrPack) {
         self.get_delegate().visit_types(f, ir_pack);
 
+        // TODO avoid this hack
         // extras
         if let Self::TimeList(ir) = self {
             IrType::Delegate(IrTypeDelegate::Time(*ir)).visit_types(f, ir_pack);
@@ -61,15 +64,67 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::String => "String".to_owned(),
             IrTypeDelegate::StringList => "StringList".to_owned(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                "ZeroCopyBuffer_".to_owned() + &self.get_delegate().dart_api_type()
+                "ZeroCopyBuffer_".to_owned() + &self.get_delegate().safe_ident()
             }
             IrTypeDelegate::PrimitiveEnum(ir) => ir.ir.safe_ident(),
-            IrTypeDelegate::Time(ir) => format!("Chrono_{}", ir.safe_ident()),
-            IrTypeDelegate::TimeList(ir) => format!("Chrono_{}List", ir.safe_ident()),
+            IrTypeDelegate::Time(ir) => format!("Chrono_{}", ir.to_string()),
+            IrTypeDelegate::TimeList(ir) => format!("Chrono_{}List", ir.to_string()),
             IrTypeDelegate::Uuid => "Uuid".to_owned(),
             IrTypeDelegate::Uuids => "Uuids".to_owned(),
             IrTypeDelegate::Backtrace => "String".to_owned(),
             IrTypeDelegate::Anyhow => "FrbAnyhowException".to_owned(),
+        }
+    }
+}
+
+impl IrTypeDelegate {
+    pub fn get_delegate(&self) -> IrType {
+        match self {
+            IrTypeDelegate::Array(array) => array.get_delegate(),
+            IrTypeDelegate::String => IrType::PrimitiveList(IrTypePrimitiveList {
+                primitive: IrTypePrimitive::U8,
+            }),
+            IrTypeDelegate::ZeroCopyBufferVecPrimitive(primitive) => {
+                IrType::PrimitiveList(IrTypePrimitiveList { primitive: primitive.clone() })
+            }
+            IrTypeDelegate::StringList => IrType::Delegate(IrTypeDelegate::String),
+            IrTypeDelegate::PrimitiveEnum(inner) => IrType::Primitive(inner.repr.clone()),
+            IrTypeDelegate::Time(_) => IrType::Primitive(IrTypePrimitive::I64),
+            IrTypeDelegate::TimeList(_) => IrType::PrimitiveList(IrTypePrimitiveList {
+                primitive: IrTypePrimitive::I64,
+            }),
+            IrTypeDelegate::Uuid => IrType::PrimitiveList(IrTypePrimitiveList {
+                primitive: IrTypePrimitive::U8,
+            }),
+            IrTypeDelegate::Uuids => IrType::PrimitiveList(IrTypePrimitiveList {
+                primitive: IrTypePrimitive::U8,
+            }),
+            IrTypeDelegate::Backtrace => IrType::Delegate(IrTypeDelegate::String),
+            IrTypeDelegate::Anyhow => IrType::Delegate(IrTypeDelegate::String),
+        }
+    }
+}
+
+impl IrTypeDelegateArray {
+    pub fn get_delegate(&self) -> IrType {
+        match self {
+            IrTypeDelegateArray::GeneralArray { general, .. } => {
+                IrType::GeneralList(IrTypeGeneralList { inner: general.clone() })
+            }
+            IrTypeDelegateArray::PrimitiveArray { primitive, .. } => {
+                IrType::PrimitiveList(IrTypePrimitiveList { primitive: primitive.clone() })
+            }
+        }
+    }
+
+    pub fn safe_ident(&self) -> String {
+        match self {
+            IrTypeDelegateArray::GeneralArray { general, length } => {
+                format!("{}_array_{length}", general.safe_ident())
+            }
+            IrTypeDelegateArray::PrimitiveArray { primitive, length } => {
+                format!("{}_array_{length}", primitive.safe_ident())
+            }
         }
     }
 }
