@@ -1,18 +1,26 @@
 use std::collections::HashMap;
 use std::path::PathBuf;
 use derivative::Derivative;
-use syn::{Visibility, Ident, ItemEnum, ItemStruct, Type};
+use syn::{Ident, ItemEnum, ItemStruct, Type};
 
 #[derive(Clone)]
 #[derive(Derivative)]
 #[derivative(Debug)]
 pub struct Module {
-    visibility: Visibility,
-    file_path: PathBuf,
-    module_path: Vec<String>,
+    pub(super) visibility: Visibility,
+    pub(super) file_path: PathBuf,
+    pub(super) module_path: Vec<String>,
     #[derivative(Debug = "ignore")]
-    source: ModuleSource,
-    scope: Option<ModuleScope>,
+    pub(super) source: ModuleSource,
+    pub(super) scope: Option<ModuleScope>,
+}
+
+/// Mirrors syn::Visibility, but can be created without a token
+#[derive(Debug, Clone)]
+pub enum Visibility {
+    Public,
+    Restricted, // Not supported
+    Inherited,  // Usually means private
 }
 
 #[derive(Debug, Clone)]
