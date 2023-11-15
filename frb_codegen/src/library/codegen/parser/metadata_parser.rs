@@ -5,18 +5,13 @@ use syn::parse::{Parse, ParseStream};
 use syn::punctuated::Punctuated;
 use syn::*;
 
-fn parse_metadata(attrs: &[Attribute]) -> Vec<IrDartAnnotation> {
+const METADATA_IDENT: &str = "frb";
+
+fn parse_metadata(attrs: &[Attribute]) -> Result<Vec<FrbOption>> {
     attrs
         .iter()
-        .filter(|attr| attr.path().is_ident("frb"))
+        .filter(|attr| attr.path().is_ident(METADATA_IDENT))
         .map(|attr| attr.parse_args::<FrbOption>())
-        .flat_map(|frb_option| match frb_option {
-            Ok(FrbOption::Metadata(NamedOption {
-                name: _,
-                value: MetadataAnnotations(annotations),
-            })) => annotations,
-            _ => vec![],
-        })
         .collect()
 }
 
