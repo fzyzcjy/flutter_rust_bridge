@@ -7,6 +7,9 @@ use crate::codegen::parser::ParserResult;
 use anyhow::Context;
 use log::debug;
 use syn::*;
+use crate::codegen::ir::ty::delegate::IrTypeDelegate;
+use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
+use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 
 struct FunctionParser;
 
@@ -112,5 +115,100 @@ impl FunctionParser {
             comments: extract_comments(&func.attrs),
             error_output: output_err,
         })
+    }
+
+    /// Attempts to parse the type from an argument of a function signature. There is a special
+    /// case for top-level `StreamSink` types.
+    pub fn try_parse_fn_arg_type(&self, ty: &Type) -> Option<IrFuncArg> {
+        match ty {
+            Type::Path(TypePath { path, .. }) => {
+                let last_segment = path.segments.last().unwrap();
+                if last_segment.ident == STREAM_SINK_IDENT {
+                    match &last_segment.arguments {
+                        PathArguments::AngleBracketed(
+                            AngleBracketedGenericArguments { args, .. },
+                        ) if args.len() == 1 => {
+                            // Unwrap is safe here because args.len() == 1
+                            match args.last().unwrap() {
+                                GenericArgument::Type(t) => {
+                                    Some(IrFuncArg::StreamSinkType(self.type_parser.parse_type(t)))
+                                }
+                                _ => None,
+                            }
+                        }
+                        _ => None,
+                    }
+                } else {
+                    Some(IrFuncArg::Type(self.type_parser.parse_type(ty)))
+                }
+            }
+            Type::Array(_) => Some(IrFuncArg::Type(self.type_parser.parse_type(ty))),
+            _ => None,
+        }
+    }
+
+    /// Attempts to parse the type from the return part of a function signature. There is a special
+    /// case for top-level `Result` types.
+    pub fn try_parse_fn_output_type(&self, ty: &Type) -> Option<IrFuncOutput> {
+        let ty = &self.type_parser.resolve_alias(ty).clone();
+
+        if let Type::Path(type_path) = ty {
+            match self.type_parser.convert_path_to_ir_type(type_path) {
+                Ok(IrType::Unencodable(IrTypeUnencodable { segments, .. })) => {
+                    match if cfg!(feature = "qualified_names") {
+                        segments.splay()
+                    } else {
+                        // Emulate old behavior by discarding any name qualifiers
+                        vec![segments.splay().pop().unwrap()]
+                    }[..]
+                    {
+                        #[cfg(feature = "qualified_names")]
+                        [("anyhow", None), ("Result", Some(ArgsRefs::Generic([args])))] => {
+                            Some(IrFuncOutput::ResultType {
+                                ok: args.clone(),
+                                error: None,
+                            })
+                        }
+                        [("Result", Some(ArgsRefs::Generic(args)))] => {
+                            let ok = args.first().unwrap();
+
+                            let is_anyhow = args.len() == 1
+                                || args.iter().any(|x| match x {
+                                IrType::Unencodable(IrTypeUnencodable { string, .. }) => {
+                                    string == "anyhow :: Error"
+                                }
+                                _ => false,
+                            });
+                            let error = if is_anyhow {
+                                Some(IrType::Delegate(IrTypeDelegate::Anyhow))
+                            } else {
+                                args.last().cloned()
+                            };
+
+                            let error = if let Some(StructRef(mut struct_ref)) = error {
+                                struct_ref.is_exception = true;
+                                Some(StructRef(struct_ref))
+                            } else if let Some(EnumRef(mut enum_ref)) = error {
+                                enum_ref.is_exception = true;
+                                Some(EnumRef(enum_ref))
+                            } else {
+                                error
+                            };
+
+                            Some(IrFuncOutput::ResultType {
+                                ok: ok.clone(),
+                                error,
+                            })
+                        }
+                        _ => None, // unencodable types not implemented
+                    }
+                }
+                Ok(result) => Some(IrFuncOutput::Type(result)),
+                Err(..) => None,
+            }
+        } else {
+            let ir_ty = self.type_parser.parse_type(ty);
+            Some(IrFuncOutput::Type(ir_ty))
+        }
     }
 }
