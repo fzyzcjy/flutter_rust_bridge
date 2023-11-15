@@ -2,7 +2,8 @@ use std::{env, fs};
 use std::path::{Path, PathBuf};
 use lazy_static::lazy_static;
 use log::{info, warn};
-use anyhow::Result;
+use anyhow::{bail, Result};
+use itertools::Itertools;
 
 pub(crate) fn cargo_expand(rust_crate_dir: &Path, module: Option<String>, rust_file_path: &Path) -> Result<String> {
     let manifest_dir: PathBuf = env::var("CARGO_MANIFEST_DIR")?.into();
@@ -16,7 +17,7 @@ pub(crate) fn cargo_expand(rust_crate_dir: &Path, module: Option<String>, rust_f
         return Ok(fs::read_to_string(file)?);
     }
 
-    let mut cache = CACHE.lock().unwrap();
+    let mut cache = CARGO_EXPAND_CACHE.lock().unwrap();
     let expanded = cache
         .entry(String::from(rust_crate_dir))
         .or_insert_with(|| run_cargo_expand(rust_crate_dir));
@@ -25,14 +26,14 @@ pub(crate) fn cargo_expand(rust_crate_dir: &Path, module: Option<String>, rust_f
 }
 
 lazy_static! {
-    static ref CACHE: Mutex<HashMap<String, String>> = Mutex::new(HashMap::new());
+    static ref CARGO_EXPAND_CACHE: Mutex<HashMap<String, String>> = Mutex::new(HashMap::new());
 }
 
-fn extract_module(expanded: &str, module: Option<String>) -> Result<String> {
+fn extract_module(raw_expanded: &str, module: Option<String>) -> Result<String> {
     if let Some(module) = module {
-        let (_, expanded) = module
+        let (_, extracted) = module
             .split("::")
-            .fold((0, expanded), |(spaces, expanded), module| {
+            .fold((0, raw_expanded), |(spaces, expanded), module| {
                 let searched = format!("mod {module} {{\n");
                 let start = expanded
                     .find(&searched)
@@ -47,9 +48,9 @@ fn extract_module(expanded: &str, module: Option<String>) -> Result<String> {
                     .unwrap_or(expanded.len());
                 (spaces + 4, &expanded[start..end])
             });
-        return Ok(expanded.to_owned())
+        return Ok(extracted.to_owned());
     }
-    Ok(expanded.to_owned())
+    Ok(raw_expanded.to_owned())
 }
 
 fn run_cargo_expand(rust_crate_dir: &Path) -> String {
@@ -59,30 +60,23 @@ fn run_cargo_expand(rust_crate_dir: &Path) -> String {
         PathBuf::from("--theme=none"),
         PathBuf::from("--ugly"),
     ];
-    match execute_command("cargo", &args, Some(rust_crate_dir)) {
-        Ok(output) => {
-            let stdout = String::from_utf8(output.stdout).unwrap_or_default();
-            let stderr = String::from_utf8(output.stderr).unwrap_or_default();
-            if stdout.is_empty() {
-                if stderr.contains("no such command: `expand`") {
-                    panic!(
-                        "cargo expand is not installed. Please run  `cargo install cargo-expand`"
-                    );
-                }
-                panic!("cargo expand returned empty output");
-            }
-            // remove first and last line to get rid of wrapping module
-            let mut output = stdout.lines();
-            output.next();
-            output
-                .collect::<Vec<_>>()
-                .join("\n")
-                .replace("/// frb_marker: ", "")
+
+    let output = execute_command("cargo", &args, Some(rust_crate_dir))
+        .with_context(|| format!("Could not expand rust code at path {:?}: {}\n", rust_crate_dir, e))?;
+
+    let stdout = String::from_utf8(output.stdout)?;
+    let stderr = String::from_utf8(output.stderr)?;
+
+    if stdout.is_empty() {
+        if stderr.contains("no such command: `expand`") {
+            bail!("cargo expand is not installed. Please run  `cargo install cargo-expand`");
         }
-        Err(e) => {
-            panic!("Could not expand rust code at path {:?}: {}\n", rust_crate_dir, e);
-        }
+        bail!("cargo expand returned empty output");
     }
+
+    let mut stdout_lines = stdout.lines();
+    stdout_lines.next();
+    stdout_lines.join("\n").replace("/// frb_marker: ", "")
 }
 
 #[cfg(test)]
