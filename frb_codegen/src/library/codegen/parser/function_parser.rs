@@ -1,4 +1,3 @@
-use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::func::{IrFunc, IrFuncMode};
 use crate::codegen::ir::ident::IrIdent;

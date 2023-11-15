@@ -1,11 +1,9 @@
-use crate::codegen::ir::default::IrDefaultValue;
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::structure::IrStruct;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::TypeParser;
-use itertools::Itertools;
 use syn::{Field, Fields, FieldsNamed, FieldsUnnamed};
 
 impl<'a> TypeParser<'a> {
@@ -18,11 +16,11 @@ impl<'a> TypeParser<'a> {
             _ => return Ok(None),
         };
 
-        let fields = struct_fields
+        let fields: Vec<_> = struct_fields
             .iter()
             .enumerate()
             .map(|(idx, field)| self.parse_struct_field(idx, field))
-            .collect_vec();
+            .collect()?;
 
         let name = src_struct.0.ident.to_string();
         let wrapper_name = if src_struct.0.mirror {
@@ -50,20 +48,20 @@ impl<'a> TypeParser<'a> {
         }))
     }
 
-    fn parse_struct_field(&mut self, idx: usize, field: &Field) -> IrField {
+    fn parse_struct_field(&mut self, idx: usize, field: &Field) -> anyhow::Result<IrField> {
         let field_name = field
             .ident
             .as_ref()
             .map_or(format!("field{idx}"), ToString::to_string);
         let field_type = self.parse_type(&field.ty);
         let attributes = FrbAttributes::parse(&field.attrs)?;
-        IrField {
+        Ok(IrField {
             name: IrIdent::new(field_name),
             ty: field_type,
             is_final: !attributes.non_final(),
             comments: parse_comments(&field.attrs),
-            default: IrDefaultValue::extract(&field.attrs),
+            default: attributes.default_value(),
             settings: IrFieldSettings::default(),
-        }
+        })
     }
 }
