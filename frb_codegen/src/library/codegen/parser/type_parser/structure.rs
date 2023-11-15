@@ -30,8 +30,10 @@ impl<'a> TypeParser<'a> {
         };
 
         let path = Some(src_struct.path.clone());
-        let attributes = FrbAttributes::parse(src_struct.src.attrs)?;
         let comments = extract_comments(&src_struct.src.attrs);
+
+        let attributes = FrbAttributes::parse(src_struct.src.attrs)?;
+        let dart_metadata = attributes.dart_metadata();
 
         Some(IrStruct {
             name,
@@ -41,6 +43,8 @@ impl<'a> TypeParser<'a> {
             is_fields_named,
             dart_metadata,
             comments,
+            freezed: TODO,
+            is_exception: TODO,
         })
     }
 

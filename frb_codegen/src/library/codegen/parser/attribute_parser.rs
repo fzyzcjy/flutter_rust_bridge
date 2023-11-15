@@ -54,6 +54,16 @@ impl FrbAttributes {
             )
             .collect()
     }
+
+    pub(crate) fn dart_metadata(&self) -> Vec<IrDartAnnotation> {
+        self.0
+            .iter()
+            .filter_map(
+                |item| if_then_some!(let FrbAttribute::Metadata(metadata) = item, metadata.value.0.clone()),
+            )
+            .flatten()
+            .collect()
+    }
 }
 
 mod frb_keyword {
