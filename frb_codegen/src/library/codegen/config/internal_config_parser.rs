@@ -39,7 +39,7 @@ impl InternalConfig {
         Ok(InternalConfig {
             parser: ParserInternalConfig {
                 rust_input_path_pack,
-                rust_crate_dir,
+                rust_crate_dir: rust_crate_dir.clone(),
             },
             generator: GeneratorInternalConfig {
                 dart: GeneratorDartInternalConfig {
