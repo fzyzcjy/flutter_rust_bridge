@@ -6,14 +6,16 @@ use crate::codegen::parser::source_map::modules::Module;
 /// enums.
 #[derive(Debug, Clone)]
 pub struct Crate {
-    pub name: String,
-    pub manifest_path: PathBuf,
-    pub root_src_file: PathBuf,
-    pub root_module: Module,
+    name: String,
+    manifest_path: PathBuf,
+    root_src_file: PathBuf,
+    root_module: Module,
 }
 
 impl Crate {
     pub fn parse(manifest_path: &Path) -> ParserResult<Self> {
         todo!()
     }
+
+    pub fn root_module(&self) -> &Module { &self.root_module }
 }

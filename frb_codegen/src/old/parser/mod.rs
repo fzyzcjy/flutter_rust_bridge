@@ -103,9 +103,9 @@ pub fn parse(source_rust_content: &str, file: File, manifest_path: &str) -> Pars
 
     let mut src_fns = extract_fns_from_file(&file);
     src_fns.extend(extract_methods_from_file(&file)?);
-    let src_structs = crate_map.root_module.collect_structs_to_vec();
-    let src_enums = crate_map.root_module.collect_enums_to_vec();
-    let src_types = crate_map.root_module.collect_types_to_pool();
+    let src_structs = crate_map.root_module().collect_structs_to_vec();
+    let src_enums = crate_map.root_module().collect_enums_to_vec();
+    let src_types = crate_map.root_module().collect_types_to_pool();
     let src_types = topo_resolve(src_types);
 
     let parser = Parser::new(TypeParser::new(src_structs, src_enums, src_types));
