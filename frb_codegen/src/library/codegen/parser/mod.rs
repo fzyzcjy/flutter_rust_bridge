@@ -4,7 +4,6 @@ pub(crate) mod reader;
 pub(crate) mod source_graph;
 
 use std::path::Path;
-use log::debug;
 use syn::File;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::parser::internal_config::ParserInternalConfig;

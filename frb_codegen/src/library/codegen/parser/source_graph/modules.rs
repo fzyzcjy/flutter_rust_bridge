@@ -3,15 +3,15 @@ use std::path::PathBuf;
 use derivative::Derivative;
 use syn::{Ident, ItemEnum, ItemStruct, Type};
 
-#[derive(Clone)]
-#[derive(Derivative)]
-#[derivative(Debug)]
+#[derive(Clone, Debug)]
 pub struct Module {
     pub(super) info: ModuleInfo,
     pub(super) scope: ModuleScope,
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone)]
+#[derive(Derivative)]
+#[derivative(Debug)]
 pub struct ModuleInfo {
     pub(super) visibility: Visibility,
     pub(super) file_path: PathBuf,
@@ -85,15 +85,15 @@ impl Module {
     }
 
     pub fn collect_structs(&self) -> HashMap<String, &Struct> {
-        self.collect_objects(|module| &module.scope.as_ref().unwrap().structs, |x| x.ident.to_string())
+        self.collect_objects(|module| &module.scope.structs, |x| x.ident.to_string())
     }
 
     pub fn collect_enums(&self) -> HashMap<String, &Enum> {
-        self.collect_objects(|module| &module.scope.as_ref().unwrap().enums, |x| x.ident.to_string())
+        self.collect_objects(|module| &module.scope.enums, |x| x.ident.to_string())
     }
 
     pub fn collect_type_aliases(&self) -> HashMap<String, &TypeAlias> {
-        self.collect_objects(|module| &module.scope.as_ref().unwrap().type_alias, |x| x.ident.clone())
+        self.collect_objects(|module| &module.scope.type_alias, |x| x.ident.clone())
     }
 
     fn collect_objects<T, F, G>(&self, f: F, extract_ident: G) -> HashMap<String, &T>
@@ -112,7 +112,7 @@ impl Module {
     //noinspection RsNeedlessLifetimes
     fn visit_modules<'a, F: FnMut(&'a Module)>(&'a self, f: &mut F) {
         f(self);
-        for scope_module in &self.scope.as_ref().unwrap().modules {
+        for scope_module in &self.scope.modules {
             scope_module.visit_modules(f);
         }
     }

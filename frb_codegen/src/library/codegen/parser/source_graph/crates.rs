@@ -3,6 +3,7 @@ use std::path::{Path, PathBuf};
 use anyhow::Context;
 use cargo_metadata::{Metadata, MetadataCommand, Package};
 use syn::File;
+use crate::codegen::parser::error::Error;
 use crate::codegen::parser::ParserResult;
 use crate::codegen::parser::source_graph::modules::{Module, ModuleInfo, ModuleSource, Visibility};
 
@@ -51,7 +52,7 @@ fn get_root_src_file(root_package: &Package) -> ParserResult<PathBuf> {
             return Ok(fs::canonicalize(file).unwrap());
         }
     }
-    Err(super::Error::NoEntryPoint)
+    Err(Error::NoEntryPoint)
 }
 
 fn get_root_module_info(root_src_file: PathBuf, root_src_ast: File) -> ModuleInfo {
