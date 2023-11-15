@@ -18,7 +18,7 @@ impl FrbMetadata {
                 .iter()
                 .filter(|attr| attr.path().is_ident(METADATA_IDENT))
                 .map(|attr| attr.parse_args::<FrbOption>())
-                .collect()?,
+                .collect::<Result<Vec<_>>>()?,
         ))
     }
 
@@ -26,16 +26,20 @@ impl FrbMetadata {
         let candidates = self
             .0
             .iter()
-            .filter_map(|item| if_then_some!(let FrbOption::Default(default) = item, default))
+            .filter_map(
+                |item| if_then_some!(let FrbOption::Default(default) = item, default.clone()),
+            )
             .collect_vec();
         if candidates.len() > 1 {
             log::warn!("Only one `default = ..` attribute is expected; taking the last one");
         }
-        (*candidates.last()).copied()
+        candidates.last().cloned()
     }
 
     pub(crate) fn non_final(&self) -> bool {
-        self.0.iter().any(|item| item == FrbOption::NonFinal)
+        self.0
+            .iter()
+            .any(|item| matches!(item, FrbOption::NonFinal))
     }
 
     pub(crate) fn mirror(&self) -> Vec<Path> {

@@ -6,7 +6,7 @@ use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
-use crate::codegen::parser::metadata_parser::{parse_metadata, FrbMetadata};
+use crate::codegen::parser::metadata_parser::FrbMetadata;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::parser::ParserResult;
 use anyhow::Context;
