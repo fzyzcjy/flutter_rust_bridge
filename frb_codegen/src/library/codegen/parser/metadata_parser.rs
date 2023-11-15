@@ -9,26 +9,19 @@ use syn::*;
 
 const METADATA_IDENT: &str = "frb";
 
-pub(crate) fn parse_metadata(attrs: &[Attribute]) -> Result<FrbOptions> {
-    Ok(FrbOptions(
-        attrs
-            .iter()
-            .filter(|attr| attr.path().is_ident(METADATA_IDENT))
-            .map(|attr| attr.parse_args::<FrbOption>())
-            .collect()?,
-    ))
-}
+pub(crate) struct FrbMetadata(Vec<FrbOption>);
 
-mod frb_keyword {
-    syn::custom_keyword!(mirror);
-    syn::custom_keyword!(non_final);
-    syn::custom_keyword!(dart_metadata);
-    syn::custom_keyword!(import);
-}
+impl FrbMetadata {
+    pub(crate) fn parse(attrs: &[Attribute]) -> Result<Self> {
+        Ok(Self(
+            attrs
+                .iter()
+                .filter(|attr| attr.path().is_ident(METADATA_IDENT))
+                .map(|attr| attr.parse_args::<FrbOption>())
+                .collect()?,
+        ))
+    }
 
-struct FrbOptions(Vec<FrbOption>);
-
-impl FrbOptions {
     pub(crate) fn default_value(&self) -> Option<IrDefaultValue> {
         let candidates = self
             .0
@@ -40,6 +33,13 @@ impl FrbOptions {
         }
         (*candidates.last()).copied()
     }
+}
+
+mod frb_keyword {
+    syn::custom_keyword!(mirror);
+    syn::custom_keyword!(non_final);
+    syn::custom_keyword!(dart_metadata);
+    syn::custom_keyword!(import);
 }
 
 enum FrbOption {
