@@ -8,6 +8,7 @@ use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::type_parser::TypeParser;
+use crate::codegen::parser::unencodable::{ArgsRefs, Splayable};
 use crate::codegen::parser::ParserResult;
 use anyhow::Context;
 use log::debug;

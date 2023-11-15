@@ -1,33 +1,5 @@
 use crate::{ir::*, target::Target};
 
-#[derive(Debug, Clone, Hash, Eq, PartialEq)]
-pub enum ArgsRefs<'a> {
-    Generic(&'a [IrType]),
-    Signature(&'a [IrType]),
-}
-
-pub trait Splayable {
-    fn splay(&self) -> Vec<(&str, Option<ArgsRefs>)>;
-}
-
-impl Splayable for Vec<NameComponent> {
-    /// Spread and turn out the data of a fully qualified name for structural pattern matching.
-    fn splay(&self) -> Vec<(&str, Option<ArgsRefs>)> {
-        return self
-            .iter()
-            .map(|NameComponent { ident, args }| {
-                (
-                    &ident[..],
-                    args.as_ref().map(|args| match &args {
-                        Args::Generic(types) => ArgsRefs::Generic(&types[..]),
-                        Args::Signature(types) => ArgsRefs::Signature(&types[..]),
-                    }),
-                )
-            })
-            .collect();
-    }
-}
-
 impl IrTypeTrait for IrTypeUnencodable {
     fn dart_api_type(&self) -> String {
         todo!("generate code for type \"{}\"", self.string);
