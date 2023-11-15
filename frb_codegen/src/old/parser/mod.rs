@@ -28,19 +28,3 @@ use self::ty::convert_ident_str;
 
 mod error;
 pub use error::Error;
-
-impl IrDefaultValue {
-    pub(crate) fn to_dart(&self) -> Cow<str> {
-        match self {
-            Self::Bool(lit) => if lit.value { "true" } else { "false" }.into(),
-            Self::Str(lit) => format!("r\"{}\"", lit.value()).into(),
-            Self::Int(lit) => lit.base10_digits().into(),
-            Self::Float(lit) => lit.base10_digits().into(),
-            Self::Vec(lit) => format!(
-                "const [{}]",
-                lit.iter().map(Self::to_dart).collect::<Vec<_>>().join(",")
-            )
-            .into(),
-        }
-    }
-}

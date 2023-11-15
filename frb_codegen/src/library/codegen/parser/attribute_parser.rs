@@ -4,6 +4,7 @@ use crate::codegen::ir::import::IrDartImport;
 use crate::if_then_some;
 use itertools::Itertools;
 use serde::{Serialize, Serializer};
+use std::borrow::Cow;
 use syn::parse::{Parse, ParseStream};
 use syn::punctuated::Punctuated;
 use syn::*;
@@ -34,10 +35,9 @@ impl FrbAttributes {
         if candidates.len() > 1 {
             log::warn!("Only one `default = ..` attribute is expected; taking the last one");
         }
-        // TODO after determining what `IrDefaultValue` really needs, impl this
         candidates
             .last()
-            .map(|item| IrDefaultValue("TODO".to_owned()))
+            .map(|item| IrDefaultValue(item.to_dart().to_string()))
     }
 
     pub(crate) fn non_final(&self) -> bool {
@@ -211,6 +211,22 @@ impl Parse for FrbAttributeDefaultValue {
             input.parse().map(Self::Int)
         } else {
             Err(lh.error())
+        }
+    }
+}
+
+impl FrbAttributeDefaultValue {
+    fn to_dart(&self) -> Cow<str> {
+        match self {
+            Self::Bool(lit) => if lit.value { "true" } else { "false" }.into(),
+            Self::Str(lit) => format!("r\"{}\"", lit.value()).into(),
+            Self::Int(lit) => lit.base10_digits().into(),
+            Self::Float(lit) => lit.base10_digits().into(),
+            Self::Vec(lit) => format!(
+                "const [{}]",
+                lit.iter().map(Self::to_dart).collect::<Vec<_>>().join(",")
+            )
+            .into(),
         }
     }
 }
