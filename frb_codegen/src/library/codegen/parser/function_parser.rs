@@ -18,15 +18,15 @@ use syn::*;
 const STREAM_SINK_IDENT: &str = "StreamSink";
 
 pub(crate) struct FunctionParser<'a> {
-    type_parser: &'a TypeParser<'a>,
+    type_parser: &'a mut TypeParser<'a>,
 }
 
 impl<'a> FunctionParser<'a> {
-    pub(crate) fn new(type_parser: &'a TypeParser<'a>) -> Self {
+    pub(crate) fn new(type_parser: &'a mut TypeParser<'a>) -> Self {
         Self { type_parser }
     }
 
-    pub(crate) fn parse_function(&self, func: &ItemFn) -> ParserResult<IrFunc> {
+    pub(crate) fn parse_function(&mut self, func: &ItemFn) -> ParserResult<IrFunc> {
         debug!("parse_function function name: {:?}", func.sig.ident);
 
         let sig = &func.sig;
@@ -134,7 +134,7 @@ impl<'a> FunctionParser<'a> {
 
     /// Attempts to parse the type from an argument of a function signature. There is a special
     /// case for top-level `StreamSink` types.
-    fn try_parse_fn_arg_type(&self, ty: &Type) -> Option<FuncArg> {
+    fn try_parse_fn_arg_type(&mut self, ty: &Type) -> Option<FuncArg> {
         match ty {
             Type::Path(TypePath { path, .. }) => {
                 let last_segment = path.segments.last().unwrap();
@@ -165,7 +165,7 @@ impl<'a> FunctionParser<'a> {
 
     /// Attempts to parse the type from the return part of a function signature. There is a special
     /// case for top-level `Result` types.
-    fn try_parse_fn_output_type(&self, ty: &Type) -> Option<FuncOutput> {
+    fn try_parse_fn_output_type(&mut self, ty: &Type) -> Option<FuncOutput> {
         let ty = &self.type_parser.resolve_alias(ty).clone();
 
         if let Type::Path(type_path) = ty {

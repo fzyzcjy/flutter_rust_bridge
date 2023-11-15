@@ -53,8 +53,8 @@ fn parse_one_ast(
     let src_enums = crate_map.root_module().collect_enums();
     let src_types = resolve_type_aliases(crate_map.root_module().collect_types());
 
-    let type_parser = TypeParser::new(src_structs, src_enums, src_types);
-    let function_parser = FunctionParser::new(&type_parser);
+    let mut type_parser = TypeParser::new(src_structs, src_enums, src_types);
+    let mut function_parser = FunctionParser::new(&mut type_parser);
 
     let ir_funcs = src_fns
         .iter()
@@ -62,6 +62,8 @@ fn parse_one_ast(
         .collect::<ParserResult<_>>()?;
 
     let has_executor = source_rust_content.contains(HANDLER_NAME);
+
+    drop(function_parser);
 
     let (struct_pool, enum_pool) = type_parser.consume();
 
