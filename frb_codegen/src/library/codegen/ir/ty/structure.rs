@@ -10,10 +10,6 @@ use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 crate::ir! {
 pub struct IrTypeStructRef {
     pub name: String,
-    // TODO these fields should be put into `IrStruct`?
-    pub freezed: bool,
-    pub empty: bool,
-    pub is_exception: bool,
 }
 
 pub struct IrStruct {
@@ -24,6 +20,8 @@ pub struct IrStruct {
     pub is_fields_named: bool,
     pub dart_metadata: Vec<IrDartAnnotation>,
     pub comments: Vec<IrComment>,
+    pub freezed: bool,
+    pub is_exception: bool,
 }
 }
 
