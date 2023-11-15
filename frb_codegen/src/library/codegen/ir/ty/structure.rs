@@ -23,7 +23,6 @@ pub struct IrStruct {
     pub is_fields_named: bool,
     pub dart_metadata: Vec<IrDartAnnotation>,
     pub comments: Vec<IrComment>,
-    pub freezed: bool,
 }
 }
 

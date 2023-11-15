@@ -43,7 +43,6 @@ impl<'a> TypeParser<'a> {
             is_fields_named,
             dart_metadata,
             comments,
-            freezed: TODO,
         }))
     }
 
