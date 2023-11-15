@@ -2,6 +2,7 @@ use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::structure::IrStruct;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
+use crate::codegen::parser::source_graph::modules::Struct;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::TypeParser;
 use syn::{Field, Fields, FieldsNamed, FieldsUnnamed};
@@ -22,12 +23,7 @@ impl<'a> TypeParser<'a> {
             .map(|(idx, field)| self.parse_struct_field(idx, field))
             .collect::<anyhow::Result<Vec<_>>>()?;
 
-        let name = src_struct.0.ident.to_string();
-        let wrapper_name = if src_struct.0.mirror {
-            Some(format!("mirror_{name}"))
-        } else {
-            None
-        };
+        let (name, wrapper_name) = compute_name(src_struct);
 
         let path = Some(src_struct.0.path.clone());
         let comments = parse_comments(&src_struct.0.src.attrs);
@@ -62,4 +58,14 @@ impl<'a> TypeParser<'a> {
             settings: IrFieldSettings::default(),
         })
     }
+}
+
+fn compute_name(src_struct: &Struct) -> (String, Option<String>) {
+    let name = src_struct.0.ident.to_string();
+    let wrapper_name = if src_struct.0.mirror {
+        Some(format!("mirror_{name}"))
+    } else {
+        None
+    };
+    (name, wrapper_name)
 }
