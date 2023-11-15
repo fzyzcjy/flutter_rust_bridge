@@ -2,7 +2,7 @@ pub(crate) mod boxed;
 pub(crate) mod dart_opaque;
 pub(crate) mod delegate;
 pub(crate) mod dynamic;
-pub(crate) mod enum_ref;
+pub(crate) mod enumeration;
 pub(crate) mod general_list;
 pub(crate) mod optional;
 pub(crate) mod optional_list;
@@ -10,7 +10,7 @@ pub(crate) mod primitive;
 pub(crate) mod primitive_list;
 pub(crate) mod record;
 pub(crate) mod rust_opaque;
-pub(crate) mod struct_ref;
+pub(crate) mod structure;
 pub(crate) mod unencodable;
 
 use enum_dispatch::enum_dispatch;

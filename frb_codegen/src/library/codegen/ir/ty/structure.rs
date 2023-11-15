@@ -1,22 +1,21 @@
+// Name "structure" not "struct", since the latter is a keyword
+
 use convert_case::{Case, Casing};
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 
 crate::ir! {
-pub struct IrTypeEnumRef {
+pub struct IrTypeStructRef {
     pub name: String,
+    pub freezed: bool,
+    pub empty: bool,
     pub is_exception: bool,
 }
 }
 
-impl IrTypeTrait for IrTypeEnumRef {
+impl IrTypeTrait for IrTypeStructRef {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_file: &IrFile) {
-        let enu = self.get(ir_file);
-        for variant in enu.variants() {
-            if let IrVariantKind::Struct(st) = &variant.kind {
-                st.fields
-                    .iter()
-                    .for_each(|field| field.ty.visit_types(f, ir_file));
-            }
+        for field in &self.get(ir_file).fields {
+            field.ty.visit_types(f, ir_file);
         }
     }
 
