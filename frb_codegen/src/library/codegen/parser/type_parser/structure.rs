@@ -3,6 +3,7 @@ use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::structure::IrStruct;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
+use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::TypeParser;
 use itertools::Itertools;
 use syn::{Field, Fields, FieldsNamed, FieldsUnnamed};
@@ -31,7 +32,7 @@ impl<'a> TypeParser<'a> {
         };
 
         let path = Some(src_struct.0.path.clone());
-        let comments = extract_comments(&src_struct.0.src.attrs);
+        let comments = parse_comments(&src_struct.0.src.attrs);
 
         let attributes = FrbAttributes::parse(&src_struct.0.src.attrs)?;
         let dart_metadata = attributes.dart_metadata();
@@ -60,7 +61,7 @@ impl<'a> TypeParser<'a> {
             name: IrIdent::new(field_name),
             ty: field_type,
             is_final: !attributes.non_final(),
-            comments: extract_comments(&field.attrs),
+            comments: parse_comments(&field.attrs),
             default: IrDefaultValue::extract(&field.attrs),
             settings: IrFieldSettings::default(),
         }

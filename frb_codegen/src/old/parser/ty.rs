@@ -2,7 +2,7 @@ use crate::ir::IrType::*;
 use crate::ir::*;
 use crate::parser::markers;
 use crate::parser::source_graph::{Enum, Struct};
-use crate::parser::{extract_comments, extract_metadata};
+use crate::parser::{extract_metadata, parse_comments};
 use quote::ToTokens;
 use std::collections::{HashMap, HashSet};
 use std::string::String;
@@ -511,7 +511,7 @@ impl<'a> TypeParser<'a> {
         };
 
         let path = src_enum.path.clone();
-        let comments = extract_comments(&src_enum.src.attrs);
+        let comments = parse_comments(&src_enum.src.attrs);
         let variants = src_enum
             .src
             .variants
@@ -519,7 +519,7 @@ impl<'a> TypeParser<'a> {
             .map(|variant| IrVariant {
                 name: IrIdent::new(variant.ident.to_string()),
                 wrapper_name: IrIdent::new(format!("{}_{}", src_enum.ident, variant.ident)),
-                comments: extract_comments(&variant.attrs),
+                comments: parse_comments(&variant.attrs),
                 kind: match variant.fields.iter().next() {
                     None => IrVariantKind::Value,
                     Some(Field {
@@ -534,7 +534,7 @@ impl<'a> TypeParser<'a> {
                             path: None,
                             is_fields_named: field_ident.is_some(),
                             dart_metadata: parse_metadata(attrs),
-                            comments: extract_comments(attrs),
+                            comments: parse_comments(attrs),
                             fields: variant
                                 .fields
                                 .iter()
@@ -549,7 +549,7 @@ impl<'a> TypeParser<'a> {
                                     ),
                                     ty: self.parse_type(&field.ty),
                                     is_final: true,
-                                    comments: extract_comments(&field.attrs),
+                                    comments: parse_comments(&field.attrs),
                                     default: IrDefaultValue::extract(&field.attrs),
                                     settings: IrFieldSettings {
                                         is_in_mirrored_enum: src_enum.mirror,
