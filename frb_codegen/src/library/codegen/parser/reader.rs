@@ -24,12 +24,7 @@ fn get_dir_and_mod(path: &Path) -> (PathBuf, Option<String>) {
         "" => None,
         _ => {
             let module = module.replace('/', "::");
-            Some(
-                module
-                    .strip_suffix(".rs")
-                    .map(String::from)
-                    .unwrap_or(module),
-            )
+            Some(module.strip_suffix(".rs").map(String::from).unwrap_or(module))
         }
     };
     (String::from(dir), module)
