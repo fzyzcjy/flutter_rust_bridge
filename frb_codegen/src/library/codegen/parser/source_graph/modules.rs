@@ -67,6 +67,6 @@ pub struct ModuleScope {
     pub(super) modules: Vec<Module>,
     pub(super) enums: Vec<Enum>,
     pub(super) structs: Vec<Struct>,
-    pub(super) imports: Vec<Import>,
+    // pub(super) imports: Vec<Import>, // not implemented yet
     pub(super) type_alias: Vec<TypeAlias>,
 }

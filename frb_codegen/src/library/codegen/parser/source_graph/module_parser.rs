@@ -54,7 +54,7 @@ impl Module {
                 modules: scope_modules,
                 enums: scope_enums,
                 structs: scope_structs,
-                imports: vec![], // Will be filled in by resolve_imports()
+                // imports: vec![], // Will be filled in by resolve_imports()
                 type_alias: scope_types,
             },
         })
