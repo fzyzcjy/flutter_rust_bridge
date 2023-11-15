@@ -1,5 +1,5 @@
 crate::ir! {
-#[no_serde]
+#[serde(transparent)]
 pub struct IrIdent {
     pub raw: String,
 }
