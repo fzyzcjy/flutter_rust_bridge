@@ -1,4 +1,6 @@
+use crate::codegen::parser::reader::read_rust_file;
 use derivative::Derivative;
+use log::{debug, warn};
 use std::collections::HashMap;
 use std::path::PathBuf;
 use syn::{Ident, ItemEnum, ItemStruct, Type};
@@ -79,7 +81,7 @@ pub struct ModuleScope {
 
 impl Module {
     /// Maps out modules, structs and enums within the scope of this module
-    pub fn parse(info: ModuleInfo) -> Self {
+    pub fn parse(info: ModuleInfo) -> anyhow::Result<Self> {
         let mut scope_modules = Vec::new();
         let mut scope_structs = Vec::new();
         let mut scope_enums = Vec::new();
@@ -145,19 +147,12 @@ impl Module {
                     module_path.push(ident.to_string());
 
                     scope_modules.push(match &item_mod.content {
-                        Some(content) => {
-                            let mut child_module = Module {
-                                visibility: syn_vis_to_visibility(&item_mod.vis),
-                                file_path: info.file_path.clone(),
-                                module_path,
-                                source: ModuleSource::ModuleInFile(content.1.clone()),
-                                scope: None,
-                            };
-
-                            child_module.resolve();
-
-                            child_module
-                        }
+                        Some(content) => Module::parse(ModuleInfo {
+                            visibility: syn_vis_to_visibility(&item_mod.vis),
+                            file_path: info.file_path.clone(),
+                            module_path,
+                            source: ModuleSource::ModuleInFile(content.1.clone()),
+                        })?,
                         None => {
                             let file_path =
                                 get_module_file_path(ident.to_string(), &info.file_path);
@@ -165,22 +160,18 @@ impl Module {
                             match file_path {
                                 Ok(file_path) => {
                                     let source = {
-                                        let source_rust_content = read_rust_file(&file_path);
+                                        let source_rust_content = read_rust_file(&file_path)?;
                                         debug!("Trying to parse {:?}", file_path);
                                         ModuleSource::File(
                                             syn::parse_file(&source_rust_content).unwrap(),
                                         )
                                     };
-                                    let mut child_module = Module {
+                                    Module::parse(ModuleInfo {
                                         visibility: syn_vis_to_visibility(&item_mod.vis),
                                         file_path,
                                         module_path,
                                         source,
-                                        scope: None,
-                                    };
-
-                                    child_module.resolve();
-                                    child_module
+                                    })?
                                 }
                                 Err(tried) => {
                                     warn!(
@@ -205,7 +196,7 @@ impl Module {
             }
         }
 
-        Module {
+        Ok(Module {
             info,
             scope: ModuleScope {
                 modules: scope_modules,
@@ -214,7 +205,7 @@ impl Module {
                 imports: vec![], // Will be filled in by resolve_imports()
                 type_alias: scope_types,
             },
-        }
+        })
     }
 
     pub fn collect_structs(&self) -> HashMap<String, &Struct> {
