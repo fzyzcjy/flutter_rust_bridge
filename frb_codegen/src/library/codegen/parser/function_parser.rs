@@ -11,7 +11,10 @@ use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
 use crate::codegen::parser::ParserResult;
 use anyhow::Context;
 use log::debug;
+use quote::quote;
 use syn::*;
+
+const STREAM_SINK_IDENT: &str = "StreamSink";
 
 struct FunctionParser;
 
@@ -32,7 +35,7 @@ impl FunctionParser {
                 let name = if let Pat::Ident(ref pat_ident) = *pat_type.pat {
                     format!("{}", pat_ident.ident)
                 } else {
-                    return Err(Error::UnexpectedPattern(
+                    return Err(super::error::Error::UnexpectedPattern(
                         quote::quote!(#pat_type).to_string().into(),
                     ));
                 };
@@ -245,4 +248,9 @@ enum FuncOutput {
 enum FuncArg {
     StreamSinkType(IrType),
     Type(IrType),
+}
+
+/// syn -> string https://github.com/dtolnay/syn/issues/294
+fn type_to_string(ty: &Type) -> String {
+    quote!(#ty).to_string().replace(' ', "")
 }

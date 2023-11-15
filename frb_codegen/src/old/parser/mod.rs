@@ -26,8 +26,6 @@ use crate::utils::method::FunctionName;
 
 use self::ty::convert_ident_str;
 
-const STREAM_SINK_IDENT: &str = "StreamSink";
-
 mod error;
 pub use error::Error;
 
@@ -89,9 +87,4 @@ impl IrDefaultValue {
             .into(),
         }
     }
-}
-
-/// syn -> string https://github.com/dtolnay/syn/issues/294
-fn type_to_string(ty: &Type) -> String {
-    quote!(#ty).to_string().replace(' ', "")
 }
