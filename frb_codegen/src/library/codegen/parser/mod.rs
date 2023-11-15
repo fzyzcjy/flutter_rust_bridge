@@ -4,10 +4,12 @@ pub(crate) mod reader;
 pub(crate) mod source_graph;
 pub(crate) mod type_parser;
 pub(crate) mod main_parser;
+pub(crate) mod function_extractor;
 
-use std::path::Path;
 use syn::File;
+use std::path::Path;
 use crate::codegen::ir::pack::IrPack;
+use crate::codegen::parser::function_extractor::extract_generalized_functions_from_file;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::main_parser::MainParser;
 use crate::codegen::parser::reader::read_rust_file;
@@ -32,10 +34,9 @@ fn parse_one(rust_input_path: &Path, rust_crate_dir: &Path) -> ParserResult<IrPa
 }
 
 fn parse_one_ast(source_rust_content: &str, file_ast: File, rust_crate_dir: &Path) -> ParserResult<IrPack> {
-    let crate_map = source_graph::crates::Crate::parse(manifest_path)?;
+    let crate_map = source_graph::crates::Crate::parse(&rust_crate_dir.join("Cargo.toml"))?;
 
-    let mut src_fns = extract_fns_from_file(&file);
-    src_fns.extend(extract_methods_from_file(&file)?);
+    let src_fns = extract_generalized_functions_from_file(&file_ast)?;
     let src_structs = crate_map.root_module().collect_structs();
     let src_enums = crate_map.root_module().collect_enums();
     let src_types = crate_map.root_module().collect_types();
