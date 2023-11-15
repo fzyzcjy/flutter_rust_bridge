@@ -3,7 +3,8 @@ use crate::codegen::parser::reader::read_rust_file;
 use crate::codegen::parser::source_graph::modules::{
     Enum, Module, ModuleInfo, ModuleScope, ModuleSource, Struct, TypeAlias,
 };
-use crate::utils::path_utils::path_to_string;
+use crate::utils::path_utils::{find_rust_crate_dir, path_to_string};
+use anyhow::anyhow;
 use itertools::Itertools;
 use log::{debug, warn};
 use std::path::{Path, PathBuf};
@@ -96,13 +97,13 @@ impl Module {
                                 get_module_file_path_candidates(ident.to_string(), &info.file_path);
 
                             if let Some(file_path) = first_existing_path(&file_path_candidates) {
-                                let source = {
-                                    let source_rust_content = read_rust_file(&file_path)?;
-                                    debug!("Trying to parse {:?}", file_path);
-                                    ModuleSource::File(
-                                        syn::parse_file(&source_rust_content).unwrap(),
-                                    )
-                                };
+                                let rust_crate_dir_for_file = find_rust_crate_dir(file_path)?;
+                                let source_rust_content =
+                                    read_rust_file(&file_path, &rust_crate_dir_for_file)?;
+                                debug!("Trying to parse {:?}", file_path);
+                                let source = ModuleSource::File(
+                                    syn::parse_file(&source_rust_content).unwrap(),
+                                );
                                 Module::parse(ModuleInfo {
                                     visibility: item_mod.vis.into(),
                                     file_path: file_path.to_owned(),
@@ -116,7 +117,7 @@ impl Module {
                                     file_path_candidates
                                         .iter()
                                         .map(|p| path_to_string(p))
-                                        .collect()?
+                                        .collect::<anyhow::Result<Vec<_>>>()?
                                         .join(", ")
                                 );
                                 continue;
