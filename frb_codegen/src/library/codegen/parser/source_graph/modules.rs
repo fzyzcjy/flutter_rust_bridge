@@ -97,7 +97,7 @@ impl Module {
         )
     }
 
-    fn collect_objects<T, F, G, K, V>(&self, f: F, extract_entry: G) -> HashMap<String, V>
+    fn collect_objects<T, F, G, V>(&self, f: F, extract_entry: G) -> HashMap<String, V>
     where
         F: Fn(&Module) -> &[T],
         G: Fn(&T) -> (String, V),
