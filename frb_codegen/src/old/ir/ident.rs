@@ -1,12 +1,5 @@
 use convert_case::{Case, Casing};
 
-crate::ir! {
-#[no_serde]
-pub struct IrIdent {
-    pub raw: String,
-}
-}
-
 impl serde::Serialize for IrIdent {
     fn serialize<S>(&self, s: S) -> Result<S::Ok, S::Error>
     where

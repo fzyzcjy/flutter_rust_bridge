@@ -1,7 +1,3 @@
-crate::ir! {
-pub struct IrComment(String);
-}
-
 impl IrComment {
     pub fn comment(&self) -> &str {
         &self.0
