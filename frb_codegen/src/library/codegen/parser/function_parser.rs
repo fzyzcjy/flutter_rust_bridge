@@ -7,6 +7,7 @@ use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
+use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::parser::unencodable::{ArgsRefs, Splayable};
 use crate::codegen::parser::ParserResult;
@@ -229,38 +230,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             Some(FuncOutput::Type(ir_ty))
         }
     }
-}
-
-fn parse_comments(attrs: &[Attribute]) -> Vec<IrComment> {
-    attrs
-        .iter()
-        .filter_map(|attr| match &attr.meta {
-            Meta::NameValue(MetaNameValue {
-                path,
-                value:
-                    Expr::Lit(ExprLit {
-                        lit: Lit::Str(lit), ..
-                    }),
-                ..
-            }) if path.is_ident("doc") => Some(parse_comment(&lit.value())),
-            _ => None,
-        })
-        .collect()
-}
-
-fn parse_comment(input: &str) -> IrComment {
-    IrComment(if input.contains('\n') {
-        // Dart's formatter has issues with block comments
-        // so we convert them ahead of time.
-        let formatted = input
-            .split('\n')
-            .map(|line| format!("///{line}"))
-            .collect::<Vec<_>>()
-            .join("\n");
-        formatted
-    } else {
-        format!("///{input}")
-    })
 }
 
 /// Represents a function's output type
