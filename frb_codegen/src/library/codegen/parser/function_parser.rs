@@ -65,13 +65,13 @@ impl<'a> FunctionParser<'a> {
                         }
                     }
                     FuncArg::Type(ty) => {
-                        let metadata = FrbAttributes::parse(&pat_type.attrs)?;
+                        let attributes = FrbAttributes::parse(&pat_type.attrs)?;
                         inputs.push(IrField {
                             name: IrIdent::new(name),
                             ty,
                             is_final: true,
                             comments: parse_comments(&pat_type.attrs),
-                            default: metadata.default_value(),
+                            default: attributes.default_value(),
                             settings: IrFieldSettings::default(),
                         });
                     }
