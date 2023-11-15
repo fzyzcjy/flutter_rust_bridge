@@ -1,5 +1,3 @@
-use crate::utils::dart_repository::dart_repo::DartDependencyMode;
-
 #[derive(thiserror::Error, Debug)]
 pub enum Error {
     #[error("rustfmt failed: {0}")]
@@ -19,13 +17,15 @@ pub enum Error {
     #[error("Please add {name} to your {manager}. (version {requirement})")]
     MissingDep {
         name: String,
-        manager: DartDependencyMode,
+        // manager: DartDependencyMode, // TODO handle this type
+        manager: String,
         requirement: String,
     },
     #[error("Please update version of {name} in your {manager}. (version {requirement})")]
     InvalidDep {
         name: String,
-        manager: DartDependencyMode,
+        // manager: DartDependencyMode, // TODO handle this type
+        manager: String,
         requirement: String,
     },
     #[error("I/O failure.\n{0}")]

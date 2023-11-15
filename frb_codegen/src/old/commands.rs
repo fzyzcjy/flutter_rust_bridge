@@ -18,7 +18,6 @@ use log::{debug, info};
 
 mod error;
 pub use error::Error;
-pub(crate) type CommandResult<T = (), E = Error> = core::result::Result<T, E>;
 
 lazy_static! {
     pub(crate) static ref FFI_REQUIREMENT: VersionReq =
