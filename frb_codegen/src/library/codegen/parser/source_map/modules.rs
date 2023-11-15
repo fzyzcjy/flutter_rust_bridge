@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 use std::path::PathBuf;
 use derivative::Derivative;
-use syn::Visibility;
+use syn::{Visibility, Ident, ItemEnum, ItemStruct, Type};
 
 #[derive(Clone)]
 #[derive(Derivative)]
@@ -13,6 +13,57 @@ pub struct Module {
     #[derivative(Debug="ignore")]
     pub source: Option<ModuleSource>,
     pub scope: Option<ModuleScope>,
+}
+
+#[derive(Debug, Clone)]
+pub struct Import {
+    pub path: Vec<String>,
+    pub visibility: Visibility,
+}
+
+#[derive(Debug, Clone)]
+pub enum ModuleSource {
+    File(syn::File),
+    ModuleInFile(Vec<syn::Item>),
+}
+
+#[derive(Clone)]
+#[derive(Derivative)]
+#[derivative(Debug)]
+pub struct Struct {
+    pub ident: Ident,
+    #[derivative(Debug="ignore")]
+    pub src: ItemStruct,
+    pub visibility: Visibility,
+    pub path: Vec<String>,
+    pub mirror: bool,
+}
+
+#[derive(Clone)]
+#[derive(Derivative)]
+#[derivative(Debug)]
+pub struct Enum {
+    pub ident: Ident,
+    #[derivative(Debug="ignore")]
+    pub src: ItemEnum,
+    pub visibility: Visibility,
+    pub path: Vec<String>,
+    pub mirror: bool,
+}
+
+#[derive(Clone, Debug)]
+pub struct TypeAlias {
+    pub ident: String,
+    pub target: Type,
+}
+
+#[derive(Debug, Clone)]
+pub struct ModuleScope {
+    pub modules: Vec<Module>,
+    pub enums: Vec<Enum>,
+    pub structs: Vec<Struct>,
+    pub imports: Vec<Import>,
+    pub type_alias: Vec<TypeAlias>,
 }
 
 impl Module {

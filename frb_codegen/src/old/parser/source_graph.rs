@@ -93,57 +93,6 @@ fn syn_vis_to_visibility(vis: &syn::Visibility) -> Visibility {
     }
 }
 
-#[derive(Debug, Clone)]
-pub struct Import {
-    pub path: Vec<String>,
-    pub visibility: Visibility,
-}
-
-#[derive(Debug, Clone)]
-pub enum ModuleSource {
-    File(syn::File),
-    ModuleInFile(Vec<syn::Item>),
-}
-
-#[derive(Clone)]
-#[derive(Derivative)]
-#[derivative(Debug)]
-pub struct Struct {
-    pub ident: Ident,
-    #[derivative(Debug="ignore")]
-    pub src: ItemStruct,
-    pub visibility: Visibility,
-    pub path: Vec<String>,
-    pub mirror: bool,
-}
-
-#[derive(Clone)]
-#[derive(Derivative)]
-#[derivative(Debug)]
-pub struct Enum {
-    pub ident: Ident,
-    #[derivative(Debug="ignore")]
-    pub src: ItemEnum,
-    pub visibility: Visibility,
-    pub path: Vec<String>,
-    pub mirror: bool,
-}
-
-#[derive(Clone, Debug)]
-pub struct TypeAlias {
-    pub ident: String,
-    pub target: Type,
-}
-
-#[derive(Debug, Clone)]
-pub struct ModuleScope {
-    pub modules: Vec<Module>,
-    pub enums: Vec<Enum>,
-    pub structs: Vec<Struct>,
-    pub imports: Vec<Import>,
-    pub type_alias: Vec<TypeAlias>,
-}
-
 /// Get a struct or enum ident, possibly remapped by a mirror marker
 fn get_ident(ident: &Ident, attrs: &[Attribute]) -> (Vec<Ident>, bool) {
     let res = markers::extract_mirror_marker(attrs)
