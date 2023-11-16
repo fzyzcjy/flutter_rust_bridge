@@ -77,13 +77,22 @@ fn log_format_simple(d: fern::Dispatch) -> fern::Dispatch {
 
     d.format(move |out, message, record| {
         let time = chrono::Utc::now().format("%Y-%m-%dT%H:%M:%S%.3fZ");
+
         let level = record.level();
-        let format = if atty::is(atty::Stream::Stdout) {
-            format!("[{} {}] {}", time, colored_output.color(level), message)
+        let level = if atty::is(atty::Stream::Stdout) {
+            colored_output.color(level).to_string()
         } else {
-            format!("[{} {}] {}", time, level, message)
+            level.to_string()
         };
-        out.finish(format_args!("{}", format))
+
+        out.finish(format_args!(
+            "[{} {} {}:{}] {}",
+            time,
+            level,
+            record.file().unwrap_or(""),
+            record.line().unwrap_or(0),
+            message
+        ))
     })
 }
 
