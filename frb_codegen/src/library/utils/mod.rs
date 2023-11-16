@@ -1,4 +1,5 @@
 pub(crate) mod control_utils;
+pub(crate) mod dart_keywords;
 pub mod logs;
 pub(crate) mod path_utils;
 #[cfg(test)]

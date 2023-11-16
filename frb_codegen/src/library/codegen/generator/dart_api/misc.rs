@@ -1,6 +1,7 @@
 use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::import::IrDartImport;
+use convert_case::{Case, Casing};
 use itertools::Itertools;
 
 /// A trailing newline is included if comments is not empty.

@@ -5,6 +5,7 @@ use crate::codegen::generator::dart_api::misc::{
 };
 use crate::codegen::ir::ty::enumeration::IrVariantKind;
 use crate::codegen::ir::ty::structure::IrStruct;
+use crate::utils::dart_keywords::make_string_keyword_safe;
 
 impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {
     fn generate_class(&self) -> Option<String> {
@@ -114,7 +115,7 @@ impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {
                 .iter()
                 .map(|variant| {
                     let variant_name = if self.context.config.dart_enums_style {
-                        crate::utils::misc::make_string_keyword_safe(variant.name.dart_style())
+                        make_string_keyword_safe(variant.name.dart_style())
                     } else {
                         variant.name.rust_style().to_string()
                     };
