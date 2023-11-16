@@ -5,8 +5,7 @@ use crate::codegen::ir::ty::IrType::Primitive;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::if_then_some;
 use anyhow::Result;
-use anyhow::{anyhow, bail, Context};
-use itertools::Itertools;
+use anyhow::{anyhow, Context};
 use quote::ToTokens;
 use syn::{
     AngleBracketedGenericArguments, GenericArgument, ParenthesizedGenericArguments, Path,
@@ -46,7 +45,7 @@ impl<'a> TypeParser<'a> {
     ) -> Result<Vec<IrType>> {
         args.args
             .iter()
-            .filter_map(|item| if_then_some!(let GenericArgument::Type(ty) = arg, &ty))
+            .filter_map(|arg| if_then_some!(let GenericArgument::Type(ty) = arg, &ty))
             .map(|ty| self.parse_type(ty))
             .collect()
     }
@@ -59,7 +58,7 @@ impl<'a> TypeParser<'a> {
             .inputs
             .iter()
             .map(|ty| self.parse_type(ty))
-            .collect_vec();
+            .collect::<Result<Vec<_>>>()?;
 
         let output_type = match &args.output {
             syn::ReturnType::Default => Primitive(IrTypePrimitive::Unit),

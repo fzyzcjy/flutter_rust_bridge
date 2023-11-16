@@ -1,5 +1,6 @@
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
-use crate::codegen::ir::ty::delegate::IrTypeDelegate;
+use crate::codegen::ir::ty::dart_opaque::IrTypeDartOpaque;
+use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegateTime};
 use crate::codegen::ir::ty::dynamic::IrTypeDynamic;
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrTypeEnumRef};
 use crate::codegen::ir::ty::general_list::IrTypeGeneralList;
@@ -9,7 +10,6 @@ use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
 use crate::codegen::ir::ty::structure::{IrStruct, IrTypeStructRef};
-use crate::codegen::ir::ty::unencodable::Args::Generic;
 use crate::codegen::ir::ty::unencodable::{Args, IrTypeUnencodable, NameComponent};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{
@@ -25,7 +25,7 @@ use syn::{Path, QSelf, TypePath};
 impl<'a> TypeParser<'a> {
     pub(crate) fn parse_type_path(&mut self, type_path: &TypePath) -> anyhow::Result<IrType> {
         match &type_path {
-            TypePath { qself: None, path } => self.parse_type_path_core(path),
+            TypePath { qself: None, path } => self.parse_type_path_core(type_path, path),
             TypePath {
                 qself: Some(QSelf { ty, .. }),
                 ..
@@ -37,7 +37,11 @@ impl<'a> TypeParser<'a> {
         }
     }
 
-    fn parse_type_path_core(&mut self, path: &Path) -> anyhow::Result<IrType> {
+    fn parse_type_path_core(
+        &mut self,
+        type_path: &TypePath,
+        path: &Path,
+    ) -> anyhow::Result<IrType> {
         let segments: Vec<NameComponent> = if cfg!(feature = "qualified_names") {
             self.extract_path_data(path)?
         } else {
@@ -53,19 +57,23 @@ impl<'a> TypeParser<'a> {
             // Non generic types
             #[cfg(all(feature = "qualified_names"))]
             [("chrono", None), ("Duration", None)] => {
-                Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Duration)))
+                Ok(Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Duration)))
             }
 
             #[cfg(all(not(feature = "qualified_names")))]
-            [("Duration", None)] => Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Duration))),
+            [("Duration", None)] => {
+                Ok(Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Duration)))
+            }
 
             #[cfg(all(feature = "qualified_names"))]
             [("chrono", None), ("NaiveDateTime", None)] => {
-                Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Naive)))
+                Ok(Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Naive)))
             }
 
             #[cfg(all(not(feature = "qualified_names")))]
-            [("NaiveDateTime", None)] => Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Naive))),
+            [("NaiveDateTime", None)] => {
+                Ok(Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Naive)))
+            }
 
             #[cfg(feature = "qualified_names")]
             [("flutter_rust_bridge", None), ("DartAbi", None)] => Ok(Dynamic(IrTypeDynamic)),
@@ -295,17 +303,17 @@ fn parse_datetime(args: &[IrType]) -> anyhow::Result<IrType> {
         return match splayed[..] {
             #[cfg(feature = "qualified_names")]
             [("DateTime", None), ("Utc", None)] => {
-                Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Utc)))
+                Ok(Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Utc)))
             }
 
-            [("Utc", None)] => Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Utc))),
+            [("Utc", None)] => Ok(Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Utc))),
 
             #[cfg(feature = "qualified_names")]
             [("DateTime", None), ("Local", None)] => {
-                Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Local)))
+                Ok(Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Local)))
             }
 
-            [("Local", None)] => Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Local))),
+            [("Local", None)] => Ok(Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Local))),
 
             _ => bail!("Invalid DateTime generic"),
         };
