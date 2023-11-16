@@ -8,7 +8,7 @@ use std::path::{Path, PathBuf};
 use syn::File;
 
 /// Represents a crate, including a map of its modules, imports, structs and enums.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, serde::Serialize)]
 pub struct Crate {
     name: String,
     manifest_path: PathBuf,

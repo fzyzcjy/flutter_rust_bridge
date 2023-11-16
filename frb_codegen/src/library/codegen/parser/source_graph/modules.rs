@@ -1,25 +1,27 @@
 use derivative::Derivative;
+use serde::Serialize;
 use std::path::PathBuf;
 use syn::{Ident, ItemEnum, ItemStruct, Type};
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Serialize)]
 pub struct Module {
     pub(super) info: ModuleInfo,
     pub(super) scope: ModuleScope,
 }
 
-#[derive(Clone, Derivative)]
+#[derive(Clone, Derivative, Serialize)]
 #[derivative(Debug)]
 pub struct ModuleInfo {
     pub(super) visibility: Visibility,
     pub(super) file_path: PathBuf,
     pub(super) module_path: Vec<String>,
     #[derivative(Debug = "ignore")]
+    #[serde(skip_serializing)]
     pub(super) source: ModuleSource,
 }
 
 /// Mirrors syn::Visibility, but can be created without a token
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub enum Visibility {
     Public,
     Restricted,
@@ -27,7 +29,7 @@ pub enum Visibility {
     Inherited, // Usually means private
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub struct Import {
     path: Vec<String>,
     visibility: Visibility,
@@ -39,30 +41,31 @@ pub enum ModuleSource {
     ModuleInFile(Vec<syn::Item>),
 }
 
-#[derive(Clone, Derivative)]
+#[derive(Clone, Derivative, Serialize)]
 #[derivative(Debug)]
 pub struct StructOrEnum<Item> {
     pub(crate) ident: Ident,
     #[derivative(Debug = "ignore")]
+    #[serde(skip_serializing)]
     pub(crate) src: Item,
     pub(crate) visibility: Visibility,
     pub(crate) path: Vec<String>,
     pub(crate) mirror: bool,
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Serialize)]
 pub struct Struct(pub StructOrEnum<ItemStruct>);
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Serialize)]
 pub struct Enum(pub StructOrEnum<ItemEnum>);
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Serialize)]
 pub struct TypeAlias {
     pub(super) ident: String,
     pub(super) target: Type,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub struct ModuleScope {
     pub(super) modules: Vec<Module>,
     pub(super) enums: Vec<Enum>,

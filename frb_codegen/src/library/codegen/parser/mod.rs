@@ -44,7 +44,7 @@ pub(crate) fn parse(config: &ParserInternalConfig) -> ParserResult<IrPack> {
         .collect::<syn::Result<Vec<_>>>()?;
 
     let crate_map = source_graph::crates::Crate::parse(&config.rust_crate_dir.join("Cargo.toml"))?;
-    trace!("crate_map={:?}", &crate_map);
+    // trace!("crate_map={:?}", &crate_map);
 
     let src_fns = file_asts
         .iter()
@@ -82,10 +82,10 @@ pub(crate) fn parse(config: &ParserInternalConfig) -> ParserResult<IrPack> {
 mod tests {
     use crate::codegen::parser::internal_config::{ParserInternalConfig, RustInputPathPack};
     use crate::codegen::parser::parse;
+    use crate::codegen::parser::source_graph::crates::Crate;
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::test_utils::{get_test_fixture_dir, json_golden_test};
     use serial_test::serial;
-    use std::path::PathBuf;
 
     // TODO more tests
     // TODO `chrono::Duration` and `Duration` test
@@ -100,21 +100,27 @@ mod tests {
     fn body(fixture_name: &str) -> anyhow::Result<()> {
         configure_opinionated_test_logging();
         let test_fixture_dir = get_test_fixture_dir(fixture_name);
+        let rust_crate_dir = test_fixture_dir;
 
-        let actual = parse(&ParserInternalConfig {
+        let crate_map = Crate::parse(&rust_crate_dir.join("Cargo.toml"))?;
+        json_golden_test(
+            &serde_json::to_value(crate_map)?,
+            &rust_crate_dir.join("expect_source_graph.json"),
+        )?;
+
+        let actual_ir = parse(&ParserInternalConfig {
             rust_input_path_pack: RustInputPathPack {
                 rust_input_path: [(
                     "my_namespace".to_owned().into(),
-                    test_fixture_dir.join("src/api.rs"),
+                    rust_crate_dir.join("src/api.rs"),
                 )]
                 .into(),
             },
-            rust_crate_dir: test_fixture_dir.clone(),
+            rust_crate_dir: rust_crate_dir.clone(),
         })?;
-
         json_golden_test(
-            &serde_json::to_value(actual)?,
-            &test_fixture_dir.join("expect_ir.json"),
+            &serde_json::to_value(actual_ir)?,
+            &rust_crate_dir.join("expect_ir.json"),
         )?;
 
         Ok(())
