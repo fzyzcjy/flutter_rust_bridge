@@ -138,10 +138,9 @@ impl<'a> DartApiGeneratorDeclTrait for PrimitiveDartApiGenerator<'a> {
             | IrTypePrimitive::I16
             | IrTypePrimitive::U32
             | IrTypePrimitive::I32
-            | IrTypePrimitive::U64
-            | IrTypePrimitive::I64
             | IrTypePrimitive::Usize
             | IrTypePrimitive::Isize => "int",
+            IrTypePrimitive::U64 | IrTypePrimitive::I64 => "BigInt",
             IrTypePrimitive::F32 | IrTypePrimitive::F64 => "double",
             IrTypePrimitive::Bool => "bool",
             IrTypePrimitive::Unit => "void",
