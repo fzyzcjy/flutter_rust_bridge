@@ -1,5 +1,6 @@
+use crate::codegen::generator::dart_api::class::enumeration::EnumRefDartApiClassGenerator;
 use crate::codegen::generator::dart_api::class::DartApiClassGeneratorTrait;
-use crate::codegen::ir::ty::delegate::IrTypeDelegate;
+use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
 use crate::dart_api_class_generator_struct;
 
 dart_api_class_generator_struct!(DelegateDartApiClassGenerator, IrTypeDelegate);
@@ -7,11 +8,9 @@ dart_api_class_generator_struct!(DelegateDartApiClassGenerator, IrTypeDelegate);
 impl<'a> DartApiClassGeneratorTrait for DelegateDartApiClassGenerator<'a> {
     fn generate(&self) -> String {
         match &self.ir {
-            IrTypeDelegate::PrimitiveEnum { ir, .. } => super::TypeEnumRefGenerator {
-                ir: ir.clone(),
-                context: self.context.clone(),
+            IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) => {
+                EnumRefDartApiClassGenerator::new(ir.clone(), self.ir_pack).generate()
             }
-            .structs(),
             IrTypeDelegate::Array(array) => {
                 format!(
                     "

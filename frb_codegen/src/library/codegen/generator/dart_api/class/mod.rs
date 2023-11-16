@@ -24,10 +24,10 @@ pub enum DartApiClassGenerator<'a> {
 impl<'a> GeneratorDartApiClass<'a> {
     pub fn new(ty: IrType, ir_pack: &'a IrPack) -> Self {
         Some(match ty {
-            Delegate(ir) => DelegateDartApiClassGenerator::new(ir).into(),
-            EnumRef(ir) => EnumRefDartApiClassGenerator::new(ir).into(),
-            RustOpaque(ir) => RustOpaqueDartApiClassGenerator::new(ir).into(),
-            StructRef(ir) => StructRefDartApiClassGenerator::new(ir).into(),
+            Delegate(ir) => DelegateDartApiClassGenerator::new(ir, ir_pack).into(),
+            EnumRef(ir) => EnumRefDartApiClassGenerator::new(ir, ir_pack).into(),
+            RustOpaque(ir) => RustOpaqueDartApiClassGenerator::new(ir, ir_pack).into(),
+            StructRef(ir) => StructRefDartApiClassGenerator::new(ir, ir_pack).into(),
             _ => return None,
         })
     }
@@ -45,11 +45,12 @@ macro_rules! dart_api_class_generator_struct {
         #[derive(Debug, Clone)]
         pub(super) struct $cls<'a> {
             ir: $ir_cls,
+            ir_pack: &'a crate::codegen::ir::pack::IrPack,
         }
 
         impl<'a> $cls<'a> {
-            pub(super) fn new(ir: $ir_cls) -> Self {
-                Self { ir }
+            pub(super) fn new(ir: $ir_cls, ir_pack: &'a crate::codegen::ir::pack::IrPack) -> Self {
+                Self { ir, ir_pack }
             }
         }
     };

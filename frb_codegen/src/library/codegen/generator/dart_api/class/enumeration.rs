@@ -1,5 +1,6 @@
 use crate::codegen::generator::dart_api::class::DartApiClassGeneratorTrait;
-use crate::codegen::ir::ty::enumeration::IrTypeEnumRef;
+use crate::codegen::ir::ty::enumeration::{IrTypeEnumRef, IrVariantKind};
+use crate::codegen::ir::ty::structure::IrStruct;
 use crate::dart_api_class_generator_struct;
 
 dart_api_class_generator_struct!(EnumRefDartApiClassGenerator, IrTypeEnumRef);
