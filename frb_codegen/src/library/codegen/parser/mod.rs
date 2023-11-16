@@ -87,18 +87,45 @@ mod tests {
     use crate::utils::path_utils::path_to_string;
     use crate::utils::test_utils::{get_test_fixture_dir, json_golden_test};
     use serial_test::serial;
+    use std::path::Path;
 
-    // TODO more tests
-    // TODO `chrono::Duration` and `Duration` test
-    // TODO `Result`, `anyhow::Result`, `std::result::Result`
-    // TODO source graph
     #[test]
     #[serial]
     fn test_simple() -> anyhow::Result<()> {
-        body("codegen_parser/simple")
+        body("codegen_parser/simple", None)
     }
 
-    fn body(fixture_name: &str) -> anyhow::Result<()> {
+    #[test]
+    #[serial]
+    fn test_multi_input_file() -> anyhow::Result<()> {
+        body(
+            "codegen_parser/multi_input_file",
+            Some(|rust_crate_dir| RustInputPathPack {
+                rust_input_path: [
+                    (
+                        "namespace_one".to_owned().into(),
+                        rust_crate_dir.join("src/api_one.rs"),
+                    ),
+                    (
+                        "namespace_two".to_owned().into(),
+                        rust_crate_dir.join("src/api_two.rs"),
+                    ),
+                ]
+                .into(),
+            }),
+        )
+    }
+
+    #[test]
+    #[serial]
+    fn test_use_type_in_another_file() -> anyhow::Result<()> {
+        body("codegen_parser/use_type_in_another_file", None)
+    }
+
+    fn body<F>(fixture_name: &str, rust_input_path_pack: Option<F>) -> anyhow::Result<()>
+    where
+        F: Fn(&Path) -> RustInputPathPack,
+    {
         configure_opinionated_test_logging();
         let test_fixture_dir = get_test_fixture_dir(fixture_name);
         let rust_crate_dir = test_fixture_dir.clone();
@@ -114,13 +141,15 @@ mod tests {
         )?;
 
         let actual_ir = parse(&ParserInternalConfig {
-            rust_input_path_pack: RustInputPathPack {
-                rust_input_path: [(
-                    "my_namespace".to_owned().into(),
-                    rust_crate_dir.join("src/api.rs"),
-                )]
-                .into(),
-            },
+            rust_input_path_pack: rust_input_path_pack.map(|f| f(&rust_crate_dir)).unwrap_or(
+                RustInputPathPack {
+                    rust_input_path: [(
+                        "my_namespace".to_owned().into(),
+                        rust_crate_dir.join("src/api.rs"),
+                    )]
+                    .into(),
+                },
+            ),
             rust_crate_dir: rust_crate_dir.clone(),
         })?;
         json_golden_test(
