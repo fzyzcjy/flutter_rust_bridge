@@ -44,12 +44,7 @@ impl<'a> TypeParser<'a> {
         type_path: &TypePath,
         path: &Path,
     ) -> anyhow::Result<IrType> {
-        let segments: Vec<NameComponent> = if cfg!(feature = "qualified_names") {
-            self.extract_path_data(path)?
-        } else {
-            // Emulate old behavior by discarding any name qualifiers
-            vec![self.extract_path_data(path)?.pop().unwrap()]
-        };
+        let segments: Vec<NameComponent> = self.extract_path_data(path)?;
 
         use ArgsRefs::*;
 
@@ -57,38 +52,20 @@ impl<'a> TypeParser<'a> {
         let flat_array = &flat_vector[..];
         match flat_array {
             // Non generic types
-            #[cfg(all(feature = "qualified_names"))]
             [("chrono", None), ("Duration", None)] => {
                 Ok(Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Duration)))
             }
 
-            #[cfg(all(not(feature = "qualified_names")))]
-            [("Duration", None)] => {
-                Ok(Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Duration)))
-            }
-
-            #[cfg(all(feature = "qualified_names"))]
             [("chrono", None), ("NaiveDateTime", None)] => {
                 Ok(Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Naive)))
             }
 
-            #[cfg(all(not(feature = "qualified_names")))]
-            [("NaiveDateTime", None)] => {
-                Ok(Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Naive)))
-            }
-
-            #[cfg(feature = "qualified_names")]
             [("flutter_rust_bridge", None), ("DartAbi", None)] => Ok(Dynamic(IrTypeDynamic)),
 
             [("DartAbi", None)] => Ok(Dynamic(IrTypeDynamic)),
 
-            #[cfg(all(feature = "qualified_names"))]
             [("uuid", None), ("Uuid", None)] => Ok(Delegate(IrTypeDelegate::Uuid)),
 
-            #[cfg(all(not(feature = "qualified_names")))]
-            [("Uuid", None)] => Ok(Delegate(IrTypeDelegate::Uuid)),
-
-            #[cfg(feature = "qualified_names")]
             [("flutter_rust_bridge", None), ("DartOpaque", None)] => {
                 Ok(DartOpaque(IrTypeDartOpaque {}))
             }
@@ -203,7 +180,6 @@ impl<'a> TypeParser<'a> {
                 inner: Box::new(element.clone()),
             })),
 
-            #[cfg(feature = "qualified_names")]
             [("flutter_rust_bridge", None), (
                 "ZeroCopyBuffer",
                 Some(Generic([PrimitiveList(IrTypePrimitiveList { primitive })])),
@@ -218,32 +194,17 @@ impl<'a> TypeParser<'a> {
                 primitive.clone(),
             ))),
 
-            #[cfg(feature = "qualified_names")]
             [("flutter_rust_bridge", None), ("RustOpaque", Some(Generic([Delegate(IrTypeDelegate::Array(array_delegate))])))] => {
                 Ok(Delegate(IrTypeDelegate::Array(array_delegate.clone())))
             }
 
-            [("RustOpaque", Some(Generic([Delegate(IrTypeDelegate::Array(array_delegate))])))] => {
-                Ok(Delegate(IrTypeDelegate::Array(array_delegate.clone())))
-            }
-
-            #[cfg(feature = "qualified_names")]
             [("flutter_rust_bridge", None), ("RustOpaque", Some(Generic([Primitive(IrTypePrimitive::Unit)])))] => {
                 Ok(RustOpaque(IrTypeRustOpaque::new(Primitive(
                     IrTypePrimitive::Unit,
                 ))))
             }
 
-            [("RustOpaque", Some(Generic([Primitive(IrTypePrimitive::Unit)])))] => Ok(RustOpaque(
-                IrTypeRustOpaque::new(Primitive(IrTypePrimitive::Unit)),
-            )),
-
-            #[cfg(feature = "qualified_names")]
             [("flutter_rust_bridge", None), ("RustOpaque", Some(Generic([ty])))] => {
-                Ok(RustOpaque(IrTypeRustOpaque::new(ty.clone())))
-            }
-
-            [("RustOpaque", Some(Generic([ty])))] => {
                 Ok(RustOpaque(IrTypeRustOpaque::new(ty.clone())))
             }
 
@@ -275,10 +236,7 @@ impl<'a> TypeParser<'a> {
                 Optional(_) => unreachable!(),
             })),
 
-            #[cfg(all(feature = "qualified_names"))]
             [("chrono", None), ("DateTime", Some(Generic(args)))] => parse_datetime(args),
-
-            [("DateTime", Some(Generic(args)))] => parse_datetime(args),
 
             _ => Ok(parse_path_type_to_unencodable(type_path, flat_vector)),
         }
@@ -307,29 +265,15 @@ fn parse_primitive(s: &str) -> Option<IrTypePrimitive> {
 
 fn parse_datetime(args: &[IrType]) -> anyhow::Result<IrType> {
     if let [Unencodable(IrTypeUnencodable { segments, .. })] = args {
-        let mut segments = segments.clone();
-        let segments: Vec<NameComponent> = if cfg!(feature = "qualified_names") {
-            segments
-        } else {
-            // Emulate old behavior by discarding any name qualifiers
-            vec![segments.pop().unwrap()]
-        };
-
         let splayed = segments.splay();
         return match splayed[..] {
-            #[cfg(feature = "qualified_names")]
             [("DateTime", None), ("Utc", None)] => {
                 Ok(Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Utc)))
             }
 
-            [("Utc", None)] => Ok(Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Utc))),
-
-            #[cfg(feature = "qualified_names")]
             [("DateTime", None), ("Local", None)] => {
                 Ok(Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Local)))
             }
-
-            [("Local", None)] => Ok(Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Local))),
 
             _ => bail!("Invalid DateTime generic"),
         };

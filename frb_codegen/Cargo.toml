@@ -59,6 +59,3 @@ x86_64-pc-windows-msvc = { pkg-fmt = "zip" }
 
 [features]
 default = ["anyhow/backtrace"]
-# TODO make it not a feature flag, but a runtime argument
-# When disabled, name qualifiers are discarded, e.g. my_library::SyncReturn == flutter_rust_bridge::SyncReturn
-qualified_names = []
