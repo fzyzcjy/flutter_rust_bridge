@@ -114,7 +114,7 @@ mod tests {
 
         json_golden_test(
             &serde_json::to_value(actual)?,
-            &test_fixture_dir.join("expect_output.json"),
+            &test_fixture_dir.join("expect_ir.json"),
         )?;
 
         Ok(())
