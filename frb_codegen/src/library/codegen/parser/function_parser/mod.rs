@@ -11,6 +11,7 @@ use anyhow::{bail, Context};
 use itertools::concat;
 use log::debug;
 use quote::quote;
+use std::fmt::Debug;
 use syn::*;
 use IrType::Primitive;
 
@@ -26,6 +27,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     }
 
     pub(crate) fn parse_function(&mut self, func: &ItemFn) -> anyhow::Result<IrFunc> {
+        self.parse_function_inner(func)
+            .with_context(|| format!("function={:?}", func.sig.ident))
+    }
+
+    fn parse_function_inner(&mut self, func: &ItemFn) -> anyhow::Result<IrFunc> {
         debug!("parse_function function name: {:?}", func.sig.ident);
 
         let sig = &func.sig;
@@ -62,16 +68,17 @@ impl FunctionPartialInfo {
     fn merge(self, other: Self) -> anyhow::Result<Self> {
         Ok(Self {
             inputs: concat([self.inputs, other.inputs]),
-            ok_output: merge_option(self.ok_output, other.ok_output)?,
-            error_output: merge_option(self.error_output, other.error_output)?,
-            mode: merge_option(self.mode, other.mode)?,
+            ok_output: merge_option(self.ok_output, other.ok_output).context("ok_output type")?,
+            error_output: merge_option(self.error_output, other.error_output)
+                .context("error_output type")?,
+            mode: merge_option(self.mode, other.mode).context("mode")?,
         })
     }
 }
 
-fn merge_option<T>(a: Option<T>, b: Option<T>) -> anyhow::Result<Option<T>> {
+fn merge_option<T: Debug>(a: Option<T>, b: Option<T>) -> anyhow::Result<Option<T>> {
     if a.is_some() && b.is_some() {
-        bail!("Function has conflicting arguments and/or outputs");
+        bail!("Function has conflicting arguments and/or outputs: {a:?} and {b:?}");
     }
     Ok(a.or(b))
 }

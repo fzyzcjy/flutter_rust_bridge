@@ -7,7 +7,7 @@ use crate::codegen::parser::function_parser::{
     type_to_string, FunctionParser, FunctionPartialInfo, STREAM_SINK_IDENT,
 };
 use crate::codegen::parser::type_parser::misc::parse_comments;
-use anyhow::anyhow;
+use anyhow::{anyhow, bail};
 use syn::*;
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
@@ -32,17 +32,16 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 Type::Array(_) => {
                     partial_info_for_normal_type(self.type_parser.parse_type(ty)?, argument_index)
                 }
-                _ => Err(anyhow!(
+                _ => bail!(
                     "Failed to parse function argument type `{}`",
                     type_to_string(ty)
-                )
-                .into()),
+                ),
             }
         } else {
-            Err(anyhow!(
+            bail!(
                 "Unexpected parameter: {}",
                 quote::quote!(#sig_input).to_string()
-            ))
+            )
         }
     }
 
