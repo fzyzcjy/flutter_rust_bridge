@@ -1,6 +1,7 @@
 pub(crate) mod array;
 pub(crate) mod enumeration;
 pub(crate) mod misc;
+pub(crate) mod path;
 pub(crate) mod structure;
 pub(crate) mod tuple;
 pub(crate) mod ty;
@@ -41,10 +42,6 @@ impl<'a> TypeParser<'a> {
 
     pub(crate) fn consume(self) -> (IrStructPool, IrEnumPool) {
         (self.struct_pool, self.enum_pool)
-    }
-
-    pub(crate) fn parse_type_path(&mut self, type_path: &TypePath) -> Result<IrType, String> {
-        todo!()
     }
 
     pub(crate) fn resolve_alias<'b: 'a>(&self, ty: &'b Type) -> &Type {
