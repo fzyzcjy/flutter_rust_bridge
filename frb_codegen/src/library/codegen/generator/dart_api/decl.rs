@@ -3,12 +3,11 @@ use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
 };
-use crate::codegen::ir::ty::enumeration::IrTypeEnumRef;
+
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use convert_case::{Case, Casing};
 use enum_dispatch::enum_dispatch;
-use syn::token::Dyn;
 
 #[enum_dispatch]
 pub(crate) trait DartApiGeneratorDeclTrait {

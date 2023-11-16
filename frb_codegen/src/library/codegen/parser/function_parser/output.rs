@@ -1,14 +1,9 @@
-use crate::codegen::ir::func::IrFuncMode;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
-use crate::codegen::parser::function_parser::{
-    type_to_string, FunctionParser, FunctionPartialInfo,
-};
+use crate::codegen::parser::function_parser::{FunctionParser, FunctionPartialInfo};
 use crate::codegen::parser::type_parser::unencodable::{splay_segments, ArgsRefs};
-use anyhow::Context;
 use syn::*;
 
 impl<'a, 'b> FunctionParser<'a, 'b> {

@@ -1,6 +1,5 @@
 use crate::codegen::generator::dart_api::base::*;
 use crate::codegen::generator::dart_api::class::DartApiGeneratorClassTrait;
-use crate::codegen::ir::ty::structure::IrTypeStructRef;
 
 impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
     fn generate_class(&self) -> Option<String> {

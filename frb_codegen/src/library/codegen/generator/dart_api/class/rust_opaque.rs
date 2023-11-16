@@ -1,6 +1,5 @@
 use crate::codegen::generator::dart_api::base::*;
 use crate::codegen::generator::dart_api::class::DartApiGeneratorClassTrait;
-use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
 
 impl<'a> DartApiGeneratorClassTrait for RustOpaqueDartApiGenerator<'a> {
     fn generate_class(&self) -> Option<String> {

@@ -16,11 +16,9 @@ use crate::codegen::parser::misc::parse_has_executor;
 use crate::codegen::parser::reader::read_rust_file;
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
-use crate::library::misc::consts::HANDLER_NAME;
-use itertools::{sorted, Itertools};
+
+use itertools::Itertools;
 use log::trace;
-use std::path::Path;
-use syn::File;
 
 // TODO handle multi file correctly
 pub(crate) fn parse(config: &ParserInternalConfig) -> anyhow::Result<IrPack> {

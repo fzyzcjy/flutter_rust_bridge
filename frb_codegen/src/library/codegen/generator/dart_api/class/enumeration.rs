@@ -1,7 +1,5 @@
 use crate::codegen::generator::dart_api::base::*;
 use crate::codegen::generator::dart_api::class::DartApiGeneratorClassTrait;
-use crate::codegen::ir::ty::enumeration::{IrTypeEnumRef, IrVariantKind};
-use crate::codegen::ir::ty::structure::IrStruct;
 
 impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {
     fn generate_class(&self) -> Option<String> {

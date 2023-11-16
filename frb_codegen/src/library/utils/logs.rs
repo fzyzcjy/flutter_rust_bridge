@@ -55,7 +55,7 @@ fn log_level_from_env_var() -> Option<LevelFilter> {
             "warn" => LevelFilter::Warn,
             "error" => LevelFilter::Error,
             "off" => LevelFilter::Off,
-            _ => panic!("unknown RUST_LOG level: {value}"),
+            _ => panic!("{}", "unknown RUST_LOG level: {value}"),
         })
 }
 

@@ -216,7 +216,6 @@ mod tests {
 
     use serde_json::Value;
     use serial_test::serial;
-    use syn::Path;
 
     #[test]
     #[serial]

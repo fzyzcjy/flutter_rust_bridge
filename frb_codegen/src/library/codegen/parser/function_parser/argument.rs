@@ -10,8 +10,6 @@ use crate::codegen::parser::function_parser::{
 };
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use anyhow::{anyhow, bail};
-use log::debug;
-use syn::visit::visit_angle_bracketed_generic_arguments;
 use syn::*;
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
@@ -94,7 +92,7 @@ fn partial_info_for_normal_type(
     })
 }
 
-fn auto_add_boxed(mut ty: IrType) -> IrType {
+fn auto_add_boxed(ty: IrType) -> IrType {
     if ty.is_struct_or_enum_or_record() {
         Boxed(IrTypeBoxed {
             exist_in_real_api: false,
