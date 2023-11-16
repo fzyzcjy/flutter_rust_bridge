@@ -60,12 +60,14 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
                 format!("return api2wire_{}(raw.index);", repr.safe_ident()).into()
             }
             IrTypeDelegate::Time(ir) => match ir {
-                IrTypeTime::Utc | IrTypeTime::Local | IrTypeTime::Naive => Acc {
-                    io: Some("return api2wire_i64(raw.microsecondsSinceEpoch);".into()),
-                    wasm: Some("return api2wire_i64(raw.millisecondsSinceEpoch);".into()),
-                    ..Default::default()
-                },
-                IrTypeTime::Duration => Acc {
+                IrTypeDelegateTime::Utc | IrTypeDelegateTime::Local | IrTypeDelegateTime::Naive => {
+                    Acc {
+                        io: Some("return api2wire_i64(raw.microsecondsSinceEpoch);".into()),
+                        wasm: Some("return api2wire_i64(raw.millisecondsSinceEpoch);".into()),
+                        ..Default::default()
+                    }
+                }
+                IrTypeDelegateTime::Duration => Acc {
                     io: Some("return api2wire_i64(raw.inMicroseconds);".into()),
                     wasm: Some("return api2wire_i64(raw.inMilliseconds);".into()),
                     ..Default::default()

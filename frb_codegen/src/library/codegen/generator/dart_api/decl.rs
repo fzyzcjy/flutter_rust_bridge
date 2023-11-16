@@ -1,6 +1,9 @@
 use crate::codegen::generator::dart_api::base::*;
-use crate::codegen::ir::ty::delegate::IrTypeDelegate;
+use crate::codegen::ir::ty::delegate::{
+    IrTypeDelegate, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
+};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::codegen::ir::ty::IrType;
 use enum_dispatch::enum_dispatch;
 use syn::token::Dyn;
 
@@ -23,20 +26,24 @@ impl DartApiGeneratorDeclTrait for DartOpaqueDartApiGenerator {
 
 impl DartApiGeneratorDeclTrait for DelegateDartApiGenerator {
     fn dart_api_type(&self) -> String {
-        match self {
+        match &self.ir {
             IrTypeDelegate::Array(array) => array.dart_api_type(),
             IrTypeDelegate::String => "String".to_string(),
             IrTypeDelegate::StringList => "List<String>".to_owned(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => self.get_delegate().dart_api_type(),
-            IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.dart_api_type(),
-            IrTypeDelegate::Time(ir) => match ir {
-                IrTypeTime::Local | IrTypeTime::Utc | IrTypeTime::Naive => "DateTime".to_string(),
-                IrTypeTime::Duration => "Duration".to_string(),
-            },
-            IrTypeDelegate::TimeList(IrTypeTime::Local | IrTypeTime::Utc | IrTypeTime::Naive) => {
-                "List<DateTime>".to_string()
+            IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) => {
+                ir.dart_api_type()
             }
-            IrTypeDelegate::TimeList(IrTypeTime::Duration) => "List<Duration>".to_string(),
+            IrTypeDelegate::Time(ir) => match ir {
+                IrTypeDelegateTime::Local | IrTypeDelegateTime::Utc | IrTypeDelegateTime::Naive => {
+                    "DateTime".to_string()
+                }
+                IrTypeDelegateTime::Duration => "Duration".to_string(),
+            },
+            IrTypeDelegate::TimeList(
+                IrTypeDelegateTime::Local | IrTypeDelegateTime::Utc | IrTypeDelegateTime::Naive,
+            ) => "List<DateTime>".to_string(),
+            IrTypeDelegate::TimeList(IrTypeDelegateTime::Duration) => "List<Duration>".to_string(),
             IrTypeDelegate::Uuid => "UuidValue".to_owned(),
             IrTypeDelegate::Uuids => "List<UuidValue>".to_owned(),
             IrTypeDelegate::Backtrace => "String".to_string(),
@@ -77,7 +84,7 @@ impl DartApiGeneratorDeclTrait for OptionalListDartApiGenerator {
 
 impl DartApiGeneratorDeclTrait for PrimitiveDartApiGenerator {
     fn dart_api_type(&self) -> String {
-        match self {
+        match &self.ir {
             IrTypePrimitive::U8
             | IrTypePrimitive::I8
             | IrTypePrimitive::U16
@@ -92,12 +99,13 @@ impl DartApiGeneratorDeclTrait for PrimitiveDartApiGenerator {
             IrTypePrimitive::Bool => "bool",
             IrTypePrimitive::Unit => "void",
         }
+        .to_owned()
     }
 }
 
 impl DartApiGeneratorDeclTrait for PrimitiveListDartApiGenerator {
     fn dart_api_type(&self) -> String {
-        match &self.primitive {
+        match &self.ir.primitive {
             IrTypePrimitive::U8 => "Uint8List",
             IrTypePrimitive::I8 => "Int8List",
             IrTypePrimitive::U16 => "Uint16List",
@@ -108,7 +116,7 @@ impl DartApiGeneratorDeclTrait for PrimitiveListDartApiGenerator {
             IrTypePrimitive::I64 => "Int64List",
             IrTypePrimitive::F32 => "Float32List",
             IrTypePrimitive::F64 => "Float64List",
-            _ => panic!("does not support {:?} yet", &self.primitive),
+            _ => panic!("does not support {:?} yet", &self.ir.primitive),
         }
         .to_string()
     }
@@ -117,12 +125,13 @@ impl DartApiGeneratorDeclTrait for PrimitiveListDartApiGenerator {
 impl DartApiGeneratorDeclTrait for RecordDartApiGenerator {
     fn dart_api_type(&self) -> String {
         let values = self
+            .ir
             .values
             .iter()
             .map(IrType::dart_api_type)
             .collect::<Vec<_>>()
             .join(",");
-        if self.values.len() == 1 {
+        if self.ir.values.len() == 1 {
             format!("({values},)")
         } else {
             format!("({values})")

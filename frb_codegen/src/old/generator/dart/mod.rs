@@ -129,13 +129,13 @@ impl DartApiSpec {
             .funcs
             .iter()
             .map(|f| generate_api_func(f, ir_pack, &dart_api2wire_funcs.common)))
-            .chain(
-                distinct_output_types
-                    .iter()
-                    .filter(|ty| ty.is_rust_opaque() || ty.is_sync_rust_opaque())
-                    .map(generate_opaque_getters),
-            )
-            .collect::<Vec<_>>();
+        .chain(
+            distinct_output_types
+                .iter()
+                .filter(|ty| ty.is_rust_opaque() || ty.is_sync_rust_opaque())
+                .map(generate_opaque_getters),
+        )
+        .collect::<Vec<_>>();
 
         let dart_api_fill_to_wire_funcs = distinct_input_types
             .iter()
@@ -237,7 +237,11 @@ fn generate_common_header() -> DartBasicCode {
             import 'package:meta/meta.dart';
             import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
             import 'package:uuid/uuid.dart';",
-            if config.use_bridge_in_method { "" } else { "import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';" },
+            if config.use_bridge_in_method {
+                ""
+            } else {
+                "import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';"
+            },
         ),
         part: "".to_string(),
         body: "".to_string(),
@@ -441,10 +445,10 @@ fn generate_dart_declaration_code(
         + &freezed_header
         + &import_header
         + &DartBasicCode {
-        import: "".to_string(),
-        part: "".to_string(),
-        body: declaration_body,
-    }
+            import: "".to_string(),
+            part: "".to_string(),
+            body: declaration_body,
+        }
 }
 
 fn generate_dart_implementation_code(
@@ -490,7 +494,7 @@ fn generate_api2wire_func(ty: &IrType, ir_pack: &IrPack, config: &Opts) -> Acc<S
                 body,
             )
         })
-            .unwrap_or_default()
+        .unwrap_or_default()
     })
 }
 
@@ -557,7 +561,7 @@ fn generate_opaque_func(ty: &IrType) -> Acc<String> {
     }
 }
 
-fn gen_wire2api_chrono(chrono_type: &IrTypeTime) -> String {
+fn gen_wire2api_chrono(chrono_type: &IrTypeDelegateTime) -> String {
     format!("return _wire2api_Chrono_{}(raw);", chrono_type)
 }
 
@@ -583,8 +587,8 @@ fn dart_metadata(metadata: &[IrDartAnnotation]) -> String {
         .iter()
         .map(|it| match &it.library {
             Some(IrDartImport {
-                     alias: Some(alias), ..
-                 }) => format!("@{}.{}", alias, it.content),
+                alias: Some(alias), ..
+            }) => format!("@{}.{}", alias, it.content),
             _ => format!("@{}", it.content),
         })
         .collect::<Vec<_>>()

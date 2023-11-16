@@ -80,7 +80,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 ).into()
             },
             IrTypeDelegate::Time(ir) => {
-                if ir == &IrTypeTime::Duration {
+                if ir == &IrTypeDelegateTime::Duration {
                     return Acc {
                         io: Some("chrono::Duration::microseconds(self)".into()),
                         wasm: Some("chrono::Duration::milliseconds(self)".into()),
@@ -93,10 +93,10 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 let codegen_utc = format!("chrono::DateTime::<chrono::Utc>::from_utc({codegen_naive}, chrono::Utc)");
                 let codegen_local = format!("chrono::DateTime::<chrono::Local>::from({codegen_utc})");
                 let codegen_conversion = match ir {
-                    IrTypeTime::Naive => codegen_naive,
-                    IrTypeTime::Utc => codegen_utc.as_str(),
-                    IrTypeTime::Local => codegen_local.as_str(),
-                    IrTypeTime::Duration => unreachable!(),
+                    IrTypeDelegateTime::Naive => codegen_naive,
+                    IrTypeDelegateTime::Utc => codegen_utc.as_str(),
+                    IrTypeDelegateTime::Local => codegen_local.as_str(),
+                    IrTypeDelegateTime::Duration => unreachable!(),
                 };
                 Acc {
                     common: Some(format!("{codegen_timestamp}{codegen_conversion}")),

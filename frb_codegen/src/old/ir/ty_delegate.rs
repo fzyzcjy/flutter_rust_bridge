@@ -3,7 +3,7 @@ use convert_case::{Case, Casing};
 use crate::ir::*;
 use crate::target::Target;
 
-impl IrTypeTime {
+impl IrTypeDelegateTime {
     #[inline]
     pub fn is_duration(&self) -> bool {
         matches!(self, Self::Duration)
@@ -98,17 +98,17 @@ impl IrTypeTrait for IrTypeDelegate {
             }
             IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.rust_api_type(),
             IrTypeDelegate::Time(ir) => match ir {
-                IrTypeTime::Naive => "chrono::NaiveDateTime",
-                IrTypeTime::Local => "chrono::DateTime::<chrono::Local>",
-                IrTypeTime::Utc => "chrono::DateTime::<chrono::Utc>",
-                IrTypeTime::Duration => "chrono::Duration",
+                IrTypeDelegateTime::Naive => "chrono::NaiveDateTime",
+                IrTypeDelegateTime::Local => "chrono::DateTime::<chrono::Local>",
+                IrTypeDelegateTime::Utc => "chrono::DateTime::<chrono::Utc>",
+                IrTypeDelegateTime::Duration => "chrono::Duration",
             }
             .to_owned(),
             IrTypeDelegate::TimeList(ir) => match ir {
-                IrTypeTime::Naive => "Vec<chrono::NaiveDateTime>",
-                IrTypeTime::Local => "Vec<chrono::DateTime::<chrono::Local>>",
-                IrTypeTime::Utc => "Vec<chrono::DateTime::<chrono::Utc>>",
-                IrTypeTime::Duration => "Vec<chrono::Duration>",
+                IrTypeDelegateTime::Naive => "Vec<chrono::NaiveDateTime>",
+                IrTypeDelegateTime::Local => "Vec<chrono::DateTime::<chrono::Local>>",
+                IrTypeDelegateTime::Utc => "Vec<chrono::DateTime::<chrono::Utc>>",
+                IrTypeDelegateTime::Duration => "Vec<chrono::Duration>",
             }
             .to_owned(),
             IrTypeDelegate::Uuid => "uuid::Uuid".to_owned(),
