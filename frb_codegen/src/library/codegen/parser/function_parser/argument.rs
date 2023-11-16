@@ -11,13 +11,6 @@ use crate::codegen::parser::ParserResult;
 use anyhow::{bail, Context};
 use syn::*;
 
-/// Represents the type of an argument to a function
-#[derive(Debug, Clone)]
-pub(super) enum FuncArg {
-    StreamSinkType(IrType),
-    Type(IrType),
-}
-
 impl<'a, 'b> FunctionParser<'a, 'b> {
     pub(super) fn parse_fn_arg(
         &mut self,
@@ -29,26 +22,32 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             let arg_type = self.parse_fn_arg_type(&pat_type.ty)?;
 
             match arg_type {
-                FuncArg::StreamSinkType(ty) => {
-                    output = Some(ty);
-                    mode = Some(IrFuncMode::Stream { argument_index: i });
-                    fallible = match &sig.output {
+                FuncArg::StreamSinkType(ty) => FunctionPartialInfo {
+                    inputs: vec![],
+                    output: Some(ty),
+                    mode: Some(IrFuncMode::Stream { argument_index: i }),
+                    fallible: Some(match &sig.output {
                         ReturnType::Default => false,
                         ReturnType::Type(_, ty) => {
                             !matches!(self.parse_fn_output_type(ty)?, Some(FuncOutput::Type(_)))
                         }
-                    }
-                }
+                    }),
+                },
                 FuncArg::Type(ty) => {
                     let attributes = FrbAttributes::parse(&pat_type.attrs)?;
-                    inputs.push(IrField {
-                        name: IrIdent::new(name),
-                        ty,
-                        is_final: true,
-                        comments: parse_comments(&pat_type.attrs),
-                        default: attributes.default_value(),
-                        settings: IrFieldSettings::default(),
-                    });
+                    FunctionPartialInfo {
+                        inputs: vec![IrField {
+                            name: IrIdent::new(name),
+                            ty,
+                            is_final: true,
+                            comments: parse_comments(&pat_type.attrs),
+                            default: attributes.default_value(),
+                            settings: IrFieldSettings::default(),
+                        }],
+                        output: None,
+                        mode: None,
+                        fallible: None,
+                    }
                 }
             }
         } else {
@@ -108,4 +107,10 @@ fn parse_name(pat_type: &PatType) -> ParserResult<String> {
             quote::quote!(#pat_type).to_string().into(),
         ))
     }
+}
+
+#[derive(Debug, Clone)]
+enum FuncArg {
+    StreamSinkType(IrType),
+    Type(IrType),
 }
