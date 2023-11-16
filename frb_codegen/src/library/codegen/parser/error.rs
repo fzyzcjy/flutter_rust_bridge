@@ -20,8 +20,9 @@ pub enum Error {
     #[error("Mutating methods are not yet supported.")]
     NoMutSelf,
 
-    #[error("When the function signature contains a StreamSink, the return value can only be None or a unit type. Function name that triggered this error: {0}.")]
-    NoStreamSinkAndOutput(Arc<str>),
+    #[error("Function has conflicting arguments and/or outputs.\
+    For example, When the function signature contains a StreamSink, the return value can only be None or a unit type.")]
+    FunctionConflictArgumentOutput,
 
     #[error(transparent)]
     SerdeYaml(#[from] serde_yaml::Error),

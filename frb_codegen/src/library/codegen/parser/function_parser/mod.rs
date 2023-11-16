@@ -63,18 +63,18 @@ impl FunctionPartialInfo {
     fn merge(self, other: Self) -> ParserResult<Self> {
         Ok(Self {
             inputs: concat([self.inputs, other.inputs]),
-            ok_output: merge_option(self.ok_output, other.ok_output),
-            error_output: merge_option(self.error_output, other.error_output),
-            mode: merge_option(self.mode, other.mode),
+            ok_output: merge_option(self.ok_output, other.ok_output)?,
+            error_output: merge_option(self.error_output, other.error_output)?,
+            mode: merge_option(self.mode, other.mode)?,
         })
     }
 }
 
-fn merge_option<T>(a: Option<T>, b: Option<T>) -> Option<T> {
+fn merge_option<T>(a: Option<T>, b: Option<T>) -> ParserResult<Option<T>> {
     if a.is_some() && b.is_some() {
-        todo!()
+        return Err(super::error::Error::FunctionConflictArgumentOutput);
     }
-    a.or(b)
+    Ok(a.or(b))
 }
 
 /// syn -> string https://github.com/dtolnay/syn/issues/294
