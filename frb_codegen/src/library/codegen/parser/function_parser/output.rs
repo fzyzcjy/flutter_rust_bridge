@@ -1,3 +1,4 @@
+use crate::codegen::ir::func::IrFuncMode;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
@@ -19,7 +20,7 @@ pub(super) enum FuncOutput {
 }
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
-    pub(super) fn parse_fn_output(&mut self) -> ParserResult<FunctionPartialInfo> {
+    pub(super) fn parse_fn_output(&mut self, sig: &Signature) -> ParserResult<FunctionPartialInfo> {
         let (output_ok, output_err) = match &sig.output {
             ReturnType::Type(_, ty) => {
                 let output_type = self.parse_fn_output_type(ty)?.with_context(|| {
@@ -42,21 +43,17 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             }
         };
 
-        if matches!(mode, Some(IrFuncMode::Stream { argument_index: _ }) if output_ok != IrType::Primitive(IrTypePrimitive::Unit))
+        if matches!(mode, Some(IrFuncMode::Stream {..}) if output_ok != IrType::Primitive(IrTypePrimitive::Unit))
         {
             return Err(super::error::Error::NoStreamSinkAndOutput(func_name.into()));
         }
 
-        if output.is_none() {
-            // TODO handle SyncReturn as a marker
-            // mode = Some(if let IrType::SyncReturn(_) = output_ok {
-            //     IrFuncMode::Sync
-            // } else {
-            //     IrFuncMode::Normal
-            // });
-            mode = Some(IrFuncMode::Normal);
-            output = Some(output_ok);
-        }
+        Ok(FunctionPartialInfo {
+            inputs: vec![],
+            output: Some(output_ok),
+            mode: Some(IrFuncMode::Normal),
+            fallible: None,
+        })
     }
 
     /// Attempts to parse the type from the return part of a function signature. There is a special

@@ -37,7 +37,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             info = info.merge(self.parse_fn_arg(i, sig_input)?);
         }
 
-        info = info.merge(self.parse_fn_output()?);
+        info = info.merge(self.parse_fn_output(sig)?);
 
         Ok(IrFunc {
             name: func_name,
