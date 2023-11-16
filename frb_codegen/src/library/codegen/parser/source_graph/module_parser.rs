@@ -130,6 +130,12 @@ fn parse_syn_item_mod(info: &ModuleInfo, item_mod: &&ItemMod) -> anyhow::Result<
         None => {
             let file_path_candidates =
                 get_module_file_path_candidates(ident.to_string(), &info.file_path);
+            println!(
+                "file_path_candidates {:?} {:?} {:?}",
+                ident.to_string(),
+                &info.file_path,
+                &file_path_candidates
+            );
 
             if let Some(file_path) = first_existing_path(&file_path_candidates) {
                 let rust_crate_dir_for_file = find_rust_crate_dir(file_path)?;
@@ -228,8 +234,19 @@ impl Visibility {
 
 #[cfg(test)]
 mod tests {
+    use crate::codegen::parser::source_graph::module_parser::get_module_file_path_candidates;
+    use std::path::PathBuf;
+
     #[test]
-    fn test_get_module_file_path_simple() {
-        todo!()
+    fn test_get_module_file_path_candidates_simple() {
+        let actual =
+            get_module_file_path_candidates("api".to_owned(), &PathBuf::from("/hello/src/main.rs"));
+        let expect = vec![
+            PathBuf::from("/hello/src/api.rs"),
+            PathBuf::from("/hello/src/api/mod.rs"),
+            PathBuf::from("/hello/src/main/api.rs"),
+            PathBuf::from("/hello/src/main/api/mod.rs"),
+        ];
+        assert_eq!(actual, expect);
     }
 }
