@@ -17,7 +17,7 @@ use crate::codegen::parser::reader::read_rust_file;
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::library::misc::consts::HANDLER_NAME;
-use itertools::Itertools;
+use itertools::{sorted, Itertools};
 use log::trace;
 use std::path::Path;
 use syn::File;
@@ -61,7 +61,11 @@ pub(crate) fn parse(config: &ParserInternalConfig) -> anyhow::Result<IrPack> {
     let ir_funcs = src_fns
         .iter()
         .map(|f| function_parser.parse_function(f))
-        .collect::<anyhow::Result<_>>()?;
+        .collect::<anyhow::Result<Vec<_>>>()?
+        .into_iter()
+        // to give downstream a stable output
+        .sorted_by_key(|func| func.name.clone())
+        .collect_vec();
 
     let has_executor = source_rust_contents.iter().any(|s| parse_has_executor(s));
 
