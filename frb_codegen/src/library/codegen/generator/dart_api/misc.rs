@@ -43,11 +43,3 @@ pub(crate) fn generate_dart_maybe_implements_exception(is_exception: bool) -> &'
         ""
     }
 }
-
-pub(crate) fn generate_field_required_modifier(field: &IrField) -> &str {
-    if field.default.is_some() || matches!(field, Optional(_)) {
-        ""
-    } else {
-        "required "
-    }
-}

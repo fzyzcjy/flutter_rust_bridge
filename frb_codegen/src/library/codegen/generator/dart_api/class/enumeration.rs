@@ -1,8 +1,8 @@
 use crate::codegen::generator::dart_api::base::*;
 use crate::codegen::generator::dart_api::class::DartApiGeneratorClassTrait;
+use crate::codegen::generator::dart_api::field::generate_field_required_modifier;
 use crate::codegen::generator::dart_api::misc::{
     generate_dart_comments, generate_dart_maybe_implements_exception,
-    generate_field_required_modifier,
 };
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ty::enumeration::IrVariantKind;
