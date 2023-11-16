@@ -8,7 +8,7 @@ use crate::codegen::parser::function_parser::{
 };
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::ParserResult;
-use anyhow::Context;
+use anyhow::{bail, Context};
 use syn::*;
 
 /// Represents the type of an argument to a function
@@ -26,13 +26,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     ) -> ParserResult<FunctionPartialInfo> {
         Ok(if let FnArg::Typed(ref pat_type) = sig_input {
             let name = parse_name(pat_type)?;
+            let arg_type = self.parse_fn_arg_type(&pat_type.ty)?;
 
-            let arg_type = self.parse_fn_arg_type(&pat_type.ty)?.with_context(|| {
-                format!(
-                    "Failed to parse function argument type `{}`",
-                    type_to_string(&pat_type.ty)
-                )
-            })?;
             match arg_type {
                 FuncArg::StreamSinkType(ty) => {
                     output = Some(ty);
@@ -65,17 +60,20 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
     /// Attempts to parse the type from an argument of a function signature. There is a special
     /// case for top-level `StreamSink` types.
-    fn parse_fn_arg_type(&mut self, ty: &Type) -> anyhow::Result<Option<FuncArg>> {
+    fn parse_fn_arg_type(&mut self, ty: &Type) -> anyhow::Result<FuncArg> {
         Ok(match ty {
             Type::Path(TypePath { path, .. }) => {
                 if let Some(ans) = self.parse_fn_arg_type_stream_sink(path)? {
-                    Some(ans)
+                    ans
                 } else {
-                    Some(FuncArg::Type(self.type_parser.parse_type(ty)?))
+                    FuncArg::Type(self.type_parser.parse_type(ty)?)
                 }
             }
-            Type::Array(_) => Some(FuncArg::Type(self.type_parser.parse_type(ty)?)),
-            _ => None,
+            Type::Array(_) => FuncArg::Type(self.type_parser.parse_type(ty)?),
+            _ => bail!(
+                "Failed to parse function argument type `{}`",
+                type_to_string(ty)
+            ),
         })
     }
 
