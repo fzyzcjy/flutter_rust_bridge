@@ -1,6 +1,8 @@
 use crate::codegen::generator::dart_api::base::*;
 use crate::codegen::generator::dart_api::class::DartApiGeneratorClassTrait;
-use crate::codegen::generator::dart_api::misc::generate_dart_comments;
+use crate::codegen::generator::dart_api::misc::{
+    generate_dart_comments, generate_dart_maybe_implements_exception,
+};
 use crate::codegen::ir::ty::enumeration::IrVariantKind;
 use crate::codegen::ir::ty::structure::IrStruct;
 
@@ -103,7 +105,7 @@ impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {
                     {2}
                 }}",
                 self.ir.name,
-                dart_maybe_implements_exception(self.ir.is_exception),
+                generate_dart_maybe_implements_exception(self.ir.is_exception),
                 variants.join("\n")
             ))
         } else {

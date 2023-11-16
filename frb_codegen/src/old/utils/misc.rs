@@ -161,14 +161,3 @@ macro_rules! derive_serde_inner_as_newtype {
         }
     )*};
 }
-
-
-
-pub fn dart_maybe_implements_exception(is_exception: bool) -> &'static str {
-    if is_exception {
-        "implements FrbException"
-    } else {
-        ""
-    }
-}
-

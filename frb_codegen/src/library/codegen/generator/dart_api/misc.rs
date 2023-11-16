@@ -31,3 +31,11 @@ pub(crate) fn generate_dart_metadata(metadata: &[IrDartAnnotation]) -> String {
     }
     metadata
 }
+
+pub(crate) fn generate_dart_maybe_implements_exception(is_exception: bool) -> &'static str {
+    if is_exception {
+        "implements FrbException"
+    } else {
+        ""
+    }
+}

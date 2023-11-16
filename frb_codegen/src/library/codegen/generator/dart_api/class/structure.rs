@@ -1,6 +1,8 @@
 use crate::codegen::generator::dart_api::base::*;
 use crate::codegen::generator::dart_api::class::DartApiGeneratorClassTrait;
-use crate::codegen::generator::dart_api::misc::{generate_dart_comments, generate_dart_metadata};
+use crate::codegen::generator::dart_api::misc::{
+    generate_dart_comments, generate_dart_maybe_implements_exception, generate_dart_metadata,
+};
 
 impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
     fn generate_class(&self) -> Option<String> {
@@ -98,7 +100,8 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
                 private_constructor = private_constructor,
                 meta = metadata,
                 Name = self.ir.name,
-                implements_exception = dart_maybe_implements_exception(self.ir.is_exception),
+                implements_exception =
+                    generate_dart_maybe_implements_exception(self.ir.is_exception),
             )
         } else {
             let mut field_declarations = src
@@ -160,7 +163,7 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
                 meta = metadata,
                 Name = self.ir.name,
                 const = const_capable,
-                implements_exception = dart_maybe_implements_exception(self.ir.is_exception),
+                implements_exception = generate_dart_maybe_implements_exception(self.ir.is_exception),
             )
         })
     }
