@@ -1,5 +1,6 @@
 use crate::codegen::generator::dart_api::base::*;
 use crate::codegen::generator::dart_api::class::DartApiGeneratorClassTrait;
+use crate::codegen::generator::dart_api::misc::{generate_dart_comments, generate_dart_metadata};
 
 impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
     fn generate_class(&self) -> Option<String> {

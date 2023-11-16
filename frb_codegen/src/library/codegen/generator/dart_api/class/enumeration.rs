@@ -1,5 +1,6 @@
 use crate::codegen::generator::dart_api::base::*;
 use crate::codegen::generator::dart_api::class::DartApiGeneratorClassTrait;
+use crate::codegen::generator::dart_api::misc::generate_dart_comments;
 use crate::codegen::ir::ty::enumeration::IrVariantKind;
 use crate::codegen::ir::ty::structure::IrStruct;
 
