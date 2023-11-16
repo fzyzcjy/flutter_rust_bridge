@@ -18,24 +18,8 @@ use log::LevelFilter;
 /// configure_opinionated_logging("./logs/", false).expect("failed to initialize log");
 /// ```
 pub fn configure_opinionated_logging(path: &str, verbose: bool) -> Result<(), fern::InitError> {
-    let colored_output = ColoredLevelConfig::new()
-        .error(Color::Red)
-        .warn(Color::Yellow)
-        .info(Color::Green)
-        .debug(Color::Blue)
-        .trace(Color::BrightBlack);
-
     let mut d = fern::Dispatch::new();
-    d = d.format(move |out, message, record| {
-        let time = chrono::Local::now().format("%Y/%m/%d %H:%M:%S");
-        let level = record.level();
-        let format = if atty::is(atty::Stream::Stdout) {
-            format!("{} [{}] {}", time, colored_output.color(level), message)
-        } else {
-            format!("{} [{}] {}", time, level, message)
-        };
-        out.finish(format_args!("{}", format))
-    });
+    d = log_format_simple(d);
 
     std::fs::create_dir_all(path).unwrap();
     match log_level_from_env_var().unwrap_or_else(|| verbose_to_level_filter(verbose)) {
@@ -83,11 +67,31 @@ fn verbose_to_level_filter(verbose: bool) -> LevelFilter {
     }
 }
 
+fn log_format_simple(d: fern::Dispatch) -> fern::Dispatch {
+    let colored_output = ColoredLevelConfig::new()
+        .error(Color::Red)
+        .warn(Color::Yellow)
+        .info(Color::Green)
+        .debug(Color::Blue)
+        .trace(Color::BrightBlack);
+
+    d.format(move |out, message, record| {
+        let time = chrono::Local::now().format("%Y/%m/%d %H:%M:%S");
+        let level = record.level();
+        let format = if atty::is(atty::Stream::Stdout) {
+            format!("{} [{}] {}", time, colored_output.color(level), message)
+        } else {
+            format!("{} [{}] {}", time, level, message)
+        };
+        out.finish(format_args!("{}", format))
+    })
+}
+
 /// Configure an opinionated way of logging, useful in tests.
 pub fn configure_opinionated_test_logging() {
     // https://github.com/daboross/fern/issues/54
     // This will fail if called twice; don't worry.
-    let _ = fern::Dispatch::new()
+    let _ = log_format_simple(fern::Dispatch::new())
         .level(log_level_from_env_var().unwrap_or(LevelFilter::Debug))
         .chain(fern::Output::call(|record| println!("{}", record.args())))
         .apply();
