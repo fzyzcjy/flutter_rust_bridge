@@ -65,10 +65,10 @@ fn parse_fn_output_type_result(args: &[IrType]) -> ParserResult<FunctionPartialI
 
 fn set_is_exception_flag(mut ty: IrType) -> IrType {
     match &mut ty {
-        StructRef(mut inner) => {
+        StructRef(ref mut inner) => {
             inner.is_exception = true;
         }
-        EnumRef(mut inner) => {
+        EnumRef(ref mut inner) => {
             inner.is_exception = true;
         }
         _ => {}
