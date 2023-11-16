@@ -12,69 +12,49 @@ use crate::codegen::parser::ParserResult;
 use anyhow::Context;
 use syn::*;
 
-/// Represents a function's output type
-#[derive(Debug, Clone)]
-pub(super) enum FuncOutput {
-    ResultType { ok: IrType, error: Option<IrType> },
-    Type(IrType),
-}
-
 impl<'a, 'b> FunctionParser<'a, 'b> {
     pub(super) fn parse_fn_output(&mut self, sig: &Signature) -> ParserResult<FunctionPartialInfo> {
-        let (output_ok, output_err) = match &sig.output {
-            ReturnType::Type(_, ty) => {
-                let output_type = self.parse_fn_output_type(ty)?.with_context(|| {
-                    format!(
-                        "Failed to parse function output type `{}`",
-                        type_to_string(ty)
-                    )
-                })?;
-                match output_type {
-                    FuncOutput::ResultType { ok: ty, error: err } => (ty, err),
-                    FuncOutput::Type(ty) => (ty, None),
-                }
-            }
-            ReturnType::Default => (IrType::Primitive(IrTypePrimitive::Unit), None),
-        };
-
+        // TODO
         if matches!(mode, Some(IrFuncMode::Stream {..}) if output_ok != IrType::Primitive(IrTypePrimitive::Unit))
         {
             return Err(super::error::Error::NoStreamSinkAndOutput(func_name.into()));
         }
 
-        Ok(FunctionPartialInfo {
-            inputs: vec![],
-            ok_output: Some(output_ok),
-            mode: Some(IrFuncMode::Normal),
+        Ok(match &sig.output {
+            ReturnType::Type(_, ty) => self.parse_fn_output_type(ty)?,
+            ReturnType::Default => FunctionPartialInfo {
+                ok_output: Some(IrType::Primitive(IrTypePrimitive::Unit)),
+                ..Default::default()
+            },
         })
     }
 
-    /// Attempts to parse the type from the return part of a function signature. There is a special
-    /// case for top-level `Result` types.
-    fn parse_fn_output_type(&mut self, ty: &Type) -> anyhow::Result<Option<FuncOutput>> {
+    fn parse_fn_output_type(&mut self, ty: &Type) -> ParserResult<FunctionPartialInfo> {
         let ty = &self.type_parser.resolve_alias(ty).clone();
 
         Ok(if let Type::Path(type_path) = ty {
-            match self.type_parser.parse_type_path(&type_path) {
-                Ok(IrType::Unencodable(IrTypeUnencodable { segments, .. })) => {
+            match self.type_parser.parse_type_path(&type_path)? {
+                IrType::Unencodable(IrTypeUnencodable { segments, .. }) => {
                     match splay_segments(&segments).last() {
                         Some(("Result", Some(ArgsRefs::Generic(args)))) => {
                             parse_fn_output_type_result(args)
                         }
-                        _ => None, // unencodable types not implemented
+                        _ => TODO, // unencodable types not implemented
                     }
                 }
-                Ok(result) => Some(FuncOutput::Type(result)),
-                Err(..) => None,
+                result => FuncOutput::Type(result),
             }
+            TODO
         } else {
-            let ir_ty = self.type_parser.parse_type(ty)?;
-            Some(FuncOutput::Type(ir_ty))
+            FunctionPartialInfo {
+                ok_output: Some(self.type_parser.parse_type(ty)?),
+                ..Default::default()
+            }
         })
     }
 }
 
-fn parse_fn_output_type_result(args: &[IrType]) -> Option<FuncOutput> {
+fn parse_fn_output_type_result(args: &[IrType]) -> Option<FunctionPartialInfo> {
     let ok = args.first().unwrap();
 
     let is_anyhow = args.len() == 1
