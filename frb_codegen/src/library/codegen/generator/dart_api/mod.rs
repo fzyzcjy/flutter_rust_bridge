@@ -1,3 +1,5 @@
+pub(super) mod class;
+
 use crate::codegen::generator::output::OutputCode;
 use crate::codegen::ir::pack::IrPack;
 use anyhow::Result;
