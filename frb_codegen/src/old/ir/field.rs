@@ -5,11 +5,6 @@ use syn::LitStr;
 use crate::{ir::*, parser::IrDefaultValue, Opts};
 
 impl IrField {
-    #[inline]
-    pub fn is_optional(&self) -> bool {
-        matches!(&self.ty, IrType::Optional(_)) || self.default.is_some()
-    }
-
     fn default_value_to_dart_style(lit: &LitStr) -> String {
         let value = lit.value();
         let mut split = value.split('.');

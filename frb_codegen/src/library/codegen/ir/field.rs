@@ -20,3 +20,10 @@ pub struct IrFieldSettings {
     pub is_in_mirrored_enum: bool,
 }
 }
+
+impl IrField {
+    #[inline]
+    pub fn is_optional(&self) -> bool {
+        matches!(&self.ty, IrType::Optional(_)) || self.default.is_some()
+    }
+}
