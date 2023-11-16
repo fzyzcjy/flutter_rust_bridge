@@ -31,13 +31,13 @@ macro_rules! generate_code {
             }
 
             impl<'a> DartApiGenerator<'a> {
-                pub(crate) fn new(ty: IrType, ir_pack: &'a IrPack) -> Option<Self> {
+                pub(crate) fn new(ty: IrType, ir_pack: &'a IrPack) -> Self {
                     let context = DartApiGeneratorContext { ir_pack };
-                    Some(match ty {
+                    match ty {
                         $(
                             $name(ir) => Self::$name([<$name DartApiGenerator>]::new(ir, context)),
                         )*
-                    })
+                    }
                 }
             }
 
