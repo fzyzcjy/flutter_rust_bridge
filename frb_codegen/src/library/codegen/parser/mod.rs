@@ -72,3 +72,39 @@ fn parse_one_ast(
         has_executor,
     })
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::codegen::config::internal_config::InternalConfig;
+    use crate::codegen::Config;
+    use crate::utils::logs::configure_opinionated_test_logging;
+    use crate::utils::test_utils::set_cwd_test_fixture;
+    use serde_json::Value;
+    use serial_test::serial;
+    use std::fs;
+
+    // TODO more tests
+    // TODO `chrono::Duration` and `Duration` test
+    // TODO `Result`, `anyhow::Result`, `std::result::Result`
+    #[test]
+    #[serial]
+    fn test_simple() -> anyhow::Result<()> {
+        body("codegen_parser/simple")
+    }
+
+    fn body(fixture_name: &str) -> anyhow::Result<()> {
+        configure_opinionated_test_logging();
+        set_cwd_test_fixture(fixture_name)?;
+
+        let config = Config::from_files_auto()?;
+        let internal_config = InternalConfig::parse(config)?;
+
+        todo!();
+
+        let actual: Value = serde_json::from_str(&actual_string)?;
+        let expect: Value = serde_json::from_str(&fs::read_to_string("expect_output.json")?)?;
+        assert_eq!(actual, expect);
+
+        Ok(())
+    }
+}
