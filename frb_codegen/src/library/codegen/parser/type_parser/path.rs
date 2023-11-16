@@ -155,15 +155,6 @@ impl<'a> TypeParser<'a> {
             }
 
             // Generic types
-            #[cfg(feature = "qualified_names")]
-            [("flutter_rust_bridge", None), ("SyncReturn", Some(Generic([element])))] => {
-                Ok(SyncReturn(IrTypeSyncReturn::new(element.clone())))
-            }
-
-            [("SyncReturn", Some(Generic([element])))] => {
-                Ok(SyncReturn(IrTypeSyncReturn::new(element.clone())))
-            }
-
             [("Vec", Some(Generic([Delegate(IrTypeDelegate::String)])))] => {
                 Ok(Delegate(IrTypeDelegate::StringList))
             }
@@ -258,11 +249,6 @@ impl<'a> TypeParser<'a> {
                 type_path.to_token_stream()
             )),
 
-            [("Option", Some(Generic([SyncReturn(_)])))] => Err(anyhow!(
-                "Option<SyncReturn<_>> has no effect. Consider SyncReturn<Option<_>> instead. {}",
-                type_path.to_token_stream()
-            )),
-
             [("Option", Some(Generic([inner])))] => Ok(Optional(match inner {
                 StructRef(..)
                 | EnumRef(..)
@@ -276,7 +262,7 @@ impl<'a> TypeParser<'a> {
                 Delegate(IrTypeDelegate::Time(..)) => IrTypeOptional::new_boxed(inner.clone()),
                 OptionalList(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) | Dynamic(_)
                 | Unencodable(_) | Delegate(_) => IrTypeOptional::new(inner.clone()),
-                Optional(_) | SyncReturn(_) => unreachable!(),
+                Optional(_) => unreachable!(),
             })),
 
             #[cfg(all(feature = "qualified_names"))]
