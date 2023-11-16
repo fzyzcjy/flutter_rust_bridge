@@ -109,7 +109,7 @@ impl<'a> TypeParser<'a> {
 
                 if !self.parsing_or_parsed_struct_names.contains(&ident.0) {
                     self.parsing_or_parsed_struct_names.insert(ident.clone().0);
-                    let api_struct = match self.parse_struct(&ident.0) {
+                    let api_struct = match self.parse_struct(&ident.0)? {
                         Some(ir_struct) => ir_struct,
                         None => return Ok(parse_path_type_to_unencodable(type_path, flat_vector)),
                     };
@@ -145,7 +145,7 @@ impl<'a> TypeParser<'a> {
                     ident,
                     is_exception: false,
                 };
-                let enu = self.enum_pool.get(&ident.0);
+                let enu = self.enum_pool.get(&ident);
                 let is_struct = enu.map(IrEnum::is_struct).unwrap_or(true);
                 if is_struct {
                     Ok(EnumRef(enum_ref))
@@ -171,10 +171,10 @@ impl<'a> TypeParser<'a> {
 
             [("Vec", Some(Generic([Optional(opt)])))] => {
                 if matches!(opt.inner.as_ref(), IrType::Optional(_)) {
-                    Err(format!(
+                    bail!(
                         "Nested optionals without indirection are not allowed. {}",
                         type_path.to_token_stream()
-                    ))?
+                    );
                 }
                 Ok(OptionalList(IrTypeOptionalList {
                     inner: opt.inner.clone(),
