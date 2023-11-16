@@ -14,7 +14,7 @@ pub(crate) trait DartApiGeneratorDeclTrait {
 
 impl DartApiGeneratorDeclTrait for BoxedDartApiGenerator {
     fn dart_api_type(&self) -> String {
-        self.inner.dart_api_type()
+        DartApiGenerator::new(*self.ir.inner.clone(), self.context.ir_pack).dart_api_type()
     }
 }
 
