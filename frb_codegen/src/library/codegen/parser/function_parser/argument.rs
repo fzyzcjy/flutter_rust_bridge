@@ -3,6 +3,7 @@ use crate::codegen::ir::func::IrFuncMode;
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
+use crate::codegen::parser::function_parser::output::FuncOutput;
 use crate::codegen::parser::function_parser::{
     type_to_string, FunctionParser, FunctionPartialInfo, STREAM_SINK_IDENT,
 };
@@ -14,36 +15,30 @@ use syn::*;
 impl<'a, 'b> FunctionParser<'a, 'b> {
     pub(super) fn parse_fn_arg(
         &mut self,
-        i: usize,
+        argument_index: usize,
         sig_input: &FnArg,
     ) -> ParserResult<FunctionPartialInfo> {
-        Ok(if let FnArg::Typed(ref pat_type) = sig_input {
-            let name = parse_name(pat_type)?;
-            self.parse_fn_arg_type(&pat_type.ty)?
-        } else {
-            return Err(super::error::Error::UnexpectedSigInput(
-                quote::quote!(#sig_input).to_string().into(),
-            ));
-        })
-    }
-
-    /// Attempts to parse the type from an argument of a function signature. There is a special
-    /// case for top-level `StreamSink` types.
-    fn parse_fn_arg_type(&mut self, ty: &Type) -> anyhow::Result<FuncArg> {
-        Ok(match ty {
-            Type::Path(TypePath { path, .. }) => {
-                if let Some(ans) = self.parse_fn_arg_type_stream_sink(path)? {
-                    ans
-                } else {
-                    partial_info_for_normal_type(self.type_parser.parse_type(ty)?)
+        if let FnArg::Typed(ref pat_type) = sig_input {
+            // let name = parse_name(pat_type)?;
+            match &pat_type.ty {
+                Type::Path(TypePath { path, .. }) => {
+                    if let Some(ans) = self.parse_fn_arg_type_stream_sink(path)? {
+                        ans
+                    } else {
+                        partial_info_for_normal_type(self.type_parser.parse_type(ty)?)
+                    }
                 }
+                Type::Array(_) => partial_info_for_normal_type(self.type_parser.parse_type(ty)?),
+                _ => bail!(
+                    "Failed to parse function argument type `{}`",
+                    type_to_string(ty)
+                ),
             }
-            Type::Array(_) => partial_info_for_normal_type(self.type_parser.parse_type(ty)?),
-            _ => bail!(
-                "Failed to parse function argument type `{}`",
-                type_to_string(ty)
-            ),
-        })
+        } else {
+            Err(super::super::error::Error::UnexpectedSigInput(
+                quote::quote!(#sig_input).to_string().into(),
+            ))
+        }
     }
 
     fn parse_fn_arg_type_stream_sink(&mut self, path: &Path) -> anyhow::Result<Option<FuncArg>> {
