@@ -5,8 +5,10 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::StructRef;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::type_parser::misc::parse_comments;
-use crate::codegen::parser::type_parser::unencodable::parse_path_type_to_unencodable;
 use crate::codegen::parser::type_parser::unencodable::ArgsRefs;
+use crate::codegen::parser::type_parser::unencodable::{
+    parse_path_type_to_unencodable, SplayedSegment,
+};
 use crate::codegen::parser::type_parser::TypeParser;
 use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, Ident, TypePath};
 
@@ -14,7 +16,7 @@ impl<'a> TypeParser<'a> {
     pub(crate) fn parse_type_path_data_struct(
         &mut self,
         type_path: &TypePath,
-        splayed_segments: &[(&str, Option<ArgsRefs>)],
+        splayed_segments: &[SplayedSegment],
     ) -> anyhow::Result<Option<IrType>> {
         Ok(Some(match splayed_segments {
             [(name, None)] if self.src_structs.contains_key(&name.to_string()) => {
@@ -27,7 +29,7 @@ impl<'a> TypeParser<'a> {
                         None => {
                             return Ok(Some(parse_path_type_to_unencodable(
                                 type_path,
-                                splayed_segments.to_owned(),
+                                splayed_segments,
                             )))
                         }
                     };

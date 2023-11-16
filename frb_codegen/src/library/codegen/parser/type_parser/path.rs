@@ -16,8 +16,10 @@ use crate::codegen::ir::ty::IrType::{
     Boxed, DartOpaque, Delegate, Dynamic, EnumRef, GeneralList, Optional, OptionalList, Primitive,
     PrimitiveList, Record, RustOpaque, StructRef, Unencodable,
 };
-use crate::codegen::parser::type_parser::unencodable::parse_path_type_to_unencodable;
-use crate::codegen::parser::type_parser::unencodable::{ArgsRefs, Splayable};
+use crate::codegen::parser::type_parser::unencodable::ArgsRefs;
+use crate::codegen::parser::type_parser::unencodable::{
+    parse_path_type_to_unencodable, splay_segments,
+};
 use crate::codegen::parser::type_parser::TypeParser;
 use anyhow::{anyhow, bail};
 use quote::ToTokens;
@@ -46,27 +48,27 @@ impl<'a> TypeParser<'a> {
         use ArgsRefs::*;
 
         let segments = self.extract_path_data(path)?;
-        let splayed_segments: &[(&str, Option<ArgsRefs>)] = &segments.splay()[..];
+        let splayed_segments = splay_segments(&segments);
 
-        if let Some(ans) = self.parse_type_path_data_primitive(splayed_segments)? {
+        if let Some(ans) = self.parse_type_path_data_primitive(&splayed_segments)? {
             return Ok(ans);
         }
-        if let Some(ans) = self.parse_type_path_data_struct(type_path, splayed_segments)? {
+        if let Some(ans) = self.parse_type_path_data_struct(type_path, &splayed_segments)? {
             return Ok(ans);
         }
-        if let Some(ans) = self.parse_type_path_data_enum(splayed_segments)? {
+        if let Some(ans) = self.parse_type_path_data_enum(&splayed_segments)? {
             return Ok(ans);
         }
-        if let Some(ans) = self.parse_type_path_data_concrete(splayed_segments)? {
+        if let Some(ans) = self.parse_type_path_data_concrete(&splayed_segments)? {
             return Ok(ans);
         }
-        if let Some(ans) = self.parse_type_path_data_vec(type_path, splayed_segments)? {
+        if let Some(ans) = self.parse_type_path_data_vec(type_path, &splayed_segments)? {
             return Ok(ans);
         }
-        if let Some(ans) = self.parse_type_path_data_optional(type_path, splayed_segments)? {
+        if let Some(ans) = self.parse_type_path_data_optional(type_path, &splayed_segments)? {
             return Ok(ans);
         }
 
-        Ok(parse_path_type_to_unencodable(type_path, segments.splay()))
+        Ok(parse_path_type_to_unencodable(type_path, &splayed_segments))
     }
 }

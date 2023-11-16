@@ -8,7 +8,7 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::type_parser::misc::parse_comments;
-use crate::codegen::parser::type_parser::unencodable::{ArgsRefs, Splayable};
+use crate::codegen::parser::type_parser::unencodable::{splay_segments, ArgsRefs};
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::parser::ParserResult;
 use anyhow::Context;
@@ -171,7 +171,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         Ok(if let Type::Path(type_path) = ty {
             match self.type_parser.parse_type_path(&type_path) {
                 Ok(IrType::Unencodable(IrTypeUnencodable { segments, .. })) => {
-                    match segments.splay()[..] {
+                    match &splay_segments(&segments)[..] {
                         [("anyhow", None), ("Result", Some(ArgsRefs::Generic([args])))] => {
                             Some(FuncOutput::ResultType {
                                 ok: args.clone(),

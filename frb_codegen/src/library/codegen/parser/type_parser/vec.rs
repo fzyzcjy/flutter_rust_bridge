@@ -7,8 +7,8 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{
     Delegate, GeneralList, Optional, OptionalList, Primitive, PrimitiveList,
 };
-use crate::codegen::parser::type_parser::unencodable::ArgsRefs;
 use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
+use crate::codegen::parser::type_parser::unencodable::{ArgsRefs, SplayedSegment};
 use crate::codegen::parser::type_parser::TypeParser;
 use anyhow::bail;
 use quote::ToTokens;
@@ -18,7 +18,7 @@ impl<'a> TypeParser<'a> {
     pub(crate) fn parse_type_path_data_vec(
         &mut self,
         type_path: &TypePath,
-        splayed_segments: &[(&str, Option<ArgsRefs>)],
+        splayed_segments: &[SplayedSegment],
     ) -> anyhow::Result<Option<IrType>> {
         Ok(Some(match splayed_segments {
             [("Vec", Some(Generic([Delegate(IrTypeDelegate::String)])))] => {

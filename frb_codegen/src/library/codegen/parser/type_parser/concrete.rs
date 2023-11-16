@@ -11,14 +11,14 @@ use crate::codegen::ir::ty::IrType::{
     Boxed, DartOpaque, Delegate, Dynamic, Primitive, PrimitiveList, RustOpaque, Unencodable,
 };
 use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
-use crate::codegen::parser::type_parser::unencodable::{ArgsRefs, Splayable};
+use crate::codegen::parser::type_parser::unencodable::{splay_segments, ArgsRefs, SplayedSegment};
 use crate::codegen::parser::type_parser::TypeParser;
 use anyhow::bail;
 
 impl<'a> TypeParser<'a> {
     pub(crate) fn parse_type_path_data_concrete(
         &mut self,
-        splayed_segments: &[(&str, Option<ArgsRefs>)],
+        splayed_segments: &[SplayedSegment],
     ) -> anyhow::Result<Option<IrType>> {
         Ok(Some(match splayed_segments {
             [("chrono", None), ("Duration", None)] => {
@@ -70,7 +70,7 @@ impl<'a> TypeParser<'a> {
 
 fn parse_datetime(args: &[IrType]) -> anyhow::Result<IrType> {
     if let [Unencodable(IrTypeUnencodable { segments, .. })] = args {
-        return Ok(match segments.splay()[..] {
+        return Ok(match &splay_segments(segments)[..] {
             [("DateTime", None), ("Utc", None)] => {
                 Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Utc))
             }

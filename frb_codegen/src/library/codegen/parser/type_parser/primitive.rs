@@ -1,13 +1,13 @@
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Primitive;
-use crate::codegen::parser::type_parser::unencodable::ArgsRefs;
+use crate::codegen::parser::type_parser::unencodable::{ArgsRefs, SplayedSegment};
 use crate::codegen::parser::type_parser::TypeParser;
 
 impl<'a> TypeParser<'a> {
     pub(crate) fn parse_type_path_data_primitive(
         &mut self,
-        splayed_segments: &[(&str, Option<ArgsRefs>)],
+        splayed_segments: &[SplayedSegment],
     ) -> anyhow::Result<Option<IrType>> {
         Ok(Some(match splayed_segments {
             // TODO: change to "if let guard" https://github.com/rust-lang/rust/issues/51114

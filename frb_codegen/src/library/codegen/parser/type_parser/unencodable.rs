@@ -10,34 +10,31 @@ pub(crate) enum ArgsRefs<'a> {
     Signature(&'a [IrType]),
 }
 
-pub(crate) trait Splayable {
-    fn splay(&self) -> Vec<(&str, Option<ArgsRefs>)>;
-}
+pub(crate) type SplayedSegment<'a> = (&'a str, Option<ArgsRefs<'a>>);
 
-impl Splayable for Vec<NameComponent> {
-    /// Spread and turn out the data of a fully qualified name for structural pattern matching.
-    fn splay(&self) -> Vec<(&str, Option<ArgsRefs>)> {
-        self.iter()
-            .map(|NameComponent { ident, args }| {
-                (
-                    &ident[..],
-                    args.as_ref().map(|args| match &args {
-                        Args::Generic(types) => ArgsRefs::Generic(&types[..]),
-                        Args::Signature(types) => ArgsRefs::Signature(&types[..]),
-                    }),
-                )
-            })
-            .collect()
-    }
+/// Spread and turn out the data of a fully qualified name for structural pattern matching.
+pub(crate) fn splay_segments(segments: &[NameComponent]) -> Vec<SplayedSegment> {
+    segments
+        .iter()
+        .map(|NameComponent { ident, args }| {
+            (
+                &ident[..],
+                args.as_ref().map(|args| match &args {
+                    Args::Generic(types) => ArgsRefs::Generic(&types[..]),
+                    Args::Signature(types) => ArgsRefs::Signature(&types[..]),
+                }),
+            )
+        })
+        .collect()
 }
 
 pub(crate) fn parse_path_type_to_unencodable(
     type_path: &TypePath,
-    flat_vector: Vec<(&str, Option<ArgsRefs>)>,
+    splayed_segments: &[SplayedSegment],
 ) -> IrType {
     Unencodable(IrTypeUnencodable {
         string: type_path.to_token_stream().to_string(),
-        segments: flat_vector
+        segments: splayed_segments
             .iter()
             .map(|(ident, option_args_refs)| NameComponent {
                 ident: ident.to_string(),

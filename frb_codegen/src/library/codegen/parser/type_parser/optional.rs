@@ -5,8 +5,8 @@ use crate::codegen::ir::ty::IrType::{
     Boxed, DartOpaque, Delegate, Dynamic, EnumRef, GeneralList, Optional, OptionalList, Primitive,
     PrimitiveList, Record, RustOpaque, StructRef, Unencodable,
 };
-use crate::codegen::parser::type_parser::unencodable::ArgsRefs;
 use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
+use crate::codegen::parser::type_parser::unencodable::{ArgsRefs, SplayedSegment};
 use crate::codegen::parser::type_parser::TypeParser;
 use anyhow::bail;
 use quote::ToTokens;
@@ -16,7 +16,7 @@ impl<'a> TypeParser<'a> {
     pub(crate) fn parse_type_path_data_optional(
         &mut self,
         type_path: &TypePath,
-        splayed_segments: &[(&str, Option<ArgsRefs>)],
+        splayed_segments: &[SplayedSegment],
     ) -> anyhow::Result<Option<IrType>> {
         Ok(Some(match splayed_segments {
             [("Option", Some(Generic([Optional(_)])))] => bail!(
