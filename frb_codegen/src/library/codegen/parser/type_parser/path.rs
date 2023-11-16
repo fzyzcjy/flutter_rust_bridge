@@ -10,15 +10,15 @@ use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
 use crate::codegen::ir::ty::structure::{IrStruct, IrTypeStructRef};
 use crate::codegen::ir::ty::unencodable::Args::Generic;
-use crate::codegen::ir::ty::unencodable::NameComponent;
+use crate::codegen::ir::ty::unencodable::{Args, IrTypeUnencodable, NameComponent};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{
     Boxed, DartOpaque, Delegate, Dynamic, EnumRef, GeneralList, Optional, OptionalList, Primitive,
     PrimitiveList, Record, RustOpaque, StructRef, Unencodable,
 };
 use crate::codegen::parser::type_parser::TypeParser;
-use crate::codegen::parser::unencodable::Splayable;
-use anyhow::anyhow;
+use crate::codegen::parser::unencodable::{ArgsRefs, Splayable};
+use anyhow::{anyhow, bail};
 use quote::ToTokens;
 use syn::{Path, QSelf, TypePath};
 
@@ -101,7 +101,7 @@ impl<'a> TypeParser<'a> {
                         .insert(ident_string.to_owned());
                     let api_struct = match self.parse_struct(&ident_string) {
                         Some(ir_struct) => ir_struct,
-                        None => return Ok(path_type_to_unencodable(type_path, flat_vector)),
+                        None => return Ok(parse_path_type_to_unencodable(type_path, flat_vector)),
                     };
                     self.struct_pool.insert(ident_string.to_owned(), api_struct);
                 }
@@ -272,11 +272,62 @@ impl<'a> TypeParser<'a> {
             })),
 
             #[cfg(all(feature = "qualified_names"))]
-            [("chrono", None), ("DateTime", Some(Generic(args)))] => datetime_to_ir_type(args),
+            [("chrono", None), ("DateTime", Some(Generic(args)))] => parse_datetime(args),
 
-            [("DateTime", Some(Generic(args)))] => datetime_to_ir_type(args),
+            [("DateTime", Some(Generic(args)))] => parse_datetime(args),
 
-            _ => Ok(path_type_to_unencodable(type_path, flat_vector)),
+            _ => Ok(parse_path_type_to_unencodable(type_path, flat_vector)),
         }
     }
+}
+
+fn parse_datetime(args: &[IrType]) -> anyhow::Result<IrType> {
+    if let [Unencodable(IrTypeUnencodable { segments, .. })] = args {
+        let mut segments = segments.clone();
+        let segments: Vec<NameComponent> = if cfg!(feature = "qualified_names") {
+            segments
+        } else {
+            // Emulate old behavior by discarding any name qualifiers
+            vec![segments.pop().unwrap()]
+        };
+
+        let splayed = segments.splay();
+        return match splayed[..] {
+            #[cfg(feature = "qualified_names")]
+            [("DateTime", None), ("Utc", None)] => {
+                Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Utc)))
+            }
+
+            [("Utc", None)] => Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Utc))),
+
+            #[cfg(feature = "qualified_names")]
+            [("DateTime", None), ("Local", None)] => {
+                Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Local)))
+            }
+
+            [("Local", None)] => Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Local))),
+
+            _ => bail!("Invalid DateTime generic"),
+        };
+    }
+    bail!("Invalid DateTime generic")
+}
+
+fn parse_path_type_to_unencodable(
+    type_path: &TypePath,
+    flat_vector: Vec<(&str, Option<ArgsRefs>)>,
+) -> IrType {
+    Unencodable(IrTypeUnencodable {
+        string: type_path.to_token_stream().to_string(),
+        segments: flat_vector
+            .iter()
+            .map(|(ident, option_args_refs)| NameComponent {
+                ident: ident.to_string(),
+                args: option_args_refs.as_ref().map(|args_refs| match args_refs {
+                    ArgsRefs::Generic(args_array) => Args::Generic(args_array.to_vec()),
+                    ArgsRefs::Signature(args_array) => Args::Signature(args_array.to_vec()),
+                }),
+            })
+            .collect(),
+    })
 }

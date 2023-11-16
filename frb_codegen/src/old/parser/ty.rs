@@ -11,57 +11,6 @@ use syn::*;
 
 use super::IrDefaultValue;
 
-fn datetime_to_ir_type(args: &[IrType]) -> std::result::Result<IrType, String> {
-    if let [Unencodable(IrTypeUnencodable { segments, .. })] = args {
-        let mut segments = segments.clone();
-        let segments: Vec<NameComponent> = if cfg!(feature = "qualified_names") {
-            segments
-        } else {
-            // Emulate old behavior by discarding any name qualifiers
-            vec![segments.pop().unwrap()]
-        };
-
-        let splayed = segments.splay();
-        return match splayed[..] {
-            #[cfg(feature = "qualified_names")]
-            [("DateTime", None), ("Utc", None)] => {
-                Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Utc)))
-            }
-
-            [("Utc", None)] => Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Utc))),
-
-            #[cfg(feature = "qualified_names")]
-            [("DateTime", None), ("Local", None)] => {
-                Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Local)))
-            }
-
-            [("Local", None)] => Ok(Delegate(IrTypeDelegate::Time(IrTypeTime::Local))),
-
-            _ => Err("Invalid DateTime generic".to_string()),
-        };
-    }
-    Err("Invalid DateTime generic".to_string())
-}
-
-fn path_type_to_unencodable(
-    type_path: &TypePath,
-    flat_vector: Vec<(&str, Option<ArgsRefs>)>,
-) -> IrType {
-    Unencodable(IrTypeUnencodable {
-        string: type_path.to_token_stream().to_string(),
-        segments: flat_vector
-            .iter()
-            .map(|(ident, option_args_refs)| NameComponent {
-                ident: ident.to_string(),
-                args: option_args_refs.as_ref().map(|args_refs| match args_refs {
-                    ArgsRefs::Generic(args_array) => Args::Generic(args_array.to_vec()),
-                    ArgsRefs::Signature(args_array) => Args::Signature(args_array.to_vec()),
-                }),
-            })
-            .collect(),
-    })
-}
-
 impl<'a> TypeParser<'a> {
     fn angle_bracketed_generic_arguments_to_ir_types(
         &mut self,
