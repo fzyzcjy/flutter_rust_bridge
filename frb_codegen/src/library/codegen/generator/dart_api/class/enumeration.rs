@@ -16,7 +16,7 @@ impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {
         let src = self.ir.get(self.context.ir_pack);
 
         let comments = generate_dart_comments(&src.comments);
-        if src.is_struct() {
+        if src.is_struct {
             let variants = src
                 .variants()
                 .iter()
