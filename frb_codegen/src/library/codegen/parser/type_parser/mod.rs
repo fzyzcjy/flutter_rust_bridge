@@ -1,3 +1,4 @@
+pub(crate) mod alias;
 pub(crate) mod array;
 pub(crate) mod concrete;
 pub(crate) mod enumeration;
@@ -48,13 +49,5 @@ impl<'a> TypeParser<'a> {
 
     pub(crate) fn consume(self) -> (IrStructPool, IrEnumPool) {
         (self.struct_pool, self.enum_pool)
-    }
-
-    pub(crate) fn resolve_alias<'b: 'a>(&self, ty: &'b Type) -> &Type {
-        self.get_alias_type(ty).unwrap_or(ty)
-    }
-
-    pub(crate) fn get_alias_type(&self, ty: &Type) -> Option<&Type> {
-        convert_ident_str(ty).and_then(|key| self.src_types.get(&key))
     }
 }
