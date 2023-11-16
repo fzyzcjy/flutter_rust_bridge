@@ -1,6 +1,7 @@
-use crate::codegen::generator::dart_api::class::DartApiClassGenerator::*;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::ty::IrType::*;
+use delegate::DelegateDartApiClassGenerator;
 use enum_dispatch::enum_dispatch;
 
 pub(super) mod delegate;
@@ -20,8 +21,10 @@ pub enum DartApiClassGenerator<'a> {
 impl<'a> GeneratorDartApiClass<'a> {
     pub fn new(ty: IrType, ir_pack: &'a IrPack) -> Self {
         Some(match ty {
-            Delegate(ir) => TODO.into(),
-            TODO => TODO,
+            Delegate(ir) => DelegateDartApiClassGenerator::new(ir).into(),
+            EnumRef(ir) => EnumRefDartApiClassGenerator::new(ir).into(),
+            RustOpaque(ir) => RustOpaqueDartApiClassGenerator::new(ir).into(),
+            StructRef(ir) => StructRefDartApiClassGenerator::new(ir).into(),
             _ => return None,
         })
     }
@@ -29,5 +32,22 @@ impl<'a> GeneratorDartApiClass<'a> {
 
 #[enum_dispatch]
 pub trait DartApiClassGeneratorTrait {
-    fn generate(&self);
+    fn generate(&self) -> String;
+}
+
+#[doc(hidden)]
+#[macro_export]
+macro_rules! dart_api_class_generator_struct {
+    ($cls:ident, $ir_cls:ty) => {
+        #[derive(Debug, Clone)]
+        pub(super) struct $cls<'a> {
+            ir: $ir_cls,
+        }
+
+        impl<'a> for $cls<'a> {
+            pub(super) fn new(ir: $ir_cls) -> Self {
+                Self { ir }
+            }
+        }
+    };
 }
