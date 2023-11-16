@@ -1,9 +1,15 @@
+use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::dart_opaque::IrTypeDartOpaque;
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegateTime};
 use crate::codegen::ir::ty::dynamic::IrTypeDynamic;
+use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
+use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
-use crate::codegen::ir::ty::IrType::{DartOpaque, Delegate, Dynamic, Unencodable};
+use crate::codegen::ir::ty::IrType::{
+    Boxed, DartOpaque, Delegate, Dynamic, Primitive, PrimitiveList, RustOpaque, Unencodable,
+};
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::parser::unencodable::ArgsRefs::Generic;
 use crate::codegen::parser::unencodable::{ArgsRefs, Splayable};
@@ -32,6 +38,32 @@ impl<'a> TypeParser<'a> {
             [("flutter_rust_bridge", None), ("DartOpaque", None)] => {
                 DartOpaque(IrTypeDartOpaque {})
             }
+
+            [("flutter_rust_bridge", None), ("RustOpaque", Some(Generic([Delegate(IrTypeDelegate::Array(array_delegate))])))] => {
+                Ok(Delegate(IrTypeDelegate::Array(array_delegate.clone())))
+            }
+
+            [("flutter_rust_bridge", None), ("RustOpaque", Some(Generic([Primitive(IrTypePrimitive::Unit)])))] => {
+                Ok(RustOpaque(IrTypeRustOpaque::new(Primitive(
+                    IrTypePrimitive::Unit,
+                ))))
+            }
+
+            [("flutter_rust_bridge", None), ("RustOpaque", Some(Generic([ty])))] => {
+                Ok(RustOpaque(IrTypeRustOpaque::new(ty.clone())))
+            }
+
+            [("flutter_rust_bridge", None), (
+                "ZeroCopyBuffer",
+                Some(Generic([PrimitiveList(IrTypePrimitiveList { primitive })])),
+            )] => Ok(Delegate(IrTypeDelegate::ZeroCopyBufferVecPrimitive(
+                primitive.clone(),
+            ))),
+
+            [("Box", Some(Generic([inner])))] => Ok(Boxed(IrTypeBoxed {
+                exist_in_real_api: true,
+                inner: Box::new(inner.clone()),
+            })),
 
             _ => return Ok(None),
         }))
