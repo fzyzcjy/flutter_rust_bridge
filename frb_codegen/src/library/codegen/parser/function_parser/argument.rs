@@ -25,13 +25,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         sig_input: &FnArg,
     ) -> ParserResult<FunctionPartialInfo> {
         Ok(if let FnArg::Typed(ref pat_type) = sig_input {
-            let name = if let Pat::Ident(ref pat_ident) = *pat_type.pat {
-                format!("{}", pat_ident.ident)
-            } else {
-                return Err(super::error::Error::UnexpectedPattern(
-                    quote::quote!(#pat_type).to_string().into(),
-                ));
-            };
+            let name = parse_name(pat_type)?;
+
             let arg_type = self.parse_fn_arg_type(&pat_type.ty)?.with_context(|| {
                 format!(
                     "Failed to parse function argument type `{}`",
@@ -104,5 +99,15 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         } else {
             None
         })
+    }
+}
+
+fn parse_name(pat_type: &PatType) -> ParserResult<String> {
+    if let Pat::Ident(ref pat_ident) = *pat_type.pat {
+        Ok(format!("{}", pat_ident.ident))
+    } else {
+        Err(super::error::Error::UnexpectedPattern(
+            quote::quote!(#pat_type).to_string().into(),
+        ))
     }
 }
