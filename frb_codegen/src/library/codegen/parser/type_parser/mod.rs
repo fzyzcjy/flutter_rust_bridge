@@ -4,6 +4,7 @@ pub(crate) mod enumeration;
 pub(crate) mod misc;
 pub(crate) mod path;
 pub(crate) mod path_data;
+pub(crate) mod primitive;
 pub(crate) mod structure;
 pub(crate) mod tuple;
 pub(crate) mod ty;
