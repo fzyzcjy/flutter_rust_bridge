@@ -172,20 +172,14 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         Ok(if let Type::Path(type_path) = ty {
             match self.type_parser.parse_type_path(&type_path) {
                 Ok(IrType::Unencodable(IrTypeUnencodable { segments, .. })) => {
-                    match if cfg!(feature = "qualified_names") {
-                        segments.splay()
-                    } else {
-                        // Emulate old behavior by discarding any name qualifiers
-                        vec![segments.splay().pop().unwrap()]
-                    }[..]
-                    {
-                        #[cfg(feature = "qualified_names")]
+                    match segments.splay()[..] {
                         [("anyhow", None), ("Result", Some(ArgsRefs::Generic([args])))] => {
                             Some(FuncOutput::ResultType {
                                 ok: args.clone(),
                                 error: None,
                             })
                         }
+                        // TODO deal with std::result::Result and anyhow::Result
                         [("Result", Some(ArgsRefs::Generic(args)))] => {
                             let ok = args.first().unwrap();
 
