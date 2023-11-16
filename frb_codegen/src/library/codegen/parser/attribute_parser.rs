@@ -234,7 +234,7 @@ impl FrbAttributeDefaultValue {
             Self::Float(lit) => lit.base10_digits().into(),
             Self::Vec(lit) => format!(
                 "const [{}]",
-                lit.iter().map(Self::to_dart).collect::<Vec<_>>().join(",")
+                lit.iter().map(Self::to_dart).collect_vec().join(",")
             )
             .into(),
         }
@@ -273,5 +273,5 @@ fn serialize_punctuated<S: Serializer>(
     lit: &Punctuated<FrbAttributeDefaultValue, Token![,]>,
     s: S,
 ) -> std::result::Result<S::Ok, S::Error> {
-    lit.into_iter().collect::<Vec<_>>().serialize(s)
+    lit.into_iter().collect_vec().serialize(s)
 }

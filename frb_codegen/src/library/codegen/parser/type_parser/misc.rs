@@ -1,4 +1,5 @@
 use crate::codegen::ir::comment::IrComment;
+use itertools::Itertools;
 use syn::*;
 
 pub(crate) fn convert_ident_str(ty: &Type) -> Option<String> {
@@ -36,7 +37,7 @@ fn parse_comment(input: &str) -> IrComment {
         let formatted = input
             .split('\n')
             .map(|line| format!("///{line}"))
-            .collect::<Vec<_>>()
+            .collect_vec()
             .join("\n");
         formatted
     } else {

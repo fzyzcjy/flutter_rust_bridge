@@ -8,6 +8,7 @@ use crate::codegen::ir::ty::IrType::Primitive;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use anyhow::Result;
+use itertools::Itertools;
 use syn::TypeTuple;
 
 impl<'a> TypeParser<'a> {
@@ -24,7 +25,7 @@ impl<'a> TypeParser<'a> {
         let safe_ident = values
             .iter()
             .map(IrType::safe_ident)
-            .collect::<Vec<_>>()
+            .collect_vec()
             .join("_");
         let safe_ident = format!("__record__{safe_ident}");
         self.struct_pool.insert(
