@@ -95,7 +95,7 @@ impl<'a> DartApiClassGeneratorTrait for EnumRefDartApiClassGenerator<'a> {
             } else {
                 ""
             };
-            format!(
+            Some(format!(
                 "@freezed
                 {sealed} class {0} with _${0} {1} {{
                     {2}
@@ -103,7 +103,7 @@ impl<'a> DartApiClassGeneratorTrait for EnumRefDartApiClassGenerator<'a> {
                 self.ir.name,
                 dart_maybe_implements_exception(self.ir.is_exception),
                 variants.join("\n")
-            )
+            ))
         } else {
             let variants = src
                 .variants()
@@ -119,12 +119,12 @@ impl<'a> DartApiClassGeneratorTrait for EnumRefDartApiClassGenerator<'a> {
                 })
                 .collect::<Vec<_>>()
                 .join("\n");
-            format!(
+            Some(format!(
                 "{}enum {} {{
                     {}
                 }}",
                 comments, self.ir.name, variants
-            )
+            ))
         }
     }
 }

@@ -60,7 +60,7 @@ impl<'a> DartApiClassGeneratorTrait for StructRefDartApiClassGenerator<'a> {
         } else {
             "".to_owned()
         };
-        if src.using_freezed() {
+        Some(if src.using_freezed() {
             let mut constructor_params = src
                 .fields
                 .iter()
@@ -161,6 +161,6 @@ impl<'a> DartApiClassGeneratorTrait for StructRefDartApiClassGenerator<'a> {
                 const = const_capable,
                 implements_exception = dart_maybe_implements_exception(self.ir.is_exception),
             )
-        }
+        })
     }
 }

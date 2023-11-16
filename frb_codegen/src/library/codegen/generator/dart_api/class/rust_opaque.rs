@@ -10,7 +10,7 @@ impl<'a> DartApiClassGeneratorTrait for RustOpaqueDartApiClassGenerator<'a> {
         } else {
             (String::new(), "")
         };
-        format!(
+        Some(format!(
             "@sealed class {0} extends FrbOpaque {{
                 {field}
                 {0}.fromRaw(int ptr, int size, {param}) : super.unsafe(ptr, size);
@@ -24,6 +24,6 @@ impl<'a> DartApiClassGeneratorTrait for RustOpaqueDartApiClassGenerator<'a> {
                 OpaqueTypeFinalizer get staticFinalizer => {bridge}.{0}Finalizer;
             }}",
             self.ir.dart_api_type()
-        )
+        ))
     }
 }

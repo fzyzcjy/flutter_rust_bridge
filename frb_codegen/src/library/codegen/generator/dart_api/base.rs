@@ -43,8 +43,8 @@ macro_rules! generate_code {
             $(
                 #[derive(Debug, Clone)]
                 pub(crate) struct [<$name DartApiGenerator>]<'a> {
-                    ir: [<IrType $name>],
-                    context: DartApiGeneratorContext<'a>,
+                    pub(crate) ir: [<IrType $name>],
+                    pub(crate) context: DartApiGeneratorContext<'a>,
                 }
 
                 impl<'a> [<$name DartApiGenerator>]<'a> {

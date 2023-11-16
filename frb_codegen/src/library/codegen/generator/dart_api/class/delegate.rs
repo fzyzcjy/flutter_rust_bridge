@@ -1,12 +1,12 @@
-use crate::codegen::generator::dart_api::class::enumeration::EnumRefDartApiClassGenerator;
+use crate::codegen::generator::dart_api::base::*;
 use crate::codegen::generator::dart_api::class::DartApiClassGeneratorTrait;
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
 
-impl<'a> DartApiClassGeneratorTrait for DelegateDartApiClassGenerator<'a> {
+impl<'a> DartApiClassGeneratorTrait for DelegateDartApiGenerator<'a> {
     fn generate_class(&self) -> Option<String> {
-        match &self.ir {
+        Some(match &self.ir {
             IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) => {
-                EnumRefDartApiClassGenerator::new(ir.clone(), self.ir_pack).generate_class()
+                EnumRefDartApiGenerator::new(ir.clone(), self.context.ir_pack).generate_class()
             }
             IrTypeDelegate::Array(array) => {
                 format!(
@@ -29,6 +29,6 @@ impl<'a> DartApiClassGeneratorTrait for DelegateDartApiClassGenerator<'a> {
                 )
             }
             _ => "".into(),
-        }
+        })
     }
 }
