@@ -8,6 +8,7 @@ use crate::codegen::parser::function_parser::{
 };
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use anyhow::{anyhow, bail};
+use syn::visit::visit_angle_bracketed_generic_arguments;
 use syn::*;
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
@@ -20,17 +21,14 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             let ty = pat_type.ty.as_ref();
             match &ty {
                 Type::Path(TypePath { path, .. }) => {
-                    if let Some(ans) = self.parse_fn_arg_type_stream_sink(path, pat_type)? {
+                    if let Some(ans) = self.parse_fn_arg_type_stream_sink(path, argument_index)? {
                         Ok(ans)
                     } else {
-                        partial_info_for_normal_type(
-                            self.type_parser.parse_type(ty)?,
-                            argument_index,
-                        )
+                        partial_info_for_normal_type(self.type_parser.parse_type(ty)?, pat_type)
                     }
                 }
                 Type::Array(_) => {
-                    partial_info_for_normal_type(self.type_parser.parse_type(ty)?, argument_index)
+                    partial_info_for_normal_type(self.type_parser.parse_type(ty)?, pat_type)
                 }
                 _ => bail!(
                     "Failed to parse function argument type `{}`",
@@ -48,7 +46,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     fn parse_fn_arg_type_stream_sink(
         &mut self,
         path: &Path,
-        pat_type: &PatType,
+        argument_index: usize,
     ) -> anyhow::Result<Option<FunctionPartialInfo>> {
         let last_segment = path.segments.last().unwrap();
         Ok(if last_segment.ident == STREAM_SINK_IDENT {
@@ -60,7 +58,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     match args.last().unwrap() {
                         GenericArgument::Type(t) => Some(partial_info_for_stream_sink_type(
                             self.type_parser.parse_type(t)?,
-                            pat_type,
+                            argument_index,
                         )?),
                         _ => None,
                     }
@@ -75,17 +73,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
 fn partial_info_for_normal_type(
     ty: IrType,
-    argument_index: usize,
-) -> anyhow::Result<FunctionPartialInfo> {
-    Ok(FunctionPartialInfo {
-        ok_output: Some(ty),
-        mode: Some(IrFuncMode::Stream { argument_index }),
-        ..Default::default()
-    })
-}
-
-fn partial_info_for_stream_sink_type(
-    ty: IrType,
     pat_type: &PatType,
 ) -> anyhow::Result<FunctionPartialInfo> {
     let name = parse_name(pat_type)?;
@@ -99,6 +86,17 @@ fn partial_info_for_stream_sink_type(
             default: attributes.default_value(),
             settings: IrFieldSettings::default(),
         }],
+        ..Default::default()
+    })
+}
+
+fn partial_info_for_stream_sink_type(
+    ty: IrType,
+    argument_index: usize,
+) -> anyhow::Result<FunctionPartialInfo> {
+    Ok(FunctionPartialInfo {
+        ok_output: Some(ty),
+        mode: Some(IrFuncMode::Stream { argument_index }),
         ..Default::default()
     })
 }
