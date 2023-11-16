@@ -98,10 +98,9 @@ mod tests {
 
         let actual = parse(&ParserInternalConfig {
             rust_input_path_pack: RustInputPathPack {
-                rust_input_path: [(Namespace::new("todo".to_string()), PathBuf::from("todo"))]
-                    .into(),
+                rust_input_path: [("todo".to_owned().into(), "todo".into())].into(),
             },
-            rust_crate_dir: PathBuf::from("todo"),
+            rust_crate_dir: "todo".into(),
         })?;
 
         json_golden_test(&serde_json::to_value(actual)?, "expect_output.json")?;

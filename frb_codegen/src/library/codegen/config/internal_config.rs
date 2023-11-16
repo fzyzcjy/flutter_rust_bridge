@@ -66,8 +66,8 @@ pub struct Namespace {
     pub name: String,
 }
 
-impl Namespace {
-    pub fn new(name: String) -> Self {
+impl From<String> for Namespace {
+    fn from(name: String) -> Self {
         Self { name }
     }
 }
