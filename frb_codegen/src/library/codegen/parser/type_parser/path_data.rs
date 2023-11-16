@@ -29,7 +29,7 @@ impl<'a> TypeParser<'a> {
         Ok(match &segment.arguments {
             PathArguments::None => NameComponent { ident, args: None },
             PathArguments::AngleBracketed(args) => {
-                match self.angle_bracketed_generic_arguments_to_ir_types(args) {
+                match self.parse_angle_bracketed_generic_arguments(args) {
                     Err(sub_err) => bail!(
                         "\"{}\" of \"{}\" is not valid. {}",
                         ident,
@@ -45,13 +45,13 @@ impl<'a> TypeParser<'a> {
             PathArguments::Parenthesized(args) => NameComponent {
                 ident,
                 args: Some(Args::Signature(
-                    self.parenthesized_generic_arguments_to_ir_types(args)?,
+                    self.parse_parenthesized_generic_arguments(args)?,
                 )),
             },
         })
     }
 
-    fn angle_bracketed_generic_arguments_to_ir_types(
+    fn parse_angle_bracketed_generic_arguments(
         &mut self,
         args: &AngleBracketedGenericArguments,
     ) -> anyhow::Result<Vec<IrType>> {
@@ -67,7 +67,7 @@ impl<'a> TypeParser<'a> {
             .collect()
     }
 
-    fn parenthesized_generic_arguments_to_ir_types(
+    fn parse_parenthesized_generic_arguments(
         &mut self,
         args: &ParenthesizedGenericArguments,
     ) -> anyhow::Result<Vec<IrType>> {
