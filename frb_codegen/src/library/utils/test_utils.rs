@@ -1,17 +1,14 @@
 use log::debug;
 use serde_json::Value;
-#[cfg(test)]
 use std::path::PathBuf;
 use std::{env, fs};
 
-#[cfg(test)]
 pub(crate) fn get_test_fixture_dir(fixture_name: &str) -> PathBuf {
     PathBuf::from(env!("CARGO_MANIFEST_DIR"))
         .join("test_fixtures")
         .join(fixture_name)
 }
 
-#[cfg(test)]
 pub(crate) fn set_cwd_test_fixture(fixture_name: &str) -> anyhow::Result<()> {
     let d = get_test_fixture_dir(fixture_name);
     debug!("set_cwd_test_fixture: {d:?}");
@@ -21,7 +18,6 @@ pub(crate) fn set_cwd_test_fixture(fixture_name: &str) -> anyhow::Result<()> {
 /// "golden" means comparison tests
 /// see, for example, https://api.flutter.dev/flutter/flutter_test/matchesGoldenFile.html
 /// for more information
-#[cfg(test)]
 pub(crate) fn json_golden_test(actual: &Value, matcher_path: &str) -> anyhow::Result<()> {
     let actual_str = serde_json::to_string_pretty(actual)?;
     debug!("json_golden_test actual:\n{actual_str}");
@@ -40,7 +36,6 @@ pub(crate) fn json_golden_test(actual: &Value, matcher_path: &str) -> anyhow::Re
     Ok(())
 }
 
-#[cfg(test)]
 fn enable_update_golden() -> bool {
     let env_var = env::var("UPDATE_GOLDEN")
         .ok()
