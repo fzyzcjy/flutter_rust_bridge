@@ -13,7 +13,11 @@ pub(crate) struct OutputCode {
 }
 
 impl OutputCode {
-    pub(crate) fn merge(self, other: Self) -> Self {
+    pub(crate) fn merge(self, _other: Self) -> Self {
+        todo!()
+    }
+
+    pub(crate) fn write(&self) -> anyhow::Result<()> {
         todo!()
     }
 }

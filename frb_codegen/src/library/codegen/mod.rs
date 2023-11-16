@@ -23,5 +23,7 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
     let output_code_wire = generator::wire::generate(&ir_pack)?;
     let output_code = output_code_dart_api.merge(output_code_wire);
 
-    todo!("generate")
+    output_code.write()?;
+
+    Ok(())
 }
