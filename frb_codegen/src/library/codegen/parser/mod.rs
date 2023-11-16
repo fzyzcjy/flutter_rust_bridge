@@ -100,7 +100,7 @@ mod tests {
     fn test_multi_input_file() -> anyhow::Result<()> {
         body(
             "codegen_parser/multi_input_file",
-            Some(|rust_crate_dir| RustInputPathPack {
+            Some(Box::new(|rust_crate_dir| RustInputPathPack {
                 rust_input_path: [
                     (
                         "namespace_one".to_owned().into(),
@@ -112,7 +112,7 @@ mod tests {
                     ),
                 ]
                 .into(),
-            }),
+            })),
         )
     }
 
@@ -122,10 +122,10 @@ mod tests {
         body("codegen_parser/use_type_in_another_file", None)
     }
 
-    fn body<F>(fixture_name: &str, rust_input_path_pack: Option<F>) -> anyhow::Result<()>
-    where
-        F: Fn(&Path) -> RustInputPathPack,
-    {
+    fn body(
+        fixture_name: &str,
+        rust_input_path_pack: Option<Box<dyn Fn(&Path) -> RustInputPathPack>>,
+    ) -> anyhow::Result<()> {
         configure_opinionated_test_logging();
         let test_fixture_dir = get_test_fixture_dir(fixture_name);
         let rust_crate_dir = test_fixture_dir.clone();
