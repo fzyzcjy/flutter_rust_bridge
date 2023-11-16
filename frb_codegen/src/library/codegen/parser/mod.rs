@@ -19,6 +19,7 @@ use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::library::misc::consts::HANDLER_NAME;
 use itertools::Itertools;
+use log::trace;
 use std::path::Path;
 use syn::File;
 
@@ -26,8 +27,15 @@ pub(crate) type ParserResult<T = (), E = error::Error> = Result<T, E>;
 
 // TODO handle multi file correctly
 pub(crate) fn parse(config: &ParserInternalConfig) -> ParserResult<IrPack> {
-    let rust_input_paths = config.rust_input_path_pack.rust_input_path.values();
+    let rust_input_paths = config
+        .rust_input_path_pack
+        .rust_input_path
+        .values()
+        .collect_vec();
+    trace!("rust_input_paths={:?}", &rust_input_paths);
+
     let source_rust_contents: Vec<String> = rust_input_paths
+        .iter()
         .map(|rust_input_path| read_rust_file(rust_input_path, &config.rust_crate_dir))
         .collect::<anyhow::Result<Vec<_>>>()?;
     let file_asts = source_rust_contents
