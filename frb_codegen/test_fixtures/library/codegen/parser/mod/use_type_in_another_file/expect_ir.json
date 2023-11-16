@@ -34,9 +34,14 @@
             "is_in_mirrored_enum": false
           },
           "ty": {
-            "StructRef": {
-              "ident": "StructInAnotherFile",
-              "is_exception": false
+            "Boxed": {
+              "exist_in_real_api": false,
+              "inner": {
+                "StructRef": {
+                  "ident": "StructInAnotherFile",
+                  "is_exception": false
+                }
+              }
             }
           }
         },

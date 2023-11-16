@@ -1,13 +1,16 @@
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::func::IrFuncMode;
 use crate::codegen::ir::ident::IrIdent;
+use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::ty::IrType::Boxed;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::function_parser::{
     type_to_string, FunctionParser, FunctionPartialInfo, STREAM_SINK_IDENT,
 };
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use anyhow::{anyhow, bail};
+use log::debug;
 use syn::visit::visit_angle_bracketed_generic_arguments;
 use syn::*;
 
@@ -72,11 +75,12 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 }
 
 fn partial_info_for_normal_type(
-    ty: IrType,
+    ty_raw: IrType,
     pat_type: &PatType,
 ) -> anyhow::Result<FunctionPartialInfo> {
     let name = parse_name(pat_type)?;
     let attributes = FrbAttributes::parse(&pat_type.attrs)?;
+    let ty = auto_add_boxed(ty_raw);
     Ok(FunctionPartialInfo {
         inputs: vec![IrField {
             name: IrIdent::new(name),
@@ -88,6 +92,17 @@ fn partial_info_for_normal_type(
         }],
         ..Default::default()
     })
+}
+
+fn auto_add_boxed(mut ty: IrType) -> IrType {
+    if ty.is_struct_or_enum_or_record() {
+        Boxed(IrTypeBoxed {
+            exist_in_real_api: false,
+            inner: Box::new(ty),
+        })
+    } else {
+        ty
+    }
 }
 
 fn partial_info_for_stream_sink_type(
