@@ -42,11 +42,11 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         Ok(IrFunc {
             name: func_name,
             inputs: info.inputs,
-            output: info.output.context("Unsupported output")?,
+            output: info.ok_output.context("Unsupported output")?,
+            error_output: info.error_output,
             fallible: info.fallible.unwrap_or(true),
             mode: info.mode.context("Missing mode")?,
             comments: parse_comments(&func.attrs),
-            error_output: output_err,
         })
     }
 }
@@ -54,7 +54,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 #[derive(Debug, Default)]
 struct FunctionPartialInfo {
     inputs: Vec<IrField>,
-    output: Option<IrType>,
+    ok_output: Option<IrType>,
+    error_output: Option<IrType>,
     mode: Option<IrFuncMode>,
     fallible: Option<bool>,
 }
@@ -63,7 +64,8 @@ impl FunctionPartialInfo {
     fn merge(self, other: Self) -> Self {
         Self {
             inputs: concat([self.inputs, other.inputs]),
-            output: other.output.or(self.output),
+            ok_output: other.ok_output.or(self.ok_output),
+            error_output: other.error_output.or(self.error_output),
             mode: other.mode.or(self.mode),
             fallible: other.fallible.or(self.fallible),
         }

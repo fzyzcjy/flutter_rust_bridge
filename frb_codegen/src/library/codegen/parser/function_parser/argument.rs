@@ -67,7 +67,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 fn partial_info_for_normal_type(ty: IrType) -> ParserResult<FunctionPartialInfo> {
     Ok(FunctionPartialInfo {
         inputs: vec![],
-        output: Some(ty),
+        ok_output: Some(ty),
+        error_output: None,
         mode: Some(IrFuncMode::Stream { argument_index: i }),
         // TODO this should not be here (arg), but should be at `output` logic?
         fallible: Some(match &sig.output {
@@ -90,7 +91,8 @@ fn partial_info_for_stream_sink_type(ty: IrType) -> ParserResult<FunctionPartial
             default: attributes.default_value(),
             settings: IrFieldSettings::default(),
         }],
-        output: None,
+        ok_output: None,
+        error_output: None,
         mode: None,
         fallible: None,
     })

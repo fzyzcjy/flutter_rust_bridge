@@ -50,7 +50,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         Ok(FunctionPartialInfo {
             inputs: vec![],
-            output: Some(output_ok),
+            ok_output: Some(output_ok),
             mode: Some(IrFuncMode::Normal),
             fallible: None,
         })
