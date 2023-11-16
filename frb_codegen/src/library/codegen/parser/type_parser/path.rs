@@ -229,20 +229,22 @@ impl<'a> TypeParser<'a> {
 
             #[cfg(feature = "qualified_names")]
             [("flutter_rust_bridge", None), ("RustOpaque", Some(Generic([Primitive(IrTypePrimitive::Unit)])))] => {
-                Ok(RustOpaque(IrTypeRustOpaque::new_unit()))
+                Ok(RustOpaque(IrTypeRustOpaque::new(Primitive(
+                    IrTypePrimitive::Unit,
+                ))))
             }
 
-            [("RustOpaque", Some(Generic([Primitive(IrTypePrimitive::Unit)])))] => {
-                Ok(RustOpaque(IrTypeRustOpaque::new_unit()))
-            }
+            [("RustOpaque", Some(Generic([Primitive(IrTypePrimitive::Unit)])))] => Ok(RustOpaque(
+                IrTypeRustOpaque::new(Primitive(IrTypePrimitive::Unit)),
+            )),
 
             #[cfg(feature = "qualified_names")]
             [("flutter_rust_bridge", None), ("RustOpaque", Some(Generic([ty])))] => {
-                Ok(RustOpaque(IrTypeRustOpaque::from(ty.rust_api_type())))
+                Ok(RustOpaque(IrTypeRustOpaque::new(ty.clone())))
             }
 
             [("RustOpaque", Some(Generic([ty])))] => {
-                Ok(RustOpaque(IrTypeRustOpaque::from(ty.rust_api_type())))
+                Ok(RustOpaque(IrTypeRustOpaque::new(ty.clone())))
             }
 
             [("Box", Some(Generic([inner])))] => Ok(Boxed(IrTypeBoxed {
