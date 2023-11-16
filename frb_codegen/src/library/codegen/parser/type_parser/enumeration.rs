@@ -1,18 +1,58 @@
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
-use crate::codegen::ir::ty::enumeration::{IrEnum, IrVariant, IrVariantKind};
+use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
+use crate::codegen::ir::ty::enumeration::{
+    IrEnum, IrEnumIdent, IrTypeEnumRef, IrVariant, IrVariantKind,
+};
+use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::structure::IrStruct;
 use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::ty::IrType::{Delegate, EnumRef};
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::source_graph::modules::Enum;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::structure::compute_name_and_wrapper_name;
 use crate::codegen::parser::type_parser::TypeParser;
+use crate::codegen::parser::unencodable::ArgsRefs;
 use syn::{Attribute, Field, Ident, Variant};
 
 impl<'a> TypeParser<'a> {
-    pub(crate) fn parse_enum(&mut self, ident_string: &str) -> anyhow::Result<IrEnum> {
+    pub(crate) fn parse_type_path_data_struct(
+        &mut self,
+        splayed_segments: &[(&str, Option<ArgsRefs>)],
+    ) -> anyhow::Result<Option<IrType>> {
+        Ok(Some(match splayed_segments {
+            [(name, _)] if self.src_enums.contains_key(&name.to_string()) => {
+                let ident = IrEnumIdent(name.to_string());
+
+                if self.parsed_enums.insert(ident.clone().0) {
+                    let enu = self.parse_enum(&ident.0)?;
+                    self.enum_pool.insert(ident.clone(), enu);
+                }
+
+                let enum_ref = IrTypeEnumRef {
+                    ident: ident.clone(),
+                    is_exception: false,
+                };
+                let enu = self.enum_pool.get(&ident);
+                let is_struct = enu.map(|e| e.is_struct).unwrap_or(true);
+                if is_struct {
+                    EnumRef(enum_ref)
+                } else {
+                    Delegate(IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum {
+                        ir: enum_ref,
+                        // TODO(Desdaemon): Parse #[repr] from enum
+                        repr: IrTypePrimitive::I32,
+                    }))
+                }
+            }
+
+            _ => return Ok(None),
+        }))
+    }
+
+    fn parse_enum(&mut self, ident_string: &str) -> anyhow::Result<IrEnum> {
         let src_enum = self.src_enums[ident_string];
 
         let (name, wrapper_name) =

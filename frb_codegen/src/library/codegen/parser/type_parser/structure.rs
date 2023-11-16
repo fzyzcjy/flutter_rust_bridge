@@ -1,13 +1,56 @@
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::ident::IrIdent;
-use crate::codegen::ir::ty::structure::IrStruct;
+use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent, IrTypeStructRef};
+use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::ty::IrType::StructRef;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::TypeParser;
+use crate::codegen::parser::unencodable::ArgsRefs;
 use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, Ident};
 
 impl<'a> TypeParser<'a> {
-    pub(crate) fn parse_struct(&mut self, ident_string: &str) -> anyhow::Result<Option<IrStruct>> {
+    pub(crate) fn parse_type_path_data_struct(
+        &mut self,
+        splayed_segments: &[(&str, Option<ArgsRefs>)],
+    ) -> anyhow::Result<Option<IrType>> {
+        Ok(Some(match splayed_segments {
+            [(name, None)] if self.src_structs.contains_key(&name.to_string()) => {
+                let ident = IrStructIdent(name.to_string());
+
+                if !self.parsing_or_parsed_struct_names.contains(&ident.0) {
+                    self.parsing_or_parsed_struct_names.insert(ident.clone().0);
+                    let api_struct = match self.parse_struct(&ident.0)? {
+                        Some(ir_struct) => ir_struct,
+                        None => {
+                            return Ok(parse_path_type_to_unencodable(type_path, segments.splay()))
+                        }
+                    };
+                    self.struct_pool.insert(ident.clone(), api_struct);
+                }
+
+                StructRef(IrTypeStructRef {
+                    ident: ident.clone(),
+                    is_exception: false,
+                    // TODO rm
+                    // freezed: self
+                    //     .struct_pool
+                    //     .get(&ident_string)
+                    //     .map(IrStruct::using_freezed)
+                    //     .unwrap_or(false),
+                    // empty: self
+                    //     .struct_pool
+                    //     .get(&ident_string)
+                    //     .map(IrStruct::is_empty)
+                    //     .unwrap_or(false),
+                })
+            }
+
+            _ => return Ok(None),
+        }))
+    }
+
+    fn parse_struct(&mut self, ident_string: &str) -> anyhow::Result<Option<IrStruct>> {
         let src_struct = self.src_structs[ident_string];
 
         let (is_fields_named, struct_fields) = match &src_struct.0.src.fields {

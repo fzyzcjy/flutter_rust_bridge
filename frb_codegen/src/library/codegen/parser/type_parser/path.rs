@@ -50,6 +50,12 @@ impl<'a> TypeParser<'a> {
         if let Some(ans) = self.parse_type_path_data_primitive(splayed_segments)? {
             return Ok(ans);
         }
+        if let Some(ans) = self.parse_type_path_data_struct(splayed_segments)? {
+            return Ok(ans);
+        }
+        if let Some(ans) = self.parse_type_path_data_enum(splayed_segments)? {
+            return Ok(ans);
+        }
         if let Some(ans) = self.parse_type_path_data_concrete(splayed_segments)? {
             return Ok(ans);
         }
@@ -60,67 +66,7 @@ impl<'a> TypeParser<'a> {
             return Ok(ans);
         }
 
-        match splayed_segments {
-            [(name, None)] if self.src_structs.contains_key(&name.to_string()) => {
-                let ident = IrStructIdent(name.to_string());
-
-                if !self.parsing_or_parsed_struct_names.contains(&ident.0) {
-                    self.parsing_or_parsed_struct_names.insert(ident.clone().0);
-                    let api_struct = match self.parse_struct(&ident.0)? {
-                        Some(ir_struct) => ir_struct,
-                        None => {
-                            return Ok(parse_path_type_to_unencodable(type_path, segments.splay()))
-                        }
-                    };
-                    self.struct_pool.insert(ident.clone(), api_struct);
-                }
-
-                Ok(StructRef(IrTypeStructRef {
-                    ident: ident.clone(),
-                    is_exception: false,
-                    // TODO rm
-                    // freezed: self
-                    //     .struct_pool
-                    //     .get(&ident_string)
-                    //     .map(IrStruct::using_freezed)
-                    //     .unwrap_or(false),
-                    // empty: self
-                    //     .struct_pool
-                    //     .get(&ident_string)
-                    //     .map(IrStruct::is_empty)
-                    //     .unwrap_or(false),
-                }))
-            }
-
-            [(name, _)] if self.src_enums.contains_key(&name.to_string()) => {
-                let ident = IrEnumIdent(name.to_string());
-
-                if self.parsed_enums.insert(ident.clone().0) {
-                    let enu = self.parse_enum(&ident.0)?;
-                    self.enum_pool.insert(ident.clone(), enu);
-                }
-
-                let enum_ref = IrTypeEnumRef {
-                    ident: ident.clone(),
-                    is_exception: false,
-                };
-                let enu = self.enum_pool.get(&ident);
-                let is_struct = enu.map(|e| e.is_struct).unwrap_or(true);
-                if is_struct {
-                    Ok(EnumRef(enum_ref))
-                } else {
-                    Ok(Delegate(IrTypeDelegate::PrimitiveEnum(
-                        IrTypeDelegatePrimitiveEnum {
-                            ir: enum_ref,
-                            // TODO(Desdaemon): Parse #[repr] from enum
-                            repr: IrTypePrimitive::I32,
-                        },
-                    )))
-                }
-            }
-
-            _ => Ok(parse_path_type_to_unencodable(type_path, segments.splay())),
-        }
+        Ok(parse_path_type_to_unencodable(type_path, segments.splay()))
     }
 }
 
