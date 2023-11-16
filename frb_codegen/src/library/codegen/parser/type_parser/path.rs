@@ -16,6 +16,7 @@ use crate::codegen::ir::ty::IrType::{
     Boxed, DartOpaque, Delegate, Dynamic, EnumRef, GeneralList, Optional, OptionalList, Primitive,
     PrimitiveList, Record, RustOpaque, StructRef, Unencodable,
 };
+use crate::codegen::parser::type_parser::unencodable::parse_path_type_to_unencodable;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::parser::unencodable::{ArgsRefs, Splayable};
 use anyhow::{anyhow, bail};
@@ -50,7 +51,7 @@ impl<'a> TypeParser<'a> {
         if let Some(ans) = self.parse_type_path_data_primitive(splayed_segments)? {
             return Ok(ans);
         }
-        if let Some(ans) = self.parse_type_path_data_struct(splayed_segments)? {
+        if let Some(ans) = self.parse_type_path_data_struct(type_path, splayed_segments)? {
             return Ok(ans);
         }
         if let Some(ans) = self.parse_type_path_data_enum(splayed_segments)? {
@@ -62,29 +63,10 @@ impl<'a> TypeParser<'a> {
         if let Some(ans) = self.parse_type_path_data_vec(type_path, splayed_segments)? {
             return Ok(ans);
         }
-        if let Some(ans) = self.parse_type_path_data_optional(splayed_segments)? {
+        if let Some(ans) = self.parse_type_path_data_optional(type_path, splayed_segments)? {
             return Ok(ans);
         }
 
         Ok(parse_path_type_to_unencodable(type_path, segments.splay()))
     }
-}
-
-fn parse_path_type_to_unencodable(
-    type_path: &TypePath,
-    flat_vector: Vec<(&str, Option<ArgsRefs>)>,
-) -> IrType {
-    Unencodable(IrTypeUnencodable {
-        string: type_path.to_token_stream().to_string(),
-        segments: flat_vector
-            .iter()
-            .map(|(ident, option_args_refs)| NameComponent {
-                ident: ident.to_string(),
-                args: option_args_refs.as_ref().map(|args_refs| match args_refs {
-                    ArgsRefs::Generic(args_array) => Args::Generic(args_array.to_vec()),
-                    ArgsRefs::Signature(args_array) => Args::Signature(args_array.to_vec()),
-                }),
-            })
-            .collect(),
-    })
 }

@@ -27,7 +27,7 @@ impl<'a> TypeParser<'a> {
             [("chrono", None), ("NaiveDateTime", None)] => {
                 Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Naive))
             }
-            [("chrono", None), ("DateTime", Some(Generic(args)))] => parse_datetime(args),
+            [("chrono", None), ("DateTime", Some(Generic(args)))] => parse_datetime(args)?,
 
             [("uuid", None), ("Uuid", None)] => Delegate(IrTypeDelegate::Uuid),
             [("String", None)] => Delegate(IrTypeDelegate::String),
@@ -40,30 +40,28 @@ impl<'a> TypeParser<'a> {
             }
 
             [("flutter_rust_bridge", None), ("RustOpaque", Some(Generic([Delegate(IrTypeDelegate::Array(array_delegate))])))] => {
-                Ok(Delegate(IrTypeDelegate::Array(array_delegate.clone())))
+                Delegate(IrTypeDelegate::Array(array_delegate.clone()))
             }
 
             [("flutter_rust_bridge", None), ("RustOpaque", Some(Generic([Primitive(IrTypePrimitive::Unit)])))] => {
-                Ok(RustOpaque(IrTypeRustOpaque::new(Primitive(
-                    IrTypePrimitive::Unit,
-                ))))
+                RustOpaque(IrTypeRustOpaque::new(Primitive(IrTypePrimitive::Unit)))
             }
 
             [("flutter_rust_bridge", None), ("RustOpaque", Some(Generic([ty])))] => {
-                Ok(RustOpaque(IrTypeRustOpaque::new(ty.clone())))
+                RustOpaque(IrTypeRustOpaque::new(ty.clone()))
             }
 
             [("flutter_rust_bridge", None), (
                 "ZeroCopyBuffer",
                 Some(Generic([PrimitiveList(IrTypePrimitiveList { primitive })])),
-            )] => Ok(Delegate(IrTypeDelegate::ZeroCopyBufferVecPrimitive(
+            )] => Delegate(IrTypeDelegate::ZeroCopyBufferVecPrimitive(
                 primitive.clone(),
-            ))),
+            )),
 
-            [("Box", Some(Generic([inner])))] => Ok(Boxed(IrTypeBoxed {
+            [("Box", Some(Generic([inner])))] => Boxed(IrTypeBoxed {
                 exist_in_real_api: true,
                 inner: Box::new(inner.clone()),
-            })),
+            }),
 
             _ => return Ok(None),
         }))

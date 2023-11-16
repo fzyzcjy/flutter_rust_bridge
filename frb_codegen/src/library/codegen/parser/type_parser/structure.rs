@@ -5,13 +5,15 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::StructRef;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::type_parser::misc::parse_comments;
+use crate::codegen::parser::type_parser::unencodable::parse_path_type_to_unencodable;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::parser::unencodable::ArgsRefs;
-use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, Ident};
+use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, Ident, TypePath};
 
 impl<'a> TypeParser<'a> {
     pub(crate) fn parse_type_path_data_struct(
         &mut self,
+        type_path: &TypePath,
         splayed_segments: &[(&str, Option<ArgsRefs>)],
     ) -> anyhow::Result<Option<IrType>> {
         Ok(Some(match splayed_segments {
@@ -23,7 +25,10 @@ impl<'a> TypeParser<'a> {
                     let api_struct = match self.parse_struct(&ident.0)? {
                         Some(ir_struct) => ir_struct,
                         None => {
-                            return Ok(parse_path_type_to_unencodable(type_path, segments.splay()))
+                            return Ok(Some(parse_path_type_to_unencodable(
+                                type_path,
+                                splayed_segments.to_owned(),
+                            )))
                         }
                     };
                     self.struct_pool.insert(ident.clone(), api_struct);

@@ -18,7 +18,7 @@ use crate::codegen::parser::unencodable::ArgsRefs;
 use syn::{Attribute, Field, Ident, Variant};
 
 impl<'a> TypeParser<'a> {
-    pub(crate) fn parse_type_path_data_struct(
+    pub(crate) fn parse_type_path_data_enum(
         &mut self,
         splayed_segments: &[(&str, Option<ArgsRefs>)],
     ) -> anyhow::Result<Option<IrType>> {

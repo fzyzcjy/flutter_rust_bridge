@@ -9,10 +9,13 @@ use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::parser::unencodable::ArgsRefs;
 use crate::codegen::parser::unencodable::ArgsRefs::Generic;
 use anyhow::bail;
+use quote::ToTokens;
+use syn::TypePath;
 
 impl<'a> TypeParser<'a> {
     pub(crate) fn parse_type_path_data_optional(
         &mut self,
+        type_path: &TypePath,
         splayed_segments: &[(&str, Option<ArgsRefs>)],
     ) -> anyhow::Result<Option<IrType>> {
         Ok(Some(match splayed_segments {
