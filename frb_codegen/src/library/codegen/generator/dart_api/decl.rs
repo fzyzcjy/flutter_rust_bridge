@@ -132,7 +132,7 @@ impl<'a> DartApiGeneratorDeclTrait for RecordDartApiGenerator<'a> {
             .ir
             .values
             .iter()
-            .map(IrType::dart_api_type)
+            .map(|ty| DartApiGenerator::new(ty.clone(), self.context.ir_pack).dart_api_type())
             .collect::<Vec<_>>()
             .join(",");
         if self.ir.values.len() == 1 {
@@ -145,7 +145,7 @@ impl<'a> DartApiGeneratorDeclTrait for RecordDartApiGenerator<'a> {
 
 impl<'a> DartApiGeneratorDeclTrait for RustOpaqueDartApiGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        self.inner_dart.clone()
+        self.ir.inner_dart.clone()
     }
 }
 
