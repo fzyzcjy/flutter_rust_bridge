@@ -4,13 +4,12 @@ use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEn
 
 impl<'a> DartApiClassGeneratorTrait for DelegateDartApiGenerator<'a> {
     fn generate_class(&self) -> Option<String> {
-        Some(match &self.ir {
+        match &self.ir {
             IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) => {
                 EnumRefDartApiGenerator::new(ir.clone(), self.context.ir_pack).generate_class()
             }
-            IrTypeDelegate::Array(array) => {
-                format!(
-                    "
+            IrTypeDelegate::Array(array) => Some(format!(
+                "
                 class {0} extends NonGrowableListView<{1}> {{
                     static const arraySize = {2};
                     {0}({3} inner)
@@ -21,14 +20,13 @@ impl<'a> DartApiClassGeneratorTrait for DelegateDartApiGenerator<'a> {
                     {4}
                   }}
                 ",
-                    array.dart_api_type(),
-                    array.inner_dart_api_type(),
-                    array.length(),
-                    array.get_delegate().dart_api_type(),
-                    array.dart_init_method(),
-                )
-            }
-            _ => "".into(),
-        })
+                array.dart_api_type(),
+                array.inner_dart_api_type(),
+                array.length(),
+                array.get_delegate().dart_api_type(),
+                array.dart_init_method(),
+            )),
+            _ => None,
+        }
     }
 }

@@ -1,13 +1,13 @@
 use crate::codegen::generator::dart_api::base::*;
 use enum_dispatch::enum_dispatch;
 
-pub(super) mod delegate;
-pub(super) mod enumeration;
-pub(super) mod rust_opaque;
-pub(super) mod structure;
+pub(crate) mod delegate;
+pub(crate) mod enumeration;
+pub(crate) mod rust_opaque;
+pub(crate) mod structure;
 
 #[enum_dispatch]
-pub(super) trait DartApiClassGeneratorTrait {
+pub(crate) trait DartApiClassGeneratorTrait {
     fn generate_class(&self) -> Option<String> {
         None
     }

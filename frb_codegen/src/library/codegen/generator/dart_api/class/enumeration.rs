@@ -1,8 +1,9 @@
+use crate::codegen::generator::dart_api::base::*;
 use crate::codegen::generator::dart_api::class::DartApiClassGeneratorTrait;
 use crate::codegen::ir::ty::enumeration::{IrTypeEnumRef, IrVariantKind};
 use crate::codegen::ir::ty::structure::IrStruct;
 
-impl<'a> DartApiClassGeneratorTrait for EnumRefDartApiClassGenerator<'a> {
+impl<'a> DartApiClassGeneratorTrait for EnumRefDartApiGenerator<'a> {
     fn generate_class(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
 

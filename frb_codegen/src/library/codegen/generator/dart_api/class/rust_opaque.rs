@@ -1,7 +1,8 @@
+use crate::codegen::generator::dart_api::base::*;
 use crate::codegen::generator::dart_api::class::DartApiClassGeneratorTrait;
 use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
 
-impl<'a> DartApiClassGeneratorTrait for RustOpaqueDartApiClassGenerator<'a> {
+impl<'a> DartApiClassGeneratorTrait for RustOpaqueDartApiGenerator<'a> {
     fn generate_class(&self) -> Option<String> {
         let bridge = self.context.config.get_dart_api_bridge_name();
         let bridge_class = self.context.config.dart_api_class_name();
