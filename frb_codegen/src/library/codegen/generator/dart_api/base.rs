@@ -22,6 +22,7 @@ use paste::paste;
 macro_rules! generate_code {
     ($($name:ident),*,) => (
         paste! {
+            #[enum_dispatch(DartApiGeneratorDeclTrait)]
             #[enum_dispatch(DartApiGeneratorClassTrait)]
             pub(crate) enum DartApiGenerator<'a> {
                 $(
