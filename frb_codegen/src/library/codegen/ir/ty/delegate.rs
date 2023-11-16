@@ -123,6 +123,15 @@ impl IrTypeDelegateArray {
         }
     }
 
+    pub fn inner(&self) -> IrType {
+        match self {
+            IrTypeDelegateArray::GeneralArray { general, .. } => *general.clone(),
+            IrTypeDelegateArray::PrimitiveArray { primitive, .. } => {
+                IrType::Primitive(primitive.clone())
+            }
+        }
+    }
+
     pub fn safe_ident(&self) -> String {
         match self {
             IrTypeDelegateArray::GeneralArray { general, length } => {

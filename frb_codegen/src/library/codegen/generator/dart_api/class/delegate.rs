@@ -22,7 +22,7 @@ impl<'a> DartApiGeneratorClassTrait for DelegateDartApiGenerator<'a> {
                   }}
                 ",
                 array.dart_api_type(self.context.ir_pack),
-                array.inner_dart_api_type(),
+                DartApiGenerator::new(array.inner(), self.context.ir_pack).dart_api_type(),
                 array.length(),
                 DartApiGenerator::new(array.get_delegate(), self.context.ir_pack).dart_api_type(),
                 array.dart_init_method(),

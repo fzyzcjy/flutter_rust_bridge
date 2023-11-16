@@ -34,6 +34,7 @@ impl IrTypeDelegateArray {
             IrTypeDelegateArray::GeneralArray { .. } => format!(
                 "{0}.init({1} fill): super(List<{1}>.filled(arraySize,fill));",
                 self.dart_api_type(),
+                // TODO become self.inner.dart_api_type()
                 self.inner_dart_api_type()
             ),
             IrTypeDelegateArray::PrimitiveArray { .. } => format!(
