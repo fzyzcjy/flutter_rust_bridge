@@ -17,8 +17,8 @@ pub(crate) fn generate_field_default(
     field
         .default
         .as_ref()
-        .map(|r#default| {
-            let r#default = match r#default {
+        .map(|default_value| {
+            let default_value = match default_value {
                 IrDefaultValue::Str(lit)
                     if !matches!(&field.ty, IrType::Delegate(IrTypeDelegate::String)) =>
                 {
@@ -29,12 +29,12 @@ pub(crate) fn generate_field_default(
                         lit.value().into()
                     }
                 }
-                _ => default.to_dart(),
+                _ => default_value.to_dart(),
             };
             if freezed {
-                format!("@Default({default})")
+                format!("@Default({default_value})")
             } else {
-                format!("= {default}")
+                format!("= {default_value}")
             }
         })
         .unwrap_or_default()

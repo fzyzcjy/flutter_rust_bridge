@@ -45,7 +45,11 @@ impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {
                                     let default = split
                                         .is_some()
                                         .then(|| {
-                                            generate_field_default(field, true, self.context.config)
+                                            generate_field_default(
+                                                field,
+                                                true,
+                                                self.context.config.dart_enums_style,
+                                            )
                                         })
                                         .unwrap_or_default();
                                     format!(
@@ -87,7 +91,7 @@ impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {
                                         default = generate_field_default(
                                             field,
                                             true,
-                                            Some(self.context.config)
+                                            self.context.config.dart_enums_style
                                         ),
                                     )
                                 })

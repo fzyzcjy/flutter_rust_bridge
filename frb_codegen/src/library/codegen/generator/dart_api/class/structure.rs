@@ -69,7 +69,8 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
                 .fields
                 .iter()
                 .map(|field| {
-                    let r#default = generate_field_default(field, true, Some(self.context.config));
+                    let r#default =
+                        generate_field_default(field, true, self.context.config.dart_enums_style);
                     format!(
                         "{default} {} {} {},",
                         generate_field_required_modifier(field),
@@ -132,7 +133,8 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
                         "{required}this.{} {default},",
                         f.name.dart_style(),
                         required = generate_field_required_modifier(f),
-                        default = generate_field_default(f, false, Some(self.context.config))
+                        default =
+                            generate_field_default(f, false, self.context.config.dart_enums_style)
                     )
                 })
                 .collect::<Vec<_>>();
