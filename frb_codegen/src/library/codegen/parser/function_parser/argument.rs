@@ -69,6 +69,7 @@ fn partial_info_for_normal_type(ty: IrType) -> ParserResult<FunctionPartialInfo>
         inputs: vec![],
         output: Some(ty),
         mode: Some(IrFuncMode::Stream { argument_index: i }),
+        // TODO this should not be here (arg), but should be at `output` logic?
         fallible: Some(match &sig.output {
             ReturnType::Default => false,
             ReturnType::Type(_, ty) => {
