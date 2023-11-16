@@ -80,6 +80,7 @@ mod tests {
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::test_utils::{get_test_fixture_dir, json_golden_test};
     use serial_test::serial;
+    use std::path::PathBuf;
 
     // TODO more tests
     // TODO `chrono::Duration` and `Duration` test
@@ -105,7 +106,10 @@ mod tests {
             rust_crate_dir: test_fixture_dir,
         })?;
 
-        json_golden_test(&serde_json::to_value(actual)?, "expect_output.json".into())?;
+        json_golden_test(
+            &serde_json::to_value(actual)?,
+            &PathBuf::from("expect_output.json"),
+        )?;
 
         Ok(())
     }

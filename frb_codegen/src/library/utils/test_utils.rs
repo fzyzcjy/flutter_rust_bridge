@@ -1,7 +1,5 @@
-use crate::codegen::parser::source_graph::modules::ModuleSource::File;
 use log::debug;
-use serde_json::{json, Value};
-use std::fs::File;
+use serde_json::Value;
 use std::path::{Path, PathBuf};
 use std::{env, fs};
 
@@ -27,7 +25,7 @@ pub(crate) fn json_golden_test(actual: &Value, matcher_path: &Path) -> anyhow::R
     let expect: Value = if matcher_path.exists() {
         serde_json::from_str(&fs::read_to_string(matcher_path)?)?
     } else {
-        json!()
+        ().into()
     };
 
     if enable_update_golden() {
