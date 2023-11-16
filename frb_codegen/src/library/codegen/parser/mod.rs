@@ -3,18 +3,22 @@ pub(crate) mod error;
 pub(crate) mod function_extractor;
 pub(crate) mod function_parser;
 pub(crate) mod internal_config;
+pub(crate) mod misc;
 pub(crate) mod reader;
 pub(crate) mod source_graph;
 pub(crate) mod type_alias_resolver;
 pub(crate) mod type_parser;
+
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::parser::function_extractor::extract_generalized_functions_from_file;
 use crate::codegen::parser::function_parser::FunctionParser;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
+use crate::codegen::parser::misc::parse_has_executor;
 use crate::codegen::parser::reader::read_rust_file;
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::library::misc::consts::HANDLER_NAME;
+use itertools::Itertools;
 use std::path::Path;
 use syn::File;
 
@@ -22,24 +26,25 @@ pub(crate) type ParserResult<T = (), E = error::Error> = Result<T, E>;
 
 // TODO handle multi file correctly
 pub(crate) fn parse(config: &ParserInternalConfig) -> ParserResult<IrPack> {
-    let raw_packs = config
-        .rust_input_path_pack
-        .rust_input_path
+    let rust_input_paths = config.rust_input_path_pack.rust_input_path.values();
+    let source_rust_contents: Vec<String> = rust_input_paths
+        .map(|rust_input_path| read_rust_file(rust_input_path, &config.rust_crate_dir))
+        .collect::<anyhow::Result<Vec<_>>>()?;
+    let file_asts = source_rust_contents
         .iter()
-        // TODO handle namespace
-        .map(|(_namespace, rust_input_path)| parse_one(rust_input_path, &config.rust_crate_dir))
-        .collect::<Result<Vec<_>, _>>()?;
-    let merged_pack = raw_packs.into_iter().reduce(|acc, e| acc.merge(e)).unwrap();
-    Ok(merged_pack)
-}
+        .map(|s| syn::parse_file(s))
+        .collect::<syn::Result<Vec<_>>>()?;
 
-fn parse_one(rust_input_path: &Path, rust_crate_dir: &Path) -> ParserResult<IrPack> {
-    let source_rust_content = read_rust_file(rust_input_path, rust_crate_dir)?;
-    let file_ast = syn::parse_file(&source_rust_content)?;
+    let crate_map = source_graph::crates::Crate::parse(&config.rust_crate_dir.join("Cargo.toml"))?;
 
-    let crate_map = source_graph::crates::Crate::parse(&rust_crate_dir.join("Cargo.toml"))?;
+    let src_fns = file_asts
+        .iter()
+        .map(extract_generalized_functions_from_file)
+        .collect::<ParserResult<Vec<_>>>()?
+        .into_iter()
+        .flatten()
+        .collect_vec();
 
-    let src_fns = extract_generalized_functions_from_file(&file_ast)?;
     let src_structs = crate_map.root_module().collect_structs();
     let src_enums = crate_map.root_module().collect_enums();
     let src_types = resolve_type_aliases(crate_map.root_module().collect_types());
@@ -52,9 +57,7 @@ fn parse_one(rust_input_path: &Path, rust_crate_dir: &Path) -> ParserResult<IrPa
         .map(|f| function_parser.parse_function(f))
         .collect::<ParserResult<_>>()?;
 
-    let has_executor = source_rust_content.contains(HANDLER_NAME);
-
-    drop(function_parser);
+    let has_executor = source_rust_contents.iter().any(|s| parse_has_executor(s));
 
     let (struct_pool, enum_pool) = type_parser.consume();
 
