@@ -15,20 +15,6 @@ impl IrTypeDelegateTime {
 }
 
 impl IrTypeDelegateArray {
-    pub fn dart_api_type(&self) -> String {
-        match self {
-            IrTypeDelegateArray::GeneralArray { general, length } => {
-                format!("{}Array{length}", general.dart_api_type())
-            }
-            IrTypeDelegateArray::PrimitiveArray { primitive, length } => {
-                format!(
-                    "{}Array{length}",
-                    primitive.safe_ident().to_case(Case::Pascal)
-                )
-            }
-        }
-    }
-
     pub fn inner_dart_api_type(&self) -> String {
         match self {
             IrTypeDelegateArray::GeneralArray { general, .. } => general.dart_api_type(),

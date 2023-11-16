@@ -1,9 +1,10 @@
 use crate::codegen::generator::dart_api::base::*;
 use crate::codegen::ir::ty::delegate::{
-    IrTypeDelegate, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
+    IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
 };
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::ty::{IrType, IrTypeTrait};
+use convert_case::{Case, Casing};
 use enum_dispatch::enum_dispatch;
 use syn::token::Dyn;
 
@@ -33,7 +34,7 @@ impl<'a> DartApiGeneratorDeclTrait for DelegateDartApiGenerator<'a> {
             IrTypeDelegate::StringList => "List<String>".to_owned(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => self.get_delegate().dart_api_type(),
             IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) => {
-                ir.dart_api_type()
+                DartApiGenerator::new(*ir.clone(), self.context.ir_pack).dart_api_type()
             }
             IrTypeDelegate::Time(ir) => match ir {
                 IrTypeDelegateTime::Local | IrTypeDelegateTime::Utc | IrTypeDelegateTime::Naive => {
@@ -49,6 +50,22 @@ impl<'a> DartApiGeneratorDeclTrait for DelegateDartApiGenerator<'a> {
             IrTypeDelegate::Uuids => "List<UuidValue>".to_owned(),
             IrTypeDelegate::Backtrace => "String".to_string(),
             IrTypeDelegate::Anyhow => "FrbAnyhowException".to_string(),
+        }
+    }
+}
+
+impl IrTypeDelegateArray {
+    pub(crate) fn dart_api_type(&self) -> String {
+        match self {
+            IrTypeDelegateArray::GeneralArray { general, length } => {
+                format!("{}Array{length}", general.dart_api_type())
+            }
+            IrTypeDelegateArray::PrimitiveArray { primitive, length } => {
+                format!(
+                    "{}Array{length}",
+                    primitive.safe_ident().to_case(Case::Pascal)
+                )
+            }
         }
     }
 }
