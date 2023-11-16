@@ -171,15 +171,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         Ok(if let Type::Path(type_path) = ty {
             match self.type_parser.parse_type_path(&type_path) {
                 Ok(IrType::Unencodable(IrTypeUnencodable { segments, .. })) => {
-                    match &splay_segments(&segments)[..] {
-                        [("anyhow", None), ("Result", Some(ArgsRefs::Generic([args])))] => {
-                            Some(FuncOutput::ResultType {
-                                ok: args.clone(),
-                                error: None,
-                            })
-                        }
-                        // TODO deal with std::result::Result and anyhow::Result
-                        [("Result", Some(ArgsRefs::Generic(args)))] => {
+                    match splay_segments(&segments).last() {
+                        Some(("Result", Some(ArgsRefs::Generic(args)))) => {
                             let ok = args.first().unwrap();
 
                             let is_anyhow = args.len() == 1
