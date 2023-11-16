@@ -9,105 +9,6 @@
           "comments": [],
           "default": null,
           "is_final": true,
-          "name": "result",
-          "settings": {
-            "is_in_mirrored_enum": false
-          },
-          "ty": {
-            "Unencodable": {
-              "segments": [
-                {
-                  "args": {
-                    "Generic": [
-                      {
-                        "Primitive": "I32"
-                      },
-                      {
-                        "Delegate": "String"
-                      }
-                    ]
-                  },
-                  "ident": "Result"
-                }
-              ],
-              "string": "Result < i32 , String >"
-            }
-          }
-        },
-        {
-          "comments": [],
-          "default": null,
-          "is_final": true,
-          "name": "anyhow_result",
-          "settings": {
-            "is_in_mirrored_enum": false
-          },
-          "ty": {
-            "Unencodable": {
-              "segments": [
-                {
-                  "args": null,
-                  "ident": "anyhow"
-                },
-                {
-                  "args": {
-                    "Generic": [
-                      {
-                        "Primitive": "I32"
-                      },
-                      {
-                        "Delegate": "String"
-                      }
-                    ]
-                  },
-                  "ident": "Result"
-                }
-              ],
-              "string": "anyhow :: Result < i32 , String >"
-            }
-          }
-        },
-        {
-          "comments": [],
-          "default": null,
-          "is_final": true,
-          "name": "std_result_result",
-          "settings": {
-            "is_in_mirrored_enum": false
-          },
-          "ty": {
-            "Unencodable": {
-              "segments": [
-                {
-                  "args": null,
-                  "ident": "std"
-                },
-                {
-                  "args": null,
-                  "ident": "result"
-                },
-                {
-                  "args": {
-                    "Generic": [
-                      {
-                        "Primitive": "I32"
-                      },
-                      {
-                        "Delegate": "String"
-                      }
-                    ]
-                  },
-                  "ident": "Result"
-                }
-              ],
-              "string": "std :: result :: Result < i32 , String >"
-            }
-          }
-        },
-        {
-          "comments": [],
-          "default": null,
-          "is_final": true,
           "name": "chrono_duration",
           "settings": {
             "is_in_mirrored_enum": false
@@ -132,9 +33,45 @@
         }
       ],
       "mode": "Normal",
-      "name": "f",
+      "name": "func_1",
       "output": {
         "Primitive": "Unit"
+      }
+    },
+    {
+      "comments": [],
+      "error_output": {
+        "Delegate": "String"
+      },
+      "inputs": [],
+      "mode": "Normal",
+      "name": "func_anyhow_result",
+      "output": {
+        "Primitive": "I32"
+      }
+    },
+    {
+      "comments": [],
+      "error_output": {
+        "Delegate": "String"
+      },
+      "inputs": [],
+      "mode": "Normal",
+      "name": "func_result",
+      "output": {
+        "Primitive": "I32"
+      }
+    },
+    {
+      "comments": [],
+      "error_output": {
+        "Delegate": "String"
+      },
+      "inputs": [],
+      "mode": "Normal",
+      "name": "func_std_result_result",
+      "output": {
+        "Primitive": "I32"
       }
     }
   ],
