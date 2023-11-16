@@ -4,8 +4,8 @@ use crate::codegen::generator::dart_api::class::DartApiGeneratorClassTrait;
 impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
     fn generate_class(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
-        let comments = dart_comments(&src.comments);
-        let metadata = dart_metadata(&src.dart_metadata);
+        let comments = generate_dart_comments(&src.comments);
+        let metadata = generate_dart_metadata(&src.dart_metadata);
 
         let ir_pack = self.context.ir_pack;
         let methods = ir_pack
@@ -104,7 +104,7 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
                 .fields
                 .iter()
                 .map(|f| {
-                    let comments = dart_comments(&f.comments);
+                    let comments = generate_dart_comments(&f.comments);
                     format!(
                         "{}{} {} {};",
                         comments,

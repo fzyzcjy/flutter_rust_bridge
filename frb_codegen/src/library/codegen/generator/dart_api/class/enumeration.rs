@@ -7,7 +7,7 @@ impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {
     fn generate_class(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
 
-        let comments = dart_comments(&src.comments);
+        let comments = generate_dart_comments(&src.comments);
         if src.is_struct() {
             let variants = src
                 .variants()
@@ -41,7 +41,7 @@ impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {
                                         "{comments} {default} {} {},",
                                         field.ty.dart_api_type(),
                                         field.name.dart_style(),
-                                        comments = dart_comments(&field.comments),
+                                        comments = generate_dart_comments(&field.comments),
                                         default = default
                                     )
                                 })
@@ -64,7 +64,7 @@ impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {
                                         field.ty.dart_api_type(),
                                         field.name.dart_style(),
                                         required = field.required_modifier(),
-                                        comments = dart_comments(&field.comments),
+                                        comments = generate_dart_comments(&field.comments),
                                         default =
                                             field.field_default(true, Some(self.context.config)),
                                     )
@@ -83,7 +83,7 @@ impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {
                     format!(
                         "{} {}const factory {}.{}({}) = {};",
                         implements_exception,
-                        dart_comments(&variant.comments),
+                        generate_dart_comments(&variant.comments),
                         self.ir.name,
                         variant.name.dart_style(),
                         args,
@@ -116,7 +116,11 @@ impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {
                         variant.name.rust_style().to_string()
                     };
 
-                    format!("{}{},", dart_comments(&variant.comments), variant_name)
+                    format!(
+                        "{}{},",
+                        generate_dart_comments(&variant.comments),
+                        variant_name
+                    )
                 })
                 .collect::<Vec<_>>()
                 .join("\n");

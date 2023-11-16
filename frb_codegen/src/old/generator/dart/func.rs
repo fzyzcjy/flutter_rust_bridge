@@ -80,7 +80,7 @@ pub(crate) fn generate_api_func(
 
     let signature = format!("{func_expr};");
 
-    let comments = dart_comments(&func.comments);
+    let comments = generate_dart_comments(&func.comments);
 
     let task_common_args = format!(
         "

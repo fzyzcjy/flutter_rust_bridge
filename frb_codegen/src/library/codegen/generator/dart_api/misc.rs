@@ -3,7 +3,7 @@ use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::import::IrDartImport;
 
 /// A trailing newline is included if comments is not empty.
-fn dart_comments(comments: &[IrComment]) -> String {
+fn generate_dart_comments(comments: &[IrComment]) -> String {
     let mut comments = comments
         .iter()
         .map(IrComment::comment)
@@ -15,7 +15,7 @@ fn dart_comments(comments: &[IrComment]) -> String {
     comments
 }
 
-fn dart_metadata(metadata: &[IrDartAnnotation]) -> String {
+fn generate_dart_metadata(metadata: &[IrDartAnnotation]) -> String {
     let mut metadata = metadata
         .iter()
         .map(|it| match &it.library {

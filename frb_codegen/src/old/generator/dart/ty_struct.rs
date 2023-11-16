@@ -140,7 +140,7 @@ fn generate_api_method(
     let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();
 
     let static_function_name = f.method_name();
-    let comments = dart_comments(&func.comments);
+    let comments = generate_dart_comments(&func.comments);
 
     let partial = format!(
         "{} {} {}({{ {} }})",
