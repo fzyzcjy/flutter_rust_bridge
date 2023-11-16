@@ -137,23 +137,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     fn parse_fn_arg_type(&mut self, ty: &Type) -> anyhow::Result<Option<FuncArg>> {
         Ok(match ty {
             Type::Path(TypePath { path, .. }) => {
-                let last_segment = path.segments.last().unwrap();
-                if last_segment.ident == STREAM_SINK_IDENT {
-                    match &last_segment.arguments {
-                        PathArguments::AngleBracketed(AngleBracketedGenericArguments {
-                            args,
-                            ..
-                        }) if args.len() == 1 => {
-                            // Unwrap is safe here because args.len() == 1
-                            match args.last().unwrap() {
-                                GenericArgument::Type(t) => {
-                                    Some(FuncArg::StreamSinkType(self.type_parser.parse_type(t)?))
-                                }
-                                _ => None,
-                            }
-                        }
-                        _ => None,
-                    }
+                if let Some(ans) = self.parse_fn_arg_type_stream_sink(path)? {
+                    Some(ans)
                 } else {
                     Some(FuncArg::Type(self.type_parser.parse_type(ty)?))
                 }
@@ -173,35 +158,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 Ok(IrType::Unencodable(IrTypeUnencodable { segments, .. })) => {
                     match splay_segments(&segments).last() {
                         Some(("Result", Some(ArgsRefs::Generic(args)))) => {
-                            let ok = args.first().unwrap();
-
-                            let is_anyhow = args.len() == 1
-                                || args.iter().any(|x| match x {
-                                    IrType::Unencodable(IrTypeUnencodable { string, .. }) => {
-                                        string == "anyhow :: Error"
-                                    }
-                                    _ => false,
-                                });
-                            let error = if is_anyhow {
-                                Some(IrType::Delegate(IrTypeDelegate::Anyhow))
-                            } else {
-                                args.last().cloned()
-                            };
-
-                            let error = if let Some(StructRef(mut struct_ref)) = error {
-                                struct_ref.is_exception = true;
-                                Some(StructRef(struct_ref))
-                            } else if let Some(EnumRef(mut enum_ref)) = error {
-                                enum_ref.is_exception = true;
-                                Some(EnumRef(enum_ref))
-                            } else {
-                                error
-                            };
-
-                            Some(FuncOutput::ResultType {
-                                ok: ok.clone(),
-                                error,
-                            })
+                            parse_fn_output_type_result(args)
                         }
                         _ => None, // unencodable types not implemented
                     }
@@ -212,6 +169,28 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         } else {
             let ir_ty = self.type_parser.parse_type(ty)?;
             Some(FuncOutput::Type(ir_ty))
+        })
+    }
+
+    fn parse_fn_arg_type_stream_sink(&mut self, path: &Path) -> anyhow::Result<Option<FuncArg>> {
+        let last_segment = path.segments.last().unwrap();
+        Ok(if last_segment.ident == STREAM_SINK_IDENT {
+            match &last_segment.arguments {
+                PathArguments::AngleBracketed(AngleBracketedGenericArguments { args, .. })
+                    if args.len() == 1 =>
+                {
+                    // Unwrap is safe here because args.len() == 1
+                    match args.last().unwrap() {
+                        GenericArgument::Type(t) => {
+                            Some(FuncArg::StreamSinkType(self.type_parser.parse_type(t)?))
+                        }
+                        _ => None,
+                    }
+                }
+                _ => None,
+            }
+        } else {
+            None
         })
     }
 }
@@ -233,4 +212,34 @@ enum FuncArg {
 /// syn -> string https://github.com/dtolnay/syn/issues/294
 fn type_to_string(ty: &Type) -> String {
     quote!(#ty).to_string().replace(' ', "")
+}
+
+fn parse_fn_output_type_result(args: &[IrType]) -> Option<FuncOutput> {
+    let ok = args.first().unwrap();
+
+    let is_anyhow = args.len() == 1
+        || args.iter().any(|x| match x {
+            IrType::Unencodable(IrTypeUnencodable { string, .. }) => string == "anyhow :: Error",
+            _ => false,
+        });
+    let error = if is_anyhow {
+        Some(IrType::Delegate(IrTypeDelegate::Anyhow))
+    } else {
+        args.last().cloned()
+    };
+
+    let error = if let Some(StructRef(mut struct_ref)) = error {
+        struct_ref.is_exception = true;
+        Some(StructRef(struct_ref))
+    } else if let Some(EnumRef(mut enum_ref)) = error {
+        enum_ref.is_exception = true;
+        Some(EnumRef(enum_ref))
+    } else {
+        error
+    };
+
+    Some(FuncOutput::ResultType {
+        ok: ok.clone(),
+        error,
+    })
 }
