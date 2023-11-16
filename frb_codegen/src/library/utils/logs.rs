@@ -76,12 +76,12 @@ fn log_format_simple(d: fern::Dispatch) -> fern::Dispatch {
         .trace(Color::BrightBlack);
 
     d.format(move |out, message, record| {
-        let time = chrono::Local::now().format("%Y/%m/%d %H:%M:%S");
+        let time = chrono::Utc::now().format("%Y-%m-%dT%H:%M:%S%.3fZ");
         let level = record.level();
         let format = if atty::is(atty::Stream::Stdout) {
-            format!("{} [{}] {}", time, colored_output.color(level), message)
+            format!("[{} {}] {}", time, colored_output.color(level), message)
         } else {
-            format!("{} [{}] {}", time, level, message)
+            format!("[{} {}] {}", time, level, message)
         };
         out.finish(format_args!("{}", format))
     })
