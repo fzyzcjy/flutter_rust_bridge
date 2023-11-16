@@ -44,6 +44,7 @@ pub(crate) fn parse(config: &ParserInternalConfig) -> ParserResult<IrPack> {
         .collect::<syn::Result<Vec<_>>>()?;
 
     let crate_map = source_graph::crates::Crate::parse(&config.rust_crate_dir.join("Cargo.toml"))?;
+    trace!("crate_map={:?}", &crate_map);
 
     let src_fns = file_asts
         .iter()
