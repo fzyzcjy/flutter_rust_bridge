@@ -1,4 +1,4 @@
-use crate::codegen::generator::dart_api::class::DartApiClassGeneratorTrait;
+use crate::codegen::generator::dart_api::class::DartApiGeneratorClassTrait;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::dart_opaque::IrTypeDartOpaque;
@@ -22,7 +22,7 @@ use paste::paste;
 macro_rules! generate_code {
     ($($name:ident),*,) => (
         paste! {
-            #[enum_dispatch(DartApiClassGeneratorTrait)]
+            #[enum_dispatch(DartApiGeneratorClassTrait)]
             pub(crate) enum DartApiGenerator<'a> {
                 $(
                     $name([<$name DartApiGenerator>]<'a>),

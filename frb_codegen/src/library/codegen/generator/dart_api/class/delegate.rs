@@ -1,8 +1,8 @@
 use crate::codegen::generator::dart_api::base::*;
-use crate::codegen::generator::dart_api::class::DartApiClassGeneratorTrait;
+use crate::codegen::generator::dart_api::class::DartApiGeneratorClassTrait;
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
 
-impl<'a> DartApiClassGeneratorTrait for DelegateDartApiGenerator<'a> {
+impl<'a> DartApiGeneratorClassTrait for DelegateDartApiGenerator<'a> {
     fn generate_class(&self) -> Option<String> {
         match &self.ir {
             IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) => {
