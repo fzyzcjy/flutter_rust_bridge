@@ -55,7 +55,7 @@ impl FrbAttributes {
             .collect()
     }
 
-    pub(crate) fn generate_dart_metadata(&self) -> Vec<IrDartAnnotation> {
+    pub(crate) fn dart_metadata(&self) -> Vec<IrDartAnnotation> {
         self.0
             .iter()
             .filter_map(
