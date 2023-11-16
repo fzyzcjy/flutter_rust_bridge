@@ -1,5 +1,4 @@
 pub(crate) mod attribute_parser;
-pub(crate) mod error;
 pub(crate) mod function_extractor;
 pub(crate) mod function_parser;
 pub(crate) mod internal_config;
@@ -23,10 +22,8 @@ use log::trace;
 use std::path::Path;
 use syn::File;
 
-pub(crate) type ParserResult<T = (), E = error::Error> = Result<T, E>;
-
 // TODO handle multi file correctly
-pub(crate) fn parse(config: &ParserInternalConfig) -> ParserResult<IrPack> {
+pub(crate) fn parse(config: &ParserInternalConfig) -> anyhow::Result<IrPack> {
     let rust_input_paths = config
         .rust_input_path_pack
         .rust_input_path
@@ -49,7 +46,7 @@ pub(crate) fn parse(config: &ParserInternalConfig) -> ParserResult<IrPack> {
     let src_fns = file_asts
         .iter()
         .map(extract_generalized_functions_from_file)
-        .collect::<ParserResult<Vec<_>>>()?
+        .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
         .flatten()
         .collect_vec();
@@ -64,7 +61,7 @@ pub(crate) fn parse(config: &ParserInternalConfig) -> ParserResult<IrPack> {
     let ir_funcs = src_fns
         .iter()
         .map(|f| function_parser.parse_function(f))
-        .collect::<ParserResult<_>>()?;
+        .collect::<anyhow::Result<_>>()?;
 
     let has_executor = source_rust_contents.iter().any(|s| parse_has_executor(s));
 

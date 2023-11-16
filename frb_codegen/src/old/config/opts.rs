@@ -1,16 +1,14 @@
 use crate::ir::IrPack;
-use crate::parser::{self, ParserResult};
+use crate::parser::{self, anyhow::Result};
 use crate::utils::misc::{read_rust_file, BlockIndex};
 use convert_case::{Case, Casing};
 use std::path::{Path, PathBuf};
 
-pub struct Opts {
-
-}
+pub struct Opts {}
 
 impl Opts {
     // moved to parser
-    // pub fn get_ir_pack(&self) -> ParserResult<IrPack> {
+    // pub fn get_ir_pack(&self) -> anyhow::Result<IrPack> {
     //     // info!("Phase: Parse source code to AST");
     //     let source_rust_content = read_rust_file(&PathBuf::from(&self.rust_input_path));
     //     let file_ast = syn::parse_file(&source_rust_content)?;

@@ -1,7 +1,5 @@
-use crate::codegen::parser::error::Error;
 use crate::codegen::parser::source_graph::modules::{Module, ModuleInfo, ModuleSource, Visibility};
-use crate::codegen::parser::ParserResult;
-use anyhow::Context;
+use anyhow::{bail, Context};
 use cargo_metadata::{Metadata, MetadataCommand, Package};
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -16,7 +14,7 @@ pub struct Crate {
 }
 
 impl Crate {
-    pub fn parse(manifest_path: &Path) -> ParserResult<Self> {
+    pub fn parse(manifest_path: &Path) -> anyhow::Result<Self> {
         let manifest_path = fs::canonicalize(manifest_path)?;
         let metadata = execute_cargo_metadata(&manifest_path)?;
 
@@ -47,7 +45,7 @@ fn execute_cargo_metadata(manifest_path: &Path) -> anyhow::Result<Metadata> {
     Ok(cmd.exec()?)
 }
 
-fn get_root_src_file(root_package: &Package) -> ParserResult<PathBuf> {
+fn get_root_src_file(root_package: &Package) -> anyhow::Result<PathBuf> {
     for attempt_relative_path in ["src/lib.rs", "src/main.rs"] {
         let file = root_package
             .manifest_path
@@ -58,7 +56,7 @@ fn get_root_src_file(root_package: &Package) -> ParserResult<PathBuf> {
             return Ok(fs::canonicalize(file).unwrap());
         }
     }
-    Err(Error::NoEntryPoint)
+    bail!("No src/lib.rs or src/main.rs found for the specified/inferred Cargo.toml.")
 }
 
 fn get_root_module_info(root_src_file: PathBuf, root_src_ast: File) -> ModuleInfo {

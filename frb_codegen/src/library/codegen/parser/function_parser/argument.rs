@@ -7,7 +7,6 @@ use crate::codegen::parser::function_parser::{
     type_to_string, FunctionParser, FunctionPartialInfo, STREAM_SINK_IDENT,
 };
 use crate::codegen::parser::type_parser::misc::parse_comments;
-use crate::codegen::parser::ParserResult;
 use anyhow::anyhow;
 use syn::*;
 
@@ -16,7 +15,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         &mut self,
         argument_index: usize,
         sig_input: &FnArg,
-    ) -> ParserResult<FunctionPartialInfo> {
+    ) -> anyhow::Result<FunctionPartialInfo> {
         if let FnArg::Typed(ref pat_type) = sig_input {
             let ty = pat_type.ty.as_ref();
             match &ty {
@@ -77,7 +76,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 fn partial_info_for_normal_type(
     ty: IrType,
     argument_index: usize,
-) -> ParserResult<FunctionPartialInfo> {
+) -> anyhow::Result<FunctionPartialInfo> {
     Ok(FunctionPartialInfo {
         ok_output: Some(ty),
         mode: Some(IrFuncMode::Stream { argument_index }),
@@ -88,7 +87,7 @@ fn partial_info_for_normal_type(
 fn partial_info_for_stream_sink_type(
     ty: IrType,
     pat_type: &PatType,
-) -> ParserResult<FunctionPartialInfo> {
+) -> anyhow::Result<FunctionPartialInfo> {
     let name = parse_name(pat_type)?;
     let attributes = FrbAttributes::parse(&pat_type.attrs)?;
     Ok(FunctionPartialInfo {
@@ -104,7 +103,7 @@ fn partial_info_for_stream_sink_type(
     })
 }
 
-fn parse_name(pat_type: &PatType) -> ParserResult<String> {
+fn parse_name(pat_type: &PatType) -> anyhow::Result<String> {
     if let Pat::Ident(ref pat_ident) = *pat_type.pat {
         Ok(format!("{}", pat_ident.ident))
     } else {

@@ -7,8 +7,7 @@ use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::TypeParser;
-use crate::codegen::parser::ParserResult;
-use anyhow::Context;
+use anyhow::{bail, Context};
 use itertools::concat;
 use log::debug;
 use quote::quote;
@@ -26,7 +25,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         Self { type_parser }
     }
 
-    pub(crate) fn parse_function(&mut self, func: &ItemFn) -> ParserResult<IrFunc> {
+    pub(crate) fn parse_function(&mut self, func: &ItemFn) -> anyhow::Result<IrFunc> {
         debug!("parse_function function name: {:?}", func.sig.ident);
 
         let sig = &func.sig;
@@ -60,7 +59,7 @@ struct FunctionPartialInfo {
 }
 
 impl FunctionPartialInfo {
-    fn merge(self, other: Self) -> ParserResult<Self> {
+    fn merge(self, other: Self) -> anyhow::Result<Self> {
         Ok(Self {
             inputs: concat([self.inputs, other.inputs]),
             ok_output: merge_option(self.ok_output, other.ok_output)?,
@@ -70,9 +69,9 @@ impl FunctionPartialInfo {
     }
 }
 
-fn merge_option<T>(a: Option<T>, b: Option<T>) -> ParserResult<Option<T>> {
+fn merge_option<T>(a: Option<T>, b: Option<T>) -> anyhow::Result<Option<T>> {
     if a.is_some() && b.is_some() {
-        return Err(super::error::Error::FunctionConflictArgumentOutput);
+        bail!("Function has conflicting arguments and/or outputs");
     }
     Ok(a.or(b))
 }

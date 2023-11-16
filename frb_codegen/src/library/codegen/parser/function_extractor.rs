@@ -1,11 +1,10 @@
-use crate::codegen::parser::ParserResult;
 use crate::if_then_some;
 use anyhow::Context;
 use itertools::Itertools;
 use syn::File;
 use syn::*;
 
-pub(crate) fn extract_generalized_functions_from_file(file: &File) -> ParserResult<Vec<ItemFn>> {
+pub(crate) fn extract_generalized_functions_from_file(file: &File) -> anyhow::Result<Vec<ItemFn>> {
     let mut ans = extract_fns_from_file(&file);
     ans.extend(extract_methods_from_file(&file)?);
     Ok(ans)
@@ -20,7 +19,7 @@ fn extract_fns_from_file(file: &File) -> Vec<ItemFn> {
         .collect_vec()
 }
 
-fn extract_methods_from_file(file: &File) -> ParserResult<Vec<ItemFn>> {
+fn extract_methods_from_file(file: &File) -> anyhow::Result<Vec<ItemFn>> {
     let mut src_fns = Vec::new();
 
     for item in file.items.iter() {
@@ -45,7 +44,7 @@ fn extract_methods_from_file(file: &File) -> ParserResult<Vec<ItemFn>> {
 fn convert_item_method_to_function(
     _item_impl: &ItemImpl,
     _item_method: &ImplItemFn,
-) -> ParserResult<Option<ItemFn>> {
+) -> anyhow::Result<Option<ItemFn>> {
     // TODO want to use other approaches, temp disable
     todo!()
     // if let Type::Path(p) = item_impl.self_ty.as_ref() {
@@ -111,7 +110,7 @@ fn convert_item_method_to_function(
     //                 .sig
     //                 .inputs
     //                 .iter()
-    //                 .map(|input| -> ParserResult<_> {
+    //                 .map(|input| -> anyhow::Result<_> {
     //                     if let FnArg::Receiver(Receiver { mutability, .. }) = input {
     //                         let mut segments = Punctuated::new();
     //                         segments.push(PathSegment {
@@ -143,7 +142,7 @@ fn convert_item_method_to_function(
     //                         Ok(input.clone())
     //                     }
     //                 })
-    //                 .collect::<ParserResult<Punctuated<_, _>>>()?,
+    //                 .collect::<anyhow::Result<Punctuated<_, _>>>()?,
     //             variadic: None,
     //             output: item_method.sig.output.clone(),
     //         },

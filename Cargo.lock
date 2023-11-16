@@ -717,7 +717,6 @@ dependencies = [
  "strum_macros",
  "syn 2.0.28",
  "tempfile",
- "thiserror",
  "toml",
  "topological-sort",
 ]
@@ -1664,26 +1663,6 @@ name = "textwrap"
 version = "0.16.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "222a222a5bfe1bba4a77b45ec488a741b3cb8872e5e499451fd7d0129c9c7c3d"
-
-[[package]]
-name = "thiserror"
-version = "1.0.44"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "611040a08a0439f8248d1990b111c95baa9c704c805fa1f62104b39655fd7f90"
-dependencies = [
- "thiserror-impl",
-]
-
-[[package]]
-name = "thiserror-impl"
-version = "1.0.44"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "090198534930841fab3a5d1bb637cde49e339654e606195f8d9c76eeb081dc96"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn 2.0.28",
-]
 
 [[package]]
 name = "threadpool"

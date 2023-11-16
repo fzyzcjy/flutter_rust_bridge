@@ -8,19 +8,21 @@ use crate::codegen::parser::function_parser::{
     type_to_string, FunctionParser, FunctionPartialInfo,
 };
 use crate::codegen::parser::type_parser::unencodable::{splay_segments, ArgsRefs};
-use crate::codegen::parser::ParserResult;
 use anyhow::Context;
 use syn::*;
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
-    pub(super) fn parse_fn_output(&mut self, sig: &Signature) -> ParserResult<FunctionPartialInfo> {
+    pub(super) fn parse_fn_output(
+        &mut self,
+        sig: &Signature,
+    ) -> anyhow::Result<FunctionPartialInfo> {
         Ok(match &sig.output {
             ReturnType::Type(_, ty) => self.parse_fn_output_type(ty)?,
             ReturnType::Default => Default::default(),
         })
     }
 
-    fn parse_fn_output_type(&mut self, ty: &Type) -> ParserResult<FunctionPartialInfo> {
+    fn parse_fn_output_type(&mut self, ty: &Type) -> anyhow::Result<FunctionPartialInfo> {
         let ir = self.type_parser.parse_type(ty)?;
 
         if let IrType::Unencodable(IrTypeUnencodable { segments, .. }) = ir {
@@ -39,7 +41,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     }
 }
 
-fn parse_fn_output_type_result(args: &[IrType]) -> ParserResult<FunctionPartialInfo> {
+fn parse_fn_output_type_result(args: &[IrType]) -> anyhow::Result<FunctionPartialInfo> {
     let ok_output = args.first().unwrap();
 
     let is_anyhow = args.len() == 1
