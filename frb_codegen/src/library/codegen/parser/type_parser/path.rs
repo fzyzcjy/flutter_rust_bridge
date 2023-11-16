@@ -47,36 +47,14 @@ impl<'a> TypeParser<'a> {
         let segments = self.extract_path_data(path)?;
         let splayed_segments: &[(&str, Option<ArgsRefs>)] = &segments.splay()[..];
 
+        if let Some(ans) = self.parse_type_path_data_concrete(splayed_segments)? {
+            return Ok(ans);
+        }
         if let Some(ans) = self.parse_type_path_data_vec(type_path, splayed_segments)? {
             return Ok(ans);
         }
 
         match splayed_segments {
-            // Non generic types
-            [("chrono", None), ("Duration", None)] => {
-                Ok(Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Duration)))
-            }
-
-            [("chrono", None), ("NaiveDateTime", None)] => {
-                Ok(Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Naive)))
-            }
-
-            [("flutter_rust_bridge", None), ("DartAbi", None)] => Ok(Dynamic(IrTypeDynamic)),
-
-            [("DartAbi", None)] => Ok(Dynamic(IrTypeDynamic)),
-
-            [("uuid", None), ("Uuid", None)] => Ok(Delegate(IrTypeDelegate::Uuid)),
-
-            [("flutter_rust_bridge", None), ("DartOpaque", None)] => {
-                Ok(DartOpaque(IrTypeDartOpaque {}))
-            }
-
-            [("DartOpaque", None)] => Ok(DartOpaque(IrTypeDartOpaque {})),
-
-            [("String", None)] => Ok(Delegate(IrTypeDelegate::String)),
-
-            [("Backtrace", None)] => Ok(Delegate(IrTypeDelegate::Backtrace)),
-
             // TODO: change to "if let guard" https://github.com/rust-lang/rust/issues/51114
             [(name, None)] if matches!(parse_primitive(name), Some(..)) => {
                 Ok(Primitive(parse_primitive(name).unwrap()))
