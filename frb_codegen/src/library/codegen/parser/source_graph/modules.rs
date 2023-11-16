@@ -1,5 +1,6 @@
 use derivative::Derivative;
-use serde::Serialize;
+use quote::ToTokens;
+use serde::{Serialize, Serializer};
 use std::path::PathBuf;
 use syn::{Ident, ItemEnum, ItemStruct, Type};
 
@@ -44,6 +45,7 @@ pub enum ModuleSource {
 #[derive(Clone, Derivative, Serialize)]
 #[derivative(Debug)]
 pub struct StructOrEnum<Item> {
+    #[serde(serialize_with = "serialize_syn")]
     pub(crate) ident: Ident,
     #[derivative(Debug = "ignore")]
     #[serde(skip_serializing)]
@@ -62,6 +64,7 @@ pub struct Enum(pub StructOrEnum<ItemEnum>);
 #[derive(Clone, Debug, Serialize)]
 pub struct TypeAlias {
     pub(super) ident: String,
+    #[serde(serialize_with = "serialize_syn")]
     pub(super) target: Type,
 }
 
@@ -72,4 +75,8 @@ pub struct ModuleScope {
     pub(super) structs: Vec<Struct>,
     // pub(super) imports: Vec<Import>, // not implemented yet
     pub(super) type_alias: Vec<TypeAlias>,
+}
+
+fn serialize_syn<T: ToTokens, S: Serializer>(value: &T, s: S) -> Result<S::Ok, S::Error> {
+    quote::quote!(#value).to_string().serialize(s)
 }
