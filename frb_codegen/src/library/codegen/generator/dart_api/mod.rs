@@ -1,3 +1,4 @@
+pub(super) mod base;
 pub(super) mod class;
 
 use crate::codegen::generator::output::OutputCode;
