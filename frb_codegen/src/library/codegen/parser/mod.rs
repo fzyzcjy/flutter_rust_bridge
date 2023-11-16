@@ -105,7 +105,7 @@ mod tests {
             rust_crate_dir: test_fixture_dir,
         })?;
 
-        json_golden_test(&serde_json::to_value(actual)?, "expect_output.json")?;
+        json_golden_test(&serde_json::to_value(actual)?, "expect_output.json".into())?;
 
         Ok(())
     }

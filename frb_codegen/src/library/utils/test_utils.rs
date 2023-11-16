@@ -1,6 +1,8 @@
+use crate::codegen::parser::source_graph::modules::ModuleSource::File;
 use log::debug;
-use serde_json::Value;
-use std::path::PathBuf;
+use serde_json::{json, Value};
+use std::fs::File;
+use std::path::{Path, PathBuf};
 use std::{env, fs};
 
 pub(crate) fn get_test_fixture_dir(fixture_name: &str) -> PathBuf {
@@ -18,11 +20,15 @@ pub(crate) fn set_cwd_test_fixture(fixture_name: &str) -> anyhow::Result<()> {
 /// "golden" means comparison tests
 /// see, for example, https://api.flutter.dev/flutter/flutter_test/matchesGoldenFile.html
 /// for more information
-pub(crate) fn json_golden_test(actual: &Value, matcher_path: &str) -> anyhow::Result<()> {
+pub(crate) fn json_golden_test(actual: &Value, matcher_path: &Path) -> anyhow::Result<()> {
     let actual_str = serde_json::to_string_pretty(actual)?;
     debug!("json_golden_test actual:\n{actual_str}");
 
-    let expect: Value = serde_json::from_str(&fs::read_to_string(matcher_path)?)?;
+    let expect: Value = if matcher_path.exists() {
+        serde_json::from_str(&fs::read_to_string(matcher_path)?)?
+    } else {
+        json!()
+    };
 
     if enable_update_golden() {
         if actual != &expect {
