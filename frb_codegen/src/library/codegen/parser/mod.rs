@@ -7,8 +7,6 @@ pub(crate) mod reader;
 pub(crate) mod source_graph;
 pub(crate) mod type_alias_resolver;
 pub(crate) mod type_parser;
-pub(crate) mod unencodable;
-
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::parser::function_extractor::extract_generalized_functions_from_file;
 use crate::codegen::parser::function_parser::FunctionParser;

@@ -5,9 +5,9 @@ use crate::codegen::ir::ty::IrType::{
     Boxed, DartOpaque, Delegate, Dynamic, EnumRef, GeneralList, Optional, OptionalList, Primitive,
     PrimitiveList, Record, RustOpaque, StructRef, Unencodable,
 };
+use crate::codegen::parser::type_parser::unencodable::ArgsRefs;
+use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
 use crate::codegen::parser::type_parser::TypeParser;
-use crate::codegen::parser::unencodable::ArgsRefs;
-use crate::codegen::parser::unencodable::ArgsRefs::Generic;
 use anyhow::bail;
 use quote::ToTokens;
 use syn::TypePath;

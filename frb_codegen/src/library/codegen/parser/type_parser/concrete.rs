@@ -10,9 +10,9 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{
     Boxed, DartOpaque, Delegate, Dynamic, Primitive, PrimitiveList, RustOpaque, Unencodable,
 };
+use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
+use crate::codegen::parser::type_parser::unencodable::{ArgsRefs, Splayable};
 use crate::codegen::parser::type_parser::TypeParser;
-use crate::codegen::parser::unencodable::ArgsRefs::Generic;
-use crate::codegen::parser::unencodable::{ArgsRefs, Splayable};
 use anyhow::bail;
 
 impl<'a> TypeParser<'a> {

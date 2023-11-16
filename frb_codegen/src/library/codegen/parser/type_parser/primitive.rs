@@ -1,8 +1,8 @@
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Primitive;
+use crate::codegen::parser::type_parser::unencodable::ArgsRefs;
 use crate::codegen::parser::type_parser::TypeParser;
-use crate::codegen::parser::unencodable::ArgsRefs;
 
 impl<'a> TypeParser<'a> {
     pub(crate) fn parse_type_path_data_primitive(

@@ -17,8 +17,8 @@ use crate::codegen::ir::ty::IrType::{
     PrimitiveList, Record, RustOpaque, StructRef, Unencodable,
 };
 use crate::codegen::parser::type_parser::unencodable::parse_path_type_to_unencodable;
+use crate::codegen::parser::type_parser::unencodable::{ArgsRefs, Splayable};
 use crate::codegen::parser::type_parser::TypeParser;
-use crate::codegen::parser::unencodable::{ArgsRefs, Splayable};
 use anyhow::{anyhow, bail};
 use quote::ToTokens;
 use syn::{Path, QSelf, TypePath};

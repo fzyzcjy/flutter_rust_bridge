@@ -13,8 +13,8 @@ use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::source_graph::modules::Enum;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::structure::compute_name_and_wrapper_name;
+use crate::codegen::parser::type_parser::unencodable::ArgsRefs;
 use crate::codegen::parser::type_parser::TypeParser;
-use crate::codegen::parser::unencodable::ArgsRefs;
 use syn::{Attribute, Field, Ident, Variant};
 
 impl<'a> TypeParser<'a> {

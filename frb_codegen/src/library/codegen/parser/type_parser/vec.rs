@@ -7,9 +7,9 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{
     Delegate, GeneralList, Optional, OptionalList, Primitive, PrimitiveList,
 };
+use crate::codegen::parser::type_parser::unencodable::ArgsRefs;
+use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
 use crate::codegen::parser::type_parser::TypeParser;
-use crate::codegen::parser::unencodable::ArgsRefs;
-use crate::codegen::parser::unencodable::ArgsRefs::Generic;
 use anyhow::bail;
 use quote::ToTokens;
 use syn::TypePath;
