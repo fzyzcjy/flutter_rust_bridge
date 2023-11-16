@@ -49,7 +49,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 }
 
 fn parse_fn_output_type_result(args: &[IrType]) -> ParserResult<FunctionPartialInfo> {
-    let ok = args.first().unwrap();
+    let ok_output = args.first().unwrap();
 
     let is_anyhow = args.len() == 1
         || args.iter().any(|x| match x {
@@ -62,7 +62,7 @@ fn parse_fn_output_type_result(args: &[IrType]) -> ParserResult<FunctionPartialI
         args.last().cloned()
     };
 
-    let error = if let Some(StructRef(mut struct_ref)) = error {
+    let error_output = if let Some(StructRef(mut struct_ref)) = error {
         struct_ref.is_exception = true;
         Some(StructRef(struct_ref))
     } else if let Some(EnumRef(mut enum_ref)) = error {
@@ -72,8 +72,9 @@ fn parse_fn_output_type_result(args: &[IrType]) -> ParserResult<FunctionPartialI
         error
     };
 
-    Some(FuncOutput::ResultType {
-        ok: ok.clone(),
-        error,
+    Ok(FunctionPartialInfo {
+        ok_output: Some(ok_output.clone()),
+        error_output,
+        ..Default::default()
     })
 }
