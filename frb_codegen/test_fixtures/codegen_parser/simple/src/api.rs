@@ -1,1 +1,1 @@
-fn first_function() {}
+pub fn first_function() {}
