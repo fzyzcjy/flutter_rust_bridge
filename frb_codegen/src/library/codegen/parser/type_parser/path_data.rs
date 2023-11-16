@@ -3,8 +3,10 @@ use crate::codegen::ir::ty::unencodable::{Args, NameComponent};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Primitive;
 use crate::codegen::parser::type_parser::TypeParser;
-use anyhow::bail;
+use crate::if_then_some;
 use anyhow::Result;
+use anyhow::{anyhow, bail, Context};
+use itertools::Itertools;
 use quote::ToTokens;
 use syn::{
     AngleBracketedGenericArguments, GenericArgument, ParenthesizedGenericArguments, Path,
@@ -24,17 +26,14 @@ impl<'a> TypeParser<'a> {
         Ok(match &segment.arguments {
             PathArguments::None => NameComponent { ident, args: None },
             PathArguments::AngleBracketed(args) => {
-                match self.parse_angle_bracketed_generic_arguments(args) {
-                    Err(sub_err) => bail!(
-                        "\"{}\" of \"{}\" is not valid. {}",
-                        ident,
-                        path.to_token_stream(),
-                        sub_err
-                    ),
-                    Ok(ir_types) => NameComponent {
-                        ident,
-                        args: Some(Args::Generic(ir_types)),
-                    },
+                let ir_types = self
+                    .parse_angle_bracketed_generic_arguments(args)
+                    .with_context(|| {
+                        anyhow!("\"{ident}\" of \"{}\" is not valid", path.to_token_stream())
+                    })?;
+                NameComponent {
+                    ident,
+                    args: Some(Args::Generic(ir_types)),
                 }
             }
             PathArguments::Parenthesized(args) => NameComponent {
@@ -52,13 +51,8 @@ impl<'a> TypeParser<'a> {
     ) -> Result<Vec<IrType>> {
         args.args
             .iter()
-            .filter_map(|arg| {
-                if let GenericArgument::Type(ty) = arg {
-                    Some(self.parse_type(ty))
-                } else {
-                    None
-                }
-            })
+            .filter_map(|item| if_then_some!(let GenericArgument::Type(ty) = arg, &ty))
+            .map(|ty| self.parse_type(ty))
             .collect()
     }
 
@@ -70,7 +64,7 @@ impl<'a> TypeParser<'a> {
             .inputs
             .iter()
             .map(|ty| self.parse_type(ty))
-            .collect::<Vec<IrType>>();
+            .collect_vec();
 
         let output_type = match &args.output {
             syn::ReturnType::Default => Primitive(IrTypePrimitive::Unit),
