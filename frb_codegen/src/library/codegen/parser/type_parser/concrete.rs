@@ -18,47 +18,39 @@ use anyhow::bail;
 impl<'a> TypeParser<'a> {
     pub(crate) fn parse_type_path_data_concrete(
         &mut self,
-        splayed_segments: &[SplayedSegment],
+        last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        Ok(Some(match splayed_segments {
-            [("chrono", None), ("Duration", None)] => {
-                Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Duration))
-            }
-            [("chrono", None), ("NaiveDateTime", None)] => {
-                Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Naive))
-            }
-            [("chrono", None), ("DateTime", Some(Generic(args)))] => parse_datetime(args)?,
+        Ok(Some(match last_segment {
+            ("Duration", None) => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Duration)),
+            ("NaiveDateTime", None) => Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Naive)),
+            ("DateTime", Some(Generic(args))) => parse_datetime(args)?,
 
-            [("uuid", None), ("Uuid", None)] => Delegate(IrTypeDelegate::Uuid),
-            [("String", None)] => Delegate(IrTypeDelegate::String),
-            [("Backtrace", None)] => Delegate(IrTypeDelegate::Backtrace),
+            ("Uuid", None) => Delegate(IrTypeDelegate::Uuid),
+            ("String", None) => Delegate(IrTypeDelegate::String),
+            ("Backtrace", None) => Delegate(IrTypeDelegate::Backtrace),
 
-            [("flutter_rust_bridge", None), ("DartAbi", None)] => Dynamic(IrTypeDynamic),
+            ("DartAbi", None) => Dynamic(IrTypeDynamic),
 
-            [("flutter_rust_bridge", None), ("DartOpaque", None)] => {
-                DartOpaque(IrTypeDartOpaque {})
-            }
+            ("DartOpaque", None) => DartOpaque(IrTypeDartOpaque {}),
 
-            [("flutter_rust_bridge", None), ("RustOpaque", Some(Generic([Delegate(IrTypeDelegate::Array(array_delegate))])))] => {
+            ("RustOpaque", Some(Generic([Delegate(IrTypeDelegate::Array(array_delegate))]))) => {
                 Delegate(IrTypeDelegate::Array(array_delegate.clone()))
             }
 
-            [("flutter_rust_bridge", None), ("RustOpaque", Some(Generic([Primitive(IrTypePrimitive::Unit)])))] => {
+            ("RustOpaque", Some(Generic([Primitive(IrTypePrimitive::Unit)]))) => {
                 RustOpaque(IrTypeRustOpaque::new(Primitive(IrTypePrimitive::Unit)))
             }
 
-            [("flutter_rust_bridge", None), ("RustOpaque", Some(Generic([ty])))] => {
-                RustOpaque(IrTypeRustOpaque::new(ty.clone()))
-            }
+            ("RustOpaque", Some(Generic([ty]))) => RustOpaque(IrTypeRustOpaque::new(ty.clone())),
 
-            [("flutter_rust_bridge", None), (
+            (
                 "ZeroCopyBuffer",
                 Some(Generic([PrimitiveList(IrTypePrimitiveList { primitive })])),
-            )] => Delegate(IrTypeDelegate::ZeroCopyBufferVecPrimitive(
+            ) => Delegate(IrTypeDelegate::ZeroCopyBufferVecPrimitive(
                 primitive.clone(),
             )),
 
-            [("Box", Some(Generic([inner])))] => Boxed(IrTypeBoxed {
+            ("Box", Some(Generic([inner]))) => Boxed(IrTypeBoxed {
                 exist_in_real_api: true,
                 inner: Box::new(inner.clone()),
             }),

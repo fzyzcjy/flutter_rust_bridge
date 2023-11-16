@@ -13,17 +13,17 @@ use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::source_graph::modules::Enum;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::structure::compute_name_and_wrapper_name;
-use crate::codegen::parser::type_parser::unencodable::{SplayedSegment};
+use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParser;
 use syn::{Attribute, Field, Ident, Variant};
 
 impl<'a> TypeParser<'a> {
     pub(crate) fn parse_type_path_data_enum(
         &mut self,
-        splayed_segments: &[SplayedSegment],
+        last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        Ok(Some(match splayed_segments {
-            [(name, _)] if self.src_enums.contains_key(&name.to_string()) => {
+        Ok(Some(match last_segment {
+            (name, _) if self.src_enums.contains_key(&name.to_string()) => {
                 let ident = IrEnumIdent(name.to_string());
 
                 if self.parsed_enums.insert(ident.clone().0) {

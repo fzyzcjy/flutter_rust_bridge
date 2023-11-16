@@ -6,7 +6,7 @@ use crate::codegen::ir::ty::IrType::{
     PrimitiveList, Record, RustOpaque, StructRef, Unencodable,
 };
 use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
-use crate::codegen::parser::type_parser::unencodable::{SplayedSegment};
+use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParser;
 use anyhow::bail;
 use quote::ToTokens;
@@ -16,15 +16,15 @@ impl<'a> TypeParser<'a> {
     pub(crate) fn parse_type_path_data_optional(
         &mut self,
         type_path: &TypePath,
-        splayed_segments: &[SplayedSegment],
+        last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        Ok(Some(match splayed_segments {
-            [("Option", Some(Generic([Optional(_)])))] => bail!(
+        Ok(Some(match last_segment {
+            ("Option", Some(Generic([Optional(_)]))) => bail!(
                 "Nested optionals without indirection are not supported. {}",
                 type_path.to_token_stream()
             ),
 
-            [("Option", Some(Generic([inner])))] => Optional(match inner {
+            ("Option", Some(Generic([inner]))) => Optional(match inner {
                 StructRef(..)
                 | EnumRef(..)
                 | RustOpaque(..)

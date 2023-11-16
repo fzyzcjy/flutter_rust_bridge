@@ -8,7 +8,7 @@ use crate::codegen::ir::ty::IrType::{
     Delegate, GeneralList, Optional, OptionalList, Primitive, PrimitiveList,
 };
 use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
-use crate::codegen::parser::type_parser::unencodable::{SplayedSegment};
+use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParser;
 use anyhow::bail;
 use quote::ToTokens;
@@ -18,18 +18,18 @@ impl<'a> TypeParser<'a> {
     pub(crate) fn parse_type_path_data_vec(
         &mut self,
         type_path: &TypePath,
-        splayed_segments: &[SplayedSegment],
+        last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        Ok(Some(match splayed_segments {
-            [("Vec", Some(Generic([Delegate(IrTypeDelegate::String)])))] => {
+        Ok(Some(match last_segment {
+            ("Vec", Some(Generic([Delegate(IrTypeDelegate::String)]))) => {
                 Delegate(IrTypeDelegate::StringList)
             }
 
-            [("Vec", Some(Generic([Delegate(IrTypeDelegate::Uuid)])))] => {
+            ("Vec", Some(Generic([Delegate(IrTypeDelegate::Uuid)]))) => {
                 Delegate(IrTypeDelegate::Uuids)
             }
 
-            [("Vec", Some(Generic([Optional(opt)])))] => {
+            ("Vec", Some(Generic([Optional(opt)]))) => {
                 if matches!(opt.inner.as_ref(), IrType::Optional(_)) {
                     bail!(
                         "Nested optionals without indirection are not allowed. {}",
@@ -41,7 +41,7 @@ impl<'a> TypeParser<'a> {
                 })
             }
 
-            [("Vec", Some(Generic([Primitive(primitive)])))] => {
+            ("Vec", Some(Generic([Primitive(primitive)]))) => {
                 // Since Dart doesn't have a boolean primitive list like `Uint8List`,
                 // we need to convert `Vec<bool>` to a boolean general list in order to achieve the binding.
                 if primitive == &IrTypePrimitive::Bool {
@@ -55,11 +55,11 @@ impl<'a> TypeParser<'a> {
                 }
             }
 
-            [("Vec", Some(Generic([Delegate(IrTypeDelegate::Time(time))])))] => {
+            ("Vec", Some(Generic([Delegate(IrTypeDelegate::Time(time))]))) => {
                 Delegate(IrTypeDelegate::TimeList(*time))
             }
 
-            [("Vec", Some(Generic([element])))] => GeneralList(IrTypeGeneralList {
+            ("Vec", Some(Generic([element]))) => GeneralList(IrTypeGeneralList {
                 inner: Box::new(element.clone()),
             }),
 
