@@ -4,14 +4,12 @@ use crate::codegen::ir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
 };
 use crate::codegen::ir::ty::dynamic::IrTypeDynamic;
-use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumIdent, IrTypeEnumRef};
-use crate::codegen::ir::ty::general_list::IrTypeGeneralList;
+use crate::codegen::ir::ty::enumeration::{IrEnumIdent, IrTypeEnumRef};
 use crate::codegen::ir::ty::optional::IrTypeOptional;
-use crate::codegen::ir::ty::optional_list::IrTypeOptionalList;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
-use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent, IrTypeStructRef};
+use crate::codegen::ir::ty::structure::{IrStructIdent, IrTypeStructRef};
 use crate::codegen::ir::ty::unencodable::{Args, IrTypeUnencodable, NameComponent};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{
@@ -44,9 +42,16 @@ impl<'a> TypeParser<'a> {
         type_path: &TypePath,
         path: &Path,
     ) -> anyhow::Result<IrType> {
-        let segments = self.extract_path_data(path)?;
         use ArgsRefs::*;
-        match &segments.splay()[..] {
+
+        let segments = self.extract_path_data(path)?;
+        let splayed_segments: &[(&str, Option<ArgsRefs>)] = &segments.splay()[..];
+
+        if let Some(ans) = self.parse_type_path_data_vec(type_path, splayed_segments)? {
+            return Ok(ans);
+        }
+
+        match splayed_segments {
             // Non generic types
             [("chrono", None), ("Duration", None)] => {
                 Ok(Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Duration)))
@@ -134,49 +139,6 @@ impl<'a> TypeParser<'a> {
                     )))
                 }
             }
-
-            // Generic types
-            [("Vec", Some(Generic([Delegate(IrTypeDelegate::String)])))] => {
-                Ok(Delegate(IrTypeDelegate::StringList))
-            }
-
-            [("Vec", Some(Generic([Delegate(IrTypeDelegate::Uuid)])))] => {
-                Ok(Delegate(IrTypeDelegate::Uuids))
-            }
-
-            [("Vec", Some(Generic([Optional(opt)])))] => {
-                if matches!(opt.inner.as_ref(), IrType::Optional(_)) {
-                    bail!(
-                        "Nested optionals without indirection are not allowed. {}",
-                        type_path.to_token_stream()
-                    );
-                }
-                Ok(OptionalList(IrTypeOptionalList {
-                    inner: opt.inner.clone(),
-                }))
-            }
-
-            [("Vec", Some(Generic([Primitive(primitive)])))] => {
-                // Since Dart doesn't have a boolean primitive list like `Uint8List`,
-                // we need to convert `Vec<bool>` to a boolean general list in order to achieve the binding.
-                if primitive == &IrTypePrimitive::Bool {
-                    Ok(GeneralList(IrTypeGeneralList {
-                        inner: Box::new(IrType::Primitive(IrTypePrimitive::Bool)),
-                    }))
-                } else {
-                    Ok(PrimitiveList(IrTypePrimitiveList {
-                        primitive: primitive.clone(),
-                    }))
-                }
-            }
-
-            [("Vec", Some(Generic([Delegate(IrTypeDelegate::Time(time))])))] => {
-                Ok(Delegate(IrTypeDelegate::TimeList(*time)))
-            }
-
-            [("Vec", Some(Generic([element])))] => Ok(GeneralList(IrTypeGeneralList {
-                inner: Box::new(element.clone()),
-            })),
 
             [("flutter_rust_bridge", None), (
                 "ZeroCopyBuffer",

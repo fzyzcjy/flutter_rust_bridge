@@ -6,6 +6,7 @@ pub(crate) mod path_data;
 pub(crate) mod structure;
 pub(crate) mod tuple;
 pub(crate) mod ty;
+pub(crate) mod vec;
 
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
 use crate::codegen::ir::ty::IrType;
