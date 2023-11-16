@@ -4,7 +4,7 @@ use crate::dart_api_class_generator_struct;
 
 dart_api_class_generator_struct!(StructRefDartApiClassGenerator, IrTypeStructRef);
 
-impl DartApiClassGeneratorTrait for StructRefDartApiClassGenerator {
+impl<'a> DartApiClassGeneratorTrait for StructRefDartApiClassGenerator<'a> {
     fn generate(&self) -> String {
         let src = self.ir.get(self.context.ir_pack);
         let comments = dart_comments(&src.comments);

@@ -4,7 +4,7 @@ use crate::dart_api_class_generator_struct;
 
 dart_api_class_generator_struct!(DelegateDartApiClassGenerator, IrTypeDelegate);
 
-impl DartApiClassGeneratorTrait for DelegateDartApiClassGenerator {
+impl<'a> DartApiClassGeneratorTrait for DelegateDartApiClassGenerator<'a> {
     fn generate(&self) -> String {
         match &self.ir {
             IrTypeDelegate::PrimitiveEnum { ir, .. } => super::TypeEnumRefGenerator {

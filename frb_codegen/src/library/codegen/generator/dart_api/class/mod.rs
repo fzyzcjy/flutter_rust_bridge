@@ -1,3 +1,6 @@
+use crate::codegen::generator::dart_api::class::enumeration::EnumRefDartApiClassGenerator;
+use crate::codegen::generator::dart_api::class::rust_opaque::RustOpaqueDartApiClassGenerator;
+use crate::codegen::generator::dart_api::class::structure::StructRefDartApiClassGenerator;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::*;
@@ -13,9 +16,9 @@ pub(super) mod structure;
 #[derive(Debug, Clone)]
 pub enum DartApiClassGenerator<'a> {
     Delegate(DelegateDartApiClassGenerator<'a>),
-    EnumRef(EnumDartApiClassGenerator<'a>),
+    EnumRef(EnumRefDartApiClassGenerator<'a>),
     RustOpaque(RustOpaqueDartApiClassGenerator<'a>),
-    StructRef(StructDartApiClassGenerator<'a>),
+    StructRef(StructRefDartApiClassGenerator<'a>),
 }
 
 impl<'a> GeneratorDartApiClass<'a> {
@@ -44,7 +47,7 @@ macro_rules! dart_api_class_generator_struct {
             ir: $ir_cls,
         }
 
-        impl<'a> for $cls<'a> {
+        impl<'a> $cls<'a> {
             pub(super) fn new(ir: $ir_cls) -> Self {
                 Self { ir }
             }
