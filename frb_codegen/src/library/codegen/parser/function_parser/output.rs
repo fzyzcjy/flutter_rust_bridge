@@ -30,31 +30,25 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     }
 
     fn parse_fn_output_type(&mut self, ty: &Type) -> ParserResult<FunctionPartialInfo> {
-        let ty = &self.type_parser.resolve_alias(ty).clone();
+        let ir = self.type_parser.parse_type(ty)?;
 
-        Ok(if let Type::Path(type_path) = ty {
-            match self.type_parser.parse_type_path(&type_path)? {
-                IrType::Unencodable(IrTypeUnencodable { segments, .. }) => {
-                    match splay_segments(&segments).last() {
-                        Some(("Result", Some(ArgsRefs::Generic(args)))) => {
-                            parse_fn_output_type_result(args)
-                        }
-                        _ => TODO, // unencodable types not implemented
-                    }
+        if let IrType::Unencodable(IrTypeUnencodable { segments, .. }) = ir {
+            match splay_segments(&segments).last() {
+                Some(("Result", Some(ArgsRefs::Generic(args)))) => {
+                    return parse_fn_output_type_result(args);
                 }
-                result => FuncOutput::Type(result),
+                _ => {}
             }
-            TODO
-        } else {
-            FunctionPartialInfo {
-                ok_output: Some(self.type_parser.parse_type(ty)?),
-                ..Default::default()
-            }
+        }
+
+        Ok(FunctionPartialInfo {
+            ok_output: Some(self.type_parser.parse_type(ty)?),
+            ..Default::default()
         })
     }
 }
 
-fn parse_fn_output_type_result(args: &[IrType]) -> Option<FunctionPartialInfo> {
+fn parse_fn_output_type_result(args: &[IrType]) -> ParserResult<FunctionPartialInfo> {
     let ok = args.first().unwrap();
 
     let is_anyhow = args.len() == 1
