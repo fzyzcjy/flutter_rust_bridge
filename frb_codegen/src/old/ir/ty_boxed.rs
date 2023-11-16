@@ -2,10 +2,6 @@ use crate::ir::*;
 use crate::target::Target;
 
 impl IrTypeTrait for IrTypeBoxed {
-    fn dart_api_type(&self) -> String {
-        self.inner.dart_api_type()
-    }
-
     fn dart_wire_type(&self, target: Target) -> String {
         match target {
             Target::Wasm => {
