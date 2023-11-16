@@ -23,26 +23,21 @@ impl<'a> TypeParser<'a> {
 
     fn parse_path_segment(&mut self, path: &Path, segment: &PathSegment) -> Result<NameComponent> {
         let ident = segment.ident.to_string();
-        Ok(match &segment.arguments {
-            PathArguments::None => NameComponent { ident, args: None },
+        let args = match &segment.arguments {
+            PathArguments::None => None,
             PathArguments::AngleBracketed(args) => {
                 let ir_types = self
                     .parse_angle_bracketed_generic_arguments(args)
                     .with_context(|| {
                         anyhow!("\"{ident}\" of \"{}\" is not valid", path.to_token_stream())
                     })?;
-                NameComponent {
-                    ident,
-                    args: Some(Args::Generic(ir_types)),
-                }
+                Some(Args::Generic(ir_types))
             }
-            PathArguments::Parenthesized(args) => NameComponent {
-                ident,
-                args: Some(Args::Signature(
-                    self.parse_parenthesized_generic_arguments(args)?,
-                )),
-            },
-        })
+            PathArguments::Parenthesized(args) => Some(Args::Signature(
+                self.parse_parenthesized_generic_arguments(args)?,
+            )),
+        };
+        Ok(NameComponent { ident, args })
     }
 
     fn parse_angle_bracketed_generic_arguments(
