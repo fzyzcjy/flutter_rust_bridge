@@ -3,10 +3,11 @@ use crate::codegen::ir::ty::unencodable::{Args, NameComponent};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Primitive;
 use crate::codegen::parser::type_parser::TypeParser;
+use anyhow::bail;
 use quote::ToTokens;
 use syn::{
     AngleBracketedGenericArguments, GenericArgument, ParenthesizedGenericArguments, Path,
-    PathArguments,
+    PathArguments, PathSegment,
 };
 
 impl<'a> TypeParser<'a> {
@@ -15,33 +16,39 @@ impl<'a> TypeParser<'a> {
 
         segments
             .iter()
-            .map(|segment| {
-                let ident = segment.ident.to_string();
-                match &segment.arguments {
-                    PathArguments::None => Ok(NameComponent { ident, args: None }),
-                    PathArguments::AngleBracketed(args) => {
-                        match self.angle_bracketed_generic_arguments_to_ir_types(args) {
-                            Err(sub_err) => Err(format!(
-                                "\"{}\" of \"{}\" is not valid. {}",
-                                ident,
-                                path.to_token_stream(),
-                                sub_err
-                            )),
-                            Ok(ir_types) => Ok(NameComponent {
-                                ident,
-                                args: Some(Args::Generic(ir_types)),
-                            }),
-                        }
-                    }
-                    PathArguments::Parenthesized(args) => Ok(NameComponent {
-                        ident,
-                        args: Some(Args::Signature(
-                            self.parenthesized_generic_arguments_to_ir_types(args),
-                        )),
-                    }),
-                }
-            })
+            .map(|segment| self.parse_path_segment(path, segment))
             .collect()
+    }
+
+    fn parse_path_segment(
+        &mut self,
+        path: &Path,
+        segment: &PathSegment,
+    ) -> anyhow::Result<NameComponent, String> {
+        let ident = segment.ident.to_string();
+        Ok(match &segment.arguments {
+            PathArguments::None => NameComponent { ident, args: None },
+            PathArguments::AngleBracketed(args) => {
+                match self.angle_bracketed_generic_arguments_to_ir_types(args) {
+                    Err(sub_err) => bail!(
+                        "\"{}\" of \"{}\" is not valid. {}",
+                        ident,
+                        path.to_token_stream(),
+                        sub_err
+                    ),
+                    Ok(ir_types) => NameComponent {
+                        ident,
+                        args: Some(Args::Generic(ir_types)),
+                    },
+                }
+            }
+            PathArguments::Parenthesized(args) => NameComponent {
+                ident,
+                args: Some(Args::Signature(
+                    self.parenthesized_generic_arguments_to_ir_types(args)?,
+                )),
+            },
+        })
     }
 
     fn angle_bracketed_generic_arguments_to_ir_types(
@@ -52,7 +59,7 @@ impl<'a> TypeParser<'a> {
         args.iter()
             .filter_map(|arg| {
                 if let GenericArgument::Type(ty) = arg {
-                    Some(Ok(self.parse_type(ty)))
+                    Some(self.parse_type(ty))
                 } else {
                     None
                 }
@@ -63,7 +70,7 @@ impl<'a> TypeParser<'a> {
     fn parenthesized_generic_arguments_to_ir_types(
         &mut self,
         args: &ParenthesizedGenericArguments,
-    ) -> Vec<IrType> {
+    ) -> anyhow::Result<Vec<IrType>> {
         let ParenthesizedGenericArguments { inputs, output, .. } = args;
 
         let mut args = inputs
@@ -76,10 +83,10 @@ impl<'a> TypeParser<'a> {
                 args.insert(0, Primitive(IrTypePrimitive::Unit));
             }
             syn::ReturnType::Type(_, ret_ty) => {
-                args.insert(0, self.parse_type(ret_ty));
+                args.insert(0, self.parse_type(ret_ty)?);
             }
         };
 
-        args
+        Ok(args)
     }
 }
