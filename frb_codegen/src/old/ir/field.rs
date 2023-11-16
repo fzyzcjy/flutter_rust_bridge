@@ -5,14 +5,6 @@ use syn::LitStr;
 use crate::{ir::*, parser::IrDefaultValue, Opts};
 
 impl IrField {
-    #[inline]
-    pub fn required_modifier(&self) -> &str {
-        if self.default.is_some() {
-            ""
-        } else {
-            self.ty.dart_required_modifier()
-        }
-    }
     pub fn field_default(&self, freezed: bool, config: Option<&Opts>) -> String {
         self.default
             .as_ref()

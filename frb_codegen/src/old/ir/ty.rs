@@ -23,14 +23,6 @@ impl IrType {
         ans
     }
 
-    #[inline]
-    pub fn dart_required_modifier(&self) -> &'static str {
-        match self {
-            Optional(_) => "",
-            _ => "required ",
-        }
-    }
-
     /// Additional indirection for types put behind a vector
     #[inline]
     pub fn rust_ptr_modifier(&self) -> &'static str {

@@ -127,7 +127,7 @@ fn generate_api_method(
                 "{required}{} {} {default}",
                 input.ty.dart_api_type(),
                 input.name.dart_style(),
-                required = input.required_modifier(),
+                required = generate_field_required_modifier(input),
                 default = input.field_default(false, Some(config))
             )
         })

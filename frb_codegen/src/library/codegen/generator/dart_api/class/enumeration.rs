@@ -2,6 +2,7 @@ use crate::codegen::generator::dart_api::base::*;
 use crate::codegen::generator::dart_api::class::DartApiGeneratorClassTrait;
 use crate::codegen::generator::dart_api::misc::{
     generate_dart_comments, generate_dart_maybe_implements_exception,
+    generate_field_required_modifier,
 };
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ty::enumeration::IrVariantKind;
@@ -79,7 +80,7 @@ impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {
                                         )
                                         .dart_api_type(),
                                         field.name.dart_style(),
-                                        required = field.required_modifier(),
+                                        required = generate_field_required_modifier(field),
                                         comments = generate_dart_comments(&field.comments),
                                         default =
                                             field.field_default(true, Some(self.context.config)),

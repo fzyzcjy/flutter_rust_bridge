@@ -1,6 +1,8 @@
 use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::comment::IrComment;
+use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::import::IrDartImport;
+use crate::codegen::ir::ty::IrType::Optional;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 
@@ -39,5 +41,13 @@ pub(crate) fn generate_dart_maybe_implements_exception(is_exception: bool) -> &'
         "implements FrbException"
     } else {
         ""
+    }
+}
+
+pub(crate) fn generate_field_required_modifier(field: &IrField) -> &str {
+    if field.default.is_some() || matches!(field, Optional(_)) {
+        ""
+    } else {
+        "required "
     }
 }
