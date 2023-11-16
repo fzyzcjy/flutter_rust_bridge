@@ -56,6 +56,9 @@ impl<'a> TypeParser<'a> {
         if let Some(ans) = self.parse_type_path_data_vec(type_path, splayed_segments)? {
             return Ok(ans);
         }
+        if let Some(ans) = self.parse_type_path_data_optional(splayed_segments)? {
+            return Ok(ans);
+        }
 
         match splayed_segments {
             [(name, None)] if self.src_structs.contains_key(&name.to_string()) => {
@@ -140,29 +143,6 @@ impl<'a> TypeParser<'a> {
             [("Box", Some(Generic([inner])))] => Ok(Boxed(IrTypeBoxed {
                 exist_in_real_api: true,
                 inner: Box::new(inner.clone()),
-            })),
-
-            [("Option", Some(Generic([Optional(_)])))] => Err(anyhow!(
-                "Nested optionals without indirection are not supported. {}",
-                type_path.to_token_stream()
-            )),
-
-            [("Option", Some(Generic([inner])))] => Ok(Optional(match inner {
-                StructRef(..)
-                | EnumRef(..)
-                | RustOpaque(..)
-                | DartOpaque(..)
-                | Primitive(..)
-                | Record(..)
-                | Delegate(IrTypeDelegate::PrimitiveEnum { .. }) => {
-                    IrTypeOptional::new_with_boxed_wrapper(inner.clone())
-                }
-                Delegate(IrTypeDelegate::Time(..)) => {
-                    IrTypeOptional::new_with_boxed_wrapper(inner.clone())
-                }
-                OptionalList(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) | Dynamic(_)
-                | Unencodable(_) | Delegate(_) => IrTypeOptional::new(inner.clone()),
-                Optional(_) => unreachable!(),
             })),
 
             _ => Ok(parse_path_type_to_unencodable(type_path, segments.splay())),
