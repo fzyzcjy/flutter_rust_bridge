@@ -108,12 +108,12 @@ mod tests {
                 )]
                 .into(),
             },
-            rust_crate_dir: test_fixture_dir,
+            rust_crate_dir: test_fixture_dir.clone(),
         })?;
 
         json_golden_test(
             &serde_json::to_value(actual)?,
-            &PathBuf::from("expect_output.json"),
+            &test_fixture_dir.join("expect_output.json"),
         )?;
 
         Ok(())
