@@ -107,7 +107,10 @@ mod tests {
         json_golden_test(
             &serde_json::to_value(crate_map)?,
             &rust_crate_dir.join("expect_source_graph.json"),
-            &[],
+            &vec![(
+                path_to_string(&test_fixture_dir)?,
+                "{the-working-directory}".to_owned(),
+            )],
         )?;
 
         let actual_ir = parse(&ParserInternalConfig {
@@ -123,10 +126,7 @@ mod tests {
         json_golden_test(
             &serde_json::to_value(actual_ir)?,
             &rust_crate_dir.join("expect_ir.json"),
-            &vec![(
-                path_to_string(&test_fixture_dir)?,
-                "{the-working-directory}".to_owned(),
-            )],
+            &[],
         )?;
 
         Ok(())

@@ -1,9 +1,9 @@
 {
-  "manifest_path": "/Volumes/MyExternal/ExternalRefCode/flutter_rust_bridge/frb_codegen/test_fixtures/codegen_parser/simple/Cargo.toml",
+  "manifest_path": "{the-working-directory}/Cargo.toml",
   "name": "simple",
   "root_module": {
     "info": {
-      "file_path": "/Volumes/MyExternal/ExternalRefCode/flutter_rust_bridge/frb_codegen/test_fixtures/codegen_parser/simple/src/main.rs",
+      "file_path": "{the-working-directory}/src/main.rs",
       "module_path": [
         "crate"
       ],
@@ -14,7 +14,7 @@
       "modules": [
         {
           "info": {
-            "file_path": "/Volumes/MyExternal/ExternalRefCode/flutter_rust_bridge/frb_codegen/test_fixtures/codegen_parser/simple/src/api.rs",
+            "file_path": "{the-working-directory}/src/api.rs",
             "module_path": [
               "crate",
               "api"
