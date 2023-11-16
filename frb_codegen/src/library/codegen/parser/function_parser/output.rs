@@ -2,9 +2,16 @@ use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
-use crate::codegen::parser::function_parser::{FuncOutput, FunctionParser};
+use crate::codegen::parser::function_parser::FunctionParser;
 use crate::codegen::parser::type_parser::unencodable::{splay_segments, ArgsRefs};
 use syn::*;
+
+/// Represents a function's output type
+#[derive(Debug, Clone)]
+pub(super) enum FuncOutput {
+    ResultType { ok: IrType, error: Option<IrType> },
+    Type(IrType),
+}
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
     /// Attempts to parse the type from the return part of a function signature. There is a special

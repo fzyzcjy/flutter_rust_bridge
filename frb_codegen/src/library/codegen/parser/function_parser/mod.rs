@@ -10,6 +10,8 @@ use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
 use crate::codegen::parser::attribute_parser::FrbAttributes;
+use crate::codegen::parser::function_parser::argument::FuncArg;
+use crate::codegen::parser::function_parser::output::FuncOutput;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::unencodable::{splay_segments, ArgsRefs};
 use crate::codegen::parser::type_parser::TypeParser;
@@ -134,20 +136,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             error_output: output_err,
         })
     }
-}
-
-/// Represents a function's output type
-#[derive(Debug, Clone)]
-enum FuncOutput {
-    ResultType { ok: IrType, error: Option<IrType> },
-    Type(IrType),
-}
-
-/// Represents the type of an argument to a function
-#[derive(Debug, Clone)]
-enum FuncArg {
-    StreamSinkType(IrType),
-    Type(IrType),
 }
 
 /// syn -> string https://github.com/dtolnay/syn/issues/294

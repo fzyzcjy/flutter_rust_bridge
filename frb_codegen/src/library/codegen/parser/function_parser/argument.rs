@@ -1,5 +1,13 @@
-use crate::codegen::parser::function_parser::{FuncArg, FunctionParser, STREAM_SINK_IDENT};
+use crate::codegen::ir::ty::IrType;
+use crate::codegen::parser::function_parser::{FunctionParser, STREAM_SINK_IDENT};
 use syn::*;
+
+/// Represents the type of an argument to a function
+#[derive(Debug, Clone)]
+pub(super) enum FuncArg {
+    StreamSinkType(IrType),
+    Type(IrType),
+}
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
     /// Attempts to parse the type from an argument of a function signature. There is a special
