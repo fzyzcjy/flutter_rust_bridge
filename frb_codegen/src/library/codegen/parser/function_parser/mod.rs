@@ -17,6 +17,7 @@ use crate::codegen::parser::type_parser::unencodable::{splay_segments, ArgsRefs}
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::parser::ParserResult;
 use anyhow::Context;
+use itertools::concat;
 use log::debug;
 use quote::quote;
 use syn::*;
@@ -25,14 +26,6 @@ const STREAM_SINK_IDENT: &str = "StreamSink";
 
 pub(crate) struct FunctionParser<'a, 'b> {
     type_parser: &'a mut TypeParser<'b>,
-}
-
-#[derive(Debug, Default)]
-struct FunctionPartialInfo {
-    inputs: Option<Vec<IrField>>,
-    output: Option<IrType>,
-    mode: Option<IrFuncMode>,
-    fallible: Option<bool>,
 }
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
@@ -133,13 +126,32 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         Ok(IrFunc {
             name: func_name,
-            inputs: info.inputs.unwrap_or_default(),
+            inputs: info.inputs,
             output: info.output.context("Unsupported output")?,
             fallible: info.fallible.unwrap_or(true),
             mode: info.mode.context("Missing mode")?,
             comments: parse_comments(&func.attrs),
             error_output: output_err,
         })
+    }
+}
+
+#[derive(Debug, Default)]
+struct FunctionPartialInfo {
+    inputs: Vec<IrField>,
+    output: Option<IrType>,
+    mode: Option<IrFuncMode>,
+    fallible: Option<bool>,
+}
+
+impl FunctionPartialInfo {
+    fn merge(self, other: Self) -> Self {
+        Self {
+            inputs: concat([self.inputs, other.inputs]),
+            output: other.output.or(self.output),
+            mode: other.mode.or(self.mode),
+            fallible: other.fallible.or(self.fallible),
+        }
     }
 }
 
