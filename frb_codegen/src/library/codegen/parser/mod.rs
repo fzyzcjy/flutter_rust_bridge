@@ -78,7 +78,7 @@ mod tests {
     use crate::codegen::parser::internal_config::{ParserInternalConfig, RustInputPathPack};
     use crate::codegen::parser::parse;
     use crate::utils::logs::{configure_opinionated_test_logging, json_comparison_test};
-    use crate::utils::test_utils::{json_comparison_test, set_cwd_test_fixture};
+    use crate::utils::test_utils::{json_golden_test, set_cwd_test_fixture};
     use serial_test::serial;
 
     // TODO more tests
@@ -101,7 +101,7 @@ mod tests {
             rust_crate_dir: todo,
         })?;
 
-        json_comparison_test(&serde_json::to_value(actual)?, "expect_output.json")?;
+        json_golden_test(&serde_json::to_value(actual)?, "expect_output.json")?;
 
         Ok(())
     }
