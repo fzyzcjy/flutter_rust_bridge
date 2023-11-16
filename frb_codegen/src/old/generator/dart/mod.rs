@@ -569,36 +569,6 @@ fn gen_wire2api_simple_type_cast(s: &str) -> String {
     format!("return raw as {s};")
 }
 
-/// A trailing newline is included if comments is not empty.
-fn dart_comments(comments: &[IrComment]) -> String {
-    let mut comments = comments
-        .iter()
-        .map(IrComment::comment)
-        .collect::<Vec<_>>()
-        .join("\n");
-    if !comments.is_empty() {
-        comments.push('\n');
-    }
-    comments
-}
-
-fn dart_metadata(metadata: &[IrDartAnnotation]) -> String {
-    let mut metadata = metadata
-        .iter()
-        .map(|it| match &it.library {
-            Some(IrDartImport {
-                alias: Some(alias), ..
-            }) => format!("@{}.{}", alias, it.content),
-            _ => format!("@{}", it.content),
-        })
-        .collect::<Vec<_>>()
-        .join("\n");
-    if !metadata.is_empty() {
-        metadata.push('\n');
-    }
-    metadata
-}
-
 fn needs_freezed(ty: &IrType, ir_pack: &IrPack) -> bool {
     match ty {
         EnumRef(_) => true,
