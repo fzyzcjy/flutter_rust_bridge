@@ -27,6 +27,14 @@ pub(crate) struct FunctionParser<'a, 'b> {
     type_parser: &'a mut TypeParser<'b>,
 }
 
+#[derive(Debug, Default)]
+struct FunctionPartialInfo {
+    inputs: Option<Vec<IrField>>,
+    output: Option<IrType>,
+    mode: Option<IrFuncMode>,
+    fallible: Option<bool>,
+}
+
 impl<'a, 'b> FunctionParser<'a, 'b> {
     pub(crate) fn new(type_parser: &'a mut TypeParser<'b>) -> Self {
         Self { type_parser }
@@ -38,10 +46,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let sig = &func.sig;
         let func_name = sig.ident.to_string();
 
-        let mut inputs = Vec::new();
-        let mut output = None;
-        let mut mode: Option<IrFuncMode> = None;
-        let mut fallible = true;
+        let mut info = FunctionPartialInfo::default();
 
         for (i, sig_input) in sig.inputs.iter().enumerate() {
             if let FnArg::Typed(ref pat_type) = sig_input {
@@ -128,10 +133,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         Ok(IrFunc {
             name: func_name,
-            inputs,
-            output: output.context("Unsupported output")?,
-            fallible,
-            mode: mode.context("Missing mode")?,
+            inputs: info.inputs.unwrap_or_default(),
+            output: info.output.context("Unsupported output")?,
+            fallible: info.fallible.unwrap_or(true),
+            mode: info.mode.context("Missing mode")?,
             comments: parse_comments(&func.attrs),
             error_output: output_err,
         })
