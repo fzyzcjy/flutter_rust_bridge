@@ -10,10 +10,44 @@ use syn::{
 };
 
 impl<'a> TypeParser<'a> {
+    fn extract_path_data(&mut self, path: &Path) -> anyhow::Result<Vec<NameComponent>> {
+        let Path { segments, .. } = path;
+
+        segments
+            .iter()
+            .map(|segment| {
+                let ident = segment.ident.to_string();
+                match &segment.arguments {
+                    PathArguments::None => Ok(NameComponent { ident, args: None }),
+                    PathArguments::AngleBracketed(args) => {
+                        match self.angle_bracketed_generic_arguments_to_ir_types(args) {
+                            Err(sub_err) => Err(format!(
+                                "\"{}\" of \"{}\" is not valid. {}",
+                                ident,
+                                path.to_token_stream(),
+                                sub_err
+                            )),
+                            Ok(ir_types) => Ok(NameComponent {
+                                ident,
+                                args: Some(Args::Generic(ir_types)),
+                            }),
+                        }
+                    }
+                    PathArguments::Parenthesized(args) => Ok(NameComponent {
+                        ident,
+                        args: Some(Args::Signature(
+                            self.parenthesized_generic_arguments_to_ir_types(args),
+                        )),
+                    }),
+                }
+            })
+            .collect()
+    }
+
     fn angle_bracketed_generic_arguments_to_ir_types(
         &mut self,
         args: &AngleBracketedGenericArguments,
-    ) -> std::result::Result<Vec<IrType>, String> {
+    ) -> anyhow::Result<Vec<IrType>> {
         let AngleBracketedGenericArguments { args, .. } = args;
         args.iter()
             .filter_map(|arg| {
@@ -47,46 +81,5 @@ impl<'a> TypeParser<'a> {
         };
 
         args
-    }
-
-    fn extract_path_data(
-        &mut self,
-        path: &Path,
-    ) -> std::result::Result<Vec<NameComponent>, String> {
-        let Path { segments, .. } = path;
-
-        let data: std::result::Result<Vec<NameComponent>, String> = segments
-            .iter()
-            .map(|segment| {
-                let ident = segment.ident.to_string();
-                match &segment.arguments {
-                    PathArguments::None => Ok(NameComponent { ident, args: None }),
-                    PathArguments::AngleBracketed(args) => {
-                        match self.angle_bracketed_generic_arguments_to_ir_types(args) {
-                            Err(sub_err) => Err(format!(
-                                "\"{}\" of \"{}\" is not valid. {}",
-                                ident,
-                                path.to_token_stream(),
-                                sub_err
-                            )),
-                            Ok(ir_types) => Ok(NameComponent {
-                                ident,
-                                args: Some(Args::Generic(ir_types)),
-                            }),
-                        }
-                    }
-                    PathArguments::Parenthesized(args) => Ok(NameComponent {
-                        ident,
-                        args: Some(Args::Signature(
-                            self.parenthesized_generic_arguments_to_ir_types(args),
-                        )),
-                    }),
-                }
-            })
-            .collect();
-
-        let storage = data?;
-
-        Ok(storage)
     }
 }
