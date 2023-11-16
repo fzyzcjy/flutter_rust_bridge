@@ -1,13 +1,14 @@
 use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::import::IrDartImport;
+use itertools::Itertools;
 
 /// A trailing newline is included if comments is not empty.
 pub(crate) fn generate_dart_comments(comments: &[IrComment]) -> String {
     let mut comments = comments
         .iter()
-        .map(IrComment::comment)
-        .collect::<Vec<_>>()
+        .map(|comment| comment.0)
+        .collect_vec()
         .join("\n");
     if !comments.is_empty() {
         comments.push('\n');

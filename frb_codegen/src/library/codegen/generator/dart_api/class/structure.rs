@@ -27,7 +27,7 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
                 generate_api_method(
                     func,
                     src,
-                    self.context.config.dart_api_class_name().to_string(),
+                    self.context.config.dart_api_class_name.to_string(),
                     self.context.config,
                 )
             })
@@ -51,10 +51,7 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
             "".to_string()
         };
         let field_bridge = if self.context.config.use_bridge_in_method {
-            format!(
-                "final {} bridge;",
-                self.context.config.dart_api_class_name(),
-            )
+            format!("final {} bridge;", self.context.config.dart_api_class_name,)
         } else {
             String::new()
         };
@@ -82,7 +79,7 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
                     0,
                     format!(
                         "required {} bridge,",
-                        self.context.config.dart_api_class_name()
+                        self.context.config.dart_api_class_name
                     ),
                 );
             }
