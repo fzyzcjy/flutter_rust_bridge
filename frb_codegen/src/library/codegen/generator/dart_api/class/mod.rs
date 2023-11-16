@@ -8,6 +8,7 @@ pub(super) mod structure;
 
 #[enum_dispatch]
 pub(super) trait DartApiClassGeneratorTrait {
-    // TODO
-    // fn generate(&self);
+    fn generate_class(&self) -> Option<String> {
+        None
+    }
 }
