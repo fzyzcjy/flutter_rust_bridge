@@ -1,6 +1,7 @@
 use crate::codegen::generator::dart_api::base::*;
 use crate::codegen::generator::dart_api::class::DartApiGeneratorClassTrait;
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
+use crate::library::codegen::generator::dart_api::decl::DartApiGeneratorDeclTrait;
 
 impl<'a> DartApiGeneratorClassTrait for DelegateDartApiGenerator<'a> {
     fn generate_class(&self) -> Option<String> {
@@ -20,10 +21,10 @@ impl<'a> DartApiGeneratorClassTrait for DelegateDartApiGenerator<'a> {
                     {4}
                   }}
                 ",
-                array.dart_api_type(),
+                array.dart_api_type(self.context.ir_pack),
                 array.inner_dart_api_type(),
                 array.length(),
-                array.get_delegate().dart_api_type(),
+                DartApiGenerator::new(array.get_delegate(), self.context.ir_pack).dart_api_type(),
                 array.dart_init_method(),
             )),
             _ => None,

@@ -1,7 +1,9 @@
 use crate::codegen::generator::dart_api::base::*;
+use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
 };
+use crate::codegen::ir::ty::enumeration::IrTypeEnumRef;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use convert_case::{Case, Casing};
@@ -29,12 +31,15 @@ impl<'a> DartApiGeneratorDeclTrait for DartOpaqueDartApiGenerator<'a> {
 impl<'a> DartApiGeneratorDeclTrait for DelegateDartApiGenerator<'a> {
     fn dart_api_type(&self) -> String {
         match &self.ir {
-            IrTypeDelegate::Array(array) => array.dart_api_type(),
+            IrTypeDelegate::Array(array) => array.dart_api_type(self.context.ir_pack),
             IrTypeDelegate::String => "String".to_string(),
             IrTypeDelegate::StringList => "List<String>".to_owned(),
-            IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => self.get_delegate().dart_api_type(),
+            IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
+                DartApiGenerator::new(self.ir.get_delegate(), self.context.ir_pack).dart_api_type()
+            }
             IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) => {
-                DartApiGenerator::new(*ir.clone(), self.context.ir_pack).dart_api_type()
+                DartApiGenerator::new(IrType::EnumRef(ir.clone()), self.context.ir_pack)
+                    .dart_api_type()
             }
             IrTypeDelegate::Time(ir) => match ir {
                 IrTypeDelegateTime::Local | IrTypeDelegateTime::Utc | IrTypeDelegateTime::Naive => {
@@ -55,10 +60,13 @@ impl<'a> DartApiGeneratorDeclTrait for DelegateDartApiGenerator<'a> {
 }
 
 impl IrTypeDelegateArray {
-    pub(crate) fn dart_api_type(&self) -> String {
+    pub(crate) fn dart_api_type(&self, ir_pack: &IrPack) -> String {
         match self {
             IrTypeDelegateArray::GeneralArray { general, length } => {
-                format!("{}Array{length}", general.dart_api_type())
+                format!(
+                    "{}Array{length}",
+                    DartApiGenerator::new(*general.clone(), ir_pack).dart_api_type()
+                )
             }
             IrTypeDelegateArray::PrimitiveArray { primitive, length } => {
                 format!(
