@@ -5,21 +5,6 @@ use crate::target::Target;
 crate::derive_serde_inner_as_newtype!(IrTypeOptional);
 
 impl IrTypeOptional {
-    pub fn new(ptr: IrType) -> Self {
-        Self {
-            inner: Box::new(ptr),
-        }
-    }
-
-    pub fn new_boxed(inner: IrType) -> Self {
-        Self {
-            inner: Box::new(Boxed(IrTypeBoxed {
-                exist_in_real_api: false,
-                inner: Box::new(inner),
-            })),
-        }
-    }
-
     pub fn is_primitive(&self) -> bool {
         matches!(&*self.inner, Boxed(boxed) if ! boxed.exist_in_real_api && boxed.inner.is_primitive())
     }

@@ -263,9 +263,11 @@ impl<'a> TypeParser<'a> {
                 | Primitive(..)
                 | Record(..)
                 | Delegate(IrTypeDelegate::PrimitiveEnum { .. }) => {
-                    IrTypeOptional::new_boxed(inner.clone())
+                    IrTypeOptional::new_with_boxed_wrapper(inner.clone())
                 }
-                Delegate(IrTypeDelegate::Time(..)) => IrTypeOptional::new_boxed(inner.clone()),
+                Delegate(IrTypeDelegate::Time(..)) => {
+                    IrTypeOptional::new_with_boxed_wrapper(inner.clone())
+                }
                 OptionalList(_) | PrimitiveList(_) | GeneralList(_) | Boxed(_) | Dynamic(_)
                 | Unencodable(_) | Delegate(_) => IrTypeOptional::new(inner.clone()),
                 Optional(_) => unreachable!(),
