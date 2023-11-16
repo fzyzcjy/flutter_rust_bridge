@@ -28,22 +28,6 @@ impl IrTypeDelegateArray {
             IrTypeDelegateArray::PrimitiveArray { .. } => false,
         }
     }
-
-    pub fn dart_init_method(&self) -> String {
-        match self {
-            IrTypeDelegateArray::GeneralArray { .. } => format!(
-                "{0}.init({1} fill): super(List<{1}>.filled(arraySize,fill));",
-                self.dart_api_type(),
-                // TODO become self.inner.dart_api_type()
-                self.inner_dart_api_type()
-            ),
-            IrTypeDelegateArray::PrimitiveArray { .. } => format!(
-                "{0}.init(): super({1}(arraySize));",
-                self.dart_api_type(),
-                self.get_delegate().dart_api_type()
-            ),
-        }
-    }
 }
 
 impl IrTypeTrait for IrTypeDelegate {
