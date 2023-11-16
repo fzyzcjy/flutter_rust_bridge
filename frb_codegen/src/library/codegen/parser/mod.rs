@@ -122,6 +122,18 @@ mod tests {
         body("codegen_parser/use_type_in_another_file", None)
     }
 
+    #[test]
+    #[serial]
+    fn test_qualified_names() -> anyhow::Result<()> {
+        body("codegen_parser/qualified_names", None)
+    }
+
+    #[test]
+    #[serial]
+    fn test_non_qualified_names() -> anyhow::Result<()> {
+        body("codegen_parser/non_qualified_names", None)
+    }
+
     fn body(
         fixture_name: &str,
         rust_input_path_pack: Option<Box<dyn Fn(&Path) -> RustInputPathPack>>,
