@@ -84,6 +84,7 @@ mod tests {
     use crate::codegen::parser::parse;
     use crate::codegen::parser::source_graph::crates::Crate;
     use crate::utils::logs::configure_opinionated_test_logging;
+    use crate::utils::path_utils::path_to_string;
     use crate::utils::test_utils::{get_test_fixture_dir, json_golden_test};
     use serial_test::serial;
 
@@ -100,12 +101,13 @@ mod tests {
     fn body(fixture_name: &str) -> anyhow::Result<()> {
         configure_opinionated_test_logging();
         let test_fixture_dir = get_test_fixture_dir(fixture_name);
-        let rust_crate_dir = test_fixture_dir;
+        let rust_crate_dir = test_fixture_dir.clone();
 
         let crate_map = Crate::parse(&rust_crate_dir.join("Cargo.toml"))?;
         json_golden_test(
             &serde_json::to_value(crate_map)?,
             &rust_crate_dir.join("expect_source_graph.json"),
+            &[],
         )?;
 
         let actual_ir = parse(&ParserInternalConfig {
@@ -121,6 +123,10 @@ mod tests {
         json_golden_test(
             &serde_json::to_value(actual_ir)?,
             &rust_crate_dir.join("expect_ir.json"),
+            &vec![(
+                path_to_string(&test_fixture_dir)?,
+                "{the-working-directory}".to_owned(),
+            )],
         )?;
 
         Ok(())

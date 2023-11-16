@@ -18,8 +18,16 @@ pub(crate) fn set_cwd_test_fixture(fixture_name: &str) -> anyhow::Result<()> {
 /// "golden" means comparison tests
 /// see, for example, https://api.flutter.dev/flutter/flutter_test/matchesGoldenFile.html
 /// for more information
-pub(crate) fn json_golden_test(actual: &Value, matcher_path: &Path) -> anyhow::Result<()> {
-    let actual_str = serde_json::to_string_pretty(actual)?;
+pub(crate) fn json_golden_test(
+    actual: &Value,
+    matcher_path: &Path,
+    sanitizers: &[(String, String)],
+) -> anyhow::Result<()> {
+    let mut actual_str = serde_json::to_string_pretty(actual)?;
+    for sanitizer in sanitizers.iter() {
+        actual_str = actual_str.replace(&sanitizer.0, &sanitizer.1);
+    }
+    let actual: Value = serde_json::from_str(&actual_str)?;
     debug!("json_golden_test actual:\n{actual_str}");
 
     let expect: Value = if matcher_path.exists() {

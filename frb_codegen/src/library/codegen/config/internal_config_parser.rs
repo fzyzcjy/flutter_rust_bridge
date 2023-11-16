@@ -239,13 +239,16 @@ mod tests {
         let internal_config = InternalConfig::parse(config)?;
 
         let actual_string = serde_json::to_string_pretty(&internal_config)?;
-        let actual_string = actual_string.replace(
-            &path_to_string(&get_test_fixture_dir(fixture_name))?,
-            "{the-working-directory}",
-        );
         let actual_json: Value = serde_json::from_str(&actual_string)?;
 
-        json_golden_test(&actual_json, &PathBuf::from("expect_output.json"))?;
+        json_golden_test(
+            &actual_json,
+            &PathBuf::from("expect_output.json"),
+            &vec![(
+                path_to_string(&get_test_fixture_dir(fixture_name))?,
+                "{the-working-directory}".to_owned(),
+            )],
+        )?;
 
         Ok(())
     }

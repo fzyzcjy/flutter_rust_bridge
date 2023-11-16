@@ -1,0 +1,36 @@
+{
+  "manifest_path": "/Volumes/MyExternal/ExternalRefCode/flutter_rust_bridge/frb_codegen/test_fixtures/codegen_parser/simple/Cargo.toml",
+  "name": "simple",
+  "root_module": {
+    "info": {
+      "file_path": "/Volumes/MyExternal/ExternalRefCode/flutter_rust_bridge/frb_codegen/test_fixtures/codegen_parser/simple/src/main.rs",
+      "module_path": [
+        "crate"
+      ],
+      "visibility": "Public"
+    },
+    "scope": {
+      "enums": [],
+      "modules": [
+        {
+          "info": {
+            "file_path": "/Volumes/MyExternal/ExternalRefCode/flutter_rust_bridge/frb_codegen/test_fixtures/codegen_parser/simple/src/api.rs",
+            "module_path": [
+              "crate",
+              "api"
+            ],
+            "visibility": "Inherited"
+          },
+          "scope": {
+            "enums": [],
+            "modules": [],
+            "structs": [],
+            "type_alias": []
+          }
+        }
+      ],
+      "structs": [],
+      "type_alias": []
+    }
+  }
+}
