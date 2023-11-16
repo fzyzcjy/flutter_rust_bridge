@@ -64,7 +64,7 @@ pub(crate) fn parse(config: &ParserInternalConfig) -> anyhow::Result<IrPack> {
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
         // to give downstream a stable output
-        .sorted_by_key(|func| func.name.clone())
+        .sorted_by_cached_key(|func| func.name.clone())
         .collect_vec();
 
     let has_executor = source_rust_contents.iter().any(|s| parse_has_executor(s));
