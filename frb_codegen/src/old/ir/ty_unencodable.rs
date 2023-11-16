@@ -1,10 +1,6 @@
 use crate::{ir::*, target::Target};
 
 impl IrTypeTrait for IrTypeUnencodable {
-    fn dart_api_type(&self) -> String {
-        todo!("generate code for type \"{}\"", self.string);
-    }
-
     fn dart_wire_type(&self, target: crate::target::Target) -> String {
         if let Target::Wasm = target {
             "Object".to_owned()

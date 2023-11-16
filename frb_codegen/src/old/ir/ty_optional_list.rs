@@ -21,9 +21,6 @@ impl IrTypeTrait for IrTypeOptionalList {
             Target::Common => unreachable!(),
         }
     }
-    fn dart_api_type(&self) -> String {
-        format!("List<{}?>", self.inner.dart_api_type())
-    }
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
         !target.is_wasm()
     }

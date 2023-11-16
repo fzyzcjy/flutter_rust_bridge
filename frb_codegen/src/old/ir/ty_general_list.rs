@@ -4,10 +4,6 @@ use crate::target::Target;
 crate::derive_serde_inner_as_newtype!(IrTypeGeneralList);
 
 impl IrTypeTrait for IrTypeGeneralList {
-    fn dart_api_type(&self) -> String {
-        format!("List<{}>", self.inner.dart_api_type())
-    }
-
     fn dart_wire_type(&self, target: Target) -> String {
         if let Target::Wasm = target {
             "List<dynamic>".into()

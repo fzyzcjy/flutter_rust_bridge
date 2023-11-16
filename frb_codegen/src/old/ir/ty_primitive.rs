@@ -2,25 +2,6 @@ use crate::ir::*;
 use crate::target::Target;
 
 impl IrTypeTrait for IrTypePrimitive {
-    fn dart_api_type(&self) -> String {
-        match self {
-            IrTypePrimitive::U8
-            | IrTypePrimitive::I8
-            | IrTypePrimitive::U16
-            | IrTypePrimitive::I16
-            | IrTypePrimitive::U32
-            | IrTypePrimitive::I32
-            | IrTypePrimitive::U64
-            | IrTypePrimitive::I64
-            | IrTypePrimitive::Usize
-            | IrTypePrimitive::Isize => "int",
-            IrTypePrimitive::F32 | IrTypePrimitive::F64 => "double",
-            IrTypePrimitive::Bool => "bool",
-            IrTypePrimitive::Unit => "void",
-        }
-        .to_string()
-    }
-
     fn dart_wire_type(&self, target: Target) -> String {
         match self {
             IrTypePrimitive::I64 | IrTypePrimitive::U64 if target.is_wasm() => "Object".into(),

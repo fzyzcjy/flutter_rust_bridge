@@ -1,10 +1,6 @@
 use crate::ir::*;
 
 impl IrTypeTrait for IrTypeDartOpaque {
-    fn dart_api_type(&self) -> String {
-        "Object".to_owned()
-    }
-
     fn dart_wire_type(&self, target: crate::target::Target) -> String {
         if target.is_wasm() {
             "Object"

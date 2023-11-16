@@ -3,9 +3,6 @@ use crate::target::Target;
 use convert_case::{Case, Casing};
 
 impl IrTypeTrait for IrTypeStructRef {
-    fn dart_api_type(&self) -> String {
-        self.name.to_string()
-    }
     fn dart_wire_type(&self, target: Target) -> String {
         if target.is_wasm() {
             "List<dynamic>".into()

@@ -7,10 +7,6 @@ impl IrTypeTrait for IrTypeDynamic {
         "dartabi".to_owned()
     }
 
-    fn dart_api_type(&self) -> String {
-        "dynamic".to_owned()
-    }
-
     fn dart_wire_type(&self, _target: crate::target::Target) -> String {
         panic!("Functions cannot receive dynamic parameters.")
     }

@@ -38,10 +38,6 @@ impl IrTypeTrait for IrTypeOptional {
         }
     }
 
-    fn dart_api_type(&self) -> String {
-        format!("{}?", self.inner.dart_api_type())
-    }
-
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
         !target.is_wasm() || self.inner.rust_wire_is_pointer(target)
     }

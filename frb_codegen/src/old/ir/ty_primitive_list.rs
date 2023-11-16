@@ -3,23 +3,6 @@ use crate::target::Target;
 use convert_case::{Case, Casing};
 
 impl IrTypeTrait for IrTypePrimitiveList {
-    fn dart_api_type(&self) -> String {
-        match &self.primitive {
-            IrTypePrimitive::U8 => "Uint8List",
-            IrTypePrimitive::I8 => "Int8List",
-            IrTypePrimitive::U16 => "Uint16List",
-            IrTypePrimitive::I16 => "Int16List",
-            IrTypePrimitive::U32 => "Uint32List",
-            IrTypePrimitive::I32 => "Int32List",
-            IrTypePrimitive::U64 => "Uint64List",
-            IrTypePrimitive::I64 => "Int64List",
-            IrTypePrimitive::F32 => "Float32List",
-            IrTypePrimitive::F64 => "Float64List",
-            _ => panic!("does not support {:?} yet", &self.primitive),
-        }
-        .to_string()
-    }
-
     fn dart_wire_type(&self, target: Target) -> String {
         if target.is_wasm() {
             match self.primitive {

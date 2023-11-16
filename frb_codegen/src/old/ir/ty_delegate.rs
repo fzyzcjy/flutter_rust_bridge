@@ -77,28 +77,6 @@ impl IrTypeDelegateArray {
 }
 
 impl IrTypeTrait for IrTypeDelegate {
-    fn dart_api_type(&self) -> String {
-        match self {
-            IrTypeDelegate::Array(array) => array.dart_api_type(),
-            IrTypeDelegate::String => "String".to_string(),
-            IrTypeDelegate::StringList => "List<String>".to_owned(),
-            IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => self.get_delegate().dart_api_type(),
-            IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.dart_api_type(),
-            IrTypeDelegate::Time(ir) => match ir {
-                IrTypeTime::Local | IrTypeTime::Utc | IrTypeTime::Naive => "DateTime".to_string(),
-                IrTypeTime::Duration => "Duration".to_string(),
-            },
-            IrTypeDelegate::TimeList(IrTypeTime::Local | IrTypeTime::Utc | IrTypeTime::Naive) => {
-                "List<DateTime>".to_string()
-            }
-            IrTypeDelegate::TimeList(IrTypeTime::Duration) => "List<Duration>".to_string(),
-            IrTypeDelegate::Uuid => "UuidValue".to_owned(),
-            IrTypeDelegate::Uuids => "List<UuidValue>".to_owned(),
-            IrTypeDelegate::Backtrace => "String".to_string(),
-            IrTypeDelegate::Anyhow => "FrbAnyhowException".to_string(),
-        }
-    }
-
     fn dart_wire_type(&self, target: Target) -> String {
         match (self, target) {
             (IrTypeDelegate::String, Target::Wasm) => "String".into(),

@@ -55,10 +55,6 @@ impl IrTypeRustOpaque {
 }
 
 impl IrTypeTrait for IrTypeRustOpaque {
-    fn dart_api_type(&self) -> String {
-        self.inner_dart.clone()
-    }
-
     fn dart_wire_type(&self, target: crate::target::Target) -> String {
         if let Target::Wasm = target {
             "Object".to_owned()
