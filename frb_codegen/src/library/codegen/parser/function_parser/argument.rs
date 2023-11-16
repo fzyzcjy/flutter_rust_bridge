@@ -19,37 +19,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     ) -> ParserResult<FunctionPartialInfo> {
         Ok(if let FnArg::Typed(ref pat_type) = sig_input {
             let name = parse_name(pat_type)?;
-            let arg_type = self.parse_fn_arg_type(&pat_type.ty)?;
-
-            match arg_type {
-                FuncArg::StreamSinkType(ty) => FunctionPartialInfo {
-                    inputs: vec![],
-                    output: Some(ty),
-                    mode: Some(IrFuncMode::Stream { argument_index: i }),
-                    fallible: Some(match &sig.output {
-                        ReturnType::Default => false,
-                        ReturnType::Type(_, ty) => {
-                            !matches!(self.parse_fn_output_type(ty)?, Some(FuncOutput::Type(_)))
-                        }
-                    }),
-                },
-                FuncArg::Type(ty) => {
-                    let attributes = FrbAttributes::parse(&pat_type.attrs)?;
-                    FunctionPartialInfo {
-                        inputs: vec![IrField {
-                            name: IrIdent::new(name),
-                            ty,
-                            is_final: true,
-                            comments: parse_comments(&pat_type.attrs),
-                            default: attributes.default_value(),
-                            settings: IrFieldSettings::default(),
-                        }],
-                        output: None,
-                        mode: None,
-                        fallible: None,
-                    }
-                }
-            }
+            self.parse_fn_arg_type(&pat_type.ty)?
         } else {
             return Err(super::error::Error::UnexpectedSigInput(
                 quote::quote!(#sig_input).to_string().into(),
@@ -65,10 +35,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 if let Some(ans) = self.parse_fn_arg_type_stream_sink(path)? {
                     ans
                 } else {
-                    FuncArg::Type(self.type_parser.parse_type(ty)?)
+                    partial_info_for_normal_type(self.type_parser.parse_type(ty)?)
                 }
             }
-            Type::Array(_) => FuncArg::Type(self.type_parser.parse_type(ty)?),
+            Type::Array(_) => partial_info_for_normal_type(self.type_parser.parse_type(ty)?),
             _ => bail!(
                 "Failed to parse function argument type `{}`",
                 type_to_string(ty)
@@ -85,9 +55,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 {
                     // Unwrap is safe here because args.len() == 1
                     match args.last().unwrap() {
-                        GenericArgument::Type(t) => {
-                            Some(FuncArg::StreamSinkType(self.type_parser.parse_type(t)?))
-                        }
+                        GenericArgument::Type(t) => Some(partial_info_for_stream_sink_type(
+                            self.type_parser.parse_type(t)?,
+                        )),
                         _ => None,
                     }
                 }
@@ -99,6 +69,37 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     }
 }
 
+fn partial_info_for_normal_type(ty: IrType) -> ParserResult<FunctionPartialInfo> {
+    Ok(FunctionPartialInfo {
+        inputs: vec![],
+        output: Some(ty),
+        mode: Some(IrFuncMode::Stream { argument_index: i }),
+        fallible: Some(match &sig.output {
+            ReturnType::Default => false,
+            ReturnType::Type(_, ty) => {
+                !matches!(self.parse_fn_output_type(ty)?, Some(FuncOutput::Type(_)))
+            }
+        }),
+    })
+}
+
+fn partial_info_for_stream_sink_type(ty: IrType) -> ParserResult<FunctionPartialInfo> {
+    let attributes = FrbAttributes::parse(&pat_type.attrs)?;
+    Ok(FunctionPartialInfo {
+        inputs: vec![IrField {
+            name: IrIdent::new(name),
+            ty,
+            is_final: true,
+            comments: parse_comments(&pat_type.attrs),
+            default: attributes.default_value(),
+            settings: IrFieldSettings::default(),
+        }],
+        output: None,
+        mode: None,
+        fallible: None,
+    })
+}
+
 fn parse_name(pat_type: &PatType) -> ParserResult<String> {
     if let Pat::Ident(ref pat_ident) = *pat_type.pat {
         Ok(format!("{}", pat_ident.ident))
@@ -107,10 +108,4 @@ fn parse_name(pat_type: &PatType) -> ParserResult<String> {
             quote::quote!(#pat_type).to_string().into(),
         ))
     }
-}
-
-#[derive(Debug, Clone)]
-enum FuncArg {
-    StreamSinkType(IrType),
-    Type(IrType),
 }
