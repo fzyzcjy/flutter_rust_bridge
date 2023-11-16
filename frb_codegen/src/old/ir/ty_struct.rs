@@ -41,8 +41,4 @@ impl IrStruct {
     pub fn is_empty(&self) -> bool {
         self.fields.is_empty()
     }
-
-    pub fn const_capable(&self) -> bool {
-        self.fields.iter().all(|field| field.is_final)
-    }
 }

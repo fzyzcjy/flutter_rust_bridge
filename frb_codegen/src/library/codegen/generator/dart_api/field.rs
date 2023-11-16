@@ -1,5 +1,7 @@
 use crate::codegen::ir::default::IrDefaultValue;
 use crate::codegen::ir::field::IrField;
+use crate::codegen::ir::ty::delegate::IrTypeDelegate;
+use crate::codegen::ir::ty::IrType;
 
 pub(crate) fn generate_field_required_modifier(field: &IrField) -> &str {
     if field.is_optional() {

@@ -148,13 +148,13 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
                 ("{", "}")
             };
             let constructor_params = constructor_params.join("");
-            let const_capable = if src.const_capable() { "const " } else { "" };
+            let const_capable = src.fields.iter().all(|field| field.is_final);
 
             format!(
                 "{comments}{meta}class {Name} {implements_exception} {{
                     {}
         
-                    {const}{Name}({}{}{});
+                    {maybe_const}{Name}({}{}{});
         
                 {}
             }}",
@@ -166,8 +166,9 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
                 comments = comments,
                 meta = metadata,
                 Name = self.ir.ident.0,
-                const = const_capable,
-                implements_exception = generate_dart_maybe_implements_exception(self.ir.is_exception),
+                maybe_const = if const_capable { "const " } else { "" },
+                implements_exception =
+                    generate_dart_maybe_implements_exception(self.ir.is_exception),
             )
         })
     }
