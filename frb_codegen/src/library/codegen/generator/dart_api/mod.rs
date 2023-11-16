@@ -1,6 +1,7 @@
 pub(super) mod base;
 pub(super) mod class;
 pub(super) mod decl;
+mod internal_config;
 
 use crate::codegen::generator::output::OutputCode;
 use crate::codegen::ir::pack::IrPack;
