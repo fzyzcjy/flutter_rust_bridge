@@ -246,7 +246,7 @@ mod tests {
         );
         let actual_json: Value = serde_json::from_str(&actual_string)?;
 
-        json_comparison_test(&actual_json, "expect_output.json");
+        json_comparison_test(&actual_json, "expect_output.json")?;
 
         Ok(())
     }

@@ -1,4 +1,6 @@
+use log::debug;
 use serde_json::Value;
+use std::fs;
 #[cfg(test)]
 use std::path::PathBuf;
 
@@ -17,10 +19,15 @@ pub(crate) fn set_cwd_test_fixture(fixture_name: &str) -> anyhow::Result<()> {
 }
 
 #[cfg(test)]
-pub(crate) fn json_comparison_test(actual: &Value, matcher_path: &str) {
-    // debug!("internal_config:\n{}", actual_string);
-    // let actual: Value = serde_json::from_str(&actual_string)?;
-    // let expect: Value = serde_json::from_str(&fs::read_to_string("expect_output.json")?)?;
-    // assert_eq!(actual, expect);
-    todo!()
+pub(crate) fn json_comparison_test(actual: &Value, matcher_path: &str) -> anyhow::Result<()> {
+    debug!(
+        "json_comparison_test actual:\n{}",
+        serde_json::to_string_pretty(actual)?
+    );
+
+    let expect: Value = serde_json::from_str(&fs::read_to_string(matcher_path)?)?;
+
+    assert_eq!(actual, expect);
+
+    Ok(())
 }

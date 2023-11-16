@@ -101,7 +101,7 @@ mod tests {
             rust_crate_dir: todo,
         })?;
 
-        json_comparison_test(&serde_json::to_value(actual)?, "expect_output.json");
+        json_comparison_test(&serde_json::to_value(actual)?, "expect_output.json")?;
 
         Ok(())
     }
