@@ -8,9 +8,11 @@ pub struct IrFunc {
     pub inputs: Vec<IrField>,
     pub output: IrType,
     pub error_output: Option<IrType>,
-    pub fallible: bool,
     pub mode: IrFuncMode,
     pub comments: Vec<IrComment>,
+
+    // TODO remove it, it should be `self.error_output != None`
+    // pub fallible: bool,
 }
 
 pub enum IrFuncMode {

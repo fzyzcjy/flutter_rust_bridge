@@ -44,7 +44,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             inputs: info.inputs,
             output: info.ok_output.context("Unsupported output")?,
             error_output: info.error_output,
-            fallible: info.fallible.unwrap_or(true),
             mode: info.mode.context("Missing mode")?,
             comments: parse_comments(&func.attrs),
         })
@@ -57,7 +56,6 @@ struct FunctionPartialInfo {
     ok_output: Option<IrType>,
     error_output: Option<IrType>,
     mode: Option<IrFuncMode>,
-    fallible: Option<bool>,
 }
 
 impl FunctionPartialInfo {
@@ -67,7 +65,6 @@ impl FunctionPartialInfo {
             ok_output: other.ok_output.or(self.ok_output),
             error_output: other.error_output.or(self.error_output),
             mode: other.mode.or(self.mode),
-            fallible: other.fallible.or(self.fallible),
         }
     }
 }

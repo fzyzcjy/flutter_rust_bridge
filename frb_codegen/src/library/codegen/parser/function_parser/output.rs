@@ -31,16 +31,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 })?;
                 match output_type {
                     FuncOutput::ResultType { ok: ty, error: err } => (ty, err),
-                    FuncOutput::Type(ty) => {
-                        fallible = false;
-                        (ty, None)
-                    }
+                    FuncOutput::Type(ty) => (ty, None),
                 }
             }
-            ReturnType::Default => {
-                fallible = false;
-                (IrType::Primitive(IrTypePrimitive::Unit), None)
-            }
+            ReturnType::Default => (IrType::Primitive(IrTypePrimitive::Unit), None),
         };
 
         if matches!(mode, Some(IrFuncMode::Stream {..}) if output_ok != IrType::Primitive(IrTypePrimitive::Unit))
@@ -52,7 +46,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             inputs: vec![],
             ok_output: Some(output_ok),
             mode: Some(IrFuncMode::Normal),
-            fallible: None,
         })
     }
 
