@@ -39,10 +39,10 @@ impl<'a> TypeParser<'a> {
 
     fn parse_type_path_core(&mut self, path: &Path) -> anyhow::Result<IrType> {
         let segments: Vec<NameComponent> = if cfg!(feature = "qualified_names") {
-            self.path_data(path)?
+            self.extract_path_data(path)?
         } else {
             // Emulate old behavior by discarding any name qualifiers
-            vec![self.path_data(path)?.pop().unwrap()]
+            vec![self.extract_path_data(path)?.pop().unwrap()]
         };
 
         use ArgsRefs::*;

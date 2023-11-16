@@ -1,15 +1,13 @@
-use crate::ir::IrType::*;
-use crate::ir::*;
-use crate::parser::markers;
-use crate::parser::source_graph::{Enum, Struct};
-use crate::parser::{extract_metadata, parse_comments};
+use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::codegen::ir::ty::unencodable::{Args, NameComponent};
+use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::ty::IrType::Primitive;
+use crate::codegen::parser::type_parser::TypeParser;
 use quote::ToTokens;
-use std::collections::{HashMap, HashSet};
-use std::string::String;
-use syn::punctuated::Punctuated;
-use syn::*;
-
-use super::IrDefaultValue;
+use syn::{
+    AngleBracketedGenericArguments, GenericArgument, ParenthesizedGenericArguments, Path,
+    PathArguments,
+};
 
 impl<'a> TypeParser<'a> {
     fn angle_bracketed_generic_arguments_to_ir_types(
@@ -51,7 +49,10 @@ impl<'a> TypeParser<'a> {
         args
     }
 
-    fn path_data(&mut self, path: &Path) -> std::result::Result<Vec<NameComponent>, String> {
+    fn extract_path_data(
+        &mut self,
+        path: &Path,
+    ) -> std::result::Result<Vec<NameComponent>, String> {
         let Path { segments, .. } = path;
 
         let data: std::result::Result<Vec<NameComponent>, String> = segments
