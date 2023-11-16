@@ -87,7 +87,7 @@ impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {
                         "{} {}const factory {}.{}({}) = {};",
                         implements_exception,
                         generate_dart_comments(&variant.comments),
-                        self.ir.name,
+                        self.ir.ident.0,
                         variant.name.dart_style(),
                         args,
                         variant.wrapper_name.rust_style(),
@@ -104,7 +104,7 @@ impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {
                 {sealed} class {0} with _${0} {1} {{
                     {2}
                 }}",
-                self.ir.name,
+                self.ir.ident.0,
                 generate_dart_maybe_implements_exception(self.ir.is_exception),
                 variants.join("\n")
             ))
@@ -131,7 +131,7 @@ impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {
                 "{}enum {} {{
                     {}
                 }}",
-                comments, self.ir.name, variants
+                comments, self.ir.ident.0, variants
             ))
         }
     }

@@ -59,7 +59,7 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
             String::new()
         };
         let private_constructor = if has_methods {
-            format!("const {}._();", self.ir.name)
+            format!("const {}._();", self.ir.ident.0)
         } else {
             "".to_owned()
         };
@@ -99,7 +99,7 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
                 comments = comments,
                 private_constructor = private_constructor,
                 meta = metadata,
-                Name = self.ir.name,
+                Name = self.ir.ident.0,
                 implements_exception =
                     generate_dart_maybe_implements_exception(self.ir.is_exception),
             )
@@ -161,7 +161,7 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
                 methods_string,
                 comments = comments,
                 meta = metadata,
-                Name = self.ir.name,
+                Name = self.ir.ident.0,
                 const = const_capable,
                 implements_exception = generate_dart_maybe_implements_exception(self.ir.is_exception),
             )
