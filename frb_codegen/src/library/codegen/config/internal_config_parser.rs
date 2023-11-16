@@ -221,13 +221,13 @@ mod tests {
     #[test]
     #[serial]
     fn test_parse_single_rust_input() -> anyhow::Result<()> {
-        body("internal_config_parser/single_rust_input")
+        body("library/codegen/config/internal_config_parser/single_rust_input")
     }
 
     #[test]
     #[serial]
     fn test_parse_wildcard_rust_input() -> anyhow::Result<()> {
-        body("internal_config_parser/wildcard_rust_input")
+        body("library/codegen/config/internal_config_parser/wildcard_rust_input")
     }
 
     fn body(fixture_name: &str) -> anyhow::Result<()> {

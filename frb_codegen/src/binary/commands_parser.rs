@@ -71,7 +71,7 @@ mod tests {
     fn test_compute_codegen_config_mode_from_files_auto_flutter_rust_bridge_yaml(
     ) -> anyhow::Result<()> {
         configure_opinionated_test_logging();
-        set_cwd_test_fixture("commands_parser/flutter_rust_bridge_yaml")?;
+        set_cwd_test_fixture("binary/commands_parser/flutter_rust_bridge_yaml")?;
 
         let config = run_command_line(vec!["", "generate"]);
         assert_eq!(config.rust_input, "hello.rs".to_string());
@@ -84,7 +84,7 @@ mod tests {
     #[serial]
     fn test_compute_codegen_config_mode_from_files_auto_pubspec_yaml() -> anyhow::Result<()> {
         configure_opinionated_test_logging();
-        set_cwd_test_fixture("commands_parser/pubspec_yaml")?;
+        set_cwd_test_fixture("binary/commands_parser/pubspec_yaml")?;
 
         let config = run_command_line(vec!["", "generate"]);
         assert_eq!(config.rust_input, "hello.rs".to_string());
@@ -97,7 +97,7 @@ mod tests {
     #[serial]
     fn test_compute_codegen_config_mode_config_file() -> anyhow::Result<()> {
         configure_opinionated_test_logging();
-        set_cwd_test_fixture("commands_parser/config_file")?;
+        set_cwd_test_fixture("binary/commands_parser/config_file")?;
 
         let config = run_command_line(vec!["", "generate", "--config-file", "hello.yaml"]);
         assert_eq!(config.rust_input, "hello.rs".to_string());

@@ -93,14 +93,14 @@ mod tests {
     #[test]
     #[serial]
     fn test_simple() -> anyhow::Result<()> {
-        body("codegen_parser/simple", None)
+        body("library/codegen/parser/mod/simple", None)
     }
 
     #[test]
     #[serial]
     fn test_multi_input_file() -> anyhow::Result<()> {
         body(
-            "codegen_parser/multi_input_file",
+            "library/codegen/parser/mod/multi_input_file",
             Some(Box::new(|rust_crate_dir| RustInputPathPack {
                 rust_input_path: [
                     (
@@ -120,19 +120,19 @@ mod tests {
     #[test]
     #[serial]
     fn test_use_type_in_another_file() -> anyhow::Result<()> {
-        body("codegen_parser/use_type_in_another_file", None)
+        body("library/codegen/parser/mod/use_type_in_another_file", None)
     }
 
     #[test]
     #[serial]
     fn test_qualified_names() -> anyhow::Result<()> {
-        body("codegen_parser/qualified_names", None)
+        body("library/codegen/parser/mod/qualified_names", None)
     }
 
     #[test]
     #[serial]
     fn test_non_qualified_names() -> anyhow::Result<()> {
-        body("codegen_parser/non_qualified_names", None)
+        body("library/codegen/parser/mod/non_qualified_names", None)
     }
 
     fn body(
