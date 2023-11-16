@@ -45,7 +45,7 @@ impl<'a> TypeParser<'a> {
     ) -> Result<Vec<IrType>> {
         args.args
             .iter()
-            .filter_map(|arg| if_then_some!(let GenericArgument::Type(ty) = arg, &ty))
+            .filter_map(|arg| if_then_some!(let GenericArgument::Type(ty) = arg, ty))
             .map(|ty| self.parse_type(ty))
             .collect()
     }

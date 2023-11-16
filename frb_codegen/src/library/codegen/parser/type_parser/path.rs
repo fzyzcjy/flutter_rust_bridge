@@ -142,11 +142,11 @@ impl<'a> TypeParser<'a> {
                 }
 
                 let enum_ref = IrTypeEnumRef {
-                    ident,
+                    ident: ident.clone(),
                     is_exception: false,
                 };
                 let enu = self.enum_pool.get(&ident);
-                let is_struct = enu.map(IrEnum::is_struct).unwrap_or(true);
+                let is_struct = enu.map(|e| e.is_struct).unwrap_or(true);
                 if is_struct {
                     Ok(EnumRef(enum_ref))
                 } else {
