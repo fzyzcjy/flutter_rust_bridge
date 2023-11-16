@@ -7,7 +7,7 @@
 // dart_api_class_generator_struct!(EnumRefDartApiClassGenerator, IrTypeEnumRef);
 //
 // impl<'a> DartApiClassGeneratorTrait for EnumRefDartApiClassGenerator<'a> {
-//     fn generate(&self) -> String {
+//     fn generate_class(&self) -> Option<String> {
 //         let src = self.ir.get(self.context.ir_pack);
 //
 //         let comments = dart_comments(&src.comments);

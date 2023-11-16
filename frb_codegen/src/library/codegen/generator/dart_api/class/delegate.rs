@@ -7,10 +7,10 @@
 // dart_api_class_generator_struct!(DelegateDartApiClassGenerator, IrTypeDelegate);
 //
 // impl<'a> DartApiClassGeneratorTrait for DelegateDartApiClassGenerator<'a> {
-//     fn generate(&self) -> String {
+//     fn generate_class(&self) -> Option<String> {
 //         match &self.ir {
 //             IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) => {
-//                 EnumRefDartApiClassGenerator::new(ir.clone(), self.ir_pack).generate()
+//                 EnumRefDartApiClassGenerator::new(ir.clone(), self.ir_pack).generate_class()
 //             }
 //             IrTypeDelegate::Array(array) => {
 //                 format!(

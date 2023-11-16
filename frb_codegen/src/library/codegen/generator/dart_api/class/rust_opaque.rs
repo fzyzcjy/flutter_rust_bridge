@@ -6,7 +6,7 @@
 // dart_api_class_generator_struct!(RustOpaqueDartApiClassGenerator, IrTypeRustOpaque);
 //
 // impl<'a> DartApiClassGeneratorTrait for RustOpaqueDartApiClassGenerator<'a> {
-//     fn generate(&self) -> String {
+//     fn generate_class(&self) -> Option<String> {
 //         let bridge = self.context.config.get_dart_api_bridge_name();
 //         let bridge_class = self.context.config.dart_api_class_name();
 //         let (field, param) = if self.context.config.bridge_in_method {

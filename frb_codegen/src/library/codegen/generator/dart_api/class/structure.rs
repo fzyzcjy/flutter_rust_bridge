@@ -6,7 +6,7 @@
 // dart_api_class_generator_struct!(StructRefDartApiClassGenerator, IrTypeStructRef);
 //
 // impl<'a> DartApiClassGeneratorTrait for StructRefDartApiClassGenerator<'a> {
-//     fn generate(&self) -> String {
+//     fn generate_class(&self) -> Option<String> {
 //         let src = self.ir.get(self.context.ir_pack);
 //         let comments = dart_comments(&src.comments);
 //         let metadata = dart_metadata(&src.dart_metadata);
