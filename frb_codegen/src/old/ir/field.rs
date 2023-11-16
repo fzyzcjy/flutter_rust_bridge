@@ -5,32 +5,6 @@ use syn::LitStr;
 use crate::{ir::*, parser::IrDefaultValue, Opts};
 
 impl IrField {
-    pub fn field_default(&self, freezed: bool, config: Option<&Opts>) -> String {
-        self.default
-            .as_ref()
-            .map(|r#default| {
-                let r#default = match r#default {
-                    IrDefaultValue::Str(lit)
-                        if !matches!(&self.ty, IrType::Delegate(IrTypeDelegate::String)) =>
-                    {
-                        // Convert the default value to Dart style.
-                        if config.is_some() && config.unwrap().dart_enums_style {
-                            Self::default_value_to_dart_style(lit).into()
-                        } else {
-                            lit.value().into()
-                        }
-                    }
-                    _ => default.to_dart(),
-                };
-                if freezed {
-                    format!("@Default({default})")
-                } else {
-                    format!("= {default}")
-                }
-            })
-            .unwrap_or_default()
-    }
-
     #[inline]
     pub fn is_optional(&self) -> bool {
         matches!(&self.ty, IrType::Optional(_)) || self.default.is_some()

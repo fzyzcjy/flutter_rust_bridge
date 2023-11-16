@@ -128,7 +128,7 @@ fn generate_api_method(
                 input.ty.dart_api_type(),
                 input.name.dart_style(),
                 required = generate_field_required_modifier(input),
-                default = input.field_default(false, Some(config))
+                default = generate_field_default(input, false, Some(config))
             )
         })
         .collect::<Vec<_>>();

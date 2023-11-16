@@ -21,7 +21,7 @@ pub(crate) fn generate_api_func(
                 input.ty.dart_api_type(),
                 input.name.dart_style(),
                 required = generate_field_required_modifier(input),
-                default = input.field_default(false, None),
+                default = generate_field_default(input, false, None),
             )
         })
         .collect::<Vec<_>>();

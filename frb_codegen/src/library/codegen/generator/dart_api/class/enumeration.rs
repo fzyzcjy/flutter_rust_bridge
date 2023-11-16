@@ -1,6 +1,8 @@
 use crate::codegen::generator::dart_api::base::*;
 use crate::codegen::generator::dart_api::class::DartApiGeneratorClassTrait;
-use crate::codegen::generator::dart_api::field::generate_field_required_modifier;
+use crate::codegen::generator::dart_api::field::{
+    generate_field_default, generate_field_required_modifier,
+};
 use crate::codegen::generator::dart_api::misc::{
     generate_dart_comments, generate_dart_maybe_implements_exception,
 };
@@ -43,7 +45,7 @@ impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {
                                     let default = split
                                         .is_some()
                                         .then(|| {
-                                            field.field_default(true, Some(self.context.config))
+                                            generate_field_default(field, true, self.context.config)
                                         })
                                         .unwrap_or_default();
                                     format!(
@@ -82,8 +84,11 @@ impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {
                                         field.name.dart_style(),
                                         required = generate_field_required_modifier(field),
                                         comments = generate_dart_comments(&field.comments),
-                                        default =
-                                            field.field_default(true, Some(self.context.config)),
+                                        default = generate_field_default(
+                                            field,
+                                            true,
+                                            Some(self.context.config)
+                                        ),
                                     )
                                 })
                                 .collect::<Vec<_>>();

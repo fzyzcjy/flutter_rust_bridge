@@ -1,6 +1,8 @@
 use crate::codegen::generator::dart_api::base::*;
 use crate::codegen::generator::dart_api::class::DartApiGeneratorClassTrait;
-use crate::codegen::generator::dart_api::field::generate_field_required_modifier;
+use crate::codegen::generator::dart_api::field::{
+    generate_field_default, generate_field_required_modifier,
+};
 use crate::codegen::generator::dart_api::misc::{
     generate_dart_comments, generate_dart_maybe_implements_exception, generate_dart_metadata,
 };
@@ -67,7 +69,7 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
                 .fields
                 .iter()
                 .map(|field| {
-                    let r#default = field.field_default(true, Some(self.context.config));
+                    let r#default = generate_field_default(field, true, Some(self.context.config));
                     format!(
                         "{default} {} {} {},",
                         generate_field_required_modifier(field),
@@ -130,7 +132,7 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
                         "{required}this.{} {default},",
                         f.name.dart_style(),
                         required = generate_field_required_modifier(f),
-                        default = f.field_default(false, Some(self.context.config))
+                        default = generate_field_default(f, false, Some(self.context.config))
                     )
                 })
                 .collect::<Vec<_>>();
