@@ -75,13 +75,11 @@ fn parse_one_ast(
 
 #[cfg(test)]
 mod tests {
-    use crate::codegen::config::internal_config::Namespace;
     use crate::codegen::parser::internal_config::{ParserInternalConfig, RustInputPathPack};
     use crate::codegen::parser::parse;
     use crate::utils::logs::configure_opinionated_test_logging;
-    use crate::utils::test_utils::{get_test_fixture_dir, json_golden_test, set_cwd_test_fixture};
+    use crate::utils::test_utils::{get_test_fixture_dir, json_golden_test};
     use serial_test::serial;
-    use std::path::PathBuf;
 
     // TODO more tests
     // TODO `chrono::Duration` and `Duration` test

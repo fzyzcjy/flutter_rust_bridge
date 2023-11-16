@@ -1,4 +1,3 @@
-use crate::commands::CommandResult;
 use anyhow::Context;
 use itertools::Itertools;
 use log::debug;
@@ -6,6 +5,8 @@ use log::warn;
 use std::path::{Path, PathBuf};
 use std::process::Command;
 use std::process::Output;
+
+pub(crate) type CommandResult<T = (), E = super::error::Error> = Result<T, E>;
 
 /// - First argument is either a string of a command, or a function receiving a slice of [`PathBuf`].
 ///   - The command may be followed by `in <expr>` to specify the working directory.
@@ -16,17 +17,17 @@ use std::process::Output;
 ///   - `*<expr>` to concatenate an iterable of such expressions; or
 ///   - A tuple of `(condition, expr, ...expr)` that adds `expr`s to the arguments only if `condition` is satisfied.
 ///
-/// Returns [`Result<Output>`] if executing a command name, or the return value of the specified function.
+/// Returns [`CommandResult<Output>`] if executing a command name, or the return value of the specified function.
 #[doc(hidden)]
 #[macro_export]
 macro_rules! command_run {
     ($binary:literal, $($rest:tt)*) => {{
         let args = $crate::command_args!($($rest)*);
-        $crate::utils::command_runner::execute_command($binary, args.iter(), None)
+        $crate::library::commands::command_runner::execute_command($binary, args.iter(), None)
     }};
     ($binary:literal in $pwd:expr, $($rest:tt)*) => {{
         let args = $crate::command_args!($($rest)*);
-        $crate::utils::command_runner::execute_command($binary, args.iter(), $pwd)
+        $crate::library::commands::command_runner::execute_command($binary, args.iter(), $pwd)
     }};
     ($command:path $([ $($args:expr),* ])?, $($rest:tt)*) => {{
         let args = $crate::command_args!($($rest)*);
@@ -68,7 +69,7 @@ macro_rules! command_args {
     }};
 }
 
-pub(crate) fn call_shell(cmd: &[PathBuf], pwd: Option<&str>) -> CommandResult<Output> {
+pub(crate) fn call_shell(cmd: &[PathBuf], pwd: Option<&Path>) -> CommandResult<Output> {
     let cmd = cmd.iter().map(|section| format!("{section:?}")).join(" ");
     #[cfg(windows)]
     {
@@ -79,7 +80,6 @@ pub(crate) fn call_shell(cmd: &[PathBuf], pwd: Option<&str>) -> CommandResult<Ou
     command_run!("sh" in pwd, "-c", cmd)
 }
 
-#[must_use = "Error path must be handled."]
 pub(crate) fn execute_command<'a>(
     bin: &str,
     args: impl IntoIterator<Item = &'a PathBuf>,
