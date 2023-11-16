@@ -79,7 +79,7 @@ mod tests {
     use crate::codegen::parser::internal_config::{ParserInternalConfig, RustInputPathPack};
     use crate::codegen::parser::parse;
     use crate::utils::logs::configure_opinionated_test_logging;
-    use crate::utils::test_utils::{json_golden_test, set_cwd_test_fixture};
+    use crate::utils::test_utils::{get_test_fixture_dir, json_golden_test, set_cwd_test_fixture};
     use serial_test::serial;
     use std::path::PathBuf;
 
@@ -94,13 +94,17 @@ mod tests {
 
     fn body(fixture_name: &str) -> anyhow::Result<()> {
         configure_opinionated_test_logging();
-        set_cwd_test_fixture(fixture_name)?;
+        let test_fixture_dir = get_test_fixture_dir(fixture_name);
 
         let actual = parse(&ParserInternalConfig {
             rust_input_path_pack: RustInputPathPack {
-                rust_input_path: [("todo".to_owned().into(), "todo".into())].into(),
+                rust_input_path: [(
+                    "my_namespace".to_owned().into(),
+                    test_fixture_dir.join("src/api.rs"),
+                )]
+                .into(),
             },
-            rust_crate_dir: "todo".into(),
+            rust_crate_dir: test_fixture_dir,
         })?;
 
         json_golden_test(&serde_json::to_value(actual)?, "expect_output.json")?;
