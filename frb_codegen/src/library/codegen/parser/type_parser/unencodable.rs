@@ -17,8 +17,7 @@ pub(crate) trait Splayable {
 impl Splayable for Vec<NameComponent> {
     /// Spread and turn out the data of a fully qualified name for structural pattern matching.
     fn splay(&self) -> Vec<(&str, Option<ArgsRefs>)> {
-        return self
-            .iter()
+        self.iter()
             .map(|NameComponent { ident, args }| {
                 (
                     &ident[..],
@@ -28,7 +27,7 @@ impl Splayable for Vec<NameComponent> {
                     }),
                 )
             })
-            .collect();
+            .collect()
     }
 }
 
