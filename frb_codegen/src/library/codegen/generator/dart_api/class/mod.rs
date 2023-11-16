@@ -13,6 +13,7 @@ pub(crate) trait DartApiClassGeneratorTrait {
     }
 }
 
+// the following have empty implementation
 impl<'a> DartApiClassGeneratorTrait for BoxedDartApiGenerator<'a> {}
 impl<'a> DartApiClassGeneratorTrait for DartOpaqueDartApiGenerator<'a> {}
 impl<'a> DartApiClassGeneratorTrait for DynamicDartApiGenerator<'a> {}
