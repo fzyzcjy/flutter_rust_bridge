@@ -75,11 +75,13 @@ fn parse_one_ast(
 
 #[cfg(test)]
 mod tests {
+    use crate::codegen::config::internal_config::Namespace;
     use crate::codegen::parser::internal_config::{ParserInternalConfig, RustInputPathPack};
     use crate::codegen::parser::parse;
-    use crate::utils::logs::{configure_opinionated_test_logging, json_comparison_test};
+    use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::test_utils::{json_golden_test, set_cwd_test_fixture};
     use serial_test::serial;
+    use std::path::PathBuf;
 
     // TODO more tests
     // TODO `chrono::Duration` and `Duration` test
@@ -96,9 +98,10 @@ mod tests {
 
         let actual = parse(&ParserInternalConfig {
             rust_input_path_pack: RustInputPathPack {
-                rust_input_path: todo,
+                rust_input_path: [(Namespace::new("todo".to_string()), PathBuf::from("todo"))]
+                    .into(),
             },
-            rust_crate_dir: todo,
+            rust_crate_dir: PathBuf::from("todo"),
         })?;
 
         json_golden_test(&serde_json::to_value(actual)?, "expect_output.json")?;

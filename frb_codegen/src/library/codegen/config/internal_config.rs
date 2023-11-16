@@ -65,3 +65,9 @@ pub(crate) struct PolisherInternalConfig {
 pub struct Namespace {
     pub name: String,
 }
+
+impl Namespace {
+    pub fn new(name: String) -> Self {
+        Self { name }
+    }
+}

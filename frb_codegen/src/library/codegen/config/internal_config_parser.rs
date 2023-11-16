@@ -209,7 +209,7 @@ fn fallback_llvm_path() -> Vec<String> {
 mod tests {
     use crate::codegen::config::internal_config::InternalConfig;
     use crate::codegen::Config;
-    use crate::utils::logs::{configure_opinionated_test_logging, json_comparison_test};
+    use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::path_utils::path_to_string;
     use crate::utils::test_utils::{get_test_fixture_dir, json_golden_test, set_cwd_test_fixture};
     use log::debug;
