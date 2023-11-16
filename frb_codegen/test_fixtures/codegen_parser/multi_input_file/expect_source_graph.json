@@ -14,10 +14,26 @@
       "modules": [
         {
           "info": {
-            "file_path": "{the-working-directory}/src/api.rs",
+            "file_path": "{the-working-directory}/src/api_one.rs",
             "module_path": [
               "crate",
-              "api"
+              "api_one"
+            ],
+            "visibility": "Inherited"
+          },
+          "scope": {
+            "enums": [],
+            "modules": [],
+            "structs": [],
+            "type_alias": []
+          }
+        },
+        {
+          "info": {
+            "file_path": "{the-working-directory}/src/api_two.rs",
+            "module_path": [
+              "crate",
+              "api_two"
             ],
             "visibility": "Inherited"
           },

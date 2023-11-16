@@ -1,0 +1,29 @@
+{
+  "enum_pool": {},
+  "funcs": [
+    {
+      "comments": [],
+      "error_output": null,
+      "fallible": false,
+      "inputs": [],
+      "mode": "Normal",
+      "name": "func_two",
+      "output": {
+        "Primitive": "Unit"
+      }
+    },
+    {
+      "comments": [],
+      "error_output": null,
+      "fallible": false,
+      "inputs": [],
+      "mode": "Normal",
+      "name": "func_one",
+      "output": {
+        "Primitive": "Unit"
+      }
+    }
+  ],
+  "has_executor": false,
+  "struct_pool": {}
+}

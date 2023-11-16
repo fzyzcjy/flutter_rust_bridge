@@ -1,0 +1,88 @@
+{
+  "enum_pool": {},
+  "funcs": [
+    {
+      "comments": [],
+      "error_output": null,
+      "fallible": false,
+      "inputs": [
+        {
+          "comments": [],
+          "default": null,
+          "is_final": true,
+          "name": "anyhow_result",
+          "settings": {
+            "is_in_mirrored_enum": false
+          },
+          "ty": {
+            "Unencodable": {
+              "segments": [
+                {
+                  "args": {
+                    "Generic": [
+                      {
+                        "Primitive": "I32"
+                      },
+                      {
+                        "Delegate": "String"
+                      }
+                    ]
+                  },
+                  "ident": "Result"
+                }
+              ],
+              "string": "Result < i32 , String >"
+            }
+          }
+        },
+        {
+          "comments": [],
+          "default": null,
+          "is_final": true,
+          "name": "duration",
+          "settings": {
+            "is_in_mirrored_enum": false
+          },
+          "ty": {
+            "Unencodable": {
+              "segments": [
+                {
+                  "args": null,
+                  "ident": "Duration"
+                }
+              ],
+              "string": "Duration"
+            }
+          }
+        },
+        {
+          "comments": [],
+          "default": null,
+          "is_final": true,
+          "name": "uuid",
+          "settings": {
+            "is_in_mirrored_enum": false
+          },
+          "ty": {
+            "Unencodable": {
+              "segments": [
+                {
+                  "args": null,
+                  "ident": "Uuid"
+                }
+              ],
+              "string": "Uuid"
+            }
+          }
+        }
+      ],
+      "mode": "Normal",
+      "name": "f",
+      "output": {
+        "Primitive": "Unit"
+      }
+    }
+  ],
+  "has_executor": false,
+  "struct_pool": {}
+}

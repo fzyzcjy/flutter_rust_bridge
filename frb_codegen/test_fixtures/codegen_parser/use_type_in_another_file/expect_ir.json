@@ -1,0 +1,101 @@
+{
+  "enum_pool": {
+    "EnumInAnotherFile": {
+      "comments": [],
+      "is_struct": false,
+      "name": "EnumInAnotherFile",
+      "path": [
+        "crate",
+        "another_file",
+        "EnumInAnotherFile"
+      ],
+      "variants": [
+        {
+          "comments": [],
+          "kind": "Value",
+          "name": "Apple",
+          "wrapper_name": "EnumInAnotherFile_Apple"
+        }
+      ],
+      "wrapper_name": null
+    }
+  },
+  "funcs": [
+    {
+      "comments": [],
+      "error_output": null,
+      "fallible": false,
+      "inputs": [
+        {
+          "comments": [],
+          "default": null,
+          "is_final": true,
+          "name": "s",
+          "settings": {
+            "is_in_mirrored_enum": false
+          },
+          "ty": {
+            "StructRef": {
+              "ident": "StructInAnotherFile",
+              "is_exception": false
+            }
+          }
+        },
+        {
+          "comments": [],
+          "default": null,
+          "is_final": true,
+          "name": "e",
+          "settings": {
+            "is_in_mirrored_enum": false
+          },
+          "ty": {
+            "Delegate": {
+              "PrimitiveEnum": {
+                "ir": {
+                  "ident": "EnumInAnotherFile",
+                  "is_exception": false
+                },
+                "repr": "I32"
+              }
+            }
+          }
+        }
+      ],
+      "mode": "Normal",
+      "name": "func_one",
+      "output": {
+        "Primitive": "Unit"
+      }
+    }
+  ],
+  "has_executor": false,
+  "struct_pool": {
+    "StructInAnotherFile": {
+      "comments": [],
+      "dart_metadata": [],
+      "fields": [
+        {
+          "comments": [],
+          "default": null,
+          "is_final": true,
+          "name": "a",
+          "settings": {
+            "is_in_mirrored_enum": false
+          },
+          "ty": {
+            "Primitive": "I32"
+          }
+        }
+      ],
+      "is_fields_named": true,
+      "name": "StructInAnotherFile",
+      "path": [
+        "crate",
+        "another_file",
+        "StructInAnotherFile"
+      ],
+      "wrapper_name": null
+    }
+  }
+}
