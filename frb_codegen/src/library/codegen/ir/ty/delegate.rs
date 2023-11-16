@@ -133,4 +133,11 @@ impl IrTypeDelegateArray {
             }
         }
     }
+
+    pub fn length(&self) -> usize {
+        *match self {
+            IrTypeDelegateArray::GeneralArray { length, .. } => length,
+            IrTypeDelegateArray::PrimitiveArray { length, .. } => length,
+        }
+    }
 }

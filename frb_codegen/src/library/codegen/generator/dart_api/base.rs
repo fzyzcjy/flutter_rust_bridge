@@ -76,5 +76,5 @@ generate_code!(
 
 #[derive(Debug, Clone)]
 pub(crate) struct DartApiGeneratorContext<'a> {
-    ir_pack: &'a IrPack,
+    pub(crate) ir_pack: &'a IrPack,
 }

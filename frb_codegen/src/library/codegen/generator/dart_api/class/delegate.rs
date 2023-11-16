@@ -6,7 +6,7 @@ impl<'a> DartApiClassGeneratorTrait for DelegateDartApiGenerator<'a> {
     fn generate_class(&self) -> Option<String> {
         match &self.ir {
             IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) => {
-                EnumRefDartApiGenerator::new(ir.clone(), self.context.ir_pack).generate_class()
+                EnumRefDartApiGenerator::new(ir.clone(), self.context).generate_class()
             }
             IrTypeDelegate::Array(array) => Some(format!(
                 "
