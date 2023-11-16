@@ -44,13 +44,9 @@ impl<'a> TypeParser<'a> {
         type_path: &TypePath,
         path: &Path,
     ) -> anyhow::Result<IrType> {
-        let segments: Vec<NameComponent> = self.extract_path_data(path)?;
-
+        let segments = self.extract_path_data(path)?;
         use ArgsRefs::*;
-
-        let flat_vector = segments.splay();
-        let flat_array = &flat_vector[..];
-        match flat_array {
+        match &segments.splay()[..] {
             // Non generic types
             [("chrono", None), ("Duration", None)] => {
                 Ok(Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Duration)))
@@ -88,7 +84,9 @@ impl<'a> TypeParser<'a> {
                     self.parsing_or_parsed_struct_names.insert(ident.clone().0);
                     let api_struct = match self.parse_struct(&ident.0)? {
                         Some(ir_struct) => ir_struct,
-                        None => return Ok(parse_path_type_to_unencodable(type_path, flat_vector)),
+                        None => {
+                            return Ok(parse_path_type_to_unencodable(type_path, segments.splay()))
+                        }
                     };
                     self.struct_pool.insert(ident.clone(), api_struct);
                 }
@@ -238,7 +236,7 @@ impl<'a> TypeParser<'a> {
 
             [("chrono", None), ("DateTime", Some(Generic(args)))] => parse_datetime(args),
 
-            _ => Ok(parse_path_type_to_unencodable(type_path, flat_vector)),
+            _ => Ok(parse_path_type_to_unencodable(type_path, segments.splay())),
         }
     }
 }
@@ -265,18 +263,17 @@ fn parse_primitive(s: &str) -> Option<IrTypePrimitive> {
 
 fn parse_datetime(args: &[IrType]) -> anyhow::Result<IrType> {
     if let [Unencodable(IrTypeUnencodable { segments, .. })] = args {
-        let splayed = segments.splay();
-        return match splayed[..] {
+        return Ok(match segments.splay()[..] {
             [("DateTime", None), ("Utc", None)] => {
-                Ok(Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Utc)))
+                Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Utc))
             }
 
             [("DateTime", None), ("Local", None)] => {
-                Ok(Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Local)))
+                Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Local))
             }
 
             _ => bail!("Invalid DateTime generic"),
-        };
+        });
     }
     bail!("Invalid DateTime generic")
 }
