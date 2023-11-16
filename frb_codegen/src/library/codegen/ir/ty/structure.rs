@@ -43,3 +43,9 @@ impl IrTypeTrait for IrTypeStructRef {
         self.ident.0.to_case(Case::Snake)
     }
 }
+
+impl IrStruct {
+    pub fn using_freezed(&self) -> bool {
+        self.dart_metadata.iter().any(|it| it.content == "freezed")
+    }
+}
