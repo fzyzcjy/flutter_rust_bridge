@@ -33,9 +33,9 @@ pub enum IrTypeDelegateArray {
 }
 
 pub struct IrTypeDelegatePrimitiveEnum {
-    ir: IrTypeEnumRef,
+    pub(crate) ir: IrTypeEnumRef,
     /// Allows for `#[repr]`'s other than [i32]
-    repr: IrTypePrimitive,
+    pub(crate) repr: IrTypePrimitive,
 }
 
 #[derive(Copy, strum_macros::Display)]

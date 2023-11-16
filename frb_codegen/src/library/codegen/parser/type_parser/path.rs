@@ -1,15 +1,17 @@
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::dart_opaque::IrTypeDartOpaque;
-use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegateTime};
+use crate::codegen::ir::ty::delegate::{
+    IrTypeDelegate, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
+};
 use crate::codegen::ir::ty::dynamic::IrTypeDynamic;
-use crate::codegen::ir::ty::enumeration::{IrEnum, IrTypeEnumRef};
+use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumIdent, IrTypeEnumRef};
 use crate::codegen::ir::ty::general_list::IrTypeGeneralList;
 use crate::codegen::ir::ty::optional::IrTypeOptional;
 use crate::codegen::ir::ty::optional_list::IrTypeOptionalList;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 use crate::codegen::ir::ty::rust_opaque::IrTypeRustOpaque;
-use crate::codegen::ir::ty::structure::{IrStruct, IrTypeStructRef};
+use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent, IrTypeStructRef};
 use crate::codegen::ir::ty::unencodable::{Args, IrTypeUnencodable, NameComponent};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{
@@ -103,54 +105,58 @@ impl<'a> TypeParser<'a> {
             }
 
             [(name, None)] if self.src_structs.contains_key(&name.to_string()) => {
-                let ident_string = name.to_string();
-                if !self.parsing_or_parsed_struct_names.contains(&ident_string) {
-                    self.parsing_or_parsed_struct_names
-                        .insert(ident_string.to_owned());
-                    let api_struct = match self.parse_struct(&ident_string) {
+                let ident = IrStructIdent(name.to_string());
+
+                if !self.parsing_or_parsed_struct_names.contains(&ident.0) {
+                    self.parsing_or_parsed_struct_names.insert(ident.clone().0);
+                    let api_struct = match self.parse_struct(&ident.0) {
                         Some(ir_struct) => ir_struct,
                         None => return Ok(parse_path_type_to_unencodable(type_path, flat_vector)),
                     };
-                    self.struct_pool.insert(ident_string.to_owned(), api_struct);
+                    self.struct_pool.insert(ident.clone(), api_struct);
                 }
 
                 Ok(StructRef(IrTypeStructRef {
-                    name: ident_string.to_owned(),
-                    freezed: self
-                        .struct_pool
-                        .get(&ident_string)
-                        .map(IrStruct::using_freezed)
-                        .unwrap_or(false),
-                    empty: self
-                        .struct_pool
-                        .get(&ident_string)
-                        .map(IrStruct::is_empty)
-                        .unwrap_or(false),
+                    ident: ident.clone(),
                     is_exception: false,
+                    // TODO rm
+                    // freezed: self
+                    //     .struct_pool
+                    //     .get(&ident_string)
+                    //     .map(IrStruct::using_freezed)
+                    //     .unwrap_or(false),
+                    // empty: self
+                    //     .struct_pool
+                    //     .get(&ident_string)
+                    //     .map(IrStruct::is_empty)
+                    //     .unwrap_or(false),
                 }))
             }
 
             [(name, _)] if self.src_enums.contains_key(&name.to_string()) => {
-                let ident_string = name.to_string();
-                if self.parsed_enums.insert(ident_string.to_owned()) {
-                    let enu = self.parse_enum(&ident_string);
-                    self.enum_pool.insert(ident_string.to_owned(), enu);
+                let ident = IrEnumIdent(name.to_string());
+
+                if self.parsed_enums.insert(ident.clone().0) {
+                    let enu = self.parse_enum(&ident.0)?;
+                    self.enum_pool.insert(ident.clone(), enu);
                 }
 
                 let enum_ref = IrTypeEnumRef {
-                    name: ident_string.to_owned(),
+                    ident,
                     is_exception: false,
                 };
-                let enu = self.enum_pool.get(&ident_string);
+                let enu = self.enum_pool.get(&ident.0);
                 let is_struct = enu.map(IrEnum::is_struct).unwrap_or(true);
                 if is_struct {
                     Ok(EnumRef(enum_ref))
                 } else {
-                    Ok(Delegate(IrTypeDelegate::PrimitiveEnum {
-                        ir: enum_ref,
-                        // TODO(Desdaemon): Parse #[repr] from enum
-                        repr: IrTypePrimitive::I32,
-                    }))
+                    Ok(Delegate(IrTypeDelegate::PrimitiveEnum(
+                        IrTypeDelegatePrimitiveEnum {
+                            ir: enum_ref,
+                            // TODO(Desdaemon): Parse #[repr] from enum
+                            repr: IrTypePrimitive::I32,
+                        },
+                    )))
                 }
             }
 
