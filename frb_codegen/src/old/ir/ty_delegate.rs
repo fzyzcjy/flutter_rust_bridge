@@ -15,23 +15,6 @@ impl IrTypeDelegateTime {
 }
 
 impl IrTypeDelegateArray {
-    pub fn inner_dart_api_type(&self) -> String {
-        match self {
-            IrTypeDelegateArray::GeneralArray { general, .. } => general.dart_api_type(),
-            IrTypeDelegateArray::PrimitiveArray { primitive, .. } => {
-                use IrTypePrimitive::*;
-                match &primitive {
-                    U8 | I8 | U16 | I16 | U32 | I32 | Usize | Isize => "int",
-                    U64 | I64 => "BigInt",
-                    F32 | F64 => "double",
-                    Bool => "bool",
-                    Unit => "void",
-                }
-                .to_string()
-            }
-        }
-    }
-
     pub fn inner_rust_api_type(&self) -> String {
         match self {
             IrTypeDelegateArray::GeneralArray { general, .. } => general.rust_api_type(),
