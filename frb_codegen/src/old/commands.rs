@@ -57,7 +57,7 @@ pub(crate) struct BindgenRustToDartArg<'a> {
 pub(crate) fn bindgen_rust_to_dart(
     arg: BindgenRustToDartArg,
     dart_root: &str,
-) -> CommandResult<()> {
+) -> anyhow::Result<()> {
     cbindgen(
         arg.rust_crate_dir,
         arg.c_output_path,
@@ -79,7 +79,7 @@ fn cbindgen(
     c_output_path: &str,
     c_struct_names: Vec<String>,
     exclude_symbols: Vec<String>,
-) -> CommandResult {
+) -> anyhow::Result {
     debug!(
         "execute cbindgen rust_crate_dir={} c_output_path={}",
         rust_crate_dir, c_output_path
@@ -130,7 +130,7 @@ fn ffigen(
     llvm_path: &[String],
     llvm_compiler_opts: &str,
     dart_root: &str,
-) -> CommandResult {
+) -> anyhow::Result {
     debug!(
         "execute ffigen c_path={} dart_path={} llvm_path={:?}",
         c_path, dart_path, llvm_path

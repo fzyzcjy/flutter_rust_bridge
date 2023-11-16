@@ -39,8 +39,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 .into()),
             }
         } else {
-            Err(super::super::error::Error::UnexpectedSigInput(
-                quote::quote!(#sig_input).to_string().into(),
+            Err(anyhow!(
+                "Unexpected parameter: {}",
+                quote::quote!(#sig_input).to_string()
             ))
         }
     }
@@ -107,8 +108,9 @@ fn parse_name(pat_type: &PatType) -> anyhow::Result<String> {
     if let Pat::Ident(ref pat_ident) = *pat_type.pat {
         Ok(format!("{}", pat_ident.ident))
     } else {
-        Err(super::super::error::Error::UnexpectedPattern(
-            quote::quote!(#pat_type).to_string().into(),
+        Err(anyhow!(
+            "Unexpected pattern: {}",
+            quote::quote!(#pat_type).to_string(),
         ))
     }
 }

@@ -6,8 +6,6 @@ use std::path::{Path, PathBuf};
 use std::process::Command;
 use std::process::Output;
 
-pub(crate) type CommandResult<T = (), E = super::error::Error> = Result<T, E>;
-
 /// - First argument is either a string of a command, or a function receiving a slice of [`PathBuf`].
 ///   - The command may be followed by `in <expr>` to specify the working directory.
 ///   - The function may be followed by an array of rest parameters to pass.
@@ -17,7 +15,7 @@ pub(crate) type CommandResult<T = (), E = super::error::Error> = Result<T, E>;
 ///   - `*<expr>` to concatenate an iterable of such expressions; or
 ///   - A tuple of `(condition, expr, ...expr)` that adds `expr`s to the arguments only if `condition` is satisfied.
 ///
-/// Returns [`CommandResult<Output>`] if executing a command name, or the return value of the specified function.
+/// Returns [`anyhow::Result<Output>`] if executing a command name, or the return value of the specified function.
 #[doc(hidden)]
 #[macro_export]
 macro_rules! command_run {
@@ -69,7 +67,7 @@ macro_rules! command_args {
     }};
 }
 
-pub(crate) fn call_shell(cmd: &[PathBuf], pwd: Option<&Path>) -> CommandResult<Output> {
+pub(crate) fn call_shell(cmd: &[PathBuf], pwd: Option<&Path>) -> anyhow::Result<Output> {
     let cmd = cmd.iter().map(|section| format!("{section:?}")).join(" ");
     #[cfg(windows)]
     {
@@ -84,7 +82,7 @@ pub(crate) fn execute_command<'a>(
     bin: &str,
     args: impl IntoIterator<Item = &'a PathBuf>,
     current_dir: Option<&Path>,
-) -> CommandResult<Output> {
+) -> anyhow::Result<Output> {
     let args = args.into_iter().collect::<Vec<_>>();
     let args_display = args.iter().map(|path| path.to_string_lossy()).join(" ");
     let mut cmd = Command::new(bin);

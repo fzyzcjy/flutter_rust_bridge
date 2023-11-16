@@ -1,4 +1,4 @@
-use crate::commands::{CommandResult, Error};
+use crate::commands::Error;
 use crate::utils::dart_repository::dart_toolchain::DartToolchain;
 use crate::utils::dart_repository::pubspec::*;
 use anyhow::{anyhow, Context};
@@ -174,7 +174,7 @@ impl ToString for DartPackageVersion {
 }
 
 #[inline]
-fn read_file(at: &str, filename: &str) -> CommandResult<String> {
+fn read_file(at: &str, filename: &str) -> anyhow::Result<String> {
     let file = PathBuf::from(at).join(filename);
     if !file.exists() {
         Err(anyhow::anyhow!("missing {filename} in {at}"))?;
