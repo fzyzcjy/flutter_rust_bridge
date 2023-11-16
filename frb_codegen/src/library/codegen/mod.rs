@@ -17,7 +17,10 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
     let internal_config = InternalConfig::parse(config)?;
     debug!("internal_config={internal_config:?}");
 
-    let _ir_pack = parser::parse(&internal_config.parser)?;
+    let ir_pack = parser::parse(&internal_config.parser)?;
+
+    generator::dart_api::generate(&ir_pack)?;
+    generator::wire::generate(&ir_pack)?;
 
     todo!("generate")
 }
