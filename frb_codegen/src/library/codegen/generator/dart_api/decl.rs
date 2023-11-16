@@ -14,7 +14,8 @@ pub(crate) trait DartApiGeneratorDeclTrait {
 
 impl<'a> DartApiGeneratorDeclTrait for BoxedDartApiGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        DartApiGenerator::new(*self.ir.inner.clone(), self.context.ir_pack).dart_api_type()
+        let inner = DartApiGenerator::new(*self.ir.inner.clone(), self.context.ir_pack);
+        inner.dart_api_type()
     }
 }
 
@@ -66,19 +67,22 @@ impl<'a> DartApiGeneratorDeclTrait for EnumRefDartApiGenerator<'a> {
 
 impl<'a> DartApiGeneratorDeclTrait for GeneralListDartApiGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        format!("List<{}>", self.inner.dart_api_type())
+        let inner = DartApiGenerator::new(*self.ir.inner.clone(), self.context.ir_pack);
+        format!("List<{}>", inner.dart_api_type())
     }
 }
 
 impl<'a> DartApiGeneratorDeclTrait for OptionalDartApiGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        format!("{}?", self.inner.dart_api_type())
+        let inner = DartApiGenerator::new(*self.ir.inner.clone(), self.context.ir_pack);
+        format!("{}?", inner.dart_api_type())
     }
 }
 
 impl<'a> DartApiGeneratorDeclTrait for OptionalListDartApiGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        format!("List<{}?>", self.inner.dart_api_type())
+        let inner = DartApiGenerator::new(*self.ir.inner.clone(), self.context.ir_pack);
+        format!("List<{}?>", inner.dart_api_type())
     }
 }
 
