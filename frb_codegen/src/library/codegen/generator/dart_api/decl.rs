@@ -145,7 +145,8 @@ impl<'a> DartApiGeneratorDeclTrait for RecordDartApiGenerator<'a> {
 
 impl<'a> DartApiGeneratorDeclTrait for RustOpaqueDartApiGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        self.ir.inner_dart.clone()
+        let inner = DartApiGenerator::new(*self.ir.inner.clone(), self.context.ir_pack);
+        inner.dart_api_type()
     }
 }
 
