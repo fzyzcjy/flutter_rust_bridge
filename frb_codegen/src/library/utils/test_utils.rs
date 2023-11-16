@@ -37,12 +37,12 @@ pub(crate) fn json_golden_test(
     };
 
     if enable_update_golden() {
-        if actual != &expect {
+        if actual != expect {
             debug!("write golden data");
             fs::write(matcher_path, actual_str)?;
         }
     } else {
-        assert_eq!(actual, &expect);
+        assert_eq!(actual, expect);
     }
 
     Ok(())
