@@ -14,7 +14,9 @@ impl<'a> DartApiGeneratorClassTrait for RustOpaqueDartApiGenerator<'a> {
         Some(format!(
             "@sealed class {dart_api_type} extends FrbOpaque {{
                 {field}
-                {dart_api_type}.fromRaw(int ptr, int size, {param}) : super.unsafe(ptr, size);
+
+                {dart_api_type}.fromRaw(int ptr, int size, {param}): super.unsafe(ptr, size);
+
                 @override
                 DropFnType get dropFn => {bridge}.dropOpaque{dart_api_type};
         
