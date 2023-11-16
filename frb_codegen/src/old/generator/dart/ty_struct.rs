@@ -74,7 +74,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                 )
             })
             .collect::<Vec<_>>();
-        if has_methods && self.context.config.bridge_in_method {
+        if has_methods && self.context.config.use_bridge_in_method {
             inner.insert(0, "bridge: this,".to_string());
         }
 
@@ -133,7 +133,7 @@ fn generate_api_method(
         })
         .collect::<Vec<_>>();
 
-    if f.is_static_method() && config.bridge_in_method {
+    if f.is_static_method() && config.use_bridge_in_method {
         raw_func_param_list.insert(0, format!("required {dart_api_class_name} bridge"));
     }
 

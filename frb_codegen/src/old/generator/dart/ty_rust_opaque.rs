@@ -24,7 +24,7 @@ impl TypeDartGeneratorTrait for TypeRustOpaqueGenerator<'_> {
     }
 
     fn wire2api_body(&self) -> String {
-        let bridge = if self.context.config.bridge_in_method {
+        let bridge = if self.context.config.use_bridge_in_method {
             "this"
         } else {
             ""

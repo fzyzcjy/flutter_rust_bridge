@@ -98,7 +98,7 @@ impl Opts {
         }
     }
     pub fn get_dart_api_bridge_name(&self) -> String {
-        if self.bridge_in_method {
+        if self.use_bridge_in_method {
             "bridge".to_owned()
         } else {
             Path::new(&self.rust_input_path)

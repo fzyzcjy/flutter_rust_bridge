@@ -42,12 +42,12 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
             })
             .collect::<Vec<_>>()
             .concat();
-        let extra_argument = if self.context.config.bridge_in_method {
+        let extra_argument = if self.context.config.use_bridge_in_method {
             "required this.bridge,".to_string()
         } else {
             "".to_string()
         };
-        let field_bridge = if self.context.config.bridge_in_method {
+        let field_bridge = if self.context.config.use_bridge_in_method {
             format!(
                 "final {} bridge;",
                 self.context.config.dart_api_class_name(),
@@ -74,7 +74,7 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
                     )
                 })
                 .collect::<Vec<_>>();
-            if has_methods && self.context.config.bridge_in_method {
+            if has_methods && self.context.config.use_bridge_in_method {
                 constructor_params.insert(
                     0,
                     format!(
