@@ -13,6 +13,7 @@ use itertools::concat;
 use log::debug;
 use quote::quote;
 use syn::*;
+use IrType::Primitive;
 
 const STREAM_SINK_IDENT: &str = "StreamSink";
 
@@ -34,17 +35,17 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let mut info = FunctionPartialInfo::default();
 
         for (i, sig_input) in sig.inputs.iter().enumerate() {
-            info = info.merge(self.parse_fn_arg(i, sig_input)?);
+            info = info.merge(self.parse_fn_arg(i, sig_input)?)?;
         }
 
-        info = info.merge(self.parse_fn_output(sig)?);
+        info = info.merge(self.parse_fn_output(sig)?)?;
 
         Ok(IrFunc {
             name: func_name,
             inputs: info.inputs,
-            output: info.ok_output.context("Unsupported output")?,
+            output: info.ok_output.unwrap_or(Primitive(IrTypePrimitive::Unit)),
             error_output: info.error_output,
-            mode: info.mode.context("Missing mode")?,
+            mode: info.mode.unwrap_or(IrFuncMode::Normal),
             comments: parse_comments(&func.attrs),
         })
     }
@@ -59,14 +60,21 @@ struct FunctionPartialInfo {
 }
 
 impl FunctionPartialInfo {
-    fn merge(self, other: Self) -> Self {
-        Self {
+    fn merge(self, other: Self) -> ParserResult<Self> {
+        Ok(Self {
             inputs: concat([self.inputs, other.inputs]),
-            ok_output: other.ok_output.or(self.ok_output),
-            error_output: other.error_output.or(self.error_output),
-            mode: other.mode.or(self.mode),
-        }
+            ok_output: merge_option(self.ok_output, other.ok_output),
+            error_output: merge_option(self.error_output, other.error_output),
+            mode: merge_option(self.mode, other.mode),
+        })
     }
+}
+
+fn merge_option<T>(a: Option<T>, b: Option<T>) -> Option<T> {
+    if a.is_some() && b.is_some() {
+        todo!()
+    }
+    a.or(b)
 }
 
 /// syn -> string https://github.com/dtolnay/syn/issues/294

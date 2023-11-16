@@ -14,18 +14,9 @@ use syn::*;
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
     pub(super) fn parse_fn_output(&mut self, sig: &Signature) -> ParserResult<FunctionPartialInfo> {
-        // TODO
-        if matches!(mode, Some(IrFuncMode::Stream {..}) if output_ok != IrType::Primitive(IrTypePrimitive::Unit))
-        {
-            return Err(super::error::Error::NoStreamSinkAndOutput(func_name.into()));
-        }
-
         Ok(match &sig.output {
             ReturnType::Type(_, ty) => self.parse_fn_output_type(ty)?,
-            ReturnType::Default => FunctionPartialInfo {
-                ok_output: Some(IrType::Primitive(IrTypePrimitive::Unit)),
-                ..Default::default()
-            },
+            ReturnType::Default => Default::default(),
         })
     }
 
