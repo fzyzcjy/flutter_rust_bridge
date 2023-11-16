@@ -1,19 +1,11 @@
 pub(crate) mod argument;
 pub(crate) mod output;
 
-use crate::codegen::ir::field::{IrField, IrFieldSettings};
+use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode};
-use crate::codegen::ir::ident::IrIdent;
-use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
-use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
-use crate::codegen::parser::attribute_parser::FrbAttributes;
-use crate::codegen::parser::function_parser::argument::FuncArg;
-use crate::codegen::parser::function_parser::output::FuncOutput;
 use crate::codegen::parser::type_parser::misc::parse_comments;
-use crate::codegen::parser::type_parser::unencodable::{splay_segments, ArgsRefs};
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::parser::ParserResult;
 use anyhow::Context;
@@ -42,87 +34,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let mut info = FunctionPartialInfo::default();
 
         for (i, sig_input) in sig.inputs.iter().enumerate() {
-            if let FnArg::Typed(ref pat_type) = sig_input {
-                let name = if let Pat::Ident(ref pat_ident) = *pat_type.pat {
-                    format!("{}", pat_ident.ident)
-                } else {
-                    return Err(super::error::Error::UnexpectedPattern(
-                        quote::quote!(#pat_type).to_string().into(),
-                    ));
-                };
-                let arg_type = self.parse_fn_arg_type(&pat_type.ty)?.with_context(|| {
-                    format!(
-                        "Failed to parse function argument type `{}`",
-                        type_to_string(&pat_type.ty)
-                    )
-                })?;
-                match arg_type {
-                    FuncArg::StreamSinkType(ty) => {
-                        output = Some(ty);
-                        mode = Some(IrFuncMode::Stream { argument_index: i });
-                        fallible = match &sig.output {
-                            ReturnType::Default => false,
-                            ReturnType::Type(_, ty) => {
-                                !matches!(self.parse_fn_output_type(ty)?, Some(FuncOutput::Type(_)))
-                            }
-                        }
-                    }
-                    FuncArg::Type(ty) => {
-                        let attributes = FrbAttributes::parse(&pat_type.attrs)?;
-                        inputs.push(IrField {
-                            name: IrIdent::new(name),
-                            ty,
-                            is_final: true,
-                            comments: parse_comments(&pat_type.attrs),
-                            default: attributes.default_value(),
-                            settings: IrFieldSettings::default(),
-                        });
-                    }
-                }
-            } else {
-                return Err(super::error::Error::UnexpectedSigInput(
-                    quote::quote!(#sig_input).to_string().into(),
-                ));
-            }
+            info = info.merge(self.parse_fn_arg(i, sig_input)?);
         }
 
-        let (output_ok, output_err) = match &sig.output {
-            ReturnType::Type(_, ty) => {
-                let output_type = self.parse_fn_output_type(ty)?.with_context(|| {
-                    format!(
-                        "Failed to parse function output type `{}`",
-                        type_to_string(ty)
-                    )
-                })?;
-                match output_type {
-                    FuncOutput::ResultType { ok: ty, error: err } => (ty, err),
-                    FuncOutput::Type(ty) => {
-                        fallible = false;
-                        (ty, None)
-                    }
-                }
-            }
-            ReturnType::Default => {
-                fallible = false;
-                (IrType::Primitive(IrTypePrimitive::Unit), None)
-            }
-        };
-
-        if matches!(mode, Some(IrFuncMode::Stream { argument_index: _ }) if output_ok != IrType::Primitive(IrTypePrimitive::Unit))
-        {
-            return Err(super::error::Error::NoStreamSinkAndOutput(func_name.into()));
-        }
-
-        if output.is_none() {
-            // TODO handle SyncReturn as a marker
-            // mode = Some(if let IrType::SyncReturn(_) = output_ok {
-            //     IrFuncMode::Sync
-            // } else {
-            //     IrFuncMode::Normal
-            // });
-            mode = Some(IrFuncMode::Normal);
-            output = Some(output_ok);
-        }
+        info = info.merge(self.parse_fn_output()?);
 
         Ok(IrFunc {
             name: func_name,

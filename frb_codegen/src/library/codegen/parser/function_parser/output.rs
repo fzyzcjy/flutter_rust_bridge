@@ -1,9 +1,14 @@
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
+use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
-use crate::codegen::parser::function_parser::FunctionParser;
+use crate::codegen::parser::function_parser::{
+    type_to_string, FunctionParser, FunctionPartialInfo,
+};
 use crate::codegen::parser::type_parser::unencodable::{splay_segments, ArgsRefs};
+use crate::codegen::parser::ParserResult;
+use anyhow::Context;
 use syn::*;
 
 /// Represents a function's output type
@@ -14,9 +19,49 @@ pub(super) enum FuncOutput {
 }
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
+    pub(super) fn parse_fn_output(&mut self) -> ParserResult<FunctionPartialInfo> {
+        let (output_ok, output_err) = match &sig.output {
+            ReturnType::Type(_, ty) => {
+                let output_type = self.parse_fn_output_type(ty)?.with_context(|| {
+                    format!(
+                        "Failed to parse function output type `{}`",
+                        type_to_string(ty)
+                    )
+                })?;
+                match output_type {
+                    FuncOutput::ResultType { ok: ty, error: err } => (ty, err),
+                    FuncOutput::Type(ty) => {
+                        fallible = false;
+                        (ty, None)
+                    }
+                }
+            }
+            ReturnType::Default => {
+                fallible = false;
+                (IrType::Primitive(IrTypePrimitive::Unit), None)
+            }
+        };
+
+        if matches!(mode, Some(IrFuncMode::Stream { argument_index: _ }) if output_ok != IrType::Primitive(IrTypePrimitive::Unit))
+        {
+            return Err(super::error::Error::NoStreamSinkAndOutput(func_name.into()));
+        }
+
+        if output.is_none() {
+            // TODO handle SyncReturn as a marker
+            // mode = Some(if let IrType::SyncReturn(_) = output_ok {
+            //     IrFuncMode::Sync
+            // } else {
+            //     IrFuncMode::Normal
+            // });
+            mode = Some(IrFuncMode::Normal);
+            output = Some(output_ok);
+        }
+    }
+
     /// Attempts to parse the type from the return part of a function signature. There is a special
     /// case for top-level `Result` types.
-    pub(super) fn parse_fn_output_type(&mut self, ty: &Type) -> anyhow::Result<Option<FuncOutput>> {
+    fn parse_fn_output_type(&mut self, ty: &Type) -> anyhow::Result<Option<FuncOutput>> {
         let ty = &self.type_parser.resolve_alias(ty).clone();
 
         Ok(if let Type::Path(type_path) = ty {
