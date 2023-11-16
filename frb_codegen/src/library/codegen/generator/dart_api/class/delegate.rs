@@ -12,11 +12,11 @@ impl<'a> DartApiGeneratorClassTrait for DelegateDartApiGenerator<'a> {
                 EnumRefDartApiGenerator::new(ir.clone(), self.context.clone()).generate_class()
             }
             IrTypeDelegate::Array(array) => {
-                let self_dart_api_type = array.dart_api_type(self.context.ir_pack);
+                let self_dart_api_type = array.dart_api_type(self.context.clone());
                 let inner_dart_api_type =
-                    DartApiGenerator::new(array.inner(), self.context.ir_pack).dart_api_type();
+                    DartApiGenerator::new(array.inner(), self.context.clone()).dart_api_type();
                 let delegate_dart_api_type =
-                    DartApiGenerator::new(array.get_delegate(), self.context.ir_pack)
+                    DartApiGenerator::new(array.get_delegate(), self.context.clone())
                         .dart_api_type();
 
                 let array_length = array.length();
