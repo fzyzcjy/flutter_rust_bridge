@@ -5,7 +5,7 @@ impl<'a> DartApiGeneratorClassTrait for RustOpaqueDartApiGenerator<'a> {
     fn generate_class(&self) -> Option<String> {
         let bridge = self.context.config.get_dart_api_bridge_name();
         let bridge_class = &self.context.config.dart_api_class_name;
-        let (field, param) = if self.context.config.bridge_in_method {
+        let (field, param) = if self.context.config.use_bridge_in_method {
             (format!("final {bridge_class} bridge;"), "this.bridge")
         } else {
             (String::new(), "")
