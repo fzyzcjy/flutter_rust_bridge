@@ -209,9 +209,11 @@ fn fallback_llvm_path() -> Vec<String> {
 mod tests {
     use crate::codegen::config::internal_config::InternalConfig;
     use crate::codegen::Config;
-    use crate::utils::logs::configure_opinionated_test_logging;
+    use crate::utils::logs::{configure_opinionated_test_logging, json_comparison_test};
     use crate::utils::path_utils::path_to_string;
-    use crate::utils::test_utils::{get_test_fixture_dir, set_cwd_test_fixture};
+    use crate::utils::test_utils::{
+        get_test_fixture_dir, json_comparison_test, set_cwd_test_fixture,
+    };
     use log::debug;
     use serde_json::Value;
     use serial_test::serial;
@@ -242,11 +244,9 @@ mod tests {
             &path_to_string(&get_test_fixture_dir(fixture_name))?,
             "{the-working-directory}",
         );
-        debug!("internal_config:\n{}", actual_string);
+        let actual_json: Value = serde_json::from_str(&actual_string)?;
 
-        let actual: Value = serde_json::from_str(&actual_string)?;
-        let expect: Value = serde_json::from_str(&fs::read_to_string("expect_output.json")?)?;
-        assert_eq!(actual, expect);
+        json_comparison_test(&actual_json, "expect_output.json");
 
         Ok(())
     }

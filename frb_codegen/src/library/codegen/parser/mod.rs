@@ -75,13 +75,11 @@ fn parse_one_ast(
 
 #[cfg(test)]
 mod tests {
-    use crate::codegen::config::internal_config::InternalConfig;
-    use crate::codegen::Config;
-    use crate::utils::logs::configure_opinionated_test_logging;
-    use crate::utils::test_utils::set_cwd_test_fixture;
-    use serde_json::Value;
+    use crate::codegen::parser::internal_config::{ParserInternalConfig, RustInputPathPack};
+    use crate::codegen::parser::parse;
+    use crate::utils::logs::{configure_opinionated_test_logging, json_comparison_test};
+    use crate::utils::test_utils::{json_comparison_test, set_cwd_test_fixture};
     use serial_test::serial;
-    use std::fs;
 
     // TODO more tests
     // TODO `chrono::Duration` and `Duration` test
@@ -96,14 +94,14 @@ mod tests {
         configure_opinionated_test_logging();
         set_cwd_test_fixture(fixture_name)?;
 
-        let config = Config::from_files_auto()?;
-        let internal_config = InternalConfig::parse(config)?;
+        let actual = parse(&ParserInternalConfig {
+            rust_input_path_pack: RustInputPathPack {
+                rust_input_path: todo,
+            },
+            rust_crate_dir: todo,
+        })?;
 
-        todo!();
-
-        let actual: Value = serde_json::from_str(&actual_string)?;
-        let expect: Value = serde_json::from_str(&fs::read_to_string("expect_output.json")?)?;
-        assert_eq!(actual, expect);
+        json_comparison_test(&serde_json::to_value(actual)?, "expect_output.json");
 
         Ok(())
     }
