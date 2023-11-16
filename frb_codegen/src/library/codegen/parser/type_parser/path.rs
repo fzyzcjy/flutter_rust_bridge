@@ -125,13 +125,6 @@ impl<'a> TypeParser<'a> {
                 primitive.clone(),
             ))),
 
-            [(
-                "ZeroCopyBuffer",
-                Some(Generic([PrimitiveList(IrTypePrimitiveList { primitive })])),
-            )] => Ok(Delegate(IrTypeDelegate::ZeroCopyBufferVecPrimitive(
-                primitive.clone(),
-            ))),
-
             [("flutter_rust_bridge", None), ("RustOpaque", Some(Generic([Delegate(IrTypeDelegate::Array(array_delegate))])))] => {
                 Ok(Delegate(IrTypeDelegate::Array(array_delegate.clone())))
             }
@@ -174,8 +167,6 @@ impl<'a> TypeParser<'a> {
                 Optional(_) => unreachable!(),
             })),
 
-            [("chrono", None), ("DateTime", Some(Generic(args)))] => parse_datetime(args),
-
             _ => Ok(parse_path_type_to_unencodable(type_path, segments.splay())),
         }
     }
@@ -199,23 +190,6 @@ fn parse_primitive(s: &str) -> Option<IrTypePrimitive> {
         "isize" => IrTypePrimitive::Isize,
         _ => return None,
     })
-}
-
-fn parse_datetime(args: &[IrType]) -> anyhow::Result<IrType> {
-    if let [Unencodable(IrTypeUnencodable { segments, .. })] = args {
-        return Ok(match segments.splay()[..] {
-            [("DateTime", None), ("Utc", None)] => {
-                Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Utc))
-            }
-
-            [("DateTime", None), ("Local", None)] => {
-                Delegate(IrTypeDelegate::Time(IrTypeDelegateTime::Local))
-            }
-
-            _ => bail!("Invalid DateTime generic"),
-        });
-    }
-    bail!("Invalid DateTime generic")
 }
 
 fn parse_path_type_to_unencodable(
