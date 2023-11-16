@@ -69,3 +69,8 @@ fn get_root_module_info(root_src_file: PathBuf, root_src_ast: File) -> ModuleInf
         source: ModuleSource::File(root_src_ast),
     }
 }
+
+#[cfg(test)]
+mod tests {
+    // tests are in `codegen::parser::mod`
+}
