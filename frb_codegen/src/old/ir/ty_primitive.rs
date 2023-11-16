@@ -82,23 +82,4 @@ impl IrTypePrimitive {
             IrTypePrimitive::Unit => "ffi.Void",
         }
     }
-    pub fn try_from_rust_str(s: &str) -> Option<Self> {
-        match s {
-            "u8" => Some(IrTypePrimitive::U8),
-            "i8" => Some(IrTypePrimitive::I8),
-            "u16" => Some(IrTypePrimitive::U16),
-            "i16" => Some(IrTypePrimitive::I16),
-            "u32" => Some(IrTypePrimitive::U32),
-            "i32" => Some(IrTypePrimitive::I32),
-            "u64" => Some(IrTypePrimitive::U64),
-            "i64" => Some(IrTypePrimitive::I64),
-            "f32" => Some(IrTypePrimitive::F32),
-            "f64" => Some(IrTypePrimitive::F64),
-            "bool" => Some(IrTypePrimitive::Bool),
-            "()" => Some(IrTypePrimitive::Unit),
-            "usize" => Some(IrTypePrimitive::Usize),
-            "isize" => Some(IrTypePrimitive::Isize),
-            _ => None,
-        }
-    }
 }

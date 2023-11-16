@@ -100,8 +100,8 @@ impl<'a> TypeParser<'a> {
             [("Backtrace", None)] => Ok(Delegate(IrTypeDelegate::Backtrace)),
 
             // TODO: change to "if let guard" https://github.com/rust-lang/rust/issues/51114
-            [(name, None)] if matches!(IrTypePrimitive::try_from_rust_str(name), Some(..)) => {
-                Ok(Primitive(IrTypePrimitive::try_from_rust_str(name).unwrap()))
+            [(name, None)] if matches!(parse_primitive(name), Some(..)) => {
+                Ok(Primitive(parse_primitive(name).unwrap()))
             }
 
             [(name, None)] if self.src_structs.contains_key(&name.to_string()) => {
@@ -279,6 +279,26 @@ impl<'a> TypeParser<'a> {
             _ => Ok(parse_path_type_to_unencodable(type_path, flat_vector)),
         }
     }
+}
+
+fn parse_primitive(s: &str) -> Option<IrTypePrimitive> {
+    Some(match s {
+        "u8" => IrTypePrimitive::U8,
+        "i8" => IrTypePrimitive::I8,
+        "u16" => IrTypePrimitive::U16,
+        "i16" => IrTypePrimitive::I16,
+        "u32" => IrTypePrimitive::U32,
+        "i32" => IrTypePrimitive::I32,
+        "u64" => IrTypePrimitive::U64,
+        "i64" => IrTypePrimitive::I64,
+        "f32" => IrTypePrimitive::F32,
+        "f64" => IrTypePrimitive::F64,
+        "bool" => IrTypePrimitive::Bool,
+        "()" => IrTypePrimitive::Unit,
+        "usize" => IrTypePrimitive::Usize,
+        "isize" => IrTypePrimitive::Isize,
+        _ => return None,
+    })
 }
 
 fn parse_datetime(args: &[IrType]) -> anyhow::Result<IrType> {
