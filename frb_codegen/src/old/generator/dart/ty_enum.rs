@@ -7,8 +7,6 @@ use crate::target::Acc;
 use crate::type_dart_generator_struct;
 use crate::utils::misc::dart_maybe_implements_exception;
 
-const BACKTRACE_IDENT: &str = "backtrace";
-
 type_dart_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 
 impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {

@@ -3,9 +3,13 @@ use crate::codegen::generator::dart_api::class::DartApiGeneratorClassTrait;
 use crate::codegen::generator::dart_api::misc::{
     generate_dart_comments, generate_dart_maybe_implements_exception,
 };
+use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ty::enumeration::IrVariantKind;
 use crate::codegen::ir::ty::structure::IrStruct;
+use crate::library::codegen::generator::dart_api::decl::DartApiGeneratorDeclTrait;
 use crate::utils::dart_keywords::make_string_keyword_safe;
+
+const BACKTRACE_IDENT: &str = "backtrace";
 
 impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {
     fn generate_class(&self) -> Option<String> {
@@ -43,7 +47,11 @@ impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {
                                         .unwrap_or_default();
                                     format!(
                                         "{comments} {default} {} {},",
-                                        field.ty.dart_api_type(),
+                                        DartApiGenerator::new(
+                                            field.ty.clone(),
+                                            self.context.clone()
+                                        )
+                                        .dart_api_type(),
                                         field.name.dart_style(),
                                         comments = generate_dart_comments(&field.comments),
                                         default = default
@@ -65,7 +73,11 @@ impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {
                                 .map(|field| {
                                     format!(
                                         "{comments} {default} {required}{} {} ,",
-                                        field.ty.dart_api_type(),
+                                        DartApiGenerator::new(
+                                            field.ty.clone(),
+                                            self.context.clone()
+                                        )
+                                        .dart_api_type(),
                                         field.name.dart_style(),
                                         required = field.required_modifier(),
                                         comments = generate_dart_comments(&field.comments),
@@ -136,4 +148,17 @@ impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {
             ))
         }
     }
+}
+
+fn optional_boundary_index(fields: &[IrField]) -> Option<usize> {
+    fields
+        .iter()
+        .enumerate()
+        .find(|(_, field)| field.is_optional())
+        .and_then(|(idx, _)| {
+            fields[idx..]
+                .iter()
+                .all(|field| field.is_optional())
+                .then_some(idx)
+        })
 }

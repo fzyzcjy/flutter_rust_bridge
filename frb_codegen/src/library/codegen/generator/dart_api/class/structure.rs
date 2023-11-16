@@ -3,6 +3,7 @@ use crate::codegen::generator::dart_api::class::DartApiGeneratorClassTrait;
 use crate::codegen::generator::dart_api::misc::{
     generate_dart_comments, generate_dart_maybe_implements_exception, generate_dart_metadata,
 };
+use crate::library::codegen::generator::dart_api::decl::DartApiGeneratorDeclTrait;
 
 impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
     fn generate_class(&self) -> Option<String> {
@@ -69,7 +70,8 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
                     format!(
                         "{default} {} {} {},",
                         field.required_modifier(),
-                        field.ty.dart_api_type(),
+                        DartApiGenerator::new(field.ty.clone(), self.context.clone())
+                            .dart_api_type(),
                         field.name.dart_style()
                     )
                 })
@@ -110,7 +112,7 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
                         "{}{} {} {};",
                         comments,
                         if f.is_final { "final" } else { "" },
-                        f.ty.dart_api_type(),
+                        DartApiGenerator::new(f.ty.clone(), self.context.clone()).dart_api_type(),
                         f.name.dart_style()
                     )
                 })

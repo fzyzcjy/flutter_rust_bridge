@@ -140,16 +140,3 @@ pub trait IrTypeTrait {
         "dynamic"
     }
 }
-
-pub fn optional_boundary_index(fields: &[IrField]) -> Option<usize> {
-    fields
-        .iter()
-        .enumerate()
-        .find(|(_, field)| field.is_optional())
-        .and_then(|(idx, _)| {
-            fields[idx..]
-                .iter()
-                .all(|field| field.is_optional())
-                .then_some(idx)
-        })
-}
