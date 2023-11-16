@@ -12,7 +12,7 @@ use crate::codegen::parser::type_parser::TypeParser;
 use syn::{Attribute, Field, Ident, Variant};
 
 impl<'a> TypeParser<'a> {
-    fn parse_enum(&mut self, ident_string: &str) -> anyhow::Result<IrEnum> {
+    pub(crate) fn parse_enum(&mut self, ident_string: &str) -> anyhow::Result<IrEnum> {
         let src_enum = self.src_enums[ident_string];
 
         let (name, wrapper_name) =

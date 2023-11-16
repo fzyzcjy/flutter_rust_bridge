@@ -18,6 +18,7 @@ use crate::codegen::ir::ty::IrType::{
 };
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::parser::unencodable::Splayable;
+use anyhow::anyhow;
 use quote::ToTokens;
 use syn::{QSelf, TypePath};
 
@@ -244,12 +245,12 @@ impl<'a> TypeParser<'a> {
                         inner: Box::new(inner.clone()),
                     })),
 
-                    [("Option", Some(Generic([Optional(_)])))] => Err(format!(
+                    [("Option", Some(Generic([Optional(_)])))] => Err(anyhow!(
                         "Nested optionals without indirection are not supported. {}",
                         type_path.to_token_stream()
                     )),
 
-                    [("Option", Some(Generic([SyncReturn(_)])))] => Err(format!(
+                    [("Option", Some(Generic([SyncReturn(_)])))] => Err(anyhow!(
                         "Option<SyncReturn<_>> has no effect. Consider SyncReturn<Option<_>> instead. {}",
                         type_path.to_token_stream()
                     )),
@@ -286,7 +287,7 @@ impl<'a> TypeParser<'a> {
             TypePath {
                 qself: Some(QSelf { ty, .. }),
                 ..
-            } => Err(format!(
+            } => Err(anyhow!(
                 "qself \"<{}>\" in \"{}\", and all qself syntax, is unsupported",
                 ty.to_token_stream(),
                 type_path.to_token_stream()
