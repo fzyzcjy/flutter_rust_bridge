@@ -11,7 +11,7 @@ use crate::codegen::ir::ty::IrType::{
     Boxed, DartOpaque, Delegate, Dynamic, Primitive, PrimitiveList, RustOpaque, Unencodable,
 };
 use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
-use crate::codegen::parser::type_parser::unencodable::{splay_segments, ArgsRefs, SplayedSegment};
+use crate::codegen::parser::type_parser::unencodable::{splay_segments, SplayedSegment};
 use crate::codegen::parser::type_parser::TypeParser;
 use anyhow::bail;
 

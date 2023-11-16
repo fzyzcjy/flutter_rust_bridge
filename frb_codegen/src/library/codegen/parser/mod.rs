@@ -27,7 +27,7 @@ pub(crate) fn parse(config: &ParserInternalConfig) -> ParserResult<IrPack> {
         .rust_input_path
         .iter()
         // TODO handle namespace
-        .map(|(namespace, rust_input_path)| parse_one(rust_input_path, &config.rust_crate_dir))
+        .map(|(_namespace, rust_input_path)| parse_one(rust_input_path, &config.rust_crate_dir))
         .collect::<Result<Vec<_>, _>>()?;
     let merged_pack = raw_packs.into_iter().reduce(|acc, e| acc.merge(e)).unwrap();
     Ok(merged_pack)

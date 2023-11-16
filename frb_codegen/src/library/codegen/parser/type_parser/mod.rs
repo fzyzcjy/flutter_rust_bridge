@@ -14,11 +14,11 @@ pub(crate) mod unencodable;
 pub(crate) mod vec;
 
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
-use crate::codegen::ir::ty::IrType;
+
 use crate::codegen::parser::source_graph::modules::{Enum, Struct};
-use crate::codegen::parser::type_parser::misc::convert_ident_str;
+
 use std::collections::{HashMap, HashSet};
-use syn::{Type, TypePath};
+use syn::{Type};
 
 pub(crate) struct TypeParser<'a> {
     src_structs: HashMap<String, &'a Struct>,

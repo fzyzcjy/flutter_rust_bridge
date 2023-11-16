@@ -8,7 +8,7 @@ use crate::codegen::ir::ty::IrType::{
     Delegate, GeneralList, Optional, OptionalList, Primitive, PrimitiveList,
 };
 use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
-use crate::codegen::parser::type_parser::unencodable::{ArgsRefs, SplayedSegment};
+use crate::codegen::parser::type_parser::unencodable::{SplayedSegment};
 use crate::codegen::parser::type_parser::TypeParser;
 use anyhow::bail;
 use quote::ToTokens;

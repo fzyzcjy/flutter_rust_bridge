@@ -15,7 +15,7 @@ pub struct IrPack {
 }
 
 impl IrPack {
-    pub(crate) fn merge(self, other: Self) -> Self {
+    pub(crate) fn merge(self, _other: Self) -> Self {
         todo!()
     }
 }

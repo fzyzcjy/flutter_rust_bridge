@@ -1,7 +1,7 @@
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
-use crate::codegen::ir::ty::IrType::{Delegate, Primitive};
+
 use crate::codegen::parser::type_parser::TypeParser;
 use quote::ToTokens;
 use syn::Type;

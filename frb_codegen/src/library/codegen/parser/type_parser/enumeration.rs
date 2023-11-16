@@ -13,7 +13,7 @@ use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::source_graph::modules::Enum;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::structure::compute_name_and_wrapper_name;
-use crate::codegen::parser::type_parser::unencodable::{ArgsRefs, SplayedSegment};
+use crate::codegen::parser::type_parser::unencodable::{SplayedSegment};
 use crate::codegen::parser::type_parser::TypeParser;
 use syn::{Attribute, Field, Ident, Variant};
 

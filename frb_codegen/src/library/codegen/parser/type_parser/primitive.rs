@@ -1,7 +1,7 @@
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Primitive;
-use crate::codegen::parser::type_parser::unencodable::{ArgsRefs, SplayedSegment};
+use crate::codegen::parser::type_parser::unencodable::{SplayedSegment};
 use crate::codegen::parser::type_parser::TypeParser;
 
 impl<'a> TypeParser<'a> {

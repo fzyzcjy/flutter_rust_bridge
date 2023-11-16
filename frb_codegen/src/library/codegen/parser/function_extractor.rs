@@ -43,8 +43,8 @@ fn extract_methods_from_file(file: &File) -> ParserResult<Vec<ItemFn>> {
 /// Converts an item implementation (something like fn(&self, ...)) into a function
 /// where `&self` is a named parameter to `&Self`
 fn convert_item_method_to_function(
-    item_impl: &ItemImpl,
-    item_method: &ImplItemFn,
+    _item_impl: &ItemImpl,
+    _item_method: &ImplItemFn,
 ) -> ParserResult<Option<ItemFn>> {
     // TODO want to use other approaches, temp disable
     todo!()

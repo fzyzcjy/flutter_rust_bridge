@@ -167,7 +167,7 @@ fn get_module_file_path_candidates(
         parent_module_file_path.parent().unwrap().to_owned(),
         parent_module_file_path.with_extension(""),
     ]
-    .into_iter()
+    .iter()
     .flat_map(|folder_path| {
         [
             folder_path.join(&module_name).with_extension("rs"),
