@@ -50,30 +50,17 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
             String::new()
         };
 
-        let private_constructor = if has_methods {
-            format!("const {}._();", self.ir.ident.0)
-        } else {
-            "".to_owned()
-        };
-
         Some(if src.using_freezed() {
-            self.generate_mode_freezed(
+            self.generate_mode_freezed(src, &comments, &metadata, has_methods, &methods)
+        } else {
+            self.generate_mode_non_freezed(
                 src,
                 &comments,
                 &metadata,
                 has_methods,
                 &methods,
-                private_constructor,
-            )
-        } else {
-            self.generate_mode_non_freezed(
-                src,
-                comments,
-                metadata,
-                has_methods,
-                methods,
-                extra_argument,
-                field_bridge,
+                &extra_argument,
+                &field_bridge,
             )
         })
     }
@@ -83,12 +70,17 @@ impl<'a> StructRefDartApiGenerator<'a> {
     fn generate_mode_freezed(
         &self,
         src: &IrStruct,
-        comments: &String,
-        metadata: &String,
+        comments: &str,
+        metadata: &str,
         has_methods: bool,
-        methods: &String,
-        private_constructor: String,
+        methods: &str,
     ) -> String {
+        let private_constructor = if has_methods {
+            format!("const {}._();", self.ir.ident.0)
+        } else {
+            "".to_owned()
+        };
+
         let mut constructor_params = src
             .fields
             .iter()
@@ -106,6 +98,7 @@ impl<'a> StructRefDartApiGenerator<'a> {
         if has_methods && self.context.config.use_bridge_in_method {
             constructor_params.insert(
                 0,
+                // TODO merge with extra_argument
                 format!(
                     "required {} bridge,",
                     self.context.config.dart_api_class_name
@@ -116,10 +109,10 @@ impl<'a> StructRefDartApiGenerator<'a> {
 
         format!(
             "{comments}{meta}class {Name} with _${Name} {implements_exception} {{
-                    {private_constructor}
-                    const factory {Name}({{{}}}) = _{Name};
-                    {}
-                }}",
+                {private_constructor}
+                const factory {Name}({{{}}}) = _{Name};
+                {}
+            }}",
             constructor_params,
             methods,
             comments = comments,
@@ -133,12 +126,12 @@ impl<'a> StructRefDartApiGenerator<'a> {
     fn generate_mode_non_freezed(
         &self,
         src: &IrStruct,
-        comments: String,
-        metadata: String,
+        comments: &str,
+        metadata: &str,
         has_methods: bool,
-        methods: String,
-        extra_argument: String,
-        field_bridge: String,
+        methods: &str,
+        extra_argument: &str,
+        field_bridge: &str,
     ) -> String {
         let mut field_declarations = src
             .fields
@@ -185,9 +178,9 @@ impl<'a> StructRefDartApiGenerator<'a> {
 
         format!(
             "{comments}{meta}class {Name} {implements_exception} {{
-                    {}
+                {}
 
-                    {maybe_const}{Name}({}{}{});
+                {maybe_const}{Name}({}{}{});
 
                 {}
             }}",
