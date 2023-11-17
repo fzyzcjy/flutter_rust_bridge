@@ -43,10 +43,6 @@ impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
         obj
     }
 
-    fn convert_to_dart(&self, obj: String) -> String {
-        format!("{obj}.into_dart()")
-    }
-
     fn allocate_funcs(
         &self,
         collector: &mut ExternFuncCollector,

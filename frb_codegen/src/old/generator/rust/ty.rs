@@ -17,10 +17,6 @@ pub trait TypeRustGeneratorTrait {
         obj
     }
 
-    fn convert_to_dart(&self, obj: String) -> String {
-        format!("{obj}.into_into_dart().into_dart()")
-    }
-
     fn allocate_funcs(
         &self,
         _collector: &mut ExternFuncCollector,
