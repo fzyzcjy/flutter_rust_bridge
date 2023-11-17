@@ -1,12 +1,5 @@
 use std::iter::FromIterator;
 
-#[derive(Debug, Clone, Copy)]
-pub enum Target {
-    Common,
-    Io,
-    Wasm,
-}
-
 impl Target {
     #[inline]
     pub const fn is_wasm(&self) -> bool {

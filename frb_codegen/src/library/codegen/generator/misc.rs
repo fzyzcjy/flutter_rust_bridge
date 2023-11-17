@@ -38,3 +38,10 @@ macro_rules! codegen_generator_structs {
         }
     )
 }
+
+#[derive(Debug, Clone, Copy)]
+pub enum Target {
+    Common,
+    Io,
+    Wasm,
+}

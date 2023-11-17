@@ -1,6 +1,14 @@
+use crate::codegen::generator::misc::Target;
+use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
 use crate::codegen::ir::ty::IrType;
 
-pub(super) fn generate_class_from_fields(ty: &IrType, fields: &[String]) -> String {
+pub(super) fn generate_class_from_fields(
+    ty: &IrType,
+    fields: &[String],
+    context: &WireRustGeneratorContext,
+) -> String {
+    let struct_name =
+        WireRustGenerator::new(ty.clone(), context.clone()).rust_wire_type(Target::Io);
     format!(
         r###"
             #[repr(C)]
@@ -9,7 +17,7 @@ pub(super) fn generate_class_from_fields(ty: &IrType, fields: &[String]) -> Stri
                 {fields}
             }}
         "###,
-        struct_name = ty.rust_wire_type(Target::Io),
+        struct_name = struct_name,
         fields = fields.join(",\n"),
     )
 }
