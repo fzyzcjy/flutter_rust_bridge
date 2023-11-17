@@ -21,7 +21,8 @@ use enum_dispatch::enum_dispatch;
 use paste::paste;
 
 codegen_generator_structs!(
-    WireRustGeneratorInfoTrait;
+    WireRustGeneratorInfoTrait,
+    WireRustClassGeneratorClassTrait;
 
     WireRustGenerator;
 

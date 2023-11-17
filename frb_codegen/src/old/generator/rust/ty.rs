@@ -13,10 +13,6 @@ pub trait TypeRustGeneratorTrait {
         None
     }
 
-    fn wire_struct_fields(&self) -> Option<Vec<String>> {
-        None
-    }
-
     fn static_checks(&self) -> Option<String> {
         None
     }

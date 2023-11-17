@@ -53,23 +53,6 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
         }
     }
 
-    fn wire_struct_fields(&self) -> Option<Vec<String>> {
-        let s = self.ir.get(self.context.ir_pack);
-        Some(
-            s.fields
-                .iter()
-                .map(|field| {
-                    format!(
-                        "{}: {}{}",
-                        field.name.rust_style(),
-                        field.ty.rust_wire_modifier(Target::Io),
-                        field.ty.rust_wire_type(Target::Io)
-                    )
-                })
-                .collect(),
-        )
-    }
-
     fn static_checks(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
         src.wrapper_name.as_ref()?;

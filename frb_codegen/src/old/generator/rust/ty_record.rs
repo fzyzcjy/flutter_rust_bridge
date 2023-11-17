@@ -43,10 +43,6 @@ impl TypeRustGeneratorTrait for TypeRecordGenerator<'_> {
         }
     }
 
-    fn wire_struct_fields(&self) -> Option<Vec<String>> {
-        self.as_struct_generator().wire_struct_fields()
-    }
-
     fn static_checks(&self) -> Option<String> {
         self.as_struct_generator().static_checks()
     }

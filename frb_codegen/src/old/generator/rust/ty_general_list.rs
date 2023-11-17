@@ -27,17 +27,6 @@ impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
         }
     }
 
-    fn wire_struct_fields(&self) -> Option<Vec<String>> {
-        Some(vec![
-            format!(
-                "ptr: *mut {}{}",
-                self.ir.inner.rust_ptr_modifier(),
-                self.ir.inner.rust_wire_type(Target::Io)
-            ),
-            "len: i32".to_string(),
-        ])
-    }
-
     fn allocate_funcs(
         &self,
         collector: &mut ExternFuncCollector,

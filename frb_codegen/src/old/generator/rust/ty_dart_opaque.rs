@@ -71,10 +71,6 @@ impl TypeRustGeneratorTrait for TypeDartOpaqueGenerator<'_> {
         "".to_owned()
     }
 
-    fn wire_struct_fields(&self) -> Option<Vec<String>> {
-        Some(vec!["port: i64".to_owned(), "handle: usize".to_owned()])
-    }
-
     fn new_with_nullptr(&self, _collector: &mut ExternFuncCollector) -> String {
         format!(
             "impl NewWithNullPtr for {} {{

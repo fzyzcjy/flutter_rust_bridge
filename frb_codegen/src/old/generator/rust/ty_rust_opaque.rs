@@ -39,10 +39,6 @@ impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
         )
     }
 
-    fn wire_struct_fields(&self) -> Option<Vec<String>> {
-        Some(vec!["ptr: *const core::ffi::c_void".to_owned()])
-    }
-
     fn static_checks(&self) -> Option<String> {
         None
     }
