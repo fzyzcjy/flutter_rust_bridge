@@ -27,7 +27,15 @@ pub enum IrFuncMode {
 
 pub enum IrFuncMethodInfo {
     Function,
-    StaticMethod { struct_name: String },
-    InstanceMethod { struct_name: String },
+    Method {
+        struct_name: String,
+        actual_method_name: String,
+        mode: IrFuncMethodMode,
+    },
+}
+
+pub enum IrFuncMethodMode {
+    Static,
+    Instance,
 }
 }
