@@ -20,7 +20,7 @@ impl<'a> EnumRefDartApiGenerator<'a> {
         let variants = src
             .variants()
             .iter()
-            .map(|variant| self.generate_variant(variant))
+            .map(|variant| self.generate_mode_simple_variant(variant))
             .collect_vec()
             .join("\n");
 
@@ -32,7 +32,7 @@ impl<'a> EnumRefDartApiGenerator<'a> {
         ))
     }
 
-    fn generate_variant(&self, variant: &IrVariant) -> String {
+    fn generate_mode_simple_variant(&self, variant: &IrVariant) -> String {
         let variant_name = if self.context.config.dart_enums_style {
             make_string_keyword_safe(variant.name.dart_style())
         } else {

@@ -20,7 +20,7 @@ impl<'a> EnumRefDartApiGenerator<'a> {
         let variants = src
             .variants()
             .iter()
-            .map(|variant| self.generate_variant(&variant))
+            .map(|variant| self.generate_mode_complex_variant(&variant))
             .collect_vec()
             .join("\n");
         let name = self.ir.ident.0;
@@ -40,7 +40,7 @@ impl<'a> EnumRefDartApiGenerator<'a> {
         ))
     }
 
-    fn generate_variant(&self, variant: &IrVariant) -> String {
+    fn generate_mode_complex_variant(&self, variant: &IrVariant) -> String {
         let args = match &variant.kind {
             IrVariantKind::Value => "".to_owned(),
             IrVariantKind::Struct(st) => {
