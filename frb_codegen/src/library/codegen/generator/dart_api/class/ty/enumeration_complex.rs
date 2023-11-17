@@ -11,6 +11,7 @@ use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumMode, IrVariant, IrVaria
 use crate::codegen::ir::ty::structure::IrStruct;
 use crate::library::codegen::generator::dart_api::decl::DartApiGeneratorDeclTrait;
 use crate::utils::dart_keywords::make_string_keyword_safe;
+use itertools::Itertools;
 
 const BACKTRACE_IDENT: &str = "backtrace";
 
@@ -20,98 +21,38 @@ impl<'a> EnumRefDartApiGenerator<'a> {
             .variants()
             .iter()
             .map(|variant| self.generate_variant(&variant))
-            .collect::<Vec<_>>();
-
+            .collect_vec()
+            .join("\n");
+        let name = self.ir.ident.0;
         let sealed = if self.context.config.dart3 {
             "sealed"
         } else {
             ""
         };
+        let maybe_implements_exception =
+            generate_dart_maybe_implements_exception(self.ir.is_exception);
 
         Some(format!(
             "@freezed
-                {sealed} class {0} with _${0} {1} {{
-                    {2}
-                }}",
-            self.ir.ident.0,
-            generate_dart_maybe_implements_exception(self.ir.is_exception),
-            variants.join("\n")
+            {sealed} class {name} with _${name} {maybe_implements_exception} {{
+                {variants}
+            }}",
         ))
     }
 
     fn generate_variant(&self, variant: &IrVariant) -> String {
-        let has_backtrace = matches!(&variant.kind,
-            IrVariantKind::Struct(IrStruct {is_fields_named: true,fields,..}) if fields.iter().any(|field| field.name.raw == BACKTRACE_IDENT));
-
         let args = match &variant.kind {
             IrVariantKind::Value => "".to_owned(),
-            IrVariantKind::Struct(IrStruct {
-                is_fields_named: false,
-                fields,
-                ..
-            }) => {
-                let split = optional_boundary_index(fields);
-                let types = fields
-                    .iter()
-                    .map(|field| {
-                        // If no split, default values are not valid.
-                        let default = split
-                            .is_some()
-                            .then(|| {
-                                generate_field_default(
-                                    field,
-                                    true,
-                                    self.context.config.dart_enums_style,
-                                )
-                            })
-                            .unwrap_or_default();
-                        format!(
-                            "{comments} {default} {} {},",
-                            DartApiGenerator::new(field.ty.clone(), self.context.clone())
-                                .dart_api_type(),
-                            field.name.dart_style(),
-                            comments = generate_dart_comments(&field.comments),
-                            default = default
-                        )
-                    })
-                    .collect::<Vec<_>>();
-                if let Some(idx) = split {
-                    let before = &types[..idx];
-                    let after = &types[idx..];
-                    format!("{}[{}]", before.join(""), after.join(""))
-                } else {
-                    types.join("")
-                }
-            }
             IrVariantKind::Struct(st) => {
-                let fields = st
-                    .fields
-                    .iter()
-                    .map(|field| {
-                        format!(
-                            "{comments} {default} {required}{} {} ,",
-                            DartApiGenerator::new(field.ty.clone(), self.context.clone())
-                                .dart_api_type(),
-                            field.name.dart_style(),
-                            required = generate_field_required_modifier(field),
-                            comments = generate_dart_comments(&field.comments),
-                            default = generate_field_default(
-                                field,
-                                true,
-                                self.context.config.dart_enums_style
-                            ),
-                        )
-                    })
-                    .collect::<Vec<_>>();
-                format!("{{ {} }}", fields.join(""))
+                if st.is_fields_named {
+                    self.generate_variant_struct_named(st)
+                } else {
+                    self.generate_variant_struct_unnamed(st)
+                }
             }
         };
 
-        let implements_exception = if self.ir.is_exception && has_backtrace {
-            "@Implements<FrbBacktracedException>()"
-        } else {
-            ""
-        };
+        let implements_exception = self.generate_implements_exception(variant);
 
         format!(
             "{} {}const factory {}.{}({}) = {};",
@@ -122,6 +63,66 @@ impl<'a> EnumRefDartApiGenerator<'a> {
             args,
             variant.wrapper_name.rust_style(),
         )
+    }
+
+    fn generate_variant_struct_unnamed(&self, st: &IrStruct) -> String {
+        let split = optional_boundary_index(&st.fields);
+        let types = st
+            .fields
+            .iter()
+            .map(|field| {
+                // If no split, default values are not valid.
+                let default = split
+                    .is_some()
+                    .then(|| {
+                        generate_field_default(field, true, self.context.config.dart_enums_style)
+                    })
+                    .unwrap_or_default();
+                format!(
+                    "{comments} {default} {} {},",
+                    DartApiGenerator::new(field.ty.clone(), self.context.clone()).dart_api_type(),
+                    field.name.dart_style(),
+                    comments = generate_dart_comments(&field.comments),
+                    default = default
+                )
+            })
+            .collect::<Vec<_>>();
+        if let Some(idx) = split {
+            let before = &types[..idx];
+            let after = &types[idx..];
+            format!("{}[{}]", before.join(""), after.join(""))
+        } else {
+            types.join("")
+        }
+    }
+
+    fn generate_variant_struct_named(&self, st: &IrStruct) -> String {
+        let fields = st
+            .fields
+            .iter()
+            .map(|field| {
+                format!(
+                    "{comments} {default} {required}{} {} ,",
+                    DartApiGenerator::new(field.ty.clone(), self.context.clone()).dart_api_type(),
+                    field.name.dart_style(),
+                    required = generate_field_required_modifier(field),
+                    comments = generate_dart_comments(&field.comments),
+                    default =
+                        generate_field_default(field, true, self.context.config.dart_enums_style),
+                )
+            })
+            .collect::<Vec<_>>();
+        format!("{{ {} }}", fields.join(""))
+    }
+
+    fn generate_implements_exception(&self, variant: &IrVariant) -> &str {
+        let has_backtrace = matches!(&variant.kind,
+            IrVariantKind::Struct(IrStruct {is_fields_named: true, fields, ..}) if fields.iter().any(|field| field.name.raw == BACKTRACE_IDENT));
+        if self.ir.is_exception && has_backtrace {
+            "@Implements<FrbBacktracedException>()"
+        } else {
+            ""
+        }
     }
 }
 
