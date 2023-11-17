@@ -58,6 +58,7 @@ mod tests {
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::test_utils::{get_test_fixture_dir, text_golden_test};
     use serial_test::serial;
+    use std::env;
 
     #[test]
     #[serial]
@@ -68,7 +69,7 @@ mod tests {
     fn body(fixture_name: &str) -> anyhow::Result<()> {
         configure_opinionated_test_logging();
         let test_fixture_dir = get_test_fixture_dir(fixture_name);
-        env::set_current_dir(test_fixture_dir)?;
+        env::set_current_dir(&test_fixture_dir)?;
 
         let config = Config::from_files_auto()?;
         let internal_config = InternalConfig::parse(config)?;
