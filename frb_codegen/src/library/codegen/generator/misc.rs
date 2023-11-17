@@ -1,5 +1,7 @@
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::IrType;
+use anyhow::bail;
+use std::convert::TryFrom;
 #[doc(hidden)]
 #[macro_export]
 macro_rules! codegen_generator_structs {
@@ -43,6 +45,18 @@ pub enum TargetOrCommon {
     Common,
     Io,
     Wasm,
+}
+
+impl TryFrom<TargetOrCommon> for Target {
+    type Error = anyhow::Error;
+
+    fn try_from(src: TargetOrCommon) -> Result<Self, Self::Error> {
+        Ok(match src {
+            TargetOrCommon::Common => bail!("Cannot convert TargetOrCommon::Common to Target"),
+            TargetOrCommon::Io => Target::Io,
+            TargetOrCommon::Wasm => Target::Wasm,
+        })
+    }
 }
 
 /// In WASM, these types belong to the JS scope-local heap, **NOT** the Rust heap and
