@@ -20,26 +20,10 @@ use crate::codegen_generator_structs;
 use enum_dispatch::enum_dispatch;
 use paste::paste;
 
-#[enum_dispatch(ApiDartGeneratorInfoTrait)]
-#[enum_dispatch(ApiDartGeneratorClassTrait)]
-pub(crate) enum ApiDartGenerator<'a> {
-    Boxed(BoxedApiDartGenerator<'a>),
-    DartOpaque(DartOpaqueApiDartGenerator<'a>),
-    Delegate(DelegateApiDartGenerator<'a>),
-    Dynamic(DynamicApiDartGenerator<'a>),
-    EnumRef(EnumRefApiDartGenerator<'a>),
-    GeneralList(GeneralListApiDartGenerator<'a>),
-    Optional(OptionalApiDartGenerator<'a>),
-    OptionalList(OptionalListApiDartGenerator<'a>),
-    Primitive(PrimitiveApiDartGenerator<'a>),
-    PrimitiveList(PrimitiveListApiDartGenerator<'a>),
-    Record(RecordApiDartGenerator<'a>),
-    RustOpaque(RustOpaqueApiDartGenerator<'a>),
-    StructRef(StructRefApiDartGenerator<'a>),
-    Unencodable(UnencodableApiDartGenerator<'a>),
-}
-
 codegen_generator_structs!(
+    ApiDartGeneratorInfoTrait,
+    ApiDartGeneratorClassTrait;
+
     ApiDartGenerator;
 
     Boxed,

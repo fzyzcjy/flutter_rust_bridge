@@ -19,29 +19,13 @@ use crate::codegen_generator_structs;
 use enum_dispatch::enum_dispatch;
 use paste::paste;
 
-#[enum_dispatch(WireRustGeneratorInfoTrait)]
-// WireRustGeneratorApi2wireTrait, // TODO
-#[enum_dispatch(WireRustGeneratorWire2apiTrait)]
-#[enum_dispatch(WireRustGeneratorCommonTrait)]
-#[enum_dispatch(WireRustGeneratorOrangeTrait)]
-pub(crate) enum WireRustGenerator<'a> {
-    Boxed(BoxedWireRustGenerator<'a>),
-    DartOpaque(DartOpaqueWireRustGenerator<'a>),
-    Delegate(DelegateWireRustGenerator<'a>),
-    Dynamic(DynamicWireRustGenerator<'a>),
-    EnumRef(EnumRefWireRustGenerator<'a>),
-    GeneralList(GeneralListWireRustGenerator<'a>),
-    Optional(OptionalWireRustGenerator<'a>),
-    OptionalList(OptionalListWireRustGenerator<'a>),
-    Primitive(PrimitiveWireRustGenerator<'a>),
-    PrimitiveList(PrimitiveListWireRustGenerator<'a>),
-    Record(RecordWireRustGenerator<'a>),
-    RustOpaque(RustOpaqueWireRustGenerator<'a>),
-    StructRef(StructRefWireRustGenerator<'a>),
-    Unencodable(UnencodableWireRustGenerator<'a>),
-}
-
 codegen_generator_structs!(
+    WireRustGeneratorInfoTrait,
+    // WireRustGeneratorApi2wireTrait, // TODO
+    WireRustGeneratorWire2apiTrait,
+    WireRustGeneratorCommonTrait,
+    WireRustGeneratorOrangeTrait;
+
     WireRustGenerator;
 
     Boxed,
