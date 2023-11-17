@@ -2,6 +2,7 @@ use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::class::ty::WireRustClassGeneratorClassTrait;
 use crate::codegen::ir::ty::enumeration::{IrEnumMode, IrVariant, IrVariantKind};
+use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
 use itertools::Itertools;
 
 impl<'a> WireRustClassGeneratorClassTrait for EnumRefWireRustGenerator<'a> {
@@ -23,6 +24,9 @@ impl<'a> WireRustClassGeneratorClassTrait for EnumRefWireRustGenerator<'a> {
             .map(|variant| format!("{0}: *mut wire_{1}_{0},", variant.name.raw, self.ir.ident.0))
             .join("\n");
 
+        let rust_wire_type = WireRustGenerator::new(self.ir.clone().into(), self.context.clone())
+            .rust_wire_type(Target::Io);
+
         Some(format!(
             "#[repr(C)]
             #[derive(Clone)]
@@ -34,7 +38,6 @@ impl<'a> WireRustClassGeneratorClassTrait for EnumRefWireRustGenerator<'a> {
             }}
 
             {variant_structs}",
-            rust_wire_type = self.ir.rust_wire_type(Target::Io),
             name = self.ir.ident.0,
         ))
     }
@@ -48,11 +51,13 @@ impl<'a> EnumRefWireRustGenerator<'a> {
                 .fields
                 .iter()
                 .map(|field| {
+                    let field_generator =
+                        WireRustGenerator::new(field.ty.clone(), self.context.clone());
                     format!(
                         "{}: {}{},",
                         field.name.rust_style(),
-                        field.ty.rust_wire_modifier(Target::Io),
-                        field.ty.rust_wire_type(Target::Io)
+                        field_generator.rust_wire_modifier(Target::Io),
+                        field_generator.rust_wire_type(Target::Io)
                     )
                 })
                 .collect(),

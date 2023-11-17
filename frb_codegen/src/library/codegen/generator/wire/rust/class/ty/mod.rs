@@ -22,7 +22,6 @@ pub(crate) trait WireRustClassGeneratorClassTrait {
 // the following have empty implementation
 impl<'a> WireRustClassGeneratorClassTrait for BoxedWireRustGenerator<'a> {}
 impl<'a> WireRustClassGeneratorClassTrait for DynamicWireRustGenerator<'a> {}
-impl<'a> WireRustClassGeneratorClassTrait for EnumRefWireRustGenerator<'a> {}
 impl<'a> WireRustClassGeneratorClassTrait for OptionalWireRustGenerator<'a> {}
 impl<'a> WireRustClassGeneratorClassTrait for PrimitiveWireRustGenerator<'a> {}
 impl<'a> WireRustClassGeneratorClassTrait for UnencodableWireRustGenerator<'a> {}
