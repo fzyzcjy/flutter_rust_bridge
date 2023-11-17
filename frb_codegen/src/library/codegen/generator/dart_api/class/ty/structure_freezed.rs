@@ -30,7 +30,8 @@ impl<'a> StructRefDartApiGenerator<'a> {
             "".to_owned()
         };
 
-        let constructor_params = self.generate_constructor_params(src, !methods.is_empty());
+        let constructor_params =
+            self.generate_mode_freezed_constructor_params(src, !methods.is_empty());
         let name_str = &self.ir.ident.0;
         let implements_exception = generate_dart_maybe_implements_exception(self.ir.is_exception);
         let methods_str = methods.join("\n");
@@ -44,7 +45,11 @@ impl<'a> StructRefDartApiGenerator<'a> {
         )
     }
 
-    fn generate_constructor_params(&self, src: &IrStruct, has_methods: bool) -> String {
+    fn generate_mode_freezed_constructor_params(
+        &self,
+        src: &IrStruct,
+        has_methods: bool,
+    ) -> String {
         let mut ans = src
             .fields
             .iter()
