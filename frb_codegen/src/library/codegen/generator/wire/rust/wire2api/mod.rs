@@ -29,7 +29,8 @@ fn generate_impl_wire2api_misc() -> &'static str {
 
 fn generate_wire2api_for_type(ty: IrType, context: WireRustGeneratorContext) -> Acc<String> {
     let generator = WireRustGenerator::new(ty, context);
-    generator.wire2api_body().map(|body, target| {
+    let raw: Acc<Option<String>> = generator.wire2api_body();
+    raw.map(|body, target| {
         body.map(|body| {
             format!(
                 "impl Wire2Api<{api}> for {}{} {{
