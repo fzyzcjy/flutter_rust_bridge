@@ -33,30 +33,13 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
             .collect_vec();
 
         let has_methods = !methods.is_empty();
+
         let methods = methods
             .iter()
-            .map(|func| {
-                generate_api_method(
-                    func,
-                    src,
-                    self.context.config.dart_api_class_name.to_string(),
-                    &self.context,
-                )
-            })
-            .collect_vec();
-
-        let methods_string = methods
-            .iter()
-            .map(|g| {
-                format!(
-                    "{}{}=>{};\n\n",
-                    g.comments,
-                    g.signature.clone(),
-                    g.implementation.clone()
-                )
-            })
+            .map(|func| generate_api_method(func, src, &self.context))
             .collect_vec()
             .concat();
+
         let extra_argument = if self.context.config.use_bridge_in_method {
             "required this.bridge,".to_string()
         } else {
@@ -106,7 +89,7 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
                     {}
                 }}",
                 constructor_params,
-                methods_string,
+                methods,
                 comments = comments,
                 private_constructor = private_constructor,
                 meta = metadata,
@@ -170,7 +153,7 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
                 left,
                 constructor_params,
                 right,
-                methods_string,
+                methods,
                 comments = comments,
                 meta = metadata,
                 Name = self.ir.ident.0,

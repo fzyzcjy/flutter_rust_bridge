@@ -15,19 +15,11 @@ use crate::library::codegen::generator::dart_api::decl::DartApiGeneratorDeclTrai
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 
-#[derive(Debug)]
-struct GeneratedApiMethod {
-    comments: String,
-    signature: String,
-    implementation: String,
-}
-
 pub(super) fn generate_api_method(
     func: &IrFunc,
     ir_struct: &IrStruct,
-    dart_api_class_name: String,
     context: &DartApiGeneratorContext,
-) -> GeneratedApiMethod {
+) -> String {
     let method_info = if let IrFuncOwnerInfo::Method(info) = &func.owner {
         info
     } else {
@@ -44,11 +36,7 @@ pub(super) fn generate_api_method(
     let arg_names = generate_arg_names(func, is_static_method, skip_count).concat();
     let implementation = generate_implementation(func, context, is_static_method, arg_names);
 
-    GeneratedApiMethod {
-        signature,
-        implementation,
-        comments,
-    }
+    format!("{comments}{signature}=>{implementation};\n\n")
 }
 
 fn generate_params(
@@ -71,6 +59,7 @@ fn generate_params(
         .collect_vec();
 
     if is_static_method && context.config.use_bridge_in_method {
+        let dart_api_class_name = &context.config.dart_api_class_name;
         ans.insert(0, format!("required {dart_api_class_name} bridge"));
     }
 
