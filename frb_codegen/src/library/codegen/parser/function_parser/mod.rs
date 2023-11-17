@@ -2,7 +2,7 @@ pub(crate) mod argument;
 pub(crate) mod output;
 
 use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::func::{IrFunc, IrFuncMode};
+use crate::codegen::ir::func::{IrFunc, IrFuncMethodInfo, IrFuncMode};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::misc::parse_comments;
@@ -50,6 +50,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             inputs: info.inputs,
             output: info.ok_output.unwrap_or(Primitive(IrTypePrimitive::Unit)),
             error_output: info.error_output,
+            method_info: IrFuncMethodInfo::Function, // TODO
             mode: info.mode.unwrap_or(IrFuncMode::Normal),
             comments: parse_comments(&func.attrs),
         })

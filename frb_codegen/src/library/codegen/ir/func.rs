@@ -8,6 +8,7 @@ pub struct IrFunc {
     pub inputs: Vec<IrField>,
     pub output: IrType,
     pub error_output: Option<IrType>,
+    pub method_info: IrFuncMethodInfo,
     pub mode: IrFuncMode,
     pub comments: Vec<IrComment>,
 
@@ -22,5 +23,11 @@ pub enum IrFuncMode {
         // The index of StreamSink in the function arguments
         argument_index: usize,
     },
+}
+
+pub enum IrFuncMethodInfo {
+    Function,
+    StaticMethod { struct_name: String },
+    InstanceMethod { struct_name: String },
 }
 }
