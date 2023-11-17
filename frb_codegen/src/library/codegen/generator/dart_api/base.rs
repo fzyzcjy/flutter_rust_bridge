@@ -21,6 +21,9 @@ use enum_dispatch::enum_dispatch;
 use paste::paste;
 
 codegen_generator_structs!(
+    DartApiGeneratorDeclTrait,
+    DartApiGeneratorClassTrait;
+
     DartApiGenerator;
 
     Boxed,
