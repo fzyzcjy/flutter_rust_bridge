@@ -39,27 +39,27 @@ impl<'a> WireRustClassGeneratorClassTrait for EnumRefWireRustGenerator<'a> {
                     fields.join("\n")
                 )
             })
-            .collect_vec();
+            .join("\n\n");
+
         let union_fields = src
             .variants()
             .iter()
             .map(|variant| format!("{0}: *mut wire_{1}_{0},", variant.name.raw, self.ir.ident.0))
-            .collect_vec();
+            .join("\n");
+
         Some(format!(
             "#[repr(C)]
             #[derive(Clone)]
-            pub struct {0} {{ tag: i32, kind: *mut {1}Kind }}
+            pub struct {rust_wire_type} {{ tag: i32, kind: *mut {name}Kind }}
 
             #[repr(C)]
-            pub union {1}Kind {{
-                {2}
+            pub union {name}Kind {{
+                {union_fields}
             }}
 
-            {3}",
-            self.ir.rust_wire_type(Target::Io),
-            self.ir.ident.0,
-            union_fields.join("\n"),
-            variant_structs.join("\n\n")
+            {variant_structs}",
+            rust_wire_type = self.ir.rust_wire_type(Target::Io),
+            name = self.ir.ident.0,
         ))
     }
 }
