@@ -1,4 +1,4 @@
 use crate::codegen::generator::wire::rust::base::*;
-use crate::codegen::generator::wire::rust::common::ty::WireRustGeneratorCommonTrait;
+use crate::codegen::generator::wire::rust::common::ty::WireRustGeneratorOrangeTrait;
 
-impl<'a> WireRustGeneratorCommonTrait for GeneralListWireRustGenerator<'a> {}
+impl<'a> WireRustGeneratorOrangeTrait for GeneralListWireRustGenerator<'a> {}
