@@ -48,4 +48,8 @@ impl IrTypeTrait for IrTypePrimitive {
         }
         .to_string()
     }
+
+    fn as_primitive(&self) -> Option<&IrTypePrimitive> {
+        Some(self)
+    }
 }

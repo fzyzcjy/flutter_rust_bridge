@@ -58,18 +58,6 @@ impl IrType {
     }
 
     #[inline]
-    pub fn as_primitive(&self) -> Option<&IrTypePrimitive> {
-        match self {
-            Primitive(repr)
-            | Delegate(IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum {
-                repr, ..
-            })) => Some(repr),
-            Delegate(IrTypeDelegate::Time(_)) => Some(&IrTypePrimitive::I64),
-            _ => None,
-        }
-    }
-
-    #[inline]
     pub fn is_primitive(&self) -> bool {
         self.as_primitive().is_some()
     }
@@ -86,4 +74,9 @@ pub trait IrTypeTrait {
     /// Because the former is intrinsic information of a parsed Rust type, while the latter is
     /// part of the code to be generated.
     fn rust_api_type(&self) -> String;
+
+    #[inline]
+    fn as_primitive(&self) -> Option<&IrTypePrimitive> {
+        None
+    }
 }

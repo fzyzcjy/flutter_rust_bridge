@@ -109,6 +109,14 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::Anyhow => "String".to_owned(),
         }
     }
+
+    fn as_primitive(&self) -> Option<&IrTypePrimitive> {
+        match self {
+            IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { repr, .. }) => Some(repr),
+            IrTypeDelegate::Time(_) => Some(&IrTypePrimitive::I64),
+            _ => None,
+        }
+    }
 }
 
 impl IrTypeDelegate {
