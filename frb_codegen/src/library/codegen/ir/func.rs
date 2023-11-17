@@ -39,3 +39,15 @@ pub enum IrFuncMethodMode {
     Instance,
 }
 }
+
+impl IrFuncOwnerInfo {
+    pub(crate) fn is_static_method(&self) -> bool {
+        matches!(
+            self,
+            IrFuncOwnerInfo::Method {
+                mode: IrFuncMethodMode::Static,
+                ..
+            }
+        )
+    }
+}
