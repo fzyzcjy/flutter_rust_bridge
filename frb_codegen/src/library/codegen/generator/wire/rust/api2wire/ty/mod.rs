@@ -19,5 +19,7 @@ use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
 pub(crate) trait WireRustGeneratorApi2wireTrait {
-    fn todo(&self) {}
+    fn generate_impl_into_dart(&self) -> Option<String> {
+        None
+    }
 }

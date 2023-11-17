@@ -53,62 +53,6 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
         }
     }
 
-    fn impl_intodart(&self) -> String {
-        let src = self.ir.get(self.context.ir_pack);
-
-        let unwrap = match &src.wrapper_name {
-            Some(_) => ".0",
-            None => "",
-        };
-        let body = src
-            .fields
-            .iter()
-            .enumerate()
-            .map(|(i, field)| {
-                let field_ref = if src.is_fields_named {
-                    field.name.rust_style().to_string()
-                } else {
-                    i.to_string()
-                };
-                let gen = TypeRustGenerator::new(
-                    field.ty.clone(),
-                    self.context.ir_pack,
-                    self.context.config,
-                );
-
-                gen.convert_to_dart(format!("self{unwrap}.{field_ref}"))
-            })
-            .collect_vec()
-            .join(",\n");
-
-        let name = match &src.wrapper_name {
-            Some(wrapper) => wrapper,
-            None => &src.name,
-        };
-
-        let vec = if src.is_empty() {
-            "Vec::<u8>::new()".to_string()
-        } else {
-            format!(
-                "vec![
-                    {body}
-                ]"
-            )
-        };
-
-        let into_into_dart = get_into_into_dart(&src.name, src.wrapper_name.as_ref());
-        format!(
-            "impl support::IntoDart for {name} {{
-                fn into_dart(self) -> support::DartAbi {{
-                    {vec}.into_dart()
-                }}
-            }}
-            impl support::IntoDartExceptPrimitive for {name} {{}}
-            {into_into_dart}
-            "
-        )
-    }
-
     fn new_with_nullptr(&self, _collector: &mut ExternFuncCollector) -> String {
         let src = self.ir.get(self.context.ir_pack);
 

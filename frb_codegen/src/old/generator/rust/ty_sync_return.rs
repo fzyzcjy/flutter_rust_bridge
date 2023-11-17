@@ -43,7 +43,6 @@ impl<'a> TypeRustGeneratorTrait for TypeSyncReturnGenerator<'a> {
         _block_index: BlockIndex,
     ) -> Acc<Option<String>> {
     }
-    fn impl_intodart(&self) -> String {}
     fn new_with_nullptr(&self, _collector: &mut ExternFuncCollector) -> String {}
     fn imports(&self) -> Option<String> {}
 }

@@ -153,11 +153,12 @@ impl<'a> Generator<'a> {
             .collect();
 
         lines.push(self.section_header_comment("impl IntoDart"));
-        lines.extend(
-            distinct_output_types
-                .iter()
-                .map(|ty| self.generate_impl_intodart(ty, ir_pack)),
-        );
+        // TODO -> generate_impl_into_dart
+        // lines.extend(
+        //     distinct_output_types
+        //         .iter()
+        //         .map(|ty| self.generate_impl_intodart(ty, ir_pack)),
+        // );
 
         lines.push(self.section_header_comment("executor"));
         lines.push(self.generate_executor(ir_pack));
@@ -490,10 +491,6 @@ impl<'a> Generator<'a> {
     fn generate_new_with_nullptr_func(&mut self, ty: &IrType, ir_pack: &IrPack) -> String {
         TypeRustGenerator::new(ty.clone(), ir_pack, self.config)
             .new_with_nullptr(&mut self.extern_func_collector)
-    }
-
-    fn generate_impl_intodart(&mut self, ty: &IrType, ir_pack: &IrPack) -> String {
-        TypeRustGenerator::new(ty.clone(), ir_pack, self.config).impl_intodart()
     }
 
     fn generate_wasm2api_func(&self, ty: &IrType, ir_pack: &IrPack) -> Option<String> {

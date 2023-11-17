@@ -37,10 +37,6 @@ pub trait TypeRustGeneratorTrait {
         Acc::default()
     }
 
-    fn impl_intodart(&self) -> String {
-        "".to_string()
-    }
-
     fn new_with_nullptr(&self, _collector: &mut ExternFuncCollector) -> String {
         "".to_string()
     }
