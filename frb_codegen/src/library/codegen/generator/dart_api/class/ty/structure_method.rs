@@ -38,45 +38,11 @@ pub(super) fn generate_api_method(
     // skip the first as it's the method 'self'
     let skip_count = usize::from(!is_static_method);
 
-    let func_params = generate_func_params(func, context, is_static_method, skip_count);
-
+    let params = generate_params(func, context, is_static_method, skip_count);
     let comments = generate_dart_comments(&func.comments);
-
-    let signature = generate_signature(
-        &func,
-        ir_struct,
-        &context,
-        method_info,
-        is_static_method,
-        func_params,
-    );
-
-    let mut arg_names = func
-        .inputs
-        .iter()
-        .skip(skip_count)
-        .map(|input| format!("{}:{},", input.name.dart_style(), input.name.dart_style()))
-        .collect_vec();
-
-    let implementation = if is_static_method {
-        arg_names.push("hint: hint".to_string());
-        let arg_names = arg_names.concat();
-        format!(
-            "{}.{}({})",
-            context.config.dart_api_instance_name,
-            func.name.clone().to_case(Case::Camel),
-            arg_names
-        )
-    } else {
-        let arg_names = arg_names.concat();
-        format!(
-            "{}.{}({}: this, {})",
-            context.config.dart_api_instance_name,
-            func.name.clone().to_case(Case::Camel),
-            func.inputs[0].name.dart_style(),
-            arg_names
-        )
-    };
+    let signature = generate_signature(&func, ir_struct, &context, method_info, params);
+    let arg_names = generate_arg_names(func, is_static_method, skip_count).concat();
+    let implementation = generate_implementation(func, context, is_static_method, arg_names);
 
     GeneratedApiMethod {
         signature,
@@ -85,7 +51,7 @@ pub(super) fn generate_api_method(
     }
 }
 
-fn generate_func_params(
+fn generate_params(
     func: &IrFunc,
     context: &DartApiGeneratorContext,
     is_static_method: bool,
@@ -118,9 +84,9 @@ fn generate_signature(
     ir_struct: &IrStruct,
     context: &DartApiGeneratorContext,
     method_info: &IrFuncOwnerInfoMethod,
-    is_static_method: bool,
     func_params: Vec<String>,
 ) -> String {
+    let is_static_method = method_info.mode == IrFuncOwnerInfoMethodMode::Static;
     let maybe_static = if is_static_method { "static" } else { "" };
     let return_type = generate_function_dart_return_type(
         &func.mode,
@@ -134,6 +100,36 @@ fn generate_signature(
     let func_params = func_params.join(",");
 
     format!("{maybe_static} {return_type} {method_name}({{ {func_params} }})")
+}
+
+fn generate_arg_names(func: &IrFunc, is_static_method: bool, skip_count: usize) -> Vec<String> {
+    let mut ans = func
+        .inputs
+        .iter()
+        .skip(skip_count)
+        .map(|input| format!("{}:{},", input.name.dart_style(), input.name.dart_style()))
+        .collect_vec();
+    if is_static_method {
+        ans.push("hint: hint".to_string());
+    }
+    ans
+}
+
+fn generate_implementation(
+    func: &IrFunc,
+    context: &DartApiGeneratorContext,
+    is_static_method: bool,
+    arg_names: String,
+) -> String {
+    let dart_api_instance_name = &context.config.dart_api_instance_name;
+    let func_name = func.name.clone().to_case(Case::Camel);
+
+    if is_static_method {
+        format!("{dart_api_instance_name}.{func_name}({arg_names})")
+    } else {
+        let extra_arg_name = func.inputs[0].name.dart_style();
+        format!("{dart_api_instance_name}.{func_name}({extra_arg_name}: this, {arg_names})")
+    }
 }
 
 fn generate_function_dart_return_type(func_mode: &IrFuncMode, inner: &str) -> String {
