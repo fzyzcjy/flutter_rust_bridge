@@ -52,6 +52,9 @@ pub(crate) fn generate(
 
 #[cfg(test)]
 mod tests {
+    use crate::codegen::config::internal_config::InternalConfig;
+    use crate::codegen::generator::dart_api::generate;
+    use crate::codegen::{parser, Config};
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::test_utils::get_test_fixture_dir;
     use serial_test::serial;
@@ -66,6 +69,11 @@ mod tests {
         configure_opinionated_test_logging();
         let test_fixture_dir = get_test_fixture_dir(fixture_name);
         let rust_crate_dir = test_fixture_dir.clone();
+
+        let config = Config::from_files_auto()?;
+        let internal_config = InternalConfig::parse(config)?;
+        let ir_pack = parser::parse(&internal_config.parser)?;
+        let actual = generate(&ir_pack, &internal_config.generator.dart.into())?;
 
         todo!();
 
