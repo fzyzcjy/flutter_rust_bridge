@@ -1,3 +1,4 @@
+use crate::codegen::generator::wire::rust::api2wire::misc::generate_impl_into_into_dart;
 use crate::codegen::generator::wire::rust::api2wire::ty::WireRustGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::rust::base::*;
 use itertools::Itertools;
@@ -20,12 +21,8 @@ impl<'a> WireRustGeneratorApi2wireTrait for StructRefWireRustGenerator<'a> {
                 } else {
                     i.to_string()
                 };
-                let gen = TypeRustGenerator::new(
-                    field.ty.clone(),
-                    self.context.ir_pack,
-                    self.context.config,
-                );
 
+                let gen = WireRustGenerator::new(field.ty.clone(), self.context.clone());
                 gen.convert_to_dart(format!("self{unwrap}.{field_ref}"))
             })
             .collect_vec()
@@ -46,7 +43,7 @@ impl<'a> WireRustGeneratorApi2wireTrait for StructRefWireRustGenerator<'a> {
             )
         };
 
-        let into_into_dart = generate_impl_into_into_dart(&src.name, src.wrapper_name.as_ref());
+        let into_into_dart = generate_impl_into_into_dart(&src.name, src.wrapper_name.as_deref());
         Some(format!(
             "impl support::IntoDart for {name} {{
                 fn into_dart(self) -> support::DartAbi {{

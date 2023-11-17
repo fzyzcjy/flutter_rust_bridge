@@ -25,8 +25,4 @@ impl IrStruct {
             ('(', ')')
         }
     }
-
-    pub fn is_empty(&self) -> bool {
-        self.fields.is_empty()
-    }
 }
