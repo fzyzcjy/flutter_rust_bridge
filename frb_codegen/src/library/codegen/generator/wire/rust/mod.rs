@@ -1,1 +1,1 @@
-mod wrapper_struct;
+mod wire_struct;
