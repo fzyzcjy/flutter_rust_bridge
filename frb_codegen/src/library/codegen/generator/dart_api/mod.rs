@@ -76,7 +76,7 @@ mod tests {
         let ir_pack = parser::parse(&internal_config.parser)?;
         let actual = generate(&ir_pack, &internal_config.generator.dart.into())?;
 
-        text_golden_test(actual.code, &test_fixture_dir.join("expect_output.json"))?;
+        text_golden_test(actual.code, &test_fixture_dir.join("expect_output.dart"))?;
 
         Ok(())
     }
