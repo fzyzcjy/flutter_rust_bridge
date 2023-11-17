@@ -26,6 +26,7 @@ pub(crate) struct GeneratorDartInternalConfig {
     pub use_bridge_in_method: bool,
     pub wasm_enabled: bool,
     pub dart3: bool,
+    rust_input_path:
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
