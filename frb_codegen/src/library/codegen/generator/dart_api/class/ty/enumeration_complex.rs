@@ -66,28 +66,26 @@ impl<'a> EnumRefDartApiGenerator<'a> {
     }
 
     fn generate_variant_struct_unnamed(&self, st: &IrStruct) -> String {
-        let split = optional_boundary_index(&st.fields);
         let types = st
             .fields
             .iter()
             .map(|field| {
                 // If no split, default values are not valid.
-                let default = split
+                let default = optional_boundary_index(&st.fields)
                     .is_some()
                     .then(|| {
                         generate_field_default(field, true, self.context.config.dart_enums_style)
                     })
                     .unwrap_or_default();
-                format!(
-                    "{comments} {default} {} {},",
-                    DartApiGenerator::new(field.ty.clone(), self.context.clone()).dart_api_type(),
-                    field.name.dart_style(),
-                    comments = generate_dart_comments(&field.comments),
-                    default = default
-                )
+                let comments = generate_dart_comments(&field.comments);
+                let type_str =
+                    DartApiGenerator::new(field.ty.clone(), self.context.clone()).dart_api_type();
+                let name_str = field.name.dart_style();
+                format!("{comments} {default} {type_str} {name_str},")
             })
             .collect_vec();
-        if let Some(idx) = split {
+
+        if let Some(idx) = optional_boundary_index(&st.fields) {
             let before = &types[..idx];
             let after = &types[idx..];
             format!("{}[{}]", before.join(""), after.join(""))
