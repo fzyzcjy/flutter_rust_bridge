@@ -6,10 +6,10 @@ mod internal_config;
 mod misc;
 
 use crate::codegen::generator::dart_api::base::{DartApiGenerator, DartApiGeneratorContext};
-use crate::codegen::generator::dart_api::function::GeneratedApiFunc;
 use crate::codegen::generator::dart_api::internal_config::GeneratorDartApiInternalConfig;
 use crate::codegen::generator::output::dart::DartOutputCode;
 use crate::codegen::ir::pack::IrPack;
+use crate::library::codegen::generator::dart_api::class::ty::DartApiGeneratorClassTrait;
 use anyhow::Result;
 use itertools::Itertools;
 
@@ -34,7 +34,7 @@ pub(crate) fn generate(
 
     let classes = distinct_types
         .iter()
-        .map(|ty| DartApiGenerator::new(ty.clone(), context.clone()).generate_class())
+        .filter_map(|ty| DartApiGenerator::new(ty.clone(), context.clone()).generate_class())
         .join("\n\n");
 
     Ok(DartOutputCode {
@@ -44,7 +44,8 @@ pub(crate) fn generate(
             }}
 
             {classes}
-            "
+            ",
+            dart_api_class_name = config.dart_api_class_name,
         ),
     })
 }
