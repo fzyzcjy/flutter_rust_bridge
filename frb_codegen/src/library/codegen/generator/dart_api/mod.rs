@@ -1,6 +1,7 @@
 pub(super) mod base;
 pub(super) mod class;
 pub(super) mod decl;
+mod function;
 mod internal_config;
 mod misc;
 
