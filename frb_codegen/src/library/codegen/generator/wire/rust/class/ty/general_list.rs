@@ -2,6 +2,9 @@ use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::class::misc::generate_class_from_fields;
 use crate::codegen::generator::wire::rust::class::ty::WireRustClassGeneratorClassTrait;
+use crate::codegen::ir::ty::delegate::IrTypeDelegate;
+use crate::codegen::ir::ty::general_list::IrTypeGeneralList;
+use crate::codegen::ir::ty::IrType::{Delegate, Optional};
 use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
 
 impl<'a> WireRustClassGeneratorClassTrait for GeneralListWireRustGenerator<'a> {
@@ -12,7 +15,7 @@ impl<'a> WireRustClassGeneratorClassTrait for GeneralListWireRustGenerator<'a> {
             &vec![
                 format!(
                     "ptr: *mut {}{}",
-                    self.ir.inner.rust_ptr_modifier(),
+                    general_list_inner_extra_pointer_indirection(&self.ir),
                     WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone())
                         .rust_wire_type(Target::Io)
                 ),
@@ -20,4 +23,9 @@ impl<'a> WireRustClassGeneratorClassTrait for GeneralListWireRustGenerator<'a> {
             ],
         ))
     }
+}
+
+/// Does it need additional indirection for types put behind a vector
+pub(crate) fn general_list_inner_extra_pointer_indirection(ir: &IrTypeGeneralList) -> bool {
+    matches!(ir.inner, Optional(_) | Delegate(IrTypeDelegate::String))
 }

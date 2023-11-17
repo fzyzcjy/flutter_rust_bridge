@@ -23,15 +23,6 @@ impl IrType {
         ans
     }
 
-    /// Additional indirection for types put behind a vector
-    #[inline]
-    pub fn rust_ptr_modifier(&self) -> &'static str {
-        match self {
-            Optional(_) | Delegate(IrTypeDelegate::String) => "*mut ",
-            _ => "",
-        }
-    }
-
     // -> is_struct_or_enum_or_record
     // #[inline]
     // pub fn is_struct(&self) -> bool {

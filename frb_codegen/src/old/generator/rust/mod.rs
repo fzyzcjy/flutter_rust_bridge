@@ -572,7 +572,7 @@ pub fn generate_list_allocate_func(
             } else {
                 format!(
                     "<{}{}>::new_with_null_ptr()",
-                    inner.rust_ptr_modifier(),
+                    general_list_inner_extra_pointer_indirection(IrTypeGeneralList { inner }),
                     inner.rust_wire_type(Target::Io)
                 )
             }
