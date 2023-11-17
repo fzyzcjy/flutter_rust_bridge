@@ -4,7 +4,7 @@ use crate::codegen::ir::import::IrDartImport;
 use crate::if_then_some;
 use itertools::Itertools;
 use serde::{Serialize, Serializer};
-use std::borrow::Cow;
+
 use syn::parse::{Parse, ParseStream};
 use syn::punctuated::Punctuated;
 use syn::*;

@@ -2,11 +2,8 @@ use crate::codegen::generator::dart_api::base::*;
 use crate::codegen::generator::dart_api::class::field::{
     generate_field_default, generate_field_required_modifier,
 };
-use crate::codegen::generator::dart_api::class::ty::DartApiGeneratorClassTrait;
-use crate::codegen::generator::dart_api::internal_config::GeneratorDartApiInternalConfig;
-use crate::codegen::generator::dart_api::misc::{
-    generate_dart_comments, generate_dart_maybe_implements_exception, generate_dart_metadata,
-};
+
+use crate::codegen::generator::dart_api::misc::generate_dart_comments;
 use crate::codegen::ir::func::{
     IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
 };

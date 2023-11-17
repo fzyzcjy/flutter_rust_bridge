@@ -2,18 +2,12 @@ use crate::codegen::generator::dart_api::base::*;
 use crate::codegen::generator::dart_api::class::field::{
     generate_field_default, generate_field_required_modifier,
 };
-use crate::codegen::generator::dart_api::class::ty::structure_method::generate_api_method;
-use crate::codegen::generator::dart_api::class::ty::DartApiGeneratorClassTrait;
-use crate::codegen::generator::dart_api::internal_config::GeneratorDartApiInternalConfig;
-use crate::codegen::generator::dart_api::misc::{
-    generate_dart_comments, generate_dart_maybe_implements_exception, generate_dart_metadata,
-};
-use crate::codegen::ir::func::{
-    IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
-};
+
+use crate::codegen::generator::dart_api::misc::generate_dart_maybe_implements_exception;
+
 use crate::codegen::ir::ty::structure::IrStruct;
 use crate::library::codegen::generator::dart_api::decl::DartApiGeneratorDeclTrait;
-use convert_case::{Case, Casing};
+
 use itertools::Itertools;
 
 impl<'a> StructRefDartApiGenerator<'a> {
