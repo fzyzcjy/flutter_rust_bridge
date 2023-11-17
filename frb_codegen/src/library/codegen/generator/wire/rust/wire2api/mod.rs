@@ -5,15 +5,22 @@ use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
 use crate::library::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
+use itertools::Itertools;
 use std::convert::TryInto;
 
 mod misc;
 pub(crate) mod ty;
 
-pub(crate) fn generate_impl_wire2api() -> Acc<Vec<String>> {
+pub(crate) fn generate_impl_wire2api(
+    types: &[IrType],
+    context: &WireRustGeneratorContext,
+) -> Acc<Vec<String>> {
     let mut lines = Acc::<Vec<String>>::default();
     lines.push_acc(generate_impl_wire2api_misc());
-    lines.push_acc(generate_wire2api_for_type());
+    lines += types
+        .iter()
+        .map(|ty| generate_wire2api_for_type(ty, context))
+        .collect();
     lines
 }
 
@@ -46,8 +53,8 @@ fn generate_impl_wire2api_misc() -> Acc<String> {
     }
 }
 
-fn generate_wire2api_for_type(ty: &IrType, context: WireRustGeneratorContext) -> Acc<String> {
-    let generator = WireRustGenerator::new(ty.clone(), context);
+fn generate_wire2api_for_type(ty: &IrType, context: &WireRustGeneratorContext) -> Acc<String> {
+    let generator = WireRustGenerator::new(ty.clone(), context.clone());
     let raw: Acc<Option<String>> = generator.wire2api_body();
     raw.map(|body, target| {
         body.map(|body| {
