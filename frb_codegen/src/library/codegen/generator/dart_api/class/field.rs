@@ -26,7 +26,7 @@ pub(crate) fn generate_field_default(
                 {
                     // Convert the default value to Dart style.
                     if dart_enums_style {
-                        IrField::default_value_to_dart_style(lit).into()
+                        default_value_to_dart_style(lit).into()
                     } else {
                         lit.value().into()
                     }
@@ -40,4 +40,16 @@ pub(crate) fn generate_field_default(
             }
         })
         .unwrap_or_default()
+}
+
+fn default_value_to_dart_style(lit: &LitStr) -> String {
+    let value = lit.value();
+    let mut split = value.split('.');
+    let enum_name = split.next().unwrap();
+
+    let variant_name = split.next().unwrap().to_string();
+    let variant_name =
+        crate::utils::misc::make_string_keyword_safe(variant_name.to_case(Case::Camel));
+
+    format!("{enum_name}.{variant_name}")
 }
