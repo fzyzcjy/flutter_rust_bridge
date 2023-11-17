@@ -129,11 +129,6 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
         ))
     }
 
-    fn wrapper_struct(&self) -> Option<String> {
-        let src = self.ir.get(self.context.ir_pack);
-        src.wrapper_name.as_ref().cloned()
-    }
-
     fn self_access(&self, obj: String) -> String {
         let src = self.ir.get(self.context.ir_pack);
         match &src.wrapper_name {

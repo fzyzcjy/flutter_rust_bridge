@@ -38,10 +38,6 @@ impl TypeRustGeneratorTrait for TypeRecordGenerator<'_> {
         self.as_struct_generator().static_checks()
     }
 
-    fn wrapper_struct(&self) -> Option<String> {
-        self.as_struct_generator().wrapper_struct()
-    }
-
     fn new_with_nullptr(&self, collector: &mut ExternFuncCollector) -> String {
         self.as_struct_generator().new_with_nullptr(collector)
     }

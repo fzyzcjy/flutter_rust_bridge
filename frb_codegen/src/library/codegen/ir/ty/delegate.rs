@@ -192,3 +192,23 @@ impl IrTypeDelegateArray {
         }
     }
 }
+
+#[doc(hidden)]
+#[macro_export]
+macro_rules! delegate_enum {
+    ($self:ident, $func:ident($($tokens:tt)*), $ret:expr) => {
+        if let IrTypeDelegate:: PrimitiveEnum {
+            ir,
+            ..
+        } = &$self.ir {
+            super::TypeEnumRefGenerator {
+                ir: ir.clone(),
+                context: $self.context.clone(),
+            }
+            .$func($($tokens)*)
+        }
+        else {
+            $ret
+        }
+    };
+}

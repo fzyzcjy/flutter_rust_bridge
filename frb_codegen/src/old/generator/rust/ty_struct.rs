@@ -87,11 +87,6 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
         ))
     }
 
-    fn wrapper_struct(&self) -> Option<String> {
-        let src = self.ir.get(self.context.ir_pack);
-        src.wrapper_name.as_ref().cloned()
-    }
-
     fn impl_intodart(&self) -> String {
         let src = self.ir.get(self.context.ir_pack);
 

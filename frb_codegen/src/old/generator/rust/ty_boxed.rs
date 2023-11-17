@@ -51,15 +51,6 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
         })
     }
 
-    fn wrapper_struct(&self) -> Option<String> {
-        let src = TypeRustGenerator::new(
-            *self.ir.inner.clone(),
-            self.context.ir_pack,
-            self.context.config,
-        );
-        src.wrapper_struct()
-    }
-
     fn self_access(&self, obj: String) -> String {
         format!("(*{obj})")
     }

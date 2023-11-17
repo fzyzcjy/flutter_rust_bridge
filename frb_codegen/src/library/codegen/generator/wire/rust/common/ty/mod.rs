@@ -18,4 +18,8 @@ mod unencodable;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
-pub(crate) trait WireRustGeneratorCommonTrait {}
+pub(crate) trait WireRustGeneratorCommonTrait {
+    fn wrapper_struct_name(&self) -> Option<String> {
+        None
+    }
+}

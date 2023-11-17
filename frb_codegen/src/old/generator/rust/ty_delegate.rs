@@ -11,24 +11,6 @@ use super::get_into_into_dart;
 
 type_rust_generator_struct!(TypeDelegateGenerator, IrTypeDelegate);
 
-macro_rules! delegate_enum{
-    ($self:ident, $func:ident($($tokens:tt)*), $ret:expr) => {
-        if let IrTypeDelegate:: PrimitiveEnum {
-            ir,
-            ..
-        } = &$self.ir {
-            super::TypeEnumRefGenerator {
-                ir: ir.clone(),
-                context: $self.context.clone(),
-            }
-            .$func($($tokens)*)
-        }
-        else {
-            $ret
-        }
-    };
-}
-
 impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
         match &self.ir {
@@ -207,10 +189,6 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
 
     fn imports(&self) -> Option<String> {
         delegate_enum!(self, imports(), None)
-    }
-
-    fn wrapper_struct(&self) -> Option<String> {
-        delegate_enum!(self, wrapper_struct(), None)
     }
 
     fn self_access(&self, obj: String) -> String {
