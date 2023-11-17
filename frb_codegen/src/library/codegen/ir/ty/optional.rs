@@ -36,4 +36,12 @@ impl IrTypeOptional {
             inner: Box::new(inner),
         }))
     }
+
+    pub(crate) fn is_primitive(&self) -> bool {
+        matches!(&*self.inner, Boxed(boxed) if !boxed.exist_in_real_api && boxed.inner.is_primitive())
+    }
+
+    pub(crate) fn is_boxed_primitive(&self) -> bool {
+        matches!(&*self.inner, Boxed(boxed) if boxed.exist_in_real_api && boxed.inner.is_primitive())
+    }
 }

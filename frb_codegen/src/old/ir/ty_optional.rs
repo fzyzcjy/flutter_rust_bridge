@@ -4,16 +4,6 @@ use crate::target::Target;
 
 crate::derive_serde_inner_as_newtype!(IrTypeOptional);
 
-impl IrTypeOptional {
-    pub fn is_primitive(&self) -> bool {
-        matches!(&*self.inner, Boxed(boxed) if ! boxed.exist_in_real_api && boxed.inner.is_primitive())
-    }
-
-    pub fn is_boxed_primitive(&self) -> bool {
-        matches!(&*self.inner, Boxed(boxed) if boxed.exist_in_real_api && boxed.inner.is_primitive())
-    }
-}
-
 impl IrTypeTrait for IrTypeOptional {
     fn dart_wire_type(&self, target: Target) -> String {
         if target == Target::Wasm {

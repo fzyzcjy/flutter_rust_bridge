@@ -67,7 +67,9 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for OptionalWireRustGenerator<'a> {
 
         if self.ir.inner.rust_wire_is_pointer(target)
             || (target == Target::Wasm)
-                && (self.ir.inner.is_js_value() || self.is_primitive() || self.is_boxed_primitive())
+                && (self.ir.inner.is_js_value()
+                    || self.ir.is_primitive()
+                    || self.ir.is_boxed_primitive())
         {
             inner_rust_wire_type
         } else {
