@@ -1,12 +1,5 @@
 use super::*;
 
-#[derive(Debug)]
-pub(crate) struct GeneratedApiMethod {
-    pub comments: String,
-    pub signature: String,
-    pub implementation: String,
-}
-
 pub(crate) fn generate_api_func(
     func: &IrFunc,
     ir_pack: &IrPack,
