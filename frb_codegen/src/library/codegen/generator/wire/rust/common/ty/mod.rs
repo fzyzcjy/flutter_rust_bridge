@@ -18,4 +18,4 @@ mod unencodable;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
-pub(crate) trait WireRustGeneratorOrangeTrait {}
+pub(crate) trait WireRustGeneratorCommonTrait {}
