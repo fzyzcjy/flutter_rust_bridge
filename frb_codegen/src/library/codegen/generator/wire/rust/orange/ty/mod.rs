@@ -22,6 +22,6 @@ pub(crate) trait WireRustGeneratorOrangeTrait {
     fn f_orange(&self) {}
 }
 
-fn f_out_orange(a: WireRustGenerator) {
+fn f(a: WireRustGenerator) {
     a.f_orange()
 }
