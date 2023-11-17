@@ -1,9 +1,7 @@
 use crate::codegen::generator::dart_api::base::*;
-
 use crate::codegen::ir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
 };
-
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use convert_case::{Case, Casing};

@@ -1,7 +1,5 @@
 use crate::codegen::generator::dart_api::base::*;
-
 use crate::codegen::generator::dart_api::class::ty::DartApiGeneratorClassTrait;
-
 use crate::codegen::ir::ty::enumeration::IrEnumMode;
 
 impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {

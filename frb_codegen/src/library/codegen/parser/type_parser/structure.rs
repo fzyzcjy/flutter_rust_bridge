@@ -5,7 +5,6 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::StructRef;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::type_parser::misc::parse_comments;
-
 use crate::codegen::parser::type_parser::unencodable::{
     parse_path_type_to_unencodable, SplayedSegment,
 };

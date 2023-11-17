@@ -1,11 +1,8 @@
 use crate::codegen::generator::dart_api::base::*;
-
 use crate::codegen::generator::dart_api::class::ty::structure_method::generate_api_method;
 use crate::codegen::generator::dart_api::class::ty::DartApiGeneratorClassTrait;
-
 use crate::codegen::generator::dart_api::misc::{generate_dart_comments, generate_dart_metadata};
 use crate::codegen::ir::func::{IrFuncOwnerInfo, IrFuncOwnerInfoMethod};
-
 use itertools::Itertools;
 
 impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {

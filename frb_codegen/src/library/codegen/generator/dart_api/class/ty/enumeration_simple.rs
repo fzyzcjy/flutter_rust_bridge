@@ -1,9 +1,6 @@
 use crate::codegen::generator::dart_api::base::*;
-
 use crate::codegen::generator::dart_api::misc::generate_dart_comments;
-
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrVariant};
-
 use crate::utils::dart_keywords::make_string_keyword_safe;
 use itertools::Itertools;
 

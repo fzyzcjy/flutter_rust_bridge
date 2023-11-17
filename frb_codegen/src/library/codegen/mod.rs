@@ -5,10 +5,9 @@ mod generator;
 pub(crate) mod ir;
 pub(crate) mod parser;
 
+use crate::codegen::config::internal_config::InternalConfig;
 pub use config::config::{Config, ConfigDump};
 pub use config::config_parser::*;
-
-use crate::codegen::config::internal_config::InternalConfig;
 use log::debug;
 
 /// Execute the main code generator

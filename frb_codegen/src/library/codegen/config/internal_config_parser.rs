@@ -212,10 +212,9 @@ mod tests {
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::path_utils::path_to_string;
     use crate::utils::test_utils::{get_test_fixture_dir, json_golden_test, set_cwd_test_fixture};
-    use std::path::PathBuf;
-
     use serde_json::Value;
     use serial_test::serial;
+    use std::path::PathBuf;
 
     #[test]
     #[serial]
