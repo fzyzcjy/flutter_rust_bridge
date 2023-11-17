@@ -59,5 +59,6 @@ impl IrType {
 pub trait IrTypeTrait {
     fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_pack: &IrPack);
 
+    /// A string that can be used as an identifier safely, i.e. without any special characters inside
     fn safe_ident(&self) -> String;
 }
