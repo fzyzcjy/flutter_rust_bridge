@@ -45,3 +45,10 @@ pub enum Target {
     Io,
     Wasm,
 }
+
+impl Target {
+    #[inline]
+    pub const fn is_wasm(&self) -> bool {
+        matches!(self, Self::Wasm)
+    }
+}

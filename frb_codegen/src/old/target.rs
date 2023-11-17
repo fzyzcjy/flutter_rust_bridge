@@ -2,10 +2,6 @@ use std::iter::FromIterator;
 
 impl Target {
     #[inline]
-    pub const fn is_wasm(&self) -> bool {
-        matches!(self, Self::Wasm)
-    }
-    #[inline]
     pub const fn call_convention(&self) -> &str {
         match self {
             Self::Io => "extern \"C\"",
