@@ -18,10 +18,4 @@ mod unencodable;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
-pub(crate) trait WireRustGeneratorOrangeTrait {
-    fn f_orange(&self) {}
-}
-
-fn f(a: WireRustGenerator) {
-    a.f_orange()
-}
+pub(crate) trait WireRustGeneratorOrangeTrait {}
