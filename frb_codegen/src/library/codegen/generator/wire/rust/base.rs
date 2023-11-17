@@ -23,8 +23,7 @@ codegen_generator_structs!(
     WireRustGeneratorInfoTrait,
     // WireRustGeneratorApi2wireTrait, // TODO
     WireRustGeneratorWire2apiTrait,
-    WireRustGeneratorCommonTrait,
-    WireRustGeneratorAppleTrait;
+    WireRustGeneratorCommonTrait;
 
     WireRustGenerator;
 
