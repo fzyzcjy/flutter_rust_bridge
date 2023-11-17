@@ -3,6 +3,7 @@ use crate::codegen::generator::dart_api::class::field::{
     generate_field_default, generate_field_required_modifier,
 };
 use crate::codegen::generator::dart_api::class::ty::DartApiGeneratorClassTrait;
+use crate::codegen::generator::dart_api::internal_config::GeneratorDartApiInternalConfig;
 use crate::codegen::generator::dart_api::misc::{
     generate_dart_comments, generate_dart_maybe_implements_exception, generate_dart_metadata,
 };
@@ -36,7 +37,7 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
                     func,
                     src,
                     self.context.config.dart_api_class_name.to_string(),
-                    self.context.config,
+                    &self.context,
                 )
             })
             .collect::<Vec<_>>();
@@ -189,7 +190,7 @@ fn generate_api_method(
     func: &IrFunc,
     ir_struct: &IrStruct,
     dart_api_class_name: String,
-    config: &Opts,
+    context: &DartApiGeneratorContext,
 ) -> GeneratedApiMethod {
     let f = FunctionName::deserialize(&func.name);
     let skip_count = usize::from(!f.is_static_method());
@@ -200,15 +201,15 @@ fn generate_api_method(
         .map(|input| {
             format!(
                 "{required}{} {} {default}",
-                input.ty.dart_api_type(),
+                DartApiGenerator::new(input.ty.clone(), context.clone()).dart_api_type(),
                 input.name.dart_style(),
                 required = generate_field_required_modifier(input),
-                default = generate_field_default(input, false, Some(config))
+                default = generate_field_default(input, false, context.config.dart_enums_style)
             )
         })
         .collect::<Vec<_>>();
 
-    if f.is_static_method() && config.use_bridge_in_method {
+    if f.is_static_method() && context.config.use_bridge_in_method {
         raw_func_param_list.insert(0, format!("required {dart_api_class_name} bridge"));
     }
 
@@ -220,7 +221,8 @@ fn generate_api_method(
     let partial = format!(
         "{} {} {}({{ {} }})",
         if f.is_static_method() { "static" } else { "" },
-        func.mode.dart_return_type(&func.output.dart_api_type()),
+        func.mode
+            .dart_return_type(&DartApiGenerator::new(func.output, context.clone()).dart_api_type()),
         if f.is_static_method() {
             if static_function_name == "new" {
                 format!("new{}", ir_struct.name)
@@ -247,7 +249,7 @@ fn generate_api_method(
         let arg_names = arg_names.concat();
         format!(
             "{}.{}({})",
-            config.get_dart_api_bridge_name(),
+            context.config.dart_api_instance_name,
             func.name.clone().to_case(Case::Camel),
             arg_names
         )
@@ -255,7 +257,7 @@ fn generate_api_method(
         let arg_names = arg_names.concat();
         format!(
             "{}.{}({}: this, {})",
-            config.get_dart_api_bridge_name(),
+            context.config.dart_api_instance_name,
             func.name.clone().to_case(Case::Camel),
             func.inputs[0].name.dart_style(),
             arg_names
