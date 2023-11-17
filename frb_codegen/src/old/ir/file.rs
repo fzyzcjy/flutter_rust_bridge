@@ -4,28 +4,6 @@ use crate::{generator, ir::*, Opts};
 use std::collections::{HashMap, HashSet};
 
 impl IrPack {
-    /// [f] returns [true] if it wants to stop going to the *children* of this subtree
-    pub fn visit_types<F: FnMut(&IrType) -> bool>(
-        &self,
-        f: &mut F,
-        include_func_inputs: bool,
-        include_func_output: bool,
-    ) {
-        for func in &self.funcs {
-            if include_func_inputs {
-                for field in &func.inputs {
-                    field.ty.visit_types(f, self);
-                }
-            }
-            if include_func_output {
-                func.output.visit_types(f, self);
-                if let Some(error_output) = &func.error_output {
-                    error_output.visit_types(f, self);
-                }
-            }
-        }
-    }
-
     pub fn get_c_struct_names(&self) -> Vec<String> {
         let c_struct_names = self
             .distinct_types(true, true)
@@ -39,33 +17,6 @@ impl IrPack {
             })
             .collect();
         c_struct_names
-    }
-
-    pub fn distinct_types(
-        &self,
-        include_func_inputs: bool,
-        include_func_output: bool,
-    ) -> Vec<IrType> {
-        let mut seen_idents = HashSet::new();
-        let mut ans = Vec::new();
-        self.visit_types(
-            &mut |ty| {
-                let ident = ty.safe_ident();
-                let contains = seen_idents.contains(&ident);
-                if !contains {
-                    seen_idents.insert(ident);
-                    ans.push(ty.clone());
-                }
-                contains
-            },
-            include_func_inputs,
-            include_func_output,
-        );
-
-        // make the output change less when input change
-        ans.sort_by_key(|ty| ty.safe_ident());
-
-        ans
     }
 
     pub fn generate_rust(&self, config: &Opts) -> generator::rust::Output {
