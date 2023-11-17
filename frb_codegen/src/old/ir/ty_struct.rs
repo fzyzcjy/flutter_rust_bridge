@@ -16,13 +16,3 @@ impl IrTypeTrait for IrTypeStructRef {
         wrapper.unwrap_or(&self.rust_api_type()).clone()
     }
 }
-
-impl IrStruct {
-    pub fn brackets_pair(&self) -> (char, char) {
-        if self.is_fields_named {
-            ('{', '}')
-        } else {
-            ('(', ')')
-        }
-    }
-}

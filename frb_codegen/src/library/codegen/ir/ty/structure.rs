@@ -56,4 +56,12 @@ impl IrStruct {
     pub fn is_empty(&self) -> bool {
         self.fields.is_empty()
     }
+
+    pub fn brackets_pair(&self) -> (char, char) {
+        if self.is_fields_named {
+            ('{', '}')
+        } else {
+            ('(', ')')
+        }
+    }
 }
