@@ -2,7 +2,8 @@ use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::IrTypeTrait;
+use crate::codegen::ir::ty::structure::IrTypeStructRef;
+use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
@@ -52,21 +53,13 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for DynamicWireRustGenerator<'a> {
 
 impl<'a> WireRustGeneratorRustWireTypeTrait for EnumRefWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
-        if let Target::Wasm = target {
-            JS_VALUE.into()
-        } else {
-            format!("wire_{}", self.ir.safe_ident())
-        }
+        rust_wire_type_add_prefix_or_js_value(&self.ir, target)
     }
 }
 
 impl<'a> WireRustGeneratorRustWireTypeTrait for GeneralListWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
-        if let Target::Wasm = target {
-            JS_VALUE.into()
-        } else {
-            format!("wire_{}", self.ir.safe_ident())
-        }
+        rust_wire_type_add_prefix_or_js_value(&self.ir, target)
     }
 }
 
@@ -140,26 +133,26 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for RecordWireRustGenerator<'a> {
 
 impl<'a> WireRustGeneratorRustWireTypeTrait for RustOpaqueWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
-        if let Target::Wasm = target {
-            JS_VALUE.into()
-        } else {
-            format!("wire_{}", self.ir.safe_ident())
-        }
+        rust_wire_type_add_prefix_or_js_value(&self.ir, target)
     }
 }
 
 impl<'a> WireRustGeneratorRustWireTypeTrait for StructRefWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
-        if let Target::Wasm = target {
-            JS_VALUE.into()
-        } else {
-            format!("wire_{}", self.ir.safe_ident())
-        }
+        rust_wire_type_add_prefix_or_js_value(&self.ir, target)
     }
 }
 
 impl<'a> WireRustGeneratorRustWireTypeTrait for UnencodableWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         unreachable!()
+    }
+}
+
+fn rust_wire_type_add_prefix_or_js_value<T: IrTypeTrait>(ir: &T, target: Target) -> String {
+    if let Target::Wasm = target {
+        JS_VALUE.into()
+    } else {
+        format!("wire_{}", ir.safe_ident())
     }
 }
