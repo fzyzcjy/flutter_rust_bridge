@@ -37,7 +37,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                     Some(
                         format!(
                             "let vec: Vec<{}> = self.wire2api(); support::from_vec_to_array(vec)",
-                            array.inner_rust_api_type()
+                            array.inner().rust_api_type()
                         ),
                     );
                 if array.inner_is_js_value() {
@@ -211,7 +211,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
             }
             IrTypeDelegate::Array(array) => format!(
                 "let vec: Vec<{}> = self.wire2api(); support::from_vec_to_array(vec)",
-                array.inner_rust_api_type()
+                array.inner().rust_api_type()
             )
             .into(),
             _ => return None,

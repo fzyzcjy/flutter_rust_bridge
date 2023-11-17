@@ -79,7 +79,7 @@ impl IrTypeTrait for IrTypeDelegate {
     fn rust_api_type(&self) -> String {
         match self {
             IrTypeDelegate::Array(array) => {
-                format!("[{}; {}]", array.inner_rust_api_type(), array.length())
+                format!("[{}; {}]", array.inner().rust_api_type(), array.length())
             }
             IrTypeDelegate::String => "String".to_owned(),
             IrTypeDelegate::StringList => "Vec<String>".to_owned(),
