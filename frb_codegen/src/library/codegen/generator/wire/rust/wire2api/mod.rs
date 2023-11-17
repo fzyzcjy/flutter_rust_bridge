@@ -10,6 +10,8 @@ pub(crate) mod ty;
 
 pub(crate) fn generate_impl_wire2api() {
     todo!()
+    // generate_impl_wire2api_misc();
+    // generate_wire2api_for_type();
 }
 
 fn generate_impl_wire2api_misc() -> &'static str {
@@ -33,13 +35,13 @@ fn generate_wire2api_for_type(ty: IrType, context: WireRustGeneratorContext) -> 
     raw.map(|body, target| {
         body.map(|body| {
             format!(
-                "impl Wire2Api<{api}> for {}{} {{
-                        fn wire2api(self) -> {api} {{
-                            {body}
-                        }}
-                    }}",
-                generator.rust_wire_modifier(target),
-                generator.rust_wire_type(target),
+                "impl Wire2Api<{api}> for {rust_wire_modifier}{rust_wire_type} {{
+                    fn wire2api(self) -> {api} {{
+                        {body}
+                    }}
+                }}",
+                rust_wire_modifier = generator.rust_wire_modifier(target),
+                rust_wire_type = generator.rust_wire_type(target),
                 api = ty.rust_api_type(),
             )
         })
