@@ -13,6 +13,7 @@ use crate::codegen::ir::func::{
 use crate::codegen::ir::ty::structure::IrStruct;
 use crate::library::codegen::generator::dart_api::decl::DartApiGeneratorDeclTrait;
 use convert_case::{Case, Casing};
+use itertools::Itertools;
 
 impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
     fn generate_class(&self) -> Option<String> {

@@ -23,7 +23,7 @@ impl<'a> EnumRefDartApiGenerator<'a> {
             .map(|variant| self.generate_mode_complex_variant(&variant))
             .collect_vec()
             .join("\n");
-        let name = self.ir.ident.0;
+        let name = &self.ir.ident.0;
         let sealed = if self.context.config.dart3 {
             "sealed"
         } else {

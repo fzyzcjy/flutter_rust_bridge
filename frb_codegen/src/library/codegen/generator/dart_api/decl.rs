@@ -8,6 +8,7 @@ use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use convert_case::{Case, Casing};
 use enum_dispatch::enum_dispatch;
+use itertools::Itertools;
 
 #[enum_dispatch]
 pub(crate) trait DartApiGeneratorDeclTrait {
