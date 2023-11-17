@@ -21,7 +21,7 @@ pub(super) fn generate_api_method(
     let method_info = if let IrFuncOwnerInfo::Method(info) = &func.owner {
         info
     } else {
-        unimplemented!("should not happen")
+        unreachable!()
     };
     let is_static_method = method_info.mode == IrFuncOwnerInfoMethodMode::Static;
 

@@ -180,6 +180,6 @@ impl<'a> ApiDartGeneratorDartApiTypeTrait for StructRefApiDartGenerator<'a> {
 
 impl<'a> ApiDartGeneratorDartApiTypeTrait for UnencodableApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        unimplemented!()
+        unreachable!()
     }
 }
