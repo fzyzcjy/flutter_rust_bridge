@@ -18,30 +18,28 @@ pub(crate) fn generate_field_default(
     freezed: bool,
     dart_enums_style: bool,
 ) -> String {
-    field
-        .default
-        .as_ref()
-        .map(|default_value| {
-            let default_value = match default_value {
-                IrDefaultValue::Str(lit)
-                    if !matches!(&field.ty, IrType::Delegate(IrTypeDelegate::String)) =>
-                {
-                    // Convert the default value to Dart style.
-                    if dart_enums_style {
-                        default_value_to_dart_style(lit).into()
-                    } else {
-                        lit.value().into()
-                    }
+    if let Some(default_value) = field.default.as_ref() {
+        let default_value = match default_value {
+            IrDefaultValue::Str(lit)
+                if !matches!(&field.ty, IrType::Delegate(IrTypeDelegate::String)) =>
+            {
+                // Convert the default value to Dart style.
+                if dart_enums_style {
+                    default_value_to_dart_style(lit).into()
+                } else {
+                    lit.value().into()
                 }
-                _ => default_value.to_dart(),
-            };
-            if freezed {
-                format!("@Default({default_value})")
-            } else {
-                format!("= {default_value}")
             }
-        })
-        .unwrap_or_default()
+            _ => default_value.to_dart(),
+        };
+        if freezed {
+            format!("@Default({default_value})")
+        } else {
+            format!("= {default_value}")
+        }
+    } else {
+        "".to_string()
+    }
 }
 
 fn default_value_to_dart_style(lit: &LitStr) -> String {
