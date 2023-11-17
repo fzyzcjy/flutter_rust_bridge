@@ -70,7 +70,8 @@
       "name": "func_one",
       "output": {
         "Primitive": "Unit"
-      }
+      },
+      "owner": "Function"
     }
   ],
   "has_executor": false,

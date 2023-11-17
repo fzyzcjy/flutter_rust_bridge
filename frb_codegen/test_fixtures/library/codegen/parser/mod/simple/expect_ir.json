@@ -9,7 +9,8 @@
       "name": "first_function",
       "output": {
         "Primitive": "Unit"
-      }
+      },
+      "owner": "Function"
     }
   ],
   "has_executor": false,

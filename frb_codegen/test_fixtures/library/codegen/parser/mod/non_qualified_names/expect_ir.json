@@ -36,7 +36,8 @@
       "name": "func_1",
       "output": {
         "Primitive": "Unit"
-      }
+      },
+      "owner": "Function"
     },
     {
       "comments": [],
@@ -48,7 +49,8 @@
       "name": "func_anyhow_result",
       "output": {
         "Primitive": "I32"
-      }
+      },
+      "owner": "Function"
     }
   ],
   "has_executor": false,

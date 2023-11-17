@@ -9,7 +9,8 @@
       "name": "func_one",
       "output": {
         "Primitive": "Unit"
-      }
+      },
+      "owner": "Function"
     },
     {
       "comments": [],
@@ -19,7 +20,8 @@
       "name": "func_two",
       "output": {
         "Primitive": "Unit"
-      }
+      },
+      "owner": "Function"
     }
   ],
   "has_executor": false,
