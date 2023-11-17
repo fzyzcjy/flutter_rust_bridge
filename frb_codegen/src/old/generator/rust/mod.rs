@@ -146,11 +146,12 @@ impl<'a> Generator<'a> {
             .collect();
 
         lines.push_all(self.section_header_comment("impl Wire2Api"));
-        lines.push(self.generate_wire2api_misc().to_string());
-        lines += distinct_input_types
-            .iter()
-            .map(|ty| self.generate_wire2api_func(ty, ir_pack))
-            .collect();
+        // TODO -> generate_impl_wire2api
+        // lines.push(self.generate_wire2api_misc().to_string());
+        // lines += distinct_input_types
+        //     .iter()
+        //     .map(|ty| self.generate_wire2api_func(ty, ir_pack))
+        //     .collect();
 
         lines.push(self.section_header_comment("impl IntoDart"));
         // TODO -> generate_impl_into_dart
@@ -437,42 +438,6 @@ impl<'a> Generator<'a> {
         TypeRustGenerator::new(ty.clone(), ir_pack, self.config)
             .related_funcs(&mut self.extern_func_collector, self.config.block_index)
             .map(|func, _| func.unwrap_or_default())
-    }
-
-    fn generate_wire2api_misc(&self) -> &'static str {
-        r#"pub trait Wire2Api<T> {
-            fn wire2api(self) -> T;
-        }
-
-        impl<T, S> Wire2Api<Option<T>> for *mut S
-        where
-            *mut S: Wire2Api<T>
-        {
-            fn wire2api(self) -> Option<T> {
-                (!self.is_null()).then(|| self.wire2api())
-            }
-        }"#
-    }
-
-    fn generate_wire2api_func(&mut self, ty: &IrType, ir_pack: &IrPack) -> Acc<String> {
-        TypeRustGenerator::new(ty.clone(), ir_pack, self.config)
-            .wire2api_body()
-            .map(|body, target| {
-                body.map(|body| {
-                    format!(
-                        "impl Wire2Api<{api}> for {}{} {{
-                            fn wire2api(self) -> {api} {{
-                                {}
-                            }}
-                        }}",
-                        ty.rust_wire_modifier(target),
-                        ty.rust_wire_type(target),
-                        body,
-                        api = ty.rust_api_type(),
-                    )
-                })
-                .unwrap_or_default()
-            })
     }
 
     fn generate_new_with_nullptr_misc(&self) -> &'static str {

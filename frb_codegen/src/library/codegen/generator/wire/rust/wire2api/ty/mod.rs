@@ -22,4 +22,8 @@ pub(crate) trait WireRustGeneratorWire2apiTrait {
     fn generate_wire2api_class(&self) -> Option<String> {
         None
     }
+
+    fn wire2api_body(&self) -> Option<String> {
+        None
+    }
 }
