@@ -22,7 +22,7 @@ use paste::paste;
 
 codegen_generator_structs!(
     WireRustGeneratorInfoTrait,
-    WireRustGeneratorApi2wireTrait,
+    // WireRustGeneratorApi2wireTrait,
     WireRustGeneratorWire2apiTrait,
     WireRustGeneratorCommonTrait;
 

@@ -1,4 +1,5 @@
 use crate::codegen::generator::wire::rust::base::*;
+use crate::library::codegen::ir::ty::IrTypeTrait;
 
 mod boxed;
 mod dart_opaque;
