@@ -1,5 +1,6 @@
 use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::comment::IrComment;
+use crate::codegen::ir::func::IrFuncMode;
 use crate::codegen::ir::import::IrDartImport;
 use itertools::Itertools;
 
@@ -38,5 +39,13 @@ pub(crate) fn generate_dart_maybe_implements_exception(is_exception: bool) -> &'
         "implements FrbException"
     } else {
         ""
+    }
+}
+
+pub(crate) fn generate_function_dart_return_type(func_mode: &IrFuncMode, inner: &str) -> String {
+    match func_mode {
+        IrFuncMode::Normal => format!("Future<{inner}>"),
+        IrFuncMode::Sync => inner.to_string(),
+        IrFuncMode::Stream { .. } => format!("Stream<{inner}>"),
     }
 }

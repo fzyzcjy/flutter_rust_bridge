@@ -2,7 +2,9 @@ use crate::codegen::generator::dart_api::base::*;
 use crate::codegen::generator::dart_api::class::field::{
     generate_field_default, generate_field_required_modifier,
 };
-use crate::codegen::generator::dart_api::misc::generate_dart_comments;
+use crate::codegen::generator::dart_api::misc::{
+    generate_dart_comments, generate_function_dart_return_type,
+};
 use crate::codegen::ir::func::{
     IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
 };
@@ -114,13 +116,5 @@ fn generate_implementation(
     } else {
         let extra_arg_name = func.inputs[0].name.dart_style();
         format!("{dart_api_instance_name}.{func_name}({extra_arg_name}: this, {arg_names})")
-    }
-}
-
-fn generate_function_dart_return_type(func_mode: &IrFuncMode, inner: &str) -> String {
-    match func_mode {
-        IrFuncMode::Normal => format!("Future<{inner}>"),
-        IrFuncMode::Sync => inner.to_string(),
-        IrFuncMode::Stream { .. } => format!("Stream<{inner}>"),
     }
 }

@@ -1,13 +1,12 @@
+use crate::codegen::generator::dart_api::base::{DartApiGenerator, DartApiGeneratorContext};
 use crate::codegen::generator::dart_api::class::field::{
     generate_field_default, generate_field_required_modifier,
 };
-use crate::codegen::generator::dart_api::misc::generate_dart_comments;
-use crate::codegen::ir::func::{IrFunc, IrFuncMode};
-use crate::codegen::ir::pack::IrPack;
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::structure::IrTypeStructRef;
-use crate::codegen::ir::ty::IrType;
-use crate::codegen::ir::ty::IrType::{Primitive, StructRef};
+use crate::codegen::generator::dart_api::misc::{
+    generate_dart_comments, generate_function_dart_return_type,
+};
+use crate::codegen::ir::func::IrFunc;
+use crate::library::codegen::generator::dart_api::decl::DartApiGeneratorDeclTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 
@@ -18,13 +17,20 @@ pub(crate) struct GeneratedApiFunc {
     pub(crate) companion_field_signature: String,
 }
 
-pub(crate) fn generate_func(func: &IrFunc, dart_enums_style: bool) -> GeneratedApiFunc {
-    let params = generate_params(func, dart_enums_style).join(", ");
+pub(crate) fn generate_func(
+    func: &IrFunc,
+    context: &DartApiGeneratorContext,
+    dart_enums_style: bool,
+) -> GeneratedApiFunc {
+    let params = generate_params(func, context, dart_enums_style).join(", ");
 
     let func_expr = format!(
         "{func_return_type} {func_name}({{ {params} }})",
         func_name = func.name.to_case(Case::Camel),
-        func_return_type = func.mode.dart_return_type(&func.output.dart_api_type()),
+        func_return_type = generate_function_dart_return_type(
+            &func.mode,
+            &DartApiGenerator::new(func.output.clone(), context.clone()).dart_api_type()
+        ),
     );
     let func_signature = format!("{func_expr};");
 
@@ -41,14 +47,18 @@ pub(crate) fn generate_func(func: &IrFunc, dart_enums_style: bool) -> GeneratedA
     }
 }
 
-fn generate_params(func: &IrFunc, dart_enums_style: bool) -> Vec<String> {
+fn generate_params(
+    func: &IrFunc,
+    context: &DartApiGeneratorContext,
+    dart_enums_style: bool,
+) -> Vec<String> {
     let mut ans = func
         .inputs
         .iter()
         .map(|input| {
             let required = generate_field_required_modifier(input);
             let r#default = generate_field_default(input, false, dart_enums_style);
-            let type_str = input.ty.dart_api_type();
+            let type_str = DartApiGenerator::new(input.ty.clone(), context.clone()).dart_api_type();
             let name_str = input.name.dart_style();
             format!("{required}{type_str} {name_str} {default}")
         })
