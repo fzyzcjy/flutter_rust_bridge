@@ -5,11 +5,20 @@ use std::path::Path;
 
 impl From<GeneratorDartInternalConfig> for GeneratorDartApiInternalConfig {
     fn from(config: GeneratorDartInternalConfig) -> Self {
+        // TODO multi file support
+        let dart_output_path = config
+            .dart_output_path_pack
+            .dart_decl_output_path
+            .values()
+            .next()
+            .unwrap();
+        let dart_output_stem = get_file_stem(dart_output_path);
+
         GeneratorDartApiInternalConfig {
-            dart_api_class_name: TODO,
+            dart_api_class_name: dart_output_stem.to_case(Case::Pascal),
             dart_api_instance_name: compute_dart_api_instance_name(
                 config.use_bridge_in_method,
-                rust_input_path,
+                dart_output_stem,
             ),
             dart_enums_style: config.dart_enums_style,
             use_bridge_in_method: config.use_bridge_in_method,
@@ -18,15 +27,14 @@ impl From<GeneratorDartInternalConfig> for GeneratorDartApiInternalConfig {
     }
 }
 
-fn compute_dart_api_instance_name(use_bridge_in_method: bool, rust_input_path: &Path) -> String {
+fn compute_dart_api_instance_name(use_bridge_in_method: bool, dart_output_stem: &str) -> String {
     if use_bridge_in_method {
         "bridge".to_owned()
     } else {
-        rust_input_path
-            .file_stem()
-            .unwrap()
-            .to_str()
-            .unwrap()
-            .to_case(Case::Camel)
+        dart_output_stem.to_case(Case::Camel)
     }
+}
+
+fn get_file_stem(p: &Path) -> &str {
+    p.file_stem().unwrap().to_str().unwrap()
 }
