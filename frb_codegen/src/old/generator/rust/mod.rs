@@ -481,20 +481,6 @@ impl<'a> Generator<'a> {
         TypeRustGenerator::new(ty.clone(), ir_pack, self.config).static_checks()
     }
 
-    fn generate_wrapper_struct_name(&mut self, ty: &IrType, ir_pack: &IrPack) -> Option<String> {
-        // the generated wrapper structs need to be public for the StreamSinkTrait impl to work
-        match ty {
-            IrType::StructRef(_)
-            | IrType::EnumRef(_)
-            | IrType::Delegate(IrTypeDelegate::PrimitiveEnum { .. }) => {
-                TypeRustGenerator::new(ty.clone(), ir_pack, self.config)
-                    .wrapper_struct_name()
-                    .map(|wrapper| generate_wrapper_struct_from_name())
-            }
-            _ => None,
-        }
-    }
-
     fn generate_new_with_nullptr_misc(&self) -> &'static str {
         "pub trait NewWithNullPtr {
             fn new_with_null_ptr() -> Self;
