@@ -6,13 +6,13 @@ use crate::codegen::ir::ty::IrTypeTrait;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
-pub(crate) trait WireRustGeneratorRustWireTypeTrait {
+pub(crate) trait WireRustGeneratorInfoTrait {
     fn rust_wire_type(&self, target: Target) -> String;
 }
 
 const JS_VALUE: &str = "JsValue";
 
-impl<'a> WireRustGeneratorRustWireTypeTrait for BoxedWireRustGenerator<'a> {
+impl<'a> WireRustGeneratorInfoTrait for BoxedWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         if target == Target::Wasm && self.ir.inner.is_primitive() {
             JS_VALUE.into()
@@ -23,13 +23,13 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for BoxedWireRustGenerator<'a> {
     }
 }
 
-impl<'a> WireRustGeneratorRustWireTypeTrait for DartOpaqueWireRustGenerator<'a> {
+impl<'a> WireRustGeneratorInfoTrait for DartOpaqueWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         rust_wire_type_add_prefix_or_js_value(&self.ir, target)
     }
 }
 
-impl<'a> WireRustGeneratorRustWireTypeTrait for DelegateWireRustGenerator<'a> {
+impl<'a> WireRustGeneratorInfoTrait for DelegateWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         match (&self.ir, target) {
             (IrTypeDelegate::String, Target::Wasm) => "String".into(),
@@ -41,25 +41,25 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for DelegateWireRustGenerator<'a> {
     }
 }
 
-impl<'a> WireRustGeneratorRustWireTypeTrait for DynamicWireRustGenerator<'a> {
+impl<'a> WireRustGeneratorInfoTrait for DynamicWireRustGenerator<'a> {
     fn rust_wire_type(&self, _target: Target) -> String {
         unreachable!("Functions cannot receive dynamic parameters.")
     }
 }
 
-impl<'a> WireRustGeneratorRustWireTypeTrait for EnumRefWireRustGenerator<'a> {
+impl<'a> WireRustGeneratorInfoTrait for EnumRefWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         rust_wire_type_add_prefix_or_js_value(&self.ir, target)
     }
 }
 
-impl<'a> WireRustGeneratorRustWireTypeTrait for GeneralListWireRustGenerator<'a> {
+impl<'a> WireRustGeneratorInfoTrait for GeneralListWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         rust_wire_type_add_prefix_or_js_value(&self.ir, target)
     }
 }
 
-impl<'a> WireRustGeneratorRustWireTypeTrait for OptionalWireRustGenerator<'a> {
+impl<'a> WireRustGeneratorInfoTrait for OptionalWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         let inner_rust_wire_type =
             WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone())
@@ -78,19 +78,19 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for OptionalWireRustGenerator<'a> {
     }
 }
 
-impl<'a> WireRustGeneratorRustWireTypeTrait for OptionalListWireRustGenerator<'a> {
+impl<'a> WireRustGeneratorInfoTrait for OptionalListWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         rust_wire_type_add_prefix_or_js_value(&self.ir, target)
     }
 }
 
-impl<'a> WireRustGeneratorRustWireTypeTrait for PrimitiveWireRustGenerator<'a> {
+impl<'a> WireRustGeneratorInfoTrait for PrimitiveWireRustGenerator<'a> {
     fn rust_wire_type(&self, _target: Target) -> String {
         self.ir.rust_api_type()
     }
 }
 
-impl<'a> WireRustGeneratorRustWireTypeTrait for PrimitiveListWireRustGenerator<'a> {
+impl<'a> WireRustGeneratorInfoTrait for PrimitiveListWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         if let Target::Wasm = target {
             match self.ir.primitive {
@@ -103,25 +103,25 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for PrimitiveListWireRustGenerator<'
     }
 }
 
-impl<'a> WireRustGeneratorRustWireTypeTrait for RecordWireRustGenerator<'a> {
+impl<'a> WireRustGeneratorInfoTrait for RecordWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         rust_wire_type_add_prefix_or_js_value(&self.ir, target)
     }
 }
 
-impl<'a> WireRustGeneratorRustWireTypeTrait for RustOpaqueWireRustGenerator<'a> {
+impl<'a> WireRustGeneratorInfoTrait for RustOpaqueWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         rust_wire_type_add_prefix_or_js_value(&self.ir, target)
     }
 }
 
-impl<'a> WireRustGeneratorRustWireTypeTrait for StructRefWireRustGenerator<'a> {
+impl<'a> WireRustGeneratorInfoTrait for StructRefWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         rust_wire_type_add_prefix_or_js_value(&self.ir, target)
     }
 }
 
-impl<'a> WireRustGeneratorRustWireTypeTrait for UnencodableWireRustGenerator<'a> {
+impl<'a> WireRustGeneratorInfoTrait for UnencodableWireRustGenerator<'a> {
     fn rust_wire_type(&self, _target: Target) -> String {
         unreachable!()
     }

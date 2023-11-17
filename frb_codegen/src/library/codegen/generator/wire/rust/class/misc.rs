@@ -1,7 +1,7 @@
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
 use crate::codegen::ir::ty::IrType;
-use crate::library::codegen::generator::wire::rust::rust_wire_type::WireRustGeneratorRustWireTypeTrait;
+use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
 
 pub(super) fn generate_class_from_fields(
     ty: &IrType,
