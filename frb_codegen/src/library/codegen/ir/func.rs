@@ -27,27 +27,17 @@ pub enum IrFuncMode {
 
 pub enum IrFuncOwnerInfo {
     Function,
-    Method {
-        struct_name: String,
-        actual_method_name: String,
-        mode: IrFuncMethodMode,
-    },
+    Method(IrFuncOwnerInfoMethod),
 }
 
-pub enum IrFuncMethodMode {
+pub struct IrFuncOwnerInfoMethod {
+    pub(crate) struct_name: String,
+    pub(crate) actual_method_name: String,
+    pub(crate) mode: IrFuncOwnerInfoMethodMode,
+}
+
+pub enum IrFuncOwnerInfoMethodMode {
     Static,
     Instance,
 }
-}
-
-impl IrFuncOwnerInfo {
-    pub(crate) fn is_static_method(&self) -> bool {
-        matches!(
-            self,
-            IrFuncOwnerInfo::Method {
-                mode: IrFuncMethodMode::Static,
-                ..
-            }
-        )
-    }
 }

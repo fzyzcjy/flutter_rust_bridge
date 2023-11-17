@@ -7,7 +7,9 @@ use crate::codegen::generator::dart_api::internal_config::GeneratorDartApiIntern
 use crate::codegen::generator::dart_api::misc::{
     generate_dart_comments, generate_dart_maybe_implements_exception, generate_dart_metadata,
 };
-use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo};
+use crate::codegen::ir::func::{
+    IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
+};
 use crate::codegen::ir::ty::structure::IrStruct;
 use crate::library::codegen::generator::dart_api::decl::DartApiGeneratorDeclTrait;
 use convert_case::{Case, Casing};
@@ -24,7 +26,7 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
             .funcs
             .iter()
             .filter(|f| {
-                matches!(&f.owner, IrFuncOwnerInfo::Method {struct_name, ..} if struct_name == &src.name)
+                matches!(&f.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod{ struct_name, .. }) if struct_name == &src.name)
             })
             .collect::<Vec<_>>();
 
@@ -191,7 +193,14 @@ fn generate_api_method(
     dart_api_class_name: String,
     context: &DartApiGeneratorContext,
 ) -> GeneratedApiMethod {
-    let skip_count = usize::from(!func.owner.is_static_method());
+    let method_info = if let IrFuncOwnerInfo::Method(info) = &func.owner {
+        info
+    } else {
+        unimplemented!("should not happen")
+    };
+    let is_static_method = method_info.mode == IrFuncOwnerInfoMethodMode::Static;
+
+    let skip_count = usize::from(!is_static_method);
     let mut raw_func_param_list = func
         .inputs
         .iter()
@@ -207,34 +216,29 @@ fn generate_api_method(
         })
         .collect::<Vec<_>>();
 
-    if func.owner.is_static_method() && context.config.use_bridge_in_method {
+    if is_static_method && context.config.use_bridge_in_method {
         raw_func_param_list.insert(0, format!("required {dart_api_class_name} bridge"));
     }
 
     let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();
 
-    let static_function_name = func.owner.method_name();
     let comments = generate_dart_comments(&func.comments);
 
     let partial = format!(
         "{} {} {}({{ {} }})",
-        if func.owner.is_static_method() {
-            "static"
-        } else {
-            ""
-        },
+        if is_static_method { "static" } else { "" },
         generate_function_dart_return_type(
             &func.mode,
             &DartApiGenerator::new(func.output.clone(), context.clone()).dart_api_type()
         ),
-        if func.owner.is_static_method() {
-            if static_function_name == "new" {
+        if is_static_method {
+            if method_info.actual_method_name == "new" {
                 format!("new{}", ir_struct.name)
             } else {
-                static_function_name.to_case(Case::Camel)
+                method_info.actual_method_name.to_case(Case::Camel)
             }
         } else {
-            func.owner.method_name().to_case(Case::Camel)
+            method_info.actual_method_name.to_case(Case::Camel)
         },
         full_func_param_list.join(","),
     );
@@ -248,7 +252,7 @@ fn generate_api_method(
         .map(|input| format!("{}:{},", input.name.dart_style(), input.name.dart_style()))
         .collect::<Vec<_>>();
 
-    let implementation = if func.owner.is_static_method() {
+    let implementation = if is_static_method {
         arg_names.push("hint: hint".to_string());
         let arg_names = arg_names.concat();
         format!(
