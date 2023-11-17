@@ -83,23 +83,7 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for OptionalListWireRustGenerator<'a
 
 impl<'a> WireRustGeneratorRustWireTypeTrait for PrimitiveWireRustGenerator<'a> {
     fn rust_wire_type(&self, _target: Target) -> String {
-        match self.ir {
-            IrTypePrimitive::U8 => "u8",
-            IrTypePrimitive::I8 => "i8",
-            IrTypePrimitive::U16 => "u16",
-            IrTypePrimitive::I16 => "i16",
-            IrTypePrimitive::U32 => "u32",
-            IrTypePrimitive::I32 => "i32",
-            IrTypePrimitive::U64 => "u64",
-            IrTypePrimitive::Unit => "unit",
-            IrTypePrimitive::Usize => "usize",
-            IrTypePrimitive::Isize => "isize",
-            IrTypePrimitive::I64 => "i64",
-            IrTypePrimitive::F32 => "f32",
-            IrTypePrimitive::F64 => "f64",
-            IrTypePrimitive::Bool => "bool",
-        }
-        .to_string()
+        self.ir.rust_api_type()
     }
 }
 
