@@ -9,10 +9,12 @@ pub(crate) trait WireRustGeneratorRustWireTypeTrait {
     fn rust_wire_type(&self, target: Target) -> String;
 }
 
+const JS_VALUE: &str = "JsValue";
+
 impl<'a> WireRustGeneratorRustWireTypeTrait for BoxedWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         if target.is_wasm() && self.ir.inner.is_primitive() {
-            "JsValue".into()
+            JS_VALUE.into()
         } else {
             self.ir.inner.rust_wire_type(target)
         }
@@ -22,7 +24,7 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for BoxedWireRustGenerator<'a> {
 impl<'a> WireRustGeneratorRustWireTypeTrait for DartOpaqueWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         if target.is_wasm() {
-            "JsValue"
+            JS_VALUE
         } else {
             "wire_DartOpaque"
         }
@@ -35,7 +37,7 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for DelegateWireRustGenerator<'a> {
         match (&self.ir, target) {
             (IrTypeDelegate::String, Target::Wasm) => "String".into(),
             (IrTypeDelegate::StringList, Target::Io) => "wire_StringList".to_owned(),
-            (IrTypeDelegate::StringList, Target::Wasm) => "JsValue".into(),
+            (IrTypeDelegate::StringList, Target::Wasm) => JS_VALUE.into(),
             _ => self.get_delegate().rust_wire_type(target),
         }
     }
@@ -50,7 +52,7 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for DynamicWireRustGenerator<'a> {
 impl<'a> WireRustGeneratorRustWireTypeTrait for EnumRefWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         if let Target::Wasm = target {
-            "JsValue".into()
+            JS_VALUE.into()
         } else {
             format!("wire_{}", self.ir.ident.0)
         }
@@ -60,7 +62,7 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for EnumRefWireRustGenerator<'a> {
 impl<'a> WireRustGeneratorRustWireTypeTrait for GeneralListWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         if let Target::Wasm = target {
-            "JsValue".into()
+            JS_VALUE.into()
         } else {
             format!("wire_{}", self.safe_ident())
         }
@@ -83,7 +85,7 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for OptionalWireRustGenerator<'a> {
 impl<'a> WireRustGeneratorRustWireTypeTrait for OptionalListWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         match target {
-            Target::Wasm => "JsValue".into(),
+            Target::Wasm => JS_VALUE.into(),
             Target::Io => format!("wire_{}", self.safe_ident()),
             Target::Common => unreachable!(),
         }
@@ -116,7 +118,7 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for PrimitiveListWireRustGenerator<'
     fn rust_wire_type(&self, target: Target) -> String {
         if let Target::Wasm = target {
             match self.ir.primitive {
-                IrTypePrimitive::Bool | IrTypePrimitive::Unit => "JsValue".into(),
+                IrTypePrimitive::Bool | IrTypePrimitive::Unit => JS_VALUE.into(),
                 _ => format!("Box<[{}]>", self.ir.primitive.rust_api_type()),
             }
         } else {
@@ -128,7 +130,7 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for PrimitiveListWireRustGenerator<'
 impl<'a> WireRustGeneratorRustWireTypeTrait for RecordWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         if target.is_wasm() {
-            "JsValue".to_string()
+            JS_VALUE.to_string()
         } else {
             format!("wire_{}", self.safe_ident())
         }
@@ -138,7 +140,7 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for RecordWireRustGenerator<'a> {
 impl<'a> WireRustGeneratorRustWireTypeTrait for RustOpaqueWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         if let Target::Wasm = target {
-            "JsValue".into()
+            JS_VALUE.into()
         } else {
             format!("wire_{}", self.safe_ident())
         }
@@ -148,7 +150,7 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for RustOpaqueWireRustGenerator<'a> 
 impl<'a> WireRustGeneratorRustWireTypeTrait for StructRefWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         if let Target::Wasm = target {
-            "JsValue".into()
+            JS_VALUE.into()
         } else {
             format!("wire_{}", self.ir.ident.0)
         }
