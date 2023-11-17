@@ -615,28 +615,3 @@ impl ExternFuncCollector {
         )
     }
 }
-
-pub fn get_into_into_dart(name: impl Display, wrapper_name: Option<impl Display>) -> String {
-    match wrapper_name {
-        None => {
-            // case for types without mirror_ wrapper
-            format!(
-                "impl rust2dart::IntoIntoDart<{name}> for {name} {{
-                fn into_into_dart(self) -> Self {{
-                    self
-                }}
-            }}"
-            )
-        }
-        Some(wrapper) => {
-            // case for type with mirror_ wrapper
-            format!(
-                "impl rust2dart::IntoIntoDart<{wrapper}> for {name} {{
-                fn into_into_dart(self) -> {wrapper} {{
-                    {wrapper}(self)
-                }}
-            }}"
-            )
-        }
-    }
-}
