@@ -13,7 +13,7 @@ impl<'a> WireRustGeneratorApi2wireTrait for DelegateWireRustGenerator<'a> {
                 Some(wrapper) => (wrapper, &src.name),
                 None => (&src.name, "Self"),
             };
-            let self_ref = self.self_access("self".to_owned());
+            let self_ref = self.generate_access_object_core("self".to_owned());
             let variants = src
                 .variants()
                 .iter()
@@ -39,7 +39,7 @@ impl<'a> WireRustGeneratorApi2wireTrait for DelegateWireRustGenerator<'a> {
         None
     }
 
-    fn self_access(&self, obj: String) -> String {
+    fn generate_access_object_core(&self, obj: String) -> String {
         delegate_enum!(self, self_access(obj), obj)
     }
 }

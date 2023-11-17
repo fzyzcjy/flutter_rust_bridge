@@ -27,7 +27,7 @@ pub(crate) trait WireRustGeneratorApi2wireTrait {
         format!("{obj}.into_into_dart().into_dart()")
     }
 
-    fn self_access(&self, obj: String) -> String {
+    fn generate_access_object_core(&self, obj: String) -> String {
         obj
     }
 }
