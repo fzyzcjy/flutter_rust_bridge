@@ -3,17 +3,8 @@ use crate::codegen::ir::ty::IrType;
 #[doc(hidden)]
 #[macro_export]
 macro_rules! codegen_generator_structs {
-    ($($enum_dispatch_name:ident),*;$generator_name:ident;$($name:ident),*,) => (
+    ($generator_name:ident;$($name:ident),*,) => (
         paste! {
-            $(
-                #[enum_dispatch($enum_dispatch_name)]
-            )*
-            pub(crate) enum $generator_name<'a> {
-                $(
-                    $name([<$name $generator_name>]<'a>),
-                )*
-            }
-
             impl<'a> $generator_name<'a> {
                 pub(crate) fn new(ty: IrType, context: [<$generator_name Context>]<'a>) -> Self {
                     match ty {
