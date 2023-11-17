@@ -8,7 +8,7 @@ pub struct IrFunc {
     pub inputs: Vec<IrField>,
     pub output: IrType,
     pub error_output: Option<IrType>,
-    pub method_info: IrFuncMethodInfo,
+    pub owner: IrFuncOwnerInfo,
     pub mode: IrFuncMode,
     pub comments: Vec<IrComment>,
 
@@ -25,7 +25,7 @@ pub enum IrFuncMode {
     },
 }
 
-pub enum IrFuncMethodInfo {
+pub enum IrFuncOwnerInfo {
     Function,
     Method {
         struct_name: String,
