@@ -35,7 +35,8 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for DelegateWireRustGenerator<'a> {
             (IrTypeDelegate::String, Target::Wasm) => "String".into(),
             (IrTypeDelegate::StringList, Target::Io) => "wire_StringList".to_owned(),
             (IrTypeDelegate::StringList, Target::Wasm) => JS_VALUE.into(),
-            _ => self.ir.get_delegate().rust_wire_type(target),
+            _ => WireRustGenerator::new(self.ir.get_delegate().clone(), self.context.clone())
+                .rust_wire_type(target),
         }
     }
 }

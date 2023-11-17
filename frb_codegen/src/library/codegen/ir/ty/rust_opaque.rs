@@ -23,6 +23,6 @@ impl IrTypeTrait for IrTypeRustOpaque {
     }
 
     fn rust_api_type(&self) -> String {
-        format!("RustOpaque<{}>", self.inner_rust)
+        format!("RustOpaque<{}>", self.inner.rust_api_type())
     }
 }
