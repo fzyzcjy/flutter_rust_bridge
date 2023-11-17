@@ -10,4 +10,31 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
             &vec!["ptr: *const core::ffi::c_void".to_owned()],
         ))
     }
+
+    fn generate_impl_wire2api_body(&self) -> crate::target::Acc<Option<String>> {
+        Acc {
+            io: Some(
+                "unsafe {
+                support::opaque_from_dart(self.ptr as _)
+            }"
+                .into(),
+            ),
+            ..Default::default()
+        }
+    }
+
+    fn generate_impl_wire2api_jsvalue_body(&self) -> Option<Cow<str>> {
+        Some(
+            r#"
+            #[cfg(target_pointer_width = "64")]
+            {
+                compile_error!("64-bit pointers are not supported.");
+            }
+    
+            unsafe {
+                support::opaque_from_dart((self.as_f64().unwrap() as usize) as _)
+            }"#
+            .into(),
+        )
+    }
 }

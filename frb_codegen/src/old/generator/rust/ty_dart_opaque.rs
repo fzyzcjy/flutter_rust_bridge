@@ -11,18 +11,6 @@ use super::{ExternFuncCollector, NO_PARAMS};
 type_rust_generator_struct!(TypeDartOpaqueGenerator, IrTypeDartOpaque);
 
 impl TypeRustGeneratorTrait for TypeDartOpaqueGenerator<'_> {
-    fn generate_impl_wire2api_body(&self) -> crate::target::Acc<Option<String>> {
-        Acc {
-            io: Some("unsafe{DartOpaque::new(self.handle as _, self.port)}".to_owned()),
-            wasm: Some(
-                "let arr = self.dyn_into::<JsArray>().unwrap();
-                unsafe{DartOpaque::new(arr.get(0), arr.get(1))}"
-                    .to_owned(),
-            ),
-            ..Default::default()
-        }
-    }
-
     fn allocate_funcs(
         &self,
         collector: &mut ExternFuncCollector,

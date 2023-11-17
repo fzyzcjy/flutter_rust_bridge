@@ -10,4 +10,16 @@ impl<'a> WireRustGeneratorWire2apiTrait for DartOpaqueWireRustGenerator<'a> {
             &vec!["port: i64".to_owned(), "handle: usize".to_owned()],
         ))
     }
+
+    fn generate_impl_wire2api_body(&self) -> crate::target::Acc<Option<String>> {
+        Acc {
+            io: Some("unsafe{DartOpaque::new(self.handle as _, self.port)}".to_owned()),
+            wasm: Some(
+                "let arr = self.dyn_into::<JsArray>().unwrap();
+                unsafe{DartOpaque::new(arr.get(0), arr.get(1))}"
+                    .to_owned(),
+            ),
+            ..Default::default()
+        }
+    }
 }

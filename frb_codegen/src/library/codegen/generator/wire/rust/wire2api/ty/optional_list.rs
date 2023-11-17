@@ -19,4 +19,12 @@ impl<'a> WireRustGeneratorWire2apiTrait for OptionalListWireRustGenerator<'a> {
             ],
         ))
     }
+
+    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
+        Acc {
+            wasm: Some(TypeGeneralListGenerator::WIRE2API_BODY_WASM.to_owned()),
+            io: Some(TypeGeneralListGenerator::WIRE2API_BODY_IO.to_owned()),
+            ..Default::default()
+        }
+    }
 }

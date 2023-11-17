@@ -26,4 +26,48 @@ impl<'a> WireRustGeneratorWire2apiTrait for StructRefWireRustGenerator<'a> {
                 .collect_vec(),
         ))
     }
+
+    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
+        let api_struct = self.ir.get(self.context.ir_pack);
+        let fields: Acc<Vec<_>> = api_struct
+            .fields
+            .iter()
+            .enumerate()
+            .map(|(idx, field)| {
+                let field_name = field.name.rust_style();
+                let field_ = if api_struct.is_fields_named {
+                    format!("{field_name}: ")
+                } else {
+                    String::new()
+                };
+
+                Acc {
+                    wasm: format!("{field_} self_.get({idx}).wire2api()"),
+                    io: format!("{field_} self.{field_name}.wire2api()"),
+                    ..Default::default()
+                }
+            })
+            .collect();
+
+        let (left, right) = api_struct.brackets_pair();
+        let rust_api_type = self.ir.rust_api_type();
+        Acc {
+            io: Some(format!(
+                "
+                {rust_api_type}{left}{fields}{right}
+                ",
+                fields = fields.io.join(","),
+            )),
+            wasm: Some(format!(
+                "
+                let self_ = self.dyn_into::<JsArray>().unwrap();
+                assert_eq!(self_.length(), {len}, \"Expected {len} elements, got {{}}\", self_.length());
+                {rust_api_type}{left}{fields}{right}
+                ",
+                fields = fields.wasm.join(","),
+                len = api_struct.fields.len(),
+            )),
+            ..Default::default()
+        }
+    }
 }

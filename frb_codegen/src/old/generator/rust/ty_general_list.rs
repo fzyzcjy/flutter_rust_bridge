@@ -19,14 +19,6 @@ impl TypeGeneralListGenerator<'_> {
 }
 
 impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
-    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
-        Acc {
-            wasm: Some(TypeGeneralListGenerator::WIRE2API_BODY_WASM.to_owned()),
-            io: Some(TypeGeneralListGenerator::WIRE2API_BODY_IO.to_owned()),
-            ..Default::default()
-        }
-    }
-
     fn allocate_funcs(
         &self,
         collector: &mut ExternFuncCollector,

@@ -4,8 +4,4 @@ use super::TypeRustGeneratorTrait;
 
 type_rust_generator_struct!(TypeDynamicGenerator, IrTypeDynamic);
 
-impl TypeRustGeneratorTrait for TypeDynamicGenerator<'_> {
-    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
-        Default::default()
-    }
-}
+impl TypeRustGeneratorTrait for TypeDynamicGenerator<'_> {}

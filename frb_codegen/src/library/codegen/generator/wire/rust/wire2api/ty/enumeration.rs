@@ -16,7 +16,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
 
         let variant_structs = variants
             .iter()
-            .map(|variant| self.generate_variant(&variant))
+            .map(|variant| self.generate_wire2api_class_variant(&variant))
             .join("\n\n");
 
         let union_fields = variants
@@ -41,10 +41,85 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
             name = self.ir.ident.0,
         ))
     }
+
+    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
+        let enu = self.ir.get(self.context.ir_pack);
+        Acc::new(|target| {
+            if matches!(target, Common) {
+                return None;
+            }
+            let wasm = target == Target::Wasm;
+            let mut variants =
+                (enu.variants())
+                    .iter()
+                    .enumerate()
+                    .map(|(idx, variant)| match &variant.kind {
+                        IrVariantKind::Value => {
+                            format!("{} => {}::{},", idx, enu.name, variant.name)
+                        }
+                        IrVariantKind::Struct(st) => {
+                            let mut fields = (st.fields).iter().enumerate().map(|(idx, field)| {
+                                let field_name = field.name.rust_style();
+                                let field_ = if st.is_fields_named {
+                                    format!("{field_name}: ")
+                                } else {
+                                    String::new()
+                                };
+
+                                if target != Target::Wasm {
+                                    format!("{field_} ans.{field_name}.wire2api()")
+                                } else {
+                                    format!("{field_} self_.get({}).wire2api()", idx + 1)
+                                }
+                            });
+
+                            let (left, right) = st.brackets_pair();
+                            if target == Target::Wasm {
+                                format!(
+                                    "{idx} => {{
+                                        {enum_name}::{variant_name}{left}{fields}{right} }},",
+                                    enum_name = enu.name,
+                                    variant_name = variant.name,
+                                    fields = fields.join(",")
+                                )
+                            } else {
+                                format!(
+                                    "{idx} => unsafe {{
+                                        let ans = support::box_from_leak_ptr(self.kind);
+                                        let ans = support::box_from_leak_ptr(ans.{variant_name});
+                                        {enum_name}::{variant_name}{left}{fields}{right}
+                                    }}",
+                                    enum_name = enu.name,
+                                    variant_name = variant.name,
+                                    fields = fields.join(",")
+                                )
+                            }
+                        }
+                    });
+            Some(format!(
+                "{}
+                match self{} {{
+                    {}
+                    _ => unreachable!(),
+                }}",
+                if wasm {
+                    "let self_ = self.unchecked_into::<JsArray>();"
+                } else {
+                    ""
+                },
+                if wasm {
+                    "_.get(0).unchecked_into_f64() as _"
+                } else {
+                    ".tag"
+                },
+                variants.join("\n"),
+            ))
+        })
+    }
 }
 
 impl<'a> EnumRefWireRustGenerator<'a> {
-    fn generate_variant(&self, variant: &IrVariant) -> String {
+    fn generate_wire2api_class_variant(&self, variant: &IrVariant) -> String {
         let fields = match &variant.kind {
             IrVariantKind::Value => vec![],
             IrVariantKind::Struct(s) => s
