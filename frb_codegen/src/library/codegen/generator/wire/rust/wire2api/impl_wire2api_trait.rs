@@ -61,15 +61,12 @@ fn generate_impl_wire2api_for_type(ty: &IrType, context: &WireRustGeneratorConte
     raw.map(|body, target| {
         body.map(|body| {
             let target: Target = target.try_into().unwrap();
-            format!(
-                "impl Wire2Api<{api}> for {rust_wire_modifier}{rust_wire_type} {{
-                    fn wire2api(self) -> {api} {{
-                        {body}
-                    }}
-                }}",
-                rust_wire_modifier = generator.rust_wire_modifier(target),
-                rust_wire_type = generator.rust_wire_type(target),
-                api = ty.rust_api_type(),
+            let rust_wire_modifier = generator.rust_wire_modifier(target);
+            let rust_wire_type = generator.rust_wire_type(target);
+            generate_impl_wire2api_code_block(
+                &ty.rust_api_type(),
+                &format!("{rust_wire_modifier}{rust_wire_type}"),
+                &body,
             )
         })
         .unwrap_or_default()
@@ -84,15 +81,18 @@ fn generate_impl_wire2api_jsvalue_for_type(
     generator
         .generate_impl_wire2api_jsvalue_body()
         .map(|body| Acc {
-            wasm: format!(
-                "impl Wire2Api<{api}> for JsValue {{
-                    fn wire2api(self) -> {api} {{
-                        {body}
-                    }}
-                }}",
-                api = ty.rust_api_type()
-            ),
+            wasm: generate_impl_wire2api_code_block(&ty.rust_api_type(), "JsValue", body.as_ref()),
             ..Default::default()
         })
         .unwrap_or_default()
+}
+
+fn generate_impl_wire2api_code_block(api: &str, wire: &str, body: &str) -> String {
+    format!(
+        "impl Wire2Api<{api}> for {wire} {{
+            fn wire2api(self) -> {api} {{
+                {body}
+            }}
+        }}",
+    )
 }
