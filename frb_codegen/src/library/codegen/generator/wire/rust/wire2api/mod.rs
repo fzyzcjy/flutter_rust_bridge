@@ -8,6 +8,21 @@ pub(crate) fn generate_impl_wire2api() {
     todo!()
 }
 
+fn generate_impl_wire2api_misc() -> &'static str {
+    r#"pub trait Wire2Api<T> {
+        fn wire2api(self) -> T;
+    }
+
+    impl<T, S> Wire2Api<Option<T>> for *mut S
+    where
+        *mut S: Wire2Api<T>
+    {
+        fn wire2api(self) -> Option<T> {
+            (!self.is_null()).then(|| self.wire2api())
+        }
+    }"#
+}
+
 fn generate_wire2api_for_type(ty: IrType, context: WireRustGeneratorContext) -> Acc<String> {
     WireRustGenerator::new(ty, context)
         .wire2api_body()
@@ -15,31 +30,15 @@ fn generate_wire2api_for_type(ty: IrType, context: WireRustGeneratorContext) -> 
             body.map(|body| {
                 format!(
                     "impl Wire2Api<{api}> for {}{} {{
-                            fn wire2api(self) -> {api} {{
-                                {}
-                            }}
-                        }}",
+                        fn wire2api(self) -> {api} {{
+                            {body}
+                        }}
+                    }}",
                     ty.rust_wire_modifier(target),
                     ty.rust_wire_type(target),
-                    body,
                     api = ty.rust_api_type(),
                 )
             })
             .unwrap_or_default()
         })
-}
-
-fn generate_impl_wire2api_misc() -> &'static str {
-    r#"pub trait Wire2Api<T> {
-            fn wire2api(self) -> T;
-        }
-
-        impl<T, S> Wire2Api<Option<T>> for *mut S
-        where
-            *mut S: Wire2Api<T>
-        {
-            fn wire2api(self) -> Option<T> {
-                (!self.is_null()).then(|| self.wire2api())
-            }
-        }"#
 }
