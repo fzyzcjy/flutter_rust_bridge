@@ -1,21 +1,21 @@
 #[doc(hidden)]
 #[macro_export]
 macro_rules! codegen_generator_structs {
-    ($($name:ident),*,) => (
+    ($generator_name:ident;$($name:ident),*,) => (
         paste! {
             #[enum_dispatch(DartApiGeneratorDeclTrait)]
             #[enum_dispatch(DartApiGeneratorClassTrait)]
-            pub(crate) enum DartApiGenerator<'a> {
+            pub(crate) enum $generator_name<'a> {
                 $(
-                    $name([<$name DartApiGenerator>]<'a>),
+                    $name([<$name $generator_name>]<'a>),
                 )*
             }
 
-            impl<'a> DartApiGenerator<'a> {
-                pub(crate) fn new(ty: IrType, context: DartApiGeneratorContext<'a>) -> Self {
+            impl<'a> $generator_name<'a> {
+                pub(crate) fn new(ty: IrType, context: [<$generator_name Context>]<'a>) -> Self {
                     match ty {
                         $(
-                            $name(ir) => Self::$name([<$name DartApiGenerator>]::new(ir, context)),
+                            $name(ir) => Self::$name([<$name $generator_name>]::new(ir, context)),
                         )*
                     }
                 }
@@ -23,13 +23,13 @@ macro_rules! codegen_generator_structs {
 
             $(
                 #[derive(Debug, Clone)]
-                pub(crate) struct [<$name DartApiGenerator>]<'a> {
+                pub(crate) struct [<$name $generator_name>]<'a> {
                     pub(crate) ir: [<IrType $name>],
-                    pub(crate) context: DartApiGeneratorContext<'a>,
+                    pub(crate) context: [<$generator_name Context>]<'a>,
                 }
 
-                impl<'a> [<$name DartApiGenerator>]<'a> {
-                    pub(crate) fn new(ir: [<IrType $name>], context: DartApiGeneratorContext<'a>) -> Self {
+                impl<'a> [<$name $generator_name>]<'a> {
+                    pub(crate) fn new(ir: [<IrType $name>], context: [<$generator_name Context>]<'a>) -> Self {
                         Self { ir, context }
                     }
                 }
