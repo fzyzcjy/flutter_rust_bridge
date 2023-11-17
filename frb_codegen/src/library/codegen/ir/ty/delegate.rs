@@ -86,7 +86,9 @@ impl IrTypeTrait for IrTypeDelegate {
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 format!("ZeroCopyBuffer<{}>", self.get_delegate().rust_api_type())
             }
-            IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.rust_api_type(),
+            IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) => {
+                ir.rust_api_type()
+            }
             IrTypeDelegate::Time(ir) => match ir {
                 IrTypeDelegateTime::Naive => "chrono::NaiveDateTime",
                 IrTypeDelegateTime::Local => "chrono::DateTime::<chrono::Local>",

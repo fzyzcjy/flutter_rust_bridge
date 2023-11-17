@@ -1,6 +1,7 @@
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::structure::IrTypeStructRef;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
+use itertools::Itertools;
 
 crate::ir! {
 pub struct IrTypeRecord {

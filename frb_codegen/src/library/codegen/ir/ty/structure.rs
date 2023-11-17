@@ -44,7 +44,7 @@ impl IrTypeTrait for IrTypeStructRef {
     }
 
     fn rust_api_type(&self) -> String {
-        self.name.to_string()
+        self.ident.0.to_string()
     }
 }
 
