@@ -1,5 +1,3 @@
-use crate::codegen::generator::wire::rust::base::*;
-
 mod boxed;
 mod dart_opaque;
 mod delegate;
