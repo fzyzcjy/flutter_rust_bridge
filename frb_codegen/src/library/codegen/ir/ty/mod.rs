@@ -61,6 +61,11 @@ impl IrType {
     pub fn is_primitive(&self) -> bool {
         self.as_primitive().is_some()
     }
+
+    #[inline]
+    pub fn is_array(&self) -> bool {
+        matches!(self, IrType::Delegate(IrTypeDelegate::Array(_)))
+    }
 }
 
 #[enum_dispatch]
