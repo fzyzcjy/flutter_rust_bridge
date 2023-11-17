@@ -1,6 +1,6 @@
 use itertools::Itertools;
 
-use crate::generator::rust::get_into_into_dart;
+use crate::generator::rust::generate_impl_into_into_dart;
 use crate::generator::rust::ty::*;
 use crate::generator::rust::ExternFuncCollector;
 use crate::generator::rust::NO_PARAMS;

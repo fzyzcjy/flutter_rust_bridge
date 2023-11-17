@@ -7,7 +7,7 @@ use crate::target::{Acc, Target};
 use crate::type_rust_generator_struct;
 use crate::utils::misc::BlockIndex;
 
-use super::get_into_into_dart;
+use super::generate_impl_into_into_dart;
 
 type_rust_generator_struct!(TypeDelegateGenerator, IrTypeDelegate);
 

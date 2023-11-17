@@ -19,7 +19,7 @@ impl<'a> WireRustGeneratorApi2wireTrait for DelegateWireRustGenerator<'a> {
                 .map(|(idx, variant)| format!("{}::{} => {},", self_path, variant.name.raw, idx))
                 .collect_vec()
                 .join("\n");
-            let into_into_dart = get_into_into_dart(&src.name, src.wrapper_name.as_ref());
+            let into_into_dart = generate_impl_into_into_dart(&src.name, src.wrapper_name.as_ref());
             return Some(format!(
                 "impl support::IntoDart for {name} {{
                     fn into_dart(self) -> support::DartAbi {{

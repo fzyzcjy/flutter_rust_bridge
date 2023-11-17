@@ -46,7 +46,7 @@ impl<'a> WireRustGeneratorApi2wireTrait for StructRefWireRustGenerator<'a> {
             )
         };
 
-        let into_into_dart = get_into_into_dart(&src.name, src.wrapper_name.as_ref());
+        let into_into_dart = generate_impl_into_into_dart(&src.name, src.wrapper_name.as_ref());
         Some(format!(
             "impl support::IntoDart for {name} {{
                 fn into_dart(self) -> support::DartAbi {{
