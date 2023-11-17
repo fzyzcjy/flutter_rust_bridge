@@ -17,10 +17,6 @@ pub trait TypeRustGeneratorTrait {
         None
     }
 
-    fn wrapper_struct(&self) -> Option<String> {
-        None
-    }
-
     fn self_access(&self, obj: String) -> String {
         obj
     }

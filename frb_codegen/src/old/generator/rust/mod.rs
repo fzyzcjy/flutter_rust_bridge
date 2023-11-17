@@ -118,11 +118,13 @@ impl<'a> Generator<'a> {
             .collect();
 
         lines.push(self.section_header_comment("wrapper structs"));
-        lines.extend(
-            distinct_output_types
-                .iter()
-                .filter_map(|ty| self.generate_wrapper_struct(ty, ir_pack)),
-        );
+        // TODO
+        // lines.extend(
+        //     distinct_output_types
+        //         .iter()
+        //         .filter_map(|ty| self.generate_wrapper_struct(ty, ir_pack)),
+        // );
+
         lines.push(self.section_header_comment("static checks"));
         let static_checks: Vec<_> = distinct_output_types
             .iter()
