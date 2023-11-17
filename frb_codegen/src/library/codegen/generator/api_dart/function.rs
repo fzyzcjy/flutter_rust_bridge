@@ -6,7 +6,7 @@ use crate::codegen::generator::api_dart::misc::{
     generate_dart_comments, generate_function_dart_return_type,
 };
 use crate::codegen::ir::func::IrFunc;
-use crate::library::codegen::generator::api_dart::decl::ApiDartGeneratorDeclTrait;
+use crate::library::codegen::generator::api_dart::dart_api_type::ApiDartGeneratorDartApiTypeTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 

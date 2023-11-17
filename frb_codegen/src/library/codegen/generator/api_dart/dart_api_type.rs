@@ -9,24 +9,24 @@ use enum_dispatch::enum_dispatch;
 use itertools::Itertools;
 
 #[enum_dispatch]
-pub(crate) trait ApiDartGeneratorDeclTrait {
+pub(crate) trait ApiDartGeneratorDartApiTypeTrait {
     fn dart_api_type(&self) -> String;
 }
 
-impl<'a> ApiDartGeneratorDeclTrait for BoxedApiDartGenerator<'a> {
+impl<'a> ApiDartGeneratorDartApiTypeTrait for BoxedApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         let inner = ApiDartGenerator::new(*self.ir.inner.clone(), self.context.clone());
         inner.dart_api_type()
     }
 }
 
-impl<'a> ApiDartGeneratorDeclTrait for DartOpaqueApiDartGenerator<'a> {
+impl<'a> ApiDartGeneratorDartApiTypeTrait for DartOpaqueApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         "Object".to_owned()
     }
 }
 
-impl<'a> ApiDartGeneratorDeclTrait for DelegateApiDartGenerator<'a> {
+impl<'a> ApiDartGeneratorDartApiTypeTrait for DelegateApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         match &self.ir {
             IrTypeDelegate::Array(array) => array.dart_api_type(self.context.clone()),
@@ -76,40 +76,40 @@ impl IrTypeDelegateArray {
     }
 }
 
-impl<'a> ApiDartGeneratorDeclTrait for DynamicApiDartGenerator<'a> {
+impl<'a> ApiDartGeneratorDartApiTypeTrait for DynamicApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         "dynamic".to_owned()
     }
 }
 
-impl<'a> ApiDartGeneratorDeclTrait for EnumRefApiDartGenerator<'a> {
+impl<'a> ApiDartGeneratorDartApiTypeTrait for EnumRefApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         self.ir.ident.0.to_string()
     }
 }
 
-impl<'a> ApiDartGeneratorDeclTrait for GeneralListApiDartGenerator<'a> {
+impl<'a> ApiDartGeneratorDartApiTypeTrait for GeneralListApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         let inner = ApiDartGenerator::new(*self.ir.inner.clone(), self.context.clone());
         format!("List<{}>", inner.dart_api_type())
     }
 }
 
-impl<'a> ApiDartGeneratorDeclTrait for OptionalApiDartGenerator<'a> {
+impl<'a> ApiDartGeneratorDartApiTypeTrait for OptionalApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         let inner = ApiDartGenerator::new(*self.ir.inner.clone(), self.context.clone());
         format!("{}?", inner.dart_api_type())
     }
 }
 
-impl<'a> ApiDartGeneratorDeclTrait for OptionalListApiDartGenerator<'a> {
+impl<'a> ApiDartGeneratorDartApiTypeTrait for OptionalListApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         let inner = ApiDartGenerator::new(*self.ir.inner.clone(), self.context.clone());
         format!("List<{}?>", inner.dart_api_type())
     }
 }
 
-impl<'a> ApiDartGeneratorDeclTrait for PrimitiveApiDartGenerator<'a> {
+impl<'a> ApiDartGeneratorDartApiTypeTrait for PrimitiveApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         match &self.ir {
             IrTypePrimitive::U8
@@ -129,7 +129,7 @@ impl<'a> ApiDartGeneratorDeclTrait for PrimitiveApiDartGenerator<'a> {
     }
 }
 
-impl<'a> ApiDartGeneratorDeclTrait for PrimitiveListApiDartGenerator<'a> {
+impl<'a> ApiDartGeneratorDartApiTypeTrait for PrimitiveListApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         match &self.ir.primitive {
             IrTypePrimitive::U8 => "Uint8List",
@@ -148,7 +148,7 @@ impl<'a> ApiDartGeneratorDeclTrait for PrimitiveListApiDartGenerator<'a> {
     }
 }
 
-impl<'a> ApiDartGeneratorDeclTrait for RecordApiDartGenerator<'a> {
+impl<'a> ApiDartGeneratorDartApiTypeTrait for RecordApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         let values = self
             .ir
@@ -165,20 +165,20 @@ impl<'a> ApiDartGeneratorDeclTrait for RecordApiDartGenerator<'a> {
     }
 }
 
-impl<'a> ApiDartGeneratorDeclTrait for RustOpaqueApiDartGenerator<'a> {
+impl<'a> ApiDartGeneratorDartApiTypeTrait for RustOpaqueApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         let inner = ApiDartGenerator::new(*self.ir.inner.clone(), self.context.clone());
         inner.dart_api_type()
     }
 }
 
-impl<'a> ApiDartGeneratorDeclTrait for StructRefApiDartGenerator<'a> {
+impl<'a> ApiDartGeneratorDartApiTypeTrait for StructRefApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         self.ir.ident.0.to_string()
     }
 }
 
-impl<'a> ApiDartGeneratorDeclTrait for UnencodableApiDartGenerator<'a> {
+impl<'a> ApiDartGeneratorDartApiTypeTrait for UnencodableApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         unimplemented!()
     }

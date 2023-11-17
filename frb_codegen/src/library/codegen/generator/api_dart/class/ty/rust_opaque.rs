@@ -1,7 +1,7 @@
 use crate::codegen::generator::api_dart::base::*;
 use crate::codegen::generator::api_dart::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::ir::ty::IrType;
-use crate::library::codegen::generator::api_dart::decl::ApiDartGeneratorDeclTrait;
+use crate::library::codegen::generator::api_dart::dart_api_type::ApiDartGeneratorDartApiTypeTrait;
 use IrType::RustOpaque;
 
 impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
