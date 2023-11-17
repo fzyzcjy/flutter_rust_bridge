@@ -470,15 +470,6 @@ fn generate_file_prelude() -> DartBasicCode {
     }
 }
 
-#[derive(Debug)]
-pub(crate) struct GeneratedApiFunc {
-    signature: String,
-    implementation: String,
-    comments: String,
-    companion_field_signature: String,
-    companion_field_implementation: String,
-}
-
 fn generate_api2wire_func(ty: &IrType, ir_pack: &IrPack, config: &Opts) -> Acc<String> {
     let generator = TypeDartGenerator::new(ty.clone(), ir_pack, config);
     generator.api2wire_body().map(|body, target| {

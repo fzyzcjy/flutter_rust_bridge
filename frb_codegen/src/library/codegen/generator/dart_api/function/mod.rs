@@ -1,3 +1,25 @@
+use crate::codegen::generator::dart_api::class::field::{
+    generate_field_default, generate_field_required_modifier,
+};
+use crate::codegen::generator::dart_api::misc::generate_dart_comments;
+use crate::codegen::ir::func::{IrFunc, IrFuncMode};
+use crate::codegen::ir::pack::IrPack;
+use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::codegen::ir::ty::structure::IrTypeStructRef;
+use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::ty::IrType::{Primitive, StructRef};
+use convert_case::{Case, Casing};
+use itertools::Itertools;
+
+#[derive(Debug)]
+pub(crate) struct GeneratedApiFunc {
+    pub(crate) signature: String,
+    pub(crate) implementation: String,
+    pub(crate) comments: String,
+    pub(crate) companion_field_signature: String,
+    pub(crate) companion_field_implementation: String,
+}
+
 pub(crate) fn generate_api_func(
     func: &IrFunc,
     ir_pack: &IrPack,
@@ -12,7 +34,7 @@ pub(crate) fn generate_api_func(
                 input.ty.dart_api_type(),
                 input.name.dart_style(),
                 required = generate_field_required_modifier(input),
-                default = generate_field_default(input, false, None),
+                default = generate_field_default(input, false, dart_enums_style),
             )
         })
         .collect_vec();
