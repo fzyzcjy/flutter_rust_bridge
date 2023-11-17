@@ -23,7 +23,7 @@ impl TypeRustGeneratorTrait for TypeOptionalGenerator<'_> {
             self.context.ir_pack,
             self.context.config,
         );
-        let obj = match inner.wrapper_struct() {
+        let obj = match inner.wrapper_struct_name() {
             // An architecture has been created so that the inner type of optional field is always
             // IrTypeBoxed. Here, too, if we use inner.self_access("v".to_owned()), since it will go to
             // self_access in TypeBoxedGenerator, the dereferenced value *v was returned from there, which

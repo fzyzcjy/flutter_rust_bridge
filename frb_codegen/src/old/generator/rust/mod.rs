@@ -122,7 +122,7 @@ impl<'a> Generator<'a> {
         // lines.extend(
         //     distinct_output_types
         //         .iter()
-        //         .filter_map(|ty| self.generate_wrapper_struct(ty, ir_pack)),
+        //         .filter_map(|ty| self.generate_wrapper_struct_name(ty, ir_pack)),
         // );
 
         lines.push(self.section_header_comment("static checks"));
@@ -481,14 +481,14 @@ impl<'a> Generator<'a> {
         TypeRustGenerator::new(ty.clone(), ir_pack, self.config).static_checks()
     }
 
-    fn generate_wrapper_struct(&mut self, ty: &IrType, ir_pack: &IrPack) -> Option<String> {
+    fn generate_wrapper_struct_name(&mut self, ty: &IrType, ir_pack: &IrPack) -> Option<String> {
         // the generated wrapper structs need to be public for the StreamSinkTrait impl to work
         match ty {
             IrType::StructRef(_)
             | IrType::EnumRef(_)
             | IrType::Delegate(IrTypeDelegate::PrimitiveEnum { .. }) => {
                 TypeRustGenerator::new(ty.clone(), ir_pack, self.config)
-                    .wrapper_struct()
+                    .wrapper_struct_name()
                     .map(|wrapper| generate_wrapper_struct_from_name())
             }
             _ => None,

@@ -13,6 +13,6 @@ impl<'a> WireRustGeneratorCommonTrait for DelegateWireRustGenerator<'a> {
         }
 
         // TODO https://github.com/fzyzcjy/yplusplus/issues/11145#issuecomment-1816273032
-        // delegate_enum!(self, wrapper_struct(), None)
+        // delegate_enum!(self, wrapper_struct_name(), None)
     }
 }
