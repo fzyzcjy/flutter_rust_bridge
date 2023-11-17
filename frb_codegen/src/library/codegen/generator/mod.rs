@@ -1,3 +1,4 @@
+mod acc;
 pub(crate) mod api_dart;
 mod misc;
 pub(crate) mod output;
