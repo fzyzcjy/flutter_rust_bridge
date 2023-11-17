@@ -157,10 +157,6 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for StructRefWireRustGenerator<'a> {
 
 impl<'a> WireRustGeneratorRustWireTypeTrait for UnencodableWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
-        if let Target::Wasm = target {
-            "JsValue".into()
-        } else {
-            format!("wire_{}", self.safe_ident())
-        }
+        unreachable!()
     }
 }
