@@ -29,7 +29,6 @@ impl<'a> TypeSyncReturnGenerator<'a> {
 impl<'a> TypeRustGeneratorTrait for TypeSyncReturnGenerator<'a> {
     fn wire2api_body(&self) -> Acc<Option<String>> {}
     fn wire2api_jsvalue(&self) -> Option<Cow<str>> {}
-    fn static_checks(&self) -> Option<String> {}
     fn self_access(&self, obj: String) -> String {}
     fn convert_to_dart(&self, obj: String) -> String {}
     fn allocate_funcs(

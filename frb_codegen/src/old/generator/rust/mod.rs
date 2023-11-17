@@ -126,15 +126,12 @@ impl<'a> Generator<'a> {
         // );
 
         lines.push(self.section_header_comment("static checks"));
-        let static_checks: Vec<_> = distinct_output_types
-            .iter()
-            .filter_map(|ty| self.generate_static_checks(ty, ir_pack))
-            .collect();
-        if !static_checks.is_empty() {
-            lines.push("const _: fn() = || {".to_owned());
-            lines.extend(static_checks);
-            lines.push("};".to_owned());
-        }
+        // TODO why only `distinct_output_types`, not input types?
+        // TODO
+        // let static_checks: Vec<_> = distinct_output_types
+        //     .iter()
+        //     .filter_map(|ty| self.generate_static_checks(ty, ir_pack))
+        //     .collect();
 
         lines.push_all(self.section_header_comment("allocate functions"));
         lines += distinct_input_types
@@ -475,10 +472,6 @@ impl<'a> Generator<'a> {
                 })
                 .unwrap_or_default()
             })
-    }
-
-    fn generate_static_checks(&mut self, ty: &IrType, ir_pack: &IrPack) -> Option<String> {
-        TypeRustGenerator::new(ty.clone(), ir_pack, self.config).static_checks()
     }
 
     fn generate_new_with_nullptr_misc(&self) -> &'static str {

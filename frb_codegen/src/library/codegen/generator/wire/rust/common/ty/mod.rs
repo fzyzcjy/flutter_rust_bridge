@@ -25,4 +25,8 @@ pub(crate) trait WireRustGeneratorCommonTrait {
     fn wrapper_struct_name(&self) -> Option<String> {
         None
     }
+
+    fn generate_static_checks(&self) -> Option<String> {
+        None
+    }
 }

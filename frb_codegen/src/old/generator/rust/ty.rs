@@ -13,10 +13,6 @@ pub trait TypeRustGeneratorTrait {
         None
     }
 
-    fn static_checks(&self) -> Option<String> {
-        None
-    }
-
     fn self_access(&self, obj: String) -> String {
         obj
     }

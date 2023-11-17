@@ -1,5 +1,6 @@
 use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
 use crate::codegen::ir::ty::IrType;
+use itertools::Itertools;
 
 pub(crate) mod ty;
 
@@ -20,4 +21,21 @@ pub(crate) fn generate_wrapper_struct(
                 ty.rust_api_type(),
             )
         })
+}
+
+pub(crate) fn generate_static_checks(types: &[IrType]) -> String {
+    let raw = types
+        .iter()
+        .map(|ty| ty.generate_static_checks())
+        .collect_vec();
+
+    if raw.is_empty() {
+        return "".to_owned();
+    }
+
+    let mut lines = vec![];
+    lines.push("const _: fn() = || {".to_owned());
+    lines.extend(raw);
+    lines.push("};".to_owned());
+    lines.join("\n")
 }

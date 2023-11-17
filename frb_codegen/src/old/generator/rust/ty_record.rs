@@ -34,10 +34,6 @@ impl TypeRustGeneratorTrait for TypeRecordGenerator<'_> {
         }
     }
 
-    fn static_checks(&self) -> Option<String> {
-        self.as_struct_generator().static_checks()
-    }
-
     fn new_with_nullptr(&self, collector: &mut ExternFuncCollector) -> String {
         self.as_struct_generator().new_with_nullptr(collector)
     }
