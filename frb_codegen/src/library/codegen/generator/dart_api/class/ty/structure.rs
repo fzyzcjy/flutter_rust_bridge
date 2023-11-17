@@ -24,8 +24,8 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
             .funcs
             .iter()
             .filter(|f| {
-                let f = FunctionName::deserialize(&f.name);
-                f.is_method_for_struct(&src.name) || f.is_static_method_for_struct(&src.name)
+                &f.method_info.is_method_for_struct(&src.name)
+                    || &f.method_info.is_static_method_for_struct(&src.name)
             })
             .collect::<Vec<_>>();
 
@@ -192,8 +192,7 @@ fn generate_api_method(
     dart_api_class_name: String,
     context: &DartApiGeneratorContext,
 ) -> GeneratedApiMethod {
-    let f = FunctionName::deserialize(&func.name);
-    let skip_count = usize::from(!f.is_static_method());
+    let skip_count = usize::from(!func.method_info.is_static_method());
     let mut raw_func_param_list = func
         .inputs
         .iter()
@@ -209,30 +208,34 @@ fn generate_api_method(
         })
         .collect::<Vec<_>>();
 
-    if f.is_static_method() && context.config.use_bridge_in_method {
+    if func.method_info.is_static_method() && context.config.use_bridge_in_method {
         raw_func_param_list.insert(0, format!("required {dart_api_class_name} bridge"));
     }
 
     let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();
 
-    let static_function_name = f.method_name();
+    let static_function_name = func.method_info.method_name();
     let comments = generate_dart_comments(&func.comments);
 
     let partial = format!(
         "{} {} {}({{ {} }})",
-        if f.is_static_method() { "static" } else { "" },
+        if func.method_info.is_static_method() {
+            "static"
+        } else {
+            ""
+        },
         generate_function_dart_return_type(
             &func.mode,
             &DartApiGenerator::new(func.output.clone(), context.clone()).dart_api_type()
         ),
-        if f.is_static_method() {
+        if func.method_info.is_static_method() {
             if static_function_name == "new" {
                 format!("new{}", ir_struct.name)
             } else {
                 static_function_name.to_case(Case::Camel)
             }
         } else {
-            f.method_name().to_case(Case::Camel)
+            func.method_info.method_name().to_case(Case::Camel)
         },
         full_func_param_list.join(","),
     );
@@ -246,7 +249,7 @@ fn generate_api_method(
         .map(|input| format!("{}:{},", input.name.dart_style(), input.name.dart_style()))
         .collect::<Vec<_>>();
 
-    let implementation = if f.is_static_method() {
+    let implementation = if func.method_info.is_static_method() {
         arg_names.push("hint: hint".to_string());
         let arg_names = arg_names.concat();
         format!(
