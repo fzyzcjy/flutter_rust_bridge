@@ -14,7 +14,7 @@ const JS_VALUE: &str = "JsValue";
 
 impl<'a> WireRustGeneratorRustWireTypeTrait for BoxedWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
-        if target.is_wasm() && self.ir.inner.is_primitive() {
+        if target == Target::Wasm && self.ir.inner.is_primitive() {
             JS_VALUE.into()
         } else {
             self.ir.inner.rust_wire_type(target)
@@ -60,7 +60,7 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for GeneralListWireRustGenerator<'a>
 impl<'a> WireRustGeneratorRustWireTypeTrait for OptionalWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         if self.ir.inner.rust_wire_is_pointer(target)
-            || target.is_wasm()
+            || (target == Target::Wasm)
                 && (self.ir.inner.is_js_value() || self.is_primitive() || self.is_boxed_primitive())
         {
             self.ir.inner.rust_wire_type(target)

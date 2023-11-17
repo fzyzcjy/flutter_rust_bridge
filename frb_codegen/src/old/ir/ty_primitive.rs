@@ -4,7 +4,9 @@ use crate::target::Target;
 impl IrTypeTrait for IrTypePrimitive {
     fn dart_wire_type(&self, target: Target) -> String {
         match self {
-            IrTypePrimitive::I64 | IrTypePrimitive::U64 if target.is_wasm() => "Object".into(),
+            IrTypePrimitive::I64 | IrTypePrimitive::U64 if target == Target::Wasm => {
+                "Object".into()
+            }
             _ => self.dart_api_type(),
         }
     }

@@ -4,7 +4,7 @@ use convert_case::{Case, Casing};
 
 impl IrTypeTrait for IrTypePrimitiveList {
     fn dart_wire_type(&self, target: Target) -> String {
-        if target.is_wasm() {
+        if target == Target::Wasm {
             match self.primitive {
                 IrTypePrimitive::I64 | IrTypePrimitive::U64 => {
                     "Object /* BigInt64Array */".to_owned()
@@ -21,7 +21,7 @@ impl IrTypeTrait for IrTypePrimitiveList {
     }
 
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
-        !target.is_wasm()
+        target != Target::Wasm
     }
 }
 

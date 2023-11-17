@@ -10,7 +10,7 @@ impl TypeDartGeneratorTrait for TypeOptionalGenerator<'_> {
         Acc::new(|target| match target {
             Target::Io | Target::Wasm => Some(format!(
                 "return raw == null ? {} : api2wire_{}(raw);",
-                if target.is_wasm() {
+                if target == Target::Wasm {
                     "null"
                 } else {
                     "ffi.nullptr"

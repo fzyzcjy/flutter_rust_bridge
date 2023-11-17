@@ -35,7 +35,7 @@ impl IrTypeTrait for IrTypeBoxed {
     }
 
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
-        !target.is_wasm()
+        (target != Target::Wasm)
             || !self.inner.is_js_value() && !self.inner.is_array() && !self.inner.is_primitive()
     }
 

@@ -403,7 +403,7 @@ impl<'a> Generator<'a> {
         Acc::new(|target| match target {
             Io | Wasm => self.extern_func_collector.generate(
                 &func.wire_func_name(),
-                if target.is_wasm() {
+                if target == Target::Wasm {
                     &params.wasm[..]
                 } else {
                     &params.io[..]
@@ -609,7 +609,7 @@ impl ExternFuncCollector {
         let params = params.into_iter().collect_vec();
         if matches!(target, Io) {
             self.names.push(func_name.to_string());
-        } else if target.is_wasm() && !func_name.starts_with("wire_") {
+        } else if (target == Target::Wasm) && !func_name.starts_with("wire_") {
             self.wasm_exports.push(IrFuncDisplay {
                 name: func_name.to_owned(),
                 inputs: params

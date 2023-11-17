@@ -18,7 +18,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
             if matches!(target, Common) {
                 return None;
             }
-            let wasm = target.is_wasm();
+            let wasm = target == Target::Wasm;
             let mut variants =
                 (enu.variants())
                     .iter()
@@ -36,7 +36,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                                     String::new()
                                 };
 
-                                if !target.is_wasm() {
+                                if target != Target::Wasm {
                                     format!("{field_} ans.{field_name}.wire2api()")
                                 } else {
                                     format!("{field_} self_.get({}).wire2api()", idx + 1)
@@ -44,7 +44,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                             });
 
                             let (left, right) = st.brackets_pair();
-                            if target.is_wasm() {
+                            if target == Target::Wasm {
                                 format!(
                                     "{idx} => {{
                                         {enum_name}::{variant_name}{left}{fields}{right} }},",
