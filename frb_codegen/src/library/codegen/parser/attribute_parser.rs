@@ -244,7 +244,7 @@ impl FrbAttributeDefaultValue {
                 dart_literal: format!(
                     "const [{}]",
                     lit.iter()
-                        .map(|item| item.to_ir_default_value().to_dart_literal())
+                        .map(|item| item.to_ir_default_value().to_dart_literal().to_string())
                         .collect_vec()
                         .join(",")
                 ),

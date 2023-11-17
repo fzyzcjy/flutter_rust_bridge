@@ -10,7 +10,7 @@ use itertools::Itertools;
 pub(crate) fn generate_dart_comments(comments: &[IrComment]) -> String {
     let mut comments = comments
         .iter()
-        .map(|comment| comment.0)
+        .map(|comment| comment.0.clone())
         .collect_vec()
         .join("\n");
     if !comments.is_empty() {
