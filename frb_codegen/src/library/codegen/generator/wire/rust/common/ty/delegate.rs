@@ -6,7 +6,8 @@ impl<'a> WireRustGeneratorCommonTrait for DelegateWireRustGenerator<'a> {
     fn wrapper_struct_name(&self) -> Option<String> {
         if let IrTypeDelegate::PrimitiveEnum(enu) = &self.ir {
             Some(
-                WireRustGenerator::new(*enu.ir.clone(), self.context.clone()).wrapper_struct_name(),
+                WireRustGenerator::new(enu.ir.clone().into(), self.context.clone())
+                    .wrapper_struct_name(),
             )
         } else {
             None
