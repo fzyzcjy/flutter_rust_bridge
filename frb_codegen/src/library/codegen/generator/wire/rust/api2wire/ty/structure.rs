@@ -23,7 +23,7 @@ impl<'a> WireRustGeneratorApi2wireTrait for StructRefWireRustGenerator<'a> {
                 };
 
                 let gen = WireRustGenerator::new(field.ty.clone(), self.context.clone());
-                gen.convert_to_dart(format!("self{unwrap}.{field_ref}"))
+                gen.generate_convert_to_dart(format!("self{unwrap}.{field_ref}"))
             })
             .collect_vec()
             .join(",\n");

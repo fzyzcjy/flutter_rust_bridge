@@ -2,7 +2,7 @@ use crate::codegen::generator::wire::rust::api2wire::ty::WireRustGeneratorApi2wi
 use crate::codegen::generator::wire::rust::base::*;
 
 impl<'a> WireRustGeneratorApi2wireTrait for OptionalWireRustGenerator<'a> {
-    fn convert_to_dart(&self, obj: String) -> String {
+    fn generate_convert_to_dart(&self, obj: String) -> String {
         let inner = WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone());
         let obj = match inner.wrapper_struct_name() {
             // An architecture has been created so that the inner type of optional field is always

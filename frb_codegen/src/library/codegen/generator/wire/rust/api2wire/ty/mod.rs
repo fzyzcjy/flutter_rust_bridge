@@ -23,7 +23,7 @@ pub(crate) trait WireRustGeneratorApi2wireTrait {
         None
     }
 
-    fn convert_to_dart(&self, obj: String) -> String {
+    fn generate_convert_to_dart(&self, obj: String) -> String {
         format!("{obj}.into_into_dart().into_dart()")
     }
 }
