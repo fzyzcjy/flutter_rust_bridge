@@ -39,7 +39,7 @@ macro_rules! codegen_generator_structs {
     )
 }
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, Eq, PartialEq)]
 pub enum Target {
     // TODO maybe extract Target vs TargetWithCommon
     Common,

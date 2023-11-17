@@ -17,7 +17,8 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for BoxedWireRustGenerator<'a> {
         if target == Target::Wasm && self.ir.inner.is_primitive() {
             JS_VALUE.into()
         } else {
-            self.ir.inner.rust_wire_type(target)
+            WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone())
+                .rust_wire_type(target)
         }
     }
 }
@@ -34,7 +35,7 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for DelegateWireRustGenerator<'a> {
             (IrTypeDelegate::String, Target::Wasm) => "String".into(),
             (IrTypeDelegate::StringList, Target::Io) => "wire_StringList".to_owned(),
             (IrTypeDelegate::StringList, Target::Wasm) => JS_VALUE.into(),
-            _ => self.get_delegate().rust_wire_type(target),
+            _ => self.ir.get_delegate().rust_wire_type(target),
         }
     }
 }
@@ -59,13 +60,17 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for GeneralListWireRustGenerator<'a>
 
 impl<'a> WireRustGeneratorRustWireTypeTrait for OptionalWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
+        let inner_rust_wire_type =
+            WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone())
+                .rust_wire_type(target);
+
         if self.ir.inner.rust_wire_is_pointer(target)
             || (target == Target::Wasm)
                 && (self.ir.inner.is_js_value() || self.is_primitive() || self.is_boxed_primitive())
         {
-            self.ir.inner.rust_wire_type(target)
+            inner_rust_wire_type
         } else {
-            format!("Option<{}>", self.ir.inner.rust_wire_type(target))
+            format!("Option<{}>", inner_rust_wire_type)
         }
     }
 }
