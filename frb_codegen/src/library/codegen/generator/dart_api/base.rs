@@ -16,48 +16,11 @@ use crate::codegen::ir::ty::structure::IrTypeStructRef;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::*;
+use crate::codegen_generator_structs;
 use enum_dispatch::enum_dispatch;
 use paste::paste;
 
-macro_rules! generate_code {
-    ($($name:ident),*,) => (
-        paste! {
-            #[enum_dispatch(DartApiGeneratorDeclTrait)]
-            #[enum_dispatch(DartApiGeneratorClassTrait)]
-            pub(crate) enum DartApiGenerator<'a> {
-                $(
-                    $name([<$name DartApiGenerator>]<'a>),
-                )*
-            }
-
-            impl<'a> DartApiGenerator<'a> {
-                pub(crate) fn new(ty: IrType, context: DartApiGeneratorContext<'a>) -> Self {
-                    match ty {
-                        $(
-                            $name(ir) => Self::$name([<$name DartApiGenerator>]::new(ir, context)),
-                        )*
-                    }
-                }
-            }
-
-            $(
-                #[derive(Debug, Clone)]
-                pub(crate) struct [<$name DartApiGenerator>]<'a> {
-                    pub(crate) ir: [<IrType $name>],
-                    pub(crate) context: DartApiGeneratorContext<'a>,
-                }
-
-                impl<'a> [<$name DartApiGenerator>]<'a> {
-                    pub(crate) fn new(ir: [<IrType $name>], context: DartApiGeneratorContext<'a>) -> Self {
-                        Self { ir, context }
-                    }
-                }
-            )*
-        }
-    )
-}
-
-generate_code!(
+codegen_generator_structs!(
     Boxed,
     DartOpaque,
     Delegate,
