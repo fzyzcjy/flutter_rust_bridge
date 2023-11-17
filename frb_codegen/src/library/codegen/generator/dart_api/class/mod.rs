@@ -3,6 +3,7 @@ use enum_dispatch::enum_dispatch;
 
 pub(crate) mod delegate;
 pub(crate) mod enumeration;
+pub(crate) mod field;
 pub(crate) mod rust_opaque;
 pub(crate) mod structure;
 
