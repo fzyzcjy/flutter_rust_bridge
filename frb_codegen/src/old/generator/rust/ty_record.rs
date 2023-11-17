@@ -8,15 +8,6 @@ use super::TypeStructRefGenerator;
 
 type_rust_generator_struct!(TypeRecordGenerator, IrTypeRecord);
 
-impl TypeRecordGenerator<'_> {
-    fn as_struct_generator(&self) -> TypeStructRefGenerator {
-        TypeStructRefGenerator {
-            ir: self.ir.inner.clone(),
-            context: self.context.clone(),
-        }
-    }
-}
-
 impl TypeRustGeneratorTrait for TypeRecordGenerator<'_> {
     fn wire2api_body(&self) -> Acc<Option<String>> {
         let ir = self.ir.inner.get(self.context.ir_pack);

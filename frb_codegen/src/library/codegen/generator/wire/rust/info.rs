@@ -141,6 +141,15 @@ impl<'a> WireRustGeneratorInfoTrait for RecordWireRustGenerator<'a> {
     }
 }
 
+impl RecordWireRustGenerator<'_> {
+    pub(crate) fn as_struct_generator(&self) -> StructRefWireRustGenerator {
+        StructRefWireRustGenerator {
+            ir: self.ir.inner.clone(),
+            context: self.context.clone(),
+        }
+    }
+}
+
 impl<'a> WireRustGeneratorInfoTrait for RustOpaqueWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         rust_wire_type_add_prefix_or_js_value(&self.ir, target)
