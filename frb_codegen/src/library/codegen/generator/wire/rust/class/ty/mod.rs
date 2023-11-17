@@ -2,6 +2,7 @@ use crate::codegen::generator::wire::rust::base::*;
 
 mod dart_opaque;
 mod delegate;
+mod enumeration;
 mod general_list;
 mod optional_list;
 mod primitive_list;

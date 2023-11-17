@@ -55,10 +55,6 @@ impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
         format!("{obj}.into_dart()")
     }
 
-    fn structs(&self) -> String {
-        "".to_owned()
-    }
-
     fn allocate_funcs(
         &self,
         collector: &mut ExternFuncCollector,

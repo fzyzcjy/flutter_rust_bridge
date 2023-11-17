@@ -176,16 +176,18 @@ impl<'a> Generator<'a> {
         ir_pack: &IrPack,
     ) {
         lines.io.push(self.section_header_comment("wire structs"));
-        lines.io.extend(
-            distinct_input_types
-                .iter()
-                .map(|ty| self.generate_wire_struct(ty, ir_pack)),
-        );
-        lines.io.extend(
-            distinct_input_types
-                .iter()
-                .map(|ty| TypeRustGenerator::new(ty.clone(), ir_pack, self.config).structs()),
-        );
+        // TODO these become: wire::rust::class::generate
+        // lines.io.extend(
+        //     distinct_input_types
+        //         .iter()
+        //         .map(|ty| self.generate_wire_struct(ty, ir_pack)),
+        // );
+        // lines.io.extend(
+        //     distinct_input_types
+        //         .iter()
+        //         .map(|ty| TypeRustGenerator::new(ty.clone(), ir_pack, self.config).structs()),
+        // );
+
         (lines.io).push(self.section_header_comment("impl NewWithNullPtr"));
         (lines.io).push(self.generate_new_with_nullptr_misc().to_string());
         lines.io.extend(

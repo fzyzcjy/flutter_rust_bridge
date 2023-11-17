@@ -87,63 +87,6 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
         })
     }
 
-    fn structs(&self) -> String {
-        let src = self.ir.get(self.context.ir_pack);
-        if !src.is_struct() {
-            return "".to_owned();
-        }
-        let variant_structs = src
-            .variants()
-            .iter()
-            .map(|variant| {
-                let fields = match &variant.kind {
-                    IrVariantKind::Value => vec![],
-                    IrVariantKind::Struct(s) => s
-                        .fields
-                        .iter()
-                        .map(|field| {
-                            format!(
-                                "{}: {}{},",
-                                field.name.rust_style(),
-                                field.ty.rust_wire_modifier(Io),
-                                field.ty.rust_wire_type(Io)
-                            )
-                        })
-                        .collect(),
-                };
-                format!(
-                    "#[repr(C)]
-                    #[derive(Clone)]
-                    pub struct wire_{}_{} {{ {} }}",
-                    self.ir.name,
-                    variant.name,
-                    fields.join("\n")
-                )
-            })
-            .collect_vec();
-        let union_fields = src
-            .variants()
-            .iter()
-            .map(|variant| format!("{0}: *mut wire_{1}_{0},", variant.name, self.ir.name))
-            .collect_vec();
-        format!(
-            "#[repr(C)]
-            #[derive(Clone)]
-            pub struct {0} {{ tag: i32, kind: *mut {1}Kind }}
-
-            #[repr(C)]
-            pub union {1}Kind {{
-                {2}
-            }}
-
-            {3}",
-            self.ir.rust_wire_type(Io),
-            self.ir.name,
-            union_fields.join("\n"),
-            variant_structs.join("\n\n")
-        )
-    }
-
     fn static_checks(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
         src.wrapper_name.as_ref()?;
