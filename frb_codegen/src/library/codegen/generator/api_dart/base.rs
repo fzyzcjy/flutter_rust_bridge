@@ -1,4 +1,4 @@
-use crate::codegen::generator::dart_api::internal_config::GeneratorDartApiInternalConfig;
+use crate::codegen::generator::api_dart::internal_config::GeneratorDartApiInternalConfig;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::dart_opaque::IrTypeDartOpaque;
@@ -21,10 +21,10 @@ use enum_dispatch::enum_dispatch;
 use paste::paste;
 
 codegen_generator_structs!(
-    DartApiGeneratorDeclTrait,
-    DartApiGeneratorClassTrait;
+    ApiDartGeneratorDeclTrait,
+    ApiDartGeneratorClassTrait;
 
-    DartApiGenerator;
+    ApiDartGenerator;
 
     Boxed,
     DartOpaque,
@@ -43,7 +43,7 @@ codegen_generator_structs!(
 );
 
 #[derive(Debug, Clone)]
-pub(crate) struct DartApiGeneratorContext<'a> {
+pub(crate) struct ApiDartGeneratorContext<'a> {
     pub(crate) ir_pack: &'a IrPack,
     pub(crate) config: &'a GeneratorDartApiInternalConfig,
 }

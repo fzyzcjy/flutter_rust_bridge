@@ -5,11 +5,11 @@ mod function;
 pub(crate) mod internal_config;
 mod misc;
 
-use crate::codegen::generator::dart_api::base::{DartApiGenerator, DartApiGeneratorContext};
-use crate::codegen::generator::dart_api::internal_config::GeneratorDartApiInternalConfig;
+use crate::codegen::generator::api_dart::base::{ApiDartGenerator, ApiDartGeneratorContext};
+use crate::codegen::generator::api_dart::internal_config::GeneratorDartApiInternalConfig;
 use crate::codegen::generator::output::dart::DartOutputCode;
 use crate::codegen::ir::pack::IrPack;
-use crate::library::codegen::generator::dart_api::class::ty::DartApiGeneratorClassTrait;
+use crate::library::codegen::generator::api_dart::class::ty::ApiDartGeneratorClassTrait;
 use anyhow::Result;
 use itertools::Itertools;
 
@@ -18,7 +18,7 @@ pub(crate) fn generate(
     config: &GeneratorDartApiInternalConfig,
 ) -> Result<DartOutputCode> {
     let distinct_types = ir_pack.distinct_types(true, true);
-    let context = DartApiGeneratorContext { ir_pack, config };
+    let context = ApiDartGeneratorContext { ir_pack, config };
 
     let funcs = ir_pack
         .funcs
@@ -34,7 +34,7 @@ pub(crate) fn generate(
 
     let classes = distinct_types
         .iter()
-        .filter_map(|ty| DartApiGenerator::new(ty.clone(), context.clone()).generate_class())
+        .filter_map(|ty| ApiDartGenerator::new(ty.clone(), context.clone()).generate_class())
         .join("\n\n");
 
     Ok(DartOutputCode {
@@ -53,7 +53,7 @@ pub(crate) fn generate(
 #[cfg(test)]
 mod tests {
     use crate::codegen::config::internal_config::InternalConfig;
-    use crate::codegen::generator::dart_api::generate;
+    use crate::codegen::generator::api_dart::generate;
     use crate::codegen::{parser, Config};
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::test_utils::{get_test_fixture_dir, text_golden_test};
@@ -63,7 +63,7 @@ mod tests {
     #[test]
     #[serial]
     fn test_simple() -> anyhow::Result<()> {
-        body("library/codegen/generator/dart_api/mod/simple")
+        body("library/codegen/generator/api_dart/mod/simple")
     }
 
     fn body(fixture_name: &str) -> anyhow::Result<()> {

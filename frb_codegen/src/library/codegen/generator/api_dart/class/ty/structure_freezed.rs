@@ -1,13 +1,13 @@
-use crate::codegen::generator::dart_api::base::*;
-use crate::codegen::generator::dart_api::class::field::{
+use crate::codegen::generator::api_dart::base::*;
+use crate::codegen::generator::api_dart::class::field::{
     generate_field_default, generate_field_required_modifier,
 };
-use crate::codegen::generator::dart_api::misc::generate_dart_maybe_implements_exception;
+use crate::codegen::generator::api_dart::misc::generate_dart_maybe_implements_exception;
 use crate::codegen::ir::ty::structure::IrStruct;
-use crate::library::codegen::generator::dart_api::decl::DartApiGeneratorDeclTrait;
+use crate::library::codegen::generator::api_dart::decl::ApiDartGeneratorDeclTrait;
 use itertools::Itertools;
 
-impl<'a> StructRefDartApiGenerator<'a> {
+impl<'a> StructRefApiDartGenerator<'a> {
     pub(super) fn generate_mode_freezed(
         &self,
         src: &IrStruct,
@@ -49,7 +49,7 @@ impl<'a> StructRefDartApiGenerator<'a> {
                     generate_field_default(field, true, self.context.config.dart_enums_style);
                 let required_modifier = generate_field_required_modifier(field);
                 let type_str =
-                    DartApiGenerator::new(field.ty.clone(), self.context.clone()).dart_api_type();
+                    ApiDartGenerator::new(field.ty.clone(), self.context.clone()).dart_api_type();
                 let name = field.name.dart_style();
                 format!("{default} {required_modifier} {type_str} {name},")
             })

@@ -1,5 +1,5 @@
 use crate::codegen::config::internal_config::GeneratorDartInternalConfig;
-use crate::codegen::generator::dart_api::internal_config::GeneratorDartApiInternalConfig;
+use crate::codegen::generator::api_dart::internal_config::GeneratorDartApiInternalConfig;
 use convert_case::{Case, Casing};
 use std::path::Path;
 

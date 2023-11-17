@@ -1,11 +1,11 @@
-use crate::codegen::generator::dart_api::base::*;
-use crate::codegen::generator::dart_api::class::ty::structure_method::generate_api_method;
-use crate::codegen::generator::dart_api::class::ty::DartApiGeneratorClassTrait;
-use crate::codegen::generator::dart_api::misc::{generate_dart_comments, generate_dart_metadata};
+use crate::codegen::generator::api_dart::base::*;
+use crate::codegen::generator::api_dart::class::ty::structure_method::generate_api_method;
+use crate::codegen::generator::api_dart::class::ty::ApiDartGeneratorClassTrait;
+use crate::codegen::generator::api_dart::misc::{generate_dart_comments, generate_dart_metadata};
 use crate::codegen::ir::func::{IrFuncOwnerInfo, IrFuncOwnerInfoMethod};
 use itertools::Itertools;
 
-impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
+impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
         let comments = generate_dart_comments(&src.comments);

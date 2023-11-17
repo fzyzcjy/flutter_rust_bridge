@@ -1,15 +1,15 @@
-use crate::codegen::generator::dart_api::base::*;
-use crate::codegen::generator::dart_api::class::field::{
+use crate::codegen::generator::api_dart::base::*;
+use crate::codegen::generator::api_dart::class::field::{
     generate_field_default, generate_field_required_modifier,
 };
-use crate::codegen::generator::dart_api::misc::{
+use crate::codegen::generator::api_dart::misc::{
     generate_dart_comments, generate_dart_maybe_implements_exception,
 };
 use crate::codegen::ir::ty::structure::IrStruct;
-use crate::library::codegen::generator::dart_api::decl::DartApiGeneratorDeclTrait;
+use crate::library::codegen::generator::api_dart::decl::ApiDartGeneratorDeclTrait;
 use itertools::Itertools;
 
-impl<'a> StructRefDartApiGenerator<'a> {
+impl<'a> StructRefApiDartGenerator<'a> {
     pub(super) fn generate_mode_non_freezed(
         &self,
         src: &IrStruct,
@@ -45,7 +45,7 @@ impl<'a> StructRefDartApiGenerator<'a> {
                 let comments = generate_dart_comments(&f.comments);
                 let maybe_final = if f.is_final { "final" } else { "" };
                 let type_str =
-                    DartApiGenerator::new(f.ty.clone(), self.context.clone()).dart_api_type();
+                    ApiDartGenerator::new(f.ty.clone(), self.context.clone()).dart_api_type();
                 let name_str = f.name.dart_style();
                 format!("{comments}{maybe_final} {type_str} {name_str};")
             })

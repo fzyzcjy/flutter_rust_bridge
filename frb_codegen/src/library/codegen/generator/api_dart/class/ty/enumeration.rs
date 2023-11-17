@@ -1,8 +1,8 @@
-use crate::codegen::generator::dart_api::base::*;
-use crate::codegen::generator::dart_api::class::ty::DartApiGeneratorClassTrait;
+use crate::codegen::generator::api_dart::base::*;
+use crate::codegen::generator::api_dart::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::ir::ty::enumeration::IrEnumMode;
 
-impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {
+impl<'a> ApiDartGeneratorClassTrait for EnumRefApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
         match src.mode {

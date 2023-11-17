@@ -1,19 +1,19 @@
-use crate::codegen::generator::dart_api::base::*;
-use crate::codegen::generator::dart_api::class::field::{
+use crate::codegen::generator::api_dart::base::*;
+use crate::codegen::generator::api_dart::class::field::{
     generate_field_default, generate_field_required_modifier,
 };
-use crate::codegen::generator::dart_api::misc::{
+use crate::codegen::generator::api_dart::misc::{
     generate_dart_comments, generate_dart_maybe_implements_exception,
 };
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrVariant, IrVariantKind};
 use crate::codegen::ir::ty::structure::IrStruct;
-use crate::library::codegen::generator::dart_api::decl::DartApiGeneratorDeclTrait;
+use crate::library::codegen::generator::api_dart::decl::ApiDartGeneratorDeclTrait;
 use itertools::Itertools;
 
 const BACKTRACE_IDENT: &str = "backtrace";
 
-impl<'a> EnumRefDartApiGenerator<'a> {
+impl<'a> EnumRefApiDartGenerator<'a> {
     pub(super) fn generate_mode_complex(&self, src: &IrEnum) -> Option<String> {
         let variants = src
             .variants()
@@ -77,7 +77,7 @@ impl<'a> EnumRefDartApiGenerator<'a> {
                     .unwrap_or_default();
                 let comments = generate_dart_comments(&field.comments);
                 let type_str =
-                    DartApiGenerator::new(field.ty.clone(), self.context.clone()).dart_api_type();
+                    ApiDartGenerator::new(field.ty.clone(), self.context.clone()).dart_api_type();
                 let name_str = field.name.dart_style();
                 format!("{comments} {default} {type_str} {name_str},")
             })
@@ -99,7 +99,7 @@ impl<'a> EnumRefDartApiGenerator<'a> {
             .map(|field| {
                 format!(
                     "{comments} {default} {required}{} {} ,",
-                    DartApiGenerator::new(field.ty.clone(), self.context.clone()).dart_api_type(),
+                    ApiDartGenerator::new(field.ty.clone(), self.context.clone()).dart_api_type(),
                     field.name.dart_style(),
                     required = generate_field_required_modifier(field),
                     comments = generate_dart_comments(&field.comments),

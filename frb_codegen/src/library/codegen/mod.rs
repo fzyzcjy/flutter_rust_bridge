@@ -22,7 +22,7 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
 
     // TODO seems not this ideal. we need to call various external tools that directly write to fs
     let output_code_dart_api: OutputCode =
-        generator::dart_api::generate(&ir_pack, &internal_config.generator.dart.into())?.into();
+        generator::api_dart::generate(&ir_pack, &internal_config.generator.dart.into())?.into();
     let output_code_wire = generator::wire::generate(&ir_pack)?;
     let output_code = output_code_dart_api.merge(output_code_wire);
     output_code.write()?;
