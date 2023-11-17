@@ -12,11 +12,11 @@ impl<'a> WireRustGeneratorCommonTrait for DelegateWireRustGenerator<'a> {
         }
 
         // TODO https://github.com/fzyzcjy/yplusplus/issues/11145#issuecomment-1816273032
-        // delegate_enum!(self, wrapper_struct_name(), None)
+        // forward_delegate_primitive_enum!(self, wrapper_struct_name(), None)
     }
 
     // TODO old code has this, but I think do not need?
     // fn generate_static_checks(&self) -> Option<String> {
-    //     delegate_enum!(self, static_checks(), None)
+    //     forward_delegate_primitive_enum!(self, static_checks(), None)
     // }
 }

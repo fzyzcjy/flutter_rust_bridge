@@ -156,6 +156,6 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
     }
 
     fn imports(&self) -> Option<String> {
-        delegate_enum!(self, imports(), None)
+        forward_delegate_primitive_enum!(self, imports(), None)
     }
 }

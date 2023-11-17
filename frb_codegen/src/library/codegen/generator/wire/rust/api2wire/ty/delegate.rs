@@ -2,7 +2,7 @@ use crate::codegen::generator::wire::rust::api2wire::misc::generate_impl_into_in
 use crate::codegen::generator::wire::rust::api2wire::ty::WireRustGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
-use crate::delegate_enum;
+use crate::forward_delegate_primitive_enum;
 use itertools::Itertools;
 
 impl<'a> WireRustGeneratorApi2wireTrait for DelegateWireRustGenerator<'a> {
@@ -40,6 +40,6 @@ impl<'a> WireRustGeneratorApi2wireTrait for DelegateWireRustGenerator<'a> {
     }
 
     fn generate_access_object_core(&self, obj: String) -> String {
-        delegate_enum!(self, self_access(obj), obj)
+        forward_delegate_primitive_enum!(self, self_access(obj), obj)
     }
 }

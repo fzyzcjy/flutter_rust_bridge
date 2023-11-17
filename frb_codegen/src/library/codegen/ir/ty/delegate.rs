@@ -195,9 +195,9 @@ impl IrTypeDelegateArray {
 
 #[doc(hidden)]
 #[macro_export]
-macro_rules! delegate_enum {
+macro_rules! forward_delegate_primitive_enum {
     ($self:ident, $func:ident($($tokens:tt)*), $ret:expr) => {
-        if let IrTypeDelegate:: PrimitiveEnum {
+        if let IrTypeDelegate::PrimitiveEnum {
             ir,
             ..
         } = &$self.ir {
