@@ -7,7 +7,7 @@ use crate::codegen::generator::dart_api::internal_config::GeneratorDartApiIntern
 use crate::codegen::generator::dart_api::misc::{
     generate_dart_comments, generate_dart_maybe_implements_exception, generate_dart_metadata,
 };
-use crate::codegen::ir::func::{IrFunc, IrFuncMode};
+use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo};
 use crate::codegen::ir::ty::structure::IrStruct;
 use crate::library::codegen::generator::dart_api::decl::DartApiGeneratorDeclTrait;
 use convert_case::{Case, Casing};
@@ -24,8 +24,7 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
             .funcs
             .iter()
             .filter(|f| {
-                &f.owner.is_instance_method_for_struct(&src.name)
-                    || &f.owner.is_static_method_for_struct(&src.name)
+                matches!(&f.owner, IrFuncOwnerInfo::Method {struct_name, ..} if struct_name == &src.name)
             })
             .collect::<Vec<_>>();
 
