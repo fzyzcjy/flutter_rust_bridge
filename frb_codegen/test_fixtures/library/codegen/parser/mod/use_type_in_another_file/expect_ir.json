@@ -2,7 +2,7 @@
   "enum_pool": {
     "EnumInAnotherFile": {
       "comments": [],
-      "is_struct": false,
+      "mode": "Simple",
       "name": "EnumInAnotherFile",
       "path": [
         "crate",
