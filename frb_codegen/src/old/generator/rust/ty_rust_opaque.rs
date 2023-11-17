@@ -39,14 +39,6 @@ impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
         )
     }
 
-    fn static_checks(&self) -> Option<String> {
-        None
-    }
-
-    fn wrapper_struct(&self) -> Option<String> {
-        None
-    }
-
     fn self_access(&self, obj: String) -> String {
         obj
     }
@@ -114,10 +106,6 @@ impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
         }
     }
 
-    fn impl_intodart(&self) -> String {
-        "".to_owned()
-    }
-
     fn new_with_nullptr(&self, _collector: &mut ExternFuncCollector) -> String {
         format!(
             "impl NewWithNullPtr for {} {{
@@ -127,9 +115,5 @@ impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
             }}",
             self.ir.rust_wire_type(crate::target::Target::Io)
         )
-    }
-
-    fn imports(&self) -> Option<String> {
-        None
     }
 }

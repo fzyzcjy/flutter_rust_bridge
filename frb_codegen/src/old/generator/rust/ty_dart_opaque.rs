@@ -46,27 +46,6 @@ impl TypeRustGeneratorTrait for TypeDartOpaqueGenerator<'_> {
         }
     }
 
-    /// Handles JsValue to Self conversions.
-    fn wire2api_jsvalue(&self) -> Option<Cow<str>> {
-        None
-    }
-
-    fn static_checks(&self) -> Option<String> {
-        None
-    }
-
-    fn wrapper_struct(&self) -> Option<String> {
-        None
-    }
-
-    fn self_access(&self, _obj: String) -> String {
-        "".to_owned()
-    }
-
-    fn impl_intodart(&self) -> String {
-        "".to_owned()
-    }
-
     fn new_with_nullptr(&self, _collector: &mut ExternFuncCollector) -> String {
         format!(
             "impl NewWithNullPtr for {} {{
@@ -76,9 +55,5 @@ impl TypeRustGeneratorTrait for TypeDartOpaqueGenerator<'_> {
             }}",
             self.ir.rust_wire_type(crate::target::Target::Io)
         )
-    }
-
-    fn imports(&self) -> Option<String> {
-        None
     }
 }
