@@ -19,13 +19,12 @@ pub(crate) struct GeneratedApiFunc {
 }
 
 pub(crate) fn generate_func(func: &IrFunc, dart_enums_style: bool) -> GeneratedApiFunc {
-    let params = generate_params(func, dart_enums_style);
+    let params = generate_params(func, dart_enums_style).join(", ");
 
     let func_expr = format!(
-        "{} {}({{ {} }})",
-        func.mode.dart_return_type(&func.output.dart_api_type()),
-        func.name.to_case(Case::Camel),
-        params.join(","),
+        "{func_return_type} {func_name}({{ {params} }})",
+        func_name = func.name.to_case(Case::Camel),
+        func_return_type = func.mode.dart_return_type(&func.output.dart_api_type()),
     );
     let func_signature = format!("{func_expr};");
 
