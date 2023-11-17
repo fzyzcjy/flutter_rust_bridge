@@ -66,14 +66,6 @@ pub trait IrTypeTrait {
         self.rust_api_type()
     }
 
-    fn rust_wire_modifier(&self, target: Target) -> String {
-        if self.rust_wire_is_pointer(target) {
-            "*mut ".to_string()
-        } else {
-            "".to_string()
-        }
-    }
-
     fn dart_param_type(&self) -> &'static str {
         "dynamic"
     }

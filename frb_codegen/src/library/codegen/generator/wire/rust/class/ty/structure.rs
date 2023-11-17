@@ -14,12 +14,13 @@ impl<'a> WireRustClassGeneratorClassTrait for StructRefWireRustGenerator<'a> {
             &s.fields
                 .iter()
                 .map(|field| {
+                    let field_generator =
+                        WireRustGenerator::new(field.ty.clone(), self.context.clone());
                     format!(
                         "{}: {}{}",
                         field.name.rust_style(),
-                        field.ty.rust_wire_modifier(Target::Io),
-                        WireRustGenerator::new(field.ty.clone(), self.context.clone())
-                            .rust_wire_type(Target::Io)
+                        field_generator.rust_wire_modifier(Target::Io),
+                        field_generator.rust_wire_type(Target::Io)
                     )
                 })
                 .collect_vec(),
