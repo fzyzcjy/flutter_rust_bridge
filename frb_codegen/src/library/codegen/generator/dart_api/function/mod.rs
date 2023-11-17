@@ -24,21 +24,9 @@ pub(crate) fn generate_api_func(
     func: &IrFunc,
     ir_pack: &IrPack,
     common_api2wire_body: &str,
+    dart_enums_style: bool,
 ) -> GeneratedApiFunc {
-    let raw_func_param_list = func
-        .inputs
-        .iter()
-        .map(|input| {
-            format!(
-                "{required}{} {} {default}",
-                input.ty.dart_api_type(),
-                input.name.dart_style(),
-                required = generate_field_required_modifier(input),
-                default = generate_field_default(input, false, dart_enums_style),
-            )
-        })
-        .collect_vec();
-    let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_owned()]].concat();
+    let params = generate_params(func, dart_enums_style);
 
     let prepare_args = func
         .inputs
@@ -80,7 +68,7 @@ pub(crate) fn generate_api_func(
         "{} {}({{ {} }})",
         func.mode.dart_return_type(&func.output.dart_api_type()),
         func.name.to_case(Case::Camel),
-        full_func_param_list.join(","),
+        params.join(","),
     );
 
     let execute_func_name = match func.mode {
@@ -197,4 +185,20 @@ pub(crate) fn generate_api_func(
         companion_field_signature,
         companion_field_implementation,
     }
+}
+
+fn generate_params(func: &IrFunc, dart_enums_style: bool) -> Vec<String> {
+    let mut ans = func
+        .inputs
+        .iter()
+        .map(|input| {
+            let required = generate_field_required_modifier(input);
+            let r#default = generate_field_default(input, false, dart_enums_style);
+            let type_str = input.ty.dart_api_type();
+            let name_str = input.name.dart_style();
+            format!("{required}{type_str} {name_str} {default}")
+        })
+        .collect_vec();
+    ans.push("dynamic hint".to_owned());
+    ans
 }
