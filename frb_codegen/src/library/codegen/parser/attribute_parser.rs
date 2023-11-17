@@ -35,9 +35,7 @@ impl FrbAttributes {
         if candidates.len() > 1 {
             log::warn!("Only one `default = ..` attribute is expected; taking the last one");
         }
-        candidates
-            .last()
-            .map(|item| IrDefaultValue(item.to_dart().to_string()))
+        candidates.last().map(|item| item.to_ir_default_value())
     }
 
     pub(crate) fn non_final(&self) -> bool {
@@ -226,17 +224,31 @@ impl Parse for FrbAttributeDefaultValue {
 }
 
 impl FrbAttributeDefaultValue {
-    fn to_dart(&self) -> Cow<str> {
+    fn to_ir_default_value(&self) -> IrDefaultValue {
         match self {
-            Self::Bool(lit) => if lit.value { "true" } else { "false" }.into(),
-            Self::Str(lit) => format!("r\"{}\"", lit.value()).into(),
-            Self::Int(lit) => lit.base10_digits().into(),
-            Self::Float(lit) => lit.base10_digits().into(),
-            Self::Vec(lit) => format!(
-                "const [{}]",
-                lit.iter().map(Self::to_dart).collect_vec().join(",")
-            )
-            .into(),
+            Self::Str(lit) => IrDefaultValue::String {
+                content: lit.value(),
+            },
+
+            // other types
+            Self::Bool(lit) => IrDefaultValue::Others {
+                dart_literal: (if lit.value { "true" } else { "false" }).to_owned(),
+            },
+            Self::Int(lit) => IrDefaultValue::Others {
+                dart_literal: lit.base10_digits().into(),
+            },
+            Self::Float(lit) => IrDefaultValue::Others {
+                dart_literal: lit.base10_digits().into(),
+            },
+            Self::Vec(lit) => IrDefaultValue::Others {
+                dart_literal: format!(
+                    "const [{}]",
+                    lit.iter()
+                        .map(|item| item.to_ir_default_value().to_dart_literal())
+                        .collect_vec()
+                        .join(",")
+                ),
+            },
         }
     }
 }

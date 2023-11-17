@@ -1,11 +1,17 @@
-crate::ir! {
-pub struct IrDefaultValue {
-    pub(crate) mode: IrDefaultValueMode,
-    pub(crate) literal: String,
-};
-}
+use std::borrow::Cow;
 
-pub enum IrDefaultValueMode {
-    String,
-    Others,
+// crate::ir! {
+pub enum IrDefaultValue {
+    String { content: String },
+    Others { dart_literal: String },
+}
+// }
+
+impl IrDefaultValue {
+    pub(crate) fn to_dart_literal(&self) -> Cow<str> {
+        match self {
+            IrDefaultValue::String { content } => format!("r\"{}\"", content).into(),
+            IrDefaultValue::Others { dart_literal } => dart_literal.into(),
+        }
+    }
 }
