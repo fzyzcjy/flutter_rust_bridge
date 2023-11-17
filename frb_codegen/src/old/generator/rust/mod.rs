@@ -208,16 +208,17 @@ impl<'a> Generator<'a> {
         distinct_input_types: &[IrType],
         ir_pack: &IrPack,
     ) {
-        // TODO
-        (lines.wasm).push(self.section_header_comment("impl Wire2Api for JsValue"));
-        (lines.wasm).push(
-            "impl<T> Wire2Api<Option<T>> for JsValue where JsValue: Wire2Api<T> {
-                fn wire2api(self) -> Option<T> {
-                    (!self.is_null() && !self.is_undefined()).then(|| self.wire2api())
-                }
-            }"
-            .into(),
-        );
+        // moved
+        // (lines.wasm).push(self.section_header_comment("impl Wire2Api for JsValue"));
+        // (lines.wasm).push(
+        //     "impl<T> Wire2Api<Option<T>> for JsValue where JsValue: Wire2Api<T> {
+        //         fn wire2api(self) -> Option<T> {
+        //             (!self.is_null() && !self.is_undefined()).then(|| self.wire2api())
+        //         }
+        //     }"
+        //     .into(),
+        // );
+
         lines.wasm.extend(
             distinct_input_types
                 .iter()

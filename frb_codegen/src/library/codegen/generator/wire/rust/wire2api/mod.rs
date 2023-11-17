@@ -34,7 +34,15 @@ fn generate_impl_wire2api_misc() -> Acc<String> {
             }
         "#
         .to_owned(),
-        ..Default::default()
+        io: "".to_owned(),
+        wasm: r#"
+            impl<T> Wire2Api<Option<T>> for JsValue where JsValue: Wire2Api<T> {
+                fn wire2api(self) -> Option<T> {
+                    (!self.is_null() && !self.is_undefined()).then(|| self.wire2api())
+                }
+            }
+        "#
+        .to_owned(),
     }
 }
 
