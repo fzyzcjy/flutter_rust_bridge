@@ -21,3 +21,14 @@ pub(super) fn generate_class_from_fields(
         fields = fields.join(",\n"),
     )
 }
+
+pub(super) fn generate_wrapper_struct_from_name(wrapper_name: &str, ty: &IrType) -> String {
+    format!(
+        r###"
+        #[derive(Clone)]
+        pub struct {}({});
+        "###,
+        wrapper_name,
+        ty.rust_api_type(),
+    )
+}

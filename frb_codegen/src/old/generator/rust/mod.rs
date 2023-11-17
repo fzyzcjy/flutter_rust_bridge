@@ -487,16 +487,7 @@ impl<'a> Generator<'a> {
             | IrType::Delegate(IrTypeDelegate::PrimitiveEnum { .. }) => {
                 TypeRustGenerator::new(ty.clone(), ir_pack, self.config)
                     .wrapper_struct()
-                    .map(|wrapper| {
-                        format!(
-                            r###"
-                            #[derive(Clone)]
-                            pub struct {}({});
-                            "###,
-                            wrapper,
-                            ty.rust_api_type(),
-                        )
-                    })
+                    .map(|wrapper| generate_wrapper_struct_from_name())
             }
             _ => None,
         }
