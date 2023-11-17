@@ -28,7 +28,7 @@ impl<'a> WireRustGeneratorInfoTrait for BoxedWireRustGenerator<'a> {
 
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
         (target != Target::Wasm)
-            || !self.ir.inner.is_js_value()
+            || !is_js_value(&self.ir.inner)
                 && !self.ir.inner.is_array()
                 && !self.ir.inner.is_primitive()
     }
@@ -52,7 +52,8 @@ impl<'a> WireRustGeneratorInfoTrait for DelegateWireRustGenerator<'a> {
     }
 
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
-        self.get_delegate().rust_wire_is_pointer(target)
+        WireRustGenerator::new(self.ir.get_delegate(), self.context.clone())
+            .rust_wire_is_pointer(target)
     }
 }
 
@@ -80,24 +81,24 @@ impl<'a> WireRustGeneratorInfoTrait for GeneralListWireRustGenerator<'a> {
 
 impl<'a> WireRustGeneratorInfoTrait for OptionalWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
-        let inner_rust_wire_type =
-            WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone())
-                .rust_wire_type(target);
+        let inner_generator = WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone());
 
-        if self.ir.inner.rust_wire_is_pointer(target)
+        if inner_generator.rust_wire_is_pointer(target)
             || (target == Target::Wasm)
                 && (is_js_value(&self.ir.inner)
                     || self.ir.is_primitive()
                     || self.ir.is_boxed_primitive())
         {
-            inner_rust_wire_type
+            inner_generator.rust_wire_type(target)
         } else {
-            format!("Option<{}>", inner_rust_wire_type)
+            format!("Option<{}>", inner_generator.rust_wire_type(target))
         }
     }
 
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
-        target != Target::Wasm || self.ir.inner.rust_wire_is_pointer(target)
+        target != Target::Wasm
+            || WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone())
+                .rust_wire_is_pointer(target)
     }
 }
 
