@@ -27,5 +27,5 @@ impl<'a> WireRustClassGeneratorClassTrait for GeneralListWireRustGenerator<'a> {
 
 /// Does it need additional indirection for types put behind a vector
 pub(crate) fn general_list_inner_extra_pointer_indirection(ir: &IrTypeGeneralList) -> bool {
-    matches!(ir.inner, Optional(_) | Delegate(IrTypeDelegate::String))
+    matches!(*ir.inner, Optional(_) | Delegate(IrTypeDelegate::String))
 }
