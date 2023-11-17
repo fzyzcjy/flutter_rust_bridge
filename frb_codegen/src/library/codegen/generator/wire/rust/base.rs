@@ -1,4 +1,3 @@
-use crate::codegen::generator::wire::rust::api2wire::ty::WireRustGeneratorOrangeTrait;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::dart_opaque::IrTypeDartOpaque;
