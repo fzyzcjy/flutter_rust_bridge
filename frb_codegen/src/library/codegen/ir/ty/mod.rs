@@ -14,9 +14,8 @@ pub(crate) mod structure;
 pub(crate) mod unencodable;
 
 use crate::codegen::ir::pack::IrPack;
-use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
+use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::IrType::{Delegate, Primitive};
 use enum_dispatch::enum_dispatch;
 
 crate::ir! {

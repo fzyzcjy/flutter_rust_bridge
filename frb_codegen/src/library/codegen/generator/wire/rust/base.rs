@@ -1,4 +1,3 @@
-use crate::codegen::generator::api_dart::internal_config::GeneratorDartApiInternalConfig;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::dart_opaque::IrTypeDartOpaque;

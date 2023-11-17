@@ -2,7 +2,6 @@ use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::class::misc::generate_class_from_fields;
 use crate::codegen::generator::wire::rust::class::ty::WireRustClassGeneratorClassTrait;
-use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
 
 impl<'a> WireRustClassGeneratorClassTrait for PrimitiveListWireRustGenerator<'a> {
