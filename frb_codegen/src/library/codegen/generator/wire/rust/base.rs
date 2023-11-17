@@ -1,4 +1,3 @@
-use crate::codegen::generator::wire::rust::api2wire::ty::WireRustGeneratorApi2wireTrait;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::dart_opaque::IrTypeDartOpaque;
@@ -22,7 +21,7 @@ use paste::paste;
 
 codegen_generator_structs!(
     WireRustGeneratorInfoTrait,
-    // WireRustGeneratorApi2wireTrait,
+    WireRustGeneratorApi2wireTrait,
     WireRustGeneratorWire2apiTrait,
     WireRustGeneratorCommonTrait;
 
