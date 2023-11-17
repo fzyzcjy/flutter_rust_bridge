@@ -1,7 +1,7 @@
 pub(super) mod base;
 pub(super) mod class;
-pub(super) mod dart_api_type;
 mod function;
+pub(super) mod info;
 pub(crate) mod internal_config;
 mod misc;
 

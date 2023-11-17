@@ -4,7 +4,7 @@ use crate::codegen::generator::api_dart::class::field::{
 };
 use crate::codegen::generator::api_dart::misc::generate_dart_maybe_implements_exception;
 use crate::codegen::ir::ty::structure::IrStruct;
-use crate::library::codegen::generator::api_dart::dart_api_type::ApiDartGeneratorDartApiTypeTrait;
+use crate::library::codegen::generator::api_dart::info::ApiDartGeneratorInfoTrait;
 use itertools::Itertools;
 
 impl<'a> StructRefApiDartGenerator<'a> {

@@ -8,7 +8,7 @@ use crate::codegen::generator::api_dart::misc::{
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrVariant, IrVariantKind};
 use crate::codegen::ir::ty::structure::IrStruct;
-use crate::library::codegen::generator::api_dart::dart_api_type::ApiDartGeneratorDartApiTypeTrait;
+use crate::library::codegen::generator::api_dart::info::ApiDartGeneratorInfoTrait;
 use itertools::Itertools;
 
 const BACKTRACE_IDENT: &str = "backtrace";

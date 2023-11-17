@@ -9,7 +9,7 @@ use crate::codegen::ir::func::{
     IrFunc, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::ty::structure::IrStruct;
-use crate::library::codegen::generator::api_dart::dart_api_type::ApiDartGeneratorDartApiTypeTrait;
+use crate::library::codegen::generator::api_dart::info::ApiDartGeneratorInfoTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 

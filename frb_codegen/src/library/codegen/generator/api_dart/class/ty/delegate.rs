@@ -3,7 +3,7 @@ use crate::codegen::generator::api_dart::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::ir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegatePrimitiveEnum,
 };
-use crate::library::codegen::generator::api_dart::dart_api_type::ApiDartGeneratorDartApiTypeTrait;
+use crate::library::codegen::generator::api_dart::info::ApiDartGeneratorInfoTrait;
 
 impl<'a> ApiDartGeneratorClassTrait for DelegateApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<String> {
