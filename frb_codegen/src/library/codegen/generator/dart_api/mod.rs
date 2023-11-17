@@ -49,3 +49,26 @@ pub(crate) fn generate(
         ),
     })
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::utils::logs::configure_opinionated_test_logging;
+    use crate::utils::test_utils::get_test_fixture_dir;
+    use serial_test::serial;
+
+    #[test]
+    #[serial]
+    fn test_simple() -> anyhow::Result<()> {
+        body("library/codegen/generator/dart_api/mod/simple")
+    }
+
+    fn body(fixture_name: &str) -> anyhow::Result<()> {
+        configure_opinionated_test_logging();
+        let test_fixture_dir = get_test_fixture_dir(fixture_name);
+        let rust_crate_dir = test_fixture_dir.clone();
+
+        todo!();
+
+        Ok(())
+    }
+}
