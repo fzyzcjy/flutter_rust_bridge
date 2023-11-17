@@ -60,7 +60,7 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
                 has_methods,
                 &methods,
                 &extra_argument,
-                &field_bridge,
+                field_bridge,
             )
         })
     }

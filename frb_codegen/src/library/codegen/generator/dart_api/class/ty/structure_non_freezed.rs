@@ -25,7 +25,7 @@ impl<'a> StructRefDartApiGenerator<'a> {
         has_methods: bool,
         methods: &str,
         extra_argument: &str,
-        field_bridge: &str,
+        field_bridge: String,
     ) -> String {
         let mut field_declarations = src
             .fields
@@ -69,7 +69,7 @@ impl<'a> StructRefDartApiGenerator<'a> {
         };
         let constructor_params = constructor_params.join("");
         let const_capable = src.fields.iter().all(|field| field.is_final);
-        let name_str = self.ir.ident.0;
+        let name_str = &self.ir.ident.0;
         let maybe_const = if const_capable { "const " } else { "" };
         let implements_exception = generate_dart_maybe_implements_exception(self.ir.is_exception);
 

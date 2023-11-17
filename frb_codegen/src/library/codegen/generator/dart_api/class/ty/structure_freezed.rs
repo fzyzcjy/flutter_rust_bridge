@@ -56,7 +56,7 @@ impl<'a> StructRefDartApiGenerator<'a> {
             );
         }
         let constructor_params = constructor_params.join("");
-        let name_str = self.ir.ident.0;
+        let name_str = &self.ir.ident.0;
         let implements_exception = generate_dart_maybe_implements_exception(self.ir.is_exception);
 
         format!(
