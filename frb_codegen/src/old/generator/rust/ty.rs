@@ -6,13 +6,6 @@ use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
 pub trait TypeRustGeneratorTrait {
-    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>>;
-
-    /// Handles JsValue to Self conversions.
-    fn generate_impl_wire2api_jsvalue_body(&self) -> Option<Cow<str>> {
-        None
-    }
-
     fn allocate_funcs(
         &self,
         _collector: &mut ExternFuncCollector,

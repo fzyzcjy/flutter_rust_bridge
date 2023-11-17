@@ -1,4 +1,5 @@
 use crate::codegen::generator::wire::rust::base::*;
+use std::borrow::Cow;
 
 mod boxed;
 mod dart_opaque;
@@ -24,7 +25,11 @@ pub(crate) trait WireRustGeneratorWire2apiTrait {
         None
     }
 
-    fn wire2api_body(&self) -> Acc<Option<String>> {
+    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
         Default::default()
+    }
+
+    fn generate_impl_wire2api_jsvalue_body(&self) -> Option<Cow<str>> {
+        None
     }
 }
