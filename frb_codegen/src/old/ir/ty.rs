@@ -33,20 +33,6 @@ impl IrType {
     }
 
     #[inline]
-    pub fn as_primitive(&self) -> Option<&IrTypePrimitive> {
-        match self {
-            Primitive(repr) | Delegate(IrTypeDelegate::PrimitiveEnum { repr, .. }) => Some(repr),
-            Delegate(IrTypeDelegate::Time(_)) => Some(&IrTypePrimitive::I64),
-            _ => None,
-        }
-    }
-
-    #[inline]
-    pub fn is_primitive(&self) -> bool {
-        self.as_primitive().is_some()
-    }
-
-    #[inline]
     pub fn is_array(&self) -> bool {
         matches!(self, IrType::Delegate(IrTypeDelegate::Array(_)))
     }

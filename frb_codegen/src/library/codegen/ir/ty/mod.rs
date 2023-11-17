@@ -14,6 +14,9 @@ pub(crate) mod structure;
 pub(crate) mod unencodable;
 
 use crate::codegen::ir::pack::IrPack;
+use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
+use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::codegen::ir::ty::IrType::{Delegate, Primitive};
 use enum_dispatch::enum_dispatch;
 
 crate::ir! {
@@ -52,6 +55,23 @@ impl IrType {
             self,
             IrType::StructRef(_) | IrType::EnumRef(_) | IrType::Record(_)
         )
+    }
+
+    #[inline]
+    pub fn as_primitive(&self) -> Option<&IrTypePrimitive> {
+        match self {
+            Primitive(repr)
+            | Delegate(IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum {
+                repr, ..
+            })) => Some(repr),
+            Delegate(IrTypeDelegate::Time(_)) => Some(&IrTypePrimitive::I64),
+            _ => None,
+        }
+    }
+
+    #[inline]
+    pub fn is_primitive(&self) -> bool {
+        self.as_primitive().is_some()
     }
 }
 
