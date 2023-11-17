@@ -15,7 +15,7 @@ impl<'a> WireRustClassGeneratorClassTrait for GeneralListWireRustGenerator<'a> {
             &vec![
                 format!(
                     "ptr: *mut {}{}",
-                    general_list_inner_extra_pointer_indirection(&self.ir),
+                    general_list_maybe_extra_pointer_indirection(&self.ir),
                     WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone())
                         .rust_wire_type(Target::Io)
                 ),
@@ -26,6 +26,10 @@ impl<'a> WireRustClassGeneratorClassTrait for GeneralListWireRustGenerator<'a> {
 }
 
 /// Does it need additional indirection for types put behind a vector
-pub(crate) fn general_list_inner_extra_pointer_indirection(ir: &IrTypeGeneralList) -> bool {
-    matches!(*ir.inner, Optional(_) | Delegate(IrTypeDelegate::String))
+pub(crate) fn general_list_maybe_extra_pointer_indirection(ir: &IrTypeGeneralList) -> &'static str {
+    if matches!(*ir.inner, Optional(_) | Delegate(IrTypeDelegate::String)) {
+        "*mut "
+    } else {
+        ""
+    }
 }
