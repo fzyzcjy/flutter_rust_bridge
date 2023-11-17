@@ -28,12 +28,6 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
             .filter(|f| {
                 matches!(&f.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod{ struct_name, .. }) if struct_name == &src.name)
             })
-            .collect_vec();
-
-        let has_methods = !methods.is_empty();
-
-        let methods = methods
-            .iter()
             .map(|func| generate_api_method(func, src, &self.context))
             .collect_vec();
 

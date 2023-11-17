@@ -33,12 +33,13 @@ impl<'a> StructRefDartApiGenerator<'a> {
         let constructor_params = self.generate_constructor_params(src, !methods.is_empty());
         let name_str = &self.ir.ident.0;
         let implements_exception = generate_dart_maybe_implements_exception(self.ir.is_exception);
+        let methods_str = methods.join("\n");
 
         format!(
             "{comments}{metadata}class {name_str} with _${name_str} {implements_exception} {{
                 {private_constructor}
                 const factory {name_str}({{{constructor_params}}}) = _{name_str};
-                {methods}
+                {methods_str}
             }}",
         )
     }

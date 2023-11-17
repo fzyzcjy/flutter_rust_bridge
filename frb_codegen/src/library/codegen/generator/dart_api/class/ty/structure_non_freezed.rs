@@ -22,15 +22,16 @@ impl<'a> StructRefDartApiGenerator<'a> {
         src: &IrStruct,
         comments: &str,
         metadata: &str,
-        methods: &str,
+        methods: &[String],
     ) -> String {
-        let field_declarations = self.generate_field_declarations(src, methods, field_bridge);
+        let field_declarations = self.generate_field_declarations(src, methods);
         let constructor_params = self.generate_constructor_params(src, methods);
 
         let const_capable = src.fields.iter().all(|field| field.is_final);
         let name_str = &self.ir.ident.0;
         let maybe_const = if const_capable { "const " } else { "" };
         let implements_exception = generate_dart_maybe_implements_exception(self.ir.is_exception);
+        let methods_str = methods.join("\n");
 
         format!(
             "{comments}{metadata}class {name_str} {implements_exception} {{
@@ -38,12 +39,12 @@ impl<'a> StructRefDartApiGenerator<'a> {
 
                 {maybe_const}{name_str}({left}{constructor_params}{right});
 
-                {methods}
+                {methods_str}
             }}"
         )
     }
 
-    fn generate_field_declarations(&self, src: &IrStruct, methods: &str) -> String {
+    fn generate_field_declarations(&self, src: &IrStruct, methods: &[String]) -> String {
         let mut field_declarations = src
             .fields
             .iter()
@@ -67,12 +68,7 @@ impl<'a> StructRefDartApiGenerator<'a> {
         field_declarations.join("\n")
     }
 
-    fn generate_constructor_params(
-        &self,
-        src: &IrStruct,
-        methods: &str,
-        extra_argument: &str,
-    ) -> Vec<String> {
+    fn generate_constructor_params(&self, src: &IrStruct, methods: &[String]) -> String {
         let mut ans = src
             .fields
             .iter()
