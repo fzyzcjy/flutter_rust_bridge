@@ -2,6 +2,7 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::wire2api::misc::generate_class_from_fields;
+use crate::codegen::generator::wire::rust::wire2api::ty::general_list::general_list_impl_wire2api_body;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
@@ -57,11 +58,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
                 Acc::distribute(Some("ZeroCopyBuffer(self.wire2api())".into()))
             },
-            IrTypeDelegate::StringList => Acc {
-                io: Some(TypeGeneralListGenerator::WIRE2API_BODY_IO.to_owned()),
-                wasm: Some(TypeGeneralListGenerator::WIRE2API_BODY_WASM.to_owned()),
-                ..Default::default()
-            },
+            IrTypeDelegate::StringList => general_list_impl_wire2api_body(),
             IrTypeDelegate::PrimitiveEnum (IrTypeDelegatePrimitiveEnum{ ir, .. }) => {
                 let enu = ir.get(self.context.ir_pack);
                 let variants =

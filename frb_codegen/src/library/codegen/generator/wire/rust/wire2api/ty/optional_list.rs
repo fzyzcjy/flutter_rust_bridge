@@ -2,6 +2,7 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::wire2api::misc::generate_class_from_fields;
+use crate::codegen::generator::wire::rust::wire2api::ty::general_list::general_list_impl_wire2api_body;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
 
@@ -22,10 +23,6 @@ impl<'a> WireRustGeneratorWire2apiTrait for OptionalListWireRustGenerator<'a> {
     }
 
     fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
-        Acc {
-            wasm: Some(TypeGeneralListGenerator::WIRE2API_BODY_WASM.to_owned()),
-            io: Some(TypeGeneralListGenerator::WIRE2API_BODY_IO.to_owned()),
-            ..Default::default()
-        }
+        general_list_impl_wire2api_body()
     }
 }

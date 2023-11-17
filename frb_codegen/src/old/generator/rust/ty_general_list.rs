@@ -7,16 +7,7 @@ use crate::utils::misc::BlockIndex;
 
 type_rust_generator_struct!(TypeGeneralListGenerator, IrTypeGeneralList);
 
-impl TypeGeneralListGenerator<'_> {
-    pub const WIRE2API_BODY_IO: &'static str = "
-            let vec = unsafe {
-                let wrap = support::box_from_leak_ptr(self);
-                support::vec_from_leak_ptr(wrap.ptr, wrap.len)
-            };
-            vec.into_iter().map(Wire2Api::wire2api).collect()";
-    pub const WIRE2API_BODY_WASM: &'static str =
-        "self.dyn_into::<JsArray>().unwrap().iter().map(Wire2Api::wire2api).collect()";
-}
+impl TypeGeneralListGenerator<'_> {}
 
 impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
     fn allocate_funcs(
