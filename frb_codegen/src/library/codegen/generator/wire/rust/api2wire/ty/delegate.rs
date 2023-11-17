@@ -40,6 +40,6 @@ impl<'a> WireRustGeneratorApi2wireTrait for DelegateWireRustGenerator<'a> {
     }
 
     fn generate_access_object_core(&self, obj: String) -> String {
-        forward_delegate_primitive_enum!(self, self_access(obj), obj)
+        forward_delegate_primitive_enum!(self, generate_access_object_core(obj), obj)
     }
 }
