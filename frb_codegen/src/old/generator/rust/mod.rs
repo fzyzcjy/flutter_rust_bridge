@@ -208,6 +208,7 @@ impl<'a> Generator<'a> {
         distinct_input_types: &[IrType],
         ir_pack: &IrPack,
     ) {
+        // TODO
         (lines.wasm).push(self.section_header_comment("impl Wire2Api for JsValue"));
         (lines.wasm).push(
             "impl<T> Wire2Api<Option<T>> for JsValue where JsValue: Wire2Api<T> {

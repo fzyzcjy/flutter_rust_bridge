@@ -10,25 +10,32 @@ use std::convert::TryInto;
 mod misc;
 pub(crate) mod ty;
 
-pub(crate) fn generate_impl_wire2api() {
-    todo!()
-    // generate_impl_wire2api_misc();
-    // generate_wire2api_for_type();
+pub(crate) fn generate_impl_wire2api() -> Acc<Vec<String>> {
+    let mut lines = Acc::<Vec<String>>::default();
+    lines.push_acc(generate_impl_wire2api_misc());
+    lines.push_acc(generate_wire2api_for_type());
+    lines
 }
 
-fn generate_impl_wire2api_misc() -> &'static str {
-    r#"pub trait Wire2Api<T> {
-        fn wire2api(self) -> T;
-    }
+fn generate_impl_wire2api_misc() -> Acc<String> {
+    Acc {
+        common: r#"
+            pub trait Wire2Api<T> {
+                fn wire2api(self) -> T;
+            }
 
-    impl<T, S> Wire2Api<Option<T>> for *mut S
-    where
-        *mut S: Wire2Api<T>
-    {
-        fn wire2api(self) -> Option<T> {
-            (!self.is_null()).then(|| self.wire2api())
-        }
-    }"#
+            impl<T, S> Wire2Api<Option<T>> for *mut S
+            where
+                *mut S: Wire2Api<T>
+            {
+                fn wire2api(self) -> Option<T> {
+                    (!self.is_null()).then(|| self.wire2api())
+                }
+            }
+        "#
+        .to_owned(),
+        ..Default::default()
+    }
 }
 
 fn generate_wire2api_for_type(ty: &IrType, context: WireRustGeneratorContext) -> Acc<String> {
