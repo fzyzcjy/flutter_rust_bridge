@@ -1,5 +1,7 @@
 use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
 use crate::codegen::ir::ty::IrType;
+use crate::library::codegen::generator::wire::rust::common::ty::WireRustGeneratorCommonTrait;
+use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 pub(crate) mod ty;
@@ -23,10 +25,15 @@ pub(crate) fn generate_wrapper_struct(
         })
 }
 
-pub(crate) fn generate_static_checks(types: &[IrType]) -> String {
+pub(crate) fn generate_static_checks(
+    types: &[IrType],
+    context: &WireRustGeneratorContext,
+) -> String {
     let raw = types
         .iter()
-        .map(|ty| ty.generate_static_checks())
+        .filter_map(|ty| {
+            WireRustGenerator::new(ty.clone(), context.clone()).generate_static_checks()
+        })
         .collect_vec();
 
     if raw.is_empty() {

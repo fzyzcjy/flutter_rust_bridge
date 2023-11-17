@@ -1,5 +1,7 @@
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::common::ty::WireRustGeneratorCommonTrait;
+use crate::library::codegen::ir::ty::IrTypeTrait;
+use itertools::Itertools;
 
 impl<'a> WireRustGeneratorCommonTrait for StructRefWireRustGenerator<'a> {
     fn wrapper_struct_name(&self) -> Option<String> {
@@ -27,7 +29,7 @@ impl<'a> WireRustGeneratorCommonTrait for StructRefWireRustGenerator<'a> {
                     field.ty.rust_api_type(),
                     var,
                     if src.is_fields_named {
-                        field.name.to_string()
+                        field.name.raw.to_string()
                     } else {
                         i.to_string()
                     },

@@ -1,5 +1,8 @@
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::common::ty::WireRustGeneratorCommonTrait;
+use crate::codegen::ir::ty::enumeration::IrVariantKind;
+use crate::library::codegen::ir::ty::IrTypeTrait;
+use itertools::Itertools;
 
 impl<'a> WireRustGeneratorCommonTrait for EnumRefWireRustGenerator<'a> {
     fn wrapper_struct_name(&self) -> Option<String> {
@@ -15,7 +18,7 @@ impl<'a> WireRustGeneratorCommonTrait for EnumRefWireRustGenerator<'a> {
             .variants()
             .iter()
             .map(|variant| match &variant.kind {
-                IrVariantKind::Value => format!("{}::{} => {{}}", src.name, variant.name),
+                IrVariantKind::Value => format!("{}::{} => {{}}", src.name, &variant.name.raw),
                 IrVariantKind::Struct(s) => {
                     let pattern = s
                         .fields
@@ -23,9 +26,14 @@ impl<'a> WireRustGeneratorCommonTrait for EnumRefWireRustGenerator<'a> {
                         .map(|field| field.name.rust_style().to_owned())
                         .collect_vec();
                     let pattern = if s.is_fields_named {
-                        format!("{}::{} {{ {} }}", src.name, variant.name, pattern.join(","))
+                        format!(
+                            "{}::{} {{ {} }}",
+                            src.name,
+                            variant.name.raw,
+                            pattern.join(",")
+                        )
                     } else {
-                        format!("{}::{}({})", src.name, variant.name, pattern.join(","))
+                        format!("{}::{}({})", src.name, &variant.name.raw, pattern.join(","))
                     };
                     let checks = s
                         .fields
