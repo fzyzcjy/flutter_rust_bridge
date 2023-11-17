@@ -158,8 +158,4 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
     fn imports(&self) -> Option<String> {
         delegate_enum!(self, imports(), None)
     }
-
-    fn self_access(&self, obj: String) -> String {
-        delegate_enum!(self, self_access(obj), obj)
-    }
 }

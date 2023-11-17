@@ -13,10 +13,6 @@ pub trait TypeRustGeneratorTrait {
         None
     }
 
-    fn self_access(&self, obj: String) -> String {
-        obj
-    }
-
     fn allocate_funcs(
         &self,
         _collector: &mut ExternFuncCollector,

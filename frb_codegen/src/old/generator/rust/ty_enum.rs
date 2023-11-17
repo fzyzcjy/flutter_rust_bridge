@@ -87,14 +87,6 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
         })
     }
 
-    fn self_access(&self, obj: String) -> String {
-        let src = self.ir.get(self.context.ir_pack);
-        match &src.wrapper_name {
-            Some(_) => format!("{obj}.0"),
-            None => obj,
-        }
-    }
-
     fn new_with_nullptr(&self, collector: &mut ExternFuncCollector) -> String {
         fn init_of(ty: &IrType) -> String {
             if ty.rust_wire_is_pointer(Io) {

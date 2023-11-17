@@ -39,10 +39,6 @@ impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
         )
     }
 
-    fn self_access(&self, obj: String) -> String {
-        obj
-    }
-
     fn allocate_funcs(
         &self,
         collector: &mut ExternFuncCollector,

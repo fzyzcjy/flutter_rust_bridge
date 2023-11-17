@@ -69,4 +69,12 @@ impl<'a> WireRustGeneratorApi2wireTrait for EnumRefWireRustGenerator<'a> {
             variants.join("\n")
         ))
     }
+
+    fn self_access(&self, obj: String) -> String {
+        let src = self.ir.get(self.context.ir_pack);
+        match &src.wrapper_name {
+            Some(_) => format!("{obj}.0"),
+            None => obj,
+        }
+    }
 }
