@@ -97,19 +97,6 @@ impl Opts {
             wasm_path: self.dart_wasm_output_path(),
         }
     }
-    pub fn get_dart_api_bridge_name(&self) -> String {
-        if self.use_bridge_in_method {
-            "bridge".to_owned()
-        } else {
-            Path::new(&self.rust_input_path)
-                .file_stem()
-                .unwrap()
-                .to_str()
-                .unwrap()
-                .to_owned()
-                .to_case(Case::Camel)
-        }
-    }
 }
 
 pub struct PathForGeneration {

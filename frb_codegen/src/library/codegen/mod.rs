@@ -10,7 +10,9 @@ use crate::codegen::generator::dart_api::internal_config::GeneratorDartApiIntern
 use crate::codegen::generator::output::OutputCode;
 pub use config::config::{Config, ConfigDump};
 pub use config::config_parser::*;
+use convert_case::Case;
 use log::debug;
+use std::path::Path;
 
 /// Execute the main code generator
 pub fn generate(config: Config) -> anyhow::Result<()> {
@@ -30,12 +32,23 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
     Ok(())
 }
 
-// TODO move
 impl From<GeneratorDartInternalConfig> for GeneratorDartApiInternalConfig {
     fn from(config: GeneratorDartInternalConfig) -> Self {
+        let dart_api_instance_name = if config.use_bridge_in_method {
+            "bridge".to_owned()
+        } else {
+            Path::new(&config.rust_input_path)
+                .file_stem()
+                .unwrap()
+                .to_str()
+                .unwrap()
+                .to_owned()
+                .to_case(Case::Camel)
+        };
+
         GeneratorDartApiInternalConfig {
             dart_api_class_name: TODO,
-            dart_api_instance_name: TODO,
+            dart_api_instance_name,
             dart_enums_style: config.dart_enums_style,
             use_bridge_in_method: config.use_bridge_in_method,
             dart3: config.dart3,
