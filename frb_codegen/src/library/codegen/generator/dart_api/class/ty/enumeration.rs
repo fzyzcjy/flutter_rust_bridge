@@ -7,7 +7,7 @@ use crate::codegen::generator::dart_api::misc::{
     generate_dart_comments, generate_dart_maybe_implements_exception,
 };
 use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::ty::enumeration::{IrEnumMode, IrVariant, IrVariantKind};
+use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumMode, IrVariant, IrVariantKind};
 use crate::codegen::ir::ty::structure::IrStruct;
 use crate::library::codegen::generator::dart_api::decl::DartApiGeneratorDeclTrait;
 use crate::utils::dart_keywords::make_string_keyword_safe;
@@ -17,63 +17,67 @@ const BACKTRACE_IDENT: &str = "backtrace";
 impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {
     fn generate_class(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
-
-        let comments = generate_dart_comments(&src.comments);
         match src.mode {
-            IrEnumMode::Complex => {
-                let variants = src
-                    .variants()
-                    .iter()
-                    .map(|variant| self.generate_variant(&variant))
-                    .collect::<Vec<_>>();
-
-                let sealed = if self.context.config.dart3 {
-                    "sealed"
-                } else {
-                    ""
-                };
-
-                Some(format!(
-                    "@freezed
-                {sealed} class {0} with _${0} {1} {{
-                    {2}
-                }}",
-                    self.ir.ident.0,
-                    generate_dart_maybe_implements_exception(self.ir.is_exception),
-                    variants.join("\n")
-                ))
-            }
-            IrEnumMode::Simple => {
-                let variants = src
-                    .variants()
-                    .iter()
-                    .map(|variant| {
-                        let variant_name = if self.context.config.dart_enums_style {
-                            make_string_keyword_safe(variant.name.dart_style())
-                        } else {
-                            variant.name.rust_style().to_string()
-                        };
-
-                        format!(
-                            "{}{},",
-                            generate_dart_comments(&variant.comments),
-                            variant_name
-                        )
-                    })
-                    .collect::<Vec<_>>()
-                    .join("\n");
-                Some(format!(
-                    "{}enum {} {{
-                    {}
-                }}",
-                    comments, self.ir.ident.0, variants
-                ))
-            }
+            IrEnumMode::Simple => self.generate_mode_simple(src),
+            IrEnumMode::Complex => self.generate_mode_complex(src),
         }
     }
 }
 
 impl<'a> EnumRefDartApiGenerator<'a> {
+    fn generate_mode_simple(&self, src: &IrEnum) -> Option<String> {
+        let comments = generate_dart_comments(&src.comments);
+
+        let variants = src
+            .variants()
+            .iter()
+            .map(|variant| {
+                let variant_name = if self.context.config.dart_enums_style {
+                    make_string_keyword_safe(variant.name.dart_style())
+                } else {
+                    variant.name.rust_style().to_string()
+                };
+
+                format!(
+                    "{}{},",
+                    generate_dart_comments(&variant.comments),
+                    variant_name
+                )
+            })
+            .collect::<Vec<_>>()
+            .join("\n");
+        Some(format!(
+            "{}enum {} {{
+                    {}
+                }}",
+            comments, self.ir.ident.0, variants
+        ))
+    }
+
+    fn generate_mode_complex(&self, src: &IrEnum) -> Option<String> {
+        let variants = src
+            .variants()
+            .iter()
+            .map(|variant| self.generate_variant(&variant))
+            .collect::<Vec<_>>();
+
+        let sealed = if self.context.config.dart3 {
+            "sealed"
+        } else {
+            ""
+        };
+
+        Some(format!(
+            "@freezed
+                {sealed} class {0} with _${0} {1} {{
+                    {2}
+                }}",
+            self.ir.ident.0,
+            generate_dart_maybe_implements_exception(self.ir.is_exception),
+            variants.join("\n")
+        ))
+    }
+
     fn generate_variant(&self, variant: &IrVariant) -> String {
         let has_backtrace = matches!(&variant.kind,
             IrVariantKind::Struct(IrStruct {is_fields_named: true,fields,..}) if fields.iter().any(|field| field.name.raw == BACKTRACE_IDENT));
