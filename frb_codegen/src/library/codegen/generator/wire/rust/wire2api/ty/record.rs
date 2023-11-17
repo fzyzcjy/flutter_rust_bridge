@@ -1,5 +1,5 @@
 use crate::codegen::generator::wire::rust::base::*;
-use crate::codegen::generator::wire::rust::class::ty::WireRustClassGeneratorClassTrait;
+use crate::codegen::generator::wire::rust::wire2api::ty::WireRustClassGeneratorClassTrait;
 
 impl<'a> WireRustClassGeneratorClassTrait for RecordWireRustGenerator<'a> {
     fn generate_class(&self) -> Option<String> {

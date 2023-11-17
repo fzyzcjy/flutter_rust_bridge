@@ -1,6 +1,6 @@
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
-use crate::codegen::generator::wire::rust::class::ty::WireRustClassGeneratorClassTrait;
+use crate::codegen::generator::wire::rust::wire2api::ty::WireRustClassGeneratorClassTrait;
 use crate::codegen::ir::ty::enumeration::{IrEnumMode, IrVariant, IrVariantKind};
 use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
 use itertools::Itertools;
