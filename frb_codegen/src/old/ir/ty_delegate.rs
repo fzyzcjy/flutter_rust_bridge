@@ -39,8 +39,4 @@ impl IrTypeTrait for IrTypeDelegate {
             _ => self.get_delegate().dart_wire_type(target),
         }
     }
-
-    fn rust_wire_is_pointer(&self, target: Target) -> bool {
-        self.get_delegate().rust_wire_is_pointer(target)
-    }
 }

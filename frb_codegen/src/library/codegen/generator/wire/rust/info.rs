@@ -8,6 +8,10 @@ use enum_dispatch::enum_dispatch;
 #[enum_dispatch]
 pub(crate) trait WireRustGeneratorInfoTrait {
     fn rust_wire_type(&self, target: Target) -> String;
+
+    fn rust_wire_is_pointer(&self, _target: Target) -> bool {
+        false
+    }
 }
 
 const JS_VALUE: &str = "JsValue";
@@ -20,6 +24,13 @@ impl<'a> WireRustGeneratorInfoTrait for BoxedWireRustGenerator<'a> {
             WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone())
                 .rust_wire_type(target)
         }
+    }
+
+    fn rust_wire_is_pointer(&self, target: Target) -> bool {
+        (target != Target::Wasm)
+            || !self.ir.inner.is_js_value()
+                && !self.ir.inner.is_array()
+                && !self.ir.inner.is_primitive()
     }
 }
 
@@ -39,6 +50,10 @@ impl<'a> WireRustGeneratorInfoTrait for DelegateWireRustGenerator<'a> {
                 .rust_wire_type(target),
         }
     }
+
+    fn rust_wire_is_pointer(&self, target: Target) -> bool {
+        self.get_delegate().rust_wire_is_pointer(target)
+    }
 }
 
 impl<'a> WireRustGeneratorInfoTrait for DynamicWireRustGenerator<'a> {
@@ -56,6 +71,10 @@ impl<'a> WireRustGeneratorInfoTrait for EnumRefWireRustGenerator<'a> {
 impl<'a> WireRustGeneratorInfoTrait for GeneralListWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         rust_wire_type_add_prefix_or_js_value(&self.ir, target)
+    }
+
+    fn rust_wire_is_pointer(&self, target: Target) -> bool {
+        target != Target::Wasm
     }
 }
 
@@ -76,11 +95,19 @@ impl<'a> WireRustGeneratorInfoTrait for OptionalWireRustGenerator<'a> {
             format!("Option<{}>", inner_rust_wire_type)
         }
     }
+
+    fn rust_wire_is_pointer(&self, target: Target) -> bool {
+        target != Target::Wasm || self.ir.inner.rust_wire_is_pointer(target)
+    }
 }
 
 impl<'a> WireRustGeneratorInfoTrait for OptionalListWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         rust_wire_type_add_prefix_or_js_value(&self.ir, target)
+    }
+
+    fn rust_wire_is_pointer(&self, target: Target) -> bool {
+        target != Target::Wasm
     }
 }
 
@@ -100,6 +127,10 @@ impl<'a> WireRustGeneratorInfoTrait for PrimitiveListWireRustGenerator<'a> {
         } else {
             format!("wire_{}", self.ir.safe_ident())
         }
+    }
+
+    fn rust_wire_is_pointer(&self, target: Target) -> bool {
+        target != Target::Wasm
     }
 }
 

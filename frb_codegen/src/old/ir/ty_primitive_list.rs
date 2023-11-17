@@ -15,10 +15,6 @@ impl IrTypeTrait for IrTypePrimitiveList {
             format!("ffi.Pointer<wire_{}>", self.safe_ident())
         }
     }
-
-    fn rust_wire_is_pointer(&self, target: Target) -> bool {
-        target != Target::Wasm
-    }
 }
 
 impl IrTypePrimitiveList {

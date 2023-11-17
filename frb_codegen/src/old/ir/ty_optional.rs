@@ -12,8 +12,4 @@ impl IrTypeTrait for IrTypeOptional {
             self.inner.dart_wire_type(target)
         }
     }
-
-    fn rust_wire_is_pointer(&self, target: Target) -> bool {
-        target != Target::Wasm || self.inner.rust_wire_is_pointer(target)
-    }
 }

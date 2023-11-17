@@ -11,9 +11,6 @@ impl IrTypeTrait for IrTypeOptionalList {
             Target::Common => unreachable!(),
         }
     }
-    fn rust_wire_is_pointer(&self, target: Target) -> bool {
-        target != Target::Wasm
-    }
     fn intodart_type(&self, ir_pack: &IrPack) -> String {
         format!("Vec<Option<{}>>", self.inner.intodart_type(ir_pack))
     }

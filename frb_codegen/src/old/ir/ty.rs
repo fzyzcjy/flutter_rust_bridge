@@ -88,10 +88,6 @@ pub trait IrTypeTrait {
         }
     }
 
-    fn rust_wire_is_pointer(&self, _target: Target) -> bool {
-        false
-    }
-
     fn dart_param_type(&self) -> &'static str {
         "dynamic"
     }

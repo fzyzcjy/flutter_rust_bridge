@@ -12,9 +12,6 @@ impl IrTypeTrait for IrTypeGeneralList {
         }
     }
 
-    fn rust_wire_is_pointer(&self, target: Target) -> bool {
-        target != Target::Wasm
-    }
     fn intodart_type(&self, ir_pack: &IrPack) -> String {
         format!("Vec<{}>", self.inner.intodart_type(ir_pack))
     }

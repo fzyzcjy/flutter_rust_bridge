@@ -26,11 +26,6 @@ impl IrTypeTrait for IrTypeBoxed {
         }
     }
 
-    fn rust_wire_is_pointer(&self, target: Target) -> bool {
-        (target != Target::Wasm)
-            || !self.inner.is_js_value() && !self.inner.is_array() && !self.inner.is_primitive()
-    }
-
     fn intodart_type(&self, ir_pack: &IrPack) -> String {
         self.inner.intodart_type(ir_pack)
     }
