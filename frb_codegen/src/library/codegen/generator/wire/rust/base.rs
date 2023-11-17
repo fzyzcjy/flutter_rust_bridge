@@ -1,3 +1,4 @@
+use crate::codegen::generator::wire::rust::api2wire::ty::WireRustGeneratorApi2wireTrait;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::dart_opaque::IrTypeDartOpaque;

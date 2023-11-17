@@ -18,4 +18,6 @@ mod unencodable;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
-pub(crate) trait WireRustGeneratorApi2wireTrait {}
+pub(crate) trait WireRustGeneratorApi2wireTrait {
+    fn todo(&self) {}
+}

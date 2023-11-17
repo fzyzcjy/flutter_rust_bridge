@@ -1,2 +1,2 @@
 mod misc;
-mod ty;
+pub(crate) mod ty;
