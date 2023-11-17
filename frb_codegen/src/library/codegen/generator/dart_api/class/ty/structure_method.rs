@@ -126,12 +126,8 @@ fn generate_signature(
         &func.mode,
         &DartApiGenerator::new(func.output.clone(), context.clone()).dart_api_type(),
     );
-    let method_name = if is_static_method {
-        if method_info.actual_method_name == "new" {
-            format!("new{}", ir_struct.name)
-        } else {
-            method_info.actual_method_name.to_case(Case::Camel)
-        }
+    let method_name = if is_static_method && method_info.actual_method_name == "new" {
+        format!("new{}", ir_struct.name)
     } else {
         method_info.actual_method_name.to_case(Case::Camel)
     };
