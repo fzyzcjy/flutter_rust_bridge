@@ -55,7 +55,7 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for EnumRefWireRustGenerator<'a> {
         if let Target::Wasm = target {
             JS_VALUE.into()
         } else {
-            format!("wire_{}", self.ir.ident.0)
+            format!("wire_{}", self.ir.safe_ident())
         }
     }
 }
@@ -153,7 +153,7 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for StructRefWireRustGenerator<'a> {
         if let Target::Wasm = target {
             JS_VALUE.into()
         } else {
-            format!("wire_{}", self.ir.ident.0)
+            format!("wire_{}", self.ir.safe_ident())
         }
     }
 }
