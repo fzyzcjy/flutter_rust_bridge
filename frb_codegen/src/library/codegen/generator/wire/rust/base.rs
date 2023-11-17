@@ -20,11 +20,8 @@ use crate::codegen_generator_structs;
 use enum_dispatch::enum_dispatch;
 use paste::paste;
 
-// TODO
-pub(crate) trait TodoTrait {}
-
 codegen_generator_structs!(
-    TodoTrait;
+    ApiDartGeneratorRustWireTypeTrait;
 
     WireRustGenerator;
 

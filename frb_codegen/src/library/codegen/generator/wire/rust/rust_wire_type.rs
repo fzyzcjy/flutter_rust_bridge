@@ -1,103 +1,90 @@
-use crate::codegen::generator::api_dart::base::*;
-use crate::codegen::ir::ty::delegate::{
-    IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
-};
-use crate::codegen::ir::ty::primitive::IrTypePrimitive;
-use crate::codegen::ir::ty::{IrType, IrTypeTrait};
-use convert_case::{Case, Casing};
+use crate::codegen::generator::wire::rust::base::*;
 use enum_dispatch::enum_dispatch;
-use itertools::Itertools;
 
 #[enum_dispatch]
-pub(crate) trait ApiDartGeneratorRustWireTypeTrait {
+pub(crate) trait WireRustGeneratorRustWireTypeTrait {
     fn rust_wire_type(&self) -> String;
 }
 
-impl<'a> ApiDartGeneratorRustWireTypeTrait for BoxedApiDartGenerator<'a> {
+impl<'a> WireRustGeneratorRustWireTypeTrait for BoxedWireRustGenerator<'a> {
     fn rust_wire_type(&self) -> String {
         todo!()
     }
 }
 
-impl<'a> ApiDartGeneratorRustWireTypeTrait for DartOpaqueApiDartGenerator<'a> {
+impl<'a> WireRustGeneratorRustWireTypeTrait for DartOpaqueWireRustGenerator<'a> {
     fn rust_wire_type(&self) -> String {
         todo!()
     }
 }
 
-impl<'a> ApiDartGeneratorRustWireTypeTrait for DelegateApiDartGenerator<'a> {
+impl<'a> WireRustGeneratorRustWireTypeTrait for DelegateWireRustGenerator<'a> {
     fn rust_wire_type(&self) -> String {
         todo!()
     }
 }
 
-impl IrTypeDelegateArray {
-    pub(crate) fn rust_wire_type(&self, context: ApiDartGeneratorContext) -> String {
-        todo!()
-    }
-}
-
-impl<'a> ApiDartGeneratorRustWireTypeTrait for DynamicApiDartGenerator<'a> {
+impl<'a> WireRustGeneratorRustWireTypeTrait for DynamicWireRustGenerator<'a> {
     fn rust_wire_type(&self) -> String {
         todo!()
     }
 }
 
-impl<'a> ApiDartGeneratorRustWireTypeTrait for EnumRefApiDartGenerator<'a> {
+impl<'a> WireRustGeneratorRustWireTypeTrait for EnumRefWireRustGenerator<'a> {
     fn rust_wire_type(&self) -> String {
         todo!()
     }
 }
 
-impl<'a> ApiDartGeneratorRustWireTypeTrait for GeneralListApiDartGenerator<'a> {
+impl<'a> WireRustGeneratorRustWireTypeTrait for GeneralListWireRustGenerator<'a> {
     fn rust_wire_type(&self) -> String {
         todo!()
     }
 }
 
-impl<'a> ApiDartGeneratorRustWireTypeTrait for OptionalApiDartGenerator<'a> {
+impl<'a> WireRustGeneratorRustWireTypeTrait for OptionalWireRustGenerator<'a> {
     fn rust_wire_type(&self) -> String {
         todo!()
     }
 }
 
-impl<'a> ApiDartGeneratorRustWireTypeTrait for OptionalListApiDartGenerator<'a> {
+impl<'a> WireRustGeneratorRustWireTypeTrait for OptionalListWireRustGenerator<'a> {
     fn rust_wire_type(&self) -> String {
         todo!()
     }
 }
 
-impl<'a> ApiDartGeneratorRustWireTypeTrait for PrimitiveApiDartGenerator<'a> {
+impl<'a> WireRustGeneratorRustWireTypeTrait for PrimitiveWireRustGenerator<'a> {
     fn rust_wire_type(&self) -> String {
         todo!()
     }
 }
 
-impl<'a> ApiDartGeneratorRustWireTypeTrait for PrimitiveListApiDartGenerator<'a> {
+impl<'a> WireRustGeneratorRustWireTypeTrait for PrimitiveListWireRustGenerator<'a> {
     fn rust_wire_type(&self) -> String {
         todo!()
     }
 }
 
-impl<'a> ApiDartGeneratorRustWireTypeTrait for RecordApiDartGenerator<'a> {
+impl<'a> WireRustGeneratorRustWireTypeTrait for RecordWireRustGenerator<'a> {
     fn rust_wire_type(&self) -> String {
         todo!()
     }
 }
 
-impl<'a> ApiDartGeneratorRustWireTypeTrait for RustOpaqueApiDartGenerator<'a> {
+impl<'a> WireRustGeneratorRustWireTypeTrait for RustOpaqueWireRustGenerator<'a> {
     fn rust_wire_type(&self) -> String {
         todo!()
     }
 }
 
-impl<'a> ApiDartGeneratorRustWireTypeTrait for StructRefApiDartGenerator<'a> {
+impl<'a> WireRustGeneratorRustWireTypeTrait for StructRefWireRustGenerator<'a> {
     fn rust_wire_type(&self) -> String {
         todo!()
     }
 }
 
-impl<'a> ApiDartGeneratorRustWireTypeTrait for UnencodableApiDartGenerator<'a> {
+impl<'a> WireRustGeneratorRustWireTypeTrait for UnencodableWireRustGenerator<'a> {
     fn rust_wire_type(&self) -> String {
         todo!()
     }
