@@ -1,5 +1,5 @@
 use crate::codegen::generator::dart_api::base::*;
-use crate::codegen::generator::dart_api::class::DartApiGeneratorClassTrait;
+use crate::codegen::generator::dart_api::class::ty::DartApiGeneratorClassTrait;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::dart_api::decl::DartApiGeneratorDeclTrait;
 use IrType::RustOpaque;
