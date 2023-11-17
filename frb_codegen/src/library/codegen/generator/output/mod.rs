@@ -21,3 +21,9 @@ impl OutputCode {
         todo!()
     }
 }
+
+impl From<DartOutputCode> for OutputCode {
+    fn from(_value: DartOutputCode) -> Self {
+        todo!()
+    }
+}
