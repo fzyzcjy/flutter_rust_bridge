@@ -10,7 +10,7 @@ use crate::utils::misc::BlockIndex;
 type_rust_generator_struct!(TypeBoxedGenerator, IrTypeBoxed);
 
 impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
-    fn wire2api_body(&self) -> Acc<Option<String>> {
+    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
         let box_inner = self.ir.inner.as_ref();
         let exist_in_real_api = self.ir.exist_in_real_api;
         Acc::new(|target| match (target, self.ir.inner.as_ref()) {
@@ -35,7 +35,7 @@ impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
         })
     }
 
-    fn wire2api_jsvalue(&self) -> Option<std::borrow::Cow<str>> {
+    fn generate_impl_wire2api_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
         (self.ir.exist_in_real_api).then(|| match &*self.ir.inner {
             IrType::Delegate(IrTypeDelegate::PrimitiveEnum { repr, .. }) => format!(
                 "let ptr: Box<{}> = self.wire2api(); Box::new(ptr.wire2api())",

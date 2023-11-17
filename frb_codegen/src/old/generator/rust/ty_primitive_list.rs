@@ -9,7 +9,7 @@ use crate::utils::misc::BlockIndex;
 type_rust_generator_struct!(TypePrimitiveListGenerator, IrTypePrimitiveList);
 
 impl TypeRustGeneratorTrait for TypePrimitiveListGenerator<'_> {
-    fn wire2api_body(&self) -> Acc<Option<String>> {
+    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
         Acc {
             wasm: Some("self.into_vec()".into()),
             io: Some(
@@ -23,7 +23,7 @@ impl TypeRustGeneratorTrait for TypePrimitiveListGenerator<'_> {
         }
     }
 
-    fn wire2api_jsvalue(&self) -> Option<std::borrow::Cow<str>> {
+    fn generate_impl_wire2api_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
         match self.ir.primitive {
             IrTypePrimitive::Bool | IrTypePrimitive::Unit => Some("todo!()".into()),
             IrTypePrimitive::I64 | IrTypePrimitive::U64 => Some(

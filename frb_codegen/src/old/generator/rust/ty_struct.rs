@@ -9,7 +9,7 @@ use crate::type_rust_generator_struct;
 type_rust_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
 impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
-    fn wire2api_body(&self) -> Acc<Option<String>> {
+    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
         let api_struct = self.ir.get(self.context.ir_pack);
         let fields: Acc<Vec<_>> = api_struct
             .fields

@@ -11,7 +11,7 @@ use super::{ExternFuncCollector, NO_PARAMS};
 type_rust_generator_struct!(TypeRustOpaqueGenerator, IrTypeRustOpaque);
 
 impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
-    fn wire2api_body(&self) -> crate::target::Acc<Option<String>> {
+    fn generate_impl_wire2api_body(&self) -> crate::target::Acc<Option<String>> {
         Acc {
             io: Some(
                 "unsafe {
@@ -24,7 +24,7 @@ impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
     }
 
     /// Handles JsValue to Self conversions.
-    fn wire2api_jsvalue(&self) -> Option<Cow<str>> {
+    fn generate_impl_wire2api_jsvalue_body(&self) -> Option<Cow<str>> {
         Some(
             r#"
             #[cfg(target_pointer_width = "64")]

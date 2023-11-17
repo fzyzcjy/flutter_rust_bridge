@@ -54,7 +54,7 @@ fn generate_impl_wire2api_misc() -> Acc<String> {
 
 fn generate_wire2api_for_type(ty: &IrType, context: &WireRustGeneratorContext) -> Acc<String> {
     let generator = WireRustGenerator::new(ty.clone(), context.clone());
-    let raw: Acc<Option<String>> = generator.wire2api_body();
+    let raw: Acc<Option<String>> = generator.generate_impl_wire2api_body();
     raw.map(|body, target| {
         body.map(|body| {
             let target: Target = target.try_into().unwrap();
@@ -75,7 +75,7 @@ fn generate_wire2api_for_type(ty: &IrType, context: &WireRustGeneratorContext) -
 
 fn generate_wasm2api_func(ty: &IrType, context: &WireRustGeneratorContext) -> Option<String> {
     let generator = WireRustGenerator::new(ty.clone(), context.clone());
-    generator.wire2api_jsvalue().map(|body| {
+    generator.generate_impl_wire2api_jsvalue_body().map(|body| {
         format!(
             "impl Wire2Api<{api}> for JsValue {{
                 fn wire2api(self) -> {api} {{

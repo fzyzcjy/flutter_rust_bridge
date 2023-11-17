@@ -5,7 +5,7 @@ use super::TypeRustGeneratorTrait;
 type_rust_generator_struct!(TypeDynamicGenerator, IrTypeDynamic);
 
 impl TypeRustGeneratorTrait for TypeDynamicGenerator<'_> {
-    fn wire2api_body(&self) -> Acc<Option<String>> {
+    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
         Default::default()
     }
 }

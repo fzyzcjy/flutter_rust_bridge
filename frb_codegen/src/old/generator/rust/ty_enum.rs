@@ -12,7 +12,7 @@ use crate::type_rust_generator_struct;
 type_rust_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 
 impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
-    fn wire2api_body(&self) -> Acc<Option<String>> {
+    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
         let enu = self.ir.get(self.context.ir_pack);
         Acc::new(|target| {
             if matches!(target, Common) {

@@ -6,10 +6,10 @@ use crate::type_rust_generator_struct;
 type_rust_generator_struct!(TypePrimitiveGenerator, IrTypePrimitive);
 
 impl TypeRustGeneratorTrait for TypePrimitiveGenerator<'_> {
-    fn wire2api_body(&self) -> Acc<Option<String>> {
+    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
         "self".into()
     }
-    fn wire2api_jsvalue(&self) -> Option<std::borrow::Cow<str>> {
+    fn generate_impl_wire2api_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
         use IrTypePrimitive::*;
         Some(match self.ir {
             Bool => "self.is_truthy()".into(),

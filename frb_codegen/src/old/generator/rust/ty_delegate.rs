@@ -12,7 +12,7 @@ use super::generate_impl_into_into_dart;
 type_rust_generator_struct!(TypeDelegateGenerator, IrTypeDelegate);
 
 impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
-    fn wire2api_body(&self) -> Acc<Option<String>> {
+    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
         match &self.ir {
             IrTypeDelegate::Array(array) => {
                 let acc =
@@ -126,7 +126,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
         }
     }
 
-    fn wire2api_jsvalue(&self) -> Option<std::borrow::Cow<str>> {
+    fn generate_impl_wire2api_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
         Some(match &self.ir {
             IrTypeDelegate::String => {
                 "self.as_string().expect(\"non-UTF-8 string, or not a string\")".into()
