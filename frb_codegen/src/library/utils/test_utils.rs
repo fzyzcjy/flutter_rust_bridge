@@ -30,19 +30,38 @@ pub(crate) fn json_golden_test(
     let actual: Value = serde_json::from_str(&actual_str)?;
     debug!("json_golden_test actual:\n{actual_str}");
 
-    let expect: Value = if matcher_path.exists() {
-        serde_json::from_str(&fs::read_to_string(matcher_path)?)?
+    raw_golden_test(&actual, &actual_str, matcher_path, serde_json::from_str)
+}
+
+pub(crate) fn text_golden_test(actual: &str, matcher_path: &Path) -> anyhow::Result<()> {
+    raw_golden_test(actual, actual, matcher_path, |x| Ok(x))
+}
+
+fn raw_golden_test<T, F>(
+    actual: impl AsRef<T>,
+    actual_str: &str,
+    matcher_path: &Path,
+    deserializer: F,
+) -> anyhow::Result<()>
+where
+    T: Eq,
+    F: Fn(String) -> anyhow::Result<T>,
+{
+    let actual = actual.as_ref();
+
+    let expect = deserializer(if matcher_path.exists() {
+        fs::read_to_string(matcher_path)?
     } else {
-        ().into()
-    };
+        "".to_string()
+    })?;
 
     if enable_update_golden() {
-        if actual != expect {
+        if actual != &expect {
             debug!("write golden data");
             fs::write(matcher_path, actual_str)?;
         }
     } else {
-        assert_eq!(actual, expect);
+        assert_eq!(actual, &expect);
     }
 
     Ok(())

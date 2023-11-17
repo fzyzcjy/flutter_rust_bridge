@@ -56,7 +56,7 @@ mod tests {
     use crate::codegen::generator::dart_api::generate;
     use crate::codegen::{parser, Config};
     use crate::utils::logs::configure_opinionated_test_logging;
-    use crate::utils::test_utils::get_test_fixture_dir;
+    use crate::utils::test_utils::{get_test_fixture_dir, text_golden_test};
     use serial_test::serial;
 
     #[test]
@@ -75,7 +75,7 @@ mod tests {
         let ir_pack = parser::parse(&internal_config.parser)?;
         let actual = generate(&ir_pack, &internal_config.generator.dart.into())?;
 
-        todo!();
+        text_golden_test(&actual.code, &test_fixture_dir.join("expect_output.json"))?;
 
         Ok(())
     }
