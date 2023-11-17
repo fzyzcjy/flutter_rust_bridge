@@ -48,7 +48,8 @@ impl MethodNamingUtil {
     pub fn has_methods(struct_name: &str, ir_pack: &IrPack) -> bool {
         ir_pack.funcs.iter().any(|f| {
             let f = FunctionName::deserialize(&f.name);
-            f.is_method_for_struct(struct_name) || f.is_static_method_for_struct(struct_name)
+            f.is_instance_method_for_struct(struct_name)
+                || f.is_static_method_for_struct(struct_name)
         })
     }
 }
@@ -138,7 +139,7 @@ impl FunctionName {
     }
 
     // Tests if the function in `f` is a method for struct with name `struct_name`
-    pub fn is_method_for_struct(&self, struct_name: &str) -> bool {
+    pub fn is_instance_method_for_struct(&self, struct_name: &str) -> bool {
         self.is_non_static_method() && self.struct_name().unwrap() == struct_name
     }
 

@@ -58,7 +58,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
 
         let mut methods = self.context.ir_pack.funcs.iter().filter(|f| {
             let f = FunctionName::deserialize(&f.name);
-            f.is_method_for_struct(&src.name) || f.is_static_method_for_struct(&src.name)
+            f.is_instance_method_for_struct(&src.name) || f.is_static_method_for_struct(&src.name)
         });
         let has_methods = methods.next().is_some();
         let mut inner = s

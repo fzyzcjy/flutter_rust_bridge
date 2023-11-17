@@ -24,7 +24,7 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
             .funcs
             .iter()
             .filter(|f| {
-                &f.owner.is_method_for_struct(&src.name)
+                &f.owner.is_instance_method_for_struct(&src.name)
                     || &f.owner.is_static_method_for_struct(&src.name)
             })
             .collect::<Vec<_>>();
