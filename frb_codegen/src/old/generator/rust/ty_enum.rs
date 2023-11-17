@@ -182,11 +182,11 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
             .iter()
             .filter_map(|variant| {
                 let typ = format!("{}_{}", self.ir.name, variant.name);
-                let body: Vec<_> = if let IrVariantKind::Struct(st) = &variant.kind {
+                let body = if let IrVariantKind::Struct(st) = &variant.kind {
                     st.fields
                         .iter()
                         .map(|field| format!("{}: {}", field.name.rust_style(), init_of(&field.ty)))
-                        .collect()
+                        .collect_vec()
                 } else {
                     return None;
                 };

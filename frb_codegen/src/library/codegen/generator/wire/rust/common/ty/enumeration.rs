@@ -14,7 +14,7 @@ impl<'a> WireRustGeneratorCommonTrait for EnumRefWireRustGenerator<'a> {
         let src = self.ir.get(self.context.ir_pack);
         src.wrapper_name.as_ref()?;
 
-        let branches: Vec<_> = src
+        let branches = src
             .variants()
             .iter()
             .map(|variant| match &variant.kind {
@@ -35,6 +35,7 @@ impl<'a> WireRustGeneratorCommonTrait for EnumRefWireRustGenerator<'a> {
                     } else {
                         format!("{}::{}({})", src.name, &variant.name.raw, pattern.join(","))
                     };
+
                     let checks = s
                         .fields
                         .iter()
@@ -46,10 +47,12 @@ impl<'a> WireRustGeneratorCommonTrait for EnumRefWireRustGenerator<'a> {
                             )
                         })
                         .collect_vec();
+
                     format!("{} => {{ {} }}", pattern, checks.join(""))
                 }
             })
-            .collect();
+            .collect_vec();
+
         Some(format!(
             "match None::<{}>.unwrap() {{ {} }}",
             src.name,

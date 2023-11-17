@@ -19,27 +19,28 @@ impl<'a> WireRustGeneratorCommonTrait for StructRefWireRustGenerator<'a> {
             // let bindings cannot shadow tuple structs
             format!("{}_", src.name)
         };
+
         let checks = src
             .fields
             .iter()
             .enumerate()
             .map(|(i, field)| {
+                let field_access = if src.is_fields_named {
+                    field.name.raw.clone()
+                } else {
+                    i.to_string()
+                };
                 format!(
-                    "let _: {} = {}.{};\n",
-                    field.ty.rust_api_type(),
-                    var,
-                    if src.is_fields_named {
-                        field.name.raw.to_string()
-                    } else {
-                        i.to_string()
-                    },
+                    "let _: {type_str} = {var}.{field_access};\n",
+                    type_str = field.ty.rust_api_type(),
                 )
             })
             .collect_vec()
             .join("");
+
         Some(format!(
-            "{{ let {} = None::<{}>.unwrap(); {} }} ",
-            var, src.name, checks
+            "{{ let {var} = None::<{src_name}>.unwrap(); {checks} }} ",
+            src_name = src.name,
         ))
     }
 }

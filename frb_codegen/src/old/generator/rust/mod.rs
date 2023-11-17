@@ -128,10 +128,10 @@ impl<'a> Generator<'a> {
         lines.push(self.section_header_comment("static checks"));
         // TODO why only `distinct_output_types`, not input types?
         // TODO
-        // let static_checks: Vec<_> = distinct_output_types
+        // let static_checks = distinct_output_types
         //     .iter()
         //     .filter_map(|ty| self.generate_static_checks(ty, ir_pack))
-        //     .collect();
+        //     .collect_vec();
 
         lines.push_all(self.section_header_comment("allocate functions"));
         lines += distinct_input_types

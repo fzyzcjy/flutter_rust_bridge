@@ -64,7 +64,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                             variant.wrapper_name, idx
                         )
                     } else {
-                        let pre_field: Vec<_> = match &variant.kind {
+                        let pre_field = match &variant.kind {
                             IrVariantKind::Struct(st) => st
                                 .fields
                                 .iter()
@@ -76,11 +76,11 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                                         field.name.dart_style()
                                     )
                                 })
-                                .collect(),
+                                .collect_vec(),
                             _ => unreachable!(),
                         };
                         let r = format!("wireObj.kind.ref.{}.ref", variant.name);
-                        let body: Vec<_> = match &variant.kind {
+                        let body = match &variant.kind {
                             IrVariantKind::Struct(st) => st
                                 .fields
                                 .iter()
@@ -91,7 +91,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                                         name = field.name.rust_style(),
                                     )
                                 })
-                                .collect(),
+                                .collect_vec(),
                             _ => unreachable!(),
                         };
                         format!(
