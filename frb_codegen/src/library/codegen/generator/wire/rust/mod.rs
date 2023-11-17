@@ -1,2 +1,2 @@
 mod base;
-mod wire_struct;
+mod class;
