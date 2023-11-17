@@ -1,5 +1,7 @@
 use crate::codegen::generator::wire::rust::api2wire::ty::WireRustGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::rust::base::*;
+use crate::codegen::ir::ty::enumeration::IrVariantKind;
+use itertools::Itertools;
 
 impl<'a> WireRustGeneratorApi2wireTrait for EnumRefWireRustGenerator<'a> {
     fn generate_impl_into_dart(&self) -> Option<String> {
@@ -18,7 +20,7 @@ impl<'a> WireRustGeneratorApi2wireTrait for EnumRefWireRustGenerator<'a> {
                 let tag = format!("{idx}.into_dart()");
                 match &variant.kind {
                     IrVariantKind::Value => {
-                        format!("{self_path}::{} => vec![{tag}],", variant.name)
+                        format!("{self_path}::{} => vec![{tag}],", variant.name.raw)
                     }
                     IrVariantKind::Struct(st) => {
                         let fields = Some(tag)
@@ -42,7 +44,7 @@ impl<'a> WireRustGeneratorApi2wireTrait for EnumRefWireRustGenerator<'a> {
                         format!(
                             "{}::{}{}{}{} => vec![{}],",
                             self_path,
-                            variant.name,
+                            variant.name.raw,
                             left,
                             pattern.join(","),
                             right,
@@ -54,7 +56,7 @@ impl<'a> WireRustGeneratorApi2wireTrait for EnumRefWireRustGenerator<'a> {
             .collect_vec();
 
         let into_into_dart = get_into_into_dart(&src.name, src.wrapper_name.as_ref());
-        format!(
+        Some(format!(
             "impl support::IntoDart for {} {{
                 fn into_dart(self) -> support::DartAbi {{
                     match {} {{
@@ -68,6 +70,6 @@ impl<'a> WireRustGeneratorApi2wireTrait for EnumRefWireRustGenerator<'a> {
             name,
             self_ref,
             variants.join("\n")
-        )
+        ))
     }
 }

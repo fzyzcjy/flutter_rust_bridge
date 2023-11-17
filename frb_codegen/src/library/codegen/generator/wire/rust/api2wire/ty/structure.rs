@@ -1,5 +1,6 @@
 use crate::codegen::generator::wire::rust::api2wire::ty::WireRustGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::rust::base::*;
+use itertools::Itertools;
 
 impl<'a> WireRustGeneratorApi2wireTrait for StructRefWireRustGenerator<'a> {
     fn generate_impl_into_dart(&self) -> Option<String> {
@@ -46,7 +47,7 @@ impl<'a> WireRustGeneratorApi2wireTrait for StructRefWireRustGenerator<'a> {
         };
 
         let into_into_dart = get_into_into_dart(&src.name, src.wrapper_name.as_ref());
-        format!(
+        Some(format!(
             "impl support::IntoDart for {name} {{
                 fn into_dart(self) -> support::DartAbi {{
                     {vec}.into_dart()
@@ -55,6 +56,6 @@ impl<'a> WireRustGeneratorApi2wireTrait for StructRefWireRustGenerator<'a> {
             impl support::IntoDartExceptPrimitive for {name} {{}}
             {into_into_dart}
             "
-        )
+        ))
     }
 }
