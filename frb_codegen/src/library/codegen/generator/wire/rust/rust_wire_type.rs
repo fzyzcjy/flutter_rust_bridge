@@ -2,6 +2,7 @@ use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::codegen::ir::ty::IrTypeTrait;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
@@ -64,7 +65,7 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for GeneralListWireRustGenerator<'a>
         if let Target::Wasm = target {
             JS_VALUE.into()
         } else {
-            format!("wire_{}", self.safe_ident())
+            format!("wire_{}", self.ir.safe_ident())
         }
     }
 }
@@ -86,7 +87,7 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for OptionalListWireRustGenerator<'a
     fn rust_wire_type(&self, target: Target) -> String {
         match target {
             Target::Wasm => JS_VALUE.into(),
-            Target::Io => format!("wire_{}", self.safe_ident()),
+            Target::Io => format!("wire_{}", self.ir.safe_ident()),
             Target::Common => unreachable!(),
         }
     }
@@ -122,7 +123,7 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for PrimitiveListWireRustGenerator<'
                 _ => format!("Box<[{}]>", self.ir.primitive.rust_api_type()),
             }
         } else {
-            format!("wire_{}", self.safe_ident())
+            format!("wire_{}", self.ir.safe_ident())
         }
     }
 }
@@ -132,7 +133,7 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for RecordWireRustGenerator<'a> {
         if target.is_wasm() {
             JS_VALUE.to_string()
         } else {
-            format!("wire_{}", self.safe_ident())
+            format!("wire_{}", self.ir.safe_ident())
         }
     }
 }
@@ -142,7 +143,7 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for RustOpaqueWireRustGenerator<'a> 
         if let Target::Wasm = target {
             JS_VALUE.into()
         } else {
-            format!("wire_{}", self.safe_ident())
+            format!("wire_{}", self.ir.safe_ident())
         }
     }
 }
