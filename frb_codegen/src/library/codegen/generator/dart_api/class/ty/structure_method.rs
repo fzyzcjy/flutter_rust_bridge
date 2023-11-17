@@ -35,55 +35,26 @@ pub(super) fn generate_api_method(
     };
     let is_static_method = method_info.mode == IrFuncOwnerInfoMethodMode::Static;
 
+    // skip the first as it's the method 'self'
     let skip_count = usize::from(!is_static_method);
-    let mut raw_func_param_list = func
-        .inputs
-        .iter()
-        .skip(skip_count) //skip the first as it's the method 'self'
-        .map(|input| {
-            format!(
-                "{required}{} {} {default}",
-                DartApiGenerator::new(input.ty.clone(), context.clone()).dart_api_type(),
-                input.name.dart_style(),
-                required = generate_field_required_modifier(input),
-                default = generate_field_default(input, false, context.config.dart_enums_style)
-            )
-        })
-        .collect_vec();
 
-    if is_static_method && context.config.use_bridge_in_method {
-        raw_func_param_list.insert(0, format!("required {dart_api_class_name} bridge"));
-    }
-
-    let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_string()]].concat();
+    let func_params = generate_func_params(func, context, is_static_method, skip_count);
 
     let comments = generate_dart_comments(&func.comments);
 
-    let partial = format!(
-        "{} {} {}({{ {} }})",
-        if is_static_method { "static" } else { "" },
-        generate_function_dart_return_type(
-            &func.mode,
-            &DartApiGenerator::new(func.output.clone(), context.clone()).dart_api_type()
-        ),
-        if is_static_method {
-            if method_info.actual_method_name == "new" {
-                format!("new{}", ir_struct.name)
-            } else {
-                method_info.actual_method_name.to_case(Case::Camel)
-            }
-        } else {
-            method_info.actual_method_name.to_case(Case::Camel)
-        },
-        full_func_param_list.join(","),
+    let signature = generate_signature(
+        &func,
+        ir_struct,
+        &context,
+        method_info,
+        is_static_method,
+        func_params,
     );
-
-    let signature = partial;
 
     let mut arg_names = func
         .inputs
         .iter()
-        .skip(skip_count) //skip the first as it's the method 'self'
+        .skip(skip_count)
         .map(|input| format!("{}:{},", input.name.dart_style(), input.name.dart_style()))
         .collect_vec();
 
@@ -112,6 +83,61 @@ pub(super) fn generate_api_method(
         implementation,
         comments,
     }
+}
+
+fn generate_func_params(
+    func: &IrFunc,
+    context: &DartApiGeneratorContext,
+    is_static_method: bool,
+    skip_count: usize,
+) -> Vec<String> {
+    let mut ans = func
+        .inputs
+        .iter()
+        .skip(skip_count)
+        .map(|input| {
+            let required = generate_field_required_modifier(input);
+            let default = generate_field_default(input, false, context.config.dart_enums_style);
+            let type_str = DartApiGenerator::new(input.ty.clone(), context.clone()).dart_api_type();
+            let name_str = input.name.dart_style();
+            format!("{required}{type_str} {name_str} {default}")
+        })
+        .collect_vec();
+
+    if is_static_method && context.config.use_bridge_in_method {
+        ans.insert(0, format!("required {dart_api_class_name} bridge"));
+    }
+
+    ans.push("dynamic hint".to_string());
+
+    ans
+}
+
+fn generate_signature(
+    func: &IrFunc,
+    ir_struct: &IrStruct,
+    context: &DartApiGeneratorContext,
+    method_info: &IrFuncOwnerInfoMethod,
+    is_static_method: bool,
+    func_params: Vec<String>,
+) -> String {
+    let maybe_static = if is_static_method { "static" } else { "" };
+    let return_type = generate_function_dart_return_type(
+        &func.mode,
+        &DartApiGenerator::new(func.output.clone(), context.clone()).dart_api_type(),
+    );
+    let method_name = if is_static_method {
+        if method_info.actual_method_name == "new" {
+            format!("new{}", ir_struct.name)
+        } else {
+            method_info.actual_method_name.to_case(Case::Camel)
+        }
+    } else {
+        method_info.actual_method_name.to_case(Case::Camel)
+    };
+    let func_params = func_params.join(",");
+
+    format!("{maybe_static} {return_type} {method_name}({{ {func_params} }})")
 }
 
 fn generate_function_dart_return_type(func_mode: &IrFuncMode, inner: &str) -> String {
