@@ -19,7 +19,5 @@ use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
 pub(crate) trait WireRustGeneratorApi2wireTrait {
-    fn hello(&self) -> Option<String> {
-        None
-    }
+    fn todo(&self) {}
 }
