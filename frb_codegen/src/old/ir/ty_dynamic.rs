@@ -14,8 +14,4 @@ impl IrTypeTrait for IrTypeDynamic {
     fn rust_api_type(&self) -> String {
         "flutter_rust_bridge::DartAbi".to_owned()
     }
-
-    fn rust_wire_type(&self, _target: crate::target::Target) -> String {
-        panic!("Functions cannot receive dynamic parameters.")
-    }
 }

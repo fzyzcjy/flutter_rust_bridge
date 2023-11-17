@@ -19,14 +19,6 @@ impl IrTypeTrait for IrTypeRecord {
         format!("({values},)")
     }
 
-    fn rust_wire_type(&self, target: Target) -> String {
-        if target.is_wasm() {
-            "JsValue".to_string()
-        } else {
-            format!("wire_{}", self.safe_ident())
-        }
-    }
-
     fn intodart_type(&self, ir_pack: &IrPack) -> String {
         let values = self
             .values

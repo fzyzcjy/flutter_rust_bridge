@@ -16,14 +16,6 @@ impl IrTypeTrait for IrTypeGeneralList {
         format!("Vec<{}>", self.inner.rust_api_type())
     }
 
-    fn rust_wire_type(&self, target: Target) -> String {
-        if let Target::Wasm = target {
-            "JsValue".into()
-        } else {
-            format!("wire_{}", self.safe_ident())
-        }
-    }
-
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
         !target.is_wasm()
     }

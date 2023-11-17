@@ -15,14 +15,6 @@ impl IrTypeTrait for IrTypeEnumRef {
         self.name.to_string()
     }
 
-    fn rust_wire_type(&self, target: Target) -> String {
-        if let Target::Wasm = target {
-            "JsValue".into()
-        } else {
-            format!("wire_{}", self.name)
-        }
-    }
-
     fn intodart_type(&self, ir_pack: &IrPack) -> String {
         match &self.get(ir_pack).wrapper_name {
             Some(wrapper) => wrapper.clone(),

@@ -15,17 +15,6 @@ impl IrTypeOptional {
 }
 
 impl IrTypeTrait for IrTypeOptional {
-    fn rust_wire_type(&self, target: Target) -> String {
-        if self.inner.rust_wire_is_pointer(target)
-            || target.is_wasm()
-                && (self.inner.is_js_value() || self.is_primitive() || self.is_boxed_primitive())
-        {
-            self.inner.rust_wire_type(target)
-        } else {
-            format!("Option<{}>", self.inner.rust_wire_type(target))
-        }
-    }
-
     fn rust_api_type(&self) -> String {
         format!("Option<{}>", self.inner.rust_api_type())
     }

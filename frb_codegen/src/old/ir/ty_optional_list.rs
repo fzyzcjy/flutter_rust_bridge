@@ -4,13 +4,6 @@ use crate::target::Target;
 crate::derive_serde_inner_as_newtype!(IrTypeOptionalList);
 
 impl IrTypeTrait for IrTypeOptionalList {
-    fn rust_wire_type(&self, target: Target) -> String {
-        match target {
-            Target::Wasm => "JsValue".into(),
-            Target::Io => format!("wire_{}", self.safe_ident()),
-            Target::Common => unreachable!(),
-        }
-    }
     fn rust_api_type(&self) -> String {
         format!("Vec<Option<{}>>", self.inner.rust_api_type())
     }

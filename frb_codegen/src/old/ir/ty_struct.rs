@@ -15,14 +15,6 @@ impl IrTypeTrait for IrTypeStructRef {
         self.name.to_string()
     }
 
-    fn rust_wire_type(&self, target: Target) -> String {
-        if let Target::Wasm = target {
-            "JsValue".into()
-        } else {
-            format!("wire_{}", self.name)
-        }
-    }
-
     fn intodart_type(&self, ir_pack: &IrPack) -> String {
         let wrapper = self.get(ir_pack).wrapper_name.as_ref();
         wrapper.unwrap_or(&self.rust_api_type()).clone()

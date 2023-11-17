@@ -20,17 +20,6 @@ impl IrTypeTrait for IrTypePrimitiveList {
         format!("Vec<{}>", self.primitive.rust_api_type())
     }
 
-    fn rust_wire_type(&self, target: Target) -> String {
-        if let Target::Wasm = target {
-            match self.primitive {
-                IrTypePrimitive::Bool | IrTypePrimitive::Unit => "JsValue".into(),
-                _ => format!("Box<[{}]>", self.primitive.rust_api_type()),
-            }
-        } else {
-            format!("wire_{}", self.safe_ident())
-        }
-    }
-
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
         !target.is_wasm()
     }

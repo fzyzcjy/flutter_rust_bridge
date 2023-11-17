@@ -12,12 +12,4 @@ impl IrTypeTrait for IrTypeUnencodable {
     fn rust_api_type(&self) -> String {
         self.string.clone()
     }
-
-    fn rust_wire_type(&self, target: crate::target::Target) -> String {
-        if let Target::Wasm = target {
-            "JsValue".into()
-        } else {
-            format!("wire_{}", self.safe_ident())
-        }
-    }
 }
