@@ -1,4 +1,4 @@
-use crate::codegen::generator::misc::Target;
+use crate::codegen::generator::misc::{is_js_value, Target};
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
@@ -67,7 +67,7 @@ impl<'a> WireRustGeneratorRustWireTypeTrait for OptionalWireRustGenerator<'a> {
 
         if self.ir.inner.rust_wire_is_pointer(target)
             || (target == Target::Wasm)
-                && (self.ir.inner.is_js_value()
+                && (is_js_value(&self.ir.inner)
                     || self.ir.is_primitive()
                     || self.ir.is_boxed_primitive())
         {
