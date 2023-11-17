@@ -68,6 +68,7 @@ mod tests {
     fn body(fixture_name: &str) -> anyhow::Result<()> {
         configure_opinionated_test_logging();
         let test_fixture_dir = get_test_fixture_dir(fixture_name);
+        env::set_current_dir(test_fixture_dir)?;
 
         let config = Config::from_files_auto()?;
         let internal_config = InternalConfig::parse(config)?;

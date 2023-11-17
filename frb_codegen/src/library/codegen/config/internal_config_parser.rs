@@ -211,9 +211,10 @@ mod tests {
     use crate::codegen::Config;
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::path_utils::path_to_string;
-    use crate::utils::test_utils::{get_test_fixture_dir, json_golden_test, set_cwd_test_fixture};
+    use crate::utils::test_utils::{get_test_fixture_dir, json_golden_test};
     use serde_json::Value;
     use serial_test::serial;
+    use std::env;
     use std::path::PathBuf;
 
     #[test]
@@ -230,7 +231,8 @@ mod tests {
 
     fn body(fixture_name: &str) -> anyhow::Result<()> {
         configure_opinionated_test_logging();
-        set_cwd_test_fixture(fixture_name)?;
+        let test_fixture_dir = get_test_fixture_dir(fixture_name);
+        env::set_current_dir(test_fixture_dir)?;
 
         let config = Config::from_files_auto()?;
 
@@ -243,7 +245,7 @@ mod tests {
             &actual_json,
             &PathBuf::from("expect_output.json"),
             &vec![(
-                path_to_string(&get_test_fixture_dir(fixture_name))?,
+                path_to_string(&test_fixture_dir)?,
                 "{the-working-directory}".to_owned(),
             )],
         )?;
