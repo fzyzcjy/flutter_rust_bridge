@@ -1,12 +1,12 @@
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
-use crate::codegen::generator::wire::rust::wire2api::ty::WireRustClassGeneratorClassTrait;
+use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::enumeration::{IrEnumMode, IrVariant, IrVariantKind};
 use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
 use itertools::Itertools;
 
-impl<'a> WireRustClassGeneratorClassTrait for EnumRefWireRustGenerator<'a> {
-    fn generate_class(&self) -> Option<String> {
+impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
+    fn generate_wire2api_class(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
         if src.mode == IrEnumMode::Simple {
             return None;

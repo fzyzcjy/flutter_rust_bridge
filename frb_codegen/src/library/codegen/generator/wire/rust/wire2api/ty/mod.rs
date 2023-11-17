@@ -13,15 +13,15 @@ mod structure;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
-pub(crate) trait WireRustClassGeneratorClassTrait {
-    fn generate_class(&self) -> Option<String> {
+pub(crate) trait WireRustGeneratorWire2apiTrait {
+    fn generate_wire2api_class(&self) -> Option<String> {
         None
     }
 }
 
 // the following have empty implementation
-impl<'a> WireRustClassGeneratorClassTrait for BoxedWireRustGenerator<'a> {}
-impl<'a> WireRustClassGeneratorClassTrait for DynamicWireRustGenerator<'a> {}
-impl<'a> WireRustClassGeneratorClassTrait for OptionalWireRustGenerator<'a> {}
-impl<'a> WireRustClassGeneratorClassTrait for PrimitiveWireRustGenerator<'a> {}
-impl<'a> WireRustClassGeneratorClassTrait for UnencodableWireRustGenerator<'a> {}
+impl<'a> WireRustGeneratorWire2apiTrait for BoxedWireRustGenerator<'a> {}
+impl<'a> WireRustGeneratorWire2apiTrait for DynamicWireRustGenerator<'a> {}
+impl<'a> WireRustGeneratorWire2apiTrait for OptionalWireRustGenerator<'a> {}
+impl<'a> WireRustGeneratorWire2apiTrait for PrimitiveWireRustGenerator<'a> {}
+impl<'a> WireRustGeneratorWire2apiTrait for UnencodableWireRustGenerator<'a> {}

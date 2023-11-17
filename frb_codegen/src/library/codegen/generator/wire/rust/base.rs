@@ -21,7 +21,7 @@ use paste::paste;
 
 codegen_generator_structs!(
     WireRustGeneratorInfoTrait,
-    WireRustClassGeneratorClassTrait;
+    WireRustGeneratorWire2apiTrait;
 
     WireRustGenerator;
 

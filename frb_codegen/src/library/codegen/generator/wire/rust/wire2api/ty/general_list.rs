@@ -1,14 +1,14 @@
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::wire2api::misc::generate_class_from_fields;
-use crate::codegen::generator::wire::rust::wire2api::ty::WireRustClassGeneratorClassTrait;
+use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::general_list::IrTypeGeneralList;
 use crate::codegen::ir::ty::IrType::{Delegate, Optional};
 use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
 
-impl<'a> WireRustClassGeneratorClassTrait for GeneralListWireRustGenerator<'a> {
-    fn generate_class(&self) -> Option<String> {
+impl<'a> WireRustGeneratorWire2apiTrait for GeneralListWireRustGenerator<'a> {
+    fn generate_wire2api_class(&self) -> Option<String> {
         Some(generate_class_from_fields(
             self.ir.clone(),
             &self.context,
