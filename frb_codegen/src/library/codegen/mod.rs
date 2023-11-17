@@ -32,7 +32,7 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
 
 // TODO move
 impl From<GeneratorDartInternalConfig> for GeneratorDartApiInternalConfig {
-    fn from(config: GeneratorDartInternalConfig) -> Self {
+    fn from(_config: GeneratorDartInternalConfig) -> Self {
         todo!()
     }
 }

@@ -18,8 +18,8 @@ pub struct IrPack {
 impl IrPack {
     pub(crate) fn distinct_types(
         &self,
-        include_func_inputs: bool,
-        include_func_output: bool,
+        _include_func_inputs: bool,
+        _include_func_output: bool,
     ) -> Vec<IrType> {
         todo!()
     }
