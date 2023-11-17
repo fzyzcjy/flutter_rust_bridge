@@ -1,3 +1,4 @@
+use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::wire2api::misc::generate_class_from_fields;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
@@ -11,7 +12,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for DartOpaqueWireRustGenerator<'a> {
         ))
     }
 
-    fn generate_impl_wire2api_body(&self) -> crate::target::Acc<Option<String>> {
+    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
         Acc {
             io: Some("unsafe{DartOpaque::new(self.handle as _, self.port)}".to_owned()),
             wasm: Some(

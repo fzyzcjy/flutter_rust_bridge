@@ -1,9 +1,14 @@
+use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::wire2api::misc::generate_class_from_fields;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
-use crate::codegen::ir::ty::delegate::IrTypeDelegate;
+use crate::codegen::ir::ty::delegate::{
+    IrTypeDelegate, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
+};
 use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
+use crate::library::codegen::ir::ty::IrTypeTrait;
+use itertools::Itertools;
 
 impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
     fn generate_wire2api_class(&self) -> Option<String> {
@@ -57,11 +62,11 @@ impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
                 wasm: Some(TypeGeneralListGenerator::WIRE2API_BODY_WASM.to_owned()),
                 ..Default::default()
             },
-            IrTypeDelegate::PrimitiveEnum { ir, .. } => {
+            IrTypeDelegate::PrimitiveEnum (IrTypeDelegatePrimitiveEnum{ ir, .. }) => {
                 let enu = ir.get(self.context.ir_pack);
                 let variants =
                     (enu.variants().iter().enumerate())
-                        .map(|(idx, variant)| format!("{} => {}::{},", idx, enu.name, variant.name))
+                        .map(|(idx, variant)| format!("{} => {}::{},", idx, enu.name, variant.name.raw))
                         .collect_vec()
                         .join("\n");
                 format!(

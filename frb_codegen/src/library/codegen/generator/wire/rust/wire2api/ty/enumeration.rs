@@ -1,3 +1,4 @@
+use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
@@ -55,7 +56,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
                     .enumerate()
                     .map(|(idx, variant)| match &variant.kind {
                         IrVariantKind::Value => {
-                            format!("{} => {}::{},", idx, enu.name, variant.name)
+                            format!("{} => {}::{},", idx, enu.name, variant.name.raw)
                         }
                         IrVariantKind::Struct(st) => {
                             let mut fields = (st.fields).iter().enumerate().map(|(idx, field)| {
@@ -79,7 +80,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
                                     "{idx} => {{
                                         {enum_name}::{variant_name}{left}{fields}{right} }},",
                                     enum_name = enu.name,
-                                    variant_name = variant.name,
+                                    variant_name = variant.name.raw,
                                     fields = fields.join(",")
                                 )
                             } else {
@@ -90,7 +91,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
                                         {enum_name}::{variant_name}{left}{fields}{right}
                                     }}",
                                     enum_name = enu.name,
-                                    variant_name = variant.name,
+                                    variant_name = variant.name.raw,
                                     fields = fields.join(",")
                                 )
                             }
