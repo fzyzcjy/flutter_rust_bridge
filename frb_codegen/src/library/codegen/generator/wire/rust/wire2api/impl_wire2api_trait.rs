@@ -17,11 +17,11 @@ pub(crate) fn generate_impl_wire2api(
     lines.push_acc(generate_impl_wire2api_misc());
     lines += types
         .iter()
-        .map(|ty| generate_wire2api_for_type(ty, context))
+        .map(|ty| generate_impl_wire2api_for_type(ty, context))
         .collect();
     lines += types
         .iter()
-        .map(|ty| generate_wasm2api_func(ty, context))
+        .map(|ty| generate_impl_wire2api_jsvalue_for_type(ty, context))
         .collect();
     lines
 }
@@ -55,7 +55,7 @@ fn generate_impl_wire2api_misc() -> Acc<String> {
     }
 }
 
-fn generate_wire2api_for_type(ty: &IrType, context: &WireRustGeneratorContext) -> Acc<String> {
+fn generate_impl_wire2api_for_type(ty: &IrType, context: &WireRustGeneratorContext) -> Acc<String> {
     let generator = WireRustGenerator::new(ty.clone(), context.clone());
     let raw: Acc<Option<String>> = generator.generate_impl_wire2api_body();
     raw.map(|body, target| {
@@ -76,7 +76,10 @@ fn generate_wire2api_for_type(ty: &IrType, context: &WireRustGeneratorContext) -
     })
 }
 
-fn generate_wasm2api_func(ty: &IrType, context: &WireRustGeneratorContext) -> Acc<String> {
+fn generate_impl_wire2api_jsvalue_for_type(
+    ty: &IrType,
+    context: &WireRustGeneratorContext,
+) -> Acc<String> {
     let generator = WireRustGenerator::new(ty.clone(), context.clone());
     generator
         .generate_impl_wire2api_jsvalue_body()
