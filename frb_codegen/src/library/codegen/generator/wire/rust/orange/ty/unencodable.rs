@@ -1,4 +1,4 @@
-use crate::codegen::generator::wire::rust::api2wire::ty::WireRustGeneratorOrangeTrait;
 use crate::codegen::generator::wire::rust::base::*;
+use crate::codegen::generator::wire::rust::orange::ty::WireRustGeneratorOrangeTrait;
 
 impl<'a> WireRustGeneratorOrangeTrait for UnencodableWireRustGenerator<'a> {}
