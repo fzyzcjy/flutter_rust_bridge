@@ -7,6 +7,7 @@ pub(super) mod enumeration_complex;
 pub(super) mod enumeration_simple;
 pub(crate) mod rust_opaque;
 pub(crate) mod structure;
+mod structure_method;
 
 #[enum_dispatch]
 pub(crate) trait DartApiGeneratorClassTrait {
