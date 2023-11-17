@@ -9,8 +9,4 @@ impl IrTypeTrait for IrTypeDartOpaque {
         }
         .to_owned()
     }
-
-    fn rust_api_type(&self) -> String {
-        "DartOpaque".to_owned()
-    }
 }

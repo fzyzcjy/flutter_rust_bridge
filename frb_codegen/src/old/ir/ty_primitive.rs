@@ -11,10 +11,6 @@ impl IrTypeTrait for IrTypePrimitive {
         }
     }
 
-    fn rust_api_type(&self) -> String {
-        self.rust_wire_type(Target::Io)
-    }
-
     fn intodart_type(&self, _ir_pack: &IrPack) -> String {
         match self {
             IrTypePrimitive::Unit => String::from("()"),

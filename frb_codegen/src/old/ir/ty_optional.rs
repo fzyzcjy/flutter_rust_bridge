@@ -15,10 +15,6 @@ impl IrTypeOptional {
 }
 
 impl IrTypeTrait for IrTypeOptional {
-    fn rust_api_type(&self) -> String {
-        format!("Option<{}>", self.inner.rust_api_type())
-    }
-
     fn dart_wire_type(&self, target: Target) -> String {
         if target == Target::Wasm {
             format!("{}?", self.inner.dart_wire_type(target))

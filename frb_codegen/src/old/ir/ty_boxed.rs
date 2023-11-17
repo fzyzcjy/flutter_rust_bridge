@@ -26,14 +26,6 @@ impl IrTypeTrait for IrTypeBoxed {
         }
     }
 
-    fn rust_api_type(&self) -> String {
-        if self.exist_in_real_api {
-            format!("Box<{}>", self.inner.rust_api_type())
-        } else {
-            self.inner.rust_api_type()
-        }
-    }
-
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
         (target != Target::Wasm)
             || !self.inner.is_js_value() && !self.inner.is_array() && !self.inner.is_primitive()

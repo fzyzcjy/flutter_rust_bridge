@@ -40,38 +40,6 @@ impl IrTypeTrait for IrTypeDelegate {
         }
     }
 
-    fn rust_api_type(&self) -> String {
-        match self {
-            IrTypeDelegate::Array(array) => {
-                format!("[{}; {}]", array.inner_rust_api_type(), array.length())
-            }
-            IrTypeDelegate::String => "String".to_owned(),
-            IrTypeDelegate::StringList => "Vec<String>".to_owned(),
-            IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                format!("ZeroCopyBuffer<{}>", self.get_delegate().rust_api_type())
-            }
-            IrTypeDelegate::PrimitiveEnum { ir, .. } => ir.rust_api_type(),
-            IrTypeDelegate::Time(ir) => match ir {
-                IrTypeDelegateTime::Naive => "chrono::NaiveDateTime",
-                IrTypeDelegateTime::Local => "chrono::DateTime::<chrono::Local>",
-                IrTypeDelegateTime::Utc => "chrono::DateTime::<chrono::Utc>",
-                IrTypeDelegateTime::Duration => "chrono::Duration",
-            }
-            .to_owned(),
-            IrTypeDelegate::TimeList(ir) => match ir {
-                IrTypeDelegateTime::Naive => "Vec<chrono::NaiveDateTime>",
-                IrTypeDelegateTime::Local => "Vec<chrono::DateTime::<chrono::Local>>",
-                IrTypeDelegateTime::Utc => "Vec<chrono::DateTime::<chrono::Utc>>",
-                IrTypeDelegateTime::Duration => "Vec<chrono::Duration>",
-            }
-            .to_owned(),
-            IrTypeDelegate::Uuid => "uuid::Uuid".to_owned(),
-            IrTypeDelegate::Uuids => "Vec<uuid::Uuid>".to_owned(),
-            IrTypeDelegate::Backtrace => "String".to_owned(),
-            IrTypeDelegate::Anyhow => "String".to_owned(),
-        }
-    }
-
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
         self.get_delegate().rust_wire_is_pointer(target)
     }

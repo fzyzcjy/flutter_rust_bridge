@@ -20,4 +20,14 @@ impl IrTypeTrait for IrTypeRecord {
     fn safe_ident(&self) -> String {
         self.inner.safe_ident()
     }
+
+    fn rust_api_type(&self) -> String {
+        let values = self
+            .values
+            .iter()
+            .map(IrType::rust_api_type)
+            .collect_vec()
+            .join(",");
+        format!("({values},)")
+    }
 }

@@ -28,4 +28,8 @@ impl IrTypeTrait for IrTypePrimitive {
     fn safe_ident(&self) -> String {
         self.to_string().to_case(Case::Snake)
     }
+
+    fn rust_api_type(&self) -> String {
+        self.rust_wire_type(Target::Io)
+    }
 }

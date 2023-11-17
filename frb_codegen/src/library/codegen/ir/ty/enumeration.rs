@@ -66,6 +66,10 @@ impl IrTypeTrait for IrTypeEnumRef {
     fn safe_ident(&self) -> String {
         self.ident.0.to_case(Case::Snake)
     }
+
+    fn rust_api_type(&self) -> String {
+        self.ident.0.to_string()
+    }
 }
 
 impl IrEnum {

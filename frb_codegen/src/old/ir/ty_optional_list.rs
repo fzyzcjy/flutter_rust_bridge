@@ -4,9 +4,6 @@ use crate::target::Target;
 crate::derive_serde_inner_as_newtype!(IrTypeOptionalList);
 
 impl IrTypeTrait for IrTypeOptionalList {
-    fn rust_api_type(&self) -> String {
-        format!("Vec<Option<{}>>", self.inner.rust_api_type())
-    }
     fn dart_wire_type(&self, target: Target) -> String {
         match target {
             Target::Wasm => "List<dynamic>".into(),

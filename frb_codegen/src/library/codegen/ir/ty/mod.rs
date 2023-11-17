@@ -61,4 +61,9 @@ pub trait IrTypeTrait {
 
     /// A string that can be used as an identifier safely, i.e. without any special characters inside
     fn safe_ident(&self) -> String;
+
+    /// Why `rust_api_type` is in `ir` while `dart_api_type` is in `generator::api_dart` -
+    /// Because the former is intrinsic information of a parsed Rust type, while the latter is
+    /// part of the code to be generated.
+    fn rust_api_type(&self) -> String;
 }

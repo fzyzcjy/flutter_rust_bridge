@@ -62,8 +62,4 @@ impl IrTypeTrait for IrTypeRustOpaque {
             self.rust_wire_type(target)
         }
     }
-
-    fn rust_api_type(&self) -> String {
-        format!("RustOpaque<{}>", self.inner_rust)
-    }
 }

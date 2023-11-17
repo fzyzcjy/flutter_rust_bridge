@@ -25,4 +25,12 @@ impl IrTypeTrait for IrTypeBoxed {
             self.inner.safe_ident()
         )
     }
+
+    fn rust_api_type(&self) -> String {
+        if self.exist_in_real_api {
+            format!("Box<{}>", self.inner.rust_api_type())
+        } else {
+            self.inner.rust_api_type()
+        }
+    }
 }

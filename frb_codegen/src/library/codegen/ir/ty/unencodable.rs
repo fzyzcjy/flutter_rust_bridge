@@ -25,4 +25,8 @@ impl IrTypeTrait for IrTypeUnencodable {
     fn safe_ident(&self) -> String {
         unreachable!()
     }
+
+    fn rust_api_type(&self) -> String {
+        unreachable!()
+    }
 }

@@ -15,4 +15,8 @@ impl IrTypeTrait for IrTypeGeneralList {
     fn safe_ident(&self) -> String {
         format!("list_{}", self.inner.safe_ident())
     }
+
+    fn rust_api_type(&self) -> String {
+        format!("Vec<{}>", self.inner.rust_api_type())
+    }
 }

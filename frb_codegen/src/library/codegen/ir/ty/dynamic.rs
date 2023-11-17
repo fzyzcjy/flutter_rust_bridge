@@ -11,4 +11,8 @@ impl IrTypeTrait for IrTypeDynamic {
     fn safe_ident(&self) -> String {
         "dartabi".to_owned()
     }
+
+    fn rust_api_type(&self) -> String {
+        "flutter_rust_bridge::DartAbi".to_owned()
+    }
 }

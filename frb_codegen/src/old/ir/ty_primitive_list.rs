@@ -16,10 +16,6 @@ impl IrTypeTrait for IrTypePrimitiveList {
         }
     }
 
-    fn rust_api_type(&self) -> String {
-        format!("Vec<{}>", self.primitive.rust_api_type())
-    }
-
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
         target != Target::Wasm
     }

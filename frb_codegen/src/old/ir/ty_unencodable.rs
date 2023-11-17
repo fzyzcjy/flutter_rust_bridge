@@ -8,8 +8,4 @@ impl IrTypeTrait for IrTypeUnencodable {
             self.rust_wire_type(target)
         }
     }
-
-    fn rust_api_type(&self) -> String {
-        self.string.clone()
-    }
 }

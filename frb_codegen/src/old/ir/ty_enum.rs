@@ -11,10 +11,6 @@ impl IrTypeTrait for IrTypeEnumRef {
         }
     }
 
-    fn rust_api_type(&self) -> String {
-        self.name.to_string()
-    }
-
     fn intodart_type(&self, ir_pack: &IrPack) -> String {
         match &self.get(ir_pack).wrapper_name {
             Some(wrapper) => wrapper.clone(),

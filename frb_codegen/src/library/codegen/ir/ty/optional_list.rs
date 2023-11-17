@@ -15,4 +15,8 @@ impl IrTypeTrait for IrTypeOptionalList {
     fn safe_ident(&self) -> String {
         format!("list_opt_{}", self.inner.safe_ident())
     }
+
+    fn rust_api_type(&self) -> String {
+        format!("Vec<Option<{}>>", self.inner.rust_api_type())
+    }
 }

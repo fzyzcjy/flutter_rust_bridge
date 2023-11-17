@@ -11,10 +11,6 @@ impl IrTypeTrait for IrTypeStructRef {
         }
     }
 
-    fn rust_api_type(&self) -> String {
-        self.name.to_string()
-    }
-
     fn intodart_type(&self, ir_pack: &IrPack) -> String {
         let wrapper = self.get(ir_pack).wrapper_name.as_ref();
         wrapper.unwrap_or(&self.rust_api_type()).clone()

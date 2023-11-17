@@ -21,4 +21,8 @@ impl IrTypeTrait for IrTypeRustOpaque {
     fn safe_ident(&self) -> String {
         format!("RustOpaque_{}", self.inner.safe_ident())
     }
+
+    fn rust_api_type(&self) -> String {
+        format!("RustOpaque<{}>", self.inner_rust)
+    }
 }

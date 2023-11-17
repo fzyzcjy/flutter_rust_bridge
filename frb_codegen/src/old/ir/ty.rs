@@ -110,7 +110,6 @@ pub trait IrTypeTrait {
     fn safe_ident(&self) -> String;
     fn dart_api_type(&self) -> String;
     fn dart_wire_type(&self, target: Target) -> String;
-    fn rust_api_type(&self) -> String;
     fn intodart_type(&self, _ir_pack: &IrPack) -> String {
         self.rust_api_type()
     }

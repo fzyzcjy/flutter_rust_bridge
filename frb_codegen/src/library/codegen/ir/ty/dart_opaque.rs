@@ -13,4 +13,8 @@ impl IrTypeTrait for IrTypeDartOpaque {
     fn safe_ident(&self) -> String {
         "DartOpaque".to_owned()
     }
+
+    fn rust_api_type(&self) -> String {
+        "DartOpaque".to_owned()
+    }
 }

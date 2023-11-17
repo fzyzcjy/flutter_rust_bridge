@@ -16,4 +16,8 @@ impl IrTypeTrait for IrTypePrimitiveList {
     fn safe_ident(&self) -> String {
         format!("list_prim_{}", self.primitive.safe_ident())
     }
+
+    fn rust_api_type(&self) -> String {
+        format!("Vec<{}>", self.primitive.rust_api_type())
+    }
 }

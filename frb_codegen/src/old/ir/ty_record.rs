@@ -9,16 +9,6 @@ impl IrTypeTrait for IrTypeRecord {
         }
     }
 
-    fn rust_api_type(&self) -> String {
-        let values = self
-            .values
-            .iter()
-            .map(IrType::rust_api_type)
-            .collect_vec()
-            .join(",");
-        format!("({values},)")
-    }
-
     fn intodart_type(&self, ir_pack: &IrPack) -> String {
         let values = self
             .values
