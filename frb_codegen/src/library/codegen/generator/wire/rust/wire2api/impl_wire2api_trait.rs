@@ -73,18 +73,16 @@ fn generate_wire2api_for_type(ty: &IrType, context: &WireRustGeneratorContext) -
     })
 }
 
-fn generate_wasm2api_func(&self, ty: &IrType, ir_pack: &IrPack) -> Option<String> {
-    TypeRustGenerator::new(ty.clone(), ir_pack, self.config)
-        .wire2api_jsvalue()
-        .map(|body| {
-            format!(
-                "impl Wire2Api<{api}> for JsValue {{
-                        fn wire2api(self) -> {api} {{
-                            {}
-                        }}
-                    }}",
-                body,
-                api = ty.rust_api_type()
-            )
-        })
+fn generate_wasm2api_func(ty: &IrType, context: &WireRustGeneratorContext) -> Option<String> {
+    let generator = WireRustGenerator::new(ty.clone(), context.clone());
+    generator.wire2api_jsvalue().map(|body| {
+        format!(
+            "impl Wire2Api<{api}> for JsValue {{
+                fn wire2api(self) -> {api} {{
+                    {body}
+                }}
+            }}",
+            api = ty.rust_api_type()
+        )
+    })
 }
