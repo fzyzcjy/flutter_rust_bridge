@@ -7,7 +7,7 @@ use crate::codegen::generator::dart_api::internal_config::GeneratorDartApiIntern
 use crate::codegen::generator::dart_api::misc::{
     generate_dart_comments, generate_dart_maybe_implements_exception, generate_dart_metadata,
 };
-use crate::codegen::ir::func::IrFunc;
+use crate::codegen::ir::func::{IrFunc, IrFuncMode};
 use crate::codegen::ir::ty::structure::IrStruct;
 use crate::library::codegen::generator::dart_api::decl::DartApiGeneratorDeclTrait;
 use convert_case::{Case, Casing};
@@ -221,8 +221,10 @@ fn generate_api_method(
     let partial = format!(
         "{} {} {}({{ {} }})",
         if f.is_static_method() { "static" } else { "" },
-        func.mode
-            .dart_return_type(&DartApiGenerator::new(func.output, context.clone()).dart_api_type()),
+        generate_function_dart_return_type(
+            &func.mode,
+            &DartApiGenerator::new(func.output.clone(), context.clone()).dart_api_type()
+        ),
         if f.is_static_method() {
             if static_function_name == "new" {
                 format!("new{}", ir_struct.name)
@@ -268,5 +270,13 @@ fn generate_api_method(
         signature,
         implementation,
         comments,
+    }
+}
+
+fn generate_function_dart_return_type(func_mode: &IrFuncMode, inner: &str) -> String {
+    match func_mode {
+        IrFuncMode::Normal => format!("Future<{inner}>"),
+        IrFuncMode::Sync => inner.to_string(),
+        IrFuncMode::Stream { .. } => format!("Stream<{inner}>"),
     }
 }

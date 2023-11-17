@@ -51,15 +51,6 @@ impl IrFunc {
 
 impl IrFuncMode {
     #[inline]
-    pub fn dart_return_type(&self, inner: &str) -> String {
-        match self {
-            Self::Normal => format!("Future<{inner}>"),
-            Self::Sync => inner.to_string(),
-            Self::Stream { .. } => format!("Stream<{inner}>"),
-        }
-    }
-
-    #[inline]
     pub fn ffi_call_mode(&self) -> &'static str {
         match self {
             Self::Normal => "Normal",
