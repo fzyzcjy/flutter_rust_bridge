@@ -118,7 +118,7 @@ impl DartApiSpec {
         let dart_structs = distinct_types
             .iter()
             .map(|ty| TypeDartGenerator::new(ty.clone(), ir_pack, config).structs())
-            .collect::<Vec<_>>();
+            .collect_vec();
         let dart_api2wire_funcs = distinct_input_types
             .iter()
             .map(|ty| generate_api2wire_func(ty, ir_pack, config))
@@ -135,17 +135,17 @@ impl DartApiSpec {
                 .filter(|ty| ty.is_rust_opaque() || ty.is_sync_rust_opaque())
                 .map(generate_opaque_getters),
         )
-        .collect::<Vec<_>>();
+        .collect_vec();
 
         let dart_api_fill_to_wire_funcs = distinct_input_types
             .iter()
             .map(|ty| generate_api_fill_to_wire_func(ty, ir_pack, config))
-            .collect::<Vec<_>>();
+            .collect_vec();
 
         let dart_wire2api_funcs = distinct_output_types
             .iter()
             .map(|ty| generate_wire2api_func(ty, ir_pack, dart_api_class_name, config))
-            .collect::<Vec<_>>();
+            .collect_vec();
 
         let dart_opaque_funcs = distinct_output_types
             .iter()
@@ -160,7 +160,7 @@ impl DartApiSpec {
                 .iter()
                 .map(|fun| IrFuncDisplay::from_ir(fun, Target::Wasm))
                 .chain(extra_funcs.iter().cloned())
-                .collect::<Vec<_>>()
+                .collect_vec()
         });
         let dart_wasm_funcs = ir_wasm_func_exports
             .as_ref()
@@ -217,7 +217,7 @@ fn generate_import_header(
                     Some(alias) => format!("import '{}' as {};", it.uri, alias),
                     _ => format!("import '{}';", it.uri),
                 })
-                .collect::<Vec<_>>()
+                .collect_vec()
                 .join("\n")
                 + import_array.unwrap_or(""),
             part: "".to_string(),
@@ -276,7 +276,7 @@ fn generate_dart_declaration_body(
                 "{}{}\n\n{}",
                 func.comments, func.signature, func.companion_field_signature,
             ))
-            .collect::<Vec<_>>()
+            .collect_vec()
             .join("\n\n"),
         dart_structs.join("\n\n"),
     )

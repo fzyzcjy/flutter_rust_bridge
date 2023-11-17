@@ -156,7 +156,7 @@ impl<'a> DartApiGeneratorDeclTrait for RecordDartApiGenerator<'a> {
             .values
             .iter()
             .map(|ty| DartApiGenerator::new(ty.clone(), self.context.clone()).dart_api_type())
-            .collect::<Vec<_>>()
+            .collect_vec()
             .join(",");
         if self.ir.values.len() == 1 {
             format!("({values},)")

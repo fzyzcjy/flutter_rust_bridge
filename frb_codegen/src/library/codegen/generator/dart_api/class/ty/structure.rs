@@ -28,7 +28,7 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
             .filter(|f| {
                 matches!(&f.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod{ struct_name, .. }) if struct_name == &src.name)
             })
-            .collect::<Vec<_>>();
+            .collect_vec();
 
         let has_methods = !methods.is_empty();
         let methods = methods
@@ -41,7 +41,7 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
                     &self.context,
                 )
             })
-            .collect::<Vec<_>>();
+            .collect_vec();
 
         let methods_string = methods
             .iter()
@@ -53,7 +53,7 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
                     g.implementation.clone()
                 )
             })
-            .collect::<Vec<_>>()
+            .collect_vec()
             .concat();
         let extra_argument = if self.context.config.use_bridge_in_method {
             "required this.bridge,".to_string()
@@ -85,7 +85,7 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
                         field.name.dart_style()
                     )
                 })
-                .collect::<Vec<_>>();
+                .collect_vec();
             if has_methods && self.context.config.use_bridge_in_method {
                 constructor_params.insert(
                     0,
@@ -126,7 +126,7 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
                         f.name.dart_style()
                     )
                 })
-                .collect::<Vec<_>>();
+                .collect_vec();
             if has_methods {
                 field_declarations.insert(0, field_bridge);
             }
@@ -143,7 +143,7 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
                             generate_field_default(f, false, self.context.config.dart_enums_style)
                     )
                 })
-                .collect::<Vec<_>>();
+                .collect_vec();
             if has_methods {
                 constructor_params.insert(0, extra_argument);
             }
@@ -214,7 +214,7 @@ fn generate_api_method(
                 default = generate_field_default(input, false, context.config.dart_enums_style)
             )
         })
-        .collect::<Vec<_>>();
+        .collect_vec();
 
     if is_static_method && context.config.use_bridge_in_method {
         raw_func_param_list.insert(0, format!("required {dart_api_class_name} bridge"));
@@ -250,7 +250,7 @@ fn generate_api_method(
         .iter()
         .skip(skip_count) //skip the first as it's the method 'self'
         .map(|input| format!("{}:{},", input.name.dart_style(), input.name.dart_style()))
-        .collect::<Vec<_>>();
+        .collect_vec();
 
     let implementation = if is_static_method {
         arg_names.push("hint: hint".to_string());

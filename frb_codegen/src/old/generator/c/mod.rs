@@ -15,7 +15,7 @@ pub fn generate_dummy(
             let func_names = all_configs
                 .iter()
                 .map(|e| get_dummy_signature(&e.class_name))
-                .collect::<Vec<_>>();
+                .collect_vec();
 
             let other_headers = all_configs
                 .iter()
@@ -37,7 +37,7 @@ pub fn generate_dummy(
                             .unwrap()
                     )
                 })
-                .collect::<Vec<_>>()
+                .collect_vec()
                 .join("\n");
 
             format!(
@@ -78,6 +78,6 @@ fn get_dummy_var(func_names: &[String]) -> String {
     func_names
         .iter()
         .map(|func_name| format!("    dummy_var ^= ((int64_t) (void*) {func_name});"))
-        .collect::<Vec<_>>()
+        .collect_vec()
         .join("\n")
 }

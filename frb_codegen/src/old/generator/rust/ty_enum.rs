@@ -120,12 +120,12 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                     fields.join("\n")
                 )
             })
-            .collect::<Vec<_>>();
+            .collect_vec();
         let union_fields = src
             .variants()
             .iter()
             .map(|variant| format!("{0}: *mut wire_{1}_{0},", variant.name, self.ir.name))
-            .collect::<Vec<_>>();
+            .collect_vec();
         format!(
             "#[repr(C)]
             #[derive(Clone)]
@@ -158,7 +158,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                         .fields
                         .iter()
                         .map(|field| field.name.rust_style().to_owned())
-                        .collect::<Vec<_>>();
+                        .collect_vec();
                     let pattern = if s.is_fields_named {
                         format!("{}::{} {{ {} }}", src.name, variant.name, pattern.join(","))
                     } else {
@@ -174,7 +174,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                                 field.name.rust_style(),
                             )
                         })
-                        .collect::<Vec<_>>();
+                        .collect_vec();
                     format!("{} => {{ {} }}", pattern, checks.join(""))
                 }
             })
@@ -229,12 +229,12 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
 
                                 gen.convert_to_dart(field.name.rust_style().to_owned())
                             }))
-                            .collect::<Vec<_>>();
+                            .collect_vec();
                         let pattern = st
                             .fields
                             .iter()
                             .map(|field| field.name.rust_style().to_owned())
-                            .collect::<Vec<_>>();
+                            .collect_vec();
                         let (left, right) = st.brackets_pair();
                         format!(
                             "{}::{}{}{}{} => vec![{}],",
@@ -248,7 +248,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                     }
                 }
             })
-            .collect::<Vec<_>>();
+            .collect_vec();
 
         let into_into_dart = get_into_into_dart(&src.name, src.wrapper_name.as_ref());
         format!(
@@ -312,7 +312,7 @@ impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
                     Io,
                 ))
             })
-            .collect::<Vec<_>>();
+            .collect_vec();
         format!(
             r#"impl Default for {} {{
                     fn default() -> Self {{

@@ -83,7 +83,7 @@ pub(crate) fn execute_command<'a>(
     args: impl IntoIterator<Item = &'a PathBuf>,
     current_dir: Option<&Path>,
 ) -> anyhow::Result<Output> {
-    let args = args.into_iter().collect::<Vec<_>>();
+    let args = args.into_iter().collect_vec();
     let args_display = args.iter().map(|path| path.to_string_lossy()).join(" ");
     let mut cmd = Command::new(bin);
     cmd.args(args);

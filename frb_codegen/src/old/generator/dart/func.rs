@@ -17,7 +17,7 @@ pub(crate) fn generate_api_func(
                 default = generate_field_default(input, false, None),
             )
         })
-        .collect::<Vec<_>>();
+        .collect_vec();
     let full_func_param_list = [raw_func_param_list, vec!["dynamic hint".to_owned()]].concat();
 
     let prepare_args = func
@@ -42,7 +42,7 @@ pub(crate) fn generate_api_func(
                 )
             }
         })
-        .collect::<Vec<_>>();
+        .collect_vec();
 
     let wire_param_list = [
         if func.mode.has_port_argument() {
@@ -85,7 +85,7 @@ pub(crate) fn generate_api_func(
         func.inputs
             .iter()
             .map(|input| input.name.dart_style())
-            .collect::<Vec<_>>()
+            .collect_vec()
             .join(", "),
     );
 
@@ -166,7 +166,7 @@ pub(crate) fn generate_api_func(
         func.inputs
             .iter()
             .map(|input| format!("\"{}\"", input.name.dart_style()))
-            .collect::<Vec<_>>()
+            .collect_vec()
             .join(", "),
     );
 

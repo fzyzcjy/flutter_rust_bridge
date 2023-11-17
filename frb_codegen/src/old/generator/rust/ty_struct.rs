@@ -96,7 +96,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                     },
                 )
             })
-            .collect::<Vec<_>>()
+            .collect_vec()
             .join("");
         Some(format!(
             "{{ let {} = None::<{}>.unwrap(); {} }} ",
@@ -134,7 +134,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
 
                 gen.convert_to_dart(format!("self{unwrap}.{field_ref}"))
             })
-            .collect::<Vec<_>>()
+            .collect_vec()
             .join(",\n");
 
         let name = match &src.wrapper_name {
@@ -187,7 +187,7 @@ impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
                         }
                     )
                 })
-                .collect::<Vec<_>>()
+                .collect_vec()
                 .join("\n")
         };
         format!(

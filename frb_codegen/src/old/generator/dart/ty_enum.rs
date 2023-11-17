@@ -138,12 +138,12 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
                                 val
                             }
                         })
-                        .collect::<Vec<_>>()
+                        .collect_vec()
                         .join(""),
                 };
                 format!("case {}: return {}({});", idx, variant.wrapper_name, args)
             })
-            .collect::<Vec<_>>();
+            .collect_vec();
         format!(
             "switch (raw[0]) {{
                 {}

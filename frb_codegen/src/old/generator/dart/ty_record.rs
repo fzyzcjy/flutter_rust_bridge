@@ -13,7 +13,7 @@ impl TypeDartGeneratorTrait for TypeRecordGenerator<'_> {
             .iter()
             .enumerate()
             .map(|(idx, ty)| format!("api2wire_{}(raw.${})", ty.safe_ident(), idx + 1))
-            .collect::<Vec<_>>()
+            .collect_vec()
             .join(",");
         Acc {
             wasm: Some(format!("return [{values}];")),
@@ -35,7 +35,7 @@ impl TypeDartGeneratorTrait for TypeRecordGenerator<'_> {
                     field.ty.is_struct(),
                 )
             })
-            .collect::<Vec<_>>()
+            .collect_vec()
             .join("\n");
         Some(values)
     }
@@ -48,7 +48,7 @@ impl TypeDartGeneratorTrait for TypeRecordGenerator<'_> {
             .iter()
             .enumerate()
             .map(|(idx, ty)| format!("_wire2api_{}(arr[{idx}])", ty.safe_ident()))
-            .collect::<Vec<_>>()
+            .collect_vec()
             .join(",");
         format!(
             "final arr = raw as List<dynamic>;

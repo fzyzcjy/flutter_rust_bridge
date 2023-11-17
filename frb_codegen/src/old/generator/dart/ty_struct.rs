@@ -26,7 +26,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                                 field.name.dart_style()
                             )
                         })
-                        .collect::<Vec<_>>()
+                        .collect_vec()
                         .join(",")
                 )
             }),
@@ -47,7 +47,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                         field.ty.is_struct(),
                     )
                 })
-                .collect::<Vec<_>>()
+                .collect_vec()
                 .join("\n"),
         )
     }
@@ -73,7 +73,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
                     idx
                 )
             })
-            .collect::<Vec<_>>();
+            .collect_vec();
         if has_methods && self.context.config.use_bridge_in_method {
             inner.insert(0, "bridge: this,".to_string());
         }

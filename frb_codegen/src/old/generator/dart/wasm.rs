@@ -15,7 +15,7 @@ pub fn generate_wasm_wire<'a>(
         funcs
             .into_iter()
             .map(generate_wasm_wire_func_method)
-            .collect::<Vec<_>>()
+            .collect_vec()
             .join("\n\n"),
         cls = dart_wire_class_name,
         wasm = dart_wasm_module_name,

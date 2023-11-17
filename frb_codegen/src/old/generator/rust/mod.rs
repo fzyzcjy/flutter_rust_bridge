@@ -55,7 +55,7 @@ impl Output {
             .iter()
             .filter(|s| !self.extern_func_names.contains(s))
             .map(|s| (*s).clone())
-            .collect::<Vec<_>>()
+            .collect_vec()
     }
 }
 
@@ -309,7 +309,7 @@ impl<'a> Generator<'a> {
             func.inputs
                 .iter()
                 .map(|field| format!("api_{}", field.name.rust_style()))
-                .collect::<Vec<_>>(),
+                .collect_vec(),
         ]
         .concat();
         if let IrFuncMode::Stream { argument_index } = func.mode {
@@ -336,7 +336,7 @@ impl<'a> Generator<'a> {
             .inputs
             .iter()
             .map(|field| format!("let api_{0} = {0}.wire2api();", field.name.rust_style()))
-            .collect::<Vec<_>>()
+            .collect_vec()
             .join("");
 
         let code_call_inner_func = if f.is_non_static_method() || f.is_static_method() {
@@ -397,7 +397,7 @@ impl<'a> Generator<'a> {
             (func.mode.has_port_argument().then_some("port_"))
                 .into_iter()
                 .chain(func.inputs.iter().map(|arg| arg.name.rust_style()))
-                .collect::<Vec<_>>()
+                .collect_vec()
                 .join(","),
         );
         Acc::new(|target| match target {
@@ -410,7 +410,7 @@ impl<'a> Generator<'a> {
                 }
                 .iter()
                 .map(|item| (item, ""))
-                .collect::<Vec<_>>(),
+                .collect_vec(),
                 return_type,
                 &redirect_body,
                 target,
@@ -626,7 +626,7 @@ impl ExternFuncCollector {
         body: &str,
         target: Target,
     ) -> String {
-        let params = params.into_iter().collect::<Vec<_>>();
+        let params = params.into_iter().collect_vec();
         if matches!(target, Io) {
             self.names.push(func_name.to_string());
         } else if target.is_wasm() && !func_name.starts_with("wire_") {

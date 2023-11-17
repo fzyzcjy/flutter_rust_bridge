@@ -43,7 +43,7 @@ where
     iter.iter()
         .filter(|x| !uniq.insert(*x))
         .cloned()
-        .collect::<Vec<_>>()
+        .collect_vec()
 }
 
 /// check api defined by users, if no duplicates, then generate all symbols (api function name),

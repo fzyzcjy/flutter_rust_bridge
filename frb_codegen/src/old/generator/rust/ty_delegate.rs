@@ -68,7 +68,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 let variants =
                     (enu.variants().iter().enumerate())
                         .map(|(idx, variant)| format!("{} => {}::{},", idx, enu.name, variant.name))
-                        .collect::<Vec<_>>()
+                        .collect_vec()
                         .join("\n");
                 format!(
                     "match self {{
@@ -170,7 +170,7 @@ impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
                 .iter()
                 .enumerate()
                 .map(|(idx, variant)| format!("{}::{} => {},", self_path, variant.name, idx))
-                .collect::<Vec<_>>()
+                .collect_vec()
                 .join("\n");
             let into_into_dart = get_into_into_dart(&src.name, src.wrapper_name.as_ref());
             return format!(

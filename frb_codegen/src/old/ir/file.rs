@@ -91,6 +91,6 @@ impl IrPack {
             .extern_func_names
             .into_iter()
             .filter(|s| *s != "free_WireSyncReturn")
-            .collect::<Vec<_>>()
+            .collect_vec()
     }
 }

@@ -28,7 +28,7 @@ pub(crate) fn generate_dart_metadata(metadata: &[IrDartAnnotation]) -> String {
             }) => format!("@{}.{}", alias, it.content),
             _ => format!("@{}", it.content),
         })
-        .collect::<Vec<_>>()
+        .collect_vec()
         .join("\n");
     if !metadata.is_empty() {
         metadata.push('\n');

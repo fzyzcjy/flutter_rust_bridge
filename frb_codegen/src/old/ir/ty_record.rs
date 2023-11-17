@@ -14,7 +14,7 @@ impl IrTypeTrait for IrTypeRecord {
             .values
             .iter()
             .map(IrType::rust_api_type)
-            .collect::<Vec<_>>()
+            .collect_vec()
             .join(",");
         format!("({values},)")
     }
@@ -32,7 +32,7 @@ impl IrTypeTrait for IrTypeRecord {
             .values
             .iter()
             .map(|e| e.intodart_type(ir_pack))
-            .collect::<Vec<_>>()
+            .collect_vec()
             .join(",");
         format!("({values},)")
     }

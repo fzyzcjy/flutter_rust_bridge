@@ -86,7 +86,7 @@ impl<'a> EnumRefDartApiGenerator<'a> {
                     default = default
                 )
             })
-            .collect::<Vec<_>>();
+            .collect_vec();
         if let Some(idx) = split {
             let before = &types[..idx];
             let after = &types[idx..];
@@ -111,7 +111,7 @@ impl<'a> EnumRefDartApiGenerator<'a> {
                         generate_field_default(field, true, self.context.config.dart_enums_style),
                 )
             })
-            .collect::<Vec<_>>();
+            .collect_vec();
         format!("{{ {} }}", fields.join(""))
     }
 
