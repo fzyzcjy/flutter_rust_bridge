@@ -115,21 +115,24 @@ impl DartApiSpec {
         debug!("distinct_input_types={:?}", distinct_input_types);
         debug!("distinct_output_types={:?}", distinct_output_types);
 
-        let dart_structs = distinct_types
-            .iter()
-            .map(|ty| TypeDartGenerator::new(ty.clone(), ir_pack, config).structs())
-            .collect_vec();
+        // moved
+        // let dart_structs = distinct_types
+        //     .iter()
+        //     .map(|ty| TypeDartGenerator::new(ty.clone(), ir_pack, config).structs())
+        //     .collect_vec();
+
         let dart_api2wire_funcs = distinct_input_types
             .iter()
             .map(|ty| generate_api2wire_func(ty, ir_pack, config))
             .collect::<Acc<_>>()
             .join("\n");
 
-        let dart_funcs = (ir_pack
-            .funcs
-            .iter()
-            .map(|f| generate_api_func(f, ir_pack, &dart_api2wire_funcs.common)))
-        .chain(
+        // moved
+        // let dart_funcs = (ir_pack
+        //     .funcs
+        //     .iter()
+        //     .map(|f| generate_api_func(f, ir_pack, &dart_api2wire_funcs.common)))
+        TODO.chain(
             distinct_output_types
                 .iter()
                 .filter(|ty| ty.is_rust_opaque() || ty.is_sync_rust_opaque())
@@ -254,32 +257,6 @@ fn get_dart_imports(ir_pack: &IrPack) -> HashSet<&IrDartImport> {
         .values()
         .flat_map(|s| s.dart_metadata.iter().flat_map(|it| &it.library))
         .collect()
-}
-
-fn generate_dart_declaration_body(
-    dart_api_class_name: &str,
-    dart_funcs: &[GeneratedApiFunc],
-    dart_structs: &[String],
-) -> String {
-    format!(
-        "
-        abstract class {0} {{
-            {1}
-        }}
-
-        {2}
-        ",
-        dart_api_class_name,
-        dart_funcs
-            .iter()
-            .map(|func| format!(
-                "{}{}\n\n{}",
-                func.comments, func.signature, func.companion_field_signature,
-            ))
-            .collect_vec()
-            .join("\n\n"),
-        dart_structs.join("\n\n"),
-    )
 }
 
 fn section_header(header: &str) -> String {

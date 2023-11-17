@@ -1,6 +1,7 @@
 use crate::codegen::ir::func::IrFunc;
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumIdent};
 use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent};
+use crate::codegen::ir::ty::IrType;
 use std::collections::HashMap;
 
 pub type IrStructPool = HashMap<IrStructIdent, IrStruct>;
@@ -15,7 +16,11 @@ pub struct IrPack {
 }
 
 impl IrPack {
-    pub(crate) fn merge(self, _other: Self) -> Self {
+    pub(crate) fn distinct_types(
+        &self,
+        include_func_inputs: bool,
+        include_func_output: bool,
+    ) -> Vec<IrType> {
         todo!()
     }
 }

@@ -1,3 +1,4 @@
 pub(crate) struct DartOutputCode {
-    // TODO
+    // TODO more
+    pub(crate) code: String,
 }
