@@ -3,7 +3,7 @@ use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
 use crate::codegen::ir::ty::enumeration::{
-    IrEnum, IrEnumIdent, IrTypeEnumRef, IrVariant, IrVariantKind,
+    IrEnum, IrEnumIdent, IrEnumMode, IrTypeEnumRef, IrVariant, IrVariantKind,
 };
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::structure::IrStruct;
@@ -36,8 +36,7 @@ impl<'a> TypeParser<'a> {
                     is_exception: false,
                 };
                 let enu = self.enum_pool.get(&ident);
-                let is_struct = enu.map(|e| e.is_struct).unwrap_or(true);
-                if is_struct {
+                if enu.map(|e| e.mode == IrEnumMode::Complex).unwrap_or(true) {
                     EnumRef(enum_ref)
                 } else {
                     Delegate(IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum {
@@ -68,8 +67,8 @@ impl<'a> TypeParser<'a> {
             .map(|variant| self.parse_variant(src_enum, &variant))
             .collect::<anyhow::Result<Vec<_>>>()?;
 
-        let is_struct = compute_is_struct(&raw_variants);
-        let variants = maybe_field_wrap_box(raw_variants, is_struct);
+        let mode = compute_enum_mode(&raw_variants);
+        let variants = maybe_field_wrap_box(raw_variants, mode);
 
         Ok(IrEnum {
             name,
@@ -77,7 +76,7 @@ impl<'a> TypeParser<'a> {
             path,
             comments,
             variants,
-            is_struct,
+            mode,
         })
     }
 
@@ -139,8 +138,8 @@ impl<'a> TypeParser<'a> {
     }
 }
 
-fn maybe_field_wrap_box(mut variants: Vec<IrVariant>, is_struct: bool) -> Vec<IrVariant> {
-    if is_struct {
+fn maybe_field_wrap_box(mut variants: Vec<IrVariant>, mode: IrEnumMode) -> Vec<IrVariant> {
+    if mode == IrEnumMode::Complex {
         for variant in &mut variants {
             if let IrVariantKind::Struct(st) = &mut variant.kind {
                 for field in &mut st.fields {
@@ -162,8 +161,13 @@ fn ir_type_wrap_box(ty: &mut IrType) {
     }
 }
 
-fn compute_is_struct(variants: &[IrVariant]) -> bool {
-    variants
+fn compute_enum_mode(variants: &[IrVariant]) -> IrEnumMode {
+    if variants
         .iter()
         .any(|variant| !matches!(variant.kind, IrVariantKind::Value))
+    {
+        IrEnumMode::Complex
+    } else {
+        IrEnumMode::Simple
+    }
 }

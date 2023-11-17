@@ -21,7 +21,14 @@ pub struct IrEnum {
     pub path: Vec<String>,
     pub comments: Vec<IrComment>,
     pub variants: Vec<IrVariant>,
-    pub is_struct: bool, // TODO rename
+    // TODO old: `is_struct: bool`
+    pub mode: IrEnumMode,
+}
+
+#[derive(Copy)]
+pub enum IrEnumMode {
+    Simple,
+    Complex,
 }
 
 pub struct IrVariant {

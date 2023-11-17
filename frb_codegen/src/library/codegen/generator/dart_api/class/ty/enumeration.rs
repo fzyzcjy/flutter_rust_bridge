@@ -7,7 +7,7 @@ use crate::codegen::generator::dart_api::misc::{
     generate_dart_comments, generate_dart_maybe_implements_exception,
 };
 use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::ty::enumeration::{IrVariant, IrVariantKind};
+use crate::codegen::ir::ty::enumeration::{IrEnumMode, IrVariant, IrVariantKind};
 use crate::codegen::ir::ty::structure::IrStruct;
 use crate::library::codegen::generator::dart_api::decl::DartApiGeneratorDeclTrait;
 use crate::utils::dart_keywords::make_string_keyword_safe;
@@ -19,53 +19,56 @@ impl<'a> DartApiGeneratorClassTrait for EnumRefDartApiGenerator<'a> {
         let src = self.ir.get(self.context.ir_pack);
 
         let comments = generate_dart_comments(&src.comments);
-        if src.is_struct {
-            let variants = src
-                .variants()
-                .iter()
-                .map(|variant| self.generate_variant(&variant))
-                .collect::<Vec<_>>();
+        match src.mode {
+            IrEnumMode::Complex => {
+                let variants = src
+                    .variants()
+                    .iter()
+                    .map(|variant| self.generate_variant(&variant))
+                    .collect::<Vec<_>>();
 
-            let sealed = if self.context.config.dart3 {
-                "sealed"
-            } else {
-                ""
-            };
+                let sealed = if self.context.config.dart3 {
+                    "sealed"
+                } else {
+                    ""
+                };
 
-            Some(format!(
-                "@freezed
+                Some(format!(
+                    "@freezed
                 {sealed} class {0} with _${0} {1} {{
                     {2}
                 }}",
-                self.ir.ident.0,
-                generate_dart_maybe_implements_exception(self.ir.is_exception),
-                variants.join("\n")
-            ))
-        } else {
-            let variants = src
-                .variants()
-                .iter()
-                .map(|variant| {
-                    let variant_name = if self.context.config.dart_enums_style {
-                        make_string_keyword_safe(variant.name.dart_style())
-                    } else {
-                        variant.name.rust_style().to_string()
-                    };
+                    self.ir.ident.0,
+                    generate_dart_maybe_implements_exception(self.ir.is_exception),
+                    variants.join("\n")
+                ))
+            }
+            IrEnumMode::Simple => {
+                let variants = src
+                    .variants()
+                    .iter()
+                    .map(|variant| {
+                        let variant_name = if self.context.config.dart_enums_style {
+                            make_string_keyword_safe(variant.name.dart_style())
+                        } else {
+                            variant.name.rust_style().to_string()
+                        };
 
-                    format!(
-                        "{}{},",
-                        generate_dart_comments(&variant.comments),
-                        variant_name
-                    )
-                })
-                .collect::<Vec<_>>()
-                .join("\n");
-            Some(format!(
-                "{}enum {} {{
+                        format!(
+                            "{}{},",
+                            generate_dart_comments(&variant.comments),
+                            variant_name
+                        )
+                    })
+                    .collect::<Vec<_>>()
+                    .join("\n");
+                Some(format!(
+                    "{}enum {} {{
                     {}
                 }}",
-                comments, self.ir.ident.0, variants
-            ))
+                    comments, self.ir.ident.0, variants
+                ))
+            }
         }
     }
 }
