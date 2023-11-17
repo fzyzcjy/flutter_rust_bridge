@@ -56,20 +56,15 @@ impl<'a> StructRefDartApiGenerator<'a> {
             );
         }
         let constructor_params = constructor_params.join("");
+        let name_str = self.ir.ident.0;
+        let implements_exception = generate_dart_maybe_implements_exception(self.ir.is_exception);
 
         format!(
-            "{comments}{meta}class {Name} with _${Name} {implements_exception} {{
+            "{comments}{metadata}class {name_str} with _${name_str} {implements_exception} {{
                 {private_constructor}
-                const factory {Name}({{{}}}) = _{Name};
-                {}
+                const factory {name_str}({{{constructor_params}}}) = _{name_str};
+                {methods}
             }}",
-            constructor_params,
-            methods,
-            comments = comments,
-            private_constructor = private_constructor,
-            meta = metadata,
-            Name = self.ir.ident.0,
-            implements_exception = generate_dart_maybe_implements_exception(self.ir.is_exception),
         )
     }
 }

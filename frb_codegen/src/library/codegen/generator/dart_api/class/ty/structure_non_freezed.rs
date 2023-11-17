@@ -69,25 +69,18 @@ impl<'a> StructRefDartApiGenerator<'a> {
         };
         let constructor_params = constructor_params.join("");
         let const_capable = src.fields.iter().all(|field| field.is_final);
+        let name_str = self.ir.ident.0;
+        let maybe_const = if const_capable { "const " } else { "" };
+        let implements_exception = generate_dart_maybe_implements_exception(self.ir.is_exception);
 
         format!(
-            "{comments}{meta}class {Name} {implements_exception} {{
-                {}
+            "{comments}{metadata}class {name_str} {implements_exception} {{
+                {field_declarations}
 
-                {maybe_const}{Name}({}{}{});
+                {maybe_const}{name_str}({left}{constructor_params}{right});
 
-                {}
-            }}",
-            field_declarations,
-            left,
-            constructor_params,
-            right,
-            methods,
-            comments = comments,
-            meta = metadata,
-            Name = self.ir.ident.0,
-            maybe_const = if const_capable { "const " } else { "" },
-            implements_exception = generate_dart_maybe_implements_exception(self.ir.is_exception),
+                {methods}
+            }}"
         )
     }
 }
