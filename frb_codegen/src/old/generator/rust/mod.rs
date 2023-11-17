@@ -219,11 +219,12 @@ impl<'a> Generator<'a> {
         //     .into(),
         // );
 
-        lines.wasm.extend(
-            distinct_input_types
-                .iter()
-                .filter_map(|ty| self.generate_wasm2api_func(ty, ir_pack)),
-        );
+        // TODO moved
+        // lines.wasm.extend(
+        //     distinct_input_types
+        //         .iter()
+        //         .filter_map(|ty| self.generate_wasm2api_func(ty, ir_pack)),
+        // );
     }
 
     fn section_header_comment(&self, section_name: &str) -> String {
@@ -458,22 +459,6 @@ impl<'a> Generator<'a> {
     fn generate_new_with_nullptr_func(&mut self, ty: &IrType, ir_pack: &IrPack) -> String {
         TypeRustGenerator::new(ty.clone(), ir_pack, self.config)
             .new_with_nullptr(&mut self.extern_func_collector)
-    }
-
-    fn generate_wasm2api_func(&self, ty: &IrType, ir_pack: &IrPack) -> Option<String> {
-        TypeRustGenerator::new(ty.clone(), ir_pack, self.config)
-            .wire2api_jsvalue()
-            .map(|body| {
-                format!(
-                    "impl Wire2Api<{api}> for JsValue {{
-                        fn wire2api(self) -> {api} {{
-                            {}
-                        }}
-                    }}",
-                    body,
-                    api = ty.rust_api_type()
-                )
-            })
     }
 }
 
