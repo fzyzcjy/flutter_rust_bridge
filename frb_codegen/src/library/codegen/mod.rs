@@ -5,7 +5,8 @@ mod generator;
 pub(crate) mod ir;
 pub(crate) mod parser;
 
-use crate::codegen::config::internal_config::InternalConfig;
+use crate::codegen::config::internal_config::{GeneratorDartInternalConfig, InternalConfig};
+use crate::codegen::generator::dart_api::internal_config::GeneratorDartApiInternalConfig;
 use crate::codegen::generator::output::OutputCode;
 pub use config::config::{Config, ConfigDump};
 pub use config::config_parser::*;
@@ -20,10 +21,18 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
     let ir_pack = parser::parse(&internal_config.parser)?;
 
     // TODO seems not this ideal. we need to call various external tools that directly write to fs
-    let output_code_dart_api: OutputCode = generator::dart_api::generate(&ir_pack)?.into();
+    let output_code_dart_api: OutputCode =
+        generator::dart_api::generate(&ir_pack, &internal_config.generator.dart.into())?.into();
     let output_code_wire = generator::wire::generate(&ir_pack)?;
     let output_code = output_code_dart_api.merge(output_code_wire);
     output_code.write()?;
 
     Ok(())
+}
+
+// TODO move
+impl From<GeneratorDartInternalConfig> for GeneratorDartApiInternalConfig {
+    fn from(config: GeneratorDartInternalConfig) -> Self {
+        todo!()
+    }
 }

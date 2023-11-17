@@ -2,7 +2,7 @@ pub(super) mod base;
 pub(super) mod class;
 pub(super) mod decl;
 mod function;
-mod internal_config;
+pub(crate) mod internal_config;
 mod misc;
 
 use crate::codegen::generator::dart_api::base::{DartApiGenerator, DartApiGeneratorContext};
