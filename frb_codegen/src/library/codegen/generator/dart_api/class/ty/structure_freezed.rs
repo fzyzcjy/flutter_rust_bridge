@@ -22,40 +22,15 @@ impl<'a> StructRefDartApiGenerator<'a> {
         src: &IrStruct,
         comments: &str,
         metadata: &str,
-        has_methods: bool,
-        methods: &str,
+        methods: &[String],
     ) -> String {
-        let private_constructor = if has_methods {
+        let private_constructor = if !methods.is_empty() {
             format!("const {}._();", self.ir.ident.0)
         } else {
             "".to_owned()
         };
 
-        let mut constructor_params = src
-            .fields
-            .iter()
-            .map(|field| {
-                let r#default =
-                    generate_field_default(field, true, self.context.config.dart_enums_style);
-                format!(
-                    "{default} {} {} {},",
-                    generate_field_required_modifier(field),
-                    DartApiGenerator::new(field.ty.clone(), self.context.clone()).dart_api_type(),
-                    field.name.dart_style()
-                )
-            })
-            .collect_vec();
-        if has_methods && self.context.config.use_bridge_in_method {
-            constructor_params.insert(
-                0,
-                // TODO merge with extra_argument
-                format!(
-                    "required {} bridge,",
-                    self.context.config.dart_api_class_name
-                ),
-            );
-        }
-        let constructor_params = constructor_params.join("");
+        let constructor_params = self.generate_constructor_params(src, !methods.is_empty());
         let name_str = &self.ir.ident.0;
         let implements_exception = generate_dart_maybe_implements_exception(self.ir.is_exception);
 
@@ -66,5 +41,33 @@ impl<'a> StructRefDartApiGenerator<'a> {
                 {methods}
             }}",
         )
+    }
+
+    fn generate_constructor_params(&self, src: &IrStruct, has_methods: bool) -> String {
+        let mut ans = src
+            .fields
+            .iter()
+            .map(|field| {
+                let r#default =
+                    generate_field_default(field, true, self.context.config.dart_enums_style);
+                let required_modifier = generate_field_required_modifier(field);
+                let type_str =
+                    DartApiGenerator::new(field.ty.clone(), self.context.clone()).dart_api_type();
+                let name = field.name.dart_style();
+                format!("{default} {required_modifier} {type_str} {name},")
+            })
+            .collect_vec();
+
+        if has_methods && self.context.config.use_bridge_in_method {
+            ans.insert(
+                0,
+                format!(
+                    "required {} bridge,",
+                    self.context.config.dart_api_class_name
+                ),
+            );
+        }
+
+        ans.join("")
     }
 }

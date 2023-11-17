@@ -35,33 +35,12 @@ impl<'a> DartApiGeneratorClassTrait for StructRefDartApiGenerator<'a> {
         let methods = methods
             .iter()
             .map(|func| generate_api_method(func, src, &self.context))
-            .collect_vec()
-            .concat();
-
-        let extra_argument = if self.context.config.use_bridge_in_method {
-            "required this.bridge,".to_string()
-        } else {
-            "".to_string()
-        };
-
-        let field_bridge = if self.context.config.use_bridge_in_method {
-            format!("final {} bridge;", self.context.config.dart_api_class_name)
-        } else {
-            String::new()
-        };
+            .collect_vec();
 
         Some(if src.using_freezed() {
-            self.generate_mode_freezed(src, &comments, &metadata, has_methods, &methods)
+            self.generate_mode_freezed(src, &comments, &metadata, &methods)
         } else {
-            self.generate_mode_non_freezed(
-                src,
-                &comments,
-                &metadata,
-                has_methods,
-                &methods,
-                &extra_argument,
-                field_bridge,
-            )
+            self.generate_mode_non_freezed(src, &comments, &metadata, &methods)
         })
     }
 }

@@ -22,52 +22,11 @@ impl<'a> StructRefDartApiGenerator<'a> {
         src: &IrStruct,
         comments: &str,
         metadata: &str,
-        has_methods: bool,
         methods: &str,
-        extra_argument: &str,
-        field_bridge: String,
     ) -> String {
-        let mut field_declarations = src
-            .fields
-            .iter()
-            .map(|f| {
-                let comments = generate_dart_comments(&f.comments);
-                format!(
-                    "{}{} {} {};",
-                    comments,
-                    if f.is_final { "final" } else { "" },
-                    DartApiGenerator::new(f.ty.clone(), self.context.clone()).dart_api_type(),
-                    f.name.dart_style()
-                )
-            })
-            .collect_vec();
-        if has_methods {
-            field_declarations.insert(0, field_bridge);
-        }
-        let field_declarations = field_declarations.join("\n");
-        let mut constructor_params = src
-            .fields
-            .iter()
-            .map(|f| {
-                format!(
-                    "{required}this.{} {default},",
-                    f.name.dart_style(),
-                    required = generate_field_required_modifier(f),
-                    default =
-                        generate_field_default(f, false, self.context.config.dart_enums_style)
-                )
-            })
-            .collect_vec();
-        if has_methods {
-            constructor_params.insert(0, extra_argument);
-        }
+        let field_declarations = self.generate_field_declarations(src, methods, field_bridge);
+        let constructor_params = self.generate_constructor_params(src, methods);
 
-        let (left, right) = if constructor_params.is_empty() {
-            ("", "")
-        } else {
-            ("{", "}")
-        };
-        let constructor_params = constructor_params.join("");
         let const_capable = src.fields.iter().all(|field| field.is_final);
         let name_str = &self.ir.ident.0;
         let maybe_const = if const_capable { "const " } else { "" };
@@ -82,5 +41,62 @@ impl<'a> StructRefDartApiGenerator<'a> {
                 {methods}
             }}"
         )
+    }
+
+    fn generate_field_declarations(&self, src: &IrStruct, methods: &str) -> String {
+        let mut field_declarations = src
+            .fields
+            .iter()
+            .map(|f| {
+                let comments = generate_dart_comments(&f.comments);
+                let maybe_final = if f.is_final { "final" } else { "" };
+                let type_str =
+                    DartApiGenerator::new(f.ty.clone(), self.context.clone()).dart_api_type();
+                let name_str = f.name.dart_style();
+                format!("{comments}{maybe_final} {type_str} {name_str};")
+            })
+            .collect_vec();
+
+        if !methods.is_empty() && self.context.config.use_bridge_in_method {
+            field_declarations.insert(
+                0,
+                format!("final {} bridge;", self.context.config.dart_api_class_name),
+            );
+        }
+
+        field_declarations.join("\n")
+    }
+
+    fn generate_constructor_params(
+        &self,
+        src: &IrStruct,
+        methods: &str,
+        extra_argument: &str,
+    ) -> Vec<String> {
+        let mut ans = src
+            .fields
+            .iter()
+            .map(|f| {
+                format!(
+                    "{required}this.{} {default},",
+                    f.name.dart_style(),
+                    required = generate_field_required_modifier(f),
+                    default =
+                        generate_field_default(f, false, self.context.config.dart_enums_style)
+                )
+            })
+            .collect_vec();
+
+        if !methods.is_empty() && self.context.config.use_bridge_in_method {
+            ans.insert(0, "required this.bridge,".to_string());
+        }
+
+        let mut ans = ans.join("");
+
+        if !ans.is_empty() {
+            ans = format!("{{{ans}}}");
+        };
+
+        ans
     }
 }
