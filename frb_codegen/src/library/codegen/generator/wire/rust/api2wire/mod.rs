@@ -9,7 +9,7 @@ use crate::library::codegen::generator::wire::rust::api2wire::ty::WireRustGenera
 mod misc;
 pub(crate) mod ty;
 
-pub(crate) fn generate(
+pub(super) fn generate(
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,
 ) -> Acc<Vec<WireRustCode>> {

@@ -15,7 +15,7 @@ mod misc;
 pub(crate) mod ty;
 pub(crate) mod wire_func;
 
-pub(crate) fn generate(
+pub(super) fn generate(
     ir_pack: &IrPack,
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,

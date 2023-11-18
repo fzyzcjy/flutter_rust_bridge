@@ -13,7 +13,7 @@ mod impl_wire2api_trait;
 mod misc;
 pub(crate) mod ty;
 
-pub(crate) fn generate(
+pub(super) fn generate(
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,
 ) -> Acc<Vec<WireRustCode>> {

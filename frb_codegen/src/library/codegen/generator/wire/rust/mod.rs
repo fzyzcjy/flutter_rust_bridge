@@ -25,7 +25,7 @@ pub(crate) fn generate(ir_pack: &IrPack, context: WireRustGeneratorContext) -> A
 
 /// Some information derivable from `IrPack`, but may be expensive to compute,
 /// so we compute once and cache them.
-struct IrPackComputedCache {
+pub(super) struct IrPackComputedCache {
     distinct_input_types: Vec<IrType>,
     distinct_output_types: Vec<IrType>,
     input_and_output_types: Vec<IrType>,
