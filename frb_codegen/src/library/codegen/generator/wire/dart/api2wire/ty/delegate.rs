@@ -1,9 +1,11 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::api_dart::base::ApiDartGenerator;
 use crate::codegen::generator::wire::dart::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::dart::base::*;
 use crate::codegen::ir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
 };
+use crate::library::codegen::generator::api_dart::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireDartGeneratorApi2wireTrait for DelegateWireDartGenerator<'a> {
@@ -23,7 +25,11 @@ impl<'a> WireDartGeneratorApi2wireTrait for DelegateWireDartGenerator<'a> {
                     )),
                     wasm: Some(format!(
                         "return {}.fromList(raw);",
-                        array.get_delegate().dart_api_type()
+                        ApiDartGenerator::new(
+                            array.get_delegate().clone(),
+                            self.context.as_api_dart_context()
+                        )
+                        .dart_api_type()
                     )),
                     ..Default::default()
                 },

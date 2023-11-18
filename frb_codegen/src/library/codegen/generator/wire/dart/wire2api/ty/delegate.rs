@@ -1,9 +1,11 @@
+use crate::codegen::generator::api_dart::base::ApiDartGenerator;
 use crate::codegen::generator::wire::dart::base::*;
 use crate::codegen::generator::wire::dart::wire2api::ty::WireDartGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegatePrimitiveEnum,
 };
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::library::codegen::generator::api_dart::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireDartGeneratorWire2apiTrait for DelegateWireDartGenerator<'a> {
@@ -12,12 +14,14 @@ impl<'a> WireDartGeneratorWire2apiTrait for DelegateWireDartGenerator<'a> {
             IrTypeDelegate::Array(array) => match array {
                 IrTypeDelegateArray::GeneralArray { general, .. } => format!(
                     r"return {}((raw as List<dynamic>).map(_wire2api_{}).toList());",
-                    array.dart_api_type(),
+                    ApiDartGenerator::new(array.clone(), self.context.as_api_dart_context())
+                        .dart_api_type(),
                     general.safe_ident(),
                 ),
                 IrTypeDelegateArray::PrimitiveArray { .. } => format!(
                     r"return {}(_wire2api_{}(raw));",
-                    array.dart_api_type(),
+                    ApiDartGenerator::new(array.clone(), self.context.as_api_dart_context())
+                        .dart_api_type(),
                     array.get_delegate().safe_ident(),
                 ),
             },
@@ -32,14 +36,19 @@ impl<'a> WireDartGeneratorWire2apiTrait for DelegateWireDartGenerator<'a> {
             }
             IrTypeDelegate::String
             | IrTypeDelegate::Backtrace
-            | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                gen_wire2api_simple_type_cast(&self.ir.dart_api_type())
-            }
+            | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => gen_wire2api_simple_type_cast(
+                &ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
+                    .dart_api_type(),
+            ),
             IrTypeDelegate::StringList => {
                 "return (raw as List<dynamic>).cast<String>();".to_owned()
             }
             IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) => {
-                format!("return {}.values[raw as int];", ir.dart_api_type()) // here `as int` is neccessary in strict dynamic mode
+                format!(
+                    "return {}.values[raw as int];",
+                    ApiDartGenerator::new(ir.clone(), self.context.as_api_dart_context())
+                        .dart_api_type()
+                ) // here `as int` is neccessary in strict dynamic mode
             }
             IrTypeDelegate::Time(ir) => {
                 if !ir.is_duration() {

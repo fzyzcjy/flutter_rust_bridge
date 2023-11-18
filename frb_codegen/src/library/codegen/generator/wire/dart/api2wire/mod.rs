@@ -8,6 +8,7 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Optional;
 use crate::library::codegen::generator::api_dart::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::generator::wire::dart::api2wire::ty::WireDartGeneratorApi2wireTrait;
+use crate::library::codegen::generator::wire::dart::misc::ty::WireDartGeneratorMiscTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
 pub(crate) mod ty;
@@ -46,7 +47,7 @@ fn generate_api2wire_func(ty: &IrType, context: WireDartGeneratorContext) -> Acc
                 }}",
                 WireDartGenerator::new(ty.clone(), context).dart_wire_type(target),
                 ty.safe_ident(),
-                ApiDartGenerator::new(ty.clone(), context).dart_api_type(),
+                ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type(),
             )
         })
         .unwrap_or_default()
@@ -65,7 +66,7 @@ fn generate_api_fill_to_wire_func(ty: &IrType, context: WireDartGeneratorContext
                 {body}
             }}",
             ty.safe_ident(),
-            ApiDartGenerator::new(ty.clone(), context).dart_api_type(),
+            ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type(),
             WireDartGenerator::new(target_wire_type.clone(), context).dart_wire_type(Target::Io),
         )
     } else {
