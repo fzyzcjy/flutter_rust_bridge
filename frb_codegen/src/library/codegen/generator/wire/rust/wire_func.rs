@@ -22,11 +22,11 @@ pub(crate) fn generate_wire_func(
     context: WireRustGeneratorContext,
 ) -> Acc<CodeWithExternFunc> {
     let params = generate_params(func, context);
-    let inner_func_params = generate_inner_func_params(func, ir_pack);
+    let inner_func_params = generate_inner_func_params(func, ir_pack, context);
     let wrap_info_obj = generate_wrap_info_obj(func);
     let code_wire2api = generate_code_wire2api(func);
     let code_call_inner_func_result = generate_code_call_inner_func_result(func, inner_func_params);
-    let handler_func_name = generate_handler_func_name(func, ir_pack);
+    let handler_func_name = generate_handler_func_name(func, ir_pack, context);
     let return_type = generate_return_type(func);
     let code_closure = generate_code_closure(func, &code_wire2api, &code_call_inner_func_result);
     let func_name = wire_func_name(func);
@@ -56,7 +56,11 @@ pub(crate) fn generate_wire_func(
     })
 }
 
-fn generate_inner_func_params(func: &IrFunc, ir_pack: &IrPack) -> Vec<String> {
+fn generate_inner_func_params(
+    func: &IrFunc,
+    ir_pack: &IrPack,
+    context: WireRustGeneratorContext,
+) -> Vec<String> {
     let mut ans = func
         .inputs
         .iter()
@@ -68,7 +72,7 @@ fn generate_inner_func_params(func: &IrFunc, ir_pack: &IrPack) -> Vec<String> {
             argument_index,
             format!(
                 "task_callback.stream_sink::<_,{}>()",
-                func.output.intodart_type(ir_pack)
+                WireRustGenerator::new(func.output.clone(), context).intodart_type(ir_pack)
             ),
         );
     }
@@ -175,14 +179,18 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_params: Vec<St
     }
 }
 
-fn generate_handler_func_name(func: &IrFunc, ir_pack: &IrPack) -> String {
+fn generate_handler_func_name(
+    func: &IrFunc,
+    ir_pack: &IrPack,
+    context: WireRustGeneratorContext,
+) -> String {
     match func.mode {
         IrFuncMode::Sync => "wrap_sync".to_owned(),
         IrFuncMode::Normal | IrFuncMode::Stream { .. } => {
             let output = if matches!(func.mode, IrFuncMode::Stream { .. }) {
                 "()".to_owned()
             } else {
-                func.output.intodart_type(ir_pack)
+                WireRustGenerator::new(func.output.clone(), context).intodart_type(ir_pack)
             };
             format!("wrap::<_,_,_,{output},_>")
         }
