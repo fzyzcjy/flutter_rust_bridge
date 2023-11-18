@@ -32,12 +32,6 @@ fn compute_needs_freezed_for_type(ty: &IrType, ir_pack: &IrPack) -> bool {
     match ty {
         EnumRef(_) => true,
         StructRef(st) => st.freezed,
-        SyncReturn(sync) => {
-            let types = sync.clone().into_inner().distinct_types(ir_pack);
-            types
-                .iter()
-                .any(|child| compute_needs_freezed_for_type(child, ir_pack))
-        }
         _ => false,
     }
 }
