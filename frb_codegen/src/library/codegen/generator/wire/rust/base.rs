@@ -1,4 +1,5 @@
 use crate::codegen::generator::wire::rust::api2wire::ty::WireRustGeneratorApi2wireTrait;
+use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::dart_opaque::IrTypeDartOpaque;
@@ -63,5 +64,5 @@ codegen_generator_structs!(
 #[derive(Debug, Clone, Copy)]
 pub(crate) struct WireRustGeneratorContext<'a> {
     pub(crate) ir_pack: &'a IrPack,
-    // pub(crate) config: &'a GeneratorWireRustInternalConfig, // TODO
+    pub(crate) config: &'a GeneratorWireRustInternalConfig,
 }

@@ -8,15 +8,11 @@ use itertools::Itertools;
 pub(crate) mod api2wire;
 pub(crate) mod base;
 pub(crate) mod common;
+mod internal_config;
 pub(crate) mod wire2api;
 mod wire_func;
 
-pub(crate) fn generate(
-    ir_pack: &IrPack,
-    context: WireRustGeneratorContext,
-    // TODO this should be in config?
-    rust_wire_mod: &str,
-) -> Acc<String> {
+pub(crate) fn generate(ir_pack: &IrPack, context: WireRustGeneratorContext) -> Acc<String> {
     let mut lines = Acc::<Vec<_>>::default();
 
     let distinct_input_types = ir_pack.distinct_types(true, false);
@@ -30,11 +26,7 @@ pub(crate) fn generate(
     lines.push(generate_code_header());
 
     lines.push(section_header_comment("imports"));
-    lines.push(generate_imports(
-        input_and_output_types,
-        context,
-        rust_wire_mod,
-    ));
+    lines.push(generate_imports(input_and_output_types, context));
 
     lines.push(section_header_comment("wire functions"));
     // TODO

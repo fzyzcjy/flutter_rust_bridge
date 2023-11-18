@@ -50,8 +50,8 @@ pub(crate) fn generate_static_checks(
 pub(crate) fn generate_imports(
     types: impl Iterator<Item = IrType>,
     context: WireRustGeneratorContext,
-    rust_wire_mod: &str,
 ) -> String {
+    let rust_wire_mod = &context.config.rust_wire_mod;
     let imports_misc = format!(
         r#"
         use crate::{rust_wire_mod}::*;
