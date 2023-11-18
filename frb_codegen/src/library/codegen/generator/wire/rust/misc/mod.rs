@@ -1,6 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
 use crate::codegen::generator::wire::rust::misc::wire_func::generate_wire_func;
+use crate::codegen::generator::wire::rust::wire2api::extern_func::CodeWithExternFunc;
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::IrType;
@@ -18,40 +19,40 @@ pub(crate) fn generate(
     ir_pack: &IrPack,
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,
-) -> Acc<Vec<String>> {
-    let mut lines = Acc::<Vec<_>>::default();
+) -> Acc<CodeWithExternFunc> {
+    let mut ans = Acc::default();
 
-    lines.push(FILE_ATTRIBUTES.to_string());
-    lines.push(generate_code_header());
+    ans.push(FILE_ATTRIBUTES.to_string());
+    ans.push(generate_code_header());
 
-    lines.push(section_header_comment("imports"));
-    lines.push(generate_imports(&cache.input_and_output_types, context));
+    ans.push(section_header_comment("imports"));
+    ans.push(generate_imports(&cache.input_and_output_types, context));
 
-    lines.push(section_header_comment("wire functions"));
-    lines += ir_pack
+    ans.push(section_header_comment("wire functions"));
+    ans += ir_pack
         .funcs
         .iter()
         .map(|f| generate_wire_func(f, context))
         .collect();
 
-    lines.push(section_header_comment("wrapper structs"));
-    lines.extend(
+    ans.push(section_header_comment("wrapper structs"));
+    ans.extend(
         cache
             .distinct_output_types
             .iter()
             .filter_map(|ty| generate_wrapper_struct(ty, context)),
     );
 
-    lines.push(section_header_comment("static checks"));
-    lines.push(generate_static_checks(
+    ans.push(section_header_comment("static checks"));
+    ans.push(generate_static_checks(
         &cache.input_and_output_types,
         context,
     ));
 
-    lines.push(section_header_comment("executor"));
-    lines.push(generate_executor(ir_pack));
+    ans.push(section_header_comment("executor"));
+    ans.push(generate_executor(ir_pack));
 
-    lines
+    ans
 }
 
 const FILE_ATTRIBUTES: &'static str = r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion, clippy::unit_arg, clippy::double_parens, non_snake_case, clippy::too_many_arguments)]"#;

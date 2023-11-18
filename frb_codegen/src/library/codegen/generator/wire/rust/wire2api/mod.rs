@@ -1,6 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
 use crate::codegen::generator::wire::rust::misc::section_header_comment;
+use crate::codegen::generator::wire::rust::wire2api::extern_func::CodeWithExternFunc;
 use crate::codegen::generator::wire::rust::wire2api::impl_new_with_nullptr::generate_impl_new_with_nullptr;
 use crate::codegen::generator::wire::rust::wire2api::impl_wire2api_trait::generate_impl_wire2api;
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
@@ -16,41 +17,41 @@ pub(crate) mod ty;
 pub(crate) fn generate(
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,
-) -> Acc<Vec<String>> {
-    let mut lines = Acc::<Vec<_>>::default();
+) -> Acc<CodeWithExternFunc> {
+    let mut ans = Acc::default();
 
-    lines.push(section_header_comment("allocate functions"));
-    lines += cache
+    ans.push(section_header_comment("allocate functions"));
+    ans += cache
         .distinct_input_types
         .iter()
         .map(|ty| WireRustGenerator::new(ty.clone(), context).generate_allocate_funcs())
         .collect();
 
-    lines.push(section_header_comment("related functions"));
-    lines += cache
+    ans.push(section_header_comment("related functions"));
+    ans += cache
         .distinct_output_types
         .iter()
         .map(|ty| WireRustGenerator::new(ty.clone(), context).generate_related_funcs())
         .collect();
 
-    lines.push(section_header_comment("impl Wire2Api"));
-    lines += generate_impl_wire2api(&cache.distinct_input_types, context);
+    ans.push(section_header_comment("impl Wire2Api"));
+    ans += generate_impl_wire2api(&cache.distinct_input_types, context);
 
-    lines.io.push(section_header_comment("wire structs"));
-    lines.io.extend(
+    ans.io.push(section_header_comment("wire structs"));
+    ans.io.extend(
         cache
             .distinct_input_types
             .iter()
             .filter_map(|ty| WireRustGenerator::new(ty.clone(), context).generate_wire2api_class()),
     );
 
-    (lines.io).push(section_header_comment("impl NewWithNullPtr"));
-    (lines.io).push(generate_impl_new_with_nullptr(
+    (ans.io).push(section_header_comment("impl NewWithNullPtr"));
+    (ans.io).push(generate_impl_new_with_nullptr(
         &cache.distinct_input_types,
         context,
     ));
 
-    lines
+    ans
 }
 
 // TODO rm, since no longer have explicit SyncReturn type?

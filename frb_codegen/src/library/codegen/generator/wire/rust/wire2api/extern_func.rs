@@ -1,6 +1,7 @@
+use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::Target;
 use itertools::{concat, Itertools};
-use std::ops::Add;
+use std::ops::{Add, AddAssign};
 
 #[derive(Default)]
 pub(crate) struct CodeWithExternFunc {
@@ -11,11 +12,17 @@ pub(crate) struct CodeWithExternFunc {
 impl Add for CodeWithExternFunc {
     type Output = Self;
 
-    fn add(self, rhs: Self) -> Self::Output {
-        Self {
-            code: self.code + &rhs.code,
-            extern_funcs: concat([self.extern_funcs, rhs.extern_funcs]),
-        }
+    fn add(mut self, rhs: Self) -> Self::Output {
+        self += rhs;
+        self
+    }
+}
+
+impl AddAssign for CodeWithExternFunc {
+    #[inline]
+    fn add_assign(&mut self, rhs: Self) {
+        self.code += &rhs.code;
+        self.extern_funcs.extend(rhs.extern_funcs);
     }
 }
 

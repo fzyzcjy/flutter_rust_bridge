@@ -1,6 +1,6 @@
 use crate::codegen::generator::misc::TargetOrCommon;
 use std::iter::FromIterator;
-use std::ops::Index;
+use std::ops::{AddAssign, Index};
 
 /// Generic accumulator over the targets.
 ///
@@ -13,12 +13,12 @@ pub struct Acc<T> {
     pub wasm: T,
 }
 
-impl<T> std::ops::AddAssign for Acc<Vec<T>> {
+impl<T: AddAssign> AddAssign for Acc<T> {
     #[inline]
     fn add_assign(&mut self, rhs: Self) {
-        self.common.extend(rhs.common);
-        self.io.extend(rhs.io);
-        self.wasm.extend(rhs.wasm);
+        self.common += rhs.common;
+        self.io += rhs.io;
+        self.wasm += rhs.wasm;
     }
 }
 
