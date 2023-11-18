@@ -145,10 +145,6 @@ impl<'a> Generator<'a> {
         // );
     }
 
-    fn section_header_comment(&self, section_name: &str) -> String {
-        format!("// Section: {section_name}\n")
-    }
-
     fn generate_executor(&mut self, ir_pack: &IrPack) -> String {
         if ir_pack.has_executor {
             "/* nothing since executor detected */".to_string()
