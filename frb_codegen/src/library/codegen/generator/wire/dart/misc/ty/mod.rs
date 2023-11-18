@@ -1,3 +1,5 @@
+use crate::codegen::generator::wire::dart::base::WireDartGenerator;
+
 mod boxed;
 mod dart_opaque;
 mod delegate;
