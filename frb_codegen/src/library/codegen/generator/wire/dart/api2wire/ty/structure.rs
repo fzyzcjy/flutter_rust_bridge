@@ -85,7 +85,7 @@ impl<'a> GeneralizedStructGenerator<'a> {
         let dart_style = self.field_name_dart_style(index, field);
         let rust_style = field.name.rust_style();
 
-        if field.ty.is_struct() {
+        if field.ty.is_struct_or_enum_or_record() {
             format!("_api_fill_to_wire_{safe_ident}(apiObj.{dart_style}, wireObj.{rust_style});")
         } else {
             format!("wireObj.{rust_style} = api2wire_{safe_ident}(apiObj.{dart_style});")

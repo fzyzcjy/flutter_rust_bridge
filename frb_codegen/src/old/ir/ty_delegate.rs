@@ -3,17 +3,6 @@ use convert_case::{Case, Casing};
 use crate::ir::*;
 use crate::target::Target;
 
-impl IrTypeDelegateTime {
-    #[inline]
-    pub fn is_duration(&self) -> bool {
-        matches!(self, Self::Duration)
-    }
-    #[inline]
-    pub fn is_utc(&self) -> bool {
-        matches!(self, Self::Naive | Self::Utc)
-    }
-}
-
 impl IrTypeDelegateArray {
     pub fn inner_rust_api_type(&self) -> String {
         match self {

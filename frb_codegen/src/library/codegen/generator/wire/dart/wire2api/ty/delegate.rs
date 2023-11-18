@@ -2,7 +2,7 @@ use crate::codegen::generator::api_dart::base::ApiDartGenerator;
 use crate::codegen::generator::wire::dart::base::*;
 use crate::codegen::generator::wire::dart::wire2api::ty::WireDartGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::delegate::{
-    IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegatePrimitiveEnum,
+    IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
 };
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::library::codegen::generator::api_dart::info::ApiDartGeneratorInfoTrait;
@@ -14,13 +14,13 @@ impl<'a> WireDartGeneratorWire2apiTrait for DelegateWireDartGenerator<'a> {
             IrTypeDelegate::Array(array) => match array {
                 IrTypeDelegateArray::GeneralArray { general, .. } => format!(
                     r"return {}((raw as List<dynamic>).map(_wire2api_{}).toList());",
-                    ApiDartGenerator::new(array.clone(), self.context.as_api_dart_context())
+                    ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
                         .dart_api_type(),
                     general.safe_ident(),
                 ),
                 IrTypeDelegateArray::PrimitiveArray { .. } => format!(
                     r"return {}(_wire2api_{}(raw));",
-                    ApiDartGenerator::new(array.clone(), self.context.as_api_dart_context())
+                    ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
                         .dart_api_type(),
                     array.get_delegate().safe_ident(),
                 ),
@@ -51,13 +51,13 @@ impl<'a> WireDartGeneratorWire2apiTrait for DelegateWireDartGenerator<'a> {
                 ) // here `as int` is neccessary in strict dynamic mode
             }
             IrTypeDelegate::Time(ir) => {
-                if !ir.is_duration() {
-                    format!(
-                        "return wire2apiTimestamp(ts: _wire2api_i64(raw), isUtc: {});",
-                        ir.is_utc()
-                    )
-                } else {
+                if ir == IrTypeDelegateTime::Duration {
                     "return wire2apiDuration(_wire2api_i64(raw));".to_owned()
+                } else {
+                    format!(
+                        "return wire2apiTimestamp(ts: _wire2api_i64(raw), isUtc: {is_utc});",
+                        is_utc = matches!(ir, IrTypeDelegateTime::Naive | IrTypeDelegateTime::Utc)
+                    )
                 }
             }
             IrTypeDelegate::TimeList(_) => {
