@@ -16,8 +16,8 @@ pub(crate) fn generate(ir_pack: &IrPack, context: WireRustGeneratorContext) -> A
     let cache = IrPackComputedCache::new(ir_pack);
     let mut lines = Acc::<Vec<_>>::default();
     lines += misc::generate(ir_pack, context, &cache);
-    lines += wire2api::generate(ir_pack, context, &cache);
-    lines += api2wire::generate(ir_pack, context, &cache);
+    lines += wire2api::generate(context, &cache);
+    lines += api2wire::generate(context, &cache);
     lines.join("\n")
 }
 

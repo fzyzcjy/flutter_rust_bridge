@@ -6,7 +6,7 @@ use crate::library::codegen::generator::wire::rust::misc::ty::WireRustGeneratorM
 use crate::library::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use itertools::Itertools;
 
-pub(crate) fn generate_impl_new_with_nullptr(
+pub(super) fn generate_impl_new_with_nullptr(
     types: &[IrType],
     context: WireRustGeneratorContext,
 ) -> CodeWithExternFunc {

@@ -8,7 +8,6 @@ mod misc;
 pub(crate) mod ty;
 
 pub(crate) fn generate(
-    ir_pack: &IrPack,
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,
 ) -> Acc<Vec<String>> {
