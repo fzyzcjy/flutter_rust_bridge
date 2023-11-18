@@ -19,9 +19,9 @@ use std::convert::TryInto;
 
 pub(crate) fn generate_wire_func(
     func: &IrFunc,
-    ir_pack: &IrPack,
     context: WireRustGeneratorContext,
 ) -> Acc<CodeWithExternFunc> {
+    let ir_pack = context.ir_pack;
     let params = generate_params(func, context);
     let inner_func_params = generate_inner_func_params(func, ir_pack, context);
     let wrap_info_obj = generate_wrap_info_obj(func);

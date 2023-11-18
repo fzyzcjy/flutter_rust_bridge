@@ -1,7 +1,10 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::misc::generate_code_header;
-use crate::codegen::generator::wire::rust::base::WireRustGeneratorContext;
-use crate::codegen::generator::wire::rust::common::generate_imports;
+use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
+use crate::codegen::generator::wire::rust::common::{
+    generate_imports, generate_static_checks, generate_wrapper_struct,
+};
+use crate::codegen::generator::wire::rust::wire_func::generate_wire_func;
 use crate::codegen::ir::pack::IrPack;
 use itertools::Itertools;
 
@@ -19,45 +22,38 @@ pub(crate) fn generate(ir_pack: &IrPack, context: WireRustGeneratorContext) -> A
     let distinct_output_types = ir_pack.distinct_types(false, true);
     let input_and_output_types = distinct_input_types
         .iter()
-        .chain(distinct_output_types.iter())
+        .cloned()
+        .chain(distinct_output_types.iter().cloned())
         .collect_vec();
 
     lines.push(FILE_ATTRIBUTES.to_string());
     lines.push(generate_code_header());
 
     lines.push(section_header_comment("imports"));
-    lines.push(generate_imports(input_and_output_types, context));
+    lines.push(generate_imports(&input_and_output_types, context));
 
     lines.push(section_header_comment("wire functions"));
-    // TODO
-    // lines += ir_pack
-    //     .funcs
-    //     .iter()
-    //     .map(|f| generate_wire_func(f, ir_pack))
-    //     .collect();
+    lines += ir_pack
+        .funcs
+        .iter()
+        .map(|f| generate_wire_func(f, context))
+        .collect();
 
     lines.push(section_header_comment("wrapper structs"));
-    // TODO
-    // lines.extend(
-    //     distinct_output_types
-    //         .iter()
-    //         .filter_map(|ty| generate_wrapper_struct_name(ty, ir_pack)),
-    // );
+    lines.extend(
+        distinct_output_types
+            .iter()
+            .filter_map(|ty| generate_wrapper_struct(ty, context)),
+    );
 
     lines.push(section_header_comment("static checks"));
-    // TODO why only `distinct_output_types`, not input types?
-    // TODO
-    // let static_checks = distinct_output_types
-    //     .iter()
-    //     .filter_map(|ty| generate_static_checks(ty, ir_pack))
-    //     .collect_vec();
+    lines.push(generate_static_checks(&input_and_output_types, context));
 
     lines.push(section_header_comment("allocate functions"));
-    // TODO
-    // lines += distinct_input_types
-    //     .iter()
-    //     .map(|f| generate_generate_allocate_funcs(f, ir_pack))
-    //     .collect();
+    lines += distinct_input_types
+        .iter()
+        .map(|ty| WireRustGenerator::new(ty, context).generate_allocate_funcs())
+        .collect();
 
     lines.push(section_header_comment("related functions"));
     // TODO

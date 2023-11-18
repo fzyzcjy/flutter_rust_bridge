@@ -47,10 +47,7 @@ pub(crate) fn generate_static_checks(
     lines.join("\n")
 }
 
-pub(crate) fn generate_imports(
-    types: impl Iterator<Item = IrType>,
-    context: WireRustGeneratorContext,
-) -> String {
+pub(crate) fn generate_imports(types: &[IrType], context: WireRustGeneratorContext) -> String {
     let rust_wire_mod = &context.config.rust_wire_mod;
     let imports_misc = format!(
         r#"
