@@ -152,7 +152,7 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_params: Vec<St
         format!("{}({})", func.name, inner_func_params.join(", "))
     };
 
-    if func.fallible {
+    if func.fallible() {
         code_call_inner_func
     } else {
         format!("Result::<_,()>::Ok({code_call_inner_func})")

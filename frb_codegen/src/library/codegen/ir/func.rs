@@ -11,9 +11,6 @@ pub struct IrFunc {
     pub owner: IrFuncOwnerInfo,
     pub mode: IrFuncMode,
     pub comments: Vec<IrComment>,
-
-    // TODO remove it, it should be `self.error_output != None`
-    // pub fallible: bool,
 }
 
 pub enum IrFuncMode {
@@ -40,4 +37,10 @@ pub enum IrFuncOwnerInfoMethodMode {
     Static,
     Instance,
 }
+}
+
+impl IrFunc {
+    pub(crate) fn fallible(&self) -> bool {
+        self.error_output.is_some()
+    }
 }
