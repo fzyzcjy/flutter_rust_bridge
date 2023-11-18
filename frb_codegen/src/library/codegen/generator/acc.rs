@@ -89,6 +89,7 @@ impl<T: ToString> From<T> for Acc<Option<String>> {
 }
 
 impl<T> Acc<Vec<T>> {
+    // TODO explicitly show it is to *common* in *this* function etc
     /// Push to the common buffer.
     #[inline]
     pub fn push(&mut self, common: T) {
