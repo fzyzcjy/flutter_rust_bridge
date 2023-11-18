@@ -1,6 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
+use crate::codegen::generator::wire::rust::wire2api::extern_func::CodeWithExternFunc;
 use crate::codegen::generator::wire::rust::wire2api::misc::generate_class_from_fields;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::IrTypeTrait;
@@ -83,12 +84,15 @@ impl<'a> WireRustGeneratorWire2apiTrait for StructRefWireRustGenerator<'a> {
                     format!(
                         "{}: {},",
                         field.name.rust_style(),
-                        if field.ty.rust_wire_is_pointer(Target::Io) {
+                        if WireRustGenerator::new(field.ty.clone(), self.context.clone())
+                            .rust_wire_is_pointer(Target::Io)
+                        {
                             "core::ptr::null_mut()".to_owned()
                         } else if field.ty.is_rust_opaque() || field.ty.is_dart_opaque() {
                             format!(
                                 "{}::new_with_null_ptr()",
-                                field.ty.rust_wire_type(Target::Io)
+                                WireRustGenerator::new(field.ty.clone(), self.context.clone())
+                                    .rust_wire_type(Target::Io)
                             )
                         } else {
                             "Default::default()".to_owned()
@@ -98,22 +102,22 @@ impl<'a> WireRustGeneratorWire2apiTrait for StructRefWireRustGenerator<'a> {
                 .collect_vec()
                 .join("\n")
         };
-        format!(
-            r#"impl NewWithNullPtr for {} {{
+
+        Some(CodeWithExternFunc::code(format!(
+            r#"impl NewWithNullPtr for {rust_wire_type} {{
                     fn new_with_null_ptr() -> Self {{
-                        Self {{ {} }}
+                        Self {{ {body} }}
                     }}
                 }}
 
-                impl Default for {} {{
+                impl Default for {rust_wire_type} {{
                     fn default() -> Self {{
                         Self::new_with_null_ptr()
                     }}
                 }}
             "#,
-            self.ir.rust_wire_type(Target::Io),
-            body,
-            self.ir.rust_wire_type(Target::Io),
-        )
+            rust_wire_type = WireRustGenerator::new(self.ir.clone().into(), self.context.clone())
+                .rust_wire_type(Target::Io),
+        )))
     }
 }

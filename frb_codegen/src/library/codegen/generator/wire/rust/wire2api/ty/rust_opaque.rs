@@ -1,7 +1,10 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
+use crate::codegen::generator::wire::rust::wire2api::extern_func::CodeWithExternFunc;
 use crate::codegen::generator::wire::rust::wire2api::misc::generate_class_from_fields;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
+use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
 use std::borrow::Cow;
 
 impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
@@ -41,13 +44,14 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
     }
 
     fn generate_impl_new_with_nullptr(&self) -> Option<CodeWithExternFunc> {
-        format!(
+        Some(CodeWithExternFunc::code(format!(
             "impl NewWithNullPtr for {} {{
                 fn new_with_null_ptr() -> Self {{
                     Self {{ ptr: core::ptr::null() }}
                 }}
             }}",
-            self.ir.rust_wire_type(crate::target::Target::Io)
-        )
+            WireRustGenerator::new(self.ir.clone().into(), self.context.clone())
+                .rust_wire_type(Target::Io)
+        )))
     }
 }

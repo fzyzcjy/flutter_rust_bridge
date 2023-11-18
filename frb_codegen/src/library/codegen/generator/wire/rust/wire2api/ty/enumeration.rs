@@ -4,6 +4,7 @@ use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::wire2api::extern_func::CodeWithExternFunc;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumMode, IrVariant, IrVariantKind};
+use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
 use itertools::Itertools;
 
@@ -83,11 +84,15 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
     }
 
     fn generate_impl_new_with_nullptr(&self) -> Option<CodeWithExternFunc> {
-        fn init_of(ty: &IrType) -> String {
-            if ty.rust_wire_is_pointer(Io) {
+        fn init_of(ty: &IrType, context: &WireRustGeneratorContext) -> String {
+            let ty_generator = WireRustGenerator::new(ty.clone(), context.clone());
+            if ty_generator.rust_wire_is_pointer(Target::Io) {
                 "core::ptr::null_mut()".to_owned()
             } else if ty.is_rust_opaque() || ty.is_dart_opaque() {
-                format!("{}::new_with_null_ptr()", ty.rust_wire_type(Io))
+                format!(
+                    "{}::new_with_null_ptr()",
+                    ty_generator.rust_wire_type(Target::Io)
+                )
             } else {
                 "Default::default()".to_owned()
             }
@@ -99,11 +104,17 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
             .variants()
             .iter()
             .filter_map(|variant| {
-                let typ = format!("{}_{}", self.ir.name, variant.name);
+                let typ = format!("{}_{}", self.ir.ident.0, variant.name.raw);
                 let body = if let IrVariantKind::Struct(st) = &variant.kind {
                     st.fields
                         .iter()
-                        .map(|field| format!("{}: {}", field.name.rust_style(), init_of(&field.ty)))
+                        .map(|field| {
+                            format!(
+                                "{}: {}",
+                                field.name.rust_style(),
+                                init_of(&field.ty, &self.context)
+                            )
+                        })
                         .collect_vec()
                 } else {
                     return None;
@@ -111,30 +122,30 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
                 Some(collector.generate(
                     &format!("inflate_{typ}"),
                     NO_PARAMS,
-                    Some(&format!("*mut {}Kind", self.ir.name)),
+                    Some(&format!("*mut {}Kind", self.ir.ident.0)),
                     &format!(
                         "support::new_leak_box_ptr({}Kind {{
                             {}: support::new_leak_box_ptr({} {{
                                 {}
                             }})
                         }})",
-                        self.ir.name,
+                        self.ir.ident.0,
                         variant.name.rust_style(),
                         format_args!("wire_{typ}"),
                         body.join(",")
                     ),
-                    Io,
+                    Target::Io,
                 ))
             })
             .collect_vec();
-        format!(
-            r#"impl Default for {} {{
+        Some(CodeWithExternFunc::code(format!(
+            r#"impl Default for {rust_wire_type} {{
                     fn default() -> Self {{
                         Self::new_with_null_ptr()
                     }}
                 }}
 
-                impl NewWithNullPtr for {} {{
+                impl NewWithNullPtr for {rust_wire_type} {{
                 fn new_with_null_ptr() -> Self {{
                     Self {{
                         tag: -1,
@@ -143,10 +154,10 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
                 }}
             }}
             {}"#,
-            self.ir.rust_wire_type(Io),
-            self.ir.rust_wire_type(Io),
-            inflators.join("\n\n")
-        )
+            inflators.join("\n\n"),
+            rust_wire_type = WireRustGenerator::new(self.ir.clone().into(), self.context.clone())
+                .rust_wire_type(Target::Io),
+        )))
     }
 }
 
