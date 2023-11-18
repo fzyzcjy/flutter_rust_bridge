@@ -14,41 +14,16 @@ pub(crate) fn generate_wire_func(func: &IrFunc, ir_pack: &IrPack) -> Acc<CodeWit
     let wrap_info_obj = generate_wrap_info_obj(func);
     let code_wire2api = generate_code_wire2api(func);
     let code_call_inner_func_result = generate_code_call_inner_func_result(func, inner_func_params);
-
-    let (handler_func_name, return_type, code_closure) = match func.mode {
-        IrFuncMode::Sync => (
-            String::from("wrap_sync"),
-            Some("support::WireSyncReturn"),
-            format!(
-                "{code_wire2api}
-                    {code_call_inner_func_result}"
-            ),
-        ),
-        IrFuncMode::Normal | IrFuncMode::Stream { .. } => {
-            let output = if matches!(func.mode, IrFuncMode::Stream { .. }) {
-                String::from("()")
-            } else {
-                func.output.intodart_type(ir_pack)
-            };
-            (
-                format!("wrap::<_,_,_,{output},_>"),
-                None,
-                format!("{code_wire2api} move |task_callback| {code_call_inner_func_result}"),
-            )
-        }
-    };
-
-    let body = format!(
-        "{HANDLER_NAME}.{handler_func_name}({wrap_info_obj}, move || {{ {code_closure} }})"
-    );
-    let redirect_body = generate_redirect_body(func);
+    let handler_func_name = generate_handler_func_name(func, ir_pack);
+    let return_type = generate_return_type(func);
+    let code_closure = generate_code_closure(func, &code_wire2api, &code_call_inner_func_result);
 
     Acc::new(|target| match target {
         TargetOrCommon::Io | TargetOrCommon::Wasm => ExternFunc {
             func_name: func.wire_func_name(),
             params: params[target].iter().cloned().collect_vec(),
             return_type,
-            body: redirect_body,
+            body: generate_redirect_body(func),
             target: target.try_into().unwrap(),
         }
         .into(),
@@ -57,6 +32,9 @@ pub(crate) fn generate_wire_func(func: &IrFunc, ir_pack: &IrPack) -> Acc<CodeWit
             name = func.wire_func_name(),
             params = params.common.join(","),
             return_type = return_type.map(|t| format!("-> {t}")).unwrap_or_default(),
+            body = format!(
+                "{HANDLER_NAME}.{handler_func_name}({wrap_info_obj}, move || {{ {code_closure} }})"
+            )
         )
         .into(),
     })
@@ -173,6 +151,43 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_params: Vec<St
         code_call_inner_func
     } else {
         format!("Result::<_,()>::Ok({code_call_inner_func})")
+    }
+}
+
+fn generate_handler_func_name(func: &IrFunc, ir_pack: &IrPack) -> String {
+    match func.mode {
+        IrFuncMode::Sync => "wrap_sync".to_owned(),
+        IrFuncMode::Normal | IrFuncMode::Stream { .. } => {
+            let output = if matches!(func.mode, IrFuncMode::Stream { .. }) {
+                String::from("()")
+            } else {
+                func.output.intodart_type(ir_pack)
+            };
+            format!("wrap::<_,_,_,{output},_>")
+        }
+    }
+}
+
+fn generate_return_type(func: &IrFunc) -> Option<String> {
+    match func.mode {
+        IrFuncMode::Sync => Some("support::WireSyncReturn".to_owned()),
+        IrFuncMode::Normal | IrFuncMode::Stream { .. } => None,
+    }
+}
+
+fn generate_code_closure(
+    func: &IrFunc,
+    code_wire2api: &str,
+    code_call_inner_func_result: &str,
+) -> String {
+    match func.mode {
+        IrFuncMode::Sync => format!(
+            "{code_wire2api}
+                {code_call_inner_func_result}"
+        ),
+        IrFuncMode::Normal | IrFuncMode::Stream { .. } => {
+            format!("{code_wire2api} move |task_callback| {code_call_inner_func_result}")
+        }
     }
 }
 
