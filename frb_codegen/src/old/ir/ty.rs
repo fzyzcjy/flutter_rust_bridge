@@ -29,14 +29,6 @@ impl IrType {
     //     matches!(self, StructRef(_) | EnumRef(_) | Record(_))
     // }
 
-    #[inline]
-    pub fn is_sync_rust_opaque(&self) -> bool {
-        match self {
-            SyncReturn(sync) => sync.clone().into_inner().is_rust_opaque(),
-            _ => false,
-        }
-    }
-
     pub fn mirrored_nested(&self) -> Option<String> {
         match self {
             Self::StructRef(struct_ref) => Some(struct_ref.name.clone()),
