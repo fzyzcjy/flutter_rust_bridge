@@ -16,8 +16,9 @@ pub(crate) struct ExternFunc {
 }
 
 pub(crate) struct ExternFuncParam {
-    verbatim: String,
-    dart: String,
+    name: String,
+    rust_type: String,
+    dart_type: String,
 }
 
 impl ExternFunc {
@@ -32,7 +33,7 @@ impl ExternFunc {
             self.func_name,
             self.params
                 .into_iter()
-                .map(|param| param.verbatim)
+                .map(|param| format!("{}: {}", param.name, param.rust_type))
                 .join(","),
             self.return_type
                 .map_or("".to_string(), |r| format!("-> {r}")),
@@ -54,6 +55,7 @@ impl ExternFunc {
     //             name: func_name.to_owned(),
     //             inputs: params
     //                 .iter()
+    //                 // TODO (verbatim, dart) ---> (name + rust_type, dart_type)
     //                 .map(|(verbatim, dart)| {
     //                     let verbatim = format!("{verbatim}");
     //                     let (key, _) = verbatim.split_once(':').expect("Missing middle colon");
