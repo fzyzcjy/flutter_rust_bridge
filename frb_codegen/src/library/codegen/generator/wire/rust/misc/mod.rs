@@ -33,11 +33,7 @@ pub(super) fn generate(
     WireRustOutputSpecMisc {
         file_attributes: Acc::new_common(vec![FILE_ATTRIBUTES.to_string().into()]),
         code_header: Acc::new_common(vec![generate_code_header().into()]),
-        imports: Acc::new_common(vec![generate_imports(
-            &cache.input_and_output_types,
-            context,
-        )
-        .into()]),
+        imports: Acc::new_common(vec![generate_imports(&cache.distinct_types, context).into()]),
         wire_funcs: ir_pack
             .funcs
             .iter()
@@ -50,7 +46,7 @@ pub(super) fn generate(
             .map(|x| Acc::new_common(x.into()))
             .collect(),
         static_checks: Acc::new_common(vec![generate_static_checks(
-            &cache.input_and_output_types,
+            &cache.distinct_types,
             context,
         )
         .into()]),

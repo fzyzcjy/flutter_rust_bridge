@@ -71,22 +71,18 @@ impl IrPack {
 pub(crate) struct IrPackComputedCache {
     pub(crate) distinct_input_types: Vec<IrType>,
     pub(crate) distinct_output_types: Vec<IrType>,
-    pub(crate) input_and_output_types: Vec<IrType>,
+    pub(crate) distinct_types: Vec<IrType>,
 }
 
 impl IrPackComputedCache {
     pub fn compute(ir_pack: &IrPack) -> Self {
         let distinct_input_types = ir_pack.distinct_types(true, false);
         let distinct_output_types = ir_pack.distinct_types(false, true);
-        let input_and_output_types = distinct_input_types
-            .iter()
-            .cloned()
-            .chain(distinct_output_types.iter().cloned())
-            .collect_vec();
+        let distinct_types = ir_pack.distinct_types(true, true);
         Self {
             distinct_input_types,
             distinct_output_types,
-            input_and_output_types,
+            distinct_types,
         }
     }
 }
