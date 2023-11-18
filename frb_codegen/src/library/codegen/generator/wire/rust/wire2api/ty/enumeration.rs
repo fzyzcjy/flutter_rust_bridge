@@ -88,7 +88,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
             let ty_generator = WireRustGenerator::new(ty.clone(), context.clone());
             if ty_generator.rust_wire_is_pointer(Target::Io) {
                 "core::ptr::null_mut()".to_owned()
-            } else if ty.is_rust_opaque() || ty.is_dart_opaque() {
+            } else if matches!(ty, IrType::RustOpaque(_) | IrType::DartOpaque(_)) {
                 format!(
                     "{}::new_with_null_ptr()",
                     ty_generator.rust_wire_type(Target::Io)
