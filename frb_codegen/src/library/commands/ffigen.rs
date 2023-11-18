@@ -4,7 +4,7 @@ use crate::utils::dart_repository::dart_repo::DartRepository;
 use crate::utils::path_utils::path_to_string;
 use anyhow::bail;
 use log::debug;
-use std::fmt::Write;
+use std::io::Write;
 use std::path::{Path, PathBuf};
 use std::str::FromStr;
 
@@ -18,6 +18,50 @@ fn ffigen(
 ) -> anyhow::Result<()> {
     debug!("execute ffigen c_path={c_path:?} dart_path={dart_path:?} llvm_path={llvm_path:?}",);
 
+    let config = parse_config(
+        dart_class_name,
+        c_path,
+        dart_path,
+        llvm_path,
+        llvm_compiler_opts,
+    )?;
+    debug!("ffigen config: {}", config);
+
+    let mut config_file = tempfile::NamedTempFile::new()?;
+    config_file.write_all(config.as_bytes())?;
+    debug!("ffigen config_file: {:?}", config_file);
+
+    let repo = DartRepository::from_str(&path_to_string(dart_root)?).unwrap();
+    let res = command_run!(
+        call_shell[Some(dart_root)],
+        *repo.toolchain.as_run_command(),
+        "run",
+        "ffigen",
+        "--config",
+        config_file.path()
+    )?;
+
+    if !res.status.success() {
+        let err = String::from_utf8_lossy(&res.stderr);
+        let out = String::from_utf8_lossy(&res.stdout);
+        let pat = "Couldn't find dynamic library in default locations.";
+        if err.contains(pat) || out.contains(pat) {
+            bail!("ffigen could not find LLVM. Please supply --llvm-path to flutter_rust_bridge_codegen, e.g.: \
+                flutter_rust_bridge_codegen .. --llvm-path <path_to_llvm>");
+        }
+        bail!("ffigen failed:\nstderr: {err}\nstdout: {out}");
+    }
+
+    Ok(())
+}
+
+fn parse_config(
+    dart_class_name: &str,
+    c_path: &Path,
+    dart_path: &Path,
+    llvm_path: &[PathBuf],
+    llvm_compiler_opts: &str,
+) -> anyhow::Result<String> {
     let dart_path_str = path_to_string(dart_path)?;
     let c_path_str = path_to_string(c_path)?;
     let mut config = format!(
@@ -35,15 +79,14 @@ fn ffigen(
           // ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names
         "
     );
+
     if !llvm_path.is_empty() {
-        write!(
-            &mut config,
-            "
-        llvm-path:\n"
-        )?;
+        config += "
+        llvm-path:\n";
+
         for path in llvm_path {
             let path_str = path_to_string(path)?;
-            writeln!(&mut config, "           - '{path_str}'")?;
+            config += &format!("           - '{path_str}'");
         }
     }
 
@@ -54,31 +97,5 @@ fn ffigen(
             - '{llvm_compiler_opts}'"
         );
     }
-
-    debug!("ffigen config: {}", config);
-
-    let mut config_file = tempfile::NamedTempFile::new()?;
-    std::io::Write::write_all(&mut config_file, config.as_bytes())?;
-    debug!("ffigen config_file: {:?}", config_file);
-
-    let repo = DartRepository::from_str(&path_to_string(dart_root)?).unwrap();
-    let res = command_run!(
-        call_shell[Some(dart_root)],
-        *repo.toolchain.as_run_command(),
-        "run",
-        "ffigen",
-        "--config",
-        config_file.path()
-    )?;
-    if !res.status.success() {
-        let err = String::from_utf8_lossy(&res.stderr);
-        let out = String::from_utf8_lossy(&res.stdout);
-        let pat = "Couldn't find dynamic library in default locations.";
-        if err.contains(pat) || out.contains(pat) {
-            bail!("ffigen could not find LLVM. Please supply --llvm-path to flutter_rust_bridge_codegen, e.g.: \
-                flutter_rust_bridge_codegen .. --llvm-path <path_to_llvm>");
-        }
-        bail!("ffigen failed:\nstderr: {err}\nstdout: {out}");
-    }
-    Ok(())
+    Ok(config)
 }
