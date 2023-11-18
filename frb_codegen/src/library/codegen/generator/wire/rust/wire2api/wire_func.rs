@@ -139,12 +139,9 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_params: Vec<St
     let code_call_inner_func = match &func.owner {
         IrFuncOwnerInfo::Function => format!("{}({})", func.name, inner_func_params.join(", ")),
         IrFuncOwnerInfo::Method(method) => {
-            let method_name = if func.owner.is_non_static_method() {
-                func.owner.method_name()
-            } else if func.owner.is_static_method() {
-                func.owner.static_method_name().unwrap()
-            } else {
-                panic!("{} is not a method, nor a static method.", func.name)
+            let method_name = match method.mode {
+                IrFuncOwnerInfoMethodMode::Instance => func.owner.method_name(),
+                IrFuncOwnerInfoMethodMode::Static => func.owner.static_method_name().unwrap(),
             };
             format!(
                 r"{}::{}({})",
