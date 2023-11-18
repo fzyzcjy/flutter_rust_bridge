@@ -5,9 +5,11 @@ use crate::codegen::ir::pack::IrPackComputedCache;
 
 pub(crate) mod ty;
 
+pub(crate) struct WireDartOutputSpecApi2wire {}
+
 pub(super) fn generate(
     _context: WireDartGeneratorContext,
     _cache: &IrPackComputedCache,
-) -> Acc<Vec<WireDartOutputCode>> {
+) -> WireDartOutputSpecApi2wire {
     todo!()
 }
