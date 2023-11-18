@@ -20,7 +20,7 @@ use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
 pub(crate) trait WireDartGeneratorWire2apiTrait {
-    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
+    fn generate_impl_wire2api_body(&self) -> String {
         Default::default()
     }
 }
