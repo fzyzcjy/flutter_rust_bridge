@@ -35,12 +35,15 @@ impl<'a> WireRustGeneratorWire2apiTrait for GeneralListWireRustGenerator<'a> {
 
     fn generate_allocate_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
         Acc {
-            io: Some(generate_list_generate_allocate_func(
-                &self.ir.safe_ident(),
-                &self.ir.into(),
-                &self.ir.inner,
-                &self.context,
-            )),
+            io: Some(
+                generate_list_generate_allocate_func(
+                    &self.ir.safe_ident(),
+                    &self.ir.into(),
+                    &self.ir.inner,
+                    &self.context,
+                )
+                .into(),
+            ),
             ..Default::default()
         }
     }
@@ -78,7 +81,7 @@ pub(crate) fn generate_list_generate_allocate_func(
     list: &IrType,
     inner: &IrType,
     context: &WireRustGeneratorContext,
-) -> String {
+) -> ExternFunc {
     let list_generator = WireRustGenerator::new(list.clone(), context.clone());
 
     // let wasm = false;
@@ -107,7 +110,9 @@ pub(crate) fn generate_list_generate_allocate_func(
             } else {
                 format!(
                     "<{}{}>::new_with_null_ptr()",
-                    general_list_maybe_extra_pointer_indirection(IrTypeGeneralList { inner }),
+                    general_list_maybe_extra_pointer_indirection(&IrTypeGeneralList {
+                        inner: Box::new(inner.clone())
+                    }),
                     WireRustGenerator::new(inner.clone(), context.clone())
                         .rust_wire_type(Target::Io)
                 )

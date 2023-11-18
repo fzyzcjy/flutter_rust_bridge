@@ -127,12 +127,15 @@ impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
     fn generate_allocate_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
         match &self.ir {
             list @ IrTypeDelegate::StringList => Acc {
-                io: Some(generate_list_generate_allocate_func(
-                    &self.ir.safe_ident(),
-                    &IrType::Delegate(list.clone()),
-                    &list.get_delegate(),
-                    &self.context,
-                )),
+                io: Some(
+                    generate_list_generate_allocate_func(
+                        &self.ir.safe_ident(),
+                        &IrType::Delegate(list.clone()),
+                        &list.get_delegate(),
+                        &self.context,
+                    )
+                    .into(),
+                ),
                 ..Default::default()
             },
             _ => Default::default(),

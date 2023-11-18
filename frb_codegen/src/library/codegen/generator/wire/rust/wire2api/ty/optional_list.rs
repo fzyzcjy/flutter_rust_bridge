@@ -46,7 +46,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for OptionalListWireRustGenerator<'a> {
                     self.rust_wire_type(Target::Io)
                 ),
                 target: Target::Io,
-            }),
+            }.into()),
             ..Default::default()
         }
     }

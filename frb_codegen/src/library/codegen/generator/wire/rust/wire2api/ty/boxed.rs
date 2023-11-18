@@ -59,42 +59,52 @@ impl<'a> WireRustGeneratorWire2apiTrait for BoxedWireRustGenerator<'a> {
         let func_name = format!("new_{}", self.ir.safe_ident());
         if self.ir.inner.is_primitive() {
             Acc {
-                io: Some(ExternFunc {
-                    func_name,
-                    params: vec![ExternFuncParam {
-                        name: "value".to_owned(),
-                        rust_type: WireRustGenerator::new(
-                            *self.ir.inner.clone(),
-                            self.context.clone(),
-                        )
-                        .rust_wire_type(Target::Io),
-                        dart_type: self.ir.inner.dart_wire_type(Io),
-                    }],
-                    return_type: Some(format!(
-                        "*mut {}",
-                        WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone())
-                            .rust_wire_type(Target::Io)
-                    )),
-                    body: "support::new_leak_box_ptr(value)".to_owned(),
-                    target: Target::Io,
-                }),
+                io: Some(
+                    ExternFunc {
+                        func_name,
+                        params: vec![ExternFuncParam {
+                            name: "value".to_owned(),
+                            rust_type: WireRustGenerator::new(
+                                *self.ir.inner.clone(),
+                                self.context.clone(),
+                            )
+                            .rust_wire_type(Target::Io),
+                            dart_type: self.ir.inner.dart_wire_type(Io),
+                        }],
+                        return_type: Some(format!(
+                            "*mut {}",
+                            WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone())
+                                .rust_wire_type(Target::Io)
+                        )),
+                        body: "support::new_leak_box_ptr(value)".to_owned(),
+                        target: Target::Io,
+                    }
+                    .into(),
+                ),
                 ..Default::default()
             }
         } else {
             Acc {
-                io: Some(ExternFunc {
-                    func_name,
-                    params: vec![],
-                    return_type: Some(
-                        &[self.rust_wire_modifier(Io), self.rust_wire_type(Io)].concat(),
-                    ),
-                    body: format!(
-                        "support::new_leak_box_ptr({}::new_with_null_ptr())",
-                        WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone())
-                            .rust_wire_type(Io)
-                    ),
-                    target: Target::Io,
-                }),
+                io: Some(
+                    ExternFunc {
+                        func_name,
+                        params: vec![],
+                        return_type: Some(
+                            [
+                                self.rust_wire_modifier(Target::Io),
+                                self.rust_wire_type(Target::Io),
+                            ]
+                            .concat(),
+                        ),
+                        body: format!(
+                            "support::new_leak_box_ptr({}::new_with_null_ptr())",
+                            WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone())
+                                .rust_wire_type(Target::Io)
+                        ),
+                        target: Target::Io,
+                    }
+                    .into(),
+                ),
                 ..Default::default()
             }
         }

@@ -72,7 +72,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for PrimitiveListWireRustGenerator<'a> {
                     rust_type: "i32".to_owned(),
                     dart_type: Some("int".to_owned()),
                 }],
-                return_type: Some(&format!(
+                return_type: Some(format!(
                     "{}{}",
                     self.rust_wire_modifier(Target::Io),
                     self.rust_wire_type(Target::Io)
@@ -83,7 +83,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for PrimitiveListWireRustGenerator<'a> {
                     self.rust_wire_type(Target::Io),
                 ),
                 target: Target::Io,
-            }),
+            }.into()),
             ..Default::default()
         }
     }
