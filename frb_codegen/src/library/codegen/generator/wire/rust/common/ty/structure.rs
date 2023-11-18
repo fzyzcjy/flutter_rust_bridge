@@ -1,9 +1,14 @@
+use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::common::ty::WireRustGeneratorCommonTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireRustGeneratorCommonTrait for StructRefWireRustGenerator<'a> {
+    fn rust_wire_type(&self, target: Target) -> String {
+        rust_wire_type_add_prefix_or_js_value(&self.ir, target)
+    }
+
     fn wrapper_struct_name(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
         src.wrapper_name.as_ref().cloned()

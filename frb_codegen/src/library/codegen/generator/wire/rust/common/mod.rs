@@ -5,6 +5,7 @@ use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 use std::collections::HashSet;
 
+mod misc;
 pub(crate) mod ty;
 
 pub(crate) fn generate_wrapper_struct(
