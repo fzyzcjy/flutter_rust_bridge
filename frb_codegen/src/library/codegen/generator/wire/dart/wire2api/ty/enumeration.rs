@@ -1,5 +1,7 @@
 use crate::codegen::generator::wire::dart::base::*;
 use crate::codegen::generator::wire::dart::wire2api::ty::WireDartGeneratorWire2apiTrait;
+use crate::codegen::ir::ty::enumeration::IrVariantKind;
+use itertools::Itertools;
 
 impl<'a> WireDartGeneratorWire2apiTrait for EnumRefWireDartGenerator<'a> {
     fn generate_impl_wire2api_body(&self) -> String {
@@ -28,7 +30,10 @@ impl<'a> WireDartGeneratorWire2apiTrait for EnumRefWireDartGenerator<'a> {
                         .collect_vec()
                         .join(""),
                 };
-                format!("case {}: return {}({});", idx, variant.wrapper_name, args)
+                format!(
+                    "case {}: return {}({});",
+                    idx, variant.wrapper_name.raw, args
+                )
             })
             .collect_vec();
         format!(

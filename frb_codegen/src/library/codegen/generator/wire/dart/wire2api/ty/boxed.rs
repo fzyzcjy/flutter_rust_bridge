@@ -1,5 +1,8 @@
 use crate::codegen::generator::wire::dart::base::*;
 use crate::codegen::generator::wire::dart::wire2api::ty::WireDartGeneratorWire2apiTrait;
+use crate::codegen::ir::ty::delegate::IrTypeDelegate;
+use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::codegen::ir::ty::IrType::*;
 
 impl<'a> WireDartGeneratorWire2apiTrait for BoxedWireDartGenerator<'a> {
     fn generate_impl_wire2api_body(&self) -> String {

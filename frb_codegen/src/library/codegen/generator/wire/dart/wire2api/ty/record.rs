@@ -1,5 +1,6 @@
 use crate::codegen::generator::wire::dart::base::*;
 use crate::codegen::generator::wire::dart::wire2api::ty::WireDartGeneratorWire2apiTrait;
+use itertools::Itertools;
 
 impl<'a> WireDartGeneratorWire2apiTrait for RecordWireDartGenerator<'a> {
     fn generate_impl_wire2api_body(&self) -> String {
