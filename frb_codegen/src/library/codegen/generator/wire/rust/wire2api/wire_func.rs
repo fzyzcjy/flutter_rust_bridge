@@ -5,6 +5,7 @@ use crate::codegen::generator::wire::rust::wire2api::extern_func::{
 };
 use crate::codegen::ir::func::{IrFunc, IrFuncMode};
 use crate::codegen::ir::pack::IrPack;
+use crate::misc::consts::HANDLER_NAME;
 use itertools::Itertools;
 use std::convert::TryInto;
 

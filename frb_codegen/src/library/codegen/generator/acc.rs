@@ -41,7 +41,7 @@ impl<T> FromIterator<Acc<T>> for Acc<Vec<T>> {
 }
 
 impl<T> Index<TargetOrCommon> for Acc<T> {
-    type Output = &T;
+    type Output = T;
 
     fn index(&self, index: TargetOrCommon) -> &Self::Output {
         match index {
