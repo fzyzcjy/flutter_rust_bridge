@@ -131,7 +131,6 @@ impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
                     &self.ir.safe_ident(),
                     list,
                     &list.get_delegate(),
-                    self.context.config.block_index,
                 )),
                 ..Default::default()
             },

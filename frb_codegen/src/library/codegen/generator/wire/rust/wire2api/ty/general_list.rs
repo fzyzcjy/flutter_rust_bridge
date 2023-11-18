@@ -37,7 +37,6 @@ impl<'a> WireRustGeneratorWire2apiTrait for GeneralListWireRustGenerator<'a> {
                 &self.ir.safe_ident(),
                 &self.ir,
                 &self.ir.inner,
-                self.context.config.block_index,
             )),
             ..Default::default()
         }
@@ -76,11 +75,10 @@ pub(crate) fn generate_list_generate_allocate_func(
     safe_ident: &str,
     list: &impl IrTypeTrait,
     inner: &IrType,
-    block_index: BlockIndex,
 ) -> String {
     // let wasm = false;
     collector.generate(
-        &format!("new_{safe_ident}_{block_index}"),
+        &format!("new_{safe_ident}"),
         [("len: i32", "int")],
         Some(
             &[

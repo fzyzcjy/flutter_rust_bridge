@@ -64,7 +64,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for PrimitiveListWireRustGenerator<'a> {
     fn generate_allocate_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
         Acc {
             io: Some(collector.generate(
-                &format!("new_{}_{}", self.ir.safe_ident(), block_index),
+                &format!("new_{}", self.ir.safe_ident()),
                 [("len: i32", "int")],
                 Some(&format!(
                     "{}{}",

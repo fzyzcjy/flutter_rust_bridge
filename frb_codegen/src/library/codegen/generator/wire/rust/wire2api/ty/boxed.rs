@@ -52,7 +52,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for BoxedWireRustGenerator<'a> {
         if self.ir.inner.is_array() {
             return Acc::default();
         }
-        let func_name = format!("new_{}_{}", self.ir.safe_ident(), block_index);
+        let func_name = format!("new_{}", self.ir.safe_ident());
         if self.ir.inner.is_primitive() {
             Acc {
                 io: Some(collector.generate(
