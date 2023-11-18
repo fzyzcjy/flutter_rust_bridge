@@ -1,5 +1,23 @@
 use crate::codegen::generator::misc::Target;
-use itertools::Itertools;
+use itertools::{concat, Itertools};
+use std::ops::Add;
+
+#[derive(Default)]
+pub(crate) struct CodeWithExternFunc {
+    pub(crate) code: String,
+    pub(crate) extern_funcs: Vec<ExternFunc>,
+}
+
+impl Add for CodeWithExternFunc {
+    type Output = Self;
+
+    fn add(self, rhs: Self) -> Self::Output {
+        Self {
+            code: self.code + &rhs.code,
+            extern_funcs: concat([self.extern_funcs, rhs.extern_funcs]),
+        }
+    }
+}
 
 pub(crate) struct ExternFunc {
     // TODO handle platform

@@ -17,6 +17,9 @@ mod structure;
 mod unencodable;
 
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::wire::rust::wire2api::extern_func::{
+    CodeWithExternFunc, ExternFunc,
+};
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
@@ -33,10 +36,7 @@ pub(crate) trait WireRustGeneratorWire2apiTrait {
         None
     }
 
-    fn generate_impl_new_with_nullptr(
-        &self,
-        // _collector: &mut ExternFuncCollector, // TODO
-    ) -> Option<String> {
+    fn generate_impl_new_with_nullptr(&self) -> Option<CodeWithExternFunc> {
         None
     }
 }
