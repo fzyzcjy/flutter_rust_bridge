@@ -35,11 +35,11 @@ impl<'a> WireRustGeneratorWire2apiTrait for OptionalListWireRustGenerator<'a> {
             io: Some(ExternFunc {
                 func_name: format!("new_{}", self.ir.safe_ident()),
                 params: vec![("len: i32", "int")],
-                return_type:  Some(format!("*mut {}", self.ir.rust_wire_type(Target::Io))),
+                return_type:  Some(format!("*mut {}", self.rust_wire_type(Target::Io))),
                 body: format!(
                     "let wrap = {} {{ ptr: support::new_leak_vec_ptr(core::ptr::null_mut(), len), len }};
                     support::new_leak_box_ptr(wrap)",
-                    self.ir.rust_wire_type(Target::Io)
+                    self.rust_wire_type(Target::Io)
                 ),
                 target: Target::Io,
             }),

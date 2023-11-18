@@ -31,8 +31,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
             .map(|variant| format!("{0}: *mut wire_{1}_{0},", variant.name.raw, self.ir.ident.0))
             .join("\n");
 
-        let rust_wire_type = WireRustGenerator::new(self.ir.clone().into(), self.context.clone())
-            .rust_wire_type(Target::Io);
+        let rust_wire_type = self.rust_wire_type(Target::Io);
 
         Some(format!(
             "#[repr(C)]

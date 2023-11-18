@@ -42,7 +42,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for DartOpaqueWireRustGenerator<'a> {
     }
 
     fn generate_allocate_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
-        let rust_wire = self.ir.rust_wire_type(Target::Io);
+        let rust_wire = self.rust_wire_type(Target::Io);
 
         Acc {
             io: Some(ExternFunc {
@@ -50,7 +50,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for DartOpaqueWireRustGenerator<'a> {
                 params: vec![],
                 return_type: Some(&format!(
                     "{}{}",
-                    self.ir.rust_wire_modifier(Target::Io),
+                    self.rust_wire_modifier(Target::Io),
                     rust_wire
                 )),
                 body: format!("{rust_wire}::new_with_null_ptr()"),

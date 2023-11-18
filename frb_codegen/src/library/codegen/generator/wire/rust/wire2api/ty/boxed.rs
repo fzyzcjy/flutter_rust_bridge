@@ -8,6 +8,7 @@ use crate::codegen::generator::wire::rust::wire2api::extern_func::{
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
 use crate::codegen::ir::ty::IrType;
+use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireRustGeneratorWire2apiTrait for BoxedWireRustGenerator<'a> {
@@ -61,10 +62,18 @@ impl<'a> WireRustGeneratorWire2apiTrait for BoxedWireRustGenerator<'a> {
                 io: Some(ExternFunc {
                     func_name,
                     params: vec![(
-                        format!("value: {}", self.ir.inner.rust_wire_type(Io)),
+                        format!(
+                            "value: {}",
+                            WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone())
+                                .rust_wire_type(Target::Io)
+                        ),
                         self.ir.inner.dart_wire_type(Io),
                     )],
-                    return_type: Some(format!("*mut {}", self.ir.inner.rust_wire_type(Io))),
+                    return_type: Some(format!(
+                        "*mut {}",
+                        WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone())
+                            .rust_wire_type(Target::Io)
+                    )),
                     body: "support::new_leak_box_ptr(value)".to_owned(),
                     target: Target::Io,
                 }),
@@ -76,11 +85,12 @@ impl<'a> WireRustGeneratorWire2apiTrait for BoxedWireRustGenerator<'a> {
                     func_name,
                     params: vec![],
                     return_type: Some(
-                        &[self.ir.rust_wire_modifier(Io), self.ir.rust_wire_type(Io)].concat(),
+                        &[self.rust_wire_modifier(Io), self.rust_wire_type(Io)].concat(),
                     ),
                     body: format!(
                         "support::new_leak_box_ptr({}::new_with_null_ptr())",
-                        self.ir.inner.rust_wire_type(Io)
+                        WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone())
+                            .rust_wire_type(Io)
                     ),
                     target: Target::Io,
                 }),

@@ -37,8 +37,9 @@ impl<'a> WireRustGeneratorWire2apiTrait for GeneralListWireRustGenerator<'a> {
         Acc {
             io: Some(generate_list_generate_allocate_func(
                 &self.ir.safe_ident(),
-                &self.ir,
+                &self.ir.into(),
                 &self.ir.inner,
+                &self.context,
             )),
             ..Default::default()
         }
@@ -74,24 +75,27 @@ const WIRE2API_BODY_WASM: &'static str =
 
 pub(crate) fn generate_list_generate_allocate_func(
     safe_ident: &str,
-    list: &impl IrTypeTrait,
+    list: &IrType,
     inner: &IrType,
+    context: &WireRustGeneratorContext,
 ) -> String {
+    let list_generator = WireRustGenerator::new(list.clone(), context.clone());
+
     // let wasm = false;
     ExternFunc {
         func_name: format!("new_{safe_ident}"),
         params: vec![("len: i32", "int")],
         return_type: Some(
             [
-                list.rust_wire_modifier(Target::Io).as_str(),
-                list.rust_wire_type(Target::Io).as_str(),
+                list_generator.rust_wire_modifier(Target::Io).as_str(),
+                list_generator.rust_wire_type(Target::Io).as_str(),
             ]
             .concat(),
         ),
         body: format!(
             "let wrap = {} {{ ptr: support::new_leak_vec_ptr({}, len), len }};
                 support::new_leak_box_ptr(wrap)",
-            list.rust_wire_type(Target::Io),
+            list_generator.rust_wire_type(Target::Io),
             if inner.is_primitive() {
                 // A primitive enum list can use a default value since
                 // `<i32>::new_with_null_ptr()` isn't implemented.
@@ -100,7 +104,8 @@ pub(crate) fn generate_list_generate_allocate_func(
                 format!(
                     "<{}{}>::new_with_null_ptr()",
                     general_list_maybe_extra_pointer_indirection(IrTypeGeneralList { inner }),
-                    inner.rust_wire_type(Target::Io)
+                    WireRustGenerator::new(inner.clone(), context.clone())
+                        .rust_wire_type(Target::Io)
                 )
             }
         ),
