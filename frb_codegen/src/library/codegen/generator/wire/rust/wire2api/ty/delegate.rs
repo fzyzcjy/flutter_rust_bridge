@@ -127,7 +127,6 @@ impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
         match &self.ir {
             list @ IrTypeDelegate::StringList => Acc {
                 io: Some(generate_list_generate_allocate_func(
-                    collector,
                     &self.ir.safe_ident(),
                     list,
                     &list.get_delegate(),

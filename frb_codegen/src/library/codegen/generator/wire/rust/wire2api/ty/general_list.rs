@@ -7,6 +7,7 @@ use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2a
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::general_list::IrTypeGeneralList;
 use crate::codegen::ir::ty::IrType::{Delegate, Optional};
+use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
 
 impl<'a> WireRustGeneratorWire2apiTrait for GeneralListWireRustGenerator<'a> {
@@ -33,7 +34,6 @@ impl<'a> WireRustGeneratorWire2apiTrait for GeneralListWireRustGenerator<'a> {
     fn generate_allocate_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
         Acc {
             io: Some(generate_list_generate_allocate_func(
-                collector,
                 &self.ir.safe_ident(),
                 &self.ir,
                 &self.ir.inner,
@@ -71,7 +71,6 @@ const WIRE2API_BODY_WASM: &'static str =
     "self.dyn_into::<JsArray>().unwrap().iter().map(Wire2Api::wire2api).collect()";
 
 pub(crate) fn generate_list_generate_allocate_func(
-    collector: &mut ExternFuncCollector,
     safe_ident: &str,
     list: &impl IrTypeTrait,
     inner: &IrType,
