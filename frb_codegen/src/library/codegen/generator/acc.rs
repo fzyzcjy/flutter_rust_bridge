@@ -40,12 +40,6 @@ impl<T> FromIterator<Acc<T>> for Acc<Vec<T>> {
     }
 }
 
-impl<T: FromIterator<T>> FromIterator<Acc<T>> for Acc<T> {
-    fn from_iter<A: IntoIterator<Item = Acc<T>>>(_iter: A) -> Self {
-        todo!()
-    }
-}
-
 impl<T> Acc<T> {
     pub fn new(mut init: impl FnMut(TargetOrCommon) -> T) -> Acc<T> {
         Acc {

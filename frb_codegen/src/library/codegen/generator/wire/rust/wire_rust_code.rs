@@ -56,7 +56,7 @@ impl From<Vec<ExternFunc>> for WireRustCode {
 }
 
 impl FromIterator<WireRustCode> for WireRustCode {
-    fn from_iter<A: IntoIterator<Item = WireRustCode>>(_iter: A) -> Self {
-        todo!()
+    fn from_iter<A: IntoIterator<Item = WireRustCode>>(iter: A) -> Self {
+        iter.into_iter().fold(Default::default(), |a, b| a + b)
     }
 }
