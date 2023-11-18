@@ -38,13 +38,12 @@ impl<'a> WireDartGeneratorApi2wireTrait for EnumRefWireDartGenerator<'a> {
 
 impl<'a> EnumRefWireDartGenerator<'a> {
     fn generate_api_fill_to_wire_body_variant(&self, index: usize, variant: &IrVariant) -> String {
+        let ident = &self.ir.ident.0;
         let wrapper_name = &variant.wrapper_name.raw;
         let variant_name = &variant.name.raw;
 
-        match &variant.kind {
-            IrVariantKind::Value => {
-                format!("if (apiObj is {wrapper_name}) {{ wireObj.tag = {index}; return; }}",)
-            }
+        let (stmt_prepare, stmt_postpare) = match &variant.kind {
+            IrVariantKind::Value => ("", ""),
             IrVariantKind::Struct(st) => {
                 let pre_field = st
                     .fields
@@ -59,8 +58,10 @@ impl<'a> EnumRefWireDartGenerator<'a> {
                     })
                     .join("\n");
 
-                let r = format!("wireObj.kind.ref.{variant_name}.ref");
+                let stmt_set_kind =
+                    format!("wireObj.kind = inner.inflate_{ident}_{variant_name}();");
 
+                let r = format!("wireObj.kind.ref.{variant_name}.ref");
                 let body = st
                     .fields
                     .iter()
@@ -69,18 +70,16 @@ impl<'a> EnumRefWireDartGenerator<'a> {
                     })
                     .join("\n");
 
-                format!(
-                    "if (apiObj is {wrapper_name}) {{
-                        {pre_field}
-                        wireObj.tag = {index};
-                        wireObj.kind = inner.inflate_{ident}_{variant_name}();
-                        {body}
-                        return;
-                    }}",
-                    ident = self.ir.ident.0,
-                )
+                (pre_field, stmt_set_kind + &body)
             }
-        }
+        };
+
+        format!(
+            "if (apiObj is {wrapper_name}) {{
+                {stmt_prepare}wireObj.tag = {index};{stmt_postpare}
+                return;
+            }}",
+        )
     }
 }
 
