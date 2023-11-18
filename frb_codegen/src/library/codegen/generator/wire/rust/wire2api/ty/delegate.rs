@@ -1,5 +1,5 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::misc::Target;
+use crate::codegen::generator::misc::{is_js_value, Target};
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::wire2api::misc::generate_class_from_fields;
 use crate::codegen::generator::wire::rust::wire2api::ty::general_list::general_list_impl_wire2api_body;
@@ -40,7 +40,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
                             array.inner().rust_api_type()
                         ),
                     );
-                if array.inner_is_js_value() {
+                if is_js_value(&array.inner()) {
                     return Acc {
                         io: acc,
                         ..Default::default()

@@ -21,13 +21,6 @@ impl IrTypeDelegateArray {
             IrTypeDelegateArray::PrimitiveArray { primitive, .. } => primitive.rust_api_type(),
         }
     }
-
-    pub fn inner_is_js_value(&self) -> bool {
-        match self {
-            IrTypeDelegateArray::GeneralArray { general, .. } => is_js_value(general),
-            IrTypeDelegateArray::PrimitiveArray { .. } => false,
-        }
-    }
 }
 
 impl IrTypeTrait for IrTypeDelegate {
