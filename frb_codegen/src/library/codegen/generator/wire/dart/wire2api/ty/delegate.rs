@@ -51,7 +51,7 @@ impl<'a> WireDartGeneratorWire2apiTrait for DelegateWireDartGenerator<'a> {
                 ) // here `as int` is neccessary in strict dynamic mode
             }
             IrTypeDelegate::Time(ir) => {
-                if ir == IrTypeDelegateTime::Duration {
+                if ir == &IrTypeDelegateTime::Duration {
                     "return wire2apiDuration(_wire2api_i64(raw));".to_owned()
                 } else {
                     format!(

@@ -69,9 +69,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for BoxedWireRustGenerator<'a> {
                         dart_type: Some(
                             WireDartGenerator::new(
                                 *self.ir.inner.clone(),
-                                WireDartGeneratorContext {
-                                    ir_pack: &self.context.ir_pack,
-                                },
+                                self.context.as_api_dart_context(),
                             )
                             .dart_wire_type(Target::Io),
                         ),

@@ -1,6 +1,7 @@
 use crate::codegen::generator::api_dart::base::ApiDartGenerator;
 use crate::codegen::generator::wire::dart::base::WireDartGeneratorContext;
 use crate::codegen::ir::ty::IrType;
+use crate::library::codegen::generator::api_dart::info::ApiDartGeneratorInfoTrait;
 
 pub(super) fn gen_wire2api_simple_type_cast(
     ty: IrType,
