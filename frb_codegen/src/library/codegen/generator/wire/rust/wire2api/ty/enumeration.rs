@@ -1,7 +1,9 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::rust::base::*;
-use crate::codegen::generator::wire::rust::wire2api::extern_func::CodeWithExternFunc;
+use crate::codegen::generator::wire::rust::wire2api::extern_func::{
+    CodeWithExternFunc, ExternFunc,
+};
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumMode, IrVariant, IrVariantKind};
@@ -93,8 +95,9 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
             .filter_map(|variant| self.generate_impl_new_with_nullptr_variant(&variant))
             .collect_vec();
 
-        Some(CodeWithExternFunc::code(format!(
-            r#"impl Default for {rust_wire_type} {{
+        Some(CodeWithExternFunc {
+            code: format!(
+                r#"impl Default for {rust_wire_type} {{
                     fn default() -> Self {{
                         Self::new_with_null_ptr()
                     }}
@@ -108,11 +111,13 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
                     }}
                 }}
             }}
-            {}"#,
-            inflators.join("\n\n"),
-            rust_wire_type = WireRustGenerator::new(self.ir.clone().into(), self.context.clone())
-                .rust_wire_type(Target::Io),
-        )))
+            "#,
+                rust_wire_type =
+                    WireRustGenerator::new(self.ir.clone().into(), self.context.clone())
+                        .rust_wire_type(Target::Io),
+            ),
+            extern_funcs: inflators,
+        })
     }
 }
 
@@ -145,7 +150,7 @@ impl<'a> EnumRefWireRustGenerator<'a> {
         )
     }
 
-    fn generate_impl_new_with_nullptr_variant(&self, variant: &IrVariant) -> Option<String> {
+    fn generate_impl_new_with_nullptr_variant(&self, variant: &IrVariant) -> Option<ExternFunc> {
         let typ = format!("{}_{}", self.ir.ident.0, variant.name.raw);
         let body = if let IrVariantKind::Struct(st) = &variant.kind {
             st.fields
@@ -156,23 +161,23 @@ impl<'a> EnumRefWireRustGenerator<'a> {
             return None;
         };
 
-        Some(collector.generate(
-            &format!("inflate_{typ}"),
-            vec![],
-            Some(&format!("*mut {}Kind", self.ir.ident.0)),
-            &format!(
+        Some(ExternFunc {
+            func_name: format!("inflate_{typ}"),
+            params: vec![],
+            return_type: Some(format!("*mut {}Kind", self.ir.ident.0)),
+            body: format!(
                 "support::new_leak_box_ptr({}Kind {{
-                            {}: support::new_leak_box_ptr({} {{
-                                {}
-                            }})
-                        }})",
+                    {}: support::new_leak_box_ptr({} {{
+                        {}
+                    }})
+                }})",
                 self.ir.ident.0,
                 variant.name.rust_style(),
                 format_args!("wire_{typ}"),
                 body.join(",")
             ),
-            Target::Io,
-        ))
+            target: Target::Io,
+        })
     }
 
     fn generate_impl_new_with_nullptr_variant_field(&self, field: &IrField) -> String {
