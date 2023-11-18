@@ -8,6 +8,15 @@ pub(crate) struct CodeWithExternFunc {
     pub(crate) extern_funcs: Vec<ExternFunc>,
 }
 
+impl CodeWithExternFunc {
+    pub fn code(code: String) -> Self {
+        Self {
+            code,
+            ..Default::default()
+        }
+    }
+}
+
 impl Add for CodeWithExternFunc {
     type Output = Self;
 
