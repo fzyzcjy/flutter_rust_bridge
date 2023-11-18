@@ -31,7 +31,7 @@ fn compute_needs_freezed(cache: &IrPackComputedCache, ir_pack: &IrPack) -> bool 
 fn compute_needs_freezed_for_type(ty: &IrType, ir_pack: &IrPack) -> bool {
     match ty {
         EnumRef(_) => true,
-        StructRef(st) => st.freezed,
+        StructRef(st) => st.get(ir_pack).using_freezed(),
         _ => false,
     }
 }
