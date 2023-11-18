@@ -2,6 +2,7 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::extern_func::ExternFunc;
 use itertools::{concat, Itertools};
+use std::iter::FromIterator;
 use std::ops::{Add, AddAssign};
 
 #[derive(Default)]
@@ -48,5 +49,11 @@ impl From<Vec<ExternFunc>> for WireRustCode {
             direct_code: "".to_string(),
             extern_funcs,
         }
+    }
+}
+
+impl FromIterator<WireRustCode> for WireRustCode {
+    fn from_iter<A: IntoIterator<Item = WireRustCode>>(iter: A) -> Self {
+        todo!()
     }
 }

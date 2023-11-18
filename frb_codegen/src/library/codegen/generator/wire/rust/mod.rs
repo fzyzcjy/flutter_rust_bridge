@@ -20,7 +20,7 @@ pub(crate) fn generate(ir_pack: &IrPack, context: WireRustGeneratorContext) -> A
     ans += misc::generate(ir_pack, context, &cache);
     ans += wire2api::generate(context, &cache);
     ans += api2wire::generate(context, &cache);
-    ans
+    ans.map(|v, _| v.into_iter().collect())
 }
 
 /// Some information derivable from `IrPack`, but may be expensive to compute,

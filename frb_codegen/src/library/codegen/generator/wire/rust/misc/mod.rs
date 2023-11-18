@@ -19,14 +19,14 @@ pub(crate) fn generate(
     ir_pack: &IrPack,
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,
-) -> Acc<WireRustCode> {
-    let mut ans = Acc::default();
+) -> Acc<Vec<WireRustCode>> {
+    let mut ans = Acc::<Vec<WireRustCode>>::default();
 
-    ans.push(FILE_ATTRIBUTES.to_string());
-    ans.push(generate_code_header());
+    ans.push(FILE_ATTRIBUTES.to_string().into());
+    ans.push(generate_code_header().into());
 
     ans.push(section_header_comment("imports"));
-    ans.push(generate_imports(&cache.input_and_output_types, context));
+    ans.push(generate_imports(&cache.input_and_output_types, context).into());
 
     ans.push(section_header_comment("wire functions"));
     ans += ir_pack
@@ -40,25 +40,23 @@ pub(crate) fn generate(
         cache
             .distinct_output_types
             .iter()
-            .filter_map(|ty| generate_wrapper_struct(ty, context)),
+            .filter_map(|ty| generate_wrapper_struct(ty, context))
+            .map(|x| x.into()),
     );
 
     ans.push(section_header_comment("static checks"));
-    ans.push(generate_static_checks(
-        &cache.input_and_output_types,
-        context,
-    ));
+    ans.push(generate_static_checks(&cache.input_and_output_types, context).into());
 
     ans.push(section_header_comment("executor"));
-    ans.push(generate_executor(ir_pack));
+    ans.push(generate_executor(ir_pack).into());
 
     ans
 }
 
 const FILE_ATTRIBUTES: &'static str = r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion, clippy::unit_arg, clippy::double_parens, non_snake_case, clippy::too_many_arguments)]"#;
 
-pub(super) fn section_header_comment(section_name: &str) -> String {
-    format!("// Section: {section_name}\n")
+pub(super) fn section_header_comment(section_name: &str) -> WireRustCode {
+    format!("// Section: {section_name}\n").into()
 }
 
 fn generate_code_header() -> String {

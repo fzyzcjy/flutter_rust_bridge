@@ -12,15 +12,16 @@ pub(crate) mod ty;
 pub(crate) fn generate(
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,
-) -> Acc<WireRustCode> {
-    let mut ans = Acc::default();
+) -> Acc<Vec<WireRustCode>> {
+    let mut ans = Acc::<Vec<WireRustCode>>::default();
 
     ans.push(section_header_comment("impl IntoDart"));
     ans.extend(
         cache
             .distinct_output_types
             .iter()
-            .filter_map(|ty| WireRustGenerator::new(ty.clone(), context).generate_impl_into_dart()),
+            .filter_map(|ty| WireRustGenerator::new(ty.clone(), context).generate_impl_into_dart())
+            .map(|x| x.into()),
     );
 
     ans

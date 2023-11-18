@@ -13,12 +13,12 @@ pub struct Acc<T> {
     pub wasm: T,
 }
 
-impl<T: AddAssign> AddAssign for Acc<T> {
+impl<T> AddAssign for Acc<Vec<T>> {
     #[inline]
     fn add_assign(&mut self, rhs: Self) {
-        self.common += rhs.common;
-        self.io += rhs.io;
-        self.wasm += rhs.wasm;
+        self.common.extend(rhs.common);
+        self.io.extend(rhs.io);
+        self.wasm.extend(rhs.wasm);
     }
 }
 
@@ -37,6 +37,12 @@ impl<T> FromIterator<Acc<T>> for Acc<Vec<T>> {
                 acc.push_acc(x);
                 acc
             })
+    }
+}
+
+impl<T: FromIterator<T>> FromIterator<Acc<T>> for Acc<T> {
+    fn from_iter<A: IntoIterator<Item = Acc<T>>>(iter: A) -> Self {
+        todo!()
     }
 }
 

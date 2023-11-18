@@ -16,7 +16,7 @@ pub(crate) mod ty;
 pub(crate) fn generate(
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,
-) -> Acc<WireRustCode> {
+) -> Acc<Vec<WireRustCode>> {
     let mut ans = Acc::default();
 
     ans.push(section_header_comment("allocate functions"));
@@ -41,7 +41,8 @@ pub(crate) fn generate(
         cache
             .distinct_input_types
             .iter()
-            .filter_map(|ty| WireRustGenerator::new(ty.clone(), context).generate_wire2api_class()),
+            .filter_map(|ty| WireRustGenerator::new(ty.clone(), context).generate_wire2api_class())
+            .map(|x| x.into()),
     );
 
     (ans.io).push(section_header_comment("impl NewWithNullPtr"));
