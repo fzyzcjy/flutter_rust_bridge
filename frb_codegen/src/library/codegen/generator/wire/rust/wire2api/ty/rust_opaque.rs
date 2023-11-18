@@ -81,7 +81,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
     }
 
     fn generate_related_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
-        let mut generate_impl = |target| -> CodeWithExternFunc {
+        let generate_impl = |target| -> CodeWithExternFunc {
             vec![
                 ExternFunc {
                     func_name: format!("drop_opaque_{}", self.ir.safe_ident()),

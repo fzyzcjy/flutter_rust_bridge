@@ -1,8 +1,3 @@
-use crate::codegen::generator::misc::Target;
-use crate::codegen::generator::wire::rust::wire2api::extern_func::{
-    CodeWithExternFunc, ExternFunc, ExternFuncParam,
-};
-
 mod extern_func;
 mod impl_new_with_nullptr;
 mod impl_wire2api_trait;

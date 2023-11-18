@@ -1,5 +1,4 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::api_dart::base::ApiDartGenerator;
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::misc::TargetOrCommon::*;
 use crate::codegen::generator::wire::dart::base::{WireDartGenerator, WireDartGeneratorContext};
