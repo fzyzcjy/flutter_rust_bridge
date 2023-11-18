@@ -1,6 +1,9 @@
 use crate::command_run;
+use crate::commands::command_runner::call_shell;
 use anyhow::bail;
 use log::debug;
+use std::fmt::Write;
+use std::path::Path;
 
 fn ffigen(
     c_path: &str,
@@ -8,7 +11,7 @@ fn ffigen(
     dart_class_name: &str,
     llvm_path: &[String],
     llvm_compiler_opts: &str,
-    dart_root: &str,
+    dart_root: &Path,
 ) -> anyhow::Result<()> {
     debug!(
         "execute ffigen c_path={} dart_path={} llvm_path={:?}",

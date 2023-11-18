@@ -2,6 +2,7 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::dart::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::dart::base::*;
 use crate::codegen::ir::ty::enumeration::{IrVariant, IrVariantKind};
+use crate::commands::command_runner::call_shell;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
@@ -43,7 +44,7 @@ impl<'a> EnumRefWireDartGenerator<'a> {
         let variant_name = &variant.name.raw;
 
         let (stmt_prepare, stmt_postpare) = match &variant.kind {
-            IrVariantKind::Value => ("", ""),
+            IrVariantKind::Value => ("".to_owned(), "".to_owned()),
             IrVariantKind::Struct(st) => {
                 let pre_field = st
                     .fields
