@@ -2,13 +2,13 @@ use log::debug;
 use std::path::Path;
 
 fn cbindgen(
-    rust_crate_dir: &str,
-    c_output_path: &str,
+    rust_crate_dir: &Path,
+    c_output_path: &Path,
     c_struct_names: Vec<String>,
     exclude_symbols: Vec<String>,
 ) -> anyhow::Result<()> {
     debug!(
-        "execute cbindgen rust_crate_dir={} c_output_path={}",
+        "execute cbindgen rust_crate_dir={:?} c_output_path={:?}",
         rust_crate_dir, c_output_path
     );
     let config = cbindgen::Config {

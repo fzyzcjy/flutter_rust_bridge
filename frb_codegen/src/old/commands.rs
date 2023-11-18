@@ -26,7 +26,7 @@ lazy_static! {
         VersionReq::parse(">= 8.0.0, < 10.0.0").unwrap();
 }
 
-pub fn ensure_tools_available(dart_root: &str, skip_deps_check: bool) -> Result<(), Error> {
+pub fn ensure_tools_available(dart_root: &Path, skip_deps_check: bool) -> Result<(), Error> {
     let repo = DartRepository::from_str(dart_root)?;
     if !repo.toolchain_available() {
         Err(Error::MissingExe(repo.toolchain.to_string()))?;
