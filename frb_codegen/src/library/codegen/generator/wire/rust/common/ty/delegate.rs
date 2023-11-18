@@ -1,5 +1,6 @@
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
+use crate::codegen::generator::wire::rust::common::misc::JS_VALUE;
 use crate::codegen::generator::wire::rust::common::ty::WireRustGeneratorCommonTrait;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::delegate::IrTypeDelegatePrimitiveEnum;

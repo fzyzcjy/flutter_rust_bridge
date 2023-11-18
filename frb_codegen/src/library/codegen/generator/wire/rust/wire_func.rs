@@ -11,7 +11,7 @@ use crate::codegen::ir::func::{
 };
 use crate::codegen::ir::pack::IrPack;
 use crate::library::codegen::generator::wire::rust::api2wire::ty::WireRustGeneratorApi2wireTrait;
-use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
+use crate::library::codegen::generator::wire::rust::common::ty::WireRustGeneratorCommonTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use crate::misc::consts::HANDLER_NAME;
 use itertools::Itertools;

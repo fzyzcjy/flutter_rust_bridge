@@ -10,7 +10,7 @@ use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::general_list::IrTypeGeneralList;
 use crate::codegen::ir::ty::IrType::{Delegate, Optional};
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
-use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
+use crate::library::codegen::generator::wire::rust::common::ty::WireRustGeneratorCommonTrait;
 
 impl<'a> WireRustGeneratorWire2apiTrait for GeneralListWireRustGenerator<'a> {
     fn generate_wire2api_class(&self) -> Option<String> {

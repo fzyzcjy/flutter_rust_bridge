@@ -8,7 +8,7 @@ use crate::codegen::generator::wire::rust::wire2api::misc::generate_class_from_f
 use crate::codegen::generator::wire::rust::wire2api::ty::general_list::general_list_impl_wire2api_body;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::IrTypeTrait;
-use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
+use crate::library::codegen::generator::wire::rust::common::ty::WireRustGeneratorCommonTrait;
 
 impl<'a> WireRustGeneratorWire2apiTrait for OptionalListWireRustGenerator<'a> {
     fn generate_wire2api_class(&self) -> Option<String> {

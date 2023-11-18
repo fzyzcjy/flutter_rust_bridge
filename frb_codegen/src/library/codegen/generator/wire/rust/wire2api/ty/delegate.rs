@@ -11,7 +11,7 @@ use crate::codegen::ir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
 };
 use crate::codegen::ir::ty::IrType;
-use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
+use crate::library::codegen::generator::wire::rust::common::ty::WireRustGeneratorCommonTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 

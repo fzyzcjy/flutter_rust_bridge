@@ -1,4 +1,4 @@
-use crate::codegen::generator::misc::Target;
+use crate::codegen::generator::misc::{is_js_value, Target};
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::common::ty::WireRustGeneratorCommonTrait;
 

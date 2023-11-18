@@ -9,7 +9,7 @@ use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2a
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumMode, IrVariant, IrVariantKind};
 use crate::codegen::ir::ty::IrType;
-use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
+use crate::library::codegen::generator::wire::rust::common::ty::WireRustGeneratorCommonTrait;
 use itertools::Itertools;
 
 impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
