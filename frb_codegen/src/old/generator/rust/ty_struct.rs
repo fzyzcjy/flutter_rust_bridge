@@ -9,7 +9,7 @@ use crate::type_rust_generator_struct;
 type_rust_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
 impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
-    fn new_with_nullptr(&self, _collector: &mut ExternFuncCollector) -> String {
+    fn generate_impl_new_with_nullptr(&self, _collector: &mut ExternFuncCollector) -> String {
         let src = self.ir.get(self.context.ir_pack);
 
         let body = {

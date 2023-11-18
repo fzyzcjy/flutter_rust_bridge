@@ -70,7 +70,7 @@ impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
         }
     }
 
-    fn new_with_nullptr(&self, _collector: &mut ExternFuncCollector) -> String {
+    fn generate_impl_new_with_nullptr(&self, _collector: &mut ExternFuncCollector) -> String {
         format!(
             "impl NewWithNullPtr for {} {{
                 fn new_with_null_ptr() -> Self {{

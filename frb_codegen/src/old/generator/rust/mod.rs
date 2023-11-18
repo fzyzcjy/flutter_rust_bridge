@@ -190,12 +190,14 @@ impl<'a> Generator<'a> {
         // );
 
         (lines.io).push(self.section_header_comment("impl NewWithNullPtr"));
-        (lines.io).push(self.generate_new_with_nullptr_misc().to_string());
-        lines.io.extend(
-            distinct_input_types
-                .iter()
-                .map(|ty| self.generate_new_with_nullptr_func(ty, ir_pack)),
-        );
+        // TODO
+        // (lines.io).push(self.generate_new_with_nullptr_misc().to_string());
+        // lines.io.extend(
+        //     distinct_input_types
+        //         .iter()
+        //         .map(|ty| self.generate_new_with_nullptr_func(ty, ir_pack)),
+        // );
+
         if self.config.block_index == BlockIndex::PRIMARY {
             (lines.io).push(self.section_header_comment("sync execution mode utility"));
             lines.io.push(self.generate_sync_execution_mode_utility());
@@ -441,24 +443,6 @@ impl<'a> Generator<'a> {
         TypeRustGenerator::new(ty.clone(), ir_pack, self.config)
             .related_funcs(&mut self.extern_func_collector, self.config.block_index)
             .map(|func, _| func.unwrap_or_default())
-    }
-
-    fn generate_new_with_nullptr_misc(&self) -> &'static str {
-        "pub trait NewWithNullPtr {
-            fn new_with_null_ptr() -> Self;
-        }
-
-        impl<T> NewWithNullPtr for *mut T {
-            fn new_with_null_ptr() -> Self {
-                std::ptr::null_mut()
-            }
-        }
-        "
-    }
-
-    fn generate_new_with_nullptr_func(&mut self, ty: &IrType, ir_pack: &IrPack) -> String {
-        TypeRustGenerator::new(ty.clone(), ir_pack, self.config)
-            .new_with_nullptr(&mut self.extern_func_collector)
     }
 }
 

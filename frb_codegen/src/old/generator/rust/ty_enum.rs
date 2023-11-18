@@ -12,7 +12,7 @@ use crate::type_rust_generator_struct;
 type_rust_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 
 impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
-    fn new_with_nullptr(&self, collector: &mut ExternFuncCollector) -> String {
+    fn generate_impl_new_with_nullptr(&self, collector: &mut ExternFuncCollector) -> String {
         fn init_of(ty: &IrType) -> String {
             if ty.rust_wire_is_pointer(Io) {
                 "core::ptr::null_mut()".to_owned()

@@ -22,7 +22,7 @@ pub trait TypeRustGeneratorTrait {
         Acc::default()
     }
 
-    fn new_with_nullptr(&self, _collector: &mut ExternFuncCollector) -> String {
+    fn generate_impl_new_with_nullptr(&self, _collector: &mut ExternFuncCollector) -> String {
         "".to_string()
     }
 
