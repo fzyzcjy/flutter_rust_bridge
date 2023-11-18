@@ -7,6 +7,7 @@ use std::collections::HashSet;
 
 mod misc;
 pub(crate) mod ty;
+pub(crate) mod wire_func;
 
 pub(crate) fn generate_wrapper_struct(
     ty: &IrType,
