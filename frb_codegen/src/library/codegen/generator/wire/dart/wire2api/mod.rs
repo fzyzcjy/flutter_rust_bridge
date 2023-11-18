@@ -9,6 +9,7 @@ use crate::library::codegen::generator::wire::dart::wire2api::ty::WireDartGenera
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
+mod misc;
 pub(crate) mod ty;
 
 pub(crate) struct WireDartOutputSpecWire2api {

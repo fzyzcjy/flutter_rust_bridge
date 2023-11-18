@@ -1,5 +1,6 @@
 use crate::codegen::generator::api_dart::base::ApiDartGenerator;
 use crate::codegen::generator::wire::dart::base::*;
+use crate::codegen::generator::wire::dart::wire2api::misc::gen_wire2api_simple_type_cast;
 use crate::codegen::generator::wire::dart::wire2api::ty::WireDartGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::library::codegen::generator::api_dart::info::ApiDartGeneratorInfoTrait;
