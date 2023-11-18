@@ -86,7 +86,7 @@ impl ExternFunc {
             "#,
             self.params
                 .iter()
-                .map(|param| format!("{}: {}", param.name, param.rust_type))
+                .map(|param| param.rust_name_and_type())
                 .join(", "),
             self.return_type
                 .as_ref()
@@ -121,4 +121,10 @@ impl ExternFunc {
     //         })
     //     }
     // }
+}
+
+impl ExternFuncParam {
+    pub(crate) fn rust_name_and_type(&self) -> String {
+        format!("{}: {}", self.name, self.rust_type)
+    }
 }

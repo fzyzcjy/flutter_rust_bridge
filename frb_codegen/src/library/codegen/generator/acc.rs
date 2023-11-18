@@ -40,18 +40,6 @@ impl<T> FromIterator<Acc<T>> for Acc<Vec<T>> {
     }
 }
 
-impl<T> Index<TargetOrCommon> for Acc<T> {
-    type Output = T;
-
-    fn index(&self, index: TargetOrCommon) -> &Self::Output {
-        match index {
-            TargetOrCommon::Common => &self.common,
-            TargetOrCommon::Io => &self.io,
-            TargetOrCommon::Wasm => &self.wasm,
-        }
-    }
-}
-
 impl<T> Acc<T> {
     pub fn new(mut init: impl FnMut(TargetOrCommon) -> T) -> Acc<T> {
         Acc {
@@ -66,6 +54,14 @@ impl<T> Acc<T> {
             common: mapper(self.common, TargetOrCommon::Common),
             io: mapper(self.io, TargetOrCommon::Io),
             wasm: mapper(self.wasm, TargetOrCommon::Wasm),
+        }
+    }
+
+    pub fn get(self, index: TargetOrCommon) -> T {
+        match index {
+            TargetOrCommon::Common => self.common,
+            TargetOrCommon::Io => self.io,
+            TargetOrCommon::Wasm => self.wasm,
         }
     }
 
