@@ -1,17 +1,16 @@
 use crate::codegen::generator::wire::dart::base::*;
 use crate::codegen::generator::wire::dart::wire2api::ty::WireDartGeneratorWire2apiTrait;
+use crate::codegen::ir::func::IrFuncOwnerInfo;
 use crate::library::codegen::ir::ty::IrTypeTrait;
+use itertools::Itertools;
 
 impl<'a> WireDartGeneratorWire2apiTrait for StructRefWireDartGenerator<'a> {
     fn generate_impl_wire2api_body(&self) -> String {
-        let src = self.ir.get(self.context.ir_pack);
         let s = self.ir.get(self.context.ir_pack);
 
-        let mut methods = self.context.ir_pack.funcs.iter().filter(|f| {
-            let f = FunctionName::deserialize(&f.name);
-            f.is_instance_method_for_struct(&src.name) || f.is_static_method_for_struct(&src.name)
-        });
-        let has_methods = methods.next().is_some();
+        let has_methods = (self.context.ir_pack.funcs.iter())
+            .any(|f| matches!(&f.owner, IrFuncOwnerInfo::Method(_)));
+
         let mut inner = s
             .fields
             .iter()
