@@ -1,9 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::rust::base::*;
-use crate::codegen::generator::wire::rust::wire2api::extern_func::{
-    CodeWithExternFunc, ExternFunc,
-};
+use crate::codegen::generator::wire::rust::wire2api::extern_func::{ExternFunc, WireRustCode};
 use crate::codegen::generator::wire::rust::wire2api::impl_new_with_nullptr::generate_impl_new_with_nullptr_code_block;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::field::IrField;
@@ -86,7 +84,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
         })
     }
 
-    fn generate_impl_new_with_nullptr(&self) -> Option<CodeWithExternFunc> {
+    fn generate_impl_new_with_nullptr(&self) -> Option<WireRustCode> {
         let src = self.ir.get(self.context.ir_pack);
 
         let inflators = src
@@ -95,8 +93,8 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
             .filter_map(|variant| self.generate_impl_new_with_nullptr_variant(&variant))
             .collect_vec();
 
-        Some(CodeWithExternFunc {
-            code: generate_impl_new_with_nullptr_code_block(
+        Some(WireRustCode {
+            direct_code: generate_impl_new_with_nullptr_code_block(
                 self.ir.clone(),
                 self.context,
                 "Self { tag: -1, kind: core::ptr::null_mut() }",

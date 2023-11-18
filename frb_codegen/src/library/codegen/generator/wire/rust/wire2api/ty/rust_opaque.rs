@@ -2,7 +2,7 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::wire2api::extern_func::{
-    CodeWithExternFunc, ExternFunc, ExternFuncParam,
+    ExternFunc, ExternFuncParam, WireRustCode,
 };
 use crate::codegen::generator::wire::rust::wire2api::impl_new_with_nullptr::generate_impl_new_with_nullptr_code_block;
 use crate::codegen::generator::wire::rust::wire2api::misc::generate_class_from_fields;
@@ -47,7 +47,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
         )
     }
 
-    fn generate_impl_new_with_nullptr(&self) -> Option<CodeWithExternFunc> {
+    fn generate_impl_new_with_nullptr(&self) -> Option<WireRustCode> {
         Some(
             generate_impl_new_with_nullptr_code_block(
                 self.ir.clone(),
@@ -59,7 +59,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
         )
     }
 
-    fn generate_allocate_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
+    fn generate_allocate_funcs(&self) -> Acc<Option<WireRustCode>> {
         let rust_wire = self.rust_wire_type(Target::Io);
 
         Acc {
@@ -80,8 +80,8 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
         }
     }
 
-    fn generate_related_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
-        let generate_impl = |target| -> CodeWithExternFunc {
+    fn generate_related_funcs(&self) -> Acc<Option<WireRustCode>> {
+        let generate_impl = |target| -> WireRustCode {
             vec![
                 ExternFunc {
                     func_name: format!("drop_opaque_{}", self.ir.safe_ident()),

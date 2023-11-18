@@ -1,6 +1,6 @@
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
-use crate::codegen::generator::wire::rust::wire2api::extern_func::CodeWithExternFunc;
+use crate::codegen::generator::wire::rust::wire2api::extern_func::WireRustCode;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::misc::ty::WireRustGeneratorMiscTrait;
 use crate::library::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
@@ -9,10 +9,10 @@ use itertools::Itertools;
 pub(super) fn generate_impl_new_with_nullptr(
     types: &[IrType],
     context: WireRustGeneratorContext,
-) -> CodeWithExternFunc {
-    let misc: CodeWithExternFunc = generate_impl_new_with_nullptr_misc().to_string().into();
+) -> WireRustCode {
+    let misc: WireRustCode = generate_impl_new_with_nullptr_misc().to_string().into();
 
-    let funcs: Vec<CodeWithExternFunc> = types
+    let funcs: Vec<WireRustCode> = types
         .iter()
         .filter_map(|ty| {
             WireRustGenerator::new(ty.clone(), context).generate_impl_new_with_nullptr()

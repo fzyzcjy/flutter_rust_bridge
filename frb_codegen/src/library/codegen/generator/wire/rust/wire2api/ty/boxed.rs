@@ -4,7 +4,7 @@ use crate::codegen::generator::misc::TargetOrCommon::*;
 use crate::codegen::generator::wire::dart::base::{WireDartGenerator, WireDartGeneratorContext};
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::wire2api::extern_func::{
-    CodeWithExternFunc, ExternFunc, ExternFuncParam,
+    ExternFunc, ExternFuncParam, WireRustCode,
 };
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
@@ -54,7 +54,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for BoxedWireRustGenerator<'a> {
         })
     }
 
-    fn generate_allocate_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
+    fn generate_allocate_funcs(&self) -> Acc<Option<WireRustCode>> {
         if self.ir.inner.is_array() {
             return Acc::default();
         }

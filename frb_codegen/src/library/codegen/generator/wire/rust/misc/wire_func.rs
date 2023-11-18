@@ -3,7 +3,7 @@ use crate::codegen::generator::misc::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
 use crate::codegen::generator::wire::rust::wire2api::extern_func::{
-    CodeWithExternFunc, ExternFunc, ExternFuncParam,
+    ExternFunc, ExternFuncParam, WireRustCode,
 };
 use crate::codegen::ir::func::IrFuncOwnerInfoMethodMode::Instance;
 use crate::codegen::ir::func::{
@@ -20,7 +20,7 @@ use std::convert::TryInto;
 pub(super) fn generate_wire_func(
     func: &IrFunc,
     context: WireRustGeneratorContext,
-) -> Acc<CodeWithExternFunc> {
+) -> Acc<WireRustCode> {
     let ir_pack = context.ir_pack;
     let params = generate_params(func, context);
     let inner_func_params = generate_inner_func_params(func, ir_pack, context);

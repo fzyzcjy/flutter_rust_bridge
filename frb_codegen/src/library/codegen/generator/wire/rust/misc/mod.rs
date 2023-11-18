@@ -1,7 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
 use crate::codegen::generator::wire::rust::misc::wire_func::generate_wire_func;
-use crate::codegen::generator::wire::rust::wire2api::extern_func::CodeWithExternFunc;
+use crate::codegen::generator::wire::rust::wire2api::extern_func::WireRustCode;
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::IrType;
@@ -19,7 +19,7 @@ pub(crate) fn generate(
     ir_pack: &IrPack,
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,
-) -> Acc<CodeWithExternFunc> {
+) -> Acc<WireRustCode> {
     let mut ans = Acc::default();
 
     ans.push(FILE_ATTRIBUTES.to_string());

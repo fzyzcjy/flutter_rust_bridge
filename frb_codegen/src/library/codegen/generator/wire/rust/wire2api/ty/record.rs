@@ -1,6 +1,6 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::rust::base::*;
-use crate::codegen::generator::wire::rust::wire2api::extern_func::CodeWithExternFunc;
+use crate::codegen::generator::wire::rust::wire2api::extern_func::WireRustCode;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 
 impl<'a> WireRustGeneratorWire2apiTrait for RecordWireRustGenerator<'a> {
@@ -33,7 +33,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for RecordWireRustGenerator<'a> {
         }
     }
 
-    fn generate_impl_new_with_nullptr(&self) -> Option<CodeWithExternFunc> {
+    fn generate_impl_new_with_nullptr(&self) -> Option<WireRustCode> {
         self.as_struct_generator().generate_impl_new_with_nullptr()
     }
 }

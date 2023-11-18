@@ -4,12 +4,12 @@ use itertools::{concat, Itertools};
 use std::ops::{Add, AddAssign};
 
 #[derive(Default)]
-pub(crate) struct CodeWithExternFunc {
-    pub(crate) code: String,
+pub(crate) struct WireRustCode {
+    pub(crate) direct_code: String,
     pub(crate) extern_funcs: Vec<ExternFunc>,
 }
 
-impl Add for CodeWithExternFunc {
+impl Add for WireRustCode {
     type Output = Self;
 
     fn add(mut self, rhs: Self) -> Self::Output {
@@ -18,33 +18,33 @@ impl Add for CodeWithExternFunc {
     }
 }
 
-impl AddAssign for CodeWithExternFunc {
+impl AddAssign for WireRustCode {
     #[inline]
     fn add_assign(&mut self, rhs: Self) {
-        self.code += &rhs.code;
+        self.direct_code += &rhs.direct_code;
         self.extern_funcs.extend(rhs.extern_funcs);
     }
 }
 
-impl From<String> for CodeWithExternFunc {
+impl From<String> for WireRustCode {
     fn from(code: String) -> Self {
         Self {
-            code,
+            direct_code: code,
             extern_funcs: vec![],
         }
     }
 }
 
-impl From<ExternFunc> for CodeWithExternFunc {
+impl From<ExternFunc> for WireRustCode {
     fn from(value: ExternFunc) -> Self {
         vec![value].into()
     }
 }
 
-impl From<Vec<ExternFunc>> for CodeWithExternFunc {
+impl From<Vec<ExternFunc>> for WireRustCode {
     fn from(extern_funcs: Vec<ExternFunc>) -> Self {
         Self {
-            code: "".to_string(),
+            direct_code: "".to_string(),
             extern_funcs,
         }
     }
