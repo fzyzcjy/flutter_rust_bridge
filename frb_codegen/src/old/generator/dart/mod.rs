@@ -94,7 +94,7 @@ pub fn generate(ir_pack: &IrPack, config: &Opts, wasm_funcs: &[IrFuncDisplay]) -
 
 struct DartApiSpec {
     dart_funcs: Vec<GeneratedApiFunc>,
-    dart_structs: Vec<String>,
+    // dart_structs: Vec<String>,
     dart_opaque_funcs: Acc<String>,
     dart_wasm_funcs: Vec<String>,
     dart_wasm_module: Option<String>,
@@ -103,13 +103,13 @@ struct DartApiSpec {
 
 impl DartApiSpec {
     fn from(ir_pack: &IrPack, config: &Opts, extra_funcs: &[IrFuncDisplay]) -> Self {
-        let dart_api_class_name = config.dart_api_class_name();
-        let dart_wire_class_name = config.dart_wire_class_name();
-        let distinct_types = ir_pack.distinct_types(true, true);
-        let distinct_input_types = ir_pack.distinct_types(true, false);
-        let distinct_output_types = ir_pack.distinct_types(false, true);
-        debug!("distinct_input_types={:?}", distinct_input_types);
-        debug!("distinct_output_types={:?}", distinct_output_types);
+        // let dart_api_class_name = config.dart_api_class_name();
+        // let dart_wire_class_name = config.dart_wire_class_name();
+        // let distinct_types = ir_pack.distinct_types(true, true);
+        // let distinct_input_types = ir_pack.distinct_types(true, false);
+        // let distinct_output_types = ir_pack.distinct_types(false, true);
+        // debug!("distinct_input_types={:?}", distinct_input_types);
+        // debug!("distinct_output_types={:?}", distinct_output_types);
 
         // moved
         // let dart_structs = distinct_types
