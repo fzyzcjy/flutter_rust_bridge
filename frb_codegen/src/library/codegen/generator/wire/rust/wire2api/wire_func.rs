@@ -6,8 +6,6 @@ use crate::codegen::ir::pack::IrPack;
 use itertools::Itertools;
 
 pub(crate) fn generate_wire_func(func: &IrFunc, ir_pack: &IrPack) -> Acc<String> {
-    let f = FunctionName::deserialize(&func.name);
-    let struct_name = f.struct_name();
     let mut params = if func.mode.has_port_argument() {
         Acc {
             io: vec!["port_: i64".to_owned()],
@@ -17,7 +15,9 @@ pub(crate) fn generate_wire_func(func: &IrFunc, ir_pack: &IrPack) -> Acc<String>
     } else {
         Acc::default()
     };
-    params += (func.inputs)
+
+    params += func
+        .inputs
         .iter()
         .map(|field| {
             let name = field.name.rust_style();
@@ -72,11 +72,12 @@ pub(crate) fn generate_wire_func(func: &IrFunc, ir_pack: &IrPack) -> Acc<String>
         .collect_vec()
         .join("");
 
-    let code_call_inner_func = if f.is_non_static_method() || f.is_static_method() {
-        let method_name = if f.is_non_static_method() {
+    let code_call_inner_func = if func.owner.is_non_static_method() || func.owner.is_static_method()
+    {
+        let method_name = if func.owner.is_non_static_method() {
             inner_func_params[0] = format!("&{}", inner_func_params[0]);
             FunctionName::deserialize(&func.name).method_name()
-        } else if f.is_static_method() {
+        } else if func.owner.is_static_method() {
             FunctionName::deserialize(&func.name)
                 .static_method_name()
                 .unwrap()
@@ -133,6 +134,7 @@ pub(crate) fn generate_wire_func(func: &IrFunc, ir_pack: &IrPack) -> Acc<String>
             .collect_vec()
             .join(","),
     );
+
     Acc::new(|target| match target {
         Io | Wasm => ExternFunc {
             func_name: func.wire_func_name(),
