@@ -22,7 +22,6 @@ use paste::paste;
 #[enum_dispatch(WireDartGeneratorMiscTrait)]
 #[enum_dispatch(WireDartGeneratorApi2wireTrait)]
 #[enum_dispatch(WireDartGeneratorWire2apiTrait)]
-#[enum_dispatch(WireDartGeneratorInfoTrait)] // TODO remove
 pub(crate) enum WireDartGenerator<'a> {
     Boxed(BoxedWireDartGenerator<'a>),
     DartOpaque(DartOpaqueWireDartGenerator<'a>),

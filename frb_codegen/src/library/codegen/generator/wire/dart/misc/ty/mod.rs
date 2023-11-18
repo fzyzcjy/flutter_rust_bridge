@@ -1,4 +1,4 @@
-use crate::codegen::generator::wire::dart::base::WireDartGenerator;
+use crate::codegen::generator::wire::dart::base::*;
 
 mod boxed;
 mod dart_opaque;
@@ -15,7 +15,12 @@ mod rust_opaque;
 mod structure;
 mod unencodable;
 
+use crate::codegen::generator::misc::Target;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
-pub(crate) trait WireDartGeneratorMiscTrait {}
+pub(crate) trait WireDartGeneratorMiscTrait {
+    fn dart_wire_type(&self, target: Target) -> String {
+        todo!()
+    }
+}
