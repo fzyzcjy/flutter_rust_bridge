@@ -23,23 +23,32 @@ pub(crate) struct ExternFuncParam {
 
 impl ExternFunc {
     pub(crate) fn generate(&self) -> String {
+        let call_convention = match self.target {
+            Target::Io => "extern \"C\"",
+            Target::Wasm => "",
+        };
+        let attribute = match self.target {
+            Target::Io => "#[no_mangle]",
+            Target::Wasm => "#[wasm_bindgen]",
+        };
+        let ExternFunc {
+            func_name, body, ..
+        } = self;
+
         format!(
             r#"
-                {attr}
-                pub {call_conv} fn {}({}) {} {{
-                    {}
+                {attribute}
+                pub {call_convention} fn {func_name}({}) {} {{
+                    {body}
                 }}
             "#,
-            self.func_name,
             self.params
-                .into_iter()
+                .iter()
                 .map(|param| format!("{}: {}", param.name, param.rust_type))
-                .join(","),
+                .join(", "),
             self.return_type
-                .map_or("".to_string(), |r| format!("-> {r}")),
-            self.body,
-            attr = self.target.extern_func_attr(),
-            call_conv = self.target.call_convention(),
+                .as_ref()
+                .map_or("".to_owned(), |r| format!("-> {r}")),
         )
     }
 
