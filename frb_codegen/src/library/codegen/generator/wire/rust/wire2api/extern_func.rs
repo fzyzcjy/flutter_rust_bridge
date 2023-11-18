@@ -1,4 +1,5 @@
 use crate::codegen::generator::misc::Target;
+use itertools::Itertools;
 
 pub(crate) struct ExternFunc {
     // TODO handle platform
@@ -8,10 +9,15 @@ pub(crate) struct ExternFunc {
     //     self.wasm_exports.push(...)
     // }
     pub(crate) func_name: String,
-    pub(crate) params: impl IntoIterator<Item = (impl Display, impl Display)>,
+    pub(crate) params: Vec<ExternFuncParam>,
     pub(crate) return_type: Option<String>,
     pub(crate) body: String,
     pub(crate) target: Target,
+}
+
+pub(crate) struct ExternFuncParam {
+    verbatim: String,
+    dart: String,
 }
 
 impl ExternFunc {
@@ -24,7 +30,10 @@ impl ExternFunc {
                 }}
             "#,
             self.func_name,
-            self.params.into_iter().map(|param| param.0).join(","),
+            self.params
+                .into_iter()
+                .map(|param| param.verbatim)
+                .join(","),
             self.return_type
                 .map_or("".to_string(), |r| format!("-> {r}")),
             self.body,
