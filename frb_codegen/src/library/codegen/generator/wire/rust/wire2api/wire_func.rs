@@ -3,6 +3,7 @@ use crate::codegen::generator::misc::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::rust::wire2api::extern_func::{
     CodeWithExternFunc, ExternFunc, ExternFuncParam,
 };
+use crate::codegen::ir::func::IrFuncOwnerInfoMethodMode::Instance;
 use crate::codegen::ir::func::{
     IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
 };
@@ -139,14 +140,10 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_params: Vec<St
     let code_call_inner_func = match &func.owner {
         IrFuncOwnerInfo::Function => format!("{}({})", func.name, inner_func_params.join(", ")),
         IrFuncOwnerInfo::Method(method) => {
-            let method_name = match method.mode {
-                IrFuncOwnerInfoMethodMode::Instance => func.owner.method_name(),
-                IrFuncOwnerInfoMethodMode::Static => func.owner.static_method_name().unwrap(),
-            };
             format!(
                 r"{}::{}({})",
-                func.owner.struct_name.unwrap(),
-                method_name,
+                method.struct_name,
+                method.actual_method_name,
                 inner_func_params.join(", ")
             )
         }
