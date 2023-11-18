@@ -13,10 +13,11 @@ pub(crate) fn generate(
     ir_pack: &IrPack,
     context: WireDartGeneratorContext,
 ) -> Acc<WireDartOutputCode> {
-    let cache = IrPackComputedCache::compute(ir_pack);
-    let mut ans = Acc::default();
-    ans += misc::generate(context, &cache);
-    ans += wire2api::generate(context, &cache);
-    ans += api2wire::generate(context, &cache);
-    ans.map(|v, _| v.into_iter().collect())
+    todo!()
+    // let cache = IrPackComputedCache::compute(ir_pack);
+    // let mut ans = Acc::default();
+    // ans += misc::generate(context, &cache);
+    // ans += wire2api::generate(context, &cache);
+    // ans += api2wire::generate(context, &cache);
+    // ans.map(|v, _| v.into_iter().collect())
 }
