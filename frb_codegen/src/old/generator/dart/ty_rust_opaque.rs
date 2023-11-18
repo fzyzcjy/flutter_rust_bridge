@@ -22,16 +22,4 @@ impl TypeDartGeneratorTrait for TypeRustOpaqueGenerator<'_> {
     fn api_fill_to_wire_body(&self) -> Option<String> {
         Some("wireObj.ptr = apiObj.shareOrMove();".into())
     }
-
-    fn generate_impl_wire2api_body(&self) -> String {
-        let bridge = if self.context.config.use_bridge_in_method {
-            "this"
-        } else {
-            ""
-        };
-        format!(
-            "return {0}.fromRaw(raw[0], raw[1], {bridge});",
-            self.ir.dart_api_type()
-        )
-    }
 }

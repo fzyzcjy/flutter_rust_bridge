@@ -38,11 +38,4 @@ impl TypeDartGeneratorTrait for TypeGeneralListGenerator<'_> {
             ..Default::default()
         }
     }
-
-    fn generate_impl_wire2api_body(&self) -> String {
-        format!(
-            "return (raw as List<dynamic>).map(_wire2api_{}).toList();",
-            self.ir.inner.safe_ident()
-        )
-    }
 }

@@ -29,8 +29,4 @@ impl TypeDartGeneratorTrait for TypeDartOpaqueGenerator<'_> {
                 .to_owned(),
         )
     }
-
-    fn generate_impl_wire2api_body(&self) -> String {
-        "return _platform.inner.get_dart_object(raw);".into()
-    }
 }
