@@ -164,8 +164,6 @@ impl DartApiSpec {
             generate_wasm_wire(exports, &dart_wire_class_name, &config.dart_wasm_module())
         });
 
-        let needs_freezed = distinct_types.iter().any(|ty| needs_freezed(ty, ir_pack));
-
         let import_array = distinct_types
             .iter()
             .any(IrType::is_array)
@@ -507,16 +505,4 @@ fn gen_wire2api_chrono(chrono_type: &IrTypeDelegateTime) -> String {
 
 fn gen_wire2api_simple_type_cast(s: &str) -> String {
     format!("return raw as {s};")
-}
-
-fn needs_freezed(ty: &IrType, ir_pack: &IrPack) -> bool {
-    match ty {
-        EnumRef(_) => true,
-        StructRef(st) => st.freezed,
-        SyncReturn(sync) => {
-            let types = sync.clone().into_inner().distinct_types(ir_pack);
-            types.iter().any(|child| needs_freezed(child, ir_pack))
-        }
-        _ => false,
-    }
 }
