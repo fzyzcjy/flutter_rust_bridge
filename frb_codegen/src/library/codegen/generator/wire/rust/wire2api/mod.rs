@@ -3,6 +3,7 @@ use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use itertools::Itertools;
 
+mod extern_func;
 mod impl_wire2api_trait;
 mod misc;
 pub(crate) mod ty;
