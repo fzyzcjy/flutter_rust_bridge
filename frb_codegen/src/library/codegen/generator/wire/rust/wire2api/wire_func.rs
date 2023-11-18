@@ -15,7 +15,6 @@ pub(crate) fn generate_wire_func(func: &IrFunc, ir_pack: &IrPack) -> Acc<String>
     let code_call_inner_func = if func.owner.is_non_static_method() || func.owner.is_static_method()
     {
         let method_name = if func.owner.is_non_static_method() {
-            inner_func_params[0] = format!("&{}", inner_func_params[0]);
             func.owner.method_name()
         } else if func.owner.is_static_method() {
             func.owner.static_method_name().unwrap()
@@ -115,6 +114,10 @@ fn generate_inner_func_params(func: &IrFunc, ir_pack: &IrPack) -> Vec<String> {
                 func.output.intodart_type(ir_pack)
             ),
         );
+    }
+
+    if func.owner.is_non_static_method() {
+        ans[0] = format!("&{}", ans[0]);
     }
 
     ans
