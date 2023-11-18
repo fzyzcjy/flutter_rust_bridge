@@ -48,11 +48,22 @@ pub(crate) fn generate_static_checks(
 }
 
 pub(crate) fn generate_imports(
-    types: &[IrType],
+    types: impl Iterator<Item = IrType>,
     context: WireRustGeneratorContext,
     rust_wire_mod: &str,
 ) -> String {
-    types
+    let imports_misc = format!(
+        r#"
+        use crate::{rust_wire_mod}::*;
+        use flutter_rust_bridge::*;
+        use core::panic::UnwindSafe;
+        use std::sync::Arc;
+        use std::ffi::c_void;
+        use flutter_rust_bridge::rust2dart::IntoIntoDart;
+        "#
+    );
+
+    let imports_from_types = types
         .iter()
         .flat_map(|ty| WireRustGenerator::new(ty.clone(), context).generate_imports())
         .flatten()
@@ -61,5 +72,7 @@ pub(crate) fn generate_imports(
         // de-duplicate
         .collect::<HashSet<String>>()
         .into_iter()
-        .join("\n")
+        .join("\n");
+
+    imports_misc + &imports_from_types
 }

@@ -1,5 +1,9 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::wire::misc::code_header;
+use crate::codegen::generator::wire::rust::base::WireRustGeneratorContext;
+use crate::codegen::generator::wire::rust::common::generate_imports;
 use crate::codegen::ir::pack::IrPack;
+use itertools::Itertools;
 
 pub(crate) mod api2wire;
 pub(crate) mod base;
@@ -7,7 +11,12 @@ pub(crate) mod common;
 pub(crate) mod wire2api;
 mod wire_func;
 
-pub(crate) fn generate(ir_pack: &IrPack, rust_wire_mod: &str) -> Acc<String> {
+pub(crate) fn generate(
+    ir_pack: &IrPack,
+    context: WireRustGeneratorContext,
+    // TODO this should be in config?
+    rust_wire_mod: &str,
+) -> Acc<String> {
     let mut lines = Acc::<Vec<_>>::default();
 
     let distinct_input_types = ir_pack.distinct_types(true, false);
@@ -16,24 +25,13 @@ pub(crate) fn generate(ir_pack: &IrPack, rust_wire_mod: &str) -> Acc<String> {
     lines.push(r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion, clippy::unit_arg, clippy::double_parens, non_snake_case, clippy::too_many_arguments)]"#.to_string());
     lines.push(code_header());
 
-    lines.push(String::new());
-    lines.push(format!("use crate::{rust_wire_mod}::*;"));
-    lines.push("use flutter_rust_bridge::*;".to_owned());
-    lines.push("use core::panic::UnwindSafe;".to_owned());
-    lines.push("use std::sync::Arc;".to_owned());
-    lines.push("use std::ffi::c_void;".to_owned());
-    lines.push("use flutter_rust_bridge::rust2dart::IntoIntoDart;".to_owned());
-    lines.push(String::new());
-
-    lines.push(self.section_header_comment("imports"));
-    // TODO
-    // lines.extend(self.generate_imports(
-    //     ir_pack,
-    //     rust_wire_mod,
-    //     &distinct_input_types,
-    //     &distinct_output_types,
-    // ));
-    // lines.push(String::new());
+    lines.push(generate_imports(
+        distinct_input_types
+            .iter()
+            .chain(distinct_output_types.iter()),
+        context,
+        rust_wire_mod,
+    ));
 
     lines.push_all(self.section_header_comment("wire functions"));
     // TODO
