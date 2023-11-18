@@ -29,9 +29,9 @@ impl<'a> WireRustGeneratorWire2apiTrait for OptionalListWireRustGenerator<'a> {
         general_list_impl_wire2api_body()
     }
 
-    fn generate_allocate_funcs(&self) -> Acc<Option<WireRustCode>> {
+    fn generate_allocate_funcs(&self) -> Acc<WireRustCode> {
         Acc {
-            io: Some(ExternFunc {
+            io: ExternFunc {
                 func_name: format!("new_{}", self.ir.safe_ident()),
                 params: vec![ExternFuncParam {
                     name: "len".to_owned(),
@@ -45,7 +45,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for OptionalListWireRustGenerator<'a> {
                     self.rust_wire_type(Target::Io)
                 ),
                 target: Target::Io,
-            }.into()),
+            }.into(),
             ..Default::default()
         }
     }

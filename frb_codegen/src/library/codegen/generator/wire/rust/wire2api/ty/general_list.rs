@@ -32,17 +32,15 @@ impl<'a> WireRustGeneratorWire2apiTrait for GeneralListWireRustGenerator<'a> {
         general_list_impl_wire2api_body()
     }
 
-    fn generate_allocate_funcs(&self) -> Acc<Option<WireRustCode>> {
+    fn generate_allocate_funcs(&self) -> Acc<WireRustCode> {
         Acc {
-            io: Some(
-                generate_list_generate_allocate_func(
-                    &self.ir.safe_ident(),
-                    &self.ir.clone().into(),
-                    &self.ir.inner,
-                    self.context,
-                )
-                .into(),
-            ),
+            io: generate_list_generate_allocate_func(
+                &self.ir.safe_ident(),
+                &self.ir.clone().into(),
+                &self.ir.inner,
+                self.context,
+            )
+            .into(),
             ..Default::default()
         }
     }

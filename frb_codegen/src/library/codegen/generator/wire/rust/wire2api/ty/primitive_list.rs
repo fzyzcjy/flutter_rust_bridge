@@ -62,9 +62,9 @@ impl<'a> WireRustGeneratorWire2apiTrait for PrimitiveListWireRustGenerator<'a> {
         }
     }
 
-    fn generate_allocate_funcs(&self) -> Acc<Option<WireRustCode>> {
+    fn generate_allocate_funcs(&self) -> Acc<WireRustCode> {
         Acc {
-            io: Some(ExternFunc {
+            io: ExternFunc {
                 func_name: format!("new_{}", self.ir.safe_ident()),
                 params: vec![ExternFuncParam {
                     name: "len".to_owned(),
@@ -82,7 +82,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for PrimitiveListWireRustGenerator<'a> {
                     self.rust_wire_type(Target::Io),
                 ),
                 target: Target::Io,
-            }.into()),
+            }.into(),
             ..Default::default()
         }
     }

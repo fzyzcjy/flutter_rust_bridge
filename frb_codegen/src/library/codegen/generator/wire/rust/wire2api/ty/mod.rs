@@ -38,11 +38,11 @@ pub(crate) trait WireRustGeneratorWire2apiTrait {
         None
     }
 
-    fn generate_allocate_funcs(&self) -> Acc<Option<WireRustCode>> {
+    fn generate_allocate_funcs(&self) -> Acc<WireRustCode> {
         Default::default()
     }
 
-    fn generate_related_funcs(&self) -> Acc<Option<WireRustCode>> {
+    fn generate_related_funcs(&self) -> Acc<WireRustCode> {
         Default::default()
     }
 }
