@@ -37,7 +37,7 @@ macro_rules! codegen_generator_structs {
                 }
 
                 impl<'a> [<$generator_name ImplTrait>] for [<$name $generator_name>]<'a> {
-                    fn ir_type(&self) -> IrType { self.ir.into() }
+                    fn ir_type(&self) -> IrType { self.ir.clone().into() }
                     fn context(&self) -> [<$generator_name Context>] { self.context }
                 }
             )*
