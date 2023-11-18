@@ -1,11 +1,14 @@
 use crate::command_run;
 use crate::commands::command_runner::call_shell;
+use crate::utils::dart_repository::dart_repo::DartRepository;
+use crate::utils::path_utils::path_to_string;
 use log::info;
 use std::path::Path;
+use std::str::FromStr;
 
 pub fn dart_build_runner(dart_root: &Path) -> anyhow::Result<()> {
     info!("Running build_runner at {:?}", dart_root);
-    let repo = DartRepository::from_str(dart_root).unwrap();
+    let repo = DartRepository::from_str(&path_to_string(dart_root)?).unwrap();
     let out = command_run!(
         call_shell[Some(dart_root)],
         *repo.toolchain.as_run_command(),

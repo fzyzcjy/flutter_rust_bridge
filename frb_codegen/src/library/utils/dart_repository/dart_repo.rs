@@ -1,4 +1,3 @@
-use crate::commands::Error;
 use crate::utils::dart_repository::dart_toolchain::DartToolchain;
 use crate::utils::dart_repository::pubspec::*;
 use anyhow::{anyhow, Context};
@@ -16,8 +15,9 @@ pub(crate) struct DartRepository {
     pub(crate) toolchain: DartToolchain,
 }
 
+// TODO it is from path, not from str
 impl FromStr for DartRepository {
-    type Err = crate::commands::Error;
+    type Err = anyhow::Error;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         debug!("Guessing toolchain the runner is run into");
@@ -53,7 +53,7 @@ impl DartRepository {
         package: &str,
         manager: DartDependencyMode,
         requirement: &VersionReq,
-    ) -> Result<(), crate::commands::Error> {
+    ) -> anyhow::Result<()> {
         let at = self.at.to_str().unwrap();
         debug!("Checking presence of {} in {} at {}", package, manager, at);
         let manifest_file = read_file(at, DartToolchain::manifest_filename())?;
@@ -68,11 +68,7 @@ impl DartRepository {
             DartDependencyMode::Dev => manifest_file.dev_dependencies.unwrap_or_default(),
         };
         if !deps.contains_key(package) {
-            Err(Error::MissingDep {
-                name: package.to_string(),
-                manager,
-                requirement: requirement.to_string(),
-            })?;
+            Err(error_missing_dep(package, manager, requirement))?;
         }
         Ok(())
     }
@@ -83,7 +79,7 @@ impl DartRepository {
         package: &str,
         manager: DartDependencyMode,
         requirement: &VersionReq,
-    ) -> Result<(), crate::commands::Error> {
+    ) -> anyhow::Result<()> {
         let at = self.at.to_str().unwrap();
         debug!("Checking presence of {} in {} at {}", package, manager, at);
         let lock_file = read_file(at, DartToolchain::lock_filename())?;
@@ -98,11 +94,7 @@ impl DartRepository {
             Some(dependency) => {
                 let pm = dependency.installed_in();
                 if pm.as_ref() != Some(&manager) {
-                    return Err(Error::InvalidDep {
-                        name: package.to_string(),
-                        manager,
-                        requirement: requirement.to_string(),
-                    });
+                    return Err(error_invalid_dep(package, manager, requirement));
                 }
                 DartPackageVersion::try_from(dependency).map_err(|e| {
                     anyhow::Error::msg(format!(
@@ -113,13 +105,7 @@ impl DartRepository {
                     ))
                 })?
             }
-            None => {
-                return Err(Error::MissingDep {
-                    name: package.to_string(),
-                    manager,
-                    requirement: requirement.to_string(),
-                })
-            }
+            None => return Err(error_missing_dep(package, manager, requirement)),
         };
 
         match version {
@@ -128,13 +114,27 @@ impl DartRepository {
                 "unexpected version range for {package} in {}",
                 DartToolchain::lock_filename()
             ))?,
-            _ => Err(Error::InvalidDep {
-                name: package.to_string(),
-                manager,
-                requirement: requirement.to_string(),
-            }),
+            _ => Err(error_invalid_dep(package, manager, requirement)),
         }
     }
+}
+
+fn error_missing_dep(
+    package: &str,
+    manager: DartDependencyMode,
+    requirement: &VersionReq,
+) -> anyhow::Error {
+    anyhow!("MissingDep: Please add {package} to your {manager}. (version {requirement})")
+}
+
+fn error_invalid_dep(
+    package: &str,
+    manager: DartDependencyMode,
+    requirement: &VersionReq,
+) -> anyhow::Error {
+    anyhow!(
+        "InvalidDep: Please update version of {package} in your {manager}. (version {requirement})"
+    )
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]

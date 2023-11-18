@@ -1,4 +1,4 @@
-use crate::utils::command_runner::call_shell;
+use crate::commands::command_runner::call_shell;
 use crate::{command_args, command_run};
 use std::path::PathBuf;
 

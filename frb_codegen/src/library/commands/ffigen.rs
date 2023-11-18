@@ -1,10 +1,12 @@
 use crate::command_run;
 use crate::commands::command_runner::call_shell;
+use crate::utils::dart_repository::dart_repo::DartRepository;
 use crate::utils::path_utils::path_to_string;
 use anyhow::bail;
 use log::debug;
 use std::fmt::Write;
 use std::path::{Path, PathBuf};
+use std::str::FromStr;
 
 fn ffigen(
     c_path: &Path,
@@ -62,7 +64,7 @@ fn ffigen(
     std::io::Write::write_all(&mut config_file, config.as_bytes())?;
     debug!("ffigen config_file: {:?}", config_file);
 
-    let repo = DartRepository::from_str(dart_root).unwrap();
+    let repo = DartRepository::from_str(&path_to_string(dart_root)?).unwrap();
     let res = command_run!(
         call_shell[Some(dart_root)],
         *repo.toolchain.as_run_command(),
