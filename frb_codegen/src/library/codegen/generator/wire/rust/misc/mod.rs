@@ -1,5 +1,6 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
+use crate::codegen::generator::wire::rust::misc::wire_func::generate_wire_func;
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::IrType;
@@ -24,6 +25,30 @@ pub(crate) fn generate(
 
     lines.push(section_header_comment("imports"));
     lines.push(generate_imports(&cache.input_and_output_types, context));
+
+    lines.push(section_header_comment("wire functions"));
+    lines += ir_pack
+        .funcs
+        .iter()
+        .map(|f| generate_wire_func(f, context))
+        .collect();
+
+    lines.push(section_header_comment("wrapper structs"));
+    lines.extend(
+        cache
+            .distinct_output_types
+            .iter()
+            .filter_map(|ty| generate_wrapper_struct(ty, context)),
+    );
+
+    lines.push(section_header_comment("static checks"));
+    lines.push(generate_static_checks(
+        &cache.input_and_output_types,
+        context,
+    ));
+
+    lines.push(section_header_comment("executor"));
+    lines.push(generate_executor(ir_pack));
 
     lines
 }
@@ -100,4 +125,16 @@ fn generate_imports(types: &[IrType], context: WireRustGeneratorContext) -> Stri
         .join("\n");
 
     imports_misc + &imports_from_types
+}
+
+fn generate_executor(ir_pack: &IrPack) -> String {
+    if ir_pack.has_executor {
+        "/* nothing since executor detected */".to_string()
+    } else {
+        format!(
+            "support::lazy_static! {{
+                pub static ref {HANDLER_NAME}: support::DefaultHandler = Default::default();
+            }}"
+        )
+    }
 }

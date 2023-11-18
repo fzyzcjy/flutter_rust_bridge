@@ -144,16 +144,4 @@ impl<'a> Generator<'a> {
         //         .filter_map(|ty| self.generate_wasm2api_func(ty, ir_pack)),
         // );
     }
-
-    fn generate_executor(&mut self, ir_pack: &IrPack) -> String {
-        if ir_pack.has_executor {
-            "/* nothing since executor detected */".to_string()
-        } else {
-            format!(
-                "support::lazy_static! {{
-                    pub static ref {HANDLER_NAME}: support::DefaultHandler = Default::default();
-                }}"
-            )
-        }
-    }
 }

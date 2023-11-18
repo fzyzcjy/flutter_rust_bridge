@@ -1,5 +1,7 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::wire::rust::base::WireRustGeneratorContext;
+use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
+use crate::codegen::generator::wire::rust::misc::section_header_comment;
+use crate::codegen::generator::wire::rust::wire2api::impl_wire2api_trait::generate_impl_wire2api;
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
 use crate::codegen::ir::pack::IrPack;
 
@@ -15,7 +17,24 @@ pub(crate) fn generate(
     cache: &IrPackComputedCache,
 ) -> Acc<Vec<String>> {
     let mut lines = Acc::<Vec<_>>::default();
-    todo!();
+
+    lines.push(section_header_comment("allocate functions"));
+    lines += cache
+        .distinct_input_types
+        .iter()
+        .map(|ty| WireRustGenerator::new(ty, context).generate_allocate_funcs())
+        .collect();
+
+    lines.push(section_header_comment("related functions"));
+    lines += cache
+        .distinct_output_types
+        .iter()
+        .map(|ty| WireRustGenerator::new(ty, context).generate_related_funcs())
+        .collect();
+
+    lines.push(section_header_comment("impl Wire2Api"));
+    lines += generate_impl_wire2api(&cache.distinct_input_types, context);
+
     lines
 }
 

@@ -17,7 +17,7 @@ use crate::misc::consts::HANDLER_NAME;
 use itertools::Itertools;
 use std::convert::TryInto;
 
-pub(crate) fn generate_wire_func(
+pub(super) fn generate_wire_func(
     func: &IrFunc,
     context: WireRustGeneratorContext,
 ) -> Acc<CodeWithExternFunc> {
