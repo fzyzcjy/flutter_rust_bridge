@@ -1,7 +1,9 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
-use crate::codegen::generator::wire::rust::wire2api::extern_func::CodeWithExternFunc;
+use crate::codegen::generator::wire::rust::wire2api::extern_func::{
+    CodeWithExternFunc, ExternFunc,
+};
 use crate::codegen::generator::wire::rust::wire2api::misc::generate_class_from_fields;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
@@ -63,21 +65,21 @@ impl<'a> WireRustGeneratorWire2apiTrait for PrimitiveListWireRustGenerator<'a> {
 
     fn generate_allocate_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
         Acc {
-            io: Some(collector.generate(
-                &format!("new_{}", self.ir.safe_ident()),
-                [("len: i32", "int")],
-                Some(&format!(
+            io: Some(ExternFunc {
+                func_name: format!("new_{}", self.ir.safe_ident()),
+                params: vec![("len: i32", "int")],
+                return_type: Some(&format!(
                     "{}{}",
                     self.ir.rust_wire_modifier(Target::Io),
                     self.ir.rust_wire_type(Target::Io)
                 )),
-                &format!(
+                body: format!(
                     "let ans = {} {{ ptr: support::new_leak_vec_ptr(Default::default(), len), len }};
                     support::new_leak_box_ptr(ans)",
                     self.ir.rust_wire_type(Target::Io),
                 ),
-                Target::Io,
-            )),
+                target: Target::Io,
+            }),
             ..Default::default()
         }
     }

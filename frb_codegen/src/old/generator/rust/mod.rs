@@ -402,9 +402,9 @@ impl<'a> Generator<'a> {
                 .join(","),
         );
         Acc::new(|target| match target {
-            Io | Wasm => self.extern_func_collector.generate(
-                &func.wire_func_name(),
-                if target == Target::Wasm {
+            Io | Wasm => ExternFunc {
+                func_name: func.wire_func_name(),
+                params: if target == Target::Wasm {
                     &params.wasm[..]
                 } else {
                     &params.io[..]
@@ -413,9 +413,9 @@ impl<'a> Generator<'a> {
                 .map(|item| (item, ""))
                 .collect_vec(),
                 return_type,
-                &redirect_body,
+                body: &redirect_body,
                 target,
-            ),
+            },
             Common => format!(
                 "fn {}_impl({}) {} {{ {} }}",
                 func.wire_func_name(),
@@ -430,5 +430,3 @@ impl<'a> Generator<'a> {
 pub fn generate_import(api_type: &IrType, ir_pack: &IrPack, config: &Opts) -> Option<String> {
     TypeRustGenerator::new(api_type.clone(), ir_pack, config).imports()
 }
-
-pub const NO_PARAMS: Option<(&str, &str)> = None;

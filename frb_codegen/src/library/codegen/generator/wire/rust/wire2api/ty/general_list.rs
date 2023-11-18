@@ -1,7 +1,9 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
-use crate::codegen::generator::wire::rust::wire2api::extern_func::CodeWithExternFunc;
+use crate::codegen::generator::wire::rust::wire2api::extern_func::{
+    CodeWithExternFunc, ExternFunc,
+};
 use crate::codegen::generator::wire::rust::wire2api::misc::generate_class_from_fields;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
@@ -76,17 +78,17 @@ pub(crate) fn generate_list_generate_allocate_func(
     inner: &IrType,
 ) -> String {
     // let wasm = false;
-    collector.generate(
-        &format!("new_{safe_ident}"),
-        [("len: i32", "int")],
-        Some(
-            &[
+    ExternFunc {
+        func_name: format!("new_{safe_ident}"),
+        params: vec![("len: i32", "int")],
+        return_type: Some(
+            [
                 list.rust_wire_modifier(Target::Io).as_str(),
                 list.rust_wire_type(Target::Io).as_str(),
             ]
             .concat(),
         ),
-        &format!(
+        body: format!(
             "let wrap = {} {{ ptr: support::new_leak_vec_ptr({}, len), len }};
                 support::new_leak_box_ptr(wrap)",
             list.rust_wire_type(Target::Io),
@@ -102,6 +104,6 @@ pub(crate) fn generate_list_generate_allocate_func(
                 )
             }
         ),
-        Io,
-    )
+        target: Target::Io,
+    }
 }

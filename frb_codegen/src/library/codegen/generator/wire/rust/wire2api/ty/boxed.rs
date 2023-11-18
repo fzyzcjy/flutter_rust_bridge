@@ -1,7 +1,10 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::misc::TargetOrCommon::*;
 use crate::codegen::generator::wire::rust::base::*;
-use crate::codegen::generator::wire::rust::wire2api::extern_func::CodeWithExternFunc;
+use crate::codegen::generator::wire::rust::wire2api::extern_func::{
+    CodeWithExternFunc, ExternFunc,
+};
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
 use crate::codegen::ir::ty::IrType;
@@ -55,30 +58,32 @@ impl<'a> WireRustGeneratorWire2apiTrait for BoxedWireRustGenerator<'a> {
         let func_name = format!("new_{}", self.ir.safe_ident());
         if self.ir.inner.is_primitive() {
             Acc {
-                io: Some(collector.generate(
-                    &func_name,
-                    [(
+                io: Some(ExternFunc {
+                    func_name,
+                    params: vec![(
                         format!("value: {}", self.ir.inner.rust_wire_type(Io)),
                         self.ir.inner.dart_wire_type(Io),
                     )],
-                    Some(&format!("*mut {}", self.ir.inner.rust_wire_type(Io))),
-                    "support::new_leak_box_ptr(value)",
-                    Io,
-                )),
+                    return_type: Some(format!("*mut {}", self.ir.inner.rust_wire_type(Io))),
+                    body: "support::new_leak_box_ptr(value)".to_owned(),
+                    target: Target::Io,
+                }),
                 ..Default::default()
             }
         } else {
             Acc {
-                io: Some(collector.generate(
-                    &func_name,
-                    NO_PARAMS,
-                    Some(&[self.ir.rust_wire_modifier(Io), self.ir.rust_wire_type(Io)].concat()),
-                    &format!(
+                io: Some(ExternFunc {
+                    func_name,
+                    params: vec![],
+                    return_type: Some(
+                        &[self.ir.rust_wire_modifier(Io), self.ir.rust_wire_type(Io)].concat(),
+                    ),
+                    body: format!(
                         "support::new_leak_box_ptr({}::new_with_null_ptr())",
                         self.ir.inner.rust_wire_type(Io)
                     ),
-                    Io,
-                )),
+                    target: Target::Io,
+                }),
                 ..Default::default()
             }
         }
