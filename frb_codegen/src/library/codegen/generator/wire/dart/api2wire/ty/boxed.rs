@@ -20,16 +20,16 @@ impl<'a> WireDartGeneratorApi2wireTrait for BoxedWireDartGenerator<'a> {
             io: Some(as_primitive.unwrap_or_else(|| {
                 if self.ir.inner.is_array() {
                     format!("return api2wire_{inner}(raw);")
-                } else if empty_struct {
-                    format!(
-                        "final ptr = inner.new_{ident}();
-                        return ptr;",
-                    )
                 } else {
                     format!(
                         "final ptr = inner.new_{ident}();
-                        _api_fill_to_wire_{inner}(raw, ptr.ref);
-                        return ptr;"
+                        {},
+                        return ptr;",
+                        if empty_struct {
+                            ""
+                        } else {
+                            format!("_api_fill_to_wire_{inner}(raw, ptr.ref);")
+                        }
                     )
                 }
             })),
