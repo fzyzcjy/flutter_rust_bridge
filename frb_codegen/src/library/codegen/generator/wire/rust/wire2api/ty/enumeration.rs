@@ -121,7 +121,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
                 };
                 Some(collector.generate(
                     &format!("inflate_{typ}"),
-                    NO_PARAMS,
+                    vec![],
                     Some(&format!("*mut {}Kind", self.ir.ident.0)),
                     &format!(
                         "support::new_leak_box_ptr({}Kind {{
@@ -138,6 +138,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
                 ))
             })
             .collect_vec();
+
         Some(CodeWithExternFunc::code(format!(
             r#"impl Default for {rust_wire_type} {{
                     fn default() -> Self {{
