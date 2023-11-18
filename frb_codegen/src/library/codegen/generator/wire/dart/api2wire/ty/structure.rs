@@ -35,7 +35,7 @@ pub(super) struct GeneralizedStructGenerator<'a> {
 }
 
 impl<'a> GeneralizedStructGenerator<'a> {
-    pub fn new(
+    pub(super) fn new(
         ir: IrTypeStructRef,
         context: WireDartGeneratorContext<'a>,
         mode: GeneralizedStructGeneratorMode,
@@ -43,7 +43,7 @@ impl<'a> GeneralizedStructGenerator<'a> {
         Self { ir, context, mode }
     }
 
-    fn api2wire_body(&self) -> Acc<Option<String>> {
+    pub(super) fn api2wire_body(&self) -> Acc<Option<String>> {
         Acc {
             wasm: self.context.config.wasm_enabled.then(|| {
                 let values = self
@@ -51,11 +51,12 @@ impl<'a> GeneralizedStructGenerator<'a> {
                     .get(self.context.ir_pack)
                     .fields
                     .iter()
-                    .map(|field| {
+                    .enumerate()
+                    .map(|(index, field)| {
                         format!(
                             "api2wire_{}(raw.{})",
                             field.ty.safe_ident(),
-                            field.name.dart_style()
+                            self.field_name_dart_style(index, field)
                         )
                     })
                     .join(",");
@@ -65,26 +66,36 @@ impl<'a> GeneralizedStructGenerator<'a> {
         }
     }
 
-    fn api_fill_to_wire_body(&self) -> Option<String> {
+    pub(super) fn api_fill_to_wire_body(&self) -> Option<String> {
         let st = self.ir.get(self.context.ir_pack);
         Some(
             st.fields
                 .iter()
-                .map(|field| Self::generate_api_fill_to_wire_body_struct_field(field))
+                .enumerate()
+                .map(|(index, field)| {
+                    self.generate_api_fill_to_wire_body_struct_field(index, field)
+                })
                 .collect_vec()
                 .join("\n"),
         )
     }
 
-    fn generate_api_fill_to_wire_body_struct_field(field: &IrField) -> String {
+    fn generate_api_fill_to_wire_body_struct_field(&self, index: usize, field: &IrField) -> String {
         let safe_ident = field.ty.safe_ident();
-        let dart_style = field.name.dart_style();
+        let dart_style = self.field_name_dart_style(index, field);
         let rust_style = field.name.rust_style();
 
         if field.ty.is_struct() {
             format!("_api_fill_to_wire_{safe_ident}(apiObj.{dart_style}, wireObj.{rust_style});")
         } else {
             format!("wireObj.{rust_style} = api2wire_{safe_ident}(apiObj.{dart_style});")
+        }
+    }
+
+    fn field_name_dart_style(&self, index: usize, field: &IrField) -> String {
+        match self.mode {
+            Struct => field.name.dart_style(),
+            GeneralizedStructGeneratorMode::Record => format!("${}", index + 1),
         }
     }
 }
