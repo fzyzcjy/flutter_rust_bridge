@@ -4,8 +4,4 @@ use super::TypeDartGeneratorTrait;
 
 type_dart_generator_struct!(TypeDynamicGenerator, IrTypeDynamic);
 
-impl TypeDartGeneratorTrait for TypeDynamicGenerator<'_> {
-    fn api2wire_body(&self) -> Acc<Option<String>> {
-        Acc::default()
-    }
-}
+impl TypeDartGeneratorTrait for TypeDynamicGenerator<'_> {}
