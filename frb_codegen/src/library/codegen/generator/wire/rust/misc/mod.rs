@@ -1,4 +1,6 @@
+use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
+use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::misc::ty::WireRustGeneratorMiscTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
@@ -9,10 +11,11 @@ mod misc;
 pub(crate) mod ty;
 pub(crate) mod wire_func;
 
-pub(crate) fn generate_wrapper_struct(
-    ty: &IrType,
-    context: WireRustGeneratorContext,
-) -> Option<String> {
+pub(crate) fn generate(ir_pack: &IrPack, context: WireRustGeneratorContext) -> Acc<Vec<String>> {
+    todo!()
+}
+
+fn generate_wrapper_struct(ty: &IrType, context: WireRustGeneratorContext) -> Option<String> {
     // the generated wrapper structs need to be public for the StreamSinkTrait impl to work
     WireRustGenerator::new(ty.clone(), context)
         .wrapper_struct_name()
@@ -28,10 +31,7 @@ pub(crate) fn generate_wrapper_struct(
         })
 }
 
-pub(crate) fn generate_static_checks(
-    types: &[IrType],
-    context: WireRustGeneratorContext,
-) -> String {
+fn generate_static_checks(types: &[IrType], context: WireRustGeneratorContext) -> String {
     let raw = types
         .iter()
         .filter_map(|ty| WireRustGenerator::new(ty.clone(), context).generate_static_checks())
@@ -48,7 +48,7 @@ pub(crate) fn generate_static_checks(
     lines.join("\n")
 }
 
-pub(crate) fn generate_imports(types: &[IrType], context: WireRustGeneratorContext) -> String {
+fn generate_imports(types: &[IrType], context: WireRustGeneratorContext) -> String {
     let rust_wire_mod = &context.config.rust_wire_mod;
     let imports_misc = format!(
         r#"

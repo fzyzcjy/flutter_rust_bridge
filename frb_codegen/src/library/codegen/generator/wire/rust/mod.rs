@@ -2,9 +2,6 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::misc::generate_code_header;
 use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
 use crate::codegen::generator::wire::rust::misc::wire_func::generate_wire_func;
-use crate::codegen::generator::wire::rust::misc::{
-    generate_imports, generate_static_checks, generate_wrapper_struct,
-};
 use crate::codegen::ir::pack::IrPack;
 use itertools::Itertools;
 
@@ -13,6 +10,14 @@ pub(crate) mod base;
 mod internal_config;
 pub(crate) mod misc;
 pub(crate) mod wire2api;
+
+pub(crate) fn generate(ir_pack: &IrPack, context: WireRustGeneratorContext) -> Acc<String> {
+    let mut lines = Acc::<Vec<_>>::default();
+    lines += misc::generate(ir_pack, context);
+    lines += wire2api::generate(ir_pack, context);
+    lines += api2wire::generate(ir_pack, context);
+    lines.join("\n")
+}
 
 // TODO
 // pub(crate) fn generate(ir_pack: &IrPack, context: WireRustGeneratorContext) -> Acc<String> {

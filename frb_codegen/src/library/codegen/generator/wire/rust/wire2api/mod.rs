@@ -1,8 +1,16 @@
+use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::wire::rust::base::WireRustGeneratorContext;
+use crate::codegen::ir::pack::IrPack;
+
 pub(super) mod extern_func;
 mod impl_new_with_nullptr;
 mod impl_wire2api_trait;
 mod misc;
 pub(crate) mod ty;
+
+pub(crate) fn generate(ir_pack: &IrPack, context: WireRustGeneratorContext) -> Acc<Vec<String>> {
+    todo!()
+}
 
 // TODO rm, since no longer have explicit SyncReturn type?
 // pub(crate) fn generate_sync_execution_mode_utility() -> CodeWithExternFunc {
