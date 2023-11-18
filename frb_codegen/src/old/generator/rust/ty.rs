@@ -6,19 +6,11 @@ use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
 pub trait TypeRustGeneratorTrait {
-    fn generate_allocate_funcs(
-        &self,
-        _collector: &mut ExternFuncCollector,
-        _block_index: BlockIndex,
-    ) -> Acc<Option<String>> {
+    fn generate_allocate_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
         Acc::default()
     }
 
-    fn generate_related_funcs(
-        &self,
-        _collector: &mut ExternFuncCollector,
-        _block_index: BlockIndex,
-    ) -> Acc<Option<String>> {
+    fn generate_related_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
         Acc::default()
     }
 

@@ -10,11 +10,7 @@ use super::TypeGeneralListGenerator;
 type_rust_generator_struct!(TypeOptionalListGenerator, IrTypeOptionalList);
 
 impl TypeRustGeneratorTrait for TypeOptionalListGenerator<'_> {
-    fn generate_allocate_funcs(
-        &self,
-        collector: &mut super::ExternFuncCollector,
-        block_index: crate::utils::misc::BlockIndex,
-    ) -> Acc<Option<String>> {
+    fn generate_allocate_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
         Acc {
             io: Some(collector.generate(
                 &format!("new_{}_{}", self.ir.safe_ident(), block_index),

@@ -11,11 +11,7 @@ use super::{ExternFuncCollector, NO_PARAMS};
 type_rust_generator_struct!(TypeDartOpaqueGenerator, IrTypeDartOpaque);
 
 impl TypeRustGeneratorTrait for TypeDartOpaqueGenerator<'_> {
-    fn generate_allocate_funcs(
-        &self,
-        collector: &mut ExternFuncCollector,
-        _block_index: BlockIndex,
-    ) -> Acc<Option<String>> {
+    fn generate_allocate_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
         let rust_wire = self.ir.rust_wire_type(crate::target::Target::Io);
 
         Acc {

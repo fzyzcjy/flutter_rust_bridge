@@ -12,11 +12,7 @@ use super::generate_impl_into_into_dart;
 type_rust_generator_struct!(TypeDelegateGenerator, IrTypeDelegate);
 
 impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
-    fn generate_allocate_funcs(
-        &self,
-        collector: &mut ExternFuncCollector,
-        _: BlockIndex,
-    ) -> Acc<Option<String>> {
+    fn generate_allocate_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
         match &self.ir {
             list @ IrTypeDelegate::StringList => Acc {
                 io: Some(generate_list_allocate_func(

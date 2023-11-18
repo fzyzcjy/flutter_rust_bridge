@@ -9,11 +9,7 @@ use crate::utils::misc::BlockIndex;
 type_rust_generator_struct!(TypePrimitiveListGenerator, IrTypePrimitiveList);
 
 impl TypeRustGeneratorTrait for TypePrimitiveListGenerator<'_> {
-    fn generate_allocate_funcs(
-        &self,
-        collector: &mut ExternFuncCollector,
-        block_index: BlockIndex,
-    ) -> Acc<Option<String>> {
+    fn generate_allocate_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
         Acc {
             io: Some(collector.generate(
                 &format!("new_{}_{}", self.ir.safe_ident(), block_index),
