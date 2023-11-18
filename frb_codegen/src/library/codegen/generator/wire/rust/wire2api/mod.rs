@@ -1,9 +1,8 @@
-mod extern_func;
+pub(super) mod extern_func;
 mod impl_new_with_nullptr;
 mod impl_wire2api_trait;
 mod misc;
 pub(crate) mod ty;
-mod wire_func;
 
 // TODO rm, since no longer have explicit SyncReturn type?
 // pub(crate) fn generate_sync_execution_mode_utility() -> CodeWithExternFunc {
