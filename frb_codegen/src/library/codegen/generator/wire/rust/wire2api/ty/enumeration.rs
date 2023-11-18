@@ -2,7 +2,7 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
-use crate::codegen::ir::ty::enumeration::{IrEnumMode, IrVariant, IrVariantKind};
+use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumMode, IrVariant, IrVariantKind};
 use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
 use itertools::Itertools;
 
@@ -49,54 +49,17 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
             if matches!(target, TargetOrCommon::Common) {
                 return None;
             }
+
             let wasm = target == TargetOrCommon::Wasm;
-            let mut variants =
-                (enu.variants())
-                    .iter()
-                    .enumerate()
-                    .map(|(idx, variant)| match &variant.kind {
-                        IrVariantKind::Value => {
-                            format!("{} => {}::{},", idx, enu.name, variant.name.raw)
-                        }
-                        IrVariantKind::Struct(st) => {
-                            let mut fields = (st.fields).iter().enumerate().map(|(idx, field)| {
-                                let field_name = field.name.rust_style();
-                                let field_ = if st.is_fields_named {
-                                    format!("{field_name}: ")
-                                } else {
-                                    String::new()
-                                };
+            let variants = enu
+                .variants()
+                .iter()
+                .enumerate()
+                .map(|(idx, variant)| {
+                    generate_impl_wire2api_body_variant(enu, target, idx, variant)
+                })
+                .join("\n");
 
-                                if target != TargetOrCommon::Wasm {
-                                    format!("{field_} ans.{field_name}.wire2api()")
-                                } else {
-                                    format!("{field_} self_.get({}).wire2api()", idx + 1)
-                                }
-                            });
-
-                            let (left, right) = st.brackets_pair();
-                            if target == TargetOrCommon::Wasm {
-                                format!(
-                                    "{idx} => {{
-                                        {enum_name}::{variant_name}{left}{fields}{right} }},",
-                                    enum_name = enu.name,
-                                    variant_name = variant.name.raw,
-                                    fields = fields.join(",")
-                                )
-                            } else {
-                                format!(
-                                    "{idx} => unsafe {{
-                                        let ans = support::box_from_leak_ptr(self.kind);
-                                        let ans = support::box_from_leak_ptr(ans.{variant_name});
-                                        {enum_name}::{variant_name}{left}{fields}{right}
-                                    }}",
-                                    enum_name = enu.name,
-                                    variant_name = variant.name.raw,
-                                    fields = fields.join(",")
-                                )
-                            }
-                        }
-                    });
             Some(format!(
                 "{}
                 match self{} {{
@@ -113,7 +76,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
                 } else {
                     ".tag"
                 },
-                variants.join("\n"),
+                variants,
             ))
         })
     }
@@ -146,5 +109,55 @@ impl<'a> EnumRefWireRustGenerator<'a> {
             variant.name.raw,
             fields.join("\n")
         )
+    }
+}
+
+fn generate_impl_wire2api_body_variant(
+    enu: &IrEnum,
+    target: TargetOrCommon,
+    idx: usize,
+    variant: &IrVariant,
+) -> String {
+    match &variant.kind {
+        IrVariantKind::Value => {
+            format!("{} => {}::{},", idx, enu.name, variant.name.raw)
+        }
+        IrVariantKind::Struct(st) => {
+            let fields = st
+                .fields
+                .iter()
+                .enumerate()
+                .map(|(idx, field)| {
+                    let field_name = field.name.rust_style();
+                    let field_ = if st.is_fields_named {
+                        format!("{field_name}: ")
+                    } else {
+                        String::new()
+                    };
+
+                    if target != TargetOrCommon::Wasm {
+                        format!("{field_} ans.{field_name}.wire2api()")
+                    } else {
+                        format!("{field_} self_.get({}).wire2api()", idx + 1)
+                    }
+                })
+                .join(",");
+
+            let (left, right) = st.brackets_pair();
+            let enum_name = &enu.name;
+            let variant_name = &variant.name.raw;
+
+            if target == TargetOrCommon::Wasm {
+                format!("{idx} => {{ {enum_name}::{variant_name}{left}{fields}{right} }},")
+            } else {
+                format!(
+                    "{idx} => unsafe {{
+                        let ans = support::box_from_leak_ptr(self.kind);
+                        let ans = support::box_from_leak_ptr(ans.{variant_name});
+                        {enum_name}::{variant_name}{left}{fields}{right}
+                    }}",
+                )
+            }
+        }
     }
 }
