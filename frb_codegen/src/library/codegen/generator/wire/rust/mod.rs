@@ -1,8 +1,8 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::misc::generate_code_header;
 use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
-use crate::codegen::generator::wire::rust::common::wire_func::generate_wire_func;
-use crate::codegen::generator::wire::rust::common::{
+use crate::codegen::generator::wire::rust::misc::wire_func::generate_wire_func;
+use crate::codegen::generator::wire::rust::misc::{
     generate_imports, generate_static_checks, generate_wrapper_struct,
 };
 use crate::codegen::ir::pack::IrPack;
@@ -10,8 +10,8 @@ use itertools::Itertools;
 
 pub(crate) mod api2wire;
 pub(crate) mod base;
-pub(crate) mod common;
 mod internal_config;
+pub(crate) mod misc;
 pub(crate) mod wire2api;
 
 // TODO

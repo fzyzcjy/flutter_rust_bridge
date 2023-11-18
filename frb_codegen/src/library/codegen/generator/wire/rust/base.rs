@@ -24,7 +24,7 @@ use paste::paste;
 #[enum_dispatch(WireRustGeneratorImplTrait)]
 #[enum_dispatch(WireRustGeneratorApi2wireTrait)]
 #[enum_dispatch(WireRustGeneratorWire2apiTrait)]
-#[enum_dispatch(WireRustGeneratorCommonTrait)]
+#[enum_dispatch(WireRustGeneratorMiscTrait)]
 pub(crate) enum WireRustGenerator<'a> {
     Boxed(BoxedWireRustGenerator<'a>),
     DartOpaque(DartOpaqueWireRustGenerator<'a>),

@@ -1,9 +1,9 @@
 use crate::codegen::generator::misc::{is_js_value, Target};
 use crate::codegen::generator::wire::rust::base::*;
-use crate::codegen::generator::wire::rust::common::misc::JS_VALUE;
-use crate::codegen::generator::wire::rust::common::ty::WireRustGeneratorCommonTrait;
+use crate::codegen::generator::wire::rust::misc::misc::JS_VALUE;
+use crate::codegen::generator::wire::rust::misc::ty::WireRustGeneratorMiscTrait;
 
-impl<'a> WireRustGeneratorCommonTrait for BoxedWireRustGenerator<'a> {
+impl<'a> WireRustGeneratorMiscTrait for BoxedWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         if target == Target::Wasm && self.ir.inner.is_primitive() {
             JS_VALUE.into()

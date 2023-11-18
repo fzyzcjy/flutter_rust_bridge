@@ -1,8 +1,8 @@
 use crate::codegen::generator::misc::{is_js_value, Target};
 use crate::codegen::generator::wire::rust::base::*;
-use crate::codegen::generator::wire::rust::common::ty::WireRustGeneratorCommonTrait;
+use crate::codegen::generator::wire::rust::misc::ty::WireRustGeneratorMiscTrait;
 
-impl<'a> WireRustGeneratorCommonTrait for OptionalWireRustGenerator<'a> {
+impl<'a> WireRustGeneratorMiscTrait for OptionalWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
         let inner_generator = WireRustGenerator::new(self.ir.inner.clone(), self.context);
 

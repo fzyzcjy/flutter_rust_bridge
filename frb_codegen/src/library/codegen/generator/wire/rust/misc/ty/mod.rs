@@ -19,7 +19,7 @@ use crate::codegen::generator::misc::Target;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
-pub(crate) trait WireRustGeneratorCommonTrait {
+pub(crate) trait WireRustGeneratorMiscTrait {
     fn rust_wire_type(&self, target: Target) -> String;
 
     fn rust_wire_modifier(&self, target: Target) -> String {

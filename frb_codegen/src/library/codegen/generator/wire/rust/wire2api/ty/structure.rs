@@ -6,7 +6,7 @@ use crate::codegen::generator::wire::rust::wire2api::impl_new_with_nullptr::gene
 use crate::codegen::generator::wire::rust::wire2api::misc::generate_class_from_fields;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
-use crate::library::codegen::generator::wire::rust::common::ty::WireRustGeneratorCommonTrait;
+use crate::library::codegen::generator::wire::rust::misc::ty::WireRustGeneratorMiscTrait;
 use itertools::Itertools;
 
 impl<'a> WireRustGeneratorWire2apiTrait for StructRefWireRustGenerator<'a> {

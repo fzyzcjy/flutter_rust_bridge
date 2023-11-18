@@ -1,6 +1,6 @@
 use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
 use crate::codegen::ir::ty::IrType;
-use crate::library::codegen::generator::wire::rust::common::ty::WireRustGeneratorCommonTrait;
+use crate::library::codegen::generator::wire::rust::misc::ty::WireRustGeneratorMiscTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 use std::collections::HashSet;

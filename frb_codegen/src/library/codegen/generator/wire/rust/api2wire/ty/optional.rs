@@ -1,6 +1,6 @@
 use crate::codegen::generator::wire::rust::api2wire::ty::WireRustGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::rust::base::*;
-use crate::library::codegen::generator::wire::rust::common::ty::WireRustGeneratorCommonTrait;
+use crate::library::codegen::generator::wire::rust::misc::ty::WireRustGeneratorMiscTrait;
 
 impl<'a> WireRustGeneratorApi2wireTrait for OptionalWireRustGenerator<'a> {
     fn generate_convert_to_dart(&self, obj: String) -> String {

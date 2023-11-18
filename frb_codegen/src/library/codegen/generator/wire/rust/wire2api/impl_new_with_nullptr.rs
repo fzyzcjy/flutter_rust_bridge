@@ -2,7 +2,7 @@ use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
 use crate::codegen::generator::wire::rust::wire2api::extern_func::CodeWithExternFunc;
 use crate::codegen::ir::ty::IrType;
-use crate::library::codegen::generator::wire::rust::common::ty::WireRustGeneratorCommonTrait;
+use crate::library::codegen::generator::wire::rust::misc::ty::WireRustGeneratorMiscTrait;
 use crate::library::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use itertools::Itertools;
 
