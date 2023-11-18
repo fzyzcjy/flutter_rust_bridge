@@ -1,13 +1,14 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
+use crate::codegen::generator::wire::rust::extern_func::WireRustCode;
 use crate::codegen::generator::wire::rust::misc::section_header_comment;
-use crate::codegen::generator::wire::rust::wire2api::extern_func::WireRustCode;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::IrType;
 use itertools::Itertools;
 
 pub(crate) mod api2wire;
 pub(crate) mod base;
+pub(in crate::library::codegen::generator::wire::rust) mod extern_func;
 mod internal_config;
 pub(crate) mod misc;
 pub(crate) mod wire2api;

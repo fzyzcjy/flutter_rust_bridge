@@ -1,7 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
-use crate::codegen::generator::wire::rust::wire2api::extern_func::{
+use crate::codegen::generator::wire::rust::extern_func::{
     ExternFunc, ExternFuncParam, WireRustCode,
 };
 use crate::codegen::generator::wire::rust::wire2api::impl_new_with_nullptr::generate_impl_new_with_nullptr_code_block;

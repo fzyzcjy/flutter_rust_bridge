@@ -3,7 +3,7 @@ use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::misc::TargetOrCommon::*;
 use crate::codegen::generator::wire::dart::base::{WireDartGenerator, WireDartGeneratorContext};
 use crate::codegen::generator::wire::rust::base::*;
-use crate::codegen::generator::wire::rust::wire2api::extern_func::{
+use crate::codegen::generator::wire::rust::extern_func::{
     ExternFunc, ExternFuncParam, WireRustCode,
 };
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;

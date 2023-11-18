@@ -1,14 +1,13 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
+use crate::codegen::generator::wire::rust::extern_func::WireRustCode;
 use crate::codegen::generator::wire::rust::misc::section_header_comment;
-use crate::codegen::generator::wire::rust::wire2api::extern_func::WireRustCode;
 use crate::codegen::generator::wire::rust::wire2api::impl_new_with_nullptr::generate_impl_new_with_nullptr;
 use crate::codegen::generator::wire::rust::wire2api::impl_wire2api_trait::generate_impl_wire2api;
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
 use crate::codegen::ir::pack::IrPack;
 use crate::library::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 
-pub(super) mod extern_func;
 mod impl_new_with_nullptr;
 mod impl_wire2api_trait;
 mod misc;

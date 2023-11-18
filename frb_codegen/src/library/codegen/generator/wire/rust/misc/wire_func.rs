@@ -2,9 +2,8 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
-use crate::codegen::generator::wire::rust::wire2api::extern_func::{
-    ExternFunc, ExternFuncParam, WireRustCode,
-};
+use crate::codegen::generator::wire::rust::extern_func::WireRustCode;
+use crate::codegen::generator::wire::rust::extern_func::{ExternFunc, ExternFuncParam};
 use crate::codegen::ir::func::IrFuncOwnerInfoMethodMode::Instance;
 use crate::codegen::ir::func::{
     IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,

@@ -17,7 +17,7 @@ mod structure;
 mod unencodable;
 
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::wire::rust::wire2api::extern_func::WireRustCode;
+use crate::codegen::generator::wire::rust::extern_func::WireRustCode;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
