@@ -38,7 +38,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for GeneralListWireRustGenerator<'a> {
             io: Some(
                 generate_list_generate_allocate_func(
                     &self.ir.safe_ident(),
-                    &self.ir.into(),
+                    &self.ir.clone().into(),
                     &self.ir.inner,
                     &self.context,
                 )

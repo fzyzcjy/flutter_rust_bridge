@@ -1,6 +1,8 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::api_dart::base::ApiDartGenerator;
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::misc::TargetOrCommon::*;
+use crate::codegen::generator::wire::dart::base::{WireDartGenerator, WireDartGeneratorContext};
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::wire2api::extern_func::{
     CodeWithExternFunc, ExternFunc, ExternFuncParam,
@@ -8,6 +10,7 @@ use crate::codegen::generator::wire::rust::wire2api::extern_func::{
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
 use crate::codegen::ir::ty::IrType;
+use crate::library::codegen::generator::wire::dart::info::WireDartGeneratorInfoTrait;
 use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
@@ -69,7 +72,15 @@ impl<'a> WireRustGeneratorWire2apiTrait for BoxedWireRustGenerator<'a> {
                                 self.context.clone(),
                             )
                             .rust_wire_type(Target::Io),
-                            dart_type: self.ir.inner.dart_wire_type(Io),
+                            dart_type: Some(
+                                WireDartGenerator::new(
+                                    *self.ir.inner.clone(),
+                                    WireDartGeneratorContext {
+                                        ir_pack: &self.context.ir_pack,
+                                    },
+                                )
+                                .dart_wire_type(Target::Io),
+                            ),
                         }],
                         return_type: Some(format!(
                             "*mut {}",
