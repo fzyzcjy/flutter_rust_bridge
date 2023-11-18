@@ -84,7 +84,7 @@ impl<'a> EnumRefWireDartGenerator<'a> {
     }
 }
 
-fn generate_api2wire_body_variant(idx: usize, variant: &&IrVariant) -> String {
+fn generate_api2wire_body_variant(index: usize, variant: &&IrVariant) -> String {
     let fields = match &variant.kind {
         IrVariantKind::Value => vec![],
         IrVariantKind::Struct(st) => (st.fields)
@@ -101,10 +101,8 @@ fn generate_api2wire_body_variant(idx: usize, variant: &&IrVariant) -> String {
     .join("");
     format!(
         "if (raw is {variant}) {{
-                        return [{} {}];
-                    }}",
-        idx,
-        fields,
+            return [{index} {fields}];
+        }}",
         variant = variant.wrapper_name.rust_style(),
     )
 }
