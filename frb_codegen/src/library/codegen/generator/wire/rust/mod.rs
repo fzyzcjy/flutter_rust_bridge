@@ -15,6 +15,7 @@ mod internal_config;
 pub(crate) mod misc;
 mod output_code;
 pub(crate) mod wire2api;
+mod writer;
 
 pub(crate) struct WireRustOutputSpec {
     misc: WireRustOutputSpecMisc,
@@ -24,8 +25,7 @@ pub(crate) struct WireRustOutputSpec {
 
 pub(crate) fn generate(ir_pack: &IrPack, context: WireRustGeneratorContext) -> anyhow::Result<()> {
     let spec = generate_spec(ir_pack, context);
-    todo!();
-    Ok(())
+    writer::write(spec)
 }
 
 fn generate_spec(ir_pack: &IrPack, context: WireRustGeneratorContext) -> WireRustOutputSpec {

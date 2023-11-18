@@ -58,13 +58,3 @@ impl Output {
             .collect_vec()
     }
 }
-
-pub fn generate(ir_pack: &IrPack, rust_wire_mod: &str, config: &Opts) -> Output {
-    let code = generate(ir_pack, rust_wire_mod);
-
-    Output {
-        code,
-        extern_func_names: generator.extern_func_collector.names,
-        wasm_exports: generator.extern_func_collector.wasm_exports,
-    }
-}

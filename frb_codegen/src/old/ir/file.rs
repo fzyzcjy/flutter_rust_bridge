@@ -19,14 +19,6 @@ impl IrPack {
         c_struct_names
     }
 
-    pub fn generate_rust(&self, config: &Opts) -> generator::rust::Output {
-        generator::rust::generate(
-            self,
-            &mod_from_rust_path(&config.rust_input_path, &config.rust_crate_dir),
-            config,
-        )
-    }
-
     pub fn generate_dart(
         &self,
         config: &Opts,
