@@ -123,7 +123,7 @@ pub(crate) fn generate_api_func(
         func_expr,
         prepare_args.join("\n"),
         execute_func_name,
-        func.wire_func_name(),
+        wire_func_name(func),
         wire_param_list.join(", "),
         parse_success_data,
         parse_error_data,

@@ -28,10 +28,11 @@ pub(crate) fn generate_wire_func(
     let handler_func_name = generate_handler_func_name(func, ir_pack);
     let return_type = generate_return_type(func);
     let code_closure = generate_code_closure(func, &code_wire2api, &code_call_inner_func_result);
+    let func_name = wire_func_name(func);
 
     Acc::new(|target| match target {
         TargetOrCommon::Io | TargetOrCommon::Wasm => ExternFunc {
-            func_name: func.wire_func_name(),
+            func_name,
             params: params[target].clone(),
             return_type,
             body: generate_redirect_body(func),
@@ -39,8 +40,7 @@ pub(crate) fn generate_wire_func(
         }
         .into(),
         TargetOrCommon::Common => format!(
-            "fn {name}_impl({params}) {return_type} {{ {body} }}",
-            name = func.wire_func_name(),
+            "fn {func_name}_impl({params}) {return_type} {{ {body} }}",
             params = params.common.join(","),
             return_type = return_type.map(|t| format!("-> {t}")).unwrap_or_default(),
             body = format!(
@@ -207,7 +207,7 @@ fn generate_code_closure(
 fn generate_redirect_body(func: &IrFunc) -> String {
     format!(
         "{}_impl({})",
-        func.wire_func_name(),
+        wire_func_name(func),
         func.mode
             .has_port_argument()
             .then_some("port_")
@@ -215,4 +215,8 @@ fn generate_redirect_body(func: &IrFunc) -> String {
             .chain(func.inputs.iter().map(|arg| arg.name.rust_style()))
             .join(","),
     )
+}
+
+fn wire_func_name(func: &IrFunc) -> String {
+    format!("wire_{}", func.name)
 }

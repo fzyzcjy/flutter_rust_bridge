@@ -21,7 +21,7 @@ pub struct IrParam {
 impl IrFuncDisplay {
     pub fn from_ir(func: &IrFunc, target: Target) -> Self {
         Self {
-            name: func.wire_func_name(),
+            name: wire_func_name(func),
             has_port_argument: func.mode.has_port_argument(),
             inputs: (func.mode.has_port_argument())
                 .then(|| IrParam {
@@ -40,12 +40,6 @@ impl IrFuncDisplay {
                 func.output.dart_wire_type(target)
             },
         }
-    }
-}
-
-impl IrFunc {
-    pub fn wire_func_name(&self) -> String {
-        format!("wire_{}", self.name)
     }
 }
 
