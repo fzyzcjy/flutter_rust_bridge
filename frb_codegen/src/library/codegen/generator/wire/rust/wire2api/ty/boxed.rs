@@ -3,7 +3,7 @@ use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::misc::TargetOrCommon::*;
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::wire2api::extern_func::{
-    CodeWithExternFunc, ExternFunc,
+    CodeWithExternFunc, ExternFunc, ExternFuncParam,
 };
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
@@ -61,14 +61,15 @@ impl<'a> WireRustGeneratorWire2apiTrait for BoxedWireRustGenerator<'a> {
             Acc {
                 io: Some(ExternFunc {
                     func_name,
-                    params: vec![(
-                        format!(
-                            "value: {}",
-                            WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone())
-                                .rust_wire_type(Target::Io)
-                        ),
-                        self.ir.inner.dart_wire_type(Io),
-                    )],
+                    params: vec![ExternFuncParam {
+                        name: "value".to_owned(),
+                        rust_type: WireRustGenerator::new(
+                            *self.ir.inner.clone(),
+                            self.context.clone(),
+                        )
+                        .rust_wire_type(Target::Io),
+                        dart_type: self.ir.inner.dart_wire_type(Io),
+                    }],
                     return_type: Some(format!(
                         "*mut {}",
                         WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone())

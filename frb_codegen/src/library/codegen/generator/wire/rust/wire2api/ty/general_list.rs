@@ -2,7 +2,7 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::wire2api::extern_func::{
-    CodeWithExternFunc, ExternFunc,
+    CodeWithExternFunc, ExternFunc, ExternFuncParam,
 };
 use crate::codegen::generator::wire::rust::wire2api::misc::generate_class_from_fields;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
@@ -84,7 +84,11 @@ pub(crate) fn generate_list_generate_allocate_func(
     // let wasm = false;
     ExternFunc {
         func_name: format!("new_{safe_ident}"),
-        params: vec![("len: i32", "int")],
+        params: vec![ExternFuncParam {
+            name: "len".to_owned(),
+            rust_type: "i32".to_owned(),
+            dart_type: Some("int".to_owned()),
+        }],
         return_type: Some(
             [
                 list_generator.rust_wire_modifier(Target::Io).as_str(),

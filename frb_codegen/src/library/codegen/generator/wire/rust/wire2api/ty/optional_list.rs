@@ -2,7 +2,7 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::wire2api::extern_func::{
-    CodeWithExternFunc, ExternFunc,
+    CodeWithExternFunc, ExternFunc, ExternFuncParam,
 };
 use crate::codegen::generator::wire::rust::wire2api::misc::generate_class_from_fields;
 use crate::codegen::generator::wire::rust::wire2api::ty::general_list::general_list_impl_wire2api_body;
@@ -34,7 +34,11 @@ impl<'a> WireRustGeneratorWire2apiTrait for OptionalListWireRustGenerator<'a> {
         Acc {
             io: Some(ExternFunc {
                 func_name: format!("new_{}", self.ir.safe_ident()),
-                params: vec![("len: i32", "int")],
+                params: vec![ExternFuncParam {
+                    name: "len".to_owned(),
+                    rust_type: "i32".to_owned(),
+                    dart_type: Some("int".to_owned()),
+                }],
                 return_type:  Some(format!("*mut {}", self.rust_wire_type(Target::Io))),
                 body: format!(
                     "let wrap = {} {{ ptr: support::new_leak_vec_ptr(core::ptr::null_mut(), len), len }};

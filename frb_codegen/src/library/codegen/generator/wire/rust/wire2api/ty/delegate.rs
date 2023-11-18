@@ -10,6 +10,7 @@ use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2a
 use crate::codegen::ir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
 };
+use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
@@ -128,7 +129,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
             list @ IrTypeDelegate::StringList => Acc {
                 io: Some(generate_list_generate_allocate_func(
                     &self.ir.safe_ident(),
-                    list.into(),
+                    &IrType::Delegate(list.clone()),
                     &list.get_delegate(),
                     &self.context,
                 )),

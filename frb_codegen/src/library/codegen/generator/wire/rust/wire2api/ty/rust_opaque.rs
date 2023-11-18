@@ -2,7 +2,7 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::wire2api::extern_func::{
-    CodeWithExternFunc, ExternFunc,
+    CodeWithExternFunc, ExternFunc, ExternFuncParam,
 };
 use crate::codegen::generator::wire::rust::wire2api::impl_new_with_nullptr::generate_impl_new_with_nullptr_code_block;
 use crate::codegen::generator::wire::rust::wire2api::misc::generate_class_from_fields;
@@ -81,7 +81,11 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
             [
                 ExternFunc {
                     func_name: format!("drop_opaque_{}", self.ir.safe_ident()),
-                    params: vec![("ptr: *const c_void", "")],
+                    params: vec![ExternFuncParam {
+                        name: "ptr".to_owned(),
+                        rust_type: "*const c_void".to_owned(),
+                        dart_type: None,
+                    }],
                     return_type: None,
                     body: format!(
                         "unsafe {{Arc::<{}>::decrement_strong_count(ptr as _);}}",
@@ -91,8 +95,12 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
                 },
                 ExternFunc {
                     func_name: format!("share_opaque_{}", self.ir.safe_ident()),
-                    params: vec![("ptr: *const c_void", "")],
-                    return_type: Some("*const c_void"),
+                    params: vec![ExternFuncParam {
+                        name: "ptr".to_owned(),
+                        rust_type: "*const c_void".to_owned(),
+                        dart_type: None,
+                    }],
+                    return_type: Some("*const c_void".to_string()),
                     body: format!(
                         "unsafe {{Arc::<{}>::increment_strong_count(ptr as _); ptr}}",
                         self.ir.inner.rust_api_type()
