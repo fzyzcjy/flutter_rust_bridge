@@ -1,5 +1,7 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
+use crate::codegen::generator::wire::rust::wire2api::extern_func::CodeWithExternFunc;
 use crate::codegen::generator::wire::rust::wire2api::misc::generate_class_from_fields;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 
@@ -22,5 +24,16 @@ impl<'a> WireRustGeneratorWire2apiTrait for DartOpaqueWireRustGenerator<'a> {
             ),
             ..Default::default()
         }
+    }
+
+    fn generate_impl_new_with_nullptr(&self) -> Option<CodeWithExternFunc> {
+        format!(
+            "impl NewWithNullPtr for {} {{
+                fn new_with_null_ptr() -> Self {{
+                    Self {{ port: 0, handle: 0 }}
+                }}
+            }}",
+            self.ir.rust_wire_type(Target::Io)
+        )
     }
 }

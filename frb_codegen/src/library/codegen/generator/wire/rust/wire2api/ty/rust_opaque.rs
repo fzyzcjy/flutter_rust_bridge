@@ -39,4 +39,15 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
             .into(),
         )
     }
+
+    fn generate_impl_new_with_nullptr(&self) -> Option<CodeWithExternFunc> {
+        format!(
+            "impl NewWithNullPtr for {} {{
+                fn new_with_null_ptr() -> Self {{
+                    Self {{ ptr: core::ptr::null() }}
+                }}
+            }}",
+            self.ir.rust_wire_type(crate::target::Target::Io)
+        )
+    }
 }

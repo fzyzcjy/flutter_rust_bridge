@@ -1,6 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::rust::base::*;
+use crate::codegen::generator::wire::rust::wire2api::extern_func::CodeWithExternFunc;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumMode, IrVariant, IrVariantKind};
 use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
@@ -79,6 +80,73 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
                 variants,
             ))
         })
+    }
+
+    fn generate_impl_new_with_nullptr(&self) -> Option<CodeWithExternFunc> {
+        fn init_of(ty: &IrType) -> String {
+            if ty.rust_wire_is_pointer(Io) {
+                "core::ptr::null_mut()".to_owned()
+            } else if ty.is_rust_opaque() || ty.is_dart_opaque() {
+                format!("{}::new_with_null_ptr()", ty.rust_wire_type(Io))
+            } else {
+                "Default::default()".to_owned()
+            }
+        }
+
+        let src = self.ir.get(self.context.ir_pack);
+
+        let inflators = src
+            .variants()
+            .iter()
+            .filter_map(|variant| {
+                let typ = format!("{}_{}", self.ir.name, variant.name);
+                let body = if let IrVariantKind::Struct(st) = &variant.kind {
+                    st.fields
+                        .iter()
+                        .map(|field| format!("{}: {}", field.name.rust_style(), init_of(&field.ty)))
+                        .collect_vec()
+                } else {
+                    return None;
+                };
+                Some(collector.generate(
+                    &format!("inflate_{typ}"),
+                    NO_PARAMS,
+                    Some(&format!("*mut {}Kind", self.ir.name)),
+                    &format!(
+                        "support::new_leak_box_ptr({}Kind {{
+                            {}: support::new_leak_box_ptr({} {{
+                                {}
+                            }})
+                        }})",
+                        self.ir.name,
+                        variant.name.rust_style(),
+                        format_args!("wire_{typ}"),
+                        body.join(",")
+                    ),
+                    Io,
+                ))
+            })
+            .collect_vec();
+        format!(
+            r#"impl Default for {} {{
+                    fn default() -> Self {{
+                        Self::new_with_null_ptr()
+                    }}
+                }}
+
+                impl NewWithNullPtr for {} {{
+                fn new_with_null_ptr() -> Self {{
+                    Self {{
+                        tag: -1,
+                        kind: core::ptr::null_mut(),
+                    }}
+                }}
+            }}
+            {}"#,
+            self.ir.rust_wire_type(Io),
+            self.ir.rust_wire_type(Io),
+            inflators.join("\n\n")
+        )
     }
 }
 

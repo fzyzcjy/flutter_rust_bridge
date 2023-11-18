@@ -31,4 +31,9 @@ impl<'a> WireRustGeneratorWire2apiTrait for RecordWireRustGenerator<'a> {
             ..Default::default()
         }
     }
+
+    fn generate_impl_new_with_nullptr(&self) -> Option<CodeWithExternFunc> {
+        self.as_struct_generator()
+            .generate_impl_new_with_nullptr(collector)
+    }
 }

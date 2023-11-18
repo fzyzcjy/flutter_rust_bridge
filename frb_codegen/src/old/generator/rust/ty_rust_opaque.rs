@@ -69,15 +69,4 @@ impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
             ..Default::default()
         }
     }
-
-    fn generate_impl_new_with_nullptr(&self, _collector: &mut ExternFuncCollector) -> String {
-        format!(
-            "impl NewWithNullPtr for {} {{
-                fn new_with_null_ptr() -> Self {{
-                    Self {{ ptr: core::ptr::null() }}
-                }}
-            }}",
-            self.ir.rust_wire_type(crate::target::Target::Io)
-        )
-    }
 }

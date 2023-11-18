@@ -72,4 +72,48 @@ impl<'a> WireRustGeneratorWire2apiTrait for StructRefWireRustGenerator<'a> {
             ..Default::default()
         }
     }
+
+    fn generate_impl_new_with_nullptr(&self) -> Option<CodeWithExternFunc> {
+        let src = self.ir.get(self.context.ir_pack);
+
+        let body = {
+            src.fields
+                .iter()
+                .map(|field| {
+                    format!(
+                        "{}: {},",
+                        field.name.rust_style(),
+                        if field.ty.rust_wire_is_pointer(Target::Io) {
+                            "core::ptr::null_mut()".to_owned()
+                        } else if field.ty.is_rust_opaque() || field.ty.is_dart_opaque() {
+                            format!(
+                                "{}::new_with_null_ptr()",
+                                field.ty.rust_wire_type(Target::Io)
+                            )
+                        } else {
+                            "Default::default()".to_owned()
+                        }
+                    )
+                })
+                .collect_vec()
+                .join("\n")
+        };
+        format!(
+            r#"impl NewWithNullPtr for {} {{
+                    fn new_with_null_ptr() -> Self {{
+                        Self {{ {} }}
+                    }}
+                }}
+
+                impl Default for {} {{
+                    fn default() -> Self {{
+                        Self::new_with_null_ptr()
+                    }}
+                }}
+            "#,
+            self.ir.rust_wire_type(Target::Io),
+            body,
+            self.ir.rust_wire_type(Target::Io),
+        )
+    }
 }
