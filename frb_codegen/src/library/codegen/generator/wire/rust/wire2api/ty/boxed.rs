@@ -11,14 +11,10 @@ impl<'a> WireRustGeneratorWire2apiTrait for BoxedWireRustGenerator<'a> {
         let box_inner = self.ir.inner.as_ref();
         let exist_in_real_api = self.ir.exist_in_real_api;
         Acc::new(|target| match (target, self.ir.inner.as_ref()) {
-            (Io, IrType::Primitive(_)) => Some(
-                if exist_in_real_api {
-                    "unsafe { support::box_from_leak_ptr(self) }"
-                } else {
-                    "unsafe { *support::box_from_leak_ptr(self) }"
-                }
-                .into(),
-            ),
+            (Io, IrType::Primitive(_)) => Some(format!(
+                "unsafe {{ {extra}support::box_from_leak_ptr(self) }}",
+                extra = if exist_in_real_api { "" } else { "*" }
+            )),
             (Io | Wasm, ir) if ir.is_array() => Some(format!(
                 "Wire2Api::<{}>::wire2api(self).into()",
                 box_inner.rust_api_type()
