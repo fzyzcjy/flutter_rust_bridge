@@ -1,9 +1,12 @@
+use log::debug;
+use std::path::Path;
+
 fn cbindgen(
     rust_crate_dir: &str,
     c_output_path: &str,
     c_struct_names: Vec<String>,
     exclude_symbols: Vec<String>,
-) -> anyhow::Result {
+) -> anyhow::Result<()> {
     debug!(
         "execute cbindgen rust_crate_dir={} c_output_path={}",
         rust_crate_dir, c_output_path

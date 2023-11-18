@@ -1,4 +1,9 @@
-pub fn format_dart(path: &[PathBuf], line_length: u32) -> Result {
+use crate::command_run;
+use anyhow::bail;
+use log::debug;
+use std::path::PathBuf;
+
+pub fn format_dart(path: &[PathBuf], line_length: u32) -> anyhow::Result<()> {
     debug!(
         "execute format_dart path={:?} line_length={}",
         path, line_length
@@ -12,9 +17,10 @@ pub fn format_dart(path: &[PathBuf], line_length: u32) -> Result {
         *path
     )?;
     if !res.status.success() {
-        Err(Error::Dartfmt(
-            String::from_utf8_lossy(&res.stderr).to_string(),
-        ))?;
+        bail!(
+            "Dart formatting failed: {}",
+            String::from_utf8_lossy(&res.stderr),
+        )
     }
     Ok(())
 }

@@ -1,4 +1,7 @@
-pub fn dart_build_runner(dart_root: &str) -> Result {
+use crate::command_run;
+use log::info;
+
+pub fn dart_build_runner(dart_root: &str) -> anyhow::Result<()> {
     info!("Running build_runner at {}", dart_root);
     let repo = DartRepository::from_str(dart_root).unwrap();
     let out = command_run!(

@@ -1,7 +1,7 @@
 pub(crate) mod cargo_expand;
-mod cbindgen;
+pub(crate) mod cbindgen;
 pub(crate) mod command_runner;
-mod dart_build_runner;
-mod ffigen;
-mod format_dart;
-mod format_rust;
+pub(crate) mod dart_build_runner;
+pub(crate) mod ffigen;
+pub(crate) mod format_dart;
+pub(crate) mod format_rust;

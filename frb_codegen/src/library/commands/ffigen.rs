@@ -1,3 +1,7 @@
+use crate::command_run;
+use anyhow::bail;
+use log::debug;
+
 fn ffigen(
     c_path: &str,
     dart_path: &str,
@@ -5,7 +9,7 @@ fn ffigen(
     llvm_path: &[String],
     llvm_compiler_opts: &str,
     dart_root: &str,
-) -> anyhow::Result {
+) -> anyhow::Result<()> {
     debug!(
         "execute ffigen c_path={} dart_path={} llvm_path={:?}",
         c_path, dart_path, llvm_path
@@ -64,11 +68,10 @@ fn ffigen(
         let out = String::from_utf8_lossy(&res.stdout);
         let pat = "Couldn't find dynamic library in default locations.";
         if err.contains(pat) || out.contains(pat) {
-            return Err(Error::FfigenLlvm);
+            bail!("ffigen could not find LLVM. Please supply --llvm-path to flutter_rust_bridge_codegen, e.g.: \
+                flutter_rust_bridge_codegen .. --llvm-path <path_to_llvm>");
         }
-        Err(anyhow::anyhow!(
-            "ffigen failed:\nstderr: {err}\nstdout: {out}"
-        ))?;
+        bail!("ffigen failed:\nstderr: {err}\nstdout: {out}");
     }
     Ok(())
 }
