@@ -34,9 +34,9 @@ pub(crate) fn generate_wire_func(
 
     Acc::new(|target| match target {
         TargetOrCommon::Io | TargetOrCommon::Wasm => ExternFunc {
-            func_name,
-            params: params.get(target),
-            return_type,
+            func_name: func_name.clone(),
+            params: params.clone().get(target),
+            return_type: return_type.clone(),
             body: generate_redirect_body(func),
             target: target.try_into().unwrap(),
         }
@@ -48,7 +48,10 @@ pub(crate) fn generate_wire_func(
                 .iter()
                 .map(|param| param.rust_name_and_type())
                 .join(","),
-            return_type = return_type.map(|t| format!("-> {t}")).unwrap_or_default(),
+            return_type = return_type
+                .clone()
+                .map(|t| format!("-> {t}"))
+                .unwrap_or_default(),
             body = format!(
                 "{HANDLER_NAME}.{handler_func_name}({wrap_info_obj}, move || {{ {code_closure} }})"
             )
@@ -111,7 +114,7 @@ fn generate_params(func: &IrFunc, context: WireRustGeneratorContext) -> Acc<Vec<
             let name = field.name.rust_style().to_owned();
             Acc::new(|target| match target {
                 TargetOrCommon::Common => ExternFuncParam {
-                    name,
+                    name: name.clone(),
                     rust_type: format!("impl Wire2Api<{}> + UnwindSafe", field.ty.rust_api_type()),
                     dart_type: None,
                 },
@@ -119,7 +122,7 @@ fn generate_params(func: &IrFunc, context: WireRustGeneratorContext) -> Acc<Vec<
                     let target: Target = target.try_into().unwrap();
                     let field_generator = WireRustGenerator::new(field.ty.clone(), context);
                     ExternFuncParam {
-                        name,
+                        name: name.clone(),
                         rust_type: format!(
                             "{}{}",
                             field_generator.rust_wire_modifier(target),

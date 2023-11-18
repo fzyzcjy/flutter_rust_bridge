@@ -57,6 +57,7 @@ pub(crate) struct ExternFunc {
     pub(crate) target: Target,
 }
 
+#[derive(Clone)]
 pub(crate) struct ExternFuncParam {
     pub(crate) name: String,
     pub(crate) rust_type: String,
