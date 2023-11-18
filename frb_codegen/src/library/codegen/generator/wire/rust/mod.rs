@@ -25,7 +25,7 @@ pub(crate) struct WireRustOutputSpec {
 
 pub(crate) fn generate(ir_pack: &IrPack, context: WireRustGeneratorContext) -> anyhow::Result<()> {
     let spec = generate_spec(ir_pack, context);
-    writer::write(spec)
+    writer::write(spec, context.config)
 }
 
 fn generate_spec(ir_pack: &IrPack, context: WireRustGeneratorContext) -> WireRustOutputSpec {
