@@ -4,7 +4,7 @@ use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::wire2api::extern_func::CodeWithExternFunc;
 use crate::codegen::generator::wire::rust::wire2api::misc::generate_class_from_fields;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
-use crate::codegen::ir::ty::IrTypeTrait;
+use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
 use itertools::Itertools;
 
@@ -88,7 +88,8 @@ impl<'a> WireRustGeneratorWire2apiTrait for StructRefWireRustGenerator<'a> {
                             .rust_wire_is_pointer(Target::Io)
                         {
                             "core::ptr::null_mut()".to_owned()
-                        } else if matches!(ty, IrType::RustOpaque(_) | IrType::DartOpaque(_)) {
+                        } else if matches!(field.ty, IrType::RustOpaque(_) | IrType::DartOpaque(_))
+                        {
                             format!(
                                 "{}::new_with_null_ptr()",
                                 WireRustGenerator::new(field.ty.clone(), self.context.clone())
