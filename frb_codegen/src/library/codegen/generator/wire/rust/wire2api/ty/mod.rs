@@ -32,4 +32,11 @@ pub(crate) trait WireRustGeneratorWire2apiTrait {
     fn generate_impl_wire2api_jsvalue_body(&self) -> Option<Cow<str>> {
         None
     }
+
+    fn generate_impl_new_with_nullptr(
+        &self,
+        _collector: &mut ExternFuncCollector,
+    ) -> Option<String> {
+        None
+    }
 }

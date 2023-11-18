@@ -22,10 +22,6 @@ pub trait TypeRustGeneratorTrait {
         Acc::default()
     }
 
-    fn generate_impl_new_with_nullptr(&self, _collector: &mut ExternFuncCollector) -> String {
-        "".to_string()
-    }
-
     fn imports(&self) -> Option<String> {
         None
     }
