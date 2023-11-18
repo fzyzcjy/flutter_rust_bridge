@@ -84,3 +84,9 @@ pub trait IrTypeTrait {
         None
     }
 }
+
+impl Into<IrType> for Box<IrType> {
+    fn into(self) -> IrType {
+        *self
+    }
+}

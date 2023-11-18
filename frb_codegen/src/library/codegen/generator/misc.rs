@@ -8,8 +8,8 @@ macro_rules! codegen_generator_structs {
     ($generator_name:ident;$($name:ident),*,) => (
         paste! {
             impl<'a> $generator_name<'a> {
-                pub(crate) fn new(ty: IrType, context: [<$generator_name Context>]<'a>) -> Self {
-                    match ty {
+                pub(crate) fn new(ty: impl Into<IrType>, context: [<$generator_name Context>]<'a>) -> Self {
+                    match ty.into() {
                         $(
                             $name(ir) => Self::$name([<$name $generator_name>]::new(ir, context)),
                         )*

@@ -19,7 +19,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for PrimitiveListWireRustGenerator<'a> {
             &vec![
                 format!(
                     "ptr: *mut {}",
-                    WireRustGenerator::new(self.ir.primitive.clone().into(), self.context)
+                    WireRustGenerator::new(self.ir.primitive.clone(), self.context)
                         .rust_wire_type(Target::Io)
                 ),
                 "len: i32".to_string(),

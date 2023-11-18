@@ -18,7 +18,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for OptionalListWireRustGenerator<'a> {
             &vec![
                 format!(
                     "ptr: *mut *mut {}",
-                    WireRustGenerator::new(*self.ir.inner.clone(), self.context)
+                    WireRustGenerator::new(self.ir.inner.clone(), self.context)
                         .rust_wire_type(Target::Io)
                 ),
                 "len: i32".to_string(),

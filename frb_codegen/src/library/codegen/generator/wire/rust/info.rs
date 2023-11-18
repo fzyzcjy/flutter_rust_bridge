@@ -29,7 +29,7 @@ impl<'a> WireRustGeneratorInfoTrait for BoxedWireRustGenerator<'a> {
         if target == Target::Wasm && self.ir.inner.is_primitive() {
             JS_VALUE.into()
         } else {
-            WireRustGenerator::new(*self.ir.inner.clone(), self.context).rust_wire_type(target)
+            WireRustGenerator::new(self.ir.inner.clone(), self.context).rust_wire_type(target)
         }
     }
 
@@ -87,7 +87,7 @@ impl<'a> WireRustGeneratorInfoTrait for GeneralListWireRustGenerator<'a> {
 
 impl<'a> WireRustGeneratorInfoTrait for OptionalWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
-        let inner_generator = WireRustGenerator::new(*self.ir.inner.clone(), self.context);
+        let inner_generator = WireRustGenerator::new(self.ir.inner.clone(), self.context);
 
         if inner_generator.rust_wire_is_pointer(target)
             || (target == Target::Wasm)
@@ -103,7 +103,7 @@ impl<'a> WireRustGeneratorInfoTrait for OptionalWireRustGenerator<'a> {
 
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
         target != Target::Wasm
-            || WireRustGenerator::new(*self.ir.inner.clone(), self.context)
+            || WireRustGenerator::new(self.ir.inner.clone(), self.context)
                 .rust_wire_is_pointer(target)
     }
 }

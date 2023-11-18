@@ -131,7 +131,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
             }
             IrTypeDelegate::PrimitiveEnum (IrTypeDelegatePrimitiveEnum { repr, .. }) => format!(
                 "(self.unchecked_into_f64() as {}).wire2api()",
-                WireRustGenerator::new(repr.clone().into(),self.context ).rust_wire_type(Target::Wasm)
+                WireRustGenerator::new(repr.clone(), self.context).rust_wire_type(Target::Wasm)
             )
                 .into(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
