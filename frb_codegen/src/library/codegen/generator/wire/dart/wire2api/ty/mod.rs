@@ -15,7 +15,12 @@ mod rust_opaque;
 mod structure;
 mod unencodable;
 
+use crate::codegen::generator::acc::Acc;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
-pub(crate) trait WireDartGeneratorWire2apiTrait {}
+pub(crate) trait WireDartGeneratorWire2apiTrait {
+    fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
+        Default::default()
+    }
+}

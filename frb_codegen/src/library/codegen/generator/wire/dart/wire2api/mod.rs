@@ -25,13 +25,13 @@ pub(super) fn generate(
 }
 
 fn generate_impl_wire2api(ty: &IrType, context: WireDartGeneratorContext) -> String {
-    let body = WireDartGenerator::new(ty.clone(), context).wire2api_body();
+    let body = WireDartGenerator::new(ty.clone(), context).generate_impl_wire2api_body();
     format!(
-        "{} _wire2api_{}(dynamic raw) {{
+        "{dart_api_type} _wire2api_{safe_ident}(dynamic raw) {{
             {body}
         }}
         ",
-        ty.dart_api_type(),
-        ty.safe_ident(),
+        dart_api_type = ty.dart_api_type(),
+        safe_ident = ty.safe_ident(),
     )
 }
