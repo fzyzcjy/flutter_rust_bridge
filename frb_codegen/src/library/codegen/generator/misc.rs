@@ -17,6 +17,11 @@ macro_rules! codegen_generator_structs {
                 }
             }
 
+            pub(crate) trait [<$generator_name ImplTrait>] {
+                fn ir_type(&self) -> IrType;
+                fn context(&self) -> [<$generator_name Context>];
+            }
+
             $(
                 #[derive(Debug, Clone)]
                 pub(crate) struct [<$name $generator_name>]<'a> {
@@ -28,6 +33,11 @@ macro_rules! codegen_generator_structs {
                     pub(crate) fn new(ir: [<IrType $name>], context: [<$generator_name Context>]<'a>) -> Self {
                         Self { ir, context }
                     }
+                }
+
+                impl<'a> [<$generator_name ImplTrait>] for [<$name $generator_name>]<'a> {
+                    fn ir_type(&self) -> IrType { self.ir.into() }
+                    fn context(&self) -> [<$generator_name Context>] { self.context }
                 }
             )*
         }
