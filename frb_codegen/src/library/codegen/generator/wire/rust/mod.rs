@@ -1,5 +1,4 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::wire::misc::generate_code_header;
 use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
 use crate::codegen::generator::wire::rust::misc::section_header_comment;
 use crate::codegen::ir::pack::IrPack;

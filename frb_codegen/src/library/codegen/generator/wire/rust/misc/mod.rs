@@ -6,6 +6,7 @@ use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::misc::ty::WireRustGeneratorMiscTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::misc::consts::HANDLER_NAME;
 use itertools::Itertools;
 use std::collections::HashSet;
 

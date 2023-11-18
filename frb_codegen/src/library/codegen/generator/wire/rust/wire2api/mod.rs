@@ -5,6 +5,7 @@ use crate::codegen::generator::wire::rust::wire2api::impl_new_with_nullptr::gene
 use crate::codegen::generator::wire::rust::wire2api::impl_wire2api_trait::generate_impl_wire2api;
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
 use crate::codegen::ir::pack::IrPack;
+use crate::library::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 
 pub(super) mod extern_func;
 mod impl_new_with_nullptr;
@@ -22,14 +23,14 @@ pub(crate) fn generate(
     lines += cache
         .distinct_input_types
         .iter()
-        .map(|ty| WireRustGenerator::new(ty, context).generate_allocate_funcs())
+        .map(|ty| WireRustGenerator::new(ty.clone(), context).generate_allocate_funcs())
         .collect();
 
     lines.push(section_header_comment("related functions"));
     lines += cache
         .distinct_output_types
         .iter()
-        .map(|ty| WireRustGenerator::new(ty, context).generate_related_funcs())
+        .map(|ty| WireRustGenerator::new(ty.clone(), context).generate_related_funcs())
         .collect();
 
     lines.push(section_header_comment("impl Wire2Api"));
@@ -44,7 +45,10 @@ pub(crate) fn generate(
     );
 
     (lines.io).push(section_header_comment("impl NewWithNullPtr"));
-    (lines.io).push(generate_impl_new_with_nullptr(&cache.distinct_input_types));
+    (lines.io).push(generate_impl_new_with_nullptr(
+        &cache.distinct_input_types,
+        context,
+    ));
 
     lines
 }
