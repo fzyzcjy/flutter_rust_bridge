@@ -1,6 +1,8 @@
 use crate::codegen::generator::wire::dart::base::*;
 use crate::codegen::generator::wire::dart::wire2api::ty::WireDartGeneratorWire2apiTrait;
-use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegateArray};
+use crate::codegen::ir::ty::delegate::{
+    IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegatePrimitiveEnum,
+};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
@@ -36,7 +38,7 @@ impl<'a> WireDartGeneratorWire2apiTrait for DelegateWireDartGenerator<'a> {
             IrTypeDelegate::StringList => {
                 "return (raw as List<dynamic>).cast<String>();".to_owned()
             }
-            IrTypeDelegate::PrimitiveEnum { ir, .. } => {
+            IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) => {
                 format!("return {}.values[raw as int];", ir.dart_api_type()) // here `as int` is neccessary in strict dynamic mode
             }
             IrTypeDelegate::Time(ir) => {

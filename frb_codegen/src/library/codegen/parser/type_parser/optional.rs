@@ -31,7 +31,7 @@ impl<'a> TypeParser<'a> {
                 | DartOpaque(..)
                 | Primitive(..)
                 | Record(..)
-                | Delegate(IrTypeDelegate::PrimitiveEnum { .. }) => {
+                | Delegate(IrTypeDelegate::PrimitiveEnum(..)) => {
                     IrTypeOptional::new_with_boxed_wrapper(inner.clone())
                 }
                 Delegate(IrTypeDelegate::Time(..)) => {

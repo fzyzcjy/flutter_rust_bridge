@@ -2,6 +2,7 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::dart::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::dart::base::*;
 use crate::codegen::ir::ty::enumeration::IrVariantKind;
+use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireDartGeneratorApi2wireTrait for EnumRefWireDartGenerator<'a> {
