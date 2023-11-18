@@ -1,40 +1,19 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::{Target, TargetOrCommon};
-use crate::codegen::generator::wire::rust::wire2api::extern_func::{ExternFunc, ExternFuncParam};
+use crate::codegen::generator::wire::rust::wire2api::extern_func::{
+    CodeWithExternFunc, ExternFunc, ExternFuncParam,
+};
 use crate::codegen::ir::func::{IrFunc, IrFuncMode};
 use crate::codegen::ir::pack::IrPack;
 use itertools::Itertools;
 use std::convert::TryInto;
 
-pub(crate) fn generate_wire_func(func: &IrFunc, ir_pack: &IrPack) -> Acc<String> {
+pub(crate) fn generate_wire_func(func: &IrFunc, ir_pack: &IrPack) -> Acc<CodeWithExternFunc> {
     let params = generate_params(func);
     let inner_func_params = generate_inner_func_params(func, ir_pack);
     let wrap_info_obj = generate_wrap_info_obj(func);
     let code_wire2api = generate_code_wire2api(func);
-
-    let code_call_inner_func = if func.owner.is_non_static_method() || func.owner.is_static_method()
-    {
-        let method_name = if func.owner.is_non_static_method() {
-            func.owner.method_name()
-        } else if func.owner.is_static_method() {
-            func.owner.static_method_name().unwrap()
-        } else {
-            panic!("{} is not a method, nor a static method.", func.name)
-        };
-        format!(
-            r"{}::{}({})",
-            func.owner.struct_name.unwrap(),
-            method_name,
-            inner_func_params.join(", ")
-        )
-    } else {
-        format!("{}({})", func.name, inner_func_params.join(", "))
-    };
-    let code_call_inner_func_result = if func.fallible {
-        code_call_inner_func
-    } else {
-        format!("Result::<_,()>::Ok({code_call_inner_func})")
-    };
+    let code_call_inner_func_result = generate_code_call_inner_func_result(func, inner_func_params);
 
     let (handler_func_name, return_type, code_closure) = match func.mode {
         IrFuncMode::Sync => (
@@ -62,40 +41,24 @@ pub(crate) fn generate_wire_func(func: &IrFunc, ir_pack: &IrPack) -> Acc<String>
     let body = format!(
         "{HANDLER_NAME}.{handler_func_name}({wrap_info_obj}, move || {{ {code_closure} }})"
     );
-    let redirect_body = format!(
-        "{}_impl({})",
-        func.wire_func_name(),
-        (func.mode.has_port_argument().then_some("port_"))
-            .into_iter()
-            .chain(func.inputs.iter().map(|arg| arg.name.rust_style()))
-            .collect_vec()
-            .join(","),
-    );
+    let redirect_body = generate_redirect_body(func);
 
     Acc::new(|target| match target {
-        TargetOrCommon::Io | TargetOrCommon::Wasm => {
-            let target = target.try_into().unwrap();
-            ExternFunc {
-                func_name: func.wire_func_name(),
-                params: match target {
-                    Target::Wasm => params.wasm,
-                    Target::Io => params.io,
-                }
-                .iter()
-                .cloned()
-                .collect_vec(),
-                return_type,
-                body: redirect_body,
-                target,
-            }
+        TargetOrCommon::Io | TargetOrCommon::Wasm => ExternFunc {
+            func_name: func.wire_func_name(),
+            params: params[target].iter().cloned().collect_vec(),
+            return_type,
+            body: redirect_body,
+            target: target.try_into().unwrap(),
         }
+        .into(),
         TargetOrCommon::Common => format!(
-            "fn {}_impl({}) {} {{ {} }}",
-            func.wire_func_name(),
-            params.common.join(","),
-            return_type.map(|t| format!("-> {t}")).unwrap_or_default(),
-            body,
-        ),
+            "fn {name}_impl({params}) {return_type} {{ {body} }}",
+            name = func.wire_func_name(),
+            params = params.common.join(","),
+            return_type = return_type.map(|t| format!("-> {t}")).unwrap_or_default(),
+        )
+        .into(),
     })
 }
 
@@ -184,4 +147,43 @@ fn generate_code_wire2api(func: &IrFunc) -> String {
         .map(|field| format!("let api_{0} = {0}.wire2api();", field.name.rust_style()))
         .collect_vec()
         .join("")
+}
+
+fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_params: Vec<String>) -> String {
+    let code_call_inner_func = if func.owner.is_non_static_method() || func.owner.is_static_method()
+    {
+        let method_name = if func.owner.is_non_static_method() {
+            func.owner.method_name()
+        } else if func.owner.is_static_method() {
+            func.owner.static_method_name().unwrap()
+        } else {
+            panic!("{} is not a method, nor a static method.", func.name)
+        };
+        format!(
+            r"{}::{}({})",
+            func.owner.struct_name.unwrap(),
+            method_name,
+            inner_func_params.join(", ")
+        )
+    } else {
+        format!("{}({})", func.name, inner_func_params.join(", "))
+    };
+
+    if func.fallible {
+        code_call_inner_func
+    } else {
+        format!("Result::<_,()>::Ok({code_call_inner_func})")
+    }
+}
+
+fn generate_redirect_body(func: &IrFunc) -> String {
+    format!(
+        "{}_impl({})",
+        func.wire_func_name(),
+        (func.mode.has_port_argument().then_some("port_"))
+            .into_iter()
+            .chain(func.inputs.iter().map(|arg| arg.name.rust_style()))
+            .collect_vec()
+            .join(","),
+    )
 }

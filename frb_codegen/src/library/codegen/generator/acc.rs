@@ -1,5 +1,6 @@
 use crate::codegen::generator::misc::TargetOrCommon;
 use std::iter::FromIterator;
+use std::ops::Index;
 
 /// Generic accumulator over the targets.
 ///
@@ -39,6 +40,18 @@ impl<T> FromIterator<Acc<T>> for Acc<Vec<T>> {
     }
 }
 
+impl<T> Index<TargetOrCommon> for Acc<T> {
+    type Output = &T;
+
+    fn index(&self, index: TargetOrCommon) -> &Self::Output {
+        match index {
+            TargetOrCommon::Common => &self.common,
+            TargetOrCommon::Io => &self.io,
+            TargetOrCommon::Wasm => &self.wasm,
+        }
+    }
+}
+
 impl<T> Acc<T> {
     pub fn new(mut init: impl FnMut(TargetOrCommon) -> T) -> Acc<T> {
         Acc {
@@ -55,6 +68,7 @@ impl<T> Acc<T> {
             wasm: mapper(self.wasm, TargetOrCommon::Wasm),
         }
     }
+
     /// Assign this value to all non-common targets.
     pub fn distribute(value: T) -> Self
     where
