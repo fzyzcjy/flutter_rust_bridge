@@ -47,10 +47,10 @@ impl<'a> WireRustGeneratorCommonTrait for StructRefWireRustGenerator<'a> {
     fn generate_imports(&self) -> Option<Vec<String>> {
         let api_struct = self.ir.get(self.context.ir_pack);
         if api_struct.path.is_some() {
-            Some(format!(
+            Some(vec![format!(
                 "use {};",
                 api_struct.path.as_ref().unwrap().join("::")
-            ))
+            )])
         } else {
             None
         }
