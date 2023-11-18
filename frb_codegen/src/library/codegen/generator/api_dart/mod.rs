@@ -6,7 +6,7 @@ pub(crate) mod internal_config;
 mod misc;
 
 use crate::codegen::generator::api_dart::base::{ApiDartGenerator, ApiDartGeneratorContext};
-use crate::codegen::generator::api_dart::internal_config::GeneratorDartApiInternalConfig;
+use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::output::dart::DartOutputCode;
 use crate::codegen::ir::pack::IrPack;
 use crate::library::codegen::generator::api_dart::class::ty::ApiDartGeneratorClassTrait;
@@ -15,7 +15,7 @@ use itertools::Itertools;
 
 pub(crate) fn generate(
     ir_pack: &IrPack,
-    config: &GeneratorDartApiInternalConfig,
+    config: &GeneratorApiDartInternalConfig,
 ) -> Result<DartOutputCode> {
     let distinct_types = ir_pack.distinct_types(true, true);
     let context = ApiDartGeneratorContext { ir_pack, config };

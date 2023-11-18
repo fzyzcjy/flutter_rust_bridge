@@ -1,4 +1,4 @@
-use crate::codegen::generator::api_dart::internal_config::GeneratorDartApiInternalConfig;
+use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::dart_opaque::IrTypeDartOpaque;
@@ -61,5 +61,5 @@ codegen_generator_structs!(
 #[derive(Debug, Clone, Copy)]
 pub(crate) struct ApiDartGeneratorContext<'a> {
     pub(crate) ir_pack: &'a IrPack,
-    pub(crate) config: &'a GeneratorDartApiInternalConfig,
+    pub(crate) config: &'a GeneratorApiDartInternalConfig,
 }

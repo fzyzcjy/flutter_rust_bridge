@@ -1,9 +1,9 @@
 use crate::codegen::config::internal_config::GeneratorDartInternalConfig;
-use crate::codegen::generator::api_dart::internal_config::GeneratorDartApiInternalConfig;
+use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use convert_case::{Case, Casing};
 use std::path::Path;
 
-impl From<GeneratorDartInternalConfig> for GeneratorDartApiInternalConfig {
+impl From<GeneratorDartInternalConfig> for GeneratorApiDartInternalConfig {
     fn from(config: GeneratorDartInternalConfig) -> Self {
         // TODO multi file support
         let dart_output_path = config
@@ -14,7 +14,7 @@ impl From<GeneratorDartInternalConfig> for GeneratorDartApiInternalConfig {
             .unwrap();
         let dart_output_stem = get_file_stem(dart_output_path);
 
-        GeneratorDartApiInternalConfig {
+        GeneratorApiDartInternalConfig {
             dart_api_class_name: dart_output_stem.to_case(Case::Pascal),
             dart_api_instance_name: compute_dart_api_instance_name(
                 config.use_bridge_in_method,

@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
-pub(crate) struct GeneratorDartApiInternalConfig {
+pub(crate) struct GeneratorApiDartInternalConfig {
     // TODO multi file support
     pub dart_api_class_name: String,
     pub dart_api_instance_name: String,

@@ -1,5 +1,5 @@
 use crate::codegen::generator::api_dart::base::ApiDartGeneratorContext;
-use crate::codegen::generator::api_dart::internal_config::GeneratorDartApiInternalConfig;
+use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::wire::dart::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
 use crate::codegen::generator::wire::rust::api2wire::ty::WireRustGeneratorApi2wireTrait;
@@ -70,7 +70,7 @@ pub(crate) struct WireRustGeneratorContext<'a> {
     pub(crate) ir_pack: &'a IrPack,
     pub(crate) config: &'a GeneratorWireRustInternalConfig,
     pub(crate) wire_dart_config: &'a GeneratorWireDartInternalConfig,
-    pub(crate) dart_api_config: &'a GeneratorDartApiInternalConfig,
+    pub(crate) dart_api_config: &'a GeneratorApiDartInternalConfig,
 }
 
 impl WireRustGeneratorContext<'_> {
