@@ -38,8 +38,8 @@ impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
             .join("\n")
         };
         Acc {
-            io: Some(generate_impl(crate::target::Target::Io)),
-            wasm: Some(generate_impl(crate::target::Target::Wasm)),
+            io: Some(generate_impl(Target::Io)),
+            wasm: Some(generate_impl(Target::Wasm)),
             ..Default::default()
         }
     }
