@@ -8,7 +8,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for OptionalListWireDartGenerator<'a> {
         let inner = self.ir.inner.safe_ident();
         Acc {
             io: Some(format!(
-                "final ans = inner.new_{safe_ident}_{idx}(raw.length);
+                "final ans = inner.new_{safe_ident}(raw.length);
                 for (var i = 0; i < raw.length; ++i) {{
                     final item = raw[i];
                     if (item == null) continue;
@@ -16,7 +16,6 @@ impl<'a> WireDartGeneratorApi2wireTrait for OptionalListWireDartGenerator<'a> {
                 }}
                 return ans;",
                 safe_ident = self.ir.safe_ident(),
-                idx = self.context.config.block_index,
             )),
             wasm: (self.context.config.wasm_enabled)
                 .then(|| format!("return mapNonNull(raw, api2wire_{inner});")),

@@ -7,12 +7,11 @@ impl<'a> WireDartGeneratorApi2wireTrait for GeneralListWireDartGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         // NOTE the memory strategy is same as PrimitiveList, see comments there.
         let ident = self.ir.safe_ident();
-        let context = self.context.config.block_index;
         let inner = self.ir.inner.safe_ident();
 
         Acc {
             io: Some(format!(
-                "final ans = inner.new_{ident}_{context}(raw.length);
+                "final ans = inner.new_{ident}(raw.length);
                 for (var i = 0; i < raw.length; ++i) {{
                     {}
                 }}

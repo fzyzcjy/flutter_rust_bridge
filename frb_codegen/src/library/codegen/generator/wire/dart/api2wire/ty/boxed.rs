@@ -7,14 +7,12 @@ impl<'a> WireDartGeneratorApi2wireTrait for BoxedWireDartGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         let as_primitive = self.ir.inner.is_primitive().then(|| {
             format!(
-                "return inner.new_{}_{}(api2wire_{}(raw));",
+                "return inner.new_{}(api2wire_{}(raw));",
                 self.ir.safe_ident(),
-                self.context.config.block_index,
                 self.ir.inner.safe_ident()
             )
         });
         let ident = self.ir.safe_ident();
-        let context = self.context.config.block_index;
         let inner = self.ir.inner.safe_ident();
         let empty_struct = is_empty_struct(self);
         Acc {
@@ -23,12 +21,12 @@ impl<'a> WireDartGeneratorApi2wireTrait for BoxedWireDartGenerator<'a> {
                     format!("return api2wire_{inner}(raw);")
                 } else if empty_struct {
                     format!(
-                        "final ptr = inner.new_{ident}_{context}();
+                        "final ptr = inner.new_{ident}();
                         return ptr;",
                     )
                 } else {
                     format!(
-                        "final ptr = inner.new_{ident}_{context}();
+                        "final ptr = inner.new_{ident}();
                         _api_fill_to_wire_{inner}(raw, ptr.ref);
                         return ptr;"
                     )
