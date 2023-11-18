@@ -61,13 +61,13 @@ fn parse_config(
     c_path: &Path,
     dart_path: &Path,
     llvm_path: &[PathBuf],
-    llvm_compiler_opts: &[String],
+    llvm_compiler_opts: &str,
 ) -> anyhow::Result<String> {
     let dart_path_str = path_to_string(dart_path)?;
     let c_path_str = path_to_string(c_path)?;
     let llvm_path_str = llvm_path
         .iter()
-        .map(path_to_string)
+        .map(|x| path_to_string(x))
         .collect::<anyhow::Result<Vec<_>>>()?;
     let llvm_compiler_opts_list = if llvm_compiler_opts.is_empty() {
         vec![]
