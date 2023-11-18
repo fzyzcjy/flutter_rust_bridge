@@ -1,5 +1,6 @@
 use crate::codegen::generator::api_dart::base::ApiDartGeneratorContext;
 use crate::codegen::generator::wire::dart::api2wire::ty::WireDartGeneratorApi2wireTrait;
+use crate::codegen::generator::wire::dart::Acc;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::dart_opaque::IrTypeDartOpaque;
