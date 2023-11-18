@@ -8,14 +8,14 @@ use itertools::Itertools;
 
 pub(crate) fn generate_impl_new_with_nullptr(
     types: &[IrType],
-    context: &WireRustGeneratorContext,
+    context: WireRustGeneratorContext,
 ) -> CodeWithExternFunc {
     let misc: CodeWithExternFunc = generate_impl_new_with_nullptr_misc().to_string().into();
 
     let funcs: Vec<CodeWithExternFunc> = types
         .iter()
         .filter_map(|ty| {
-            WireRustGenerator::new(ty.clone(), context.clone()).generate_impl_new_with_nullptr()
+            WireRustGenerator::new(ty.clone(), context).generate_impl_new_with_nullptr()
         })
         .collect_vec();
 
@@ -37,12 +37,11 @@ fn generate_impl_new_with_nullptr_misc() -> &'static str {
 
 pub(super) fn generate_impl_new_with_nullptr_code_block(
     ir: impl Into<IrType>,
-    context: &WireRustGeneratorContext,
+    context: WireRustGeneratorContext,
     body: &str,
     impl_default: bool,
 ) -> String {
-    let rust_wire_type =
-        WireRustGenerator::new(ir.into(), context.clone()).rust_wire_type(Target::Io);
+    let rust_wire_type = WireRustGenerator::new(ir.into(), context).rust_wire_type(Target::Io);
 
     format!(
         "impl NewWithNullPtr for {rust_wire_type} {{

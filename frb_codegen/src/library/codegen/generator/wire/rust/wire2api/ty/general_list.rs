@@ -16,12 +16,12 @@ impl<'a> WireRustGeneratorWire2apiTrait for GeneralListWireRustGenerator<'a> {
     fn generate_wire2api_class(&self) -> Option<String> {
         Some(generate_class_from_fields(
             self.ir.clone(),
-            &self.context,
+            self.context,
             &vec![
                 format!(
                     "ptr: *mut {}{}",
                     general_list_maybe_extra_pointer_indirection(&self.ir),
-                    WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone())
+                    WireRustGenerator::new(*self.ir.inner.clone(), self.context)
                         .rust_wire_type(Target::Io)
                 ),
                 "len: i32".to_string(),
@@ -40,7 +40,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for GeneralListWireRustGenerator<'a> {
                     &self.ir.safe_ident(),
                     &self.ir.clone().into(),
                     &self.ir.inner,
-                    &self.context,
+                    self.context,
                 )
                 .into(),
             ),
@@ -80,9 +80,9 @@ pub(crate) fn generate_list_generate_allocate_func(
     safe_ident: &str,
     list: &IrType,
     inner: &IrType,
-    context: &WireRustGeneratorContext,
+    context: WireRustGeneratorContext,
 ) -> ExternFunc {
-    let list_generator = WireRustGenerator::new(list.clone(), context.clone());
+    let list_generator = WireRustGenerator::new(list.clone(), context);
 
     // let wasm = false;
     ExternFunc {
@@ -113,8 +113,7 @@ pub(crate) fn generate_list_generate_allocate_func(
                     general_list_maybe_extra_pointer_indirection(&IrTypeGeneralList {
                         inner: Box::new(inner.clone())
                     }),
-                    WireRustGenerator::new(inner.clone(), context.clone())
-                        .rust_wire_type(Target::Io)
+                    WireRustGenerator::new(inner.clone(), context).rust_wire_type(Target::Io)
                 )
             }
         ),

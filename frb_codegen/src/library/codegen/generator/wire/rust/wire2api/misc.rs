@@ -5,10 +5,10 @@ use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoT
 
 pub(super) fn generate_class_from_fields(
     ty: impl Into<IrType>,
-    context: &WireRustGeneratorContext,
+    context: WireRustGeneratorContext,
     fields: &[String],
 ) -> String {
-    let struct_name = WireRustGenerator::new(ty.into(), context.clone()).rust_wire_type(Target::Io);
+    let struct_name = WireRustGenerator::new(ty.into(), context).rust_wire_type(Target::Io);
     format!(
         r###"
             #[repr(C)]

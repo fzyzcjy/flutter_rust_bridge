@@ -13,7 +13,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for DartOpaqueWireRustGenerator<'a> {
     fn generate_wire2api_class(&self) -> Option<String> {
         Some(generate_class_from_fields(
             self.ir.clone(),
-            &self.context,
+            self.context,
             &vec!["port: i64".to_owned(), "handle: usize".to_owned()],
         ))
     }
@@ -34,7 +34,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for DartOpaqueWireRustGenerator<'a> {
         Some(
             generate_impl_new_with_nullptr_code_block(
                 self.ir.clone(),
-                &self.context,
+                self.context,
                 "Self { port: 0, handle: 0 }",
                 false,
             )

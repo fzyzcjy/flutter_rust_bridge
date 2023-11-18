@@ -20,11 +20,11 @@ impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
         match &self.ir {
             ty @ IrTypeDelegate::StringList => Some(generate_class_from_fields(
                 self.ir.clone(),
-                &self.context,
+                self.context,
                 &vec![
                     format!(
                         "ptr: *mut *mut {}",
-                        WireRustGenerator::new(ty.get_delegate().clone(), self.context.clone())
+                        WireRustGenerator::new(ty.get_delegate().clone(), self.context)
                             .rust_wire_type(Target::Io)
                     ),
                     "len: i32".to_owned(),
@@ -131,7 +131,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
             }
             IrTypeDelegate::PrimitiveEnum (IrTypeDelegatePrimitiveEnum { repr, .. }) => format!(
                 "(self.unchecked_into_f64() as {}).wire2api()",
-                WireRustGenerator::new(repr.clone().into(),self.context.clone() ).rust_wire_type(Target::Wasm)
+                WireRustGenerator::new(repr.clone().into(),self.context ).rust_wire_type(Target::Wasm)
             )
                 .into(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
@@ -161,7 +161,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
                         &self.ir.safe_ident(),
                         &IrType::Delegate(list.clone()),
                         &list.get_delegate(),
-                        &self.context,
+                        self.context,
                     )
                     .into(),
                 ),

@@ -14,12 +14,11 @@ impl<'a> WireRustGeneratorWire2apiTrait for StructRefWireRustGenerator<'a> {
         let s = self.ir.get(self.context.ir_pack);
         Some(generate_class_from_fields(
             self.ir.clone(),
-            &self.context,
+            self.context,
             &s.fields
                 .iter()
                 .map(|field| {
-                    let field_generator =
-                        WireRustGenerator::new(field.ty.clone(), self.context.clone());
+                    let field_generator = WireRustGenerator::new(field.ty.clone(), self.context);
                     format!(
                         "{}: {}{}",
                         field.name.rust_style(),
@@ -85,7 +84,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for StructRefWireRustGenerator<'a> {
                     format!(
                         "{}: {},",
                         field.name.rust_style(),
-                        if WireRustGenerator::new(field.ty.clone(), self.context.clone())
+                        if WireRustGenerator::new(field.ty.clone(), self.context)
                             .rust_wire_is_pointer(Target::Io)
                         {
                             "core::ptr::null_mut()".to_owned()
@@ -93,7 +92,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for StructRefWireRustGenerator<'a> {
                         {
                             format!(
                                 "{}::new_with_null_ptr()",
-                                WireRustGenerator::new(field.ty.clone(), self.context.clone())
+                                WireRustGenerator::new(field.ty.clone(), self.context)
                                     .rust_wire_type(Target::Io)
                             )
                         } else {
@@ -108,7 +107,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for StructRefWireRustGenerator<'a> {
         Some(
             generate_impl_new_with_nullptr_code_block(
                 self.ir.clone(),
-                &self.context,
+                self.context,
                 &format!("Self {{ {body} }}"),
                 true,
             )

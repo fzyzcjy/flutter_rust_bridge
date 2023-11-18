@@ -29,8 +29,7 @@ impl<'a> WireRustGeneratorInfoTrait for BoxedWireRustGenerator<'a> {
         if target == Target::Wasm && self.ir.inner.is_primitive() {
             JS_VALUE.into()
         } else {
-            WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone())
-                .rust_wire_type(target)
+            WireRustGenerator::new(*self.ir.inner.clone(), self.context).rust_wire_type(target)
         }
     }
 
@@ -54,14 +53,13 @@ impl<'a> WireRustGeneratorInfoTrait for DelegateWireRustGenerator<'a> {
             (IrTypeDelegate::String, Target::Wasm) => "String".into(),
             (IrTypeDelegate::StringList, Target::Io) => "wire_StringList".to_owned(),
             (IrTypeDelegate::StringList, Target::Wasm) => JS_VALUE.into(),
-            _ => WireRustGenerator::new(self.ir.get_delegate().clone(), self.context.clone())
+            _ => WireRustGenerator::new(self.ir.get_delegate().clone(), self.context)
                 .rust_wire_type(target),
         }
     }
 
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
-        WireRustGenerator::new(self.ir.get_delegate(), self.context.clone())
-            .rust_wire_is_pointer(target)
+        WireRustGenerator::new(self.ir.get_delegate(), self.context).rust_wire_is_pointer(target)
     }
 }
 
@@ -89,7 +87,7 @@ impl<'a> WireRustGeneratorInfoTrait for GeneralListWireRustGenerator<'a> {
 
 impl<'a> WireRustGeneratorInfoTrait for OptionalWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {
-        let inner_generator = WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone());
+        let inner_generator = WireRustGenerator::new(*self.ir.inner.clone(), self.context);
 
         if inner_generator.rust_wire_is_pointer(target)
             || (target == Target::Wasm)
@@ -105,7 +103,7 @@ impl<'a> WireRustGeneratorInfoTrait for OptionalWireRustGenerator<'a> {
 
     fn rust_wire_is_pointer(&self, target: Target) -> bool {
         target != Target::Wasm
-            || WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone())
+            || WireRustGenerator::new(*self.ir.inner.clone(), self.context)
                 .rust_wire_is_pointer(target)
     }
 }
@@ -153,7 +151,7 @@ impl RecordWireRustGenerator<'_> {
     pub(crate) fn as_struct_generator(&self) -> StructRefWireRustGenerator {
         StructRefWireRustGenerator {
             ir: self.ir.inner.clone(),
-            context: self.context.clone(),
+            context: self.context,
         }
     }
 }

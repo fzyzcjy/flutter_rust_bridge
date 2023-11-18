@@ -66,11 +66,8 @@ impl<'a> WireRustGeneratorWire2apiTrait for BoxedWireRustGenerator<'a> {
                         func_name,
                         params: vec![ExternFuncParam {
                             name: "value".to_owned(),
-                            rust_type: WireRustGenerator::new(
-                                *self.ir.inner.clone(),
-                                self.context.clone(),
-                            )
-                            .rust_wire_type(Target::Io),
+                            rust_type: WireRustGenerator::new(*self.ir.inner.clone(), self.context)
+                                .rust_wire_type(Target::Io),
                             dart_type: Some(
                                 WireDartGenerator::new(
                                     *self.ir.inner.clone(),
@@ -83,7 +80,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for BoxedWireRustGenerator<'a> {
                         }],
                         return_type: Some(format!(
                             "*mut {}",
-                            WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone())
+                            WireRustGenerator::new(*self.ir.inner.clone(), self.context)
                                 .rust_wire_type(Target::Io)
                         )),
                         body: "support::new_leak_box_ptr(value)".to_owned(),
@@ -108,7 +105,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for BoxedWireRustGenerator<'a> {
                         ),
                         body: format!(
                             "support::new_leak_box_ptr({}::new_with_null_ptr())",
-                            WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone())
+                            WireRustGenerator::new(*self.ir.inner.clone(), self.context)
                                 .rust_wire_type(Target::Io)
                         ),
                         target: Target::Io,

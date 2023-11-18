@@ -9,7 +9,7 @@ use std::convert::TryInto;
 
 pub(crate) fn generate_impl_wire2api(
     types: &[IrType],
-    context: &WireRustGeneratorContext,
+    context: WireRustGeneratorContext,
 ) -> Acc<Vec<String>> {
     let mut lines = Acc::<Vec<String>>::default();
     lines.push_acc(generate_impl_wire2api_misc());
@@ -53,8 +53,8 @@ fn generate_impl_wire2api_misc() -> Acc<String> {
     }
 }
 
-fn generate_impl_wire2api_for_type(ty: &IrType, context: &WireRustGeneratorContext) -> Acc<String> {
-    let generator = WireRustGenerator::new(ty.clone(), context.clone());
+fn generate_impl_wire2api_for_type(ty: &IrType, context: WireRustGeneratorContext) -> Acc<String> {
+    let generator = WireRustGenerator::new(ty.clone(), context);
     let raw: Acc<Option<String>> = generator.generate_impl_wire2api_body();
     raw.map(|body, target| {
         body.map(|body| {
@@ -73,9 +73,9 @@ fn generate_impl_wire2api_for_type(ty: &IrType, context: &WireRustGeneratorConte
 
 fn generate_impl_wire2api_jsvalue_for_type(
     ty: &IrType,
-    context: &WireRustGeneratorContext,
+    context: WireRustGeneratorContext,
 ) -> Acc<String> {
-    let generator = WireRustGenerator::new(ty.clone(), context.clone());
+    let generator = WireRustGenerator::new(ty.clone(), context);
     generator
         .generate_impl_wire2api_jsvalue_body()
         .map(|body| Acc {

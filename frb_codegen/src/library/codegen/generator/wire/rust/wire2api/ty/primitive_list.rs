@@ -15,11 +15,11 @@ impl<'a> WireRustGeneratorWire2apiTrait for PrimitiveListWireRustGenerator<'a> {
     fn generate_wire2api_class(&self) -> Option<String> {
         Some(generate_class_from_fields(
             self.ir.clone(),
-            &self.context,
+            self.context,
             &vec![
                 format!(
                     "ptr: *mut {}",
-                    WireRustGenerator::new(self.ir.primitive.clone().into(), self.context.clone())
+                    WireRustGenerator::new(self.ir.primitive.clone().into(), self.context)
                         .rust_wire_type(Target::Io)
                 ),
                 "len: i32".to_string(),

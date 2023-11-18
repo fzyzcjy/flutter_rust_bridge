@@ -15,7 +15,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
     fn generate_wire2api_class(&self) -> Option<String> {
         Some(generate_class_from_fields(
             self.ir.clone(),
-            &self.context,
+            self.context,
             &vec!["ptr: *const core::ffi::c_void".to_owned()],
         ))
     }
@@ -51,7 +51,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
         Some(
             generate_impl_new_with_nullptr_code_block(
                 self.ir.clone(),
-                &self.context,
+                self.context,
                 "Self { ptr: core::ptr::null() }",
                 false,
             )

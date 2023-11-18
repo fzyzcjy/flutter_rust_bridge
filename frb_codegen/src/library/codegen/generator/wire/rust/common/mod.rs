@@ -27,13 +27,11 @@ pub(crate) fn generate_wrapper_struct(
 
 pub(crate) fn generate_static_checks(
     types: &[IrType],
-    context: &WireRustGeneratorContext,
+    context: WireRustGeneratorContext,
 ) -> String {
     let raw = types
         .iter()
-        .filter_map(|ty| {
-            WireRustGenerator::new(ty.clone(), context.clone()).generate_static_checks()
-        })
+        .filter_map(|ty| WireRustGenerator::new(ty.clone(), context).generate_static_checks())
         .collect_vec();
 
     if raw.is_empty() {

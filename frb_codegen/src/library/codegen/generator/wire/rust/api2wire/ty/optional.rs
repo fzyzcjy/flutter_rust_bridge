@@ -4,7 +4,7 @@ use crate::library::codegen::generator::wire::rust::common::ty::WireRustGenerato
 
 impl<'a> WireRustGeneratorApi2wireTrait for OptionalWireRustGenerator<'a> {
     fn generate_convert_to_dart(&self, obj: String) -> String {
-        let inner = WireRustGenerator::new(*self.ir.inner.clone(), self.context.clone());
+        let inner = WireRustGenerator::new(*self.ir.inner.clone(), self.context);
         let obj = match inner.wrapper_struct_name() {
             // An architecture has been created so that the inner type of optional field is always
             // IrTypeBoxed. Here, too, if we use inner.self_access("v".to_owned()), since it will go to

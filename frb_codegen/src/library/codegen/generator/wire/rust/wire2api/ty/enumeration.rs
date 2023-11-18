@@ -98,7 +98,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
         Some(CodeWithExternFunc {
             code: generate_impl_new_with_nullptr_code_block(
                 self.ir.clone(),
-                &self.context,
+                self.context,
                 "Self { tag: -1, kind: core::ptr::null_mut() }",
                 true,
             ),
@@ -115,8 +115,7 @@ impl<'a> EnumRefWireRustGenerator<'a> {
                 .fields
                 .iter()
                 .map(|field| {
-                    let field_generator =
-                        WireRustGenerator::new(field.ty.clone(), self.context.clone());
+                    let field_generator = WireRustGenerator::new(field.ty.clone(), self.context);
                     format!(
                         "{}: {}{},",
                         field.name.rust_style(),
@@ -167,7 +166,7 @@ impl<'a> EnumRefWireRustGenerator<'a> {
     }
 
     fn generate_impl_new_with_nullptr_variant_field(&self, field: &IrField) -> String {
-        let ty_generator = WireRustGenerator::new(field.ty.clone(), self.context.clone());
+        let ty_generator = WireRustGenerator::new(field.ty.clone(), self.context);
 
         let init = if ty_generator.rust_wire_is_pointer(Target::Io) {
             "core::ptr::null_mut()".to_owned()
