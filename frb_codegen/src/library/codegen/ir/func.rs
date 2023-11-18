@@ -13,6 +13,7 @@ pub struct IrFunc {
     pub comments: Vec<IrComment>,
 }
 
+#[derive(Copy)]
 pub enum IrFuncMode {
     Normal,
     Sync,

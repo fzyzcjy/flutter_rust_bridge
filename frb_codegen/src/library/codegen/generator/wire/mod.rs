@@ -1,5 +1,6 @@
 mod c;
 mod dart;
+mod misc;
 mod rust;
 
 use crate::codegen::generator::output::OutputCode;

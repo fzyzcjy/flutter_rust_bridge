@@ -42,7 +42,7 @@ pub(crate) fn generate_api_func(
         .collect_vec();
 
     let wire_param_list = [
-        if func.mode.has_port_argument() {
+        if has_port_argument(func.mode) {
             vec!["port_".to_owned()]
         } else {
             vec![]

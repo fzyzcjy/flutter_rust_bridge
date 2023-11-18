@@ -91,7 +91,7 @@ pub fn generate_wasm_wire_func_method(func: &IrFuncDisplay) -> String {
             .map(|param| param.name.to_string())
             .join(","),
         name = func.name,
-        out = if func.has_port_argument {
+        out = if has_port_argument(func) {
             "void".into()
         } else {
             reconstruct_dart_wire_from_raw_repr(&func.output)

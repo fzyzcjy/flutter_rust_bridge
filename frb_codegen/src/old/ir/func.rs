@@ -54,18 +54,12 @@ impl IrFuncMode {
     }
 
     #[inline]
-    pub fn has_port_argument(&self) -> bool {
-        !matches!(self, Self::Sync)
-    }
-
-    #[inline]
     pub fn dart_port_param<'a, T: From<&'a str>>(&self) -> Option<T> {
-        self.has_port_argument()
-            .then(|| "NativePortType port_".into())
+        has_port_argument(self).then(|| "NativePortType port_".into())
     }
 
     #[inline]
     pub fn dart_port_var(&self) -> Option<&str> {
-        self.has_port_argument().then_some("port_")
+        has_port_argument(self).then_some("port_")
     }
 }

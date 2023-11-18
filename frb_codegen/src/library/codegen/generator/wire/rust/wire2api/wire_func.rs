@@ -1,5 +1,6 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::{Target, TargetOrCommon};
+use crate::codegen::generator::wire::misc::has_port_argument;
 use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
 use crate::codegen::generator::wire::rust::wire2api::extern_func::{
     CodeWithExternFunc, ExternFunc, ExternFuncParam,
@@ -81,7 +82,7 @@ fn generate_inner_func_params(func: &IrFunc, ir_pack: &IrPack) -> Vec<String> {
 }
 
 fn generate_params(func: &IrFunc, context: WireRustGeneratorContext) -> Acc<Vec<ExternFuncParam>> {
-    let mut params = if func.mode.has_port_argument() {
+    let mut params = if has_port_argument(func.mode) {
         Acc::new(|target| {
             let rust_type = match target {
                 TargetOrCommon::Io => "i64",
@@ -130,7 +131,7 @@ fn generate_wrap_info_obj(func: &IrFunc) -> String {
     format!(
         "WrapInfo{{ debug_name: \"{name}\", port: {port}, mode: FfiCallMode::{mode} }}",
         name = func.name,
-        port = if func.mode.has_port_argument() {
+        port = if has_port_argument(func.mode) {
             "Some(port_)"
         } else {
             "None"
@@ -212,8 +213,7 @@ fn generate_redirect_body(func: &IrFunc) -> String {
     format!(
         "{}_impl({})",
         wire_func_name(func),
-        func.mode
-            .has_port_argument()
+        has_port_argument(func.mode)
             .then_some("port_")
             .into_iter()
             .chain(func.inputs.iter().map(|arg| arg.name.rust_style()))
