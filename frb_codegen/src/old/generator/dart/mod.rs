@@ -95,13 +95,9 @@ pub fn generate(ir_pack: &IrPack, config: &Opts, wasm_funcs: &[IrFuncDisplay]) -
 struct DartApiSpec {
     dart_funcs: Vec<GeneratedApiFunc>,
     dart_structs: Vec<String>,
-    dart_api2wire_funcs: Acc<String>,
     dart_opaque_funcs: Acc<String>,
-    dart_api_fill_to_wire_funcs: Vec<String>,
-    dart_wire2api_funcs: Vec<String>,
     dart_wasm_funcs: Vec<String>,
     dart_wasm_module: Option<String>,
-    needs_freezed: bool,
     import_array: Option<String>,
 }
 

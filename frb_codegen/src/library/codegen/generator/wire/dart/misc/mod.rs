@@ -5,7 +5,9 @@ use crate::codegen::ir::pack::IrPackComputedCache;
 
 pub(crate) mod ty;
 
-pub(crate) struct WireDartOutputSpecMisc {}
+pub(crate) struct WireDartOutputSpecMisc {
+    needs_freezed: bool,
+}
 
 pub(super) fn generate(
     _context: WireDartGeneratorContext,
