@@ -51,10 +51,10 @@ impl<'a> WireDartGeneratorWire2apiTrait for DelegateWireDartGenerator<'a> {
                     "return wire2apiDuration(_wire2api_i64(raw));".to_owned()
                 }
             }
-            IrTypeDelegate::TimeList(ir) => {
+            IrTypeDelegate::TimeList(_) => {
                 format!(
                     "return (raw as List<dynamic>).map(_wire2api_Chrono_{}).toList();",
-                    ir.safe_ident()
+                    self.ir.safe_ident()
                 )
             }
             IrTypeDelegate::Uuid => {

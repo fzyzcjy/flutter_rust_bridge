@@ -71,11 +71,11 @@ impl<'a> WireDartGeneratorApi2wireTrait for DelegateWireDartGenerator<'a> {
                     ..Default::default()
                 },
             },
-            IrTypeDelegate::TimeList(ir) => Acc::distribute(Some(format!(
+            IrTypeDelegate::TimeList(_) => Acc::distribute(Some(format!(
                 "final ans = Int64List(raw.length);
                 for (var i=0; i < raw.length; ++i) ans[i] = api2wire_Chrono_{}(raw[i]);
                 return api2wire_int_64_list(ans);",
-                ir.safe_ident()
+                self.ir.safe_ident()
             ))),
             IrTypeDelegate::Uuid => {
                 Acc::distribute(Some("return api2wire_uint_8_list(raw.toBytes());".into()))

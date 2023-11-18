@@ -1,10 +1,14 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::api_dart::base::ApiDartGenerator;
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::dart::base::{WireDartGenerator, WireDartGeneratorContext};
 use crate::codegen::generator::wire::dart::output_code::WireDartOutputCode;
 use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Optional;
+use crate::library::codegen::generator::api_dart::info::ApiDartGeneratorInfoTrait;
+use crate::library::codegen::generator::wire::dart::api2wire::ty::WireDartGeneratorApi2wireTrait;
+use crate::library::codegen::ir::ty::IrTypeTrait;
 
 pub(crate) mod ty;
 
@@ -40,9 +44,9 @@ fn generate_api2wire_func(ty: &IrType, context: WireDartGeneratorContext) -> Acc
                 {} api2wire_{}({} raw) {{
                     {body}
                 }}",
-                ty.dart_wire_type(target),
+                WireDartGenerator::new(ty.clone(), context).dart_wire_type(target),
                 ty.safe_ident(),
-                ty.dart_api_type(),
+                ApiDartGenerator::new(ty.clone(), context).dart_api_type(),
             )
         })
         .unwrap_or_default()
@@ -61,8 +65,8 @@ fn generate_api_fill_to_wire_func(ty: &IrType, context: WireDartGeneratorContext
                 {body}
             }}",
             ty.safe_ident(),
-            ty.dart_api_type(),
-            target_wire_type.dart_wire_type(Target::Io),
+            ApiDartGenerator::new(ty.clone(), context).dart_api_type(),
+            WireDartGenerator::new(target_wire_type.clone(), context).dart_wire_type(Target::Io),
         )
     } else {
         "".to_string()
