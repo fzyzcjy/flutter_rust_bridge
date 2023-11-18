@@ -1,6 +1,7 @@
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::common::ty::WireRustGeneratorCommonTrait;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
+use crate::codegen::ir::ty::delegate::IrTypeDelegatePrimitiveEnum;
 use crate::forward_delegate_primitive_enum;
 
 impl<'a> WireRustGeneratorCommonTrait for DelegateWireRustGenerator<'a> {
@@ -20,7 +21,8 @@ impl<'a> WireRustGeneratorCommonTrait for DelegateWireRustGenerator<'a> {
     //     forward_delegate_primitive_enum!(self, static_checks(), None)
     // }
 
-    fn generate_imports(&self) -> Option<Vec<String>> {
-        forward_delegate_primitive_enum!(self, imports(), None)
-    }
+    // TODO rm this, since we will visit all sub-types to generate
+    // fn generate_imports(&self) -> Option<Vec<String>> {
+    //     forward_delegate_primitive_enum!(self, imports(), None)
+    // }
 }
