@@ -37,10 +37,9 @@ impl<'a> WireDartGeneratorWire2apiTrait for DelegateWireDartGenerator<'a> {
             }
             IrTypeDelegate::String
             | IrTypeDelegate::Backtrace
-            | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => gen_wire2api_simple_type_cast(
-                &ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
-                    .dart_api_type(),
-            ),
+            | IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
+                gen_wire2api_simple_type_cast(self.ir.clone().into(), self.context)
+            }
             IrTypeDelegate::StringList => {
                 "return (raw as List<dynamic>).cast<String>();".to_owned()
             }

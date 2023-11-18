@@ -20,10 +20,7 @@ impl<'a> WireDartGeneratorWire2apiTrait for BoxedWireDartGenerator<'a> {
                 format!("return _wire2api_{}(raw);", self.ir.inner.safe_ident())
             }
             Delegate(IrTypeDelegate::Time(time)) => gen_wire2api_chrono(time),
-            _ => gen_wire2api_simple_type_cast(
-                &ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
-                    .dart_api_type(),
-            ),
+            _ => gen_wire2api_simple_type_cast(self.ir.clone().into(), self.context),
         }
     }
 }

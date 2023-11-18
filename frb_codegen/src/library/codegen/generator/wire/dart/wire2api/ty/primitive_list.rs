@@ -10,10 +10,7 @@ impl<'a> WireDartGeneratorWire2apiTrait for PrimitiveListWireDartGenerator<'a> {
         match &self.ir.primitive {
             IrTypePrimitive::I64 => "return Int64List.from(raw);".into(),
             IrTypePrimitive::U64 => "return Uint64List.from(raw);".into(),
-            _ => gen_wire2api_simple_type_cast(
-                &ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
-                    .dart_api_type(),
-            ),
+            _ => gen_wire2api_simple_type_cast(self.ir.clone().into(), self.context),
         }
     }
 }
