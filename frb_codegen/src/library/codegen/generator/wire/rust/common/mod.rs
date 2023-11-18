@@ -3,6 +3,7 @@ use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::common::ty::WireRustGeneratorCommonTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
+use std::collections::HashSet;
 
 pub(crate) mod ty;
 
@@ -43,4 +44,21 @@ pub(crate) fn generate_static_checks(
     lines.extend(raw);
     lines.push("};".to_owned());
     lines.join("\n")
+}
+
+pub(crate) fn generate_imports(
+    types: &[IrType],
+    context: WireRustGeneratorContext,
+    rust_wire_mod: &str,
+) -> String {
+    types
+        .iter()
+        .flat_map(|ty| WireRustGenerator::new(ty.clone(), context).generate_imports())
+        .flatten()
+        // Don't include imports from the API file
+        .filter(|import| !import.starts_with(&format!("use crate::{rust_wire_mod}::")))
+        // de-duplicate
+        .collect::<HashSet<String>>()
+        .into_iter()
+        .join("\n")
 }

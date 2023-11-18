@@ -237,31 +237,6 @@ impl<'a> Generator<'a> {
         format!("// Section: {section_name}\n")
     }
 
-    fn generate_imports(
-        &self,
-        ir_pack: &IrPack,
-        rust_wire_mod: &str,
-        distinct_input_types: &[IrType],
-        distinct_output_types: &[IrType],
-    ) -> impl Iterator<Item = String> {
-        let input_type_imports = distinct_input_types
-            .iter()
-            .map(|api_type| generate_import(api_type, ir_pack, self.config));
-        let output_type_imports = distinct_output_types
-            .iter()
-            .map(|api_type| generate_import(api_type, ir_pack, self.config));
-
-        input_type_imports
-            .chain(output_type_imports)
-            // Filter out `None` and unwrap
-            .flatten()
-            // Don't include imports from the API file
-            .filter(|import| !import.starts_with(&format!("use crate::{rust_wire_mod}::")))
-            // de-duplicate
-            .collect::<HashSet<String>>()
-            .into_iter()
-    }
-
     fn generate_executor(&mut self, ir_pack: &IrPack) -> String {
         if ir_pack.has_executor {
             "/* nothing since executor detected */".to_string()
@@ -426,8 +401,4 @@ impl<'a> Generator<'a> {
             ),
         })
     }
-}
-
-pub fn generate_import(api_type: &IrType, ir_pack: &IrPack, config: &Opts) -> Option<String> {
-    TypeRustGenerator::new(api_type.clone(), ir_pack, config).imports()
 }
