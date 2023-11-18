@@ -4,6 +4,7 @@ use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGen
 use crate::codegen::generator::wire::rust::misc::section_header_comment;
 use crate::codegen::generator::wire::rust::misc::wire_func::generate_wire_func;
 use crate::codegen::ir::pack::IrPack;
+use crate::codegen::ir::ty::IrType;
 use itertools::Itertools;
 
 pub(crate) mod api2wire;
@@ -13,24 +14,40 @@ pub(crate) mod misc;
 pub(crate) mod wire2api;
 
 pub(crate) fn generate(ir_pack: &IrPack, context: WireRustGeneratorContext) -> Acc<String> {
+    let cache = IrPackComputedCache::new(ir_pack);
     let mut lines = Acc::<Vec<_>>::default();
-    lines += misc::generate(ir_pack, context);
-    lines += wire2api::generate(ir_pack, context);
-    lines += api2wire::generate(ir_pack, context);
+    lines += misc::generate(ir_pack, context, &cache);
+    lines += wire2api::generate(ir_pack, context, &cache);
+    lines += api2wire::generate(ir_pack, context, &cache);
     lines.join("\n")
+}
+
+struct IrPackComputedCache {
+    distinct_input_types: Vec<IrType>,
+    distinct_output_types: Vec<IrType>,
+    input_and_output_types: Vec<IrType>,
+}
+
+impl IrPackComputedCache {
+    pub fn new(ir_pack: &IrPack) -> Self {
+        let distinct_input_types = ir_pack.distinct_types(true, false);
+        let distinct_output_types = ir_pack.distinct_types(false, true);
+        let input_and_output_types = distinct_input_types
+            .iter()
+            .cloned()
+            .chain(distinct_output_types.iter().cloned())
+            .collect_vec();
+        Self {
+            distinct_input_types,
+            distinct_output_types,
+            input_and_output_types,
+        }
+    }
 }
 
 // TODO refactor
 pub(crate) fn generate(ir_pack: &IrPack, context: WireRustGeneratorContext) -> Acc<String> {
     let mut lines = Acc::<Vec<_>>::default();
-
-    let distinct_input_types = ir_pack.distinct_types(true, false);
-    let distinct_output_types = ir_pack.distinct_types(false, true);
-    let input_and_output_types = distinct_input_types
-        .iter()
-        .cloned()
-        .chain(distinct_output_types.iter().cloned())
-        .collect_vec();
 
     lines.push(section_header_comment("wire functions"));
     lines += ir_pack

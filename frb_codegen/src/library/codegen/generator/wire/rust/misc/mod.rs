@@ -1,5 +1,6 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
+use crate::codegen::generator::wire::rust::IrPackComputedCache;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::misc::ty::WireRustGeneratorMiscTrait;
@@ -11,14 +12,18 @@ mod misc;
 pub(crate) mod ty;
 pub(crate) mod wire_func;
 
-pub(crate) fn generate(ir_pack: &IrPack, context: WireRustGeneratorContext) -> Acc<Vec<String>> {
+pub(crate) fn generate(
+    ir_pack: &IrPack,
+    context: WireRustGeneratorContext,
+    cache: &IrPackComputedCache,
+) -> Acc<Vec<String>> {
     let mut lines = Acc::<Vec<_>>::default();
 
     lines.push(FILE_ATTRIBUTES.to_string());
     lines.push(generate_code_header());
 
     lines.push(section_header_comment("imports"));
-    lines.push(generate_imports(&input_and_output_types, context));
+    lines.push(generate_imports(&cache.input_and_output_types, context));
 
     lines
 }
