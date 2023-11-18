@@ -26,7 +26,6 @@ pub(crate) struct WireRustOutputSpecMisc {
 }
 
 pub(super) fn generate(
-    ir_pack: &IrPack,
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,
 ) -> WireRustOutputSpecMisc {
@@ -34,7 +33,8 @@ pub(super) fn generate(
         file_attributes: Acc::new_common(vec![FILE_ATTRIBUTES.to_string().into()]),
         code_header: Acc::new_common(vec![generate_code_header().into()]),
         imports: Acc::new_common(vec![generate_imports(&cache.distinct_types, context).into()]),
-        wire_funcs: ir_pack
+        wire_funcs: context
+            .ir_pack
             .funcs
             .iter()
             .map(|f| generate_wire_func(f, context))
@@ -50,7 +50,7 @@ pub(super) fn generate(
             context,
         )
         .into()]),
-        executor: Acc::new_common(vec![generate_executor(ir_pack).into()]),
+        executor: Acc::new_common(vec![generate_executor(context.ir_pack).into()]),
     }
 }
 

@@ -1,7 +1,10 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::wire::dart::base::WireDartGeneratorContext;
+use crate::codegen::generator::misc::Target;
+use crate::codegen::generator::wire::dart::base::{WireDartGenerator, WireDartGeneratorContext};
 use crate::codegen::generator::wire::dart::output_code::WireDartOutputCode;
 use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
+use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::ty::IrType::Optional;
 
 pub(crate) mod ty;
 
@@ -11,8 +14,57 @@ pub(crate) struct WireDartOutputSpecApi2wire {
 }
 
 pub(super) fn generate(
-    _context: WireDartGeneratorContext,
-    _cache: &IrPackComputedCache,
+    context: WireDartGeneratorContext,
+    cache: &IrPackComputedCache,
 ) -> WireDartOutputSpecApi2wire {
-    todo!()
+    WireDartOutputSpecApi2wire {
+        api2wire_funcs: cache
+            .distinct_input_types
+            .iter()
+            .map(|ty| generate_api2wire_func(ty, context))
+            .collect(),
+        api_fill_to_wire_funcs: cache
+            .distinct_input_types
+            .iter()
+            .map(|ty| generate_api_fill_to_wire_func(ty, context))
+            .collect(),
+    }
+}
+
+fn generate_api2wire_func(ty: &IrType, context: WireDartGeneratorContext) -> Acc<String> {
+    let generator = WireDartGenerator::new(ty.clone(), context);
+    generator.api2wire_body().map(|body, target| {
+        body.map(|body| {
+            format!(
+                "@protected
+                {} api2wire_{}({} raw) {{
+                    {body}
+                }}",
+                ty.dart_wire_type(target),
+                ty.safe_ident(),
+                ty.dart_api_type(),
+            )
+        })
+        .unwrap_or_default()
+    })
+}
+
+fn generate_api_fill_to_wire_func(ty: &IrType, context: WireDartGeneratorContext) -> String {
+    if let Some(body) = WireDartGenerator::new(ty.clone(), context).api_fill_to_wire_body() {
+        let target_wire_type = match ty {
+            Optional(inner) => &inner.inner,
+            it => it,
+        };
+
+        format!(
+            "void _api_fill_to_wire_{}({} apiObj, {} wireObj) {{
+                {body}
+            }}",
+            ty.safe_ident(),
+            ty.dart_api_type(),
+            target_wire_type.dart_wire_type(Target::Io),
+        )
+    } else {
+        "".to_string()
+    }
 }

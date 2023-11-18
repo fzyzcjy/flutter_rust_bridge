@@ -13,11 +13,10 @@ pub(crate) struct WireDartOutputSpecMisc {
 
 pub(super) fn generate(
     context: WireDartGeneratorContext,
-    ir_pack: &IrPack,
     cache: &IrPackComputedCache,
 ) -> WireDartOutputSpecMisc {
     WireDartOutputSpecMisc {
-        needs_freezed: compute_needs_freezed(cache, ir_pack),
+        needs_freezed: compute_needs_freezed(cache, context.ir_pack),
     }
 }
 

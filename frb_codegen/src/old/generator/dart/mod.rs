@@ -117,12 +117,6 @@ impl DartApiSpec {
         //     .map(|ty| TypeDartGenerator::new(ty.clone(), ir_pack, config).structs())
         //     .collect_vec();
 
-        let api2wire_funcs = distinct_input_types
-            .iter()
-            .map(|ty| generate_api2wire_func(ty, ir_pack, config))
-            .collect::<Acc<_>>()
-            .join("\n");
-
         // moved
         // let dart_funcs = (ir_pack
         //     .funcs
@@ -135,11 +129,6 @@ impl DartApiSpec {
                 .map(generate_opaque_getters),
         )
         .collect_vec();
-
-        let api_fill_to_wire_funcs = distinct_input_types
-            .iter()
-            .map(|ty| generate_api_fill_to_wire_func(ty, ir_pack, config))
-            .collect_vec();
 
         let dart_opaque_funcs = distinct_output_types
             .iter()
@@ -433,47 +422,6 @@ fn generate_file_prelude() -> DartBasicCode {
         ),
         part: "".to_string(),
         body: "".to_string(),
-    }
-}
-
-fn generate_api2wire_func(ty: &IrType, ir_pack: &IrPack, config: &Opts) -> Acc<String> {
-    let generator = TypeDartGenerator::new(ty.clone(), ir_pack, config);
-    generator.api2wire_body().map(|body, target| {
-        body.map(|body| {
-            format!(
-                "@protected
-                    {} api2wire_{}({} raw) {{
-                        {}
-                    }}",
-                ty.dart_wire_type(target),
-                ty.safe_ident(),
-                ty.dart_api_type(),
-                body,
-            )
-        })
-        .unwrap_or_default()
-    })
-}
-
-fn generate_api_fill_to_wire_func(ty: &IrType, ir_pack: &IrPack, config: &Opts) -> String {
-    if let Some(body) = TypeDartGenerator::new(ty.clone(), ir_pack, config).api_fill_to_wire_body()
-    {
-        let target_wire_type = match ty {
-            Optional(inner) => &inner.inner,
-            it => it,
-        };
-
-        format!(
-            "void _api_fill_to_wire_{}({} apiObj, {} wireObj) {{
-                {}
-            }}",
-            ty.safe_ident(),
-            ty.dart_api_type(),
-            target_wire_type.dart_wire_type(Target::Io),
-            body,
-        )
-    } else {
-        "".to_string()
     }
 }
 

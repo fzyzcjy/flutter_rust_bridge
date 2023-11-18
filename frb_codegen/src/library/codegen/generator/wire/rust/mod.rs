@@ -25,7 +25,7 @@ pub(crate) struct WireRustOutputSpec {
 pub(crate) fn generate(ir_pack: &IrPack, context: WireRustGeneratorContext) -> WireRustOutputSpec {
     let cache = IrPackComputedCache::compute(ir_pack);
     WireRustOutputSpec {
-        misc: misc::generate(ir_pack, context, &cache),
+        misc: misc::generate(context, &cache),
         wire2api: wire2api::generate(context, &cache),
         api2wire: api2wire::generate(context, &cache),
     }
