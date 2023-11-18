@@ -15,7 +15,7 @@ pub(crate) trait ApiDartGeneratorInfoTrait {
 
 impl<'a> ApiDartGeneratorInfoTrait for BoxedApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context.clone());
+        let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context);
         inner.dart_api_type()
     }
 }
@@ -29,15 +29,14 @@ impl<'a> ApiDartGeneratorInfoTrait for DartOpaqueApiDartGenerator<'a> {
 impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         match &self.ir {
-            IrTypeDelegate::Array(array) => array.dart_api_type(self.context.clone()),
+            IrTypeDelegate::Array(array) => array.dart_api_type(self.context),
             IrTypeDelegate::String => "String".to_string(),
             IrTypeDelegate::StringList => "List<String>".to_owned(),
             IrTypeDelegate::ZeroCopyBufferVecPrimitive(_) => {
-                ApiDartGenerator::new(self.ir.get_delegate(), self.context.clone()).dart_api_type()
+                ApiDartGenerator::new(self.ir.get_delegate(), self.context).dart_api_type()
             }
             IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) => {
-                ApiDartGenerator::new(IrType::EnumRef(ir.clone()), self.context.clone())
-                    .dart_api_type()
+                ApiDartGenerator::new(IrType::EnumRef(ir.clone()), self.context).dart_api_type()
             }
             IrTypeDelegate::Time(ir) => match ir {
                 IrTypeDelegateTime::Local | IrTypeDelegateTime::Utc | IrTypeDelegateTime::Naive => {
@@ -90,21 +89,21 @@ impl<'a> ApiDartGeneratorInfoTrait for EnumRefApiDartGenerator<'a> {
 
 impl<'a> ApiDartGeneratorInfoTrait for GeneralListApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context.clone());
+        let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context);
         format!("List<{}>", inner.dart_api_type())
     }
 }
 
 impl<'a> ApiDartGeneratorInfoTrait for OptionalApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context.clone());
+        let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context);
         format!("{}?", inner.dart_api_type())
     }
 }
 
 impl<'a> ApiDartGeneratorInfoTrait for OptionalListApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context.clone());
+        let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context);
         format!("List<{}?>", inner.dart_api_type())
     }
 }
@@ -154,7 +153,7 @@ impl<'a> ApiDartGeneratorInfoTrait for RecordApiDartGenerator<'a> {
             .ir
             .values
             .iter()
-            .map(|ty| ApiDartGenerator::new(ty.clone(), self.context.clone()).dart_api_type())
+            .map(|ty| ApiDartGenerator::new(ty.clone(), self.context).dart_api_type())
             .collect_vec()
             .join(",");
         if self.ir.values.len() == 1 {
@@ -167,7 +166,7 @@ impl<'a> ApiDartGeneratorInfoTrait for RecordApiDartGenerator<'a> {
 
 impl<'a> ApiDartGeneratorInfoTrait for RustOpaqueApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context.clone());
+        let inner = ApiDartGenerator::new(self.ir.inner.clone(), self.context);
         inner.dart_api_type()
     }
 }

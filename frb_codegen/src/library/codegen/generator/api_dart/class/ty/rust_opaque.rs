@@ -9,8 +9,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
         let dart_api_instance_name = &self.context.config.dart_api_instance_name;
         let dart_api_class_name = &self.context.config.dart_api_class_name;
         let dart_api_type =
-            ApiDartGenerator::new(RustOpaque(self.ir.clone()), self.context.clone())
-                .dart_api_type();
+            ApiDartGenerator::new(RustOpaque(self.ir.clone()), self.context).dart_api_type();
 
         let (field, param) = if self.context.config.use_bridge_in_method {
             (

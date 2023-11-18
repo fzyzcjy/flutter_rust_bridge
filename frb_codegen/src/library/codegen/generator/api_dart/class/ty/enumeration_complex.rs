@@ -77,7 +77,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
                     .unwrap_or_default();
                 let comments = generate_dart_comments(&field.comments);
                 let type_str =
-                    ApiDartGenerator::new(field.ty.clone(), self.context.clone()).dart_api_type();
+                    ApiDartGenerator::new(field.ty.clone(), self.context).dart_api_type();
                 let name_str = field.name.dart_style();
                 format!("{comments} {default} {type_str} {name_str},")
             })
@@ -99,7 +99,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
             .map(|field| {
                 format!(
                     "{comments} {default} {required}{} {} ,",
-                    ApiDartGenerator::new(field.ty.clone(), self.context.clone()).dart_api_type(),
+                    ApiDartGenerator::new(field.ty.clone(), self.context).dart_api_type(),
                     field.name.dart_style(),
                     required = generate_field_required_modifier(field),
                     comments = generate_dart_comments(&field.comments),

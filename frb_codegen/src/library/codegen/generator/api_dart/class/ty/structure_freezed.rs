@@ -49,7 +49,7 @@ impl<'a> StructRefApiDartGenerator<'a> {
                     generate_field_default(field, true, self.context.config.dart_enums_style);
                 let required_modifier = generate_field_required_modifier(field);
                 let type_str =
-                    ApiDartGenerator::new(field.ty.clone(), self.context.clone()).dart_api_type();
+                    ApiDartGenerator::new(field.ty.clone(), self.context).dart_api_type();
                 let name = field.name.dart_style();
                 format!("{default} {required_modifier} {type_str} {name},")
             })

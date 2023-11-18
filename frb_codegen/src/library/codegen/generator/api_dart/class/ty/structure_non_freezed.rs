@@ -44,8 +44,7 @@ impl<'a> StructRefApiDartGenerator<'a> {
             .map(|f| {
                 let comments = generate_dart_comments(&f.comments);
                 let maybe_final = if f.is_final { "final" } else { "" };
-                let type_str =
-                    ApiDartGenerator::new(f.ty.clone(), self.context.clone()).dart_api_type();
+                let type_str = ApiDartGenerator::new(f.ty.clone(), self.context).dart_api_type();
                 let name_str = f.name.dart_style();
                 format!("{comments}{maybe_final} {type_str} {name_str};")
             })

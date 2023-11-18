@@ -16,7 +16,7 @@ use itertools::Itertools;
 pub(super) fn generate_api_method(
     func: &IrFunc,
     ir_struct: &IrStruct,
-    context: &ApiDartGeneratorContext,
+    context: ApiDartGeneratorContext,
 ) -> String {
     let method_info = if let IrFuncOwnerInfo::Method(info) = &func.owner {
         info
@@ -30,7 +30,7 @@ pub(super) fn generate_api_method(
 
     let params = generate_params(func, context, is_static_method, skip_count);
     let comments = generate_dart_comments(&func.comments);
-    let signature = generate_signature(&func, ir_struct, &context, method_info, params);
+    let signature = generate_signature(&func, ir_struct, context, method_info, params);
     let arg_names = generate_arg_names(func, is_static_method, skip_count).concat();
     let implementation = generate_implementation(func, context, is_static_method, arg_names);
 
@@ -39,7 +39,7 @@ pub(super) fn generate_api_method(
 
 fn generate_params(
     func: &IrFunc,
-    context: &ApiDartGeneratorContext,
+    context: ApiDartGeneratorContext,
     is_static_method: bool,
     skip_count: usize,
 ) -> Vec<String> {
@@ -50,7 +50,7 @@ fn generate_params(
         .map(|input| {
             let required = generate_field_required_modifier(input);
             let default = generate_field_default(input, false, context.config.dart_enums_style);
-            let type_str = ApiDartGenerator::new(input.ty.clone(), context.clone()).dart_api_type();
+            let type_str = ApiDartGenerator::new(input.ty.clone(), context).dart_api_type();
             let name_str = input.name.dart_style();
             format!("{required}{type_str} {name_str} {default}")
         })
@@ -69,7 +69,7 @@ fn generate_params(
 fn generate_signature(
     func: &IrFunc,
     ir_struct: &IrStruct,
-    context: &ApiDartGeneratorContext,
+    context: ApiDartGeneratorContext,
     method_info: &IrFuncOwnerInfoMethod,
     func_params: Vec<String>,
 ) -> String {
@@ -77,7 +77,7 @@ fn generate_signature(
     let maybe_static = if is_static_method { "static" } else { "" };
     let return_type = generate_function_dart_return_type(
         &func.mode,
-        &ApiDartGenerator::new(func.output.clone(), context.clone()).dart_api_type(),
+        &ApiDartGenerator::new(func.output.clone(), context).dart_api_type(),
     );
     let method_name = if is_static_method && method_info.actual_method_name == "new" {
         format!("new{}", ir_struct.name)
@@ -104,7 +104,7 @@ fn generate_arg_names(func: &IrFunc, is_static_method: bool, skip_count: usize) 
 
 fn generate_implementation(
     func: &IrFunc,
-    context: &ApiDartGeneratorContext,
+    context: ApiDartGeneratorContext,
     is_static_method: bool,
     arg_names: String,
 ) -> String {

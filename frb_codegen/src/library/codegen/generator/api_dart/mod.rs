@@ -23,7 +23,7 @@ pub(crate) fn generate(
     let funcs = ir_pack
         .funcs
         .iter()
-        .map(|f| function::generate_func(f, &context, config.dart_enums_style))
+        .map(|f| function::generate_func(f, context, config.dart_enums_style))
         .map(|func| {
             format!(
                 "{}{}\n\n{}",
@@ -34,7 +34,7 @@ pub(crate) fn generate(
 
     let classes = distinct_types
         .iter()
-        .filter_map(|ty| ApiDartGenerator::new(ty.clone(), context.clone()).generate_class())
+        .filter_map(|ty| ApiDartGenerator::new(ty.clone(), context).generate_class())
         .join("\n\n");
 
     Ok(DartOutputCode {

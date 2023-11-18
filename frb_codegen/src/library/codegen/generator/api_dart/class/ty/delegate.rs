@@ -9,22 +9,19 @@ impl<'a> ApiDartGeneratorClassTrait for DelegateApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<String> {
         match &self.ir {
             IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) => {
-                EnumRefApiDartGenerator::new(ir.clone(), self.context.clone()).generate_class()
+                EnumRefApiDartGenerator::new(ir.clone(), self.context).generate_class()
             }
-            IrTypeDelegate::Array(array) => generate_array(array, &self.context),
+            IrTypeDelegate::Array(array) => generate_array(array, self.context),
             _ => None,
         }
     }
 }
 
-fn generate_array(
-    array: &IrTypeDelegateArray,
-    context: &ApiDartGeneratorContext,
-) -> Option<String> {
-    let self_dart_api_type = array.dart_api_type(context.clone());
-    let inner_dart_api_type = ApiDartGenerator::new(array.inner(), context.clone()).dart_api_type();
+fn generate_array(array: &IrTypeDelegateArray, context: ApiDartGeneratorContext) -> Option<String> {
+    let self_dart_api_type = array.dart_api_type(context);
+    let inner_dart_api_type = ApiDartGenerator::new(array.inner(), context).dart_api_type();
     let delegate_dart_api_type =
-        ApiDartGenerator::new(array.get_delegate(), context.clone()).dart_api_type();
+        ApiDartGenerator::new(array.get_delegate(), context).dart_api_type();
 
     let array_length = array.length();
 

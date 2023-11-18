@@ -17,7 +17,7 @@ impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
             .filter(|f| {
                 matches!(&f.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod{ struct_name, .. }) if struct_name == &src.name)
             })
-            .map(|func| generate_api_method(func, src, &self.context))
+            .map(|func| generate_api_method(func, src, self.context))
             .collect_vec();
 
         Some(if src.using_freezed() {

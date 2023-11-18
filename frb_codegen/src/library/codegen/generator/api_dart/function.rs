@@ -19,7 +19,7 @@ pub(crate) struct GeneratedApiFunc {
 
 pub(crate) fn generate_func(
     func: &IrFunc,
-    context: &ApiDartGeneratorContext,
+    context: ApiDartGeneratorContext,
     dart_enums_style: bool,
 ) -> GeneratedApiFunc {
     let params = generate_params(func, context, dart_enums_style).join(", ");
@@ -29,7 +29,7 @@ pub(crate) fn generate_func(
         func_name = func.name.to_case(Case::Camel),
         func_return_type = generate_function_dart_return_type(
             &func.mode,
-            &ApiDartGenerator::new(func.output.clone(), context.clone()).dart_api_type()
+            &ApiDartGenerator::new(func.output.clone(), context).dart_api_type()
         ),
     );
     let func_signature = format!("{func_expr};");
@@ -49,7 +49,7 @@ pub(crate) fn generate_func(
 
 fn generate_params(
     func: &IrFunc,
-    context: &ApiDartGeneratorContext,
+    context: ApiDartGeneratorContext,
     dart_enums_style: bool,
 ) -> Vec<String> {
     let mut ans = func
@@ -58,7 +58,7 @@ fn generate_params(
         .map(|input| {
             let required = generate_field_required_modifier(input);
             let r#default = generate_field_default(input, false, dart_enums_style);
-            let type_str = ApiDartGenerator::new(input.ty.clone(), context.clone()).dart_api_type();
+            let type_str = ApiDartGenerator::new(input.ty.clone(), context).dart_api_type();
             let name_str = input.name.dart_style();
             format!("{required}{type_str} {name_str} {default}")
         })
