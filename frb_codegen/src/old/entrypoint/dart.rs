@@ -126,7 +126,7 @@ pub(crate) fn generate_dart_code(
         let dart_root = dart_root
             .as_ref()
             .ok_or(crate::config::Error::FailedInferDartRoot)?;
-        commands::build_runner(dart_root)?;
+        commands::dart_build_runner(dart_root)?;
     }
 
     info!("Phase: Formatting Dart code");
