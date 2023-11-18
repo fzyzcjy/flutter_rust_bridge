@@ -24,7 +24,7 @@ impl IrTypeDelegateArray {
 
     pub fn inner_is_js_value(&self) -> bool {
         match self {
-            IrTypeDelegateArray::GeneralArray { general, .. } => general.is_js_value(),
+            IrTypeDelegateArray::GeneralArray { general, .. } => is_js_value(general),
             IrTypeDelegateArray::PrimitiveArray { .. } => false,
         }
     }

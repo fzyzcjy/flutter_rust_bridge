@@ -1,5 +1,5 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::misc::Target;
+use crate::codegen::generator::misc::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::enumeration::{IrEnumMode, IrVariant, IrVariantKind};
@@ -46,10 +46,10 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
     fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
         let enu = self.ir.get(self.context.ir_pack);
         Acc::new(|target| {
-            if matches!(target, Common) {
+            if matches!(target, TargetOrCommon::Common) {
                 return None;
             }
-            let wasm = target == Target::Wasm;
+            let wasm = target == TargetOrCommon::Wasm;
             let mut variants =
                 (enu.variants())
                     .iter()
@@ -67,7 +67,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
                                     String::new()
                                 };
 
-                                if target != Target::Wasm {
+                                if target != TargetOrCommon::Wasm {
                                     format!("{field_} ans.{field_name}.wire2api()")
                                 } else {
                                     format!("{field_} self_.get({}).wire2api()", idx + 1)
@@ -75,7 +75,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
                             });
 
                             let (left, right) = st.brackets_pair();
-                            if target == Target::Wasm {
+                            if target == TargetOrCommon::Wasm {
                                 format!(
                                     "{idx} => {{
                                         {enum_name}::{variant_name}{left}{fields}{right} }},",

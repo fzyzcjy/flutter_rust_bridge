@@ -47,6 +47,7 @@ impl<T> Acc<T> {
             wasm: init(TargetOrCommon::Wasm),
         }
     }
+
     pub fn map<O>(self, mut mapper: impl FnMut(T, TargetOrCommon) -> O) -> Acc<O> {
         Acc {
             common: mapper(self.common, TargetOrCommon::Common),

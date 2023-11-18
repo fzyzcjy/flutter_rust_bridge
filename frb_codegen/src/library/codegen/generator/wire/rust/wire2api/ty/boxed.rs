@@ -1,7 +1,8 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::misc::TargetOrCommon::*;
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
-use crate::codegen::ir::ty::delegate::IrTypeDelegate;
+use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
@@ -33,7 +34,10 @@ impl<'a> WireRustGeneratorWire2apiTrait for BoxedWireRustGenerator<'a> {
 
     fn generate_impl_wire2api_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
         (self.ir.exist_in_real_api).then(|| match &*self.ir.inner {
-            IrType::Delegate(IrTypeDelegate::PrimitiveEnum { repr, .. }) => format!(
+            IrType::Delegate(IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum {
+                repr,
+                ..
+            })) => format!(
                 "let ptr: Box<{}> = self.wire2api(); Box::new(ptr.wire2api())",
                 repr.rust_api_type()
             )
