@@ -5,6 +5,7 @@ use crate::codegen::generator::wire::rust::wire2api::extern_func::CodeWithExtern
 use crate::codegen::generator::wire::rust::wire2api::impl_new_with_nullptr::generate_impl_new_with_nullptr_code_block;
 use crate::codegen::generator::wire::rust::wire2api::misc::generate_class_from_fields;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
+use crate::codegen::ir::ty::IrTypeTrait;
 use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
 use std::borrow::Cow;
 

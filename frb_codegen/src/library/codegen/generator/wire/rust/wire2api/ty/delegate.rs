@@ -1,8 +1,11 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::{is_js_value, Target};
 use crate::codegen::generator::wire::rust::base::*;
+use crate::codegen::generator::wire::rust::wire2api::extern_func::CodeWithExternFunc;
 use crate::codegen::generator::wire::rust::wire2api::misc::generate_class_from_fields;
-use crate::codegen::generator::wire::rust::wire2api::ty::general_list::general_list_impl_wire2api_body;
+use crate::codegen::generator::wire::rust::wire2api::ty::general_list::{
+    general_list_impl_wire2api_body, generate_list_generate_allocate_func,
+};
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
@@ -123,7 +126,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
     fn generate_allocate_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
         match &self.ir {
             list @ IrTypeDelegate::StringList => Acc {
-                io: Some(generate_list_allocate_func(
+                io: Some(generate_list_generate_allocate_func(
                     collector,
                     &self.ir.safe_ident(),
                     list,

@@ -1,6 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
+use crate::codegen::generator::wire::rust::wire2api::extern_func::CodeWithExternFunc;
 use crate::codegen::generator::wire::rust::wire2api::misc::generate_class_from_fields;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
@@ -31,7 +32,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for GeneralListWireRustGenerator<'a> {
 
     fn generate_allocate_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
         Acc {
-            io: Some(generate_list_allocate_func(
+            io: Some(generate_list_generate_allocate_func(
                 collector,
                 &self.ir.safe_ident(),
                 &self.ir,
@@ -69,3 +70,41 @@ const WIRE2API_BODY_IO: &'static str = "
 ";
 const WIRE2API_BODY_WASM: &'static str =
     "self.dyn_into::<JsArray>().unwrap().iter().map(Wire2Api::wire2api).collect()";
+
+pub(crate) fn generate_list_generate_allocate_func(
+    collector: &mut ExternFuncCollector,
+    safe_ident: &str,
+    list: &impl IrTypeTrait,
+    inner: &IrType,
+    block_index: BlockIndex,
+) -> String {
+    // let wasm = false;
+    collector.generate(
+        &format!("new_{safe_ident}_{block_index}"),
+        [("len: i32", "int")],
+        Some(
+            &[
+                list.rust_wire_modifier(Target::Io).as_str(),
+                list.rust_wire_type(Target::Io).as_str(),
+            ]
+            .concat(),
+        ),
+        &format!(
+            "let wrap = {} {{ ptr: support::new_leak_vec_ptr({}, len), len }};
+                support::new_leak_box_ptr(wrap)",
+            list.rust_wire_type(Target::Io),
+            if inner.is_primitive() {
+                // A primitive enum list can use a default value since
+                // `<i32>::new_with_null_ptr()` isn't implemented.
+                "Default::default()".to_string()
+            } else {
+                format!(
+                    "<{}{}>::new_with_null_ptr()",
+                    general_list_maybe_extra_pointer_indirection(IrTypeGeneralList { inner }),
+                    inner.rust_wire_type(Target::Io)
+                )
+            }
+        ),
+        Io,
+    )
+}

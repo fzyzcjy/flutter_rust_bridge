@@ -431,42 +431,4 @@ pub fn generate_import(api_type: &IrType, ir_pack: &IrPack, config: &Opts) -> Op
     TypeRustGenerator::new(api_type.clone(), ir_pack, config).imports()
 }
 
-pub fn generate_list_allocate_func(
-    collector: &mut ExternFuncCollector,
-    safe_ident: &str,
-    list: &impl IrTypeTrait,
-    inner: &IrType,
-    block_index: BlockIndex,
-) -> String {
-    // let wasm = false;
-    collector.generate(
-        &format!("new_{safe_ident}_{block_index}"),
-        [("len: i32", "int")],
-        Some(
-            &[
-                list.rust_wire_modifier(Target::Io).as_str(),
-                list.rust_wire_type(Target::Io).as_str(),
-            ]
-            .concat(),
-        ),
-        &format!(
-            "let wrap = {} {{ ptr: support::new_leak_vec_ptr({}, len), len }};
-                support::new_leak_box_ptr(wrap)",
-            list.rust_wire_type(Target::Io),
-            if inner.is_primitive() {
-                // A primitive enum list can use a default value since
-                // `<i32>::new_with_null_ptr()` isn't implemented.
-                "Default::default()".to_string()
-            } else {
-                format!(
-                    "<{}{}>::new_with_null_ptr()",
-                    general_list_maybe_extra_pointer_indirection(IrTypeGeneralList { inner }),
-                    inner.rust_wire_type(Target::Io)
-                )
-            }
-        ),
-        Io,
-    )
-}
-
 pub const NO_PARAMS: Option<(&str, &str)> = None;

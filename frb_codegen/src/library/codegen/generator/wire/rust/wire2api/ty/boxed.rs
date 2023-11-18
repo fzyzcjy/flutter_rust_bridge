@@ -1,6 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::TargetOrCommon::*;
 use crate::codegen::generator::wire::rust::base::*;
+use crate::codegen::generator::wire::rust::wire2api::extern_func::CodeWithExternFunc;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
 use crate::codegen::ir::ty::IrType;

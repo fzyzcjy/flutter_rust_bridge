@@ -1,9 +1,11 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
+use crate::codegen::generator::wire::rust::wire2api::extern_func::CodeWithExternFunc;
 use crate::codegen::generator::wire::rust::wire2api::misc::generate_class_from_fields;
 use crate::codegen::generator::wire::rust::wire2api::ty::general_list::general_list_impl_wire2api_body;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
+use crate::codegen::ir::ty::IrTypeTrait;
 use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
 
 impl<'a> WireRustGeneratorWire2apiTrait for OptionalListWireRustGenerator<'a> {
