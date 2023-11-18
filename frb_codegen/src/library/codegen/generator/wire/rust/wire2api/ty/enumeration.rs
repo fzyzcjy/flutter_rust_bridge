@@ -98,8 +98,8 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
 
         Some(CodeWithExternFunc {
             code: generate_impl_new_with_nullptr_code_block(
-                WireRustGenerator::new(self.ir.clone().into(), self.context.clone())
-                    .rust_wire_type(Target::Io),
+                self.ir.clone(),
+                &self.context,
                 "Self { tag: -1, kind: core::ptr::null_mut() }",
                 true,
             ),

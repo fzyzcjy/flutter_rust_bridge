@@ -30,8 +30,8 @@ impl<'a> WireRustGeneratorWire2apiTrait for DartOpaqueWireRustGenerator<'a> {
     fn generate_impl_new_with_nullptr(&self) -> Option<CodeWithExternFunc> {
         Some(CodeWithExternFunc::code(
             generate_impl_new_with_nullptr_code_block(
-                WireRustGenerator::new(self.ir.clone().into(), self.context.clone())
-                    .rust_wire_type(Target::Io),
+                self.ir.clone(),
+                &self.context,
                 "Self { port: 0, handle: 0 }",
                 false,
             ),
