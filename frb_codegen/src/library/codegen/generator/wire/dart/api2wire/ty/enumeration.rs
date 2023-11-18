@@ -38,53 +38,54 @@ impl<'a> WireDartGeneratorApi2wireTrait for EnumRefWireDartGenerator<'a> {
 
 impl<'a> EnumRefWireDartGenerator<'a> {
     fn generate_api_fill_to_wire_body_variant(&self, idx: usize, variant: &IrVariant) -> String {
-        if let IrVariantKind::Value = &variant.kind {
-            format!(
+        match &variant.kind {
+            IrVariantKind::Value => format!(
                 "if (apiObj is {}) {{ wireObj.tag = {}; return; }}",
                 variant.wrapper_name.raw, idx
-            )
-        } else {
-            let pre_field = match &variant.kind {
-                IrVariantKind::Struct(st) => st
-                    .fields
-                    .iter()
-                    .map(|field| {
-                        format!(
-                            "var pre_{} = api2wire_{}(apiObj.{});",
-                            field.name.rust_style(),
-                            field.ty.safe_ident(),
-                            field.name.dart_style()
-                        )
-                    })
-                    .collect_vec(),
-                _ => unreachable!(),
-            };
-            let r = format!("wireObj.kind.ref.{}.ref", variant.name.raw);
-            let body = match &variant.kind {
-                IrVariantKind::Struct(st) => st
-                    .fields
-                    .iter()
-                    .map(|field| {
-                        format!("{}.{name} = pre_{name};", r, name = field.name.rust_style(),)
-                    })
-                    .collect_vec(),
-                _ => unreachable!(),
-            };
-            format!(
-                "if (apiObj is {5}) {{
+            ),
+            IrVariantKind::Struct(_) => {
+                let pre_field = match &variant.kind {
+                    IrVariantKind::Struct(st) => st
+                        .fields
+                        .iter()
+                        .map(|field| {
+                            format!(
+                                "var pre_{} = api2wire_{}(apiObj.{});",
+                                field.name.rust_style(),
+                                field.ty.safe_ident(),
+                                field.name.dart_style()
+                            )
+                        })
+                        .collect_vec(),
+                    _ => unreachable!(),
+                };
+                let r = format!("wireObj.kind.ref.{}.ref", variant.name.raw);
+                let body = match &variant.kind {
+                    IrVariantKind::Struct(st) => st
+                        .fields
+                        .iter()
+                        .map(|field| {
+                            format!("{}.{name} = pre_{name};", r, name = field.name.rust_style(),)
+                        })
+                        .collect_vec(),
+                    _ => unreachable!(),
+                };
+                format!(
+                    "if (apiObj is {5}) {{
                                 {3}
                                 wireObj.tag = {1};
                                 wireObj.kind = inner.inflate_{2}_{0}();
                                 {4}
                                 return;
                             }}",
-                variant.name.raw,
-                idx,
-                self.ir.ident.0,
-                pre_field.join("\n"),
-                body.join("\n"),
-                variant.wrapper_name.raw
-            )
+                    variant.name.raw,
+                    idx,
+                    self.ir.ident.0,
+                    pre_field.join("\n"),
+                    body.join("\n"),
+                    variant.wrapper_name.raw
+                )
+            }
         }
     }
 }
