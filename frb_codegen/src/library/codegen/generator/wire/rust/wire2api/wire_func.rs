@@ -108,22 +108,26 @@ fn generate_params(func: &IrFunc) -> Acc<Vec<ExternFuncParam>> {
 
 fn generate_wrap_info_obj(func: &IrFunc) -> String {
     format!(
-        "WrapInfo{{ debug_name: \"{}\", port: {}, mode: FfiCallMode::{} }}",
-        func.name,
-        if func.mode.has_port_argument() {
+        "WrapInfo{{ debug_name: \"{name}\", port: {port}, mode: FfiCallMode::{mode} }}",
+        name = func.name,
+        port = if func.mode.has_port_argument() {
             "Some(port_)"
         } else {
             "None"
         },
-        func.mode.ffi_call_mode(),
+        mode = func.mode.ffi_call_mode(),
     )
 }
 
 fn generate_code_wire2api(func: &IrFunc) -> String {
     func.inputs
         .iter()
-        .map(|field| format!("let api_{0} = {0}.wire2api();", field.name.rust_style()))
-        .collect_vec()
+        .map(|field| {
+            format!(
+                "let api_{name} = {name}.wire2api();",
+                name = field.name.rust_style()
+            )
+        })
         .join("")
 }
 
@@ -159,7 +163,7 @@ fn generate_handler_func_name(func: &IrFunc, ir_pack: &IrPack) -> String {
         IrFuncMode::Sync => "wrap_sync".to_owned(),
         IrFuncMode::Normal | IrFuncMode::Stream { .. } => {
             let output = if matches!(func.mode, IrFuncMode::Stream { .. }) {
-                String::from("()")
+                "()".to_owned()
             } else {
                 func.output.intodart_type(ir_pack)
             };
@@ -195,10 +199,11 @@ fn generate_redirect_body(func: &IrFunc) -> String {
     format!(
         "{}_impl({})",
         func.wire_func_name(),
-        (func.mode.has_port_argument().then_some("port_"))
+        func.mode
+            .has_port_argument()
+            .then_some("port_")
             .into_iter()
             .chain(func.inputs.iter().map(|arg| arg.name.rust_style()))
-            .collect_vec()
             .join(","),
     )
 }
