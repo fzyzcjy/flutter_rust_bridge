@@ -11,7 +11,7 @@ pub(crate) mod wire;
 pub(crate) fn generate(ir_pack: &IrPack, config: &GeneratorInternalConfig) -> anyhow::Result<()> {
     // TODO seems not this ideal. we need to call various external tools that directly write to fs
     let output_code_dart_api: OutputCode =
-        api_dart::generate(&ir_pack, &config.dart.into())?.into();
+        api_dart::generate(&ir_pack, &config.dart.clone().into())?.into();
     let output_code_wire = wire::generate(&ir_pack)?;
     let output_code = output_code_dart_api.merge(output_code_wire);
     output_code.write()?;

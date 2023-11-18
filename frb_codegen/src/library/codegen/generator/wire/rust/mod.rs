@@ -22,7 +22,13 @@ pub(crate) struct WireRustOutputSpec {
     api2wire: WireRustOutputSpecApi2wire,
 }
 
-pub(crate) fn generate(ir_pack: &IrPack, context: WireRustGeneratorContext) -> WireRustOutputSpec {
+pub(crate) fn generate(ir_pack: &IrPack, context: WireRustGeneratorContext) -> anyhow::Result<()> {
+    let spec = generate_spec(ir_pack, context);
+    todo!();
+    Ok(())
+}
+
+fn generate_spec(ir_pack: &IrPack, context: WireRustGeneratorContext) -> WireRustOutputSpec {
     let cache = IrPackComputedCache::compute(ir_pack);
     WireRustOutputSpec {
         misc: misc::generate(context, &cache),
