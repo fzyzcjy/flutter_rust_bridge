@@ -10,19 +10,6 @@ type_rust_generator_struct!(TypeGeneralListGenerator, IrTypeGeneralList);
 impl TypeGeneralListGenerator<'_> {}
 
 impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
-    fn generate_allocate_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
-        Acc {
-            io: Some(generate_list_allocate_func(
-                collector,
-                &self.ir.safe_ident(),
-                &self.ir,
-                &self.ir.inner,
-                self.context.config.block_index,
-            )),
-            ..Default::default()
-        }
-    }
-
     fn imports(&self) -> Option<String> {
         generate_import(&self.ir.inner, self.context.ir_pack, self.context.config)
     }

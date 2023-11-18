@@ -39,4 +39,12 @@ pub(crate) trait WireRustGeneratorWire2apiTrait {
     fn generate_impl_new_with_nullptr(&self) -> Option<CodeWithExternFunc> {
         None
     }
+
+    fn generate_allocate_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
+        Default::default()
+    }
+
+    fn generate_related_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
+        Default::default()
+    }
 }

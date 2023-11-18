@@ -10,22 +10,6 @@ use super::TypeGeneralListGenerator;
 type_rust_generator_struct!(TypeOptionalListGenerator, IrTypeOptionalList);
 
 impl TypeRustGeneratorTrait for TypeOptionalListGenerator<'_> {
-    fn generate_allocate_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
-        Acc {
-            io: Some(collector.generate(
-                &format!("new_{}_{}", self.ir.safe_ident(), block_index),
-                [("len: i32", "int")],
-                Some(&format!("*mut {}", self.ir.rust_wire_type(Target::Io))),
-                &format!(
-                    "let wrap = {} {{ ptr: support::new_leak_vec_ptr(core::ptr::null_mut(), len), len }};
-                    support::new_leak_box_ptr(wrap)",
-                    self.ir.rust_wire_type(Target::Io)
-                ),
-                Target::Io,
-            )),
-            ..Default::default()
-        }
-    }
     fn imports(&self) -> Option<String> {
         generate_import(&self.ir.inner, self.context.ir_pack, self.context.config)
     }

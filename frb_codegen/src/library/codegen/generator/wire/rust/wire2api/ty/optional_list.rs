@@ -25,4 +25,21 @@ impl<'a> WireRustGeneratorWire2apiTrait for OptionalListWireRustGenerator<'a> {
     fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
         general_list_impl_wire2api_body()
     }
+
+    fn generate_allocate_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
+        Acc {
+            io: Some(collector.generate(
+                &format!("new_{}_{}", self.ir.safe_ident(), block_index),
+                [("len: i32", "int")],
+                Some(&format!("*mut {}", self.ir.rust_wire_type(Target::Io))),
+                &format!(
+                    "let wrap = {} {{ ptr: support::new_leak_vec_ptr(core::ptr::null_mut(), len), len }};
+                    support::new_leak_box_ptr(wrap)",
+                    self.ir.rust_wire_type(Target::Io)
+                ),
+                Target::Io,
+            )),
+            ..Default::default()
+        }
+    }
 }

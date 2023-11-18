@@ -28,6 +28,19 @@ impl<'a> WireRustGeneratorWire2apiTrait for GeneralListWireRustGenerator<'a> {
     fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {
         general_list_impl_wire2api_body()
     }
+
+    fn generate_allocate_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
+        Acc {
+            io: Some(generate_list_allocate_func(
+                collector,
+                &self.ir.safe_ident(),
+                &self.ir,
+                &self.ir.inner,
+                self.context.config.block_index,
+            )),
+            ..Default::default()
+        }
+    }
 }
 
 /// Does it need additional indirection for types put behind a vector

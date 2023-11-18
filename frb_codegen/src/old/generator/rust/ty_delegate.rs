@@ -12,22 +12,6 @@ use super::generate_impl_into_into_dart;
 type_rust_generator_struct!(TypeDelegateGenerator, IrTypeDelegate);
 
 impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
-    fn generate_allocate_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
-        match &self.ir {
-            list @ IrTypeDelegate::StringList => Acc {
-                io: Some(generate_list_allocate_func(
-                    collector,
-                    &self.ir.safe_ident(),
-                    list,
-                    &list.get_delegate(),
-                    self.context.config.block_index,
-                )),
-                ..Default::default()
-            },
-            _ => Default::default(),
-        }
-    }
-
     fn generate_impl_wire2api_jsvalue_body(&self) -> Option<std::borrow::Cow<str>> {
         Some(match &self.ir {
             IrTypeDelegate::String => {
