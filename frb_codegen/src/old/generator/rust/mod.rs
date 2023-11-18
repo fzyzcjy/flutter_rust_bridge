@@ -60,88 +60,11 @@ impl Output {
 }
 
 pub fn generate(ir_pack: &IrPack, rust_wire_mod: &str, config: &Opts) -> Output {
-    let mut generator = Generator::new(config);
-    let code = generator.generate(ir_pack, rust_wire_mod);
+    let code = generate(ir_pack, rust_wire_mod);
 
     Output {
         code,
         extern_func_names: generator.extern_func_collector.names,
         wasm_exports: generator.extern_func_collector.wasm_exports,
-    }
-}
-
-struct Generator<'a> {
-    extern_func_collector: ExternFuncCollector,
-    config: &'a Opts,
-}
-
-impl<'a> Generator<'a> {
-    fn new(config: &'a Opts) -> Self {
-        Self {
-            extern_func_collector: ExternFuncCollector::new(),
-            config,
-        }
-    }
-
-    fn generate() -> Acc<String> {}
-
-    fn generate_io_part(
-        &mut self,
-        lines: &mut Acc<Vec<String>>,
-        distinct_input_types: &[IrType],
-        ir_pack: &IrPack,
-    ) {
-        lines.io.push(self.section_header_comment("wire structs"));
-        // TODO these become: wire::rust::class::generate
-        // lines.io.extend(
-        //     distinct_input_types
-        //         .iter()
-        //         .map(|ty| self.generate_wire_struct(ty, ir_pack)),
-        // );
-        // lines.io.extend(
-        //     distinct_input_types
-        //         .iter()
-        //         .map(|ty| TypeRustGenerator::new(ty.clone(), ir_pack, self.config).structs()),
-        // );
-
-        (lines.io).push(self.section_header_comment("impl NewWithNullPtr"));
-        // TODO
-        // (lines.io).push(self.generate_new_with_nullptr_misc().to_string());
-        // lines.io.extend(
-        //     distinct_input_types
-        //         .iter()
-        //         .map(|ty| self.generate_new_with_nullptr_func(ty, ir_pack)),
-        // );
-
-        // if self.config.block_index == BlockIndex::PRIMARY {
-        (lines.io).push(self.section_header_comment("sync execution mode utility"));
-        // TODO
-        // lines.io.push(self.generate_sync_execution_mode_utility());
-        // }
-    }
-
-    fn generate_wasm_part(
-        &mut self,
-        lines: &mut Acc<Vec<String>>,
-        distinct_input_types: &[IrType],
-        ir_pack: &IrPack,
-    ) {
-        // moved
-        // (lines.wasm).push(self.section_header_comment("impl Wire2Api for JsValue"));
-        // (lines.wasm).push(
-        //     "impl<T> Wire2Api<Option<T>> for JsValue where JsValue: Wire2Api<T> {
-        //         fn wire2api(self) -> Option<T> {
-        //             (!self.is_null() && !self.is_undefined()).then(|| self.wire2api())
-        //         }
-        //     }"
-        //     .into(),
-        // );
-
-        // TODO moved
-        // lines.wasm.extend(
-        //     distinct_input_types
-        //         .iter()
-        //         .filter_map(|ty| self.generate_wasm2api_func(ty, ir_pack)),
-        // );
     }
 }
