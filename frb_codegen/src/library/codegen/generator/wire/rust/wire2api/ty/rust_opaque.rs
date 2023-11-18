@@ -85,7 +85,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
                     return_type: None,
                     body: format!(
                         "unsafe {{Arc::<{}>::decrement_strong_count(ptr as _);}}",
-                        self.ir.inner_rust
+                        self.ir.inner.rust_api_type()
                     ),
                     target,
                 },
@@ -95,7 +95,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
                     return_type: Some("*const c_void"),
                     body: format!(
                         "unsafe {{Arc::<{}>::increment_strong_count(ptr as _); ptr}}",
-                        self.ir.inner_rust
+                        self.ir.inner.rust_api_type()
                     ),
                     target,
                 },
