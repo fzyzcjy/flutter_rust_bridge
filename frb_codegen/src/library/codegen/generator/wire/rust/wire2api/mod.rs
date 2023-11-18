@@ -13,7 +13,7 @@ pub(crate) fn generate_impl_new_with_nullptr(
 ) -> String {
     let funcs = types
         .iter()
-        .map(|ty| {
+        .filter_map(|ty| {
             WireRustGenerator::new(ty.clone(), context.clone()).generate_impl_new_with_nullptr()
         })
         .collect_vec();

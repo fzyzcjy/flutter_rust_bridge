@@ -35,7 +35,7 @@ pub(crate) trait WireRustGeneratorWire2apiTrait {
 
     fn generate_impl_new_with_nullptr(
         &self,
-        _collector: &mut ExternFuncCollector,
+        // _collector: &mut ExternFuncCollector, // TODO
     ) -> Option<String> {
         None
     }
