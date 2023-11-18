@@ -1,7 +1,9 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::dart::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::dart::base::*;
-use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegateTime};
+use crate::codegen::ir::ty::delegate::{
+    IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
+};
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireDartGeneratorApi2wireTrait for DelegateWireDartGenerator<'a> {
@@ -54,7 +56,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for DelegateWireDartGenerator<'a> {
                 wasm: Some("return raw;".into()),
                 ..Default::default()
             },
-            IrTypeDelegate::PrimitiveEnum { ref repr, .. } => {
+            IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ref repr, .. }) => {
                 format!("return api2wire_{}(raw.index);", repr.safe_ident()).into()
             }
             IrTypeDelegate::Time(ir) => match ir {
