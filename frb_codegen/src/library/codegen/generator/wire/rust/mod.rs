@@ -1,7 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
-use crate::codegen::generator::wire::rust::extern_func::WireRustCode;
 use crate::codegen::generator::wire::rust::misc::section_header_comment;
+use crate::codegen::generator::wire::rust::wire_rust_code::WireRustCode;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::IrType;
 use itertools::Itertools;
@@ -12,6 +12,7 @@ pub(in crate::library::codegen::generator::wire::rust) mod extern_func;
 mod internal_config;
 pub(crate) mod misc;
 pub(crate) mod wire2api;
+mod wire_rust_code;
 
 pub(crate) fn generate(ir_pack: &IrPack, context: WireRustGeneratorContext) -> Acc<WireRustCode> {
     let cache = IrPackComputedCache::new(ir_pack);
