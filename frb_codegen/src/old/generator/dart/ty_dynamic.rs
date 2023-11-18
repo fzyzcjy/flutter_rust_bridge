@@ -8,7 +8,7 @@ impl TypeDartGeneratorTrait for TypeDynamicGenerator<'_> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         Acc::default()
     }
-    fn wire2api_body(&self) -> String {
+    fn generate_impl_wire2api_body(&self) -> String {
         "return raw;".into()
     }
 }

@@ -18,7 +18,7 @@ impl TypeDartGeneratorTrait for TypePrimitiveGenerator<'_> {
         }
     }
 
-    fn wire2api_body(&self) -> String {
+    fn generate_impl_wire2api_body(&self) -> String {
         match self.ir {
             IrTypePrimitive::Unit => "return;".to_owned(),
             IrTypePrimitive::I64 | IrTypePrimitive::U64 | IrTypePrimitive::Usize => {

@@ -52,7 +52,7 @@ impl TypeDartGeneratorTrait for TypeStructRefGenerator<'_> {
         )
     }
 
-    fn wire2api_body(&self) -> String {
+    fn generate_impl_wire2api_body(&self) -> String {
         let src = self.ir.get(self.context.ir_pack);
         let s = self.ir.get(self.context.ir_pack);
 

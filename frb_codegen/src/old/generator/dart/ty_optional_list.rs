@@ -25,7 +25,7 @@ impl TypeDartGeneratorTrait for TypeOptionalListGenerator<'_> {
             ..Default::default()
         }
     }
-    fn wire2api_body(&self) -> String {
+    fn generate_impl_wire2api_body(&self) -> String {
         format!(
             "return mapNonNull(raw as List<dynamic>, _wire2api_{});",
             self.ir.inner.safe_ident()

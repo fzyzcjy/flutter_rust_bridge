@@ -72,7 +72,7 @@ impl TypeDartGeneratorTrait for TypeBoxedGenerator<'_> {
         })
     }
 
-    fn wire2api_body(&self) -> String {
+    fn generate_impl_wire2api_body(&self) -> String {
         match &*self.ir.inner {
             StructRef(_)
             | DartOpaque(_)

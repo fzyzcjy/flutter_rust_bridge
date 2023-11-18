@@ -115,7 +115,7 @@ impl TypeDartGeneratorTrait for TypeEnumRefGenerator<'_> {
         )
     }
 
-    fn wire2api_body(&self) -> String {
+    fn generate_impl_wire2api_body(&self) -> String {
         let enu = self.ir.get(self.context.ir_pack);
         assert!(enu.is_struct());
         let variants = enu

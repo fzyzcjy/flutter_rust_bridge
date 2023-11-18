@@ -40,7 +40,7 @@ impl TypeDartGeneratorTrait for TypeRecordGenerator<'_> {
         Some(values)
     }
 
-    fn wire2api_body(&self) -> String {
+    fn generate_impl_wire2api_body(&self) -> String {
         let len = self.ir.values.len();
         let values = self
             .ir

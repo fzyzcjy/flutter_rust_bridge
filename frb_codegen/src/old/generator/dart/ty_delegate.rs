@@ -90,7 +90,7 @@ impl TypeDartGeneratorTrait for TypeDelegateGenerator<'_> {
         }
     }
 
-    fn wire2api_body(&self) -> String {
+    fn generate_impl_wire2api_body(&self) -> String {
         match &self.ir {
             IrTypeDelegate::Array(array) => match array {
                 IrTypeDelegateArray::GeneralArray { general, .. } => format!(
