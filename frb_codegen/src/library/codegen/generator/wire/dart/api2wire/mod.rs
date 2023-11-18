@@ -6,8 +6,8 @@ use crate::codegen::ir::pack::IrPackComputedCache;
 pub(crate) mod ty;
 
 pub(crate) struct WireDartOutputSpecApi2wire {
-    dart_api2wire_funcs: Acc<Vec<WireDartOutputCode>>,
-    dart_api_fill_to_wire_funcs: Acc<Vec<WireDartOutputCode>>,
+    api2wire_funcs: Acc<Vec<WireDartOutputCode>>,
+    api_fill_to_wire_funcs: Acc<Vec<WireDartOutputCode>>,
 }
 
 pub(super) fn generate(

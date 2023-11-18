@@ -117,7 +117,7 @@ impl DartApiSpec {
         //     .map(|ty| TypeDartGenerator::new(ty.clone(), ir_pack, config).structs())
         //     .collect_vec();
 
-        let dart_api2wire_funcs = distinct_input_types
+        let api2wire_funcs = distinct_input_types
             .iter()
             .map(|ty| generate_api2wire_func(ty, ir_pack, config))
             .collect::<Acc<_>>()
@@ -127,7 +127,7 @@ impl DartApiSpec {
         // let dart_funcs = (ir_pack
         //     .funcs
         //     .iter()
-        //     .map(|f| generate_api_func(f, ir_pack, &dart_api2wire_funcs.common)))
+        //     .map(|f| generate_api_func(f, ir_pack, &api2wire_funcs.common)))
         TODO.chain(
             distinct_output_types
                 .iter()
@@ -136,7 +136,7 @@ impl DartApiSpec {
         )
         .collect_vec();
 
-        let dart_api_fill_to_wire_funcs = distinct_input_types
+        let api_fill_to_wire_funcs = distinct_input_types
             .iter()
             .map(|ty| generate_api_fill_to_wire_func(ty, ir_pack, config))
             .collect_vec();
@@ -174,10 +174,10 @@ impl DartApiSpec {
         DartApiSpec {
             dart_funcs,
             dart_structs,
-            dart_api2wire_funcs,
+            api2wire_funcs,
             dart_opaque_funcs,
-            dart_api_fill_to_wire_funcs,
-            dart_wire2api_funcs,
+            api_fill_to_wire_funcs,
+            wire2api_funcs,
             dart_wasm_funcs,
             dart_wasm_module,
             needs_freezed,
@@ -268,10 +268,10 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
     let dart_platform_class_name = config.dart_platform_class_name();
     let DartApiSpec {
         dart_funcs,
-        dart_api2wire_funcs,
+        api2wire_funcs,
         dart_opaque_funcs,
-        dart_api_fill_to_wire_funcs,
-        dart_wire2api_funcs,
+        api_fill_to_wire_funcs,
+        wire2api_funcs,
         dart_wasm_funcs,
         dart_wasm_module,
         ..
@@ -325,18 +325,18 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
     });
 
     lines.push(section_header("wire2api"));
-    lines.push(dart_wire2api_funcs.join("\n\n"));
+    lines.push(wire2api_funcs.join("\n\n"));
 
     lines.push("}\n".into());
 
     lines.push_all(section_header("api2wire"));
-    lines.push_acc(dart_api2wire_funcs.clone());
+    lines.push_acc(api2wire_funcs.clone());
 
     lines.push_all(section_header("finalizer"));
     lines.push_acc(dart_opaque_funcs.clone());
 
     lines.io.push(section_header("api_fill_to_wire"));
-    lines.io.push(dart_api_fill_to_wire_funcs.join("\n\n"));
+    lines.io.push(api_fill_to_wire_funcs.join("\n\n"));
 
     lines.push_acc(Acc::new(|target| match target {
         Io | Wasm => "}\n".into(),

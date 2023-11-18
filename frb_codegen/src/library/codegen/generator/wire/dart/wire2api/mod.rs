@@ -6,7 +6,7 @@ use crate::codegen::ir::pack::IrPackComputedCache;
 pub(crate) mod ty;
 
 pub(crate) struct WireDartOutputSpecWire2api {
-    dart_wire2api_funcs: Acc<Vec<WireDartOutputCode>>,
+    wire2api_funcs: Acc<Vec<WireDartOutputCode>>,
 }
 
 pub(super) fn generate(
@@ -14,7 +14,7 @@ pub(super) fn generate(
     cache: &IrPackComputedCache,
 ) -> WireDartOutputSpecWire2api {
     WireDartOutputSpecWire2api {
-        dart_wire2api_funcs: cache
+        wire2api_funcs: cache
             .distinct_output_types
             .iter()
             .map(|ty| generate_impl_wire2api_func(ty, ir_pack, dart_api_class_name, config))
