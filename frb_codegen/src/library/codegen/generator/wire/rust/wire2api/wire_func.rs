@@ -1,5 +1,6 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::{Target, TargetOrCommon};
+use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
 use crate::codegen::generator::wire::rust::wire2api::extern_func::{
     CodeWithExternFunc, ExternFunc, ExternFuncParam,
 };
@@ -8,12 +9,18 @@ use crate::codegen::ir::func::{
     IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::pack::IrPack;
+use crate::library::codegen::generator::wire::rust::info::WireRustGeneratorInfoTrait;
+use crate::library::codegen::ir::ty::IrTypeTrait;
 use crate::misc::consts::HANDLER_NAME;
 use itertools::Itertools;
 use std::convert::TryInto;
 
-pub(crate) fn generate_wire_func(func: &IrFunc, ir_pack: &IrPack) -> Acc<CodeWithExternFunc> {
-    let params = generate_params(func);
+pub(crate) fn generate_wire_func(
+    func: &IrFunc,
+    ir_pack: &IrPack,
+    context: WireRustGeneratorContext,
+) -> Acc<CodeWithExternFunc> {
+    let params = generate_params(func, context);
     let inner_func_params = generate_inner_func_params(func, ir_pack);
     let wrap_info_obj = generate_wrap_info_obj(func);
     let code_wire2api = generate_code_wire2api(func);
@@ -25,7 +32,7 @@ pub(crate) fn generate_wire_func(func: &IrFunc, ir_pack: &IrPack) -> Acc<CodeWit
     Acc::new(|target| match target {
         TargetOrCommon::Io | TargetOrCommon::Wasm => ExternFunc {
             func_name: func.wire_func_name(),
-            params: params[target].iter().cloned().collect_vec(),
+            params: params[target].clone(),
             return_type,
             body: generate_redirect_body(func),
             target: target.try_into().unwrap(),
@@ -61,7 +68,7 @@ fn generate_inner_func_params(func: &IrFunc, ir_pack: &IrPack) -> Vec<String> {
         );
     }
 
-    if matches!(&func.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod { mode, .. }) if mode == Instance)
+    if matches!(&func.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod { mode, .. }) if mode == &Instance)
     {
         ans[0] = format!("&{}", ans[0]);
     }
@@ -69,7 +76,7 @@ fn generate_inner_func_params(func: &IrFunc, ir_pack: &IrPack) -> Vec<String> {
     ans
 }
 
-fn generate_params(func: &IrFunc) -> Acc<Vec<ExternFuncParam>> {
+fn generate_params(func: &IrFunc, context: WireRustGeneratorContext) -> Acc<Vec<ExternFuncParam>> {
     let mut params = if func.mode.has_port_argument() {
         Acc::new(|target| {
             let rust_type = match target {
@@ -98,12 +105,16 @@ fn generate_params(func: &IrFunc) -> Acc<Vec<ExternFuncParam>> {
                     name,
                     field.ty.rust_api_type()
                 ),
-                TargetOrCommon::Io | TargetOrCommon::Wasm => format!(
-                    "{}: {}{}",
-                    name,
-                    field.ty.rust_wire_modifier(target),
-                    field.ty.rust_wire_type(target)
-                ),
+                TargetOrCommon::Io | TargetOrCommon::Wasm => {
+                    let target: Target = target.try_into().unwrap();
+                    format!(
+                        "{}: {}{}",
+                        name,
+                        WireRustGenerator::new(field.ty.clone(), context)
+                            .rust_wire_modifier(target),
+                        WireRustGenerator::new(field.ty.clone(), context).rust_wire_type(target)
+                    )
+                }
             })
         })
         .collect();
