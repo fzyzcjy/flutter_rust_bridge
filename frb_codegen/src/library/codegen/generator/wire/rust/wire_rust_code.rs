@@ -37,6 +37,12 @@ impl From<String> for WireRustCode {
     }
 }
 
+impl From<&str> for WireRustCode {
+    fn from(code: &str) -> Self {
+        code.to_owned().into()
+    }
+}
+
 impl From<ExternFunc> for WireRustCode {
     fn from(value: ExternFunc) -> Self {
         vec![value].into()
