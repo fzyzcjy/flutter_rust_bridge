@@ -45,17 +45,20 @@ impl<'a> WireRustGeneratorWire2apiTrait for DartOpaqueWireRustGenerator<'a> {
         let rust_wire = self.rust_wire_type(Target::Io);
 
         Acc {
-            io: Some(ExternFunc {
-                func_name: format!("new_{}", self.ir.safe_ident()),
-                params: vec![],
-                return_type: Some(&format!(
-                    "{}{}",
-                    self.rust_wire_modifier(Target::Io),
-                    rust_wire
-                )),
-                body: format!("{rust_wire}::new_with_null_ptr()"),
-                target: Target::Io,
-            }),
+            io: Some(
+                ExternFunc {
+                    func_name: format!("new_{}", self.ir.safe_ident()),
+                    params: vec![],
+                    return_type: Some(format!(
+                        "{}{}",
+                        self.rust_wire_modifier(Target::Io),
+                        rust_wire
+                    )),
+                    body: format!("{rust_wire}::new_with_null_ptr()"),
+                    target: Target::Io,
+                }
+                .into(),
+            ),
             ..Default::default()
         }
     }

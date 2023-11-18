@@ -28,6 +28,21 @@ impl Add for CodeWithExternFunc {
     }
 }
 
+impl From<ExternFunc> for CodeWithExternFunc {
+    fn from(value: ExternFunc) -> Self {
+        vec![value].into()
+    }
+}
+
+impl From<Vec<ExternFunc>> for CodeWithExternFunc {
+    fn from(extern_funcs: Vec<ExternFunc>) -> Self {
+        Self {
+            code: "".to_string(),
+            extern_funcs,
+        }
+    }
+}
+
 pub(crate) struct ExternFunc {
     // TODO handle platform
     // if matches!(target, Io) {

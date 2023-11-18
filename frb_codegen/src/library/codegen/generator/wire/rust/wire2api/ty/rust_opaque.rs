@@ -62,23 +62,26 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
         let rust_wire = self.rust_wire_type(Target::Io);
 
         Acc {
-            io: Some(ExternFunc {
-                func_name: format!("new_{}", self.ir.safe_ident()),
-                params: vec![],
-                return_type: Some(format!(
-                    "{}{rust_wire}",
-                    self.rust_wire_modifier(Target::Io),
-                )),
-                body: format!("{rust_wire}::new_with_null_ptr()"),
-                target: Target::Io,
-            }),
+            io: Some(
+                ExternFunc {
+                    func_name: format!("new_{}", self.ir.safe_ident()),
+                    params: vec![],
+                    return_type: Some(format!(
+                        "{}{rust_wire}",
+                        self.rust_wire_modifier(Target::Io),
+                    )),
+                    body: format!("{rust_wire}::new_with_null_ptr()"),
+                    target: Target::Io,
+                }
+                .into(),
+            ),
             ..Default::default()
         }
     }
 
     fn generate_related_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {
-        let mut generate_impl = |target| {
-            [
+        let mut generate_impl = |target| -> CodeWithExternFunc {
+            vec![
                 ExternFunc {
                     func_name: format!("drop_opaque_{}", self.ir.safe_ident()),
                     params: vec![ExternFuncParam {
@@ -108,7 +111,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
                     target,
                 },
             ]
-            .join("\n")
+            .into()
         };
         Acc {
             io: Some(generate_impl(Target::Io)),
