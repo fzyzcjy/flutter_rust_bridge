@@ -1,3 +1,4 @@
+use anyhow::bail;
 use log::debug;
 use std::path::Path;
 
@@ -7,10 +8,8 @@ fn cbindgen(
     c_struct_names: Vec<String>,
     exclude_symbols: Vec<String>,
 ) -> anyhow::Result<()> {
-    debug!(
-        "execute cbindgen rust_crate_dir={:?} c_output_path={:?}",
-        rust_crate_dir, c_output_path
-    );
+    debug!("execute cbindgen rust_crate_dir={rust_crate_dir:?} c_output_path={c_output_path:?}",);
+
     let config = cbindgen::Config {
         language: cbindgen::Language::C,
         sys_includes: vec![
@@ -32,20 +31,28 @@ fn cbindgen(
         },
         ..Default::default()
     };
-
     debug!("cbindgen config: {:#?}", config);
 
-    let canonical = Path::new(rust_crate_dir).canonicalize()?;
-    let mut path = canonical.to_str().unwrap();
+    let parsed_crate_dir = parse_crate_dir(rust_crate_dir)?;
+    debug!("cbindgen parsed_crate_dir={}", parsed_crate_dir);
+
+    let bindings = cbindgen::generate_with_config(parsed_crate_dir, config)?;
+
+    if bindings.write_to_file(c_output_path) {
+        Ok(())
+    } else {
+        bail!("cbindgen failed writing file")
+    }
+}
+
+fn parse_crate_dir(rust_crate_dir: &Path) -> anyhow::Result<String> {
+    let canonical_path = Path::new(rust_crate_dir).canonicalize()?;
+    let mut path = canonical_path.to_str().unwrap();
 
     // on windows get rid of the UNC path
     if path.starts_with(r"\\?\") {
         path = &path[r"\\?\".len()..];
     }
 
-    if cbindgen::generate_with_config(path, config)?.write_to_file(c_output_path) {
-        Ok(())
-    } else {
-        Err(anyhow::anyhow!("cbindgen failed writing file"))?
-    }
+    Ok(path.to_owned())
 }

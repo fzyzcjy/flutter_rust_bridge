@@ -16,10 +16,7 @@ fn ffigen(
     llvm_compiler_opts: &str,
     dart_root: &Path,
 ) -> anyhow::Result<()> {
-    debug!(
-        "execute ffigen c_path={:?} dart_path={:?} llvm_path={:?}",
-        c_path, dart_path, llvm_path
-    );
+    debug!("execute ffigen c_path={c_path:?} dart_path={dart_path:?} llvm_path={llvm_path:?}",);
 
     let dart_path_str = path_to_string(dart_path)?;
     let c_path_str = path_to_string(c_path)?;

@@ -4,7 +4,7 @@ use log::debug;
 use std::path::PathBuf;
 
 pub fn format_rust(path: &[PathBuf]) -> anyhow::Result<()> {
-    debug!("execute format_rust path={:?}", path);
+    debug!("execute format_rust path={path:?}");
     let res = execute_command("rustfmt", path, None)?;
     if !res.status.success() {
         bail!(

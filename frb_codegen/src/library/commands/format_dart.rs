@@ -5,10 +5,7 @@ use log::debug;
 use std::path::PathBuf;
 
 pub fn format_dart(path: &[PathBuf], line_length: u32) -> anyhow::Result<()> {
-    debug!(
-        "execute format_dart path={:?} line_length={}",
-        path, line_length
-    );
+    debug!("execute format_dart path={path:?} line_length={line_length}");
     let res = command_run!(
         call_shell[None],
         "dart",
