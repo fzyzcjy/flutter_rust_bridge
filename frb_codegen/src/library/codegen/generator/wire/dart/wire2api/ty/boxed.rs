@@ -3,6 +3,7 @@ use crate::codegen::generator::wire::dart::wire2api::ty::WireDartGeneratorWire2a
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrType::*;
+use crate::library::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireDartGeneratorWire2apiTrait for BoxedWireDartGenerator<'a> {
     fn generate_impl_wire2api_body(&self) -> String {

@@ -1,5 +1,8 @@
+use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::dart::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::dart::base::*;
+use crate::codegen::ir::ty::enumeration::IrVariantKind;
+use itertools::Itertools;
 
 impl<'a> WireDartGeneratorApi2wireTrait for EnumRefWireDartGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
@@ -53,7 +56,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for EnumRefWireDartGenerator<'a> {
                     if let IrVariantKind::Value = &variant.kind {
                         format!(
                             "if (apiObj is {}) {{ wireObj.tag = {}; return; }}",
-                            variant.wrapper_name, idx
+                            variant.wrapper_name.raw, idx
                         )
                     } else {
                         let pre_field = match &variant.kind {
@@ -71,7 +74,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for EnumRefWireDartGenerator<'a> {
                                 .collect_vec(),
                             _ => unreachable!(),
                         };
-                        let r = format!("wireObj.kind.ref.{}.ref", variant.name);
+                        let r = format!("wireObj.kind.ref.{}.ref", variant.name.raw);
                         let body = match &variant.kind {
                             IrVariantKind::Struct(st) => st
                                 .fields
@@ -94,12 +97,12 @@ impl<'a> WireDartGeneratorApi2wireTrait for EnumRefWireDartGenerator<'a> {
                                 {4}
                                 return;
                             }}",
-                            variant.name,
+                            variant.name.raw,
                             idx,
-                            self.ir.name,
+                            self.ir.ident.0,
                             pre_field.join("\n"),
                             body.join("\n"),
-                            variant.wrapper_name
+                            variant.wrapper_name.raw
                         )
                     }
                 })

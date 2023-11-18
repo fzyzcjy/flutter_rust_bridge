@@ -1,3 +1,4 @@
+use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::dart::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::dart::base::*;
 

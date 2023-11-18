@@ -1,5 +1,8 @@
+use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::dart::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::dart::base::*;
+use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegateTime};
+use crate::library::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireDartGeneratorApi2wireTrait for DelegateWireDartGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {

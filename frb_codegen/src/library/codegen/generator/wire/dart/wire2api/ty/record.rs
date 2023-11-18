@@ -1,5 +1,6 @@
 use crate::codegen::generator::wire::dart::base::*;
 use crate::codegen::generator::wire::dart::wire2api::ty::WireDartGeneratorWire2apiTrait;
+use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireDartGeneratorWire2apiTrait for RecordWireDartGenerator<'a> {
