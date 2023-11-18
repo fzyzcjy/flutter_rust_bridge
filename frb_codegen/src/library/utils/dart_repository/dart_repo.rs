@@ -164,12 +164,13 @@ pub enum DartPackageVersion {
     Range(VersionReq),
 }
 
-impl ToString for DartPackageVersion {
-    fn to_string(&self) -> String {
-        match self {
+impl Display for DartPackageVersion {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let str = match self {
             DartPackageVersion::Exact(v) => v.to_string(),
             DartPackageVersion::Range(v) => v.to_string(),
-        }
+        };
+        write!(f, "{}", str)
     }
 }
 

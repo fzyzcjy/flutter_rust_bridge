@@ -1,5 +1,6 @@
 use crate::commands::command_runner::call_shell;
 use crate::{command_args, command_run};
+use std::fmt::Display;
 use std::path::PathBuf;
 
 /// represents dart or flutter toolchain
@@ -9,13 +10,14 @@ pub(crate) enum DartToolchain {
     Flutter,
 }
 
-impl ToString for DartToolchain {
-    fn to_string(&self) -> String {
-        match self {
+impl Display for DartToolchain {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let str = match self {
             DartToolchain::Dart => "dart",
             DartToolchain::Flutter => "flutter",
         }
-        .to_string()
+        .to_string();
+        write!(f, "{}", str)
     }
 }
 
