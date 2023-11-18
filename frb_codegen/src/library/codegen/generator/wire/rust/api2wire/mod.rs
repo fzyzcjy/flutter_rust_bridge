@@ -8,20 +8,20 @@ use crate::library::codegen::generator::wire::rust::api2wire::ty::WireRustGenera
 mod misc;
 pub(crate) mod ty;
 
+pub(crate) struct WireRustOutputSpecApi2wire {
+    impl_into_dart: Acc<Vec<WireRustOutputCode>>,
+}
+
 pub(super) fn generate(
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,
-) -> Acc<Vec<WireRustOutputCode>> {
-    let mut ans = Acc::<Vec<WireRustOutputCode>>::default();
-
-    ans.push(section_header_comment("impl IntoDart"));
-    ans.extend(
-        cache
+) -> WireRustOutputSpecApi2wire {
+    WireRustOutputSpecApi2wire {
+        impl_into_dart: cache
             .distinct_output_types
             .iter()
             .filter_map(|ty| WireRustGenerator::new(ty.clone(), context).generate_impl_into_dart())
-            .map(|x| x.into()),
-    );
-
-    ans
+            .map(|x| x.into())
+            .collect(),
+    }
 }

@@ -9,17 +9,16 @@ use itertools::Itertools;
 pub(super) fn generate_impl_new_with_nullptr(
     types: &[IrType],
     context: WireRustGeneratorContext,
-) -> WireRustOutputCode {
-    let misc: WireRustOutputCode = generate_impl_new_with_nullptr_misc().to_string().into();
+) -> Vec<WireRustOutputCode> {
+    let mut ans = vec![];
 
-    let funcs: Vec<WireRustOutputCode> = types
-        .iter()
-        .filter_map(|ty| {
-            WireRustGenerator::new(ty.clone(), context).generate_impl_new_with_nullptr()
-        })
-        .collect_vec();
+    ans.push(generate_impl_new_with_nullptr_misc().to_string().into());
 
-    misc + funcs.into_iter().fold(Default::default(), |a, b| a + b)
+    ans.extend(types.iter().filter_map(|ty| {
+        WireRustGenerator::new(ty.clone(), context).generate_impl_new_with_nullptr()
+    }));
+
+    ans
 }
 
 fn generate_impl_new_with_nullptr_misc() -> &'static str {

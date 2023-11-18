@@ -12,45 +12,45 @@ mod impl_wire2api_trait;
 mod misc;
 pub(crate) mod ty;
 
+pub(crate) struct WireRustOutputSpecWire2api {
+    allocate_funcs: Acc<Vec<WireRustOutputCode>>,
+    related_funcs: Acc<Vec<WireRustOutputCode>>,
+    impl_wire2api: Acc<Vec<WireRustOutputCode>>,
+    wire2api_class: Acc<Vec<WireRustOutputCode>>,
+    impl_new_with_nullptr: Acc<Vec<WireRustOutputCode>>,
+}
+
 pub(super) fn generate(
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,
-) -> Acc<Vec<WireRustOutputCode>> {
-    let mut ans = Acc::default();
-
-    ans.push(section_header_comment("allocate functions"));
-    ans += cache
-        .distinct_input_types
-        .iter()
-        .map(|ty| WireRustGenerator::new(ty.clone(), context).generate_allocate_funcs())
-        .collect();
-
-    ans.push(section_header_comment("related functions"));
-    ans += cache
-        .distinct_output_types
-        .iter()
-        .map(|ty| WireRustGenerator::new(ty.clone(), context).generate_related_funcs())
-        .collect();
-
-    ans.push(section_header_comment("impl Wire2Api"));
-    ans += generate_impl_wire2api(&cache.distinct_input_types, context);
-
-    ans.io.push(section_header_comment("wire structs"));
-    ans.io.extend(
-        cache
+) -> WireRustOutputSpecWire2api {
+    WireRustOutputSpecWire2api {
+        allocate_funcs: cache
             .distinct_input_types
             .iter()
-            .filter_map(|ty| WireRustGenerator::new(ty.clone(), context).generate_wire2api_class())
-            .map(|x| x.into()),
-    );
-
-    (ans.io).push(section_header_comment("impl NewWithNullPtr"));
-    (ans.io).push(generate_impl_new_with_nullptr(
-        &cache.distinct_input_types,
-        context,
-    ));
-
-    ans
+            .map(|ty| WireRustGenerator::new(ty.clone(), context).generate_allocate_funcs())
+            .collect(),
+        related_funcs: cache
+            .distinct_output_types
+            .iter()
+            .map(|ty| WireRustGenerator::new(ty.clone(), context).generate_related_funcs())
+            .collect(),
+        impl_wire2api: generate_impl_wire2api(&cache.distinct_input_types, context),
+        wire2api_class: Acc::new_io(
+            cache
+                .distinct_input_types
+                .iter()
+                .filter_map(|ty| {
+                    WireRustGenerator::new(ty.clone(), context).generate_wire2api_class()
+                })
+                .map(|x| x.into())
+                .collect(),
+        ),
+        impl_new_with_nullptr: Acc::new_io(generate_impl_new_with_nullptr(
+            &cache.distinct_input_types,
+            context,
+        )),
+    }
 }
 
 // TODO rm, since no longer have explicit SyncReturn type?

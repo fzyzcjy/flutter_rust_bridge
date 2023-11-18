@@ -15,42 +15,39 @@ mod misc;
 pub(crate) mod ty;
 pub(crate) mod wire_func;
 
+pub(crate) struct WireRustOutputSpecMisc {
+    file_attributes: Acc<Vec<WireRustOutputCode>>,
+    code_header: Acc<Vec<WireRustOutputCode>>,
+    imports: Acc<Vec<WireRustOutputCode>>,
+    wire_funcs: Acc<Vec<WireRustOutputCode>>,
+    wrapper_structs: Acc<Vec<WireRustOutputCode>>,
+    static_checks: Acc<Vec<WireRustOutputCode>>,
+    executor: Acc<Vec<WireRustOutputCode>>,
+}
+
 pub(super) fn generate(
     ir_pack: &IrPack,
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,
-) -> Acc<Vec<WireRustOutputCode>> {
-    let mut ans = Acc::<Vec<WireRustOutputCode>>::default();
-
-    ans.push(FILE_ATTRIBUTES.to_string().into());
-    ans.push(generate_code_header().into());
-
-    ans.push(section_header_comment("imports"));
-    ans.push(generate_imports(&cache.input_and_output_types, context).into());
-
-    ans.push(section_header_comment("wire functions"));
-    ans += ir_pack
-        .funcs
-        .iter()
-        .map(|f| generate_wire_func(f, context))
-        .collect();
-
-    ans.push(section_header_comment("wrapper structs"));
-    ans.extend(
-        cache
+) -> WireRustOutputSpecMisc {
+    WireRustOutputSpecMisc {
+        file_attributes: FILE_ATTRIBUTES.to_string().into(),
+        code_header: generate_code_header().into(),
+        imports: generate_imports(&cache.input_and_output_types, context).into(),
+        wire_funcs: ir_pack
+            .funcs
+            .iter()
+            .map(|f| generate_wire_func(f, context))
+            .collect(),
+        wrapper_structs: cache
             .distinct_output_types
             .iter()
             .filter_map(|ty| generate_wrapper_struct(ty, context))
-            .map(|x| x.into()),
-    );
-
-    ans.push(section_header_comment("static checks"));
-    ans.push(generate_static_checks(&cache.input_and_output_types, context).into());
-
-    ans.push(section_header_comment("executor"));
-    ans.push(generate_executor(ir_pack).into());
-
-    ans
+            .map(|x| x.into())
+            .collect(),
+        static_checks: generate_static_checks(&cache.input_and_output_types, context).into(),
+        executor: generate_executor(ir_pack).into(),
+    }
 }
 
 const FILE_ATTRIBUTES: &'static str = r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion, clippy::unit_arg, clippy::double_parens, non_snake_case, clippy::too_many_arguments)]"#;

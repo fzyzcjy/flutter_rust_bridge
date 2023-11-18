@@ -49,6 +49,16 @@ impl<T> Acc<T> {
         }
     }
 
+    pub fn new_io(io: T) -> Acc<T>
+    where
+        T: Default,
+    {
+        Acc {
+            io,
+            ..Default::default()
+        }
+    }
+
     pub fn map<O>(self, mut mapper: impl FnMut(T, TargetOrCommon) -> O) -> Acc<O> {
         Acc {
             common: mapper(self.common, TargetOrCommon::Common),

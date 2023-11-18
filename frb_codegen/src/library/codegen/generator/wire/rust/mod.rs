@@ -1,6 +1,9 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::wire::rust::api2wire::WireRustOutputSpecApi2wire;
 use crate::codegen::generator::wire::rust::base::WireRustGeneratorContext;
+use crate::codegen::generator::wire::rust::misc::WireRustOutputSpecMisc;
 use crate::codegen::generator::wire::rust::output_code::WireRustOutputCode;
+use crate::codegen::generator::wire::rust::wire2api::WireRustOutputSpecWire2api;
 use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
 use crate::codegen::ir::ty::IrType;
 use itertools::Itertools;
@@ -13,14 +16,17 @@ pub(crate) mod misc;
 mod output_code;
 pub(crate) mod wire2api;
 
-pub(crate) fn generate(
-    ir_pack: &IrPack,
-    context: WireRustGeneratorContext,
-) -> Acc<WireRustOutputCode> {
+pub(crate) struct WireRustOutputSpec {
+    misc: WireRustOutputSpecMisc,
+    wire2api: WireRustOutputSpecWire2api,
+    api2wire: WireRustOutputSpecApi2wire,
+}
+
+pub(crate) fn generate(ir_pack: &IrPack, context: WireRustGeneratorContext) -> WireRustOutputSpec {
     let cache = IrPackComputedCache::compute(ir_pack);
-    let mut ans = Acc::default();
-    ans += misc::generate(ir_pack, context, &cache);
-    ans += wire2api::generate(context, &cache);
-    ans += api2wire::generate(context, &cache);
-    ans.map(|v, _| v.into_iter().collect())
+    WireRustOutputSpec {
+        misc: misc::generate(ir_pack, context, &cache),
+        wire2api: wire2api::generate(context, &cache),
+        api2wire: api2wire::generate(context, &cache),
+    }
 }
