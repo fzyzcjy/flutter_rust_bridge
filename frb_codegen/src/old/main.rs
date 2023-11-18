@@ -1,59 +1,73 @@
 use anyhow::Context;
 use lib_flutter_rust_bridge_codegen::dump;
 use lib_flutter_rust_bridge_codegen::{
-    config_parse, frb_codegen_multi, get_symbols_if_no_duplicates, configure_opinionated_logging, RawOpts,
+    config_parse, configure_opinionated_logging, frb_codegen_multi, get_symbols_if_no_duplicates,
+    RawOpts,
 };
 use log::{debug, error, info};
 
 fn main() -> anyhow::Result<()> {
     //  get valiable options from user input command
-    let raw_opts = RawOpts::try_parse_args_or_yaml()?;
-    configure_opinionated_logging("./logs/", raw_opts.verbose)?;
+
+    // DONE
+    // let raw_opts = RawOpts::try_parse_args_or_yaml()?;
+    // configure_opinionated_logging("./logs/", raw_opts.verbose)?;
 
     let dump_config = raw_opts.dump.clone();
 
-    let configs = config_parse(raw_opts);
-    debug!("configs={:?}", configs);
+    // DONE
+    // let configs = config_parse(raw_opts);
+    // debug!("configs={:?}", configs);
 
+    // TODO
     if let Some(dump) = dump_config {
         return dump::dump_multi(&configs, dump).context("Failed to dump config");
     }
 
     // generation of rust api for ffi
+    // TODO
     let all_symbols = get_symbols_if_no_duplicates(&configs)?;
 
-    let mut errors = vec![];
-    for (config_index, config) in configs.iter().enumerate() {
-        if let Err(err) = frb_codegen_multi(&configs, config_index, &all_symbols) {
-            if config.keep_going {
-                errors.push((&config.rust_input_path, err));
-                continue;
-            }
-            error!("Fatal error encountered. Rerun with RUST_BACKTRACE=1 or RUST_BACKTRACE=full for more details.");
-            return Err(err);
-        }
-    }
-    if !errors.is_empty() {
-        error!("Codegen failed with {} error(s).", errors.len());
-        for (path, error) in &errors {
-            error!("Error running codegen for {path}:\n{error}");
-        }
-        info!("Rerun with RUST_BACKTRACE=1 or RUST_BACKTRACE=full for more details.");
-        std::process::exit(1)
-    }
+    // DONE
+    // let mut errors = vec![];
 
-    info!("Now go and use it :)");
-    Ok(())
+    // DONE
+    // for (config_index, config) in configs.iter().enumerate() {
+    //     if let Err(err) = frb_codegen_multi(&configs, config_index, &all_symbols) {
+    //         // DONE
+    //         // if config.keep_going {
+    //         //     errors.push((&config.rust_input_path, err));
+    //         //     continue;
+    //         // }
+    //         // error!("Fatal error encountered. Rerun with RUST_BACKTRACE=1 or RUST_BACKTRACE=full for more details.");
+    //         // return Err(err);
+    //     }
+    // }
+
+    // DONE
+    // if !errors.is_empty() {
+    //     error!("Codegen failed with {} error(s).", errors.len());
+    //     for (path, error) in &errors {
+    //         error!("Error running codegen for {path}:\n{error}");
+    //     }
+    //     info!("Rerun with RUST_BACKTRACE=1 or RUST_BACKTRACE=full for more details.");
+    //     std::process::exit(1)
+    // }
+
+    // DONE
+    // info!("Now go and use it :)");
+    // Ok(())
 }
 
+// TODO
 #[cfg(test)]
 mod tests {
     use std::{fs, path::PathBuf};
 
     use lazy_static::lazy_static;
     use lib_flutter_rust_bridge_codegen::{
-        config_parse, frb_codegen, frb_codegen_multi, get_symbols_if_no_duplicates, configure_opinionated_logging,
-        RawOpts,
+        config_parse, configure_opinionated_logging, frb_codegen, frb_codegen_multi,
+        get_symbols_if_no_duplicates, RawOpts,
     };
 
     lazy_static! {

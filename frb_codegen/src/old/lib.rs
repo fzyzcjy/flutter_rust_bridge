@@ -48,25 +48,29 @@ pub fn frb_codegen_multi(
     index: usize,
     all_symbols: &[String],
 ) -> anyhow::Result<()> {
-    info!("Phase: Validate config(s)");
-    for (i, config) in all_configs.iter().enumerate() {
-        assert_eq!(
-            BlockIndex(i),
-            config.block_index,
-            "order index({}) != block_index({})",
-            i,
-            config.block_index
-        );
-    }
+    // DONE (removed)
+    // info!("Phase: Validate config(s)");
+    // for (i, config) in all_configs.iter().enumerate() {
+    //     assert_eq!(
+    //         BlockIndex(i),
+    //         config.block_index,
+    //         "order index({}) != block_index({})",
+    //         i,
+    //         config.block_index
+    //     );
+    // }
 
-    let config = &all_configs[index];
-    info!("Picked config: {:?}", config);
+    // DONE
+    // let config = &all_configs[index];
+    // info!("Picked config: {:?}", config);
 
-    info!("Phase: Parse source code to AST, then to IR");
-    let raw_ir_pack = config.get_ir_pack()?;
+    // DONE
+    // info!("Phase: Parse source code to AST, then to IR");
+    // let raw_ir_pack = config.get_ir_pack()?;
 
-    info!("Phase: Transform IR");
-    let ir_pack = transformer::transform(raw_ir_pack);
+    // DONE (removed)
+    // info!("Phase: Transform IR");
+    // let ir_pack = transformer::transform(raw_ir_pack);
 
     info!("Phase: Generate Rust code");
     let generated_rust = generate_rust_code(config, &ir_pack)?;

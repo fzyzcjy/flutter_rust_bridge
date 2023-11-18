@@ -26,12 +26,14 @@ pub struct Config {
     pub inline_rust: Option<bool>,
     pub deps_check: Option<bool>,
     pub dart3: Option<bool>,
+    // TODO handle this
     pub dump: Option<Vec<ConfigDump>>,
 }
 
 #[derive(Debug, PartialEq, Eq, Clone, Copy, Deserialize, ValueEnum, enum_iterator::Sequence)]
 #[serde(rename_all = "snake_case")]
 pub enum ConfigDump {
+    // TODO can dump more
     Config,
     Ir,
 }
