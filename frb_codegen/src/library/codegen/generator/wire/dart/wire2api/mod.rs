@@ -2,11 +2,12 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::dart::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::output_code::WireDartOutputCode;
 use crate::codegen::ir::pack::IrPackComputedCache;
+use itertools::Itertools;
 
 pub(crate) mod ty;
 
 pub(crate) struct WireDartOutputSpecWire2api {
-    wire2api_funcs: Acc<Vec<WireDartOutputCode>>,
+    impl_wire2api: Acc<Vec<WireDartOutputCode>>,
 }
 
 pub(super) fn generate(
@@ -14,11 +15,11 @@ pub(super) fn generate(
     cache: &IrPackComputedCache,
 ) -> WireDartOutputSpecWire2api {
     WireDartOutputSpecWire2api {
-        wire2api_funcs: cache
+        impl_wire2api: cache
             .distinct_output_types
             .iter()
             .map(|ty| generate_impl_wire2api_func(ty, ir_pack, dart_api_class_name, config))
-            .collect_vec(),
+            .collect(),
     }
 }
 

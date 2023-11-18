@@ -177,7 +177,7 @@ impl DartApiSpec {
             api2wire_funcs,
             dart_opaque_funcs,
             api_fill_to_wire_funcs,
-            wire2api_funcs,
+            impl_wire2api,
             dart_wasm_funcs,
             dart_wasm_module,
             needs_freezed,
@@ -271,7 +271,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
         api2wire_funcs,
         dart_opaque_funcs,
         api_fill_to_wire_funcs,
-        wire2api_funcs,
+        impl_wire2api,
         dart_wasm_funcs,
         dart_wasm_module,
         ..
@@ -325,7 +325,7 @@ fn generate_dart_implementation_body(spec: &DartApiSpec, config: &Opts) -> Acc<D
     });
 
     lines.push(section_header("wire2api"));
-    lines.push(wire2api_funcs.join("\n\n"));
+    lines.push(impl_wire2api.join("\n\n"));
 
     lines.push("}\n".into());
 
