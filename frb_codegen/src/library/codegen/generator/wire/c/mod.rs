@@ -1,4 +1,9 @@
+use crate::codegen::ir::pack::IrPack;
 use itertools::Itertools;
+
+pub(crate) fn generate(ir_pack: &IrPack) {
+    todo!()
+}
 
 fn generate_dummy_function(func_names: &[String]) -> String {
     let dummy_var_operations = compute_dummy_var_operations(func_names);
