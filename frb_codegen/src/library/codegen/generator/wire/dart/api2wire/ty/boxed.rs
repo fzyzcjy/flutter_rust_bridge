@@ -1,6 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::dart::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::dart::base::*;
+use crate::codegen::ir::ty::IrType::StructRef;
 use crate::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireDartGeneratorApi2wireTrait for BoxedWireDartGenerator<'a> {
@@ -53,5 +54,13 @@ impl<'a> WireDartGeneratorApi2wireTrait for BoxedWireDartGenerator<'a> {
                 self.ir.inner.safe_ident()
             )
         })
+    }
+}
+
+fn is_empty_struct(ty: &BoxedWireDartGenerator) -> bool {
+    if let StructRef(ref s) = ty.ir.inner.as_ref() {
+        s.get(ty.context.ir_pack).fields.is_empty()
+    } else {
+        false
     }
 }
