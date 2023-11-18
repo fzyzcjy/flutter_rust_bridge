@@ -134,16 +134,18 @@ impl<'a> Generator<'a> {
         //     .collect_vec();
 
         lines.push_all(self.section_header_comment("allocate functions"));
-        lines += distinct_input_types
-            .iter()
-            .map(|f| self.generate_allocate_funcs(f, ir_pack))
-            .collect();
+        // TODO
+        // lines += distinct_input_types
+        //     .iter()
+        //     .map(|f| self.generate_generate_allocate_funcs(f, ir_pack))
+        //     .collect();
 
         lines.push_all(self.section_header_comment("related functions"));
-        lines += distinct_output_types
-            .iter()
-            .map(|f| self.generate_related_funcs(f, ir_pack))
-            .collect();
+        // TODO
+        // lines += distinct_output_types
+        //     .iter()
+        //     .map(|f| self.generate_generate_related_funcs(f, ir_pack))
+        //     .collect();
 
         lines.push_all(self.section_header_comment("impl Wire2Api"));
         // TODO -> generate_impl_wire2api
@@ -422,18 +424,6 @@ impl<'a> Generator<'a> {
                 body,
             ),
         })
-    }
-
-    fn generate_allocate_funcs(&mut self, ty: &IrType, ir_pack: &IrPack) -> Acc<String> {
-        TypeRustGenerator::new(ty.clone(), ir_pack, self.config)
-            .allocate_funcs(&mut self.extern_func_collector, self.config.block_index)
-            .map(|func, _| func.unwrap_or_default())
-    }
-
-    fn generate_related_funcs(&mut self, ty: &IrType, ir_pack: &IrPack) -> Acc<String> {
-        TypeRustGenerator::new(ty.clone(), ir_pack, self.config)
-            .related_funcs(&mut self.extern_func_collector, self.config.block_index)
-            .map(|func, _| func.unwrap_or_default())
     }
 }
 

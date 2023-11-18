@@ -12,7 +12,7 @@ use super::generate_impl_into_into_dart;
 type_rust_generator_struct!(TypeDelegateGenerator, IrTypeDelegate);
 
 impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
-    fn allocate_funcs(
+    fn generate_allocate_funcs(
         &self,
         collector: &mut ExternFuncCollector,
         _: BlockIndex,

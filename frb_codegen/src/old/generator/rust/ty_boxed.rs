@@ -10,7 +10,7 @@ use crate::utils::misc::BlockIndex;
 type_rust_generator_struct!(TypeBoxedGenerator, IrTypeBoxed);
 
 impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
-    fn allocate_funcs(
+    fn generate_allocate_funcs(
         &self,
         collector: &mut ExternFuncCollector,
         block_index: BlockIndex,

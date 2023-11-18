@@ -10,7 +10,7 @@ type_rust_generator_struct!(TypeGeneralListGenerator, IrTypeGeneralList);
 impl TypeGeneralListGenerator<'_> {}
 
 impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
-    fn allocate_funcs(
+    fn generate_allocate_funcs(
         &self,
         collector: &mut ExternFuncCollector,
         _: BlockIndex,

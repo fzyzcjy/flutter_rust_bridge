@@ -11,7 +11,7 @@ use super::{ExternFuncCollector, NO_PARAMS};
 type_rust_generator_struct!(TypeRustOpaqueGenerator, IrTypeRustOpaque);
 
 impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
-    fn allocate_funcs(
+    fn generate_allocate_funcs(
         &self,
         collector: &mut ExternFuncCollector,
         _block_index: BlockIndex,
@@ -33,7 +33,7 @@ impl TypeRustGeneratorTrait for TypeRustOpaqueGenerator<'_> {
         }
     }
 
-    fn related_funcs(
+    fn generate_related_funcs(
         &self,
         collector: &mut ExternFuncCollector,
         _block_index: BlockIndex,
