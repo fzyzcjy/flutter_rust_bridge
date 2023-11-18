@@ -105,13 +105,14 @@ impl<'a> WireRustGeneratorWire2apiTrait for StructRefWireRustGenerator<'a> {
                 .join("\n")
         };
 
-        Some(CodeWithExternFunc::code(
+        Some(
             generate_impl_new_with_nullptr_code_block(
                 self.ir.clone(),
                 &self.context,
                 &format!("Self {{ {body} }}"),
                 true,
-            ),
-        ))
+            )
+            .into(),
+        )
     }
 }

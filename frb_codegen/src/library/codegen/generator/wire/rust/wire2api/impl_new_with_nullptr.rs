@@ -12,7 +12,7 @@ pub(crate) fn generate_impl_new_with_nullptr(
     types: &[IrType],
     context: &WireRustGeneratorContext,
 ) -> CodeWithExternFunc {
-    let misc = CodeWithExternFunc::code(generate_impl_new_with_nullptr_misc().to_string());
+    let misc: CodeWithExternFunc = generate_impl_new_with_nullptr_misc().to_string().into();
 
     let funcs: Vec<CodeWithExternFunc> = types
         .iter()

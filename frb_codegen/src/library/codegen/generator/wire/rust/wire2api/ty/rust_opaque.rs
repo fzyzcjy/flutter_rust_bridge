@@ -48,14 +48,15 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
     }
 
     fn generate_impl_new_with_nullptr(&self) -> Option<CodeWithExternFunc> {
-        Some(CodeWithExternFunc::code(
+        Some(
             generate_impl_new_with_nullptr_code_block(
                 self.ir.clone(),
                 &self.context,
                 "Self { ptr: core::ptr::null() }",
                 false,
-            ),
-        ))
+            )
+            .into(),
+        )
     }
 
     fn generate_allocate_funcs(&self) -> Acc<Option<CodeWithExternFunc>> {

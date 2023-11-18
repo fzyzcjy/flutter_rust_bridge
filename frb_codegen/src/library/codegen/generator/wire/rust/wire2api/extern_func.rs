@@ -8,15 +8,6 @@ pub(crate) struct CodeWithExternFunc {
     pub(crate) extern_funcs: Vec<ExternFunc>,
 }
 
-impl CodeWithExternFunc {
-    pub fn code(code: String) -> Self {
-        Self {
-            code,
-            ..Default::default()
-        }
-    }
-}
-
 impl Add for CodeWithExternFunc {
     type Output = Self;
 
@@ -24,6 +15,15 @@ impl Add for CodeWithExternFunc {
         Self {
             code: self.code + &rhs.code,
             extern_funcs: concat([self.extern_funcs, rhs.extern_funcs]),
+        }
+    }
+}
+
+impl From<String> for CodeWithExternFunc {
+    fn from(code: String) -> Self {
+        Self {
+            code,
+            extern_funcs: vec![],
         }
     }
 }
