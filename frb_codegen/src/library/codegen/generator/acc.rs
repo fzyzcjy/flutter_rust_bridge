@@ -1,6 +1,6 @@
 use crate::codegen::generator::misc::TargetOrCommon;
 use std::iter::FromIterator;
-use std::ops::{AddAssign, Index};
+use std::ops::AddAssign;
 
 /// Generic accumulator over the targets.
 ///
@@ -41,7 +41,7 @@ impl<T> FromIterator<Acc<T>> for Acc<Vec<T>> {
 }
 
 impl<T: FromIterator<T>> FromIterator<Acc<T>> for Acc<T> {
-    fn from_iter<A: IntoIterator<Item = Acc<T>>>(iter: A) -> Self {
+    fn from_iter<A: IntoIterator<Item = Acc<T>>>(_iter: A) -> Self {
         todo!()
     }
 }

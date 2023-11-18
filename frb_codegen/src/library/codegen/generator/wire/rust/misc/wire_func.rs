@@ -5,9 +5,7 @@ use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGen
 use crate::codegen::generator::wire::rust::extern_func::{ExternFunc, ExternFuncParam};
 use crate::codegen::generator::wire::rust::wire_rust_code::WireRustCode;
 use crate::codegen::ir::func::IrFuncOwnerInfoMethodMode::Instance;
-use crate::codegen::ir::func::{
-    IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
-};
+use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod};
 use crate::codegen::ir::pack::IrPack;
 use crate::library::codegen::generator::wire::rust::api2wire::ty::WireRustGeneratorApi2wireTrait;
 use crate::library::codegen::generator::wire::rust::misc::ty::WireRustGeneratorMiscTrait;

@@ -5,7 +5,6 @@ use crate::codegen::generator::wire::rust::wire2api::impl_new_with_nullptr::gene
 use crate::codegen::generator::wire::rust::wire2api::impl_wire2api_trait::generate_impl_wire2api;
 use crate::codegen::generator::wire::rust::wire_rust_code::WireRustCode;
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
-use crate::codegen::ir::pack::IrPack;
 use crate::library::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 
 mod impl_new_with_nullptr;

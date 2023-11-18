@@ -3,7 +3,6 @@ use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGen
 use crate::codegen::generator::wire::rust::misc::section_header_comment;
 use crate::codegen::generator::wire::rust::wire_rust_code::WireRustCode;
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
-use crate::codegen::ir::pack::IrPack;
 use crate::library::codegen::generator::wire::rust::api2wire::ty::WireRustGeneratorApi2wireTrait;
 
 mod misc;

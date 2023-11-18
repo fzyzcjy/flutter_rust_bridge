@@ -3,8 +3,6 @@ use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::misc::misc::JS_VALUE;
 use crate::codegen::generator::wire::rust::misc::ty::WireRustGeneratorMiscTrait;
 use crate::codegen::ir::ty::delegate::IrTypeDelegate;
-use crate::codegen::ir::ty::delegate::IrTypeDelegatePrimitiveEnum;
-use crate::forward_delegate_primitive_enum;
 
 impl<'a> WireRustGeneratorMiscTrait for DelegateWireRustGenerator<'a> {
     fn rust_wire_type(&self, target: Target) -> String {

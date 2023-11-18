@@ -1,7 +1,5 @@
-use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::Target;
-use itertools::{concat, Itertools};
-use std::ops::{Add, AddAssign};
+use itertools::Itertools;
 
 pub(crate) struct ExternFunc {
     // TODO handle platform
