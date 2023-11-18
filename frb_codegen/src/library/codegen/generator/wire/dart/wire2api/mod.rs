@@ -10,8 +10,33 @@ pub(crate) struct WireDartOutputSpecWire2api {
 }
 
 pub(super) fn generate(
-    _context: WireDartGeneratorContext,
-    _cache: &IrPackComputedCache,
+    context: WireDartGeneratorContext,
+    cache: &IrPackComputedCache,
 ) -> WireDartOutputSpecWire2api {
-    todo!()
+    WireDartOutputSpecWire2api {
+        dart_wire2api_funcs: cache
+            .distinct_output_types
+            .iter()
+            .map(|ty| generate_impl_wire2api_func(ty, ir_pack, dart_api_class_name, config))
+            .collect_vec(),
+    }
+}
+
+fn generate_impl_wire2api_func(
+    ty: &IrType,
+    ir_pack: &IrPack,
+    _dart_api_class_name: &str,
+    config: &Opts,
+) -> String {
+    let body = TypeDartGenerator::new(ty.clone(), ir_pack, config).wire2api_body();
+    format!(
+        "{} _wire2api_{}({} raw) {{
+            {}
+        }}
+        ",
+        ty.dart_api_type(),
+        ty.safe_ident(),
+        ty.dart_param_type(),
+        body,
+    )
 }

@@ -141,11 +141,6 @@ impl DartApiSpec {
             .map(|ty| generate_api_fill_to_wire_func(ty, ir_pack, config))
             .collect_vec();
 
-        let dart_wire2api_funcs = distinct_output_types
-            .iter()
-            .map(|ty| generate_wire2api_func(ty, ir_pack, dart_api_class_name, config))
-            .collect_vec();
-
         let dart_opaque_funcs = distinct_output_types
             .iter()
             .filter(|ty| matches!(ty, IrType::RustOpaque(_)))
@@ -482,25 +477,6 @@ fn generate_api_fill_to_wire_func(ty: &IrType, ir_pack: &IrPack, config: &Opts) 
     } else {
         "".to_string()
     }
-}
-
-fn generate_wire2api_func(
-    ty: &IrType,
-    ir_pack: &IrPack,
-    _dart_api_class_name: &str,
-    config: &Opts,
-) -> String {
-    let body = TypeDartGenerator::new(ty.clone(), ir_pack, config).wire2api_body();
-    format!(
-        "{} _wire2api_{}({} raw) {{
-            {}
-        }}
-        ",
-        ty.dart_api_type(),
-        ty.safe_ident(),
-        ty.dart_param_type(),
-        body,
-    )
 }
 
 fn generate_opaque_func(ty: &IrType) -> Acc<String> {
