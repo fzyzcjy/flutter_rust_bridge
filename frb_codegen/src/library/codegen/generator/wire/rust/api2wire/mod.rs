@@ -6,5 +6,7 @@ mod misc;
 pub(crate) mod ty;
 
 pub(crate) fn generate(ir_pack: &IrPack, context: WireRustGeneratorContext) -> Acc<Vec<String>> {
-    todo!()
+    let mut lines = Acc::<Vec<_>>::default();
+    todo!();
+    lines
 }
