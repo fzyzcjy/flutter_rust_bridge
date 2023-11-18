@@ -1,7 +1,8 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::wire::dart::base::WireDartGeneratorContext;
+use crate::codegen::generator::wire::dart::base::{WireDartGenerator, WireDartGeneratorContext};
 use crate::codegen::generator::wire::dart::output_code::WireDartOutputCode;
-use crate::codegen::ir::pack::IrPackComputedCache;
+use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
+use crate::codegen::ir::ty::IrType;
 use itertools::Itertools;
 
 pub(crate) mod ty;
@@ -18,26 +19,20 @@ pub(super) fn generate(
         impl_wire2api: cache
             .distinct_output_types
             .iter()
-            .map(|ty| generate_impl_wire2api_func(ty, ir_pack, dart_api_class_name, config))
+            .map(|ty| generate_impl_wire2api(ty, context))
             .collect(),
     }
 }
 
-fn generate_impl_wire2api_func(
-    ty: &IrType,
-    ir_pack: &IrPack,
-    _dart_api_class_name: &str,
-    config: &Opts,
-) -> String {
-    let body = TypeDartGenerator::new(ty.clone(), ir_pack, config).wire2api_body();
+fn generate_impl_wire2api(ty: &IrType, context: WireDartGeneratorContext) -> String {
+    let body = WireDartGenerator::new(ty.clone(), context).wire2api_body();
     format!(
         "{} _wire2api_{}({} raw) {{
-            {}
+            {body}
         }}
         ",
         ty.dart_api_type(),
         ty.safe_ident(),
         ty.dart_param_type(),
-        body,
     )
 }
