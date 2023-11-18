@@ -3,7 +3,7 @@ use crate::codegen::parser::type_parser::unencodable::{
     parse_path_type_to_unencodable, splay_segments,
 };
 use crate::codegen::parser::type_parser::TypeParser;
-use anyhow::anyhow;
+use anyhow::{anyhow, bail};
 use quote::ToTokens;
 use syn::{Path, QSelf, TypePath};
 
@@ -14,11 +14,11 @@ impl<'a> TypeParser<'a> {
             TypePath {
                 qself: Some(QSelf { ty, .. }),
                 ..
-            } => Err(anyhow!(
+            } => bail!(
                 "qself \"<{}>\" in \"{}\", and all qself syntax, is unsupported",
                 ty.to_token_stream(),
                 type_path.to_token_stream()
-            )),
+            ),
         }
     }
 

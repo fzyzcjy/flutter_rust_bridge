@@ -1,4 +1,4 @@
-use anyhow::anyhow;
+use anyhow::{anyhow, bail};
 use convert_case::{Case, Casing};
 
 /// If the given string is a Dart keyword, then
@@ -15,7 +15,7 @@ pub(crate) fn make_string_keyword_safe(input: String) -> String {
 
 fn check_for_keywords(v: &[String]) -> anyhow::Result<()> {
     if let Some(s) = v.iter().find(|s| DART_KEYWORDS.contains(&s.as_str())) {
-        return Err(anyhow!("Api name cannot be a dart keyword: {}", s));
+        bail!("Api name cannot be a dart keyword: {}", s);
     };
     Ok(())
 }

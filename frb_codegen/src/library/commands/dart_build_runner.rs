@@ -2,6 +2,7 @@ use crate::command_run;
 use crate::commands::command_runner::call_shell;
 use crate::utils::dart_repository::dart_repo::DartRepository;
 use crate::utils::path_utils::path_to_string;
+use anyhow::bail;
 use log::info;
 use std::path::Path;
 use std::str::FromStr;
@@ -19,11 +20,11 @@ pub fn dart_build_runner(dart_root: &Path) -> anyhow::Result<()> {
         "--enable-experiment=class-modifiers",
     )?;
     if !out.status.success() {
-        Err(anyhow::anyhow!(
+        bail!(
             "Failed to run build_runner for {:?}: {}",
             dart_root,
             String::from_utf8_lossy(&out.stdout)
-        ))?;
+        );
     }
     Ok(())
 }

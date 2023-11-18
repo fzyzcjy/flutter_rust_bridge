@@ -1,6 +1,6 @@
 use crate::utils::dart_repository::dart_toolchain::DartToolchain;
 use crate::utils::dart_repository::pubspec::*;
-use anyhow::{anyhow, Context};
+use anyhow::{anyhow, bail, Context};
 use cargo_metadata::{Version, VersionReq};
 use log::debug;
 use std::convert::TryFrom;
@@ -110,10 +110,10 @@ impl DartRepository {
 
         match version {
             DartPackageVersion::Exact(ref v) if requirement.matches(v) => Ok(()),
-            DartPackageVersion::Range(_) => Err(anyhow!(
+            DartPackageVersion::Range(_) => bail!(
                 "unexpected version range for {package} in {}",
                 DartToolchain::lock_filename()
-            ))?,
+            ),
             _ => Err(error_invalid_dep(package, manager, requirement)),
         }
     }
@@ -178,7 +178,7 @@ impl Display for DartPackageVersion {
 fn read_file(at: &str, filename: &str) -> anyhow::Result<String> {
     let file = PathBuf::from(at).join(filename);
     if !file.exists() {
-        Err(anyhow::anyhow!("missing {filename} in {at}"))?;
+        bail!("missing {filename} in {at}");
     }
     let content = std::fs::read_to_string(file)
         .with_context(|| format!("unable to read {filename} in {at}"))?;

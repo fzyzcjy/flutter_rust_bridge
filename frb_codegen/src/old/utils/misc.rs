@@ -69,12 +69,12 @@ pub fn get_symbols_if_no_duplicates(configs: &[crate::Opts]) -> Result<Vec<Strin
         } else {
             ("symbols", "have")
         };
-        return Err(anyhow!(
+        bail!(
             "{} [{}] {} already been defined",
             symbol_str,
             duplicated_symbols,
             verb_str
-        ));
+        );
     }
 
     check_for_keywords(&all_symbols)?;

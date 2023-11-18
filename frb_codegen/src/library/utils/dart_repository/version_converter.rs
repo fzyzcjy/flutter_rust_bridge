@@ -1,3 +1,4 @@
+use anyhow::bail;
 use std::convert::TryFrom;
 
 use crate::utils::dart_repository::dart_repo::*;
@@ -43,7 +44,7 @@ impl TryFrom<&PubspecYamlDependencyVersion> for DartPackageVersion {
         if let Some(ref version) = version.version() {
             return Self::try_from(version);
         }
-        Err(anyhow::anyhow!("no version found"))
+        bail!("no version found")
     }
 }
 

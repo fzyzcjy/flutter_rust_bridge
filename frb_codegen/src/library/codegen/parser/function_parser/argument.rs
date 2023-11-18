@@ -118,9 +118,9 @@ fn parse_name(pat_type: &PatType) -> anyhow::Result<String> {
     if let Pat::Ident(ref pat_ident) = *pat_type.pat {
         Ok(format!("{}", pat_ident.ident))
     } else {
-        Err(anyhow!(
+        bail!(
             "Unexpected pattern: {}",
             quote::quote!(#pat_type).to_string(),
-        ))
+        )
     }
 }
