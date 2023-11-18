@@ -6,54 +6,44 @@ use crate::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireDartGeneratorApi2wireTrait for BoxedWireDartGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
-        let ident = self.ir.safe_ident();
-        let inner = self.ir.inner.safe_ident();
+        let ir_safe_ident = self.ir.safe_ident();
+        let inner_safe_ident = self.ir.inner.safe_ident();
         let empty_struct = is_empty_struct(self);
 
         Acc {
             io: Some(if self.ir.inner.is_primitive() {
-                format!(
-                    "return inner.new_{}(api2wire_{}(raw));",
-                    self.ir.safe_ident(),
-                    self.ir.inner.safe_ident()
-                )
+                format!("return inner.new_{ir_safe_ident}(api2wire_{inner_safe_ident}(raw));")
+            } else if self.ir.inner.is_array() {
+                format!("return api2wire_{inner_safe_ident}(raw);")
             } else {
-                if self.ir.inner.is_array() {
-                    format!("return api2wire_{inner}(raw);")
-                } else {
-                    format!(
-                        "final ptr = inner.new_{ident}();
-                        {},
-                        return ptr;",
-                        if empty_struct {
-                            ""
-                        } else {
-                            format!("_api_fill_to_wire_{inner}(raw, ptr.ref);")
-                        }
-                    )
-                }
+                format!(
+                    "final ptr = inner.new_{ir_safe_ident}();
+                    {},
+                    return ptr;",
+                    if empty_struct {
+                        ""
+                    } else {
+                        format!("_api_fill_to_wire_{inner_safe_ident}(raw, ptr.ref);")
+                    }
+                )
             }),
-            wasm: Some(format!(
-                "return api2wire_{}(raw);",
-                self.ir.inner.safe_ident()
-            )),
+            wasm: Some(format!("return api2wire_{inner_safe_ident}(raw);")),
             ..Default::default()
         }
     }
 
     fn api_fill_to_wire_body(&self) -> Option<String> {
+        let inner_safe_ident = self.ir.inner.safe_ident();
+
         if self.ir.inner.is_array() {
-            return Some(format!(
-                "wireObj = api2wire_{}(apiObj);",
-                self.ir.inner.safe_ident()
-            ));
+            Some(format!("wireObj = api2wire_{inner_safe_ident}(apiObj);"))
+        } else if !self.ir.inner.is_primitive() && !is_empty_struct(self) {
+            Some(format!(
+                "_api_fill_to_wire_{inner_safe_ident}(apiObj, wireObj.ref);"
+            ))
+        } else {
+            None
         }
-        (!self.ir.inner.is_primitive() && !is_empty_struct(self)).then(|| {
-            format!(
-                "_api_fill_to_wire_{}(apiObj, wireObj.ref);",
-                self.ir.inner.safe_ident()
-            )
-        })
     }
 }
 
