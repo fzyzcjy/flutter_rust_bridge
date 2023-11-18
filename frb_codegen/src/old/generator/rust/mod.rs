@@ -198,10 +198,11 @@ impl<'a> Generator<'a> {
         //         .map(|ty| self.generate_new_with_nullptr_func(ty, ir_pack)),
         // );
 
-        if self.config.block_index == BlockIndex::PRIMARY {
-            (lines.io).push(self.section_header_comment("sync execution mode utility"));
-            lines.io.push(self.generate_sync_execution_mode_utility());
-        }
+        // if self.config.block_index == BlockIndex::PRIMARY {
+        (lines.io).push(self.section_header_comment("sync execution mode utility"));
+        // TODO
+        // lines.io.push(self.generate_sync_execution_mode_utility());
+        // }
     }
 
     fn generate_wasm_part(
@@ -268,16 +269,6 @@ impl<'a> Generator<'a> {
                 }}"
             )
         }
-    }
-
-    fn generate_sync_execution_mode_utility(&mut self) -> String {
-        self.extern_func_collector.generate(
-            "free_WireSyncReturn",
-            [("ptr: support::WireSyncReturn", "")],
-            None,
-            "unsafe { let _ = support::box_from_leak_ptr(ptr); };",
-            Io,
-        )
     }
 
     fn generate_wire_func(&mut self, func: &IrFunc, ir_pack: &IrPack) -> Acc<String> {
