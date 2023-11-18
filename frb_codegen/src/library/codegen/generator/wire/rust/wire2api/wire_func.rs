@@ -103,22 +103,25 @@ fn generate_params(func: &IrFunc, context: WireRustGeneratorContext) -> Acc<Vec<
         .inputs
         .iter()
         .map(|field| {
-            let name = field.name.rust_style();
+            let name = field.name.rust_style().to_owned();
             Acc::new(|target| match target {
-                TargetOrCommon::Common => format!(
-                    "{}: impl Wire2Api<{}> + UnwindSafe",
+                TargetOrCommon::Common => ExternFuncParam {
                     name,
-                    field.ty.rust_api_type()
-                ),
+                    rust_type: format!("impl Wire2Api<{}> + UnwindSafe", field.ty.rust_api_type()),
+                    dart_type: None,
+                },
                 TargetOrCommon::Io | TargetOrCommon::Wasm => {
                     let target: Target = target.try_into().unwrap();
-                    format!(
-                        "{}: {}{}",
+                    let field_generator = WireRustGenerator::new(field.ty.clone(), context);
+                    ExternFuncParam {
                         name,
-                        WireRustGenerator::new(field.ty.clone(), context)
-                            .rust_wire_modifier(target),
-                        WireRustGenerator::new(field.ty.clone(), context).rust_wire_type(target)
-                    )
+                        rust_type: format!(
+                            "{}{}",
+                            field_generator.rust_wire_modifier(target),
+                            field_generator.rust_wire_type(target)
+                        ),
+                        dart_type: None,
+                    }
                 }
             })
         })
@@ -136,7 +139,7 @@ fn generate_wrap_info_obj(func: &IrFunc) -> String {
         } else {
             "None"
         },
-        mode = func.mode.ffi_call_mode(),
+        mode = ffi_call_mode(func.mode),
     )
 }
 
@@ -223,4 +226,12 @@ fn generate_redirect_body(func: &IrFunc) -> String {
 
 fn wire_func_name(func: &IrFunc) -> String {
     format!("wire_{}", func.name)
+}
+
+fn ffi_call_mode(mode: IrFuncMode) -> &'static str {
+    match mode {
+        IrFuncMode::Normal => "Normal",
+        IrFuncMode::Sync => "Sync",
+        IrFuncMode::Stream { .. } => "Stream",
+    }
 }

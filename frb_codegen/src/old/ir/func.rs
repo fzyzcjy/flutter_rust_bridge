@@ -45,15 +45,6 @@ impl IrFuncDisplay {
 
 impl IrFuncMode {
     #[inline]
-    pub fn ffi_call_mode(&self) -> &'static str {
-        match self {
-            Self::Normal => "Normal",
-            Self::Sync => "Sync",
-            Self::Stream { .. } => "Stream",
-        }
-    }
-
-    #[inline]
     pub fn dart_port_param<'a, T: From<&'a str>>(&self) -> Option<T> {
         has_port_argument(self).then(|| "NativePortType port_".into())
     }
