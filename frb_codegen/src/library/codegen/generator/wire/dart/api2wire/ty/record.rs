@@ -1,5 +1,4 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::wire::dart::api2wire::ty::structure::generate_api_fill_to_wire_body_struct_field;
 use crate::codegen::generator::wire::dart::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::dart::base::*;
 use crate::library::codegen::ir::ty::IrTypeTrait;
