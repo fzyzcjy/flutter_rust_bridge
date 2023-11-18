@@ -1,7 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
 use crate::codegen::generator::wire::rust::misc::wire_func::generate_wire_func;
-use crate::codegen::generator::wire::rust::wire_rust_code::WireRustCode;
+use crate::codegen::generator::wire::rust::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::IrType;
@@ -19,8 +19,8 @@ pub(super) fn generate(
     ir_pack: &IrPack,
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,
-) -> Acc<Vec<WireRustCode>> {
-    let mut ans = Acc::<Vec<WireRustCode>>::default();
+) -> Acc<Vec<WireRustOutputCode>> {
+    let mut ans = Acc::<Vec<WireRustOutputCode>>::default();
 
     ans.push(FILE_ATTRIBUTES.to_string().into());
     ans.push(generate_code_header().into());
@@ -55,7 +55,7 @@ pub(super) fn generate(
 
 const FILE_ATTRIBUTES: &'static str = r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion, clippy::unit_arg, clippy::double_parens, non_snake_case, clippy::too_many_arguments)]"#;
 
-pub(super) fn section_header_comment(section_name: &str) -> WireRustCode {
+pub(super) fn section_header_comment(section_name: &str) -> WireRustOutputCode {
     format!("// Section: {section_name}\n").into()
 }
 

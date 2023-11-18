@@ -1,7 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
-use crate::codegen::generator::wire::rust::wire_rust_code::WireRustCode;
+use crate::codegen::generator::wire::rust::output_code::WireRustOutputCode;
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::rust::misc::ty::WireRustGeneratorMiscTrait;
 use crate::library::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
@@ -11,8 +11,8 @@ use std::convert::TryInto;
 pub(crate) fn generate_impl_wire2api(
     types: &[IrType],
     context: WireRustGeneratorContext,
-) -> Acc<Vec<WireRustCode>> {
-    let mut lines = Acc::<Vec<WireRustCode>>::default();
+) -> Acc<Vec<WireRustOutputCode>> {
+    let mut lines = Acc::<Vec<WireRustOutputCode>>::default();
     lines.push_acc(generate_impl_wire2api_misc());
     lines += types
         .iter()
@@ -25,7 +25,7 @@ pub(crate) fn generate_impl_wire2api(
     lines
 }
 
-fn generate_impl_wire2api_misc() -> Acc<WireRustCode> {
+fn generate_impl_wire2api_misc() -> Acc<WireRustOutputCode> {
     Acc {
         common: r#"
             pub trait Wire2Api<T> {
@@ -57,7 +57,7 @@ fn generate_impl_wire2api_misc() -> Acc<WireRustCode> {
 fn generate_impl_wire2api_for_type(
     ty: &IrType,
     context: WireRustGeneratorContext,
-) -> Acc<WireRustCode> {
+) -> Acc<WireRustOutputCode> {
     let generator = WireRustGenerator::new(ty.clone(), context);
     let raw: Acc<Option<String>> = generator.generate_impl_wire2api_body();
     raw.map(|body, target| {
@@ -79,7 +79,7 @@ fn generate_impl_wire2api_for_type(
 fn generate_impl_wire2api_jsvalue_for_type(
     ty: &IrType,
     context: WireRustGeneratorContext,
-) -> Acc<WireRustCode> {
+) -> Acc<WireRustOutputCode> {
     let generator = WireRustGenerator::new(ty.clone(), context);
     generator
         .generate_impl_wire2api_jsvalue_body()

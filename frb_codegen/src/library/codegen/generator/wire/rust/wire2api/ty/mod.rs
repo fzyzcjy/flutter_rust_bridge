@@ -17,7 +17,7 @@ mod structure;
 mod unencodable;
 
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::wire::rust::wire_rust_code::WireRustCode;
+use crate::codegen::generator::wire::rust::output_code::WireRustOutputCode;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
@@ -34,15 +34,15 @@ pub(crate) trait WireRustGeneratorWire2apiTrait {
         None
     }
 
-    fn generate_impl_new_with_nullptr(&self) -> Option<WireRustCode> {
+    fn generate_impl_new_with_nullptr(&self) -> Option<WireRustOutputCode> {
         None
     }
 
-    fn generate_allocate_funcs(&self) -> Acc<WireRustCode> {
+    fn generate_allocate_funcs(&self) -> Acc<WireRustOutputCode> {
         Default::default()
     }
 
-    fn generate_related_funcs(&self) -> Acc<WireRustCode> {
+    fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {
         Default::default()
     }
 }

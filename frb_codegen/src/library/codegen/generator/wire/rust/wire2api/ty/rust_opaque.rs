@@ -2,10 +2,10 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::extern_func::{ExternFunc, ExternFuncParam};
+use crate::codegen::generator::wire::rust::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::wire2api::impl_new_with_nullptr::generate_impl_new_with_nullptr_code_block;
 use crate::codegen::generator::wire::rust::wire2api::misc::generate_class_from_fields;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
-use crate::codegen::generator::wire::rust::wire_rust_code::WireRustCode;
 use crate::codegen::ir::ty::IrTypeTrait;
 use crate::library::codegen::generator::wire::rust::misc::ty::WireRustGeneratorMiscTrait;
 use std::borrow::Cow;
@@ -46,7 +46,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
         )
     }
 
-    fn generate_impl_new_with_nullptr(&self) -> Option<WireRustCode> {
+    fn generate_impl_new_with_nullptr(&self) -> Option<WireRustOutputCode> {
         Some(
             generate_impl_new_with_nullptr_code_block(
                 self.ir.clone(),
@@ -58,7 +58,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
         )
     }
 
-    fn generate_allocate_funcs(&self) -> Acc<WireRustCode> {
+    fn generate_allocate_funcs(&self) -> Acc<WireRustOutputCode> {
         let rust_wire = self.rust_wire_type(Target::Io);
 
         Acc {
@@ -77,8 +77,8 @@ impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {
         }
     }
 
-    fn generate_related_funcs(&self) -> Acc<WireRustCode> {
-        let generate_impl = |target| -> WireRustCode {
+    fn generate_related_funcs(&self) -> Acc<WireRustOutputCode> {
+        let generate_impl = |target| -> WireRustOutputCode {
             vec![
                 ExternFunc {
                     func_name: format!("drop_opaque_{}", self.ir.safe_ident()),

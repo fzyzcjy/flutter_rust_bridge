@@ -3,12 +3,12 @@ use std::iter::FromIterator;
 use std::ops::{Add, AddAssign};
 
 #[derive(Default)]
-pub(crate) struct WireRustCode {
+pub(crate) struct WireRustOutputCode {
     pub(crate) direct_code: String,
     pub(crate) extern_funcs: Vec<ExternFunc>,
 }
 
-impl Add for WireRustCode {
+impl Add for WireRustOutputCode {
     type Output = Self;
 
     fn add(mut self, rhs: Self) -> Self::Output {
@@ -17,7 +17,7 @@ impl Add for WireRustCode {
     }
 }
 
-impl AddAssign for WireRustCode {
+impl AddAssign for WireRustOutputCode {
     #[inline]
     fn add_assign(&mut self, rhs: Self) {
         self.direct_code += &rhs.direct_code;
@@ -25,7 +25,7 @@ impl AddAssign for WireRustCode {
     }
 }
 
-impl From<String> for WireRustCode {
+impl From<String> for WireRustOutputCode {
     fn from(code: String) -> Self {
         Self {
             direct_code: code,
@@ -34,19 +34,19 @@ impl From<String> for WireRustCode {
     }
 }
 
-impl From<&str> for WireRustCode {
+impl From<&str> for WireRustOutputCode {
     fn from(code: &str) -> Self {
         code.to_owned().into()
     }
 }
 
-impl From<ExternFunc> for WireRustCode {
+impl From<ExternFunc> for WireRustOutputCode {
     fn from(value: ExternFunc) -> Self {
         vec![value].into()
     }
 }
 
-impl From<Vec<ExternFunc>> for WireRustCode {
+impl From<Vec<ExternFunc>> for WireRustOutputCode {
     fn from(extern_funcs: Vec<ExternFunc>) -> Self {
         Self {
             direct_code: "".to_string(),
@@ -55,8 +55,8 @@ impl From<Vec<ExternFunc>> for WireRustCode {
     }
 }
 
-impl FromIterator<WireRustCode> for WireRustCode {
-    fn from_iter<A: IntoIterator<Item = WireRustCode>>(iter: A) -> Self {
+impl FromIterator<WireRustOutputCode> for WireRustOutputCode {
+    fn from_iter<A: IntoIterator<Item = WireRustOutputCode>>(iter: A) -> Self {
         iter.into_iter().fold(Default::default(), |a, b| a + b)
     }
 }

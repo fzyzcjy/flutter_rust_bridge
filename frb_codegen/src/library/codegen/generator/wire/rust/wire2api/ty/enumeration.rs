@@ -2,9 +2,9 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::extern_func::ExternFunc;
+use crate::codegen::generator::wire::rust::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::wire2api::impl_new_with_nullptr::generate_impl_new_with_nullptr_code_block;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
-use crate::codegen::generator::wire::rust::wire_rust_code::WireRustCode;
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumMode, IrVariant, IrVariantKind};
 use crate::codegen::ir::ty::IrType;
@@ -85,7 +85,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
         })
     }
 
-    fn generate_impl_new_with_nullptr(&self) -> Option<WireRustCode> {
+    fn generate_impl_new_with_nullptr(&self) -> Option<WireRustOutputCode> {
         let src = self.ir.get(self.context.ir_pack);
 
         let inflators = src
@@ -94,7 +94,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
             .filter_map(|variant| self.generate_impl_new_with_nullptr_variant(&variant))
             .collect_vec();
 
-        Some(WireRustCode {
+        Some(WireRustOutputCode {
             direct_code: generate_impl_new_with_nullptr_code_block(
                 self.ir.clone(),
                 self.context,

@@ -2,9 +2,9 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::extern_func::{ExternFunc, ExternFuncParam};
+use crate::codegen::generator::wire::rust::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::wire2api::misc::generate_class_from_fields;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
-use crate::codegen::generator::wire::rust::wire_rust_code::WireRustCode;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 use crate::codegen::ir::ty::IrTypeTrait;
@@ -62,7 +62,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for PrimitiveListWireRustGenerator<'a> {
         }
     }
 
-    fn generate_allocate_funcs(&self) -> Acc<WireRustCode> {
+    fn generate_allocate_funcs(&self) -> Acc<WireRustOutputCode> {
         Acc {
             io: ExternFunc {
                 func_name: format!("new_{}", self.ir.safe_ident()),

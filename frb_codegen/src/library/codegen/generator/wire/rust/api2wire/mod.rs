@@ -1,7 +1,7 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::rust::base::{WireRustGenerator, WireRustGeneratorContext};
 use crate::codegen::generator::wire::rust::misc::section_header_comment;
-use crate::codegen::generator::wire::rust::wire_rust_code::WireRustCode;
+use crate::codegen::generator::wire::rust::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
 use crate::library::codegen::generator::wire::rust::api2wire::ty::WireRustGeneratorApi2wireTrait;
 
@@ -11,8 +11,8 @@ pub(crate) mod ty;
 pub(super) fn generate(
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,
-) -> Acc<Vec<WireRustCode>> {
-    let mut ans = Acc::<Vec<WireRustCode>>::default();
+) -> Acc<Vec<WireRustOutputCode>> {
+    let mut ans = Acc::<Vec<WireRustOutputCode>>::default();
 
     ans.push(section_header_comment("impl IntoDart"));
     ans.extend(
