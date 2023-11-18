@@ -2,6 +2,7 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::wire2api::extern_func::CodeWithExternFunc;
+use crate::codegen::generator::wire::rust::wire2api::impl_new_with_nullptr::generate_impl_new_with_nullptr_code_block;
 use crate::codegen::generator::wire::rust::wire2api::misc::generate_class_from_fields;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
@@ -104,21 +105,13 @@ impl<'a> WireRustGeneratorWire2apiTrait for StructRefWireRustGenerator<'a> {
                 .join("\n")
         };
 
-        Some(CodeWithExternFunc::code(format!(
-            r#"impl NewWithNullPtr for {rust_wire_type} {{
-                    fn new_with_null_ptr() -> Self {{
-                        Self {{ {body} }}
-                    }}
-                }}
-
-                impl Default for {rust_wire_type} {{
-                    fn default() -> Self {{
-                        Self::new_with_null_ptr()
-                    }}
-                }}
-            "#,
-            rust_wire_type = WireRustGenerator::new(self.ir.clone().into(), self.context.clone())
-                .rust_wire_type(Target::Io),
-        )))
+        Some(CodeWithExternFunc::code(
+            generate_impl_new_with_nullptr_code_block(
+                WireRustGenerator::new(self.ir.clone().into(), self.context.clone())
+                    .rust_wire_type(Target::Io),
+                &format!("Self {{ {body} }}"),
+                true,
+            ),
+        ))
     }
 }

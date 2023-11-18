@@ -4,6 +4,7 @@ use crate::codegen::generator::wire::rust::base::*;
 use crate::codegen::generator::wire::rust::wire2api::extern_func::{
     CodeWithExternFunc, ExternFunc,
 };
+use crate::codegen::generator::wire::rust::wire2api::impl_new_with_nullptr::generate_impl_new_with_nullptr_code_block;
 use crate::codegen::generator::wire::rust::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumMode, IrVariant, IrVariantKind};
@@ -96,25 +97,11 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
             .collect_vec();
 
         Some(CodeWithExternFunc {
-            code: format!(
-                r#"impl Default for {rust_wire_type} {{
-                    fn default() -> Self {{
-                        Self::new_with_null_ptr()
-                    }}
-                }}
-
-                impl NewWithNullPtr for {rust_wire_type} {{
-                fn new_with_null_ptr() -> Self {{
-                    Self {{
-                        tag: -1,
-                        kind: core::ptr::null_mut(),
-                    }}
-                }}
-            }}
-            "#,
-                rust_wire_type =
-                    WireRustGenerator::new(self.ir.clone().into(), self.context.clone())
-                        .rust_wire_type(Target::Io),
+            code: generate_impl_new_with_nullptr_code_block(
+                WireRustGenerator::new(self.ir.clone().into(), self.context.clone())
+                    .rust_wire_type(Target::Io),
+                "Self { tag: -1, kind: core::ptr::null_mut() }",
+                true,
             ),
             extern_funcs: inflators,
         })

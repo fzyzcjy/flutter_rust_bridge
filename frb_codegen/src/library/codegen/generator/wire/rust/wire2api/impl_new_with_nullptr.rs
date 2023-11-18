@@ -34,3 +34,28 @@ fn generate_impl_new_with_nullptr_misc() -> &'static str {
     }
     "
 }
+
+pub(super) fn generate_impl_new_with_nullptr_code_block(
+    rust_wire_type: &str,
+    body: &str,
+    impl_default: bool,
+) -> String {
+    format!(
+        "impl NewWithNullPtr for {rust_wire_type} {{
+            fn new_with_null_ptr() -> Self {{
+                {body}
+            }}
+        }}"
+    ) + &(if impl_default {
+        format!(
+            "
+            impl Default for {rust_wire_type} {{
+                fn default() -> Self {{
+                    Self::new_with_null_ptr()
+                }}
+            }}"
+        )
+    } else {
+        "".to_string()
+    })
+}
