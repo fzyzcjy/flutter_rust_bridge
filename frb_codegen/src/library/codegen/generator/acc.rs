@@ -59,6 +59,26 @@ impl<T> Acc<T> {
         }
     }
 
+    pub fn new_wasm(wasm: T) -> Acc<T>
+    where
+        T: Default,
+    {
+        Acc {
+            wasm,
+            ..Default::default()
+        }
+    }
+
+    pub fn new_common(common: T) -> Acc<T>
+    where
+        T: Default,
+    {
+        Acc {
+            common,
+            ..Default::default()
+        }
+    }
+
     pub fn map<O>(self, mut mapper: impl FnMut(T, TargetOrCommon) -> O) -> Acc<O> {
         Acc {
             common: mapper(self.common, TargetOrCommon::Common),

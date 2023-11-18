@@ -31,9 +31,9 @@ pub(super) fn generate(
     cache: &IrPackComputedCache,
 ) -> WireRustOutputSpecMisc {
     WireRustOutputSpecMisc {
-        file_attributes: FILE_ATTRIBUTES.to_string().into(),
-        code_header: generate_code_header().into(),
-        imports: generate_imports(&cache.input_and_output_types, context).into(),
+        file_attributes: Acc::new_common(FILE_ATTRIBUTES.to_string().into()),
+        code_header: Acc::new_common(generate_code_header().into()),
+        imports: Acc::new_common(generate_imports(&cache.input_and_output_types, context).into()),
         wire_funcs: ir_pack
             .funcs
             .iter()
@@ -43,10 +43,12 @@ pub(super) fn generate(
             .distinct_output_types
             .iter()
             .filter_map(|ty| generate_wrapper_struct(ty, context))
-            .map(|x| x.into())
+            .map(|x| Acc::new_common(x.into()))
             .collect(),
-        static_checks: generate_static_checks(&cache.input_and_output_types, context).into(),
-        executor: generate_executor(ir_pack).into(),
+        static_checks: Acc::new_common(
+            generate_static_checks(&cache.input_and_output_types, context).into(),
+        ),
+        executor: Acc::new_common(generate_executor(ir_pack).into()),
     }
 }
 
