@@ -56,7 +56,7 @@ codegen_generator_structs!(
     Unencodable,
 );
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Copy)]
 pub(crate) struct WireDartGeneratorContext<'a> {
     pub(crate) ir_pack: &'a IrPack,
     // pub(crate) config: &'a GeneratorWireDartInternalConfig, // TODO
