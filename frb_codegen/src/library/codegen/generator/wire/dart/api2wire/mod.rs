@@ -10,6 +10,7 @@ use crate::library::codegen::generator::api_dart::info::ApiDartGeneratorInfoTrai
 use crate::library::codegen::generator::wire::dart::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::library::codegen::generator::wire::dart::misc::ty::WireDartGeneratorMiscTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
+use std::convert::TryInto;
 
 pub(crate) mod ty;
 
@@ -31,12 +32,15 @@ pub(super) fn generate(
         api_fill_to_wire_funcs: cache
             .distinct_input_types
             .iter()
-            .map(|ty| generate_api_fill_to_wire_func(ty, context))
+            .map(|ty| Acc::new_io(generate_api_fill_to_wire_func(ty, context)))
             .collect(),
     }
 }
 
-fn generate_api2wire_func(ty: &IrType, context: WireDartGeneratorContext) -> Acc<String> {
+fn generate_api2wire_func(
+    ty: &IrType,
+    context: WireDartGeneratorContext,
+) -> Acc<WireDartOutputCode> {
     let generator = WireDartGenerator::new(ty.clone(), context);
     generator.api2wire_body().map(|body, target| {
         body.map(|body| {
@@ -45,16 +49,21 @@ fn generate_api2wire_func(ty: &IrType, context: WireDartGeneratorContext) -> Acc
                 {} api2wire_{}({} raw) {{
                     {body}
                 }}",
-                WireDartGenerator::new(ty.clone(), context).dart_wire_type(target),
+                WireDartGenerator::new(ty.clone(), context)
+                    .dart_wire_type(target.try_into().unwrap()),
                 ty.safe_ident(),
                 ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type(),
             )
+            .into()
         })
         .unwrap_or_default()
     })
 }
 
-fn generate_api_fill_to_wire_func(ty: &IrType, context: WireDartGeneratorContext) -> String {
+fn generate_api_fill_to_wire_func(
+    ty: &IrType,
+    context: WireDartGeneratorContext,
+) -> WireDartOutputCode {
     if let Some(body) = WireDartGenerator::new(ty.clone(), context).api_fill_to_wire_body() {
         let target_wire_type = match ty {
             Optional(inner) => &inner.inner,
@@ -69,7 +78,8 @@ fn generate_api_fill_to_wire_func(ty: &IrType, context: WireDartGeneratorContext
             ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type(),
             WireDartGenerator::new(target_wire_type.clone(), context).dart_wire_type(Target::Io),
         )
+        .into()
     } else {
-        "".to_string()
+        Default::default()
     }
 }

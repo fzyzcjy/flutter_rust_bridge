@@ -1,13 +1,14 @@
 use crate::codegen::generator::wire::dart::base::*;
 use crate::codegen::generator::wire::dart::wire2api::ty::WireDartGeneratorWire2apiTrait;
-use crate::codegen::ir::ty::enumeration::IrVariantKind;
+use crate::codegen::ir::ty::enumeration::{IrEnumMode, IrVariantKind};
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireDartGeneratorWire2apiTrait for EnumRefWireDartGenerator<'a> {
     fn generate_impl_wire2api_body(&self) -> String {
         let enu = self.ir.get(self.context.ir_pack);
-        assert!(enu.is_struct());
+        assert_eq!(enu.mode, IrEnumMode::Complex);
+
         let variants = enu
             .variants()
             .iter()
