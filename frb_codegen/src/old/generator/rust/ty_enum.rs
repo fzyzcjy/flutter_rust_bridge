@@ -11,9 +11,4 @@ use crate::type_rust_generator_struct;
 
 type_rust_generator_struct!(TypeEnumRefGenerator, IrTypeEnumRef);
 
-impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {
-    fn imports(&self) -> Option<String> {
-        let api_enum = self.ir.get(self.context.ir_pack);
-        Some(format!("use {};", api_enum.path.join("::")))
-    }
-}
+impl TypeRustGeneratorTrait for TypeEnumRefGenerator<'_> {}

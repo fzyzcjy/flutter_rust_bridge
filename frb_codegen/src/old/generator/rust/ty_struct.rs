@@ -8,16 +8,4 @@ use crate::type_rust_generator_struct;
 
 type_rust_generator_struct!(TypeStructRefGenerator, IrTypeStructRef);
 
-impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {
-    fn imports(&self) -> Option<String> {
-        let api_struct = self.ir.get(self.context.ir_pack);
-        if api_struct.path.is_some() {
-            Some(format!(
-                "use {};",
-                api_struct.path.as_ref().unwrap().join("::")
-            ))
-        } else {
-            None
-        }
-    }
-}
+impl TypeRustGeneratorTrait for TypeStructRefGenerator<'_> {}

@@ -9,8 +9,4 @@ use super::TypeGeneralListGenerator;
 
 type_rust_generator_struct!(TypeOptionalListGenerator, IrTypeOptionalList);
 
-impl TypeRustGeneratorTrait for TypeOptionalListGenerator<'_> {
-    fn imports(&self) -> Option<String> {
-        generate_import(&self.ir.inner, self.context.ir_pack, self.context.config)
-    }
-}
+impl TypeRustGeneratorTrait for TypeOptionalListGenerator<'_> {}

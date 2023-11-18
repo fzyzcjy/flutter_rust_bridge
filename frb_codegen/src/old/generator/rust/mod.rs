@@ -102,13 +102,14 @@ impl<'a> Generator<'a> {
         lines.push(String::new());
 
         lines.push(self.section_header_comment("imports"));
-        lines.extend(self.generate_imports(
-            ir_pack,
-            rust_wire_mod,
-            &distinct_input_types,
-            &distinct_output_types,
-        ));
-        lines.push(String::new());
+        // TODO
+        // lines.extend(self.generate_imports(
+        //     ir_pack,
+        //     rust_wire_mod,
+        //     &distinct_input_types,
+        //     &distinct_output_types,
+        // ));
+        // lines.push(String::new());
 
         lines.push_all(self.section_header_comment("wire functions"));
         lines += ir_pack

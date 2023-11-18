@@ -5,11 +5,7 @@ use crate::target::Acc;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
-pub trait TypeRustGeneratorTrait {
-    fn imports(&self) -> Option<String> {
-        None
-    }
-}
+pub trait TypeRustGeneratorTrait {}
 
 #[derive(Debug, Clone)]
 pub struct TypeGeneratorContext<'a> {

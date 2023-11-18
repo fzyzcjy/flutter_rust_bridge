@@ -11,4 +11,8 @@ impl<'a> WireRustGeneratorCommonTrait for BoxedWireRustGenerator<'a> {
     //     );
     //     src.wrapper_struct_name()
     // }
+
+    fn generate_imports(&self) -> Option<Vec<String>> {
+        generate_import(&self.ir.inner, self.context.ir_pack, self.context.config)
+    }
 }

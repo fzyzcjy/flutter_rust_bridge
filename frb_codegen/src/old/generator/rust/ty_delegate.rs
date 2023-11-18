@@ -11,8 +11,4 @@ use super::generate_impl_into_into_dart;
 
 type_rust_generator_struct!(TypeDelegateGenerator, IrTypeDelegate);
 
-impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {
-    fn imports(&self) -> Option<String> {
-        forward_delegate_primitive_enum!(self, imports(), None)
-    }
-}
+impl TypeRustGeneratorTrait for TypeDelegateGenerator<'_> {}

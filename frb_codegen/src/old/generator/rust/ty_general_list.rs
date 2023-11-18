@@ -9,8 +9,4 @@ type_rust_generator_struct!(TypeGeneralListGenerator, IrTypeGeneralList);
 
 impl TypeGeneralListGenerator<'_> {}
 
-impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {
-    fn imports(&self) -> Option<String> {
-        generate_import(&self.ir.inner, self.context.ir_pack, self.context.config)
-    }
-}
+impl TypeRustGeneratorTrait for TypeGeneralListGenerator<'_> {}

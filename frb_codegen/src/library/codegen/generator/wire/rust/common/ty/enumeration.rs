@@ -59,4 +59,9 @@ impl<'a> WireRustGeneratorCommonTrait for EnumRefWireRustGenerator<'a> {
             branches.join(","),
         ))
     }
+
+    fn generate_imports(&self) -> Option<Vec<String>> {
+        let api_enum = self.ir.get(self.context.ir_pack);
+        Some(format!("use {};", api_enum.path.join("::")))
+    }
 }

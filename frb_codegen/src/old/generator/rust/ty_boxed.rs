@@ -9,8 +9,4 @@ use crate::utils::misc::BlockIndex;
 
 type_rust_generator_struct!(TypeBoxedGenerator, IrTypeBoxed);
 
-impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {
-    fn imports(&self) -> Option<String> {
-        generate_import(&self.ir.inner, self.context.ir_pack, self.context.config)
-    }
-}
+impl TypeRustGeneratorTrait for TypeBoxedGenerator<'_> {}
