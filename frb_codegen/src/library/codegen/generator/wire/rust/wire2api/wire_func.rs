@@ -3,7 +3,9 @@ use crate::codegen::generator::misc::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::rust::wire2api::extern_func::{
     CodeWithExternFunc, ExternFunc, ExternFuncParam,
 };
-use crate::codegen::ir::func::{IrFunc, IrFuncMode};
+use crate::codegen::ir::func::{
+    IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
+};
 use crate::codegen::ir::pack::IrPack;
 use crate::misc::consts::HANDLER_NAME;
 use itertools::Itertools;
@@ -58,7 +60,8 @@ fn generate_inner_func_params(func: &IrFunc, ir_pack: &IrPack) -> Vec<String> {
         );
     }
 
-    if func.owner.is_non_static_method() {
+    if matches!(&func.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod { mode, .. }) if mode == Instance)
+    {
         ans[0] = format!("&{}", ans[0]);
     }
 
@@ -133,23 +136,23 @@ fn generate_code_wire2api(func: &IrFunc) -> String {
 }
 
 fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_params: Vec<String>) -> String {
-    let code_call_inner_func = if func.owner.is_non_static_method() || func.owner.is_static_method()
-    {
-        let method_name = if func.owner.is_non_static_method() {
-            func.owner.method_name()
-        } else if func.owner.is_static_method() {
-            func.owner.static_method_name().unwrap()
-        } else {
-            panic!("{} is not a method, nor a static method.", func.name)
-        };
-        format!(
-            r"{}::{}({})",
-            func.owner.struct_name.unwrap(),
-            method_name,
-            inner_func_params.join(", ")
-        )
-    } else {
-        format!("{}({})", func.name, inner_func_params.join(", "))
+    let code_call_inner_func = match &func.owner {
+        IrFuncOwnerInfo::Function => format!("{}({})", func.name, inner_func_params.join(", ")),
+        IrFuncOwnerInfo::Method(method) => {
+            let method_name = if func.owner.is_non_static_method() {
+                func.owner.method_name()
+            } else if func.owner.is_static_method() {
+                func.owner.static_method_name().unwrap()
+            } else {
+                panic!("{} is not a method, nor a static method.", func.name)
+            };
+            format!(
+                r"{}::{}({})",
+                func.owner.struct_name.unwrap(),
+                method_name,
+                inner_func_params.join(", ")
+            )
+        }
     };
 
     if func.fallible() {
