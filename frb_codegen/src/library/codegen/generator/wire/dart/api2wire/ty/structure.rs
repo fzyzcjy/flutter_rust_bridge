@@ -35,7 +35,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for StructRefWireDartGenerator<'a> {
             s.fields
                 .iter()
                 .map(|field| {
-                    api_fill_for_field(
+                    generate_api_fill_to_wire_body_struct_field(
                         &field.ty.safe_ident(),
                         &field.name.dart_style(),
                         field.name.rust_style(),
@@ -44,6 +44,25 @@ impl<'a> WireDartGeneratorApi2wireTrait for StructRefWireDartGenerator<'a> {
                 })
                 .collect_vec()
                 .join("\n"),
+        )
+    }
+}
+
+pub(super) fn generate_api_fill_to_wire_body_struct_field(
+    safe_ident: &str,
+    dart_style: &str,
+    rust_style: &str,
+    is_struct: bool,
+) -> String {
+    if is_struct {
+        format!(
+            "_api_fill_to_wire_{}(apiObj.{}, wireObj.{});",
+            safe_ident, dart_style, rust_style
+        )
+    } else {
+        format!(
+            "wireObj.{} = api2wire_{}(apiObj.{});",
+            rust_style, safe_ident, dart_style
         )
     }
 }

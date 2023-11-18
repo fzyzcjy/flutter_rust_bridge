@@ -1,4 +1,5 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::wire::dart::api2wire::ty::structure::generate_api_fill_to_wire_body_struct_field;
 use crate::codegen::generator::wire::dart::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::dart::base::*;
 use crate::library::codegen::ir::ty::IrTypeTrait;
@@ -22,20 +23,20 @@ impl<'a> WireDartGeneratorApi2wireTrait for RecordWireDartGenerator<'a> {
 
     fn api_fill_to_wire_body(&self) -> Option<String> {
         let ir = self.ir.inner.get(self.context.ir_pack);
-        let values = ir
-            .fields
-            .iter()
-            .enumerate()
-            .map(|(idx, field)| {
-                super::ty_struct::api_fill_for_field(
-                    &field.ty.safe_ident(),
-                    &format!("${}", idx + 1),
-                    field.name.rust_style(),
-                    field.ty.is_struct(),
-                )
-            })
-            .collect_vec()
-            .join("\n");
-        Some(values)
+        Some(
+            ir.fields
+                .iter()
+                .enumerate()
+                .map(|(idx, field)| {
+                    generate_api_fill_to_wire_body_struct_field(
+                        &field.ty.safe_ident(),
+                        &format!("${}", idx + 1),
+                        field.name.rust_style(),
+                        field.ty.is_struct(),
+                    )
+                })
+                .collect_vec()
+                .join("\n"),
+        )
     }
 }
