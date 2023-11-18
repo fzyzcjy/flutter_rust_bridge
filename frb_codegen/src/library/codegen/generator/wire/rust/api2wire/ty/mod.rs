@@ -13,13 +13,14 @@ mod rust_opaque;
 mod structure;
 mod unencodable;
 
+use crate::codegen::generator::wire::rust::base::WireRustGeneratorImplTrait;
 use crate::codegen::ir::pack::IrPack;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
-pub(crate) trait WireRustGeneratorApi2wireTrait {
+pub(crate) trait WireRustGeneratorApi2wireTrait: WireRustGeneratorImplTrait {
     fn intodart_type(&self, _ir_pack: &IrPack) -> String {
-        self.rust_api_type()
+        self.ir_type().rust_api_type()
     }
 
     fn generate_impl_into_dart(&self) -> Option<String> {

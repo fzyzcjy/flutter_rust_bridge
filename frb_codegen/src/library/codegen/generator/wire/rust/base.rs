@@ -20,6 +20,7 @@ use crate::codegen_generator_structs;
 use enum_dispatch::enum_dispatch;
 use paste::paste;
 
+#[enum_dispatch(WireRustGeneratorImplTrait)]
 #[enum_dispatch(WireRustGeneratorInfoTrait)]
 #[enum_dispatch(WireRustGeneratorApi2wireTrait)]
 #[enum_dispatch(WireRustGeneratorWire2apiTrait)]

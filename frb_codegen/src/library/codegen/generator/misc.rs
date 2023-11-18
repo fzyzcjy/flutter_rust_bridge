@@ -17,6 +17,7 @@ macro_rules! codegen_generator_structs {
                 }
             }
 
+            #[enum_dispatch]
             pub(crate) trait [<$generator_name ImplTrait>] {
                 fn ir_type(&self) -> IrType;
                 fn context(&self) -> [<$generator_name Context>];
