@@ -1,5 +1,6 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::{is_js_value, Target};
+use crate::codegen::generator::wire::dart::spec_generator::api2wire::ty::primitive::dart_native_type_of_primitive;
 use crate::codegen::generator::wire::dart::spec_generator::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::ir::ty::IrType::StructRef;
@@ -69,7 +70,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for BoxedWireDartGenerator<'a> {
                     .ir
                     .inner
                     .as_primitive()
-                    .map(|prim| prim.dart_native_type().to_owned())
+                    .map(|prim| dart_native_type_of_primitive(prim).to_owned())
                     .unwrap_or_else(|| {
                         WireDartGenerator::new(self.ir.inner.clone(), self.context)
                             .dart_wire_type(target)
