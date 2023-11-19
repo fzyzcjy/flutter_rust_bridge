@@ -1,61 +1,86 @@
 {
   "generator": {
-    "c": {
-      "c_output_path": "{the-working-directory}/bridge_generated.h",
-      "extra_headers": "",
-      "llvm_compiler_opts": "",
-      "llvm_path": [
-        "/opt/homebrew/opt/llvm",
-        "/usr/local/opt/llvm",
-        "/usr/lib/llvm-9",
-        "/usr/lib/llvm-10",
-        "/usr/lib/llvm-11",
-        "/usr/lib/llvm-12",
-        "/usr/lib/llvm-13",
-        "/usr/lib/llvm-14",
-        "/usr/lib/",
-        "/usr/lib64/",
-        "C:/Program Files/llvm",
-        "C:/msys64/mingw64"
-      ]
-    },
-    "dart": {
+    "api_dart": {
       "dart3": true,
-      "dart_class_name": {
-        "apple": "Apple",
-        "orange": "Orange"
+      "dart_api_class_name": "Apple",
+      "dart_api_instance_name": "bridge",
+      "dart_decl_output_path": {
+        "apple": "{the-working-directory}/my_dart_folder/apple.dart",
+        "orange": "{the-working-directory}/my_dart_folder/orange.dart"
       },
       "dart_enums_style": false,
-      "dart_output_path_pack": {
-        "dart_decl_output_path": {
-          "apple": "{the-working-directory}/my_dart_folder/apple.dart",
-          "orange": "{the-working-directory}/my_dart_folder/orange.dart"
-        },
-        "dart_impl_output_path": "{the-working-directory}/my_dart_folder/bridge_generated.dart"
-      },
-      "dart_root": "{the-working-directory}",
-      "use_bridge_in_method": true,
-      "wasm_enabled": false
+      "use_bridge_in_method": true
     },
-    "rust": {
-      "rust_crate_dir": "{the-working-directory}",
-      "rust_output_path": "{the-working-directory}/api/bridge_generated.rs"
+    "wire": {
+      "c": {
+        "c_output_path": "{the-working-directory}/bridge_generated.h",
+        "rust_crate_dir": "{the-working-directory}",
+        "rust_output_path": {
+          "common": "{the-working-directory}/src/api/bridge_generated.rs",
+          "io": "{the-working-directory}/src/api/bridge_generated..io.rs",
+          "wasm": "{the-working-directory}/src/api/bridge_generated..web.rs"
+        }
+      },
+      "dart": {
+        "dart_root": "{the-working-directory}",
+        "dart_wire_class_name": "Orange",
+        "extra_headers": "",
+        "llvm_compiler_opts": "",
+        "llvm_path": [
+          "/opt/homebrew/opt/llvm",
+          "/usr/local/opt/llvm",
+          "/usr/lib/llvm-9",
+          "/usr/lib/llvm-10",
+          "/usr/lib/llvm-11",
+          "/usr/lib/llvm-12",
+          "/usr/lib/llvm-13",
+          "/usr/lib/llvm-14",
+          "/usr/lib/",
+          "/usr/lib64/",
+          "C:/Program Files/llvm",
+          "C:/msys64/mingw64"
+        ],
+        "use_bridge_in_method": true,
+        "wasm_enabled": false
+      },
+      "rust": {
+        "rust_crate_dir": "{the-working-directory}",
+        "rust_output_path": {
+          "common": "{the-working-directory}/src/api/bridge_generated.rs",
+          "io": "{the-working-directory}/src/api/bridge_generated..io.rs",
+          "wasm": "{the-working-directory}/src/api/bridge_generated..web.rs"
+        },
+        "rust_wire_mod": "api::bridge_generated",
+        "wasm_enabled": false
+      }
     }
   },
   "parser": {
     "rust_crate_dir": "{the-working-directory}",
     "rust_input_path_pack": {
       "rust_input_path": {
-        "apple": "{the-working-directory}/api/apple.rs",
-        "orange": "{the-working-directory}/api/orange.rs"
+        "apple": "{the-working-directory}/src/api/apple.rs",
+        "orange": "{the-working-directory}/src/api/orange.rs"
       }
     }
   },
   "polisher": {
     "add_mod_to_lib": true,
     "build_runner": true,
+    "c_output_path": "{the-working-directory}/bridge_generated.h",
     "dart_format_line_length": 80,
-    "deps_check": true,
-    "duplicated_c_output_path": []
+    "dart_root": "{the-working-directory}",
+    "duplicated_c_output_path": [],
+    "rust_crate_dir": "{the-working-directory}",
+    "rust_output_path": {
+      "common": "{the-working-directory}/src/api/bridge_generated.rs",
+      "io": "{the-working-directory}/src/api/bridge_generated..io.rs",
+      "wasm": "{the-working-directory}/src/api/bridge_generated..web.rs"
+    },
+    "wasm_enabled": false
+  },
+  "preparer": {
+    "dart_root": "{the-working-directory}",
+    "deps_check": true
   }
 }
