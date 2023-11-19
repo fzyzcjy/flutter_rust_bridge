@@ -1,6 +1,6 @@
 use crate::codegen::generator::misc::TargetOrCommon;
 use std::iter::FromIterator;
-use std::ops::AddAssign;
+use std::ops::{AddAssign, Index};
 
 /// Generic accumulator over the targets.
 ///
@@ -37,6 +37,18 @@ impl<T> FromIterator<Acc<T>> for Acc<Vec<T>> {
                 acc.push_acc(x);
                 acc
             })
+    }
+}
+
+impl<T> Index<TargetOrCommon> for Acc<T> {
+    type Output = T;
+
+    fn index(&self, index: TargetOrCommon) -> &Self::Output {
+        match index {
+            TargetOrCommon::Common => &self.common,
+            TargetOrCommon::Io => &self.io,
+            TargetOrCommon::Wasm => &self.wasm,
+        }
     }
 }
 
