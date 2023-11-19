@@ -4,21 +4,6 @@ use crate::{generator, ir::*, Opts};
 use std::collections::{HashMap, HashSet};
 
 impl IrPack {
-    pub fn get_c_struct_names(&self) -> Vec<String> {
-        let c_struct_names = self
-            .distinct_types(true, true)
-            .iter()
-            .filter_map(|ty| {
-                if let IrType::StructRef(_) = ty {
-                    Some(ty.rust_wire_type(Target::Io))
-                } else {
-                    None
-                }
-            })
-            .collect();
-        c_struct_names
-    }
-
     pub fn generate_dart(
         &self,
         config: &Opts,

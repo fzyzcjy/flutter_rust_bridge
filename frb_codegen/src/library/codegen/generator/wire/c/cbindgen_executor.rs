@@ -1,5 +1,7 @@
+use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::c::Config;
 use crate::codegen::ir::pack::IrPack;
+use crate::codegen::ir::ty::IrType;
 use crate::library::commands::cbindgen::{cbindgen, CbindgenArgs};
 use crate::utils::file_utils::temp_change_file;
 use std::path::PathBuf;
@@ -11,7 +13,7 @@ pub(super) fn execute(ir_pack: &IrPack, config: &Config) -> anyhow::Result<Strin
 
     let ans = cbindgen(CbindgenArgs {
         rust_crate_dir: &config.rust_crate_dir,
-        c_struct_names: ir_pack.get_c_struct_names(),
+        c_struct_names: get_c_struct_names(ir_pack),
         exclude_symbols: generated_rust.get_exclude_symbols(all_symbols),
     })?;
 
@@ -40,3 +42,17 @@ const DUMMY_WIRE_CODE_FOR_BINDGEN: &str = r#"
 
     // ---------------------------------------------
 "#;
+
+fn get_c_struct_names(ir_pack: &IrPack) -> Vec<String> {
+    ir_pack
+        .distinct_types(true, true)
+        .iter()
+        .filter_map(|ty| {
+            if let IrType::StructRef(_) = ty {
+                Some(ty.rust_wire_type(Target::Io))
+            } else {
+                None
+            }
+        })
+        .collect()
+}
