@@ -93,7 +93,8 @@ impl InternalConfig {
                         dart_root: dart_root.clone(),
                         use_bridge_in_method,
                         wasm_enabled,
-                        dart_wire_class_name: TODO,
+                        // TODO may not have such class after refactoring API, thus temp do this
+                        dart_wire_class_name: dart_class_name.values().next().unwrap().to_owned(),
                         llvm_path: config
                             .llvm_path
                             .unwrap_or_else(fallback_llvm_path)
@@ -103,8 +104,6 @@ impl InternalConfig {
                         llvm_compiler_opts: config.llvm_compiler_opts.unwrap_or_else(String::new),
                         // TODO
                         // dart_impl_output_path: dart_output_path_pack.dart_impl_output_path,
-                        // dart_enums_style,
-                        // dart_class_name,
                     },
                     rust: GeneratorWireRustInternalConfig {
                         rust_crate_dir: rust_crate_dir.clone(),
