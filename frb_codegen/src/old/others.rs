@@ -26,39 +26,6 @@ pub fn modify_dart_wire_content(content_raw: &str, dart_wire_class_name: &str) -
         .replace("typedef WireSyncReturn = ffi.Pointer<DartCObject>;", "")
 }
 
-#[derive(Default)]
-pub struct DartBasicCode {
-    pub import: String,
-    pub part: String,
-    pub body: String,
-}
-
-impl Add for &DartBasicCode {
-    type Output = DartBasicCode;
-
-    fn add(self, rhs: Self) -> Self::Output {
-        DartBasicCode {
-            import: format!("{}\n{}", self.import, rhs.import),
-            part: format!("{}\n{}", self.part, rhs.part),
-            body: format!("{}\n{}", self.body, rhs.body),
-        }
-    }
-}
-
-impl Add<&DartBasicCode> for DartBasicCode {
-    type Output = DartBasicCode;
-
-    fn add(self, rhs: &DartBasicCode) -> Self::Output {
-        (&self).add(rhs)
-    }
-}
-
-impl DartBasicCode {
-    pub fn to_text(&self) -> String {
-        format!("{}\n{}\n{}", self.import, self.part, self.body)
-    }
-}
-
 pub fn extract_dart_wire_content(content: &str) -> DartBasicCode {
     let (mut imports, mut body) = (Vec::new(), Vec::new());
     for line in content.split('\n') {

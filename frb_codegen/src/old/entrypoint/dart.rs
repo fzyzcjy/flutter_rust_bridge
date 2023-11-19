@@ -69,10 +69,13 @@ pub(crate) fn generate_dart_code(
 
     // phase-step2: generate raw dart code instance from the c file
     let generated_dart_wire_code_raw = fs::read_to_string(temp_dart_wire_file)?;
-    let generated_dart_wire = extract_dart_wire_content(&modify_dart_wire_content(
-        &generated_dart_wire_code_raw,
-        &config.dart_wire_class_name(),
-    ));
+    let generated_dart_wire = extract_dart_wire_content(
+        //
+        &modify_dart_wire_content(
+            &generated_dart_wire_code_raw,
+            &config.dart_wire_class_name(),
+        ),
+    );
     sanity_check(&generated_dart_wire.body, &config.dart_wire_class_name())?;
 
     // phase-step3: compose dart codes and write to file
