@@ -16,8 +16,11 @@ impl BasicCode for WireDartOutputCode {
 }
 
 impl From<String> for WireDartOutputCode {
-    fn from(value: String) -> Self {
-        todo!()
+    fn from(body: String) -> Self {
+        Self {
+            body,
+            ..Default::default()
+        }
     }
 }
 
