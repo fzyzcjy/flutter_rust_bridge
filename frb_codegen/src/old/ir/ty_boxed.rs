@@ -25,8 +25,4 @@ impl IrTypeTrait for IrTypeBoxed {
             Target::Common => unreachable!(),
         }
     }
-
-    fn intodart_type(&self, ir_pack: &IrPack) -> String {
-        self.inner.intodart_type(ir_pack)
-    }
 }

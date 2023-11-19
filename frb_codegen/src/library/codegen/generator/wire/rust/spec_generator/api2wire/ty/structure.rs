@@ -4,6 +4,11 @@ use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use itertools::Itertools;
 
 impl<'a> WireRustGeneratorApi2wireTrait for StructRefWireRustGenerator<'a> {
+    fn intodart_type(&self, ir_pack: &IrPack) -> String {
+        let wrapper = self.get(ir_pack).wrapper_name.as_ref();
+        wrapper.unwrap_or(&self.rust_api_type()).clone()
+    }
+
     fn generate_impl_into_dart(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
 

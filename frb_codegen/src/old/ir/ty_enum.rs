@@ -10,13 +10,6 @@ impl IrTypeTrait for IrTypeEnumRef {
             self.rust_wire_type(target)
         }
     }
-
-    fn intodart_type(&self, ir_pack: &IrPack) -> String {
-        match &self.get(ir_pack).wrapper_name {
-            Some(wrapper) => wrapper.clone(),
-            None => self.dart_api_type(),
-        }
-    }
 }
 
 impl IrEnum {

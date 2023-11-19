@@ -10,13 +10,6 @@ impl IrTypeTrait for IrTypePrimitive {
             _ => self.dart_api_type(),
         }
     }
-
-    fn intodart_type(&self, _ir_pack: &IrPack) -> String {
-        match self {
-            IrTypePrimitive::Unit => String::from("()"),
-            _ => self.rust_api_type(),
-        }
-    }
 }
 
 impl IrTypePrimitive {

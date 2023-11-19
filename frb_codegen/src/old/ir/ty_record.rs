@@ -8,14 +8,4 @@ impl IrTypeTrait for IrTypeRecord {
             self.rust_wire_type(target)
         }
     }
-
-    fn intodart_type(&self, ir_pack: &IrPack) -> String {
-        let values = self
-            .values
-            .iter()
-            .map(|e| e.intodart_type(ir_pack))
-            .collect_vec()
-            .join(",");
-        format!("({values},)")
-    }
 }

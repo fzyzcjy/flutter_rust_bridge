@@ -11,7 +11,4 @@ impl IrTypeTrait for IrTypeOptionalList {
             Target::Common => unreachable!(),
         }
     }
-    fn intodart_type(&self, ir_pack: &IrPack) -> String {
-        format!("Vec<Option<{}>>", self.inner.intodart_type(ir_pack))
-    }
 }

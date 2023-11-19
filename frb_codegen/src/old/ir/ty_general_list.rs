@@ -11,8 +11,4 @@ impl IrTypeTrait for IrTypeGeneralList {
             format!("ffi.Pointer<wire_{}>", self.safe_ident())
         }
     }
-
-    fn intodart_type(&self, ir_pack: &IrPack) -> String {
-        format!("Vec<{}>", self.inner.intodart_type(ir_pack))
-    }
 }

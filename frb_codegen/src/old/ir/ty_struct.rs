@@ -10,9 +10,4 @@ impl IrTypeTrait for IrTypeStructRef {
             self.rust_wire_type(target)
         }
     }
-
-    fn intodart_type(&self, ir_pack: &IrPack) -> String {
-        let wrapper = self.get(ir_pack).wrapper_name.as_ref();
-        wrapper.unwrap_or(&self.rust_api_type()).clone()
-    }
 }

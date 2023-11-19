@@ -5,6 +5,13 @@ use crate::codegen::ir::ty::enumeration::IrVariantKind;
 use itertools::Itertools;
 
 impl<'a> WireRustGeneratorApi2wireTrait for EnumRefWireRustGenerator<'a> {
+    fn intodart_type(&self, ir_pack: &IrPack) -> String {
+        match &self.get(ir_pack).wrapper_name {
+            Some(wrapper) => wrapper.clone(),
+            None => self.dart_api_type(),
+        }
+    }
+
     fn generate_impl_into_dart(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
 
