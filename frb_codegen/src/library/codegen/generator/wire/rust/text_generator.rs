@@ -21,7 +21,8 @@ pub(super) fn generate(
     config: &GeneratorWireRustInternalConfig,
 ) -> anyhow::Result<WireRustOutputText> {
     let merged_code = generate_merged_code(&spec);
-    let text = generate_text_from_core_code(config, &merged_code.map(|code, _| code.all_code()))?;
+    let text =
+        generate_text_from_core_code(config, &merged_code.clone().map(|code, _| code.all_code()))?;
     let extern_func_names = compute_extern_func_names(merged_code);
 
     Ok(WireRustOutputText {
@@ -32,27 +33,27 @@ pub(super) fn generate(
 
 fn compute_extern_func_names(merged_code: Acc<WireRustOutputCode>) -> Vec<String> {
     let extern_funcs_acc = merged_code.map(|code, _| code.extern_funcs);
-    let extern_funcs = TargetOrCommon::iter().flat_map(|target| extern_funcs_acc[target]);
+    let extern_funcs = TargetOrCommon::iter().flat_map(|target| extern_funcs_acc[target].clone());
     (extern_funcs.map(|extern_func| extern_func.func_name)).collect_vec()
 }
 
 fn generate_merged_code(spec: &WireRustOutputSpec) -> Acc<WireRustOutputCode> {
-    let merged_code: Acc<Vec<WireRustOutputCode>> = [
-        &spec.misc.file_attributes,
-        &spec.misc.code_header,
-        &spec.misc.imports,
-        &spec.misc.wire_funcs,
-        &spec.misc.wrapper_structs,
-        &spec.misc.static_checks,
-        &spec.misc.executor,
-        &spec.wire2api.allocate_funcs,
-        &spec.wire2api.related_funcs,
-        &spec.wire2api.impl_wire2api,
-        &spec.wire2api.wire2api_class,
-        &spec.wire2api.impl_new_with_nullptr,
-        &spec.api2wire.impl_into_dart,
-    ]
-    .concat();
+    // TODO section header
+    let mut merged_code = Acc::<Vec<WireRustOutputCode>>::default();
+    merged_code += spec.misc.file_attributes.clone();
+    merged_code += spec.misc.code_header.clone();
+    merged_code += spec.misc.imports.clone();
+    merged_code += spec.misc.wire_funcs.clone();
+    merged_code += spec.misc.wrapper_structs.clone();
+    merged_code += spec.misc.static_checks.clone();
+    merged_code += spec.misc.executor.clone();
+    merged_code += spec.wire2api.allocate_funcs.clone();
+    merged_code += spec.wire2api.related_funcs.clone();
+    merged_code += spec.wire2api.impl_wire2api.clone();
+    merged_code += spec.wire2api.wire2api_class.clone();
+    merged_code += spec.wire2api.impl_new_with_nullptr.clone();
+    merged_code += spec.api2wire.impl_into_dart.clone();
+
     merged_code.map(|code, _| code.into_iter().fold(Default::default(), |a, b| a + b))
 }
 

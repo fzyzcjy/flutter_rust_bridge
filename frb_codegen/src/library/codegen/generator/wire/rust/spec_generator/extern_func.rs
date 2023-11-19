@@ -1,6 +1,7 @@
 use crate::codegen::generator::misc::Target;
 use itertools::Itertools;
 
+#[derive(Clone)]
 pub(crate) struct ExternFunc {
     // TODO handle platform
     // if matches!(target, Io) {

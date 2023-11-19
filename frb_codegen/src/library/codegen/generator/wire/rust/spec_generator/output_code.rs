@@ -2,7 +2,7 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFu
 use std::iter::FromIterator;
 use std::ops::{Add, AddAssign};
 
-#[derive(Default)]
+#[derive(Default, Clone)]
 pub(crate) struct WireRustOutputCode {
     pub(crate) direct_code: String,
     pub(crate) extern_funcs: Vec<ExternFunc>,
