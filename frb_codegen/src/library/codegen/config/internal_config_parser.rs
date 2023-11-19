@@ -13,6 +13,7 @@ use crate::utils::path_utils::{
     find_dart_package_dir, find_rust_crate_dir, glob_path, path_to_string,
 };
 use anyhow::{ensure, Context, Result};
+use chrono::format::Fixed::TimezoneOffsetDoubleColon;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 use log::debug;
@@ -88,28 +89,44 @@ impl InternalConfig {
                 },
                 wire: GeneratorWireInternalConfig {
                     dart: GeneratorWireDartInternalConfig {
-                        dart_impl_output_path: dart_output_path_pack.dart_impl_output_path,
-                        dart_enums_style,
-                        dart_class_name,
                         dart_root,
+                        c_file_content: TODO,
                         use_bridge_in_method,
                         wasm_enabled: config.wasm.unwrap_or(false),
-                        dart3,
+                        build_runner: TODO,
+                        dart_wire_class_name: TODO,
+                        llvm_path: TODO,
+                        llvm_compiler_opts: TODO,
+                        dart_format_line_length: TODO,
+                        // TODO
+                        // dart_impl_output_path: dart_output_path_pack.dart_impl_output_path,
+                        // dart_enums_style,
+                        // dart_class_name,
                     },
                     rust: GeneratorWireRustInternalConfig {
-                        rust_crate_dir,
-                        rust_output_path,
+                        rust_crate_dir: rust_crate_dir.clone(),
+                        rust_wire_mod: TODO,
+                        wasm_enabled: TODO,
+                        add_mod_to_lib: TODO,
+                        rust_output_path: TODO,
+                        // TODO
+                        // rust_output_path,
                     },
                     c: GeneratorWireCInternalConfig {
+                        rust_crate_dir,
+                        rust_output_path,
                         c_output_path,
-                        llvm_path: config
-                            .llvm_path
-                            .unwrap_or_else(fallback_llvm_path)
-                            .into_iter()
-                            .map(PathBuf::from)
-                            .collect_vec(),
-                        llvm_compiler_opts: config.llvm_compiler_opts.unwrap_or_else(String::new),
-                        extra_headers: config.extra_headers.unwrap_or_else(String::new),
+                        extern_func_names: TODO,
+                        extern_struct_names: TODO,
+                        // TODO
+                        // llvm_path: config
+                        //     .llvm_path
+                        //     .unwrap_or_else(fallback_llvm_path)
+                        //     .into_iter()
+                        //     .map(PathBuf::from)
+                        //     .collect_vec(),
+                        // llvm_compiler_opts: config.llvm_compiler_opts.unwrap_or_else(String::new),
+                        // extra_headers: config.extra_headers.unwrap_or_else(String::new),
                     },
                 },
             },
