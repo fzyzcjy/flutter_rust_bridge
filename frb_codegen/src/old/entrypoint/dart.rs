@@ -48,11 +48,12 @@ pub(crate) fn generate_dart_code(
     //     },
     // )?;
 
-    let effective_func_names = [
-        generated_rust.extern_func_names,
-        EXTRA_EXTERN_FUNC_NAMES.to_vec(),
-    ]
-    .concat();
+    // DONE
+    // let effective_func_names = [
+    //     generated_rust.extern_func_names,
+    //     EXTRA_EXTERN_FUNC_NAMES.to_vec(),
+    // ]
+    // .concat();
 
     // DONE
     // for (i, each_path) in config.c_output_path.iter().enumerate() {

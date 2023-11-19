@@ -12,11 +12,13 @@ pub(crate) struct Config {
     pub(crate) rust_crate_dir: PathBuf,
     pub(crate) rust_output_path: PathBuf,
     pub(crate) c_output_path: PathBuf,
+    // TODO originally from: `generated_rust.extern_func_names`
+    pub(crate) extern_func_names: Vec<String>,
 }
 
 pub(crate) fn generate(ir_pack: &IrPack, config: &Config) -> anyhow::Result<()> {
     let code_cbindgen = cbindgen_executor::execute(ir_pack, config)?;
-    let code_dummy = dummy_function::generate_dummy_function(TODO);
+    let code_dummy = dummy_function::generate(config);
     emit(code_cbindgen, &code_dummy, &config.c_output_path)?;
     Ok(())
 }

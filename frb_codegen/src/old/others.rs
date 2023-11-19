@@ -7,15 +7,6 @@ use lazy_static::lazy_static;
 use log::{info, warn};
 use pathdiff::diff_paths;
 
-lazy_static! {
-    pub static ref EXTRA_EXTERN_FUNC_NAMES: Vec<String> = vec![
-        "store_dart_post_cobject".to_owned(),
-        "get_dart_object".to_owned(),
-        "drop_dart_object".to_owned(),
-        "new_dart_opaque".to_owned()
-    ];
-}
-
 pub fn modify_dart_wire_content(content_raw: &str, dart_wire_class_name: &str) -> String {
     let content = content_raw.replace(
         &format!("class {dart_wire_class_name} {{",),
