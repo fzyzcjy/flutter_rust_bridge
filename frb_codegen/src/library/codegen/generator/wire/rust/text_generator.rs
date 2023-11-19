@@ -1,5 +1,8 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::misc::Target;
+use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
 use crate::codegen::generator::wire::rust::spec_generator::WireRustOutputSpec;
+use crate::utils::path_utils::path_to_string;
 
 // Call it "text", not "code", because the whole codegen is generating code,
 // and we want to emphasize we are generating final output text here.
@@ -9,34 +12,38 @@ pub(super) struct WireRustOutputText {
     wasm: Option<String>,
 }
 
-pub(super) fn generate(spec: WireRustOutputSpec) -> WireRustOutputText {
+pub(super) fn generate(
+    spec: WireRustOutputSpec,
+    config: &GeneratorWireRustInternalConfig,
+) -> WireRustOutputText {
     let Acc { common, io, wasm } = &generated_rust.code;
 
     let mod_web = if config.wasm_enabled {
         format!(
             "
-    /// cbindgen:ignore
-    #[cfg(target_family = \"wasm\")]
-    {}
-    #[cfg(target_family = \"wasm\")]
-    pub use web::*;",
+            /// cbindgen:ignore
+            #[cfg(target_family = \"wasm\")]
+            {}
+            #[cfg(target_family = \"wasm\")]
+            pub use web::*;
+            ",
             emit_platform_module("web", wasm, config, Target::Wasm)?
         )
     } else {
         "".into()
     };
 
-    let mod_io = emit_platform_module("io", io, config, Target::Io);
+    let mod_io = emit_platform_module("io", io, config, Target::Io)?;
 
     let common = format!(
         "{common}
-    {mod_web}
-    
-    #[cfg(not(target_family = \"wasm\"))]
-    {mod_io}
-    #[cfg(not(target_family = \"wasm\"))]
-    pub use io::*;
-    "
+        {mod_web}
+        
+        #[cfg(not(target_family = \"wasm\"))]
+        {mod_io}
+        #[cfg(not(target_family = \"wasm\"))]
+        pub use io::*;
+        "
     );
 
     if !config.inline_rust {
@@ -46,7 +53,7 @@ pub(super) fn generate(spec: WireRustOutputSpec) -> WireRustOutputText {
         }
     }
 
-    WireRustOutputText {}
+    WireRustOutputText { common, io, wasm }
 }
 
 fn emit_platform_module(
