@@ -9,4 +9,6 @@ pub(crate) struct GeneratorWireDartInternalConfig {
     pub dart_wire_class_name: String,
     pub llvm_path: Vec<PathBuf>,
     pub llvm_compiler_opts: String,
+    pub dart_root: PathBuf,
+    pub c_file_content: String,
 }
