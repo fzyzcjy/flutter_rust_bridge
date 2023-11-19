@@ -1,0 +1,10 @@
+[package]
+name = "frb_example_pure_dart"
+version = "0.1.0"
+edition.workspace = true
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+flutter_rust_bridge = { workspace = true }
