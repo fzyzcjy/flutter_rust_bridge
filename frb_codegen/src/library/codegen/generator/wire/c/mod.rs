@@ -25,8 +25,3 @@ pub(crate) fn generate(
         c_file_content: text,
     })
 }
-
-fn emit(code_cbindgen: String, code_dummy: &str, c_output_path: &Path) -> anyhow::Result<()> {
-    let text = code_cbindgen + code_dummy;
-    Ok(create_dir_all_and_write(c_output_path, text)?)
-}
