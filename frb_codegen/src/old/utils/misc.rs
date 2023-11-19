@@ -22,19 +22,6 @@ pub fn mod_from_rust_path(code_path: &str, crate_path: &str) -> String {
         .replace('/', "::")
 }
 
-pub fn with_changed_file<F: FnOnce() -> crate::Result<()>>(
-    path: &str,
-    append_content: &str,
-    f: F,
-) -> crate::Result<()> {
-    let content_original = fs::read_to_string(path)?;
-    fs::write(path, content_original.clone() + append_content)?;
-
-    f()?;
-
-    Ok(fs::write(path, content_original)?)
-}
-
 pub fn find_all_duplicates<T>(iter: &[T]) -> Vec<T>
 where
     T: Eq + Hash + Clone,
