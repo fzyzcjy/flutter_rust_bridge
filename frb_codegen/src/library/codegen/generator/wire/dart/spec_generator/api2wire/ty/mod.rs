@@ -14,6 +14,7 @@ mod structure;
 mod unencodable;
 
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::wire::dart::spec_generator::api2wire::Target;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
