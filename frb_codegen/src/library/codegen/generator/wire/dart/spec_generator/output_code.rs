@@ -1,4 +1,4 @@
-use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
+use crate::basic_code_impl;
 use crate::utils::basic_code::BasicCode;
 use std::ops::{Add, AddAssign};
 
@@ -8,6 +8,8 @@ pub(crate) struct WireDartOutputCode {
     pub part: String,
     pub body: String,
 }
+
+basic_code_impl!(WireDartOutputCode);
 
 impl BasicCode for WireDartOutputCode {
     fn all_code(&self) -> String {
@@ -24,36 +26,12 @@ impl From<String> for WireDartOutputCode {
     }
 }
 
-impl From<&str> for WireDartOutputCode {
-    fn from(value: &str) -> Self {
-        value.to_owned().into()
-    }
-}
-
 impl AddAssign for WireDartOutputCode {
     #[inline]
     fn add_assign(&mut self, rhs: Self) {
-        todo!()
-    }
-}
-
-impl Add for &WireDartOutputCode {
-    type Output = WireDartOutputCode;
-
-    fn add(self, rhs: Self) -> Self::Output {
-        WireDartOutputCode {
-            import: format!("{}\n{}", self.import, rhs.import),
-            part: format!("{}\n{}", self.part, rhs.part),
-            body: format!("{}\n{}", self.body, rhs.body),
-        }
-    }
-}
-
-impl Add<&WireDartOutputCode> for WireDartOutputCode {
-    type Output = WireDartOutputCode;
-
-    fn add(self, rhs: &WireDartOutputCode) -> Self::Output {
-        (&self).add(rhs)
+        self.import += &rhs.import;
+        self.part += &rhs.part;
+        self.body += &rhs.body;
     }
 }
 
