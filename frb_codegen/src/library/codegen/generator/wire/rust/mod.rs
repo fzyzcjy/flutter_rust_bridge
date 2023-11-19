@@ -20,9 +20,6 @@ pub(crate) mod spec_generator;
 mod text_generator;
 
 pub(crate) fn generate(ir_pack: &IrPack, context: WireRustGeneratorContext) -> anyhow::Result<()> {
-    let rust_output_dir = Path::new(&rust_output_paths.base_path).parent().unwrap();
-    fs::create_dir_all(rust_output_dir)?;
-
     let spec = spec_generator::generate(ir_pack, context);
     let text = text_generator::generate(spec, context.config)?;
     emitter::emit(text, context.config)?;

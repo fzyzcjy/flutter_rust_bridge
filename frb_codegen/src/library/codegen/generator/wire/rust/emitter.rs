@@ -10,7 +10,11 @@ pub(super) fn emit(
 ) -> anyhow::Result<()> {
     for target in TargetOrCommon::iter() {
         if let Some(text) = &text.text[target] {
-            fs::write(&config.rust_output_path[target], text)?;
+            let path = &config.rust_output_path[target];
+            if let Some(dir) = path.parent() {
+                fs::create_dir_all(dir)?;
+            }
+            fs::write(path, text)?;
         }
     }
     Ok(())
