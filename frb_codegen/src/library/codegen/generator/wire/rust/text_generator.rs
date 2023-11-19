@@ -14,26 +14,35 @@ pub(super) fn generate(
     spec: WireRustOutputSpec,
     config: &GeneratorWireRustInternalConfig,
 ) -> WireRustOutputText {
-    let core_code = generate_core_code(spec);
+    let core_code = generate_core_code_from_spec(spec);
+    generate_text_from_core_code(config, &core_code)
+}
 
+fn generate_core_code_from_spec(spec: WireRustOutputSpec) -> Acc<String> {
+    todo!()
+}
+
+fn generate_text_from_core_code(
+    config: &GeneratorWireRustInternalConfig,
+    core_code: &Acc<String>,
+) -> WireRustOutputText {
     WireRustOutputText {
         text: Acc {
-            common: Some(generate_common(&core_code.common)),
-            io: Some(generate_target(&core_code.io)),
-            wasm: (config.wasm_enabled).then(|| generate_target(&core_code.wasm)),
+            common: Some(generate_text_common(&core_code.common)),
+            io: Some(generate_text_target(&core_code.io)),
+            wasm: (config.wasm_enabled).then(|| generate_text_target(&core_code.wasm)),
         },
     }
 }
 
-fn generate_core_code(spec: WireRustOutputSpec) -> Acc<String> {
-    todo!()
-}
-
-fn generate_common(core_code_common: &str, config: &GeneratorWireRustInternalConfig) -> String {
-    let mod_io = generate_mod_declaration("io", config, Target::Io)?;
+fn generate_text_common(
+    core_code_common: &str,
+    config: &GeneratorWireRustInternalConfig,
+) -> String {
+    let mod_io = generate_text_common_mod_declaration("io", config, Target::Io)?;
 
     let mod_wasm = if config.wasm_enabled {
-        generate_mod_declaration("web", config, Target::Wasm)?
+        generate_text_common_mod_declaration("web", config, Target::Wasm)?
     } else {
         "".into()
     };
@@ -46,7 +55,7 @@ fn generate_common(core_code_common: &str, config: &GeneratorWireRustInternalCon
     );
 }
 
-fn generate_mod_declaration(
+fn generate_text_common_mod_declaration(
     name: &str,
     config: &GeneratorWireRustInternalConfig,
     target: Target,
@@ -75,6 +84,6 @@ fn generate_mod_declaration(
     ))
 }
 
-fn generate_target(core_code_target: &str) -> String {
+fn generate_text_target(core_code_target: &str) -> String {
     format!("use super::*;\n{core_code_target}")
 }
