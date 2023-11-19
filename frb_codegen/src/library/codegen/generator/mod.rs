@@ -8,6 +8,6 @@ pub(crate) mod wire;
 
 pub(crate) fn generate(ir_pack: &IrPack, config: &GeneratorInternalConfig) -> anyhow::Result<()> {
     api_dart::generate(&ir_pack, &config.api_dart)?;
-    wire::generate(&ir_pack, &config.wire)?;
+    wire::generate(&ir_pack, &config.wire, &config.api_dart)?;
     Ok(())
 }
