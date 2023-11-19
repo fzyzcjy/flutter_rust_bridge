@@ -42,36 +42,3 @@ pub fn ensure_tools_available(dart_root: &Path, skip_deps_check: bool) -> Result
 
     Ok(())
 }
-
-pub(crate) struct BindgenRustToDartArg<'a> {
-    pub rust_crate_dir: &'a str,
-    pub c_output_path: &'a str,
-    pub dart_output_path: &'a str,
-    pub dart_class_name: &'a str,
-    pub c_struct_names: Vec<String>,
-    pub exclude_symbols: Vec<String>,
-    pub llvm_install_path: &'a [String],
-    pub llvm_compiler_opts: &'a str,
-}
-
-pub(crate) fn bindgen_rust_to_dart(
-    arg: BindgenRustToDartArg,
-    dart_root: &str,
-) -> anyhow::Result<()> {
-    // DONE
-    // cbindgen(
-    //     arg.rust_crate_dir,
-    //     arg.c_output_path,
-    //     arg.c_struct_names,
-    //     arg.exclude_symbols,
-    // )?;
-    // DONE
-    // ffigen(
-    //     arg.c_output_path,
-    //     arg.dart_output_path,
-    //     arg.dart_class_name,
-    //     arg.llvm_install_path,
-    //     arg.llvm_compiler_opts,
-    //     dart_root,
-    // )
-}
