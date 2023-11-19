@@ -1,0 +1,8 @@
+name: flutter_rust_bridge_example
+description: flutter rust bridge example
+version: 1.0.0
+publish_to: none
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+dependencies:
+dev_dependencies:
