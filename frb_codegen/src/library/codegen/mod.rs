@@ -25,6 +25,8 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
 
     let generator_output = generator::generate(&ir_pack, &internal_config.generator)?;
 
+    generator_output.output_texts.write_to_disk()?;
+
     polisher::polish(
         &internal_config.polisher,
         generator_output.dart_needs_freezed,

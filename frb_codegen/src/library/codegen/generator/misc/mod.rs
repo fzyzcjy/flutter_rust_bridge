@@ -74,4 +74,11 @@ impl OutputTexts {
                 .collect_vec(),
         )
     }
+
+    pub(crate) fn write_to_disk(&self) -> anyhow::Result<()> {
+        for item in self.0.iter() {
+            create_dir_all_and_write(&item.path, &item.text)?;
+        }
+        Ok(())
+    }
 }
