@@ -7,16 +7,12 @@ mod misc;
 
 use crate::codegen::generator::api_dart::base::{ApiDartGenerator, ApiDartGeneratorContext};
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
-use crate::codegen::generator::output::dart::DartOutputCode;
 use crate::codegen::ir::pack::IrPack;
 use crate::library::codegen::generator::api_dart::class::ty::ApiDartGeneratorClassTrait;
 use anyhow::Result;
 use itertools::Itertools;
 
-pub(crate) fn generate(
-    ir_pack: &IrPack,
-    config: &GeneratorApiDartInternalConfig,
-) -> Result<DartOutputCode> {
+pub(crate) fn generate(ir_pack: &IrPack, config: &GeneratorApiDartInternalConfig) -> Result<()> {
     let distinct_types = ir_pack.distinct_types(true, true);
     let context = ApiDartGeneratorContext { ir_pack, config };
 
@@ -37,17 +33,19 @@ pub(crate) fn generate(
         .filter_map(|ty| ApiDartGenerator::new(ty.clone(), context).generate_class())
         .join("\n\n");
 
-    Ok(DartOutputCode {
-        code: format!(
-            "abstract class {dart_api_class_name} {{
-                {funcs}
-            }}
+    let text = format!(
+        "abstract class {dart_api_class_name} {{
+            {funcs}
+        }}
 
-            {classes}
-            ",
-            dart_api_class_name = config.dart_api_class_name,
-        ),
-    })
+        {classes}
+        ",
+        dart_api_class_name = config.dart_api_class_name,
+    );
+
+    todo!("write to disk");
+
+    Ok(())
 }
 
 #[cfg(test)]
