@@ -2,6 +2,7 @@ use crate::codegen::config::internal_config::{
     GeneratorInternalConfig, GeneratorWireInternalConfig, InternalConfig, Namespace,
 };
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
+use crate::codegen::generator::misc::TargetOrCommonMap;
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
@@ -32,10 +33,7 @@ impl InternalConfig {
         let rust_input_path_pack = compute_rust_input_path_pack(&config.rust_input, &base_dir)?;
         let namespaces = rust_input_path_pack.rust_input_path.keys().collect_vec();
 
-        let rust_output_path =
-            base_dir.join(&config.rust_output.map(PathBuf::from).unwrap_or_else(|| {
-                fallback_rust_output_path(rust_input_path_pack.one_rust_input_path())
-            }));
+        let rust_output_path = compute_rust_output_path(&config, &base_dir, &rust_input_path_pack);
 
         let dart_output_dir: PathBuf = base_dir.join(config.dart_output);
         let dart_output_path_pack = compute_dart_output_path_pack(&dart_output_dir, &namespaces);
@@ -108,8 +106,8 @@ impl InternalConfig {
                     rust: GeneratorWireRustInternalConfig {
                         rust_crate_dir: rust_crate_dir.clone(),
                         rust_wire_mod: TODO,
-                        wasm_enabled: TODO,
-                        rust_output_path: TODO,
+                        wasm_enabled,
+                        rust_output_path: rust_output_path.clone(),
                     },
                     c: GeneratorWireCInternalConfig {
                         rust_crate_dir: rust_crate_dir.clone(),
@@ -168,6 +166,23 @@ fn compute_rust_input_path_pack(
     );
 
     Ok(pack)
+}
+
+fn compute_rust_output_path(
+    config: &Config,
+    base_dir: &PathBuf,
+    rust_input_path_pack: &RustInputPathPack,
+) -> TargetOrCommonMap<PathBuf> {
+    let common =
+        base_dir.join(&config.rust_output.map(PathBuf::from).unwrap_or_else(|| {
+            fallback_rust_output_path(rust_input_path_pack.one_rust_input_path())
+        }));
+
+    TargetOrCommonMap {
+        common: common.clone(),
+        io: common.with_extension(".io.rs"),
+        wasm: common.with_extenswasmn(".web.rs"),
+    }
 }
 
 fn compute_namespace_from_rust_input_path(rust_input_path: &Path) -> Result<Namespace> {
