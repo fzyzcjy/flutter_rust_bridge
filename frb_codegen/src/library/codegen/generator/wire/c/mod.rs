@@ -24,13 +24,20 @@ use std::path::{Path, PathBuf};
 //         .collect()
 // }
 
+pub(crate) struct WireCOutputPack {
+    pub c_file_content: String,
+}
+
 pub(crate) fn generate(
     ir_pack: &IrPack,
     config: &GeneratorWireCInternalConfig,
-) -> anyhow::Result<()> {
+) -> anyhow::Result<WireCOutputPack> {
     let spec = spec_generator::generate(ir_pack, config)?;
     let text = text_generator::generate(spec)?;
-    emitter::emit(text, config)
+    emitter::emit(&text, config)?;
+    Ok(WireCOutputPack {
+        c_file_content: text,
+    })
 }
 
 fn emit(code_cbindgen: String, code_dummy: &str, c_output_path: &Path) -> anyhow::Result<()> {

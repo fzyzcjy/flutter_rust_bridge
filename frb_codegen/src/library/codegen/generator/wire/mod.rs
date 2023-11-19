@@ -31,7 +31,7 @@ pub(crate) fn generate(
     };
 
     rust::generate(wire_rust_generator_context)?;
-    c::generate(ir_pack, &config.c)?;
-    dart::generate(wire_dart_generator_context)?;
+    let c_output = c::generate(ir_pack, &config.c)?;
+    dart::generate(wire_dart_generator_context, c_output.c_file_content)?;
     Ok(())
 }

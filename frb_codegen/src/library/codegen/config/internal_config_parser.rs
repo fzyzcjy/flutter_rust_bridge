@@ -90,7 +90,6 @@ impl InternalConfig {
                 wire: GeneratorWireInternalConfig {
                     dart: GeneratorWireDartInternalConfig {
                         dart_root,
-                        c_file_content: TODO,
                         use_bridge_in_method,
                         wasm_enabled: config.wasm.unwrap_or(false),
                         build_runner: TODO,
