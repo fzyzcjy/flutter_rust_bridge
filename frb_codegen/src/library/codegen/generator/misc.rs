@@ -1,8 +1,12 @@
+use crate::codegen::generator::acc::Acc;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::IrType;
 use crate::enum_map;
+use crate::utils::file_utils::create_dir_all_and_write;
 use anyhow::bail;
 use std::convert::{TryFrom, TryInto};
+use std::path::PathBuf;
+use strum::IntoEnumIterator;
 #[doc(hidden)]
 #[macro_export]
 macro_rules! codegen_generator_structs {
@@ -113,4 +117,17 @@ pub fn is_js_value(ty: &IrType) -> bool {
         IrType::Primitive(_) | IrType::PrimitiveList(_) => false,
         IrType::Dynamic(_) | IrType::Unencodable(_) => unreachable!(),
     }
+}
+
+pub(super) fn write_code_for_targets(
+    text: &Acc<Option<String>>,
+    output_path: &TargetOrCommonMap<PathBuf>,
+) -> anyhow::Result<()> {
+    for target in TargetOrCommon::iter() {
+        if let Some(text) = &text[target] {
+            let path = &output_path[target];
+            create_dir_all_and_write(path, text)?;
+        }
+    }
+    Ok(())
 }
