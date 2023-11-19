@@ -1,7 +1,9 @@
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use itertools::Itertools;
 
-pub(super) fn generate(config: &GeneratorWireCInternalConfig) -> String {
+pub(in crate::library::codegen::generator::wire::c) fn generate(
+    config: &GeneratorWireCInternalConfig,
+) -> String {
     let func_names = [
         config.extern_func_names.clone(),
         (EXTRA_EXTERN_FUNC_NAMES.iter().map(|&x| x.to_owned())).collect_vec(),

@@ -1,6 +1,7 @@
-mod cbindgen_executor;
-mod dummy_function;
+mod emitter;
 pub(crate) mod internal_config;
+mod spec_generator;
+mod text_generator;
 
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::codegen::ir::pack::IrPack;
@@ -27,10 +28,9 @@ pub(crate) fn generate(
     ir_pack: &IrPack,
     config: &GeneratorWireCInternalConfig,
 ) -> anyhow::Result<()> {
-    let code_cbindgen = cbindgen_executor::execute(ir_pack, config)?;
-    let code_dummy = dummy_function::generate(config);
-    emit(code_cbindgen, &code_dummy, &config.c_output_path)?;
-    Ok(())
+    let spec = spec_generator::generate(ir_pack, config)?;
+    let text = text_generator::generate(spec)?;
+    emitter::emit(text, config)
 }
 
 fn emit(code_cbindgen: String, code_dummy: &str, c_output_path: &Path) -> anyhow::Result<()> {

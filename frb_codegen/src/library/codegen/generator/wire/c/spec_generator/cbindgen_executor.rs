@@ -6,7 +6,7 @@ use crate::library::commands::cbindgen::{cbindgen, CbindgenArgs};
 use crate::utils::file_utils::temp_change_file;
 use std::path::PathBuf;
 
-pub(super) fn execute(
+pub(in crate::library::codegen::generator::wire::c) fn execute(
     ir_pack: &IrPack,
     config: &GeneratorWireCInternalConfig,
 ) -> anyhow::Result<String> {
