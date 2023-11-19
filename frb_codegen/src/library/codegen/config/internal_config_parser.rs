@@ -128,9 +128,14 @@ impl InternalConfig {
                 },
             },
             polisher: PolisherInternalConfig {
+                // TODO act
                 duplicated_c_output_path,
+                // TODO act
+                // TODO rust format, also in polisher
                 dart_format_line_length: config.dart_format_line_length.unwrap_or(80),
+                // TODO this should be preparer?
                 add_mod_to_lib: config.add_mod_to_lib.unwrap_or(true),
+                // TODO act
                 build_runner: config.build_runner.unwrap_or(true),
             },
         })

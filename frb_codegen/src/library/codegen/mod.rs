@@ -4,6 +4,7 @@ pub(crate) mod config;
 mod generator;
 pub(crate) mod ir;
 pub(crate) mod parser;
+mod polisher;
 mod preparer;
 
 use crate::codegen::config::internal_config::InternalConfig;
@@ -23,6 +24,8 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
     let ir_pack = parser::parse(&internal_config.parser)?;
 
     generator::generate(&ir_pack, &internal_config.generator)?;
+
+    polisher::polish(&internal_config.polisher)?;
 
     Ok(())
 }
