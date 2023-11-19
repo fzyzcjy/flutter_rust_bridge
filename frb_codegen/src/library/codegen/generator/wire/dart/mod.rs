@@ -1,3 +1,4 @@
+use crate::codegen::generator::misc::OutputTexts;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 
 pub(crate) mod internal_config;
@@ -5,6 +6,7 @@ pub(super) mod spec_generator;
 mod text_generator;
 
 pub(crate) struct GeneratorWireDartOutput {
+    pub output_texts: OutputTexts,
     pub dart_needs_freezed: bool,
 }
 

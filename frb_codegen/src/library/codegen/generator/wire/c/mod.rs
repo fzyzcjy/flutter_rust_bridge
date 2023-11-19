@@ -2,12 +2,14 @@ pub(crate) mod internal_config;
 mod spec_generator;
 mod text_generator;
 
+use crate::codegen::generator::misc::OutputTexts;
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::codegen::ir::pack::IrPack;
 use crate::utils::file_utils::create_dir_all_and_write;
 use std::path::Path;
 
 pub(crate) struct WireCOutputPack {
+    pub output_texts: OutputTexts,
     pub c_file_content: String,
 }
 

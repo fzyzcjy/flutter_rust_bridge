@@ -5,12 +5,14 @@ pub(crate) mod rust;
 
 use crate::codegen::config::internal_config::GeneratorWireInternalConfig;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
+use crate::codegen::generator::misc::OutputTexts;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::ir::pack::IrPack;
 use anyhow::Result;
 
 pub(crate) struct GeneratorWireOutput {
+    pub output_texts: OutputTexts,
     pub dart_needs_freezed: bool,
 }
 
@@ -44,6 +46,7 @@ pub(crate) fn generate(
     let dart_output = dart::generate(wire_dart_generator_context, &c_output.c_file_content)?;
 
     Ok(GeneratorWireOutput {
+        output_texts: rust_output.output_texts + c_output.output_texts + dart_output.output_texts,
         dart_needs_freezed: dart_output.dart_needs_freezed,
     })
 }

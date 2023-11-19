@@ -1,3 +1,4 @@
+use crate::codegen::generator::misc::OutputTexts;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::ir::pack::IrPackComputedCache;
 
@@ -6,6 +7,7 @@ pub(crate) mod spec_generator;
 mod text_generator;
 
 pub(crate) struct GeneratorWireRustOutput {
+    pub output_texts: OutputTexts,
     pub extern_func_names: Vec<String>,
     pub extern_struct_names: Vec<String>,
 }
