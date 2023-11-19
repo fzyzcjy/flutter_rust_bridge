@@ -30,27 +30,10 @@ fn generate_core_code(spec: WireRustOutputSpec) -> Acc<String> {
 }
 
 fn generate_common(core_code_common: &str, config: &GeneratorWireRustInternalConfig) -> String {
-    let mod_io = format!(
-        "
-        #[cfg(not(target_family = \"wasm\"))]
-        {}
-        #[cfg(not(target_family = \"wasm\"))]
-        pub use io::*;
-        ",
-        generate_mod_declaration("io", config, Target::Io)?
-    );
+    let mod_io = generate_mod_declaration("io", config, Target::Io)?;
 
     let mod_wasm = if config.wasm_enabled {
-        format!(
-            "
-            /// cbindgen:ignore
-            #[cfg(target_family = \"wasm\")]
-            {}
-            #[cfg(target_family = \"wasm\")]
-            pub use web::*;
-            ",
-            generate_mod_declaration("web", config, Target::Wasm)?
-        )
+        generate_mod_declaration("web", config, Target::Wasm)?
     } else {
         "".into()
     };
@@ -63,15 +46,35 @@ fn generate_common(core_code_common: &str, config: &GeneratorWireRustInternalCon
     );
 }
 
-fn generate_target(core_code_target: &str) -> String {
-    format!("use super::*;\n{core_code_target}")
-}
-
 fn generate_mod_declaration(
     name: &str,
     config: &GeneratorWireRustInternalConfig,
     target: Target,
 ) -> anyhow::Result<String> {
-    let path = path_to_string(&config.rust_output_path[target.into()])?;
-    Ok(format!("#[path = \"{path}\"] mod {name};"))
+    let prelude = match target {
+        Target::Io => "",
+        Target::Wasm => "/// cbindgen:ignore",
+    };
+
+    let cfg = match target {
+        Target::Io => r#"not(target_family = "wasm")"#,
+        Target::Wasm => r#"(target_family = "wasm")"#,
+    };
+
+    let mod_path = path_to_string(&config.rust_output_path[target.into()])?;
+
+    Ok(format!(
+        "
+        {prelude}
+        #[cfg({cfg})]
+        #[path = \"{mod_path}\"]
+        mod {name};
+        #[cfg({cfg})]
+        pub use {name}::*;
+        "
+    ))
+}
+
+fn generate_target(core_code_target: &str) -> String {
+    format!("use super::*;\n{core_code_target}")
 }
