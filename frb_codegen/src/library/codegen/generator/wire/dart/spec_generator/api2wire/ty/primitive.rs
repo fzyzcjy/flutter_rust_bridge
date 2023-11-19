@@ -4,6 +4,7 @@ use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::dart::spec_generator::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::library::codegen::generator::api_dart::info::ApiDartGeneratorInfoTrait;
 
 impl<'a> WireDartGeneratorApi2wireTrait for PrimitiveWireDartGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {

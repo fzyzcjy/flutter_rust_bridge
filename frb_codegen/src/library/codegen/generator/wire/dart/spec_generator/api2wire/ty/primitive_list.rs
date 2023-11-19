@@ -5,6 +5,7 @@ use crate::codegen::generator::wire::dart::spec_generator::api2wire::ty::WireDar
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::generator::api_dart::info::ApiDartGeneratorInfoTrait;
 
 impl<'a> WireDartGeneratorApi2wireTrait for PrimitiveListWireDartGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {

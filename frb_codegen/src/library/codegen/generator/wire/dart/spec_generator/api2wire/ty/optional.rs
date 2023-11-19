@@ -2,6 +2,7 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::dart::spec_generator::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
+use crate::library::codegen::generator::api_dart::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireDartGeneratorApi2wireTrait for OptionalWireDartGenerator<'a> {
@@ -27,7 +28,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for OptionalWireDartGenerator<'a> {
                 WireDartGenerator::new(self.ir.inner.clone(), self.context).dart_wire_type(target)
             )
         } else {
-            self.ir.inner.dart_wire_type(target)
+            WireDartGenerator::new(self.ir.inner.clone(), self.context).dart_wire_type(target)
         }
     }
 }
