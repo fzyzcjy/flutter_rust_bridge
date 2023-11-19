@@ -13,7 +13,7 @@ pub(super) fn execute(ir_pack: &IrPack, config: &Config) -> anyhow::Result<Strin
 
     let ans = cbindgen(CbindgenArgs {
         rust_crate_dir: &config.rust_crate_dir,
-        c_struct_names: get_c_struct_names(ir_pack),
+        c_struct_names: config.extern_struct_names.clone(),
         // TODO will try to avoid manually specify exclude_symbols by using `pub(crate)` instead of `pub`
         // exclude_symbols: generated_rust.get_exclude_symbols(all_symbols),
         exclude_symbols: vec![],
@@ -44,17 +44,3 @@ const DUMMY_WIRE_CODE_FOR_BINDGEN: &str = r#"
 
     // ---------------------------------------------
 "#;
-
-fn get_c_struct_names(ir_pack: &IrPack) -> Vec<String> {
-    ir_pack
-        .distinct_types(true, true)
-        .iter()
-        .filter_map(|ty| {
-            if let IrType::StructRef(_) = ty {
-                Some(ty.rust_wire_type(Target::Io))
-            } else {
-                None
-            }
-        })
-        .collect()
-}

@@ -13,7 +13,24 @@ pub(crate) struct Config {
     pub(crate) c_output_path: PathBuf,
     // TODO originally from: `generated_rust.extern_func_names`
     pub(crate) extern_func_names: Vec<String>,
+    // TODO originally created via `get_c_struct_names`, should calc it from wire-rust layer, in analogy to `extern_func_names`
+    pub(crate) extern_struct_names: Vec<String>,
 }
+
+// TODO
+// fn get_c_struct_names(ir_pack: &IrPack) -> Vec<String> {
+//     ir_pack
+//         .distinct_types(true, true)
+//         .iter()
+//         .filter_map(|ty| {
+//             if let IrType::StructRef(_) = ty {
+//                 Some(ty.rust_wire_type(Target::Io))
+//             } else {
+//                 None
+//             }
+//         })
+//         .collect()
+// }
 
 pub(crate) fn generate(ir_pack: &IrPack, config: &Config) -> anyhow::Result<()> {
     let code_cbindgen = cbindgen_executor::execute(ir_pack, config)?;
