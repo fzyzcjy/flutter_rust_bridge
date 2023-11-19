@@ -1,10 +1,11 @@
+use crate::codegen::generator::misc::TargetOrCommon;
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
+use std::path::PathBuf;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub(crate) struct GeneratorWireRustInternalConfig {
     pub rust_wire_mod: String,
     pub wasm_enabled: bool,
-    pub rust_common_output_path: String,
-    pub rust_io_output_path: String,
-    pub rust_wasm_output_path: String,
+    pub rust_output_path: HashMap<TargetOrCommon, PathBuf>,
 }
