@@ -5,30 +5,44 @@ use crate::utils::path_utils::path_to_string;
 use anyhow::bail;
 use log::debug;
 use serde_json::json;
+use std::fs;
 use std::io::Write;
 use std::path::{Path, PathBuf};
 use std::str::FromStr;
 
 pub(crate) struct FfigenArgs<'a> {
-    pub c_path: &'a Path,
-    pub dart_path: &'a Path,
     pub dart_class_name: &'a str,
     pub llvm_path: &'a [PathBuf],
     pub llvm_compiler_opts: &'a str,
     pub dart_root: &'a Path,
 }
 
-pub(crate) fn ffigen(arg: FfigenArgs) -> anyhow::Result<()> {
+pub(crate) fn ffigen(args: FfigenArgs, c_file_content: &str) -> anyhow::Result<String> {
+    let temp_c_file = tempfile::Builder::new().suffix(".h").tempfile()?;
+    let temp_dart_file = tempfile::NamedTempFile::new()?;
+
+    fs::write(temp_c_file.path(), c_file_content)?;
+    ffigen_to_file(args, temp_c_file.path(), temp_dart_file.path())?;
+    let output_text = fs::read_to_string(temp_dart_file.as_file())?;
+
+    // do not drop too early
+    drop(temp_c_file);
+    drop(temp_dart_file);
+
+    Ok(output_text)
+}
+
+fn ffigen_to_file(args: FfigenArgs, c_path: &Path, dart_path: &Path) -> anyhow::Result<()> {
     debug!("execute ffigen c_path={c_path:?} dart_path={dart_path:?} llvm_path={llvm_path:?}",);
 
-    let config = parse_config(arg)?;
+    let config = parse_config(&args, c_path, dart_path)?;
     debug!("ffigen config: {}", config);
 
     let mut config_file = tempfile::NamedTempFile::new()?;
     config_file.write_all(config.as_bytes())?;
     debug!("ffigen config_file: {:?}", config_file);
 
-    let repo = DartRepository::from_str(&path_to_string(arg.dart_root)?).unwrap();
+    let repo = DartRepository::from_str(&path_to_string(args.dart_root)?).unwrap();
     let res = command_run!(
         call_shell[Some(dart_root)],
         *repo.toolchain.as_run_command(),
@@ -52,18 +66,18 @@ pub(crate) fn ffigen(arg: FfigenArgs) -> anyhow::Result<()> {
     Ok(())
 }
 
-fn parse_config(arg: &FfigenArgs) -> anyhow::Result<String> {
-    let dart_path_str = path_to_string(arg.dart_path)?;
-    let c_path_str = path_to_string(arg.c_path)?;
-    let llvm_path_str = arg
+fn parse_config(args: &FfigenArgs, c_path: &Path, dart_path: &Path) -> anyhow::Result<String> {
+    let dart_path_str = path_to_string(dart_path)?;
+    let c_path_str = path_to_string(c_path)?;
+    let llvm_path_str = args
         .llvm_path
         .iter()
         .map(|x| path_to_string(x))
         .collect::<anyhow::Result<Vec<_>>>()?;
-    let llvm_compiler_opts_list = if arg.llvm_compiler_opts.is_empty() {
+    let llvm_compiler_opts_list = if args.llvm_compiler_opts.is_empty() {
         vec![]
     } else {
-        vec![arg.llvm_compiler_opts]
+        vec![args.llvm_compiler_opts]
     };
 
     let json = json!({

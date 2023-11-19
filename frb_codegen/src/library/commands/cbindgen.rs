@@ -11,9 +11,12 @@ pub(crate) struct CbindgenArgs<'a> {
 
 pub(crate) fn cbindgen(args: CbindgenArgs) -> anyhow::Result<String> {
     let temp_c_output_file = tempfile::Builder::new().suffix(".h").tempfile()?;
+
     cbindgen_to_file(args, temp_c_output_file.path())?;
     let output_text = fs::read_to_string(temp_c_output_file.as_file())?;
+
     drop(temp_c_output_file); // do not drop too early
+
     Ok(output_text)
 }
 
