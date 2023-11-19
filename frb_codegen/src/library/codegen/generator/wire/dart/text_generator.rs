@@ -1,5 +1,8 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::misc::text_generator_utils::section_header_comment;
+use crate::codegen::generator::misc::text_generator_utils::{
+    generate_text_respecting_wasm_flag, section_header_comment,
+};
+use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::dart::spec_generator::WireDartOutputSpec;
 
@@ -7,9 +10,13 @@ pub(super) struct WireDartOutputText {
     pub(super) text: Acc<Option<String>>,
 }
 
-pub(super) fn generate(spec: &WireDartOutputSpec) -> anyhow::Result<WireDartOutputText> {
-    // TODO below is only a super simple incomplete version, should update it later
+pub(super) fn generate(
+    spec: &WireDartOutputSpec,
+    config: &GeneratorWireDartInternalConfig,
+) -> anyhow::Result<WireDartOutputText> {
     let merged_code = generate_merged_code(spec);
+    let text =
+        generate_text_from_merged_code(config, merged_code.clone().map(|code, _| code.all_code()))?;
     Ok(WireDartOutputText { text })
 }
 
@@ -29,4 +36,14 @@ fn generate_merged_code(spec: &WireDartOutputSpec) -> Acc<WireDartOutputCode> {
     );
 
     merged_code.map(|code, _| code.into_iter().fold(Default::default(), |a, b| a + b))
+}
+
+fn generate_text_from_merged_code(
+    config: &GeneratorWireDartInternalConfig,
+    core_code: Acc<String>,
+) -> anyhow::Result<Acc<Option<String>>> {
+    Ok(generate_text_respecting_wasm_flag(
+        core_code,
+        config.wasm_enabled,
+    ))
 }
