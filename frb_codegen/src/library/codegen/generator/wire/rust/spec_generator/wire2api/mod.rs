@@ -56,6 +56,7 @@ pub(in crate::library::codegen::generator::wire::rust) fn generate(
 }
 
 // TODO rm, since no longer have explicit SyncReturn type?
+// TODO -> no, this is needed
 // pub(crate) fn generate_sync_execution_mode_utility() -> CodeWithExternFunc {
 //     CodeWithExternFunc {
 //         extern_funcs: vec![ExternFunc {
