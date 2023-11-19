@@ -14,9 +14,7 @@ pub(crate) struct WireCOutputPack {
 pub(crate) fn generate(
     _ir_pack: &IrPack,
     config: &GeneratorWireCInternalConfig,
-    // TODO originally from: `generated_rust.extern_func_names`
     extern_func_names: Vec<String>,
-    // TODO originally created via `get_c_struct_names`, should calc it from wire-rust layer, in analogy to `extern_func_names`
     extern_struct_names: Vec<String>,
 ) -> anyhow::Result<WireCOutputPack> {
     let spec = spec_generator::generate(config, extern_func_names, extern_struct_names)?;
