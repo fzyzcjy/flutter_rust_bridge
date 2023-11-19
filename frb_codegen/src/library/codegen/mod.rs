@@ -23,9 +23,12 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
 
     let ir_pack = parser::parse(&internal_config.parser)?;
 
-    generator::generate(&ir_pack, &internal_config.generator)?;
+    let generator_output = generator::generate(&ir_pack, &internal_config.generator)?;
 
-    polisher::polish(&internal_config.polisher, todo.needs_freezed)?;
+    polisher::polish(
+        &internal_config.polisher,
+        generator_output.dart_needs_freezed,
+    )?;
 
     Ok(())
 }

@@ -11,12 +11,20 @@ pub(crate) mod internal_config;
 pub(super) mod spec_generator;
 mod text_generator;
 
+pub(crate) struct GeneratorWireDartOutput {
+    pub dart_needs_freezed: bool,
+}
+
 pub(crate) fn generate(
     context: WireDartGeneratorContext,
     c_file_content: &str,
-) -> anyhow::Result<()> {
+) -> anyhow::Result<GeneratorWireDartOutput> {
     let c_binding = c_binding::generate(&context.config, c_file_content)?;
     let spec = spec_generator::generate(context);
     let text = text_generator::generate()?;
-    emitter::emit()
+    emitter::emit()?;
+
+    Ok(GeneratorWireDartOutput {
+        dart_needs_freezed: spec.misc.needs_freezed,
+    })
 }

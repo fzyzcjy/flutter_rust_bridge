@@ -12,11 +12,15 @@ use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGenerat
 use crate::codegen::ir::pack::IrPack;
 use anyhow::Result;
 
+pub(crate) struct GeneratorWireOutput {
+    pub dart_needs_freezed: bool,
+}
+
 pub(crate) fn generate(
     ir_pack: &IrPack,
     config: &GeneratorWireInternalConfig,
     api_dart_config: &GeneratorApiDartInternalConfig,
-) -> Result<()> {
+) -> Result<GeneratorWireOutput> {
     let wire_rust_generator_context = WireRustGeneratorContext {
         ir_pack,
         config: &config.rust,
@@ -32,6 +36,9 @@ pub(crate) fn generate(
 
     rust::generate(wire_rust_generator_context)?;
     let c_output = c::generate(ir_pack, &config.c)?;
-    dart::generate(wire_dart_generator_context, &c_output.c_file_content)?;
-    Ok(())
+    let dart_output = dart::generate(wire_dart_generator_context, &c_output.c_file_content)?;
+
+    Ok(GeneratorWireOutput {
+        dart_needs_freezed: dart_output.dart_needs_freezed,
+    })
 }
