@@ -1,17 +1,11 @@
-use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::wire::dart::api2wire::WireDartOutputSpecApi2wire;
-use crate::codegen::generator::wire::dart::base::WireDartGeneratorContext;
-use crate::codegen::generator::wire::dart::misc::WireDartOutputSpecMisc;
-use crate::codegen::generator::wire::dart::output_code::WireDartOutputCode;
-use crate::codegen::generator::wire::dart::wire2api::WireDartOutputSpecWire2api;
+use crate::codegen::generator::wire::dart::spec_generator::api2wire::WireDartOutputSpecApi2wire;
+use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
+use crate::codegen::generator::wire::dart::spec_generator::misc::WireDartOutputSpecMisc;
+use crate::codegen::generator::wire::dart::spec_generator::wire2api::WireDartOutputSpecWire2api;
 use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
 
-mod api2wire;
-pub(crate) mod base;
 pub(crate) mod internal_config;
-pub(crate) mod misc;
-mod output_code;
-mod wire2api;
+pub(super) mod spec_generator;
 
 pub(crate) struct WireDartOutputSpec {
     misc: WireDartOutputSpecMisc,
