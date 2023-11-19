@@ -52,7 +52,7 @@ impl InternalConfig {
             find_rust_crate_dir(rust_input_path_pack.one_rust_input_path())?,
         );
         let rust_wire_mod =
-            mod_from_rust_path(&rust_output_path[TargetOrCommon::Common], &rust_crate_dir)?;
+            compute_mod_from_rust_path(&rust_output_path[TargetOrCommon::Common], &rust_crate_dir)?;
 
         let dart_root = (config.dart_root.map(PathBuf::from))
             .unwrap_or(find_dart_package_dir(&dart_output_dir)?);
@@ -275,11 +275,18 @@ fn get_file_stem(p: &Path) -> &str {
     p.file_stem().unwrap().to_str().unwrap()
 }
 
-fn mod_from_rust_path(code_path: &Path, crate_path: &Path) -> Result<String> {
-    let p = code_path
-        .strip_prefix(crate_path.join("src"))?
-        .with_extension("");
-    Ok(path_to_string(&p)?.replace('/', "::"))
+fn compute_mod_from_rust_path(code_path: &Path, crate_path: &Path) -> Result<String> {
+    (|| -> Result<String> {
+        let p = code_path
+            .strip_prefix(crate_path.join("src"))?
+            .with_extension("");
+        Ok(path_to_string(&p)?.replace('/', "::"))
+    })()
+    .with_context(|| {
+        format!(
+            "When compute_mod_from_rust_path(code_path={code_path:?}, crate_path={crate_path:?})",
+        )
+    })
 }
 
 #[cfg(test)]
