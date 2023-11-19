@@ -1,4 +1,5 @@
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
+use crate::utils::basic_code::BasicCode;
 use std::ops::{Add, AddAssign};
 
 #[derive(Default, Clone)]
@@ -6,6 +7,12 @@ pub(crate) struct WireDartOutputCode {
     pub import: String,
     pub part: String,
     pub body: String,
+}
+
+impl BasicCode for WireDartOutputCode {
+    fn all_code(&self) -> String {
+        format!("{}\n{}\n{}", self.import, self.part, self.body)
+    }
 }
 
 impl From<String> for WireDartOutputCode {
@@ -63,9 +70,5 @@ impl WireDartOutputCode {
             part: "".to_string(),
             body: body.join("\n"),
         }
-    }
-
-    pub fn all_code(&self) -> String {
-        format!("{}\n{}\n{}", self.import, self.part, self.body)
     }
 }
