@@ -1,6 +1,8 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
-use crate::codegen::generator::misc::text_generator_utils::section_header_comment;
+use crate::codegen::generator::misc::text_generator_utils::{
+    generate_text_respecting_wasm_flag, section_header_comment,
+};
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::WireRustOutputSpec;
@@ -69,11 +71,14 @@ fn generate_text_from_merged_code(
     config: &GeneratorWireRustInternalConfig,
     core_code: &Acc<String>,
 ) -> anyhow::Result<Acc<Option<String>>> {
-    Ok(Acc {
-        common: Some(generate_text_common(&core_code.common, config)?),
-        io: Some(generate_text_target(&core_code.io)),
-        wasm: (config.wasm_enabled).then(|| generate_text_target(&core_code.wasm)),
-    })
+    Ok(generate_text_respecting_wasm_flag(
+        Acc {
+            common: generate_text_common(&core_code.common, config)?,
+            io: generate_text_target(&core_code.io),
+            wasm: generate_text_target(&core_code.wasm),
+        },
+        config.wasm_enabled,
+    ))
 }
 
 fn generate_text_common(
