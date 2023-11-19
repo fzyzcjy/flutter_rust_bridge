@@ -20,11 +20,8 @@ pub fn ensure_tools_available(dart_root: &Path, enable_deps_check: bool) -> anyh
     }
 
     if enable_deps_check {
-        repo.has_specified("ffi", DartDependencyMode::Main, &FFI_REQUIREMENT)?;
-        repo.has_installed("ffi", DartDependencyMode::Main, &FFI_REQUIREMENT)?;
-
-        repo.has_specified("ffigen", DartDependencyMode::Dev, &FFIGEN_REQUIREMENT)?;
-        repo.has_installed("ffigen", DartDependencyMode::Dev, &FFIGEN_REQUIREMENT)?;
+        repo.has_specified_and_installed("ffi", DartDependencyMode::Main, &FFI_REQUIREMENT)?;
+        repo.has_specified_and_installed("ffigen", DartDependencyMode::Dev, &FFIGEN_REQUIREMENT)?;
     }
 
     Ok(())

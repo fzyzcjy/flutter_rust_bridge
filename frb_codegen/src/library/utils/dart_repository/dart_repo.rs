@@ -47,6 +47,17 @@ impl DartRepository {
         self.toolchain.available()
     }
 
+    pub(crate) fn has_specified_and_installed(
+        &self,
+        package: &str,
+        manager: DartDependencyMode,
+        requirement: &VersionReq,
+    ) -> anyhow::Result<()> {
+        self.has_specified(package, manager, requirement)?;
+        self.has_installed(package, manager, requirement)?;
+        Ok(())
+    }
+
     /// check whether a package has been correctly specified in pubspec.yaml
     pub(crate) fn has_specified(
         &self,
@@ -137,7 +148,7 @@ fn error_invalid_dep(
     )
 }
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Copy)]
 pub enum DartDependencyMode {
     /// Appear in `dependencies` of `pubspec.yaml`
     Main,
