@@ -172,16 +172,11 @@ fn compute_rust_output_path(
     base_dir: &Path,
     rust_crate_dir: &Path,
 ) -> TargetOrCommonMap<PathBuf> {
-    let common = base_dir.join(
+    let path_common = base_dir.join(
         &(config.rust_output.clone().map(PathBuf::from))
             .unwrap_or_else(|| fallback_rust_output_path(rust_crate_dir)),
     );
-
-    TargetOrCommonMap {
-        common: common.clone(),
-        io: common.with_extension("io.rs"),
-        wasm: common.with_extension("web.rs"),
-    }
+    compute_path_map(&path_common)
 }
 
 fn compute_namespace_from_rust_input_path(rust_input_path: &Path) -> Result<Namespace> {
@@ -197,24 +192,35 @@ fn compute_namespace_from_rust_input_path(rust_input_path: &Path) -> Result<Name
 
 struct DartOutputPathPack {
     dart_decl_output_path: HashMap<Namespace, PathBuf>,
-    dart_impl_output_path: PathBuf,
+    dart_impl_output_path: TargetOrCommonMap<PathBuf>,
 }
 
 fn compute_dart_output_path_pack(
     dart_output_dir: &Path,
     namespaces: &[&Namespace],
 ) -> DartOutputPathPack {
+    let dart_decl_output_path = namespaces
+        .iter()
+        .map(|&namespace| {
+            (
+                namespace.to_owned(),
+                dart_output_dir.join(compute_dart_decl_output_filename(namespace)),
+            )
+        })
+        .collect();
+
     DartOutputPathPack {
-        dart_decl_output_path: namespaces
-            .iter()
-            .map(|&namespace| {
-                (
-                    namespace.to_owned(),
-                    dart_output_dir.join(compute_dart_decl_output_filename(namespace)),
-                )
-            })
-            .collect(),
-        dart_impl_output_path: dart_output_dir.join("bridge_generated.dart"),
+        dart_decl_output_path,
+        dart_impl_output_path: compute_path_map(&dart_output_dir.join("bridge_generated.dart")),
+    }
+}
+
+fn compute_path_map(path_common: &Path) -> TargetOrCommonMap<PathBuf> {
+    let extension = path_common.extension().unwrap().to_str().unwrap();
+    TargetOrCommonMap {
+        common: path_common.to_owned(),
+        io: path_common.with_extension(&format!("io.{extension}")),
+        wasm: path_common.with_extension(&format!("web.{extension}")),
     }
 }
 
