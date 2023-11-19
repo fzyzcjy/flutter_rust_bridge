@@ -58,12 +58,13 @@ pub(crate) fn bindgen_rust_to_dart(
     arg: BindgenRustToDartArg,
     dart_root: &str,
 ) -> anyhow::Result<()> {
-    cbindgen(
-        arg.rust_crate_dir,
-        arg.c_output_path,
-        arg.c_struct_names,
-        arg.exclude_symbols,
-    )?;
+    // DONE
+    // cbindgen(
+    //     arg.rust_crate_dir,
+    //     arg.c_output_path,
+    //     arg.c_struct_names,
+    //     arg.exclude_symbols,
+    // )?;
     ffigen(
         arg.c_output_path,
         arg.dart_output_path,

@@ -9,7 +9,7 @@ use std::io::Write;
 use std::path::{Path, PathBuf};
 use std::str::FromStr;
 
-fn ffigen(
+pub(crate) fn ffigen(
     c_path: &Path,
     dart_path: &Path,
     dart_class_name: &str,
