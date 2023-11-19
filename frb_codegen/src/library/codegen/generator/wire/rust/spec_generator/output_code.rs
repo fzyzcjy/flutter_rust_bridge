@@ -1,6 +1,5 @@
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::utils::basic_code::BasicCode;
-use crate::utils::dart_basic_code::DartBasicCode;
 use itertools::Itertools;
 use std::iter::FromIterator;
 use std::ops::{Add, AddAssign};

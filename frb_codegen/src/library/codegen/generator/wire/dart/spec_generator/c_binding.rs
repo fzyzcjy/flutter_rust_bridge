@@ -1,16 +1,16 @@
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
+use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::library::commands::ffigen::{ffigen, FfigenArgs};
-use crate::utils::dart_basic_code::DartBasicCode;
 use anyhow::ensure;
 
 pub(crate) fn generate(
     config: &GeneratorWireDartInternalConfig,
     c_file_content: &str,
-) -> anyhow::Result<DartBasicCode> {
+) -> anyhow::Result<WireDartOutputCode> {
     let content = execute_ffigen(config, c_file_content)?;
     let content = postpare_modify(&content, &config.dart_wire_class_name);
     sanity_check(&content, &config.dart_wire_class_name)?;
-    Ok(DartBasicCode::parse(&content))
+    Ok(WireDartOutputCode::parse(&content))
 }
 
 fn execute_ffigen(
