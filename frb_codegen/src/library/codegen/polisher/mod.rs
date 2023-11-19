@@ -2,6 +2,7 @@ use crate::codegen::generator::misc::TargetOrCommon;
 use crate::codegen::polisher::add_mod_to_lib::try_add_mod_to_lib;
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::command_run;
+use crate::commands::format_rust::format_rust;
 use crate::library::commands::dart_build_runner::dart_build_runner;
 
 pub(crate) mod add_mod_to_lib;
@@ -44,7 +45,7 @@ fn execute_dart_format(config: &PolisherInternalConfig) -> anyhow::Result<()> {
     // )
 }
 
-fn execute_format_rust(config: &PolisherInternalConfig) -> anyhow::Result<()> {
+fn execute_rust_format(config: &PolisherInternalConfig) -> anyhow::Result<()> {
     command_run!(
         format_rust,
         &config.rust_output_path[TargetOrCommon::Common],

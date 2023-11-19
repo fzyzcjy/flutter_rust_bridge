@@ -55,6 +55,7 @@ impl InternalConfig {
         let dart_root = (config.dart_root.map(PathBuf::from))
             .unwrap_or(find_dart_package_dir(&dart_output_dir)?);
 
+        let wasm_enabled = config.wasm.unwrap_or(false);
         let use_bridge_in_method = config.use_bridge_in_method.unwrap_or(true);
         let dart_enums_style = config.dart_enums_style.unwrap_or(false);
         let dart3 = config.dart3.unwrap_or(true);
@@ -91,7 +92,7 @@ impl InternalConfig {
                     dart: GeneratorWireDartInternalConfig {
                         dart_root: dart_root.clone(),
                         use_bridge_in_method,
-                        wasm_enabled: config.wasm.unwrap_or(false),
+                        wasm_enabled,
                         dart_wire_class_name: TODO,
                         llvm_path: config
                             .llvm_path
@@ -110,8 +111,6 @@ impl InternalConfig {
                         rust_wire_mod: TODO,
                         wasm_enabled: TODO,
                         rust_output_path: TODO,
-                        // TODO
-                        // rust_output_path,
                     },
                     c: GeneratorWireCInternalConfig {
                         rust_crate_dir: rust_crate_dir.clone(),
@@ -130,6 +129,7 @@ impl InternalConfig {
                 dart_format_line_length: config.dart_format_line_length.unwrap_or(80),
                 add_mod_to_lib: config.add_mod_to_lib.unwrap_or(true),
                 build_runner: config.build_runner.unwrap_or(true),
+                wasm_enabled,
                 dart_root,
                 rust_crate_dir,
                 rust_output_path,
