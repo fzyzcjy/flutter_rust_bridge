@@ -8,6 +8,8 @@ use crate::utils::path_utils::path_to_string;
 // and we want to emphasize we are generating final output text here.
 pub(super) struct WireRustOutputText {
     pub(super) text: Acc<Option<String>>,
+    // TODO originally from: `generated_rust.extern_func_names`
+    pub(super) extern_func_names: Vec<String>,
 }
 
 pub(super) fn generate(

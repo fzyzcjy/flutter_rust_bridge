@@ -25,7 +25,6 @@ pub(crate) struct WireRustOutputSpecMisc {
     wrapper_structs: Acc<Vec<WireRustOutputCode>>,
     static_checks: Acc<Vec<WireRustOutputCode>>,
     executor: Acc<Vec<WireRustOutputCode>>,
-    pub extern_func_names: Vec<String>,
     pub extern_struct_names: Vec<String>,
 }
 
@@ -55,8 +54,6 @@ pub(crate) fn generate(
         )
         .into()]),
         executor: Acc::new_common(vec![generate_executor(context.ir_pack).into()]),
-        // TODO originally from: `generated_rust.extern_func_names`
-        extern_func_names: TODO,
         extern_struct_names: generate_extern_struct_names(context, cache),
     }
 }

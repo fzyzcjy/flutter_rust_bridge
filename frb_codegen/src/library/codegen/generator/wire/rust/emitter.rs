@@ -6,7 +6,7 @@ use std::fs;
 use strum::IntoEnumIterator;
 
 pub(super) fn emit(
-    text: WireRustOutputText,
+    text: &WireRustOutputText,
     config: &GeneratorWireRustInternalConfig,
 ) -> anyhow::Result<()> {
     for target in TargetOrCommon::iter() {

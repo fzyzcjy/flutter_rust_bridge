@@ -28,10 +28,10 @@ pub(crate) fn generate(
 ) -> anyhow::Result<GeneratorWireRustOutput> {
     let spec = spec_generator::generate(context);
     let text = text_generator::generate(&spec, context.config)?;
-    emitter::emit(text, context.config)?;
+    emitter::emit(&text, context.config)?;
 
     Ok(GeneratorWireRustOutput {
-        extern_func_names: spec.misc.extern_func_names,
+        extern_func_names: text.extern_func_names,
         extern_struct_names: spec.misc.extern_struct_names,
     })
 }
