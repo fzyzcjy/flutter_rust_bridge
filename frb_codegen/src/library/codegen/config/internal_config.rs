@@ -1,10 +1,12 @@
 use crate::codegen::parser::internal_config::ParserInternalConfig;
+use crate::codegen::preparer::PreparerInternalConfig;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::path::PathBuf;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub(crate) struct InternalConfig {
+    pub preparer: PreparerInternalConfig,
     pub parser: ParserInternalConfig,
     pub generator: GeneratorInternalConfig,
     pub polisher: PolisherInternalConfig,
@@ -55,7 +57,6 @@ pub(crate) struct PolisherInternalConfig {
     pub dart_format_line_length: u32,
     pub add_mod_to_lib: bool,
     pub build_runner: bool,
-    pub deps_check: bool,
 }
 
 // TODO move?

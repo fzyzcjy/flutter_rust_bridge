@@ -4,6 +4,7 @@ use crate::codegen::config::internal_config::{
     PolisherInternalConfig,
 };
 use crate::codegen::parser::internal_config::{ParserInternalConfig, RustInputPathPack};
+use crate::codegen::preparer::PreparerInternalConfig;
 use crate::codegen::Config;
 use crate::utils::path_utils::{
     find_dart_package_dir, find_rust_crate_dir, glob_path, path_to_string,
@@ -57,6 +58,10 @@ impl InternalConfig {
             .unwrap_or(find_dart_package_dir(&dart_output_dir)?);
 
         Ok(InternalConfig {
+            preparer: PreparerInternalConfig {
+                dart_root: dart_root.clone(),
+                deps_check: config.deps_check.unwrap_or(true),
+            },
             parser: ParserInternalConfig {
                 rust_input_path_pack,
                 rust_crate_dir: rust_crate_dir.clone(),
@@ -92,7 +97,6 @@ impl InternalConfig {
                 dart_format_line_length: config.dart_format_line_length.unwrap_or(80),
                 add_mod_to_lib: config.add_mod_to_lib.unwrap_or(true),
                 build_runner: config.build_runner.unwrap_or(true),
-                deps_check: config.deps_check.unwrap_or(true),
             },
         })
     }
