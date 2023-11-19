@@ -4,6 +4,8 @@ use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartIntern
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
 use crate::codegen::generator::wire::dart::spec_generator::api2wire::ty::WireDartGeneratorApi2wireTrait;
+use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
+use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::dart_opaque::IrTypeDartOpaque;
@@ -68,10 +70,20 @@ codegen_generator_structs!(
 pub(crate) struct WireDartGeneratorContext<'a> {
     pub(crate) ir_pack: &'a IrPack,
     pub(crate) config: &'a GeneratorWireDartInternalConfig,
+    pub(crate) wire_rust_config: &'a GeneratorWireRustInternalConfig,
     pub(crate) api_dart_config: &'a GeneratorApiDartInternalConfig,
 }
 
 impl WireDartGeneratorContext<'_> {
+    pub(crate) fn as_wire_rust_context(&self) -> WireRustGeneratorContext {
+        WireRustGeneratorContext {
+            ir_pack: self.ir_pack,
+            config: self.wire_rust_config,
+            wire_dart_config: self.config,
+            api_dart_config: self.api_dart_config,
+        }
+    }
+
     pub(crate) fn as_api_dart_context(&self) -> ApiDartGeneratorContext {
         ApiDartGeneratorContext {
             ir_pack: self.ir_pack,

@@ -15,7 +15,7 @@ use itertools::Itertools;
 
 mod add_mod_to_lib;
 mod emitter;
-mod internal_config;
+pub(crate) mod internal_config;
 pub(crate) mod spec_generator;
 mod text_generator;
 

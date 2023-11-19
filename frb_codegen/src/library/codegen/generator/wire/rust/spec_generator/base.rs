@@ -78,6 +78,7 @@ impl WireRustGeneratorContext<'_> {
         WireDartGeneratorContext {
             ir_pack: self.ir_pack,
             config: self.wire_dart_config,
+            wire_rust_config: self.config,
             api_dart_config: self.api_dart_config,
         }
     }
