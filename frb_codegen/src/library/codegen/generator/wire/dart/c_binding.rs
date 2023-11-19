@@ -1,9 +1,11 @@
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
 use crate::library::commands::ffigen::{ffigen, FfigenArgs};
+use crate::utils::dart_basic_code::DartBasicCode;
 
-pub(super) fn generate(config: &GeneratorWireDartInternalConfig) -> anyhow::Result<String> {
-    let content_raw = execute_ffigen(config)?;
-    Ok(postpare_modify(&content_raw, &config.dart_wire_class_name))
+pub(super) fn generate(config: &GeneratorWireDartInternalConfig) -> anyhow::Result<DartBasicCode> {
+    let content = execute_ffigen(config)?;
+    let content = postpare_modify(&content, &config.dart_wire_class_name);
+    Ok(DartBasicCode::parse(&content))
 }
 
 fn execute_ffigen(config: &GeneratorWireDartInternalConfig) -> anyhow::Result<String> {
