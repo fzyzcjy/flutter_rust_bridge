@@ -15,6 +15,7 @@ use itertools::Itertools;
 
 mod emitter;
 pub(crate) mod internal_config;
+mod misc;
 pub(crate) mod spec_generator;
 mod text_generator;
 
@@ -29,29 +30,5 @@ pub(crate) fn generate(
     let spec = spec_generator::generate(context);
     let text = text_generator::generate(&spec, context.config)?;
     emitter::emit(text, context.config)?;
-    Ok(compute_output(&spec))
+    Ok(misc::compute_output(&spec))
 }
-
-fn compute_output(spec: &WireRustOutputSpec) -> GeneratorWireRustOutput {
-    GeneratorWireRustOutput {
-        // TODO originally from: `generated_rust.extern_func_names`
-        extern_func_names: TODO,
-        // TODO originally created via `get_c_struct_names`, should calc it from wire-rust layer, in analogy to `extern_func_names`
-        extern_struct_names: TODO,
-    }
-}
-
-// TODO
-// fn get_c_struct_names(ir_pack: &IrPack) -> Vec<String> {
-//     ir_pack
-//         .distinct_types(true, true)
-//         .iter()
-//         .filter_map(|ty| {
-//             if let IrType::StructRef(_) = ty {
-//                 Some(ty.rust_wire_type(Target::Io))
-//             } else {
-//                 None
-//             }
-//         })
-//         .collect()
-// }
