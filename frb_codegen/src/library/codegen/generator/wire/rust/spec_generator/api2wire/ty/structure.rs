@@ -2,6 +2,7 @@ use crate::codegen::generator::wire::rust::spec_generator::api2wire::misc::gener
 use crate::codegen::generator::wire::rust::spec_generator::api2wire::ty::WireRustGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::ir::pack::IrPack;
+use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 
 impl<'a> WireRustGeneratorApi2wireTrait for StructRefWireRustGenerator<'a> {
