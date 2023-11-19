@@ -25,6 +25,7 @@ impl InternalConfig {
     pub(crate) fn parse(config: Config) -> Result<Self> {
         let base_dir = config
             .base_dir
+            .as_ref()
             .filter(|s| !s.is_empty())
             .map(PathBuf::from)
             .unwrap_or(std::env::current_dir()?);
@@ -171,10 +172,11 @@ fn compute_rust_output_path(
     base_dir: &PathBuf,
     rust_input_path_pack: &RustInputPathPack,
 ) -> TargetOrCommonMap<PathBuf> {
-    let common =
-        base_dir.join(&config.rust_output.map(PathBuf::from).unwrap_or_else(|| {
+    let common = base_dir.join(
+        &(config.rust_output.clone().map(PathBuf::from)).unwrap_or_else(|| {
             fallback_rust_output_path(rust_input_path_pack.one_rust_input_path())
-        }));
+        }),
+    );
 
     TargetOrCommonMap {
         common: common.clone(),

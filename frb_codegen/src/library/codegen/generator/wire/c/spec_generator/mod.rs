@@ -9,7 +9,7 @@ pub(super) struct WireCOutputSpec {
     pub code_dummy: String,
 }
 
-pub(crate) fn generate(
+pub(super) fn generate(
     config: &GeneratorWireCInternalConfig,
     extern_func_names: Vec<String>,
     extern_struct_names: Vec<String>,
