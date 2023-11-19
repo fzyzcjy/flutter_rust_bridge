@@ -14,10 +14,10 @@ pub(crate) fn generate(ir_pack: &IrPack, context: WireDartGeneratorContext) -> a
 
 fn execute_ffigen() -> anyhow::Result<()> {
     ffigen(FfigenArgs {
-        c_file_content: TODO,
-        dart_class_name: TODO,
-        llvm_path: TODO,
-        llvm_compiler_opts: TODO,
-        dart_root: TODO,
+        c_file_content: todo!(),
+        dart_class_name: todo!(),
+        llvm_path: todo!(),
+        llvm_compiler_opts: todo!(),
+        dart_root: todo!(),
     })?;
 }
