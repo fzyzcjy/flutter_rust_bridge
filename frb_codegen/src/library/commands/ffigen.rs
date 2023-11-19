@@ -112,7 +112,7 @@ fn parse_config(args: &FfigenToFileArgs) -> anyhow::Result<String> {
         },
         "comments": false,
         "preamble": "// ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names",
-        "llvm_path": llvm_path_str,
+        "llvm-path": llvm_path_str,
         "compiler-opts": llvm_compiler_opts_list,
     });
 
