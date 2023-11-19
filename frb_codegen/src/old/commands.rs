@@ -65,12 +65,13 @@ pub(crate) fn bindgen_rust_to_dart(
     //     arg.c_struct_names,
     //     arg.exclude_symbols,
     // )?;
-    ffigen(
-        arg.c_output_path,
-        arg.dart_output_path,
-        arg.dart_class_name,
-        arg.llvm_install_path,
-        arg.llvm_compiler_opts,
-        dart_root,
-    )
+    // DONE
+    // ffigen(
+    //     arg.c_output_path,
+    //     arg.dart_output_path,
+    //     arg.dart_class_name,
+    //     arg.llvm_install_path,
+    //     arg.llvm_compiler_opts,
+    //     dart_root,
+    // )
 }

@@ -10,12 +10,12 @@ use std::path::{Path, PathBuf};
 use std::str::FromStr;
 
 pub(crate) struct FfigenArgs<'a> {
-    c_path: &'a Path,
-    dart_path: &'a Path,
-    dart_class_name: &'a str,
-    llvm_path: &'a [PathBuf],
-    llvm_compiler_opts: &'a str,
-    dart_root: &'a Path,
+    pub c_path: &'a Path,
+    pub dart_path: &'a Path,
+    pub dart_class_name: &'a str,
+    pub llvm_path: &'a [PathBuf],
+    pub llvm_compiler_opts: &'a str,
+    pub dart_root: &'a Path,
 }
 
 pub(crate) fn ffigen(arg: FfigenArgs) -> anyhow::Result<()> {

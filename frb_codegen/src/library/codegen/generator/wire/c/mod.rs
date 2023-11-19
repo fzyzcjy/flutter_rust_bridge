@@ -4,6 +4,7 @@ use crate::codegen::ir::pack::IrPack;
 use crate::library::commands::cbindgen::{cbindgen, CbindgenArgs};
 
 pub(crate) fn generate(ir_pack: &IrPack) -> anyhow::Result<()> {
+    execute_cbindgen()?;
     todo!()
 }
 
