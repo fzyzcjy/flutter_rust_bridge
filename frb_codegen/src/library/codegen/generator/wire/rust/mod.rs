@@ -30,5 +30,5 @@ pub(crate) fn generate(
     let spec = spec_generator::generate(context);
     let text = text_generator::generate(&spec, context.config)?;
     emitter::emit(text, context.config)?;
-    Ok(misc::compute_output(&spec, context.ir_pack))
+    Ok(misc::compute_output(&spec, context))
 }
