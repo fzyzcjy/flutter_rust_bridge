@@ -1,4 +1,5 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::dart::spec_generator::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::ir::ty::IrTypeTrait;
@@ -25,9 +26,8 @@ impl<'a> WireDartGeneratorApi2wireTrait for OptionalListWireDartGenerator<'a> {
 
     fn dart_wire_type(&self, target: Target) -> String {
         match target {
-            Target::Wasm => "List<dynamic>".into(),
             Target::Io => format!("ffi.Pointer<wire_{}>", self.safe_ident()),
-            Target::Common => unreachable!(),
+            Target::Wasm => "List<dynamic>".into(),
         }
     }
 }

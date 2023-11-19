@@ -1,4 +1,5 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::dart::spec_generator::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 
@@ -27,11 +28,10 @@ impl<'a> WireDartGeneratorApi2wireTrait for DartOpaqueWireDartGenerator<'a> {
         )
     }
 
-    fn dart_wire_type(&self, target: crate::target::Target) -> String {
-        if target == Target::Wasm {
-            "Object"
-        } else {
-            "wire_DartOpaque"
+    fn dart_wire_type(&self, target: Target) -> String {
+        match target {
+            Target::Io => "wire_DartOpaque",
+            Target::Wasm => "Object",
         }
         .to_owned()
     }

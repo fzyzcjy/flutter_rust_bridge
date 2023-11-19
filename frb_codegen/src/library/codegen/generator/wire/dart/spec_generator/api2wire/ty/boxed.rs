@@ -67,7 +67,6 @@ impl<'a> WireDartGeneratorApi2wireTrait for BoxedWireDartGenerator<'a> {
                     .unwrap_or_else(|| self.inner.dart_wire_type(target));
                 format!("ffi.Pointer<{wire_type}>")
             }
-            Target::Common => unreachable!(),
         }
     }
 }

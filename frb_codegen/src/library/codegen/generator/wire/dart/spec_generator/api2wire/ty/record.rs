@@ -1,4 +1,5 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::dart::spec_generator::api2wire::ty::structure::{
     GeneralizedStructGenerator, GeneralizedStructGeneratorMode,
 };
@@ -18,10 +19,9 @@ impl<'a> WireDartGeneratorApi2wireTrait for RecordWireDartGenerator<'a> {
     }
 
     fn dart_wire_type(&self, target: Target) -> String {
-        if target == Target::Wasm {
-            "List<dynamic>".to_string()
-        } else {
-            self.rust_wire_type(target)
+        match target {
+            Target::Io => self.rust_wire_type(target),
+            Target::Wasm => "List<dynamic>".to_string(),
         }
     }
 }
