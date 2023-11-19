@@ -22,7 +22,7 @@ pub(crate) fn generate_dart_code(
     // let dart_root = config.dart_root_or_default();
 
     // TODO not done
-    ensure_tools_available(&dart_root, config.skip_deps_check)?;
+    ensure_tools_available(&dart_root, config.deps_check)?;
 
     // DONE
     // info!("Phase: Generating Dart bindings for Rust");
