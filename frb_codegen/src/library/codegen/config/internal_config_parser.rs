@@ -178,7 +178,7 @@ fn compute_rust_output_path(
     TargetOrCommonMap {
         common: common.clone(),
         io: common.with_extension(".io.rs"),
-        wasm: common.with_extenswasmn(".web.rs"),
+        wasm: common.with_extension(".web.rs"),
     }
 }
 

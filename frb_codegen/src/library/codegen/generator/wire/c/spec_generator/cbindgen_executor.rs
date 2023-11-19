@@ -1,4 +1,4 @@
-use crate::codegen::generator::misc::Target;
+use crate::codegen::generator::misc::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::IrType;
@@ -10,9 +10,10 @@ pub(in crate::library::codegen::generator::wire::c) fn execute(
     ir_pack: &IrPack,
     config: &GeneratorWireCInternalConfig,
 ) -> anyhow::Result<String> {
-    let changed_file_handle = temp_change_file(config.rust_output_path.clone(), |x| {
-        x + DUMMY_WIRE_CODE_FOR_BINDGEN
-    })?;
+    let changed_file_handle = temp_change_file(
+        config.rust_output_path[TargetOrCommon::Common].clone(),
+        |x| x + DUMMY_WIRE_CODE_FOR_BINDGEN,
+    )?;
 
     let ans = cbindgen(CbindgenArgs {
         rust_crate_dir: &config.rust_crate_dir,
