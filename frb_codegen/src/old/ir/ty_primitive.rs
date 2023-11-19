@@ -1,16 +1,7 @@
 use crate::ir::*;
 use crate::target::Target;
 
-impl IrTypeTrait for IrTypePrimitive {
-    fn dart_wire_type(&self, target: Target) -> String {
-        match self {
-            IrTypePrimitive::I64 | IrTypePrimitive::U64 if target == Target::Wasm => {
-                "Object".into()
-            }
-            _ => self.dart_api_type(),
-        }
-    }
-}
+impl IrTypeTrait for IrTypePrimitive {}
 
 impl IrTypePrimitive {
     /// Representations of primitives within Dart's pointers, e.g. `ffi.Pointer<ffi.Uint8>`.

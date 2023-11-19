@@ -12,13 +12,4 @@ impl IrTypeDelegateArray {
     }
 }
 
-impl IrTypeTrait for IrTypeDelegate {
-    fn dart_wire_type(&self, target: Target) -> String {
-        match (self, target) {
-            (IrTypeDelegate::String, Target::Wasm) => "String".into(),
-            (IrTypeDelegate::StringList, Target::Wasm) => "List<String>".into(),
-            (IrTypeDelegate::StringList, _) => "ffi.Pointer<wire_StringList>".to_owned(),
-            _ => self.get_delegate().dart_wire_type(target),
-        }
-    }
-}
+impl IrTypeTrait for IrTypeDelegate {}

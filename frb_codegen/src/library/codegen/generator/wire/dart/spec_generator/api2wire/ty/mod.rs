@@ -25,7 +25,5 @@ pub(crate) trait WireDartGeneratorApi2wireTrait {
         None
     }
 
-    fn dart_wire_type(&self, target: Target) -> String {
-        todo!()
-    }
+    fn dart_wire_type(&self, target: Target) -> String;
 }

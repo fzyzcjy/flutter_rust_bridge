@@ -26,4 +26,13 @@ impl<'a> WireDartGeneratorApi2wireTrait for DartOpaqueWireDartGenerator<'a> {
                 .to_owned(),
         )
     }
+
+    fn dart_wire_type(&self, target: crate::target::Target) -> String {
+        if target == Target::Wasm {
+            "Object"
+        } else {
+            "wire_DartOpaque"
+        }
+        .to_owned()
+    }
 }

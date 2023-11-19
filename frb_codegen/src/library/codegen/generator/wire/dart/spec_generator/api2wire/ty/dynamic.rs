@@ -6,4 +6,8 @@ impl<'a> WireDartGeneratorApi2wireTrait for DynamicWireDartGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         Acc::default()
     }
+
+    fn dart_wire_type(&self, _target: crate::target::Target) -> String {
+        panic!("Functions cannot receive dynamic parameters.")
+    }
 }

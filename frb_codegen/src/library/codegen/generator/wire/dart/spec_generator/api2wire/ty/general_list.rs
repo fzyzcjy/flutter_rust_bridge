@@ -35,4 +35,12 @@ impl<'a> WireDartGeneratorApi2wireTrait for GeneralListWireDartGenerator<'a> {
             ..Default::default()
         }
     }
+
+    fn dart_wire_type(&self, target: Target) -> String {
+        if let Target::Wasm = target {
+            "List<dynamic>".into()
+        } else {
+            format!("ffi.Pointer<wire_{}>", self.safe_ident())
+        }
+    }
 }

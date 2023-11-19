@@ -20,4 +20,12 @@ impl<'a> WireDartGeneratorApi2wireTrait for RustOpaqueWireDartGenerator<'a> {
     fn api_fill_to_wire_body(&self) -> Option<String> {
         Some("wireObj.ptr = apiObj.shareOrMove();".into())
     }
+
+    fn dart_wire_type(&self, target: crate::target::Target) -> String {
+        if let Target::Wasm = target {
+            "Object".to_owned()
+        } else {
+            self.rust_wire_type(target)
+        }
+    }
 }

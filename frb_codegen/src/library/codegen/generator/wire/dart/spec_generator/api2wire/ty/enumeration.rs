@@ -35,6 +35,14 @@ impl<'a> WireDartGeneratorApi2wireTrait for EnumRefWireDartGenerator<'a> {
                 .join("\n"),
         )
     }
+
+    fn dart_wire_type(&self, target: Target) -> String {
+        if let Target::Wasm = target {
+            "List<dynamic>".into()
+        } else {
+            self.rust_wire_type(target)
+        }
+    }
 }
 
 impl<'a> EnumRefWireDartGenerator<'a> {

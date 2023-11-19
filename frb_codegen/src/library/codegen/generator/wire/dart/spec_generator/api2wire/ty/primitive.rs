@@ -14,4 +14,13 @@ impl<'a> WireDartGeneratorApi2wireTrait for PrimitiveWireDartGenerator<'a> {
             _ => "return raw;".into(),
         }
     }
+
+    fn dart_wire_type(&self, target: Target) -> String {
+        match self {
+            IrTypePrimitive::I64 | IrTypePrimitive::U64 if target == Target::Wasm => {
+                "Object".into()
+            }
+            _ => self.dart_api_type(),
+        }
+    }
 }

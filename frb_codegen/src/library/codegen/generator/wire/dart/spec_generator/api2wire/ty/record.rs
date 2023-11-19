@@ -16,6 +16,14 @@ impl<'a> WireDartGeneratorApi2wireTrait for RecordWireDartGenerator<'a> {
     fn api_fill_to_wire_body(&self) -> Option<String> {
         self.new_generalized_generator().api_fill_to_wire_body()
     }
+
+    fn dart_wire_type(&self, target: Target) -> String {
+        if target == Target::Wasm {
+            "List<dynamic>".to_string()
+        } else {
+            self.rust_wire_type(target)
+        }
+    }
 }
 
 impl<'a> RecordWireDartGenerator<'a> {
