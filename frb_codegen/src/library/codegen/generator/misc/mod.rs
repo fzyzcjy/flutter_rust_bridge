@@ -34,5 +34,23 @@ pub fn is_js_value(ty: &IrType) -> bool {
     }
 }
 
-// TODO optimize the detailed type
-pub(crate) struct OutputTexts(pub Vec<(PathBuf, String)>);
+pub(crate) struct OutputText {
+    pub path: PathBuf,
+    pub text: String,
+}
+
+impl OutputText {
+    pub(crate) fn new(path: PathBuf, text: String) -> Self {
+        Self { path, text }
+    }
+}
+
+pub(crate) struct OutputTexts(pub Vec<OutputText>);
+
+impl Add for OutputTexts {
+    type Output = Self;
+
+    fn add(self, rhs: Self) -> Self::Output {
+        Self([self.0, rhs.0].concat())
+    }
+}
