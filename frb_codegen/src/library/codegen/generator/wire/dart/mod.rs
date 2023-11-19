@@ -1,4 +1,4 @@
-use crate::codegen::generator::misc::OutputTexts;
+use crate::codegen::generator::misc::{OutputText, OutputTexts};
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 
 pub(crate) mod internal_config;
@@ -18,7 +18,10 @@ pub(crate) fn generate(
     let text = text_generator::generate(&spec, &context.config)?;
 
     Ok(GeneratorWireDartOutput {
-        output_texts: todo!(),
+        output_texts: OutputTexts(vec![OutputText::new(
+            context.config.dart_impl_output_path,
+            text.text,
+        )]),
         dart_needs_freezed: spec.misc.needs_freezed,
     })
 }

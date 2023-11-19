@@ -1,4 +1,4 @@
-use crate::codegen::generator::misc::OutputTexts;
+use crate::codegen::generator::misc::{OutputText, OutputTexts};
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::ir::pack::IrPackComputedCache;
 
@@ -19,7 +19,10 @@ pub(crate) fn generate(
     let text = text_generator::generate(&spec, context.config)?;
 
     Ok(GeneratorWireRustOutput {
-        output_texts: todo!(),
+        output_texts: OutputTexts(vec![OutputText::new(
+            context.config.rust_output_path,
+            text.text,
+        )]),
         extern_func_names: text.extern_func_names,
         extern_struct_names: spec.misc.extern_struct_names,
     })

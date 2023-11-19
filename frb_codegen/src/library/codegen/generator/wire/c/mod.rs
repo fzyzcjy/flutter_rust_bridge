@@ -2,7 +2,7 @@ pub(crate) mod internal_config;
 mod spec_generator;
 mod text_generator;
 
-use crate::codegen::generator::misc::OutputTexts;
+use crate::codegen::generator::misc::{OutputText, OutputTexts};
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::codegen::ir::pack::IrPack;
 use crate::utils::file_utils::create_dir_all_and_write;
@@ -22,7 +22,10 @@ pub(crate) fn generate(
     let spec = spec_generator::generate(config, extern_func_names, extern_struct_names)?;
     let text = text_generator::generate(spec)?;
     Ok(GeneratorWireCOutput {
-        output_texts: todo!(),
+        output_texts: OutputTexts(vec![OutputText::new(
+            config.c_output_path.clone(),
+            text.clone(),
+        )]),
         c_file_content: text,
     })
 }
