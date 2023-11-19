@@ -1,11 +1,12 @@
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
 use crate::codegen::generator::wire::rust::spec_generator::WireRustOutputSpec;
+use crate::codegen::generator::wire::rust::text_generator::WireRustOutputText;
 use crate::utils::path_utils::path_to_string;
 use std::fs;
 
-pub(crate) fn write(
-    spec: WireRustOutputSpec,
+pub(super) fn emit(
+    spec: WireRustOutputText,
     config: &GeneratorWireRustInternalConfig,
 ) -> anyhow::Result<()> {
     todo!()

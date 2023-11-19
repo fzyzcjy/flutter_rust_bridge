@@ -8,11 +8,13 @@ use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
 use crate::codegen::ir::ty::IrType;
 use itertools::Itertools;
 
+mod emitter;
 mod internal_config;
 pub(crate) mod spec_generator;
-mod writer;
+mod text_generator;
 
 pub(crate) fn generate(ir_pack: &IrPack, context: WireRustGeneratorContext) -> anyhow::Result<()> {
     let spec = spec_generator::generate(ir_pack, context);
-    writer::write(spec, context.config)
+    let text = text_generator::generate(spec);
+    emitter::emit(text, context.config)
 }

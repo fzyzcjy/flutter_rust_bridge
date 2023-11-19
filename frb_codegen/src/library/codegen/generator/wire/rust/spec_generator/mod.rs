@@ -11,7 +11,7 @@ pub(crate) mod misc;
 pub mod output_code;
 pub(crate) mod wire2api;
 
-pub(crate) struct WireRustOutputSpec {
+pub(super) struct WireRustOutputSpec {
     misc: WireRustOutputSpecMisc,
     wire2api: WireRustOutputSpecWire2api,
     api2wire: WireRustOutputSpecApi2wire,
