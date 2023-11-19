@@ -1,10 +1,12 @@
-mod c;
-mod dart;
-mod misc;
-mod rust;
+pub(crate) mod c;
+pub(crate) mod dart;
+pub(crate) mod misc;
+pub(crate) mod rust;
 
 use crate::codegen::config::internal_config::GeneratorWireInternalConfig;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
+use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
+use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::ir::pack::IrPack;
 use anyhow::Result;
