@@ -7,6 +7,7 @@ use crate::library::commands::ffigen::{ffigen, FfigenArgs};
 use crate::library::commands::format_dart::format_dart;
 
 mod c_binding;
+mod emitter;
 pub(crate) mod internal_config;
 pub(super) mod spec_generator;
 
@@ -18,7 +19,7 @@ pub(crate) fn generate(context: WireDartGeneratorContext) -> anyhow::Result<()> 
     execute_build_runner(spec.misc.needs_freezed, &context.config)?;
     execute_dart_format(&context.config)?;
 
-    Ok(())
+    emitter::emit()
 }
 
 fn execute_build_runner(
