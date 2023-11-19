@@ -9,30 +9,26 @@ use std::io::Write;
 use std::path::{Path, PathBuf};
 use std::str::FromStr;
 
-pub(crate) fn ffigen(
-    c_path: &Path,
-    dart_path: &Path,
-    dart_class_name: &str,
-    llvm_path: &[PathBuf],
-    llvm_compiler_opts: &str,
-    dart_root: &Path,
-) -> anyhow::Result<()> {
+pub(crate) struct FfigenArgs<'a> {
+    c_path: &'a Path,
+    dart_path: &'a Path,
+    dart_class_name: &'a str,
+    llvm_path: &'a [PathBuf],
+    llvm_compiler_opts: &'a str,
+    dart_root: &'a Path,
+}
+
+pub(crate) fn ffigen(arg: FfigenArgs) -> anyhow::Result<()> {
     debug!("execute ffigen c_path={c_path:?} dart_path={dart_path:?} llvm_path={llvm_path:?}",);
 
-    let config = parse_config(
-        dart_class_name,
-        c_path,
-        dart_path,
-        llvm_path,
-        llvm_compiler_opts,
-    )?;
+    let config = parse_config(arg)?;
     debug!("ffigen config: {}", config);
 
     let mut config_file = tempfile::NamedTempFile::new()?;
     config_file.write_all(config.as_bytes())?;
     debug!("ffigen config_file: {:?}", config_file);
 
-    let repo = DartRepository::from_str(&path_to_string(dart_root)?).unwrap();
+    let repo = DartRepository::from_str(&path_to_string(arg.dart_root)?).unwrap();
     let res = command_run!(
         call_shell[Some(dart_root)],
         *repo.toolchain.as_run_command(),
@@ -56,23 +52,18 @@ pub(crate) fn ffigen(
     Ok(())
 }
 
-fn parse_config(
-    dart_class_name: &str,
-    c_path: &Path,
-    dart_path: &Path,
-    llvm_path: &[PathBuf],
-    llvm_compiler_opts: &str,
-) -> anyhow::Result<String> {
-    let dart_path_str = path_to_string(dart_path)?;
-    let c_path_str = path_to_string(c_path)?;
-    let llvm_path_str = llvm_path
+fn parse_config(arg: &FfigenArgs) -> anyhow::Result<String> {
+    let dart_path_str = path_to_string(arg.dart_path)?;
+    let c_path_str = path_to_string(arg.c_path)?;
+    let llvm_path_str = arg
+        .llvm_path
         .iter()
         .map(|x| path_to_string(x))
         .collect::<anyhow::Result<Vec<_>>>()?;
-    let llvm_compiler_opts_list = if llvm_compiler_opts.is_empty() {
+    let llvm_compiler_opts_list = if arg.llvm_compiler_opts.is_empty() {
         vec![]
     } else {
-        vec![llvm_compiler_opts]
+        vec![arg.llvm_compiler_opts]
     };
 
     let json = json!({
