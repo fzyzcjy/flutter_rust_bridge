@@ -4,10 +4,10 @@ use serde::{Deserialize, Serialize};
 use std::iter::FromIterator;
 use std::ops::{AddAssign, Index};
 
-/// Generic accumulator over the targets.
-///
-/// [`Acc<Option<String>>`] implements <code>[From]\<impl [ToString]></code>
-/// for code shared between all platforms.
+// Generic accumulator over the targets.
+//
+// [`Acc<Option<String>>`] implements <code>[From]\<impl [ToString]></code>
+// for code shared between all platforms.
 enum_map!(
     Acc, TargetOrCommon;
     Common, Io, Wasm;
