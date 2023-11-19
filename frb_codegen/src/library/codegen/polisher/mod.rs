@@ -1,5 +1,7 @@
+use crate::codegen::generator::misc::TargetOrCommon;
 use crate::codegen::polisher::add_mod_to_lib::try_add_mod_to_lib;
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
+use crate::command_run;
 use crate::library::commands::dart_build_runner::dart_build_runner;
 
 pub(crate) mod add_mod_to_lib;
@@ -9,6 +11,7 @@ pub(super) fn polish(config: &PolisherInternalConfig, needs_freezed: bool) -> an
     execute_try_add_mod_to_lib(config);
     execute_build_runner(needs_freezed, config)?;
     execute_dart_format(config)?;
+    execute_rust_format(config)?;
     Ok(())
 }
 
@@ -41,8 +44,23 @@ fn execute_dart_format(config: &PolisherInternalConfig) -> anyhow::Result<()> {
     // )
 }
 
+fn execute_format_rust(config: &PolisherInternalConfig) -> anyhow::Result<()> {
+    command_run!(
+        format_rust,
+        &config.rust_output_path[TargetOrCommon::Common],
+        &config.rust_output_path[TargetOrCommon::Io],
+        (
+            config.wasm_enabled,
+            &config.rust_output_path[TargetOrCommon::Wasm],
+        )
+    )
+}
+
 fn execute_try_add_mod_to_lib(config: &PolisherInternalConfig) {
     if config.add_mod_to_lib {
-        try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);
+        try_add_mod_to_lib(
+            &config.rust_crate_dir,
+            &config.rust_output_path[TargetOrCommon::Common],
+        );
     }
 }

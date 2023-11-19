@@ -1,3 +1,4 @@
+use crate::codegen::generator::misc::{TargetOrCommon, TargetOrCommonMap};
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
@@ -9,5 +10,5 @@ pub(crate) struct PolisherInternalConfig {
     pub build_runner: bool,
     pub dart_root: PathBuf,
     pub rust_crate_dir: PathBuf,
-    pub rust_output_path: PathBuf,
+    pub rust_output_path: TargetOrCommonMap<PathBuf>,
 }

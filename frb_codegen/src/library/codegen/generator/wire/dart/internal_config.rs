@@ -9,5 +9,4 @@ pub(crate) struct GeneratorWireDartInternalConfig {
     pub llvm_path: Vec<PathBuf>,
     pub llvm_compiler_opts: String,
     pub dart_root: PathBuf,
-    pub dart_format_line_length: u32,
 }

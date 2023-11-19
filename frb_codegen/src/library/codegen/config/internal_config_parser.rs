@@ -100,7 +100,6 @@ impl InternalConfig {
                             .map(PathBuf::from)
                             .collect_vec(),
                         llvm_compiler_opts: config.llvm_compiler_opts.unwrap_or_else(String::new),
-                        dart_format_line_length: TODO,
                         // TODO
                         // dart_impl_output_path: dart_output_path_pack.dart_impl_output_path,
                         // dart_enums_style,
@@ -128,8 +127,6 @@ impl InternalConfig {
             polisher: PolisherInternalConfig {
                 // TODO act
                 duplicated_c_output_path,
-                // TODO act
-                // TODO rust format, also in polisher
                 dart_format_line_length: config.dart_format_line_length.unwrap_or(80),
                 add_mod_to_lib: config.add_mod_to_lib.unwrap_or(true),
                 build_runner: config.build_runner.unwrap_or(true),

@@ -20,21 +20,5 @@ mod text_generator;
 pub(crate) fn generate(context: WireRustGeneratorContext) -> anyhow::Result<()> {
     let spec = spec_generator::generate(context);
     let text = text_generator::generate(spec, context.config)?;
-    emitter::emit(text, context.config)?;
-
-    execute_format_rust(&context.config)?;
-
-    Ok(())
-}
-
-fn execute_format_rust(config: &GeneratorWireRustInternalConfig) -> anyhow::Result<()> {
-    command_run!(
-        format_rust,
-        &config.rust_output_path[TargetOrCommon::Common],
-        &config.rust_output_path[TargetOrCommon::Io],
-        (
-            config.wasm_enabled,
-            &config.rust_output_path[TargetOrCommon::Wasm],
-        )
-    )
+    emitter::emit(text, context.config)
 }
