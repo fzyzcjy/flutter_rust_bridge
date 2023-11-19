@@ -22,6 +22,7 @@ pub(crate) fn generate(
     let spec = spec_generator::generate(config, extern_func_names, extern_struct_names)?;
     let text = text_generator::generate(spec)?;
     Ok(GeneratorWireCOutput {
+        output_texts: todo!(),
         c_file_content: text,
     })
 }

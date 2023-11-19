@@ -19,6 +19,7 @@ pub(crate) fn generate(
     let text = text_generator::generate(&spec, context.config)?;
 
     Ok(GeneratorWireRustOutput {
+        output_texts: todo!(),
         extern_func_names: text.extern_func_names,
         extern_struct_names: spec.misc.extern_struct_names,
     })

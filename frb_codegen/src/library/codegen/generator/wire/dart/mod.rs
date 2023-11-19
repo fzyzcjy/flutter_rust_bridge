@@ -18,6 +18,7 @@ pub(crate) fn generate(
     let text = text_generator::generate(&spec, &context.config)?;
 
     Ok(GeneratorWireDartOutput {
+        output_texts: todo!(),
         dart_needs_freezed: spec.misc.needs_freezed,
     })
 }
