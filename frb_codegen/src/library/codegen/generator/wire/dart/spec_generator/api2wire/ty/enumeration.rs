@@ -39,7 +39,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for EnumRefWireDartGenerator<'a> {
 
     fn dart_wire_type(&self, target: Target) -> String {
         match target {
-            Target::Io => self.rust_wire_type(target),
+            Target::Io => self.ir.rust_wire_type(target),
             Target::Wasm => "List<dynamic>".into(),
         }
     }

@@ -26,7 +26,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for OptionalListWireDartGenerator<'a> {
 
     fn dart_wire_type(&self, target: Target) -> String {
         match target {
-            Target::Io => format!("ffi.Pointer<wire_{}>", self.safe_ident()),
+            Target::Io => format!("ffi.Pointer<wire_{}>", self.ir.safe_ident()),
             Target::Wasm => "List<dynamic>".into(),
         }
     }

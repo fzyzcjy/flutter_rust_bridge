@@ -40,7 +40,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for GeneralListWireDartGenerator<'a> {
     fn dart_wire_type(&self, target: Target) -> String {
         match target {
             Target::Io => "List<dynamic>".into(),
-            Target::Wasm => format!("ffi.Pointer<wire_{}>", self.safe_ident()),
+            Target::Wasm => format!("ffi.Pointer<wire_{}>", self.ir.safe_ident()),
         }
     }
 }

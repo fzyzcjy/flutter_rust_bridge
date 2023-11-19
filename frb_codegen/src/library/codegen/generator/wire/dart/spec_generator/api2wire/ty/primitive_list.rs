@@ -41,13 +41,13 @@ impl<'a> WireDartGeneratorApi2wireTrait for PrimitiveListWireDartGenerator<'a> {
     fn dart_wire_type(&self, target: Target) -> String {
         match target {
             Target::Io => {
-                format!("ffi.Pointer<wire_{}>", self.safe_ident())
+                format!("ffi.Pointer<wire_{}>", self.ir.safe_ident())
             }
             Target::Wasm => match self.ir.primitive {
                 IrTypePrimitive::I64 | IrTypePrimitive::U64 => {
                     "Object /* BigInt64Array */".to_owned()
                 }
-                _ => self.dart_api_type(),
+                _ => self.ir.dart_api_type(),
             },
         }
     }

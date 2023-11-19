@@ -21,7 +21,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for PrimitiveWireDartGenerator<'a> {
             IrTypePrimitive::I64 | IrTypePrimitive::U64 if target == Target::Wasm => {
                 "Object".into()
             }
-            _ => self.dart_api_type(),
+            _ => self.ir.dart_api_type(),
         }
     }
 }

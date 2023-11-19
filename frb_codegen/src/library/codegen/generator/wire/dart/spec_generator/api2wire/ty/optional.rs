@@ -22,9 +22,9 @@ impl<'a> WireDartGeneratorApi2wireTrait for OptionalWireDartGenerator<'a> {
 
     fn dart_wire_type(&self, target: Target) -> String {
         if target == Target::Wasm {
-            format!("{}?", self.inner.dart_wire_type(target))
+            format!("{}?", self.ir.inner.dart_wire_type(target))
         } else {
-            self.inner.dart_wire_type(target)
+            self.ir.inner.dart_wire_type(target)
         }
     }
 }

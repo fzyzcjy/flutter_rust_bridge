@@ -50,21 +50,25 @@ impl<'a> WireDartGeneratorApi2wireTrait for BoxedWireDartGenerator<'a> {
     fn dart_wire_type(&self, target: Target) -> String {
         match target {
             Target::Wasm => {
-                if is_js_value(self.inner) || self.inner.is_array() || self.inner.is_primitive() {
-                    self.inner.dart_wire_type(target)
+                if is_js_value(&*self.ir.inner)
+                    || self.ir.inner.is_array()
+                    || self.ir.inner.is_primitive()
+                {
+                    self.ir.inner.dart_wire_type(target)
                 } else {
-                    format!("int /* *{} */", self.inner.rust_wire_type(target))
+                    format!("int /* *{} */", self.ir.inner.rust_wire_type(target))
                 }
             }
             Target::Io => {
-                if self.inner.is_array() {
-                    return self.inner.dart_wire_type(Target::Io);
+                if self.ir.inner.is_array() {
+                    return self.ir.inner.dart_wire_type(Target::Io);
                 }
                 let wire_type = self
+                    .ir
                     .inner
                     .as_primitive()
                     .map(|prim| prim.dart_native_type().to_owned())
-                    .unwrap_or_else(|| self.inner.dart_wire_type(target));
+                    .unwrap_or_else(|| self.ir.inner.dart_wire_type(target));
                 format!("ffi.Pointer<{wire_type}>")
             }
         }
