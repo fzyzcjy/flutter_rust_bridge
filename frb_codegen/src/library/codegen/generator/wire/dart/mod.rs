@@ -1,23 +1,10 @@
-use crate::codegen::generator::wire::dart::spec_generator::api2wire::WireDartOutputSpecApi2wire;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
-use crate::codegen::generator::wire::dart::spec_generator::misc::WireDartOutputSpecMisc;
-use crate::codegen::generator::wire::dart::spec_generator::wire2api::WireDartOutputSpecWire2api;
-use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
+use crate::codegen::ir::pack::IrPack;
 
 pub(crate) mod internal_config;
 pub(super) mod spec_generator;
 
-pub(crate) struct WireDartOutputSpec {
-    misc: WireDartOutputSpecMisc,
-    wire2api: WireDartOutputSpecWire2api,
-    api2wire: WireDartOutputSpecApi2wire,
-}
-
-pub(crate) fn generate(ir_pack: &IrPack, context: WireDartGeneratorContext) -> WireDartOutputSpec {
-    let cache = IrPackComputedCache::compute(ir_pack);
-    WireDartOutputSpec {
-        misc: misc::generate(context, &cache),
-        wire2api: wire2api::generate(context, &cache),
-        api2wire: api2wire::generate(context, &cache),
-    }
+pub(crate) fn generate(ir_pack: &IrPack, context: WireDartGeneratorContext) -> anyhow::Result<()> {
+    let spec = spec_generator::generate(ir_pack, context);
+    todo!()
 }
