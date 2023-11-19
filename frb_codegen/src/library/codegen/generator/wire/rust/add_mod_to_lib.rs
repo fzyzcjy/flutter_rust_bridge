@@ -1,4 +1,10 @@
-pub(super) fn try_add_mod_to_lib(rust_crate_dir: &str, rust_output_path: &str) {
+use anyhow::*;
+use log::{info, warn};
+use pathdiff::diff_paths;
+use std::fs;
+use std::path::Path;
+
+pub(super) fn try_add_mod_to_lib(rust_crate_dir: &Path, rust_output_path: &Path) {
     if let Err(e) = auto_add_mod_to_lib_core(rust_crate_dir, rust_output_path) {
         warn!(
             "auto_add_mod_to_lib fail, the generated code may or may not have problems. \
@@ -9,13 +15,12 @@ pub(super) fn try_add_mod_to_lib(rust_crate_dir: &str, rust_output_path: &str) {
     }
 }
 
-fn auto_add_mod_to_lib_core(rust_crate_dir: &str, rust_output_path: &str) -> Result<()> {
-    let path_src_folder = Path::new(rust_crate_dir).join("src");
+fn auto_add_mod_to_lib_core(rust_crate_dir: &Path, rust_output_path: &Path) -> Result<()> {
+    let path_src_folder = rust_crate_dir.join("src");
     let rust_output_path_relative_to_src_folder =
         diff_paths(rust_output_path, path_src_folder.clone()).with_context(|| {
             format!(
-                "rust_output_path={} is unrelated to path_src_folder={:?}",
-                rust_output_path, &path_src_folder,
+                "rust_output_path={rust_output_path:?} is unrelated to path_src_folder={path_src_folder:?}",
             )
         })?;
 
