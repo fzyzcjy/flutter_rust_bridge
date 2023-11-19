@@ -5,17 +5,23 @@ use crate::command_run;
 use crate::commands::format_rust::format_rust;
 use crate::library::commands::dart_build_runner::dart_build_runner;
 use crate::library::commands::format_dart::format_dart;
+use itertools::Itertools;
 use std::fs;
+use std::path::PathBuf;
 
 pub(crate) mod add_mod_to_lib;
 pub(crate) mod internal_config;
 
-pub(super) fn polish(config: &PolisherInternalConfig, needs_freezed: bool) -> anyhow::Result<()> {
+pub(super) fn polish(
+    config: &PolisherInternalConfig,
+    needs_freezed: bool,
+    output_paths: &[PathBuf],
+) -> anyhow::Result<()> {
     execute_try_add_mod_to_lib(config);
     execute_duplicate_c_output(config)?;
     execute_build_runner(needs_freezed, config)?;
-    execute_dart_format(config)?;
-    execute_rust_format(config)?;
+    execute_dart_format(config, output_paths)?;
+    execute_rust_format(output_paths)?;
     Ok(())
 }
 
@@ -30,33 +36,26 @@ fn execute_build_runner(
     dart_build_runner(&config.dart_root)
 }
 
-fn execute_dart_format(config: &PolisherInternalConfig) -> anyhow::Result<()> {
-    command_run!(
-        format_dart[config.dart_format_line_length],
-        &dart_output_paths.base_path,
-        ?config.dart_decl_output_path,
-        (
-            config.wasm_enabled,
-            dart_output_paths.wasm_path,
-            dart_output_paths.io_path,
-        ),
-        (
-            needs_freezed && config.build_runner,
-            config.dart_freezed_path(),
-        )
+fn execute_dart_format(
+    config: &PolisherInternalConfig,
+    output_paths: &[PathBuf],
+) -> anyhow::Result<()> {
+    format_dart(
+        &filter_paths_by_extension(output_paths, "dart"),
+        config.dart_format_line_length,
     )
 }
 
-fn execute_rust_format(config: &PolisherInternalConfig) -> anyhow::Result<()> {
-    command_run!(
-        format_rust,
-        &config.rust_output_path[TargetOrCommon::Common],
-        &config.rust_output_path[TargetOrCommon::Io],
-        (
-            config.wasm_enabled,
-            &config.rust_output_path[TargetOrCommon::Wasm],
-        )
-    )
+fn execute_rust_format(output_paths: &[PathBuf]) -> anyhow::Result<()> {
+    format_rust(&filter_paths_by_extension(output_paths, "rs"))
+}
+
+fn filter_paths_by_extension(paths: &[PathBuf], extension: &str) -> Vec<PathBuf> {
+    paths
+        .iter()
+        .filter(|path| path.extension().unwrap().to_str().unwrap() == extension)
+        .cloned()
+        .collect_vec()
 }
 
 fn execute_try_add_mod_to_lib(config: &PolisherInternalConfig) {

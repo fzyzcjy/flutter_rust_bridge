@@ -30,6 +30,7 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
     polisher::polish(
         &internal_config.polisher,
         generator_output.dart_needs_freezed,
+        &generator_output.output_texts.paths(),
     )?;
 
     Ok(())

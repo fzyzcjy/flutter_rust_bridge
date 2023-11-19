@@ -81,4 +81,8 @@ impl OutputTexts {
         }
         Ok(())
     }
+
+    pub(crate) fn paths(&self) -> Vec<PathBuf> {
+        self.0.iter().map(|item| item.path.clone()).collect_vec()
+    }
 }
