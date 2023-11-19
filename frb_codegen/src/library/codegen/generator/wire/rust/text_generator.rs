@@ -39,25 +39,38 @@ fn compute_extern_func_names(merged_code: Acc<WireRustOutputCode>) -> Vec<String
 
 fn generate_merged_code(spec: &WireRustOutputSpec) -> Acc<WireRustOutputCode> {
     let mut merged_code = Acc::<Vec<WireRustOutputCode>>::default();
-    let mut add = |item: &Acc<Vec<WireRustOutputCode>>| {
-        merged_code += item.clone();
+    let mut add = |section_name: &str, item: &Acc<Vec<WireRustOutputCode>>| {
+        merged_code += item.clone().map(|x, _| {
+            if !x.is_empty() {
+                [vec![section_header_comment(section_name).into()], x].concat()
+            } else {
+                x
+            }
+        });
     };
 
-    add(&spec.misc.file_attributes);
-    add(&spec.misc.code_header);
-    add(&spec.misc.imports);
-    add(&spec.misc.wire_funcs);
-    add(&spec.misc.wrapper_structs);
-    add(&spec.misc.static_checks);
-    add(&spec.misc.executor);
-    add(&spec.wire2api.allocate_funcs);
-    add(&spec.wire2api.related_funcs);
-    add(&spec.wire2api.impl_wire2api);
-    add(&spec.wire2api.wire2api_class);
-    add(&spec.wire2api.impl_new_with_nullptr);
-    add(&spec.api2wire.impl_into_dart);
+    add("file_attributes", &spec.misc.file_attributes);
+    add("code_header", &spec.misc.code_header);
+    add("imports", &spec.misc.imports);
+    add("wire_funcs", &spec.misc.wire_funcs);
+    add("wrapper_structs", &spec.misc.wrapper_structs);
+    add("static_checks", &spec.misc.static_checks);
+    add("executor", &spec.misc.executor);
+    add("allocate_funcs", &spec.wire2api.allocate_funcs);
+    add("related_funcs", &spec.wire2api.related_funcs);
+    add("impl_wire2api", &spec.wire2api.impl_wire2api);
+    add("wire2api_class", &spec.wire2api.wire2api_class);
+    add(
+        "impl_new_with_nullptr",
+        &spec.wire2api.impl_new_with_nullptr,
+    );
+    add("impl_into_dart", &spec.api2wire.impl_into_dart);
 
     merged_code.map(|code, _| code.into_iter().fold(Default::default(), |a, b| a + b))
+}
+
+fn section_header_comment(section_name: &str) -> String {
+    format!("// Section: {section_name}\n")
 }
 
 fn generate_text_from_core_code(

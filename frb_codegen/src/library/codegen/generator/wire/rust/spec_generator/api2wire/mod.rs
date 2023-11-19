@@ -2,7 +2,6 @@ use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::rust::spec_generator::base::{
     WireRustGenerator, WireRustGeneratorContext,
 };
-use crate::codegen::generator::wire::rust::spec_generator::misc::section_header_comment;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
 use crate::library::codegen::generator::wire::rust::spec_generator::api2wire::ty::WireRustGeneratorApi2wireTrait;

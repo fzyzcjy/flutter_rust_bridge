@@ -61,10 +61,6 @@ pub(crate) fn generate(
 
 const FILE_ATTRIBUTES: &'static str = r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion, clippy::unit_arg, clippy::double_parens, non_snake_case, clippy::too_many_arguments)]"#;
 
-pub(crate) fn section_header_comment(section_name: &str) -> WireRustOutputCode {
-    format!("// Section: {section_name}\n").into()
-}
-
 fn generate_code_header() -> String {
     format!(
         "// AUTO GENERATED FILE, DO NOT EDIT.
