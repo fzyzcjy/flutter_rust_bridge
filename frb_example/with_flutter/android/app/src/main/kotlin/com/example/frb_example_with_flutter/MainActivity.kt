@@ -1,4 +1,4 @@
-package com.example.flutter_rust_bridge_example
+package com.example.frb_example_with_flutter
 
 import io.flutter.embedding.android.FlutterActivity
 

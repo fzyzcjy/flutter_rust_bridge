@@ -1,4 +1,4 @@
-name: flutter_rust_bridge_example
+name: frb_example_with_flutter
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.

@@ -1,6 +1,6 @@
 {
-    "name": "flutter_rust_bridge_example",
-    "short_name": "flutter_rust_bridge_example",
+    "name": "frb_example_with_flutter",
+    "short_name": "frb_example_with_flutter",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

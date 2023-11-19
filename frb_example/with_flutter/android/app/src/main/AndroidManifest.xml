@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="flutter_rust_bridge_example"
+        android:label="frb_example_with_flutter"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
