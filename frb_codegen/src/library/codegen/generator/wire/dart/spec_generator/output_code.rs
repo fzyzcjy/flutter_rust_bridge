@@ -1,5 +1,6 @@
 use std::ops::AddAssign;
 
+// TODO merge with `DartBasicCode`
 #[derive(Default)]
 pub(crate) struct WireDartOutputCode(pub String);
 
