@@ -16,9 +16,10 @@ pub(super) fn generate(
     spec: WireRustOutputSpec,
     config: &GeneratorWireRustInternalConfig,
 ) -> WireRustOutputText {
-    let Acc { common, io, wasm } = &generated_rust.code;
+    let core_code = generate_core_code(spec);
 
-    let mod_web = if config.wasm_enabled {
+    let mod_io = emit_platform_module("io", &core_code.io, config, Target::Io)?;
+    let mod_wasm = if config.wasm_enabled {
         format!(
             "
             /// cbindgen:ignore
@@ -27,33 +28,33 @@ pub(super) fn generate(
             #[cfg(target_family = \"wasm\")]
             pub use web::*;
             ",
-            emit_platform_module("web", wasm, config, Target::Wasm)?
+            emit_platform_module("web", &core_code.wasm, config, Target::Wasm)?
         )
     } else {
         "".into()
     };
 
-    let mod_io = emit_platform_module("io", io, config, Target::Io)?;
-
     let common = format!(
-        "{common}
-        {mod_web}
+        "{core_code_common}
+        {mod_wasm}
         
         #[cfg(not(target_family = \"wasm\"))]
         {mod_io}
         #[cfg(not(target_family = \"wasm\"))]
         pub use io::*;
-        "
+        ",
+        core_code_common = core_code.common,
     );
 
-    if !config.inline_rust {
-        let io = format!("use super::*;\n{io}");
-        if config.wasm_enabled {
-            let wasm = format!("use super::*;\n{wasm}");
-        }
-    }
+    let io = (!config.inline_rust).then(|| format!("use super::*;\n{mod_io}"));
+    let wasm =
+        (!config.inline_rust && config.wasm_enabled).then(|| format!("use super::*;\n{mod_wasm}"));
 
     WireRustOutputText { common, io, wasm }
+}
+
+fn generate_core_code(spec: WireRustOutputSpec) -> Acc<String> {
+    todo!()
 }
 
 fn emit_platform_module(
