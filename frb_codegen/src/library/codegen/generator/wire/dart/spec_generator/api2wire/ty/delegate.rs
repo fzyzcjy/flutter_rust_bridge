@@ -100,7 +100,8 @@ impl<'a> WireDartGeneratorApi2wireTrait for DelegateWireDartGenerator<'a> {
             (IrTypeDelegate::String, Target::Wasm) => "String".into(),
             (IrTypeDelegate::StringList, Target::Wasm) => "List<String>".into(),
             (IrTypeDelegate::StringList, _) => "ffi.Pointer<wire_StringList>".to_owned(),
-            _ => self.ir.get_delegate().dart_wire_type(target),
+            _ => WireDartGenerator::new(self.ir.get_delegate().clone(), self.context)
+                .dart_wire_type(target),
         }
     }
 }

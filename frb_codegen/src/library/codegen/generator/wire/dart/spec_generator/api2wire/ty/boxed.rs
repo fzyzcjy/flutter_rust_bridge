@@ -54,21 +54,26 @@ impl<'a> WireDartGeneratorApi2wireTrait for BoxedWireDartGenerator<'a> {
                     || self.ir.inner.is_array()
                     || self.ir.inner.is_primitive()
                 {
-                    self.ir.inner.dart_wire_type(target)
+                    WireDartGenerator::new(self.ir.inner.clone(), self.context)
+                        .dart_wire_type(target)
                 } else {
                     format!("int /* *{} */", self.ir.inner.rust_wire_type(target))
                 }
             }
             Target::Io => {
                 if self.ir.inner.is_array() {
-                    return self.ir.inner.dart_wire_type(Target::Io);
+                    return WireDartGenerator::new(self.ir.inner.clone(), self.context)
+                        .dart_wire_type(Target::Io);
                 }
                 let wire_type = self
                     .ir
                     .inner
                     .as_primitive()
                     .map(|prim| prim.dart_native_type().to_owned())
-                    .unwrap_or_else(|| self.ir.inner.dart_wire_type(target));
+                    .unwrap_or_else(|| {
+                        WireDartGenerator::new(self.ir.inner.clone(), self.context)
+                            .dart_wire_type(target)
+                    });
                 format!("ffi.Pointer<{wire_type}>")
             }
         }
