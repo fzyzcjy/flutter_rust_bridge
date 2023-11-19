@@ -9,7 +9,7 @@ macro_rules! enum_map {
             )*
         }
 
-        impl<T> Index<$enum_name> for $struct_name<T> {
+        impl<T> core::ops::Index<$enum_name> for $struct_name<T> {
             type Output = T;
 
             fn index(&self, index: $enum_name) -> &Self::Output {

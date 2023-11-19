@@ -1,5 +1,6 @@
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::IrType;
+use crate::enum_map;
 use anyhow::bail;
 use std::convert::TryFrom;
 #[doc(hidden)]
@@ -57,6 +58,12 @@ pub enum TargetOrCommon {
     Io,
     Wasm,
 }
+
+enum_map!(
+    TargetOrCommonMap, TargetOrCommon;
+    Common, Io, Wasm;
+    common, io, wasm;
+);
 
 impl TryFrom<TargetOrCommon> for Target {
     type Error = anyhow::Error;
