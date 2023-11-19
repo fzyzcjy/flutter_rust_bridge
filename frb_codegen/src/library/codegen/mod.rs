@@ -25,7 +25,7 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
 
     generator::generate(&ir_pack, &internal_config.generator)?;
 
-    polisher::polish(&internal_config.polisher)?;
+    polisher::polish(&internal_config.polisher, todo.needs_freezed)?;
 
     Ok(())
 }

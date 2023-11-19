@@ -5,7 +5,6 @@ use std::path::PathBuf;
 pub(crate) struct GeneratorWireDartInternalConfig {
     pub use_bridge_in_method: bool,
     pub wasm_enabled: bool,
-    pub build_runner: bool,
     pub dart_wire_class_name: String,
     pub llvm_path: Vec<PathBuf>,
     pub llvm_compiler_opts: String,
