@@ -95,8 +95,13 @@ impl InternalConfig {
                         wasm_enabled: config.wasm.unwrap_or(false),
                         build_runner: TODO,
                         dart_wire_class_name: TODO,
-                        llvm_path: TODO,
-                        llvm_compiler_opts: TODO,
+                        llvm_path: config
+                            .llvm_path
+                            .unwrap_or_else(fallback_llvm_path)
+                            .into_iter()
+                            .map(PathBuf::from)
+                            .collect_vec(),
+                        llvm_compiler_opts: config.llvm_compiler_opts.unwrap_or_else(String::new),
                         dart_format_line_length: TODO,
                         // TODO
                         // dart_impl_output_path: dart_output_path_pack.dart_impl_output_path,
@@ -119,13 +124,6 @@ impl InternalConfig {
                         extern_func_names: TODO,
                         extern_struct_names: TODO,
                         // TODO
-                        // llvm_path: config
-                        //     .llvm_path
-                        //     .unwrap_or_else(fallback_llvm_path)
-                        //     .into_iter()
-                        //     .map(PathBuf::from)
-                        //     .collect_vec(),
-                        // llvm_compiler_opts: config.llvm_compiler_opts.unwrap_or_else(String::new),
                         // extra_headers: config.extra_headers.unwrap_or_else(String::new),
                     },
                 },
