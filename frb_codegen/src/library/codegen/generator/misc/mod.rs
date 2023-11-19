@@ -34,6 +34,7 @@ pub fn is_js_value(ty: &IrType) -> bool {
     }
 }
 
+#[derive(Clone)]
 pub(crate) struct OutputText {
     pub path: PathBuf,
     pub text: String,
@@ -45,6 +46,7 @@ impl OutputText {
     }
 }
 
+#[derive(Clone)]
 pub(crate) struct OutputTexts(pub Vec<OutputText>);
 
 impl Add for OutputTexts {
