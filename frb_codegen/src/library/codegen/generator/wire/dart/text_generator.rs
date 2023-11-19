@@ -5,6 +5,7 @@ use crate::codegen::generator::misc::text_generator_utils::{
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::dart::spec_generator::WireDartOutputSpec;
+use crate::utils::basic_code::BasicCode;
 
 pub(super) struct WireDartOutputText {
     pub(super) text: Acc<Option<String>>,
@@ -27,7 +28,7 @@ fn generate_merged_code(spec: &WireDartOutputSpec) -> Acc<WireDartOutputCode> {
         merged_code += item.clone();
     };
 
-    add("c_binding", &spec.c_binding);
+    add("c_binding", &Acc::new_io(vec![spec.c_binding.clone()]));
     add("impl_wire2api", &spec.wire2api.impl_wire2api);
     add("api2wire_funcs", &spec.api2wire.api2wire_funcs);
     add(

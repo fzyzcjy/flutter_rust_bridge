@@ -1,6 +1,6 @@
 use std::ops::{Add, AddAssign};
 
-pub(crate) trait BasicCode: From<String> + From<&str> + AddAssign + Add {
+pub(crate) trait BasicCode: From<String> + Add {
     fn all_code(&self) -> String;
 }
 
