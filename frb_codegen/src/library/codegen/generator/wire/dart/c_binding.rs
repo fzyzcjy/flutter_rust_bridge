@@ -2,7 +2,8 @@ use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInt
 use crate::library::commands::ffigen::{ffigen, FfigenArgs};
 
 pub(super) fn generate(config: &GeneratorWireDartInternalConfig) -> anyhow::Result<String> {
-    let raw = execute_ffigen(config)?;
+    let content_raw = execute_ffigen(config)?;
+    Ok(postpare_modify(&content_raw, &config.dart_wire_class_name))
 }
 
 fn execute_ffigen(config: &GeneratorWireDartInternalConfig) -> anyhow::Result<String> {
@@ -13,4 +14,19 @@ fn execute_ffigen(config: &GeneratorWireDartInternalConfig) -> anyhow::Result<St
         llvm_compiler_opts: &config.llvm_compiler_opts,
         dart_root: &config.dart_root,
     })
+}
+
+fn postpare_modify(content_raw: &str, dart_wire_class_name: &str) -> String {
+    content_raw
+        .replace(
+            &format!("class {dart_wire_class_name} {{",),
+            &format!(
+                "class {dart_wire_class_name} implements FlutterRustBridgeWireBase {{
+            @internal
+            late final dartApi = DartApiDl(init_frb_dart_api_dl);",
+            ),
+        )
+        .replace("final class DartCObject extends ffi.Opaque {}", "")
+        .replace("typedef WireSyncReturn = ffi.Pointer<DartCObject>;", "")
+    // .replace( "class _Dart_Handle extends ffi.Opaque {}", "base class _Dart_Handle extends ffi.Opaque {}")
 }
