@@ -34,6 +34,7 @@ fn generate_text_from_core_code(
             io: Some(generate_text_target(&core_code.io)),
             wasm: (config.wasm_enabled).then(|| generate_text_target(&core_code.wasm)),
         },
+        extern_func_names: todo!(),
     })
 }
 
