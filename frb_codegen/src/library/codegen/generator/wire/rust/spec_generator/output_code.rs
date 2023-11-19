@@ -1,4 +1,6 @@
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
+use itertools::Itertools;
+use std::fmt::format;
 use std::iter::FromIterator;
 use std::ops::{Add, AddAssign};
 
@@ -10,7 +12,14 @@ pub(crate) struct WireRustOutputCode {
 
 impl WireRustOutputCode {
     pub(crate) fn all_code(&self) -> String {
-        todo!()
+        format!(
+            "{}\n{}",
+            self.direct_code,
+            self.extern_funcs
+                .iter()
+                .map(|func| func.generate())
+                .join("\n")
+        )
     }
 }
 
