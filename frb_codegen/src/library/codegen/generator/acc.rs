@@ -1,4 +1,5 @@
 use crate::codegen::generator::misc::TargetOrCommon;
+use serde::{Deserialize, Serialize};
 use std::iter::FromIterator;
 use std::ops::{AddAssign, Index};
 
@@ -6,7 +7,7 @@ use std::ops::{AddAssign, Index};
 ///
 /// [`Acc<Option<String>>`] implements <code>[From]\<impl [ToString]></code>
 /// for code shared between all platforms.
-#[derive(Debug, Default, Clone)]
+#[derive(Debug, Default, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub struct Acc<T> {
     pub common: T,
     pub io: T,

@@ -45,13 +45,13 @@ macro_rules! codegen_generator_structs {
     )
 }
 
-#[derive(Debug, Clone, Copy, Eq, PartialEq)]
+#[derive(Debug, Clone, Copy, Eq, PartialEq, strum_macros::EnumIter)]
 pub enum Target {
     Io,
     Wasm,
 }
 
-#[derive(Debug, Clone, Copy, Eq, PartialEq)]
+#[derive(Debug, Clone, Copy, Eq, PartialEq, strum_macros::EnumIter)]
 pub enum TargetOrCommon {
     Common,
     Io,
@@ -67,6 +67,15 @@ impl TryFrom<TargetOrCommon> for Target {
             TargetOrCommon::Io => Target::Io,
             TargetOrCommon::Wasm => Target::Wasm,
         })
+    }
+}
+
+impl From<Target> for TargetOrCommon {
+    fn from(value: Target) -> Self {
+        match value {
+            Target::Io => TargetOrCommon::Io,
+            Target::Wasm => TargetOrCommon::Wasm,
+        }
     }
 }
 

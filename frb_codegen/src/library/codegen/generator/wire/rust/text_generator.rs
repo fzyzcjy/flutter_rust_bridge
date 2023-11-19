@@ -13,7 +13,7 @@ pub(super) struct WireRustOutputText {
 pub(super) fn generate(
     spec: WireRustOutputSpec,
     config: &GeneratorWireRustInternalConfig,
-) -> WireRustOutputText {
+) -> anyhow::Result<WireRustOutputText> {
     let core_code = generate_core_code_from_spec(spec);
     generate_text_from_core_code(config, &core_code)
 }
@@ -25,20 +25,20 @@ fn generate_core_code_from_spec(spec: WireRustOutputSpec) -> Acc<String> {
 fn generate_text_from_core_code(
     config: &GeneratorWireRustInternalConfig,
     core_code: &Acc<String>,
-) -> WireRustOutputText {
-    WireRustOutputText {
+) -> anyhow::Result<WireRustOutputText> {
+    Ok(WireRustOutputText {
         text: Acc {
-            common: Some(generate_text_common(&core_code.common)),
+            common: Some(generate_text_common(&core_code.common, config)?),
             io: Some(generate_text_target(&core_code.io)),
             wasm: (config.wasm_enabled).then(|| generate_text_target(&core_code.wasm)),
         },
-    }
+    })
 }
 
 fn generate_text_common(
     core_code_common: &str,
     config: &GeneratorWireRustInternalConfig,
-) -> String {
+) -> anyhow::Result<String> {
     let mod_io = generate_text_common_mod_declaration("io", config, Target::Io)?;
 
     let mod_wasm = if config.wasm_enabled {
@@ -47,12 +47,12 @@ fn generate_text_common(
         "".into()
     };
 
-    format!(
+    Ok(format!(
         "{core_code_common}
         {mod_io}
         {mod_wasm}
         ",
-    );
+    ))
 }
 
 fn generate_text_common_mod_declaration(

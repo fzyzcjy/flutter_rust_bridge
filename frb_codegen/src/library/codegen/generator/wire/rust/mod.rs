@@ -15,6 +15,6 @@ mod text_generator;
 
 pub(crate) fn generate(ir_pack: &IrPack, context: WireRustGeneratorContext) -> anyhow::Result<()> {
     let spec = spec_generator::generate(ir_pack, context);
-    let text = text_generator::generate(spec, context.config);
+    let text = text_generator::generate(spec, context.config)?;
     emitter::emit(text, context.config)
 }
