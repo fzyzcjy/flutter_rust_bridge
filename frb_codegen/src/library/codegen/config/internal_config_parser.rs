@@ -74,7 +74,6 @@ impl InternalConfig {
                 rust: GeneratorRustInternalConfig {
                     rust_crate_dir,
                     rust_output_path,
-                    inline_rust: config.inline_rust.unwrap_or(false),
                 },
                 c: GeneratorCInternalConfig {
                     c_output_path,

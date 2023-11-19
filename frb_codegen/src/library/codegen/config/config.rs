@@ -23,7 +23,6 @@ pub struct Config {
     pub use_bridge_in_method: Option<bool>,
     pub extra_headers: Option<String>,
     pub wasm: Option<bool>,
-    pub inline_rust: Option<bool>,
     pub deps_check: Option<bool>,
     pub dart3: Option<bool>,
     // TODO handle this

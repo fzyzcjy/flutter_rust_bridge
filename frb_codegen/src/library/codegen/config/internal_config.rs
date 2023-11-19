@@ -39,7 +39,6 @@ pub(crate) struct DartOutputPathPack {
 pub(crate) struct GeneratorRustInternalConfig {
     pub rust_crate_dir: PathBuf,
     pub rust_output_path: PathBuf,
-    pub inline_rust: bool,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]

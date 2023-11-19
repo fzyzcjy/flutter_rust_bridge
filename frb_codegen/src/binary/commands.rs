@@ -109,10 +109,6 @@ pub(crate) struct GenerateCommandArgs {
     #[arg(long)]
     pub wasm: bool,
 
-    /// Inline declaration of Rust bridge modules
-    #[arg(long)]
-    pub inline_rust: bool,
-
     /// Skip dependencies check.
     #[arg(long)]
     pub no_deps_check: bool,
