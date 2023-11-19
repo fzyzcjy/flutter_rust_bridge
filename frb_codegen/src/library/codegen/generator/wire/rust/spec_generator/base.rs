@@ -81,4 +81,11 @@ impl WireRustGeneratorContext<'_> {
             dart_api_config: self.dart_api_config,
         }
     }
+
+    pub(crate) fn as_api_dart_context(&self) -> ApiDartGeneratorContext {
+        ApiDartGeneratorContext {
+            ir_pack: self.ir_pack,
+            config: self.dart_api_config,
+        }
+    }
 }

@@ -43,7 +43,6 @@ pub trait IrTypeTrait {
     // fn visit_children_types<F: FnMut(&IrType) -> bool>(&self, f: &mut F, ir_pack: &IrPack); // moved
     fn safe_ident(&self) -> String;
     fn dart_api_type(&self) -> String;
-    fn dart_wire_type(&self, target: Target) -> String;
 
     fn dart_param_type(&self) -> &'static str {
         "dynamic"
