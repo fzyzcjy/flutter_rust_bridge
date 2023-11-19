@@ -550,6 +550,13 @@ name = "flutter_rust_bridge_macros"
 version = "1.82.4"
 
 [[package]]
+name = "frb_example_pure_dart"
+version = "0.1.0"
+dependencies = [
+ "flutter_rust_bridge",
+]
+
+[[package]]
 name = "futures"
 version = "0.3.29"
 source = "registry+https://github.com/rust-lang/crates.io-index"

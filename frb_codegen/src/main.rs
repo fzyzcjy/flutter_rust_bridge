@@ -11,8 +11,10 @@ use lib_flutter_rust_bridge_codegen::*;
 use log::debug;
 
 fn main() -> anyhow::Result<()> {
-    let cli = Cli::parse();
+    main_given_cli(Cli::parse())
+}
 
+fn main_given_cli(cli: Cli) -> anyhow::Result<()> {
     configure_opinionated_logging("./logs/", cli.verbose)?;
 
     debug!("cli={cli:?}");
@@ -22,4 +24,20 @@ fn main() -> anyhow::Result<()> {
         Commands::Integrate(_) => integration::integrate()?,
     }
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::binary::commands::Cli;
+    use crate::binary::test_utils::set_cwd_test_fixture;
+    use crate::main_given_cli;
+    use clap::Parser;
+    use serial_test::serial;
+
+    #[test]
+    #[serial]
+    fn test_execute_generate_on_frb_example_pure_dart() -> anyhow::Result<()> {
+        set_cwd_test_fixture("../../frb_example/pure_dart")?;
+        main_given_cli(Cli::parse_from(vec!["", "generate"]))
+    }
 }
