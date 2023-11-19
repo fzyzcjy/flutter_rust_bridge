@@ -54,16 +54,17 @@ pub(crate) fn generate_dart_code(
     ]
     .concat();
 
-    for (i, each_path) in config.c_output_path.iter().enumerate() {
-        let c_dummy_code =
-            generator::c::generate_dummy(config, all_configs, &effective_func_names, i);
-        println!("the path is {each_path:?}");
-        fs::create_dir_all(Path::new(each_path).parent().unwrap())?;
-        fs::write(
-            each_path,
-            fs::read_to_string(&temp_bindgen_c_output_file)? + "\n" + &c_dummy_code,
-        )?;
-    }
+    // DONE
+    // for (i, each_path) in config.c_output_path.iter().enumerate() {
+    //     let c_dummy_code =
+    //         generator::c::generate_dummy(config, all_configs, &effective_func_names, i);
+    //     println!("the path is {each_path:?}");
+    //     fs::create_dir_all(Path::new(each_path).parent().unwrap())?;
+    //     fs::write(
+    //         each_path,
+    //         fs::read_to_string(&temp_bindgen_c_output_file)? + "\n" + &c_dummy_code,
+    //     )?;
+    // }
 
     // phase-step2: generate raw dart code instance from the c file
     let generated_dart_wire_code_raw = fs::read_to_string(temp_dart_wire_file)?;
