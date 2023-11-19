@@ -100,8 +100,7 @@ impl InternalConfig {
                             .map(PathBuf::from)
                             .collect_vec(),
                         llvm_compiler_opts: config.llvm_compiler_opts.unwrap_or_else(String::new),
-                        // TODO
-                        // dart_impl_output_path: dart_output_path_pack.dart_impl_output_path,
+                        extra_headers: config.extra_headers.unwrap_or_else(String::new),
                     },
                     rust: GeneratorWireRustInternalConfig {
                         rust_crate_dir: rust_crate_dir.clone(),
@@ -115,8 +114,6 @@ impl InternalConfig {
                         c_output_path: c_output_path.clone(),
                         extern_func_names: TODO,
                         extern_struct_names: TODO,
-                        // TODO
-                        // extra_headers: config.extra_headers.unwrap_or_else(String::new),
                     },
                 },
             },
