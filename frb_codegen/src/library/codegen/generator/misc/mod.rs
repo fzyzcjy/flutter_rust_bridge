@@ -67,7 +67,7 @@ impl OutputTexts {
         Self(
             TargetOrCommon::iter()
                 .filter_map(|target| {
-                    text[target].map(|text_for_target| {
+                    text[target].clone().map(|text_for_target| {
                         OutputText::new(path[target].clone(), text_for_target)
                     })
                 })
