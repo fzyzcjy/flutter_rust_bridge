@@ -34,8 +34,15 @@ pub(crate) fn generate(
         api_dart_config,
     };
 
-    rust::generate(wire_rust_generator_context)?;
-    let c_output = c::generate(ir_pack, &config.c)?;
+    let rust_output = rust::generate(wire_rust_generator_context)?;
+
+    let c_output = c::generate(
+        ir_pack,
+        &config.c,
+        rust_output.extern_func_names,
+        rust_output.extern_struct_names,
+    )?;
+
     let dart_output = dart::generate(wire_dart_generator_context, &c_output.c_file_content)?;
 
     Ok(GeneratorWireOutput {

@@ -7,8 +7,8 @@ use crate::utils::file_utils::temp_change_file;
 use std::path::PathBuf;
 
 pub(in crate::library::codegen::generator::wire::c) fn execute(
-    ir_pack: &IrPack,
     config: &GeneratorWireCInternalConfig,
+    extern_struct_names: Vec<String>,
 ) -> anyhow::Result<String> {
     let changed_file_handle = temp_change_file(
         config.rust_output_path[TargetOrCommon::Common].clone(),
@@ -17,7 +17,7 @@ pub(in crate::library::codegen::generator::wire::c) fn execute(
 
     let ans = cbindgen(CbindgenArgs {
         rust_crate_dir: &config.rust_crate_dir,
-        c_struct_names: config.extern_struct_names.clone(),
+        c_struct_names: extern_struct_names,
         // TODO will try to avoid manually specify exclude_symbols by using `pub(crate)` instead of `pub`
         // exclude_symbols: generated_rust.get_exclude_symbols(all_symbols),
         exclude_symbols: vec![],

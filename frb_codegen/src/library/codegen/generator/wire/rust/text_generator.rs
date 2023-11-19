@@ -11,14 +11,14 @@ pub(super) struct WireRustOutputText {
 }
 
 pub(super) fn generate(
-    spec: WireRustOutputSpec,
+    spec: &WireRustOutputSpec,
     config: &GeneratorWireRustInternalConfig,
 ) -> anyhow::Result<WireRustOutputText> {
     let core_code = generate_core_code_from_spec(spec);
     generate_text_from_core_code(config, &core_code)
 }
 
-fn generate_core_code_from_spec(spec: WireRustOutputSpec) -> Acc<String> {
+fn generate_core_code_from_spec(spec: &WireRustOutputSpec) -> Acc<String> {
     todo!()
 }
 

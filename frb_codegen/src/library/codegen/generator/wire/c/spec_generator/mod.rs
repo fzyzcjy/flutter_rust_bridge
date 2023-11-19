@@ -10,11 +10,12 @@ pub(super) struct WireCOutputSpec {
 }
 
 pub(crate) fn generate(
-    ir_pack: &IrPack,
     config: &GeneratorWireCInternalConfig,
+    extern_func_names: Vec<String>,
+    extern_struct_names: Vec<String>,
 ) -> anyhow::Result<WireCOutputSpec> {
-    let code_cbindgen = cbindgen_executor::execute(ir_pack, config)?;
-    let code_dummy = dummy_function::generate(config);
+    let code_cbindgen = cbindgen_executor::execute(config, extern_struct_names)?;
+    let code_dummy = dummy_function::generate(extern_func_names);
     Ok(WireCOutputSpec {
         code_cbindgen,
         code_dummy,
