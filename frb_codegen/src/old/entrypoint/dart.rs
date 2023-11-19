@@ -19,10 +19,13 @@ pub(crate) fn generate_dart_code(
     generated_rust: generator::rust::Output,
     all_symbols: &[String],
 ) -> crate::Result {
-    let dart_root = config.dart_root_or_default();
+    // let dart_root = config.dart_root_or_default();
+
+    // TODO not done
     ensure_tools_available(&dart_root, config.skip_deps_check)?;
 
-    info!("Phase: Generating Dart bindings for Rust");
+    // DONE
+    // info!("Phase: Generating Dart bindings for Rust");
     // phase-step1: generate temporary c file
     // let temp_dart_wire_file = tempfile::NamedTempFile::new()?;
     // let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile()?;
@@ -30,18 +33,18 @@ pub(crate) fn generate_dart_code(
     //     &config.rust_output_path,
     //     DUMMY_WIRE_CODE_FOR_BINDGEN,
     //     || {
-    commands::bindgen_rust_to_dart(
-        BindgenRustToDartArg {
-            // c_output_path: temp_bindgen_c_output_file
-            //     .path()
-            //     .as_os_str()
-            //     .to_str()
-            //     .unwrap(),
-            // dart_output_path: temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
-        },
-        &dart_root,
-    )
-    .map_err(Into::into);
+    // commands::bindgen_rust_to_dart(
+    //     BindgenRustToDartArg {
+    // c_output_path: temp_bindgen_c_output_file
+    //     .path()
+    //     .as_os_str()
+    //     .to_str()
+    //     .unwrap(),
+    // dart_output_path: temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
+    //     },
+    //     &dart_root,
+    // )
+    // .map_err(Into::into);
     //     },
     // )?;
 
