@@ -70,7 +70,7 @@ pub(crate) struct WireRustGeneratorContext<'a> {
     pub(crate) ir_pack: &'a IrPack,
     pub(crate) config: &'a GeneratorWireRustInternalConfig,
     pub(crate) wire_dart_config: &'a GeneratorWireDartInternalConfig,
-    pub(crate) dart_api_config: &'a GeneratorApiDartInternalConfig,
+    pub(crate) api_dart_config: &'a GeneratorApiDartInternalConfig,
 }
 
 impl WireRustGeneratorContext<'_> {
@@ -78,14 +78,14 @@ impl WireRustGeneratorContext<'_> {
         WireDartGeneratorContext {
             ir_pack: self.ir_pack,
             config: self.wire_dart_config,
-            dart_api_config: self.dart_api_config,
+            api_dart_config: self.api_dart_config,
         }
     }
 
     pub(crate) fn as_api_dart_context(&self) -> ApiDartGeneratorContext {
         ApiDartGeneratorContext {
             ir_pack: self.ir_pack,
-            config: self.dart_api_config,
+            config: self.api_dart_config,
         }
     }
 }

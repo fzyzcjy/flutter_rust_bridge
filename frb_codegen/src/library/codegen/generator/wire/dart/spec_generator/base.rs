@@ -67,14 +67,14 @@ codegen_generator_structs!(
 pub(crate) struct WireDartGeneratorContext<'a> {
     pub(crate) ir_pack: &'a IrPack,
     pub(crate) config: &'a GeneratorWireDartInternalConfig,
-    pub(crate) dart_api_config: &'a GeneratorApiDartInternalConfig,
+    pub(crate) api_dart_config: &'a GeneratorApiDartInternalConfig,
 }
 
 impl WireDartGeneratorContext<'_> {
     pub(crate) fn as_api_dart_context(&self) -> ApiDartGeneratorContext {
         ApiDartGeneratorContext {
             ir_pack: self.ir_pack,
-            config: self.dart_api_config,
+            config: self.api_dart_config,
         }
     }
 }
