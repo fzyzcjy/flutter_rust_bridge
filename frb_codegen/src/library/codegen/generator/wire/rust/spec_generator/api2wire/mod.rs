@@ -14,7 +14,7 @@ pub(crate) struct WireRustOutputSpecApi2wire {
     impl_into_dart: Acc<Vec<WireRustOutputCode>>,
 }
 
-pub(in crate::library::codegen::generator::wire::rust) fn generate(
+pub(crate) fn generate(
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,
 ) -> WireRustOutputSpecApi2wire {

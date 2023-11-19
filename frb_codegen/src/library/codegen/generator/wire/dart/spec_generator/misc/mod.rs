@@ -11,7 +11,7 @@ pub(crate) struct WireDartOutputSpecMisc {
     pub(crate) needs_freezed: bool,
 }
 
-pub(in crate::library::codegen::generator::wire::dart::spec_generator) fn generate(
+pub(crate) fn generate(
     context: WireDartGeneratorContext,
     cache: &IrPackComputedCache,
 ) -> WireDartOutputSpecMisc {

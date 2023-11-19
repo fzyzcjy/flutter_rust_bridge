@@ -14,10 +14,7 @@ use itertools::Itertools;
 const BACKTRACE_IDENT: &str = "backtrace";
 
 impl<'a> EnumRefApiDartGenerator<'a> {
-    pub(in crate::library::codegen::generator::api_dart) fn generate_mode_complex(
-        &self,
-        src: &IrEnum,
-    ) -> Option<String> {
+    pub(crate) fn generate_mode_complex(&self, src: &IrEnum) -> Option<String> {
         let variants = src
             .variants()
             .iter()

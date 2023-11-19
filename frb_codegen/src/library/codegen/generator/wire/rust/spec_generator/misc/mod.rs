@@ -26,7 +26,7 @@ pub(crate) struct WireRustOutputSpecMisc {
     executor: Acc<Vec<WireRustOutputCode>>,
 }
 
-pub(in crate::library::codegen::generator::wire::rust) fn generate(
+pub(crate) fn generate(
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,
 ) -> WireRustOutputSpecMisc {
@@ -57,9 +57,7 @@ pub(in crate::library::codegen::generator::wire::rust) fn generate(
 
 const FILE_ATTRIBUTES: &'static str = r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion, clippy::unit_arg, clippy::double_parens, non_snake_case, clippy::too_many_arguments)]"#;
 
-pub(in crate::library::codegen::generator::wire::rust) fn section_header_comment(
-    section_name: &str,
-) -> WireRustOutputCode {
+pub(crate) fn section_header_comment(section_name: &str) -> WireRustOutputCode {
     format!("// Section: {section_name}\n").into()
 }
 

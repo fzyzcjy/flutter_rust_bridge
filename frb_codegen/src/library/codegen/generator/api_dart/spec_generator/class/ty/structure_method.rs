@@ -13,7 +13,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartG
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 
-pub(in crate::library::codegen::generator::api_dart) fn generate_api_method(
+pub(crate) fn generate_api_method(
     func: &IrFunc,
     ir_struct: &IrStruct,
     context: ApiDartGeneratorContext,

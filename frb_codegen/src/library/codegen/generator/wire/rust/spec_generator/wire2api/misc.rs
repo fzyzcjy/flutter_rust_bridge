@@ -6,7 +6,7 @@ use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use crate::library::codegen::generator::wire::rust::spec_generator::wire2api::ty::WireRustGeneratorWire2apiTrait;
 
-pub(in crate::library::codegen::generator::wire::rust) fn generate_class_from_fields(
+pub(crate) fn generate_class_from_fields(
     ty: impl Into<IrType>,
     context: WireRustGeneratorContext,
     fields: &[String],

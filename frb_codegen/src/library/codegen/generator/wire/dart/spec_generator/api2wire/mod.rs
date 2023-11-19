@@ -22,7 +22,7 @@ pub(crate) struct WireDartOutputSpecApi2wire {
     api_fill_to_wire_funcs: Acc<Vec<WireDartOutputCode>>,
 }
 
-pub(in crate::library::codegen::generator::wire::dart::spec_generator) fn generate(
+pub(crate) fn generate(
     context: WireDartGeneratorContext,
     cache: &IrPackComputedCache,
 ) -> WireDartOutputSpecApi2wire {

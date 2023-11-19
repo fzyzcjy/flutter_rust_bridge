@@ -32,22 +32,19 @@ impl<'a> StructRefWireDartGenerator<'a> {
     }
 }
 
-pub(in crate::library::codegen::generator::wire::dart::spec_generator) enum GeneralizedStructGeneratorMode
-{
+pub(crate) enum GeneralizedStructGeneratorMode {
     Struct,
     Record,
 }
 
-pub(in crate::library::codegen::generator::wire::dart::spec_generator) struct GeneralizedStructGenerator<
-    'a,
-> {
+pub(crate) struct GeneralizedStructGenerator<'a> {
     ir: IrTypeStructRef,
     context: WireDartGeneratorContext<'a>,
     mode: GeneralizedStructGeneratorMode,
 }
 
 impl<'a> GeneralizedStructGenerator<'a> {
-    pub(in crate::library::codegen::generator::wire::dart::spec_generator) fn new(
+    pub(crate) fn new(
         ir: IrTypeStructRef,
         context: WireDartGeneratorContext<'a>,
         mode: GeneralizedStructGeneratorMode,
@@ -55,9 +52,7 @@ impl<'a> GeneralizedStructGenerator<'a> {
         Self { ir, context, mode }
     }
 
-    pub(in crate::library::codegen::generator::wire::dart::spec_generator) fn api2wire_body(
-        &self,
-    ) -> Acc<Option<String>> {
+    pub(crate) fn api2wire_body(&self) -> Acc<Option<String>> {
         Acc {
             wasm: self.context.config.wasm_enabled.then(|| {
                 let values = self
@@ -80,9 +75,7 @@ impl<'a> GeneralizedStructGenerator<'a> {
         }
     }
 
-    pub(in crate::library::codegen::generator::wire::dart::spec_generator) fn api_fill_to_wire_body(
-        &self,
-    ) -> Option<String> {
+    pub(crate) fn api_fill_to_wire_body(&self) -> Option<String> {
         let st = self.ir.get(self.context.ir_pack);
         Some(
             st.fields

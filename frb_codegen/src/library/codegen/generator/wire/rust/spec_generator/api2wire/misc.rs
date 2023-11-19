@@ -1,7 +1,4 @@
-pub(in crate::library::codegen::generator::wire::rust) fn generate_impl_into_into_dart(
-    name: &str,
-    wrapper_name: Option<&str>,
-) -> String {
+pub(crate) fn generate_impl_into_into_dart(name: &str, wrapper_name: Option<&str>) -> String {
     let wrapper_name = wrapper_name.unwrap_or(name);
     format!(
         "impl rust2dart::IntoIntoDart<{wrapper_name}> for {name} {{

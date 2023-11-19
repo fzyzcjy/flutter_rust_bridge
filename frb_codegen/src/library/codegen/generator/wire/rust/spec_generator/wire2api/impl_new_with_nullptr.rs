@@ -8,7 +8,7 @@ use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::Wi
 use crate::library::codegen::generator::wire::rust::spec_generator::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use itertools::Itertools;
 
-pub(in crate::library::codegen::generator::wire::rust) fn generate_impl_new_with_nullptr(
+pub(crate) fn generate_impl_new_with_nullptr(
     types: &[IrType],
     context: WireRustGeneratorContext,
 ) -> Vec<WireRustOutputCode> {
@@ -36,7 +36,7 @@ fn generate_impl_new_with_nullptr_misc() -> &'static str {
     "
 }
 
-pub(in crate::library::codegen::generator::wire::rust) fn generate_impl_new_with_nullptr_code_block(
+pub(crate) fn generate_impl_new_with_nullptr_code_block(
     ir: impl Into<IrType>,
     context: WireRustGeneratorContext,
     body: &str,

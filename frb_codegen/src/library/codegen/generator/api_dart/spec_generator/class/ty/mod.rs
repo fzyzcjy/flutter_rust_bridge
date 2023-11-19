@@ -3,8 +3,8 @@ use enum_dispatch::enum_dispatch;
 
 pub(crate) mod delegate;
 pub(crate) mod enumeration;
-pub(in crate::library::codegen::generator::api_dart) mod enumeration_complex;
-pub(in crate::library::codegen::generator::api_dart) mod enumeration_simple;
+pub(crate) mod enumeration_complex;
+pub(crate) mod enumeration_simple;
 pub(crate) mod rust_opaque;
 pub(crate) mod structure;
 mod structure_freezed;

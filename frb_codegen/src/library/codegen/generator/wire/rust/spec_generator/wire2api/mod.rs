@@ -22,7 +22,7 @@ pub(crate) struct WireRustOutputSpecWire2api {
     impl_new_with_nullptr: Acc<Vec<WireRustOutputCode>>,
 }
 
-pub(in crate::library::codegen::generator::wire::rust) fn generate(
+pub(crate) fn generate(
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,
 ) -> WireRustOutputSpecWire2api {

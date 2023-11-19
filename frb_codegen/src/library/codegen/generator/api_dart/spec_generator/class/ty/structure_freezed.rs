@@ -8,7 +8,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartG
 use itertools::Itertools;
 
 impl<'a> StructRefApiDartGenerator<'a> {
-    pub(in crate::library::codegen::generator::api_dart) fn generate_mode_freezed(
+    pub(crate) fn generate_mode_freezed(
         &self,
         src: &IrStruct,
         comments: &str,

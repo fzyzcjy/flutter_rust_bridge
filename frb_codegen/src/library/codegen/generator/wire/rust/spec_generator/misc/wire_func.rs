@@ -19,7 +19,7 @@ use crate::misc::consts::HANDLER_NAME;
 use itertools::Itertools;
 use std::convert::TryInto;
 
-pub(in crate::library::codegen::generator::wire::rust) fn generate_wire_func(
+pub(crate) fn generate_wire_func(
     func: &IrFunc,
     context: WireRustGeneratorContext,
 ) -> Acc<WireRustOutputCode> {

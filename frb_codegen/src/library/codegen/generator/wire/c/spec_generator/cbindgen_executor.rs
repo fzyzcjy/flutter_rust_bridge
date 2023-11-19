@@ -6,7 +6,7 @@ use crate::library::commands::cbindgen::{cbindgen, CbindgenArgs};
 use crate::utils::file_utils::temp_change_file;
 use std::path::PathBuf;
 
-pub(in crate::library::codegen::generator::wire::c) fn execute(
+pub(crate) fn execute(
     config: &GeneratorWireCInternalConfig,
     extern_struct_names: Vec<String>,
 ) -> anyhow::Result<String> {
