@@ -8,6 +8,6 @@ pub(crate) struct PreparerInternalConfig {
     pub deps_check: bool,
 }
 
-pub(super) fn prepare(config: PreparerInternalConfig) -> anyhow::Result<()> {
+pub(super) fn prepare(config: &PreparerInternalConfig) -> anyhow::Result<()> {
     ensure_tools_available(&config.dart_root, config.deps_check)
 }

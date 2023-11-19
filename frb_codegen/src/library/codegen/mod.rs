@@ -20,7 +20,7 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
     let internal_config = InternalConfig::parse(config)?;
     debug!("internal_config={internal_config:?}");
 
-    preparer::prepare(todo!())?;
+    preparer::prepare(&internal_config.preparer)?;
 
     let ir_pack = parser::parse(&internal_config.parser)?;
 
