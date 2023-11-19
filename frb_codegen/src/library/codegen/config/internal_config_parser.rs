@@ -1,9 +1,11 @@
 use crate::codegen::config::internal_config::{
-    GeneratorCWireInternalConfig, GeneratorDartWireInternalConfig, GeneratorInternalConfig,
-    GeneratorRustWireInternalConfig, GeneratorWireInternalConfig, InternalConfig, Namespace,
+    GeneratorInternalConfig, GeneratorWireInternalConfig, InternalConfig, Namespace,
     PolisherInternalConfig,
 };
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
+use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
+use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
+use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
 use crate::codegen::parser::internal_config::{ParserInternalConfig, RustInputPathPack};
 use crate::codegen::preparer::PreparerInternalConfig;
 use crate::codegen::Config;
@@ -85,7 +87,7 @@ impl InternalConfig {
                     dart_decl_output_path: dart_output_path_pack.dart_decl_output_path,
                 },
                 wire: GeneratorWireInternalConfig {
-                    dart: GeneratorDartWireInternalConfig {
+                    dart: GeneratorWireDartInternalConfig {
                         dart_impl_output_path: dart_output_path_pack.dart_impl_output_path,
                         dart_enums_style,
                         dart_class_name,
@@ -94,11 +96,11 @@ impl InternalConfig {
                         wasm_enabled: config.wasm.unwrap_or(false),
                         dart3,
                     },
-                    rust: GeneratorRustWireInternalConfig {
+                    rust: GeneratorWireRustInternalConfig {
                         rust_crate_dir,
                         rust_output_path,
                     },
-                    c: GeneratorCWireInternalConfig {
+                    c: GeneratorWireCInternalConfig {
                         c_output_path,
                         llvm_path: config
                             .llvm_path

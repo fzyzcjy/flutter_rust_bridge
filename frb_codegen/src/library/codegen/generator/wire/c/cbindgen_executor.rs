@@ -1,12 +1,15 @@
 use crate::codegen::generator::misc::Target;
-use crate::codegen::generator::wire::c::Config;
+use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::IrType;
 use crate::library::commands::cbindgen::{cbindgen, CbindgenArgs};
 use crate::utils::file_utils::temp_change_file;
 use std::path::PathBuf;
 
-pub(super) fn execute(ir_pack: &IrPack, config: &Config) -> anyhow::Result<String> {
+pub(super) fn execute(
+    ir_pack: &IrPack,
+    config: &GeneratorWireCInternalConfig,
+) -> anyhow::Result<String> {
     let changed_file_handle = temp_change_file(config.rust_output_path.clone(), |x| {
         x + DUMMY_WIRE_CODE_FOR_BINDGEN
     })?;
