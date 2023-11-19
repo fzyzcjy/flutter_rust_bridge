@@ -20,20 +20,6 @@ use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
 pub(crate) trait WireRustGeneratorMiscTrait {
-    fn rust_wire_type(&self, target: Target) -> String;
-
-    fn rust_wire_modifier(&self, target: Target) -> String {
-        if self.rust_wire_is_pointer(target) {
-            "*mut ".to_string()
-        } else {
-            "".to_string()
-        }
-    }
-
-    fn rust_wire_is_pointer(&self, _target: Target) -> bool {
-        false
-    }
-
     fn wrapper_struct_name(&self) -> Option<String> {
         None
     }

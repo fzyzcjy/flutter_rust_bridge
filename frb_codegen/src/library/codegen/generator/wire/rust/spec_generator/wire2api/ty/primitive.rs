@@ -16,4 +16,8 @@ impl<'a> WireRustGeneratorWire2apiTrait for PrimitiveWireRustGenerator<'a> {
             _ => "self.unchecked_into_f64() as _".into(),
         })
     }
+
+    fn rust_wire_type(&self, _target: Target) -> String {
+        self.ir.rust_api_type()
+    }
 }

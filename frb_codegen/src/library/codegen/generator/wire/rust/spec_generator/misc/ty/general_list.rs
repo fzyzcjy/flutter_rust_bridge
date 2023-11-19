@@ -4,14 +4,6 @@ use crate::codegen::generator::wire::rust::spec_generator::misc::misc::rust_wire
 use crate::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 
 impl<'a> WireRustGeneratorMiscTrait for GeneralListWireRustGenerator<'a> {
-    fn rust_wire_type(&self, target: Target) -> String {
-        rust_wire_type_add_prefix_or_js_value(&self.ir, target)
-    }
-
-    fn rust_wire_is_pointer(&self, target: Target) -> bool {
-        target != Target::Wasm
-    }
-
     // TODO rm this, since we will visit all sub-types to generate
     // fn generate_imports(&self) -> Option<Vec<String>> {
     //     generate_import(&self.ir.inner, self.context.ir_pack, self.context.config)

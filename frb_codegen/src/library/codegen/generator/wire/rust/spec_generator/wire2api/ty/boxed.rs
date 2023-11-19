@@ -113,4 +113,19 @@ impl<'a> WireRustGeneratorWire2apiTrait for BoxedWireRustGenerator<'a> {
             }
         }
     }
+
+    fn rust_wire_type(&self, target: Target) -> String {
+        if target == Target::Wasm && self.ir.inner.is_primitive() {
+            JS_VALUE.into()
+        } else {
+            WireRustGenerator::new(self.ir.inner.clone(), self.context).rust_wire_type(target)
+        }
+    }
+
+    fn rust_wire_is_pointer(&self, target: Target) -> bool {
+        (target != Target::Wasm)
+            || !is_js_value(&self.ir.inner)
+                && !self.ir.inner.is_array()
+                && !self.ir.inner.is_primitive()
+    }
 }

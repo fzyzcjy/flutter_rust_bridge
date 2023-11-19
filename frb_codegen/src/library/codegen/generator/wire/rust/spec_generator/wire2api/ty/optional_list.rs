@@ -51,4 +51,12 @@ impl<'a> WireRustGeneratorWire2apiTrait for OptionalListWireRustGenerator<'a> {
             ..Default::default()
         }
     }
+
+    fn rust_wire_type(&self, target: Target) -> String {
+        rust_wire_type_add_prefix_or_js_value(&self.ir, target)
+    }
+
+    fn rust_wire_is_pointer(&self, target: Target) -> bool {
+        target != Target::Wasm
+    }
 }

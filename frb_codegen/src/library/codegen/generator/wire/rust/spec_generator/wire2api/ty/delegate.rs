@@ -168,4 +168,18 @@ impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
             _ => Default::default(),
         }
     }
+
+    fn rust_wire_type(&self, target: Target) -> String {
+        match (&self.ir, target) {
+            (IrTypeDelegate::String, Target::Wasm) => "String".into(),
+            (IrTypeDelegate::StringList, Target::Io) => "wire_StringList".to_owned(),
+            (IrTypeDelegate::StringList, Target::Wasm) => JS_VALUE.into(),
+            _ => WireRustGenerator::new(self.ir.get_delegate().clone(), self.context)
+                .rust_wire_type(target),
+        }
+    }
+
+    fn rust_wire_is_pointer(&self, target: Target) -> bool {
+        WireRustGenerator::new(self.ir.get_delegate(), self.context).rust_wire_is_pointer(target)
+    }
 }

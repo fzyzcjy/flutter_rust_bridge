@@ -88,6 +88,21 @@ impl<'a> WireRustGeneratorWire2apiTrait for PrimitiveListWireRustGenerator<'a> {
             ..Default::default()
         }
     }
+
+    fn rust_wire_type(&self, target: Target) -> String {
+        if let Target::Wasm = target {
+            match self.ir.primitive {
+                IrTypePrimitive::Bool | IrTypePrimitive::Unit => JS_VALUE.into(),
+                _ => format!("Box<[{}]>", self.ir.primitive.rust_api_type()),
+            }
+        } else {
+            format!("wire_{}", self.ir.safe_ident())
+        }
+    }
+
+    fn rust_wire_is_pointer(&self, target: Target) -> bool {
+        target != Target::Wasm
+    }
 }
 
 fn rust_wasm_wire_type(ir: &IrTypePrimitiveList) -> &str {

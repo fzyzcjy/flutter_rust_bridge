@@ -60,4 +60,8 @@ impl<'a> WireRustGeneratorWire2apiTrait for DartOpaqueWireRustGenerator<'a> {
             ..Default::default()
         }
     }
+
+    fn rust_wire_type(&self, target: Target) -> String {
+        rust_wire_type_add_prefix_or_js_value(&self.ir, target)
+    }
 }
