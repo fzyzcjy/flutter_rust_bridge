@@ -3,10 +3,9 @@ use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalC
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
-use crate::codegen::preparer::PreparerInternalConfig;
+use crate::codegen::polisher::internal_config::PolisherInternalConfig;
+use crate::codegen::preparer::internal_config::PreparerInternalConfig;
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
-use std::path::PathBuf;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub(crate) struct InternalConfig {
@@ -27,14 +26,6 @@ pub(crate) struct GeneratorWireInternalConfig {
     pub dart: GeneratorWireDartInternalConfig,
     pub rust: GeneratorWireRustInternalConfig,
     pub c: GeneratorWireCInternalConfig,
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
-pub(crate) struct PolisherInternalConfig {
-    pub duplicated_c_output_path: Vec<PathBuf>,
-    pub dart_format_line_length: u32,
-    pub add_mod_to_lib: bool,
-    pub build_runner: bool,
 }
 
 // TODO move?

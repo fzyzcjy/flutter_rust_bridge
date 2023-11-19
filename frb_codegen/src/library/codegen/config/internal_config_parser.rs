@@ -1,13 +1,13 @@
 use crate::codegen::config::internal_config::{
     GeneratorInternalConfig, GeneratorWireInternalConfig, InternalConfig, Namespace,
-    PolisherInternalConfig,
 };
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
 use crate::codegen::parser::internal_config::{ParserInternalConfig, RustInputPathPack};
-use crate::codegen::preparer::PreparerInternalConfig;
+use crate::codegen::polisher::internal_config::PolisherInternalConfig;
+use crate::codegen::preparer::internal_config::PreparerInternalConfig;
 use crate::codegen::Config;
 use crate::utils::path_utils::{
     find_dart_package_dir, find_rust_crate_dir, glob_path, path_to_string,
