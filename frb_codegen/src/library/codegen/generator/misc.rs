@@ -131,3 +131,7 @@ pub(super) fn write_code_for_targets(
     }
     Ok(())
 }
+
+pub(super) fn section_header_comment(section_name: &str) -> String {
+    format!("// Section: {section_name}\n")
+}

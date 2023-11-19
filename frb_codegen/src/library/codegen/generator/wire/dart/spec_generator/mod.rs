@@ -9,14 +9,14 @@ pub mod api2wire;
 pub(crate) mod base;
 pub mod c_binding;
 pub(crate) mod misc;
-mod output_code;
+pub(crate) mod output_code;
 pub mod wire2api;
 
 pub(crate) struct WireDartOutputSpec {
-    c_binding: DartBasicCode,
+    pub(super) c_binding: DartBasicCode,
     pub(super) misc: WireDartOutputSpecMisc,
-    wire2api: WireDartOutputSpecWire2api,
-    api2wire: WireDartOutputSpecApi2wire,
+    pub(super) wire2api: WireDartOutputSpecWire2api,
+    pub(super) api2wire: WireDartOutputSpecApi2wire,
 }
 
 pub(crate) fn generate(

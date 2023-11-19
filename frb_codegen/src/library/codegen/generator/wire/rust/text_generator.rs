@@ -1,5 +1,5 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::misc::{Target, TargetOrCommon};
+use crate::codegen::generator::misc::{section_header_comment, Target, TargetOrCommon};
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::WireRustOutputSpec;
@@ -19,8 +19,10 @@ pub(super) fn generate(
     config: &GeneratorWireRustInternalConfig,
 ) -> anyhow::Result<WireRustOutputText> {
     let merged_code = generate_merged_code(&spec);
-    let text =
-        generate_text_from_core_code(config, &merged_code.clone().map(|code, _| code.all_code()))?;
+    let text = generate_text_from_merged_code(
+        config,
+        &merged_code.clone().map(|code, _| code.all_code()),
+    )?;
     let extern_func_names = compute_extern_func_names(merged_code);
 
     Ok(WireRustOutputText {
@@ -62,11 +64,7 @@ fn generate_merged_code(spec: &WireRustOutputSpec) -> Acc<WireRustOutputCode> {
     merged_code.map(|code, _| code.into_iter().fold(Default::default(), |a, b| a + b))
 }
 
-fn section_header_comment(section_name: &str) -> String {
-    format!("// Section: {section_name}\n")
-}
-
-fn generate_text_from_core_code(
+fn generate_text_from_merged_code(
     config: &GeneratorWireRustInternalConfig,
     core_code: &Acc<String>,
 ) -> anyhow::Result<Acc<Option<String>>> {

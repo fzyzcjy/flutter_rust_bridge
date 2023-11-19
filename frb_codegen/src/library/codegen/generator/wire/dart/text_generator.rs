@@ -1,4 +1,6 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::misc::section_header_comment;
+use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::dart::spec_generator::WireDartOutputSpec;
 
 pub(super) struct WireDartOutputText {
@@ -7,5 +9,24 @@ pub(super) struct WireDartOutputText {
 
 pub(super) fn generate(spec: &WireDartOutputSpec) -> anyhow::Result<WireDartOutputText> {
     // TODO below is only a super simple incomplete version, should update it later
+    let merged_code = generate_merged_code(spec);
     Ok(WireDartOutputText { text })
+}
+
+fn generate_merged_code(spec: &WireDartOutputSpec) -> Acc<WireDartOutputCode> {
+    let mut merged_code = Acc::<Vec<WireDartOutputCode>>::default();
+    let mut add = |section_name: &str, item: &Acc<Vec<WireDartOutputCode>>| {
+        merged_code.push(section_header_comment(section_name).into());
+        merged_code += item.clone();
+    };
+
+    add("c_binding", &spec.c_binding);
+    add("impl_wire2api", &spec.wire2api.impl_wire2api);
+    add("api2wire_funcs", &spec.api2wire.api2wire_funcs);
+    add(
+        "api_fill_to_wire_funcs",
+        &spec.api2wire.api_fill_to_wire_funcs,
+    );
+
+    merged_code.map(|code, _| code.into_iter().fold(Default::default(), |a, b| a + b))
 }
