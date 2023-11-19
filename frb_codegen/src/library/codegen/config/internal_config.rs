@@ -28,20 +28,13 @@ pub(crate) struct GeneratorWireInternalConfig {
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub(crate) struct GeneratorDartWireInternalConfig {
-    pub dart_output_path_pack: DartOutputPathPack,
+    pub dart_impl_output_path: PathBuf,
     pub dart_enums_style: bool,
     pub dart_class_name: HashMap<Namespace, String>,
     pub dart_root: PathBuf,
     pub use_bridge_in_method: bool,
     pub wasm_enabled: bool,
     pub dart3: bool,
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
-pub(crate) struct DartOutputPathPack {
-    // TODO details depend on the actual output files...
-    pub dart_decl_output_path: HashMap<Namespace, PathBuf>,
-    pub dart_impl_output_path: PathBuf,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]

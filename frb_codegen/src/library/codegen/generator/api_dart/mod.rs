@@ -13,7 +13,7 @@ use spec_generator::base::{ApiDartGenerator, ApiDartGeneratorContext};
 pub(crate) fn generate(ir_pack: &IrPack, config: &GeneratorApiDartInternalConfig) -> Result<()> {
     let spec = spec_generator::generate(ir_pack, config)?;
     let text = text_generator::generate(spec, config)?;
-    emitter::emit(text)
+    emitter::emit(text, config)
 }
 
 #[cfg(test)]

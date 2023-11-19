@@ -1,7 +1,7 @@
 use crate::codegen::config::internal_config::{
-    DartOutputPathPack, GeneratorCWireInternalConfig, GeneratorDartWireInternalConfig,
-    GeneratorInternalConfig, GeneratorRustWireInternalConfig, GeneratorWireInternalConfig,
-    InternalConfig, Namespace, PolisherInternalConfig,
+    GeneratorCWireInternalConfig, GeneratorDartWireInternalConfig, GeneratorInternalConfig,
+    GeneratorRustWireInternalConfig, GeneratorWireInternalConfig, InternalConfig, Namespace,
+    PolisherInternalConfig,
 };
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::parser::internal_config::{ParserInternalConfig, RustInputPathPack};
@@ -82,10 +82,11 @@ impl InternalConfig {
                     dart_enums_style,
                     use_bridge_in_method,
                     dart3,
+                    dart_decl_output_path: dart_output_path_pack.dart_decl_output_path,
                 },
                 wire: GeneratorWireInternalConfig {
                     dart: GeneratorDartWireInternalConfig {
-                        dart_output_path_pack,
+                        dart_impl_output_path: dart_output_path_pack.dart_impl_output_path,
                         dart_enums_style,
                         dart_class_name,
                         dart_root,
@@ -162,6 +163,11 @@ fn compute_namespace_from_rust_input_path(rust_input_path: &Path) -> Result<Name
     Ok(Namespace {
         name: stem.to_owned(),
     })
+}
+
+struct DartOutputPathPack {
+    dart_decl_output_path: HashMap<Namespace, PathBuf>,
+    dart_impl_output_path: PathBuf,
 }
 
 fn compute_dart_output_path_pack(
