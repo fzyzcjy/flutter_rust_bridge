@@ -3,14 +3,14 @@ use std::{fs, io};
 
 pub(crate) fn temp_change_file(
     path: PathBuf,
-    modifier: impl FnOnce(&str) -> String,
+    modifier: impl FnOnce(String) -> String,
 ) -> anyhow::Result<TempChangeFile> {
     let content_original = fs::read_to_string(&path)?;
     let ans = TempChangeFile {
-        path,
-        content_original,
+        path: path.clone(),
+        content_original: content_original.clone(),
     };
-    fs::write(&path, modifier(&content_original))?;
+    fs::write(&path, modifier(content_original))?;
     Ok(ans)
 }
 

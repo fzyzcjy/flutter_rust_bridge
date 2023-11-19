@@ -8,7 +8,7 @@ use std::path::PathBuf;
 
 pub(super) fn execute(ir_pack: &IrPack, config: &Config) -> anyhow::Result<String> {
     let changed_file_handle = temp_change_file(config.rust_output_path.clone(), |x| {
-        x.to_owned() + DUMMY_WIRE_CODE_FOR_BINDGEN
+        x + DUMMY_WIRE_CODE_FOR_BINDGEN
     })?;
 
     let ans = cbindgen(CbindgenArgs {
