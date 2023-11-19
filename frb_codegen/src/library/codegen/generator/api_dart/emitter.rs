@@ -1,5 +1,3 @@
-use crate::codegen::generator::api_dart::spec_generator::ApiDartOutputSpec;
-
-pub(super) fn emit() -> anyhow::Result<()> {
+pub(super) fn emit(text: String) -> anyhow::Result<()> {
     todo!()
 }
