@@ -1,9 +1,12 @@
+use crate::codegen::polisher::add_mod_to_lib::try_add_mod_to_lib;
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::library::commands::dart_build_runner::dart_build_runner;
 
+pub(crate) mod add_mod_to_lib;
 pub(crate) mod internal_config;
 
 pub(super) fn polish(config: &PolisherInternalConfig, needs_freezed: bool) -> anyhow::Result<()> {
+    execute_try_add_mod_to_lib(config);
     execute_build_runner(needs_freezed, config)?;
     execute_dart_format(config)?;
     Ok(())
@@ -36,4 +39,10 @@ fn execute_dart_format(config: &PolisherInternalConfig) -> anyhow::Result<()> {
     //         config.dart_freezed_path(),
     //     )
     // )
+}
+
+fn execute_try_add_mod_to_lib(config: &PolisherInternalConfig) {
+    if config.add_mod_to_lib {
+        try_add_mod_to_lib(&config.rust_crate_dir, &config.rust_output_path);
+    }
 }

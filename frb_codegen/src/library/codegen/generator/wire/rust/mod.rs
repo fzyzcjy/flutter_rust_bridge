@@ -1,6 +1,5 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::TargetOrCommon;
-use crate::codegen::generator::wire::rust::add_mod_to_lib::try_add_mod_to_lib;
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
 use crate::codegen::generator::wire::rust::spec_generator::api2wire::WireRustOutputSpecApi2wire;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
@@ -13,7 +12,6 @@ use crate::command_run;
 use crate::library::commands::format_rust::format_rust;
 use itertools::Itertools;
 
-mod add_mod_to_lib;
 mod emitter;
 pub(crate) mod internal_config;
 pub(crate) mod spec_generator;
@@ -24,19 +22,9 @@ pub(crate) fn generate(context: WireRustGeneratorContext) -> anyhow::Result<()> 
     let text = text_generator::generate(spec, context.config)?;
     emitter::emit(text, context.config)?;
 
-    execute_try_add_mod_to_lib(&context);
     execute_format_rust(&context.config)?;
 
     Ok(())
-}
-
-fn execute_try_add_mod_to_lib(context: &WireRustGeneratorContext) {
-    if context.config.add_mod_to_lib {
-        try_add_mod_to_lib(
-            &context.config.rust_crate_dir,
-            &context.config.rust_output_path[TargetOrCommon::Common],
-        );
-    }
 }
 
 fn execute_format_rust(config: &GeneratorWireRustInternalConfig) -> anyhow::Result<()> {

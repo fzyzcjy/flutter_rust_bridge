@@ -89,10 +89,9 @@ impl InternalConfig {
                 },
                 wire: GeneratorWireInternalConfig {
                     dart: GeneratorWireDartInternalConfig {
-                        dart_root,
+                        dart_root: dart_root.clone(),
                         use_bridge_in_method,
                         wasm_enabled: config.wasm.unwrap_or(false),
-                        build_runner: TODO,
                         dart_wire_class_name: TODO,
                         llvm_path: config
                             .llvm_path
@@ -111,14 +110,13 @@ impl InternalConfig {
                         rust_crate_dir: rust_crate_dir.clone(),
                         rust_wire_mod: TODO,
                         wasm_enabled: TODO,
-                        add_mod_to_lib: TODO,
                         rust_output_path: TODO,
                         // TODO
                         // rust_output_path,
                     },
                     c: GeneratorWireCInternalConfig {
-                        rust_crate_dir,
-                        rust_output_path,
+                        rust_crate_dir: rust_crate_dir.clone(),
+                        rust_output_path: rust_output_path.clone(),
                         c_output_path,
                         extern_func_names: TODO,
                         extern_struct_names: TODO,
@@ -133,10 +131,11 @@ impl InternalConfig {
                 // TODO act
                 // TODO rust format, also in polisher
                 dart_format_line_length: config.dart_format_line_length.unwrap_or(80),
-                // TODO this should be preparer?
                 add_mod_to_lib: config.add_mod_to_lib.unwrap_or(true),
-                // TODO act
                 build_runner: config.build_runner.unwrap_or(true),
+                dart_root,
+                rust_crate_dir,
+                rust_output_path,
             },
         })
     }
