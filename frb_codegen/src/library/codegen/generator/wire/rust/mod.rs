@@ -8,6 +8,7 @@ use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
 use crate::codegen::ir::ty::IrType;
 use itertools::Itertools;
 
+mod add_mod_to_lib;
 mod emitter;
 mod internal_config;
 pub(crate) mod spec_generator;
