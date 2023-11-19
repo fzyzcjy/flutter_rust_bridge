@@ -5,10 +5,7 @@ mod text_generator;
 
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::ir::pack::IrPack;
-use crate::library::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use anyhow::Result;
-use itertools::Itertools;
-use spec_generator::base::{ApiDartGenerator, ApiDartGeneratorContext};
 
 pub(crate) fn generate(ir_pack: &IrPack, config: &GeneratorApiDartInternalConfig) -> Result<()> {
     let text = generate_without_emit(ir_pack, config)?;
@@ -26,7 +23,7 @@ fn generate_without_emit(
 #[cfg(test)]
 mod tests {
     use crate::codegen::config::internal_config::InternalConfig;
-    use crate::codegen::generator::api_dart::{generate, generate_without_emit};
+    use crate::codegen::generator::api_dart::generate_without_emit;
     use crate::codegen::{parser, Config};
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::test_utils::{get_test_fixture_dir, text_golden_test};

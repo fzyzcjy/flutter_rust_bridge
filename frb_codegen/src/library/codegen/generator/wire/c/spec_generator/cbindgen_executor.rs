@@ -1,10 +1,7 @@
-use crate::codegen::generator::misc::{Target, TargetOrCommon};
+use crate::codegen::generator::misc::TargetOrCommon;
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
-use crate::codegen::ir::pack::IrPack;
-use crate::codegen::ir::ty::IrType;
 use crate::library::commands::cbindgen::{cbindgen, CbindgenArgs};
 use crate::utils::file_utils::temp_change_file;
-use std::path::PathBuf;
 
 pub(crate) fn execute(
     config: &GeneratorWireCInternalConfig,

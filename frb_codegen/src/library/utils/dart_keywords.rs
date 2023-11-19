@@ -1,4 +1,4 @@
-use anyhow::{anyhow, bail};
+use anyhow::bail;
 use convert_case::{Case, Casing};
 
 /// If the given string is a Dart keyword, then

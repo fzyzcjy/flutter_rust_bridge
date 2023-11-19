@@ -3,7 +3,7 @@ use crate::codegen::parser::type_parser::unencodable::{
     parse_path_type_to_unencodable, splay_segments,
 };
 use crate::codegen::parser::type_parser::TypeParser;
-use anyhow::{anyhow, bail};
+use anyhow::bail;
 use quote::ToTokens;
 use syn::{Path, QSelf, TypePath};
 

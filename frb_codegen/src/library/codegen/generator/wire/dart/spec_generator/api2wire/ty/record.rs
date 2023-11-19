@@ -6,10 +6,6 @@ use crate::codegen::generator::wire::dart::spec_generator::api2wire::ty::structu
 };
 use crate::codegen::generator::wire::dart::spec_generator::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
-use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGenerator;
-use crate::library::codegen::generator::wire::rust::spec_generator::wire2api::ty::WireRustGeneratorWire2apiTrait;
-use crate::library::codegen::ir::ty::IrTypeTrait;
-use itertools::Itertools;
 use GeneralizedStructGeneratorMode::Record;
 
 impl<'a> WireDartGeneratorApi2wireTrait for RecordWireDartGenerator<'a> {

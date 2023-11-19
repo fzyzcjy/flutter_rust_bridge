@@ -1,5 +1,5 @@
+use std::fs;
 use std::path::{Path, PathBuf};
-use std::{fs, io};
 
 pub(crate) fn temp_change_file(
     path: PathBuf,

@@ -1,7 +1,5 @@
-use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::misc::{TargetOrCommon, TargetOrCommonMap};
+use crate::codegen::generator::misc::TargetOrCommonMap;
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
 use std::path::PathBuf;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]

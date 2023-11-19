@@ -1,21 +1,17 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::TargetOrCommon::*;
 use crate::codegen::generator::misc::{is_js_value, Target};
-use crate::codegen::generator::wire::dart::spec_generator::base::{
-    WireDartGenerator, WireDartGeneratorContext,
-};
+use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGenerator;
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
-use crate::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::wire2api::misc::JS_VALUE;
 use crate::codegen::generator::wire::rust::spec_generator::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::wire::dart::spec_generator::api2wire::ty::WireDartGeneratorApi2wireTrait;
-use crate::library::codegen::generator::wire::dart::spec_generator::misc::ty::WireDartGeneratorMiscTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireRustGeneratorWire2apiTrait for BoxedWireRustGenerator<'a> {

@@ -1,7 +1,7 @@
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
 use crate::library::commands::ffigen::{ffigen, FfigenArgs};
 use crate::utils::dart_basic_code::DartBasicCode;
-use anyhow::{bail, ensure};
+use anyhow::ensure;
 
 pub(crate) fn generate(
     config: &GeneratorWireDartInternalConfig,

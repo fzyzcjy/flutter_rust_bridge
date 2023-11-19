@@ -4,8 +4,6 @@ use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::enumeration::IrVariantKind;
 use crate::codegen::ir::ty::IrTypeTrait;
-use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
-use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use itertools::Itertools;
 
 impl<'a> WireRustGeneratorApi2wireTrait for EnumRefWireRustGenerator<'a> {

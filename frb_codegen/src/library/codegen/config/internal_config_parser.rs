@@ -14,7 +14,6 @@ use crate::utils::path_utils::{
     find_dart_package_dir, find_rust_crate_dir, glob_path, path_to_string,
 };
 use anyhow::{ensure, Context, Result};
-use chrono::format::Fixed::TimezoneOffsetDoubleColon;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 use log::debug;

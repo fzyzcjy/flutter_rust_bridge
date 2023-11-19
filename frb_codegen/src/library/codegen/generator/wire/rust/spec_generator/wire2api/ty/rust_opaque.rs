@@ -11,7 +11,6 @@ use crate::codegen::generator::wire::rust::spec_generator::wire2api::misc::{
 };
 use crate::codegen::generator::wire::rust::spec_generator::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::IrTypeTrait;
-use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use std::borrow::Cow;
 
 impl<'a> WireRustGeneratorWire2apiTrait for RustOpaqueWireRustGenerator<'a> {

@@ -1,8 +1,7 @@
 use crate::codegen::generator::misc::TargetOrCommon;
 use crate::enum_map;
-use serde::{Deserialize, Serialize};
 use std::iter::FromIterator;
-use std::ops::{AddAssign, Index};
+use std::ops::AddAssign;
 
 // Generic accumulator over the targets.
 //

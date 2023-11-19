@@ -12,7 +12,6 @@ use crate::codegen::generator::wire::rust::spec_generator::wire2api::ty::WireRus
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
 use crate::codegen::ir::ty::IrTypeTrait;
-use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 
 impl<'a> WireRustGeneratorWire2apiTrait for PrimitiveListWireRustGenerator<'a> {
     fn generate_wire2api_class(&self) -> Option<String> {

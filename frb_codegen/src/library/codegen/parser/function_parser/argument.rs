@@ -9,7 +9,7 @@ use crate::codegen::parser::function_parser::{
     type_to_string, FunctionParser, FunctionPartialInfo, STREAM_SINK_IDENT,
 };
 use crate::codegen::parser::type_parser::misc::parse_comments;
-use anyhow::{anyhow, bail};
+use anyhow::bail;
 use syn::*;
 
 impl<'a, 'b> FunctionParser<'a, 'b> {

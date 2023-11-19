@@ -2,7 +2,7 @@ use crate::codegen::generator::wire::dart::spec_generator::api2wire::WireDartOut
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::misc::WireDartOutputSpecMisc;
 use crate::codegen::generator::wire::dart::spec_generator::wire2api::WireDartOutputSpecWire2api;
-use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
+use crate::codegen::ir::pack::IrPackComputedCache;
 use crate::utils::dart_basic_code::DartBasicCode;
 
 pub mod api2wire;

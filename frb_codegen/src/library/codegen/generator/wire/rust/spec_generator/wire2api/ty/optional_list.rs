@@ -11,7 +11,6 @@ use crate::codegen::generator::wire::rust::spec_generator::wire2api::misc::{
 use crate::codegen::generator::wire::rust::spec_generator::wire2api::ty::general_list::general_list_impl_wire2api_body;
 use crate::codegen::generator::wire::rust::spec_generator::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::IrTypeTrait;
-use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 
 impl<'a> WireRustGeneratorWire2apiTrait for OptionalListWireRustGenerator<'a> {
     fn generate_wire2api_class(&self) -> Option<String> {

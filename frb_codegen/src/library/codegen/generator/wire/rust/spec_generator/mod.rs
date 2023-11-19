@@ -2,7 +2,7 @@ use crate::codegen::generator::wire::rust::spec_generator::api2wire::WireRustOut
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::misc::WireRustOutputSpecMisc;
 use crate::codegen::generator::wire::rust::spec_generator::wire2api::WireRustOutputSpecWire2api;
-use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
+use crate::codegen::ir::pack::IrPackComputedCache;
 
 pub(crate) mod api2wire;
 pub(crate) mod base;

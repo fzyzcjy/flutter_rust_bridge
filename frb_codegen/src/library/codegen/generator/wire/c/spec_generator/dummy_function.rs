@@ -1,4 +1,3 @@
-use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use itertools::Itertools;
 
 pub(super) fn generate(extern_func_names: Vec<String>) -> String {

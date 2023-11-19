@@ -2,7 +2,6 @@ use crate::codegen::generator::misc::TargetOrCommon;
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
 use crate::codegen::generator::wire::rust::text_generator::WireRustOutputText;
 use crate::utils::file_utils::create_dir_all_and_write;
-use std::fs;
 use strum::IntoEnumIterator;
 
 pub(super) fn emit(

@@ -5,16 +5,15 @@ mod text_generator;
 
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::codegen::ir::pack::IrPack;
-use crate::library::commands::cbindgen::{cbindgen, CbindgenArgs};
-use crate::utils::file_utils::{create_dir_all_and_write, temp_change_file};
-use std::path::{Path, PathBuf};
+use crate::utils::file_utils::create_dir_all_and_write;
+use std::path::Path;
 
 pub(crate) struct WireCOutputPack {
     pub c_file_content: String,
 }
 
 pub(crate) fn generate(
-    ir_pack: &IrPack,
+    _ir_pack: &IrPack,
     config: &GeneratorWireCInternalConfig,
     // TODO originally from: `generated_rust.extern_func_names`
     extern_func_names: Vec<String>,

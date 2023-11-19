@@ -1,6 +1,5 @@
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use itertools::Itertools;
-use std::fmt::format;
 use std::iter::FromIterator;
 use std::ops::{Add, AddAssign};
 

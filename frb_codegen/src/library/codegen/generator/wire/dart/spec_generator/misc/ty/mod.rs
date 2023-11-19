@@ -15,7 +15,6 @@ mod rust_opaque;
 mod structure;
 mod unencodable;
 
-use crate::codegen::generator::misc::Target;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]

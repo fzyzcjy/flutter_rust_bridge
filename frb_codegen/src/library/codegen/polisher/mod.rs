@@ -29,7 +29,7 @@ fn execute_build_runner(
     dart_build_runner(&config.dart_root)
 }
 
-fn execute_dart_format(config: &PolisherInternalConfig) -> anyhow::Result<()> {
+fn execute_dart_format(_config: &PolisherInternalConfig) -> anyhow::Result<()> {
     todo!()
     // command_run!(
     //     format_dart[config.dart_format_line_length],
