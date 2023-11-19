@@ -15,11 +15,11 @@ mod misc;
 pub(crate) mod ty;
 
 pub(crate) struct WireRustOutputSpecWire2api {
-    allocate_funcs: Acc<Vec<WireRustOutputCode>>,
-    related_funcs: Acc<Vec<WireRustOutputCode>>,
-    impl_wire2api: Acc<Vec<WireRustOutputCode>>,
-    wire2api_class: Acc<Vec<WireRustOutputCode>>,
-    impl_new_with_nullptr: Acc<Vec<WireRustOutputCode>>,
+    pub allocate_funcs: Acc<Vec<WireRustOutputCode>>,
+    pub related_funcs: Acc<Vec<WireRustOutputCode>>,
+    pub impl_wire2api: Acc<Vec<WireRustOutputCode>>,
+    pub wire2api_class: Acc<Vec<WireRustOutputCode>>,
+    pub impl_new_with_nullptr: Acc<Vec<WireRustOutputCode>>,
 }
 
 pub(crate) fn generate(

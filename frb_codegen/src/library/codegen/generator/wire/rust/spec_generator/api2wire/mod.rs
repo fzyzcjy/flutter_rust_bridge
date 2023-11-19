@@ -11,7 +11,7 @@ mod misc;
 pub(crate) mod ty;
 
 pub(crate) struct WireRustOutputSpecApi2wire {
-    impl_into_dart: Acc<Vec<WireRustOutputCode>>,
+    pub impl_into_dart: Acc<Vec<WireRustOutputCode>>,
 }
 
 pub(crate) fn generate(

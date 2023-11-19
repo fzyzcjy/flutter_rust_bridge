@@ -19,13 +19,13 @@ pub(crate) mod ty;
 pub(crate) mod wire_func;
 
 pub(crate) struct WireRustOutputSpecMisc {
-    file_attributes: Acc<Vec<WireRustOutputCode>>,
-    code_header: Acc<Vec<WireRustOutputCode>>,
-    imports: Acc<Vec<WireRustOutputCode>>,
-    wire_funcs: Acc<Vec<WireRustOutputCode>>,
-    wrapper_structs: Acc<Vec<WireRustOutputCode>>,
-    static_checks: Acc<Vec<WireRustOutputCode>>,
-    executor: Acc<Vec<WireRustOutputCode>>,
+    pub file_attributes: Acc<Vec<WireRustOutputCode>>,
+    pub code_header: Acc<Vec<WireRustOutputCode>>,
+    pub imports: Acc<Vec<WireRustOutputCode>>,
+    pub wire_funcs: Acc<Vec<WireRustOutputCode>>,
+    pub wrapper_structs: Acc<Vec<WireRustOutputCode>>,
+    pub static_checks: Acc<Vec<WireRustOutputCode>>,
+    pub executor: Acc<Vec<WireRustOutputCode>>,
     pub extern_struct_names: Vec<String>,
 }
 

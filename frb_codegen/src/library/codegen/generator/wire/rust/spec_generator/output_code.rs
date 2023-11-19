@@ -8,6 +8,12 @@ pub(crate) struct WireRustOutputCode {
     pub(crate) extern_funcs: Vec<ExternFunc>,
 }
 
+impl WireRustOutputCode {
+    pub(crate) fn all_code(&self) -> String {
+        todo!()
+    }
+}
+
 impl Add for WireRustOutputCode {
     type Output = Self;
 

@@ -13,8 +13,8 @@ pub(crate) mod wire2api;
 
 pub(super) struct WireRustOutputSpec {
     pub(super) misc: WireRustOutputSpecMisc,
-    wire2api: WireRustOutputSpecWire2api,
-    api2wire: WireRustOutputSpecApi2wire,
+    pub(super) wire2api: WireRustOutputSpecWire2api,
+    pub(super) api2wire: WireRustOutputSpecApi2wire,
 }
 
 pub(super) fn generate(context: WireRustGeneratorContext) -> WireRustOutputSpec {
