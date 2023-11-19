@@ -1,4 +1,4 @@
-rust_input: api/*.rs
+rust_input: src/api/*.rs
 dart_output: my_dart_folder
 c_output: bridge_generated.h
 class_name: '{namespace}Api'
