@@ -1,8 +1,8 @@
 abstract class Api {
-                Future<void> firstFunction({ dynamic hint });
+            Future<void> firstFunction({ dynamic hint });
 
 FlutterRustBridgeTaskConstMeta get kFirstFunctionConstMeta;
-            }
+        }
 
-            
-            
+        
+        
