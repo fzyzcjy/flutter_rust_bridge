@@ -5,6 +5,7 @@ mod config_converter;
 mod generator;
 pub(crate) mod ir;
 pub(crate) mod parser;
+mod preparer;
 
 use crate::codegen::config::internal_config::InternalConfig;
 use crate::codegen::generator::output::OutputCode;
@@ -15,8 +16,11 @@ use log::debug;
 /// Execute the main code generator
 pub fn generate(config: Config) -> anyhow::Result<()> {
     debug!("config={config:?}");
+
     let internal_config = InternalConfig::parse(config)?;
     debug!("internal_config={internal_config:?}");
+
+    preparer::prepare(todo!())?;
 
     let ir_pack = parser::parse(&internal_config.parser)?;
 

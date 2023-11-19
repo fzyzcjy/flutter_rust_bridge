@@ -21,8 +21,8 @@ pub(crate) fn generate_dart_code(
 ) -> crate::Result {
     // let dart_root = config.dart_root_or_default();
 
-    // TODO not done
-    ensure_tools_available(&dart_root, config.deps_check)?;
+    // DONE
+    // ensure_tools_available(&dart_root, config.deps_check)?;
 
     // DONE
     // info!("Phase: Generating Dart bindings for Rust");
