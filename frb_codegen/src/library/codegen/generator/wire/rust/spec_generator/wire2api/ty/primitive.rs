@@ -1,7 +1,9 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::codegen::ir::ty::IrTypeTrait;
 
 impl<'a> WireRustGeneratorWire2apiTrait for PrimitiveWireRustGenerator<'a> {
     fn generate_impl_wire2api_body(&self) -> Acc<Option<String>> {

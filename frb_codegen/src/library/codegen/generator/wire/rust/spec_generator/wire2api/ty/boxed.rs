@@ -10,6 +10,7 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
 };
 use crate::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
+use crate::codegen::generator::wire::rust::spec_generator::wire2api::misc::JS_VALUE;
 use crate::codegen::generator::wire::rust::spec_generator::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
 use crate::codegen::ir::ty::IrType;

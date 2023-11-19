@@ -1,6 +1,8 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
+use crate::codegen::generator::wire::rust::spec_generator::wire2api::misc::rust_wire_type_add_prefix_or_js_value;
 use crate::codegen::generator::wire::rust::spec_generator::wire2api::ty::WireRustGeneratorWire2apiTrait;
 
 impl<'a> WireRustGeneratorWire2apiTrait for RecordWireRustGenerator<'a> {

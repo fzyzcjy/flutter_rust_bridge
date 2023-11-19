@@ -4,6 +4,7 @@ use crate::codegen::generator::wire::rust::spec_generator::base::*;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::wire2api::impl_new_with_nullptr::generate_impl_new_with_nullptr_code_block;
+use crate::codegen::generator::wire::rust::spec_generator::wire2api::misc::rust_wire_type_add_prefix_or_js_value;
 use crate::codegen::generator::wire::rust::spec_generator::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumMode, IrVariant, IrVariantKind};

@@ -5,7 +5,9 @@ use crate::codegen::generator::wire::rust::spec_generator::extern_func::{
     ExternFunc, ExternFuncParam,
 };
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
-use crate::codegen::generator::wire::rust::spec_generator::wire2api::misc::generate_class_from_fields;
+use crate::codegen::generator::wire::rust::spec_generator::wire2api::misc::{
+    generate_class_from_fields, JS_VALUE,
+};
 use crate::codegen::generator::wire::rust::spec_generator::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::primitive_list::IrTypePrimitiveList;
