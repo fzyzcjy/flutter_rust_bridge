@@ -7,7 +7,7 @@ use std::path::Path;
 pub(super) fn try_add_mod_to_lib(rust_crate_dir: &Path, rust_output_path: &Path) {
     if let Err(e) = auto_add_mod_to_lib_core(rust_crate_dir, rust_output_path) {
         warn!(
-            "auto_add_mod_to_lib fail, the generated code may or may not have problems. \
+            "add_mod_to_lib fail, the generated code may or may not have problems. \
             Please ensure you have add code like `mod the_generated_bridge_code;` to your `lib.rs`. \
             Details: {}",
             e
