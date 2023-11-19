@@ -26,23 +26,6 @@ pub fn modify_dart_wire_content(content_raw: &str, dart_wire_class_name: &str) -
         .replace("typedef WireSyncReturn = ffi.Pointer<DartCObject>;", "")
 }
 
-pub fn extract_dart_wire_content(content: &str) -> DartBasicCode {
-    let (mut imports, mut body) = (Vec::new(), Vec::new());
-    for line in content.split('\n') {
-        (if line.starts_with("import ") {
-            &mut imports
-        } else {
-            &mut body
-        })
-        .push(line);
-    }
-    DartBasicCode {
-        import: imports.join("\n"),
-        part: "".to_string(),
-        body: body.join("\n"),
-    }
-}
-
 pub fn sanity_check(generated_dart_wire_code: &str, dart_wire_class_name: &str) -> crate::Result {
     if !generated_dart_wire_code.contains(dart_wire_class_name) {
         bail!(

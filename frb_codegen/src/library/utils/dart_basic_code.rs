@@ -28,6 +28,23 @@ impl Add<&DartBasicCode> for DartBasicCode {
 }
 
 impl DartBasicCode {
+    pub fn parse(raw: &str) -> DartBasicCode {
+        let (mut imports, mut body) = (Vec::new(), Vec::new());
+        for line in raw.split('\n') {
+            (if line.starts_with("import ") {
+                &mut imports
+            } else {
+                &mut body
+            })
+            .push(line);
+        }
+        DartBasicCode {
+            import: imports.join("\n"),
+            part: "".to_string(),
+            body: body.join("\n"),
+        }
+    }
+
     pub fn to_text(&self) -> String {
         format!("{}\n{}\n{}", self.import, self.part, self.body)
     }
