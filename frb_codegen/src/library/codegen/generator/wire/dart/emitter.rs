@@ -1,3 +1,5 @@
-pub(super) fn emit() -> anyhow::Result<()> {
+use crate::codegen::generator::wire::dart::text_generator::WireDartOutputText;
+
+pub(super) fn emit(text: WireDartOutputText) -> anyhow::Result<()> {
     todo!()
 }

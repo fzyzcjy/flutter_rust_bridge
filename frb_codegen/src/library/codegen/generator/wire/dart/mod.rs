@@ -14,8 +14,8 @@ pub(crate) fn generate(
     c_file_content: &str,
 ) -> anyhow::Result<GeneratorWireDartOutput> {
     let spec = spec_generator::generate(context, c_file_content)?;
-    let _text = text_generator::generate()?;
-    emitter::emit()?;
+    let text = text_generator::generate()?;
+    emitter::emit(text)?;
 
     Ok(GeneratorWireDartOutput {
         dart_needs_freezed: spec.misc.needs_freezed,

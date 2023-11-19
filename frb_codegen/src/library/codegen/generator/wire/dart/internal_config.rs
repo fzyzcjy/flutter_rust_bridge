@@ -10,4 +10,5 @@ pub(crate) struct GeneratorWireDartInternalConfig {
     pub llvm_compiler_opts: String,
     pub dart_root: PathBuf,
     pub extra_headers: String,
+    pub dart_impl_output_path: PathBuf,
 }
