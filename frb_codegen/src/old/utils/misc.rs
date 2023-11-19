@@ -11,17 +11,6 @@ use anyhow::anyhow;
 use convert_case::{Case, Casing};
 use pathdiff::diff_paths;
 
-pub fn mod_from_rust_path(code_path: &str, crate_path: &str) -> String {
-    Path::new(code_path)
-        .strip_prefix(Path::new(crate_path).join("src"))
-        .unwrap()
-        .with_extension("")
-        .into_os_string()
-        .into_string()
-        .unwrap()
-        .replace('/', "::")
-}
-
 pub fn find_all_duplicates<T>(iter: &[T]) -> Vec<T>
 where
     T: Eq + Hash + Clone,

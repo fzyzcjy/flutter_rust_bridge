@@ -2,7 +2,7 @@ use crate::codegen::config::internal_config::{
     GeneratorInternalConfig, GeneratorWireInternalConfig, InternalConfig, Namespace,
 };
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
-use crate::codegen::generator::misc::TargetOrCommonMap;
+use crate::codegen::generator::misc::{TargetOrCommon, TargetOrCommonMap};
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
@@ -50,6 +50,9 @@ impl InternalConfig {
         let rust_crate_dir: PathBuf = (config.rust_crate_dir.map(PathBuf::from)).unwrap_or(
             find_rust_crate_dir(rust_input_path_pack.one_rust_input_path())?,
         );
+        let rust_wire_mod =
+            mod_from_rust_path(&rust_output_path[TargetOrCommon::Common], &rust_crate_dir)?;
+
         let dart_root = (config.dart_root.map(PathBuf::from))
             .unwrap_or(find_dart_package_dir(&dart_output_dir)?);
 
@@ -104,7 +107,7 @@ impl InternalConfig {
                     },
                     rust: GeneratorWireRustInternalConfig {
                         rust_crate_dir: rust_crate_dir.clone(),
-                        rust_wire_mod: TODO,
+                        rust_wire_mod,
                         wasm_enabled,
                         rust_output_path: rust_output_path.clone(),
                     },
@@ -268,6 +271,13 @@ fn compute_dart_api_instance_name(use_bridge_in_method: bool, dart_output_stem: 
 
 fn get_file_stem(p: &Path) -> &str {
     p.file_stem().unwrap().to_str().unwrap()
+}
+
+fn mod_from_rust_path(code_path: &Path, crate_path: &Path) -> Result<String> {
+    let p = code_path
+        .strip_prefix(crate_path.join("src"))?
+        .with_extension("");
+    Ok(path_to_string(&p)?.replace('/', "::"))
 }
 
 #[cfg(test)]
