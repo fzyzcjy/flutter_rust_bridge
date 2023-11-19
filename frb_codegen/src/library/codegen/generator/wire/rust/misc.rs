@@ -7,6 +7,7 @@ use crate::codegen::generator::wire::rust::GeneratorWireRustOutput;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::IrType;
 use crate::if_then_some;
+use crate::library::codegen::generator::wire::rust::spec_generator::wire2api::ty::WireRustGeneratorWire2apiTrait;
 
 pub(super) fn compute_output(
     spec: &WireRustOutputSpec,

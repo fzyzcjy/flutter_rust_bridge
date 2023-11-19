@@ -18,7 +18,7 @@ pub(crate) fn generate(
     context: WireDartGeneratorContext,
     c_file_content: &str,
 ) -> anyhow::Result<GeneratorWireDartOutput> {
-    let spec = spec_generator::generate(context, c_file_content);
+    let spec = spec_generator::generate(context, c_file_content)?;
     let text = text_generator::generate()?;
     emitter::emit()?;
 
