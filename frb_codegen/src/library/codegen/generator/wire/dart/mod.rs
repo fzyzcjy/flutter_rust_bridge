@@ -6,10 +6,10 @@ use crate::library::commands::ffigen::{ffigen, FfigenArgs};
 pub(crate) mod internal_config;
 pub(super) mod spec_generator;
 
-pub(crate) fn generate(ir_pack: &IrPack, context: WireDartGeneratorContext) -> anyhow::Result<()> {
+pub(crate) fn generate(context: WireDartGeneratorContext) -> anyhow::Result<()> {
     let text_ffigen = execute_ffigen(context.config)?;
 
-    let spec = spec_generator::generate(ir_pack, context);
+    let spec = spec_generator::generate(context);
 
     todo!()
 }

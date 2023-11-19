@@ -16,8 +16,8 @@ pub(crate) struct WireDartOutputSpec {
     api2wire: WireDartOutputSpecApi2wire,
 }
 
-pub(crate) fn generate(ir_pack: &IrPack, context: WireDartGeneratorContext) -> WireDartOutputSpec {
-    let cache = IrPackComputedCache::compute(ir_pack);
+pub(crate) fn generate(context: WireDartGeneratorContext) -> WireDartOutputSpec {
+    let cache = IrPackComputedCache::compute(context.ir_pack);
     WireDartOutputSpec {
         misc: misc::generate(context, &cache),
         wire2api: wire2api::generate(context, &cache),
