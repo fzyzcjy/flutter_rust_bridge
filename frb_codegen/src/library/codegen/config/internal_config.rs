@@ -1,3 +1,4 @@
+use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::preparer::PreparerInternalConfig;
 use serde::{Deserialize, Serialize};
@@ -14,13 +15,19 @@ pub(crate) struct InternalConfig {
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub(crate) struct GeneratorInternalConfig {
-    pub dart: GeneratorDartInternalConfig,
-    pub rust: GeneratorRustInternalConfig,
-    pub c: GeneratorCInternalConfig,
+    pub api_dart: GeneratorApiDartInternalConfig,
+    pub wire: GeneratorWireInternalConfig,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
-pub(crate) struct GeneratorDartInternalConfig {
+pub(crate) struct GeneratorWireInternalConfig {
+    pub dart: GeneratorDartWireInternalConfig,
+    pub rust: GeneratorRustWireInternalConfig,
+    pub c: GeneratorCWireInternalConfig,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+pub(crate) struct GeneratorDartWireInternalConfig {
     pub dart_output_path_pack: DartOutputPathPack,
     pub dart_enums_style: bool,
     pub dart_class_name: HashMap<Namespace, String>,
@@ -38,13 +45,13 @@ pub(crate) struct DartOutputPathPack {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
-pub(crate) struct GeneratorRustInternalConfig {
+pub(crate) struct GeneratorRustWireInternalConfig {
     pub rust_crate_dir: PathBuf,
     pub rust_output_path: PathBuf,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
-pub(crate) struct GeneratorCInternalConfig {
+pub(crate) struct GeneratorCWireInternalConfig {
     pub c_output_path: PathBuf,
     pub llvm_path: Vec<PathBuf>,
     pub llvm_compiler_opts: String,

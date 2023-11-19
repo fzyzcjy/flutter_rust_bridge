@@ -1,8 +1,9 @@
 use crate::codegen::config::internal_config::{
-    DartOutputPathPack, GeneratorCInternalConfig, GeneratorDartInternalConfig,
-    GeneratorInternalConfig, GeneratorRustInternalConfig, InternalConfig, Namespace,
-    PolisherInternalConfig,
+    DartOutputPathPack, GeneratorCWireInternalConfig, GeneratorDartWireInternalConfig,
+    GeneratorInternalConfig, GeneratorRustWireInternalConfig, GeneratorWireInternalConfig,
+    InternalConfig, Namespace, PolisherInternalConfig,
 };
+use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::parser::internal_config::{ParserInternalConfig, RustInputPathPack};
 use crate::codegen::preparer::PreparerInternalConfig;
 use crate::codegen::Config;
@@ -45,17 +46,25 @@ impl InternalConfig {
             .map(|p| base_dir.join(&p))
             .collect();
 
-        let rust_crate_dir: PathBuf =
-            config
-                .rust_crate_dir
-                .map(PathBuf::from)
-                .unwrap_or(find_rust_crate_dir(
-                    rust_input_path_pack.one_rust_input_path(),
-                )?);
-        let dart_root = config
-            .dart_root
-            .map(PathBuf::from)
+        let rust_crate_dir: PathBuf = (config.rust_crate_dir.map(PathBuf::from)).unwrap_or(
+            find_rust_crate_dir(rust_input_path_pack.one_rust_input_path())?,
+        );
+        let dart_root = (config.dart_root.map(PathBuf::from))
             .unwrap_or(find_dart_package_dir(&dart_output_dir)?);
+
+        let use_bridge_in_method = config.use_bridge_in_method.unwrap_or(true);
+        let dart_enums_style = config.dart_enums_style.unwrap_or(false);
+        let dart3 = config.dart3.unwrap_or(true);
+
+        // TODO multi file support
+        let dart_output_path = dart_output_path_pack
+            .dart_decl_output_path
+            .values()
+            .next()
+            .unwrap();
+        let dart_output_stem = get_file_stem(dart_output_path);
+        let dart_api_instance_name =
+            compute_dart_api_instance_name(use_bridge_in_method, dart_output_stem);
 
         Ok(InternalConfig {
             preparer: PreparerInternalConfig {
@@ -67,29 +76,38 @@ impl InternalConfig {
                 rust_crate_dir: rust_crate_dir.clone(),
             },
             generator: GeneratorInternalConfig {
-                dart: GeneratorDartInternalConfig {
-                    dart_output_path_pack,
-                    dart_enums_style: config.dart_enums_style.unwrap_or(false),
-                    dart_class_name,
-                    dart_root,
-                    use_bridge_in_method: config.use_bridge_in_method.unwrap_or(true),
-                    wasm_enabled: config.wasm.unwrap_or(false),
-                    dart3: config.dart3.unwrap_or(true),
+                api_dart: GeneratorApiDartInternalConfig {
+                    dart_api_class_name: dart_output_stem.to_case(Case::Pascal),
+                    dart_api_instance_name,
+                    dart_enums_style,
+                    use_bridge_in_method,
+                    dart3,
                 },
-                rust: GeneratorRustInternalConfig {
-                    rust_crate_dir,
-                    rust_output_path,
-                },
-                c: GeneratorCInternalConfig {
-                    c_output_path,
-                    llvm_path: config
-                        .llvm_path
-                        .unwrap_or_else(fallback_llvm_path)
-                        .into_iter()
-                        .map(PathBuf::from)
-                        .collect_vec(),
-                    llvm_compiler_opts: config.llvm_compiler_opts.unwrap_or_else(String::new),
-                    extra_headers: config.extra_headers.unwrap_or_else(String::new),
+                wire: GeneratorWireInternalConfig {
+                    dart: GeneratorDartWireInternalConfig {
+                        dart_output_path_pack,
+                        dart_enums_style,
+                        dart_class_name,
+                        dart_root,
+                        use_bridge_in_method,
+                        wasm_enabled: config.wasm.unwrap_or(false),
+                        dart3,
+                    },
+                    rust: GeneratorRustWireInternalConfig {
+                        rust_crate_dir,
+                        rust_output_path,
+                    },
+                    c: GeneratorCWireInternalConfig {
+                        c_output_path,
+                        llvm_path: config
+                            .llvm_path
+                            .unwrap_or_else(fallback_llvm_path)
+                            .into_iter()
+                            .map(PathBuf::from)
+                            .collect_vec(),
+                        llvm_compiler_opts: config.llvm_compiler_opts.unwrap_or_else(String::new),
+                        extra_headers: config.extra_headers.unwrap_or_else(String::new),
+                    },
                 },
             },
             polisher: PolisherInternalConfig {
@@ -206,6 +224,18 @@ fn fallback_llvm_path() -> Vec<String> {
         "C:/Program Files/llvm".to_owned(), // Default on Windows
         "C:/msys64/mingw64".to_owned(), // https://packages.msys2.org/package/mingw-w64-x86_64-clang
     ]
+}
+
+fn compute_dart_api_instance_name(use_bridge_in_method: bool, dart_output_stem: &str) -> String {
+    if use_bridge_in_method {
+        "bridge".to_owned()
+    } else {
+        dart_output_stem.to_case(Case::Camel)
+    }
+}
+
+fn get_file_stem(p: &Path) -> &str {
+    p.file_stem().unwrap().to_str().unwrap()
 }
 
 #[cfg(test)]

@@ -7,7 +7,7 @@ mod misc;
 pub(crate) mod wire;
 
 pub(crate) fn generate(ir_pack: &IrPack, config: &GeneratorInternalConfig) -> anyhow::Result<()> {
-    api_dart::generate(&ir_pack, &config.dart.clone().into())?;
+    api_dart::generate(&ir_pack, &config.api_dart)?;
     wire::generate(&ir_pack)?;
     Ok(())
 }
