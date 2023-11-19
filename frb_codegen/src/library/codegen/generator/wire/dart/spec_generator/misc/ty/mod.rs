@@ -19,8 +19,4 @@ use crate::codegen::generator::misc::Target;
 use enum_dispatch::enum_dispatch;
 
 #[enum_dispatch]
-pub(crate) trait WireDartGeneratorMiscTrait {
-    fn dart_wire_type(&self, target: Target) -> String {
-        todo!()
-    }
-}
+pub(crate) trait WireDartGeneratorMiscTrait {}

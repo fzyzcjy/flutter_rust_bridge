@@ -23,4 +23,8 @@ pub(crate) trait WireDartGeneratorApi2wireTrait {
     fn api_fill_to_wire_body(&self) -> Option<String> {
         None
     }
+
+    fn dart_wire_type(&self, target: Target) -> String {
+        todo!()
+    }
 }
