@@ -17,10 +17,13 @@ impl Config {
     }
 
     fn from_config_files() -> Result<Option<Self>, Error> {
-        const CONFIG_LOCATIONS: [&str; 3] = [
+        const CONFIG_LOCATIONS: [&str; 6] = [
             ".flutter_rust_bridge.yml",
             ".flutter_rust_bridge.yaml",
             ".flutter_rust_bridge.json",
+            "flutter_rust_bridge.yml",
+            "flutter_rust_bridge.yaml",
+            "flutter_rust_bridge.json",
         ];
 
         for location in CONFIG_LOCATIONS {
