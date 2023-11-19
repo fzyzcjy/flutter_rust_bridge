@@ -3,6 +3,7 @@ use crate::codegen::generator::api_dart::spec_generator::base::{
     ApiDartGenerator, ApiDartGeneratorContext,
 };
 use crate::codegen::ir::pack::IrPack;
+use crate::library::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use anyhow::Result;
 use itertools::Itertools;
 
@@ -13,8 +14,8 @@ pub(crate) mod info;
 pub(crate) mod misc;
 
 pub(crate) struct ApiDartOutputSpec {
-    funcs: Vec<String>,
-    classes: Vec<String>,
+    pub funcs: Vec<String>,
+    pub classes: Vec<String>,
 }
 
 pub(crate) fn generate(

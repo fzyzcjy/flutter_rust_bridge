@@ -14,6 +14,8 @@ pub(super) fn generate(
 
         {classes}
         ",
+        funcs = funcs.join("\n\n"),
+        classes = classes.join("\n\n"),
         dart_api_class_name = config.dart_api_class_name,
     ))
 }
