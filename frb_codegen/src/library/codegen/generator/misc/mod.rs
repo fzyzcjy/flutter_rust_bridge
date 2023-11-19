@@ -1,9 +1,11 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::misc::target::{TargetOrCommon, TargetOrCommonMap};
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::IrType;
 use crate::enum_map;
 use crate::utils::file_utils::create_dir_all_and_write;
 use anyhow::bail;
+use itertools::Itertools;
 use std::collections::HashMap;
 use std::convert::{TryFrom, TryInto};
 use std::ops::Add;
@@ -54,5 +56,22 @@ impl Add for OutputTexts {
 
     fn add(self, rhs: Self) -> Self::Output {
         Self([self.0, rhs.0].concat())
+    }
+}
+
+impl OutputTexts {
+    pub(crate) fn new_from_targets(
+        path: &TargetOrCommonMap<PathBuf>,
+        text: &Acc<Option<String>>,
+    ) -> Self {
+        Self(
+            TargetOrCommon::iter()
+                .filter_map(|target| {
+                    text[target].map(|text_for_target| {
+                        OutputText::new(path[target].clone(), text_for_target)
+                    })
+                })
+                .collect_vec(),
+        )
     }
 }

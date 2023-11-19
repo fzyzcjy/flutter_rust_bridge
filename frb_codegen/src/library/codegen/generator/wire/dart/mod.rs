@@ -18,10 +18,10 @@ pub(crate) fn generate(
     let text = text_generator::generate(&spec, &context.config)?;
 
     Ok(GeneratorWireDartOutput {
-        output_texts: OutputTexts(vec![OutputText::new(
-            context.config.dart_impl_output_path,
+        output_texts: OutputTexts::new_from_targets(
+            context.config.dart_impl_output_path.clone(),
             text.text,
-        )]),
+        ),
         dart_needs_freezed: spec.misc.needs_freezed,
     })
 }
