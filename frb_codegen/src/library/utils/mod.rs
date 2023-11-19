@@ -2,7 +2,7 @@ pub(crate) mod control_utils;
 pub(crate) mod dart_keywords;
 pub(crate) mod dart_repository;
 mod enum_map;
-mod file_utils;
+pub(crate) mod file_utils;
 pub mod logs;
 pub(crate) mod path_utils;
 #[cfg(test)]

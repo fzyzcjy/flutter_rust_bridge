@@ -9,7 +9,7 @@ use anyhow::Result;
 
 pub(crate) fn generate(ir_pack: &IrPack) -> Result<OutputCode> {
     rust::generate(ir_pack, todo!())?;
-    c::generate(ir_pack)?;
+    c::generate(ir_pack, todo!())?;
     dart::generate(ir_pack, todo!())?;
     Ok(todo!())
 }

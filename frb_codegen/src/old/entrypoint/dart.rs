@@ -26,31 +26,27 @@ pub(crate) fn generate_dart_code(
     // phase-step1: generate temporary c file
     let temp_dart_wire_file = tempfile::NamedTempFile::new()?;
     let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile()?;
-    let exclude_symbols = generated_rust.get_exclude_symbols(all_symbols);
-    with_changed_file(
-        &config.rust_output_path,
-        DUMMY_WIRE_CODE_FOR_BINDGEN,
-        || {
-            commands::bindgen_rust_to_dart(
-                BindgenRustToDartArg {
-                    rust_crate_dir: &config.rust_crate_dir,
-                    c_output_path: temp_bindgen_c_output_file
-                        .path()
-                        .as_os_str()
-                        .to_str()
-                        .unwrap(),
-                    dart_output_path: temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
-                    dart_class_name: &config.dart_wire_class_name(),
-                    c_struct_names: ir_pack.get_c_struct_names(),
-                    exclude_symbols,
-                    llvm_install_path: &config.llvm_path[..],
-                    llvm_compiler_opts: &config.llvm_compiler_opts,
-                },
-                &dart_root,
-            )
-            .map_err(Into::into)
+    // with_changed_file(
+    //     &config.rust_output_path,
+    //     DUMMY_WIRE_CODE_FOR_BINDGEN,
+    //     || {
+    commands::bindgen_rust_to_dart(
+        BindgenRustToDartArg {
+            c_output_path: temp_bindgen_c_output_file
+                .path()
+                .as_os_str()
+                .to_str()
+                .unwrap(),
+            dart_output_path: temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
+            dart_class_name: &config.dart_wire_class_name(),
+            llvm_install_path: &config.llvm_path[..],
+            llvm_compiler_opts: &config.llvm_compiler_opts,
         },
-    )?;
+        &dart_root,
+    )
+    .map_err(Into::into);
+    //     },
+    // )?;
 
     let effective_func_names = [
         generated_rust.extern_func_names,
