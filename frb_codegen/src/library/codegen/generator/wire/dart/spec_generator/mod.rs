@@ -3,22 +3,29 @@ use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGenerat
 use crate::codegen::generator::wire::dart::spec_generator::misc::WireDartOutputSpecMisc;
 use crate::codegen::generator::wire::dart::spec_generator::wire2api::WireDartOutputSpecWire2api;
 use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
+use crate::utils::dart_basic_code::DartBasicCode;
 
 pub mod api2wire;
 pub(crate) mod base;
+pub mod c_binding;
 pub(crate) mod misc;
 mod output_code;
 pub mod wire2api;
 
 pub(crate) struct WireDartOutputSpec {
+    c_binding: DartBasicCode,
     pub(super) misc: WireDartOutputSpecMisc,
     wire2api: WireDartOutputSpecWire2api,
     api2wire: WireDartOutputSpecApi2wire,
 }
 
-pub(crate) fn generate(context: WireDartGeneratorContext) -> WireDartOutputSpec {
+pub(crate) fn generate(
+    context: WireDartGeneratorContext,
+    c_file_content: &str,
+) -> WireDartOutputSpec {
     let cache = IrPackComputedCache::compute(context.ir_pack);
     WireDartOutputSpec {
+        c_binding: c_binding::generate(&context.config, c_file_content)?,
         misc: misc::generate(context, &cache),
         wire2api: wire2api::generate(context, &cache),
         api2wire: api2wire::generate(context, &cache),

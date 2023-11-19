@@ -3,7 +3,7 @@ use crate::library::commands::ffigen::{ffigen, FfigenArgs};
 use crate::utils::dart_basic_code::DartBasicCode;
 use anyhow::{bail, ensure};
 
-pub(super) fn generate(
+pub(in crate::library::codegen::generator::wire::dart) fn generate(
     config: &GeneratorWireDartInternalConfig,
     c_file_content: &str,
 ) -> anyhow::Result<DartBasicCode> {
