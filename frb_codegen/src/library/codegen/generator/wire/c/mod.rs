@@ -9,21 +9,6 @@ use crate::library::commands::cbindgen::{cbindgen, CbindgenArgs};
 use crate::utils::file_utils::{create_dir_all_and_write, temp_change_file};
 use std::path::{Path, PathBuf};
 
-// TODO
-// fn get_c_struct_names(ir_pack: &IrPack) -> Vec<String> {
-//     ir_pack
-//         .distinct_types(true, true)
-//         .iter()
-//         .filter_map(|ty| {
-//             if let IrType::StructRef(_) = ty {
-//                 Some(ty.rust_wire_type(Target::Io))
-//             } else {
-//                 None
-//             }
-//         })
-//         .collect()
-// }
-
 pub(crate) struct WireCOutputPack {
     pub c_file_content: String,
 }
