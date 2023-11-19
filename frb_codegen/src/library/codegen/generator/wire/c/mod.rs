@@ -1,6 +1,5 @@
 mod cbindgen_executor;
 mod dummy_function;
-mod emitter;
 
 use crate::codegen::ir::pack::IrPack;
 use crate::library::commands::cbindgen::{cbindgen, CbindgenArgs};

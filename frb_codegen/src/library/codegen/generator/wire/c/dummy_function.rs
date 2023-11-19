@@ -2,7 +2,11 @@ use crate::codegen::generator::wire::c::Config;
 use itertools::Itertools;
 
 pub(super) fn generate(config: &Config) -> String {
-    let func_names = [&config.extern_func_names, EXTRA_EXTERN_FUNC_NAMES.to_vec()].concat();
+    let func_names = [
+        config.extern_func_names.clone(),
+        (EXTRA_EXTERN_FUNC_NAMES.iter().map(|&x| x.to_owned())).collect_vec(),
+    ]
+    .concat();
     generate_dummy_function(&func_names)
 }
 
