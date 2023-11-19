@@ -8,10 +8,9 @@ pub(crate) fn generate(ir_pack: &IrPack) -> anyhow::Result<()> {
     todo!()
 }
 
-fn execute_cbindgen() -> anyhow::Result<()> {
+fn execute_cbindgen() -> anyhow::Result<String> {
     cbindgen(CbindgenArgs {
         rust_crate_dir: TODO,
-        c_output_path: TODO,
         c_struct_names: TODO,
         exclude_symbols: TODO,
     })?;

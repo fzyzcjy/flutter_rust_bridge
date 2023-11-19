@@ -1,15 +1,23 @@
 use anyhow::bail;
 use log::debug;
+use std::fs;
 use std::path::Path;
 
 pub(crate) struct CbindgenArgs<'a> {
     pub rust_crate_dir: &'a Path,
-    pub c_output_path: &'a Path,
     pub c_struct_names: Vec<String>,
     pub exclude_symbols: Vec<String>,
 }
 
-pub(crate) fn cbindgen(args: CbindgenArgs) -> anyhow::Result<()> {
+pub(crate) fn cbindgen(args: CbindgenArgs) -> anyhow::Result<String> {
+    let temp_c_output_file = tempfile::Builder::new().suffix(".h").tempfile()?;
+    cbindgen_to_file(args, temp_c_output_file.path())?;
+    let output_text = fs::read_to_string(temp_c_output_file.as_file())?;
+    drop(temp_c_output_file); // do not drop too early
+    Ok(output_text)
+}
+
+fn cbindgen_to_file(args: CbindgenArgs, c_output_path: &Path) -> anyhow::Result<()> {
     debug!("execute cbindgen rust_crate_dir={rust_crate_dir:?} c_output_path={c_output_path:?}",);
 
     let config = cbindgen::Config {
@@ -41,7 +49,7 @@ pub(crate) fn cbindgen(args: CbindgenArgs) -> anyhow::Result<()> {
 
     let bindings = cbindgen::generate_with_config(parsed_crate_dir, config)?;
 
-    if bindings.write_to_file(args.c_output_path) {
+    if bindings.write_to_file(c_output_path) {
         Ok(())
     } else {
         bail!("cbindgen failed writing file")
