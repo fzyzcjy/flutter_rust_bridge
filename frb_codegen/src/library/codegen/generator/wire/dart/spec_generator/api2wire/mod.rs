@@ -14,6 +14,7 @@ use crate::library::codegen::generator::wire::dart::spec_generator::misc::ty::Wi
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use std::convert::TryInto;
 
+mod misc;
 pub(crate) mod ty;
 
 pub(crate) struct WireDartOutputSpecApi2wire {

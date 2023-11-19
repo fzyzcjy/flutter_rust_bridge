@@ -27,6 +27,7 @@ use crate::codegen_generator_structs;
 use enum_dispatch::enum_dispatch;
 use paste::paste;
 
+#[enum_dispatch(WireDartGeneratorImplTrait)]
 #[enum_dispatch(WireDartGeneratorMiscTrait)]
 #[enum_dispatch(WireDartGeneratorApi2wireTrait)]
 #[enum_dispatch(WireDartGeneratorWire2apiTrait)]
