@@ -1,10 +1,10 @@
-use crate::codegen::generator::api_dart::base::*;
+use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use enum_dispatch::enum_dispatch;
 
 pub(crate) mod delegate;
 pub(crate) mod enumeration;
-pub(super) mod enumeration_complex;
-pub(super) mod enumeration_simple;
+pub(in crate::library::codegen::generator::api_dart) mod enumeration_complex;
+pub(in crate::library::codegen::generator::api_dart) mod enumeration_simple;
 pub(crate) mod rust_opaque;
 pub(crate) mod structure;
 mod structure_freezed;

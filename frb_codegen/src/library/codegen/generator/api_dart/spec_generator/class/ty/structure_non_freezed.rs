@@ -1,16 +1,16 @@
-use crate::codegen::generator::api_dart::base::*;
-use crate::codegen::generator::api_dart::class::field::{
+use crate::codegen::generator::api_dart::spec_generator::class::field::{
     generate_field_default, generate_field_required_modifier,
 };
-use crate::codegen::generator::api_dart::misc::{
+use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_dart_maybe_implements_exception,
 };
 use crate::codegen::ir::ty::structure::IrStruct;
-use crate::library::codegen::generator::api_dart::info::ApiDartGeneratorInfoTrait;
+use crate::library::codegen::generator::api_dart::spec_generator::base::*;
+use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use itertools::Itertools;
 
 impl<'a> StructRefApiDartGenerator<'a> {
-    pub(super) fn generate_mode_non_freezed(
+    pub(in crate::library::codegen::generator::api_dart) fn generate_mode_non_freezed(
         &self,
         src: &IrStruct,
         comments: &str,

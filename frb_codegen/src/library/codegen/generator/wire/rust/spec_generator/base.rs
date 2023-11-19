@@ -1,4 +1,3 @@
-use crate::codegen::generator::api_dart::base::ApiDartGeneratorContext;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
@@ -22,6 +21,7 @@ use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::*;
 use crate::codegen_generator_structs;
+use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGeneratorContext;
 use enum_dispatch::enum_dispatch;
 use paste::paste;
 

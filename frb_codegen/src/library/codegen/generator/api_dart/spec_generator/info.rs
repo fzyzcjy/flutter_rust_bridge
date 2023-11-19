@@ -1,4 +1,4 @@
-use crate::codegen::generator::api_dart::base::*;
+use crate::codegen::generator::api_dart::spec_generator::base::*;
 use crate::codegen::ir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
 };

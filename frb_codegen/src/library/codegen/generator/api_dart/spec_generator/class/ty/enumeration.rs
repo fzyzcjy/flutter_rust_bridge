@@ -1,6 +1,6 @@
-use crate::codegen::generator::api_dart::base::*;
-use crate::codegen::generator::api_dart::class::ty::ApiDartGeneratorClassTrait;
+use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::ir::ty::enumeration::IrEnumMode;
+use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 
 impl<'a> ApiDartGeneratorClassTrait for EnumRefApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<String> {

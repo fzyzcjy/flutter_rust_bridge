@@ -1,16 +1,12 @@
-pub(super) mod base;
-pub(super) mod class;
-mod function;
-pub(super) mod info;
 pub(crate) mod internal_config;
-mod misc;
+pub(crate) mod spec_generator;
 
-use crate::codegen::generator::api_dart::base::{ApiDartGenerator, ApiDartGeneratorContext};
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::ir::pack::IrPack;
-use crate::library::codegen::generator::api_dart::class::ty::ApiDartGeneratorClassTrait;
+use crate::library::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use anyhow::Result;
 use itertools::Itertools;
+use spec_generator::base::{ApiDartGenerator, ApiDartGeneratorContext};
 
 pub(crate) fn generate(ir_pack: &IrPack, config: &GeneratorApiDartInternalConfig) -> Result<()> {
     let distinct_types = ir_pack.distinct_types(true, true);
@@ -19,7 +15,7 @@ pub(crate) fn generate(ir_pack: &IrPack, config: &GeneratorApiDartInternalConfig
     let funcs = ir_pack
         .funcs
         .iter()
-        .map(|f| function::generate_func(f, context, config.dart_enums_style))
+        .map(|f| spec_generator::function::generate_func(f, context, config.dart_enums_style))
         .map(|func| {
             format!(
                 "{}{}\n\n{}",

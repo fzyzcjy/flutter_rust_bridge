@@ -1,9 +1,9 @@
-use crate::codegen::generator::api_dart::base::*;
-use crate::codegen::generator::api_dart::class::ty::ApiDartGeneratorClassTrait;
+use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::ir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegatePrimitiveEnum,
 };
-use crate::library::codegen::generator::api_dart::info::ApiDartGeneratorInfoTrait;
+use crate::library::codegen::generator::api_dart::spec_generator::base::*;
+use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 
 impl<'a> ApiDartGeneratorClassTrait for DelegateApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<String> {

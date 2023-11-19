@@ -1,19 +1,19 @@
-use crate::codegen::generator::api_dart::base::*;
-use crate::codegen::generator::api_dart::class::field::{
+use crate::codegen::generator::api_dart::spec_generator::class::field::{
     generate_field_default, generate_field_required_modifier,
 };
-use crate::codegen::generator::api_dart::misc::{
+use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_function_dart_return_type,
 };
 use crate::codegen::ir::func::{
     IrFunc, IrFuncOwnerInfo, IrFuncOwnerInfoMethod, IrFuncOwnerInfoMethodMode,
 };
 use crate::codegen::ir::ty::structure::IrStruct;
-use crate::library::codegen::generator::api_dart::info::ApiDartGeneratorInfoTrait;
+use crate::library::codegen::generator::api_dart::spec_generator::base::*;
+use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 
-pub(super) fn generate_api_method(
+pub(in crate::library::codegen::generator::api_dart) fn generate_api_method(
     func: &IrFunc,
     ir_struct: &IrStruct,
     context: ApiDartGeneratorContext,
