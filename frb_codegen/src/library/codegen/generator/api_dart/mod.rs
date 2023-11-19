@@ -53,7 +53,12 @@ mod tests {
         let ir_pack = parser::parse(&internal_config.parser)?;
         let actual = generate(&ir_pack, &internal_config.generator.api_dart.into())?;
 
-        text_golden_test(actual, &test_fixture_dir.join("expect_output.dart"))?;
+        let output_texts = actual.output_texts;
+        assert_eq!(output_texts.0.len(), 1);
+        text_golden_test(
+            output_texts.0[0].text.clone(),
+            &test_fixture_dir.join("expect_output.dart"),
+        )?;
 
         Ok(())
     }

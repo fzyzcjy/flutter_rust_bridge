@@ -19,8 +19,8 @@ pub(crate) fn generate(
 
     Ok(GeneratorWireDartOutput {
         output_texts: OutputTexts::new_from_targets(
-            context.config.dart_impl_output_path.clone(),
-            text.text,
+            &context.config.dart_impl_output_path,
+            &text.text,
         ),
         dart_needs_freezed: spec.misc.needs_freezed,
     })
