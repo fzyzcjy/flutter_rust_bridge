@@ -2,7 +2,7 @@
   "generator": {
     "api_dart": {
       "dart3": true,
-      "dart_api_class_name": "Orange",
+      "dart_api_class_name": "Apple",
       "dart_api_instance_name": "bridge",
       "dart_decl_output_path": {
         "apple": "{the-working-directory}/my_dart_folder/apple.dart",
@@ -22,6 +22,11 @@
         }
       },
       "dart": {
+        "dart_impl_output_path": {
+          "common": "{the-working-directory}/my_dart_folder/bridge_generated.dart",
+          "io": "{the-working-directory}/my_dart_folder/bridge_generated.io.dart",
+          "wasm": "{the-working-directory}/my_dart_folder/bridge_generated.web.dart"
+        },
         "dart_root": "{the-working-directory}",
         "dart_wire_class_name": "Orange",
         "extra_headers": "",
