@@ -11,18 +11,26 @@ use std::path::{Path, PathBuf};
 use std::str::FromStr;
 
 pub(crate) struct FfigenArgs<'a> {
+    pub c_file_content: &'a str,
     pub dart_class_name: &'a str,
     pub llvm_path: &'a [PathBuf],
     pub llvm_compiler_opts: &'a str,
     pub dart_root: &'a Path,
 }
 
-pub(crate) fn ffigen(args: FfigenArgs, c_file_content: &str) -> anyhow::Result<String> {
+pub(crate) fn ffigen(args: FfigenArgs) -> anyhow::Result<String> {
     let temp_c_file = tempfile::Builder::new().suffix(".h").tempfile()?;
     let temp_dart_file = tempfile::NamedTempFile::new()?;
 
-    fs::write(temp_c_file.path(), c_file_content)?;
-    ffigen_to_file(args, temp_c_file.path(), temp_dart_file.path())?;
+    fs::write(temp_c_file.path(), args.c_file_content)?;
+    ffigen_to_file(FfigenToFileArgs {
+        c_path: temp_c_file.path(),
+        dart_path: temp_dart_file.path(),
+        dart_class_name: args.dart_class_name,
+        llvm_path: args.llvm_path,
+        llvm_compiler_opts: args.llvm_compiler_opts,
+        dart_root: args.dart_root,
+    })?;
     let output_text = fs::read_to_string(temp_dart_file.as_file())?;
 
     // do not drop too early
@@ -32,10 +40,24 @@ pub(crate) fn ffigen(args: FfigenArgs, c_file_content: &str) -> anyhow::Result<S
     Ok(output_text)
 }
 
-fn ffigen_to_file(args: FfigenArgs, c_path: &Path, dart_path: &Path) -> anyhow::Result<()> {
-    debug!("execute ffigen c_path={c_path:?} dart_path={dart_path:?} llvm_path={llvm_path:?}",);
+struct FfigenToFileArgs<'a> {
+    c_path: &'a Path,
+    dart_path: &'a Path,
+    dart_class_name: &'a str,
+    llvm_path: &'a [PathBuf],
+    llvm_compiler_opts: &'a str,
+    dart_root: &'a Path,
+}
 
-    let config = parse_config(&args, c_path, dart_path)?;
+fn ffigen_to_file(args: FfigenToFileArgs) -> anyhow::Result<()> {
+    debug!(
+        "execute ffigen c_path={c_path:?} dart_path={dart_path:?} llvm_path={llvm_path:?}",
+        c_path = args.c_path,
+        dart_path = args.c_path,
+        llvm_path = args.llvm_path,
+    );
+
+    let config = parse_config(&args)?;
     debug!("ffigen config: {}", config);
 
     let mut config_file = tempfile::NamedTempFile::new()?;
@@ -66,9 +88,9 @@ fn ffigen_to_file(args: FfigenArgs, c_path: &Path, dart_path: &Path) -> anyhow::
     Ok(())
 }
 
-fn parse_config(args: &FfigenArgs, c_path: &Path, dart_path: &Path) -> anyhow::Result<String> {
-    let dart_path_str = path_to_string(dart_path)?;
-    let c_path_str = path_to_string(c_path)?;
+fn parse_config(args: &FfigenToFileArgs) -> anyhow::Result<String> {
+    let dart_path_str = path_to_string(&args.dart_path)?;
+    let c_path_str = path_to_string(&args.c_path)?;
     let llvm_path_str = args
         .llvm_path
         .iter()

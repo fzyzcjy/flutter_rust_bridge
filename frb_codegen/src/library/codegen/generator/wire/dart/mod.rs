@@ -14,8 +14,7 @@ pub(crate) fn generate(ir_pack: &IrPack, context: WireDartGeneratorContext) -> a
 
 fn execute_ffigen() -> anyhow::Result<()> {
     ffigen(FfigenArgs {
-        c_path: TODO,
-        dart_path: TODO,
+        c_file_content: TODO,
         dart_class_name: TODO,
         llvm_path: TODO,
         llvm_compiler_opts: TODO,
