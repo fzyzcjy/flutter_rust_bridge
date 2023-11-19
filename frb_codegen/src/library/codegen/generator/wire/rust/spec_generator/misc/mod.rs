@@ -1,4 +1,5 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::spec_generator::base::{
     WireRustGenerator, WireRustGeneratorContext,
 };
@@ -24,6 +25,8 @@ pub(crate) struct WireRustOutputSpecMisc {
     wrapper_structs: Acc<Vec<WireRustOutputCode>>,
     static_checks: Acc<Vec<WireRustOutputCode>>,
     executor: Acc<Vec<WireRustOutputCode>>,
+    pub extern_func_names: Vec<String>,
+    pub extern_struct_names: Vec<String>,
 }
 
 pub(crate) fn generate(
@@ -52,6 +55,9 @@ pub(crate) fn generate(
         )
         .into()]),
         executor: Acc::new_common(vec![generate_executor(context.ir_pack).into()]),
+        // TODO originally from: `generated_rust.extern_func_names`
+        extern_func_names: TODO,
+        extern_struct_names: generate_extern_struct_names(context, cache),
     }
 }
 
@@ -139,4 +145,16 @@ fn generate_executor(ir_pack: &IrPack) -> String {
             }}"
         )
     }
+}
+
+fn generate_extern_struct_names(
+    context: WireRustGeneratorContext,
+    cache: &IrPackComputedCache,
+) -> Vec<String> {
+    cache
+        .distinct_types
+        .iter()
+        .filter(|ty| matches!(&ty, IrType::StructRef(_)))
+        .map(|ty| WireRustGenerator::new(ty.clone(), context).rust_wire_type(Target::Io))
+        .collect()
 }

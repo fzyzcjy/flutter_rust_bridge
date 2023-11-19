@@ -15,7 +15,6 @@ use itertools::Itertools;
 
 mod emitter;
 pub(crate) mod internal_config;
-mod misc;
 pub(crate) mod spec_generator;
 mod text_generator;
 
@@ -30,5 +29,9 @@ pub(crate) fn generate(
     let spec = spec_generator::generate(context);
     let text = text_generator::generate(&spec, context.config)?;
     emitter::emit(text, context.config)?;
-    Ok(misc::compute_output(&spec, context))
+
+    Ok(GeneratorWireRustOutput {
+        extern_func_names: spec.misc.extern_func_names,
+        extern_struct_names: spec.misc.extern_struct_names,
+    })
 }
