@@ -24,20 +24,20 @@ pub(crate) fn generate_dart_code(
 
     info!("Phase: Generating Dart bindings for Rust");
     // phase-step1: generate temporary c file
-    let temp_dart_wire_file = tempfile::NamedTempFile::new()?;
-    let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile()?;
+    // let temp_dart_wire_file = tempfile::NamedTempFile::new()?;
+    // let temp_bindgen_c_output_file = tempfile::Builder::new().suffix(".h").tempfile()?;
     // with_changed_file(
     //     &config.rust_output_path,
     //     DUMMY_WIRE_CODE_FOR_BINDGEN,
     //     || {
     commands::bindgen_rust_to_dart(
         BindgenRustToDartArg {
-            c_output_path: temp_bindgen_c_output_file
-                .path()
-                .as_os_str()
-                .to_str()
-                .unwrap(),
-            dart_output_path: temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
+            // c_output_path: temp_bindgen_c_output_file
+            //     .path()
+            //     .as_os_str()
+            //     .to_str()
+            //     .unwrap(),
+            // dart_output_path: temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
             dart_class_name: &config.dart_wire_class_name(),
             llvm_install_path: &config.llvm_path[..],
             llvm_compiler_opts: &config.llvm_compiler_opts,
