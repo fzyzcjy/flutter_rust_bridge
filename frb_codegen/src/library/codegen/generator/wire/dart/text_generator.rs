@@ -1,5 +1,5 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::misc::section_header_comment;
+use crate::codegen::generator::misc::text_generator_utils::section_header_comment;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::dart::spec_generator::WireDartOutputSpec;
 

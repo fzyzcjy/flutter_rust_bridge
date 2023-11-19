@@ -1,4 +1,4 @@
-use crate::codegen::generator::misc::TargetOrCommon;
+use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::polisher::add_mod_to_lib::try_add_mod_to_lib;
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::command_run;

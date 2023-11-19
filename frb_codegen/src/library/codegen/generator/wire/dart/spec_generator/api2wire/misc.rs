@@ -1,4 +1,4 @@
-use crate::codegen::generator::misc::Target;
+use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorImplTrait;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGenerator;
 use crate::library::codegen::generator::wire::rust::spec_generator::wire2api::ty::WireRustGeneratorWire2apiTrait;

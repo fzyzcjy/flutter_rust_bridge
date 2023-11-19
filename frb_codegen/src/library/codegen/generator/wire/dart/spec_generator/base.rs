@@ -1,6 +1,6 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
-use crate::codegen::generator::misc::Target;
+use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
 use crate::codegen::generator::wire::dart::spec_generator::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;

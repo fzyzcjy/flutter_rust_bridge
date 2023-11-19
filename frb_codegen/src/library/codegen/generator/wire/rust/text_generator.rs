@@ -1,5 +1,6 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::misc::{section_header_comment, Target, TargetOrCommon};
+use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
+use crate::codegen::generator::misc::text_generator_utils::section_header_comment;
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::WireRustOutputSpec;

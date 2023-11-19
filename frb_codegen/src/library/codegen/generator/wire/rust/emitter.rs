@@ -1,4 +1,4 @@
-use crate::codegen::generator::misc::{write_code_for_targets, TargetOrCommon};
+use crate::codegen::generator::misc::text_generator_utils::write_code_for_targets;
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
 use crate::codegen::generator::wire::rust::text_generator::WireRustOutputText;
 use crate::utils::file_utils::create_dir_all_and_write;

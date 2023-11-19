@@ -1,4 +1,5 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::misc::target::{TargetOrCommon, TargetOrCommonMap};
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::IrType;
 use crate::enum_map;
@@ -8,7 +9,7 @@ use std::convert::{TryFrom, TryInto};
 use std::path::PathBuf;
 use strum::IntoEnumIterator;
 
-pub(super) fn write_code_for_targets(
+pub(crate) fn write_code_for_targets(
     text: &Acc<Option<String>>,
     output_path: &TargetOrCommonMap<PathBuf>,
 ) -> anyhow::Result<()> {
@@ -21,6 +22,6 @@ pub(super) fn write_code_for_targets(
     Ok(())
 }
 
-pub(super) fn section_header_comment(section_name: &str) -> String {
+pub(crate) fn section_header_comment(section_name: &str) -> String {
     format!("// Section: {section_name}\n")
 }

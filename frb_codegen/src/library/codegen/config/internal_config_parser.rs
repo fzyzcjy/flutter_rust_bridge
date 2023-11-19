@@ -2,7 +2,7 @@ use crate::codegen::config::internal_config::{
     GeneratorInternalConfig, GeneratorWireInternalConfig, InternalConfig, Namespace,
 };
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
-use crate::codegen::generator::misc::{TargetOrCommon, TargetOrCommonMap};
+use crate::codegen::generator::misc::target::{TargetOrCommon, TargetOrCommonMap};
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;

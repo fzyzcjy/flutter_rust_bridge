@@ -1,4 +1,4 @@
-use crate::codegen::generator::misc::Target;
+use crate::codegen::generator::misc::target::Target;
 use itertools::Itertools;
 
 #[derive(Clone)]

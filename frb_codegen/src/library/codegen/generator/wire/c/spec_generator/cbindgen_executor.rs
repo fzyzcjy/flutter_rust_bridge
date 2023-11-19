@@ -1,4 +1,4 @@
-use crate::codegen::generator::misc::TargetOrCommon;
+use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::library::commands::cbindgen::{cbindgen, CbindgenArgs};
 use crate::utils::file_utils::temp_change_file;

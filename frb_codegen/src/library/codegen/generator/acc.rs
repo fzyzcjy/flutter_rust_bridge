@@ -1,4 +1,4 @@
-use crate::codegen::generator::misc::TargetOrCommon;
+use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::enum_map;
 use std::iter::FromIterator;
 use std::ops::AddAssign;
