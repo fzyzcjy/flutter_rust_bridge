@@ -12,7 +12,7 @@ pub(crate) mod internal_config;
 pub(super) mod spec_generator;
 
 pub(crate) fn generate(context: WireDartGeneratorContext) -> anyhow::Result<()> {
-    let c_binding = c_binding::generate()?;
+    let c_binding = c_binding::generate(&context.config)?;
 
     let spec = spec_generator::generate(context);
 

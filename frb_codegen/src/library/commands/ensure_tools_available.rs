@@ -1,8 +1,8 @@
 use crate::utils::dart_repository::dart_repo::{DartDependencyMode, DartRepository};
 use crate::utils::path_utils::path_to_string;
 use anyhow::bail;
+use cargo_metadata::VersionReq;
 use lazy_static::lazy_static;
-use semver::VersionReq;
 use std::path::Path;
 use std::str::FromStr;
 
