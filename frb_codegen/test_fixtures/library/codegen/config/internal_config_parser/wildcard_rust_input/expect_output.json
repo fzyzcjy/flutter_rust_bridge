@@ -2,7 +2,7 @@
   "generator": {
     "api_dart": {
       "dart3": true,
-      "dart_api_class_name": "Apple",
+      "dart_api_class_name": "Orange",
       "dart_api_instance_name": "bridge",
       "dart_decl_output_path": {
         "apple": "{the-working-directory}/my_dart_folder/apple.dart",
@@ -16,9 +16,9 @@
         "c_output_path": "{the-working-directory}/bridge_generated.h",
         "rust_crate_dir": "{the-working-directory}",
         "rust_output_path": {
-          "common": "{the-working-directory}/src/api/bridge_generated.rs",
-          "io": "{the-working-directory}/src/api/bridge_generated..io.rs",
-          "wasm": "{the-working-directory}/src/api/bridge_generated..web.rs"
+          "common": "{the-working-directory}/src/bridge_generated.rs",
+          "io": "{the-working-directory}/src/bridge_generated.io.rs",
+          "wasm": "{the-working-directory}/src/bridge_generated.web.rs"
         }
       },
       "dart": {
@@ -46,11 +46,11 @@
       "rust": {
         "rust_crate_dir": "{the-working-directory}",
         "rust_output_path": {
-          "common": "{the-working-directory}/src/api/bridge_generated.rs",
-          "io": "{the-working-directory}/src/api/bridge_generated..io.rs",
-          "wasm": "{the-working-directory}/src/api/bridge_generated..web.rs"
+          "common": "{the-working-directory}/src/bridge_generated.rs",
+          "io": "{the-working-directory}/src/bridge_generated.io.rs",
+          "wasm": "{the-working-directory}/src/bridge_generated.web.rs"
         },
-        "rust_wire_mod": "api::bridge_generated",
+        "rust_wire_mod": "bridge_generated",
         "wasm_enabled": false
       }
     }
@@ -73,9 +73,9 @@
     "duplicated_c_output_path": [],
     "rust_crate_dir": "{the-working-directory}",
     "rust_output_path": {
-      "common": "{the-working-directory}/src/api/bridge_generated.rs",
-      "io": "{the-working-directory}/src/api/bridge_generated..io.rs",
-      "wasm": "{the-working-directory}/src/api/bridge_generated..web.rs"
+      "common": "{the-working-directory}/src/bridge_generated.rs",
+      "io": "{the-working-directory}/src/bridge_generated.io.rs",
+      "wasm": "{the-working-directory}/src/bridge_generated.web.rs"
     },
     "wasm_enabled": false
   },

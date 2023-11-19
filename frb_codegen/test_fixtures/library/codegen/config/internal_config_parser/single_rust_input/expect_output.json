@@ -16,8 +16,8 @@
         "rust_crate_dir": "{the-working-directory}",
         "rust_output_path": {
           "common": "{the-working-directory}/src/bridge_generated.rs",
-          "io": "{the-working-directory}/src/bridge_generated..io.rs",
-          "wasm": "{the-working-directory}/src/bridge_generated..web.rs"
+          "io": "{the-working-directory}/src/bridge_generated.io.rs",
+          "wasm": "{the-working-directory}/src/bridge_generated.web.rs"
         }
       },
       "dart": {
@@ -46,8 +46,8 @@
         "rust_crate_dir": "{the-working-directory}",
         "rust_output_path": {
           "common": "{the-working-directory}/src/bridge_generated.rs",
-          "io": "{the-working-directory}/src/bridge_generated..io.rs",
-          "wasm": "{the-working-directory}/src/bridge_generated..web.rs"
+          "io": "{the-working-directory}/src/bridge_generated.io.rs",
+          "wasm": "{the-working-directory}/src/bridge_generated.web.rs"
         },
         "rust_wire_mod": "bridge_generated",
         "wasm_enabled": false
@@ -72,8 +72,8 @@
     "rust_crate_dir": "{the-working-directory}",
     "rust_output_path": {
       "common": "{the-working-directory}/src/bridge_generated.rs",
-      "io": "{the-working-directory}/src/bridge_generated..io.rs",
-      "wasm": "{the-working-directory}/src/bridge_generated..web.rs"
+      "io": "{the-working-directory}/src/bridge_generated.io.rs",
+      "wasm": "{the-working-directory}/src/bridge_generated.web.rs"
     },
     "wasm_enabled": false
   },
