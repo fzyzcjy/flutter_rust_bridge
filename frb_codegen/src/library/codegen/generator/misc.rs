@@ -2,7 +2,7 @@ use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::IrType;
 use crate::enum_map;
 use anyhow::bail;
-use std::convert::TryFrom;
+use std::convert::{TryFrom, TryInto};
 #[doc(hidden)]
 #[macro_export]
 macro_rules! codegen_generator_structs {
@@ -82,6 +82,15 @@ impl From<Target> for TargetOrCommon {
         match value {
             Target::Io => TargetOrCommon::Io,
             Target::Wasm => TargetOrCommon::Wasm,
+        }
+    }
+}
+
+impl TargetOrCommon {
+    pub(crate) fn to_target_or(&self, when_common: Target) -> Target {
+        match self {
+            TargetOrCommon::Common => when_common,
+            TargetOrCommon::Io | TargetOrCommon::Wasm => self.try_into().unwrap(),
         }
     }
 }

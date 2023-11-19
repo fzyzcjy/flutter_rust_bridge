@@ -64,9 +64,13 @@ fn generate_impl_wire2api_for_type(
     let raw: Acc<Option<String>> = generator.generate_impl_wire2api_body();
     raw.map(|body, target| {
         body.map(|body| {
-            let target: Target = target.try_into().unwrap();
+            // When target==Common, it means things like `rust_wire_type` should be the same
+            // for Io or Wasm, so we can choose any.
+            let target = target.to_target_or(Target::Io);
+
             let rust_wire_modifier = generator.rust_wire_modifier(target);
             let rust_wire_type = generator.rust_wire_type(target);
+
             generate_impl_wire2api_code_block(
                 &ty.rust_api_type(),
                 &format!("{rust_wire_modifier}{rust_wire_type}"),
