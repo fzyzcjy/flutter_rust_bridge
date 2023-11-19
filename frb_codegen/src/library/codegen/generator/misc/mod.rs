@@ -7,97 +7,10 @@ use anyhow::bail;
 use std::convert::{TryFrom, TryInto};
 use std::path::PathBuf;
 use strum::IntoEnumIterator;
-#[doc(hidden)]
-#[macro_export]
-macro_rules! codegen_generator_structs {
-    ($generator_name:ident;$($name:ident),*,) => (
-        paste! {
-            impl<'a> $generator_name<'a> {
-                pub(crate) fn new(ty: impl Into<IrType>, context: [<$generator_name Context>]<'a>) -> Self {
-                    match ty.into() {
-                        $(
-                            $name(ir) => Self::$name([<$name $generator_name>]::new(ir, context)),
-                        )*
-                    }
-                }
-            }
 
-            #[enum_dispatch]
-            pub(crate) trait [<$generator_name ImplTrait>] {
-                fn ir_type(&self) -> IrType;
-                fn context(&self) -> [<$generator_name Context>];
-            }
-
-            $(
-                #[derive(Debug, Clone)]
-                pub(crate) struct [<$name $generator_name>]<'a> {
-                    pub(crate) ir: [<IrType $name>],
-                    pub(crate) context: [<$generator_name Context>]<'a>,
-                }
-
-                impl<'a> [<$name $generator_name>]<'a> {
-                    pub(crate) fn new(ir: [<IrType $name>], context: [<$generator_name Context>]<'a>) -> Self {
-                        Self { ir, context }
-                    }
-                }
-
-                impl<'a> [<$generator_name ImplTrait>] for [<$name $generator_name>]<'a> {
-                    fn ir_type(&self) -> IrType { self.ir.clone().into() }
-                    fn context(&self) -> [<$generator_name Context>] { self.context }
-                }
-            )*
-        }
-    )
-}
-
-#[derive(Debug, Clone, Copy, Eq, PartialEq, strum_macros::EnumIter)]
-pub enum Target {
-    Io,
-    Wasm,
-}
-
-#[derive(Debug, Clone, Copy, Eq, PartialEq, strum_macros::EnumIter)]
-pub enum TargetOrCommon {
-    Common,
-    Io,
-    Wasm,
-}
-
-enum_map!(
-    TargetOrCommonMap, TargetOrCommon;
-    Common, Io, Wasm;
-    common, io, wasm;
-);
-
-impl TryFrom<TargetOrCommon> for Target {
-    type Error = anyhow::Error;
-
-    fn try_from(src: TargetOrCommon) -> Result<Self, Self::Error> {
-        Ok(match src {
-            TargetOrCommon::Common => bail!("Cannot convert TargetOrCommon::Common to Target"),
-            TargetOrCommon::Io => Target::Io,
-            TargetOrCommon::Wasm => Target::Wasm,
-        })
-    }
-}
-
-impl From<Target> for TargetOrCommon {
-    fn from(value: Target) -> Self {
-        match value {
-            Target::Io => TargetOrCommon::Io,
-            Target::Wasm => TargetOrCommon::Wasm,
-        }
-    }
-}
-
-impl TargetOrCommon {
-    pub(crate) fn to_target_or(&self, when_common: Target) -> Target {
-        match self {
-            TargetOrCommon::Common => when_common,
-            TargetOrCommon::Io | TargetOrCommon::Wasm => (*self).try_into().unwrap(),
-        }
-    }
-}
+pub(crate) mod structs_macro;
+pub(crate) mod target;
+mod text_generator_utils;
 
 /// In WASM, these types belong to the JS scope-local heap, **NOT** the Rust heap and
 /// therefore do not implement [Send]. More specifically, these are types wasm-bindgen
@@ -117,21 +30,4 @@ pub fn is_js_value(ty: &IrType) -> bool {
         IrType::Primitive(_) | IrType::PrimitiveList(_) => false,
         IrType::Dynamic(_) | IrType::Unencodable(_) => unreachable!(),
     }
-}
-
-pub(super) fn write_code_for_targets(
-    text: &Acc<Option<String>>,
-    output_path: &TargetOrCommonMap<PathBuf>,
-) -> anyhow::Result<()> {
-    for target in TargetOrCommon::iter() {
-        if let Some(text) = &text[target] {
-            let path = &output_path[target];
-            create_dir_all_and_write(path, text)?;
-        }
-    }
-    Ok(())
-}
-
-pub(super) fn section_header_comment(section_name: &str) -> String {
-    format!("// Section: {section_name}\n")
 }
