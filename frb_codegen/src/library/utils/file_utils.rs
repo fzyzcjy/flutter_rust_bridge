@@ -28,12 +28,12 @@ impl Drop for TempChangeFile {
 pub fn create_dir_all_and_write<P: AsRef<Path>, C: AsRef<[u8]>>(
     path: P,
     contents: C,
-) -> io::Result<()> {
-    fn inner(path: &Path, contents: &[u8]) -> io::Result<()> {
+) -> anyhow::Result<()> {
+    fn inner(path: &Path, contents: &[u8]) -> anyhow::Result<()> {
         if let Some(dir) = path.parent() {
             fs::create_dir_all(dir)?;
         }
-        fs::write(path, contents)
+        Ok(fs::write(path, contents)?)
     }
     inner(path.as_ref(), contents.as_ref())
 }
