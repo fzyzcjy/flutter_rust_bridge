@@ -13,7 +13,6 @@ use crate::misc::consts::HANDLER_NAME;
 use itertools::Itertools;
 use std::collections::HashSet;
 
-mod misc;
 pub(crate) mod ty;
 pub(crate) mod wire_func;
 

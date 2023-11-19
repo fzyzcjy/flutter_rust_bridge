@@ -2,7 +2,7 @@ use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::rust::spec_generator::base::{
     WireRustGenerator, WireRustGeneratorContext,
 };
-use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::WireRustGeneratorMiscTrait;
 
 pub(in crate::library::codegen::generator::wire::rust) fn generate_class_from_fields(
@@ -22,4 +22,17 @@ pub(in crate::library::codegen::generator::wire::rust) fn generate_class_from_fi
         struct_name = struct_name,
         fields = fields.join(",\n"),
     )
+}
+
+pub(super) const JS_VALUE: &str = "JsValue";
+
+pub(super) fn rust_wire_type_add_prefix_or_js_value<T: IrTypeTrait>(
+    ir: &T,
+    target: Target,
+) -> String {
+    if let Target::Wasm = target {
+        JS_VALUE.into()
+    } else {
+        format!("wire_{}", ir.safe_ident())
+    }
 }

@@ -1,6 +1,6 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::misc::TargetOrCommon::*;
+use crate::codegen::generator::misc::{is_js_value, Target};
 use crate::codegen::generator::wire::dart::spec_generator::base::{
     WireDartGenerator, WireDartGeneratorContext,
 };
