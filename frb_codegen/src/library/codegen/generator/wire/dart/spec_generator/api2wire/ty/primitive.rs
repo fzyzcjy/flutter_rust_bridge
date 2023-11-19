@@ -1,4 +1,5 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::api_dart::base::ApiDartGenerator;
 use crate::codegen::generator::misc::Target;
 use crate::codegen::generator::wire::dart::spec_generator::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
@@ -21,7 +22,8 @@ impl<'a> WireDartGeneratorApi2wireTrait for PrimitiveWireDartGenerator<'a> {
             IrTypePrimitive::I64 | IrTypePrimitive::U64 if target == Target::Wasm => {
                 "Object".into()
             }
-            _ => self.ir.dart_api_type(),
+            _ => ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
+                .dart_api_type(),
         }
     }
 }
