@@ -1,5 +1,7 @@
+mod emitter;
 pub(crate) mod internal_config;
 pub(crate) mod spec_generator;
+mod text_generator;
 
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::ir::pack::IrPack;
@@ -9,39 +11,9 @@ use itertools::Itertools;
 use spec_generator::base::{ApiDartGenerator, ApiDartGeneratorContext};
 
 pub(crate) fn generate(ir_pack: &IrPack, config: &GeneratorApiDartInternalConfig) -> Result<()> {
-    let distinct_types = ir_pack.distinct_types(true, true);
-    let context = ApiDartGeneratorContext { ir_pack, config };
-
-    let funcs = ir_pack
-        .funcs
-        .iter()
-        .map(|f| spec_generator::function::generate_func(f, context, config.dart_enums_style))
-        .map(|func| {
-            format!(
-                "{}{}\n\n{}",
-                func.func_comments, func.func_signature, func.companion_field_signature,
-            )
-        })
-        .join("\n\n");
-
-    let classes = distinct_types
-        .iter()
-        .filter_map(|ty| ApiDartGenerator::new(ty.clone(), context).generate_class())
-        .join("\n\n");
-
-    let text = format!(
-        "abstract class {dart_api_class_name} {{
-            {funcs}
-        }}
-
-        {classes}
-        ",
-        dart_api_class_name = config.dart_api_class_name,
-    );
-
-    todo!("write to disk");
-
-    Ok(())
+    let spec = spec_generator::generate(ir_pack, config)?;
+    let text = text_generator::generate()?;
+    emitter::emit()
 }
 
 #[cfg(test)]

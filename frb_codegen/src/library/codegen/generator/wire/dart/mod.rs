@@ -10,16 +10,18 @@ mod c_binding;
 mod emitter;
 pub(crate) mod internal_config;
 pub(super) mod spec_generator;
+mod text_generator;
 
 pub(crate) fn generate(context: WireDartGeneratorContext) -> anyhow::Result<()> {
     let c_binding = c_binding::generate(&context.config)?;
-
     let spec = spec_generator::generate(context);
+    let text = text_generator::generate()?;
+    emitter::emit()?;
 
     execute_build_runner(spec.misc.needs_freezed, &context.config)?;
     execute_dart_format(&context.config)?;
 
-    emitter::emit()
+    Ok(())
 }
 
 fn execute_build_runner(
