@@ -38,21 +38,24 @@ fn compute_extern_func_names(merged_code: Acc<WireRustOutputCode>) -> Vec<String
 }
 
 fn generate_merged_code(spec: &WireRustOutputSpec) -> Acc<WireRustOutputCode> {
-    // TODO section header
     let mut merged_code = Acc::<Vec<WireRustOutputCode>>::default();
-    merged_code += spec.misc.file_attributes.clone();
-    merged_code += spec.misc.code_header.clone();
-    merged_code += spec.misc.imports.clone();
-    merged_code += spec.misc.wire_funcs.clone();
-    merged_code += spec.misc.wrapper_structs.clone();
-    merged_code += spec.misc.static_checks.clone();
-    merged_code += spec.misc.executor.clone();
-    merged_code += spec.wire2api.allocate_funcs.clone();
-    merged_code += spec.wire2api.related_funcs.clone();
-    merged_code += spec.wire2api.impl_wire2api.clone();
-    merged_code += spec.wire2api.wire2api_class.clone();
-    merged_code += spec.wire2api.impl_new_with_nullptr.clone();
-    merged_code += spec.api2wire.impl_into_dart.clone();
+    let mut add = |item: &Acc<Vec<WireRustOutputCode>>| {
+        merged_code += item.clone();
+    };
+
+    add(&spec.misc.file_attributes);
+    add(&spec.misc.code_header);
+    add(&spec.misc.imports);
+    add(&spec.misc.wire_funcs);
+    add(&spec.misc.wrapper_structs);
+    add(&spec.misc.static_checks);
+    add(&spec.misc.executor);
+    add(&spec.wire2api.allocate_funcs);
+    add(&spec.wire2api.related_funcs);
+    add(&spec.wire2api.impl_wire2api);
+    add(&spec.wire2api.wire2api_class);
+    add(&spec.wire2api.impl_new_with_nullptr);
+    add(&spec.api2wire.impl_into_dart);
 
     merged_code.map(|code, _| code.into_iter().fold(Default::default(), |a, b| a + b))
 }
