@@ -3,16 +3,22 @@ use crate::library::commands::ffigen::{ffigen, FfigenArgs};
 use crate::utils::dart_basic_code::DartBasicCode;
 use anyhow::{bail, ensure};
 
-pub(super) fn generate(config: &GeneratorWireDartInternalConfig) -> anyhow::Result<DartBasicCode> {
-    let content = execute_ffigen(config)?;
+pub(super) fn generate(
+    config: &GeneratorWireDartInternalConfig,
+    c_file_content: &str,
+) -> anyhow::Result<DartBasicCode> {
+    let content = execute_ffigen(config, c_file_content)?;
     let content = postpare_modify(&content, &config.dart_wire_class_name);
     sanity_check(&content, &config.dart_wire_class_name)?;
     Ok(DartBasicCode::parse(&content))
 }
 
-fn execute_ffigen(config: &GeneratorWireDartInternalConfig) -> anyhow::Result<String> {
+fn execute_ffigen(
+    config: &GeneratorWireDartInternalConfig,
+    c_file_content: &str,
+) -> anyhow::Result<String> {
     ffigen(FfigenArgs {
-        c_file_content: &config.c_file_content,
+        c_file_content,
         dart_class_name: &config.dart_wire_class_name,
         llvm_path: &config.llvm_path,
         llvm_compiler_opts: &config.llvm_compiler_opts,
