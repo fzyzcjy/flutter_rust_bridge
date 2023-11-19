@@ -46,14 +46,14 @@ fn generate_api2wire_func(
 ) -> Acc<WireDartOutputCode> {
     let generator = WireDartGenerator::new(ty.clone(), context);
     generator.api2wire_body().map(|body, target| {
+        let target = target.to_target_or(Target::Io);
         body.map(|body| {
             format!(
                 "@protected
                 {} api2wire_{}({} raw) {{
                     {body}
                 }}",
-                WireDartGenerator::new(ty.clone(), context)
-                    .dart_wire_type(target.try_into().unwrap()),
+                WireDartGenerator::new(ty.clone(), context).dart_wire_type(target),
                 ty.safe_ident(),
                 ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type(),
             )
