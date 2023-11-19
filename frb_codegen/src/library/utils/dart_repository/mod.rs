@@ -11,12 +11,6 @@ pub(crate) mod version_converter;
 
 #[cfg(test)]
 mod tests {
-    use std::{
-        collections::HashMap,
-        path::{Path, PathBuf},
-        str::FromStr,
-    };
-
     use super::dart_repo::DartRepository;
     use super::dart_toolchain::DartToolchain;
     use crate::utils::dart_repository::pubspec::{
@@ -25,6 +19,11 @@ mod tests {
     use cargo_metadata::VersionReq;
     use lazy_static::lazy_static;
     use semver::Op;
+    use std::{
+        collections::HashMap,
+        path::{Path, PathBuf},
+        str::FromStr,
+    };
 
     lazy_static! {
         static ref FRB_EXAMPLES_FOLDER: PathBuf = {
