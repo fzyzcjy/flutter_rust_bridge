@@ -38,9 +38,6 @@ pub(crate) fn generate_dart_code(
             //     .to_str()
             //     .unwrap(),
             // dart_output_path: temp_dart_wire_file.path().as_os_str().to_str().unwrap(),
-            dart_class_name: &config.dart_wire_class_name(),
-            llvm_install_path: &config.llvm_path[..],
-            llvm_compiler_opts: &config.llvm_compiler_opts,
         },
         &dart_root,
     )
