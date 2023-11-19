@@ -76,7 +76,7 @@ pub(crate) fn generate_dart_code(
     //     &config.dart_wire_class_name(),
     // ),
     // );
-    sanity_check(&generated_dart_wire.body, &config.dart_wire_class_name())?;
+    // sanity_check(&generated_dart_wire.body, &config.dart_wire_class_name())?;
 
     // phase-step3: compose dart codes and write to file
     let generated_dart = ir_pack.generate_dart(config, &generated_rust.wasm_exports);
