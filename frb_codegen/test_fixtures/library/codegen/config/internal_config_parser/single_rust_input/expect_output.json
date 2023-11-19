@@ -1,59 +1,58 @@
 {
-    "parser": {
-        "rust_input_path_pack": {
-            "rust_input_path": {
-                "api": "{the-working-directory}/api.rs"
-            }
-        },
-        "rust_crate_dir": "{the-working-directory}"
+  "generator": {
+    "c": {
+      "c_output_path": "{the-working-directory}/bridge_generated.h",
+      "extra_headers": "",
+      "llvm_compiler_opts": "",
+      "llvm_path": [
+        "/opt/homebrew/opt/llvm",
+        "/usr/local/opt/llvm",
+        "/usr/lib/llvm-9",
+        "/usr/lib/llvm-10",
+        "/usr/lib/llvm-11",
+        "/usr/lib/llvm-12",
+        "/usr/lib/llvm-13",
+        "/usr/lib/llvm-14",
+        "/usr/lib/",
+        "/usr/lib64/",
+        "C:/Program Files/llvm",
+        "C:/msys64/mingw64"
+      ]
     },
-    "generator": {
-        "dart": {
-            "dart_output_path_pack": {
-                "dart_decl_output_path": {
-                    "api": "{the-working-directory}/my_dart_folder/api.dart"
-                },
-                "dart_impl_output_path": "{the-working-directory}/my_dart_folder/bridge_generated.dart"
-            },
-            "dart_enums_style": false,
-            "dart_class_name": {
-                "api": "Api"
-            },
-            "dart_root": "{the-working-directory}",
-            "use_bridge_in_method": true,
-            "wasm_enabled": false,
-            "dart3": true
+    "dart": {
+      "dart3": true,
+      "dart_class_name": {
+        "api": "Api"
+      },
+      "dart_enums_style": false,
+      "dart_output_path_pack": {
+        "dart_decl_output_path": {
+          "api": "{the-working-directory}/my_dart_folder/api.dart"
         },
-        "rust": {
-            "rust_crate_dir": "{the-working-directory}",
-            "rust_output_path": "{the-working-directory}/bridge_generated.rs",
-            "inline_rust": false
-        },
-        "c": {
-            "c_output_path": "{the-working-directory}/bridge_generated.h",
-            "llvm_path": [
-                "/opt/homebrew/opt/llvm",
-                "/usr/local/opt/llvm",
-                "/usr/lib/llvm-9",
-                "/usr/lib/llvm-10",
-                "/usr/lib/llvm-11",
-                "/usr/lib/llvm-12",
-                "/usr/lib/llvm-13",
-                "/usr/lib/llvm-14",
-                "/usr/lib/",
-                "/usr/lib64/",
-                "C:/Program Files/llvm",
-                "C:/msys64/mingw64"
-            ],
-            "llvm_compiler_opts": "",
-            "extra_headers": ""
-        }
+        "dart_impl_output_path": "{the-working-directory}/my_dart_folder/bridge_generated.dart"
+      },
+      "dart_root": "{the-working-directory}",
+      "use_bridge_in_method": true,
+      "wasm_enabled": false
     },
-    "polisher": {
-        "duplicated_c_output_path": [],
-        "dart_format_line_length": 80,
-        "add_mod_to_lib": true,
-        "build_runner": true,
-        "deps_check": true
+    "rust": {
+      "rust_crate_dir": "{the-working-directory}",
+      "rust_output_path": "{the-working-directory}/bridge_generated.rs"
     }
+  },
+  "parser": {
+    "rust_crate_dir": "{the-working-directory}",
+    "rust_input_path_pack": {
+      "rust_input_path": {
+        "api": "{the-working-directory}/api.rs"
+      }
+    }
+  },
+  "polisher": {
+    "add_mod_to_lib": true,
+    "build_runner": true,
+    "dart_format_line_length": 80,
+    "deps_check": true,
+    "duplicated_c_output_path": []
+  }
 }
