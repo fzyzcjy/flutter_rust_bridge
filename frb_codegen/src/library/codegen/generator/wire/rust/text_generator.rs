@@ -18,7 +18,7 @@ pub(super) fn generate(
 ) -> WireRustOutputText {
     let core_code = generate_core_code(spec);
 
-    let mod_io = emit_platform_module("io", &core_code.io, config, Target::Io)?;
+    let mod_io = emit_platform_module("io", config, Target::Io)?;
     let mod_wasm = if config.wasm_enabled {
         format!(
             "
@@ -28,7 +28,7 @@ pub(super) fn generate(
             #[cfg(target_family = \"wasm\")]
             pub use web::*;
             ",
-            emit_platform_module("web", &core_code.wasm, config, Target::Wasm)?
+            emit_platform_module("web", config, Target::Wasm)?
         )
     } else {
         "".into()
@@ -46,9 +46,8 @@ pub(super) fn generate(
         core_code_common = core_code.common,
     );
 
-    let io = (!config.inline_rust).then(|| format!("use super::*;\n{mod_io}"));
-    let wasm =
-        (!config.inline_rust && config.wasm_enabled).then(|| format!("use super::*;\n{mod_wasm}"));
+    let io = Some(format!("use super::*;\n{mod_io}"));
+    let wasm = (config.wasm_enabled).then(|| format!("use super::*;\n{mod_wasm}"));
 
     WireRustOutputText { common, io, wasm }
 }
@@ -59,18 +58,13 @@ fn generate_core_code(spec: WireRustOutputSpec) -> Acc<String> {
 
 fn emit_platform_module(
     name: &str,
-    body: &str,
     config: &GeneratorWireRustInternalConfig,
     target: Target,
 ) -> anyhow::Result<String> {
-    Ok(if config.inline_rust {
-        format!("mod {name} {{ use super::*;\n {body} }}")
-    } else {
-        let path = match target {
-            Target::Io => config.rust_io_output_path(),
-            Target::Wasm => config.rust_wasm_output_path(),
-        };
-        let path = path_to_string(path)?;
-        format!("#[path = \"{path}\"] mod {name};")
-    })
+    let path = match target {
+        Target::Io => config.rust_io_output_path(),
+        Target::Wasm => config.rust_wasm_output_path(),
+    };
+    let path = path_to_string(path)?;
+    Ok(format!("#[path = \"{path}\"] mod {name};"))
 }
