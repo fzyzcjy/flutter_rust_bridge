@@ -13,6 +13,7 @@ pub(crate) struct Config {
 }
 
 pub(crate) fn generate(ir_pack: &IrPack, config: &Config) -> anyhow::Result<()> {
-    let c_code = cbindgen_executor::execute(ir_pack, config)?;
-    todo!()
+    let code_cbindgen = cbindgen_executor::execute(ir_pack, config)?;
+    let code_dummy = dummy_function::generate_dummy_function(todo!());
+    Ok(())
 }
