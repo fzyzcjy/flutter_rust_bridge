@@ -14,7 +14,9 @@ pub(super) fn execute(ir_pack: &IrPack, config: &Config) -> anyhow::Result<Strin
     let ans = cbindgen(CbindgenArgs {
         rust_crate_dir: &config.rust_crate_dir,
         c_struct_names: get_c_struct_names(ir_pack),
-        exclude_symbols: generated_rust.get_exclude_symbols(all_symbols),
+        // TODO will try to avoid manually specify exclude_symbols by using `pub(crate)` instead of `pub`
+        // exclude_symbols: generated_rust.get_exclude_symbols(all_symbols),
+        exclude_symbols: vec![],
     })?;
 
     drop(changed_file_handle); // do not drop too early
