@@ -1,4 +1,3 @@
-mod emitter;
 pub(crate) mod internal_config;
 pub(crate) mod spec_generator;
 mod text_generator;
@@ -9,7 +8,6 @@ use anyhow::Result;
 
 pub(crate) fn generate(ir_pack: &IrPack, config: &GeneratorApiDartInternalConfig) -> Result<()> {
     let text = generate_without_emit(ir_pack, config)?;
-    emitter::emit(text, config)
 }
 
 fn generate_without_emit(

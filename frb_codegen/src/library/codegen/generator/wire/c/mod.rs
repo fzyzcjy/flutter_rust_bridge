@@ -1,4 +1,3 @@
-mod emitter;
 pub(crate) mod internal_config;
 mod spec_generator;
 mod text_generator;
@@ -22,7 +21,6 @@ pub(crate) fn generate(
 ) -> anyhow::Result<WireCOutputPack> {
     let spec = spec_generator::generate(config, extern_func_names, extern_struct_names)?;
     let text = text_generator::generate(spec)?;
-    emitter::emit(&text, config)?;
     Ok(WireCOutputPack {
         c_file_content: text,
     })
