@@ -42,14 +42,7 @@ mod tests {
     #[test]
     fn guess_dart_toolchain() {
         guess_toolchain_base(
-            FRB_EXAMPLES_FOLDER.join("pure_dart").join("dart").as_path(),
-            DartToolchain::Dart,
-        );
-        guess_toolchain_base(
-            FRB_EXAMPLES_FOLDER
-                .join("pure_dart_multi")
-                .join("dart")
-                .as_path(),
+            FRB_EXAMPLES_FOLDER.join("pure_dart").as_path(),
             DartToolchain::Dart,
         );
     }
