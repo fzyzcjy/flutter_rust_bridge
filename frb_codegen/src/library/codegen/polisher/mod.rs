@@ -4,12 +4,14 @@ use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::command_run;
 use crate::commands::format_rust::format_rust;
 use crate::library::commands::dart_build_runner::dart_build_runner;
+use std::fs;
 
 pub(crate) mod add_mod_to_lib;
 pub(crate) mod internal_config;
 
 pub(super) fn polish(config: &PolisherInternalConfig, needs_freezed: bool) -> anyhow::Result<()> {
     execute_try_add_mod_to_lib(config);
+    execute_duplicate_c_output(config)?;
     execute_build_runner(needs_freezed, config)?;
     execute_dart_format(config)?;
     execute_rust_format(config)?;
@@ -64,4 +66,11 @@ fn execute_try_add_mod_to_lib(config: &PolisherInternalConfig) {
             &config.rust_output_path[TargetOrCommon::Common],
         );
     }
+}
+
+fn execute_duplicate_c_output(config: &PolisherInternalConfig) -> anyhow::Result<()> {
+    for path in config.duplicated_c_output_path.iter() {
+        fs::copy(&config.c_output_path, path)?;
+    }
+    Ok(())
 }

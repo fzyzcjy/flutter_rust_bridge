@@ -115,7 +115,7 @@ impl InternalConfig {
                     c: GeneratorWireCInternalConfig {
                         rust_crate_dir: rust_crate_dir.clone(),
                         rust_output_path: rust_output_path.clone(),
-                        c_output_path,
+                        c_output_path: c_output_path.clone(),
                         extern_func_names: TODO,
                         extern_struct_names: TODO,
                         // TODO
@@ -124,7 +124,6 @@ impl InternalConfig {
                 },
             },
             polisher: PolisherInternalConfig {
-                // TODO act
                 duplicated_c_output_path,
                 dart_format_line_length: config.dart_format_line_length.unwrap_or(80),
                 add_mod_to_lib: config.add_mod_to_lib.unwrap_or(true),
@@ -133,6 +132,7 @@ impl InternalConfig {
                 dart_root,
                 rust_crate_dir,
                 rust_output_path,
+                c_output_path,
             },
         })
     }

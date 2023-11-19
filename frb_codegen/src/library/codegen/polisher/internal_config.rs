@@ -12,4 +12,5 @@ pub(crate) struct PolisherInternalConfig {
     pub dart_root: PathBuf,
     pub rust_crate_dir: PathBuf,
     pub rust_output_path: TargetOrCommonMap<PathBuf>,
+    pub c_output_path: PathBuf,
 }
