@@ -11,7 +11,7 @@ mod output_code;
 pub mod wire2api;
 
 pub(crate) struct WireDartOutputSpec {
-    misc: WireDartOutputSpecMisc,
+    pub(super) misc: WireDartOutputSpecMisc,
     wire2api: WireDartOutputSpecWire2api,
     api2wire: WireDartOutputSpecApi2wire,
 }

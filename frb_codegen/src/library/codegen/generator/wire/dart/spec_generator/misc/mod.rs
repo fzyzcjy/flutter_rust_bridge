@@ -8,7 +8,7 @@ use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
 pub(crate) mod ty;
 
 pub(crate) struct WireDartOutputSpecMisc {
-    needs_freezed: bool,
+    pub(crate) needs_freezed: bool,
 }
 
 pub(in crate::library::codegen::generator::wire::dart::spec_generator) fn generate(

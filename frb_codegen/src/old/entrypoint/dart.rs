@@ -118,30 +118,32 @@ pub(crate) fn generate_dart_code(
         fs::write(&dart_output_paths.base_path, out.to_text())?;
     }
 
-    info!("Phase: Running build_runner");
-    let dart_root = &config.dart_root;
-    if generated_dart.needs_freezed && config.build_runner {
-        let dart_root = dart_root
-            .as_ref()
-            .ok_or(crate::config::Error::FailedInferDartRoot)?;
-        commands::dart_build_runner(dart_root)?;
-    }
+    // DONE
+    // info!("Phase: Running build_runner");
+    // let dart_root = &config.dart_root;
+    // if generated_dart.needs_freezed && config.build_runner {
+    //     let dart_root = dart_root
+    //         .as_ref()
+    //         .ok_or(crate::config::Error::FailedInferDartRoot)?;
+    //     commands::dart_build_runner(dart_root)?;
+    // }
 
-    info!("Phase: Formatting Dart code");
-    command_run!(
-        commands::format_dart[config.dart_format_line_length],
-        &dart_output_paths.base_path,
-        ?config.dart_decl_output_path,
-        (
-            config.wasm_enabled,
-            dart_output_paths.wasm_path,
-            dart_output_paths.io_path,
-        ),
-        (
-            generated_dart.needs_freezed && config.build_runner,
-            config.dart_freezed_path(),
-        )
-    )?;
+    // DONE
+    // info!("Phase: Formatting Dart code");
+    // command_run!(
+    //     commands::format_dart[config.dart_format_line_length],
+    //     &dart_output_paths.base_path,
+    //     ?config.dart_decl_output_path,
+    //     (
+    //         config.wasm_enabled,
+    //         dart_output_paths.wasm_path,
+    //         dart_output_paths.io_path,
+    //     ),
+    //     (
+    //         generated_dart.needs_freezed && config.build_runner,
+    //         config.dart_freezed_path(),
+    //     )
+    // )?;
 
     Ok(())
 }
