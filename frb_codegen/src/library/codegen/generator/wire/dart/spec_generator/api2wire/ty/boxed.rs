@@ -3,8 +3,10 @@ use crate::codegen::generator::misc::{is_js_value, Target};
 use crate::codegen::generator::wire::dart::spec_generator::api2wire::ty::primitive::dart_native_type_of_primitive;
 use crate::codegen::generator::wire::dart::spec_generator::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
+use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGenerator;
 use crate::codegen::ir::ty::IrType::StructRef;
 use crate::codegen::ir::ty::IrTypeTrait;
+use crate::library::codegen::generator::wire::rust::spec_generator::wire2api::ty::WireRustGeneratorWire2apiTrait;
 
 impl<'a> WireDartGeneratorApi2wireTrait for BoxedWireDartGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
@@ -58,7 +60,14 @@ impl<'a> WireDartGeneratorApi2wireTrait for BoxedWireDartGenerator<'a> {
                     WireDartGenerator::new(self.ir.inner.clone(), self.context)
                         .dart_wire_type(target)
                 } else {
-                    format!("int /* *{} */", self.ir.inner.rust_wire_type(target))
+                    format!(
+                        "int /* *{} */",
+                        WireRustGenerator::new(
+                            self.ir.inner.clone(),
+                            self.context.as_wire_rust_context()
+                        )
+                        .rust_wire_type(target)
+                    )
                 }
             }
             Target::Io => {

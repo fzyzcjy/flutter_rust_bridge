@@ -5,6 +5,8 @@ use crate::codegen::generator::wire::dart::spec_generator::api2wire::ty::structu
 };
 use crate::codegen::generator::wire::dart::spec_generator::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
+use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGenerator;
+use crate::library::codegen::generator::wire::rust::spec_generator::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use itertools::Itertools;
 use GeneralizedStructGeneratorMode::Record;
@@ -20,7 +22,10 @@ impl<'a> WireDartGeneratorApi2wireTrait for RecordWireDartGenerator<'a> {
 
     fn dart_wire_type(&self, target: Target) -> String {
         match target {
-            Target::Io => self.ir.rust_wire_type(target),
+            Target::Io => {
+                WireRustGenerator::new(self.ir.clone(), self.context.as_wire_rust_context())
+                    .rust_wire_type(target)
+            }
             Target::Wasm => "List<dynamic>".to_string(),
         }
     }
