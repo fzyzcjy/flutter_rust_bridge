@@ -1,4 +1,5 @@
 use crate::codegen::generator::misc::TargetOrCommon;
+use crate::enum_map;
 use serde::{Deserialize, Serialize};
 use std::iter::FromIterator;
 use std::ops::{AddAssign, Index};
@@ -7,12 +8,11 @@ use std::ops::{AddAssign, Index};
 ///
 /// [`Acc<Option<String>>`] implements <code>[From]\<impl [ToString]></code>
 /// for code shared between all platforms.
-#[derive(Debug, Default, Clone, Serialize, Deserialize, PartialEq, Eq)]
-pub struct Acc<T> {
-    pub common: T,
-    pub io: T,
-    pub wasm: T,
-}
+enum_map!(
+    Acc, TargetOrCommon;
+    Common, Io, Wasm;
+    common, io, wasm;
+);
 
 impl<T> AddAssign for Acc<Vec<T>> {
     #[inline]
@@ -38,18 +38,6 @@ impl<T> FromIterator<Acc<T>> for Acc<Vec<T>> {
                 acc.push_acc(x);
                 acc
             })
-    }
-}
-
-impl<T> Index<TargetOrCommon> for Acc<T> {
-    type Output = T;
-
-    fn index(&self, index: TargetOrCommon) -> &Self::Output {
-        match index {
-            TargetOrCommon::Common => &self.common,
-            TargetOrCommon::Io => &self.io,
-            TargetOrCommon::Wasm => &self.wasm,
-        }
     }
 }
 
@@ -97,14 +85,6 @@ impl<T> Acc<T> {
             common: mapper(self.common, TargetOrCommon::Common),
             io: mapper(self.io, TargetOrCommon::Io),
             wasm: mapper(self.wasm, TargetOrCommon::Wasm),
-        }
-    }
-
-    pub fn get(self, index: TargetOrCommon) -> T {
-        match index {
-            TargetOrCommon::Common => self.common,
-            TargetOrCommon::Io => self.io,
-            TargetOrCommon::Wasm => self.wasm,
         }
     }
 
