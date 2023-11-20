@@ -5,5 +5,3 @@ export 'package:js/js_util.dart' show promiseToFuture, getProperty;
 
 @JS('Number')
 external int castInt(Object? value);
-
-abstract class DartApiDl {}
