@@ -27,8 +27,7 @@ fn generate_boilerplate(entrypoint_class_name: &str) -> WireDartOutputCode {
 
     WireDartOutputCode {
         import: "import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';".into(),
-        part: "".into(),
-        body: format!(
+        body_top: format!(
             r#"
             /// Main entrypoint of the Rust API
             class {entrypoint_class_name} extends BaseEntrypoint<{dispatcher_name}> {{
@@ -45,7 +44,7 @@ fn generate_boilerplate(entrypoint_class_name: &str) -> WireDartOutputCode {
             }}
             "#
         ),
-        dispatcher_body: "".into(),
+        ..Default::default()
     }
 }
 

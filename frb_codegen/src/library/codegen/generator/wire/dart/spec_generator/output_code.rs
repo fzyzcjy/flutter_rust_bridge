@@ -7,9 +7,10 @@ use std::ops::{Add, AddAssign};
 pub(crate) struct WireDartOutputCode {
     pub import: String,
     pub part: String,
-    pub body: String,
+    pub body_top: String,
     /// Code inside the generated dispatcher class
     pub dispatcher_body: String,
+    pub body: String,
 }
 
 basic_code_impl!(WireDartOutputCode);
@@ -28,8 +29,9 @@ impl AddAssign for WireDartOutputCode {
     fn add_assign(&mut self, rhs: Self) {
         self.import += &rhs.import;
         self.part += &rhs.part;
-        self.body += &rhs.body;
+        self.body_top += &rhs.body_top;
         self.dispatcher_body += &rhs.dispatcher_body;
+        self.body += &rhs.body;
     }
 }
 
@@ -46,9 +48,8 @@ impl WireDartOutputCode {
         }
         WireDartOutputCode {
             import: imports.join("\n"),
-            part: "".to_string(),
             body: body.join("\n"),
-            dispatcher_body: "".to_string(),
+            ..Default::default()
         }
     }
 
@@ -71,8 +72,8 @@ impl WireDartOutputCode {
         };
 
         format!(
-            "{}\n{}\n{}\n{}",
-            self.import, self.part, dispatcher_class_code, self.body
+            "{}\n{}\n{}\n{}\n{}",
+            self.import, self.part, self.body_top, dispatcher_class_code, self.body
         )
     }
 }
