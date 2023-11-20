@@ -28,8 +28,8 @@ pub(crate) fn generate(
         dispatcher_api_functions: (context.ir_pack.funcs.iter())
             .map(|f| dispatcher::generate_dispatcher_api_function(f, context))
             .collect(),
-        dispatcher_opaque_getters: (context.ir_pack.funcs.iter())
-            .map(|f| dispatcher::generate_dispatcher_opaque_getter(f, context))
+        dispatcher_opaque_getters: (cache.distinct_types.iter())
+            .filter_map(|ty| dispatcher::generate_dispatcher_opaque_getter(ty, context))
             .collect(),
         needs_freezed: compute_needs_freezed(cache, context.ir_pack),
     })

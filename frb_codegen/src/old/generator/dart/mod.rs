@@ -122,13 +122,13 @@ impl DartApiSpec {
         //     .funcs
         //     .iter()
         //     .map(|f| generate_api_func(f, ir_pack, &api2wire_funcs.common)))
-        TODO.chain(
-            distinct_output_types
-                .iter()
-                .filter(|ty| matches!(ty, IrType::RustOpaque(_)))
-                .map(generate_opaque_getters),
-        )
-        .collect_vec();
+        // .chain(
+        //     distinct_output_types
+        //         .iter()
+        //         .filter(|ty| matches!(ty, IrType::RustOpaque(_)))
+        //         .map(generate_opaque_getters),
+        // )
+        // .collect_vec();
 
         let dart_opaque_funcs = distinct_output_types
             .iter()

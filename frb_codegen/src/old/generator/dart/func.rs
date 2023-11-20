@@ -17,31 +17,7 @@ pub(crate) struct GeneratedApiFunc {
 //     dart_enums_style: bool,
 // ) -> GeneratedApiFunc {
 // }
-
-pub(crate) fn generate_opaque_getters(ty: &IrType) -> GeneratedApiFunc {
-    let signature = format!(
-        "
-    DropFnType get dropOpaque{0};
-    ShareFnType get shareOpaque{0};
-    OpaqueTypeFinalizer get {0}Finalizer;
-    ",
-        ty.dart_api_type(),
-    );
-
-    let implementation = format!(
-        "
-        DropFnType get dropOpaque{0} => _platform.inner.drop_opaque_{0};
-        ShareFnType get shareOpaque{0} => _platform.inner.share_opaque_{0};
-        OpaqueTypeFinalizer get {0}Finalizer => _platform.{0}Finalizer;
-        ",
-        ty.dart_api_type()
-    );
-
-    GeneratedApiFunc {
-        signature,
-        implementation,
-        comments: String::new(),
-        companion_field_signature: String::new(),
-        companion_field_implementation: String::new(),
-    }
-}
+//
+// pub(crate) fn generate_opaque_getters(ty: &IrType) -> GeneratedApiFunc {
+//
+// }

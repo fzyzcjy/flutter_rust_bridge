@@ -1,4 +1,5 @@
 use crate::codegen::generator::api_dart;
+use crate::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::generator::wire::misc::has_port_argument;
@@ -185,11 +186,21 @@ fn has_methods_for_struct_name(struct_name: &str, ir_pack: &IrPack) -> bool {
 }
 
 pub(crate) fn generate_dispatcher_opaque_getter(
-    func: &IrFunc,
+    ty: &IrType,
     context: WireDartGeneratorContext,
-) -> WireDartOutputCode {
-    WireDartOutputCode {
-        dispatcher_body: todo!(),
-        ..Default::default()
+) -> Option<WireDartOutputCode> {
+    if !matches!(ty, IrType::RustOpaque(_)) {
+        return None;
     }
+    Some(WireDartOutputCode {
+        dispatcher_body: format!(
+            "
+            DropFnType get dropOpaque{ty} => _platform.inner.drop_opaque_{ty};
+            ShareFnType get shareOpaque{ty} => _platform.inner.share_opaque_{ty};
+            OpaqueTypeFinalizer get {ty}Finalizer => _platform.{ty}Finalizer;
+            ",
+            ty = ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type()
+        ),
+        ..Default::default()
+    })
 }
