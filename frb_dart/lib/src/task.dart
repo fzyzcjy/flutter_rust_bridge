@@ -1,3 +1,4 @@
+import 'package:flutter_rust_bridge/src/platform_types.dart';
 import 'package:meta/meta.dart';
 
 /// Base class for various kinds of tasks.

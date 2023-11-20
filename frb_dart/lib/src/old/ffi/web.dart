@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:html';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+
 export 'package:js/js.dart';
 export 'package:js/js_util.dart' show promiseToFuture, getProperty;
 
@@ -15,16 +16,14 @@ abstract class WasmModule {
     return Future.value(module).then((module) => module as T);
   }
 
-  static FutureOr<WasmModule> initialize(
-          {required Modules kind, WasmModule Function()? module}) =>
+  static FutureOr<WasmModule> initialize({required Modules kind, WasmModule Function()? module}) =>
       kind.initializeModule(module);
 }
 
 abstract class Modules {
   const Modules();
 
-  const factory Modules.noModules({required String root}) =
-      _WasmBindgenNoModules;
+  const factory Modules.noModules({required String root}) = _WasmBindgenNoModules;
 
   FutureOr<WasmModule> initializeModule(WasmModule Function()? module);
 
@@ -34,8 +33,7 @@ abstract class Modules {
         throw const MissingHeaderException();
       case true:
       case null:
-        warn(
-            'Warning: crossOriginIsolated is null, browser might not support buffer sharing.');
+        warn('Warning: crossOriginIsolated is null, browser might not support buffer sharing.');
         return;
     }
   }
@@ -43,6 +41,7 @@ abstract class Modules {
 
 class _WasmBindgenNoModules extends Modules {
   final String root;
+
   const _WasmBindgenNoModules({required this.root});
 
   @override
@@ -76,6 +75,7 @@ external Object castNativeBigInt(Object? value);
 @JS('Function')
 class _Function {
   external dynamic call();
+
   external factory _Function(String script);
 }
 
@@ -89,12 +89,14 @@ abstract class DartApiDl {}
 @JS("wasm_bindgen.get_dart_object")
 // ignore: non_constant_identifier_names
 external Object getDartObject(int ptr);
+
 @JS("wasm_bindgen.drop_dart_object")
 // ignore: non_constant_identifier_names
 external void dropDartObject(int ptr);
 
 abstract class FlutterRustBridgeWireBase {
   void storeDartPostCObject() {}
+
   // ignore: non_constant_identifier_names
   void free_WireSyncReturn(WireSyncReturn raw) {}
 
@@ -114,12 +116,9 @@ abstract class FlutterRustBridgeWireBase {
   }
 }
 
-typedef WireSyncReturn = List<dynamic>;
-
 List<dynamic> wireSyncReturnIntoDart(WireSyncReturn syncReturn) => syncReturn;
 
-class FlutterRustBridgeWasmWireBase<T extends WasmModule>
-    extends FlutterRustBridgeWireBase {
+class FlutterRustBridgeWasmWireBase<T extends WasmModule> extends FlutterRustBridgeWireBase {
   final Future<T> init;
 
   FlutterRustBridgeWasmWireBase(FutureOr<T> module)
@@ -134,9 +133,11 @@ typedef OpaqueTypeFinalizer = Finalizer<PlatformPointer>;
 /// If passed to a native function after being [dispose]d, an exception will be thrown.
 class FrbOpaqueBase {
   static PlatformPointer initPtr(int ptr) => ptr;
+
   static PlatformPointer nullPtr() => 0;
+
   static bool isStalePtr(PlatformPointer ptr) => ptr == 0;
-  static void finalizerAttach(FrbOpaqueBase opaque, PlatformPointer ptr, int _,
-          OpaqueTypeFinalizer finalizer) =>
+
+  static void finalizerAttach(FrbOpaqueBase opaque, PlatformPointer ptr, int _, OpaqueTypeFinalizer finalizer) =>
       finalizer.attach(opaque, ptr, detach: opaque);
 }

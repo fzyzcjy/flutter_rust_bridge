@@ -1,17 +1,16 @@
 import 'dart:ffi' as ffi;
 import 'dart:ffi';
-export 'dart:ffi' show NativePort, DynamicLibrary;
+
 import 'package:flutter_rust_bridge/src/ffi/dart_cobject.dart';
 
 import 'stub.dart' show FlutterRustBridgeWireBase;
-export 'stub.dart'
-    show castInt, castNativeBigInt, FlutterRustBridgeWireBase, WasmModule;
 
-/// Abstraction over a Dart SendPort and a JS MessagePort.
-typedef NativePortType = int;
+export 'dart:ffi' show NativePort, DynamicLibrary;
+
+export 'stub.dart' show castInt, castNativeBigInt, FlutterRustBridgeWireBase, WasmModule;
+
 typedef ExternalLibrary = ffi.DynamicLibrary;
-typedef DartPostCObject = ffi.Pointer<
-    ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>;
+typedef DartPostCObject = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>;
 
 extension StoreDartPostCObjectExt on FlutterRustBridgeWireBase {
   void storeDartPostCObject() {
@@ -22,6 +21,7 @@ extension StoreDartPostCObjectExt on FlutterRustBridgeWireBase {
 class DartApiDl {
   static int? _initCode;
   final int Function(ffi.Pointer<ffi.Void>) _initFn;
+
   DartApiDl(this._initFn);
 
   void initApi() {
@@ -32,10 +32,7 @@ class DartApiDl {
   }
 }
 
-typedef WireSyncReturn = ffi.Pointer<Dart_CObject>;
-
-List<dynamic> wireSyncReturnIntoDart(WireSyncReturn syncReturn) =>
-    syncReturn.ref.intoDart();
+List<dynamic> wireSyncReturnIntoDart(WireSyncReturn syncReturn) => syncReturn.ref.intoDart();
 
 typedef PlatformPointer = ffi.Pointer<ffi.Void>;
 typedef OpaqueTypeFinalizer = NativeFinalizer;
@@ -45,9 +42,11 @@ typedef OpaqueTypeFinalizer = NativeFinalizer;
 /// If passed to a native function after being [dispose]d, an exception will be thrown.
 class FrbOpaqueBase implements Finalizable {
   static PlatformPointer initPtr(int ptr) => ffi.Pointer.fromAddress(ptr);
+
   static PlatformPointer nullPtr() => ffi.Pointer.fromAddress(0);
+
   static bool isStalePtr(PlatformPointer ptr) => ptr.address == 0;
-  static void finalizerAttach(FrbOpaqueBase opaque, PlatformPointer ptr,
-          int size, OpaqueTypeFinalizer finalizer) =>
+
+  static void finalizerAttach(FrbOpaqueBase opaque, PlatformPointer ptr, int size, OpaqueTypeFinalizer finalizer) =>
       finalizer.attach(opaque, ptr, detach: opaque, externalSize: size);
 }

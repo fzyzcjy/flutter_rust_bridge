@@ -12,31 +12,36 @@ typedef MessagePort = PortLike;
 /// An alias to [MessagePort] on web platforms.
 typedef SendPort = PortLike;
 
-typedef NativePortType = dynamic;
-
 abstract class Channel {
   SendPort get sendPort;
+
   SendPort get receivePort;
+
   const Channel();
+
   factory Channel.messageChannel() = _MessageChannelWrapper;
-  factory Channel.broadcastChannel(String channelName) =
-      _BroadcastChannelWrapper;
+
+  factory Channel.broadcastChannel(String channelName) = _BroadcastChannelWrapper;
 }
 
 class _MessageChannelWrapper implements Channel {
   final channel = MessageChannel();
+
   @override
   SendPort get sendPort => PortLike.messagePort(channel.port2);
+
   @override
   SendPort get receivePort => PortLike.messagePort(channel.port1);
 }
 
 class _BroadcastChannelWrapper implements Channel {
   final BroadcastChannel channel;
-  _BroadcastChannelWrapper(String channelName)
-      : channel = BroadcastChannel(channelName);
+
+  _BroadcastChannelWrapper(String channelName) : channel = BroadcastChannel(channelName);
+
   @override
   SendPort get sendPort => PortLike.broadcastChannel(channel);
+
   @override
   SendPort get receivePort => sendPort;
 }
@@ -45,8 +50,8 @@ class _BroadcastChannelWrapper implements Channel {
 class RawReceivePort {
   /// The underlying message channel.
   final Channel channel;
-  RawReceivePort([Channel? channel])
-      : channel = channel ?? Channel.messageChannel();
+
+  RawReceivePort([Channel? channel]) : channel = channel ?? Channel.messageChannel();
 
   set handler(Function(dynamic) handler) {
     receivePort.onMessage.listen((event) => handler(event.data));
@@ -94,29 +99,29 @@ class ReceivePort extends Stream<dynamic> {
   void close() => port.receivePort.close();
 }
 
-ReceivePort broadcastPort(String channelName) =>
-    ReceivePort(RawReceivePort(Channel.broadcastChannel(channelName)));
+ReceivePort broadcastPort(String channelName) => ReceivePort(RawReceivePort(Channel.broadcastChannel(channelName)));
 
 /// [html.MessagePort]'s interface.
 abstract class PortLike extends EventTarget {
   factory PortLike.messagePort(html.MessagePort port) = _MessagePortWrapper;
-  factory PortLike.broadcastChannel(BroadcastChannel channel) =
-      _BroadcastPortWrapper;
+
+  factory PortLike.broadcastChannel(BroadcastChannel channel) = _BroadcastPortWrapper;
+
   void postMessage(Object? value);
+
   void close();
+
   NativePortType get nativePort;
 }
 
 /// Delegates a subset of PortLike methods verbatim.
 abstract class _DelegatedPort implements PortLike {
   @override
-  void addEventListener(String type, html.EventListener? listener,
-          [bool? useCapture]) =>
+  void addEventListener(String type, html.EventListener? listener, [bool? useCapture]) =>
       nativePort.addEventListener(type, listener, useCapture);
 
   @override
-  void removeEventListener(String type, html.EventListener? listener,
-          [bool? useCapture]) =>
+  void removeEventListener(String type, html.EventListener? listener, [bool? useCapture]) =>
       nativePort.removeEventListener(type, listener, useCapture);
 
   @override
@@ -132,16 +137,17 @@ abstract class _DelegatedPort implements PortLike {
 class _MessagePortWrapper extends _DelegatedPort {
   @override
   final html.MessagePort nativePort;
+
   _MessagePortWrapper(this.nativePort);
 
   @override
-  void postMessage(message, [List<Object>? transfer]) =>
-      nativePort.postMessage(message, transfer);
+  void postMessage(message, [List<Object>? transfer]) => nativePort.postMessage(message, transfer);
 }
 
 class _BroadcastPortWrapper extends _DelegatedPort {
   @override
   final html.BroadcastChannel nativePort;
+
   _BroadcastPortWrapper(this.nativePort);
 
   /// This presents a limitation of BroadcastChannel,
@@ -157,5 +163,6 @@ class _BroadcastPortWrapper extends _DelegatedPort {
 
 extension on PortLike {
   static const messageEvent = EventStreamProvider<MessageEvent>('message');
+
   Stream<MessageEvent> get onMessage => messageEvent.forTarget(this);
 }
