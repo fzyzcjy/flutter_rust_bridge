@@ -68,15 +68,9 @@ fn generate_stmt_prepare_args(func: &IrFunc) -> Vec<String> {
             if let Primitive(IrTypePrimitive::Bool) = input.ty {
                 format!("var arg{index} = {};", input.name.dart_style())
             } else {
-                let func = format!("api2wire_{}", input.ty.safe_ident());
                 format!(
-                    "var arg{index} = {}{}({});",
-                    if common_api2wire_body.contains(&func) {
-                        ""
-                    } else {
-                        "_platform."
-                    },
-                    func,
+                    "var arg{index} = api2wire_{}({});",
+                    input.ty.safe_ident(),
                     &input.name.dart_style()
                 )
             }
