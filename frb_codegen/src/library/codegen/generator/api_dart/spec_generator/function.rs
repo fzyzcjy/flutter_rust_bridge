@@ -20,7 +20,7 @@ pub(crate) struct ApiDartGeneratedFunction {
     // pub(crate) companion_field_signature: String,
 }
 
-pub(crate) fn generate_func(
+pub(crate) fn generate(
     func: &IrFunc,
     context: ApiDartGeneratorContext,
     dart_enums_style: bool,
