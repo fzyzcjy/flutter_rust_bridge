@@ -35,7 +35,6 @@ impl InternalConfig {
 
         let dart_output_dir: PathBuf = base_dir.join(&config.dart_output);
         let dart_output_path_pack = compute_dart_output_path_pack(&dart_output_dir, &namespaces);
-        let dart_class_name = compute_dart_class_name(&config.dart_class_name, &namespaces);
 
         let c_output_path = base_dir.join(&config.c_output);
         let duplicated_c_output_path = (&config)
@@ -69,8 +68,6 @@ impl InternalConfig {
             .next()
             .unwrap();
         let dart_output_stem = get_file_stem(dart_output_path);
-        let dart_api_instance_name =
-            compute_dart_api_instance_name(use_bridge_in_method, dart_output_stem);
 
         Ok(InternalConfig {
             preparer: PreparerInternalConfig {
@@ -83,8 +80,6 @@ impl InternalConfig {
             },
             generator: GeneratorInternalConfig {
                 api_dart: GeneratorApiDartInternalConfig {
-                    dart_api_class_name: dart_output_stem.to_case(Case::Pascal),
-                    dart_api_instance_name,
                     dart_enums_style,
                     use_bridge_in_method,
                     dart3,
@@ -95,8 +90,6 @@ impl InternalConfig {
                         dart_root: dart_root.clone(),
                         use_bridge_in_method,
                         wasm_enabled,
-                        // TODO may not have such class after refactoring API, thus temp do this
-                        dart_wire_class_name: dart_class_name.values().next().unwrap().to_owned(),
                         llvm_path: config
                             .llvm_path
                             .unwrap_or_else(fallback_llvm_path)
@@ -229,24 +222,6 @@ fn compute_path_map(path_common: &Path) -> TargetOrCommonMap<PathBuf> {
 
 fn compute_dart_decl_output_filename(namespace: &Namespace) -> String {
     format!("{}.dart", namespace.name.to_case(Case::Snake))
-}
-
-fn compute_dart_class_name(
-    dart_class_name: &Option<String>,
-    namespaces: &[&Namespace],
-) -> HashMap<Namespace, String> {
-    const NAMESPACE_PLACEHOLDER: &str = "{namespace}";
-    let dart_class_name = dart_class_name.as_deref().unwrap_or(NAMESPACE_PLACEHOLDER);
-    namespaces
-        .iter()
-        .map(|&namespace| {
-            (
-                namespace.to_owned(),
-                dart_class_name
-                    .replace(NAMESPACE_PLACEHOLDER, &namespace.name.to_case(Case::Pascal)),
-            )
-        })
-        .collect()
 }
 
 fn fallback_rust_output_path(rust_crate_dir: &Path) -> PathBuf {

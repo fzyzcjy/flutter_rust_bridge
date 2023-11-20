@@ -27,7 +27,7 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> 
         duplicated_c_output: args.duplicated_c_output,
         rust_crate_dir: args.rust_crate_dir,
         rust_output: args.rust_output,
-        dart_class_name: args.dart_class_name,
+        dart_entrypoint_class_name: args.dart_entrypoint_class_name,
         dart_format_line_length: args.dart_format_line_length,
         dart_enums_style: Some(args.dart_enums_style),
         add_mod_to_lib: Some(!args.no_add_mod_to_lib),

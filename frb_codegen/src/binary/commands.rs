@@ -61,9 +61,9 @@ pub(crate) struct GenerateCommandArgs {
     #[arg(long)]
     pub rust_output: Option<String>,
 
-    /// Generated class name
+    /// Generated dart entrypoint class name
     #[arg(long)]
-    pub dart_class_name: Option<String>,
+    pub dart_entrypoint_class_name: Option<String>,
 
     /// Line length for Dart formatting
     #[arg(long)]
