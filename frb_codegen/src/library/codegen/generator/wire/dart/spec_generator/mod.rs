@@ -8,6 +8,7 @@ use crate::codegen::ir::pack::IrPackComputedCache;
 pub mod api2wire;
 pub(crate) mod base;
 pub mod c_binding;
+mod function;
 pub(crate) mod misc;
 pub(crate) mod output_code;
 pub mod wire2api;
