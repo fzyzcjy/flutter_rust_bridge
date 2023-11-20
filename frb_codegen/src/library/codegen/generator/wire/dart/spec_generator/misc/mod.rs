@@ -6,11 +6,14 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
 
 mod c_binding;
+mod dispatcher;
 pub(crate) mod ty;
 
 pub(crate) struct WireDartOutputSpecMisc {
     pub(crate) c_binding: WireDartOutputCode,
     pub(crate) boilerplate: WireDartOutputCode,
+    pub(crate) dispatcher_api_functions: WireDartOutputCode,
+    pub(crate) dispatcher_opaque_getters: WireDartOutputCode,
     pub(crate) needs_freezed: bool,
 }
 
@@ -22,6 +25,8 @@ pub(crate) fn generate(
     Ok(WireDartOutputSpecMisc {
         c_binding: c_binding::generate(&context.config, c_file_content)?,
         boilerplate: generate_boilerplate(&context.config.dart_entrypoint_class_name),
+        dispatcher_api_functions: dispatcher::generate_dispatcher_api_functions(),
+        dispatcher_opaque_getters: dispatcher::generate_dispatcher_opaque_getters(),
         needs_freezed: compute_needs_freezed(cache, context.ir_pack),
     })
 }
