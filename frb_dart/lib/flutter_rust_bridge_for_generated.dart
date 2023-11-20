@@ -1,5 +1,5 @@
 /// This library should only be used by auto-generated code, instead of the developers.
-library flutter_rust_bridge_for_generated;
+library;
 
 export 'package:meta/meta.dart' show internal;
 

@@ -1,1 +1,0 @@
-library flutter_rust_bridge;
