@@ -14,12 +14,17 @@ pub(crate) struct GeneratorWireCOutput {
 }
 
 pub(crate) fn generate(
-    _ir_pack: &IrPack,
     config: &GeneratorWireCInternalConfig,
     extern_func_names: Vec<String>,
     extern_struct_names: Vec<String>,
+    rust_output_texts: &OutputTexts,
 ) -> anyhow::Result<GeneratorWireCOutput> {
-    let spec = spec_generator::generate(config, extern_func_names, extern_struct_names)?;
+    let spec = spec_generator::generate(
+        config,
+        extern_func_names,
+        extern_struct_names,
+        rust_output_texts,
+    )?;
     let text = text_generator::generate(spec)?;
     Ok(GeneratorWireCOutput {
         output_texts: OutputTexts(vec![OutputText::new(

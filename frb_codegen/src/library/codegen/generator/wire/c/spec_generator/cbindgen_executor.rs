@@ -1,4 +1,5 @@
 use crate::codegen::generator::misc::target::TargetOrCommon;
+use crate::codegen::generator::misc::OutputTexts;
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::library::commands::cbindgen::{cbindgen, CbindgenArgs};
 use crate::utils::file_utils::temp_change_file;
@@ -6,6 +7,7 @@ use crate::utils::file_utils::temp_change_file;
 pub(crate) fn execute(
     config: &GeneratorWireCInternalConfig,
     extern_struct_names: Vec<String>,
+    rust_output_texts: &OutputTexts,
 ) -> anyhow::Result<String> {
     let changed_file_handle = temp_change_file(
         config.rust_output_path[TargetOrCommon::Common].clone(),
