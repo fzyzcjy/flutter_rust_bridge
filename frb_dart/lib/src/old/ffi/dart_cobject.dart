@@ -3,6 +3,8 @@ import 'dart:ffi' as ffi;
 import 'dart:ffi';
 import 'dart:typed_data';
 
+import 'package:flutter_rust_bridge/src/consts.dart';
+
 import '../../ffigen_generated/dart_native_api.dart';
 
 export 'dart:ffi' show NativePort, DynamicLibrary;
@@ -131,7 +133,7 @@ extension DartCObjectExt on Dart_CObject {
     final handleFinalizer = externalTypedData.callback.asFunction<DartExternalTypedDataFinalizer>();
     handleFinalizer(externalTypedData.length, externalTypedData.peer);
 
-    if (bool.fromEnvironment("ENABLE_FRB_FFI_TEST_TOOL")) {
+    if (kEnableFrbFfiTestTool) {
       for (var handler in testTool!.onExternalTypedDataFinalizer) {
         handler(externalTypedData.length);
       }
@@ -169,4 +171,4 @@ class TestTool {
   TestTool._();
 }
 
-final testTool = bool.fromEnvironment("ENABLE_FRB_FFI_TEST_TOOL") ? TestTool._() : null;
+final testTool = kEnableFrbFfiTestTool ? TestTool._() : null;
