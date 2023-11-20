@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_rust_bridge/src/exceptions.dart';
+import 'package:flutter_rust_bridge/src/manual_impl.dart';
 import 'package:flutter_rust_bridge/src/platform_types.dart';
 import 'package:flutter_rust_bridge/src/task.dart';
 

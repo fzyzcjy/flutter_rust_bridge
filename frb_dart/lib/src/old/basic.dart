@@ -80,7 +80,3 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
     // MOVED
   }
 }
-
-PanicException wire2apiPanicError(dynamic raw) {
-  return PanicException(raw as String);
-}
