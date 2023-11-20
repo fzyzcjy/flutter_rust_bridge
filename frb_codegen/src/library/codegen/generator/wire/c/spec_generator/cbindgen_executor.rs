@@ -1,5 +1,5 @@
 use crate::codegen::generator::misc::target::TargetOrCommon;
-use crate::codegen::generator::misc::PathTexts;
+use crate::codegen::generator::misc::{PathText, PathTexts};
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::library::commands::cbindgen::{cbindgen, CbindgenArgs};
 use crate::utils::file_utils::temp_change_file;
@@ -11,19 +11,13 @@ pub(crate) fn execute(
     extern_struct_names: Vec<String>,
     rust_output_texts: &PathTexts,
 ) -> anyhow::Result<String> {
-    let rust_output_path_common = &config.rust_output_path[TargetOrCommon::Common];
-    ensure!((rust_output_texts.paths().iter()).any(|path| path == rust_output_path_common));
-    let changed_file_handles = rust_output_texts
+    let transformed_rust_code = compute_transformed_rust_code(rust_output_texts, config);
+    let changed_file_handles = transformed_rust_code
         .0
         .iter()
         .map(|rust_output_text| {
             temp_change_file(rust_output_text.path.clone(), |_| {
                 rust_output_text.text.clone()
-                    + (if rust_output_text.path == rust_output_path_common {
-                        DUMMY_WIRE_CODE_FOR_BINDGEN
-                    } else {
-                        ""
-                    })
             })
         })
         .collect::<anyhow::Result<Vec<_>>>()?;
@@ -41,8 +35,30 @@ pub(crate) fn execute(
     Ok(ans)
 }
 
-// TODO
-// fn compute_input_rust_code() {}
+fn compute_transformed_rust_code(
+    rust_output_texts: &PathTexts,
+    config: &GeneratorWireCInternalConfig,
+) -> PathTexts {
+    let rust_output_path_common = &config.rust_output_path[TargetOrCommon::Common];
+    ensure!((rust_output_texts.paths().iter()).any(|path| path == rust_output_path_common));
+    PathTexts(
+        rust_output_texts
+            .0
+            .iter()
+            .map(|path_text| {
+                PathText::new(
+                    path_text.path.clone(),
+                    path_text.text.clone()
+                        + (if path_text.path == rust_output_path_common {
+                            DUMMY_WIRE_CODE_FOR_BINDGEN
+                        } else {
+                            ""
+                        }),
+                )
+            })
+            .collect_vec(),
+    )
+}
 
 // NOTE [DartPostCObjectFnType] was originally [*mut DartCObject] but I changed it to [*mut c_void]
 // because cannot automatically generate things related to [DartCObject]. Anyway this works fine.
