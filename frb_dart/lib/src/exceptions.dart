@@ -1,21 +1,30 @@
+/// Base class for exceptions in flutter_rust_bridge
 class FrbException implements Exception {}
 
+/// The rust code is panicked
 class PanicException implements FrbException {
+  /// The error message
   final String error;
 
+  /// The rust code is panicked
   PanicException(this.error);
 }
 
+/// The rust code returns `anyhow::Error`
 class FrbAnyhowException implements FrbException {
+  /// The error message
   final String anyhow;
 
+  /// The rust code returns `anyhow::Error`
   FrbAnyhowException(this.anyhow);
 
   @override
   String toString() => 'FrbAnyhowException($anyhow)';
 }
 
+/// Interface indicating exceptions that have backtrace (stack trace)
 abstract class FrbBacktracedException extends FrbException {
+  /// The backtrace (stack trace) of the exception
   String get backtrace;
 }
 
@@ -23,6 +32,7 @@ abstract class FrbBacktracedException extends FrbException {
 ///
 /// [cross-origin isolated]: https://developer.mozilla.org/en-US/docs/Web/API/crossOriginIsolated
 class MissingHeaderException implements FrbException {
+  /// Constructs an exception
   const MissingHeaderException();
 
   static const _message = '''
@@ -37,7 +47,9 @@ If running from Flutter, consider `flutter build web` and running a custom stati
   String toString() => _message;
 }
 
+/// Platform is not matched
 class PlatformMismatchException implements FrbException {
+  /// Constructs an exception
   const PlatformMismatchException();
 
   static const _wasm = 'Not implemented on non-WASM platforms';
@@ -46,7 +58,9 @@ class PlatformMismatchException implements FrbException {
   String toString() => _wasm;
 }
 
+/// Cannot modify a typed list
 class UnmodifiableTypedListException implements FrbException {
+  /// Constructs an exception
   const UnmodifiableTypedListException();
 
   static const _message = 'Cannot modify the length of typed lists.';
