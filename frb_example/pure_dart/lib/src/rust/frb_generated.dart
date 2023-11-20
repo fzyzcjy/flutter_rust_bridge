@@ -37,7 +37,7 @@ class RustDispatcher extends BaseDispatcher {
 }
 
 // TODO rename
-class RustImpl extends RustImplPlatform {
+class RustBulk extends RustBulkPlatform {
   Future<int> simpleAdder({required int a, required int b, dynamic hint}) {
     var arg0 = api2wire_i_32(a);
     var arg1 = api2wire_i_32(b);
