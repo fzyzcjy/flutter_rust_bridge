@@ -8,3 +8,7 @@ typedef NativePortType = int;
 typedef WireSyncReturn = ffi.Pointer<Dart_CObject>;
 
 typedef PlatformPointer = ffi.Pointer<ffi.Void>;
+
+typedef ExternalLibrary = ffi.DynamicLibrary;
+
+typedef DartPostCObject = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>;

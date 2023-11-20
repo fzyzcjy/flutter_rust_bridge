@@ -6,9 +6,6 @@ export 'dart:ffi' show NativePort, DynamicLibrary;
 
 export 'stub.dart' show castInt, castNativeBigInt, FlutterRustBridgeWireBase, WasmModule;
 
-typedef ExternalLibrary = ffi.DynamicLibrary;
-typedef DartPostCObject = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Int64, ffi.Pointer<ffi.Void>)>>;
-
 extension StoreDartPostCObjectExt on FlutterRustBridgeWireBase {
   void storeDartPostCObject() {
     store_dart_post_cobject(ffi.NativeApi.postCObject.cast());
