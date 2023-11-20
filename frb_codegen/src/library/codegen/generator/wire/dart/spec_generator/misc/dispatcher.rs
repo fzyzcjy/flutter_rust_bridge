@@ -64,16 +64,11 @@ fn generate_stmt_prepare_args(func: &IrFunc) -> Vec<String> {
         .iter()
         .enumerate()
         .map(|(index, input)| {
-            // edge case: ffigen performs its own bool-to-int conversions
-            if let Primitive(IrTypePrimitive::Bool) = input.ty {
-                format!("var arg{index} = {};", input.name.dart_style())
-            } else {
-                format!(
-                    "var arg{index} = api2wire_{}({});",
-                    input.ty.safe_ident(),
-                    &input.name.dart_style()
-                )
-            }
+            format!(
+                "var arg{index} = api2wire_{}({});",
+                input.ty.safe_ident(),
+                &input.name.dart_style()
+            )
         })
         .collect_vec()
 }
