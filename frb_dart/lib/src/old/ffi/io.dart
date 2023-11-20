@@ -32,8 +32,6 @@ class DartApiDl {
   }
 }
 
-List<dynamic> wireSyncReturnIntoDart(WireSyncReturn syncReturn) => syncReturn.ref.intoDart();
-
 typedef PlatformPointer = ffi.Pointer<ffi.Void>;
 typedef OpaqueTypeFinalizer = NativeFinalizer;
 
