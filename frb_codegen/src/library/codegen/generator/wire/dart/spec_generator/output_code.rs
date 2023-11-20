@@ -7,13 +7,30 @@ pub(crate) struct WireDartOutputCode {
     pub import: String,
     pub part: String,
     pub body: String,
+    /// Code inside the generated dispatcher class
+    pub dispatcher_body: String,
 }
 
 basic_code_impl!(WireDartOutputCode);
 
 impl BasicCode for WireDartOutputCode {
-    fn all_code(&self) -> String {
-        format!("{}\n{}\n{}", self.import, self.part, self.body)
+    fn all_code(&self, dispatcher_name: &str) -> String {
+        let dispatcher_name = format!("{}Dispatcher", entrypoint_class_name);
+        let dispatcher_class_code = format!(
+            "
+            class {dispatcher_name} extends BaseDispatcher {{
+              {dispatcher_name}({{super.handler}});
+
+              {dispatcher_body}
+            }}
+            ",
+            dispatcher_body = self.dispatcher_body,
+        );
+
+        format!(
+            "{}\n{}\n{}\n{}",
+            self.import, self.part, dispatcher_class_code, self.body
+        )
     }
 }
 

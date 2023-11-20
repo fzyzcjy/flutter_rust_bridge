@@ -43,12 +43,6 @@ fn generate_boilerplate(entrypoint_class_name: &str) -> WireDartOutputCode {
                 await instance.initImpl(dispatcher: dispatcher ?? {dispatcher_name}());
               }}
             }}
-            
-            class {dispatcher_name} extends BaseDispatcher {{
-              {dispatcher_name}({{super.handler}});
-
-              // TODO
-            }}
             "#
         ),
     }
