@@ -25,9 +25,8 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   @protected
   final T inner;
 
-  late final _dropPort = _initDropPort();
-
   NativePortType get dropPort => _dropPort.sendPort.nativePort;
+  late final _dropPort = _initDropPort();
 
   ReceivePort _initDropPort() {
     var port = broadcastPort(DropIdPortGenerator.create());
