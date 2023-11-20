@@ -16,6 +16,6 @@ export 'src/exceptions.dart';
 export 'src/handler.dart';
 export 'src/task.dart';
 export 'src/utils/io_utils.dart' if (dart.library.html) 'src/utils/web_utils.dart';
-export 'src/wire_base/wire_base.dart';
+export 'src/wire/wire.dart';
 
 // TODO export more

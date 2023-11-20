@@ -6,7 +6,7 @@ import 'package:flutter_rust_bridge/src/wasm_module/_web.dart';
 import 'package:js/js.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-abstract class FlutterRustBridgeWireBase {
+abstract class BaseWire {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void storeDartPostCObject() {}
 
@@ -34,13 +34,12 @@ abstract class FlutterRustBridgeWireBase {
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-class FlutterRustBridgeWasmWireBase<T extends WasmModule> extends FlutterRustBridgeWireBase {
+class BaseWasmWire<T extends WasmModule> extends BaseWire {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   final Future<T> init;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  FlutterRustBridgeWasmWireBase(FutureOr<T> module)
-      : init = Future.value(module).then((module) => promiseToFuture(module()));
+  BaseWasmWire(FutureOr<T> module) : init = Future.value(module).then((module) => promiseToFuture(module()));
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}

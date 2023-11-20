@@ -4,7 +4,7 @@ import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 
 // TODO rename the class (should not have `FlutterRustBridge` prefix when possible)
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-abstract class FlutterRustBridgeWireBase {
+abstract class BaseWire {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   // ignore: non_constant_identifier_names
   void store_dart_post_cobject(DartPostCObject ptr) {
@@ -37,7 +37,7 @@ abstract class FlutterRustBridgeWireBase {
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-extension StoreDartPostCObjectExt on FlutterRustBridgeWireBase {
+extension StoreDartPostCObjectExt on BaseWire {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void storeDartPostCObject() {
     store_dart_post_cobject(ffi.NativeApi.postCObject.cast());
