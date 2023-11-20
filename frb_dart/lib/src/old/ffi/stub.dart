@@ -7,10 +7,6 @@ import 'io.dart' if (dart.library.html) 'web.dart' show DartPostCObject;
 
 export 'io.dart' if (dart.library.html) 'web.dart' show ExternalLibrary, DartApiDl;
 
-extension StoreDartPostCObjectExt on FlutterRustBridgeWireBase {
-  void storeDartPostCObject() => throw UnimplementedError();
-}
-
 int castInt(Object? value) => value as int;
 
 /// Only used on the Web.

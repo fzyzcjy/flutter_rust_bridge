@@ -1,3 +1,5 @@
+import 'dart:ffi' as ffi;
+
 import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 
 // TODO rename the class (should not have `FlutterRustBridge` prefix when possible)
@@ -27,5 +29,11 @@ abstract class FlutterRustBridgeWireBase {
   // ignore: non_constant_identifier_names
   void free_WireSyncReturn(WireSyncReturn val) {
     throw UnimplementedError();
+  }
+}
+
+extension StoreDartPostCObjectExt on FlutterRustBridgeWireBase {
+  void storeDartPostCObject() {
+    store_dart_post_cobject(ffi.NativeApi.postCObject.cast());
   }
 }

@@ -1,16 +1,8 @@
 import 'dart:ffi' as ffi;
 
-import 'stub.dart' show FlutterRustBridgeWireBase;
-
 export 'dart:ffi' show NativePort, DynamicLibrary;
 
 export 'stub.dart' show castInt, castNativeBigInt, FlutterRustBridgeWireBase, WasmModule;
-
-extension StoreDartPostCObjectExt on FlutterRustBridgeWireBase {
-  void storeDartPostCObject() {
-    store_dart_post_cobject(ffi.NativeApi.postCObject.cast());
-  }
-}
 
 class DartApiDl {
   static int? _initCode;
