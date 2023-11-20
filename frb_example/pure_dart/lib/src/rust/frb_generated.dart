@@ -3,16 +3,15 @@
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 
 /// Main entrypoint of the Rust API
-class FrbExamplePureDart {
-  static FrbExamplePureDartDispatcher get dispatcher =>
-      _dispatcher ?? (throw StateError('flutter_rust_bridge has not been initialized'));
-  static FrbExamplePureDartDispatcher? _dispatcher;
+class FrbExamplePureDart extends BaseEntrypoint {
+  static final instance = FrbExamplePureDart._();
+
+  FrbExamplePureDart._();
 
   static Future<void> init({
     FrbExamplePureDartDispatcher? dispatcher,
   }) async {
-    _dispatcher = dispatcher ?? FrbExamplePureDartDispatcher();
-    // TODO real initialization work
+    await instance.initImpl(dispatcher: dispatcher ?? FrbExamplePureDartDispatcher());
   }
 }
 
