@@ -1,12 +1,16 @@
 import 'package:meta/meta.dart';
 
-import '../../flutter_rust_bridge.dart';
-
 /// Base class for various kinds of tasks.
 /// Note: Normally you do not manually create instances of this task (or its brothers), but instead
 /// it is generated automatically by the codegen.
 @immutable
-abstract class FlutterRustBridgeBaseTask {
+abstract class FlutterRustBridgeBaseTask<S, E extends Object> {
+  /// Parse the returned data from the underlying function
+  final S Function(dynamic) parseSuccessData;
+
+  /// Parse the returned error data from the underlying function
+  final E Function(dynamic)? parseErrorData;
+
   /// Metadata that does not change across different method calls.
   final FlutterRustBridgeTaskConstMeta constMeta;
 
@@ -16,19 +20,13 @@ abstract class FlutterRustBridgeBaseTask {
   /// Transparent hint given by the caller of the method
   final dynamic hint;
 
-  /// Parse the returned data from the underlying function
-  final S Function(dynamic) parseSuccessData;
-
-  /// Parse the returned error data from the underlying function
-  final E Function(dynamic)? parseErrorData;
-
   /// Create a new task.
   const FlutterRustBridgeBaseTask({
+    required this.parseSuccessData,
+    required this.parseErrorData,
     required this.constMeta,
     required this.argValues,
     required this.hint,
-    required this.parseSuccessData,
-    required this.parseErrorData,
   });
 
   /// Name usually used for logging or debugging
