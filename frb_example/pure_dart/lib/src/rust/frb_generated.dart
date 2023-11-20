@@ -1,5 +1,3 @@
-// TODO this is manually written to prototype the API
-
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 
 /// Main entrypoint of the Rust API
@@ -19,7 +17,7 @@ class Rust extends BaseEntrypoint<RustDispatcher> {
 class RustDispatcher extends BaseDispatcher {
   RustDispatcher({super.handler});
 
-  Future<int> simpleAdder({required int a, required int b, dynamic hint}) async {
+  Future<int> simpleAdder({required int a, required int b, dynamic hint}) {
     var arg0 = api2wire_i_32(a);
     var arg1 = api2wire_i_32(b);
     return handler.executeNormal(NormalTask(
@@ -31,8 +29,16 @@ class RustDispatcher extends BaseDispatcher {
       hint: hint,
     ));
   }
+
+  TaskConstMeta get kSimpleAdderConstMeta => const TaskConstMeta(
+        debugName: "simple_adder",
+        argNames: ["a", "b"],
+      );
 }
 
+// Section: boilerplate
+// Section: dispatcher_api_functions
+// Section: dispatcher_opaque_getters
 // Section: c_binding
 // Section: impl_wire2api
 int _wire2api_i_32(dynamic raw) {
