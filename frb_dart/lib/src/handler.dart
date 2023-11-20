@@ -10,8 +10,8 @@ class BaseHandler {
     final completer = Completer<dynamic>();
     final sendPort = singleCompletePort(completer);
     task.callFfi(sendPort.nativePort);
-    return completer.future.then((dynamic raw) =>
-        _transformRust2DartMessage(raw, task.parseSuccessData, task.parseErrorData, wire2apiPanicError));
+    return completer.future
+        .then((dynamic raw) => _transformRust2DartMessage(raw, task.parseSuccessData, task.parseErrorData));
   }
 
   /// Similar to [executeNormal], except that this will return synchronously
@@ -24,8 +24,7 @@ class BaseHandler {
     }
     try {
       final syncReturnAsDartObject = wireSyncReturnIntoDart(syncReturn);
-      return _transformRust2DartMessage(
-          syncReturnAsDartObject, task.parseSuccessData, task.parseErrorData, wire2apiPanicError);
+      return _transformRust2DartMessage(syncReturnAsDartObject, task.parseSuccessData, task.parseErrorData);
     } catch (err) {
       rethrow;
     } finally {
@@ -43,7 +42,7 @@ class BaseHandler {
 
     await for (final raw in receivePort) {
       try {
-        yield _transformRust2DartMessage(raw, task.parseSuccessData, task.parseErrorData, wire2apiPanicError);
+        yield _transformRust2DartMessage(raw, task.parseSuccessData, task.parseErrorData);
       } on _CloseStreamException {
         receivePort.close();
         break;
@@ -52,8 +51,8 @@ class BaseHandler {
   }
 }
 
-S _transformRust2DartMessage<S, E extends Object>(List<dynamic> raw, S Function(dynamic) parseSuccessData,
-    E Function(dynamic)? parseErrorData, PanicException Function(dynamic)? parsePanicData) {
+S _transformRust2DartMessage<S, E extends Object>(
+    List<dynamic> raw, S Function(dynamic) parseSuccessData, E Function(dynamic)? parseErrorData) {
   final action = raw[0];
   switch (_Rust2DartAction.values[action]) {
     case _Rust2DartAction.success:
@@ -61,7 +60,7 @@ S _transformRust2DartMessage<S, E extends Object>(List<dynamic> raw, S Function(
     case _Rust2DartAction.error:
       throw _parseData<E>(raw, parseErrorData);
     case _Rust2DartAction.panic:
-      throw _parseData<PanicException>(raw, parsePanicData);
+      throw _parseData<PanicException>(raw, wire2apiPanicError);
     case _Rust2DartAction.closeStream:
       assert(raw.length == 1);
       throw _CloseStreamException();
