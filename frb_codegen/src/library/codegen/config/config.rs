@@ -20,7 +20,6 @@ pub struct Config {
     pub llvm_compiler_opts: Option<String>,
     pub dart_root: Option<String>,
     pub build_runner: Option<bool>,
-    pub use_bridge_in_method: Option<bool>,
     pub extra_headers: Option<String>,
     pub wasm: Option<bool>,
     pub deps_check: Option<bool>,

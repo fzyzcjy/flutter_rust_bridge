@@ -218,11 +218,6 @@ fn generate_common_header() -> DartBasicCode {
             import 'package:meta/meta.dart';
             import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
             import 'package:uuid/uuid.dart';",
-            if config.use_bridge_in_method {
-                ""
-            } else {
-                "import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';"
-            },
         ),
         part: "".to_string(),
         body: "".to_string(),

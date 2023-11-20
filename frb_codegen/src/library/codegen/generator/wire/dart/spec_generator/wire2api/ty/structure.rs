@@ -24,9 +24,6 @@ impl<'a> WireDartGeneratorWire2apiTrait for StructRefWireDartGenerator<'a> {
                 )
             })
             .collect_vec();
-        if has_methods && self.context.config.use_bridge_in_method {
-            inner.insert(0, "bridge: this,".to_string());
-        }
 
         let inner = inner.join("\n");
         let cast = "final arr = raw as List<dynamic>;".to_string();

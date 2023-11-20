@@ -55,16 +55,6 @@ impl<'a> StructRefApiDartGenerator<'a> {
             })
             .collect_vec();
 
-        if has_methods && self.context.config.use_bridge_in_method {
-            ans.insert(
-                0,
-                format!(
-                    "required {} bridge,",
-                    self.context.config.dart_api_class_name
-                ),
-            );
-        }
-
         ans.join("")
     }
 }

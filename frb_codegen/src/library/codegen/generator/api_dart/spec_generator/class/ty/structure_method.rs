@@ -56,11 +56,6 @@ fn generate_params(
         })
         .collect_vec();
 
-    if is_static_method && context.config.use_bridge_in_method {
-        let dart_api_class_name = &context.config.dart_api_class_name;
-        ans.insert(0, format!("required {dart_api_class_name} bridge"));
-    }
-
     ans.push("dynamic hint".to_string());
 
     ans

@@ -35,7 +35,6 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> 
         llvm_compiler_opts: args.llvm_compiler_opts,
         dart_root: args.dart_root,
         build_runner: Some(!args.no_build_runner),
-        use_bridge_in_method: Some(!args.no_use_bridge_in_method),
         extra_headers: args.extra_headers,
         wasm: Some(!args.no_wasm),
         deps_check: Some(!args.no_deps_check),

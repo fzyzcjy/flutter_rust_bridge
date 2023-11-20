@@ -50,13 +50,6 @@ impl<'a> StructRefApiDartGenerator<'a> {
             })
             .collect_vec();
 
-        if !methods.is_empty() && self.context.config.use_bridge_in_method {
-            field_declarations.insert(
-                0,
-                format!("final {} bridge;", self.context.config.dart_api_class_name),
-            );
-        }
-
         field_declarations.join("\n")
     }
 
@@ -78,10 +71,6 @@ impl<'a> StructRefApiDartGenerator<'a> {
                 )
             })
             .collect_vec();
-
-        if !methods.is_empty() && self.context.config.use_bridge_in_method {
-            ans.insert(0, "required this.bridge,".to_string());
-        }
 
         let mut ans = ans.join("");
 

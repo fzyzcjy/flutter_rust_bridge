@@ -93,10 +93,6 @@ pub(crate) struct GenerateCommandArgs {
     #[arg(long)]
     pub no_build_runner: bool,
 
-    /// No use bridge in Model
-    #[arg(long)]
-    pub no_use_bridge_in_method: bool,
-
     /// extra_headers is used to add dependencies header
     #[arg(long)]
     pub extra_headers: Option<String>,

@@ -57,7 +57,6 @@ impl InternalConfig {
             .unwrap_or(find_dart_package_dir(&dart_output_dir)?);
 
         let wasm_enabled = config.wasm.unwrap_or(true);
-        let use_bridge_in_method = config.use_bridge_in_method.unwrap_or(true);
         let dart_enums_style = config.dart_enums_style.unwrap_or(false);
         let dart3 = config.dart3.unwrap_or(true);
 
@@ -81,14 +80,12 @@ impl InternalConfig {
             generator: GeneratorInternalConfig {
                 api_dart: GeneratorApiDartInternalConfig {
                     dart_enums_style,
-                    use_bridge_in_method,
                     dart3,
                     dart_decl_output_path: dart_output_path_pack.dart_decl_output_path,
                 },
                 wire: GeneratorWireInternalConfig {
                     dart: GeneratorWireDartInternalConfig {
                         dart_root: dart_root.clone(),
-                        use_bridge_in_method,
                         wasm_enabled,
                         llvm_path: config
                             .llvm_path
@@ -246,12 +243,8 @@ fn fallback_llvm_path() -> Vec<String> {
     ]
 }
 
-fn compute_dart_api_instance_name(use_bridge_in_method: bool, dart_output_stem: &str) -> String {
-    if use_bridge_in_method {
-        "bridge".to_owned()
-    } else {
-        dart_output_stem.to_case(Case::Camel)
-    }
+fn compute_dart_api_instance_name(dart_output_stem: &str) -> String {
+    dart_output_stem.to_case(Case::Camel)
 }
 
 fn get_file_stem(p: &Path) -> &str {
