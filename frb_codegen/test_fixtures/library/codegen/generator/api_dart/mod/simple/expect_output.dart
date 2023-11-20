@@ -1,8 +1,6 @@
-abstract class Api {
-            Future<void> firstFunction({ dynamic hint });
+Future<void> firstFunction({ dynamic hint }) { TODO; }
 
-FlutterRustBridgeTaskConstMeta get kFirstFunctionConstMeta;
-        }
+FlutterRustBridgeTaskConstMeta get kFirstFunctionConstMeta => TODO;
 
         
         
