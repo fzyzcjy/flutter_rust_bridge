@@ -154,38 +154,6 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   static const _RUST2DART_ACTION_PANIC = 3;
 }
 
-/// A task to call FFI function.
-@immutable
-class FlutterRustBridgeTask<S, E extends Object> extends FlutterRustBridgeBaseTask {
-  /// The underlying function to call FFI function, usually the generated wire function
-  final void Function(NativePortType port) callFfi;
-
-  const FlutterRustBridgeTask({
-    required this.callFfi,
-    required super.parseSuccessData,
-    required super.parseErrorData,
-    required super.constMeta,
-    required super.argValues,
-    required super.hint,
-  });
-}
-
-/// A task to call FFI function, but it is synchronous.
-@immutable
-class FlutterRustBridgeSyncTask<S, E extends Object> extends FlutterRustBridgeBaseTask {
-  /// The underlying function to call FFI function, usually the generated wire function
-  final WireSyncReturn Function() callFfi;
-
-  const FlutterRustBridgeSyncTask({
-    required this.callFfi,
-    required super.parseSuccessData,
-    required super.parseErrorData,
-    required super.constMeta,
-    required super.argValues,
-    required super.hint,
-  });
-}
-
 class _CloseStreamException {}
 
 class FrbException implements Exception {}
