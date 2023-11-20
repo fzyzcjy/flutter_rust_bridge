@@ -53,25 +53,26 @@ class BaseHandler {
 
 S _transformRust2DartMessage<S, E extends Object>(
     List<dynamic> raw, S Function(dynamic) parseSuccessData, E Function(dynamic)? parseErrorData) {
-  final action = raw[0];
-  switch (_Rust2DartAction.values[action]) {
+  switch (_Rust2DartAction.values[raw[0]]) {
     case _Rust2DartAction.success:
-      return _parseData<S>(raw, parseSuccessData);
+      assert(raw.length == 2);
+      return parseSuccessData(raw);
+
     case _Rust2DartAction.error:
-      throw _parseData<E>(raw, parseErrorData!);
+      assert(raw.length == 2);
+      throw parseErrorData!(raw);
+
     case _Rust2DartAction.panic:
-      throw _parseData<PanicException>(raw, wire2apiPanicError);
+      assert(raw.length == 2);
+      throw wire2apiPanicError(raw);
+
     case _Rust2DartAction.closeStream:
       assert(raw.length == 1);
       throw _CloseStreamException();
-    default:
-      throw Exception('Unsupported message, action=$action raw=$raw');
-  }
-}
 
-R _parseData<R>(List<dynamic> rawData, R Function(dynamic) function) {
-  assert(rawData.length == 2);
-  return function(rawData[1]);
+    default:
+      throw Exception('Unsupported message (raw=$raw)');
+  }
 }
 
 /// NOTE: Please keep in sync with the Rust side
