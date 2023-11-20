@@ -8,4 +8,5 @@ pub(crate) struct GeneratorApiDartInternalConfig {
     pub dart_enums_style: bool,
     pub dart3: bool,
     pub dart_decl_output_path: HashMap<Namespace, PathBuf>,
+    pub dart_entrypoint_class_name: String,
 }

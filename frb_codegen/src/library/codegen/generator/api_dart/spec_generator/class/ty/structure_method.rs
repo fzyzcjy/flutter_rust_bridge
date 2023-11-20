@@ -103,13 +103,15 @@ fn generate_implementation(
     is_static_method: bool,
     arg_names: String,
 ) -> String {
-    let dart_api_instance_name = &context.config.dart_api_instance_name;
+    let dart_entrypoint_class_name = &context.config.dart_entrypoint_class_name;
+    let dart_dispatcher_instance = format!("{dart_entrypoint_class_name}.instance.dispatcher");
+
     let func_name = func.name.clone().to_case(Case::Camel);
 
     if is_static_method {
-        format!("{dart_api_instance_name}.{func_name}({arg_names})")
+        format!("{dart_dispatcher_instance}.{func_name}({arg_names})")
     } else {
         let extra_arg_name = func.inputs[0].name.dart_style();
-        format!("{dart_api_instance_name}.{func_name}({extra_arg_name}: this, {arg_names})")
+        format!("{dart_dispatcher_instance}.{func_name}({extra_arg_name}: this, {arg_names})")
     }
 }

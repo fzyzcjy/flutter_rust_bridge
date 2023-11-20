@@ -35,6 +35,7 @@ impl InternalConfig {
 
         let dart_output_dir: PathBuf = base_dir.join(&config.dart_output);
         let dart_output_path_pack = compute_dart_output_path_pack(&dart_output_dir, &namespaces);
+        let dart_entrypoint_class_name = config.dart_entrypoint_class_name.unwrap_or(TODO);
 
         let c_output_path = base_dir.join(&config.c_output);
         let duplicated_c_output_path = (&config)
@@ -82,6 +83,7 @@ impl InternalConfig {
                     dart_enums_style,
                     dart3,
                     dart_decl_output_path: dart_output_path_pack.dart_decl_output_path,
+                    dart_entrypoint_class_name: dart_entrypoint_class_name.clone(),
                 },
                 wire: GeneratorWireInternalConfig {
                     dart: GeneratorWireDartInternalConfig {
@@ -96,6 +98,7 @@ impl InternalConfig {
                         llvm_compiler_opts: config.llvm_compiler_opts.unwrap_or_else(String::new),
                         extra_headers: config.extra_headers.unwrap_or_else(String::new),
                         dart_impl_output_path: dart_output_path_pack.dart_impl_output_path,
+                        dart_entrypoint_class_name: dart_entrypoint_class_name.clone(),
                     },
                     rust: GeneratorWireRustInternalConfig {
                         rust_crate_dir: rust_crate_dir.clone(),

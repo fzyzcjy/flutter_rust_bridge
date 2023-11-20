@@ -39,7 +39,7 @@ pub(crate) fn generate_func(
 
     let func_comments = generate_dart_comments(&func.comments);
 
-    let func_impl = generate_func_impl(func, &context.config.dart_api_class_name);
+    let func_impl = generate_func_impl(func, &context.config.dart_entrypoint_class_name);
 
     // TODO
     // let const_meta_field_name = format!("k{}ConstMeta", func.name.to_case(Case::Pascal));
@@ -75,11 +75,11 @@ fn generate_params(
     ans
 }
 
-fn generate_func_impl(func: &IrFunc, dart_api_class_name: &str) -> String {
+fn generate_func_impl(func: &IrFunc, dart_entrypoint_class_name: &str) -> String {
     let param_forwards = func
         .inputs
         .iter()
         .map(|input| format!("{name}: {name}", name = input.name.dart_style()))
         .join(", ");
-    format!("{dart_api_class_name}.instance.dispatcher.simpleAdder({param_forwards})")
+    format!("{dart_entrypoint_class_name}.instance.dispatcher.simpleAdder({param_forwards})")
 }
