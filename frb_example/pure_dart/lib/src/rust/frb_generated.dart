@@ -1,12 +1,19 @@
 // TODO this is manually written to prototype the API
 class FrbGeneratedPureDart {
   static Future<void> init({
-    FrbGeneratedPureDart? dispatcher,
-    TODO? handler,
+    FrbGeneratedPureDartDispatcher? dispatcher,
+    FlutterRustBridgeHandler? handler,
   }) async {
     TODO;
   }
 }
+
+class FrbGeneratedPureDartDispatcher {
+  // TODO auto gen code
+}
+
+// TODO move to runtime lib
+abstract class FlutterRustBridgeHandler {}
 
 // Section: c_binding
 // Section: impl_wire2api
