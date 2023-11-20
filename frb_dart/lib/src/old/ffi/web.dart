@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:html';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
+import 'package:js/js.dart';
 
 export 'package:js/js.dart';
 export 'package:js/js_util.dart' show promiseToFuture, getProperty;
