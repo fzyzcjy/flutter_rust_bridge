@@ -38,16 +38,16 @@ extension DartCObjectExt on Dart_CObject {
 
       case Dart_CObject_Type.Dart_CObject_kTypedData:
         return _typedDataIntoDart(
-          value.as_typed_data.type,
-          value.as_typed_data.values,
-          value.as_typed_data.length,
+          ty: value.as_typed_data.type,
+          typedValues: value.as_typed_data.values,
+          nValues: value.as_typed_data.length,
         ).clone();
 
       case Dart_CObject_Type.Dart_CObject_kExternalTypedData:
         final externalTypedData = _typedDataIntoDart(
-          value.as_external_typed_data.type,
-          value.as_external_typed_data.data,
-          value.as_external_typed_data.length,
+          ty: value.as_external_typed_data.type,
+          typedValues: value.as_external_typed_data.data,
+          nValues: value.as_external_typed_data.length,
         ).view;
         _externalTypedDataFinalizer.attach(
           externalTypedData,
@@ -73,11 +73,11 @@ extension DartCObjectExt on Dart_CObject {
     }
   }
 
-  static _TypedData _typedDataIntoDart(
-    int ty,
-    ffi.Pointer<ffi.Uint8> typedValues,
-    int nValues,
-  ) {
+  static _TypedData _typedDataIntoDart({
+    required int ty,
+    required ffi.Pointer<ffi.Uint8> typedValues,
+    required int nValues,
+  }) {
     switch (ty) {
       case Dart_TypedData_Type.Dart_TypedData_kByteData:
         return _TypedData<ByteData>(
