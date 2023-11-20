@@ -35,7 +35,7 @@ class BaseHandler {
 
   /// Similar to [executeNormal], except that this will return a [Stream] instead of a [Future].
   Stream<S> executeStream<S, E extends Object>(StreamTask<S, E> task) async* {
-    final portName = _ExecuteStreamPortNamer._nextName(task.constMeta.debugName);
+    final portName = _ExecuteStreamPortGenerator._nextName(task.constMeta.debugName);
     final receivePort = broadcastPort(portName);
 
     task.callFfi(receivePort.sendPort.nativePort);
@@ -51,7 +51,7 @@ class BaseHandler {
   }
 }
 
-class _ExecuteStreamPortNamer {
+class _ExecuteStreamPortGenerator {
   static final _streamSinkNameIndex = <String, int>{};
 
   static String _nextName(String funcName) {
