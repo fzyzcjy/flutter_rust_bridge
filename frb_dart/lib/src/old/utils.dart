@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'isolate.dart';
 
 // NOTE XXX copy from: https://github.com/dart-archive/isolate/blob/master/lib/ports.dart
@@ -77,8 +78,7 @@ SendPort singleCompletePort<R, P>(
           completer.completeError(e, st);
         }
       } else {
-        completer
-            .completeError(TimeoutException('Future not completed', timeout));
+        completer.completeError(TimeoutException('Future not completed', timeout));
       }
     });
   }

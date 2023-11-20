@@ -1,11 +1,12 @@
 import 'dart:async';
 import 'dart:typed_data';
 
-import 'package:flutter_rust_bridge/src/basic.dart';
-import 'package:flutter_rust_bridge/src/platform_independent.dart';
+import 'package:flutter_rust_bridge/src/old/basic.dart';
+import 'package:flutter_rust_bridge/src/old/platform_independent.dart';
 import 'package:meta/meta.dart';
 import 'package:uuid/uuid.dart';
-export 'ffi.dart';
+
+export '../ffi.dart';
 
 /// borrowed from flutter foundation [kIsWeb](https://api.flutter.dev/flutter/foundation/kIsWeb-constant.html),
 /// but allows for using it in a Dart context alike
@@ -20,8 +21,7 @@ const uuidSizeInBytes = 16;
 ///
 /// 1. Please call [setupMixinConstructor] inside the constructor of your class.
 /// 2. Inside your [setup], please call ffi functions with hint=[kHintSetup].
-mixin FlutterRustBridgeSetupMixin<T extends FlutterRustBridgeWireBase>
-    on FlutterRustBridgeBase<T> {
+mixin FlutterRustBridgeSetupMixin<T extends FlutterRustBridgeWireBase> on FlutterRustBridgeBase<T> {
   /// Inside your [setup], please call ffi functions with hint=[kHintSetup].
   static const kHintSetup = _FlutterRustBridgeSetupMixinSkipWaitHint._();
 
@@ -41,23 +41,19 @@ mixin FlutterRustBridgeSetupMixin<T extends FlutterRustBridgeWireBase>
   }
 
   @override
-  Future<S> executeNormal<S, E extends Object>(
-      FlutterRustBridgeTask<S, E> task) async {
+  Future<S> executeNormal<S, E extends Object>(FlutterRustBridgeTask<S, E> task) async {
     await _beforeExecute(task);
     return await super.executeNormal(task);
   }
 
   @override
-  Stream<S> executeStream<S, E extends Object>(
-      FlutterRustBridgeTask<S, E> task) async* {
+  Stream<S> executeStream<S, E extends Object>(FlutterRustBridgeTask<S, E> task) async* {
     await _beforeExecute(task);
     yield* super.executeStream(task);
   }
 
-  Future<void> _beforeExecute<S, E extends Object>(
-      FlutterRustBridgeTask<S, E> task) async {
-    if (!_setupCompleter.isCompleted &&
-        task.hint is! _FlutterRustBridgeSetupMixinSkipWaitHint) {
+  Future<void> _beforeExecute<S, E extends Object>(FlutterRustBridgeTask<S, E> task) async {
+    if (!_setupCompleter.isCompleted && task.hint is! _FlutterRustBridgeSetupMixinSkipWaitHint) {
       log('FlutterRustBridgeSetupMixin.beforeExecute start waiting setup to complete (task=${task.debugName})');
       await _setupCompleter.future;
       log('FlutterRustBridgeSetupMixin.beforeExecute end waiting setup to complete (task=${task.debugName})');
@@ -78,11 +74,9 @@ class _FlutterRustBridgeSetupMixinSkipWaitHint {
 }
 
 /// Add a timeout to [executeNormal]
-mixin FlutterRustBridgeTimeoutMixin<T extends FlutterRustBridgeWireBase>
-    on FlutterRustBridgeBase<T> {
+mixin FlutterRustBridgeTimeoutMixin<T extends FlutterRustBridgeWireBase> on FlutterRustBridgeBase<T> {
   @override
-  Future<S> executeNormal<S, E extends Object>(
-      FlutterRustBridgeTask<S, E> task) {
+  Future<S> executeNormal<S, E extends Object>(FlutterRustBridgeTask<S, E> task) {
     // capture a stack trace at *here*, such that when timeout, can have a good stack trace
     final stackTrace = StackTrace.current;
 
@@ -91,8 +85,8 @@ mixin FlutterRustBridgeTimeoutMixin<T extends FlutterRustBridgeWireBase>
     var future = super.executeNormal(task);
     if (timeLimitForExecuteNormal != null) {
       future = future.timeout(timeLimitForExecuteNormal,
-          onTimeout: () => throw FlutterRustBridgeTimeoutException(
-              timeLimitForExecuteNormal, task.debugName, stackTrace));
+          onTimeout: () =>
+              throw FlutterRustBridgeTimeoutException(timeLimitForExecuteNormal, task.debugName, stackTrace));
     }
 
     return future;
@@ -108,6 +102,7 @@ mixin FlutterRustBridgeTimeoutMixin<T extends FlutterRustBridgeWireBase>
 /// [cross-origin isolated]: https://developer.mozilla.org/en-US/docs/Web/API/crossOriginIsolated
 class MissingHeaderException implements Exception {
   const MissingHeaderException();
+
   static const _message = '''
 Buffers cannot be shared due to missing cross-origin headers.
 Make sure your web server responds with the following headers:
@@ -122,6 +117,7 @@ If running from Flutter, consider `flutter build web` and running a custom stati
 
 class PlatformMismatchException implements Exception {
   const PlatformMismatchException();
+
   static const _wasm = 'Not implemented on non-WASM platforms';
 
   @override
@@ -160,10 +156,8 @@ Uint8List api2wireConcatenateBytes(List<UuidValue> raw) {
 }
 
 List<UuidValue> wire2apiUuids(Uint8List raw) {
-  return List<UuidValue>.generate(
-      raw.lengthInBytes ~/ uuidSizeInBytes,
-      (int i) => UuidValue.fromByteList(
-          Uint8List.view(raw.buffer, i * uuidSizeInBytes, uuidSizeInBytes)),
+  return List<UuidValue>.generate(raw.lengthInBytes ~/ uuidSizeInBytes,
+      (int i) => UuidValue.fromByteList(Uint8List.view(raw.buffer, i * uuidSizeInBytes, uuidSizeInBytes)),
       growable: false);
 }
 

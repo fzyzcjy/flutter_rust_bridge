@@ -7,7 +7,7 @@ import 'package:js/js_util.dart';
 
 import 'dart:typed_data' hide Int64List, Uint64List;
 
-import '../helpers.dart' show UnmodifiableTypedListException;
+import 'helpers.dart' show UnmodifiableTypedListException;
 export 'dart:typed_data' hide Int64List, Uint64List;
 
 @JS('TypedArray')

@@ -1,9 +1,8 @@
 import 'package:meta/meta.dart';
+
 import 'ffi/io.dart' if (dart.library.html) 'ffi/web.dart';
 
-export 'ffi/stub.dart'
-    if (dart.library.io) 'ffi/io.dart'
-    if (dart.library.html) 'ffi/web.dart';
+export 'ffi/stub.dart' if (dart.library.io) 'ffi/io.dart' if (dart.library.html) 'ffi/web.dart';
 
 typedef DropFnType = void Function(PlatformPointer);
 typedef ShareFnType = PlatformPointer Function(PlatformPointer);
@@ -24,6 +23,7 @@ abstract class FrbOpaque extends FrbOpaqueBase {
 
   /// Displays the need to release ownership when sending to rust.
   bool _move = false;
+
   set move(bool move) => _move = move;
 
   /// Rust type specific drop function.
