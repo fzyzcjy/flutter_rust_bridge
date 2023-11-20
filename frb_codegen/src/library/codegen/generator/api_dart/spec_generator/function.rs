@@ -17,7 +17,6 @@ pub(crate) struct ApiDartGeneratedFunction {
     pub(crate) func_comments: String,
     pub(crate) func_expr: String,
     pub(crate) func_impl: String,
-    // pub(crate) companion_field_signature: String,
 }
 
 pub(crate) fn generate(
@@ -39,17 +38,10 @@ pub(crate) fn generate(
 
     let func_impl = generate_func_impl(func, &context.config.dart_entrypoint_class_name);
 
-    // TODO
-    // let const_meta_field_name = format!("k{}ConstMeta", func.name.to_case(Case::Pascal));
-    // let companion_field_signature =
-    //     format!("FlutterRustBridgeTaskConstMeta get {const_meta_field_name} => TODO;");
-
     ApiDartGeneratedFunction {
         func_comments,
         func_expr,
         func_impl,
-        // TODO
-        // companion_field_signature,
     }
 }
 

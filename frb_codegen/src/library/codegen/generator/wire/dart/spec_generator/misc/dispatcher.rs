@@ -9,6 +9,7 @@ use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::structure::IrTypeStructRef;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{Primitive, StructRef};
+use convert_case::{Case, Casing};
 use itertools::Itertools;
 
 pub(crate) fn generate_dispatcher_api_functions(
@@ -17,6 +18,8 @@ pub(crate) fn generate_dispatcher_api_functions(
 ) -> WireDartOutputCode {
     let api_dart_func =
         api_dart::spec_generator::function::generate(func, context.as_api_dart_context());
+
+    let const_meta_field_name = format!("k{}ConstMeta", func.name.to_case(Case::Pascal));
 
     let stmt_prepare_args = generate_stmt_prepare_args(func);
     let wire_param_list = generate_wire_param_list(func, stmt_prepare_args.len()).join(", ");
@@ -47,7 +50,7 @@ pub(crate) fn generate_dispatcher_api_functions(
         }}",
     );
 
-    let companion_field_implementation = generate_companion_field(func);
+    let companion_field_implementation = generate_companion_field(func, &const_meta_field_name);
 
     WireDartOutputCode {
         dispatcher_body: format!("{function_implementation}\n\n{companion_field_implementation}"),
@@ -152,7 +155,7 @@ fn generate_task_class(func: &IrFunc) -> &str {
     }
 }
 
-fn generate_companion_field(func: &IrFunc) -> String {
+fn generate_companion_field(func: &IrFunc, const_meta_field_name: &str) -> String {
     format!(
         r#"
         FlutterRustBridgeTaskConstMeta get {const_meta_field_name} => const FlutterRustBridgeTaskConstMeta(
