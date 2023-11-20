@@ -1,5 +1,7 @@
 import 'dart:ffi' as ffi;
 
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+
 // ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names
 // AUTO GENERATED FILE, DO NOT EDIT.
 //
@@ -12,17 +14,13 @@ class RustPlatform implements FlutterRustBridgeWireBase {
   late final dartApi = DartApiDl(init_frb_dart_api_dl);
 
   /// Holds the symbol lookup function.
-  final ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName)
-      _lookup;
+  final ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName) _lookup;
 
   /// The symbols are looked up in [dynamicLibrary].
-  RustPlatform(ffi.DynamicLibrary dynamicLibrary)
-      : _lookup = dynamicLibrary.lookup;
+  RustPlatform(ffi.DynamicLibrary dynamicLibrary) : _lookup = dynamicLibrary.lookup;
 
   /// The symbols are looked up with [lookup].
-  RustPlatform.fromLookup(
-      ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName)
-          lookup)
+  RustPlatform.fromLookup(ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName) lookup)
       : _lookup = lookup;
 
   void store_dart_post_cobject(
@@ -34,10 +32,8 @@ class RustPlatform implements FlutterRustBridgeWireBase {
   }
 
   late final _store_dart_post_cobjectPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>(
-          'store_dart_post_cobject');
-  late final _store_dart_post_cobject = _store_dart_post_cobjectPtr
-      .asFunction<void Function(DartPostCObjectFnType)>();
+      _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>('store_dart_post_cobject');
+  late final _store_dart_post_cobject = _store_dart_post_cobjectPtr.asFunction<void Function(DartPostCObjectFnType)>();
 
   Object get_dart_object(
     int ptr,
@@ -47,11 +43,8 @@ class RustPlatform implements FlutterRustBridgeWireBase {
     );
   }
 
-  late final _get_dart_objectPtr =
-      _lookup<ffi.NativeFunction<ffi.Handle Function(ffi.UintPtr)>>(
-          'get_dart_object');
-  late final _get_dart_object =
-      _get_dart_objectPtr.asFunction<Object Function(int)>();
+  late final _get_dart_objectPtr = _lookup<ffi.NativeFunction<ffi.Handle Function(ffi.UintPtr)>>('get_dart_object');
+  late final _get_dart_object = _get_dart_objectPtr.asFunction<Object Function(int)>();
 
   void drop_dart_object(
     int ptr,
@@ -61,11 +54,8 @@ class RustPlatform implements FlutterRustBridgeWireBase {
     );
   }
 
-  late final _drop_dart_objectPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.UintPtr)>>(
-          'drop_dart_object');
-  late final _drop_dart_object =
-      _drop_dart_objectPtr.asFunction<void Function(int)>();
+  late final _drop_dart_objectPtr = _lookup<ffi.NativeFunction<ffi.Void Function(ffi.UintPtr)>>('drop_dart_object');
+  late final _drop_dart_object = _drop_dart_objectPtr.asFunction<void Function(int)>();
 
   int new_dart_opaque(
     Object handle,
@@ -75,11 +65,8 @@ class RustPlatform implements FlutterRustBridgeWireBase {
     );
   }
 
-  late final _new_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.UintPtr Function(ffi.Handle)>>(
-          'new_dart_opaque');
-  late final _new_dart_opaque =
-      _new_dart_opaquePtr.asFunction<int Function(Object)>();
+  late final _new_dart_opaquePtr = _lookup<ffi.NativeFunction<ffi.UintPtr Function(ffi.Handle)>>('new_dart_opaque');
+  late final _new_dart_opaque = _new_dart_opaquePtr.asFunction<int Function(Object)>();
 
   int init_frb_dart_api_dl(
     ffi.Pointer<ffi.Void> obj,
@@ -90,10 +77,8 @@ class RustPlatform implements FlutterRustBridgeWireBase {
   }
 
   late final _init_frb_dart_api_dlPtr =
-      _lookup<ffi.NativeFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>)>>(
-          'init_frb_dart_api_dl');
-  late final _init_frb_dart_api_dl = _init_frb_dart_api_dlPtr
-      .asFunction<int Function(ffi.Pointer<ffi.Void>)>();
+      _lookup<ffi.NativeFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>)>>('init_frb_dart_api_dl');
+  late final _init_frb_dart_api_dl = _init_frb_dart_api_dlPtr.asFunction<int Function(ffi.Pointer<ffi.Void>)>();
 
   void wire_simple_adder(
     int port_,
@@ -107,27 +92,21 @@ class RustPlatform implements FlutterRustBridgeWireBase {
     );
   }
 
-  late final _wire_simple_adderPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>(
-      'wire_simple_adder');
-  late final _wire_simple_adder =
-      _wire_simple_adderPtr.asFunction<void Function(int, int, int)>();
+  late final _wire_simple_adderPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>('wire_simple_adder');
+  late final _wire_simple_adder = _wire_simple_adderPtr.asFunction<void Function(int, int, int)>();
 
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
   }
 
   late final _dummy_method_to_enforce_bundlingPtr =
-      _lookup<ffi.NativeFunction<ffi.Int64 Function()>>(
-          'dummy_method_to_enforce_bundling');
-  late final _dummy_method_to_enforce_bundling =
-      _dummy_method_to_enforce_bundlingPtr.asFunction<int Function()>();
+      _lookup<ffi.NativeFunction<ffi.Int64 Function()>>('dummy_method_to_enforce_bundling');
+  late final _dummy_method_to_enforce_bundling = _dummy_method_to_enforce_bundlingPtr.asFunction<int Function()>();
 }
 
 final class _Dart_Handle extends ffi.Opaque {}
 
-typedef DartPostCObjectFnType = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Bool Function(DartPort port_id, ffi.Pointer<ffi.Void> message)>>;
+typedef DartPostCObjectFnType
+    = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(DartPort port_id, ffi.Pointer<ffi.Void> message)>>;
 typedef DartPort = ffi.Int64;
