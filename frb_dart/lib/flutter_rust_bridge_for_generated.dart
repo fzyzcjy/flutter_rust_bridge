@@ -1,4 +1,7 @@
-/// This library should only be used by auto-generated code, instead of the developers.
+/// {@template flutter_rust_bridge.only_for_generated_code}
+/// This is only intended to be used by automatically generated code,
+/// instead of developers.
+/// {@endtemplate}
 library;
 
 export 'package:meta/meta.dart' show internal;

@@ -9,6 +9,7 @@ import 'generalized_isolate/generalized_isolate.dart';
 // * This should be a singleton per flutter_rust_bridge usage (enforced via generated subclass code).
 // * This class is like "service locator" (e.g. the get_it package) for all services
 //   related to flutter_rust_bridge.
+/// {@macro flutter_rust_bridge.only_for_generated_code}
 abstract class BaseEntrypoint<D extends BaseDispatcher> {
   /// Whether the system has been initialized.
   bool get initialized => __state != null;
