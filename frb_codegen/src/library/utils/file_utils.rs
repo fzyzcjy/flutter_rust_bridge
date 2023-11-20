@@ -37,3 +37,49 @@ pub fn create_dir_all_and_write<P: AsRef<Path>, C: AsRef<[u8]>>(
     }
     inner(path.as_ref(), contents.as_ref())
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::utils::file_utils::temp_change_file;
+    use std::fs;
+
+    #[test]
+    fn test_temp_change_file_when_file_already_exists() -> anyhow::Result<()> {
+        let dir = tempfile::tempdir()?;
+        let file = dir.path().join("hello.txt");
+
+        fs::write(&file.path(), "a")?;
+
+        assert_eq!(fs::read_to_string(&file.path())?, "a");
+
+        let change = temp_change_file(file.path().to_owned(), |text| text + "b")?;
+
+        assert_eq!(fs::read_to_string(&file.path())?, "ab");
+
+        drop(change);
+
+        assert_eq!(fs::read_to_string(&file.path())?, "a");
+
+        drop(dir);
+        Ok(())
+    }
+
+    #[test]
+    fn test_temp_change_file_when_file_not_exist() -> anyhow::Result<()> {
+        let dir = tempfile::tempdir()?;
+        let file = dir.path().join("hello.txt");
+
+        assert_eq!(file.exists(), false);
+
+        let change = temp_change_file(file.path().to_owned(), |text| text + "b")?;
+
+        assert_eq!(fs::read_to_string(&file.path())?, "b");
+
+        drop(change);
+
+        assert_eq!(file.exists(), false);
+
+        drop(dir);
+        Ok(())
+    }
+}
