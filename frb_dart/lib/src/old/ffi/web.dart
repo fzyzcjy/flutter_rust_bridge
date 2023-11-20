@@ -78,9 +78,9 @@ class _Function {
   external factory _Function(String script);
 }
 
+dynamic eval(String script) => _Function(script)();
+
 @JS('wasm_bindgen')
 external WasmModule? get _noModules;
-
-dynamic eval(String script) => _Function(script)();
 
 abstract class DartApiDl {}
