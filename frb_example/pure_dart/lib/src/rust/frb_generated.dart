@@ -3,7 +3,7 @@
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 
 /// Main entrypoint of the Rust API
-class FrbExamplePureDart extends BaseEntrypoint {
+class FrbExamplePureDart extends BaseEntrypoint<FrbExamplePureDartDispatcher> {
   static final instance = FrbExamplePureDart._();
 
   FrbExamplePureDart._();
