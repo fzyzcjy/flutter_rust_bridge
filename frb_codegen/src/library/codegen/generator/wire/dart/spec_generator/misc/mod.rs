@@ -22,8 +22,32 @@ pub(crate) fn generate(
     }
 }
 
-fn generate_boilerplate() -> String {
-    todo!()
+fn generate_boilerplate(entrypoint_class_name: &str) -> String {
+    let dispatcher_name = format!("{}Dispatcher", entrypoint_class_name);
+
+    format!(
+        r#"
+        /// Main entrypoint of the Rust API
+        class {entrypoint_class_name} extends BaseEntrypoint<{dispatcher_name}> {{
+          @internal
+          static final instance = {entrypoint_class_name}._();
+
+          {entrypoint_class_name}._();
+
+          static Future<void> init({{
+            {dispatcher_name}? dispatcher,
+          }}) async {{
+            await instance.initImpl(dispatcher: dispatcher ?? {dispatcher_name}());
+          }}
+        }}
+        
+        class {dispatcher_name} extends BaseDispatcher {{
+          {dispatcher_name}({{super.handler}});
+
+          // TODO
+        }}
+        "#
+    )
 }
 
 fn compute_needs_freezed(cache: &IrPackComputedCache, ir_pack: &IrPack) -> bool {
