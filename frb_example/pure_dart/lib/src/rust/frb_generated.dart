@@ -1,7 +1,6 @@
 // TODO this is manually written to prototype the API
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
-import 'package:meta/meta.dart';
 
 /// Main entrypoint of the Rust API
 class Rust extends BaseEntrypoint<RustDispatcher> {
