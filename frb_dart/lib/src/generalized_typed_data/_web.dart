@@ -133,7 +133,7 @@ class Uint64List extends TypedList<BigInt> {
   BigInt js2dart(Object? value) => _castBigInt(value!);
 
   @override
-  dart2js(Object? value) => _convertBigInt(value!);
+  dynamic dart2js(Object? value) => _convertBigInt(value!);
 
   factory Uint64List(int length) => Uint64List.from(BigUint64Array(length));
 
