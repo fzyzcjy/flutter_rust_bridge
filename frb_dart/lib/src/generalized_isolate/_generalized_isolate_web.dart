@@ -5,8 +5,6 @@ import 'dart:async';
 import 'dart:html' as html;
 import 'dart:html' hide MessagePort;
 
-import 'package:flutter_rust_bridge/src/ffi/web.dart';
-
 typedef MessagePort = PortLike;
 
 /// An alias to [MessagePort] on web platforms.
