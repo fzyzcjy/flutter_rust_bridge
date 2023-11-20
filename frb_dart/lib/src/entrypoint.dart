@@ -21,6 +21,11 @@ abstract class BaseEntrypoint<D extends BaseDispatcher> {
   }
 
   @protected
+  void disposeImpl() {
+    TODO;
+  }
+
+  @protected
   D createDefaultDispatcher();
 }
 

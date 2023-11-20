@@ -14,6 +14,12 @@ class Rust extends BaseEntrypoint<RustDispatcher> {
     await instance.initImpl(dispatcher: dispatcher);
   }
 
+  /// Dispose flutter_rust_bridge
+  ///
+  /// The call to this function is optional, since flutter_rust_bridge (and everything else)
+  /// is automatically disposed when the app stops.
+  static void dispose() => instance.disposeImpl();
+
   @override
   RustDispatcher createDefaultDispatcher() => RustDispatcher();
 }
