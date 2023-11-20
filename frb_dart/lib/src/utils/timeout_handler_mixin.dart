@@ -1,4 +1,4 @@
-import 'package:flutter_rust_bridge/src/handler.dart';
+import 'package:flutter_rust_bridge/src/main_components/handler.dart';
 import 'package:flutter_rust_bridge/src/task.dart';
 import 'package:meta/meta.dart';
 

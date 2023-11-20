@@ -1,9 +1,8 @@
-import 'package:flutter_rust_bridge/src/dispatcher.dart';
+import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
+import 'package:flutter_rust_bridge/src/main_components/dispatcher.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:flutter_rust_bridge/src/utils/port_generator.dart';
 import 'package:meta/meta.dart';
-
-import 'generalized_isolate/generalized_isolate.dart';
 
 /// This is the main entrypoint.
 /// For example, users call `init` on it, and auto-generated code call `dispatcher` on it.

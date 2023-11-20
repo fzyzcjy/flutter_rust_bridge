@@ -1,4 +1,4 @@
-import 'package:flutter_rust_bridge/src/handler.dart';
+import 'package:flutter_rust_bridge/src/main_components/handler.dart';
 import 'package:meta/meta.dart';
 
 /// The main workhorse for Dart-Rust calls, thus it is called "bulk".

@@ -1,4 +1,4 @@
-import 'package:flutter_rust_bridge/src/bulk.dart';
+import 'package:flutter_rust_bridge/src/main_components/bulk.dart';
 
 /// A thin layer to dispatch calls.
 ///
