@@ -80,5 +80,5 @@ fn generate_func_impl(func: &IrFunc, dart_entrypoint_class_name: &str) -> String
         .iter()
         .map(|input| format!("{name}: {name}", name = input.name.dart_style()))
         .join(", ");
-    format!("{dart_entrypoint_class_name}.instance.dispatcher.simpleAdder({param_forwards})")
+    format!("{dart_entrypoint_class_name}.instance.dispatcher.simpleAdder({param_forwards}, hint: hint)")
 }
