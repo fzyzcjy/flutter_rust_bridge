@@ -1,7 +1,6 @@
 import 'package:flutter_rust_bridge/src/consts.dart';
 import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/generalized_typed_data/generalized_typed_data.dart';
-import 'package:meta/meta.dart';
 import 'package:uuid/uuid.dart';
 
 export '_io.dart' if (dart.library.html) '_web.dart';
@@ -11,6 +10,7 @@ export '_io.dart' if (dart.library.html) '_web.dart';
 
 // ------------------------------------- api2wire -------------------------------------------
 
+/// {@macro flutter_rust_bridge.only_for_generated_code}
 Uint8List api2wireConcatenateBytes(List<UuidValue> raw) {
   var builder = BytesBuilder();
   for (final element in raw) {
@@ -21,9 +21,10 @@ Uint8List api2wireConcatenateBytes(List<UuidValue> raw) {
 
 // ------------------------------------- wire2api -------------------------------------------
 
-@internal
+/// {@macro flutter_rust_bridge.only_for_generated_code}
 PanicException wire2apiPanicError(dynamic raw) => PanicException(raw as String);
 
+/// {@macro flutter_rust_bridge.only_for_generated_code}
 DateTime wire2apiTimestamp({required int ts, required bool isUtc}) {
   if (kIsWeb) {
     return DateTime.fromMillisecondsSinceEpoch(ts, isUtc: isUtc);
@@ -31,6 +32,7 @@ DateTime wire2apiTimestamp({required int ts, required bool isUtc}) {
   return DateTime.fromMicrosecondsSinceEpoch(ts, isUtc: isUtc);
 }
 
+/// {@macro flutter_rust_bridge.only_for_generated_code}
 Duration wire2apiDuration(int ts) {
   if (kIsWeb) {
     return Duration(milliseconds: ts);
@@ -40,6 +42,7 @@ Duration wire2apiDuration(int ts) {
 
 const _kUuidSizeInBytes = 16;
 
+/// {@macro flutter_rust_bridge.only_for_generated_code}
 List<UuidValue> wire2apiUuids(Uint8List raw) {
   return List<UuidValue>.generate(raw.lengthInBytes ~/ _kUuidSizeInBytes,
       (int i) => UuidValue.fromByteList(Uint8List.view(raw.buffer, i * _kUuidSizeInBytes, _kUuidSizeInBytes)),

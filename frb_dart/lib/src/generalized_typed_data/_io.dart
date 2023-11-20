@@ -33,15 +33,20 @@ class Int64List extends _TypedList<BigInt> {
   @override
   final $data.Int64List inner;
 
+  /// Construct a list from normal Int64List
   Int64List.from(this.inner);
 
+  /// Construct a list of the [length].
   factory Int64List(int length) => Int64List.from($data.Int64List(length));
 
+  /// Construct a list from `List<int>`.
   Int64List.fromList(List<int> ints) : inner = $data.Int64List.fromList(ints);
 
+  /// Construct a list view
   Int64List.view($data.ByteBuffer buffer, [int offsetInBytes = 0, int? length])
       : inner = $data.Int64List.view(buffer, offsetInBytes, length);
 
+  /// Construct a sub-list view
   Int64List.sublistView($data.TypedData data, [int start = 0, int? end])
       : inner = $data.Int64List.sublistView(data, start, end);
 
@@ -72,15 +77,20 @@ class Uint64List extends _TypedList<BigInt> {
   @override
   final $data.Uint64List inner;
 
+  /// Construct a list from normal Int64List
   Uint64List.from(this.inner);
 
+  /// Construct a list of the [length].
   factory Uint64List(int length) => Uint64List.from($data.Uint64List(length));
 
+  /// Construct a list from `List<int>`.
   Uint64List.fromList(List<int> ints) : inner = $data.Uint64List.fromList(ints);
 
+  /// Construct a list view
   Uint64List.view($data.ByteBuffer buffer, [int offsetInBytes = 0, int? length])
       : inner = $data.Uint64List.view(buffer, offsetInBytes, length);
 
+  /// Construct a sub-list view
   Uint64List.sublistView($data.TypedData data, [int start = 0, int? end])
       : inner = $data.Uint64List.sublistView(data, start, end);
 

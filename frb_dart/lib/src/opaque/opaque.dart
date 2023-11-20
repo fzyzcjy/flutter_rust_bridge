@@ -5,8 +5,11 @@ import '_io.dart' if (dart.library.html) '_web.dart';
 
 export '_io.dart' if (dart.library.html) '_web.dart';
 
-typedef DropFnType = void Function(PlatformPointer);
-typedef ShareFnType = PlatformPointer Function(PlatformPointer);
+/// The type of [FrbOpaque] drop function
+typedef OpaqueDropFnType = void Function(PlatformPointer);
+
+/// The type of [FrbOpaque] share function
+typedef OpaqueShareFnType = PlatformPointer Function(PlatformPointer);
 
 /// An opaque pointer to a native C or Rust type.
 /// Recipients of this type should call [dispose] at least once during runtime.
@@ -27,12 +30,12 @@ abstract class FrbOpaque extends FrbOpaqueBase {
   /// Rust type specific drop function.
   ///
   /// This function should never be called manually.
-  DropFnType get dropFn;
+  OpaqueDropFnType get dropFn;
 
   /// Rust type specific share function.
   ///
   /// This function should never be called manually.
-  ShareFnType get shareFn;
+  OpaqueShareFnType get shareFn;
 
   /// This constructor should never be called manually.
   @internal

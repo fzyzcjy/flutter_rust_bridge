@@ -4,6 +4,7 @@ import 'dart:ffi';
 import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/consts.dart';
+import 'package:meta/meta.dart';
 
 import '../ffigen_generated/dart_native_api.dart';
 
@@ -11,6 +12,8 @@ export 'dart:ffi' show NativePort, DynamicLibrary;
 
 export '../ffigen_generated/dart_native_api.dart' show Dart_CObject;
 
+/// {@macro flutter_rust_bridge.internal}
+@internal
 dynamic dartCObjectIntoDart(Dart_CObject object) {
   switch (object.type) {
     case Dart_CObject_Type.Dart_CObject_kNull:
@@ -59,8 +62,8 @@ dynamic dartCObjectIntoDart(Dart_CObject object) {
         _ExternalTypedDataFinalizerArgs(
           length: object.value.as_external_typed_data.length,
           peer: object.value.as_external_typed_data.peer,
-          callback:
-              object.value.as_external_typed_data.callback.cast<ffi.NativeFunction<NativeExternalTypedDataFinalizer>>(),
+          callback: object.value.as_external_typed_data.callback
+              .cast<ffi.NativeFunction<_NativeExternalTypedDataFinalizer>>(),
         ),
       );
       return externalTypedData;
@@ -130,11 +133,11 @@ _TypedData _typedDataIntoDart({
 }
 
 final _externalTypedDataFinalizer = Finalizer<_ExternalTypedDataFinalizerArgs>((externalTypedData) {
-  final handleFinalizer = externalTypedData.callback.asFunction<DartExternalTypedDataFinalizer>();
+  final handleFinalizer = externalTypedData.callback.asFunction<_DartExternalTypedDataFinalizer>();
   handleFinalizer(externalTypedData.length, externalTypedData.peer);
 
   if (kEnableFrbFfiTestTool) {
-    for (var handler in testTool!.onExternalTypedDataFinalizer) {
+    for (var handler in _testTool!.onExternalTypedDataFinalizer) {
       handler(externalTypedData.length);
     }
   }
@@ -152,7 +155,7 @@ class _TypedData<T> {
 class _ExternalTypedDataFinalizerArgs {
   final int length;
   final ffi.Pointer<ffi.Void> peer;
-  final ffi.Pointer<ffi.NativeFunction<NativeExternalTypedDataFinalizer>> callback;
+  final ffi.Pointer<ffi.NativeFunction<_NativeExternalTypedDataFinalizer>> callback;
 
   _ExternalTypedDataFinalizerArgs({
     required this.length,
@@ -161,13 +164,13 @@ class _ExternalTypedDataFinalizerArgs {
   });
 }
 
-typedef NativeExternalTypedDataFinalizer = ffi.Void Function(ffi.IntPtr, ffi.Pointer<ffi.Void>);
-typedef DartExternalTypedDataFinalizer = void Function(int, ffi.Pointer<ffi.Void>);
+typedef _NativeExternalTypedDataFinalizer = ffi.Void Function(ffi.IntPtr, ffi.Pointer<ffi.Void>);
+typedef _DartExternalTypedDataFinalizer = void Function(int, ffi.Pointer<ffi.Void>);
 
-class TestTool {
+class _TestTool {
   final Set<void Function(int)> onExternalTypedDataFinalizer = {};
 
-  TestTool._();
+  _TestTool._();
 }
 
-final testTool = kEnableFrbFfiTestTool ? TestTool._() : null;
+final _testTool = kEnableFrbFfiTestTool ? _TestTool._() : null;

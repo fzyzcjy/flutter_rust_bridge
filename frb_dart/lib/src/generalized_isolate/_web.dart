@@ -8,20 +8,27 @@ import 'dart:html' hide MessagePort;
 import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
 import 'package:flutter_rust_bridge/src/utils/web_utils.dart';
 
+/// {@macro flutter_rust_bridge.only_for_generated_code}
 typedef MessagePort = PortLike;
 
 /// An alias to [MessagePort] on web platforms.
 typedef SendPort = PortLike;
 
+/// {@macro flutter_rust_bridge.only_for_generated_code}
 abstract class Channel {
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   SendPort get sendPort;
 
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   SendPort get receivePort;
 
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   const Channel();
 
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   factory Channel.messageChannel() = _MessageChannelWrapper;
 
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   factory Channel.broadcastChannel(String channelName) = _BroadcastChannelWrapper;
 }
 
@@ -52,6 +59,7 @@ class RawReceivePort {
   /// The underlying message channel.
   final Channel channel;
 
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   RawReceivePort([Channel? channel]) : channel = channel ?? Channel.messageChannel();
 
   set handler(Function(dynamic) handler) {
@@ -100,18 +108,24 @@ class ReceivePort extends Stream<dynamic> {
   void close() => port.receivePort.close();
 }
 
+/// {@macro flutter_rust_bridge.internal}
 ReceivePort broadcastPort(String channelName) => ReceivePort(RawReceivePort(Channel.broadcastChannel(channelName)));
 
 /// [html.MessagePort]'s interface.
 abstract class PortLike extends EventTarget {
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   factory PortLike.messagePort(html.MessagePort port) = _MessagePortWrapper;
 
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   factory PortLike.broadcastChannel(BroadcastChannel channel) = _BroadcastPortWrapper;
 
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   void postMessage(Object? value);
 
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   void close();
 
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   NativePortType get nativePort;
 }
 

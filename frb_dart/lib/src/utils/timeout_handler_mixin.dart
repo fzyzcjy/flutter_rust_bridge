@@ -37,6 +37,7 @@ class FrbTimeoutException {
   /// The stack trace of the error
   final StackTrace stackTrace;
 
+  /// Constructs the exception
   const FrbTimeoutException(this.duration, this.debugName, this.stackTrace);
 
   @override

@@ -9,11 +9,13 @@ import 'dart:async';
 /// Please refer to [Setting up the web server](http://cjycode.com/flutter_rust_bridge/build_wasm.html#setting-up-the-web-server)
 /// for an example of a Dart web server that accomplishes this task.
 abstract class WasmModule {
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   Object call([String? moduleName]);
 
   /// Create a new WASM module initializer that is bound to the specified binary.
   WasmModule bind(dynamic thisArg, String moduleName);
 
+  /// Cast the module into type `T`
   static Future<T> cast<T extends WasmModule>(FutureOr<WasmModule> module) {
     return Future.value(module).then((module) => module as T);
   }
@@ -28,6 +30,7 @@ abstract class WasmModule {
 /// Advanced users may wish to inherit this class and override [initializeModule]
 /// to provide their own initialization process.
 abstract class Modules {
+  /// Construct modules
   const Modules();
 
   /// Initialize a `wasm_bindgen` module built with the `-t no-modules` flag.
