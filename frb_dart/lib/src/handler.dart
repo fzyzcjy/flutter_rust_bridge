@@ -11,7 +11,7 @@ class BaseHandler {
   /// Execute a normal ffi call. Usually called by generated code instead of manually called.
   Future<S> executeNormal<S, E extends Object>(NormalTask<S, E> task) {
     final completer = Completer<dynamic>();
-    final sendPort = singleCompletePort(completer);
+    final SendPort sendPort = singleCompletePort(completer);
     task.callFfi(sendPort.nativePort);
     return completer.future
         .then((dynamic raw) => _transformRust2DartMessage(raw, task.parseSuccessData, task.parseErrorData));
