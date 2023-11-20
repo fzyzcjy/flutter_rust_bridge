@@ -13,7 +13,7 @@ use crate::library::codegen::ir::ty::IrTypeTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 
-pub(crate) fn generate_dispatcher_api_functions(
+pub(crate) fn generate_dispatcher_api_function(
     func: &IrFunc,
     context: WireDartGeneratorContext,
 ) -> WireDartOutputCode {
@@ -195,7 +195,10 @@ fn has_methods_for_struct_name(struct_name: &str, ir_pack: &IrPack) -> bool {
         .any(|f| matches!(&f.owner, IrFuncOwnerInfo::Method(m) if m.struct_name == struct_name))
 }
 
-pub(crate) fn generate_dispatcher_opaque_getters() -> WireDartOutputCode {
+pub(crate) fn generate_dispatcher_opaque_getter(
+    func: &IrFunc,
+    context: WireDartGeneratorContext,
+) -> WireDartOutputCode {
     WireDartOutputCode {
         dispatcher_body: todo!(),
         ..Default::default()
