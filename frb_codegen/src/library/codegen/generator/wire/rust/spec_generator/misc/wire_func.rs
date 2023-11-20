@@ -237,7 +237,7 @@ fn generate_redirect_body(func: &IrFunc) -> String {
     )
 }
 
-fn wire_func_name(func: &IrFunc) -> String {
+pub(crate) fn wire_func_name(func: &IrFunc) -> String {
     format!("wire_{}", func.name)
 }
 
