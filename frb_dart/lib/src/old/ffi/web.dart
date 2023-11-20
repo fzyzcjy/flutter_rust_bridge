@@ -84,11 +84,3 @@ external WasmModule? get _noModules;
 dynamic eval(String script) => _Function(script)();
 
 abstract class DartApiDl {}
-
-@JS("wasm_bindgen.get_dart_object")
-// ignore: non_constant_identifier_names
-external Object getDartObject(int ptr);
-
-@JS("wasm_bindgen.drop_dart_object")
-// ignore: non_constant_identifier_names
-external void dropDartObject(int ptr);

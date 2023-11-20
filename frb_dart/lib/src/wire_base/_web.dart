@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:js_util';
 
 import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
+import 'package:js/js.dart';
 
 abstract class FlutterRustBridgeWireBase {
   void storeDartPostCObject() {}
@@ -31,3 +32,11 @@ class FlutterRustBridgeWasmWireBase<T extends WasmModule> extends FlutterRustBri
   FlutterRustBridgeWasmWireBase(FutureOr<T> module)
       : init = Future.value(module).then((module) => promiseToFuture(module()));
 }
+
+@JS("wasm_bindgen.get_dart_object")
+// ignore: non_constant_identifier_names
+external Object getDartObject(int ptr);
+
+@JS("wasm_bindgen.drop_dart_object")
+// ignore: non_constant_identifier_names
+external void dropDartObject(int ptr);
