@@ -1,5 +1,7 @@
 // TODO this is manually written to prototype the API
 
+import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+
 /// Main entrypoint of the Rust API
 class FrbExamplePureDart {
   static FrbExamplePureDartDispatcher get dispatcher =>
@@ -14,16 +16,11 @@ class FrbExamplePureDart {
   }
 }
 
-class FrbExamplePureDartDispatcher {
-  final FlutterRustBridgeHandler? handler;
-
-  FrbExamplePureDartDispatcher({this.handler});
+class FrbExamplePureDartDispatcher extends BaseDispatcher {
+  FrbExamplePureDartDispatcher({super.handler});
 
 // TODO auto gen code
 }
-
-// TODO move to runtime lib
-abstract class FlutterRustBridgeHandler {}
 
 // Section: c_binding
 // Section: impl_wire2api
