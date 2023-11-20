@@ -4,6 +4,7 @@ import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:flutter_rust_bridge/src/manual_impl.dart';
 import 'package:flutter_rust_bridge/src/platform_types.dart';
 import 'package:flutter_rust_bridge/src/task.dart';
+import 'package:flutter_rust_bridge/src/utils/single_complete_port.dart';
 
 class BaseHandler {
   /// Execute a normal ffi call. Usually called by generated code instead of manually called.
