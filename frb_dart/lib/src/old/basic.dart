@@ -67,7 +67,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 
   /// Execute a normal ffi call. Usually called by generated code instead of manually called.
   @protected
-  Future<S> executeNormal<S, E extends Object>(FlutterRustBridgeTask<S, E> task) {
+  Future<S> executeNormal<S, E extends Object>(NormalTask<S, E> task) {
     final completer = Completer<dynamic>();
     final sendPort = singleCompletePort(completer);
     task.callFfi(sendPort.nativePort);
@@ -77,7 +77,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 
   /// Similar to [executeNormal], except that this will return synchronously
   @protected
-  S executeSync<S, E extends Object>(FlutterRustBridgeSyncTask<S, E> task) {
+  S executeSync<S, E extends Object>(SyncTask<S, E> task) {
     final WireSyncReturn syncReturn;
     try {
       syncReturn = task.callFfi();
@@ -97,7 +97,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
 
   /// Similar to [executeNormal], except that this will return a [Stream] instead of a [Future].
   @protected
-  Stream<S> executeStream<S, E extends Object>(FlutterRustBridgeTask<S, E> task) async* {
+  Stream<S> executeStream<S, E extends Object>(NormalTask<S, E> task) async* {
     final func = task.constMeta.debugName;
     final nextIndex = _streamSinkNameIndex.update(func, (value) => value + 1, ifAbsent: () => 0);
     final name = '__frb_streamsink_${func}_$nextIndex';

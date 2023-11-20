@@ -45,11 +45,11 @@ abstract class BaseTask<S, E extends Object> {
 
 /// A task to call FFI function.
 @immutable
-class FlutterRustBridgeTask<S, E extends Object> extends BaseTask {
+class NormalTask<S, E extends Object> extends BaseTask {
   /// The underlying function to call FFI function, usually the generated wire function
   final void Function(NativePortType port) callFfi;
 
-  const FlutterRustBridgeTask({
+  const NormalTask({
     required this.callFfi,
     required super.parseSuccessData,
     required super.parseErrorData,
@@ -61,11 +61,27 @@ class FlutterRustBridgeTask<S, E extends Object> extends BaseTask {
 
 /// A task to call FFI function, but it is synchronous.
 @immutable
-class FlutterRustBridgeSyncTask<S, E extends Object> extends BaseTask {
+class SyncTask<S, E extends Object> extends BaseTask {
   /// The underlying function to call FFI function, usually the generated wire function
   final WireSyncReturn Function() callFfi;
 
-  const FlutterRustBridgeSyncTask({
+  const SyncTask({
+    required this.callFfi,
+    required super.parseSuccessData,
+    required super.parseErrorData,
+    required super.constMeta,
+    required super.argValues,
+    required super.hint,
+  });
+}
+
+/// A task to call FFI function.
+@immutable
+class StreamTask<S, E extends Object> extends BaseTask {
+  /// The underlying function to call FFI function, usually the generated wire function
+  final void Function(NativePortType port) callFfi;
+
+  const StreamTask({
     required this.callFfi,
     required super.parseSuccessData,
     required super.parseErrorData,
