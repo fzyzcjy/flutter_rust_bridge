@@ -91,6 +91,25 @@ mixin FlutterRustBridgeTimeoutMixin<T extends FlutterRustBridgeWireBase> on Flut
   Duration? get timeLimitForExecuteNormal;
 }
 
+/// Exception when timeout happens using [FlutterRustBridgeTimeoutMixin]
+@immutable
+class FlutterRustBridgeTimeoutException {
+  /// The duration to trigger timeout
+  final Duration duration;
+
+  /// debugName of the task, usually the ffi function name
+  final String debugName;
+
+  /// The stack trace of the error
+  final StackTrace stackTrace;
+
+  const FlutterRustBridgeTimeoutException(this.duration, this.debugName, this.stackTrace);
+
+  @override
+  String toString() =>
+      'FlutterRustBridgeTimeoutException(debugName=$debugName, duration=$duration, stackTrace=$stackTrace)';
+}
+
 List<T?> mapNonNull<T, I>(List<I?> items, T Function(I) mapper) {
   final out = List<T?>.filled(items.length, null);
   for (var i = 0; i < items.length; ++i) {
