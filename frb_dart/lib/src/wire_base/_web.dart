@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:js_util';
 
 import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
 
