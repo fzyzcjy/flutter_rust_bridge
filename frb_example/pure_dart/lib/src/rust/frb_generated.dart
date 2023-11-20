@@ -1,5 +1,7 @@
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart.dart';
+
 /// Main entrypoint of the Rust API
 class Rust extends BaseEntrypoint<RustDispatcher> {
   @internal
@@ -27,6 +29,15 @@ class Rust extends BaseEntrypoint<RustDispatcher> {
 class RustDispatcher extends BaseDispatcher {
   RustDispatcher({super.handler});
 
+  Future<int> simpleAdder({required int a, required int b, dynamic hint}) {
+    return impl.simpleAdder(a: a, b: b, hint: hint);
+  }
+
+  TaskConstMeta get kSimpleAdderConstMeta => impl.kSimpleAdderConstMeta;
+}
+
+// TODO rename
+class RustImpl extends RustImplPlatform {
   Future<int> simpleAdder({required int a, required int b, dynamic hint}) {
     var arg0 = api2wire_i_32(a);
     var arg1 = api2wire_i_32(b);
