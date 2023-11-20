@@ -56,19 +56,13 @@ class RustImpl extends RustImplPlatform {
         debugName: "simple_adder",
         argNames: ["a", "b"],
       );
-}
 
-// Section: boilerplate
-// Section: dispatcher_api_functions
-// Section: dispatcher_opaque_getters
-// Section: c_binding
-// Section: impl_wire2api
-int _wire2api_i_32(dynamic raw) {
-  return raw as int;
-}
+  int _wire2api_i_32(dynamic raw) {
+    return raw as int;
+  }
 
-// Section: api2wire_funcs
-@protected
-int api2wire_i_32(int raw) {
-  return raw;
-} // Section: api_fill_to_wire_funcs
+  @protected
+  int api2wire_i_32(int raw) {
+    return raw;
+  }
+}
