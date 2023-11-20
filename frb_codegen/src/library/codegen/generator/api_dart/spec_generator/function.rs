@@ -15,7 +15,7 @@ use itertools::Itertools;
 #[derive(Debug)]
 pub(crate) struct GeneratedApiFunc {
     pub(crate) func_comments: String,
-    pub(crate) func_signature: String,
+    pub(crate) func_expr: String,
     pub(crate) func_impl: String,
     // pub(crate) companion_field_signature: String,
 }
@@ -35,7 +35,6 @@ pub(crate) fn generate_func(
             &ApiDartGenerator::new(func.output.clone(), context).dart_api_type()
         ),
     );
-    let func_signature = format!("{func_expr} {{ TODO; }}");
 
     let func_comments = generate_dart_comments(&func.comments);
 
@@ -48,7 +47,7 @@ pub(crate) fn generate_func(
 
     GeneratedApiFunc {
         func_comments,
-        func_signature,
+        func_expr,
         func_impl,
         // TODO
         // companion_field_signature,

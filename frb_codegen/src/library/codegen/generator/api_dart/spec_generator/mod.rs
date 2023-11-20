@@ -32,7 +32,7 @@ pub(crate) fn generate(
         .map(|func| {
             format!(
                 "{}{} => {};",
-                func.func_comments, func.func_signature, func.func_impl
+                func.func_comments, func.func_expr, func.func_impl
             )
         })
         .collect_vec();
