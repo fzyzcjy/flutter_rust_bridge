@@ -12,19 +12,19 @@
     },
     "wire": {
       "c": {
-        "c_output_path": "{the-working-directory}/bridge_generated.h",
+        "c_output_path": "{the-working-directory}/frb_generated.h",
         "rust_crate_dir": "{the-working-directory}",
         "rust_output_path": {
-          "common": "{the-working-directory}/src/bridge_generated.rs",
-          "io": "{the-working-directory}/src/bridge_generated.io.rs",
-          "wasm": "{the-working-directory}/src/bridge_generated.web.rs"
+          "common": "{the-working-directory}/src/frb_generated.rs",
+          "io": "{the-working-directory}/src/frb_generated.io.rs",
+          "wasm": "{the-working-directory}/src/frb_generated.web.rs"
         }
       },
       "dart": {
         "dart_impl_output_path": {
-          "common": "{the-working-directory}/my_dart_folder/bridge_generated.dart",
-          "io": "{the-working-directory}/my_dart_folder/bridge_generated.io.dart",
-          "wasm": "{the-working-directory}/my_dart_folder/bridge_generated.web.dart"
+          "common": "{the-working-directory}/my_dart_folder/frb_generated.dart",
+          "io": "{the-working-directory}/my_dart_folder/frb_generated.io.dart",
+          "wasm": "{the-working-directory}/my_dart_folder/frb_generated.web.dart"
         },
         "dart_root": "{the-working-directory}",
         "dart_wire_class_name": "Api",
@@ -50,11 +50,11 @@
       "rust": {
         "rust_crate_dir": "{the-working-directory}",
         "rust_output_path": {
-          "common": "{the-working-directory}/src/bridge_generated.rs",
-          "io": "{the-working-directory}/src/bridge_generated.io.rs",
-          "wasm": "{the-working-directory}/src/bridge_generated.web.rs"
+          "common": "{the-working-directory}/src/frb_generated.rs",
+          "io": "{the-working-directory}/src/frb_generated.io.rs",
+          "wasm": "{the-working-directory}/src/frb_generated.web.rs"
         },
-        "rust_wire_mod": "bridge_generated",
+        "rust_wire_mod": "frb_generated",
         "wasm_enabled": true
       }
     }
@@ -70,15 +70,15 @@
   "polisher": {
     "add_mod_to_lib": true,
     "build_runner": true,
-    "c_output_path": "{the-working-directory}/bridge_generated.h",
+    "c_output_path": "{the-working-directory}/frb_generated.h",
     "dart_format_line_length": 80,
     "dart_root": "{the-working-directory}",
     "duplicated_c_output_path": [],
     "rust_crate_dir": "{the-working-directory}",
     "rust_output_path": {
-      "common": "{the-working-directory}/src/bridge_generated.rs",
-      "io": "{the-working-directory}/src/bridge_generated.io.rs",
-      "wasm": "{the-working-directory}/src/bridge_generated.web.rs"
+      "common": "{the-working-directory}/src/frb_generated.rs",
+      "io": "{the-working-directory}/src/frb_generated.io.rs",
+      "wasm": "{the-working-directory}/src/frb_generated.web.rs"
     },
     "wasm_enabled": true
   },

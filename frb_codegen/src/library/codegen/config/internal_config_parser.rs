@@ -212,7 +212,7 @@ fn compute_dart_output_path_pack(
 
     DartOutputPathPack {
         dart_decl_output_path,
-        dart_impl_output_path: compute_path_map(&dart_output_dir.join("bridge_generated.dart")),
+        dart_impl_output_path: compute_path_map(&dart_output_dir.join("frb_generated.dart")),
     }
 }
 
@@ -248,7 +248,7 @@ fn compute_dart_class_name(
 }
 
 fn fallback_rust_output_path(rust_crate_dir: &Path) -> PathBuf {
-    rust_crate_dir.join("src").join("bridge_generated.rs")
+    rust_crate_dir.join("src").join("frb_generated.rs")
 }
 
 fn fallback_llvm_path() -> Vec<String> {

@@ -73,7 +73,7 @@ pub(crate) struct GenerateCommandArgs {
     #[arg(long)]
     pub dart_enums_style: bool,
 
-    /// Skip automatically adding `mod bridge_generated;` to `lib.rs`
+    /// Skip automatically adding `mod frb_generated;` to `lib.rs`
     #[arg(long)]
     pub no_add_mod_to_lib: bool,
 
