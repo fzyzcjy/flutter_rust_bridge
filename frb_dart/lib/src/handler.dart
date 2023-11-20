@@ -58,7 +58,7 @@ S _transformRust2DartMessage<S, E extends Object>(
     case _Rust2DartAction.success:
       return _parseData<S>(raw, parseSuccessData);
     case _Rust2DartAction.error:
-      throw _parseData<E>(raw, parseErrorData);
+      throw _parseData<E>(raw, parseErrorData!);
     case _Rust2DartAction.panic:
       throw _parseData<PanicException>(raw, wire2apiPanicError);
     case _Rust2DartAction.closeStream:
@@ -69,13 +69,9 @@ S _transformRust2DartMessage<S, E extends Object>(
   }
 }
 
-R _parseData<R>(List<dynamic> rawData, R Function(dynamic)? function) {
+R _parseData<R>(List<dynamic> rawData, R Function(dynamic) function) {
   assert(rawData.length == 2);
-  if (function != null) {
-    return function(rawData[1]);
-  }
-
-  throw Exception("tried to parse data but function is null");
+  return function(rawData[1]);
 }
 
 /// NOTE: Please keep in sync with the Rust side
