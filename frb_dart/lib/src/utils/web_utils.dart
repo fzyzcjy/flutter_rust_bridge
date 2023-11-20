@@ -18,3 +18,6 @@ dynamic jsEval(String script) => _Function(script)();
 /// Note: not available on all browsers, in which case it will return null.
 @JS()
 external bool? get crossOriginIsolated;
+
+@JS('BigInt')
+external Object castNativeBigInt(Object? value);
