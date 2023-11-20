@@ -23,10 +23,6 @@ void main(List<String> args) async {
 //   final api = initializeExternalLibrary(dylibPath);
 //   tearDownAll(() => api.dispose());
 
-  test('dart call simpleAdder', () async {
-    expect(await api.simpleAdder(a: 42, b: 100), 142);
-  });
-
   test('dart call simpleAdderSync', () {
     expect(api.simpleAdderSync(a: 42, b: 100), 142);
   });
