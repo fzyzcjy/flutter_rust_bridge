@@ -16,7 +16,7 @@ use itertools::Itertools;
 pub(crate) struct GeneratedApiFunc {
     pub(crate) func_comments: String,
     pub(crate) func_signature: String,
-    pub(crate) companion_field_signature: String,
+    // pub(crate) companion_field_signature: String,
 }
 
 pub(crate) fn generate_func(
@@ -38,14 +38,16 @@ pub(crate) fn generate_func(
 
     let func_comments = generate_dart_comments(&func.comments);
 
-    let const_meta_field_name = format!("k{}ConstMeta", func.name.to_case(Case::Pascal));
-    let companion_field_signature =
-        format!("FlutterRustBridgeTaskConstMeta get {const_meta_field_name} => TODO;");
+    // TODO
+    // let const_meta_field_name = format!("k{}ConstMeta", func.name.to_case(Case::Pascal));
+    // let companion_field_signature =
+    //     format!("FlutterRustBridgeTaskConstMeta get {const_meta_field_name} => TODO;");
 
     GeneratedApiFunc {
         func_comments,
         func_signature,
-        companion_field_signature,
+        // TODO
+        // companion_field_signature,
     }
 }
 
