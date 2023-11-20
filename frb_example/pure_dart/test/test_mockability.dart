@@ -11,10 +11,10 @@ Future<void> main() async {
   await FrbExamplePureDart.init(dispatcher: mock);
 
   test('can mock Rust calls', () async {
-    when(() => mock.simpleAdder()).thenReturn(123456789);
+    when(() => mock.simpleAdder(a: 1, b: 2)).thenAnswer((_) async => 123456789);
     final actualResult = await simpleAdder(a: 1, b: 2);
     expect(actualResult, isNot(3));
     expect(actualResult, equals(123456789));
-    verify(() => mock.simpleAdder()).called(1);
+    verify(() => mock.simpleAdder(a: 1, b: 2)).called(1);
   });
 }
