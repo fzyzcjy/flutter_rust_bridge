@@ -1,6 +1,5 @@
 use crate::basic_code_impl;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
-use crate::utils::basic_code::BasicCode;
 use itertools::Itertools;
 use std::ops::{Add, AddAssign};
 
@@ -12,8 +11,8 @@ pub(crate) struct WireRustOutputCode {
 
 basic_code_impl!(WireRustOutputCode);
 
-impl BasicCode for WireRustOutputCode {
-    fn all_code(&self) -> String {
+impl WireRustOutputCode {
+    pub(crate) fn all_code(&self) -> String {
         format!(
             "{}\n{}",
             self.direct_code,

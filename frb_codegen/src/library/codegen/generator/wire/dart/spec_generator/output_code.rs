@@ -1,5 +1,4 @@
 use crate::basic_code_impl;
-use crate::utils::basic_code::BasicCode;
 use std::ops::{Add, AddAssign};
 
 #[derive(Default, Clone)]
@@ -12,27 +11,6 @@ pub(crate) struct WireDartOutputCode {
 }
 
 basic_code_impl!(WireDartOutputCode);
-
-impl BasicCode for WireDartOutputCode {
-    fn all_code(&self, dispatcher_name: &str) -> String {
-        let dispatcher_name = format!("{}Dispatcher", entrypoint_class_name);
-        let dispatcher_class_code = format!(
-            "
-            class {dispatcher_name} extends BaseDispatcher {{
-              {dispatcher_name}({{super.handler}});
-
-              {dispatcher_body}
-            }}
-            ",
-            dispatcher_body = self.dispatcher_body,
-        );
-
-        format!(
-            "{}\n{}\n{}\n{}",
-            self.import, self.part, dispatcher_class_code, self.body
-        )
-    }
-}
 
 impl From<String> for WireDartOutputCode {
     fn from(body: String) -> Self {
@@ -68,5 +46,24 @@ impl WireDartOutputCode {
             part: "".to_string(),
             body: body.join("\n"),
         }
+    }
+
+    pub(crate) fn all_code(&self, dispatcher_name: &str) -> String {
+        let dispatcher_name = format!("{}Dispatcher", entrypoint_class_name);
+        let dispatcher_class_code = format!(
+            "
+            class {dispatcher_name} extends BaseDispatcher {{
+              {dispatcher_name}({{super.handler}});
+
+              {dispatcher_body}
+            }}
+            ",
+            dispatcher_body = self.dispatcher_body,
+        );
+
+        format!(
+            "{}\n{}\n{}\n{}",
+            self.import, self.part, dispatcher_class_code, self.body
+        )
     }
 }

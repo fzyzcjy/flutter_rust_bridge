@@ -6,7 +6,6 @@ use crate::codegen::generator::misc::text_generator_utils::{
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::spec_generator::WireRustOutputSpec;
-use crate::utils::basic_code::BasicCode;
 use crate::utils::path_utils::path_to_string;
 use itertools::Itertools;
 use strum::IntoEnumIterator;

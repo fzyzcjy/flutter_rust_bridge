@@ -1,9 +1,5 @@
 use std::ops::{Add, AddAssign};
 
-pub(crate) trait BasicCode: From<String> + Add {
-    fn all_code(&self) -> String;
-}
-
 #[doc(hidden)]
 #[macro_export]
 macro_rules! basic_code_impl {
