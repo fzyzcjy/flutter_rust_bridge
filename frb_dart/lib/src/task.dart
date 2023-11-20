@@ -2,8 +2,11 @@ import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:meta/meta.dart';
 
 /// Base class for various kinds of tasks.
-/// Note: Normally you do not manually create instances of this task (or its brothers), but instead
+///
+/// {@template flutter_rust_bridge.not_manually_create}
+/// Normally you do not manually create instances of this task (or its brothers), but instead
 /// it is generated automatically by the codegen.
+/// {@endtemplate}
 @immutable
 abstract class BaseTask<S, E extends Object> {
   /// Parse the returned data from the underlying function
@@ -36,11 +39,14 @@ abstract class BaseTask<S, E extends Object> {
 }
 
 /// A task to call FFI function.
+///
+/// {@macro flutter_rust_bridge.not_manually_create}
 @immutable
 class NormalTask<S, E extends Object> extends BaseTask<S, E> {
   /// The underlying function to call FFI function, usually the generated wire function
   final void Function(NativePortType port) callFfi;
 
+  /// Create a new task.
   const NormalTask({
     required this.callFfi,
     required super.parseSuccessData,
@@ -52,11 +58,14 @@ class NormalTask<S, E extends Object> extends BaseTask<S, E> {
 }
 
 /// A task to call FFI function, but it is synchronous.
+///
+/// {@macro flutter_rust_bridge.not_manually_create}
 @immutable
 class SyncTask<S, E extends Object> extends BaseTask<S, E> {
   /// The underlying function to call FFI function, usually the generated wire function
   final WireSyncReturn Function() callFfi;
 
+  /// Create a new task.
   const SyncTask({
     required this.callFfi,
     required super.parseSuccessData,
@@ -68,11 +77,14 @@ class SyncTask<S, E extends Object> extends BaseTask<S, E> {
 }
 
 /// A task to call FFI function.
+///
+/// {@macro flutter_rust_bridge.not_manually_create}
 @immutable
 class StreamTask<S, E extends Object> extends BaseTask<S, E> {
   /// The underlying function to call FFI function, usually the generated wire function
   final void Function(NativePortType port) callFfi;
 
+  /// Create a new task.
   const StreamTask({
     required this.callFfi,
     required super.parseSuccessData,

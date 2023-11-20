@@ -8,6 +8,7 @@ import 'package:flutter_rust_bridge/src/task.dart';
 import 'package:flutter_rust_bridge/src/utils/port_generator.dart';
 import 'package:flutter_rust_bridge/src/utils/single_complete_port.dart';
 
+/// Generically handles a Dart-Rust call.
 class BaseHandler {
   /// Execute a normal ffi call. Usually called by generated code instead of manually called.
   Future<S> executeNormal<S, E extends Object>(NormalTask<S, E> task) {
