@@ -85,7 +85,7 @@ abstract class TypedList<T> extends _SetAnyListMixin<T> {
   int get length => inner.length;
 
   @override
-  set length(int newLength) => throw UnmodifiableTypedListException();
+  set length(int newLength) => throw const UnmodifiableTypedListException();
 
   ByteBuffer get buffer => inner.buffer;
 }
