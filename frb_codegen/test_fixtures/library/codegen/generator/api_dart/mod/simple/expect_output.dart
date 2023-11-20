@@ -1,6 +1,8 @@
-import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+// ignore_for_file: invalid_use_of_internal_member
 
-        Future<void> firstFunction({ dynamic hint }) { TODO; }
+        import '../frb_generated.dart';
+
+        Future<void> firstFunction({ dynamic hint }) => Rust.instance.dispatcher.simpleAdder(, hint: hint);
 
         
         

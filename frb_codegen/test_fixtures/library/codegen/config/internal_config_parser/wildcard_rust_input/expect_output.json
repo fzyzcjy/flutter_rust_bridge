@@ -2,14 +2,12 @@
   "generator": {
     "api_dart": {
       "dart3": true,
-      "dart_api_class_name": "Apple",
-      "dart_api_instance_name": "bridge",
       "dart_decl_output_path": {
         "apple": "{the-working-directory}/my_dart_folder/api/apple.dart",
         "orange": "{the-working-directory}/my_dart_folder/api/orange.dart"
       },
-      "dart_enums_style": false,
-      "use_bridge_in_method": true
+      "dart_entrypoint_class_name": "Rust",
+      "dart_enums_style": false
     },
     "wire": {
       "c": {
@@ -22,13 +20,14 @@
         }
       },
       "dart": {
+        "dart_entrypoint_class_name": "Rust",
         "dart_impl_output_path": {
           "common": "{the-working-directory}/my_dart_folder/frb_generated.dart",
           "io": "{the-working-directory}/my_dart_folder/frb_generated.io.dart",
           "wasm": "{the-working-directory}/my_dart_folder/frb_generated.web.dart"
         },
+        "dart_platform_class_name": "RustPlatform",
         "dart_root": "{the-working-directory}",
-        "dart_wire_class_name": "Orange",
         "extra_headers": "",
         "llvm_compiler_opts": "",
         "llvm_path": [
@@ -45,7 +44,6 @@
           "C:/Program Files/llvm",
           "C:/msys64/mingw64"
         ],
-        "use_bridge_in_method": true,
         "wasm_enabled": true
       },
       "rust": {
