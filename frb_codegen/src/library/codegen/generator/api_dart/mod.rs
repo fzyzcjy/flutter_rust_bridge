@@ -16,7 +16,7 @@ pub(crate) fn generate(
     config: &GeneratorApiDartInternalConfig,
 ) -> Result<GeneratorApiDartOutput> {
     let spec = spec_generator::generate(ir_pack, config)?;
-    let text = text_generator::generate(spec, config)?;
+    let text = text_generator::generate(spec)?;
 
     Ok(GeneratorApiDartOutput {
         output_texts: PathTexts(vec![PathText::new(
