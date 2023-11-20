@@ -16,11 +16,19 @@ abstract class FlutterRustBridgeBaseTask {
   /// Transparent hint given by the caller of the method
   final dynamic hint;
 
+  /// Parse the returned data from the underlying function
+  final S Function(dynamic) parseSuccessData;
+
+  /// Parse the returned error data from the underlying function
+  final E Function(dynamic)? parseErrorData;
+
   /// Create a new task.
   const FlutterRustBridgeBaseTask({
     required this.constMeta,
     required this.argValues,
     required this.hint,
+    required this.parseSuccessData,
+    required this.parseErrorData,
   });
 
   /// Name usually used for logging or debugging

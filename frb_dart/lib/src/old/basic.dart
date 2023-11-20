@@ -160,16 +160,10 @@ class FlutterRustBridgeTask<S, E extends Object> extends FlutterRustBridgeBaseTa
   /// The underlying function to call FFI function, usually the generated wire function
   final void Function(NativePortType port) callFfi;
 
-  /// Parse the returned data from the underlying function
-  final S Function(dynamic) parseSuccessData;
-
-  /// Parse the returned error data from the underlying function
-  final E Function(dynamic)? parseErrorData;
-
   const FlutterRustBridgeTask({
     required this.callFfi,
-    required this.parseSuccessData,
-    required this.parseErrorData,
+    required super.parseSuccessData,
+    required super.parseErrorData,
     required FlutterRustBridgeTaskConstMeta constMeta,
     required List<dynamic> argValues,
     required dynamic hint,
@@ -186,16 +180,10 @@ class FlutterRustBridgeSyncTask<S, E extends Object> extends FlutterRustBridgeBa
   /// The underlying function to call FFI function, usually the generated wire function
   final WireSyncReturn Function() callFfi;
 
-  /// Parse the returned data from the underlying function
-  final S Function(dynamic) parseSuccessData;
-
-  /// Parse the returned errordata from the underlying function
-  final E Function(dynamic)? parseErrorData;
-
   const FlutterRustBridgeSyncTask({
     required this.callFfi,
-    required this.parseSuccessData,
-    required this.parseErrorData,
+    required super.parseSuccessData,
+    required super.parseErrorData,
     required FlutterRustBridgeTaskConstMeta constMeta,
     required List<dynamic> argValues,
     required dynamic hint,
