@@ -205,7 +205,9 @@ fn compute_dart_output_path_pack(
         .map(|&namespace| {
             (
                 namespace.to_owned(),
-                dart_output_dir.join(compute_dart_decl_output_filename(namespace)),
+                dart_output_dir
+                    .join("api")
+                    .join(compute_dart_decl_output_filename(namespace)),
             )
         })
         .collect();

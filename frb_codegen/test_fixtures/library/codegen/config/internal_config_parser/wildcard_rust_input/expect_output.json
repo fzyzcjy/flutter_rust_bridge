@@ -2,11 +2,11 @@
   "generator": {
     "api_dart": {
       "dart3": true,
-      "dart_api_class_name": "Apple",
+      "dart_api_class_name": "Orange",
       "dart_api_instance_name": "bridge",
       "dart_decl_output_path": {
-        "apple": "{the-working-directory}/my_dart_folder/apple.dart",
-        "orange": "{the-working-directory}/my_dart_folder/orange.dart"
+        "apple": "{the-working-directory}/my_dart_folder/api/apple.dart",
+        "orange": "{the-working-directory}/my_dart_folder/api/orange.dart"
       },
       "dart_enums_style": false,
       "use_bridge_in_method": true

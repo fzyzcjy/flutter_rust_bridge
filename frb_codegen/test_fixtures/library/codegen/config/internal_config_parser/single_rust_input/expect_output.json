@@ -5,7 +5,7 @@
       "dart_api_class_name": "Api",
       "dart_api_instance_name": "bridge",
       "dart_decl_output_path": {
-        "api": "{the-working-directory}/my_dart_folder/api.dart"
+        "api": "{the-working-directory}/my_dart_folder/api/api.dart"
       },
       "dart_enums_style": false,
       "use_bridge_in_method": true
