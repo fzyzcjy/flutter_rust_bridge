@@ -6,11 +6,9 @@ import 'package:test/test.dart';
 // Surely, you can use Mockito or whatever other mocking packages
 class MockFrbGeneratedPureDart extends Mock implements FrbGeneratedPureDart {}
 
-void main() {
-  // TODO p.s. use a mocking system that does not need code generation for simplicity
-  // TODO or, `FrbGeneratedPureDart.init(instance: theMockInstance)`?
+Future<void> main() async {
   final mockInstance = MockFrbGeneratedPureDart();
-  FrbGeneratedPureDart.instance = mockInstance;
+  await FrbGeneratedPureDart.init(mockInstance);
 
   test('can mock Rust calls', () async {
     when(() => mockInstance.simpleAdder()).thenReturn(123456789);
