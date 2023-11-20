@@ -1,6 +1,6 @@
-Future<void> firstFunction({ dynamic hint }) { TODO; }
+import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 
-FlutterRustBridgeTaskConstMeta get kFirstFunctionConstMeta => TODO;
+        Future<void> firstFunction({ dynamic hint }) { TODO; }
 
         
         
