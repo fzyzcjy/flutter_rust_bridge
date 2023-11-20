@@ -1,5 +1,5 @@
+import 'package:flutter_rust_bridge/src/generalized_typed_data/generalized_typed_data.dart';
 import 'package:test/test.dart';
-import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 
 final i64maxb = BigInt.parse('0x7FFFFFFFFFFFFFFF');
 final i64minb = BigInt.parse('-0x8000000000000000');
@@ -18,6 +18,7 @@ void main() {
       expect(buf[0], i64maxb, reason: 'max+1 (clamped)');
     }
   });
+
   test('Uint64List', () {
     final buf = Uint64List(2);
     buf[0] = u64maxb;
