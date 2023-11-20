@@ -47,10 +47,10 @@ abstract class BaseEntrypoint<D extends BaseDispatcher> {
 
 class _EntrypointState<D extends BaseDispatcher> {
   final D dispatcher;
-  final dropPortManager = _DropPortManager();
+  late final dropPortManager = _DropPortManager(dispatcher);
 
   _EntrypointState({required this.dispatcher}) {
-    _setUpRustToDartCommunication();
+    _setUpRustToDartCommunication(dispatcher);
   }
 
   void dispose() {
@@ -59,13 +59,17 @@ class _EntrypointState<D extends BaseDispatcher> {
 }
 
 class _DropPortManager {
+  final BaseDispatcher _dispatcher;
+
+  _DropPortManager(this._dispatcher);
+
   NativePortType get dropPort => _dropPort.sendPort.nativePort;
   late final _dropPort = _initDropPort();
 
   ReceivePort _initDropPort() {
     final port = broadcastPort(DropIdPortGenerator.create());
     port.listen((message) {
-      inner.drop_dart_object(message);
+      _dispatcher.inner.drop_dart_object(message);
     });
     return port;
   }
@@ -75,6 +79,6 @@ class _DropPortManager {
   }
 }
 
-void _setUpRustToDartCommunication() {
-  inner.storeDartPostCObject();
+void _setUpRustToDartCommunication(BaseDispatcher dispatcher) {
+  dispatcher.inner.storeDartPostCObject();
 }
