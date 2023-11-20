@@ -45,7 +45,7 @@
           "C:/msys64/mingw64"
         ],
         "use_bridge_in_method": true,
-        "wasm_enabled": false
+        "wasm_enabled": true
       },
       "rust": {
         "rust_crate_dir": "{the-working-directory}",
@@ -55,7 +55,7 @@
           "wasm": "{the-working-directory}/src/bridge_generated.web.rs"
         },
         "rust_wire_mod": "bridge_generated",
-        "wasm_enabled": false
+        "wasm_enabled": true
       }
     }
   },
@@ -80,7 +80,7 @@
       "io": "{the-working-directory}/src/bridge_generated.io.rs",
       "wasm": "{the-working-directory}/src/bridge_generated.web.rs"
     },
-    "wasm_enabled": false
+    "wasm_enabled": true
   },
   "preparer": {
     "dart_root": "{the-working-directory}",

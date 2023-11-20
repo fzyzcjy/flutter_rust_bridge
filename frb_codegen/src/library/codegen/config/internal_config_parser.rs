@@ -57,7 +57,7 @@ impl InternalConfig {
         let dart_root = (config.dart_root.map(PathBuf::from))
             .unwrap_or(find_dart_package_dir(&dart_output_dir)?);
 
-        let wasm_enabled = config.wasm.unwrap_or(false);
+        let wasm_enabled = config.wasm.unwrap_or(true);
         let use_bridge_in_method = config.use_bridge_in_method.unwrap_or(true);
         let dart_enums_style = config.dart_enums_style.unwrap_or(false);
         let dart3 = config.dart3.unwrap_or(true);

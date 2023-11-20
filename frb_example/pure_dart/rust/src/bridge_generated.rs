@@ -70,3 +70,10 @@ impl Wire2Api<i32> for i32 {
 mod io;
 #[cfg(not(target_family = "wasm"))]
 pub use io::*;
+
+/// cbindgen:ignore
+#[cfg((target_family = "wasm"))]
+#[path = "/Volumes/MyExternal/ExternalRefCode/flutter_rust_bridge/frb_example/pure_dart/rust/src/bridge_generated.web.rs"]
+mod web;
+#[cfg((target_family = "wasm"))]
+pub use web::*;
