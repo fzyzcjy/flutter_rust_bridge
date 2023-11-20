@@ -17,61 +17,10 @@ pub(crate) fn generate_dispatcher_api_functions(
     let api_dart_func =
         api_dart::spec_generator::function::generate(func, context.as_api_dart_context());
 
-    let prepare_args = func
-        .inputs
-        .iter()
-        .enumerate()
-        .map(|(index, input)| {
-            // edge case: ffigen performs its own bool-to-int conversions
-            if let Primitive(IrTypePrimitive::Bool) = input.ty {
-                format!("var arg{index} = {};", input.name.dart_style())
-            } else {
-                let func = format!("api2wire_{}", input.ty.safe_ident());
-                format!(
-                    "var arg{index} = {}{}({});",
-                    if common_api2wire_body.contains(&func) {
-                        ""
-                    } else {
-                        "_platform."
-                    },
-                    func,
-                    &input.name.dart_style()
-                )
-            }
-        })
-        .collect_vec();
-
-    let wire_param_list = [
-        if has_port_argument(func.mode) {
-            vec!["port_".to_owned()]
-        } else {
-            vec![]
-        },
-        (0..prepare_args.len())
-            .map(|index| format!("arg{index}"))
-            .collect_vec(),
-    ]
-    .concat();
-
-    let execute_func_name = match func.mode {
-        IrFuncMode::Normal => "_platform.executeNormal",
-        IrFuncMode::Sync => "_platform.executeSync",
-        IrFuncMode::Stream { .. } => "_platform.executeStream",
-    };
-
-    let task_common_args = format!(
-        "
-        constMeta: {},
-        argValues: [{}],
-        hint: hint,
-        ",
-        const_meta_field_name,
-        func.inputs
-            .iter()
-            .map(|input| input.name.dart_style())
-            .collect_vec()
-            .join(", "),
-    );
+    let prepare_args = generate_prepare_args(func);
+    let wire_param_list = generate_wire_param_list(func, prepare_args.len());
+    let execute_func_name = generate_execute_func_name(func);
+    let task_common_args = generate_task_common_args(func);
 
     let input_0 = func.inputs.get(0).as_ref().map(|x| &x.ty);
     let input_0_struct_name = if let Some(StructRef(IrTypeStructRef { name, .. })) = &input_0 {
@@ -155,6 +104,69 @@ pub(crate) fn generate_dispatcher_api_functions(
         dispatcher_body: todo!(),
         ..Default::default()
     }
+}
+
+fn generate_prepare_args(func: &IrFunc) -> Vec<String> {
+    func.inputs
+        .iter()
+        .enumerate()
+        .map(|(index, input)| {
+            // edge case: ffigen performs its own bool-to-int conversions
+            if let Primitive(IrTypePrimitive::Bool) = input.ty {
+                format!("var arg{index} = {};", input.name.dart_style())
+            } else {
+                let func = format!("api2wire_{}", input.ty.safe_ident());
+                format!(
+                    "var arg{index} = {}{}({});",
+                    if common_api2wire_body.contains(&func) {
+                        ""
+                    } else {
+                        "_platform."
+                    },
+                    func,
+                    &input.name.dart_style()
+                )
+            }
+        })
+        .collect_vec()
+}
+
+fn generate_wire_param_list(func: &IrFunc, num_prepare_args: usize) -> Vec<String> {
+    [
+        if has_port_argument(func.mode) {
+            vec!["port_".to_owned()]
+        } else {
+            vec![]
+        },
+        (0..num_prepare_args)
+            .map(|index| format!("arg{index}"))
+            .collect_vec(),
+    ]
+    .concat()
+}
+
+fn generate_execute_func_name(func: &IrFunc) -> &str {
+    match func.mode {
+        IrFuncMode::Normal => "_platform.executeNormal",
+        IrFuncMode::Sync => "_platform.executeSync",
+        IrFuncMode::Stream { .. } => "_platform.executeStream",
+    }
+}
+
+fn generate_task_common_args(func: &IrFunc) -> String {
+    format!(
+        "
+        constMeta: {},
+        argValues: [{}],
+        hint: hint,
+        ",
+        const_meta_field_name,
+        func.inputs
+            .iter()
+            .map(|input| input.name.dart_style())
+            .collect_vec()
+            .join(", "),
+    )
 }
 
 fn has_methods_for_struct_name(struct_name: &str, ir_pack: &IrPack) -> bool {
