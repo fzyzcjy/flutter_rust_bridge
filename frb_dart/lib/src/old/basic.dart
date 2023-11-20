@@ -12,7 +12,7 @@ import 'isolate.dart';
 export 'ffi.dart';
 export 'isolate.dart';
 
-final _instances = <Type>{};
+// final _instances = <Type>{};
 
 /// Base class for generated bindings of Flutter Rust Bridge.
 /// Normally, users do not extend this class manually. Instead,
