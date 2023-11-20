@@ -1,12 +1,12 @@
-import 'package:flutter_rust_bridge/src/handler.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_rust_bridge/src/bulk.dart';
 
-/// {@macro flutter_rust_bridge.only_for_generated_code}
-abstract class BaseDispatcher {
+/// A thin layer to dispatch calls.
+///
+/// It exists mainly for testability and separation of concerns.
+abstract class BaseDispatcher<B extends BaseBulk> {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  @protected
-  final BaseHandler handler;
+  final B bulk;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  BaseDispatcher({BaseHandler? handler}) : handler = handler ?? BaseHandler();
+  const BaseDispatcher({required this.bulk});
 }
