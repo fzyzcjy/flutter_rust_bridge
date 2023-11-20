@@ -17,9 +17,9 @@ class _DropIdPortGenerator {
 
   _DropIdPortGenerator._();
 
-  int nextPort = 0;
+  int _nextPort = 0;
 
-  String create() => '__frb_dart_opaque_drop_${nextPort++}';
+  String create() => '__frb_dart_opaque_drop_${_nextPort++}';
 }
 
 /// Base class for generated bindings of Flutter Rust Bridge.
