@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_rust_bridge/src/old/platform_independent.dart';
 import 'package:flutter_rust_bridge/src/old/utils.dart';
 import 'package:flutter_rust_bridge/src/utils/port_generator.dart';
+import 'package:flutter_rust_bridge/src/wire_base/wire_base.dart';
 import 'package:meta/meta.dart';
 
 import 'ffi.dart';
