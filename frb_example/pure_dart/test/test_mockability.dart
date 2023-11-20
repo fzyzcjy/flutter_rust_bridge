@@ -7,14 +7,14 @@ import 'package:test/test.dart';
 class MockFrbGeneratedPureDart extends Mock implements FrbGeneratedPureDart {}
 
 Future<void> main() async {
-  final mockInstance = MockFrbGeneratedPureDart();
-  await FrbGeneratedPureDart.init(mockInstance);
+  final mock = MockFrbGeneratedPureDart();
+  await FrbGeneratedPureDart.init(dispatcher: mock);
 
   test('can mock Rust calls', () async {
-    when(() => mockInstance.simpleAdder()).thenReturn(123456789);
+    when(() => mock.simpleAdder()).thenReturn(123456789);
     final actualResult = await simpleAdder(a: 1, b: 2);
     expect(actualResult, isNot(3));
     expect(actualResult, equals(123456789));
-    verify(() => mockInstance.simpleAdder()).called(1);
+    verify(() => mock.simpleAdder()).called(1);
   });
 }

@@ -1,6 +1,9 @@
 // TODO this is manually written to prototype the API
 class FrbGeneratedPureDart {
-  static Future<void> init() async {
+  static Future<void> init({
+    FrbGeneratedPureDart? dispatcher,
+    TODO? handler,
+  }) async {
     TODO;
   }
 }
