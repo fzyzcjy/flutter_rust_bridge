@@ -29,7 +29,12 @@ pub(crate) fn generate(
         .funcs
         .iter()
         .map(|f| function::generate_func(f, context, config.dart_enums_style))
-        .map(|func| format!("{}{}", func.func_comments, func.func_signature))
+        .map(|func| {
+            format!(
+                "{}{} => {};",
+                func.func_comments, func.func_signature, func.func_impl
+            )
+        })
         .collect_vec();
 
     let classes = distinct_types

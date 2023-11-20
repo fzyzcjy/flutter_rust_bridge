@@ -5,7 +5,9 @@ pub(super) fn generate(spec: ApiDartOutputSpec) -> anyhow::Result<String> {
     let ApiDartOutputSpec { funcs, classes } = spec;
 
     Ok(format!(
-        "import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+        "// ignore_for_file: invalid_use_of_internal_member
+
+        import '../frb_generated.dart';
 
         {funcs}
 

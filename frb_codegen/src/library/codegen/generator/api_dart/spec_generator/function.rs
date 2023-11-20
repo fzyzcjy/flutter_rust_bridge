@@ -16,6 +16,7 @@ use itertools::Itertools;
 pub(crate) struct GeneratedApiFunc {
     pub(crate) func_comments: String,
     pub(crate) func_signature: String,
+    pub(crate) func_impl: String,
     // pub(crate) companion_field_signature: String,
 }
 
@@ -38,6 +39,8 @@ pub(crate) fn generate_func(
 
     let func_comments = generate_dart_comments(&func.comments);
 
+    let func_impl = generate_func_impl(func, &context.config.dart_api_class_name);
+
     // TODO
     // let const_meta_field_name = format!("k{}ConstMeta", func.name.to_case(Case::Pascal));
     // let companion_field_signature =
@@ -46,6 +49,7 @@ pub(crate) fn generate_func(
     GeneratedApiFunc {
         func_comments,
         func_signature,
+        func_impl,
         // TODO
         // companion_field_signature,
     }
@@ -69,4 +73,13 @@ fn generate_params(
         .collect_vec();
     ans.push("dynamic hint".to_owned());
     ans
+}
+
+fn generate_func_impl(func: &IrFunc, dart_api_class_name: &str) -> String {
+    let param_forwards = func
+        .inputs
+        .iter()
+        .map(|input| format!("{name}: {name}", name = input.name.dart_style()))
+        .join(", ");
+    format!("{dart_api_class_name}.instance.dispatcher.simpleAdder({param_forwards})")
 }
