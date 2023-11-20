@@ -12,8 +12,9 @@ class Rust extends BaseEntrypoint<RustDispatcher> {
   /// Initialize flutter_rust_bridge
   static Future<void> init({
     RustDispatcher? dispatcher,
+    BaseHandler? handler,
   }) async {
-    await instance.initImpl(dispatcher: dispatcher);
+    await instance.initImpl(dispatcher: dispatcher, handler: handler);
   }
 
   /// Dispose flutter_rust_bridge
@@ -23,27 +24,28 @@ class Rust extends BaseEntrypoint<RustDispatcher> {
   static void dispose() => instance.disposeImpl();
 
   @override
-  RustDispatcher createDefaultDispatcher() => RustDispatcher();
+  RustDispatcher createDefaultDispatcher({BaseHandler? handler}) =>
+      RustDispatcher(bulk: RustBulk(wire: RustWire(dynamicLibrary), handler: handler));
 }
 
-class RustDispatcher extends BaseDispatcher {
-  RustDispatcher({super.handler});
+class RustDispatcher extends BaseDispatcher<RustBulk> {
+  RustDispatcher({required super.bulk});
 
   Future<int> simpleAdder({required int a, required int b, dynamic hint}) {
-    return impl.simpleAdder(a: a, b: b, hint: hint);
+    return bulk.simpleAdder(a: a, b: b, hint: hint);
   }
 
-  TaskConstMeta get kSimpleAdderConstMeta => impl.kSimpleAdderConstMeta;
+  TaskConstMeta get kSimpleAdderConstMeta => bulk.kSimpleAdderConstMeta;
 }
 
 class RustBulk extends RustBulkPlatform {
-  RustBulk({super.handler});
+  RustBulk({super.handler, required super.wire});
 
   Future<int> simpleAdder({required int a, required int b, dynamic hint}) {
     var arg0 = api2wire_i_32(a);
     var arg1 = api2wire_i_32(b);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => _platform.inner.wire_simple_adder(port_, arg0, arg1),
+      callFfi: (port_) => wire.wire_simple_adder(port_, arg0, arg1),
       parseSuccessData: _wire2api_i_32,
       parseErrorData: null,
       constMeta: kSimpleAdderConstMeta,

@@ -1,5 +1,6 @@
 import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
 import 'package:flutter_rust_bridge/src/main_components/dispatcher.dart';
+import 'package:flutter_rust_bridge/src/main_components/handler.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:flutter_rust_bridge/src/utils/port_generator.dart';
 import 'package:meta/meta.dart';
@@ -29,9 +30,10 @@ abstract class BaseEntrypoint<D extends BaseDispatcher> {
   @protected
   Future<void> initImpl({
     D? dispatcher,
+    BaseHandler? handler,
   }) async {
     if (__state != null) throw StateError('Should not initialize flutter_rust_bridge twice');
-    __state = _EntrypointState(dispatcher: dispatcher ?? createDefaultDispatcher());
+    __state = _EntrypointState(dispatcher: dispatcher ?? createDefaultDispatcher(handler: handler));
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
@@ -42,7 +44,7 @@ abstract class BaseEntrypoint<D extends BaseDispatcher> {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @protected
-  D createDefaultDispatcher();
+  D createDefaultDispatcher({BaseHandler? handler});
 }
 
 class _EntrypointState<D extends BaseDispatcher> {
