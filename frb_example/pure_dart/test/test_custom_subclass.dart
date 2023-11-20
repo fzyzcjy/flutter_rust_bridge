@@ -8,9 +8,18 @@ Future<void> main() async {
   await FrbExamplePureDart.init(dispatcher: FrbExamplePureDartDispatcher(handler: customHandler));
 
   test('can use custom subclasses', () async {
+    expect(customHandler.logs, <String>[]);
     expect(await simpleAdder(a: 1, b: 2), 3);
-    expect(logsFromCustomSubclass, TODO);
+    expect(customHandler.logs, ['executeNormal called']);
   });
 }
 
-class _MyHandler extends BaseHandler {}
+class _MyHandler extends BaseHandler {
+  final logs = <String>[];
+
+  @override
+  Future<S> executeNormal<S, E extends Object>(NormalTask<S, E> task) {
+    logs.add('executeNormal called');
+    return super.executeNormal(task);
+  }
+}
