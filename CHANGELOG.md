@@ -1,3 +1,7 @@
+## 1.82.5
+
+* Fix `rustfmt::skip` #1420 (thanks @rogurotus)
+
 ## 1.82.4
 
 * Fix `Result<SyncReturn(T), E>` #1407 (thanks @rogurotus)
