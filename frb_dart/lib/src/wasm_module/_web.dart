@@ -49,7 +49,7 @@ class _WasmBindgenNoModules extends Modules {
     final script = ScriptElement()..src = '$root.js';
     document.head!.append(script);
     return script.onLoad.first.then((_) {
-      eval('window.wasm_bindgen = wasm_bindgen');
+      jsEval('window.wasm_bindgen = wasm_bindgen');
       final module_ = module?.call() ?? _noModules!;
       return module_.bind(null, '${root}_bg.wasm');
     });

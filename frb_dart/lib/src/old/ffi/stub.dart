@@ -37,5 +37,3 @@ class _Anonymous {
 }
 
 const anonymous = _Anonymous();
-
-dynamic eval(String script) => throw UnimplementedError();

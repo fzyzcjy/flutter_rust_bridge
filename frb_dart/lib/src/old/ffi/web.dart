@@ -20,13 +20,4 @@ external int castInt(Object? value);
 @JS('BigInt')
 external Object castNativeBigInt(Object? value);
 
-@JS('Function')
-class _Function {
-  external dynamic call();
-
-  external factory _Function(String script);
-}
-
-dynamic eval(String script) => _Function(script)();
-
 abstract class DartApiDl {}
