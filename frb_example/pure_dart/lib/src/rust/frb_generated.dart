@@ -36,8 +36,9 @@ class RustDispatcher extends BaseDispatcher {
   TaskConstMeta get kSimpleAdderConstMeta => impl.kSimpleAdderConstMeta;
 }
 
-// TODO rename
 class RustBulk extends RustBulkPlatform {
+  RustBulk({super.handler});
+
   Future<int> simpleAdder({required int a, required int b, dynamic hint}) {
     var arg0 = api2wire_i_32(a);
     var arg1 = api2wire_i_32(b);
