@@ -65,9 +65,9 @@ fn generate_stmt_prepare_args(func: &IrFunc) -> Vec<String> {
         .enumerate()
         .map(|(index, input)| {
             format!(
-                "var arg{index} = api2wire_{}({});",
-                input.ty.safe_ident(),
-                &input.name.dart_style()
+                "var arg{index} = api2wire_{ty_ident}({name});",
+                ty_ident = input.ty.safe_ident(),
+                name = &input.name.dart_style()
             )
         })
         .collect_vec()
