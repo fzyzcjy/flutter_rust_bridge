@@ -1,6 +1,7 @@
+import 'dart:typed_data';
+
 import 'package:flutter_rust_bridge/src/consts.dart';
 import 'package:flutter_rust_bridge/src/exceptions.dart';
-import 'package:flutter_rust_bridge/src/generalized_typed_data/generalized_typed_data.dart';
 import 'package:uuid/uuid.dart';
 
 export '_io.dart' if (dart.library.html) '_web.dart';
