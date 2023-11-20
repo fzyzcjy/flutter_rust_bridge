@@ -14,15 +14,18 @@ abstract class BaseEntrypoint<D extends BaseDispatcher> {
   /// Whether the system has been initialized.
   bool get initialized => __state != null;
 
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
   D get dispatcher => _state.dispatcher;
 
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   @internal
   NativePortType get dropPort => _state.dropPortManager.dropPort;
 
   _EntrypointState<D> get _state => __state ?? (throw StateError('flutter_rust_bridge has not been initialized'));
   _EntrypointState<D>? __state;
 
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   @protected
   Future<void> initImpl({
     D? dispatcher,
@@ -31,11 +34,13 @@ abstract class BaseEntrypoint<D extends BaseDispatcher> {
     __state = _EntrypointState(dispatcher: dispatcher ?? createDefaultDispatcher());
   }
 
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   @protected
   void disposeImpl() {
     __state!.dispose();
   }
 
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   @protected
   D createDefaultDispatcher();
 }
