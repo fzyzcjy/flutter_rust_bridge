@@ -164,14 +164,10 @@ class FlutterRustBridgeTask<S, E extends Object> extends FlutterRustBridgeBaseTa
     required this.callFfi,
     required super.parseSuccessData,
     required super.parseErrorData,
-    required FlutterRustBridgeTaskConstMeta constMeta,
-    required List<dynamic> argValues,
-    required dynamic hint,
-  }) : super(
-          constMeta: constMeta,
-          argValues: argValues,
-          hint: hint,
-        );
+    required super.constMeta,
+    required super.argValues,
+    required super.hint,
+  });
 }
 
 /// A task to call FFI function, but it is synchronous.
@@ -184,14 +180,10 @@ class FlutterRustBridgeSyncTask<S, E extends Object> extends FlutterRustBridgeBa
     required this.callFfi,
     required super.parseSuccessData,
     required super.parseErrorData,
-    required FlutterRustBridgeTaskConstMeta constMeta,
-    required List<dynamic> argValues,
-    required dynamic hint,
-  }) : super(
-          constMeta: constMeta,
-          argValues: argValues,
-          hint: hint,
-        );
+    required super.constMeta,
+    required super.argValues,
+    required super.hint,
+  });
 }
 
 class _CloseStreamException {}
