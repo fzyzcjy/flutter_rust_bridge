@@ -42,7 +42,7 @@ class _EntrypointState<D extends BaseDispatcher> {
   final dropPortManager = _DropPortManager();
 
   _EntrypointState({required this.dispatcher}) {
-    TODO;
+    _setUpRustToDartCommunication();
   }
 
   void dispose() {
@@ -65,4 +65,8 @@ class _DropPortManager {
   void dispose() {
     _dropPort.close();
   }
+}
+
+void _setUpRustToDartCommunication() {
+  inner.storeDartPostCObject();
 }

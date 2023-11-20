@@ -16,25 +16,20 @@ export 'isolate.dart';
 abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   FlutterRustBridgeBase(this.inner) {
     // _sanityCheckSingleton();
-    _setUpRustToDartComm();
   }
 
   @protected
   final T inner;
 
-  // void _sanityCheckSingleton() {
-  //   if (_instances.contains(runtimeType)) {
-  //     throw Exception(
-  //       'Subclasses of `FlutterRustBridgeBase` should be singletons - '
-  //       'there should not be two instances (runtimeType=$runtimeType)',
-  //     );
-  //   }
-  //   _instances.add(runtimeType);
-  // }
-
-  void _setUpRustToDartComm() {
-    inner.storeDartPostCObject();
-  }
+// void _sanityCheckSingleton() {
+//   if (_instances.contains(runtimeType)) {
+//     throw Exception(
+//       'Subclasses of `FlutterRustBridgeBase` should be singletons - '
+//       'there should not be two instances (runtimeType=$runtimeType)',
+//     );
+//   }
+//   _instances.add(runtimeType);
+// }
 
 // DONE
 // @protected
