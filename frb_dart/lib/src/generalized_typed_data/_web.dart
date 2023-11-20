@@ -8,8 +8,6 @@ import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:js/js.dart';
 import 'package:js/js_util.dart';
 
-export 'dart:typed_data' hide Int64List, Uint64List;
-
 @JS('TypedArray')
 abstract class _TypedArray {
   external ByteBuffer get buffer;

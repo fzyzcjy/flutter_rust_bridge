@@ -5,6 +5,7 @@
 library;
 
 export 'package:meta/meta.dart' show internal;
+export 'dart:typed_data' hide Int64List, Uint64List;
 
 export 'flutter_rust_bridge.dart';
 export 'src/dispatcher.dart';
