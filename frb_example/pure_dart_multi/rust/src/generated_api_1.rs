@@ -80,10 +80,10 @@ support::lazy_static! {
 #[path = "generated_api_1.web.rs"]
 mod web;
 #[cfg(target_family = "wasm")]
-pub use web::*;
+pub use self::web::*;
 
 #[cfg(not(target_family = "wasm"))]
 #[path = "generated_api_1.io.rs"]
 mod io;
 #[cfg(not(target_family = "wasm"))]
-pub use io::*;
+pub use self::io::*;
