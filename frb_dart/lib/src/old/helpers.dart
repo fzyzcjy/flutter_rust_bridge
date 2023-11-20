@@ -97,34 +97,6 @@ mixin FlutterRustBridgeTimeoutMixin<T extends FlutterRustBridgeWireBase> on Flut
   Duration? get timeLimitForExecuteNormal;
 }
 
-DateTime wire2apiTimestamp({required int ts, required bool isUtc}) {
-  if (kIsWeb) {
-    return DateTime.fromMillisecondsSinceEpoch(ts, isUtc: isUtc);
-  }
-  return DateTime.fromMicrosecondsSinceEpoch(ts, isUtc: isUtc);
-}
-
-Duration wire2apiDuration(int ts) {
-  if (kIsWeb) {
-    return Duration(milliseconds: ts);
-  }
-  return Duration(microseconds: ts);
-}
-
-Uint8List api2wireConcatenateBytes(List<UuidValue> raw) {
-  var builder = BytesBuilder();
-  for (final element in raw) {
-    builder.add(element.toBytes());
-  }
-  return builder.toBytes();
-}
-
-List<UuidValue> wire2apiUuids(Uint8List raw) {
-  return List<UuidValue>.generate(raw.lengthInBytes ~/ uuidSizeInBytes,
-      (int i) => UuidValue.fromByteList(Uint8List.view(raw.buffer, i * uuidSizeInBytes, uuidSizeInBytes)),
-      growable: false);
-}
-
 List<T?> mapNonNull<T, I>(List<I?> items, T Function(I) mapper) {
   final out = List<T?>.filled(items.length, null);
   for (var i = 0; i < items.length; ++i) {
