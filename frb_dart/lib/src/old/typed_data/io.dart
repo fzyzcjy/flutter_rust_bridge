@@ -1,8 +1,7 @@
-export 'dart:typed_data' hide Int64List, Uint64List;
 import 'dart:collection';
 import 'dart:typed_data' as $data;
 
-import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+export 'dart:typed_data' hide Int64List, Uint64List;
 
 abstract class _TypedList<T> extends ListMixin<T> {
   List<int> get inner;
@@ -11,6 +10,7 @@ abstract class _TypedList<T> extends ListMixin<T> {
   _TypedList<T> operator +(Object other);
 
   T raw2dart(int value);
+
   int dart2raw(dynamic value);
 
   @override
@@ -30,11 +30,16 @@ abstract class _TypedList<T> extends ListMixin<T> {
 class Int64List extends _TypedList<BigInt> {
   @override
   final $data.Int64List inner;
+
   Int64List.from(this.inner);
+
   factory Int64List(int length) => Int64List.from($data.Int64List(length));
+
   Int64List.fromList(List<int> ints) : inner = $data.Int64List.fromList(ints);
+
   Int64List.view($data.ByteBuffer buffer, [int offsetInBytes = 0, int? length])
       : inner = $data.Int64List.view(buffer, offsetInBytes, length);
+
   Int64List.sublistView($data.TypedData data, [int start = 0, int? end])
       : inner = $data.Int64List.sublistView(data, start, end);
 
@@ -64,11 +69,16 @@ class Int64List extends _TypedList<BigInt> {
 class Uint64List extends _TypedList<BigInt> {
   @override
   final $data.Uint64List inner;
+
   Uint64List.from(this.inner);
+
   factory Uint64List(int length) => Uint64List.from($data.Uint64List(length));
+
   Uint64List.fromList(List<int> ints) : inner = $data.Uint64List.fromList(ints);
+
   Uint64List.view($data.ByteBuffer buffer, [int offsetInBytes = 0, int? length])
       : inner = $data.Uint64List.view(buffer, offsetInBytes, length);
+
   Uint64List.sublistView($data.TypedData data, [int start = 0, int? end])
       : inner = $data.Uint64List.sublistView(data, start, end);
 
