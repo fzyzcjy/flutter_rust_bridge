@@ -4,7 +4,6 @@ import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 /// This class, together with its subclasses, are only for internal usage.
 /// Usually it should not be used by normal users.
 abstract class FlutterRustBridgeWireBase {
-  /// Not to be used by normal users, but has to be public for generated code
   // ignore: non_constant_identifier_names
   void store_dart_post_cobject(DartPostCObject ptr) {
     throw UnimplementedError();
@@ -25,7 +24,6 @@ abstract class FlutterRustBridgeWireBase {
     throw UnimplementedError();
   }
 
-  /// Not to be used by normal users, but has to be public for generated code
   // ignore: non_constant_identifier_names
   void free_WireSyncReturn(WireSyncReturn val) {
     throw UnimplementedError();
