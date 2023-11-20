@@ -1,3 +1,4 @@
+import 'package:flutter_rust_bridge/src/consts.dart';
 import 'package:flutter_rust_bridge/src/exceptions.dart';
 import 'package:meta/meta.dart';
 import 'package:uuid/uuid.dart';
