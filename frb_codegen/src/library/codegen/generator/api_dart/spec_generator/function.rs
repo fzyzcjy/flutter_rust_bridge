@@ -23,9 +23,8 @@ pub(crate) struct ApiDartGeneratedFunction {
 pub(crate) fn generate(
     func: &IrFunc,
     context: ApiDartGeneratorContext,
-    dart_enums_style: bool,
 ) -> ApiDartGeneratedFunction {
-    let params = generate_params(func, context, dart_enums_style).join(", ");
+    let params = generate_params(func, context, context.config.dart_enums_style).join(", ");
 
     let func_expr = format!(
         "{func_return_type} {func_name}({{ {params} }})",

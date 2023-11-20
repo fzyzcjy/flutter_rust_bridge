@@ -27,7 +27,7 @@ pub(crate) fn generate(
     let context = ApiDartGeneratorContext { ir_pack, config };
 
     let funcs = (ir_pack.funcs.iter())
-        .map(|f| function::generate(f, context, config.dart_enums_style))
+        .map(|f| function::generate(f, context))
         .collect_vec();
 
     let classes = distinct_types
