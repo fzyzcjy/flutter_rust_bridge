@@ -2,6 +2,7 @@ use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartIntern
 use crate::codegen::generator::api_dart::spec_generator::base::{
     ApiDartGenerator, ApiDartGeneratorContext,
 };
+use crate::codegen::generator::api_dart::spec_generator::function::GeneratedApiFunc;
 use crate::codegen::ir::pack::IrPack;
 use crate::library::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use anyhow::Result;
@@ -14,7 +15,7 @@ pub(crate) mod info;
 pub(crate) mod misc;
 
 pub(crate) struct ApiDartOutputSpec {
-    pub funcs: Vec<String>,
+    pub funcs: Vec<GeneratedApiFunc>,
     pub classes: Vec<String>,
 }
 
@@ -25,16 +26,8 @@ pub(crate) fn generate(
     let distinct_types = ir_pack.distinct_types(true, true);
     let context = ApiDartGeneratorContext { ir_pack, config };
 
-    let funcs = ir_pack
-        .funcs
-        .iter()
+    let funcs = (ir_pack.funcs.iter())
         .map(|f| function::generate_func(f, context, config.dart_enums_style))
-        .map(|func| {
-            format!(
-                "{}{} => {};",
-                func.func_comments, func.func_expr, func.func_impl
-            )
-        })
         .collect_vec();
 
     let classes = distinct_types
