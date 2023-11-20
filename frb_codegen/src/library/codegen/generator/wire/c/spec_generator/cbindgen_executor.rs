@@ -3,16 +3,30 @@ use crate::codegen::generator::misc::OutputTexts;
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::library::commands::cbindgen::{cbindgen, CbindgenArgs};
 use crate::utils::file_utils::temp_change_file;
+use anyhow::ensure;
+use itertools::Itertools;
 
 pub(crate) fn execute(
     config: &GeneratorWireCInternalConfig,
     extern_struct_names: Vec<String>,
     rust_output_texts: &OutputTexts,
 ) -> anyhow::Result<String> {
-    let changed_file_handle = temp_change_file(
-        config.rust_output_path[TargetOrCommon::Common].clone(),
-        |x| x + DUMMY_WIRE_CODE_FOR_BINDGEN,
-    )?;
+    let rust_output_path_common = &config.rust_output_path[TargetOrCommon::Common];
+    ensure!((rust_output_texts.paths().iter()).any(|path| path == rust_output_path_common));
+    let changed_file_handles = rust_output_texts
+        .0
+        .iter()
+        .map(|rust_output_text| {
+            temp_change_file(rust_output_text.path.clone(), |_| {
+                rust_output_text.text.clone()
+                    + (if rust_output_text.path == rust_output_path_common {
+                        DUMMY_WIRE_CODE_FOR_BINDGEN
+                    } else {
+                        ""
+                    })
+            })
+        })
+        .collect::<anyhow::Result<Vec<_>>>()?;
 
     let ans = cbindgen(CbindgenArgs {
         rust_crate_dir: &config.rust_crate_dir,
@@ -22,10 +36,13 @@ pub(crate) fn execute(
         exclude_symbols: vec![],
     })?;
 
-    drop(changed_file_handle); // do not drop too early
+    drop(changed_file_handles); // do not drop too early
 
     Ok(ans)
 }
+
+// TODO
+// fn compute_input_rust_code() {}
 
 // NOTE [DartPostCObjectFnType] was originally [*mut DartCObject] but I changed it to [*mut c_void]
 // because cannot automatically generate things related to [DartCObject]. Anyway this works fine.
