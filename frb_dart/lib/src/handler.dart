@@ -25,8 +25,6 @@ class BaseHandler {
     try {
       final syncReturnAsDartObject = wireSyncReturnIntoDart(syncReturn);
       return _transformRust2DartMessage(syncReturnAsDartObject, task.parseSuccessData, task.parseErrorData);
-    } catch (err) {
-      rethrow;
     } finally {
       inner.free_WireSyncReturn(syncReturn);
     }
