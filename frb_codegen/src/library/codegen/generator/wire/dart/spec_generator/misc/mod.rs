@@ -17,7 +17,7 @@ pub(crate) fn generate(
     cache: &IrPackComputedCache,
 ) -> WireDartOutputSpecMisc {
     WireDartOutputSpecMisc {
-        boilerplate: generate_boilerplate().into(),
+        boilerplate: generate_boilerplate(&context.config.dart_wire_class_name).into(),
         needs_freezed: compute_needs_freezed(cache, context.ir_pack),
     }
 }
