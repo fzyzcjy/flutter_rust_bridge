@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 import 'package:uuid/uuid.dart';
 
 import 'bridge_definitions.dart';
-import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
+// import 'ffi.io.dart' if (dart.library.html) 'ffi.web.dart';
 
 const isWeb = bool.fromEnvironment('dart.library.html');
 
@@ -20,8 +20,8 @@ void main(List<String> args) async {
   }());
   print('flutter_rust_bridge example program start (dylibPath=$dylibPath)');
   print('construct api');
-  final api = initializeExternalLibrary(dylibPath);
-  tearDownAll(() => api.dispose());
+//   final api = initializeExternalLibrary(dylibPath);
+//   tearDownAll(() => api.dispose());
 
   test('dart call simpleAdder', () async {
     expect(await api.simpleAdder(a: 42, b: 100), 142);
