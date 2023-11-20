@@ -1,3 +1,10 @@
+// TODO this is manually written to prototype the API
+class FrbGeneratedPureDart {
+  static Future<void> init() async {
+    TODO;
+  }
+}
+
 // Section: c_binding
 // Section: impl_wire2api
 int _wire2api_i_32(dynamic raw) {
