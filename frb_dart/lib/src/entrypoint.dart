@@ -24,7 +24,6 @@ abstract class BaseEntrypoint<D extends BaseDispatcher> {
   }) async {
     if (initialized) throw StateError('Should not initialize flutter_rust_bridge twice');
     __state = _EntrypointState(dispatcher: dispatcher ?? createDefaultDispatcher());
-    // TODO more init work
   }
 
   @protected
