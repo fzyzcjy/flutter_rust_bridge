@@ -11,7 +11,6 @@ export 'ffi.dart';
 export 'isolate.dart';
 
 final _instances = <Type>{};
-final _streamSinkNameIndex = <String, int>{};
 
 class _DropIdPortGenerator {
   static final instance = _DropIdPortGenerator._();
