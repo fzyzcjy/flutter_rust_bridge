@@ -7,11 +7,15 @@ class Rust extends BaseEntrypoint<RustDispatcher> {
 
   Rust._();
 
+  /// Initialize flutter_rust_bridge
   static Future<void> init({
     RustDispatcher? dispatcher,
   }) async {
-    await instance.initImpl(dispatcher: dispatcher ?? RustDispatcher());
+    await instance.initImpl(dispatcher: dispatcher);
   }
+
+  @override
+  RustDispatcher createDefaultDispatcher() => RustDispatcher();
 }
 
 class RustDispatcher extends BaseDispatcher {

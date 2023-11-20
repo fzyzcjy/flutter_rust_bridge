@@ -13,12 +13,15 @@ abstract class BaseEntrypoint<D extends BaseDispatcher> {
 
   @protected
   Future<void> initImpl({
-    required D dispatcher,
+    D? dispatcher,
   }) async {
     if (initialized) throw StateError('Should not initialize flutter_rust_bridge twice');
-    __state = _EntrypointState(dispatcher: dispatcher);
+    __state = _EntrypointState(dispatcher: dispatcher ?? createDefaultDispatcher());
     // TODO more init work
   }
+
+  @protected
+  D createDefaultDispatcher();
 }
 
 class _EntrypointState<D extends BaseDispatcher> {
