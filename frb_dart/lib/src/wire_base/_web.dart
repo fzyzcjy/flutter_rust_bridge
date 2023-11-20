@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:js_util';
 
 import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
+import 'package:flutter_rust_bridge/src/wasm_module/_web.dart';
 import 'package:js/js.dart';
 
 abstract class FlutterRustBridgeWireBase {
