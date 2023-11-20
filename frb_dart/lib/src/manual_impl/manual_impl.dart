@@ -1,9 +1,10 @@
 import 'package:flutter_rust_bridge/src/consts.dart';
 import 'package:flutter_rust_bridge/src/exceptions.dart';
+import 'package:flutter_rust_bridge/src/generalized_typed_data/generalized_typed_data.dart';
 import 'package:meta/meta.dart';
 import 'package:uuid/uuid.dart';
 
-export '_manual_impl_io.dart' if (dart.library.html) '_manual_impl_web.dart';
+export '_io.dart' if (dart.library.html) '_web.dart';
 
 /// This file contains functions that are manually written, but on the other hand,
 /// the kinds of such functions are usually generated from frb_codegen.
