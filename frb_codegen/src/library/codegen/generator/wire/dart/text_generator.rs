@@ -17,7 +17,8 @@ pub(super) fn generate(
     let merged_code = generate_merged_code(spec);
     let text = generate_text_from_merged_code(
         config,
-        (merged_code.clone()).map(|code, _| code.all_code(&config.dart_entrypoint_class_name)),
+        (merged_code.clone())
+            .map(|code, target| code.all_code(target, &config.dart_entrypoint_class_name)),
     )?;
     Ok(WireDartOutputText { text })
 }

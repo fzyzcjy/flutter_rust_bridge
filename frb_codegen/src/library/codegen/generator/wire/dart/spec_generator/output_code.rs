@@ -1,4 +1,5 @@
 use crate::basic_code_impl;
+use crate::codegen::generator::misc::target::TargetOrCommon;
 use pathdiff::diff_paths;
 use std::ops::{Add, AddAssign};
 
@@ -51,18 +52,23 @@ impl WireDartOutputCode {
         }
     }
 
-    pub(crate) fn all_code(&self, entrypoint_class_name: &str) -> String {
-        let dispatcher_name = format!("{}Dispatcher", entrypoint_class_name);
-        let dispatcher_class_code = format!(
-            "
-            class {dispatcher_name} extends BaseDispatcher {{
-              {dispatcher_name}({{super.handler}});
+    pub(crate) fn all_code(&self, target: TargetOrCommon, entrypoint_class_name: &str) -> String {
+        let dispatcher_class_code = if target == TargetOrCommon::Common {
+            let dispatcher_name = format!("{}Dispatcher", entrypoint_class_name);
+            format!(
+                "
+                class {dispatcher_name} extends BaseDispatcher {{
+                  {dispatcher_name}({{super.handler}});
 
-              {dispatcher_body}
-            }}
-            ",
-            dispatcher_body = self.dispatcher_body,
-        );
+                  {dispatcher_body}
+                }}
+                ",
+                dispatcher_body = self.dispatcher_body,
+            )
+        } else {
+            assert_eq!(&self.dispatcher_body, "");
+            "".into()
+        };
 
         format!(
             "{}\n{}\n{}\n{}",
