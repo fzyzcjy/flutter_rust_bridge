@@ -4,21 +4,21 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:meta/meta.dart';
 
 /// Main entrypoint of the Rust API
-class FrbExamplePureDart extends BaseEntrypoint<FrbExamplePureDartDispatcher> {
+class Rust extends BaseEntrypoint<RustDispatcher> {
   @internal
-  static final instance = FrbExamplePureDart._();
+  static final instance = Rust._();
 
-  FrbExamplePureDart._();
+  Rust._();
 
   static Future<void> init({
-    FrbExamplePureDartDispatcher? dispatcher,
+    RustDispatcher? dispatcher,
   }) async {
-    await instance.initImpl(dispatcher: dispatcher ?? FrbExamplePureDartDispatcher());
+    await instance.initImpl(dispatcher: dispatcher ?? RustDispatcher());
   }
 }
 
-class FrbExamplePureDartDispatcher extends BaseDispatcher {
-  FrbExamplePureDartDispatcher({super.handler});
+class RustDispatcher extends BaseDispatcher {
+  RustDispatcher({super.handler});
 
   Future<int> simpleAdder({required int a, required int b, dynamic hint}) async {
     var arg0 = api2wire_i_32(a);

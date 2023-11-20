@@ -35,7 +35,8 @@ impl InternalConfig {
 
         let dart_output_dir: PathBuf = base_dir.join(&config.dart_output);
         let dart_output_path_pack = compute_dart_output_path_pack(&dart_output_dir, &namespaces);
-        let dart_entrypoint_class_name = config.dart_entrypoint_class_name.unwrap_or(TODO);
+        let dart_entrypoint_class_name = (config.dart_entrypoint_class_name)
+            .unwrap_or(FALLBACK_DART_ENTRYPOINT_CLASS_NAME.to_owned());
 
         let c_output_path = base_dir.join(&config.c_output);
         let duplicated_c_output_path = (&config)
@@ -267,6 +268,8 @@ fn compute_mod_from_rust_path(code_path: &Path, crate_path: &Path) -> Result<Str
         )
     })
 }
+
+const FALLBACK_DART_ENTRYPOINT_CLASS_NAME: &'static str = "Rust";
 
 #[cfg(test)]
 mod tests {

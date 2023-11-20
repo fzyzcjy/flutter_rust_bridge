@@ -4,11 +4,11 @@ import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
 // Surely, you can use Mockito or whatever other mocking packages
-class MockFrbGeneratedPureDartDispatcher extends Mock implements FrbExamplePureDartDispatcher {}
+class MockFrbGeneratedPureDartDispatcher extends Mock implements RustDispatcher {}
 
 Future<void> main() async {
   final mock = MockFrbGeneratedPureDartDispatcher();
-  await FrbExamplePureDart.init(dispatcher: mock);
+  await Rust.init(dispatcher: mock);
 
   test('can mock Rust calls', () async {
     when(() => mock.simpleAdder(a: 1, b: 2)).thenAnswer((_) async => 123456789);

@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 
 Future<void> main() async {
   final customHandler = _MyHandler();
-  await FrbExamplePureDart.init(dispatcher: FrbExamplePureDartDispatcher(handler: customHandler));
+  await Rust.init(dispatcher: RustDispatcher(handler: customHandler));
 
   test('can use custom subclasses', () async {
     expect(customHandler.logs, <String>[]);
