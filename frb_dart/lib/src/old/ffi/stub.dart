@@ -7,10 +7,6 @@ import 'io.dart' if (dart.library.html) 'web.dart' show DartPostCObject;
 
 export 'io.dart' if (dart.library.html) 'web.dart' show ExternalLibrary, DartApiDl;
 
-extension NativeType on SendPort {
-  NativePortType get nativePort => throw UnimplementedError();
-}
-
 extension StoreDartPostCObjectExt on FlutterRustBridgeWireBase {
   void storeDartPostCObject() => throw UnimplementedError();
 }
