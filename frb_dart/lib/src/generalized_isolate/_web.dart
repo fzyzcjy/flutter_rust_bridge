@@ -5,6 +5,7 @@ import 'dart:async';
 import 'dart:html' as html;
 import 'dart:html' hide MessagePort;
 
+import 'package:flutter_rust_bridge/src/old/ffi/web.dart';
 import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
 
 typedef MessagePort = PortLike;
@@ -155,7 +156,7 @@ class _BroadcastPortWrapper extends _DelegatedPort {
   @override
   void postMessage(message, [List<Object>? transfer]) {
     if (transfer != null && transfer.isNotEmpty) {
-      warn("Ignoring transferables for BroadcastPort:", transfer);
+      jsConsoleWarn("Ignoring transferables for BroadcastPort:", transfer);
     }
     nativePort.postMessage(message ?? false);
   }

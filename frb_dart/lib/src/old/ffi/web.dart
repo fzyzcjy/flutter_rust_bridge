@@ -35,7 +35,7 @@ abstract class Modules {
         throw const MissingHeaderException();
       case true:
       case null:
-        warn('Warning: crossOriginIsolated is null, browser might not support buffer sharing.');
+        jsConsoleWarn('Warning: crossOriginIsolated is null, browser might not support buffer sharing.');
         return;
     }
   }
@@ -66,7 +66,7 @@ typedef DartPostCObject = void;
 external bool? get crossOriginIsolated;
 
 @JS('console.warn')
-external void warn([a, b, c, d, e, f, g, h, i]);
+external void jsConsoleWarn([a, b, c, d, e, f, g, h, i]);
 
 @JS('Number')
 external int castInt(Object? value);
