@@ -11,4 +11,5 @@ pub(crate) struct GeneratorWireDartInternalConfig {
     pub extra_headers: String,
     pub dart_impl_output_path: TargetOrCommonMap<PathBuf>,
     pub dart_entrypoint_class_name: String,
+    pub dart_platform_class_name: String,
 }

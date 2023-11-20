@@ -37,6 +37,8 @@ impl InternalConfig {
         let dart_output_path_pack = compute_dart_output_path_pack(&dart_output_dir, &namespaces);
         let dart_entrypoint_class_name = (config.dart_entrypoint_class_name)
             .unwrap_or(FALLBACK_DART_ENTRYPOINT_CLASS_NAME.to_owned());
+        let dart_platform_class_name =
+            compute_dart_platform_class_name(&dart_entrypoint_class_name);
 
         let c_output_path = base_dir.join(&config.c_output);
         let duplicated_c_output_path = (&config)
@@ -100,6 +102,7 @@ impl InternalConfig {
                         extra_headers: config.extra_headers.unwrap_or_else(String::new),
                         dart_impl_output_path: dart_output_path_pack.dart_impl_output_path,
                         dart_entrypoint_class_name: dart_entrypoint_class_name.clone(),
+                        dart_platform_class_name,
                     },
                     rust: GeneratorWireRustInternalConfig {
                         rust_crate_dir: rust_crate_dir.clone(),
@@ -270,6 +273,10 @@ fn compute_mod_from_rust_path(code_path: &Path, crate_path: &Path) -> Result<Str
 }
 
 const FALLBACK_DART_ENTRYPOINT_CLASS_NAME: &'static str = "Rust";
+
+fn compute_dart_platform_class_name(dart_entrypoint_class_name: &str) -> String {
+    format!("{dart_entrypoint_class_name}Platform")
+}
 
 #[cfg(test)]
 mod tests {
