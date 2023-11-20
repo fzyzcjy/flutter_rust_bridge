@@ -79,45 +79,6 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   Stream<S> executeStream<S, E extends Object>(NormalTask<S, E> task) async* {
     // MOVED
   }
-
-  S _transformRust2DartMessage<S, E extends Object>(List<dynamic> raw, S Function(dynamic) parseSuccessData,
-      E Function(dynamic)? parseErrorData, PanicException Function(dynamic)? parsePanicData) {
-    final action = raw[0];
-    switch (action) {
-      case _RUST2DART_ACTION_SUCCESS:
-        return _parseData<S>(raw, parseSuccessData);
-      case _RUST2DART_ACTION_ERROR:
-        throw _parseData<E>(raw, parseErrorData);
-      case _RUST2DART_ACTION_PANIC:
-        throw _parseData<PanicException>(raw, parsePanicData);
-      case _RUST2DART_ACTION_CLOSE_STREAM:
-        assert(raw.length == 1);
-        throw _CloseStreamException();
-      default:
-        throw Exception('Unsupported message, action=$action raw=$raw');
-    }
-  }
-
-  R _parseData<R>(List<dynamic> rawData, R Function(dynamic)? function) {
-    assert(rawData.length == 2);
-    if (function != null) {
-      return function(rawData[1]);
-    }
-
-    throw Exception("tried to parse data but function is null");
-  }
-
-  // ignore: constant_identifier_names
-  static const _RUST2DART_ACTION_SUCCESS = 0;
-
-  // ignore: constant_identifier_names
-  static const _RUST2DART_ACTION_ERROR = 1;
-
-  // ignore: constant_identifier_names
-  static const _RUST2DART_ACTION_CLOSE_STREAM = 2;
-
-  // ignore: constant_identifier_names
-  static const _RUST2DART_ACTION_PANIC = 3;
 }
 
 class _CloseStreamException {}
