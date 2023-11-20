@@ -3,9 +3,14 @@ use std::path::{Path, PathBuf};
 
 pub(crate) fn temp_change_file(
     path: PathBuf,
-    modifier: impl FnOnce(String) -> String,
+    modifier: impl FnOnce(Option<String>) -> String,
 ) -> anyhow::Result<TempChangeFile> {
-    let content_original = fs::read_to_string(&path)?;
+    let content_original = if path.exists() {
+        Some(fs::read_to_string(&path)?)
+    } else {
+        None
+    };
+
     let ans = TempChangeFile {
         path: path.clone(),
         content_original: content_original.clone(),
@@ -16,12 +21,17 @@ pub(crate) fn temp_change_file(
 
 pub(crate) struct TempChangeFile {
     path: PathBuf,
-    content_original: String,
+    content_original: Option<String>,
 }
 
 impl Drop for TempChangeFile {
     fn drop(&mut self) {
-        fs::write(&self.path, &self.content_original).unwrap();
+        if let Some(content_original) = &self.content_original {
+            fs::write(&self.path, &content_original)
+        } else {
+            fs::remove_file(&self.path)
+        }
+        .unwrap()
     }
 }
 
