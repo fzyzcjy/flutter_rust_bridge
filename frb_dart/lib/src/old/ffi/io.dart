@@ -1,8 +1,6 @@
 import 'dart:ffi' as ffi;
 import 'dart:ffi';
 
-import 'package:flutter_rust_bridge/src/ffi/dart_cobject.dart';
-
 import 'stub.dart' show FlutterRustBridgeWireBase;
 
 export 'dart:ffi' show NativePort, DynamicLibrary;
