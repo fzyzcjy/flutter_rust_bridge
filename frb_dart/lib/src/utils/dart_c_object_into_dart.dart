@@ -5,11 +5,11 @@ import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/consts.dart';
 
-import 'ffigen_generated/dart_native_api.dart';
+import '../ffigen_generated/dart_native_api.dart';
 
 export 'dart:ffi' show NativePort, DynamicLibrary;
 
-export 'ffigen_generated/dart_native_api.dart' show Dart_CObject;
+export '../ffigen_generated/dart_native_api.dart' show Dart_CObject;
 
 dynamic dartCObjectIntoDart(Dart_CObject object) {
   switch (object.type) {
