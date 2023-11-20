@@ -1,9 +1,6 @@
 import 'dart:ffi' as ffi;
 
-export 'dart:ffi' show NativePort, DynamicLibrary;
-
-export 'stub.dart' show castInt, castNativeBigInt, FlutterRustBridgeWireBase, WasmModule;
-
+// TODO rename?
 class DartApiDl {
   static int? _initCode;
   final int Function(ffi.Pointer<ffi.Void>) _initFn;
