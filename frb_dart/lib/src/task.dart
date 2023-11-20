@@ -1,3 +1,4 @@
+import 'package:flutter_rust_bridge/src/dispatcher.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:meta/meta.dart';
 
@@ -21,6 +22,9 @@ abstract class BaseTask<S, E extends Object> {
   /// Arguments to be passed into the function call.
   final List<dynamic> argValues;
 
+  /// The dispatcher that creates the task.
+  final BaseDispatcher dispatcher;
+
   /// Transparent hint given by the caller of the method
   final dynamic hint;
 
@@ -30,6 +34,7 @@ abstract class BaseTask<S, E extends Object> {
     required this.parseErrorData,
     required this.constMeta,
     required this.argValues,
+    required this.dispatcher,
     required this.hint,
   });
 
@@ -53,6 +58,7 @@ class NormalTask<S, E extends Object> extends BaseTask<S, E> {
     required super.parseErrorData,
     required super.constMeta,
     required super.argValues,
+    required super.dispatcher,
     required super.hint,
   });
 }
@@ -72,6 +78,7 @@ class SyncTask<S, E extends Object> extends BaseTask<S, E> {
     required super.parseErrorData,
     required super.constMeta,
     required super.argValues,
+    required super.dispatcher,
     required super.hint,
   });
 }
@@ -91,6 +98,7 @@ class StreamTask<S, E extends Object> extends BaseTask<S, E> {
     required super.parseErrorData,
     required super.constMeta,
     required super.argValues,
+    required super.dispatcher,
     required super.hint,
   });
 }

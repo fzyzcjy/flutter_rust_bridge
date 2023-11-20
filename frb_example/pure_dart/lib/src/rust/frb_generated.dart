@@ -36,6 +36,7 @@ class RustDispatcher extends BaseDispatcher {
       parseErrorData: null,
       constMeta: kSimpleAdderConstMeta,
       argValues: [a, b],
+      dispatcher: this,
       hint: hint,
     ));
   }
