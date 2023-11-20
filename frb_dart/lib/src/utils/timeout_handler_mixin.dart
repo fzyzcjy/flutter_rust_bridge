@@ -1,15 +1,9 @@
-import 'dart:async';
-import 'dart:typed_data';
-
-import 'package:flutter_rust_bridge/src/old/basic.dart';
-import 'package:flutter_rust_bridge/src/old/platform_independent.dart';
+import 'package:flutter_rust_bridge/src/handler.dart';
+import 'package:flutter_rust_bridge/src/task.dart';
 import 'package:meta/meta.dart';
-import 'package:uuid/uuid.dart';
-
-export '../ffi.dart';
 
 /// Add a timeout to [executeNormal]
-mixin FlutterRustBridgeTimeoutMixin<T extends FlutterRustBridgeWireBase> on FlutterRustBridgeBase<T> {
+mixin TimeoutHandlerMixin on BaseHandler {
   @override
   Future<S> executeNormal<S, E extends Object>(NormalTask<S, E> task) {
     // capture a stack trace at *here*, such that when timeout, can have a good stack trace
@@ -20,8 +14,7 @@ mixin FlutterRustBridgeTimeoutMixin<T extends FlutterRustBridgeWireBase> on Flut
     var future = super.executeNormal(task);
     if (timeLimitForExecuteNormal != null) {
       future = future.timeout(timeLimitForExecuteNormal,
-          onTimeout: () =>
-              throw FlutterRustBridgeTimeoutException(timeLimitForExecuteNormal, task.debugName, stackTrace));
+          onTimeout: () => throw FrbTimeoutException(timeLimitForExecuteNormal, task.constMeta.debugName, stackTrace));
     }
 
     return future;
@@ -34,7 +27,7 @@ mixin FlutterRustBridgeTimeoutMixin<T extends FlutterRustBridgeWireBase> on Flut
 
 /// Exception when timeout happens using [FlutterRustBridgeTimeoutMixin]
 @immutable
-class FlutterRustBridgeTimeoutException {
+class FrbTimeoutException {
   /// The duration to trigger timeout
   final Duration duration;
 
@@ -44,9 +37,8 @@ class FlutterRustBridgeTimeoutException {
   /// The stack trace of the error
   final StackTrace stackTrace;
 
-  const FlutterRustBridgeTimeoutException(this.duration, this.debugName, this.stackTrace);
+  const FrbTimeoutException(this.duration, this.debugName, this.stackTrace);
 
   @override
-  String toString() =>
-      'FlutterRustBridgeTimeoutException(debugName=$debugName, duration=$duration, stackTrace=$stackTrace)';
+  String toString() => 'FrbTimeoutException(debugName=$debugName, duration=$duration, stackTrace=$stackTrace)';
 }
