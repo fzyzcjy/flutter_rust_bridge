@@ -1,4 +1,11 @@
+import 'package:meta/meta.dart';
+
+import '_io.dart' if (dart.library.html) '_web.dart';
+
 export '_io.dart' if (dart.library.html) '_web.dart';
+
+typedef DropFnType = void Function(PlatformPointer);
+typedef ShareFnType = PlatformPointer Function(PlatformPointer);
 
 /// An opaque pointer to a native C or Rust type.
 /// Recipients of this type should call [dispose] at least once during runtime.

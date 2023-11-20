@@ -1,4 +1,6 @@
-class FrbOpaqueBase implements Finalizable {
+import 'dart:ffi' as ffi;
+
+class FrbOpaqueBase implements ffi.Finalizable {
   static PlatformPointer initPtr(int ptr) => ffi.Pointer.fromAddress(ptr);
 
   static PlatformPointer nullPtr() => ffi.Pointer.fromAddress(0);
