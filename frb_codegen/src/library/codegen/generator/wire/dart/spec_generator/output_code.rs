@@ -1,4 +1,5 @@
 use crate::basic_code_impl;
+use pathdiff::diff_paths;
 use std::ops::{Add, AddAssign};
 
 #[derive(Default, Clone)]
@@ -27,6 +28,7 @@ impl AddAssign for WireDartOutputCode {
         self.import += &rhs.import;
         self.part += &rhs.part;
         self.body += &rhs.body;
+        self.dispatcher_body += &rhs.dispatcher_body;
     }
 }
 
@@ -45,10 +47,11 @@ impl WireDartOutputCode {
             import: imports.join("\n"),
             part: "".to_string(),
             body: body.join("\n"),
+            dispatcher_body: "".to_string(),
         }
     }
 
-    pub(crate) fn all_code(&self, dispatcher_name: &str) -> String {
+    pub(crate) fn all_code(&self, entrypoint_class_name: &str) -> String {
         let dispatcher_name = format!("{}Dispatcher", entrypoint_class_name);
         let dispatcher_class_code = format!(
             "

@@ -15,8 +15,10 @@ pub(super) fn generate(
     config: &GeneratorWireDartInternalConfig,
 ) -> anyhow::Result<WireDartOutputText> {
     let merged_code = generate_merged_code(spec);
-    let text =
-        generate_text_from_merged_code(config, merged_code.clone().map(|code, _| code.all_code()))?;
+    let text = generate_text_from_merged_code(
+        config,
+        (merged_code.clone()).map(|code, _| code.all_code(&config.dart_entrypoint_class_name)),
+    )?;
     Ok(WireDartOutputText { text })
 }
 

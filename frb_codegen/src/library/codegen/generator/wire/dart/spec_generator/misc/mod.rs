@@ -45,6 +45,7 @@ fn generate_boilerplate(entrypoint_class_name: &str) -> WireDartOutputCode {
             }}
             "#
         ),
+        dispatcher_body: "".into(),
     }
 }
 
