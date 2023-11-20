@@ -51,15 +51,6 @@ class BaseHandler {
   }
 }
 
-class _ExecuteStreamPortGenerator {
-  static final _streamSinkNameIndex = <String, int>{};
-
-  static String _nextName(String funcName) {
-    final nextIndex = _streamSinkNameIndex.update(funcName, (value) => value + 1, ifAbsent: () => 0);
-    return '__frb_streamsink_${funcName}_$nextIndex';
-  }
-}
-
 S _transformRust2DartMessage<S, E extends Object>(
     List<dynamic> raw, S Function(dynamic) parseSuccessData, E Function(dynamic)? parseErrorData) {
   switch (_Rust2DartAction.values[raw[0]]) {

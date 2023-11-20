@@ -12,16 +12,6 @@ export 'isolate.dart';
 
 final _instances = <Type>{};
 
-class _DropIdPortGenerator {
-  static final instance = _DropIdPortGenerator._();
-
-  _DropIdPortGenerator._();
-
-  int _nextPort = 0;
-
-  String create() => '__frb_dart_opaque_drop_${_nextPort++}';
-}
-
 /// Base class for generated bindings of Flutter Rust Bridge.
 /// Normally, users do not extend this class manually. Instead,
 /// users should directly use the generated class.
