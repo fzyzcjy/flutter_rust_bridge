@@ -19,7 +19,6 @@ export 'isolate.dart';
 /// users should directly use the generated class.
 abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   FlutterRustBridgeBase(this.inner) {
-    // _sanityCheckSingleton();
     _setUpRustToDartComm();
   }
 
@@ -40,16 +39,6 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   void dispose() {
     _dropPort.close();
   }
-
-  // void _sanityCheckSingleton() {
-  //   if (_instances.contains(runtimeType)) {
-  //     throw Exception(
-  //       'Subclasses of `FlutterRustBridgeBase` should be singletons - '
-  //       'there should not be two instances (runtimeType=$runtimeType)',
-  //     );
-  //   }
-  //   _instances.add(runtimeType);
-  // }
 
   void _setUpRustToDartComm() {
     inner.storeDartPostCObject();

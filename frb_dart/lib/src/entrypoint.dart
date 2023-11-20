@@ -17,7 +17,7 @@ abstract class BaseEntrypoint<D extends BaseDispatcher> {
   }) async {
     if (initialized) throw StateError('Should not initialize flutter_rust_bridge twice');
     __state = _EntrypointState(dispatcher: dispatcher ?? createDefaultDispatcher());
-    // TODO more init work
+    _sanityCheckSingleton(runtimeType);
   }
 
   @protected
@@ -28,4 +28,14 @@ class _EntrypointState<D extends BaseDispatcher> {
   final D dispatcher;
 
   const _EntrypointState({required this.dispatcher});
+}
+
+void _sanityCheckSingleton(Type entrypointRuntimeType) {
+  if (_instances.contains(entrypointRuntimeType)) {
+    throw Exception(
+      'Subclasses of `BaseEntrypoint` should be singletons - '
+      'there should not be two instances (runtimeType=$entrypointRuntimeType)',
+    );
+  }
+  _instances.add(runtimeType);
 }
