@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_rust_bridge/src/old/platform_independent.dart';
 import 'package:flutter_rust_bridge/src/old/utils.dart';
+import 'package:flutter_rust_bridge/src/utils/port_generator.dart';
 import 'package:meta/meta.dart';
 
 import 'ffi.dart';
@@ -29,7 +30,7 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   NativePortType get dropPort => _dropPort.sendPort.nativePort;
 
   ReceivePort _initDropPort() {
-    var port = broadcastPort(_DropIdPortGenerator.instance.create());
+    var port = broadcastPort(DropIdPortGenerator.create());
     port.listen((message) {
       inner.drop_dart_object(message);
     });

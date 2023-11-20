@@ -5,6 +5,7 @@ import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.
 import 'package:flutter_rust_bridge/src/manual_impl/manual_impl.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:flutter_rust_bridge/src/task.dart';
+import 'package:flutter_rust_bridge/src/utils/port_generator.dart';
 import 'package:flutter_rust_bridge/src/utils/single_complete_port.dart';
 
 class BaseHandler {
@@ -35,7 +36,7 @@ class BaseHandler {
 
   /// Similar to [executeNormal], except that this will return a [Stream] instead of a [Future].
   Stream<S> executeStream<S, E extends Object>(StreamTask<S, E> task) async* {
-    final portName = _ExecuteStreamPortGenerator._nextName(task.constMeta.debugName);
+    final portName = ExecuteStreamPortGenerator.create(task.constMeta.debugName);
     final receivePort = broadcastPort(portName);
 
     task.callFfi(receivePort.sendPort.nativePort);
