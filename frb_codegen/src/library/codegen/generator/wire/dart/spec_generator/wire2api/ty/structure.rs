@@ -8,10 +8,10 @@ impl<'a> WireDartGeneratorWire2apiTrait for StructRefWireDartGenerator<'a> {
     fn generate_impl_wire2api_body(&self) -> String {
         let s = self.ir.get(self.context.ir_pack);
 
-        let has_methods = (self.context.ir_pack.funcs.iter())
+        let _has_methods = (self.context.ir_pack.funcs.iter())
             .any(|f| matches!(&f.owner, IrFuncOwnerInfo::Method(_)));
 
-        let mut inner = s
+        let inner = s
             .fields
             .iter()
             .enumerate()

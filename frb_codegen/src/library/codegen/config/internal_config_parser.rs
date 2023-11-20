@@ -70,7 +70,7 @@ impl InternalConfig {
             .values()
             .next()
             .unwrap();
-        let dart_output_stem = get_file_stem(dart_output_path);
+        let _dart_output_stem = get_file_stem(dart_output_path);
 
         Ok(InternalConfig {
             preparer: PreparerInternalConfig {

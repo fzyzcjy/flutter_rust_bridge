@@ -1,7 +1,6 @@
 use crate::basic_code_impl;
 use crate::codegen::generator::misc::target::TargetOrCommon;
-use pathdiff::diff_paths;
-use std::ops::{Add, AddAssign};
+use std::ops::AddAssign;
 
 #[derive(Default, Clone)]
 pub(crate) struct WireDartOutputCode {

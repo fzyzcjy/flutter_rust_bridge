@@ -39,9 +39,9 @@ impl<'a> StructRefApiDartGenerator<'a> {
     fn generate_mode_freezed_constructor_params(
         &self,
         src: &IrStruct,
-        has_methods: bool,
+        _has_methods: bool,
     ) -> String {
-        let mut ans = src
+        let ans = src
             .fields
             .iter()
             .map(|field| {

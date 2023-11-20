@@ -40,7 +40,7 @@ pub(crate) fn generate_api_method(
 fn generate_params(
     func: &IrFunc,
     context: ApiDartGeneratorContext,
-    is_static_method: bool,
+    _is_static_method: bool,
     skip_count: usize,
 ) -> Vec<String> {
     let mut ans = func

@@ -1,7 +1,6 @@
 use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::polisher::add_mod_to_lib::try_add_mod_to_lib;
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
-use crate::command_run;
 use crate::commands::format_rust::format_rust;
 use crate::library::commands::dart_build_runner::dart_build_runner;
 use crate::library::commands::format_dart::format_dart;

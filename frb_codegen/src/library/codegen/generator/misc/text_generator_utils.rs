@@ -1,11 +1,6 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::{TargetOrCommon, TargetOrCommonMap};
-use crate::codegen::ir::ty::boxed::IrTypeBoxed;
-use crate::codegen::ir::ty::IrType;
-use crate::enum_map;
 use crate::utils::file_utils::create_dir_all_and_write;
-use anyhow::bail;
-use std::convert::{TryFrom, TryInto};
 use std::path::PathBuf;
 use strum::IntoEnumIterator;
 

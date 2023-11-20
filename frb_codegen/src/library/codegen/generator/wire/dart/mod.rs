@@ -1,4 +1,4 @@
-use crate::codegen::generator::misc::{PathText, PathTexts};
+use crate::codegen::generator::misc::PathTexts;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 
 pub(crate) mod internal_config;

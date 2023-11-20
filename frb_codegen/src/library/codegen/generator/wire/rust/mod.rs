@@ -1,4 +1,4 @@
-use crate::codegen::generator::misc::{PathText, PathTexts};
+use crate::codegen::generator::misc::PathTexts;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::ir::pack::IrPackComputedCache;
 

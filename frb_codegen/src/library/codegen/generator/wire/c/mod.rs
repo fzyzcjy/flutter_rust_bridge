@@ -4,9 +4,6 @@ mod text_generator;
 
 use crate::codegen::generator::misc::{PathText, PathTexts};
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
-use crate::codegen::ir::pack::IrPack;
-use crate::utils::file_utils::create_dir_all_and_write;
-use std::path::Path;
 
 pub(crate) struct GeneratorWireCOutput {
     pub output_texts: PathTexts,

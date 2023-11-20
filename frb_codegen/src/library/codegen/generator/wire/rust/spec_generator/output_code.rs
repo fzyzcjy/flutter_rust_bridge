@@ -1,7 +1,7 @@
 use crate::basic_code_impl;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use itertools::Itertools;
-use std::ops::{Add, AddAssign};
+use std::ops::AddAssign;
 
 #[derive(Default, Clone)]
 pub(crate) struct WireRustOutputCode {

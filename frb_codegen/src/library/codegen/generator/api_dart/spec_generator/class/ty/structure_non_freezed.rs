@@ -37,8 +37,8 @@ impl<'a> StructRefApiDartGenerator<'a> {
         )
     }
 
-    fn generate_field_declarations(&self, src: &IrStruct, methods: &[String]) -> String {
-        let mut field_declarations = src
+    fn generate_field_declarations(&self, src: &IrStruct, _methods: &[String]) -> String {
+        let field_declarations = src
             .fields
             .iter()
             .map(|f| {
@@ -56,9 +56,9 @@ impl<'a> StructRefApiDartGenerator<'a> {
     fn generate_mode_non_freezed_constructor_params(
         &self,
         src: &IrStruct,
-        methods: &[String],
+        _methods: &[String],
     ) -> String {
-        let mut ans = src
+        let ans = src
             .fields
             .iter()
             .map(|f| {
