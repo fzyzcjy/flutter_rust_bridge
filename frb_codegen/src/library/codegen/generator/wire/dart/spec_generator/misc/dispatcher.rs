@@ -170,7 +170,8 @@ fn generate_task_common_args(func: &IrFunc) -> String {
 }
 
 fn has_methods_for_struct_name(struct_name: &str, ir_pack: &IrPack) -> bool {
-    (ir_pack.funcs.iter()).any(|f| matches!(&f.owner, IrFuncOwnerInfo::Method(_)))
+    (ir_pack.funcs.iter())
+        .any(|f| matches!(&f.owner, IrFuncOwnerInfo::Method(m) if m.struct_name == struct_name))
 }
 
 pub(crate) fn generate_dispatcher_opaque_getters() -> WireDartOutputCode {
