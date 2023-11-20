@@ -10,8 +10,8 @@ export 'package:meta/meta.dart' show internal, protected;
 
 export 'flutter_rust_bridge.dart';
 export 'src/exceptions.dart';
-export 'src/main_components/bulk.dart';
-export 'src/main_components/dispatcher.dart';
+export 'src/main_components/api.dart';
+export 'src/main_components/api_impl.dart';
 export 'src/main_components/entrypoint.dart';
 export 'src/main_components/handler.dart';
 export 'src/main_components/wire/wire.dart';

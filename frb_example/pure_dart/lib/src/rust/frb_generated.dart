@@ -3,7 +3,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart.dart';
 
 /// Main entrypoint of the Rust API
-class Rust extends BaseEntrypoint<RustDispatcher> {
+class Rust extends BaseEntrypoint<RustApi> {
   @internal
   static final instance = Rust._();
 
@@ -11,7 +11,7 @@ class Rust extends BaseEntrypoint<RustDispatcher> {
 
   /// Initialize flutter_rust_bridge
   static Future<void> init({
-    RustDispatcher? dispatcher,
+    RustApi? dispatcher,
     BaseHandler? handler,
   }) async {
     await instance.initImpl(dispatcher: dispatcher, handler: handler);
@@ -24,22 +24,22 @@ class Rust extends BaseEntrypoint<RustDispatcher> {
   static void dispose() => instance.disposeImpl();
 
   @override
-  RustDispatcher createDefaultDispatcher({BaseHandler? handler}) =>
-      RustDispatcher(bulk: RustBulk(wire: RustWire(dynamicLibrary), handler: handler));
+  RustApi createDefaultApi({BaseHandler? handler}) =>
+      RustApi(apiImpl: RustApiImpl(wire: RustWire(dynamicLibrary), handler: handler));
 }
 
-class RustDispatcher extends BaseDispatcher<RustBulk> {
-  RustDispatcher({required super.bulk});
+class RustApi extends BaseApi<RustApiImpl> {
+  final RustApiImpl apiImpl;
+
+  RustApi({required this.apiImpl});
 
   Future<int> simpleAdder({required int a, required int b, dynamic hint}) {
-    return bulk.simpleAdder(a: a, b: b, hint: hint);
+    return apiImpl.simpleAdder(a: a, b: b, hint: hint);
   }
-
-  TaskConstMeta get kSimpleAdderConstMeta => bulk.kSimpleAdderConstMeta;
 }
 
-class RustBulk extends RustBulkPlatform {
-  RustBulk({super.handler, required super.wire});
+class RustApiImpl extends RustApiImplPlatform {
+  RustApiImpl({super.handler, required super.wire});
 
   Future<int> simpleAdder({required int a, required int b, dynamic hint}) {
     var arg0 = api2wire_i_32(a);
@@ -50,7 +50,7 @@ class RustBulk extends RustBulkPlatform {
       parseErrorData: null,
       constMeta: kSimpleAdderConstMeta,
       argValues: [a, b],
-      dispatcher: this,
+      api: this,
       hint: hint,
     ));
   }
