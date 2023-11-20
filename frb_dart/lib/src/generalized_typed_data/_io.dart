@@ -1,6 +1,8 @@
 import 'dart:collection';
 import 'dart:typed_data' as $data;
 
+import 'package:flutter_rust_bridge/src/exceptions.dart';
+
 export 'dart:typed_data' hide Int64List, Uint64List;
 
 abstract class _TypedList<T> extends ListMixin<T> {
