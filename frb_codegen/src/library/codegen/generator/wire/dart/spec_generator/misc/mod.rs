@@ -1,4 +1,6 @@
+use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
+use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
@@ -6,6 +8,7 @@ use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
 pub(crate) mod ty;
 
 pub(crate) struct WireDartOutputSpecMisc {
+    pub(crate) boilerplate: WireDartOutputCode,
     pub(crate) needs_freezed: bool,
 }
 
@@ -14,8 +17,13 @@ pub(crate) fn generate(
     cache: &IrPackComputedCache,
 ) -> WireDartOutputSpecMisc {
     WireDartOutputSpecMisc {
+        boilerplate: generate_boilerplate().into(),
         needs_freezed: compute_needs_freezed(cache, context.ir_pack),
     }
+}
+
+fn generate_boilerplate() -> String {
+    todo!()
 }
 
 fn compute_needs_freezed(cache: &IrPackComputedCache, ir_pack: &IrPack) -> bool {

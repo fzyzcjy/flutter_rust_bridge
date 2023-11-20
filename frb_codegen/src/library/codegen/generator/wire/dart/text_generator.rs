@@ -28,6 +28,10 @@ fn generate_merged_code(spec: &WireDartOutputSpec) -> Acc<WireDartOutputCode> {
         merged_code += item.clone();
     };
 
+    add(
+        "boilerplate",
+        &Acc::new_common(vec![spec.misc.boilerplate.clone()]),
+    );
     add("c_binding", &Acc::new_io(vec![spec.c_binding.clone()]));
     add("impl_wire2api", &spec.wire2api.impl_wire2api);
     add("api2wire_funcs", &spec.api2wire.api2wire_funcs);
