@@ -54,14 +54,14 @@ class BaseHandler {
 S _transformRust2DartMessage<S, E extends Object>(List<dynamic> raw, S Function(dynamic) parseSuccessData,
     E Function(dynamic)? parseErrorData, PanicException Function(dynamic)? parsePanicData) {
   final action = raw[0];
-  switch (action) {
-    case _RUST2DART_ACTION_SUCCESS:
+  switch (_Rust2DartAction.values[action]) {
+    case _Rust2DartAction.success:
       return _parseData<S>(raw, parseSuccessData);
-    case _RUST2DART_ACTION_ERROR:
+    case _Rust2DartAction.error:
       throw _parseData<E>(raw, parseErrorData);
-    case _RUST2DART_ACTION_PANIC:
+    case _Rust2DartAction.panic:
       throw _parseData<PanicException>(raw, parsePanicData);
-    case _RUST2DART_ACTION_CLOSE_STREAM:
+    case _Rust2DartAction.closeStream:
       assert(raw.length == 1);
       throw _CloseStreamException();
     default:
@@ -78,14 +78,5 @@ R _parseData<R>(List<dynamic> rawData, R Function(dynamic)? function) {
   throw Exception("tried to parse data but function is null");
 }
 
-// ignore: constant_identifier_names
-const _RUST2DART_ACTION_SUCCESS = 0;
-
-// ignore: constant_identifier_names
-const _RUST2DART_ACTION_ERROR = 1;
-
-// ignore: constant_identifier_names
-const _RUST2DART_ACTION_CLOSE_STREAM = 2;
-
-// ignore: constant_identifier_names
-const _RUST2DART_ACTION_PANIC = 3;
+/// NOTE: Please keep in sync with the Rust side
+enum _Rust2DartAction { success, error, closeStream, panic }
