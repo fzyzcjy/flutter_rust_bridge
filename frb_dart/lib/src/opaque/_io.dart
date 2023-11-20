@@ -2,6 +2,8 @@ import 'dart:ffi' as ffi;
 
 import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 
+typedef OpaqueTypeFinalizer = ffi.NativeFinalizer;
+
 class FrbOpaqueBase implements ffi.Finalizable {
   static PlatformPointer initPtr(int ptr) => ffi.Pointer.fromAddress(ptr);
 

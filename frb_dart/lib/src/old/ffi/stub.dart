@@ -5,8 +5,7 @@ import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 
 import 'io.dart' if (dart.library.html) 'web.dart' show DartPostCObject;
 
-export 'io.dart' if (dart.library.html) 'web.dart'
-    show ExternalLibrary, FrbOpaqueBase, DartApiDl, PlatformPointer, OpaqueTypeFinalizer;
+export 'io.dart' if (dart.library.html) 'web.dart' show ExternalLibrary, DartApiDl;
 
 /// This class, together with its subclasses, are only for internal usage.
 /// Usually it should not be used by normal users.

@@ -124,5 +124,3 @@ class FlutterRustBridgeWasmWireBase<T extends WasmModule> extends FlutterRustBri
   FlutterRustBridgeWasmWireBase(FutureOr<T> module)
       : init = Future.value(module).then((module) => promiseToFuture(module()));
 }
-
-typedef OpaqueTypeFinalizer = Finalizer<PlatformPointer>;

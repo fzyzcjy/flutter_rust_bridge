@@ -1,5 +1,4 @@
 import 'dart:ffi' as ffi;
-import 'dart:ffi';
 
 import 'stub.dart' show FlutterRustBridgeWireBase;
 
@@ -29,5 +28,3 @@ class DartApiDl {
     }
   }
 }
-
-typedef OpaqueTypeFinalizer = NativeFinalizer;

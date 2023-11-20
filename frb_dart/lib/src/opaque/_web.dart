@@ -1,5 +1,7 @@
 import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
 
+typedef OpaqueTypeFinalizer = Finalizer<PlatformPointer>;
+
 class FrbOpaqueBase {
   static PlatformPointer initPtr(int ptr) => ptr;
 
