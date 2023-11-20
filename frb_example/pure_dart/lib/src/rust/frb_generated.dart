@@ -11,10 +11,10 @@ class Rust extends BaseEntrypoint<RustApi> {
 
   /// Initialize flutter_rust_bridge
   static Future<void> init({
-    RustApi? dispatcher,
+    RustApi? api,
     BaseHandler? handler,
   }) async {
-    await instance.initImpl(dispatcher: dispatcher, handler: handler);
+    await instance.initImpl(api: api, handler: handler);
   }
 
   /// Dispose flutter_rust_bridge
