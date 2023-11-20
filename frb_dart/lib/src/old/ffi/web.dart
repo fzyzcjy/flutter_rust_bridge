@@ -3,6 +3,7 @@ import 'dart:html';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
+import 'package:flutter_rust_bridge/src/utils/web_utils.dart';
 import 'package:js/js.dart';
 
 export 'package:js/js.dart';
@@ -64,9 +65,6 @@ typedef DartPostCObject = void;
 
 @JS()
 external bool? get crossOriginIsolated;
-
-@JS('console.warn')
-external void jsConsoleWarn([a, b, c, d, e, f, g, h, i]);
 
 @JS('Number')
 external int castInt(Object? value);
