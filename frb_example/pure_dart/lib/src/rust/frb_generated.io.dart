@@ -9,6 +9,8 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // ignore_for_file: type=lint
 
 class RustImplPlatform extends BaseImpl {
+  // TODO the functions needs to be @protected
+
   // ...
 }
 
