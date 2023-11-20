@@ -59,7 +59,7 @@ fn write_rust_modules(
 #[cfg(not(target_family = \"wasm\"))]
 {mod_io}
 #[cfg(not(target_family = \"wasm\"))]
-pub use io::*;
+pub use self::io::*;
 ",
         common,
         mod_web = if config.wasm_enabled {
@@ -69,7 +69,7 @@ pub use io::*;
 #[cfg(target_family = \"wasm\")]
 {}
 #[cfg(target_family = \"wasm\")]
-pub use web::*;",
+pub use self::web::*;",
                 emit_platform_module("web", wasm, config, Target::Wasm)
             )
         } else {

@@ -1,4 +1,5 @@
 mod api;
+#[rustfmt::skip]
 mod bridge_generated;
 mod data;
 mod new_module_system;
