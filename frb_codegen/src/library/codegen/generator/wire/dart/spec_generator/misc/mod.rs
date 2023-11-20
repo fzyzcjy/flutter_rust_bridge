@@ -5,9 +5,11 @@ use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
 
+mod c_binding;
 pub(crate) mod ty;
 
 pub(crate) struct WireDartOutputSpecMisc {
+    pub(crate) c_binding: WireDartOutputCode,
     pub(crate) boilerplate: WireDartOutputCode,
     pub(crate) needs_freezed: bool,
 }
@@ -15,11 +17,13 @@ pub(crate) struct WireDartOutputSpecMisc {
 pub(crate) fn generate(
     context: WireDartGeneratorContext,
     cache: &IrPackComputedCache,
-) -> WireDartOutputSpecMisc {
-    WireDartOutputSpecMisc {
+    c_file_content: &str,
+) -> anyhow::Result<WireDartOutputSpecMisc> {
+    Ok(WireDartOutputSpecMisc {
+        c_binding: c_binding::generate(&context.config, c_file_content)?,
         boilerplate: generate_boilerplate(&context.config.dart_entrypoint_class_name),
         needs_freezed: compute_needs_freezed(cache, context.ir_pack),
-    }
+    })
 }
 
 fn generate_boilerplate(entrypoint_class_name: &str) -> WireDartOutputCode {
