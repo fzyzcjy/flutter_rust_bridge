@@ -1,5 +1,5 @@
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
-use crate::codegen::generator::api_dart::spec_generator::function::GeneratedApiFunc;
+use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
 use crate::codegen::generator::api_dart::spec_generator::ApiDartOutputSpec;
 use itertools::Itertools;
 
@@ -22,11 +22,11 @@ pub(super) fn generate(spec: ApiDartOutputSpec) -> anyhow::Result<String> {
     ))
 }
 
-fn generate_functions(funcs: Vec<GeneratedApiFunc>) -> String {
+fn generate_functions(funcs: Vec<ApiDartGeneratedFunction>) -> String {
     funcs
         .iter()
         .map(|func| {
-            let GeneratedApiFunc {
+            let ApiDartGeneratedFunction {
                 func_comments,
                 func_expr,
                 func_impl,

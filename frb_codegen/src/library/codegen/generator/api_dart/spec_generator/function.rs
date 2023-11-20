@@ -13,7 +13,7 @@ use convert_case::{Case, Casing};
 use itertools::Itertools;
 
 #[derive(Debug)]
-pub(crate) struct GeneratedApiFunc {
+pub(crate) struct ApiDartGeneratedFunction {
     pub(crate) func_comments: String,
     pub(crate) func_expr: String,
     pub(crate) func_impl: String,
@@ -24,7 +24,7 @@ pub(crate) fn generate_func(
     func: &IrFunc,
     context: ApiDartGeneratorContext,
     dart_enums_style: bool,
-) -> GeneratedApiFunc {
+) -> ApiDartGeneratedFunction {
     let params = generate_params(func, context, dart_enums_style).join(", ");
 
     let func_expr = format!(
@@ -45,7 +45,7 @@ pub(crate) fn generate_func(
     // let companion_field_signature =
     //     format!("FlutterRustBridgeTaskConstMeta get {const_meta_field_name} => TODO;");
 
-    GeneratedApiFunc {
+    ApiDartGeneratedFunction {
         func_comments,
         func_expr,
         func_impl,
