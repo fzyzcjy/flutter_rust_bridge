@@ -39,7 +39,7 @@ pub(crate) fn generate_dispatcher_api_function(
     let function_implementation = format!(
         "{func_expr} {{
             {stmt_prepare_args}
-            return {execute_func_name}({task_class}(
+            return handler.{execute_func_name}({task_class}(
                 callFfi: ({call_ffi_args}) => _platform.inner.{wire_func_name}({wire_param_list}),
                 parseSuccessData: {parse_success_data},
                 parseErrorData: {parse_error_data},
@@ -88,9 +88,9 @@ fn generate_wire_param_list(func: &IrFunc, num_prepare_args: usize) -> Vec<Strin
 
 fn generate_execute_func_name(func: &IrFunc) -> &str {
     match func.mode {
-        IrFuncMode::Normal => "_platform.executeNormal",
-        IrFuncMode::Sync => "_platform.executeSync",
-        IrFuncMode::Stream { .. } => "_platform.executeStream",
+        IrFuncMode::Normal => "executeNormal",
+        IrFuncMode::Sync => "executeSync",
+        IrFuncMode::Stream { .. } => "executeStream",
     }
 }
 
@@ -150,7 +150,7 @@ fn generate_task_class(func: &IrFunc) -> &str {
 fn generate_companion_field(func: &IrFunc, const_meta_field_name: &str) -> String {
     format!(
         r#"
-        FlutterRustBridgeTaskConstMeta get {const_meta_field_name} => const FlutterRustBridgeTaskConstMeta(
+        TaskConstMeta get {const_meta_field_name} => const TaskConstMeta(
             debugName: "{}",
             argNames: [{}],
         );
