@@ -75,3 +75,5 @@ S _transformRust2DartMessage<S, E extends Object>(
 
 /// NOTE: Please keep in sync with the Rust side
 enum _Rust2DartAction { success, error, closeStream, panic }
+
+class _CloseStreamException implements Exception {}

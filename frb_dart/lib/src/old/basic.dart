@@ -81,8 +81,6 @@ abstract class FlutterRustBridgeBase<T extends FlutterRustBridgeWireBase> {
   }
 }
 
-class _CloseStreamException {}
-
 PanicException wire2apiPanicError(dynamic raw) {
   return PanicException(raw as String);
 }
