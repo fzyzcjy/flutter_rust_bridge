@@ -1,7 +1,6 @@
+import 'package:flutter_rust_bridge/src/opaque/_io.dart' if (dart.library.html) '_web.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:meta/meta.dart';
-
-import '_io.dart' if (dart.library.html) '_web.dart';
 
 export '_io.dart' if (dart.library.html) '_web.dart';
 
