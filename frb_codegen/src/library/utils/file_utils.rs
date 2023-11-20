@@ -56,19 +56,22 @@ mod tests {
     #[test]
     fn test_temp_change_file_when_file_already_exists() -> anyhow::Result<()> {
         let dir = tempfile::tempdir()?;
-        let file = dir.path().join("hello.txt");
+        let path = dir.path().join("hello.txt");
 
-        fs::write(&file.path(), "a")?;
+        fs::write(&path, "a")?;
 
-        assert_eq!(fs::read_to_string(&file.path())?, "a");
+        assert_eq!(fs::read_to_string(&path)?, "a");
 
-        let change = temp_change_file(file.path().to_owned(), |text| text + "b")?;
+        let change = temp_change_file(path.to_owned(), |text| {
+            assert_eq!(text, Some("a".to_owned()));
+            text.unwrap_or_default() + "b"
+        })?;
 
-        assert_eq!(fs::read_to_string(&file.path())?, "ab");
+        assert_eq!(fs::read_to_string(&path)?, "ab");
 
         drop(change);
 
-        assert_eq!(fs::read_to_string(&file.path())?, "a");
+        assert_eq!(fs::read_to_string(&path)?, "a");
 
         drop(dir);
         Ok(())
@@ -77,17 +80,20 @@ mod tests {
     #[test]
     fn test_temp_change_file_when_file_not_exist() -> anyhow::Result<()> {
         let dir = tempfile::tempdir()?;
-        let file = dir.path().join("hello.txt");
+        let path = dir.path().join("hello.txt");
 
-        assert_eq!(file.exists(), false);
+        assert_eq!(path.exists(), false);
 
-        let change = temp_change_file(file.path().to_owned(), |text| text + "b")?;
+        let change = temp_change_file(path.to_owned(), |text| {
+            assert_eq!(text, None);
+            text.unwrap_or_default() + "b"
+        })?;
 
-        assert_eq!(fs::read_to_string(&file.path())?, "b");
+        assert_eq!(fs::read_to_string(&path)?, "b");
 
         drop(change);
 
-        assert_eq!(file.exists(), false);
+        assert_eq!(path.exists(), false);
 
         drop(dir);
         Ok(())

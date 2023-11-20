@@ -11,7 +11,7 @@ pub(crate) fn execute(
     extern_struct_names: Vec<String>,
     rust_output_texts: &PathTexts,
 ) -> anyhow::Result<String> {
-    let transformed_rust_code = compute_transformed_rust_code(rust_output_texts, config);
+    let transformed_rust_code = compute_transformed_rust_code(rust_output_texts, config)?;
     let changed_file_handles = transformed_rust_code
         .0
         .iter()
@@ -38,10 +38,10 @@ pub(crate) fn execute(
 fn compute_transformed_rust_code(
     rust_output_texts: &PathTexts,
     config: &GeneratorWireCInternalConfig,
-) -> PathTexts {
+) -> anyhow::Result<PathTexts> {
     let rust_output_path_common = &config.rust_output_path[TargetOrCommon::Common];
     ensure!((rust_output_texts.paths().iter()).any(|path| path == rust_output_path_common));
-    PathTexts(
+    Ok(PathTexts(
         rust_output_texts
             .0
             .iter()
@@ -49,7 +49,7 @@ fn compute_transformed_rust_code(
                 PathText::new(
                     path_text.path.clone(),
                     path_text.text.clone()
-                        + (if path_text.path == rust_output_path_common {
+                        + (if &path_text.path == rust_output_path_common {
                             DUMMY_WIRE_CODE_FOR_BINDGEN
                         } else {
                             ""
@@ -57,7 +57,7 @@ fn compute_transformed_rust_code(
                 )
             })
             .collect_vec(),
-    )
+    ))
 }
 
 // NOTE [DartPostCObjectFnType] was originally [*mut DartCObject] but I changed it to [*mut c_void]
