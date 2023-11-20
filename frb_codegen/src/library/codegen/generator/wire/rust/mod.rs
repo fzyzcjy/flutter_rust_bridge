@@ -1,4 +1,4 @@
-use crate::codegen::generator::misc::{OutputText, OutputTexts};
+use crate::codegen::generator::misc::{PathText, PathTexts};
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::ir::pack::IrPackComputedCache;
 
@@ -7,7 +7,7 @@ pub(crate) mod spec_generator;
 mod text_generator;
 
 pub(crate) struct GeneratorWireRustOutput {
-    pub output_texts: OutputTexts,
+    pub output_texts: PathTexts,
     pub extern_func_names: Vec<String>,
     pub extern_struct_names: Vec<String>,
 }
@@ -19,7 +19,7 @@ pub(crate) fn generate(
     let text = text_generator::generate(&spec, context.config)?;
 
     Ok(GeneratorWireRustOutput {
-        output_texts: OutputTexts::new_from_targets(&context.config.rust_output_path, &text.text),
+        output_texts: PathTexts::new_from_targets(&context.config.rust_output_path, &text.text),
         extern_func_names: text.extern_func_names,
         extern_struct_names: spec.misc.extern_struct_names,
     })

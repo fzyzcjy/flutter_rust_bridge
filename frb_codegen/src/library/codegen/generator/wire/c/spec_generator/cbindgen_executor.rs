@@ -1,5 +1,5 @@
 use crate::codegen::generator::misc::target::TargetOrCommon;
-use crate::codegen::generator::misc::OutputTexts;
+use crate::codegen::generator::misc::PathTexts;
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::library::commands::cbindgen::{cbindgen, CbindgenArgs};
 use crate::utils::file_utils::temp_change_file;
@@ -9,7 +9,7 @@ use itertools::Itertools;
 pub(crate) fn execute(
     config: &GeneratorWireCInternalConfig,
     extern_struct_names: Vec<String>,
-    rust_output_texts: &OutputTexts,
+    rust_output_texts: &PathTexts,
 ) -> anyhow::Result<String> {
     let rust_output_path_common = &config.rust_output_path[TargetOrCommon::Common];
     ensure!((rust_output_texts.paths().iter()).any(|path| path == rust_output_path_common));

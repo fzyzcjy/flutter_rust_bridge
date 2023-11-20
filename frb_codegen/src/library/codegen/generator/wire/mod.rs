@@ -5,14 +5,14 @@ pub(crate) mod rust;
 
 use crate::codegen::config::internal_config::GeneratorWireInternalConfig;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
-use crate::codegen::generator::misc::OutputTexts;
+use crate::codegen::generator::misc::PathTexts;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::ir::pack::IrPack;
 use anyhow::Result;
 
 pub(crate) struct GeneratorWireOutput {
-    pub output_texts: OutputTexts,
+    pub output_texts: PathTexts,
     pub dart_needs_freezed: bool,
 }
 

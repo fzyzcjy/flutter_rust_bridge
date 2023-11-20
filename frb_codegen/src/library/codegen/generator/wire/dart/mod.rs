@@ -1,4 +1,4 @@
-use crate::codegen::generator::misc::{OutputText, OutputTexts};
+use crate::codegen::generator::misc::{PathText, PathTexts};
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 
 pub(crate) mod internal_config;
@@ -6,7 +6,7 @@ pub(super) mod spec_generator;
 mod text_generator;
 
 pub(crate) struct GeneratorWireDartOutput {
-    pub output_texts: OutputTexts,
+    pub output_texts: PathTexts,
     pub dart_needs_freezed: bool,
 }
 
@@ -18,7 +18,7 @@ pub(crate) fn generate(
     let text = text_generator::generate(&spec, &context.config)?;
 
     Ok(GeneratorWireDartOutput {
-        output_texts: OutputTexts::new_from_targets(
+        output_texts: PathTexts::new_from_targets(
             &context.config.dart_impl_output_path,
             &text.text,
         ),

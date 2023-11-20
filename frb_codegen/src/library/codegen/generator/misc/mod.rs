@@ -37,21 +37,21 @@ pub fn is_js_value(ty: &IrType) -> bool {
 }
 
 #[derive(Clone)]
-pub(crate) struct OutputText {
+pub(crate) struct PathText {
     pub path: PathBuf,
     pub text: String,
 }
 
-impl OutputText {
+impl PathText {
     pub(crate) fn new(path: PathBuf, text: String) -> Self {
         Self { path, text }
     }
 }
 
 #[derive(Clone)]
-pub(crate) struct OutputTexts(pub Vec<OutputText>);
+pub(crate) struct PathTexts(pub Vec<PathText>);
 
-impl Add for OutputTexts {
+impl Add for PathTexts {
     type Output = Self;
 
     fn add(self, rhs: Self) -> Self::Output {
@@ -59,7 +59,7 @@ impl Add for OutputTexts {
     }
 }
 
-impl OutputTexts {
+impl PathTexts {
     pub(crate) fn new_from_targets(
         path: &TargetOrCommonMap<PathBuf>,
         text: &Acc<Option<String>>,
@@ -67,9 +67,9 @@ impl OutputTexts {
         Self(
             TargetOrCommon::iter()
                 .filter_map(|target| {
-                    text[target].clone().map(|text_for_target| {
-                        OutputText::new(path[target].clone(), text_for_target)
-                    })
+                    text[target]
+                        .clone()
+                        .map(|text_for_target| PathText::new(path[target].clone(), text_for_target))
                 })
                 .collect_vec(),
         )

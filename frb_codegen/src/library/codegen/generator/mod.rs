@@ -1,5 +1,5 @@
 use crate::codegen::config::internal_config::GeneratorInternalConfig;
-use crate::codegen::generator::misc::OutputTexts;
+use crate::codegen::generator::misc::PathTexts;
 use crate::codegen::ir::pack::IrPack;
 
 pub(crate) mod acc;
@@ -8,7 +8,7 @@ pub(crate) mod misc;
 pub(crate) mod wire;
 
 pub(crate) struct GeneratorOutput {
-    pub output_texts: OutputTexts,
+    pub output_texts: PathTexts,
     pub dart_needs_freezed: bool,
 }
 

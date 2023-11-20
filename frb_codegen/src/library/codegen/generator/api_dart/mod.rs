@@ -3,12 +3,12 @@ pub(crate) mod spec_generator;
 mod text_generator;
 
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
-use crate::codegen::generator::misc::{OutputText, OutputTexts};
+use crate::codegen::generator::misc::{PathText, PathTexts};
 use crate::codegen::ir::pack::IrPack;
 use anyhow::Result;
 
 pub(crate) struct GeneratorApiDartOutput {
-    pub output_texts: OutputTexts,
+    pub output_texts: PathTexts,
 }
 
 pub(crate) fn generate(
@@ -19,7 +19,7 @@ pub(crate) fn generate(
     let text = text_generator::generate(spec, config)?;
 
     Ok(GeneratorApiDartOutput {
-        output_texts: OutputTexts(vec![OutputText::new(
+        output_texts: PathTexts(vec![PathText::new(
             // TODO handle multi file
             (config.dart_decl_output_path.values().next().unwrap()).to_owned(),
             text,
