@@ -30,5 +30,4 @@ class DartApiDl {
   }
 }
 
-typedef PlatformPointer = ffi.Pointer<ffi.Void>;
 typedef OpaqueTypeFinalizer = NativeFinalizer;
