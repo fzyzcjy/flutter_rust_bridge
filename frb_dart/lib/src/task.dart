@@ -37,7 +37,7 @@ abstract class BaseTask<S, E extends Object> {
 
 /// A task to call FFI function.
 @immutable
-class NormalTask<S, E extends Object> extends BaseTask {
+class NormalTask<S, E extends Object> extends BaseTask<S, E> {
   /// The underlying function to call FFI function, usually the generated wire function
   final void Function(NativePortType port) callFfi;
 
@@ -53,7 +53,7 @@ class NormalTask<S, E extends Object> extends BaseTask {
 
 /// A task to call FFI function, but it is synchronous.
 @immutable
-class SyncTask<S, E extends Object> extends BaseTask {
+class SyncTask<S, E extends Object> extends BaseTask<S, E> {
   /// The underlying function to call FFI function, usually the generated wire function
   final WireSyncReturn Function() callFfi;
 
@@ -69,7 +69,7 @@ class SyncTask<S, E extends Object> extends BaseTask {
 
 /// A task to call FFI function.
 @immutable
-class StreamTask<S, E extends Object> extends BaseTask {
+class StreamTask<S, E extends Object> extends BaseTask<S, E> {
   /// The underlying function to call FFI function, usually the generated wire function
   final void Function(NativePortType port) callFfi;
 
