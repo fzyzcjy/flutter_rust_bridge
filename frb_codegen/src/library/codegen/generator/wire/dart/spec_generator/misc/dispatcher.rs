@@ -1,7 +1,13 @@
 use crate::codegen::generator::api_dart;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
-use crate::codegen::ir::func::IrFunc;
+use crate::codegen::generator::wire::misc::has_port_argument;
+use crate::codegen::ir::func::{IrFunc, IrFuncMode};
+use crate::codegen::ir::ty::primitive::IrTypePrimitive;
+use crate::codegen::ir::ty::structure::IrTypeStructRef;
+use crate::codegen::ir::ty::IrType;
+use crate::codegen::ir::ty::IrType::{Primitive, StructRef};
+use itertools::Itertools;
 
 pub(crate) fn generate_dispatcher_api_functions(
     func: &IrFunc,
@@ -87,10 +93,10 @@ pub(crate) fn generate_dispatcher_api_functions(
         }
     })
         // If struct has a method with first element `input0`
-        || (input_0_struct_name.is_some() && MethodNamingUtil::has_methods(input_0_struct_name.unwrap(), ir_pack))
+        || (input_0_struct_name.is_some() && MethodNamingUtil::has_methods(input_0_struct_name.unwrap(), context.ir_pack))
         //If output is a struct with methods
         || (func_output_struct_name.is_some()
-        && MethodNamingUtil::has_methods(func_output_struct_name.unwrap(), ir_pack))
+        && MethodNamingUtil::has_methods(func_output_struct_name.unwrap(), context.ir_pack))
     {
         format!("(d) => _wire2api_{}(d)", func.output.safe_ident())
     } else {
