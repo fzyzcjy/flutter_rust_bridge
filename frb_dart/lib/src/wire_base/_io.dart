@@ -1,5 +1,6 @@
 import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 
+// TODO rename the class (should not have `FlutterRustBridge` prefix when possible)
 /// This class, together with its subclasses, are only for internal usage.
 /// Usually it should not be used by normal users.
 abstract class FlutterRustBridgeWireBase {
