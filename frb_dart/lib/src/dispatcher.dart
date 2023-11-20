@@ -3,7 +3,7 @@ import 'package:meta/meta.dart';
 
 abstract class BaseDispatcher {
   @protected
-  final BaseHandler? handler;
+  final BaseHandler handler;
 
-  BaseDispatcher({this.handler});
+  BaseDispatcher({BaseHandler? handler}) : handler = handler ?? BaseHandler();
 }
