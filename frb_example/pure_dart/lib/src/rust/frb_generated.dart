@@ -2,14 +2,17 @@
 class FrbGeneratedPureDart {
   static Future<void> init({
     FrbGeneratedPureDartDispatcher? dispatcher,
-    FlutterRustBridgeHandler? handler,
   }) async {
     TODO;
   }
 }
 
 class FrbGeneratedPureDartDispatcher {
-  // TODO auto gen code
+  final FlutterRustBridgeHandler? handler;
+
+  FrbGeneratedPureDartDispatcher({required this.handler});
+
+// TODO auto gen code
 }
 
 // TODO move to runtime lib
