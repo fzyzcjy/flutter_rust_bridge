@@ -34,13 +34,13 @@ pub(crate) fn generate_func(
             &ApiDartGenerator::new(func.output.clone(), context).dart_api_type()
         ),
     );
-    let func_signature = format!("{func_expr};");
+    let func_signature = format!("{func_expr} {{ TODO; }}");
 
     let func_comments = generate_dart_comments(&func.comments);
 
     let const_meta_field_name = format!("k{}ConstMeta", func.name.to_case(Case::Pascal));
     let companion_field_signature =
-        format!("FlutterRustBridgeTaskConstMeta get {const_meta_field_name};");
+        format!("FlutterRustBridgeTaskConstMeta get {const_meta_field_name} => TODO;");
 
     GeneratedApiFunc {
         func_comments,
