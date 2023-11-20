@@ -36,7 +36,6 @@ pub(crate) fn generate(
 
     let rust_output = rust::generate(wire_rust_generator_context)?;
 
-    todo!("when generating C from Rust, must temporarily write the rust files onto disk");
     let c_output = c::generate(
         ir_pack,
         &config.c,

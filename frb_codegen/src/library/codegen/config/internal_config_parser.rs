@@ -115,7 +115,6 @@ impl InternalConfig {
                     },
                     c: GeneratorWireCInternalConfig {
                         rust_crate_dir: rust_crate_dir.clone(),
-                        rust_output_path: rust_output_path.clone(),
                         c_output_path: c_output_path.clone(),
                     },
                 },
