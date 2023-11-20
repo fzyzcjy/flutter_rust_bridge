@@ -409,10 +409,10 @@ support::lazy_static! {
 #[path = "bridge_generated.web.rs"]
 mod web;
 #[cfg(target_family = "wasm")]
-pub use web::*;
+pub use self::web::*;
 
 #[cfg(not(target_family = "wasm"))]
 #[path = "bridge_generated.io.rs"]
 mod io;
 #[cfg(not(target_family = "wasm"))]
-pub use io::*;
+pub use self::io::*;
