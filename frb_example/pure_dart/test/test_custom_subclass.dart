@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 
 Future<void> main() async {
   final customHandler = _MyHandler();
-  await FrbGeneratedPureDart.init(dispatcher: FrbGeneratedPureDartDispatcher(handler: customHandler));
+  await FrbExamplePureDart.init(dispatcher: FrbExamplePureDartDispatcher(handler: customHandler));
 
   test('can use custom subclasses', () async {
     expect(await simpleAdder(a: 1, b: 2), 3);

@@ -1,16 +1,23 @@
 // TODO this is manually written to prototype the API
-class FrbGeneratedPureDart {
+
+/// Main entrypoint of the Rust API
+class FrbExamplePureDart {
+  static FrbExamplePureDartDispatcher get dispatcher =>
+      _dispatcher ?? (throw StateError('flutter_rust_bridge has not been initialized'));
+  static FrbExamplePureDartDispatcher? _dispatcher;
+
   static Future<void> init({
-    FrbGeneratedPureDartDispatcher? dispatcher,
+    FrbExamplePureDartDispatcher? dispatcher,
   }) async {
-    TODO;
+    _dispatcher = dispatcher ?? FrbExamplePureDartDispatcher();
+    // TODO real initialization work
   }
 }
 
-class FrbGeneratedPureDartDispatcher {
+class FrbExamplePureDartDispatcher {
   final FlutterRustBridgeHandler? handler;
 
-  FrbGeneratedPureDartDispatcher({required this.handler});
+  FrbExamplePureDartDispatcher({this.handler});
 
 // TODO auto gen code
 }
