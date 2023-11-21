@@ -1,4 +1,4 @@
-use crate::library::commands::cbindgen::{cbindgen, cbindgen_raw};
+use crate::library::commands::cbindgen::{cbindgen, cbindgen_raw, default_cbindgen_config};
 use crate::library::commands::ffigen::{
     ffigen_raw, FfigenCommandConfig, FfigenCommandConfigHeaders,
 };
@@ -51,9 +51,7 @@ fn generate_frb_rust_cbindgen(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
     info!("generate_frb_rust_cbindgen");
 
     cbindgen_raw(
-        cbindgen::Config {
-            ..Default::default()
-        },
+        default_cbindgen_config(),
         &repo_base_dir.join("frb_rust"),
         &repo_base_dir.join("frb_dart/lib/src/ffigen_generated/frb_rust.h"),
     )

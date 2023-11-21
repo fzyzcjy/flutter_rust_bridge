@@ -27,13 +27,6 @@ fn cbindgen_to_file(args: CbindgenArgs, c_output_path: &Path) -> anyhow::Result<
     );
 
     let config = cbindgen::Config {
-        language: cbindgen::Language::C,
-        sys_includes: vec![
-            "stdbool.h".to_string(),
-            "stdint.h".to_string(),
-            "stdlib.h".to_string(),
-        ],
-        no_includes: true,
         // copied from: dart-sdk/dart_api.h
         // used to convert Dart_Handle to Object.
         after_includes: Some("typedef struct _Dart_Handle* Dart_Handle;".to_owned()),
@@ -46,11 +39,24 @@ fn cbindgen_to_file(args: CbindgenArgs, c_output_path: &Path) -> anyhow::Result<
             exclude: args.exclude_symbols,
             ..Default::default()
         },
-        ..Default::default()
+        ..default_cbindgen_config()
     };
     debug!("cbindgen config: {:#?}", config);
 
     cbindgen_raw(config, args.rust_crate_dir, c_output_path)
+}
+
+pub(crate) fn default_cbindgen_config() -> cbindgen::Config {
+    cbindgen::Config {
+        language: cbindgen::Language::C,
+        sys_includes: vec![
+            "stdbool.h".to_string(),
+            "stdint.h".to_string(),
+            "stdlib.h".to_string(),
+        ],
+        no_includes: true,
+        ..Default::default()
+    }
 }
 
 pub(crate) fn cbindgen_raw(
