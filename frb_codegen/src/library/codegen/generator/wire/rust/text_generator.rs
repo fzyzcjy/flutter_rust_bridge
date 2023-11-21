@@ -113,16 +113,20 @@ fn generate_text_common_mod_declaration(
 
     let cfg = match target {
         Target::Io => r#"not(target_family = "wasm")"#,
-        Target::Wasm => r#"(target_family = "wasm")"#,
+        Target::Wasm => r#"target_family = "wasm""#,
     };
 
-    let mod_path = path_to_string(&config.rust_output_path[target.into()])?;
+    let mod_filename = config.rust_output_path[target.into()]
+        .file_name()
+        .unwrap()
+        .to_str()
+        .unwrap();
 
     Ok(format!(
         "
         {prelude}
         #[cfg({cfg})]
-        #[path = \"{mod_path}\"]
+        #[path = \"{mod_filename}\"]
         mod {name};
         #[cfg({cfg})]
         pub use {name}::*;
