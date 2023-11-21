@@ -27,7 +27,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   ApiImplConstructor<RustLibApiImpl, RustLibWire> get apiImplConstructor => RustLibApiImpl.new;
 }
 
-abstract class RustLibApi extends BaseApi<RustLibApiImpl> {
+abstract class RustLibApi extends BaseApi {
   Future<int> simpleAdder({required int a, required int b, dynamic hint});
 }
 
