@@ -4,7 +4,7 @@ use crate::codegen::ir::ty::IrType::Primitive;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 
-impl<'a> TypeParserWithContext<'a> {
+impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_primitive(
         &mut self,
         last_segment: &SplayedSegment,

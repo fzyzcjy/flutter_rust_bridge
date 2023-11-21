@@ -7,7 +7,7 @@ use anyhow::bail;
 use quote::ToTokens;
 use syn::{Path, QSelf, TypePath};
 
-impl<'a> TypeParserWithContext<'a> {
+impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path(&mut self, type_path: &TypePath) -> anyhow::Result<IrType> {
         match &type_path {
             TypePath { qself: None, path } => self.parse_type_path_core(type_path, path),

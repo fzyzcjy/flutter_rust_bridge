@@ -5,7 +5,7 @@ use crate::codegen::parser::type_parser::TypeParserWithContext;
 use quote::ToTokens;
 use syn::Type;
 
-impl<'a> TypeParserWithContext<'a> {
+impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type(&mut self, ty: &Type) -> anyhow::Result<IrType> {
         let resolve_ty = self.resolve_alias(ty).clone();
 
@@ -20,7 +20,7 @@ impl<'a> TypeParserWithContext<'a> {
         })
     }
 
-    fn resolve_alias<'b: 'a>(&self, ty: &'b Type) -> &Type {
+    fn resolve_alias<'d: 'a>(&self, ty: &'d Type) -> &Type {
         self.get_alias_type(ty).unwrap_or(ty)
     }
 

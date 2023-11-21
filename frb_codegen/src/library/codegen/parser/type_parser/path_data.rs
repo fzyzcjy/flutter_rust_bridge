@@ -12,7 +12,7 @@ use syn::{
     PathArguments, PathSegment,
 };
 
-impl<'a> TypeParserWithContext<'a> {
+impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn extract_path_data(&mut self, path: &Path) -> Result<Vec<NameComponent>> {
         path.segments
             .iter()

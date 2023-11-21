@@ -15,7 +15,7 @@ use crate::codegen::parser::type_parser::unencodable::{splay_segments, SplayedSe
 use crate::codegen::parser::type_parser::TypeParserWithContext;
 use anyhow::bail;
 
-impl<'a> TypeParserWithContext<'a> {
+impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_concrete(
         &mut self,
         last_segment: &SplayedSegment,

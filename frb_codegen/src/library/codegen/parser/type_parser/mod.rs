@@ -66,9 +66,9 @@ impl<'a> TypeParser<'a> {
     }
 }
 
-pub(crate) struct TypeParserWithContext<'a> {
-    pub inner: &'a mut TypeParser<'a>,
-    pub context: &'a TypeParserParsingContext,
+pub(crate) struct TypeParserWithContext<'a, 'b, 'c> {
+    pub inner: &'b mut TypeParser<'a>,
+    pub context: &'c TypeParserParsingContext,
 }
 
 pub(crate) struct TypeParserParsingContext {

@@ -21,7 +21,7 @@ use crate::codegen::parser::type_parser::TypeParserWithContext;
 use std::collections::HashMap;
 use syn::{Attribute, Field, Ident, ItemEnum, TypePath, Variant};
 
-impl<'a> TypeParserWithContext<'a> {
+impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_enum(
         &mut self,
         type_path: &TypePath,
@@ -119,9 +119,11 @@ impl<'a> TypeParserWithContext<'a> {
     }
 }
 
-struct EnumOrStructParserEnum<'a>(&'a mut TypeParserWithContext<'a>);
+struct EnumOrStructParserEnum<'a, 'b, 'c>(&'a mut TypeParserWithContext<'a, 'b, 'c>);
 
-impl<'a> EnumOrStructParser<IrEnumIdent, IrEnum, Enum, ItemEnum> for EnumOrStructParserEnum<'a> {
+impl<'a> EnumOrStructParser<IrEnumIdent, IrEnum, Enum, ItemEnum>
+    for EnumOrStructParserEnum<'a, '_, '_>
+{
     fn parse_inner(
         &mut self,
         src_object: &Enum,

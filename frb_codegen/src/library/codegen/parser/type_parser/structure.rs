@@ -17,7 +17,7 @@ use crate::codegen::parser::type_parser::TypeParserWithContext;
 use std::collections::HashMap;
 use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, Ident, ItemStruct, TypePath};
 
-impl<'a> TypeParserWithContext<'a> {
+impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_struct(
         &mut self,
         type_path: &TypePath,
@@ -80,10 +80,10 @@ impl<'a> TypeParserWithContext<'a> {
     }
 }
 
-struct EnumOrStructParserStruct<'a>(&'a mut TypeParserWithContext<'a>);
+struct EnumOrStructParserStruct<'a, 'b, 'c>(&'a mut TypeParserWithContext<'a, 'b, 'c>);
 
 impl<'a> EnumOrStructParser<IrStructIdent, IrStruct, Struct, ItemStruct>
-    for EnumOrStructParserStruct<'a>
+    for EnumOrStructParserStruct<'a, '_, '_>
 {
     fn parse_inner(
         &mut self,

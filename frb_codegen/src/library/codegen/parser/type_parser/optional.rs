@@ -12,7 +12,7 @@ use anyhow::bail;
 use quote::ToTokens;
 use syn::TypePath;
 
-impl<'a> TypeParserWithContext<'a> {
+impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_path_data_optional(
         &mut self,
         type_path: &TypePath,

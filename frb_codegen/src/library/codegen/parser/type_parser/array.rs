@@ -5,7 +5,7 @@ use crate::codegen::parser::type_parser::TypeParserWithContext;
 use anyhow::bail;
 use syn::Expr;
 
-impl<'a> TypeParserWithContext<'a> {
+impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type_array(
         &mut self,
         type_array: &syn::TypeArray,
