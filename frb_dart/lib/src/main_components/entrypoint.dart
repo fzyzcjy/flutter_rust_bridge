@@ -71,7 +71,7 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl, W exten
     return apiImplConstructor(
       handler: handler,
       generalizedFrbRustBinding: generalizedFrbRustBinding,
-      wire: wireConstructor(externalLibrary: externalLibrary),
+      wire: wireConstructor(externalLibrary),
     ) as A;
   }
 }
