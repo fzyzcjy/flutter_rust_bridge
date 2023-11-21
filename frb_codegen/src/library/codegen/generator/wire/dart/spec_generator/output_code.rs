@@ -1,5 +1,6 @@
 use crate::basic_code_impl;
 use crate::codegen::generator::misc::target::TargetOrCommon;
+use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
 use std::ops::AddAssign;
 
 #[derive(Default, Clone)]
@@ -52,9 +53,14 @@ impl WireDartOutputCode {
         }
     }
 
-    pub(crate) fn all_code(&self, target: TargetOrCommon, entrypoint_class_name: &str) -> String {
+    pub(crate) fn all_code(
+        &self,
+        target: TargetOrCommon,
+        dart_output_class_name_pack: &DartOutputClassNamePack,
+    ) -> String {
+        let DartOutputClassNamePack { .. } = &dart_output_class_name_pack;
+
         let dispatcher_class_code = if target == TargetOrCommon::Common {
-            let dispatcher_name = format!("{}Dispatcher", entrypoint_class_name);
             format!(
                 "
                 class {dispatcher_name} extends BaseDispatcher {{

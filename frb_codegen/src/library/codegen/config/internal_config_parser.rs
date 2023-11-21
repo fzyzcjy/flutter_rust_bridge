@@ -266,10 +266,14 @@ const FALLBACK_DART_ENTRYPOINT_CLASS_NAME: &'static str = "RustLib";
 fn compute_dart_output_class_name_pack(config: &Config) -> DartOutputClassNamePack {
     let entrypoint_class_name = (config.dart_entrypoint_class_name.clone())
         .unwrap_or(FALLBACK_DART_ENTRYPOINT_CLASS_NAME.to_owned());
+    let with_postfix = |postfix: &str| format!("{entrypoint_class_name}{postfix}");
 
     DartOutputClassNamePack {
         entrypoint_class_name,
-        platform_class_name: format!("{dart_entrypoint_class_name}Platform"),
+        api_class_name: with_postfix("Api"),
+        api_impl_class_name: with_postfix("ApiImpl"),
+        api_impl_platform_class_name: with_postfix("ApiImplPlatform"),
+        wire_class_name: with_postfix("Wire"),
     }
 }
 

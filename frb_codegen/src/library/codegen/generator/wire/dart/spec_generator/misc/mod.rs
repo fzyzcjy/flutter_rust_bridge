@@ -1,3 +1,4 @@
+use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
@@ -23,7 +24,7 @@ pub(crate) fn generate(
 ) -> anyhow::Result<WireDartOutputSpecMisc> {
     Ok(WireDartOutputSpecMisc {
         c_binding: c_binding::generate(&context.config, c_file_content)?,
-        boilerplate: generate_boilerplate(&context.config.dart_entrypoint_class_name),
+        boilerplate: generate_boilerplate(&context.config.dart_output_class_name_pack),
         dispatcher_api_functions: (context.ir_pack.funcs.iter())
             .map(|f| dispatcher::generate_dispatcher_api_function(f, context))
             .collect(),
@@ -34,15 +35,23 @@ pub(crate) fn generate(
     })
 }
 
-fn generate_boilerplate(entrypoint_class_name: &str) -> WireDartOutputCode {
-    let dispatcher_name = format!("{}Dispatcher", entrypoint_class_name);
+fn generate_boilerplate(
+    dart_output_class_name_pack: &DartOutputClassNamePack,
+) -> WireDartOutputCode {
+    let DartOutputClassNamePack {
+        entrypoint_class_name,
+        api_class_name,
+        api_impl_class_name,
+        wire_class_name,
+        ..
+    } = &dart_output_class_name_pack;
 
     WireDartOutputCode {
         import: "import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';".into(),
         body_top: format!(
             r#"
             /// Main entrypoint of the Rust API
-            class {entrypoint_class_name} extends BaseEntrypoint<{dispatcher_name}, {TODO}, {TODO}> {{
+            class {entrypoint_class_name} extends BaseEntrypoint<{api_class_name}, {api_impl_class_name}, {wire_class_name}> {{
               @internal
               static final instance = {entrypoint_class_name}._();
 
@@ -50,7 +59,7 @@ fn generate_boilerplate(entrypoint_class_name: &str) -> WireDartOutputCode {
 
               /// Initialize flutter_rust_bridge
               static Future<void> init({{
-                {TODO}Api? api,
+                {api_class_name}? api,
                 BaseHandler? handler,
               }}) async {{
                 await instance.initImpl(api: api, handler: handler);
@@ -63,10 +72,10 @@ fn generate_boilerplate(entrypoint_class_name: &str) -> WireDartOutputCode {
               static void dispose() => instance.disposeImpl();
 
               @override
-              ApiImplConstructor<{TODO}ApiImpl, {TODO}Wire> get apiImplConstructor => {TODO}ApiImpl.new;
+              ApiImplConstructor<{api_impl_class_name}, {wire_class_name}> get apiImplConstructor => {api_impl_class_name}.new;
 
               @override
-              WireConstructor<{TODO}Wire> get wireConstructor => {TODO}Wire.new;
+              WireConstructor<{wire_class_name}> get wireConstructor => {wire_class_name}.new;
 
               @override
               String get defaultExternalLibraryStem => '{TODO}';

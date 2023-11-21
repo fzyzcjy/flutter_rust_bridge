@@ -16,5 +16,8 @@ pub(crate) struct GeneratorWireDartInternalConfig {
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub(crate) struct DartOutputClassNamePack {
     pub entrypoint_class_name: String,
-    pub platform_class_name: String,
+    pub api_class_name: String,
+    pub api_impl_class_name: String,
+    pub api_impl_platform_class_name: String,
+    pub wire_class_name: String,
 }

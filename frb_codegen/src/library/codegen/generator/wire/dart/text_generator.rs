@@ -18,7 +18,7 @@ pub(super) fn generate(
     let text = generate_text_from_merged_code(
         config,
         (merged_code.clone())
-            .map(|code, target| code.all_code(target, &config.dart_entrypoint_class_name)),
+            .map(|code, target| code.all_code(target, &config.dart_output_class_name_pack)),
     )?;
     Ok(WireDartOutputText { text })
 }
