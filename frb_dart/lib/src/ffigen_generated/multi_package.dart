@@ -492,6 +492,8 @@ typedef Dart_NativeMessageHandler = ffi.Pointer<
         ffi.Void Function(
             Dart_Port dest_port_id, ffi.Pointer<Dart_CObject> message)>>;
 
+final class _Dart_Handle extends ffi.Opaque {}
+
 /// Posts a message on some port. The message will contain the
 /// Dart_CObject object graph rooted in 'message'.
 ///

@@ -39,11 +39,13 @@ fn generate_frb_rust_cbindgen(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
                 rename: HashMap::from([("DartCObject".to_owned(), "Dart_CObject".to_owned())]),
                 ..Default::default()
             },
-            // includes: [
-            //     default_config.includes.clone(),
-            //     vec!["dart_native_api.h".to_owned()],
-            // ]
-            // .concat(),
+            after_includes: Some(
+                default_config.after_includes.unwrap()
+                    + "\n"
+                    + r#"#include "dart_api.h""#
+                    + "\n"
+                    + r#"#include "dart_native_api.h""#,
+            ),
             ..default_config
         },
         repo_base_dir,
@@ -64,18 +66,17 @@ fn generate_allo_isolate_cbindgen(repo_base_dir: &PathBuf) -> anyhow::Result<()>
         .unwrap();
     let rust_crate_dir = package.manifest_path.as_std_path().parent().unwrap();
 
+    let default_config = default_cbindgen_config();
     cbindgen(
         cbindgen::Config {
             export: cbindgen::ExportConfig {
-                exclude: vec![
-                    "DartCObject".to_owned(),
-                    "".to_owned(),
-                    "".to_owned(),
-                    // TODO more
-                ],
+                exclude: vec!["DartCObject".to_owned()],
                 ..Default::default()
             },
-            ..default_cbindgen_config()
+            after_includes: Some(
+                default_config.after_includes.unwrap() + "\n" + r#"#include "dart_api.h""#,
+            ),
+            ..default_config
         },
         repo_base_dir,
         rust_crate_dir,
@@ -98,36 +99,28 @@ fn cbindgen(
 
 fn ffigen(repo_base_dir: &Path) -> anyhow::Result<()> {
     let dir_dart_api = repo_base_dir.join("frb_rust/src/dart_api");
+    let dir_intermediate = repo_base_dir.join("frb_dart/lib/src/ffigen_generated/intermediate");
+
     let raw_headers = vec![
         dir_dart_api.join("dart_native_api.h"),
-        repo_base_dir.join("frb_dart/lib/src/ffigen_generated/intermediate/allo_isolate.h"),
-        repo_base_dir.join("frb_dart/lib/src/ffigen_generated/intermediate/frb_rust.h"),
+        dir_intermediate.join("allo_isolate.h"),
+        dir_intermediate.join("frb_rust.h"),
     ];
-
-    let multi_package_header =
-        repo_base_dir.join("frb_dart/lib/src/ffigen_generated/multi_package.h");
-    fs::write(
-        &multi_package_header,
-        raw_headers
-            .iter()
-            .map(|p| Ok(fs::read_to_string(p)?))
-            .collect::<anyhow::Result<Vec<_>>>()?
-            .join("\n\n"),
-    )?;
 
     ffigen_raw(
         &FfigenCommandConfig {
             output: repo_base_dir.join("frb_dart/lib/src/ffigen_generated/multi_package.dart"),
             name: format!("MultiPackageCBinding"),
             headers: FfigenCommandConfigHeaders {
-                entry_points: vec![multi_package_header.clone()],
-                include_directives: vec![multi_package_header.clone()],
+                entry_points: raw_headers.clone(),
+                include_directives: raw_headers.clone(),
             },
             preamble: FFIGEN_PREAMBLE.to_owned(),
             description: FFIGEN_DESCRIPTION.to_owned(),
             compiler_opts: vec![
                 // directory of `#include`
                 format!("-I{}", &path_to_string(&dir_dart_api)?),
+                format!("-I{}", &path_to_string(&dir_intermediate)?),
             ],
             ..Default::default()
         },

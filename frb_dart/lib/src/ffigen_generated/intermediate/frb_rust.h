@@ -2,6 +2,8 @@
 #include <stdint.h>
 #include <stdlib.h>
 typedef struct _Dart_Handle* Dart_Handle;
+#include "dart_api.h"
+#include "dart_native_api.h"
 
 typedef struct Result_JsValue Result_JsValue;
 

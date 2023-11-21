@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 typedef struct _Dart_Handle* Dart_Handle;
+#include "dart_api.h"
 
 /**
  * A port is used to send or receive inter-isolate messages
