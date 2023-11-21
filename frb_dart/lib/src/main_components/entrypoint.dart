@@ -36,9 +36,12 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl, W exten
     BaseHandler? handler,
   }) async {
     if (__state != null) throw StateError('Should not initialize flutter_rust_bridge twice');
+
+    final generalizedFrbRustBinding = GeneralizedFrbRustBinding(TODO);
     __state = _EntrypointState(
-      generalizedFrbRustBinding: GeneralizedFrbRustBinding(TODO),
-      api: api ?? createDefaultApi(handler: handler),
+      generalizedFrbRustBinding: generalizedFrbRustBinding,
+      api: api ??
+          (apiImplConstructor(handler: handler, generalizedFrbRustBinding: generalizedFrbRustBinding, wire: TODO) as A),
     );
   }
 
