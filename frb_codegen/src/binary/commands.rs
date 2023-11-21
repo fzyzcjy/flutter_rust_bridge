@@ -23,6 +23,10 @@ pub(crate) enum Commands {
 
     /// Integrate Rust into existing Flutter project
     Integrate(IntegrateCommandArgs),
+
+    /// Only for internal usage
+    #[clap(hide = true)]
+    InternalGenerate(InternalGenerateCommandArgs),
 }
 
 // Deliberately decoupled from `codegen::Config`,
@@ -123,4 +127,9 @@ pub(crate) struct CreateCommandArgs {
 #[derive(Debug, Args)]
 pub(crate) struct IntegrateCommandArgs {
     // nothing yet
+}
+
+#[derive(Debug, Args)]
+pub(crate) struct InternalGenerateCommandArgs {
+    // TODO
 }
