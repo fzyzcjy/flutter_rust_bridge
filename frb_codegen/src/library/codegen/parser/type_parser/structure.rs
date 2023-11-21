@@ -24,21 +24,7 @@ impl<'a> TypeParser<'a> {
         splayed_segments: &[SplayedSegment],
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        StructRef(IrTypeStructRef {
-            ident: ident.clone(),
-            is_exception: false,
-            // TODO rm
-            // freezed: self
-            //     .struct_pool
-            //     .get(&ident_string)
-            //     .map(IrStruct::using_freezed)
-            //     .unwrap_or(false),
-            // empty: self
-            //     .struct_pool
-            //     .get(&ident_string)
-            //     .map(IrStruct::is_empty)
-            //     .unwrap_or(false),
-        })
+        EnumOrStructParserStruct(&mut self).parse(type_path, splayed_segments, last_segment)
     }
 
     fn parse_struct(&mut self, src_struct: &Struct) -> anyhow::Result<Option<IrStruct>> {
@@ -92,9 +78,31 @@ impl<'a> TypeParser<'a> {
     }
 }
 
-struct EnumOrStructParserStruct<'a>(TypeParser<'a>);
+struct EnumOrStructParserStruct<'a>(&'a mut TypeParser<'a>);
 
 impl<'a> EnumOrStructParser<IrStructIdent, IrStruct, Struct> for EnumOrStructParserStruct<'a> {
+    fn parse_inner(&mut self, src_object: &Struct) -> anyhow::Result<Option<IrStruct>> {
+        Ok(self.0.parse_struct(src_object)?)
+    }
+
+    fn construct_output(&self, ident: IrStructIdent) -> anyhow::Result<IrType> {
+        Ok(StructRef(IrTypeStructRef {
+            ident: ident.clone(),
+            is_exception: false,
+            // TODO rm
+            // freezed: self
+            //     .struct_pool
+            //     .get(&ident_string)
+            //     .map(IrStruct::using_freezed)
+            //     .unwrap_or(false),
+            // empty: self
+            //     .struct_pool
+            //     .get(&ident_string)
+            //     .map(IrStruct::is_empty)
+            //     .unwrap_or(false),
+        }))
+    }
+
     fn src_objects(&self) -> &HashMap<String, &Struct> {
         &self.0.src_structs
     }

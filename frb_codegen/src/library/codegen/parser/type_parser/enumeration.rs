@@ -20,30 +20,16 @@ use crate::codegen::parser::type_parser::structure::compute_name_and_wrapper_nam
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParser;
 use std::collections::HashMap;
-use syn::{Attribute, Field, Ident, Variant};
+use syn::{Attribute, Field, Ident, TypePath, Variant};
 
 impl<'a> TypeParser<'a> {
     pub(crate) fn parse_type_path_data_enum(
         &mut self,
+        type_path: &TypePath,
+        splayed_segments: &[SplayedSegment],
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        let enum_ref = IrTypeEnumRef {
-            ident: ident.clone(),
-            is_exception: false,
-        };
-        let enu = self.enum_pool.get(&ident);
-
-        return Ok(Some(
-            if enu.map(|e| e.mode == IrEnumMode::Complex).unwrap_or(true) {
-                EnumRef(enum_ref)
-            } else {
-                Delegate(IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum {
-                    ir: enum_ref,
-                    // TODO(Desdaemon): Parse #[repr] from enum
-                    repr: IrTypePrimitive::I32,
-                }))
-            },
-        ));
+        EnumOrStructParserEnum(&mut self).parse(type_path, splayed_segments, last_segment)
     }
 
     fn parse_enum(&mut self, src_enum: &Enum) -> anyhow::Result<IrEnum> {
@@ -131,9 +117,33 @@ impl<'a> TypeParser<'a> {
     }
 }
 
-struct EnumOrStructParserEnum<'a>(TypeParser<'a>);
+struct EnumOrStructParserEnum<'a>(&'a mut TypeParser<'a>);
 
 impl<'a> EnumOrStructParser<IrEnumIdent, IrEnum, Enum> for EnumOrStructParserEnum<'a> {
+    fn parse_inner(&mut self, src_object: &Enum) -> anyhow::Result<Option<IrEnum>> {
+        Ok(Some(self.0.parse_enum(src_object)?))
+    }
+
+    fn construct_output(&self, ident: IrEnumIdent) -> anyhow::Result<IrType> {
+        let enum_ref = IrTypeEnumRef {
+            ident: ident.clone(),
+            is_exception: false,
+        };
+        let enu = self.0.enum_parser_info.get(&ident);
+
+        return Ok(
+            if enu.map(|e| e.mode == IrEnumMode::Complex).unwrap_or(true) {
+                EnumRef(enum_ref)
+            } else {
+                Delegate(IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum {
+                    ir: enum_ref,
+                    // TODO(Desdaemon): Parse #[repr] from enum
+                    repr: IrTypePrimitive::I32,
+                }))
+            },
+        );
+    }
+
     fn src_objects(&self) -> &HashMap<String, &Enum> {
         &self.0.src_enums
     }

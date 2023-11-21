@@ -32,7 +32,7 @@ pub(super) trait EnumOrStructParser<Id: From<NamespacedName>, Obj, SrcObj> {
                     };
                 }
 
-                todo!();
+                return Ok(Some(self.construct_output(ident)?));
             }
         }
 
@@ -40,6 +40,8 @@ pub(super) trait EnumOrStructParser<Id: From<NamespacedName>, Obj, SrcObj> {
     }
 
     fn parse_inner(&mut self, src_object: &SrcObj) -> anyhow::Result<Option<Obj>>;
+
+    fn construct_output(&self, ident: Id) -> anyhow::Result<IrType>;
 
     fn src_objects(&self) -> &HashMap<String, &SrcObj>;
 
