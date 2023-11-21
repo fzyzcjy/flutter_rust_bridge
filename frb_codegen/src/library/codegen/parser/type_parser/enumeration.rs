@@ -119,10 +119,10 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     }
 }
 
-struct EnumOrStructParserEnum<'a, 'b, 'c>(&'a mut TypeParserWithContext<'a, 'b, 'c>);
+struct EnumOrStructParserEnum<'a, 'b, 'c, 'd>(&'d mut TypeParserWithContext<'a, 'b, 'c>);
 
-impl<'a> EnumOrStructParser<IrEnumIdent, IrEnum, Enum, ItemEnum>
-    for EnumOrStructParserEnum<'a, '_, '_>
+impl EnumOrStructParser<IrEnumIdent, IrEnum, Enum, ItemEnum>
+    for EnumOrStructParserEnum<'_, '_, '_, '_>
 {
     fn parse_inner(
         &mut self,
