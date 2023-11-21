@@ -116,7 +116,7 @@ impl WireDartOutputCode {
         };
 
         format!(
-            "{}\n{}\n{}\n{}\n{}",
+            "{}\n{}\n{}\n{}\n{}\n{}",
             self.import, self.part, self.body_top, api_class_code, api_impl_class_code, self.body
         )
     }
