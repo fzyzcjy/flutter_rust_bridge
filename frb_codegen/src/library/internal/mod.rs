@@ -1,5 +1,7 @@
 use crate::library::commands::cbindgen::{cbindgen, cbindgen_raw};
-use crate::library::commands::ffigen::ffigen_raw;
+use crate::library::commands::ffigen::{
+    ffigen_raw, FfigenCommandConfig, FfigenCommandConfigHeaders,
+};
 use crate::utils::path_utils::path_to_string;
 use log::info;
 use serde_json::json;
@@ -28,24 +30,21 @@ fn compute_repo_base_dir() -> anyhow::Result<PathBuf> {
 fn generate_dart_native_api_ffigen(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
     info!("generate_dart_native_api_ffigen");
 
-    let output = path_to_string(
-        &repo_base_dir.join("frb_dart/lib/src/ffigen_generated/dart_native_api.dart"),
-    )?;
-    let header = path_to_string(&repo_base_dir.join("frb_rust/src/dart_api/dart_native_api.h"))?;
+    let header = repo_base_dir.join("frb_rust/src/dart_api/dart_native_api.h");
 
-    let json = json!({
-        "output": &output,
-        "name": "DartCObject",
-        "headers": {
-          "entry-points": [&header],
-          "include-directives": [&header],
+    ffigen_raw(
+        &FfigenCommandConfig {
+            output: repo_base_dir.join("frb_dart/lib/src/ffigen_generated/dart_native_api.dart"),
+            name: "DartCObject".to_owned(),
+            headers: FfigenCommandConfigHeaders {
+                entry_points: vec![header.clone()],
+                include_directives: vec![header],
+            },
+            preamble: FFIGEN_PREAMBLE.to_owned(),
+            ..Default::default()
         },
-        "preamble": FFIGEN_PREAMBLE,
-    });
-
-    let dart_root = repo_base_dir.join("frb_dart");
-
-    ffigen_raw(&serde_json::to_string(&json)?, &dart_root)
+        &repo_base_dir.join("frb_dart"),
+    )
 }
 
 fn generate_frb_rust_cbindgen(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
