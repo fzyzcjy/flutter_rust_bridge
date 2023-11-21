@@ -78,7 +78,7 @@ impl InternalConfig {
                 deps_check: config.deps_check.unwrap_or(true),
             },
             parser: ParserInternalConfig {
-                rust_input_path_pack,
+                rust_input_path_pack: rust_input_path_pack.clone(),
                 rust_crate_dir: rust_crate_dir.clone(),
             },
             generator: GeneratorInternalConfig {
@@ -105,8 +105,8 @@ impl InternalConfig {
                         dart_platform_class_name,
                     },
                     rust: GeneratorWireRustInternalConfig {
+                        rust_input_path_pack,
                         rust_crate_dir: rust_crate_dir.clone(),
-                        rust_wire_mod,
                         wasm_enabled,
                         rust_output_path: rust_output_path.clone(),
                     },

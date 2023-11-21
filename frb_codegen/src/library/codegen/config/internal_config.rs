@@ -6,6 +6,8 @@ use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::codegen::preparer::internal_config::PreparerInternalConfig;
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
+use std::path::PathBuf;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub(crate) struct InternalConfig {
@@ -26,6 +28,11 @@ pub(crate) struct GeneratorWireInternalConfig {
     pub dart: GeneratorWireDartInternalConfig,
     pub rust: GeneratorWireRustInternalConfig,
     pub c: GeneratorWireCInternalConfig,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+pub(crate) struct RustInputPathPack {
+    pub rust_input_path: HashMap<Namespace, PathBuf>,
 }
 
 // TODO move?

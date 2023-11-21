@@ -1,11 +1,12 @@
 use crate::codegen::generator::misc::target::TargetOrCommonMap;
+use crate::codegen::parser::internal_config::RustInputPathPack;
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub(crate) struct GeneratorWireRustInternalConfig {
+    pub rust_input_path_pack: RustInputPathPack,
     pub rust_crate_dir: PathBuf,
-    pub rust_wire_mod: String,
     pub wasm_enabled: bool,
     pub rust_output_path: TargetOrCommonMap<PathBuf>,
 }
