@@ -1,3 +1,6 @@
+import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
+import 'package:js/js.dart';
+
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 abstract class GeneralizedFrbRustBinding {
   /// {@macro flutter_rust_bridge.only_for_generated_code}
@@ -25,3 +28,11 @@ abstract class GeneralizedFrbRustBinding {
     throw UnimplementedError();
   }
 }
+
+/// {@macro flutter_rust_bridge.only_for_generated_code}
+@JS("wasm_bindgen.get_dart_object")
+external Object getDartObject(int ptr);
+
+/// {@macro flutter_rust_bridge.only_for_generated_code}
+@JS("wasm_bindgen.drop_dart_object")
+external void dropDartObject(int ptr);
