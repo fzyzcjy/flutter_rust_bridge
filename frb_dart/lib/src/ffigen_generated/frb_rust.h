@@ -6,8 +6,6 @@ typedef struct Result_JsValue Result_JsValue;
 
 typedef DartCObject *WireSyncReturn;
 
-typedef JsValue WireSyncReturn;
-
 extern void error(const str *msg);
 
 extern struct Result_JsValue post_message(const PortLike *this_, const JsValue *value);

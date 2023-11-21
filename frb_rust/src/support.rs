@@ -71,5 +71,6 @@ use allo_isolate::ffi::DartCObject;
 #[cfg(not(wasm))]
 pub type WireSyncReturn = *mut DartCObject;
 
+/// cbindgen:ignore
 #[cfg(wasm)]
 pub type WireSyncReturn = wasm_bindgen::JsValue;
