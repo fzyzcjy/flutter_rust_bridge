@@ -39,7 +39,7 @@ pub(super) trait EnumOrStructParser<Id: From<NamespacedName>, Obj, SrcObj> {
         Ok(None)
     }
 
-    fn parse_inner(&mut self, src_object: &SrcObj);
+    fn parse_inner(&mut self, src_object: &SrcObj) -> anyhow::Result<Option<Obj>>;
 
     fn src_objects(&self) -> &HashMap<String, &SrcObj>;
 
