@@ -1,3 +1,4 @@
+use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
@@ -11,7 +12,7 @@ pub(crate) mod ty;
 
 pub(crate) struct WireDartOutputSpecMisc {
     pub(crate) c_binding: WireDartOutputCode,
-    pub(crate) boilerplate: WireDartOutputCode,
+    pub(crate) boilerplate: Acc<Vec<WireDartOutputCode>>,
     pub(crate) api_impl_normal_functions: Vec<WireDartOutputCode>,
     pub(crate) api_impl_opaque_getters: Vec<WireDartOutputCode>,
     pub(crate) needs_freezed: bool,
@@ -41,7 +42,7 @@ pub(crate) fn generate(
 fn generate_boilerplate(
     dart_output_class_name_pack: &DartOutputClassNamePack,
     default_external_library_stem: &str,
-) -> WireDartOutputCode {
+) -> Acc<Vec<WireDartOutputCode>> {
     let DartOutputClassNamePack {
         entrypoint_class_name,
         api_class_name,
@@ -50,47 +51,61 @@ fn generate_boilerplate(
         ..
     } = &dart_output_class_name_pack;
 
-    WireDartOutputCode {
-        import: "
-            import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-            import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart.dart';
+    let universal_imports =
+        "import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';";
+
+    Acc {
+        common: vec![WireDartOutputCode {
+            import: format!(
+                "
+                {universal_imports}
+                import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart.dart';
             "
-        .into(),
-        body_top: format!(
-            r#"
-            /// Main entrypoint of the Rust API
-            class {entrypoint_class_name} extends BaseEntrypoint<{api_class_name}, {api_impl_class_name}, {wire_class_name}> {{
-              @internal
-              static final instance = {entrypoint_class_name}._();
+            ),
+            body_top: format!(
+                r#"
+                /// Main entrypoint of the Rust API
+                class {entrypoint_class_name} extends BaseEntrypoint<{api_class_name}, {api_impl_class_name}, {wire_class_name}> {{
+                  @internal
+                  static final instance = {entrypoint_class_name}._();
 
-              {entrypoint_class_name}._();
+                  {entrypoint_class_name}._();
 
-              /// Initialize flutter_rust_bridge
-              static Future<void> init({{
-                {api_class_name}? api,
-                BaseHandler? handler,
-              }}) async {{
-                await instance.initImpl(api: api, handler: handler);
-              }}
-              
-              /// Dispose flutter_rust_bridge
-              ///
-              /// The call to this function is optional, since flutter_rust_bridge (and everything else)
-              /// is automatically disposed when the app stops.
-              static void dispose() => instance.disposeImpl();
+                  /// Initialize flutter_rust_bridge
+                  static Future<void> init({{
+                    {api_class_name}? api,
+                    BaseHandler? handler,
+                  }}) async {{
+                    await instance.initImpl(api: api, handler: handler);
+                  }}
+                  
+                  /// Dispose flutter_rust_bridge
+                  ///
+                  /// The call to this function is optional, since flutter_rust_bridge (and everything else)
+                  /// is automatically disposed when the app stops.
+                  static void dispose() => instance.disposeImpl();
 
-              @override
-              ApiImplConstructor<{api_impl_class_name}, {wire_class_name}> get apiImplConstructor => {api_impl_class_name}.new;
+                  @override
+                  ApiImplConstructor<{api_impl_class_name}, {wire_class_name}> get apiImplConstructor => {api_impl_class_name}.new;
 
-              @override
-              WireConstructor<{wire_class_name}> get wireConstructor => {wire_class_name}.new;
+                  @override
+                  WireConstructor<{wire_class_name}> get wireConstructor => {wire_class_name}.new;
 
-              @override
-              String get defaultExternalLibraryStem => '{default_external_library_stem}';
-            }}
-            "#
-        ),
-        ..Default::default()
+                  @override
+                  String get defaultExternalLibraryStem => '{default_external_library_stem}';
+                }}
+                "#
+            ),
+            ..Default::default()
+        }],
+        io: vec![WireDartOutputCode {
+            import: universal_imports.to_owned(),
+            ..Default::default()
+        }],
+        wasm: vec![WireDartOutputCode {
+            import: universal_imports.to_owned(),
+            ..Default::default()
+        }],
     }
 }
 

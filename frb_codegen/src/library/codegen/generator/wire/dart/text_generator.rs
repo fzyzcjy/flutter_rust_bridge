@@ -30,10 +30,7 @@ fn generate_merged_code(spec: &WireDartOutputSpec) -> Acc<WireDartOutputCode> {
         merged_code += item.clone();
     };
 
-    add(
-        "boilerplate",
-        &Acc::new_common(vec![spec.misc.boilerplate.clone()]),
-    );
+    add("boilerplate", &spec.misc.boilerplate);
     add(
         "api_impl_normal_functions", // TODO improve name (it does not show there)
         &Acc::new_common(spec.misc.api_impl_normal_functions.clone()),
