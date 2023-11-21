@@ -12,7 +12,6 @@ impl<'a> WireRustGeneratorMiscTrait for EnumRefWireRustGenerator<'a> {
 
     fn generate_static_checks(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
-        src.wrapper_name.as_ref()?;
 
         let branches = src
             .variants()
