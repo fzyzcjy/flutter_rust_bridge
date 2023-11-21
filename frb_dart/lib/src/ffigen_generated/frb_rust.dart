@@ -108,19 +108,19 @@ class FrbRustCBinding {
   /// # Safety
   ///
   /// This function should never be called manually.
-  void free_WireSyncReturn(
+  void free_wire_sync_return(
     WireSyncReturn ptr,
   ) {
-    return _free_WireSyncReturn(
+    return _free_wire_sync_return(
       ptr,
     );
   }
 
-  late final _free_WireSyncReturnPtr =
+  late final _free_wire_sync_returnPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(WireSyncReturn)>>(
-          'free_WireSyncReturn');
-  late final _free_WireSyncReturn =
-      _free_WireSyncReturnPtr.asFunction<void Function(WireSyncReturn)>();
+          'free_wire_sync_return');
+  late final _free_wire_sync_return =
+      _free_wire_sync_returnPtr.asFunction<void Function(WireSyncReturn)>();
 }
 
 final class Result_JsValue extends ffi.Opaque {}

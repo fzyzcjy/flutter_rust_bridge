@@ -81,7 +81,7 @@ pub unsafe extern "C" fn init_frb_dart_api_dl(data: *mut c_void) -> isize {
 ///
 /// This function should never be called manually.
 #[no_mangle]
-pub extern "C" fn free_WireSyncReturn(ptr: WireSyncReturn) {
+pub extern "C" fn free_wire_sync_return(ptr: WireSyncReturn) {
     unsafe {
         let _ = box_from_leak_ptr(ptr);
     };

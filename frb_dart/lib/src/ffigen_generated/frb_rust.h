@@ -47,4 +47,4 @@ intptr_t init_frb_dart_api_dl(void *data);
  *
  * This function should never be called manually.
  */
-void free_WireSyncReturn(WireSyncReturn ptr);
+void free_wire_sync_return(WireSyncReturn ptr);
