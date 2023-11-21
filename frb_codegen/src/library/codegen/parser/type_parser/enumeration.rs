@@ -23,12 +23,12 @@ impl<'a> TypeParser<'a> {
         &mut self,
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        Ok(Some(match last_segment {
-            (name, _) if self.src_enums.contains_key(&name.to_string()) => {
+        if let (name, _) = last_segment {
+            if let Some(src_enum) = self.src_enums.get(*name) {
                 let ident = IrEnumIdent(NamespacedName::new(TODO, name.to_string()));
 
                 if self.parsed_enums.insert(ident.clone().0) {
-                    let enu = self.parse_enum(&ident.0)?;
+                    let enu = self.parse_enum(src_enum)?;
                     self.enum_pool.insert(ident.clone(), enu);
                 }
 
@@ -37,24 +37,24 @@ impl<'a> TypeParser<'a> {
                     is_exception: false,
                 };
                 let enu = self.enum_pool.get(&ident);
-                if enu.map(|e| e.mode == IrEnumMode::Complex).unwrap_or(true) {
-                    EnumRef(enum_ref)
-                } else {
-                    Delegate(IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum {
-                        ir: enum_ref,
-                        // TODO(Desdaemon): Parse #[repr] from enum
-                        repr: IrTypePrimitive::I32,
-                    }))
-                }
-            }
 
-            _ => return Ok(None),
-        }))
+                return Ok(Some(
+                    if enu.map(|e| e.mode == IrEnumMode::Complex).unwrap_or(true) {
+                        EnumRef(enum_ref)
+                    } else {
+                        Delegate(IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum {
+                            ir: enum_ref,
+                            // TODO(Desdaemon): Parse #[repr] from enum
+                            repr: IrTypePrimitive::I32,
+                        }))
+                    },
+                ));
+            }
+        }
+        Ok(None)
     }
 
-    fn parse_enum(&mut self, ident_string: &NamespacedName) -> anyhow::Result<IrEnum> {
-        let src_enum = self.src_enums[&ident_string.name];
-
+    fn parse_enum(&mut self, src_enum: &Enum) -> anyhow::Result<IrEnum> {
         let (name, wrapper_name) =
             compute_name_and_wrapper_name(&src_enum.0.ident, src_enum.0.mirror);
 
