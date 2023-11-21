@@ -13,10 +13,8 @@ pub fn generate() -> anyhow::Result<()> {
     let repo_base_dir = compute_repo_base_dir()?;
     info!("Determine repo_base_dir={repo_base_dir:?}");
 
-    generate_dart_native_api_ffigen(&repo_base_dir)?;
-
-    generate_frb_rust_cbindgen(&repo_base_dir)?;
-    generate_frb_rust_ffigen(&repo_base_dir)?;
+    generate_dart_native_api(&repo_base_dir)?;
+    generate_frb_rust(&repo_base_dir)?;
 
     Ok(())
 }
@@ -28,8 +26,8 @@ fn compute_repo_base_dir() -> anyhow::Result<PathBuf> {
         .to_owned())
 }
 
-fn generate_dart_native_api_ffigen(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
-    info!("generate_dart_native_api_ffigen");
+fn generate_dart_native_api(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
+    info!("generate_dart_native_api");
 
     ffigen(
         repo_base_dir,
@@ -38,24 +36,24 @@ fn generate_dart_native_api_ffigen(repo_base_dir: &PathBuf) -> anyhow::Result<()
     )
 }
 
-fn generate_frb_rust_cbindgen(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
-    info!("generate_frb_rust_cbindgen");
-
-    cbindgen_raw(
-        default_cbindgen_config(),
-        &repo_base_dir.join("frb_rust"),
-        &repo_base_dir.join("frb_dart/lib/src/ffigen_generated/frb_rust.h"),
-    )
+fn generate_frb_rust(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
+    info!("generate_frb_rust");
+    cbindgen_and_ffigen(repo_base_dir, &repo_base_dir.join("frb_rust"), "frb_rust")
 }
 
-fn generate_frb_rust_ffigen(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
-    info!("generate_frb_rust_ffigen");
+fn cbindgen_and_ffigen(
+    repo_base_dir: &PathBuf,
+    rust_crate_dir: &Path,
+    name: &str,
+) -> anyhow::Result<()> {
+    let c_path = repo_base_dir.join(format!(
+        "frb_dart/lib/src/ffigen_generated/{}.h",
+        name.to_case(Case::Snake)
+    ));
 
-    ffigen(
-        repo_base_dir,
-        &repo_base_dir.join("frb_dart/lib/src/ffigen_generated/frb_rust.h"),
-        "frb_rust",
-    )
+    cbindgen_raw(default_cbindgen_config(), rust_crate_dir, &c_path)?;
+
+    ffigen(repo_base_dir, &c_path, name)
 }
 
 fn ffigen(repo_base_dir: &Path, header: &Path, name: &str) -> anyhow::Result<()> {
