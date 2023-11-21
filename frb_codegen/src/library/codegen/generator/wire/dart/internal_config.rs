@@ -11,6 +11,7 @@ pub(crate) struct GeneratorWireDartInternalConfig {
     pub extra_headers: String,
     pub dart_impl_output_path: TargetOrCommonMap<PathBuf>,
     pub dart_output_class_name_pack: DartOutputClassNamePack,
+    pub default_external_library_stem: String,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]

@@ -24,7 +24,10 @@ pub(crate) fn generate(
 ) -> anyhow::Result<WireDartOutputSpecMisc> {
     Ok(WireDartOutputSpecMisc {
         c_binding: c_binding::generate(&context.config, c_file_content)?,
-        boilerplate: generate_boilerplate(&context.config.dart_output_class_name_pack),
+        boilerplate: generate_boilerplate(
+            &context.config.dart_output_class_name_pack,
+            &context.config.default_external_library_stem,
+        ),
         dispatcher_api_functions: (context.ir_pack.funcs.iter())
             .map(|f| dispatcher::generate_dispatcher_api_function(f, context))
             .collect(),
@@ -37,6 +40,7 @@ pub(crate) fn generate(
 
 fn generate_boilerplate(
     dart_output_class_name_pack: &DartOutputClassNamePack,
+    default_external_library_stem: &str,
 ) -> WireDartOutputCode {
     let DartOutputClassNamePack {
         entrypoint_class_name,
@@ -78,7 +82,7 @@ fn generate_boilerplate(
               WireConstructor<{wire_class_name}> get wireConstructor => {wire_class_name}.new;
 
               @override
-              String get defaultExternalLibraryStem => '{TODO}';
+              String get defaultExternalLibraryStem => '{default_external_library_stem}';
             }}
             "#
         ),

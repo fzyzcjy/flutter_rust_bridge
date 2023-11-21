@@ -58,6 +58,7 @@ impl InternalConfig {
         let rust_output_path = compute_rust_output_path(&config, &base_dir, &rust_crate_dir);
         let rust_wire_mod =
             compute_mod_from_rust_path(&rust_output_path[TargetOrCommon::Common], &rust_crate_dir)?;
+        let default_external_library_stem = compute_default_external_library_stem(&rust_crate_dir);
 
         let dart_root = (config.dart_root.map(PathBuf::from))
             .unwrap_or(find_dart_package_dir(&dart_output_dir)?);
@@ -106,6 +107,7 @@ impl InternalConfig {
                         extra_headers: config.extra_headers.unwrap_or_else(String::new),
                         dart_impl_output_path: dart_output_path_pack.dart_impl_output_path,
                         dart_output_class_name_pack,
+                        default_external_library_stem,
                     },
                     rust: GeneratorWireRustInternalConfig {
                         rust_input_path_pack,
@@ -133,6 +135,10 @@ impl InternalConfig {
             },
         })
     }
+}
+
+fn compute_default_external_library_stem(rust_crate_dir: &Path) -> String {
+    todo!()
 }
 
 impl RustInputPathPack {
