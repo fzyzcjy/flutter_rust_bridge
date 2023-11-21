@@ -65,10 +65,10 @@ impl Serialize for NamespacedName {
     }
 }
 
-impl Deserialize for NamespacedName {
+impl Deserialize<'de> for NamespacedName {
     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
     where
-        D: Deserializer<'_>,
+        D: Deserializer<'de>,
     {
         let s = String::deserialize(deserializer)?;
         let index = s.rfind(SEP).unwrap();
