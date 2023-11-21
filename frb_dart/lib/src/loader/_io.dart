@@ -24,12 +24,8 @@ ExternalLibrary loadExternalLibrary({
   }
 
   if (Platform.isMacOS) {
-    // TODO
-    if (Abi.current() == Abi.macosX64) {
-      return DynamicLibrary.executable();
-    } else {
-      return DynamicLibrary.open(path);
-    }
+    // TODO handle pure-dart vs with-flutter
+    return DynamicLibrary.open('lib$stem.dylib');
   }
 
   if (Platform.isLinux) {
