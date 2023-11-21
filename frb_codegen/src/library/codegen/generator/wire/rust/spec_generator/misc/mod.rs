@@ -12,6 +12,7 @@ use crate::library::codegen::generator::wire::rust::spec_generator::misc::ty::Wi
 use crate::library::codegen::generator::wire::rust::spec_generator::wire2api::ty::WireRustGeneratorWire2apiTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use crate::misc::consts::HANDLER_NAME;
+use crate::utils::rust_project_utils::compute_mod_from_rust_path;
 use itertools::Itertools;
 use std::collections::HashSet;
 
@@ -103,10 +104,8 @@ fn generate_static_checks(types: &[IrType], context: WireRustGeneratorContext) -
 }
 
 fn generate_imports(types: &[IrType], context: WireRustGeneratorContext) -> String {
-    let rust_wire_mod = &context.config.rust_wire_mod;
     let imports_misc = format!(
         r#"
-        use crate::{rust_wire_mod}::*;
         use flutter_rust_bridge::*;
         use core::panic::UnwindSafe;
         use std::sync::Arc;
@@ -114,6 +113,17 @@ fn generate_imports(types: &[IrType], context: WireRustGeneratorContext) -> Stri
         use flutter_rust_bridge::rust2dart::IntoIntoDart;
         "#
     );
+
+    let imports_for_rust_input = (context.config.rust_input_path_pack.rust_input_path)
+        .values()
+        .map(|rust_input_path| {
+            Ok(format!(
+                "use {};\n",
+                compute_mod_from_rust_path(rust_input_path, &context.config.rust_crate_dir)?
+            ))
+        })
+        .collect::<anyhow::Result<Vec<_>>>()?
+        .join("");
 
     let imports_from_types = types
         .iter()
@@ -126,7 +136,7 @@ fn generate_imports(types: &[IrType], context: WireRustGeneratorContext) -> Stri
         .into_iter()
         .join("\n");
 
-    imports_misc + &imports_from_types
+    imports_misc + &imports_for_rust_input + &imports_from_types
 }
 
 fn generate_executor(ir_pack: &IrPack) -> String {
