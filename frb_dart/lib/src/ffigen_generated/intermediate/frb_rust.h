@@ -1,7 +1,6 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
-#include "dart_native_api.h"
 
 typedef struct Result_JsValue Result_JsValue;
 

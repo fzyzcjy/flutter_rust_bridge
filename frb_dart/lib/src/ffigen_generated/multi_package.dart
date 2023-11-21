@@ -44,44 +44,11 @@ class MultiPackageCBinding {
   /// \param message The message to send.
   ///
   /// \return True if the message was posted.
-  bool Dart_PostCObject(
-    int port_id,
-    ffi.Pointer<Dart_CObject> message,
-  ) {
-    return _Dart_PostCObject(
-      port_id,
-      message,
-    );
-  }
+  late final ffi.Pointer<ffi.Int> _bool = _lookup<ffi.Int>('bool');
 
-  late final _Dart_PostCObjectPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Bool Function(
-              Dart_Port, ffi.Pointer<Dart_CObject>)>>('Dart_PostCObject');
-  late final _Dart_PostCObject = _Dart_PostCObjectPtr.asFunction<
-      bool Function(int, ffi.Pointer<Dart_CObject>)>();
+  int get bool => _bool.value;
 
-  /// Posts a message on some port. The message will contain the integer 'message'.
-  ///
-  /// \param port_id The destination port.
-  /// \param message The message to send.
-  ///
-  /// \return True if the message was posted.
-  bool Dart_PostInteger(
-    int port_id,
-    int message,
-  ) {
-    return _Dart_PostInteger(
-      port_id,
-      message,
-    );
-  }
-
-  late final _Dart_PostIntegerPtr =
-      _lookup<ffi.NativeFunction<ffi.Bool Function(Dart_Port, ffi.Int64)>>(
-          'Dart_PostInteger');
-  late final _Dart_PostInteger =
-      _Dart_PostIntegerPtr.asFunction<bool Function(int, int)>();
+  set bool(int value) => _bool.value = value;
 
   /// Creates a new native port.  When messages are received on this
   /// native port, then they will be dispatched to the provided native
@@ -94,71 +61,25 @@ class MultiPackageCBinding {
   ///
   /// \return If successful, returns the port id for the native port.  In
   /// case of error, returns ILLEGAL_PORT.
-  int Dart_NewNativePort(
-    ffi.Pointer<ffi.Char> name,
-    Dart_NativeMessageHandler handler,
-    bool handle_concurrently,
-  ) {
-    return _Dart_NewNativePort(
-      name,
-      handler,
-      handle_concurrently,
-    );
-  }
+  late final ffi.Pointer<ffi.Int> _Dart_Port = _lookup<ffi.Int>('Dart_Port');
 
-  late final _Dart_NewNativePortPtr = _lookup<
-      ffi.NativeFunction<
-          Dart_Port Function(ffi.Pointer<ffi.Char>, Dart_NativeMessageHandler,
-              ffi.Bool)>>('Dart_NewNativePort');
-  late final _Dart_NewNativePort = _Dart_NewNativePortPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Char>, Dart_NativeMessageHandler, bool)>();
+  int get Dart_Port => _Dart_Port.value;
 
-  /// Closes the native port with the given id.
-  ///
-  /// The port must have been allocated by a call to Dart_NewNativePort.
-  ///
-  /// \param native_port_id The id of the native port to close.
-  ///
-  /// \return Returns true if the port was closed successfully.
-  bool Dart_CloseNativePort(
-    int native_port_id,
-  ) {
-    return _Dart_CloseNativePort(
-      native_port_id,
-    );
-  }
-
-  late final _Dart_CloseNativePortPtr =
-      _lookup<ffi.NativeFunction<ffi.Bool Function(Dart_Port)>>(
-          'Dart_CloseNativePort');
-  late final _Dart_CloseNativePort =
-      _Dart_CloseNativePortPtr.asFunction<bool Function(int)>();
+  set Dart_Port(int value) => _Dart_Port.value = value;
 
   /// Forces all loaded classes and functions to be compiled eagerly in
   /// the current isolate..
   ///
   /// TODO(turnidge): Document.
-  Object Dart_CompileAll() {
-    return _Dart_CompileAll();
-  }
+  late final ffi.Pointer<ffi.Int> _DART_WARN_UNUSED_RESULT =
+      _lookup<ffi.Int>('DART_WARN_UNUSED_RESULT');
 
-  late final _Dart_CompileAllPtr =
-      _lookup<ffi.NativeFunction<ffi.Handle Function()>>('Dart_CompileAll');
-  late final _Dart_CompileAll =
-      _Dart_CompileAllPtr.asFunction<Object Function()>();
+  int get DART_WARN_UNUSED_RESULT => _DART_WARN_UNUSED_RESULT.value;
 
-  /// Finalizes all classes.
-  Object Dart_FinalizeAllClasses() {
-    return _Dart_FinalizeAllClasses();
-  }
+  set DART_WARN_UNUSED_RESULT(int value) =>
+      _DART_WARN_UNUSED_RESULT.value = value;
 
-  late final _Dart_FinalizeAllClassesPtr =
-      _lookup<ffi.NativeFunction<ffi.Handle Function()>>(
-          'Dart_FinalizeAllClasses');
-  late final _Dart_FinalizeAllClasses =
-      _Dart_FinalizeAllClassesPtr.asFunction<Object Function()>();
-
-  ffi.Pointer<ffi.Void> Dart_ExecuteInternalCommand(
+  ffi.Pointer<ffi.Int> Dart_ExecuteInternalCommand(
     ffi.Pointer<ffi.Char> command,
     ffi.Pointer<ffi.Void> arg,
   ) {
@@ -170,11 +91,11 @@ class MultiPackageCBinding {
 
   late final _Dart_ExecuteInternalCommandPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Char>,
+          ffi.Pointer<ffi.Int> Function(ffi.Pointer<ffi.Char>,
               ffi.Pointer<ffi.Void>)>>('Dart_ExecuteInternalCommand');
   late final _Dart_ExecuteInternalCommand =
       _Dart_ExecuteInternalCommandPtr.asFunction<
-          ffi.Pointer<ffi.Void> Function(
+          ffi.Pointer<ffi.Int> Function(
               ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Void>)>();
 
   void error(
@@ -368,13 +289,13 @@ final class _Dart_CObject extends ffi.Struct {
 }
 
 final class UnnamedUnion1 extends ffi.Union {
-  @ffi.Bool()
-  external bool as_bool;
+  @ffi.Int()
+  external int as_bool;
 
-  @ffi.Int32()
+  @ffi.Int()
   external int as_int32;
 
-  @ffi.Int64()
+  @ffi.Int()
   external int as_int64;
 
   @ffi.Double()
@@ -396,105 +317,65 @@ final class UnnamedUnion1 extends ffi.Union {
 }
 
 final class UnnamedStruct1 extends ffi.Struct {
-  @Dart_Port()
+  @ffi.Int()
   external int id;
 
-  @Dart_Port()
+  @ffi.Int()
   external int origin_id;
 }
 
-/// A port is used to send or receive inter-isolate messages
-typedef Dart_Port = ffi.Int64;
-
 final class UnnamedStruct2 extends ffi.Struct {
-  @ffi.Int64()
+  @ffi.Int()
   external int id;
 }
 
 final class UnnamedStruct3 extends ffi.Struct {
-  @ffi.IntPtr()
+  @ffi.Int()
   external int length;
 
   external ffi.Pointer<ffi.Pointer<_Dart_CObject>> values;
 }
 
 final class UnnamedStruct4 extends ffi.Struct {
-  @ffi.Int32()
+  @ffi.Int()
   external int type;
 
-  @ffi.IntPtr()
+  @ffi.Int()
   external int length;
 
-  external ffi.Pointer<ffi.Uint8> values;
-}
-
-abstract class Dart_TypedData_Type {
-  static const int Dart_TypedData_kByteData = 0;
-  static const int Dart_TypedData_kInt8 = 1;
-  static const int Dart_TypedData_kUint8 = 2;
-  static const int Dart_TypedData_kUint8Clamped = 3;
-  static const int Dart_TypedData_kInt16 = 4;
-  static const int Dart_TypedData_kUint16 = 5;
-  static const int Dart_TypedData_kInt32 = 6;
-  static const int Dart_TypedData_kUint32 = 7;
-  static const int Dart_TypedData_kInt64 = 8;
-  static const int Dart_TypedData_kUint64 = 9;
-  static const int Dart_TypedData_kFloat32 = 10;
-  static const int Dart_TypedData_kFloat64 = 11;
-  static const int Dart_TypedData_kInt32x4 = 12;
-  static const int Dart_TypedData_kFloat32x4 = 13;
-  static const int Dart_TypedData_kFloat64x2 = 14;
-  static const int Dart_TypedData_kInvalid = 15;
+  external ffi.Pointer<ffi.Int> values;
 }
 
 final class UnnamedStruct5 extends ffi.Struct {
-  @ffi.Int32()
+  @ffi.Int()
   external int type;
 
-  @ffi.IntPtr()
+  @ffi.Int()
   external int length;
 
-  external ffi.Pointer<ffi.Uint8> data;
+  external ffi.Pointer<ffi.Int> data;
 
   external ffi.Pointer<ffi.Void> peer;
 
-  external Dart_HandleFinalizer callback;
+  @ffi.Int()
+  external int callback;
 }
-
-typedef Dart_HandleFinalizer = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Void Function(ffi.Pointer<ffi.Void> isolate_callback_data,
-            ffi.Pointer<ffi.Void> peer)>>;
 
 final class UnnamedStruct6 extends ffi.Struct {
-  @ffi.IntPtr()
+  @ffi.Int()
   external int ptr;
 
-  @ffi.IntPtr()
+  @ffi.Int()
   external int size;
 
-  external Dart_HandleFinalizer callback;
+  @ffi.Int()
+  external int callback;
 }
-
-typedef Dart_CObject = _Dart_CObject;
-
-/// A native message handler.
-///
-/// This handler is associated with a native port by calling
-/// Dart_NewNativePort.
-///
-/// The message received is decoded into the message structure. The
-/// lifetime of the message data is controlled by the caller. All the
-/// data references from the message are allocated by the caller and
-/// will be reclaimed when returning to it.
-typedef Dart_NativeMessageHandler = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Void Function(
-            Dart_Port dest_port_id, ffi.Pointer<Dart_CObject> message)>>;
 
 final class Result_JsValue extends ffi.Opaque {}
 
-typedef WireSyncReturn = ffi.Pointer<ffi.Int>;
+typedef WireSyncReturn = ffi.Pointer<Dart_CObject>;
+typedef Dart_CObject = _Dart_CObject;
 
 /// A Dart_CObject is used for representing Dart objects as native C
 /// data outside the Dart heap. These objects are totally detached from
