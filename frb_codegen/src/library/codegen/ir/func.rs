@@ -1,12 +1,11 @@
 use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::namespace::Namespace;
+use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::ty::IrType;
 
 crate::ir! {
 pub struct IrFunc {
-    pub namespace: Namespace,
-    pub name: String,
+    pub name: NamespacedName,
     pub inputs: Vec<IrField>,
     pub output: IrType,
     pub error_output: Option<IrType>,
