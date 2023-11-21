@@ -14,8 +14,6 @@ pub fn generate() -> anyhow::Result<()> {
 
     generate_dart_native_api_ffigen(&repo_base_dir)?;
 
-    todo!();
-
     generate_frb_rust_cbindgen(&repo_base_dir)?;
     generate_frb_rust_ffigen(&repo_base_dir)?;
 
