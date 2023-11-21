@@ -104,6 +104,13 @@ fn generate_boilerplate(
         }],
         wasm: vec![WireDartOutputCode {
             import: universal_imports.to_owned(),
+            body: format!(
+                r#"
+                class {wire_class_name} extends BaseWire {{
+                  // TODO
+                }}
+                "#
+            ),
             ..Default::default()
         }],
     }
