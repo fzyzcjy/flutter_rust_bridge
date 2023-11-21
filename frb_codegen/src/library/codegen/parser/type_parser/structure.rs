@@ -24,7 +24,7 @@ impl<'a> TypeParserWithContext<'a> {
         splayed_segments: &[SplayedSegment],
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        EnumOrStructParserStruct(&mut self).parse(type_path, splayed_segments, last_segment)
+        EnumOrStructParserStruct(self).parse(type_path, splayed_segments, last_segment)
     }
 
     fn parse_struct(

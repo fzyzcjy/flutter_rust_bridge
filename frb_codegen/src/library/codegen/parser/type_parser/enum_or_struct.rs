@@ -26,7 +26,7 @@ where
                 let namespaced_name = NamespacedName::new(namespace, name.to_string());
                 let ident: Id = namespaced_name.clone().into();
 
-                if (self.parser_info().parsing_or_parsed_objects).insert(namespaced_name) {
+                if (self.parser_info().parsing_or_parsed_objects).insert(namespaced_name.clone()) {
                     // get it *again* to avoid borrowing for too long
                     let src_object = self.src_objects()[*name];
 
