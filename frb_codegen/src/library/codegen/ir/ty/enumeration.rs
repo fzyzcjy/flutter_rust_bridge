@@ -78,3 +78,9 @@ impl IrEnum {
         &self.variants
     }
 }
+
+impl From<NamespacedName> for IrEnumIdent {
+    fn from(value: NamespacedName) -> Self {
+        Self(value)
+    }
+}

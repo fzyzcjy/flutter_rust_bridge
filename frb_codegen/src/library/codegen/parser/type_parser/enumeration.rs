@@ -25,8 +25,6 @@ impl<'a> TypeParser<'a> {
         &mut self,
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        let ident = IrEnumIdent(NamespacedName::new(TODO, name.to_string()));
-
         if self.parsing_or_parsed_enums.insert(ident.clone().0) {
             let enu = self.parse_enum(src_enum)?;
             self.enum_pool.insert(ident.clone(), enu);

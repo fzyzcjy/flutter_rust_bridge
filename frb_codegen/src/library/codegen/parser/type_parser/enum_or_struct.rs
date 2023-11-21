@@ -5,7 +5,7 @@ use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use std::collections::{HashMap, HashSet};
 use syn::TypePath;
 
-pub(super) trait EnumOrStructParser<Obj> {
+pub(super) trait EnumOrStructParser<Id: From<NamespacedName>, Obj> {
     fn parse(
         &self,
         type_path: &TypePath,
@@ -14,6 +14,8 @@ pub(super) trait EnumOrStructParser<Obj> {
     ) -> anyhow::Result<Option<IrType>> {
         if let (name, _) = last_segment {
             if let Some(src_object) = self.src_objects().get(*name) {
+                let ident: Id = NamespacedName::new(TODO, name.to_string()).into();
+
                 todo!();
             }
         }

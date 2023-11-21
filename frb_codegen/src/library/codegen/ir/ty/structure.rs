@@ -66,3 +66,9 @@ impl IrStruct {
         }
     }
 }
+
+impl From<NamespacedName> for IrStructIdent {
+    fn from(value: NamespacedName) -> Self {
+        Self(value)
+    }
+}

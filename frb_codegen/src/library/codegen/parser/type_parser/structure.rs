@@ -22,8 +22,6 @@ impl<'a> TypeParser<'a> {
         splayed_segments: &[SplayedSegment],
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        let ident = IrStructIdent(NamespacedName::new(TODO, name.to_string()));
-
         if self.parsing_or_parsed_structs.insert(ident.clone().0) {
             let api_struct = match self.parse_struct(src_struct)? {
                 Some(ir_struct) => ir_struct,
