@@ -7,7 +7,7 @@ use IrType::RustOpaque;
 impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
     fn generate_class(&self) -> Option<String> {
         let dart_entrypoint_class_name = &self.context.config.dart_entrypoint_class_name;
-        let dart_dispatcher_instance = format!("{dart_entrypoint_class_name}.instance.dispatcher");
+        let dart_api_instance = format!("{dart_entrypoint_class_name}.instance.api");
 
         let dart_api_type =
             ApiDartGenerator::new(RustOpaque(self.ir.clone()), self.context).dart_api_type();
@@ -17,13 +17,13 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
                 {dart_api_type}.fromRaw(int ptr, int size): super.unsafe(ptr, size);
 
                 @override
-                DropFnType get dropFn => {dart_dispatcher_instance}.dropOpaque{dart_api_type};
+                DropFnType get dropFn => {dart_api_instance}.dropOpaque{dart_api_type};
         
                 @override
-                ShareFnType get shareFn => {dart_dispatcher_instance}.shareOpaque{dart_api_type};
+                ShareFnType get shareFn => {dart_api_instance}.shareOpaque{dart_api_type};
         
                 @override
-                OpaqueTypeFinalizer get staticFinalizer => {dart_dispatcher_instance}.{dart_api_type}Finalizer;
+                OpaqueTypeFinalizer get staticFinalizer => {dart_api_instance}.{dart_api_type}Finalizer;
             }}"
         ))
     }

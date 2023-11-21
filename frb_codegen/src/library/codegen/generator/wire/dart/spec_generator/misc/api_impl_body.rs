@@ -12,7 +12,7 @@ use crate::library::codegen::ir::ty::IrTypeTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 
-pub(crate) fn generate_dispatcher_api_function(
+pub(crate) fn generate_api_impl_normal_function(
     func: &IrFunc,
     context: WireDartGeneratorContext,
 ) -> WireDartOutputCode {
@@ -53,7 +53,7 @@ pub(crate) fn generate_dispatcher_api_function(
     let companion_field_implementation = generate_companion_field(func, &const_meta_field_name);
 
     WireDartOutputCode {
-        dispatcher_body: format!("{function_implementation}\n\n{companion_field_implementation}"),
+        api_impl_body: format!("{function_implementation}\n\n{companion_field_implementation}"),
         ..Default::default()
     }
 }
@@ -183,7 +183,7 @@ fn has_methods_for_struct_name(struct_name: &str, ir_pack: &IrPack) -> bool {
         .any(|f| matches!(&f.owner, IrFuncOwnerInfo::Method(m) if m.struct_name == struct_name))
 }
 
-pub(crate) fn generate_dispatcher_opaque_getter(
+pub(crate) fn generate_api_impl_opaque_getter(
     ty: &IrType,
     context: WireDartGeneratorContext,
 ) -> Option<WireDartOutputCode> {
@@ -191,7 +191,7 @@ pub(crate) fn generate_dispatcher_opaque_getter(
         return None;
     }
     Some(WireDartOutputCode {
-        dispatcher_body: format!(
+        api_impl_body: format!(
             "
             DropFnType get dropOpaque{ty} => _platform.inner.drop_opaque_{ty};
             ShareFnType get shareOpaque{ty} => _platform.inner.share_opaque_{ty};

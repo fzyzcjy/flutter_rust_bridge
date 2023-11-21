@@ -8,8 +8,8 @@ pub(crate) struct WireDartOutputCode {
     pub import: String,
     pub part: String,
     pub body_top: String,
-    /// Code inside the generated dispatcher class
-    pub dispatcher_body: String,
+    /// Code inside the generated ApiImpl class
+    pub api_impl_body: String,
     pub body: String,
 }
 
@@ -30,7 +30,7 @@ impl AddAssign for WireDartOutputCode {
         self.import += &rhs.import;
         self.part += &rhs.part;
         self.body_top += &rhs.body_top;
-        self.dispatcher_body += &rhs.dispatcher_body;
+        self.api_impl_body += &rhs.api_impl_body;
         self.body += &rhs.body;
     }
 }
@@ -58,27 +58,30 @@ impl WireDartOutputCode {
         target: TargetOrCommon,
         dart_output_class_name_pack: &DartOutputClassNamePack,
     ) -> String {
-        let DartOutputClassNamePack { .. } = &dart_output_class_name_pack;
+        let DartOutputClassNamePack {
+            api_impl_class_name,
+            ..
+        } = &dart_output_class_name_pack;
 
-        let dispatcher_class_code = if target == TargetOrCommon::Common {
+        let api_impl_class_code = if target == TargetOrCommon::Common {
             format!(
                 "
-                class {dispatcher_name} extends BaseDispatcher {{
-                  {dispatcher_name}({{super.handler}});
+                class {api_impl_class_name} extends BaseApiImpl {{
+                  {api_impl_class_name}({{super.handler}});
 
-                  {dispatcher_body}
+                  {api_impl_body}
                 }}
                 ",
-                dispatcher_body = self.dispatcher_body,
+                api_impl_body = self.api_impl_body,
             )
         } else {
-            assert_eq!(&self.dispatcher_body, "");
+            assert_eq!(&self.api_impl_body, "");
             "".into()
         };
 
         format!(
             "{}\n{}\n{}\n{}\n{}",
-            self.import, self.part, self.body_top, dispatcher_class_code, self.body
+            self.import, self.part, self.body_top, api_impl_class_code, self.body
         )
     }
 }

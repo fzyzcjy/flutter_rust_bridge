@@ -5,15 +5,15 @@ use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
 
+mod api_impl_body;
 mod c_binding;
-mod dispatcher;
 pub(crate) mod ty;
 
 pub(crate) struct WireDartOutputSpecMisc {
     pub(crate) c_binding: WireDartOutputCode,
     pub(crate) boilerplate: WireDartOutputCode,
-    pub(crate) dispatcher_api_functions: Vec<WireDartOutputCode>,
-    pub(crate) dispatcher_opaque_getters: Vec<WireDartOutputCode>,
+    pub(crate) api_impl_normal_functions: Vec<WireDartOutputCode>,
+    pub(crate) api_impl_opaque_getters: Vec<WireDartOutputCode>,
     pub(crate) needs_freezed: bool,
 }
 
@@ -28,11 +28,11 @@ pub(crate) fn generate(
             &context.config.dart_output_class_name_pack,
             &context.config.default_external_library_stem,
         ),
-        dispatcher_api_functions: (context.ir_pack.funcs.iter())
-            .map(|f| dispatcher::generate_dispatcher_api_function(f, context))
+        api_impl_normal_functions: (context.ir_pack.funcs.iter())
+            .map(|f| api_impl_body::generate_api_impl_normal_function(f, context))
             .collect(),
-        dispatcher_opaque_getters: (cache.distinct_types.iter())
-            .filter_map(|ty| dispatcher::generate_dispatcher_opaque_getter(ty, context))
+        api_impl_opaque_getters: (cache.distinct_types.iter())
+            .filter_map(|ty| api_impl_body::generate_api_impl_opaque_getter(ty, context))
             .collect(),
         needs_freezed: compute_needs_freezed(cache, context.ir_pack),
     })

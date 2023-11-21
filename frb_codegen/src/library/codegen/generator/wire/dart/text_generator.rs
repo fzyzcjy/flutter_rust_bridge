@@ -35,12 +35,12 @@ fn generate_merged_code(spec: &WireDartOutputSpec) -> Acc<WireDartOutputCode> {
         &Acc::new_common(vec![spec.misc.boilerplate.clone()]),
     );
     add(
-        "dispatcher_api_functions", // TODO improve name (it does not show there)
-        &Acc::new_common(spec.misc.dispatcher_api_functions.clone()),
+        "api_impl_normal_functions", // TODO improve name (it does not show there)
+        &Acc::new_common(spec.misc.api_impl_normal_functions.clone()),
     );
     add(
-        "dispatcher_opaque_getters", // TODO improve name (it does not show there)
-        &Acc::new_common(spec.misc.dispatcher_opaque_getters.clone()),
+        "api_impl_opaque_getters", // TODO improve name (it does not show there)
+        &Acc::new_common(spec.misc.api_impl_opaque_getters.clone()),
     );
     add("c_binding", &Acc::new_io(vec![spec.misc.c_binding.clone()]));
     add("impl_wire2api", &spec.wire2api.impl_wire2api);
