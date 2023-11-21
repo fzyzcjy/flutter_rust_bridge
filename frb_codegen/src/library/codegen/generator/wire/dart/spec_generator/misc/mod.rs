@@ -28,6 +28,7 @@ pub(crate) fn generate(
         boilerplate: generate_boilerplate(
             &context.config.dart_output_class_name_pack,
             &context.config.default_external_library_stem,
+            &context.config.default_external_library_relative_directory,
         ),
         api_impl_normal_functions: (context.ir_pack.funcs.iter())
             .map(|f| api_impl_body::generate_api_impl_normal_function(f, context))
@@ -42,6 +43,7 @@ pub(crate) fn generate(
 fn generate_boilerplate(
     dart_output_class_name_pack: &DartOutputClassNamePack,
     default_external_library_stem: &str,
+    default_external_library_relative_directory: &str,
 ) -> Acc<Vec<WireDartOutputCode>> {
     let DartOutputClassNamePack {
         entrypoint_class_name,
@@ -93,6 +95,9 @@ fn generate_boilerplate(
 
                   @override
                   String get defaultExternalLibraryStem => '{default_external_library_stem}';
+                  
+                  @override
+                  String get defaultExternalLibraryRelativeDirectory => '{default_external_library_relative_directory}';
                 }}
                 "#
             ),

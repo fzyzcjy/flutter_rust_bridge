@@ -59,11 +59,14 @@ impl InternalConfig {
         let rust_output_path = compute_rust_output_path(&config, &base_dir, &rust_crate_dir);
         let rust_wire_mod =
             compute_mod_from_rust_path(&rust_output_path[TargetOrCommon::Common], &rust_crate_dir)?;
-        let default_external_library_stem = compute_default_external_library_stem(&rust_crate_dir)
-            .unwrap_or(FALLBACK_DEFAULT_EXTERNAL_LIBRARY_STEM.to_owned());
 
         let dart_root = (config.dart_root.map(PathBuf::from))
             .unwrap_or(find_dart_package_dir(&dart_output_dir)?);
+
+        let default_external_library_stem = compute_default_external_library_stem(&rust_crate_dir)
+            .unwrap_or(FALLBACK_DEFAULT_EXTERNAL_LIBRARY_STEM.to_owned());
+        let default_external_library_relative_directory =
+            compute_default_external_library_relative_directory(&rust_crate_dir, &dart_root);
 
         let wasm_enabled = config.wasm.unwrap_or(true);
         let dart_enums_style = config.dart_enums_style.unwrap_or(false);
@@ -110,6 +113,7 @@ impl InternalConfig {
                         dart_impl_output_path: dart_output_path_pack.dart_impl_output_path,
                         dart_output_class_name_pack,
                         default_external_library_stem,
+                        default_external_library_relative_directory,
                     },
                     rust: GeneratorWireRustInternalConfig {
                         rust_input_path_pack,
@@ -152,6 +156,15 @@ fn compute_default_external_library_stem(rust_crate_dir: &Path) -> Result<String
 }
 
 const FALLBACK_DEFAULT_EXTERNAL_LIBRARY_STEM: &str = "UNKNOWN";
+
+fn compute_default_external_library_relative_directory(
+    rust_crate_dir: &Path,
+    dart_root: &Path,
+) -> String {
+    // TODO when not relative
+    rust_crate_dir.strip_prefix(dart_root);
+    todo!()
+}
 
 impl RustInputPathPack {
     fn one_rust_input_path(&self) -> &Path {
