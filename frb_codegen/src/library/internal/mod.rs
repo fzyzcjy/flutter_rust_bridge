@@ -1,4 +1,5 @@
 use crate::library::commands::ffigen::ffigen_raw;
+use log::info;
 use serde_json::json;
 
 pub fn generate() -> anyhow::Result<()> {
@@ -7,6 +8,8 @@ pub fn generate() -> anyhow::Result<()> {
 }
 
 fn generate_dart_native_api() -> anyhow::Result<()> {
+    info!("generate_dart_native_api");
+
     let json = json!({
         "output": "lib/src/ffigen_generated/dart_native_api.dart",
         "name": "DartCObject",
