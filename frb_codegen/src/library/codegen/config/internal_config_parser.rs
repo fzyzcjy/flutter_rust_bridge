@@ -36,10 +36,9 @@ impl InternalConfig {
         debug!("InternalConfig.parse base_dir={base_dir:?}");
 
         let rust_input_path_pack = compute_rust_input_path_pack(&config.rust_input, &base_dir)?;
-        let namespaces = rust_input_path_pack.rust_input_paths.keys().collect_vec();
 
         let dart_output_dir: PathBuf = base_dir.join(&config.dart_output);
-        let dart_output_path_pack = compute_dart_output_path_pack(&dart_output_dir, &namespaces);
+        let dart_output_path_pack = compute_dart_output_path_pack(&dart_output_dir);
 
         let dart_output_class_name_pack = compute_dart_output_class_name_pack(&config);
 
@@ -73,14 +72,6 @@ impl InternalConfig {
         let dart_enums_style = config.dart_enums_style.unwrap_or(false);
         let dart3 = config.dart3.unwrap_or(true);
 
-        // TODO multi file support
-        let dart_output_path = dart_output_path_pack
-            .dart_decl_output_path
-            .values()
-            .next()
-            .unwrap();
-        let _dart_output_stem = get_file_stem(dart_output_path);
-
         Ok(InternalConfig {
             preparer: PreparerInternalConfig {
                 dart_root: dart_root.clone(),
@@ -94,7 +85,7 @@ impl InternalConfig {
                 api_dart: GeneratorApiDartInternalConfig {
                     dart_enums_style,
                     dart3,
-                    dart_decl_output_path: dart_output_path_pack.dart_decl_output_path,
+                    dart_decl_base_output_path: dart_output_path_pack.dart_decl_base_output_path,
                     dart_entrypoint_class_name: dart_output_class_name_pack
                         .entrypoint_class_name
                         .clone(),
@@ -169,7 +160,7 @@ const FALLBACK_DEFAULT_EXTERNAL_LIBRARY_RELATIVE_DIRECTORY: &str = "UNKNOWN";
 
 impl RustInputPathPack {
     fn one_rust_input_path(&self) -> &Path {
-        self.rust_input_paths.iter().next().unwrap().1
+        self.rust_input_paths.iter().next().unwrap()
     }
 }
 
@@ -179,21 +170,16 @@ fn compute_rust_input_path_pack(
 ) -> Result<RustInputPathPack> {
     const BLACKLIST_FILE_NAMES: [&str; 1] = ["mod.rs"];
 
-    let paths = glob_path(&base_dir.join(raw_rust_input))?
+    let rust_input_paths = glob_path(&base_dir.join(raw_rust_input))?
         .into_iter()
         .filter(|path| !BLACKLIST_FILE_NAMES.contains(&path.file_name().unwrap().to_str().unwrap()))
         .collect_vec();
 
-    let pack = RustInputPathPack {
-        rust_input_paths: paths
-            .into_iter()
-            .map(|path| Ok((compute_namespace_from_rust_input_path(&path)?, path)))
-            .collect::<Result<HashMap<_, _>>>()?,
-    };
+    let pack = RustInputPathPack { rust_input_paths };
 
     ensure!(!pack.rust_input_paths.is_empty());
     ensure!(
-        !pack.rust_input_paths.values().any(|p| path_to_string(p).unwrap().contains("lib.rs")),
+        !pack.rust_input_paths.iter().any(|p| path_to_string(p).unwrap().contains("lib.rs")),
         "Do not use `lib.rs` as a Rust input. Please put code to be generated in something like `api.rs`.",
     );
 
@@ -212,40 +198,14 @@ fn compute_rust_output_path(
     compute_path_map(&path_common)
 }
 
-fn compute_namespace_from_rust_input_path(rust_input_path: &Path) -> Result<DeprecatedNamespace> {
-    let stem = rust_input_path
-        .file_stem()
-        .context("cannot get file stem")?
-        .to_str()
-        .context("cannot convert to str")?;
-    Ok(DeprecatedNamespace {
-        name: stem.to_owned(),
-    })
-}
-
 struct DartOutputPathPack {
     dart_decl_base_output_path: PathBuf,
     dart_impl_output_path: TargetOrCommonMap<PathBuf>,
 }
 
-fn compute_dart_output_path_pack(
-    dart_output_dir: &Path,
-    namespaces: &[&DeprecatedNamespace],
-) -> DartOutputPathPack {
-    let dart_decl_output_path = namespaces
-        .iter()
-        .map(|&namespace| {
-            (
-                namespace.to_owned(),
-                dart_output_dir
-                    .join("api")
-                    .join(compute_dart_decl_output_filename(namespace)),
-            )
-        })
-        .collect();
-
+fn compute_dart_output_path_pack(dart_output_dir: &Path) -> DartOutputPathPack {
     DartOutputPathPack {
-        dart_decl_output_path,
+        dart_decl_base_output_path: dart_output_dir.to_owned(),
         dart_impl_output_path: compute_path_map(&dart_output_dir.join("frb_generated.dart")),
     }
 }
@@ -257,10 +217,6 @@ fn compute_path_map(path_common: &Path) -> TargetOrCommonMap<PathBuf> {
         io: path_common.with_extension(&format!("io.{extension}")),
         wasm: path_common.with_extension(&format!("web.{extension}")),
     }
-}
-
-fn compute_dart_decl_output_filename(namespace: &DeprecatedNamespace) -> String {
-    format!("{}.dart", namespace.name.to_case(Case::Snake))
 }
 
 fn fallback_rust_output_path(rust_crate_dir: &Path) -> PathBuf {
