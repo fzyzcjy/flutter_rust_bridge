@@ -28,6 +28,9 @@ impl<'a> TypeParser<'a> {
     }
 
     fn parse_struct(&mut self, src_struct: &Struct) -> anyhow::Result<Option<IrStruct>> {
+        let (name, wrapper_name) =
+            compute_name_and_wrapper_name(&src_struct.0.ident, src_struct.0.mirror);
+
         let (is_fields_named, struct_fields) = match &src_struct.0.src.fields {
             Fields::Named(FieldsNamed { named, .. }) => (true, named),
             Fields::Unnamed(FieldsUnnamed { unnamed, .. }) => (false, unnamed),
@@ -39,9 +42,6 @@ impl<'a> TypeParser<'a> {
             .enumerate()
             .map(|(idx, field)| self.parse_struct_field(idx, field))
             .collect::<anyhow::Result<Vec<_>>>()?;
-
-        let (name, wrapper_name) =
-            compute_name_and_wrapper_name(&src_struct.0.ident, src_struct.0.mirror);
 
         let path = Some(src_struct.0.path.clone());
         let comments = parse_comments(&src_struct.0.src.attrs);
