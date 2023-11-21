@@ -33,7 +33,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get defaultExternalLibraryStem => 'frb_example_pure_dart';
 
   @override
-  String get defaultExternalLibraryRelativeDirectory => 'rust/target/';
+  String get defaultExternalLibraryRelativeDirectory => 'rust/target/release/';
 }
 
 abstract class RustLibApi extends BaseApi {
