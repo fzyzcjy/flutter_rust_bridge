@@ -6,11 +6,13 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::StructRef;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::source_graph::modules::Struct;
+use crate::codegen::parser::type_parser::enum_or_struct::EnumOrStructParser;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::unencodable::{
     parse_path_type_to_unencodable, SplayedSegment,
 };
 use crate::codegen::parser::type_parser::TypeParser;
+use std::collections::HashMap;
 use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, Ident, TypePath};
 
 impl<'a> TypeParser<'a> {
@@ -100,6 +102,14 @@ impl<'a> TypeParser<'a> {
             default: attributes.default_value(),
             settings: IrFieldSettings::default(),
         })
+    }
+}
+
+struct EnumOrStructParserStruct<'a>(TypeParser<'a>);
+
+impl<'a> EnumOrStructParser<Struct> for EnumOrStructParserStruct<'a> {
+    fn src_objects(&self) -> &HashMap<String, &Struct> {
+        &self.0.src_structs
     }
 }
 

@@ -12,10 +12,12 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{Delegate, EnumRef};
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::source_graph::modules::Enum;
+use crate::codegen::parser::type_parser::enum_or_struct::EnumOrStructParser;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::structure::compute_name_and_wrapper_name;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParser;
+use std::collections::HashMap;
 use syn::{Attribute, Field, Ident, Variant};
 
 impl<'a> TypeParser<'a> {
@@ -131,6 +133,14 @@ impl<'a> TypeParser<'a> {
                 })
                 .collect::<anyhow::Result<Vec<_>>>()?,
         }))
+    }
+}
+
+struct EnumOrStructParserEnum<'a>(TypeParser<'a>);
+
+impl<'a> EnumOrStructParser<Enum> for EnumOrStructParserEnum<'a> {
+    fn src_objects(&self) -> &HashMap<String, &Enum> {
+        &self.0.src_enums
     }
 }
 
