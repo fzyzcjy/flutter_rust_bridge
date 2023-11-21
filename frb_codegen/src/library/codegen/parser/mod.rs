@@ -18,6 +18,8 @@ use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
 use itertools::Itertools;
 use log::trace;
+use std::path::PathBuf;
+use syn::File;
 
 // TODO handle multi file correctly
 pub(crate) fn parse(config: &ParserInternalConfig) -> anyhow::Result<IrPack> {
@@ -28,21 +30,14 @@ pub(crate) fn parse(config: &ParserInternalConfig) -> anyhow::Result<IrPack> {
         .collect_vec();
     trace!("rust_input_paths={:?}", &rust_input_paths);
 
-    let source_rust_contents: Vec<String> = rust_input_paths
-        .iter()
-        .map(|rust_input_path| read_rust_file(rust_input_path, &config.rust_crate_dir))
-        .collect::<anyhow::Result<Vec<_>>>()?;
-    let file_asts = source_rust_contents
-        .iter()
-        .map(|s| syn::parse_file(s))
-        .collect::<syn::Result<Vec<_>>>()?;
+    let file_data_arr = read_files(&rust_input_paths, &config.rust_crate_dir)?;
 
     let crate_map = source_graph::crates::Crate::parse(&config.rust_crate_dir.join("Cargo.toml"))?;
     // trace!("crate_map={:?}", &crate_map);
 
-    let src_fns = file_asts
+    let src_fns = file_data_arr
         .iter()
-        .map(extract_generalized_functions_from_file)
+        .map(|file| extract_generalized_functions_from_file(&file.ast))
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
         .flatten()
@@ -64,7 +59,7 @@ pub(crate) fn parse(config: &ParserInternalConfig) -> anyhow::Result<IrPack> {
         .sorted_by_cached_key(|func| func.name.clone())
         .collect_vec();
 
-    let has_executor = source_rust_contents.iter().any(|s| parse_has_executor(s));
+    let has_executor = (file_data_arr.iter()).any(|file| parse_has_executor(&file.content));
 
     let (struct_pool, enum_pool) = type_parser.consume();
 
@@ -74,6 +69,30 @@ pub(crate) fn parse(config: &ParserInternalConfig) -> anyhow::Result<IrPack> {
         enum_pool,
         has_executor,
     })
+}
+
+struct FileData {
+    path: PathBuf,
+    content: String,
+    ast: File,
+}
+
+fn read_files(
+    rust_input_paths: &[&PathBuf],
+    rust_crate_dir: &PathBuf,
+) -> anyhow::Result<Vec<FileData>> {
+    rust_input_paths
+        .iter()
+        .map(|rust_input_path| {
+            let content = read_rust_file(rust_input_path, &rust_crate_dir)?;
+            let ast = syn::parse_file(&content)?;
+            Ok(FileData {
+                path: (*rust_input_path).clone(),
+                content,
+                ast,
+            })
+        })
+        .collect()
 }
 
 #[cfg(test)]
