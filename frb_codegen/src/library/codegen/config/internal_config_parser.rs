@@ -5,7 +5,9 @@ use crate::codegen::config::internal_config::{
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::misc::target::{TargetOrCommon, TargetOrCommonMap};
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
-use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
+use crate::codegen::generator::wire::dart::internal_config::{
+    DartOutputClassNamePack, GeneratorWireDartInternalConfig,
+};
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
@@ -38,11 +40,7 @@ impl InternalConfig {
         let dart_output_dir: PathBuf = base_dir.join(&config.dart_output);
         let dart_output_path_pack = compute_dart_output_path_pack(&dart_output_dir, &namespaces);
 
-        // TODO
-        // let dart_entrypoint_class_name = (config.dart_entrypoint_class_name.clone())
-        //     .unwrap_or(FALLBACK_DART_ENTRYPOINT_CLASS_NAME.to_owned());
-        // let dart_platform_class_name =
-        //     compute_dart_platform_class_name(&dart_entrypoint_class_name);
+        let dart_output_class_name_pack = compute_dart_output_class_name_pack(&config);
 
         let c_output_path = base_dir.join(&config.c_output);
         let duplicated_c_output_path = (&config)
@@ -90,7 +88,9 @@ impl InternalConfig {
                     dart_enums_style,
                     dart3,
                     dart_decl_output_path: dart_output_path_pack.dart_decl_output_path,
-                    dart_entrypoint_class_name: dart_entrypoint_class_name.clone(),
+                    dart_entrypoint_class_name: dart_output_class_name_pack
+                        .entrypoint_class_name
+                        .clone(),
                 },
                 wire: GeneratorWireInternalConfig {
                     dart: GeneratorWireDartInternalConfig {
@@ -105,8 +105,7 @@ impl InternalConfig {
                         llvm_compiler_opts: config.llvm_compiler_opts.unwrap_or_else(String::new),
                         extra_headers: config.extra_headers.unwrap_or_else(String::new),
                         dart_impl_output_path: dart_output_path_pack.dart_impl_output_path,
-                        dart_entrypoint_class_name: dart_entrypoint_class_name.clone(),
-                        dart_platform_class_name,
+                        dart_output_class_name_pack,
                     },
                     rust: GeneratorWireRustInternalConfig {
                         rust_input_path_pack,
@@ -264,8 +263,14 @@ fn get_file_stem(p: &Path) -> &str {
 
 const FALLBACK_DART_ENTRYPOINT_CLASS_NAME: &'static str = "RustLib";
 
-fn compute_dart_platform_class_name(dart_entrypoint_class_name: &str) -> String {
-    format!("{dart_entrypoint_class_name}Platform")
+fn compute_dart_output_class_name_pack(config: &Config) -> DartOutputClassNamePack {
+    let entrypoint_class_name = (config.dart_entrypoint_class_name.clone())
+        .unwrap_or(FALLBACK_DART_ENTRYPOINT_CLASS_NAME.to_owned());
+
+    DartOutputClassNamePack {
+        entrypoint_class_name,
+        platform_class_name: format!("{dart_entrypoint_class_name}Platform"),
+    }
 }
 
 #[cfg(test)]
