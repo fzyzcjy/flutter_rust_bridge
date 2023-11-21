@@ -112,7 +112,9 @@ generate_book_help:
     dart run frb_dart/bin/serve.dart --help > book/src/help.serve.txt
 
 generate_ffigen:
-    cd frb_dart && dart run ffigen
+    TODO
+    # use the frb command instead
+    # cd frb_dart && dart run ffigen
 
 cargo_run_codegen := if env_var_or_default("FRB_TEST_USE_RELEASE_VERSION", "false") == "true" {
     "flutter_rust_bridge_codegen"
