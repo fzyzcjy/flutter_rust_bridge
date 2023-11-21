@@ -11,7 +11,15 @@ class GeneralizedFrbRustBinding {
   GeneralizedFrbRustBinding(ExternalLibrary externalLibrary) : _binding = MultiPackageCBinding(externalLibrary);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void storeDartPostCObject() => _binding.store_dart_post_cobject(ffi.NativeApi.postCObject.cast());
+  void storeDartPostCObject() {
+    try {
+      _binding.store_dart_post_cobject(ffi.NativeApi.postCObject.cast());
+    } on ArgumentError catch (e, s) {
+      print('${e.runtimeType} ${e.name} ${e.message}');
+      TODO;
+      rethrow;
+    }
+  }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void initFrbDartApiDl() => _binding.init_frb_dart_api_dl(ffi.NativeApi.initializeApiDLData);
