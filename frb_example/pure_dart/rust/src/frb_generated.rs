@@ -66,14 +66,14 @@ impl Wire2Api<i32> for i32 {
   // Section: impl_into_dart
 
 #[cfg(not(target_family = "wasm"))]
-#[path = "/Volumes/MyExternal/ExternalRefCode/flutter_rust_bridge/frb_example/pure_dart/rust/src/frb_generated.io.rs"]
+#[path = "frb_generated.io.rs"]
 mod io;
 #[cfg(not(target_family = "wasm"))]
 pub use io::*;
 
 /// cbindgen:ignore
-#[cfg((target_family = "wasm"))]
-#[path = "/Volumes/MyExternal/ExternalRefCode/flutter_rust_bridge/frb_example/pure_dart/rust/src/frb_generated.web.rs"]
+#[cfg(target_family = "wasm")]
+#[path = "frb_generated.web.rs"]
 mod web;
-#[cfg((target_family = "wasm"))]
+#[cfg(target_family = "wasm")]
 pub use web::*;
