@@ -1,6 +1,5 @@
 use crate::codegen::config::internal_config::{
-    DeprecatedNamespace, GeneratorInternalConfig, GeneratorWireInternalConfig, InternalConfig,
-    RustInputPathPack,
+    GeneratorInternalConfig, GeneratorWireInternalConfig, InternalConfig, RustInputPathPack,
 };
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::misc::target::{TargetOrCommon, TargetOrCommonMap};

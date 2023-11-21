@@ -1,4 +1,3 @@
-use crate::codegen::config::internal_config::DeprecatedNamespace;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::path::PathBuf;

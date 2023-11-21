@@ -1,4 +1,4 @@
-use crate::codegen::config::internal_config::{DeprecatedNamespace, RustInputPathPack};
+use crate::codegen::config::internal_config::RustInputPathPack;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::path::PathBuf;
