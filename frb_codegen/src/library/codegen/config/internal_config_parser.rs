@@ -1,18 +1,20 @@
 use crate::codegen::config::internal_config::{
     GeneratorInternalConfig, GeneratorWireInternalConfig, InternalConfig, Namespace,
+    RustInputPathPack,
 };
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::misc::target::{TargetOrCommon, TargetOrCommonMap};
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
 use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInternalConfig;
-use crate::codegen::parser::internal_config::{ParserInternalConfig, RustInputPathPack};
+use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::codegen::preparer::internal_config::PreparerInternalConfig;
 use crate::codegen::Config;
 use crate::utils::path_utils::{
     find_dart_package_dir, find_rust_crate_dir, glob_path, path_to_string,
 };
+use crate::utils::rust_project_utils::compute_mod_from_rust_path;
 use anyhow::{ensure, Context, Result};
 use convert_case::{Case, Casing};
 use itertools::Itertools;
@@ -256,20 +258,6 @@ fn compute_dart_api_instance_name(dart_output_stem: &str) -> String {
 
 fn get_file_stem(p: &Path) -> &str {
     p.file_stem().unwrap().to_str().unwrap()
-}
-
-fn compute_mod_from_rust_path(code_path: &Path, crate_path: &Path) -> Result<String> {
-    (|| -> Result<String> {
-        let p = code_path
-            .strip_prefix(crate_path.join("src"))?
-            .with_extension("");
-        Ok(path_to_string(&p)?.replace('/', "::"))
-    })()
-    .with_context(|| {
-        format!(
-            "When compute_mod_from_rust_path(code_path={code_path:?}, crate_path={crate_path:?})",
-        )
-    })
 }
 
 const FALLBACK_DART_ENTRYPOINT_CLASS_NAME: &'static str = "RustLib";
