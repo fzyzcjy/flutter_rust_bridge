@@ -23,8 +23,7 @@ impl<'a> TypeParser<'a> {
             (name, None) if self.src_structs.contains_key(&name.to_string()) => {
                 let ident = IrStructIdent(NamespacedName::new(TODO, name.to_string()));
 
-                if !self.parsing_or_parsed_structs.contains(&ident.0) {
-                    self.parsing_or_parsed_structs.insert(ident.clone().0);
+                if self.parsing_or_parsed_structs.insert(ident.clone().0) {
                     let api_struct = match self.parse_struct(&ident.0)? {
                         Some(ir_struct) => ir_struct,
                         None => {
