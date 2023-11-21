@@ -116,8 +116,8 @@ fn generate_imports(types: &[IrType], context: WireRustGeneratorContext) -> anyh
         "#
     );
 
-    let imports_for_rust_input = (context.config.rust_input_path_pack.rust_input_path)
-        .values()
+    let imports_for_rust_input = (context.config.rust_input_path_pack.rust_input_paths)
+        .iter()
         .map(|rust_input_path| {
             Ok(format!(
                 "use crate::{}::*;\n",

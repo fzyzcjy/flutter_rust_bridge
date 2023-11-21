@@ -23,11 +23,7 @@ use syn::File;
 
 // TODO handle multi file correctly
 pub(crate) fn parse(config: &ParserInternalConfig) -> anyhow::Result<IrPack> {
-    let rust_input_paths = config
-        .rust_input_path_pack
-        .rust_input_path
-        .values()
-        .collect_vec();
+    let rust_input_paths = &config.rust_input_path_pack.rust_input_paths;
     trace!("rust_input_paths={:?}", &rust_input_paths);
 
     let file_data_arr = read_files(&rust_input_paths, &config.rust_crate_dir)?;
@@ -78,7 +74,7 @@ struct FileData {
 }
 
 fn read_files(
-    rust_input_paths: &[&PathBuf],
+    rust_input_paths: &[PathBuf],
     rust_crate_dir: &PathBuf,
 ) -> anyhow::Result<Vec<FileData>> {
     rust_input_paths
@@ -119,7 +115,7 @@ mod tests {
         body(
             "library/codegen/parser/mod/multi_input_file",
             Some(Box::new(|rust_crate_dir| RustInputPathPack {
-                rust_input_path: [
+                rust_input_paths: [
                     rust_crate_dir.join("src/api_one.rs"),
                     rust_crate_dir.join("src/api_two.rs"),
                 ]
@@ -167,7 +163,7 @@ mod tests {
         let actual_ir = parse(&ParserInternalConfig {
             rust_input_path_pack: rust_input_path_pack.map(|f| f(&rust_crate_dir)).unwrap_or(
                 RustInputPathPack {
-                    rust_input_path: [(
+                    rust_input_paths: [(
                         "my_namespace".to_owned().into(),
                         rust_crate_dir.join("src/api.rs"),
                     )]

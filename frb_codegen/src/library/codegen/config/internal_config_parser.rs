@@ -36,7 +36,7 @@ impl InternalConfig {
         debug!("InternalConfig.parse base_dir={base_dir:?}");
 
         let rust_input_path_pack = compute_rust_input_path_pack(&config.rust_input, &base_dir)?;
-        let namespaces = rust_input_path_pack.rust_input_path.keys().collect_vec();
+        let namespaces = rust_input_path_pack.rust_input_paths.keys().collect_vec();
 
         let dart_output_dir: PathBuf = base_dir.join(&config.dart_output);
         let dart_output_path_pack = compute_dart_output_path_pack(&dart_output_dir, &namespaces);
@@ -169,7 +169,7 @@ const FALLBACK_DEFAULT_EXTERNAL_LIBRARY_RELATIVE_DIRECTORY: &str = "UNKNOWN";
 
 impl RustInputPathPack {
     fn one_rust_input_path(&self) -> &Path {
-        self.rust_input_path.iter().next().unwrap().1
+        self.rust_input_paths.iter().next().unwrap().1
     }
 }
 
@@ -185,15 +185,15 @@ fn compute_rust_input_path_pack(
         .collect_vec();
 
     let pack = RustInputPathPack {
-        rust_input_path: paths
+        rust_input_paths: paths
             .into_iter()
             .map(|path| Ok((compute_namespace_from_rust_input_path(&path)?, path)))
             .collect::<Result<HashMap<_, _>>>()?,
     };
 
-    ensure!(!pack.rust_input_path.is_empty());
+    ensure!(!pack.rust_input_paths.is_empty());
     ensure!(
-        !pack.rust_input_path.values().any(|p| path_to_string(p).unwrap().contains("lib.rs")),
+        !pack.rust_input_paths.values().any(|p| path_to_string(p).unwrap().contains("lib.rs")),
         "Do not use `lib.rs` as a Rust input. Please put code to be generated in something like `api.rs`.",
     );
 
