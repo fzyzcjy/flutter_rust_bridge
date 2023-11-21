@@ -17,6 +17,7 @@ use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumIdent};
 use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent};
+use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::source_graph::modules::{Enum, Struct};
 use crate::codegen::parser::type_parser::enum_or_struct::EnumOrStructParserInfo;
 use std::collections::{HashMap, HashSet};
@@ -51,11 +52,23 @@ impl<'a> TypeParser<'a> {
             self.enum_parser_info.object_pool,
         )
     }
+
+    pub(crate) fn parse_type(
+        &mut self,
+        context: &TypeParserParsingContext,
+        ty: &Type,
+    ) -> anyhow::Result<IrType> {
+        TypeParserWithContext {
+            inner: &mut self,
+            context,
+        }
+        .parse_type(ty)
+    }
 }
 
 pub(crate) struct TypeParserWithContext<'a> {
-    pub inner: TypeParser<'a>,
-    pub context: TypeParserParsingContext,
+    pub inner: &'a mut TypeParser<'a>,
+    pub context: &'a TypeParserParsingContext,
 }
 
 pub(crate) struct TypeParserParsingContext {
