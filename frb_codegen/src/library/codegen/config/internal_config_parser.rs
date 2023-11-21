@@ -275,7 +275,7 @@ fn compute_dart_output_class_name_pack(config: &Config) -> DartOutputClassNamePa
     let with_postfix = |postfix: &str| format!("{entrypoint_class_name}{postfix}");
 
     DartOutputClassNamePack {
-        entrypoint_class_name,
+        entrypoint_class_name: entrypoint_class_name.clone(),
         api_class_name: with_postfix("Api"),
         api_impl_class_name: with_postfix("ApiImpl"),
         api_impl_platform_class_name: with_postfix("ApiImplPlatform"),
