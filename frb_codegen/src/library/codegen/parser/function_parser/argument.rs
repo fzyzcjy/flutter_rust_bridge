@@ -9,7 +9,6 @@ use crate::codegen::parser::function_parser::{
     type_to_string, FunctionParser, FunctionPartialInfo, STREAM_SINK_IDENT,
 };
 use crate::codegen::parser::type_parser::misc::parse_comments;
-use crate::codegen::parser::type_parser::ty::TypeParserParsingContext;
 use anyhow::bail;
 use syn::*;
 
@@ -18,7 +17,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         &mut self,
         argument_index: usize,
         sig_input: &FnArg,
-        context: &TypeParserParsingContext,
     ) -> anyhow::Result<FunctionPartialInfo> {
         if let FnArg::Typed(ref pat_type) = sig_input {
             let ty = pat_type.ty.as_ref();
@@ -27,16 +25,12 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     if let Some(ans) = self.parse_fn_arg_type_stream_sink(path, argument_index)? {
                         Ok(ans)
                     } else {
-                        partial_info_for_normal_type(
-                            self.type_parser.parse_type(ty, context)?,
-                            pat_type,
-                        )
+                        partial_info_for_normal_type(self.type_parser.parse_type(ty)?, pat_type)
                     }
                 }
-                Type::Array(_) => partial_info_for_normal_type(
-                    self.type_parser.parse_type(ty, context)?,
-                    pat_type,
-                ),
+                Type::Array(_) => {
+                    partial_info_for_normal_type(self.type_parser.parse_type(ty)?, pat_type)
+                }
                 _ => bail!(
                     "Failed to parse function argument type `{}`",
                     type_to_string(ty)
