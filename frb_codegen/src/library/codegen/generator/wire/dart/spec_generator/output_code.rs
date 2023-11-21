@@ -62,23 +62,39 @@ impl WireDartOutputCode {
             api_class_name,
             api_impl_class_name,
             api_impl_platform_class_name,
+            wire_class_name,
             ..
         } = &dart_output_class_name_pack;
+        let api_impl_body = &self.api_impl_body;
 
         let api_impl_class_code = if target == TargetOrCommon::Common {
             format!(
                 "
                 class {api_impl_class_name} extends {api_impl_platform_class_name} implements {api_class_name} {{
-                  {api_impl_class_name}({{super.handler}});
+                  {api_impl_class_name}({{
+                    super.handler,
+                    required super.wire,
+                    required super.generalizedFrbRustBinding,
+                  }});
 
                   {api_impl_body}
                 }}
                 ",
-                api_impl_body = self.api_impl_body,
             )
         } else {
-            assert_eq!(&self.api_impl_body, "");
-            "".into()
+            format!(
+                "
+                abstract class {api_impl_platform_class_name} extends BaseApiImpl<{wire_class_name}> {{
+                  {api_impl_platform_class_name}({{
+                    super.handler,
+                    required super.wire,
+                    required super.generalizedFrbRustBinding,
+                  }});
+
+                  {api_impl_body}
+                }}
+                ",
+            )
         };
 
         format!(
