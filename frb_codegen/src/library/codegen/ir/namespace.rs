@@ -65,7 +65,7 @@ impl Serialize for NamespacedName {
     }
 }
 
-impl Deserialize<'de> for NamespacedName {
+impl<'de> Deserialize<'de> for NamespacedName {
     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
     where
         D: Deserializer<'de>,
@@ -97,7 +97,7 @@ mod tests {
         let serialized = serde_json::to_string(&original)?;
         let recovered: NamespacedName = serde_json::from_str(&serialized)?;
 
-        assert_eq!(serialized, "a::b::c");
+        assert_eq!(serialized, r#""a::b::c""#);
         assert_eq!(original, recovered);
 
         Ok(())
