@@ -1,4 +1,4 @@
-import 'package:flutter_rust_bridge/src/main_components/api.dart';
+import 'package:flutter_rust_bridge/src/main_components/api_impl.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:meta/meta.dart';
 
@@ -23,7 +23,7 @@ abstract class BaseTask<S, E extends Object> {
   final List<dynamic> argValues;
 
   /// The Api class that creates the task.
-  final BaseApi api;
+  final BaseApiImpl apiImpl;
 
   /// Transparent hint given by the caller of the method
   final dynamic hint;
@@ -34,7 +34,7 @@ abstract class BaseTask<S, E extends Object> {
     required this.parseErrorData,
     required this.constMeta,
     required this.argValues,
-    required this.api,
+    required this.apiImpl,
     required this.hint,
   });
 
@@ -58,7 +58,7 @@ class NormalTask<S, E extends Object> extends BaseTask<S, E> {
     required super.parseErrorData,
     required super.constMeta,
     required super.argValues,
-    required super.api,
+    required super.apiImpl,
     required super.hint,
   });
 }
@@ -78,7 +78,7 @@ class SyncTask<S, E extends Object> extends BaseTask<S, E> {
     required super.parseErrorData,
     required super.constMeta,
     required super.argValues,
-    required super.api,
+    required super.apiImpl,
     required super.hint,
   });
 }
@@ -98,7 +98,7 @@ class StreamTask<S, E extends Object> extends BaseTask<S, E> {
     required super.parseErrorData,
     required super.constMeta,
     required super.argValues,
-    required super.api,
+    required super.apiImpl,
     required super.hint,
   });
 }
