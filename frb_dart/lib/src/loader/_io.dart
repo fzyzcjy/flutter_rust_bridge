@@ -5,6 +5,7 @@ import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 ExternalLibrary loadExternalLibrary({
+  String directory = '',
   required String stem,
 }) {
   // ref
@@ -12,7 +13,7 @@ ExternalLibrary loadExternalLibrary({
   // * https://github.com/fzyzcjy/flutter_rust_bridge/pull/898
 
   if (Platform.isAndroid) {
-    return DynamicLibrary.open('lib$stem.so');
+    return DynamicLibrary.open('${directory}lib$stem.so');
   }
 
   if (Platform.isIOS) {
@@ -20,13 +21,13 @@ ExternalLibrary loadExternalLibrary({
   }
 
   if (Platform.isWindows) {
-    return DynamicLibrary.open('$stem.dll');
+    return DynamicLibrary.open('$directory$stem.dll');
   }
 
   if (Platform.isMacOS) {
     try {
       // When running pure Dart (without Flutter), will do this
-      return DynamicLibrary.open('lib$stem.dylib');
+      return DynamicLibrary.open('${directory}lib$stem.dylib');
     } catch (_) {
       // When running Flutter
       return DynamicLibrary.process();
@@ -34,7 +35,7 @@ ExternalLibrary loadExternalLibrary({
   }
 
   if (Platform.isLinux) {
-    return DynamicLibrary.open('lib$stem.so');
+    return DynamicLibrary.open('${directory}lib$stem.so');
   }
 
   // Feel free to PR to add support for more platforms! (e.g. I do not have a Fuchsia device, so cannot test that)
