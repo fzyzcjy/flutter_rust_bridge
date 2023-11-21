@@ -24,7 +24,7 @@ pub(crate) struct TypeParser<'a> {
     src_types: HashMap<String, Type>,
     parsing_or_parsed_structs: HashSet<NamespacedName>,
     struct_pool: IrStructPool,
-    parsed_enums: HashSet<NamespacedName>,
+    parsing_or_parsed_enums: HashSet<NamespacedName>,
     enum_pool: IrEnumPool,
 }
 
@@ -41,7 +41,7 @@ impl<'a> TypeParser<'a> {
             struct_pool: HashMap::new(),
             enum_pool: HashMap::new(),
             parsing_or_parsed_structs: HashSet::new(),
-            parsed_enums: HashSet::new(),
+            parsing_or_parsed_enums: HashSet::new(),
         }
     }
 

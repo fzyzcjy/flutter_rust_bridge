@@ -27,7 +27,7 @@ impl<'a> TypeParser<'a> {
             if let Some(src_enum) = self.src_enums.get(*name) {
                 let ident = IrEnumIdent(NamespacedName::new(TODO, name.to_string()));
 
-                if self.parsed_enums.insert(ident.clone().0) {
+                if self.parsing_or_parsed_enums.insert(ident.clone().0) {
                     let enu = self.parse_enum(src_enum)?;
                     self.enum_pool.insert(ident.clone(), enu);
                 }
