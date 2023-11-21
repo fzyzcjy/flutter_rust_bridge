@@ -33,11 +33,13 @@ pub(crate) struct WireRustOutputSpecMisc {
 pub(crate) fn generate(
     context: WireRustGeneratorContext,
     cache: &IrPackComputedCache,
-) -> WireRustOutputSpecMisc {
-    WireRustOutputSpecMisc {
+) -> anyhow::Result<WireRustOutputSpecMisc> {
+    Ok(WireRustOutputSpecMisc {
         file_attributes: Acc::new_common(vec![FILE_ATTRIBUTES.to_string().into()]),
         code_header: Acc::new_common(vec![generate_code_header().into()]),
-        imports: Acc::new_common(vec![generate_imports(&cache.distinct_types, context).into()]),
+        imports: Acc::new_common(vec![
+            generate_imports(&cache.distinct_types, context)?.into()
+        ]),
         wire_funcs: context
             .ir_pack
             .funcs
@@ -57,7 +59,7 @@ pub(crate) fn generate(
         .into()]),
         executor: Acc::new_common(vec![generate_executor(context.ir_pack).into()]),
         extern_struct_names: generate_extern_struct_names(context, cache),
-    }
+    })
 }
 
 const FILE_ATTRIBUTES: &'static str = r#"#![allow(non_camel_case_types, unused, clippy::redundant_closure, clippy::useless_conversion, clippy::unit_arg, clippy::double_parens, non_snake_case, clippy::too_many_arguments)]"#;
@@ -103,7 +105,7 @@ fn generate_static_checks(types: &[IrType], context: WireRustGeneratorContext) -
     lines.join("\n")
 }
 
-fn generate_imports(types: &[IrType], context: WireRustGeneratorContext) -> String {
+fn generate_imports(types: &[IrType], context: WireRustGeneratorContext) -> anyhow::Result<String> {
     let imports_misc = format!(
         r#"
         use flutter_rust_bridge::*;
@@ -129,14 +131,15 @@ fn generate_imports(types: &[IrType], context: WireRustGeneratorContext) -> Stri
         .iter()
         .flat_map(|ty| WireRustGenerator::new(ty.clone(), context).generate_imports())
         .flatten()
-        // Don't include imports from the API file
-        .filter(|import| !import.starts_with(&format!("use crate::{rust_wire_mod}::")))
+        // TODO do we really need this?
+        // // Don't include imports from the API file
+        // .filter(|import| !import.starts_with(&format!("use crate::{rust_wire_mod}::")))
         // de-duplicate
         .collect::<HashSet<String>>()
         .into_iter()
         .join("\n");
 
-    imports_misc + &imports_for_rust_input + &imports_from_types
+    Ok(imports_misc + &imports_for_rust_input + &imports_from_types)
 }
 
 fn generate_executor(ir_pack: &IrPack) -> String {

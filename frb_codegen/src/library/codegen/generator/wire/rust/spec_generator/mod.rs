@@ -17,11 +17,11 @@ pub(super) struct WireRustOutputSpec {
     pub(super) api2wire: WireRustOutputSpecApi2wire,
 }
 
-pub(super) fn generate(context: WireRustGeneratorContext) -> WireRustOutputSpec {
+pub(super) fn generate(context: WireRustGeneratorContext) -> anyhow::Result<WireRustOutputSpec> {
     let cache = IrPackComputedCache::compute(context.ir_pack);
-    WireRustOutputSpec {
-        misc: misc::generate(context, &cache),
+    Ok(WireRustOutputSpec {
+        misc: misc::generate(context, &cache)?,
         wire2api: wire2api::generate(context, &cache),
         api2wire: api2wire::generate(context, &cache),
-    }
+    })
 }

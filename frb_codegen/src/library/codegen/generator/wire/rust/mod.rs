@@ -15,7 +15,7 @@ pub(crate) struct GeneratorWireRustOutput {
 pub(crate) fn generate(
     context: WireRustGeneratorContext,
 ) -> anyhow::Result<GeneratorWireRustOutput> {
-    let spec = spec_generator::generate(context);
+    let spec = spec_generator::generate(context)?;
     let text = text_generator::generate(&spec, context.config)?;
 
     Ok(GeneratorWireRustOutput {
