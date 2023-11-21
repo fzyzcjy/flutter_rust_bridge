@@ -31,6 +31,7 @@ fn execute_ffigen(
 fn postpare_modify(content_raw: &str) -> String {
     content_raw
         .replace("final class DartCObject extends ffi.Opaque {}", "")
+        .replace("final class _Dart_Handle extends ffi.Opaque {}", "")
         .replace("typedef WireSyncReturn = ffi.Pointer<DartCObject>;", "")
 }
 

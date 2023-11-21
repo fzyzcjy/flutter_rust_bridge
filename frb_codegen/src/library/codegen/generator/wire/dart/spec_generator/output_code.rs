@@ -59,14 +59,16 @@ impl WireDartOutputCode {
         dart_output_class_name_pack: &DartOutputClassNamePack,
     ) -> String {
         let DartOutputClassNamePack {
+            api_class_name,
             api_impl_class_name,
+            api_impl_platform_class_name,
             ..
         } = &dart_output_class_name_pack;
 
         let api_impl_class_code = if target == TargetOrCommon::Common {
             format!(
                 "
-                class {api_impl_class_name} extends BaseApiImpl {{
+                class {api_impl_class_name} extends {api_impl_platform_class_name} implements {api_class_name} {{
                   {api_impl_class_name}({{super.handler}});
 
                   {api_impl_body}

@@ -40,11 +40,12 @@ pub(crate) fn generate_api_impl_normal_function(
         "{func_expr} {{
             {stmt_prepare_args}
             return handler.{execute_func_name}({task_class}(
-                callFfi: ({call_ffi_args}) => _platform.inner.{wire_func_name}({wire_param_list}),
+                callFfi: ({call_ffi_args}) => wire.{wire_func_name}({wire_param_list}),
                 parseSuccessData: {parse_success_data},
                 parseErrorData: {parse_error_data},
                 constMeta: {const_meta_field_name},
                 argValues: [{arg_values}],
+                apiImpl: this,
                 hint: hint,
             ));
         }}",
@@ -193,9 +194,9 @@ pub(crate) fn generate_api_impl_opaque_getter(
     Some(WireDartOutputCode {
         api_impl_body: format!(
             "
-            DropFnType get dropOpaque{ty} => _platform.inner.drop_opaque_{ty};
-            ShareFnType get shareOpaque{ty} => _platform.inner.share_opaque_{ty};
-            OpaqueTypeFinalizer get {ty}Finalizer => _platform.{ty}Finalizer;
+            DropFnType get dropOpaque{ty} => wire.drop_opaque_{ty};
+            ShareFnType get shareOpaque{ty} => wire.share_opaque_{ty};
+            OpaqueTypeFinalizer get {ty}Finalizer => wire.{ty}Finalizer;
             ",
             ty = ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type()
         ),
