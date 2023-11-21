@@ -24,7 +24,7 @@ impl<'a> TypeParser<'a> {
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
         Ok(Some(match last_segment {
-            (name, _) if self.src_enums.contains_key(TODO /*&name.to_string()*/) => {
+            (name, _) if self.src_enums.contains_key(&name.to_string()) => {
                 let ident = IrEnumIdent(NamespacedName::new(TODO, name.to_string()));
 
                 if self.parsed_enums.insert(ident.clone().0) {
@@ -53,7 +53,7 @@ impl<'a> TypeParser<'a> {
     }
 
     fn parse_enum(&mut self, ident_string: &NamespacedName) -> anyhow::Result<IrEnum> {
-        let src_enum = self.src_enums[ident_string];
+        let src_enum = self.src_enums[&ident_string.name];
 
         let (name, wrapper_name) =
             compute_name_and_wrapper_name(&src_enum.0.ident, src_enum.0.mirror);

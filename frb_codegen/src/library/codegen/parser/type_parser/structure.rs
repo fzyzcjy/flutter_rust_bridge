@@ -20,7 +20,7 @@ impl<'a> TypeParser<'a> {
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
         Ok(Some(match last_segment {
-            (name, None) if self.src_structs.contains_key(TODO /*&name.to_string()*/) => {
+            (name, None) if self.src_structs.contains_key(&name.to_string()) => {
                 let ident = IrStructIdent(NamespacedName::new(TODO, name.to_string()));
 
                 if !self.parsing_or_parsed_struct_names.contains(&ident.0) {
@@ -59,7 +59,7 @@ impl<'a> TypeParser<'a> {
     }
 
     fn parse_struct(&mut self, ident_string: &NamespacedName) -> anyhow::Result<Option<IrStruct>> {
-        let src_struct = self.src_structs[ident_string];
+        let src_struct = self.src_structs[&ident_string.name];
 
         let (is_fields_named, struct_fields) = match &src_struct.0.src.fields {
             Fields::Named(FieldsNamed { named, .. }) => (true, named),
