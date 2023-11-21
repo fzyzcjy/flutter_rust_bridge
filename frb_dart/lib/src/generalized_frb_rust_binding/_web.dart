@@ -7,26 +7,22 @@ abstract class GeneralizedFrbRustBinding {
   void storeDartPostCObject() {}
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  // ignore: non_constant_identifier_names
-  void free_WireSyncReturn(WireSyncReturn raw) {}
-
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
-  // ignore: non_constant_identifier_names
-  Object get_dart_object(int ptr) {
+  Object getDartObject(int ptr) {
     return getDartObject(ptr);
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  // ignore: non_constant_identifier_names
-  void drop_dart_object(int ptr) {
+  void dropDartObject(int ptr) {
     dropDartObject(ptr);
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  // ignore: non_constant_identifier_names
-  int new_dart_opaque(Object obj, NativePortType port) {
+  int newDartOpaque(Object obj, NativePortType port) {
     throw UnimplementedError();
   }
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  void freeWireSyncReturn(WireSyncReturn raw) {}
 }
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
