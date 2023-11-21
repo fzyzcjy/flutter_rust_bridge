@@ -22,7 +22,8 @@ where
     ) -> anyhow::Result<Option<IrType>> {
         if let (name, _) = last_segment {
             if let Some(src_object) = self.src_objects().get(*name) {
-                let namespaced_name = NamespacedName::new(TODO, name.to_string());
+                let namespace = Namespace::new(src_object.inner().path.clone());
+                let namespaced_name = NamespacedName::new(namespace, name.to_string());
                 let ident: Id = namespaced_name.clone().into();
 
                 if (self.parser_info().parsing_or_parsed_objects).insert(namespaced_name) {
