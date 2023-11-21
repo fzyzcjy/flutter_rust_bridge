@@ -7,19 +7,13 @@ abstract class GeneralizedFrbRustBinding {
   void storeDartPostCObject() {}
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  Object getDartObject(int ptr) {
-    return getDartObject(ptr);
-  }
+  Object getDartObject(int ptr) => getDartObject(ptr);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void dropDartObject(int ptr) {
-    dropDartObject(ptr);
-  }
+  void dropDartObject(int ptr) => dropDartObject(ptr);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  int newDartOpaque(Object obj, NativePortType port) {
-    throw UnimplementedError();
-  }
+  int newDartOpaque(Object obj, NativePortType port) => throw UnimplementedError();
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void freeWireSyncReturn(WireSyncReturn raw) {}
