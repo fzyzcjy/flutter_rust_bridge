@@ -13,6 +13,7 @@ use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::codegen::preparer::internal_config::PreparerInternalConfig;
 use crate::codegen::Config;
+use crate::library::commands::cargo_metadata::execute_cargo_metadata;
 use crate::utils::path_utils::{
     find_dart_package_dir, find_rust_crate_dir, glob_path, path_to_string,
 };
@@ -58,7 +59,8 @@ impl InternalConfig {
         let rust_output_path = compute_rust_output_path(&config, &base_dir, &rust_crate_dir);
         let rust_wire_mod =
             compute_mod_from_rust_path(&rust_output_path[TargetOrCommon::Common], &rust_crate_dir)?;
-        let default_external_library_stem = compute_default_external_library_stem(&rust_crate_dir);
+        let default_external_library_stem = compute_default_external_library_stem(&rust_crate_dir)
+            .unwrap_or(FALLBACK_DEFAULT_EXTERNAL_LIBRARY_STEM.to_owned());
 
         let dart_root = (config.dart_root.map(PathBuf::from))
             .unwrap_or(find_dart_package_dir(&dart_output_dir)?);
@@ -137,9 +139,19 @@ impl InternalConfig {
     }
 }
 
-fn compute_default_external_library_stem(rust_crate_dir: &Path) -> String {
-    todo!()
+fn compute_default_external_library_stem(rust_crate_dir: &Path) -> Result<String> {
+    let metadata = execute_cargo_metadata(&rust_crate_dir.join("Cargo.toml"))?;
+    let package = metadata
+        .root_package()
+        .context("cannot find root package")?;
+    let target = (package.targets.iter())
+        .filter(|target| target.kind.iter().any(|kind| kind.contains("lib")))
+        .next()
+        .context("cannot find target")?;
+    Ok(target.name.clone())
 }
+
+const FALLBACK_DEFAULT_EXTERNAL_LIBRARY_STEM: &str = "UNKNOWN";
 
 impl RustInputPathPack {
     fn one_rust_input_path(&self) -> &Path {
