@@ -4,7 +4,7 @@ use std::fmt::{Display, Formatter};
 
 /// The Rust files/modules/namespaces.
 #[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize, Deserialize, Ord, PartialOrd)]
-pub(crate) struct Namespace {
+pub struct Namespace {
     // Represent via this, instead of `Vec<String>`, to avoid extra memory overhead
     joined_path: String,
 }
@@ -42,9 +42,9 @@ impl Display for Namespace {
 /// Usually, a name itself (say "Apple") is vague, since it can be `mod_a::Apple`
 /// or `mod_b::Apple`. Instead, a namespace + name unambiguously determines the object.
 #[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize, Deserialize, Ord, PartialOrd)]
-pub(crate) struct NamespacedName {
-    pub(crate) namespace: Namespace,
-    pub(crate) name: String,
+pub struct NamespacedName {
+    pub namespace: Namespace,
+    pub name: String,
 }
 
 impl NamespacedName {
