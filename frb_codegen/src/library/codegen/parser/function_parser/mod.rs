@@ -3,7 +3,7 @@ pub(crate) mod output;
 
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo};
-use crate::codegen::ir::namespace::NamespacedName;
+use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::misc::parse_comments;
@@ -49,7 +49,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         debug!("parse_function function name: {:?}", func.sig.ident);
 
         let sig = &func.sig;
-        let namespace = compute_mod_from_rust_path(file_path, rust_crate_dir)?;
+        let namespace =
+            Namespace::new_self_crate(compute_mod_from_rust_path(file_path, rust_crate_dir)?);
         let func_name = sig.ident.to_string();
 
         let mut info = FunctionPartialInfo::default();

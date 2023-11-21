@@ -19,6 +19,13 @@ impl Namespace {
         }
     }
 
+    pub fn new_self_crate(joined_path: String) -> Self {
+        assert!(!joined_path.starts_with("crate::"));
+        Self {
+            joined_path: format!("crate::{joined_path}"),
+        }
+    }
+
     pub fn path(&self) -> Vec<&str> {
         self.joined_path.split(NAMESPACE_PATH_SEPARATOR).collect()
     }
