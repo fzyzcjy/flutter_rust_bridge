@@ -17,7 +17,7 @@ impl<'a> WireRustGeneratorMiscTrait for EnumRefWireRustGenerator<'a> {
             .variants()
             .iter()
             .map(|variant| match &variant.kind {
-                IrVariantKind::Value => format!("{}::{} => {{}}", src.name, &variant.name),
+                IrVariantKind::Value => format!("{}::{} => {{}}", src.name.name, &variant.name),
                 IrVariantKind::Struct(s) => {
                     let pattern = s
                         .fields
@@ -25,9 +25,19 @@ impl<'a> WireRustGeneratorMiscTrait for EnumRefWireRustGenerator<'a> {
                         .map(|field| field.name.rust_style().to_owned())
                         .collect_vec();
                     let pattern = if s.is_fields_named {
-                        format!("{}::{} {{ {} }}", src.name, variant.name, pattern.join(","))
+                        format!(
+                            "{}::{} {{ {} }}",
+                            src.name.name,
+                            variant.name,
+                            pattern.join(",")
+                        )
                     } else {
-                        format!("{}::{}({})", src.name, &variant.name, pattern.join(","))
+                        format!(
+                            "{}::{}({})",
+                            src.name.name,
+                            &variant.name,
+                            pattern.join(",")
+                        )
                     };
 
                     let checks = s
@@ -49,7 +59,7 @@ impl<'a> WireRustGeneratorMiscTrait for EnumRefWireRustGenerator<'a> {
 
         Some(format!(
             "match None::<{}>.unwrap() {{ {} }}",
-            src.name,
+            src.name.name,
             branches.join(","),
         ))
     }

@@ -69,7 +69,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
                 let enu = ir.get(self.context.ir_pack);
                 let variants =
                     (enu.variants().iter().enumerate())
-                        .map(|(idx, variant)| format!("{} => {}::{},", idx, enu.name, variant.name))
+                        .map(|(idx, variant)| format!("{} => {}::{},", idx, enu.name.name, variant.name))
                         .collect_vec()
                         .join("\n");
                 format!(
@@ -78,7 +78,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for DelegateWireRustGenerator<'a> {
                         _ => unreachable!(\"Invalid variant for {}: {{}}\", self),
                     }}",
                     variants,
-                    enu.name
+                    enu.name.name
                 ).into()
             },
             IrTypeDelegate::Time(ir) => {

@@ -45,7 +45,7 @@ mod tests {
     #[test]
     pub fn test_namespace_display() {
         assert_eq!(
-            Namespace::new(vec!["crate".into(), "hello".into(), "world".into()]),
+            Namespace::new(vec!["crate".into(), "hello".into(), "world".into()]).to_string(),
             "crate::hello::world"
         );
     }

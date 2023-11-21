@@ -65,11 +65,11 @@ impl IrTypeTrait for IrTypeEnumRef {
     }
 
     fn safe_ident(&self) -> String {
-        self.ident.0.to_case(Case::Snake)
+        self.ident.0.name.to_case(Case::Snake)
     }
 
     fn rust_api_type(&self) -> String {
-        self.ident.0.to_string()
+        self.ident.0.name.to_string()
     }
 }
 

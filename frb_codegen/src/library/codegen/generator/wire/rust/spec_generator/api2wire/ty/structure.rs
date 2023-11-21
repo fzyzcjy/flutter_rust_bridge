@@ -9,9 +9,9 @@ impl<'a> WireRustGeneratorApi2wireTrait for StructRefWireRustGenerator<'a> {
     fn intodart_type(&self, ir_pack: &IrPack) -> String {
         let wrapper = self.ir.get(ir_pack).wrapper_name.as_ref();
         wrapper
-            .map(|x| x.name)
-            .unwrap_or(&self.ir.rust_api_type())
-            .clone()
+            .as_ref()
+            .map(|x| x.name.clone())
+            .unwrap_or(self.ir.rust_api_type())
     }
 
     fn generate_impl_into_dart(&self) -> Option<String> {
@@ -39,8 +39,8 @@ impl<'a> WireRustGeneratorApi2wireTrait for StructRefWireRustGenerator<'a> {
             .join(",\n");
 
         let name = match &src.wrapper_name {
-            Some(wrapper) => wrapper,
-            None => &src.name,
+            Some(wrapper) => &wrapper.name,
+            None => &src.name.name,
         };
 
         let vec = if src.is_empty() {
@@ -53,7 +53,7 @@ impl<'a> WireRustGeneratorApi2wireTrait for StructRefWireRustGenerator<'a> {
             )
         };
 
-        let into_into_dart = generate_impl_into_into_dart(&src.name, src.wrapper_name.as_deref());
+        let into_into_dart = generate_impl_into_into_dart(&src.name, &src.wrapper_name);
         Some(format!(
             "impl support::IntoDart for {name} {{
                 fn into_dart(self) -> support::DartAbi {{

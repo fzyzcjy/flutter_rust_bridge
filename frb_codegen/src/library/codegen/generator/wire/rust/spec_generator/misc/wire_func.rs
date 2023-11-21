@@ -142,7 +142,7 @@ fn generate_params(func: &IrFunc, context: WireRustGeneratorContext) -> Acc<Vec<
 fn generate_wrap_info_obj(func: &IrFunc) -> String {
     format!(
         "WrapInfo{{ debug_name: \"{name}\", port: {port}, mode: FfiCallMode::{mode} }}",
-        name = func.name,
+        name = func.name.name,
         port = if has_port_argument(func.mode) {
             "Some(port_)"
         } else {
@@ -166,7 +166,9 @@ fn generate_code_wire2api(func: &IrFunc) -> String {
 
 fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_params: Vec<String>) -> String {
     let code_call_inner_func = match &func.owner {
-        IrFuncOwnerInfo::Function => format!("{}({})", func.name, inner_func_params.join(", ")),
+        IrFuncOwnerInfo::Function => {
+            format!("{}({})", func.name.name, inner_func_params.join(", "))
+        }
         IrFuncOwnerInfo::Method(method) => {
             format!(
                 r"{}::{}({})",
@@ -238,7 +240,7 @@ fn generate_redirect_body(func: &IrFunc) -> String {
 }
 
 pub(crate) fn wire_func_name(func: &IrFunc) -> String {
-    format!("wire_{}", func.name)
+    format!("wire_{}", func.name.name)
 }
 
 fn ffi_call_mode(mode: IrFuncMode) -> &'static str {
