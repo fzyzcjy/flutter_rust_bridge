@@ -1,13 +1,14 @@
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::pack::IrStructPool;
 use crate::codegen::ir::ty::IrType;
+use crate::codegen::parser::source_graph::modules::StructOrEnumWrapper;
 use crate::codegen::parser::type_parser::unencodable::{
     parse_path_type_to_unencodable, SplayedSegment,
 };
 use std::collections::{HashMap, HashSet};
 use syn::{Ident, TypePath};
 
-pub(super) trait EnumOrStructParser<Id: From<NamespacedName>, Obj, SrcObj> {
+pub(super) trait EnumOrStructParser<Id: From<NamespacedName>, Obj, SrcObj: StructOrEnumWrapper<_>> {
     fn parse(
         &mut self,
         type_path: &TypePath,
@@ -19,8 +20,10 @@ pub(super) trait EnumOrStructParser<Id: From<NamespacedName>, Obj, SrcObj> {
                 let ident: Id = NamespacedName::new(TODO, name.to_string()).into();
 
                 if (self.parser_info().parsing_or_parsed_objects).insert(ident.clone().0) {
-                    let (name, wrapper_name) =
-                        compute_name_and_wrapper_name(&src_object.0.ident, src_object.0.mirror);
+                    let (name, wrapper_name) = compute_name_and_wrapper_name(
+                        &src_object.inner().ident,
+                        src_object.inner().mirror,
+                    );
 
                     match self.parse_inner(src_object)? {
                         Some(parsed_object) => {

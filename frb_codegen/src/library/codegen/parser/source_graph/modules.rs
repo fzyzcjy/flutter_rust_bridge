@@ -61,6 +61,23 @@ pub struct Struct(pub StructOrEnum<ItemStruct>);
 #[derive(Clone, Debug, Serialize)]
 pub struct Enum(pub StructOrEnum<ItemEnum>);
 
+pub trait StructOrEnumWrapper<Item> {
+    fn inner(&self) -> &StructOrEnum<Item>;
+}
+
+macro_rules! struct_or_enum_wrapper {
+    ($name:ident, $item:ident) => {
+        impl StructOrEnumWrapper<$item> for $name {
+            fn inner(&self) -> &StructOrEnum<$item> {
+                &self.0
+            }
+        }
+    };
+}
+
+struct_or_enum_wrapper!(Struct, ItemStruct);
+struct_or_enum_wrapper!(Enum, ItemEnum);
+
 #[derive(Clone, Debug, Serialize)]
 pub struct TypeAlias {
     pub(super) ident: String,
