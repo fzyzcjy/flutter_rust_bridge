@@ -128,6 +128,14 @@ impl DartRepository {
             _ => Err(error_invalid_dep(package, manager, requirement)),
         }
     }
+
+    pub(crate) fn command_extra_args(&self) -> Vec<String> {
+        if self.at.join("build.rs").exists() {
+            vec!["--enable-experiment=native-assets".to_owned()]
+        } else {
+            vec![]
+        }
+    }
 }
 
 fn error_missing_dep(

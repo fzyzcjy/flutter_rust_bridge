@@ -74,6 +74,7 @@ pub(crate) fn ffigen_raw(config: &FfigenCommandConfig, dart_root: &Path) -> anyh
     let res = command_run!(
         call_shell[Some(dart_root)],
         *repo.toolchain.as_run_command(),
+        *repo.command_extra_args(),
         "run",
         "ffigen",
         "--config",
