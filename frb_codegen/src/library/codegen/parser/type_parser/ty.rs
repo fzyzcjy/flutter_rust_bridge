@@ -7,7 +7,7 @@ use syn::Type;
 
 impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
     pub(crate) fn parse_type(&mut self, ty: &Type) -> anyhow::Result<IrType> {
-        let resolve_ty = self.resolve_alias(ty).clone();
+        let resolve_ty = self.resolve_alias(ty);
 
         Ok(match resolve_ty.clone() {
             Type::Path(path) => self.parse_type_path(&path).unwrap(),
@@ -20,8 +20,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         })
     }
 
-    fn resolve_alias<'d: 'a>(&self, ty: &'d Type) -> &Type {
-        self.get_alias_type(ty).unwrap_or(ty)
+    fn resolve_alias(&self, ty: &Type) -> Type {
+        self.get_alias_type(ty).unwrap_or(ty).clone()
     }
 
     fn get_alias_type(&self, ty: &Type) -> Option<&Type> {
