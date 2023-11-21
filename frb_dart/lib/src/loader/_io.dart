@@ -3,10 +3,12 @@ import 'dart:io';
 
 import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 
-/// {@macro flutter_rust_bridge.only_for_generated_code}
+/// Load the [ExternalLibrary], with the following cases in mind:
+/// 1. When `flutter run`, or when a real app is bundled.
+/// 2. When running Flutter widget tests.
+/// 3. When `dart test`, `dart run`, `dart compile exe`, etc.
 ExternalLibrary loadExternalLibrary({
-  // TODO give a better name
-  Uri? attemptDirectory,
+  Uri? nativeLibDirWhenNonPackaged,
   required String stem,
 }) {
   // ref
@@ -14,7 +16,6 @@ ExternalLibrary loadExternalLibrary({
   // * https://github.com/fzyzcjy/flutter_rust_bridge/pull/898
 
   // TODO impl
-  // TODO add logs for output, s.t. when error, can provide more info
 
   if (Platform.isAndroid) {
     return DynamicLibrary.open('lib$stem.so');
