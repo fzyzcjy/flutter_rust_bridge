@@ -1,5 +1,5 @@
 use crate::library::commands::cargo_metadata::execute_cargo_metadata;
-use crate::library::commands::cbindgen::{cbindgen, cbindgen_raw, default_cbindgen_config};
+use crate::library::commands::cbindgen::{cbindgen_raw, default_cbindgen_config};
 use crate::library::commands::ffigen::{
     ffigen_raw, FfigenCommandConfig, FfigenCommandConfigHeaders,
 };
@@ -14,9 +14,10 @@ pub fn generate() -> anyhow::Result<()> {
     let repo_base_dir = compute_repo_base_dir()?;
     info!("Determine repo_base_dir={repo_base_dir:?}");
 
-    generate_dart_native_api(&repo_base_dir)?;
-    generate_frb_rust(&repo_base_dir)?;
-    generate_allo_isolate(&repo_base_dir)?;
+    generate_frb_rust_cbindgen(&repo_base_dir)?;
+    generate_allo_isolate_cbindgen(&repo_base_dir)?;
+
+    ffigen(&repo_base_dir)?;
 
     Ok(())
 }
@@ -28,23 +29,13 @@ fn compute_repo_base_dir() -> anyhow::Result<PathBuf> {
         .to_owned())
 }
 
-fn generate_dart_native_api(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
-    info!("generate_dart_native_api");
-
-    ffigen(
-        repo_base_dir,
-        &repo_base_dir.join("frb_rust/src/dart_api/dart_native_api.h"),
-        "dart_native_api",
-    )
+fn generate_frb_rust_cbindgen(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
+    info!("generate_frb_rust_cbindgen");
+    cbindgen(repo_base_dir, &repo_base_dir.join("frb_rust"), "frb_rust")
 }
 
-fn generate_frb_rust(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
-    info!("generate_frb_rust");
-    cbindgen_and_ffigen(repo_base_dir, &repo_base_dir.join("frb_rust"), "frb_rust")
-}
-
-fn generate_allo_isolate(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
-    info!("generate_allo_isolate");
+fn generate_allo_isolate_cbindgen(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
+    info!("generate_allo_isolate_cbindgen");
 
     let metadata = execute_cargo_metadata(&repo_base_dir.join("frb_codegen/Cargo.toml"))?;
 
@@ -55,34 +46,31 @@ fn generate_allo_isolate(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
         .unwrap();
     let rust_crate_dir = package.manifest_path.as_std_path().parent().unwrap();
 
-    cbindgen_and_ffigen(repo_base_dir, rust_crate_dir, "allo_isolate")
+    cbindgen(repo_base_dir, rust_crate_dir, "allo_isolate")
 }
 
-fn cbindgen_and_ffigen(
-    repo_base_dir: &PathBuf,
-    rust_crate_dir: &Path,
-    name: &str,
-) -> anyhow::Result<()> {
+fn cbindgen(repo_base_dir: &PathBuf, rust_crate_dir: &Path, name: &str) -> anyhow::Result<()> {
     let c_path = repo_base_dir.join(format!(
         "frb_dart/lib/src/ffigen_generated/{}.h",
         name.to_case(Case::Snake)
     ));
-
-    cbindgen_raw(default_cbindgen_config(), rust_crate_dir, &c_path)?;
-
-    ffigen(repo_base_dir, &c_path, name)
+    cbindgen_raw(default_cbindgen_config(), rust_crate_dir, &c_path)
 }
 
-fn ffigen(repo_base_dir: &Path, header: &Path, name: &str) -> anyhow::Result<()> {
+fn ffigen(repo_base_dir: &Path) -> anyhow::Result<()> {
+    let headers = vec![
+        repo_base_dir.join("frb_rust/src/dart_api/dart_native_api.h"),
+        repo_base_dir.join("frb_dart/lib/src/ffigen_generated/frb_rust.h"),
+        repo_base_dir.join("frb_dart/lib/src/ffigen_generated/allo_isolate.h"),
+    ];
+
     ffigen_raw(
         &FfigenCommandConfig {
-            output: repo_base_dir
-                .join("frb_dart/lib/src/ffigen_generated")
-                .join(format!("{}.dart", name.to_case(Case::Snake))),
-            name: format!("{}CBinding", name.to_case(Case::Pascal)),
+            output: repo_base_dir.join("frb_dart/lib/src/ffigen_generated/multi_package.dart"),
+            name: format!("MultiPackageCBinding"),
             headers: FfigenCommandConfigHeaders {
-                entry_points: vec![header.to_owned()],
-                include_directives: vec![header.to_owned()],
+                entry_points: headers.clone(),
+                include_directives: headers.clone(),
             },
             preamble: FFIGEN_PREAMBLE.to_owned(),
             description: FFIGEN_DESCRIPTION.to_owned(),
