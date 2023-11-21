@@ -7,9 +7,6 @@ class GeneralizedFrbRustBinding {
   GeneralizedFrbRustBinding(ExternalLibrary externalLibrary);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void sanityCheckExternalLibrary() {}
-
-  /// {@macro flutter_rust_bridge.only_for_generated_code}
   void storeDartPostCObject() {}
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
