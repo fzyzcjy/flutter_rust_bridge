@@ -5,6 +5,7 @@ use std::fmt::{Display, Formatter};
 /// The Rust files/modules/namespaces.
 #[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize, Deserialize, Ord, PartialOrd)]
 pub(crate) struct Namespace {
+    // Represent via this, instead of `Vec<String>`, to avoid extra memory overhead
     joined_path: String,
 }
 
