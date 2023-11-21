@@ -1,14 +1,10 @@
 import 'dart:ffi' as ffi;
-
-import 'package:flutter_rust_bridge/src/ffigen_generated/dart_native_api.dart';
+export 'package:flutter_rust_bridge/src/ffigen_generated/frb_rust.dart' show WireSyncReturn;
 
 /// Abstraction over a Dart SendPort and a JS MessagePort.
 ///
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 typedef NativePortType = int;
-
-/// {@macro flutter_rust_bridge.only_for_generated_code}
-typedef WireSyncReturn = ffi.Pointer<Dart_CObject>;
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 typedef PlatformPointer = ffi.Pointer<ffi.Void>;
