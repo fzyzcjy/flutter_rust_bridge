@@ -4,14 +4,14 @@ use itertools::Itertools;
 
 pub(super) struct ApiDartOutputText {
     // TODO handle multi file
-    pub(super) end_api_text: String,
+    pub(super) text: String,
 }
 
 pub(super) fn generate(spec: ApiDartOutputSpec) -> anyhow::Result<ApiDartOutputText> {
     let ApiDartOutputSpec { funcs, classes } = spec;
     let funcs = generate_functions(funcs);
     Ok(ApiDartOutputText {
-        end_api_text: generate_end_api_text(classes, funcs),
+        text: generate_end_api_text(classes, funcs),
     })
 }
 
