@@ -5,11 +5,16 @@ import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 ExternalLibrary loadExternalLibrary({
+  // TODO give a better name
+  Uri? attemptDirectory,
   required String stem,
 }) {
   // ref
   // * https://flutter.dev/docs/development/platform-integration/c-interop
   // * https://github.com/fzyzcjy/flutter_rust_bridge/pull/898
+
+  // TODO impl
+  // TODO add logs for output, s.t. when error, can provide more info
 
   if (Platform.isAndroid) {
     return DynamicLibrary.open('lib$stem.so');

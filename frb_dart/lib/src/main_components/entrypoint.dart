@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
 import 'package:flutter_rust_bridge/src/loader/loader.dart';
@@ -39,7 +41,7 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl, W exten
   }) async {
     if (__state != null) throw StateError('Should not initialize flutter_rust_bridge twice');
 
-    externalLibrary ??= loadExternalLibrary(stem: defaultExternalLibraryStem);
+    externalLibrary ??= _loadDefaultExternalLibrary();
     final generalizedFrbRustBinding = GeneralizedFrbRustBinding(externalLibrary);
     api ??= _createDefaultApi(handler, generalizedFrbRustBinding, externalLibrary);
 
@@ -66,6 +68,15 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl, W exten
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @protected
   String get defaultExternalLibraryStem;
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  @protected
+  String get defaultExternalLibraryRelativeDirectory;
+
+  ExternalLibrary _loadDefaultExternalLibrary() => loadExternalLibrary(
+        attemptDirectory: Directory.current.uri.resolve(defaultExternalLibraryRelativeDirectory),
+        stem: defaultExternalLibraryStem,
+      );
 
   A _createDefaultApi(
     BaseHandler? handler,
