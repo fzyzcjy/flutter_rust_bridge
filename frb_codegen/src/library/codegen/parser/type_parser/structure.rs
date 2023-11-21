@@ -27,10 +27,12 @@ impl<'a> TypeParser<'a> {
         EnumOrStructParserStruct(&mut self).parse(type_path, splayed_segments, last_segment)
     }
 
-    fn parse_struct(&mut self, src_struct: &Struct) -> anyhow::Result<Option<IrStruct>> {
-        let (name, wrapper_name) =
-            compute_name_and_wrapper_name(&src_struct.0.ident, src_struct.0.mirror);
-
+    fn parse_struct(
+        &mut self,
+        src_struct: &Struct,
+        name: NamespacedName,
+        wrapper_name: Option<NamespacedName>,
+    ) -> anyhow::Result<Option<IrStruct>> {
         let (is_fields_named, struct_fields) = match &src_struct.0.src.fields {
             Fields::Named(FieldsNamed { named, .. }) => (true, named),
             Fields::Unnamed(FieldsUnnamed { unnamed, .. }) => (false, unnamed),
@@ -81,8 +83,13 @@ impl<'a> TypeParser<'a> {
 struct EnumOrStructParserStruct<'a>(&'a mut TypeParser<'a>);
 
 impl<'a> EnumOrStructParser<IrStructIdent, IrStruct, Struct> for EnumOrStructParserStruct<'a> {
-    fn parse_inner(&mut self, src_object: &Struct) -> anyhow::Result<Option<IrStruct>> {
-        Ok(self.0.parse_struct(src_object)?)
+    fn parse_inner(
+        &mut self,
+        src_object: &Struct,
+        name: NamespacedName,
+        wrapper_name: Option<NamespacedName>,
+    ) -> anyhow::Result<Option<IrStruct>> {
+        Ok(self.0.parse_struct(src_object, name, wrapper_name)?)
     }
 
     fn construct_output(&self, ident: IrStructIdent) -> anyhow::Result<IrType> {
@@ -110,18 +117,4 @@ impl<'a> EnumOrStructParser<IrStructIdent, IrStruct, Struct> for EnumOrStructPar
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<IrStructIdent, IrStruct> {
         &mut self.0.struct_parser_info
     }
-}
-
-pub(super) fn compute_name_and_wrapper_name(
-    ident: &Ident,
-    mirror: bool,
-) -> (NamespacedName, Option<NamespacedName>) {
-    let name = ident.to_string();
-    let wrapper_name = if mirror {
-        Some(format!("mirror_{name}"))
-    } else {
-        None
-    };
-    // (name, wrapper_name) // TODO
-    (TODO, TODO)
 }

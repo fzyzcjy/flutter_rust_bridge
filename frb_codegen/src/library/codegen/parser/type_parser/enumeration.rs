@@ -16,7 +16,6 @@ use crate::codegen::parser::type_parser::enum_or_struct::{
     EnumOrStructParser, EnumOrStructParserInfo,
 };
 use crate::codegen::parser::type_parser::misc::parse_comments;
-use crate::codegen::parser::type_parser::structure::compute_name_and_wrapper_name;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParser;
 use std::collections::HashMap;
@@ -32,10 +31,12 @@ impl<'a> TypeParser<'a> {
         EnumOrStructParserEnum(&mut self).parse(type_path, splayed_segments, last_segment)
     }
 
-    fn parse_enum(&mut self, src_enum: &Enum) -> anyhow::Result<IrEnum> {
-        let (name, wrapper_name) =
-            compute_name_and_wrapper_name(&src_enum.0.ident, src_enum.0.mirror);
-
+    fn parse_enum(
+        &mut self,
+        src_enum: &Enum,
+        name: NamespacedName,
+        wrapper_name: Option<NamespacedName>,
+    ) -> anyhow::Result<IrEnum> {
         let path = src_enum.0.path.clone();
         let comments = parse_comments(&src_enum.0.src.attrs);
         let raw_variants = src_enum
@@ -120,8 +121,13 @@ impl<'a> TypeParser<'a> {
 struct EnumOrStructParserEnum<'a>(&'a mut TypeParser<'a>);
 
 impl<'a> EnumOrStructParser<IrEnumIdent, IrEnum, Enum> for EnumOrStructParserEnum<'a> {
-    fn parse_inner(&mut self, src_object: &Enum) -> anyhow::Result<Option<IrEnum>> {
-        Ok(Some(self.0.parse_enum(src_object)?))
+    fn parse_inner(
+        &mut self,
+        src_object: &Enum,
+        name: NamespacedName,
+        wrapper_name: Option<NamespacedName>,
+    ) -> anyhow::Result<Option<IrEnum>> {
+        Ok(Some(self.0.parse_enum(src_object, name, wrapper_name)?))
     }
 
     fn construct_output(&self, ident: IrEnumIdent) -> anyhow::Result<IrType> {
