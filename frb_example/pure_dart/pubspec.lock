@@ -129,6 +129,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.3"
+  cli_config:
+    dependency: transitive
+    description:
+      name: cli_config
+      sha256: "65c7830649e1f8247660f1b783effb460255d6e2c1ac94eb823cf1f84e59b288"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.1.2"
   cli_util:
     dependency: transitive
     description:
@@ -360,6 +368,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.1"
+  native_assets_cli:
+    dependency: "direct main"
+    description:
+      name: native_assets_cli
+      sha256: "3119600043214157fb54f4ef05717a82a7858f35625fe767799c60f3039361c8"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.3.2"
   node_preamble:
     dependency: transitive
     description:
