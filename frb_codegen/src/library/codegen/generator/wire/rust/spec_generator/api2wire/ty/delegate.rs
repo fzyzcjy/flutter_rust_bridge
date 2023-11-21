@@ -18,7 +18,7 @@ impl<'a> WireRustGeneratorApi2wireTrait for DelegateWireRustGenerator<'a> {
                 .variants()
                 .iter()
                 .enumerate()
-                .map(|(idx, variant)| format!("{}::{} => {},", self_path, variant.name.raw, idx))
+                .map(|(idx, variant)| format!("{}::{} => {},", self_path, variant.name, idx))
                 .collect_vec()
                 .join("\n");
             let into_into_dart =

@@ -32,10 +32,7 @@ impl<'a> WireDartGeneratorWire2apiTrait for EnumRefWireDartGenerator<'a> {
                         .collect_vec()
                         .join(""),
                 };
-                format!(
-                    "case {}: return {}({});",
-                    idx, variant.wrapper_name.raw, args
-                )
+                format!("case {}: return {}({});", idx, variant.wrapper_name, args)
             })
             .collect_vec();
         format!(

@@ -30,7 +30,7 @@ impl<'a> WireRustGeneratorApi2wireTrait for EnumRefWireRustGenerator<'a> {
                 let tag = format!("{idx}.into_dart()");
                 match &variant.kind {
                     IrVariantKind::Value => {
-                        format!("{self_path}::{} => vec![{tag}],", variant.name.raw)
+                        format!("{self_path}::{} => vec![{tag}],", variant.name)
                     }
                     IrVariantKind::Struct(st) => {
                         let fields = Some(tag)
@@ -49,7 +49,7 @@ impl<'a> WireRustGeneratorApi2wireTrait for EnumRefWireRustGenerator<'a> {
                         format!(
                             "{}::{}{}{}{} => vec![{}],",
                             self_path,
-                            variant.name.raw,
+                            variant.name,
                             left,
                             pattern.join(","),
                             right,

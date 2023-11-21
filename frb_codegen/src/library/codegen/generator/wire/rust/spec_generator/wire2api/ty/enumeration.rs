@@ -27,7 +27,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
 
         let union_fields = variants
             .iter()
-            .map(|variant| format!("{0}: *mut wire_{1}_{0},", variant.name.raw, self.ir.ident.0))
+            .map(|variant| format!("{0}: *mut wire_{1}_{0},", variant.name, self.ir.ident.0))
             .join("\n");
 
         let rust_wire_type = self.rust_wire_type(Target::Io);
@@ -133,13 +133,13 @@ impl<'a> EnumRefWireRustGenerator<'a> {
             #[derive(Clone)]
             pub struct wire_{}_{} {{ {} }}",
             self.ir.ident.0,
-            variant.name.raw,
+            variant.name,
             fields.join("\n")
         )
     }
 
     fn generate_impl_new_with_nullptr_variant(&self, variant: &IrVariant) -> Option<ExternFunc> {
-        let typ = format!("{}_{}", self.ir.ident.0, variant.name.raw);
+        let typ = format!("{}_{}", self.ir.ident.0, variant.name);
         let body = if let IrVariantKind::Struct(st) = &variant.kind {
             st.fields
                 .iter()
@@ -194,7 +194,7 @@ fn generate_impl_wire2api_body_variant(
 ) -> String {
     match &variant.kind {
         IrVariantKind::Value => {
-            format!("{} => {}::{},", idx, enu.name, variant.name.raw)
+            format!("{} => {}::{},", idx, enu.name, variant.name)
         }
         IrVariantKind::Struct(st) => {
             let fields = st
@@ -219,7 +219,7 @@ fn generate_impl_wire2api_body_variant(
 
             let (left, right) = st.brackets_pair();
             let enum_name = &enu.name;
-            let variant_name = &variant.name.raw;
+            let variant_name = &variant.name;
 
             if target == TargetOrCommon::Wasm {
                 format!("{idx} => {{ {enum_name}::{variant_name}{left}{fields}{right} }},")

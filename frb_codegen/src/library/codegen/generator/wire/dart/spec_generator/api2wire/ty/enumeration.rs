@@ -45,8 +45,8 @@ impl<'a> WireDartGeneratorApi2wireTrait for EnumRefWireDartGenerator<'a> {
 impl<'a> EnumRefWireDartGenerator<'a> {
     fn generate_api_fill_to_wire_body_variant(&self, index: usize, variant: &IrVariant) -> String {
         let ident = &self.ir.ident.0;
-        let wrapper_name = &variant.wrapper_name.raw;
-        let variant_name = &variant.name.raw;
+        let wrapper_name = &variant.wrapper_name;
+        let variant_name = &variant.name;
 
         let (stmt_prepare, stmt_postpare) = match &variant.kind {
             IrVariantKind::Value => ("".to_owned(), "".to_owned()),
