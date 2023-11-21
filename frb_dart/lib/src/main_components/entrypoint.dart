@@ -33,7 +33,7 @@ abstract class BaseEntrypoint<A extends BaseApi> {
     BaseHandler? handler,
   }) async {
     if (__state != null) throw StateError('Should not initialize flutter_rust_bridge twice');
-    __state = _EntrypointState(api: api ?? createDefaultApi(handler: handler));
+    __state = _EntrypointState(api: api ?? createDefaultDispatcher(handler: handler));
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
@@ -44,7 +44,7 @@ abstract class BaseEntrypoint<A extends BaseApi> {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @protected
-  A createDefaultApi({BaseHandler? handler});
+  A createDefaultDispatcher({BaseHandler? handler});
 }
 
 class _EntrypointState<A extends BaseApi> {
