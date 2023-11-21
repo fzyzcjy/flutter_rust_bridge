@@ -19,42 +19,38 @@ impl<'a> TypeParser<'a> {
         splayed_segments: &[SplayedSegment],
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        Ok(Some(match last_segment {
-            (name, None) if self.src_structs.contains_key(&name.to_string()) => {
-                let ident = IrStructIdent(NamespacedName::new(TODO, name.to_string()));
+        if self.src_structs.contains_key(&name.to_string()) {
+            let ident = IrStructIdent(NamespacedName::new(TODO, name.to_string()));
 
-                if self.parsing_or_parsed_structs.insert(ident.clone().0) {
-                    let api_struct = match self.parse_struct(&ident.0)? {
-                        Some(ir_struct) => ir_struct,
-                        None => {
-                            return Ok(Some(parse_path_type_to_unencodable(
-                                type_path,
-                                splayed_segments,
-                            )))
-                        }
-                    };
-                    self.struct_pool.insert(ident.clone(), api_struct);
-                }
-
-                StructRef(IrTypeStructRef {
-                    ident: ident.clone(),
-                    is_exception: false,
-                    // TODO rm
-                    // freezed: self
-                    //     .struct_pool
-                    //     .get(&ident_string)
-                    //     .map(IrStruct::using_freezed)
-                    //     .unwrap_or(false),
-                    // empty: self
-                    //     .struct_pool
-                    //     .get(&ident_string)
-                    //     .map(IrStruct::is_empty)
-                    //     .unwrap_or(false),
-                })
+            if self.parsing_or_parsed_structs.insert(ident.clone().0) {
+                let api_struct = match self.parse_struct(&ident.0)? {
+                    Some(ir_struct) => ir_struct,
+                    None => {
+                        return Ok(Some(parse_path_type_to_unencodable(
+                            type_path,
+                            splayed_segments,
+                        )))
+                    }
+                };
+                self.struct_pool.insert(ident.clone(), api_struct);
             }
 
-            _ => return Ok(None),
-        }))
+            StructRef(IrTypeStructRef {
+                ident: ident.clone(),
+                is_exception: false,
+                // TODO rm
+                // freezed: self
+                //     .struct_pool
+                //     .get(&ident_string)
+                //     .map(IrStruct::using_freezed)
+                //     .unwrap_or(false),
+                // empty: self
+                //     .struct_pool
+                //     .get(&ident_string)
+                //     .map(IrStruct::is_empty)
+                //     .unwrap_or(false),
+            })
+        }
     }
 
     fn parse_struct(&mut self, ident_string: &NamespacedName) -> anyhow::Result<Option<IrStruct>> {

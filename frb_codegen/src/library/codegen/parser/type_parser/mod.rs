@@ -1,5 +1,6 @@
 pub(crate) mod array;
 pub(crate) mod concrete;
+mod enum_or_struct;
 pub(crate) mod enumeration;
 pub(crate) mod misc;
 pub(crate) mod optional;

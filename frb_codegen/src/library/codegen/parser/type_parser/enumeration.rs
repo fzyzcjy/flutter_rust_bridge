@@ -23,35 +23,32 @@ impl<'a> TypeParser<'a> {
         &mut self,
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        if let (name, _) = last_segment {
-            if let Some(src_enum) = self.src_enums.get(*name) {
-                let ident = IrEnumIdent(NamespacedName::new(TODO, name.to_string()));
+        if let Some(src_enum) = self.src_enums.get(*name) {
+            let ident = IrEnumIdent(NamespacedName::new(TODO, name.to_string()));
 
-                if self.parsing_or_parsed_enums.insert(ident.clone().0) {
-                    let enu = self.parse_enum(src_enum)?;
-                    self.enum_pool.insert(ident.clone(), enu);
-                }
-
-                let enum_ref = IrTypeEnumRef {
-                    ident: ident.clone(),
-                    is_exception: false,
-                };
-                let enu = self.enum_pool.get(&ident);
-
-                return Ok(Some(
-                    if enu.map(|e| e.mode == IrEnumMode::Complex).unwrap_or(true) {
-                        EnumRef(enum_ref)
-                    } else {
-                        Delegate(IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum {
-                            ir: enum_ref,
-                            // TODO(Desdaemon): Parse #[repr] from enum
-                            repr: IrTypePrimitive::I32,
-                        }))
-                    },
-                ));
+            if self.parsing_or_parsed_enums.insert(ident.clone().0) {
+                let enu = self.parse_enum(src_enum)?;
+                self.enum_pool.insert(ident.clone(), enu);
             }
+
+            let enum_ref = IrTypeEnumRef {
+                ident: ident.clone(),
+                is_exception: false,
+            };
+            let enu = self.enum_pool.get(&ident);
+
+            return Ok(Some(
+                if enu.map(|e| e.mode == IrEnumMode::Complex).unwrap_or(true) {
+                    EnumRef(enum_ref)
+                } else {
+                    Delegate(IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum {
+                        ir: enum_ref,
+                        // TODO(Desdaemon): Parse #[repr] from enum
+                        repr: IrTypePrimitive::I32,
+                    }))
+                },
+            ));
         }
-        Ok(None)
     }
 
     fn parse_enum(&mut self, src_enum: &Enum) -> anyhow::Result<IrEnum> {
