@@ -10,7 +10,7 @@ pub(crate) fn generate(
     c_file_content: &str,
 ) -> anyhow::Result<WireDartOutputCode> {
     let content = execute_ffigen(config, c_file_content)?;
-    let content = postpare_modify(&content);
+    let content = postpare_modify(&content, &config.dart_output_class_name_pack);
     sanity_check(&content, &config.dart_output_class_name_pack)?;
     Ok(WireDartOutputCode::parse(&content))
 }
@@ -28,8 +28,19 @@ fn execute_ffigen(
     })
 }
 
-fn postpare_modify(content_raw: &str) -> String {
+fn postpare_modify(
+    content_raw: &str,
+    dart_output_class_name_pack: &DartOutputClassNamePack,
+) -> String {
+    let DartOutputClassNamePack {
+        wire_class_name, ..
+    } = &dart_output_class_name_pack;
+
     content_raw
+        .replace(
+            &format!("class {wire_class_name} {{"),
+            &format!("class {wire_class_name} implements BaseWire {{"),
+        )
         .replace("final class DartCObject extends ffi.Opaque {}", "")
         .replace("final class _Dart_Handle extends ffi.Opaque {}", "")
         .replace("typedef WireSyncReturn = ffi.Pointer<DartCObject>;", "")
