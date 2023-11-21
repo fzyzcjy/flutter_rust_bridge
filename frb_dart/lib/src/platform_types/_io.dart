@@ -1,5 +1,6 @@
 import 'dart:ffi' as ffi;
-export 'package:flutter_rust_bridge/src/ffigen_generated/frb_rust.dart' show WireSyncReturn;
+
+export 'package:flutter_rust_bridge/src/ffigen_generated/multi_package.dart' show WireSyncReturn;
 
 /// Abstraction over a Dart SendPort and a JS MessagePort.
 ///

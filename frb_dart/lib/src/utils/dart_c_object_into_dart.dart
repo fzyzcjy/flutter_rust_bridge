@@ -4,12 +4,10 @@ import 'dart:ffi';
 import 'dart:typed_data';
 
 import 'package:flutter_rust_bridge/src/consts.dart';
-import 'package:flutter_rust_bridge/src/ffigen_generated/dart_native_api.dart';
+import 'package:flutter_rust_bridge/src/ffigen_generated/multi_package.dart';
 import 'package:meta/meta.dart';
 
 export 'dart:ffi' show NativePort, DynamicLibrary;
-
-export '../ffigen_generated/dart_native_api.dart' show Dart_CObject;
 
 /// {@macro flutter_rust_bridge.internal}
 @internal

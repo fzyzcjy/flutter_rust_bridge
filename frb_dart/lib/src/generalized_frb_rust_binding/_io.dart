@@ -1,34 +1,27 @@
 import 'dart:ffi' as ffi;
 
-import 'package:flutter_rust_bridge/src/ffigen_generated/allo_isolate.dart';
-import 'package:flutter_rust_bridge/src/ffigen_generated/frb_rust.dart';
+import 'package:flutter_rust_bridge/src/ffigen_generated/multi_package.dart';
 import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 abstract class GeneralizedFrbRustBinding {
-  final FrbRustCBinding _frbRustCBinding;
-  final AlloIsolateCBinding _alloIsolateCBinding;
+  final MultiPackageCBinding _binding;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  GeneralizedFrbRustBinding({
-    required FrbRustCBinding frbRustCBinding,
-    required AlloIsolateCBinding alloIsolateCBinding,
-  })  : _frbRustCBinding = frbRustCBinding,
-        _alloIsolateCBinding = alloIsolateCBinding;
+  GeneralizedFrbRustBinding(this._binding);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void storeDartPostCObject(DartPostCObject ptr) =>
-      _alloIsolateCBinding.store_dart_post_cobject(ffi.NativeApi.postCObject.cast());
+  void storeDartPostCObject(DartPostCObject ptr) => _binding.store_dart_post_cobject(ffi.NativeApi.postCObject.cast());
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  Object getDartObject(int ptr) => _frbRustCBinding.get_dart_object(ptr);
+  Object getDartObject(int ptr) => _binding.get_dart_object(ptr);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void dropDartObject(int ptr) => _frbRustCBinding.drop_dart_object(ptr);
+  void dropDartObject(int ptr) => _binding.drop_dart_object(ptr);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  int newDartOpaque(Object obj) => _frbRustCBinding.new_dart_opaque(obj);
+  int newDartOpaque(Object obj) => _binding.new_dart_opaque(obj);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void freeWireSyncReturn(WireSyncReturn val) => _frbRustCBinding.free_wire_sync_return(val);
+  void freeWireSyncReturn(WireSyncReturn val) => _binding.free_wire_sync_return(val);
 }
