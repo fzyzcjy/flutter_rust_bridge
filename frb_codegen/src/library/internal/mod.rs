@@ -14,6 +14,8 @@ pub fn generate() -> anyhow::Result<()> {
 
     generate_dart_native_api_ffigen(&repo_base_dir)?;
 
+    todo!();
+
     generate_frb_rust_cbindgen(&repo_base_dir)?;
     generate_frb_rust_ffigen(&repo_base_dir)?;
 
@@ -34,8 +36,7 @@ fn generate_dart_native_api_ffigen(repo_base_dir: &PathBuf) -> anyhow::Result<()
     ffigen_raw(
         &FfigenCommandConfig {
             output: repo_base_dir.join("frb_dart/lib/src/ffigen_generated/dart_native_api.dart"),
-            // TODO rename
-            name: "DartCObject".to_owned(),
+            name: "DartNativeApiCBinding".to_owned(),
             headers: FfigenCommandConfigHeaders {
                 entry_points: vec![header.clone()],
                 include_directives: vec![header],
@@ -67,7 +68,7 @@ fn generate_frb_rust_ffigen(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
     ffigen_raw(
         &FfigenCommandConfig {
             output: repo_base_dir.join("frb_dart/lib/src/ffigen_generated/frb_rust.dart"),
-            name: "FrbRust".to_owned(),
+            name: "FrbRustCBinding".to_owned(),
             headers: FfigenCommandConfigHeaders {
                 entry_points: vec![header.clone()],
                 include_directives: vec![header],
