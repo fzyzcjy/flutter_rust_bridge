@@ -27,9 +27,6 @@ fn cbindgen_to_file(args: CbindgenArgs, c_output_path: &Path) -> anyhow::Result<
     );
 
     let config = cbindgen::Config {
-        // copied from: dart-sdk/dart_api.h
-        // used to convert Dart_Handle to Object.
-        after_includes: Some("typedef struct _Dart_Handle* Dart_Handle;".to_owned()),
         export: cbindgen::ExportConfig {
             include: args
                 .c_struct_names
@@ -48,6 +45,9 @@ fn cbindgen_to_file(args: CbindgenArgs, c_output_path: &Path) -> anyhow::Result<
 
 pub(crate) fn default_cbindgen_config() -> cbindgen::Config {
     cbindgen::Config {
+        // copied from: dart-sdk/dart_api.h
+        // used to convert Dart_Handle to Object.
+        after_includes: Some("typedef struct _Dart_Handle* Dart_Handle;".to_owned()),
         language: cbindgen::Language::C,
         sys_includes: vec![
             "stdbool.h".to_string(),

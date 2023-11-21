@@ -158,7 +158,7 @@ class MultiPackageCBinding {
   ///
   /// This function should never be called manually.
   int new_dart_opaque(
-    int handle,
+    Object handle,
   ) {
     return _new_dart_opaque(
       handle,
@@ -166,15 +166,15 @@ class MultiPackageCBinding {
   }
 
   late final _new_dart_opaquePtr =
-      _lookup<ffi.NativeFunction<ffi.UintPtr Function(ffi.Int)>>(
+      _lookup<ffi.NativeFunction<ffi.UintPtr Function(ffi.Handle)>>(
           'new_dart_opaque');
   late final _new_dart_opaque =
-      _new_dart_opaquePtr.asFunction<int Function(int)>();
+      _new_dart_opaquePtr.asFunction<int Function(Object)>();
 
   /// # Safety
   ///
   /// This function should never be called manually.
-  int get_dart_object(
+  Object get_dart_object(
     int ptr,
   ) {
     return _get_dart_object(
@@ -183,10 +183,10 @@ class MultiPackageCBinding {
   }
 
   late final _get_dart_objectPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.UintPtr)>>(
+      _lookup<ffi.NativeFunction<ffi.Handle Function(ffi.UintPtr)>>(
           'get_dart_object');
   late final _get_dart_object =
-      _get_dart_objectPtr.asFunction<int Function(int)>();
+      _get_dart_objectPtr.asFunction<Object Function(int)>();
 
   /// # Safety
   ///
@@ -371,6 +371,8 @@ final class UnnamedStruct6 extends ffi.Struct {
   @ffi.Int()
   external int callback;
 }
+
+final class _Dart_Handle extends ffi.Opaque {}
 
 /// A Dart_CObject is used for representing Dart objects as native C
 /// data outside the Dart heap. These objects are totally detached from

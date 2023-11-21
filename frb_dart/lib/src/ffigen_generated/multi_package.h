@@ -210,6 +210,7 @@ DART_EXPORT void* Dart_ExecuteInternalCommand(const char* command, void* arg);
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
+typedef struct _Dart_Handle* Dart_Handle;
 
 /**
  * A Dart_CObject is used for representing Dart objects as native C
@@ -385,6 +386,7 @@ void store_dart_post_cobject(DartPostCObjectFnType ptr);
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
+typedef struct _Dart_Handle* Dart_Handle;
 
 typedef struct Result_JsValue Result_JsValue;
 
