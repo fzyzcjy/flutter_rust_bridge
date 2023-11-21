@@ -216,7 +216,7 @@ fn generate_common_header() -> DartBasicCode {
             "import 'dart:convert';
             import 'dart:async';
             import 'package:meta/meta.dart';
-            import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+            import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
             import 'package:uuid/uuid.dart';",
         ),
         part: "".to_string(),

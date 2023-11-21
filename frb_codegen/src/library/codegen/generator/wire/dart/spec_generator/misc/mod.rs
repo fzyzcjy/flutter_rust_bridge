@@ -51,7 +51,11 @@ fn generate_boilerplate(
     } = &dart_output_class_name_pack;
 
     WireDartOutputCode {
-        import: "import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';".into(),
+        import: "
+            import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+            import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart.dart';
+            "
+        .into(),
         body_top: format!(
             r#"
             /// Main entrypoint of the Rust API
