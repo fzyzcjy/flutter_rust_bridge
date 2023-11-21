@@ -4,6 +4,7 @@ use crate::utils::dart_repository::dart_repo::DartRepository;
 use crate::utils::path_utils::path_to_string;
 use anyhow::bail;
 use log::debug;
+use serde::{Deserialize, Serialize};
 use serde_json::json;
 use std::fs;
 use std::io::Write;
@@ -121,4 +122,24 @@ fn parse_config(args: &FfigenToFileArgs) -> anyhow::Result<String> {
     });
 
     Ok(serde_json::to_string(&json)?)
+}
+
+#[derive(Default, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "kebab-case")]
+pub(crate) struct FfigenCommandConfig {
+    output: PathBuf,
+    name: String,
+    description: String,
+    headers: FfigenCommandConfigHeaders,
+    comments: Option<bool>,
+    preamble: String,
+    llvm_path: Vec<PathBuf>,
+    compiler_opts: Vec<String>,
+}
+
+#[derive(Default, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "kebab-case")]
+pub(crate) struct FfigenCommandConfigHeaders {
+    entry_points: Vec<PathBuf>,
+    include_directives: Vec<PathBuf>,
 }
