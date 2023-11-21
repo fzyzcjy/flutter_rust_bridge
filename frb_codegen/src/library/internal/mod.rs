@@ -31,7 +31,12 @@ fn compute_repo_base_dir() -> anyhow::Result<PathBuf> {
 
 fn generate_frb_rust_cbindgen(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
     info!("generate_frb_rust_cbindgen");
-    cbindgen(repo_base_dir, &repo_base_dir.join("frb_rust"), "frb_rust")
+    cbindgen(
+        default_cbindgen_config(),
+        repo_base_dir,
+        &repo_base_dir.join("frb_rust"),
+        "frb_rust",
+    )
 }
 
 fn generate_allo_isolate_cbindgen(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
@@ -46,15 +51,25 @@ fn generate_allo_isolate_cbindgen(repo_base_dir: &PathBuf) -> anyhow::Result<()>
         .unwrap();
     let rust_crate_dir = package.manifest_path.as_std_path().parent().unwrap();
 
-    cbindgen(repo_base_dir, rust_crate_dir, "allo_isolate")
+    cbindgen(
+        default_cbindgen_config(),
+        repo_base_dir,
+        rust_crate_dir,
+        "allo_isolate",
+    )
 }
 
-fn cbindgen(repo_base_dir: &PathBuf, rust_crate_dir: &Path, name: &str) -> anyhow::Result<()> {
+fn cbindgen(
+    config: cbindgen::Config,
+    repo_base_dir: &PathBuf,
+    rust_crate_dir: &Path,
+    name: &str,
+) -> anyhow::Result<()> {
     let c_path = repo_base_dir.join(format!(
         "frb_dart/lib/src/ffigen_generated/{}.h",
         name.to_case(Case::Snake)
     ));
-    cbindgen_raw(default_cbindgen_config(), rust_crate_dir, &c_path)
+    cbindgen_raw(config, rust_crate_dir, &c_path)
 }
 
 fn ffigen(repo_base_dir: &Path) -> anyhow::Result<()> {
