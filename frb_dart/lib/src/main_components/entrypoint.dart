@@ -1,3 +1,4 @@
+import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
 import 'package:flutter_rust_bridge/src/main_components/api.dart';
 import 'package:flutter_rust_bridge/src/main_components/handler.dart';
@@ -49,10 +50,10 @@ abstract class BaseEntrypoint<A extends BaseApi> {
 
 class _EntrypointState<A extends BaseApi> {
   final A api;
-  late final dropPortManager = _DropPortManager(api);
+  late final dropPortManager = _DropPortManager(TODO);
 
   _EntrypointState({required this.api}) {
-    _setUpRustToDartCommunication(api);
+    _setUpRustToDartCommunication(TODO);
   }
 
   void dispose() {
@@ -61,9 +62,9 @@ class _EntrypointState<A extends BaseApi> {
 }
 
 class _DropPortManager {
-  final BaseApi _api;
+  final GeneralizedFrbRustBinding _generalizedFrbRustBinding;
 
-  _DropPortManager(this._api);
+  _DropPortManager(this._generalizedFrbRustBinding);
 
   NativePortType get dropPort => _dropPort.sendPort.nativePort;
   late final _dropPort = _initDropPort();
@@ -71,7 +72,7 @@ class _DropPortManager {
   ReceivePort _initDropPort() {
     final port = broadcastPort(DropIdPortGenerator.create());
     port.listen((message) {
-      _api.inner.dropDartObject(message);
+      _generalizedFrbRustBinding.dropDartObject(message);
     });
     return port;
   }
@@ -81,6 +82,6 @@ class _DropPortManager {
   }
 }
 
-void _setUpRustToDartCommunication(BaseApi api) {
-  api.inner.storeDartPostCObject();
+void _setUpRustToDartCommunication(GeneralizedFrbRustBinding generalizedFrbRustBinding) {
+  generalizedFrbRustBinding.storeDartPostCObject();
 }
