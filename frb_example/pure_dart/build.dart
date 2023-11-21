@@ -10,10 +10,12 @@ void main(List<String> args) async {
   final rustCrateDir = buildConfig.packageRoot.resolve('rust');
   _executeProcess('cargo', ['build'], workingDirectory: rustCrateDir.toFilePath());
 
-  buildOutput.dependencies.dependencies.addAll({
+  final dependencies = {
     rustCrateDir,
     buildConfig.packageRoot.resolve('build.rs'),
-  });
+  };
+  print('dependencies: $dependencies');
+  buildOutput.dependencies.dependencies.addAll(dependencies);
 
   // Write the output according to the native assets protocol so that Dart or
   // Flutter can find the native assets produced by this script.
@@ -21,6 +23,7 @@ void main(List<String> args) async {
 }
 
 Future<void> _executeProcess(String executable, List<String> arguments, {String? workingDirectory}) async {
+  print('executeProcess: $executable $arguments $workingDirectory');
   final process = await Process.start(executable, arguments, workingDirectory: workingDirectory);
   process.stdout.listen((e) => print(String.fromCharCodes(e)));
   process.stderr.listen((e) => print('[STDERR] ${String.fromCharCodes(e)}'));
