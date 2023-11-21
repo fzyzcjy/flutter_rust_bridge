@@ -24,7 +24,8 @@ class Rust extends BaseEntrypoint<RustApi> {
   static void dispose() => instance.disposeImpl();
 
   @override
-  RustApi createDefaultApi({BaseHandler? handler}) => RustApiImpl(wire: RustWire(dynamicLibrary), handler: handler);
+  RustApi createDefaultApi({BaseHandler? handler}) =>
+      RustApiImpl(wire: RustWire(TODO), handler: handler, generalizedFrbRustBinding: TODO);
 }
 
 abstract class RustApi extends BaseApi<RustApiImpl> {
@@ -32,7 +33,7 @@ abstract class RustApi extends BaseApi<RustApiImpl> {
 }
 
 class RustApiImpl extends RustApiImplPlatform implements RustApi {
-  RustApiImpl({super.handler, required super.wire});
+  RustApiImpl({super.handler, required super.wire, required super.generalizedFrbRustBinding});
 
   @override
   Future<int> simpleAdder({required int a, required int b, dynamic hint}) {
@@ -44,7 +45,7 @@ class RustApiImpl extends RustApiImplPlatform implements RustApi {
       parseErrorData: null,
       constMeta: kSimpleAdderConstMeta,
       argValues: [a, b],
-      api: this,
+      apiImpl: this,
       hint: hint,
     ));
   }

@@ -9,7 +9,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 // ignore_for_file: type=lint
 
 abstract class RustApiImplPlatform extends BaseApiImpl<RustWire> {
-  RustApiImplPlatform({super.handler, required super.wire});
+  RustApiImplPlatform({super.handler, required super.wire, required super.generalizedFrbRustBinding});
 
 // TODO the functions needs to be @protected
 
