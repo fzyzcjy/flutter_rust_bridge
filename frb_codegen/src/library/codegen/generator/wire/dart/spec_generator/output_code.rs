@@ -8,7 +8,7 @@ pub(crate) struct WireDartOutputCode {
     pub import: String,
     pub part: String,
     pub body_top: String,
-    /// Code inside the generated ApiImpl class
+    pub api_body: String,
     pub api_impl_body: String,
     pub body: String,
 }
@@ -30,6 +30,7 @@ impl AddAssign for WireDartOutputCode {
         self.import += &rhs.import;
         self.part += &rhs.part;
         self.body_top += &rhs.body_top;
+        self.api_body += &rhs.api_body;
         self.api_impl_body += &rhs.api_impl_body;
         self.body += &rhs.body;
     }
@@ -65,7 +66,24 @@ impl WireDartOutputCode {
             wire_class_name,
             ..
         } = &dart_output_class_name_pack;
-        let api_impl_body = &self.api_impl_body;
+        let WireDartOutputCode {
+            api_body,
+            api_impl_body,
+            ..
+        } = &self;
+
+        let api_class_code = if target == TargetOrCommon::Common {
+            format!(
+                "
+                abstract class {api_class_name} extends BaseApi {{
+                  {api_body}
+                }}
+                ",
+            )
+        } else {
+            assert_eq!(api_body, "");
+            "".to_owned()
+        };
 
         let api_impl_class_code = if target == TargetOrCommon::Common {
             format!(
@@ -99,7 +117,7 @@ impl WireDartOutputCode {
 
         format!(
             "{}\n{}\n{}\n{}\n{}",
-            self.import, self.part, self.body_top, api_impl_class_code, self.body
+            self.import, self.part, self.body_top, api_class_code, api_impl_class_code, self.body
         )
     }
 }
