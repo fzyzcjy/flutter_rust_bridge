@@ -37,7 +37,7 @@ pub(crate) fn generate_api_impl_normal_function(
     let func_expr = api_dart_func.func_expr;
 
     let function_implementation = format!(
-        "{func_expr} {{
+        "@override {func_expr} {{
             {stmt_prepare_args}
             return handler.{execute_func_name}({task_class}(
                 callFfi: ({call_ffi_args}) => wire.{wire_func_name}({wire_param_list}),
