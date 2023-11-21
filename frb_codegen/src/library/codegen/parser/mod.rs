@@ -37,7 +37,7 @@ pub(crate) fn parse(config: &ParserInternalConfig) -> anyhow::Result<IrPack> {
 
     let src_fns = file_data_arr
         .iter()
-        .map(|file| extract_generalized_functions_from_file(&file.ast))
+        .map(|file| extract_generalized_functions_from_file(&file.ast, &file.path))
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
         .flatten()
@@ -52,7 +52,7 @@ pub(crate) fn parse(config: &ParserInternalConfig) -> anyhow::Result<IrPack> {
 
     let ir_funcs = src_fns
         .iter()
-        .map(|f| function_parser.parse_function(f))
+        .map(|f| function_parser.parse_function(&f.item_fn, &f.path, &config.rust_crate_dir))
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
         // to give downstream a stable output

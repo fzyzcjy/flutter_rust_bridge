@@ -8,11 +8,14 @@ use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::TypeParser;
+use crate::utils::rust_project_utils::compute_mod_from_rust_path;
 use anyhow::{bail, Context};
 use itertools::concat;
 use log::debug;
 use quote::quote;
 use std::fmt::Debug;
+use std::path::Path;
+use std::path::PathBuf;
 use syn::*;
 use IrType::Primitive;
 
@@ -27,27 +30,36 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         Self { type_parser }
     }
 
-    pub(crate) fn parse_function(&mut self, func: &ItemFn) -> anyhow::Result<IrFunc> {
-        self.parse_function_inner(func)
+    pub(crate) fn parse_function(
+        &mut self,
+        func: &ItemFn,
+        file_path: &Path,
+        rust_crate_dir: &Path,
+    ) -> anyhow::Result<IrFunc> {
+        self.parse_function_inner(func, file_path, rust_crate_dir)
             .with_context(|| format!("function={:?}", func.sig.ident))
     }
 
-    fn parse_function_inner(&mut self, func: &ItemFn) -> anyhow::Result<IrFunc> {
+    fn parse_function_inner(
+        &mut self,
+        func: &ItemFn,
+        file_path: &Path,
+        rust_crate_dir: &Path,
+    ) -> anyhow::Result<IrFunc> {
         debug!("parse_function function name: {:?}", func.sig.ident);
 
         let sig = &func.sig;
+        let namespace = compute_mod_from_rust_path(file_path, rust_crate_dir)?;
         let func_name = sig.ident.to_string();
 
         let mut info = FunctionPartialInfo::default();
-
         for (i, sig_input) in sig.inputs.iter().enumerate() {
             info = info.merge(self.parse_fn_arg(i, sig_input)?)?;
         }
-
         info = info.merge(self.parse_fn_output(sig)?)?;
 
         Ok(IrFunc {
-            name: NamespacedName::new(TODO, func_name),
+            name: NamespacedName::new(namespace, func_name),
             inputs: info.inputs,
             output: info.ok_output.unwrap_or(Primitive(IrTypePrimitive::Unit)),
             error_output: info.error_output,

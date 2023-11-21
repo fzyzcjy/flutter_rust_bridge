@@ -1,12 +1,31 @@
 use crate::if_then_some;
 use anyhow::Context;
 use itertools::Itertools;
+use std::path::PathBuf;
 use syn::File;
 use syn::*;
 
-pub(crate) fn extract_generalized_functions_from_file(file: &File) -> anyhow::Result<Vec<ItemFn>> {
-    let mut ans = extract_fns_from_file(&file);
-    ans.extend(extract_methods_from_file(&file)?);
+pub(super) struct PathAndItemFn {
+    pub(super) path: PathBuf,
+    pub(super) item_fn: ItemFn,
+}
+
+pub(super) fn extract_generalized_functions_from_file(
+    file: &File,
+    path: &std::path::Path,
+) -> anyhow::Result<Vec<PathAndItemFn>> {
+    let item_fns = [
+        extract_fns_from_file(&file),
+        extract_methods_from_file(&file)?,
+    ]
+    .concat();
+    let ans = item_fns
+        .into_iter()
+        .map(|item_fn| PathAndItemFn {
+            path: path.to_owned(),
+            item_fn,
+        })
+        .collect_vec();
     Ok(ans)
 }
 
