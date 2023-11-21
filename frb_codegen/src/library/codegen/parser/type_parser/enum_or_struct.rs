@@ -27,6 +27,9 @@ where
                 let ident: Id = namespaced_name.clone().into();
 
                 if (self.parser_info().parsing_or_parsed_objects).insert(namespaced_name) {
+                    // get it *again* to avoid borrowing for too long
+                    let src_object = self.src_objects()[*name];
+
                     let (name, wrapper_name) = compute_name_and_wrapper_name(
                         &namespaced_name.namespace,
                         &src_object.inner().ident,
