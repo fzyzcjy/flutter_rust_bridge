@@ -8,7 +8,7 @@ void main(List<String> args) async {
   final buildOutput = BuildOutput();
 
   final rustCrateDir = buildConfig.packageRoot.resolve('rust');
-  _executeProcess('cargo', ['build'], workingDirectory: rustCrateDir.toFilePath());
+  _executeProcess('cargo', ['build', '--release'], workingDirectory: rustCrateDir.toFilePath());
 
   final dependencies = {
     rustCrateDir,
