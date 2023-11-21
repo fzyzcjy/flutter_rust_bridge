@@ -1,3 +1,4 @@
+use crate::library::commands::cargo_metadata::execute_cargo_metadata;
 use crate::library::commands::cbindgen::{cbindgen, cbindgen_raw, default_cbindgen_config};
 use crate::library::commands::ffigen::{
     ffigen_raw, FfigenCommandConfig, FfigenCommandConfigHeaders,
@@ -15,6 +16,7 @@ pub fn generate() -> anyhow::Result<()> {
 
     generate_dart_native_api(&repo_base_dir)?;
     generate_frb_rust(&repo_base_dir)?;
+    generate_allo_isolate(&repo_base_dir)?;
 
     Ok(())
 }
@@ -39,6 +41,21 @@ fn generate_dart_native_api(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
 fn generate_frb_rust(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
     info!("generate_frb_rust");
     cbindgen_and_ffigen(repo_base_dir, &repo_base_dir.join("frb_rust"), "frb_rust")
+}
+
+fn generate_allo_isolate(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
+    info!("generate_allo_isolate");
+
+    let metadata = execute_cargo_metadata(&repo_base_dir.join("frb_codegen/Cargo.toml"))?;
+
+    let package_name = "allo-isolate";
+    let package = (metadata.packages.iter())
+        .filter(|package| package.name == package_name)
+        .next()
+        .unwrap();
+    let rust_crate_dir = package.manifest_path.as_std_path().parent().unwrap();
+
+    cbindgen_and_ffigen(repo_base_dir, rust_crate_dir, "allo_isolate")
 }
 
 fn cbindgen_and_ffigen(
