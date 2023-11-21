@@ -15,8 +15,6 @@ ExternalLibrary loadExternalLibrary({
   // * https://flutter.dev/docs/development/platform-integration/c-interop
   // * https://github.com/fzyzcjy/flutter_rust_bridge/pull/898
 
-  // TODO impl
-
   if (Platform.isAndroid) {
     return DynamicLibrary.open('lib$stem.so');
   }
@@ -26,17 +24,27 @@ ExternalLibrary loadExternalLibrary({
   }
 
   if (Platform.isWindows) {
-    return DynamicLibrary.open('$stem.dll');
+    final name = '$stem.dll';
+    return _tryOpen(nativeLibDirWhenNonPackaged, name) ?? DynamicLibrary.open(name);
   }
 
   if (Platform.isMacOS) {
-    return DynamicLibrary.process();
+    final name = 'lib$stem.dylib';
+    return _tryOpen(nativeLibDirWhenNonPackaged, name) ?? DynamicLibrary.process();
   }
 
   if (Platform.isLinux) {
-    return DynamicLibrary.open('lib$stem.so');
+    final name = 'lib$stem.so';
+    return _tryOpen(nativeLibDirWhenNonPackaged, name) ?? DynamicLibrary.open(name);
   }
 
   // Feel free to PR to add support for more platforms! (e.g. I do not have a Fuchsia device, so cannot test that)
   throw Exception('loadExternalLibrary failed: Unknown platform=${Platform.operatingSystem}');
+}
+
+ExternalLibrary? _tryOpen(Uri? directory, String name) {
+  if (directory == null) return null;
+  final filePath = directory.resolve(name).toFilePath();
+  if (!File(filePath).existsSync()) return null;
+  return DynamicLibrary.open(filePath);
 }
