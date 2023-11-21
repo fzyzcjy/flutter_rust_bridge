@@ -109,7 +109,10 @@ fn ffigen(repo_base_dir: &Path) -> anyhow::Result<()> {
             name: format!("MultiPackageCBinding"),
             headers: FfigenCommandConfigHeaders {
                 entry_points: vec![multi_package_header.clone()],
-                include_directives: vec![multi_package_header.clone()],
+                include_directives: vec![
+                    repo_base_dir.join("frb_rust/src/dart_api/dart_api.h"),
+                    multi_package_header.clone(),
+                ],
             },
             preamble: FFIGEN_PREAMBLE.to_owned(),
             description: FFIGEN_DESCRIPTION.to_owned(),
