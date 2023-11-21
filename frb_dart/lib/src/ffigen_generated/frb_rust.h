@@ -4,7 +4,7 @@
 
 typedef struct Result_JsValue Result_JsValue;
 
-typedef DartCObject *WireSyncReturn;
+typedef Dart_CObject *WireSyncReturn;
 
 extern void error(const str *msg);
 

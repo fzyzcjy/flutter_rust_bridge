@@ -7,6 +7,7 @@ use crate::utils::path_utils::path_to_string;
 use convert_case::{Case, Casing};
 use log::info;
 use serde_json::json;
+use std::collections::HashMap;
 use std::env;
 use std::path::{Path, PathBuf};
 
@@ -32,7 +33,13 @@ fn compute_repo_base_dir() -> anyhow::Result<PathBuf> {
 fn generate_frb_rust_cbindgen(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
     info!("generate_frb_rust_cbindgen");
     cbindgen(
-        default_cbindgen_config(),
+        cbindgen::Config {
+            export: cbindgen::ExportConfig {
+                rename: HashMap::from([("DartCObject".to_owned(), "Dart_CObject".to_owned())]),
+                ..Default::default()
+            },
+            ..default_cbindgen_config()
+        },
         repo_base_dir,
         &repo_base_dir.join("frb_rust"),
         "frb_rust",
