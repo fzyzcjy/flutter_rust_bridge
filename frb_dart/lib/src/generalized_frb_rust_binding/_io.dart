@@ -1,7 +1,6 @@
 import 'dart:ffi' as ffi;
 
 import 'package:flutter_rust_bridge/src/ffigen_generated/multi_package.dart';
-import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 class GeneralizedFrbRustBinding {
@@ -11,7 +10,7 @@ class GeneralizedFrbRustBinding {
   GeneralizedFrbRustBinding(this._binding);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  void storeDartPostCObject(DartPostCObject ptr) => _binding.store_dart_post_cobject(ffi.NativeApi.postCObject.cast());
+  void storeDartPostCObject() => _binding.store_dart_post_cobject(ffi.NativeApi.postCObject.cast());
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   Object getDartObject(int ptr) => _binding.get_dart_object(ptr);
