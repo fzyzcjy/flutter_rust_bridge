@@ -1,6 +1,6 @@
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-
-import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart.dart';
+import 'frb_generated.io.dart'
+    if (dart.library.html) 'frb_generated.web.dart.dart';
 
 /// Main entrypoint of the Rust API
 class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
@@ -24,7 +24,8 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   static void dispose() => instance.disposeImpl();
 
   @override
-  ApiImplConstructor<RustLibApiImpl, RustLibWire> get apiImplConstructor => RustLibApiImpl.new;
+  ApiImplConstructor<RustLibApiImpl, RustLibWire> get apiImplConstructor =>
+      RustLibApiImpl.new;
 
   @override
   WireConstructor<RustLibWire> get wireConstructor => RustLibWire.new;
@@ -38,7 +39,11 @@ abstract class RustLibApi extends BaseApi {
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
-  RustLibApiImpl({super.handler, required super.wire, required super.generalizedFrbRustBinding});
+  RustLibApiImpl({
+    super.handler,
+    required super.wire,
+    required super.generalizedFrbRustBinding,
+  });
 
   @override
   Future<int> simpleAdder({required int a, required int b, dynamic hint}) {
@@ -59,13 +64,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         debugName: "simple_adder",
         argNames: ["a", "b"],
       );
-
-  int _wire2api_i_32(dynamic raw) {
-    return raw as int;
-  }
-
-  @protected
-  int api2wire_i_32(int raw) {
-    return raw;
-  }
 }
+
+// Section: boilerplate
+// Section: api_impl_normal_functions
+// Section: api_impl_opaque_getters
+// Section: c_binding
+// Section: impl_wire2api
+int _wire2api_i_32(dynamic raw) {
+  return raw as int;
+}
+
+// Section: api2wire_funcs
+@protected
+int api2wire_i_32(int raw) {
+  return raw;
+} // Section: api_fill_to_wire_funcs
