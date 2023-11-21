@@ -58,7 +58,7 @@ impl<'a> TypeParser<'a> {
         }))
     }
 
-    fn parse_struct(&mut self, ident_string: &str) -> anyhow::Result<Option<IrStruct>> {
+    fn parse_struct(&mut self, ident_string: &NamespacedName) -> anyhow::Result<Option<IrStruct>> {
         let src_struct = self.src_structs[ident_string];
 
         let (is_fields_named, struct_fields) = match &src_struct.0.src.fields {

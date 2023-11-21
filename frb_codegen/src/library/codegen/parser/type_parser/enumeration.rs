@@ -52,7 +52,7 @@ impl<'a> TypeParser<'a> {
         }))
     }
 
-    fn parse_enum(&mut self, ident_string: &str) -> anyhow::Result<IrEnum> {
+    fn parse_enum(&mut self, ident_string: &NamespacedName) -> anyhow::Result<IrEnum> {
         let src_enum = self.src_enums[ident_string];
 
         let (name, wrapper_name) =
