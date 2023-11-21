@@ -1,5 +1,5 @@
 use crate::codegen::config::internal_config::{
-    GeneratorInternalConfig, GeneratorWireInternalConfig, InternalConfig, Namespace,
+    DeprecatedNamespace, GeneratorInternalConfig, GeneratorWireInternalConfig, InternalConfig,
     RustInputPathPack,
 };
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
@@ -213,25 +213,25 @@ fn compute_rust_output_path(
     compute_path_map(&path_common)
 }
 
-fn compute_namespace_from_rust_input_path(rust_input_path: &Path) -> Result<Namespace> {
+fn compute_namespace_from_rust_input_path(rust_input_path: &Path) -> Result<DeprecatedNamespace> {
     let stem = rust_input_path
         .file_stem()
         .context("cannot get file stem")?
         .to_str()
         .context("cannot convert to str")?;
-    Ok(Namespace {
+    Ok(DeprecatedNamespace {
         name: stem.to_owned(),
     })
 }
 
 struct DartOutputPathPack {
-    dart_decl_output_path: HashMap<Namespace, PathBuf>,
+    dart_decl_output_path: HashMap<DeprecatedNamespace, PathBuf>,
     dart_impl_output_path: TargetOrCommonMap<PathBuf>,
 }
 
 fn compute_dart_output_path_pack(
     dart_output_dir: &Path,
-    namespaces: &[&Namespace],
+    namespaces: &[&DeprecatedNamespace],
 ) -> DartOutputPathPack {
     let dart_decl_output_path = namespaces
         .iter()
@@ -260,7 +260,7 @@ fn compute_path_map(path_common: &Path) -> TargetOrCommonMap<PathBuf> {
     }
 }
 
-fn compute_dart_decl_output_filename(namespace: &Namespace) -> String {
+fn compute_dart_decl_output_filename(namespace: &DeprecatedNamespace) -> String {
     format!("{}.dart", namespace.name.to_case(Case::Snake))
 }
 

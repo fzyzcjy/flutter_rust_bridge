@@ -1,4 +1,4 @@
-use crate::codegen::config::internal_config::Namespace;
+use crate::codegen::config::internal_config::DeprecatedNamespace;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::path::PathBuf;
@@ -7,6 +7,6 @@ use std::path::PathBuf;
 pub(crate) struct GeneratorApiDartInternalConfig {
     pub dart_enums_style: bool,
     pub dart3: bool,
-    pub dart_decl_output_path: HashMap<Namespace, PathBuf>,
+    pub dart_decl_output_path: HashMap<DeprecatedNamespace, PathBuf>,
     pub dart_entrypoint_class_name: String,
 }

@@ -32,17 +32,17 @@ pub(crate) struct GeneratorWireInternalConfig {
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub(crate) struct RustInputPathPack {
-    pub rust_input_path: HashMap<Namespace, PathBuf>,
+    pub rust_input_path: HashMap<DeprecatedNamespace, PathBuf>,
 }
 
 // TODO move?
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Hash)]
 #[serde(transparent)]
-pub struct Namespace {
+pub struct DeprecatedNamespace {
     pub name: String,
 }
 
-impl From<String> for Namespace {
+impl From<String> for DeprecatedNamespace {
     fn from(name: String) -> Self {
         Self { name }
     }
