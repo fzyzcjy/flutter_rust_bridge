@@ -1,4 +1,5 @@
 use crate::codegen::parser::source_graph::modules::{Module, ModuleInfo, ModuleSource, Visibility};
+use crate::library::commands::cargo_metadata::execute_cargo_metadata;
 use anyhow::{bail, Context};
 use cargo_metadata::{Metadata, MetadataCommand, Package};
 use std::fs;
@@ -37,12 +38,6 @@ impl Crate {
     pub fn root_module(&self) -> &Module {
         &self.root_module
     }
-}
-
-fn execute_cargo_metadata(manifest_path: &Path) -> anyhow::Result<Metadata> {
-    let mut cmd = MetadataCommand::new();
-    cmd.manifest_path(manifest_path);
-    Ok(cmd.exec()?)
 }
 
 fn get_root_src_file(root_package: &Package) -> anyhow::Result<PathBuf> {
