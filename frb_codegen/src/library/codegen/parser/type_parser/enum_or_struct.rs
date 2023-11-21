@@ -19,8 +19,10 @@ pub(super) trait EnumOrStructParser<Id: From<NamespacedName>, Obj, SrcObj> {
                 let ident: Id = NamespacedName::new(TODO, name.to_string()).into();
 
                 if (self.parser_info().parsing_or_parsed_objects).insert(ident.clone().0) {
-                    let parsed_object = match self.parse_inner(src_object)? {
-                        Some(parsed_object) => parsed_object,
+                    match self.parse_inner(src_object)? {
+                        Some(parsed_object) => {
+                            (self.parser_info().object_pool).insert(ident.clone(), parsed_object)
+                        }
                         None => {
                             return Ok(Some(parse_path_type_to_unencodable(
                                 type_path,
@@ -28,8 +30,6 @@ pub(super) trait EnumOrStructParser<Id: From<NamespacedName>, Obj, SrcObj> {
                             )))
                         }
                     };
-
-                    (self.parser_info().object_pool).insert(ident.clone(), parsed_object);
                 }
 
                 todo!();
