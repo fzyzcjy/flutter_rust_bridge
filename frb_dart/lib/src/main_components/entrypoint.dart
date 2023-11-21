@@ -1,5 +1,6 @@
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
+import 'package:flutter_rust_bridge/src/loader/loader.dart';
 import 'package:flutter_rust_bridge/src/main_components/api.dart';
 import 'package:flutter_rust_bridge/src/main_components/api_impl.dart';
 import 'package:flutter_rust_bridge/src/main_components/handler.dart';
@@ -38,10 +39,10 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl, W exten
   }) async {
     if (__state != null) throw StateError('Should not initialize flutter_rust_bridge twice');
 
-    externalLibrary ??= ExternalLibrary(TODO);
+    externalLibrary ??= loadExternalLibrary();
+    final generalizedFrbRustBinding = GeneralizedFrbRustBinding(externalLibrary);
     api ??= _createDefaultApi(handler, generalizedFrbRustBinding, externalLibrary);
 
-    final generalizedFrbRustBinding = GeneralizedFrbRustBinding(externalLibrary);
     __state = _EntrypointState(
       generalizedFrbRustBinding: generalizedFrbRustBinding,
       api: api,
