@@ -1,5 +1,6 @@
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ident::IrIdent;
+use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::record::IrTypeRecord;
 use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent, IrTypeStructRef};
@@ -29,9 +30,9 @@ impl<'a> TypeParser<'a> {
             .join("_");
         let safe_ident = format!("__record__{safe_ident}");
         self.struct_pool.insert(
-            IrStructIdent(safe_ident.clone()),
+            IrStructIdent(NamespacedName::new(TODO, safe_ident.clone())),
             IrStruct {
-                name: safe_ident.clone(),
+                name: NamespacedName::new(TODO, safe_ident.clone()),
                 wrapper_name: None,
                 path: None,
                 is_fields_named: true,
@@ -56,7 +57,7 @@ impl<'a> TypeParser<'a> {
                 // name: safe_ident,
                 // freezed: false,
                 // empty: false,
-                ident: IrStructIdent(safe_ident),
+                ident: IrStructIdent(NamespacedName::new(TODO, safe_ident)),
                 is_exception: false,
             },
             values: values.into_boxed_slice(),

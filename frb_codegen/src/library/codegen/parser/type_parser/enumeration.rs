@@ -1,5 +1,6 @@
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
 use crate::codegen::ir::ident::IrIdent;
+use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegatePrimitiveEnum};
 use crate::codegen::ir::ty::enumeration::{
@@ -24,7 +25,7 @@ impl<'a> TypeParser<'a> {
     ) -> anyhow::Result<Option<IrType>> {
         Ok(Some(match last_segment {
             (name, _) if self.src_enums.contains_key(&name.to_string()) => {
-                let ident = IrEnumIdent(name.to_string());
+                let ident = IrEnumIdent(NamespacedName::new(TODO, name.to_string()));
 
                 if self.parsed_enums.insert(ident.clone().0) {
                     let enu = self.parse_enum(&ident.0)?;
@@ -105,7 +106,7 @@ impl<'a> TypeParser<'a> {
     ) -> anyhow::Result<IrVariantKind> {
         let variant_ident = variant.ident.to_string();
         Ok(IrVariantKind::Struct(IrStruct {
-            name: variant_ident,
+            name: NamespacedName::new(TODO, variant_ident),
             wrapper_name: None,
             path: None,
             is_fields_named: field_ident.is_some(),

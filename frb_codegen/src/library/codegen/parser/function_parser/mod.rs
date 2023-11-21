@@ -3,6 +3,7 @@ pub(crate) mod output;
 
 use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo};
+use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::misc::parse_comments;
@@ -46,7 +47,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         info = info.merge(self.parse_fn_output(sig)?)?;
 
         Ok(IrFunc {
-            name: func_name,
+            name: NamespacedName::new(TODO, func_name),
             inputs: info.inputs,
             output: info.ok_output.unwrap_or(Primitive(IrTypePrimitive::Unit)),
             error_output: info.error_output,

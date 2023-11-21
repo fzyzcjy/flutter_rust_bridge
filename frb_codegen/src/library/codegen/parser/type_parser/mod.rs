@@ -12,6 +12,7 @@ pub(crate) mod ty;
 pub(crate) mod unencodable;
 pub(crate) mod vec;
 
+use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
 use crate::codegen::parser::source_graph::modules::{Enum, Struct};
 use std::collections::{HashMap, HashSet};
@@ -21,9 +22,9 @@ pub(crate) struct TypeParser<'a> {
     src_structs: HashMap<String, &'a Struct>,
     src_enums: HashMap<String, &'a Enum>,
     src_types: HashMap<String, Type>,
-    parsing_or_parsed_struct_names: HashSet<String>,
+    parsing_or_parsed_struct_names: HashSet<NamespacedName>,
     struct_pool: IrStructPool,
-    parsed_enums: HashSet<String>,
+    parsed_enums: HashSet<NamespacedName>,
     enum_pool: IrEnumPool,
 }
 
