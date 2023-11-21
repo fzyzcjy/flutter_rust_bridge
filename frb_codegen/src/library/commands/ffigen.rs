@@ -70,7 +70,7 @@ pub(crate) fn ffigen_raw(config: &str, dart_root: &Path) -> anyhow::Result<()> {
 
     let repo = DartRepository::from_str(&path_to_string(dart_root)?).unwrap();
     let res = command_run!(
-        call_shell[Some(args.dart_root)],
+        call_shell[Some(dart_root)],
         *repo.toolchain.as_run_command(),
         "run",
         "ffigen",
