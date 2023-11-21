@@ -5,6 +5,7 @@ use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent, IrTypeStructRef
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::StructRef;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
+use crate::codegen::parser::source_graph::modules::Struct;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::unencodable::{
     parse_path_type_to_unencodable, SplayedSegment,
@@ -19,43 +20,39 @@ impl<'a> TypeParser<'a> {
         splayed_segments: &[SplayedSegment],
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        if self.src_structs.contains_key(&name.to_string()) {
-            let ident = IrStructIdent(NamespacedName::new(TODO, name.to_string()));
+        let ident = IrStructIdent(NamespacedName::new(TODO, name.to_string()));
 
-            if self.parsing_or_parsed_structs.insert(ident.clone().0) {
-                let api_struct = match self.parse_struct(&ident.0)? {
-                    Some(ir_struct) => ir_struct,
-                    None => {
-                        return Ok(Some(parse_path_type_to_unencodable(
-                            type_path,
-                            splayed_segments,
-                        )))
-                    }
-                };
-                self.struct_pool.insert(ident.clone(), api_struct);
-            }
-
-            StructRef(IrTypeStructRef {
-                ident: ident.clone(),
-                is_exception: false,
-                // TODO rm
-                // freezed: self
-                //     .struct_pool
-                //     .get(&ident_string)
-                //     .map(IrStruct::using_freezed)
-                //     .unwrap_or(false),
-                // empty: self
-                //     .struct_pool
-                //     .get(&ident_string)
-                //     .map(IrStruct::is_empty)
-                //     .unwrap_or(false),
-            })
+        if self.parsing_or_parsed_structs.insert(ident.clone().0) {
+            let api_struct = match self.parse_struct(&ident.0)? {
+                Some(ir_struct) => ir_struct,
+                None => {
+                    return Ok(Some(parse_path_type_to_unencodable(
+                        type_path,
+                        splayed_segments,
+                    )))
+                }
+            };
+            self.struct_pool.insert(ident.clone(), api_struct);
         }
+
+        StructRef(IrTypeStructRef {
+            ident: ident.clone(),
+            is_exception: false,
+            // TODO rm
+            // freezed: self
+            //     .struct_pool
+            //     .get(&ident_string)
+            //     .map(IrStruct::using_freezed)
+            //     .unwrap_or(false),
+            // empty: self
+            //     .struct_pool
+            //     .get(&ident_string)
+            //     .map(IrStruct::is_empty)
+            //     .unwrap_or(false),
+        })
     }
 
-    fn parse_struct(&mut self, ident_string: &NamespacedName) -> anyhow::Result<Option<IrStruct>> {
-        let src_struct = self.src_structs[&ident_string.name];
-
+    fn parse_struct(&mut self, src_struct: &Struct) -> anyhow::Result<Option<IrStruct>> {
         let (is_fields_named, struct_fields) = match &src_struct.0.src.fields {
             Fields::Named(FieldsNamed { named, .. }) => (true, named),
             Fields::Unnamed(FieldsUnnamed { unnamed, .. }) => (false, unnamed),
