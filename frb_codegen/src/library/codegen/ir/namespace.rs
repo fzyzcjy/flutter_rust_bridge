@@ -48,11 +48,8 @@ pub(crate) struct NamespacedName {
 }
 
 impl NamespacedName {
-    pub fn new(namespace: Vec<String>, name: String) -> Self {
-        Self {
-            namespace: Namespace::new(namespace),
-            name,
-        }
+    pub fn new(namespace: Namespace, name: String) -> Self {
+        Self { namespace, name }
     }
 }
 
