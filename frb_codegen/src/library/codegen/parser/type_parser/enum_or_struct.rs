@@ -10,7 +10,7 @@ pub(super) trait EnumOrStructParser<Obj> {
         last_segment: &SplayedSegment,
     ) {
         if let (name, _) = last_segment {
-            if let Some(src_enum) = self.src_objects().get(*name) {
+            if let Some(src_object) = self.src_objects().get(*name) {
                 todo!();
             }
         }
