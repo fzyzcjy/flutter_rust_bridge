@@ -1,23 +1,29 @@
+import 'dart:io';
+
 import 'package:native_assets_cli/native_assets_cli.dart';
 
 // ref: https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/build.dart
 void main(List<String> args) async {
-  print('hi $args');
-
   final buildConfig = await BuildConfig.fromArgs(args);
   final buildOutput = BuildOutput();
 
-  buildOutput.assets.add(Asset(
-    id: assetId,
-    linkMode: LinkMode.dynamic,
-    target: buildConfig.target,
-    path: AssetAbsolutePath(libUri),
-  ));
+  final rustCrateDir = buildConfig.packageRoot.resolve('rust');
+  _executeProcess('cargo', ['build'], workingDirectory: rustCrateDir.toFilePath());
 
   buildOutput.dependencies.dependencies.addAll({
-    // Note: We use a Set here to deduplicate the dependencies.
-    ...sources,
-    ...includeFiles,
-    ...dartBuildFiles,
+    rustCrateDir,
+    buildConfig.packageRoot.resolve('build.rs'),
   });
+
+  // Write the output according to the native assets protocol so that Dart or
+  // Flutter can find the native assets produced by this script.
+  await buildOutput.writeToFile(outDir: buildConfig.outDir);
+}
+
+Future<void> _executeProcess(String executable, List<String> arguments, {String? workingDirectory}) async {
+  final process = await Process.start(executable, arguments, workingDirectory: workingDirectory);
+  process.stdout.listen((e) => print(String.fromCharCodes(e)));
+  process.stderr.listen((e) => print('[STDERR] ${String.fromCharCodes(e)}'));
+  final exitCode = await process.exitCode;
+  if (exitCode != 0) throw Exception('Process execution failed (exitCode=$exitCode)');
 }
