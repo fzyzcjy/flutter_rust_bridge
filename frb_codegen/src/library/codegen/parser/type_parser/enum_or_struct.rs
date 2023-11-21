@@ -5,9 +5,9 @@ use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use std::collections::{HashMap, HashSet};
 use syn::TypePath;
 
-pub(super) trait EnumOrStructParser<Id: From<NamespacedName>, Obj> {
+pub(super) trait EnumOrStructParser<Id: From<NamespacedName>, Obj, SrcObj> {
     fn parse(
-        &self,
+        &mut self,
         type_path: &TypePath,
         splayed_segments: &[SplayedSegment],
         last_segment: &SplayedSegment,
@@ -16,6 +16,11 @@ pub(super) trait EnumOrStructParser<Id: From<NamespacedName>, Obj> {
             if let Some(src_object) = self.src_objects().get(*name) {
                 let ident: Id = NamespacedName::new(TODO, name.to_string()).into();
 
+                if (self.parser_info().parsing_or_parsed_objects).insert(ident.clone().0) {
+                    let parsed_object = self.parse_inner(src_object)?;
+                    (self.parser_info().object_pool).insert(ident.clone(), parsed_object);
+                }
+
                 todo!();
             }
         }
@@ -23,7 +28,11 @@ pub(super) trait EnumOrStructParser<Id: From<NamespacedName>, Obj> {
         Ok(None)
     }
 
-    fn src_objects(&self) -> &HashMap<String, &Obj>;
+    fn parse_inner(&mut self, src_object: &SrcObj);
+
+    fn src_objects(&self) -> &HashMap<String, &SrcObj>;
+
+    fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<Id, Obj>;
 }
 
 #[derive(Clone, Debug, Default)]

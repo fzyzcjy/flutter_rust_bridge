@@ -6,7 +6,9 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::StructRef;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::source_graph::modules::Struct;
-use crate::codegen::parser::type_parser::enum_or_struct::EnumOrStructParser;
+use crate::codegen::parser::type_parser::enum_or_struct::{
+    EnumOrStructParser, EnumOrStructParserInfo,
+};
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::unencodable::{
     parse_path_type_to_unencodable, SplayedSegment,
@@ -105,9 +107,13 @@ impl<'a> TypeParser<'a> {
 
 struct EnumOrStructParserStruct<'a>(TypeParser<'a>);
 
-impl<'a> EnumOrStructParser<Struct> for EnumOrStructParserStruct<'a> {
+impl<'a> EnumOrStructParser<IrStructIdent, IrStruct, Struct> for EnumOrStructParserStruct<'a> {
     fn src_objects(&self) -> &HashMap<String, &Struct> {
         &self.0.src_structs
+    }
+
+    fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<IrStructIdent, IrStruct> {
+        &mut self.0.struct_parser_info
     }
 }
 

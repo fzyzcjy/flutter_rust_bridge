@@ -12,7 +12,9 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{Delegate, EnumRef};
 use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::source_graph::modules::Enum;
-use crate::codegen::parser::type_parser::enum_or_struct::EnumOrStructParser;
+use crate::codegen::parser::type_parser::enum_or_struct::{
+    EnumOrStructParser, EnumOrStructParserInfo,
+};
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::structure::compute_name_and_wrapper_name;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
@@ -25,11 +27,6 @@ impl<'a> TypeParser<'a> {
         &mut self,
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        if self.parsing_or_parsed_enums.insert(ident.clone().0) {
-            let enu = self.parse_enum(src_enum)?;
-            self.enum_pool.insert(ident.clone(), enu);
-        }
-
         let enum_ref = IrTypeEnumRef {
             ident: ident.clone(),
             is_exception: false,
@@ -136,9 +133,13 @@ impl<'a> TypeParser<'a> {
 
 struct EnumOrStructParserEnum<'a>(TypeParser<'a>);
 
-impl<'a> EnumOrStructParser<Enum> for EnumOrStructParserEnum<'a> {
+impl<'a> EnumOrStructParser<IrEnumIdent, IrEnum, Enum> for EnumOrStructParserEnum<'a> {
     fn src_objects(&self) -> &HashMap<String, &Enum> {
         &self.0.src_enums
+    }
+
+    fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<IrEnumIdent, IrEnum> {
+        &mut self.0.enum_parser_info
     }
 }
 
