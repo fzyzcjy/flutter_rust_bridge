@@ -8,3 +8,4 @@ launch.json
 Makefile
 *.log
 .vscode
+.fvm/flutter_sdk
