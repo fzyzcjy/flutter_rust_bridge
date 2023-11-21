@@ -71,7 +71,7 @@ class _DropPortManager {
   ReceivePort _initDropPort() {
     final port = broadcastPort(DropIdPortGenerator.create());
     port.listen((message) {
-      _api.inner.drop_dart_object(message);
+      _api.inner.dropDartObject(message);
     });
     return port;
   }
