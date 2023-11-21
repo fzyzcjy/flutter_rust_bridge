@@ -98,6 +98,48 @@ class MultiPackageCBinding {
           ffi.Pointer<ffi.Int> Function(
               ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Void>)>();
 
+  /// Stores the function pointer of `Dart_PostCObject`, this only should be
+  /// called once at the start up of the Dart/Flutter Application. it is exported
+  /// and marked as `#[no_mangle]`.
+  ///
+  /// you could use it from Dart as following:
+  ///
+  /// #### Safety
+  /// This function should only be called once at the start up of the Dart
+  /// application.
+  ///
+  /// ### Example
+  /// ```dart,ignore
+  /// import 'dart:ffi';
+  ///
+  /// typedef dartPostCObject = Pointer Function(
+  /// Pointer<NativeFunction<Int8 Function(Int64,
+  /// Pointer<Dart_CObject>)>>);
+  ///
+  /// // assumes that _dl is the `DynamicLibrary`
+  /// final storeDartPostCObject =
+  /// _dl.lookupFunction<dartPostCObject, dartPostCObject>(
+  /// 'store_dart_post_cobject',
+  /// );
+  ///
+  /// // then later call
+  ///
+  /// storeDartPostCObject(NativeApi.postCObject);
+  /// ```
+  void store_dart_post_cobject(
+    DartPostCObjectFnType ptr,
+  ) {
+    return _store_dart_post_cobject(
+      ptr,
+    );
+  }
+
+  late final _store_dart_post_cobjectPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>(
+          'store_dart_post_cobject');
+  late final _store_dart_post_cobject = _store_dart_post_cobjectPtr
+      .asFunction<void Function(DartPostCObjectFnType)>();
+
   void error(
     ffi.Pointer<ffi.Int> msg,
   ) {
@@ -196,48 +238,6 @@ class MultiPackageCBinding {
           'free_wire_sync_return');
   late final _free_wire_sync_return =
       _free_wire_sync_returnPtr.asFunction<void Function(WireSyncReturn)>();
-
-  /// Stores the function pointer of `Dart_PostCObject`, this only should be
-  /// called once at the start up of the Dart/Flutter Application. it is exported
-  /// and marked as `#[no_mangle]`.
-  ///
-  /// you could use it from Dart as following:
-  ///
-  /// #### Safety
-  /// This function should only be called once at the start up of the Dart
-  /// application.
-  ///
-  /// ### Example
-  /// ```dart,ignore
-  /// import 'dart:ffi';
-  ///
-  /// typedef dartPostCObject = Pointer Function(
-  /// Pointer<NativeFunction<Int8 Function(Int64,
-  /// Pointer<Dart_CObject>)>>);
-  ///
-  /// // assumes that _dl is the `DynamicLibrary`
-  /// final storeDartPostCObject =
-  /// _dl.lookupFunction<dartPostCObject, dartPostCObject>(
-  /// 'store_dart_post_cobject',
-  /// );
-  ///
-  /// // then later call
-  ///
-  /// storeDartPostCObject(NativeApi.postCObject);
-  /// ```
-  void store_dart_post_cobject(
-    DartPostCObjectFnType ptr,
-  ) {
-    return _store_dart_post_cobject(
-      ptr,
-    );
-  }
-
-  late final _store_dart_post_cobjectPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(DartPostCObjectFnType)>>(
-          'store_dart_post_cobject');
-  late final _store_dart_post_cobject = _store_dart_post_cobjectPtr
-      .asFunction<void Function(DartPostCObjectFnType)>();
 }
 
 /// A Dart_CObject is used for representing Dart objects as native C
@@ -371,11 +371,6 @@ final class UnnamedStruct6 extends ffi.Struct {
   @ffi.Int()
   external int callback;
 }
-
-final class Result_JsValue extends ffi.Opaque {}
-
-typedef WireSyncReturn = ffi.Pointer<Dart_CObject>;
-typedef Dart_CObject = _Dart_CObject;
 
 /// A Dart_CObject is used for representing Dart objects as native C
 /// data outside the Dart heap. These objects are totally detached from
@@ -551,3 +546,8 @@ final class DartNativePointer extends ffi.Struct {
 typedef DartPostCObjectFnType = ffi.Pointer<
     ffi.NativeFunction<
         ffi.Bool Function(DartPort port_id, ffi.Pointer<DartCObject> message)>>;
+
+final class Result_JsValue extends ffi.Opaque {}
+
+typedef WireSyncReturn = ffi.Pointer<Dart_CObject>;
+typedef Dart_CObject = _Dart_CObject;

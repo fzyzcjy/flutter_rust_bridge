@@ -88,8 +88,8 @@ fn cbindgen(
 fn ffigen(repo_base_dir: &Path) -> anyhow::Result<()> {
     let raw_headers = vec![
         repo_base_dir.join("frb_rust/src/dart_api/dart_native_api.h"),
-        repo_base_dir.join("frb_dart/lib/src/ffigen_generated/intermediate/frb_rust.h"),
         repo_base_dir.join("frb_dart/lib/src/ffigen_generated/intermediate/allo_isolate.h"),
+        repo_base_dir.join("frb_dart/lib/src/ffigen_generated/intermediate/frb_rust.h"),
     ];
 
     let multi_package_header =
