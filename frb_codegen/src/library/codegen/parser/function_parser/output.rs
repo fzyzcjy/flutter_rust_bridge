@@ -4,21 +4,27 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
 use crate::codegen::parser::function_parser::{FunctionParser, FunctionPartialInfo};
 use crate::codegen::parser::type_parser::unencodable::{splay_segments, ArgsRefs};
+use crate::codegen::parser::type_parser::TypeParserParsingContext;
 use syn::*;
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
     pub(super) fn parse_fn_output(
         &mut self,
         sig: &Signature,
+        context: &TypeParserParsingContext,
     ) -> anyhow::Result<FunctionPartialInfo> {
         Ok(match &sig.output {
-            ReturnType::Type(_, ty) => self.parse_fn_output_type(ty)?,
+            ReturnType::Type(_, ty) => self.parse_fn_output_type(ty, context)?,
             ReturnType::Default => Default::default(),
         })
     }
 
-    fn parse_fn_output_type(&mut self, ty: &Type) -> anyhow::Result<FunctionPartialInfo> {
-        let ir = self.type_parser.parse_type(ty)?;
+    fn parse_fn_output_type(
+        &mut self,
+        ty: &Type,
+        context: &TypeParserParsingContext,
+    ) -> anyhow::Result<FunctionPartialInfo> {
+        let ir = self.type_parser.parse_type(ty, context)?;
 
         if let IrType::Unencodable(IrTypeUnencodable { segments, .. }) = ir {
             match splay_segments(&segments).last() {
@@ -30,7 +36,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         }
 
         Ok(FunctionPartialInfo {
-            ok_output: Some(self.type_parser.parse_type(ty)?),
+            ok_output: Some(self.type_parser.parse_type(ty, context)?),
             ..Default::default()
         })
     }

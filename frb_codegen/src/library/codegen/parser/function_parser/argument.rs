@@ -9,6 +9,7 @@ use crate::codegen::parser::function_parser::{
     type_to_string, FunctionParser, FunctionPartialInfo, STREAM_SINK_IDENT,
 };
 use crate::codegen::parser::type_parser::misc::parse_comments;
+use crate::codegen::parser::type_parser::TypeParserParsingContext;
 use anyhow::bail;
 use syn::*;
 
@@ -17,20 +18,27 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         &mut self,
         argument_index: usize,
         sig_input: &FnArg,
+        context: &TypeParserParsingContext,
     ) -> anyhow::Result<FunctionPartialInfo> {
         if let FnArg::Typed(ref pat_type) = sig_input {
             let ty = pat_type.ty.as_ref();
             match &ty {
                 Type::Path(TypePath { path, .. }) => {
-                    if let Some(ans) = self.parse_fn_arg_type_stream_sink(path, argument_index)? {
+                    if let Some(ans) =
+                        self.parse_fn_arg_type_stream_sink(path, argument_index, context)?
+                    {
                         Ok(ans)
                     } else {
-                        partial_info_for_normal_type(self.type_parser.parse_type(ty)?, pat_type)
+                        partial_info_for_normal_type(
+                            self.type_parser.parse_type(ty, context)?,
+                            pat_type,
+                        )
                     }
                 }
-                Type::Array(_) => {
-                    partial_info_for_normal_type(self.type_parser.parse_type(ty)?, pat_type)
-                }
+                Type::Array(_) => partial_info_for_normal_type(
+                    self.type_parser.parse_type(ty, context)?,
+                    pat_type,
+                ),
                 _ => bail!(
                     "Failed to parse function argument type `{}`",
                     type_to_string(ty)
@@ -48,6 +56,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         &mut self,
         path: &Path,
         argument_index: usize,
+        context: &TypeParserParsingContext,
     ) -> anyhow::Result<Option<FunctionPartialInfo>> {
         let last_segment = path.segments.last().unwrap();
         Ok(if last_segment.ident == STREAM_SINK_IDENT {
@@ -58,7 +67,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     // Unwrap is safe here because args.len() == 1
                     match args.last().unwrap() {
                         GenericArgument::Type(t) => Some(partial_info_for_stream_sink_type(
-                            self.type_parser.parse_type(t)?,
+                            self.type_parser.parse_type(t, context)?,
                             argument_index,
                         )?),
                         _ => None,

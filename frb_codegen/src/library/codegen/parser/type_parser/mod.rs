@@ -55,8 +55,8 @@ impl<'a> TypeParser<'a> {
 
     pub(crate) fn parse_type(
         &mut self,
-        context: &TypeParserParsingContext,
         ty: &Type,
+        context: &TypeParserParsingContext,
     ) -> anyhow::Result<IrType> {
         TypeParserWithContext {
             inner: &mut self,
