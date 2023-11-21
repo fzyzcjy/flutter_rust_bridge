@@ -7,6 +7,7 @@ use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::misc::parse_comments;
+use crate::codegen::parser::type_parser::ty::TypeParserParsingContext;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::utils::rust_project_utils::compute_mod_from_rust_path;
 use anyhow::{bail, Context};
@@ -45,6 +46,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         func: &ItemFn,
         file_path: &Path,
         rust_crate_dir: &Path,
+        context: &TypeParserParsingContext,
     ) -> anyhow::Result<IrFunc> {
         debug!("parse_function function name: {:?}", func.sig.ident);
 
@@ -55,7 +57,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let mut info = FunctionPartialInfo::default();
         for (i, sig_input) in sig.inputs.iter().enumerate() {
-            info = info.merge(self.parse_fn_arg(i, sig_input)?)?;
+            info = info.merge(self.parse_fn_arg(i, sig_input, context)?)?;
         }
         info = info.merge(self.parse_fn_output(sig)?)?;
 

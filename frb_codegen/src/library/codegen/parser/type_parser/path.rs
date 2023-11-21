@@ -1,4 +1,5 @@
 use crate::codegen::ir::ty::IrType;
+use crate::codegen::parser::type_parser::ty::TypeParserParsingContext;
 use crate::codegen::parser::type_parser::unencodable::{
     parse_path_type_to_unencodable, splay_segments,
 };
@@ -8,9 +9,13 @@ use quote::ToTokens;
 use syn::{Path, QSelf, TypePath};
 
 impl<'a> TypeParser<'a> {
-    pub(crate) fn parse_type_path(&mut self, type_path: &TypePath) -> anyhow::Result<IrType> {
+    pub(crate) fn parse_type_path(
+        &mut self,
+        type_path: &TypePath,
+        context: &TypeParserParsingContext,
+    ) -> anyhow::Result<IrType> {
         match &type_path {
-            TypePath { qself: None, path } => self.parse_type_path_core(type_path, path),
+            TypePath { qself: None, path } => self.parse_type_path_core(type_path, path, context),
             TypePath {
                 qself: Some(QSelf { ty, .. }),
                 ..
@@ -26,8 +31,9 @@ impl<'a> TypeParser<'a> {
         &mut self,
         type_path: &TypePath,
         path: &Path,
+        context: &TypeParserParsingContext,
     ) -> anyhow::Result<IrType> {
-        let segments = self.extract_path_data(path)?;
+        let segments = self.extract_path_data(path, context)?;
         let splayed_segments = splay_segments(&segments);
 
         if let Some(last_segment) = splayed_segments.last() {

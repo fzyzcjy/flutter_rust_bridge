@@ -1,3 +1,4 @@
+use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::misc::convert_ident_str;
@@ -6,7 +7,11 @@ use quote::ToTokens;
 use syn::Type;
 
 impl<'a> TypeParser<'a> {
-    pub(crate) fn parse_type(&mut self, ty: &Type) -> anyhow::Result<IrType> {
+    pub(crate) fn parse_type(
+        &mut self,
+        ty: &Type,
+        context: &TypeParserParsingContext,
+    ) -> anyhow::Result<IrType> {
         let resolve_ty = self.resolve_alias(ty).clone();
 
         Ok(match resolve_ty.clone() {
@@ -27,4 +32,8 @@ impl<'a> TypeParser<'a> {
     fn get_alias_type(&self, ty: &Type) -> Option<&Type> {
         convert_ident_str(ty).and_then(|key| self.src_types.get(&key))
     }
+}
+
+pub(crate) struct TypeParserParsingContext {
+    pub(crate) initiated_namespace: Namespace,
 }
