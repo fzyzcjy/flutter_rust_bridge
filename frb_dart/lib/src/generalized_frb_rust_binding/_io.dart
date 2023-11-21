@@ -15,8 +15,7 @@ class GeneralizedFrbRustBinding {
     try {
       _binding.store_dart_post_cobject(ffi.NativeApi.postCObject.cast());
     } on ArgumentError catch (e, s) {
-      print('${e.runtimeType} ${e.name} ${e.message}');
-      TODO;
+      _userFriendlyDynamicLibraryErrorReporting(e, s);
       rethrow;
     }
   }
@@ -35,4 +34,15 @@ class GeneralizedFrbRustBinding {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void freeWireSyncReturn(WireSyncReturn val) => _binding.free_wire_sync_return(val);
+}
+
+void _userFriendlyDynamicLibraryErrorReporting(ArgumentError e, StackTrace s) {
+  final message = e.message;
+  if (message is String && message.contains('Failed to lookup symbol')) {
+    throw ArgumentError(
+      '$e\n'
+      'This is often because the Rust library is not loaded correctly.\n'
+      'Original stack trace: $s',
+    );
+  }
 }
