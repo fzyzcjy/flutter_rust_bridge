@@ -123,6 +123,7 @@ pub(crate) struct FfigenCommandConfig {
     pub name: String,
     pub description: String,
     pub headers: FfigenCommandConfigHeaders,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub comments: Option<bool>,
     pub preamble: String,
     pub llvm_path: Vec<PathBuf>,
