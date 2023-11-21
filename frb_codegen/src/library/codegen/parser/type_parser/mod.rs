@@ -59,7 +59,7 @@ impl<'a> TypeParser<'a> {
         context: &TypeParserParsingContext,
     ) -> anyhow::Result<IrType> {
         TypeParserWithContext {
-            inner: &mut self,
+            inner: self,
             context,
         }
         .parse_type(ty)
