@@ -372,10 +372,10 @@ packages:
     dependency: "direct main"
     description:
       name: native_assets_cli
-      sha256: "3119600043214157fb54f4ef05717a82a7858f35625fe767799c60f3039361c8"
+      sha256: "51d1af3ebc2437f5883ed749f1877cb82d6a569b0712dad02c8370e6e4f2b5e3"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.3.2"
+    version: "0.2.0"
   node_preamble:
     dependency: transitive
     description:

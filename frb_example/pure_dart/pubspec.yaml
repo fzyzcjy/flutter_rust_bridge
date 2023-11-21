@@ -17,7 +17,7 @@ dependencies:
   test: ^1.21.4
   uuid: ^4.1.0
   collection: ^1.16.0
-  native_assets_cli: ^0.3.0
+  native_assets_cli: ^0.2.0
 dev_dependencies:
   build_runner: ^2.4.4
   freezed: ^2.1.0+1
