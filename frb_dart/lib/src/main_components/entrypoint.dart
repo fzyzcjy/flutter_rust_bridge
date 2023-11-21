@@ -36,7 +36,7 @@ abstract class BaseEntrypoint<A extends BaseApi> {
     if (__state != null) throw StateError('Should not initialize flutter_rust_bridge twice');
     __state = _EntrypointState(
       generalizedFrbRustBinding: GeneralizedFrbRustBinding(TODO),
-      api: api ?? createDefaultDispatcher(handler: handler),
+      api: api ?? createDefaultApi(handler: handler),
     );
   }
 
@@ -48,7 +48,7 @@ abstract class BaseEntrypoint<A extends BaseApi> {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @protected
-  A createDefaultDispatcher({BaseHandler? handler});
+  A createDefaultApi({BaseHandler? handler});
 }
 
 class _EntrypointState<A extends BaseApi> {
