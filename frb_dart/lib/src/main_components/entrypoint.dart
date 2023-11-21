@@ -54,6 +54,10 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl, W exten
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @protected
   ApiImplConstructor<AI, W> get apiImplConstructor;
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
+  @protected
+  WireConstructor<W> get wireConstructor;
 }
 
 class _EntrypointState<A extends BaseApi> {

@@ -25,6 +25,9 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 
   @override
   ApiImplConstructor<RustLibApiImpl, RustLibWire> get apiImplConstructor => RustLibApiImpl.new;
+
+  @override
+  WireConstructor<RustLibWire> get wireConstructor => RustLibWire.new;
 }
 
 abstract class RustLibApi extends BaseApi {
