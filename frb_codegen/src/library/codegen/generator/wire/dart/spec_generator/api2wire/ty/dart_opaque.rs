@@ -8,7 +8,6 @@ impl<'a> WireDartGeneratorApi2wireTrait for DartOpaqueWireDartGenerator<'a> {
         Acc {
             io: Some(
                 "
-                inner.dartApi.initApi();
                 final ptr = inner.new_DartOpaque();
                 _api_fill_to_wire_DartOpaque(raw, ptr);
                 return ptr;

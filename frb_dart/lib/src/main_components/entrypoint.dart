@@ -83,6 +83,7 @@ class _EntrypointState<A extends BaseApi> {
 
   _EntrypointState({required this.generalizedFrbRustBinding, required this.api}) {
     _setUpRustToDartCommunication(generalizedFrbRustBinding);
+    _initializeApiDlData(generalizedFrbRustBinding);
   }
 
   void dispose() {
@@ -113,4 +114,8 @@ class _DropPortManager {
 
 void _setUpRustToDartCommunication(GeneralizedFrbRustBinding generalizedFrbRustBinding) {
   generalizedFrbRustBinding.storeDartPostCObject();
+}
+
+void _initializeApiDlData(GeneralizedFrbRustBinding generalizedFrbRustBinding) {
+  generalizedFrbRustBinding.initFrbDartApiDl();
 }

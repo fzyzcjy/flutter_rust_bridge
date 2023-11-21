@@ -14,6 +14,9 @@ class GeneralizedFrbRustBinding {
   void storeDartPostCObject() => _binding.store_dart_post_cobject(ffi.NativeApi.postCObject.cast());
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
+  void initFrbDartApiDl() => _binding.init_frb_dart_api_dl(ffi.NativeApi.initializeApiDLData);
+
+  /// {@macro flutter_rust_bridge.only_for_generated_code}
   Object getDartObject(int ptr) => _binding.get_dart_object(ptr);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
