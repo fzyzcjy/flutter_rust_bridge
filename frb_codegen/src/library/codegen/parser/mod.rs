@@ -163,11 +163,7 @@ mod tests {
         let actual_ir = parse(&ParserInternalConfig {
             rust_input_path_pack: rust_input_path_pack.map(|f| f(&rust_crate_dir)).unwrap_or(
                 RustInputPathPack {
-                    rust_input_paths: [(
-                        "my_namespace".to_owned().into(),
-                        rust_crate_dir.join("src/api.rs"),
-                    )]
-                    .into(),
+                    rust_input_paths: vec![rust_crate_dir.join("src/api.rs")],
                 },
             ),
             rust_crate_dir: rust_crate_dir.clone(),
