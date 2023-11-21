@@ -86,6 +86,7 @@ class _EntrypointState<A extends BaseApi> {
   late final dropPortManager = _DropPortManager(generalizedFrbRustBinding);
 
   _EntrypointState({required this.generalizedFrbRustBinding, required this.api}) {
+    generalizedFrbRustBinding.sanityCheckExternalLibrary();
     _setUpRustToDartCommunication(generalizedFrbRustBinding);
     _initializeApiDlData(generalizedFrbRustBinding);
   }
