@@ -120,14 +120,8 @@ mod tests {
             "library/codegen/parser/mod/multi_input_file",
             Some(Box::new(|rust_crate_dir| RustInputPathPack {
                 rust_input_path: [
-                    (
-                        "namespace_one".to_owned().into(),
-                        rust_crate_dir.join("src/api_one.rs"),
-                    ),
-                    (
-                        "namespace_two".to_owned().into(),
-                        rust_crate_dir.join("src/api_two.rs"),
-                    ),
+                    rust_crate_dir.join("src/api_one.rs"),
+                    rust_crate_dir.join("src/api_two.rs"),
                 ]
                 .into(),
             })),
