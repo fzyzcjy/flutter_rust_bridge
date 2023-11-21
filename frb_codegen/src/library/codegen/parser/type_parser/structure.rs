@@ -24,19 +24,6 @@ impl<'a> TypeParser<'a> {
         splayed_segments: &[SplayedSegment],
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
-        if self.parsing_or_parsed_structs.insert(ident.clone().0) {
-            let api_struct = match self.parse_struct(src_struct)? {
-                Some(ir_struct) => ir_struct,
-                None => {
-                    return Ok(Some(parse_path_type_to_unencodable(
-                        type_path,
-                        splayed_segments,
-                    )))
-                }
-            };
-            self.struct_pool.insert(ident.clone(), api_struct);
-        }
-
         StructRef(IrTypeStructRef {
             ident: ident.clone(),
             is_exception: false,

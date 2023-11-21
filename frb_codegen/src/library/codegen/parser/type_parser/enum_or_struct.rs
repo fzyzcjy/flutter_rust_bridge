@@ -1,7 +1,9 @@
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::pack::IrStructPool;
 use crate::codegen::ir::ty::IrType;
-use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
+use crate::codegen::parser::type_parser::unencodable::{
+    parse_path_type_to_unencodable, SplayedSegment,
+};
 use std::collections::{HashMap, HashSet};
 use syn::TypePath;
 
@@ -17,7 +19,16 @@ pub(super) trait EnumOrStructParser<Id: From<NamespacedName>, Obj, SrcObj> {
                 let ident: Id = NamespacedName::new(TODO, name.to_string()).into();
 
                 if (self.parser_info().parsing_or_parsed_objects).insert(ident.clone().0) {
-                    let parsed_object = self.parse_inner(src_object)?;
+                    let parsed_object = match self.parse_inner(src_object)? {
+                        Some(parsed_object) => parsed_object,
+                        None => {
+                            return Ok(Some(parse_path_type_to_unencodable(
+                                type_path,
+                                splayed_segments,
+                            )))
+                        }
+                    };
+
                     (self.parser_info().object_pool).insert(ident.clone(), parsed_object);
                 }
 
