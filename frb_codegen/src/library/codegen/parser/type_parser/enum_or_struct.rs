@@ -1,4 +1,4 @@
-use crate::codegen::ir::namespace::NamespacedName;
+use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::pack::IrStructPool;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::source_graph::modules::StructOrEnumWrapper;
@@ -27,6 +27,7 @@ where
 
                 if (self.parser_info().parsing_or_parsed_objects).insert(namespaced_name) {
                     let (name, wrapper_name) = compute_name_and_wrapper_name(
+                        &namespaced_name.namespace,
                         &src_object.inner().ident,
                         src_object.inner().mirror,
                     );
@@ -81,6 +82,7 @@ impl<Id, Obj> EnumOrStructParserInfo<Id, Obj> {
 }
 
 fn compute_name_and_wrapper_name(
+    namespace: &Namespace,
     ident: &Ident,
     mirror: bool,
 ) -> (NamespacedName, Option<NamespacedName>) {
@@ -90,6 +92,8 @@ fn compute_name_and_wrapper_name(
     } else {
         None
     };
-    // (name, wrapper_name) // TODO
-    (TODO, TODO)
+    (
+        NamespacedName::new(namespace.clone(), name),
+        wrapper_name.map(|x| NamespacedName::new(namespace.clone(), x)),
+    )
 }
