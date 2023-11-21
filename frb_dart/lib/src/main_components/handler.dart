@@ -58,15 +58,15 @@ S _transformRust2DartMessage<S, E extends Object>(
   switch (_Rust2DartAction.values[raw[0]]) {
     case _Rust2DartAction.success:
       assert(raw.length == 2);
-      return parseSuccessData(raw);
+      return parseSuccessData(raw[1]);
 
     case _Rust2DartAction.error:
       assert(raw.length == 2);
-      throw parseErrorData!(raw);
+      throw parseErrorData!(raw[1]);
 
     case _Rust2DartAction.panic:
       assert(raw.length == 2);
-      throw wire2apiPanicError(raw);
+      throw wire2apiPanicError(raw[1]);
 
     case _Rust2DartAction.closeStream:
       assert(raw.length == 1);
