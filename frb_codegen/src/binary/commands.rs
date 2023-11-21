@@ -24,7 +24,7 @@ pub(crate) enum Commands {
     /// Integrate Rust into existing Flutter project
     Integrate(IntegrateCommandArgs),
 
-    /// Only for internal usage
+    /// Generate internally used code
     #[clap(hide = true)]
     InternalGenerate(InternalGenerateCommandArgs),
 }
