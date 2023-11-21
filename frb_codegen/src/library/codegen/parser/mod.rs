@@ -78,7 +78,8 @@ pub(crate) fn parse(config: &ParserInternalConfig) -> anyhow::Result<IrPack> {
 
 #[cfg(test)]
 mod tests {
-    use crate::codegen::parser::internal_config::{ParserInternalConfig, RustInputPathPack};
+    use crate::codegen::config::internal_config::RustInputPathPack;
+    use crate::codegen::parser::internal_config::ParserInternalConfig;
     use crate::codegen::parser::parse;
     use crate::codegen::parser::source_graph::crates::Crate;
     use crate::utils::logs::configure_opinionated_test_logging;
