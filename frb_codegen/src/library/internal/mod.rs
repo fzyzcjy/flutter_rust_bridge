@@ -1,9 +1,15 @@
 use crate::library::commands::ffigen::ffigen_raw;
 use log::info;
 use serde_json::json;
+use std::env;
 use std::path::PathBuf;
 
 pub fn generate() -> anyhow::Result<()> {
+    let repo_base_dir = PathBuf::from(env::var("CARGO_MANIFEST_DIR")?)
+        .parent()
+        .unwrap();
+    info!("Determine repo_base_dir={repo_base_dir:?}");
+
     generate_dart_native_api()?;
     Ok(())
 }
