@@ -120,7 +120,7 @@ fn generate_imports(types: &[IrType], context: WireRustGeneratorContext) -> anyh
         .values()
         .map(|rust_input_path| {
             Ok(format!(
-                "use {};\n",
+                "use crate::{};\n",
                 compute_mod_from_rust_path(rust_input_path, &context.config.rust_crate_dir)?
             ))
         })
