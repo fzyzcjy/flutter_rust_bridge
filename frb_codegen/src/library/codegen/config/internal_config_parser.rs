@@ -272,7 +272,7 @@ fn compute_mod_from_rust_path(code_path: &Path, crate_path: &Path) -> Result<Str
     })
 }
 
-const FALLBACK_DART_ENTRYPOINT_CLASS_NAME: &'static str = "Rust";
+const FALLBACK_DART_ENTRYPOINT_CLASS_NAME: &'static str = "RustLib";
 
 fn compute_dart_platform_class_name(dart_entrypoint_class_name: &str) -> String {
     format!("{dart_entrypoint_class_name}Platform")

@@ -3,15 +3,15 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart.dart';
 
 /// Main entrypoint of the Rust API
-class Rust extends BaseEntrypoint<RustApi> {
+class RustLib extends BaseEntrypoint<RustLibApi> {
   @internal
-  static final instance = Rust._();
+  static final instance = RustLib._();
 
-  Rust._();
+  RustLib._();
 
   /// Initialize flutter_rust_bridge
   static Future<void> init({
-    RustApi? api,
+    RustLibApi? api,
     BaseHandler? handler,
   }) async {
     await instance.initImpl(api: api, handler: handler);
@@ -24,16 +24,16 @@ class Rust extends BaseEntrypoint<RustApi> {
   static void dispose() => instance.disposeImpl();
 
   @override
-  RustApi createDefaultApi({BaseHandler? handler}) =>
-      RustApiImpl(wire: RustWire(TODO), handler: handler, generalizedFrbRustBinding: TODO);
+  RustLibApi createDefaultApi({BaseHandler? handler}) =>
+      RustLibApiImpl(wire: RustLibWire(TODO), handler: handler, generalizedFrbRustBinding: TODO);
 }
 
-abstract class RustApi extends BaseApi<RustApiImpl> {
+abstract class RustLibApi extends BaseApi<RustLibApiImpl> {
   Future<int> simpleAdder({required int a, required int b, dynamic hint});
 }
 
-class RustApiImpl extends RustApiImplPlatform implements RustApi {
-  RustApiImpl({super.handler, required super.wire, required super.generalizedFrbRustBinding});
+class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
+  RustLibApiImpl({super.handler, required super.wire, required super.generalizedFrbRustBinding});
 
   @override
   Future<int> simpleAdder({required int a, required int b, dynamic hint}) {
