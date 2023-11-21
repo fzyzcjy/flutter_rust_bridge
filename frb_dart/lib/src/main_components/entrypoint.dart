@@ -34,14 +34,17 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl, W exten
   Future<void> initImpl({
     A? api,
     BaseHandler? handler,
+    ExternalLibrary? externalLibrary,
   }) async {
     if (__state != null) throw StateError('Should not initialize flutter_rust_bridge twice');
 
-    final externalLibrary = ExternalLibrary(TODO);
+    externalLibrary ??= ExternalLibrary(TODO);
+    api ??= _createDefaultApi(handler, generalizedFrbRustBinding, externalLibrary);
+
     final generalizedFrbRustBinding = GeneralizedFrbRustBinding(externalLibrary);
     __state = _EntrypointState(
       generalizedFrbRustBinding: generalizedFrbRustBinding,
-      api: api ?? _createDefaultApi(handler, generalizedFrbRustBinding, externalLibrary),
+      api: api,
     );
   }
 
