@@ -1,5 +1,5 @@
 use anyhow::{anyhow, bail};
-use log::debug;
+use log::{debug, info};
 use std::fs;
 use std::path::Path;
 
@@ -69,11 +69,10 @@ pub(crate) fn cbindgen_raw(
 
     let bindings = cbindgen::generate_with_config(parsed_crate_dir, config)?;
 
-    if bindings.write_to_file(c_output_path) {
-        Ok(())
-    } else {
-        bail!("cbindgen failed writing file")
-    }
+    // no need to worry about return value. false just means content not change
+    bindings.write_to_file(c_output_path);
+
+    Ok(())
 }
 
 fn parse_crate_dir(rust_crate_dir: &Path) -> anyhow::Result<String> {
