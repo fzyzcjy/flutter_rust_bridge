@@ -3,6 +3,7 @@
 use crate::codegen::ir::annotation::IrDartAnnotation;
 use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::field::IrField;
+use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 use convert_case::{Case, Casing};
@@ -13,7 +14,7 @@ pub struct IrTypeStructRef {
     pub is_exception: bool,
 }
 
-pub struct IrStructIdent(pub String);
+pub struct IrStructIdent(pub NamespacedName);
 
 pub struct IrStruct {
     pub name: String,

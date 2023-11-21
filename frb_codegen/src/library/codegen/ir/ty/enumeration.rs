@@ -2,6 +2,7 @@
 
 use crate::codegen::ir::comment::IrComment;
 use crate::codegen::ir::ident::IrIdent;
+use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::structure::IrStruct;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
@@ -13,7 +14,7 @@ pub struct IrTypeEnumRef {
     pub is_exception: bool,
 }
 
-pub struct IrEnumIdent(pub String);
+pub struct IrEnumIdent(pub NamespacedName);
 
 pub struct IrEnum {
     pub name: String,
