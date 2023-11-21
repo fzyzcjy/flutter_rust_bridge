@@ -3,10 +3,11 @@ use crate::library::commands::ffigen::{
     ffigen_raw, FfigenCommandConfig, FfigenCommandConfigHeaders,
 };
 use crate::utils::path_utils::path_to_string;
+use convert_case::{Case, Casing};
 use log::info;
 use serde_json::json;
 use std::env;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 
 pub fn generate() -> anyhow::Result<()> {
     let repo_base_dir = compute_repo_base_dir()?;
@@ -30,20 +31,10 @@ fn compute_repo_base_dir() -> anyhow::Result<PathBuf> {
 fn generate_dart_native_api_ffigen(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
     info!("generate_dart_native_api_ffigen");
 
-    let header = repo_base_dir.join("frb_rust/src/dart_api/dart_native_api.h");
-    ffigen_raw(
-        &FfigenCommandConfig {
-            output: repo_base_dir.join("frb_dart/lib/src/ffigen_generated/dart_native_api.dart"),
-            name: "DartNativeApiCBinding".to_owned(),
-            headers: FfigenCommandConfigHeaders {
-                entry_points: vec![header.clone()],
-                include_directives: vec![header],
-            },
-            preamble: FFIGEN_PREAMBLE.to_owned(),
-            description: FFIGEN_DESCRIPTION.to_owned(),
-            ..Default::default()
-        },
-        &repo_base_dir.join("frb_dart"),
+    ffigen(
+        repo_base_dir,
+        &repo_base_dir.join("frb_rust/src/dart_api/dart_native_api.h"),
+        "dart_native_api",
     )
 }
 
@@ -60,14 +51,23 @@ fn generate_frb_rust_cbindgen(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
 fn generate_frb_rust_ffigen(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
     info!("generate_frb_rust_ffigen");
 
-    let header = repo_base_dir.join("frb_dart/lib/src/ffigen_generated/frb_rust.h");
+    ffigen(
+        repo_base_dir,
+        &repo_base_dir.join("frb_dart/lib/src/ffigen_generated/frb_rust.h"),
+        "frb_rust",
+    )
+}
+
+fn ffigen(repo_base_dir: &Path, header: &Path, name: &str) -> anyhow::Result<()> {
     ffigen_raw(
         &FfigenCommandConfig {
-            output: repo_base_dir.join("frb_dart/lib/src/ffigen_generated/frb_rust.dart"),
-            name: "FrbRustCBinding".to_owned(),
+            output: repo_base_dir
+                .join("frb_dart/lib/src/ffigen_generated")
+                .join(format!("{}.dart", name.to_case(Case::Snake))),
+            name: name.to_case(Case::Pascal),
             headers: FfigenCommandConfigHeaders {
-                entry_points: vec![header.clone()],
-                include_directives: vec![header],
+                entry_points: vec![header.to_owned()],
+                include_directives: vec![header.to_owned()],
             },
             preamble: FFIGEN_PREAMBLE.to_owned(),
             description: FFIGEN_DESCRIPTION.to_owned(),
