@@ -28,6 +28,9 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 
   @override
   WireConstructor<RustLibWire> get wireConstructor => RustLibWire.new;
+
+  @override
+  String get defaultExternalLibraryStem => 'frb_example_pure_dart';
 }
 
 abstract class RustLibApi extends BaseApi {
