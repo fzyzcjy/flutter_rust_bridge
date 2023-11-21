@@ -17,8 +17,8 @@ pub struct IrTypeEnumRef {
 pub struct IrEnumIdent(pub NamespacedName);
 
 pub struct IrEnum {
-    pub name: String,
-    pub wrapper_name: Option<String>,
+    pub name: NamespacedName,
+    pub wrapper_name: Option<NamespacedName>,
     pub path: Vec<String>,
     pub comments: Vec<IrComment>,
     pub variants: Vec<IrVariant>,

@@ -17,8 +17,8 @@ pub struct IrTypeStructRef {
 pub struct IrStructIdent(pub NamespacedName);
 
 pub struct IrStruct {
-    pub name: String,
-    pub wrapper_name: Option<String>,
+    pub name: NamespacedName,
+    pub wrapper_name: Option<NamespacedName>,
     pub path: Option<Vec<String>>,
     pub fields: Vec<IrField>,
     pub is_fields_named: bool,
