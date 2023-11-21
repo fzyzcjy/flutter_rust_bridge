@@ -1,0 +1,5 @@
+[build]
+# NOTE override target directory, because otherwise it will generate at Cargo workspace's target directory,
+#      then we cannot use the default locations when loading libraries in frb,
+#      but need to manually specify which directory it is in.
+target-dir = "target"
