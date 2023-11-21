@@ -48,6 +48,8 @@ fn generate_dart_native_api_ffigen(repo_base_dir: &PathBuf) -> anyhow::Result<()
 }
 
 fn generate_frb_rust_cbindgen(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
+    info!("generate_frb_rust_cbindgen");
+
     cbindgen_raw(
         cbindgen::Config {
             ..Default::default()
@@ -58,6 +60,8 @@ fn generate_frb_rust_cbindgen(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
 }
 
 fn generate_frb_rust_ffigen(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
+    info!("generate_frb_rust_ffigen");
+
     let header = repo_base_dir.join("frb_dart/lib/src/ffigen_generated/frb_rust.h");
     ffigen_raw(
         &FfigenCommandConfig {

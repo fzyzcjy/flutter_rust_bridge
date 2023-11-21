@@ -59,15 +59,16 @@ fn ffigen_to_file(args: FfigenToFileArgs) -> anyhow::Result<()> {
     );
 
     let config = parse_config(&args);
-    debug!("ffigen config: {}", config);
 
     ffigen_raw(&config, args.dart_root)
 }
 
 pub(crate) fn ffigen_raw(config: &FfigenCommandConfig, dart_root: &Path) -> anyhow::Result<()> {
+    let config = serde_json::to_string(config)?;
+
     let mut config_file = tempfile::NamedTempFile::new()?;
     config_file.write_all(config.as_bytes())?;
-    debug!("ffigen config_file: {:?}", config_file);
+    debug!("ffigen_raw config={config:?} config_file={config_file:?}");
 
     let repo = DartRepository::from_str(&path_to_string(dart_root)?).unwrap();
     let res = command_run!(
