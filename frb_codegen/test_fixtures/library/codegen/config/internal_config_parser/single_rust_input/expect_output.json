@@ -5,7 +5,7 @@
       "dart_decl_output_path": {
         "api": "{the-working-directory}/my_dart_folder/api/api.dart"
       },
-      "dart_entrypoint_class_name": "Rust",
+      "dart_entrypoint_class_name": "RustLib",
       "dart_enums_style": false
     },
     "wire": {
@@ -19,13 +19,13 @@
         }
       },
       "dart": {
-        "dart_entrypoint_class_name": "Rust",
+        "dart_entrypoint_class_name": "RustLib",
         "dart_impl_output_path": {
           "common": "{the-working-directory}/my_dart_folder/frb_generated.dart",
           "io": "{the-working-directory}/my_dart_folder/frb_generated.io.dart",
           "wasm": "{the-working-directory}/my_dart_folder/frb_generated.web.dart"
         },
-        "dart_platform_class_name": "RustPlatform",
+        "dart_platform_class_name": "RustLibPlatform",
         "dart_root": "{the-working-directory}",
         "extra_headers": "",
         "llvm_compiler_opts": "",
