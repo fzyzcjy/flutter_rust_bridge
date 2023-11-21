@@ -130,7 +130,7 @@ impl DartRepository {
     }
 
     pub(crate) fn command_extra_args(&self) -> Vec<String> {
-        if self.at.join("build.rs").exists() {
+        if self.at.join("build.dart").exists() {
             vec!["--enable-experiment=native-assets".to_owned()]
         } else {
             vec![]
