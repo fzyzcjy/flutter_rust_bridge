@@ -22,6 +22,7 @@ use anyhow::{ensure, Context, Result};
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 use log::debug;
+use pathdiff::diff_paths;
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 
@@ -66,7 +67,8 @@ impl InternalConfig {
         let default_external_library_stem = compute_default_external_library_stem(&rust_crate_dir)
             .unwrap_or(FALLBACK_DEFAULT_EXTERNAL_LIBRARY_STEM.to_owned());
         let default_external_library_relative_directory =
-            compute_default_external_library_relative_directory(&rust_crate_dir, &dart_root);
+            compute_default_external_library_relative_directory(&rust_crate_dir, &dart_root)
+                .unwrap_or(FALLBACK_DEFAULT_EXTERNAL_LIBRARY_RELATIVE_DIRECTORY.to_owned());
 
         let wasm_enabled = config.wasm.unwrap_or(true);
         let dart_enums_style = config.dart_enums_style.unwrap_or(false);
@@ -155,16 +157,16 @@ fn compute_default_external_library_stem(rust_crate_dir: &Path) -> Result<String
     Ok(target.name.clone())
 }
 
-const FALLBACK_DEFAULT_EXTERNAL_LIBRARY_STEM: &str = "UNKNOWN";
-
 fn compute_default_external_library_relative_directory(
     rust_crate_dir: &Path,
     dart_root: &Path,
-) -> String {
-    // TODO when not relative
-    rust_crate_dir.strip_prefix(dart_root);
-    todo!()
+) -> Result<String> {
+    let diff = diff_paths(rust_crate_dir, dart_root).context("cannot diff path")?;
+    Ok(diff.join("target").join("release"))
 }
+
+const FALLBACK_DEFAULT_EXTERNAL_LIBRARY_STEM: &str = "UNKNOWN";
+const FALLBACK_DEFAULT_EXTERNAL_LIBRARY_RELATIVE_DIRECTORY: &str = "UNKNOWN";
 
 impl RustInputPathPack {
     fn one_rust_input_path(&self) -> &Path {
