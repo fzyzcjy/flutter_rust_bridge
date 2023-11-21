@@ -1,7 +1,9 @@
 import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-ExternalLibrary loadExternalLibrary() {
+ExternalLibrary loadExternalLibrary({
+  required String name,
+}) {
   throw Exception('TODO');
 }
 
