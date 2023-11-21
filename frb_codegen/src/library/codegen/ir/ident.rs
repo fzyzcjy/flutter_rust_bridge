@@ -23,3 +23,9 @@ impl IrIdent {
             .to_case(Case::Camel)
     }
 }
+
+impl std::fmt::Display for IrIdent {
+    fn fmt(&self, fmt: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
+        fmt.write_str(&self.raw)
+    }
+}

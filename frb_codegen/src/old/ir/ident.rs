@@ -8,9 +8,3 @@ impl serde::Serialize for IrIdent {
         s.serialize_newtype_struct("IrIdent", &self.raw)
     }
 }
-
-impl std::fmt::Display for IrIdent {
-    fn fmt(&self, fmt: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
-        fmt.write_str(&self.raw)
-    }
-}
