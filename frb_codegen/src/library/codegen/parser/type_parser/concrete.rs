@@ -12,10 +12,10 @@ use crate::codegen::ir::ty::IrType::{
 };
 use crate::codegen::parser::type_parser::unencodable::ArgsRefs::Generic;
 use crate::codegen::parser::type_parser::unencodable::{splay_segments, SplayedSegment};
-use crate::codegen::parser::type_parser::TypeParser;
+use crate::codegen::parser::type_parser::TypeParserWithContext;
 use anyhow::bail;
 
-impl<'a> TypeParser<'a> {
+impl<'a> TypeParserWithContext<'a> {
     pub(crate) fn parse_type_path_data_concrete(
         &mut self,
         last_segment: &SplayedSegment,

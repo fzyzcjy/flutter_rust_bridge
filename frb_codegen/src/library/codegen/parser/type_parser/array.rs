@@ -1,11 +1,11 @@
 use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegateArray};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{Delegate, Primitive};
-use crate::codegen::parser::type_parser::TypeParser;
+use crate::codegen::parser::type_parser::TypeParserWithContext;
 use anyhow::bail;
 use syn::Expr;
 
-impl<'a> TypeParser<'a> {
+impl<'a> TypeParserWithContext<'a> {
     pub(crate) fn parse_type_array(
         &mut self,
         type_array: &syn::TypeArray,

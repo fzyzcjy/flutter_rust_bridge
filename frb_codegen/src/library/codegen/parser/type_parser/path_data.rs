@@ -2,7 +2,7 @@ use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::unencodable::{Args, NameComponent};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Primitive;
-use crate::codegen::parser::type_parser::TypeParser;
+use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::if_then_some;
 use anyhow::Result;
 use anyhow::{anyhow, Context};
@@ -12,7 +12,7 @@ use syn::{
     PathArguments, PathSegment,
 };
 
-impl<'a> TypeParser<'a> {
+impl<'a> TypeParserWithContext<'a> {
     pub(crate) fn extract_path_data(&mut self, path: &Path) -> Result<Vec<NameComponent>> {
         path.segments
             .iter()

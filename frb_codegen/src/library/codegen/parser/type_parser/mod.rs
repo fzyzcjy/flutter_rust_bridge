@@ -13,7 +13,7 @@ pub(crate) mod ty;
 pub(crate) mod unencodable;
 pub(crate) mod vec;
 
-use crate::codegen::ir::namespace::NamespacedName;
+use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::pack::{IrEnumPool, IrStructPool};
 use crate::codegen::ir::ty::enumeration::{IrEnum, IrEnumIdent};
 use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent};
@@ -51,4 +51,13 @@ impl<'a> TypeParser<'a> {
             self.enum_parser_info.object_pool,
         )
     }
+}
+
+pub(crate) struct TypeParserWithContext<'a> {
+    pub inner: TypeParser<'a>,
+    pub context: TypeParserParsingContext,
+}
+
+pub(crate) struct TypeParserParsingContext {
+    pub(crate) initiated_namespace: Namespace,
 }

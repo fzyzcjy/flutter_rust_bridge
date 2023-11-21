@@ -1,11 +1,11 @@
 use crate::codegen::ir::ty::unencodable::IrTypeUnencodable;
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::misc::convert_ident_str;
-use crate::codegen::parser::type_parser::TypeParser;
+use crate::codegen::parser::type_parser::TypeParserWithContext;
 use quote::ToTokens;
 use syn::Type;
 
-impl<'a> TypeParser<'a> {
+impl<'a> TypeParserWithContext<'a> {
     pub(crate) fn parse_type(&mut self, ty: &Type) -> anyhow::Result<IrType> {
         let resolve_ty = self.resolve_alias(ty).clone();
 

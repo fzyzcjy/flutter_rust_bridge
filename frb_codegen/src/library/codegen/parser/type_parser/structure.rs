@@ -13,11 +13,11 @@ use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::unencodable::{
     parse_path_type_to_unencodable, SplayedSegment,
 };
-use crate::codegen::parser::type_parser::TypeParser;
+use crate::codegen::parser::type_parser::TypeParserWithContext;
 use std::collections::HashMap;
 use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, Ident, ItemStruct, TypePath};
 
-impl<'a> TypeParser<'a> {
+impl<'a> TypeParserWithContext<'a> {
     pub(crate) fn parse_type_path_data_struct(
         &mut self,
         type_path: &TypePath,
@@ -80,7 +80,7 @@ impl<'a> TypeParser<'a> {
     }
 }
 
-struct EnumOrStructParserStruct<'a>(&'a mut TypeParser<'a>);
+struct EnumOrStructParserStruct<'a>(&'a mut TypeParserWithContext<'a>);
 
 impl<'a> EnumOrStructParser<IrStructIdent, IrStruct, Struct, ItemStruct>
     for EnumOrStructParserStruct<'a>

@@ -2,12 +2,12 @@ use crate::codegen::ir::ty::IrType;
 use crate::codegen::parser::type_parser::unencodable::{
     parse_path_type_to_unencodable, splay_segments,
 };
-use crate::codegen::parser::type_parser::TypeParser;
+use crate::codegen::parser::type_parser::TypeParserWithContext;
 use anyhow::bail;
 use quote::ToTokens;
 use syn::{Path, QSelf, TypePath};
 
-impl<'a> TypeParser<'a> {
+impl<'a> TypeParserWithContext<'a> {
     pub(crate) fn parse_type_path(&mut self, type_path: &TypePath) -> anyhow::Result<IrType> {
         match &type_path {
             TypePath { qself: None, path } => self.parse_type_path_core(type_path, path),

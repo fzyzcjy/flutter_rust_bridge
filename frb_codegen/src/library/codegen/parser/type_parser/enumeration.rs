@@ -17,11 +17,11 @@ use crate::codegen::parser::type_parser::enum_or_struct::{
 };
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
-use crate::codegen::parser::type_parser::TypeParser;
+use crate::codegen::parser::type_parser::TypeParserWithContext;
 use std::collections::HashMap;
 use syn::{Attribute, Field, Ident, ItemEnum, TypePath, Variant};
 
-impl<'a> TypeParser<'a> {
+impl<'a> TypeParserWithContext<'a> {
     pub(crate) fn parse_type_path_data_enum(
         &mut self,
         type_path: &TypePath,
@@ -119,7 +119,7 @@ impl<'a> TypeParser<'a> {
     }
 }
 
-struct EnumOrStructParserEnum<'a>(&'a mut TypeParser<'a>);
+struct EnumOrStructParserEnum<'a>(&'a mut TypeParserWithContext<'a>);
 
 impl<'a> EnumOrStructParser<IrEnumIdent, IrEnum, Enum, ItemEnum> for EnumOrStructParserEnum<'a> {
     fn parse_inner(

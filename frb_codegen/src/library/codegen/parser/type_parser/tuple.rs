@@ -6,13 +6,13 @@ use crate::codegen::ir::ty::record::IrTypeRecord;
 use crate::codegen::ir::ty::structure::{IrStruct, IrStructIdent, IrTypeStructRef};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::Primitive;
-use crate::codegen::parser::type_parser::TypeParser;
+use crate::codegen::parser::type_parser::TypeParserWithContext;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use anyhow::Result;
 use itertools::Itertools;
 use syn::TypeTuple;
 
-impl<'a> TypeParser<'a> {
+impl<'a> TypeParserWithContext<'a> {
     pub(crate) fn parse_type_tuple(&mut self, type_tuple: &TypeTuple) -> anyhow::Result<IrType> {
         if type_tuple.elems.is_empty() {
             return Ok(Primitive(IrTypePrimitive::Unit));
