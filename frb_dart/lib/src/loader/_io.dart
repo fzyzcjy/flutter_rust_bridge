@@ -5,35 +5,43 @@ import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 ExternalLibrary loadExternalLibrary({
-  required String name,
+  required String stem,
 }) {
-  // also see https://github.com/fzyzcjy/flutter_rust_bridge/pull/898
+  // ref
+  // * https://flutter.dev/docs/development/platform-integration/c-interop
+  // * https://github.com/fzyzcjy/flutter_rust_bridge/pull/898
+
+  if (Platform.isAndroid) {
+    return DynamicLibrary.open('lib$stem.so');
+  }
 
   if (Platform.isIOS) {
     return DynamicLibrary.process();
   }
 
+  if (Platform.isWindows) {
+    return DynamicLibrary.open('$stem.dll');
+  }
+
   if (Platform.isMacOS) {
+    // TODO
     if (Abi.current() == Abi.macosX64) {
       return DynamicLibrary.executable();
+    } else {
+      return DynamicLibrary.open(path);
     }
   }
 
-  return DynamicLibrary.open(path);
+  if (Platform.isLinux) {
+    return DynamicLibrary.open('lib$stem.so');
+  }
+
+  // Feel free to PR to add support for more platforms! (e.g. I do not have a Fuchsia device, so cannot test that)
+  throw Exception('loadExternalLibrary failed: Unknown platform=${Platform.operatingSystem}');
 }
 
 // internal code
 DynamicLibrary _openDylib() {
-  // https://flutter.dev/docs/development/platform-integration/c-interop
-  if (Platform.isAndroid || Platform.isLinux) return DynamicLibrary.open('libvision_utils_rs.so');
-  if (Platform.isIOS) return DynamicLibrary.process();
-
-  if (Platform.isWindows) {
-    final dllAbsolutePath = path.join(path.dirname(Platform.resolvedExecutable), 'vision_utils_rs.dll');
-    Log.d(_kTag, 'openDylib dllAbsolutePath=$dllAbsolutePath', self: null);
-    return DynamicLibrary.open(dllAbsolutePath);
-  }
-
   if (Platform.isMacOS) {
     // e.g. pure dart
     try {
