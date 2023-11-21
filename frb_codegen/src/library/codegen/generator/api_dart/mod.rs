@@ -22,7 +22,7 @@ pub(crate) fn generate(
         output_texts: PathTexts(vec![PathText::new(
             // TODO handle multi file
             (config.dart_decl_output_path.values().next().unwrap()).to_owned(),
-            text,
+            text.end_api_text,
         )]),
     })
 }
