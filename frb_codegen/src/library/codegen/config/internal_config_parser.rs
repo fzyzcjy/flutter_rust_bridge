@@ -224,7 +224,7 @@ fn compute_namespace_from_rust_input_path(rust_input_path: &Path) -> Result<Depr
 }
 
 struct DartOutputPathPack {
-    dart_decl_output_path: HashMap<DeprecatedNamespace, PathBuf>,
+    dart_decl_base_output_path: PathBuf,
     dart_impl_output_path: TargetOrCommonMap<PathBuf>,
 }
 
