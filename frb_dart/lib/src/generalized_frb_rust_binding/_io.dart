@@ -1,13 +1,14 @@
 import 'dart:ffi' as ffi;
 
 import 'package:flutter_rust_bridge/src/ffigen_generated/multi_package.dart';
+import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 class GeneralizedFrbRustBinding {
   final MultiPackageCBinding _binding;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
-  GeneralizedFrbRustBinding(this._binding);
+  GeneralizedFrbRustBinding(ExternalLibrary externalLibrary) : _binding = MultiPackageCBinding(externalLibrary);
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   void storeDartPostCObject() => _binding.store_dart_post_cobject(ffi.NativeApi.postCObject.cast());

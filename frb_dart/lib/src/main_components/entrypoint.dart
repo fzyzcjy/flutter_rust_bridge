@@ -37,11 +37,11 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl, W exten
   }) async {
     if (__state != null) throw StateError('Should not initialize flutter_rust_bridge twice');
 
-    final generalizedFrbRustBinding = GeneralizedFrbRustBinding(TODO);
+    final externalLibrary = ExternalLibrary(TODO);
+    final generalizedFrbRustBinding = GeneralizedFrbRustBinding(externalLibrary);
     __state = _EntrypointState(
       generalizedFrbRustBinding: generalizedFrbRustBinding,
-      api: api ??
-          (apiImplConstructor(handler: handler, generalizedFrbRustBinding: generalizedFrbRustBinding, wire: TODO) as A),
+      api: api ?? _createDefaultApi(handler, generalizedFrbRustBinding, externalLibrary),
     );
   }
 
@@ -58,6 +58,18 @@ abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl, W exten
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @protected
   WireConstructor<W> get wireConstructor;
+
+  A _createDefaultApi(
+    BaseHandler? handler,
+    GeneralizedFrbRustBinding generalizedFrbRustBinding,
+    ExternalLibrary externalLibrary,
+  ) {
+    return apiImplConstructor(
+      handler: handler,
+      generalizedFrbRustBinding: generalizedFrbRustBinding,
+      wire: wireConstructor(externalLibrary: externalLibrary),
+    ) as A;
+  }
 }
 
 class _EntrypointState<A extends BaseApi> {
