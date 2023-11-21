@@ -40,8 +40,8 @@ impl<'a> TypeParser<'a> {
             src_structs,
             src_enums,
             src_types,
-            struct_parser_info: Default::default(),
-            enum_parser_info: Default::default(),
+            struct_parser_info: EnumOrStructParserInfo::new(),
+            enum_parser_info: EnumOrStructParserInfo::new(),
         }
     }
 

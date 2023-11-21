@@ -19,7 +19,7 @@ use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::unencodable::SplayedSegment;
 use crate::codegen::parser::type_parser::TypeParser;
 use std::collections::HashMap;
-use syn::{Attribute, Field, Ident, TypePath, Variant};
+use syn::{Attribute, Field, Ident, ItemEnum, TypePath, Variant};
 
 impl<'a> TypeParser<'a> {
     pub(crate) fn parse_type_path_data_enum(
@@ -120,7 +120,7 @@ impl<'a> TypeParser<'a> {
 
 struct EnumOrStructParserEnum<'a>(&'a mut TypeParser<'a>);
 
-impl<'a> EnumOrStructParser<IrEnumIdent, IrEnum, Enum> for EnumOrStructParserEnum<'a> {
+impl<'a> EnumOrStructParser<IrEnumIdent, IrEnum, Enum, ItemEnum> for EnumOrStructParserEnum<'a> {
     fn parse_inner(
         &mut self,
         src_object: &Enum,
@@ -135,7 +135,7 @@ impl<'a> EnumOrStructParser<IrEnumIdent, IrEnum, Enum> for EnumOrStructParserEnu
             ident: ident.clone(),
             is_exception: false,
         };
-        let enu = self.0.enum_parser_info.get(&ident);
+        let enu = self.0.enum_parser_info.object_pool.get(&ident);
 
         return Ok(
             if enu.map(|e| e.mode == IrEnumMode::Complex).unwrap_or(true) {

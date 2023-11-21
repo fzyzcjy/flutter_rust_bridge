@@ -15,7 +15,7 @@ use crate::codegen::parser::type_parser::unencodable::{
 };
 use crate::codegen::parser::type_parser::TypeParser;
 use std::collections::HashMap;
-use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, Ident, TypePath};
+use syn::{Field, Fields, FieldsNamed, FieldsUnnamed, Ident, ItemStruct, TypePath};
 
 impl<'a> TypeParser<'a> {
     pub(crate) fn parse_type_path_data_struct(
@@ -82,7 +82,9 @@ impl<'a> TypeParser<'a> {
 
 struct EnumOrStructParserStruct<'a>(&'a mut TypeParser<'a>);
 
-impl<'a> EnumOrStructParser<IrStructIdent, IrStruct, Struct> for EnumOrStructParserStruct<'a> {
+impl<'a> EnumOrStructParser<IrStructIdent, IrStruct, Struct, ItemStruct>
+    for EnumOrStructParserStruct<'a>
+{
     fn parse_inner(
         &mut self,
         src_object: &Struct,

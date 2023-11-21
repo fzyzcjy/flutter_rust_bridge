@@ -29,7 +29,7 @@ impl<'a> TypeParser<'a> {
             .collect_vec()
             .join("_");
         let safe_ident = format!("__record__{safe_ident}");
-        self.struct_pool.insert(
+        self.struct_parser_info.object_pool.insert(
             IrStructIdent(NamespacedName::new(TODO, safe_ident.clone())),
             IrStruct {
                 name: NamespacedName::new(TODO, safe_ident.clone()),

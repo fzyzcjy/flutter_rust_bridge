@@ -6,9 +6,14 @@ use crate::codegen::parser::type_parser::unencodable::{
     parse_path_type_to_unencodable, SplayedSegment,
 };
 use std::collections::{HashMap, HashSet};
+use std::hash::Hash;
 use syn::{Ident, TypePath};
 
-pub(super) trait EnumOrStructParser<Id: From<NamespacedName>, Obj, SrcObj: StructOrEnumWrapper<_>> {
+pub(super) trait EnumOrStructParser<Id, Obj, SrcObj, Item>
+where
+    Id: From<NamespacedName> + Clone + PartialEq + Eq + Hash,
+    SrcObj: StructOrEnumWrapper<Item>,
+{
     fn parse(
         &mut self,
         type_path: &TypePath,
@@ -17,15 +22,16 @@ pub(super) trait EnumOrStructParser<Id: From<NamespacedName>, Obj, SrcObj: Struc
     ) -> anyhow::Result<Option<IrType>> {
         if let (name, _) = last_segment {
             if let Some(src_object) = self.src_objects().get(*name) {
-                let ident: Id = NamespacedName::new(TODO, name.to_string()).into();
+                let namespaced_name = NamespacedName::new(TODO, name.to_string());
+                let ident: Id = namespaced_name.clone().into();
 
-                if (self.parser_info().parsing_or_parsed_objects).insert(ident.clone().0) {
+                if (self.parser_info().parsing_or_parsed_objects).insert(namespaced_name) {
                     let (name, wrapper_name) = compute_name_and_wrapper_name(
                         &src_object.inner().ident,
                         src_object.inner().mirror,
                     );
 
-                    match self.parse_inner(src_object)? {
+                    match self.parse_inner(src_object, name, wrapper_name)? {
                         Some(parsed_object) => {
                             (self.parser_info().object_pool).insert(ident.clone(), parsed_object)
                         }
@@ -63,6 +69,15 @@ pub(super) trait EnumOrStructParser<Id: From<NamespacedName>, Obj, SrcObj: Struc
 pub(super) struct EnumOrStructParserInfo<Id, Obj> {
     parsing_or_parsed_objects: HashSet<NamespacedName>,
     pub(super) object_pool: HashMap<Id, Obj>,
+}
+
+impl<Id, Obj> EnumOrStructParserInfo<Id, Obj> {
+    pub fn new() -> Self {
+        Self {
+            parsing_or_parsed_objects: HashSet::new(),
+            object_pool: HashMap::new(),
+        }
+    }
 }
 
 fn compute_name_and_wrapper_name(

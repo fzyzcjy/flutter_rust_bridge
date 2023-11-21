@@ -39,7 +39,9 @@ impl<'a> TypeParser<'a> {
             {
                 return Ok(ans);
             }
-            if let Some(ans) = self.parse_type_path_data_enum(last_segment)? {
+            if let Some(ans) =
+                self.parse_type_path_data_enum(type_path, &splayed_segments, last_segment)?
+            {
                 return Ok(ans);
             }
             if let Some(ans) = self.parse_type_path_data_concrete(last_segment)? {
