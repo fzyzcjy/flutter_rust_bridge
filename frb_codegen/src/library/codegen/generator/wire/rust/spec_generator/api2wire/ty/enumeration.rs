@@ -9,7 +9,7 @@ use itertools::Itertools;
 impl<'a> WireRustGeneratorApi2wireTrait for EnumRefWireRustGenerator<'a> {
     fn intodart_type(&self, ir_pack: &IrPack) -> String {
         match &self.ir.get(ir_pack).wrapper_name {
-            Some(wrapper) => wrapper.clone(),
+            Some(wrapper) => wrapper.name.clone(),
             None => self.ir.rust_api_type(),
         }
     }
@@ -18,8 +18,8 @@ impl<'a> WireRustGeneratorApi2wireTrait for EnumRefWireRustGenerator<'a> {
         let src = self.ir.get(self.context.ir_pack);
 
         let (name, self_path): (&str, &str) = match &src.wrapper_name {
-            Some(wrapper) => (wrapper, &src.name),
-            None => (&src.name, "Self"),
+            Some(wrapper) => (&wrapper.name, &src.name.name),
+            None => (&src.name.name, "Self"),
         };
         let self_ref = self.generate_access_object_core("self".to_owned());
         let variants = src

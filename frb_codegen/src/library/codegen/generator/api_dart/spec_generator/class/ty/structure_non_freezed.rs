@@ -21,7 +21,7 @@ impl<'a> StructRefApiDartGenerator<'a> {
         let constructor_params = self.generate_mode_non_freezed_constructor_params(src, methods);
 
         let const_capable = src.fields.iter().all(|field| field.is_final);
-        let name_str = &self.ir.ident.0;
+        let name_str = &self.ir.ident.0.name;
         let maybe_const = if const_capable { "const " } else { "" };
         let implements_exception = generate_dart_maybe_implements_exception(self.ir.is_exception);
         let methods_str = methods.join("\n");

@@ -19,7 +19,7 @@ pub(crate) fn generate_api_impl_normal_function(
     let api_dart_func =
         api_dart::spec_generator::function::generate(func, context.as_api_dart_context());
 
-    let const_meta_field_name = format!("k{}ConstMeta", func.name.to_case(Case::Pascal));
+    let const_meta_field_name = format!("k{}ConstMeta", func.name.name.to_case(Case::Pascal));
 
     let stmt_prepare_args = generate_stmt_prepare_args(func);
     let wire_param_list = generate_wire_param_list(func, stmt_prepare_args.len()).join(", ");
@@ -157,7 +157,7 @@ fn generate_companion_field(func: &IrFunc, const_meta_field_name: &str) -> Strin
             argNames: [{}],
         );
         "#,
-        func.name,
+        func.name.name,
         func.inputs
             .iter()
             .map(|input| format!("\"{}\"", input.name.dart_style()))

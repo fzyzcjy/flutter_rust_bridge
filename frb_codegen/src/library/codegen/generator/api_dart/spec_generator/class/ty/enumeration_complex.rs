@@ -21,7 +21,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
             .map(|variant| self.generate_mode_complex_variant(&variant))
             .collect_vec()
             .join("\n");
-        let name = &self.ir.ident.0;
+        let name = &self.ir.ident.0.name;
         let sealed = if self.context.config.dart3 {
             "sealed"
         } else {
@@ -56,7 +56,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
             "{} {}const factory {}.{}({}) = {};",
             implements_exception,
             generate_dart_comments(&variant.comments),
-            self.ir.ident.0,
+            self.ir.ident.0.name,
             variant.name.dart_style(),
             args,
             variant.wrapper_name.rust_style(),

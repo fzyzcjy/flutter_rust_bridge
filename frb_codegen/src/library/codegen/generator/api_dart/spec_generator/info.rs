@@ -83,7 +83,7 @@ impl<'a> ApiDartGeneratorInfoTrait for DynamicApiDartGenerator<'a> {
 
 impl<'a> ApiDartGeneratorInfoTrait for EnumRefApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        self.ir.ident.0.to_string()
+        self.ir.ident.0.name.to_string()
     }
 }
 
@@ -173,7 +173,7 @@ impl<'a> ApiDartGeneratorInfoTrait for RustOpaqueApiDartGenerator<'a> {
 
 impl<'a> ApiDartGeneratorInfoTrait for StructRefApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
-        self.ir.ident.0.to_string()
+        self.ir.ident.0.name.to_string()
     }
 }
 

@@ -27,7 +27,7 @@ pub(crate) fn generate(
 
     let func_expr = format!(
         "{func_return_type} {func_name}({{ {params} }})",
-        func_name = func.name.to_case(Case::Camel),
+        func_name = func.name.name.to_case(Case::Camel),
         func_return_type = generate_function_dart_return_type(
             &func.mode,
             &ApiDartGenerator::new(func.output.clone(), context).dart_api_type()
@@ -66,7 +66,7 @@ fn generate_params(
 }
 
 fn generate_func_impl(func: &IrFunc, dart_entrypoint_class_name: &str) -> String {
-    let func_name = &func.name.to_case(Case::Camel);
+    let func_name = &func.name.name.to_case(Case::Camel);
     let param_forwards = func
         .inputs
         .iter()

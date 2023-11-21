@@ -106,7 +106,7 @@ fn generate_implementation(
     let dart_entrypoint_class_name = &context.config.dart_entrypoint_class_name;
     let dart_api_instance = format!("{dart_entrypoint_class_name}.instance.api");
 
-    let func_name = func.name.clone().to_case(Case::Camel);
+    let func_name = func.name.name.clone().to_case(Case::Camel);
 
     if is_static_method {
         format!("{dart_api_instance}.{func_name}({arg_names})")

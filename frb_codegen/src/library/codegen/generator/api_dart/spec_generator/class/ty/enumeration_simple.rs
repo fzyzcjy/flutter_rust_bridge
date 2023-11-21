@@ -19,7 +19,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
             "{}enum {} {{
                 {}
             }}",
-            comments, self.ir.ident.0, variants
+            comments, self.ir.ident.0.name, variants
         ))
     }
 

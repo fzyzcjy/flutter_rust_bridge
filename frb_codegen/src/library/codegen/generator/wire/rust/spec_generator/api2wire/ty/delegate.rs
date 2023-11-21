@@ -10,8 +10,8 @@ impl<'a> WireRustGeneratorApi2wireTrait for DelegateWireRustGenerator<'a> {
         if let IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) = &self.ir {
             let src = ir.get(self.context.ir_pack);
             let (name, self_path): (&str, &str) = match &src.wrapper_name {
-                Some(wrapper) => (wrapper, &src.name),
-                None => (&src.name, "Self"),
+                Some(wrapper) => (&wrapper.name, &src.name.name),
+                None => (&src.name.name, "Self"),
             };
             let self_ref = self.generate_access_object_core("self".to_owned());
             let variants = src
@@ -22,7 +22,7 @@ impl<'a> WireRustGeneratorApi2wireTrait for DelegateWireRustGenerator<'a> {
                 .collect_vec()
                 .join("\n");
             let into_into_dart =
-                generate_impl_into_into_dart(&src.name, src.wrapper_name.as_deref());
+                generate_impl_into_into_dart(&src.name.name, src.wrapper_name.as_deref());
             return Some(format!(
                 "impl support::IntoDart for {name} {{
                     fn into_dart(self) -> support::DartAbi {{

@@ -32,7 +32,7 @@ impl<'a> WireDartGeneratorWire2apiTrait for StructRefWireDartGenerator<'a> {
             "{}
                 {}
                 return {}({});",
-            cast, safe_check, s.name, inner,
+            cast, safe_check, s.name.name, inner,
         )
     }
 }
