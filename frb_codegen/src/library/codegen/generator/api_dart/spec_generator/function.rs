@@ -66,10 +66,11 @@ fn generate_params(
 }
 
 fn generate_func_impl(func: &IrFunc, dart_entrypoint_class_name: &str) -> String {
+    let func_name = &func.name.to_case(Case::Camel);
     let param_forwards = func
         .inputs
         .iter()
         .map(|input| format!("{name}: {name}", name = input.name.dart_style()))
         .join(", ");
-    format!("{dart_entrypoint_class_name}.instance.dispatcher.simpleAdder({param_forwards}, hint: hint)")
+    format!("{dart_entrypoint_class_name}.instance.api.{func_name}({param_forwards}, hint: hint)")
 }
