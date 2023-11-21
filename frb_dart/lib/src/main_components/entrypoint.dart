@@ -1,7 +1,9 @@
 import 'package:flutter_rust_bridge/src/generalized_frb_rust_binding/generalized_frb_rust_binding.dart';
 import 'package:flutter_rust_bridge/src/generalized_isolate/generalized_isolate.dart';
 import 'package:flutter_rust_bridge/src/main_components/api.dart';
+import 'package:flutter_rust_bridge/src/main_components/api_impl.dart';
 import 'package:flutter_rust_bridge/src/main_components/handler.dart';
+import 'package:flutter_rust_bridge/src/main_components/wire/wire.dart';
 import 'package:flutter_rust_bridge/src/platform_types/platform_types.dart';
 import 'package:flutter_rust_bridge/src/utils/port_generator.dart';
 import 'package:meta/meta.dart';
@@ -12,7 +14,7 @@ import 'package:meta/meta.dart';
 /// This class is like "service locator" (e.g. the get_it package) for all services related to flutter_rust_bridge.
 ///
 /// This should be a singleton per flutter_rust_bridge usage (enforced via generated subclass code).
-abstract class BaseEntrypoint<A extends BaseApi> {
+abstract class BaseEntrypoint<A extends BaseApi, AI extends BaseApiImpl, W extends BaseWire> {
   /// Whether the system has been initialized.
   bool get initialized => __state != null;
 
@@ -48,7 +50,7 @@ abstract class BaseEntrypoint<A extends BaseApi> {
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
   @protected
-  A createDefaultApi({BaseHandler? handler});
+  ApiImplConstructor<AI, W> get apiImplConstructor;
 }
 
 class _EntrypointState<A extends BaseApi> {

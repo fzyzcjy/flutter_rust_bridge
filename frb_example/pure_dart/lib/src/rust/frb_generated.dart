@@ -3,7 +3,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart.dart';
 
 /// Main entrypoint of the Rust API
-class RustLib extends BaseEntrypoint<RustLibApi> {
+class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   @internal
   static final instance = RustLib._();
 
@@ -24,8 +24,7 @@ class RustLib extends BaseEntrypoint<RustLibApi> {
   static void dispose() => instance.disposeImpl();
 
   @override
-  RustLibApi createDefaultApi({BaseHandler? handler}) =>
-      RustLibApiImpl(wire: RustLibWire(TODO), handler: handler, generalizedFrbRustBinding: TODO);
+  ApiImplConstructor<RustLibApiImpl, RustLibWire> get apiImplConstructor => RustLibApiImpl.new;
 }
 
 abstract class RustLibApi extends BaseApi<RustLibApiImpl> {
