@@ -25,13 +25,7 @@ ExternalLibrary loadExternalLibrary({
   }
 
   if (Platform.isMacOS) {
-    try {
-      // When running pure Dart (without Flutter), will do this
-      return DynamicLibrary.open('${directory}lib$stem.dylib');
-    } catch (_) {
-      // When running Flutter
-      return DynamicLibrary.process();
-    }
+    return DynamicLibrary.process();
   }
 
   if (Platform.isLinux) {
