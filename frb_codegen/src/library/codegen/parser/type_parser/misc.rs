@@ -1,11 +1,12 @@
 use crate::codegen::ir::comment::IrComment;
+use crate::codegen::ir::namespace::NamespacedName;
 use itertools::Itertools;
 use syn::*;
 
-pub(crate) fn convert_ident_str(ty: &Type) -> Option<String> {
+pub(crate) fn convert_ident_str(ty: &Type) -> Option<NamespacedName> {
     if let Type::Path(TypePath { qself: _, path }) = ty {
         if let Some(PathSegment { ident, .. }) = path.segments.first() {
-            return Some(ident.to_string());
+            return Some(TODO /*ident.to_string()*/);
         }
     }
 

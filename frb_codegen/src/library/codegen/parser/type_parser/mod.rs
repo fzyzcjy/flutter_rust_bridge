@@ -19,9 +19,9 @@ use std::collections::{HashMap, HashSet};
 use syn::Type;
 
 pub(crate) struct TypeParser<'a> {
-    src_structs: HashMap<String, &'a Struct>,
-    src_enums: HashMap<String, &'a Enum>,
-    src_types: HashMap<String, Type>,
+    src_structs: HashMap<NamespacedName, &'a Struct>,
+    src_enums: HashMap<NamespacedName, &'a Enum>,
+    src_types: HashMap<NamespacedName, Type>,
     parsing_or_parsed_struct_names: HashSet<NamespacedName>,
     struct_pool: IrStructPool,
     parsed_enums: HashSet<NamespacedName>,
@@ -30,9 +30,9 @@ pub(crate) struct TypeParser<'a> {
 
 impl<'a> TypeParser<'a> {
     pub(crate) fn new(
-        src_structs: HashMap<String, &'a Struct>,
-        src_enums: HashMap<String, &'a Enum>,
-        src_types: HashMap<String, Type>,
+        src_structs: HashMap<NamespacedName, &'a Struct>,
+        src_enums: HashMap<NamespacedName, &'a Enum>,
+        src_types: HashMap<NamespacedName, Type>,
     ) -> Self {
         TypeParser {
             src_structs,

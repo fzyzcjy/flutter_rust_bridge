@@ -24,7 +24,7 @@ impl<'a> TypeParser<'a> {
         last_segment: &SplayedSegment,
     ) -> anyhow::Result<Option<IrType>> {
         Ok(Some(match last_segment {
-            (name, _) if self.src_enums.contains_key(&name.to_string()) => {
+            (name, _) if self.src_enums.contains_key(TODO /*&name.to_string()*/) => {
                 let ident = IrEnumIdent(NamespacedName::new(TODO, name.to_string()));
 
                 if self.parsed_enums.insert(ident.clone().0) {
