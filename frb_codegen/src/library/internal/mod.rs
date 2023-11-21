@@ -97,8 +97,9 @@ fn cbindgen(
 }
 
 fn ffigen(repo_base_dir: &Path) -> anyhow::Result<()> {
+    let dir_dart_api = repo_base_dir.join("frb_rust/src/dart_api");
     let raw_headers = vec![
-        repo_base_dir.join("frb_rust/src/dart_api/dart_native_api.h"),
+        dir_dart_api.join("dart_native_api.h"),
         repo_base_dir.join("frb_dart/lib/src/ffigen_generated/intermediate/allo_isolate.h"),
         repo_base_dir.join("frb_dart/lib/src/ffigen_generated/intermediate/frb_rust.h"),
     ];
@@ -124,6 +125,10 @@ fn ffigen(repo_base_dir: &Path) -> anyhow::Result<()> {
             },
             preamble: FFIGEN_PREAMBLE.to_owned(),
             description: FFIGEN_DESCRIPTION.to_owned(),
+            compiler_opts: vec![
+                // directory of `#include`
+                format!("-I{}", &path_to_string(&dir_dart_api)?),
+            ],
             ..Default::default()
         },
         &repo_base_dir.join("frb_dart"),
