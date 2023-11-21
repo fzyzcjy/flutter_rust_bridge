@@ -12,7 +12,7 @@ use syn::{Ident, TypePath};
 pub(super) trait EnumOrStructParser<Id, Obj, SrcObj, Item>
 where
     Id: From<NamespacedName> + Clone + PartialEq + Eq + Hash,
-    SrcObj: StructOrEnumWrapper<Item>,
+    SrcObj: StructOrEnumWrapper<Item> + Clone,
 {
     fn parse(
         &mut self,
@@ -22,21 +22,20 @@ where
     ) -> anyhow::Result<Option<IrType>> {
         if let (name, _) = last_segment {
             if let Some(src_object) = self.src_objects().get(*name) {
+                let src_object = (*src_object).clone();
+
                 let namespace = Namespace::new(src_object.inner().path.clone());
                 let namespaced_name = NamespacedName::new(namespace, name.to_string());
                 let ident: Id = namespaced_name.clone().into();
 
                 if (self.parser_info().parsing_or_parsed_objects).insert(namespaced_name.clone()) {
-                    // get it *again* to avoid borrowing for too long
-                    let src_object = self.src_objects()[*name];
-
                     let (name, wrapper_name) = compute_name_and_wrapper_name(
                         &namespaced_name.namespace,
                         &src_object.inner().ident,
                         src_object.inner().mirror,
                     );
 
-                    match self.parse_inner(src_object, name, wrapper_name)? {
+                    match self.parse_inner(&src_object, name, wrapper_name)? {
                         Some(parsed_object) => {
                             (self.parser_info().object_pool).insert(ident.clone(), parsed_object)
                         }
