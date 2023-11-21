@@ -20,14 +20,21 @@
         }
       },
       "dart": {
-        "dart_entrypoint_class_name": "RustLib",
         "dart_impl_output_path": {
           "common": "{the-working-directory}/my_dart_folder/frb_generated.dart",
           "io": "{the-working-directory}/my_dart_folder/frb_generated.io.dart",
           "wasm": "{the-working-directory}/my_dart_folder/frb_generated.web.dart"
         },
-        "dart_platform_class_name": "RustLibPlatform",
+        "dart_output_class_name_pack": {
+          "api_class_name": "RustLibApi",
+          "api_impl_class_name": "RustLibApiImpl",
+          "api_impl_platform_class_name": "RustLibApiImplPlatform",
+          "entrypoint_class_name": "RustLib",
+          "wire_class_name": "RustLibWire"
+        },
         "dart_root": "{the-working-directory}",
+        "default_external_library_relative_directory": "target/release/",
+        "default_external_library_stem": "UNKNOWN",
         "extra_headers": "",
         "llvm_compiler_opts": "",
         "llvm_path": [
@@ -48,12 +55,17 @@
       },
       "rust": {
         "rust_crate_dir": "{the-working-directory}",
+        "rust_input_path_pack": {
+          "rust_input_path": {
+            "apple": "{the-working-directory}/src/api/apple.rs",
+            "orange": "{the-working-directory}/src/api/orange.rs"
+          }
+        },
         "rust_output_path": {
           "common": "{the-working-directory}/src/frb_generated.rs",
           "io": "{the-working-directory}/src/frb_generated.io.rs",
           "wasm": "{the-working-directory}/src/frb_generated.web.rs"
         },
-        "rust_wire_mod": "frb_generated",
         "wasm_enabled": true
       }
     }

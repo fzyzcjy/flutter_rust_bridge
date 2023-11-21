@@ -2,7 +2,7 @@
 
         import '../frb_generated.dart';
 
-        Future<void> firstFunction({ dynamic hint }) => RustLib.instance.dispatcher.simpleAdder(, hint: hint);
+        Future<void> firstFunction({ dynamic hint }) => RustLib.instance.api.firstFunction(, hint: hint);
 
         
         
