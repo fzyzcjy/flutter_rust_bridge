@@ -18,7 +18,7 @@ impl<'a> TypeParserWithContext<'a> {
             return Ok(Primitive(IrTypePrimitive::Unit));
         }
 
-        let namespace = Namespace::new(TODO);
+        let namespace = self.context.initiated_namespace.clone();
 
         let values = type_tuple
             .elems
