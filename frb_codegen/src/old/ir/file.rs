@@ -15,10 +15,6 @@ impl IrPack {
     pub fn get_all_symbols(&self, config: &Opts) -> Vec<String> {
         let generated_rust = self.generate_rust(config);
 
-        generated_rust
-            .extern_func_names
-            .into_iter()
-            .filter(|s| *s != "free_WireSyncReturn")
-            .collect_vec()
+        generated_rust.extern_func_names.into_iter().collect_vec()
     }
 }
