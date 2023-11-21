@@ -62,7 +62,7 @@ fn ffigen(repo_base_dir: &Path, header: &Path, name: &str) -> anyhow::Result<()>
             output: repo_base_dir
                 .join("frb_dart/lib/src/ffigen_generated")
                 .join(format!("{}.dart", name.to_case(Case::Snake))),
-            name: name.to_case(Case::Pascal),
+            name: format!("{}CBinding", name.to_case(Case::Pascal)),
             headers: FfigenCommandConfigHeaders {
                 entry_points: vec![header.to_owned()],
                 include_directives: vec![header.to_owned()],
