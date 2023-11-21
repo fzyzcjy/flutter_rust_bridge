@@ -133,7 +133,7 @@ fn generate_parse_success_data(func: &IrFunc) -> String {
     // }
 }
 
-fn generate_parse_error_data(func: &&IrFunc) -> String {
+fn generate_parse_error_data(func: &IrFunc) -> String {
     if let Some(error_output) = &func.error_output {
         format!("_wire2api_{}", error_output.safe_ident())
     } else {

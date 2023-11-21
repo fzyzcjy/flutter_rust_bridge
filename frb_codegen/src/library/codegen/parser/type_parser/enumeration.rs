@@ -60,7 +60,7 @@ impl<'a> TypeParser<'a> {
         })
     }
 
-    fn parse_variant(&mut self, src_enum: &Enum, variant: &&Variant) -> anyhow::Result<IrVariant> {
+    fn parse_variant(&mut self, src_enum: &Enum, variant: &Variant) -> anyhow::Result<IrVariant> {
         Ok(IrVariant {
             name: IrIdent::new(variant.ident.to_string()),
             wrapper_name: IrIdent::new(format!("{}_{}", src_enum.0.ident, variant.ident)),
@@ -79,7 +79,7 @@ impl<'a> TypeParser<'a> {
     fn parse_variant_kind_struct(
         &mut self,
         src_enum: &Enum,
-        variant: &&Variant,
+        variant: &Variant,
         attrs: &Vec<Attribute>,
         field_ident: &Option<Ident>,
     ) -> anyhow::Result<IrVariantKind> {

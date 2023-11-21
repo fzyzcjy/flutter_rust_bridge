@@ -111,7 +111,7 @@ fn parse_syn_item_type(item_type: &ItemType) -> Option<TypeAlias> {
     }
 }
 
-fn parse_syn_item_mod(info: &ModuleInfo, item_mod: &&ItemMod) -> anyhow::Result<Option<Module>> {
+fn parse_syn_item_mod(info: &ModuleInfo, item_mod: &ItemMod) -> anyhow::Result<Option<Module>> {
     let ident = item_mod.ident.clone();
 
     let module_path = {
