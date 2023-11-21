@@ -31,7 +31,7 @@ fn postpare_modify(content_raw: &str, dart_platform_class_name: &str) -> String 
         .replace(
             &format!("class {dart_platform_class_name} {{",),
             &format!(
-                "class {dart_platform_class_name} implements FlutterRustBridgeWireBase {{
+                "class {dart_platform_class_name} implements BaseApiImpl<{TODO}Wire> {{
             @internal
             late final dartApi = DartApiDl(init_frb_dart_api_dl);",
             ),

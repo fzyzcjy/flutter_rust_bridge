@@ -42,17 +42,34 @@ fn generate_boilerplate(entrypoint_class_name: &str) -> WireDartOutputCode {
         body_top: format!(
             r#"
             /// Main entrypoint of the Rust API
-            class {entrypoint_class_name} extends BaseEntrypoint<{dispatcher_name}> {{
+            class {entrypoint_class_name} extends BaseEntrypoint<{dispatcher_name}, {TODO}, {TODO}> {{
               @internal
               static final instance = {entrypoint_class_name}._();
 
               {entrypoint_class_name}._();
 
+              /// Initialize flutter_rust_bridge
               static Future<void> init({{
-                {dispatcher_name}? dispatcher,
+                {TODO}Api? api,
+                BaseHandler? handler,
               }}) async {{
-                await instance.initImpl(dispatcher: dispatcher ?? {dispatcher_name}());
+                await instance.initImpl(api: api, handler: handler);
               }}
+              
+              /// Dispose flutter_rust_bridge
+              ///
+              /// The call to this function is optional, since flutter_rust_bridge (and everything else)
+              /// is automatically disposed when the app stops.
+              static void dispose() => instance.disposeImpl();
+
+              @override
+              ApiImplConstructor<{TODO}ApiImpl, {TODO}Wire> get apiImplConstructor => {TODO}ApiImpl.new;
+
+              @override
+              WireConstructor<{TODO}Wire> get wireConstructor => {TODO}Wire.new;
+
+              @override
+              String get defaultExternalLibraryStem => '{TODO}';
             }}
             "#
         ),

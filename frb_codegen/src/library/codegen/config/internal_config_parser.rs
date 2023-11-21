@@ -37,10 +37,12 @@ impl InternalConfig {
 
         let dart_output_dir: PathBuf = base_dir.join(&config.dart_output);
         let dart_output_path_pack = compute_dart_output_path_pack(&dart_output_dir, &namespaces);
-        let dart_entrypoint_class_name = (config.dart_entrypoint_class_name.clone())
-            .unwrap_or(FALLBACK_DART_ENTRYPOINT_CLASS_NAME.to_owned());
-        let dart_platform_class_name =
-            compute_dart_platform_class_name(&dart_entrypoint_class_name);
+
+        // TODO
+        // let dart_entrypoint_class_name = (config.dart_entrypoint_class_name.clone())
+        //     .unwrap_or(FALLBACK_DART_ENTRYPOINT_CLASS_NAME.to_owned());
+        // let dart_platform_class_name =
+        //     compute_dart_platform_class_name(&dart_entrypoint_class_name);
 
         let c_output_path = base_dir.join(&config.c_output);
         let duplicated_c_output_path = (&config)

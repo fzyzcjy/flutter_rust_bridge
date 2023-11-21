@@ -10,6 +10,11 @@ pub(crate) struct GeneratorWireDartInternalConfig {
     pub dart_root: PathBuf,
     pub extra_headers: String,
     pub dart_impl_output_path: TargetOrCommonMap<PathBuf>,
-    pub dart_entrypoint_class_name: String,
-    pub dart_platform_class_name: String,
+    pub dart_output_class_name_pack: DartOutputClassNamePack,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+pub(crate) struct DartOutputClassNamePack {
+    pub entrypoint_class_name: String,
+    pub platform_class_name: String,
 }
