@@ -33,7 +33,10 @@
         }
       ],
       "mode": "Normal",
-      "name": "func_1",
+      "name": {
+        "name": "func_1",
+        "namespace": "crate::api"
+      },
       "output": {
         "Primitive": "Unit"
       },
@@ -46,7 +49,10 @@
       },
       "inputs": [],
       "mode": "Normal",
-      "name": "func_anyhow_result",
+      "name": {
+        "name": "func_anyhow_result",
+        "namespace": "crate::api"
+      },
       "output": {
         "Primitive": "I32"
       },
@@ -59,7 +65,10 @@
       },
       "inputs": [],
       "mode": "Normal",
-      "name": "func_result",
+      "name": {
+        "name": "func_result",
+        "namespace": "crate::api"
+      },
       "output": {
         "Primitive": "I32"
       },
@@ -72,7 +81,10 @@
       },
       "inputs": [],
       "mode": "Normal",
-      "name": "func_std_result_result",
+      "name": {
+        "name": "func_std_result_result",
+        "namespace": "crate::api"
+      },
       "output": {
         "Primitive": "I32"
       },

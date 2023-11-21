@@ -6,7 +6,10 @@
       "error_output": null,
       "inputs": [],
       "mode": "Normal",
-      "name": "first_function",
+      "name": {
+        "name": "first_function",
+        "namespace": "crate::api"
+      },
       "output": {
         "Primitive": "Unit"
       },
