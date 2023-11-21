@@ -65,7 +65,18 @@ fn generate_allo_isolate_cbindgen(repo_base_dir: &PathBuf) -> anyhow::Result<()>
     let rust_crate_dir = package.manifest_path.as_std_path().parent().unwrap();
 
     cbindgen(
-        default_cbindgen_config(),
+        cbindgen::Config {
+            export: cbindgen::ExportConfig {
+                exclude: vec![
+                    "DartCObject".to_owned(),
+                    "".to_owned(),
+                    "".to_owned(),
+                    // TODO more
+                ],
+                ..Default::default()
+            },
+            ..default_cbindgen_config()
+        },
         repo_base_dir,
         rust_crate_dir,
         "allo_isolate",
