@@ -2,6 +2,7 @@ use crate::Channel;
 
 pub use super::DartAbi;
 pub use super::MessagePort;
+use crate::support::{box_from_leak_ptr, WireSyncReturn};
 pub use allo_isolate::*;
 use dart_sys::Dart_DeletePersistentHandle_DL;
 use dart_sys::Dart_Handle;
@@ -74,6 +75,16 @@ pub unsafe extern "C" fn drop_dart_object(ptr: usize) {
 #[no_mangle]
 pub unsafe extern "C" fn init_frb_dart_api_dl(data: *mut c_void) -> isize {
     Dart_InitializeApiDL(data)
+}
+
+/// # Safety
+///
+/// This function should never be called manually.
+#[no_mangle]
+pub extern "C" fn free_WireSyncReturn(ptr: WireSyncReturn) {
+    unsafe {
+        let _ = box_from_leak_ptr(ptr);
+    };
 }
 
 #[derive(Debug)]
