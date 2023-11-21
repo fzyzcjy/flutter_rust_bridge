@@ -32,13 +32,19 @@ fn compute_repo_base_dir() -> anyhow::Result<PathBuf> {
 
 fn generate_frb_rust_cbindgen(repo_base_dir: &PathBuf) -> anyhow::Result<()> {
     info!("generate_frb_rust_cbindgen");
+    let default_config = default_cbindgen_config();
     cbindgen(
         cbindgen::Config {
             export: cbindgen::ExportConfig {
                 rename: HashMap::from([("DartCObject".to_owned(), "Dart_CObject".to_owned())]),
                 ..Default::default()
             },
-            ..default_cbindgen_config()
+            includes: [
+                default_config.includes.clone(),
+                vec!["dart_native_api.h".to_owned()],
+            ]
+            .concat(),
+            ..default_config
         },
         repo_base_dir,
         &repo_base_dir.join("frb_rust"),
