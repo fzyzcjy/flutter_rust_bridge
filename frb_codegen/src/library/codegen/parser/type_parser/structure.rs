@@ -113,10 +113,10 @@ impl<'a> EnumOrStructParser<IrStructIdent, IrStruct, Struct, ItemStruct>
     }
 
     fn src_objects(&self) -> &HashMap<String, &Struct> {
-        &self.0.src_structs
+        &self.0.inner.src_structs
     }
 
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<IrStructIdent, IrStruct> {
-        &mut self.0.struct_parser_info
+        &mut self.0.inner.struct_parser_info
     }
 }

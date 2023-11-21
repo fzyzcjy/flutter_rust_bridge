@@ -25,6 +25,6 @@ impl<'a> TypeParserWithContext<'a> {
     }
 
     fn get_alias_type(&self, ty: &Type) -> Option<&Type> {
-        convert_ident_str(ty).and_then(|key| self.src_types.get(&key))
+        convert_ident_str(ty).and_then(|key| self.inner.src_types.get(&key))
     }
 }

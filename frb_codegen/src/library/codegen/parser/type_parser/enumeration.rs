@@ -136,7 +136,7 @@ impl<'a> EnumOrStructParser<IrEnumIdent, IrEnum, Enum, ItemEnum> for EnumOrStruc
             ident: ident.clone(),
             is_exception: false,
         };
-        let enu = self.0.enum_parser_info.object_pool.get(&ident);
+        let enu = self.0.inner.enum_parser_info.object_pool.get(&ident);
 
         return Ok(
             if enu.map(|e| e.mode == IrEnumMode::Complex).unwrap_or(true) {
@@ -152,11 +152,11 @@ impl<'a> EnumOrStructParser<IrEnumIdent, IrEnum, Enum, ItemEnum> for EnumOrStruc
     }
 
     fn src_objects(&self) -> &HashMap<String, &Enum> {
-        &self.0.src_enums
+        &self.0.inner.src_enums
     }
 
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<IrEnumIdent, IrEnum> {
-        &mut self.0.enum_parser_info
+        &mut self.0.inner.enum_parser_info
     }
 }
 

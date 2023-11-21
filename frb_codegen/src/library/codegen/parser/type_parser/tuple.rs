@@ -31,7 +31,7 @@ impl<'a> TypeParserWithContext<'a> {
             .collect_vec()
             .join("_");
         let safe_ident = format!("__record__{safe_ident}");
-        self.struct_parser_info.object_pool.insert(
+        self.inner.struct_parser_info.object_pool.insert(
             IrStructIdent(NamespacedName::new(namespace.clone(), safe_ident.clone())),
             IrStruct {
                 name: NamespacedName::new(namespace.clone(), safe_ident.clone()),
