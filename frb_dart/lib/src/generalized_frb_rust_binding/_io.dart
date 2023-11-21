@@ -4,7 +4,7 @@ import 'package:flutter_rust_bridge/src/ffigen_generated/multi_package.dart';
 import 'package:flutter_rust_bridge/src/platform_types/_io.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
-abstract class GeneralizedFrbRustBinding {
+class GeneralizedFrbRustBinding {
   final MultiPackageCBinding _binding;
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}

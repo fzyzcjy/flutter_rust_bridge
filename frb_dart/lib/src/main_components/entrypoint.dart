@@ -34,7 +34,10 @@ abstract class BaseEntrypoint<A extends BaseApi> {
     BaseHandler? handler,
   }) async {
     if (__state != null) throw StateError('Should not initialize flutter_rust_bridge twice');
-    __state = _EntrypointState(api: api ?? createDefaultDispatcher(handler: handler));
+    __state = _EntrypointState(
+      generalizedFrbRustBinding: GeneralizedFrbRustBinding(TODO),
+      api: api ?? createDefaultDispatcher(handler: handler),
+    );
   }
 
   /// {@macro flutter_rust_bridge.only_for_generated_code}
@@ -49,11 +52,12 @@ abstract class BaseEntrypoint<A extends BaseApi> {
 }
 
 class _EntrypointState<A extends BaseApi> {
+  final GeneralizedFrbRustBinding generalizedFrbRustBinding;
   final A api;
-  late final dropPortManager = _DropPortManager(TODO);
+  late final dropPortManager = _DropPortManager(generalizedFrbRustBinding);
 
-  _EntrypointState({required this.api}) {
-    _setUpRustToDartCommunication(TODO);
+  _EntrypointState({required this.generalizedFrbRustBinding, required this.api}) {
+    _setUpRustToDartCommunication(generalizedFrbRustBinding);
   }
 
   void dispose() {
