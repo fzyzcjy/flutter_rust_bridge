@@ -1,21 +1,31 @@
+use itertools::Itertools;
 use serde::{Deserialize, Serialize};
 use std::fmt::{Display, Formatter};
 
 /// The Rust files/modules/namespaces.
 #[derive(Debug, Clone, Hash, Eq, PartialEq, Serialize, Deserialize, Ord, PartialOrd)]
 pub(crate) struct Namespace {
-    pub(crate) path: Vec<String>,
+    joined_path: String,
 }
+
+const NAMESPACE_PATH_SEPARATOR: &str = "::";
 
 impl Namespace {
     pub fn new(path: Vec<String>) -> Self {
-        Self { path }
+        assert!((path.iter()).all(|item| !item.contains(NAMESPACE_PATH_SEPARATOR)));
+        Self {
+            joined_path: path.join(NAMESPACE_PATH_SEPARATOR),
+        }
+    }
+
+    pub fn path(&self) -> Vec<&str> {
+        self.joined_path.split(NAMESPACE_PATH_SEPARATOR).collect()
     }
 }
 
 impl Display for Namespace {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        f.write_str(&self.path.join("::"))
+        f.write_str(&self.joined_path)
     }
 }
 
