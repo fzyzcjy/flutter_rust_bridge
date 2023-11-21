@@ -1,14 +1,17 @@
+use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::parser::type_parser::misc::convert_ident_str;
 use std::collections::HashMap;
 use syn::Type;
 use topological_sort::TopologicalSort;
 
 // See https://github.com/fzyzcjy/flutter_rust_bridge/pull/929 for more details of the algorithm
-pub(crate) fn resolve_type_aliases(src: HashMap<String, Type>) -> HashMap<String, Type> {
+pub(crate) fn resolve_type_aliases(
+    src: HashMap<NamespacedName, Type>,
+) -> HashMap<NamespacedName, Type> {
     // Some types that cannot be Handled.
     // Filter something like `BareFn( TypeBareFn...`
     // Filter something like `Ptr( TypePtr { star_token: Star,`
-    let mut ret: HashMap<String, Type> = src
+    let mut ret: HashMap<NamespacedName, Type> = src
         .iter()
         .filter_map(|(k, v)| match convert_ident_str(v) {
             Some(_) => None,
@@ -21,11 +24,11 @@ pub(crate) fn resolve_type_aliases(src: HashMap<String, Type>) -> HashMap<String
         // Filter some types that cannot be Handled.
         .filter_map(|(k, v)| convert_ident_str(v).map(|v| (k, v)));
 
-    let mut ts = TopologicalSort::<String>::new();
+    let mut ts = TopologicalSort::<NamespacedName>::new();
 
     string_src.for_each(|(k, v)| {
         // k and v switch orders here
-        ts.add_dependency(v, k);
+        ts.add_dependency(v, k.clone());
     });
 
     // remove base type, like i32 in `type Id = i32`.
@@ -64,7 +67,7 @@ pub(crate) fn resolve_type_aliases(src: HashMap<String, Type>) -> HashMap<String
         let v_str = convert_ident_str(&v_src).unwrap();
         let v_ret = ret
             .get(&v_str)
-            .unwrap_or_else(|| panic!("{:?},\n{:?},\n{:?},\n{}", src, ts, ret, k))
+            .unwrap_or_else(|| panic!("{:?},\n{:?},\n{:?},\n{:?}", src, ts, ret, k))
             .to_owned();
         ret.insert(k, v_ret);
     }
@@ -73,19 +76,25 @@ pub(crate) fn resolve_type_aliases(src: HashMap<String, Type>) -> HashMap<String
 
 #[cfg(test)]
 mod tests {
+    use crate::codegen::ir::namespace::NamespacedName;
     use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
     use std::collections::HashMap;
     use syn::{parse_str, Type};
 
+    // shorthand to create `NamespacedName`
+    fn nn(name: &str) -> NamespacedName {
+        NamespacedName::new(vec![], name.to_owned())
+    }
+
     #[test]
     fn test_topo_resolve_primary_type_with_nest() {
         let input = HashMap::from([
-            ("id".to_string(), parse_str::<Type>("i32").unwrap()),
-            ("UserId".to_string(), parse_str::<Type>("id").unwrap()),
+            (nn("id"), parse_str::<Type>("i32").unwrap()),
+            (nn("UserId"), parse_str::<Type>("id").unwrap()),
         ]);
         let expect = HashMap::from([
-            ("id".to_string(), parse_str::<Type>("i32").unwrap()),
-            ("UserId".to_string(), parse_str::<Type>("i32").unwrap()),
+            (nn("id"), parse_str::<Type>("i32").unwrap()),
+            (nn("UserId"), parse_str::<Type>("i32").unwrap()),
         ]);
         let output = resolve_type_aliases(input);
         assert_eq!(output, expect);
@@ -93,8 +102,8 @@ mod tests {
 
     #[test]
     fn test_topo_resolve_primary_type() {
-        let input = HashMap::from([("id".to_string(), parse_str::<Type>("i32").unwrap())]);
-        let expect = HashMap::from([("id".to_string(), parse_str::<Type>("i32").unwrap())]);
+        let input = HashMap::from([(nn("id"), parse_str::<Type>("i32").unwrap())]);
+        let expect = HashMap::from([(nn("id"), parse_str::<Type>("i32").unwrap())]);
 
         let output = resolve_type_aliases(input);
         assert_eq!(output, expect);
@@ -102,8 +111,10 @@ mod tests {
 
     #[test]
     fn test_topo_resolve3_unhandle_case() {
-        let input = HashMap::from([("DartPostCObjectFnType".to_string(), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap())]);
-        let expect = HashMap::from([("DartPostCObjectFnType".to_string(), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap())]);
+        let input = HashMap::from([
+            (nn("DartPostCObjectFnType"), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap())]);
+        let expect = HashMap::from([
+            (nn("DartPostCObjectFnType"), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap())]);
         let output = resolve_type_aliases(input);
         assert_eq!(output, expect);
     }
@@ -111,15 +122,14 @@ mod tests {
     #[test]
     fn test_topo_resolve_unhandle_case_with_nest() {
         let input = HashMap::from([
-            ("DartPostCObjectFnType".to_string(), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap()),
-            (
-                "DartPostCObjectFnTypeAlias".to_string(),
+            (nn("DartPostCObjectFnType"), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap()),
+            (nn("DartPostCObjectFnTypeAlias"),
                 parse_str::<Type>("DartPostCObjectFnType").unwrap(),
             )
         ]);
         let expect = HashMap::from([
-            ("DartPostCObjectFnType".to_string(), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap()),
-            ("DartPostCObjectFnTypeAlias".to_string(), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap()),
+            (nn("DartPostCObjectFnType"), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap()),
+            (nn("DartPostCObjectFnTypeAlias"), parse_str::<Type>(r#"unsafe extern "C" fn(port_id: DartPort, message: *mut std::ffi::c_void) -> bool"#).unwrap()),
         ]);
         let output = resolve_type_aliases(input);
         assert_eq!(&output, &expect);
