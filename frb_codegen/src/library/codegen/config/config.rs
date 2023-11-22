@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 
 /// Configuration for code generation
 /// Refer to `GenerateCommandArgs` for documentations
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Config {
     pub base_dir: Option<String>,
     pub rust_input: String,

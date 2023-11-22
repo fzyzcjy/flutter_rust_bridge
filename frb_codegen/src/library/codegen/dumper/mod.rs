@@ -2,11 +2,12 @@ use crate::codegen::config::internal_config::InternalConfig;
 use crate::codegen::dumper::internal_config::DumperInternalConfig;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::Config;
+use serde::Serialize;
 use std::fs;
 
 pub(super) mod internal_config;
 
-pub(crate) struct Dumper<'a>(&'a DumperInternalConfig);
+pub(crate) struct Dumper<'a>(pub &'a DumperInternalConfig);
 
 impl Dumper<'_> {
     pub(crate) fn dump_config(
@@ -23,7 +24,7 @@ impl Dumper<'_> {
         self.dump("ir_pack.json", ir_pack)
     }
 
-    fn dump<T>(&self, name: &str, data: &T) -> anyhow::Result<()> {
+    fn dump<T: Serialize>(&self, name: &str, data: &T) -> anyhow::Result<()> {
         let path = self.0.dump_directory.join(name);
         Ok(fs::write(path, serde_json::to_string(data)?)?)
     }
