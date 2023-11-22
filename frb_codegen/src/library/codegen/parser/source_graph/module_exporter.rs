@@ -1,6 +1,8 @@
 use crate::codegen::ir::namespace::NamespacedName;
 use crate::codegen::parser::source_graph::modules::{Enum, Module, Struct};
+use log::warn;
 use std::collections::HashMap;
+use std::fmt::Debug;
 use syn::Type;
 
 impl Module {
@@ -30,12 +32,16 @@ impl Module {
     where
         F: Fn(&Module) -> &[T],
         G: Fn(&'a T) -> (String, V),
+        V: Clone + Debug,
     {
         let mut ans = HashMap::new();
         self.visit_modules(&mut |module| {
             for item in f(module) {
-                let (k, v) = extract_entry(item);
-                ans.insert(k, v);
+                let (key, value) = extract_entry(item);
+                let old_value = ans.insert(key.clone(), value.clone());
+                if old_value.is_some() {
+                    warn!("Same key={key} has multiple values: {old_value:?} (thrown away) and {value:?} (used)");
+                }
             }
         });
         ans
