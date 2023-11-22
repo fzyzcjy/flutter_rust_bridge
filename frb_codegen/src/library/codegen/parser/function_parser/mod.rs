@@ -115,10 +115,11 @@ fn parse_owner(item_fn: &GeneralizedItemFn) -> Option<IrFuncOwnerInfo> {
                 return None;
             };
 
-            let struct_name = (self_ty_path.path.segments.first().unwrap().ident).to_string();
+            let enum_or_struct_name =
+                (self_ty_path.path.segments.first().unwrap().ident).to_string();
 
             IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
-                struct_name: enum_or_struct_name,
+                enum_or_struct_name,
                 actual_method_name: impl_item_fn.sig.ident.to_string(),
                 mode,
             })
