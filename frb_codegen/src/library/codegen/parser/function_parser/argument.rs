@@ -22,63 +22,80 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
     ) -> anyhow::Result<FunctionPartialInfo> {
         match sig_input {
             FnArg::Typed(ref pat_type) => {
-                let ty = pat_type.ty.as_ref();
-                match &ty {
-                    Type::Path(TypePath { path, .. }) => {
-                        if let Some(ans) =
-                            self.parse_fn_arg_type_stream_sink(path, argument_index, context)?
-                        {
-                            Ok(ans)
-                        } else {
-                            partial_info_for_normal_type(
-                                self.type_parser.parse_type(ty, context)?,
-                                pat_type,
-                            )
-                        }
-                    }
-                    Type::Array(_) => partial_info_for_normal_type(
-                        self.type_parser.parse_type(ty, context)?,
-                        pat_type,
-                    ),
-                    _ => bail!(
-                        "Failed to parse function argument type `{}`",
-                        type_to_string(ty)
-                    ),
-                }
+                self.parse_fn_arg_typed(argument_index, context, pat_type)
             }
-            FnArg::Receiver(Receiver { mutability, .. }) => {
-                let mut segments = Punctuated::new();
-                segments.push(PathSegment {
-                    ident: Ident::new(struct_name.as_str(), span),
-                    arguments: PathArguments::None,
-                });
-                if mutability.is_some() {
-                    return Err(super::error::Error::NoMutSelf);
-                }
-                Ok(FnArg::Typed(PatType {
-                    attrs: vec![],
-                    pat: Box::new(Pat::Ident(PatIdent {
-                        attrs: vec![],
-                        by_ref: Some(syn::token::Ref { span }),
-                        mutability: *mutability,
-                        ident: Ident::new("that", span),
-                        subpat: None,
-                    })),
-                    colon_token: Colon { spans: [span] },
-                    ty: Box::new(Type::Path(TypePath {
-                        qself: None,
-                        path: Path {
-                            leading_colon: None,
-                            segments,
-                        },
-                    })),
-                }))
+            FnArg::Receiver(ref receiver) => {
+                self.parse_fn_arg_receiver(argument_index, context, receiver)
             }
             _ => bail!(
                 "Unexpected parameter: {}",
                 quote::quote!(#sig_input).to_string()
             ),
         }
+    }
+
+    fn parse_fn_arg_typed(
+        &mut self,
+        argument_index: usize,
+        context: &TypeParserParsingContext,
+        pat_type: &PatType,
+    ) -> anyhow::Result<FunctionPartialInfo> {
+        let ty = pat_type.ty.as_ref();
+        match &ty {
+            Type::Path(TypePath { path, .. }) => {
+                if let Some(ans) =
+                    self.parse_fn_arg_type_stream_sink(path, argument_index, context)?
+                {
+                    Ok(ans)
+                } else {
+                    partial_info_for_normal_type(
+                        self.type_parser.parse_type(ty, context)?,
+                        pat_type,
+                    )
+                }
+            }
+            Type::Array(_) => {
+                partial_info_for_normal_type(self.type_parser.parse_type(ty, context)?, pat_type)
+            }
+            _ => bail!(
+                "Failed to parse function argument type `{}`",
+                type_to_string(ty)
+            ),
+        }
+    }
+
+    fn parse_fn_arg_receiver(
+        &mut self,
+        argument_index: usize,
+        context: &TypeParserParsingContext,
+        receiver: &Receiver,
+    ) -> anyhow::Result<FunctionPartialInfo> {
+        let mut segments = Punctuated::new();
+        segments.push(PathSegment {
+            ident: Ident::new(struct_name.as_str(), span),
+            arguments: PathArguments::None,
+        });
+        if mutability.is_some() {
+            return Err(super::error::Error::NoMutSelf);
+        }
+        Ok(FnArg::Typed(PatType {
+            attrs: vec![],
+            pat: Box::new(Pat::Ident(PatIdent {
+                attrs: vec![],
+                by_ref: Some(syn::token::Ref { span }),
+                mutability: *mutability,
+                ident: Ident::new("that", span),
+                subpat: None,
+            })),
+            colon_token: Colon { spans: [span] },
+            ty: Box::new(Type::Path(TypePath {
+                qself: None,
+                path: Path {
+                    leading_colon: None,
+                    segments,
+                },
+            })),
+        }))
     }
 
     fn parse_fn_arg_type_stream_sink(
