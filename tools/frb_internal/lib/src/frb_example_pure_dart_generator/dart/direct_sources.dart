@@ -26,10 +26,11 @@ String _generatePrimitive() {
 
 String _generatePrimitiveList() {
   final builder = DartFileBuilder(importName: 'primitive_list');
+  builder.imports += "import 'dart:typed_data';";
   for (final ty in kPrimitiveTypes) {
     for (final arg in [
-      '[]',
-      ...ty.interestValues.map((x) => '[$x]'),
+      '${ty.primitiveListName}(0)',
+      ...ty.interestValues.map((x) => '${ty.primitiveListName}.fromList([$x])'),
     ]) {
       builder.body += '''
         test('type=${ty.name} arg=$arg', () async {

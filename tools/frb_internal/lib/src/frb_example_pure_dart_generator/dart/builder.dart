@@ -2,6 +2,7 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
 
 class DartFileBuilder {
   final String importName;
+  String imports = '';
   String body = '';
 
   DartFileBuilder({required this.importName});
@@ -12,6 +13,7 @@ class DartFileBuilder {
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/$importName.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
+$imports
 
 Future<void> main() async {
   await RustLib.init();
