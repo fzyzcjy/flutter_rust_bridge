@@ -33,6 +33,7 @@ String _generateOptionalPrimitive() {
   return builder.toString();
 }
 
+// TODO corresponding tests in dart
 String _generateStructure() {
   final builder = RustFileBuilder();
 
