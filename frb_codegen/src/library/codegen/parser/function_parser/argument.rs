@@ -78,7 +78,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let mut segments = Punctuated::new();
         segments.push(PathSegment {
-            ident: Ident::new(struct_name.as_str(), span),
+            ident: struct_name.as_str(),
             arguments: PathArguments::None,
         });
         let ty = Type::Path(TypePath {
