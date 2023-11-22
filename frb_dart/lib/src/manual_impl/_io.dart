@@ -7,3 +7,6 @@ import 'package:flutter_rust_bridge/src/utils/dart_c_object_into_dart.dart';
 ///
 /// {@macro flutter_rust_bridge.internal}
 List<dynamic> wireSyncReturnIntoDart(WireSyncReturn syncReturn) => dartCObjectIntoDart(syncReturn.ref);
+
+/// {@macro flutter_rust_bridge.only_for_generated_code}
+BigInt wire2apiI64OrU64(dynamic raw) => BigInt.from(raw as int);

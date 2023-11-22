@@ -464,7 +464,7 @@ int _wire2api_i_32(dynamic raw) {
 }
 
 BigInt _wire2api_i_64(dynamic raw) {
-  return castInt(raw);
+  return wire2apiI64OrU64(raw);
 }
 
 int _wire2api_i_8(dynamic raw) {
@@ -480,7 +480,7 @@ int _wire2api_u_32(dynamic raw) {
 }
 
 BigInt _wire2api_u_64(dynamic raw) {
-  return castInt(raw);
+  return wire2apiI64OrU64(raw);
 }
 
 int _wire2api_u_8(dynamic raw) {

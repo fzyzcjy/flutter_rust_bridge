@@ -8,7 +8,7 @@ impl<'a> WireDartGeneratorWire2apiTrait for PrimitiveWireDartGenerator<'a> {
         match self.ir {
             IrTypePrimitive::Unit => "return;".to_owned(),
             IrTypePrimitive::I64 | IrTypePrimitive::U64 | IrTypePrimitive::Usize => {
-                "return castInt(raw);".to_owned()
+                "return wire2apiI64OrU64(raw);".to_owned()
             }
             _ => gen_wire2api_simple_type_cast(self.ir.clone().into(), self.context),
         }
