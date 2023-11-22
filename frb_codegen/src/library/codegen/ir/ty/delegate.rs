@@ -152,7 +152,7 @@ impl IrTypeDelegate {
 
 impl IrTypeDelegateArray {
     pub fn get_delegate(&self) -> IrType {
-        match self.mode {
+        match &self.mode {
             IrTypeDelegateArrayMode::General(general) => IrType::GeneralList(IrTypeGeneralList {
                 inner: general.clone(),
             }),

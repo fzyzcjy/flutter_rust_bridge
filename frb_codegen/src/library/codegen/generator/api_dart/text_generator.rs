@@ -47,7 +47,7 @@ fn generate_end_api_text(
         {classes}
         ",
         funcs = funcs.iter().map(|f| generate_function(f)).join("\n\n"),
-        classes = classes.iter().map(|c| c.code).join("\n\n"),
+        classes = classes.iter().map(|c| c.code.clone()).join("\n\n"),
     )
 }
 
