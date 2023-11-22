@@ -1,3 +1,4 @@
+use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::misc::PathTexts;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 
@@ -13,8 +14,10 @@ pub(crate) struct GeneratorWireDartOutput {
 pub(crate) fn generate(
     context: WireDartGeneratorContext,
     c_file_content: &str,
+    dumper: &Dumper,
 ) -> anyhow::Result<GeneratorWireDartOutput> {
     let spec = spec_generator::generate(context, c_file_content)?;
+    dumper.dump_spec("wire_dart", &spec)?;
     let text = text_generator::generate(&spec, &context.config)?;
 
     Ok(GeneratorWireDartOutput {

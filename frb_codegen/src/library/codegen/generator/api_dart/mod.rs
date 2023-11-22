@@ -2,6 +2,7 @@ pub(crate) mod internal_config;
 pub(crate) mod spec_generator;
 mod text_generator;
 
+use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::api_dart::text_generator::ApiDartOutputText;
 use crate::codegen::generator::misc::{PathText, PathTexts};
@@ -18,8 +19,10 @@ pub(crate) struct GeneratorApiDartOutput {
 pub(crate) fn generate(
     ir_pack: &IrPack,
     config: &GeneratorApiDartInternalConfig,
+    dumper: &Dumper,
 ) -> Result<GeneratorApiDartOutput> {
     let spec = spec_generator::generate(ir_pack, config)?;
+    dumper.dump_spec("api_dart", &spec)?;
     let text = text_generator::generate(spec)?;
     let output_texts = generate_output_path_texts(config, text);
     Ok(GeneratorApiDartOutput { output_texts })

@@ -1,3 +1,4 @@
+use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::misc::PathTexts;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::ir::pack::IrPackComputedCache;
@@ -14,8 +15,10 @@ pub(crate) struct GeneratorWireRustOutput {
 
 pub(crate) fn generate(
     context: WireRustGeneratorContext,
+    dumper: &Dumper,
 ) -> anyhow::Result<GeneratorWireRustOutput> {
     let spec = spec_generator::generate(context)?;
+    dumper.dump_spec("wire_rust", &spec)?;
     let text = text_generator::generate(&spec, context.config)?;
 
     Ok(GeneratorWireRustOutput {

@@ -4,6 +4,7 @@ pub(crate) mod misc;
 pub(crate) mod rust;
 
 use crate::codegen::config::internal_config::GeneratorWireInternalConfig;
+use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::misc::PathTexts;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
@@ -20,6 +21,7 @@ pub(crate) fn generate(
     ir_pack: &IrPack,
     config: &GeneratorWireInternalConfig,
     api_dart_config: &GeneratorApiDartInternalConfig,
+    dumper: &Dumper,
 ) -> Result<GeneratorWireOutput> {
     let wire_rust_generator_context = WireRustGeneratorContext {
         ir_pack,
@@ -34,16 +36,21 @@ pub(crate) fn generate(
         api_dart_config,
     };
 
-    let rust_output = rust::generate(wire_rust_generator_context)?;
+    let rust_output = rust::generate(wire_rust_generator_context, dumper)?;
 
     let c_output = c::generate(
         &config.c,
         rust_output.extern_func_names,
         rust_output.extern_struct_names,
         &rust_output.output_texts,
+        dumper,
     )?;
 
-    let dart_output = dart::generate(wire_dart_generator_context, &c_output.c_file_content)?;
+    let dart_output = dart::generate(
+        wire_dart_generator_context,
+        &c_output.c_file_content,
+        dumper,
+    )?;
 
     Ok(GeneratorWireOutput {
         output_texts: rust_output.output_texts + c_output.output_texts + dart_output.output_texts,

@@ -1,4 +1,5 @@
 use crate::codegen::config::internal_config::GeneratorInternalConfig;
+use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::misc::PathTexts;
 use crate::codegen::ir::pack::IrPack;
 
@@ -15,9 +16,10 @@ pub(crate) struct GeneratorOutput {
 pub(crate) fn generate(
     ir_pack: &IrPack,
     config: &GeneratorInternalConfig,
+    dumper: &Dumper,
 ) -> anyhow::Result<GeneratorOutput> {
-    let api_dart_output = api_dart::generate(&ir_pack, &config.api_dart)?;
-    let wire_output = wire::generate(&ir_pack, &config.wire, &config.api_dart)?;
+    let api_dart_output = api_dart::generate(&ir_pack, &config.api_dart, dumper)?;
+    let wire_output = wire::generate(&ir_pack, &config.wire, &config.api_dart, dumper)?;
 
     Ok(GeneratorOutput {
         output_texts: api_dart_output.output_texts + wire_output.output_texts,

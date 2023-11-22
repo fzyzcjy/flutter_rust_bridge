@@ -28,7 +28,7 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
     let ir_pack = parser::parse(&internal_config.parser)?;
     dumper.dump_ir(&ir_pack)?;
 
-    let generator_output = generator::generate(&ir_pack, &internal_config.generator)?;
+    let generator_output = generator::generate(&ir_pack, &internal_config.generator, &dumper)?;
 
     generator_output.output_texts.write_to_disk()?;
 

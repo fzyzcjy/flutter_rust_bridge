@@ -2,6 +2,7 @@ pub(crate) mod internal_config;
 mod spec_generator;
 mod text_generator;
 
+use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::misc::{PathText, PathTexts};
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 
@@ -15,6 +16,7 @@ pub(crate) fn generate(
     extern_func_names: Vec<String>,
     extern_struct_names: Vec<String>,
     rust_output_texts: &PathTexts,
+    dumper: &Dumper,
 ) -> anyhow::Result<GeneratorWireCOutput> {
     let spec = spec_generator::generate(
         config,
@@ -22,6 +24,7 @@ pub(crate) fn generate(
         extern_struct_names,
         rust_output_texts,
     )?;
+    dumper.dump_spec("wire_c", &spec)?;
     let text = text_generator::generate(spec)?;
     Ok(GeneratorWireCOutput {
         output_texts: PathTexts(vec![PathText::new(

@@ -1,5 +1,6 @@
 use crate::codegen::config::internal_config::InternalConfig;
 use crate::codegen::dumper::internal_config::DumperInternalConfig;
+use crate::codegen::generator::api_dart::spec_generator::ApiDartOutputSpec;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::Config;
 use crate::utils::file_utils::create_dir_all_and_write;
@@ -24,6 +25,14 @@ impl Dumper<'_> {
 
     pub(crate) fn dump_ir(&self, ir_pack: &IrPack) -> anyhow::Result<()> {
         self.dump("ir_pack.json", ir_pack)
+    }
+
+    pub(crate) fn dump_spec<T: Serialize>(
+        &self,
+        partial_name: &str,
+        data: &T,
+    ) -> anyhow::Result<()> {
+        self.dump(&format!("spec_{partial_name}.json"), data)
     }
 
     fn dump<T: Serialize>(&self, name: &str, data: &T) -> anyhow::Result<()> {
