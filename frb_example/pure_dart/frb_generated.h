@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
+typedef struct DartCObject *WireSyncReturn;
 typedef struct _Dart_Handle* Dart_Handle;
 
 typedef struct wire_struct_with_comments {

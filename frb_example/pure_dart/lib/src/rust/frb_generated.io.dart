@@ -146,7 +146,7 @@ class RustLibWire implements BaseWire {
   late final _wire_simple_adder =
       _wire_simple_adderPtr.asFunction<void Function(int, int, int)>();
 
-  int wire_simple_adder_sync(
+  WireSyncReturn wire_simple_adder_sync(
     int a,
     int b,
   ) {
@@ -156,11 +156,11 @@ class RustLibWire implements BaseWire {
     );
   }
 
-  late final _wire_simple_adder_syncPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int32, ffi.Int32)>>(
-          'wire_simple_adder_sync');
-  late final _wire_simple_adder_sync =
-      _wire_simple_adder_syncPtr.asFunction<int Function(int, int)>();
+  late final _wire_simple_adder_syncPtr = _lookup<
+          ffi.NativeFunction<WireSyncReturn Function(ffi.Int32, ffi.Int32)>>(
+      'wire_simple_adder_sync');
+  late final _wire_simple_adder_sync = _wire_simple_adder_syncPtr
+      .asFunction<WireSyncReturn Function(int, int)>();
 
   ffi.Pointer<wire_struct_with_comments>
       new_box_autoadd_struct_with_comments() {
