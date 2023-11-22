@@ -31,7 +31,7 @@ pub(crate) fn parse_comments(attrs: &[Attribute]) -> Vec<IrComment> {
 }
 
 fn parse_comment(input: &str) -> IrComment {
-    let input = input.trim();
+    let input = input.trim_matches('\n');
     IrComment(if input.contains('\n') {
         // Dart's formatter has issues with block comments
         // so we convert them ahead of time.
