@@ -5,6 +5,7 @@ use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInt
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::codegen::preparer::internal_config::PreparerInternalConfig;
+use crate::codegen::ConfigDump;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::path::PathBuf;
@@ -15,6 +16,7 @@ pub(crate) struct InternalConfig {
     pub parser: ParserInternalConfig,
     pub generator: GeneratorInternalConfig,
     pub polisher: PolisherInternalConfig,
+    pub dump: Vec<ConfigDump>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]

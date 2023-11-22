@@ -131,6 +131,7 @@ impl InternalConfig {
                 rust_output_path,
                 c_output_path,
             },
+            dump: config.dump.unwrap_or_default(),
         })
     }
 }
