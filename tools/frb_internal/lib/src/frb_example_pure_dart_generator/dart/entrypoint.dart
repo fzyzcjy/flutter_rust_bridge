@@ -23,7 +23,7 @@ class DartGenerator extends BaseGenerator {
     return inputText
         // imports
         .replaceAllMapped(r'src/rust/api/(\w+).dart', (m) => 'src/rust/api/${m.group(1)}${mode.filePostfix}.dart')
-        // function calls
+        // function call, struct name, etc
         .replaceAll('TwinNormal', ReCase(mode.filePostfix).pascalCase);
   }
 }
