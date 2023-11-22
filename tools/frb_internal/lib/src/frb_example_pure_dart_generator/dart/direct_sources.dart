@@ -26,7 +26,12 @@ String _generatePrimitive() {
 
 String _generatePrimitiveList() {
   final builder = DartFileBuilder(importName: 'primitive_list');
-  builder.imports += "import 'dart:typed_data';";
+
+  builder.imports += """
+  import 'dart:typed_data';
+  import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
+  """;
+
   for (final ty in kPrimitiveTypes) {
     for (final arg in [
       '${ty.primitiveListName}(0)',

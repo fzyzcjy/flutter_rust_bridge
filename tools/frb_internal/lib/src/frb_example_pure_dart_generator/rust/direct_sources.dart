@@ -66,24 +66,75 @@ class PrimitiveTypeInfo {
   final String primitiveListName;
   final List<String> interestValues;
 
-  const PrimitiveTypeInfo(this.name, this.primitiveListName, this.interestValues);
+  const PrimitiveTypeInfo({
+    required this.name,
+    required this.primitiveListName,
+    required this.interestValues,
+  });
 }
 
 const kPrimitiveTypes = [
-  PrimitiveTypeInfo('i8', 'Int8List', ['0', '-128', '127']),
-  PrimitiveTypeInfo('i16', 'Int16List', ['0', '-32768', '32767']),
-  PrimitiveTypeInfo('i32', 'Int32List', ['0', '-2147483648', '2147483647']),
-  PrimitiveTypeInfo('i64', 'Int64List',
-      ['BigInt.parse("0")', 'BigInt.parse("-9223372036854775808")', 'BigInt.parse("9223372036854775807")']),
-  PrimitiveTypeInfo('u8', 'Uint8List', ['0', '255']),
-  PrimitiveTypeInfo('u16', 'Uint16List', ['0', '65535']),
-  PrimitiveTypeInfo('u32', 'Uint32List', ['0', '4294967295']),
-  PrimitiveTypeInfo('u64', 'Uint64List', [
-    'BigInt.parse("0")',
-    // 'BigInt.parse("18446744073709551615")', // not support numbers bigger than max i64 yet (but implementable)
-    'BigInt.parse("9223372036854775807")',
-  ]),
-  PrimitiveTypeInfo('f32', 'Float32List', ['0', '-42.5', '123456']),
-  PrimitiveTypeInfo('f64', 'Float64List', ['0', '-42.5', '123456']),
-  PrimitiveTypeInfo('bool', 'List<bool>', ['false', 'true']),
+  PrimitiveTypeInfo(
+    name: 'i8',
+    primitiveListName: 'Int8List',
+    interestValues: ['0', '-128', '127'],
+  ),
+  PrimitiveTypeInfo(
+    name: 'i16',
+    primitiveListName: 'Int16List',
+    interestValues: ['0', '-32768', '32767'],
+  ),
+  PrimitiveTypeInfo(
+    name: 'i32',
+    primitiveListName: 'Int32List',
+    interestValues: ['0', '-2147483648', '2147483647'],
+  ),
+  PrimitiveTypeInfo(
+    name: 'i64',
+    primitiveListName: 'Int64List',
+    interestValues: [
+      'BigInt.parse("0")',
+      'BigInt.parse("-9223372036854775808")',
+      'BigInt.parse("9223372036854775807")'
+    ],
+  ),
+  PrimitiveTypeInfo(
+    name: 'u8',
+    primitiveListName: 'Uint8List',
+    interestValues: ['0', '255'],
+  ),
+  PrimitiveTypeInfo(
+    name: 'u16',
+    primitiveListName: 'Uint16List',
+    interestValues: ['0', '65535'],
+  ),
+  PrimitiveTypeInfo(
+    name: 'u32',
+    primitiveListName: 'Uint32List',
+    interestValues: ['0', '4294967295'],
+  ),
+  PrimitiveTypeInfo(
+    name: 'u64',
+    primitiveListName: 'Uint64List',
+    interestValues: [
+      'BigInt.parse("0")',
+      // 'BigInt.parse("18446744073709551615")', // not support numbers bigger than max i64 yet (but implementable)
+      'BigInt.parse("9223372036854775807")',
+    ],
+  ),
+  PrimitiveTypeInfo(
+    name: 'f32',
+    primitiveListName: 'Float32List',
+    interestValues: ['0', '-42.5', '123456'],
+  ),
+  PrimitiveTypeInfo(
+    name: 'f64',
+    primitiveListName: 'Float64List',
+    interestValues: ['0', '-42.5', '123456'],
+  ),
+  PrimitiveTypeInfo(
+    name: 'bool',
+    primitiveListName: 'List<bool>',
+    interestValues: ['false', 'true'],
+  ),
 ];
