@@ -15,7 +15,7 @@ String _generateTestApiPrimitive() {
     for (final arg in ty.interestValues) {
       builder.body += '''
         test('type=${ty.name} arg=$arg', () async {
-          expect(await examplePrimitiveType${ReCase(ty.name).pascalCase}(arg: $arg), $arg);
+          expect(await examplePrimitiveType${ReCase(ty.name).pascalCase}TwinNormal(arg: $arg), $arg);
         });
       ''';
     }
@@ -29,7 +29,7 @@ String _generateTestApiOptionalPrimitive() {
     for (final arg in ["null", ...ty.interestValues]) {
       builder.body += '''
         test('type=${ty.name} arg=$arg', () async {
-          expect(await exampleOptionalPrimitiveType${ReCase(ty.name).pascalCase}(arg: $arg), $arg);
+          expect(await exampleOptionalPrimitiveType${ReCase(ty.name).pascalCase}TwinNormal(arg: $arg), $arg);
         });
       ''';
     }

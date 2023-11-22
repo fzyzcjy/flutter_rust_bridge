@@ -11,7 +11,7 @@ String _generateSrcApiPrimitive() {
   final builder = RustFileBuilder();
   for (final ty in kPrimitiveTypes) {
     final name = ty.name;
-    builder.body += 'pub fn example_primitive_type_$name(arg: $name) -> $name { arg }\n';
+    builder.body += 'pub fn example_primitive_type_${name}_twin_normal(arg: $name) -> $name { arg }\n';
   }
   return builder.toString();
 }
@@ -20,7 +20,8 @@ String _generateSrcApiOptionalPrimitive() {
   final builder = RustFileBuilder();
   for (final ty in kPrimitiveTypes) {
     final name = ty.name;
-    builder.body += 'pub fn example_optional_primitive_type_$name(arg: Option<$name>) -> Option<$name> { arg }\n';
+    builder.body +=
+        'pub fn example_optional_primitive_type_${name}_twin_normal(arg: Option<$name>) -> Option<$name> { arg }\n';
   }
   return builder.toString();
 }
