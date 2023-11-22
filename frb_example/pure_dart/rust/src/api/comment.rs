@@ -38,9 +38,7 @@ pub struct StructWithComments {
     field_with_comments: i32,
 }
 
-pub struct MethodWithComments {}
-
-impl MethodWithComments {
+impl StructWithComments {
     /// Documentation on a static method
     pub fn static_method() {}
 
