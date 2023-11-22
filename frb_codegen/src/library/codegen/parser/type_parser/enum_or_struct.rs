@@ -6,13 +6,14 @@ use crate::codegen::parser::type_parser::unencodable::{
     parse_path_type_to_unencodable, SplayedSegment,
 };
 use std::collections::{HashMap, HashSet};
+use std::fmt::Debug;
 use std::hash::Hash;
 use syn::{Ident, TypePath};
 
 pub(super) trait EnumOrStructParser<Id, Obj, SrcObj, Item>
 where
     Id: From<NamespacedName> + Clone + PartialEq + Eq + Hash,
-    SrcObj: StructOrEnumWrapper<Item> + Clone,
+    SrcObj: StructOrEnumWrapper<Item> + Clone + Debug,
 {
     fn parse(
         &mut self,
@@ -24,7 +25,7 @@ where
             if let Some(src_object) = self.src_objects().get(*name) {
                 let src_object = (*src_object).clone();
 
-                let namespace = Namespace::new(src_object.inner().path.clone());
+                let namespace = Namespace::new(pop_last(src_object.inner().path.clone()));
                 let namespaced_name = NamespacedName::new(namespace, name.to_string());
                 let ident: Id = namespaced_name.clone().into();
 
@@ -67,6 +68,11 @@ where
     fn src_objects(&self) -> &HashMap<String, &SrcObj>;
 
     fn parser_info(&mut self) -> &mut EnumOrStructParserInfo<Id, Obj>;
+}
+
+fn pop_last(mut v: Vec<String>) -> Vec<String> {
+    v.pop();
+    v
 }
 
 #[derive(Clone, Debug, Default)]
