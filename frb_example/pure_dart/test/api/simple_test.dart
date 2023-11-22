@@ -8,6 +8,4 @@ Future<void> main() async {
   test('dart call simpleAdder', () async {
     expect(await simpleAdder(a: 42, b: 100), 142);
   });
-
-  // TODO
 }
