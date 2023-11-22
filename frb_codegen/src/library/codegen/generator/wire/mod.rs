@@ -11,6 +11,7 @@ use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGenerat
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
 use crate::codegen::ir::pack::IrPack;
 use anyhow::Result;
+use std::path::PathBuf;
 
 pub(crate) struct GeneratorWireOutput {
     pub output_texts: PathTexts,
@@ -21,6 +22,7 @@ pub(crate) fn generate(
     ir_pack: &IrPack,
     config: &GeneratorWireInternalConfig,
     api_dart_config: &GeneratorApiDartInternalConfig,
+    api_dart_actual_output_paths: &[PathBuf],
     dumper: &Dumper,
 ) -> Result<GeneratorWireOutput> {
     let wire_rust_generator_context = WireRustGeneratorContext {
@@ -49,6 +51,7 @@ pub(crate) fn generate(
     let dart_output = dart::generate(
         wire_dart_generator_context,
         &c_output.c_file_content,
+        api_dart_actual_output_paths,
         dumper,
     )?;
 

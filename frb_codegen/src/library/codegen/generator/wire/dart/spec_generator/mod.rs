@@ -4,6 +4,7 @@ use crate::codegen::generator::wire::dart::spec_generator::misc::WireDartOutputS
 use crate::codegen::generator::wire::dart::spec_generator::wire2api::WireDartOutputSpecWire2api;
 use crate::codegen::ir::pack::IrPackComputedCache;
 use serde::Serialize;
+use std::path::PathBuf;
 
 pub mod api2wire;
 pub(crate) mod base;
@@ -22,10 +23,16 @@ pub(crate) struct WireDartOutputSpec {
 pub(crate) fn generate(
     context: WireDartGeneratorContext,
     c_file_content: &str,
+    api_dart_actual_output_paths: &[PathBuf],
 ) -> anyhow::Result<WireDartOutputSpec> {
     let cache = IrPackComputedCache::compute(context.ir_pack);
     Ok(WireDartOutputSpec {
-        misc: misc::generate(context, &cache, c_file_content)?,
+        misc: misc::generate(
+            context,
+            &cache,
+            c_file_content,
+            api_dart_actual_output_paths,
+        )?,
         wire2api: wire2api::generate(context, &cache),
         api2wire: api2wire::generate(context, &cache),
     })

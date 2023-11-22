@@ -5,7 +5,9 @@ use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDart
 use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
+use itertools::Itertools;
 use serde::Serialize;
+use std::path::PathBuf;
 
 mod api_impl_body;
 mod c_binding;
@@ -24,6 +26,7 @@ pub(crate) fn generate(
     context: WireDartGeneratorContext,
     cache: &IrPackComputedCache,
     c_file_content: &str,
+    api_dart_actual_output_paths: &[PathBuf],
 ) -> anyhow::Result<WireDartOutputSpecMisc> {
     Ok(WireDartOutputSpecMisc {
         c_binding: c_binding::generate(&context.config, c_file_content)?,
@@ -31,6 +34,7 @@ pub(crate) fn generate(
             &context.config.dart_output_class_name_pack,
             &context.config.default_external_library_stem,
             &context.config.default_external_library_relative_directory,
+            api_dart_actual_output_paths,
         ),
         api_impl_normal_functions: (context.ir_pack.funcs.iter())
             .map(|f| api_impl_body::generate_api_impl_normal_function(f, context))
@@ -46,6 +50,7 @@ fn generate_boilerplate(
     dart_output_class_name_pack: &DartOutputClassNamePack,
     default_external_library_stem: &str,
     default_external_library_relative_directory: &str,
+    api_dart_actual_output_paths: &[PathBuf],
 ) -> Acc<Vec<WireDartOutputCode>> {
     let DartOutputClassNamePack {
         entrypoint_class_name,
@@ -55,7 +60,7 @@ fn generate_boilerplate(
         ..
     } = &dart_output_class_name_pack;
 
-    let universal_imports = generate_import_dart_api_layer()
+    let universal_imports = generate_import_dart_api_layer(api_dart_actual_output_paths)
         + "\nimport 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';";
 
     Acc {
@@ -123,8 +128,14 @@ fn generate_boilerplate(
     }
 }
 
-fn generate_import_dart_api_layer() -> String {
-    todo!()
+fn generate_import_dart_api_layer(api_dart_actual_output_paths: &[PathBuf]) -> String {
+    api_dart_actual_output_paths
+        .iter()
+        .map(|path| {
+            let relative_path = TODO;
+            format!("import '{TODO}';\n")
+        })
+        .join("")
 }
 
 fn compute_needs_freezed(cache: &IrPackComputedCache, ir_pack: &IrPack) -> bool {

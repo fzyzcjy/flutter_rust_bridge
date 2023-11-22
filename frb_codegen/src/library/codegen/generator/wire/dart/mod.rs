@@ -2,6 +2,7 @@ use crate::codegen::dumper::internal_config::ConfigDumpContent;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::misc::PathTexts;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
+use std::path::PathBuf;
 
 pub(crate) mod internal_config;
 pub(super) mod spec_generator;
@@ -15,10 +16,12 @@ pub(crate) struct GeneratorWireDartOutput {
 pub(crate) fn generate(
     context: WireDartGeneratorContext,
     c_file_content: &str,
+    api_dart_actual_output_paths: &[PathBuf],
     dumper: &Dumper,
 ) -> anyhow::Result<GeneratorWireDartOutput> {
-    let spec = spec_generator::generate(context, c_file_content)?;
+    let spec = spec_generator::generate(context, c_file_content, api_dart_actual_output_paths)?;
     dumper.dump(ConfigDumpContent::Spec, "dump_wire_dart.json", &spec)?;
+
     let text = text_generator::generate(&spec, &context.config)?;
 
     Ok(GeneratorWireDartOutput {

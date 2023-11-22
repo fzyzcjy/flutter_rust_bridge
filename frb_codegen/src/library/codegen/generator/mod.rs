@@ -19,7 +19,13 @@ pub(crate) fn generate(
     dumper: &Dumper,
 ) -> anyhow::Result<GeneratorOutput> {
     let api_dart_output = api_dart::generate(&ir_pack, &config.api_dart, dumper)?;
-    let wire_output = wire::generate(&ir_pack, &config.wire, &config.api_dart, dumper)?;
+    let wire_output = wire::generate(
+        &ir_pack,
+        &config.wire,
+        &config.api_dart,
+        &api_dart_output.output_texts.paths(),
+        dumper,
+    )?;
 
     Ok(GeneratorOutput {
         output_texts: api_dart_output.output_texts + wire_output.output_texts,
