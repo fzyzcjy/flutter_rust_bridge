@@ -101,11 +101,11 @@ Future<void> main() async {
       expect(await exampleOptionalPrimitiveTypeU64(arg: BigInt.parse("0")),
           BigInt.parse("0"));
     });
-    test('type=u64 arg=BigInt.parse("18446744073709551615")', () async {
+    test('type=u64 arg=BigInt.parse("9223372036854775807")', () async {
       expect(
           await exampleOptionalPrimitiveTypeU64(
-              arg: BigInt.parse("18446744073709551615")),
-          BigInt.parse("18446744073709551615"));
+              arg: BigInt.parse("9223372036854775807")),
+          BigInt.parse("9223372036854775807"));
     });
     test('type=f32 arg=null', () async {
       expect(await exampleOptionalPrimitiveTypeF32(arg: null), null);

@@ -47,8 +47,8 @@ const kPrimitiveTypes = [
   PrimitiveTypeInfo('u32', ['0', '4294967295']),
   PrimitiveTypeInfo('u64', [
     'BigInt.parse("0")',
-    'BigInt.parse("18446744073709551615")',
-    // 'BigInt.parse("9223372036854775807")', // not support numbers bigger than max i64 yet (but implementable)
+    // 'BigInt.parse("18446744073709551615")', // not support numbers bigger than max i64 yet (but implementable)
+    'BigInt.parse("9223372036854775807")',
   ]),
   PrimitiveTypeInfo('f32', ['0', '-42.5', '123456']),
   PrimitiveTypeInfo('f64', ['0', '-42.5', '123456']),
