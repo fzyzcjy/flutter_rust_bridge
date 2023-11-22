@@ -140,7 +140,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
             let catch_unwind_result = panic::catch_unwind(move || {
                 match self.executor.execute_sync(wrap_info, sync_task) {
                     Ok(data) => {
-                        wire_sync_from_data(data.0.into_into_dart(), Rust2DartAction::Success)
+                        wire_sync_from_data(data.into_into_dart(), Rust2DartAction::Success)
                     }
                     Err(err) => self
                         .error_handler
