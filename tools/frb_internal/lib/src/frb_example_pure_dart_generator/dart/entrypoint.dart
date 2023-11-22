@@ -22,7 +22,8 @@ class DartGenerator extends BaseGenerator {
   String generateDuplicateCode(String inputText, DuplicatorMode mode) {
     return inputText
         // imports
-        .replaceAllMapped(RegExp(r'src/rust/api/(\w+)\.dart'), (m) => 'src/rust/api/${m.group(1)}${mode.postfix}.dart')
+        .replaceAllMapped(RegExp(r'src/rust/api/(pseudo_manual/)?(\w+)\.dart'),
+            (m) => 'src/rust/api/pseudo_manual/${m.group(2)}${mode.postfix}.dart')
         // function call, struct name, etc
         .replaceAll('TwinNormal', ReCase(mode.postfix).pascalCase);
   }
