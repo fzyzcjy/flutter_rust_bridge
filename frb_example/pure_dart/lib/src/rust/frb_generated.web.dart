@@ -93,7 +93,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  ffi.Pointer<wire_list_bool> api2wire_list_bool(List<bool> raw) {
+  List<dynamic> api2wire_list_bool(List<bool> raw) {
     return raw.map(api2wire_bool).toList();
   }
 
