@@ -38,6 +38,11 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
+  Future<void> structWithCommentsInstanceMethod(
+      {required StructWithComments that, dynamic hint});
+
+  Future<void> structWithCommentsStaticMethod({dynamic hint});
+
   Future<void> functionWithCommentsSlashStarStar({dynamic hint});
 
   Future<void> functionWithCommentsTripleSlashMultiLine({dynamic hint});
@@ -53,6 +58,47 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     required super.wire,
     required super.generalizedFrbRustBinding,
   });
+
+  @override
+  Future<void> structWithCommentsInstanceMethod(
+      {required StructWithComments that, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_struct_with_comments(that);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_StructWithComments_instance_method(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kStructWithCommentsInstanceMethodConstMeta,
+      argValues: [that],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kStructWithCommentsInstanceMethodConstMeta =>
+      const TaskConstMeta(
+        debugName: "StructWithComments_instance_method",
+        argNames: ["that"],
+      );
+
+  @override
+  Future<void> structWithCommentsStaticMethod({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_StructWithComments_static_method(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kStructWithCommentsStaticMethodConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kStructWithCommentsStaticMethodConstMeta =>
+      const TaskConstMeta(
+        debugName: "StructWithComments_static_method",
+        argNames: [],
+      );
 
   @override
   Future<void> functionWithCommentsSlashStarStar({dynamic hint}) {

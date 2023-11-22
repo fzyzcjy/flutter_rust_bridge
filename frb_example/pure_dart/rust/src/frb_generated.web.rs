@@ -10,10 +10,34 @@ where
         (!self.is_null() && !self.is_undefined()).then(|| self.wire2api())
     }
 }
+impl Wire2Api<StructWithComments> for JsValue {
+    fn wire2api(self) -> StructWithComments {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        StructWithComments {
+            field_with_comments: self_.get(0).wire2api(),
+        }
+    }
+}
 impl Wire2Api<i32> for JsValue {
     fn wire2api(self) -> i32 {
         self.unchecked_into_f64() as _
     }
+}
+
+#[wasm_bindgen]
+pub fn wire_StructWithComments_instance_method(port_: MessagePort, that: JsValue) {
+    wire_StructWithComments_instance_method_impl(port_, that)
+}
+
+#[wasm_bindgen]
+pub fn wire_StructWithComments_static_method(port_: MessagePort) {
+    wire_StructWithComments_static_method_impl(port_)
 }
 
 #[wasm_bindgen]

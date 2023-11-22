@@ -18,6 +18,7 @@
 
 // Section: imports
 
+use crate::api::comment::StructWithComments;
 use crate::api::comment::*;
 use crate::api::simple::*;
 use core::panic::UnwindSafe;
@@ -28,6 +29,32 @@ use std::sync::Arc;
 
 // Section: wire_funcs
 
+fn wire_StructWithComments_instance_method_impl(
+    port_: MessagePort,
+    that: impl Wire2Api<StructWithComments> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        WrapInfo {
+            debug_name: "StructWithComments_instance_method",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_that = that.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(StructWithComments::instance_method(&api_that))
+        },
+    )
+}
+fn wire_StructWithComments_static_method_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        WrapInfo {
+            debug_name: "StructWithComments_static_method",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(StructWithComments::static_method()),
+    )
+}
 fn wire_function_with_comments_slash_star_star_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {

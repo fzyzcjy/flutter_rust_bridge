@@ -33,6 +33,40 @@ class RustLibWire implements BaseWire {
           lookup)
       : _lookup = lookup;
 
+  void wire_StructWithComments_instance_method(
+    int port_,
+    ffi.Pointer<wire_struct_with_comments> that,
+  ) {
+    return _wire_StructWithComments_instance_method(
+      port_,
+      that,
+    );
+  }
+
+  late final _wire_StructWithComments_instance_methodPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_struct_with_comments>)>>(
+      'wire_StructWithComments_instance_method');
+  late final _wire_StructWithComments_instance_method =
+      _wire_StructWithComments_instance_methodPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_struct_with_comments>)>();
+
+  void wire_StructWithComments_static_method(
+    int port_,
+  ) {
+    return _wire_StructWithComments_static_method(
+      port_,
+    );
+  }
+
+  late final _wire_StructWithComments_static_methodPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_StructWithComments_static_method');
+  late final _wire_StructWithComments_static_method =
+      _wire_StructWithComments_static_methodPtr
+          .asFunction<void Function(int)>();
+
   void wire_function_with_comments_slash_star_star(
     int port_,
   ) {
@@ -97,6 +131,19 @@ class RustLibWire implements BaseWire {
   late final _wire_simple_adder =
       _wire_simple_adderPtr.asFunction<void Function(int, int, int)>();
 
+  ffi.Pointer<wire_struct_with_comments>
+      new_box_autoadd_struct_with_comments() {
+    return _new_box_autoadd_struct_with_comments();
+  }
+
+  late final _new_box_autoadd_struct_with_commentsPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Pointer<wire_struct_with_comments> Function()>>(
+      'new_box_autoadd_struct_with_comments');
+  late final _new_box_autoadd_struct_with_comments =
+      _new_box_autoadd_struct_with_commentsPtr
+          .asFunction<ffi.Pointer<wire_struct_with_comments> Function()>();
+
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
   }
@@ -106,4 +153,31 @@ class RustLibWire implements BaseWire {
           'dummy_method_to_enforce_bundling');
   late final _dummy_method_to_enforce_bundling =
       _dummy_method_to_enforce_bundlingPtr.asFunction<int Function()>();
+}
+
+final class wire_struct_with_comments extends ffi.Struct {
+  @ffi.Int32()
+  external int field_with_comments;
+}
+
+// Section: api2wire_funcs
+
+@protected
+ffi.Pointer<wire_struct_with_comments>
+    api2wire_box_autoadd_struct_with_comments(StructWithComments raw) {
+  final ptr = inner.new_box_autoadd_struct_with_comments();
+  _api_fill_to_wire_struct_with_comments(raw, ptr.ref);
+  return ptr;
+}
+
+// Section: api_fill_to_wire_funcs
+
+void _api_fill_to_wire_box_autoadd_struct_with_comments(
+    StructWithComments apiObj, ffi.Pointer<wire_struct_with_comments> wireObj) {
+  _api_fill_to_wire_struct_with_comments(apiObj, wireObj.ref);
+}
+
+void _api_fill_to_wire_struct_with_comments(
+    StructWithComments apiObj, wire_struct_with_comments wireObj) {
+  wireObj.field_with_comments = api2wire_i_32(apiObj.fieldWithComments);
 }
