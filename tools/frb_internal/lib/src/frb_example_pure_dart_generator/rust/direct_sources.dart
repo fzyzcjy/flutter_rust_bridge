@@ -65,14 +65,21 @@ class PrimitiveTypeInfo {
   final String name;
   final String primitiveListName;
   final List<String> interestRawValues;
-  final String Function(String)? primitiveWrapper;
+  final String Function(PrimitiveTypeInfo, String) primitiveWrapper;
+  final String Function(PrimitiveTypeInfo, String) primitiveListWrapper;
 
   const PrimitiveTypeInfo({
     required this.name,
     required this.primitiveListName,
     required this.interestRawValues,
-    this.primitiveWrapper,
+    this.primitiveWrapper = _defaultPrimitiveWrapper,
+    this.primitiveListWrapper = _defaultPrimitiveListWrapper,
   });
+
+  static String _defaultPrimitiveWrapper(PrimitiveTypeInfo info, String value) => value;
+
+  static String _defaultPrimitiveListWrapper(PrimitiveTypeInfo info, String value) =>
+      '${info.primitiveListName}.fromList([$value])';
 }
 
 final kPrimitiveTypes = [
@@ -95,7 +102,7 @@ final kPrimitiveTypes = [
     name: 'i64',
     primitiveListName: 'Int64List',
     interestRawValues: ['0', '-9223372036854775808', '9223372036854775807'],
-    primitiveWrapper: (x) => 'BigInt.parse("$x")',
+    primitiveWrapper: (_, x) => 'BigInt.parse("$x")',
   ),
   PrimitiveTypeInfo(
     name: 'u8',
@@ -117,7 +124,7 @@ final kPrimitiveTypes = [
     primitiveListName: 'Uint64List',
     // '18446744073709551615', // not support numbers bigger than max i64 yet (but implementable)
     interestRawValues: ['0', '9223372036854775807'],
-    primitiveWrapper: (x) => 'BigInt.parse("$x")',
+    primitiveWrapper: (_, x) => 'BigInt.parse("$x")',
   ),
   PrimitiveTypeInfo(
     name: 'f32',
@@ -133,5 +140,6 @@ final kPrimitiveTypes = [
     name: 'bool',
     primitiveListName: 'List<bool>',
     interestRawValues: ['false', 'true'],
+    primitiveListWrapper: (info, x) => '[$x]',
   ),
 ];
