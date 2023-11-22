@@ -1,26 +1,26 @@
 /// This is single line comment
-pub fn function_with_comments_triple_slash_single_line() {}
+pub fn function_with_comments_triple_slash_single_line_twin_normal() {}
 
 /// This is first line
 /// This is second line
-pub fn function_with_comments_triple_slash_multi_line() {}
+pub fn function_with_comments_triple_slash_multi_line_twin_normal() {}
 
 /**
  Multiline comments are fine,
  but they are not preferred in Rust nor in Dart.
  Newlines are preserved.
 */
-pub fn function_with_comments_slash_star_star() {}
+pub fn function_with_comments_slash_star_star_twin_normal() {}
 
 /// Comments on simple enums
-pub enum SimpleEnumWithComments {
+pub enum SimpleEnumWithCommentsTwinNormal {
     Apple,
     /// Comments on enum variants
     Orange,
 }
 
 /// Comments on complex enums
-pub enum ComplexEnumWithComments {
+pub enum ComplexEnumWithCommentsTwinNormal {
     Apple,
     Orange {
         /// Comments on enum variant's fields
@@ -33,12 +33,12 @@ pub enum ComplexEnumWithComments {
 }
 
 /// Comments on structs
-pub struct StructWithComments {
+pub struct StructWithCommentsTwinNormal {
     /// Documentation on a struct field
     pub field_with_comments: i32,
 }
 
-impl StructWithComments {
+impl StructWithCommentsTwinNormal {
     /// Documentation on a static method
     pub fn static_method() {}
 
