@@ -1,5 +1,6 @@
-// NOTE: This file is auto-generated from `comment.rs` by frb_internal
-// Please do not modify manually, but modify the `comment.rs` and re-run frb_internal generator
+// NOTE: This file is mimicking how a human developer writes tests,
+// and is auto-generated from `comment.rs` by frb_internal
+// Please do not modify manually, but modify the origin and re-run frb_internal generator
 
 /// This is single line comment
 #[flutter_rust_bridge::frb(sync)]

@@ -65,7 +65,7 @@ class _Duplicator {
       if (DuplicatorMode.values.any((mode) => fileStem.contains(mode.postfix))) continue;
 
       for (final mode in DuplicatorMode.values) {
-        final outputText = computeDuplicatorPrelude(fileName) +
+        final outputText = computeDuplicatorPrelude(' from `$fileName`') +
             generator.generateDuplicateCode((file as File).readAsStringSync(), mode);
         final targetPath = generator.interestDir
             .resolve('pseudo_manual/')
