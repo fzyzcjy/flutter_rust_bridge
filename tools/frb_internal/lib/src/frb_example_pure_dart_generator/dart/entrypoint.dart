@@ -1,4 +1,4 @@
-import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/rust/generator.dart';
+import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/rust/entrypoint.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/generator_utils.dart';
 import 'package:recase/recase.dart';

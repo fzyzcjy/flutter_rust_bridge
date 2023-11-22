@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/dart/generator.dart';
-import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/rust/generator.dart';
+import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/dart/entrypoint.dart';
+import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/rust/entrypoint.dart';
 
 Future<void> generate() async {
   final dartRoot = Directory.current.uri.resolve('../../frb_example/pure_dart/');
