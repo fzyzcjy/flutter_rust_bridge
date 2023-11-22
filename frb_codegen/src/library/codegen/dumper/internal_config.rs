@@ -14,6 +14,7 @@ pub(crate) struct DumperInternalConfig {
 #[serde(rename_all = "snake_case")]
 pub enum ConfigDumpContent {
     Config,
+    SourceGraph,
     Ir,
     Spec,
 }

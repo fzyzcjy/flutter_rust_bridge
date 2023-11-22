@@ -8,6 +8,7 @@ pub(crate) mod source_graph;
 pub(crate) mod type_alias_resolver;
 pub(crate) mod type_parser;
 
+use crate::codegen::dumper::Dumper;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::parser::function_extractor::extract_generalized_functions_from_file;
 use crate::codegen::parser::function_parser::FunctionParser;
@@ -16,20 +17,22 @@ use crate::codegen::parser::misc::parse_has_executor;
 use crate::codegen::parser::reader::read_rust_file;
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
+use crate::codegen::ConfigDumpContent;
 use itertools::Itertools;
 use log::trace;
 use std::path::PathBuf;
 use syn::File;
+use ConfigDumpContent::SourceGraph;
 
 // TODO handle multi file correctly
-pub(crate) fn parse(config: &ParserInternalConfig) -> anyhow::Result<IrPack> {
+pub(crate) fn parse(config: &ParserInternalConfig, dumper: &Dumper) -> anyhow::Result<IrPack> {
     let rust_input_paths = &config.rust_input_path_pack.rust_input_paths;
     trace!("rust_input_paths={:?}", &rust_input_paths);
 
     let file_data_arr = read_files(&rust_input_paths, &config.rust_crate_dir)?;
 
     let crate_map = source_graph::crates::Crate::parse(&config.rust_crate_dir.join("Cargo.toml"))?;
-    // trace!("crate_map={:?}", &crate_map);
+    dumper.dump(SourceGraph, "source_graph.json", &crate_map)?;
 
     let src_fns = file_data_arr
         .iter()

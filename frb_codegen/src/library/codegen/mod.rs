@@ -29,7 +29,7 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
 
     preparer::prepare(&internal_config.preparer)?;
 
-    let ir_pack = parser::parse(&internal_config.parser)?;
+    let ir_pack = parser::parse(&internal_config.parser, &dumper)?;
     dumper.dump(ConfigDumpContent::Ir, "ir_pack.json", &ir_pack)?;
 
     let generator_output = generator::generate(&ir_pack, &internal_config.generator, &dumper)?;
