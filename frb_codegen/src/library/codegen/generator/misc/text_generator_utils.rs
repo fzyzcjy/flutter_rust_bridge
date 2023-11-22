@@ -26,9 +26,9 @@ pub(crate) fn section_header_comment<T: BasicCode>(
     item.map_ref(|x, target| {
         vec![T::new_body(
             if x.iter().all(|x| x.body().trim().is_empty()) {
-                section_header_comment_raw(section_name)
-            } else {
                 "".to_owned()
+            } else {
+                section_header_comment_raw(section_name)
             },
         )]
     })
