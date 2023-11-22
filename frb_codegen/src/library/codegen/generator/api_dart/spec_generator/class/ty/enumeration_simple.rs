@@ -17,6 +17,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
             .join("\n");
 
         Some(ApiDartGeneratedClass {
+            namespace: TODO,
             code: format!(
                 "{}enum {} {{
                     {}

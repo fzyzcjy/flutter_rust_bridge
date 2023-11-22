@@ -14,6 +14,7 @@ impl<'a> ApiDartGeneratorClassTrait for RustOpaqueApiDartGenerator<'a> {
             ApiDartGenerator::new(RustOpaque(self.ir.clone()), self.context).dart_api_type();
 
         Some(ApiDartGeneratedClass {
+            namespace: TODO,
             code: format!(
                 "@sealed class {dart_api_type} extends FrbOpaque {{
                     {dart_api_type}.fromRaw(int ptr, int size): super.unsafe(ptr, size);

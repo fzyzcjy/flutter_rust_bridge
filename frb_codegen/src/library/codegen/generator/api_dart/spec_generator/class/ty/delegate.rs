@@ -39,6 +39,7 @@ fn generate_array(
         };
 
     Some(ApiDartGeneratedClass {
+        namespace: TODO,
         code: format!(
             "
             class {self_dart_api_type} extends NonGrowableListView<{inner_dart_api_type}> {{
