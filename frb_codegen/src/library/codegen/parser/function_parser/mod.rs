@@ -77,7 +77,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             inputs: info.inputs,
             output: info.ok_output.unwrap_or(Primitive(IrTypePrimitive::Unit)),
             error_output: info.error_output,
-            owner: owner,
+            owner,
             mode: info.mode.unwrap_or(IrFuncMode::Normal),
             comments: parse_comments(func.attrs()),
         }))
@@ -112,8 +112,10 @@ fn parse_owner(item_fn: &GeneralizedItemFn) -> Option<IrFuncOwnerInfo> {
                 return None;
             };
 
+            let struct_name = (self_ty_path.path.segments.first().unwrap().ident).to_string();
+
             IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
-                struct_name: TODO,
+                struct_name,
                 actual_method_name: impl_item_fn.sig.ident.to_string(),
                 mode,
             })
