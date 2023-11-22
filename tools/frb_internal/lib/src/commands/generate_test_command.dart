@@ -6,4 +6,9 @@ class GenerateTestCommand extends Command<void> {
 
   @override
   String get description => '';
+
+  @override
+  Future<void> run() async {
+    print('TODO');
+  }
 }
