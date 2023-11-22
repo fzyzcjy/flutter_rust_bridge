@@ -59,10 +59,14 @@ class _Duplicator {
       if (DuplicatorMode.values.any((mode) => fileStem.endsWith(mode.filePostfix))) continue;
 
       for (final mode in DuplicatorMode.values) {
-        final outputText = generator.generateDuplicate(file.readAsStringSync(), mode);
+        final outputText = _computePrelude(fileName) + generator.generateDuplicate(file.readAsStringSync(), mode);
         final targetPath = file.uri.resolve('../$fileStem${mode.filePostfix}.${generator.extension}').toFilePath();
         File(targetPath).writeAsStringSync(outputText);
       }
     }
   }
+
+  static String _computePrelude(String originalFileName) =>
+      '// NOTE: This file is auto-generated from `$originalFileName` by frb_internal\n'
+      '// Please do not modify manually, but modify the `$originalFileName` and re-run frb_internal generator\n\n';
 }
