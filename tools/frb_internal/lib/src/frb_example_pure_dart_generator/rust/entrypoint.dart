@@ -13,4 +13,7 @@ class RustGenerator extends BaseGenerator {
 
   @override
   Map<String, String> generateDirectSources() => generateRustDirectSources();
+
+  @override
+  String get extension => 'rs';
 }

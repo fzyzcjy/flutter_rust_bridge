@@ -13,4 +13,7 @@ class DartGenerator extends BaseGenerator {
 
   @override
   Map<String, String> generateDirectSources() => generateDartDirectSources();
+
+  @override
+  String get extension => 'dart';
 }

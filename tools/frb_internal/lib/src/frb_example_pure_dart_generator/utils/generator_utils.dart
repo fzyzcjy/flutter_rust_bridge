@@ -10,21 +10,15 @@ abstract class BaseGenerator {
 
   Future<void> generate() async {
     _writeCodeFiles(generateDirectSources());
-    _generateDuplicates();
+    _Duplicator(this)._generate();
     await executeFormat();
-  }
-
-  void _generateDuplicates() {
-    for (final file in Directory(baseDir.toFilePath()).listSync()) {
-      final fileName = path.basename(file.path);
-      if (duplicatorBlacklistNames.contains(fileName)) continue;
-
-      TODO;
-    }
   }
 
   @protected
   Set<String> get duplicatorBlacklistNames;
+
+  @protected
+  String get extension;
 
   @protected
   Map<String, String> generateDirectSources();
@@ -37,4 +31,33 @@ abstract class BaseGenerator {
       File(baseDir.resolve(entry.key).toFilePath()).writeAsStringSync(entry.value);
     }
   }
+}
+
+enum DuplicatorMode {
+  sync,
+  // TODO rust-async, ...
+}
+
+class _Duplicator {
+  final BaseGenerator generator;
+
+  _Duplicator(this.generator);
+
+  void _generate() {
+    for (final file in Directory(generator.baseDir.toFilePath()).listSync()) {
+      final fileName = path.basename(file.path);
+      final fileStem = path.basenameWithoutExtension(file.path);
+      if (file is! File || path.extension(file.path) != '.${generator.extension}') continue;
+      if (generator.duplicatorBlacklistNames.contains(fileName)) continue;
+      if (DuplicatorMode.values.any((mode) => fileStem.endsWith(_computePostfix(mode)))) continue;
+
+      _generateOne(file);
+    }
+  }
+
+  void _generateOne(File file) {
+    TODO;
+  }
+
+  String _computePostfix(DuplicatorMode mode) => '_twin_${mode.name}';
 }
