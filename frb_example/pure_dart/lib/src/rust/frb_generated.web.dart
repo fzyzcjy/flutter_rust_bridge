@@ -5,6 +5,8 @@ import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/optional_primitive.dart';
 import 'api/pseudo_manual/optional_primitive_twin_sync.dart';
 import 'api/pseudo_manual/primitive.dart';
+import 'api/pseudo_manual/primitive_list.dart';
+import 'api/pseudo_manual/primitive_list_twin_sync.dart';
 import 'api/pseudo_manual/primitive_twin_sync.dart';
 import 'api/pseudo_manual/simple_twin_sync.dart';
 import 'api/simple.dart';
@@ -88,6 +90,61 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   Object api2wire_i_64(BigInt raw) {
     return castNativeBigInt(raw);
+  }
+
+  @protected
+  ffi.Pointer<wire_list_bool> api2wire_list_bool(List<bool> raw) {
+    return raw.map(api2wire_bool).toList();
+  }
+
+  @protected
+  Float32List api2wire_list_prim_f_32(Float32List raw) {
+    return raw;
+  }
+
+  @protected
+  Float64List api2wire_list_prim_f_64(Float64List raw) {
+    return raw;
+  }
+
+  @protected
+  Int16List api2wire_list_prim_i_16(Int16List raw) {
+    return raw;
+  }
+
+  @protected
+  Int32List api2wire_list_prim_i_32(Int32List raw) {
+    return raw;
+  }
+
+  @protected
+  Object /* BigInt64Array */ api2wire_list_prim_i_64(Int64List raw) {
+    return raw.inner;
+  }
+
+  @protected
+  Int8List api2wire_list_prim_i_8(Int8List raw) {
+    return raw;
+  }
+
+  @protected
+  Uint16List api2wire_list_prim_u_16(Uint16List raw) {
+    return raw;
+  }
+
+  @protected
+  Uint32List api2wire_list_prim_u_32(Uint32List raw) {
+    return raw;
+  }
+
+  @protected
+  Object /* BigInt64Array */ api2wire_list_prim_u_64(Uint64List raw) {
+    return raw.inner;
+  }
+
+  @protected
+  Uint8List api2wire_list_prim_u_8(Uint8List raw) {
+    return raw;
   }
 
   @protected

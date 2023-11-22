@@ -69,6 +69,95 @@ impl Wire2Api<u8> for *mut u8 {
         unsafe { *support::box_from_leak_ptr(self) }
     }
 }
+impl Wire2Api<Vec<bool>> for *mut wire_list_bool {
+    fn wire2api(self) -> Vec<bool> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+impl Wire2Api<Vec<f32>> for *mut wire_list_prim_f_32 {
+    fn wire2api(self) -> Vec<f32> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+impl Wire2Api<Vec<f64>> for *mut wire_list_prim_f_64 {
+    fn wire2api(self) -> Vec<f64> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+impl Wire2Api<Vec<i16>> for *mut wire_list_prim_i_16 {
+    fn wire2api(self) -> Vec<i16> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+impl Wire2Api<Vec<i32>> for *mut wire_list_prim_i_32 {
+    fn wire2api(self) -> Vec<i32> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+impl Wire2Api<Vec<i64>> for *mut wire_list_prim_i_64 {
+    fn wire2api(self) -> Vec<i64> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+impl Wire2Api<Vec<i8>> for *mut wire_list_prim_i_8 {
+    fn wire2api(self) -> Vec<i8> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+impl Wire2Api<Vec<u16>> for *mut wire_list_prim_u_16 {
+    fn wire2api(self) -> Vec<u16> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+impl Wire2Api<Vec<u32>> for *mut wire_list_prim_u_32 {
+    fn wire2api(self) -> Vec<u32> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+impl Wire2Api<Vec<u64>> for *mut wire_list_prim_u_64 {
+    fn wire2api(self) -> Vec<u64> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
+impl Wire2Api<Vec<u8>> for *mut wire_list_prim_u_8 {
+    fn wire2api(self) -> Vec<u8> {
+        unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        }
+    }
+}
 impl Wire2Api<StructWithCommentsTwinNormal> for wire_struct_with_comments_twin_normal {
     fn wire2api(self) -> StructWithCommentsTwinNormal {
         StructWithCommentsTwinNormal {
@@ -85,6 +174,83 @@ impl Wire2Api<StructWithCommentsTwinSync> for wire_struct_with_comments_twin_syn
 }
 
 // Section: wire2api_class
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_bool {
+    ptr: *mut bool,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_prim_f_32 {
+    ptr: *mut f32,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_prim_f_64 {
+    ptr: *mut f64,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_prim_i_16 {
+    ptr: *mut i16,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_prim_i_32 {
+    ptr: *mut i32,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_prim_i_64 {
+    ptr: *mut i64,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_prim_i_8 {
+    ptr: *mut i8,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_prim_u_16 {
+    ptr: *mut u16,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_prim_u_32 {
+    ptr: *mut u32,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_prim_u_64 {
+    ptr: *mut u64,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_list_prim_u_8 {
+    ptr: *mut u8,
+    len: i32,
+}
 
 #[repr(C)]
 #[derive(Clone)]
@@ -384,6 +550,171 @@ pub extern "C" fn wire_example_primitive_type_u8_twin_normal(port_: i64, arg: u8
 }
 
 #[no_mangle]
+pub extern "C" fn wire_example_primitive_list_type_bool_twin_normal(
+    port_: i64,
+    arg: *mut wire_list_bool,
+) {
+    wire_example_primitive_list_type_bool_twin_normal_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_example_primitive_list_type_f32_twin_normal(
+    port_: i64,
+    arg: *mut wire_list_prim_f_32,
+) {
+    wire_example_primitive_list_type_f32_twin_normal_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_example_primitive_list_type_f64_twin_normal(
+    port_: i64,
+    arg: *mut wire_list_prim_f_64,
+) {
+    wire_example_primitive_list_type_f64_twin_normal_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_example_primitive_list_type_i16_twin_normal(
+    port_: i64,
+    arg: *mut wire_list_prim_i_16,
+) {
+    wire_example_primitive_list_type_i16_twin_normal_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_example_primitive_list_type_i32_twin_normal(
+    port_: i64,
+    arg: *mut wire_list_prim_i_32,
+) {
+    wire_example_primitive_list_type_i32_twin_normal_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_example_primitive_list_type_i64_twin_normal(
+    port_: i64,
+    arg: *mut wire_list_prim_i_64,
+) {
+    wire_example_primitive_list_type_i64_twin_normal_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_example_primitive_list_type_i8_twin_normal(
+    port_: i64,
+    arg: *mut wire_list_prim_i_8,
+) {
+    wire_example_primitive_list_type_i8_twin_normal_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_example_primitive_list_type_u16_twin_normal(
+    port_: i64,
+    arg: *mut wire_list_prim_u_16,
+) {
+    wire_example_primitive_list_type_u16_twin_normal_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_example_primitive_list_type_u32_twin_normal(
+    port_: i64,
+    arg: *mut wire_list_prim_u_32,
+) {
+    wire_example_primitive_list_type_u32_twin_normal_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_example_primitive_list_type_u64_twin_normal(
+    port_: i64,
+    arg: *mut wire_list_prim_u_64,
+) {
+    wire_example_primitive_list_type_u64_twin_normal_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_example_primitive_list_type_u8_twin_normal(
+    port_: i64,
+    arg: *mut wire_list_prim_u_8,
+) {
+    wire_example_primitive_list_type_u8_twin_normal_impl(port_, arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_example_primitive_list_type_bool_twin_sync(
+    arg: *mut wire_list_bool,
+) -> support::WireSyncReturn {
+    wire_example_primitive_list_type_bool_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_example_primitive_list_type_f32_twin_sync(
+    arg: *mut wire_list_prim_f_32,
+) -> support::WireSyncReturn {
+    wire_example_primitive_list_type_f32_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_example_primitive_list_type_f64_twin_sync(
+    arg: *mut wire_list_prim_f_64,
+) -> support::WireSyncReturn {
+    wire_example_primitive_list_type_f64_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_example_primitive_list_type_i16_twin_sync(
+    arg: *mut wire_list_prim_i_16,
+) -> support::WireSyncReturn {
+    wire_example_primitive_list_type_i16_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_example_primitive_list_type_i32_twin_sync(
+    arg: *mut wire_list_prim_i_32,
+) -> support::WireSyncReturn {
+    wire_example_primitive_list_type_i32_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_example_primitive_list_type_i64_twin_sync(
+    arg: *mut wire_list_prim_i_64,
+) -> support::WireSyncReturn {
+    wire_example_primitive_list_type_i64_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_example_primitive_list_type_i8_twin_sync(
+    arg: *mut wire_list_prim_i_8,
+) -> support::WireSyncReturn {
+    wire_example_primitive_list_type_i8_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_example_primitive_list_type_u16_twin_sync(
+    arg: *mut wire_list_prim_u_16,
+) -> support::WireSyncReturn {
+    wire_example_primitive_list_type_u16_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_example_primitive_list_type_u32_twin_sync(
+    arg: *mut wire_list_prim_u_32,
+) -> support::WireSyncReturn {
+    wire_example_primitive_list_type_u32_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_example_primitive_list_type_u64_twin_sync(
+    arg: *mut wire_list_prim_u_64,
+) -> support::WireSyncReturn {
+    wire_example_primitive_list_type_u64_twin_sync_impl(arg)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_example_primitive_list_type_u8_twin_sync(
+    arg: *mut wire_list_prim_u_8,
+) -> support::WireSyncReturn {
+    wire_example_primitive_list_type_u8_twin_sync_impl(arg)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_example_primitive_type_bool_twin_sync(arg: bool) -> support::WireSyncReturn {
     wire_example_primitive_type_bool_twin_sync_impl(arg)
 }
@@ -513,4 +844,103 @@ pub extern "C" fn new_box_autoadd_u_64(value: u64) -> *mut u64 {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_u_8(value: u8) -> *mut u8 {
     support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_bool(len: i32) -> *mut wire_list_bool {
+    let wrap = wire_list_bool {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_prim_f_32(len: i32) -> *mut wire_list_prim_f_32 {
+    let ans = wire_list_prim_f_32 {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_prim_f_64(len: i32) -> *mut wire_list_prim_f_64 {
+    let ans = wire_list_prim_f_64 {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_prim_i_16(len: i32) -> *mut wire_list_prim_i_16 {
+    let ans = wire_list_prim_i_16 {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_prim_i_32(len: i32) -> *mut wire_list_prim_i_32 {
+    let ans = wire_list_prim_i_32 {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_prim_i_64(len: i32) -> *mut wire_list_prim_i_64 {
+    let ans = wire_list_prim_i_64 {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_prim_i_8(len: i32) -> *mut wire_list_prim_i_8 {
+    let ans = wire_list_prim_i_8 {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_prim_u_16(len: i32) -> *mut wire_list_prim_u_16 {
+    let ans = wire_list_prim_u_16 {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_prim_u_32(len: i32) -> *mut wire_list_prim_u_32 {
+    let ans = wire_list_prim_u_32 {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_prim_u_64(len: i32) -> *mut wire_list_prim_u_64 {
+    let ans = wire_list_prim_u_64 {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_prim_u_8(len: i32) -> *mut wire_list_prim_u_8 {
+    let ans = wire_list_prim_u_8 {
+        ptr: support::new_leak_vec_ptr(Default::default(), len),
+        len,
+    };
+    support::new_leak_box_ptr(ans)
 }

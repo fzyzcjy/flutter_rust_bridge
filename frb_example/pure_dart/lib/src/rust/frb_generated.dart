@@ -5,6 +5,8 @@ import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/optional_primitive.dart';
 import 'api/pseudo_manual/optional_primitive_twin_sync.dart';
 import 'api/pseudo_manual/primitive.dart';
+import 'api/pseudo_manual/primitive_list.dart';
+import 'api/pseudo_manual/primitive_list_twin_sync.dart';
 import 'api/pseudo_manual/primitive_twin_sync.dart';
 import 'api/pseudo_manual/simple_twin_sync.dart';
 import 'api/simple.dart';
@@ -161,6 +163,72 @@ abstract class RustLibApi extends BaseApi {
 
   Future<int> examplePrimitiveTypeU8TwinNormal(
       {required int arg, dynamic hint});
+
+  Future<List<bool>> examplePrimitiveListTypeBoolTwinNormal(
+      {required List<bool> arg, dynamic hint});
+
+  Future<Float32List> examplePrimitiveListTypeF32TwinNormal(
+      {required Float32List arg, dynamic hint});
+
+  Future<Float64List> examplePrimitiveListTypeF64TwinNormal(
+      {required Float64List arg, dynamic hint});
+
+  Future<Int16List> examplePrimitiveListTypeI16TwinNormal(
+      {required Int16List arg, dynamic hint});
+
+  Future<Int32List> examplePrimitiveListTypeI32TwinNormal(
+      {required Int32List arg, dynamic hint});
+
+  Future<Int64List> examplePrimitiveListTypeI64TwinNormal(
+      {required Int64List arg, dynamic hint});
+
+  Future<Int8List> examplePrimitiveListTypeI8TwinNormal(
+      {required Int8List arg, dynamic hint});
+
+  Future<Uint16List> examplePrimitiveListTypeU16TwinNormal(
+      {required Uint16List arg, dynamic hint});
+
+  Future<Uint32List> examplePrimitiveListTypeU32TwinNormal(
+      {required Uint32List arg, dynamic hint});
+
+  Future<Uint64List> examplePrimitiveListTypeU64TwinNormal(
+      {required Uint64List arg, dynamic hint});
+
+  Future<Uint8List> examplePrimitiveListTypeU8TwinNormal(
+      {required Uint8List arg, dynamic hint});
+
+  List<bool> examplePrimitiveListTypeBoolTwinSync(
+      {required List<bool> arg, dynamic hint});
+
+  Float32List examplePrimitiveListTypeF32TwinSync(
+      {required Float32List arg, dynamic hint});
+
+  Float64List examplePrimitiveListTypeF64TwinSync(
+      {required Float64List arg, dynamic hint});
+
+  Int16List examplePrimitiveListTypeI16TwinSync(
+      {required Int16List arg, dynamic hint});
+
+  Int32List examplePrimitiveListTypeI32TwinSync(
+      {required Int32List arg, dynamic hint});
+
+  Int64List examplePrimitiveListTypeI64TwinSync(
+      {required Int64List arg, dynamic hint});
+
+  Int8List examplePrimitiveListTypeI8TwinSync(
+      {required Int8List arg, dynamic hint});
+
+  Uint16List examplePrimitiveListTypeU16TwinSync(
+      {required Uint16List arg, dynamic hint});
+
+  Uint32List examplePrimitiveListTypeU32TwinSync(
+      {required Uint32List arg, dynamic hint});
+
+  Uint64List examplePrimitiveListTypeU64TwinSync(
+      {required Uint64List arg, dynamic hint});
+
+  Uint8List examplePrimitiveListTypeU8TwinSync(
+      {required Uint8List arg, dynamic hint});
 
   bool examplePrimitiveTypeBoolTwinSync({required bool arg, dynamic hint});
 
@@ -1135,6 +1203,479 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<List<bool>> examplePrimitiveListTypeBoolTwinNormal(
+      {required List<bool> arg, dynamic hint}) {
+    var arg0 = api2wire_list_bool(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_bool_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_bool,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeBoolTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeBoolTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_bool_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Float32List> examplePrimitiveListTypeF32TwinNormal(
+      {required Float32List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_f_32(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_f32_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_prim_f_32,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeF32TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeF32TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_f32_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Float64List> examplePrimitiveListTypeF64TwinNormal(
+      {required Float64List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_f_64(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_f64_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_prim_f_64,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeF64TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeF64TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_f64_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Int16List> examplePrimitiveListTypeI16TwinNormal(
+      {required Int16List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_i_16(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_i16_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_prim_i_16,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeI16TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeI16TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_i16_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Int32List> examplePrimitiveListTypeI32TwinNormal(
+      {required Int32List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_i_32(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_i32_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_prim_i_32,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeI32TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeI32TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_i32_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Int64List> examplePrimitiveListTypeI64TwinNormal(
+      {required Int64List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_i_64(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_i64_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_prim_i_64,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeI64TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeI64TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_i64_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Int8List> examplePrimitiveListTypeI8TwinNormal(
+      {required Int8List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_i_8(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_i8_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_prim_i_8,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeI8TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeI8TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_i8_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint16List> examplePrimitiveListTypeU16TwinNormal(
+      {required Uint16List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_u_16(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_u16_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_prim_u_16,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeU16TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeU16TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_u16_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint32List> examplePrimitiveListTypeU32TwinNormal(
+      {required Uint32List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_u_32(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_u32_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_prim_u_32,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeU32TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeU32TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_u32_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint64List> examplePrimitiveListTypeU64TwinNormal(
+      {required Uint64List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_u_64(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_u64_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_prim_u_64,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeU64TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeU64TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_u64_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<Uint8List> examplePrimitiveListTypeU8TwinNormal(
+      {required Uint8List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_u_8(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_u8_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_list_prim_u_8,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeU8TwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeU8TwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_u8_twin_normal",
+        argNames: ["arg"],
+      );
+
+  @override
+  List<bool> examplePrimitiveListTypeBoolTwinSync(
+      {required List<bool> arg, dynamic hint}) {
+    var arg0 = api2wire_list_bool(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_list_type_bool_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_bool,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeBoolTwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeBoolTwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_bool_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Float32List examplePrimitiveListTypeF32TwinSync(
+      {required Float32List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_f_32(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_list_type_f32_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_prim_f_32,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeF32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeF32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_f32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Float64List examplePrimitiveListTypeF64TwinSync(
+      {required Float64List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_f_64(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_list_type_f64_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_prim_f_64,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeF64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeF64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_f64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Int16List examplePrimitiveListTypeI16TwinSync(
+      {required Int16List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_i_16(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_list_type_i16_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_prim_i_16,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeI16TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeI16TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_i16_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Int32List examplePrimitiveListTypeI32TwinSync(
+      {required Int32List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_i_32(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_list_type_i32_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_prim_i_32,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeI32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeI32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_i32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Int64List examplePrimitiveListTypeI64TwinSync(
+      {required Int64List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_i_64(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_list_type_i64_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_prim_i_64,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeI64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeI64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_i64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Int8List examplePrimitiveListTypeI8TwinSync(
+      {required Int8List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_i_8(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_list_type_i8_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_prim_i_8,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeI8TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeI8TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_i8_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Uint16List examplePrimitiveListTypeU16TwinSync(
+      {required Uint16List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_u_16(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_list_type_u16_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_prim_u_16,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeU16TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeU16TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_u16_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Uint32List examplePrimitiveListTypeU32TwinSync(
+      {required Uint32List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_u_32(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_list_type_u32_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_prim_u_32,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeU32TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeU32TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_u32_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Uint64List examplePrimitiveListTypeU64TwinSync(
+      {required Uint64List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_u_64(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_list_type_u64_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_prim_u_64,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeU64TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeU64TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_u64_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
+  Uint8List examplePrimitiveListTypeU8TwinSync(
+      {required Uint8List arg, dynamic hint}) {
+    var arg0 = api2wire_list_prim_u_8(arg);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_example_primitive_list_type_u8_twin_sync(arg0),
+      parseSuccessData: _wire2api_list_prim_u_8,
+      parseErrorData: null,
+      constMeta: kExamplePrimitiveListTypeU8TwinSyncConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExamplePrimitiveListTypeU8TwinSyncConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_primitive_list_type_u8_twin_sync",
+        argNames: ["arg"],
+      );
+
+  @override
   bool examplePrimitiveTypeBoolTwinSync({required bool arg, dynamic hint}) {
     var arg0 = api2wire_bool(arg);
     return handler.executeSync(SyncTask(
@@ -1468,6 +2009,50 @@ BigInt _wire2api_i_64(dynamic raw) {
 
 int _wire2api_i_8(dynamic raw) {
   return raw as int;
+}
+
+List<bool> _wire2api_list_bool(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_bool).toList();
+}
+
+Float32List _wire2api_list_prim_f_32(dynamic raw) {
+  return raw as Float32List;
+}
+
+Float64List _wire2api_list_prim_f_64(dynamic raw) {
+  return raw as Float64List;
+}
+
+Int16List _wire2api_list_prim_i_16(dynamic raw) {
+  return raw as Int16List;
+}
+
+Int32List _wire2api_list_prim_i_32(dynamic raw) {
+  return raw as Int32List;
+}
+
+Int64List _wire2api_list_prim_i_64(dynamic raw) {
+  return Int64List.from(raw);
+}
+
+Int8List _wire2api_list_prim_i_8(dynamic raw) {
+  return raw as Int8List;
+}
+
+Uint16List _wire2api_list_prim_u_16(dynamic raw) {
+  return raw as Uint16List;
+}
+
+Uint32List _wire2api_list_prim_u_32(dynamic raw) {
+  return raw as Uint32List;
+}
+
+Uint64List _wire2api_list_prim_u_64(dynamic raw) {
+  return Uint64List.from(raw);
+}
+
+Uint8List _wire2api_list_prim_u_8(dynamic raw) {
+  return raw as Uint8List;
 }
 
 bool? _wire2api_opt_box_autoadd_bool(dynamic raw) {

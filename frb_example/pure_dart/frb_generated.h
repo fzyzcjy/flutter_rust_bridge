@@ -12,6 +12,61 @@ typedef struct wire_struct_with_comments_twin_sync {
   int32_t field_with_comments;
 } wire_struct_with_comments_twin_sync;
 
+typedef struct wire_list_bool {
+  bool *ptr;
+  int32_t len;
+} wire_list_bool;
+
+typedef struct wire_list_prim_f_32 {
+  float *ptr;
+  int32_t len;
+} wire_list_prim_f_32;
+
+typedef struct wire_list_prim_f_64 {
+  double *ptr;
+  int32_t len;
+} wire_list_prim_f_64;
+
+typedef struct wire_list_prim_i_16 {
+  int16_t *ptr;
+  int32_t len;
+} wire_list_prim_i_16;
+
+typedef struct wire_list_prim_i_32 {
+  int32_t *ptr;
+  int32_t len;
+} wire_list_prim_i_32;
+
+typedef struct wire_list_prim_i_64 {
+  int64_t *ptr;
+  int32_t len;
+} wire_list_prim_i_64;
+
+typedef struct wire_list_prim_i_8 {
+  int8_t *ptr;
+  int32_t len;
+} wire_list_prim_i_8;
+
+typedef struct wire_list_prim_u_16 {
+  uint16_t *ptr;
+  int32_t len;
+} wire_list_prim_u_16;
+
+typedef struct wire_list_prim_u_32 {
+  uint32_t *ptr;
+  int32_t len;
+} wire_list_prim_u_32;
+
+typedef struct wire_list_prim_u_64 {
+  uint64_t *ptr;
+  int32_t len;
+} wire_list_prim_u_64;
+
+typedef struct wire_list_prim_u_8 {
+  uint8_t *ptr;
+  int32_t len;
+} wire_list_prim_u_8;
+
 void wire_StructWithCommentsTwinNormal_instance_method_twin_normal(int64_t port_,
                                                                    struct wire_struct_with_comments_twin_normal *that);
 
@@ -99,6 +154,58 @@ void wire_example_primitive_type_u64_twin_normal(int64_t port_, uint64_t arg);
 
 void wire_example_primitive_type_u8_twin_normal(int64_t port_, uint8_t arg);
 
+void wire_example_primitive_list_type_bool_twin_normal(int64_t port_, struct wire_list_bool *arg);
+
+void wire_example_primitive_list_type_f32_twin_normal(int64_t port_,
+                                                      struct wire_list_prim_f_32 *arg);
+
+void wire_example_primitive_list_type_f64_twin_normal(int64_t port_,
+                                                      struct wire_list_prim_f_64 *arg);
+
+void wire_example_primitive_list_type_i16_twin_normal(int64_t port_,
+                                                      struct wire_list_prim_i_16 *arg);
+
+void wire_example_primitive_list_type_i32_twin_normal(int64_t port_,
+                                                      struct wire_list_prim_i_32 *arg);
+
+void wire_example_primitive_list_type_i64_twin_normal(int64_t port_,
+                                                      struct wire_list_prim_i_64 *arg);
+
+void wire_example_primitive_list_type_i8_twin_normal(int64_t port_, struct wire_list_prim_i_8 *arg);
+
+void wire_example_primitive_list_type_u16_twin_normal(int64_t port_,
+                                                      struct wire_list_prim_u_16 *arg);
+
+void wire_example_primitive_list_type_u32_twin_normal(int64_t port_,
+                                                      struct wire_list_prim_u_32 *arg);
+
+void wire_example_primitive_list_type_u64_twin_normal(int64_t port_,
+                                                      struct wire_list_prim_u_64 *arg);
+
+void wire_example_primitive_list_type_u8_twin_normal(int64_t port_, struct wire_list_prim_u_8 *arg);
+
+WireSyncReturn wire_example_primitive_list_type_bool_twin_sync(struct wire_list_bool *arg);
+
+WireSyncReturn wire_example_primitive_list_type_f32_twin_sync(struct wire_list_prim_f_32 *arg);
+
+WireSyncReturn wire_example_primitive_list_type_f64_twin_sync(struct wire_list_prim_f_64 *arg);
+
+WireSyncReturn wire_example_primitive_list_type_i16_twin_sync(struct wire_list_prim_i_16 *arg);
+
+WireSyncReturn wire_example_primitive_list_type_i32_twin_sync(struct wire_list_prim_i_32 *arg);
+
+WireSyncReturn wire_example_primitive_list_type_i64_twin_sync(struct wire_list_prim_i_64 *arg);
+
+WireSyncReturn wire_example_primitive_list_type_i8_twin_sync(struct wire_list_prim_i_8 *arg);
+
+WireSyncReturn wire_example_primitive_list_type_u16_twin_sync(struct wire_list_prim_u_16 *arg);
+
+WireSyncReturn wire_example_primitive_list_type_u32_twin_sync(struct wire_list_prim_u_32 *arg);
+
+WireSyncReturn wire_example_primitive_list_type_u64_twin_sync(struct wire_list_prim_u_64 *arg);
+
+WireSyncReturn wire_example_primitive_list_type_u8_twin_sync(struct wire_list_prim_u_8 *arg);
+
 WireSyncReturn wire_example_primitive_type_bool_twin_sync(bool arg);
 
 WireSyncReturn wire_example_primitive_type_f32_twin_sync(float arg);
@@ -150,6 +257,28 @@ uint32_t *new_box_autoadd_u_32(uint32_t value);
 uint64_t *new_box_autoadd_u_64(uint64_t value);
 
 uint8_t *new_box_autoadd_u_8(uint8_t value);
+
+struct wire_list_bool *new_list_bool(int32_t len);
+
+struct wire_list_prim_f_32 *new_list_prim_f_32(int32_t len);
+
+struct wire_list_prim_f_64 *new_list_prim_f_64(int32_t len);
+
+struct wire_list_prim_i_16 *new_list_prim_i_16(int32_t len);
+
+struct wire_list_prim_i_32 *new_list_prim_i_32(int32_t len);
+
+struct wire_list_prim_i_64 *new_list_prim_i_64(int32_t len);
+
+struct wire_list_prim_i_8 *new_list_prim_i_8(int32_t len);
+
+struct wire_list_prim_u_16 *new_list_prim_u_16(int32_t len);
+
+struct wire_list_prim_u_32 *new_list_prim_u_32(int32_t len);
+
+struct wire_list_prim_u_64 *new_list_prim_u_64(int32_t len);
+
+struct wire_list_prim_u_8 *new_list_prim_u_8(int32_t len);
 static int64_t dummy_method_to_enforce_bundling(void) {
     int64_t dummy_var = 0;
     dummy_var ^= ((int64_t) (void*) drop_dart_object);
@@ -168,6 +297,17 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_u_64);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_u_8);
     dummy_var ^= ((int64_t) (void*) new_dart_opaque);
+    dummy_var ^= ((int64_t) (void*) new_list_bool);
+    dummy_var ^= ((int64_t) (void*) new_list_prim_f_32);
+    dummy_var ^= ((int64_t) (void*) new_list_prim_f_64);
+    dummy_var ^= ((int64_t) (void*) new_list_prim_i_16);
+    dummy_var ^= ((int64_t) (void*) new_list_prim_i_32);
+    dummy_var ^= ((int64_t) (void*) new_list_prim_i_64);
+    dummy_var ^= ((int64_t) (void*) new_list_prim_i_8);
+    dummy_var ^= ((int64_t) (void*) new_list_prim_u_16);
+    dummy_var ^= ((int64_t) (void*) new_list_prim_u_32);
+    dummy_var ^= ((int64_t) (void*) new_list_prim_u_64);
+    dummy_var ^= ((int64_t) (void*) new_list_prim_u_8);
     dummy_var ^= ((int64_t) (void*) store_dart_post_cobject);
     dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinNormal_instance_method_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinNormal_static_method_twin_normal);
@@ -195,6 +335,28 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u64_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u8_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_u8_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_bool_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_bool_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_f32_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_f32_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_f64_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_f64_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i16_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i16_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i32_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i32_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i64_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i64_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i8_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_i8_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u16_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u16_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u32_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u32_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u64_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u64_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u8_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_example_primitive_list_type_u8_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_bool_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_bool_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_f32_twin_normal);
