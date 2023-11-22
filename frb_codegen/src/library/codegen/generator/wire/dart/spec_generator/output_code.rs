@@ -3,7 +3,7 @@ use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
 use std::ops::AddAssign;
 
-#[derive(Default, Clone)]
+#[derive(Default, Clone, Debug)]
 pub(crate) struct WireDartOutputCode {
     pub import: String,
     pub part: String,

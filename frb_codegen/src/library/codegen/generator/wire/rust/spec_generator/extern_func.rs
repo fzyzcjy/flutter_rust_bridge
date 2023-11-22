@@ -1,7 +1,7 @@
 use crate::codegen::generator::misc::target::Target;
 use itertools::Itertools;
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub(crate) struct ExternFunc {
     // TODO handle platform
     // if matches!(target, Io) {
@@ -16,7 +16,7 @@ pub(crate) struct ExternFunc {
     pub(crate) target: Target,
 }
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub(crate) struct ExternFuncParam {
     pub(crate) name: String,
     pub(crate) rust_type: String,
