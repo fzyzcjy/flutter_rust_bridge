@@ -36,19 +36,21 @@ Future<void> main() async {
     test('type=i32 arg=2147483647', () async {
       expect(await examplePrimitiveTypeI32(arg: 2147483647), 2147483647);
     });
-    test('type=i64 arg=BigInt.from(0)', () async {
-      expect(
-          await examplePrimitiveTypeI64(arg: BigInt.from(0)), BigInt.from(0));
+    test('type=i64 arg=BigInt.parse("0")', () async {
+      expect(await examplePrimitiveTypeI64(arg: BigInt.parse("0")),
+          BigInt.parse("0"));
     });
-    test('type=i64 arg=BigInt.from(-9223372036854775808)', () async {
+    test('type=i64 arg=BigInt.parse("-9223372036854775808")', () async {
       expect(
-          await examplePrimitiveTypeI64(arg: BigInt.from(-9223372036854775808)),
-          BigInt.from(-9223372036854775808));
+          await examplePrimitiveTypeI64(
+              arg: BigInt.parse("-9223372036854775808")),
+          BigInt.parse("-9223372036854775808"));
     });
-    test('type=i64 arg=BigInt.from(9223372036854775807)', () async {
+    test('type=i64 arg=BigInt.parse("9223372036854775807")', () async {
       expect(
-          await examplePrimitiveTypeI64(arg: BigInt.from(9223372036854775807)),
-          BigInt.from(9223372036854775807));
+          await examplePrimitiveTypeI64(
+              arg: BigInt.parse("9223372036854775807")),
+          BigInt.parse("9223372036854775807"));
     });
     test('type=u8 arg=0', () async {
       expect(await examplePrimitiveTypeU8(arg: 0), 0);
@@ -68,14 +70,15 @@ Future<void> main() async {
     test('type=u32 arg=4294967295', () async {
       expect(await examplePrimitiveTypeU32(arg: 4294967295), 4294967295);
     });
-    test('type=u64 arg=BigInt.from(0)', () async {
-      expect(
-          await examplePrimitiveTypeU64(arg: BigInt.from(0)), BigInt.from(0));
+    test('type=u64 arg=BigInt.parse("0")', () async {
+      expect(await examplePrimitiveTypeU64(arg: BigInt.parse("0")),
+          BigInt.parse("0"));
     });
-    test('type=u64 arg=BigInt.from(18446744073709551615)', () async {
+    test('type=u64 arg=BigInt.parse("18446744073709551615")', () async {
       expect(
-          await examplePrimitiveTypeU64(arg: BigInt.from(18446744073709551615)),
-          BigInt.from(18446744073709551615));
+          await examplePrimitiveTypeU64(
+              arg: BigInt.parse("18446744073709551615")),
+          BigInt.parse("18446744073709551615"));
     });
     test('type=f32 arg=0', () async {
       expect(await examplePrimitiveTypeF32(arg: 0), 0);
