@@ -53,7 +53,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let sig = func.sig();
         let namespace =
             Namespace::new_self_crate(compute_mod_from_rust_path(file_path, rust_crate_dir)?);
-        let func_name = sig.ident.to_string();
+
+        let owner = parse_owner(func);
+        let func_name = parse_name(sig, &owner);
+
         let context = TypeParserParsingContext {
             initiated_namespace: namespace.clone(),
         };
@@ -69,10 +72,19 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             inputs: info.inputs,
             output: info.ok_output.unwrap_or(Primitive(IrTypePrimitive::Unit)),
             error_output: info.error_output,
-            owner: parse_owner(func),
+            owner: owner,
             mode: info.mode.unwrap_or(IrFuncMode::Normal),
             comments: parse_comments(func.attrs()),
         })
+    }
+}
+
+fn parse_name(sig: &Signature, owner: &IrFuncOwnerInfo) -> String {
+    match owner {
+        IrFuncOwnerInfo::Function => sig.ident.to_string(),
+        IrFuncOwnerInfo::Method(method) => {
+            format!("{}_{}", method.struct_name, method.actual_method_name)
+        }
     }
 }
 
@@ -91,7 +103,7 @@ fn parse_owner(item_fn: &GeneralizedItemFn) -> IrFuncOwnerInfo {
 
             IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
                 struct_name: TODO,
-                actual_method_name: TODO,
+                actual_method_name: impl_item_fn.sig.ident.to_string(),
                 mode,
             })
         }
