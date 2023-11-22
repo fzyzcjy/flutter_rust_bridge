@@ -4,6 +4,7 @@ import 'api/simple.dart';
 import 'api/comment.dart';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'frb_generated.dart';
 import 'dart:ffi' as ffi;
 
 abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
@@ -12,6 +13,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.wire,
     required super.generalizedFrbRustBinding,
   });
+
+  @protected
+  ffi.Pointer<wire_struct_with_comments>
+      api2wire_box_autoadd_struct_with_comments(StructWithComments raw) {
+    final ptr = wire.new_box_autoadd_struct_with_comments();
+    _api_fill_to_wire_struct_with_comments(raw, ptr.ref);
+    return ptr;
+  }
 }
 
 // Section: c_binding
@@ -163,16 +172,6 @@ class RustLibWire implements BaseWire {
 final class wire_struct_with_comments extends ffi.Struct {
   @ffi.Int32()
   external int field_with_comments;
-}
-
-// Section: api2wire_funcs
-
-@protected
-ffi.Pointer<wire_struct_with_comments>
-    api2wire_box_autoadd_struct_with_comments(StructWithComments raw) {
-  final ptr = inner.new_box_autoadd_struct_with_comments();
-  _api_fill_to_wire_struct_with_comments(raw, ptr.ref);
-  return ptr;
 }
 
 // Section: api_fill_to_wire_funcs
