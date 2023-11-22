@@ -9,18 +9,7 @@ pub(crate) struct DumperInternalConfig {
     pub(crate) dump_directory: PathBuf,
 }
 
-#[derive(
-    Debug,
-    PartialEq,
-    Eq,
-    Clone,
-    Copy,
-    Serialize,
-    Deserialize,
-    ValueEnum,
-    enum_iterator::Sequence,
-    EnumIter,
-)]
+#[derive(Debug, PartialEq, Eq, Clone, Copy, Serialize, Deserialize, ValueEnum, EnumIter)]
 #[serde(rename_all = "snake_case")]
 pub enum ConfigDumpContent {
     Config,
