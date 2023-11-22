@@ -101,14 +101,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             })),
         }));
 
-        let ir_field = IrField {
-            ty: TODO,
-            name: TODO,
-            is_final: TODO,
-            comments: TODO,
-            default: TODO,
-            settings: TODO,
-        };
+        let ir_field = partial_info_for_normal_type_raw(ty_raw, &receiver.attrs, name)?;
 
         Ok(FunctionPartialInfo {
             inputs: vec![ir_field],
