@@ -26,7 +26,10 @@ abstract class BaseGenerator {
   Map<String, String> generateDirectSources();
 
   @protected
-  String generateDuplicate(String inputText, DuplicatorMode mode);
+  String generateDuplicateCode(String inputText, DuplicatorMode mode);
+
+  @protected
+  String generateDuplicateFileStem(String inputStem, DuplicatorMode mode);
 
   @protected
   Future<void> executeFormat();
@@ -59,8 +62,10 @@ class _Duplicator {
       if (DuplicatorMode.values.any((mode) => fileStem.endsWith(mode.filePostfix))) continue;
 
       for (final mode in DuplicatorMode.values) {
-        final outputText = _computePrelude(fileName) + generator.generateDuplicate(file.readAsStringSync(), mode);
-        final targetPath = file.uri.resolve('$fileStem${mode.filePostfix}.${generator.extension}').toFilePath();
+        final outputText = _computePrelude(fileName) + generator.generateDuplicateCode(file.readAsStringSync(), mode);
+        final targetPath = file.uri
+            .resolve('${generator.generateDuplicateFileStem(fileStem, mode)}.${generator.extension}')
+            .toFilePath();
         File(targetPath).writeAsStringSync(outputText);
       }
     }

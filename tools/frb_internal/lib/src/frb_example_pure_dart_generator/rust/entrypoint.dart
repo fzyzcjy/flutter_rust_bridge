@@ -19,7 +19,7 @@ class RustGenerator extends BaseGenerator {
   String get extension => 'rs';
 
   @override
-  String generateDuplicate(String inputText, DuplicatorMode mode) {
+  String generateDuplicateCode(String inputText, DuplicatorMode mode) {
     final prefix = switch (mode) {
       DuplicatorMode.sync => '#[flutter_rust_bridge::frb(sync)] ',
     };
@@ -32,4 +32,7 @@ class RustGenerator extends BaseGenerator {
         // struct name, etc
         .replaceAll('TwinNormal', ReCase(mode.filePostfix).pascalCase);
   }
+
+  @override
+  String generateDuplicateFileStem(String inputStem, DuplicatorMode mode) => inputStem + mode.filePostfix;
 }

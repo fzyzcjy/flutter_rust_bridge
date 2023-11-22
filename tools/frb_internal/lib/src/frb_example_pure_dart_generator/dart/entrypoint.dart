@@ -19,11 +19,18 @@ class DartGenerator extends BaseGenerator {
   String get extension => 'dart';
 
   @override
-  String generateDuplicate(String inputText, DuplicatorMode mode) {
+  String generateDuplicateCode(String inputText, DuplicatorMode mode) {
     return inputText
         // imports
         .replaceAllMapped(r'src/rust/api/(\w+).dart', (m) => 'src/rust/api/${m.group(1)}${mode.filePostfix}.dart')
         // function call, struct name, etc
         .replaceAll('TwinNormal', ReCase(mode.filePostfix).pascalCase);
+  }
+
+  @override
+  String generateDuplicateFileStem(String inputStem, DuplicatorMode mode) {
+    final re = RegExp(r'_test$');
+    if (!re.hasMatch(inputStem)) throw ArgumentError;
+    return inputStem.replaceAll(re, '${mode.filePostfix}_test');
   }
 }
