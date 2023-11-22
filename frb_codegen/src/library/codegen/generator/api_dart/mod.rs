@@ -3,6 +3,7 @@ pub(crate) mod spec_generator;
 mod text_generator;
 
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
+use crate::codegen::generator::api_dart::text_generator::ApiDartOutputText;
 use crate::codegen::generator::misc::{PathText, PathTexts};
 use crate::codegen::ir::pack::IrPack;
 use anyhow::Result;
@@ -18,8 +19,15 @@ pub(crate) fn generate(
 ) -> Result<GeneratorApiDartOutput> {
     let spec = spec_generator::generate(ir_pack, config)?;
     let text = text_generator::generate(spec)?;
+    let output_texts = generate_output_path_texts(config, text);
+    Ok(GeneratorApiDartOutput { output_texts })
+}
 
-    let output_texts = PathTexts(
+fn generate_output_path_texts(
+    config: &GeneratorApiDartInternalConfig,
+    text: ApiDartOutputText,
+) -> PathTexts {
+    PathTexts(
         (text.namespaced_texts.into_iter())
             .map(|(namespace, text)| {
                 PathText::new(
@@ -31,9 +39,7 @@ pub(crate) fn generate(
                 )
             })
             .collect_vec(),
-    );
-
-    Ok(GeneratorApiDartOutput { output_texts })
+    )
 }
 
 #[cfg(test)]
