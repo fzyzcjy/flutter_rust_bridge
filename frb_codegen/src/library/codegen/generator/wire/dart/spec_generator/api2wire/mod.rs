@@ -1,5 +1,5 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::misc::target::Target;
+use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::dart::spec_generator::base::{
     WireDartGenerator, WireDartGeneratorContext,
 };
@@ -45,22 +45,37 @@ fn generate_api2wire_func(
     context: WireDartGeneratorContext,
 ) -> Acc<WireDartOutputCode> {
     let generator = WireDartGenerator::new(ty.clone(), context);
-    generator.api2wire_body().map(|body, target| {
-        let target = target.to_target_or(Target::Io);
-        body.map(|body| WireDartOutputCode {
-            api_impl_body: format!(
-                "@protected
-                {} api2wire_{}({} raw) {{
-                    {body}
-                }}",
-                WireDartGenerator::new(ty.clone(), context).dart_wire_type(target),
-                ty.safe_ident(),
-                ApiDartGenerator::new(ty.clone(), context.as_api_dart_context()).dart_api_type(),
-            ),
-            ..Default::default()
+    generator
+        .api2wire_body()
+        .map(|raw_body, target: TargetOrCommon| {
+            raw_body
+                .map(|raw_body| {
+                    let code = format!(
+                        "{} api2wire_{}({} raw) {{
+                            {raw_body}
+                        }}",
+                        WireDartGenerator::new(ty.clone(), context)
+                            .dart_wire_type(target.to_target_or(Target::Io)),
+                        ty.safe_ident(),
+                        ApiDartGenerator::new(ty.clone(), context.as_api_dart_context())
+                            .dart_api_type(),
+                    );
+
+                    let (body, api_impl_body) = match target {
+                        TargetOrCommon::Common => (code, "".into()),
+                        TargetOrCommon::Io | TargetOrCommon::Wasm => {
+                            ("".into(), format!("@protected\n{code}"))
+                        }
+                    };
+
+                    WireDartOutputCode {
+                        api_impl_body,
+                        body,
+                        ..Default::default()
+                    }
+                })
+                .unwrap_or_default()
         })
-        .unwrap_or_default()
-    })
 }
 
 fn generate_api_fill_to_wire_func(

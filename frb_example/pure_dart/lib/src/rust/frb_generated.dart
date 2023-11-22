@@ -184,11 +184,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         debugName: "simple_adder",
         argNames: ["a", "b"],
       );
-
-  @protected
-  int api2wire_i_32(int raw) {
-    return raw;
-  }
 }
 
 // Section: impl_wire2api
@@ -199,4 +194,10 @@ int _wire2api_i_32(dynamic raw) {
 
 void _wire2api_unit(dynamic raw) {
   return;
+}
+
+// Section: api2wire_funcs
+
+int api2wire_i_32(int raw) {
+  return raw;
 }
