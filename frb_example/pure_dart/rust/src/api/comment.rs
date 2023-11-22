@@ -35,7 +35,7 @@ pub enum ComplexEnumWithComments {
 /// Comments on structs
 pub struct StructWithComments {
     /// Documentation on a struct field
-    field_with_comments: i32,
+    pub field_with_comments: i32,
 }
 
 impl StructWithComments {
