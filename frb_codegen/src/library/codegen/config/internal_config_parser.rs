@@ -140,7 +140,7 @@ impl InternalConfig {
                 c_output_path,
             },
             dumper: DumperInternalConfig {
-                dump_contents: config.dump.clone().unwrap_or_default(),
+                dump_contents: parse_dump_contents(&config),
                 dump_directory,
             },
         })
@@ -148,7 +148,7 @@ impl InternalConfig {
 }
 
 fn parse_dump_contents(config: &Config) -> Vec<ConfigDumpContent> {
-    if config.dump_all == Some(true) {
+    if config.dump_all.unwrap_or(false) {
         return ConfigDumpContent::iter().collect_vec();
     }
     if let Some(dump) = &config.dump {
