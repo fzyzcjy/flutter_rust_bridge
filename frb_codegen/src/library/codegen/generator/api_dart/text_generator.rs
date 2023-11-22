@@ -10,13 +10,15 @@ pub(super) struct ApiDartOutputText {
 
 pub(super) fn generate(spec: ApiDartOutputSpec) -> anyhow::Result<ApiDartOutputText> {
     let ApiDartOutputSpec { funcs, classes } = spec;
-    let funcs = generate_functions(funcs);
     Ok(ApiDartOutputText {
-        text: generate_end_api_text(classes, funcs),
+        text: generate_end_api_text(&classes, &funcs),
     })
 }
 
-fn generate_end_api_text(classes: Vec<ApiDartGeneratedClass>, funcs: String) -> String {
+fn generate_end_api_text(
+    classes: &[ApiDartGeneratedClass],
+    funcs: &[ApiDartGeneratedFunction],
+) -> String {
     format!(
         "// ignore_for_file: invalid_use_of_internal_member
 
@@ -26,21 +28,17 @@ fn generate_end_api_text(classes: Vec<ApiDartGeneratedClass>, funcs: String) -> 
 
         {classes}
         ",
-        funcs = funcs,
-        classes = classes.into_iter().map(|c| c.code).join("\n\n"),
+        funcs = funcs.iter().map(|f| generate_function(f)).join("\n\n"),
+        classes = classes.iter().map(|c| c.code).join("\n\n"),
     )
 }
 
-fn generate_functions(funcs: Vec<ApiDartGeneratedFunction>) -> String {
-    funcs
-        .iter()
-        .map(|func| {
-            let ApiDartGeneratedFunction {
-                func_comments,
-                func_expr,
-                func_impl,
-            } = &func;
-            format!("{func_comments}{func_expr} => {func_impl};")
-        })
-        .join("\n\n")
+fn generate_function(func: &ApiDartGeneratedFunction) -> String {
+    let ApiDartGeneratedFunction {
+        func_comments,
+        func_expr,
+        func_impl,
+        ..
+    } = &func;
+    format!("{func_comments}{func_expr} => {func_impl};")
 }
