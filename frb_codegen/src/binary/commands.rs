@@ -116,6 +116,10 @@ pub(crate) struct GenerateCommandArgs {
     /// A list of data to be dumped. If specified without a value, defaults to all.
     #[arg(long, value_enum, num_args = 0.., default_missing_values = ["config", "ir"])]
     pub dump: Option<Vec<ConfigDumpContent>>,
+
+    /// Dump all internal data. Same as `--dump` with all possible choices chosen.
+    #[arg(long)]
+    pub dump_all: bool,
 }
 
 #[derive(Debug, Args)]

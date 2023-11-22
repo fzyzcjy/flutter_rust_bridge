@@ -26,4 +26,5 @@ pub struct Config {
     pub deps_check: Option<bool>,
     pub dart3: Option<bool>,
     pub dump: Option<Vec<ConfigDumpContent>>,
+    pub dump_all: Option<bool>,
 }

@@ -12,7 +12,7 @@ use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInt
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::codegen::preparer::internal_config::PreparerInternalConfig;
-use crate::codegen::Config;
+use crate::codegen::{Config, ConfigDumpContent};
 use crate::library::commands::cargo_metadata::execute_cargo_metadata;
 use crate::utils::path_utils::{
     find_dart_package_dir, find_rust_crate_dir, glob_path, path_to_string,
@@ -25,6 +25,7 @@ use log::debug;
 use pathdiff::diff_paths;
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
+use strum::IntoEnumIterator;
 
 impl InternalConfig {
     pub(crate) fn parse(config: &Config) -> Result<Self> {
@@ -144,6 +145,16 @@ impl InternalConfig {
             },
         })
     }
+}
+
+fn parse_dump_contents(config: &Config) -> Vec<ConfigDumpContent> {
+    if config.dump_all == Some(true) {
+        return ConfigDumpContent::iter().collect_vec();
+    }
+    if let Some(dump) = &config.dump {
+        return dump.to_owned();
+    }
+    return vec![];
 }
 
 fn compute_default_external_library_stem(rust_crate_dir: &Path) -> Result<String> {
