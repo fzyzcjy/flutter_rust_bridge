@@ -73,7 +73,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             "mutable self is not supported yet"
         );
 
-        let ty = construct_syn_type_for_argument_self();
+        let ty: Type = parse_str(struct_name)?;
 
         let name = "that".to_owned();
 
@@ -172,8 +172,4 @@ fn parse_name_from_pat_type(pat_type: &PatType) -> anyhow::Result<String> {
             quote::quote!(#pat_type).to_string(),
         )
     }
-}
-
-fn construct_syn_type_for_argument_self() -> Type {
-    syn::parse_str(struct_name)
 }
