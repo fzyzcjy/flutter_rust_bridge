@@ -2,12 +2,13 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
 
 Map<String, String> generateRustDirectSources() {
   return {
-    'pseudo_manual/primitive.rs': _generateSrcApiPrimitive(),
-    'pseudo_manual/optional_primitive.rs': _generateSrcApiOptionalPrimitive(),
+    'pseudo_manual/primitive.rs': _generatePrimitive(),
+    'pseudo_manual/optional_primitive.rs': _generateOptionalPrimitive(),
+    'pseudo_manual/primitive_list.rs': _generatePrimitiveList(),
   };
 }
 
-String _generateSrcApiPrimitive() {
+String _generatePrimitive() {
   final builder = RustFileBuilder();
   for (final ty in kPrimitiveTypes) {
     final name = ty.name;
@@ -16,7 +17,17 @@ String _generateSrcApiPrimitive() {
   return builder.toString();
 }
 
-String _generateSrcApiOptionalPrimitive() {
+String _generatePrimitiveList() {
+  final builder = RustFileBuilder();
+  for (final ty in kPrimitiveTypes) {
+    final name = ty.name;
+    final listType = 'Vec<$name>';
+    builder.body += 'pub fn example_primitive_list_type_${name}_twin_normal(arg: $listType) -> $listType { arg }\n';
+  }
+  return builder.toString();
+}
+
+String _generateOptionalPrimitive() {
   final builder = RustFileBuilder();
   for (final ty in kPrimitiveTypes) {
     final name = ty.name;
