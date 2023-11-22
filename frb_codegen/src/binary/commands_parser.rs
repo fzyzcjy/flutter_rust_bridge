@@ -40,7 +40,7 @@ fn compute_codegen_config_from_naive_command_args(args: GenerateCommandArgs) -> 
         deps_check: Some(!args.no_deps_check),
         dart3: Some(!args.no_dart3),
         dump: args.dump,
-        dump_all: args.dump_all,
+        dump_all: Some(args.dump_all),
     })
 }
 
