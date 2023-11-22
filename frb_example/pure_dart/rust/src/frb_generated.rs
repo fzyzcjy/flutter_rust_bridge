@@ -20,8 +20,12 @@
 
 use crate::api::comment::StructWithCommentsTwinNormal;
 use crate::api::comment::*;
+use crate::api::exception::*;
+use crate::api::misc_type::*;
 use crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync;
 use crate::api::pseudo_manual::comment_twin_sync::*;
+use crate::api::pseudo_manual::exception_twin_sync::*;
+use crate::api::pseudo_manual::misc_type_twin_sync::*;
 use crate::api::pseudo_manual::optional_primitive::*;
 use crate::api::pseudo_manual::optional_primitive_twin_sync::*;
 use crate::api::pseudo_manual::primitive::*;

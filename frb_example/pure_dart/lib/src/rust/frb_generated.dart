@@ -1,7 +1,5 @@
 // ignore_for_file: unused_import, unused_element
 
-import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-
 import 'api/comment.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/optional_primitive.dart';
@@ -12,7 +10,9 @@ import 'api/pseudo_manual/primitive_list_twin_sync.dart';
 import 'api/pseudo_manual/primitive_twin_sync.dart';
 import 'api/pseudo_manual/simple_twin_sync.dart';
 import 'api/simple.dart';
-import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart.dart';
+import 'frb_generated.io.dart'
+    if (dart.library.html) 'frb_generated.web.dart.dart';
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 /// Main entrypoint of the Rust API
 class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
@@ -36,7 +36,8 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   static void dispose() => instance.disposeImpl();
 
   @override
-  ApiImplConstructor<RustLibApiImpl, RustLibWire> get apiImplConstructor => RustLibApiImpl.new;
+  ApiImplConstructor<RustLibApiImpl, RustLibWire> get apiImplConstructor =>
+      RustLibApiImpl.new;
 
   @override
   WireConstructor<RustLibWire> get wireConstructor => RustLibWire.new;
@@ -52,15 +53,19 @@ abstract class RustLibApi extends BaseApi {
   Future<void> structWithCommentsTwinNormalInstanceMethodTwinNormal(
       {required StructWithCommentsTwinNormal that, dynamic hint});
 
-  Future<void> structWithCommentsTwinNormalStaticMethodTwinNormal({dynamic hint});
+  Future<void> structWithCommentsTwinNormalStaticMethodTwinNormal(
+      {dynamic hint});
 
   Future<void> functionWithCommentsSlashStarStarTwinNormal({dynamic hint});
 
-  Future<void> functionWithCommentsTripleSlashMultiLineTwinNormal({dynamic hint});
+  Future<void> functionWithCommentsTripleSlashMultiLineTwinNormal(
+      {dynamic hint});
 
-  Future<void> functionWithCommentsTripleSlashSingleLineTwinNormal({dynamic hint});
+  Future<void> functionWithCommentsTripleSlashSingleLineTwinNormal(
+      {dynamic hint});
 
-  void structWithCommentsTwinSyncInstanceMethodTwinSync({required StructWithCommentsTwinSync that, dynamic hint});
+  void structWithCommentsTwinSyncInstanceMethodTwinSync(
+      {required StructWithCommentsTwinSync that, dynamic hint});
 
   void structWithCommentsTwinSyncStaticMethodTwinSync({dynamic hint});
 
@@ -70,27 +75,38 @@ abstract class RustLibApi extends BaseApi {
 
   void functionWithCommentsTripleSlashSingleLineTwinSync({dynamic hint});
 
-  Future<bool?> exampleOptionalPrimitiveTypeBoolTwinNormal({bool? arg, dynamic hint});
+  Future<bool?> exampleOptionalPrimitiveTypeBoolTwinNormal(
+      {bool? arg, dynamic hint});
 
-  Future<double?> exampleOptionalPrimitiveTypeF32TwinNormal({double? arg, dynamic hint});
+  Future<double?> exampleOptionalPrimitiveTypeF32TwinNormal(
+      {double? arg, dynamic hint});
 
-  Future<double?> exampleOptionalPrimitiveTypeF64TwinNormal({double? arg, dynamic hint});
+  Future<double?> exampleOptionalPrimitiveTypeF64TwinNormal(
+      {double? arg, dynamic hint});
 
-  Future<int?> exampleOptionalPrimitiveTypeI16TwinNormal({int? arg, dynamic hint});
+  Future<int?> exampleOptionalPrimitiveTypeI16TwinNormal(
+      {int? arg, dynamic hint});
 
-  Future<int?> exampleOptionalPrimitiveTypeI32TwinNormal({int? arg, dynamic hint});
+  Future<int?> exampleOptionalPrimitiveTypeI32TwinNormal(
+      {int? arg, dynamic hint});
 
-  Future<BigInt?> exampleOptionalPrimitiveTypeI64TwinNormal({BigInt? arg, dynamic hint});
+  Future<BigInt?> exampleOptionalPrimitiveTypeI64TwinNormal(
+      {BigInt? arg, dynamic hint});
 
-  Future<int?> exampleOptionalPrimitiveTypeI8TwinNormal({int? arg, dynamic hint});
+  Future<int?> exampleOptionalPrimitiveTypeI8TwinNormal(
+      {int? arg, dynamic hint});
 
-  Future<int?> exampleOptionalPrimitiveTypeU16TwinNormal({int? arg, dynamic hint});
+  Future<int?> exampleOptionalPrimitiveTypeU16TwinNormal(
+      {int? arg, dynamic hint});
 
-  Future<int?> exampleOptionalPrimitiveTypeU32TwinNormal({int? arg, dynamic hint});
+  Future<int?> exampleOptionalPrimitiveTypeU32TwinNormal(
+      {int? arg, dynamic hint});
 
-  Future<BigInt?> exampleOptionalPrimitiveTypeU64TwinNormal({BigInt? arg, dynamic hint});
+  Future<BigInt?> exampleOptionalPrimitiveTypeU64TwinNormal(
+      {BigInt? arg, dynamic hint});
 
-  Future<int?> exampleOptionalPrimitiveTypeU8TwinNormal({int? arg, dynamic hint});
+  Future<int?> exampleOptionalPrimitiveTypeU8TwinNormal(
+      {int? arg, dynamic hint});
 
   bool? exampleOptionalPrimitiveTypeBoolTwinSync({bool? arg, dynamic hint});
 
@@ -114,71 +130,104 @@ abstract class RustLibApi extends BaseApi {
 
   int? exampleOptionalPrimitiveTypeU8TwinSync({int? arg, dynamic hint});
 
-  Future<bool> examplePrimitiveTypeBoolTwinNormal({required bool arg, dynamic hint});
+  Future<bool> examplePrimitiveTypeBoolTwinNormal(
+      {required bool arg, dynamic hint});
 
-  Future<double> examplePrimitiveTypeF32TwinNormal({required double arg, dynamic hint});
+  Future<double> examplePrimitiveTypeF32TwinNormal(
+      {required double arg, dynamic hint});
 
-  Future<double> examplePrimitiveTypeF64TwinNormal({required double arg, dynamic hint});
+  Future<double> examplePrimitiveTypeF64TwinNormal(
+      {required double arg, dynamic hint});
 
-  Future<int> examplePrimitiveTypeI16TwinNormal({required int arg, dynamic hint});
+  Future<int> examplePrimitiveTypeI16TwinNormal(
+      {required int arg, dynamic hint});
 
-  Future<int> examplePrimitiveTypeI32TwinNormal({required int arg, dynamic hint});
+  Future<int> examplePrimitiveTypeI32TwinNormal(
+      {required int arg, dynamic hint});
 
-  Future<BigInt> examplePrimitiveTypeI64TwinNormal({required BigInt arg, dynamic hint});
+  Future<BigInt> examplePrimitiveTypeI64TwinNormal(
+      {required BigInt arg, dynamic hint});
 
-  Future<int> examplePrimitiveTypeI8TwinNormal({required int arg, dynamic hint});
+  Future<int> examplePrimitiveTypeI8TwinNormal(
+      {required int arg, dynamic hint});
 
-  Future<int> examplePrimitiveTypeU16TwinNormal({required int arg, dynamic hint});
+  Future<int> examplePrimitiveTypeU16TwinNormal(
+      {required int arg, dynamic hint});
 
-  Future<int> examplePrimitiveTypeU32TwinNormal({required int arg, dynamic hint});
+  Future<int> examplePrimitiveTypeU32TwinNormal(
+      {required int arg, dynamic hint});
 
-  Future<BigInt> examplePrimitiveTypeU64TwinNormal({required BigInt arg, dynamic hint});
+  Future<BigInt> examplePrimitiveTypeU64TwinNormal(
+      {required BigInt arg, dynamic hint});
 
-  Future<int> examplePrimitiveTypeU8TwinNormal({required int arg, dynamic hint});
+  Future<int> examplePrimitiveTypeU8TwinNormal(
+      {required int arg, dynamic hint});
 
-  Future<List<bool>> examplePrimitiveListTypeBoolTwinNormal({required List<bool> arg, dynamic hint});
+  Future<List<bool>> examplePrimitiveListTypeBoolTwinNormal(
+      {required List<bool> arg, dynamic hint});
 
-  Future<Float32List> examplePrimitiveListTypeF32TwinNormal({required Float32List arg, dynamic hint});
+  Future<Float32List> examplePrimitiveListTypeF32TwinNormal(
+      {required Float32List arg, dynamic hint});
 
-  Future<Float64List> examplePrimitiveListTypeF64TwinNormal({required Float64List arg, dynamic hint});
+  Future<Float64List> examplePrimitiveListTypeF64TwinNormal(
+      {required Float64List arg, dynamic hint});
 
-  Future<Int16List> examplePrimitiveListTypeI16TwinNormal({required Int16List arg, dynamic hint});
+  Future<Int16List> examplePrimitiveListTypeI16TwinNormal(
+      {required Int16List arg, dynamic hint});
 
-  Future<Int32List> examplePrimitiveListTypeI32TwinNormal({required Int32List arg, dynamic hint});
+  Future<Int32List> examplePrimitiveListTypeI32TwinNormal(
+      {required Int32List arg, dynamic hint});
 
-  Future<Int64List> examplePrimitiveListTypeI64TwinNormal({required Int64List arg, dynamic hint});
+  Future<Int64List> examplePrimitiveListTypeI64TwinNormal(
+      {required Int64List arg, dynamic hint});
 
-  Future<Int8List> examplePrimitiveListTypeI8TwinNormal({required Int8List arg, dynamic hint});
+  Future<Int8List> examplePrimitiveListTypeI8TwinNormal(
+      {required Int8List arg, dynamic hint});
 
-  Future<Uint16List> examplePrimitiveListTypeU16TwinNormal({required Uint16List arg, dynamic hint});
+  Future<Uint16List> examplePrimitiveListTypeU16TwinNormal(
+      {required Uint16List arg, dynamic hint});
 
-  Future<Uint32List> examplePrimitiveListTypeU32TwinNormal({required Uint32List arg, dynamic hint});
+  Future<Uint32List> examplePrimitiveListTypeU32TwinNormal(
+      {required Uint32List arg, dynamic hint});
 
-  Future<Uint64List> examplePrimitiveListTypeU64TwinNormal({required Uint64List arg, dynamic hint});
+  Future<Uint64List> examplePrimitiveListTypeU64TwinNormal(
+      {required Uint64List arg, dynamic hint});
 
-  Future<Uint8List> examplePrimitiveListTypeU8TwinNormal({required Uint8List arg, dynamic hint});
+  Future<Uint8List> examplePrimitiveListTypeU8TwinNormal(
+      {required Uint8List arg, dynamic hint});
 
-  List<bool> examplePrimitiveListTypeBoolTwinSync({required List<bool> arg, dynamic hint});
+  List<bool> examplePrimitiveListTypeBoolTwinSync(
+      {required List<bool> arg, dynamic hint});
 
-  Float32List examplePrimitiveListTypeF32TwinSync({required Float32List arg, dynamic hint});
+  Float32List examplePrimitiveListTypeF32TwinSync(
+      {required Float32List arg, dynamic hint});
 
-  Float64List examplePrimitiveListTypeF64TwinSync({required Float64List arg, dynamic hint});
+  Float64List examplePrimitiveListTypeF64TwinSync(
+      {required Float64List arg, dynamic hint});
 
-  Int16List examplePrimitiveListTypeI16TwinSync({required Int16List arg, dynamic hint});
+  Int16List examplePrimitiveListTypeI16TwinSync(
+      {required Int16List arg, dynamic hint});
 
-  Int32List examplePrimitiveListTypeI32TwinSync({required Int32List arg, dynamic hint});
+  Int32List examplePrimitiveListTypeI32TwinSync(
+      {required Int32List arg, dynamic hint});
 
-  Int64List examplePrimitiveListTypeI64TwinSync({required Int64List arg, dynamic hint});
+  Int64List examplePrimitiveListTypeI64TwinSync(
+      {required Int64List arg, dynamic hint});
 
-  Int8List examplePrimitiveListTypeI8TwinSync({required Int8List arg, dynamic hint});
+  Int8List examplePrimitiveListTypeI8TwinSync(
+      {required Int8List arg, dynamic hint});
 
-  Uint16List examplePrimitiveListTypeU16TwinSync({required Uint16List arg, dynamic hint});
+  Uint16List examplePrimitiveListTypeU16TwinSync(
+      {required Uint16List arg, dynamic hint});
 
-  Uint32List examplePrimitiveListTypeU32TwinSync({required Uint32List arg, dynamic hint});
+  Uint32List examplePrimitiveListTypeU32TwinSync(
+      {required Uint32List arg, dynamic hint});
 
-  Uint64List examplePrimitiveListTypeU64TwinSync({required Uint64List arg, dynamic hint});
+  Uint64List examplePrimitiveListTypeU64TwinSync(
+      {required Uint64List arg, dynamic hint});
 
-  Uint8List examplePrimitiveListTypeU8TwinSync({required Uint8List arg, dynamic hint});
+  Uint8List examplePrimitiveListTypeU8TwinSync(
+      {required Uint8List arg, dynamic hint});
 
   bool examplePrimitiveTypeBoolTwinSync({required bool arg, dynamic hint});
 
@@ -204,7 +253,8 @@ abstract class RustLibApi extends BaseApi {
 
   int simpleAdderTwinSync({required int a, required int b, dynamic hint});
 
-  Future<int> simpleAdderTwinNormal({required int a, required int b, dynamic hint});
+  Future<int> simpleAdderTwinNormal(
+      {required int a, required int b, dynamic hint});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -219,7 +269,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       {required StructWithCommentsTwinNormal that, dynamic hint}) {
     var arg0 = api2wire_box_autoadd_struct_with_comments_twin_normal(that);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_StructWithCommentsTwinNormal_instance_method_twin_normal(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_StructWithCommentsTwinNormal_instance_method_twin_normal(
+              port_, arg0),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
       constMeta: kStructWithCommentsTwinNormalInstanceMethodTwinNormalConstMeta,
@@ -229,15 +281,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kStructWithCommentsTwinNormalInstanceMethodTwinNormalConstMeta => const TaskConstMeta(
-        debugName: "StructWithCommentsTwinNormal_instance_method_twin_normal",
-        argNames: ["that"],
-      );
+  TaskConstMeta
+      get kStructWithCommentsTwinNormalInstanceMethodTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "StructWithCommentsTwinNormal_instance_method_twin_normal",
+            argNames: ["that"],
+          );
 
   @override
-  Future<void> structWithCommentsTwinNormalStaticMethodTwinNormal({dynamic hint}) {
+  Future<void> structWithCommentsTwinNormalStaticMethodTwinNormal(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_StructWithCommentsTwinNormal_static_method_twin_normal(port_),
+      callFfi: (port_) => wire
+          .wire_StructWithCommentsTwinNormal_static_method_twin_normal(port_),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
       constMeta: kStructWithCommentsTwinNormalStaticMethodTwinNormalConstMeta,
@@ -247,15 +304,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kStructWithCommentsTwinNormalStaticMethodTwinNormalConstMeta => const TaskConstMeta(
-        debugName: "StructWithCommentsTwinNormal_static_method_twin_normal",
-        argNames: [],
-      );
+  TaskConstMeta
+      get kStructWithCommentsTwinNormalStaticMethodTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName: "StructWithCommentsTwinNormal_static_method_twin_normal",
+            argNames: [],
+          );
 
   @override
   Future<void> functionWithCommentsSlashStarStarTwinNormal({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_function_with_comments_slash_star_star_twin_normal(port_),
+      callFfi: (port_) =>
+          wire.wire_function_with_comments_slash_star_star_twin_normal(port_),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
       constMeta: kFunctionWithCommentsSlashStarStarTwinNormalConstMeta,
@@ -265,15 +325,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kFunctionWithCommentsSlashStarStarTwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kFunctionWithCommentsSlashStarStarTwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "function_with_comments_slash_star_star_twin_normal",
         argNames: [],
       );
 
   @override
-  Future<void> functionWithCommentsTripleSlashMultiLineTwinNormal({dynamic hint}) {
+  Future<void> functionWithCommentsTripleSlashMultiLineTwinNormal(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_function_with_comments_triple_slash_multi_line_twin_normal(port_),
+      callFfi: (port_) =>
+          wire.wire_function_with_comments_triple_slash_multi_line_twin_normal(
+              port_),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
       constMeta: kFunctionWithCommentsTripleSlashMultiLineTwinNormalConstMeta,
@@ -283,15 +347,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kFunctionWithCommentsTripleSlashMultiLineTwinNormalConstMeta => const TaskConstMeta(
-        debugName: "function_with_comments_triple_slash_multi_line_twin_normal",
-        argNames: [],
-      );
+  TaskConstMeta
+      get kFunctionWithCommentsTripleSlashMultiLineTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "function_with_comments_triple_slash_multi_line_twin_normal",
+            argNames: [],
+          );
 
   @override
-  Future<void> functionWithCommentsTripleSlashSingleLineTwinNormal({dynamic hint}) {
+  Future<void> functionWithCommentsTripleSlashSingleLineTwinNormal(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_function_with_comments_triple_slash_single_line_twin_normal(port_),
+      callFfi: (port_) =>
+          wire.wire_function_with_comments_triple_slash_single_line_twin_normal(
+              port_),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
       constMeta: kFunctionWithCommentsTripleSlashSingleLineTwinNormalConstMeta,
@@ -301,16 +371,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kFunctionWithCommentsTripleSlashSingleLineTwinNormalConstMeta => const TaskConstMeta(
-        debugName: "function_with_comments_triple_slash_single_line_twin_normal",
-        argNames: [],
-      );
+  TaskConstMeta
+      get kFunctionWithCommentsTripleSlashSingleLineTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "function_with_comments_triple_slash_single_line_twin_normal",
+            argNames: [],
+          );
 
   @override
-  void structWithCommentsTwinSyncInstanceMethodTwinSync({required StructWithCommentsTwinSync that, dynamic hint}) {
+  void structWithCommentsTwinSyncInstanceMethodTwinSync(
+      {required StructWithCommentsTwinSync that, dynamic hint}) {
     var arg0 = api2wire_box_autoadd_struct_with_comments_twin_sync(that);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_StructWithCommentsTwinSync_instance_method_twin_sync(arg0),
+      callFfi: () =>
+          wire.wire_StructWithCommentsTwinSync_instance_method_twin_sync(arg0),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
       constMeta: kStructWithCommentsTwinSyncInstanceMethodTwinSyncConstMeta,
@@ -320,15 +395,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kStructWithCommentsTwinSyncInstanceMethodTwinSyncConstMeta => const TaskConstMeta(
-        debugName: "StructWithCommentsTwinSync_instance_method_twin_sync",
-        argNames: ["that"],
-      );
+  TaskConstMeta
+      get kStructWithCommentsTwinSyncInstanceMethodTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName: "StructWithCommentsTwinSync_instance_method_twin_sync",
+            argNames: ["that"],
+          );
 
   @override
   void structWithCommentsTwinSyncStaticMethodTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_StructWithCommentsTwinSync_static_method_twin_sync(),
+      callFfi: () =>
+          wire.wire_StructWithCommentsTwinSync_static_method_twin_sync(),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
       constMeta: kStructWithCommentsTwinSyncStaticMethodTwinSyncConstMeta,
@@ -338,7 +416,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kStructWithCommentsTwinSyncStaticMethodTwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kStructWithCommentsTwinSyncStaticMethodTwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "StructWithCommentsTwinSync_static_method_twin_sync",
         argNames: [],
       );
@@ -346,7 +425,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void functionWithCommentsSlashStarStarTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_function_with_comments_slash_star_star_twin_sync(),
+      callFfi: () =>
+          wire.wire_function_with_comments_slash_star_star_twin_sync(),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
       constMeta: kFunctionWithCommentsSlashStarStarTwinSyncConstMeta,
@@ -356,7 +436,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kFunctionWithCommentsSlashStarStarTwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kFunctionWithCommentsSlashStarStarTwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "function_with_comments_slash_star_star_twin_sync",
         argNames: [],
       );
@@ -364,7 +445,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   @override
   void functionWithCommentsTripleSlashMultiLineTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_function_with_comments_triple_slash_multi_line_twin_sync(),
+      callFfi: () =>
+          wire.wire_function_with_comments_triple_slash_multi_line_twin_sync(),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
       constMeta: kFunctionWithCommentsTripleSlashMultiLineTwinSyncConstMeta,
@@ -374,15 +456,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kFunctionWithCommentsTripleSlashMultiLineTwinSyncConstMeta => const TaskConstMeta(
-        debugName: "function_with_comments_triple_slash_multi_line_twin_sync",
-        argNames: [],
-      );
+  TaskConstMeta
+      get kFunctionWithCommentsTripleSlashMultiLineTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "function_with_comments_triple_slash_multi_line_twin_sync",
+            argNames: [],
+          );
 
   @override
   void functionWithCommentsTripleSlashSingleLineTwinSync({dynamic hint}) {
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_function_with_comments_triple_slash_single_line_twin_sync(),
+      callFfi: () =>
+          wire.wire_function_with_comments_triple_slash_single_line_twin_sync(),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
       constMeta: kFunctionWithCommentsTripleSlashSingleLineTwinSyncConstMeta,
@@ -392,16 +478,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kFunctionWithCommentsTripleSlashSingleLineTwinSyncConstMeta => const TaskConstMeta(
-        debugName: "function_with_comments_triple_slash_single_line_twin_sync",
-        argNames: [],
-      );
+  TaskConstMeta
+      get kFunctionWithCommentsTripleSlashSingleLineTwinSyncConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "function_with_comments_triple_slash_single_line_twin_sync",
+            argNames: [],
+          );
 
   @override
-  Future<bool?> exampleOptionalPrimitiveTypeBoolTwinNormal({bool? arg, dynamic hint}) {
+  Future<bool?> exampleOptionalPrimitiveTypeBoolTwinNormal(
+      {bool? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_bool(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_optional_primitive_type_bool_twin_normal(port_, arg0),
+      callFfi: (port_) => wire
+          .wire_example_optional_primitive_type_bool_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_bool,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeBoolTwinNormalConstMeta,
@@ -411,16 +502,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeBoolTwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExampleOptionalPrimitiveTypeBoolTwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_optional_primitive_type_bool_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<double?> exampleOptionalPrimitiveTypeF32TwinNormal({double? arg, dynamic hint}) {
+  Future<double?> exampleOptionalPrimitiveTypeF32TwinNormal(
+      {double? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_f_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_optional_primitive_type_f32_twin_normal(port_, arg0),
+      callFfi: (port_) => wire
+          .wire_example_optional_primitive_type_f32_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_f_32,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeF32TwinNormalConstMeta,
@@ -430,16 +524,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeF32TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExampleOptionalPrimitiveTypeF32TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_optional_primitive_type_f32_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<double?> exampleOptionalPrimitiveTypeF64TwinNormal({double? arg, dynamic hint}) {
+  Future<double?> exampleOptionalPrimitiveTypeF64TwinNormal(
+      {double? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_f_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_optional_primitive_type_f64_twin_normal(port_, arg0),
+      callFfi: (port_) => wire
+          .wire_example_optional_primitive_type_f64_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_f_64,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeF64TwinNormalConstMeta,
@@ -449,16 +546,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeF64TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExampleOptionalPrimitiveTypeF64TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_optional_primitive_type_f64_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<int?> exampleOptionalPrimitiveTypeI16TwinNormal({int? arg, dynamic hint}) {
+  Future<int?> exampleOptionalPrimitiveTypeI16TwinNormal(
+      {int? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_i_16(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_optional_primitive_type_i16_twin_normal(port_, arg0),
+      callFfi: (port_) => wire
+          .wire_example_optional_primitive_type_i16_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_i_16,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeI16TwinNormalConstMeta,
@@ -468,16 +568,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI16TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExampleOptionalPrimitiveTypeI16TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_optional_primitive_type_i16_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<int?> exampleOptionalPrimitiveTypeI32TwinNormal({int? arg, dynamic hint}) {
+  Future<int?> exampleOptionalPrimitiveTypeI32TwinNormal(
+      {int? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_i_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_optional_primitive_type_i32_twin_normal(port_, arg0),
+      callFfi: (port_) => wire
+          .wire_example_optional_primitive_type_i32_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_i_32,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeI32TwinNormalConstMeta,
@@ -487,16 +590,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI32TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExampleOptionalPrimitiveTypeI32TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_optional_primitive_type_i32_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<BigInt?> exampleOptionalPrimitiveTypeI64TwinNormal({BigInt? arg, dynamic hint}) {
+  Future<BigInt?> exampleOptionalPrimitiveTypeI64TwinNormal(
+      {BigInt? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_i_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_optional_primitive_type_i64_twin_normal(port_, arg0),
+      callFfi: (port_) => wire
+          .wire_example_optional_primitive_type_i64_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_i_64,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeI64TwinNormalConstMeta,
@@ -506,16 +612,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI64TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExampleOptionalPrimitiveTypeI64TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_optional_primitive_type_i64_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<int?> exampleOptionalPrimitiveTypeI8TwinNormal({int? arg, dynamic hint}) {
+  Future<int?> exampleOptionalPrimitiveTypeI8TwinNormal(
+      {int? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_i_8(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_optional_primitive_type_i8_twin_normal(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_example_optional_primitive_type_i8_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_i_8,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeI8TwinNormalConstMeta,
@@ -525,16 +634,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI8TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExampleOptionalPrimitiveTypeI8TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_optional_primitive_type_i8_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<int?> exampleOptionalPrimitiveTypeU16TwinNormal({int? arg, dynamic hint}) {
+  Future<int?> exampleOptionalPrimitiveTypeU16TwinNormal(
+      {int? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_u_16(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_optional_primitive_type_u16_twin_normal(port_, arg0),
+      callFfi: (port_) => wire
+          .wire_example_optional_primitive_type_u16_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_u_16,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeU16TwinNormalConstMeta,
@@ -544,16 +656,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU16TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExampleOptionalPrimitiveTypeU16TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_optional_primitive_type_u16_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<int?> exampleOptionalPrimitiveTypeU32TwinNormal({int? arg, dynamic hint}) {
+  Future<int?> exampleOptionalPrimitiveTypeU32TwinNormal(
+      {int? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_u_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_optional_primitive_type_u32_twin_normal(port_, arg0),
+      callFfi: (port_) => wire
+          .wire_example_optional_primitive_type_u32_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_u_32,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeU32TwinNormalConstMeta,
@@ -563,16 +678,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU32TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExampleOptionalPrimitiveTypeU32TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_optional_primitive_type_u32_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<BigInt?> exampleOptionalPrimitiveTypeU64TwinNormal({BigInt? arg, dynamic hint}) {
+  Future<BigInt?> exampleOptionalPrimitiveTypeU64TwinNormal(
+      {BigInt? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_u_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_optional_primitive_type_u64_twin_normal(port_, arg0),
+      callFfi: (port_) => wire
+          .wire_example_optional_primitive_type_u64_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_u_64,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeU64TwinNormalConstMeta,
@@ -582,16 +700,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU64TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExampleOptionalPrimitiveTypeU64TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_optional_primitive_type_u64_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<int?> exampleOptionalPrimitiveTypeU8TwinNormal({int? arg, dynamic hint}) {
+  Future<int?> exampleOptionalPrimitiveTypeU8TwinNormal(
+      {int? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_u_8(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_optional_primitive_type_u8_twin_normal(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_example_optional_primitive_type_u8_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_u_8,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeU8TwinNormalConstMeta,
@@ -601,7 +722,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU8TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExampleOptionalPrimitiveTypeU8TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_optional_primitive_type_u8_twin_normal",
         argNames: ["arg"],
       );
@@ -610,7 +732,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   bool? exampleOptionalPrimitiveTypeBoolTwinSync({bool? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_bool(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_optional_primitive_type_bool_twin_sync(arg0),
+      callFfi: () =>
+          wire.wire_example_optional_primitive_type_bool_twin_sync(arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_bool,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeBoolTwinSyncConstMeta,
@@ -620,7 +743,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeBoolTwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExampleOptionalPrimitiveTypeBoolTwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_optional_primitive_type_bool_twin_sync",
         argNames: ["arg"],
       );
@@ -629,7 +753,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   double? exampleOptionalPrimitiveTypeF32TwinSync({double? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_f_32(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_optional_primitive_type_f32_twin_sync(arg0),
+      callFfi: () =>
+          wire.wire_example_optional_primitive_type_f32_twin_sync(arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_f_32,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeF32TwinSyncConstMeta,
@@ -639,7 +764,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeF32TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExampleOptionalPrimitiveTypeF32TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_optional_primitive_type_f32_twin_sync",
         argNames: ["arg"],
       );
@@ -648,7 +774,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   double? exampleOptionalPrimitiveTypeF64TwinSync({double? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_f_64(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_optional_primitive_type_f64_twin_sync(arg0),
+      callFfi: () =>
+          wire.wire_example_optional_primitive_type_f64_twin_sync(arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_f_64,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeF64TwinSyncConstMeta,
@@ -658,7 +785,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeF64TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExampleOptionalPrimitiveTypeF64TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_optional_primitive_type_f64_twin_sync",
         argNames: ["arg"],
       );
@@ -667,7 +795,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   int? exampleOptionalPrimitiveTypeI16TwinSync({int? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_i_16(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_optional_primitive_type_i16_twin_sync(arg0),
+      callFfi: () =>
+          wire.wire_example_optional_primitive_type_i16_twin_sync(arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_i_16,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeI16TwinSyncConstMeta,
@@ -677,7 +806,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI16TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExampleOptionalPrimitiveTypeI16TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_optional_primitive_type_i16_twin_sync",
         argNames: ["arg"],
       );
@@ -686,7 +816,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   int? exampleOptionalPrimitiveTypeI32TwinSync({int? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_i_32(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_optional_primitive_type_i32_twin_sync(arg0),
+      callFfi: () =>
+          wire.wire_example_optional_primitive_type_i32_twin_sync(arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_i_32,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeI32TwinSyncConstMeta,
@@ -696,7 +827,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI32TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExampleOptionalPrimitiveTypeI32TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_optional_primitive_type_i32_twin_sync",
         argNames: ["arg"],
       );
@@ -705,7 +837,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   BigInt? exampleOptionalPrimitiveTypeI64TwinSync({BigInt? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_i_64(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_optional_primitive_type_i64_twin_sync(arg0),
+      callFfi: () =>
+          wire.wire_example_optional_primitive_type_i64_twin_sync(arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_i_64,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeI64TwinSyncConstMeta,
@@ -715,7 +848,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI64TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExampleOptionalPrimitiveTypeI64TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_optional_primitive_type_i64_twin_sync",
         argNames: ["arg"],
       );
@@ -724,7 +858,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   int? exampleOptionalPrimitiveTypeI8TwinSync({int? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_i_8(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_optional_primitive_type_i8_twin_sync(arg0),
+      callFfi: () =>
+          wire.wire_example_optional_primitive_type_i8_twin_sync(arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_i_8,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeI8TwinSyncConstMeta,
@@ -734,7 +869,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeI8TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExampleOptionalPrimitiveTypeI8TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_optional_primitive_type_i8_twin_sync",
         argNames: ["arg"],
       );
@@ -743,7 +879,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   int? exampleOptionalPrimitiveTypeU16TwinSync({int? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_u_16(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_optional_primitive_type_u16_twin_sync(arg0),
+      callFfi: () =>
+          wire.wire_example_optional_primitive_type_u16_twin_sync(arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_u_16,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeU16TwinSyncConstMeta,
@@ -753,7 +890,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU16TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExampleOptionalPrimitiveTypeU16TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_optional_primitive_type_u16_twin_sync",
         argNames: ["arg"],
       );
@@ -762,7 +900,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   int? exampleOptionalPrimitiveTypeU32TwinSync({int? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_u_32(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_optional_primitive_type_u32_twin_sync(arg0),
+      callFfi: () =>
+          wire.wire_example_optional_primitive_type_u32_twin_sync(arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_u_32,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeU32TwinSyncConstMeta,
@@ -772,7 +911,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU32TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExampleOptionalPrimitiveTypeU32TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_optional_primitive_type_u32_twin_sync",
         argNames: ["arg"],
       );
@@ -781,7 +921,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   BigInt? exampleOptionalPrimitiveTypeU64TwinSync({BigInt? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_u_64(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_optional_primitive_type_u64_twin_sync(arg0),
+      callFfi: () =>
+          wire.wire_example_optional_primitive_type_u64_twin_sync(arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_u_64,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeU64TwinSyncConstMeta,
@@ -791,7 +932,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU64TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExampleOptionalPrimitiveTypeU64TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_optional_primitive_type_u64_twin_sync",
         argNames: ["arg"],
       );
@@ -800,7 +942,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   int? exampleOptionalPrimitiveTypeU8TwinSync({int? arg, dynamic hint}) {
     var arg0 = api2wire_opt_box_autoadd_u_8(arg);
     return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_example_optional_primitive_type_u8_twin_sync(arg0),
+      callFfi: () =>
+          wire.wire_example_optional_primitive_type_u8_twin_sync(arg0),
       parseSuccessData: _wire2api_opt_box_autoadd_u_8,
       parseErrorData: null,
       constMeta: kExampleOptionalPrimitiveTypeU8TwinSyncConstMeta,
@@ -810,16 +953,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExampleOptionalPrimitiveTypeU8TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExampleOptionalPrimitiveTypeU8TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_optional_primitive_type_u8_twin_sync",
         argNames: ["arg"],
       );
 
   @override
-  Future<bool> examplePrimitiveTypeBoolTwinNormal({required bool arg, dynamic hint}) {
+  Future<bool> examplePrimitiveTypeBoolTwinNormal(
+      {required bool arg, dynamic hint}) {
     var arg0 = api2wire_bool(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_primitive_type_bool_twin_normal(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_example_primitive_type_bool_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_bool,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeBoolTwinNormalConstMeta,
@@ -829,16 +975,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveTypeBoolTwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveTypeBoolTwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_type_bool_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<double> examplePrimitiveTypeF32TwinNormal({required double arg, dynamic hint}) {
+  Future<double> examplePrimitiveTypeF32TwinNormal(
+      {required double arg, dynamic hint}) {
     var arg0 = api2wire_f_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_primitive_type_f32_twin_normal(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_example_primitive_type_f32_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_f_32,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeF32TwinNormalConstMeta,
@@ -848,16 +997,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveTypeF32TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveTypeF32TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_type_f32_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<double> examplePrimitiveTypeF64TwinNormal({required double arg, dynamic hint}) {
+  Future<double> examplePrimitiveTypeF64TwinNormal(
+      {required double arg, dynamic hint}) {
     var arg0 = api2wire_f_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_primitive_type_f64_twin_normal(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_example_primitive_type_f64_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_f_64,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeF64TwinNormalConstMeta,
@@ -867,16 +1019,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveTypeF64TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveTypeF64TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_type_f64_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<int> examplePrimitiveTypeI16TwinNormal({required int arg, dynamic hint}) {
+  Future<int> examplePrimitiveTypeI16TwinNormal(
+      {required int arg, dynamic hint}) {
     var arg0 = api2wire_i_16(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_primitive_type_i16_twin_normal(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_example_primitive_type_i16_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_i_16,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeI16TwinNormalConstMeta,
@@ -886,16 +1041,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveTypeI16TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveTypeI16TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_type_i16_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<int> examplePrimitiveTypeI32TwinNormal({required int arg, dynamic hint}) {
+  Future<int> examplePrimitiveTypeI32TwinNormal(
+      {required int arg, dynamic hint}) {
     var arg0 = api2wire_i_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_primitive_type_i32_twin_normal(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_example_primitive_type_i32_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_i_32,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeI32TwinNormalConstMeta,
@@ -905,16 +1063,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveTypeI32TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveTypeI32TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_type_i32_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<BigInt> examplePrimitiveTypeI64TwinNormal({required BigInt arg, dynamic hint}) {
+  Future<BigInt> examplePrimitiveTypeI64TwinNormal(
+      {required BigInt arg, dynamic hint}) {
     var arg0 = api2wire_i_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_primitive_type_i64_twin_normal(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_example_primitive_type_i64_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_i_64,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeI64TwinNormalConstMeta,
@@ -924,16 +1085,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveTypeI64TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveTypeI64TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_type_i64_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<int> examplePrimitiveTypeI8TwinNormal({required int arg, dynamic hint}) {
+  Future<int> examplePrimitiveTypeI8TwinNormal(
+      {required int arg, dynamic hint}) {
     var arg0 = api2wire_i_8(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_primitive_type_i8_twin_normal(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_example_primitive_type_i8_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_i_8,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeI8TwinNormalConstMeta,
@@ -943,16 +1107,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveTypeI8TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveTypeI8TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_type_i8_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<int> examplePrimitiveTypeU16TwinNormal({required int arg, dynamic hint}) {
+  Future<int> examplePrimitiveTypeU16TwinNormal(
+      {required int arg, dynamic hint}) {
     var arg0 = api2wire_u_16(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_primitive_type_u16_twin_normal(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_example_primitive_type_u16_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_u_16,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeU16TwinNormalConstMeta,
@@ -962,16 +1129,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveTypeU16TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveTypeU16TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_type_u16_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<int> examplePrimitiveTypeU32TwinNormal({required int arg, dynamic hint}) {
+  Future<int> examplePrimitiveTypeU32TwinNormal(
+      {required int arg, dynamic hint}) {
     var arg0 = api2wire_u_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_primitive_type_u32_twin_normal(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_example_primitive_type_u32_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_u_32,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeU32TwinNormalConstMeta,
@@ -981,16 +1151,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveTypeU32TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveTypeU32TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_type_u32_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<BigInt> examplePrimitiveTypeU64TwinNormal({required BigInt arg, dynamic hint}) {
+  Future<BigInt> examplePrimitiveTypeU64TwinNormal(
+      {required BigInt arg, dynamic hint}) {
     var arg0 = api2wire_u_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_primitive_type_u64_twin_normal(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_example_primitive_type_u64_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_u_64,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeU64TwinNormalConstMeta,
@@ -1000,16 +1173,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveTypeU64TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveTypeU64TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_type_u64_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<int> examplePrimitiveTypeU8TwinNormal({required int arg, dynamic hint}) {
+  Future<int> examplePrimitiveTypeU8TwinNormal(
+      {required int arg, dynamic hint}) {
     var arg0 = api2wire_u_8(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_primitive_type_u8_twin_normal(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_example_primitive_type_u8_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_u_8,
       parseErrorData: null,
       constMeta: kExamplePrimitiveTypeU8TwinNormalConstMeta,
@@ -1019,16 +1195,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveTypeU8TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveTypeU8TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_type_u8_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<List<bool>> examplePrimitiveListTypeBoolTwinNormal({required List<bool> arg, dynamic hint}) {
+  Future<List<bool>> examplePrimitiveListTypeBoolTwinNormal(
+      {required List<bool> arg, dynamic hint}) {
     var arg0 = api2wire_list_bool(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_primitive_list_type_bool_twin_normal(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_bool_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_list_bool,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeBoolTwinNormalConstMeta,
@@ -1038,16 +1217,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveListTypeBoolTwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveListTypeBoolTwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_list_type_bool_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<Float32List> examplePrimitiveListTypeF32TwinNormal({required Float32List arg, dynamic hint}) {
+  Future<Float32List> examplePrimitiveListTypeF32TwinNormal(
+      {required Float32List arg, dynamic hint}) {
     var arg0 = api2wire_list_prim_f_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_primitive_list_type_f32_twin_normal(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_f32_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_list_prim_f_32,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeF32TwinNormalConstMeta,
@@ -1057,16 +1239,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveListTypeF32TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveListTypeF32TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_list_type_f32_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<Float64List> examplePrimitiveListTypeF64TwinNormal({required Float64List arg, dynamic hint}) {
+  Future<Float64List> examplePrimitiveListTypeF64TwinNormal(
+      {required Float64List arg, dynamic hint}) {
     var arg0 = api2wire_list_prim_f_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_primitive_list_type_f64_twin_normal(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_f64_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_list_prim_f_64,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeF64TwinNormalConstMeta,
@@ -1076,16 +1261,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveListTypeF64TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveListTypeF64TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_list_type_f64_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<Int16List> examplePrimitiveListTypeI16TwinNormal({required Int16List arg, dynamic hint}) {
+  Future<Int16List> examplePrimitiveListTypeI16TwinNormal(
+      {required Int16List arg, dynamic hint}) {
     var arg0 = api2wire_list_prim_i_16(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_primitive_list_type_i16_twin_normal(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_i16_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_list_prim_i_16,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeI16TwinNormalConstMeta,
@@ -1095,16 +1283,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveListTypeI16TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveListTypeI16TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_list_type_i16_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<Int32List> examplePrimitiveListTypeI32TwinNormal({required Int32List arg, dynamic hint}) {
+  Future<Int32List> examplePrimitiveListTypeI32TwinNormal(
+      {required Int32List arg, dynamic hint}) {
     var arg0 = api2wire_list_prim_i_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_primitive_list_type_i32_twin_normal(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_i32_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_list_prim_i_32,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeI32TwinNormalConstMeta,
@@ -1114,16 +1305,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveListTypeI32TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveListTypeI32TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_list_type_i32_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<Int64List> examplePrimitiveListTypeI64TwinNormal({required Int64List arg, dynamic hint}) {
+  Future<Int64List> examplePrimitiveListTypeI64TwinNormal(
+      {required Int64List arg, dynamic hint}) {
     var arg0 = api2wire_list_prim_i_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_primitive_list_type_i64_twin_normal(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_i64_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_list_prim_i_64,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeI64TwinNormalConstMeta,
@@ -1133,16 +1327,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveListTypeI64TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveListTypeI64TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_list_type_i64_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<Int8List> examplePrimitiveListTypeI8TwinNormal({required Int8List arg, dynamic hint}) {
+  Future<Int8List> examplePrimitiveListTypeI8TwinNormal(
+      {required Int8List arg, dynamic hint}) {
     var arg0 = api2wire_list_prim_i_8(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_primitive_list_type_i8_twin_normal(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_i8_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_list_prim_i_8,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeI8TwinNormalConstMeta,
@@ -1152,16 +1349,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveListTypeI8TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveListTypeI8TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_list_type_i8_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<Uint16List> examplePrimitiveListTypeU16TwinNormal({required Uint16List arg, dynamic hint}) {
+  Future<Uint16List> examplePrimitiveListTypeU16TwinNormal(
+      {required Uint16List arg, dynamic hint}) {
     var arg0 = api2wire_list_prim_u_16(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_primitive_list_type_u16_twin_normal(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_u16_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_list_prim_u_16,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeU16TwinNormalConstMeta,
@@ -1171,16 +1371,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveListTypeU16TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveListTypeU16TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_list_type_u16_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<Uint32List> examplePrimitiveListTypeU32TwinNormal({required Uint32List arg, dynamic hint}) {
+  Future<Uint32List> examplePrimitiveListTypeU32TwinNormal(
+      {required Uint32List arg, dynamic hint}) {
     var arg0 = api2wire_list_prim_u_32(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_primitive_list_type_u32_twin_normal(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_u32_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_list_prim_u_32,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeU32TwinNormalConstMeta,
@@ -1190,16 +1393,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveListTypeU32TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveListTypeU32TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_list_type_u32_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<Uint64List> examplePrimitiveListTypeU64TwinNormal({required Uint64List arg, dynamic hint}) {
+  Future<Uint64List> examplePrimitiveListTypeU64TwinNormal(
+      {required Uint64List arg, dynamic hint}) {
     var arg0 = api2wire_list_prim_u_64(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_primitive_list_type_u64_twin_normal(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_u64_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_list_prim_u_64,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeU64TwinNormalConstMeta,
@@ -1209,16 +1415,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveListTypeU64TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveListTypeU64TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_list_type_u64_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  Future<Uint8List> examplePrimitiveListTypeU8TwinNormal({required Uint8List arg, dynamic hint}) {
+  Future<Uint8List> examplePrimitiveListTypeU8TwinNormal(
+      {required Uint8List arg, dynamic hint}) {
     var arg0 = api2wire_list_prim_u_8(arg);
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_example_primitive_list_type_u8_twin_normal(port_, arg0),
+      callFfi: (port_) =>
+          wire.wire_example_primitive_list_type_u8_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_list_prim_u_8,
       parseErrorData: null,
       constMeta: kExamplePrimitiveListTypeU8TwinNormalConstMeta,
@@ -1228,13 +1437,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveListTypeU8TwinNormalConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveListTypeU8TwinNormalConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_list_type_u8_twin_normal",
         argNames: ["arg"],
       );
 
   @override
-  List<bool> examplePrimitiveListTypeBoolTwinSync({required List<bool> arg, dynamic hint}) {
+  List<bool> examplePrimitiveListTypeBoolTwinSync(
+      {required List<bool> arg, dynamic hint}) {
     var arg0 = api2wire_list_bool(arg);
     return handler.executeSync(SyncTask(
       callFfi: () => wire.wire_example_primitive_list_type_bool_twin_sync(arg0),
@@ -1247,13 +1458,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveListTypeBoolTwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveListTypeBoolTwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_list_type_bool_twin_sync",
         argNames: ["arg"],
       );
 
   @override
-  Float32List examplePrimitiveListTypeF32TwinSync({required Float32List arg, dynamic hint}) {
+  Float32List examplePrimitiveListTypeF32TwinSync(
+      {required Float32List arg, dynamic hint}) {
     var arg0 = api2wire_list_prim_f_32(arg);
     return handler.executeSync(SyncTask(
       callFfi: () => wire.wire_example_primitive_list_type_f32_twin_sync(arg0),
@@ -1266,13 +1479,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveListTypeF32TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveListTypeF32TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_list_type_f32_twin_sync",
         argNames: ["arg"],
       );
 
   @override
-  Float64List examplePrimitiveListTypeF64TwinSync({required Float64List arg, dynamic hint}) {
+  Float64List examplePrimitiveListTypeF64TwinSync(
+      {required Float64List arg, dynamic hint}) {
     var arg0 = api2wire_list_prim_f_64(arg);
     return handler.executeSync(SyncTask(
       callFfi: () => wire.wire_example_primitive_list_type_f64_twin_sync(arg0),
@@ -1285,13 +1500,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveListTypeF64TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveListTypeF64TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_list_type_f64_twin_sync",
         argNames: ["arg"],
       );
 
   @override
-  Int16List examplePrimitiveListTypeI16TwinSync({required Int16List arg, dynamic hint}) {
+  Int16List examplePrimitiveListTypeI16TwinSync(
+      {required Int16List arg, dynamic hint}) {
     var arg0 = api2wire_list_prim_i_16(arg);
     return handler.executeSync(SyncTask(
       callFfi: () => wire.wire_example_primitive_list_type_i16_twin_sync(arg0),
@@ -1304,13 +1521,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveListTypeI16TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveListTypeI16TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_list_type_i16_twin_sync",
         argNames: ["arg"],
       );
 
   @override
-  Int32List examplePrimitiveListTypeI32TwinSync({required Int32List arg, dynamic hint}) {
+  Int32List examplePrimitiveListTypeI32TwinSync(
+      {required Int32List arg, dynamic hint}) {
     var arg0 = api2wire_list_prim_i_32(arg);
     return handler.executeSync(SyncTask(
       callFfi: () => wire.wire_example_primitive_list_type_i32_twin_sync(arg0),
@@ -1323,13 +1542,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveListTypeI32TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveListTypeI32TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_list_type_i32_twin_sync",
         argNames: ["arg"],
       );
 
   @override
-  Int64List examplePrimitiveListTypeI64TwinSync({required Int64List arg, dynamic hint}) {
+  Int64List examplePrimitiveListTypeI64TwinSync(
+      {required Int64List arg, dynamic hint}) {
     var arg0 = api2wire_list_prim_i_64(arg);
     return handler.executeSync(SyncTask(
       callFfi: () => wire.wire_example_primitive_list_type_i64_twin_sync(arg0),
@@ -1342,13 +1563,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveListTypeI64TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveListTypeI64TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_list_type_i64_twin_sync",
         argNames: ["arg"],
       );
 
   @override
-  Int8List examplePrimitiveListTypeI8TwinSync({required Int8List arg, dynamic hint}) {
+  Int8List examplePrimitiveListTypeI8TwinSync(
+      {required Int8List arg, dynamic hint}) {
     var arg0 = api2wire_list_prim_i_8(arg);
     return handler.executeSync(SyncTask(
       callFfi: () => wire.wire_example_primitive_list_type_i8_twin_sync(arg0),
@@ -1361,13 +1584,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveListTypeI8TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveListTypeI8TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_list_type_i8_twin_sync",
         argNames: ["arg"],
       );
 
   @override
-  Uint16List examplePrimitiveListTypeU16TwinSync({required Uint16List arg, dynamic hint}) {
+  Uint16List examplePrimitiveListTypeU16TwinSync(
+      {required Uint16List arg, dynamic hint}) {
     var arg0 = api2wire_list_prim_u_16(arg);
     return handler.executeSync(SyncTask(
       callFfi: () => wire.wire_example_primitive_list_type_u16_twin_sync(arg0),
@@ -1380,13 +1605,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveListTypeU16TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveListTypeU16TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_list_type_u16_twin_sync",
         argNames: ["arg"],
       );
 
   @override
-  Uint32List examplePrimitiveListTypeU32TwinSync({required Uint32List arg, dynamic hint}) {
+  Uint32List examplePrimitiveListTypeU32TwinSync(
+      {required Uint32List arg, dynamic hint}) {
     var arg0 = api2wire_list_prim_u_32(arg);
     return handler.executeSync(SyncTask(
       callFfi: () => wire.wire_example_primitive_list_type_u32_twin_sync(arg0),
@@ -1399,13 +1626,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveListTypeU32TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveListTypeU32TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_list_type_u32_twin_sync",
         argNames: ["arg"],
       );
 
   @override
-  Uint64List examplePrimitiveListTypeU64TwinSync({required Uint64List arg, dynamic hint}) {
+  Uint64List examplePrimitiveListTypeU64TwinSync(
+      {required Uint64List arg, dynamic hint}) {
     var arg0 = api2wire_list_prim_u_64(arg);
     return handler.executeSync(SyncTask(
       callFfi: () => wire.wire_example_primitive_list_type_u64_twin_sync(arg0),
@@ -1418,13 +1647,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveListTypeU64TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveListTypeU64TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_list_type_u64_twin_sync",
         argNames: ["arg"],
       );
 
   @override
-  Uint8List examplePrimitiveListTypeU8TwinSync({required Uint8List arg, dynamic hint}) {
+  Uint8List examplePrimitiveListTypeU8TwinSync(
+      {required Uint8List arg, dynamic hint}) {
     var arg0 = api2wire_list_prim_u_8(arg);
     return handler.executeSync(SyncTask(
       callFfi: () => wire.wire_example_primitive_list_type_u8_twin_sync(arg0),
@@ -1437,7 +1668,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveListTypeU8TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveListTypeU8TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_list_type_u8_twin_sync",
         argNames: ["arg"],
       );
@@ -1456,7 +1688,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveTypeBoolTwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveTypeBoolTwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_type_bool_twin_sync",
         argNames: ["arg"],
       );
@@ -1475,7 +1708,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveTypeF32TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveTypeF32TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_type_f32_twin_sync",
         argNames: ["arg"],
       );
@@ -1494,7 +1728,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveTypeF64TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveTypeF64TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_type_f64_twin_sync",
         argNames: ["arg"],
       );
@@ -1513,7 +1748,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveTypeI16TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveTypeI16TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_type_i16_twin_sync",
         argNames: ["arg"],
       );
@@ -1532,7 +1768,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveTypeI32TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveTypeI32TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_type_i32_twin_sync",
         argNames: ["arg"],
       );
@@ -1551,7 +1788,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveTypeI64TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveTypeI64TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_type_i64_twin_sync",
         argNames: ["arg"],
       );
@@ -1570,7 +1808,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveTypeI8TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveTypeI8TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_type_i8_twin_sync",
         argNames: ["arg"],
       );
@@ -1589,7 +1828,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveTypeU16TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveTypeU16TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_type_u16_twin_sync",
         argNames: ["arg"],
       );
@@ -1608,7 +1848,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveTypeU32TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveTypeU32TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_type_u32_twin_sync",
         argNames: ["arg"],
       );
@@ -1627,7 +1868,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveTypeU64TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveTypeU64TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_type_u64_twin_sync",
         argNames: ["arg"],
       );
@@ -1646,7 +1888,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     ));
   }
 
-  TaskConstMeta get kExamplePrimitiveTypeU8TwinSyncConstMeta => const TaskConstMeta(
+  TaskConstMeta get kExamplePrimitiveTypeU8TwinSyncConstMeta =>
+      const TaskConstMeta(
         debugName: "example_primitive_type_u8_twin_sync",
         argNames: ["arg"],
       );
@@ -1672,7 +1915,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<int> simpleAdderTwinNormal({required int a, required int b, dynamic hint}) {
+  Future<int> simpleAdderTwinNormal(
+      {required int a, required int b, dynamic hint}) {
     var arg0 = api2wire_i_32(a);
     var arg1 = api2wire_i_32(b);
     return handler.executeNormal(NormalTask(
