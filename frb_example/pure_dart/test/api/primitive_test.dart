@@ -7,91 +7,94 @@ import 'package:test/test.dart';
 
 Future<void> main() async {
   await RustLib.init();
-  test('primitive type i8 as argument and return type', () async {
-    expect(await examplePrimitiveTypeI8(arg: 0), 0);
-  });
-  test('primitive type i8 as argument and return type', () async {
-    expect(await examplePrimitiveTypeI8(arg: -128), -128);
-  });
-  test('primitive type i8 as argument and return type', () async {
-    expect(await examplePrimitiveTypeI8(arg: 127), 127);
-  });
-  test('primitive type i16 as argument and return type', () async {
-    expect(await examplePrimitiveTypeI16(arg: 0), 0);
-  });
-  test('primitive type i16 as argument and return type', () async {
-    expect(await examplePrimitiveTypeI16(arg: -32768), -32768);
-  });
-  test('primitive type i16 as argument and return type', () async {
-    expect(await examplePrimitiveTypeI16(arg: 32767), 32767);
-  });
-  test('primitive type i32 as argument and return type', () async {
-    expect(await examplePrimitiveTypeI32(arg: 0), 0);
-  });
-  test('primitive type i32 as argument and return type', () async {
-    expect(await examplePrimitiveTypeI32(arg: -2147483648), -2147483648);
-  });
-  test('primitive type i32 as argument and return type', () async {
-    expect(await examplePrimitiveTypeI32(arg: 2147483647), 2147483647);
-  });
-  test('primitive type i64 as argument and return type', () async {
-    expect(await examplePrimitiveTypeI64(arg: 0), 0);
-  });
-  test('primitive type i64 as argument and return type', () async {
-    expect(await examplePrimitiveTypeI64(arg: -9223372036854775808),
-        -9223372036854775808);
-  });
-  test('primitive type i64 as argument and return type', () async {
-    expect(await examplePrimitiveTypeI64(arg: 9223372036854775807.24),
-        9223372036854775807.24);
-  });
-  test('primitive type u8 as argument and return type', () async {
-    expect(await examplePrimitiveTypeU8(arg: 0), 0);
-  });
-  test('primitive type u8 as argument and return type', () async {
-    expect(await examplePrimitiveTypeU8(arg: 255), 255);
-  });
-  test('primitive type u16 as argument and return type', () async {
-    expect(await examplePrimitiveTypeU16(arg: 0), 0);
-  });
-  test('primitive type u16 as argument and return type', () async {
-    expect(await examplePrimitiveTypeU16(arg: 65535), 65535);
-  });
-  test('primitive type u32 as argument and return type', () async {
-    expect(await examplePrimitiveTypeU32(arg: 0), 0);
-  });
-  test('primitive type u32 as argument and return type', () async {
-    expect(await examplePrimitiveTypeU32(arg: 4294967295), 4294967295);
-  });
-  test('primitive type u64 as argument and return type', () async {
-    expect(await examplePrimitiveTypeU64(arg: 0), 0);
-  });
-  test('primitive type u64 as argument and return type', () async {
-    expect(await examplePrimitiveTypeU64(arg: 18446744073709551615),
-        18446744073709551615);
-  });
-  test('primitive type f32 as argument and return type', () async {
-    expect(await examplePrimitiveTypeF32(arg: 0), 0);
-  });
-  test('primitive type f32 as argument and return type', () async {
-    expect(await examplePrimitiveTypeF32(arg: -42.5), -42.5);
-  });
-  test('primitive type f32 as argument and return type', () async {
-    expect(await examplePrimitiveTypeF32(arg: 123456), 123456);
-  });
-  test('primitive type f64 as argument and return type', () async {
-    expect(await examplePrimitiveTypeF64(arg: 0), 0);
-  });
-  test('primitive type f64 as argument and return type', () async {
-    expect(await examplePrimitiveTypeF64(arg: -42.5), -42.5);
-  });
-  test('primitive type f64 as argument and return type', () async {
-    expect(await examplePrimitiveTypeF64(arg: 123456), 123456);
-  });
-  test('primitive type bool as argument and return type', () async {
-    expect(await examplePrimitiveTypeBool(arg: false), false);
-  });
-  test('primitive type bool as argument and return type', () async {
-    expect(await examplePrimitiveTypeBool(arg: true), true);
+
+  group('primitive type as argument and return type', () {
+    test('type=i8 arg=0', () async {
+      expect(await examplePrimitiveTypeI8(arg: 0), 0);
+    });
+    test('type=i8 arg=-128', () async {
+      expect(await examplePrimitiveTypeI8(arg: -128), -128);
+    });
+    test('type=i8 arg=127', () async {
+      expect(await examplePrimitiveTypeI8(arg: 127), 127);
+    });
+    test('type=i16 arg=0', () async {
+      expect(await examplePrimitiveTypeI16(arg: 0), 0);
+    });
+    test('type=i16 arg=-32768', () async {
+      expect(await examplePrimitiveTypeI16(arg: -32768), -32768);
+    });
+    test('type=i16 arg=32767', () async {
+      expect(await examplePrimitiveTypeI16(arg: 32767), 32767);
+    });
+    test('type=i32 arg=0', () async {
+      expect(await examplePrimitiveTypeI32(arg: 0), 0);
+    });
+    test('type=i32 arg=-2147483648', () async {
+      expect(await examplePrimitiveTypeI32(arg: -2147483648), -2147483648);
+    });
+    test('type=i32 arg=2147483647', () async {
+      expect(await examplePrimitiveTypeI32(arg: 2147483647), 2147483647);
+    });
+    test('type=i64 arg=0', () async {
+      expect(await examplePrimitiveTypeI64(arg: 0), 0);
+    });
+    test('type=i64 arg=-9223372036854775808', () async {
+      expect(await examplePrimitiveTypeI64(arg: -9223372036854775808),
+          -9223372036854775808);
+    });
+    test('type=i64 arg=9223372036854775807.24', () async {
+      expect(await examplePrimitiveTypeI64(arg: 9223372036854775807.24),
+          9223372036854775807.24);
+    });
+    test('type=u8 arg=0', () async {
+      expect(await examplePrimitiveTypeU8(arg: 0), 0);
+    });
+    test('type=u8 arg=255', () async {
+      expect(await examplePrimitiveTypeU8(arg: 255), 255);
+    });
+    test('type=u16 arg=0', () async {
+      expect(await examplePrimitiveTypeU16(arg: 0), 0);
+    });
+    test('type=u16 arg=65535', () async {
+      expect(await examplePrimitiveTypeU16(arg: 65535), 65535);
+    });
+    test('type=u32 arg=0', () async {
+      expect(await examplePrimitiveTypeU32(arg: 0), 0);
+    });
+    test('type=u32 arg=4294967295', () async {
+      expect(await examplePrimitiveTypeU32(arg: 4294967295), 4294967295);
+    });
+    test('type=u64 arg=0', () async {
+      expect(await examplePrimitiveTypeU64(arg: 0), 0);
+    });
+    test('type=u64 arg=18446744073709551615', () async {
+      expect(await examplePrimitiveTypeU64(arg: 18446744073709551615),
+          18446744073709551615);
+    });
+    test('type=f32 arg=0', () async {
+      expect(await examplePrimitiveTypeF32(arg: 0), 0);
+    });
+    test('type=f32 arg=-42.5', () async {
+      expect(await examplePrimitiveTypeF32(arg: -42.5), -42.5);
+    });
+    test('type=f32 arg=123456', () async {
+      expect(await examplePrimitiveTypeF32(arg: 123456), 123456);
+    });
+    test('type=f64 arg=0', () async {
+      expect(await examplePrimitiveTypeF64(arg: 0), 0);
+    });
+    test('type=f64 arg=-42.5', () async {
+      expect(await examplePrimitiveTypeF64(arg: -42.5), -42.5);
+    });
+    test('type=f64 arg=123456', () async {
+      expect(await examplePrimitiveTypeF64(arg: 123456), 123456);
+    });
+    test('type=bool arg=false', () async {
+      expect(await examplePrimitiveTypeBool(arg: false), false);
+    });
+    test('type=bool arg=true', () async {
+      expect(await examplePrimitiveTypeBool(arg: true), true);
+    });
   });
 }

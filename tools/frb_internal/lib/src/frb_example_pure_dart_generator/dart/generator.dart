@@ -20,18 +20,23 @@ import 'package:test/test.dart';
 
 Future<void> main() async {
   await RustLib.init();
+  
+  group('primitive type as argument and return type', () {
   ''';
 
   for (final ty in kPrimitiveTypes) {
     for (final arg in ty.interestValues) {
       ans += '''
-        test('primitive type ${ty.name} as argument and return type', () async {
+        test('type=${ty.name} arg=$arg', () async {
           expect(await examplePrimitiveType${ReCase(ty.name).pascalCase}(arg: $arg), $arg);
         });
       ''';
     }
   }
 
-  ans += '}';
+  ans += '''
+  });
+}
+  ''';
   return ans;
 }
