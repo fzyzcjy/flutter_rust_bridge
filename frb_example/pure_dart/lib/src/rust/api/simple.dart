@@ -2,5 +2,6 @@
 
 import '../frb_generated.dart';
 
-Future<int> simpleAdder({required int a, required int b, dynamic hint}) =>
-    RustLib.instance.api.simpleAdder(a: a, b: b, hint: hint);
+Future<int> simpleAdderTwinNormal(
+        {required int a, required int b, dynamic hint}) =>
+    RustLib.instance.api.simpleAdderTwinNormal(a: a, b: b, hint: hint);
