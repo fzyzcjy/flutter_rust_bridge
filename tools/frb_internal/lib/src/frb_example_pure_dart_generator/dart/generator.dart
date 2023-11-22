@@ -38,7 +38,7 @@ String _generateTestApiOptionalPrimitive() {
       ''';
     }
   }
-  return _generateTestTemplate(ans, importName: 'primitive');
+  return _generateTestTemplate(ans, importName: 'optional_primitive');
 }
 
 String _generateTestTemplate(String body, {required String importName}) {
