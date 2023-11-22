@@ -63,7 +63,7 @@ class _Duplicator {
       for (final mode in DuplicatorMode.values) {
         final outputText = _computePrelude(fileName) + generator.generateDuplicateCode(file.readAsStringSync(), mode);
         final targetPath = file.uri
-            .resolve('pseudo_manual')
+            .resolve('pseudo_manual/')
             .resolve('${generator.generateDuplicateFileStem(fileStem, mode)}.${generator.extension}')
             .toFilePath();
         File(targetPath).writeAsStringSync(outputText);
