@@ -10,6 +10,7 @@ import 'api/pseudo_manual/primitive_list_twin_sync.dart';
 import 'api/pseudo_manual/primitive_twin_sync.dart';
 import 'api/pseudo_manual/simple_twin_sync.dart';
 import 'api/simple.dart';
+import 'api/structure.dart';
 import 'frb_generated.io.dart'
     if (dart.library.html) 'frb_generated.web.dart.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
@@ -255,6 +256,9 @@ abstract class RustLibApi extends BaseApi {
 
   Future<int> simpleAdderTwinNormal(
       {required int a, required int b, dynamic hint});
+
+  Future<StructWithZeroField> funcStructWithZeroFieldTwinNormal(
+      {required StructWithZeroField arg, dynamic hint});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -1934,6 +1938,28 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         debugName: "simple_adder_twin_normal",
         argNames: ["a", "b"],
       );
+
+  @override
+  Future<StructWithZeroField> funcStructWithZeroFieldTwinNormal(
+      {required StructWithZeroField arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_struct_with_zero_field(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_func_struct_with_zero_field_twin_normal(port_, arg0),
+      parseSuccessData: _wire2api_struct_with_zero_field,
+      parseErrorData: null,
+      constMeta: kFuncStructWithZeroFieldTwinNormalConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncStructWithZeroFieldTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_struct_with_zero_field_twin_normal",
+        argNames: ["arg"],
+      );
 }
 
 // Section: impl_wire2api
@@ -2096,6 +2122,13 @@ BigInt? _wire2api_opt_box_autoadd_u_64(dynamic raw) {
 
 int? _wire2api_opt_box_autoadd_u_8(dynamic raw) {
   return raw == null ? null : _wire2api_box_autoadd_u_8(raw);
+}
+
+StructWithZeroField _wire2api_struct_with_zero_field(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 0)
+    throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
+  return StructWithZeroField();
 }
 
 int _wire2api_u_16(dynamic raw) {

@@ -20,6 +20,7 @@
 
 use crate::api::comment::StructWithCommentsTwinNormal;
 use crate::api::comment::*;
+use crate::api::enumeration::*;
 use crate::api::exception::*;
 use crate::api::misc_type::*;
 use crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync;
@@ -34,6 +35,8 @@ use crate::api::pseudo_manual::primitive_list_twin_sync::*;
 use crate::api::pseudo_manual::primitive_twin_sync::*;
 use crate::api::pseudo_manual::simple_twin_sync::*;
 use crate::api::simple::*;
+use crate::api::structure::StructWithZeroField;
+use crate::api::structure::*;
 use core::panic::UnwindSafe;
 use flutter_rust_bridge::rust2dart::IntoIntoDart;
 use flutter_rust_bridge::*;
@@ -1296,6 +1299,24 @@ fn wire_simple_adder_twin_normal_impl(
         },
     )
 }
+fn wire_func_struct_with_zero_field_twin_normal_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<StructWithZeroField> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, StructWithZeroField, _>(
+        WrapInfo {
+            debug_name: "func_struct_with_zero_field_twin_normal",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(func_struct_with_zero_field_twin_normal(api_arg))
+            }
+        },
+    )
+}
 
 // Section: executor
 
@@ -1370,6 +1391,20 @@ impl Wire2Api<u64> for u64 {
 impl Wire2Api<u8> for u8 {
     fn wire2api(self) -> u8 {
         self
+    }
+}
+
+// Section: impl_into_dart
+
+impl support::IntoDart for StructWithZeroField {
+    fn into_dart(self) -> support::DartAbi {
+        Vec::<u8>::new().into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for StructWithZeroField {}
+impl rust2dart::IntoIntoDart<StructWithZeroField> for StructWithZeroField {
+    fn into_into_dart(self) -> StructWithZeroField {
+        StructWithZeroField(self)
     }
 }
 

@@ -97,6 +97,18 @@ impl Wire2Api<StructWithCommentsTwinSync> for JsValue {
         }
     }
 }
+impl Wire2Api<StructWithZeroField> for JsValue {
+    fn wire2api(self) -> StructWithZeroField {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            0,
+            "Expected 0 elements, got {}",
+            self_.length()
+        );
+        StructWithZeroField {}
+    }
+}
 impl Wire2Api<bool> for JsValue {
     fn wire2api(self) -> bool {
         self.is_truthy()
@@ -606,4 +618,9 @@ pub fn wire_simple_adder_twin_sync(a: i32, b: i32) -> support::WireSyncReturn {
 #[wasm_bindgen]
 pub fn wire_simple_adder_twin_normal(port_: MessagePort, a: i32, b: i32) {
     wire_simple_adder_twin_normal_impl(port_, a, b)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_struct_with_zero_field_twin_normal(port_: MessagePort, arg: JsValue) {
+    wire_func_struct_with_zero_field_twin_normal_impl(port_, arg)
 }

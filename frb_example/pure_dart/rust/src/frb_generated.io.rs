@@ -49,6 +49,12 @@ impl Wire2Api<StructWithCommentsTwinSync> for *mut wire_struct_with_comments_twi
         Wire2Api::<StructWithCommentsTwinSync>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<StructWithZeroField> for *mut wire_struct_with_zero_field {
+    fn wire2api(self) -> StructWithZeroField {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<StructWithZeroField>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<u16> for *mut u16 {
     fn wire2api(self) -> u16 {
         unsafe { *support::box_from_leak_ptr(self) }
@@ -172,6 +178,11 @@ impl Wire2Api<StructWithCommentsTwinSync> for wire_struct_with_comments_twin_syn
         }
     }
 }
+impl Wire2Api<StructWithZeroField> for wire_struct_with_zero_field {
+    fn wire2api(self) -> StructWithZeroField {
+        StructWithZeroField {}
+    }
+}
 
 // Section: wire2api_class
 
@@ -264,6 +275,10 @@ pub struct wire_struct_with_comments_twin_sync {
     field_with_comments: i32,
 }
 
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_struct_with_zero_field {}
+
 // Section: impl_new_with_nullptr
 
 pub trait NewWithNullPtr {
@@ -295,6 +310,16 @@ impl NewWithNullPtr for wire_struct_with_comments_twin_sync {
     }
 }
 impl Default for wire_struct_with_comments_twin_sync {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_struct_with_zero_field {
+    fn new_with_null_ptr() -> Self {
+        Self {}
+    }
+}
+impl Default for wire_struct_with_zero_field {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -780,6 +805,14 @@ pub extern "C" fn wire_simple_adder_twin_normal(port_: i64, a: i32, b: i32) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_func_struct_with_zero_field_twin_normal(
+    port_: i64,
+    arg: *mut wire_struct_with_zero_field,
+) {
+    wire_func_struct_with_zero_field_twin_normal_impl(port_, arg)
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_bool(value: bool) -> *mut bool {
     support::new_leak_box_ptr(value)
 }
@@ -824,6 +857,11 @@ pub extern "C" fn new_box_autoadd_struct_with_comments_twin_normal(
 pub extern "C" fn new_box_autoadd_struct_with_comments_twin_sync(
 ) -> *mut wire_struct_with_comments_twin_sync {
     support::new_leak_box_ptr(wire_struct_with_comments_twin_sync::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_struct_with_zero_field() -> *mut wire_struct_with_zero_field {
+    support::new_leak_box_ptr(wire_struct_with_zero_field::new_with_null_ptr())
 }
 
 #[no_mangle]

@@ -10,6 +10,7 @@ import 'api/pseudo_manual/primitive_list_twin_sync.dart';
 import 'api/pseudo_manual/primitive_twin_sync.dart';
 import 'api/pseudo_manual/simple_twin_sync.dart';
 import 'api/simple.dart';
+import 'api/structure.dart';
 import 'dart:ffi' as ffi;
 import 'frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
@@ -71,6 +72,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
           StructWithCommentsTwinSync raw) {
     final ptr = wire.new_box_autoadd_struct_with_comments_twin_sync();
     _api_fill_to_wire_struct_with_comments_twin_sync(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_struct_with_zero_field>
+      api2wire_box_autoadd_struct_with_zero_field(StructWithZeroField raw) {
+    final ptr = wire.new_box_autoadd_struct_with_zero_field();
+
     return ptr;
   }
 
@@ -1535,6 +1544,25 @@ class RustLibWire implements BaseWire {
   late final _wire_simple_adder_twin_normal = _wire_simple_adder_twin_normalPtr
       .asFunction<void Function(int, int, int)>();
 
+  void wire_func_struct_with_zero_field_twin_normal(
+    int port_,
+    ffi.Pointer<wire_struct_with_zero_field> arg,
+  ) {
+    return _wire_func_struct_with_zero_field_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_struct_with_zero_field_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_struct_with_zero_field>)>>(
+      'wire_func_struct_with_zero_field_twin_normal');
+  late final _wire_func_struct_with_zero_field_twin_normal =
+      _wire_func_struct_with_zero_field_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_struct_with_zero_field>)>();
+
   ffi.Pointer<ffi.Bool> new_box_autoadd_bool(
     bool value,
   ) {
@@ -1658,6 +1686,19 @@ class RustLibWire implements BaseWire {
   late final _new_box_autoadd_struct_with_comments_twin_sync =
       _new_box_autoadd_struct_with_comments_twin_syncPtr.asFunction<
           ffi.Pointer<wire_struct_with_comments_twin_sync> Function()>();
+
+  ffi.Pointer<wire_struct_with_zero_field>
+      new_box_autoadd_struct_with_zero_field() {
+    return _new_box_autoadd_struct_with_zero_field();
+  }
+
+  late final _new_box_autoadd_struct_with_zero_fieldPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Pointer<wire_struct_with_zero_field> Function()>>(
+      'new_box_autoadd_struct_with_zero_field');
+  late final _new_box_autoadd_struct_with_zero_field =
+      _new_box_autoadd_struct_with_zero_fieldPtr
+          .asFunction<ffi.Pointer<wire_struct_with_zero_field> Function()>();
 
   ffi.Pointer<ffi.Uint16> new_box_autoadd_u_16(
     int value,
@@ -1977,6 +2018,8 @@ final class wire_list_prim_u_8 extends ffi.Struct {
   external int len;
 }
 
+final class wire_struct_with_zero_field extends ffi.Opaque {}
+
 // Section: api_fill_to_wire_funcs
 
 void _api_fill_to_wire_box_autoadd_struct_with_comments_twin_normal(
@@ -2002,3 +2045,6 @@ void _api_fill_to_wire_struct_with_comments_twin_sync(
     wire_struct_with_comments_twin_sync wireObj) {
   wireObj.field_with_comments = api2wire_i_32(apiObj.fieldWithComments);
 }
+
+void _api_fill_to_wire_struct_with_zero_field(
+    StructWithZeroField apiObj, wire_struct_with_zero_field wireObj) {}

@@ -67,6 +67,10 @@ typedef struct wire_list_prim_u_8 {
   int32_t len;
 } wire_list_prim_u_8;
 
+typedef struct wire_struct_with_zero_field {
+
+} wire_struct_with_zero_field;
+
 void wire_StructWithCommentsTwinNormal_instance_method_twin_normal(int64_t port_,
                                                                    struct wire_struct_with_comments_twin_normal *that);
 
@@ -232,6 +236,9 @@ WireSyncReturn wire_simple_adder_twin_sync(int32_t a, int32_t b);
 
 void wire_simple_adder_twin_normal(int64_t port_, int32_t a, int32_t b);
 
+void wire_func_struct_with_zero_field_twin_normal(int64_t port_,
+                                                  struct wire_struct_with_zero_field *arg);
+
 bool *new_box_autoadd_bool(bool value);
 
 float *new_box_autoadd_f_32(float value);
@@ -249,6 +256,8 @@ int8_t *new_box_autoadd_i_8(int8_t value);
 struct wire_struct_with_comments_twin_normal *new_box_autoadd_struct_with_comments_twin_normal(void);
 
 struct wire_struct_with_comments_twin_sync *new_box_autoadd_struct_with_comments_twin_sync(void);
+
+struct wire_struct_with_zero_field *new_box_autoadd_struct_with_zero_field(void);
 
 uint16_t *new_box_autoadd_u_16(uint16_t value);
 
@@ -292,6 +301,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_i_8);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_comments_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_comments_twin_sync);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_zero_field);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_u_16);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_u_32);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_u_64);
@@ -379,6 +389,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u64_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u8_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_primitive_type_u8_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_func_struct_with_zero_field_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_function_with_comments_slash_star_star_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_function_with_comments_slash_star_star_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_function_with_comments_triple_slash_multi_line_twin_normal);

@@ -10,6 +10,7 @@ import 'api/pseudo_manual/primitive_list_twin_sync.dart';
 import 'api/pseudo_manual/primitive_twin_sync.dart';
 import 'api/pseudo_manual/simple_twin_sync.dart';
 import 'api/simple.dart';
+import 'api/structure.dart';
 import 'frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
 
@@ -65,6 +66,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> api2wire_box_autoadd_struct_with_comments_twin_sync(
       StructWithCommentsTwinSync raw) {
     return api2wire_struct_with_comments_twin_sync(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_struct_with_zero_field(
+      StructWithZeroField raw) {
+    return api2wire_struct_with_zero_field(raw);
   }
 
   @protected
@@ -212,6 +219,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   List<dynamic> api2wire_struct_with_comments_twin_sync(
       StructWithCommentsTwinSync raw) {
     return [api2wire_i_32(raw.fieldWithComments)];
+  }
+
+  @protected
+  List<dynamic> api2wire_struct_with_zero_field(StructWithZeroField raw) {
+    return [];
   }
 
   @protected
