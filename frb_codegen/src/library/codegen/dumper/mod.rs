@@ -29,6 +29,7 @@ impl Dumper<'_> {
     fn dump<T: Serialize>(&self, name: &str, data: &T) -> anyhow::Result<()> {
         let path = self.0.dump_directory.join(name);
         info!("Dumping {name} into {path:?}");
-        create_dir_all_and_write(path, serde_json::to_string(data)?)
+        let str = serde_json::to_string_pretty(data)?;
+        create_dir_all_and_write(path, str)
     }
 }
