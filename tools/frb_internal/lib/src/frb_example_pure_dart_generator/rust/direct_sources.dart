@@ -12,8 +12,7 @@ Map<String, String> generateRustDirectSources() {
 String _generatePrimitive() {
   final builder = RustFileBuilder();
   for (final ty in kPrimitiveTypes) {
-    final name = ty.name;
-    builder.body += 'pub fn example_primitive_type_${name}_twin_normal(arg: $name) -> $name { arg }\n';
+    builder.addIdentityFunction(ty.name, 'example_primitive_type_${ty.name}');
   }
   return builder.toString();
 }
@@ -21,9 +20,7 @@ String _generatePrimitive() {
 String _generatePrimitiveList() {
   final builder = RustFileBuilder();
   for (final ty in kPrimitiveTypes) {
-    final name = ty.name;
-    final listType = 'Vec<$name>';
-    builder.body += 'pub fn example_primitive_list_type_${name}_twin_normal(arg: $listType) -> $listType { arg }\n';
+    builder.addIdentityFunction('Vec<${ty.name}>', 'example_primitive_list_type_${ty.name}');
   }
   return builder.toString();
 }
@@ -31,9 +28,7 @@ String _generatePrimitiveList() {
 String _generateOptionalPrimitive() {
   final builder = RustFileBuilder();
   for (final ty in kPrimitiveTypes) {
-    final name = ty.name;
-    builder.body +=
-        'pub fn example_optional_primitive_type_${name}_twin_normal(arg: Option<$name>) -> Option<$name> { arg }\n';
+    builder.addIdentityFunction('Option<${ty.name}>', 'example_optional_primitive_type_${ty.name}');
   }
   return builder.toString();
 }
