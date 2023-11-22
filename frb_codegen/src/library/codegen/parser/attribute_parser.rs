@@ -38,9 +38,15 @@ impl FrbAttributes {
     }
 
     pub(crate) fn non_final(&self) -> bool {
-        self.0
-            .iter()
-            .any(|item| matches!(item, FrbAttribute::NonFinal))
+        self.any_eq(&FrbAttribute::NonFinal)
+    }
+
+    pub(crate) fn sync(&self) -> bool {
+        self.any_eq(&FrbAttribute::Sync)
+    }
+
+    fn any_eq(&self, target: &FrbAttribute) -> bool {
+        self.0.iter().any(|item| item == target)
     }
 
     pub(crate) fn mirror(&self) -> Vec<Path> {
@@ -71,6 +77,7 @@ mod frb_keyword {
     syn::custom_keyword!(import);
 }
 
+#[derive(Eq, PartialEq)]
 enum FrbAttribute {
     Mirror(FrbAttributeMirror),
     NonFinal,
