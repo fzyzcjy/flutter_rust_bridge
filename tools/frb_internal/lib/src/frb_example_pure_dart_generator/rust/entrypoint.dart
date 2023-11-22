@@ -5,6 +5,6 @@ import 'package:flutter_rust_bridge_internal/src/utils/generator_utils.dart';
 
 Future<void> generateRust({required Uri rustRoot}) async {
   writeCodeFiles(rustRoot, generateRustDirectSources());
-  generateRustDuplicates(dartRoot: dartRoot);
+  generateRustDuplicates(rustRoot: rustRoot);
   await executeRustFormat(workingDirectory: rustRoot.toFilePath());
 }
