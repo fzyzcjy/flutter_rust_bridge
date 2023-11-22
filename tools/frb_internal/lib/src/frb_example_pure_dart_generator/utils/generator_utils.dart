@@ -56,7 +56,7 @@ class _Duplicator {
   _Duplicator(this.generator);
 
   void _generate() {
-    for (final file in Glob('${generator.interestDir.toFilePath()}/**/*.${generator.extension}').listSync()) {
+    for (final file in Glob('${generator.interestDir.toFilePath()}/**.${generator.extension}').listSync()) {
       final fileName = path.basename(file.path);
       final fileStem = path.basenameWithoutExtension(file.path);
       if (file is! File || path.extension(file.path) != '.${generator.extension}') continue;
