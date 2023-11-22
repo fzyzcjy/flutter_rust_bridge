@@ -1,3 +1,4 @@
+import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/rust/builder.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
 import 'package:flutter_rust_bridge_internal/src/utils/generator_utils.dart';
 
@@ -12,21 +13,21 @@ Future<void> generateRust({required Uri rustRoot}) async {
 }
 
 String _generateSrcApiPrimitive() {
-  var ans = '';
+  final builder = RustFileBuilder();
   for (final ty in kPrimitiveTypes) {
     final name = ty.name;
-    ans += 'pub fn example_primitive_type_$name(arg: $name) -> $name { arg }\n';
+    builder.body += 'pub fn example_primitive_type_$name(arg: $name) -> $name { arg }\n';
   }
-  return ans;
+  return builder.toString();
 }
 
 String _generateSrcApiOptionalPrimitive() {
-  var ans = '';
+  final builder = RustFileBuilder();
   for (final ty in kPrimitiveTypes) {
     final name = ty.name;
-    ans += 'pub fn example_optional_primitive_type_$name(arg: Option<$name>) -> Option<$name> { arg }\n';
+    builder.body += 'pub fn example_optional_primitive_type_$name(arg: Option<$name>) -> Option<$name> { arg }\n';
   }
-  return ans;
+  return builder.toString();
 }
 
 class PrimitiveTypeInfo {
