@@ -56,6 +56,7 @@ fn generate_end_api_text(
         "// ignore_for_file: invalid_use_of_internal_member
 
         import '{path_frb_generated}';
+        import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
         {funcs}
 
