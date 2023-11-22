@@ -37,13 +37,17 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
                 Delegate(IrTypeDelegate::Array(array_delegate.clone()))
             }
 
-            ("RustOpaque", Some(Generic([Primitive(IrTypePrimitive::Unit)]))) => RustOpaque(
-                IrTypeRustOpaque::new(TODO, Primitive(IrTypePrimitive::Unit)),
-            ),
-
-            ("RustOpaque", Some(Generic([ty]))) => {
-                RustOpaque(IrTypeRustOpaque::new(TODO, ty.clone()))
+            ("RustOpaque", Some(Generic([Primitive(IrTypePrimitive::Unit)]))) => {
+                RustOpaque(IrTypeRustOpaque::new(
+                    self.context.initiated_namespace.clone(),
+                    Primitive(IrTypePrimitive::Unit),
+                ))
             }
+
+            ("RustOpaque", Some(Generic([ty]))) => RustOpaque(IrTypeRustOpaque::new(
+                self.context.initiated_namespace.clone(),
+                ty.clone(),
+            )),
 
             (
                 "ZeroCopyBuffer",
