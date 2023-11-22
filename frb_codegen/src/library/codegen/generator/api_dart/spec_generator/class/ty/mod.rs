@@ -1,3 +1,4 @@
+use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use enum_dispatch::enum_dispatch;
 
@@ -13,7 +14,7 @@ mod structure_non_freezed;
 
 #[enum_dispatch]
 pub(crate) trait ApiDartGeneratorClassTrait {
-    fn generate_class(&self) -> Option<String> {
+    fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
         None
     }
 }

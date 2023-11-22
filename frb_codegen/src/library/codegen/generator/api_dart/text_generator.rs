@@ -1,3 +1,4 @@
+use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
 use crate::codegen::generator::api_dart::spec_generator::ApiDartOutputSpec;
 use itertools::Itertools;
@@ -15,7 +16,7 @@ pub(super) fn generate(spec: ApiDartOutputSpec) -> anyhow::Result<ApiDartOutputT
     })
 }
 
-fn generate_end_api_text(classes: Vec<String>, funcs: String) -> String {
+fn generate_end_api_text(classes: Vec<ApiDartGeneratedClass>, funcs: String) -> String {
     format!(
         "// ignore_for_file: invalid_use_of_internal_member
 
@@ -26,7 +27,7 @@ fn generate_end_api_text(classes: Vec<String>, funcs: String) -> String {
         {classes}
         ",
         funcs = funcs,
-        classes = classes.join("\n\n"),
+        classes = classes.into_iter().map(|c| c.code).join("\n\n"),
     )
 }
 

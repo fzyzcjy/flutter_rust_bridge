@@ -1,6 +1,7 @@
 use crate::codegen::generator::api_dart::spec_generator::class::field::{
     generate_field_default, generate_field_required_modifier,
 };
+use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_dart_maybe_implements_exception,
 };
@@ -14,7 +15,7 @@ use itertools::Itertools;
 const BACKTRACE_IDENT: &str = "backtrace";
 
 impl<'a> EnumRefApiDartGenerator<'a> {
-    pub(crate) fn generate_mode_complex(&self, src: &IrEnum) -> Option<String> {
+    pub(crate) fn generate_mode_complex(&self, src: &IrEnum) -> Option<ApiDartGeneratedClass> {
         let variants = src
             .variants()
             .iter()
@@ -30,12 +31,14 @@ impl<'a> EnumRefApiDartGenerator<'a> {
         let maybe_implements_exception =
             generate_dart_maybe_implements_exception(self.ir.is_exception);
 
-        Some(format!(
-            "@freezed
-            {sealed} class {name} with _${name} {maybe_implements_exception} {{
-                {variants}
-            }}",
-        ))
+        Some(ApiDartGeneratedClass {
+            code: format!(
+                "@freezed
+                {sealed} class {name} with _${name} {maybe_implements_exception} {{
+                    {variants}
+                }}",
+            ),
+        })
     }
 
     fn generate_mode_complex_variant(&self, variant: &IrVariant) -> String {

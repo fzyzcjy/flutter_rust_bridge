@@ -2,6 +2,7 @@ use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartIntern
 use crate::codegen::generator::api_dart::spec_generator::base::{
     ApiDartGenerator, ApiDartGeneratorContext,
 };
+use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
 use crate::codegen::ir::pack::IrPack;
 use crate::library::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
@@ -16,7 +17,7 @@ pub(crate) mod misc;
 
 pub(crate) struct ApiDartOutputSpec {
     pub funcs: Vec<ApiDartGeneratedFunction>,
-    pub classes: Vec<String>,
+    pub classes: Vec<ApiDartGeneratedClass>,
 }
 
 pub(crate) fn generate(

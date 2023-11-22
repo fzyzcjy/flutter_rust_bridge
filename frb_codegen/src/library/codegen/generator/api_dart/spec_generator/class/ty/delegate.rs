@@ -1,4 +1,5 @@
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
+use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::codegen::ir::ty::delegate::{
     IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegatePrimitiveEnum,
 };
@@ -6,7 +7,7 @@ use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 
 impl<'a> ApiDartGeneratorClassTrait for DelegateApiDartGenerator<'a> {
-    fn generate_class(&self) -> Option<String> {
+    fn generate_class(&self) -> Option<ApiDartGeneratedClass> {
         match &self.ir {
             IrTypeDelegate::PrimitiveEnum(IrTypeDelegatePrimitiveEnum { ir, .. }) => {
                 EnumRefApiDartGenerator::new(ir.clone(), self.context).generate_class()
@@ -17,7 +18,10 @@ impl<'a> ApiDartGeneratorClassTrait for DelegateApiDartGenerator<'a> {
     }
 }
 
-fn generate_array(array: &IrTypeDelegateArray, context: ApiDartGeneratorContext) -> Option<String> {
+fn generate_array(
+    array: &IrTypeDelegateArray,
+    context: ApiDartGeneratorContext,
+) -> Option<ApiDartGeneratedClass> {
     let self_dart_api_type = array.dart_api_type(context);
     let inner_dart_api_type = ApiDartGenerator::new(array.inner(), context).dart_api_type();
     let delegate_dart_api_type =
@@ -34,17 +38,19 @@ fn generate_array(array: &IrTypeDelegateArray, context: ApiDartGeneratorContext)
             ),
         };
 
-    Some(format!(
-        "
-        class {self_dart_api_type} extends NonGrowableListView<{inner_dart_api_type}> {{
-            static const arraySize = {array_length};
-            {self_dart_api_type}({delegate_dart_api_type} inner)
-                : assert(inner.length == arraySize),
-                  super(inner);
-            {self_dart_api_type}.unchecked({delegate_dart_api_type} inner)
-                : super(inner);
-            {dart_init_method}
-          }}
-        "
-    ))
+    Some(ApiDartGeneratedClass {
+        code: format!(
+            "
+            class {self_dart_api_type} extends NonGrowableListView<{inner_dart_api_type}> {{
+                static const arraySize = {array_length};
+                {self_dart_api_type}({delegate_dart_api_type} inner)
+                    : assert(inner.length == arraySize),
+                      super(inner);
+                {self_dart_api_type}.unchecked({delegate_dart_api_type} inner)
+                    : super(inner);
+                {dart_init_method}
+              }}
+            "
+        ),
+    })
 }
