@@ -23,11 +23,11 @@ pub(crate) fn section_header_comment<T: BasicCode>(
     item: &Acc<Vec<T>>,
 ) -> Acc<Vec<T>> {
     item.map_ref(|x, target| {
-        T::new_body(if x.iter().all(|x| x.body().is_empty()) {
+        vec![T::new_body(if x.iter().all(|x| x.body().is_empty()) {
             section_header_comment_raw(section_name)
         } else {
             "".to_owned()
-        })
+        })]
     })
 }
 

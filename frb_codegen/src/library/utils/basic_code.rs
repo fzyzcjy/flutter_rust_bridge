@@ -29,7 +29,7 @@ macro_rules! basic_code_impl {
             }
         }
 
-        impl BasicCode for $name {
+        impl crate::utils::basic_code::BasicCode for $name {
             fn body(&self) -> &str {
                 &self.body
             }
