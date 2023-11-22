@@ -39,13 +39,13 @@ Future<void> main() async {
     test('type=i64 arg=0', () async {
       expect(await examplePrimitiveTypeI64(arg: 0), 0);
     });
-    test('type=i64 arg=-9223372036854775808', () async {
-      expect(await examplePrimitiveTypeI64(arg: -9223372036854775808),
-          -9223372036854775808);
+    test('type=i64 arg=BigInt(-9223372036854775808)', () async {
+      expect(await examplePrimitiveTypeI64(arg: BigInt(-9223372036854775808)),
+          BigInt(-9223372036854775808));
     });
-    test('type=i64 arg=9223372036854775807.24', () async {
-      expect(await examplePrimitiveTypeI64(arg: 9223372036854775807.24),
-          9223372036854775807.24);
+    test('type=i64 arg=BigInt(9223372036854775807)', () async {
+      expect(await examplePrimitiveTypeI64(arg: BigInt(9223372036854775807)),
+          BigInt(9223372036854775807));
     });
     test('type=u8 arg=0', () async {
       expect(await examplePrimitiveTypeU8(arg: 0), 0);
@@ -68,9 +68,9 @@ Future<void> main() async {
     test('type=u64 arg=0', () async {
       expect(await examplePrimitiveTypeU64(arg: 0), 0);
     });
-    test('type=u64 arg=18446744073709551615', () async {
-      expect(await examplePrimitiveTypeU64(arg: 18446744073709551615),
-          18446744073709551615);
+    test('type=u64 arg=BigInt(18446744073709551615)', () async {
+      expect(await examplePrimitiveTypeU64(arg: BigInt(18446744073709551615)),
+          BigInt(18446744073709551615));
     });
     test('type=f32 arg=0', () async {
       expect(await examplePrimitiveTypeF32(arg: 0), 0);
