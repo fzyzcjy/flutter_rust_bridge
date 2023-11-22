@@ -23,11 +23,13 @@ Future<void> main() async {
   ''';
 
   for (final ty in kPrimitiveTypes) {
-    ans += '''
-      test('primitive type $ty as argument and return type', () async {
-        expect(await examplePrimitiveType${ReCase(ty).pascalCase}(arg: 100), 100);
-      });
-    ''';
+    for (final arg in ty.interestValues) {
+      ans += '''
+        test('primitive type ${ty.name} as argument and return type', () async {
+          expect(await examplePrimitiveType${ReCase(ty.name).pascalCase}(arg: $arg), $arg);
+        });
+      ''';
+    }
   }
 
   ans += '}';

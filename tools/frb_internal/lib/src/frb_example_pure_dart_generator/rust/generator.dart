@@ -13,21 +13,29 @@ Future<void> generateRust({required Uri rustRoot}) async {
 String _generateSrcApiPrimitive() {
   var ans = '';
   for (final ty in kPrimitiveTypes) {
-    ans += 'pub fn example_primitive_type_$ty(arg: $ty) -> $ty { arg }\n';
+    final name = ty.name;
+    ans += 'pub fn example_primitive_type_$name(arg: $name) -> $name { arg }\n';
   }
   return ans;
 }
 
+class PrimitiveTypeInfo {
+  final String name;
+  final List<String> interestValues;
+
+  const PrimitiveTypeInfo(this.name, this.interestValues);
+}
+
 const kPrimitiveTypes = [
-  'i8',
-  'i16',
-  'i32',
-  'i64',
-  'u8',
-  'u16',
-  'u32',
-  'u64',
-  'f32',
-  'f64',
-  'bool',
+  PrimitiveTypeInfo('i8', ['0', '-128', '127']),
+  PrimitiveTypeInfo('i16', ['0', '-32768', '32767']),
+  PrimitiveTypeInfo('i32', ['0', '-2147483648', '2147483647']),
+  PrimitiveTypeInfo('i64', ['0', '-9223372036854775808', '9223372036854775807.24']),
+  PrimitiveTypeInfo('u8', ['0', '255']),
+  PrimitiveTypeInfo('u16', ['0', '65535']),
+  PrimitiveTypeInfo('u32', ['0', '4294967295']),
+  PrimitiveTypeInfo('u64', ['0', '18446744073709551615']),
+  PrimitiveTypeInfo('f32', ['0', '-42.5', '123456']),
+  PrimitiveTypeInfo('f64', ['0', '-42.5', '123456']),
+  PrimitiveTypeInfo('bool', ['false', 'true']),
 ];

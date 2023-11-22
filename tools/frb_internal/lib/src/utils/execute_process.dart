@@ -10,7 +10,7 @@ Future<void> executeProcess(String executable, List<String> arguments, {String? 
 }
 
 Future<void> executeDartFormat({required String workingDirectory}) async =>
-    executeProcess('dart', ['format'], workingDirectory: workingDirectory);
+    executeProcess('dart', ['format', '.'], workingDirectory: workingDirectory);
 
 Future<void> executeRustFormat({required String workingDirectory}) async =>
     executeProcess('cargo', ['+nightly', 'fmt'], workingDirectory: workingDirectory);

@@ -11,7 +11,8 @@ Future<void> main() async {
   await RustLib.init(api: mockApi);
 
   test('can mock Rust calls', () async {
-    when(() => mockApi.simpleAdder(a: 1, b: 2)).thenAnswer((_) async => 123456789);
+    when(() => mockApi.simpleAdder(a: 1, b: 2))
+        .thenAnswer((_) async => 123456789);
     final actualResult = await simpleAdder(a: 1, b: 2);
     expect(actualResult, isNot(3));
     expect(actualResult, equals(123456789));
