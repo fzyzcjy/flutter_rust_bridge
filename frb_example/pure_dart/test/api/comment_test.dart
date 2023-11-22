@@ -11,7 +11,7 @@ Future<void> main() async {
     functionWithCommentsSlashStarStarTwinNormal();
     functionWithCommentsTripleSlashMultiLineTwinNormal();
     functionWithCommentsTripleSlashSingleLineTwinNormal();
-    StructWithCommentsTwinNormal(fieldWithComments: 42).instanceMethod();
-    StructWithCommentsTwinNormal.staticMethod();
+    StructWithCommentsTwinNormal(fieldWithComments: 42).instanceMethodTwinNormal();
+    StructWithCommentsTwinNormal.staticMethodTwinNormal();
   });
 }

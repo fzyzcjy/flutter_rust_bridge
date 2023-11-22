@@ -40,8 +40,8 @@ pub struct StructWithCommentsTwinNormal {
 
 impl StructWithCommentsTwinNormal {
     /// Documentation on a static method
-    pub fn static_method() {}
+    pub fn static_method_twin_normal() {}
 
     /// Documentation on an instance method
-    pub fn instance_method(&self) {}
+    pub fn instance_method_twin_normal(&self) {}
 }
