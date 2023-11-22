@@ -26,6 +26,7 @@ pub(super) fn generate(spec: ApiDartOutputSpec) -> anyhow::Result<ApiDartOutputT
             (
                 namespace.to_owned(),
                 generate_end_api_text(
+                    namespace,
                     &grouped_classes.get(namespace),
                     &grouped_funcs.get(namespace),
                 ),
@@ -37,6 +38,7 @@ pub(super) fn generate(spec: ApiDartOutputSpec) -> anyhow::Result<ApiDartOutputT
 }
 
 fn generate_end_api_text(
+    namespace: &Namespace,
     classes: &Option<&Vec<&ApiDartGeneratedClass>>,
     funcs: &Option<&Vec<&ApiDartGeneratedFunction>>,
 ) -> String {
@@ -47,10 +49,12 @@ fn generate_end_api_text(
         .map(|classes| classes.iter().map(|c| c.code.clone()).join("\n\n"))
         .unwrap_or_default();
 
+    let path_frb_generated = "../".repeat(namespace.path().len() - 2) + "frb_generated.dart";
+
     format!(
         "// ignore_for_file: invalid_use_of_internal_member
 
-        import '../frb_generated.dart';
+        import '{path_frb_generated}';
 
         {funcs}
 
