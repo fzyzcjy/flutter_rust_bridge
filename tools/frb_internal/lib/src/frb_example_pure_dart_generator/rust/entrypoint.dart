@@ -26,13 +26,13 @@ class RustGenerator extends BaseGenerator {
 
     return inputText
         .replaceAllMapped(
-          RegExp(r'pub fn ([a-zA-Z0-9_-]+)\('),
-          (m) => '${prefix}pub fn ${m.group(1)}${mode.filePostfix}(',
+          RegExp(r'pub fn ([a-zA-Z0-9_-]+)(%s)?\('.replaceAll('%s', mode.postfix)),
+          (m) => '${prefix}pub fn ${m.group(1)}${mode.postfix}(',
         )
         // struct name, etc
-        .replaceAll('TwinNormal', ReCase(mode.filePostfix).pascalCase);
+        .replaceAll('TwinNormal', ReCase(mode.postfix).pascalCase);
   }
 
   @override
-  String generateDuplicateFileStem(String inputStem, DuplicatorMode mode) => inputStem + mode.filePostfix;
+  String generateDuplicateFileStem(String inputStem, DuplicatorMode mode) => inputStem + mode.postfix;
 }
