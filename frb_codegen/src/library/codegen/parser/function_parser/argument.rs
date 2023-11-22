@@ -175,17 +175,5 @@ fn parse_name_from_pat_type(pat_type: &PatType) -> anyhow::Result<String> {
 }
 
 fn construct_syn_type_for_argument_self() -> Type {
-    let mut segments = Punctuated::new();
-    segments.push(PathSegment {
-        ident: struct_name.as_str(),
-        arguments: PathArguments::None,
-    });
-
-    Type::Path(TypePath {
-        qself: None,
-        path: Path {
-            leading_colon: None,
-            segments,
-        },
-    })
+    syn::parse_str(struct_name)
 }
