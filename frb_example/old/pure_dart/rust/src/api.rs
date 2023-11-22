@@ -45,12 +45,6 @@ pub fn handle_return_unit() -> () {
     info!("handle_return_unit()");
 }
 
-// to check that `Vec<u8>` can be used as return type
-pub fn handle_vec_u8(v: Vec<u8>) -> Vec<u8> {
-    info!("handle_vec_u8(first few elements: {:?})", &v[..5]);
-    v.repeat(2)
-}
-
 pub struct ZeroCopyVecOfPrimitivePack {
     pub int8list: ZeroCopyBuffer<Vec<i8>>,
     pub uint8list: ZeroCopyBuffer<Vec<u8>>,
