@@ -543,7 +543,6 @@ pub fn handle_option_box_arguments(
     )
 }
 
-/// Simple enums.
 #[derive(Debug, Clone, Copy)]
 pub enum Weekdays {
     Monday,
@@ -551,7 +550,6 @@ pub enum Weekdays {
     Wednesday,
     Thursday,
     Friday,
-    /// Best day of the week.
     Saturday,
     Sunday,
 }
@@ -613,11 +611,9 @@ pub fn handle_customized_struct(val: Customized) {
 #[frb]
 #[derive(Debug)]
 pub enum KitchenSink {
-    /// Comment on variant
     Empty,
     #[frb(unimpl_variant_attr)]
     Primitives {
-        /// Dart field comment
         #[frb(default = -1)]
         int32: i32,
         #[frb(unimpl_deprecated)]
@@ -628,12 +624,7 @@ pub enum KitchenSink {
         i32,
         #[frb(default = "KitchenSink.empty()")] Box<KitchenSink>,
     ),
-    Optional(
-        /// Comment on anonymous field
-        #[frb(default = -1)]
-        Option<i32>,
-        Option<i32>,
-    ),
+    Optional(#[frb(default = -1)] Option<i32>, Option<i32>),
     Buffer(ZeroCopyBuffer<Vec<u8>>),
     Enums(#[frb(default = "Weekdays.Sunday")] Weekdays),
 }
@@ -944,11 +935,9 @@ pub struct Log2 {
 }
 
 impl ConcatenateWith {
-    /// Documentation on a static method
     pub fn new(a: String) -> ConcatenateWith {
         ConcatenateWith { a }
     }
-    /// Documentation on an instance method
     pub fn concatenate(&self, b: String) -> String {
         format!("{}{b}", self.a)
     }
