@@ -35,7 +35,7 @@ String _generatePrimitiveList() {
 
   for (final ty in kPrimitiveTypes) {
     for (final arg in [
-      '${ty.primitiveListName}(0)',
+      ty.primitiveListWrapper(ty, ''),
       ...ty.interestRawValues.map((x) => ty.primitiveListWrapper(ty, x)),
     ]) {
       builder.body += '''
