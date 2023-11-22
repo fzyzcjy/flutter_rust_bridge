@@ -141,16 +141,6 @@ pub fn handle_stream_of_struct(sink: StreamSink<MyStreamEntry>) {
     // Ok(())
 }
 
-pub fn return_err() -> Result<i32> {
-    Err(anyhow!(
-        "return_err() is called, thus deliberately return Err"
-    ))
-}
-
-pub fn return_panic() -> i32 {
-    panic!("return_panic() is called, thus deliberately panic")
-}
-
 pub fn handle_optional_return(left: f64, right: f64) -> Option<f64> {
     if right == 0. {
         None

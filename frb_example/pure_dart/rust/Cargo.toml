@@ -7,4 +7,5 @@ edition.workspace = true
 crate-type = ["cdylib"]
 
 [dependencies]
+anyhow = { workspace = true, features = ["backtrace"] }
 flutter_rust_bridge = { workspace = true }

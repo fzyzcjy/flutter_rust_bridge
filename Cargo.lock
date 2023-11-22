@@ -553,6 +553,7 @@ version = "1.82.4"
 name = "frb_example_pure_dart"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
  "flutter_rust_bridge",
 ]
 
