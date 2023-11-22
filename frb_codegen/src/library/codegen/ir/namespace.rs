@@ -11,13 +11,13 @@ pub struct Namespace {
     joined_path: String,
 }
 
-const SEP: &str = "::";
-const SELF_CRATE: &str = "crate";
-
 impl Namespace {
+    const SEP: &'static str = "::";
+    const SELF_CRATE: &'static str = "crate";
+
     pub fn new(path: Vec<String>) -> Self {
-        assert!((path.iter()).all(|item| !item.contains(SEP)));
-        Self::new_raw(path.join(SEP))
+        assert!((path.iter()).all(|item| !item.contains(Self::SEP)));
+        Self::new_raw(path.join(Self::SEP))
     }
 
     pub fn new_raw(joined_path: String) -> Self {
@@ -25,17 +25,20 @@ impl Namespace {
     }
 
     pub fn new_self_crate(joined_path: String) -> Self {
-        assert!(!joined_path.starts_with(&format!("{SELF_CRATE}{SEP}")));
-        Self::new_raw(format!("{SELF_CRATE}{SEP}{joined_path}"))
+        let sep = Self::SEP;
+        let self_crate = Self::SELF_CRATE;
+
+        assert!(!joined_path.starts_with(&format!("{self_crate}{sep}")));
+        Self::new_raw(format!("{self_crate}{sep}{joined_path}"))
     }
 
     pub fn path(&self) -> Vec<&str> {
-        self.joined_path.split(SEP).collect()
+        self.joined_path.split(Self::SEP).collect()
     }
 
     pub fn path_exclude_self_crate(&self) -> Vec<&str> {
         let mut path = self.path();
-        if path.first() == Some(&SELF_CRATE) {
+        if path.first() == Some(&Self::SELF_CRATE) {
             path.remove(0);
         }
         path
@@ -60,6 +63,8 @@ pub struct NamespacedName {
 }
 
 impl NamespacedName {
+    const SEP: &'static str = "/";
+
     pub fn new(namespace: Namespace, name: String) -> Self {
         Self { namespace, name }
     }
@@ -70,7 +75,7 @@ impl Serialize for NamespacedName {
     where
         S: Serializer,
     {
-        format!("{}{SEP}{}", self.namespace, self.name).serialize(serializer)
+        format!("{}{}{}", self.namespace, Self::SEP, self.name).serialize(serializer)
     }
 }
 
@@ -80,10 +85,10 @@ impl<'de> Deserialize<'de> for NamespacedName {
         D: Deserializer<'de>,
     {
         let s = String::deserialize(deserializer)?;
-        let index = s.rfind(SEP).unwrap();
+        let index = s.rfind(Self::SEP).unwrap();
         Ok(Self::new(
             Namespace::new_raw(s[..index].to_owned()),
-            s[index + SEP.len()..].to_owned(),
+            s[index + Self::SEP.len()..].to_owned(),
         ))
     }
 }
