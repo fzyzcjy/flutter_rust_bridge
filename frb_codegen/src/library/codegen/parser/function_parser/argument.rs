@@ -25,9 +25,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             FnArg::Typed(ref pat_type) => {
                 self.parse_fn_arg_typed(argument_index, context, pat_type)
             }
-            FnArg::Receiver(ref receiver) => {
-                self.parse_fn_arg_receiver(argument_index, context, receiver)
-            }
+            FnArg::Receiver(ref receiver) => self.parse_fn_arg_receiver(context, receiver),
             _ => bail!(
                 "Unexpected parameter: {}",
                 quote::quote!(#sig_input).to_string()
@@ -67,7 +65,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
     fn parse_fn_arg_receiver(
         &mut self,
-        argument_index: usize,
         context: &TypeParserParsingContext,
         receiver: &Receiver,
     ) -> anyhow::Result<FunctionPartialInfo> {
@@ -76,18 +73,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             "mutable self is not supported yet"
         );
 
-        let mut segments = Punctuated::new();
-        segments.push(PathSegment {
-            ident: struct_name.as_str(),
-            arguments: PathArguments::None,
-        });
-        let ty = Type::Path(TypePath {
-            qself: None,
-            path: Path {
-                leading_colon: None,
-                segments,
-            },
-        });
+        let ty = construct_syn_type_for_argument_self();
 
         let name = "that".to_owned();
 
@@ -186,4 +172,20 @@ fn parse_name_from_pat_type(pat_type: &PatType) -> anyhow::Result<String> {
             quote::quote!(#pat_type).to_string(),
         )
     }
+}
+
+fn construct_syn_type_for_argument_self() -> Type {
+    let mut segments = Punctuated::new();
+    segments.push(PathSegment {
+        ident: struct_name.as_str(),
+        arguments: PathArguments::None,
+    });
+
+    Type::Path(TypePath {
+        qself: None,
+        path: Path {
+            leading_colon: None,
+            segments,
+        },
+    })
 }
