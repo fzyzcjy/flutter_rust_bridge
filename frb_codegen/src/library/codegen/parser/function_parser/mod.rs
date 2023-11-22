@@ -2,7 +2,7 @@ pub(crate) mod argument;
 pub(crate) mod output;
 
 use crate::codegen::ir::field::IrField;
-use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo};
+use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo, IrFuncOwnerInfoMethod};
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrType;
@@ -67,10 +67,24 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             inputs: info.inputs,
             output: info.ok_output.unwrap_or(Primitive(IrTypePrimitive::Unit)),
             error_output: info.error_output,
-            owner: TODO,
+            owner: parse_owner(func),
             mode: info.mode.unwrap_or(IrFuncMode::Normal),
             comments: parse_comments(func.attrs()),
         })
+    }
+}
+
+fn parse_owner(item_fn: &GeneralizedItemFn) -> IrFuncOwnerInfo {
+    match item_fn {
+        GeneralizedItemFn::Function { .. } => IrFuncOwnerInfo::Function,
+        GeneralizedItemFn::Method { item_impl, .. } => {
+            TODO;
+            IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
+                struct_name: TODO,
+                actual_method_name: TODO,
+                mode: TODO,
+            })
+        }
     }
 }
 
