@@ -88,7 +88,10 @@ fn parse_name(sig: &Signature, owner: &IrFuncOwnerInfo) -> String {
     match owner {
         IrFuncOwnerInfo::Function => sig.ident.to_string(),
         IrFuncOwnerInfo::Method(method) => {
-            format!("{}_{}", method.struct_name, method.actual_method_name)
+            format!(
+                "{}_{}",
+                method.enum_or_struct_name, method.actual_method_name
+            )
         }
     }
 }
@@ -115,7 +118,7 @@ fn parse_owner(item_fn: &GeneralizedItemFn) -> Option<IrFuncOwnerInfo> {
             let struct_name = (self_ty_path.path.segments.first().unwrap().ident).to_string();
 
             IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
-                struct_name,
+                struct_name: enum_or_struct_name,
                 actual_method_name: impl_item_fn.sig.ident.to_string(),
                 mode,
             })

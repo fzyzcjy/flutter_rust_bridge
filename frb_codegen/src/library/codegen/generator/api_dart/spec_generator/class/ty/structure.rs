@@ -18,7 +18,7 @@ impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
             .funcs
             .iter()
             .filter(|f| {
-                matches!(&f.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod{ struct_name, .. }) if struct_name == &src.name.name)
+                matches!(&f.owner, IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod{ enum_or_struct_name, .. }) if struct_name == &src.name.name)
             })
             .map(|func| generate_api_method(func, src, self.context))
             .collect_vec();

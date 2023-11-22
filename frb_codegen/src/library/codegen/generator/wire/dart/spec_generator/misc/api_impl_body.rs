@@ -181,8 +181,9 @@ fn generate_arg_values(func: &IrFunc) -> String {
 }
 
 fn has_methods_for_struct_name(struct_name: &str, ir_pack: &IrPack) -> bool {
-    (ir_pack.funcs.iter())
-        .any(|f| matches!(&f.owner, IrFuncOwnerInfo::Method(m) if m.struct_name == struct_name))
+    (ir_pack.funcs.iter()).any(
+        |f| matches!(&f.owner, IrFuncOwnerInfo::Method(m) if m.enum_or_struct_name == struct_name),
+    )
 }
 
 pub(crate) fn generate_api_impl_opaque_getter(

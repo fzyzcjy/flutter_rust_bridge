@@ -79,7 +79,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         let method = if_then_some!(let IrFuncOwnerInfo::Method(method) = owner, method)
             .context("`self` must happen within methods")?;
 
-        let ty: Type = parse_str(&method.struct_name)?;
+        let ty: Type = parse_str(&method.enum_or_struct_name)?;
 
         let name = "that".to_owned();
 

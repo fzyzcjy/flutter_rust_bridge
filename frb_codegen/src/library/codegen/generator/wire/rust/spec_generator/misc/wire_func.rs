@@ -172,7 +172,7 @@ fn generate_code_call_inner_func_result(func: &IrFunc, inner_func_params: Vec<St
         IrFuncOwnerInfo::Method(method) => {
             format!(
                 r"{}::{}({})",
-                method.struct_name,
+                method.enum_or_struct_name,
                 method.actual_method_name,
                 inner_func_params.join(", ")
             )
