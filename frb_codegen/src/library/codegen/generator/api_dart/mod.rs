@@ -49,7 +49,7 @@ fn compute_path_from_namespace(
     let ans_without_extension = chunks
         .iter()
         .fold(dart_decl_base_output_path.to_owned(), |a, b| a.join(b));
-    ans_without_extension.with_extension("rs")
+    ans_without_extension.with_extension("dart")
 }
 
 #[cfg(test)]
