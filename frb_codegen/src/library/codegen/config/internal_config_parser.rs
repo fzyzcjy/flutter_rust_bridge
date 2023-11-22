@@ -142,6 +142,7 @@ impl InternalConfig {
             dumper: DumperInternalConfig {
                 dump_config: dump.contains(&ConfigDump::Config),
                 dump_ir: dump.contains(&ConfigDump::Ir),
+                dump_spec: dump.contains(&ConfigDump::Spec),
                 dump_directory,
             },
         })

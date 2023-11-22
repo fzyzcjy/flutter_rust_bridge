@@ -34,4 +34,5 @@ pub struct Config {
 pub enum ConfigDump {
     Config,
     Ir,
+    Spec,
 }

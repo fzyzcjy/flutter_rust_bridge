@@ -6,5 +6,6 @@ use std::path::PathBuf;
 pub(crate) struct DumperInternalConfig {
     pub(crate) dump_config: bool,
     pub(crate) dump_ir: bool,
+    pub(crate) dump_spec: bool,
     pub(crate) dump_directory: PathBuf,
 }

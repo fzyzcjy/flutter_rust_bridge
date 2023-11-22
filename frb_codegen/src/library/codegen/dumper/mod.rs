@@ -18,13 +18,13 @@ impl Dumper<'_> {
         config: &Config,
         internal_config: &InternalConfig,
     ) -> anyhow::Result<()> {
-        self.dump("config.json", config)?;
-        self.dump("internal_config.json", internal_config)?;
+        self.dump(self.0.dump_config, "config.json", config)?;
+        self.dump(self.0.dump_config, "internal_config.json", internal_config)?;
         Ok(())
     }
 
     pub(crate) fn dump_ir(&self, ir_pack: &IrPack) -> anyhow::Result<()> {
-        self.dump("ir_pack.json", ir_pack)
+        self.dump(self.0.dump_ir, "ir_pack.json", ir_pack)
     }
 
     pub(crate) fn dump_spec<T: Serialize>(
@@ -32,10 +32,14 @@ impl Dumper<'_> {
         partial_name: &str,
         data: &T,
     ) -> anyhow::Result<()> {
-        self.dump(&format!("spec_{partial_name}.json"), data)
+        self.dump(self.0.dump_spec, &format!("spec_{partial_name}.json"), data)
     }
 
-    fn dump<T: Serialize>(&self, name: &str, data: &T) -> anyhow::Result<()> {
+    fn dump<T: Serialize>(&self, enable: bool, name: &str, data: &T) -> anyhow::Result<()> {
+        if !enable {
+            return Ok(());
+        }
+
         let path = self.0.dump_directory.join(name);
         info!("Dumping {name} into {path:?}");
         let str = serde_json::to_string_pretty(data)?;
