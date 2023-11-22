@@ -111,6 +111,12 @@ mod tests {
 
     #[test]
     #[serial]
+    fn test_methods() -> anyhow::Result<()> {
+        body("library/codegen/parser/mod/methods", None)
+    }
+
+    #[test]
+    #[serial]
     fn test_multi_input_file() -> anyhow::Result<()> {
         body(
             "library/codegen/parser/mod/multi_input_file",
