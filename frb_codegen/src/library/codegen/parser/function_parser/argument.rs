@@ -150,14 +150,22 @@ fn partial_info_for_normal_type(
     pat_type: &PatType,
 ) -> anyhow::Result<FunctionPartialInfo> {
     let name = parse_name(pat_type)?;
-    let attributes = FrbAttributes::parse(&pat_type.attrs)?;
+    partial_info_for_normal_type_raw(ty_raw, &pat_type.attrs, name)
+}
+
+fn partial_info_for_normal_type_raw(
+    ty_raw: IrType,
+    attrs: &[Attribute],
+    name: String,
+) -> anyhow::Result<FunctionPartialInfo> {
+    let attributes = FrbAttributes::parse(attrs)?;
     let ty = auto_add_boxed(ty_raw);
     Ok(FunctionPartialInfo {
         inputs: vec![IrField {
             name: IrIdent::new(name),
             ty,
             is_final: true,
-            comments: parse_comments(&pat_type.attrs),
+            comments: parse_comments(attrs),
             default: attributes.default_value(),
             settings: IrFieldSettings::default(),
         }],
