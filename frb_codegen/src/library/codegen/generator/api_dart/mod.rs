@@ -6,6 +6,7 @@ use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartIntern
 use crate::codegen::generator::misc::{PathText, PathTexts};
 use crate::codegen::ir::pack::IrPack;
 use anyhow::Result;
+use itertools::Itertools;
 
 pub(crate) struct GeneratorApiDartOutput {
     pub output_texts: PathTexts,
@@ -18,13 +19,21 @@ pub(crate) fn generate(
     let spec = spec_generator::generate(ir_pack, config)?;
     let text = text_generator::generate(spec)?;
 
-    Ok(GeneratorApiDartOutput {
-        output_texts: PathTexts(vec![PathText::new(
-            // TODO handle multi file
-            config.dart_decl_base_output_path.join(TODO).to_owned(),
-            text.text,
-        )]),
-    })
+    let output_texts = PathTexts(
+        (text.namespaced_texts.into_iter())
+            .map(|(namespace, text)| {
+                PathText::new(
+                    config
+                        .dart_decl_base_output_path
+                        .join(namespace.joined_path)
+                        .to_owned(),
+                    text,
+                )
+            })
+            .collect_vec(),
+    );
+
+    Ok(GeneratorApiDartOutput { output_texts })
 }
 
 #[cfg(test)]

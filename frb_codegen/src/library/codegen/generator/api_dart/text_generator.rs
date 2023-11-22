@@ -1,17 +1,17 @@
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
 use crate::codegen::generator::api_dart::spec_generator::ApiDartOutputSpec;
+use crate::codegen::ir::namespace::Namespace;
 use itertools::Itertools;
 
 pub(super) struct ApiDartOutputText {
-    // TODO handle multi file
-    pub(super) text: String,
+    pub(super) namespaced_texts: Vec<(Namespace, String)>,
 }
 
 pub(super) fn generate(spec: ApiDartOutputSpec) -> anyhow::Result<ApiDartOutputText> {
     let ApiDartOutputSpec { funcs, classes } = spec;
     Ok(ApiDartOutputText {
-        text: generate_end_api_text(&classes, &funcs),
+        namespaced_texts: generate_end_api_text(&classes, &funcs),
     })
 }
 
