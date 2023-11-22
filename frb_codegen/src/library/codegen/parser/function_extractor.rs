@@ -89,16 +89,12 @@ fn extract_methods_from_file(file: &File) -> anyhow::Result<Vec<GeneralizedItemF
 
 // TODO temp put it here to copy useful parts
 fn convert_item_method_to_function(
-    _item_impl: &ItemImpl,
-    _item_method: &ImplItemFn,
+    item_impl: &ItemImpl,
+    impl_item_fn: &ImplItemFn,
 ) -> anyhow::Result<Option<ItemFn>> {
     if let Type::Path(p) = item_impl.self_ty.as_ref() {
         let struct_name = p.path.segments.first().unwrap().ident.to_string();
-        let span = item_method.sig.ident.span();
-        let is_static_method = {
-            let Signature { inputs, .. } = &item_method.sig;
-            !matches!(inputs.first(), Some(FnArg::Receiver(..)))
-        };
+        let span = impl_item_fn.sig.ident.span();
         let method_name = if is_static_method {
             let self_type = {
                 let ItemImpl { self_ty, .. } = item_impl;
@@ -118,7 +114,7 @@ fn convert_item_method_to_function(
             };
             Ident::new(
                 &FunctionName::new(
-                    &item_method.sig.ident.to_string(),
+                    &impl_item_fn.sig.ident.to_string(),
                     crate::utils::method::MethodInfo::Static {
                         struct_name: self_type.unwrap(),
                     },
@@ -129,7 +125,7 @@ fn convert_item_method_to_function(
         } else {
             Ident::new(
                 &FunctionName::new(
-                    &item_method.sig.ident.to_string(),
+                    &impl_item_fn.sig.ident.to_string(),
                     crate::utils::method::MethodInfo::NonStatic {
                         struct_name: struct_name.clone(),
                     },
@@ -140,18 +136,18 @@ fn convert_item_method_to_function(
         };
 
         Ok(Some(ItemFn {
-            attrs: item_method.attrs.clone(),
-            vis: item_method.vis.clone(),
+            attrs: impl_item_fn.attrs.clone(),
+            vis: impl_item_fn.vis.clone(),
             sig: Signature {
                 constness: None,
                 asyncness: None,
                 unsafety: None,
                 abi: None,
-                fn_token: item_method.sig.fn_token,
+                fn_token: impl_item_fn.sig.fn_token,
                 ident: method_name,
-                generics: item_method.sig.generics.clone(),
-                paren_token: item_method.sig.paren_token,
-                inputs: item_method
+                generics: impl_item_fn.sig.generics.clone(),
+                paren_token: impl_item_fn.sig.paren_token,
+                inputs: impl_item_fn
                     .sig
                     .inputs
                     .iter()
@@ -189,9 +185,9 @@ fn convert_item_method_to_function(
                     })
                     .collect::<anyhow::Result<Punctuated<_, _>>>()?,
                 variadic: None,
-                output: item_method.sig.output.clone(),
+                output: impl_item_fn.sig.output.clone(),
             },
-            block: Box::new(item_method.block.clone()),
+            block: Box::new(impl_item_fn.block.clone()),
         }))
     } else {
         Ok(None)
