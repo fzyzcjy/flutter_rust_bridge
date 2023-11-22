@@ -1,7 +1,7 @@
 // NOTE: This file is auto-generated from `comment_test.dart` by frb_internal
 // Please do not modify manually, but modify the `comment_test.dart` and re-run frb_internal generator
 
-import 'package:frb_example_pure_dart/src/rust/api/comment.dart';
+import 'package:frb_example_pure_dart/src/rust/api/comment_twin_sync.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
 
