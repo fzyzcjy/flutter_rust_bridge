@@ -1,3 +1,4 @@
+use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::enumeration::IrTypeEnumRef;
 use crate::codegen::ir::ty::general_list::IrTypeGeneralList;
@@ -22,6 +23,7 @@ pub enum IrTypeDelegate {
 }
 
 pub struct IrTypeDelegateArray {
+    pub namespace: Namespace,
     pub length: usize,
     pub mode: IrTypeDelegateArrayMode,
 }

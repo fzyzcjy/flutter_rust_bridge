@@ -12,6 +12,8 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         &mut self,
         type_array: &syn::TypeArray,
     ) -> anyhow::Result<IrType> {
+        let namespace = self.context.initiated_namespace.clone();
+
         let length: usize = match &type_array.len {
             Expr::Lit(lit) => match &lit.lit {
                 syn::Lit::Int(x) => x.base10_parse()?,
@@ -22,10 +24,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
         Ok(match self.parse_type(&type_array.elem)? {
             Primitive(primitive) => Delegate(IrTypeDelegate::Array(IrTypeDelegateArray {
+                namespace,
                 length,
                 mode: IrTypeDelegateArrayMode::Primitive(primitive),
             })),
             others => Delegate(IrTypeDelegate::Array(IrTypeDelegateArray {
+                namespace,
                 length,
                 mode: IrTypeDelegateArrayMode::General(Box::new(others)),
             })),
