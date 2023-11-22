@@ -12,20 +12,22 @@ Future<void> generateRust({required Uri rustRoot}) async {
 
 String _generateSrcApiPrimitive() {
   var ans = '';
-  for (final ty in [
-    'i8',
-    'i16',
-    'i32',
-    'i64',
-    'u8',
-    'u16',
-    'u32',
-    'u64',
-    'f32',
-    'f64',
-    'bool',
-  ]) {
+  for (final ty in _kPrimitiveTypes) {
     ans += 'pub fn example_primitive_type_$ty(arg: $ty) -> $ty { arg }\n';
   }
   return ans;
 }
+
+const _kPrimitiveTypes = [
+  'i8',
+  'i16',
+  'i32',
+  'i64',
+  'u8',
+  'u16',
+  'u32',
+  'u64',
+  'f32',
+  'f64',
+  'bool',
+];
