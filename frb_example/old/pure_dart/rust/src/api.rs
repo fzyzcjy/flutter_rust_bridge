@@ -34,14 +34,6 @@ extern "C" fn on_dylib_start() {
         .try_init();
 }
 
-pub fn primitive_types(my_i32: i32, my_i64: i64, my_f64: f64, my_bool: bool) -> i32 {
-    info!(
-        "primitive_types({}, {}, {}, {})",
-        my_i32, my_i64, my_f64, my_bool
-    );
-    42
-}
-
 pub fn primitive_optional_types(
     my_i32: Option<i32>,
     my_i64: Option<i64>,
