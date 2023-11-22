@@ -1,3 +1,4 @@
+use crate::codegen::dumper::internal_config::DumperInternalConfig;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
 use crate::codegen::generator::wire::dart::internal_config::GeneratorWireDartInternalConfig;
@@ -16,7 +17,7 @@ pub(crate) struct InternalConfig {
     pub parser: ParserInternalConfig,
     pub generator: GeneratorInternalConfig,
     pub polisher: PolisherInternalConfig,
-    pub dump: Vec<ConfigDump>,
+    pub dumper: DumperInternalConfig,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]

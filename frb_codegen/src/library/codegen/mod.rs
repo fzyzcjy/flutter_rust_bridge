@@ -1,6 +1,7 @@
 //! Code generator for `flutter_rust_bridge`
 
 pub(crate) mod config;
+mod dumper;
 mod generator;
 pub(crate) mod ir;
 pub(crate) mod parser;
@@ -32,6 +33,8 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
         generator_output.dart_needs_freezed,
         &generator_output.output_texts.paths(),
     )?;
+
+    dumper::dump()?;
 
     Ok(())
 }
