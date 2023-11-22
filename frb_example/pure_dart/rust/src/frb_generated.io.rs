@@ -176,76 +176,79 @@ pub extern "C" fn wire_StructWithCommentsTwinSync_static_method_twin_sync(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_function_with_comments_slash_star_star_twin_normal_twin_sync(
+pub extern "C" fn wire_function_with_comments_slash_star_star_twin_sync() -> support::WireSyncReturn
+{
+    wire_function_with_comments_slash_star_star_twin_sync_impl()
+}
+
+#[no_mangle]
+pub extern "C" fn wire_function_with_comments_triple_slash_multi_line_twin_sync(
 ) -> support::WireSyncReturn {
-    wire_function_with_comments_slash_star_star_twin_normal_twin_sync_impl()
+    wire_function_with_comments_triple_slash_multi_line_twin_sync_impl()
 }
 
 #[no_mangle]
-pub extern "C" fn wire_function_with_comments_triple_slash_multi_line_twin_normal_twin_sync(
+pub extern "C" fn wire_function_with_comments_triple_slash_single_line_twin_sync(
 ) -> support::WireSyncReturn {
-    wire_function_with_comments_triple_slash_multi_line_twin_normal_twin_sync_impl()
+    wire_function_with_comments_triple_slash_single_line_twin_sync_impl()
 }
 
 #[no_mangle]
-pub extern "C" fn wire_function_with_comments_triple_slash_single_line_twin_normal_twin_sync(
-) -> support::WireSyncReturn {
-    wire_function_with_comments_triple_slash_single_line_twin_normal_twin_sync_impl()
+pub extern "C" fn wire_example_optional_primitive_type_bool_twin_normal(
+    port_: i64,
+    arg: *mut bool,
+) {
+    wire_example_optional_primitive_type_bool_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_example_optional_primitive_type_bool(port_: i64, arg: *mut bool) {
-    wire_example_optional_primitive_type_bool_impl(port_, arg)
+pub extern "C" fn wire_example_optional_primitive_type_f32_twin_normal(port_: i64, arg: *mut f32) {
+    wire_example_optional_primitive_type_f32_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_example_optional_primitive_type_f32(port_: i64, arg: *mut f32) {
-    wire_example_optional_primitive_type_f32_impl(port_, arg)
+pub extern "C" fn wire_example_optional_primitive_type_f64_twin_normal(port_: i64, arg: *mut f64) {
+    wire_example_optional_primitive_type_f64_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_example_optional_primitive_type_f64(port_: i64, arg: *mut f64) {
-    wire_example_optional_primitive_type_f64_impl(port_, arg)
+pub extern "C" fn wire_example_optional_primitive_type_i16_twin_normal(port_: i64, arg: *mut i16) {
+    wire_example_optional_primitive_type_i16_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_example_optional_primitive_type_i16(port_: i64, arg: *mut i16) {
-    wire_example_optional_primitive_type_i16_impl(port_, arg)
+pub extern "C" fn wire_example_optional_primitive_type_i32_twin_normal(port_: i64, arg: *mut i32) {
+    wire_example_optional_primitive_type_i32_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_example_optional_primitive_type_i32(port_: i64, arg: *mut i32) {
-    wire_example_optional_primitive_type_i32_impl(port_, arg)
+pub extern "C" fn wire_example_optional_primitive_type_i64_twin_normal(port_: i64, arg: *mut i64) {
+    wire_example_optional_primitive_type_i64_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_example_optional_primitive_type_i64(port_: i64, arg: *mut i64) {
-    wire_example_optional_primitive_type_i64_impl(port_, arg)
+pub extern "C" fn wire_example_optional_primitive_type_i8_twin_normal(port_: i64, arg: *mut i8) {
+    wire_example_optional_primitive_type_i8_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_example_optional_primitive_type_i8(port_: i64, arg: *mut i8) {
-    wire_example_optional_primitive_type_i8_impl(port_, arg)
+pub extern "C" fn wire_example_optional_primitive_type_u16_twin_normal(port_: i64, arg: *mut u16) {
+    wire_example_optional_primitive_type_u16_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_example_optional_primitive_type_u16(port_: i64, arg: *mut u16) {
-    wire_example_optional_primitive_type_u16_impl(port_, arg)
+pub extern "C" fn wire_example_optional_primitive_type_u32_twin_normal(port_: i64, arg: *mut u32) {
+    wire_example_optional_primitive_type_u32_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_example_optional_primitive_type_u32(port_: i64, arg: *mut u32) {
-    wire_example_optional_primitive_type_u32_impl(port_, arg)
+pub extern "C" fn wire_example_optional_primitive_type_u64_twin_normal(port_: i64, arg: *mut u64) {
+    wire_example_optional_primitive_type_u64_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_example_optional_primitive_type_u64(port_: i64, arg: *mut u64) {
-    wire_example_optional_primitive_type_u64_impl(port_, arg)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_example_optional_primitive_type_u8(port_: i64, arg: *mut u8) {
-    wire_example_optional_primitive_type_u8_impl(port_, arg)
+pub extern "C" fn wire_example_optional_primitive_type_u8_twin_normal(port_: i64, arg: *mut u8) {
+    wire_example_optional_primitive_type_u8_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
@@ -326,58 +329,58 @@ pub extern "C" fn wire_example_optional_primitive_type_u8_twin_sync(
 }
 
 #[no_mangle]
-pub extern "C" fn wire_example_primitive_type_bool(port_: i64, arg: bool) {
-    wire_example_primitive_type_bool_impl(port_, arg)
+pub extern "C" fn wire_example_primitive_type_bool_twin_normal(port_: i64, arg: bool) {
+    wire_example_primitive_type_bool_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_example_primitive_type_f32(port_: i64, arg: f32) {
-    wire_example_primitive_type_f32_impl(port_, arg)
+pub extern "C" fn wire_example_primitive_type_f32_twin_normal(port_: i64, arg: f32) {
+    wire_example_primitive_type_f32_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_example_primitive_type_f64(port_: i64, arg: f64) {
-    wire_example_primitive_type_f64_impl(port_, arg)
+pub extern "C" fn wire_example_primitive_type_f64_twin_normal(port_: i64, arg: f64) {
+    wire_example_primitive_type_f64_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_example_primitive_type_i16(port_: i64, arg: i16) {
-    wire_example_primitive_type_i16_impl(port_, arg)
+pub extern "C" fn wire_example_primitive_type_i16_twin_normal(port_: i64, arg: i16) {
+    wire_example_primitive_type_i16_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_example_primitive_type_i32(port_: i64, arg: i32) {
-    wire_example_primitive_type_i32_impl(port_, arg)
+pub extern "C" fn wire_example_primitive_type_i32_twin_normal(port_: i64, arg: i32) {
+    wire_example_primitive_type_i32_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_example_primitive_type_i64(port_: i64, arg: i64) {
-    wire_example_primitive_type_i64_impl(port_, arg)
+pub extern "C" fn wire_example_primitive_type_i64_twin_normal(port_: i64, arg: i64) {
+    wire_example_primitive_type_i64_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_example_primitive_type_i8(port_: i64, arg: i8) {
-    wire_example_primitive_type_i8_impl(port_, arg)
+pub extern "C" fn wire_example_primitive_type_i8_twin_normal(port_: i64, arg: i8) {
+    wire_example_primitive_type_i8_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_example_primitive_type_u16(port_: i64, arg: u16) {
-    wire_example_primitive_type_u16_impl(port_, arg)
+pub extern "C" fn wire_example_primitive_type_u16_twin_normal(port_: i64, arg: u16) {
+    wire_example_primitive_type_u16_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_example_primitive_type_u32(port_: i64, arg: u32) {
-    wire_example_primitive_type_u32_impl(port_, arg)
+pub extern "C" fn wire_example_primitive_type_u32_twin_normal(port_: i64, arg: u32) {
+    wire_example_primitive_type_u32_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_example_primitive_type_u64(port_: i64, arg: u64) {
-    wire_example_primitive_type_u64_impl(port_, arg)
+pub extern "C" fn wire_example_primitive_type_u64_twin_normal(port_: i64, arg: u64) {
+    wire_example_primitive_type_u64_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_example_primitive_type_u8(port_: i64, arg: u8) {
-    wire_example_primitive_type_u8_impl(port_, arg)
+pub extern "C" fn wire_example_primitive_type_u8_twin_normal(port_: i64, arg: u8) {
+    wire_example_primitive_type_u8_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]
@@ -441,11 +444,8 @@ pub extern "C" fn wire_simple_adder_twin_normal(port_: i64, a: i32, b: i32) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_simple_adder_twin_normal_twin_sync(
-    a: i32,
-    b: i32,
-) -> support::WireSyncReturn {
-    wire_simple_adder_twin_normal_twin_sync_impl(a, b)
+pub extern "C" fn wire_simple_adder_twin_sync(a: i32, b: i32) -> support::WireSyncReturn {
+    wire_simple_adder_twin_sync_impl(a, b)
 }
 
 #[no_mangle]

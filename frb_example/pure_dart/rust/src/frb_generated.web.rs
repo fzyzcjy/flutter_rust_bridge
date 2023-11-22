@@ -132,76 +132,73 @@ pub fn wire_StructWithCommentsTwinSync_static_method_twin_sync() -> support::Wir
 }
 
 #[wasm_bindgen]
-pub fn wire_function_with_comments_slash_star_star_twin_normal_twin_sync() -> support::WireSyncReturn
-{
-    wire_function_with_comments_slash_star_star_twin_normal_twin_sync_impl()
+pub fn wire_function_with_comments_slash_star_star_twin_sync() -> support::WireSyncReturn {
+    wire_function_with_comments_slash_star_star_twin_sync_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_function_with_comments_triple_slash_multi_line_twin_normal_twin_sync(
-) -> support::WireSyncReturn {
-    wire_function_with_comments_triple_slash_multi_line_twin_normal_twin_sync_impl()
+pub fn wire_function_with_comments_triple_slash_multi_line_twin_sync() -> support::WireSyncReturn {
+    wire_function_with_comments_triple_slash_multi_line_twin_sync_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_function_with_comments_triple_slash_single_line_twin_normal_twin_sync(
-) -> support::WireSyncReturn {
-    wire_function_with_comments_triple_slash_single_line_twin_normal_twin_sync_impl()
+pub fn wire_function_with_comments_triple_slash_single_line_twin_sync() -> support::WireSyncReturn {
+    wire_function_with_comments_triple_slash_single_line_twin_sync_impl()
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_bool(port_: MessagePort, arg: JsValue) {
-    wire_example_optional_primitive_type_bool_impl(port_, arg)
+pub fn wire_example_optional_primitive_type_bool_twin_normal(port_: MessagePort, arg: JsValue) {
+    wire_example_optional_primitive_type_bool_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_f32(port_: MessagePort, arg: JsValue) {
-    wire_example_optional_primitive_type_f32_impl(port_, arg)
+pub fn wire_example_optional_primitive_type_f32_twin_normal(port_: MessagePort, arg: JsValue) {
+    wire_example_optional_primitive_type_f32_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_f64(port_: MessagePort, arg: JsValue) {
-    wire_example_optional_primitive_type_f64_impl(port_, arg)
+pub fn wire_example_optional_primitive_type_f64_twin_normal(port_: MessagePort, arg: JsValue) {
+    wire_example_optional_primitive_type_f64_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i16(port_: MessagePort, arg: JsValue) {
-    wire_example_optional_primitive_type_i16_impl(port_, arg)
+pub fn wire_example_optional_primitive_type_i16_twin_normal(port_: MessagePort, arg: JsValue) {
+    wire_example_optional_primitive_type_i16_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i32(port_: MessagePort, arg: JsValue) {
-    wire_example_optional_primitive_type_i32_impl(port_, arg)
+pub fn wire_example_optional_primitive_type_i32_twin_normal(port_: MessagePort, arg: JsValue) {
+    wire_example_optional_primitive_type_i32_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i64(port_: MessagePort, arg: JsValue) {
-    wire_example_optional_primitive_type_i64_impl(port_, arg)
+pub fn wire_example_optional_primitive_type_i64_twin_normal(port_: MessagePort, arg: JsValue) {
+    wire_example_optional_primitive_type_i64_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_i8(port_: MessagePort, arg: JsValue) {
-    wire_example_optional_primitive_type_i8_impl(port_, arg)
+pub fn wire_example_optional_primitive_type_i8_twin_normal(port_: MessagePort, arg: JsValue) {
+    wire_example_optional_primitive_type_i8_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u16(port_: MessagePort, arg: JsValue) {
-    wire_example_optional_primitive_type_u16_impl(port_, arg)
+pub fn wire_example_optional_primitive_type_u16_twin_normal(port_: MessagePort, arg: JsValue) {
+    wire_example_optional_primitive_type_u16_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u32(port_: MessagePort, arg: JsValue) {
-    wire_example_optional_primitive_type_u32_impl(port_, arg)
+pub fn wire_example_optional_primitive_type_u32_twin_normal(port_: MessagePort, arg: JsValue) {
+    wire_example_optional_primitive_type_u32_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u64(port_: MessagePort, arg: JsValue) {
-    wire_example_optional_primitive_type_u64_impl(port_, arg)
+pub fn wire_example_optional_primitive_type_u64_twin_normal(port_: MessagePort, arg: JsValue) {
+    wire_example_optional_primitive_type_u64_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_optional_primitive_type_u8(port_: MessagePort, arg: JsValue) {
-    wire_example_optional_primitive_type_u8_impl(port_, arg)
+pub fn wire_example_optional_primitive_type_u8_twin_normal(port_: MessagePort, arg: JsValue) {
+    wire_example_optional_primitive_type_u8_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
@@ -262,58 +259,58 @@ pub fn wire_example_optional_primitive_type_u8_twin_sync(arg: JsValue) -> suppor
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_bool(port_: MessagePort, arg: bool) {
-    wire_example_primitive_type_bool_impl(port_, arg)
+pub fn wire_example_primitive_type_bool_twin_normal(port_: MessagePort, arg: bool) {
+    wire_example_primitive_type_bool_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_f32(port_: MessagePort, arg: f32) {
-    wire_example_primitive_type_f32_impl(port_, arg)
+pub fn wire_example_primitive_type_f32_twin_normal(port_: MessagePort, arg: f32) {
+    wire_example_primitive_type_f32_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_f64(port_: MessagePort, arg: f64) {
-    wire_example_primitive_type_f64_impl(port_, arg)
+pub fn wire_example_primitive_type_f64_twin_normal(port_: MessagePort, arg: f64) {
+    wire_example_primitive_type_f64_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_i16(port_: MessagePort, arg: i16) {
-    wire_example_primitive_type_i16_impl(port_, arg)
+pub fn wire_example_primitive_type_i16_twin_normal(port_: MessagePort, arg: i16) {
+    wire_example_primitive_type_i16_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_i32(port_: MessagePort, arg: i32) {
-    wire_example_primitive_type_i32_impl(port_, arg)
+pub fn wire_example_primitive_type_i32_twin_normal(port_: MessagePort, arg: i32) {
+    wire_example_primitive_type_i32_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_i64(port_: MessagePort, arg: i64) {
-    wire_example_primitive_type_i64_impl(port_, arg)
+pub fn wire_example_primitive_type_i64_twin_normal(port_: MessagePort, arg: i64) {
+    wire_example_primitive_type_i64_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_i8(port_: MessagePort, arg: i8) {
-    wire_example_primitive_type_i8_impl(port_, arg)
+pub fn wire_example_primitive_type_i8_twin_normal(port_: MessagePort, arg: i8) {
+    wire_example_primitive_type_i8_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_u16(port_: MessagePort, arg: u16) {
-    wire_example_primitive_type_u16_impl(port_, arg)
+pub fn wire_example_primitive_type_u16_twin_normal(port_: MessagePort, arg: u16) {
+    wire_example_primitive_type_u16_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_u32(port_: MessagePort, arg: u32) {
-    wire_example_primitive_type_u32_impl(port_, arg)
+pub fn wire_example_primitive_type_u32_twin_normal(port_: MessagePort, arg: u32) {
+    wire_example_primitive_type_u32_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_u64(port_: MessagePort, arg: u64) {
-    wire_example_primitive_type_u64_impl(port_, arg)
+pub fn wire_example_primitive_type_u64_twin_normal(port_: MessagePort, arg: u64) {
+    wire_example_primitive_type_u64_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
-pub fn wire_example_primitive_type_u8(port_: MessagePort, arg: u8) {
-    wire_example_primitive_type_u8_impl(port_, arg)
+pub fn wire_example_primitive_type_u8_twin_normal(port_: MessagePort, arg: u8) {
+    wire_example_primitive_type_u8_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
@@ -377,6 +374,6 @@ pub fn wire_simple_adder_twin_normal(port_: MessagePort, a: i32, b: i32) {
 }
 
 #[wasm_bindgen]
-pub fn wire_simple_adder_twin_normal_twin_sync(a: i32, b: i32) -> support::WireSyncReturn {
-    wire_simple_adder_twin_normal_twin_sync_impl(a, b)
+pub fn wire_simple_adder_twin_sync(a: i32, b: i32) -> support::WireSyncReturn {
+    wire_simple_adder_twin_sync_impl(a, b)
 }

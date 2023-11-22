@@ -2,6 +2,5 @@
 
 import '../frb_generated.dart';
 
-int simpleAdderTwinNormalTwinSync(
-        {required int a, required int b, dynamic hint}) =>
-    RustLib.instance.api.simpleAdderTwinNormalTwinSync(a: a, b: b, hint: hint);
+int simpleAdderTwinSync({required int a, required int b, dynamic hint}) =>
+    RustLib.instance.api.simpleAdderTwinSync(a: a, b: b, hint: hint);

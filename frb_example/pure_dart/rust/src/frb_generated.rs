@@ -135,220 +135,232 @@ fn wire_StructWithCommentsTwinSync_static_method_twin_sync_impl() -> support::Wi
         move || Result::<_, ()>::Ok(StructWithCommentsTwinSync::static_method_twin_sync()),
     )
 }
-fn wire_function_with_comments_slash_star_star_twin_normal_twin_sync_impl(
-) -> support::WireSyncReturn {
+fn wire_function_with_comments_slash_star_star_twin_sync_impl() -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
-            debug_name: "function_with_comments_slash_star_star_twin_normal_twin_sync",
+            debug_name: "function_with_comments_slash_star_star_twin_sync",
             port: None,
             mode: FfiCallMode::Sync,
         },
-        move || Result::<_, ()>::Ok(function_with_comments_slash_star_star_twin_normal_twin_sync()),
+        move || Result::<_, ()>::Ok(function_with_comments_slash_star_star_twin_sync()),
     )
 }
-fn wire_function_with_comments_triple_slash_multi_line_twin_normal_twin_sync_impl(
-) -> support::WireSyncReturn {
+fn wire_function_with_comments_triple_slash_multi_line_twin_sync_impl() -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
-            debug_name: "function_with_comments_triple_slash_multi_line_twin_normal_twin_sync",
+            debug_name: "function_with_comments_triple_slash_multi_line_twin_sync",
             port: None,
             mode: FfiCallMode::Sync,
         },
-        move || {
-            Result::<_, ()>::Ok(
-                function_with_comments_triple_slash_multi_line_twin_normal_twin_sync(),
-            )
-        },
+        move || Result::<_, ()>::Ok(function_with_comments_triple_slash_multi_line_twin_sync()),
     )
 }
-fn wire_function_with_comments_triple_slash_single_line_twin_normal_twin_sync_impl(
-) -> support::WireSyncReturn {
+fn wire_function_with_comments_triple_slash_single_line_twin_sync_impl() -> support::WireSyncReturn
+{
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
-            debug_name: "function_with_comments_triple_slash_single_line_twin_normal_twin_sync",
+            debug_name: "function_with_comments_triple_slash_single_line_twin_sync",
             port: None,
             mode: FfiCallMode::Sync,
         },
-        move || {
-            Result::<_, ()>::Ok(
-                function_with_comments_triple_slash_single_line_twin_normal_twin_sync(),
-            )
-        },
+        move || Result::<_, ()>::Ok(function_with_comments_triple_slash_single_line_twin_sync()),
     )
 }
-fn wire_example_optional_primitive_type_bool_impl(
+fn wire_example_optional_primitive_type_bool_twin_normal_impl(
     port_: MessagePort,
     arg: impl Wire2Api<Option<bool>> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<bool>, _>(
         WrapInfo {
-            debug_name: "example_optional_primitive_type_bool",
+            debug_name: "example_optional_primitive_type_bool_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(example_optional_primitive_type_bool(api_arg))
+            move |task_callback| {
+                Result::<_, ()>::Ok(example_optional_primitive_type_bool_twin_normal(api_arg))
+            }
         },
     )
 }
-fn wire_example_optional_primitive_type_f32_impl(
+fn wire_example_optional_primitive_type_f32_twin_normal_impl(
     port_: MessagePort,
     arg: impl Wire2Api<Option<f32>> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<f32>, _>(
         WrapInfo {
-            debug_name: "example_optional_primitive_type_f32",
+            debug_name: "example_optional_primitive_type_f32_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(example_optional_primitive_type_f32(api_arg))
+            move |task_callback| {
+                Result::<_, ()>::Ok(example_optional_primitive_type_f32_twin_normal(api_arg))
+            }
         },
     )
 }
-fn wire_example_optional_primitive_type_f64_impl(
+fn wire_example_optional_primitive_type_f64_twin_normal_impl(
     port_: MessagePort,
     arg: impl Wire2Api<Option<f64>> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<f64>, _>(
         WrapInfo {
-            debug_name: "example_optional_primitive_type_f64",
+            debug_name: "example_optional_primitive_type_f64_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(example_optional_primitive_type_f64(api_arg))
+            move |task_callback| {
+                Result::<_, ()>::Ok(example_optional_primitive_type_f64_twin_normal(api_arg))
+            }
         },
     )
 }
-fn wire_example_optional_primitive_type_i16_impl(
+fn wire_example_optional_primitive_type_i16_twin_normal_impl(
     port_: MessagePort,
     arg: impl Wire2Api<Option<i16>> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<i16>, _>(
         WrapInfo {
-            debug_name: "example_optional_primitive_type_i16",
+            debug_name: "example_optional_primitive_type_i16_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(example_optional_primitive_type_i16(api_arg))
+            move |task_callback| {
+                Result::<_, ()>::Ok(example_optional_primitive_type_i16_twin_normal(api_arg))
+            }
         },
     )
 }
-fn wire_example_optional_primitive_type_i32_impl(
+fn wire_example_optional_primitive_type_i32_twin_normal_impl(
     port_: MessagePort,
     arg: impl Wire2Api<Option<i32>> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<i32>, _>(
         WrapInfo {
-            debug_name: "example_optional_primitive_type_i32",
+            debug_name: "example_optional_primitive_type_i32_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(example_optional_primitive_type_i32(api_arg))
+            move |task_callback| {
+                Result::<_, ()>::Ok(example_optional_primitive_type_i32_twin_normal(api_arg))
+            }
         },
     )
 }
-fn wire_example_optional_primitive_type_i64_impl(
+fn wire_example_optional_primitive_type_i64_twin_normal_impl(
     port_: MessagePort,
     arg: impl Wire2Api<Option<i64>> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<i64>, _>(
         WrapInfo {
-            debug_name: "example_optional_primitive_type_i64",
+            debug_name: "example_optional_primitive_type_i64_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(example_optional_primitive_type_i64(api_arg))
+            move |task_callback| {
+                Result::<_, ()>::Ok(example_optional_primitive_type_i64_twin_normal(api_arg))
+            }
         },
     )
 }
-fn wire_example_optional_primitive_type_i8_impl(
+fn wire_example_optional_primitive_type_i8_twin_normal_impl(
     port_: MessagePort,
     arg: impl Wire2Api<Option<i8>> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<i8>, _>(
         WrapInfo {
-            debug_name: "example_optional_primitive_type_i8",
+            debug_name: "example_optional_primitive_type_i8_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(example_optional_primitive_type_i8(api_arg))
+            move |task_callback| {
+                Result::<_, ()>::Ok(example_optional_primitive_type_i8_twin_normal(api_arg))
+            }
         },
     )
 }
-fn wire_example_optional_primitive_type_u16_impl(
+fn wire_example_optional_primitive_type_u16_twin_normal_impl(
     port_: MessagePort,
     arg: impl Wire2Api<Option<u16>> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<u16>, _>(
         WrapInfo {
-            debug_name: "example_optional_primitive_type_u16",
+            debug_name: "example_optional_primitive_type_u16_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(example_optional_primitive_type_u16(api_arg))
+            move |task_callback| {
+                Result::<_, ()>::Ok(example_optional_primitive_type_u16_twin_normal(api_arg))
+            }
         },
     )
 }
-fn wire_example_optional_primitive_type_u32_impl(
+fn wire_example_optional_primitive_type_u32_twin_normal_impl(
     port_: MessagePort,
     arg: impl Wire2Api<Option<u32>> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<u32>, _>(
         WrapInfo {
-            debug_name: "example_optional_primitive_type_u32",
+            debug_name: "example_optional_primitive_type_u32_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(example_optional_primitive_type_u32(api_arg))
+            move |task_callback| {
+                Result::<_, ()>::Ok(example_optional_primitive_type_u32_twin_normal(api_arg))
+            }
         },
     )
 }
-fn wire_example_optional_primitive_type_u64_impl(
+fn wire_example_optional_primitive_type_u64_twin_normal_impl(
     port_: MessagePort,
     arg: impl Wire2Api<Option<u64>> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<u64>, _>(
         WrapInfo {
-            debug_name: "example_optional_primitive_type_u64",
+            debug_name: "example_optional_primitive_type_u64_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(example_optional_primitive_type_u64(api_arg))
+            move |task_callback| {
+                Result::<_, ()>::Ok(example_optional_primitive_type_u64_twin_normal(api_arg))
+            }
         },
     )
 }
-fn wire_example_optional_primitive_type_u8_impl(
+fn wire_example_optional_primitive_type_u8_twin_normal_impl(
     port_: MessagePort,
     arg: impl Wire2Api<Option<u8>> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<u8>, _>(
         WrapInfo {
-            debug_name: "example_optional_primitive_type_u8",
+            debug_name: "example_optional_primitive_type_u8_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(example_optional_primitive_type_u8(api_arg))
+            move |task_callback| {
+                Result::<_, ()>::Ok(example_optional_primitive_type_u8_twin_normal(api_arg))
+            }
         },
     )
 }
@@ -517,149 +529,197 @@ fn wire_example_optional_primitive_type_u8_twin_sync_impl(
         },
     )
 }
-fn wire_example_primitive_type_bool_impl(
+fn wire_example_primitive_type_bool_twin_normal_impl(
     port_: MessagePort,
     arg: impl Wire2Api<bool> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, bool, _>(
         WrapInfo {
-            debug_name: "example_primitive_type_bool",
+            debug_name: "example_primitive_type_bool_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(example_primitive_type_bool(api_arg))
+            move |task_callback| {
+                Result::<_, ()>::Ok(example_primitive_type_bool_twin_normal(api_arg))
+            }
         },
     )
 }
-fn wire_example_primitive_type_f32_impl(port_: MessagePort, arg: impl Wire2Api<f32> + UnwindSafe) {
+fn wire_example_primitive_type_f32_twin_normal_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<f32> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, f32, _>(
         WrapInfo {
-            debug_name: "example_primitive_type_f32",
+            debug_name: "example_primitive_type_f32_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(example_primitive_type_f32(api_arg))
+            move |task_callback| {
+                Result::<_, ()>::Ok(example_primitive_type_f32_twin_normal(api_arg))
+            }
         },
     )
 }
-fn wire_example_primitive_type_f64_impl(port_: MessagePort, arg: impl Wire2Api<f64> + UnwindSafe) {
+fn wire_example_primitive_type_f64_twin_normal_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<f64> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, f64, _>(
         WrapInfo {
-            debug_name: "example_primitive_type_f64",
+            debug_name: "example_primitive_type_f64_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(example_primitive_type_f64(api_arg))
+            move |task_callback| {
+                Result::<_, ()>::Ok(example_primitive_type_f64_twin_normal(api_arg))
+            }
         },
     )
 }
-fn wire_example_primitive_type_i16_impl(port_: MessagePort, arg: impl Wire2Api<i16> + UnwindSafe) {
+fn wire_example_primitive_type_i16_twin_normal_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<i16> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i16, _>(
         WrapInfo {
-            debug_name: "example_primitive_type_i16",
+            debug_name: "example_primitive_type_i16_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(example_primitive_type_i16(api_arg))
+            move |task_callback| {
+                Result::<_, ()>::Ok(example_primitive_type_i16_twin_normal(api_arg))
+            }
         },
     )
 }
-fn wire_example_primitive_type_i32_impl(port_: MessagePort, arg: impl Wire2Api<i32> + UnwindSafe) {
+fn wire_example_primitive_type_i32_twin_normal_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<i32> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
         WrapInfo {
-            debug_name: "example_primitive_type_i32",
+            debug_name: "example_primitive_type_i32_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(example_primitive_type_i32(api_arg))
+            move |task_callback| {
+                Result::<_, ()>::Ok(example_primitive_type_i32_twin_normal(api_arg))
+            }
         },
     )
 }
-fn wire_example_primitive_type_i64_impl(port_: MessagePort, arg: impl Wire2Api<i64> + UnwindSafe) {
+fn wire_example_primitive_type_i64_twin_normal_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<i64> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i64, _>(
         WrapInfo {
-            debug_name: "example_primitive_type_i64",
+            debug_name: "example_primitive_type_i64_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(example_primitive_type_i64(api_arg))
+            move |task_callback| {
+                Result::<_, ()>::Ok(example_primitive_type_i64_twin_normal(api_arg))
+            }
         },
     )
 }
-fn wire_example_primitive_type_i8_impl(port_: MessagePort, arg: impl Wire2Api<i8> + UnwindSafe) {
+fn wire_example_primitive_type_i8_twin_normal_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<i8> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i8, _>(
         WrapInfo {
-            debug_name: "example_primitive_type_i8",
+            debug_name: "example_primitive_type_i8_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(example_primitive_type_i8(api_arg))
+            move |task_callback| Result::<_, ()>::Ok(example_primitive_type_i8_twin_normal(api_arg))
         },
     )
 }
-fn wire_example_primitive_type_u16_impl(port_: MessagePort, arg: impl Wire2Api<u16> + UnwindSafe) {
+fn wire_example_primitive_type_u16_twin_normal_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<u16> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u16, _>(
         WrapInfo {
-            debug_name: "example_primitive_type_u16",
+            debug_name: "example_primitive_type_u16_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(example_primitive_type_u16(api_arg))
+            move |task_callback| {
+                Result::<_, ()>::Ok(example_primitive_type_u16_twin_normal(api_arg))
+            }
         },
     )
 }
-fn wire_example_primitive_type_u32_impl(port_: MessagePort, arg: impl Wire2Api<u32> + UnwindSafe) {
+fn wire_example_primitive_type_u32_twin_normal_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<u32> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32, _>(
         WrapInfo {
-            debug_name: "example_primitive_type_u32",
+            debug_name: "example_primitive_type_u32_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(example_primitive_type_u32(api_arg))
+            move |task_callback| {
+                Result::<_, ()>::Ok(example_primitive_type_u32_twin_normal(api_arg))
+            }
         },
     )
 }
-fn wire_example_primitive_type_u64_impl(port_: MessagePort, arg: impl Wire2Api<u64> + UnwindSafe) {
+fn wire_example_primitive_type_u64_twin_normal_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<u64> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u64, _>(
         WrapInfo {
-            debug_name: "example_primitive_type_u64",
+            debug_name: "example_primitive_type_u64_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(example_primitive_type_u64(api_arg))
+            move |task_callback| {
+                Result::<_, ()>::Ok(example_primitive_type_u64_twin_normal(api_arg))
+            }
         },
     )
 }
-fn wire_example_primitive_type_u8_impl(port_: MessagePort, arg: impl Wire2Api<u8> + UnwindSafe) {
+fn wire_example_primitive_type_u8_twin_normal_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<u8> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u8, _>(
         WrapInfo {
-            debug_name: "example_primitive_type_u8",
+            debug_name: "example_primitive_type_u8_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_arg = arg.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(example_primitive_type_u8(api_arg))
+            move |task_callback| Result::<_, ()>::Ok(example_primitive_type_u8_twin_normal(api_arg))
         },
     )
 }
@@ -846,20 +906,20 @@ fn wire_simple_adder_twin_normal_impl(
         },
     )
 }
-fn wire_simple_adder_twin_normal_twin_sync_impl(
+fn wire_simple_adder_twin_sync_impl(
     a: impl Wire2Api<i32> + UnwindSafe,
     b: impl Wire2Api<i32> + UnwindSafe,
 ) -> support::WireSyncReturn {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
         WrapInfo {
-            debug_name: "simple_adder_twin_normal_twin_sync",
+            debug_name: "simple_adder_twin_sync",
             port: None,
             mode: FfiCallMode::Sync,
         },
         move || {
             let api_a = a.wire2api();
             let api_b = b.wire2api();
-            Result::<_, ()>::Ok(simple_adder_twin_normal_twin_sync(api_a, api_b))
+            Result::<_, ()>::Ok(simple_adder_twin_sync(api_a, api_b))
         },
     )
 }

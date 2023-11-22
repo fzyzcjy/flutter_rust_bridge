@@ -5,23 +5,19 @@ import '../frb_generated.dart';
 /// Multiline comments are fine,
 /// but they are not preferred in Rust nor in Dart.
 /// Newlines are preserved.
-void functionWithCommentsSlashStarStarTwinNormalTwinSync({dynamic hint}) =>
-    RustLib.instance.api
-        .functionWithCommentsSlashStarStarTwinNormalTwinSync(hint: hint);
+void functionWithCommentsSlashStarStarTwinSync({dynamic hint}) =>
+    RustLib.instance.api.functionWithCommentsSlashStarStarTwinSync(hint: hint);
 
 /// This is first line
 /// This is second line
-void functionWithCommentsTripleSlashMultiLineTwinNormalTwinSync(
-        {dynamic hint}) =>
+void functionWithCommentsTripleSlashMultiLineTwinSync({dynamic hint}) =>
     RustLib.instance.api
-        .functionWithCommentsTripleSlashMultiLineTwinNormalTwinSync(hint: hint);
+        .functionWithCommentsTripleSlashMultiLineTwinSync(hint: hint);
 
 /// This is single line comment
-void functionWithCommentsTripleSlashSingleLineTwinNormalTwinSync(
-        {dynamic hint}) =>
+void functionWithCommentsTripleSlashSingleLineTwinSync({dynamic hint}) =>
     RustLib.instance.api
-        .functionWithCommentsTripleSlashSingleLineTwinNormalTwinSync(
-            hint: hint);
+        .functionWithCommentsTripleSlashSingleLineTwinSync(hint: hint);
 
 /// Comments on structs
 class StructWithCommentsTwinSync {

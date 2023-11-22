@@ -292,238 +292,238 @@ class RustLibWire implements BaseWire {
       _wire_StructWithCommentsTwinSync_static_method_twin_syncPtr
           .asFunction<WireSyncReturn Function()>();
 
-  WireSyncReturn
-      wire_function_with_comments_slash_star_star_twin_normal_twin_sync() {
-    return _wire_function_with_comments_slash_star_star_twin_normal_twin_sync();
+  WireSyncReturn wire_function_with_comments_slash_star_star_twin_sync() {
+    return _wire_function_with_comments_slash_star_star_twin_sync();
   }
 
-  late final _wire_function_with_comments_slash_star_star_twin_normal_twin_syncPtr =
+  late final _wire_function_with_comments_slash_star_star_twin_syncPtr =
       _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
-          'wire_function_with_comments_slash_star_star_twin_normal_twin_sync');
-  late final _wire_function_with_comments_slash_star_star_twin_normal_twin_sync =
-      _wire_function_with_comments_slash_star_star_twin_normal_twin_syncPtr
+          'wire_function_with_comments_slash_star_star_twin_sync');
+  late final _wire_function_with_comments_slash_star_star_twin_sync =
+      _wire_function_with_comments_slash_star_star_twin_syncPtr
           .asFunction<WireSyncReturn Function()>();
 
   WireSyncReturn
-      wire_function_with_comments_triple_slash_multi_line_twin_normal_twin_sync() {
-    return _wire_function_with_comments_triple_slash_multi_line_twin_normal_twin_sync();
+      wire_function_with_comments_triple_slash_multi_line_twin_sync() {
+    return _wire_function_with_comments_triple_slash_multi_line_twin_sync();
   }
 
-  late final _wire_function_with_comments_triple_slash_multi_line_twin_normal_twin_syncPtr =
+  late final _wire_function_with_comments_triple_slash_multi_line_twin_syncPtr =
       _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
-          'wire_function_with_comments_triple_slash_multi_line_twin_normal_twin_sync');
-  late final _wire_function_with_comments_triple_slash_multi_line_twin_normal_twin_sync =
-      _wire_function_with_comments_triple_slash_multi_line_twin_normal_twin_syncPtr
+          'wire_function_with_comments_triple_slash_multi_line_twin_sync');
+  late final _wire_function_with_comments_triple_slash_multi_line_twin_sync =
+      _wire_function_with_comments_triple_slash_multi_line_twin_syncPtr
           .asFunction<WireSyncReturn Function()>();
 
   WireSyncReturn
-      wire_function_with_comments_triple_slash_single_line_twin_normal_twin_sync() {
-    return _wire_function_with_comments_triple_slash_single_line_twin_normal_twin_sync();
+      wire_function_with_comments_triple_slash_single_line_twin_sync() {
+    return _wire_function_with_comments_triple_slash_single_line_twin_sync();
   }
 
-  late final _wire_function_with_comments_triple_slash_single_line_twin_normal_twin_syncPtr =
+  late final _wire_function_with_comments_triple_slash_single_line_twin_syncPtr =
       _lookup<ffi.NativeFunction<WireSyncReturn Function()>>(
-          'wire_function_with_comments_triple_slash_single_line_twin_normal_twin_sync');
-  late final _wire_function_with_comments_triple_slash_single_line_twin_normal_twin_sync =
-      _wire_function_with_comments_triple_slash_single_line_twin_normal_twin_syncPtr
+          'wire_function_with_comments_triple_slash_single_line_twin_sync');
+  late final _wire_function_with_comments_triple_slash_single_line_twin_sync =
+      _wire_function_with_comments_triple_slash_single_line_twin_syncPtr
           .asFunction<WireSyncReturn Function()>();
 
-  void wire_example_optional_primitive_type_bool(
+  void wire_example_optional_primitive_type_bool_twin_normal(
     int port_,
     ffi.Pointer<ffi.Bool> arg,
   ) {
-    return _wire_example_optional_primitive_type_bool(
+    return _wire_example_optional_primitive_type_bool_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_example_optional_primitive_type_boolPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Bool>)>>(
-      'wire_example_optional_primitive_type_bool');
-  late final _wire_example_optional_primitive_type_bool =
-      _wire_example_optional_primitive_type_boolPtr
+  late final _wire_example_optional_primitive_type_bool_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Bool>)>>(
+          'wire_example_optional_primitive_type_bool_twin_normal');
+  late final _wire_example_optional_primitive_type_bool_twin_normal =
+      _wire_example_optional_primitive_type_bool_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Bool>)>();
 
-  void wire_example_optional_primitive_type_f32(
+  void wire_example_optional_primitive_type_f32_twin_normal(
     int port_,
     ffi.Pointer<ffi.Float> arg,
   ) {
-    return _wire_example_optional_primitive_type_f32(
+    return _wire_example_optional_primitive_type_f32_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_example_optional_primitive_type_f32Ptr = _lookup<
+  late final _wire_example_optional_primitive_type_f32_twin_normalPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Float>)>>(
-      'wire_example_optional_primitive_type_f32');
-  late final _wire_example_optional_primitive_type_f32 =
-      _wire_example_optional_primitive_type_f32Ptr
+      'wire_example_optional_primitive_type_f32_twin_normal');
+  late final _wire_example_optional_primitive_type_f32_twin_normal =
+      _wire_example_optional_primitive_type_f32_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Float>)>();
 
-  void wire_example_optional_primitive_type_f64(
+  void wire_example_optional_primitive_type_f64_twin_normal(
     int port_,
     ffi.Pointer<ffi.Double> arg,
   ) {
-    return _wire_example_optional_primitive_type_f64(
+    return _wire_example_optional_primitive_type_f64_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_example_optional_primitive_type_f64Ptr = _lookup<
+  late final _wire_example_optional_primitive_type_f64_twin_normalPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Double>)>>(
-      'wire_example_optional_primitive_type_f64');
-  late final _wire_example_optional_primitive_type_f64 =
-      _wire_example_optional_primitive_type_f64Ptr
+      'wire_example_optional_primitive_type_f64_twin_normal');
+  late final _wire_example_optional_primitive_type_f64_twin_normal =
+      _wire_example_optional_primitive_type_f64_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Double>)>();
 
-  void wire_example_optional_primitive_type_i16(
+  void wire_example_optional_primitive_type_i16_twin_normal(
     int port_,
     ffi.Pointer<ffi.Int16> arg,
   ) {
-    return _wire_example_optional_primitive_type_i16(
+    return _wire_example_optional_primitive_type_i16_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_example_optional_primitive_type_i16Ptr = _lookup<
+  late final _wire_example_optional_primitive_type_i16_twin_normalPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Int16>)>>(
-      'wire_example_optional_primitive_type_i16');
-  late final _wire_example_optional_primitive_type_i16 =
-      _wire_example_optional_primitive_type_i16Ptr
+      'wire_example_optional_primitive_type_i16_twin_normal');
+  late final _wire_example_optional_primitive_type_i16_twin_normal =
+      _wire_example_optional_primitive_type_i16_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Int16>)>();
 
-  void wire_example_optional_primitive_type_i32(
+  void wire_example_optional_primitive_type_i32_twin_normal(
     int port_,
     ffi.Pointer<ffi.Int32> arg,
   ) {
-    return _wire_example_optional_primitive_type_i32(
+    return _wire_example_optional_primitive_type_i32_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_example_optional_primitive_type_i32Ptr = _lookup<
+  late final _wire_example_optional_primitive_type_i32_twin_normalPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Int32>)>>(
-      'wire_example_optional_primitive_type_i32');
-  late final _wire_example_optional_primitive_type_i32 =
-      _wire_example_optional_primitive_type_i32Ptr
+      'wire_example_optional_primitive_type_i32_twin_normal');
+  late final _wire_example_optional_primitive_type_i32_twin_normal =
+      _wire_example_optional_primitive_type_i32_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Int32>)>();
 
-  void wire_example_optional_primitive_type_i64(
+  void wire_example_optional_primitive_type_i64_twin_normal(
     int port_,
     ffi.Pointer<ffi.Int64> arg,
   ) {
-    return _wire_example_optional_primitive_type_i64(
+    return _wire_example_optional_primitive_type_i64_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_example_optional_primitive_type_i64Ptr = _lookup<
+  late final _wire_example_optional_primitive_type_i64_twin_normalPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Int64>)>>(
-      'wire_example_optional_primitive_type_i64');
-  late final _wire_example_optional_primitive_type_i64 =
-      _wire_example_optional_primitive_type_i64Ptr
+      'wire_example_optional_primitive_type_i64_twin_normal');
+  late final _wire_example_optional_primitive_type_i64_twin_normal =
+      _wire_example_optional_primitive_type_i64_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Int64>)>();
 
-  void wire_example_optional_primitive_type_i8(
+  void wire_example_optional_primitive_type_i8_twin_normal(
     int port_,
     ffi.Pointer<ffi.Int8> arg,
   ) {
-    return _wire_example_optional_primitive_type_i8(
+    return _wire_example_optional_primitive_type_i8_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_example_optional_primitive_type_i8Ptr = _lookup<
+  late final _wire_example_optional_primitive_type_i8_twin_normalPtr = _lookup<
           ffi
           .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Int8>)>>(
-      'wire_example_optional_primitive_type_i8');
-  late final _wire_example_optional_primitive_type_i8 =
-      _wire_example_optional_primitive_type_i8Ptr
+      'wire_example_optional_primitive_type_i8_twin_normal');
+  late final _wire_example_optional_primitive_type_i8_twin_normal =
+      _wire_example_optional_primitive_type_i8_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Int8>)>();
 
-  void wire_example_optional_primitive_type_u16(
+  void wire_example_optional_primitive_type_u16_twin_normal(
     int port_,
     ffi.Pointer<ffi.Uint16> arg,
   ) {
-    return _wire_example_optional_primitive_type_u16(
+    return _wire_example_optional_primitive_type_u16_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_example_optional_primitive_type_u16Ptr = _lookup<
+  late final _wire_example_optional_primitive_type_u16_twin_normalPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint16>)>>(
-      'wire_example_optional_primitive_type_u16');
-  late final _wire_example_optional_primitive_type_u16 =
-      _wire_example_optional_primitive_type_u16Ptr
+      'wire_example_optional_primitive_type_u16_twin_normal');
+  late final _wire_example_optional_primitive_type_u16_twin_normal =
+      _wire_example_optional_primitive_type_u16_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint16>)>();
 
-  void wire_example_optional_primitive_type_u32(
+  void wire_example_optional_primitive_type_u32_twin_normal(
     int port_,
     ffi.Pointer<ffi.Uint32> arg,
   ) {
-    return _wire_example_optional_primitive_type_u32(
+    return _wire_example_optional_primitive_type_u32_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_example_optional_primitive_type_u32Ptr = _lookup<
+  late final _wire_example_optional_primitive_type_u32_twin_normalPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint32>)>>(
-      'wire_example_optional_primitive_type_u32');
-  late final _wire_example_optional_primitive_type_u32 =
-      _wire_example_optional_primitive_type_u32Ptr
+      'wire_example_optional_primitive_type_u32_twin_normal');
+  late final _wire_example_optional_primitive_type_u32_twin_normal =
+      _wire_example_optional_primitive_type_u32_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint32>)>();
 
-  void wire_example_optional_primitive_type_u64(
+  void wire_example_optional_primitive_type_u64_twin_normal(
     int port_,
     ffi.Pointer<ffi.Uint64> arg,
   ) {
-    return _wire_example_optional_primitive_type_u64(
+    return _wire_example_optional_primitive_type_u64_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_example_optional_primitive_type_u64Ptr = _lookup<
+  late final _wire_example_optional_primitive_type_u64_twin_normalPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint64>)>>(
-      'wire_example_optional_primitive_type_u64');
-  late final _wire_example_optional_primitive_type_u64 =
-      _wire_example_optional_primitive_type_u64Ptr
+      'wire_example_optional_primitive_type_u64_twin_normal');
+  late final _wire_example_optional_primitive_type_u64_twin_normal =
+      _wire_example_optional_primitive_type_u64_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint64>)>();
 
-  void wire_example_optional_primitive_type_u8(
+  void wire_example_optional_primitive_type_u8_twin_normal(
     int port_,
     ffi.Pointer<ffi.Uint8> arg,
   ) {
-    return _wire_example_optional_primitive_type_u8(
+    return _wire_example_optional_primitive_type_u8_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_example_optional_primitive_type_u8Ptr = _lookup<
+  late final _wire_example_optional_primitive_type_u8_twin_normalPtr = _lookup<
           ffi.NativeFunction<
               ffi.Void Function(ffi.Int64, ffi.Pointer<ffi.Uint8>)>>(
-      'wire_example_optional_primitive_type_u8');
-  late final _wire_example_optional_primitive_type_u8 =
-      _wire_example_optional_primitive_type_u8Ptr
+      'wire_example_optional_primitive_type_u8_twin_normal');
+  late final _wire_example_optional_primitive_type_u8_twin_normal =
+      _wire_example_optional_primitive_type_u8_twin_normalPtr
           .asFunction<void Function(int, ffi.Pointer<ffi.Uint8>)>();
 
   WireSyncReturn wire_example_optional_primitive_type_bool_twin_sync(
@@ -691,184 +691,192 @@ class RustLibWire implements BaseWire {
       _wire_example_optional_primitive_type_u8_twin_syncPtr
           .asFunction<WireSyncReturn Function(ffi.Pointer<ffi.Uint8>)>();
 
-  void wire_example_primitive_type_bool(
+  void wire_example_primitive_type_bool_twin_normal(
     int port_,
     bool arg,
   ) {
-    return _wire_example_primitive_type_bool(
+    return _wire_example_primitive_type_bool_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_example_primitive_type_boolPtr =
+  late final _wire_example_primitive_type_bool_twin_normalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Bool)>>(
-          'wire_example_primitive_type_bool');
-  late final _wire_example_primitive_type_bool =
-      _wire_example_primitive_type_boolPtr
+          'wire_example_primitive_type_bool_twin_normal');
+  late final _wire_example_primitive_type_bool_twin_normal =
+      _wire_example_primitive_type_bool_twin_normalPtr
           .asFunction<void Function(int, bool)>();
 
-  void wire_example_primitive_type_f32(
+  void wire_example_primitive_type_f32_twin_normal(
     int port_,
     double arg,
   ) {
-    return _wire_example_primitive_type_f32(
+    return _wire_example_primitive_type_f32_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_example_primitive_type_f32Ptr =
+  late final _wire_example_primitive_type_f32_twin_normalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Float)>>(
-          'wire_example_primitive_type_f32');
-  late final _wire_example_primitive_type_f32 =
-      _wire_example_primitive_type_f32Ptr
+          'wire_example_primitive_type_f32_twin_normal');
+  late final _wire_example_primitive_type_f32_twin_normal =
+      _wire_example_primitive_type_f32_twin_normalPtr
           .asFunction<void Function(int, double)>();
 
-  void wire_example_primitive_type_f64(
+  void wire_example_primitive_type_f64_twin_normal(
     int port_,
     double arg,
   ) {
-    return _wire_example_primitive_type_f64(
+    return _wire_example_primitive_type_f64_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_example_primitive_type_f64Ptr =
+  late final _wire_example_primitive_type_f64_twin_normalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Double)>>(
-          'wire_example_primitive_type_f64');
-  late final _wire_example_primitive_type_f64 =
-      _wire_example_primitive_type_f64Ptr
+          'wire_example_primitive_type_f64_twin_normal');
+  late final _wire_example_primitive_type_f64_twin_normal =
+      _wire_example_primitive_type_f64_twin_normalPtr
           .asFunction<void Function(int, double)>();
 
-  void wire_example_primitive_type_i16(
+  void wire_example_primitive_type_i16_twin_normal(
     int port_,
     int arg,
   ) {
-    return _wire_example_primitive_type_i16(
+    return _wire_example_primitive_type_i16_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_example_primitive_type_i16Ptr =
+  late final _wire_example_primitive_type_i16_twin_normalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int16)>>(
-          'wire_example_primitive_type_i16');
-  late final _wire_example_primitive_type_i16 =
-      _wire_example_primitive_type_i16Ptr.asFunction<void Function(int, int)>();
+          'wire_example_primitive_type_i16_twin_normal');
+  late final _wire_example_primitive_type_i16_twin_normal =
+      _wire_example_primitive_type_i16_twin_normalPtr
+          .asFunction<void Function(int, int)>();
 
-  void wire_example_primitive_type_i32(
+  void wire_example_primitive_type_i32_twin_normal(
     int port_,
     int arg,
   ) {
-    return _wire_example_primitive_type_i32(
+    return _wire_example_primitive_type_i32_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_example_primitive_type_i32Ptr =
+  late final _wire_example_primitive_type_i32_twin_normalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
-          'wire_example_primitive_type_i32');
-  late final _wire_example_primitive_type_i32 =
-      _wire_example_primitive_type_i32Ptr.asFunction<void Function(int, int)>();
+          'wire_example_primitive_type_i32_twin_normal');
+  late final _wire_example_primitive_type_i32_twin_normal =
+      _wire_example_primitive_type_i32_twin_normalPtr
+          .asFunction<void Function(int, int)>();
 
-  void wire_example_primitive_type_i64(
+  void wire_example_primitive_type_i64_twin_normal(
     int port_,
     int arg,
   ) {
-    return _wire_example_primitive_type_i64(
+    return _wire_example_primitive_type_i64_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_example_primitive_type_i64Ptr =
+  late final _wire_example_primitive_type_i64_twin_normalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>(
-          'wire_example_primitive_type_i64');
-  late final _wire_example_primitive_type_i64 =
-      _wire_example_primitive_type_i64Ptr.asFunction<void Function(int, int)>();
+          'wire_example_primitive_type_i64_twin_normal');
+  late final _wire_example_primitive_type_i64_twin_normal =
+      _wire_example_primitive_type_i64_twin_normalPtr
+          .asFunction<void Function(int, int)>();
 
-  void wire_example_primitive_type_i8(
+  void wire_example_primitive_type_i8_twin_normal(
     int port_,
     int arg,
   ) {
-    return _wire_example_primitive_type_i8(
+    return _wire_example_primitive_type_i8_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_example_primitive_type_i8Ptr =
+  late final _wire_example_primitive_type_i8_twin_normalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int8)>>(
-          'wire_example_primitive_type_i8');
-  late final _wire_example_primitive_type_i8 =
-      _wire_example_primitive_type_i8Ptr.asFunction<void Function(int, int)>();
+          'wire_example_primitive_type_i8_twin_normal');
+  late final _wire_example_primitive_type_i8_twin_normal =
+      _wire_example_primitive_type_i8_twin_normalPtr
+          .asFunction<void Function(int, int)>();
 
-  void wire_example_primitive_type_u16(
+  void wire_example_primitive_type_u16_twin_normal(
     int port_,
     int arg,
   ) {
-    return _wire_example_primitive_type_u16(
+    return _wire_example_primitive_type_u16_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_example_primitive_type_u16Ptr =
+  late final _wire_example_primitive_type_u16_twin_normalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint16)>>(
-          'wire_example_primitive_type_u16');
-  late final _wire_example_primitive_type_u16 =
-      _wire_example_primitive_type_u16Ptr.asFunction<void Function(int, int)>();
+          'wire_example_primitive_type_u16_twin_normal');
+  late final _wire_example_primitive_type_u16_twin_normal =
+      _wire_example_primitive_type_u16_twin_normalPtr
+          .asFunction<void Function(int, int)>();
 
-  void wire_example_primitive_type_u32(
+  void wire_example_primitive_type_u32_twin_normal(
     int port_,
     int arg,
   ) {
-    return _wire_example_primitive_type_u32(
+    return _wire_example_primitive_type_u32_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_example_primitive_type_u32Ptr =
+  late final _wire_example_primitive_type_u32_twin_normalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>(
-          'wire_example_primitive_type_u32');
-  late final _wire_example_primitive_type_u32 =
-      _wire_example_primitive_type_u32Ptr.asFunction<void Function(int, int)>();
+          'wire_example_primitive_type_u32_twin_normal');
+  late final _wire_example_primitive_type_u32_twin_normal =
+      _wire_example_primitive_type_u32_twin_normalPtr
+          .asFunction<void Function(int, int)>();
 
-  void wire_example_primitive_type_u64(
+  void wire_example_primitive_type_u64_twin_normal(
     int port_,
     int arg,
   ) {
-    return _wire_example_primitive_type_u64(
+    return _wire_example_primitive_type_u64_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_example_primitive_type_u64Ptr =
+  late final _wire_example_primitive_type_u64_twin_normalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint64)>>(
-          'wire_example_primitive_type_u64');
-  late final _wire_example_primitive_type_u64 =
-      _wire_example_primitive_type_u64Ptr.asFunction<void Function(int, int)>();
+          'wire_example_primitive_type_u64_twin_normal');
+  late final _wire_example_primitive_type_u64_twin_normal =
+      _wire_example_primitive_type_u64_twin_normalPtr
+          .asFunction<void Function(int, int)>();
 
-  void wire_example_primitive_type_u8(
+  void wire_example_primitive_type_u8_twin_normal(
     int port_,
     int arg,
   ) {
-    return _wire_example_primitive_type_u8(
+    return _wire_example_primitive_type_u8_twin_normal(
       port_,
       arg,
     );
   }
 
-  late final _wire_example_primitive_type_u8Ptr =
+  late final _wire_example_primitive_type_u8_twin_normalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint8)>>(
-          'wire_example_primitive_type_u8');
-  late final _wire_example_primitive_type_u8 =
-      _wire_example_primitive_type_u8Ptr.asFunction<void Function(int, int)>();
+          'wire_example_primitive_type_u8_twin_normal');
+  late final _wire_example_primitive_type_u8_twin_normal =
+      _wire_example_primitive_type_u8_twin_normalPtr
+          .asFunction<void Function(int, int)>();
 
   WireSyncReturn wire_example_primitive_type_bool_twin_sync(
     bool arg,
@@ -1054,22 +1062,21 @@ class RustLibWire implements BaseWire {
   late final _wire_simple_adder_twin_normal = _wire_simple_adder_twin_normalPtr
       .asFunction<void Function(int, int, int)>();
 
-  WireSyncReturn wire_simple_adder_twin_normal_twin_sync(
+  WireSyncReturn wire_simple_adder_twin_sync(
     int a,
     int b,
   ) {
-    return _wire_simple_adder_twin_normal_twin_sync(
+    return _wire_simple_adder_twin_sync(
       a,
       b,
     );
   }
 
-  late final _wire_simple_adder_twin_normal_twin_syncPtr = _lookup<
+  late final _wire_simple_adder_twin_syncPtr = _lookup<
           ffi.NativeFunction<WireSyncReturn Function(ffi.Int32, ffi.Int32)>>(
-      'wire_simple_adder_twin_normal_twin_sync');
-  late final _wire_simple_adder_twin_normal_twin_sync =
-      _wire_simple_adder_twin_normal_twin_syncPtr
-          .asFunction<WireSyncReturn Function(int, int)>();
+      'wire_simple_adder_twin_sync');
+  late final _wire_simple_adder_twin_sync = _wire_simple_adder_twin_syncPtr
+      .asFunction<WireSyncReturn Function(int, int)>();
 
   ffi.Pointer<ffi.Bool> new_box_autoadd_bool(
     bool value,
