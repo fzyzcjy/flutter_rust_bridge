@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/utils/preludes.dart';
 import 'package:glob/glob.dart';
 import 'package:glob/list_local_fs.dart';
 import 'package:meta/meta.dart';
@@ -64,8 +65,8 @@ class _Duplicator {
       if (DuplicatorMode.values.any((mode) => fileStem.contains(mode.postfix))) continue;
 
       for (final mode in DuplicatorMode.values) {
-        final outputText =
-            _computePrelude(fileName) + generator.generateDuplicateCode((file as File).readAsStringSync(), mode);
+        final outputText = computeDuplicatorPrelude(fileName) +
+            generator.generateDuplicateCode((file as File).readAsStringSync(), mode);
         final targetPath = generator.interestDir
             .resolve('pseudo_manual/')
             .resolve('${generator.generateDuplicateFileStem(fileStem, mode)}.${generator.extension}')
@@ -74,8 +75,4 @@ class _Duplicator {
       }
     }
   }
-
-  static String _computePrelude(String originalFileName) =>
-      '// NOTE: This file is auto-generated from `$originalFileName` by frb_internal\n'
-      '// Please do not modify manually, but modify the `$originalFileName` and re-run frb_internal generator\n\n';
 }
