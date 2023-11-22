@@ -93,18 +93,24 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 subpat: None,
             })),
             colon_token: Colon { spans: [span] },
-            ty: Box::new(Type::Path(TypePath {
-                qself: None,
-                path: Path {
-                    leading_colon: None,
-                    segments,
-                },
-            })),
+            ty: Box::new(),
         }));
+
+        let ty = Type::Path(TypePath {
+            qself: None,
+            path: Path {
+                leading_colon: None,
+                segments,
+            },
+        });
 
         let name = "that".to_owned();
 
-        partial_info_for_normal_type_raw(ty_raw, &receiver.attrs, name)
+        partial_info_for_normal_type_raw(
+            self.type_parser.parse_type(&ty, context)?,
+            &receiver.attrs,
+            name,
+        )
     }
 
     fn parse_fn_arg_type_stream_sink(
