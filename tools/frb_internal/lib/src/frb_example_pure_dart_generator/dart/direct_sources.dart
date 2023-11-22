@@ -14,7 +14,7 @@ String _generatePrimitive() {
   final builder = DartFileBuilder(importName: 'primitive');
   for (final ty in kPrimitiveTypes) {
     for (final argRaw in ty.interestRawValues) {
-      final arg = ty.primitiveWrapper(argRaw);
+      final arg = ty.primitiveWrapper(ty, argRaw);
       builder.body += '''
         test('type=${ty.name} arg=$arg', () async {
           expect(await examplePrimitiveType${ReCase(ty.name).pascalCase}TwinNormal(arg: $arg), $arg);
@@ -51,7 +51,10 @@ String _generatePrimitiveList() {
 String _generateOptionalPrimitive() {
   final builder = DartFileBuilder(importName: 'optional_primitive');
   for (final ty in kPrimitiveTypes) {
-    for (final arg in ["null", ...ty.interestValues]) {
+    for (final arg in [
+      "null",
+      ...ty.interestRawValues.map((x) => ty.primitiveWrapper(ty, x)),
+    ]) {
       builder.body += '''
         test('type=${ty.name} arg=$arg', () async {
           expect(await exampleOptionalPrimitiveType${ReCase(ty.name).pascalCase}TwinNormal(arg: $arg), $arg);
