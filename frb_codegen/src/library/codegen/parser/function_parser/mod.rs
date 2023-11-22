@@ -37,7 +37,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         func: &GeneralizedItemFn,
         file_path: &Path,
         rust_crate_dir: &Path,
-    ) -> anyhow::Result<IrFunc> {
+    ) -> anyhow::Result<Option<IrFunc>> {
         self.parse_function_inner(func, file_path, rust_crate_dir)
             .with_context(|| format!("function={:?}", func.sig().ident))
     }
@@ -47,14 +47,19 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         func: &GeneralizedItemFn,
         file_path: &Path,
         rust_crate_dir: &Path,
-    ) -> anyhow::Result<IrFunc> {
+    ) -> anyhow::Result<Option<IrFunc>> {
         debug!("parse_function function name: {:?}", func.sig().ident);
 
         let sig = func.sig();
         let namespace =
             Namespace::new_self_crate(compute_mod_from_rust_path(file_path, rust_crate_dir)?);
 
-        let owner = parse_owner(func);
+        let owner = if let Some(owner) = parse_owner(func) {
+            owner
+        } else {
+            return Ok(None);
+        };
+
         let func_name = parse_name(sig, &owner);
 
         let context = TypeParserParsingContext {
@@ -67,7 +72,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         }
         info = info.merge(self.parse_fn_output(sig, &context)?)?;
 
-        Ok(IrFunc {
+        Ok(Some(IrFunc {
             name: NamespacedName::new(namespace, func_name),
             inputs: info.inputs,
             output: info.ok_output.unwrap_or(Primitive(IrTypePrimitive::Unit)),
@@ -75,7 +80,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             owner: owner,
             mode: info.mode.unwrap_or(IrFuncMode::Normal),
             comments: parse_comments(func.attrs()),
-        })
+        }))
     }
 }
 
@@ -88,8 +93,8 @@ fn parse_name(sig: &Signature, owner: &IrFuncOwnerInfo) -> String {
     }
 }
 
-fn parse_owner(item_fn: &GeneralizedItemFn) -> IrFuncOwnerInfo {
-    match item_fn {
+fn parse_owner(item_fn: &GeneralizedItemFn) -> Option<IrFuncOwnerInfo> {
+    Some(match item_fn {
         GeneralizedItemFn::Function { .. } => IrFuncOwnerInfo::Function,
         GeneralizedItemFn::Method {
             item_impl,
@@ -101,13 +106,19 @@ fn parse_owner(item_fn: &GeneralizedItemFn) -> IrFuncOwnerInfo {
                 IrFuncOwnerInfoMethodMode::Static
             };
 
+            let self_ty_path = if let Type::Path(self_ty_path) = item_impl.self_ty.as_ref() {
+                self_ty_path
+            } else {
+                return None;
+            };
+
             IrFuncOwnerInfo::Method(IrFuncOwnerInfoMethod {
                 struct_name: TODO,
                 actual_method_name: impl_item_fn.sig.ident.to_string(),
                 mode,
             })
         }
-    }
+    })
 }
 
 #[derive(Debug, Default)]

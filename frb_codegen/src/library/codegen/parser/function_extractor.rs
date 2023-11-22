@@ -92,8 +92,14 @@ fn convert_item_method_to_function(
     item_impl: &ItemImpl,
     impl_item_fn: &ImplItemFn,
 ) -> anyhow::Result<Option<ItemFn>> {
-    if let Type::Path(p) = item_impl.self_ty.as_ref() {
-        let struct_name = p.path.segments.first().unwrap().ident.to_string();
+    if let Type::Path(self_ty_path) = item_impl.self_ty.as_ref() {
+        let struct_name = self_ty_path
+            .path
+            .segments
+            .first()
+            .unwrap()
+            .ident
+            .to_string();
         let span = impl_item_fn.sig.ident.span();
         let method_name = if is_static_method {
             let self_type = {

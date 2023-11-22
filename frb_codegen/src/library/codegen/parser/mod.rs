@@ -53,6 +53,7 @@ pub(crate) fn parse(config: &ParserInternalConfig) -> anyhow::Result<IrPack> {
         })
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
+        .filter_map(|x| x)
         // to give downstream a stable output
         .sorted_by_cached_key(|func| func.name.clone())
         .collect_vec();
