@@ -74,17 +74,6 @@ pub fn handle_return_unit() -> () {
 //     }
 // }
 
-pub fn handle_struct_sync_freezed(
-    arg: MySizeFreezed,
-    boxed: Box<MySizeFreezed>,
-) -> SyncReturn<MySizeFreezed> {
-    info!("handle_struct_sync_freezed({:?}, {:?})", &arg, &boxed);
-    SyncReturn(MySizeFreezed {
-        width: arg.width + boxed.width,
-        height: arg.height + boxed.height,
-    })
-}
-
 #[derive(Debug)]
 pub struct NewTypeInt(pub i64);
 
