@@ -2,8 +2,8 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
 
 Map<String, String> generateRustDirectSources() {
   return {
-    'src/api/primitive.rs': _generateSrcApiPrimitive(),
-    'src/api/optional_primitive.rs': _generateSrcApiOptionalPrimitive(),
+    'primitive.rs': _generateSrcApiPrimitive(),
+    'optional_primitive.rs': _generateSrcApiOptionalPrimitive(),
   };
 }
 
