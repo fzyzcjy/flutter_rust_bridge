@@ -2,10 +2,7 @@
   "generator": {
     "api_dart": {
       "dart3": true,
-      "dart_decl_output_path": {
-        "apple": "{the-working-directory}/my_dart_folder/api/apple.dart",
-        "orange": "{the-working-directory}/my_dart_folder/api/orange.dart"
-      },
+      "dart_decl_base_output_path": "{the-working-directory}/my_dart_folder",
       "dart_entrypoint_class_name": "RustLib",
       "dart_enums_style": false
     },
@@ -56,10 +53,10 @@
       "rust": {
         "rust_crate_dir": "{the-working-directory}",
         "rust_input_path_pack": {
-          "rust_input_path": {
-            "apple": "{the-working-directory}/src/api/apple.rs",
-            "orange": "{the-working-directory}/src/api/orange.rs"
-          }
+          "rust_input_paths": [
+            "{the-working-directory}/src/api/apple.rs",
+            "{the-working-directory}/src/api/orange.rs"
+          ]
         },
         "rust_output_path": {
           "common": "{the-working-directory}/src/frb_generated.rs",
@@ -73,10 +70,10 @@
   "parser": {
     "rust_crate_dir": "{the-working-directory}",
     "rust_input_path_pack": {
-      "rust_input_path": {
-        "apple": "{the-working-directory}/src/api/apple.rs",
-        "orange": "{the-working-directory}/src/api/orange.rs"
-      }
+      "rust_input_paths": [
+        "{the-working-directory}/src/api/apple.rs",
+        "{the-working-directory}/src/api/orange.rs"
+      ]
     }
   },
   "polisher": {

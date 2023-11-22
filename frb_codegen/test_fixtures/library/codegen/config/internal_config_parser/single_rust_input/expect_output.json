@@ -2,9 +2,7 @@
   "generator": {
     "api_dart": {
       "dart3": true,
-      "dart_decl_output_path": {
-        "api": "{the-working-directory}/my_dart_folder/api/api.dart"
-      },
+      "dart_decl_base_output_path": "{the-working-directory}/my_dart_folder",
       "dart_entrypoint_class_name": "RustLib",
       "dart_enums_style": false
     },
@@ -55,9 +53,9 @@
       "rust": {
         "rust_crate_dir": "{the-working-directory}",
         "rust_input_path_pack": {
-          "rust_input_path": {
-            "api": "{the-working-directory}/src/api.rs"
-          }
+          "rust_input_paths": [
+            "{the-working-directory}/src/api.rs"
+          ]
         },
         "rust_output_path": {
           "common": "{the-working-directory}/src/frb_generated.rs",
@@ -71,9 +69,9 @@
   "parser": {
     "rust_crate_dir": "{the-working-directory}",
     "rust_input_path_pack": {
-      "rust_input_path": {
-        "api": "{the-working-directory}/src/api.rs"
-      }
+      "rust_input_paths": [
+        "{the-working-directory}/src/api.rs"
+      ]
     }
   },
   "polisher": {
