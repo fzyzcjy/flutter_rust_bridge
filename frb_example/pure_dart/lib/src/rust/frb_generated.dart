@@ -12,8 +12,7 @@ import 'api/pseudo_manual/simple_twin_sync.dart';
 import 'api/simple.dart';
 import 'frb_generated.io.dart'
     if (dart.library.html) 'frb_generated.web.dart.dart';
-import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart'
-    if (dart.library.html) 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 /// Main entrypoint of the Rust API
 class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
