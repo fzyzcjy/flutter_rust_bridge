@@ -12,6 +12,7 @@ pub struct Namespace {
 }
 
 const SEP: &str = "::";
+const SELF_CRATE: &str = "crate";
 
 impl Namespace {
     pub fn new(path: Vec<String>) -> Self {
@@ -24,12 +25,20 @@ impl Namespace {
     }
 
     pub fn new_self_crate(joined_path: String) -> Self {
-        assert!(!joined_path.starts_with("crate::"));
-        Self::new_raw(format!("crate::{joined_path}"))
+        assert!(!joined_path.starts_with(&format!("{SELF_CRATE}{SEP}")));
+        Self::new_raw(format!("{SELF_CRATE}{SEP}{joined_path}"))
     }
 
     pub fn path(&self) -> Vec<&str> {
         self.joined_path.split(SEP).collect()
+    }
+
+    pub fn path_exclude_self_crate(&self) -> Vec<&str> {
+        let mut path = self.path();
+        if path.first() == Some(&SELF_CRATE) {
+            path.remove(0);
+        }
+        path
     }
 }
 

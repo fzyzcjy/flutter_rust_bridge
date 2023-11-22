@@ -45,9 +45,11 @@ fn compute_path_from_namespace(
     dart_decl_base_output_path: &Path,
     namespace: &Namespace,
 ) -> PathBuf {
-    dart_decl_base_output_path
-        .join(namespace.joined_path)
-        .to_owned()
+    let chunks = namespace.path_exclude_self_crate();
+    let ans_without_extension = chunks
+        .iter()
+        .fold(dart_decl_base_output_path.to_owned(), |a, b| a.join(b));
+    ans_without_extension.with_extension("rs")
 }
 
 #[cfg(test)]
