@@ -1,4 +1,6 @@
 pub mod comment_twin_sync;
+pub mod exception_twin_sync;
+pub mod misc_type_twin_sync;
 pub mod optional_primitive;
 pub mod optional_primitive_twin_sync;
 pub mod primitive;
