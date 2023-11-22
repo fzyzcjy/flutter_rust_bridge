@@ -34,68 +34,10 @@ extern "C" fn on_dylib_start() {
         .try_init();
 }
 
-// DONE
-// pub fn primitive_optional_types(
-//     my_i32: Option<i32>,
-//     my_i64: Option<i64>,
-//     my_f64: Option<f64>,
-//     my_bool: Option<bool>,
-// ) -> Option<i32> {
-//     info!(
-//         "primitive_optional_types({}, {}, {}, {})",
-//         my_i32.unwrap_or_default(),
-//         my_i64.unwrap_or_default(),
-//         my_f64.unwrap_or_default(),
-//         my_bool.unwrap_or_default()
-//     );
-//     Some(
-//         my_i32.is_some() as i32
-//             + my_i64.is_some() as i32
-//             + my_f64.is_some() as i32
-//             + my_bool.is_some() as i32,
-//     )
-// }
-
-pub fn primitive_types_sync(
-    my_i32: i32,
-    my_i64: i64,
-    my_f64: f64,
-    my_bool: bool,
-) -> SyncReturn<i32> {
-    info!(
-        "primitive_types_sync({}, {}, {}, {})",
-        my_i32, my_i64, my_f64, my_bool
-    );
-    SyncReturn(42)
-}
-
-// DONE primitive
-// pub fn primitive_u32(my_u32: u32) -> u32 {
-//     info!("primitive_u32({})", my_u32);
-//     assert_eq!(my_u32, 0xff112233);
-//     let ret = 0xfe112233;
-//     info!("returning {}", ret);
-//     ret
-// }
-
-pub fn primitive_u32_sync(my_u32: u32) -> SyncReturn<u32> {
-    info!("primitive_u32_sync({})", my_u32);
-    assert_eq!(my_u32, 0xff112233);
-    let ret = 0xfe112233;
-    info!("returning {}", ret);
-    SyncReturn(ret)
-}
-
 pub fn handle_string(s: String) -> String {
     info!("handle_string({})", &s);
     let s2 = s.clone();
     s + &s2
-}
-
-pub fn handle_string_sync(s: String) -> SyncReturn<String> {
-    info!("handle_string_sync({})", &s);
-    let s2 = s.clone();
-    SyncReturn(s + &s2)
 }
 
 #[allow(clippy::unused_unit)]
@@ -103,20 +45,10 @@ pub fn handle_return_unit() -> () {
     info!("handle_return_unit()");
 }
 
-pub fn handle_return_unit_sync() -> SyncReturn<()> {
-    info!("handle_return_unit_sync()");
-    SyncReturn(())
-}
-
 // to check that `Vec<u8>` can be used as return type
 pub fn handle_vec_u8(v: Vec<u8>) -> Vec<u8> {
     info!("handle_vec_u8(first few elements: {:?})", &v[..5]);
     v.repeat(2)
-}
-
-pub fn handle_vec_u8_sync(v: Vec<u8>) -> SyncReturn<Vec<u8>> {
-    info!("handle_vec_u8_sync(first few elements: {:?})", &v[..5]);
-    SyncReturn(v.repeat(2))
 }
 
 pub struct VecOfPrimitivePack {
@@ -149,22 +81,6 @@ pub fn handle_vec_of_primitive(n: i32) -> VecOfPrimitivePack {
     }
 }
 
-pub fn handle_vec_of_primitive_sync(n: i32) -> SyncReturn<VecOfPrimitivePack> {
-    SyncReturn(VecOfPrimitivePack {
-        int8list: vec![42i8; n as usize],
-        uint8list: vec![42u8; n as usize],
-        int16list: vec![42i16; n as usize],
-        uint16list: vec![42u16; n as usize],
-        int32list: vec![42i32; n as usize],
-        uint32list: vec![42u32; n as usize],
-        int64list: vec![42i64; n as usize],
-        uint64list: vec![42u64; n as usize],
-        float32list: vec![42.0f32; n as usize],
-        float64list: vec![42.0f64; n as usize],
-        bool_list: vec![true; n as usize],
-    })
-}
-
 pub struct ZeroCopyVecOfPrimitivePack {
     pub int8list: ZeroCopyBuffer<Vec<i8>>,
     pub uint8list: ZeroCopyBuffer<Vec<u8>>,
@@ -193,21 +109,6 @@ pub fn handle_zero_copy_vec_of_primitive(n: i32) -> ZeroCopyVecOfPrimitivePack {
     }
 }
 
-pub fn handle_zero_copy_vec_of_primitive_sync(n: i32) -> SyncReturn<ZeroCopyVecOfPrimitivePack> {
-    SyncReturn(ZeroCopyVecOfPrimitivePack {
-        int8list: ZeroCopyBuffer(vec![42i8; n as usize]),
-        uint8list: ZeroCopyBuffer(vec![42u8; n as usize]),
-        int16list: ZeroCopyBuffer(vec![42i16; n as usize]),
-        uint16list: ZeroCopyBuffer(vec![42u16; n as usize]),
-        int32list: ZeroCopyBuffer(vec![42i32; n as usize]),
-        uint32list: ZeroCopyBuffer(vec![42u32; n as usize]),
-        int64list: ZeroCopyBuffer(vec![42i64; n as usize]),
-        uint64list: ZeroCopyBuffer(vec![42u64; n as usize]),
-        float32list: ZeroCopyBuffer(vec![42.0f32; n as usize]),
-        float64list: ZeroCopyBuffer(vec![42.0f64; n as usize]),
-    })
-}
-
 #[derive(Debug, Clone)]
 pub struct MySize {
     pub width: i32,
@@ -229,14 +130,6 @@ pub fn handle_struct(arg: MySize, boxed: Box<MySize>) -> MySize {
     }
 }
 
-pub fn handle_struct_sync(arg: MySize, boxed: Box<MySize>) -> SyncReturn<MySize> {
-    info!("handle_struct_sync({:?}, {:?})", &arg, &boxed);
-    SyncReturn(MySize {
-        width: arg.width + boxed.width,
-        height: arg.height + boxed.height,
-    })
-}
-
 pub fn handle_struct_sync_freezed(
     arg: MySizeFreezed,
     boxed: Box<MySizeFreezed>,
@@ -256,11 +149,6 @@ pub fn handle_newtype(arg: NewTypeInt) -> NewTypeInt {
     NewTypeInt(arg.0 * 2)
 }
 
-pub fn handle_newtype_sync(arg: NewTypeInt) -> SyncReturn<NewTypeInt> {
-    info!("handle_newtype_sync({:?})", &arg);
-    SyncReturn(NewTypeInt(arg.0 * 2))
-}
-
 pub fn handle_list_of_struct(mut l: Vec<MySize>) -> Vec<MySize> {
     info!("handle_list_of_struct({:?})", &l);
     let mut ans = l.clone();
@@ -268,25 +156,11 @@ pub fn handle_list_of_struct(mut l: Vec<MySize>) -> Vec<MySize> {
     ans
 }
 
-pub fn handle_list_of_struct_sync(mut l: Vec<MySize>) -> SyncReturn<Vec<MySize>> {
-    info!("handle_list_of_struct_sync({:?})", &l);
-    let mut ans = l.clone();
-    ans.append(&mut l);
-    SyncReturn(ans)
-}
-
 pub fn handle_string_list(names: Vec<String>) -> Vec<String> {
     for name in &names {
         info!("Hello, {}", name);
     }
     names
-}
-
-pub fn handle_string_list_sync(names: Vec<String>) -> SyncReturn<Vec<String>> {
-    for name in &names {
-        info!("Hello, {}", name);
-    }
-    SyncReturn(names)
 }
 
 #[derive(Debug, Clone)]
@@ -303,12 +177,6 @@ pub fn handle_complex_struct(s: MyTreeNode) -> MyTreeNode {
     s
 }
 
-pub fn handle_complex_struct_sync(s: MyTreeNode) -> SyncReturn<MyTreeNode> {
-    info!("handle_complex_struct_sync({:?})", &s);
-    let s_cloned = s.clone();
-    SyncReturn(s)
-}
-
 #[derive(Debug, Clone)]
 pub struct MyNestedStruct {
     pub tree_node: MyTreeNode,
@@ -319,16 +187,6 @@ pub fn handle_nested_struct(s: MyNestedStruct) -> MyNestedStruct {
     println!("handle_nested_struct({s:?})");
     let s_cloned = s.clone();
     s
-}
-
-// Test if sync return is working as expected by using Vec<u8> as return value.
-pub fn handle_sync_return(mode: String) -> Result<SyncReturn<Vec<u8>>> {
-    match &mode[..] {
-        "NORMAL" => Ok(SyncReturn(vec![42u8; 100])),
-        "RESULT_ERR" => Err(anyhow!("deliberate error in handle_sync_return_err")),
-        "PANIC" => panic!("deliberate panic in handle_sync_return_panic"),
-        _ => panic!("unknown mode"),
-    }
 }
 
 pub fn handle_stream(sink: StreamSink<String>, arg: String) {
