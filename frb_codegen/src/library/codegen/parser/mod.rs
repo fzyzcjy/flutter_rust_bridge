@@ -48,7 +48,9 @@ pub(crate) fn parse(config: &ParserInternalConfig) -> anyhow::Result<IrPack> {
 
     let ir_funcs = src_fns
         .iter()
-        .map(|f| function_parser.parse_function(&f.item_fn, &f.path, &config.rust_crate_dir))
+        .map(|f| {
+            function_parser.parse_function(&f.generalized_item_fn, &f.path, &config.rust_crate_dir)
+        })
         .collect::<anyhow::Result<Vec<_>>>()?
         .into_iter()
         // to give downstream a stable output

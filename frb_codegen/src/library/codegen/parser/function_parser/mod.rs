@@ -6,6 +6,7 @@ use crate::codegen::ir::func::{IrFunc, IrFuncMode, IrFuncOwnerInfo};
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrType;
+use crate::codegen::parser::function_extractor::GeneralizedItemFn;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::{TypeParser, TypeParserParsingContext};
 use crate::utils::rust_project_utils::compute_mod_from_rust_path;
@@ -32,7 +33,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
     pub(crate) fn parse_function(
         &mut self,
-        func: &ItemFn,
+        func: &GeneralizedItemFn,
         file_path: &Path,
         rust_crate_dir: &Path,
     ) -> anyhow::Result<IrFunc> {
@@ -42,7 +43,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
     fn parse_function_inner(
         &mut self,
-        func: &ItemFn,
+        func: &GeneralizedItemFn,
         file_path: &Path,
         rust_crate_dir: &Path,
     ) -> anyhow::Result<IrFunc> {

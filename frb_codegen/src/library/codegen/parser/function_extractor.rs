@@ -7,9 +7,10 @@ use syn::*;
 
 pub(super) struct PathAndItemFn {
     pub(super) path: PathBuf,
-    pub(super) item_fn: ItemFn,
+    pub(super) generalized_item_fn: GeneralizedItemFn,
 }
 
+#[derive(Debug, Clone)]
 pub(super) enum GeneralizedItemFn {
     Function {
         item_fn: ItemFn,
@@ -31,9 +32,9 @@ pub(super) fn extract_generalized_functions_from_file(
     .concat();
     let ans = item_fns
         .into_iter()
-        .map(|item_fn| PathAndItemFn {
+        .map(|generalized_item_fn| PathAndItemFn {
             path: path.to_owned(),
-            item_fn,
+            generalized_item_fn,
         })
         .collect_vec();
     Ok(ans)
