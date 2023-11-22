@@ -63,14 +63,6 @@ extern "C" fn on_dylib_start() {
 //     }
 // }
 
-#[derive(Debug)]
-pub struct NewTypeInt(pub i64);
-
-pub fn handle_newtype(arg: NewTypeInt) -> NewTypeInt {
-    info!("handle_newtype({:?})", &arg);
-    NewTypeInt(arg.0 * 2)
-}
-
 pub fn handle_list_of_struct(mut l: Vec<MySize>) -> Vec<MySize> {
     info!("handle_list_of_struct({:?})", &l);
     let mut ans = l.clone();
