@@ -100,7 +100,7 @@ impl<'a> WireRustGeneratorWire2apiTrait for EnumRefWireRustGenerator<'a> {
             .collect_vec();
 
         Some(WireRustOutputCode {
-            direct_code: generate_impl_new_with_nullptr_code_block(
+            body: generate_impl_new_with_nullptr_code_block(
                 self.ir.clone(),
                 self.context,
                 "Self { tag: -1, kind: core::ptr::null_mut() }",

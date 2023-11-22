@@ -5,7 +5,7 @@ use std::ops::AddAssign;
 
 #[derive(Default, Clone)]
 pub(crate) struct WireRustOutputCode {
-    pub(crate) direct_code: String,
+    pub(crate) body: String,
     pub(crate) extern_funcs: Vec<ExternFunc>,
 }
 
@@ -15,7 +15,7 @@ impl WireRustOutputCode {
     pub(crate) fn all_code(&self) -> String {
         format!(
             "{}\n{}",
-            self.direct_code,
+            self.body,
             self.extern_funcs
                 .iter()
                 .map(|func| func.generate())
@@ -27,15 +27,15 @@ impl WireRustOutputCode {
 impl AddAssign for WireRustOutputCode {
     #[inline]
     fn add_assign(&mut self, rhs: Self) {
-        self.direct_code += &rhs.direct_code;
+        self.body += &rhs.body;
         self.extern_funcs.extend(rhs.extern_funcs);
     }
 }
 
 impl From<String> for WireRustOutputCode {
-    fn from(direct_code: String) -> Self {
+    fn from(body: String) -> Self {
         Self {
-            direct_code,
+            body,
             ..Default::default()
         }
     }
@@ -50,7 +50,7 @@ impl From<ExternFunc> for WireRustOutputCode {
 impl From<Vec<ExternFunc>> for WireRustOutputCode {
     fn from(extern_funcs: Vec<ExternFunc>) -> Self {
         Self {
-            direct_code: "".to_string(),
+            body: "".to_string(),
             extern_funcs,
         }
     }
