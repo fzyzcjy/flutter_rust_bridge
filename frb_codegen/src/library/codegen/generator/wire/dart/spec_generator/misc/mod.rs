@@ -66,11 +66,10 @@ fn generate_boilerplate(
         ..
     } = &dart_output_class_name_pack;
 
-    let file_top = "// ignore_for_file: unused_import\n".to_owned();
+    let file_top = "// ignore_for_file: unused_import, unused_element\n".to_owned();
 
     let universal_imports =
-        generate_import_dart_api_layer(dart_impl_output_path, api_dart_actual_output_paths)?
-            + "\nimport 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';";
+        generate_import_dart_api_layer(dart_impl_output_path, api_dart_actual_output_paths)?;
 
     Ok(Acc {
         common: vec![WireDartOutputCode {
@@ -78,6 +77,7 @@ fn generate_boilerplate(
             import: format!(
                 "
                 {universal_imports}
+                import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
                 import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart.dart';
                 "
             ),
@@ -125,6 +125,7 @@ fn generate_boilerplate(
             import: format!(
                 "
                 {universal_imports}
+                import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
                 import 'frb_generated.dart';
                 "
             ),
