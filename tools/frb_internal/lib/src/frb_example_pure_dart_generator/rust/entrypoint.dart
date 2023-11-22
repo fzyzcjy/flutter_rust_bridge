@@ -16,4 +16,16 @@ class RustGenerator extends BaseGenerator {
 
   @override
   String get extension => 'rs';
+
+  @override
+  String generateDuplicate(String inputText, DuplicatorMode mode) {
+    final prefix = switch (mode) {
+      DuplicatorMode.sync => '#[frb(sync)] ',
+    };
+
+    return inputText.replaceAllMapped(
+      RegExp(r'pub fn ([a-zA-Z0-9_-]+)\('),
+      (m) => '${prefix}pub fn ${m.group(1)}${mode.filePostfix}(',
+    );
+  }
 }

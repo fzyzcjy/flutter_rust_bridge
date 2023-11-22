@@ -37,8 +37,10 @@ abstract class BaseGenerator {
 }
 
 enum DuplicatorMode {
-  sync,
+  sync;
   // TODO rust-async, ...
+
+  String get filePostfix => '_twin_$name';
 }
 
 class _Duplicator {
@@ -52,15 +54,13 @@ class _Duplicator {
       final fileStem = path.basenameWithoutExtension(file.path);
       if (file is! File || path.extension(file.path) != '.${generator.extension}') continue;
       if (generator.duplicatorBlacklistNames.contains(fileName)) continue;
-      if (DuplicatorMode.values.any((mode) => fileStem.endsWith(_computePostfix(mode)))) continue;
+      if (DuplicatorMode.values.any((mode) => fileStem.endsWith(mode.filePostfix))) continue;
 
       for (final mode in DuplicatorMode.values) {
         final outputText = generator.generateDuplicate(file.readAsStringSync(), mode);
-        final targetPath = file.uri.resolve('../$fileStem${_computePostfix(mode)}.${generator.extension}').toFilePath();
+        final targetPath = file.uri.resolve('../$fileStem${mode.filePostfix}.${generator.extension}').toFilePath();
         File(targetPath).writeAsStringSync(outputText);
       }
     }
   }
-
-  String _computePostfix(DuplicatorMode mode) => '_twin_${mode.name}';
 }
