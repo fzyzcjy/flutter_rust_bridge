@@ -45,17 +45,15 @@ pub struct StructSimpleTwinNormal {
 pub struct StructFreezedTwinNormal {
     pub field: i32,
 }
-
-pub fn func_struct_simple_twin_normal(arg: StructSimpleTwinNormal) -> StructSimpleTwinNormal {
-    arg
-}
-
-pub fn func_struct_simple_boxed_twin_normal(
-    arg: Box<StructSimpleTwinNormal>,
-) -> Box<StructSimpleTwinNormal> {
-    arg
-}
   ''';
+
+  for (final (ty, partialName) in [
+    ('StructSimpleTwinNormal', 'func_struct_simple'),
+    ('StructFreezedTwinNormal', 'func_struct_freezed'),
+  ]) {
+    builder.addIdentityFunction(ty, partialName);
+    builder.addIdentityFunction('Box<$ty>', '${partialName}_boxed');
+  }
 
   return builder.toString();
 }
