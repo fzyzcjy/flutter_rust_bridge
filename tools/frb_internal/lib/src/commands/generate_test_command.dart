@@ -1,4 +1,5 @@
 import 'package:args/command_runner.dart';
+import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator/generator.dart' as generator;
 
 class GenerateTestCommand extends Command<void> {
   @override
@@ -9,6 +10,6 @@ class GenerateTestCommand extends Command<void> {
 
   @override
   Future<void> run() async {
-    print('TODO');
+    generator.generate();
   }
 }
