@@ -8,7 +8,7 @@ use std::fmt::{Display, Formatter};
 #[serde(transparent)]
 pub struct Namespace {
     // Represent via this, instead of `Vec<String>`, to avoid extra memory overhead
-    pub(crate) joined_path: String,
+    joined_path: String,
 }
 
 const SEP: &str = "::";

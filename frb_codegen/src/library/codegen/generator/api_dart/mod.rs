@@ -5,9 +5,11 @@ mod text_generator;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::api_dart::text_generator::ApiDartOutputText;
 use crate::codegen::generator::misc::{PathText, PathTexts};
+use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::IrPack;
 use anyhow::Result;
 use itertools::Itertools;
+use std::path::{Path, PathBuf};
 
 pub(crate) struct GeneratorApiDartOutput {
     pub output_texts: PathTexts,
@@ -31,15 +33,21 @@ fn generate_output_path_texts(
         (text.namespaced_texts.into_iter())
             .map(|(namespace, text)| {
                 PathText::new(
-                    config
-                        .dart_decl_base_output_path
-                        .join(namespace.joined_path)
-                        .to_owned(),
+                    compute_path_from_namespace(&config.dart_decl_base_output_path, &namespace),
                     text,
                 )
             })
             .collect_vec(),
     )
+}
+
+fn compute_path_from_namespace(
+    dart_decl_base_output_path: &Path,
+    namespace: &Namespace,
+) -> PathBuf {
+    dart_decl_base_output_path
+        .join(namespace.joined_path)
+        .to_owned()
 }
 
 #[cfg(test)]
