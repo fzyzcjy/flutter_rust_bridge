@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import, unused_element
 
 import 'api/comment.dart';
+import 'api/optional_primitive.dart';
 import 'api/primitive.dart';
 import 'api/simple.dart';
 import 'api/sync.dart';
@@ -55,6 +56,28 @@ abstract class RustLibApi extends BaseApi {
   Future<void> functionWithCommentsTripleSlashMultiLine({dynamic hint});
 
   Future<void> functionWithCommentsTripleSlashSingleLine({dynamic hint});
+
+  Future<bool?> exampleOptionalPrimitiveTypeBool({bool? arg, dynamic hint});
+
+  Future<double?> exampleOptionalPrimitiveTypeF32({double? arg, dynamic hint});
+
+  Future<double?> exampleOptionalPrimitiveTypeF64({double? arg, dynamic hint});
+
+  Future<int?> exampleOptionalPrimitiveTypeI16({int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalPrimitiveTypeI32({int? arg, dynamic hint});
+
+  Future<BigInt?> exampleOptionalPrimitiveTypeI64({BigInt? arg, dynamic hint});
+
+  Future<int?> exampleOptionalPrimitiveTypeI8({int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalPrimitiveTypeU16({int? arg, dynamic hint});
+
+  Future<int?> exampleOptionalPrimitiveTypeU32({int? arg, dynamic hint});
+
+  Future<BigInt?> exampleOptionalPrimitiveTypeU64({BigInt? arg, dynamic hint});
+
+  Future<int?> exampleOptionalPrimitiveTypeU8({int? arg, dynamic hint});
 
   Future<bool> examplePrimitiveTypeBool({required bool arg, dynamic hint});
 
@@ -189,6 +212,237 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(
         debugName: "function_with_comments_triple_slash_single_line",
         argNames: [],
+      );
+
+  @override
+  Future<bool?> exampleOptionalPrimitiveTypeBool({bool? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_bool(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_optional_primitive_type_bool(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_bool,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeBoolConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeBoolConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_bool",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double?> exampleOptionalPrimitiveTypeF32({double? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_f_32(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_optional_primitive_type_f32(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_f_32,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeF32ConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeF32ConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_f32",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<double?> exampleOptionalPrimitiveTypeF64({double? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_f_64(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_optional_primitive_type_f64(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_f_64,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeF64ConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeF64ConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_f64",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalPrimitiveTypeI16({int? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_i_16(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_optional_primitive_type_i16(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_i_16,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeI16ConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeI16ConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_i16",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalPrimitiveTypeI32({int? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_i_32(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_optional_primitive_type_i32(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_i_32,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeI32ConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeI32ConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_i32",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<BigInt?> exampleOptionalPrimitiveTypeI64({BigInt? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_i_64(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_optional_primitive_type_i64(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_i_64,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeI64ConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeI64ConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_i64",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalPrimitiveTypeI8({int? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_i_8(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_optional_primitive_type_i8(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_i_8,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeI8ConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeI8ConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_i8",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalPrimitiveTypeU16({int? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_u_16(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_optional_primitive_type_u16(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_u_16,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeU16ConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeU16ConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_u16",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalPrimitiveTypeU32({int? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_u_32(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_optional_primitive_type_u32(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_u_32,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeU32ConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeU32ConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_u32",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<BigInt?> exampleOptionalPrimitiveTypeU64({BigInt? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_u_64(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_optional_primitive_type_u64(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_u_64,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeU64ConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeU64ConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_u64",
+        argNames: ["arg"],
+      );
+
+  @override
+  Future<int?> exampleOptionalPrimitiveTypeU8({int? arg, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_u_8(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_example_optional_primitive_type_u8(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_u_8,
+      parseErrorData: null,
+      constMeta: kExampleOptionalPrimitiveTypeU8ConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kExampleOptionalPrimitiveTypeU8ConstMeta =>
+      const TaskConstMeta(
+        debugName: "example_optional_primitive_type_u8",
+        argNames: ["arg"],
       );
 
   @override
@@ -447,6 +701,50 @@ bool _wire2api_bool(dynamic raw) {
   return raw as bool;
 }
 
+bool _wire2api_box_autoadd_bool(dynamic raw) {
+  return raw as bool;
+}
+
+double _wire2api_box_autoadd_f_32(dynamic raw) {
+  return raw as double;
+}
+
+double _wire2api_box_autoadd_f_64(dynamic raw) {
+  return raw as double;
+}
+
+int _wire2api_box_autoadd_i_16(dynamic raw) {
+  return raw as int;
+}
+
+int _wire2api_box_autoadd_i_32(dynamic raw) {
+  return raw as int;
+}
+
+BigInt _wire2api_box_autoadd_i_64(dynamic raw) {
+  return _wire2api_i_64(raw);
+}
+
+int _wire2api_box_autoadd_i_8(dynamic raw) {
+  return raw as int;
+}
+
+int _wire2api_box_autoadd_u_16(dynamic raw) {
+  return raw as int;
+}
+
+int _wire2api_box_autoadd_u_32(dynamic raw) {
+  return raw as int;
+}
+
+BigInt _wire2api_box_autoadd_u_64(dynamic raw) {
+  return _wire2api_u_64(raw);
+}
+
+int _wire2api_box_autoadd_u_8(dynamic raw) {
+  return raw as int;
+}
+
 double _wire2api_f_32(dynamic raw) {
   return raw as double;
 }
@@ -469,6 +767,50 @@ BigInt _wire2api_i_64(dynamic raw) {
 
 int _wire2api_i_8(dynamic raw) {
   return raw as int;
+}
+
+bool? _wire2api_opt_box_autoadd_bool(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_bool(raw);
+}
+
+double? _wire2api_opt_box_autoadd_f_32(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_f_32(raw);
+}
+
+double? _wire2api_opt_box_autoadd_f_64(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_f_64(raw);
+}
+
+int? _wire2api_opt_box_autoadd_i_16(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_i_16(raw);
+}
+
+int? _wire2api_opt_box_autoadd_i_32(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_i_32(raw);
+}
+
+BigInt? _wire2api_opt_box_autoadd_i_64(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_i_64(raw);
+}
+
+int? _wire2api_opt_box_autoadd_i_8(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_i_8(raw);
+}
+
+int? _wire2api_opt_box_autoadd_u_16(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_u_16(raw);
+}
+
+int? _wire2api_opt_box_autoadd_u_32(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_u_32(raw);
+}
+
+BigInt? _wire2api_opt_box_autoadd_u_64(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_u_64(raw);
+}
+
+int? _wire2api_opt_box_autoadd_u_8(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_u_8(raw);
 }
 
 int _wire2api_u_16(dynamic raw) {

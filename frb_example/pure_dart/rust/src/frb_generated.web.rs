@@ -106,6 +106,61 @@ pub fn wire_function_with_comments_triple_slash_single_line(port_: MessagePort) 
 }
 
 #[wasm_bindgen]
+pub fn wire_example_optional_primitive_type_bool(port_: MessagePort, arg: JsValue) {
+    wire_example_optional_primitive_type_bool_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_primitive_type_f32(port_: MessagePort, arg: JsValue) {
+    wire_example_optional_primitive_type_f32_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_primitive_type_f64(port_: MessagePort, arg: JsValue) {
+    wire_example_optional_primitive_type_f64_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_primitive_type_i16(port_: MessagePort, arg: JsValue) {
+    wire_example_optional_primitive_type_i16_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_primitive_type_i32(port_: MessagePort, arg: JsValue) {
+    wire_example_optional_primitive_type_i32_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_primitive_type_i64(port_: MessagePort, arg: JsValue) {
+    wire_example_optional_primitive_type_i64_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_primitive_type_i8(port_: MessagePort, arg: JsValue) {
+    wire_example_optional_primitive_type_i8_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_primitive_type_u16(port_: MessagePort, arg: JsValue) {
+    wire_example_optional_primitive_type_u16_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_primitive_type_u32(port_: MessagePort, arg: JsValue) {
+    wire_example_optional_primitive_type_u32_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_primitive_type_u64(port_: MessagePort, arg: JsValue) {
+    wire_example_optional_primitive_type_u64_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_example_optional_primitive_type_u8(port_: MessagePort, arg: JsValue) {
+    wire_example_optional_primitive_type_u8_impl(port_, arg)
+}
+
+#[wasm_bindgen]
 pub fn wire_example_primitive_type_bool(port_: MessagePort, arg: bool) {
     wire_example_primitive_type_bool_impl(port_, arg)
 }
