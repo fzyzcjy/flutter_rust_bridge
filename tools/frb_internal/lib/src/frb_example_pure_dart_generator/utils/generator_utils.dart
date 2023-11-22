@@ -24,6 +24,9 @@ abstract class BaseGenerator {
   Map<String, String> generateDirectSources();
 
   @protected
+  String generateDuplicate(String inputText, DuplicatorMode mode);
+
+  @protected
   Future<void> executeFormat();
 
   void _writeCodeFiles(Map<String, String> textOfPathMap) {
@@ -52,15 +55,11 @@ class _Duplicator {
       if (DuplicatorMode.values.any((mode) => fileStem.endsWith(_computePostfix(mode)))) continue;
 
       for (final mode in DuplicatorMode.values) {
-        final outputText = _generateOne(file.readAsStringSync(), mode);
+        final outputText = generator.generateDuplicate(file.readAsStringSync(), mode);
         final targetPath = file.uri.resolve('../$fileStem${_computePostfix(mode)}.${generator.extension}').toFilePath();
         File(targetPath).writeAsStringSync(outputText);
       }
     }
-  }
-
-  String _generateOne(String inputText, DuplicatorMode mode) {
-    return TODO;
   }
 
   String _computePostfix(DuplicatorMode mode) => '_twin_${mode.name}';
