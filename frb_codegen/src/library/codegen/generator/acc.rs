@@ -87,6 +87,14 @@ impl<T> Acc<T> {
         }
     }
 
+    pub fn map_ref<O>(&self, mut mapper: impl FnMut(&T, TargetOrCommon) -> O) -> Acc<O> {
+        Acc {
+            common: mapper(&self.common, TargetOrCommon::Common),
+            io: mapper(&self.io, TargetOrCommon::Io),
+            wasm: mapper(&self.wasm, TargetOrCommon::Wasm),
+        }
+    }
+
     /// Assign this value to all non-common targets.
     pub fn distribute(value: T) -> Self
     where

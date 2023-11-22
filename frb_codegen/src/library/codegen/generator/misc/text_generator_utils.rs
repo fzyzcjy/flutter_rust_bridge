@@ -1,5 +1,6 @@
 use crate::codegen::generator::acc::Acc;
 use crate::codegen::generator::misc::target::{TargetOrCommon, TargetOrCommonMap};
+use crate::utils::basic_code::BasicCode;
 use crate::utils::file_utils::create_dir_all_and_write;
 use std::path::PathBuf;
 use strum::IntoEnumIterator;
@@ -17,7 +18,20 @@ pub(crate) fn write_code_for_targets(
     Ok(())
 }
 
-pub(crate) fn section_header_comment(section_name: &str) -> String {
+pub(crate) fn section_header_comment<T: BasicCode>(
+    section_name: &str,
+    item: &Acc<Vec<T>>,
+) -> Acc<Vec<T>> {
+    item.map_ref(|x, target| {
+        T::new_body(if TODO {
+            section_header_comment_raw(section_name)
+        } else {
+            "".to_owned()
+        })
+    })
+}
+
+pub(crate) fn section_header_comment_raw(section_name: &str) -> String {
     format!("\n\n// Section: {section_name}\n\n")
 }
 
