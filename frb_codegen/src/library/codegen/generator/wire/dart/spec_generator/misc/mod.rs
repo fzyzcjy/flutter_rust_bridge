@@ -1,13 +1,17 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::misc::target::{TargetOrCommon, TargetOrCommonMap};
 use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
 use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
+use crate::utils::path_utils::path_to_string;
+use anyhow::Context;
 use itertools::Itertools;
+use pathdiff::diff_paths;
 use serde::Serialize;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 
 mod api_impl_body;
 mod c_binding;
@@ -34,8 +38,9 @@ pub(crate) fn generate(
             &context.config.dart_output_class_name_pack,
             &context.config.default_external_library_stem,
             &context.config.default_external_library_relative_directory,
+            &context.config.dart_impl_output_path,
             api_dart_actual_output_paths,
-        ),
+        )?,
         api_impl_normal_functions: (context.ir_pack.funcs.iter())
             .map(|f| api_impl_body::generate_api_impl_normal_function(f, context))
             .collect(),
@@ -50,8 +55,9 @@ fn generate_boilerplate(
     dart_output_class_name_pack: &DartOutputClassNamePack,
     default_external_library_stem: &str,
     default_external_library_relative_directory: &str,
+    dart_impl_output_path: &TargetOrCommonMap<PathBuf>,
     api_dart_actual_output_paths: &[PathBuf],
-) -> Acc<Vec<WireDartOutputCode>> {
+) -> anyhow::Result<Acc<Vec<WireDartOutputCode>>> {
     let DartOutputClassNamePack {
         entrypoint_class_name,
         api_class_name,
@@ -60,10 +66,11 @@ fn generate_boilerplate(
         ..
     } = &dart_output_class_name_pack;
 
-    let universal_imports = generate_import_dart_api_layer(api_dart_actual_output_paths)
-        + "\nimport 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';";
+    let universal_imports =
+        generate_import_dart_api_layer(dart_impl_output_path, api_dart_actual_output_paths)?
+            + "\nimport 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';";
 
-    Acc {
+    Ok(Acc {
         common: vec![WireDartOutputCode {
             import: format!(
                 "
@@ -125,17 +132,24 @@ fn generate_boilerplate(
             ),
             ..Default::default()
         }],
-    }
+    })
 }
 
-fn generate_import_dart_api_layer(api_dart_actual_output_paths: &[PathBuf]) -> String {
-    api_dart_actual_output_paths
+fn generate_import_dart_api_layer(
+    dart_impl_output_path: &TargetOrCommonMap<PathBuf>,
+    api_dart_actual_output_paths: &[PathBuf],
+) -> anyhow::Result<String> {
+    Ok(api_dart_actual_output_paths
         .iter()
         .map(|path| {
-            let relative_path = TODO;
-            format!("import '{TODO}';\n")
+            let dir_base = (dart_impl_output_path[TargetOrCommon::Common].parent())
+                .context("cannot find parent dir")?;
+            let relative_path = diff_paths(path, dir_base).context("cannot find relative path")?;
+            let relative_path = path_to_string(&relative_path)?;
+            Ok(format!("import '{relative_path}';\n"))
         })
-        .join("")
+        .collect::<anyhow::Result<Vec<_>>>()?
+        .join(""))
 }
 
 fn compute_needs_freezed(cache: &IrPackComputedCache, ir_pack: &IrPack) -> bool {
