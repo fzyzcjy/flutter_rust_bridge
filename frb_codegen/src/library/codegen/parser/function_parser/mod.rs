@@ -16,7 +16,6 @@ use log::debug;
 use quote::quote;
 use std::fmt::Debug;
 use std::path::Path;
-use std::path::PathBuf;
 use syn::*;
 use IrType::Primitive;
 
@@ -38,7 +37,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         rust_crate_dir: &Path,
     ) -> anyhow::Result<IrFunc> {
         self.parse_function_inner(func, file_path, rust_crate_dir)
-            .with_context(|| format!("function={:?}", func.sig.ident))
+            .with_context(|| format!("function={:?}", func.sig().ident))
     }
 
     fn parse_function_inner(
@@ -47,9 +46,9 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         file_path: &Path,
         rust_crate_dir: &Path,
     ) -> anyhow::Result<IrFunc> {
-        debug!("parse_function function name: {:?}", func.sig.ident);
+        debug!("parse_function function name: {:?}", func.sig().ident);
 
-        let sig = &func.sig;
+        let sig = func.sig();
         let namespace =
             Namespace::new_self_crate(compute_mod_from_rust_path(file_path, rust_crate_dir)?);
         let func_name = sig.ident.to_string();
@@ -70,7 +69,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             error_output: info.error_output,
             owner: IrFuncOwnerInfo::Function, // TODO
             mode: info.mode.unwrap_or(IrFuncMode::Normal),
-            comments: parse_comments(&func.attrs),
+            comments: parse_comments(func.attrs()),
         })
     }
 }

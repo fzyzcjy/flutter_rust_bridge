@@ -11,7 +11,7 @@ pub(super) struct PathAndItemFn {
 }
 
 #[derive(Debug, Clone)]
-pub(super) enum GeneralizedItemFn {
+pub(crate) enum GeneralizedItemFn {
     Function {
         item_fn: ItemFn,
     },
@@ -19,6 +19,22 @@ pub(super) enum GeneralizedItemFn {
         item_impl: ItemImpl,
         impl_item_fn: ImplItemFn,
     },
+}
+
+impl GeneralizedItemFn {
+    pub(crate) fn sig(&self) -> &Signature {
+        match self {
+            GeneralizedItemFn::Function { item_fn } => &item_fn.sig,
+            GeneralizedItemFn::Method { impl_item_fn, .. } => &impl_item_fn.sig,
+        }
+    }
+
+    pub(crate) fn attrs(&self) -> &Vec<Attribute> {
+        match self {
+            GeneralizedItemFn::Function { item_fn } => &item_fn.attrs,
+            GeneralizedItemFn::Method { impl_item_fn, .. } => &impl_item_fn.attrs,
+        }
+    }
 }
 
 pub(super) fn extract_generalized_functions_from_file(
