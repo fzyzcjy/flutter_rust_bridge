@@ -11,6 +11,7 @@ use crate::codegen::parser::function_parser::{
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::TypeParserParsingContext;
 use anyhow::bail;
+use syn::punctuated::Punctuated;
 use syn::*;
 
 impl<'a, 'b> FunctionParser<'a, 'b> {
@@ -75,15 +76,15 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             ident: Ident::new(struct_name.as_str(), span),
             arguments: PathArguments::None,
         });
-        if mutability.is_some() {
-            return Err(super::error::Error::NoMutSelf);
+        if receiver.mutability.is_some() {
+            bail!("mutable self is not supported yet");
         }
         Ok(FnArg::Typed(PatType {
             attrs: vec![],
             pat: Box::new(Pat::Ident(PatIdent {
                 attrs: vec![],
                 by_ref: Some(syn::token::Ref { span }),
-                mutability: *mutability,
+                mutability: *receiver.mutability,
                 ident: Ident::new("that", span),
                 subpat: None,
             })),
