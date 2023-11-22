@@ -3,10 +3,10 @@ import 'package:flutter_rust_bridge_internal/src/frb_example_pure_dart_generator
 import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
 
 class RustGenerator extends BaseGenerator {
-  RustGenerator({required super.baseDir});
+  RustGenerator({required super.packageRootDir, required super.interestDir});
 
   @override
-  Future<void> executeFormat() => executeRustFormat(workingDirectory: baseDir.toFilePath());
+  Future<void> executeFormat() => executeRustFormat(workingDirectory: packageRootDir.toFilePath());
 
   @override
   Set<String> get duplicatorBlacklistNames => {'mod.rs'};

@@ -4,10 +4,10 @@ import 'package:flutter_rust_bridge_internal/src/utils/execute_process.dart';
 import 'package:recase/recase.dart';
 
 class DartGenerator extends BaseGenerator {
-  DartGenerator({required super.baseDir});
+  DartGenerator({required super.packageRootDir, required super.interestDir});
 
   @override
-  Future<void> executeFormat() => executeDartFormat(workingDirectory: baseDir.toFilePath());
+  Future<void> executeFormat() => executeDartFormat(workingDirectory: packageRootDir.toFilePath());
 
   @override
   Set<String> get duplicatorBlacklistNames => {};

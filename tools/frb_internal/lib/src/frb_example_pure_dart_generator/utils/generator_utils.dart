@@ -4,9 +4,11 @@ import 'package:meta/meta.dart';
 import 'package:path/path.dart' as path;
 
 abstract class BaseGenerator {
-  final Uri baseDir;
+  final Uri packageRootDir;
+  final Uri interestDir;
 
-  BaseGenerator({required this.baseDir});
+  BaseGenerator({required this.packageRootDir, required String interestDir})
+      : interestDir = packageRootDir.resolve(interestDir);
 
   Future<void> generate() async {
     _writeCodeFiles(generateDirectSources());
@@ -31,7 +33,7 @@ abstract class BaseGenerator {
 
   void _writeCodeFiles(Map<String, String> textOfPathMap) {
     for (final entry in textOfPathMap.entries) {
-      File(baseDir.resolve(entry.key).toFilePath()).writeAsStringSync(entry.value);
+      File(interestDir.resolve(entry.key).toFilePath()).writeAsStringSync(entry.value);
     }
   }
 }
@@ -49,7 +51,7 @@ class _Duplicator {
   _Duplicator(this.generator);
 
   void _generate() {
-    for (final file in Directory(generator.baseDir.toFilePath()).listSync()) {
+    for (final file in Directory(generator.interestDir.toFilePath()).listSync()) {
       final fileName = path.basename(file.path);
       final fileStem = path.basenameWithoutExtension(file.path);
       if (file is! File || path.extension(file.path) != '.${generator.extension}') continue;
