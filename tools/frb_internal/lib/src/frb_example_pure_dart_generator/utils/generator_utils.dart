@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:glob/glob.dart';
+import 'package:glob/list_local_fs.dart';
 import 'package:meta/meta.dart';
 import 'package:path/path.dart' as path;
 
@@ -54,7 +56,7 @@ class _Duplicator {
   _Duplicator(this.generator);
 
   void _generate() {
-    for (final file in Directory(generator.interestDir.toFilePath()).listSync()) {
+    for (final file in Glob('${generator.interestDir.toFilePath()}/**/*.${generator.extension}').listSync()) {
       final fileName = path.basename(file.path);
       final fileStem = path.basenameWithoutExtension(file.path);
       if (file is! File || path.extension(file.path) != '.${generator.extension}') continue;
@@ -62,7 +64,8 @@ class _Duplicator {
       if (DuplicatorMode.values.any((mode) => fileStem.contains(mode.postfix))) continue;
 
       for (final mode in DuplicatorMode.values) {
-        final outputText = _computePrelude(fileName) + generator.generateDuplicateCode(file.readAsStringSync(), mode);
+        final outputText =
+            _computePrelude(fileName) + generator.generateDuplicateCode((file as File).readAsStringSync(), mode);
         final targetPath = file.uri
             .resolve('pseudo_manual/')
             .resolve('${generator.generateDuplicateFileStem(fileStem, mode)}.${generator.extension}')
