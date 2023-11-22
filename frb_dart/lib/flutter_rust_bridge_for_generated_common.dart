@@ -15,4 +15,5 @@ export 'src/main_components/api_impl.dart';
 export 'src/main_components/entrypoint.dart';
 export 'src/main_components/handler.dart';
 export 'src/main_components/wire/_common.dart';
+export 'src/manual_impl/_common.dart';
 export 'src/task.dart';
