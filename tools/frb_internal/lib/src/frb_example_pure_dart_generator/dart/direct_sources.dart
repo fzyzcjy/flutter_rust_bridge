@@ -33,7 +33,7 @@ String _generatePrimitiveList() {
     ]) {
       builder.body += '''
         test('type=${ty.name} arg=$arg', () async {
-          expect(await examplePrimitiveType${ReCase(ty.name).pascalCase}TwinNormal(arg: $arg), $arg);
+          expect(await examplePrimitiveListType${ReCase(ty.name).pascalCase}TwinNormal(arg: $arg), $arg);
         });
       ''';
     }
