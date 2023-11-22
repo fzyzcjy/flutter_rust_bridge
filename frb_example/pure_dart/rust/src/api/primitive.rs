@@ -1,3 +1,5 @@
+// TODO use code generation to generate such tests instead
+
 pub fn primitive_types(
     my_i8: i8,
     my_i16: i16,

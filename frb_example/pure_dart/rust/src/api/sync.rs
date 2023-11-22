@@ -1,3 +1,5 @@
+// TODO use code generation to generate such tests instead
+
 use flutter_rust_bridge::frb;
 
 #[frb(sync)]
