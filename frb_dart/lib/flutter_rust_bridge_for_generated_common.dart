@@ -14,9 +14,4 @@ export 'src/main_components/api.dart';
 export 'src/main_components/api_impl.dart';
 export 'src/main_components/entrypoint.dart';
 export 'src/main_components/handler.dart';
-export 'src/main_components/wire/wire.dart';
-export 'src/platform_types/platform_types.dart';
 export 'src/task.dart';
-export 'src/utils/io_utils.dart' if (dart.library.html) 'src/utils/web_utils.dart';
-
-// TODO export more

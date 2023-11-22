@@ -77,7 +77,7 @@ fn generate_boilerplate(
             import: format!(
                 "
                 {universal_imports}
-                import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+                import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_common.dart';
                 import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart.dart';
                 "
             ),
@@ -125,7 +125,7 @@ fn generate_boilerplate(
             import: format!(
                 "
                 {universal_imports}
-                import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+                import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
                 import 'frb_generated.dart';
                 "
             ),

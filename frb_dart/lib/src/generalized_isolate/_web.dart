@@ -6,7 +6,7 @@ import 'dart:html' as html;
 import 'dart:html' hide MessagePort;
 
 import 'package:flutter_rust_bridge/src/platform_types/_web.dart';
-import 'package:flutter_rust_bridge/src/utils/web_utils.dart';
+import 'package:flutter_rust_bridge/src/platform_utils/_web.dart';
 
 /// {@macro flutter_rust_bridge.only_for_generated_code}
 typedef MessagePort = PortLike;
