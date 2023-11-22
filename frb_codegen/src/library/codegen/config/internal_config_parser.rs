@@ -27,7 +27,7 @@ use std::collections::HashMap;
 use std::path::{Path, PathBuf};
 
 impl InternalConfig {
-    pub(crate) fn parse(config: Config) -> Result<Self> {
+    pub(crate) fn parse(config: &Config) -> Result<Self> {
         let base_dir = config
             .base_dir
             .as_ref()
@@ -60,7 +60,7 @@ impl InternalConfig {
         let rust_wire_mod =
             compute_mod_from_rust_path(&rust_output_path[TargetOrCommon::Common], &rust_crate_dir)?;
 
-        let dart_root = (config.dart_root.map(PathBuf::from))
+        let dart_root = (config.dart_root.clone().map(PathBuf::from))
             .unwrap_or(find_dart_package_dir(&dart_output_dir)?);
 
         let default_external_library_stem = compute_default_external_library_stem(&rust_crate_dir)
@@ -73,7 +73,7 @@ impl InternalConfig {
         let dart_enums_style = config.dart_enums_style.unwrap_or(false);
         let dart3 = config.dart3.unwrap_or(true);
 
-        let dump = config.dump.unwrap_or_default();
+        let dump = config.dump.clone().unwrap_or_default();
         let dump_directory = rust_crate_dir.join("target").join("frb_dump");
 
         Ok(InternalConfig {
@@ -100,12 +100,16 @@ impl InternalConfig {
                         wasm_enabled,
                         llvm_path: config
                             .llvm_path
+                            .clone()
                             .unwrap_or_else(fallback_llvm_path)
                             .into_iter()
                             .map(PathBuf::from)
                             .collect_vec(),
-                        llvm_compiler_opts: config.llvm_compiler_opts.unwrap_or_else(String::new),
-                        extra_headers: config.extra_headers.unwrap_or_else(String::new),
+                        llvm_compiler_opts: config
+                            .llvm_compiler_opts
+                            .clone()
+                            .unwrap_or_else(String::new),
+                        extra_headers: config.extra_headers.clone().unwrap_or_else(String::new),
                         dart_impl_output_path: dart_output_path_pack.dart_impl_output_path,
                         dart_output_class_name_pack,
                         default_external_library_stem,

@@ -18,7 +18,7 @@ use log::debug;
 pub fn generate(config: Config) -> anyhow::Result<()> {
     debug!("config={config:?}");
 
-    let internal_config = InternalConfig::parse(config)?;
+    let internal_config = InternalConfig::parse(&config)?;
     debug!("internal_config={internal_config:?}");
     let dumper = Dumper(&internal_config.dumper);
     dumper.dump_config(&config, &internal_config)?;
