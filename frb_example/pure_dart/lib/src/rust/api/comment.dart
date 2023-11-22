@@ -2,16 +2,6 @@
 
 import '../frb_generated.dart';
 
-/// Documentation on an instance method
-Future<void> structWithCommentsInstanceMethod(
-        {required StructWithComments that, dynamic hint}) =>
-    RustLib.instance.api
-        .structWithCommentsInstanceMethod(that: that, hint: hint);
-
-/// Documentation on a static method
-Future<void> structWithCommentsStaticMethod({dynamic hint}) =>
-    RustLib.instance.api.structWithCommentsStaticMethod(hint: hint);
-
 /// Multiline comments are fine,
 /// but they are not preferred in Rust nor in Dart.
 /// Newlines are preserved.

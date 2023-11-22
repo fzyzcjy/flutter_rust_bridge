@@ -4,6 +4,7 @@ use crate::codegen::generator::api_dart::spec_generator::base::{
 };
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
+use crate::codegen::ir::func::IrFuncOwnerInfo;
 use crate::codegen::ir::pack::IrPack;
 use crate::library::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use anyhow::Result;
@@ -30,6 +31,7 @@ pub(crate) fn generate(
     let context = ApiDartGeneratorContext { ir_pack, config };
 
     let funcs = (ir_pack.funcs.iter())
+        .filter(|f| f.owner == IrFuncOwnerInfo::Function)
         .map(|f| function::generate(f, context))
         .collect_vec();
 
