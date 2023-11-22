@@ -64,77 +64,74 @@ String _generateOptionalPrimitive() {
 class PrimitiveTypeInfo {
   final String name;
   final String primitiveListName;
-  final List<String> interestValues;
+  final List<String> interestRawValues;
+  final String Function(String)? primitiveWrapper;
 
   const PrimitiveTypeInfo({
     required this.name,
     required this.primitiveListName,
-    required this.interestValues,
+    required this.interestRawValues,
+    this.primitiveWrapper,
   });
 }
 
-const kPrimitiveTypes = [
+final kPrimitiveTypes = [
   PrimitiveTypeInfo(
     name: 'i8',
     primitiveListName: 'Int8List',
-    interestValues: ['0', '-128', '127'],
+    interestRawValues: ['0', '-128', '127'],
   ),
   PrimitiveTypeInfo(
     name: 'i16',
     primitiveListName: 'Int16List',
-    interestValues: ['0', '-32768', '32767'],
+    interestRawValues: ['0', '-32768', '32767'],
   ),
   PrimitiveTypeInfo(
     name: 'i32',
     primitiveListName: 'Int32List',
-    interestValues: ['0', '-2147483648', '2147483647'],
+    interestRawValues: ['0', '-2147483648', '2147483647'],
   ),
   PrimitiveTypeInfo(
     name: 'i64',
     primitiveListName: 'Int64List',
-    interestValues: [
-      'BigInt.parse("0")',
-      'BigInt.parse("-9223372036854775808")',
-      'BigInt.parse("9223372036854775807")'
-    ],
+    interestRawValues: ['0', '-9223372036854775808', '9223372036854775807'],
+    primitiveWrapper: (x) => 'BigInt.parse("$x")',
   ),
   PrimitiveTypeInfo(
     name: 'u8',
     primitiveListName: 'Uint8List',
-    interestValues: ['0', '255'],
+    interestRawValues: ['0', '255'],
   ),
   PrimitiveTypeInfo(
     name: 'u16',
     primitiveListName: 'Uint16List',
-    interestValues: ['0', '65535'],
+    interestRawValues: ['0', '65535'],
   ),
   PrimitiveTypeInfo(
     name: 'u32',
     primitiveListName: 'Uint32List',
-    interestValues: ['0', '4294967295'],
+    interestRawValues: ['0', '4294967295'],
   ),
   PrimitiveTypeInfo(
     name: 'u64',
     primitiveListName: 'Uint64List',
-    interestValues: [
-      'BigInt.parse("0")',
-      // 'BigInt.parse("18446744073709551615")', // not support numbers bigger than max i64 yet (but implementable)
-      'BigInt.parse("9223372036854775807")',
-    ],
+    // '18446744073709551615', // not support numbers bigger than max i64 yet (but implementable)
+    interestRawValues: ['0', '9223372036854775807'],
+    primitiveWrapper: (x) => 'BigInt.parse("$x")',
   ),
   PrimitiveTypeInfo(
     name: 'f32',
     primitiveListName: 'Float32List',
-    interestValues: ['0', '-42.5', '123456'],
+    interestRawValues: ['0', '-42.5', '123456'],
   ),
   PrimitiveTypeInfo(
     name: 'f64',
     primitiveListName: 'Float64List',
-    interestValues: ['0', '-42.5', '123456'],
+    interestRawValues: ['0', '-42.5', '123456'],
   ),
   PrimitiveTypeInfo(
     name: 'bool',
     primitiveListName: 'List<bool>',
-    interestValues: ['false', 'true'],
+    interestRawValues: ['false', 'true'],
   ),
 ];
