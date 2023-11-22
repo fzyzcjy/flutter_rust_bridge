@@ -49,6 +49,7 @@ fn generate_end_api_text(
         .map(|classes| classes.iter().map(|c| c.code.clone()).join("\n\n"))
         .unwrap_or_default();
 
+    // TODO use relative path calculation
     let path_frb_generated = "../".repeat(namespace.path().len() - 2) + "frb_generated.dart";
 
     format!(
