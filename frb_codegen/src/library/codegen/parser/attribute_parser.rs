@@ -111,7 +111,7 @@ impl Parse for FrbAttribute {
     }
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Eq, PartialEq)]
 struct NamedOption<K, V> {
     name: K,
     value: V,
@@ -126,7 +126,7 @@ impl<K: Parse + std::fmt::Debug, V: Parse> Parse for NamedOption<K, V> {
     }
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Eq, PartialEq)]
 struct FrbAttributeMirror(Path);
 
 impl Parse for FrbAttributeMirror {
@@ -138,7 +138,7 @@ impl Parse for FrbAttributeMirror {
     }
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Eq, PartialEq)]
 struct FrbAttributeDartMetadata(Vec<IrDartAnnotation>);
 
 impl Parse for FrbAttributeDartMetadata {
@@ -200,7 +200,7 @@ impl Parse for IrDartAnnotation {
     }
 }
 
-#[derive(Clone, Serialize)]
+#[derive(Clone, Serialize, Eq, PartialEq)]
 enum FrbAttributeDefaultValue {
     #[serde(serialize_with = "serialize_litstr")]
     Str(syn::LitStr),
