@@ -3,12 +3,12 @@
 
 /// This is single line comment
 #[flutter_rust_bridge::frb(sync)]
-pub fn function_with_comments_triple_slash_single_line_twin_normal_twin_sync() {}
+pub fn function_with_comments_triple_slash_single_line_twin_sync() {}
 
 /// This is first line
 /// This is second line
 #[flutter_rust_bridge::frb(sync)]
-pub fn function_with_comments_triple_slash_multi_line_twin_normal_twin_sync() {}
+pub fn function_with_comments_triple_slash_multi_line_twin_sync() {}
 
 /**
  Multiline comments are fine,
@@ -16,7 +16,7 @@ pub fn function_with_comments_triple_slash_multi_line_twin_normal_twin_sync() {}
  Newlines are preserved.
 */
 #[flutter_rust_bridge::frb(sync)]
-pub fn function_with_comments_slash_star_star_twin_normal_twin_sync() {}
+pub fn function_with_comments_slash_star_star_twin_sync() {}
 
 /// Comments on simple enums
 pub enum SimpleEnumWithCommentsTwinSync {

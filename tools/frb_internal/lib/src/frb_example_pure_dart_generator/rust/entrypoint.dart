@@ -26,7 +26,7 @@ class RustGenerator extends BaseGenerator {
 
     return inputText
         .replaceAllMapped(
-          RegExp(r'pub fn ([a-zA-Z0-9_-]+)(%s)?\('.replaceAll('%s', mode.postfix)),
+          RegExp(r'pub fn ([a-zA-Z0-9_-]+?)(_twin_normal)?\('),
           (m) => '${prefix}pub fn ${m.group(1)}${mode.postfix}(',
         )
         // struct name, etc
