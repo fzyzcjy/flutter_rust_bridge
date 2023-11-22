@@ -1,7 +1,8 @@
 // ignore_for_file: unused_import
 
-import 'api/simple.dart';
 import 'api/comment.dart';
+import 'api/simple.dart';
+import 'api/sync.dart';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'frb_generated.io.dart'
@@ -55,6 +56,8 @@ abstract class RustLibApi extends BaseApi {
   Future<void> functionWithCommentsTripleSlashSingleLine({dynamic hint});
 
   Future<int> simpleAdder({required int a, required int b, dynamic hint});
+
+  int simpleAdderSync({required int a, required int b, dynamic hint});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -182,6 +185,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kSimpleAdderConstMeta => const TaskConstMeta(
         debugName: "simple_adder",
+        argNames: ["a", "b"],
+      );
+
+  @override
+  int simpleAdderSync({required int a, required int b, dynamic hint}) {
+    var arg0 = api2wire_i_32(a);
+    var arg1 = api2wire_i_32(b);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_simple_adder_sync(arg0, arg1),
+      parseSuccessData: _wire2api_i_32,
+      parseErrorData: null,
+      constMeta: kSimpleAdderSyncConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSimpleAdderSyncConstMeta => const TaskConstMeta(
+        debugName: "simple_adder_sync",
         argNames: ["a", "b"],
       );
 }

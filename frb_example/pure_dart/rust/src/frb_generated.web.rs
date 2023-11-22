@@ -59,3 +59,8 @@ pub fn wire_function_with_comments_triple_slash_single_line(port_: MessagePort) 
 pub fn wire_simple_adder(port_: MessagePort, a: i32, b: i32) {
     wire_simple_adder_impl(port_, a, b)
 }
+
+#[wasm_bindgen]
+pub fn wire_simple_adder_sync(a: i32, b: i32) -> support::WireSyncReturn {
+    wire_simple_adder_sync_impl(a, b)
+}

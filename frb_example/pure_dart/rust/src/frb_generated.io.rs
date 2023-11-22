@@ -82,6 +82,11 @@ pub extern "C" fn wire_simple_adder(port_: i64, a: i32, b: i32) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_simple_adder_sync(a: i32, b: i32) -> support::WireSyncReturn {
+    wire_simple_adder_sync_impl(a, b)
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_struct_with_comments() -> *mut wire_struct_with_comments {
     support::new_leak_box_ptr(wire_struct_with_comments::new_with_null_ptr())
 }
