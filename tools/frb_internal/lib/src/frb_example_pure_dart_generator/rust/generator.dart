@@ -25,7 +25,7 @@ String _generateSrcApiPrimitive() {
     'f64',
     'bool',
   ]) {
-    ans += 'pub fn example_primitive_type_$ty(arg: $ty) -> $ty { $ty }\n';
+    ans += 'pub fn example_primitive_type_$ty(arg: $ty) -> $ty { arg }\n';
   }
   return ans;
 }
