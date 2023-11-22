@@ -20,7 +20,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for PrimitiveListWireDartGenerator<'a> {
             // by another dylib (e.g. my_rust_code.so), especially in Android platform. It can be
             // undefined behavior.
             io: Some(format!(
-                "final ans = inner.new_{}(raw.length);
+                "final ans = wire.new_{}(raw.length);
                 ans.ref.ptr.asTypedList(raw.length).setAll(0, {});
                 return ans;",
                 self.ir.safe_ident(),

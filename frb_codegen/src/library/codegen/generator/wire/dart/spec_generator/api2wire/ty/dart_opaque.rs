@@ -8,7 +8,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for DartOpaqueWireDartGenerator<'a> {
         Acc {
             io: Some(
                 "
-                final ptr = inner.new_DartOpaque();
+                final ptr = wire.new_DartOpaque();
                 _api_fill_to_wire_DartOpaque(raw, ptr);
                 return ptr;
                 "
@@ -21,7 +21,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for DartOpaqueWireDartGenerator<'a> {
 
     fn api_fill_to_wire_body(&self) -> Option<String> {
         Some(
-            "wireObj.handle = inner.new_dart_opaque(apiObj);
+            "wireObj.handle = wire.new_dart_opaque(apiObj);
         wireObj.port = dropPort;"
                 .to_owned(),
         )

@@ -20,7 +20,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for DelegateWireDartGenerator<'a> {
                 ))),
                 IrTypeDelegateArrayMode::Primitive(_) => Acc {
                     io: Some(format!(
-                        "final ans = inner.new_{}({length});
+                        "final ans = wire.new_{}({length});
                         ans.ref.ptr.asTypedList({length}).setAll(0, raw);
                         return ans;",
                         array.get_delegate().safe_ident(),
@@ -54,7 +54,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for DelegateWireDartGenerator<'a> {
             }
             IrTypeDelegate::StringList => Acc {
                 io: Some(format!(
-                    "final ans = inner.new_StringList(raw.length);
+                    "final ans = wire.new_StringList(raw.length);
                     for (var i = 0; i < raw.length; i++){{
                         ans.ref.ptr[i] = api2wire_String(raw[i]);
                     }}

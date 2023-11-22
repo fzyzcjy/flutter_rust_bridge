@@ -9,7 +9,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for OptionalListWireDartGenerator<'a> {
         let inner = self.ir.inner.safe_ident();
         Acc {
             io: Some(format!(
-                "final ans = inner.new_{safe_ident}(raw.length);
+                "final ans = wire.new_{safe_ident}(raw.length);
                 for (var i = 0; i < raw.length; ++i) {{
                     final item = raw[i];
                     if (item == null) continue;

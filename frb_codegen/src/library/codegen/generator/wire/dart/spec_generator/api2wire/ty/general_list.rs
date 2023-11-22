@@ -12,7 +12,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for GeneralListWireDartGenerator<'a> {
 
         Acc {
             io: Some(format!(
-                "final ans = inner.new_{ident}(raw.length);
+                "final ans = wire.new_{ident}(raw.length);
                 for (var i = 0; i < raw.length; ++i) {{
                     {}
                 }}
