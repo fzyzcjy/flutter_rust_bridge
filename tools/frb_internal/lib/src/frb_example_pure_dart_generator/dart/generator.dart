@@ -1,3 +1,3 @@
-void generateDart({required Uri dartRoot}) {
+Future<void> generateDart({required Uri dartRoot}) async {
   // TODO
 }

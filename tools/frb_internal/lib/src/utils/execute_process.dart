@@ -8,3 +8,9 @@ Future<void> executeProcess(String executable, List<String> arguments, {String? 
   final exitCode = await process.exitCode;
   if (exitCode != 0) throw Exception('Process execution failed (exitCode=$exitCode)');
 }
+
+Future<void> executeDartFormat({required String workingDirectory}) async =>
+    executeProcess('dart', ['format'], workingDirectory: workingDirectory);
+
+Future<void> executeRustFormat({required String workingDirectory}) async =>
+    executeProcess('rustfmt', [], workingDirectory: workingDirectory);

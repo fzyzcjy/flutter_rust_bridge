@@ -10,6 +10,6 @@ class GenerateTestCommand extends Command<void> {
 
   @override
   Future<void> run() async {
-    generator.generate();
+    await generator.generate();
   }
 }
