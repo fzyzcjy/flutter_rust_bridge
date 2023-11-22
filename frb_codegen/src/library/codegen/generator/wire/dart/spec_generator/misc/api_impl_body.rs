@@ -54,8 +54,8 @@ pub(crate) fn generate_api_impl_normal_function(
     let companion_field_implementation = generate_companion_field(func, &const_meta_field_name);
 
     WireDartOutputCode {
-        api_body: format!("{func_expr};"),
-        api_impl_body: format!("{function_implementation}\n\n{companion_field_implementation}"),
+        api_body: format!("{func_expr};\n\n"),
+        api_impl_body: format!("{function_implementation}\n\n{companion_field_implementation}\n\n"),
         ..Default::default()
     }
 }

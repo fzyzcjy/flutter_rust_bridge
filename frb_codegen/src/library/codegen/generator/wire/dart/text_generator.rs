@@ -26,17 +26,19 @@ pub(super) fn generate(
 fn generate_merged_code(spec: &WireDartOutputSpec) -> Acc<WireDartOutputCode> {
     let mut merged_code = Acc::<Vec<WireDartOutputCode>>::default();
     let mut add = |section_name: &str, item: &Acc<Vec<WireDartOutputCode>>| {
-        merged_code.push(section_header_comment(section_name).into());
+        if !section_name.is_empty() {
+            merged_code.push(section_header_comment(section_name).into());
+        }
         merged_code += item.clone();
     };
 
-    add("boilerplate", &spec.misc.boilerplate);
+    add("", &spec.misc.boilerplate);
     add(
-        "api_impl_normal_functions", // TODO improve name (it does not show there)
+        "",
         &Acc::new_common(spec.misc.api_impl_normal_functions.clone()),
     );
     add(
-        "api_impl_opaque_getters", // TODO improve name (it does not show there)
+        "",
         &Acc::new_common(spec.misc.api_impl_opaque_getters.clone()),
     );
     add("c_binding", &Acc::new_io(vec![spec.misc.c_binding.clone()]));

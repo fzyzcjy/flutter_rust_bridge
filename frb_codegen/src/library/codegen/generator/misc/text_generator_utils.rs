@@ -18,7 +18,7 @@ pub(crate) fn write_code_for_targets(
 }
 
 pub(crate) fn section_header_comment(section_name: &str) -> String {
-    format!("// Section: {section_name}\n")
+    format!("\n\n// Section: {section_name}\n\n")
 }
 
 pub(crate) fn generate_text_respecting_wasm_flag(
