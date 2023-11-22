@@ -1,6 +1,7 @@
 use crate::codegen::config::internal_config::{
     GeneratorInternalConfig, GeneratorWireInternalConfig, InternalConfig, RustInputPathPack,
 };
+use crate::codegen::dumper::internal_config::DumperInternalConfig;
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::misc::target::{TargetOrCommon, TargetOrCommonMap};
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
@@ -11,7 +12,7 @@ use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInt
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::codegen::preparer::internal_config::PreparerInternalConfig;
-use crate::codegen::Config;
+use crate::codegen::{Config, ConfigDump};
 use crate::library::commands::cargo_metadata::execute_cargo_metadata;
 use crate::utils::path_utils::{
     find_dart_package_dir, find_rust_crate_dir, glob_path, path_to_string,
@@ -72,6 +73,8 @@ impl InternalConfig {
         let dart_enums_style = config.dart_enums_style.unwrap_or(false);
         let dart3 = config.dart3.unwrap_or(true);
 
+        let dump = config.dump.unwrap_or_default();
+
         Ok(InternalConfig {
             preparer: PreparerInternalConfig {
                 dart_root: dart_root.clone(),
@@ -131,7 +134,10 @@ impl InternalConfig {
                 rust_output_path,
                 c_output_path,
             },
-            dump: config.dump.unwrap_or_default(),
+            dumper: DumperInternalConfig {
+                dump_config: dump.contains(&ConfigDump::Config),
+                dump_ir: dump.contains(&ConfigDump::Ir),
+            },
         })
     }
 }

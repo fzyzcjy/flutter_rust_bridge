@@ -4,5 +4,6 @@ use std::path::PathBuf;
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub(crate) struct DumperInternalConfig {
-    // TODO
+    pub(crate) dump_config: bool,
+    pub(crate) dump_ir: bool,
 }
