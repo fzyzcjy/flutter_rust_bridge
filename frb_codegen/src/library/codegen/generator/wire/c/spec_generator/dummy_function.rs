@@ -24,6 +24,8 @@ fn generate_dummy_function(func_names: &[String]) -> String {
 fn compute_dummy_var_operations(func_names: &[String]) -> String {
     func_names
         .iter()
+        .dedup()
+        .sorted()
         .map(|func_name| format!("    dummy_var ^= ((int64_t) (void*) {func_name});"))
         .join("\n")
 }
