@@ -38,7 +38,11 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<int> anotherAdder({required int a, required int b, dynamic hint});
+  Future<void> functionWithCommentsSlashStarStar({dynamic hint});
+
+  Future<void> functionWithCommentsTripleSlashMultiLine({dynamic hint});
+
+  Future<void> functionWithCommentsTripleSlashSingleLine({dynamic hint});
 
   Future<int> simpleAdder({required int a, required int b, dynamic hint});
 }
@@ -51,23 +55,63 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<int> anotherAdder({required int a, required int b, dynamic hint}) {
-    var arg0 = api2wire_i_32(a);
-    var arg1 = api2wire_i_32(b);
+  Future<void> functionWithCommentsSlashStarStar({dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_another_adder(port_, arg0, arg1),
-      parseSuccessData: _wire2api_i_32,
+      callFfi: (port_) =>
+          wire.wire_function_with_comments_slash_star_star(port_),
+      parseSuccessData: _wire2api_unit,
       parseErrorData: null,
-      constMeta: kAnotherAdderConstMeta,
-      argValues: [a, b],
+      constMeta: kFunctionWithCommentsSlashStarStarConstMeta,
+      argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kAnotherAdderConstMeta => const TaskConstMeta(
-        debugName: "another_adder",
-        argNames: ["a", "b"],
+  TaskConstMeta get kFunctionWithCommentsSlashStarStarConstMeta =>
+      const TaskConstMeta(
+        debugName: "function_with_comments_slash_star_star",
+        argNames: [],
+      );
+
+  @override
+  Future<void> functionWithCommentsTripleSlashMultiLine({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_function_with_comments_triple_slash_multi_line(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kFunctionWithCommentsTripleSlashMultiLineConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFunctionWithCommentsTripleSlashMultiLineConstMeta =>
+      const TaskConstMeta(
+        debugName: "function_with_comments_triple_slash_multi_line",
+        argNames: [],
+      );
+
+  @override
+  Future<void> functionWithCommentsTripleSlashSingleLine({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_function_with_comments_triple_slash_single_line(port_),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kFunctionWithCommentsTripleSlashSingleLineConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFunctionWithCommentsTripleSlashSingleLineConstMeta =>
+      const TaskConstMeta(
+        debugName: "function_with_comments_triple_slash_single_line",
+        argNames: [],
       );
 
   @override
@@ -95,6 +139,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
 int _wire2api_i_32(dynamic raw) {
   return raw as int;
+}
+
+void _wire2api_unit(dynamic raw) {
+  return;
 }
 
 // Section: api2wire_funcs

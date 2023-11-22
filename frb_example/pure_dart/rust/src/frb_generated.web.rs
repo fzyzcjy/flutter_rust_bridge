@@ -17,8 +17,18 @@ impl Wire2Api<i32> for JsValue {
 }
 
 #[wasm_bindgen]
-pub fn wire_another_adder(port_: MessagePort, a: i32, b: i32) {
-    wire_another_adder_impl(port_, a, b)
+pub fn wire_function_with_comments_slash_star_star(port_: MessagePort) {
+    wire_function_with_comments_slash_star_star_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_function_with_comments_triple_slash_multi_line(port_: MessagePort) {
+    wire_function_with_comments_triple_slash_multi_line_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_function_with_comments_triple_slash_single_line(port_: MessagePort) {
+    wire_function_with_comments_triple_slash_single_line_impl(port_)
 }
 
 #[wasm_bindgen]

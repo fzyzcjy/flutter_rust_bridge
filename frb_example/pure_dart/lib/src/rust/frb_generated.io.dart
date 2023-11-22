@@ -33,24 +33,50 @@ class RustLibWire implements BaseWire {
           lookup)
       : _lookup = lookup;
 
-  void wire_another_adder(
+  void wire_function_with_comments_slash_star_star(
     int port_,
-    int a,
-    int b,
   ) {
-    return _wire_another_adder(
+    return _wire_function_with_comments_slash_star_star(
       port_,
-      a,
-      b,
     );
   }
 
-  late final _wire_another_adderPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>(
-      'wire_another_adder');
-  late final _wire_another_adder =
-      _wire_another_adderPtr.asFunction<void Function(int, int, int)>();
+  late final _wire_function_with_comments_slash_star_starPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_function_with_comments_slash_star_star');
+  late final _wire_function_with_comments_slash_star_star =
+      _wire_function_with_comments_slash_star_starPtr
+          .asFunction<void Function(int)>();
+
+  void wire_function_with_comments_triple_slash_multi_line(
+    int port_,
+  ) {
+    return _wire_function_with_comments_triple_slash_multi_line(
+      port_,
+    );
+  }
+
+  late final _wire_function_with_comments_triple_slash_multi_linePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_function_with_comments_triple_slash_multi_line');
+  late final _wire_function_with_comments_triple_slash_multi_line =
+      _wire_function_with_comments_triple_slash_multi_linePtr
+          .asFunction<void Function(int)>();
+
+  void wire_function_with_comments_triple_slash_single_line(
+    int port_,
+  ) {
+    return _wire_function_with_comments_triple_slash_single_line(
+      port_,
+    );
+  }
+
+  late final _wire_function_with_comments_triple_slash_single_linePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_function_with_comments_triple_slash_single_line');
+  late final _wire_function_with_comments_triple_slash_single_line =
+      _wire_function_with_comments_triple_slash_single_linePtr
+          .asFunction<void Function(int)>();
 
   void wire_simple_adder(
     int port_,
