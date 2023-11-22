@@ -51,12 +51,16 @@ class _Duplicator {
       if (generator.duplicatorBlacklistNames.contains(fileName)) continue;
       if (DuplicatorMode.values.any((mode) => fileStem.endsWith(_computePostfix(mode)))) continue;
 
-      _generateOne(file);
+      for (final mode in DuplicatorMode.values) {
+        final outputText = _generateOne(file.readAsStringSync(), mode);
+        final targetPath = file.uri.resolve('../$fileStem${_computePostfix(mode)}.${generator.extension}').toFilePath();
+        File(targetPath).writeAsStringSync(outputText);
+      }
     }
   }
 
-  void _generateOne(File file) {
-    TODO;
+  String _generateOne(String inputText, DuplicatorMode mode) {
+    return TODO;
   }
 
   String _computePostfix(DuplicatorMode mode) => '_twin_${mode.name}';
