@@ -22,8 +22,8 @@ pub enum IrTypeDelegate {
 }
 
 pub struct IrTypeDelegateArray {
-    length: usize,
-    mode: IrTypeDelegateArrayMode,
+    pub length: usize,
+    pub mode: IrTypeDelegateArrayMode,
 }
 
 pub enum IrTypeDelegateArrayMode {
@@ -78,7 +78,7 @@ impl IrTypeTrait for IrTypeDelegate {
     fn rust_api_type(&self) -> String {
         match self {
             IrTypeDelegate::Array(array) => {
-                format!("[{}; {}]", array.inner().rust_api_type(), array.length())
+                format!("[{}; {}]", array.inner().rust_api_type(), array.length)
             }
             IrTypeDelegate::String => "String".to_owned(),
             IrTypeDelegate::StringList => "Vec<String>".to_owned(),
@@ -163,29 +163,21 @@ impl IrTypeDelegateArray {
     }
 
     pub fn inner(&self) -> IrType {
-        match self {
-            IrTypeDelegateArrayMode::General { general, .. } => *general.clone(),
-            IrTypeDelegateArrayMode::Primitive { primitive, .. } => {
-                IrType::Primitive(primitive.clone())
-            }
+        match &self.mode {
+            IrTypeDelegateArrayMode::General(general) => *general.clone(),
+            IrTypeDelegateArrayMode::Primitive(primitive) => IrType::Primitive(primitive.clone()),
         }
     }
 
     pub fn safe_ident(&self) -> String {
-        match self {
-            IrTypeDelegateArrayMode::General { general, length } => {
+        let length = &self.length;
+        match &self.mode {
+            IrTypeDelegateArrayMode::General(general) => {
                 format!("{}_array_{length}", general.safe_ident())
             }
-            IrTypeDelegateArray::PrimitiveArray { primitive, length } => {
+            IrTypeDelegateArrayMode::Primitive(primitive) => {
                 format!("{}_array_{length}", primitive.safe_ident())
             }
-        }
-    }
-
-    pub fn length(&self) -> usize {
-        *match self {
-            IrTypeDelegateArrayMode::General { length, .. } => length,
-            IrTypeDelegateArray::PrimitiveArray { length, .. } => length,
         }
     }
 }

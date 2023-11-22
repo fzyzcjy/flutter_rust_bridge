@@ -27,9 +27,9 @@ fn generate_array(
     let delegate_dart_api_type =
         ApiDartGenerator::new(array.get_delegate(), context).dart_api_type();
 
-    let array_length = array.length();
+    let array_length = array.length;
 
-    let dart_init_method = match array {
+    let dart_init_method = match array.mode {
             IrTypeDelegateArrayMode::General(..) => format!(
                 "{self_dart_api_type}.init({inner_dart_api_type} fill): super(List<{inner_dart_api_type}>.filled(arraySize,fill));",
             ),

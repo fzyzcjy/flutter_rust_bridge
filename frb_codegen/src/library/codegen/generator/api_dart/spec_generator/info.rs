@@ -59,7 +59,8 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
 
 impl IrTypeDelegateArray {
     pub(crate) fn dart_api_type(&self, context: ApiDartGeneratorContext) -> String {
-        match self.mode {
+        let length = self.length;
+        match &self.mode {
             IrTypeDelegateArrayMode::General(general) => {
                 format!(
                     "{}Array{length}",

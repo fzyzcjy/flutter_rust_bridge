@@ -3,7 +3,8 @@ use crate::codegen::generator::misc::target::Target;
 use crate::codegen::generator::wire::dart::spec_generator::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::ir::ty::delegate::{
-    IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
+    IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegateArrayMode, IrTypeDelegatePrimitiveEnum,
+    IrTypeDelegateTime,
 };
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
@@ -12,7 +13,7 @@ use crate::library::codegen::ir::ty::IrTypeTrait;
 impl<'a> WireDartGeneratorApi2wireTrait for DelegateWireDartGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         match &self.ir {
-            IrTypeDelegate::Array(ref array) => match array {
+            IrTypeDelegate::Array(ref array) => match &array.mode {
                 IrTypeDelegateArrayMode::General(_) => Acc::distribute(Some(format!(
                     "return api2wire_{}(raw);",
                     array.get_delegate().safe_ident(),
@@ -23,6 +24,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for DelegateWireDartGenerator<'a> {
                         ans.ref.ptr.asTypedList({length}).setAll(0, raw);
                         return ans;",
                         array.get_delegate().safe_ident(),
+                        length = array.length,
                     )),
                     wasm: Some(format!(
                         "return {}.fromList(raw);",

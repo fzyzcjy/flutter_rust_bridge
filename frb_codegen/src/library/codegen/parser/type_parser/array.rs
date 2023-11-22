@@ -1,4 +1,6 @@
-use crate::codegen::ir::ty::delegate::{IrTypeDelegate, IrTypeDelegateArray};
+use crate::codegen::ir::ty::delegate::{
+    IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegateArrayMode,
+};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{Delegate, Primitive};
 use crate::codegen::parser::type_parser::TypeParserWithContext;
@@ -19,15 +21,13 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
         };
 
         Ok(match self.parse_type(&type_array.elem)? {
-            Primitive(primitive) => {
-                Delegate(IrTypeDelegate::Array(IrTypeDelegateArrayMode::Primitive {
-                    length,
-                    primitive,
-                }))
-            }
-            others => Delegate(IrTypeDelegate::Array(IrTypeDelegateArrayMode::General {
+            Primitive(primitive) => Delegate(IrTypeDelegate::Array(IrTypeDelegateArray {
                 length,
-                general: Box::new(others),
+                mode: IrTypeDelegateArrayMode::Primitive(primitive),
+            })),
+            others => Delegate(IrTypeDelegate::Array(IrTypeDelegateArray {
+                length,
+                mode: IrTypeDelegateArrayMode::General(Box::new(others)),
             })),
         })
     }

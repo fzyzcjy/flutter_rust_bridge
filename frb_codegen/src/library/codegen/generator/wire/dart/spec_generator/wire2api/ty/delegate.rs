@@ -2,7 +2,8 @@ use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::generator::wire::dart::spec_generator::wire2api::misc::gen_wire2api_simple_type_cast;
 use crate::codegen::generator::wire::dart::spec_generator::wire2api::ty::WireDartGeneratorWire2apiTrait;
 use crate::codegen::ir::ty::delegate::{
-    IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
+    IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegateArrayMode, IrTypeDelegatePrimitiveEnum,
+    IrTypeDelegateTime,
 };
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartGenerator;
@@ -12,14 +13,14 @@ use crate::library::codegen::ir::ty::IrTypeTrait;
 impl<'a> WireDartGeneratorWire2apiTrait for DelegateWireDartGenerator<'a> {
     fn generate_impl_wire2api_body(&self) -> String {
         match &self.ir {
-            IrTypeDelegate::Array(array) => match array {
-                IrTypeDelegateArrayMode::General { general, .. } => format!(
+            IrTypeDelegate::Array(array) => match &array.mode {
+                IrTypeDelegateArrayMode::General(general) => format!(
                     r"return {}((raw as List<dynamic>).map(_wire2api_{}).toList());",
                     ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
                         .dart_api_type(),
                     general.safe_ident(),
                 ),
-                IrTypeDelegateArrayMode::Primitive { .. } => format!(
+                IrTypeDelegateArrayMode::Primitive(_) => format!(
                     r"return {}(_wire2api_{}(raw));",
                     ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
                         .dart_api_type(),
