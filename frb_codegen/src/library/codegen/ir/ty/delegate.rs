@@ -21,15 +21,14 @@ pub enum IrTypeDelegate {
     Anyhow,
 }
 
-pub enum IrTypeDelegateArray {
-    GeneralArray {
-        length: usize,
-        general: Box<IrType>,
-    },
-    PrimitiveArray {
-        length: usize,
-        primitive: IrTypePrimitive,
-    },
+pub struct IrTypeDelegateArray {
+    length: usize,
+    inner: IrTypeDelegateArrayInner,
+}
+
+pub enum IrTypeDelegateArrayInner {
+    General(Box<IrType>),
+    Primitive(IrTypePrimitive),
 }
 
 pub struct IrTypeDelegatePrimitiveEnum {
