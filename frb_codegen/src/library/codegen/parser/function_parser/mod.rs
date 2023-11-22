@@ -67,7 +67,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             inputs: info.inputs,
             output: info.ok_output.unwrap_or(Primitive(IrTypePrimitive::Unit)),
             error_output: info.error_output,
-            owner: IrFuncOwnerInfo::Function, // TODO
+            owner: TODO,
             mode: info.mode.unwrap_or(IrFuncMode::Normal),
             comments: parse_comments(func.attrs()),
         })
