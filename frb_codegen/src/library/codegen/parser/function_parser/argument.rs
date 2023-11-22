@@ -10,7 +10,7 @@ use crate::codegen::parser::function_parser::{
 };
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::TypeParserParsingContext;
-use anyhow::bail;
+use anyhow::{bail, ensure};
 use syn::punctuated::Punctuated;
 use syn::*;
 
@@ -71,14 +71,17 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         context: &TypeParserParsingContext,
         receiver: &Receiver,
     ) -> anyhow::Result<FunctionPartialInfo> {
+        ensure!(
+            receiver.mutability.is_none(),
+            "mutable self is not supported yet"
+        );
+
         let mut segments = Punctuated::new();
         segments.push(PathSegment {
             ident: Ident::new(struct_name.as_str(), span),
             arguments: PathArguments::None,
         });
-        if receiver.mutability.is_some() {
-            bail!("mutable self is not supported yet");
-        }
+
         Ok(FnArg::Typed(PatType {
             attrs: vec![],
             pat: Box::new(Pat::Ident(PatIdent {
@@ -96,7 +99,21 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     segments,
                 },
             })),
-        }))
+        }));
+
+        let ir_field = IrField {
+            ty: TODO,
+            name: TODO,
+            is_final: TODO,
+            comments: TODO,
+            default: TODO,
+            settings: TODO,
+        };
+
+        Ok(FunctionPartialInfo {
+            inputs: vec![ir_field],
+            ..Default::default()
+        })
     }
 
     fn parse_fn_arg_type_stream_sink(
