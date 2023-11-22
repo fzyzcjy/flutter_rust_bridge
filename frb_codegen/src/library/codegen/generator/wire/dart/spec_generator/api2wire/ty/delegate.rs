@@ -13,11 +13,11 @@ impl<'a> WireDartGeneratorApi2wireTrait for DelegateWireDartGenerator<'a> {
     fn api2wire_body(&self) -> Acc<Option<String>> {
         match &self.ir {
             IrTypeDelegate::Array(ref array) => match array {
-                IrTypeDelegateArray::GeneralArray { .. } => Acc::distribute(Some(format!(
+                IrTypeDelegateArrayMode::General(_) => Acc::distribute(Some(format!(
                     "return api2wire_{}(raw);",
                     array.get_delegate().safe_ident(),
                 ))),
-                IrTypeDelegateArray::PrimitiveArray { length, .. } => Acc {
+                IrTypeDelegateArrayMode::Primitive(_) => Acc {
                     io: Some(format!(
                         "final ans = inner.new_{}({length});
                         ans.ref.ptr.asTypedList({length}).setAll(0, raw);

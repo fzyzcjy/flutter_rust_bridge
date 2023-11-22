@@ -1,6 +1,7 @@
 use crate::codegen::generator::api_dart::spec_generator::base::*;
 use crate::codegen::ir::ty::delegate::{
-    IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegatePrimitiveEnum, IrTypeDelegateTime,
+    IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegateArrayMode, IrTypeDelegatePrimitiveEnum,
+    IrTypeDelegateTime,
 };
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
@@ -58,14 +59,14 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
 
 impl IrTypeDelegateArray {
     pub(crate) fn dart_api_type(&self, context: ApiDartGeneratorContext) -> String {
-        match self {
-            IrTypeDelegateArray::GeneralArray { general, length } => {
+        match self.mode {
+            IrTypeDelegateArrayMode::General(general) => {
                 format!(
                     "{}Array{length}",
                     ApiDartGenerator::new(general.clone(), context).dart_api_type()
                 )
             }
-            IrTypeDelegateArray::PrimitiveArray { primitive, length } => {
+            IrTypeDelegateArrayMode::Primitive(primitive) => {
                 format!(
                     "{}Array{length}",
                     primitive.safe_ident().to_case(Case::Pascal)

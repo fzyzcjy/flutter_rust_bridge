@@ -20,12 +20,12 @@ impl<'a, 'b, 'c> TypeParserWithContext<'a, 'b, 'c> {
 
         Ok(match self.parse_type(&type_array.elem)? {
             Primitive(primitive) => {
-                Delegate(IrTypeDelegate::Array(IrTypeDelegateArray::PrimitiveArray {
+                Delegate(IrTypeDelegate::Array(IrTypeDelegateArrayMode::Primitive {
                     length,
                     primitive,
                 }))
             }
-            others => Delegate(IrTypeDelegate::Array(IrTypeDelegateArray::GeneralArray {
+            others => Delegate(IrTypeDelegate::Array(IrTypeDelegateArrayMode::General {
                 length,
                 general: Box::new(others),
             })),

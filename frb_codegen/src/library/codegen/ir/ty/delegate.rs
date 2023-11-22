@@ -23,10 +23,10 @@ pub enum IrTypeDelegate {
 
 pub struct IrTypeDelegateArray {
     length: usize,
-    inner: IrTypeDelegateArrayInner,
+    mode: IrTypeDelegateArrayMode,
 }
 
-pub enum IrTypeDelegateArrayInner {
+pub enum IrTypeDelegateArrayMode {
     General(Box<IrType>),
     Primitive(IrTypePrimitive),
 }
@@ -150,13 +150,11 @@ impl IrTypeDelegate {
 
 impl IrTypeDelegateArray {
     pub fn get_delegate(&self) -> IrType {
-        match self {
-            IrTypeDelegateArray::GeneralArray { general, .. } => {
-                IrType::GeneralList(IrTypeGeneralList {
-                    inner: general.clone(),
-                })
-            }
-            IrTypeDelegateArray::PrimitiveArray { primitive, .. } => {
+        match self.mode {
+            IrTypeDelegateArrayMode::General(general) => IrType::GeneralList(IrTypeGeneralList {
+                inner: general.clone(),
+            }),
+            IrTypeDelegateArrayMode::Primitive(primitive) => {
                 IrType::PrimitiveList(IrTypePrimitiveList {
                     primitive: primitive.clone(),
                 })
@@ -166,8 +164,8 @@ impl IrTypeDelegateArray {
 
     pub fn inner(&self) -> IrType {
         match self {
-            IrTypeDelegateArray::GeneralArray { general, .. } => *general.clone(),
-            IrTypeDelegateArray::PrimitiveArray { primitive, .. } => {
+            IrTypeDelegateArrayMode::General { general, .. } => *general.clone(),
+            IrTypeDelegateArrayMode::Primitive { primitive, .. } => {
                 IrType::Primitive(primitive.clone())
             }
         }
@@ -175,7 +173,7 @@ impl IrTypeDelegateArray {
 
     pub fn safe_ident(&self) -> String {
         match self {
-            IrTypeDelegateArray::GeneralArray { general, length } => {
+            IrTypeDelegateArrayMode::General { general, length } => {
                 format!("{}_array_{length}", general.safe_ident())
             }
             IrTypeDelegateArray::PrimitiveArray { primitive, length } => {
@@ -186,7 +184,7 @@ impl IrTypeDelegateArray {
 
     pub fn length(&self) -> usize {
         *match self {
-            IrTypeDelegateArray::GeneralArray { length, .. } => length,
+            IrTypeDelegateArrayMode::General { length, .. } => length,
             IrTypeDelegateArray::PrimitiveArray { length, .. } => length,
         }
     }

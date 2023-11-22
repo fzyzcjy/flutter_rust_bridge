@@ -13,13 +13,13 @@ impl<'a> WireDartGeneratorWire2apiTrait for DelegateWireDartGenerator<'a> {
     fn generate_impl_wire2api_body(&self) -> String {
         match &self.ir {
             IrTypeDelegate::Array(array) => match array {
-                IrTypeDelegateArray::GeneralArray { general, .. } => format!(
+                IrTypeDelegateArrayMode::General { general, .. } => format!(
                     r"return {}((raw as List<dynamic>).map(_wire2api_{}).toList());",
                     ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
                         .dart_api_type(),
                     general.safe_ident(),
                 ),
-                IrTypeDelegateArray::PrimitiveArray { .. } => format!(
+                IrTypeDelegateArrayMode::Primitive { .. } => format!(
                     r"return {}(_wire2api_{}(raw));",
                     ApiDartGenerator::new(self.ir.clone(), self.context.as_api_dart_context())
                         .dart_api_type(),

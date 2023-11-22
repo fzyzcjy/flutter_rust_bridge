@@ -1,7 +1,7 @@
 use crate::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::codegen::ir::ty::delegate::{
-    IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegatePrimitiveEnum,
+    IrTypeDelegate, IrTypeDelegateArray, IrTypeDelegateArrayMode, IrTypeDelegatePrimitiveEnum,
 };
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
@@ -30,10 +30,10 @@ fn generate_array(
     let array_length = array.length();
 
     let dart_init_method = match array {
-            IrTypeDelegateArray::GeneralArray { .. } => format!(
+            IrTypeDelegateArrayMode::General(..) => format!(
                 "{self_dart_api_type}.init({inner_dart_api_type} fill): super(List<{inner_dart_api_type}>.filled(arraySize,fill));",
             ),
-            IrTypeDelegateArray::PrimitiveArray { .. } => format!(
+            IrTypeDelegateArrayMode::Primitive(..) => format!(
                 "{self_dart_api_type}.init(): super({delegate_dart_api_type}(arraySize));",
             ),
         };
