@@ -8,6 +8,7 @@ use crate::codegen::ir::func::{
 use crate::codegen::ir::namespace::{Namespace, NamespacedName};
 use crate::codegen::ir::ty::primitive::IrTypePrimitive;
 use crate::codegen::ir::ty::IrType;
+use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::function_extractor::GeneralizedItemFn;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::{TypeParser, TypeParserParsingContext};
@@ -61,7 +62,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         };
 
         let func_name = parse_name(sig, &owner);
-
+        let attributes = FrbAttributes::parse(func.attrs())?;
         let context = TypeParserParsingContext {
             initiated_namespace: namespace.clone(),
         };
@@ -72,16 +73,26 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         }
         info = info.merge(self.parse_fn_output(sig, &context)?)?;
 
+        let mode = compute_func_mode(attributes, &info);
+
         Ok(Some(IrFunc {
             name: NamespacedName::new(namespace, func_name),
             inputs: info.inputs,
             output: info.ok_output.unwrap_or(Primitive(IrTypePrimitive::Unit)),
             error_output: info.error_output,
             owner,
-            mode: info.mode.unwrap_or(IrFuncMode::Normal),
+            mode,
             comments: parse_comments(func.attrs()),
         }))
     }
+}
+
+fn compute_func_mode(attributes: FrbAttributes, info: &FunctionPartialInfo) -> IrFuncMode {
+    info.mode.unwrap_or(if attributes.sync() {
+        IrFuncMode::Sync
+    } else {
+        IrFuncMode::Normal
+    })
 }
 
 fn parse_name(sig: &Signature, owner: &IrFuncOwnerInfo) -> String {
