@@ -32,16 +32,16 @@ impl Module {
     where
         F: Fn(&Module) -> &[T],
         G: Fn(&'a T) -> (String, V),
-        V: Clone + Debug,
+        V: Debug,
     {
         let mut ans = HashMap::new();
         self.visit_modules(&mut |module| {
             for item in f(module) {
                 let (key, value) = extract_entry(item);
-                let old_value = ans.insert(key.clone(), value.clone());
-                if old_value.is_some() {
+                if let Some(old_value) = ans.get(&key) {
                     warn!("Same key={key} has multiple values: {old_value:?} (thrown away) and {value:?} (used)");
                 }
+                let old_value = ans.insert(key, value);
             }
         });
         ans
