@@ -39,6 +39,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 
 abstract class RustLibApi extends BaseApi {
   Future<int> anotherAdder({required int a, required int b, dynamic hint});
+
   Future<int> simpleAdder({required int a, required int b, dynamic hint});
 }
 
@@ -68,6 +69,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         debugName: "another_adder",
         argNames: ["a", "b"],
       );
+
   @override
   Future<int> simpleAdder({required int a, required int b, dynamic hint}) {
     var arg0 = api2wire_i_32(a);
@@ -89,17 +91,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 }
 
-// Section: boilerplate
-// Section: api_impl_normal_functions
-// Section: api_impl_opaque_getters
-// Section: c_binding
 // Section: impl_wire2api
+
 int _wire2api_i_32(dynamic raw) {
   return raw as int;
 }
 
 // Section: api2wire_funcs
+
 @protected
 int api2wire_i_32(int raw) {
   return raw;
-} // Section: api_fill_to_wire_funcs
+}

@@ -1,4 +1,7 @@
 use super::*;
+
+// Section: impl_new_with_nullptr
+
 pub trait NewWithNullPtr {
     fn new_with_null_ptr() -> Self;
 }

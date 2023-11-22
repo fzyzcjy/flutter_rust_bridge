@@ -8,6 +8,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 }
 
+// Section: boilerplate
+
 class RustLibWire extends BaseWire {
   // TODO
 }

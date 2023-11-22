@@ -1,5 +1,7 @@
 use super::*;
 
+// Section: impl_wire2api
+
 impl<T> Wire2Api<Option<T>> for JsValue
 where
     JsValue: Wire2Api<T>,
