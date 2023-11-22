@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 use strum_macros::EnumIter;
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Default)]
 pub(crate) struct DumperInternalConfig {
     pub(crate) dump_contents: Vec<ConfigDumpContent>,
     pub(crate) dump_directory: PathBuf,

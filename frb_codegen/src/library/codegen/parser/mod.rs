@@ -100,6 +100,8 @@ fn read_files(
 #[cfg(test)]
 mod tests {
     use crate::codegen::config::internal_config::RustInputPathPack;
+    use crate::codegen::dumper::internal_config::DumperInternalConfig;
+    use crate::codegen::dumper::Dumper;
     use crate::codegen::parser::internal_config::ParserInternalConfig;
     use crate::codegen::parser::parse;
     use crate::codegen::parser::source_graph::crates::Crate;
@@ -172,14 +174,17 @@ mod tests {
             )],
         )?;
 
-        let actual_ir = parse(&ParserInternalConfig {
-            rust_input_path_pack: rust_input_path_pack.map(|f| f(&rust_crate_dir)).unwrap_or(
-                RustInputPathPack {
-                    rust_input_paths: vec![rust_crate_dir.join("src/api.rs")],
-                },
-            ),
-            rust_crate_dir: rust_crate_dir.clone(),
-        })?;
+        let actual_ir = parse(
+            &ParserInternalConfig {
+                rust_input_path_pack: rust_input_path_pack.map(|f| f(&rust_crate_dir)).unwrap_or(
+                    RustInputPathPack {
+                        rust_input_paths: vec![rust_crate_dir.join("src/api.rs")],
+                    },
+                ),
+                rust_crate_dir: rust_crate_dir.clone(),
+            },
+            &Dumper(&Default::default()),
+        )?;
         json_golden_test(
             &serde_json::to_value(actual_ir)?,
             &rust_crate_dir.join("expect_ir.json"),

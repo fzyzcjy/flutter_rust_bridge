@@ -59,6 +59,7 @@ fn compute_path_from_namespace(
 #[cfg(test)]
 mod tests {
     use crate::codegen::config::internal_config::InternalConfig;
+    use crate::codegen::dumper::Dumper;
     use crate::codegen::generator::api_dart::generate;
     use crate::codegen::{parser, Config};
     use crate::utils::logs::configure_opinionated_test_logging;
@@ -78,9 +79,13 @@ mod tests {
         env::set_current_dir(&test_fixture_dir)?;
 
         let config = Config::from_files_auto()?;
-        let internal_config = InternalConfig::parse(config)?;
-        let ir_pack = parser::parse(&internal_config.parser)?;
-        let actual = generate(&ir_pack, &internal_config.generator.api_dart.into())?;
+        let internal_config = InternalConfig::parse(&config)?;
+        let ir_pack = parser::parse(&internal_config.parser, &Dumper(&Default::default()))?;
+        let actual = generate(
+            &ir_pack,
+            &internal_config.generator.api_dart.into(),
+            &Dumper(&Default::default()),
+        )?;
 
         let output_texts = actual.output_texts;
         assert_eq!(output_texts.0.len(), 1);

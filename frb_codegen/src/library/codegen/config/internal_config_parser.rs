@@ -318,7 +318,7 @@ mod tests {
 
         let config = Config::from_files_auto()?;
 
-        let internal_config = InternalConfig::parse(config)?;
+        let internal_config = InternalConfig::parse(&config)?;
 
         let actual_string = serde_json::to_string_pretty(&internal_config)?;
         let actual_json: Value = serde_json::from_str(&actual_string)?;
