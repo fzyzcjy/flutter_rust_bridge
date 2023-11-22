@@ -25,7 +25,10 @@ pub(super) fn generate(spec: ApiDartOutputSpec) -> anyhow::Result<ApiDartOutputT
         .map(|&namespace| {
             (
                 namespace.to_owned(),
-                generate_end_api_text(&grouped_classes[namespace], &grouped_funcs[namespace]),
+                generate_end_api_text(
+                    &grouped_classes.get(namespace),
+                    &grouped_funcs.get(namespace),
+                ),
             )
         })
         .collect_vec();
@@ -34,9 +37,16 @@ pub(super) fn generate(spec: ApiDartOutputSpec) -> anyhow::Result<ApiDartOutputT
 }
 
 fn generate_end_api_text(
-    classes: &[&ApiDartGeneratedClass],
-    funcs: &[&ApiDartGeneratedFunction],
+    classes: &Option<&Vec<&ApiDartGeneratedClass>>,
+    funcs: &Option<&Vec<&ApiDartGeneratedFunction>>,
 ) -> String {
+    let funcs = funcs
+        .map(|funcs| funcs.iter().map(|f| generate_function(f)).join("\n\n"))
+        .unwrap_or_default();
+    let classes = classes
+        .map(|classes| classes.iter().map(|c| c.code.clone()).join("\n\n"))
+        .unwrap_or_default();
+
     format!(
         "// ignore_for_file: invalid_use_of_internal_member
 
@@ -46,8 +56,6 @@ fn generate_end_api_text(
 
         {classes}
         ",
-        funcs = funcs.iter().map(|f| generate_function(f)).join("\n\n"),
-        classes = classes.iter().map(|c| c.code.clone()).join("\n\n"),
     )
 }
 
