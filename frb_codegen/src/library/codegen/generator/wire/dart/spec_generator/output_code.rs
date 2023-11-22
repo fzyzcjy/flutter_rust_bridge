@@ -1,6 +1,7 @@
 use crate::basic_code_impl;
 use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
+use itertools::Itertools;
 use serde::Serialize;
 use std::ops::AddAssign;
 
@@ -66,6 +67,13 @@ impl WireDartOutputCode {
             ..
         } = &self;
 
+        let sorted_imports = self
+            .import
+            .split("\n")
+            .filter(|line| !line.trim().is_empty())
+            .sorted()
+            .join("\n");
+
         let api_class_code = if target == TargetOrCommon::Common {
             format!(
                 "
@@ -112,7 +120,7 @@ impl WireDartOutputCode {
         format!(
             "{}\n{}\n{}\n{}\n{}\n{}\n{}",
             self.file_top,
-            self.import,
+            sorted_imports,
             self.part,
             self.body_top,
             api_class_code,

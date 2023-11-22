@@ -1,13 +1,12 @@
-// ignore_for_file: unused_import
+// ignore_for_file: unused_import, unused_element
 
 import 'api/simple.dart';
-import 'api/comment.dart';
-import 'api/sync.dart';
-import 'api/primitive.dart';
-
-import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-import 'frb_generated.dart';
 import 'dart:ffi' as ffi;
+import 'frb_generated.dart';
+import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'api/comment.dart';
+import 'api/primitive.dart';
+import 'api/sync.dart';
 
 abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   RustLibApiImplPlatform({
