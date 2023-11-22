@@ -24,13 +24,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
-  BigInt api2wire_i_64(BigInt raw) {
-    return raw;
+  int api2wire_i_64(BigInt raw) {
+    return raw.toInt();
   }
 
   @protected
-  BigInt api2wire_u_64(BigInt raw) {
-    return raw;
+  int api2wire_u_64(BigInt raw) {
+    return raw.toInt();
   }
 }
 
