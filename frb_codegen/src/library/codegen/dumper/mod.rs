@@ -3,6 +3,7 @@ use crate::codegen::dumper::internal_config::DumperInternalConfig;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::Config;
 use crate::utils::file_utils::create_dir_all_and_write;
+use log::info;
 use serde::Serialize;
 use std::fs;
 
@@ -27,6 +28,7 @@ impl Dumper<'_> {
 
     fn dump<T: Serialize>(&self, name: &str, data: &T) -> anyhow::Result<()> {
         let path = self.0.dump_directory.join(name);
+        info!("Dumping {name} into {path:?}");
         create_dir_all_and_write(path, serde_json::to_string(data)?)
     }
 }
