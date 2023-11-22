@@ -10,6 +10,11 @@ impl<T> NewWithNullPtr for *mut T {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_another_adder(port_: i64, a: i32, b: i32) {
+    wire_another_adder_impl(port_, a, b)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_simple_adder(port_: i64, a: i32, b: i32) {
     wire_simple_adder_impl(port_, a, b)
 }

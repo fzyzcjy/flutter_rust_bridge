@@ -38,6 +38,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
+  Future<int> anotherAdder({required int a, required int b, dynamic hint});
   Future<int> simpleAdder({required int a, required int b, dynamic hint});
 }
 
@@ -48,6 +49,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     required super.generalizedFrbRustBinding,
   });
 
+  @override
+  Future<int> anotherAdder({required int a, required int b, dynamic hint}) {
+    var arg0 = api2wire_i_32(a);
+    var arg1 = api2wire_i_32(b);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_another_adder(port_, arg0, arg1),
+      parseSuccessData: _wire2api_i_32,
+      parseErrorData: null,
+      constMeta: kAnotherAdderConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kAnotherAdderConstMeta => const TaskConstMeta(
+        debugName: "another_adder",
+        argNames: ["a", "b"],
+      );
   @override
   Future<int> simpleAdder({required int a, required int b, dynamic hint}) {
     var arg0 = api2wire_i_32(a);

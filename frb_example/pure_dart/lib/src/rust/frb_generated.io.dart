@@ -31,6 +31,25 @@ class RustLibWire implements BaseWire {
           lookup)
       : _lookup = lookup;
 
+  void wire_another_adder(
+    int port_,
+    int a,
+    int b,
+  ) {
+    return _wire_another_adder(
+      port_,
+      a,
+      b,
+    );
+  }
+
+  late final _wire_another_adderPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32, ffi.Int32)>>(
+      'wire_another_adder');
+  late final _wire_another_adder =
+      _wire_another_adderPtr.asFunction<void Function(int, int, int)>();
+
   void wire_simple_adder(
     int port_,
     int a,
