@@ -34,17 +34,6 @@ extern "C" fn on_dylib_start() {
         .try_init();
 }
 
-pub fn handle_string(s: String) -> String {
-    info!("handle_string({})", &s);
-    let s2 = s.clone();
-    s + &s2
-}
-
-#[allow(clippy::unused_unit)]
-pub fn handle_return_unit() -> () {
-    info!("handle_return_unit()");
-}
-
 // TODO after enabling zero-copy by default, this is not needed anymore
 // pub struct ZeroCopyVecOfPrimitivePack {
 //     pub int8list: ZeroCopyBuffer<Vec<i8>>,
