@@ -20,6 +20,7 @@
 
 use crate::api::comment::StructWithComments;
 use crate::api::comment::*;
+use crate::api::primitive::*;
 use crate::api::simple::*;
 use crate::api::sync::*;
 use core::panic::UnwindSafe;
@@ -94,6 +95,152 @@ fn wire_function_with_comments_triple_slash_single_line_impl(port_: MessagePort)
         },
     )
 }
+fn wire_example_primitive_type_bool_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<bool> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, bool, _>(
+        WrapInfo {
+            debug_name: "example_primitive_type_bool",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(example_primitive_type_bool(api_arg))
+        },
+    )
+}
+fn wire_example_primitive_type_f32_impl(port_: MessagePort, arg: impl Wire2Api<f32> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, f32, _>(
+        WrapInfo {
+            debug_name: "example_primitive_type_f32",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(example_primitive_type_f32(api_arg))
+        },
+    )
+}
+fn wire_example_primitive_type_f64_impl(port_: MessagePort, arg: impl Wire2Api<f64> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, f64, _>(
+        WrapInfo {
+            debug_name: "example_primitive_type_f64",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(example_primitive_type_f64(api_arg))
+        },
+    )
+}
+fn wire_example_primitive_type_i16_impl(port_: MessagePort, arg: impl Wire2Api<i16> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i16, _>(
+        WrapInfo {
+            debug_name: "example_primitive_type_i16",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(example_primitive_type_i16(api_arg))
+        },
+    )
+}
+fn wire_example_primitive_type_i32_impl(port_: MessagePort, arg: impl Wire2Api<i32> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i32, _>(
+        WrapInfo {
+            debug_name: "example_primitive_type_i32",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(example_primitive_type_i32(api_arg))
+        },
+    )
+}
+fn wire_example_primitive_type_i64_impl(port_: MessagePort, arg: impl Wire2Api<i64> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i64, _>(
+        WrapInfo {
+            debug_name: "example_primitive_type_i64",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(example_primitive_type_i64(api_arg))
+        },
+    )
+}
+fn wire_example_primitive_type_i8_impl(port_: MessagePort, arg: impl Wire2Api<i8> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, i8, _>(
+        WrapInfo {
+            debug_name: "example_primitive_type_i8",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(example_primitive_type_i8(api_arg))
+        },
+    )
+}
+fn wire_example_primitive_type_u16_impl(port_: MessagePort, arg: impl Wire2Api<u16> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u16, _>(
+        WrapInfo {
+            debug_name: "example_primitive_type_u16",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(example_primitive_type_u16(api_arg))
+        },
+    )
+}
+fn wire_example_primitive_type_u32_impl(port_: MessagePort, arg: impl Wire2Api<u32> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32, _>(
+        WrapInfo {
+            debug_name: "example_primitive_type_u32",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(example_primitive_type_u32(api_arg))
+        },
+    )
+}
+fn wire_example_primitive_type_u64_impl(port_: MessagePort, arg: impl Wire2Api<u64> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u64, _>(
+        WrapInfo {
+            debug_name: "example_primitive_type_u64",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(example_primitive_type_u64(api_arg))
+        },
+    )
+}
+fn wire_example_primitive_type_u8_impl(port_: MessagePort, arg: impl Wire2Api<u8> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u8, _>(
+        WrapInfo {
+            debug_name: "example_primitive_type_u8",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(example_primitive_type_u8(api_arg))
+        },
+    )
+}
 fn wire_simple_adder_impl(
     port_: MessagePort,
     a: impl Wire2Api<i32> + UnwindSafe,
@@ -150,8 +297,58 @@ where
         (!self.is_null()).then(|| self.wire2api())
     }
 }
+impl Wire2Api<bool> for bool {
+    fn wire2api(self) -> bool {
+        self
+    }
+}
+impl Wire2Api<f32> for f32 {
+    fn wire2api(self) -> f32 {
+        self
+    }
+}
+impl Wire2Api<f64> for f64 {
+    fn wire2api(self) -> f64 {
+        self
+    }
+}
+impl Wire2Api<i16> for i16 {
+    fn wire2api(self) -> i16 {
+        self
+    }
+}
 impl Wire2Api<i32> for i32 {
     fn wire2api(self) -> i32 {
+        self
+    }
+}
+impl Wire2Api<i64> for i64 {
+    fn wire2api(self) -> i64 {
+        self
+    }
+}
+impl Wire2Api<i8> for i8 {
+    fn wire2api(self) -> i8 {
+        self
+    }
+}
+impl Wire2Api<u16> for u16 {
+    fn wire2api(self) -> u16 {
+        self
+    }
+}
+impl Wire2Api<u32> for u32 {
+    fn wire2api(self) -> u32 {
+        self
+    }
+}
+impl Wire2Api<u64> for u64 {
+    fn wire2api(self) -> u64 {
+        self
+    }
+}
+impl Wire2Api<u8> for u8 {
+    fn wire2api(self) -> u8 {
         self
     }
 }

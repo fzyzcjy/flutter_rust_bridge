@@ -1,8 +1,9 @@
 // ignore_for_file: unused_import
 
-import 'api/comment.dart';
 import 'api/simple.dart';
 import 'api/sync.dart';
+import 'api/comment.dart';
+import 'api/primitive.dart';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'frb_generated.dart';
@@ -21,6 +22,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     final ptr = wire.new_box_autoadd_struct_with_comments();
     _api_fill_to_wire_struct_with_comments(raw, ptr.ref);
     return ptr;
+  }
+
+  @protected
+  BigInt api2wire_i_64(BigInt raw) {
+    return raw;
+  }
+
+  @protected
+  BigInt api2wire_u_64(BigInt raw) {
+    return raw;
   }
 }
 
@@ -126,6 +137,185 @@ class RustLibWire implements BaseWire {
   late final _wire_function_with_comments_triple_slash_single_line =
       _wire_function_with_comments_triple_slash_single_linePtr
           .asFunction<void Function(int)>();
+
+  void wire_example_primitive_type_bool(
+    int port_,
+    bool arg,
+  ) {
+    return _wire_example_primitive_type_bool(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_example_primitive_type_boolPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Bool)>>(
+          'wire_example_primitive_type_bool');
+  late final _wire_example_primitive_type_bool =
+      _wire_example_primitive_type_boolPtr
+          .asFunction<void Function(int, bool)>();
+
+  void wire_example_primitive_type_f32(
+    int port_,
+    double arg,
+  ) {
+    return _wire_example_primitive_type_f32(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_example_primitive_type_f32Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Float)>>(
+          'wire_example_primitive_type_f32');
+  late final _wire_example_primitive_type_f32 =
+      _wire_example_primitive_type_f32Ptr
+          .asFunction<void Function(int, double)>();
+
+  void wire_example_primitive_type_f64(
+    int port_,
+    double arg,
+  ) {
+    return _wire_example_primitive_type_f64(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_example_primitive_type_f64Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Double)>>(
+          'wire_example_primitive_type_f64');
+  late final _wire_example_primitive_type_f64 =
+      _wire_example_primitive_type_f64Ptr
+          .asFunction<void Function(int, double)>();
+
+  void wire_example_primitive_type_i16(
+    int port_,
+    int arg,
+  ) {
+    return _wire_example_primitive_type_i16(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_example_primitive_type_i16Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int16)>>(
+          'wire_example_primitive_type_i16');
+  late final _wire_example_primitive_type_i16 =
+      _wire_example_primitive_type_i16Ptr.asFunction<void Function(int, int)>();
+
+  void wire_example_primitive_type_i32(
+    int port_,
+    int arg,
+  ) {
+    return _wire_example_primitive_type_i32(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_example_primitive_type_i32Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int32)>>(
+          'wire_example_primitive_type_i32');
+  late final _wire_example_primitive_type_i32 =
+      _wire_example_primitive_type_i32Ptr.asFunction<void Function(int, int)>();
+
+  void wire_example_primitive_type_i64(
+    int port_,
+    int arg,
+  ) {
+    return _wire_example_primitive_type_i64(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_example_primitive_type_i64Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>(
+          'wire_example_primitive_type_i64');
+  late final _wire_example_primitive_type_i64 =
+      _wire_example_primitive_type_i64Ptr.asFunction<void Function(int, int)>();
+
+  void wire_example_primitive_type_i8(
+    int port_,
+    int arg,
+  ) {
+    return _wire_example_primitive_type_i8(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_example_primitive_type_i8Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int8)>>(
+          'wire_example_primitive_type_i8');
+  late final _wire_example_primitive_type_i8 =
+      _wire_example_primitive_type_i8Ptr.asFunction<void Function(int, int)>();
+
+  void wire_example_primitive_type_u16(
+    int port_,
+    int arg,
+  ) {
+    return _wire_example_primitive_type_u16(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_example_primitive_type_u16Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint16)>>(
+          'wire_example_primitive_type_u16');
+  late final _wire_example_primitive_type_u16 =
+      _wire_example_primitive_type_u16Ptr.asFunction<void Function(int, int)>();
+
+  void wire_example_primitive_type_u32(
+    int port_,
+    int arg,
+  ) {
+    return _wire_example_primitive_type_u32(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_example_primitive_type_u32Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>(
+          'wire_example_primitive_type_u32');
+  late final _wire_example_primitive_type_u32 =
+      _wire_example_primitive_type_u32Ptr.asFunction<void Function(int, int)>();
+
+  void wire_example_primitive_type_u64(
+    int port_,
+    int arg,
+  ) {
+    return _wire_example_primitive_type_u64(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_example_primitive_type_u64Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint64)>>(
+          'wire_example_primitive_type_u64');
+  late final _wire_example_primitive_type_u64 =
+      _wire_example_primitive_type_u64Ptr.asFunction<void Function(int, int)>();
+
+  void wire_example_primitive_type_u8(
+    int port_,
+    int arg,
+  ) {
+    return _wire_example_primitive_type_u8(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_example_primitive_type_u8Ptr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint8)>>(
+          'wire_example_primitive_type_u8');
+  late final _wire_example_primitive_type_u8 =
+      _wire_example_primitive_type_u8Ptr.asFunction<void Function(int, int)>();
 
   void wire_simple_adder(
     int port_,
