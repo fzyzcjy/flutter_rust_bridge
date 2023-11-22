@@ -1,5 +1,5 @@
 use crate::codegen::ir::field::{IrField, IrFieldSettings};
-use crate::codegen::ir::func::IrFuncMode;
+use crate::codegen::ir::func::{IrFuncMode, IrFuncOwnerInfo};
 use crate::codegen::ir::ident::IrIdent;
 use crate::codegen::ir::ty::boxed::IrTypeBoxed;
 use crate::codegen::ir::ty::IrType;
@@ -10,7 +10,8 @@ use crate::codegen::parser::function_parser::{
 };
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::TypeParserParsingContext;
-use anyhow::{bail, ensure};
+use crate::if_then_some;
+use anyhow::{bail, ensure, Context};
 use syn::punctuated::Punctuated;
 use syn::*;
 
@@ -19,13 +20,14 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         &mut self,
         argument_index: usize,
         sig_input: &FnArg,
+        owner: &IrFuncOwnerInfo,
         context: &TypeParserParsingContext,
     ) -> anyhow::Result<FunctionPartialInfo> {
         match sig_input {
             FnArg::Typed(ref pat_type) => {
                 self.parse_fn_arg_typed(argument_index, context, pat_type)
             }
-            FnArg::Receiver(ref receiver) => self.parse_fn_arg_receiver(context, receiver),
+            FnArg::Receiver(ref receiver) => self.parse_fn_arg_receiver(owner, context, receiver),
             _ => bail!(
                 "Unexpected parameter: {}",
                 quote::quote!(#sig_input).to_string()
@@ -65,6 +67,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
     fn parse_fn_arg_receiver(
         &mut self,
+        owner: &IrFuncOwnerInfo,
         context: &TypeParserParsingContext,
         receiver: &Receiver,
     ) -> anyhow::Result<FunctionPartialInfo> {
@@ -73,7 +76,10 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             "mutable self is not supported yet"
         );
 
-        let ty: Type = parse_str(struct_name)?;
+        let method = if_then_some!(let IrFuncOwnerInfo::Method(method) = owner, method)
+            .context("`self` must happen within methods")?;
+
+        let ty: Type = parse_str(&method.struct_name)?;
 
         let name = "that".to_owned();
 

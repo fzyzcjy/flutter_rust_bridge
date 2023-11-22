@@ -68,7 +68,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
 
         let mut info = FunctionPartialInfo::default();
         for (i, sig_input) in sig.inputs.iter().enumerate() {
-            info = info.merge(self.parse_fn_arg(i, sig_input, &context)?)?;
+            info = info.merge(self.parse_fn_arg(i, sig_input, &owner, &context)?)?;
         }
         info = info.merge(self.parse_fn_output(sig, &context)?)?;
 
