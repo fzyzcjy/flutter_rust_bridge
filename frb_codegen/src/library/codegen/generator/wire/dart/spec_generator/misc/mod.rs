@@ -55,8 +55,8 @@ fn generate_boilerplate(
         ..
     } = &dart_output_class_name_pack;
 
-    let universal_imports =
-        "import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';";
+    let universal_imports = generate_import_dart_api_layer()
+        + "\nimport 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';";
 
     Acc {
         common: vec![WireDartOutputCode {
@@ -121,6 +121,10 @@ fn generate_boilerplate(
             ..Default::default()
         }],
     }
+}
+
+fn generate_import_dart_api_layer() -> String {
+    todo!()
 }
 
 fn compute_needs_freezed(cache: &IrPackComputedCache, ir_pack: &IrPack) -> bool {
