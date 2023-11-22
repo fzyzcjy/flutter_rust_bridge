@@ -46,6 +46,34 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                     ),
                 }
             }
+            FnArg::Receiver(Receiver { mutability, .. }) => {
+                let mut segments = Punctuated::new();
+                segments.push(PathSegment {
+                    ident: Ident::new(struct_name.as_str(), span),
+                    arguments: PathArguments::None,
+                });
+                if mutability.is_some() {
+                    return Err(super::error::Error::NoMutSelf);
+                }
+                Ok(FnArg::Typed(PatType {
+                    attrs: vec![],
+                    pat: Box::new(Pat::Ident(PatIdent {
+                        attrs: vec![],
+                        by_ref: Some(syn::token::Ref { span }),
+                        mutability: *mutability,
+                        ident: Ident::new("that", span),
+                        subpat: None,
+                    })),
+                    colon_token: Colon { spans: [span] },
+                    ty: Box::new(Type::Path(TypePath {
+                        qself: None,
+                        path: Path {
+                            leading_colon: None,
+                            segments,
+                        },
+                    })),
+                }))
+            }
             _ => bail!(
                 "Unexpected parameter: {}",
                 quote::quote!(#sig_input).to_string()
