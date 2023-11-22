@@ -7,6 +7,7 @@ pub(crate) struct CbindgenArgs<'a> {
     pub rust_crate_dir: &'a Path,
     pub c_struct_names: Vec<String>,
     pub exclude_symbols: Vec<String>,
+    pub after_includes: String,
 }
 
 pub(crate) fn cbindgen(args: CbindgenArgs) -> anyhow::Result<String> {
@@ -26,6 +27,7 @@ fn cbindgen_to_file(args: CbindgenArgs, c_output_path: &Path) -> anyhow::Result<
         rust_crate_dir = args.rust_crate_dir
     );
 
+    let default_cbindgen_config = default_cbindgen_config();
     let config = cbindgen::Config {
         export: cbindgen::ExportConfig {
             include: args
@@ -36,7 +38,10 @@ fn cbindgen_to_file(args: CbindgenArgs, c_output_path: &Path) -> anyhow::Result<
             exclude: args.exclude_symbols,
             ..Default::default()
         },
-        ..default_cbindgen_config()
+        after_includes: Some(
+            args.after_includes + &default_cbindgen_config.after_includes.unwrap(),
+        ),
+        ..default_cbindgen_config
     };
     debug!("cbindgen config: {:#?}", config);
 
