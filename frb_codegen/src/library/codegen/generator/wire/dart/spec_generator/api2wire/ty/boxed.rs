@@ -23,7 +23,7 @@ impl<'a> WireDartGeneratorApi2wireTrait for BoxedWireDartGenerator<'a> {
             } else {
                 format!(
                     "final ptr = inner.new_{ir_safe_ident}();
-                    {},
+                    {}
                     return ptr;",
                     if empty_struct {
                         "".to_owned()
