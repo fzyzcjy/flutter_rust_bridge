@@ -34,10 +34,6 @@ extern "C" fn on_dylib_start() {
         .try_init();
 }
 
-pub fn simple_adder(a: i32, b: i32) -> i32 {
-    a + b
-}
-
 pub fn simple_adder_sync(a: i32, b: i32) -> SyncReturn<i32> {
     SyncReturn(a + b)
 }
