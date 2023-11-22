@@ -25,10 +25,10 @@ pub(crate) fn generate(
     func: &IrFunc,
     context: ApiDartGeneratorContext,
 ) -> ApiDartGeneratedFunction {
-    let params = generate_params(func, context, context.config.dart_enums_style).join(", ");
+    let params = generate_params(func, context, context.config.dart_enums_style);
 
     let func_expr = format!(
-        "{func_return_type} {func_name}({{ {params} }})",
+        "{func_return_type} {func_name}({params})",
         func_name = func.name.name.to_case(Case::Camel),
         func_return_type = generate_function_dart_return_type(
             &func.mode,
@@ -52,8 +52,8 @@ fn generate_params(
     func: &IrFunc,
     context: ApiDartGeneratorContext,
     dart_enums_style: bool,
-) -> Vec<String> {
-    let mut ans = func
+) -> String {
+    let mut params = func
         .inputs
         .iter()
         .map(|input| {
@@ -64,16 +64,25 @@ fn generate_params(
             format!("{required}{type_str} {name_str} {default}")
         })
         .collect_vec();
-    ans.push("dynamic hint".to_owned());
-    ans
+    params.push("dynamic hint".to_owned());
+
+    let mut params = params.join(", ");
+    if !params.is_empty() {
+        params = format!("{{{params}}}");
+    }
+    params
 }
 
 fn generate_func_impl(func: &IrFunc, dart_entrypoint_class_name: &str) -> String {
     let func_name = &func.name.name.to_case(Case::Camel);
-    let param_forwards = func
-        .inputs
+    let param_names: Vec<String> = [
+        (func.inputs.iter().map(|input| input.name.dart_style())).collect_vec(),
+        vec!["hint".to_owned()],
+    ]
+    .concat();
+    let param_forwards = param_names
         .iter()
-        .map(|input| format!("{name}: {name}", name = input.name.dart_style()))
+        .map(|name| format!("{name}: {name}"))
         .join(", ");
-    format!("{dart_entrypoint_class_name}.instance.api.{func_name}({param_forwards}, hint: hint)")
+    format!("{dart_entrypoint_class_name}.instance.api.{func_name}({param_forwards})")
 }
