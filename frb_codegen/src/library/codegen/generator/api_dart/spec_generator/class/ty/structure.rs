@@ -24,7 +24,7 @@ impl<'a> ApiDartGeneratorClassTrait for StructRefApiDartGenerator<'a> {
             .collect_vec();
 
         Some(ApiDartGeneratedClass {
-            namespace: TODO,
+            namespace: src.name.namespace.clone(),
             code: if src.using_freezed() {
                 self.generate_mode_freezed(src, &comments, &metadata, &methods)
             } else {

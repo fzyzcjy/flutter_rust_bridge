@@ -41,7 +41,7 @@ pub(crate) fn generate(
     let func_impl = generate_func_impl(func, &context.config.dart_entrypoint_class_name);
 
     ApiDartGeneratedFunction {
-        namespace: TODO,
+        namespace: func.name.namespace.clone(),
         func_comments,
         func_expr,
         func_impl,

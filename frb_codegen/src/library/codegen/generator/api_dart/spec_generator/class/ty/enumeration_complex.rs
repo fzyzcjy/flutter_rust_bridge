@@ -32,7 +32,7 @@ impl<'a> EnumRefApiDartGenerator<'a> {
             generate_dart_maybe_implements_exception(self.ir.is_exception);
 
         Some(ApiDartGeneratedClass {
-            namespace: TODO,
+            namespace: src.name.namespace.clone(),
             code: format!(
                 "@freezed
                 {sealed} class {name} with _${name} {maybe_implements_exception} {{
