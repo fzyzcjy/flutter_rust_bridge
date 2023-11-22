@@ -1,15 +1,18 @@
+use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::ir::ty::{IrType, IrTypeTrait};
 
 crate::ir! {
 pub struct IrTypeRustOpaque {
+    pub namespace: Namespace,
     pub inner: Box<IrType>,
 }
 }
 
 impl IrTypeRustOpaque {
-    pub fn new(inner: IrType) -> Self {
+    pub fn new(namespace: Namespace, inner: IrType) -> Self {
         Self {
+            namespace,
             inner: Box::new(inner),
         }
     }
