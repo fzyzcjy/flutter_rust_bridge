@@ -34,26 +34,27 @@ extern "C" fn on_dylib_start() {
         .try_init();
 }
 
-pub fn primitive_optional_types(
-    my_i32: Option<i32>,
-    my_i64: Option<i64>,
-    my_f64: Option<f64>,
-    my_bool: Option<bool>,
-) -> Option<i32> {
-    info!(
-        "primitive_optional_types({}, {}, {}, {})",
-        my_i32.unwrap_or_default(),
-        my_i64.unwrap_or_default(),
-        my_f64.unwrap_or_default(),
-        my_bool.unwrap_or_default()
-    );
-    Some(
-        my_i32.is_some() as i32
-            + my_i64.is_some() as i32
-            + my_f64.is_some() as i32
-            + my_bool.is_some() as i32,
-    )
-}
+// DONE
+// pub fn primitive_optional_types(
+//     my_i32: Option<i32>,
+//     my_i64: Option<i64>,
+//     my_f64: Option<f64>,
+//     my_bool: Option<bool>,
+// ) -> Option<i32> {
+//     info!(
+//         "primitive_optional_types({}, {}, {}, {})",
+//         my_i32.unwrap_or_default(),
+//         my_i64.unwrap_or_default(),
+//         my_f64.unwrap_or_default(),
+//         my_bool.unwrap_or_default()
+//     );
+//     Some(
+//         my_i32.is_some() as i32
+//             + my_i64.is_some() as i32
+//             + my_f64.is_some() as i32
+//             + my_bool.is_some() as i32,
+//     )
+// }
 
 pub fn primitive_types_sync(
     my_i32: i32,
@@ -68,13 +69,14 @@ pub fn primitive_types_sync(
     SyncReturn(42)
 }
 
-pub fn primitive_u32(my_u32: u32) -> u32 {
-    info!("primitive_u32({})", my_u32);
-    assert_eq!(my_u32, 0xff112233);
-    let ret = 0xfe112233;
-    info!("returning {}", ret);
-    ret
-}
+// DONE primitive
+// pub fn primitive_u32(my_u32: u32) -> u32 {
+//     info!("primitive_u32({})", my_u32);
+//     assert_eq!(my_u32, 0xff112233);
+//     let ret = 0xfe112233;
+//     info!("returning {}", ret);
+//     ret
+// }
 
 pub fn primitive_u32_sync(my_u32: u32) -> SyncReturn<u32> {
     info!("primitive_u32_sync({})", my_u32);

@@ -6,6 +6,7 @@ import 'package:recase/recase.dart';
 Future<void> generateDart({required Uri dartRoot}) async {
   final textOfPathMap = {
     'test/api/primitive_test.dart': _generateTestApiPrimitive(),
+    'test/api/optional_primitive_test.dart': _generateTestApiOptionalPrimitive(),
   };
 
   writeCodeFiles(dartRoot, textOfPathMap);
@@ -13,17 +14,7 @@ Future<void> generateDart({required Uri dartRoot}) async {
 }
 
 String _generateTestApiPrimitive() {
-  var ans = '''
-import 'package:frb_example_pure_dart/src/rust/api/primitive.dart';
-import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
-import 'package:test/test.dart';
-
-Future<void> main() async {
-  await RustLib.init();
-  
-  group('primitive type as argument and return type', () {
-  ''';
-
+  var ans = '';
   for (final ty in kPrimitiveTypes) {
     for (final arg in ty.interestValues) {
       ans += '''
@@ -33,10 +24,35 @@ Future<void> main() async {
       ''';
     }
   }
+  return _generateTestTemplate(ans, importName: 'primitive');
+}
 
-  ans += '''
+String _generateTestApiOptionalPrimitive() {
+  var ans = '';
+  for (final ty in kPrimitiveTypes) {
+    for (final arg in ["null", ...ty.interestValues]) {
+      ans += '''
+        test('type=${ty.name} arg=$arg', () async {
+          expect(await exampleOptionalPrimitiveType${ReCase(ty.name).pascalCase}(arg: $arg), $arg);
+        });
+      ''';
+    }
+  }
+  return _generateTestTemplate(ans, importName: 'primitive');
+}
+
+String _generateTestTemplate(String body, {required String importName}) {
+  return '''
+import 'package:frb_example_pure_dart/src/rust/api/$importName.dart';
+import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
+import 'package:test/test.dart';
+
+Future<void> main() async {
+  await RustLib.init();
+  
+  group('$importName', () {
+    $body
   });
 }
   ''';
-  return ans;
 }

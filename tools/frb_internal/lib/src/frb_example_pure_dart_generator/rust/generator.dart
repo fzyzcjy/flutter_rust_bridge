@@ -4,6 +4,7 @@ import 'package:flutter_rust_bridge_internal/src/utils/generator_utils.dart';
 Future<void> generateRust({required Uri rustRoot}) async {
   final textOfPathMap = {
     'src/api/primitive.rs': _generateSrcApiPrimitive(),
+    'src/api/optional_primitive.rs': _generateSrcApiOptionalPrimitive(),
   };
 
   writeCodeFiles(rustRoot, textOfPathMap);
@@ -15,6 +16,15 @@ String _generateSrcApiPrimitive() {
   for (final ty in kPrimitiveTypes) {
     final name = ty.name;
     ans += 'pub fn example_primitive_type_$name(arg: $name) -> $name { arg }\n';
+  }
+  return ans;
+}
+
+String _generateSrcApiOptionalPrimitive() {
+  var ans = '';
+  for (final ty in kPrimitiveTypes) {
+    final name = ty.name;
+    ans += 'pub fn example_optional_primitive_type_$name(arg: Option<$name>) -> Option<$name> { arg }\n';
   }
   return ans;
 }

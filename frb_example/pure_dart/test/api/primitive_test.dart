@@ -8,7 +8,7 @@ import 'package:test/test.dart';
 Future<void> main() async {
   await RustLib.init();
 
-  group('primitive type as argument and return type', () {
+  group('primitive', () {
     test('type=i8 arg=0', () async {
       expect(await examplePrimitiveTypeI8(arg: 0), 0);
     });
@@ -74,11 +74,11 @@ Future<void> main() async {
       expect(await examplePrimitiveTypeU64(arg: BigInt.parse("0")),
           BigInt.parse("0"));
     });
-    test('type=u64 arg=BigInt.parse("9223372036854775807")', () async {
+    test('type=u64 arg=BigInt.parse("18446744073709551615")', () async {
       expect(
           await examplePrimitiveTypeU64(
-              arg: BigInt.parse("9223372036854775807")),
-          BigInt.parse("9223372036854775807"));
+              arg: BigInt.parse("18446744073709551615")),
+          BigInt.parse("18446744073709551615"));
     });
     test('type=f32 arg=0', () async {
       expect(await examplePrimitiveTypeF32(arg: 0), 0);
