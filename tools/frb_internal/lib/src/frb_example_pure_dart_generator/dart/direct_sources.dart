@@ -6,7 +6,7 @@ Map<String, String> generateDartDirectSources() {
   return {
     'pseudo_manual/primitive_test.dart': _generatePrimitive(),
     'pseudo_manual/optional_primitive_test.dart': _generateOptionalPrimitive(),
-    'pseudo_manual/primitive_list.dart': _generatePrimitiveList(),
+    'pseudo_manual/primitive_list_test.dart': _generatePrimitiveList(),
   };
 }
 
