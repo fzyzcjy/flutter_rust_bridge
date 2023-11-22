@@ -95,13 +95,16 @@ impl Wire2Api<u8> for JsValue {
 }
 
 #[wasm_bindgen]
-pub fn wire_StructWithCommentsTwinNormal_instance_method(port_: MessagePort, that: JsValue) {
-    wire_StructWithCommentsTwinNormal_instance_method_impl(port_, that)
+pub fn wire_StructWithCommentsTwinNormal_instance_method_twin_normal(
+    port_: MessagePort,
+    that: JsValue,
+) {
+    wire_StructWithCommentsTwinNormal_instance_method_twin_normal_impl(port_, that)
 }
 
 #[wasm_bindgen]
-pub fn wire_StructWithCommentsTwinNormal_static_method(port_: MessagePort) {
-    wire_StructWithCommentsTwinNormal_static_method_impl(port_)
+pub fn wire_StructWithCommentsTwinNormal_static_method_twin_normal(port_: MessagePort) {
+    wire_StructWithCommentsTwinNormal_static_method_twin_normal_impl(port_)
 }
 
 #[wasm_bindgen]

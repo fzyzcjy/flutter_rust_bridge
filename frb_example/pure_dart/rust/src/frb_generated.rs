@@ -36,33 +36,37 @@ use std::sync::Arc;
 
 // Section: wire_funcs
 
-fn wire_StructWithCommentsTwinNormal_instance_method_impl(
+fn wire_StructWithCommentsTwinNormal_instance_method_twin_normal_impl(
     port_: MessagePort,
     that: impl Wire2Api<StructWithCommentsTwinNormal> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
-            debug_name: "StructWithCommentsTwinNormal_instance_method",
+            debug_name: "StructWithCommentsTwinNormal_instance_method_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
             let api_that = that.wire2api();
             move |task_callback| {
-                Result::<_, ()>::Ok(StructWithCommentsTwinNormal::instance_method(&api_that))
+                Result::<_, ()>::Ok(StructWithCommentsTwinNormal::instance_method_twin_normal(
+                    &api_that,
+                ))
             }
         },
     )
 }
-fn wire_StructWithCommentsTwinNormal_static_method_impl(port_: MessagePort) {
+fn wire_StructWithCommentsTwinNormal_static_method_twin_normal_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
-            debug_name: "StructWithCommentsTwinNormal_static_method",
+            debug_name: "StructWithCommentsTwinNormal_static_method_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
         move || {
-            move |task_callback| Result::<_, ()>::Ok(StructWithCommentsTwinNormal::static_method())
+            move |task_callback| {
+                Result::<_, ()>::Ok(StructWithCommentsTwinNormal::static_method_twin_normal())
+            }
         },
     )
 }

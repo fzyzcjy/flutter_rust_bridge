@@ -32,12 +32,13 @@ class StructWithCommentsTwinNormal {
   });
 
   /// Documentation on an instance method
-  Future<void> instanceMethod({dynamic hint}) =>
-      RustLib.instance.api.structWithCommentsTwinNormalInstanceMethod(
+  Future<void> instanceMethodTwinNormal({dynamic hint}) =>
+      RustLib.instance.api.structWithCommentsTwinNormalInstanceMethodTwinNormal(
         that: this,
       );
 
   /// Documentation on a static method
-  static Future<void> staticMethod({dynamic hint}) =>
-      RustLib.instance.api.structWithCommentsTwinNormalStaticMethod(hint: hint);
+  static Future<void> staticMethodTwinNormal({dynamic hint}) =>
+      RustLib.instance.api
+          .structWithCommentsTwinNormalStaticMethodTwinNormal(hint: hint);
 }

@@ -49,10 +49,11 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  Future<void> structWithCommentsTwinNormalInstanceMethod(
+  Future<void> structWithCommentsTwinNormalInstanceMethodTwinNormal(
       {required StructWithCommentsTwinNormal that, dynamic hint});
 
-  Future<void> structWithCommentsTwinNormalStaticMethod({dynamic hint});
+  Future<void> structWithCommentsTwinNormalStaticMethodTwinNormal(
+      {dynamic hint});
 
   Future<void> functionWithCommentsSlashStarStarTwinNormal({dynamic hint});
 
@@ -197,46 +198,51 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  Future<void> structWithCommentsTwinNormalInstanceMethod(
+  Future<void> structWithCommentsTwinNormalInstanceMethodTwinNormal(
       {required StructWithCommentsTwinNormal that, dynamic hint}) {
     var arg0 = api2wire_box_autoadd_struct_with_comments_twin_normal(that);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
-          wire.wire_StructWithCommentsTwinNormal_instance_method(port_, arg0),
+          wire.wire_StructWithCommentsTwinNormal_instance_method_twin_normal(
+              port_, arg0),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
-      constMeta: kStructWithCommentsTwinNormalInstanceMethodConstMeta,
+      constMeta: kStructWithCommentsTwinNormalInstanceMethodTwinNormalConstMeta,
       argValues: [that],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kStructWithCommentsTwinNormalInstanceMethodConstMeta =>
-      const TaskConstMeta(
-        debugName: "StructWithCommentsTwinNormal_instance_method",
-        argNames: ["that"],
-      );
+  TaskConstMeta
+      get kStructWithCommentsTwinNormalInstanceMethodTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName:
+                "StructWithCommentsTwinNormal_instance_method_twin_normal",
+            argNames: ["that"],
+          );
 
   @override
-  Future<void> structWithCommentsTwinNormalStaticMethod({dynamic hint}) {
+  Future<void> structWithCommentsTwinNormalStaticMethodTwinNormal(
+      {dynamic hint}) {
     return handler.executeNormal(NormalTask(
-      callFfi: (port_) =>
-          wire.wire_StructWithCommentsTwinNormal_static_method(port_),
+      callFfi: (port_) => wire
+          .wire_StructWithCommentsTwinNormal_static_method_twin_normal(port_),
       parseSuccessData: _wire2api_unit,
       parseErrorData: null,
-      constMeta: kStructWithCommentsTwinNormalStaticMethodConstMeta,
+      constMeta: kStructWithCommentsTwinNormalStaticMethodTwinNormalConstMeta,
       argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kStructWithCommentsTwinNormalStaticMethodConstMeta =>
-      const TaskConstMeta(
-        debugName: "StructWithCommentsTwinNormal_static_method",
-        argNames: [],
-      );
+  TaskConstMeta
+      get kStructWithCommentsTwinNormalStaticMethodTwinNormalConstMeta =>
+          const TaskConstMeta(
+            debugName: "StructWithCommentsTwinNormal_static_method_twin_normal",
+            argNames: [],
+          );
 
   @override
   Future<void> functionWithCommentsSlashStarStarTwinNormal({dynamic hint}) {

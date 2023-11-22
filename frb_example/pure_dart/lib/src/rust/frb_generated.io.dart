@@ -182,39 +182,41 @@ class RustLibWire implements BaseWire {
           lookup)
       : _lookup = lookup;
 
-  void wire_StructWithCommentsTwinNormal_instance_method(
+  void wire_StructWithCommentsTwinNormal_instance_method_twin_normal(
     int port_,
     ffi.Pointer<wire_struct_with_comments_twin_normal> that,
   ) {
-    return _wire_StructWithCommentsTwinNormal_instance_method(
+    return _wire_StructWithCommentsTwinNormal_instance_method_twin_normal(
       port_,
       that,
     );
   }
 
-  late final _wire_StructWithCommentsTwinNormal_instance_methodPtr = _lookup<
-          ffi.NativeFunction<
-              ffi.Void Function(ffi.Int64,
-                  ffi.Pointer<wire_struct_with_comments_twin_normal>)>>(
-      'wire_StructWithCommentsTwinNormal_instance_method');
-  late final _wire_StructWithCommentsTwinNormal_instance_method =
-      _wire_StructWithCommentsTwinNormal_instance_methodPtr.asFunction<
-          void Function(
-              int, ffi.Pointer<wire_struct_with_comments_twin_normal>)>();
+  late final _wire_StructWithCommentsTwinNormal_instance_method_twin_normalPtr =
+      _lookup<
+              ffi.NativeFunction<
+                  ffi.Void Function(ffi.Int64,
+                      ffi.Pointer<wire_struct_with_comments_twin_normal>)>>(
+          'wire_StructWithCommentsTwinNormal_instance_method_twin_normal');
+  late final _wire_StructWithCommentsTwinNormal_instance_method_twin_normal =
+      _wire_StructWithCommentsTwinNormal_instance_method_twin_normalPtr
+          .asFunction<
+              void Function(
+                  int, ffi.Pointer<wire_struct_with_comments_twin_normal>)>();
 
-  void wire_StructWithCommentsTwinNormal_static_method(
+  void wire_StructWithCommentsTwinNormal_static_method_twin_normal(
     int port_,
   ) {
-    return _wire_StructWithCommentsTwinNormal_static_method(
+    return _wire_StructWithCommentsTwinNormal_static_method_twin_normal(
       port_,
     );
   }
 
-  late final _wire_StructWithCommentsTwinNormal_static_methodPtr =
+  late final _wire_StructWithCommentsTwinNormal_static_method_twin_normalPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_StructWithCommentsTwinNormal_static_method');
-  late final _wire_StructWithCommentsTwinNormal_static_method =
-      _wire_StructWithCommentsTwinNormal_static_methodPtr
+          'wire_StructWithCommentsTwinNormal_static_method_twin_normal');
+  late final _wire_StructWithCommentsTwinNormal_static_method_twin_normal =
+      _wire_StructWithCommentsTwinNormal_static_method_twin_normalPtr
           .asFunction<void Function(int)>();
 
   void wire_function_with_comments_slash_star_star_twin_normal(

@@ -135,16 +135,16 @@ impl Default for wire_struct_with_comments_twin_sync {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_StructWithCommentsTwinNormal_instance_method(
+pub extern "C" fn wire_StructWithCommentsTwinNormal_instance_method_twin_normal(
     port_: i64,
     that: *mut wire_struct_with_comments_twin_normal,
 ) {
-    wire_StructWithCommentsTwinNormal_instance_method_impl(port_, that)
+    wire_StructWithCommentsTwinNormal_instance_method_twin_normal_impl(port_, that)
 }
 
 #[no_mangle]
-pub extern "C" fn wire_StructWithCommentsTwinNormal_static_method(port_: i64) {
-    wire_StructWithCommentsTwinNormal_static_method_impl(port_)
+pub extern "C" fn wire_StructWithCommentsTwinNormal_static_method_twin_normal(port_: i64) {
+    wire_StructWithCommentsTwinNormal_static_method_twin_normal_impl(port_)
 }
 
 #[no_mangle]

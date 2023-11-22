@@ -12,10 +12,10 @@ typedef struct wire_struct_with_comments_twin_sync {
   int32_t field_with_comments;
 } wire_struct_with_comments_twin_sync;
 
-void wire_StructWithCommentsTwinNormal_instance_method(int64_t port_,
-                                                       struct wire_struct_with_comments_twin_normal *that);
+void wire_StructWithCommentsTwinNormal_instance_method_twin_normal(int64_t port_,
+                                                                   struct wire_struct_with_comments_twin_normal *that);
 
-void wire_StructWithCommentsTwinNormal_static_method(int64_t port_);
+void wire_StructWithCommentsTwinNormal_static_method_twin_normal(int64_t port_);
 
 void wire_function_with_comments_slash_star_star_twin_normal(int64_t port_);
 
@@ -169,8 +169,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_u_8);
     dummy_var ^= ((int64_t) (void*) new_dart_opaque);
     dummy_var ^= ((int64_t) (void*) store_dart_post_cobject);
-    dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinNormal_instance_method);
-    dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinNormal_static_method);
+    dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinNormal_instance_method_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinNormal_static_method_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinSync_instance_method_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_StructWithCommentsTwinSync_static_method_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_bool_twin_normal);
