@@ -22,7 +22,18 @@
             "visibility": "Inherited"
           },
           "scope": {
-            "enums": [],
+            "enums": [
+              {
+                "ident": "MyEnum",
+                "mirror": false,
+                "path": [
+                  "crate",
+                  "api",
+                  "MyEnum"
+                ],
+                "visibility": "Public"
+              }
+            ],
             "modules": [],
             "structs": [
               {

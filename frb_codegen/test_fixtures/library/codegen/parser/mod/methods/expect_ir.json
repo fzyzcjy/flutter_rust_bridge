@@ -1,1 +1,143 @@
-"TODO"
+{
+  "enum_pool": {
+    "crate::api::MyEnum::MyEnum": {
+      "comments": [],
+      "mode": "Simple",
+      "name": "crate::api::MyEnum::MyEnum",
+      "path": [
+        "crate",
+        "api",
+        "MyEnum"
+      ],
+      "variants": [
+        {
+          "comments": [],
+          "kind": "Value",
+          "name": "A",
+          "wrapper_name": "MyEnum_A"
+        },
+        {
+          "comments": [],
+          "kind": "Value",
+          "name": "B",
+          "wrapper_name": "MyEnum_B"
+        }
+      ],
+      "wrapper_name": null
+    }
+  },
+  "funcs": [
+    {
+      "comments": [],
+      "error_output": null,
+      "inputs": [
+        {
+          "comments": [],
+          "default": null,
+          "is_final": true,
+          "name": "that",
+          "settings": {
+            "is_in_mirrored_enum": false
+          },
+          "ty": {
+            "Delegate": {
+              "PrimitiveEnum": {
+                "ir": {
+                  "ident": "crate::api::MyEnum::MyEnum",
+                  "is_exception": false
+                },
+                "repr": "I32"
+              }
+            }
+          }
+        }
+      ],
+      "mode": "Normal",
+      "name": "crate::api::MyEnum_example_instance_method",
+      "output": {
+        "Primitive": "Unit"
+      },
+      "owner": {
+        "Method": {
+          "actual_method_name": "example_instance_method",
+          "enum_or_struct_name": "MyEnum",
+          "mode": "Instance"
+        }
+      }
+    },
+    {
+      "comments": [],
+      "error_output": null,
+      "inputs": [],
+      "mode": "Normal",
+      "name": "crate::api::MyEnum_example_static_method",
+      "output": {
+        "Primitive": "Unit"
+      },
+      "owner": {
+        "Method": {
+          "actual_method_name": "example_static_method",
+          "enum_or_struct_name": "MyEnum",
+          "mode": "Static"
+        }
+      }
+    },
+    {
+      "comments": [],
+      "error_output": null,
+      "inputs": [
+        {
+          "comments": [],
+          "default": null,
+          "is_final": true,
+          "name": "that",
+          "settings": {
+            "is_in_mirrored_enum": false
+          },
+          "ty": {
+            "Unencodable": {
+              "segments": [
+                {
+                  "args": null,
+                  "ident": "MyStruct"
+                }
+              ],
+              "string": "MyStruct"
+            }
+          }
+        }
+      ],
+      "mode": "Normal",
+      "name": "crate::api::MyStruct_example_instance_method",
+      "output": {
+        "Primitive": "Unit"
+      },
+      "owner": {
+        "Method": {
+          "actual_method_name": "example_instance_method",
+          "enum_or_struct_name": "MyStruct",
+          "mode": "Instance"
+        }
+      }
+    },
+    {
+      "comments": [],
+      "error_output": null,
+      "inputs": [],
+      "mode": "Normal",
+      "name": "crate::api::MyStruct_example_static_method",
+      "output": {
+        "Primitive": "Unit"
+      },
+      "owner": {
+        "Method": {
+          "actual_method_name": "example_static_method",
+          "enum_or_struct_name": "MyStruct",
+          "mode": "Static"
+        }
+      }
+    }
+  ],
+  "has_executor": false,
+  "struct_pool": {}
+}
