@@ -81,21 +81,6 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             ident: Ident::new(struct_name.as_str(), span),
             arguments: PathArguments::None,
         });
-
-        Ok(FnArg::Typed(PatType {
-            attrs: vec![],
-            pat: Box::new(Pat::Ident(PatIdent {
-                attrs: vec![],
-                by_ref: Some(syn::token::Ref { span }),
-                mutability: *receiver.mutability,
-                // MOVED
-                // ident: Ident::new("that", span),
-                subpat: None,
-            })),
-            colon_token: Colon { spans: [span] },
-            ty: Box::new(),
-        }));
-
         let ty = Type::Path(TypePath {
             qself: None,
             path: Path {
