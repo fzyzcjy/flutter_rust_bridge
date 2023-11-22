@@ -13,4 +13,4 @@ Future<void> executeDartFormat({required String workingDirectory}) async =>
     executeProcess('dart', ['format'], workingDirectory: workingDirectory);
 
 Future<void> executeRustFormat({required String workingDirectory}) async =>
-    executeProcess('rustfmt', [], workingDirectory: workingDirectory);
+    executeProcess('cargo', ['fmt'], workingDirectory: workingDirectory);
