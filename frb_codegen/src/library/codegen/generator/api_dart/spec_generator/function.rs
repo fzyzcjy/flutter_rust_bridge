@@ -8,12 +8,14 @@ use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_function_dart_return_type,
 };
 use crate::codegen::ir::func::IrFunc;
+use crate::codegen::ir::namespace::Namespace;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
 
 #[derive(Debug)]
 pub(crate) struct ApiDartGeneratedFunction {
+    pub(crate) namespace: Namespace,
     pub(crate) func_comments: String,
     pub(crate) func_expr: String,
     pub(crate) func_impl: String,
