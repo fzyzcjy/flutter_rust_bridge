@@ -73,13 +73,6 @@ pub fn handle_zero_copy_vec_of_primitive(n: i32) -> ZeroCopyVecOfPrimitivePack {
     }
 }
 
-#[frb(dart_metadata = ("freezed"))]
-#[derive(Debug, Clone)]
-pub struct MySizeFreezed {
-    pub width: i32,
-    pub height: i32,
-}
-
 pub fn handle_struct_sync_freezed(
     arg: MySizeFreezed,
     boxed: Box<MySizeFreezed>,

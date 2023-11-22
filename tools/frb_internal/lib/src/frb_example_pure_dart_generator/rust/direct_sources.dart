@@ -5,6 +5,7 @@ Map<String, String> generateRustDirectSources() {
     'pseudo_manual/primitive.rs': _generatePrimitive(),
     'pseudo_manual/optional_primitive.rs': _generateOptionalPrimitive(),
     'pseudo_manual/primitive_list.rs': _generatePrimitiveList(),
+    'pseudo_manual/structure.rs': _generateStructure(),
   };
 }
 
@@ -34,6 +35,33 @@ String _generateOptionalPrimitive() {
     builder.body +=
         'pub fn example_optional_primitive_type_${name}_twin_normal(arg: Option<$name>) -> Option<$name> { arg }\n';
   }
+  return builder.toString();
+}
+
+String _generateStructure() {
+  final builder = RustFileBuilder();
+
+  builder.body += '''
+pub struct StructSimpleTwinNormal {
+    pub field: i32,
+}
+
+#[frb(dart_metadata = ("freezed"))]
+pub struct StructFreezedTwinNormal {
+    pub field: i32,
+}
+
+pub fn func_struct_simple_twin_normal(arg: StructSimpleTwinNormal) -> StructSimpleTwinNormal {
+    arg
+}
+
+pub fn func_struct_simple_boxed_twin_normal(
+    arg: Box<StructSimpleTwinNormal>,
+) -> Box<StructSimpleTwinNormal> {
+    arg
+}
+  ''';
+
   return builder.toString();
 }
 
