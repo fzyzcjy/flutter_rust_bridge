@@ -60,7 +60,7 @@ class _Duplicator {
 
       for (final mode in DuplicatorMode.values) {
         final outputText = _computePrelude(fileName) + generator.generateDuplicate(file.readAsStringSync(), mode);
-        final targetPath = file.uri.resolve('../$fileStem${mode.filePostfix}.${generator.extension}').toFilePath();
+        final targetPath = file.uri.resolve('$fileStem${mode.filePostfix}.${generator.extension}').toFilePath();
         File(targetPath).writeAsStringSync(outputText);
       }
     }
