@@ -103,12 +103,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
         }));
 
         let name = "that".to_owned();
-        let ir_field = partial_info_for_normal_type_raw(ty_raw, &receiver.attrs, name)?;
 
-        Ok(FunctionPartialInfo {
-            inputs: vec![ir_field],
-            ..Default::default()
-        })
+        partial_info_for_normal_type_raw(ty_raw, &receiver.attrs, name)
     }
 
     fn parse_fn_arg_type_stream_sink(
