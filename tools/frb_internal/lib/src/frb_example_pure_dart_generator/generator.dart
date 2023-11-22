@@ -7,6 +7,6 @@ Future<void> generate() async {
   final dartRoot = Directory.current.uri.resolve('../../frb_example/pure_dart/');
   if (!Directory(dartRoot.toFilePath()).existsSync()) throw StateError('dartRoot=$dartRoot does not exist');
 
-  await generateRust(rustRoot: dartRoot.resolve('rust/'));
-  await generateDart(dartRoot: dartRoot);
+  await RustGenerator(baseDir: dartRoot.resolve('rust/')).generate();
+  await DartGenerator(baseDir: dartRoot).generate();
 }
