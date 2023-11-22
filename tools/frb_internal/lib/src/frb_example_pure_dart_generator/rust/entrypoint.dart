@@ -21,7 +21,7 @@ class RustGenerator extends BaseGenerator {
   @override
   String generateDuplicate(String inputText, DuplicatorMode mode) {
     final prefix = switch (mode) {
-      DuplicatorMode.sync => '#[frb(sync)] ',
+      DuplicatorMode.sync => '#[flutter_rust_bridge::frb(sync)] ',
     };
 
     return inputText
