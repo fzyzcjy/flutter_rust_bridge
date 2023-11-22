@@ -8,7 +8,7 @@ use crate::ffi::{IntoDart, MessagePort};
 
 use crate::rust2dart::{BoxIntoDart, IntoIntoDart, Rust2Dart, Rust2DartAction, TaskCallback};
 use crate::support::WireSyncReturn;
-use crate::{spawn, DartAbi, SyncReturn};
+use crate::{spawn, DartAbi};
 
 /// The types of return values for a particular Rust function.
 #[derive(Copy, Clone)]
@@ -41,7 +41,7 @@ pub trait Handler {
     /// The generated code depends on the fact that `PrepareFn` is synchronous to maintain
     /// correctness, therefore implementors of [`Handler`] must also uphold this property.
     ///
-    /// If a Rust function returns [`SyncReturn`], it must be called with
+    /// If a Rust function is marked `sync`, it must be called with
     /// [`wrap_sync`](Handler::wrap_sync) instead.
     fn wrap<PrepareFn, TaskFn, TaskRet, D, Er>(&self, wrap_info: WrapInfo, prepare: PrepareFn)
     where
@@ -51,7 +51,7 @@ pub trait Handler {
         D: IntoDart,
         Er: IntoDart + 'static;
 
-    /// Same as [`wrap`][Handler::wrap], but the Rust function must return a [SyncReturn] and
+    /// Same as [`wrap`][Handler::wrap], but the Rust function will be called synchronously and
     /// need not implement [Send].
     fn wrap_sync<SyncTaskFn, TaskRet, D, Er>(
         &self,
@@ -59,7 +59,7 @@ pub trait Handler {
         sync_task: SyncTaskFn,
     ) -> WireSyncReturn
     where
-        SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>, Er> + UnwindSafe,
+        SyncTaskFn: FnOnce() -> Result<TaskRet, Er> + UnwindSafe,
         TaskRet: IntoIntoDart<D>,
         D: IntoDart,
         Er: IntoDart + 'static;
@@ -131,7 +131,7 @@ impl<E: Executor, EH: ErrorHandler> Handler for SimpleHandler<E, EH> {
     where
         TaskRet: IntoIntoDart<D>,
         D: IntoDart,
-        SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>, Er> + UnwindSafe,
+        SyncTaskFn: FnOnce() -> Result<TaskRet, Er> + UnwindSafe,
         Er: IntoDart + 'static,
     {
         // NOTE This extra [catch_unwind] **SHOULD** be put outside **ALL** code!
@@ -168,14 +168,14 @@ pub trait Executor: RefUnwindSafe {
         D: IntoDart,
         Er: IntoDart + 'static;
 
-    /// Executes a Rust function that returns a [SyncReturn].
+    /// Executes a synchronous Rust function
     fn execute_sync<SyncTaskFn, TaskRet, D, Er>(
         &self,
         wrap_info: WrapInfo,
         sync_task: SyncTaskFn,
-    ) -> Result<SyncReturn<TaskRet>, Er>
+    ) -> Result<TaskRet, Er>
     where
-        SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>, Er> + UnwindSafe,
+        SyncTaskFn: FnOnce() -> Result<TaskRet, Er> + UnwindSafe,
         TaskRet: IntoIntoDart<D>,
         D: IntoDart,
         Er: IntoDart + 'static;
@@ -248,9 +248,9 @@ impl<EH: ErrorHandler> Executor for ThreadPoolExecutor<EH> {
         &self,
         _wrap_info: WrapInfo,
         sync_task: SyncTaskFn,
-    ) -> Result<SyncReturn<TaskRet>, Er>
+    ) -> Result<TaskRet, Er>
     where
-        SyncTaskFn: FnOnce() -> Result<SyncReturn<TaskRet>, Er> + UnwindSafe,
+        SyncTaskFn: FnOnce() -> Result<TaskRet, Er> + UnwindSafe,
         TaskRet: IntoIntoDart<D>,
         D: IntoDart,
         Er: IntoDart,
