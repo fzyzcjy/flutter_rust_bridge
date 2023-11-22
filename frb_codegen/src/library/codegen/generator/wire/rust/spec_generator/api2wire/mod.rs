@@ -5,10 +5,12 @@ use crate::codegen::generator::wire::rust::spec_generator::base::{
 use crate::codegen::generator::wire::rust::spec_generator::output_code::WireRustOutputCode;
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
 use crate::library::codegen::generator::wire::rust::spec_generator::api2wire::ty::WireRustGeneratorApi2wireTrait;
+use serde::Serialize;
 
 mod misc;
 pub(crate) mod ty;
 
+#[derive(Serialize)]
 pub(crate) struct WireRustOutputSpecApi2wire {
     pub impl_into_dart: Acc<Vec<WireRustOutputCode>>,
 }

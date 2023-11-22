@@ -3,6 +3,7 @@ use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGenerat
 use crate::codegen::generator::wire::dart::spec_generator::misc::WireDartOutputSpecMisc;
 use crate::codegen::generator::wire::dart::spec_generator::wire2api::WireDartOutputSpecWire2api;
 use crate::codegen::ir::pack::IrPackComputedCache;
+use serde::Serialize;
 
 pub mod api2wire;
 pub(crate) mod base;
@@ -11,6 +12,7 @@ pub(crate) mod misc;
 pub(crate) mod output_code;
 pub mod wire2api;
 
+#[derive(Clone, Serialize)]
 pub(crate) struct WireDartOutputSpec {
     pub(super) misc: WireDartOutputSpecMisc,
     pub(super) wire2api: WireDartOutputSpecWire2api,

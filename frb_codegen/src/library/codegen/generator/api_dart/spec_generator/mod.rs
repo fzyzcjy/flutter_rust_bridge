@@ -8,6 +8,7 @@ use crate::codegen::ir::pack::IrPack;
 use crate::library::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use anyhow::Result;
 use itertools::Itertools;
+use serde::Serialize;
 
 pub(crate) mod base;
 pub(crate) mod class;
@@ -15,6 +16,7 @@ pub(crate) mod function;
 pub(crate) mod info;
 pub(crate) mod misc;
 
+#[derive(Serialize)]
 pub(crate) struct ApiDartOutputSpec {
     pub funcs: Vec<ApiDartGeneratedFunction>,
     pub classes: Vec<ApiDartGeneratedClass>,

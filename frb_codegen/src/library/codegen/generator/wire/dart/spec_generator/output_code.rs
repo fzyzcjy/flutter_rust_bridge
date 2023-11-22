@@ -1,9 +1,10 @@
 use crate::basic_code_impl;
 use crate::codegen::generator::misc::target::TargetOrCommon;
 use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
+use serde::Serialize;
 use std::ops::AddAssign;
 
-#[derive(Default, Clone, Debug)]
+#[derive(Default, Clone, Debug, Serialize)]
 pub(crate) struct WireDartOutputCode {
     pub import: String,
     pub part: String,

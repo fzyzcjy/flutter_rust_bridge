@@ -1,9 +1,10 @@
 use crate::basic_code_impl;
 use crate::codegen::generator::wire::rust::spec_generator::extern_func::ExternFunc;
 use itertools::Itertools;
+use serde::Serialize;
 use std::ops::AddAssign;
 
-#[derive(Default, Clone, Debug)]
+#[derive(Default, Clone, Debug, Serialize)]
 pub(crate) struct WireRustOutputCode {
     pub(crate) body: String,
     pub(crate) extern_funcs: Vec<ExternFunc>,

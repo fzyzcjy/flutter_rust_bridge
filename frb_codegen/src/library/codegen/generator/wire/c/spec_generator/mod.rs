@@ -1,9 +1,11 @@
 use crate::codegen::generator::misc::PathTexts;
 use crate::codegen::generator::wire::c::internal_config::GeneratorWireCInternalConfig;
+use serde::Serialize;
 
 pub(super) mod cbindgen_executor;
 pub(super) mod dummy_function;
 
+#[derive(Clone, Serialize)]
 pub(super) struct WireCOutputSpec {
     pub code_cbindgen: String,
     pub code_dummy: String,

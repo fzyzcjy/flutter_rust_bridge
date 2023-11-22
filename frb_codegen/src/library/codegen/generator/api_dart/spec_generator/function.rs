@@ -12,8 +12,9 @@ use crate::codegen::ir::namespace::Namespace;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use convert_case::{Case, Casing};
 use itertools::Itertools;
+use serde::Serialize;
 
-#[derive(Debug)]
+#[derive(Debug, Serialize)]
 pub(crate) struct ApiDartGeneratedFunction {
     pub(crate) namespace: Namespace,
     pub(crate) func_comments: String,

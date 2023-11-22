@@ -7,12 +7,14 @@ use crate::codegen::generator::wire::rust::spec_generator::wire2api::impl_new_wi
 use crate::codegen::generator::wire::rust::spec_generator::wire2api::impl_wire2api_trait::generate_impl_wire2api;
 use crate::codegen::generator::wire::rust::IrPackComputedCache;
 use crate::library::codegen::generator::wire::rust::spec_generator::wire2api::ty::WireRustGeneratorWire2apiTrait;
+use serde::Serialize;
 
 mod impl_new_with_nullptr;
 mod impl_wire2api_trait;
 mod misc;
 pub(crate) mod ty;
 
+#[derive(Serialize)]
 pub(crate) struct WireRustOutputSpecWire2api {
     pub allocate_funcs: Acc<Vec<WireRustOutputCode>>,
     pub related_funcs: Acc<Vec<WireRustOutputCode>>,

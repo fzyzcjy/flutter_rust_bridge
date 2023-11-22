@@ -1,7 +1,8 @@
 use crate::codegen::generator::misc::target::Target;
 use itertools::Itertools;
+use serde::Serialize;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Serialize)]
 pub(crate) struct ExternFunc {
     // TODO handle platform
     // if matches!(target, Io) {
@@ -16,7 +17,7 @@ pub(crate) struct ExternFunc {
     pub(crate) target: Target,
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Serialize)]
 pub(crate) struct ExternFuncParam {
     pub(crate) name: String,
     pub(crate) rust_type: String,

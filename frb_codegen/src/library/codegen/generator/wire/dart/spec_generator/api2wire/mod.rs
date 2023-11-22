@@ -11,10 +11,12 @@ use crate::library::codegen::generator::api_dart::spec_generator::base::ApiDartG
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::generator::wire::dart::spec_generator::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
+use serde::Serialize;
 
 mod misc;
 pub(crate) mod ty;
 
+#[derive(Clone, Serialize)]
 pub(crate) struct WireDartOutputSpecApi2wire {
     pub(crate) api2wire_funcs: Acc<Vec<WireDartOutputCode>>,
     pub(crate) api_fill_to_wire_funcs: Acc<Vec<WireDartOutputCode>>,

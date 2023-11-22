@@ -5,11 +5,13 @@ use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDart
 use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
+use serde::Serialize;
 
 mod api_impl_body;
 mod c_binding;
 pub(crate) mod ty;
 
+#[derive(Clone, Serialize)]
 pub(crate) struct WireDartOutputSpecMisc {
     pub(crate) c_binding: WireDartOutputCode,
     pub(crate) boilerplate: Acc<Vec<WireDartOutputCode>>,

@@ -3,6 +3,7 @@ use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGenerat
 use crate::codegen::generator::wire::rust::spec_generator::misc::WireRustOutputSpecMisc;
 use crate::codegen::generator::wire::rust::spec_generator::wire2api::WireRustOutputSpecWire2api;
 use crate::codegen::ir::pack::IrPackComputedCache;
+use serde::Serialize;
 
 pub(crate) mod api2wire;
 pub(crate) mod base;
@@ -11,6 +12,7 @@ pub(crate) mod misc;
 pub mod output_code;
 pub(crate) mod wire2api;
 
+#[derive(Serialize)]
 pub(super) struct WireRustOutputSpec {
     pub(super) misc: WireRustOutputSpecMisc,
     pub(super) wire2api: WireRustOutputSpecWire2api,

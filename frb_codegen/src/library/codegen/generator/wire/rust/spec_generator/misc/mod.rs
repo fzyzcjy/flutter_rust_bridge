@@ -14,11 +14,13 @@ use crate::library::codegen::ir::ty::IrTypeTrait;
 use crate::misc::consts::HANDLER_NAME;
 use crate::utils::rust_project_utils::compute_mod_from_rust_path;
 use itertools::Itertools;
+use serde::Serialize;
 use std::collections::HashSet;
 
 pub(crate) mod ty;
 pub(crate) mod wire_func;
 
+#[derive(Serialize)]
 pub(crate) struct WireRustOutputSpecMisc {
     pub file_attributes: Acc<Vec<WireRustOutputCode>>,
     pub code_header: Acc<Vec<WireRustOutputCode>>,
