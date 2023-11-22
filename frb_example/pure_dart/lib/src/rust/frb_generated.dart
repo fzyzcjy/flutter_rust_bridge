@@ -1,3 +1,8 @@
+// ignore_for_file: unused_import
+
+import 'api/simple.dart';
+import 'api/comment.dart';
+
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'frb_generated.io.dart'
     if (dart.library.html) 'frb_generated.web.dart.dart';
