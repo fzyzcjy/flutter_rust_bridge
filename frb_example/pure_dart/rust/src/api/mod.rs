@@ -1,2 +1,2 @@
-pub mod another;
+pub mod comment;
 pub mod simple;

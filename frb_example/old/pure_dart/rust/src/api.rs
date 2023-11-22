@@ -34,7 +34,6 @@ extern "C" fn on_dylib_start() {
         .try_init();
 }
 
-/// Documentation on a simple adder function.
 pub fn simple_adder(a: i32, b: i32) -> i32 {
     a + b
 }
@@ -43,11 +42,6 @@ pub fn simple_adder_sync(a: i32, b: i32) -> SyncReturn<i32> {
     SyncReturn(a + b)
 }
 
-/**
- Multiline comments are fine,
- but they are not preferred in Rust nor in Dart.
- Newlines are preserved.
-*/
 pub fn primitive_types(my_i32: i32, my_i64: i64, my_f64: f64, my_bool: bool) -> i32 {
     info!(
         "primitive_types({}, {}, {}, {})",
