@@ -79,7 +79,7 @@ fn generate_boilerplate(
                 "
                 {universal_imports}
                 import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart.dart';
-            "
+                "
             ),
             body_top: format!(
                 r#"
@@ -122,12 +122,22 @@ fn generate_boilerplate(
         }],
         io: vec![WireDartOutputCode {
             file_top: file_top.clone(),
-            import: universal_imports.to_owned(),
+            import: format!(
+                "
+                {universal_imports}
+                import 'frb_generated.dart';
+                "
+            ),
             ..Default::default()
         }],
         wasm: vec![WireDartOutputCode {
             file_top: file_top.clone(),
-            import: universal_imports.to_owned(),
+            import: format!(
+                "
+                {universal_imports}
+                import 'frb_generated.dart';
+                "
+            ),
             body: format!(
                 r#"
                 class {wire_class_name} extends BaseWire {{
