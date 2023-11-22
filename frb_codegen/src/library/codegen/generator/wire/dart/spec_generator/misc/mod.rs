@@ -66,12 +66,15 @@ fn generate_boilerplate(
         ..
     } = &dart_output_class_name_pack;
 
+    let file_top = "// ignore_for_file: unused_import\n".to_owned();
+
     let universal_imports =
         generate_import_dart_api_layer(dart_impl_output_path, api_dart_actual_output_paths)?
             + "\nimport 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';";
 
     Ok(Acc {
         common: vec![WireDartOutputCode {
+            file_top: file_top.clone(),
             import: format!(
                 "
                 {universal_imports}
@@ -118,10 +121,12 @@ fn generate_boilerplate(
             ..Default::default()
         }],
         io: vec![WireDartOutputCode {
+            file_top: file_top.clone(),
             import: universal_imports.to_owned(),
             ..Default::default()
         }],
         wasm: vec![WireDartOutputCode {
+            file_top: file_top.clone(),
             import: universal_imports.to_owned(),
             body: format!(
                 r#"

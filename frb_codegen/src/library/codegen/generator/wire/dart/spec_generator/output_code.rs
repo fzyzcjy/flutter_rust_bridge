@@ -6,6 +6,7 @@ use std::ops::AddAssign;
 
 #[derive(Default, Clone, Debug, Serialize)]
 pub(crate) struct WireDartOutputCode {
+    pub file_top: String,
     pub import: String,
     pub part: String,
     pub body_top: String,
@@ -19,6 +20,7 @@ basic_code_impl!(WireDartOutputCode);
 impl AddAssign for WireDartOutputCode {
     #[inline]
     fn add_assign(&mut self, rhs: Self) {
+        self.file_top += &rhs.file_top;
         self.import += &rhs.import;
         self.part += &rhs.part;
         self.body_top += &rhs.body_top;
@@ -108,8 +110,14 @@ impl WireDartOutputCode {
         };
 
         format!(
-            "{}\n{}\n{}\n{}\n{}\n{}",
-            self.import, self.part, self.body_top, api_class_code, api_impl_class_code, self.body
+            "{}\n{}\n{}\n{}\n{}\n{}\n{}",
+            self.file_top,
+            self.import,
+            self.part,
+            self.body_top,
+            api_class_code,
+            api_impl_class_code,
+            self.body
         )
     }
 }
