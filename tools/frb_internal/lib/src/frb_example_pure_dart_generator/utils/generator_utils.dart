@@ -59,11 +59,11 @@ class _Duplicator {
       final fileStem = path.basenameWithoutExtension(file.path);
       if (file is! File || path.extension(file.path) != '.${generator.extension}') continue;
       if (generator.duplicatorBlacklistNames.contains(fileName)) continue;
-      if (DuplicatorMode.values.any((mode) => fileStem.contains(mode.postfix))) continue;
 
       for (final mode in DuplicatorMode.values) {
         final outputText = _computePrelude(fileName) + generator.generateDuplicateCode(file.readAsStringSync(), mode);
         final targetPath = file.uri
+            .resolve('pseudo_manual')
             .resolve('${generator.generateDuplicateFileStem(fileStem, mode)}.${generator.extension}')
             .toFilePath();
         File(targetPath).writeAsStringSync(outputText);
