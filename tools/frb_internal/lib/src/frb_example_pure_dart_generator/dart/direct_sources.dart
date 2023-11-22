@@ -4,8 +4,8 @@ import 'package:recase/recase.dart';
 
 Map<String, String> generateDartDirectSources() {
   return {
-    'primitive_test.dart': _generateTestApiPrimitive(),
-    'optional_primitive_test.dart': _generateTestApiOptionalPrimitive(),
+    'pseudo_manual/primitive_test.dart': _generateTestApiPrimitive(),
+    'pseudo_manual/optional_primitive_test.dart': _generateTestApiOptionalPrimitive(),
   };
 }
 
