@@ -32,15 +32,6 @@ impl AddAssign for WireRustOutputCode {
     }
 }
 
-impl From<String> for WireRustOutputCode {
-    fn from(body: String) -> Self {
-        Self {
-            body,
-            ..Default::default()
-        }
-    }
-}
-
 impl From<ExternFunc> for WireRustOutputCode {
     fn from(value: ExternFunc) -> Self {
         vec![value].into()
