@@ -12,7 +12,7 @@ use crate::codegen::generator::wire::rust::internal_config::GeneratorWireRustInt
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::polisher::internal_config::PolisherInternalConfig;
 use crate::codegen::preparer::internal_config::PreparerInternalConfig;
-use crate::codegen::{Config, ConfigDump};
+use crate::codegen::Config;
 use crate::library::commands::cargo_metadata::execute_cargo_metadata;
 use crate::utils::path_utils::{
     find_dart_package_dir, find_rust_crate_dir, glob_path, path_to_string,
@@ -73,7 +73,6 @@ impl InternalConfig {
         let dart_enums_style = config.dart_enums_style.unwrap_or(false);
         let dart3 = config.dart3.unwrap_or(true);
 
-        let dump = config.dump.clone().unwrap_or_default();
         let dump_directory = rust_crate_dir.join("target").join("frb_dump");
 
         Ok(InternalConfig {
@@ -140,9 +139,7 @@ impl InternalConfig {
                 c_output_path,
             },
             dumper: DumperInternalConfig {
-                dump_config: dump.contains(&ConfigDump::Config),
-                dump_ir: dump.contains(&ConfigDump::Ir),
-                dump_spec: dump.contains(&ConfigDump::Spec),
+                dump_contents: config.dump.clone().unwrap_or_default(),
                 dump_directory,
             },
         })

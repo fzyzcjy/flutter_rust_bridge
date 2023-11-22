@@ -1,5 +1,5 @@
 use crate::codegen::config::internal_config::InternalConfig;
-use crate::codegen::dumper::internal_config::DumperInternalConfig;
+use crate::codegen::dumper::internal_config::{ConfigDumpContent, DumperInternalConfig};
 use crate::codegen::generator::api_dart::spec_generator::ApiDartOutputSpec;
 use crate::codegen::ir::pack::IrPack;
 use crate::codegen::Config;
@@ -13,35 +13,19 @@ pub(super) mod internal_config;
 pub(crate) struct Dumper<'a>(pub &'a DumperInternalConfig);
 
 impl Dumper<'_> {
-    pub(crate) fn dump_config(
+    pub(crate) fn dump<T: Serialize>(
         &self,
-        config: &Config,
-        internal_config: &InternalConfig,
-    ) -> anyhow::Result<()> {
-        self.dump(self.0.dump_config, "config.json", config)?;
-        self.dump(self.0.dump_config, "internal_config.json", internal_config)?;
-        Ok(())
-    }
-
-    pub(crate) fn dump_ir(&self, ir_pack: &IrPack) -> anyhow::Result<()> {
-        self.dump(self.0.dump_ir, "ir_pack.json", ir_pack)
-    }
-
-    pub(crate) fn dump_spec<T: Serialize>(
-        &self,
-        partial_name: &str,
+        content: ConfigDumpContent,
+        name: &str,
         data: &T,
     ) -> anyhow::Result<()> {
-        self.dump(self.0.dump_spec, &format!("spec_{partial_name}.json"), data)
-    }
-
-    fn dump<T: Serialize>(&self, enable: bool, name: &str, data: &T) -> anyhow::Result<()> {
-        if !enable {
+        if !self.0.dump_contents.contains(&content) {
             return Ok(());
         }
 
         let path = self.0.dump_directory.join(name);
         info!("Dumping {name} into {path:?}");
+
         let str = serde_json::to_string_pretty(data)?;
         create_dir_all_and_write(path, str)
     }

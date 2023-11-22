@@ -1,3 +1,4 @@
+use crate::codegen::dumper::internal_config::ConfigDumpContent;
 use crate::codegen::dumper::Dumper;
 use crate::codegen::generator::misc::PathTexts;
 use crate::codegen::generator::wire::rust::spec_generator::base::WireRustGeneratorContext;
@@ -18,7 +19,7 @@ pub(crate) fn generate(
     dumper: &Dumper,
 ) -> anyhow::Result<GeneratorWireRustOutput> {
     let spec = spec_generator::generate(context)?;
-    dumper.dump_spec("wire_rust", &spec)?;
+    dumper.dump(ConfigDumpContent::Spec, "dump_wire_rust.json", &spec)?;
     let text = text_generator::generate(&spec, context.config)?;
 
     Ok(GeneratorWireRustOutput {

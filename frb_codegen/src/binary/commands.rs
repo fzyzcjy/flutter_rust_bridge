@@ -1,5 +1,5 @@
+use crate::codegen::ConfigDumpContent;
 use clap::{Args, Parser, Subcommand};
-use lib_flutter_rust_bridge_codegen::codegen::ConfigDump;
 
 // The name `Cli`, `Commands` come from https://docs.rs/clap/latest/clap/_derive/_tutorial/chapter_0/index.html
 #[derive(Debug, Parser)]
@@ -115,7 +115,7 @@ pub(crate) struct GenerateCommandArgs {
 
     /// A list of data to be dumped. If specified without a value, defaults to all.
     #[arg(long, value_enum, num_args = 0.., default_missing_values = ["config", "ir"])]
-    pub dump: Option<Vec<ConfigDump>>,
+    pub dump: Option<Vec<ConfigDumpContent>>,
 }
 
 #[derive(Debug, Args)]

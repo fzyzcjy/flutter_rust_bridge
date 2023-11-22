@@ -1,3 +1,4 @@
+use crate::codegen::dumper::internal_config::ConfigDumpContent;
 use clap::ValueEnum;
 use serde::{Deserialize, Serialize};
 
@@ -24,15 +25,5 @@ pub struct Config {
     pub wasm: Option<bool>,
     pub deps_check: Option<bool>,
     pub dart3: Option<bool>,
-    pub dump: Option<Vec<ConfigDump>>,
-}
-
-#[derive(
-    Debug, PartialEq, Eq, Clone, Copy, Serialize, Deserialize, ValueEnum, enum_iterator::Sequence,
-)]
-#[serde(rename_all = "snake_case")]
-pub enum ConfigDump {
-    Config,
-    Ir,
-    Spec,
+    pub dump: Option<Vec<ConfigDumpContent>>,
 }
