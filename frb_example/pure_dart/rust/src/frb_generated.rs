@@ -20,14 +20,14 @@
 
 use crate::api::comment::StructWithCommentsTwinNormal;
 use crate::api::comment::*;
-use crate::api::comment_twin_sync::StructWithCommentsTwinSync;
-use crate::api::comment_twin_sync::*;
-use crate::api::optional_primitive::*;
-use crate::api::optional_primitive_twin_sync::*;
-use crate::api::primitive::*;
-use crate::api::primitive_twin_sync::*;
+use crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync;
+use crate::api::pseudo_manual::comment_twin_sync::*;
+use crate::api::pseudo_manual::optional_primitive::*;
+use crate::api::pseudo_manual::optional_primitive_twin_sync::*;
+use crate::api::pseudo_manual::primitive::*;
+use crate::api::pseudo_manual::primitive_twin_sync::*;
+use crate::api::pseudo_manual::simple_twin_sync::*;
 use crate::api::simple::*;
-use crate::api::simple_twin_sync::*;
 use core::panic::UnwindSafe;
 use flutter_rust_bridge::rust2dart::IntoIntoDart;
 use flutter_rust_bridge::*;
@@ -892,6 +892,23 @@ fn wire_example_primitive_type_u8_twin_sync_impl(
         },
     )
 }
+fn wire_simple_adder_twin_sync_impl(
+    a: impl Wire2Api<i32> + UnwindSafe,
+    b: impl Wire2Api<i32> + UnwindSafe,
+) -> support::WireSyncReturn {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
+        WrapInfo {
+            debug_name: "simple_adder_twin_sync",
+            port: None,
+            mode: FfiCallMode::Sync,
+        },
+        move || {
+            let api_a = a.wire2api();
+            let api_b = b.wire2api();
+            Result::<_, ()>::Ok(simple_adder_twin_sync(api_a, api_b))
+        },
+    )
+}
 fn wire_simple_adder_twin_normal_impl(
     port_: MessagePort,
     a: impl Wire2Api<i32> + UnwindSafe,
@@ -907,23 +924,6 @@ fn wire_simple_adder_twin_normal_impl(
             let api_a = a.wire2api();
             let api_b = b.wire2api();
             move |task_callback| Result::<_, ()>::Ok(simple_adder_twin_normal(api_a, api_b))
-        },
-    )
-}
-fn wire_simple_adder_twin_sync_impl(
-    a: impl Wire2Api<i32> + UnwindSafe,
-    b: impl Wire2Api<i32> + UnwindSafe,
-) -> support::WireSyncReturn {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync(
-        WrapInfo {
-            debug_name: "simple_adder_twin_sync",
-            port: None,
-            mode: FfiCallMode::Sync,
-        },
-        move || {
-            let api_a = a.wire2api();
-            let api_b = b.wire2api();
-            Result::<_, ()>::Ok(simple_adder_twin_sync(api_a, api_b))
         },
     )
 }

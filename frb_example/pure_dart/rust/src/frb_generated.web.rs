@@ -372,11 +372,11 @@ pub fn wire_example_primitive_type_u8_twin_sync(arg: u8) -> support::WireSyncRet
 }
 
 #[wasm_bindgen]
-pub fn wire_simple_adder_twin_normal(port_: MessagePort, a: i32, b: i32) {
-    wire_simple_adder_twin_normal_impl(port_, a, b)
+pub fn wire_simple_adder_twin_sync(a: i32, b: i32) -> support::WireSyncReturn {
+    wire_simple_adder_twin_sync_impl(a, b)
 }
 
 #[wasm_bindgen]
-pub fn wire_simple_adder_twin_sync(a: i32, b: i32) -> support::WireSyncReturn {
-    wire_simple_adder_twin_sync_impl(a, b)
+pub fn wire_simple_adder_twin_normal(port_: MessagePort, a: i32, b: i32) {
+    wire_simple_adder_twin_normal_impl(port_, a, b)
 }

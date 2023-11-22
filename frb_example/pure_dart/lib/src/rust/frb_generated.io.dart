@@ -1,13 +1,13 @@
 // ignore_for_file: unused_import, unused_element
 
 import 'api/comment.dart';
-import 'api/comment_twin_sync.dart';
-import 'api/optional_primitive.dart';
-import 'api/optional_primitive_twin_sync.dart';
-import 'api/primitive.dart';
-import 'api/primitive_twin_sync.dart';
+import 'api/pseudo_manual/comment_twin_sync.dart';
+import 'api/pseudo_manual/optional_primitive.dart';
+import 'api/pseudo_manual/optional_primitive_twin_sync.dart';
+import 'api/pseudo_manual/primitive.dart';
+import 'api/pseudo_manual/primitive_twin_sync.dart';
+import 'api/pseudo_manual/simple_twin_sync.dart';
 import 'api/simple.dart';
-import 'api/simple_twin_sync.dart';
 import 'dart:ffi' as ffi;
 import 'frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
@@ -1045,6 +1045,22 @@ class RustLibWire implements BaseWire {
       _wire_example_primitive_type_u8_twin_syncPtr
           .asFunction<WireSyncReturn Function(int)>();
 
+  WireSyncReturn wire_simple_adder_twin_sync(
+    int a,
+    int b,
+  ) {
+    return _wire_simple_adder_twin_sync(
+      a,
+      b,
+    );
+  }
+
+  late final _wire_simple_adder_twin_syncPtr = _lookup<
+          ffi.NativeFunction<WireSyncReturn Function(ffi.Int32, ffi.Int32)>>(
+      'wire_simple_adder_twin_sync');
+  late final _wire_simple_adder_twin_sync = _wire_simple_adder_twin_syncPtr
+      .asFunction<WireSyncReturn Function(int, int)>();
+
   void wire_simple_adder_twin_normal(
     int port_,
     int a,
@@ -1063,22 +1079,6 @@ class RustLibWire implements BaseWire {
       'wire_simple_adder_twin_normal');
   late final _wire_simple_adder_twin_normal = _wire_simple_adder_twin_normalPtr
       .asFunction<void Function(int, int, int)>();
-
-  WireSyncReturn wire_simple_adder_twin_sync(
-    int a,
-    int b,
-  ) {
-    return _wire_simple_adder_twin_sync(
-      a,
-      b,
-    );
-  }
-
-  late final _wire_simple_adder_twin_syncPtr = _lookup<
-          ffi.NativeFunction<WireSyncReturn Function(ffi.Int32, ffi.Int32)>>(
-      'wire_simple_adder_twin_sync');
-  late final _wire_simple_adder_twin_sync = _wire_simple_adder_twin_syncPtr
-      .asFunction<WireSyncReturn Function(int, int)>();
 
   ffi.Pointer<ffi.Bool> new_box_autoadd_bool(
     bool value,

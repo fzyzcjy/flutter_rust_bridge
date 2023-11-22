@@ -121,9 +121,9 @@ WireSyncReturn wire_example_primitive_type_u64_twin_sync(uint64_t arg);
 
 WireSyncReturn wire_example_primitive_type_u8_twin_sync(uint8_t arg);
 
-void wire_simple_adder_twin_normal(int64_t port_, int32_t a, int32_t b);
-
 WireSyncReturn wire_simple_adder_twin_sync(int32_t a, int32_t b);
+
+void wire_simple_adder_twin_normal(int64_t port_, int32_t a, int32_t b);
 
 bool *new_box_autoadd_bool(bool value);
 

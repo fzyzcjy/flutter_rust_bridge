@@ -1,13 +1,13 @@
 // ignore_for_file: unused_import, unused_element
 
 import 'api/comment.dart';
-import 'api/comment_twin_sync.dart';
-import 'api/optional_primitive.dart';
-import 'api/optional_primitive_twin_sync.dart';
-import 'api/primitive.dart';
-import 'api/primitive_twin_sync.dart';
+import 'api/pseudo_manual/comment_twin_sync.dart';
+import 'api/pseudo_manual/optional_primitive.dart';
+import 'api/pseudo_manual/optional_primitive_twin_sync.dart';
+import 'api/pseudo_manual/primitive.dart';
+import 'api/pseudo_manual/primitive_twin_sync.dart';
+import 'api/pseudo_manual/simple_twin_sync.dart';
 import 'api/simple.dart';
-import 'api/simple_twin_sync.dart';
 import 'frb_generated.io.dart'
     if (dart.library.html) 'frb_generated.web.dart.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart'
@@ -184,10 +184,10 @@ abstract class RustLibApi extends BaseApi {
 
   int examplePrimitiveTypeU8TwinSync({required int arg, dynamic hint});
 
+  int simpleAdderTwinSync({required int a, required int b, dynamic hint});
+
   Future<int> simpleAdderTwinNormal(
       {required int a, required int b, dynamic hint});
-
-  int simpleAdderTwinSync({required int a, required int b, dynamic hint});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -1355,6 +1355,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  int simpleAdderTwinSync({required int a, required int b, dynamic hint}) {
+    var arg0 = api2wire_i_32(a);
+    var arg1 = api2wire_i_32(b);
+    return handler.executeSync(SyncTask(
+      callFfi: () => wire.wire_simple_adder_twin_sync(arg0, arg1),
+      parseSuccessData: _wire2api_i_32,
+      parseErrorData: null,
+      constMeta: kSimpleAdderTwinSyncConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kSimpleAdderTwinSyncConstMeta => const TaskConstMeta(
+        debugName: "simple_adder_twin_sync",
+        argNames: ["a", "b"],
+      );
+
+  @override
   Future<int> simpleAdderTwinNormal(
       {required int a, required int b, dynamic hint}) {
     var arg0 = api2wire_i_32(a);
@@ -1372,26 +1392,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kSimpleAdderTwinNormalConstMeta => const TaskConstMeta(
         debugName: "simple_adder_twin_normal",
-        argNames: ["a", "b"],
-      );
-
-  @override
-  int simpleAdderTwinSync({required int a, required int b, dynamic hint}) {
-    var arg0 = api2wire_i_32(a);
-    var arg1 = api2wire_i_32(b);
-    return handler.executeSync(SyncTask(
-      callFfi: () => wire.wire_simple_adder_twin_sync(arg0, arg1),
-      parseSuccessData: _wire2api_i_32,
-      parseErrorData: null,
-      constMeta: kSimpleAdderTwinSyncConstMeta,
-      argValues: [a, b],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kSimpleAdderTwinSyncConstMeta => const TaskConstMeta(
-        debugName: "simple_adder_twin_sync",
         argNames: ["a", "b"],
       );
 }

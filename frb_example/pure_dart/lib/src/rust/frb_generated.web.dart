@@ -1,13 +1,13 @@
 // ignore_for_file: unused_import, unused_element
 
 import 'api/comment.dart';
-import 'api/comment_twin_sync.dart';
-import 'api/optional_primitive.dart';
-import 'api/optional_primitive_twin_sync.dart';
-import 'api/primitive.dart';
-import 'api/primitive_twin_sync.dart';
+import 'api/pseudo_manual/comment_twin_sync.dart';
+import 'api/pseudo_manual/optional_primitive.dart';
+import 'api/pseudo_manual/optional_primitive_twin_sync.dart';
+import 'api/pseudo_manual/primitive.dart';
+import 'api/pseudo_manual/primitive_twin_sync.dart';
+import 'api/pseudo_manual/simple_twin_sync.dart';
 import 'api/simple.dart';
-import 'api/simple_twin_sync.dart';
 import 'frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
 
