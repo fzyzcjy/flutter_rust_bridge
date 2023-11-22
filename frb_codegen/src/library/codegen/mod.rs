@@ -9,6 +9,7 @@ mod polisher;
 mod preparer;
 
 use crate::codegen::config::internal_config::InternalConfig;
+use crate::codegen::dumper::Dumper;
 pub use config::config::{Config, ConfigDump};
 pub use config::config_parser::*;
 use log::debug;
@@ -19,10 +20,13 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
 
     let internal_config = InternalConfig::parse(config)?;
     debug!("internal_config={internal_config:?}");
+    let dumper = Dumper(&internal_config.dumper);
+    dumper.dump_config(&config, &internal_config)?;
 
     preparer::prepare(&internal_config.preparer)?;
 
     let ir_pack = parser::parse(&internal_config.parser)?;
+    dumper.dump_ir(&ir_pack)?;
 
     let generator_output = generator::generate(&ir_pack, &internal_config.generator)?;
 
@@ -33,8 +37,6 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
         generator_output.dart_needs_freezed,
         &generator_output.output_texts.paths(),
     )?;
-
-    dumper::dump()?;
 
     Ok(())
 }
