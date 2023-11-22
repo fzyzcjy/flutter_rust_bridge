@@ -11,11 +11,10 @@ Future<void> main() async {
   await RustLib.init(api: mockApi);
 
   test('can mock Rust calls', () async {
-    when(() => mockApi.simpleAdder(a: 1, b: 2))
-        .thenAnswer((_) async => 123456789);
-    final actualResult = await simpleAdder(a: 1, b: 2);
+    when(() => mockApi.simpleAdderTwinNormal(a: 1, b: 2)).thenAnswer((_) async => 123456789);
+    final actualResult = await simpleAdderTwinNormal(a: 1, b: 2);
     expect(actualResult, isNot(3));
     expect(actualResult, equals(123456789));
-    verify(() => mockApi.simpleAdder(a: 1, b: 2)).called(1);
+    verify(() => mockApi.simpleAdderTwinNormal(a: 1, b: 2)).called(1);
   });
 }

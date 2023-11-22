@@ -9,7 +9,7 @@ Future<void> main() async {
 
   test('can use custom subclasses', () async {
     expect(customHandler.logs, <String>[]);
-    expect(await simpleAdder(a: 1, b: 2), 3);
+    expect(await simpleAdderTwinNormal(a: 1, b: 2), 3);
     expect(customHandler.logs, ['executeNormal called']);
   });
 }

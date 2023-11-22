@@ -8,10 +8,10 @@ Future<void> main() async {
   // do not care too much about the function results, since we are
   // considering the `code comments` feature here, instead of actual function execution logic.
   test('can call the functions', () async {
-    functionWithCommentsSlashStarStar();
-    functionWithCommentsTripleSlashMultiLine();
-    functionWithCommentsTripleSlashSingleLine();
-    StructWithComments(fieldWithComments: 42).instanceMethod();
-    StructWithComments.staticMethod();
+    functionWithCommentsSlashStarStarTwinNormal();
+    functionWithCommentsTripleSlashMultiLineTwinNormal();
+    functionWithCommentsTripleSlashSingleLineTwinNormal();
+    StructWithCommentsTwinNormal(fieldWithComments: 42).instanceMethod();
+    StructWithCommentsTwinNormal.staticMethod();
   });
 }

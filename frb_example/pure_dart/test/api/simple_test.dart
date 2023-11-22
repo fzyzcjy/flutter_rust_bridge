@@ -6,6 +6,6 @@ Future<void> main() async {
   await RustLib.init();
 
   test('dart call simpleAdder', () async {
-    expect(await simpleAdder(a: 42, b: 100), 142);
+    expect(await simpleAdderTwinNormal(a: 42, b: 100), 142);
   });
 }
