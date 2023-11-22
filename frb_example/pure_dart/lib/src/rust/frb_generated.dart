@@ -1,8 +1,8 @@
 // ignore_for_file: unused_import
 
-import 'api/simple.dart';
 import 'api/sync.dart';
 import 'api/comment.dart';
+import 'api/simple.dart';
 import 'api/primitive.dart';
 
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
