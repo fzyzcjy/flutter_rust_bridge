@@ -88,7 +88,8 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
                 attrs: vec![],
                 by_ref: Some(syn::token::Ref { span }),
                 mutability: *receiver.mutability,
-                ident: Ident::new("that", span),
+                // MOVED
+                // ident: Ident::new("that", span),
                 subpat: None,
             })),
             colon_token: Colon { spans: [span] },
@@ -101,6 +102,7 @@ impl<'a, 'b> FunctionParser<'a, 'b> {
             })),
         }));
 
+        let name = "that".to_owned();
         let ir_field = partial_info_for_normal_type_raw(ty_raw, &receiver.attrs, name)?;
 
         Ok(FunctionPartialInfo {
@@ -142,7 +144,7 @@ fn partial_info_for_normal_type(
     ty_raw: IrType,
     pat_type: &PatType,
 ) -> anyhow::Result<FunctionPartialInfo> {
-    let name = parse_name(pat_type)?;
+    let name = parse_name_from_pat_type(pat_type)?;
     partial_info_for_normal_type_raw(ty_raw, &pat_type.attrs, name)
 }
 
@@ -188,7 +190,7 @@ fn partial_info_for_stream_sink_type(
     })
 }
 
-fn parse_name(pat_type: &PatType) -> anyhow::Result<String> {
+fn parse_name_from_pat_type(pat_type: &PatType) -> anyhow::Result<String> {
     if let Pat::Ident(ref pat_ident) = *pat_type.pat {
         Ok(format!("{}", pat_ident.ident))
     } else {
