@@ -74,6 +74,7 @@ impl InternalConfig {
         let dart3 = config.dart3.unwrap_or(true);
 
         let dump = config.dump.unwrap_or_default();
+        let dump_directory = rust_crate_dir.join("target").join("frb_dump");
 
         Ok(InternalConfig {
             preparer: PreparerInternalConfig {
@@ -137,7 +138,7 @@ impl InternalConfig {
             dumper: DumperInternalConfig {
                 dump_config: dump.contains(&ConfigDump::Config),
                 dump_ir: dump.contains(&ConfigDump::Ir),
-                dump_directory: TODO,
+                dump_directory,
             },
         })
     }
