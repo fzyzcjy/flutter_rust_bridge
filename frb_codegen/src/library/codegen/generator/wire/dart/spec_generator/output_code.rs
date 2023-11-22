@@ -70,7 +70,8 @@ impl WireDartOutputCode {
         let sorted_imports = self
             .import
             .split("\n")
-            .filter(|line| !line.trim().is_empty())
+            .map(|line| line.trim())
+            .filter(|line| !line.is_empty())
             .sorted()
             .join("\n");
 
