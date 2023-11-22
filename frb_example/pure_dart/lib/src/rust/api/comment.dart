@@ -3,9 +3,9 @@
 import '../frb_generated.dart';
 
 ///
-///Multiline comments are fine,
-///but they are not preferred in Rust nor in Dart.
-///Newlines are preserved.
+/// Multiline comments are fine,
+/// but they are not preferred in Rust nor in Dart.
+/// Newlines are preserved.
 ///
 Future<void> functionWithCommentsSlashStarStar({dynamic hint}) =>
     RustLib.instance.api.functionWithCommentsSlashStarStar(hint: hint);
