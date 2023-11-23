@@ -1404,7 +1404,7 @@ impl support::IntoDart for StructWithZeroField {
 impl support::IntoDartExceptPrimitive for StructWithZeroField {}
 impl rust2dart::IntoIntoDart<StructWithZeroField> for StructWithZeroField {
     fn into_into_dart(self) -> StructWithZeroField {
-        StructWithZeroField(self)
+        self
     }
 }
 
