@@ -3892,7 +3892,7 @@ AnyhowException _wire2api_AnyhowException(dynamic raw) {
 }
 
 Duration _wire2api_Chrono_Duration(dynamic raw) {
-  return wire2apiDuration(_wire2api_i_64(raw));
+  return wire2apiDuration(_wire2api_i_64(raw).toInt());
 }
 
 List<Duration> _wire2api_Chrono_DurationList(dynamic raw) {
@@ -3900,7 +3900,7 @@ List<Duration> _wire2api_Chrono_DurationList(dynamic raw) {
 }
 
 DateTime _wire2api_Chrono_Local(dynamic raw) {
-  return wire2apiTimestamp(ts: _wire2api_i_64(raw), isUtc: false);
+  return wire2apiTimestamp(ts: _wire2api_i_64(raw).toInt(), isUtc: false);
 }
 
 List<DateTime> _wire2api_Chrono_LocalList(dynamic raw) {
@@ -3908,11 +3908,11 @@ List<DateTime> _wire2api_Chrono_LocalList(dynamic raw) {
 }
 
 DateTime _wire2api_Chrono_Naive(dynamic raw) {
-  return wire2apiTimestamp(ts: _wire2api_i_64(raw), isUtc: true);
+  return wire2apiTimestamp(ts: _wire2api_i_64(raw).toInt(), isUtc: true);
 }
 
 DateTime _wire2api_Chrono_Utc(dynamic raw) {
-  return wire2apiTimestamp(ts: _wire2api_i_64(raw), isUtc: true);
+  return wire2apiTimestamp(ts: _wire2api_i_64(raw).toInt(), isUtc: true);
 }
 
 String _wire2api_String(dynamic raw) {

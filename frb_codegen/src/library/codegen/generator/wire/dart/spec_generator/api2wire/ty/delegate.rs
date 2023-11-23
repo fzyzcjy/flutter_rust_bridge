@@ -1,5 +1,5 @@
 use crate::codegen::generator::acc::Acc;
-use crate::codegen::generator::misc::target::Target;
+use crate::codegen::generator::misc::target::{Target, TargetOrCommon};
 use crate::codegen::generator::wire::dart::spec_generator::api2wire::ty::WireDartGeneratorApi2wireTrait;
 use crate::codegen::generator::wire::dart::spec_generator::base::*;
 use crate::codegen::ir::ty::delegate::{
@@ -74,14 +74,18 @@ impl<'a> WireDartGeneratorApi2wireTrait for DelegateWireDartGenerator<'a> {
             IrTypeDelegate::Time(ir) => match ir {
                 IrTypeDelegateTime::Utc | IrTypeDelegateTime::Local | IrTypeDelegateTime::Naive => {
                     Acc {
-                        io: Some("return api2wire_i_64(raw.microsecondsSinceEpoch);".into()),
-                        wasm: Some("return api2wire_i_64(raw.millisecondsSinceEpoch);".into()),
+                        io: Some(
+                            "return api2wire_i_64(BigInt.from(raw.microsecondsSinceEpoch));".into(),
+                        ),
+                        wasm: Some(
+                            "return api2wire_i_64(BigInt.from(raw.millisecondsSinceEpoch));".into(),
+                        ),
                         ..Default::default()
                     }
                 }
                 IrTypeDelegateTime::Duration => Acc {
-                    io: Some("return api2wire_i_64(raw.inMicroseconds);".into()),
-                    wasm: Some("return api2wire_i_64(raw.inMilliseconds);".into()),
+                    io: Some("return api2wire_i_64(BigInt.from(raw.inMicroseconds));".into()),
+                    wasm: Some("return api2wire_i_64(BigInt.from(raw.inMilliseconds));".into()),
                     ..Default::default()
                 },
             },
