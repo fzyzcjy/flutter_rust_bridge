@@ -116,4 +116,12 @@ mod tests {
             "import 'apple.dart';\nimport 'orange.dart';"
         );
     }
+
+    #[test]
+    pub fn test_optimize_imports_missing_newline() {
+        assert_eq!(
+            optimize_imports(" import 'orange.dart'; import 'apple.dart';import 'orange.dart';"),
+            "import 'apple.dart';\nimport 'orange.dart';"
+        );
+    }
 }
