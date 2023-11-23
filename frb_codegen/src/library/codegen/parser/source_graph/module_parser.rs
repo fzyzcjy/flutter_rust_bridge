@@ -52,7 +52,7 @@ impl Module {
         }
 
         let ans = Module {
-            info,
+            info: info.clone(),
             scope: ModuleScope {
                 modules: scope_modules,
                 enums: scope_enums,
