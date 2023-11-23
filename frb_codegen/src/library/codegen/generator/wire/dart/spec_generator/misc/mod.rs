@@ -1,4 +1,5 @@
 use crate::codegen::generator::acc::Acc;
+use crate::codegen::generator::api_dart::spec_generator::misc::generate_imports_which_types_and_funcs_use;
 use crate::codegen::generator::misc::target::{TargetOrCommon, TargetOrCommonMap};
 use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
@@ -56,6 +57,7 @@ fn generate_boilerplate(
     default_external_library_relative_directory: &str,
     dart_impl_output_path: &TargetOrCommonMap<PathBuf>,
     api_dart_actual_output_paths: &[PathBuf],
+    context: WireDartGeneratorContext,
 ) -> anyhow::Result<Acc<Vec<WireDartOutputCode>>> {
     let DartOutputClassNamePack {
         entrypoint_class_name,
@@ -67,12 +69,18 @@ fn generate_boilerplate(
 
     let file_top = "// ignore_for_file: unused_import, unused_element\n".to_owned();
 
-    let universal_imports =
-        generate_import_dart_api_layer(dart_impl_output_path, api_dart_actual_output_paths)?
-            + "
-        import 'dart:convert';
-        import 'dart:async';
-        ";
+    let mut universal_imports =
+        generate_import_dart_api_layer(dart_impl_output_path, api_dart_actual_output_paths)?;
+    universal_imports += &generate_imports_which_types_and_funcs_use(
+        None,
+        &Some(TODO),
+        &None,
+        context.as_api_dart_context(),
+    )?;
+    universal_imports += "
+    import 'dart:convert';
+    import 'dart:async';
+    ";
 
     Ok(Acc {
         common: vec![WireDartOutputCode {
