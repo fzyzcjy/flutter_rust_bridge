@@ -55,15 +55,20 @@ fn generate_end_api_text(
             import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
             "
         ),
-        part: if item.needs_freezed {
-            format!(
+        ..Default::default()
+    };
+
+    if item.needs_freezed {
+        header += DartBasicHeaderCode {
+            import: "import 'package:freezed_annotation/freezed_annotation.dart' hide protected;"
+                .into(),
+            part: format!(
                 "part '{name}.freezed.dart';",
                 name = dart_output_path.file_stem().unwrap().to_str().unwrap()
-            )
-        } else {
-            "".to_owned()
-        },
-    };
+            ),
+            ..Default::default()
+        };
+    }
 
     let header = header.all_code();
 
