@@ -24,8 +24,37 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
+  ffi.Pointer<wire_list_prim_u_8> api2wire_String(String raw) {
+    return api2wire_uint_8_list(utf8.encoder.convert(raw));
+  }
+
+  @protected
   ffi.Pointer<ffi.Bool> api2wire_box_autoadd_bool(bool raw) {
     return wire.new_box_autoadd_bool(api2wire_bool(raw));
+  }
+
+  @protected
+  ffi.Pointer<wire_enum_with_item_mixed>
+      api2wire_box_autoadd_enum_with_item_mixed(EnumWithItemMixed raw) {
+    final ptr = wire.new_box_autoadd_enum_with_item_mixed();
+    _api_fill_to_wire_enum_with_item_mixed(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_enum_with_item_struct>
+      api2wire_box_autoadd_enum_with_item_struct(EnumWithItemStruct raw) {
+    final ptr = wire.new_box_autoadd_enum_with_item_struct();
+    _api_fill_to_wire_enum_with_item_struct(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_enum_with_item_tuple>
+      api2wire_box_autoadd_enum_with_item_tuple(EnumWithItemTuple raw) {
+    final ptr = wire.new_box_autoadd_enum_with_item_tuple();
+    _api_fill_to_wire_enum_with_item_tuple(raw, ptr.ref);
+    return ptr;
   }
 
   @protected
@@ -77,10 +106,44 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  ffi.Pointer<wire_struct_with_one_field>
+      api2wire_box_autoadd_struct_with_one_field(StructWithOneField raw) {
+    final ptr = wire.new_box_autoadd_struct_with_one_field();
+    _api_fill_to_wire_struct_with_one_field(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_struct_with_two_field>
+      api2wire_box_autoadd_struct_with_two_field(StructWithTwoField raw) {
+    final ptr = wire.new_box_autoadd_struct_with_two_field();
+    _api_fill_to_wire_struct_with_two_field(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_struct_with_zero_field>
       api2wire_box_autoadd_struct_with_zero_field(StructWithZeroField raw) {
     final ptr = wire.new_box_autoadd_struct_with_zero_field();
 
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_tuple_struct_with_one_field>
+      api2wire_box_autoadd_tuple_struct_with_one_field(
+          TupleStructWithOneField raw) {
+    final ptr = wire.new_box_autoadd_tuple_struct_with_one_field();
+    _api_fill_to_wire_tuple_struct_with_one_field(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_tuple_struct_with_two_field>
+      api2wire_box_autoadd_tuple_struct_with_two_field(
+          TupleStructWithTwoField raw) {
+    final ptr = wire.new_box_autoadd_tuple_struct_with_two_field();
+    _api_fill_to_wire_tuple_struct_with_two_field(raw, ptr.ref);
     return ptr;
   }
 
@@ -371,6 +434,63 @@ class RustLibWire implements BaseWire {
   late final _wire_func_enum_simple_twin_normal =
       _wire_func_enum_simple_twin_normalPtr
           .asFunction<void Function(int, int)>();
+
+  void wire_func_enum_with_item_mixed_twin_normal(
+    int port_,
+    ffi.Pointer<wire_enum_with_item_mixed> arg,
+  ) {
+    return _wire_func_enum_with_item_mixed_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_enum_with_item_mixed_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_enum_with_item_mixed>)>>(
+      'wire_func_enum_with_item_mixed_twin_normal');
+  late final _wire_func_enum_with_item_mixed_twin_normal =
+      _wire_func_enum_with_item_mixed_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_enum_with_item_mixed>)>();
+
+  void wire_func_enum_with_item_struct_twin_normal(
+    int port_,
+    ffi.Pointer<wire_enum_with_item_struct> arg,
+  ) {
+    return _wire_func_enum_with_item_struct_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_enum_with_item_struct_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_enum_with_item_struct>)>>(
+      'wire_func_enum_with_item_struct_twin_normal');
+  late final _wire_func_enum_with_item_struct_twin_normal =
+      _wire_func_enum_with_item_struct_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_enum_with_item_struct>)>();
+
+  void wire_func_enum_with_item_tuple_twin_normal(
+    int port_,
+    ffi.Pointer<wire_enum_with_item_tuple> arg,
+  ) {
+    return _wire_func_enum_with_item_tuple_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_enum_with_item_tuple_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_enum_with_item_tuple>)>>(
+      'wire_func_enum_with_item_tuple_twin_normal');
+  late final _wire_func_enum_with_item_tuple_twin_normal =
+      _wire_func_enum_with_item_tuple_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_enum_with_item_tuple>)>();
 
   WireSyncReturn wire_StructWithCommentsTwinSync_instance_method_twin_sync(
     ffi.Pointer<wire_struct_with_comments_twin_sync> that,
@@ -1562,6 +1682,44 @@ class RustLibWire implements BaseWire {
   late final _wire_simple_adder_twin_normal = _wire_simple_adder_twin_normalPtr
       .asFunction<void Function(int, int, int)>();
 
+  void wire_func_struct_with_one_field_twin_normal(
+    int port_,
+    ffi.Pointer<wire_struct_with_one_field> arg,
+  ) {
+    return _wire_func_struct_with_one_field_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_struct_with_one_field_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_struct_with_one_field>)>>(
+      'wire_func_struct_with_one_field_twin_normal');
+  late final _wire_func_struct_with_one_field_twin_normal =
+      _wire_func_struct_with_one_field_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_struct_with_one_field>)>();
+
+  void wire_func_struct_with_two_field_twin_normal(
+    int port_,
+    ffi.Pointer<wire_struct_with_two_field> arg,
+  ) {
+    return _wire_func_struct_with_two_field_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_struct_with_two_field_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_struct_with_two_field>)>>(
+      'wire_func_struct_with_two_field_twin_normal');
+  late final _wire_func_struct_with_two_field_twin_normal =
+      _wire_func_struct_with_two_field_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_struct_with_two_field>)>();
+
   void wire_func_struct_with_zero_field_twin_normal(
     int port_,
     ffi.Pointer<wire_struct_with_zero_field> arg,
@@ -1581,6 +1739,44 @@ class RustLibWire implements BaseWire {
       _wire_func_struct_with_zero_field_twin_normalPtr.asFunction<
           void Function(int, ffi.Pointer<wire_struct_with_zero_field>)>();
 
+  void wire_func_tuple_struct_with_one_field_twin_normal(
+    int port_,
+    ffi.Pointer<wire_tuple_struct_with_one_field> arg,
+  ) {
+    return _wire_func_tuple_struct_with_one_field_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_tuple_struct_with_one_field_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_tuple_struct_with_one_field>)>>(
+      'wire_func_tuple_struct_with_one_field_twin_normal');
+  late final _wire_func_tuple_struct_with_one_field_twin_normal =
+      _wire_func_tuple_struct_with_one_field_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_tuple_struct_with_one_field>)>();
+
+  void wire_func_tuple_struct_with_two_field_twin_normal(
+    int port_,
+    ffi.Pointer<wire_tuple_struct_with_two_field> arg,
+  ) {
+    return _wire_func_tuple_struct_with_two_field_twin_normal(
+      port_,
+      arg,
+    );
+  }
+
+  late final _wire_func_tuple_struct_with_two_field_twin_normalPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Void Function(
+                  ffi.Int64, ffi.Pointer<wire_tuple_struct_with_two_field>)>>(
+      'wire_func_tuple_struct_with_two_field_twin_normal');
+  late final _wire_func_tuple_struct_with_two_field_twin_normal =
+      _wire_func_tuple_struct_with_two_field_twin_normalPtr.asFunction<
+          void Function(int, ffi.Pointer<wire_tuple_struct_with_two_field>)>();
+
   ffi.Pointer<ffi.Bool> new_box_autoadd_bool(
     bool value,
   ) {
@@ -1594,6 +1790,45 @@ class RustLibWire implements BaseWire {
           'new_box_autoadd_bool');
   late final _new_box_autoadd_bool = _new_box_autoadd_boolPtr
       .asFunction<ffi.Pointer<ffi.Bool> Function(bool)>();
+
+  ffi.Pointer<wire_enum_with_item_mixed>
+      new_box_autoadd_enum_with_item_mixed() {
+    return _new_box_autoadd_enum_with_item_mixed();
+  }
+
+  late final _new_box_autoadd_enum_with_item_mixedPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Pointer<wire_enum_with_item_mixed> Function()>>(
+      'new_box_autoadd_enum_with_item_mixed');
+  late final _new_box_autoadd_enum_with_item_mixed =
+      _new_box_autoadd_enum_with_item_mixedPtr
+          .asFunction<ffi.Pointer<wire_enum_with_item_mixed> Function()>();
+
+  ffi.Pointer<wire_enum_with_item_struct>
+      new_box_autoadd_enum_with_item_struct() {
+    return _new_box_autoadd_enum_with_item_struct();
+  }
+
+  late final _new_box_autoadd_enum_with_item_structPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Pointer<wire_enum_with_item_struct> Function()>>(
+      'new_box_autoadd_enum_with_item_struct');
+  late final _new_box_autoadd_enum_with_item_struct =
+      _new_box_autoadd_enum_with_item_structPtr
+          .asFunction<ffi.Pointer<wire_enum_with_item_struct> Function()>();
+
+  ffi.Pointer<wire_enum_with_item_tuple>
+      new_box_autoadd_enum_with_item_tuple() {
+    return _new_box_autoadd_enum_with_item_tuple();
+  }
+
+  late final _new_box_autoadd_enum_with_item_tuplePtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Pointer<wire_enum_with_item_tuple> Function()>>(
+      'new_box_autoadd_enum_with_item_tuple');
+  late final _new_box_autoadd_enum_with_item_tuple =
+      _new_box_autoadd_enum_with_item_tuplePtr
+          .asFunction<ffi.Pointer<wire_enum_with_item_tuple> Function()>();
 
   ffi.Pointer<ffi.Float> new_box_autoadd_f_32(
     double value,
@@ -1705,6 +1940,32 @@ class RustLibWire implements BaseWire {
       _new_box_autoadd_struct_with_comments_twin_syncPtr.asFunction<
           ffi.Pointer<wire_struct_with_comments_twin_sync> Function()>();
 
+  ffi.Pointer<wire_struct_with_one_field>
+      new_box_autoadd_struct_with_one_field() {
+    return _new_box_autoadd_struct_with_one_field();
+  }
+
+  late final _new_box_autoadd_struct_with_one_fieldPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Pointer<wire_struct_with_one_field> Function()>>(
+      'new_box_autoadd_struct_with_one_field');
+  late final _new_box_autoadd_struct_with_one_field =
+      _new_box_autoadd_struct_with_one_fieldPtr
+          .asFunction<ffi.Pointer<wire_struct_with_one_field> Function()>();
+
+  ffi.Pointer<wire_struct_with_two_field>
+      new_box_autoadd_struct_with_two_field() {
+    return _new_box_autoadd_struct_with_two_field();
+  }
+
+  late final _new_box_autoadd_struct_with_two_fieldPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Pointer<wire_struct_with_two_field> Function()>>(
+      'new_box_autoadd_struct_with_two_field');
+  late final _new_box_autoadd_struct_with_two_field =
+      _new_box_autoadd_struct_with_two_fieldPtr
+          .asFunction<ffi.Pointer<wire_struct_with_two_field> Function()>();
+
   ffi.Pointer<wire_struct_with_zero_field>
       new_box_autoadd_struct_with_zero_field() {
     return _new_box_autoadd_struct_with_zero_field();
@@ -1717,6 +1978,32 @@ class RustLibWire implements BaseWire {
   late final _new_box_autoadd_struct_with_zero_field =
       _new_box_autoadd_struct_with_zero_fieldPtr
           .asFunction<ffi.Pointer<wire_struct_with_zero_field> Function()>();
+
+  ffi.Pointer<wire_tuple_struct_with_one_field>
+      new_box_autoadd_tuple_struct_with_one_field() {
+    return _new_box_autoadd_tuple_struct_with_one_field();
+  }
+
+  late final _new_box_autoadd_tuple_struct_with_one_fieldPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_tuple_struct_with_one_field>
+              Function()>>('new_box_autoadd_tuple_struct_with_one_field');
+  late final _new_box_autoadd_tuple_struct_with_one_field =
+      _new_box_autoadd_tuple_struct_with_one_fieldPtr.asFunction<
+          ffi.Pointer<wire_tuple_struct_with_one_field> Function()>();
+
+  ffi.Pointer<wire_tuple_struct_with_two_field>
+      new_box_autoadd_tuple_struct_with_two_field() {
+    return _new_box_autoadd_tuple_struct_with_two_field();
+  }
+
+  late final _new_box_autoadd_tuple_struct_with_two_fieldPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_tuple_struct_with_two_field>
+              Function()>>('new_box_autoadd_tuple_struct_with_two_field');
+  late final _new_box_autoadd_tuple_struct_with_two_field =
+      _new_box_autoadd_tuple_struct_with_two_fieldPtr.asFunction<
+          ffi.Pointer<wire_tuple_struct_with_two_field> Function()>();
 
   ffi.Pointer<ffi.Uint16> new_box_autoadd_u_16(
     int value,
@@ -1938,6 +2225,66 @@ class RustLibWire implements BaseWire {
   late final _new_list_prim_u_8 = _new_list_prim_u_8Ptr
       .asFunction<ffi.Pointer<wire_list_prim_u_8> Function(int)>();
 
+  ffi.Pointer<EnumWithItemMixedKind> inflate_EnumWithItemMixed_B() {
+    return _inflate_EnumWithItemMixed_B();
+  }
+
+  late final _inflate_EnumWithItemMixed_BPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<EnumWithItemMixedKind> Function()>>(
+      'inflate_EnumWithItemMixed_B');
+  late final _inflate_EnumWithItemMixed_B = _inflate_EnumWithItemMixed_BPtr
+      .asFunction<ffi.Pointer<EnumWithItemMixedKind> Function()>();
+
+  ffi.Pointer<EnumWithItemMixedKind> inflate_EnumWithItemMixed_C() {
+    return _inflate_EnumWithItemMixed_C();
+  }
+
+  late final _inflate_EnumWithItemMixed_CPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<EnumWithItemMixedKind> Function()>>(
+      'inflate_EnumWithItemMixed_C');
+  late final _inflate_EnumWithItemMixed_C = _inflate_EnumWithItemMixed_CPtr
+      .asFunction<ffi.Pointer<EnumWithItemMixedKind> Function()>();
+
+  ffi.Pointer<EnumWithItemStructKind> inflate_EnumWithItemStruct_A() {
+    return _inflate_EnumWithItemStruct_A();
+  }
+
+  late final _inflate_EnumWithItemStruct_APtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<EnumWithItemStructKind> Function()>>(
+      'inflate_EnumWithItemStruct_A');
+  late final _inflate_EnumWithItemStruct_A = _inflate_EnumWithItemStruct_APtr
+      .asFunction<ffi.Pointer<EnumWithItemStructKind> Function()>();
+
+  ffi.Pointer<EnumWithItemStructKind> inflate_EnumWithItemStruct_B() {
+    return _inflate_EnumWithItemStruct_B();
+  }
+
+  late final _inflate_EnumWithItemStruct_BPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<EnumWithItemStructKind> Function()>>(
+      'inflate_EnumWithItemStruct_B');
+  late final _inflate_EnumWithItemStruct_B = _inflate_EnumWithItemStruct_BPtr
+      .asFunction<ffi.Pointer<EnumWithItemStructKind> Function()>();
+
+  ffi.Pointer<EnumWithItemTupleKind> inflate_EnumWithItemTuple_A() {
+    return _inflate_EnumWithItemTuple_A();
+  }
+
+  late final _inflate_EnumWithItemTuple_APtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<EnumWithItemTupleKind> Function()>>(
+      'inflate_EnumWithItemTuple_A');
+  late final _inflate_EnumWithItemTuple_A = _inflate_EnumWithItemTuple_APtr
+      .asFunction<ffi.Pointer<EnumWithItemTupleKind> Function()>();
+
+  ffi.Pointer<EnumWithItemTupleKind> inflate_EnumWithItemTuple_B() {
+    return _inflate_EnumWithItemTuple_B();
+  }
+
+  late final _inflate_EnumWithItemTuple_BPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<EnumWithItemTupleKind> Function()>>(
+      'inflate_EnumWithItemTuple_B');
+  late final _inflate_EnumWithItemTuple_B = _inflate_EnumWithItemTuple_BPtr
+      .asFunction<ffi.Pointer<EnumWithItemTupleKind> Function()>();
+
   int dummy_method_to_enforce_bundling() {
     return _dummy_method_to_enforce_bundling();
   }
@@ -1952,6 +2299,87 @@ class RustLibWire implements BaseWire {
 final class wire_struct_with_comments_twin_normal extends ffi.Struct {
   @ffi.Int32()
   external int field_with_comments;
+}
+
+final class wire_EnumWithItemMixed_A extends ffi.Opaque {}
+
+final class wire_list_prim_u_8 extends ffi.Struct {
+  external ffi.Pointer<ffi.Uint8> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_EnumWithItemMixed_B extends ffi.Struct {
+  external ffi.Pointer<wire_list_prim_u_8> field0;
+}
+
+final class wire_EnumWithItemMixed_C extends ffi.Struct {
+  external ffi.Pointer<wire_list_prim_u_8> c_field;
+}
+
+final class EnumWithItemMixedKind extends ffi.Union {
+  external ffi.Pointer<wire_EnumWithItemMixed_A> A;
+
+  external ffi.Pointer<wire_EnumWithItemMixed_B> B;
+
+  external ffi.Pointer<wire_EnumWithItemMixed_C> C;
+}
+
+final class wire_enum_with_item_mixed extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<EnumWithItemMixedKind> kind;
+}
+
+final class wire_EnumWithItemStruct_A extends ffi.Struct {
+  external ffi.Pointer<wire_list_prim_u_8> a_field;
+}
+
+final class wire_list_prim_i_32 extends ffi.Struct {
+  external ffi.Pointer<ffi.Int32> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_EnumWithItemStruct_B extends ffi.Struct {
+  external ffi.Pointer<wire_list_prim_i_32> b_field;
+}
+
+final class EnumWithItemStructKind extends ffi.Union {
+  external ffi.Pointer<wire_EnumWithItemStruct_A> A;
+
+  external ffi.Pointer<wire_EnumWithItemStruct_B> B;
+}
+
+final class wire_enum_with_item_struct extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<EnumWithItemStructKind> kind;
+}
+
+final class wire_EnumWithItemTuple_A extends ffi.Struct {
+  external ffi.Pointer<wire_list_prim_u_8> field0;
+}
+
+final class wire_EnumWithItemTuple_B extends ffi.Struct {
+  external ffi.Pointer<wire_list_prim_i_32> field0;
+}
+
+final class EnumWithItemTupleKind extends ffi.Union {
+  external ffi.Pointer<wire_EnumWithItemTuple_A> A;
+
+  external ffi.Pointer<wire_EnumWithItemTuple_B> B;
+}
+
+final class wire_enum_with_item_tuple extends ffi.Struct {
+  @ffi.Int32()
+  external int tag;
+
+  external ffi.Pointer<EnumWithItemTupleKind> kind;
 }
 
 final class wire_struct_with_comments_twin_sync extends ffi.Struct {
@@ -1982,13 +2410,6 @@ final class wire_list_prim_f_64 extends ffi.Struct {
 
 final class wire_list_prim_i_16 extends ffi.Struct {
   external ffi.Pointer<ffi.Int16> ptr;
-
-  @ffi.Int32()
-  external int len;
-}
-
-final class wire_list_prim_i_32 extends ffi.Struct {
-  external ffi.Pointer<ffi.Int32> ptr;
 
   @ffi.Int32()
   external int len;
@@ -2029,16 +2450,51 @@ final class wire_list_prim_u_64 extends ffi.Struct {
   external int len;
 }
 
-final class wire_list_prim_u_8 extends ffi.Struct {
-  external ffi.Pointer<ffi.Uint8> ptr;
+final class wire_struct_with_one_field extends ffi.Struct {
+  @ffi.Int32()
+  external int a;
+}
+
+final class wire_struct_with_two_field extends ffi.Struct {
+  @ffi.Int32()
+  external int a;
 
   @ffi.Int32()
-  external int len;
+  external int b;
 }
 
 final class wire_struct_with_zero_field extends ffi.Opaque {}
 
+final class wire_tuple_struct_with_one_field extends ffi.Struct {
+  @ffi.Int32()
+  external int field0;
+}
+
+final class wire_tuple_struct_with_two_field extends ffi.Struct {
+  @ffi.Int32()
+  external int field0;
+
+  @ffi.Int32()
+  external int field1;
+}
+
 // Section: api_fill_to_wire_funcs
+
+void _api_fill_to_wire_box_autoadd_enum_with_item_mixed(
+    EnumWithItemMixed apiObj, ffi.Pointer<wire_enum_with_item_mixed> wireObj) {
+  _api_fill_to_wire_enum_with_item_mixed(apiObj, wireObj.ref);
+}
+
+void _api_fill_to_wire_box_autoadd_enum_with_item_struct(
+    EnumWithItemStruct apiObj,
+    ffi.Pointer<wire_enum_with_item_struct> wireObj) {
+  _api_fill_to_wire_enum_with_item_struct(apiObj, wireObj.ref);
+}
+
+void _api_fill_to_wire_box_autoadd_enum_with_item_tuple(
+    EnumWithItemTuple apiObj, ffi.Pointer<wire_enum_with_item_tuple> wireObj) {
+  _api_fill_to_wire_enum_with_item_tuple(apiObj, wireObj.ref);
+}
 
 void _api_fill_to_wire_box_autoadd_struct_with_comments_twin_normal(
     StructWithCommentsTwinNormal apiObj,
@@ -2050,6 +2506,88 @@ void _api_fill_to_wire_box_autoadd_struct_with_comments_twin_sync(
     StructWithCommentsTwinSync apiObj,
     ffi.Pointer<wire_struct_with_comments_twin_sync> wireObj) {
   _api_fill_to_wire_struct_with_comments_twin_sync(apiObj, wireObj.ref);
+}
+
+void _api_fill_to_wire_box_autoadd_struct_with_one_field(
+    StructWithOneField apiObj,
+    ffi.Pointer<wire_struct_with_one_field> wireObj) {
+  _api_fill_to_wire_struct_with_one_field(apiObj, wireObj.ref);
+}
+
+void _api_fill_to_wire_box_autoadd_struct_with_two_field(
+    StructWithTwoField apiObj,
+    ffi.Pointer<wire_struct_with_two_field> wireObj) {
+  _api_fill_to_wire_struct_with_two_field(apiObj, wireObj.ref);
+}
+
+void _api_fill_to_wire_box_autoadd_tuple_struct_with_one_field(
+    TupleStructWithOneField apiObj,
+    ffi.Pointer<wire_tuple_struct_with_one_field> wireObj) {
+  _api_fill_to_wire_tuple_struct_with_one_field(apiObj, wireObj.ref);
+}
+
+void _api_fill_to_wire_box_autoadd_tuple_struct_with_two_field(
+    TupleStructWithTwoField apiObj,
+    ffi.Pointer<wire_tuple_struct_with_two_field> wireObj) {
+  _api_fill_to_wire_tuple_struct_with_two_field(apiObj, wireObj.ref);
+}
+
+void _api_fill_to_wire_enum_with_item_mixed(
+    EnumWithItemMixed apiObj, wire_enum_with_item_mixed wireObj) {
+  if (apiObj is EnumWithItemMixed_A) {
+    wireObj.tag = 0;
+    return;
+  }
+  if (apiObj is EnumWithItemMixed_B) {
+    var pre_field0 = api2wire_list_prim_u_8(apiObj.field0);
+    wireObj.tag = 1;
+    wireObj.kind = inner.inflate_EnumWithItemMixed_B();
+    wireObj.kind.ref.B.ref.field0 = pre_field0;
+    return;
+  }
+  if (apiObj is EnumWithItemMixed_C) {
+    var pre_c_field = api2wire_String(apiObj.cField);
+    wireObj.tag = 2;
+    wireObj.kind = inner.inflate_EnumWithItemMixed_C();
+    wireObj.kind.ref.C.ref.c_field = pre_c_field;
+    return;
+  }
+}
+
+void _api_fill_to_wire_enum_with_item_struct(
+    EnumWithItemStruct apiObj, wire_enum_with_item_struct wireObj) {
+  if (apiObj is EnumWithItemStruct_A) {
+    var pre_a_field = api2wire_list_prim_u_8(apiObj.aField);
+    wireObj.tag = 0;
+    wireObj.kind = inner.inflate_EnumWithItemStruct_A();
+    wireObj.kind.ref.A.ref.a_field = pre_a_field;
+    return;
+  }
+  if (apiObj is EnumWithItemStruct_B) {
+    var pre_b_field = api2wire_list_prim_i_32(apiObj.bField);
+    wireObj.tag = 1;
+    wireObj.kind = inner.inflate_EnumWithItemStruct_B();
+    wireObj.kind.ref.B.ref.b_field = pre_b_field;
+    return;
+  }
+}
+
+void _api_fill_to_wire_enum_with_item_tuple(
+    EnumWithItemTuple apiObj, wire_enum_with_item_tuple wireObj) {
+  if (apiObj is EnumWithItemTuple_A) {
+    var pre_field0 = api2wire_list_prim_u_8(apiObj.field0);
+    wireObj.tag = 0;
+    wireObj.kind = inner.inflate_EnumWithItemTuple_A();
+    wireObj.kind.ref.A.ref.field0 = pre_field0;
+    return;
+  }
+  if (apiObj is EnumWithItemTuple_B) {
+    var pre_field0 = api2wire_list_prim_i_32(apiObj.field0);
+    wireObj.tag = 1;
+    wireObj.kind = inner.inflate_EnumWithItemTuple_B();
+    wireObj.kind.ref.B.ref.field0 = pre_field0;
+    return;
+  }
 }
 
 void _api_fill_to_wire_struct_with_comments_twin_normal(
@@ -2064,5 +2602,26 @@ void _api_fill_to_wire_struct_with_comments_twin_sync(
   wireObj.field_with_comments = api2wire_i_32(apiObj.fieldWithComments);
 }
 
+void _api_fill_to_wire_struct_with_one_field(
+    StructWithOneField apiObj, wire_struct_with_one_field wireObj) {
+  wireObj.a = api2wire_i_32(apiObj.a);
+}
+
+void _api_fill_to_wire_struct_with_two_field(
+    StructWithTwoField apiObj, wire_struct_with_two_field wireObj) {
+  wireObj.a = api2wire_i_32(apiObj.a);
+  wireObj.b = api2wire_i_32(apiObj.b);
+}
+
 void _api_fill_to_wire_struct_with_zero_field(
     StructWithZeroField apiObj, wire_struct_with_zero_field wireObj) {}
+void _api_fill_to_wire_tuple_struct_with_one_field(
+    TupleStructWithOneField apiObj, wire_tuple_struct_with_one_field wireObj) {
+  wireObj.field0 = api2wire_i_32(apiObj.field0);
+}
+
+void _api_fill_to_wire_tuple_struct_with_two_field(
+    TupleStructWithTwoField apiObj, wire_tuple_struct_with_two_field wireObj) {
+  wireObj.field0 = api2wire_i_32(apiObj.field0);
+  wireObj.field1 = api2wire_i_32(apiObj.field1);
+}

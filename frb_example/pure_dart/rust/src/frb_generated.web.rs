@@ -10,6 +10,48 @@ where
         (!self.is_null() && !self.is_undefined()).then(|| self.wire2api())
     }
 }
+impl Wire2Api<String> for String {
+    fn wire2api(self) -> String {
+        self
+    }
+}
+impl Wire2Api<EnumWithItemMixed> for JsValue {
+    fn wire2api(self) -> EnumWithItemMixed {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => EnumWithItemMixed::A,
+            1 => EnumWithItemMixed::B(self_.get(1).wire2api()),
+            2 => EnumWithItemMixed::C {
+                c_field: self_.get(1).wire2api(),
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<EnumWithItemStruct> for JsValue {
+    fn wire2api(self) -> EnumWithItemStruct {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => EnumWithItemStruct::A {
+                a_field: self_.get(1).wire2api(),
+            },
+            1 => EnumWithItemStruct::B {
+                b_field: self_.get(1).wire2api(),
+            },
+            _ => unreachable!(),
+        }
+    }
+}
+impl Wire2Api<EnumWithItemTuple> for JsValue {
+    fn wire2api(self) -> EnumWithItemTuple {
+        let self_ = self.unchecked_into::<JsArray>();
+        match self_.get(0).unchecked_into_f64() as _ {
+            0 => EnumWithItemTuple::A(self_.get(1).wire2api()),
+            1 => EnumWithItemTuple::B(self_.get(1).wire2api()),
+            _ => unreachable!(),
+        }
+    }
+}
 impl Wire2Api<Vec<bool>> for JsValue {
     fn wire2api(self) -> Vec<bool> {
         self.dyn_into::<JsArray>()
@@ -97,6 +139,35 @@ impl Wire2Api<StructWithCommentsTwinSync> for JsValue {
         }
     }
 }
+impl Wire2Api<StructWithOneField> for JsValue {
+    fn wire2api(self) -> StructWithOneField {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        StructWithOneField {
+            a: self_.get(0).wire2api(),
+        }
+    }
+}
+impl Wire2Api<StructWithTwoField> for JsValue {
+    fn wire2api(self) -> StructWithTwoField {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        StructWithTwoField {
+            a: self_.get(0).wire2api(),
+            b: self_.get(1).wire2api(),
+        }
+    }
+}
 impl Wire2Api<StructWithZeroField> for JsValue {
     fn wire2api(self) -> StructWithZeroField {
         let self_ = self.dyn_into::<JsArray>().unwrap();
@@ -107,6 +178,35 @@ impl Wire2Api<StructWithZeroField> for JsValue {
             self_.length()
         );
         StructWithZeroField {}
+    }
+}
+impl Wire2Api<TupleStructWithOneField> for JsValue {
+    fn wire2api(self) -> TupleStructWithOneField {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        TupleStructWithOneField(self_.get(0).wire2api())
+    }
+}
+impl Wire2Api<TupleStructWithTwoField> for JsValue {
+    fn wire2api(self) -> TupleStructWithTwoField {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        TupleStructWithTwoField(self_.get(0).wire2api(), self_.get(1).wire2api())
+    }
+}
+impl Wire2Api<String> for JsValue {
+    fn wire2api(self) -> String {
+        self.as_string().expect("non-UTF-8 string, or not a string")
     }
 }
 impl Wire2Api<bool> for JsValue {
@@ -259,6 +359,21 @@ pub fn wire_function_with_comments_triple_slash_single_line_twin_normal(port_: M
 #[wasm_bindgen]
 pub fn wire_func_enum_simple_twin_normal(port_: MessagePort, arg: i32) {
     wire_func_enum_simple_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_enum_with_item_mixed_twin_normal(port_: MessagePort, arg: JsValue) {
+    wire_func_enum_with_item_mixed_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_enum_with_item_struct_twin_normal(port_: MessagePort, arg: JsValue) {
+    wire_func_enum_with_item_struct_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_enum_with_item_tuple_twin_normal(port_: MessagePort, arg: JsValue) {
+    wire_func_enum_with_item_tuple_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
@@ -631,6 +746,26 @@ pub fn wire_simple_adder_twin_normal(port_: MessagePort, a: i32, b: i32) {
 }
 
 #[wasm_bindgen]
+pub fn wire_func_struct_with_one_field_twin_normal(port_: MessagePort, arg: JsValue) {
+    wire_func_struct_with_one_field_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_struct_with_two_field_twin_normal(port_: MessagePort, arg: JsValue) {
+    wire_func_struct_with_two_field_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
 pub fn wire_func_struct_with_zero_field_twin_normal(port_: MessagePort, arg: JsValue) {
     wire_func_struct_with_zero_field_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_tuple_struct_with_one_field_twin_normal(port_: MessagePort, arg: JsValue) {
+    wire_func_tuple_struct_with_one_field_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_tuple_struct_with_two_field_twin_normal(port_: MessagePort, arg: JsValue) {
+    wire_func_tuple_struct_with_two_field_twin_normal_impl(port_, arg)
 }

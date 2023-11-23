@@ -23,8 +23,31 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
+  String api2wire_String(String raw) {
+    return raw;
+  }
+
+  @protected
   bool api2wire_box_autoadd_bool(bool raw) {
     return api2wire_bool(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_enum_with_item_mixed(
+      EnumWithItemMixed raw) {
+    return api2wire_enum_with_item_mixed(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_enum_with_item_struct(
+      EnumWithItemStruct raw) {
+    return api2wire_enum_with_item_struct(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_enum_with_item_tuple(
+      EnumWithItemTuple raw) {
+    return api2wire_enum_with_item_tuple(raw);
   }
 
   @protected
@@ -70,9 +93,33 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_struct_with_one_field(
+      StructWithOneField raw) {
+    return api2wire_struct_with_one_field(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_struct_with_two_field(
+      StructWithTwoField raw) {
+    return api2wire_struct_with_two_field(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_struct_with_zero_field(
       StructWithZeroField raw) {
     return api2wire_struct_with_zero_field(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_tuple_struct_with_one_field(
+      TupleStructWithOneField raw) {
+    return api2wire_tuple_struct_with_one_field(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_tuple_struct_with_two_field(
+      TupleStructWithTwoField raw) {
+    return api2wire_tuple_struct_with_two_field(raw);
   }
 
   @protected
@@ -93,6 +140,45 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int api2wire_box_autoadd_u_8(int raw) {
     return api2wire_u_8(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_enum_with_item_mixed(EnumWithItemMixed raw) {
+    if (raw is EnumWithItemMixed_A) {
+      return [0];
+    }
+    if (raw is EnumWithItemMixed_B) {
+      return [1, api2wire_list_prim_u_8(raw.field0)];
+    }
+    if (raw is EnumWithItemMixed_C) {
+      return [2, api2wire_String(raw.cField)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_enum_with_item_struct(EnumWithItemStruct raw) {
+    if (raw is EnumWithItemStruct_A) {
+      return [0, api2wire_list_prim_u_8(raw.aField)];
+    }
+    if (raw is EnumWithItemStruct_B) {
+      return [1, api2wire_list_prim_i_32(raw.bField)];
+    }
+
+    throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_enum_with_item_tuple(EnumWithItemTuple raw) {
+    if (raw is EnumWithItemTuple_A) {
+      return [0, api2wire_list_prim_u_8(raw.field0)];
+    }
+    if (raw is EnumWithItemTuple_B) {
+      return [1, api2wire_list_prim_i_32(raw.field0)];
+    }
+
+    throw Exception('unreachable');
   }
 
   @protected
@@ -223,8 +309,30 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_struct_with_one_field(StructWithOneField raw) {
+    return [api2wire_i_32(raw.a)];
+  }
+
+  @protected
+  List<dynamic> api2wire_struct_with_two_field(StructWithTwoField raw) {
+    return [api2wire_i_32(raw.a), api2wire_i_32(raw.b)];
+  }
+
+  @protected
   List<dynamic> api2wire_struct_with_zero_field(StructWithZeroField raw) {
     return [];
+  }
+
+  @protected
+  List<dynamic> api2wire_tuple_struct_with_one_field(
+      TupleStructWithOneField raw) {
+    return [api2wire_i_32(raw.field0)];
+  }
+
+  @protected
+  List<dynamic> api2wire_tuple_struct_with_two_field(
+      TupleStructWithTwoField raw) {
+    return [api2wire_i_32(raw.field0), api2wire_i_32(raw.field1)];
   }
 
   @protected

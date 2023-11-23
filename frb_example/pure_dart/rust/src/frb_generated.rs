@@ -20,6 +20,9 @@
 
 use crate::api::comment::StructWithCommentsTwinNormal;
 use crate::api::comment::*;
+use crate::api::enumeration::EnumWithItemMixed;
+use crate::api::enumeration::EnumWithItemStruct;
+use crate::api::enumeration::EnumWithItemTuple;
 use crate::api::enumeration::*;
 use crate::api::exception::*;
 use crate::api::misc_type::*;
@@ -35,7 +38,11 @@ use crate::api::pseudo_manual::primitive_list_twin_sync::*;
 use crate::api::pseudo_manual::primitive_twin_sync::*;
 use crate::api::pseudo_manual::simple_twin_sync::*;
 use crate::api::simple::*;
+use crate::api::structure::StructWithOneField;
+use crate::api::structure::StructWithTwoField;
 use crate::api::structure::StructWithZeroField;
+use crate::api::structure::TupleStructWithOneField;
+use crate::api::structure::TupleStructWithTwoField;
 use crate::api::structure::*;
 use core::panic::UnwindSafe;
 use flutter_rust_bridge::rust2dart::IntoIntoDart;
@@ -134,6 +141,56 @@ fn wire_func_enum_simple_twin_normal_impl(
         move || {
             let api_arg = arg.wire2api();
             move |task_callback| Result::<_, ()>::Ok(func_enum_simple_twin_normal(api_arg))
+        },
+    )
+}
+fn wire_func_enum_with_item_mixed_twin_normal_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<EnumWithItemMixed> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, EnumWithItemMixed, _>(
+        WrapInfo {
+            debug_name: "func_enum_with_item_mixed_twin_normal",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(func_enum_with_item_mixed_twin_normal(api_arg))
+        },
+    )
+}
+fn wire_func_enum_with_item_struct_twin_normal_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<EnumWithItemStruct> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, EnumWithItemStruct, _>(
+        WrapInfo {
+            debug_name: "func_enum_with_item_struct_twin_normal",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(func_enum_with_item_struct_twin_normal(api_arg))
+            }
+        },
+    )
+}
+fn wire_func_enum_with_item_tuple_twin_normal_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<EnumWithItemTuple> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, EnumWithItemTuple, _>(
+        WrapInfo {
+            debug_name: "func_enum_with_item_tuple_twin_normal",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(func_enum_with_item_tuple_twin_normal(api_arg))
         },
     )
 }
@@ -1315,6 +1372,42 @@ fn wire_simple_adder_twin_normal_impl(
         },
     )
 }
+fn wire_func_struct_with_one_field_twin_normal_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<StructWithOneField> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, StructWithOneField, _>(
+        WrapInfo {
+            debug_name: "func_struct_with_one_field_twin_normal",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(func_struct_with_one_field_twin_normal(api_arg))
+            }
+        },
+    )
+}
+fn wire_func_struct_with_two_field_twin_normal_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<StructWithTwoField> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, StructWithTwoField, _>(
+        WrapInfo {
+            debug_name: "func_struct_with_two_field_twin_normal",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(func_struct_with_two_field_twin_normal(api_arg))
+            }
+        },
+    )
+}
 fn wire_func_struct_with_zero_field_twin_normal_impl(
     port_: MessagePort,
     arg: impl Wire2Api<StructWithZeroField> + UnwindSafe,
@@ -1333,6 +1426,72 @@ fn wire_func_struct_with_zero_field_twin_normal_impl(
         },
     )
 }
+fn wire_func_tuple_struct_with_one_field_twin_normal_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<TupleStructWithOneField> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, TupleStructWithOneField, _>(
+        WrapInfo {
+            debug_name: "func_tuple_struct_with_one_field_twin_normal",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(func_tuple_struct_with_one_field_twin_normal(api_arg))
+            }
+        },
+    )
+}
+fn wire_func_tuple_struct_with_two_field_twin_normal_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<TupleStructWithTwoField> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, TupleStructWithTwoField, _>(
+        WrapInfo {
+            debug_name: "func_tuple_struct_with_two_field_twin_normal",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(func_tuple_struct_with_two_field_twin_normal(api_arg))
+            }
+        },
+    )
+}
+
+// Section: static_checks
+
+const _: fn() = || {
+    match None::<EnumWithItemMixed>.unwrap() {
+        EnumWithItemMixed::A => {}
+        EnumWithItemMixed::B(field0) => {
+            let _: Vec<u8> = field0;
+        }
+        EnumWithItemMixed::C { c_field } => {
+            let _: String = c_field;
+        }
+    }
+    match None::<EnumWithItemStruct>.unwrap() {
+        EnumWithItemStruct::A { a_field } => {
+            let _: Vec<u8> = a_field;
+        }
+        EnumWithItemStruct::B { b_field } => {
+            let _: Vec<i32> = b_field;
+        }
+    }
+    match None::<EnumWithItemTuple>.unwrap() {
+        EnumWithItemTuple::A(field0) => {
+            let _: Vec<u8> = field0;
+        }
+        EnumWithItemTuple::B(field0) => {
+            let _: Vec<i32> = field0;
+        }
+    }
+};
 
 // Section: executor
 
@@ -1436,6 +1595,78 @@ impl rust2dart::IntoIntoDart<EnumSimple> for EnumSimple {
         self
     }
 }
+impl support::IntoDart for EnumWithItemMixed {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::A => vec![0.into_dart()],
+            Self::B(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
+            Self::C { c_field } => vec![2.into_dart(), c_field.into_into_dart().into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for EnumWithItemMixed {}
+impl rust2dart::IntoIntoDart<EnumWithItemMixed> for EnumWithItemMixed {
+    fn into_into_dart(self) -> EnumWithItemMixed {
+        self
+    }
+}
+impl support::IntoDart for EnumWithItemStruct {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::A { a_field } => vec![0.into_dart(), a_field.into_into_dart().into_dart()],
+            Self::B { b_field } => vec![1.into_dart(), b_field.into_into_dart().into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for EnumWithItemStruct {}
+impl rust2dart::IntoIntoDart<EnumWithItemStruct> for EnumWithItemStruct {
+    fn into_into_dart(self) -> EnumWithItemStruct {
+        self
+    }
+}
+impl support::IntoDart for EnumWithItemTuple {
+    fn into_dart(self) -> support::DartAbi {
+        match self {
+            Self::A(field0) => vec![0.into_dart(), field0.into_into_dart().into_dart()],
+            Self::B(field0) => vec![1.into_dart(), field0.into_into_dart().into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for EnumWithItemTuple {}
+impl rust2dart::IntoIntoDart<EnumWithItemTuple> for EnumWithItemTuple {
+    fn into_into_dart(self) -> EnumWithItemTuple {
+        self
+    }
+}
+impl support::IntoDart for StructWithOneField {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.a.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for StructWithOneField {}
+impl rust2dart::IntoIntoDart<StructWithOneField> for StructWithOneField {
+    fn into_into_dart(self) -> StructWithOneField {
+        self
+    }
+}
+impl support::IntoDart for StructWithTwoField {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.a.into_into_dart().into_dart(),
+            self.b.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for StructWithTwoField {}
+impl rust2dart::IntoIntoDart<StructWithTwoField> for StructWithTwoField {
+    fn into_into_dart(self) -> StructWithTwoField {
+        self
+    }
+}
 impl support::IntoDart for StructWithZeroField {
     fn into_dart(self) -> support::DartAbi {
         Vec::<u8>::new().into_dart()
@@ -1444,6 +1675,32 @@ impl support::IntoDart for StructWithZeroField {
 impl support::IntoDartExceptPrimitive for StructWithZeroField {}
 impl rust2dart::IntoIntoDart<StructWithZeroField> for StructWithZeroField {
     fn into_into_dart(self) -> StructWithZeroField {
+        self
+    }
+}
+impl support::IntoDart for TupleStructWithOneField {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.0.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for TupleStructWithOneField {}
+impl rust2dart::IntoIntoDart<TupleStructWithOneField> for TupleStructWithOneField {
+    fn into_into_dart(self) -> TupleStructWithOneField {
+        self
+    }
+}
+impl support::IntoDart for TupleStructWithTwoField {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.0.into_into_dart().into_dart(),
+            self.1.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for TupleStructWithTwoField {}
+impl rust2dart::IntoIntoDart<TupleStructWithTwoField> for TupleStructWithTwoField {
+    fn into_into_dart(self) -> TupleStructWithTwoField {
         self
     }
 }
