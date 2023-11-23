@@ -12,7 +12,7 @@ use crate::codegen::parser::attribute_parser::FrbAttributes;
 use crate::codegen::parser::function_extractor::GeneralizedItemFn;
 use crate::codegen::parser::type_parser::misc::parse_comments;
 use crate::codegen::parser::type_parser::{TypeParser, TypeParserParsingContext};
-use crate::utils::rust_project_utils::compute_mod_from_rust_path;
+use crate::utils::rust_project_utils::compute_mod_from_path;
 use anyhow::{bail, Context};
 use itertools::concat;
 use log::debug;
