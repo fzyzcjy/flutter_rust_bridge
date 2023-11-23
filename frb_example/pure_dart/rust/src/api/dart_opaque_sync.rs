@@ -1,6 +1,6 @@
 // FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync"]}
 
-use flutter_rust_bridge::frb;
+use flutter_rust_bridge::{frb, DartOpaque};
 
 /// [DartWrapObject] can be safely retrieved on a dart thread.
 #[frb(sync)]

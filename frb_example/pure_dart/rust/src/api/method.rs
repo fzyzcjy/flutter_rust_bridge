@@ -2,6 +2,12 @@ use backtrace::Backtrace;
 use flutter_rust_bridge::handler::Error::CustomError;
 use flutter_rust_bridge::{spawn, StreamSink};
 
+#[derive(Debug, Clone)]
+pub struct Log2 {
+    pub key: u32,
+    pub value: String,
+}
+
 pub struct ConcatenateWith {
     pub a: String,
 }

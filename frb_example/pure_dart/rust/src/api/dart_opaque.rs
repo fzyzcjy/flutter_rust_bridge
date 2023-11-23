@@ -1,6 +1,7 @@
 use anyhow::Result;
 use flutter_rust_bridge::support::lazy_static;
 use flutter_rust_bridge::{frb, DartOpaque};
+use std::sync::Mutex;
 
 // TODO about sync
 // pub fn sync_accept_dart_opaque(opaque: DartOpaque) -> SyncReturn<String> {

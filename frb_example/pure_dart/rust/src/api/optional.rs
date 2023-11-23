@@ -151,16 +151,3 @@ pub fn handle_option_box_arguments(
         (i8box, u8box, i32box, i64box, f64box, boolbox, structbox)
     )
 }
-
-// TODO about sync
-// pub fn sync_option() -> Result<SyncReturn<Option<String>>> {
-//     Ok(SyncReturn(Some("42".to_owned())))
-// }
-//
-// pub fn sync_option_null() -> Result<SyncReturn<Option<String>>> {
-//     Ok(SyncReturn(None))
-// }
-//
-// pub fn sync_option_rust_opaque() -> Result<SyncReturn<Option<RustOpaque<HideData>>>> {
-//     Ok(SyncReturn(Some(RustOpaque::new(HideData::new()))))
-// }
