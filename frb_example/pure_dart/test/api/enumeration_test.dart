@@ -19,5 +19,13 @@ Future<void> main() async {
     EnumWithItemMixed.c(cField: 'hi'),
   ]);
 
-  // TODO
+  addTestsIdentityFunctionCall(funcEnumWithItemStructTwinNormal, [
+    EnumWithItemStruct.a(aField: Uint8List.fromList([42])),
+    EnumWithItemStruct.b(bField: Int32List.fromList([200])),
+  ]);
+
+  addTestsIdentityFunctionCall(funcEnumWithItemTupleTwinNormal, [
+    EnumWithItemTuple.a(Uint8List.fromList([42])),
+    EnumWithItemTuple.b(Int32List.fromList([200])),
+  ]);
 }
