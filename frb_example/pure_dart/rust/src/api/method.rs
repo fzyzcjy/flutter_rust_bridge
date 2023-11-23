@@ -127,3 +127,21 @@ impl CustomStruct {
         Ok(3)
     }
 }
+
+pub struct SumWith {
+    pub x: u32,
+}
+
+impl SumWith {
+    pub fn sum(&self, y: u32, z: u32) -> u32 {
+        self.x + y + z
+    }
+}
+
+pub fn get_sum_struct() -> SumWith {
+    SumWith { x: 21 }
+}
+
+pub fn get_sum_array(a: u32, b: u32, c: u32) -> [SumWith; 3] {
+    [SumWith { x: a }, SumWith { x: b }, SumWith { x: c }]
+}

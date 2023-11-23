@@ -67,3 +67,16 @@ pub fn handle_enum_struct(val: KitchenSink) -> KitchenSink {
         _ => val,
     }
 }
+
+/// Example for @freezed and @meta.immutable
+#[frb(dart_metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]
+pub struct UserId {
+    #[frb(default = 0)]
+    pub value: u32,
+}
+
+pub fn next_user_id(user_id: UserId) -> UserId {
+    UserId {
+        value: user_id.value + 1,
+    }
+}

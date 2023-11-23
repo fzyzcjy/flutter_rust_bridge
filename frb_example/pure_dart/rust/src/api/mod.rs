@@ -1,3 +1,4 @@
+mod array;
 mod attribute;
 mod chrono_type;
 pub mod comment;
@@ -5,6 +6,7 @@ pub mod dart_opaque;
 pub mod enumeration;
 pub mod event_listener;
 pub mod exception;
+mod external_type_in_crate;
 pub mod inside_macro;
 pub mod method;
 pub mod mirror;
