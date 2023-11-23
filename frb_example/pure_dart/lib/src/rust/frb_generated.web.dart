@@ -8,8 +8,10 @@ import 'api/dart_dynamic.dart';
 import 'api/enumeration.dart';
 import 'api/event_listener.dart';
 import 'api/exception.dart';
+import 'api/external_type_in_crate.dart';
 import 'api/inside_macro.dart';
 import 'api/method.dart';
+import 'api/mirror.dart';
 import 'api/misc_example.dart';
 import 'api/misc_type.dart';
 import 'api/newtype_pattern.dart';
@@ -33,6 +35,8 @@ import 'api/structure.dart';
 import 'api/tuple.dart';
 import 'api/type_alias.dart';
 import 'api/uuid_type.dart';
+import 'auxiliary/new_module_system/sub_module.dart';
+import 'auxiliary/old_module_system/sub_module.dart';
 import 'auxiliary/sample_types.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -132,6 +136,27 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_application_env(ApplicationEnv raw) {
+    return [api2wire_list_application_env_var(raw.vars)];
+  }
+
+  @protected
+  List<dynamic> api2wire_application_env_var(ApplicationEnvVar raw) {
+    return [api2wire_String(raw.field0), api2wire_bool(raw.field1)];
+  }
+
+  @protected
+  List<dynamic> api2wire_application_settings(ApplicationSettings raw) {
+    return [
+      api2wire_String(raw.name),
+      api2wire_String(raw.version),
+      api2wire_application_mode(raw.mode),
+      api2wire_box_application_env(raw.env),
+      api2wire_opt_box_autoadd_application_env(raw.envOptional)
+    ];
+  }
+
+  @protected
   List<dynamic> api2wire_attribute(Attribute raw) {
     return [api2wire_String(raw.key), api2wire_String(raw.value)];
   }
@@ -147,6 +172,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_application_env(ApplicationEnv raw) {
+    return api2wire_application_env(raw);
+  }
+
+  @protected
   Object api2wire_box_autoadd_Chrono_Utc(DateTime raw) {
     return api2wire_Chrono_Utc(raw);
   }
@@ -159,6 +189,17 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> api2wire_box_autoadd_abc(Abc raw) {
     return api2wire_abc(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_application_env(ApplicationEnv raw) {
+    return api2wire_application_env(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_application_settings(
+      ApplicationSettings raw) {
+    return api2wire_application_settings(raw);
   }
 
   @protected
@@ -339,6 +380,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_my_struct(MyStruct raw) {
+    return api2wire_my_struct(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_my_tree_node(MyTreeNode raw) {
     return api2wire_my_tree_node(raw);
   }
@@ -354,6 +400,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_numbers(Numbers raw) {
+    return api2wire_numbers(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_opt_vecs(OptVecs raw) {
     return api2wire_opt_vecs(raw);
   }
@@ -361,6 +412,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> api2wire_box_autoadd_record_string_i_32((String, int) raw) {
     return api2wire_record_string_i_32(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_sequences(Sequences raw) {
+    return api2wire_sequences(raw);
   }
 
   @protected
@@ -785,6 +841,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_list_application_env_var(List<ApplicationEnvVar> raw) {
+    return raw.map(api2wire_application_env_var).toList();
+  }
+
+  @protected
   List<dynamic> api2wire_list_attribute(List<Attribute> raw) {
     return raw.map(api2wire_attribute).toList();
   }
@@ -930,6 +991,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_my_struct(MyStruct raw) {
+    return [api2wire_bool(raw.content)];
+  }
+
+  @protected
   List<dynamic> api2wire_my_tree_node(MyTreeNode raw) {
     return [
       api2wire_i_32(raw.valueI32),
@@ -950,6 +1016,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_numbers(Numbers raw) {
+    return [api2wire_list_prim_i_32(raw.field0)];
+  }
+
+  @protected
   String? api2wire_opt_String(String? raw) {
     return raw == null ? null : api2wire_String(raw);
   }
@@ -962,6 +1033,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   Object? api2wire_opt_box_autoadd_Chrono_Utc(DateTime? raw) {
     return raw == null ? null : api2wire_box_autoadd_Chrono_Utc(raw);
+  }
+
+  @protected
+  List<dynamic>? api2wire_opt_box_autoadd_application_env(ApplicationEnv? raw) {
+    return raw == null ? null : api2wire_box_autoadd_application_env(raw);
   }
 
   @protected
@@ -1120,6 +1196,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> api2wire_record_string_i_32((String, int) raw) {
     return [api2wire_String(raw.$1), api2wire_i_32(raw.$2)];
+  }
+
+  @protected
+  List<dynamic> api2wire_sequences(Sequences raw) {
+    return [api2wire_list_prim_i_32(raw.field0)];
   }
 
   @protected

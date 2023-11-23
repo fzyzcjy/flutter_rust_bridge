@@ -48,12 +48,27 @@ use crate::api::exception::CustomNestedErrorInnerTwinNormal;
 use crate::api::exception::CustomNestedErrorOuterTwinNormal;
 use crate::api::exception::CustomStructErrorTwinNormal;
 use crate::api::exception::*;
+use crate::api::external_type_in_crate::*;
 use crate::api::inside_macro::MacroStruct;
 use crate::api::inside_macro::*;
 use crate::api::method::ConcatenateWith;
 use crate::api::method::Log2;
 use crate::api::method::SumWith;
 use crate::api::method::*;
+use crate::api::mirror::Another;
+use crate::api::mirror::ApplicationEnv;
+use crate::api::mirror::ApplicationEnvVar;
+use crate::api::mirror::ApplicationMessage;
+use crate::api::mirror::ApplicationSettings;
+use crate::api::mirror::ContainsMirroredSubStruct;
+use crate::api::mirror::ListOfNestedRawStringMirrored;
+use crate::api::mirror::MirrorStruct;
+use crate::api::mirror::NestedRawStringMirrored;
+use crate::api::mirror::Numbers;
+use crate::api::mirror::RawStringEnumMirrored;
+use crate::api::mirror::RawStringMirrored;
+use crate::api::mirror::Sequences;
+use crate::api::mirror::*;
 use crate::api::misc_example::Abc;
 use crate::api::misc_example::BigBuffers;
 use crate::api::misc_example::MyNestedStruct;
@@ -113,6 +128,8 @@ use crate::api::type_alias::TestModel;
 use crate::api::type_alias::*;
 use crate::api::uuid_type::FeatureUuid;
 use crate::api::uuid_type::*;
+use crate::auxiliary::new_module_system::sub_module::NewSimpleStruct;
+use crate::auxiliary::old_module_system::sub_module::OldSimpleStruct;
 use crate::auxiliary::sample_types::MySize;
 use crate::auxiliary::sample_types::MyStruct;
 use core::panic::UnwindSafe;
@@ -796,6 +813,55 @@ fn wire_func_type_infallible_panic_twin_normal_impl(port_: MessagePort) {
         move || move |task_callback| Result::<_, ()>::Ok(func_type_infallible_panic_twin_normal()),
     )
 }
+fn wire_call_new_module_system_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, NewSimpleStruct, _>(
+        WrapInfo {
+            debug_name: "call_new_module_system",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(call_new_module_system()),
+    )
+}
+fn wire_call_old_module_system_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, OldSimpleStruct, _>(
+        WrapInfo {
+            debug_name: "call_old_module_system",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(call_old_module_system()),
+    )
+}
+fn wire_use_imported_enum_impl(port_: MessagePort, my_enum: impl Wire2Api<MyEnum> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, bool, _>(
+        WrapInfo {
+            debug_name: "use_imported_enum",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_my_enum = my_enum.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(use_imported_enum(api_my_enum))
+        },
+    )
+}
+fn wire_use_imported_struct_impl(
+    port_: MessagePort,
+    my_struct: impl Wire2Api<MyStruct> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, bool, _>(
+        WrapInfo {
+            debug_name: "use_imported_struct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_my_struct = my_struct.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(use_imported_struct(api_my_struct))
+        },
+    )
+}
 fn wire_func_macro_struct_impl(port_: MessagePort, arg: impl Wire2Api<MacroStruct> + UnwindSafe) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, MacroStruct, _>(
         WrapInfo {
@@ -996,6 +1062,241 @@ fn wire_get_sum_struct_impl(port_: MessagePort) {
             mode: FfiCallMode::Normal,
         },
         move || move |task_callback| Result::<_, ()>::Ok(get_sum_struct()),
+    )
+}
+fn wire_app_settings_stream_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        WrapInfo {
+            debug_name: "app_settings_stream",
+            port: Some(port_),
+            mode: FfiCallMode::Stream,
+        },
+        move || {
+            move |task_callback| {
+                Result::<_, ()>::Ok(app_settings_stream(
+                    task_callback.stream_sink::<_, mirror_ApplicationSettings>(),
+                ))
+            }
+        },
+    )
+}
+fn wire_app_settings_vec_stream_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        WrapInfo {
+            debug_name: "app_settings_vec_stream",
+            port: Some(port_),
+            mode: FfiCallMode::Stream,
+        },
+        move || {
+            move |task_callback| {
+                Result::<_, ()>::Ok(app_settings_vec_stream(
+                    task_callback.stream_sink::<_, Vec<mirror_ApplicationSettings>>(),
+                ))
+            }
+        },
+    )
+}
+fn wire_first_number_impl(port_: MessagePort, nums: impl Wire2Api<Numbers> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<i32>, _>(
+        WrapInfo {
+            debug_name: "first_number",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_nums = nums.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(first_number(api_nums))
+        },
+    )
+}
+fn wire_first_sequence_impl(port_: MessagePort, seqs: impl Wire2Api<Sequences> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<i32>, _>(
+        WrapInfo {
+            debug_name: "first_sequence",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_seqs = seqs.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(first_sequence(api_seqs))
+        },
+    )
+}
+fn wire_get_app_settings_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_ApplicationSettings, _>(
+        WrapInfo {
+            debug_name: "get_app_settings",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(get_app_settings()),
+    )
+}
+fn wire_get_fallible_app_settings_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_ApplicationSettings, _>(
+        WrapInfo {
+            debug_name: "get_fallible_app_settings",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| get_fallible_app_settings(),
+    )
+}
+fn wire_get_message_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_ApplicationMessage, _>(
+        WrapInfo {
+            debug_name: "get_message",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(get_message()),
+    )
+}
+fn wire_is_app_embedded_impl(
+    port_: MessagePort,
+    app_settings: impl Wire2Api<ApplicationSettings> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, bool, _>(
+        WrapInfo {
+            debug_name: "is_app_embedded",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_app_settings = app_settings.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(is_app_embedded(api_app_settings))
+        },
+    )
+}
+fn wire_mirror_struct_stream_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        WrapInfo {
+            debug_name: "mirror_struct_stream",
+            port: Some(port_),
+            mode: FfiCallMode::Stream,
+        },
+        move || {
+            move |task_callback| {
+                Result::<_, ()>::Ok(mirror_struct_stream(
+                    task_callback.stream_sink::<_, MirrorStruct>(),
+                ))
+            }
+        },
+    )
+}
+fn wire_mirror_tuple_stream_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_,_,_,(),_>(WrapInfo{ debug_name: "mirror_tuple_stream", port: Some(port_), mode: FfiCallMode::Stream }, move || {  move |task_callback| Result::<_,()>::Ok(mirror_tuple_stream(task_callback.stream_sink::<_,(mirror_ApplicationSettings,mirror_RawStringEnumMirrored,)>())) })
+}
+fn wire_repeat_number_impl(
+    port_: MessagePort,
+    num: impl Wire2Api<i32> + UnwindSafe,
+    times: impl Wire2Api<usize> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_Numbers, _>(
+        WrapInfo {
+            debug_name: "repeat_number",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_num = num.wire2api();
+            let api_times = times.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(repeat_number(api_num, api_times))
+        },
+    )
+}
+fn wire_repeat_sequence_impl(
+    port_: MessagePort,
+    seq: impl Wire2Api<i32> + UnwindSafe,
+    times: impl Wire2Api<usize> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_Sequences, _>(
+        WrapInfo {
+            debug_name: "repeat_sequence",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_seq = seq.wire2api();
+            let api_times = times.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(repeat_sequence(api_seq, api_times))
+        },
+    )
+}
+fn wire_test_contains_mirrored_sub_struct_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ContainsMirroredSubStruct, _>(
+        WrapInfo {
+            debug_name: "test_contains_mirrored_sub_struct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(test_contains_mirrored_sub_struct()),
+    )
+}
+fn wire_test_fallible_of_raw_string_mirrored_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<mirror_RawStringMirrored>, _>(
+        WrapInfo {
+            debug_name: "test_fallible_of_raw_string_mirrored",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| test_fallible_of_raw_string_mirrored(),
+    )
+}
+fn wire_test_list_of_nested_enums_mirrored_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<mirror_RawStringEnumMirrored>, _>(
+        WrapInfo {
+            debug_name: "test_list_of_nested_enums_mirrored",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(test_list_of_nested_enums_mirrored()),
+    )
+}
+fn wire_test_list_of_raw_nested_string_mirrored_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_ListOfNestedRawStringMirrored, _>(
+        WrapInfo {
+            debug_name: "test_list_of_raw_nested_string_mirrored",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(test_list_of_raw_nested_string_mirrored()),
+    )
+}
+fn wire_test_nested_raw_string_mirrored_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_NestedRawStringMirrored, _>(
+        WrapInfo {
+            debug_name: "test_nested_raw_string_mirrored",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(test_nested_raw_string_mirrored()),
+    )
+}
+fn wire_test_raw_string_enum_mirrored_impl(
+    port_: MessagePort,
+    nested: impl Wire2Api<bool> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_RawStringEnumMirrored, _>(
+        WrapInfo {
+            debug_name: "test_raw_string_enum_mirrored",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_nested = nested.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(test_raw_string_enum_mirrored(api_nested))
+        },
+    )
+}
+fn wire_test_raw_string_mirrored_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, mirror_RawStringMirrored, _>(
+        WrapInfo {
+            debug_name: "test_raw_string_mirrored",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(test_raw_string_mirrored()),
     )
 }
 fn wire_handle_big_buffers_impl(port_: MessagePort) {
@@ -3009,6 +3310,104 @@ fn wire_handle_uuids_impl(port_: MessagePort, ids: impl Wire2Api<Vec<uuid::Uuid>
     )
 }
 
+// Section: wrapper_structs
+
+#[derive(Clone)]
+pub struct mirror_ApplicationEnv(ApplicationEnv);
+
+#[derive(Clone)]
+pub struct mirror_ApplicationEnvVar(ApplicationEnvVar);
+
+#[derive(Clone)]
+pub struct mirror_ApplicationMessage(ApplicationMessage);
+
+#[derive(Clone)]
+pub struct mirror_ApplicationMode(ApplicationMode);
+
+#[derive(Clone)]
+pub struct mirror_ApplicationSettings(ApplicationSettings);
+
+#[derive(Clone)]
+pub struct mirror_ListOfNestedRawStringMirrored(ListOfNestedRawStringMirrored);
+
+#[derive(Clone)]
+pub struct mirror_NestedRawStringMirrored(NestedRawStringMirrored);
+
+#[derive(Clone)]
+pub struct mirror_Numbers(Numbers);
+
+#[derive(Clone)]
+pub struct mirror_RawStringEnumMirrored(RawStringEnumMirrored);
+
+#[derive(Clone)]
+pub struct mirror_RawStringMirrored(RawStringMirrored);
+
+#[derive(Clone)]
+pub struct mirror_Sequences(Sequences);
+
+// Section: static_checks
+
+const _: fn() = || {
+    {
+        let ApplicationEnv = None::<ApplicationEnv>.unwrap();
+        let _: Vec<ApplicationEnvVar> = ApplicationEnv.vars;
+    }
+    {
+        let ApplicationEnvVar_ = None::<ApplicationEnvVar>.unwrap();
+        let _: String = ApplicationEnvVar_.0;
+        let _: bool = ApplicationEnvVar_.1;
+    }
+    match None::<ApplicationMessage>.unwrap() {
+        ApplicationMessage::DisplayMessage(field0) => {
+            let _: String = field0;
+        }
+        ApplicationMessage::RenderPixel { x, y } => {
+            let _: i32 = x;
+            let _: i32 = y;
+        }
+        ApplicationMessage::Exit => {}
+    }
+    {
+        let ApplicationSettings = None::<ApplicationSettings>.unwrap();
+        let _: String = ApplicationSettings.name;
+        let _: String = ApplicationSettings.version;
+        let _: ApplicationMode = ApplicationSettings.mode;
+        let _: Box<ApplicationEnv> = ApplicationSettings.env;
+        let _: Option<ApplicationEnv> = ApplicationSettings.env_optional;
+    }
+    {
+        let ListOfNestedRawStringMirrored = None::<ListOfNestedRawStringMirrored>.unwrap();
+        let _: Vec<NestedRawStringMirrored> = ListOfNestedRawStringMirrored.raw;
+    }
+    {
+        let NestedRawStringMirrored = None::<NestedRawStringMirrored>.unwrap();
+        let _: RawStringMirrored = NestedRawStringMirrored.raw;
+    }
+    {
+        let Numbers_ = None::<Numbers>.unwrap();
+        let _: Vec<i32> = Numbers_.0;
+    }
+    match None::<RawStringEnumMirrored>.unwrap() {
+        RawStringEnumMirrored::Raw(field0) => {
+            let _: RawStringMirrored = field0;
+        }
+        RawStringEnumMirrored::Nested(field0) => {
+            let _: NestedRawStringMirrored = field0;
+        }
+        RawStringEnumMirrored::ListOfNested(field0) => {
+            let _: ListOfNestedRawStringMirrored = field0;
+        }
+    }
+    {
+        let RawStringMirrored = None::<RawStringMirrored>.unwrap();
+        let _: String = RawStringMirrored.value;
+    }
+    {
+        let Sequences_ = None::<Sequences>.unwrap();
+        let _: Vec<i32> = Sequences_.0;
+    }
+};
+
 // Section: executor
 
 support::lazy_static! {
@@ -3053,6 +3452,15 @@ impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
                 .expect("invalid or out-of-range datetime"),
             chrono::Utc,
         )
+    }
+}
+impl Wire2Api<ApplicationMode> for i32 {
+    fn wire2api(self) -> ApplicationMode {
+        match self {
+            0 => ApplicationMode::Standalone,
+            1 => ApplicationMode::Embedded,
+            _ => unreachable!("Invalid variant for ApplicationMode: {}", self),
+        }
     }
 }
 impl Wire2Api<bool> for bool {
@@ -3108,6 +3516,15 @@ impl Wire2Api<i8> for i8 {
         self
     }
 }
+impl Wire2Api<MyEnum> for i32 {
+    fn wire2api(self) -> MyEnum {
+        match self {
+            0 => MyEnum::False,
+            1 => MyEnum::True,
+            _ => unreachable!("Invalid variant for MyEnum: {}", self),
+        }
+    }
+}
 impl Wire2Api<u16> for u16 {
     fn wire2api(self) -> u16 {
         self
@@ -3125,6 +3542,11 @@ impl Wire2Api<u64> for u64 {
 }
 impl Wire2Api<u8> for u8 {
     fn wire2api(self) -> u8 {
+        self
+    }
+}
+impl Wire2Api<usize> for usize {
+    fn wire2api(self) -> usize {
         self
     }
 }
@@ -3171,6 +3593,98 @@ impl support::IntoDartExceptPrimitive for Abc {}
 impl rust2dart::IntoIntoDart<Abc> for Abc {
     fn into_into_dart(self) -> Abc {
         self
+    }
+}
+impl support::IntoDart for Another {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.a.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for Another {}
+impl rust2dart::IntoIntoDart<Another> for Another {
+    fn into_into_dart(self) -> Another {
+        self
+    }
+}
+impl support::IntoDart for mirror_ApplicationEnv {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.0.vars.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_ApplicationEnv {}
+impl rust2dart::IntoIntoDart<mirror_ApplicationEnv> for ApplicationEnv {
+    fn into_into_dart(self) -> mirror_ApplicationEnv {
+        mirror_ApplicationEnv
+    }
+}
+impl support::IntoDart for mirror_ApplicationEnvVar {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.0 .0.into_into_dart().into_dart(),
+            self.0 .1.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_ApplicationEnvVar {}
+impl rust2dart::IntoIntoDart<mirror_ApplicationEnvVar> for ApplicationEnvVar {
+    fn into_into_dart(self) -> mirror_ApplicationEnvVar {
+        mirror_ApplicationEnvVar
+    }
+}
+impl support::IntoDart for mirror_ApplicationMessage {
+    fn into_dart(self) -> support::DartAbi {
+        match self.0 {
+            ApplicationMessage::DisplayMessage(field0) => {
+                vec![0.into_dart(), field0.into_into_dart().into_dart()]
+            }
+            ApplicationMessage::RenderPixel { x, y } => vec![
+                1.into_dart(),
+                x.into_into_dart().into_dart(),
+                y.into_into_dart().into_dart(),
+            ],
+            ApplicationMessage::Exit => vec![2.into_dart()],
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_ApplicationMessage {}
+impl rust2dart::IntoIntoDart<mirror_ApplicationMessage> for ApplicationMessage {
+    fn into_into_dart(self) -> mirror_ApplicationMessage {
+        mirror_ApplicationMessage
+    }
+}
+impl support::IntoDart for mirror_ApplicationMode {
+    fn into_dart(self) -> support::DartAbi {
+        match self.0 {
+            ApplicationMode::Standalone => 0,
+            ApplicationMode::Embedded => 1,
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_ApplicationMode {}
+impl rust2dart::IntoIntoDart<mirror_ApplicationMode> for ApplicationMode {
+    fn into_into_dart(self) -> mirror_ApplicationMode {
+        mirror_ApplicationMode
+    }
+}
+impl support::IntoDart for mirror_ApplicationSettings {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.0.name.into_into_dart().into_dart(),
+            self.0.version.into_into_dart().into_dart(),
+            self.0.mode.into_into_dart().into_dart(),
+            self.0.env.into_into_dart().into_dart(),
+            self.0.env_optional.into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_ApplicationSettings {}
+impl rust2dart::IntoIntoDart<mirror_ApplicationSettings> for ApplicationSettings {
+    fn into_into_dart(self) -> mirror_ApplicationSettings {
+        mirror_ApplicationSettings
     }
 }
 impl support::IntoDart for Attribute {
@@ -3244,6 +3758,21 @@ impl support::IntoDart for ConcatenateWith {
 impl support::IntoDartExceptPrimitive for ConcatenateWith {}
 impl rust2dart::IntoIntoDart<ConcatenateWith> for ConcatenateWith {
     fn into_into_dart(self) -> ConcatenateWith {
+        self
+    }
+}
+impl support::IntoDart for ContainsMirroredSubStruct {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.test.into_into_dart().into_dart(),
+            self.test2.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for ContainsMirroredSubStruct {}
+impl rust2dart::IntoIntoDart<ContainsMirroredSubStruct> for ContainsMirroredSubStruct {
+    fn into_into_dart(self) -> ContainsMirroredSubStruct {
         self
     }
 }
@@ -3601,6 +4130,19 @@ impl rust2dart::IntoIntoDart<FeedId> for FeedId {
         self
     }
 }
+impl support::IntoDart for mirror_ListOfNestedRawStringMirrored {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.0.raw.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_ListOfNestedRawStringMirrored {}
+impl rust2dart::IntoIntoDart<mirror_ListOfNestedRawStringMirrored>
+    for ListOfNestedRawStringMirrored
+{
+    fn into_into_dart(self) -> mirror_ListOfNestedRawStringMirrored {
+        mirror_ListOfNestedRawStringMirrored
+    }
+}
 impl support::IntoDart for Log2 {
     fn into_dart(self) -> support::DartAbi {
         vec![
@@ -3650,6 +4192,23 @@ impl support::IntoDart for MessageId {
 impl support::IntoDartExceptPrimitive for MessageId {}
 impl rust2dart::IntoIntoDart<MessageId> for MessageId {
     fn into_into_dart(self) -> MessageId {
+        self
+    }
+}
+impl support::IntoDart for MirrorStruct {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.a.into_into_dart().into_dart(),
+            self.b.into_into_dart().into_dart(),
+            self.c.into_into_dart().into_dart(),
+            self.d.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for MirrorStruct {}
+impl rust2dart::IntoIntoDart<MirrorStruct> for MirrorStruct {
+    fn into_into_dart(self) -> MirrorStruct {
         self
     }
 }
@@ -3754,6 +4313,28 @@ impl rust2dart::IntoIntoDart<MyTreeNode> for MyTreeNode {
         self
     }
 }
+impl support::IntoDart for mirror_NestedRawStringMirrored {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.0.raw.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_NestedRawStringMirrored {}
+impl rust2dart::IntoIntoDart<mirror_NestedRawStringMirrored> for NestedRawStringMirrored {
+    fn into_into_dart(self) -> mirror_NestedRawStringMirrored {
+        mirror_NestedRawStringMirrored
+    }
+}
+impl support::IntoDart for NewSimpleStruct {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.field.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for NewSimpleStruct {}
+impl rust2dart::IntoIntoDart<NewSimpleStruct> for NewSimpleStruct {
+    fn into_into_dart(self) -> NewSimpleStruct {
+        self
+    }
+}
 impl support::IntoDart for NewTypeInt {
     fn into_dart(self) -> support::DartAbi {
         vec![self.0.into_into_dart().into_dart()].into_dart()
@@ -3762,6 +4343,28 @@ impl support::IntoDart for NewTypeInt {
 impl support::IntoDartExceptPrimitive for NewTypeInt {}
 impl rust2dart::IntoIntoDart<NewTypeInt> for NewTypeInt {
     fn into_into_dart(self) -> NewTypeInt {
+        self
+    }
+}
+impl support::IntoDart for mirror_Numbers {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.0 .0.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_Numbers {}
+impl rust2dart::IntoIntoDart<mirror_Numbers> for Numbers {
+    fn into_into_dart(self) -> mirror_Numbers {
+        mirror_Numbers
+    }
+}
+impl support::IntoDart for OldSimpleStruct {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.field.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for OldSimpleStruct {}
+impl rust2dart::IntoIntoDart<OldSimpleStruct> for OldSimpleStruct {
+    fn into_into_dart(self) -> OldSimpleStruct {
         self
     }
 }
@@ -3797,6 +4400,28 @@ impl rust2dart::IntoIntoDart<Point> for Point {
         self
     }
 }
+impl support::IntoDart for mirror_RawStringEnumMirrored {
+    fn into_dart(self) -> support::DartAbi {
+        match self.0 {
+            RawStringEnumMirrored::Raw(field0) => {
+                vec![0.into_dart(), field0.into_into_dart().into_dart()]
+            }
+            RawStringEnumMirrored::Nested(field0) => {
+                vec![1.into_dart(), field0.into_into_dart().into_dart()]
+            }
+            RawStringEnumMirrored::ListOfNested(field0) => {
+                vec![2.into_dart(), field0.into_into_dart().into_dart()]
+            }
+        }
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_RawStringEnumMirrored {}
+impl rust2dart::IntoIntoDart<mirror_RawStringEnumMirrored> for RawStringEnumMirrored {
+    fn into_into_dart(self) -> mirror_RawStringEnumMirrored {
+        mirror_RawStringEnumMirrored
+    }
+}
 impl support::IntoDart for RawStringItemStruct {
     fn into_dart(self) -> support::DartAbi {
         vec![self.r#type.into_into_dart().into_dart()].into_dart()
@@ -3806,6 +4431,28 @@ impl support::IntoDartExceptPrimitive for RawStringItemStruct {}
 impl rust2dart::IntoIntoDart<RawStringItemStruct> for RawStringItemStruct {
     fn into_into_dart(self) -> RawStringItemStruct {
         self
+    }
+}
+impl support::IntoDart for mirror_RawStringMirrored {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.0.value.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_RawStringMirrored {}
+impl rust2dart::IntoIntoDart<mirror_RawStringMirrored> for RawStringMirrored {
+    fn into_into_dart(self) -> mirror_RawStringMirrored {
+        mirror_RawStringMirrored
+    }
+}
+impl support::IntoDart for mirror_Sequences {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.0 .0.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for mirror_Sequences {}
+impl rust2dart::IntoIntoDart<mirror_Sequences> for Sequences {
+    fn into_into_dart(self) -> mirror_Sequences {
+        mirror_Sequences
     }
 }
 impl support::IntoDart for Speed {

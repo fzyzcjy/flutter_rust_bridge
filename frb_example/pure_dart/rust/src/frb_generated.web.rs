@@ -84,6 +84,50 @@ impl Wire2Api<Abc> for JsValue {
         }
     }
 }
+impl Wire2Api<ApplicationEnv> for JsValue {
+    fn wire2api(self) -> ApplicationEnv {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        ApplicationEnv {
+            vars: self_.get(0).wire2api(),
+        }
+    }
+}
+impl Wire2Api<ApplicationEnvVar> for JsValue {
+    fn wire2api(self) -> ApplicationEnvVar {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        ApplicationEnvVar(self_.get(0).wire2api(), self_.get(1).wire2api())
+    }
+}
+impl Wire2Api<ApplicationSettings> for JsValue {
+    fn wire2api(self) -> ApplicationSettings {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            5,
+            "Expected 5 elements, got {}",
+            self_.length()
+        );
+        ApplicationSettings {
+            name: self_.get(0).wire2api(),
+            version: self_.get(1).wire2api(),
+            mode: self_.get(2).wire2api(),
+            env: self_.get(3).wire2api(),
+            env_optional: self_.get(4).wire2api(),
+        }
+    }
+}
 impl Wire2Api<Attribute> for JsValue {
     fn wire2api(self) -> Attribute {
         let self_ = self.dyn_into::<JsArray>().unwrap();
@@ -423,6 +467,15 @@ impl Wire2Api<[i32; 2]> for Box<[i32]> {
         support::from_vec_to_array(vec)
     }
 }
+impl Wire2Api<Vec<ApplicationEnvVar>> for JsValue {
+    fn wire2api(self) -> Vec<ApplicationEnvVar> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
 impl Wire2Api<Vec<Attribute>> for JsValue {
     fn wire2api(self) -> Vec<Attribute> {
         self.dyn_into::<JsArray>()
@@ -647,6 +700,20 @@ impl Wire2Api<MySize> for JsValue {
         }
     }
 }
+impl Wire2Api<MyStruct> for JsValue {
+    fn wire2api(self) -> MyStruct {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        MyStruct {
+            content: self_.get(0).wire2api(),
+        }
+    }
+}
 impl Wire2Api<MyTreeNode> for JsValue {
     fn wire2api(self) -> MyTreeNode {
         let self_ = self.dyn_into::<JsArray>().unwrap();
@@ -689,6 +756,18 @@ impl Wire2Api<Note> for JsValue {
             day: self_.get(0).wire2api(),
             body: self_.get(1).wire2api(),
         }
+    }
+}
+impl Wire2Api<Numbers> for JsValue {
+    fn wire2api(self) -> Numbers {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        Numbers(self_.get(0).wire2api())
     }
 }
 impl Wire2Api<Option<String>> for Option<String> {
@@ -753,6 +832,18 @@ impl Wire2Api<(String, i32)> for JsValue {
             self_.length()
         );
         (self_.get(0).wire2api(), self_.get(1).wire2api())
+    }
+}
+impl Wire2Api<Sequences> for JsValue {
+    fn wire2api(self) -> Sequences {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        Sequences(self_.get(0).wire2api())
     }
 }
 impl Wire2Api<Speed> for JsValue {
@@ -1060,9 +1151,19 @@ impl Wire2Api<ZeroCopyBuffer<Vec<u8>>> for JsValue {
         ZeroCopyBuffer(self.wire2api())
     }
 }
+impl Wire2Api<ApplicationMode> for JsValue {
+    fn wire2api(self) -> ApplicationMode {
+        (self.unchecked_into_f64() as i32).wire2api()
+    }
+}
 impl Wire2Api<bool> for JsValue {
     fn wire2api(self) -> bool {
         self.is_truthy()
+    }
+}
+impl Wire2Api<Box<ApplicationEnv>> for JsValue {
+    fn wire2api(self) -> Box<ApplicationEnv> {
+        Box::new(self.wire2api())
     }
 }
 impl Wire2Api<Box<Blob>> for JsValue {
@@ -1237,6 +1338,11 @@ impl Wire2Api<Vec<u8>> for JsValue {
         self.unchecked_into::<js_sys::Uint8Array>().to_vec().into()
     }
 }
+impl Wire2Api<MyEnum> for JsValue {
+    fn wire2api(self) -> MyEnum {
+        (self.unchecked_into_f64() as i32).wire2api()
+    }
+}
 impl Wire2Api<[TestId; 4]> for JsValue {
     fn wire2api(self) -> [TestId; 4] {
         let vec: Vec<TestId> = self.wire2api();
@@ -1279,6 +1385,11 @@ impl Wire2Api<[u8; 8]> for JsValue {
     fn wire2api(self) -> [u8; 8] {
         let vec: Vec<u8> = self.wire2api();
         support::from_vec_to_array(vec)
+    }
+}
+impl Wire2Api<usize> for JsValue {
+    fn wire2api(self) -> usize {
+        self.unchecked_into_f64() as _
     }
 }
 impl Wire2Api<Weekdays> for JsValue {
@@ -1536,6 +1647,26 @@ pub fn wire_func_type_infallible_panic_twin_normal(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
+pub fn wire_call_new_module_system(port_: MessagePort) {
+    wire_call_new_module_system_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_call_old_module_system(port_: MessagePort) {
+    wire_call_old_module_system_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_use_imported_enum(port_: MessagePort, my_enum: i32) {
+    wire_use_imported_enum_impl(port_, my_enum)
+}
+
+#[wasm_bindgen]
+pub fn wire_use_imported_struct(port_: MessagePort, my_struct: JsValue) {
+    wire_use_imported_struct_impl(port_, my_struct)
+}
+
+#[wasm_bindgen]
 pub fn wire_func_macro_struct(port_: MessagePort, arg: JsValue) {
     wire_func_macro_struct_impl(port_, arg)
 }
@@ -1593,6 +1724,101 @@ pub fn wire_get_sum_array(port_: MessagePort, a: u32, b: u32, c: u32) {
 #[wasm_bindgen]
 pub fn wire_get_sum_struct(port_: MessagePort) {
     wire_get_sum_struct_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_app_settings_stream(port_: MessagePort) {
+    wire_app_settings_stream_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_app_settings_vec_stream(port_: MessagePort) {
+    wire_app_settings_vec_stream_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_first_number(port_: MessagePort, nums: JsValue) {
+    wire_first_number_impl(port_, nums)
+}
+
+#[wasm_bindgen]
+pub fn wire_first_sequence(port_: MessagePort, seqs: JsValue) {
+    wire_first_sequence_impl(port_, seqs)
+}
+
+#[wasm_bindgen]
+pub fn wire_get_app_settings(port_: MessagePort) {
+    wire_get_app_settings_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_get_fallible_app_settings(port_: MessagePort) {
+    wire_get_fallible_app_settings_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_get_message(port_: MessagePort) {
+    wire_get_message_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_is_app_embedded(port_: MessagePort, app_settings: JsValue) {
+    wire_is_app_embedded_impl(port_, app_settings)
+}
+
+#[wasm_bindgen]
+pub fn wire_mirror_struct_stream(port_: MessagePort) {
+    wire_mirror_struct_stream_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_mirror_tuple_stream(port_: MessagePort) {
+    wire_mirror_tuple_stream_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_repeat_number(port_: MessagePort, num: i32, times: usize) {
+    wire_repeat_number_impl(port_, num, times)
+}
+
+#[wasm_bindgen]
+pub fn wire_repeat_sequence(port_: MessagePort, seq: i32, times: usize) {
+    wire_repeat_sequence_impl(port_, seq, times)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_contains_mirrored_sub_struct(port_: MessagePort) {
+    wire_test_contains_mirrored_sub_struct_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_fallible_of_raw_string_mirrored(port_: MessagePort) {
+    wire_test_fallible_of_raw_string_mirrored_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_list_of_nested_enums_mirrored(port_: MessagePort) {
+    wire_test_list_of_nested_enums_mirrored_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_list_of_raw_nested_string_mirrored(port_: MessagePort) {
+    wire_test_list_of_raw_nested_string_mirrored_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_nested_raw_string_mirrored(port_: MessagePort) {
+    wire_test_nested_raw_string_mirrored_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_raw_string_enum_mirrored(port_: MessagePort, nested: bool) {
+    wire_test_raw_string_enum_mirrored_impl(port_, nested)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_raw_string_mirrored(port_: MessagePort) {
+    wire_test_raw_string_mirrored_impl(port_)
 }
 
 #[wasm_bindgen]

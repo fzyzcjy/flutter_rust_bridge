@@ -8,8 +8,10 @@ import 'api/dart_dynamic.dart';
 import 'api/enumeration.dart';
 import 'api/event_listener.dart';
 import 'api/exception.dart';
+import 'api/external_type_in_crate.dart';
 import 'api/inside_macro.dart';
 import 'api/method.dart';
+import 'api/mirror.dart';
 import 'api/misc_example.dart';
 import 'api/misc_type.dart';
 import 'api/newtype_pattern.dart';
@@ -33,6 +35,8 @@ import 'api/structure.dart';
 import 'api/tuple.dart';
 import 'api/type_alias.dart';
 import 'api/uuid_type.dart';
+import 'auxiliary/new_module_system/sub_module.dart';
+import 'auxiliary/old_module_system/sub_module.dart';
 import 'auxiliary/sample_types.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -196,6 +200,14 @@ abstract class RustLibApi extends BaseApi {
 
   Future<int> funcTypeInfalliblePanicTwinNormal({dynamic hint});
 
+  Future<NewSimpleStruct> callNewModuleSystem({dynamic hint});
+
+  Future<OldSimpleStruct> callOldModuleSystem({dynamic hint});
+
+  Future<bool> useImportedEnum({required MyEnum myEnum, dynamic hint});
+
+  Future<bool> useImportedStruct({required MyStruct myStruct, dynamic hint});
+
   Future<MacroStruct> funcMacroStruct({required MacroStruct arg, dynamic hint});
 
   Future<String> concatenateWithConcatenate(
@@ -228,6 +240,53 @@ abstract class RustLibApi extends BaseApi {
       {required int a, required int b, required int c, dynamic hint});
 
   Future<SumWith> getSumStruct({dynamic hint});
+
+  Stream<ApplicationSettings> appSettingsStream({dynamic hint});
+
+  Stream<List<ApplicationSettings>> appSettingsVecStream({dynamic hint});
+
+  Future<int?> firstNumber({required Numbers nums, dynamic hint});
+
+  Future<int?> firstSequence({required Sequences seqs, dynamic hint});
+
+  Future<ApplicationSettings> getAppSettings({dynamic hint});
+
+  Future<ApplicationSettings> getFallibleAppSettings({dynamic hint});
+
+  Future<ApplicationMessage> getMessage({dynamic hint});
+
+  Future<bool> isAppEmbedded(
+      {required ApplicationSettings appSettings, dynamic hint});
+
+  Stream<MirrorStruct> mirrorStructStream({dynamic hint});
+
+  Stream<(ApplicationSettings, RawStringEnumMirrored)> mirrorTupleStream(
+      {dynamic hint});
+
+  Future<Numbers> repeatNumber(
+      {required int num, required int times, dynamic hint});
+
+  Future<Sequences> repeatSequence(
+      {required int seq, required int times, dynamic hint});
+
+  Future<ContainsMirroredSubStruct> testContainsMirroredSubStruct(
+      {dynamic hint});
+
+  Future<List<RawStringMirrored>> testFallibleOfRawStringMirrored(
+      {dynamic hint});
+
+  Future<List<RawStringEnumMirrored>> testListOfNestedEnumsMirrored(
+      {dynamic hint});
+
+  Future<ListOfNestedRawStringMirrored> testListOfRawNestedStringMirrored(
+      {dynamic hint});
+
+  Future<NestedRawStringMirrored> testNestedRawStringMirrored({dynamic hint});
+
+  Future<RawStringEnumMirrored> testRawStringEnumMirrored(
+      {required bool nested, dynamic hint});
+
+  Future<RawStringMirrored> testRawStringMirrored({dynamic hint});
 
   Future<BigBuffers> handleBigBuffers({dynamic hint});
 
@@ -1556,6 +1615,80 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<NewSimpleStruct> callNewModuleSystem({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_call_new_module_system(port_),
+      parseSuccessData: _wire2api_new_simple_struct,
+      parseErrorData: null,
+      constMeta: kCallNewModuleSystemConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCallNewModuleSystemConstMeta => const TaskConstMeta(
+        debugName: "call_new_module_system",
+        argNames: [],
+      );
+
+  @override
+  Future<OldSimpleStruct> callOldModuleSystem({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_call_old_module_system(port_),
+      parseSuccessData: _wire2api_old_simple_struct,
+      parseErrorData: null,
+      constMeta: kCallOldModuleSystemConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kCallOldModuleSystemConstMeta => const TaskConstMeta(
+        debugName: "call_old_module_system",
+        argNames: [],
+      );
+
+  @override
+  Future<bool> useImportedEnum({required MyEnum myEnum, dynamic hint}) {
+    var arg0 = api2wire_my_enum(myEnum);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_use_imported_enum(port_, arg0),
+      parseSuccessData: _wire2api_bool,
+      parseErrorData: null,
+      constMeta: kUseImportedEnumConstMeta,
+      argValues: [myEnum],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kUseImportedEnumConstMeta => const TaskConstMeta(
+        debugName: "use_imported_enum",
+        argNames: ["myEnum"],
+      );
+
+  @override
+  Future<bool> useImportedStruct({required MyStruct myStruct, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_my_struct(myStruct);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_use_imported_struct(port_, arg0),
+      parseSuccessData: _wire2api_bool,
+      parseErrorData: null,
+      constMeta: kUseImportedStructConstMeta,
+      argValues: [myStruct],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kUseImportedStructConstMeta => const TaskConstMeta(
+        debugName: "use_imported_struct",
+        argNames: ["myStruct"],
+      );
+
+  @override
   Future<MacroStruct> funcMacroStruct(
       {required MacroStruct arg, dynamic hint}) {
     var arg0 = api2wire_box_autoadd_macro_struct(arg);
@@ -1796,6 +1929,372 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kGetSumStructConstMeta => const TaskConstMeta(
         debugName: "get_sum_struct",
+        argNames: [],
+      );
+
+  @override
+  Stream<ApplicationSettings> appSettingsStream({dynamic hint}) {
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) => wire.wire_app_settings_stream(port_),
+      parseSuccessData: _wire2api_application_settings,
+      parseErrorData: null,
+      constMeta: kAppSettingsStreamConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kAppSettingsStreamConstMeta => const TaskConstMeta(
+        debugName: "app_settings_stream",
+        argNames: [],
+      );
+
+  @override
+  Stream<List<ApplicationSettings>> appSettingsVecStream({dynamic hint}) {
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) => wire.wire_app_settings_vec_stream(port_),
+      parseSuccessData: _wire2api_list_application_settings,
+      parseErrorData: null,
+      constMeta: kAppSettingsVecStreamConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kAppSettingsVecStreamConstMeta => const TaskConstMeta(
+        debugName: "app_settings_vec_stream",
+        argNames: [],
+      );
+
+  @override
+  Future<int?> firstNumber({required Numbers nums, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_numbers(nums);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_first_number(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_i_32,
+      parseErrorData: null,
+      constMeta: kFirstNumberConstMeta,
+      argValues: [nums],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFirstNumberConstMeta => const TaskConstMeta(
+        debugName: "first_number",
+        argNames: ["nums"],
+      );
+
+  @override
+  Future<int?> firstSequence({required Sequences seqs, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_sequences(seqs);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_first_sequence(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_i_32,
+      parseErrorData: null,
+      constMeta: kFirstSequenceConstMeta,
+      argValues: [seqs],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFirstSequenceConstMeta => const TaskConstMeta(
+        debugName: "first_sequence",
+        argNames: ["seqs"],
+      );
+
+  @override
+  Future<ApplicationSettings> getAppSettings({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_get_app_settings(port_),
+      parseSuccessData: _wire2api_application_settings,
+      parseErrorData: null,
+      constMeta: kGetAppSettingsConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kGetAppSettingsConstMeta => const TaskConstMeta(
+        debugName: "get_app_settings",
+        argNames: [],
+      );
+
+  @override
+  Future<ApplicationSettings> getFallibleAppSettings({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_get_fallible_app_settings(port_),
+      parseSuccessData: _wire2api_application_settings,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kGetFallibleAppSettingsConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kGetFallibleAppSettingsConstMeta => const TaskConstMeta(
+        debugName: "get_fallible_app_settings",
+        argNames: [],
+      );
+
+  @override
+  Future<ApplicationMessage> getMessage({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_get_message(port_),
+      parseSuccessData: _wire2api_application_message,
+      parseErrorData: null,
+      constMeta: kGetMessageConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kGetMessageConstMeta => const TaskConstMeta(
+        debugName: "get_message",
+        argNames: [],
+      );
+
+  @override
+  Future<bool> isAppEmbedded(
+      {required ApplicationSettings appSettings, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_application_settings(appSettings);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_is_app_embedded(port_, arg0),
+      parseSuccessData: _wire2api_bool,
+      parseErrorData: null,
+      constMeta: kIsAppEmbeddedConstMeta,
+      argValues: [appSettings],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kIsAppEmbeddedConstMeta => const TaskConstMeta(
+        debugName: "is_app_embedded",
+        argNames: ["appSettings"],
+      );
+
+  @override
+  Stream<MirrorStruct> mirrorStructStream({dynamic hint}) {
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) => wire.wire_mirror_struct_stream(port_),
+      parseSuccessData: _wire2api_mirror_struct,
+      parseErrorData: null,
+      constMeta: kMirrorStructStreamConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kMirrorStructStreamConstMeta => const TaskConstMeta(
+        debugName: "mirror_struct_stream",
+        argNames: [],
+      );
+
+  @override
+  Stream<(ApplicationSettings, RawStringEnumMirrored)> mirrorTupleStream(
+      {dynamic hint}) {
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) => wire.wire_mirror_tuple_stream(port_),
+      parseSuccessData:
+          _wire2api_record_application_settings_raw_string_enum_mirrored,
+      parseErrorData: null,
+      constMeta: kMirrorTupleStreamConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kMirrorTupleStreamConstMeta => const TaskConstMeta(
+        debugName: "mirror_tuple_stream",
+        argNames: [],
+      );
+
+  @override
+  Future<Numbers> repeatNumber(
+      {required int num, required int times, dynamic hint}) {
+    var arg0 = api2wire_i_32(num);
+    var arg1 = api2wire_usize(times);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_repeat_number(port_, arg0, arg1),
+      parseSuccessData: _wire2api_numbers,
+      parseErrorData: null,
+      constMeta: kRepeatNumberConstMeta,
+      argValues: [num, times],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRepeatNumberConstMeta => const TaskConstMeta(
+        debugName: "repeat_number",
+        argNames: ["num", "times"],
+      );
+
+  @override
+  Future<Sequences> repeatSequence(
+      {required int seq, required int times, dynamic hint}) {
+    var arg0 = api2wire_i_32(seq);
+    var arg1 = api2wire_usize(times);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_repeat_sequence(port_, arg0, arg1),
+      parseSuccessData: _wire2api_sequences,
+      parseErrorData: null,
+      constMeta: kRepeatSequenceConstMeta,
+      argValues: [seq, times],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kRepeatSequenceConstMeta => const TaskConstMeta(
+        debugName: "repeat_sequence",
+        argNames: ["seq", "times"],
+      );
+
+  @override
+  Future<ContainsMirroredSubStruct> testContainsMirroredSubStruct(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_test_contains_mirrored_sub_struct(port_),
+      parseSuccessData: _wire2api_contains_mirrored_sub_struct,
+      parseErrorData: null,
+      constMeta: kTestContainsMirroredSubStructConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestContainsMirroredSubStructConstMeta =>
+      const TaskConstMeta(
+        debugName: "test_contains_mirrored_sub_struct",
+        argNames: [],
+      );
+
+  @override
+  Future<List<RawStringMirrored>> testFallibleOfRawStringMirrored(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_test_fallible_of_raw_string_mirrored(port_),
+      parseSuccessData: _wire2api_list_raw_string_mirrored,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kTestFallibleOfRawStringMirroredConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestFallibleOfRawStringMirroredConstMeta =>
+      const TaskConstMeta(
+        debugName: "test_fallible_of_raw_string_mirrored",
+        argNames: [],
+      );
+
+  @override
+  Future<List<RawStringEnumMirrored>> testListOfNestedEnumsMirrored(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_test_list_of_nested_enums_mirrored(port_),
+      parseSuccessData: _wire2api_list_raw_string_enum_mirrored,
+      parseErrorData: null,
+      constMeta: kTestListOfNestedEnumsMirroredConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestListOfNestedEnumsMirroredConstMeta =>
+      const TaskConstMeta(
+        debugName: "test_list_of_nested_enums_mirrored",
+        argNames: [],
+      );
+
+  @override
+  Future<ListOfNestedRawStringMirrored> testListOfRawNestedStringMirrored(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_test_list_of_raw_nested_string_mirrored(port_),
+      parseSuccessData: _wire2api_list_of_nested_raw_string_mirrored,
+      parseErrorData: null,
+      constMeta: kTestListOfRawNestedStringMirroredConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestListOfRawNestedStringMirroredConstMeta =>
+      const TaskConstMeta(
+        debugName: "test_list_of_raw_nested_string_mirrored",
+        argNames: [],
+      );
+
+  @override
+  Future<NestedRawStringMirrored> testNestedRawStringMirrored({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_test_nested_raw_string_mirrored(port_),
+      parseSuccessData: _wire2api_nested_raw_string_mirrored,
+      parseErrorData: null,
+      constMeta: kTestNestedRawStringMirroredConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestNestedRawStringMirroredConstMeta =>
+      const TaskConstMeta(
+        debugName: "test_nested_raw_string_mirrored",
+        argNames: [],
+      );
+
+  @override
+  Future<RawStringEnumMirrored> testRawStringEnumMirrored(
+      {required bool nested, dynamic hint}) {
+    var arg0 = api2wire_bool(nested);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_test_raw_string_enum_mirrored(port_, arg0),
+      parseSuccessData: _wire2api_raw_string_enum_mirrored,
+      parseErrorData: null,
+      constMeta: kTestRawStringEnumMirroredConstMeta,
+      argValues: [nested],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestRawStringEnumMirroredConstMeta => const TaskConstMeta(
+        debugName: "test_raw_string_enum_mirrored",
+        argNames: ["nested"],
+      );
+
+  @override
+  Future<RawStringMirrored> testRawStringMirrored({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_test_raw_string_mirrored(port_),
+      parseSuccessData: _wire2api_raw_string_mirrored,
+      parseErrorData: null,
+      constMeta: kTestRawStringMirroredConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestRawStringMirroredConstMeta => const TaskConstMeta(
+        debugName: "test_raw_string_mirrored",
         argNames: [],
       );
 
@@ -4584,6 +5083,69 @@ Abc _wire2api_abc(dynamic raw) {
   }
 }
 
+Another _wire2api_another(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return Another(
+    a: _wire2api_String(arr[0]),
+  );
+}
+
+ApplicationEnv _wire2api_application_env(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return ApplicationEnv(
+    vars: _wire2api_list_application_env_var(arr[0]),
+  );
+}
+
+ApplicationEnvVar _wire2api_application_env_var(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2)
+    throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return ApplicationEnvVar(
+    field0: _wire2api_String(arr[0]),
+    field1: _wire2api_bool(arr[1]),
+  );
+}
+
+ApplicationMessage _wire2api_application_message(dynamic raw) {
+  switch (raw[0]) {
+    case 0:
+      return ApplicationMessage_DisplayMessage(
+        _wire2api_String(raw[1]),
+      );
+    case 1:
+      return ApplicationMessage_RenderPixel(
+        x: _wire2api_i_32(raw[1]),
+        y: _wire2api_i_32(raw[2]),
+      );
+    case 2:
+      return ApplicationMessage_Exit();
+    default:
+      throw Exception("unreachable");
+  }
+}
+
+ApplicationMode _wire2api_application_mode(dynamic raw) {
+  return ApplicationMode.values[raw as int];
+}
+
+ApplicationSettings _wire2api_application_settings(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 5)
+    throw Exception('unexpected arr length: expect 5 but see ${arr.length}');
+  return ApplicationSettings(
+    name: _wire2api_String(arr[0]),
+    version: _wire2api_String(arr[1]),
+    mode: _wire2api_application_mode(arr[2]),
+    env: _wire2api_box_application_env(arr[3]),
+    envOptional: _wire2api_opt_box_autoadd_application_env(arr[4]),
+  );
+}
+
 Attribute _wire2api_attribute(dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 2)
@@ -4626,6 +5188,10 @@ bool _wire2api_bool(dynamic raw) {
   return raw as bool;
 }
 
+ApplicationEnv _wire2api_box_application_env(dynamic raw) {
+  return _wire2api_application_env(raw);
+}
+
 Duration _wire2api_box_autoadd_Chrono_Duration(dynamic raw) {
   return _wire2api_Chrono_Duration(raw);
 }
@@ -4640,6 +5206,10 @@ DateTime _wire2api_box_autoadd_Chrono_Utc(dynamic raw) {
 
 A _wire2api_box_autoadd_a(dynamic raw) {
   return _wire2api_a(raw);
+}
+
+ApplicationEnv _wire2api_box_autoadd_application_env(dynamic raw) {
+  return _wire2api_application_env(raw);
 }
 
 Attribute _wire2api_box_autoadd_attribute(dynamic raw) {
@@ -4700,12 +5270,26 @@ int _wire2api_box_autoadd_i_8(dynamic raw) {
   return raw as int;
 }
 
+ListOfNestedRawStringMirrored
+    _wire2api_box_autoadd_list_of_nested_raw_string_mirrored(dynamic raw) {
+  return _wire2api_list_of_nested_raw_string_mirrored(raw);
+}
+
 Measure _wire2api_box_autoadd_measure(dynamic raw) {
   return _wire2api_measure(raw);
 }
 
+NestedRawStringMirrored _wire2api_box_autoadd_nested_raw_string_mirrored(
+    dynamic raw) {
+  return _wire2api_nested_raw_string_mirrored(raw);
+}
+
 NewTypeInt _wire2api_box_autoadd_new_type_int(dynamic raw) {
   return _wire2api_new_type_int(raw);
+}
+
+RawStringMirrored _wire2api_box_autoadd_raw_string_mirrored(dynamic raw) {
+  return _wire2api_raw_string_mirrored(raw);
 }
 
 int _wire2api_box_autoadd_u_16(dynamic raw) {
@@ -4759,6 +5343,16 @@ ConcatenateWith _wire2api_concatenate_with(dynamic raw) {
     throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
   return ConcatenateWith(
     a: _wire2api_String(arr[0]),
+  );
+}
+
+ContainsMirroredSubStruct _wire2api_contains_mirrored_sub_struct(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2)
+    throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return ContainsMirroredSubStruct(
+    test: _wire2api_raw_string_mirrored(arr[0]),
+    test2: _wire2api_another(arr[1]),
   );
 }
 
@@ -5095,6 +5689,14 @@ int _wire2api_i_8(dynamic raw) {
   return raw as int;
 }
 
+List<ApplicationEnvVar> _wire2api_list_application_env_var(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_application_env_var).toList();
+}
+
+List<ApplicationSettings> _wire2api_list_application_settings(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_application_settings).toList();
+}
+
 List<Attribute> _wire2api_list_attribute(dynamic raw) {
   return (raw as List<dynamic>).map(_wire2api_attribute).toList();
 }
@@ -5107,12 +5709,33 @@ List<Element> _wire2api_list_element(dynamic raw) {
   return (raw as List<dynamic>).map(_wire2api_element).toList();
 }
 
+List<MyEnum> _wire2api_list_my_enum(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_my_enum).toList();
+}
+
 List<MySize> _wire2api_list_my_size(dynamic raw) {
   return (raw as List<dynamic>).map(_wire2api_my_size).toList();
 }
 
 List<MyTreeNode> _wire2api_list_my_tree_node(dynamic raw) {
   return (raw as List<dynamic>).map(_wire2api_my_tree_node).toList();
+}
+
+List<NestedRawStringMirrored> _wire2api_list_nested_raw_string_mirrored(
+    dynamic raw) {
+  return (raw as List<dynamic>)
+      .map(_wire2api_nested_raw_string_mirrored)
+      .toList();
+}
+
+ListOfNestedRawStringMirrored _wire2api_list_of_nested_raw_string_mirrored(
+    dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return ListOfNestedRawStringMirrored(
+    raw: _wire2api_list_nested_raw_string_mirrored(arr[0]),
+  );
 }
 
 List<String?> _wire2api_list_opt_String(dynamic raw) {
@@ -5179,6 +5802,17 @@ Uint8List _wire2api_list_prim_u_8(dynamic raw) {
   return raw as Uint8List;
 }
 
+List<RawStringEnumMirrored> _wire2api_list_raw_string_enum_mirrored(
+    dynamic raw) {
+  return (raw as List<dynamic>)
+      .map(_wire2api_raw_string_enum_mirrored)
+      .toList();
+}
+
+List<RawStringMirrored> _wire2api_list_raw_string_mirrored(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_raw_string_mirrored).toList();
+}
+
 List<SumWith> _wire2api_list_sum_with(dynamic raw) {
   return (raw as List<dynamic>).map(_wire2api_sum_with).toList();
 }
@@ -5231,6 +5865,18 @@ MessageId _wire2api_message_id(dynamic raw) {
     throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
   return MessageId(
     field0: _wire2api_u_8_array_32(arr[0]),
+  );
+}
+
+MirrorStruct _wire2api_mirror_struct(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 4)
+    throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+  return MirrorStruct(
+    a: _wire2api_application_settings(arr[0]),
+    b: _wire2api_my_struct(arr[1]),
+    c: _wire2api_list_my_enum(arr[2]),
+    d: _wire2api_list_application_settings(arr[3]),
   );
 }
 
@@ -5301,12 +5947,48 @@ MyTreeNode _wire2api_my_tree_node(dynamic raw) {
   );
 }
 
+NestedRawStringMirrored _wire2api_nested_raw_string_mirrored(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return NestedRawStringMirrored(
+    raw: _wire2api_raw_string_mirrored(arr[0]),
+  );
+}
+
+NewSimpleStruct _wire2api_new_simple_struct(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return NewSimpleStruct(
+    field: _wire2api_i_32(arr[0]),
+  );
+}
+
 NewTypeInt _wire2api_new_type_int(dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 1)
     throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
   return NewTypeInt(
     field0: _wire2api_i_64(arr[0]),
+  );
+}
+
+Numbers _wire2api_numbers(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return Numbers(
+    field0: _wire2api_list_prim_i_32(arr[0]),
+  );
+}
+
+OldSimpleStruct _wire2api_old_simple_struct(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return OldSimpleStruct(
+    field: _wire2api_i_32(arr[0]),
   );
 }
 
@@ -5328,6 +6010,10 @@ DateTime? _wire2api_opt_box_autoadd_Chrono_Naive(dynamic raw) {
 
 DateTime? _wire2api_opt_box_autoadd_Chrono_Utc(dynamic raw) {
   return raw == null ? null : _wire2api_box_autoadd_Chrono_Utc(raw);
+}
+
+ApplicationEnv? _wire2api_opt_box_autoadd_application_env(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_application_env(raw);
 }
 
 bool? _wire2api_opt_box_autoadd_bool(dynamic raw) {
@@ -5452,12 +6138,54 @@ PointArray2 _wire2api_point_array_2(dynamic raw) {
   return PointArray2((raw as List<dynamic>).map(_wire2api_point).toList());
 }
 
+RawStringEnumMirrored _wire2api_raw_string_enum_mirrored(dynamic raw) {
+  switch (raw[0]) {
+    case 0:
+      return RawStringEnumMirrored_Raw(
+        _wire2api_box_autoadd_raw_string_mirrored(raw[1]),
+      );
+    case 1:
+      return RawStringEnumMirrored_Nested(
+        _wire2api_box_autoadd_nested_raw_string_mirrored(raw[1]),
+      );
+    case 2:
+      return RawStringEnumMirrored_ListOfNested(
+        _wire2api_box_autoadd_list_of_nested_raw_string_mirrored(raw[1]),
+      );
+    default:
+      throw Exception("unreachable");
+  }
+}
+
 RawStringItemStruct _wire2api_raw_string_item_struct(dynamic raw) {
   final arr = raw as List<dynamic>;
   if (arr.length != 1)
     throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
   return RawStringItemStruct(
     type: _wire2api_String(arr[0]),
+  );
+}
+
+RawStringMirrored _wire2api_raw_string_mirrored(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return RawStringMirrored(
+    value: _wire2api_String(arr[0]),
+  );
+}
+
+(
+  ApplicationSettings,
+  RawStringEnumMirrored
+) _wire2api_record_application_settings_raw_string_enum_mirrored(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2) {
+    throw Exception('Expected 2 elements, got ${arr.length}');
+  }
+  return (
+    _wire2api_application_settings(arr[0]),
+    _wire2api_raw_string_enum_mirrored(arr[1]),
   );
 }
 
@@ -5469,6 +6197,15 @@ RawStringItemStruct _wire2api_raw_string_item_struct(dynamic raw) {
   return (
     _wire2api_String(arr[0]),
     _wire2api_i_32(arr[1]),
+  );
+}
+
+Sequences _wire2api_sequences(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return Sequences(
+    field0: _wire2api_list_prim_i_32(arr[0]),
   );
 }
 
@@ -5695,6 +6432,10 @@ Weekdays _wire2api_weekdays(dynamic raw) {
 
 // Section: api2wire_funcs
 
+int api2wire_application_mode(ApplicationMode raw) {
+  return api2wire_i_32(raw.index);
+}
+
 bool api2wire_bool(bool raw) {
   return raw;
 }
@@ -5727,6 +6468,10 @@ int api2wire_i_8(int raw) {
   return raw;
 }
 
+int api2wire_my_enum(MyEnum raw) {
+  return api2wire_i_32(raw.index);
+}
+
 int api2wire_u_16(int raw) {
   return raw;
 }
@@ -5736,6 +6481,10 @@ int api2wire_u_32(int raw) {
 }
 
 int api2wire_u_8(int raw) {
+  return raw;
+}
+
+int api2wire_usize(int raw) {
   return raw;
 }
 
