@@ -4,6 +4,7 @@ use crate::codegen::generator::api_dart::spec_generator::class::field::{
 use crate::codegen::generator::api_dart::spec_generator::misc::{
     generate_dart_comments, generate_dart_maybe_implements_exception,
 };
+use crate::codegen::ir::field::IrField;
 use crate::codegen::ir::ty::structure::IrStruct;
 use crate::library::codegen::generator::api_dart::spec_generator::base::*;
 use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
@@ -17,7 +18,7 @@ impl<'a> StructRefApiDartGenerator<'a> {
         metadata: &str,
         methods: &[String],
     ) -> String {
-        let field_declarations = self.generate_field_declarations(src, methods);
+        let field_declarations = self.generate_field_declarations(src);
         let constructor_params = self.generate_mode_non_freezed_constructor_params(src, methods);
 
         let const_capable = src.fields.iter().all(|field| field.is_final);
@@ -26,6 +27,9 @@ impl<'a> StructRefApiDartGenerator<'a> {
         let implements_exception = generate_dart_maybe_implements_exception(self.ir.is_exception);
         let methods_str = methods.join("\n");
 
+        let hashcode = generate_hashcode(&src.fields);
+        let equals = generate_equals(&src.fields, name_str);
+
         format!(
             "{comments}{metadata}class {name_str} {implements_exception} {{
                 {field_declarations}
@@ -33,11 +37,15 @@ impl<'a> StructRefApiDartGenerator<'a> {
                 {maybe_const}{name_str}({constructor_params});
 
                 {methods_str}
+
+                {hashcode}
+
+                {equals}
             }}"
         )
     }
 
-    fn generate_field_declarations(&self, src: &IrStruct, _methods: &[String]) -> String {
+    fn generate_field_declarations(&self, src: &IrStruct) -> String {
         let field_declarations = src
             .fields
             .iter()
@@ -80,4 +88,40 @@ impl<'a> StructRefApiDartGenerator<'a> {
 
         ans
     }
+}
+
+fn generate_hashcode(fields: &[IrField]) -> String {
+    let body = if fields.is_empty() {
+        "0".to_owned()
+    } else {
+        fields
+            .iter()
+            .map(|x| format!("{name}.hashCode", name = x.name))
+            .join("^")
+    };
+
+    format!(
+        "
+        @override
+        int get hashCode => {body};
+        "
+    )
+}
+
+fn generate_equals(fields: &[IrField], struct_name: &str) -> String {
+    let cmp = fields
+        .iter()
+        .map(|x| format!("&& {name} == other.{name}", name = x.name))
+        .join("");
+
+    format!(
+        "
+        @override
+        bool operator ==(Object other) =>
+            identical(this, other) ||
+            other is {struct_name} &&
+                runtimeType == other.runtimeType
+                {cmp};
+        "
+    )
 }
