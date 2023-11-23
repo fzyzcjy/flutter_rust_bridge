@@ -122,6 +122,7 @@ impl IrTypeTrait for IrTypeDelegate {
     fn self_namespace(&self) -> Option<Namespace> {
         match self {
             IrTypeDelegate::PrimitiveEnum(inner) => inner.ir.self_namespace(),
+            IrTypeDelegate::Array(inner) => Some(inner.namespace.clone()),
             _ => None,
         }
     }
