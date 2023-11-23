@@ -9,5 +9,4 @@ pub mod primitive_list;
 pub mod primitive_list_twin_sync;
 pub mod primitive_twin_sync;
 pub mod simple_twin_sync;
-pub mod stream_twin_sync;
 pub mod structure_twin_sync;
