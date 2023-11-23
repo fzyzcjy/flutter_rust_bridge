@@ -6,6 +6,7 @@ use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDart
 use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
+use crate::utils::basic_code::DartBasicCode;
 use crate::utils::path_utils::path_to_string;
 use anyhow::Context;
 use itertools::Itertools;
@@ -73,14 +74,17 @@ fn generate_boilerplate(
 
     Ok(Acc {
         common: vec![WireDartOutputCode {
-            file_top: file_top.clone(),
-            import: format!(
-                "
-                {universal_imports}
-                import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-                import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart.dart';
-                "
-            ),
+            basic: DartBasicCode {
+                file_top: file_top.clone(),
+                import: format!(
+                    "
+                    {universal_imports}
+                    import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+                    import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart.dart';
+                    "
+                ),
+                ..Default::default()
+            },
             body_top: format!(
                 r#"
                 /// Main entrypoint of the Rust API
@@ -121,32 +125,38 @@ fn generate_boilerplate(
             ..Default::default()
         }],
         io: vec![WireDartOutputCode {
-            file_top: file_top.clone(),
-            import: format!(
-                "
-                {universal_imports}
-                import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
-                import 'frb_generated.dart';
-                "
-            ),
+            basic: DartBasicCode {
+                file_top: file_top.clone(),
+                import: format!(
+                    "
+                    {universal_imports}
+                    import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
+                    import 'frb_generated.dart';
+                    "
+                ),
+                ..Default::default()
+            },
             ..Default::default()
         }],
         wasm: vec![WireDartOutputCode {
-            file_top: file_top.clone(),
-            import: format!(
-                "
-                {universal_imports}
-                import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
-                import 'frb_generated.dart';
-                "
-            ),
-            body: format!(
-                r#"
-                class {wire_class_name} extends BaseWire {{
-                  // TODO
-                }}
-                "#
-            ),
+            basic: DartBasicCode {
+                file_top: file_top.clone(),
+                import: format!(
+                    "
+                    {universal_imports}
+                    import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_web.dart';
+                    import 'frb_generated.dart';
+                    "
+                    ),
+                body: format!(
+                    r#"
+                    class {wire_class_name} extends BaseWire {{
+                      // TODO
+                    }}
+                    "#
+                ),
+                ..Default::default()
+            },
             ..Default::default()
         }],
     })

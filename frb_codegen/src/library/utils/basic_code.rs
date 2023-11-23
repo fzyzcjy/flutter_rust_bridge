@@ -1,4 +1,5 @@
 use serde::Serialize;
+use std::ops::AddAssign;
 
 pub(crate) trait BasicCode {
     fn body(&self) -> &str;
@@ -62,5 +63,15 @@ impl From<String> for DartBasicCode {
             body,
             ..Default::default()
         }
+    }
+}
+
+impl AddAssign for DartBasicCode {
+    #[inline]
+    fn add_assign(&mut self, rhs: Self) {
+        self.file_top += &rhs.file_top;
+        self.import += &rhs.import;
+        self.part += &rhs.part;
+        self.body += &rhs.body;
     }
 }
