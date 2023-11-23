@@ -18,14 +18,6 @@ pub(super) fn generate(
 ) -> anyhow::Result<ApiDartOutputText> {
     let ApiDartOutputSpec { funcs, classes, .. } = spec;
 
-    let grouped_funcs = funcs.iter().into_group_map_by(|x| x.namespace.clone());
-    let grouped_classes = classes.iter().into_group_map_by(|x| x.namespace.clone());
-
-    let namespaces = grouped_funcs
-        .keys()
-        .chain(grouped_classes.keys())
-        .collect::<HashSet<_>>();
-
     let path_texts = PathTexts(
         namespaces
             .iter()
