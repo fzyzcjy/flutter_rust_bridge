@@ -65,8 +65,6 @@ fn generate_end_api_text(
         },
     };
 
-    header += item.boilerplate_header.clone();
-
     let header = header.all_code();
 
     format!(

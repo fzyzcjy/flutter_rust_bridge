@@ -29,7 +29,6 @@ pub(crate) struct ApiDartOutputSpec {
 
 #[derive(Serialize)]
 pub(crate) struct ApiDartOutputSpecItem {
-    pub boilerplate_header: DartBasicHeaderCode,
     pub funcs: Vec<ApiDartGeneratedFunction>,
     pub classes: Vec<ApiDartGeneratedClass>,
     pub needs_freezed: bool,
@@ -96,6 +95,7 @@ fn generate_item(
     let needs_freezed = classes.iter().any(|class| class.needs_freezed);
 
     ApiDartOutputSpecItem {
+        boilerplate_header: generate_boilerplate_header(needs_freezed),
         funcs,
         classes,
         needs_freezed,
