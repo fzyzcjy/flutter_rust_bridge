@@ -37,6 +37,7 @@ mod tests {
     use crate::codegen::config::internal_config::InternalConfig;
     use crate::codegen::dumper::Dumper;
     use crate::codegen::generator::api_dart::generate;
+    use crate::codegen::parser::reader::CachedRustReader;
     use crate::codegen::{parser, Config};
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::test_utils::{get_test_fixture_dir, text_golden_test};
@@ -56,7 +57,12 @@ mod tests {
 
         let config = Config::from_files_auto()?;
         let internal_config = InternalConfig::parse(&config)?;
-        let ir_pack = parser::parse(&internal_config.parser, &Dumper(&Default::default()))?;
+        let mut cached_rust_reader = CachedRustReader::default();
+        let ir_pack = parser::parse(
+            &internal_config.parser,
+            &mut cached_rust_reader,
+            &Dumper(&Default::default()),
+        )?;
         let actual = generate(
             &ir_pack,
             &internal_config.generator.api_dart.into(),

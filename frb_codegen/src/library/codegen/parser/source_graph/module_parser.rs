@@ -1,6 +1,6 @@
 use crate::codegen::dumper::Dumper;
 use crate::codegen::parser::attribute_parser::FrbAttributes;
-use crate::codegen::parser::reader::read_rust_file;
+use crate::codegen::parser::reader::CachedRustReader;
 use crate::codegen::parser::source_graph::modules::{
     Enum, Module, ModuleInfo, ModuleScope, ModuleSource, Struct, StructOrEnum, TypeAlias,
     Visibility,
@@ -21,7 +21,12 @@ impl Module {
     // - When import parsing is enabled:
     //     - Import renames (use a::b as c) - these are silently ignored
     //     - Imports that start with two colons (use ::a::b) - these are also silently ignored
-    pub(crate) fn parse(info: ModuleInfo, dumper: &Dumper) -> anyhow::Result<Self> {
+
+    pub(crate) fn parse(
+        info: ModuleInfo,
+        cached_rust_reader: &mut CachedRustReader,
+        dumper: &Dumper,
+    ) -> anyhow::Result<Self> {
         debug!("parse START info={info:?}");
 
         let mut scope_modules = Vec::new();
@@ -46,7 +51,12 @@ impl Module {
                     scope_types.extend(parse_syn_item_type(item_type));
                 }
                 syn::Item::Mod(item_mod) => {
-                    scope_modules.extend(parse_syn_item_mod(&info, &item_mod, dumper)?);
+                    scope_modules.extend(parse_syn_item_mod(
+                        &info,
+                        &item_mod,
+                        cached_rust_reader,
+                        dumper,
+                    )?);
                 }
                 _ => {}
             }
@@ -125,6 +135,7 @@ fn parse_syn_item_type(item_type: &ItemType) -> Option<TypeAlias> {
 fn parse_syn_item_mod(
     info: &ModuleInfo,
     item_mod: &ItemMod,
+    cached_rust_reader: &mut CachedRustReader,
     dumper: &Dumper,
 ) -> anyhow::Result<Option<Module>> {
     let ident = item_mod.ident.clone();
@@ -138,10 +149,22 @@ fn parse_syn_item_mod(
     debug!("parse_syn_item_mod module_path={module_path:?}");
 
     Ok(match &item_mod.content {
-        Some(content) => {
-            parse_syn_item_mod_contentful(info, item_mod, module_path, content, dumper)?
-        }
-        None => parse_syn_item_mod_contentless(&info, &item_mod, module_path, ident, dumper)?,
+        Some(content) => parse_syn_item_mod_contentful(
+            info,
+            item_mod,
+            module_path,
+            content,
+            cached_rust_reader,
+            dumper,
+        )?,
+        None => parse_syn_item_mod_contentless(
+            &info,
+            &item_mod,
+            module_path,
+            ident,
+            cached_rust_reader,
+            dumper,
+        )?,
     })
 }
 
@@ -150,6 +173,7 @@ fn parse_syn_item_mod_contentful(
     item_mod: &ItemMod,
     module_path: Vec<String>,
     content: &(Brace, Vec<Item>),
+    cached_rust_reader: &mut CachedRustReader,
     dumper: &Dumper,
 ) -> anyhow::Result<Option<Module>> {
     debug!("parse_syn_item_mod_contentful module_path={module_path:?}");
@@ -161,6 +185,7 @@ fn parse_syn_item_mod_contentful(
             module_path,
             source: ModuleSource::ModuleInFile(content.1.clone()),
         },
+        cached_rust_reader,
         dumper,
     )?))
 }
@@ -170,6 +195,7 @@ fn parse_syn_item_mod_contentless(
     item_mod: &ItemMod,
     module_path: Vec<String>,
     ident: Ident,
+    cached_rust_reader: &mut CachedRustReader,
     dumper: &Dumper,
 ) -> anyhow::Result<Option<Module>> {
     debug!("parse_syn_item_mod_contentless module_path={module_path:?}");
@@ -184,7 +210,8 @@ fn parse_syn_item_mod_contentless(
 
     if let Some(file_path) = first_existing_path(&file_path_candidates) {
         let rust_crate_dir_for_file = find_rust_crate_dir(file_path)?;
-        let source_rust_content = read_rust_file(&file_path, &rust_crate_dir_for_file, dumper)?;
+        let source_rust_content =
+            cached_rust_reader.read_rust_file(&file_path, &rust_crate_dir_for_file, dumper)?;
         debug!("Trying to parse {:?}", file_path);
         let source = ModuleSource::File(syn::parse_file(&source_rust_content).unwrap());
 
@@ -195,6 +222,7 @@ fn parse_syn_item_mod_contentless(
                 module_path,
                 source,
             },
+            cached_rust_reader,
             dumper,
         )?))
     } else {

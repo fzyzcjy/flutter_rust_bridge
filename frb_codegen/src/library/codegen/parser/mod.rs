@@ -14,7 +14,7 @@ use crate::codegen::parser::function_extractor::extract_generalized_functions_fr
 use crate::codegen::parser::function_parser::FunctionParser;
 use crate::codegen::parser::internal_config::ParserInternalConfig;
 use crate::codegen::parser::misc::parse_has_executor;
-use crate::codegen::parser::reader::read_rust_file;
+use crate::codegen::parser::reader::CachedRustReader;
 use crate::codegen::parser::type_alias_resolver::resolve_type_aliases;
 use crate::codegen::parser::type_parser::TypeParser;
 use crate::codegen::ConfigDumpContent;
@@ -25,14 +25,26 @@ use syn::File;
 use ConfigDumpContent::SourceGraph;
 
 // TODO handle multi file correctly
-pub(crate) fn parse(config: &ParserInternalConfig, dumper: &Dumper) -> anyhow::Result<IrPack> {
+pub(crate) fn parse(
+    config: &ParserInternalConfig,
+    cached_rust_reader: &mut CachedRustReader,
+    dumper: &Dumper,
+) -> anyhow::Result<IrPack> {
     let rust_input_paths = &config.rust_input_path_pack.rust_input_paths;
     trace!("rust_input_paths={:?}", &rust_input_paths);
 
-    let file_data_arr = read_files(&rust_input_paths, &config.rust_crate_dir, dumper)?;
+    let file_data_arr = read_files(
+        &rust_input_paths,
+        &config.rust_crate_dir,
+        cached_rust_reader,
+        dumper,
+    )?;
 
-    let crate_map =
-        source_graph::crates::Crate::parse(&config.rust_crate_dir.join("Cargo.toml"), dumper)?;
+    let crate_map = source_graph::crates::Crate::parse(
+        &config.rust_crate_dir.join("Cargo.toml"),
+        cached_rust_reader,
+        dumper,
+    )?;
     dumper.dump(SourceGraph, "source_graph.json", &crate_map)?;
 
     let src_fns = file_data_arr
@@ -83,12 +95,14 @@ struct FileData {
 fn read_files(
     rust_input_paths: &[PathBuf],
     rust_crate_dir: &PathBuf,
+    cached_rust_reader: &mut CachedRustReader,
     dumper: &Dumper,
 ) -> anyhow::Result<Vec<FileData>> {
     rust_input_paths
         .iter()
         .map(|rust_input_path| {
-            let content = read_rust_file(rust_input_path, &rust_crate_dir, dumper)?;
+            let content =
+                cached_rust_reader.read_rust_file(rust_input_path, &rust_crate_dir, dumper)?;
             let ast = syn::parse_file(&content)?;
             Ok(FileData {
                 path: (*rust_input_path).clone(),
@@ -106,6 +120,7 @@ mod tests {
     use crate::codegen::dumper::Dumper;
     use crate::codegen::parser::internal_config::ParserInternalConfig;
     use crate::codegen::parser::parse;
+    use crate::codegen::parser::reader::CachedRustReader;
     use crate::codegen::parser::source_graph::crates::Crate;
     use crate::utils::logs::configure_opinionated_test_logging;
     use crate::utils::path_utils::path_to_string;
@@ -168,6 +183,7 @@ mod tests {
 
         let crate_map = Crate::parse(
             &rust_crate_dir.join("Cargo.toml"),
+            &mut CachedRustReader::default(),
             &Dumper(&Default::default()),
         )?;
         json_golden_test(
@@ -188,6 +204,7 @@ mod tests {
                 ),
                 rust_crate_dir: rust_crate_dir.clone(),
             },
+            &mut CachedRustReader::default(),
             &Dumper(&Default::default()),
         )?;
         json_golden_test(

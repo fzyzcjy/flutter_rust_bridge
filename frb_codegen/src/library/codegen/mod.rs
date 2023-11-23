@@ -11,6 +11,7 @@ mod preparer;
 use crate::codegen::config::internal_config::InternalConfig;
 use crate::codegen::dumper::internal_config::ConfigDumpContent::Config as ContentConfig;
 use crate::codegen::dumper::Dumper;
+use crate::codegen::parser::reader::CachedRustReader;
 pub use config::config::Config;
 pub use config::config_parser::*;
 pub use dumper::internal_config::ConfigDumpContent;
@@ -29,7 +30,9 @@ pub fn generate(config: Config) -> anyhow::Result<()> {
 
     preparer::prepare(&internal_config.preparer)?;
 
-    let ir_pack = parser::parse(&internal_config.parser, &dumper)?;
+    let mut cached_rust_reader = CachedRustReader::default();
+
+    let ir_pack = parser::parse(&internal_config.parser, &mut cached_rust_reader, &dumper)?;
     dumper.dump(ConfigDumpContent::Ir, "ir_pack.json", &ir_pack)?;
 
     let generator_output = generator::generate(&ir_pack, &internal_config.generator, &dumper)?;

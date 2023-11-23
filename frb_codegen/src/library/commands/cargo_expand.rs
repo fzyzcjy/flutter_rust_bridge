@@ -11,34 +11,37 @@ use std::path::{Path, PathBuf};
 use std::sync::Mutex;
 use std::{env, fs};
 
-pub(crate) fn cargo_expand(
-    rust_crate_dir: &Path,
-    module: Option<String>,
-    rust_file_path: &Path,
-    dumper: &Dumper,
-) -> Result<String> {
-    let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
-
-    if !manifest_dir.is_empty() && rust_crate_dir == PathBuf::from(manifest_dir) {
-        warn!(
-            "Skip cargo-expand on {rust_crate_dir:?}, \
-             because cargo is already running and would block cargo-expand. \
-             This might cause errors if your api contains macros."
-        );
-        return Ok(fs::read_to_string(rust_file_path)?);
-    }
-
-    let mut cache = CARGO_EXPAND_CACHE.lock().unwrap();
-    let expanded = match cache.entry(rust_crate_dir.to_owned()) {
-        Occupied(entry) => entry.into_mut(),
-        Vacant(entry) => entry.insert(run_cargo_expand(rust_crate_dir, dumper)?),
-    };
-
-    extract_module(expanded, module)
+#[derive(Default)]
+pub(crate) struct CachedCargoExpand {
+    cache: HashMap<PathBuf, String>,
 }
 
-lazy_static! {
-    static ref CARGO_EXPAND_CACHE: Mutex<HashMap<PathBuf, String>> = Mutex::new(HashMap::new());
+impl CachedCargoExpand {
+    pub(crate) fn execute(
+        &mut self,
+        rust_crate_dir: &Path,
+        module: Option<String>,
+        rust_file_path: &Path,
+        dumper: &Dumper,
+    ) -> Result<String> {
+        let manifest_dir = env::var("CARGO_MANIFEST_DIR").unwrap_or_default();
+
+        if !manifest_dir.is_empty() && rust_crate_dir == PathBuf::from(manifest_dir) {
+            warn!(
+                "Skip cargo-expand on {rust_crate_dir:?}, \
+             because cargo is already running and would block cargo-expand. \
+             This might cause errors if your api contains macros."
+            );
+            return Ok(fs::read_to_string(rust_file_path)?);
+        }
+
+        let expanded = match self.cache.entry(rust_crate_dir.to_owned()) {
+            Occupied(entry) => entry.into_mut(),
+            Vacant(entry) => entry.insert(run_cargo_expand(rust_crate_dir, dumper)?),
+        };
+
+        extract_module(expanded, module)
+    }
 }
 
 fn extract_module(raw_expanded: &str, module: Option<String>) -> Result<String> {
