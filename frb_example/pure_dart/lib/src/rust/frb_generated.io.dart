@@ -1018,18 +1018,20 @@ class RustLibWire implements BaseWire {
 
   void wire_custom_enum_error_return_ok_twin_normal(
     int port_,
+    int arg,
   ) {
     return _wire_custom_enum_error_return_ok_twin_normal(
       port_,
+      arg,
     );
   }
 
   late final _wire_custom_enum_error_return_ok_twin_normalPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Uint32)>>(
           'wire_custom_enum_error_return_ok_twin_normal');
   late final _wire_custom_enum_error_return_ok_twin_normal =
       _wire_custom_enum_error_return_ok_twin_normalPtr
-          .asFunction<void Function(int)>();
+          .asFunction<void Function(int, int)>();
 
   void wire_custom_nested_error_return_error_twin_normal(
     int port_,

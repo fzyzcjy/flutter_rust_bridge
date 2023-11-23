@@ -16,43 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CustomEnumErrorTwinNormal {
-  Object get e => throw _privateConstructorUsedError;
+  Object get message => throw _privateConstructorUsedError;
   String get backtrace => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String e, String backtrace) error0,
-    required TResult Function(int e, String backtrace) error1,
+    required TResult Function(String message, String backtrace) one,
+    required TResult Function(int message, String backtrace) two,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String e, String backtrace)? error0,
-    TResult? Function(int e, String backtrace)? error1,
+    TResult? Function(String message, String backtrace)? one,
+    TResult? Function(int message, String backtrace)? two,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String e, String backtrace)? error0,
-    TResult Function(int e, String backtrace)? error1,
+    TResult Function(String message, String backtrace)? one,
+    TResult Function(int message, String backtrace)? two,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CustomEnumErrorTwinNormal_Error0 value) error0,
-    required TResult Function(CustomEnumErrorTwinNormal_Error1 value) error1,
+    required TResult Function(CustomEnumErrorTwinNormal_One value) one,
+    required TResult Function(CustomEnumErrorTwinNormal_Two value) two,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CustomEnumErrorTwinNormal_Error0 value)? error0,
-    TResult? Function(CustomEnumErrorTwinNormal_Error1 value)? error1,
+    TResult? Function(CustomEnumErrorTwinNormal_One value)? one,
+    TResult? Function(CustomEnumErrorTwinNormal_Two value)? two,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CustomEnumErrorTwinNormal_Error0 value)? error0,
-    TResult Function(CustomEnumErrorTwinNormal_Error1 value)? error1,
+    TResult Function(CustomEnumErrorTwinNormal_One value)? one,
+    TResult Function(CustomEnumErrorTwinNormal_Two value)? two,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -97,37 +97,37 @@ class _$CustomEnumErrorTwinNormalCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$CustomEnumErrorTwinNormal_Error0ImplCopyWith<$Res>
+abstract class _$$CustomEnumErrorTwinNormal_OneImplCopyWith<$Res>
     implements $CustomEnumErrorTwinNormalCopyWith<$Res> {
-  factory _$$CustomEnumErrorTwinNormal_Error0ImplCopyWith(
-          _$CustomEnumErrorTwinNormal_Error0Impl value,
-          $Res Function(_$CustomEnumErrorTwinNormal_Error0Impl) then) =
-      __$$CustomEnumErrorTwinNormal_Error0ImplCopyWithImpl<$Res>;
+  factory _$$CustomEnumErrorTwinNormal_OneImplCopyWith(
+          _$CustomEnumErrorTwinNormal_OneImpl value,
+          $Res Function(_$CustomEnumErrorTwinNormal_OneImpl) then) =
+      __$$CustomEnumErrorTwinNormal_OneImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String e, String backtrace});
+  $Res call({String message, String backtrace});
 }
 
 /// @nodoc
-class __$$CustomEnumErrorTwinNormal_Error0ImplCopyWithImpl<$Res>
+class __$$CustomEnumErrorTwinNormal_OneImplCopyWithImpl<$Res>
     extends _$CustomEnumErrorTwinNormalCopyWithImpl<$Res,
-        _$CustomEnumErrorTwinNormal_Error0Impl>
-    implements _$$CustomEnumErrorTwinNormal_Error0ImplCopyWith<$Res> {
-  __$$CustomEnumErrorTwinNormal_Error0ImplCopyWithImpl(
-      _$CustomEnumErrorTwinNormal_Error0Impl _value,
-      $Res Function(_$CustomEnumErrorTwinNormal_Error0Impl) _then)
+        _$CustomEnumErrorTwinNormal_OneImpl>
+    implements _$$CustomEnumErrorTwinNormal_OneImplCopyWith<$Res> {
+  __$$CustomEnumErrorTwinNormal_OneImplCopyWithImpl(
+      _$CustomEnumErrorTwinNormal_OneImpl _value,
+      $Res Function(_$CustomEnumErrorTwinNormal_OneImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? e = null,
+    Object? message = null,
     Object? backtrace = null,
   }) {
-    return _then(_$CustomEnumErrorTwinNormal_Error0Impl(
-      e: null == e
-          ? _value.e
-          : e // ignore: cast_nullable_to_non_nullable
+    return _then(_$CustomEnumErrorTwinNormal_OneImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
               as String,
       backtrace: null == backtrace
           ? _value.backtrace
@@ -139,69 +139,69 @@ class __$$CustomEnumErrorTwinNormal_Error0ImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CustomEnumErrorTwinNormal_Error0Impl
-    implements CustomEnumErrorTwinNormal_Error0 {
-  const _$CustomEnumErrorTwinNormal_Error0Impl(
-      {required this.e, required this.backtrace});
+class _$CustomEnumErrorTwinNormal_OneImpl
+    implements CustomEnumErrorTwinNormal_One {
+  const _$CustomEnumErrorTwinNormal_OneImpl(
+      {required this.message, required this.backtrace});
 
   @override
-  final String e;
+  final String message;
   @override
   final String backtrace;
 
   @override
   String toString() {
-    return 'CustomEnumErrorTwinNormal.error0(e: $e, backtrace: $backtrace)';
+    return 'CustomEnumErrorTwinNormal.one(message: $message, backtrace: $backtrace)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CustomEnumErrorTwinNormal_Error0Impl &&
-            (identical(other.e, e) || other.e == e) &&
+            other is _$CustomEnumErrorTwinNormal_OneImpl &&
+            (identical(other.message, message) || other.message == message) &&
             (identical(other.backtrace, backtrace) ||
                 other.backtrace == backtrace));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, e, backtrace);
+  int get hashCode => Object.hash(runtimeType, message, backtrace);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CustomEnumErrorTwinNormal_Error0ImplCopyWith<
-          _$CustomEnumErrorTwinNormal_Error0Impl>
-      get copyWith => __$$CustomEnumErrorTwinNormal_Error0ImplCopyWithImpl<
-          _$CustomEnumErrorTwinNormal_Error0Impl>(this, _$identity);
+  _$$CustomEnumErrorTwinNormal_OneImplCopyWith<
+          _$CustomEnumErrorTwinNormal_OneImpl>
+      get copyWith => __$$CustomEnumErrorTwinNormal_OneImplCopyWithImpl<
+          _$CustomEnumErrorTwinNormal_OneImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String e, String backtrace) error0,
-    required TResult Function(int e, String backtrace) error1,
+    required TResult Function(String message, String backtrace) one,
+    required TResult Function(int message, String backtrace) two,
   }) {
-    return error0(e, backtrace);
+    return one(message, backtrace);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String e, String backtrace)? error0,
-    TResult? Function(int e, String backtrace)? error1,
+    TResult? Function(String message, String backtrace)? one,
+    TResult? Function(int message, String backtrace)? two,
   }) {
-    return error0?.call(e, backtrace);
+    return one?.call(message, backtrace);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String e, String backtrace)? error0,
-    TResult Function(int e, String backtrace)? error1,
+    TResult Function(String message, String backtrace)? one,
+    TResult Function(int message, String backtrace)? two,
     required TResult orElse(),
   }) {
-    if (error0 != null) {
-      return error0(e, backtrace);
+    if (one != null) {
+      return one(message, backtrace);
     }
     return orElse();
   }
@@ -209,84 +209,84 @@ class _$CustomEnumErrorTwinNormal_Error0Impl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CustomEnumErrorTwinNormal_Error0 value) error0,
-    required TResult Function(CustomEnumErrorTwinNormal_Error1 value) error1,
+    required TResult Function(CustomEnumErrorTwinNormal_One value) one,
+    required TResult Function(CustomEnumErrorTwinNormal_Two value) two,
   }) {
-    return error0(this);
+    return one(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CustomEnumErrorTwinNormal_Error0 value)? error0,
-    TResult? Function(CustomEnumErrorTwinNormal_Error1 value)? error1,
+    TResult? Function(CustomEnumErrorTwinNormal_One value)? one,
+    TResult? Function(CustomEnumErrorTwinNormal_Two value)? two,
   }) {
-    return error0?.call(this);
+    return one?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CustomEnumErrorTwinNormal_Error0 value)? error0,
-    TResult Function(CustomEnumErrorTwinNormal_Error1 value)? error1,
+    TResult Function(CustomEnumErrorTwinNormal_One value)? one,
+    TResult Function(CustomEnumErrorTwinNormal_Two value)? two,
     required TResult orElse(),
   }) {
-    if (error0 != null) {
-      return error0(this);
+    if (one != null) {
+      return one(this);
     }
     return orElse();
   }
 }
 
-abstract class CustomEnumErrorTwinNormal_Error0
+abstract class CustomEnumErrorTwinNormal_One
     implements CustomEnumErrorTwinNormal, FrbBacktracedException {
-  const factory CustomEnumErrorTwinNormal_Error0(
-          {required final String e, required final String backtrace}) =
-      _$CustomEnumErrorTwinNormal_Error0Impl;
+  const factory CustomEnumErrorTwinNormal_One(
+      {required final String message,
+      required final String backtrace}) = _$CustomEnumErrorTwinNormal_OneImpl;
 
   @override
-  String get e;
+  String get message;
   @override
   String get backtrace;
   @override
   @JsonKey(ignore: true)
-  _$$CustomEnumErrorTwinNormal_Error0ImplCopyWith<
-          _$CustomEnumErrorTwinNormal_Error0Impl>
+  _$$CustomEnumErrorTwinNormal_OneImplCopyWith<
+          _$CustomEnumErrorTwinNormal_OneImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$CustomEnumErrorTwinNormal_Error1ImplCopyWith<$Res>
+abstract class _$$CustomEnumErrorTwinNormal_TwoImplCopyWith<$Res>
     implements $CustomEnumErrorTwinNormalCopyWith<$Res> {
-  factory _$$CustomEnumErrorTwinNormal_Error1ImplCopyWith(
-          _$CustomEnumErrorTwinNormal_Error1Impl value,
-          $Res Function(_$CustomEnumErrorTwinNormal_Error1Impl) then) =
-      __$$CustomEnumErrorTwinNormal_Error1ImplCopyWithImpl<$Res>;
+  factory _$$CustomEnumErrorTwinNormal_TwoImplCopyWith(
+          _$CustomEnumErrorTwinNormal_TwoImpl value,
+          $Res Function(_$CustomEnumErrorTwinNormal_TwoImpl) then) =
+      __$$CustomEnumErrorTwinNormal_TwoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int e, String backtrace});
+  $Res call({int message, String backtrace});
 }
 
 /// @nodoc
-class __$$CustomEnumErrorTwinNormal_Error1ImplCopyWithImpl<$Res>
+class __$$CustomEnumErrorTwinNormal_TwoImplCopyWithImpl<$Res>
     extends _$CustomEnumErrorTwinNormalCopyWithImpl<$Res,
-        _$CustomEnumErrorTwinNormal_Error1Impl>
-    implements _$$CustomEnumErrorTwinNormal_Error1ImplCopyWith<$Res> {
-  __$$CustomEnumErrorTwinNormal_Error1ImplCopyWithImpl(
-      _$CustomEnumErrorTwinNormal_Error1Impl _value,
-      $Res Function(_$CustomEnumErrorTwinNormal_Error1Impl) _then)
+        _$CustomEnumErrorTwinNormal_TwoImpl>
+    implements _$$CustomEnumErrorTwinNormal_TwoImplCopyWith<$Res> {
+  __$$CustomEnumErrorTwinNormal_TwoImplCopyWithImpl(
+      _$CustomEnumErrorTwinNormal_TwoImpl _value,
+      $Res Function(_$CustomEnumErrorTwinNormal_TwoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? e = null,
+    Object? message = null,
     Object? backtrace = null,
   }) {
-    return _then(_$CustomEnumErrorTwinNormal_Error1Impl(
-      e: null == e
-          ? _value.e
-          : e // ignore: cast_nullable_to_non_nullable
+    return _then(_$CustomEnumErrorTwinNormal_TwoImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
               as int,
       backtrace: null == backtrace
           ? _value.backtrace
@@ -298,69 +298,69 @@ class __$$CustomEnumErrorTwinNormal_Error1ImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CustomEnumErrorTwinNormal_Error1Impl
-    implements CustomEnumErrorTwinNormal_Error1 {
-  const _$CustomEnumErrorTwinNormal_Error1Impl(
-      {required this.e, required this.backtrace});
+class _$CustomEnumErrorTwinNormal_TwoImpl
+    implements CustomEnumErrorTwinNormal_Two {
+  const _$CustomEnumErrorTwinNormal_TwoImpl(
+      {required this.message, required this.backtrace});
 
   @override
-  final int e;
+  final int message;
   @override
   final String backtrace;
 
   @override
   String toString() {
-    return 'CustomEnumErrorTwinNormal.error1(e: $e, backtrace: $backtrace)';
+    return 'CustomEnumErrorTwinNormal.two(message: $message, backtrace: $backtrace)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CustomEnumErrorTwinNormal_Error1Impl &&
-            (identical(other.e, e) || other.e == e) &&
+            other is _$CustomEnumErrorTwinNormal_TwoImpl &&
+            (identical(other.message, message) || other.message == message) &&
             (identical(other.backtrace, backtrace) ||
                 other.backtrace == backtrace));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, e, backtrace);
+  int get hashCode => Object.hash(runtimeType, message, backtrace);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CustomEnumErrorTwinNormal_Error1ImplCopyWith<
-          _$CustomEnumErrorTwinNormal_Error1Impl>
-      get copyWith => __$$CustomEnumErrorTwinNormal_Error1ImplCopyWithImpl<
-          _$CustomEnumErrorTwinNormal_Error1Impl>(this, _$identity);
+  _$$CustomEnumErrorTwinNormal_TwoImplCopyWith<
+          _$CustomEnumErrorTwinNormal_TwoImpl>
+      get copyWith => __$$CustomEnumErrorTwinNormal_TwoImplCopyWithImpl<
+          _$CustomEnumErrorTwinNormal_TwoImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String e, String backtrace) error0,
-    required TResult Function(int e, String backtrace) error1,
+    required TResult Function(String message, String backtrace) one,
+    required TResult Function(int message, String backtrace) two,
   }) {
-    return error1(e, backtrace);
+    return two(message, backtrace);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String e, String backtrace)? error0,
-    TResult? Function(int e, String backtrace)? error1,
+    TResult? Function(String message, String backtrace)? one,
+    TResult? Function(int message, String backtrace)? two,
   }) {
-    return error1?.call(e, backtrace);
+    return two?.call(message, backtrace);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String e, String backtrace)? error0,
-    TResult Function(int e, String backtrace)? error1,
+    TResult Function(String message, String backtrace)? one,
+    TResult Function(int message, String backtrace)? two,
     required TResult orElse(),
   }) {
-    if (error1 != null) {
-      return error1(e, backtrace);
+    if (two != null) {
+      return two(message, backtrace);
     }
     return orElse();
   }
@@ -368,49 +368,49 @@ class _$CustomEnumErrorTwinNormal_Error1Impl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CustomEnumErrorTwinNormal_Error0 value) error0,
-    required TResult Function(CustomEnumErrorTwinNormal_Error1 value) error1,
+    required TResult Function(CustomEnumErrorTwinNormal_One value) one,
+    required TResult Function(CustomEnumErrorTwinNormal_Two value) two,
   }) {
-    return error1(this);
+    return two(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CustomEnumErrorTwinNormal_Error0 value)? error0,
-    TResult? Function(CustomEnumErrorTwinNormal_Error1 value)? error1,
+    TResult? Function(CustomEnumErrorTwinNormal_One value)? one,
+    TResult? Function(CustomEnumErrorTwinNormal_Two value)? two,
   }) {
-    return error1?.call(this);
+    return two?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CustomEnumErrorTwinNormal_Error0 value)? error0,
-    TResult Function(CustomEnumErrorTwinNormal_Error1 value)? error1,
+    TResult Function(CustomEnumErrorTwinNormal_One value)? one,
+    TResult Function(CustomEnumErrorTwinNormal_Two value)? two,
     required TResult orElse(),
   }) {
-    if (error1 != null) {
-      return error1(this);
+    if (two != null) {
+      return two(this);
     }
     return orElse();
   }
 }
 
-abstract class CustomEnumErrorTwinNormal_Error1
+abstract class CustomEnumErrorTwinNormal_Two
     implements CustomEnumErrorTwinNormal, FrbBacktracedException {
-  const factory CustomEnumErrorTwinNormal_Error1(
-          {required final int e, required final String backtrace}) =
-      _$CustomEnumErrorTwinNormal_Error1Impl;
+  const factory CustomEnumErrorTwinNormal_Two(
+      {required final int message,
+      required final String backtrace}) = _$CustomEnumErrorTwinNormal_TwoImpl;
 
   @override
-  int get e;
+  int get message;
   @override
   String get backtrace;
   @override
   @JsonKey(ignore: true)
-  _$$CustomEnumErrorTwinNormal_Error1ImplCopyWith<
-          _$CustomEnumErrorTwinNormal_Error1Impl>
+  _$$CustomEnumErrorTwinNormal_TwoImplCopyWith<
+          _$CustomEnumErrorTwinNormal_TwoImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 

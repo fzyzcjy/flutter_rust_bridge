@@ -92,7 +92,8 @@ abstract class RustLibApi extends BaseApi {
 
   Future<int> customEnumErrorReturnErrorTwinNormal({dynamic hint});
 
-  Future<int> customEnumErrorReturnOkTwinNormal({dynamic hint});
+  Future<int> customEnumErrorReturnOkTwinNormal(
+      {required int arg, dynamic hint});
 
   Future<void> customNestedErrorReturnErrorTwinNormal(
       {required CustomNestedErrorOuterTwinNormal arg, dynamic hint});
@@ -615,14 +616,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<int> customEnumErrorReturnOkTwinNormal({dynamic hint}) {
+  Future<int> customEnumErrorReturnOkTwinNormal(
+      {required int arg, dynamic hint}) {
+    var arg0 = api2wire_u_32(arg);
     return handler.executeNormal(NormalTask(
       callFfi: (port_) =>
-          wire.wire_custom_enum_error_return_ok_twin_normal(port_),
+          wire.wire_custom_enum_error_return_ok_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_u_32,
       parseErrorData: _wire2api_custom_enum_error_twin_normal,
       constMeta: kCustomEnumErrorReturnOkTwinNormalConstMeta,
-      argValues: [],
+      argValues: [arg],
       apiImpl: this,
       hint: hint,
     ));
@@ -631,7 +634,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kCustomEnumErrorReturnOkTwinNormalConstMeta =>
       const TaskConstMeta(
         debugName: "custom_enum_error_return_ok_twin_normal",
-        argNames: [],
+        argNames: ["arg"],
       );
 
   @override
@@ -2873,13 +2876,13 @@ int _wire2api_box_autoadd_u_8(dynamic raw) {
 CustomEnumErrorTwinNormal _wire2api_custom_enum_error_twin_normal(dynamic raw) {
   switch (raw[0]) {
     case 0:
-      return CustomEnumErrorTwinNormal_Error0(
-        e: _wire2api_String(raw[1]),
+      return CustomEnumErrorTwinNormal_One(
+        message: _wire2api_String(raw[1]),
         backtrace: _wire2api_String(raw[2]),
       );
     case 1:
-      return CustomEnumErrorTwinNormal_Error1(
-        e: _wire2api_u_32(raw[1]),
+      return CustomEnumErrorTwinNormal_Two(
+        message: _wire2api_u_32(raw[1]),
         backtrace: _wire2api_String(raw[2]),
       );
     default:

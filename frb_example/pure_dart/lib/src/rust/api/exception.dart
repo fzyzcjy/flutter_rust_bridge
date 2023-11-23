@@ -11,8 +11,10 @@ Future<void> customEnumErrorPanicTwinNormal({dynamic hint}) =>
 Future<int> customEnumErrorReturnErrorTwinNormal({dynamic hint}) =>
     RustLib.instance.api.customEnumErrorReturnErrorTwinNormal(hint: hint);
 
-Future<int> customEnumErrorReturnOkTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.customEnumErrorReturnOkTwinNormal(hint: hint);
+Future<int> customEnumErrorReturnOkTwinNormal(
+        {required int arg, dynamic hint}) =>
+    RustLib.instance.api
+        .customEnumErrorReturnOkTwinNormal(arg: arg, hint: hint);
 
 Future<void> customNestedErrorReturnErrorTwinNormal(
         {required CustomNestedErrorOuterTwinNormal arg, dynamic hint}) =>
@@ -38,15 +40,15 @@ sealed class CustomEnumErrorTwinNormal
     with _$CustomEnumErrorTwinNormal
     implements FrbException {
   @Implements<FrbBacktracedException>()
-  const factory CustomEnumErrorTwinNormal.error0({
-    required String e,
+  const factory CustomEnumErrorTwinNormal.one({
+    required String message,
     required String backtrace,
-  }) = CustomEnumErrorTwinNormal_Error0;
+  }) = CustomEnumErrorTwinNormal_One;
   @Implements<FrbBacktracedException>()
-  const factory CustomEnumErrorTwinNormal.error1({
-    required int e,
+  const factory CustomEnumErrorTwinNormal.two({
+    required int message,
     required String backtrace,
-  }) = CustomEnumErrorTwinNormal_Error1;
+  }) = CustomEnumErrorTwinNormal_Two;
 }
 
 @freezed

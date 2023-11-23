@@ -1247,8 +1247,8 @@ pub extern "C" fn wire_custom_enum_error_return_error_twin_normal(port_: i64) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_custom_enum_error_return_ok_twin_normal(port_: i64) {
-    wire_custom_enum_error_return_ok_twin_normal_impl(port_)
+pub extern "C" fn wire_custom_enum_error_return_ok_twin_normal(port_: i64, arg: u32) {
+    wire_custom_enum_error_return_ok_twin_normal_impl(port_, arg)
 }
 
 #[no_mangle]

@@ -231,14 +231,20 @@ fn wire_custom_enum_error_return_error_twin_normal_impl(port_: MessagePort) {
         move || move |task_callback| custom_enum_error_return_error_twin_normal(),
     )
 }
-fn wire_custom_enum_error_return_ok_twin_normal_impl(port_: MessagePort) {
+fn wire_custom_enum_error_return_ok_twin_normal_impl(
+    port_: MessagePort,
+    arg: impl Wire2Api<u32> + UnwindSafe,
+) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, u32, _>(
         WrapInfo {
             debug_name: "custom_enum_error_return_ok_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Normal,
         },
-        move || move |task_callback| custom_enum_error_return_ok_twin_normal(),
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| custom_enum_error_return_ok_twin_normal(api_arg)
+        },
     )
 }
 fn wire_custom_nested_error_return_error_twin_normal_impl(
@@ -1960,14 +1966,14 @@ impl Wire2Api<u8> for u8 {
 impl support::IntoDart for CustomEnumErrorTwinNormal {
     fn into_dart(self) -> support::DartAbi {
         match self {
-            Self::One { e, backtrace } => vec![
+            Self::One { message, backtrace } => vec![
                 0.into_dart(),
-                e.into_into_dart().into_dart(),
+                message.into_into_dart().into_dart(),
                 backtrace.into_into_dart().into_dart(),
             ],
-            Self::Two { e, backtrace } => vec![
+            Self::Two { message, backtrace } => vec![
                 1.into_dart(),
-                e.into_into_dart().into_dart(),
+                message.into_into_dart().into_dart(),
                 backtrace.into_into_dart().into_dart(),
             ],
         }

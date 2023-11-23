@@ -299,7 +299,7 @@ void wire_custom_enum_error_panic_twin_normal(int64_t port_);
 
 void wire_custom_enum_error_return_error_twin_normal(int64_t port_);
 
-void wire_custom_enum_error_return_ok_twin_normal(int64_t port_);
+void wire_custom_enum_error_return_ok_twin_normal(int64_t port_, uint32_t arg);
 
 void wire_custom_nested_error_return_error_twin_normal(int64_t port_,
                                                        struct wire_custom_nested_error_outer_twin_normal *arg);

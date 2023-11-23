@@ -542,8 +542,8 @@ pub fn wire_custom_enum_error_return_error_twin_normal(port_: MessagePort) {
 }
 
 #[wasm_bindgen]
-pub fn wire_custom_enum_error_return_ok_twin_normal(port_: MessagePort) {
-    wire_custom_enum_error_return_ok_twin_normal_impl(port_)
+pub fn wire_custom_enum_error_return_ok_twin_normal(port_: MessagePort, arg: u32) {
+    wire_custom_enum_error_return_ok_twin_normal_impl(port_, arg)
 }
 
 #[wasm_bindgen]
