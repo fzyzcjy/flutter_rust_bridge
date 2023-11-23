@@ -1,10 +1,13 @@
+pub mod array;
 pub mod comment;
 pub mod enumeration;
 pub mod exception;
 pub mod inside_macro;
 pub mod misc_example;
 pub mod misc_type;
+pub mod newtype_pattern;
 pub mod pseudo_manual;
+pub mod raw_string;
 pub mod simple;
 pub mod stream;
 pub mod structure;
