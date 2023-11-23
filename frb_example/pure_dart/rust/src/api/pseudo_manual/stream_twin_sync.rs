@@ -1,4 +1,4 @@
-// NOTE: This file is mimicking how a human developer writes tests, 
+// NOTE: This file is mimicking how a human developer writes tests,
 // and is auto-generated from `stream.rs` by frb_internal
 // Please do not modify manually, but modify the origin and re-run frb_internal generator
 
@@ -10,7 +10,8 @@ use std::thread::sleep;
 use std::time::Duration;
 
 // TODO reduced pseudo_manual types
-#[flutter_rust_bridge::frb(sync)] pub fn handle_stream_realistic_twin_sync(sink: StreamSink<String>, arg: String) {
+#[flutter_rust_bridge::frb(sync)]
+pub fn handle_stream_realistic_twin_sync(sink: StreamSink<String>, arg: String) {
     info!("handle_stream_realistic arg={}", arg);
 
     let cnt = Arc::new(AtomicI32::new(0));
