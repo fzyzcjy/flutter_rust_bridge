@@ -14,7 +14,7 @@ Future<void> main() async {
   addTestsIdentityFunctionCall(funcStringTwinSync, ['', 'hello', '😂']);
 
   test('call funcReturnUnitTwinSync', () async {
-    // nothing to assert - it returns nothing
-    await funcReturnUnitTwinSync();
+    // `as dynamic` to make the generated pseudo_manual test happy
+    await (funcReturnUnitTwinSync() as dynamic);
   });
 }

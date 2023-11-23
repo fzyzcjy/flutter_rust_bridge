@@ -10,7 +10,7 @@ Future<void> main() async {
   addTestsIdentityFunctionCall(funcStringTwinNormal, ['', 'hello', '😂']);
 
   test('call funcReturnUnitTwinNormal', () async {
-    // nothing to assert - it returns nothing
-    await funcReturnUnitTwinNormal();
+    // `as dynamic` to make the generated pseudo_manual test happy
+    await (funcReturnUnitTwinNormal() as dynamic);
   });
 }
