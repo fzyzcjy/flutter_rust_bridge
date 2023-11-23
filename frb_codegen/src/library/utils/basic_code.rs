@@ -91,7 +91,7 @@ impl DartBasicHeaderCode {
 }
 
 fn optimize_imports(raw: &str) -> String {
-    raw.split("\n")
+    raw.split_inclusive(&['\n', ';'][..])
         .map(|line| line.trim())
         .filter(|line| !line.is_empty())
         .sorted()
