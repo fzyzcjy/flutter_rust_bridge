@@ -10,6 +10,7 @@ use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
+use crate::utils::basic_code::DartBasicHeaderCode;
 use anyhow::Result;
 use itertools::Itertools;
 use serde::Serialize;
@@ -28,6 +29,7 @@ pub(crate) struct ApiDartOutputSpec {
 
 #[derive(Serialize)]
 pub(crate) struct ApiDartOutputSpecItem {
+    pub boilerplate_header: DartBasicHeaderCode,
     pub funcs: Vec<ApiDartGeneratedFunction>,
     pub classes: Vec<ApiDartGeneratedClass>,
     pub needs_freezed: bool,

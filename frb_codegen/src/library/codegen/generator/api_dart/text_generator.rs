@@ -6,6 +6,7 @@ use crate::codegen::generator::api_dart::spec_generator::{
 };
 use crate::codegen::generator::misc::{PathText, PathTexts};
 use crate::codegen::ir::namespace::Namespace;
+use crate::utils::basic_code::DartBasicHeaderCode;
 use itertools::Itertools;
 use std::collections::HashSet;
 use std::path::{Path, PathBuf};
@@ -40,28 +41,37 @@ fn generate_end_api_text(
     dart_output_path: &Path,
     item: &ApiDartOutputSpecItem,
 ) -> String {
-    let parts = if item.needs_freezed {
-        format!(
-            "part '{name}.freezed.dart';",
-            name = dart_output_path.file_stem().unwrap().to_str().unwrap()
-        )
-    } else {
-        "".to_owned()
-    };
-
     let funcs = item.funcs.iter().map(|f| generate_function(f)).join("\n\n");
     let classes = item.classes.iter().map(|c| c.code.clone()).join("\n\n");
 
     // TODO use relative path calculation
     let path_frb_generated = "../".repeat(namespace.path().len() - 2) + "frb_generated.dart";
 
+    let mut header = DartBasicHeaderCode {
+        file_top: "// ignore_for_file: invalid_use_of_internal_member\n".to_string(),
+        import: format!(
+            "
+            import '{path_frb_generated}';
+            import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+            "
+        ),
+        part: if item.needs_freezed {
+            format!(
+                "part '{name}.freezed.dart';",
+                name = dart_output_path.file_stem().unwrap().to_str().unwrap()
+            )
+        } else {
+            "".to_owned()
+        },
+    };
+
+    header += item.boilerplate_header.clone();
+
+    let header = header.all_code();
+
     format!(
-        "// ignore_for_file: invalid_use_of_internal_member
-
-        import '{path_frb_generated}';
-        import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
-
-        {parts}
+        "
+        {header}
 
         {funcs}
 
