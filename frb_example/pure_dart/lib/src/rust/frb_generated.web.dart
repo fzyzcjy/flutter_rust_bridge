@@ -15,7 +15,6 @@ import 'api/pseudo_manual/primitive_list.dart';
 import 'api/pseudo_manual/primitive_list_twin_sync.dart';
 import 'api/pseudo_manual/primitive_twin_sync.dart';
 import 'api/pseudo_manual/simple_twin_sync.dart';
-import 'api/pseudo_manual/stream_twin_sync.dart';
 import 'api/pseudo_manual/structure_twin_sync.dart';
 import 'api/simple.dart';
 import 'api/stream.dart';

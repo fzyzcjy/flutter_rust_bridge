@@ -908,11 +908,6 @@ pub fn wire_simple_adder_twin_sync(a: i32, b: i32) -> support::WireSyncReturn {
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_stream_realistic_twin_sync(port_: MessagePort, arg: String) {
-    wire_handle_stream_realistic_twin_sync_impl(port_, arg)
-}
-
-#[wasm_bindgen]
 pub fn wire_func_struct_with_one_field_twin_sync(arg: JsValue) -> support::WireSyncReturn {
     wire_func_struct_with_one_field_twin_sync_impl(arg)
 }
@@ -943,8 +938,23 @@ pub fn wire_simple_adder_twin_normal(port_: MessagePort, a: i32, b: i32) {
 }
 
 #[wasm_bindgen]
-pub fn wire_handle_stream_realistic_twin_normal(port_: MessagePort, arg: String) {
-    wire_handle_stream_realistic_twin_normal_impl(port_, arg)
+pub fn wire_func_stream_realistic_twin_normal(port_: MessagePort, arg: String) {
+    wire_func_stream_realistic_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_stream_return_error_twin_normal(port_: MessagePort) {
+    wire_func_stream_return_error_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_stream_return_panic_twin_normal(port_: MessagePort) {
+    wire_func_stream_return_panic_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_func_stream_sink_arg_position_twin_normal(port_: MessagePort, a: u32, b: u32) {
+    wire_func_stream_sink_arg_position_twin_normal_impl(port_, a, b)
 }
 
 #[wasm_bindgen]

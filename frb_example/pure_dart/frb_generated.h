@@ -427,8 +427,6 @@ WireSyncReturn wire_example_primitive_type_u8_twin_sync(uint8_t arg);
 
 WireSyncReturn wire_simple_adder_twin_sync(int32_t a, int32_t b);
 
-void wire_handle_stream_realistic_twin_sync(int64_t port_, struct wire_list_prim_u_8 *arg);
-
 WireSyncReturn wire_func_struct_with_one_field_twin_sync(struct wire_struct_with_one_field_twin_sync *arg);
 
 WireSyncReturn wire_func_struct_with_two_field_twin_sync(struct wire_struct_with_two_field_twin_sync *arg);
@@ -441,7 +439,13 @@ WireSyncReturn wire_func_tuple_struct_with_two_field_twin_sync(struct wire_tuple
 
 void wire_simple_adder_twin_normal(int64_t port_, int32_t a, int32_t b);
 
-void wire_handle_stream_realistic_twin_normal(int64_t port_, struct wire_list_prim_u_8 *arg);
+void wire_func_stream_realistic_twin_normal(int64_t port_, struct wire_list_prim_u_8 *arg);
+
+void wire_func_stream_return_error_twin_normal(int64_t port_);
+
+void wire_func_stream_return_panic_twin_normal(int64_t port_);
+
+void wire_func_stream_sink_arg_position_twin_normal(int64_t port_, uint32_t a, uint32_t b);
 
 void wire_func_struct_with_one_field_twin_normal(int64_t port_,
                                                  struct wire_struct_with_one_field_twin_normal *arg);
@@ -703,6 +707,10 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_func_return_panic_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_func_return_unit_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_return_unit_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_func_stream_realistic_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_func_stream_return_error_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_func_stream_return_panic_twin_normal);
+    dummy_var ^= ((int64_t) (void*) wire_func_stream_sink_arg_position_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_string_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_string_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_func_struct_with_one_field_twin_normal);
@@ -721,8 +729,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_function_with_comments_triple_slash_multi_line_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_function_with_comments_triple_slash_single_line_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_function_with_comments_triple_slash_single_line_twin_sync);
-    dummy_var ^= ((int64_t) (void*) wire_handle_stream_realistic_twin_normal);
-    dummy_var ^= ((int64_t) (void*) wire_handle_stream_realistic_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_simple_adder_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_simple_adder_twin_sync);
     return dummy_var;

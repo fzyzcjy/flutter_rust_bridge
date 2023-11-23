@@ -41,7 +41,6 @@ use crate::api::pseudo_manual::primitive_list::*;
 use crate::api::pseudo_manual::primitive_list_twin_sync::*;
 use crate::api::pseudo_manual::primitive_twin_sync::*;
 use crate::api::pseudo_manual::simple_twin_sync::*;
-use crate::api::pseudo_manual::stream_twin_sync::*;
 use crate::api::pseudo_manual::structure_twin_sync::StructWithOneFieldTwinSync;
 use crate::api::pseudo_manual::structure_twin_sync::StructWithTwoFieldTwinSync;
 use crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync;
@@ -1514,27 +1513,6 @@ fn wire_simple_adder_twin_sync_impl(
         },
     )
 }
-fn wire_handle_stream_realistic_twin_sync_impl(
-    port_: MessagePort,
-    arg: impl Wire2Api<String> + UnwindSafe,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
-        WrapInfo {
-            debug_name: "handle_stream_realistic_twin_sync",
-            port: Some(port_),
-            mode: FfiCallMode::Stream,
-        },
-        move || {
-            let api_arg = arg.wire2api();
-            move |task_callback| {
-                Result::<_, ()>::Ok(handle_stream_realistic_twin_sync(
-                    task_callback.stream_sink::<_, String>(),
-                    api_arg,
-                ))
-            }
-        },
-    )
-}
 fn wire_func_struct_with_one_field_twin_sync_impl(
     arg: impl Wire2Api<StructWithOneFieldTwinSync> + UnwindSafe,
 ) -> support::WireSyncReturn {
@@ -1628,22 +1606,74 @@ fn wire_simple_adder_twin_normal_impl(
         },
     )
 }
-fn wire_handle_stream_realistic_twin_normal_impl(
+fn wire_func_stream_realistic_twin_normal_impl(
     port_: MessagePort,
     arg: impl Wire2Api<String> + UnwindSafe,
 ) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
         WrapInfo {
-            debug_name: "handle_stream_realistic_twin_normal",
+            debug_name: "func_stream_realistic_twin_normal",
             port: Some(port_),
             mode: FfiCallMode::Stream,
         },
         move || {
             let api_arg = arg.wire2api();
             move |task_callback| {
-                Result::<_, ()>::Ok(handle_stream_realistic_twin_normal(
+                Result::<_, ()>::Ok(func_stream_realistic_twin_normal(
                     task_callback.stream_sink::<_, String>(),
                     api_arg,
+                ))
+            }
+        },
+    )
+}
+fn wire_func_stream_return_error_twin_normal_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        WrapInfo {
+            debug_name: "func_stream_return_error_twin_normal",
+            port: Some(port_),
+            mode: FfiCallMode::Stream,
+        },
+        move || {
+            move |task_callback| {
+                func_stream_return_error_twin_normal(task_callback.stream_sink::<_, String>())
+            }
+        },
+    )
+}
+fn wire_func_stream_return_panic_twin_normal_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        WrapInfo {
+            debug_name: "func_stream_return_panic_twin_normal",
+            port: Some(port_),
+            mode: FfiCallMode::Stream,
+        },
+        move || {
+            move |task_callback| {
+                func_stream_return_panic_twin_normal(task_callback.stream_sink::<_, String>())
+            }
+        },
+    )
+}
+fn wire_func_stream_sink_arg_position_twin_normal_impl(
+    port_: MessagePort,
+    a: impl Wire2Api<u32> + UnwindSafe,
+    b: impl Wire2Api<u32> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        WrapInfo {
+            debug_name: "func_stream_sink_arg_position_twin_normal",
+            port: Some(port_),
+            mode: FfiCallMode::Stream,
+        },
+        move || {
+            let api_a = a.wire2api();
+            let api_b = b.wire2api();
+            move |task_callback| {
+                Result::<_, ()>::Ok(func_stream_sink_arg_position_twin_normal(
+                    api_a,
+                    api_b,
+                    task_callback.stream_sink::<_, u32>(),
                 ))
             }
         },

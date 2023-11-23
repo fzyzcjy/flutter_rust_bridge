@@ -15,7 +15,6 @@ import 'api/pseudo_manual/primitive_list.dart';
 import 'api/pseudo_manual/primitive_list_twin_sync.dart';
 import 'api/pseudo_manual/primitive_twin_sync.dart';
 import 'api/pseudo_manual/simple_twin_sync.dart';
-import 'api/pseudo_manual/stream_twin_sync.dart';
 import 'api/pseudo_manual/structure_twin_sync.dart';
 import 'api/simple.dart';
 import 'api/stream.dart';
@@ -305,9 +304,6 @@ abstract class RustLibApi extends BaseApi {
 
   int simpleAdderTwinSync({required int a, required int b, dynamic hint});
 
-  Stream<String> handleStreamRealisticTwinSync(
-      {required String arg, dynamic hint});
-
   StructWithOneFieldTwinSync funcStructWithOneFieldTwinSync(
       {required StructWithOneFieldTwinSync arg, dynamic hint});
 
@@ -326,8 +322,15 @@ abstract class RustLibApi extends BaseApi {
   Future<int> simpleAdderTwinNormal(
       {required int a, required int b, dynamic hint});
 
-  Stream<String> handleStreamRealisticTwinNormal(
+  Stream<String> funcStreamRealisticTwinNormal(
       {required String arg, dynamic hint});
+
+  Stream<String> funcStreamReturnErrorTwinNormal({dynamic hint});
+
+  Stream<String> funcStreamReturnPanicTwinNormal({dynamic hint});
+
+  Stream<int> funcStreamSinkArgPositionTwinNormal(
+      {required int a, required int b, dynamic hint});
 
   Future<StructWithOneFieldTwinNormal> funcStructWithOneFieldTwinNormal(
       {required StructWithOneFieldTwinNormal arg, dynamic hint});
@@ -2320,28 +2323,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<String> handleStreamRealisticTwinSync(
-      {required String arg, dynamic hint}) {
-    var arg0 = api2wire_String(arg);
-    return handler.executeStream(StreamTask(
-      callFfi: (port_) =>
-          wire.wire_handle_stream_realistic_twin_sync(port_, arg0),
-      parseSuccessData: _wire2api_String,
-      parseErrorData: null,
-      constMeta: kHandleStreamRealisticTwinSyncConstMeta,
-      argValues: [arg],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kHandleStreamRealisticTwinSyncConstMeta =>
-      const TaskConstMeta(
-        debugName: "handle_stream_realistic_twin_sync",
-        argNames: ["arg"],
-      );
-
-  @override
   StructWithOneFieldTwinSync funcStructWithOneFieldTwinSync(
       {required StructWithOneFieldTwinSync arg, dynamic hint}) {
     var arg0 = api2wire_box_autoadd_struct_with_one_field_twin_sync(arg);
@@ -2468,25 +2449,86 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Stream<String> handleStreamRealisticTwinNormal(
+  Stream<String> funcStreamRealisticTwinNormal(
       {required String arg, dynamic hint}) {
     var arg0 = api2wire_String(arg);
     return handler.executeStream(StreamTask(
       callFfi: (port_) =>
-          wire.wire_handle_stream_realistic_twin_normal(port_, arg0),
+          wire.wire_func_stream_realistic_twin_normal(port_, arg0),
       parseSuccessData: _wire2api_String,
       parseErrorData: null,
-      constMeta: kHandleStreamRealisticTwinNormalConstMeta,
+      constMeta: kFuncStreamRealisticTwinNormalConstMeta,
       argValues: [arg],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kHandleStreamRealisticTwinNormalConstMeta =>
+  TaskConstMeta get kFuncStreamRealisticTwinNormalConstMeta =>
       const TaskConstMeta(
-        debugName: "handle_stream_realistic_twin_normal",
+        debugName: "func_stream_realistic_twin_normal",
         argNames: ["arg"],
+      );
+
+  @override
+  Stream<String> funcStreamReturnErrorTwinNormal({dynamic hint}) {
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) => wire.wire_func_stream_return_error_twin_normal(port_),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kFuncStreamReturnErrorTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncStreamReturnErrorTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_stream_return_error_twin_normal",
+        argNames: [],
+      );
+
+  @override
+  Stream<String> funcStreamReturnPanicTwinNormal({dynamic hint}) {
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) => wire.wire_func_stream_return_panic_twin_normal(port_),
+      parseSuccessData: _wire2api_String,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kFuncStreamReturnPanicTwinNormalConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncStreamReturnPanicTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_stream_return_panic_twin_normal",
+        argNames: [],
+      );
+
+  @override
+  Stream<int> funcStreamSinkArgPositionTwinNormal(
+      {required int a, required int b, dynamic hint}) {
+    var arg0 = api2wire_u_32(a);
+    var arg1 = api2wire_u_32(b);
+    return handler.executeStream(StreamTask(
+      callFfi: (port_) => wire.wire_func_stream_sink_arg_position_twin_normal(
+          port_, arg0, arg1),
+      parseSuccessData: _wire2api_u_32,
+      parseErrorData: null,
+      constMeta: kFuncStreamSinkArgPositionTwinNormalConstMeta,
+      argValues: [a, b],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncStreamSinkArgPositionTwinNormalConstMeta =>
+      const TaskConstMeta(
+        debugName: "func_stream_sink_arg_position_twin_normal",
+        argNames: ["a", "b"],
       );
 
   @override
