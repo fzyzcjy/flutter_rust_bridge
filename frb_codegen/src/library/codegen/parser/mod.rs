@@ -173,6 +173,12 @@ mod tests {
         body("library/codegen/parser/mod/non_qualified_names", None)
     }
 
+    #[test]
+    #[serial]
+    fn test_generics() -> anyhow::Result<()> {
+        body("library/codegen/parser/mod/generics", None)
+    }
+
     fn body(
         fixture_name: &str,
         rust_input_path_pack: Option<Box<dyn Fn(&Path) -> RustInputPathPack>>,
