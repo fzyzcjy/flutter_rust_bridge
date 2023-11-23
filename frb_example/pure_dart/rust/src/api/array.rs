@@ -42,7 +42,7 @@ pub fn return_boxed_raw_feed_id(id: FeedId) -> Box<[u8; 8]> {
 
 pub struct TestId(pub [i32; 2]);
 
-pub fn test_id(id: TestId) -> TestId {
+pub fn func_test_id(id: TestId) -> TestId {
     id
 }
 
