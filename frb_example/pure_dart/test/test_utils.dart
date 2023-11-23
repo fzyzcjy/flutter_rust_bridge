@@ -8,10 +8,23 @@ void addTestsIdentityFunctionCall<T>(
   FutureOr<T> Function({required T arg, dynamic hint}) func,
   List<T> values,
 ) {
-  group('call $func', () {
+  _addTestsRaw(
+    groupName: 'call $func',
+    values: values,
+    body: (value) async => expect(await func(arg: value), value),
+  );
+}
+
+@isTestGroup
+void _addTestsRaw<T>({
+  required String groupName,
+  required List<T> values,
+  required Future<void> Function(T value) body,
+}) {
+  group(groupName, () {
     for (final value in values) {
       test('with value $value', () async {
-        expect(await func(arg: value), value);
+        await body(value);
       });
     }
   });
