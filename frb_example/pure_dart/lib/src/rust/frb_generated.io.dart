@@ -374,14 +374,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     if (apiObj is EnumWithItemMixed_B) {
       var pre_field0 = api2wire_list_prim_u_8(apiObj.field0);
       wireObj.tag = 1;
-      wireObj.kind = inner.inflate_EnumWithItemMixed_B();
+      wireObj.kind = wire.inflate_EnumWithItemMixed_B();
       wireObj.kind.ref.B.ref.field0 = pre_field0;
       return;
     }
     if (apiObj is EnumWithItemMixed_C) {
       var pre_c_field = api2wire_String(apiObj.cField);
       wireObj.tag = 2;
-      wireObj.kind = inner.inflate_EnumWithItemMixed_C();
+      wireObj.kind = wire.inflate_EnumWithItemMixed_C();
       wireObj.kind.ref.C.ref.c_field = pre_c_field;
       return;
     }
@@ -392,14 +392,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     if (apiObj is EnumWithItemStruct_A) {
       var pre_a_field = api2wire_list_prim_u_8(apiObj.aField);
       wireObj.tag = 0;
-      wireObj.kind = inner.inflate_EnumWithItemStruct_A();
+      wireObj.kind = wire.inflate_EnumWithItemStruct_A();
       wireObj.kind.ref.A.ref.a_field = pre_a_field;
       return;
     }
     if (apiObj is EnumWithItemStruct_B) {
       var pre_b_field = api2wire_list_prim_i_32(apiObj.bField);
       wireObj.tag = 1;
-      wireObj.kind = inner.inflate_EnumWithItemStruct_B();
+      wireObj.kind = wire.inflate_EnumWithItemStruct_B();
       wireObj.kind.ref.B.ref.b_field = pre_b_field;
       return;
     }
@@ -410,14 +410,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     if (apiObj is EnumWithItemTuple_A) {
       var pre_field0 = api2wire_list_prim_u_8(apiObj.field0);
       wireObj.tag = 0;
-      wireObj.kind = inner.inflate_EnumWithItemTuple_A();
+      wireObj.kind = wire.inflate_EnumWithItemTuple_A();
       wireObj.kind.ref.A.ref.field0 = pre_field0;
       return;
     }
     if (apiObj is EnumWithItemTuple_B) {
       var pre_field0 = api2wire_list_prim_i_32(apiObj.field0);
       wireObj.tag = 1;
-      wireObj.kind = inner.inflate_EnumWithItemTuple_B();
+      wireObj.kind = wire.inflate_EnumWithItemTuple_B();
       wireObj.kind.ref.B.ref.field0 = pre_field0;
       return;
     }
