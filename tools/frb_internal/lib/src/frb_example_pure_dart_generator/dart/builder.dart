@@ -7,12 +7,21 @@ class DartFileBuilder {
 
   DartFileBuilder({required this.importName});
 
+  void addTestsIdentityFunctionCall(
+    String funcName,
+    List<String> values,
+  ) {
+    if (values.isEmpty) throw ArgumentError();
+    body += 'addTestsIdentityFunctionCall($funcName, [${values.join(", ")}]);';
+  }
+
   @override
   String toString() {
     return '''$kDirectSourcesPrelude
 import 'package:frb_example_pure_dart/src/rust/api/pseudo_manual/$importName.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
 import 'package:test/test.dart';
+import '../../test_utils.dart';
 $imports
 
 Future<void> main() async {

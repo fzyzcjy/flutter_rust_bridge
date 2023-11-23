@@ -13,14 +13,8 @@ Map<String, String> generateDartDirectSources() {
 String _generatePrimitive() {
   final builder = DartFileBuilder(importName: 'primitive');
   for (final ty in kPrimitiveTypes) {
-    for (final argRaw in ty.interestRawValues) {
-      final arg = ty.primitiveWrapper(ty, argRaw);
-      builder.body += '''
-        test('type=${ty.name} arg=$arg', () async {
-          expect(await examplePrimitiveType${ReCase(ty.name).pascalCase}TwinNormal(arg: $arg), $arg);
-        });
-      ''';
-    }
+    final values = ty.interestRawValues.map((value) => ty.primitiveWrapper(ty, value)).toList();
+    builder.addTestsIdentityFunctionCall('examplePrimitiveType${ReCase(ty.name).pascalCase}TwinNormal', values);
   }
   return builder.toString();
 }
@@ -34,16 +28,11 @@ String _generatePrimitiveList() {
   """;
 
   for (final ty in kPrimitiveTypes) {
-    for (final arg in [
+    final values = [
       ty.primitiveListWrapper(ty, ''),
       ...ty.interestRawValues.map((x) => ty.primitiveListWrapper(ty, x)),
-    ]) {
-      builder.body += '''
-        test('type=${ty.name} arg=$arg', () async {
-          expect(await examplePrimitiveListType${ReCase(ty.name).pascalCase}TwinNormal(arg: $arg), $arg);
-        });
-      ''';
-    }
+    ];
+    builder.addTestsIdentityFunctionCall('examplePrimitiveListType${ReCase(ty.name).pascalCase}TwinNormal', values);
   }
   return builder.toString();
 }
@@ -51,16 +40,11 @@ String _generatePrimitiveList() {
 String _generateOptionalPrimitive() {
   final builder = DartFileBuilder(importName: 'optional_primitive');
   for (final ty in kPrimitiveTypes) {
-    for (final arg in [
+    final values = [
       "null",
       ...ty.interestRawValues.map((x) => ty.primitiveWrapper(ty, x)),
-    ]) {
-      builder.body += '''
-        test('type=${ty.name} arg=$arg', () async {
-          expect(await exampleOptionalPrimitiveType${ReCase(ty.name).pascalCase}TwinNormal(arg: $arg), $arg);
-        });
-      ''';
-    }
+    ];
+    builder.addTestsIdentityFunctionCall('exampleOptionalPrimitiveType${ReCase(ty.name).pascalCase}TwinNormal', values);
   }
   return builder.toString();
 }
