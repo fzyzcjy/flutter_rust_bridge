@@ -101,7 +101,7 @@ mod tests {
     use super::extract_module;
 
     #[test]
-    pub fn extract_mod() {
+    pub fn test_extract_module_simple() {
         let src = "mod module_1 {
     // code 1
 }
@@ -115,7 +115,7 @@ mod module_2 {
     }
 
     #[test]
-    pub fn extract_submod() {
+    pub fn test_extract_module_submod() {
         let src = "mod module {
     mod submodule {
         // sub code
