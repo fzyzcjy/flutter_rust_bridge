@@ -16,6 +16,22 @@ void addTestsIdentityFunctionCall<T>(
 }
 
 @isTestGroup
+void addTestsErrorFunctionCall<T>(
+  FutureOr<void> Function({required T arg, dynamic hint}) func,
+  List<T> values,
+  Matcher matcher(T value),
+) {
+  _addTestsRaw(
+    groupName: 'call $func',
+    values: values,
+    body: (value) async => await expectLater(
+      () async => func(arg: value),
+      throwsA(matcher(value)),
+    ),
+  );
+}
+
+@isTestGroup
 void _addTestsRaw<T>({
   required String groupName,
   required List<T> values,

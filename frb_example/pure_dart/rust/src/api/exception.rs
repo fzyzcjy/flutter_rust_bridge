@@ -15,26 +15,34 @@ pub fn func_type_infallible_panic_twin_normal() -> i32 {
     panic!("deliberate panic")
 }
 
-// ------------------------------ custom struct error ----------------------------------
+// ------------------------------ custom error + return ok/panic ----------------------------------
 
-pub enum CustomEnumErrorTwinNormal {
-    Error0 { e: String, backtrace: Backtrace },
-    Error1 { e: u32, backtrace: Backtrace },
-}
-
-pub fn custom_enum_error_return_error_twin_normal() -> Result<u32, CustomEnumErrorTwinNormal> {
-    Err(CustomEnumErrorTwinNormal::Error0 {
-        e: "deliberate error".into(),
-        backtrace: Backtrace::new(),
-    })
-}
-
-pub fn custom_enum_error_return_ok_twin_normal() -> Result<u32, CustomEnumErrorTwinNormal> {
-    Ok(3)
+pub fn custom_enum_error_return_ok_twin_normal(arg: u32) -> Result<u32, CustomEnumErrorTwinNormal> {
+    Ok(arg)
 }
 
 pub fn custom_enum_error_panic_twin_normal() -> Result<(), CustomEnumErrorTwinNormal> {
     panic!("deliberate panic");
+}
+
+// ------------------------------ custom struct error ----------------------------------
+
+pub enum CustomEnumErrorTwinNormal {
+    One {
+        message: String,
+        backtrace: Backtrace,
+    },
+    Two {
+        message: u32,
+        backtrace: Backtrace,
+    },
+}
+
+pub fn custom_enum_error_return_error_twin_normal() -> Result<u32, CustomEnumErrorTwinNormal> {
+    Err(CustomEnumErrorTwinNormal::One {
+        message: "deliberate error".into(),
+        backtrace: Backtrace::new(),
+    })
 }
 
 // ------------------------------ custom nested errors ----------------------------------

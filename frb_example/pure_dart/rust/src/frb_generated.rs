@@ -1960,12 +1960,12 @@ impl Wire2Api<u8> for u8 {
 impl support::IntoDart for CustomEnumErrorTwinNormal {
     fn into_dart(self) -> support::DartAbi {
         match self {
-            Self::Error0 { e, backtrace } => vec![
+            Self::One { e, backtrace } => vec![
                 0.into_dart(),
                 e.into_into_dart().into_dart(),
                 backtrace.into_into_dart().into_dart(),
             ],
-            Self::Error1 { e, backtrace } => vec![
+            Self::Two { e, backtrace } => vec![
                 1.into_dart(),
                 e.into_into_dart().into_dart(),
                 backtrace.into_into_dart().into_dart(),
