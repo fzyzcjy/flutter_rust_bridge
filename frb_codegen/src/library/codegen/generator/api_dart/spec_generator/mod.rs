@@ -4,14 +4,16 @@ use crate::codegen::generator::api_dart::spec_generator::base::{
 };
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
-use crate::codegen::ir::func::IrFuncOwnerInfo;
+use crate::codegen::ir::func::{IrFunc, IrFuncOwnerInfo};
+use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
+use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use anyhow::Result;
 use itertools::Itertools;
 use serde::Serialize;
-use std::collections::HashSet;
+use std::collections::{HashMap, HashSet};
 
 pub(crate) mod base;
 pub(crate) mod class;
@@ -21,6 +23,10 @@ pub(crate) mod misc;
 
 #[derive(Serialize)]
 pub(crate) struct ApiDartOutputSpec {
+    pub namespaced_items: HashMap<Namespace, ApiDartOutputSpecItem>,
+}
+
+pub(crate) struct ApiDartOutputSpecItem {
     pub funcs: Vec<ApiDartGeneratedFunction>,
     pub classes: Vec<ApiDartGeneratedClass>,
     pub needs_freezed: bool,
@@ -43,22 +49,52 @@ pub(crate) fn generate(
         .chain(grouped_classes.keys())
         .collect::<HashSet<_>>();
 
-    let funcs = (ir_pack.funcs.iter())
-        .filter(|f| f.owner == IrFuncOwnerInfo::Function)
-        .map(|f| function::generate(f, context))
-        .collect_vec();
-
-    let classes = cache
-        .distinct_types
+    let namespaced_items = namespaces
         .iter()
-        .filter_map(|ty| ApiDartGenerator::new(ty.clone(), context).generate_class())
-        .collect_vec();
+        .map(|namespace| {
+            (
+                namespace,
+                generate_item(
+                    &grouped_classes.get(namespace),
+                    &grouped_funcs.get(namespace),
+                    context,
+                ),
+            )
+        })
+        .collect();
 
-    let needs_freezed = classes.iter().any(|c| c.needs_freezed);
+    Ok(ApiDartOutputSpec { namespaced_items })
+}
 
-    Ok(ApiDartOutputSpec {
+fn generate_item(
+    classes: &Option<&Vec<&IrType>>,
+    funcs: &Option<&Vec<&IrFunc>>,
+    context: ApiDartGeneratorContext,
+) -> ApiDartOutputSpecItem {
+    let funcs = funcs
+        .map(|funcs| {
+            funcs
+                .iter()
+                .filter(|f| f.owner == IrFuncOwnerInfo::Function)
+                .map(|f| function::generate(f, context))
+                .collect_vec()
+        })
+        .unwrap_or_default();
+
+    let classes = classes
+        .map(|classes| {
+            classes
+                .iter()
+                .filter_map(|ty| ApiDartGenerator::new(ty.clone(), context).generate_class())
+                .collect_vec()
+        })
+        .unwrap_or_default();
+
+    let needs_freezed = classes.iter().any(|class| class.needs_freezed);
+
+    ApiDartOutputSpecItem {
         funcs,
         classes,
         needs_freezed,
-    })
+    }
 }

@@ -1,7 +1,9 @@
 use crate::codegen::generator::api_dart::internal_config::GeneratorApiDartInternalConfig;
 use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGeneratedClass;
 use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
-use crate::codegen::generator::api_dart::spec_generator::ApiDartOutputSpec;
+use crate::codegen::generator::api_dart::spec_generator::{
+    ApiDartOutputSpec, ApiDartOutputSpecItem,
+};
 use crate::codegen::generator::misc::{PathText, PathTexts};
 use crate::codegen::ir::namespace::Namespace;
 use itertools::Itertools;
@@ -16,20 +18,13 @@ pub(super) fn generate(
     spec: &ApiDartOutputSpec,
     config: &GeneratorApiDartInternalConfig,
 ) -> anyhow::Result<ApiDartOutputText> {
-    let ApiDartOutputSpec { funcs, classes, .. } = spec;
-
     let path_texts = PathTexts(
-        namespaces
+        spec.namespaced_items
             .iter()
-            .map(|&namespace| {
+            .map(|(namespace, item)| {
                 let dart_output_path =
                     compute_path_from_namespace(&config.dart_decl_base_output_path, &namespace);
-                let text = generate_end_api_text(
-                    namespace,
-                    &dart_output_path,
-                    &grouped_classes.get(namespace),
-                    &grouped_funcs.get(namespace),
-                );
+                let text = generate_end_api_text(namespace, &dart_output_path, item);
                 PathText::new(dart_output_path, text)
             })
             .collect_vec(),
@@ -43,13 +38,9 @@ pub(super) fn generate(
 fn generate_end_api_text(
     namespace: &Namespace,
     dart_output_path: &Path,
-    classes: &Option<&Vec<&ApiDartGeneratedClass>>,
-    funcs: &Option<&Vec<&ApiDartGeneratedFunction>>,
+    item: &ApiDartOutputSpecItem,
 ) -> String {
-    let needs_freezed = classes
-        .map(|classes| classes.iter().any(|c| c.needs_freezed))
-        .unwrap_or(false);
-    let parts = if needs_freezed {
+    let parts = if item.needs_freezed {
         format!(
             "part '{name}.freezed.dart';",
             name = dart_output_path.file_stem().unwrap().to_str().unwrap()
@@ -58,10 +49,12 @@ fn generate_end_api_text(
         "".to_owned()
     };
 
-    let funcs = funcs
+    let funcs = item
+        .funcs
         .map(|funcs| funcs.iter().map(|f| generate_function(f)).join("\n\n"))
         .unwrap_or_default();
-    let classes = classes
+    let classes = item
+        .classes
         .map(|classes| classes.iter().map(|c| c.code.clone()).join("\n\n"))
         .unwrap_or_default();
 

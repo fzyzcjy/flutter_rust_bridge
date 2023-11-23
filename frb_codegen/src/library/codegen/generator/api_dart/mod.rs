@@ -28,7 +28,7 @@ pub(crate) fn generate(
     let text = text_generator::generate(&spec, config)?;
     Ok(GeneratorApiDartOutput {
         output_texts: text.output_texts,
-        needs_freezed: spec.needs_freezed,
+        needs_freezed: spec.namespaced_items.values().any(|x| x.needs_freezed),
     })
 }
 
