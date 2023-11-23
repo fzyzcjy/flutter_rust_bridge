@@ -3896,9 +3896,7 @@ Duration _wire2api_Chrono_Duration(dynamic raw) {
 }
 
 List<Duration> _wire2api_Chrono_DurationList(dynamic raw) {
-  return (raw as List<dynamic>)
-      .map(_wire2api_Chrono_Chrono_DurationList)
-      .toList();
+  return (raw as List<dynamic>).map(_wire2api_Chrono_Duration).toList();
 }
 
 DateTime _wire2api_Chrono_Local(dynamic raw) {
@@ -3906,7 +3904,7 @@ DateTime _wire2api_Chrono_Local(dynamic raw) {
 }
 
 List<DateTime> _wire2api_Chrono_LocalList(dynamic raw) {
-  return (raw as List<dynamic>).map(_wire2api_Chrono_Chrono_LocalList).toList();
+  return (raw as List<dynamic>).map(_wire2api_Chrono_Local).toList();
 }
 
 DateTime _wire2api_Chrono_Naive(dynamic raw) {

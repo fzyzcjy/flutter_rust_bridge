@@ -53,7 +53,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       List<Duration> raw) {
     final ans = Int64List(raw.length);
     for (var i = 0; i < raw.length; ++i)
-      ans[i] = api2wire_Chrono_Chrono_DurationList(raw[i]);
+      ans[i] = api2wire_Chrono_Duration(raw[i]);
     return api2wire_list_prim_i_64(ans);
   }
 
@@ -71,8 +71,7 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_list_prim_i_64> api2wire_Chrono_NaiveList(
       List<DateTime> raw) {
     final ans = Int64List(raw.length);
-    for (var i = 0; i < raw.length; ++i)
-      ans[i] = api2wire_Chrono_Chrono_NaiveList(raw[i]);
+    for (var i = 0; i < raw.length; ++i) ans[i] = api2wire_Chrono_Naive(raw[i]);
     return api2wire_list_prim_i_64(ans);
   }
 
