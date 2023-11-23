@@ -874,11 +874,6 @@ pub fn wire_test_abc_enum(port_: MessagePort, abc: JsValue) {
 }
 
 #[wasm_bindgen]
-pub fn wire_test_contains_mirrored_sub_struct(port_: MessagePort) {
-    wire_test_contains_mirrored_sub_struct_impl(port_)
-}
-
-#[wasm_bindgen]
 pub fn wire_test_struct_with_enum(port_: MessagePort, se: JsValue) {
     wire_test_struct_with_enum_impl(port_, se)
 }

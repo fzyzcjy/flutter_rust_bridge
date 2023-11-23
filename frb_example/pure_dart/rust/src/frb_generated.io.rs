@@ -2065,11 +2065,6 @@ pub extern "C" fn wire_test_abc_enum(port_: i64, abc: *mut wire_abc) {
 }
 
 #[no_mangle]
-pub extern "C" fn wire_test_contains_mirrored_sub_struct(port_: i64) {
-    wire_test_contains_mirrored_sub_struct_impl(port_)
-}
-
-#[no_mangle]
 pub extern "C" fn wire_test_struct_with_enum(port_: i64, se: *mut wire_struct_with_enum) {
     wire_test_struct_with_enum_impl(port_, se)
 }

@@ -514,8 +514,6 @@ void wire_list_of_primitive_enums(int64_t port_, struct wire_list_weekdays *week
 
 void wire_test_abc_enum(int64_t port_, struct wire_abc *abc);
 
-void wire_test_contains_mirrored_sub_struct(int64_t port_);
-
 void wire_test_struct_with_enum(int64_t port_, struct wire_struct_with_enum *se);
 
 void wire_func_return_unit_twin_normal(int64_t port_);
@@ -1154,7 +1152,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_simple_adder_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_simple_adder_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_test_abc_enum);
-    dummy_var ^= ((int64_t) (void*) wire_test_contains_mirrored_sub_struct);
     dummy_var ^= ((int64_t) (void*) wire_test_struct_with_enum);
     return dummy_var;
 }

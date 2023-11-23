@@ -1668,21 +1668,6 @@ class RustLibWire implements BaseWire {
   late final _wire_test_abc_enum = _wire_test_abc_enumPtr
       .asFunction<void Function(int, ffi.Pointer<wire_abc>)>();
 
-  void wire_test_contains_mirrored_sub_struct(
-    int port_,
-  ) {
-    return _wire_test_contains_mirrored_sub_struct(
-      port_,
-    );
-  }
-
-  late final _wire_test_contains_mirrored_sub_structPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
-          'wire_test_contains_mirrored_sub_struct');
-  late final _wire_test_contains_mirrored_sub_struct =
-      _wire_test_contains_mirrored_sub_structPtr
-          .asFunction<void Function(int)>();
-
   void wire_test_struct_with_enum(
     int port_,
     ffi.Pointer<wire_struct_with_enum> se,

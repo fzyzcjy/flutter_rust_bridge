@@ -22,10 +22,6 @@ Future<BigBuffers> handleBigBuffers({dynamic hint}) =>
 Future<Abc> testAbcEnum({required Abc abc, dynamic hint}) =>
     RustLib.instance.api.testAbcEnum(abc: abc, hint: hint);
 
-Future<ContainsMirroredSubStruct> testContainsMirroredSubStruct(
-        {dynamic hint}) =>
-    RustLib.instance.api.testContainsMirroredSubStruct(hint: hint);
-
 Future<StructWithEnum> testStructWithEnum(
         {required StructWithEnum se, dynamic hint}) =>
     RustLib.instance.api.testStructWithEnum(se: se, hint: hint);
@@ -113,27 +109,6 @@ class C {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is C && runtimeType == other.runtimeType && c == other.c;
-}
-
-class ContainsMirroredSubStruct {
-  final RawStringMirrored test;
-  final A test2;
-
-  const ContainsMirroredSubStruct({
-    required this.test,
-    required this.test2,
-  });
-
-  @override
-  int get hashCode => test.hashCode ^ test2.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ContainsMirroredSubStruct &&
-          runtimeType == other.runtimeType &&
-          test == other.test &&
-          test2 == other.test2;
 }
 
 class MyNestedStruct {

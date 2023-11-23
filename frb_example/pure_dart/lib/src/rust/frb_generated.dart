@@ -132,9 +132,6 @@ abstract class RustLibApi extends BaseApi {
 
   Future<Abc> testAbcEnum({required Abc abc, dynamic hint});
 
-  Future<ContainsMirroredSubStruct> testContainsMirroredSubStruct(
-      {dynamic hint});
-
   Future<StructWithEnum> testStructWithEnum(
       {required StructWithEnum se, dynamic hint});
 
@@ -981,26 +978,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kTestAbcEnumConstMeta => const TaskConstMeta(
         debugName: "test_abc_enum",
         argNames: ["abc"],
-      );
-
-  @override
-  Future<ContainsMirroredSubStruct> testContainsMirroredSubStruct(
-      {dynamic hint}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_contains_mirrored_sub_struct(port_),
-      parseSuccessData: _wire2api_contains_mirrored_sub_struct,
-      parseErrorData: null,
-      constMeta: kTestContainsMirroredSubStructConstMeta,
-      argValues: [],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kTestContainsMirroredSubStructConstMeta =>
-      const TaskConstMeta(
-        debugName: "test_contains_mirrored_sub_struct",
-        argNames: [],
       );
 
   @override
@@ -3259,7 +3236,6 @@ AnyhowException _wire2api_AnyhowException(dynamic raw) {
   return AnyhowException(raw as String);
 }
 
-RawStringMirrored _wire2api_RawStringMirrored(dynamic raw) {}
 String _wire2api_String(dynamic raw) {
   return raw as String;
 }
@@ -3415,16 +3391,6 @@ C _wire2api_c(dynamic raw) {
     throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
   return C(
     c: _wire2api_bool(arr[0]),
-  );
-}
-
-ContainsMirroredSubStruct _wire2api_contains_mirrored_sub_struct(dynamic raw) {
-  final arr = raw as List<dynamic>;
-  if (arr.length != 2)
-    throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
-  return ContainsMirroredSubStruct(
-    test: _wire2api_RawStringMirrored(arr[0]),
-    test2: _wire2api_a(arr[1]),
   );
 }
 

@@ -37,7 +37,6 @@ use crate::api::inside_macro::MacroStruct;
 use crate::api::inside_macro::*;
 use crate::api::misc_example::Abc;
 use crate::api::misc_example::BigBuffers;
-use crate::api::misc_example::ContainsMirroredSubStruct;
 use crate::api::misc_example::MyNestedStruct;
 use crate::api::misc_example::MyTreeNode;
 use crate::api::misc_example::StructWithEnum;
@@ -463,16 +462,6 @@ fn wire_test_abc_enum_impl(port_: MessagePort, abc: impl Wire2Api<Abc> + UnwindS
             let api_abc = abc.wire2api();
             move |task_callback| Result::<_, ()>::Ok(test_abc_enum(api_abc))
         },
-    )
-}
-fn wire_test_contains_mirrored_sub_struct_impl(port_: MessagePort) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, ContainsMirroredSubStruct, _>(
-        WrapInfo {
-            debug_name: "test_contains_mirrored_sub_struct",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || move |task_callback| Result::<_, ()>::Ok(test_contains_mirrored_sub_struct()),
     )
 }
 fn wire_test_struct_with_enum_impl(
@@ -2328,21 +2317,6 @@ impl support::IntoDart for C {
 impl support::IntoDartExceptPrimitive for C {}
 impl rust2dart::IntoIntoDart<C> for C {
     fn into_into_dart(self) -> C {
-        self
-    }
-}
-impl support::IntoDart for ContainsMirroredSubStruct {
-    fn into_dart(self) -> support::DartAbi {
-        vec![
-            self.test.into_into_dart().into_dart(),
-            self.test2.into_into_dart().into_dart(),
-        ]
-        .into_dart()
-    }
-}
-impl support::IntoDartExceptPrimitive for ContainsMirroredSubStruct {}
-impl rust2dart::IntoIntoDart<ContainsMirroredSubStruct> for ContainsMirroredSubStruct {
-    fn into_into_dart(self) -> ContainsMirroredSubStruct {
         self
     }
 }
