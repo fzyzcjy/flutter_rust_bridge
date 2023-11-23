@@ -303,3 +303,21 @@ fn serialize_punctuated<S: Serializer>(
 ) -> std::result::Result<S::Ok, S::Error> {
     lit.into_iter().collect_vec().serialize(s)
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::codegen::parser::attribute_parser::{FrbAttribute, FrbAttributes};
+    use syn::{Attribute, ItemFn};
+
+    #[test]
+    fn test_simple() -> anyhow::Result<()> {
+        let code = "#[frb(sync)] fn f() {}";
+        let ast: ItemFn = syn::parse_str(code)?;
+        println!("{ast:#?}");
+        // assert_eq!(
+        //     FrbAttributes::parse(&vec![syn::parse_str::<Attribute>("#[frb(sync)]")?])?,
+        //     FrbAttributes(vec![FrbAttribute::Sync])
+        // );
+        Ok(())
+    }
+}
