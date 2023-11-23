@@ -1,7 +1,9 @@
 // ignore_for_file: unused_import, unused_element
 
 import 'api/array.dart';
+import 'api/chrono_type.dart';
 import 'api/comment.dart';
+import 'api/dart_dynamic.dart';
 import 'api/enumeration.dart';
 import 'api/exception.dart';
 import 'api/inside_macro.dart';
@@ -24,6 +26,8 @@ import 'api/raw_string.dart';
 import 'api/simple.dart';
 import 'api/stream.dart';
 import 'api/structure.dart';
+import 'api/tuple.dart';
+import 'api/uuid_type.dart';
 import 'auxiliary/sample_types.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -89,6 +93,33 @@ abstract class RustLibApi extends BaseApi {
 
   Future<U8Array32> useMsgid({required MessageId id, dynamic hint});
 
+  Future<DateTime> datetimeLocal({required DateTime d, dynamic hint});
+
+  Future<DateTime> datetimeUtc({required DateTime d, dynamic hint});
+
+  Future<Duration> duration({required Duration d, dynamic hint});
+
+  Future<List<DateTime>> handleDurations(
+      {required List<Duration> durations,
+      required DateTime since,
+      dynamic hint});
+
+  Future<List<Duration>> handleTimestamps(
+      {required List<DateTime> timestamps,
+      required DateTime epoch,
+      dynamic hint});
+
+  Future<Duration> howLongDoesItTake(
+      {required FeatureChrono mine, dynamic hint});
+
+  Future<DateTime> naivedatetime({required DateTime d, dynamic hint});
+
+  Future<DateTime?> optionalEmptyDatetimeUtc({DateTime? d, dynamic hint});
+
+  Future<TestChrono> testChrono({dynamic hint});
+
+  Future<TestChrono> testPreciseChrono({dynamic hint});
+
   Future<void> structWithCommentsTwinNormalInstanceMethodTwinNormal(
       {required StructWithCommentsTwinNormal that, dynamic hint});
 
@@ -102,6 +133,8 @@ abstract class RustLibApi extends BaseApi {
 
   Future<void> functionWithCommentsTripleSlashSingleLineTwinNormal(
       {dynamic hint});
+
+  Future<dynamic> returnDartDynamic({dynamic hint});
 
   Future<EnumSimpleTwinNormal> funcEnumSimpleTwinNormal(
       {required EnumSimpleTwinNormal arg, dynamic hint});
@@ -446,6 +479,18 @@ abstract class RustLibApi extends BaseApi {
   Future<TupleStructWithTwoFieldTwinNormal>
       funcTupleStructWithTwoFieldTwinNormal(
           {required TupleStructWithTwoFieldTwinNormal arg, dynamic hint});
+
+  Future<(String, int)> testTuple({(String, int)? value, dynamic hint});
+
+  Future<void> testTuple2({required List<(String, int)> value, dynamic hint});
+
+  Future<FeatureUuid> handleNestedUuids(
+      {required FeatureUuid ids, dynamic hint});
+
+  Future<UuidValue> handleUuid({required UuidValue id, dynamic hint});
+
+  Future<List<UuidValue>> handleUuids(
+      {required List<UuidValue> ids, dynamic hint});
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -663,6 +708,203 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<DateTime> datetimeLocal({required DateTime d, dynamic hint}) {
+    var arg0 = api2wire_Chrono_Local(d);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_datetime_local(port_, arg0),
+      parseSuccessData: _wire2api_Chrono_Local,
+      parseErrorData: null,
+      constMeta: kDatetimeLocalConstMeta,
+      argValues: [d],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kDatetimeLocalConstMeta => const TaskConstMeta(
+        debugName: "datetime_local",
+        argNames: ["d"],
+      );
+
+  @override
+  Future<DateTime> datetimeUtc({required DateTime d, dynamic hint}) {
+    var arg0 = api2wire_Chrono_Utc(d);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_datetime_utc(port_, arg0),
+      parseSuccessData: _wire2api_Chrono_Utc,
+      parseErrorData: null,
+      constMeta: kDatetimeUtcConstMeta,
+      argValues: [d],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kDatetimeUtcConstMeta => const TaskConstMeta(
+        debugName: "datetime_utc",
+        argNames: ["d"],
+      );
+
+  @override
+  Future<Duration> duration({required Duration d, dynamic hint}) {
+    var arg0 = api2wire_Chrono_Duration(d);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_duration(port_, arg0),
+      parseSuccessData: _wire2api_Chrono_Duration,
+      parseErrorData: null,
+      constMeta: kDurationConstMeta,
+      argValues: [d],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kDurationConstMeta => const TaskConstMeta(
+        debugName: "duration",
+        argNames: ["d"],
+      );
+
+  @override
+  Future<List<DateTime>> handleDurations(
+      {required List<Duration> durations,
+      required DateTime since,
+      dynamic hint}) {
+    var arg0 = api2wire_Chrono_DurationList(durations);
+    var arg1 = api2wire_Chrono_Local(since);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_durations(port_, arg0, arg1),
+      parseSuccessData: _wire2api_Chrono_LocalList,
+      parseErrorData: null,
+      constMeta: kHandleDurationsConstMeta,
+      argValues: [durations, since],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleDurationsConstMeta => const TaskConstMeta(
+        debugName: "handle_durations",
+        argNames: ["durations", "since"],
+      );
+
+  @override
+  Future<List<Duration>> handleTimestamps(
+      {required List<DateTime> timestamps,
+      required DateTime epoch,
+      dynamic hint}) {
+    var arg0 = api2wire_Chrono_NaiveList(timestamps);
+    var arg1 = api2wire_Chrono_Naive(epoch);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_timestamps(port_, arg0, arg1),
+      parseSuccessData: _wire2api_Chrono_DurationList,
+      parseErrorData: null,
+      constMeta: kHandleTimestampsConstMeta,
+      argValues: [timestamps, epoch],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleTimestampsConstMeta => const TaskConstMeta(
+        debugName: "handle_timestamps",
+        argNames: ["timestamps", "epoch"],
+      );
+
+  @override
+  Future<Duration> howLongDoesItTake(
+      {required FeatureChrono mine, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_feature_chrono(mine);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_how_long_does_it_take(port_, arg0),
+      parseSuccessData: _wire2api_Chrono_Duration,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kHowLongDoesItTakeConstMeta,
+      argValues: [mine],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHowLongDoesItTakeConstMeta => const TaskConstMeta(
+        debugName: "how_long_does_it_take",
+        argNames: ["mine"],
+      );
+
+  @override
+  Future<DateTime> naivedatetime({required DateTime d, dynamic hint}) {
+    var arg0 = api2wire_Chrono_Naive(d);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_naivedatetime(port_, arg0),
+      parseSuccessData: _wire2api_Chrono_Naive,
+      parseErrorData: null,
+      constMeta: kNaivedatetimeConstMeta,
+      argValues: [d],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNaivedatetimeConstMeta => const TaskConstMeta(
+        debugName: "naivedatetime",
+        argNames: ["d"],
+      );
+
+  @override
+  Future<DateTime?> optionalEmptyDatetimeUtc({DateTime? d, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_Chrono_Utc(d);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_optional_empty_datetime_utc(port_, arg0),
+      parseSuccessData: _wire2api_opt_box_autoadd_Chrono_Utc,
+      parseErrorData: null,
+      constMeta: kOptionalEmptyDatetimeUtcConstMeta,
+      argValues: [d],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kOptionalEmptyDatetimeUtcConstMeta => const TaskConstMeta(
+        debugName: "optional_empty_datetime_utc",
+        argNames: ["d"],
+      );
+
+  @override
+  Future<TestChrono> testChrono({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_test_chrono(port_),
+      parseSuccessData: _wire2api_test_chrono,
+      parseErrorData: null,
+      constMeta: kTestChronoConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestChronoConstMeta => const TaskConstMeta(
+        debugName: "test_chrono",
+        argNames: [],
+      );
+
+  @override
+  Future<TestChrono> testPreciseChrono({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_test_precise_chrono(port_),
+      parseSuccessData: _wire2api_test_chrono,
+      parseErrorData: null,
+      constMeta: kTestPreciseChronoConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestPreciseChronoConstMeta => const TaskConstMeta(
+        debugName: "test_precise_chrono",
+        argNames: [],
+      );
+
+  @override
   Future<void> structWithCommentsTwinNormalInstanceMethodTwinNormal(
       {required StructWithCommentsTwinNormal that, dynamic hint}) {
     var arg0 = api2wire_box_autoadd_struct_with_comments_twin_normal(that);
@@ -776,6 +1018,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
                 "function_with_comments_triple_slash_single_line_twin_normal",
             argNames: [],
           );
+
+  @override
+  Future<dynamic> returnDartDynamic({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_return_dart_dynamic(port_),
+      parseSuccessData: _wire2api_dartabi,
+      parseErrorData: null,
+      constMeta: kReturnDartDynamicConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kReturnDartDynamicConstMeta => const TaskConstMeta(
+        debugName: "return_dart_dynamic",
+        argNames: [],
+      );
 
   @override
   Future<EnumSimpleTwinNormal> funcEnumSimpleTwinNormal(
@@ -3525,6 +3785,103 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         debugName: "func_tuple_struct_with_two_field_twin_normal",
         argNames: ["arg"],
       );
+
+  @override
+  Future<(String, int)> testTuple({(String, int)? value, dynamic hint}) {
+    var arg0 = api2wire_opt_box_autoadd_record_string_i_32(value);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_test_tuple(port_, arg0),
+      parseSuccessData: _wire2api_record_string_i_32,
+      parseErrorData: null,
+      constMeta: kTestTupleConstMeta,
+      argValues: [value],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestTupleConstMeta => const TaskConstMeta(
+        debugName: "test_tuple",
+        argNames: ["value"],
+      );
+
+  @override
+  Future<void> testTuple2({required List<(String, int)> value, dynamic hint}) {
+    var arg0 = api2wire_list_record_string_i_32(value);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_test_tuple_2(port_, arg0),
+      parseSuccessData: _wire2api_unit,
+      parseErrorData: null,
+      constMeta: kTestTuple2ConstMeta,
+      argValues: [value],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestTuple2ConstMeta => const TaskConstMeta(
+        debugName: "test_tuple_2",
+        argNames: ["value"],
+      );
+
+  @override
+  Future<FeatureUuid> handleNestedUuids(
+      {required FeatureUuid ids, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_feature_uuid(ids);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_nested_uuids(port_, arg0),
+      parseSuccessData: _wire2api_feature_uuid,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kHandleNestedUuidsConstMeta,
+      argValues: [ids],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleNestedUuidsConstMeta => const TaskConstMeta(
+        debugName: "handle_nested_uuids",
+        argNames: ["ids"],
+      );
+
+  @override
+  Future<UuidValue> handleUuid({required UuidValue id, dynamic hint}) {
+    var arg0 = api2wire_Uuid(id);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_uuid(port_, arg0),
+      parseSuccessData: _wire2api_Uuid,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kHandleUuidConstMeta,
+      argValues: [id],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleUuidConstMeta => const TaskConstMeta(
+        debugName: "handle_uuid",
+        argNames: ["id"],
+      );
+
+  @override
+  Future<List<UuidValue>> handleUuids(
+      {required List<UuidValue> ids, dynamic hint}) {
+    var arg0 = api2wire_Uuids(ids);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_uuids(port_, arg0),
+      parseSuccessData: _wire2api_Uuids,
+      parseErrorData: _wire2api_AnyhowException,
+      constMeta: kHandleUuidsConstMeta,
+      argValues: [ids],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleUuidsConstMeta => const TaskConstMeta(
+        debugName: "handle_uuids",
+        argNames: ["ids"],
+      );
 }
 
 // Section: impl_wire2api
@@ -3533,12 +3890,47 @@ AnyhowException _wire2api_AnyhowException(dynamic raw) {
   return AnyhowException(raw as String);
 }
 
+Duration _wire2api_Chrono_Duration(dynamic raw) {
+  return wire2apiDuration(_wire2api_i64(raw));
+}
+
+List<Duration> _wire2api_Chrono_DurationList(dynamic raw) {
+  return (raw as List<dynamic>)
+      .map(_wire2api_Chrono_Chrono_DurationList)
+      .toList();
+}
+
+DateTime _wire2api_Chrono_Local(dynamic raw) {
+  return wire2apiTimestamp(ts: _wire2api_i64(raw), isUtc: false);
+}
+
+List<DateTime> _wire2api_Chrono_LocalList(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_Chrono_Chrono_LocalList).toList();
+}
+
+DateTime _wire2api_Chrono_Naive(dynamic raw) {
+  return wire2apiTimestamp(ts: _wire2api_i64(raw), isUtc: true);
+}
+
+DateTime _wire2api_Chrono_Utc(dynamic raw) {
+  return wire2apiTimestamp(ts: _wire2api_i64(raw), isUtc: true);
+}
+
 String _wire2api_String(dynamic raw) {
   return raw as String;
 }
 
 List<String> _wire2api_StringList(dynamic raw) {
   return (raw as List<dynamic>).cast<String>();
+}
+
+UuidValue _wire2api_Uuid(dynamic raw) {
+  return UuidValue.fromByteList(_wire2api_uint_8_list(raw));
+}
+
+List<UuidValue> _wire2api_Uuids(dynamic raw) {
+  final bytes = _wire2api_uint_8_list(raw);
+  return wire2apiUuids(bytes);
 }
 
 Uint8List _wire2api_ZeroCopyBuffer_list_prim_u_8(dynamic raw) {
@@ -3607,6 +3999,18 @@ Blob _wire2api_blob(dynamic raw) {
 
 bool _wire2api_bool(dynamic raw) {
   return raw as bool;
+}
+
+Duration _wire2api_box_autoadd_Chrono_Duration(dynamic raw) {
+  return _wire2api_Chrono_Duration(raw);
+}
+
+DateTime _wire2api_box_autoadd_Chrono_Naive(dynamic raw) {
+  return _wire2api_Chrono_Naive(raw);
+}
+
+DateTime _wire2api_box_autoadd_Chrono_Utc(dynamic raw) {
+  return _wire2api_Chrono_Utc(raw);
 }
 
 A _wire2api_box_autoadd_a(dynamic raw) {
@@ -3825,6 +4229,10 @@ CustomStructErrorTwinSync _wire2api_custom_struct_error_twin_sync(dynamic raw) {
   );
 }
 
+dynamic _wire2api_dartabi(dynamic raw) {
+  return raw;
+}
+
 Distance _wire2api_distance(dynamic raw) {
   switch (raw[0]) {
     case 0:
@@ -3952,6 +4360,16 @@ double _wire2api_f_32(dynamic raw) {
 
 double _wire2api_f_64(dynamic raw) {
   return raw as double;
+}
+
+FeatureUuid _wire2api_feature_uuid(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2)
+    throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return FeatureUuid(
+    one: _wire2api_Uuid(arr[0]),
+    many: _wire2api_Uuids(arr[1]),
+  );
 }
 
 FeedId _wire2api_feed_id(dynamic raw) {
@@ -4143,6 +4561,18 @@ NewTypeInt _wire2api_new_type_int(dynamic raw) {
   );
 }
 
+Duration? _wire2api_opt_box_autoadd_Chrono_Duration(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_Chrono_Duration(raw);
+}
+
+DateTime? _wire2api_opt_box_autoadd_Chrono_Naive(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_Chrono_Naive(raw);
+}
+
+DateTime? _wire2api_opt_box_autoadd_Chrono_Utc(dynamic raw) {
+  return raw == null ? null : _wire2api_box_autoadd_Chrono_Utc(raw);
+}
+
 bool? _wire2api_opt_box_autoadd_bool(dynamic raw) {
   return raw == null ? null : _wire2api_box_autoadd_bool(raw);
 }
@@ -4215,6 +4645,17 @@ RawStringItemStruct _wire2api_raw_string_item_struct(dynamic raw) {
     throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
   return RawStringItemStruct(
     type: _wire2api_String(arr[0]),
+  );
+}
+
+(String, int) _wire2api_record_string_i_32(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2) {
+    throw Exception('Expected 2 elements, got ${arr.length}');
+  }
+  return (
+    _wire2api_String(arr[0]),
+    _wire2api_i_32(arr[1]),
   );
 }
 
@@ -4297,6 +4738,17 @@ StructWithZeroFieldTwinSync _wire2api_struct_with_zero_field_twin_sync(
   if (arr.length != 0)
     throw Exception('unexpected arr length: expect 0 but see ${arr.length}');
   return StructWithZeroFieldTwinSync();
+}
+
+TestChrono _wire2api_test_chrono(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 3)
+    throw Exception('unexpected arr length: expect 3 but see ${arr.length}');
+  return TestChrono(
+    dt: _wire2api_opt_box_autoadd_Chrono_Utc(arr[0]),
+    dt2: _wire2api_opt_box_autoadd_Chrono_Naive(arr[1]),
+    du: _wire2api_opt_box_autoadd_Chrono_Duration(arr[2]),
+  );
 }
 
 TestId _wire2api_test_id(dynamic raw) {

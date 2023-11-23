@@ -1,7 +1,9 @@
 // ignore_for_file: unused_import, unused_element
 
 import 'api/array.dart';
+import 'api/chrono_type.dart';
 import 'api/comment.dart';
+import 'api/dart_dynamic.dart';
 import 'api/enumeration.dart';
 import 'api/exception.dart';
 import 'api/inside_macro.dart';
@@ -24,6 +26,8 @@ import 'api/raw_string.dart';
 import 'api/simple.dart';
 import 'api/stream.dart';
 import 'api/structure.dart';
+import 'api/tuple.dart';
+import 'api/uuid_type.dart';
 import 'auxiliary/sample_types.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -39,6 +43,44 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
+  int api2wire_Chrono_Duration(Duration raw) {
+    return api2wire_i64(raw.inMicroseconds);
+  }
+
+  @protected
+  ffi.Pointer<wire_list_prim_i_64> api2wire_Chrono_DurationList(
+      List<Duration> raw) {
+    final ans = Int64List(raw.length);
+    for (var i = 0; i < raw.length; ++i)
+      ans[i] = api2wire_Chrono_Chrono_DurationList(raw[i]);
+    return api2wire_int_64_list(ans);
+  }
+
+  @protected
+  int api2wire_Chrono_Local(DateTime raw) {
+    return api2wire_i64(raw.microsecondsSinceEpoch);
+  }
+
+  @protected
+  int api2wire_Chrono_Naive(DateTime raw) {
+    return api2wire_i64(raw.microsecondsSinceEpoch);
+  }
+
+  @protected
+  ffi.Pointer<wire_list_prim_i_64> api2wire_Chrono_NaiveList(
+      List<DateTime> raw) {
+    final ans = Int64List(raw.length);
+    for (var i = 0; i < raw.length; ++i)
+      ans[i] = api2wire_Chrono_Chrono_NaiveList(raw[i]);
+    return api2wire_int_64_list(ans);
+  }
+
+  @protected
+  int api2wire_Chrono_Utc(DateTime raw) {
+    return api2wire_i64(raw.microsecondsSinceEpoch);
+  }
+
+  @protected
   ffi.Pointer<wire_list_prim_u_8> api2wire_String(String raw) {
     return api2wire_list_prim_u_8(utf8.encoder.convert(raw));
   }
@@ -50,6 +92,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       ans.ref.ptr[i] = api2wire_String(raw[i]);
     }
     return ans;
+  }
+
+  @protected
+  ffi.Pointer<wire_list_prim_u_8> api2wire_Uuid(UuidValue raw) {
+    return api2wire_list_prim_u_8(raw.toBytes());
+  }
+
+  @protected
+  ffi.Pointer<wire_list_prim_u_8> api2wire_Uuids(List<UuidValue> raw) {
+    return api2wire_list_prim_u_8(api2wireConcatenateBytes(raw));
+  }
+
+  @protected
+  ffi.Pointer<ffi.Int64> api2wire_box_autoadd_Chrono_Utc(DateTime raw) {
+    return wire.new_box_autoadd_Chrono_Utc(api2wire_Chrono_Utc(raw));
   }
 
   @protected
@@ -204,6 +261,22 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  ffi.Pointer<wire_feature_chrono> api2wire_box_autoadd_feature_chrono(
+      FeatureChrono raw) {
+    final ptr = wire.new_box_autoadd_feature_chrono();
+    _api_fill_to_wire_feature_chrono(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_feature_uuid> api2wire_box_autoadd_feature_uuid(
+      FeatureUuid raw) {
+    final ptr = wire.new_box_autoadd_feature_uuid();
+    _api_fill_to_wire_feature_uuid(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
   ffi.Pointer<wire_feed_id> api2wire_box_autoadd_feed_id(FeedId raw) {
     final ptr = wire.new_box_autoadd_feed_id();
     _api_fill_to_wire_feed_id(raw, ptr.ref);
@@ -280,6 +353,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   ffi.Pointer<wire_note> api2wire_box_autoadd_note(Note raw) {
     final ptr = wire.new_box_autoadd_note();
     _api_fill_to_wire_note(raw, ptr.ref);
+    return ptr;
+  }
+
+  @protected
+  ffi.Pointer<wire_record_string_i_32> api2wire_box_autoadd_record_string_i_32(
+      (String, int) raw) {
+    final ptr = wire.new_box_autoadd_record_string_i_32();
+    _api_fill_to_wire_record_string_i_32(raw, ptr.ref);
     return ptr;
   }
 
@@ -575,6 +656,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  ffi.Pointer<wire_list_record_string_i_32> api2wire_list_record_string_i_32(
+      List<(String, int)> raw) {
+    final ans = wire.new_list_record_string_i_32(raw.length);
+    for (var i = 0; i < raw.length; ++i) {
+      _api_fill_to_wire_record_string_i_32(raw[i], ans.ref.ptr[i]);
+    }
+    return ans;
+  }
+
+  @protected
   ffi.Pointer<wire_list_test_id> api2wire_list_test_id(List<TestId> raw) {
     final ans = wire.new_list_test_id(raw.length);
     for (var i = 0; i < raw.length; ++i) {
@@ -590,6 +681,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       ans.ref.ptr[i] = api2wire_weekdays(raw[i]);
     }
     return ans;
+  }
+
+  @protected
+  ffi.Pointer<ffi.Int64> api2wire_opt_box_autoadd_Chrono_Utc(DateTime? raw) {
+    return raw == null ? ffi.nullptr : api2wire_box_autoadd_Chrono_Utc(raw);
   }
 
   @protected
@@ -625,6 +721,14 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   ffi.Pointer<ffi.Int8> api2wire_opt_box_autoadd_i_8(int? raw) {
     return raw == null ? ffi.nullptr : api2wire_box_autoadd_i_8(raw);
+  }
+
+  @protected
+  ffi.Pointer<wire_record_string_i_32>
+      api2wire_opt_box_autoadd_record_string_i_32((String, int)? raw) {
+    return raw == null
+        ? ffi.nullptr
+        : api2wire_box_autoadd_record_string_i_32(raw);
   }
 
   @protected
@@ -812,6 +916,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     _api_fill_to_wire_enum_with_item_tuple_twin_sync(apiObj, wireObj.ref);
   }
 
+  void _api_fill_to_wire_box_autoadd_feature_chrono(
+      FeatureChrono apiObj, ffi.Pointer<wire_feature_chrono> wireObj) {
+    _api_fill_to_wire_feature_chrono(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_feature_uuid(
+      FeatureUuid apiObj, ffi.Pointer<wire_feature_uuid> wireObj) {
+    _api_fill_to_wire_feature_uuid(apiObj, wireObj.ref);
+  }
+
   void _api_fill_to_wire_box_autoadd_feed_id(
       FeedId apiObj, ffi.Pointer<wire_feed_id> wireObj) {
     _api_fill_to_wire_feed_id(apiObj, wireObj.ref);
@@ -850,6 +964,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void _api_fill_to_wire_box_autoadd_note(
       Note apiObj, ffi.Pointer<wire_note> wireObj) {
     _api_fill_to_wire_note(apiObj, wireObj.ref);
+  }
+
+  void _api_fill_to_wire_box_autoadd_record_string_i_32(
+      (String, int) apiObj, ffi.Pointer<wire_record_string_i_32> wireObj) {
+    _api_fill_to_wire_record_string_i_32(apiObj, wireObj.ref);
   }
 
   void _api_fill_to_wire_box_autoadd_struct_with_comments_twin_normal(
@@ -1176,6 +1295,20 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
   }
 
+  void _api_fill_to_wire_feature_chrono(
+      FeatureChrono apiObj, wire_feature_chrono wireObj) {
+    wireObj.utc = api2wire_Chrono_Utc(apiObj.utc);
+    wireObj.local = api2wire_Chrono_Local(apiObj.local);
+    wireObj.duration = api2wire_Chrono_Duration(apiObj.duration);
+    wireObj.naive = api2wire_Chrono_Naive(apiObj.naive);
+  }
+
+  void _api_fill_to_wire_feature_uuid(
+      FeatureUuid apiObj, wire_feature_uuid wireObj) {
+    wireObj.one = api2wire_Uuid(apiObj.one);
+    wireObj.many = api2wire_Uuids(apiObj.many);
+  }
+
   void _api_fill_to_wire_feed_id(FeedId apiObj, wire_feed_id wireObj) {
     wireObj.field0 = api2wire_u_8_array_8(apiObj.field0);
   }
@@ -1233,6 +1366,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   void _api_fill_to_wire_note(Note apiObj, wire_note wireObj) {
     wireObj.day = api2wire_box_weekdays(apiObj.day);
     wireObj.body = api2wire_String(apiObj.body);
+  }
+
+  void _api_fill_to_wire_record_string_i_32(
+      (String, int) apiObj, wire_record_string_i_32 wireObj) {
+    wireObj.field0 = api2wire_String(apiObj.$1);
+    wireObj.field1 = api2wire_i_32(apiObj.$2);
   }
 
   void _api_fill_to_wire_speed(Speed apiObj, wire_speed wireObj) {
@@ -1535,6 +1674,171 @@ class RustLibWire implements BaseWire {
   late final _wire_use_msgid = _wire_use_msgidPtr
       .asFunction<void Function(int, ffi.Pointer<wire_message_id>)>();
 
+  void wire_datetime_local(
+    int port_,
+    int d,
+  ) {
+    return _wire_datetime_local(
+      port_,
+      d,
+    );
+  }
+
+  late final _wire_datetime_localPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>(
+          'wire_datetime_local');
+  late final _wire_datetime_local =
+      _wire_datetime_localPtr.asFunction<void Function(int, int)>();
+
+  void wire_datetime_utc(
+    int port_,
+    int d,
+  ) {
+    return _wire_datetime_utc(
+      port_,
+      d,
+    );
+  }
+
+  late final _wire_datetime_utcPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>(
+          'wire_datetime_utc');
+  late final _wire_datetime_utc =
+      _wire_datetime_utcPtr.asFunction<void Function(int, int)>();
+
+  void wire_duration(
+    int port_,
+    int d,
+  ) {
+    return _wire_duration(
+      port_,
+      d,
+    );
+  }
+
+  late final _wire_durationPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>(
+          'wire_duration');
+  late final _wire_duration =
+      _wire_durationPtr.asFunction<void Function(int, int)>();
+
+  void wire_handle_durations(
+    int port_,
+    ffi.Pointer<wire_list_prim_i_64> durations,
+    int since,
+  ) {
+    return _wire_handle_durations(
+      port_,
+      durations,
+      since,
+    );
+  }
+
+  late final _wire_handle_durationsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_prim_i_64>,
+              ffi.Int64)>>('wire_handle_durations');
+  late final _wire_handle_durations = _wire_handle_durationsPtr
+      .asFunction<void Function(int, ffi.Pointer<wire_list_prim_i_64>, int)>();
+
+  void wire_handle_timestamps(
+    int port_,
+    ffi.Pointer<wire_list_prim_i_64> timestamps,
+    int epoch,
+  ) {
+    return _wire_handle_timestamps(
+      port_,
+      timestamps,
+      epoch,
+    );
+  }
+
+  late final _wire_handle_timestampsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64, ffi.Pointer<wire_list_prim_i_64>,
+              ffi.Int64)>>('wire_handle_timestamps');
+  late final _wire_handle_timestamps = _wire_handle_timestampsPtr
+      .asFunction<void Function(int, ffi.Pointer<wire_list_prim_i_64>, int)>();
+
+  void wire_how_long_does_it_take(
+    int port_,
+    ffi.Pointer<wire_feature_chrono> mine,
+  ) {
+    return _wire_how_long_does_it_take(
+      port_,
+      mine,
+    );
+  }
+
+  late final _wire_how_long_does_it_takePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64,
+              ffi.Pointer<wire_feature_chrono>)>>('wire_how_long_does_it_take');
+  late final _wire_how_long_does_it_take = _wire_how_long_does_it_takePtr
+      .asFunction<void Function(int, ffi.Pointer<wire_feature_chrono>)>();
+
+  void wire_naivedatetime(
+    int port_,
+    int d,
+  ) {
+    return _wire_naivedatetime(
+      port_,
+      d,
+    );
+  }
+
+  late final _wire_naivedatetimePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64, ffi.Int64)>>(
+          'wire_naivedatetime');
+  late final _wire_naivedatetime =
+      _wire_naivedatetimePtr.asFunction<void Function(int, int)>();
+
+  void wire_optional_empty_datetime_utc(
+    int port_,
+    ffi.Pointer<ffi.Int64> d,
+  ) {
+    return _wire_optional_empty_datetime_utc(
+      port_,
+      d,
+    );
+  }
+
+  late final _wire_optional_empty_datetime_utcPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64,
+              ffi.Pointer<ffi.Int64>)>>('wire_optional_empty_datetime_utc');
+  late final _wire_optional_empty_datetime_utc =
+      _wire_optional_empty_datetime_utcPtr
+          .asFunction<void Function(int, ffi.Pointer<ffi.Int64>)>();
+
+  void wire_test_chrono(
+    int port_,
+  ) {
+    return _wire_test_chrono(
+      port_,
+    );
+  }
+
+  late final _wire_test_chronoPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_test_chrono');
+  late final _wire_test_chrono =
+      _wire_test_chronoPtr.asFunction<void Function(int)>();
+
+  void wire_test_precise_chrono(
+    int port_,
+  ) {
+    return _wire_test_precise_chrono(
+      port_,
+    );
+  }
+
+  late final _wire_test_precise_chronoPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_test_precise_chrono');
+  late final _wire_test_precise_chrono =
+      _wire_test_precise_chronoPtr.asFunction<void Function(int)>();
+
   void wire_StructWithCommentsTwinNormal_instance_method_twin_normal(
     int port_,
     ffi.Pointer<wire_struct_with_comments_twin_normal> that,
@@ -1616,6 +1920,20 @@ class RustLibWire implements BaseWire {
   late final _wire_function_with_comments_triple_slash_single_line_twin_normal =
       _wire_function_with_comments_triple_slash_single_line_twin_normalPtr
           .asFunction<void Function(int)>();
+
+  void wire_return_dart_dynamic(
+    int port_,
+  ) {
+    return _wire_return_dart_dynamic(
+      port_,
+    );
+  }
+
+  late final _wire_return_dart_dynamicPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>(
+          'wire_return_dart_dynamic');
+  late final _wire_return_dart_dynamic =
+      _wire_return_dart_dynamicPtr.asFunction<void Function(int)>();
 
   void wire_func_enum_simple_twin_normal(
     int port_,
@@ -3784,6 +4102,91 @@ class RustLibWire implements BaseWire {
           void Function(int,
               ffi.Pointer<wire_tuple_struct_with_two_field_twin_normal>)>();
 
+  void wire_test_tuple(
+    int port_,
+    ffi.Pointer<wire_record_string_i_32> value,
+  ) {
+    return _wire_test_tuple(
+      port_,
+      value,
+    );
+  }
+
+  late final _wire_test_tuplePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64,
+              ffi.Pointer<wire_record_string_i_32>)>>('wire_test_tuple');
+  late final _wire_test_tuple = _wire_test_tuplePtr
+      .asFunction<void Function(int, ffi.Pointer<wire_record_string_i_32>)>();
+
+  void wire_test_tuple_2(
+    int port_,
+    ffi.Pointer<wire_list_record_string_i_32> value,
+  ) {
+    return _wire_test_tuple_2(
+      port_,
+      value,
+    );
+  }
+
+  late final _wire_test_tuple_2Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64,
+              ffi.Pointer<wire_list_record_string_i_32>)>>('wire_test_tuple_2');
+  late final _wire_test_tuple_2 = _wire_test_tuple_2Ptr.asFunction<
+      void Function(int, ffi.Pointer<wire_list_record_string_i_32>)>();
+
+  void wire_handle_nested_uuids(
+    int port_,
+    ffi.Pointer<wire_feature_uuid> ids,
+  ) {
+    return _wire_handle_nested_uuids(
+      port_,
+      ids,
+    );
+  }
+
+  late final _wire_handle_nested_uuidsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64,
+              ffi.Pointer<wire_feature_uuid>)>>('wire_handle_nested_uuids');
+  late final _wire_handle_nested_uuids = _wire_handle_nested_uuidsPtr
+      .asFunction<void Function(int, ffi.Pointer<wire_feature_uuid>)>();
+
+  void wire_handle_uuid(
+    int port_,
+    ffi.Pointer<wire_list_prim_u_8> id,
+  ) {
+    return _wire_handle_uuid(
+      port_,
+      id,
+    );
+  }
+
+  late final _wire_handle_uuidPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Int64, ffi.Pointer<wire_list_prim_u_8>)>>('wire_handle_uuid');
+  late final _wire_handle_uuid = _wire_handle_uuidPtr
+      .asFunction<void Function(int, ffi.Pointer<wire_list_prim_u_8>)>();
+
+  void wire_handle_uuids(
+    int port_,
+    ffi.Pointer<wire_list_prim_u_8> ids,
+  ) {
+    return _wire_handle_uuids(
+      port_,
+      ids,
+    );
+  }
+
+  late final _wire_handle_uuidsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int64,
+              ffi.Pointer<wire_list_prim_u_8>)>>('wire_handle_uuids');
+  late final _wire_handle_uuids = _wire_handle_uuidsPtr
+      .asFunction<void Function(int, ffi.Pointer<wire_list_prim_u_8>)>();
+
   ffi.Pointer<wire_StringList> new_StringList(
     int len,
   ) {
@@ -3797,6 +4200,20 @@ class RustLibWire implements BaseWire {
       'new_StringList');
   late final _new_StringList = _new_StringListPtr
       .asFunction<ffi.Pointer<wire_StringList> Function(int)>();
+
+  ffi.Pointer<ffi.Int64> new_box_autoadd_Chrono_Utc(
+    int value,
+  ) {
+    return _new_box_autoadd_Chrono_Utc(
+      value,
+    );
+  }
+
+  late final _new_box_autoadd_Chrono_UtcPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int64> Function(ffi.Int64)>>(
+          'new_box_autoadd_Chrono_Utc');
+  late final _new_box_autoadd_Chrono_Utc = _new_box_autoadd_Chrono_UtcPtr
+      .asFunction<ffi.Pointer<ffi.Int64> Function(int)>();
 
   ffi.Pointer<wire_a> new_box_autoadd_a() {
     return _new_box_autoadd_a();
@@ -4042,6 +4459,27 @@ class RustLibWire implements BaseWire {
   late final _new_box_autoadd_f_64 = _new_box_autoadd_f_64Ptr
       .asFunction<ffi.Pointer<ffi.Double> Function(double)>();
 
+  ffi.Pointer<wire_feature_chrono> new_box_autoadd_feature_chrono() {
+    return _new_box_autoadd_feature_chrono();
+  }
+
+  late final _new_box_autoadd_feature_chronoPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_feature_chrono> Function()>>(
+          'new_box_autoadd_feature_chrono');
+  late final _new_box_autoadd_feature_chrono =
+      _new_box_autoadd_feature_chronoPtr
+          .asFunction<ffi.Pointer<wire_feature_chrono> Function()>();
+
+  ffi.Pointer<wire_feature_uuid> new_box_autoadd_feature_uuid() {
+    return _new_box_autoadd_feature_uuid();
+  }
+
+  late final _new_box_autoadd_feature_uuidPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<wire_feature_uuid> Function()>>(
+          'new_box_autoadd_feature_uuid');
+  late final _new_box_autoadd_feature_uuid = _new_box_autoadd_feature_uuidPtr
+      .asFunction<ffi.Pointer<wire_feature_uuid> Function()>();
+
   ffi.Pointer<wire_feed_id> new_box_autoadd_feed_id() {
     return _new_box_autoadd_feed_id();
   }
@@ -4178,6 +4616,17 @@ class RustLibWire implements BaseWire {
           'new_box_autoadd_note');
   late final _new_box_autoadd_note =
       _new_box_autoadd_notePtr.asFunction<ffi.Pointer<wire_note> Function()>();
+
+  ffi.Pointer<wire_record_string_i_32> new_box_autoadd_record_string_i_32() {
+    return _new_box_autoadd_record_string_i_32();
+  }
+
+  late final _new_box_autoadd_record_string_i_32Ptr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<wire_record_string_i_32> Function()>>(
+      'new_box_autoadd_record_string_i_32');
+  late final _new_box_autoadd_record_string_i_32 =
+      _new_box_autoadd_record_string_i_32Ptr
+          .asFunction<ffi.Pointer<wire_record_string_i_32> Function()>();
 
   ffi.Pointer<wire_struct_with_comments_twin_normal>
       new_box_autoadd_struct_with_comments_twin_normal() {
@@ -4660,6 +5109,21 @@ class RustLibWire implements BaseWire {
   late final _new_list_prim_u_8 = _new_list_prim_u_8Ptr
       .asFunction<ffi.Pointer<wire_list_prim_u_8> Function(int)>();
 
+  ffi.Pointer<wire_list_record_string_i_32> new_list_record_string_i_32(
+    int len,
+  ) {
+    return _new_list_record_string_i_32(
+      len,
+    );
+  }
+
+  late final _new_list_record_string_i_32Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<wire_list_record_string_i_32> Function(
+              ffi.Int32)>>('new_list_record_string_i_32');
+  late final _new_list_record_string_i_32 = _new_list_record_string_i_32Ptr
+      .asFunction<ffi.Pointer<wire_list_record_string_i_32> Function(int)>();
+
   ffi.Pointer<wire_list_test_id> new_list_test_id(
     int len,
   ) {
@@ -5083,6 +5547,27 @@ final class wire_blob extends ffi.Struct {
 
 final class wire_message_id extends ffi.Struct {
   external ffi.Pointer<wire_list_prim_u_8> field0;
+}
+
+final class wire_list_prim_i_64 extends ffi.Struct {
+  external ffi.Pointer<ffi.Int64> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_feature_chrono extends ffi.Struct {
+  @ffi.Int64()
+  external int utc;
+
+  @ffi.Int64()
+  external int local;
+
+  @ffi.Int64()
+  external int duration;
+
+  @ffi.Int64()
+  external int naive;
 }
 
 final class wire_struct_with_comments_twin_normal extends ffi.Struct {
@@ -5530,13 +6015,6 @@ final class wire_list_prim_i_16 extends ffi.Struct {
   external int len;
 }
 
-final class wire_list_prim_i_64 extends ffi.Struct {
-  external ffi.Pointer<ffi.Int64> ptr;
-
-  @ffi.Int32()
-  external int len;
-}
-
 final class wire_list_prim_i_8 extends ffi.Struct {
   external ffi.Pointer<ffi.Int8> ptr;
 
@@ -5619,4 +6097,24 @@ final class wire_tuple_struct_with_two_field_twin_normal extends ffi.Struct {
 
   @ffi.Int32()
   external int field1;
+}
+
+final class wire_record_string_i_32 extends ffi.Struct {
+  external ffi.Pointer<wire_list_prim_u_8> field0;
+
+  @ffi.Int32()
+  external int field1;
+}
+
+final class wire_list_record_string_i_32 extends ffi.Struct {
+  external ffi.Pointer<wire_record_string_i_32> ptr;
+
+  @ffi.Int32()
+  external int len;
+}
+
+final class wire_feature_uuid extends ffi.Struct {
+  external ffi.Pointer<wire_list_prim_u_8> one;
+
+  external ffi.Pointer<wire_list_prim_u_8> many;
 }

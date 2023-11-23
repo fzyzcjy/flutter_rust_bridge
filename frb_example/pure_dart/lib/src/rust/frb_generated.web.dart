@@ -1,7 +1,9 @@
 // ignore_for_file: unused_import, unused_element
 
 import 'api/array.dart';
+import 'api/chrono_type.dart';
 import 'api/comment.dart';
+import 'api/dart_dynamic.dart';
 import 'api/enumeration.dart';
 import 'api/exception.dart';
 import 'api/inside_macro.dart';
@@ -24,6 +26,8 @@ import 'api/raw_string.dart';
 import 'api/simple.dart';
 import 'api/stream.dart';
 import 'api/structure.dart';
+import 'api/tuple.dart';
+import 'api/uuid_type.dart';
 import 'auxiliary/sample_types.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -38,6 +42,42 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   });
 
   @protected
+  Object api2wire_Chrono_Duration(Duration raw) {
+    return api2wire_i64(raw.inMilliseconds);
+  }
+
+  @protected
+  Object /* BigInt64Array */ api2wire_Chrono_DurationList(List<Duration> raw) {
+    final ans = Int64List(raw.length);
+    for (var i = 0; i < raw.length; ++i)
+      ans[i] = api2wire_Chrono_Chrono_DurationList(raw[i]);
+    return api2wire_int_64_list(ans);
+  }
+
+  @protected
+  Object api2wire_Chrono_Local(DateTime raw) {
+    return api2wire_i64(raw.millisecondsSinceEpoch);
+  }
+
+  @protected
+  Object api2wire_Chrono_Naive(DateTime raw) {
+    return api2wire_i64(raw.millisecondsSinceEpoch);
+  }
+
+  @protected
+  Object /* BigInt64Array */ api2wire_Chrono_NaiveList(List<DateTime> raw) {
+    final ans = Int64List(raw.length);
+    for (var i = 0; i < raw.length; ++i)
+      ans[i] = api2wire_Chrono_Chrono_NaiveList(raw[i]);
+    return api2wire_int_64_list(ans);
+  }
+
+  @protected
+  Object api2wire_Chrono_Utc(DateTime raw) {
+    return api2wire_i64(raw.millisecondsSinceEpoch);
+  }
+
+  @protected
   String api2wire_String(String raw) {
     return raw;
   }
@@ -45,6 +85,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<String> api2wire_StringList(List<String> raw) {
     return raw;
+  }
+
+  @protected
+  Uint8List api2wire_Uuid(UuidValue raw) {
+    return api2wire_list_prim_u_8(raw.toBytes());
+  }
+
+  @protected
+  Uint8List api2wire_Uuids(List<UuidValue> raw) {
+    return api2wire_list_prim_u_8(api2wireConcatenateBytes(raw));
   }
 
   @protected
@@ -78,6 +128,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> api2wire_blob(Blob raw) {
     return [api2wire_u_8_array_1600(raw.field0)];
+  }
+
+  @protected
+  Object api2wire_box_autoadd_Chrono_Utc(DateTime raw) {
+    return api2wire_Chrono_Utc(raw);
   }
 
   @protected
@@ -188,6 +243,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_feature_chrono(FeatureChrono raw) {
+    return api2wire_feature_chrono(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_feature_uuid(FeatureUuid raw) {
+    return api2wire_feature_uuid(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_feed_id(FeedId raw) {
     return api2wire_feed_id(raw);
   }
@@ -245,6 +310,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> api2wire_box_autoadd_note(Note raw) {
     return api2wire_note(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_record_string_i_32((String, int) raw) {
+    return api2wire_record_string_i_32(raw);
   }
 
   @protected
@@ -551,6 +621,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_feature_chrono(FeatureChrono raw) {
+    return [
+      api2wire_Chrono_Utc(raw.utc),
+      api2wire_Chrono_Local(raw.local),
+      api2wire_Chrono_Duration(raw.duration),
+      api2wire_Chrono_Naive(raw.naive)
+    ];
+  }
+
+  @protected
+  List<dynamic> api2wire_feature_uuid(FeatureUuid raw) {
+    return [api2wire_Uuid(raw.one), api2wire_Uuids(raw.many)];
+  }
+
+  @protected
   List<dynamic> api2wire_feed_id(FeedId raw) {
     return [api2wire_u_8_array_8(raw.field0)];
   }
@@ -631,6 +716,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_list_record_string_i_32(List<(String, int)> raw) {
+    return raw.map(api2wire_record_string_i_32).toList();
+  }
+
+  @protected
   List<dynamic> api2wire_list_test_id(List<TestId> raw) {
     return raw.map(api2wire_test_id).toList();
   }
@@ -696,6 +786,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  Object? api2wire_opt_box_autoadd_Chrono_Utc(DateTime? raw) {
+    return raw == null ? null : api2wire_box_autoadd_Chrono_Utc(raw);
+  }
+
+  @protected
   bool? api2wire_opt_box_autoadd_bool(bool? raw) {
     return raw == null ? null : api2wire_box_autoadd_bool(raw);
   }
@@ -731,6 +826,12 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic>? api2wire_opt_box_autoadd_record_string_i_32(
+      (String, int)? raw) {
+    return raw == null ? null : api2wire_box_autoadd_record_string_i_32(raw);
+  }
+
+  @protected
   int? api2wire_opt_box_autoadd_u_16(int? raw) {
     return raw == null ? null : api2wire_box_autoadd_u_16(raw);
   }
@@ -748,6 +849,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   int? api2wire_opt_box_autoadd_u_8(int? raw) {
     return raw == null ? null : api2wire_box_autoadd_u_8(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_record_string_i_32((String, int) raw) {
+    return [api2wire_String(raw.$1), api2wire_i_32(raw.$2)];
   }
 
   @protected

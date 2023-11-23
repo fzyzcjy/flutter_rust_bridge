@@ -24,8 +24,12 @@ use crate::api::array::MessageId;
 use crate::api::array::Point;
 use crate::api::array::TestId;
 use crate::api::array::*;
+use crate::api::chrono_type::FeatureChrono;
+use crate::api::chrono_type::TestChrono;
+use crate::api::chrono_type::*;
 use crate::api::comment::StructWithCommentsTwinNormal;
 use crate::api::comment::*;
+use crate::api::dart_dynamic::*;
 use crate::api::enumeration::Distance;
 use crate::api::enumeration::EnumWithItemMixedTwinNormal;
 use crate::api::enumeration::EnumWithItemStructTwinNormal;
@@ -90,6 +94,9 @@ use crate::api::structure::StructWithZeroFieldTwinNormal;
 use crate::api::structure::TupleStructWithOneFieldTwinNormal;
 use crate::api::structure::TupleStructWithTwoFieldTwinNormal;
 use crate::api::structure::*;
+use crate::api::tuple::*;
+use crate::api::uuid_type::FeatureUuid;
+use crate::api::uuid_type::*;
 use crate::auxiliary::sample_types::MySize;
 use core::panic::UnwindSafe;
 use flutter_rust_bridge::rust2dart::IntoIntoDart;
@@ -236,6 +243,155 @@ fn wire_use_msgid_impl(port_: MessagePort, id: impl Wire2Api<MessageId> + Unwind
         },
     )
 }
+fn wire_datetime_local_impl(
+    port_: MessagePort,
+    d: impl Wire2Api<chrono::DateTime<chrono::Local>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, chrono::DateTime<chrono::Local>, _>(
+        WrapInfo {
+            debug_name: "datetime_local",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_d = d.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(datetime_local(api_d))
+        },
+    )
+}
+fn wire_datetime_utc_impl(
+    port_: MessagePort,
+    d: impl Wire2Api<chrono::DateTime<chrono::Utc>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, chrono::DateTime<chrono::Utc>, _>(
+        WrapInfo {
+            debug_name: "datetime_utc",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_d = d.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(datetime_utc(api_d))
+        },
+    )
+}
+fn wire_duration_impl(port_: MessagePort, d: impl Wire2Api<chrono::Duration> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, chrono::Duration, _>(
+        WrapInfo {
+            debug_name: "duration",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_d = d.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(duration(api_d))
+        },
+    )
+}
+fn wire_handle_durations_impl(
+    port_: MessagePort,
+    durations: impl Wire2Api<Vec<chrono::Duration>> + UnwindSafe,
+    since: impl Wire2Api<chrono::DateTime<chrono::Local>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<chrono::DateTime<chrono::Local>>, _>(
+        WrapInfo {
+            debug_name: "handle_durations",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_durations = durations.wire2api();
+            let api_since = since.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(handle_durations(api_durations, api_since))
+        },
+    )
+}
+fn wire_handle_timestamps_impl(
+    port_: MessagePort,
+    timestamps: impl Wire2Api<Vec<chrono::NaiveDateTime>> + UnwindSafe,
+    epoch: impl Wire2Api<chrono::NaiveDateTime> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<chrono::Duration>, _>(
+        WrapInfo {
+            debug_name: "handle_timestamps",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_timestamps = timestamps.wire2api();
+            let api_epoch = epoch.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(handle_timestamps(api_timestamps, api_epoch))
+        },
+    )
+}
+fn wire_how_long_does_it_take_impl(
+    port_: MessagePort,
+    mine: impl Wire2Api<FeatureChrono> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, chrono::Duration, _>(
+        WrapInfo {
+            debug_name: "how_long_does_it_take",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_mine = mine.wire2api();
+            move |task_callback| how_long_does_it_take(api_mine)
+        },
+    )
+}
+fn wire_naivedatetime_impl(
+    port_: MessagePort,
+    d: impl Wire2Api<chrono::NaiveDateTime> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, chrono::NaiveDateTime, _>(
+        WrapInfo {
+            debug_name: "naivedatetime",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_d = d.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(naivedatetime(api_d))
+        },
+    )
+}
+fn wire_optional_empty_datetime_utc_impl(
+    port_: MessagePort,
+    d: impl Wire2Api<Option<chrono::DateTime<chrono::Utc>>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Option<chrono::DateTime<chrono::Utc>>, _>(
+        WrapInfo {
+            debug_name: "optional_empty_datetime_utc",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_d = d.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(optional_empty_datetime_utc(api_d))
+        },
+    )
+}
+fn wire_test_chrono_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, TestChrono, _>(
+        WrapInfo {
+            debug_name: "test_chrono",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(test_chrono()),
+    )
+}
+fn wire_test_precise_chrono_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, TestChrono, _>(
+        WrapInfo {
+            debug_name: "test_precise_chrono",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(test_precise_chrono()),
+    )
+}
 fn wire_StructWithCommentsTwinNormal_instance_method_twin_normal_impl(
     port_: MessagePort,
     that: impl Wire2Api<StructWithCommentsTwinNormal> + UnwindSafe,
@@ -310,6 +466,16 @@ fn wire_function_with_comments_triple_slash_single_line_twin_normal_impl(port_: 
                 Result::<_, ()>::Ok(function_with_comments_triple_slash_single_line_twin_normal())
             }
         },
+    )
+}
+fn wire_return_dart_dynamic_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, flutter_rust_bridge::DartAbi, _>(
+        WrapInfo {
+            debug_name: "return_dart_dynamic",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(return_dart_dynamic()),
     )
 }
 fn wire_func_enum_simple_twin_normal_impl(
@@ -2327,6 +2493,77 @@ fn wire_func_tuple_struct_with_two_field_twin_normal_impl(
         },
     )
 }
+fn wire_test_tuple_impl(
+    port_: MessagePort,
+    value: impl Wire2Api<Option<(String, i32)>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (String, i32), _>(
+        WrapInfo {
+            debug_name: "test_tuple",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_value = value.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(test_tuple(api_value))
+        },
+    )
+}
+fn wire_test_tuple_2_impl(
+    port_: MessagePort,
+    value: impl Wire2Api<Vec<(String, i32)>> + UnwindSafe,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, (), _>(
+        WrapInfo {
+            debug_name: "test_tuple_2",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_value = value.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(test_tuple_2(api_value))
+        },
+    )
+}
+fn wire_handle_nested_uuids_impl(port_: MessagePort, ids: impl Wire2Api<FeatureUuid> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, FeatureUuid, _>(
+        WrapInfo {
+            debug_name: "handle_nested_uuids",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_ids = ids.wire2api();
+            move |task_callback| handle_nested_uuids(api_ids)
+        },
+    )
+}
+fn wire_handle_uuid_impl(port_: MessagePort, id: impl Wire2Api<uuid::Uuid> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, uuid::Uuid, _>(
+        WrapInfo {
+            debug_name: "handle_uuid",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_id = id.wire2api();
+            move |task_callback| handle_uuid(api_id)
+        },
+    )
+}
+fn wire_handle_uuids_impl(port_: MessagePort, ids: impl Wire2Api<Vec<uuid::Uuid>> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Vec<uuid::Uuid>, _>(
+        WrapInfo {
+            debug_name: "handle_uuids",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_ids = ids.wire2api();
+            move |task_callback| handle_uuids(api_ids)
+        },
+    )
+}
 
 // Section: executor
 
@@ -2346,6 +2583,32 @@ where
 {
     fn wire2api(self) -> Option<T> {
         (!self.is_null()).then(|| self.wire2api())
+    }
+}
+impl Wire2Api<chrono::DateTime<chrono::Local>> for i64 {
+    fn wire2api(self) -> chrono::DateTime<chrono::Local> {
+        let Timestamp { s, ns } = wire2api_timestamp(self);
+        chrono::DateTime::<chrono::Local>::from(chrono::DateTime::<chrono::Utc>::from_utc(
+            chrono::NaiveDateTime::from_timestamp_opt(s, ns)
+                .expect("invalid or out-of-range datetime"),
+            chrono::Utc,
+        ))
+    }
+}
+impl Wire2Api<chrono::NaiveDateTime> for i64 {
+    fn wire2api(self) -> chrono::NaiveDateTime {
+        let Timestamp { s, ns } = wire2api_timestamp(self);
+        chrono::NaiveDateTime::from_timestamp_opt(s, ns).expect("invalid or out-of-range datetime")
+    }
+}
+impl Wire2Api<chrono::DateTime<chrono::Utc>> for i64 {
+    fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
+        let Timestamp { s, ns } = wire2api_timestamp(self);
+        chrono::DateTime::<chrono::Utc>::from_utc(
+            chrono::NaiveDateTime::from_timestamp_opt(s, ns)
+                .expect("invalid or out-of-range datetime"),
+            chrono::Utc,
+        )
     }
 }
 impl Wire2Api<bool> for bool {
@@ -2783,6 +3046,21 @@ impl rust2dart::IntoIntoDart<EnumWithItemTupleTwinSync> for EnumWithItemTupleTwi
         self
     }
 }
+impl support::IntoDart for FeatureUuid {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.one.into_into_dart().into_dart(),
+            self.many.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for FeatureUuid {}
+impl rust2dart::IntoIntoDart<FeatureUuid> for FeatureUuid {
+    fn into_into_dart(self) -> FeatureUuid {
+        self
+    }
+}
 impl support::IntoDart for FeedId {
     fn into_dart(self) -> support::DartAbi {
         vec![self.0.into_into_dart().into_dart()].into_dart()
@@ -3044,6 +3322,22 @@ impl support::IntoDart for StructWithZeroFieldTwinSync {
 impl support::IntoDartExceptPrimitive for StructWithZeroFieldTwinSync {}
 impl rust2dart::IntoIntoDart<StructWithZeroFieldTwinSync> for StructWithZeroFieldTwinSync {
     fn into_into_dart(self) -> StructWithZeroFieldTwinSync {
+        self
+    }
+}
+impl support::IntoDart for TestChrono {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.dt.into_dart(),
+            self.dt2.into_dart(),
+            self.du.into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for TestChrono {}
+impl rust2dart::IntoIntoDart<TestChrono> for TestChrono {
+    fn into_into_dart(self) -> TestChrono {
         self
     }
 }

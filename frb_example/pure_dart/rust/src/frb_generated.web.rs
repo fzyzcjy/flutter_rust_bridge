@@ -10,6 +10,23 @@ where
         (!self.is_null() && !self.is_undefined()).then(|| self.wire2api())
     }
 }
+impl Wire2Api<chrono::Duration> for i64 {
+    fn wire2api(self) -> chrono::Duration {
+        chrono::Duration::milliseconds(self)
+    }
+}
+impl Wire2Api<Vec<chrono::Duration>> for Box<[i64]> {
+    fn wire2api(self) -> Vec<chrono::Duration> {
+        let vec: Vec<i64> = self.wire2api();
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+impl Wire2Api<Vec<chrono::NaiveDateTime>> for Box<[i64]> {
+    fn wire2api(self) -> Vec<chrono::NaiveDateTime> {
+        let vec: Vec<i64> = self.wire2api();
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
 impl Wire2Api<String> for String {
     fn wire2api(self) -> String {
         self
@@ -22,6 +39,18 @@ impl Wire2Api<Vec<String>> for JsValue {
             .iter()
             .map(Wire2Api::wire2api)
             .collect()
+    }
+}
+impl Wire2Api<uuid::Uuid> for Box<[u8]> {
+    fn wire2api(self) -> uuid::Uuid {
+        let single: Vec<u8> = self.wire2api();
+        wire2api_uuid_ref(single.as_slice())
+    }
+}
+impl Wire2Api<Vec<uuid::Uuid>> for Box<[u8]> {
+    fn wire2api(self) -> Vec<uuid::Uuid> {
+        let multiple: Vec<u8> = self.wire2api();
+        wire2api_uuids(multiple)
     }
 }
 impl Wire2Api<A> for JsValue {
@@ -253,6 +282,38 @@ impl Wire2Api<[f64; 16]> for Box<[f64]> {
         support::from_vec_to_array(vec)
     }
 }
+impl Wire2Api<FeatureChrono> for JsValue {
+    fn wire2api(self) -> FeatureChrono {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            4,
+            "Expected 4 elements, got {}",
+            self_.length()
+        );
+        FeatureChrono {
+            utc: self_.get(0).wire2api(),
+            local: self_.get(1).wire2api(),
+            duration: self_.get(2).wire2api(),
+            naive: self_.get(3).wire2api(),
+        }
+    }
+}
+impl Wire2Api<FeatureUuid> for JsValue {
+    fn wire2api(self) -> FeatureUuid {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        FeatureUuid {
+            one: self_.get(0).wire2api(),
+            many: self_.get(1).wire2api(),
+        }
+    }
+}
 impl Wire2Api<FeedId> for JsValue {
     fn wire2api(self) -> FeedId {
         let self_ = self.dyn_into::<JsArray>().unwrap();
@@ -346,6 +407,15 @@ impl Wire2Api<Vec<u64>> for Box<[u64]> {
 impl Wire2Api<Vec<u8>> for Box<[u8]> {
     fn wire2api(self) -> Vec<u8> {
         self.into_vec()
+    }
+}
+impl Wire2Api<Vec<(String, i32)>> for JsValue {
+    fn wire2api(self) -> Vec<(String, i32)> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
     }
 }
 impl Wire2Api<Vec<TestId>> for JsValue {
@@ -474,6 +544,18 @@ impl Wire2Api<Note> for JsValue {
             day: self_.get(0).wire2api(),
             body: self_.get(1).wire2api(),
         }
+    }
+}
+impl Wire2Api<(String, i32)> for JsValue {
+    fn wire2api(self) -> (String, i32) {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            2,
+            "Expected 2 elements, got {}",
+            self_.length()
+        );
+        (self_.get(0).wire2api(), self_.get(1).wire2api())
     }
 }
 impl Wire2Api<Speed> for JsValue {
@@ -689,9 +771,63 @@ impl Wire2Api<[u8; 8]> for Box<[u8]> {
         support::from_vec_to_array(vec)
     }
 }
+impl Wire2Api<chrono::Duration> for JsValue {
+    fn wire2api(self) -> chrono::Duration {
+        Wire2Api::<i64>::wire2api(self).wire2api()
+    }
+}
+impl Wire2Api<Vec<chrono::Duration>> for JsValue {
+    fn wire2api(self) -> Vec<chrono::Duration> {
+        self.unchecked_into::<js_sys::BigInt64Array>()
+            .to_vec()
+            .into_iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
+impl Wire2Api<chrono::DateTime<chrono::Local>> for JsValue {
+    fn wire2api(self) -> chrono::DateTime<chrono::Local> {
+        Wire2Api::<i64>::wire2api(self).wire2api()
+    }
+}
+impl Wire2Api<chrono::NaiveDateTime> for JsValue {
+    fn wire2api(self) -> chrono::NaiveDateTime {
+        Wire2Api::<i64>::wire2api(self).wire2api()
+    }
+}
+impl Wire2Api<Vec<chrono::NaiveDateTime>> for JsValue {
+    fn wire2api(self) -> Vec<chrono::NaiveDateTime> {
+        self.unchecked_into::<js_sys::BigInt64Array>()
+            .to_vec()
+            .into_iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
+impl Wire2Api<chrono::DateTime<chrono::Utc>> for JsValue {
+    fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
+        Wire2Api::<i64>::wire2api(self).wire2api()
+    }
+}
 impl Wire2Api<String> for JsValue {
     fn wire2api(self) -> String {
         self.as_string().expect("non-UTF-8 string, or not a string")
+    }
+}
+impl Wire2Api<uuid::Uuid> for JsValue {
+    fn wire2api(self) -> uuid::Uuid {
+        self.unchecked_into::<js_sys::Uint8Array>()
+            .to_vec()
+            .into_boxed_slice()
+            .wire2api()
+    }
+}
+impl Wire2Api<Vec<uuid::Uuid>> for JsValue {
+    fn wire2api(self) -> Vec<uuid::Uuid> {
+        self.unchecked_into::<js_sys::Uint8Array>()
+            .to_vec()
+            .into_boxed_slice()
+            .wire2api()
     }
 }
 impl Wire2Api<bool> for JsValue {
@@ -942,6 +1078,56 @@ pub fn wire_use_msgid(port_: MessagePort, id: JsValue) {
 }
 
 #[wasm_bindgen]
+pub fn wire_datetime_local(port_: MessagePort, d: i64) {
+    wire_datetime_local_impl(port_, d)
+}
+
+#[wasm_bindgen]
+pub fn wire_datetime_utc(port_: MessagePort, d: i64) {
+    wire_datetime_utc_impl(port_, d)
+}
+
+#[wasm_bindgen]
+pub fn wire_duration(port_: MessagePort, d: i64) {
+    wire_duration_impl(port_, d)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_durations(port_: MessagePort, durations: Box<[i64]>, since: i64) {
+    wire_handle_durations_impl(port_, durations, since)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_timestamps(port_: MessagePort, timestamps: Box<[i64]>, epoch: i64) {
+    wire_handle_timestamps_impl(port_, timestamps, epoch)
+}
+
+#[wasm_bindgen]
+pub fn wire_how_long_does_it_take(port_: MessagePort, mine: JsValue) {
+    wire_how_long_does_it_take_impl(port_, mine)
+}
+
+#[wasm_bindgen]
+pub fn wire_naivedatetime(port_: MessagePort, d: i64) {
+    wire_naivedatetime_impl(port_, d)
+}
+
+#[wasm_bindgen]
+pub fn wire_optional_empty_datetime_utc(port_: MessagePort, d: JsValue) {
+    wire_optional_empty_datetime_utc_impl(port_, d)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_chrono(port_: MessagePort) {
+    wire_test_chrono_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_precise_chrono(port_: MessagePort) {
+    wire_test_precise_chrono_impl(port_)
+}
+
+#[wasm_bindgen]
 pub fn wire_StructWithCommentsTwinNormal_instance_method_twin_normal(
     port_: MessagePort,
     that: JsValue,
@@ -967,6 +1153,11 @@ pub fn wire_function_with_comments_triple_slash_multi_line_twin_normal(port_: Me
 #[wasm_bindgen]
 pub fn wire_function_with_comments_triple_slash_single_line_twin_normal(port_: MessagePort) {
     wire_function_with_comments_triple_slash_single_line_twin_normal_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_return_dart_dynamic(port_: MessagePort) {
+    wire_return_dart_dynamic_impl(port_)
 }
 
 #[wasm_bindgen]
@@ -1631,4 +1822,29 @@ pub fn wire_func_tuple_struct_with_one_field_twin_normal(port_: MessagePort, arg
 #[wasm_bindgen]
 pub fn wire_func_tuple_struct_with_two_field_twin_normal(port_: MessagePort, arg: JsValue) {
     wire_func_tuple_struct_with_two_field_twin_normal_impl(port_, arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_tuple(port_: MessagePort, value: JsValue) {
+    wire_test_tuple_impl(port_, value)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_tuple_2(port_: MessagePort, value: JsValue) {
+    wire_test_tuple_2_impl(port_, value)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_nested_uuids(port_: MessagePort, ids: JsValue) {
+    wire_handle_nested_uuids_impl(port_, ids)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_uuid(port_: MessagePort, id: Box<[u8]>) {
+    wire_handle_uuid_impl(port_, id)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_uuids(port_: MessagePort, ids: Box<[u8]>) {
+    wire_handle_uuids_impl(port_, ids)
 }

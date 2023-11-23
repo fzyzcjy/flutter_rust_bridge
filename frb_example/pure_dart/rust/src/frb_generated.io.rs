@@ -2,6 +2,23 @@ use super::*;
 
 // Section: impl_wire2api
 
+impl Wire2Api<chrono::Duration> for i64 {
+    fn wire2api(self) -> chrono::Duration {
+        chrono::Duration::microseconds(self)
+    }
+}
+impl Wire2Api<Vec<chrono::Duration>> for *mut wire_list_prim_i_64 {
+    fn wire2api(self) -> Vec<chrono::Duration> {
+        let vec: Vec<i64> = self.wire2api();
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+impl Wire2Api<Vec<chrono::NaiveDateTime>> for *mut wire_list_prim_i_64 {
+    fn wire2api(self) -> Vec<chrono::NaiveDateTime> {
+        let vec: Vec<i64> = self.wire2api();
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
 impl Wire2Api<String> for *mut wire_list_prim_u_8 {
     fn wire2api(self) -> String {
         let vec: Vec<u8> = self.wire2api();
@@ -15,6 +32,18 @@ impl Wire2Api<Vec<String>> for *mut wire_StringList {
             support::vec_from_leak_ptr(wrap.ptr, wrap.len)
         };
         vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
+impl Wire2Api<uuid::Uuid> for *mut wire_list_prim_u_8 {
+    fn wire2api(self) -> uuid::Uuid {
+        let single: Vec<u8> = self.wire2api();
+        wire2api_uuid_ref(single.as_slice())
+    }
+}
+impl Wire2Api<Vec<uuid::Uuid>> for *mut wire_list_prim_u_8 {
+    fn wire2api(self) -> Vec<uuid::Uuid> {
+        let multiple: Vec<u8> = self.wire2api();
+        wire2api_uuids(multiple)
     }
 }
 impl Wire2Api<A> for wire_a {
@@ -61,6 +90,12 @@ impl Wire2Api<B> for wire_b {
 impl Wire2Api<Blob> for wire_blob {
     fn wire2api(self) -> Blob {
         Blob(self.field0.wire2api())
+    }
+}
+impl Wire2Api<chrono::DateTime<chrono::Utc>> for *mut i64 {
+    fn wire2api(self) -> chrono::DateTime<chrono::Utc> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<chrono::DateTime<chrono::Utc>>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<A> for *mut wire_a {
@@ -178,6 +213,18 @@ impl Wire2Api<f64> for *mut f64 {
         unsafe { *support::box_from_leak_ptr(self) }
     }
 }
+impl Wire2Api<FeatureChrono> for *mut wire_feature_chrono {
+    fn wire2api(self) -> FeatureChrono {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<FeatureChrono>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<FeatureUuid> for *mut wire_feature_uuid {
+    fn wire2api(self) -> FeatureUuid {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<FeatureUuid>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<FeedId> for *mut wire_feed_id {
     fn wire2api(self) -> FeedId {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -244,6 +291,12 @@ impl Wire2Api<Note> for *mut wire_note {
     fn wire2api(self) -> Note {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<Note>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<(String, i32)> for *mut wire_record_string_i_32 {
+    fn wire2api(self) -> (String, i32) {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<(String, i32)>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<StructWithCommentsTwinNormal> for *mut wire_struct_with_comments_twin_normal {
@@ -607,6 +660,24 @@ impl Wire2Api<[f64; 16]> for *mut wire_list_prim_f_64 {
         support::from_vec_to_array(vec)
     }
 }
+impl Wire2Api<FeatureChrono> for wire_feature_chrono {
+    fn wire2api(self) -> FeatureChrono {
+        FeatureChrono {
+            utc: self.utc.wire2api(),
+            local: self.local.wire2api(),
+            duration: self.duration.wire2api(),
+            naive: self.naive.wire2api(),
+        }
+    }
+}
+impl Wire2Api<FeatureUuid> for wire_feature_uuid {
+    fn wire2api(self) -> FeatureUuid {
+        FeatureUuid {
+            one: self.one.wire2api(),
+            many: self.many.wire2api(),
+        }
+    }
+}
 impl Wire2Api<FeedId> for wire_feed_id {
     fn wire2api(self) -> FeedId {
         FeedId(self.field0.wire2api())
@@ -725,6 +796,15 @@ impl Wire2Api<Vec<u8>> for *mut wire_list_prim_u_8 {
         }
     }
 }
+impl Wire2Api<Vec<(String, i32)>> for *mut wire_list_record_string_i_32 {
+    fn wire2api(self) -> Vec<(String, i32)> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
 impl Wire2Api<Vec<TestId>> for *mut wire_list_test_id {
     fn wire2api(self) -> Vec<TestId> {
         let vec = unsafe {
@@ -809,6 +889,11 @@ impl Wire2Api<Note> for wire_note {
             day: self.day.wire2api(),
             body: self.body.wire2api(),
         }
+    }
+}
+impl Wire2Api<(String, i32)> for wire_record_string_i_32 {
+    fn wire2api(self) -> (String, i32) {
+        (self.field0.wire2api(), self.field1.wire2api())
     }
 }
 impl Wire2Api<Speed> for wire_speed {
@@ -1290,6 +1375,22 @@ pub struct wire_EnumWithItemTupleTwinSync_B {
 }
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_feature_chrono {
+    utc: i64,
+    local: i64,
+    duration: i64,
+    naive: i64,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_feature_uuid {
+    one: *mut wire_list_prim_u_8,
+    many: *mut wire_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_feed_id {
     field0: *mut wire_list_prim_u_8,
 }
@@ -1387,6 +1488,13 @@ pub struct wire_list_prim_u_8 {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_list_record_string_i_32 {
+    ptr: *mut wire_record_string_i_32,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_list_test_id {
     ptr: *mut wire_test_id,
     len: i32,
@@ -1468,6 +1576,13 @@ pub struct wire_new_type_int {
 pub struct wire_note {
     day: *mut i32,
     body: *mut wire_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_record_string_i_32 {
+    field0: *mut wire_list_prim_u_8,
+    field1: i32,
 }
 #[repr(C)]
 #[derive(Clone)]
@@ -1815,6 +1930,34 @@ impl Default for wire_enum_with_item_tuple_twin_sync {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_feature_chrono {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            utc: Default::default(),
+            local: Default::default(),
+            duration: Default::default(),
+            naive: Default::default(),
+        }
+    }
+}
+impl Default for wire_feature_chrono {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_feature_uuid {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            one: core::ptr::null_mut(),
+            many: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_feature_uuid {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_feed_id {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -1926,6 +2069,19 @@ impl NewWithNullPtr for wire_note {
     }
 }
 impl Default for wire_note {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_record_string_i_32 {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            field0: core::ptr::null_mut(),
+            field1: Default::default(),
+        }
+    }
+}
+impl Default for wire_record_string_i_32 {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -2169,6 +2325,64 @@ pub extern "C" fn wire_use_msgid(port_: i64, id: *mut wire_message_id) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_datetime_local(port_: i64, d: i64) {
+    wire_datetime_local_impl(port_, d)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_datetime_utc(port_: i64, d: i64) {
+    wire_datetime_utc_impl(port_, d)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_duration(port_: i64, d: i64) {
+    wire_duration_impl(port_, d)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_durations(
+    port_: i64,
+    durations: *mut wire_list_prim_i_64,
+    since: i64,
+) {
+    wire_handle_durations_impl(port_, durations, since)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_timestamps(
+    port_: i64,
+    timestamps: *mut wire_list_prim_i_64,
+    epoch: i64,
+) {
+    wire_handle_timestamps_impl(port_, timestamps, epoch)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_how_long_does_it_take(port_: i64, mine: *mut wire_feature_chrono) {
+    wire_how_long_does_it_take_impl(port_, mine)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_naivedatetime(port_: i64, d: i64) {
+    wire_naivedatetime_impl(port_, d)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_optional_empty_datetime_utc(port_: i64, d: *mut i64) {
+    wire_optional_empty_datetime_utc_impl(port_, d)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_chrono(port_: i64) {
+    wire_test_chrono_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_precise_chrono(port_: i64) {
+    wire_test_precise_chrono_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_StructWithCommentsTwinNormal_instance_method_twin_normal(
     port_: i64,
     that: *mut wire_struct_with_comments_twin_normal,
@@ -2194,6 +2408,11 @@ pub extern "C" fn wire_function_with_comments_triple_slash_multi_line_twin_norma
 #[no_mangle]
 pub extern "C" fn wire_function_with_comments_triple_slash_single_line_twin_normal(port_: i64) {
     wire_function_with_comments_triple_slash_single_line_twin_normal_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_return_dart_dynamic(port_: i64) {
+    wire_return_dart_dynamic_impl(port_)
 }
 
 #[no_mangle]
@@ -2995,12 +3214,42 @@ pub extern "C" fn wire_func_tuple_struct_with_two_field_twin_normal(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_test_tuple(port_: i64, value: *mut wire_record_string_i_32) {
+    wire_test_tuple_impl(port_, value)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_tuple_2(port_: i64, value: *mut wire_list_record_string_i_32) {
+    wire_test_tuple_2_impl(port_, value)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_nested_uuids(port_: i64, ids: *mut wire_feature_uuid) {
+    wire_handle_nested_uuids_impl(port_, ids)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_uuid(port_: i64, id: *mut wire_list_prim_u_8) {
+    wire_handle_uuid_impl(port_, id)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_uuids(port_: i64, ids: *mut wire_list_prim_u_8) {
+    wire_handle_uuids_impl(port_, ids)
+}
+
+#[no_mangle]
 pub extern "C" fn new_StringList(len: i32) -> *mut wire_StringList {
     let wrap = wire_StringList {
         ptr: support::new_leak_vec_ptr(<*mut wire_list_prim_u_8>::new_with_null_ptr(), len),
         len,
     };
     support::new_leak_box_ptr(wrap)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_Chrono_Utc(value: i64) -> *mut i64 {
+    support::new_leak_box_ptr(value)
 }
 
 #[no_mangle]
@@ -3111,6 +3360,16 @@ pub extern "C" fn new_box_autoadd_f_64(value: f64) -> *mut f64 {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_feature_chrono() -> *mut wire_feature_chrono {
+    support::new_leak_box_ptr(wire_feature_chrono::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_feature_uuid() -> *mut wire_feature_uuid {
+    support::new_leak_box_ptr(wire_feature_uuid::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_feed_id() -> *mut wire_feed_id {
     support::new_leak_box_ptr(wire_feed_id::new_with_null_ptr())
 }
@@ -3168,6 +3427,11 @@ pub extern "C" fn new_box_autoadd_new_type_int() -> *mut wire_new_type_int {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_note() -> *mut wire_note {
     support::new_leak_box_ptr(wire_note::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_record_string_i_32() -> *mut wire_record_string_i_32 {
+    support::new_leak_box_ptr(wire_record_string_i_32::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -3407,6 +3671,15 @@ pub extern "C" fn new_list_prim_u_8(len: i32) -> *mut wire_list_prim_u_8 {
         len,
     };
     support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_record_string_i_32(len: i32) -> *mut wire_list_record_string_i_32 {
+    let wrap = wire_list_record_string_i_32 {
+        ptr: support::new_leak_vec_ptr(<wire_record_string_i_32>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
 }
 
 #[no_mangle]

@@ -40,6 +40,18 @@ typedef struct wire_message_id {
   struct wire_list_prim_u_8 *field0;
 } wire_message_id;
 
+typedef struct wire_list_prim_i_64 {
+  int64_t *ptr;
+  int32_t len;
+} wire_list_prim_i_64;
+
+typedef struct wire_feature_chrono {
+  int64_t utc;
+  int64_t local;
+  int64_t duration;
+  int64_t naive;
+} wire_feature_chrono;
+
 typedef struct wire_struct_with_comments_twin_normal {
   int32_t field_with_comments;
 } wire_struct_with_comments_twin_normal;
@@ -410,11 +422,6 @@ typedef struct wire_list_prim_i_16 {
   int32_t len;
 } wire_list_prim_i_16;
 
-typedef struct wire_list_prim_i_64 {
-  int64_t *ptr;
-  int32_t len;
-} wire_list_prim_i_64;
-
 typedef struct wire_list_prim_i_8 {
   int8_t *ptr;
   int32_t len;
@@ -479,6 +486,21 @@ typedef struct wire_tuple_struct_with_two_field_twin_normal {
   int32_t field1;
 } wire_tuple_struct_with_two_field_twin_normal;
 
+typedef struct wire_record_string_i_32 {
+  struct wire_list_prim_u_8 *field0;
+  int32_t field1;
+} wire_record_string_i_32;
+
+typedef struct wire_list_record_string_i_32 {
+  struct wire_record_string_i_32 *ptr;
+  int32_t len;
+} wire_list_record_string_i_32;
+
+typedef struct wire_feature_uuid {
+  struct wire_list_prim_u_8 *one;
+  struct wire_list_prim_u_8 *many;
+} wire_feature_uuid;
+
 void wire_boxed_blob(int64_t port_, struct wire_list_prim_u_8 *blob);
 
 void wire_func_test_id(int64_t port_, struct wire_test_id *id);
@@ -501,6 +523,26 @@ void wire_use_boxed_blob(int64_t port_, struct wire_blob *blob);
 
 void wire_use_msgid(int64_t port_, struct wire_message_id *id);
 
+void wire_datetime_local(int64_t port_, int64_t d);
+
+void wire_datetime_utc(int64_t port_, int64_t d);
+
+void wire_duration(int64_t port_, int64_t d);
+
+void wire_handle_durations(int64_t port_, struct wire_list_prim_i_64 *durations, int64_t since);
+
+void wire_handle_timestamps(int64_t port_, struct wire_list_prim_i_64 *timestamps, int64_t epoch);
+
+void wire_how_long_does_it_take(int64_t port_, struct wire_feature_chrono *mine);
+
+void wire_naivedatetime(int64_t port_, int64_t d);
+
+void wire_optional_empty_datetime_utc(int64_t port_, int64_t *d);
+
+void wire_test_chrono(int64_t port_);
+
+void wire_test_precise_chrono(int64_t port_);
+
 void wire_StructWithCommentsTwinNormal_instance_method_twin_normal(int64_t port_,
                                                                    struct wire_struct_with_comments_twin_normal *that);
 
@@ -511,6 +553,8 @@ void wire_function_with_comments_slash_star_star_twin_normal(int64_t port_);
 void wire_function_with_comments_triple_slash_multi_line_twin_normal(int64_t port_);
 
 void wire_function_with_comments_triple_slash_single_line_twin_normal(int64_t port_);
+
+void wire_return_dart_dynamic(int64_t port_);
 
 void wire_func_enum_simple_twin_normal(int64_t port_, int32_t arg);
 
@@ -794,7 +838,19 @@ void wire_func_tuple_struct_with_one_field_twin_normal(int64_t port_,
 void wire_func_tuple_struct_with_two_field_twin_normal(int64_t port_,
                                                        struct wire_tuple_struct_with_two_field_twin_normal *arg);
 
+void wire_test_tuple(int64_t port_, struct wire_record_string_i_32 *value);
+
+void wire_test_tuple_2(int64_t port_, struct wire_list_record_string_i_32 *value);
+
+void wire_handle_nested_uuids(int64_t port_, struct wire_feature_uuid *ids);
+
+void wire_handle_uuid(int64_t port_, struct wire_list_prim_u_8 *id);
+
+void wire_handle_uuids(int64_t port_, struct wire_list_prim_u_8 *ids);
+
 struct wire_StringList *new_StringList(int32_t len);
+
+int64_t *new_box_autoadd_Chrono_Utc(int64_t value);
 
 struct wire_a *new_box_autoadd_a(void);
 
@@ -834,6 +890,10 @@ float *new_box_autoadd_f_32(float value);
 
 double *new_box_autoadd_f_64(double value);
 
+struct wire_feature_chrono *new_box_autoadd_feature_chrono(void);
+
+struct wire_feature_uuid *new_box_autoadd_feature_uuid(void);
+
 struct wire_feed_id *new_box_autoadd_feed_id(void);
 
 int16_t *new_box_autoadd_i_16(int16_t value);
@@ -857,6 +917,8 @@ struct wire_my_tree_node *new_box_autoadd_my_tree_node(void);
 struct wire_new_type_int *new_box_autoadd_new_type_int(void);
 
 struct wire_note *new_box_autoadd_note(void);
+
+struct wire_record_string_i_32 *new_box_autoadd_record_string_i_32(void);
 
 struct wire_struct_with_comments_twin_normal *new_box_autoadd_struct_with_comments_twin_normal(void);
 
@@ -927,6 +989,8 @@ struct wire_list_prim_u_32 *new_list_prim_u_32(int32_t len);
 struct wire_list_prim_u_64 *new_list_prim_u_64(int32_t len);
 
 struct wire_list_prim_u_8 *new_list_prim_u_8(int32_t len);
+
+struct wire_list_record_string_i_32 *new_list_record_string_i_32(int32_t len);
 
 struct wire_list_test_id *new_list_test_id(int32_t len);
 
@@ -1020,6 +1084,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) inflate_Measure_Speed);
     dummy_var ^= ((int64_t) (void*) inflate_Speed_GPS);
     dummy_var ^= ((int64_t) (void*) new_StringList);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_Chrono_Utc);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_a);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_abc);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_b);
@@ -1039,6 +1104,8 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_enum_with_item_tuple_twin_sync);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_f_32);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_f_64);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_feature_chrono);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_feature_uuid);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_feed_id);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_i_16);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_i_32);
@@ -1051,6 +1118,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_my_tree_node);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_new_type_int);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_note);
+    dummy_var ^= ((int64_t) (void*) new_box_autoadd_record_string_i_32);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_comments_twin_normal);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_comments_twin_sync);
     dummy_var ^= ((int64_t) (void*) new_box_autoadd_struct_with_enum);
@@ -1087,6 +1155,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) new_list_prim_u_32);
     dummy_var ^= ((int64_t) (void*) new_list_prim_u_64);
     dummy_var ^= ((int64_t) (void*) new_list_prim_u_8);
+    dummy_var ^= ((int64_t) (void*) new_list_record_string_i_32);
     dummy_var ^= ((int64_t) (void*) new_list_test_id);
     dummy_var ^= ((int64_t) (void*) new_list_weekdays);
     dummy_var ^= ((int64_t) (void*) store_dart_post_cobject);
@@ -1105,6 +1174,9 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_custom_nested_error_return_error_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_custom_struct_error_return_error_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_custom_struct_error_return_error_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_datetime_local);
+    dummy_var ^= ((int64_t) (void*) wire_datetime_utc);
+    dummy_var ^= ((int64_t) (void*) wire_duration);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_bool_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_bool_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_example_optional_primitive_type_f32_twin_normal);
@@ -1215,27 +1287,40 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_get_complex_array);
     dummy_var ^= ((int64_t) (void*) wire_handle_big_buffers);
     dummy_var ^= ((int64_t) (void*) wire_handle_complex_struct);
+    dummy_var ^= ((int64_t) (void*) wire_handle_durations);
     dummy_var ^= ((int64_t) (void*) wire_handle_enum_parameter);
     dummy_var ^= ((int64_t) (void*) wire_handle_list_of_struct);
     dummy_var ^= ((int64_t) (void*) wire_handle_nested_struct);
+    dummy_var ^= ((int64_t) (void*) wire_handle_nested_uuids);
     dummy_var ^= ((int64_t) (void*) wire_handle_newtype);
     dummy_var ^= ((int64_t) (void*) wire_handle_return_enum);
     dummy_var ^= ((int64_t) (void*) wire_handle_stream_of_struct);
     dummy_var ^= ((int64_t) (void*) wire_handle_string_list);
+    dummy_var ^= ((int64_t) (void*) wire_handle_timestamps);
+    dummy_var ^= ((int64_t) (void*) wire_handle_uuid);
+    dummy_var ^= ((int64_t) (void*) wire_handle_uuids);
+    dummy_var ^= ((int64_t) (void*) wire_how_long_does_it_take);
     dummy_var ^= ((int64_t) (void*) wire_last_number);
     dummy_var ^= ((int64_t) (void*) wire_list_of_primitive_enums);
     dummy_var ^= ((int64_t) (void*) wire_multiply_by_ten);
+    dummy_var ^= ((int64_t) (void*) wire_naivedatetime);
     dummy_var ^= ((int64_t) (void*) wire_nested_id);
     dummy_var ^= ((int64_t) (void*) wire_new_msgid);
+    dummy_var ^= ((int64_t) (void*) wire_optional_empty_datetime_utc);
     dummy_var ^= ((int64_t) (void*) wire_print_note);
     dummy_var ^= ((int64_t) (void*) wire_return_boxed_feed_id);
     dummy_var ^= ((int64_t) (void*) wire_return_boxed_raw_feed_id);
+    dummy_var ^= ((int64_t) (void*) wire_return_dart_dynamic);
     dummy_var ^= ((int64_t) (void*) wire_simple_adder_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_simple_adder_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_test_abc_enum);
+    dummy_var ^= ((int64_t) (void*) wire_test_chrono);
     dummy_var ^= ((int64_t) (void*) wire_test_more_than_just_one_raw_string_struct);
+    dummy_var ^= ((int64_t) (void*) wire_test_precise_chrono);
     dummy_var ^= ((int64_t) (void*) wire_test_raw_string_item_struct);
     dummy_var ^= ((int64_t) (void*) wire_test_struct_with_enum);
+    dummy_var ^= ((int64_t) (void*) wire_test_tuple);
+    dummy_var ^= ((int64_t) (void*) wire_test_tuple_2);
     dummy_var ^= ((int64_t) (void*) wire_use_boxed_blob);
     dummy_var ^= ((int64_t) (void*) wire_use_msgid);
     return dummy_var;
