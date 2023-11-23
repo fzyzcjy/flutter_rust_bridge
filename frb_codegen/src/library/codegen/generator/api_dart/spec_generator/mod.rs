@@ -127,6 +127,7 @@ fn generate_imports(
     let import = interest_types
         .iter()
         .filter_map(|ty| ty.self_namespace())
+        .filter(|import_ty_namespace| import_ty_namespace != current_file_namespace)
         .map(|import_ty_namespace| {
             let path_diff = diff_paths(
                 import_ty_namespace.to_pseudo_io_path("dart"),
