@@ -215,3 +215,23 @@ pub fn test_list_of_nested_enums_mirrored() -> Vec<RawStringEnumMirrored> {
 // pub fn sync_return_mirror() -> SyncReturn<ApplicationSettings> {
 //     SyncReturn(frb_example_pure_dart_exapmle_external_lib::get_app_settings())
 // }
+
+pub struct Another {
+    pub a: String,
+}
+
+pub struct ContainsMirroredSubStruct {
+    pub test: RawStringMirrored,
+    pub test2: Another,
+}
+
+pub fn test_contains_mirrored_sub_struct() -> ContainsMirroredSubStruct {
+    ContainsMirroredSubStruct {
+        test: RawStringMirrored {
+            r#value: "test".to_owned(),
+        },
+        test2: Another {
+            a: "test".to_owned(),
+        },
+    }
+}

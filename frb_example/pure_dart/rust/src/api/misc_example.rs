@@ -81,22 +81,6 @@ pub fn test_abc_enum(abc: Abc) -> Abc {
     abc
 }
 
-pub struct ContainsMirroredSubStruct {
-    pub test: RawStringMirrored,
-    pub test2: A,
-}
-
-pub fn test_contains_mirrored_sub_struct() -> ContainsMirroredSubStruct {
-    ContainsMirroredSubStruct {
-        test: RawStringMirrored {
-            r#value: "test".to_owned(),
-        },
-        test2: A {
-            a: "test".to_owned(),
-        },
-    }
-}
-
 pub struct StructWithEnum {
     pub abc1: Abc,
     pub abc2: Abc,
