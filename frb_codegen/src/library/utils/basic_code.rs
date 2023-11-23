@@ -85,7 +85,7 @@ impl AddAssign for DartBasicHeaderCode {
 
 impl DartBasicHeaderCode {
     pub(crate) fn all_code(&self) -> String {
-        let import = optimize_imports(self.import);
+        let import = optimize_imports(&self.import);
         format!("{}\n{}\n{}", self.file_top, import, self.part)
     }
 }
