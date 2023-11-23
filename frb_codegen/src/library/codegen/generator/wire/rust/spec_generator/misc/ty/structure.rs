@@ -11,7 +11,9 @@ impl<'a> WireRustGeneratorMiscTrait for StructRefWireRustGenerator<'a> {
 
     fn generate_static_checks(&self) -> Option<String> {
         let src = self.ir.get(self.context.ir_pack);
-        src.wrapper_name.as_ref()?;
+        if src.wrapper_name.is_none() {
+            return None;
+        }
 
         let var = if src.is_fields_named {
             src.name.name.clone()
