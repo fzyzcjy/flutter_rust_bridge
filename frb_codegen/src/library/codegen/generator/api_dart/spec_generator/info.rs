@@ -61,6 +61,15 @@ impl<'a> ApiDartGeneratorInfoTrait for DelegateApiDartGenerator<'a> {
             IrTypeDelegate::Anyhow => "AnyhowException".to_string(),
         }
     }
+
+    fn dart_import(&self) -> Option<String> {
+        match &self.ir {
+            IrTypeDelegate::Uuid | IrTypeDelegate::Uuids => {
+                Some("import 'package:uuid/uuid.dart';".to_owned())
+            }
+            _ => None,
+        }
+    }
 }
 
 impl IrTypeDelegateArray {
