@@ -96,7 +96,8 @@ fn generate_hashcode(fields: &[IrField]) -> String {
     } else {
         fields
             .iter()
-            .map(|x| format!("{name}.hashCode", name = x.name))
+            .map(|x| x.name.dart_style())
+            .map(|x| format!("{x}.hashCode"))
             .join("^")
     };
 
@@ -111,7 +112,8 @@ fn generate_hashcode(fields: &[IrField]) -> String {
 fn generate_equals(fields: &[IrField], struct_name: &str) -> String {
     let cmp = fields
         .iter()
-        .map(|x| format!("&& {name} == other.{name}", name = x.name))
+        .map(|x| x.name.dart_style())
+        .map(|x| format!("&& {x} == other.{x}"))
         .join("");
 
     format!(
