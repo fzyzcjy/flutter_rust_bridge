@@ -19,6 +19,6 @@ Future<void> main() async {
     expect(await funcEnumWithItemMixedTwinNormal(arg: EnumWithItemMixed.c(cField: 'hi')),
         EnumWithItemMixed.c(cField: 'hi'));
   });
- 
-  TODO;
+
+  // TODO
 }
