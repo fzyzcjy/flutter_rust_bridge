@@ -9,23 +9,8 @@ pub(crate) trait BasicCode {
 
 #[doc(hidden)]
 #[macro_export]
-macro_rules! basic_code_impl {
+macro_rules! basic_code_partial_impl {
     ($name:ident) => {
-        impl From<String> for $name {
-            fn from(body: String) -> Self {
-                Self {
-                    body,
-                    ..Default::default()
-                }
-            }
-        }
-
-        impl From<&str> for $name {
-            fn from(value: &str) -> Self {
-                value.to_owned().into()
-            }
-        }
-
         impl std::ops::Add for $name {
             type Output = Self;
 
@@ -38,6 +23,29 @@ macro_rules! basic_code_impl {
         impl std::iter::FromIterator<$name> for $name {
             fn from_iter<A: IntoIterator<Item = $name>>(iter: A) -> Self {
                 iter.into_iter().fold(Default::default(), |a, b| a + b)
+            }
+        }
+    };
+}
+
+#[doc(hidden)]
+#[macro_export]
+macro_rules! basic_code_impl {
+    ($name:ident) => {
+        basic_code_partial_impl!($name);
+
+        impl From<String> for $name {
+            fn from(body: String) -> Self {
+                Self {
+                    body,
+                    ..Default::default()
+                }
+            }
+        }
+
+        impl From<&str> for $name {
+            fn from(value: &str) -> Self {
+                value.to_owned().into()
             }
         }
 
@@ -57,21 +65,19 @@ macro_rules! basic_code_impl {
 }
 
 #[derive(Default, Clone, Debug, Serialize)]
-pub(crate) struct DartBasicCode {
+pub(crate) struct DartBasicHeaderCode {
     pub file_top: String,
     pub import: String,
     pub part: String,
-    pub body: String,
 }
 
-basic_code_impl!(DartBasicCode);
+basic_code_partial_impl!(DartBasicHeaderCode);
 
-impl AddAssign for DartBasicCode {
+impl AddAssign for DartBasicHeaderCode {
     #[inline]
     fn add_assign(&mut self, rhs: Self) {
         self.file_top += &rhs.file_top;
         self.import += &rhs.import;
         self.part += &rhs.part;
-        self.body += &rhs.body;
     }
 }
