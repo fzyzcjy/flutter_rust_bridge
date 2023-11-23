@@ -1,3 +1,5 @@
+use crate::api::misc_example::Weekdays;
+use crate::api::newtype_pattern::NewTypeInt;
 use flutter_rust_bridge::ZeroCopyBuffer;
 
 pub fn handle_optional_return(left: f64, right: f64) -> Option<f64> {

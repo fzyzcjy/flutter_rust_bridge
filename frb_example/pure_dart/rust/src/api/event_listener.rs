@@ -1,7 +1,8 @@
 ///! event listener test
-use anyhow::*;
+use anyhow::{anyhow, Result};
 use flutter_rust_bridge::support::lazy_static;
 use flutter_rust_bridge::{frb, StreamSink};
+use std::sync::Mutex;
 
 lazy_static! {
     static ref EVENTS: Mutex<Option<StreamSink<Event>>> = Default::default();

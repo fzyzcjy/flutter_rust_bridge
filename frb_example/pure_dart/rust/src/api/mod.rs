@@ -13,6 +13,7 @@ pub mod method;
 pub mod mirror;
 pub mod misc_example;
 pub mod misc_type;
+mod newtype_pattern;
 pub mod optional;
 pub mod pseudo_manual;
 pub mod raw_string;

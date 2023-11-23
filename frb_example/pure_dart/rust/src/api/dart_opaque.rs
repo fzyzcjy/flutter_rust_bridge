@@ -1,3 +1,4 @@
+use anyhow::Result;
 use flutter_rust_bridge::support::lazy_static;
 use flutter_rust_bridge::DartOpaque;
 
