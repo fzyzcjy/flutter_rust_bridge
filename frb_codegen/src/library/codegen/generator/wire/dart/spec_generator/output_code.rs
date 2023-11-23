@@ -16,15 +16,6 @@ pub(crate) struct WireDartOutputCode {
 
 basic_code_impl!(WireDartOutputCode);
 
-impl From<String> for WireDartOutputCode {
-    fn from(body: String) -> Self {
-        Self {
-            basic: body.into(),
-            ..Default::default()
-        }
-    }
-}
-
 impl AddAssign for WireDartOutputCode {
     #[inline]
     fn add_assign(&mut self, rhs: Self) {
