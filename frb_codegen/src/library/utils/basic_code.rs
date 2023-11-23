@@ -85,15 +85,16 @@ impl AddAssign for DartBasicHeaderCode {
 
 impl DartBasicHeaderCode {
     pub(crate) fn all_code(&self) -> String {
-        let sorted_imports = self
-            .import
-            .split("\n")
-            .map(|line| line.trim())
-            .filter(|line| !line.is_empty())
-            .sorted()
-            .dedup()
-            .join("\n");
-
-        format!("{}\n{}\n{}", self.file_top, sorted_imports, self.part)
+        let import = optimize_imports(self.import);
+        format!("{}\n{}\n{}", self.file_top, import, self.part)
     }
+}
+
+fn optimize_imports(raw: &str) -> String {
+    raw.split("\n")
+        .map(|line| line.trim())
+        .filter(|line| !line.is_empty())
+        .sorted()
+        .dedup()
+        .join("\n")
 }
