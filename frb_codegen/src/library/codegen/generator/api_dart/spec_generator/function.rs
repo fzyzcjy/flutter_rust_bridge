@@ -101,10 +101,13 @@ fn generate_header(
     func: &IrFunc,
     context: ApiDartGeneratorContext,
 ) -> anyhow::Result<DartBasicHeaderCode> {
-    generate_imports_which_types_and_funcs_use(
-        &func.name.namespace.clone(),
-        &None,
-        &Some(&vec![func]),
-        context,
-    )
+    Ok(DartBasicHeaderCode {
+        import: generate_imports_which_types_and_funcs_use(
+            Some(&func.name.namespace.clone()),
+            &None,
+            &Some(&vec![func]),
+            context,
+        )?,
+        ..Default::default()
+    })
 }

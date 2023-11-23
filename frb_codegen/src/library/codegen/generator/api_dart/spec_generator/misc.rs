@@ -63,12 +63,12 @@ pub(crate) fn generate_function_dart_return_type(func_mode: &IrFuncMode, inner: 
     }
 }
 
-pub(super) fn generate_imports_which_types_and_funcs_use(
-    current_file_namespace: &Namespace,
+pub(crate) fn generate_imports_which_types_and_funcs_use(
+    current_file_namespace: Option<&Namespace>,
     seed_types: &Option<&Vec<&IrType>>,
     seed_funcs: &Option<&Vec<&IrFunc>>,
     context: ApiDartGeneratorContext,
-) -> anyhow::Result<DartBasicHeaderCode> {
+) -> anyhow::Result<String> {
     let interest_types = {
         let mut gatherer = DistinctTypeGatherer::new();
         if let Some(types) = seed_types {
@@ -89,19 +89,16 @@ pub(super) fn generate_imports_which_types_and_funcs_use(
         .iter()
         .join("");
 
-    Ok(DartBasicHeaderCode {
-        import,
-        ..Default::default()
-    })
+    Ok(import)
 }
 
 fn generate_imports_from_ty(
     ty: &IrType,
-    current_file_namespace: &Namespace,
+    current_file_namespace: Option<&Namespace>,
     context: ApiDartGeneratorContext,
 ) -> anyhow::Result<String> {
     let import_ty_itself = if let Some(ty_namespace) = ty.self_namespace() {
-        if &ty_namespace != current_file_namespace {
+        if Some(&ty_namespace) != current_file_namespace {
             let path_diff = diff_paths(
                 ty_namespace.to_pseudo_io_path("dart"),
                 (current_file_namespace.to_pseudo_io_path("dart").parent()).unwrap(),

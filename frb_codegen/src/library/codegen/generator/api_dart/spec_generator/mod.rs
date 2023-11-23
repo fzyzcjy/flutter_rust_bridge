@@ -79,8 +79,15 @@ fn generate_item(
     funcs: &Option<&Vec<&IrFunc>>,
     context: ApiDartGeneratorContext,
 ) -> Result<ApiDartOutputSpecItem> {
-    let imports =
-        generate_imports_which_types_and_funcs_use(namespace, namespaced_types, funcs, context)?;
+    let imports = DartBasicHeaderCode {
+        import: generate_imports_which_types_and_funcs_use(
+            Some(namespace),
+            namespaced_types,
+            funcs,
+            context,
+        )?,
+        ..Default::default()
+    };
 
     let funcs = funcs
         .map(|funcs| {
