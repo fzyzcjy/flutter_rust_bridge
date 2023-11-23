@@ -35,9 +35,10 @@ pub fn create_option_opaque(opaque: Option<RustOpaque<HideData>>) -> Option<Rust
     opaque
 }
 
-pub fn sync_create_opaque() -> SyncReturn<RustOpaque<HideData>> {
-    SyncReturn(RustOpaque::new(HideData::new()))
-}
+// TODO about sync
+// pub fn sync_create_opaque() -> SyncReturn<RustOpaque<HideData>> {
+//     SyncReturn(RustOpaque::new(HideData::new()))
+// }
 
 pub fn create_array_opaque_enum() -> [EnumOpaque; 5] {
     [
@@ -79,9 +80,10 @@ pub fn opaque_array() -> [RustOpaque<HideData>; 2] {
     ]
 }
 
-pub fn sync_create_non_clone() -> SyncReturn<RustOpaque<NonCloneData>> {
-    SyncReturn(RustOpaque::new(NonCloneData::new()))
-}
+// TODO about sync
+// pub fn sync_create_non_clone() -> SyncReturn<RustOpaque<NonCloneData>> {
+//     SyncReturn(RustOpaque::new(NonCloneData::new()))
+// }
 
 #[allow(clippy::redundant_clone)]
 pub fn run_non_clone(clone: RustOpaque<NonCloneData>) -> String {
@@ -94,19 +96,10 @@ pub fn create_sync_opaque() -> RustOpaque<NonSendHideData> {
     RustOpaque::new(NonSendHideData::new())
 }
 
-pub fn sync_create_sync_opaque() -> SyncReturn<RustOpaque<NonSendHideData>> {
-    SyncReturn(RustOpaque::new(NonSendHideData::new()))
-}
-
-// OpaqueSyncStruct does not implement Send trait.
-//
-// pub fn run_opaque(opaque: Opaque<OpaqueSyncStruct>) -> String {
-//     data.0.hide_data()
+// TODO about sync
+// pub fn sync_create_sync_opaque() -> SyncReturn<RustOpaque<NonSendHideData>> {
+//     SyncReturn(RustOpaque::new(NonSendHideData::new()))
 // }
-
-pub fn sync_run_opaque(opaque: RustOpaque<NonSendHideData>) -> SyncReturn<String> {
-    SyncReturn(opaque.hide_data())
-}
 
 pub fn opaque_array_run(data: [RustOpaque<HideData>; 2]) {
     for i in data {
@@ -134,18 +127,6 @@ pub fn create_nested_opaque() -> OpaqueNested {
     }
 }
 
-pub fn sync_option() -> Result<SyncReturn<Option<String>>> {
-    Ok(SyncReturn(Some("42".to_owned())))
-}
-
-pub fn sync_option_null() -> Result<SyncReturn<Option<String>>> {
-    Ok(SyncReturn(None))
-}
-
-pub fn sync_option_rust_opaque() -> Result<SyncReturn<Option<RustOpaque<HideData>>>> {
-    Ok(SyncReturn(Some(RustOpaque::new(HideData::new()))))
-}
-
 pub fn run_nested_opaque(opaque: OpaqueNested) {
     opaque.first.hide_data();
     opaque.second.hide_data();
@@ -163,11 +144,4 @@ pub fn unwrap_rust_opaque(opaque: RustOpaque<HideData>) -> Result<String> {
 /// FrbOpaqueReturn must not be used as an argument.
 pub fn frb_generator_test() -> RustOpaque<FrbOpaqueReturn> {
     panic!("dummy code");
-}
-
-/// Structure for testing the SyncReturn<RustOpaque> code generator.
-/// FrbOpaqueSyncReturn must be only return type.
-/// FrbOpaqueSyncReturn must be without wrapper like Option<> Vec<> etc.
-pub fn frb_sync_generator_test() -> SyncReturn<RustOpaque<FrbOpaqueSyncReturn>> {
-    SyncReturn(RustOpaque::new(FrbOpaqueSyncReturn))
 }

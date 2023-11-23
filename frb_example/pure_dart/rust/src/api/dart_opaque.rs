@@ -1,11 +1,12 @@
 use anyhow::Result;
 use flutter_rust_bridge::support::lazy_static;
-use flutter_rust_bridge::DartOpaque;
+use flutter_rust_bridge::{frb, DartOpaque};
 
-pub fn sync_accept_dart_opaque(opaque: DartOpaque) -> SyncReturn<String> {
-    drop(opaque);
-    SyncReturn("test".to_owned())
-}
+// TODO about sync
+// pub fn sync_accept_dart_opaque(opaque: DartOpaque) -> SyncReturn<String> {
+//     drop(opaque);
+//     SyncReturn("test".to_owned())
+// }
 
 pub fn async_accept_dart_opaque(opaque: DartOpaque) -> String {
     drop(opaque);
@@ -34,12 +35,6 @@ pub fn loop_back_array_get(opaque: [DartOpaque; 1]) {}
 
 pub fn loop_back_vec_get(opaque: Vec<DartOpaque>) {}
 
-/// [DartWrapObject] can be safely retrieved on a dart thread.
-pub fn unwrap_dart_opaque(opaque: DartOpaque) -> SyncReturn<String> {
-    let handle = opaque.try_unwrap().unwrap();
-    SyncReturn("Test".to_owned())
-}
-
 /// [DartWrapObject] cannot be obtained
 /// on a thread other than the thread it was created on.
 pub fn panic_unwrap_dart_opaque(opaque: DartOpaque) {
@@ -56,17 +51,18 @@ pub struct DartOpaqueNested {
     pub second: DartOpaque,
 }
 
-pub fn sync_loopback(opaque: DartOpaque) -> SyncReturn<DartOpaque> {
-    SyncReturn(opaque)
-}
-
-pub fn sync_option_loopback(opaque: Option<DartOpaque>) -> SyncReturn<Option<DartOpaque>> {
-    SyncReturn(opaque)
-}
-
-pub fn sync_option_dart_opaque(opaque: DartOpaque) -> Result<SyncReturn<Option<DartOpaque>>> {
-    Ok(SyncReturn(Some(opaque)))
-}
+// TODO about sync
+// pub fn sync_loopback(opaque: DartOpaque) -> SyncReturn<DartOpaque> {
+//     SyncReturn(opaque)
+// }
+//
+// pub fn sync_option_loopback(opaque: Option<DartOpaque>) -> SyncReturn<Option<DartOpaque>> {
+//     SyncReturn(opaque)
+// }
+//
+// pub fn sync_option_dart_opaque(opaque: DartOpaque) -> Result<SyncReturn<Option<DartOpaque>>> {
+//     Ok(SyncReturn(Some(opaque)))
+// }
 
 pub fn create_nested_dart_opaque(opaque1: DartOpaque, opaque2: DartOpaque) -> DartOpaqueNested {
     DartOpaqueNested {
@@ -93,9 +89,4 @@ pub fn set_static_dart_opaque(opaque: DartOpaque) {
 
 pub fn drop_static_dart_opaque() {
     drop(DART_OPAQUE.lock().unwrap().take());
-}
-
-pub fn return_non_droppable_dart_opaque(opaque: DartOpaque) -> SyncReturn<DartOpaque> {
-    let raw = opaque.try_unwrap().unwrap();
-    SyncReturn(unsafe { DartOpaque::new_non_droppable(raw.into()) })
 }
