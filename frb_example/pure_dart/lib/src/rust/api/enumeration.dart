@@ -21,6 +21,11 @@ Future<EnumWithItemTuple> funcEnumWithItemTupleTwinNormal(
         {required EnumWithItemTuple arg, dynamic hint}) =>
     RustLib.instance.api.funcEnumWithItemTupleTwinNormal(arg: arg, hint: hint);
 
+enum EnumSimple {
+  A,
+  B,
+}
+
 @freezed
 sealed class EnumWithItemMixed with _$EnumWithItemMixed {
   const factory EnumWithItemMixed.a() = EnumWithItemMixed_A;
