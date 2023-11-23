@@ -102,19 +102,3 @@ impl PathExt for std::path::Path {
         }
     }
 }
-
-/// For structs that only has an `inner` serializable property that
-/// would be better (de)serialized as a newtype.
-#[macro_export]
-macro_rules! derive_serde_inner_as_newtype {
-    ($($type:ident),*) => {$(
-        impl ::serde::Serialize for $type {
-            fn serialize<S>(&self, s: S) -> Result<S::Ok, S::Error>
-            where
-                S: ::serde::Serializer,
-            {
-                s.serialize_newtype_struct(::std::stringify!($type), self.inner.as_ref())
-            }
-        }
-    )*};
-}
