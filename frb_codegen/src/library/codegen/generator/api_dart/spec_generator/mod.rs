@@ -6,7 +6,7 @@ use crate::codegen::generator::api_dart::spec_generator::class::ApiDartGenerated
 use crate::codegen::generator::api_dart::spec_generator::function::ApiDartGeneratedFunction;
 use crate::codegen::ir::func::{IrFunc, IrFuncOwnerInfo};
 use crate::codegen::ir::namespace::Namespace;
-use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
+use crate::codegen::ir::pack::{DistinctTypeGatherer, IrPack, IrPackComputedCache};
 use crate::codegen::ir::ty::IrType;
 use crate::library::codegen::generator::api_dart::spec_generator::class::ty::ApiDartGeneratorClassTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
@@ -74,7 +74,7 @@ fn generate_item(
     funcs: &Option<&Vec<&IrFunc>>,
     context: ApiDartGeneratorContext,
 ) -> ApiDartOutputSpecItem {
-    let imports = generate_imports(classes, funcs);
+    let imports = generate_imports(classes, funcs, context.ir_pack);
 
     let funcs = funcs
         .map(|funcs| {
@@ -108,11 +108,25 @@ fn generate_item(
 fn generate_imports(
     classes: &Option<&Vec<&IrType>>,
     funcs: &Option<&Vec<&IrFunc>>,
+    ir_pack: &IrPack,
 ) -> DartBasicHeaderCode {
-    let interest_types = TODO;
+    let mut gatherer = DistinctTypeGatherer::new();
+    if let Some(classes) = classes {
+        (classes.iter()).for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), ir_pack));
+    }
+    if let Some(funcs) = funcs {
+        (funcs.iter()).for_each(|x| x.visit_types(&mut |ty| gatherer.add(ty), true, true));
+    }
+    let interest_types = gatherer.gather();
+
+    let import = interest_types
+        .iter()
+        .filter_map(|ty| ty.self_namespace())
+        .map(|namespace| format!("import '{}';\n", TODO))
+        .join("");
 
     DartBasicHeaderCode {
-        import: TODO,
+        import,
         ..Default::default()
     }
 }
