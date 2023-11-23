@@ -1,6 +1,7 @@
 pub mod comment;
 pub mod dart_opaque;
 pub mod enumeration;
+pub mod event_listener;
 pub mod exception;
 pub mod inside_macro;
 pub mod method;
