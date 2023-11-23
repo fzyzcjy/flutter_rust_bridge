@@ -1,14 +1,9 @@
 pub mod comment;
-pub mod dart_opaque;
 pub mod enumeration;
-pub mod event_listener;
 pub mod exception;
 pub mod inside_macro;
-pub mod method;
-pub mod mirror;
 pub mod misc_type;
 pub mod pseudo_manual;
-pub mod rust_opaque;
 pub mod simple;
 pub mod stream;
 pub mod structure;
