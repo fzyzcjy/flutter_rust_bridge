@@ -95,7 +95,6 @@ fn generate_item(
     let needs_freezed = classes.iter().any(|class| class.needs_freezed);
 
     ApiDartOutputSpecItem {
-        boilerplate_header: generate_boilerplate_header(needs_freezed),
         funcs,
         classes,
         needs_freezed,
