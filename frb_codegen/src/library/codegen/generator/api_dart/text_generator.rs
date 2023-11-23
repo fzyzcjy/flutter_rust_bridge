@@ -60,7 +60,7 @@ fn generate_end_api_text(
     let parts = if needs_freezed {
         format!(
             "part '{name}.freezed.dart';",
-            name = dart_output_path.file_name().unwrap().to_str().unwrap()
+            name = dart_output_path.file_stem().unwrap().to_str().unwrap()
         )
     } else {
         "".to_owned()
