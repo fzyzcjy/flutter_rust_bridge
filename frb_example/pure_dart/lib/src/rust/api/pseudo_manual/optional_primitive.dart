@@ -3,20 +3,10 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-Future<bool?> exampleOptionalPrimitiveTypeBoolTwinNormal(
-        {bool? arg, dynamic hint}) =>
+Future<int?> exampleOptionalPrimitiveTypeI8TwinNormal(
+        {int? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleOptionalPrimitiveTypeBoolTwinNormal(arg: arg, hint: hint);
-
-Future<double?> exampleOptionalPrimitiveTypeF32TwinNormal(
-        {double? arg, dynamic hint}) =>
-    RustLib.instance.api
-        .exampleOptionalPrimitiveTypeF32TwinNormal(arg: arg, hint: hint);
-
-Future<double?> exampleOptionalPrimitiveTypeF64TwinNormal(
-        {double? arg, dynamic hint}) =>
-    RustLib.instance.api
-        .exampleOptionalPrimitiveTypeF64TwinNormal(arg: arg, hint: hint);
+        .exampleOptionalPrimitiveTypeI8TwinNormal(arg: arg, hint: hint);
 
 Future<int?> exampleOptionalPrimitiveTypeI16TwinNormal(
         {int? arg, dynamic hint}) =>
@@ -33,10 +23,10 @@ Future<BigInt?> exampleOptionalPrimitiveTypeI64TwinNormal(
     RustLib.instance.api
         .exampleOptionalPrimitiveTypeI64TwinNormal(arg: arg, hint: hint);
 
-Future<int?> exampleOptionalPrimitiveTypeI8TwinNormal(
+Future<int?> exampleOptionalPrimitiveTypeU8TwinNormal(
         {int? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleOptionalPrimitiveTypeI8TwinNormal(arg: arg, hint: hint);
+        .exampleOptionalPrimitiveTypeU8TwinNormal(arg: arg, hint: hint);
 
 Future<int?> exampleOptionalPrimitiveTypeU16TwinNormal(
         {int? arg, dynamic hint}) =>
@@ -53,7 +43,17 @@ Future<BigInt?> exampleOptionalPrimitiveTypeU64TwinNormal(
     RustLib.instance.api
         .exampleOptionalPrimitiveTypeU64TwinNormal(arg: arg, hint: hint);
 
-Future<int?> exampleOptionalPrimitiveTypeU8TwinNormal(
-        {int? arg, dynamic hint}) =>
+Future<double?> exampleOptionalPrimitiveTypeF32TwinNormal(
+        {double? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleOptionalPrimitiveTypeU8TwinNormal(arg: arg, hint: hint);
+        .exampleOptionalPrimitiveTypeF32TwinNormal(arg: arg, hint: hint);
+
+Future<double?> exampleOptionalPrimitiveTypeF64TwinNormal(
+        {double? arg, dynamic hint}) =>
+    RustLib.instance.api
+        .exampleOptionalPrimitiveTypeF64TwinNormal(arg: arg, hint: hint);
+
+Future<bool?> exampleOptionalPrimitiveTypeBoolTwinNormal(
+        {bool? arg, dynamic hint}) =>
+    RustLib.instance.api
+        .exampleOptionalPrimitiveTypeBoolTwinNormal(arg: arg, hint: hint);

@@ -13,13 +13,13 @@ EnumWithItemMixedTwinSync funcEnumWithItemMixedTwinSync(
         {required EnumWithItemMixedTwinSync arg, dynamic hint}) =>
     RustLib.instance.api.funcEnumWithItemMixedTwinSync(arg: arg, hint: hint);
 
-EnumWithItemStructTwinSync funcEnumWithItemStructTwinSync(
-        {required EnumWithItemStructTwinSync arg, dynamic hint}) =>
-    RustLib.instance.api.funcEnumWithItemStructTwinSync(arg: arg, hint: hint);
-
 EnumWithItemTupleTwinSync funcEnumWithItemTupleTwinSync(
         {required EnumWithItemTupleTwinSync arg, dynamic hint}) =>
     RustLib.instance.api.funcEnumWithItemTupleTwinSync(arg: arg, hint: hint);
+
+EnumWithItemStructTwinSync funcEnumWithItemStructTwinSync(
+        {required EnumWithItemStructTwinSync arg, dynamic hint}) =>
+    RustLib.instance.api.funcEnumWithItemStructTwinSync(arg: arg, hint: hint);
 
 enum EnumSimpleTwinSync {
   A,

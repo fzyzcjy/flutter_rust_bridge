@@ -3,12 +3,11 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-/// Multiline comments are fine,
-/// but they are not preferred in Rust nor in Dart.
-/// Newlines are preserved.
-Future<void> functionWithCommentsSlashStarStarTwinNormal({dynamic hint}) =>
+/// This is single line comment
+Future<void> functionWithCommentsTripleSlashSingleLineTwinNormal(
+        {dynamic hint}) =>
     RustLib.instance.api
-        .functionWithCommentsSlashStarStarTwinNormal(hint: hint);
+        .functionWithCommentsTripleSlashSingleLineTwinNormal(hint: hint);
 
 /// This is first line
 /// This is second line
@@ -17,11 +16,12 @@ Future<void> functionWithCommentsTripleSlashMultiLineTwinNormal(
     RustLib.instance.api
         .functionWithCommentsTripleSlashMultiLineTwinNormal(hint: hint);
 
-/// This is single line comment
-Future<void> functionWithCommentsTripleSlashSingleLineTwinNormal(
-        {dynamic hint}) =>
+/// Multiline comments are fine,
+/// but they are not preferred in Rust nor in Dart.
+/// Newlines are preserved.
+Future<void> functionWithCommentsSlashStarStarTwinNormal({dynamic hint}) =>
     RustLib.instance.api
-        .functionWithCommentsTripleSlashSingleLineTwinNormal(hint: hint);
+        .functionWithCommentsSlashStarStarTwinNormal(hint: hint);
 
 /// Comments on structs
 class StructWithCommentsTwinNormal {

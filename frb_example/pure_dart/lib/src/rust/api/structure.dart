@@ -3,6 +3,11 @@
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+Future<StructWithZeroFieldTwinNormal> funcStructWithZeroFieldTwinNormal(
+        {required StructWithZeroFieldTwinNormal arg, dynamic hint}) =>
+    RustLib.instance.api
+        .funcStructWithZeroFieldTwinNormal(arg: arg, hint: hint);
+
 Future<StructWithOneFieldTwinNormal> funcStructWithOneFieldTwinNormal(
         {required StructWithOneFieldTwinNormal arg, dynamic hint}) =>
     RustLib.instance.api.funcStructWithOneFieldTwinNormal(arg: arg, hint: hint);
@@ -10,11 +15,6 @@ Future<StructWithOneFieldTwinNormal> funcStructWithOneFieldTwinNormal(
 Future<StructWithTwoFieldTwinNormal> funcStructWithTwoFieldTwinNormal(
         {required StructWithTwoFieldTwinNormal arg, dynamic hint}) =>
     RustLib.instance.api.funcStructWithTwoFieldTwinNormal(arg: arg, hint: hint);
-
-Future<StructWithZeroFieldTwinNormal> funcStructWithZeroFieldTwinNormal(
-        {required StructWithZeroFieldTwinNormal arg, dynamic hint}) =>
-    RustLib.instance.api
-        .funcStructWithZeroFieldTwinNormal(arg: arg, hint: hint);
 
 Future<TupleStructWithOneFieldTwinNormal> funcTupleStructWithOneFieldTwinNormal(
         {required TupleStructWithOneFieldTwinNormal arg, dynamic hint}) =>

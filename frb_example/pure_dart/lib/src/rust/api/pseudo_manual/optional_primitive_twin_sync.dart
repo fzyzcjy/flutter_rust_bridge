@@ -3,17 +3,9 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
-bool? exampleOptionalPrimitiveTypeBoolTwinSync({bool? arg, dynamic hint}) =>
+int? exampleOptionalPrimitiveTypeI8TwinSync({int? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleOptionalPrimitiveTypeBoolTwinSync(arg: arg, hint: hint);
-
-double? exampleOptionalPrimitiveTypeF32TwinSync({double? arg, dynamic hint}) =>
-    RustLib.instance.api
-        .exampleOptionalPrimitiveTypeF32TwinSync(arg: arg, hint: hint);
-
-double? exampleOptionalPrimitiveTypeF64TwinSync({double? arg, dynamic hint}) =>
-    RustLib.instance.api
-        .exampleOptionalPrimitiveTypeF64TwinSync(arg: arg, hint: hint);
+        .exampleOptionalPrimitiveTypeI8TwinSync(arg: arg, hint: hint);
 
 int? exampleOptionalPrimitiveTypeI16TwinSync({int? arg, dynamic hint}) =>
     RustLib.instance.api
@@ -27,9 +19,9 @@ BigInt? exampleOptionalPrimitiveTypeI64TwinSync({BigInt? arg, dynamic hint}) =>
     RustLib.instance.api
         .exampleOptionalPrimitiveTypeI64TwinSync(arg: arg, hint: hint);
 
-int? exampleOptionalPrimitiveTypeI8TwinSync({int? arg, dynamic hint}) =>
+int? exampleOptionalPrimitiveTypeU8TwinSync({int? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleOptionalPrimitiveTypeI8TwinSync(arg: arg, hint: hint);
+        .exampleOptionalPrimitiveTypeU8TwinSync(arg: arg, hint: hint);
 
 int? exampleOptionalPrimitiveTypeU16TwinSync({int? arg, dynamic hint}) =>
     RustLib.instance.api
@@ -43,6 +35,14 @@ BigInt? exampleOptionalPrimitiveTypeU64TwinSync({BigInt? arg, dynamic hint}) =>
     RustLib.instance.api
         .exampleOptionalPrimitiveTypeU64TwinSync(arg: arg, hint: hint);
 
-int? exampleOptionalPrimitiveTypeU8TwinSync({int? arg, dynamic hint}) =>
+double? exampleOptionalPrimitiveTypeF32TwinSync({double? arg, dynamic hint}) =>
     RustLib.instance.api
-        .exampleOptionalPrimitiveTypeU8TwinSync(arg: arg, hint: hint);
+        .exampleOptionalPrimitiveTypeF32TwinSync(arg: arg, hint: hint);
+
+double? exampleOptionalPrimitiveTypeF64TwinSync({double? arg, dynamic hint}) =>
+    RustLib.instance.api
+        .exampleOptionalPrimitiveTypeF64TwinSync(arg: arg, hint: hint);
+
+bool? exampleOptionalPrimitiveTypeBoolTwinSync({bool? arg, dynamic hint}) =>
+    RustLib.instance.api
+        .exampleOptionalPrimitiveTypeBoolTwinSync(arg: arg, hint: hint);

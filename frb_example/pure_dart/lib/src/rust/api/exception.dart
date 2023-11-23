@@ -5,16 +5,25 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'exception.freezed.dart';
 
-Future<void> customEnumErrorPanicTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.customEnumErrorPanicTwinNormal(hint: hint);
+Future<int> funcReturnErrorTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.funcReturnErrorTwinNormal(hint: hint);
 
-Future<int> customEnumErrorReturnErrorTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.customEnumErrorReturnErrorTwinNormal(hint: hint);
+Future<int> funcTypeFalliblePanicTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.funcTypeFalliblePanicTwinNormal(hint: hint);
+
+Future<int> funcTypeInfalliblePanicTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.funcTypeInfalliblePanicTwinNormal(hint: hint);
 
 Future<int> customEnumErrorReturnOkTwinNormal(
         {required int arg, dynamic hint}) =>
     RustLib.instance.api
         .customEnumErrorReturnOkTwinNormal(arg: arg, hint: hint);
+
+Future<void> customEnumErrorPanicTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.customEnumErrorPanicTwinNormal(hint: hint);
+
+Future<int> customEnumErrorReturnErrorTwinNormal({dynamic hint}) =>
+    RustLib.instance.api.customEnumErrorReturnErrorTwinNormal(hint: hint);
 
 Future<void> customNestedErrorReturnErrorTwinNormal(
         {required CustomNestedErrorOuterTwinNormal arg, dynamic hint}) =>
@@ -25,15 +34,6 @@ Future<void> customStructErrorReturnErrorTwinNormal(
         {required CustomStructErrorTwinNormal arg, dynamic hint}) =>
     RustLib.instance.api
         .customStructErrorReturnErrorTwinNormal(arg: arg, hint: hint);
-
-Future<int> funcReturnErrorTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.funcReturnErrorTwinNormal(hint: hint);
-
-Future<int> funcTypeFalliblePanicTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.funcTypeFalliblePanicTwinNormal(hint: hint);
-
-Future<int> funcTypeInfalliblePanicTwinNormal({dynamic hint}) =>
-    RustLib.instance.api.funcTypeInfalliblePanicTwinNormal(hint: hint);
 
 @freezed
 sealed class CustomEnumErrorTwinNormal

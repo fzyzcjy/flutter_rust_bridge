@@ -3,6 +3,10 @@
 import '../../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+StructWithZeroFieldTwinSync funcStructWithZeroFieldTwinSync(
+        {required StructWithZeroFieldTwinSync arg, dynamic hint}) =>
+    RustLib.instance.api.funcStructWithZeroFieldTwinSync(arg: arg, hint: hint);
+
 StructWithOneFieldTwinSync funcStructWithOneFieldTwinSync(
         {required StructWithOneFieldTwinSync arg, dynamic hint}) =>
     RustLib.instance.api.funcStructWithOneFieldTwinSync(arg: arg, hint: hint);
@@ -10,10 +14,6 @@ StructWithOneFieldTwinSync funcStructWithOneFieldTwinSync(
 StructWithTwoFieldTwinSync funcStructWithTwoFieldTwinSync(
         {required StructWithTwoFieldTwinSync arg, dynamic hint}) =>
     RustLib.instance.api.funcStructWithTwoFieldTwinSync(arg: arg, hint: hint);
-
-StructWithZeroFieldTwinSync funcStructWithZeroFieldTwinSync(
-        {required StructWithZeroFieldTwinSync arg, dynamic hint}) =>
-    RustLib.instance.api.funcStructWithZeroFieldTwinSync(arg: arg, hint: hint);
 
 TupleStructWithOneFieldTwinSync funcTupleStructWithOneFieldTwinSync(
         {required TupleStructWithOneFieldTwinSync arg, dynamic hint}) =>

@@ -13,13 +13,13 @@ Future<EnumWithItemMixedTwinNormal> funcEnumWithItemMixedTwinNormal(
         {required EnumWithItemMixedTwinNormal arg, dynamic hint}) =>
     RustLib.instance.api.funcEnumWithItemMixedTwinNormal(arg: arg, hint: hint);
 
-Future<EnumWithItemStructTwinNormal> funcEnumWithItemStructTwinNormal(
-        {required EnumWithItemStructTwinNormal arg, dynamic hint}) =>
-    RustLib.instance.api.funcEnumWithItemStructTwinNormal(arg: arg, hint: hint);
-
 Future<EnumWithItemTupleTwinNormal> funcEnumWithItemTupleTwinNormal(
         {required EnumWithItemTupleTwinNormal arg, dynamic hint}) =>
     RustLib.instance.api.funcEnumWithItemTupleTwinNormal(arg: arg, hint: hint);
+
+Future<EnumWithItemStructTwinNormal> funcEnumWithItemStructTwinNormal(
+        {required EnumWithItemStructTwinNormal arg, dynamic hint}) =>
+    RustLib.instance.api.funcEnumWithItemStructTwinNormal(arg: arg, hint: hint);
 
 enum EnumSimpleTwinNormal {
   A,

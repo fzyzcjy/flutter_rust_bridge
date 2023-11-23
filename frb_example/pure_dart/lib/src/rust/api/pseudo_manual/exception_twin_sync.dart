@@ -5,14 +5,23 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'exception_twin_sync.freezed.dart';
 
+int funcReturnErrorTwinSync({dynamic hint}) =>
+    RustLib.instance.api.funcReturnErrorTwinSync(hint: hint);
+
+int funcTypeFalliblePanicTwinSync({dynamic hint}) =>
+    RustLib.instance.api.funcTypeFalliblePanicTwinSync(hint: hint);
+
+int funcTypeInfalliblePanicTwinSync({dynamic hint}) =>
+    RustLib.instance.api.funcTypeInfalliblePanicTwinSync(hint: hint);
+
+int customEnumErrorReturnOkTwinSync({required int arg, dynamic hint}) =>
+    RustLib.instance.api.customEnumErrorReturnOkTwinSync(arg: arg, hint: hint);
+
 void customEnumErrorPanicTwinSync({dynamic hint}) =>
     RustLib.instance.api.customEnumErrorPanicTwinSync(hint: hint);
 
 int customEnumErrorReturnErrorTwinSync({dynamic hint}) =>
     RustLib.instance.api.customEnumErrorReturnErrorTwinSync(hint: hint);
-
-int customEnumErrorReturnOkTwinSync({required int arg, dynamic hint}) =>
-    RustLib.instance.api.customEnumErrorReturnOkTwinSync(arg: arg, hint: hint);
 
 void customNestedErrorReturnErrorTwinSync(
         {required CustomNestedErrorOuterTwinSync arg, dynamic hint}) =>
@@ -23,15 +32,6 @@ void customStructErrorReturnErrorTwinSync(
         {required CustomStructErrorTwinSync arg, dynamic hint}) =>
     RustLib.instance.api
         .customStructErrorReturnErrorTwinSync(arg: arg, hint: hint);
-
-int funcReturnErrorTwinSync({dynamic hint}) =>
-    RustLib.instance.api.funcReturnErrorTwinSync(hint: hint);
-
-int funcTypeFalliblePanicTwinSync({dynamic hint}) =>
-    RustLib.instance.api.funcTypeFalliblePanicTwinSync(hint: hint);
-
-int funcTypeInfalliblePanicTwinSync({dynamic hint}) =>
-    RustLib.instance.api.funcTypeInfalliblePanicTwinSync(hint: hint);
 
 @freezed
 sealed class CustomEnumErrorTwinSync
