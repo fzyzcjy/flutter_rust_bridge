@@ -38,10 +38,10 @@ impl GeneralizedItemFn {
         }
     }
 
-    pub(crate) fn span(&self) -> &Span {
+    pub(crate) fn span(&self) -> Span {
         match self {
-            GeneralizedItemFn::Function { item_fn } => &item_fn.span(),
-            GeneralizedItemFn::Method { impl_item_fn, .. } => &impl_item_fn.span(),
+            GeneralizedItemFn::Function { item_fn } => item_fn.span(),
+            GeneralizedItemFn::Method { impl_item_fn, .. } => impl_item_fn.span(),
         }
     }
 }
