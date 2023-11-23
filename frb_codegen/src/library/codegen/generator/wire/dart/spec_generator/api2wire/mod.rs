@@ -71,10 +71,7 @@ fn generate_api2wire_func(
 
                     WireDartOutputCode {
                         api_impl_body,
-                        basic: DartBasicHeaderCode {
-                            body,
-                            ..Default::default()
-                        },
+                        body,
                         ..Default::default()
                     }
                 })

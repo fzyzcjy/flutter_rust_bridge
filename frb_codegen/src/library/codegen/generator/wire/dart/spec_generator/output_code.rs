@@ -40,7 +40,10 @@ impl WireDartOutputCode {
             .push(line);
         }
         WireDartOutputCode {
-            import: imports.join("\n"),
+            basic: DartBasicHeaderCode {
+                import: imports.join("\n"),
+                ..Default::default()
+            },
             body: body.join("\n"),
             ..Default::default()
         }

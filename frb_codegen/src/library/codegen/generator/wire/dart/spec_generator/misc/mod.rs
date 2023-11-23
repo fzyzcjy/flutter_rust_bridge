@@ -148,15 +148,15 @@ fn generate_boilerplate(
                     import 'frb_generated.dart';
                     "
                     ),
-                body: format!(
-                    r#"
-                    class {wire_class_name} extends BaseWire {{
-                      // TODO
-                    }}
-                    "#
-                ),
                 ..Default::default()
             },
+            body: format!(
+                r#"
+                class {wire_class_name} extends BaseWire {{
+                  // TODO
+                }}
+                "#
+            ),
             ..Default::default()
         }],
     })
