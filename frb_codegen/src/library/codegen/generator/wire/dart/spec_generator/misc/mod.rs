@@ -74,7 +74,7 @@ fn generate_boilerplate(
 
     Ok(Acc {
         common: vec![WireDartOutputCode {
-            basic: DartBasicHeaderCode {
+            header: DartBasicHeaderCode {
                 file_top: file_top.clone(),
                 import: format!(
                     "
@@ -125,7 +125,7 @@ fn generate_boilerplate(
             ..Default::default()
         }],
         io: vec![WireDartOutputCode {
-            basic: DartBasicHeaderCode {
+            header: DartBasicHeaderCode {
                 file_top: file_top.clone(),
                 import: format!(
                     "
@@ -139,7 +139,7 @@ fn generate_boilerplate(
             ..Default::default()
         }],
         wasm: vec![WireDartOutputCode {
-            basic: DartBasicHeaderCode {
+            header: DartBasicHeaderCode {
                 file_top: file_top.clone(),
                 import: format!(
                     "

@@ -8,7 +8,7 @@ use std::ops::AddAssign;
 
 #[derive(Default, Clone, Debug, Serialize)]
 pub(crate) struct WireDartOutputCode {
-    pub basic: DartBasicHeaderCode,
+    pub header: DartBasicHeaderCode,
     pub body_top: String,
     pub api_body: String,
     pub api_impl_body: String,
@@ -20,7 +20,7 @@ basic_code_impl!(WireDartOutputCode);
 impl AddAssign for WireDartOutputCode {
     #[inline]
     fn add_assign(&mut self, rhs: Self) {
-        self.basic += rhs.basic;
+        self.header += rhs.header;
         self.body_top += &rhs.body_top;
         self.api_body += &rhs.api_body;
         self.api_impl_body += &rhs.api_impl_body;
@@ -40,7 +40,7 @@ impl WireDartOutputCode {
             .push(line);
         }
         WireDartOutputCode {
-            basic: DartBasicHeaderCode {
+            header: DartBasicHeaderCode {
                 import: imports.join("\n"),
                 ..Default::default()
             },
@@ -112,7 +112,7 @@ impl WireDartOutputCode {
 
         format!(
             "{}\n{}\n{}\n{}\n{}",
-            self.basic.all_code(),
+            self.header.all_code(),
             self.body_top,
             api_class_code,
             api_impl_class_code,
