@@ -1,3 +1,5 @@
+use crate::auxiliary::sample_types::{EnumAlias, Id, MyStruct, StructAlias, UserIdAlias};
+
 pub fn handle_type_alias_id(input: Id) -> Id {
     input
 }

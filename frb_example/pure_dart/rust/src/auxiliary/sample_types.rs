@@ -1,6 +1,13 @@
 #![allow(dead_code)]
 
 use std::rc::Rc;
+
+#[derive(Debug, Clone)]
+pub struct MySize {
+    pub width: i32,
+    pub height: i32,
+}
+
 pub struct MyStruct {
     pub content: bool,
 }

@@ -1,4 +1,6 @@
+use crate::api::misc_example::Weekdays;
 use flutter_rust_bridge::{frb, ZeroCopyBuffer};
+use log::info;
 
 pub enum EnumSimpleTwinNormal {
     A,

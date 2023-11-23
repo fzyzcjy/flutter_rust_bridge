@@ -1,3 +1,5 @@
+use backtrace::Backtrace;
+use flutter_rust_bridge::handler::Error::CustomError;
 use flutter_rust_bridge::{spawn, StreamSink};
 
 pub struct ConcatenateWith {
