@@ -1,3 +1,5 @@
+// FRB_INTERNAL_GENERATOR: {"forbiddenDuplicatorModes": ["sync"]}
+
 import 'package:flutter_rust_bridge/flutter_rust_bridge.dart';
 import 'package:frb_example_pure_dart/src/rust/api/stream.dart';
 import 'package:frb_example_pure_dart/src/rust/frb_generated.dart';
@@ -25,12 +27,16 @@ Future<void> main() async {
   });
 
   test('call funcStreamReturnErrorTwinNormal', () async {
-    await expectLater(() async => funcStreamReturnErrorTwinNormal(),
-        throwsA(isA<AnyhowException>().having((x) => x.message, 'message', 'deliberate error')));
+    await expectLater(
+        () async => funcStreamReturnErrorTwinNormal(),
+        throwsA(isA<AnyhowException>()
+            .having((x) => x.message, 'message', 'deliberate error')));
   });
 
   test('call funcStreamReturnPanicTwinNormal', () async {
-    await expectLater(() async => funcStreamReturnPanicTwinNormal(),
-        throwsA(isA<PanicException>().having((x) => x.message, 'message', 'deliberate panic')));
+    await expectLater(
+        () async => funcStreamReturnPanicTwinNormal(),
+        throwsA(isA<PanicException>()
+            .having((x) => x.message, 'message', 'deliberate panic')));
   });
 }
