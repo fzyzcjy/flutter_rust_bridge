@@ -4,11 +4,13 @@ use crate::codegen::generator::misc::target::{TargetOrCommon, TargetOrCommonMap}
 use crate::codegen::generator::wire::dart::internal_config::DartOutputClassNamePack;
 use crate::codegen::generator::wire::dart::spec_generator::base::WireDartGeneratorContext;
 use crate::codegen::generator::wire::dart::spec_generator::output_code::WireDartOutputCode;
+use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{IrPack, IrPackComputedCache};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
 use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::path_utils::path_to_string;
+use crate::utils::rust_project_utils::compute_mod_from_rust_path;
 use anyhow::Context;
 use itertools::Itertools;
 use pathdiff::diff_paths;
@@ -40,6 +42,7 @@ pub(crate) fn generate(
             &context.config.default_external_library_stem,
             &context.config.default_external_library_relative_directory,
             &context.config.dart_impl_output_path,
+            &context.config.dart_root,
             api_dart_actual_output_paths,
             cache,
             context,
@@ -58,6 +61,7 @@ fn generate_boilerplate(
     default_external_library_stem: &str,
     default_external_library_relative_directory: &str,
     dart_impl_output_path: &TargetOrCommonMap<PathBuf>,
+    dart_root: &Path,
     api_dart_actual_output_paths: &[PathBuf],
     cache: &IrPackComputedCache,
     context: WireDartGeneratorContext,
@@ -75,7 +79,7 @@ fn generate_boilerplate(
     let mut universal_imports =
         generate_import_dart_api_layer(dart_impl_output_path, api_dart_actual_output_paths)?;
     universal_imports += &generate_imports_which_types_and_funcs_use(
-        TODO,
+        &Namespace::new_from_path(&dart_impl_output_path[TargetOrCommon::Common], dart_root)?,
         &Some(&cache.distinct_types.iter().collect_vec()),
         &None,
         context.as_api_dart_context(),
