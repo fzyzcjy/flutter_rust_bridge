@@ -179,7 +179,6 @@ fn generate_import_dart_api_layer(
     dart_impl_output_path: &TargetOrCommonMap<PathBuf>,
     api_dart_actual_output_paths: &[PathBuf],
 ) -> anyhow::Result<String> {
-    todo!("merge with generate_imports_which_types_and_funcs_use");
     Ok(api_dart_actual_output_paths
         .iter()
         .map(|path| {
