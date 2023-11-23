@@ -47,6 +47,12 @@ fn extract_module(raw_expanded: &str, module: Option<String>) -> Result<String> 
             module
                 .split("::")
                 .fold((0, raw_expanded), |(spaces, expanded), module| {
+                    // empty module scenario
+                    if expanded.find(&format!("mod {module} {{}}")).is_some() {
+                        return (spaces, "");
+                    }
+
+                    // non-empty
                     let searched = format!("mod {module} {{\n");
                     let start = expanded
                         .find(&searched)
