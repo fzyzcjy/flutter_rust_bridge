@@ -1,11 +1,13 @@
 // ignore_for_file: unused_import, unused_element
 
+import 'api/array.dart';
 import 'api/comment.dart';
 import 'api/enumeration.dart';
 import 'api/exception.dart';
 import 'api/inside_macro.dart';
 import 'api/misc_example.dart';
 import 'api/misc_type.dart';
+import 'api/newtype_pattern.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/enumeration_twin_sync.dart';
 import 'api/pseudo_manual/exception_twin_sync.dart';
@@ -18,6 +20,7 @@ import 'api/pseudo_manual/primitive_list_twin_sync.dart';
 import 'api/pseudo_manual/primitive_twin_sync.dart';
 import 'api/pseudo_manual/simple_twin_sync.dart';
 import 'api/pseudo_manual/structure_twin_sync.dart';
+import 'api/raw_string.dart';
 import 'api/simple.dart';
 import 'api/stream.dart';
 import 'api/structure.dart';
@@ -70,6 +73,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> api2wire_b(B raw) {
     return [api2wire_i_32(raw.b)];
+  }
+
+  @protected
+  List<dynamic> api2wire_blob(Blob raw) {
+    return [api2wire_u_8_array_1600(raw.field0)];
   }
 
   @protected
@@ -180,6 +188,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_feed_id(FeedId raw) {
+    return api2wire_feed_id(raw);
+  }
+
+  @protected
   int api2wire_box_autoadd_i_16(int raw) {
     return api2wire_i_16(raw);
   }
@@ -210,6 +223,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_message_id(MessageId raw) {
+    return api2wire_message_id(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_my_nested_struct(MyNestedStruct raw) {
     return api2wire_my_nested_struct(raw);
   }
@@ -217,6 +235,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> api2wire_box_autoadd_my_tree_node(MyTreeNode raw) {
     return api2wire_my_tree_node(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_box_autoadd_new_type_int(NewTypeInt raw) {
+    return api2wire_new_type_int(raw);
   }
 
   @protected
@@ -278,6 +301,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_autoadd_test_id(TestId raw) {
+    return api2wire_test_id(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_autoadd_tuple_struct_with_one_field_twin_normal(
       TupleStructWithOneFieldTwinNormal raw) {
     return api2wire_tuple_struct_with_one_field_twin_normal(raw);
@@ -322,6 +350,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_box_blob(Blob raw) {
+    return api2wire_blob(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_box_distance(Distance raw) {
     return api2wire_distance(raw);
   }
@@ -329,6 +362,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   List<dynamic> api2wire_box_speed(Speed raw) {
     return api2wire_speed(raw);
+  }
+
+  @protected
+  Uint8List api2wire_box_u_8_array_1600(U8Array1600 raw) {
+    return api2wire_u_8_array_1600(raw);
   }
 
   @protected
@@ -508,6 +546,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  Float64List api2wire_f_64_array_16(F64Array16 raw) {
+    return Float64List.fromList(raw);
+  }
+
+  @protected
+  List<dynamic> api2wire_feed_id(FeedId raw) {
+    return [api2wire_u_8_array_8(raw.field0)];
+  }
+
+  @protected
+  Int32List api2wire_i_32_array_2(I32Array2 raw) {
+    return Int32List.fromList(raw);
+  }
+
+  @protected
   Object api2wire_i_64(BigInt raw) {
     return castNativeBigInt(raw);
   }
@@ -578,6 +631,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_list_test_id(List<TestId> raw) {
+    return raw.map(api2wire_test_id).toList();
+  }
+
+  @protected
   List<dynamic> api2wire_list_weekdays(List<Weekdays> raw) {
     return raw.map(api2wire_weekdays).toList();
   }
@@ -597,6 +655,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     }
 
     throw Exception('unreachable');
+  }
+
+  @protected
+  List<dynamic> api2wire_message_id(MessageId raw) {
+    return [api2wire_u_8_array_32(raw.field0)];
   }
 
   @protected
@@ -620,6 +683,11 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
       api2wire_bool(raw.valueBoolean),
       api2wire_list_my_tree_node(raw.children)
     ];
+  }
+
+  @protected
+  List<dynamic> api2wire_new_type_int(NewTypeInt raw) {
+    return [api2wire_i_64(raw.field0)];
   }
 
   @protected
@@ -748,6 +816,16 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   }
 
   @protected
+  List<dynamic> api2wire_test_id(TestId raw) {
+    return [api2wire_i_32_array_2(raw.field0)];
+  }
+
+  @protected
+  List<dynamic> api2wire_test_id_array_4(TestIdArray4 raw) {
+    return api2wire_list_test_id(raw);
+  }
+
+  @protected
   List<dynamic> api2wire_tuple_struct_with_one_field_twin_normal(
       TupleStructWithOneFieldTwinNormal raw) {
     return [api2wire_i_32(raw.field0)];
@@ -774,6 +852,21 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   @protected
   Object api2wire_u_64(BigInt raw) {
     return castNativeBigInt(raw);
+  }
+
+  @protected
+  Uint8List api2wire_u_8_array_1600(U8Array1600 raw) {
+    return Uint8List.fromList(raw);
+  }
+
+  @protected
+  Uint8List api2wire_u_8_array_32(U8Array32 raw) {
+    return Uint8List.fromList(raw);
+  }
+
+  @protected
+  Uint8List api2wire_u_8_array_8(U8Array8 raw) {
+    return Uint8List.fromList(raw);
   }
 }
 

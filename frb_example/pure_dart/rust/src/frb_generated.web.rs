@@ -64,6 +64,23 @@ impl Wire2Api<B> for JsValue {
         }
     }
 }
+impl Wire2Api<Blob> for JsValue {
+    fn wire2api(self) -> Blob {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        Blob(self_.get(0).wire2api())
+    }
+}
+impl Wire2Api<Box<[u8; 1600]>> for Box<[u8]> {
+    fn wire2api(self) -> Box<[u8; 1600]> {
+        Wire2Api::<[u8; 1600]>::wire2api(self).into()
+    }
+}
 impl Wire2Api<C> for JsValue {
     fn wire2api(self) -> C {
         let self_ = self.dyn_into::<JsArray>().unwrap();
@@ -230,6 +247,30 @@ impl Wire2Api<EnumWithItemTupleTwinSync> for JsValue {
         }
     }
 }
+impl Wire2Api<[f64; 16]> for Box<[f64]> {
+    fn wire2api(self) -> [f64; 16] {
+        let vec: Vec<f64> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
+impl Wire2Api<FeedId> for JsValue {
+    fn wire2api(self) -> FeedId {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        FeedId(self_.get(0).wire2api())
+    }
+}
+impl Wire2Api<[i32; 2]> for Box<[i32]> {
+    fn wire2api(self) -> [i32; 2] {
+        let vec: Vec<i32> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
 impl Wire2Api<Vec<bool>> for JsValue {
     fn wire2api(self) -> Vec<bool> {
         self.dyn_into::<JsArray>()
@@ -307,6 +348,15 @@ impl Wire2Api<Vec<u8>> for Box<[u8]> {
         self.into_vec()
     }
 }
+impl Wire2Api<Vec<TestId>> for JsValue {
+    fn wire2api(self) -> Vec<TestId> {
+        self.dyn_into::<JsArray>()
+            .unwrap()
+            .iter()
+            .map(Wire2Api::wire2api)
+            .collect()
+    }
+}
 impl Wire2Api<Vec<Weekdays>> for JsValue {
     fn wire2api(self) -> Vec<Weekdays> {
         self.dyn_into::<JsArray>()
@@ -338,6 +388,18 @@ impl Wire2Api<Measure> for JsValue {
             1 => Measure::Distance(self_.get(1).wire2api()),
             _ => unreachable!(),
         }
+    }
+}
+impl Wire2Api<MessageId> for JsValue {
+    fn wire2api(self) -> MessageId {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        MessageId(self_.get(0).wire2api())
     }
 }
 impl Wire2Api<MyNestedStruct> for JsValue {
@@ -385,6 +447,18 @@ impl Wire2Api<MyTreeNode> for JsValue {
             value_boolean: self_.get(2).wire2api(),
             children: self_.get(3).wire2api(),
         }
+    }
+}
+impl Wire2Api<NewTypeInt> for JsValue {
+    fn wire2api(self) -> NewTypeInt {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        NewTypeInt(self_.get(0).wire2api())
     }
 }
 impl Wire2Api<Note> for JsValue {
@@ -537,6 +611,18 @@ impl Wire2Api<StructWithZeroFieldTwinSync> for JsValue {
         StructWithZeroFieldTwinSync {}
     }
 }
+impl Wire2Api<TestId> for JsValue {
+    fn wire2api(self) -> TestId {
+        let self_ = self.dyn_into::<JsArray>().unwrap();
+        assert_eq!(
+            self_.length(),
+            1,
+            "Expected 1 elements, got {}",
+            self_.length()
+        );
+        TestId(self_.get(0).wire2api())
+    }
+}
 impl Wire2Api<TupleStructWithOneFieldTwinNormal> for JsValue {
     fn wire2api(self) -> TupleStructWithOneFieldTwinNormal {
         let self_ = self.dyn_into::<JsArray>().unwrap();
@@ -585,6 +671,24 @@ impl Wire2Api<TupleStructWithTwoFieldTwinSync> for JsValue {
         TupleStructWithTwoFieldTwinSync(self_.get(0).wire2api(), self_.get(1).wire2api())
     }
 }
+impl Wire2Api<[u8; 1600]> for Box<[u8]> {
+    fn wire2api(self) -> [u8; 1600] {
+        let vec: Vec<u8> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
+impl Wire2Api<[u8; 32]> for Box<[u8]> {
+    fn wire2api(self) -> [u8; 32] {
+        let vec: Vec<u8> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
+impl Wire2Api<[u8; 8]> for Box<[u8]> {
+    fn wire2api(self) -> [u8; 8] {
+        let vec: Vec<u8> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
 impl Wire2Api<String> for JsValue {
     fn wire2api(self) -> String {
         self.as_string().expect("non-UTF-8 string, or not a string")
@@ -595,6 +699,11 @@ impl Wire2Api<bool> for JsValue {
         self.is_truthy()
     }
 }
+impl Wire2Api<Box<Blob>> for JsValue {
+    fn wire2api(self) -> Box<Blob> {
+        Box::new(self.wire2api())
+    }
+}
 impl Wire2Api<Box<Distance>> for JsValue {
     fn wire2api(self) -> Box<Distance> {
         Box::new(self.wire2api())
@@ -603,6 +712,12 @@ impl Wire2Api<Box<Distance>> for JsValue {
 impl Wire2Api<Box<Speed>> for JsValue {
     fn wire2api(self) -> Box<Speed> {
         Box::new(self.wire2api())
+    }
+}
+impl Wire2Api<Box<[u8; 1600]>> for JsValue {
+    fn wire2api(self) -> Box<[u8; 1600]> {
+        let vec: Vec<u8> = self.wire2api();
+        Box::new(support::from_vec_to_array(vec))
     }
 }
 impl Wire2Api<Box<Weekdays>> for JsValue {
@@ -631,6 +746,12 @@ impl Wire2Api<f64> for JsValue {
         self.unchecked_into_f64() as _
     }
 }
+impl Wire2Api<[f64; 16]> for JsValue {
+    fn wire2api(self) -> [f64; 16] {
+        let vec: Vec<f64> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
 impl Wire2Api<i16> for JsValue {
     fn wire2api(self) -> i16 {
         self.unchecked_into_f64() as _
@@ -639,6 +760,12 @@ impl Wire2Api<i16> for JsValue {
 impl Wire2Api<i32> for JsValue {
     fn wire2api(self) -> i32 {
         self.unchecked_into_f64() as _
+    }
+}
+impl Wire2Api<[i32; 2]> for JsValue {
+    fn wire2api(self) -> [i32; 2] {
+        let vec: Vec<i32> = self.wire2api();
+        support::from_vec_to_array(vec)
     }
 }
 impl Wire2Api<i64> for JsValue {
@@ -709,6 +836,12 @@ impl Wire2Api<Vec<u8>> for JsValue {
         self.unchecked_into::<js_sys::Uint8Array>().to_vec().into()
     }
 }
+impl Wire2Api<[TestId; 4]> for JsValue {
+    fn wire2api(self) -> [TestId; 4] {
+        let vec: Vec<TestId> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
 impl Wire2Api<u16> for JsValue {
     fn wire2api(self) -> u16 {
         self.unchecked_into_f64() as _
@@ -729,10 +862,83 @@ impl Wire2Api<u8> for JsValue {
         self.unchecked_into_f64() as _
     }
 }
+impl Wire2Api<[u8; 1600]> for JsValue {
+    fn wire2api(self) -> [u8; 1600] {
+        let vec: Vec<u8> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
+impl Wire2Api<[u8; 32]> for JsValue {
+    fn wire2api(self) -> [u8; 32] {
+        let vec: Vec<u8> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
+impl Wire2Api<[u8; 8]> for JsValue {
+    fn wire2api(self) -> [u8; 8] {
+        let vec: Vec<u8> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
 impl Wire2Api<Weekdays> for JsValue {
     fn wire2api(self) -> Weekdays {
         (self.unchecked_into_f64() as i32).wire2api()
     }
+}
+
+#[wasm_bindgen]
+pub fn wire_boxed_blob(port_: MessagePort, blob: Box<[u8]>) {
+    wire_boxed_blob_impl(port_, blob)
+}
+
+#[wasm_bindgen]
+pub fn wire_get_array(port_: MessagePort) {
+    wire_get_array_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_get_complex_array(port_: MessagePort) {
+    wire_get_complex_array_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_last_number(port_: MessagePort, array: Box<[f64]>) {
+    wire_last_number_impl(port_, array)
+}
+
+#[wasm_bindgen]
+pub fn wire_nested_id(port_: MessagePort, id: JsValue) {
+    wire_nested_id_impl(port_, id)
+}
+
+#[wasm_bindgen]
+pub fn wire_new_msgid(port_: MessagePort, id: Box<[u8]>) {
+    wire_new_msgid_impl(port_, id)
+}
+
+#[wasm_bindgen]
+pub fn wire_return_boxed_feed_id(port_: MessagePort, id: Box<[u8]>) {
+    wire_return_boxed_feed_id_impl(port_, id)
+}
+
+#[wasm_bindgen]
+pub fn wire_return_boxed_raw_feed_id(port_: MessagePort, id: JsValue) {
+    wire_return_boxed_raw_feed_id_impl(port_, id)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_id(port_: MessagePort, id: JsValue) {
+    wire_test_id_impl(port_, id)
+}
+
+#[wasm_bindgen]
+pub fn wire_use_boxed_blob(port_: MessagePort, blob: JsValue) {
+    wire_use_boxed_blob_impl(port_, blob)
+}
+
+#[wasm_bindgen]
+pub fn wire_use_msgid(port_: MessagePort, id: JsValue) {
+    wire_use_msgid_impl(port_, id)
 }
 
 #[wasm_bindgen]
@@ -896,6 +1102,11 @@ pub fn wire_handle_list_of_struct(port_: MessagePort, l: JsValue) {
 #[wasm_bindgen]
 pub fn wire_handle_string_list(port_: MessagePort, names: JsValue) {
     wire_handle_string_list_impl(port_, names)
+}
+
+#[wasm_bindgen]
+pub fn wire_handle_newtype(port_: MessagePort, arg: JsValue) {
+    wire_handle_newtype_impl(port_, arg)
 }
 
 #[wasm_bindgen]
@@ -1355,6 +1566,16 @@ pub fn wire_func_tuple_struct_with_one_field_twin_sync(arg: JsValue) -> support:
 #[wasm_bindgen]
 pub fn wire_func_tuple_struct_with_two_field_twin_sync(arg: JsValue) -> support::WireSyncReturn {
     wire_func_tuple_struct_with_two_field_twin_sync_impl(arg)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_more_than_just_one_raw_string_struct(port_: MessagePort) {
+    wire_test_more_than_just_one_raw_string_struct_impl(port_)
+}
+
+#[wasm_bindgen]
+pub fn wire_test_raw_string_item_struct(port_: MessagePort) {
+    wire_test_raw_string_item_struct_impl(port_)
 }
 
 #[wasm_bindgen]

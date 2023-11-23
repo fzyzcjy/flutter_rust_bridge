@@ -1,11 +1,13 @@
 // ignore_for_file: unused_import, unused_element
 
+import 'api/array.dart';
 import 'api/comment.dart';
 import 'api/enumeration.dart';
 import 'api/exception.dart';
 import 'api/inside_macro.dart';
 import 'api/misc_example.dart';
 import 'api/misc_type.dart';
+import 'api/newtype_pattern.dart';
 import 'api/pseudo_manual/comment_twin_sync.dart';
 import 'api/pseudo_manual/enumeration_twin_sync.dart';
 import 'api/pseudo_manual/exception_twin_sync.dart';
@@ -18,6 +20,7 @@ import 'api/pseudo_manual/primitive_list_twin_sync.dart';
 import 'api/pseudo_manual/primitive_twin_sync.dart';
 import 'api/pseudo_manual/simple_twin_sync.dart';
 import 'api/pseudo_manual/structure_twin_sync.dart';
+import 'api/raw_string.dart';
 import 'api/simple.dart';
 import 'api/stream.dart';
 import 'api/structure.dart';
@@ -64,6 +67,28 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
+  Future<Blob> boxedBlob({required U8Array1600 blob, dynamic hint});
+
+  Future<U8Array5> getArray({dynamic hint});
+
+  Future<PointArray2> getComplexArray({dynamic hint});
+
+  Future<double> lastNumber({required F64Array16 array, dynamic hint});
+
+  Future<TestIdArray2> nestedId({required TestIdArray4 id, dynamic hint});
+
+  Future<MessageId> newMsgid({required U8Array32 id, dynamic hint});
+
+  Future<FeedId> returnBoxedFeedId({required U8Array8 id, dynamic hint});
+
+  Future<U8Array8> returnBoxedRawFeedId({required FeedId id, dynamic hint});
+
+  Future<TestId> testId({required TestId id, dynamic hint});
+
+  Future<U8Array1600> useBoxedBlob({required Blob blob, dynamic hint});
+
+  Future<U8Array32> useMsgid({required MessageId id, dynamic hint});
+
   Future<void> structWithCommentsTwinNormalInstanceMethodTwinNormal(
       {required StructWithCommentsTwinNormal that, dynamic hint});
 
@@ -144,6 +169,8 @@ abstract class RustLibApi extends BaseApi {
 
   Future<List<String>> handleStringList(
       {required List<String> names, dynamic hint});
+
+  Future<NewTypeInt> handleNewtype({required NewTypeInt arg, dynamic hint});
 
   void structWithCommentsTwinSyncInstanceMethodTwinSync(
       {required StructWithCommentsTwinSync that, dynamic hint});
@@ -383,6 +410,11 @@ abstract class RustLibApi extends BaseApi {
   TupleStructWithTwoFieldTwinSync funcTupleStructWithTwoFieldTwinSync(
       {required TupleStructWithTwoFieldTwinSync arg, dynamic hint});
 
+  Future<MoreThanJustOneRawStringStruct> testMoreThanJustOneRawStringStruct(
+      {dynamic hint});
+
+  Future<RawStringItemStruct> testRawStringItemStruct({dynamic hint});
+
   Future<int> simpleAdderTwinNormal(
       {required int a, required int b, dynamic hint});
 
@@ -422,6 +454,213 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     required super.wire,
     required super.generalizedFrbRustBinding,
   });
+
+  @override
+  Future<Blob> boxedBlob({required U8Array1600 blob, dynamic hint}) {
+    var arg0 = api2wire_box_u_8_array_1600(blob);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_boxed_blob(port_, arg0),
+      parseSuccessData: _wire2api_blob,
+      parseErrorData: null,
+      constMeta: kBoxedBlobConstMeta,
+      argValues: [blob],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kBoxedBlobConstMeta => const TaskConstMeta(
+        debugName: "boxed_blob",
+        argNames: ["blob"],
+      );
+
+  @override
+  Future<U8Array5> getArray({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_get_array(port_),
+      parseSuccessData: _wire2api_u_8_array_5,
+      parseErrorData: null,
+      constMeta: kGetArrayConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kGetArrayConstMeta => const TaskConstMeta(
+        debugName: "get_array",
+        argNames: [],
+      );
+
+  @override
+  Future<PointArray2> getComplexArray({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_get_complex_array(port_),
+      parseSuccessData: _wire2api_point_array_2,
+      parseErrorData: null,
+      constMeta: kGetComplexArrayConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kGetComplexArrayConstMeta => const TaskConstMeta(
+        debugName: "get_complex_array",
+        argNames: [],
+      );
+
+  @override
+  Future<double> lastNumber({required F64Array16 array, dynamic hint}) {
+    var arg0 = api2wire_f_64_array_16(array);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_last_number(port_, arg0),
+      parseSuccessData: _wire2api_f_64,
+      parseErrorData: null,
+      constMeta: kLastNumberConstMeta,
+      argValues: [array],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kLastNumberConstMeta => const TaskConstMeta(
+        debugName: "last_number",
+        argNames: ["array"],
+      );
+
+  @override
+  Future<TestIdArray2> nestedId({required TestIdArray4 id, dynamic hint}) {
+    var arg0 = api2wire_test_id_array_4(id);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_nested_id(port_, arg0),
+      parseSuccessData: _wire2api_test_id_array_2,
+      parseErrorData: null,
+      constMeta: kNestedIdConstMeta,
+      argValues: [id],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNestedIdConstMeta => const TaskConstMeta(
+        debugName: "nested_id",
+        argNames: ["id"],
+      );
+
+  @override
+  Future<MessageId> newMsgid({required U8Array32 id, dynamic hint}) {
+    var arg0 = api2wire_u_8_array_32(id);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_new_msgid(port_, arg0),
+      parseSuccessData: _wire2api_message_id,
+      parseErrorData: null,
+      constMeta: kNewMsgidConstMeta,
+      argValues: [id],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kNewMsgidConstMeta => const TaskConstMeta(
+        debugName: "new_msgid",
+        argNames: ["id"],
+      );
+
+  @override
+  Future<FeedId> returnBoxedFeedId({required U8Array8 id, dynamic hint}) {
+    var arg0 = api2wire_u_8_array_8(id);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_return_boxed_feed_id(port_, arg0),
+      parseSuccessData: _wire2api_box_feed_id,
+      parseErrorData: null,
+      constMeta: kReturnBoxedFeedIdConstMeta,
+      argValues: [id],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kReturnBoxedFeedIdConstMeta => const TaskConstMeta(
+        debugName: "return_boxed_feed_id",
+        argNames: ["id"],
+      );
+
+  @override
+  Future<U8Array8> returnBoxedRawFeedId({required FeedId id, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_feed_id(id);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_return_boxed_raw_feed_id(port_, arg0),
+      parseSuccessData: _wire2api_box_u_8_array_8,
+      parseErrorData: null,
+      constMeta: kReturnBoxedRawFeedIdConstMeta,
+      argValues: [id],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kReturnBoxedRawFeedIdConstMeta => const TaskConstMeta(
+        debugName: "return_boxed_raw_feed_id",
+        argNames: ["id"],
+      );
+
+  @override
+  Future<TestId> testId({required TestId id, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_test_id(id);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_test_id(port_, arg0),
+      parseSuccessData: _wire2api_test_id,
+      parseErrorData: null,
+      constMeta: kTestIdConstMeta,
+      argValues: [id],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestIdConstMeta => const TaskConstMeta(
+        debugName: "test_id",
+        argNames: ["id"],
+      );
+
+  @override
+  Future<U8Array1600> useBoxedBlob({required Blob blob, dynamic hint}) {
+    var arg0 = api2wire_box_blob(blob);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_use_boxed_blob(port_, arg0),
+      parseSuccessData: _wire2api_u_8_array_1600,
+      parseErrorData: null,
+      constMeta: kUseBoxedBlobConstMeta,
+      argValues: [blob],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kUseBoxedBlobConstMeta => const TaskConstMeta(
+        debugName: "use_boxed_blob",
+        argNames: ["blob"],
+      );
+
+  @override
+  Future<U8Array32> useMsgid({required MessageId id, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_message_id(id);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_use_msgid(port_, arg0),
+      parseSuccessData: _wire2api_u_8_array_32,
+      parseErrorData: null,
+      constMeta: kUseMsgidConstMeta,
+      argValues: [id],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kUseMsgidConstMeta => const TaskConstMeta(
+        debugName: "use_msgid",
+        argNames: ["id"],
+      );
 
   @override
   Future<void> structWithCommentsTwinNormalInstanceMethodTwinNormal(
@@ -1075,6 +1314,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kHandleStringListConstMeta => const TaskConstMeta(
         debugName: "handle_string_list",
         argNames: ["names"],
+      );
+
+  @override
+  Future<NewTypeInt> handleNewtype({required NewTypeInt arg, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_new_type_int(arg);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_handle_newtype(port_, arg0),
+      parseSuccessData: _wire2api_new_type_int,
+      parseErrorData: null,
+      constMeta: kHandleNewtypeConstMeta,
+      argValues: [arg],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kHandleNewtypeConstMeta => const TaskConstMeta(
+        debugName: "handle_newtype",
+        argNames: ["arg"],
       );
 
   @override
@@ -2994,6 +3252,45 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<MoreThanJustOneRawStringStruct> testMoreThanJustOneRawStringStruct(
+      {dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) =>
+          wire.wire_test_more_than_just_one_raw_string_struct(port_),
+      parseSuccessData: _wire2api_more_than_just_one_raw_string_struct,
+      parseErrorData: null,
+      constMeta: kTestMoreThanJustOneRawStringStructConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestMoreThanJustOneRawStringStructConstMeta =>
+      const TaskConstMeta(
+        debugName: "test_more_than_just_one_raw_string_struct",
+        argNames: [],
+      );
+
+  @override
+  Future<RawStringItemStruct> testRawStringItemStruct({dynamic hint}) {
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_test_raw_string_item_struct(port_),
+      parseSuccessData: _wire2api_raw_string_item_struct,
+      parseErrorData: null,
+      constMeta: kTestRawStringItemStructConstMeta,
+      argValues: [],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kTestRawStringItemStructConstMeta => const TaskConstMeta(
+        debugName: "test_raw_string_item_struct",
+        argNames: [],
+      );
+
+  @override
   Future<int> simpleAdderTwinNormal(
       {required int a, required int b, dynamic hint}) {
     var arg0 = api2wire_i_32(a);
@@ -3299,6 +3596,15 @@ BigBuffers _wire2api_big_buffers(dynamic raw) {
   );
 }
 
+Blob _wire2api_blob(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return Blob(
+    field0: _wire2api_u_8_array_1600(arr[0]),
+  );
+}
+
 bool _wire2api_bool(dynamic raw) {
   return raw as bool;
 }
@@ -3381,8 +3687,16 @@ Distance _wire2api_box_distance(dynamic raw) {
   return _wire2api_distance(raw);
 }
 
+FeedId _wire2api_box_feed_id(dynamic raw) {
+  return _wire2api_feed_id(raw);
+}
+
 Speed _wire2api_box_speed(dynamic raw) {
   return _wire2api_speed(raw);
+}
+
+U8Array8 _wire2api_box_u_8_array_8(dynamic raw) {
+  return _wire2api_u_8_array_8(raw);
 }
 
 C _wire2api_c(dynamic raw) {
@@ -3640,12 +3954,25 @@ double _wire2api_f_64(dynamic raw) {
   return raw as double;
 }
 
+FeedId _wire2api_feed_id(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return FeedId(
+    field0: _wire2api_u_8_array_8(arr[0]),
+  );
+}
+
 int _wire2api_i_16(dynamic raw) {
   return raw as int;
 }
 
 int _wire2api_i_32(dynamic raw) {
   return raw as int;
+}
+
+I32Array2 _wire2api_i_32_array_2(dynamic raw) {
+  return I32Array2(_wire2api_list_prim_i_32(raw));
 }
 
 BigInt _wire2api_i_64(dynamic raw) {
@@ -3666,6 +3993,10 @@ List<MySize> _wire2api_list_my_size(dynamic raw) {
 
 List<MyTreeNode> _wire2api_list_my_tree_node(dynamic raw) {
   return (raw as List<dynamic>).map(_wire2api_my_tree_node).toList();
+}
+
+List<Point> _wire2api_list_point(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_point).toList();
 }
 
 Float32List _wire2api_list_prim_f_32(dynamic raw) {
@@ -3708,6 +4039,10 @@ Uint8List _wire2api_list_prim_u_8(dynamic raw) {
   return raw as Uint8List;
 }
 
+List<TestId> _wire2api_list_test_id(dynamic raw) {
+  return (raw as List<dynamic>).map(_wire2api_test_id).toList();
+}
+
 List<Weekdays> _wire2api_list_weekdays(dynamic raw) {
   return (raw as List<dynamic>).map(_wire2api_weekdays).toList();
 }
@@ -3734,6 +4069,28 @@ Measure _wire2api_measure(dynamic raw) {
     default:
       throw Exception("unreachable");
   }
+}
+
+MessageId _wire2api_message_id(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return MessageId(
+    field0: _wire2api_u_8_array_32(arr[0]),
+  );
+}
+
+MoreThanJustOneRawStringStruct _wire2api_more_than_just_one_raw_string_struct(
+    dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 4)
+    throw Exception('unexpected arr length: expect 4 but see ${arr.length}');
+  return MoreThanJustOneRawStringStruct(
+    regular: _wire2api_String(arr[0]),
+    type: _wire2api_String(arr[1]),
+    async: _wire2api_bool(arr[2]),
+    another: _wire2api_String(arr[3]),
+  );
 }
 
 MyNestedStruct _wire2api_my_nested_struct(dynamic raw) {
@@ -3774,6 +4131,15 @@ MyTreeNode _wire2api_my_tree_node(dynamic raw) {
     valueVecU8: _wire2api_list_prim_u_8(arr[1]),
     valueBoolean: _wire2api_bool(arr[2]),
     children: _wire2api_list_my_tree_node(arr[3]),
+  );
+}
+
+NewTypeInt _wire2api_new_type_int(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return NewTypeInt(
+    field0: _wire2api_i_64(arr[0]),
   );
 }
 
@@ -3827,6 +4193,29 @@ int? _wire2api_opt_box_autoadd_u_8(dynamic raw) {
 
 Weekdays? _wire2api_opt_box_autoadd_weekdays(dynamic raw) {
   return raw == null ? null : _wire2api_box_autoadd_weekdays(raw);
+}
+
+Point _wire2api_point(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 2)
+    throw Exception('unexpected arr length: expect 2 but see ${arr.length}');
+  return Point(
+    x: _wire2api_f_32(arr[0]),
+    y: _wire2api_f_32(arr[1]),
+  );
+}
+
+PointArray2 _wire2api_point_array_2(dynamic raw) {
+  return PointArray2((raw as List<dynamic>).map(_wire2api_point).toList());
+}
+
+RawStringItemStruct _wire2api_raw_string_item_struct(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return RawStringItemStruct(
+    type: _wire2api_String(arr[0]),
+  );
 }
 
 Speed _wire2api_speed(dynamic raw) {
@@ -3910,6 +4299,19 @@ StructWithZeroFieldTwinSync _wire2api_struct_with_zero_field_twin_sync(
   return StructWithZeroFieldTwinSync();
 }
 
+TestId _wire2api_test_id(dynamic raw) {
+  final arr = raw as List<dynamic>;
+  if (arr.length != 1)
+    throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
+  return TestId(
+    field0: _wire2api_i_32_array_2(arr[0]),
+  );
+}
+
+TestIdArray2 _wire2api_test_id_array_2(dynamic raw) {
+  return TestIdArray2((raw as List<dynamic>).map(_wire2api_test_id).toList());
+}
+
 TupleStructWithOneFieldTwinNormal
     _wire2api_tuple_struct_with_one_field_twin_normal(dynamic raw) {
   final arr = raw as List<dynamic>;
@@ -3966,6 +4368,22 @@ BigInt _wire2api_u_64(dynamic raw) {
 
 int _wire2api_u_8(dynamic raw) {
   return raw as int;
+}
+
+U8Array1600 _wire2api_u_8_array_1600(dynamic raw) {
+  return U8Array1600(_wire2api_list_prim_u_8(raw));
+}
+
+U8Array32 _wire2api_u_8_array_32(dynamic raw) {
+  return U8Array32(_wire2api_list_prim_u_8(raw));
+}
+
+U8Array5 _wire2api_u_8_array_5(dynamic raw) {
+  return U8Array5(_wire2api_list_prim_u_8(raw));
+}
+
+U8Array8 _wire2api_u_8_array_8(dynamic raw) {
+  return U8Array8(_wire2api_list_prim_u_8(raw));
 }
 
 void _wire2api_unit(dynamic raw) {

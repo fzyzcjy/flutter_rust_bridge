@@ -58,6 +58,11 @@ impl Wire2Api<B> for wire_b {
         }
     }
 }
+impl Wire2Api<Blob> for wire_blob {
+    fn wire2api(self) -> Blob {
+        Blob(self.field0.wire2api())
+    }
+}
 impl Wire2Api<A> for *mut wire_a {
     fn wire2api(self) -> A {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -173,6 +178,12 @@ impl Wire2Api<f64> for *mut f64 {
         unsafe { *support::box_from_leak_ptr(self) }
     }
 }
+impl Wire2Api<FeedId> for *mut wire_feed_id {
+    fn wire2api(self) -> FeedId {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<FeedId>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<i16> for *mut i16 {
     fn wire2api(self) -> i16 {
         unsafe { *support::box_from_leak_ptr(self) }
@@ -205,6 +216,12 @@ impl Wire2Api<Measure> for *mut wire_measure {
         Wire2Api::<Measure>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<MessageId> for *mut wire_message_id {
+    fn wire2api(self) -> MessageId {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<MessageId>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<MyNestedStruct> for *mut wire_my_nested_struct {
     fn wire2api(self) -> MyNestedStruct {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -215,6 +232,12 @@ impl Wire2Api<MyTreeNode> for *mut wire_my_tree_node {
     fn wire2api(self) -> MyTreeNode {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<MyTreeNode>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<NewTypeInt> for *mut wire_new_type_int {
+    fn wire2api(self) -> NewTypeInt {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<NewTypeInt>::wire2api(*wrap).into()
     }
 }
 impl Wire2Api<Note> for *mut wire_note {
@@ -277,6 +300,12 @@ impl Wire2Api<StructWithZeroFieldTwinSync> for *mut wire_struct_with_zero_field_
         Wire2Api::<StructWithZeroFieldTwinSync>::wire2api(*wrap).into()
     }
 }
+impl Wire2Api<TestId> for *mut wire_test_id {
+    fn wire2api(self) -> TestId {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<TestId>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<TupleStructWithOneFieldTwinNormal>
     for *mut wire_tuple_struct_with_one_field_twin_normal
 {
@@ -325,6 +354,12 @@ impl Wire2Api<u8> for *mut u8 {
         unsafe { *support::box_from_leak_ptr(self) }
     }
 }
+impl Wire2Api<Box<Blob>> for *mut wire_blob {
+    fn wire2api(self) -> Box<Blob> {
+        let wrap = unsafe { support::box_from_leak_ptr(self) };
+        Wire2Api::<Blob>::wire2api(*wrap).into()
+    }
+}
 impl Wire2Api<Box<Distance>> for *mut wire_distance {
     fn wire2api(self) -> Box<Distance> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
@@ -335,6 +370,11 @@ impl Wire2Api<Box<Speed>> for *mut wire_speed {
     fn wire2api(self) -> Box<Speed> {
         let wrap = unsafe { support::box_from_leak_ptr(self) };
         Wire2Api::<Speed>::wire2api(*wrap).into()
+    }
+}
+impl Wire2Api<Box<[u8; 1600]>> for *mut wire_list_prim_u_8 {
+    fn wire2api(self) -> Box<[u8; 1600]> {
+        Wire2Api::<[u8; 1600]>::wire2api(self).into()
     }
 }
 impl Wire2Api<Box<Weekdays>> for *mut i32 {
@@ -561,6 +601,23 @@ impl Wire2Api<EnumWithItemTupleTwinSync> for wire_enum_with_item_tuple_twin_sync
         }
     }
 }
+impl Wire2Api<[f64; 16]> for *mut wire_list_prim_f_64 {
+    fn wire2api(self) -> [f64; 16] {
+        let vec: Vec<f64> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
+impl Wire2Api<FeedId> for wire_feed_id {
+    fn wire2api(self) -> FeedId {
+        FeedId(self.field0.wire2api())
+    }
+}
+impl Wire2Api<[i32; 2]> for *mut wire_list_prim_i_32 {
+    fn wire2api(self) -> [i32; 2] {
+        let vec: Vec<i32> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
 impl Wire2Api<Vec<bool>> for *mut wire_list_bool {
     fn wire2api(self) -> Vec<bool> {
         let vec = unsafe {
@@ -668,6 +725,15 @@ impl Wire2Api<Vec<u8>> for *mut wire_list_prim_u_8 {
         }
     }
 }
+impl Wire2Api<Vec<TestId>> for *mut wire_list_test_id {
+    fn wire2api(self) -> Vec<TestId> {
+        let vec = unsafe {
+            let wrap = support::box_from_leak_ptr(self);
+            support::vec_from_leak_ptr(wrap.ptr, wrap.len)
+        };
+        vec.into_iter().map(Wire2Api::wire2api).collect()
+    }
+}
 impl Wire2Api<Vec<Weekdays>> for *mut wire_list_weekdays {
     fn wire2api(self) -> Vec<Weekdays> {
         let vec = unsafe {
@@ -701,6 +767,11 @@ impl Wire2Api<Measure> for wire_measure {
         }
     }
 }
+impl Wire2Api<MessageId> for wire_message_id {
+    fn wire2api(self) -> MessageId {
+        MessageId(self.field0.wire2api())
+    }
+}
 impl Wire2Api<MyNestedStruct> for wire_my_nested_struct {
     fn wire2api(self) -> MyNestedStruct {
         MyNestedStruct {
@@ -725,6 +796,11 @@ impl Wire2Api<MyTreeNode> for wire_my_tree_node {
             value_boolean: self.value_boolean.wire2api(),
             children: self.children.wire2api(),
         }
+    }
+}
+impl Wire2Api<NewTypeInt> for wire_new_type_int {
+    fn wire2api(self) -> NewTypeInt {
+        NewTypeInt(self.field0.wire2api())
     }
 }
 impl Wire2Api<Note> for wire_note {
@@ -810,6 +886,17 @@ impl Wire2Api<StructWithZeroFieldTwinSync> for wire_struct_with_zero_field_twin_
         StructWithZeroFieldTwinSync {}
     }
 }
+impl Wire2Api<TestId> for wire_test_id {
+    fn wire2api(self) -> TestId {
+        TestId(self.field0.wire2api())
+    }
+}
+impl Wire2Api<[TestId; 4]> for *mut wire_list_test_id {
+    fn wire2api(self) -> [TestId; 4] {
+        let vec: Vec<TestId> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
 impl Wire2Api<TupleStructWithOneFieldTwinNormal> for wire_tuple_struct_with_one_field_twin_normal {
     fn wire2api(self) -> TupleStructWithOneFieldTwinNormal {
         TupleStructWithOneFieldTwinNormal(self.field0.wire2api())
@@ -828,6 +915,24 @@ impl Wire2Api<TupleStructWithTwoFieldTwinNormal> for wire_tuple_struct_with_two_
 impl Wire2Api<TupleStructWithTwoFieldTwinSync> for wire_tuple_struct_with_two_field_twin_sync {
     fn wire2api(self) -> TupleStructWithTwoFieldTwinSync {
         TupleStructWithTwoFieldTwinSync(self.field0.wire2api(), self.field1.wire2api())
+    }
+}
+impl Wire2Api<[u8; 1600]> for *mut wire_list_prim_u_8 {
+    fn wire2api(self) -> [u8; 1600] {
+        let vec: Vec<u8> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
+impl Wire2Api<[u8; 32]> for *mut wire_list_prim_u_8 {
+    fn wire2api(self) -> [u8; 32] {
+        let vec: Vec<u8> = self.wire2api();
+        support::from_vec_to_array(vec)
+    }
+}
+impl Wire2Api<[u8; 8]> for *mut wire_list_prim_u_8 {
+    fn wire2api(self) -> [u8; 8] {
+        let vec: Vec<u8> = self.wire2api();
+        support::from_vec_to_array(vec)
     }
 }
 
@@ -887,6 +992,12 @@ pub struct wire_Abc_JustInt {
 #[derive(Clone)]
 pub struct wire_b {
     b: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_blob {
+    field0: *mut wire_list_prim_u_8,
 }
 
 #[repr(C)]
@@ -1179,6 +1290,12 @@ pub struct wire_EnumWithItemTupleTwinSync_B {
 }
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_feed_id {
+    field0: *mut wire_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_list_bool {
     ptr: *mut bool,
     len: i32,
@@ -1270,6 +1387,13 @@ pub struct wire_list_prim_u_8 {
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_list_test_id {
+    ptr: *mut wire_test_id,
+    len: i32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_list_weekdays {
     ptr: *mut i32,
     len: i32,
@@ -1306,6 +1430,12 @@ pub struct wire_Measure_Distance {
 }
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_message_id {
+    field0: *mut wire_list_prim_u_8,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_my_nested_struct {
     tree_node: wire_my_tree_node,
     weekday: i32,
@@ -1325,6 +1455,12 @@ pub struct wire_my_tree_node {
     value_vec_u8: *mut wire_list_prim_u_8,
     value_boolean: bool,
     children: *mut wire_list_my_tree_node,
+}
+
+#[repr(C)]
+#[derive(Clone)]
+pub struct wire_new_type_int {
+    field0: i64,
 }
 
 #[repr(C)]
@@ -1410,6 +1546,12 @@ pub struct wire_struct_with_zero_field_twin_sync {}
 
 #[repr(C)]
 #[derive(Clone)]
+pub struct wire_test_id {
+    field0: *mut wire_list_prim_i_32,
+}
+
+#[repr(C)]
+#[derive(Clone)]
 pub struct wire_tuple_struct_with_one_field_twin_normal {
     field0: i32,
 }
@@ -1478,6 +1620,18 @@ impl NewWithNullPtr for wire_b {
     }
 }
 impl Default for wire_b {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_blob {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            field0: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_blob {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -1661,6 +1815,18 @@ impl Default for wire_enum_with_item_tuple_twin_sync {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_feed_id {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            field0: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_feed_id {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_macro_struct {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -1682,6 +1848,18 @@ impl NewWithNullPtr for wire_measure {
     }
 }
 impl Default for wire_measure {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_message_id {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            field0: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_message_id {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -1723,6 +1901,18 @@ impl NewWithNullPtr for wire_my_tree_node {
     }
 }
 impl Default for wire_my_tree_node {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
+impl NewWithNullPtr for wire_new_type_int {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            field0: Default::default(),
+        }
+    }
+}
+impl Default for wire_new_type_int {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
@@ -1860,6 +2050,18 @@ impl Default for wire_struct_with_zero_field_twin_sync {
         Self::new_with_null_ptr()
     }
 }
+impl NewWithNullPtr for wire_test_id {
+    fn new_with_null_ptr() -> Self {
+        Self {
+            field0: core::ptr::null_mut(),
+        }
+    }
+}
+impl Default for wire_test_id {
+    fn default() -> Self {
+        Self::new_with_null_ptr()
+    }
+}
 impl NewWithNullPtr for wire_tuple_struct_with_one_field_twin_normal {
     fn new_with_null_ptr() -> Self {
         Self {
@@ -1909,6 +2111,61 @@ impl Default for wire_tuple_struct_with_two_field_twin_sync {
     fn default() -> Self {
         Self::new_with_null_ptr()
     }
+}
+
+#[no_mangle]
+pub extern "C" fn wire_boxed_blob(port_: i64, blob: *mut wire_list_prim_u_8) {
+    wire_boxed_blob_impl(port_, blob)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_get_array(port_: i64) {
+    wire_get_array_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_get_complex_array(port_: i64) {
+    wire_get_complex_array_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_last_number(port_: i64, array: *mut wire_list_prim_f_64) {
+    wire_last_number_impl(port_, array)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_nested_id(port_: i64, id: *mut wire_list_test_id) {
+    wire_nested_id_impl(port_, id)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_new_msgid(port_: i64, id: *mut wire_list_prim_u_8) {
+    wire_new_msgid_impl(port_, id)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_return_boxed_feed_id(port_: i64, id: *mut wire_list_prim_u_8) {
+    wire_return_boxed_feed_id_impl(port_, id)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_return_boxed_raw_feed_id(port_: i64, id: *mut wire_feed_id) {
+    wire_return_boxed_raw_feed_id_impl(port_, id)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_id(port_: i64, id: *mut wire_test_id) {
+    wire_test_id_impl(port_, id)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_use_boxed_blob(port_: i64, blob: *mut wire_blob) {
+    wire_use_boxed_blob_impl(port_, blob)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_use_msgid(port_: i64, id: *mut wire_message_id) {
+    wire_use_msgid_impl(port_, id)
 }
 
 #[no_mangle]
@@ -2087,6 +2344,11 @@ pub extern "C" fn wire_handle_list_of_struct(port_: i64, l: *mut wire_list_my_si
 #[no_mangle]
 pub extern "C" fn wire_handle_string_list(port_: i64, names: *mut wire_StringList) {
     wire_handle_string_list_impl(port_, names)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_handle_newtype(port_: i64, arg: *mut wire_new_type_int) {
+    wire_handle_newtype_impl(port_, arg)
 }
 
 #[no_mangle]
@@ -2653,6 +2915,16 @@ pub extern "C" fn wire_func_tuple_struct_with_two_field_twin_sync(
 }
 
 #[no_mangle]
+pub extern "C" fn wire_test_more_than_just_one_raw_string_struct(port_: i64) {
+    wire_test_more_than_just_one_raw_string_struct_impl(port_)
+}
+
+#[no_mangle]
+pub extern "C" fn wire_test_raw_string_item_struct(port_: i64) {
+    wire_test_raw_string_item_struct_impl(port_)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_simple_adder_twin_normal(port_: i64, a: i32, b: i32) {
     wire_simple_adder_twin_normal_impl(port_, a, b)
 }
@@ -2839,6 +3111,11 @@ pub extern "C" fn new_box_autoadd_f_64(value: f64) -> *mut f64 {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_feed_id() -> *mut wire_feed_id {
+    support::new_leak_box_ptr(wire_feed_id::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_i_16(value: i16) -> *mut i16 {
     support::new_leak_box_ptr(value)
 }
@@ -2869,6 +3146,11 @@ pub extern "C" fn new_box_autoadd_measure() -> *mut wire_measure {
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_message_id() -> *mut wire_message_id {
+    support::new_leak_box_ptr(wire_message_id::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_my_nested_struct() -> *mut wire_my_nested_struct {
     support::new_leak_box_ptr(wire_my_nested_struct::new_with_null_ptr())
 }
@@ -2876,6 +3158,11 @@ pub extern "C" fn new_box_autoadd_my_nested_struct() -> *mut wire_my_nested_stru
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_my_tree_node() -> *mut wire_my_tree_node {
     support::new_leak_box_ptr(wire_my_tree_node::new_with_null_ptr())
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_autoadd_new_type_int() -> *mut wire_new_type_int {
+    support::new_leak_box_ptr(wire_new_type_int::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -2937,6 +3224,11 @@ pub extern "C" fn new_box_autoadd_struct_with_zero_field_twin_sync(
 }
 
 #[no_mangle]
+pub extern "C" fn new_box_autoadd_test_id() -> *mut wire_test_id {
+    support::new_leak_box_ptr(wire_test_id::new_with_null_ptr())
+}
+
+#[no_mangle]
 pub extern "C" fn new_box_autoadd_tuple_struct_with_one_field_twin_normal(
 ) -> *mut wire_tuple_struct_with_one_field_twin_normal {
     support::new_leak_box_ptr(wire_tuple_struct_with_one_field_twin_normal::new_with_null_ptr())
@@ -2978,6 +3270,11 @@ pub extern "C" fn new_box_autoadd_u_64(value: u64) -> *mut u64 {
 #[no_mangle]
 pub extern "C" fn new_box_autoadd_u_8(value: u8) -> *mut u8 {
     support::new_leak_box_ptr(value)
+}
+
+#[no_mangle]
+pub extern "C" fn new_box_blob() -> *mut wire_blob {
+    support::new_leak_box_ptr(wire_blob::new_with_null_ptr())
 }
 
 #[no_mangle]
@@ -3110,6 +3407,15 @@ pub extern "C" fn new_list_prim_u_8(len: i32) -> *mut wire_list_prim_u_8 {
         len,
     };
     support::new_leak_box_ptr(ans)
+}
+
+#[no_mangle]
+pub extern "C" fn new_list_test_id(len: i32) -> *mut wire_list_test_id {
+    let wrap = wire_list_test_id {
+        ptr: support::new_leak_vec_ptr(<wire_test_id>::new_with_null_ptr(), len),
+        len,
+    };
+    support::new_leak_box_ptr(wrap)
 }
 
 #[no_mangle]

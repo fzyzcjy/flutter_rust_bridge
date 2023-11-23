@@ -18,6 +18,12 @@
 
 // Section: imports
 
+use crate::api::array::Blob;
+use crate::api::array::FeedId;
+use crate::api::array::MessageId;
+use crate::api::array::Point;
+use crate::api::array::TestId;
+use crate::api::array::*;
 use crate::api::comment::StructWithCommentsTwinNormal;
 use crate::api::comment::*;
 use crate::api::enumeration::Distance;
@@ -45,6 +51,8 @@ use crate::api::misc_example::B;
 use crate::api::misc_example::C;
 use crate::api::misc_example::*;
 use crate::api::misc_type::*;
+use crate::api::newtype_pattern::NewTypeInt;
+use crate::api::newtype_pattern::*;
 use crate::api::pseudo_manual::comment_twin_sync::StructWithCommentsTwinSync;
 use crate::api::pseudo_manual::comment_twin_sync::*;
 use crate::api::pseudo_manual::enumeration_twin_sync::EnumWithItemMixedTwinSync;
@@ -70,6 +78,9 @@ use crate::api::pseudo_manual::structure_twin_sync::StructWithZeroFieldTwinSync;
 use crate::api::pseudo_manual::structure_twin_sync::TupleStructWithOneFieldTwinSync;
 use crate::api::pseudo_manual::structure_twin_sync::TupleStructWithTwoFieldTwinSync;
 use crate::api::pseudo_manual::structure_twin_sync::*;
+use crate::api::raw_string::MoreThanJustOneRawStringStruct;
+use crate::api::raw_string::RawStringItemStruct;
+use crate::api::raw_string::*;
 use crate::api::simple::*;
 use crate::api::stream::MyStreamEntry;
 use crate::api::stream::*;
@@ -88,6 +99,143 @@ use std::sync::Arc;
 
 // Section: wire_funcs
 
+fn wire_boxed_blob_impl(port_: MessagePort, blob: impl Wire2Api<Box<[u8; 1600]>> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, Blob, _>(
+        WrapInfo {
+            debug_name: "boxed_blob",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_blob = blob.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(boxed_blob(api_blob))
+        },
+    )
+}
+fn wire_get_array_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [u8; 5], _>(
+        WrapInfo {
+            debug_name: "get_array",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(get_array()),
+    )
+}
+fn wire_get_complex_array_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [Point; 2], _>(
+        WrapInfo {
+            debug_name: "get_complex_array",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(get_complex_array()),
+    )
+}
+fn wire_last_number_impl(port_: MessagePort, array: impl Wire2Api<[f64; 16]> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, f64, _>(
+        WrapInfo {
+            debug_name: "last_number",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_array = array.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(last_number(api_array))
+        },
+    )
+}
+fn wire_nested_id_impl(port_: MessagePort, id: impl Wire2Api<[TestId; 4]> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [TestId; 2], _>(
+        WrapInfo {
+            debug_name: "nested_id",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_id = id.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(nested_id(api_id))
+        },
+    )
+}
+fn wire_new_msgid_impl(port_: MessagePort, id: impl Wire2Api<[u8; 32]> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, MessageId, _>(
+        WrapInfo {
+            debug_name: "new_msgid",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_id = id.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(new_msgid(api_id))
+        },
+    )
+}
+fn wire_return_boxed_feed_id_impl(port_: MessagePort, id: impl Wire2Api<[u8; 8]> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, FeedId, _>(
+        WrapInfo {
+            debug_name: "return_boxed_feed_id",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_id = id.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(return_boxed_feed_id(api_id))
+        },
+    )
+}
+fn wire_return_boxed_raw_feed_id_impl(port_: MessagePort, id: impl Wire2Api<FeedId> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [u8; 8], _>(
+        WrapInfo {
+            debug_name: "return_boxed_raw_feed_id",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_id = id.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(return_boxed_raw_feed_id(api_id))
+        },
+    )
+}
+fn wire_test_id_impl(port_: MessagePort, id: impl Wire2Api<TestId> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, TestId, _>(
+        WrapInfo {
+            debug_name: "test_id",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_id = id.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(test_id(api_id))
+        },
+    )
+}
+fn wire_use_boxed_blob_impl(port_: MessagePort, blob: impl Wire2Api<Box<Blob>> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [u8; 1600], _>(
+        WrapInfo {
+            debug_name: "use_boxed_blob",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_blob = blob.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(use_boxed_blob(api_blob))
+        },
+    )
+}
+fn wire_use_msgid_impl(port_: MessagePort, id: impl Wire2Api<MessageId> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [u8; 32], _>(
+        WrapInfo {
+            debug_name: "use_msgid",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_id = id.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(use_msgid(api_id))
+        },
+    )
+}
 fn wire_StructWithCommentsTwinNormal_instance_method_twin_normal_impl(
     port_: MessagePort,
     that: impl Wire2Api<StructWithCommentsTwinNormal> + UnwindSafe,
@@ -529,6 +677,19 @@ fn wire_handle_string_list_impl(
         move || {
             let api_names = names.wire2api();
             move |task_callback| Result::<_, ()>::Ok(handle_string_list(api_names))
+        },
+    )
+}
+fn wire_handle_newtype_impl(port_: MessagePort, arg: impl Wire2Api<NewTypeInt> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, NewTypeInt, _>(
+        WrapInfo {
+            debug_name: "handle_newtype",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_arg = arg.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(handle_newtype(api_arg))
         },
     )
 }
@@ -1947,6 +2108,28 @@ fn wire_func_tuple_struct_with_two_field_twin_sync_impl(
         },
     )
 }
+fn wire_test_more_than_just_one_raw_string_struct_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, MoreThanJustOneRawStringStruct, _>(
+        WrapInfo {
+            debug_name: "test_more_than_just_one_raw_string_struct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            move |task_callback| Result::<_, ()>::Ok(test_more_than_just_one_raw_string_struct())
+        },
+    )
+}
+fn wire_test_raw_string_item_struct_impl(port_: MessagePort) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, RawStringItemStruct, _>(
+        WrapInfo {
+            debug_name: "test_raw_string_item_struct",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Result::<_, ()>::Ok(test_raw_string_item_struct()),
+    )
+}
 fn wire_simple_adder_twin_normal_impl(
     port_: MessagePort,
     a: impl Wire2Api<i32> + UnwindSafe,
@@ -2309,6 +2492,17 @@ impl rust2dart::IntoIntoDart<BigBuffers> for BigBuffers {
         self
     }
 }
+impl support::IntoDart for Blob {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.0.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for Blob {}
+impl rust2dart::IntoIntoDart<Blob> for Blob {
+    fn into_into_dart(self) -> Blob {
+        self
+    }
+}
 impl support::IntoDart for C {
     fn into_dart(self) -> support::DartAbi {
         vec![self.c.into_into_dart().into_dart()].into_dart()
@@ -2589,6 +2783,17 @@ impl rust2dart::IntoIntoDart<EnumWithItemTupleTwinSync> for EnumWithItemTupleTwi
         self
     }
 }
+impl support::IntoDart for FeedId {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.0.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for FeedId {}
+impl rust2dart::IntoIntoDart<FeedId> for FeedId {
+    fn into_into_dart(self) -> FeedId {
+        self
+    }
+}
 impl support::IntoDart for MacroStruct {
     fn into_dart(self) -> support::DartAbi {
         vec![self.data.into_into_dart().into_dart()].into_dart()
@@ -2612,6 +2817,34 @@ impl support::IntoDart for Measure {
 impl support::IntoDartExceptPrimitive for Measure {}
 impl rust2dart::IntoIntoDart<Measure> for Measure {
     fn into_into_dart(self) -> Measure {
+        self
+    }
+}
+impl support::IntoDart for MessageId {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.0.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for MessageId {}
+impl rust2dart::IntoIntoDart<MessageId> for MessageId {
+    fn into_into_dart(self) -> MessageId {
+        self
+    }
+}
+impl support::IntoDart for MoreThanJustOneRawStringStruct {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.regular.into_into_dart().into_dart(),
+            self.r#type.into_into_dart().into_dart(),
+            self.r#async.into_into_dart().into_dart(),
+            self.another.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for MoreThanJustOneRawStringStruct {}
+impl rust2dart::IntoIntoDart<MoreThanJustOneRawStringStruct> for MoreThanJustOneRawStringStruct {
+    fn into_into_dart(self) -> MoreThanJustOneRawStringStruct {
         self
     }
 }
@@ -2670,6 +2903,43 @@ impl support::IntoDart for MyTreeNode {
 impl support::IntoDartExceptPrimitive for MyTreeNode {}
 impl rust2dart::IntoIntoDart<MyTreeNode> for MyTreeNode {
     fn into_into_dart(self) -> MyTreeNode {
+        self
+    }
+}
+impl support::IntoDart for NewTypeInt {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.0.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for NewTypeInt {}
+impl rust2dart::IntoIntoDart<NewTypeInt> for NewTypeInt {
+    fn into_into_dart(self) -> NewTypeInt {
+        self
+    }
+}
+impl support::IntoDart for Point {
+    fn into_dart(self) -> support::DartAbi {
+        vec![
+            self.x.into_into_dart().into_dart(),
+            self.y.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for Point {}
+impl rust2dart::IntoIntoDart<Point> for Point {
+    fn into_into_dart(self) -> Point {
+        self
+    }
+}
+impl support::IntoDart for RawStringItemStruct {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.r#type.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for RawStringItemStruct {}
+impl rust2dart::IntoIntoDart<RawStringItemStruct> for RawStringItemStruct {
+    fn into_into_dart(self) -> RawStringItemStruct {
         self
     }
 }
@@ -2774,6 +3044,17 @@ impl support::IntoDart for StructWithZeroFieldTwinSync {
 impl support::IntoDartExceptPrimitive for StructWithZeroFieldTwinSync {}
 impl rust2dart::IntoIntoDart<StructWithZeroFieldTwinSync> for StructWithZeroFieldTwinSync {
     fn into_into_dart(self) -> StructWithZeroFieldTwinSync {
+        self
+    }
+}
+impl support::IntoDart for TestId {
+    fn into_dart(self) -> support::DartAbi {
+        vec![self.0.into_into_dart().into_dart()].into_dart()
+    }
+}
+impl support::IntoDartExceptPrimitive for TestId {}
+impl rust2dart::IntoIntoDart<TestId> for TestId {
+    fn into_into_dart(self) -> TestId {
         self
     }
 }
