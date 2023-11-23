@@ -307,18 +307,75 @@ fn serialize_punctuated<S: Serializer>(
 
 #[cfg(test)]
 mod tests {
-    use crate::codegen::parser::attribute_parser::{FrbAttribute, FrbAttributes};
+    use crate::codegen::parser::attribute_parser::{
+        FrbAttribute, FrbAttributeDefaultValue, FrbAttributeMirror, FrbAttributes, NamedOption,
+    };
+    use quote::quote;
     use syn::{Attribute, ItemFn};
 
     #[test]
-    fn test_simple() -> anyhow::Result<()> {
-        body("#[frb(sync)]", FrbAttributes(vec![FrbAttribute::Sync]))
+    fn test_mirror() -> anyhow::Result<()> {
+        let parsed = parse("#[frb(mirror(Apple))]")?;
+        if let FrbAttribute::Mirror(FrbAttributeMirror(path)) = &parsed.0[0] {
+            assert_eq!(quote!(#path).to_string(), "Apple");
+        } else {
+            unreachable!()
+        }
+        Ok(())
     }
 
-    fn body(raw: &str, matcher: FrbAttributes) -> anyhow::Result<()> {
+    #[test]
+    fn test_non_final() -> anyhow::Result<()> {
+        assert_eq!(
+            parse("#[frb(non_final)]"),
+            FrbAttributes(vec![FrbAttribute::NonFinal]),
+        );
+        Ok(())
+    }
+
+    #[test]
+    fn test_sync() -> anyhow::Result<()> {
+        assert_eq!(
+            parse("#[frb(sync)]"),
+            FrbAttributes(vec![FrbAttribute::Sync]),
+        );
+        Ok(())
+    }
+
+    #[test]
+    fn test_metadata() -> anyhow::Result<()> {
+        let parsed = parse(
+            r#"#[frb(dart_metadata=("freezed", "immutable" import "package:meta/meta.dart" as meta))]"#,
+        )?;
+        if let FrbAttribute::Metadata(NamedOption { value, .. }) = &parsed.0[0] {
+            assert_eq!(value.0[0].content, "freezed");
+            // can have more assertions...
+        } else {
+            unreachable!()
+        }
+        Ok(())
+    }
+
+    #[test]
+    fn test_default() -> anyhow::Result<()> {
+        let parsed = parse(r#"#[frb(default = "Weekdays.Sunday")]"#)?;
+        if let FrbAttribute::Default(value) = &parsed.0[0] {
+            assert!(matches!(value, FrbAttributeDefaultValue::Str(_)));
+        } else {
+            unreachable!()
+        }
+        Ok(())
+    }
+
+    // Mirror(FrbAttributeMirror),
+    // NonFinal,
+    // Sync,
+    // Metadata(NamedOption<frb_keyword::dart_metadata, FrbAttributeDartMetadata>),
+    // Default(FrbAttributeDefaultValue),
+
+    fn parse(raw: &str) -> anyhow::Result<FrbAttributes> {
         let code = raw.to_owned() + " fn f() {}";
         let fn_ast: ItemFn = syn::parse_str(&code)?;
-        assert_eq!(FrbAttributes::parse(&fn_ast.attrs)?, matcher);
-        Ok(())
+        Ok(FrbAttributes::parse(&fn_ast.attrs)?)
     }
 }
