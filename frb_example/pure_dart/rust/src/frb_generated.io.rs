@@ -2119,6 +2119,11 @@ pub extern "C" fn wire_boxed_blob(port_: i64, blob: *mut wire_list_prim_u_8) {
 }
 
 #[no_mangle]
+pub extern "C" fn wire_func_test_id(port_: i64, id: *mut wire_test_id) {
+    wire_func_test_id_impl(port_, id)
+}
+
+#[no_mangle]
 pub extern "C" fn wire_get_array(port_: i64) {
     wire_get_array_impl(port_)
 }
@@ -2151,11 +2156,6 @@ pub extern "C" fn wire_return_boxed_feed_id(port_: i64, id: *mut wire_list_prim_
 #[no_mangle]
 pub extern "C" fn wire_return_boxed_raw_feed_id(port_: i64, id: *mut wire_feed_id) {
     wire_return_boxed_raw_feed_id_impl(port_, id)
-}
-
-#[no_mangle]
-pub extern "C" fn wire_test_id(port_: i64, id: *mut wire_test_id) {
-    wire_test_id_impl(port_, id)
 }
 
 #[no_mangle]

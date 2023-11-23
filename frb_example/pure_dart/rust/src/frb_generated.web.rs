@@ -892,6 +892,11 @@ pub fn wire_boxed_blob(port_: MessagePort, blob: Box<[u8]>) {
 }
 
 #[wasm_bindgen]
+pub fn wire_func_test_id(port_: MessagePort, id: JsValue) {
+    wire_func_test_id_impl(port_, id)
+}
+
+#[wasm_bindgen]
 pub fn wire_get_array(port_: MessagePort) {
     wire_get_array_impl(port_)
 }
@@ -924,11 +929,6 @@ pub fn wire_return_boxed_feed_id(port_: MessagePort, id: Box<[u8]>) {
 #[wasm_bindgen]
 pub fn wire_return_boxed_raw_feed_id(port_: MessagePort, id: JsValue) {
     wire_return_boxed_raw_feed_id_impl(port_, id)
-}
-
-#[wasm_bindgen]
-pub fn wire_test_id(port_: MessagePort, id: JsValue) {
-    wire_test_id_impl(port_, id)
 }
 
 #[wasm_bindgen]

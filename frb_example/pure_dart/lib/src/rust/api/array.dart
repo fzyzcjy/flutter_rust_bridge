@@ -28,8 +28,8 @@ Future<FeedId> returnBoxedFeedId({required U8Array8 id, dynamic hint}) =>
 Future<U8Array8> returnBoxedRawFeedId({required FeedId id, dynamic hint}) =>
     RustLib.instance.api.returnBoxedRawFeedId(id: id, hint: hint);
 
-Future<TestId> testId({required TestId id, dynamic hint}) =>
-    RustLib.instance.api.testId(id: id, hint: hint);
+Future<TestId> funcTestId({required TestId id, dynamic hint}) =>
+    RustLib.instance.api.funcTestId(id: id, hint: hint);
 
 Future<double> lastNumber({required F64Array16 array, dynamic hint}) =>
     RustLib.instance.api.lastNumber(array: array, hint: hint);

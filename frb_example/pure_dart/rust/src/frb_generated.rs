@@ -112,6 +112,19 @@ fn wire_boxed_blob_impl(port_: MessagePort, blob: impl Wire2Api<Box<[u8; 1600]>>
         },
     )
 }
+fn wire_func_test_id_impl(port_: MessagePort, id: impl Wire2Api<TestId> + UnwindSafe) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, TestId, _>(
+        WrapInfo {
+            debug_name: "func_test_id",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || {
+            let api_id = id.wire2api();
+            move |task_callback| Result::<_, ()>::Ok(func_test_id(api_id))
+        },
+    )
+}
 fn wire_get_array_impl(port_: MessagePort) {
     FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, [u8; 5], _>(
         WrapInfo {
@@ -194,19 +207,6 @@ fn wire_return_boxed_raw_feed_id_impl(port_: MessagePort, id: impl Wire2Api<Feed
         move || {
             let api_id = id.wire2api();
             move |task_callback| Result::<_, ()>::Ok(return_boxed_raw_feed_id(api_id))
-        },
-    )
-}
-fn wire_test_id_impl(port_: MessagePort, id: impl Wire2Api<TestId> + UnwindSafe) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap::<_, _, _, TestId, _>(
-        WrapInfo {
-            debug_name: "test_id",
-            port: Some(port_),
-            mode: FfiCallMode::Normal,
-        },
-        move || {
-            let api_id = id.wire2api();
-            move |task_callback| Result::<_, ()>::Ok(test_id(api_id))
         },
     )
 }

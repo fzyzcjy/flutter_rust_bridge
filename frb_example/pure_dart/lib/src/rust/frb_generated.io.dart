@@ -1371,6 +1371,23 @@ class RustLibWire implements BaseWire {
   late final _wire_boxed_blob = _wire_boxed_blobPtr
       .asFunction<void Function(int, ffi.Pointer<wire_list_prim_u_8>)>();
 
+  void wire_func_test_id(
+    int port_,
+    ffi.Pointer<wire_test_id> id,
+  ) {
+    return _wire_func_test_id(
+      port_,
+      id,
+    );
+  }
+
+  late final _wire_func_test_idPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Int64, ffi.Pointer<wire_test_id>)>>('wire_func_test_id');
+  late final _wire_func_test_id = _wire_func_test_idPtr
+      .asFunction<void Function(int, ffi.Pointer<wire_test_id>)>();
+
   void wire_get_array(
     int port_,
   ) {
@@ -1483,23 +1500,6 @@ class RustLibWire implements BaseWire {
               ffi.Pointer<wire_feed_id>)>>('wire_return_boxed_raw_feed_id');
   late final _wire_return_boxed_raw_feed_id = _wire_return_boxed_raw_feed_idPtr
       .asFunction<void Function(int, ffi.Pointer<wire_feed_id>)>();
-
-  void wire_test_id1(
-    int port_,
-    ffi.Pointer<wire_test_id> id,
-  ) {
-    return _wire_test_id1(
-      port_,
-      id,
-    );
-  }
-
-  late final _wire_test_id1Ptr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Int64, ffi.Pointer<wire_test_id>)>>('wire_test_id');
-  late final _wire_test_id1 = _wire_test_id1Ptr
-      .asFunction<void Function(int, ffi.Pointer<wire_test_id>)>();
 
   void wire_use_boxed_blob(
     int port_,
@@ -5048,13 +5048,6 @@ final class wire_list_prim_u_8 extends ffi.Struct {
   external int len;
 }
 
-final class wire_list_prim_f_64 extends ffi.Struct {
-  external ffi.Pointer<ffi.Double> ptr;
-
-  @ffi.Int32()
-  external int len;
-}
-
 final class wire_list_prim_i_32 extends ffi.Struct {
   external ffi.Pointer<ffi.Int32> ptr;
 
@@ -5064,6 +5057,13 @@ final class wire_list_prim_i_32 extends ffi.Struct {
 
 final class wire_test_id extends ffi.Struct {
   external ffi.Pointer<wire_list_prim_i_32> field0;
+}
+
+final class wire_list_prim_f_64 extends ffi.Struct {
+  external ffi.Pointer<ffi.Double> ptr;
+
+  @ffi.Int32()
+  external int len;
 }
 
 final class wire_list_test_id extends ffi.Struct {

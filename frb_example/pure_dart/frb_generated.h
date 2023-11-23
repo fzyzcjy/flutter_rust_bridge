@@ -9,11 +9,6 @@ typedef struct wire_list_prim_u_8 {
   int32_t len;
 } wire_list_prim_u_8;
 
-typedef struct wire_list_prim_f_64 {
-  double *ptr;
-  int32_t len;
-} wire_list_prim_f_64;
-
 typedef struct wire_list_prim_i_32 {
   int32_t *ptr;
   int32_t len;
@@ -22,6 +17,11 @@ typedef struct wire_list_prim_i_32 {
 typedef struct wire_test_id {
   struct wire_list_prim_i_32 *field0;
 } wire_test_id;
+
+typedef struct wire_list_prim_f_64 {
+  double *ptr;
+  int32_t len;
+} wire_list_prim_f_64;
 
 typedef struct wire_list_test_id {
   struct wire_test_id *ptr;
@@ -481,6 +481,8 @@ typedef struct wire_tuple_struct_with_two_field_twin_normal {
 
 void wire_boxed_blob(int64_t port_, struct wire_list_prim_u_8 *blob);
 
+void wire_func_test_id(int64_t port_, struct wire_test_id *id);
+
 void wire_get_array(int64_t port_);
 
 void wire_get_complex_array(int64_t port_);
@@ -494,8 +496,6 @@ void wire_new_msgid(int64_t port_, struct wire_list_prim_u_8 *id);
 void wire_return_boxed_feed_id(int64_t port_, struct wire_list_prim_u_8 *id);
 
 void wire_return_boxed_raw_feed_id(int64_t port_, struct wire_feed_id *id);
-
-void wire_test_id(int64_t port_, struct wire_test_id *id);
 
 void wire_use_boxed_blob(int64_t port_, struct wire_blob *blob);
 
@@ -1196,6 +1196,7 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_func_struct_with_two_field_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_func_struct_with_zero_field_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_struct_with_zero_field_twin_sync);
+    dummy_var ^= ((int64_t) (void*) wire_func_test_id);
     dummy_var ^= ((int64_t) (void*) wire_func_tuple_struct_with_one_field_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_func_tuple_struct_with_one_field_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_func_tuple_struct_with_two_field_twin_normal);
@@ -1232,7 +1233,6 @@ static int64_t dummy_method_to_enforce_bundling(void) {
     dummy_var ^= ((int64_t) (void*) wire_simple_adder_twin_normal);
     dummy_var ^= ((int64_t) (void*) wire_simple_adder_twin_sync);
     dummy_var ^= ((int64_t) (void*) wire_test_abc_enum);
-    dummy_var ^= ((int64_t) (void*) wire_test_id);
     dummy_var ^= ((int64_t) (void*) wire_test_more_than_just_one_raw_string_struct);
     dummy_var ^= ((int64_t) (void*) wire_test_raw_string_item_struct);
     dummy_var ^= ((int64_t) (void*) wire_test_struct_with_enum);

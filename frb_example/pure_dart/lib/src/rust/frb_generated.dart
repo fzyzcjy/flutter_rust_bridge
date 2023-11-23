@@ -69,6 +69,8 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 abstract class RustLibApi extends BaseApi {
   Future<Blob> boxedBlob({required U8Array1600 blob, dynamic hint});
 
+  Future<TestId> funcTestId({required TestId id, dynamic hint});
+
   Future<U8Array5> getArray({dynamic hint});
 
   Future<PointArray2> getComplexArray({dynamic hint});
@@ -82,8 +84,6 @@ abstract class RustLibApi extends BaseApi {
   Future<FeedId> returnBoxedFeedId({required U8Array8 id, dynamic hint});
 
   Future<U8Array8> returnBoxedRawFeedId({required FeedId id, dynamic hint});
-
-  Future<TestId> testId({required TestId id, dynamic hint});
 
   Future<U8Array1600> useBoxedBlob({required Blob blob, dynamic hint});
 
@@ -475,6 +475,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
+  Future<TestId> funcTestId({required TestId id, dynamic hint}) {
+    var arg0 = api2wire_box_autoadd_test_id(id);
+    return handler.executeNormal(NormalTask(
+      callFfi: (port_) => wire.wire_func_test_id(port_, arg0),
+      parseSuccessData: _wire2api_test_id,
+      parseErrorData: null,
+      constMeta: kFuncTestIdConstMeta,
+      argValues: [id],
+      apiImpl: this,
+      hint: hint,
+    ));
+  }
+
+  TaskConstMeta get kFuncTestIdConstMeta => const TaskConstMeta(
+        debugName: "func_test_id",
+        argNames: ["id"],
+      );
+
+  @override
   Future<U8Array5> getArray({dynamic hint}) {
     return handler.executeNormal(NormalTask(
       callFfi: (port_) => wire.wire_get_array(port_),
@@ -602,25 +621,6 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   TaskConstMeta get kReturnBoxedRawFeedIdConstMeta => const TaskConstMeta(
         debugName: "return_boxed_raw_feed_id",
-        argNames: ["id"],
-      );
-
-  @override
-  Future<TestId> testId({required TestId id, dynamic hint}) {
-    var arg0 = api2wire_box_autoadd_test_id(id);
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) => wire.wire_test_id(port_, arg0),
-      parseSuccessData: _wire2api_test_id,
-      parseErrorData: null,
-      constMeta: kTestIdConstMeta,
-      argValues: [id],
-      apiImpl: this,
-      hint: hint,
-    ));
-  }
-
-  TaskConstMeta get kTestIdConstMeta => const TaskConstMeta(
-        debugName: "test_id",
         argNames: ["id"],
       );
 
