@@ -190,28 +190,29 @@ impl DartApiSpec {
 //     }
 // }
 
-fn generate_import_header(
-    imports: HashSet<&IrDartImport>,
-    import_array: Option<&str>,
-) -> DartBasicHeaderCode {
-    if !imports.is_empty() || import_array.is_some() {
-        DartBasicHeaderCode {
-            import: imports
-                .iter()
-                .map(|it| match &it.alias {
-                    Some(alias) => format!("import '{}' as {};", it.uri, alias),
-                    _ => format!("import '{}';", it.uri),
-                })
-                .collect_vec()
-                .join("\n")
-                + import_array.unwrap_or(""),
-            part: "".to_string(),
-            body: "".to_string(),
-        }
-    } else {
-        DartBasicHeaderCode::default()
-    }
-}
+// DONE
+// fn generate_import_header(
+//     imports: HashSet<&IrDartImport>,
+//     import_array: Option<&str>,
+// ) -> DartBasicHeaderCode {
+//     if !imports.is_empty() || import_array.is_some() {
+//         DartBasicHeaderCode {
+//             import: imports
+//                 .iter()
+//                 .map(|it| match &it.alias {
+//                     Some(alias) => format!("import '{}' as {};", it.uri, alias),
+//                     _ => format!("import '{}';", it.uri),
+//                 })
+//                 .collect_vec()
+//                 .join("\n")
+//                 + import_array.unwrap_or(""),
+//             part: "".to_string(),
+//             body: "".to_string(),
+//         }
+//     } else {
+//         DartBasicHeaderCode::default()
+//     }
+// }
 
 fn generate_common_header() -> DartBasicHeaderCode {
     DartBasicHeaderCode {
@@ -228,13 +229,14 @@ fn generate_common_header() -> DartBasicHeaderCode {
     }
 }
 
-fn get_dart_imports(ir_pack: &IrPack) -> HashSet<&IrDartImport> {
-    ir_pack
-        .struct_pool
-        .values()
-        .flat_map(|s| s.dart_metadata.iter().flat_map(|it| &it.library))
-        .collect()
-}
+// DONE
+// fn get_dart_imports(ir_pack: &IrPack) -> HashSet<&IrDartImport> {
+//     ir_pack
+//         .struct_pool
+//         .values()
+//         .flat_map(|s| s.dart_metadata.iter().flat_map(|it| &it.library))
+//         .collect()
+// }
 
 // DONE
 // fn section_header(header: &str) -> String {

@@ -183,6 +183,17 @@ impl<'a> ApiDartGeneratorInfoTrait for StructRefApiDartGenerator<'a> {
     fn dart_api_type(&self) -> String {
         self.ir.ident.0.name.to_string()
     }
+
+    fn dart_import(&self) -> Option<String> {
+        let st = self.ir.get(self.context.ir_pack);
+        Some(
+            st.dart_metadata
+                .iter()
+                .flat_map(|it| &it.library)
+                .map(|it| it.to_code())
+                .join("\n"),
+        )
+    }
 }
 
 impl<'a> ApiDartGeneratorInfoTrait for UnencodableApiDartGenerator<'a> {
