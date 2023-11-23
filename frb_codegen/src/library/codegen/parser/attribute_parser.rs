@@ -95,6 +95,7 @@ impl Parse for FrbAttribute {
     fn parse(input: ParseStream<'_>) -> Result<Self> {
         let lookahead = input.lookahead1();
         if lookahead.peek(frb_keyword::mirror) {
+            input.parse::<frb_keyword::mirror>()?;
             input.parse().map(FrbAttribute::Mirror)
         } else if lookahead.peek(frb_keyword::non_final) {
             input
