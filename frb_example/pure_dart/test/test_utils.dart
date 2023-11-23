@@ -4,9 +4,9 @@ import 'package:meta/meta.dart';
 import 'package:test/test.dart';
 
 @isTestGroup
-void addTestsIdentityFunctionCall<T>(
-  FutureOr<T> Function({required T arg, dynamic hint}) func,
-  List<T> values,
+void addTestsIdentityFunctionCall<A, B>(
+  FutureOr<A> Function({required B arg, dynamic hint}) func,
+  List<dynamic> values,
 ) {
   group('call $func', () {
     for (final value in values) {
