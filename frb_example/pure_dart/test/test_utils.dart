@@ -16,3 +16,10 @@ void addTestsIdentityFunctionCall<T>(
     }
   });
 }
+
+void debugPrint(String message) {
+  assert(() {
+    print(message);
+    return true;
+  }());
+}
