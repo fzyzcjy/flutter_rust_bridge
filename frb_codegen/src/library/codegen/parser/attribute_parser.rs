@@ -21,7 +21,7 @@ impl FrbAttributes {
                 .filter(|attr| attr.path().is_ident(METADATA_IDENT))
                 .map(|attr| {
                     attr.parse_args::<FrbAttribute>()
-                        .with_context(|| format!("attr={attr:?}"))
+                        .with_context(|| format!("attr={:?}", quote::quote!(#attr).to_string()))
                 })
                 .collect::<anyhow::Result<Vec<_>>>()?,
         ))
