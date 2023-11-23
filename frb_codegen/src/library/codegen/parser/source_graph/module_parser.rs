@@ -122,8 +122,6 @@ fn parse_syn_item_type(item_type: &ItemType) -> Option<TypeAlias> {
 }
 
 fn parse_syn_item_mod(info: &ModuleInfo, item_mod: &ItemMod) -> anyhow::Result<Option<Module>> {
-    debug!("parse_syn_item_mod item_mod={item_mod:?}");
-
     let ident = item_mod.ident.clone();
 
     let module_path = {
@@ -131,6 +129,8 @@ fn parse_syn_item_mod(info: &ModuleInfo, item_mod: &ItemMod) -> anyhow::Result<O
         x.push(ident.to_string());
         x
     };
+
+    debug!("parse_syn_item_mod module_path={module_path:?}");
 
     Ok(match &item_mod.content {
         Some(content) => parse_syn_item_mod_contentful(info, item_mod, module_path, content)?,
