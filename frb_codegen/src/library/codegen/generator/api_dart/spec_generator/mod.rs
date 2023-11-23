@@ -31,6 +31,7 @@ pub(crate) struct ApiDartOutputSpec {
 pub(crate) struct ApiDartOutputSpecItem {
     pub funcs: Vec<ApiDartGeneratedFunction>,
     pub classes: Vec<ApiDartGeneratedClass>,
+    pub imports: DartBasicHeaderCode,
     pub needs_freezed: bool,
 }
 
@@ -73,6 +74,8 @@ fn generate_item(
     funcs: &Option<&Vec<&IrFunc>>,
     context: ApiDartGeneratorContext,
 ) -> ApiDartOutputSpecItem {
+    let imports = generate_imports(classes, funcs);
+
     let funcs = funcs
         .map(|funcs| {
             funcs
@@ -97,6 +100,19 @@ fn generate_item(
     ApiDartOutputSpecItem {
         funcs,
         classes,
+        imports,
         needs_freezed,
+    }
+}
+
+fn generate_imports(
+    classes: &Option<&Vec<&IrType>>,
+    funcs: &Option<&Vec<&IrFunc>>,
+) -> DartBasicHeaderCode {
+    let interest_types = TODO;
+
+    DartBasicHeaderCode {
+        import: TODO,
+        ..Default::default()
     }
 }

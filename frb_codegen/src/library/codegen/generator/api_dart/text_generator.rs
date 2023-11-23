@@ -75,6 +75,8 @@ fn generate_end_api_text(
         };
     }
 
+    header += item.imports.clone();
+
     let header = header.all_code();
 
     format!(
