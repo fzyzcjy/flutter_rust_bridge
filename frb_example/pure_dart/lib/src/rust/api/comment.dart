@@ -42,4 +42,14 @@ class StructWithCommentsTwinNormal {
   static Future<void> staticMethodTwinNormal({dynamic hint}) =>
       RustLib.instance.api
           .structWithCommentsTwinNormalStaticMethodTwinNormal(hint: hint);
+
+  @override
+  int get hashCode => fieldWithComments.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithCommentsTwinNormal &&
+          runtimeType == other.runtimeType &&
+          fieldWithComments == other.fieldWithComments;
 }

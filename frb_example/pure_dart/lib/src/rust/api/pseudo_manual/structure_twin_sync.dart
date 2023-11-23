@@ -31,6 +31,16 @@ class StructWithOneFieldTwinSync {
   const StructWithOneFieldTwinSync({
     required this.a,
   });
+
+  @override
+  int get hashCode => a.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithOneFieldTwinSync &&
+          runtimeType == other.runtimeType &&
+          a == other.a;
 }
 
 class StructWithTwoFieldTwinSync {
@@ -41,10 +51,29 @@ class StructWithTwoFieldTwinSync {
     required this.a,
     required this.b,
   });
+
+  @override
+  int get hashCode => a.hashCode ^ b.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithTwoFieldTwinSync &&
+          runtimeType == other.runtimeType &&
+          a == other.a &&
+          b == other.b;
 }
 
 class StructWithZeroFieldTwinSync {
   const StructWithZeroFieldTwinSync();
+
+  @override
+  int get hashCode => 0;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithZeroFieldTwinSync && runtimeType == other.runtimeType;
 }
 
 class TupleStructWithOneFieldTwinSync {
@@ -53,6 +82,16 @@ class TupleStructWithOneFieldTwinSync {
   const TupleStructWithOneFieldTwinSync({
     required this.field0,
   });
+
+  @override
+  int get hashCode => field0.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TupleStructWithOneFieldTwinSync &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0;
 }
 
 class TupleStructWithTwoFieldTwinSync {
@@ -63,4 +102,15 @@ class TupleStructWithTwoFieldTwinSync {
     required this.field0,
     required this.field1,
   });
+
+  @override
+  int get hashCode => field0.hashCode ^ field1.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TupleStructWithTwoFieldTwinSync &&
+          runtimeType == other.runtimeType &&
+          field0 == other.field0 &&
+          field1 == other.field1;
 }

@@ -38,4 +38,14 @@ class StructWithCommentsTwinSync {
   /// Documentation on a static method
   static void staticMethodTwinSync({dynamic hint}) => RustLib.instance.api
       .structWithCommentsTwinSyncStaticMethodTwinSync(hint: hint);
+
+  @override
+  int get hashCode => fieldWithComments.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is StructWithCommentsTwinSync &&
+          runtimeType == other.runtimeType &&
+          fieldWithComments == other.fieldWithComments;
 }
