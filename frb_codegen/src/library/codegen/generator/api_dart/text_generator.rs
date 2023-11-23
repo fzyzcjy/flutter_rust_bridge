@@ -49,14 +49,8 @@ fn generate_end_api_text(
         "".to_owned()
     };
 
-    let funcs = item
-        .funcs
-        .map(|funcs| funcs.iter().map(|f| generate_function(f)).join("\n\n"))
-        .unwrap_or_default();
-    let classes = item
-        .classes
-        .map(|classes| classes.iter().map(|c| c.code.clone()).join("\n\n"))
-        .unwrap_or_default();
+    let funcs = item.funcs.iter().map(|f| generate_function(f)).join("\n\n");
+    let classes = item.classes.iter().map(|c| c.code.clone()).join("\n\n");
 
     // TODO use relative path calculation
     let path_frb_generated = "../".repeat(namespace.path().len() - 2) + "frb_generated.dart";

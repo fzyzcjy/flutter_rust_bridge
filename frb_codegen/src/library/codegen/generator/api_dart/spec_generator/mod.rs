@@ -26,6 +26,7 @@ pub(crate) struct ApiDartOutputSpec {
     pub namespaced_items: HashMap<Namespace, ApiDartOutputSpecItem>,
 }
 
+#[derive(Serialize)]
 pub(crate) struct ApiDartOutputSpecItem {
     pub funcs: Vec<ApiDartGeneratedFunction>,
     pub classes: Vec<ApiDartGeneratedClass>,
@@ -51,9 +52,9 @@ pub(crate) fn generate(
 
     let namespaced_items = namespaces
         .iter()
-        .map(|namespace| {
+        .map(|&namespace| {
             (
-                namespace,
+                namespace.to_owned(),
                 generate_item(
                     &grouped_classes.get(namespace),
                     &grouped_funcs.get(namespace),
@@ -85,7 +86,7 @@ fn generate_item(
         .map(|classes| {
             classes
                 .iter()
-                .filter_map(|ty| ApiDartGenerator::new(ty.clone(), context).generate_class())
+                .filter_map(|&ty| ApiDartGenerator::new(ty.clone(), context).generate_class())
                 .collect_vec()
         })
         .unwrap_or_default();
