@@ -124,4 +124,14 @@ mod module_2 {
         let extracted = extract_module(src, Some(String::from("module::submodule"))).unwrap();
         assert_eq!(String::from("        // sub code"), extracted);
     }
+
+    #[test]
+    pub fn test_extract_module_empty_submod() {
+        let src = "pub mod api {
+    // some code
+}
+mod another {}";
+        let extracted = extract_module(src, Some(String::from("another"))).unwrap();
+        assert_eq!(String::from(""), extracted);
+    }
 }
