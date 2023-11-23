@@ -31,17 +31,8 @@ pub(crate) fn cargo_expand(
     let mut cache = CARGO_EXPAND_CACHE.lock().unwrap();
     let expanded = match cache.entry(rust_crate_dir.to_owned()) {
         Occupied(entry) => entry.into_mut(),
-        Vacant(entry) => entry.insert(run_cargo_expand(rust_crate_dir)?),
+        Vacant(entry) => entry.insert(run_cargo_expand(rust_crate_dir, dumper)?),
     };
-
-    dumper.dump_str(
-        ConfigDumpContent::Source,
-        &format!(
-            "cargo_expand/{}.rs",
-            module.clone().unwrap_or("no_module".into())
-        ),
-        &expanded,
-    )?;
 
     extract_module(expanded, module)
 }
@@ -75,7 +66,7 @@ fn extract_module(raw_expanded: &str, module: Option<String>) -> Result<String> 
     Ok(raw_expanded.to_owned())
 }
 
-fn run_cargo_expand(rust_crate_dir: &Path) -> Result<String> {
+fn run_cargo_expand(rust_crate_dir: &Path, dumper: &Dumper) -> Result<String> {
     info!("Running cargo expand in '{rust_crate_dir:?}'");
     let args = vec![
         PathBuf::from("expand"),
@@ -98,7 +89,11 @@ fn run_cargo_expand(rust_crate_dir: &Path) -> Result<String> {
 
     let mut stdout_lines = stdout.lines();
     stdout_lines.next();
-    Ok(stdout_lines.join("\n").replace("/// frb_marker: ", ""))
+    let ans = stdout_lines.join("\n").replace("/// frb_marker: ", "");
+
+    dumper.dump_str(ConfigDumpContent::Source, &format!("cargo_expand.rs"), &ans)?;
+
+    Ok(ans)
 }
 
 #[cfg(test)]
