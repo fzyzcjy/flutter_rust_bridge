@@ -11,6 +11,7 @@ use syn::*;
 
 const METADATA_IDENT: &str = "frb";
 
+#[derive(PartialEq, Eq, Debug)]
 pub(crate) struct FrbAttributes(Vec<FrbAttribute>);
 
 impl FrbAttributes {
@@ -81,7 +82,7 @@ mod frb_keyword {
     syn::custom_keyword!(import);
 }
 
-#[derive(Eq, PartialEq)]
+#[derive(Eq, PartialEq, Debug)]
 enum FrbAttribute {
     Mirror(FrbAttributeMirror),
     NonFinal,
@@ -204,7 +205,7 @@ impl Parse for IrDartAnnotation {
     }
 }
 
-#[derive(Clone, Serialize, Eq, PartialEq)]
+#[derive(Clone, Serialize, Eq, PartialEq, Debug)]
 enum FrbAttributeDefaultValue {
     #[serde(serialize_with = "serialize_litstr")]
     Str(syn::LitStr),
@@ -311,13 +312,13 @@ mod tests {
 
     #[test]
     fn test_simple() -> anyhow::Result<()> {
-        let code = "#[frb(sync)] fn f() {}";
-        let ast: ItemFn = syn::parse_str(code)?;
-        println!("{ast:#?}");
-        // assert_eq!(
-        //     FrbAttributes::parse(&vec![syn::parse_str::<Attribute>("#[frb(sync)]")?])?,
-        //     FrbAttributes(vec![FrbAttribute::Sync])
-        // );
+        body("#[frb(sync)]", FrbAttributes(vec![FrbAttribute::Sync]))
+    }
+
+    fn body(raw: &str, matcher: FrbAttributes) -> anyhow::Result<()> {
+        let code = raw.to_owned() + " fn f() {}";
+        let fn_ast: ItemFn = syn::parse_str(&code)?;
+        assert_eq!(FrbAttributes::parse(&fn_ast.attrs)?, matcher);
         Ok(())
     }
 }
