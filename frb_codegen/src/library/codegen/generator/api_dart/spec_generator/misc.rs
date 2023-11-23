@@ -9,6 +9,7 @@ use crate::codegen::ir::namespace::Namespace;
 use crate::codegen::ir::pack::{DistinctTypeGatherer, IrPack, IrPackComputedCache};
 use crate::codegen::ir::ty::IrType;
 use crate::codegen::ir::ty::IrType::{EnumRef, StructRef};
+use crate::library::codegen::generator::api_dart::spec_generator::info::ApiDartGeneratorInfoTrait;
 use crate::library::codegen::ir::ty::IrTypeTrait;
 use crate::utils::basic_code::DartBasicHeaderCode;
 use crate::utils::path_utils::path_to_string;
@@ -100,7 +101,7 @@ fn generate_imports_from_ty(
     context: ApiDartGeneratorContext,
 ) -> anyhow::Result<String> {
     let import_ty_itself = if let Some(ty_namespace) = ty.self_namespace() {
-        if ty_namespace != current_file_namespace {
+        if &ty_namespace != current_file_namespace {
             let path_diff = diff_paths(
                 ty_namespace.to_pseudo_io_path("dart"),
                 (current_file_namespace.to_pseudo_io_path("dart").parent()).unwrap(),
@@ -108,14 +109,15 @@ fn generate_imports_from_ty(
             .context("cannot diff path")?;
             format!("import '{}';\n", path_to_string(&path_diff).unwrap())
         } else {
-            "".into()
+            "".to_owned()
         }
-        "".into()
+    } else {
+        "".to_owned()
     };
 
-    let import_extra = ApiDartGenerator::new(ty, context)
+    let import_extra = ApiDartGenerator::new(ty.clone(), context)
         .dart_import()
         .unwrap_or_default();
 
-    Ok(import_ty_itself + import_extra)
+    Ok(import_ty_itself + &import_extra)
 }
